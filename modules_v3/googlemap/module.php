@@ -57,7 +57,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 	public function modAction($mod_action) {
 		switch($mod_action) {
 		case 'admin_config':
-			$this->config();
+			$this->preferences();
 			break;
 		case 'flags':
 			$this->flags();
@@ -186,247 +186,124 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		return false;
 	}
 
-	private function config() {
-		include WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php';
-		include WT_ROOT.'includes/functions/functions_edit.php';
+	/**
+	 * Admin configuration "preferences".
+	 *
+	 * @return void
+	 */
+	protected function preferences()
+	{
+		// Create view
+		$view = new WT_View($this->getDir() . '/templates/preferences.phtml');
+
+		// Assign form view helper
+		$view->formHelper = new WT_View_Helper_Form();
+
+		// Module name
+		$view->module = $this->getName();
+
+		// Map type: ROADMAP, SATELLITE, HYBRID or TERRAIN.
+		$view->mapType = $this->getSetting('GM_MAP_TYPE', 'ROADMAP');
+
+		// // Use street map
+		$view->streetView = $this->getSetting('GM_USE_STREETVIEW', '0');
+
+		// X/Y-size of google map
+		$view->xSize = $this->getSetting('GM_XSIZE', '600');
+		$view->ySize = $this->getSetting('GM_YSIZE', '400');
+
+		// Min/Max zoom level
+		$view->minZoom = $this->getSetting('GM_MIN_ZOOM', '2');
+		$view->maxZoom = $this->getSetting('GM_MAX_ZOOM', '20');
+
+		$view->hierarchy = $this->getSetting('GM_PLACE_HIERARCHY', '0');
+
+		// Size of Place Hierarchy Google map
+		$view->hierarchyXSize = $this->getSetting('GM_PH_XSIZE', '500');
+		$view->hierarchyYSize = $this->getSetting('GM_PH_YSIZE', '350');
+
+		// Possible values: G_FLAG = Flag, G_DEFAULT_ICON = Standard icon
+		$view->hierarchyMarker = $this->getSetting('GM_PH_YSIZE', 'G_FLAG');
+
+		// Display full place name or only the actual level name
+		$view->shortPlaceName = $this->getSetting('GM_DISP_SHORT_PLACE', '0');
+
+		// Enable or disable Display Map Co-ordinates
+		$view->displayCoordinates = $this->getSetting('GM_COORD', '0');
+
+		$view->precision0 = $this->getSetting('GM_PRECISION_0', '0');  // Country level
+		$view->precision1 = $this->getSetting('GM_PRECISION_1', '1');  // State level
+		$view->precision2 = $this->getSetting('GM_PRECISION_2', '2');  // City level
+		$view->precision3 = $this->getSetting('GM_PRECISION_3', '3');  // Neighborhood level
+		$view->precision4 = $this->getSetting('GM_PRECISION_4', '4');  // House level
+		$view->precision5 = $this->getSetting('GM_PRECISION_5', '9');  // Max precision level
+
+		// Configuration-options per location-level
+		$view->prefix = array(
+			$this->getSetting('GM_PREFIX_1', ''),
+			$this->getSetting('GM_PREFIX_2', ''),
+			$this->getSetting('GM_PREFIX_3', ''),
+			$this->getSetting('GM_PREFIX_4', ''),
+			$this->getSetting('GM_PREFIX_5', ''),
+			$this->getSetting('GM_PREFIX_6', ''),
+			$this->getSetting('GM_PREFIX_7', ''),
+			$this->getSetting('GM_PREFIX_8', ''),
+			$this->getSetting('GM_PREFIX_9', ''),
+		);
+
+		$view->postix = array(
+			$this->getSetting('GM_POSTFIX_1', ''),
+			$this->getSetting('GM_POSTFIX_2', ''),
+			$this->getSetting('GM_POSTFIX_3', ''),
+			$this->getSetting('GM_POSTFIX_4', ''),
+			$this->getSetting('GM_POSTFIX_5', ''),
+			$this->getSetting('GM_POSTFIX_6', ''),
+			$this->getSetting('GM_POSTFIX_7', ''),
+			$this->getSetting('GM_POSTFIX_8', ''),
+			$this->getSetting('GM_POSTFIX_9', ''),
+		);
+
 
 		$action = WT_Filter::post('action');
 
-		$controller=new WT_Controller_Page();
+		$controller = new WT_Controller_Page();
 		$controller
 			->requireAdminLogin()
-			->setPageTitle(WT_I18N::translate('Google Maps™'))
+			->setPageTitle($this->getTitle())
 			->pageHeader()
 			->addInlineJavascript('jQuery("#tabs").tabs();');
 
+		// TODO
+		if ($action == 'update') {
+			$this->setSetting('GM_MAP_TYPE',          WT_Filter::post('NEW_GM_MAP_TYPE'));
+			$this->setSetting('GM_USE_STREETVIEW',    WT_Filter::post('NEW_GM_USE_STREETVIEW'));
+			$this->setSetting('GM_MIN_ZOOM',          WT_Filter::post('NEW_GM_MIN_ZOOM'));
+			$this->setSetting('GM_MAX_ZOOM',          WT_Filter::post('NEW_GM_MAX_ZOOM'));
+			$this->setSetting('GM_XSIZE',             WT_Filter::post('NEW_GM_XSIZE'));
+			$this->setSetting('GM_YSIZE',             WT_Filter::post('NEW_GM_YSIZE'));
+			$this->setSetting('GM_PRECISION_0',       WT_Filter::post('NEW_GM_PRECISION_0'));
+			$this->setSetting('GM_PRECISION_1',       WT_Filter::post('NEW_GM_PRECISION_1'));
+			$this->setSetting('GM_PRECISION_2',       WT_Filter::post('NEW_GM_PRECISION_2'));
+			$this->setSetting('GM_PRECISION_3',       WT_Filter::post('NEW_GM_PRECISION_3'));
+			$this->setSetting('GM_PRECISION_4',       WT_Filter::post('NEW_GM_PRECISION_4'));
+			$this->setSetting('GM_PRECISION_5',       WT_Filter::post('NEW_GM_PRECISION_5'));
+			$this->setSetting('GM_COORD',             WT_Filter::post('NEW_GM_COORD'));
+			$this->setSetting('GM_PLACE_HIERARCHY',   WT_Filter::post('NEW_GM_PLACE_HIERARCHY'));
+			$this->setSetting('GM_PH_XSIZE',          WT_Filter::post('NEW_GM_PH_XSIZE'));
+			$this->setSetting('GM_PH_YSIZE',          WT_Filter::post('NEW_GM_PH_YSIZE'));
+			$this->setSetting('GM_PH_MARKER',         WT_Filter::post('NEW_GM_PH_MARKER'));
+			$this->setSetting('GM_DISP_SHORT_PLACE',  WT_Filter::post('NEW_GM_DISP_SHORT_PLACE'));
 
-		if ($action=='update') {
-			set_module_setting('googlemap', 'GM_MAP_TYPE',          WT_Filter::post('NEW_GM_MAP_TYPE'));
-			set_module_setting('googlemap', 'GM_USE_STREETVIEW',    WT_Filter::post('NEW_GM_USE_STREETVIEW'));
-			set_module_setting('googlemap', 'GM_MIN_ZOOM',          WT_Filter::post('NEW_GM_MIN_ZOOM'));
-			set_module_setting('googlemap', 'GM_MAX_ZOOM',          WT_Filter::post('NEW_GM_MAX_ZOOM'));
-			set_module_setting('googlemap', 'GM_XSIZE',             WT_Filter::post('NEW_GM_XSIZE'));
-			set_module_setting('googlemap', 'GM_YSIZE',             WT_Filter::post('NEW_GM_YSIZE'));
-			set_module_setting('googlemap', 'GM_PRECISION_0',       WT_Filter::post('NEW_GM_PRECISION_0'));
-			set_module_setting('googlemap', 'GM_PRECISION_1',       WT_Filter::post('NEW_GM_PRECISION_1'));
-			set_module_setting('googlemap', 'GM_PRECISION_2',       WT_Filter::post('NEW_GM_PRECISION_2'));
-			set_module_setting('googlemap', 'GM_PRECISION_3',       WT_Filter::post('NEW_GM_PRECISION_3'));
-			set_module_setting('googlemap', 'GM_PRECISION_4',       WT_Filter::post('NEW_GM_PRECISION_4'));
-			set_module_setting('googlemap', 'GM_PRECISION_5',       WT_Filter::post('NEW_GM_PRECISION_5'));
-			set_module_setting('googlemap', 'GM_COORD',             WT_Filter::post('NEW_GM_COORD'));
-			set_module_setting('googlemap', 'GM_PLACE_HIERARCHY',   WT_Filter::post('NEW_GM_PLACE_HIERARCHY'));
-			set_module_setting('googlemap', 'GM_PH_XSIZE',          WT_Filter::post('NEW_GM_PH_XSIZE'));
-			set_module_setting('googlemap', 'GM_PH_YSIZE',          WT_Filter::post('NEW_GM_PH_YSIZE'));
-			set_module_setting('googlemap', 'GM_PH_MARKER',         WT_Filter::post('NEW_GM_PH_MARKER'));
-			set_module_setting('googlemap', 'GM_DISP_SHORT_PLACE',  WT_Filter::post('NEW_GM_DISP_SHORT_PLACE'));
-
-			for ($i=1; $i<=9; $i++) {
-				set_module_setting('googlemap', 'GM_PREFIX_'.$i,  $_POST['NEW_GM_PREFIX_'.$i]);
-				set_module_setting('googlemap', 'GM_POSTFIX_'.$i, $_POST['NEW_GM_POSTFIX_'.$i]);
+			for ($i = 1; $i <= 9; ++$i) {
+				$this->setSetting('GM_PREFIX_' . $i,  $_POST['NEW_GM_PREFIX_' . $i]);
+				$this->setSetting('GM_POSTFIX_' . $i, $_POST['NEW_GM_POSTFIX_' . $i]);
 			}
 
 			AddToLog('Googlemap config updated', 'config');
-			// read the config file again, to set the vars
-			include WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php';
 		}
-		?>
-		<table id="gm_config">
-			<tr>
-				<th>
-					<a class="current" href="module.php?mod=googlemap&amp;mod_action=admin_config">
-						<?php echo WT_I18N::translate('Google Maps™ preferences'); ?>
-					</a>
-				</th>
-				<th>
-					<a href="module.php?mod=googlemap&amp;mod_action=admin_places">
-						<?php echo WT_I18N::translate('Geographic data'); ?>
-					</a>
-				</th>
-				<th>
-					<a href="module.php?mod=googlemap&amp;mod_action=admin_placecheck">
-						<?php echo WT_I18N::translate('Place Check'); ?>
-					</a>
-				</th>
-			</tr>
-		</table>
 
-		<form method="post" name="configform" action="module.php?mod=googlemap&mod_action=admin_config">
-			<input type="hidden" name="action" value="update">
-			<div id="tabs">
-				<ul>
-				<li><a href="#gm_basic"><span><?php echo WT_I18N::translate('Basic'); ?></span></a></li>
-					<li><a href="#gm_advanced"><span><?php echo WT_I18N::translate('Advanced'); ?></span></a></li>
-					<li><a href="#gm_ph"><span><?php echo WT_I18N::translate('Place hierarchy'); ?></span></a></li>
-				</ul>
-				<div id="gm_basic">
-					<table class="gm_edit_config">
-						<tr>
-							<th><?php echo WT_I18N::translate('Default map type'); ?></th>
-							<td>
-								<select name="NEW_GM_MAP_TYPE">
-									<option value="ROADMAP" <?php if ($GOOGLEMAP_MAP_TYPE=="ROADMAP") echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('Map'); ?></option>
-									<option value="SATELLITE" <?php if ($GOOGLEMAP_MAP_TYPE=="SATELLITE") echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('Satellite'); ?></option>
-									<option value="HYBRID" <?php if ($GOOGLEMAP_MAP_TYPE=="HYBRID") echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('Hybrid'); ?></option>
-									<option value="TERRAIN" <?php if ($GOOGLEMAP_MAP_TYPE=="TERRAIN") echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('Terrain'); ?></option>
-								</select>
-							</td>
-						</tr>
-						<tr>
-							<th><?php echo /* I18N: http://en.wikipedia.org/wiki/Google_street_view */ WT_I18N::translate('Google Street View™'); ?></th>
-							<td><?php echo radio_buttons('NEW_GM_USE_STREETVIEW', array(false=>WT_I18N::translate('hide'),true=>WT_I18N::translate('show')), $GM_USE_STREETVIEW); ?></td>
-						</tr>
-						<tr>
-							<th><?php echo WT_I18N::translate('Size of map (in pixels)'); ?></th>
-							<td>
-								<?php echo WT_I18N::translate('Width'); ?>
-								<input type="text" name="NEW_GM_XSIZE" value="<?php echo $GOOGLEMAP_XSIZE; ?>" size="10">
-								<?php echo WT_I18N::translate('Height'); ?>
-								<input type="text" name="NEW_GM_YSIZE" value="<?php echo $GOOGLEMAP_YSIZE; ?>" size="10">
-							</td>
-						</tr>
-						<tr>
-							<th><?php echo WT_I18N::translate('Zoom level of map'), help_link('GOOGLEMAP_MAP_ZOOM','googlemap'); ?></th>
-							<td>
-								<?php echo WT_I18N::translate('minimum'); ?>: <select name="NEW_GM_MIN_ZOOM">
-								<?php for ($j=1; $j < 15; $j++) { ?>
-								<option value="<?php echo $j, "\""; if ($GOOGLEMAP_MIN_ZOOM==$j) echo " selected=\"selected\""; echo ">", $j; ?></option>
-								<?php } ?>
-								</select>
-								<?php echo WT_I18N::translate('maximum'); ?>: <select name="NEW_GM_MAX_ZOOM">
-								<?php for ($j=1; $j < 21; $j++) { ?>
-								<option value="<?php echo $j, "\""; if ($GOOGLEMAP_MAX_ZOOM==$j) echo " selected=\"selected\""; echo ">", $j; ?></option>
-								<?php } ?>
-								</select>
-							</td>
-						</tr>
-					</table>
-				</div>
-
-				<div id="gm_advanced">
-					<table class="gm_edit_config">
-						<tr>
-							<th colspan="2"><?php echo WT_I18N::translate('Precision of the latitude and longitude'), help_link('GOOGLEMAP_PRECISION','googlemap'); ?></th>
-							<td>
-								<table>
-									<tr>
-										<td><?php echo WT_I18N::translate('Country'); ?>&nbsp;&nbsp;</td>
-										<td><select name="NEW_GM_PRECISION_0">
-											<?php for ($j=0; $j < 10; $j++) { ?>
-											<option value="<?php echo $j; ?>"<?php if ($GOOGLEMAP_PRECISION_0==$j) echo " selected=\"selected\""; echo ">", $j; ?></option>
-											<?php } ?>
-											</select>&nbsp;&nbsp;<?php echo WT_I18N::translate('digits'); ?>
-										</td>
-									</tr>
-									<tr>
-										<td><?php echo WT_I18N::translate('State'); ?>&nbsp;&nbsp;</td>
-										<td><select name="NEW_GM_PRECISION_1">
-											<?php for ($j=0; $j < 10; $j++) { ?>
-											<option value="<?php echo $j; ?>"<?php if ($GOOGLEMAP_PRECISION_1==$j) echo " selected=\"selected\""; echo ">", $j; ?></option>
-											<?php } ?>
-											</select>&nbsp;&nbsp;<?php echo WT_I18N::translate('digits'); ?>
-										</td>
-									</tr>
-									<tr>
-										<td><?php echo WT_I18N::translate('City'); ?>&nbsp;&nbsp;</td>
-										<td><select name="NEW_GM_PRECISION_2">
-											<?php for ($j=0; $j < 10; $j++) { ?>
-											<option value="<?php echo $j; ?>"<?php if ($GOOGLEMAP_PRECISION_2==$j) echo " selected=\"selected\""; echo ">", $j; ?></option>
-											<?php } ?>
-											</select>&nbsp;&nbsp;<?php echo WT_I18N::translate('digits'); ?>
-										</td>
-									</tr>
-									<tr><td><?php echo WT_I18N::translate('Neighborhood'); ?>&nbsp;&nbsp;</td>
-										<td><select name="NEW_GM_PRECISION_3">
-											<?php for ($j=0; $j < 10; $j++) { ?>
-											<option value="<?php echo $j; ?>"<?php if ($GOOGLEMAP_PRECISION_3==$j) echo " selected=\"selected\""; echo ">", $j; ?></option>
-											<?php } ?>
-											</select>&nbsp;&nbsp;<?php echo WT_I18N::translate('digits'); ?>
-										</td>
-									</tr>
-									<tr><td><?php echo WT_I18N::translate('House'); ?>&nbsp;&nbsp;</td>
-										<td><select name="NEW_GM_PRECISION_4">
-											<?php for ($j=0; $j < 10; $j++) { ?>
-											<option value="<?php echo $j; ?>"<?php if ($GOOGLEMAP_PRECISION_4==$j) echo " selected=\"selected\""; echo ">", $j; ?></option>
-											<?php } ?>
-											</select>&nbsp;&nbsp;<?php echo WT_I18N::translate('digits'); ?>
-										</td>
-									</tr>
-									<tr><td><?php echo WT_I18N::translate('Max'); ?>&nbsp;&nbsp;</td>
-										<td><select name="NEW_GM_PRECISION_5">
-											<?php for ($j=0; $j < 10; $j++) { ?>
-											<option value="<?php echo $j; ?>"<?php if ($GOOGLEMAP_PRECISION_5==$j) echo " selected=\"selected\""; echo ">", $j; ?></option>
-											<?php } ?>
-											</select>&nbsp;&nbsp;<?php echo WT_I18N::translate('digits'); ?>
-										</td>
-									</tr>
-								</table>
-							</td>
-							<td>&nbsp;</td>
-						</tr>
-							<th class="gm_prefix" colspan="3"><?php echo WT_I18N::translate('Optional prefixes and suffixes'), help_link('GM_NAME_PREFIX_SUFFIX','googlemap');?></th>
-						</tr>
-						<tr id="gm_level_titles">
-							<th>&nbsp;</th>
-							<th><?php echo WT_I18N::translate('Prefixes'); ?></th>
-							<th><?php echo WT_I18N::translate('Suffixes'); ?></th>
-						<?php for ($level=1; $level < 10; $level++) { ?>
-						<tr  class="gm_levels">
-							<th>
-								<?php
-								if ($level==1) {
-									echo WT_I18N::translate('Country');
-								} else {
-									echo WT_I18N::translate('Level'), " ", $level;
-								}
-								?>
-							</th>
-							<td><input type="text" size="30" name="NEW_GM_PREFIX_<?php echo $level; ?>" value="<?php echo $GM_PREFIX[$level]; ?>"></td>
-							<td><input type="text" size="30" name="NEW_GM_POSTFIX_<?php echo $level; ?>" value="<?php echo $GM_POSTFIX[$level]; ?>"></td>
-						</tr>
-						<?php } ?>
-					</table>
-				</div>
-
-				<div id="gm_ph">
-					<table class="gm_edit_config">
-						<tr>
-							<th><?php echo WT_I18N::translate('Use Google Maps™ for the place hierarchy'); ?></th>
-							<td><?php echo edit_field_yes_no('NEW_GM_PLACE_HIERARCHY', $GM_PLACE_HIERARCHY); ?></td>
-						</tr>
-						<tr>
-							<th><?php echo WT_I18N::translate('Size of map (in pixels)'); ?></th>
-							<td>
-								<?php echo WT_I18N::translate('Width'); ?>
-								<input type="text" name="NEW_GM_PH_XSIZE" value="<?php echo $GOOGLEMAP_PH_XSIZE; ?>" size="10">
-								<?php echo WT_I18N::translate('Height'); ?>
-								<input type="text" name="NEW_GM_PH_YSIZE" value="<?php echo $GOOGLEMAP_PH_YSIZE; ?>" size="10">
-							</td>
-						</tr>
-						<tr>
-							<th><?php echo WT_I18N::translate('Type of place markers in Place Hierarchy'); ?></th>
-							<td>
-								<select name="NEW_GM_PH_MARKER">
-									<option value="G_DEFAULT_ICON" <?php if ($GOOGLEMAP_PH_MARKER=="G_DEFAULT_ICON") echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('Standard'); ?></option>
-									<option value="G_FLAG" <?php if ($GOOGLEMAP_PH_MARKER=="G_FLAG") echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('Flag'); ?></option>
-								</select>
-							</td>
-						</tr>
-						<tr>
-							<th><?php echo WT_I18N::translate('Display short placenames'), help_link('GM_DISP_SHORT_PLACE','googlemap'); ?></th>
-							<td><?php echo edit_field_yes_no('NEW_GM_DISP_SHORT_PLACE', $GM_DISP_SHORT_PLACE); ?></td>
-						</tr>
-						<tr>
-							<th><?php echo WT_I18N::translate('Display Map Coordinates'), help_link('GOOGLEMAP_COORD','googlemap'); ?></th>
-							<td><?php echo edit_field_yes_no('NEW_GM_COORD', $GOOGLEMAP_COORD); ?></td>
-						</tr>
-					</table>
-				</div>
-			</div>
-			<p>
-				<input type="submit" value="<?php echo WT_I18N::translate('save'); ?>">
-			</p>
-		</form>
-		<?php
+		// Render view
+		$view->render();
 	}
 
 	private function flags() {
