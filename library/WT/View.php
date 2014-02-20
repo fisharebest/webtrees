@@ -17,6 +17,13 @@ class WT_View
 	protected $fileName;
 
 	/**
+	 * Template directory.
+	 *
+	 * @var string
+	 */
+	protected $templateDir = null;
+
+	/**
 	 * Data assigned to the view.
 	 *
 	 * @var array
@@ -33,6 +40,21 @@ class WT_View
 	public function __construct($fileName)
 	{
 		$this->fileName = $fileName;
+	}
+
+	/**
+	 * Set template directory.
+	 *
+	 * @param string $dir Directory name.
+	 *
+	 * @return self
+	 */
+	public function setTemplateDir($dir)
+	{
+		$this->templateDir
+			= rtrim($dir, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
+
+		return $this;
 	}
 
 	/**
@@ -102,7 +124,7 @@ class WT_View
 	{
 		ob_start();
 
-		include $this->fileName;
+		include $this->templateDir . $this->fileName;
 
 		$rendered = ob_get_clean();
 
@@ -119,7 +141,8 @@ class WT_View
 	 */
 	public function partial($fileName, array $data = array())
 	{
-		$partialView = new View($fileName);
+		$partialView = new WT_View($fileName);
+		$partialView->setTemplateDir($this->templateDir);
 
 		foreach ($data as $key => $value) {
 			$partialView->$key = $value;
