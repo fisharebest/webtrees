@@ -69,6 +69,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			$this->admin_placecheck();
 			break;
 		case 'admin_places':
+			$this->adminPlaces();
+			break;
 		case 'places_edit':
 		case 'wt_v3_street_view':
 			// TODO: these files should be methods in this class
@@ -194,7 +196,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 	protected function preferences()
 	{
 		// Create view
-		$view = new WT_View($this->getDir() . '/templates/preferences.phtml');
+		$view = new WT_View('preferences.phtml');
+		$view->setTemplateDir($this->getDir() . '/templates/');
 
 		// Assign form view helper
 		$view->formHelper = new WT_View_Helper_Form();
@@ -306,7 +309,29 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		$view->render();
 	}
 
-	private function flags() {
+	/**
+	 * Admin places configuration.
+	 *
+	 * @return void
+	 */
+	protected function adminPlaces()
+	{
+		// Create view
+		$view = new WT_View('admin/places.phtml');
+		$view->setTemplateDir($this->getDir() . '/templates/');
+
+		// Assign form view helper
+		$view->formHelper = new WT_View_Helper_Form();
+
+		// Module name
+		$view->module = $this->getName();
+
+		// Render view
+		$view->render();
+	}
+
+	private function flags()
+	{
 		include WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php';
 		include WT_ROOT.'includes/functions/functions_edit.php';
 
