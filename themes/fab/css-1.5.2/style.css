@@ -81,8 +81,8 @@ img.block {
 	vertical-align: middle;
 }
 
-.line1, 
-.line2, 
+.line1,
+.line2,
 .line3 {
 	vertical-align: middle;
 }
@@ -2224,6 +2224,14 @@ html[dir=rtl] .use-sidebar #separator {
 	width: 100%;
 	padding: 10px 0;
 }
+.nav_content .facts_label {
+	width:75px;
+}
+.famnav_title{
+	font-weight: bold;
+	display: block;
+	padding: 5px 0;
+}
 .flyout {
 	color: #000;
 	text-align: left;
@@ -2239,14 +2247,15 @@ html[dir=rtl] .use-sidebar #separator {
 	padding: 3px;
 }
 .flyout4 {
+	font-weight: bold;
 	color: #000;
 	text-align: left;
 	margin-top: 0;
 	margin-left: 0;
 	padding: 3px;
 }
-.flyout3,
-.flyout3 a {
+.flyout3 {
+	display:block;
 	background: none;
 	border: none;
 	text-decoration: none;

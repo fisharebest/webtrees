@@ -1543,11 +1543,13 @@ html[dir=rtl] .use-sidebar #separator {background:#dddddd url(images/indi_sprite
 #sb_family_nav_content {margin-top:2px;}
 .nam a:hover {color:#555555;}
 .nav_content {width:100%;padding:10px 0 0 0;}
+.nav_content .facts_label {width:75px;}
+.famnav_title{font-weight: bold;display: block;padding: 5px 0;}
 .flyout {color:#000000;text-align:left;margin-top:-20px;right:210px;padding:3px;}
 .flyout2 {color:#000000;text-align:left;margin-top:-2px;left:40px;padding:3px;}
 .flyout2 a:hover {color:#555555;}
-.flyout4 {color:#000000;text-align:left;margin-top:0;margin-left:0;padding:3px;}
-.flyout3, .flyout3 a {background:none;border:none;text-decoration:none;text-align:left;margin-top:0;left:0;padding:0;}
+.flyout4 {font-weight: bold;color:#000000;text-align:left;margin-top:0;margin-left:0;padding:3px;}
+.flyout3 {display:block;background:none;border:none;text-decoration:none;text-align:left;margin-top:0;left:0;padding:0;}
 .famnav_link {font-size:12px;padding:0;width:100%;}
 
 html[dir=rtl] .flyout {text-align:right;left:210px;}
