@@ -84,7 +84,7 @@ class WT_Mail {
 				$config['username'] = WT_Site::preference('SMTP_AUTH_USER');
 				$config['password'] = WT_Site::preference('SMTP_AUTH_PASS');
 			}
-			if (WT_Site::preference('SMTP_SSL')) {
+			if (WT_Site::preference('SMTP_SSL') !== 'none') {
 				$config['ssl'] = WT_Site::preference('SMTP_SSL');
 			}
 
