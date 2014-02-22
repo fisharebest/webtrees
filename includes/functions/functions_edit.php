@@ -62,6 +62,8 @@ function edit_text_inline($name, $value, $controller=null) {
 // $empty    - if not null, then add an entry ""=>$empty
 // $selected - the currently selected item (if any)
 // $extra    - extra markup for field (e.g. tab key sequence)
+//
+// @deprecated See WT_View_Helper_Form
 function select_edit_control($name, $values, $empty, $selected, $extra='') {
 	if (is_null($empty)) {
 		$html='';
@@ -120,6 +122,8 @@ function select_edit_control_inline($name, $values, $empty, $selected, $controll
 // $values   - array of value=>display items
 // $selected - the currently selected item (if any)
 // $extra    - extra markup for field (e.g. tab key sequence)
+//
+// @deprecated See WT_View_Helper_Form
 function radio_buttons($name, $values, $selected, $extra='') {
 	$html='';
 	foreach ($values as $key=>$value) {
@@ -134,6 +138,8 @@ function radio_buttons($name, $values, $selected, $extra='') {
 }
 
 // Print an edit control for a Yes/No field
+//
+// @deprecated See WT_View_Helper_Form
 function edit_field_yes_no($name, $selected=false, $extra='') {
 	return radio_buttons(
 		$name, array(false=>WT_I18N::translate('no'), true=>WT_I18N::translate('yes')), $selected, $extra
@@ -1369,7 +1375,7 @@ function create_edit_form(WT_GedcomRecord $record, WT_Fact $fact) {
 				$add_date = false;
 			} elseif ($type=='STAT') {
 				add_simple_tag($subrecord, $level1type, WT_Gedcom_Tag::getLabel($label, $person));
-		 	} elseif ($level0type=='REPO') {
+			} elseif ($level0type=='REPO') {
 				$repo = WT_Repository::getInstance($pid);
 				add_simple_tag($subrecord, $level0type, WT_Gedcom_Tag::getLabel($label, $repo));
 			} else {
