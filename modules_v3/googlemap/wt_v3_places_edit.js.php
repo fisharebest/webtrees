@@ -392,7 +392,8 @@ if (!defined('WT_WEBTREES')) {
 		} else {
 			if (response.length > 0) {
 				for (i=0; i<response.length; i++) {
-					var name  = '<div id="gname" class="iwstyle">'+response[i].address_components[0].short_name+'<br> '+response[i].geometry.location+''
+					// 5 decimal places is approx 1 metre accuracy.
+					var name  = '<div id="gname" class="iwstyle">'+response[i].address_components[0].short_name+'<br>('+response[i].geometry.location.lng().toFixed(5)+','+response[i].geometry.location.lat().toFixed(5)+''
 						name +=	'<br><a href="#" onclick="setLoc(' + response[i].geometry.location.lat() + ', ' + response[i].geometry.location.lng() + ');"><div id="namelink"><?php echo WT_I18N::translate('Use this value'); ?></div></a>'
 						name += '</div>'
 					var point = response[i].geometry.location;
