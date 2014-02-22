@@ -95,14 +95,13 @@ To install **webtrees**, you need:
   We will do our best to support others such as Opera and Internet Explorer,
   though not their earlier versions. Currently many things do not work well in
   IE7, and some not in IE8 either. We strongly recommend anyone using these
-  obsolete browsers upgrade as soon as possible. We are also aware that IE and
-  Opera browsers provide poor RTL language support generally, so cannot recommend
-  those for sites requiring RTL languages.
+  obsolete browsers upgrade as soon as possible. We are also aware that IE
+  provides poor RTL language support generally, so cannot recommend it for
+  sites requiring RTL languages.
 * To view sites that contain both left-to-right and right-to-left text (e.g.
   English data on Hebrew pages), you will need to use a browser that provides
-  support for the HTML5 **dir="auto"** attribute. At present, only browsers based on
-  the WebKit engine (Chrome and Safari) have this. The Gecko (Firefox) and
-  Presto (Opera) engines promise to provide this soon.
+  support for the HTML5 **dir="auto"** attribute. At present, Internet Explorer
+  (11 and lower) do not support this.
 * HTML Frames. Note that **webtrees** uses cookies to track login sessions. Sites
   that make **webtrees** pages available inside an HTML Frames will encounter
   problems with login for versions 7, 8, and 9 of Internet Explorer. IE users
