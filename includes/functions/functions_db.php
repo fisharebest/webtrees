@@ -1319,6 +1319,9 @@ function set_block_setting($block_id, $setting_name, $setting_value) {
 	}
 }
 
+/**
+ * @deprecated Use WT_Module::getSetting
+ */
 function get_module_setting($module_name, $setting_name, $default_value=null) {
 	static $statement;
 	if ($statement===null) {
@@ -1330,6 +1333,9 @@ function get_module_setting($module_name, $setting_name, $default_value=null) {
 	return $setting_value===null ? $default_value : $setting_value;
 }
 
+/**
+ * @deprecated Use WT_Module::setSetting
+ */
 function set_module_setting($module_name, $setting_name, $setting_value) {
 	if ($setting_value===null) {
 		WT_DB::prepare("DELETE FROM `##module_setting` WHERE module_name=? AND setting_name=?")
@@ -1339,43 +1345,6 @@ function set_module_setting($module_name, $setting_name, $setting_value) {
 			->execute(array($module_name, $setting_name, $setting_value));
 	}
 }
-
-/**
- * Load module settings.
- *
- * @param string $moduleName     Name of module settings to load
- * @param array  $settingsToLoad List of settings to load and its default values
- *
- * @return array
- */
-function loadModuleSettings($moduleName, array $settingsToLoad)
-{
-	/* @var $statement WT_DBStatement */
-	$statement = WT_DB::prepare(
-		'SELECT SQL_CACHE setting_name, setting_value'
-		. ' FROM `##module_setting`'
-		. ' WHERE module_name = ?'
-	);
-
-	// Start with default configuration
-	$loadedSettings = $settingsToLoad;
-
-	// Load settings from database
-	$settingRecords = $statement
-		->execute(array($moduleName))
-		->fetchAll();
-
-	// Update defaults with loaded settings
-	foreach ($settingRecords as $settingRecord) {
-		$loadedSettings[$settingRecord->setting_name]
-			= $settingRecord->setting_value === null
-			? $settingsToLoad[$settingRecord->setting_name]  // Default value
-			: $settingRecord->setting_value;
-	}
-
-	return $loadedSettings;
-}
-
 
 // update favorites after merging records
 function update_favorites($xref_from, $xref_to, $ged_id=WT_GED_ID) {
