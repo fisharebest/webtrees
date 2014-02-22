@@ -1,0 +1,64 @@
+<form method="post" enctype="multipart/form-data" id="importfile" name="importfile"
+	action="module.php?mod=googlemap&amp;mod_action=admin_places&amp;action=ImportFile2"
+>
+	<table class="gm_plac_edit">
+		<tr>
+			<th>
+				<?php echo $this->translate('File containing places (CSV)'); ?>
+			</th>
+			<td>
+				<input type="file" name="placesfile" size="50" />
+			</td>
+		</tr>
+		<?php if (count($this->placefiles) > 0): ?>
+			<tr>
+				<th>
+					<?php echo $this->translate('Server file containing places (CSV)'), $this->formHelper->helpLink('PLIF_LOCALFILE','googlemap'); ?>
+				</th>
+				<td>
+					<select name="localfile">
+						<option></option>
+						<?php foreach ($this->placefiles as $p => $placefile): ?>
+							<option value="<?php echo $this->escape($placefile); ?>">
+							<?php
+								if (substr($placefile, 0, 1) == '/'):
+									echo substr($placefile, 1);
+								else:
+									echo $placefile;
+								endif;
+							?>
+							</option>
+						<?php endforeach; ?>
+					</select>
+				</td>
+			</tr>
+		<?php endif; ?>
+		<tr>
+			<th>
+				<?php echo $this->translate('Delete all existing geographic data before importing the file.'); ?>
+			</th>
+			<td>
+				<input type="checkbox" name="cleardatabase" />
+			</td>
+		</tr>
+		<tr>
+			<th>
+				<?php echo $this->translate('Do not create new locations, just import coordinates for existing locations.'); ?>
+			</th>
+			<td>
+				<input type="checkbox" name="updateonly" />
+			</td>
+		</tr>
+		<tr>
+			<th>
+				<?php echo $this->translate('Overwrite existing coordinates.'); ?>
+			</th>
+			<td>
+				<input type="checkbox" name="overwritedata" />
+			</td>
+		</tr>
+	</table>
+
+	<input id="savebutton" type="submit" value="<?php echo $this->translate('Continue Adding'); ?>" />
+	<br />
+</form>

@@ -26,6 +26,8 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
+require_once 'src/Googlemap/AdminPlaces.php';
+
 define('WT_GM_SCRIPT', 'https://maps.google.com/maps/api/js?v=3.2&amp;sensor=false&amp;language='.WT_LOCALE);
 
 // http://www.google.com/permissions/guidelines.html
@@ -195,6 +197,44 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 	 */
 	protected function preferences()
 	{
+		$action = WT_Filter::post('action');
+
+		$controller = new WT_Controller_Page();
+		$controller
+			->requireAdminLogin()
+			->setPageTitle($this->getTitle())
+			->pageHeader()
+			->addInlineJavascript('jQuery("#tabs").tabs();');
+
+		// TODO
+		if ($action == 'update') {
+			$this->setSetting('GM_MAP_TYPE',          WT_Filter::post('NEW_GM_MAP_TYPE'));
+			$this->setSetting('GM_USE_STREETVIEW',    WT_Filter::post('NEW_GM_USE_STREETVIEW'));
+			$this->setSetting('GM_MIN_ZOOM',          WT_Filter::post('NEW_GM_MIN_ZOOM'));
+			$this->setSetting('GM_MAX_ZOOM',          WT_Filter::post('NEW_GM_MAX_ZOOM'));
+			$this->setSetting('GM_XSIZE',             WT_Filter::post('NEW_GM_XSIZE'));
+			$this->setSetting('GM_YSIZE',             WT_Filter::post('NEW_GM_YSIZE'));
+			$this->setSetting('GM_PRECISION_0',       WT_Filter::post('NEW_GM_PRECISION_0'));
+			$this->setSetting('GM_PRECISION_1',       WT_Filter::post('NEW_GM_PRECISION_1'));
+			$this->setSetting('GM_PRECISION_2',       WT_Filter::post('NEW_GM_PRECISION_2'));
+			$this->setSetting('GM_PRECISION_3',       WT_Filter::post('NEW_GM_PRECISION_3'));
+			$this->setSetting('GM_PRECISION_4',       WT_Filter::post('NEW_GM_PRECISION_4'));
+			$this->setSetting('GM_PRECISION_5',       WT_Filter::post('NEW_GM_PRECISION_5'));
+			$this->setSetting('GM_COORD',             WT_Filter::post('NEW_GM_COORD'));
+			$this->setSetting('GM_PLACE_HIERARCHY',   WT_Filter::post('NEW_GM_PLACE_HIERARCHY'));
+			$this->setSetting('GM_PH_XSIZE',          WT_Filter::post('NEW_GM_PH_XSIZE'));
+			$this->setSetting('GM_PH_YSIZE',          WT_Filter::post('NEW_GM_PH_YSIZE'));
+			$this->setSetting('GM_PH_MARKER',         WT_Filter::post('NEW_GM_PH_MARKER'));
+			$this->setSetting('GM_DISP_SHORT_PLACE',  WT_Filter::post('NEW_GM_DISP_SHORT_PLACE'));
+
+			for ($i = 1; $i <= 9; ++$i) {
+				$this->setSetting('GM_PREFIX_' . $i,  $_POST['NEW_GM_PREFIX_' . $i]);
+				$this->setSetting('GM_POSTFIX_' . $i, $_POST['NEW_GM_POSTFIX_' . $i]);
+			}
+
+			AddToLog('Googlemap config updated', 'config');
+		}
+
 		// Create view
 		$view = new WT_View('preferences.phtml');
 		$view->setTemplateDir($this->getDir() . '/templates/');
@@ -266,45 +306,6 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			$this->getSetting('GM_POSTFIX_9', ''),
 		);
 
-
-		$action = WT_Filter::post('action');
-
-		$controller = new WT_Controller_Page();
-		$controller
-			->requireAdminLogin()
-			->setPageTitle($this->getTitle())
-			->pageHeader()
-			->addInlineJavascript('jQuery("#tabs").tabs();');
-
-		// TODO
-		if ($action == 'update') {
-			$this->setSetting('GM_MAP_TYPE',          WT_Filter::post('NEW_GM_MAP_TYPE'));
-			$this->setSetting('GM_USE_STREETVIEW',    WT_Filter::post('NEW_GM_USE_STREETVIEW'));
-			$this->setSetting('GM_MIN_ZOOM',          WT_Filter::post('NEW_GM_MIN_ZOOM'));
-			$this->setSetting('GM_MAX_ZOOM',          WT_Filter::post('NEW_GM_MAX_ZOOM'));
-			$this->setSetting('GM_XSIZE',             WT_Filter::post('NEW_GM_XSIZE'));
-			$this->setSetting('GM_YSIZE',             WT_Filter::post('NEW_GM_YSIZE'));
-			$this->setSetting('GM_PRECISION_0',       WT_Filter::post('NEW_GM_PRECISION_0'));
-			$this->setSetting('GM_PRECISION_1',       WT_Filter::post('NEW_GM_PRECISION_1'));
-			$this->setSetting('GM_PRECISION_2',       WT_Filter::post('NEW_GM_PRECISION_2'));
-			$this->setSetting('GM_PRECISION_3',       WT_Filter::post('NEW_GM_PRECISION_3'));
-			$this->setSetting('GM_PRECISION_4',       WT_Filter::post('NEW_GM_PRECISION_4'));
-			$this->setSetting('GM_PRECISION_5',       WT_Filter::post('NEW_GM_PRECISION_5'));
-			$this->setSetting('GM_COORD',             WT_Filter::post('NEW_GM_COORD'));
-			$this->setSetting('GM_PLACE_HIERARCHY',   WT_Filter::post('NEW_GM_PLACE_HIERARCHY'));
-			$this->setSetting('GM_PH_XSIZE',          WT_Filter::post('NEW_GM_PH_XSIZE'));
-			$this->setSetting('GM_PH_YSIZE',          WT_Filter::post('NEW_GM_PH_YSIZE'));
-			$this->setSetting('GM_PH_MARKER',         WT_Filter::post('NEW_GM_PH_MARKER'));
-			$this->setSetting('GM_DISP_SHORT_PLACE',  WT_Filter::post('NEW_GM_DISP_SHORT_PLACE'));
-
-			for ($i = 1; $i <= 9; ++$i) {
-				$this->setSetting('GM_PREFIX_' . $i,  $_POST['NEW_GM_PREFIX_' . $i]);
-				$this->setSetting('GM_POSTFIX_' . $i, $_POST['NEW_GM_POSTFIX_' . $i]);
-			}
-
-			AddToLog('Googlemap config updated', 'config');
-		}
-
 		// Render view
 		$view->render();
 	}
@@ -323,8 +324,84 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		// Assign form view helper
 		$view->formHelper = new WT_View_Helper_Form();
 
-		// Module name
-		$view->module = $this->getName();
+		$controller = new WT_Controller_Page();
+		$controller->requireAdminLogin();
+
+		// Get user submitted parameters
+		$action   = WT_Filter::get('action');
+		$parent   = WT_Filter::get('parent');
+		$inactive = WT_Filter::getBool('inactive')
+			|| WT_Filter::postBool('inactive');
+
+		if (!isset($parent)) {
+			$parent = 0;
+		}
+
+		if (!isset($inactive)) {
+			$inactive = false;
+		}
+
+		if (($action == 'ExportFile') && WT_USER_IS_ADMIN) {
+			Googlemap_AdminPlaces::exportFile($parent);
+		}
+
+		// Render page header
+		$controller->setPageTitle($this->getTitle())
+			->pageHeader();
+
+		if ($action == 'ImportGedcom') {
+			Googlemap_AdminPlaces::importGedcom();
+			$parent = 0;
+		}
+
+		if ($action == 'ImportFile') {
+			$view->placefiles = Googlemap_AdminPlaces::getImportablePlaceFiles(
+				WT_MODULES_DIR . $this->getName() . '/extra'
+			);
+		}
+
+		if ($action == 'ImportFile2') {
+			$maxZoom  = $this->getSetting('GM_MAX_ZOOM', 20);
+			$fileName = null;
+
+			if (!empty($_FILES['placesfile']['tmp_name'])) {
+				$fileName = $_FILES['placesfile']['tmp_name'];
+			} elseif (!empty($_REQUEST['localfile'])) {
+				$fileName = $this->getDir() . '/extra' . $_REQUEST['localfile'];
+			}
+
+			// Import file
+			Googlemap_AdminPlaces::importFile(
+				$fileName,
+				$this->getDir() . '/places/flags/',
+				$maxZoom,
+				isset($_POST['cleardatabase']),
+				isset($_POST['updateonly']),
+				isset($_POST['overwritedata'])
+			);
+
+			$parent = 0;
+		}
+
+		if ($action == 'DeleteRecord') {
+			$view->recordNotDeleted
+				= Googlemap_AdminPlaces::deleteRecord(
+					WT_Filter::get('deleteRecord')
+				);
+		}
+
+		$view->module    = $this->getName();
+		$view->staticUrl = WT_STATIC_URL . WT_MODULES_DIR . $this->getName();
+		$view->action    = $action;
+		$view->parent    = $parent;
+		$view->inactive  = $inactive;
+		$view->trees     = WT_Tree::getNameList();
+
+		$view->whereAmI
+			= Googlemap_AdminPlaces::placeIdToHierarchy($parent);
+
+		$view->placelist
+			= Googlemap_AdminPlaces::getPlaceLocationList($parent, $inactive);
 
 		// Render view
 		$view->render();
@@ -714,23 +791,23 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				'%1$d individuals displayed, out of the normal total of %2$d, from %3$d generations.',
 				$count,
 				$count, $total, $curgen
-			), '<br>';
+			), '<br />';
 			echo '</td>';
 			echo '</tr>';
 			echo '<tr>';
 			echo '<td valign="top">';
 			if ($priv) {
-				echo WT_I18N::plural('%s individual is private.', '%s individuals are private.', $priv, $priv), '<br>';
+				echo WT_I18N::plural('%s individual is private.', '%s individuals are private.', $priv, $priv), '<br />';
 			}
 			if ($count+$priv != $total) {
 				if ($miscount == 0) {
-					echo WT_I18N::translate('No ancestors in the database.'), "<br>";
+					echo WT_I18N::translate('No ancestors in the database.'), "<br />";
 				} else {
 					echo /* I18N: %1$d is a count of individuals, %2$s is a list of their names */ WT_I18N::plural(
 						'%1$d individual is missing birthplace map coordinates: %2$s.',
 						'%1$d individuals are missing birthplace map coordinates: %2$s.',
 						$miscount, $miscount, $missing),
-						'<br>';
+						'<br />';
 				}
 			}
 		}
@@ -1087,7 +1164,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			// save the info we need to use later for the side_bar
 			'gmarkers[i] = marker;'.
 			// add a line to the side_bar html
-			'side_bar_html += "<br><div id=\'"+linkid+"\' onclick=\'myclick(" + i + ")\'>" + html +"<br></div>";
+			'side_bar_html += "<br /><div id=\'"+linkid+"\' onclick=\'myclick(" + i + ")\'>" + html +"<br /></div>";
 			i++;
 			return marker;
 		};'.
@@ -1158,7 +1235,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 				$dataleft  = WT_Filter::escapeJs($image . $event . ' — ' . $name);
 				$datamid   = WT_Filter::escapeJs(' <span><a href="' . $person->getHtmlUrl() . '">('.WT_I18N::translate('View person').')</a></span>');
-				$dataright = WT_Filter::escapeJs('<br><strong>'. WT_I18N::translate('Birth:') . '&nbsp;</strong>' .  $person->getBirthDate()->Display(false) . ' — ' . $person->getBirthPlace());
+				$dataright = WT_Filter::escapeJs('<br /><strong>'. WT_I18N::translate('Birth:') . '&nbsp;</strong>' .  $person->getBirthDate()->Display(false) . ' — ' . $person->getBirthPlace());
 
 				$latlongval[$i] = get_lati_long_placelocation($person->getBirthPlace());
 				if ($latlongval[$i]) {
@@ -1466,12 +1543,12 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			//scripts for edit, add and refresh
 			?>
 			<script>
-			function edit_place_location(placeid) {
+			function editPlaceLocation(placeid) {
 				window.open('module.php?mod=googlemap&mod_action=places_edit&action=update&placeid='+placeid, '_blank', gmap_window_specs);
 				return false;
 			}
 
-			function add_place_location(placeid) {
+			function addPlaceLocation(placeid) {
 				window.open('module.php?mod=googlemap&mod_action=places_edit&action=add&placeid='+placeid, '_blank', gmap_window_specs);
 				return false;
 			}
@@ -1519,8 +1596,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				$id=0;
 				$level=0;
 				$matched[$x]=0;// used to exclude places where the gedcom place is matched at all levels
-				$mapstr_edit="<a href=\"#\" onclick=\"edit_place_location('";
-				$mapstr_add="<a href=\"#\" onclick=\"add_place_location('";
+				$mapstr_edit="<a href=\"#\" onclick=\"editPlaceLocation('";
+				$mapstr_add="<a href=\"#\" onclick=\"addPlaceLocation('";
 				$mapstr3="";
 				$mapstr4="";
 				$mapstr5="')\" title='";
@@ -1533,8 +1610,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 					$levels[$z]=rtrim(ltrim($levels[$z]));
 
-					$placelist=create_possible_place_names($levels[$z], $z+1); // add the necessary prefix/postfix values to the place name
-					foreach ($placelist as $key=>$placename) {
+					$placeList=create_possible_place_names($levels[$z], $z+1); // add the necessary prefix/postfix values to the place name
+					foreach ($placeList as $key=>$placename) {
 						$row=
 							WT_DB::prepare("SELECT pl_id, pl_place, pl_long, pl_lati, pl_zoom FROM `##placelocation` WHERE pl_level=? AND pl_parent_id=? AND pl_place LIKE ? ORDER BY pl_place")
 							->execute(array($z, $id, $placename))

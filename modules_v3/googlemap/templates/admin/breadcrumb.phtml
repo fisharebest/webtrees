@@ -1,0 +1,29 @@
+<div id="gm_breadcrumb">
+	<?php
+	foreach (array_reverse($this->whereAmI, true) as $id => $place):
+		if ($id == $this->parent):
+			if ($place != 'Unknown'):
+				echo $this->escape($place);
+			else:
+				echo $this->translate('unknown');
+			endif;
+		else:
+	?>
+			<a href="module.php?mod=googlemap&mod_action=admin_places&parent=<?php echo $id; ?>&inactive=<?php echo $this->inactive; ?>">
+	<?php
+				if ($place != 'Unknown'):
+					echo $this->escape($place);
+				else:
+					echo $this->translate('unknown');
+				endif;
+	?>
+			</a>
+	<?php
+		endif;
+
+		echo ' - ';
+	endforeach;
+	?>
+	<a href="module.php?mod=googlemap&mod_action=admin_places&parent=0&inactive=<?php echo $this->inactive; ?>">
+		<?php echo $this->translate('Top Level'); ?></a>
+</div>
