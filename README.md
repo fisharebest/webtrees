@@ -47,7 +47,7 @@ third-party tools, design techniques and open standards.
 
 **webtrees** allows you to view and edit your genealogy on your website. It has
 full editing capabilities, full privacy functions, and supports multimedia like
-photos and document images. As an on line program, it fosters extended family
+photos and document images. As an online program, it fosters extended family
 participation and good ancestral recording habits, as it simplifies the process
 of collaborating with others working on your family lines. Your latest information
 is always on your web site and available for others to see, defined by viewing
@@ -141,7 +141,7 @@ administration page, where you'll need to select one of the following options:
    * CREATE a new, empty GEDCOM file
    * TRANSFER your existing PGV data straight into **webtrees**, using the
      PGV-to-**webtrees** wizard described in section 9 below:
-     [Converting form phpgedview](#phpgedview)
+     [Converting from phpgedview](#converting-from-phpgedview)
 
 There are *lots* of configuration options. You'll probably want to review the
 privacy settings first. Don't worry too much about all the other options - the
