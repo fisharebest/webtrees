@@ -66,12 +66,7 @@ class WT_View
 	 */
 	public function escape($str)
 	{
-		if (defined('ENT_SUBSTITUTE')) {
-			// PHP5.4 allows us to substitute invalid UTF8 sequences
-			return htmlspecialchars($str, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
-		}
-
-		return htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
+		return WT_Filter::escapeHtml($str);
 	}
 
 	/**
@@ -80,10 +75,26 @@ class WT_View
 	 * @param string $str String to translate
 	 *
 	 * @return string
+	 *
+	 * @see WT_I18N::translate
 	 */
 	public function translate($str)
 	{
 		return $this->escape(WT_I18N::translate($str));
+	}
+
+	/**
+	 * Translate a tag, for an (optional) record
+	 *
+	 * @param string $str Tag name
+	 *
+	 * @return string
+	 *
+	 * @see WT_Gedcom_Tag::getLabel
+	 */
+	public function translateTag($str)
+	{
+		return WT_Gedcom_Tag::getLabel($str);
 	}
 
 	/**

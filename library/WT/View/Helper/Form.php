@@ -10,6 +10,66 @@
 class WT_View_Helper_Form
 {
 	/**
+	 * Create a <select> control for a form.
+	 *
+	 * @param string $name     The id for the form element
+	 * @param array  $values   Array of value=>display items
+	 * @param string $empty    If not null, then add an entry ""=>$empty
+	 * @param string $selected The currently selected item (if any)
+	 * @param string $extra    Extra markup for field (e.g. tab key sequence)
+	 *
+	 * @return string HTML
+	 */
+	public function selectEditControl(
+		$name, $values, $empty, $selected, $extra = ''
+	) {
+		if ($empty === null) {
+			$html = '';
+		} else {
+			if (empty($selected)) {
+				$html = '<option value="" selected="selected">'
+					. WT_Filter::escapeHtml($empty)
+					. '</option>';
+			} else {
+				$html = '<option value="">'
+					. WT_Filter::escapeHtml($empty)
+					. '</option>';
+			}
+		}
+
+		// A completely empty list would be invalid, and break various things
+		if (empty($values) && empty($html)) {
+			$html = '<option value=""></option>';
+		}
+
+		foreach ($values as $key=>$value) {
+			if ((string)$key===(string)$selected) { // Because "0" != ""
+				$html .= '<option value="' . WT_Filter::escapeHtml($key)
+					. '" selected="selected" dir="auto">'
+					. WT_Filter::escapeHtml($value)
+					. '</option>';
+			} else {
+				$html .= '<option value="' . WT_Filter::escapeHtml($key)
+					. '" dir="auto">'
+					. WT_Filter::escapeHtml($value)
+					. '</option>';
+			}
+		}
+
+		if (substr($name, -2) == '[]') {
+			// id attribute is not used for arrays
+			return <<<HTML
+<select name="{$name}" {$extra}>{$html}</select>
+HTML;
+		} else {
+			return <<<HTML
+<select id="{$name}" name="{$name}" {$extra}>{$html}</select>
+HTML;
+		}
+	}
+
+
+	/**
 	 * Create a set of radio buttons for a form.
 	 *
 	 * @param string $name     The ID for the form element
