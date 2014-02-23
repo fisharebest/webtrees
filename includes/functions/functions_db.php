@@ -1319,6 +1319,9 @@ function set_block_setting($block_id, $setting_name, $setting_value) {
 	}
 }
 
+/**
+ * @deprecated Use WT_Module::getSetting
+ */
 function get_module_setting($module_name, $setting_name, $default_value=null) {
 	static $statement;
 	if ($statement===null) {
@@ -1330,6 +1333,9 @@ function get_module_setting($module_name, $setting_name, $default_value=null) {
 	return $setting_value===null ? $default_value : $setting_value;
 }
 
+/**
+ * @deprecated Use WT_Module::setSetting
+ */
 function set_module_setting($module_name, $setting_name, $setting_value) {
 	if ($setting_value===null) {
 		WT_DB::prepare("DELETE FROM `##module_setting` WHERE module_name=? AND setting_name=?")

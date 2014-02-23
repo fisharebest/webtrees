@@ -1,0 +1,211 @@
+<?php $this->partial('head-navigation.phtml'); ?>
+
+<form method="post" name="configform" action="module.php?mod=googlemap&mod_action=admin_config">
+	<input type="hidden" name="action" value="update" />
+	<div id="tabs">
+		<ul>
+			<li><a href="#gm_basic"><span><?php echo $this->translate('Basic'); ?></span></a></li>
+			<li><a href="#gm_advanced"><span><?php echo $this->translate('Advanced'); ?></span></a></li>
+			<li><a href="#gm_ph"><span><?php echo $this->translate('Place hierarchy'); ?></span></a></li>
+		</ul>
+		<div id="gm_basic">
+			<table class="gm_edit_config">
+				<tr>
+					<th><?php echo $this->translate('Default map type'); ?></th>
+					<td>
+						<select name="NEW_GM_MAP_TYPE">
+							<option value="ROADMAP"<?php if ($this->mapType == 'ROADMAP'): echo ' selected="selected"'; endif; ?>><?php echo $this->translate('Map'); ?></option>
+							<option value="SATELLITE"<?php if ($this->mapType == 'SATELLITE'): echo ' selected="selected"'; endif; ?>><?php echo $this->translate('Satellite'); ?></option>
+							<option value="HYBRID"<?php if ($this->mapType == 'HYBRID'): echo ' selected="selected"'; endif; ?>><?php echo $this->translate('Hybrid'); ?></option>
+							<option value="TERRAIN"<?php if ($this->mapType == 'TERRAIN'): echo ' selected="selected"'; endif; ?>><?php echo $this->translate('Terrain'); ?></option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<?php echo /* I18N: http://en.wikipedia.org/wiki/Google_street_view */ $this->translate('Google Street View™'); ?>
+					</th>
+					<td>
+						<?php
+							echo $this->formHelper->radioButtons(
+								'NEW_GM_USE_STREETVIEW',
+								array(
+									false => $this->translate('hide'),
+									true  => $this->translate('show')
+								),
+								$this->streetView
+							);
+						?>
+					</td>
+				</tr>
+				<tr>
+					<th><?php echo $this->translate('Size of map (in pixels)'); ?></th>
+					<td>
+						<?php echo $this->translate('Width'); ?>
+						<input type="text" name="NEW_GM_XSIZE" value="<?php echo $this->xSize; ?>" size="10" />
+						<?php echo $this->translate('Height'); ?>
+						<input type="text" name="NEW_GM_YSIZE" value="<?php echo $this->ySize; ?>" size="10" />
+					</td>
+				</tr>
+				<tr>
+					<th><?php echo $this->translate('Zoom level of map'), $this->formHelper->helpLink('GOOGLEMAP_MAP_ZOOM', $this->module); ?></th>
+					<td>
+						<?php echo $this->translate('minimum'); ?>:
+						<select name="NEW_GM_MIN_ZOOM">
+							<?php for ($j = 1; $j < 15; ++$j): ?>
+								<option value="<?php echo $j, "\""; if ($this->minZoom == $j): echo ' selected="selected"'; endif; echo ">", $j; ?></option>
+							<?php endfor; ?>
+						</select>
+						<?php echo $this->translate('maximum'); ?>:
+						<select name="NEW_GM_MAX_ZOOM">
+							<?php for ($j = 1; $j < 21; ++$j): ?>
+								<option value="<?php echo $j, "\""; if ($this->maxZoom == $j): echo ' selected="selected"'; endif; echo ">", $j; ?></option>
+							<?php endfor; ?>
+						</select>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+		<div id="gm_advanced">
+			<table class="gm_edit_config">
+				<tr>
+					<th colspan="2">
+						<?php echo $this->translate('Precision of the latitude and longitude'), $this->formHelper->helpLink('GOOGLEMAP_PRECISION', $this->module); ?>
+					</th>
+					<td>
+						<table>
+							<tr>
+								<td><?php echo $this->translate('Country'); ?>&nbsp;&nbsp;</td>
+								<td>
+									<select name="NEW_GM_PRECISION_0">
+										<?php for ($j = 0; $j < 10; ++$j): ?>
+											<option value="<?php echo $j; ?>"<?php if ($this->precision0 == $j): echo ' selected="selected"'; endif; ?>><?php echo $j; ?></option>
+										<?php endfor; ?>
+									</select>&nbsp;&nbsp;<?php echo $this->translate('digits'); ?>
+								</td>
+							</tr>
+							<tr>
+								<td><?php echo $this->translate('State'); ?>&nbsp;&nbsp;</td>
+								<td>
+									<select name="NEW_GM_PRECISION_1">
+										<?php for ($j = 0; $j < 10; ++$j): ?>
+											<option value="<?php echo $j; ?>"<?php if ($this->precision1 == $j): echo ' selected="selected"'; endif; ?>><?php echo $j; ?></option>
+										<?php endfor; ?>
+									</select>&nbsp;&nbsp;<?php echo $this->translate('digits'); ?>
+								</td>
+							</tr>
+							<tr>
+								<td><?php echo $this->translate('City'); ?>&nbsp;&nbsp;</td>
+								<td>
+									<select name="NEW_GM_PRECISION_2">
+										<?php for ($j = 0; $j < 10; ++$j): ?>
+											<option value="<?php echo $j; ?>"<?php if ($this->precision2 == $j): echo ' selected="selected"'; endif; ?>><?php echo $j; ?></option>
+										<?php endfor; ?>
+									</select>&nbsp;&nbsp;<?php echo $this->translate('digits'); ?>
+								</td>
+							</tr>
+							<tr>
+								<td><?php echo $this->translate('Neighborhood'); ?>&nbsp;&nbsp;</td>
+								<td>
+									<select name="NEW_GM_PRECISION_3">
+										<?php for ($j = 0; $j < 10; ++$j): ?>
+											<option value="<?php echo $j; ?>"<?php if ($this->precision3 == $j): echo ' selected="selected"'; endif; ?>><?php echo $j; ?></option>
+										<?php endfor; ?>
+									</select>&nbsp;&nbsp;<?php echo $this->translate('digits'); ?>
+								</td>
+							</tr>
+							<tr>
+								<td><?php echo $this->translate('House'); ?>&nbsp;&nbsp;</td>
+								<td>
+									<select name="NEW_GM_PRECISION_4">
+										<?php for ($j = 0; $j < 10; ++$j): ?>
+											<option value="<?php echo $j; ?>"<?php if ($this->precision4 == $j): echo ' selected="selected"'; endif; ?>><?php echo $j; ?></option>
+										<?php endfor; ?>
+									</select>&nbsp;&nbsp;<?php echo $this->translate('digits'); ?>
+								</td>
+							</tr>
+							<tr>
+								<td><?php echo $this->translate('Max'); ?>&nbsp;&nbsp;</td>
+								<td>
+									<select name="NEW_GM_PRECISION_5">
+										<?php for ($j = 0; $j < 10; ++$j): ?>
+											<option value="<?php echo $j; ?>"<?php if ($this->precision5 == $j): echo ' selected="selected"'; endif; ?>><?php echo $j; ?></option>
+										<?php endfor; ?>
+									</select>&nbsp;&nbsp;<?php echo $this->translate('digits'); ?>
+								</td>
+							</tr>
+						</table>
+					</td>
+					<td>&nbsp;</td>
+				</tr>
+					<th class="gm_prefix" colspan="3">
+						<?php echo $this->translate('Optional prefixes and suffixes'), $this->formHelper->helpLink('GM_NAME_PREFIX_SUFFIX', $this->module);?>
+					</th>
+				</tr>
+				<tr id="gm_level_titles">
+					<th>&nbsp;</th>
+					<th><?php echo $this->translate('Prefixes'); ?></th>
+					<th><?php echo $this->translate('Suffixes'); ?></th>
+				</tr>
+				<?php for ($level = 1; $level < 10; ++$level): ?>
+					<tr  class="gm_levels">
+						<th>
+						<?php
+							if ($level == 1):
+								echo $this->translate('Country');
+							else:
+								echo $this->translate('Level'), " ", $level;
+							endif;
+						?>
+						</th>
+						<td>
+							<input type="text" size="30" name="NEW_GM_PREFIX_<?php echo $level; ?>" value="<?php echo $this->prefix[$level - 1]; ?>" />
+						</td>
+						<td>
+							<input type="text" size="30" name="NEW_GM_POSTFIX_<?php echo $level; ?>" value="<?php echo $this->postfix[$level - 1]; ?>" />
+						</td>
+					</tr>
+				<?php endfor; ?>
+			</table>
+		</div>
+
+		<div id="gm_ph">
+			<table class="gm_edit_config">
+				<tr>
+					<th><?php echo $this->translate('Use Google Maps™ for the place hierarchy'); ?></th>
+					<td><?php echo $this->formHelper->editFieldYesNo('NEW_GM_PLACE_HIERARCHY', $this->hierarchy); ?></td>
+				</tr>
+				<tr>
+					<th><?php echo $this->translate('Size of map (in pixels)'); ?></th>
+					<td>
+						<?php echo $this->translate('Width'); ?>
+						<input type="text" name="NEW_GM_PH_XSIZE" value="<?php echo $this->hierarchyXSize; ?>" size="10" />
+						<?php echo $this->translate('Height'); ?>
+						<input type="text" name="NEW_GM_PH_YSIZE" value="<?php echo $this->hierarchyYSize; ?>" size="10" />
+					</td>
+				</tr>
+				<tr>
+					<th><?php echo $this->translate('Type of place markers in Place Hierarchy'); ?></th>
+					<td>
+						<select name="NEW_GM_PH_MARKER">
+							<option value="G_DEFAULT_ICON"<?php if ($this->hierarchyMarker == 'G_DEFAULT_ICON'): echo ' selected="selected"'; endif; ?>><?php echo $this->translate('Standard'); ?></option>
+							<option value="G_FLAG"<?php if ($this->hierarchyMarker == 'G_FLAG'): echo ' selected="selected"'; endif; ?>><?php echo $this->translate('Flag'); ?></option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<th><?php echo $this->translate('Display short placenames'), $this->formHelper->helpLink('GM_DISP_SHORT_PLACE', $this->module); ?></th>
+					<td><?php echo $this->formHelper->editFieldYesNo('NEW_GM_DISP_SHORT_PLACE', $this->shortPlaceName); ?></td>
+				</tr>
+				<tr>
+					<th><?php echo $this->translate('Display Map Coordinates'), $this->formHelper->helpLink('GOOGLEMAP_COORD', $this->module); ?></th>
+					<td><?php echo $this->formHelper->editFieldYesNo('NEW_GM_COORD', $this->displayCoordinates); ?></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<p>
+		<input type="submit" value="<?php echo $this->translate('save'); ?>" />
+	</p>
+</form>

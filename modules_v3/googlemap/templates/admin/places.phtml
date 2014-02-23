@@ -1,0 +1,133 @@
+<?php $this->partial('head-navigation.phtml'); ?>
+
+<?php
+	if ($this->action == 'ImportFile'):
+		$this->partial(
+			'admin/import.phtml',
+			array(
+				'placefiles' => $this->placefiles,
+				'formHelper' => $this->formHelper,
+			)
+		);
+
+		exit;
+	endif;
+?>
+
+<?php
+	if (($this->action == 'DeleteRecord') && $this->recordNotDeleted):
+		$this->partial('admin/delete.phtml');
+	endif;
+?>
+
+<?php
+	$this->partial(
+		'admin/breadcrumb.phtml',
+		array(
+			'formHelper' => $this->formHelper,
+			'parent'     => $this->parent,
+			'inactive'   => $this->inactive,
+			'whereAmI'   => $this->whereAmI,
+		)
+	);
+?>
+
+<?php
+	$this->partial(
+		'admin/placelist.phtml',
+		array(
+			'formHelper' => $this->formHelper,
+			'parent'     => $this->parent,
+			'inactive'   => $this->inactive,
+			'placelist'  => $this->placelist,
+			'staticUrl'  => $this->staticUrl,
+		)
+	);
+?>
+
+<table id="gm_manage">
+	<tr>
+		<td>
+			<?php echo $this->translate('Add  a new geographic location'); ?>
+		</td>
+		<td>
+			<form action="?" onsubmit="addPlaceLocation(this.parent_id.options[this.parent_id.selectedIndex].value); return false;">
+				<?php echo $this->formHelper->selectEditControl('parent_id', $this->whereAmI, $this->translate('Top Level'), $this->parent); ?>
+				<input type="submit" value="<?php echo $this->translate('Add'); ?>">
+			</form>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<?php echo $this->translate('Import all places from a family tree'); ?>
+		</td>
+		<td>
+			<form action="module.php" method="get">
+				<input type="hidden" name="mod" value="googlemap">
+				<input type="hidden" name="mod_action" value="admin_places">
+				<input type="hidden" name="action" value="ImportGedcom">
+				<?php echo $this->formHelper->selectEditControl('ged', $this->trees, null, WT_GEDCOM); ?>
+				<input type="submit" value="<?php echo $this->translate('Import'); ?>">
+			</form>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<?php echo $this->translate('Upload geographic data'); ?>
+		</td>
+		<td>
+			<form action="module.php" method="get">
+				<input type="hidden" name="mod" value="googlemap">
+				<input type="hidden" name="mod_action" value="admin_places">
+				<input type="hidden" name="action" value="ImportFile">
+				<input type="submit" value="<?php echo $this->translate('Upload'); ?>">
+			</form>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<?php echo $this->translate('Download geographic data'); ?>
+		</td>
+		<td>
+			<form action="module.php" method="get">
+				<input type="hidden" name="mod" value="googlemap">
+				<input type="hidden" name="mod_action" value="admin_places">
+				<input type="hidden" name="action" value="ExportFile">
+				<?php echo $this->formHelper->selectEditControl('parent', $this->whereAmI, $this->translate('All'), WT_GED_ID); ?>
+				<input type="submit" value="<?php echo $this->translate('Download'); ?>">
+			</form>
+		</td>
+	</tr>
+</table>
+
+<script type="text/javascript">
+//<[CDATA[
+
+function updateList(inactive)
+{
+	$('#googleMapFormActive').submit();
+}
+
+function editPlaceLocation(placeid)
+{
+	window.open('module.php?mod=googlemap&mod_action=places_edit&action=update&placeid=' + placeid, '_blank', gmap_window_specs);
+	return false;
+}
+
+function addPlaceLocation(placeid)
+{
+	window.open('module.php?mod=googlemap&mod_action=places_edit&action=add&placeid=' + placeid, '_blank', gmap_window_specs);
+	return false;
+}
+
+function deletePlace(placeid)
+{
+	var answer = confirm('<?php echo $this->translate('Remove this location?'); ?>');
+
+	if (answer == true) {
+		window.location = '<?php echo $_SERVER['REQUEST_URI']; ?>&action=DeleteRecord&deleteRecord=' + placeid;
+	}
+}
+
+//]]>
+</script>

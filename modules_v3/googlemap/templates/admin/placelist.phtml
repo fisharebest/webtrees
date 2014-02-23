@@ -1,0 +1,82 @@
+<form id="googleMapFormActive" name="active" method="post"
+	action="module.php?mod=googlemap&mod_action=admin_places&parent=<?php echo $this->parent; ?>"
+>
+	<div id="gm_active">
+		<label for="inactive">
+			<?php echo $this->translate('Show inactive places'); ?>
+		</label>
+		<input type="checkbox" name="inactive" id="inactive"
+			onclick="updateList(this.checked);"<?php if ($this->inactive): ?> checked="checked"<?php endif; ?> />
+		<?php echo $this->formHelper->helpLink('PLE_ACTIVE', 'googlemap'); ?>
+	</div>
+</form>
+
+<div class="gm_plac_edit">
+	<table class="gm_plac_edit">
+		<thead>
+			<tr>
+				<th><?php echo $this->translateTag('PLAC'); ?></th>
+				<th><?php echo $this->translateTag('LATI'); ?></th>
+				<th><?php echo $this->translateTag('LONG'); ?></th>
+				<th><?php echo $this->translate('Zoom level'); ?></th>
+				<th><?php echo $this->translate('Icon'); ?></th>
+				<th><?php echo $this->translate('Edit'); ?></th>
+				<th><?php echo $this->translate('Delete'); ?></th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php if (count($this->placelist) == 0): ?>
+				<tr>
+					<td colspan="7" class="accepted">
+						<?php echo $this->translate('No places found'); ?>
+					</td>
+				</tr>
+			<?php endif; ?>
+			<?php foreach ($this->placelist as $place): ?>
+				<tr>
+					<td>
+						<a href="module.php?mod=googlemap&mod_action=admin_places&parent=<?php echo $place['place_id']; ?>&inactive=<?php echo $this->inactive; ?>">
+						<?php
+							if ($place['place'] != 'Unknown'):
+								echo $this->escape($place['place']);
+							else:
+								echo $this->translate('unknown');
+							endif;
+						?>
+						</a>
+					</td>
+					<td><?php echo $place['lati']; ?></td>
+					<td><?php echo $place['long']; ?></td>
+					<td><?php echo $place['zoom']; ?></td>
+					<td>
+						<?php
+							if (($place['icon'] == NULL) || ($place['icon'] == '')):
+								if (($place['lati'] == NULL) || ($place['long'] == NULL) || (($place['lati'] == '0') && ($place['long'] == '0'))):
+						?>
+								<img src="<?php echo $this->staticUrl; ?>/images/mm_20_yellow.png" width="12" height="20" alt="yellow" />
+							<?php else: ?>
+								<img src="<?php echo $this->staticUrl; ?>/images/mm_20_red.png" width="12" height="20" alt="red" />
+							<?php endif; ?>
+						<?php else: ?>
+							<img src="<?php echo $this->staticUrl; ?>/<?php echo $place['icon']; ?>" width="25" height="15" alt="flag" />
+						<?php endif; ?>
+					</td>
+					<td class="narrow">
+						<a href="#" onclick="editPlaceLocation(<?php echo $place['place_id']; ?>); return false;"
+							class="icon-edit" title="<?php echo $this->translate('Edit'); ?>"></a>
+					</td>
+					<?php if ($place['count'] == 0): ?>
+						<td>
+							<a href="#" onclick="deletePlace(<?php echo $place['place_id']; ?>); return false;"
+								class="icon-delete" title="<?php echo $this->translate('Remove'); ?>"></a>
+						</td>
+					<?php else: ?>
+						<td>
+							<i class="icon-delete-grey"></i>
+						</td>
+					<?php endif; ?>
+				</tr>
+			<?php endforeach; ?>
+		</tbody>
+	</table>
+</div>

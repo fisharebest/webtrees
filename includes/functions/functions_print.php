@@ -216,9 +216,9 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 	// Output to template
 	$classfacts='';
 	if ($show_full) {
-	   require WT_THEME_DIR.'templates/personbox_template.php';
+	require WT_THEME_DIR.'templates/personbox_template.php';
 	} else {
-	   require WT_THEME_DIR.'templates/compactbox_template.php';
+	require WT_THEME_DIR.'templates/compactbox_template.php';
 	}
 }
 
@@ -392,7 +392,7 @@ function contact_links($ged_id=WT_GED_ID) {
 */
 function print_note_record($text, $nlevel, $nrec, $textOnly=false) {
 	global $WT_TREE;
-	
+
 	$text .= get_cont($nlevel, $nrec);
 
 	// Check if shared note (we have already checked that it exists)
@@ -504,6 +504,8 @@ function print_privacy_error() {
 }
 
 // Print a link for a popup help window
+//
+// @deprecated See WT_View_Helper_Form
 function help_link($help_topic, $module='') {
 	return '<span class="icon-help" onclick="helpDialog(\''.$help_topic.'\',\''.$module.'\'); return false;">&nbsp;</span>';
 }

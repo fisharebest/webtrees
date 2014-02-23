@@ -43,47 +43,6 @@ function place_id_to_hierarchy($id) {
 	return $arr;
 }
 
-function get_placeid($place) {
-	$par = explode (",", strip_tags($place));
-	$par = array_reverse($par);
-	$place_id = 0;
-	for ($i=0; $i<count($par); $i++) {
-		$par[$i] = trim($par[$i]);
-		if (empty($par[$i])) $par[$i]="unknown";
-		$placelist = create_possible_place_names($par[$i], $i+1);
-		foreach ($placelist as $key => $placename) {
-			$pl_id=
-				WT_DB::prepare("SELECT pl_id FROM `##placelocation` WHERE pl_level=? AND pl_parent_id=? AND pl_place LIKE ? ORDER BY pl_place")
-				->execute(array($i, $place_id, $placename))
-				->fetchOne();
-			if (!empty($pl_id)) break;
-		}
-		if (empty($pl_id)) break;
-		$place_id = $pl_id;
-	}
-	return $place_id;
-}
-
-function get_p_id($place) {
-	$par = explode (",", $place);
-	$par = array_reverse($par);
-	$place_id = 0;
-	for ($i=0; $i<count($par); $i++) {
-		$par[$i] = trim($par[$i]);
-		$placelist = create_possible_place_names($par[$i], $i+1);
-		foreach ($placelist as $key => $placename) {
-			$pl_id=
-				WT_DB::prepare("SELECT p_id FROM `##places` WHERE p_parent_id=? AND p_file=? AND p_place LIKE ? ORDER BY p_place")
-				->execute(array($place_id, WT_GED_ID, $placename))
-				->fetchOne();
-			if (!empty($pl_id)) break;
-		}
-		if (empty($pl_id)) break;
-		$place_id = $pl_id;
-	}
-	return $place_id;
-}
-
 function set_placeid_map($level, $parent) {
 	if (!isset($levelm)) {
 		$levelm=0;
@@ -96,7 +55,7 @@ function set_placeid_map($level, $parent) {
 			$fullplace .= $parent[$level-$i].", ";
 		}
 		$fullplace = substr($fullplace, 0, -2);
-		$levelm = get_p_id($fullplace);
+		$levelm = getPlaceId($fullplace);
 	}
 	return $levelm;
 }
@@ -116,18 +75,15 @@ function set_levelm($level, $parent) {
 				$fullplace .= "Unknown, ";
 		}
 		$fullplace = substr($fullplace, 0, -2);
-		$levelm = get_placeid($fullplace);
+		$levelm = getPlaceLocationId($fullplace);
 	}
 	return $levelm;
 }
 
 function create_map($placelevels) {
 	global $level;
-	global $GOOGLEMAP_PH_XSIZE, $GOOGLEMAP_PH_YSIZE, $GOOGLEMAP_MAP_TYPE, $levelm, $plzoom, $controller;
+	global $GM_USE_STREETVIEW, $GOOGLEMAP_PH_XSIZE, $GOOGLEMAP_PH_YSIZE, $GOOGLEMAP_MAP_TYPE, $levelm, $plzoom, $controller;
 
-	// *** ENABLE STREETVIEW *** (boolean) =========================================================
-	$STREETVIEW = get_module_setting('googlemap', 'GM_USE_STREETVIEW');
-	// =============================================================================================
 	$parent = WT_Filter::get('parent');
 
 	// create the map
@@ -141,7 +97,7 @@ function create_map($placelevels) {
 		WT_DB::prepare("SELECT pl_place, pl_id, pl_lati, pl_long, pl_zoom, sv_long, sv_lati, sv_bearing, sv_elevation, sv_zoom FROM `##placelocation` WHERE pl_id=?")
 		->execute(array($levelm))
 		->fetch(PDO::FETCH_ASSOC);
-	if ($STREETVIEW && $level!=0 ) {
+	if ($GM_USE_STREETVIEW && $level!=0 ) {
 		echo '<div id="place_map" style="margin-top:20px; border:1px solid gray; width: ', $GOOGLEMAP_PH_XSIZE, 'px; height: ', $GOOGLEMAP_PH_YSIZE, 'px; ';
 	} else {
 		echo '<div id="place_map" style="border:1px solid gray; width:', $GOOGLEMAP_PH_XSIZE, 'px; height:', $GOOGLEMAP_PH_YSIZE, 'px; ';
@@ -184,7 +140,7 @@ function create_map($placelevels) {
 	echo '</td>';
 	echo '<td style="margin-left:15px; float:right;">';
 
-	if ($STREETVIEW) {
+	if ($GM_USE_STREETVIEW) {
 		$controller->addInlineJavascript('
 			function update_sv_params(placeid) {
 				var svlati = document.getElementById("sv_latiText").value.slice(0, -1);
@@ -512,7 +468,7 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 					new google.maps.Size(35, 45),
 					new google.maps.Point(0,0),
 					new google.maps.Point(1, 45));
-				 } else {
+				} else {
 					var iconImage = new google.maps.MarkerImage(icon.image,
 					new google.maps.Size(20, 34),
 					new google.maps.Point(0,0),
