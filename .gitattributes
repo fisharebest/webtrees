@@ -22,7 +22,6 @@ library/Zend/Feed/          export-ignore
 library/Zend/File/          export-ignore
 library/Zend/Form/          export-ignore
 library/Zend/Gdata/         export-ignore
-library/Zend/Http/          export-ignore
 library/Zend/Infocard/      export-ignore
 library/Zend/Json/          export-ignore
 library/Zend/Layout/        export-ignore

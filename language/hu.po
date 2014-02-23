@@ -1,18 +1,19 @@
+# Balázs Németh <balazs.nemeth@balabit.com>, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2014-01-28 07:54+0000\n"
-"PO-Revision-Date: 2013-08-04 18:03+0000\n"
-"Last-Translator: Szabolcs <a.sz.szelp@gmail.com>\n"
-"Language-Team: \n"
-"Language: \n"
+"PO-Revision-Date: 2014-02-13 17:05+0100\n"
+"Last-Translator: Balázs Németh <jobbara.artalmatlan@gmail.com>\n"
+"Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
+"Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Launchpad-Export-Date: 2013-08-04 19:03+0000\n"
-"X-Generator: Launchpad (build 16718)\n"
+"X-Generator: Lokalize 1.5\n"
 "X-Poedit-Language: Hungarian\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -3444,7 +3445,7 @@ msgstr ""
 
 #: admin_trees_check.php:28 themes/_administration/header.php:122
 msgid "Check for errors"
-msgstr ""
+msgstr "Hibakeresés"
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:97
@@ -3692,7 +3693,7 @@ msgstr "Anyakönyvvezető"
 #. I18N: The “Data folder” is a configuration setting
 #: admin_site_clean.php:28 themes/_administration/header.php:102
 msgid "Clean up data folder"
-msgstr ""
+msgstr "Adat könyvtár takarítása"
 
 #: lifespan.php:196 timeline.php:302
 msgid "Clear chart"
@@ -3753,7 +3754,7 @@ msgstr ""
 #. I18N: The local time on the client/browser
 #: themes/_administration/header.php:84
 msgid "Client time"
-msgstr ""
+msgstr "Kliens idő"
 
 #. I18N: Name of a module
 #: modules_v3/clippings/module.php:32
@@ -4831,7 +4832,7 @@ msgstr "Alapértelmezett"
 
 #: modules_v3/gedcom_block/module.php:49
 msgid "Default chart"
-msgstr ""
+msgstr "Alapértelmezett diagramm"
 
 #: admin_trees_manage.php:244 help_text.php:1113
 msgid "Default family tree"
@@ -4840,7 +4841,7 @@ msgstr "Alapértelmezett családfa"
 #: admin_trees_config.php:241 admin_users.php:228 admin_users.php:432
 #: edituser.php:143 help_text.php:1118 modules_v3/gedcom_block/module.php:50
 msgid "Default individual"
-msgstr ""
+msgstr "Alapértelmezett személy"
 
 #: modules_v3/googlemap/module.php:264
 msgid "Default map type"
@@ -5915,11 +5916,11 @@ msgstr "Változások az Egyének bejegyzésében"
 
 #: admin_trees_config.php:1152 help_text.php:793
 msgid "Facts for new families"
-msgstr ""
+msgstr "Tények új családokhoz"
 
 #: admin_trees_config.php:1115 help_text.php:788
 msgid "Facts for new individuals"
-msgstr ""
+msgstr "Tények új személyekhez"
 
 #: admin_trees_config.php:1197
 msgid "Facts for repository records"
@@ -5990,7 +5991,7 @@ msgstr "Családtagok (házastársként)"
 
 #: library/WT/Controller/Familybook.php:73 library/WT/MenuBar.php:105
 msgid "Family book"
-msgstr ""
+msgstr "Családi könyv"
 
 #. I18N: %s is an individual’s name
 #: library/WT/Controller/Familybook.php:70
@@ -6184,12 +6185,12 @@ msgstr "Apa kora"
 #: library/WT/Individual.php:745 library/WT/Individual.php:759
 #, php-format
 msgid "Father’s family with %s"
-msgstr ""
+msgstr "Apa családja vele: %s"
 
 #. I18N: A step-family.
 #: library/WT/Individual.php:751 library/WT/Individual.php:765
 msgid "Father’s family with an unknown individual"
-msgstr ""
+msgstr "Apa családja egy ismeretlen személlyel"
 
 #. I18N: Name of a module
 #: help_text.php:1252 library/WT/MenuBar.php:502
@@ -7186,7 +7187,7 @@ msgstr "Számláló:"
 
 #: admin_trees_config.php:1073 help_text.php:833
 msgid "Hit counters"
-msgstr "Csapásszámlálók"
+msgstr "Látogató számlálók"
 
 #. I18N: gedcom tag _HOL
 #: library/WT/Gedcom/Tag.php:723
@@ -7344,7 +7345,7 @@ msgstr ""
 
 #: help_text.php:661
 msgid "If two family trees use the same media folder, then they will be able to share media files.  If they use different media folders, then their media files will be kept separate."
-msgstr ""
+msgstr "Ha két családfa ugyanazt a média mappát használja, akkor megoszhatják tartalmukat egymás közt. Ha külön média mappákat használnak, akkor a média fájlok külön lesznek tárolva."
 
 #: help_text.php:672
 msgid "If you are concerned that users might upload inappropriate images, you can restrict media uploads to managers only."
@@ -7421,7 +7422,7 @@ msgstr ""
 
 #: admin_trees_config.php:719
 msgid "Images without watermarks"
-msgstr ""
+msgstr "Vízjel nélküli képek"
 
 #: modules_v3/family_nav/module.php:87
 msgid "Immediate Family"
@@ -7998,7 +7999,7 @@ msgstr "UNSZ-szertartás (Endowment)"
 
 #: admin_trees_config.php:991 help_text.php:858
 msgid "LDS ordinance codes in chart boxes"
-msgstr "LDS rendeletkódok a diagrammezőkben"
+msgstr "LDS rendelet kódok a diagrammezőkben"
 
 #. I18N: gedcom tag SLGS
 #: library/WT/Gedcom/Tag.php:305
@@ -8493,7 +8494,7 @@ msgstr ""
 #. I18N: Help text for the “Sending server name” site configuration setting
 #: help_text.php:759
 msgid "Many mail servers require that the sending server identifies itself correctly, using a valid domain name."
-msgstr ""
+msgstr "Az email szerverek egy része megköveteli, hogy a küldő szerver azonosítsa magát egy valós domain névvel."
 
 #. I18N: gedcom tag MAP
 #: library/WT/Gedcom/Tag.php:232 library/WT/Gedcom/Tag.php:894
@@ -8895,7 +8896,7 @@ msgstr "Médiafájlok"
 
 #: admin_trees_config.php:627 help_text.php:654
 msgid "Media folder"
-msgstr ""
+msgstr "Média mappa"
 
 #: admin_media.php:534 admin_trees_config.php:623
 msgid "Media folders"
@@ -9315,12 +9316,12 @@ msgstr "Anya kora"
 #: library/WT/Individual.php:743 library/WT/Individual.php:757
 #, php-format
 msgid "Mother’s family with %s"
-msgstr ""
+msgstr "Anya családja vele: %s"
 
 #. I18N: A step-family.
 #: library/WT/Individual.php:749 library/WT/Individual.php:763
 msgid "Mother’s family with an unknown individual"
-msgstr ""
+msgstr "Anya családja egy ismeretlen személlyel"
 
 #: modules_v3/faq/help_text.php:59
 msgid "Move FAQ item down"
@@ -11969,12 +11970,12 @@ msgstr "Emlékeztető email küldése?"
 #. I18N: A site configuration setting
 #: admin_site_config.php:111 help_text.php:753
 msgid "Sender name"
-msgstr ""
+msgstr "Feladó neve"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:142 help_text.php:758
 msgid "Sending server name"
-msgstr ""
+msgstr "Küldő szerver neve"
 
 #: library/WT/Stats.php:3950
 msgid "Senegal"
@@ -12053,7 +12054,7 @@ msgstr "Kiszolgáló neve"
 #. I18N: The local time on the server
 #: themes/_administration/header.php:81
 msgid "Server time"
-msgstr ""
+msgstr "Szerver idő"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:94 help_text.php:728
@@ -12067,15 +12068,15 @@ msgstr "Kapcsolat létrehozása"
 
 #: themes/_administration/header.php:124 themes/_administration/header.php:136
 msgid "Set the default blocks"
-msgstr ""
+msgstr "Alapértelmezett blokkok beállítása"
 
 #: themes/_administration/header.php:124
 msgid "Set the default blocks for new family trees"
-msgstr ""
+msgstr "Alapértelmezett blokkok új családfák számára"
 
 #: themes/_administration/header.php:136
 msgid "Set the default blocks for new users"
-msgstr ""
+msgstr "Alapértelmezett blokkok új felhasználók számára"
 
 #: help_text.php:486
 msgid "Set the default number of generations to display on descendancy and pedigree charts."
@@ -12348,7 +12349,7 @@ msgstr "Mutassa az életkorkurzort?"
 #. I18N: A site configuration setting
 #: admin_trees_config.php:967 help_text.php:703
 msgid "Show chart details by default"
-msgstr ""
+msgstr "Diagramm részleteinek megmutatása alapértelmezetten"
 
 #: modules_v3/ahnentafel_report/report.xml:12
 msgid "Show children of ancestors?"
@@ -12481,7 +12482,7 @@ msgstr "Láthatóak legyenek a linkek a Statisztikai diagramokban?"
 
 #: admin_site_config.php:91 help_text.php:416
 msgid "Show list of family trees"
-msgstr ""
+msgstr "Családfák listájának megjelenítése"
 
 #: modules_v3/ahnentafel_report/report.xml:9
 #: modules_v3/family_group_report/report.xml:8
@@ -14071,7 +14072,7 @@ msgstr "Ez legalább 6 karakter kell legyen. Kis-nagybetű érzékeny."
 #. I18N: Help text for the “Sender name” site configuration setting
 #: help_text.php:754
 msgid "This name is used in the “From” field, when sending automatic emails from this server."
-msgstr ""
+msgstr "Ez a név szerepel a \"Feladó\" mezőben, amikor automatikus emaileket küldünk erről a szerverről."
 
 #: note.php:73
 msgid "This note does not exist or you do not have permission to view it."
@@ -14353,7 +14354,7 @@ msgstr "Ez kilistázza az összes helyet a kiválasztott GEDCOM fájlból. Alapb
 
 #: admin_trees_places.php:89
 msgid "This will update the highest-level part or parts of the place name.  For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."
-msgstr ""
+msgstr "Frissíteni fogja a helység nevének legmagasabb szintű részét vagy részeit. Például, \"Mexico\" illeszkedik \"Quintana Roo, Mexico\"-ra, de nem illeszkedik \"Santa Fe, New Mexico\"-ra."
 
 #: includes/functions/functions_print.php:1014
 #: library/WT/Date/Calendar.php:222
@@ -14938,11 +14939,11 @@ msgstr "Minden frissítése"
 
 #: admin_trees_places.php:85
 msgid "Update all the place names in a family tree"
-msgstr ""
+msgstr "Itt frissítheted egy családfa összes helységnevét"
 
 #: themes/_administration/header.php:121
 msgid "Update place names"
-msgstr ""
+msgstr "Helység nevek frissítése"
 
 #: admin_site_merge.php:152
 msgid "Updating linked record"
@@ -16003,19 +16004,19 @@ msgstr ""
 #. I18N: The name given to a child by its adoptive parents
 #: library/WT/Gedcom/Code/Name.php:49
 msgid "adopted name"
-msgstr ""
+msgstr "felvett név"
 
 #. I18N: The name given to a child by its adoptive parents
 #: library/WT/Gedcom/Code/Name.php:46
 msgctxt "FEMALE"
 msgid "adopted name"
-msgstr ""
+msgstr "felvett név"
 
 #. I18N: The name given to a child by its adoptive parents
 #: library/WT/Gedcom/Code/Name.php:43
 msgctxt "MALE"
 msgid "adopted name"
-msgstr ""
+msgstr "felvett név"
 
 #: library/WT/Stats.php:1724 library/WT/Stats.php:3580
 msgid "adoption"
@@ -16048,19 +16049,19 @@ msgstr "engedélyezve"
 #. I18N: The name by which an individual is also known.  e.g. a professional name or a stage name
 #: library/WT/Gedcom/Code/Name.php:61
 msgid "also known as"
-msgstr ""
+msgstr "Ismert mint"
 
 #. I18N: The name by which an individual is also known.  e.g. a professional name or a stage name
 #: library/WT/Gedcom/Code/Name.php:58
 msgctxt "FEMALE"
 msgid "also known as"
-msgstr ""
+msgstr "Ismert mint"
 
 #. I18N: The name by which an individual is also known.  e.g. a professional name or a stage name
 #: library/WT/Gedcom/Code/Name.php:55
 msgctxt "MALE"
 msgid "also known as"
-msgstr ""
+msgstr "Ismert mint"
 
 #: library/WT/Controller/Ancestry.php:142 library/WT/Stats.php:2601
 #: library/WT/Stats.php:2626 library/WT/Stats.php:2637
@@ -16152,19 +16153,19 @@ msgstr "születés"
 #. I18N: The name given to an individual at their birth
 #: library/WT/Gedcom/Code/Name.php:73
 msgid "birth name"
-msgstr ""
+msgstr "születési név"
 
 #. I18N: The name given to an individual at their birth
 #: library/WT/Gedcom/Code/Name.php:70
 msgctxt "FEMALE"
 msgid "birth name"
-msgstr ""
+msgstr "születési név"
 
 #. I18N: The name given to an individual at their birth
 #: library/WT/Gedcom/Code/Name.php:67
 msgctxt "MALE"
 msgid "birth name"
-msgstr ""
+msgstr "születési név"
 
 #. I18N: Extend privacy to dead people [who were] ...
 #: admin_trees_config.php:510
@@ -16277,19 +16278,19 @@ msgstr "évszázad"
 #. I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise)
 #: library/WT/Gedcom/Code/Name.php:85
 msgid "change of name"
-msgstr ""
+msgstr "névváltoztatás"
 
 #. I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise)
 #: library/WT/Gedcom/Code/Name.php:82
 msgctxt "FEMALE"
 msgid "change of name"
-msgstr ""
+msgstr "névváltoztatás"
 
 #. I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise)
 #: library/WT/Gedcom/Code/Name.php:79
 msgctxt "MALE"
 msgid "change of name"
-msgstr ""
+msgstr "névváltoztatás"
 
 #: edit_interface.php:2058 edit_interface.php:2080
 #: includes/functions/functions.php:827 modules_v3/googlemap/googlemap.php:234
@@ -18530,7 +18531,7 @@ msgstr "házasság"
 #. I18N: A woman’s name, before she marries (in cultures where women take their new husband’s name on marriage)
 #: library/WT/Gedcom/Code/Name.php:115
 msgid "maiden name"
-msgstr ""
+msgstr "leánykori név"
 
 #. I18N: https://en.wikipedia.org/wiki/Markdown
 #: admin_trees_config.php:947
@@ -18554,19 +18555,19 @@ msgstr "házas"
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: library/WT/Gedcom/Code/Name.php:126
 msgid "married name"
-msgstr ""
+msgstr "házasult név"
 
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: library/WT/Gedcom/Code/Name.php:123
 msgctxt "FEMALE"
 msgid "married name"
-msgstr ""
+msgstr "házasult név"
 
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: library/WT/Gedcom/Code/Name.php:120
 msgctxt "MALE"
 msgid "married name"
-msgstr ""
+msgstr "házasult név"
 
 #. I18N: verb: pretend to be someone else
 #: admin_users.php:216

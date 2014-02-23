@@ -597,7 +597,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 					}
 				}
 				echo '</div>';//#searchAccordion-indi
-				$this->addInlineJavascript('jQuery("#searchAccordion-indi").accordion({active:0, heightStyle: "content", collapsible: true, icons:{ "header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" }});');
+				$this->addInlineJavascript('jQuery("#searchAccordion-indi").accordion({heightStyle: "content", collapsible: true});');
 
 				// family results
 				echo '<div id="searchAccordion-fam">';

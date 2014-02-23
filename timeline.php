@@ -214,10 +214,6 @@ function MU() {
 	oldx=0;
 }
 
-if (N) {
-	document.captureEvents(Event.MOUSEDOWN | Event.MOUSEMOVE | Event.MOUSEUP);
-	//document.onmousedown = MD;
-}
 document.onmousemove = MM;
 document.onmouseup = MU;
 </script>

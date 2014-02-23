@@ -27,7 +27,8 @@ require_once WT_ROOT.'includes/functions/functions_edit.php';
 require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 
 $controller = new WT_Controller_Page();
-$controller->setPageTitle(WT_I18N::translate('Media objects'));
+$controller->setPageTitle(WT_I18N::translate('Media objects'))
+			->pageHeader();
 
 $search = WT_Filter::get('search');
 $sortby = WT_Filter::get('sortby', 'file|title', 'title');
@@ -64,8 +65,6 @@ $medialist = WT_Query_Media::mediaList(
 	$sortby,
 	$filter
 );
-
-$controller->pageHeader();
 
 ?>
 <div id="medialist-page"><h2><?php echo $controller->getPageTitle(); ?></h2>
@@ -311,6 +310,7 @@ if ($search) {
 		echo '</tr></tbody>';
 		echo '</table>';
 	}
-  echo '</div>
-  </div>';
+  echo '</div>';
 }
+echo '</div>';
+

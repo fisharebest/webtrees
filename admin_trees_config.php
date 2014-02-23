@@ -103,6 +103,7 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'GEDCOM_ID_PREFIX',             WT_Filter::post('NEW_GEDCOM_ID_PREFIX'));
 	set_gedcom_setting(WT_GED_ID, 'GEDCOM_MEDIA_PATH',            WT_Filter::post('NEW_GEDCOM_MEDIA_PATH'));
 	set_gedcom_setting(WT_GED_ID, 'GENERATE_UIDS',                WT_Filter::postBool('NEW_GENERATE_UIDS'));
+	set_gedcom_setting(WT_GED_ID, 'GEONAMES_ACCOUNT',             WT_Filter::post('NEW_GEONAMES_ACCOUNT'));
 	set_gedcom_setting(WT_GED_ID, 'HIDE_GEDCOM_ERRORS',           WT_Filter::postBool('NEW_HIDE_GEDCOM_ERRORS'));
 	set_gedcom_setting(WT_GED_ID, 'HIDE_LIVE_PEOPLE',             WT_Filter::postBool('NEW_HIDE_LIVE_PEOPLE'));
 	set_gedcom_setting(WT_GED_ID, 'GEDCOM_MEDIA_PATH',            WT_Filter::post('GEDCOM_MEDIA_PATH'));
@@ -163,7 +164,6 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'SURNAME_TRADITION',            WT_Filter::post('NEW_SURNAME_TRADITION'));
 	set_gedcom_setting(WT_GED_ID, 'THEME_DIR',                    WT_Filter::post('NEW_THEME_DIR'));
 	set_gedcom_setting(WT_GED_ID, 'THUMBNAIL_WIDTH',              WT_Filter::post('NEW_THUMBNAIL_WIDTH'));
-	set_gedcom_setting(WT_GED_ID, 'USE_GEONAMES',                 WT_Filter::postBool('NEW_USE_GEONAMES'));
 	set_gedcom_setting(WT_GED_ID, 'USE_RIN',                      WT_Filter::postBool('NEW_USE_RIN'));
 	set_gedcom_setting(WT_GED_ID, 'USE_SILHOUETTE',               WT_Filter::postBool('NEW_USE_SILHOUETTE'));
 	set_gedcom_setting(WT_GED_ID, 'WATERMARK_THUMB',              WT_Filter::postBool('NEW_WATERMARK_THUMB'));
@@ -1273,10 +1273,10 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 			</tr>
 			<tr>
 				<td>
-					<?php echo WT_I18N::translate('Use GeoNames database for autocomplete on places'), help_link('USE_GEONAMES'); ?>
+					<?php echo /* I18N: GeoNames is the www.geonames.org website */ WT_I18N::translate('Use GeoNames database for autocomplete on places'), help_link('GEONAMES_ACCOUNT'); ?>
 				</td>
 				<td>
-					<?php echo edit_field_yes_no('NEW_USE_GEONAMES', get_gedcom_setting(WT_GED_ID, 'USE_GEONAMES')); ?>
+					<input type="text" id="NEW_GEONAMES_ACCOUNT" name="NEW_GEONAMES_ACCOUNT" value="<?php echo WT_Filter::escapeHtml(get_gedcom_setting(WT_GED_ID, 'GEONAMES_ACCOUNT')); ?>" size="40" maxlength="255" dir="ltr" placeholder="<?php echo WT_I18N::translate('Username'); ?>">
 				</td>
 			</tr>
 			<tr>
