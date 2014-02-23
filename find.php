@@ -665,7 +665,9 @@ if ($action=="filter") {
 			usort($mysourcelist, array('WT_GedcomRecord', 'Compare'));
 			echo '<ul>';
 			foreach ($mysourcelist as $source) {
-				echo '<li><a href="', $source->getHtmlUrl(), '" onclick="pasteid(\'', $source->getXref(), '\');"><span class="list_item">', $source->getFullName(),'</span></a></li>';
+				echo '<li><a href="', $source->getHtmlUrl(), '" onclick="pasteid(\'', $source->getXref(), '\', \'',
+					WT_Filter::escapeJs($source->getFullName()), '\');"><span class="list_item">',
+					$source->getFullName(),'</span></a></li>';
 			}
 			echo '</ul>
 			<p>', WT_I18N::translate('Total sources: %s', count($mysourcelist)), '</p>';
