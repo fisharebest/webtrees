@@ -270,10 +270,10 @@ function insertRowToTable(pid, nam, head)
 		var numrows = links.rows.length;
 		var strRow = '';
 		for (var i=1; i<numrows; i++) {
-			if (document.all) { // If Internet Explorer
-				strRow += (strRow==''?'':', ') + links.rows[i].cells[1].innerText;
-			} else {
+			if (typeof links.rows[i].cells[1].textContent !== "undefined") {
 				strRow += (strRow==''?'':', ') + links.rows[i].cells[1].textContent;
+			} else {
+				strRow += (strRow==''?'':', ') + links.rows[i].cells[1].innerText;
 			}
 		}
 		strRow += (strRow==''?'':', ');
@@ -287,8 +287,14 @@ function insertRowToTable(pid, nam, head)
 
 		// Check if id exists in "Add links" list ==========================
 		for (var i=0; i<tbl.tBodies[0].rows.length; i++) {
-			if (tbl.tBodies[0].rows[i].myRow.one.textContent==pid) {
-				rowToInsertAt = 'EXIST' ;
+			var cellText;
+			if (typeof tbl.tBodies[0].rows[i].myRow.one.textContent !== "undefined") {
+				cellText = tbl.tBodies[0].rows[i].myRow.one.textContent;
+			} else {
+				cellText = tbl.tBodies[0].rows[i].myRow.one.innerText;
+			}
+			if (cellText==pid) {
+				rowToInsertAt = 'EXIST';
 			} else
 			if (tbl.tBodies[0].rows[i].myRow && tbl.tBodies[0].rows[i].myRow.ra.getAttribute('type') == 'radio' && tbl.tBodies[0].rows[i].myRow.ra.checked) {
 				rowToInsertAt = i;
@@ -311,14 +317,10 @@ function removeHTMLTags(htmlString)
 	if (htmlString) {
 		var mydiv = document.createElement("div");
 			mydiv.innerHTML = htmlString;
-		if (document.all) // IE Stuff
-		{
-			return mydiv.innerText;
-		}
-		else // Mozilla does not work with innerText
-		{
+		if (typeof mydiv.textContent !== "undefined") {
 			return mydiv.textContent;
 		}
+		return mydiv.innerText;
 	}
 }
 
@@ -367,8 +369,11 @@ function addRowToTable(num, pid, nam, head)
 			} else {
 				var txtInp1 = document.createElement('div');
 				txtInp1.setAttribute('type', 'text');
-				txtInp1.innerHTML = pid; // Required for IE
-				txtInp1.textContent = pid;
+				if (typeof txtInp1.textContent !== "undefined") {
+					txtInp1.textContent = pid;
+				} else {
+					txtInp1.innerText = pid;
+				}
 			}
 				txtInp1.setAttribute('id', INPUT_NAME_PREFIX + iteration + '_1');
 				txtInp1.style.background='transparent';
@@ -532,10 +537,10 @@ function parseAddLinks() {
 	var tbl = document.getElementById('addlinkQueue');
 	for (var i=1; i<tbl.rows.length; i++) { // start at i=1 because we need to avoid header
 		var tr = tbl.rows[i];
-		if (document.all) { // If internet explorer
-			str += (str==''?'':',') + tr.cells[1].childNodes[0].innerHTML;
-		} else {
+		if (typeof tr.cells[1].childNodes[0].textContent !== "undefined") {
 			str += (str==''?'':',') + tr.cells[1].childNodes[0].textContent;
+		} else {
+			str += (str==''?'':',') + tr.cells[1].childNodes[0].innerHTML;
 		}
 	}
 	document.link.more_links.value = str;
