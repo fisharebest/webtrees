@@ -250,6 +250,7 @@ var show = false;
 // Open the "edit interface" popup window
 function edit_interface(params, windowspecs, pastefield) {
 	var features = windowspecs || edit_window_specs;
+	window.pastefield = pastefield;
 	var url = 'edit_interface.php?' + jQuery.param(params) + '&ged=' + WT_GEDCOM;
 	window.open(url, '_blank', features);
 	return false;
@@ -642,7 +643,6 @@ function change_family_members(xref) {
 }
 
 function addnewsource(field) {
-	pastefield=field;
 	return edit_interface({
 		"action": "addnewsource",
 		"xref":   "newsour"
@@ -650,7 +650,6 @@ function addnewsource(field) {
 }
 
 function addnewrepository(field) {
-	pastefield=field;
 	return edit_interface({
 		"action": "addnewrepository",
 		"xref":   "newrepo"
@@ -658,7 +657,6 @@ function addnewrepository(field) {
 }
 
 function addnewnote(field) {
-	pastefield=field;
 	return edit_interface({
 		"action": "addnewnote",
 		"noteid": "newnote"
@@ -666,7 +664,6 @@ function addnewnote(field) {
 }
 
 function addnewnote_assisted(field, xref) {
-	pastefield=field;
 	return edit_interface({
 		"action": "addnewnote_assisted",
 		"noteid": "newnote",
