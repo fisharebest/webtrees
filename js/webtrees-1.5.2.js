@@ -36,7 +36,7 @@ var fam_nav_specs='width=300,height=600,left=817,top=150,resizable=1,scrollbars=
 
 // TODO: This function loads help_text.php twice.  It should only load it once.
 function helpDialog(which, mod) {
-	url='help_text.php?help='+which+'&mod='+mod;
+	var url='help_text.php?help='+which+'&mod='+mod;
 	dialog=jQuery('<div></div>')
 		.load(url+' .helpcontent')
 		.dialog({
@@ -126,7 +126,7 @@ function MM_showHideLayers() { //v6.0
 	for (i=0; i<(args.length-3); i+=4) {
 		if ((obj=document.getElementById(args[i])) !== null) {
 			if (obj.style) {
-				div=obj;
+				div=obj; // unused?
 				obj=obj.style;
 			}
 			v=args[i+2];
@@ -140,7 +140,7 @@ function MM_showHideLayers() { //v6.0
 			v=(v=='show')?'visible':(v=='hide')?'hidden':v;
 			obj.visibility=v;
 			if (args[i+1]=='followmouse') {
-				pobj = document.getElementById(args[i+3]);
+				var pobj = document.getElementById(args[i+3]);
 				if (pobj !== null) {
 					if (pobj.style.top!="auto" && args[i+3]!="relatives") {
 						obj.top=5+msY-parseInt(pobj.style.top)+'px';
@@ -148,15 +148,16 @@ function MM_showHideLayers() { //v6.0
 						if (textDirection=="rtl") obj.right=5+msX-parseInt(pobj.style.right)+'px';
 					} else {
 						obj.top="auto";
-						pagewidth = document.documentElement.offsetWidth+document.documentElement.scrollLeft;
+						var pagewidth = document.documentElement.offsetWidth+document.documentElement.scrollLeft;
 						if (textDirection=="rtl") pagewidth -= document.documentElement.scrollLeft;
 						if (msX > pagewidth-160) msX = msX-150-pobj.offsetLeft;
-						contentdiv = document.getElementById("content");
+						var contentdiv = document.getElementById("content");
 						msX = msX - contentdiv.offsetLeft;
 						if (textDirection=="ltr") obj.left=(5+msX)+'px';
 						obj.zIndex=1000;
 					}
 				} else {
+					var Xadjust;
 					if (WT_SCRIPT_NAME.indexOf("fanchart")>0) {
 						obj.top=(msY-20)+'px';
 						obj.left=(msX-20)+'px';
@@ -831,7 +832,7 @@ function expandbox(boxid, bstyle) {
 		clength = jQuery(".compact_view").length;
 	});
 
-	url = window.location.toString();
+	var url = window.location.toString();
 	divbox = document.getElementById("out-"+boxid);
 	inbox = document.getElementById("inout-"+boxid);
 	inbox2 = document.getElementById("inout2-"+boxid);
@@ -1283,7 +1284,7 @@ function cal_generateSelectorContent(dateFieldId, dateDivId, date) {
 			content += '><a href="#" onclick="return cal_dateClicked(\''+dateFieldId+'\', \''+dateDivId+'\', '+tdate.getFullYear()+', '+tdate.getMonth()+', '+tdate.getDate()+');">';
 			content += tdate.getDate();
 			content += '</a></td>';
-			datemilli = tdate.getTime() + daymilli;
+			var datemilli = tdate.getTime() + daymilli;
 			tdate = new Date(datemilli);
 		}
 		content += '</tr>';
