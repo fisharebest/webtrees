@@ -106,7 +106,7 @@ function modalDialogSubmitAjax(form) {
 
 function closePopupAndReloadParent(url) {
 	if (parent.opener) {
-		if (url == null || url == "") {
+		if (!url) {
 			parent.opener.location.reload();
 		} else {
 			parent.opener.location=url;
@@ -124,7 +124,7 @@ function closePopupAndReloadParent(url) {
 function MM_showHideLayers() { //v6.0
 	var i,p,v,obj,args=MM_showHideLayers.arguments;
 	for (i=0; i<(args.length-3); i+=4) {
-		if ((obj=document.getElementById(args[i]))!=null) {
+		if ((obj=document.getElementById(args[i])) !== null) {
 			if (obj.style) {
 				div=obj;
 				obj=obj.style;
@@ -141,7 +141,7 @@ function MM_showHideLayers() { //v6.0
 			obj.visibility=v;
 			if (args[i+1]=='followmouse') {
 				pobj = document.getElementById(args[i+3]);
-				if (pobj!=null) {
+				if (pobj !== null) {
 					if (pobj.style.top!="auto" && args[i+3]!="relatives") {
 						obj.top=5+msY-parseInt(pobj.style.top)+'px';
 						if (textDirection=="ltr") obj.left=5+msX-parseInt(pobj.style.left)+'px';
@@ -226,10 +226,9 @@ var show = false;
 		lastfamilybox="";
 	}
 
-	var timeouts = new Array();
+	var timeouts = [];
 	function family_box_timeout(boxid) {
-		tout = setTimeout("hide_family_box('"+boxid+"')", 2500);
-		timeouts[boxid] = tout;
+		timeouts[boxid] = setTimeout("hide_family_box('"+boxid+"')", 2500);
 	}
 
 	function clear_family_box_timeout(boxid) {
@@ -792,7 +791,7 @@ function valid_date(datefield) {
 	// Apply leading zero to day numbers
 	datestr=datestr.replace(/(^| )(\d [A-Z]{3,5} \d{4})/, "$10$2");
 
-	if (datephrase != "") {
+	if (datephrase) {
 		datestr=datestr+" ("+datephrase;
 	}
 	// Only update it if is has been corrected - otherwise input focus
@@ -937,8 +936,8 @@ function expandbox(boxid, bstyle) {
 	}
 	return true;
 }
-function createXMLHttp()
-{
+
+function createXMLHttp() {
 	if (typeof XMLHttpRequest != "undefined") {
 		return new XMLHttpRequest();
 	} else if (window.ActiveXObject) {
@@ -947,16 +946,14 @@ function createXMLHttp()
 
 		for (var i = 0; i < ARR_XMLHTTP_VERS.length; i++)
 		{
-			try
-			{
+			try {
 				var oXmlHttp = new ActiveXObject(ARR_XMLHTTP_VERS[i]);
 				return oXmlHttp;
-			}
-			catch (oError) {;}
+			} catch (oError) {}
 		}
 	}
 	throw new Error("XMLHttp object could not be created.");
-};
+}
 
 function restorebox(boxid, bstyle) {
 	divbox = document.getElementById("out-"+boxid);
@@ -1007,7 +1004,7 @@ function restorebox(boxid, bstyle) {
 	return true;
 }
 
-var menutimeouts = new Array();
+var menutimeouts = [];
 
 function show_submenu(elementid, parentid, dir) {
 	var pagewidth = document.body.scrollWidth+document.documentElement.scrollLeft;
@@ -1032,24 +1029,23 @@ function show_submenu(elementid, parentid, dir) {
 		if (element.offsetWidth <  maxwidth) {
 			element.style.width = maxwidth+"px";
 		}
-
+		var pelement, boxright;
 		if (dir=="down") {
-			var pelement = document.getElementById(parentid);
+			pelement = document.getElementById(parentid);
 			if (pelement) {
 				element.style.left=pelement.style.left;
-				var boxright = element.offsetLeft+element.offsetWidth+10;
+				boxright = element.offsetLeft+element.offsetWidth+10;
 				if (boxright > pagewidth) {
 					var menuleft = pagewidth-element.offsetWidth;
 					element.style.left = menuleft + "px";
 				}
 			}
-		}
-		if (dir=="right") {
-			var pelement = document.getElementById(parentid);
+		} else if (dir=="right") {
+			pelement = document.getElementById(parentid);
 			if (pelement) {
 				if (textDirection=="ltr") {
 				var boxleft = pelement.offsetLeft+pelement.offsetWidth-40;
-				var boxright = boxleft+element.offsetWidth+10;
+				boxright = boxleft+element.offsetWidth+10;
 				if (boxright > pagewidth) {
 					element.style.right = pelement.offsetLeft + "px";
 				} else {
@@ -1077,22 +1073,23 @@ function show_submenu(elementid, parentid, dir) {
 }
 
 function hide_submenu(elementid) {
-if (menutimeouts[elementid] != null) {
-	element = document.getElementById(elementid);
+	if (typeof menutimeouts[elementid] !== "number") {
+		return;
+	}
+	var element = document.getElementById(elementid);
 	if (element && element.style) {
 		element.style.visibility='hidden';
 	}
 	clearTimeout(menutimeouts[elementid]);
 	menutimeouts[elementid] = null;
 }
-}
 
 function timeout_submenu(elementid) {
-	if (menutimeouts[elementid] == null) {
-		tout = setTimeout("hide_submenu('"+elementid+"')", 100);
-		menutimeouts[elementid] = tout;
+	if (typeof menutimeouts[elementid] !== "number") {
+		menutimeouts[elementid] = setTimeout("hide_submenu('"+elementid+"')", 100);
 	}
 }
+
 function focusHandler(evt) {
 	var e = evt ? evt : window.event;
 	if (!e) return;
@@ -1107,7 +1104,9 @@ function loadHandler() {
 	for (i = 0; i < document.forms.length; i++)
 		for (j = 0; j < document.forms[i].elements.length; j++) {
 			if (document.forms[i].elements[j].type=="text") {
-				if (document.forms[i].elements[j].onfocus==null) document.forms[i].elements[j].onfocus = focusHandler;
+				if (document.forms[i].elements[j].onfocus === null) {
+					document.forms[i].elements[j].onfocus = focusHandler;
+				}
 			}
 		}
 }
@@ -1128,7 +1127,7 @@ function statusChecked(sel) {
 	cbox.checked = true;
 }
 
-var monthLabels = new Array();
+var monthLabels = [];
 monthLabels[1] = "January";
 monthLabels[2] = "February";
 monthLabels[3] = "March";
@@ -1142,7 +1141,7 @@ monthLabels[10] = "October";
 monthLabels[11] = "November";
 monthLabels[12] = "December";
 
-var monthShort = new Array();
+var monthShort = [];
 monthShort[1] = "JAN";
 monthShort[2] = "FEB";
 monthShort[3] = "MAR";
@@ -1156,7 +1155,7 @@ monthShort[10] = "OCT";
 monthShort[11] = "NOV";
 monthShort[12] = "DEC";
 
-var daysOfWeek = new Array();
+var daysOfWeek = [];
 daysOfWeek[0] = "S";
 daysOfWeek[1] = "M";
 daysOfWeek[2] = "T";
@@ -1214,10 +1213,11 @@ function cal_toggleDate(dateDivId, dateFieldId) {
 
 	/* Javascript calendar functions only work with precise gregorian dates "D M Y" or "Y" */
 	var greg_regex = /((\d+ (JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC) )?\d+)/;
+	var date;
 	if (greg_regex.exec(dateField.value)) {
-		var date = new Date(RegExp.$1);
+		date = new Date(RegExp.$1);
 	} else {
-		var date = new Date();
+		date = new Date();
 	}
 
 	dateDiv.innerHTML = cal_generateSelectorContent(dateFieldId, dateDivId, date);
@@ -1416,7 +1416,7 @@ function valid_lati_long(field, pos, neg) {
 	// valid LATI or LONG according to Gedcom standard
 	// pos (+) : N or E
 	// neg (-) : S or W
-	txt=field.value.toUpperCase();
+	var txt=field.value.toUpperCase();
 	txt=txt.replace(/(^\s*)|(\s*$)/g, ''); // trim
 	txt=txt.replace(/ /g, ':'); // N12 34 ==> N12.34
 	txt=txt.replace(/\+/g, ''); // +17.1234 ==> 17.1234
@@ -1432,7 +1432,8 @@ function valid_lati_long(field, pos, neg) {
 	// 0.5698W ==> W0.5698
 	txt=txt.replace(/(.*)([N|S|E|W]+)$/g, '$2$1');
 	// 17.1234 ==> N17.1234
-	if (txt!='' && txt.charAt(0)!=neg && txt.charAt(0)!=pos) txt=pos+txt;
+	if (txt && txt.charAt(0)!=neg && txt.charAt(0)!=pos)
+		txt=pos+txt;
 	field.value = txt;
 }
 
