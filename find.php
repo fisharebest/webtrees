@@ -334,23 +334,12 @@ if ($type == "facts") {
 	DefaultTag.prototype= {
 		_newCounter:0
 		,view:function() {
-			var row=document.createElement("tr"),cell,o;
+			var row=document.createElement("tr"),cell;
 			row.appendChild(cell=document.createElement("td"));
-			o=null;
-			if (document.all) {
-				//Old IEs handle the creation of a checkbox already checked, as far as I know, only in this way
-				try {
-					o=document.createElement("<input type='checkbox' id='tag"+this._counter+"' "+(this.selected?"checked='checked'":"")+">");
-				} catch(e) {
-					o=null;
-				}
-			}
-			if (!o) {
-				o=document.createElement("input");
-				o.setAttribute("id","tag"+this._counter);
-				o.setAttribute("type","checkbox");
-				if (this.selected) o.setAttribute("checked", "checked");
-			}
+			var o = document.createElement("input");
+			o.id = "tag"+this._counter;
+			o.type = "checkbox";
+			o.checked = this.selected;
 			o.DefaultTag=this;
 			o.ParentRow=row;
 			o.onclick=function() {
