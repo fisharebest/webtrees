@@ -21,6 +21,8 @@
 abstract class WT_Module {
 	private $_title = null;
 
+	private $settings;
+
 	public function __construct() {
 		$this->_title = $this->getTitle();
 	}
@@ -42,6 +44,54 @@ abstract class WT_Module {
 	// This is an internal name, used to generate identifiers
 	public function getName() {
 		return str_replace('_WT_Module', '', get_class($this));
+	}
+
+	// Some modules use many settings.  Load them in one query for performance.
+	private function loadAllSettings() {
+		if ($this->settings === null) {
+			$this->settings = WT_DB::prepare(
+				"SELECT SQL_CACHE setting_name, setting_value FROM `##module_setting` WHERE module_name = ?"
+			)->execute(array($this->getName()))->fetchAssoc();
+		}
+	}
+
+	// Get a module setting.
+	// If it is not set, use the supplied default.
+	public function getSetting($setting_name, $default=null) {
+		$this->loadAllSettings();
+
+		if (array_key_exists($setting_name, $this->settings)) {
+			return $this->settings[$setting_name];
+		} else {
+			return $default;
+		}
+	}
+
+	// Set/update/delete a module setting
+	public function setSetting($setting_name, $setting_value) {
+		$this->loadAllSettings();
+
+		if ($setting_value === null) {
+			// Settings are not allowed to be null.  Delete it instead.
+			WT_DB::prepare(
+				"DELETE FROM `##module_setting` WHERE module_name = ? AND setting_name = ?"
+			)->execute(array($this->getName(), $setting_name));
+			unset($this->settings[$setting_name]);
+		} elseif (!array_key_exists($setting_name, $this->settings)) {
+			// Setting does not already exist - insert it.
+			WT_DB::prepare(
+				"INSERT INTO `##module_setting` (module_name, setting_name, setting_value) VALUES (?, ?, ?)"
+			)->execute(array($this->getName(), $setting_name, $setting_value));
+			$this->settings[$setting_name] = $setting_value;
+		} elseif ($setting_value != $this->settings[$setting_name]) {
+			// Setting already exists, but with a different value - update it.
+			WT_DB::prepare(
+				"UPDATE `##module_setting` SET setting_value = ? WHERE module_name = ? AND setting_name = ?"
+			)->execute(array($setting_value, $this->getName(), $setting_name));
+			$this->settings[$setting_name] = $setting_value;
+		} else {
+			// Setting already exists, but with the same value - do nothing.
+		}
 	}
 
 	// Run an action specified on the URL through module.php?mod=FOO&mod_action=BAR
