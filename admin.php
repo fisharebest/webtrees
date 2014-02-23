@@ -595,6 +595,15 @@ function old_paths() {
 		// Removed in 1.5.3
 		WT_ROOT.'js/jquery-1.10.2.js',
 		WT_ROOT.'js/jquery-ui-1.10.3.js',
+		WT_ROOT.'modules_v3/googlemap/admin_places.php',
+		WT_ROOT.'modules_v3/googlemap/defaultconfig.php',
+		WT_ROOT.'modules_v3/googlemap/googlemap.php',
+		WT_ROOT.'modules_v3/googlemap/placehierarchy.php',
+		WT_ROOT.'modules_v3/googlemap/places_edit.php',
+		WT_ROOT.'modules_v3/googlemap/wt_v3_places_edit.js.php',
+		WT_ROOT.'modules_v3/googlemap/wt_v3_places_edit_overlays.js.php',
+		WT_ROOT.'modules_v3/googlemap/wt_v3_street_view.php',
+		WT_ROOT.'readme.html',
 	);
 }
 

@@ -26,8 +26,6 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-define('WT_GM_SCRIPT', 'https://maps.google.com/maps/api/js?v=3.2&amp;sensor=false&amp;language='.WT_LOCALE);
-
 // http://www.google.com/permissions/guidelines.html
 //
 // "... an unregistered Google Brand Feature should be followed by
@@ -126,7 +124,14 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 	// Implement WT_Module_Tab
 	public function getPreLoadContent() {
 		ob_start();
-		$this->setup_map();
+		?>
+		<script src="<?php echo $this->googleMapsScript(); ?>"></script>
+		<script>
+			var minZoomLevel   = <?php echo $this->getSetting('GM_MIN_ZOOM'); ?>;
+			var maxZoomLevel   = <?php echo $this->getSetting('GM_MAX_ZOOM'); ?>;
+			var startZoomLevel = maxZoomLevel;
+		</script>
+		<?php
 		return ob_get_clean();
 	}
 
@@ -460,6 +465,11 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		<?php
 	}
 
+	// Google Maps API script
+	private function googleMapsScript() {
+		return 'https://maps.google.com/maps/api/js?v=3.2&amp;sensor=false&amp;language=' . WT_LOCALE;
+	}
+
 	private function flags() {
 		require WT_ROOT.'includes/functions/functions_edit.php';
 
@@ -682,7 +692,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
 			->addInLineJavascript('var pastefield; function paste_id(value) {pastefield.value=value;}');
 
-		echo '<link type="text/css" href ="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/css/wt_v3_googlemap.css" rel="stylesheet">';
+		echo '<link type="text/css" href="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/css/wt_v3_googlemap.css" rel="stylesheet">';
 		echo '<div id="pedigreemap-page">
 				<h2>', $controller->getPageTitle(), '</h2>';
 
@@ -868,7 +878,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		<!-- end of map display -->
 		<!-- Start of map scripts -->
 		<?php
-		echo '<script src="', WT_GM_SCRIPT, '"></script>';
+		echo '<script src="', $this->googleMapsScript(), '"></script>';
 		$controller->addInlineJavascript($this->pedigree_map_js($hideflags, $hidelines));
 	}
 
@@ -1755,7 +1765,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		}
 		return $placelist;
 	}
-	
+
 	private function rem_postfix_from_placename($postfix_list, $place, $placelist) {
 		if ($postfix_list) {
 			foreach (explode (';', $postfix_list) as $postfix) {
@@ -1766,7 +1776,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		}
 		return $placelist;
 	}
-	
+
 	private function rem_prefix_postfix_from_placename($prefix_list, $postfix_list, $place, $placelist) {
 		if ($prefix_list && $postfix_list) {
 			foreach (explode (";", $prefix_list) as $prefix) {
@@ -1779,7 +1789,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		}
 		return $placelist;
 	}
-	
+
 	private function create_possible_place_names ($placename, $level) {
 		$retlist = array();
 		if ($level<=9) {
@@ -1788,10 +1798,10 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			$retlist = $this->rem_postfix_from_placename($this->getSetting('GM_POSTFIX_' . $level), $placename, $retlist); // Remove suffix
 		}
 		$retlist[]=$placename; // Exact
-	
+
 		return $retlist;
 	}
-	
+
 	private function abbreviate($text) {
 		if (utf8_strlen($text)>13) {
 			if (trim(utf8_substr($text, 10, 1))!='') {
@@ -1803,7 +1813,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		else $desc = $text;
 		return $desc;
 	}
-	
+
 	private function get_lati_long_placelocation ($place) {
 		$parent = explode (',', $place);
 		$parent = array_reverse($parent);
@@ -1822,30 +1832,18 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			if (empty($pl_id)) break;
 			$place_id = $pl_id;
 		}
-	
+
 		return
 			WT_DB::prepare("SELECT sv_lati, sv_long, sv_bearing, sv_elevation, sv_zoom, pl_lati, pl_long, pl_zoom, pl_icon, pl_level FROM `##placelocation` WHERE pl_id=? ORDER BY pl_place")
 			->execute(array($place_id))
 			->fetchOneRow();
-	
 	}
-	
-	private function setup_map() {
-		?>
-		<script src="<?php echo WT_GM_SCRIPT; ?>"></script>
-		<script>
-			var minZoomLevel   = <?php echo $this->getSetting('GM_MIN_ZOOM'); ?>;
-			var maxZoomLevel   = <?php echo $this->getSetting('GM_MAX_ZOOM'); ?>;
-			var startZoomLevel = maxZoomLevel;
-		</script>
-		<?php
-	}
-	
+
 	private function build_indiv_map(WT_Individual $indi, $indifacts, $famids) {
 		global $controller;
 
 		$GM_MAX_ZOOM = $this->getSetting('GM_MAX_ZOOM');
-	
+
 		// Create the markers list array
 		$gmarks = array();
 		sort_facts($indifacts);
@@ -1854,7 +1852,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			if (!$fact->getPlace()->isEmpty()) {
 				$ctla = preg_match("/\d LATI (.*)/", $fact->getGedcom(), $match1);
 				$ctlo = preg_match("/\d LONG (.*)/", $fact->getGedcom(), $match2);
-	
+
 				if ($fact->getParent() instanceof WT_Family) {
 					$spouse = $fact->getParent()->getSpouse($indi);
 				} else {
@@ -1909,7 +1907,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				}
 			}
 		}
-	
+
 		// Add children to the markers list array
 		foreach ($famids as $xref) {
 			$family = WT_Family::getInstance($xref);
@@ -1995,7 +1993,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				}
 			}
 		}
-	
+
 		// Group markers by location
 		$location_groups = array();
 		foreach ($gmarks as $gmark) {
@@ -2007,11 +2005,11 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			}
 		}
 		$location_groups = array_values($location_groups);
-	
+
 		// *** ENABLE STREETVIEW ***
 		$STREETVIEW = $this->getSetting('GM_USE_STREETVIEW');
 		?>
-	
+
 		<script>
 			// this variable will collect the html which will eventually be placed in the side_bar
 			var side_bar_html = '';
@@ -2022,32 +2020,32 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			var head = '';
 			var dir = '';
 			var svzoom = '';
-	
+
 			var infowindow = new google.maps.InfoWindow({});
-	
+
 			gicons["red"] = new google.maps.MarkerImage("https://maps.google.com/mapfiles/marker.png",
 				new google.maps.Size(20, 34),
 				new google.maps.Point(0,0),
 				new google.maps.Point(9, 34)
 			);
-	
+
 			var iconImage = new google.maps.MarkerImage("https://maps.google.com/mapfiles/marker.png",
 				new google.maps.Size(20, 34),
 				new google.maps.Point(0,0),
 				new google.maps.Point(9, 34)
 			);
-	
+
 			var iconShadow = new google.maps.MarkerImage("https://www.google.com/mapfiles/shadow50.png",
 				new google.maps.Size(37, 34),
 				new google.maps.Point(0,0),
 				new google.maps.Point(9, 34)
 			);
-	
+
 			var iconShape = {
 				coord: [9,0,6,1,4,2,2,4,0,8,0,12,1,14,2,16,5,19,7,23,8,26,9,30,9,34,11,34,11,30,12,26,13,24,14,21,16,18,18,16,20,12,20,8,18,4,16,2,15,1,13,0],
 				type: "poly"
 			};
-	
+
 			function getMarkerImage(iconColor) {
 				if ((typeof(iconColor)=='undefined') || (iconColor==null)) {
 					iconColor = 'red';
@@ -2060,16 +2058,16 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				}
 				return gicons[iconColor];
 			}
-	
+
 			var sv2_bear = null;
 			var sv2_elev = null;
 			var sv2_zoom = null;
 			var placer   = null;
-	
+
 			// A function to create the marker and set up the event window
 			function createMarker(latlng, html, tooltip, sv_lati, sv_long, sv_bearing, sv_elevation, sv_zoom, sv_point, marker_icon) {
 				var contentString = '<div id="iwcontent">'+html+'</div>';
-	
+
 				// Use flag icon (if defined) instead of regular marker icon
 				if (marker_icon) {
 					var icon_image = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+'googlemap/'+marker_icon,
@@ -2085,14 +2083,14 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					var icon_image = getMarkerImage('red');
 					var icon_shadow = iconShadow;
 				}
-	
+
 				// Decide if marker point is Regular (latlng) or StreetView (sv_point) derived
 				if (sv_point == '(0, 0)' || sv_point == '(null, null)') {
 					placer = latlng;
 				} else {
 					placer = sv_point;
 				}
-	
+
 				// Define the marker
 				var marker = new google.maps.Marker({
 					position: placer,
@@ -2102,12 +2100,12 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					title:    tooltip,
 					zIndex:   Math.round(latlng.lat()*-100000)<<5
 				});
-	
+
 				// Store the tab and event info as marker properties
 				marker.sv_lati  = sv_lati;
 				marker.sv_long  = sv_long;
 				marker.sv_point = sv_point;
-	
+
 				if (sv_bearing == '') {
 					marker.sv_bearing = 0;
 				} else {
@@ -2123,10 +2121,10 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				} else {
 					marker.sv_zoom = sv_zoom;
 				}
-	
+
 				marker.sv_latlng = new google.maps.LatLng(sv_lati, sv_long);
 				gmarkers.push(marker);
-	
+
 				// Open infowindow when marker is clicked
 				google.maps.event.addListener(marker, 'click', function() {
 					infowindow.close();
@@ -2144,7 +2142,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 							zoom:    sv_zoom
 						}
 					};
-	
+
 					// Use jquery for info window tabs
 					google.maps.event.addListener(infowindow, 'domready', function() {
 		  	    //jQuery code here
@@ -2164,7 +2162,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 							document.panelLayer2.style.display = 'none';
 							<?php } ?>
 						});
-	
+
 						jQuery('#SV').click(function() {
 							document.tabLayerEV = eval('document.getElementById("EV")');
 							document.tabLayerEV.style.background = '#cccccc';
@@ -2187,13 +2185,13 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					});
 				});
 			}
-	
+
 			// Opens Marker infowindow when corresponding Sidebar item is clicked
 			function myclick(i) {
 				infowindow.close();
 				google.maps.event.trigger(gmarkers[i], 'click');
 			}
-	
+
 			// Home control
 			// returns the user to the original map position ... loadMap() function
 			// This constructor takes the control DIV as an argument.
@@ -2202,7 +2200,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				// Setting padding to 5 px will offset the control from the edge of the map
 				controlDiv.style.paddingTop = '5px';
 				controlDiv.style.paddingRight = '0px';
-	
+
 				// Set CSS for the control border
 				var controlUI = document.createElement('DIV');
 				controlUI.style.backgroundColor = 'white';
@@ -2212,7 +2210,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				controlUI.style.textAlign = 'center';
 				controlUI.title = '';
 				controlDiv.appendChild(controlUI);
-	
+
 				// Set CSS for the control interior
 				var controlText = document.createElement('DIV');
 				controlText.style.fontFamily = 'Arial,sans-serif';
@@ -2221,18 +2219,18 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				controlText.style.paddingRight = '15px';
 				controlText.innerHTML = '<b><?php echo WT_I18N::translate('Redraw map')?></b>';
 				controlUI.appendChild(controlText);
-	
+
 				// Setup the click event listeners: simply set the map to original LatLng
 				google.maps.event.addDomListener(controlUI, 'click', function() {
 					loadMap();
 				});
 			}
-	
+
 			function loadMap() {
 				<?php
 					global $PEDIGREE_GENERATIONS, $MAX_PEDIGREE_GENERATIONS, $SHOW_HIGHLIGHT_IMAGES;
 				?>
-	
+
 				// Create the map and mapOptions
 				var mapOptions = {
 					zoom: 7,
@@ -2250,18 +2248,18 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					scrollwheel: false
 				};
 				map = new google.maps.Map(document.getElementById('map_pane'), mapOptions);
-	
+
 				// Close any infowindow when map is clicked
 				google.maps.event.addListener(map, 'click', function() {
 					infowindow.close();
 				});
-	
+
 				// Create the Home DIV and call the HomeControl() constructor in this DIV.
 				var homeControlDiv = document.createElement('DIV');
 				var homeControl = new HomeControl(homeControlDiv, map);
 				homeControlDiv.index = 1;
 				map.controls[google.maps.ControlPosition.TOP_RIGHT].push(homeControlDiv);
-	
+
 				// Add the markers to the map from the $gmarks array
 				var locations = [
 					<?php foreach($gmarks as $n=>$gmark) { ?>
@@ -2285,7 +2283,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					}
 					<?php } ?>
 				];
-	
+
 				// Group the markers by location
 				var location_groups = new Array();
 				for (var key in locations) {
@@ -2296,10 +2294,10 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				}
 				// TODO: why doesn't this next line work?
 				//var location_groups = <?php echo json_encode($location_groups); ?>;
-	
+
 				// Set the Marker bounds
 				var bounds = new google.maps.LatLngBounds ();
-	
+
 				var key;
 				// Iterate over each location
 				for (key in location_groups) {
@@ -2343,14 +2341,14 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 							'</div>' +
 						'</div>' +
 					'</div>';
-	
+
 					// create the marker
 					var point        = new google.maps.LatLng(location.lat,     location.lng);     // Place Latitude, Longitude
 					var sv_point     = new google.maps.LatLng(location.sv_lati, location.sv_long); // StreetView Latitude and Longitide
-	
+
 					var zoomLevel = <?php echo $GM_MAX_ZOOM; ?>;
 					var marker    = createMarker(point, html, location.tooltip, location.sv_lati, location.sv_long, location.sv_bearing, location.sv_elevation, location.sv_zoom, sv_point, location.pl_icon);
-	
+
 					// if streetview coordinates are available, use them for marker,
 					// else use the place coordinates
 					if (sv_point && sv_point != "(0, 0)") {
@@ -2358,7 +2356,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					} else {
 						var myLatLng = point;
 					}
-	
+
 					// Correct zoom level when only one marker is present
 					if (location_groups.length == 1) {
 						bounds.extend(myLatLng);
@@ -2377,12 +2375,12 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					}
 				} // end loop through location markers
 			} // end loadMap()
-	
+
 		</script>
 		<?php
 		// Create the normal googlemap sidebar of events and children
 		echo '<div style="overflow: auto; overflow-x: hidden; overflow-y: auto; height:', $this->getSetting('GM_YSIZE'), 'px;"><table class="facts_table">';
-	
+
 		foreach ($location_groups as $key=>$location_group) {
 			foreach ($location_group as $gmark) {
 				echo '<tr>';
@@ -2426,7 +2424,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		}
 		return $place_id;
 	}
-	
+
 	private function get_p_id($place) {
 		$par = explode (",", $place);
 		$par = array_reverse($par);
@@ -2446,7 +2444,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		}
 		return $place_id;
 	}
-	
+
 	private function set_placeid_map($level, $parent) {
 		if (!isset($levelm)) {
 			$levelm=0;
@@ -2463,7 +2461,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		}
 		return $levelm;
 	}
-	
+
 	private function set_levelm($level, $parent) {
 		if (!isset($levelm)) {
 			$levelm=0;
@@ -2483,22 +2481,22 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		}
 		return $levelm;
 	}
-	
+
 	// Called by placelist.php
 	public function create_map($placelevels) {
 		global $level, $levelm, $plzoom, $controller;
-	
+
 		// *** ENABLE STREETVIEW *** (boolean) =========================================================
 		$STREETVIEW = $this->getSetting('GM_USE_STREETVIEW');
 		// =============================================================================================
 		$parent = WT_Filter::get('parent');
-	
+
 		// create the map
 		echo '<table style="margin:20px auto 0 auto;"><tr valign="top"><td>';
 		//<!-- start of map display -->
 		echo '<table><tr valign="top">';
 		echo '<td class="center" width="200px">';
-	
+
 		$levelm = $this->set_levelm($level, $parent);
 		$latlng =
 			WT_DB::prepare("SELECT pl_place, pl_id, pl_lati, pl_long, pl_zoom, sv_long, sv_lati, sv_bearing, sv_elevation, sv_zoom FROM `##placelocation` WHERE pl_id=?")
@@ -2510,11 +2508,11 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			echo '<div id="place_map" style="border:1px solid gray; width:', $this->getSetting('GM_PH_XSIZE'), 'px; height:', $this->getSetting('GM_PH_YSIZE'), 'px; ';
 		}
 		echo "\"><i class=\"icon-loading-large\"></i></div>";
-		echo '<script src="', WT_GM_SCRIPT, '"></script>';
+		echo '<script src="', $this->googleMapsScript(), '"></script>';
 		echo '</td>';
-	
+
 		$plzoom	= $latlng['pl_zoom'];		// Map zoom level
-	
+
 		if (WT_USER_IS_ADMIN) {
 			$placecheck_url = 'module.php?mod=googlemap&amp;mod_action=admin_placecheck';
 			if ($parent && isset($parent[0]) ) {
@@ -2546,7 +2544,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		echo '</td></tr></table>';
 		echo '</td>';
 		echo '<td style="margin-left:15px; float:right;">';
-	
+
 		if ($STREETVIEW) {
 			$controller->addInlineJavascript('
 				function update_sv_params(placeid) {
@@ -2559,13 +2557,13 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					if (window.focus) {win03.focus();}
 				}
 			');
-	
+
 			$parent = WT_Filter::get('parent');
 			global $TBLPREFIX, $pl_lati, $pl_long;
 			if ($level>=1) {
 				$pl_lati = str_replace(array('N', 'S', ','), array('', '-', '.'), $latlng['pl_lati']);	// WT_placelocation lati
 				$pl_long = str_replace(array('E', 'W', ','), array('', '-', '.'), $latlng['pl_long']);	// WT_placelocation long
-	
+
 				// Check if Streetview location parameters are stored in database
 				$placeid	= $latlng['pl_id'];			// Placelocation place id
 				$sv_lat		= $latlng['sv_lati'];		// StreetView Point of View Latitude
@@ -2573,7 +2571,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				$sv_dir		= $latlng['sv_bearing'];	// StreetView Point of View Direction (degrees from North)
 				$sv_pitch	= $latlng['sv_elevation'];	// StreetView Point of View Elevation (+90 to -90 degrees (+=down, -=up)
 				$sv_zoom	= $latlng['sv_zoom'];		// StreetView Point of View Zoom (0, 1, 2 or 3)
-	
+
 				// Check if Street View Lati/Long are the default of 0 or null, if so use regular Place Lati/Long to set an initial location for the panda ------------
 				if (($latlng['sv_lati']==null && $latlng['sv_long']==null) || ($latlng['sv_lati']==0 && $latlng['sv_long']==0)) {
 						$sv_lat = $pl_lati;
@@ -2589,12 +2587,12 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				if ($sv_zoom==null) {
 					$sv_zoom=1;
 				}
-	
+
 				?>
 				<div>
 				<iframe style="background:transparent; margin-top:-3px; margin-left:2px; width:530px;height:405px;padding:0;border:solid 0px black" src="module.php?mod=googlemap&amp;mod_action=wt_v3_street_view&amp;x=<?php echo $sv_lng; ?>&amp;y=<?php echo $sv_lat; ?>&amp;z=18&amp;t=2&amp;c=1&amp;s=1&amp;b=<?php echo $sv_dir; ?>&amp;p=<?php echo $sv_pitch; ?>&amp;m=<?php echo $sv_zoom; ?>&amp;j=1&amp;k=1&amp;v=1" marginwidth="0" marginheight="0" frameborder="0" scrolling="no"></iframe>
 				</div>
-	
+
 				<?php
 				$list_latlon = (
 					WT_Gedcom_Tag::getLabel('LATI')."<input name='sv_latiText' id='sv_latiText' type='text' style='width:42px; background:none; border:none;' value='".$sv_lat."'>".
@@ -2620,7 +2618,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			echo '</td></tr><tr>';
 		}	// End Streetview window ===================================================================
 	}
-	
+
 	private function check_where_am_i($numls, $levelm) {
 		$where_am_i = $this->place_id_to_hierarchy($levelm);
 		$i=$numls+1;
@@ -2633,17 +2631,17 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		}
 		return $levelo;
 	}
-	
+
 	private function check_place($place_names, $place) {
 		if ($place == "Unknown") $place="";
 		if (in_array($place, $place_names)) {
 			return true;
 		}
 	}
-	
+
 	private function print_how_many_people($level, $parent) {
 		$stats = new WT_Stats(WT_GEDCOM);
-	
+
 		$place_count_indi = 0;
 		$place_count_fam = 0;
 		if (!isset($parent[$level-1])) $parent[$level-1]="";
@@ -2662,7 +2660,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		}
 		echo "<br><br>", WT_I18N::translate('Individuals'), ": ", $place_count_indi, ", ", WT_I18N::translate('Families'), ": ", $place_count_fam;
 	}
-	
+
 	private function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $placelevels, $lastlevel=false) {
 		if (($place2['lati'] == NULL) || ($place2['long'] == NULL) || (($place2['lati'] == '0') && ($place2['long'] == '0'))) {
 			echo 'var icon_type = new google.maps.MarkerImage();';
@@ -2737,7 +2735,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			} elseif ($long < 0) {
 				$long = '-'.abs($long);
 			}
-	
+
 			// flags by kiwi3685 ---
 			if (($place2['icon'] == NULL) || ($place2['icon'] == '') || ($this->getSetting('GM_PH_MARKER') != 'G_FLAG')) {
 				echo 'var icon_type = new google.maps.MarkerImage();';
@@ -2809,11 +2807,11 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			}
 		}
 	}
-	
+
 	// Called by placelist.php
 	public function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $place_names) {
 		global $plzoom, $controller;
-	
+
 		$controller->addInlineJavascript('
 			jQuery("head").append(\'<link rel="stylesheet" type="text/css" href="'.WT_STATIC_URL.WT_MODULES_DIR.'googlemap/css/wt_v3_googlemap.css" />\');
 			var numMarkers = "'.$numfound.'";
@@ -2823,14 +2821,14 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				// size: new google.maps.Size(150,50),
 				// maxWidth: 600
 			});
-	
+
 			var map_center = new google.maps.LatLng(0,0);
 			var map = "";
 			var bounds = new google.maps.LatLngBounds ();
 			var markers = [];
 			var gmarkers = [];
 			var i = 0;
-	
+
 			// Create the map and mapOptions
 			var mapOptions = {
 				zoom: 8,
@@ -2848,19 +2846,19 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				scrollwheel: false
 			};
 			map = new google.maps.Map(document.getElementById("place_map"), mapOptions);
-	
+
 			// Close any infowindow when map is clicked
 			google.maps.event.addListener(map, "click", function() {
 				infowindow.close();
 			});
-	
+
 			// If only one marker, set zoom level to that of place in database
 			if (mapLevel != 0) {
 				var pointZoom = placezoom;
 			} else {
 				var pointZoom = 1;
 			}
-	
+
 			// Creates a marker whose info window displays the given name
 			function createMarker(point, html, icon, name) {
 				// Choose icon and shadow ============
@@ -2924,7 +2922,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				marker.myposn = posn;
 				gmarkers.push(marker);
 				bounds.extend(marker.position);
-	
+
 				// If only one marker use database place zoom level rather than fitBounds of markers
 				if (numMarkers > 1) {
 					map.fitBounds(bounds);
@@ -2935,7 +2933,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				return marker;
 			}
 		');
-	
+
 		$levelm = $this->set_levelm($level, $parent);
 		if (isset($levelo[0])) $levelo[0]=0;
 		$numls = count($parent)-1;
@@ -2957,17 +2955,17 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			// echo " map.setCenter(new google.maps.LatLng(0, 0), zoomlevel+18);\n";
 		}
 		//create markers
-	
+
 		ob_start(); // TODO: rewrite print_gm_markers, and the functions called therein, to either return text or add JS directly.
-	
+
 		if ($numfound==0 && $level>0) {
 			if (isset($levelo[($level-1)])) {  // ** BH not sure yet what this if statement is for ... TODO **
 				// show the current place on the map
-	
+
 				$place = WT_DB::prepare("SELECT pl_id as place_id, pl_place as place, pl_lati as lati, pl_long as `long`, pl_zoom as zoom, pl_icon as icon FROM `##placelocation` WHERE pl_id=?")
 				->execute(array($levelm))
 				->fetch(PDO::FETCH_ASSOC);
-	
+
 				if ($place) {
 					// re-calculate the hierarchy information required to display the current place
 					$thisloc = $parent;
@@ -2980,12 +2978,12 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 						// this is the top level, remove everything
 						$thisplacelevels = '';
 					}
-	
+
 					$this->print_gm_markers($place, $thislevel, $thisloc, $place['place_id'], $thislinklevels, $thisplacelevels);
 				}
 			}
 		}
-	
+
 		// display any sub-places
 		$placeidlist=array();
 		foreach ($place_names as $placename) {
@@ -2994,7 +2992,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			$this_levelm = $this->set_levelm($level+1, $thisloc);
 			if ($this_levelm) $placeidlist[] = $this_levelm;
 		}
-	
+
 		if ($placeidlist) {
 			// flip the array (thus removing duplicates)
 			$placeidlist=array_flip($placeidlist);
@@ -3009,7 +3007,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				WT_DB::prepare('SELECT pl_id as place_id, pl_place as place, pl_lati as lati, pl_long as `long`, pl_zoom as zoom, pl_icon as icon FROM `##placelocation` WHERE pl_id IN ('.implode(',', array_fill(0, count($placeidlist), '?')).')')
 				->execute($placeidlist)
 				->fetchAll(PDO::FETCH_ASSOC);
-	
+
 			foreach ($placelist as $place) {
 				$this->print_gm_markers($place, $level, $parent, $place['place_id'], $linklevels, $placelevels);
 			}
@@ -3033,14 +3031,14 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		}
 		return $arr;
 	}
-	
+
 	private function getHighestIndex() {
 		return (int)WT_DB::prepare("SELECT MAX(pl_id) FROM `##placelocation`")->fetchOne();
 	}
-	
+
 	private function getHighestLevel() {
 		return (int)WT_DB::prepare("SELECT MAX(pl_level) FROM `##placelocation`")->fetchOne();
-	}	
+	}
 
 	/**
 	 * Find all of the places in the hierarchy
@@ -3062,14 +3060,14 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				->execute(array($parent_id))
 				->fetchAll();
 		}
-	
+
 		$placelist=array();
 		foreach ($rows as $row) {
 			$placelist[]=array('place_id'=>$row->pl_id, 'place'=>$row->pl_place, 'lati'=>$row->pl_lati, 'long'=>$row->pl_long, 'zoom'=>$row->pl_zoom, 'icon'=>$row->pl_icon);
 		}
 		return $placelist;
 	}
-	
+
 	function outputLevel($parent_id) {
 		$tmp = $this->place_id_to_hierarchy($parent_id);
 		$maxLevel = getHighestLevel();
@@ -3079,12 +3077,12 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			$prefix.=';';
 		$suffix=str_repeat(';', $maxLevel-count($tmp));
 		$level=count($tmp);
-	
+
 		$rows=
 			WT_DB::prepare("SELECT pl_id, pl_place, pl_long, pl_lati, pl_zoom, pl_icon FROM `##placelocation` WHERE pl_parent_id=? ORDER BY pl_place")
 			->execute(array($parent_id))
 			->fetchAll();
-	
+
 		foreach ($rows as $row) {
 			echo $level,';',$prefix,$row->pl_place,$suffix,';',$row->pl_long,';',$row->pl_lati,';',$row->pl_zoom,';',$row->pl_icon,"\r\n";
 			if ($level < $maxLevel) {
@@ -3092,7 +3090,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			}
 		}
 	}
-	
+
 	/**
 	 * recursively find all of the csv files on the server
 	 *
@@ -3114,38 +3112,38 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			$dir->close();
 		}
 	}
-	
+
 	private function places_edit() {
 		require WT_ROOT.'includes/functions/functions_edit.php';
 
 		$GM_MAX_ZOOM = $this->getSetting('GM_MAX_ZOOM');
-		
+
 		$action     = WT_Filter::post('action',     null, WT_Filter::get('action'));
 		$placeid    = WT_Filter::post('placeid',    null, WT_Filter::get('placeid'));
 		$place_name = WT_Filter::post('place_name', null, WT_Filter::get('place_name'));
-		
+
 		$controller=new WT_Controller_Simple();
 		$controller
 				->requireAdminLogin()
 				->setPageTitle(WT_I18N::translate('Geographic data'))
 				->pageHeader();
-		
+
 		echo '<link type="text/css" href ="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/css/wt_v3_googlemap.css" rel="stylesheet">';
-		
+
 		$where_am_i=$this->place_id_to_hierarchy($placeid);
 		$level=count($where_am_i);
 		$link = 'module.php?mod=googlemap&amp;mod_action=admin_places&amp;parent='.$placeid;
-		
+
 		if ($action=='addrecord' && WT_USER_IS_ADMIN) {
 			$statement=
 				WT_DB::prepare("INSERT INTO `##placelocation` (pl_id, pl_parent_id, pl_level, pl_place, pl_long, pl_lati, pl_zoom, pl_icon) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-		
+
 			if (($_POST['LONG_CONTROL'] == '') || ($_POST['NEW_PLACE_LONG'] == '') || ($_POST['NEW_PLACE_LATI'] == '')) {
 				$statement->execute(array(getHighestIndex()+1, $placeid, $level, $_POST['NEW_PLACE_NAME'], null, null, $_POST['NEW_ZOOM_FACTOR'], $_POST['icon']));
 			} else {
 				$statement->execute(array(getHighestIndex()+1, $placeid, $level, $_POST['NEW_PLACE_NAME'], $_POST['LONG_CONTROL'][3].$_POST['NEW_PLACE_LONG'], $_POST['LATI_CONTROL'][3].$_POST['NEW_PLACE_LATI'], $_POST['NEW_ZOOM_FACTOR'], $_POST['icon']));
 			}
-		
+
 			// autoclose window when update successful unless debug on
 			if (!WT_DEBUG) {
 				$controller->addInlineJavaScript('closePopupAndReloadParent();');
@@ -3153,17 +3151,17 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			echo "<div class=\"center\"><button onclick=\"closePopupAndReloadParent();return false;\">", WT_I18N::translate('close'), "</button></div>";
 			exit;
 		}
-		
+
 		if ($action=='updaterecord' && WT_USER_IS_ADMIN) {
 			$statement=
 				WT_DB::prepare("UPDATE `##placelocation` SET pl_place=?, pl_lati=?, pl_long=?, pl_zoom=?, pl_icon=? WHERE pl_id=?");
-		
+
 			if (($_POST['LONG_CONTROL'] == '') || ($_POST['NEW_PLACE_LONG'] == '') || ($_POST['NEW_PLACE_LATI'] == '')) {
 				$statement->execute(array($_POST['NEW_PLACE_NAME'], null, null, $_POST['NEW_ZOOM_FACTOR'], $_POST['icon'], $placeid));
 			} else {
 				$statement->execute(array($_POST['NEW_PLACE_NAME'], $_POST['LATI_CONTROL'][3].$_POST['NEW_PLACE_LATI'], $_POST['LONG_CONTROL'][3].$_POST['NEW_PLACE_LONG'], $_POST['NEW_ZOOM_FACTOR'], $_POST['icon'], $placeid));
 			}
-		
+
 			// autoclose window when update successful unless debug on
 			if (!WT_DEBUG) {
 				$controller->addInlineJavaScript('closePopupAndReloadParent();');
@@ -3171,7 +3169,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			echo "<div class=\"center\"><button onclick=\"closePopupAndReloadParent();return false;\">", WT_I18N::translate('close'), "</button></div>";
 			exit;
 		}
-		
+
 		// Update placelocation STREETVIEW fields
 		// TODO: This ought to be a POST request, rather than a GET request
 		if ($action == 'update_sv_params' && WT_USER_IS_ADMIN) {
@@ -3188,7 +3186,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			$controller->addInlineJavaScript('window.close();');
 			exit;
 		}
-		
+
 		if ($action=="update") {
 			// --- find the place in the file
 			$row=
@@ -3217,7 +3215,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				$zoomfactor = 1;
 				$show_marker = false;
 			}
-		
+
 			do {
 				$row=
 					WT_DB::prepare("SELECT pl_lati, pl_long, pl_parent_id, pl_zoom FROM `##placelocation` WHERE pl_id=?")
@@ -3236,12 +3234,12 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				$parent_id = $row->pl_parent_id;
 			}
 			while ($row->pl_parent_id!=0 && $row->pl_lati===null && $row->pl_long===null);
-		
+
 			$success = false;
-		
+
 			echo '<b>', WT_Filter::escapeHtml(str_replace('Unknown', WT_I18N::translate('unknown'), implode(WT_I18N::$list_separator, array_reverse($where_am_i, true)))), '</b><br>';
 		}
-		
+
 		if ($action=='add') {
 			// --- find the parent place in the file
 			if ($placeid != 0) {
@@ -3284,20 +3282,20 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			$selected_country = 'Countries';
 			$show_marker = false;
 			$success = false;
-		
+
 			if (!isset($place_name) || $place_name=="") echo '<b>', WT_I18N::translate('unknown');
 			else echo '<b>', $place_name;
 			if (count($where_am_i)>0)
 				echo ', ', WT_Filter::escapeHtml(str_replace('Unknown', WT_I18N::translate('unknown'), implode(WT_I18N::$list_separator, array_reverse($where_am_i, true)))), '</b><br>';
 			echo '</b><br>';
 		}
-		
+
 		?>
-		
+
 		<head>
-			<script src="<?php echo WT_GM_SCRIPT; ?>"></script>
+			<script src="<?php echo $this->googleMapsScript(); ?>"></script>
 			<link type="text/css" href="<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>googlemap/css/wt_v3_googlemap.css" rel="stylesheet">
-		
+
 			<script>
 			var map;
 			var marker;
@@ -3315,11 +3313,11 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			var polygon1;
 			var geocoder;
 			var mapType;
-		
+
 			var infowindow = new google.maps.InfoWindow({
 				//
 			});
-		
+
 			function geocodePosition(pos) {
 				geocoder.geocode({
 					latLng: pos
@@ -3331,16 +3329,16 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					}
 				});
 			}
-		
+
 			function updateMap(event) {
 				var point;
 				var zoom;
 				var latitude;
 				var longitude;
 				var i;
-		
+
 				zoom = parseInt(document.editplaces.NEW_ZOOM_FACTOR.value);
-		
+
 				prec = 20;
 				for (i=0;i<document.editplaces.NEW_PRECISION.length;i++) {
 					if (document.editplaces.NEW_PRECISION[i].checked) {
@@ -3357,7 +3355,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					longitude = parseFloat(document.editplaces.NEW_PLACE_LONG.value).toFixed(prec);
 					document.editplaces.NEW_PLACE_LATI.value = latitude;
 					document.editplaces.NEW_PLACE_LONG.value = longitude;
-		
+
 					if (event == 'flag_drag') {
 						if (longitude < 0.0 ) {
 							longitude = longitude * -1;
@@ -3377,7 +3375,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 							document.editplaces.NEW_PLACE_LATI.value = latitude;
 							document.editplaces.LATI_CONTROL.value = 'PL_N';
 						}
-		
+
 						if (document.editplaces.LATI_CONTROL.value == 'PL_S') {
 							latitude = latitude * -1;
 						}
@@ -3403,16 +3401,16 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 						point = new google.maps.LatLng(latitude, longitude);
 					}
 				}
-		
+
 				map.setCenter(point);
 				map.setZoom(zoom);
 				marker.setPosition(point);
-		
+
 			}
-		
+
 			// === Create Borders for the UK Countries =========================================================
 			function overlays() {
-			
+
 				// Define place LatLng arrays
 				var polygon1;
 				var num_arrays = "";
@@ -3437,7 +3435,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				} else {
 					// show nothing
 				}
-			
+
 			/*
 				// Set borders and fill parameters ------- Not finished yet. ---------------
 				if (map.mapTypeId == 'roadmap') {
@@ -3459,7 +3457,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				}
 				// -------------------------------------------------------------------------
 			*/
-			
+
 			    // If showing one country only (num_arrays == 1) ---------------------------
 				// Calculate polygon
 				if (num_arrays == 1 ) {
@@ -3482,7 +3480,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			    	});
 			    	polygon1.setMap(map);
 			    }
-			
+
 			    // If showing two countries at the same time (num_arrays == 2) --------------
 				if (num_arrays == 2) {
 					// Calculate polygon1
@@ -3494,7 +3492,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 						XY1 = geomAry1[i].split(',');
 						points1.push( new google.maps.LatLng(parseFloat(XY1[1]),parseFloat(XY1[0]))) ;
 					}
-			
+
 			    	// Construct polygon1
 			    	polygon1 = new google.maps.Polygon({
 			    	  paths: points1,
@@ -3505,7 +3503,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			    	  fillOpacity: 0.15
 			    	});
 			    	polygon1.setMap(map);
-			
+
 			    	// Calculate polygon2
 					var geomAry2 = new Array();
 					geomAry2 = returnGeom2.split('|');
@@ -3515,7 +3513,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 						XY2 = geomAry2[i].split(',');
 						points2.push( new google.maps.LatLng(parseFloat(XY2[1]),parseFloat(XY2[0]))) ;
 					}
-			
+
 			    	// Construct polygon2
 			    	polygon2 = new google.maps.Polygon({
 			    	  paths: points2,
@@ -3535,7 +3533,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				// Setting padding to 5 px will offset the control from the edge of the map
 				controlDiv.style.paddingTop = '5px';
 				controlDiv.style.paddingRight = '0px';
-		
+
 				// Set CSS for the control border
 				var controlUI = document.createElement('DIV');
 				controlUI.style.backgroundColor = 'white';
@@ -3548,7 +3546,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				controlUI.style.textAlign = 'center';
 				controlUI.title = '';
 				controlDiv.appendChild(controlUI);
-		
+
 				// Set CSS for the control interior
 				var controlText = document.createElement('DIV');
 				controlText.style.fontFamily = 'Arial,sans-serif';
@@ -3557,7 +3555,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				controlText.style.paddingRight = '15px';
 				controlText.innerHTML = '<b><?php echo WT_I18N::translate('Redraw map')?><\/b>';
 				controlUI.appendChild(controlText);
-		
+
 				// Setup the click event listeners: simply set the map to original LatLng
 				google.maps.event.addDomListener(controlUI, 'click', function() {
 					map.setCenter(latlng),
@@ -3565,7 +3563,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					map.setMapTypeId(google.maps.MapTypeId.ROADMAP)
 				});
 			}
-		
+
 			function loadMap(zoom, mapType) {
 				if (mapType) {
 					mapTyp = mapType;
@@ -3594,28 +3592,28 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					streetViewControl: false,									// Show Pegman or not
 					scrollwheel: true
 				};
-		
+
 				map = new google.maps.Map(document.getElementById('map_pane'), myOptions);
-		
+
 				overlays();
-		
+
 				// Close any infowindow when map is clicked
 				google.maps.event.addListener(map, 'click', function() {
 					infowindow.close();
 				});
-		
+
 				// Create the DIV to hold the control and call HomeControl() passing in this DIV. --
 				var homeControlDiv = document.createElement('DIV');
 				var homeControl = new HomeControl(homeControlDiv, map);
 				homeControlDiv.index = 1;
 				map.controls[google.maps.ControlPosition.TOP_RIGHT].push(homeControlDiv);
 				// ---------------------------------------------------------------------------------
-		
+
 				// Check for zoom changes
 				google.maps.event.addListener(map, 'zoom_changed', function() {
 					document.editplaces.NEW_ZOOM_FACTOR.value = map.zoom;
 				});
-		
+
 				// Create the Main Location Marker
 				<?php
 				if ($level < 3 && $place_icon != '') {
@@ -3648,14 +3646,14 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					echo '});';
 				}
 				?>
-		
+
 				prec = 20;
 				for (i=0;i<document.editplaces.NEW_PRECISION.length;i++) {
 					if (document.editplaces.NEW_PRECISION[i].checked) {
 						prec = document.editplaces.NEW_PRECISION[i].value;
 					}
 				}
-		
+
 				// Set marker by clicking on map ---
 				clickset = google.maps.event.addListener(map, 'click', function(event) {
 					// alert(pos2);
@@ -3678,7 +3676,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					mapType = map.getMapTypeId();
 					loadMap(currzoom, mapType);
 				});
-		
+
 				// Set marker by drag-n-drop on map ---
 				dragset = google.maps.event.addListener(marker, 'drag', function() {
 					pos1 = marker.getPosition();
@@ -3692,11 +3690,11 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					updateMap('flag_drag');
 				});
 			}
-		
+
 			function clearMarks() {
 				marker.setMap(null);
 			}
-		
+
 			function setLoc(lat, lng) {
 				prec = 20;
 				for (i=0;i<document.editplaces.NEW_PRECISION.length;i++) {
@@ -3721,7 +3719,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				newval = new google.maps.LatLng (lat.toFixed(prec), lng.toFixed(prec));
 				updateMap();
 			}
-		
+
 			function createMarker(i, point, name) {
 				var contentString = '<div id="iwcontent_edit">'+name+'<\/div>';
 				<?php
@@ -3743,30 +3741,30 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					position: point,
 					zIndex: 0
 				});
-		
+
 				google.maps.event.addListener(marker, 'click', function() {
 					infowindow.close();
 					infowindow.setContent(contentString);
 					infowindow.open(map, marker);
 				});
-		
+
 				google.maps.event.addListener(map, 'click', function() {
 					infowindow.close();
 				});
-		
+
 				return marker;
 			}
-		
+
 			function change_icon() {
 				window.open('module.php?mod=googlemap&mod_action=flags&countrySelected=<?php echo $selected_country; ?>', '_blank', indx_window_specs);
 				return false;
 			}
-		
+
 			function remove_icon() {
 				document.editplaces.icon.value = '';
 				document.getElementById('flagsDiv').innerHTML = '<a href="#" onclick="change_icon();return false;"><?php echo WT_I18N::translate('Change flag'); ?></a>';
 			}
-		
+
 			function addAddressToMap(response) {
 				var bounds = new google.maps.LatLngBounds();
 				if (!response ) {
@@ -3782,12 +3780,12 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 							var marker = createMarker(i, point, name);
 							bounds.extend(response[i].geometry.location);
 						}
-		
+
 						<?php if ($level > 0) { ?>
 							map.fitBounds(bounds);
 						<?php } ?>
 						zoomlevel = map.getZoom();
-		
+
 						if (zoomlevel < <?php echo $this->getSetting('GM_MIN_ZOOM'); ?>) {
 							zoomlevel = <?php echo $this->getSetting('GM_MIN_ZOOM'); ?>;
 						}
@@ -3808,16 +3806,16 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					}
 				}
 			}
-		
+
 			function showLocation_level(address) {
 				address += '<?php if ($level>0) echo ', ', addslashes(implode(', ', array_reverse($where_am_i, true))); ?>';
 				geocoder.geocode({'address': address}, addAddressToMap);
 			}
-		
+
 			function showLocation_all(address) {
 				geocoder.geocode({'address': address}, addAddressToMap);
 			}
-		
+
 			function paste_char(value) {
 				document.editplaces.NEW_PLACE_NAME.value += value;
 			}
@@ -3831,7 +3829,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		<?php
 			$api='v3';
 		?>
-		
+
 		<form method="post" id="editplaces" name="editplaces" action="module.php?mod=googlemap&amp;mod_action=places_edit">
 			<input type="hidden" name="action" value="<?php echo $action; ?>record">
 			<input type="hidden" name="placeid" value="<?php echo $placeid; ?>">
@@ -3842,7 +3840,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			<input type="hidden" name="place_lati" value="<?php echo $place_lati; ?>">
 			<input type="hidden" name="parent_long" value="<?php echo $parent_long; ?>">
 			<input type="hidden" name="parent_lati" value="<?php echo $parent_lati; ?>">
-		
+
 			<table class="facts_table">
 			<tr>
 				<td class="optionbox" colspan="3">
@@ -3946,19 +3944,19 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 	private function admin_places() {
 		require WT_ROOT.'includes/functions/functions_edit.php';
-		
+
 		$action       = WT_Filter::get('action');
 		$parent       = WT_Filter::get('parent');
 		$inactive     = WT_Filter::getBool('inactive');
 		$mode         = WT_Filter::get('mode');
 		$deleteRecord = WT_Filter::get('deleteRecord');
-		
+
 		if (!isset($parent)) $parent=0;
 		if (!isset($inactive)) $inactive=false;
-		
+
 		$controller=new WT_Controller_Page();
 		$controller->requireAdminLogin();
-		
+
 		if ($action=='ExportFile' && WT_USER_IS_ADMIN) {
 			Zend_Session::writeClose();
 			$tmp = $this->place_id_to_hierarchy($parent);
@@ -3982,11 +3980,11 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			outputLevel($parent);
 			exit;
 		}
-		
+
 		$controller
 			->setPageTitle(WT_I18N::translate('Google Maps™'))
 			->pageHeader();
-		
+
 		?>
 		<table id="gm_config">
 			<tr>
@@ -4008,7 +4006,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			</tr>
 		</table>
 		<?php
-		
+
 		if ($action=='ImportGedcom') {
 			$placelist=array();
 			$j=0;
@@ -4051,7 +4049,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				}
 			}
 			asort($placelist);
-		
+
 			$prevPlace = '';
 			$prevLati = '';
 			$prevLong = '';
@@ -4076,9 +4074,9 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				$prevLati = $place['lati'];
 				$prevLong = $place['long'];
 			}
-		
+
 			$highestIndex = getHighestIndex();
-		
+
 			$default_zoom_level=array(4, 7, 10, 12);
 			foreach ($placelistUniq as $k=>$place) {
 		        $parent=preg_split('/ *, */', $place['place']);
@@ -4125,7 +4123,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			}
 			$parent=0;
 		}
-		
+
 		if ($action=='ImportFile') {
 			$placefiles = array();
 			findFiles(WT_MODULES_DIR.'googlemap/extra');
@@ -4170,7 +4168,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		<?php
 			exit;
 		}
-		
+
 		if ($action=='ImportFile2') {
 			$country_names=array();
 			foreach (WT_Stats::iso3166() as $key=>$value) {
@@ -4226,7 +4224,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					$j = $j + 1;
 				}
 			}
-		
+
 			$prevPlace = '';
 			$prevLati = '';
 			$prevLong = '';
@@ -4255,7 +4253,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				$prevLati = $place['lati'];
 				$prevLong = $place['long'];
 			}
-		
+
 			$default_zoom_level = array();
 			$default_zoom_level[0] = 4;
 			$default_zoom_level[1] = 7;
@@ -4326,13 +4324,13 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			}
 			$parent=0;
 		}
-		
+
 		if ($action=='DeleteRecord') {
 			$exists=
 				WT_DB::prepare("SELECT 1 FROM `##placelocation` WHERE pl_parent_id=?")
 				->execute(array($deleteRecord))
 				->fetchOne();
-		
+
 			if (!$exists) {
 				WT_DB::prepare("DELETE FROM `##placelocation` WHERE pl_id=?")
 					->execute(array($deleteRecord));
@@ -4340,23 +4338,23 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				echo '<table class="facts_table"><tr><td>', WT_I18N::translate('Location not removed: this location contains sub-locations'), '</td></tr></table>';
 			}
 		}
-		
+
 		?>
 		<script>
 		function updateList(inactive) {
 			window.location.href='<?php if (strstrb($_SERVER['REQUEST_URI'], '&inactive')) { $uri=strstrb($_SERVER['REQUEST_URI'], '&inactive');} else { $uri=$_SERVER['REQUEST_URI']; } echo $uri, '&inactive='; ?>'+inactive;
 		}
-		
+
 		function edit_place_location(placeid) {
 			window.open('module.php?mod=googlemap&mod_action=places_edit&action=update&placeid='+placeid, '_blank', gmap_window_specs);
 			return false;
 		}
-		
+
 		function add_place_location(placeid) {
 			window.open('module.php?mod=googlemap&mod_action=places_edit&action=add&placeid='+placeid, '_blank', gmap_window_specs);
 			return false;
 		}
-		
+
 		function delete_place(placeid) {
 			var answer=confirm('<?php echo WT_I18N::translate('Remove this location?'); ?>');
 			if (answer == true) {
@@ -4391,7 +4389,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		if ($inactive) echo ' checked="checked"';
 		echo ' onclick="updateList(this.checked)"';
 		echo '>',  help_link('PLE_ACTIVE','googlemap'), '</div></form>';
-		
+
 		$placelist=$this->get_place_list_loc($parent, $inactive);
 		echo '<div class="gm_plac_edit">';
 		echo '<table class="gm_plac_edit"><tr>';
@@ -4441,7 +4439,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		?>
 		</table>
 		</div>
-		
+
 		<table id="gm_manage">
 			<tr>
 				<td>
@@ -4501,14 +4499,14 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 	private function wt_v3_street_view() {
 	header('Content-type: text/html; charset=UTF-8');
-	
+
 		?>
 		<html>
 			<head>
 				<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 				<script src="https://maps.google.com/maps/api/js?v=3.2&amp;sensor=false"></script>
 				<script>
-		
+
 		// Following function creates an array of the google map parameters passed ---------------------
 		var qsParm = new Array();
 		function qs() {
@@ -4526,9 +4524,9 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		qsParm['x'] = null;
 		qsParm['y'] = null;
 		qs();
-		
+
 		var geocoder = new google.maps.Geocoder();
-		
+
 		function geocodePosition(pos) {
 			geocoder.geocode({
 					latLng: pos
@@ -4540,36 +4538,36 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				}
 			});
 		}
-		
+
 		function updateMarkerStatus(str) {
 			document.getElementById('markerStatus').innerHTML = str;
 		}
-		
+
 		function updateMarkerPosition(latLng) {
 			document.getElementById('info').innerHTML = [
 				latLng.lat(),
 				latLng.lng()
 			].join(', ');
 		}
-		
+
 		function updateMarkerAddress(str) {
 			document.getElementById('address').innerHTML = str;
 		}
-		
+
 		function roundNumber(num, dec) {
 			var result = Math.round(num*Math.pow(10,dec))/Math.pow(10,dec);
 			return result;
 		}
-		
+
 		function initialize() {
 			var x = qsParm['x'];
 			var y = qsParm['y'];
 			var b = parseFloat(qsParm['b']);
 			var p = parseFloat(qsParm['p']);
 			var m = parseFloat(qsParm['m']);
-		
+
 			var latLng = new google.maps.LatLng(y, x);
-		
+
 			// Create the map and mapOptions
 			var mapOptions = {
 				zoom: 16,
@@ -4586,18 +4584,18 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				streetViewControl: false,  // Show Pegman or not
 				scrollwheel: true
 			};
-		
+
 			var map = new google.maps.Map(document.getElementById('mapCanvas'), mapOptions);
-		
+
 			var bearing = b;
 			if (bearing < 0) {
 				bearing=bearing+360;
 			}
 			var pitch = p;
 			var svzoom = m;
-		
+
 			var imageNum = Math.round(bearing/22.5) % 16;
-		
+
 			var image = new google.maps.MarkerImage('<?php echo WT_SCRIPT_PATH . WT_MODULES_DIR; ?>/googlemap/images/panda-icons/panda-' + imageNum + '.png',
 				// This marker is 50 pixels wide by 50 pixels tall.
 				new google.maps.Size(50, 50),
@@ -4606,12 +4604,12 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				// The anchor for this image is the base of the flagpole at 0,32.
 				new google.maps.Point(26, 36)
 			);
-		
+
 			var shape = {
 				coord: [1, 1, 1, 20, 18, 20, 18 , 1],
 				type: 'poly'
 			};
-		
+
 			var marker = new google.maps.Marker({
 				icon: image,
 				// shape: shape,
@@ -4620,9 +4618,9 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				map: map,
 				draggable: true
 			});
-		
+
 			// ===Next, get the map’s default panorama and set up some defaults. ===========================
-		
+
 			// --- First check if Browser supports html5 ---
 			var browserName=navigator.appName;
 			if (browserName=='Microsoft Internet Explorer') {
@@ -4630,7 +4628,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			} else {
 				var render_type = 'html5';
 			}
-		
+
 			// --- Create the panorama ---
 			var panoramaOptions = {
 				navigationControl: true,
@@ -4659,7 +4657,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			setTimeout(function() { panorama.setVisible(true); }, 1000);
 			setTimeout(function() { panorama.setVisible(true); }, 2000);
 			setTimeout(function() { panorama.setVisible(true); }, 3000);
-		
+
 			// Enable navigator contol and address control to be toggled with right mouse button -------
 			var aLink = document.createElement('a');
 			aLink.href = 'javascript:void(0)'; onmousedown=function(e) {
@@ -4688,81 +4686,65 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				return true;
 			};
 			panorama.controls[google.maps.ControlPosition.TOP_RIGHT].push(aLink);
-		
+
 			// Update current position info.
 			updateMarkerPosition(latLng);
 			geocodePosition(latLng);
-		
+
 			// Add dragging event listeners.
 			google.maps.event.addListener(marker, 'dragstart', function() {
 				updateMarkerAddress('Dragging...');
 			});
-		
+
 			google.maps.event.addListener(marker, 'drag', function() {
 				updateMarkerStatus('Dragging...');
 				updateMarkerPosition(marker.getPosition());
 				panorama.setPosition(marker.getPosition());
 			});
-		
+
 			google.maps.event.addListener(marker, 'dragend', function() {
 				updateMarkerStatus('Drag ended');
 				geocodePosition(marker.getPosition());
 			});
-		
+
 			google.maps.event.addListener(panorama, 'pov_changed', function() {
 				povLevel = panorama.getPov();
 				parent.document.getElementById('sv_bearText').value = roundNumber(povLevel.heading, 2)+"\u00B0";
 				parent.document.getElementById('sv_elevText').value = roundNumber(povLevel.pitch, 2)+"\u00B0";
 				parent.document.getElementById('sv_zoomText').value = roundNumber(povLevel.zoom, 2);
 			});
-		
+
 			google.maps.event.addListener(panorama, 'position_changed', function() {
 				pos = panorama.getPosition();
 				marker.setPosition(pos);
 				parent.document.getElementById('sv_latiText').value = pos.lat()+"\u00B0";
 				parent.document.getElementById('sv_longText').value = pos.lng()+"\u00B0";
 			});
-		
-			//==============================================================================================
-			//  CREATE THE MAP PANE STREETVIEW BLUE STREETS
-			//======================================================================================
-			// First lets create the Traffic ImageMap
-			//--------------------------------------------------------------------------------------
-			var traffic = new google.maps.ImageMapType({
-				getTileUrl: function(coord, zoom) {
-					var X = coord.x % (1 << zoom);  // wrap
-					return 'http://mt3.google.com/mapstt?' + 'zoom=' + zoom + '&x=' + X + '&y=' + coord.y + '&client=api';
-				},
-				tileSize: new google.maps.Size(256, 256),
-				isPng: true
-			});
-		
+
 			//======================================================================================
 			// Now add the ImageMapType overlay to the map
 			//--------------------------------------------------------------------------------------
-			map.overlayMapTypes.push(traffic);
 			map.overlayMapTypes.push(null);
-		
+
 			//======================================================================================
 			// Now create the StreetView ImageMap
 			//--------------------------------------------------------------------------------------
 			var street = new google.maps.ImageMapType({
 				getTileUrl: function(coord, zoom) {
 					var X = coord.x % (1 << zoom);  // wrap
-					return 'http://cbk0.google.com/cbk?output=overlay&' +
-						'zoom=' + zoom + '&x=' + X + '&y=' + coord.y + '&cb_client=api';
+					return 'http://cbk0.google.com/cbk?output=overlay&zoom=' + zoom + '&x=' + X + '&y=' + coord.y + '&cb_client=api';
 				},
 				tileSize: new google.maps.Size(256, 256),
 				isPng: true
 			});
-		
+
 			//======================================================================================
 			//  Add the Street view Image Map
 			//--------------------------------------------------------------------------------------
 			map.overlayMapTypes.setAt(1, street);
 			//==============================================================================================
 		}
-		
+
 		function toggleStreetView() {
 			var toggle = panorama.getVisible();
 			if (toggle == false) {
@@ -4773,14 +4755,14 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				document.myForm.butt1.value = "<?php echo WT_I18N::translate('Google Street View™'); ?>";
 			}
 		}
-		
+
 		function resetview() {
 			initialize();
 		}
-		
+
 		// Onload handler to fire off the app.
 		google.maps.event.addDomListener(window, 'load', initialize);
-		
+
 		</script>
 		</head>
 			<body>
@@ -4806,7 +4788,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 						text-align: center;
 					}
 				</style>
-		
+
 				<div id="toggle">
 					<form name="myForm" title="myForm">
 						<?php
@@ -4815,10 +4797,10 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 						?>
 					</form>
 				</div>
-		
+
 				<div id="mapCanvas">
 				</div>
-		
+
 				<div id="infoPanel">
 					<div id="markerStatus"><em>Click and drag the marker.</em></div>
 					<div id="info" ></div>
