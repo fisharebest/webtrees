@@ -657,23 +657,54 @@ function cousin_name($n, $sex) {
 	switch ($sex) {
 	case 'M':
 		switch ($n) {
-		case  1: // I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
-		         return WT_I18N::translate_c('MALE', 'first cousin');
-		case  2: return WT_I18N::translate_c('MALE', 'second cousin');
-		case  3: return WT_I18N::translate_c('MALE', 'third cousin');
-		case  4: return WT_I18N::translate_c('MALE', 'fourth cousin');
-		case  5: return WT_I18N::translate_c('MALE', 'fifth cousin');
-		case  6: return WT_I18N::translate_c('MALE', 'sixth cousin');
-		case  7: return WT_I18N::translate_c('MALE', 'seventh cousin');
-		case  8: return WT_I18N::translate_c('MALE', 'eighth cousin');
-		case  9: return WT_I18N::translate_c('MALE', 'ninth cousin');
-		case 10: return WT_I18N::translate_c('MALE', 'tenth cousin');
-		case 11: return WT_I18N::translate_c('MALE', 'eleventh cousin');
-		case 12: return WT_I18N::translate_c('MALE', 'twelfth cousin');
-		case 13: return WT_I18N::translate_c('MALE', 'thirteenth cousin');
-		case 14: return WT_I18N::translate_c('MALE', 'fourteenth cousin');
-		case 15: return WT_I18N::translate_c('MALE', 'fifteenth cousin');
-		default: return WT_I18N::translate_c('MALE', '%d x cousin', $n);
+		case  1:
+			/* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers. */
+			return WT_I18N::translate_c('MALE', 'first cousin');
+		case  2:
+			/* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers. */
+			return WT_I18N::translate_c('MALE', 'second cousin');
+		case  3:
+			/* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers. */
+			return WT_I18N::translate_c('MALE', 'third cousin');
+		case  4:
+			/* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers. */
+			return WT_I18N::translate_c('MALE', 'fourth cousin');
+		case  5:
+			/* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers. */
+			return WT_I18N::translate_c('MALE', 'fifth cousin');
+		case  6:
+			/* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers. */
+			return WT_I18N::translate_c('MALE', 'sixth cousin');
+		case  7:
+			/* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers. */
+			return WT_I18N::translate_c('MALE', 'seventh cousin');
+		case  8:
+			/* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers. */
+			return WT_I18N::translate_c('MALE', 'eighth cousin');
+		case  9:
+			/* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers. */
+			return WT_I18N::translate_c('MALE', 'ninth cousin');
+		case 10:
+			/* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers. */
+			return WT_I18N::translate_c('MALE', 'tenth cousin');
+		case 11:
+			/* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers. */
+			return WT_I18N::translate_c('MALE', 'eleventh cousin');
+		case 12:
+			/* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers. */
+			return WT_I18N::translate_c('MALE', 'twelfth cousin');
+		case 13:
+			/* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers. */
+			return WT_I18N::translate_c('MALE', 'thirteenth cousin');
+		case 14:
+			/* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers. */
+			return WT_I18N::translate_c('MALE', 'fourteenth cousin');
+		case 15:
+			/* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers. */
+			return WT_I18N::translate_c('MALE', 'fifteenth cousin');
+		default:
+			/* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers. */
+			return WT_I18N::translate_c('MALE', '%d x cousin', $n);
 		}
 	case 'F':
 		switch ($n) {
