@@ -1091,27 +1091,6 @@ function timeout_submenu(elementid) {
 	}
 }
 
-function focusHandler(evt) {
-	var e = evt ? evt : window.event;
-	if (!e) return;
-	if (e.target)
-		pastefield = e.target;
-	else if(e.srcElement) pastefield = e.srcElement;
-}
-
-function loadHandler() {
-	var i, j;
-
-	for (i = 0; i < document.forms.length; i++)
-		for (j = 0; j < document.forms[i].elements.length; j++) {
-			if (document.forms[i].elements[j].type=="text") {
-				if (document.forms[i].elements[j].onfocus === null) {
-					document.forms[i].elements[j].onfocus = focusHandler;
-				}
-			}
-		}
-}
-
 function statusDisable(sel) {
 	var cbox = document.getElementById(sel);
 	cbox.checked = false;
