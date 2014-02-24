@@ -325,7 +325,7 @@ function print_addnewnote_link($element_id) {
 }
 
 function print_editnote_link($note_id) {
-	return '<a href="#" onclick="var win02=window.open(\'edit_interface.php?action=editnote&amp;xref='.$note_id.'\', \'win02\', edit_window_specs);" class="icon-button_note" title="'.WT_I18N::translate('Edit shared note').'"></a>';
+	return '<a href="#" onclick="edit_note(\''.$note_id.'\'); return false;" class="icon-button_note" title="'.WT_I18N::translate('Edit shared note').'"></a>';
 }
 
 function print_addnewsource_link($element_id) {
