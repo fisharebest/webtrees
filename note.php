@@ -76,7 +76,6 @@ if ($controller->record && $controller->record->canShow()) {
 
 $controller
 	->addInlineJavascript('function show_gedcom_record() {var recwin=window.open("gedrecord.php?pid=' . $controller->record->getXref() . '", "_blank", edit_window_specs);}')
-	->addInlineJavascript('function edit_note() {window.open("edit_interface.php?action=editnote&xref=' . $controller->record->getXref() . '", "_blank", edit_window_specs);}')
 	->addInlineJavascript('jQuery("#note-tabs").tabs();')
 	->addInlineJavascript('jQuery("#note-tabs").css("visibility", "visible");');
 
@@ -143,12 +142,12 @@ if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
 			<tr>
 				<td class="descriptionbox">
 					<?php if (WT_USER_CAN_EDIT) { ?>
-						<a href="#" onclick="edit_note()" title="<?php echo WT_I18N::translate('Edit'); ?>">
+						<a href="#" onclick="return edit_note('<?php echo $controller->record->getXref(); ?>')" title="<?php echo WT_I18N::translate('Edit'); ?>">
 						<i class="icon-note"></i> <?php echo WT_I18N::translate('Shared note'); ?>
 						</a>
 						<div class="editfacts">
 							<div class="editlink">
-							<a class="editicon" href="#" onclick="edit_note()" title="<?php echo WT_I18N::translate('Edit'); ?>">
+							<a class="editicon" href="#" onclick="return edit_note('<?php echo $controller->record->getXref(); ?>')" title="<?php echo WT_I18N::translate('Edit'); ?>">
 								<span class="link_text"><?php echo WT_I18N::translate('Edit'); ?></span>
 							</a>
 						</div>
