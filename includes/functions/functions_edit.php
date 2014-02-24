@@ -366,9 +366,12 @@ function add_simple_tag($tag, $upperlevel='', $label='', $extra=null) {
 	if ($level==1) $main_fact=$fact;
 
 	// element id : used by javascript functions
-	if ($level==0) $element_id=$fact; // ex: NPFX | GIVN ...
-	else $element_id=$fact.(int)(microtime()*1000000); // ex: SOUR56402
-	if ($upperlevel) $element_id=$upperlevel."_".$fact; // ex: BIRT_DATE | DEAT_DATE ...
+	if ($level==0)
+		$element_id = $fact; // ex: NPFX | GIVN ...
+	else
+		$element_id = $fact . (int)(microtime()*1000000); // ex: SOUR56402
+	if ($upperlevel)
+		$element_id = $upperlevel . "_" . $fact . (int)(microtime()*1000000); // ex: BIRT_DATE56402 | DEAT_DATE56402 ...
 
 	// field value
 	$islink = (substr($value, 0, 1)=="@" and substr($value, 0, 2)!="@#");
