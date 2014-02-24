@@ -661,13 +661,13 @@ function add_simple_tag($tag, $upperlevel='', $label='', $extra=null) {
 		break;
 	case 'ASSO':
 	case '_ASSO':
-		echo print_findindi_link($element_id);
+		echo print_findindi_link($element_id, $element_id . '_description');
 		break;
 	case 'FILE':
 		print_findmedia_link($element_id, "0file");
 		break;
 	case 'SOUR':
-		echo print_findsource_link($element_id), ' ', print_addnewsource_link($element_id);
+		echo print_findsource_link($element_id, $element_id . '_description'), ' ', print_addnewsource_link($element_id);
 		//-- checkboxes to apply '1 SOUR' to BIRT/MARR/DEAT as '2 SOUR'
 		if ($level==1) {
 			echo '<br>';
@@ -722,7 +722,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $extra=null) {
 		// Shared Notes Icons ========================================
 		if ($islink) {
 			// Print regular Shared Note icons ---------------------------
-			echo ' ', print_findnote_link($element_id), ' ', print_addnewnote_link($element_id);
+			echo ' ', print_findnote_link($element_id, $element_id . '_description'), ' ', print_addnewnote_link($element_id);
 			if ($value) {
 				echo ' ', print_editnote_link($value);
 			}
@@ -742,7 +742,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $extra=null) {
 		break;
 	}
 
-	echo '<br>';
+	echo '<div id="' . $element_id . '_description">';
 
 	// current value
 	if ($fact=='DATE') {
@@ -787,8 +787,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $extra=null) {
 
 	// pastable values
 	if ($fact=='FORM' && $upperlevel=='OBJE') print_autopaste_link($element_id, $FILE_FORM_accept);
-
-	echo $extra, '</td></tr>';
+	echo '</div>', $extra, '</td></tr>';
 
 	return $element_id;
 }
