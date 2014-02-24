@@ -1377,10 +1377,10 @@ function paste_id(value) {
 }
 
 function pastename(name) {
-	if (typeof(nameElement) != "undefined") {
+	if (nameElement) {
 		nameElement.innerHTML = name;
 	}
-	if (typeof(remElement) != "undefined") {
+	if (remElement) {
 		remElement.style.display = "block";
 	}
 }
