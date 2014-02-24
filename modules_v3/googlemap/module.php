@@ -3139,9 +3139,9 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				WT_DB::prepare("INSERT INTO `##placelocation` (pl_id, pl_parent_id, pl_level, pl_place, pl_long, pl_lati, pl_zoom, pl_icon) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 
 			if (($_POST['LONG_CONTROL'] == '') || ($_POST['NEW_PLACE_LONG'] == '') || ($_POST['NEW_PLACE_LATI'] == '')) {
-				$statement->execute(array(getHighestIndex()+1, $placeid, $level, $_POST['NEW_PLACE_NAME'], null, null, $_POST['NEW_ZOOM_FACTOR'], $_POST['icon']));
+				$statement->execute(array($this->getHighestIndex()+1, $placeid, $level, $_POST['NEW_PLACE_NAME'], null, null, $_POST['NEW_ZOOM_FACTOR'], $_POST['icon']));
 			} else {
-				$statement->execute(array(getHighestIndex()+1, $placeid, $level, $_POST['NEW_PLACE_NAME'], $_POST['LONG_CONTROL'][3].$_POST['NEW_PLACE_LONG'], $_POST['LATI_CONTROL'][3].$_POST['NEW_PLACE_LATI'], $_POST['NEW_ZOOM_FACTOR'], $_POST['icon']));
+				$statement->execute(array($this->getHighestIndex()+1, $placeid, $level, $_POST['NEW_PLACE_NAME'], $_POST['LONG_CONTROL'][3].$_POST['NEW_PLACE_LONG'], $_POST['LATI_CONTROL'][3].$_POST['NEW_PLACE_LATI'], $_POST['NEW_ZOOM_FACTOR'], $_POST['icon']));
 			}
 
 			// autoclose window when update successful unless debug on
@@ -3277,7 +3277,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				$place_icon  = '';
 				$parent_id   = 0;
 				$level = 0;
-				$zoomfactor  = $GM_MIN_ZOOM;
+				$zoomfactor  = $this->getSetting('GM_MIN_ZOOM');
 			}
 			$selected_country = 'Countries';
 			$show_marker = false;
@@ -4075,7 +4075,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				$prevLong = $place['long'];
 			}
 
-			$highestIndex = getHighestIndex();
+			$highestIndex = $this->getHighestIndex();
 
 			$default_zoom_level=array(4, 7, 10, 12);
 			foreach ($placelistUniq as $k=>$place) {
@@ -4185,7 +4185,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			// Strip BYTE-ORDER-MARK, if present
 			if (!empty($lines[0]) && substr($lines[0], 0, 3)==WT_UTF8_BOM) $lines[0]=substr($lines[0], 3);
 			asort($lines);
-			$highestIndex = getHighestIndex();
+			$highestIndex = $this->getHighestIndex();
 			$placelist = array();
 			$j = 0;
 			$maxLevel = 0;
