@@ -217,7 +217,7 @@ if ($type == 'media') {
 	echo '" autofocus>',
 	help_link('simple_filter'),
 	'<p><input type="submit" name="search" value="', WT_I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">&nbsp;
-	<input type="submit" name="all" value="', WT_I18N::translate('Display all'), '" onclick=\"this.form.subclick.value=this.name\">
+	<input type="submit" name="all" value="', WT_I18N::translate('Display all'), '" onclick="this.form.subclick.value=this.name">
 	</p></form></div>';
 }
 
