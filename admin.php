@@ -601,6 +601,7 @@ function old_paths() {
 		WT_ROOT.'modules_v3/googlemap/googlemap.php',
 		WT_ROOT.'modules_v3/googlemap/placehierarchy.php',
 		WT_ROOT.'modules_v3/googlemap/places_edit.php',
+		WT_ROOT.'modules_v3/googlemap/util.js',
 		WT_ROOT.'modules_v3/googlemap/wt_v3_places_edit.js.php',
 		WT_ROOT.'modules_v3/googlemap/wt_v3_places_edit_overlays.js.php',
 		WT_ROOT.'modules_v3/googlemap/wt_v3_street_view.php',
