@@ -33,37 +33,6 @@ $controller
 	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
 	->addInlineJavascript('
 	var locale_date_format="' . preg_replace('/[^DMY]/', '', str_replace(array('J', 'F'), array('D', 'M'), strtoupper($DATE_FORMAT))). '";
-	function openerpasteid(id) {
-		if (window.opener.paste_id) {
-			window.opener.paste_id(id);
-		}
-		window.close();
-	}
-	function paste_id(value) {
-		pastefield.value = value;
-	}
-	function paste_char(value) {
-		if (document.selection) {
-			// IE
-			pastefield.focus();
-			sel = document.selection.createRange();
-			sel.text = value;
-		} else if (pastefield.selectionStart || pastefield.selectionStart == 0) {
-			// Mozilla/Chrome/Safari
-			pastefield.value =
-				pastefield.value.substring(0, pastefield.selectionStart) +
-				value +
-				pastefield.value.substring(pastefield.selectionEnd, pastefield.value.length);
-			pastefield.selectionStart = pastefield.selectionEnd = pastefield.selectionStart + value.length;
-		} else {
-			// Fallback? - just append
-			pastefield.value += value;
-		}
-
-		if (pastefield.id=="NPFX" || pastefield.id=="GIVN" || pastefield.id=="SPFX" || pastefield.id=="SURN" || pastefield.id=="NSFX") {
-			updatewholename();
-		}
-	}
 ');
 
 switch ($action) {
@@ -1948,17 +1917,7 @@ case 'changefamily':
 
 	$controller
 		->setPageTitle(WT_I18N::translate('Change family members'))
-		->pageHeader()
-		->addInlineJavascript('
-				function pastename(name) {
-					if (typeof(nameElement) != "undefined") {
-						nameElement.innerHTML = name;
-					}
-					if (typeof(remElement) != "undefined") {
-						remElement.style.display = "block";
-					}
-				}
-		');
+		->pageHeader();
 
 	$father = $family->getHusband();
 	$mother = $family->getWife();

@@ -34,6 +34,8 @@ var assist_window_specs='width=900,height=800,left=70,top=70,resizable=1,scrollb
 var gmap_window_specs='width=650,height=600,left=200,top=150,resizable=1,scrollbars=1'; // googlemap module place editing
 var fam_nav_specs='width=300,height=600,left=817,top=150,resizable=1,scrollbars=1'; // media_0_inverselink.php
 
+var pastefield, nameElement, remElement; // Elements to paste to
+
 // TODO: This function loads help_text.php twice.  It should only load it once.
 function helpDialog(which, mod) {
 	var url='help_text.php?help='+which+'&mod='+mod;
@@ -1362,6 +1364,50 @@ function findFact(field, ged) {
 		"tags": field.value
 	});
 }
+
+function openerpasteid(id) {
+	if (window.opener.paste_id) {
+		window.opener.paste_id(id);
+	}
+	window.close();
+}
+
+function paste_id(value) {
+	pastefield.value = value;
+}
+
+function pastename(name) {
+	if (typeof(nameElement) != "undefined") {
+		nameElement.innerHTML = name;
+	}
+	if (typeof(remElement) != "undefined") {
+		remElement.style.display = "block";
+	}
+}
+
+function paste_char(value) {
+	if (document.selection) {
+		// IE
+		pastefield.focus();
+		sel = document.selection.createRange();
+		sel.text = value;
+	} else if (pastefield.selectionStart || pastefield.selectionStart == 0) {
+		// Mozilla/Chrome/Safari
+		pastefield.value =
+			pastefield.value.substring(0, pastefield.selectionStart) +
+			value +
+			pastefield.value.substring(pastefield.selectionEnd, pastefield.value.length);
+		pastefield.selectionStart = pastefield.selectionEnd = pastefield.selectionStart + value.length;
+	} else {
+		// Fallback? - just append
+		pastefield.value += value;
+	}
+
+	if (pastefield.id=="NPFX" || pastefield.id=="GIVN" || pastefield.id=="SPFX" || pastefield.id=="SURN" || pastefield.id=="NSFX") {
+		updatewholename();
+	}
+}
+
 
 function ilinkitem(mediaid, type, ged) {
 	ged = (typeof ged === 'undefined') ? WT_GEDCOM : ged;

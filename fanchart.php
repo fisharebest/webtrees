@@ -35,8 +35,7 @@ if (WT_Filter::getBool('img')) {
 
 $controller
 	->pageHeader()
-	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
-	->addInlineJavascript('var pastefield; function paste_id(value) { pastefield.value=value; }'); // For the 'find indi' link
+	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');
 
 ?>
 <div id="page-fan">
