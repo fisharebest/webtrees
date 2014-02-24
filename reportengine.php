@@ -259,7 +259,7 @@ elseif ($action=='setup') {
 				echo print_findsource_link($input['name']);
 			} elseif ($input['lookup']=='DATE') {
 				echo ' <a href="#" onclick="cal_toggleDate(\'div_', WT_Filter::EscapeJs($input['name']), '\', \'', WT_Filter::EscapeJs($input['name']), '\'); return false;" class="icon-button_calendar" title="', WT_I18N::translate('Select a date'), '"></a>';
-				echo '<div id="div_', WT_Filter::EscapeHtml($input['name']), '" style="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;"></div>';
+				echo '<div id="div_', WT_Filter::EscapeHtml($input['name']), '" style="position:absolute;visibility:hidden;background-color:white;"></div>';
 			}
 		}
 		echo '</td></tr>';
