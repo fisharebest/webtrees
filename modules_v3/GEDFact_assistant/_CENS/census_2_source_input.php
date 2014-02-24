@@ -140,24 +140,6 @@ if (!defined('WT_WEBTREES')) {
 		return prevcendate;
 	}
 
-	function findSource(field) {
-		pastefield = field;
-		findwin = window.open('find.php?type=source', '_blank', find_window_specs);
-		return false;
-	}
-	function openerpasteid(id) {
-		window.opener.paste_id(id);
-		window.close();
-	}
-
-	function paste_id(value) {
-		pastefield.value = value;
-	}
-
-	function paste_char(value) {
-		pastefield.value += value;
-	}
-
 	function changeCtry() {
 		// Change Year field Colour ----------------------------------------------
 		if (document.getElementById('censYear').value=="") {

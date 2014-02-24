@@ -689,8 +689,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		$controller
 			->setPageTitle(/* I18N: %s is an individual’s name */ WT_I18N::translate('Pedigree map of %s', $controller->getPersonName()))
 			->pageHeader()
-			->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
-			->addInLineJavascript('var pastefield; function paste_id(value) {pastefield.value=value;}');
+			->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');
 
 		echo '<link type="text/css" href="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/css/wt_v3_googlemap.css" rel="stylesheet">';
 		echo '<div id="pedigreemap-page">
@@ -3851,7 +3850,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				<td class="descriptionbox"><?php echo WT_Gedcom_Tag::getLabel('PLAC'); ?></td>
 				 <td class="optionbox"><input type="text" id="new_pl_name" name="NEW_PLACE_NAME" value="<?php echo WT_Filter::escapeHtml($place_name); ?>" size="25" class="address_input">
 					<div id="INDI_PLAC_pop" style="display: inline;">
-					<?php echo print_specialchar_link('NEW_PLACE_NAME'); ?></div></td><td class="optionbox">
+					<?php echo print_specialchar_link('new_pl_name'); ?></div></td><td class="optionbox">
 					<label for="new_pl_name"><a href="#" onclick="showLocation_all(document.getElementById('new_pl_name').value); return false">&nbsp;<?php echo WT_I18N::translate('Search globally'); ?></a></label>
 					&nbsp;&nbsp;|&nbsp;&nbsp;
 					<label for="new_pl_name"><a href="#" onclick="showLocation_level(document.getElementById('new_pl_name').value); return false">&nbsp;<?php echo WT_I18N::translate('Search locally'); ?></a></label>

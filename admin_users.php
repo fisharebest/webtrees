@@ -343,10 +343,6 @@ case 'createform':
 			}
 			return true;
 		}
-		var pastefield;
-		function paste_id(value) {
-			pastefield.value=value;
-		}
 		jQuery(".relpath").change(function() {
 			var fieldIDx = jQuery(this).attr("id");
 			var idNum = fieldIDx.replace("RELATIONSHIP_PATH_LENGTH","");

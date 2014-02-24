@@ -29,8 +29,7 @@ define('WT_SCRIPT_NAME', 'individual.php');
 require './includes/session.php';
 $controller=new WT_Controller_Individual();
 $controller
-	->addExternalJavascript(WT_JQUERY_COOKIE_URL) // We use this to record the sidebar state
-	->addInlineJavascript('var catch_and_ignore; function paste_id(value) {catch_and_ignore = value;}'); // For the "find" links
+	->addExternalJavascript(WT_JQUERY_COOKIE_URL); // We use this to record the sidebar state
 
 if ($controller->record && $controller->record->canShow()) {
 	if (WT_Filter::get('action')=='ajax') {

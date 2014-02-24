@@ -325,7 +325,7 @@ function print_addnewnote_link($element_id) {
 }
 
 function print_editnote_link($note_id) {
-	return '<a href="#" onclick="var win02=window.open(\'edit_interface.php?action=editnote&amp;xref='.$note_id.'\', \'win02\', edit_window_specs);" class="icon-button_note" title="'.WT_I18N::translate('Edit shared note').'"></a>';
+	return '<a href="#" onclick="edit_note(\''.$note_id.'\'); return false;" class="icon-button_note" title="'.WT_I18N::translate('Edit shared note').'"></a>';
 }
 
 function print_addnewsource_link($element_id) {
@@ -366,9 +366,12 @@ function add_simple_tag($tag, $upperlevel='', $label='', $extra=null) {
 	if ($level==1) $main_fact=$fact;
 
 	// element id : used by javascript functions
-	if ($level==0) $element_id=$fact; // ex: NPFX | GIVN ...
-	else $element_id=$fact.(int)(microtime()*1000000); // ex: SOUR56402
-	if ($upperlevel) $element_id=$upperlevel."_".$fact; // ex: BIRT_DATE | DEAT_DATE ...
+	if ($level==0)
+		$element_id = $fact; // ex: NPFX | GIVN ...
+	else
+		$element_id = $fact . (int)(microtime()*1000000); // ex: SOUR56402
+	if ($upperlevel)
+		$element_id = $upperlevel . "_" . $fact . (int)(microtime()*1000000); // ex: BIRT_DATE56402 | DEAT_DATE56402 ...
 
 	// field value
 	$islink = (substr($value, 0, 1)=="@" and substr($value, 0, 2)!="@#");
@@ -658,13 +661,13 @@ function add_simple_tag($tag, $upperlevel='', $label='', $extra=null) {
 		break;
 	case 'ASSO':
 	case '_ASSO':
-		echo print_findindi_link($element_id);
+		echo print_findindi_link($element_id, $element_id . '_description');
 		break;
 	case 'FILE':
 		print_findmedia_link($element_id, "0file");
 		break;
 	case 'SOUR':
-		echo print_findsource_link($element_id), ' ', print_addnewsource_link($element_id);
+		echo print_findsource_link($element_id, $element_id . '_description'), ' ', print_addnewsource_link($element_id);
 		//-- checkboxes to apply '1 SOUR' to BIRT/MARR/DEAT as '2 SOUR'
 		if ($level==1) {
 			echo '<br>';
@@ -719,7 +722,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $extra=null) {
 		// Shared Notes Icons ========================================
 		if ($islink) {
 			// Print regular Shared Note icons ---------------------------
-			echo ' ', print_findnote_link($element_id), ' ', print_addnewnote_link($element_id);
+			echo ' ', print_findnote_link($element_id, $element_id . '_description'), ' ', print_addnewnote_link($element_id);
 			if ($value) {
 				echo ' ', print_editnote_link($value);
 			}
@@ -739,7 +742,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $extra=null) {
 		break;
 	}
 
-	echo '<br>';
+	echo '<div id="' . $element_id . '_description">';
 
 	// current value
 	if ($fact=='DATE') {
@@ -784,8 +787,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $extra=null) {
 
 	// pastable values
 	if ($fact=='FORM' && $upperlevel=='OBJE') print_autopaste_link($element_id, $FILE_FORM_accept);
-
-	echo $extra, '</td></tr>';
+	echo '</div>', $extra, '</td></tr>';
 
 	return $element_id;
 }

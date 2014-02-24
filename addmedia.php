@@ -42,26 +42,7 @@ $update_CHAN = !WT_Filter::postBool('preserve_last_changed');
 $controller = new WT_Controller_Simple();
 $controller
 	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
-	->requireMemberLogin()
-	->addInlineJavascript('
-	// Shared Notes =========================
-	function findnote(field) {
-		pastefield = field;
-		findwin = window.open("find.php?type=note", "_blank", find_window_specs);
-		return false;
-	}
-	var pastefield;
-	function openerpasteid(id) {
-		window.opener.paste_id(id);
-		window.close();
-	}
-	function paste_id(value) {
-		pastefield.value = value;
-	}
-	function paste_char(value) {
-		pastefield.value += value;
-	}
-	');
+	->requireMemberLogin();
 
 $disp = true;
 $media = WT_Media::getInstance($pid);

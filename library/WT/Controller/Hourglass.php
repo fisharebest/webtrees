@@ -466,11 +466,6 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 			vlines[i].style.height=(vlines[i].parentNode.offsetHeight/2)+'px';
 		}
 
-	var pastefield;
-	function paste_id(value) {
-		pastefield.value=value;
-	}
-
 	// Hourglass control..... Ajax arrows at the end of chart
 	function ChangeDiv(div_id, ARID, full, spouse, width) {
 		var divelement = document.getElementById(div_id);
