@@ -2568,7 +2568,8 @@ color:#2f416f;
 text-decoration:underline !important;
 }
 
-.flyout3,.flyout3 a {
+.flyout3 {
+display:block;
 background:none;
 border:none;
 left:0;
@@ -2584,6 +2585,7 @@ margin-left:0;
 margin-top:0;
 padding:3px;
 text-align:left;
+font-weight: bold;
 }
 
 .nam a:hover {
@@ -2594,7 +2596,14 @@ color:red;
 padding:0;
 width:100%;
 }
-
+.nav_content .facts_label {
+	width:75px;
+}
+.famnav_title{
+	font-weight: bold;
+	display: block;
+	padding: 5px 0;
+}
 html[dir=rtl] .flyout3 {text-align:right;}
 html[dir=rtl] .flyout {text-align:right;left:210px;}
 html[dir=rtl] .flyout2 {text-align:right;right:40px;}

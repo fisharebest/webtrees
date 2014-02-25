@@ -846,11 +846,13 @@ html[dir=rtl] .use-sidebar #separator {background:#99c2ff url(images/general_spr
 #sb_family_nav_content {margin-top:8px;}
 .nam a:hover {color:#ff0000;}
 .nav_content {width:100%;padding:0;}
+.nav_content .facts_label{width:75px;}
+.famnav_title{font-weight:bold;display:block;padding:5px 0;}
 .flyout {text-align:left;margin-top:-20px;right:210px;padding:3px;}
 .flyout2 {text-align:left;margin-top:-2px;left:40px;padding:3px;}
 .flyout2 a:hover {color:#ff0000;}
-.flyout4 {text-align:left;margin-top:0;margin-left:0;padding:3px;}
-.flyout3, .flyout3 a {background:none;border:none;text-decoration:none;text-align:left;margin-top:0;left:0;padding:0;}
+.flyout4 {text-align:left;margin-top:0;margin-left:0;padding:3px;font-weight:bold}
+.flyout3 {display:block;background:none;border:none;text-decoration:none;text-align:left;margin-top:0;left:0;padding:0;}
 
 html[dir=rtl] .flyout {text-align:right;left:210px;}
 html[dir=rtl] .flyout2 {text-align:right;right:40px;}
