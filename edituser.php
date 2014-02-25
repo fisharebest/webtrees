@@ -116,10 +116,6 @@ function checkform(frm) {
 	}
 	return true;
 }
-var pastefield;
-function paste_id(value) {
-	pastefield.value=value;
-}
 </script>
 <?php
 

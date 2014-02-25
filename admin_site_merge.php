@@ -218,24 +218,17 @@ if ($action!='choose') {
 }
 if ($action=='choose') {
 	$controller->addInlineJavascript('
-	var pasteto;
 	function iopen_find(textbox, gedselect) {
-		pasteto = textbox;
 		ged = gedselect.options[gedselect.selectedIndex].value;
-		findwin = window.open("find.php?type=indi&ged="+ged, "_blank", find_window_specs);
+		findIndi(textbox, null, ged);
 	}
 	function fopen_find(textbox, gedselect) {
-		pasteto = textbox;
 		ged = gedselect.options[gedselect.selectedIndex].value;
-		findwin = window.open("find.php?type=fam&ged="+ged, "_blank", find_window_specs);
+		findFamily(textbox, ged);
 	}
 	function sopen_find(textbox, gedselect) {
-		pasteto = textbox;
 		ged = gedselect.options[gedselect.selectedIndex].value;
-		findwin = window.open("find.php?type=source&ged="+ged, "_blank", find_window_specs);
-	}
-	function paste_id(value) {
-		pasteto.value=value;
+		findSource(textbox, null, ged);
 	}
 	');
 

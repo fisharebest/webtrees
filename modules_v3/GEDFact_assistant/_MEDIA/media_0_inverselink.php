@@ -43,21 +43,6 @@ if ($action == 'choose' && $paramok) {
 	// Javascript variables
 	var id_empty = "<?php echo WT_I18N::translate('When adding a Link, the ID field cannot be empty.'); ?>";
 
-	var pastefield;
-
-	function openerpasteid(id) {
-		window.opener.paste_id(id);
-		window.close();
-	}
-
-	function paste_id(value) {
-		pastefield.value = value;
-	}
-
-	function paste_char(value) {
-		pastefield.value += value;
-	}
-
 	function blankwin() {
 		if (document.getElementById('gid').value == "" || document.getElementById('gid').value.length<=1) {
 			alert(id_empty);

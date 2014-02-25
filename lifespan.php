@@ -31,7 +31,6 @@ $controller
 	->pageHeader()
 	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
 	->addInlineJavascript('
-		var pastefield; function paste_id(value) { pastefield.value=value; }  // For the "find indi" link
 		var timer;
 		var offSetNum = 20; // amount timeline moves with each mouse click
 		var speed;

@@ -595,6 +595,7 @@ function old_paths() {
 		// Removed in 1.5.3
 		WT_ROOT.'js/jquery-1.10.2.js',
 		WT_ROOT.'js/jquery-ui-1.10.3.js',
+		WT_ROOT.'js/webtrees-1.5.2.js',
 		WT_ROOT.'modules_v3/googlemap/admin_places.php',
 		WT_ROOT.'modules_v3/googlemap/defaultconfig.php',
 		WT_ROOT.'modules_v3/googlemap/googlemap.php',
