@@ -621,7 +621,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 					}
 				}
 				echo '</div>';//#searchAccordion-fam
-				$this->addInlineJavascript('jQuery("#searchAccordion-fam").accordion({active:0, heightStyle: "content", collapsible: true, icons:{ "header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" }});');
+				$this->addInlineJavascript('jQuery("#searchAccordion-fam").accordion({heightStyle: "content", collapsible: true});');
 
 				// source results
 				echo '<div id="searchAccordion-source">';
@@ -645,7 +645,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 					}
 				}
 				echo '</div>';//#searchAccordion-source
-				$this->addInlineJavascript('jQuery("#searchAccordion-source").accordion({active:0, heightStyle: "content", collapsible: true, icons:{ "header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" }});');
+				$this->addInlineJavascript('jQuery("#searchAccordion-source").accordion({heightStyle: "content", collapsible: true});');
 
 				// note results
 				echo '<div id="searchAccordion-note">';
@@ -669,7 +669,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 					}
 				}
 				echo '</div>';//#searchAccordion-note
-				$this->addInlineJavascript('jQuery("#searchAccordion-note").accordion({active:0, heightStyle: "content", collapsible: true, icons:{ "header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" }});');
+				$this->addInlineJavascript('jQuery("#searchAccordion-note").accordion({heightStyle: "content", collapsible: true});');
 
 				$GEDCOM=WT_GEDCOM;
 				load_gedcom_settings(WT_GED_ID);
