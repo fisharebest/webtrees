@@ -34,6 +34,8 @@ var assist_window_specs='width=900,height=800,left=70,top=70,resizable=1,scrollb
 var gmap_window_specs='width=650,height=600,left=200,top=150,resizable=1,scrollbars=1'; // googlemap module place editing
 var fam_nav_specs='width=300,height=600,left=817,top=150,resizable=1,scrollbars=1'; // media_0_inverselink.php
 
+var pastefield, nameElement, remElement; // Elements to paste to
+
 // TODO: This function loads help_text.php twice.  It should only load it once.
 function helpDialog(which, mod) {
 	var url='help_text.php?help='+which+'&mod='+mod;
@@ -250,6 +252,7 @@ var show = false;
 // Open the "edit interface" popup window
 function edit_interface(params, windowspecs, pastefield) {
 	var features = windowspecs || edit_window_specs;
+	window.pastefield = pastefield;
 	var url = 'edit_interface.php?' + jQuery.param(params) + '&ged=' + WT_GEDCOM;
 	window.open(url, '_blank', features);
 	return false;
@@ -642,7 +645,6 @@ function change_family_members(xref) {
 }
 
 function addnewsource(field) {
-	pastefield=field;
 	return edit_interface({
 		"action": "addnewsource",
 		"xref":   "newsour"
@@ -650,7 +652,6 @@ function addnewsource(field) {
 }
 
 function addnewrepository(field) {
-	pastefield=field;
 	return edit_interface({
 		"action": "addnewrepository",
 		"xref":   "newrepo"
@@ -658,7 +659,6 @@ function addnewrepository(field) {
 }
 
 function addnewnote(field) {
-	pastefield=field;
 	return edit_interface({
 		"action": "addnewnote",
 		"noteid": "newnote"
@@ -666,7 +666,6 @@ function addnewnote(field) {
 }
 
 function addnewnote_assisted(field, xref) {
-	pastefield=field;
 	return edit_interface({
 		"action": "addnewnote_assisted",
 		"noteid": "newnote",
@@ -1365,6 +1364,50 @@ function findFact(field, ged) {
 		"tags": field.value
 	});
 }
+
+function openerpasteid(id) {
+	if (window.opener.paste_id) {
+		window.opener.paste_id(id);
+	}
+	window.close();
+}
+
+function paste_id(value) {
+	pastefield.value = value;
+}
+
+function pastename(name) {
+	if (nameElement) {
+		nameElement.innerHTML = name;
+	}
+	if (remElement) {
+		remElement.style.display = "block";
+	}
+}
+
+function paste_char(value) {
+	if (document.selection) {
+		// IE
+		pastefield.focus();
+		sel = document.selection.createRange();
+		sel.text = value;
+	} else if (pastefield.selectionStart || pastefield.selectionStart == 0) {
+		// Mozilla/Chrome/Safari
+		pastefield.value =
+			pastefield.value.substring(0, pastefield.selectionStart) +
+			value +
+			pastefield.value.substring(pastefield.selectionEnd, pastefield.value.length);
+		pastefield.selectionStart = pastefield.selectionEnd = pastefield.selectionStart + value.length;
+	} else {
+		// Fallback? - just append
+		pastefield.value += value;
+	}
+
+	if (pastefield.id=="NPFX" || pastefield.id=="GIVN" || pastefield.id=="SPFX" || pastefield.id=="SURN" || pastefield.id=="NSFX") {
+		updatewholename();
+	}
+}
+
 
 function ilinkitem(mediaid, type, ged) {
 	ged = (typeof ged === 'undefined') ? WT_GEDCOM : ged;

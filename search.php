@@ -92,11 +92,6 @@ echo '<div id="search-page">
 	echo '<form method="post" name="searchform" onsubmit="return checknames(this);" action="search.php"><input type="hidden" name="action" value="', $controller->action, '"><input type="hidden" name="isPostBack" value="true">
 	<div id="search-page-table">';
   		?>
-		<script>
-	        function paste_char(value) {
-	            document.searchform.query.value+=value;
-	        }
-	    </script>
 		<?php
 		//========== General search Form ==========
 		if ($controller->action == "general") {

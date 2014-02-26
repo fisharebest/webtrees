@@ -50,25 +50,6 @@ if ($linkto=='manage' && array_key_exists('GEDFact_assistant', WT_Module::getAct
 	if (!empty($linktoid)) $paramok = WT_GedcomRecord::getInstance($linktoid)->canShow();
 
 	if ($action == "choose" && $paramok) {
-		?>
-		<script>
-		var pastefield;
-
-		function openerpasteid(id) {
-			window.opener.paste_id(id);
-			window.close();
-		}
-
-		function paste_id(value) {
-			pastefield.value = value;
-		}
-
-		function paste_char(value) {
-			pastefield.value += value;
-		}
-		</script>
-
-		<?php
 		echo '<form name="link" method="get" action="inverselink.php">';
 		echo '<input type="hidden" name="action" value="update">';
 		if (!empty($mediaid)) {

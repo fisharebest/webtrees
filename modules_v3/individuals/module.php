@@ -86,7 +86,7 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		global $WT_IMAGES, $UNKNOWN_NN, $controller;
 
 		// Fetch a list of the initial letters of all surnames in the database
-		$initials=WT_Query_Name::surnameAlpha(true, false, WT_GED_ID);
+		$initials=WT_Query_Name::surnameAlpha(true, false, WT_GED_ID, false);
 
 		$controller->addInlineJavascript('
 			var loadedNames = new Array();

@@ -33,11 +33,6 @@ $controller
 
 ?>
 <script>
-var pastefield = null;
-function paste_id(value) {
-	pastefield.value=value;
-}
-
 var N = (document.all) ? 0 : 1;
 var ob=null;
 var Y=0;
