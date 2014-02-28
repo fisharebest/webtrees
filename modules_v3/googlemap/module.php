@@ -3019,7 +3019,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 	// Output: ordered array of id=>name values, starting with the Top Level
 	// e.g. array(0=>"Top Level", 16=>"England", 19=>"London", 217=>"Westminster");
 	// NB This function exists in both places.php and places_edit.php
-	function place_id_to_hierarchy($id) {
+	private function place_id_to_hierarchy($id) {
 		$statement=
 			WT_DB::prepare("SELECT pl_parent_id, pl_place FROM `##placelocation` WHERE pl_id=?");
 		$arr=array();
@@ -3042,7 +3042,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 	/**
 	 * Find all of the places in the hierarchy
 	 */
-	function get_place_list_loc($parent_id, $inactive=false) {
+	private function get_place_list_loc($parent_id, $inactive=false) {
 		if ($inactive) {
 			$rows=
 				WT_DB::prepare("SELECT pl_id, pl_place, pl_lati, pl_long, pl_zoom, pl_icon FROM `##placelocation` WHERE pl_parent_id=? ORDER BY pl_place COLLATE ".WT_I18N::$collation)
@@ -3067,9 +3067,9 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		return $placelist;
 	}
 
-	function outputLevel($parent_id) {
+	private function outputLevel($parent_id) {
 		$tmp = $this->place_id_to_hierarchy($parent_id);
-		$maxLevel = getHighestLevel();
+		$maxLevel = $this->getHighestLevel();
 		if ($maxLevel>8) $maxLevel = 8;
 		$prefix = implode(';', $tmp);
 		if ($prefix!='')
@@ -3095,7 +3095,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 	 *
 	 * @param string $path
 	 */
-	function findFiles($path) {
+	private function findFiles($path) {
 		global $placefiles;
 		if (file_exists($path)) {
 			$dir = dir($path);
@@ -3125,9 +3125,9 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		$controller
 				->requireAdminLogin()
 				->setPageTitle(WT_I18N::translate('Geographic data'))
+				->addInlineJavascript('$("<link>", {rel: "stylesheet", type: "text/css", href: "' . WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/css/wt_v3_googlemap.css"}).appendTo("head");')
 				->pageHeader();
 
-		echo '<link type="text/css" href ="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/css/wt_v3_googlemap.css" rel="stylesheet">';
 
 		$where_am_i=$this->place_id_to_hierarchy($placeid);
 		$level=count($where_am_i);
@@ -3291,10 +3291,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 		?>
 
-		<head>
 			<script src="<?php echo $this->googleMapsScript(); ?>"></script>
-			<link type="text/css" href="<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>googlemap/css/wt_v3_googlemap.css" rel="stylesheet">
-
 			<script>
 			var map;
 			var marker;
@@ -3818,9 +3815,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			function paste_char(value) {
 				document.editplaces.NEW_PLACE_NAME.value += value;
 			}
+			window.onload = function() { loadMap(); };
 		</script>
-		</head>
-		<body onload="loadMap()" >
 		<table><tr><td align="center">
 		</td></tr></table>
 		</body>
@@ -3959,7 +3955,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		if ($action=='ExportFile' && WT_USER_IS_ADMIN) {
 			Zend_Session::writeClose();
 			$tmp = $this->place_id_to_hierarchy($parent);
-			$maxLevel = getHighestLevel();
+			$maxLevel = $this->getHighestLevel();
 			if ($maxLevel>8) $maxLevel=8;
 			$tmp[0] = 'places';
 			$outputFileName=preg_replace('/[:;\/\\\(\)\{\}\[\] $]/', '_', implode('-', $tmp)).'.csv';
@@ -4755,10 +4751,6 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			}
 		}
 
-		function resetview() {
-			initialize();
-		}
-
 		// Onload handler to fire off the app.
 		google.maps.event.addDomListener(window, 'load', initialize);
 
@@ -4792,7 +4784,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					<form name="myForm" title="myForm">
 						<?php
 						echo '<input id="butt1" name ="butt1" type="button" value="', WT_I18N::translate('Google Maps™'), '" onclick="toggleStreetView();"></input>';
-						echo '<input id="butt2" name ="butt2" type="button" value="', WT_I18N::translate('Reset'), '" onclick="resetview();"></input>';
+						echo '<input id="butt2" name ="butt2" type="button" value="', WT_I18N::translate('Reset'), '" onclick="initialize();"></input>';
 						?>
 					</form>
 				</div>
