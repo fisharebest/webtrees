@@ -623,20 +623,21 @@ function import_record($gedrec, $ged_id, $update) {
 	}
 
 	// Standardise gedcom format
-	$gedrec=reformat_record_import($gedrec);
+	$gedrec = reformat_record_import($gedrec);
 
 	// import different types of records
-	if (preg_match('/^0 @(' . WT_REGEX_XREF . ')@ (' . WT_REGEX_TAG . ')/', $gedrec, $match) > 0) {
+	if (preg_match('/^0 @(' . WT_REGEX_XREF . ')@ (' . WT_REGEX_TAG . ')/', $gedrec, $match)) {
 		list(,$xref, $type) = $match;
 		// check for a _UID, if the record doesn't have one, add one
 		if ($GENERATE_UIDS && !strpos($gedrec, "\n1 _UID ")) {
 			$gedrec .= "\n1 _UID " . uuid();
 		}
-	} elseif (preg_match('/0 ('.WT_REGEX_TAG.')/', $gedrec, $match)) {
-		$xref = null;
+	} elseif (preg_match('/0 (HEAD|TRLR)/', $gedrec, $match)) {
 		$type = $match[1];
+		$xref = $type; // For HEAD/TRLR, use type as pseudo XREF.
 	} else {
 		echo WT_I18N::translate('Invalid GEDCOM format'), '<br><pre>', $gedrec, '</pre>';
+
 		return;
 	}
 
@@ -748,8 +749,6 @@ function import_record($gedrec, $ged_id, $update) {
 		}
 		// No break;
 	case 'TRLR':
-		$xref = $type;
-		// No break;
 	case 'SUBM':
 	case 'SUBN':
 		$record = new WT_GedcomRecord($xref, $gedrec, null, $ged_id);
@@ -758,15 +757,11 @@ function import_record($gedrec, $ged_id, $update) {
 		update_links ($xref, $ged_id, $gedrec);
 		break;
 	default:
-		// Some desktop applications generate custom records without unique XREFs.
-		// We can't load these
-		if ($xref) {
-			$record = new WT_GedcomRecord($xref, $gedrec, null, $ged_id);
-			$sql_insert_other->execute(array($xref, $ged_id, $type, $gedrec));
-			// Update the cross-reference/index tables.
-			update_links ($xref, $ged_id, $gedrec);
-			update_names ($xref, $ged_id, $record);
-		}
+		$record = new WT_GedcomRecord($xref, $gedrec, null, $ged_id);
+		$sql_insert_other->execute(array($xref, $ged_id, $type, $gedrec));
+		// Update the cross-reference/index tables.
+		update_links ($xref, $ged_id, $gedrec);
+		update_names ($xref, $ged_id, $record);
 		break;
 	}
 }
