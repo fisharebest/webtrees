@@ -1044,7 +1044,6 @@ a.icon-larrow:hover        {width:20px;height:20px;background-image:url(../image
 .icon-lsltarrow            {width:48px;height:48px;background-image:url(../images/lifespan-left.png);}
 .icon-lsrtarrow            {width:48px;height:48px;background-image:url(../images/lifespan-right.png);}
 .icon-lsuparrow            {width:48px;height:48px;background-image:url(../images/lifespan-up.png);}
-.icon-mapquest             {width:16px;height:16px;background-image:url(../images/mapquest.png);}
 .icon-media                {width:32px;height:32px;background-image:url(../images/media.png);}
 .icon-media-list           {width:32px;height:32px;background-image:url(../images/media.png);}
 .icon-media-next           {width:20px;height:20px;background-image:url(../images/rdarrow.png);}
@@ -1056,6 +1055,7 @@ a.icon-larrow:hover        {width:20px;height:20px;background-image:url(../image
 .icon-mypage               {width:22px;height:25px;background-image:url(../images/mypage.png);}
 .icon-note                 {width:33px;height:35px;background-image:url(../images/notes.png);}
 .icon-note-list            {width:33px;height:35px;background-image:url(../images/notes.png);}
+.icon-osm                  {width:16px;height:16px;background-image:url(../images/osm.png);}
 .icon-patriarch            {width:32px;height:32px;background-image:url(../images/patriarch.png);}
 .icon-pedigree             {width:22px;height:25px;background-image:url(../images/icon-pedigree.png);}
 .icon-place                {width:32px;height:17px;background-image:url(../images/place.png);}
@@ -1084,7 +1084,6 @@ a.icon-rarrow:hover        {width:20px;height:20px;background-image:url(../image
 .icon-source               {width:32px;height:32px;background-image:url(../images/source.png);}
 .icon-source-list          {width:32px;height:32px;background-image:url(../images/source.png);}
 .icon-target               {width:15px;height:15px;background-image:url(../images/buttons/target.png);}
-.icon-terraserver          {width:16px;height:16px;background-image:url(../images/terraserver.png);}
 .icon-tree                 {width:20px;height:20px;background-image:url(../images/gedcom.png);}
 .icon-uarrow               {width:20px;height:20px;background-image:url(../images/uarrow.png);}
 a.icon-uarrow:hover        {width:20px;height:20px;background-image:url(../images/uarrow2.png);}

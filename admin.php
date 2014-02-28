@@ -606,6 +606,13 @@ function old_paths() {
 		WT_ROOT.'modules_v3/googlemap/wt_v3_places_edit_overlays.js.php',
 		WT_ROOT.'modules_v3/googlemap/wt_v3_street_view.php',
 		WT_ROOT.'readme.html',
+		WT_ROOT.'themes/_administration/css-1.5.2',
+		WT_ROOT.'themes/clouds/css-1.5.2',
+		WT_ROOT.'themes/colors/css-1.5.2',
+		WT_ROOT.'themes/fab/css-1.5.2',
+		WT_ROOT.'themes/minimal/css-1.5.2',
+		WT_ROOT.'themes/webtrees/css-1.5.2',
+		WT_ROOT.'themes/xenea/css-1.5.2',
 	);
 }
 

@@ -986,7 +986,6 @@ a.icon-ldarrow:hover {width:20px;height:20px;background-image:url(images/ldarrow
 .icon-lsltarrow {width:48px;height:48px;background-image:url(images/lifespan-left.png);}
 .icon-lsrtarrow {width:48px;height:48px;background-image:url(images/lifespan-right.png);}
 .icon-lsuparrow {width:48px;height:48px;background-image:url(images/lifespan-up.png);}
-.icon-mapquest {width:16px;height:16px;background-image:url(images/mapquest.png);}
 .icon-media {width:20px;height:20px;background-image:url(images/media.png);}
 .icon-media-list {width:20px;height:20px;background-image:url(images/media.png);}
 .icon-media-next {width:20px;height:20px;background-image:url(images/rdarrow.png);}
@@ -998,6 +997,7 @@ a.icon-ldarrow:hover {width:20px;height:20px;background-image:url(images/ldarrow
 .icon-mypage {width:24px;height:24px;background-image:url(images/mypage.png);}
 .icon-note {width:20px;height:20px;background-image:url(images/notes.png);}
 .icon-note-list {width:20px;height:20px;background-image:url(images/notes.png);}
+.icon-osm {width:16px;height:16px;background-image:url(images/osm.png);}
 .icon-patriarch {width:20px;height:20px;background-image:url(images/patriarch.png);}
 .icon-pedigree {width:20px;height:20px;background-image:url(images/pedigree.png);}
 .icon-place {width:20px;height:20px;background-image:url(images/place.png);}
@@ -1027,7 +1027,6 @@ a.icon-rdarrow:hover {width:20px;height:20px;background-image:url(images/rdarrow
 .icon-source {width:20px;height:20px;background-image:url(images/source.png);}
 .icon-source-list {width:20px;height:20px;background-image:url(images/source.png);}
 .icon-target {width:15px;height:15px;background-image:url(images/buttons/target.png);vertical-align: middle;}
-.icon-terraserver {width:16px;height:16px;background-image:url(images/terraserver.png);}
 .icon-tree {width:20px;height:20px;background-image:url(images/tree.png);}
 .icon-uarrow {width:20px;height:20px;background-image:url(images/uarrow.png);}
 a.icon-uarrow:hover {width:20px;height:20px;background-image:url(images/uarrow2.png);}
