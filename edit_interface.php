@@ -1498,6 +1498,9 @@ case 'editnoteaction':
 		->setPageTitle(WT_I18N::translate('Edit shared note'))
 		->pageHeader();
 
+	// We have user-supplied data in a replacement string - escape it against backreferences
+	$note = str_replace(array('\\', '$'), array('\\\\', '\\$'), $note);
+
 	$gedrec = preg_replace(
 		'/^0 @' . $record->getXref() . '@ NOTE.*(\n1 CONT.*)*/',
 		'0 @' . $record->getXref() . '@ NOTE ' . preg_replace("/\r?\n/", "\n1 CONT ", $note),
@@ -2541,7 +2544,7 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 				if ($famtag=='WIFE' && preg_match('/\/(.*)\//', $indi_name, $match)) {
 					if ($SURNAME_TRADITION=='polish') {
 						$match[1]=preg_replace(array('/ski$/', '/cki$/', '/dzki$/', '/żki$/'), array('ska', 'cka', 'dzka', 'żka'), $match[1]);
-					} else if ($SURNAME_TRADITION=='lithuanian') {
+					} elseif ($SURNAME_TRADITION=='lithuanian') {
 						$match[1]=preg_replace(array('/as$/', '/is$/', '/ys$/', '/us$/'), array('ienė', 'ienė', 'ienė', 'ienė'), $match[1]);
 					}
 					$new_marnm=$match[1];
@@ -2552,7 +2555,7 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 					$name_fields['SURN']=$match[2];
 					if ($SURNAME_TRADITION=='polish' && $gender=='F') {
 						$match[2]=preg_replace(array('/ski$/', '/cki$/', '/dzki$/', '/żki$/'), array('ska', 'cka', 'dzka', 'żka'), $match[2]);
-					} else if ($SURNAME_TRADITION=='lithuanian' && $gender=='F') {
+					} elseif ($SURNAME_TRADITION=='lithuanian' && $gender=='F') {
 						$match[2]=preg_replace(array('/as$/', '/a$/', '/is$/', '/ys$/', '/ius$/', '/us$/'), array('aitė', 'aitė', 'ytė', 'ytė', 'iūtė', 'utė'), $match[2]);
 					}
 					$name_fields['SPFX']=trim($match[1]);
@@ -2564,7 +2567,7 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 					$name_fields['SURN']=$match[2];
 					if ($SURNAME_TRADITION=='polish' && $gender=='F') {
 						$match[2]=preg_replace(array('/ski$/', '/cki$/', '/dzki$/', '/żki$/'), array('ska', 'cka', 'dzka', 'żka'), $match[2]);
-					} else if ($SURNAME_TRADITION=='lithuanian' && $gender=='F') {
+					} elseif ($SURNAME_TRADITION=='lithuanian' && $gender=='F') {
 						$match[2]=preg_replace(array('/as$/', '/a$/', '/is$/', '/ys$/', '/ius$/', '/us$/'), array('aitė', 'aitė', 'ytė', 'ytė', 'iūtė', 'utė'), $match[2]);
 					}
 					$name_fields['SPFX']=trim($match[1]);
@@ -2575,7 +2578,7 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 				if ($famtag=='HUSB' && preg_match('/\/((?:[a-z]{2,3} )*)(.*)\//i', $indi_name, $match)) {
 					if ($SURNAME_TRADITION=='polish' && $gender=='M') {
 						$match[2]=preg_replace(array('/ska$/', '/cka$/', '/dzka$/', '/żka$/'), array('ski', 'cki', 'dzki', 'żki'), $match[2]);
-					} else if ($SURNAME_TRADITION=='lithuanian') {
+					} elseif ($SURNAME_TRADITION=='lithuanian') {
 						// not a complete list as the rules are somewhat complicated but will do 95% correctly
 						$match[2]=preg_replace(array('/aitė$/', '/ytė$/', '/iūtė$/', '/utė$/'), array('as', 'is', 'ius', 'us'), $match[2]);
 					}
