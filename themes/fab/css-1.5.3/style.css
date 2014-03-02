@@ -2758,11 +2758,6 @@ a.icon-larrow:hover {
 	height: 48px;
 	background-image: url(images/lifespan-up.png);
 }
-.icon-mapquest {
-	width: 16px;
-	height: 16px;
-	background-image: url(images/mapquest.png);
-}
 .icon-media {
 	width: 24px;
 	height: 24px;
@@ -2817,6 +2812,11 @@ a.icon-larrow:hover {
 	width: 16px;
 	height: 16px;
 	background-image: url(images/notes.png);
+}
+.icon-osm {
+	width: 16px;
+	height: 16px;
+	background-image: url(images/osm.png);
 }
 .icon-patriarch {
 	width: 24px;
@@ -2972,11 +2972,6 @@ a.icon-rarrow:hover {
 	width: 24px;
 	height: 24px;
 	background-image: url(images/source.png);
-}
-.icon-terraserver {
-	width: 16px;
-	height: 16px;
-	background-image: url(images/terraserver.png);
 }
 .icon-target {
 	width: 15px;
