@@ -2146,35 +2146,35 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					google.maps.event.addListener(infowindow, 'domready', function() {
 		  	    //jQuery code here
 						jQuery('#EV').click(function() {
-							document.tabLayerEV = eval('document.getElementById("EV")');
+							document.tabLayerEV = document.getElementById("EV");
 							document.tabLayerEV.style.background = '#ffffff';
 							document.tabLayerEV.style.paddingBottom = '1px';
 							<?php if ($STREETVIEW) { ?>
-							document.tabLayerSV = eval('document.getElementById("SV")');
+							document.tabLayerSV = document.getElementById("SV");
 							document.tabLayerSV.style.background = '#cccccc';
 							document.tabLayerSV.style.paddingBottom = '0px';
 							<?php } ?>
-							document.panelLayer1 = eval('document.getElementById("pane1")');
+							document.panelLayer1 = document.getElementById("pane1");
 							document.panelLayer1.style.display = 'block';
 							<?php if ($STREETVIEW) { ?>
-							document.panelLayer2 = eval('document.getElementById("pane2")');
+							document.panelLayer2 = document.getElementById("pane2");
 							document.panelLayer2.style.display = 'none';
 							<?php } ?>
 						});
 
 						jQuery('#SV').click(function() {
-							document.tabLayerEV = eval('document.getElementById("EV")');
+							document.tabLayerEV = document.getElementById("EV");
 							document.tabLayerEV.style.background = '#cccccc';
 							document.tabLayerEV.style.paddingBottom = '0px';
 							<?php if ($STREETVIEW) { ?>
-							document.tabLayerSV = eval('document.getElementById("SV")');
+							document.tabLayerSV = document.getElementById("SV");
 							document.tabLayerSV.style.background = '#ffffff';
 							document.tabLayerSV.style.paddingBottom = '1px';
 							<?php } ?>
-							document.panelLayer1 = eval('document.getElementById("pane1")');
+							document.panelLayer1 = document.getElementById("pane1");
 							document.panelLayer1.style.display = 'none';
 							<?php if ($STREETVIEW) { ?>
-							document.panelLayer2 = eval('document.getElementById("pane2")');
+							document.panelLayer2 = document.getElementById("pane2");
 							document.panelLayer2.style.display = 'block';
 							<?php } ?>
 							var panorama = new google.maps.StreetViewPanorama(document.getElementById("pano"), panoramaOptions);
