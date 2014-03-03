@@ -1789,7 +1789,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		return $placelist;
 	}
 
-	private function create_possible_place_names ($placename, $level) {
+	private function create_possible_place_names($placename, $level) {
 		$retlist = array();
 		if ($level<=9) {
 			$retlist = $this->rem_prefix_postfix_from_placename($this->getSetting('GM_PREFIX_' . $level), $this->getSetting('GM_POSTFIX_' . $level), $placename, $retlist); // Remove both
@@ -1813,7 +1813,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		return $desc;
 	}
 
-	private function get_lati_long_placelocation ($place) {
+	private function get_lati_long_placelocation($place) {
 		$parent = explode (',', $place);
 		$parent = array_reverse($parent);
 		$place_id = 0;
@@ -2146,35 +2146,35 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					google.maps.event.addListener(infowindow, 'domready', function() {
 		  	    //jQuery code here
 						jQuery('#EV').click(function() {
-							document.tabLayerEV = eval('document.getElementById("EV")');
+							document.tabLayerEV = document.getElementById("EV");
 							document.tabLayerEV.style.background = '#ffffff';
 							document.tabLayerEV.style.paddingBottom = '1px';
 							<?php if ($STREETVIEW) { ?>
-							document.tabLayerSV = eval('document.getElementById("SV")');
+							document.tabLayerSV = document.getElementById("SV");
 							document.tabLayerSV.style.background = '#cccccc';
 							document.tabLayerSV.style.paddingBottom = '0px';
 							<?php } ?>
-							document.panelLayer1 = eval('document.getElementById("pane1")');
+							document.panelLayer1 = document.getElementById("pane1");
 							document.panelLayer1.style.display = 'block';
 							<?php if ($STREETVIEW) { ?>
-							document.panelLayer2 = eval('document.getElementById("pane2")');
+							document.panelLayer2 = document.getElementById("pane2");
 							document.panelLayer2.style.display = 'none';
 							<?php } ?>
 						});
 
 						jQuery('#SV').click(function() {
-							document.tabLayerEV = eval('document.getElementById("EV")');
+							document.tabLayerEV = document.getElementById("EV");
 							document.tabLayerEV.style.background = '#cccccc';
 							document.tabLayerEV.style.paddingBottom = '0px';
 							<?php if ($STREETVIEW) { ?>
-							document.tabLayerSV = eval('document.getElementById("SV")');
+							document.tabLayerSV = document.getElementById("SV");
 							document.tabLayerSV.style.background = '#ffffff';
 							document.tabLayerSV.style.paddingBottom = '1px';
 							<?php } ?>
-							document.panelLayer1 = eval('document.getElementById("pane1")');
+							document.panelLayer1 = document.getElementById("pane1");
 							document.panelLayer1.style.display = 'none';
 							<?php if ($STREETVIEW) { ?>
-							document.panelLayer2 = eval('document.getElementById("pane2")');
+							document.panelLayer2 = document.getElementById("pane2");
 							document.panelLayer2.style.display = 'block';
 							<?php } ?>
 							var panorama = new google.maps.StreetViewPanorama(document.getElementById("pano"), panoramaOptions);
@@ -2941,14 +2941,14 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			$controller->addInlineJavascript('map.maxZoom=6;');
 			// echo "zoomlevel = map.getBoundsZoomLevel(bounds);\n";
 			// echo " map.setCenter(new google.maps.LatLng(0, 0), zoomlevel+5);\n";
-		} else if ($numfound<2 && !isset($levelo[($level-2)])) {
+		} elseif ($numfound<2 && !isset($levelo[($level-2)])) {
 			// echo "zoomlevel = map.getBoundsZoomLevel(bounds);\n";
 			// echo " map.setCenter(new google.maps.LatLng(0, 0), zoomlevel+6);\n";
-		} else if ($level==2) {
+		} elseif ($level==2) {
 			$controller->addInlineJavascript('map.maxZoom=10;');
 			// echo "zoomlevel = map.getBoundsZoomLevel(bounds);\n";
 			// echo " map.setCenter(new google.maps.LatLng(0, 0), zoomlevel+8);\n";
-		} else if ($numfound<2 && $level>1) {
+		} elseif ($numfound<2 && $level>1) {
 			// echo "map.maxZoom=".$GM_MAX_ZOOM.";";
 			// echo "zoomlevel = map.getBoundsZoomLevel(bounds);\n";
 			// echo " map.setCenter(new google.maps.LatLng(0, 0), zoomlevel+18);\n";
@@ -3085,7 +3085,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		foreach ($rows as $row) {
 			echo $level,';',$prefix,$row->pl_place,$suffix,';',$row->pl_long,';',$row->pl_lati,';',$row->pl_zoom,';',$row->pl_icon,"\r\n";
 			if ($level < $maxLevel) {
-				outputLevel($row->pl_id);
+				$this->outputLevel($row->pl_id);
 			}
 		}
 	}
@@ -3127,7 +3127,6 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				->setPageTitle(WT_I18N::translate('Geographic data'))
 				->addInlineJavascript('$("<link>", {rel: "stylesheet", type: "text/css", href: "' . WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/css/wt_v3_googlemap.css"}).appendTo("head");')
 				->pageHeader();
-
 
 		$where_am_i=$this->place_id_to_hierarchy($placeid);
 		$level=count($where_am_i);
@@ -3972,7 +3971,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			if ($maxLevel>7) echo '"', WT_I18N::translate('Place'), '";';
 			echo '"', WT_I18N::translate('Longitude'), '";"', WT_I18N::translate('Latitude'), '";';
 			echo '"', WT_I18N::translate('Zoom level'), '";"', WT_I18N::translate('Icon'), '";', WT_EOL;
-			outputLevel($parent);
+			$this->outputLevel($parent);
 			exit;
 		}
 
@@ -4057,11 +4056,11 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					$placelistUniq[$j]['lati'] = $place['lati'];
 					$placelistUniq[$j]['long'] = $place['long'];
 					$j = $j + 1;
-				} else if (($place['place'] == $prevPlace) && (($place['lati'] != $prevLati) || ($place['long'] != $prevLong))) {
+				} elseif (($place['place'] == $prevPlace) && (($place['lati'] != $prevLati) || ($place['long'] != $prevLong))) {
 					if (($placelistUniq[$j-1]['lati'] == 0) || ($placelistUniq[$j-1]['long'] == 0)) {
 						$placelistUniq[$j-1]['lati'] = $place['lati'];
 						$placelistUniq[$j-1]['long'] = $place['long'];
-					} else if (($place['lati'] != '0') || ($place['long'] != '0')) {
+					} elseif (($place['lati'] != '0') || ($place['long'] != '0')) {
 						echo 'Difference: previous value = ', $prevPlace, ', ', $prevLati, ', ', $prevLong, ' current = ', $place['place'], ', ', $place['lati'], ', ', $place['long'], '<br>';
 					}
 				}
@@ -4234,13 +4233,13 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					$placelistUniq[$j]['zoom'] = $place['zoom'];
 					$placelistUniq[$j]['icon'] = $place['icon'];
 					$j = $j + 1;
-				} else if (($place['place'] == $prevPlace) && (($place['lati'] != $prevLati) || ($place['long'] != $prevLong))) {
+				} elseif (($place['place'] == $prevPlace) && (($place['lati'] != $prevLati) || ($place['long'] != $prevLong))) {
 					if (($placelistUniq[$j-1]['lati'] == 0) || ($placelistUniq[$j-1]['long'] == 0)) {
 						$placelistUniq[$j-1]['lati'] = $place['lati'];
 						$placelistUniq[$j-1]['long'] = $place['long'];
 						$placelistUniq[$j-1]['zoom'] = $place['zoom'];
 						$placelistUniq[$j-1]['icon'] = $place['icon'];
-					} else if (($place['lati'] != '0') || ($place['long'] != '0')) {
+					} elseif (($place['lati'] != '0') || ($place['long'] != '0')) {
 						echo 'Difference: previous value = ', $prevPlace, ', ', $prevLati, ', ', $prevLong, ' current = ', $place['place'], ', ', $place['lati'], ', ', $place['long'], '<br>';
 					}
 				}
