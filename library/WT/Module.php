@@ -28,7 +28,8 @@ abstract class WT_Module {
 	}
 
 	public function __toString() {
-		return $this->_title;
+		// If a derived class has failed to call parent::__construct() then choose a default name
+		return $this->_title ?: get_class();
 	}
 
 	// Each module must provide the following functions
