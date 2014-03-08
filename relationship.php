@@ -179,7 +179,6 @@ if ($person1 && $person2) {
 			$colNum = 0;
 			$rowNum = 0;
 			$previous='';
-			$change_count=''; // shift right on alternate change of direction
 			$xs = $Dbxspacing+70;
 			$ys = $Dbyspacing+50;
 			// step1 = tree depth calculation
@@ -261,7 +260,7 @@ if ($person1 && $person2) {
 						$liney = $yoffset+$Dbheight;
 					}
 					// need to draw a joining line ?
-					if ($previous=='child' && ($change_count++ % 2) == 0) {
+					if ($previous=='child') {
 						$joinh = 3;
 						$joinw = $xs/2+2;
 						$xoffset += $Dbwidth+$xs;
@@ -323,7 +322,7 @@ if ($person1 && $person2) {
 						$liney = $yoffset+$Dbheight;
 					}
 					// need to draw a joining line ?
-					if ($previous=='parent' && ($change_count++ % 2) == 0) {
+					if ($previous=='parent') {
 						$joinh = 3;
 						$joinw = $xs/2+2;
 						$xoffset += $Dbwidth+$xs;
