@@ -179,6 +179,7 @@ if ($person1 && $person2) {
 			$colNum = 0;
 			$rowNum = 0;
 			$previous='';
+			$change_count=''; // shift right on alternate change of direction
 			$xs = $Dbxspacing+70;
 			$ys = $Dbyspacing+50;
 			// step1 = tree depth calculation
@@ -260,7 +261,7 @@ if ($person1 && $person2) {
 						$liney = $yoffset+$Dbheight;
 					}
 					// need to draw a joining line ?
-					if ($previous=='child') {
+					if ($previous=='child' && ($change_count++ % 2) == 0) {
 						$joinh = 3;
 						$joinw = $xs/2+2;
 						$xoffset += $Dbwidth+$xs;
@@ -280,8 +281,9 @@ if ($person1 && $person2) {
 						$joiny = $joiny+$asc*$lh;
 						echo "<div id=\"joinb", $index, "\" style=\"position:absolute; ", $TEXT_DIRECTION=='ltr'?'left':'right', ':', $joinx + $Dbxspacing, 'px; top:', $joiny + $Dbyspacing, "px;\" align=\"center\"><img src=\"", $WT_IMAGES["hline"], "\" align=\"left\" width=\"", $joinw, "\" height=\"", $joinh, "\" alt=\"\"></div>";
 					}
+					else $change_count=''; //when we change persons and hit View, path_to_find has to be set to 0
 					$previous='parent';
-					break;
+					break;	
 				case 'brother':
 				case 'sister':
 				case 'sibling':
@@ -322,7 +324,7 @@ if ($person1 && $person2) {
 						$liney = $yoffset+$Dbheight;
 					}
 					// need to draw a joining line ?
-					if ($previous=='parent') {
+					if ($previous=='parent' && ($change_count++ % 2) == 0) {
 						$joinh = 3;
 						$joinw = $xs/2+2;
 						$xoffset += $Dbwidth+$xs;
@@ -342,6 +344,7 @@ if ($person1 && $person2) {
 						$joiny = $joiny-$asc*$lh;
 						echo '<div id="joinb', $index, '" style="position:absolute; ', $TEXT_DIRECTION=='ltr'?'left':'right', ':', $joinx+$Dbxspacing, 'px; top:', $joiny+$Dbyspacing, 'px;" align="center"><img src="', $WT_IMAGES['hline'], '" align="left" width="', $joinw, '" height="', $joinh, '" alt=""></div>';
 					}
+					else $change_count=''; //when we change persons and hit View, path_to_find has to be set to 0
 					$previous='child';
 					break;
 				}
