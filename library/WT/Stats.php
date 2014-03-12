@@ -2386,9 +2386,9 @@ class WT_Stats {
 				" married.d_julianday1>birth.d_julianday1 AND birth.d_julianday1<>0 ".
 				"UNION ALL ".
 				"SELECT ".
-				" ROUND(AVG(married.d_julianday2-birth.d_julianday1-182.5)/365.25,1) AS age, ".
-				" FLOOR(married.d_year/100+1) AS century, ".
-				" 'F' AS sex ".
+				" fam.f_id, ".
+				" birth.d_gid, ".
+				" married.d_julianday2-birth.d_julianday1 AS age ".
 				"FROM `##dates` AS married ".
 				"JOIN `##families` AS fam ON (married.d_gid=fam.f_id AND married.d_file=fam.f_file) ".
 				"JOIN `##dates` AS birth ON (birth.d_gid=fam.f_wife AND birth.d_file=fam.f_file) ".
