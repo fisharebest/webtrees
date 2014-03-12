@@ -281,9 +281,9 @@ if ($person1 && $person2) {
 						$joiny = $joiny+$asc*$lh;
 						echo "<div id=\"joinb", $index, "\" style=\"position:absolute; ", $TEXT_DIRECTION=='ltr'?'left':'right', ':', $joinx + $Dbxspacing, 'px; top:', $joiny + $Dbyspacing, "px;\" align=\"center\"><img src=\"", $WT_IMAGES["hline"], "\" align=\"left\" width=\"", $joinw, "\" height=\"", $joinh, "\" alt=\"\"></div>";
 					}
-					else $change_count=''; //when we change persons and hit View, path_to_find has to be set to 0
+					else $change_count='';
 					$previous='parent';
-					break;	
+					break;
 				case 'brother':
 				case 'sister':
 				case 'sibling':
@@ -344,7 +344,7 @@ if ($person1 && $person2) {
 						$joiny = $joiny-$asc*$lh;
 						echo '<div id="joinb', $index, '" style="position:absolute; ', $TEXT_DIRECTION=='ltr'?'left':'right', ':', $joinx+$Dbxspacing, 'px; top:', $joiny+$Dbyspacing, 'px;" align="center"><img src="', $WT_IMAGES['hline'], '" align="left" width="', $joinw, '" height="', $joinh, '" alt=""></div>';
 					}
-					else $change_count=''; //when we change persons and hit View, path_to_find has to be set to 0
+					else $change_count='';
 					$previous='child';
 					break;
 				}
