@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report> 
+	<!--  $Id: lukasz $ -->
+	<Description><var var="WT_I18N::translate('Print a pedigree chart on a single page.')" /></Description>
+	<Title><var var="WT_I18N::translate('Pedigree - single page')" /></Title>	
+	<Input name="pid" lookup="INDI" type="text" default=""><var var="WT_I18N::translate('Enter Individual ID')" /></Input>
+	<Input name="maxgen" type="select" default="4" options="1=>WT_I18N::number(1)|2=>WT_I18N::number(2)|3=>WT_I18N::number(3)|4=>WT_I18N::number(4)|5=>WT_I18N::number(5)|6=>WT_I18N::number(6)|7=>WT_I18N::number(7)|8=>WT_I18N::number(8)|9=>WT_I18N::number(9)|10=>WT_I18N::number(10)|11=>WT_I18N::number(11)|12=>WT_I18N::number(12)|13=>WT_I18N::number(13)|14=>WT_I18N::number(14)|15=>WT_I18N::number(15)"><var var="WT_I18N::translate('Generations')"/></Input>
+	<Input name="fonts" type="select" default="dejavusans" options="arialunicid0=>WT_I18N::translate_c('font name', 'Arial')|dejavusans=>WT_I18N::translate_c('font name', 'DejaVu')|helvetica=>WT_I18N::translate_c('font name', 'Helvetica')"><var var="WT_I18N::translate('Font')"/></Input>
+	<Input name="pageorient" type="select" default="portrait" options="landscape=>WT_I18N::translate('Landscape')|portrait=>WT_I18N::translate('Portrait')"><var var="WT_I18N::translate('Orientation')" /></Input>
+	<Input name="boxStyle" type="select" default="normal" options="normal=>WT_I18N::translate('Normal')|enhanced=>WT_I18N::translate('Enhanced')"><var var="WT_I18N::translate('Style of boxes')" /></Input>
+	<Input name="connectLineWidth" type="select" default="0.8" options="0=>WT_I18N::number(0)|0.2=>WT_I18N::number(0.2,1)|0.4=>WT_I18N::number(0.4,1)|0.6=>WT_I18N::number(0.6,1)|0.8=>WT_I18N::number(0.8,1)|1=>WT_I18N::number(1)"><var var="WT_I18N::translate('Line thickness')" /></Input>
+	<Input name="compress" type="select" default="full" options="full=>WT_I18N::translate('full')|medium=>WT_I18N::translate('medium')|none=>WT_I18N::translate('none')"><var var="WT_I18N::translate('Compress')" /></Input>
+	<Input name="showInfos" type="checkbox" default="1"><var var="WT_I18N::translate('Show details')" /></Input>
+	<Input name="showSiblings" type="checkbox" default="1"><var var="WT_I18N::translate('Show siblings')" /></Input>
+	<Input name="showSpouses" type="select" default="none" options="none=>WT_I18N::translate('None')|show_spouses=>WT_I18N::translate('Show spouses')|spouse-family=>WT_I18N::translate('Spouses and children')"><var var="WT_I18N::translate('Descendants')" /></Input>
+	<Input name="SHOW_HIGHLIGHT_IMAGES" type="checkbox" default="1" ><var var="WT_I18N::translate('Show highlight images in individual boxes')" /></Input>
+	<Input name="SHOW_EMPTY_BOXES" type="checkbox" default="0"><var var="WT_I18N::translate('Show empty boxes')" /></Input>
+	<!--	<Input name="DEBUG" type="text">DEBUG</Input> -->
+</Report> 
