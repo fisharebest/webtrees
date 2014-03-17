@@ -66,7 +66,7 @@ jQuery("#spouseid, input[id*=pid], input[id*=PID], input[id^=gedcomid], input[id
 
 // ASSO
 jQuery(".ASSO").autocomplete({
-	source: function(request, response) {jQuery.getJSON("autocomplete.php?field=ASSO", {term:request.term, pid:jQuery("input[name=pid]").val(), event_date:jQuery("input[id$=_DATE]").val()}, response);},
+	source: function(request, response) {jQuery.getJSON("autocomplete.php?field=ASSO", {term:request.term, pid:jQuery("input[name=pid]").val(), event_date:jQuery("input[id*=_DATE]").val()}, response);},
 	html: true
 });
 
