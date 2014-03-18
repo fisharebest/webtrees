@@ -3102,7 +3102,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			while (false !== ($entry = $dir->read())) {
 				if ($entry!='.' && $entry!='..' && $entry!='.svn') {
 					if (is_dir($path.'/'.$entry)) {
-						findFiles($path.'/'.$entry);
+						$this->findFiles($path.'/'.$entry);
 					} elseif (strstr($entry, '.csv')!==false) {
 						$placefiles[] = preg_replace('~'.WT_MODULES_DIR.'googlemap/extra~', '', $path).'/'.$entry;
 					}
@@ -4120,7 +4120,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 		if ($action=='ImportFile') {
 			$placefiles = array();
-			findFiles(WT_MODULES_DIR.'googlemap/extra');
+			$this->findFiles(WT_MODULES_DIR.'googlemap/extra');
 			sort($placefiles);
 		?>
 		<form method="post" enctype="multipart/form-data" id="importfile" name="importfile" action="module.php?mod=googlemap&amp;mod_action=admin_places&amp;action=ImportFile2">
