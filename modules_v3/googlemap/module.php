@@ -53,22 +53,26 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		}
 
 		// Set default values
-		// TODO: do this once only, in a db_schema upgrade script.
-		$this->setSetting('GM_MAP_TYPE',         $this->getSetting('GM_MAP_TYPE',         'G_NORMAL_MAP'));  // G_PHYSICAL_MAP, G_NORMAL_MAP, G_SATELLITE_MAP, G_HYBRID_MAP
-		$this->setSetting('GM_MAX_ZOOM',         $this->getSetting('GM_MAX_ZOOM',         '20'));     // max zoom level
-		$this->setSetting('GM_MIN_ZOOM',         $this->getSetting('GM_MIN_ZOOM',         '2'));      // min zoom level
-		$this->setSetting('GM_PRECISION_0',      $this->getSetting('GM_PRECISION_0',      '0'));      // Country level
-		$this->setSetting('GM_PRECISION_1',      $this->getSetting('GM_PRECISION_1',      '1'));      // State level
-		$this->setSetting('GM_PRECISION_2',      $this->getSetting('GM_PRECISION_2',      '2'));      // City level
-		$this->setSetting('GM_PRECISION_3',      $this->getSetting('GM_PRECISION_3',      '3'));      // Neighborhood level
-		$this->setSetting('GM_PRECISION_4',      $this->getSetting('GM_PRECISION_4',      '4'));      // House level
-		$this->setSetting('GM_PRECISION_5',      $this->getSetting('GM_PRECISION_5',      '5'));      // Max prcision level
-		$this->setSetting('GM_XSIZE',            $this->getSetting('GM_XSIZE',            '600'));    // X-size of Google map
-		$this->setSetting('GM_YSIZE',            $this->getSetting('GM_YSIZE',            '400'));    // Y-size of Google map
-		$this->setSetting('GM_PH_XSIZE',         $this->getSetting('GM_PH_XSIZE',         '500'));    // X-size of Place Hierarchy Google map
-		$this->setSetting('GM_PH_YSIZE',         $this->getSetting('GM_PH_YSIZE',         '350'));    // Y-size of Place Hierarchy Google map
-		$this->setSetting('GM_PH_MARKER',        $this->getSetting('GM_PH_MARKER',        'G_FLAG')); // Possible values: G_FLAG = Flag, G_DEFAULT_ICON = Standard icon
-		$this->setSetting('GM_DISP_SHORT_PLACE', $this->getSetting('GM_DISP_SHORT_PLACE', '0'));      // Display full place name or only the actual level name
+		try {
+			// TODO: do this once only, in a db_schema upgrade script?
+			$this->setSetting('GM_MAP_TYPE',         $this->getSetting('GM_MAP_TYPE',         'G_NORMAL_MAP'));  // G_PHYSICAL_MAP, G_NORMAL_MAP, G_SATELLITE_MAP, G_HYBRID_MAP
+			$this->setSetting('GM_MAX_ZOOM',         $this->getSetting('GM_MAX_ZOOM',         '20'));     // max zoom level
+			$this->setSetting('GM_MIN_ZOOM',         $this->getSetting('GM_MIN_ZOOM',         '2'));      // min zoom level
+			$this->setSetting('GM_PRECISION_0',      $this->getSetting('GM_PRECISION_0',      '0'));      // Country level
+			$this->setSetting('GM_PRECISION_1',      $this->getSetting('GM_PRECISION_1',      '1'));      // State level
+			$this->setSetting('GM_PRECISION_2',      $this->getSetting('GM_PRECISION_2',      '2'));      // City level
+			$this->setSetting('GM_PRECISION_3',      $this->getSetting('GM_PRECISION_3',      '3'));      // Neighborhood level
+			$this->setSetting('GM_PRECISION_4',      $this->getSetting('GM_PRECISION_4',      '4'));      // House level
+			$this->setSetting('GM_PRECISION_5',      $this->getSetting('GM_PRECISION_5',      '5'));      // Max prcision level
+			$this->setSetting('GM_XSIZE',            $this->getSetting('GM_XSIZE',            '600'));    // X-size of Google map
+			$this->setSetting('GM_YSIZE',            $this->getSetting('GM_YSIZE',            '400'));    // Y-size of Google map
+			$this->setSetting('GM_PH_XSIZE',         $this->getSetting('GM_PH_XSIZE',         '500'));    // X-size of Place Hierarchy Google map
+			$this->setSetting('GM_PH_YSIZE',         $this->getSetting('GM_PH_YSIZE',         '350'));    // Y-size of Place Hierarchy Google map
+			$this->setSetting('GM_PH_MARKER',        $this->getSetting('GM_PH_MARKER',        'G_FLAG')); // Possible values: G_FLAG = Flag, G_DEFAULT_ICON = Standard icon
+			$this->setSetting('GM_DISP_SHORT_PLACE', $this->getSetting('GM_DISP_SHORT_PLACE', '0'));      // Display full place name or only the actual level name
+		} catch (Exception $ex) {
+			// Perhaps the module hasn't been installed yet (no entry in wt_modules)
+		}
 	}
 
 	// Extend WT_Module
