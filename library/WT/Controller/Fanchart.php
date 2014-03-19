@@ -360,6 +360,7 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 			$image_title=WT_I18N::translate('Fan chart of %s', strip_tags($name));
 			return $html.$imagemap.'<p align="center"><img src="'.WT_SCRIPT_NAME.'?rootid='.$this->rootid.'&amp;fan_style='.$this->fan_style.'&amp;generations='.$this->generations.'&amp;fan_width='.$this->fan_width.'&amp;img=1" width="'.$fanw.'" height="'.$fanh.'" alt="'.$image_title.'" title="'.$image_title.'" usemap="#fanmap"></p>';
 		case 'png':
+			header('Content-Type: image/png');
 			ImageStringUp($image, 1, $fanw-10, $fanh/3, WT_SERVER_NAME.WT_SCRIPT_PATH, $color);
 			ImagePng($image);
 			ImageDestroy($image);
