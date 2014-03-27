@@ -28,12 +28,14 @@ PNG_RTL_FILES=$(patsubst %-ltr.css,%-rtl.png,$(PNG_LTR_FILES))
 # Use maximum compression
 GZIP=gzip -9
 
-.PHONY: clean update check build/webtrees
+.PHONY: clean update check vendor build/webtrees
 
 ################################################################################
 # Update 
 ################################################################################
 update: $(MO_FILES) $(CSS_RTL_FILES) $(PNG_RTL_FILES)
+
+vendor:
 	composer.phar update
 	composer.phar dump-autoload --optimize
 
