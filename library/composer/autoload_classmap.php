@@ -2369,7 +2369,7 @@ return array(
     'Zend_Test_PHPUnit_Constraint_DomQuery' => $vendorDir . '/bombayworks/zendframework1/library/Zend/Test/PHPUnit/Constraint/DomQuery34.php',
     'Zend_Test_PHPUnit_Constraint_Exception' => $vendorDir . '/bombayworks/zendframework1/library/Zend/Test/PHPUnit/Constraint/Exception.php',
     'Zend_Test_PHPUnit_Constraint_Redirect' => $vendorDir . '/bombayworks/zendframework1/library/Zend/Test/PHPUnit/Constraint/Redirect37.php',
-    'Zend_Test_PHPUnit_Constraint_ResponseHeader' => $vendorDir . '/bombayworks/zendframework1/library/Zend/Test/PHPUnit/Constraint/ResponseHeader37.php',
+    'Zend_Test_PHPUnit_Constraint_ResponseHeader' => $vendorDir . '/bombayworks/zendframework1/library/Zend/Test/PHPUnit/Constraint/ResponseHeader34.php',
     'Zend_Test_PHPUnit_ControllerTestCase' => $vendorDir . '/bombayworks/zendframework1/library/Zend/Test/PHPUnit/ControllerTestCase.php',
     'Zend_Test_PHPUnit_DatabaseTestCase' => $vendorDir . '/bombayworks/zendframework1/library/Zend/Test/PHPUnit/DatabaseTestCase.php',
     'Zend_Test_PHPUnit_Db_Connection' => $vendorDir . '/bombayworks/zendframework1/library/Zend/Test/PHPUnit/Db/Connection.php',
