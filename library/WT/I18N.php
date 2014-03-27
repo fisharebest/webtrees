@@ -235,7 +235,7 @@ class WT_I18N {
 	// Generate i18n markup for the <html> tag, e.g. lang="ar" dir="rtl"
 	public static function html_markup() {
 		$localeData=Zend_Locale_Data::getList(self::$locale, 'layout');
-		$dir=$localeData['characters']=='right-to-left' ? 'rtl' : 'ltr';
+		$dir=$localeData['characterOrder']=='right-to-left' ? 'rtl' : 'ltr';
 		list($lang) = preg_split('/[-_@]/', self::$locale);
 		return 'lang="'.$lang.'" dir="'.$dir.'"';
 	}

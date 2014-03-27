@@ -34,6 +34,8 @@ GZIP=gzip -9
 # Update 
 ################################################################################
 update: $(MO_FILES) $(CSS_RTL_FILES) $(PNG_RTL_FILES)
+	composer.phar update
+	composer.phar dump-autoload --optimize
 
 ################################################################################
 # Check for PHP syntax errors

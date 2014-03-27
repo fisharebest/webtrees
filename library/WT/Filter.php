@@ -109,9 +109,6 @@ class WT_Filter {
 		$parser->no_markup            = true;
 		$text = $parser->transform($text);
 
-		// HTMLPurifier needs its own autoloader
-		require_once WT_ROOT . 'library/htmlpurifier-4.6.0/library/HTMLPurifier.auto.php';
-
 		// HTMLPurifier needs somewhere to write temporary files
 		$HTML_PURIFIER_CACHE_DIR = WT_DATA_DIR . 'html_purifier_cache';
 

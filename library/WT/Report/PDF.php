@@ -28,8 +28,6 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-require_once WT_ROOT."library/tcpdf/tcpdf.php";
-
 /**
 * Main WT Report Class for PDF
 *
