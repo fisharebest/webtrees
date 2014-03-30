@@ -4,3 +4,4 @@ cache/
 config.ini.php
 html_purifier_cache/
 media/
+language/
