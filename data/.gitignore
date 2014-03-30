@@ -1,6 +1,6 @@
-cache/
-html_purifier_cache/
-config.ini.php
-language/
-media/
 *.ged
+*.GED
+cache/
+config.ini.php
+html_purifier_cache/
+media/
