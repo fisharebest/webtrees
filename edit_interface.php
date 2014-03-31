@@ -2272,7 +2272,7 @@ function keep_chan(WT_GedcomRecord $record=null) {
 			'<input type="checkbox" name="keep_chan" value="1"' . $checked . '>' .
 			WT_I18N::translate('Do not update the “last change” record') .
 			help_link('no_update_CHAN') .
-			$details;
+			$details .
 			'</td></tr>';
 	} else {
 		return '';
