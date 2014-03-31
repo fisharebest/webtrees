@@ -1805,18 +1805,6 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		return $retlist;
 	}
 
-	private function abbreviate($text) {
-		if (utf8_strlen($text)>13) {
-			if (trim(utf8_substr($text, 10, 1))!='') {
-				$desc = utf8_substr($text, 0, 11).'.';
-			} else {
-				$desc = trim(utf8_substr($text, 0, 11));
-			}
-		}
-		else $desc = $text;
-		return $desc;
-	}
-
 	private function get_lati_long_placelocation($place) {
 		$parent = explode (',', $place);
 		$parent = array_reverse($parent);
@@ -2633,13 +2621,6 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			$i--;
 		}
 		return $levelo;
-	}
-
-	private function check_place($place_names, $place) {
-		if ($place == "Unknown") $place="";
-		if (in_array($place, $place_names)) {
-			return true;
-		}
 	}
 
 	private function print_how_many_people($level, $parent) {
