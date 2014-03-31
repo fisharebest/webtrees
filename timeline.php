@@ -303,7 +303,7 @@ if (count($controller->people)>0) {
 		<img src="<?php echo $WT_IMAGES["vline"]; ?>" width="3" height="<?php echo ($baseyoffset+(($controller->topyear-$controller->baseyear)*$controller->scale)); ?>" alt="">
 	</div>
 	<!-- print divs for the grid -->
-	<div id="scale<?php echo $controller->baseyear; ?>" style="font-family: Arial; position:absolute; <?php echo ($TEXT_DIRECTION =="ltr"?"left: $basexoffset":"right: $basexoffset"); ?>px; top: <?php echo ($baseyoffset-5); ?>px; font-size: 7pt; text-align: <?php echo ($TEXT_DIRECTION =="ltr"?"left":"right"); ?>;">
+	<div id="scale<?php echo $controller->baseyear; ?>" style="position:absolute; <?php echo ($TEXT_DIRECTION =="ltr"?"left: $basexoffset":"right: $basexoffset"); ?>px; top: <?php echo ($baseyoffset-5); ?>px; font-size: 7pt; text-align: <?php echo ($TEXT_DIRECTION =="ltr"?"left":"right"); ?>;">
 	<?php echo $controller->baseyear."--"; ?>
 	</div>
 	<?php
@@ -312,12 +312,12 @@ if (count($controller->people)>0) {
 	if ($mod<1) $mod = 1;
 	for ($i=$controller->baseyear+1; $i<$controller->topyear; $i++) {
 		if ($i % $mod == 0)  {
-			echo "<div id=\"scale$i\" style=\"font-family: Arial; position:absolute; ".($TEXT_DIRECTION =="ltr"?"left: $basexoffset":"right: $basexoffset")."px; top:".($baseyoffset+(($i-$controller->baseyear)*$controller->scale)-$controller->scale/2)."px; font-size: 7pt; text-align:".($TEXT_DIRECTION =="ltr"?"left":"right").";\">";
+			echo "<div id=\"scale$i\" style=\"position:absolute; ".($TEXT_DIRECTION =="ltr"?"left: $basexoffset":"right: $basexoffset")."px; top:".($baseyoffset+(($i-$controller->baseyear)*$controller->scale)-$controller->scale/2)."px; font-size: 7pt; text-align:".($TEXT_DIRECTION =="ltr"?"left":"right").";\">";
 			echo $i."--";
 			echo "</div>";
 		}
 	}
-	echo "<div id=\"scale{$controller->topyear}\" style=\"font-family: Arial; position:absolute; ".($TEXT_DIRECTION =="ltr"?"left: $basexoffset":"right: $basexoffset")."px; top:".($baseyoffset+(($controller->topyear-$controller->baseyear)*$controller->scale))."px; font-size: 7pt; text-align:".($TEXT_DIRECTION =="ltr"?"left":"right").";\">";
+	echo "<div id=\"scale{$controller->topyear}\" style=\"position:absolute; ".($TEXT_DIRECTION =="ltr"?"left: $basexoffset":"right: $basexoffset")."px; top:".($baseyoffset+(($controller->topyear-$controller->baseyear)*$controller->scale))."px; font-size: 7pt; text-align:".($TEXT_DIRECTION =="ltr"?"left":"right").";\">";
 	echo $controller->topyear."--";
 	echo "</div>";
 	sort_facts($controller->indifacts);
