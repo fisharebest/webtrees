@@ -1245,9 +1245,6 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			scrollwheel: true
 		};
 		var pm_map = new google.maps.Map(document.getElementById("pm_map"), myOptions);
-		google.maps.event.addListener(pm_map, "maptypechanged", function() {
-			map_type.refresh();
-		});
 		google.maps.event.addListener(pm_map, "click", function() {
 			if (document.getElementById(lastlinkid) != null) {
 				document.getElementById(lastlinkid).className = "person_box:target";

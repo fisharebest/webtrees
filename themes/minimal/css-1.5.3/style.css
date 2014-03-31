@@ -939,39 +939,6 @@ a.showit:hover > span {
 	z-index:100;
 }
 
-#map_type {
-	margin:0;
-	padding:0;
-	font-size:10px;
-	list-style:none;
-}
-#map_type li {
-	display:block;
-	width:70px;
-	text-align:center;
-	padding:2px;
-	border:1px solid #555555;
-	cursor:pointer;
-	float:left;
-	margin-left:2px;
-}
-#map_type li.non_active {
-	background:#ffffff;
-	color:#555555;
-	font-weight:normal;
-}
-
-#map_type li.active {
-	background:#808080;
-	color:#ffffff;
-	font-weight:bold;
-}
-#map_type li:hover {
-	background:#dddddd;
-}
-
-.tag_cloud {
-}
 .tag_cloud a {
 	white-space:nowrap;
 }
