@@ -52,7 +52,10 @@ class WT_I18N {
 		global $WT_SESSION;
 
 		// The translation libraries only work with a cache.
-		$cache_options=array('automatic_serialization'=>true);
+		$cache_options = array(
+			'automatic_serialization' => true,
+			'cache_id_prefix'         => md5(WT_SERVER_NAME . WT_SCRIPT_PATH),
+		);
 
 		if (ini_get('apc.enabled')) {
 			self::$cache=Zend_Cache::factory('Core', 'Apc', $cache_options, array());
@@ -645,7 +648,7 @@ class WT_I18N {
 						.replace(/7/g, "'.utf8_substr($digits, 7, 1).'")
 						.replace(/8/g, "'.utf8_substr($digits, 8, 1).'")
 						.replace(/9/g, "'.utf8_substr($digits, 9, 1).'");
-    			},
+                },
 				"fnFormatNumber": function(iIn) {
 					return String(iIn)
 						.replace(/0/g, "'.utf8_substr($digits, 0, 1).'")
@@ -658,7 +661,7 @@ class WT_I18N {
 						.replace(/7/g, "'.utf8_substr($digits, 7, 1).'")
 						.replace(/8/g, "'.utf8_substr($digits, 8, 1).'")
 						.replace(/9/g, "'.utf8_substr($digits, 9, 1).'");
-    			}
+				}
 			';
 		}
 
