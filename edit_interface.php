@@ -2567,7 +2567,6 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 					$new_marnm=$match[2];
 				}
 				break;
-			case 'add_child_to_individual_action':
 			case 'add_spouse_to_family_action':
 				break;
 			}
