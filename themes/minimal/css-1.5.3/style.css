@@ -972,7 +972,7 @@ a.showit:hover > span {
 }
 
 .ui-autocomplete-loading {
-	background:#ffffff url(images/indicator.png) right center no-repeat;
+	background:#ffffff url(images/indicator.gif) right center no-repeat;
 }
 
 .ui-autocomplete li:nth-child(odd) {
