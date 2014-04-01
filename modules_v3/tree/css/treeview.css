@@ -289,10 +289,8 @@ html[dir=rtl] #tv_tree div.tv_box .icon-silhouette-M, html[dir=rtl] #tv_tree div
 	border:none;
 	margin:0;
 	padding:0;
-	max-width:22px;
-	max-height:22px;
-	_width:22px; /* hack for ie */
-	_height:22px; /* hack for ie */
+	width:22px;
+	height:22px;
 	cursor:pointer;
 	text-align:center;
 	vertical-align:middle;

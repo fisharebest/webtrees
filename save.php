@@ -173,7 +173,7 @@ case 'user':
 	//////////////////////////////////////////////////////////////////////////////
 
 	// Authorisation
-	if (!(WT_USER_IS_ADMIN || WT_USER_ID && WT_USER==$id2)) {
+	if (!(WT_USER_IS_ADMIN || WT_USER_ID && WT_USER_ID==$id2)) {
 		fail();
 	}
 
@@ -240,7 +240,7 @@ case 'user_setting':
 	//////////////////////////////////////////////////////////////////////////////
 
 	// Authorisation
-	if (!(WT_USER_IS_ADMIN || WT_USER_ID && get_user_setting($id1, 'editaccount') && _array($id2, array('language','visible_online','contact_method')))) {
+	if (!(WT_USER_IS_ADMIN || WT_USER_ID && get_user_setting($id1, 'editaccount') && in_array($id2, array('language','visible_online','contact_method')))) {
 		fail();
 	}
 

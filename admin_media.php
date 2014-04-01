@@ -383,12 +383,6 @@ function all_media_files($media_folder, $media_path, $subfolders, $filter) {
 		"	AND   m_filename NOT LIKE 'http://%'" .
 		" AND   m_filename NOT LIKE 'https://%'"
 	)->execute(array($media_path, $media_folder, $media_path, $filter, $filter))->fetchOneColumn();
-
-
-
-	$files = array();
-
-	return $files;
 }
 
 function media_file_info($media_folder, $media_path, $file) {

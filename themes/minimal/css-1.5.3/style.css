@@ -939,39 +939,6 @@ a.showit:hover > span {
 	z-index:100;
 }
 
-#map_type {
-	margin:0;
-	padding:0;
-	font-size:10px;
-	list-style:none;
-}
-#map_type li {
-	display:block;
-	width:70px;
-	text-align:center;
-	padding:2px;
-	border:1px solid #555555;
-	cursor:pointer;
-	float:left;
-	margin-left:2px;
-}
-#map_type li.non_active {
-	background:#ffffff;
-	color:#555555;
-	font-weight:normal;
-}
-
-#map_type li.active {
-	background:#808080;
-	color:#ffffff;
-	font-weight:bold;
-}
-#map_type li:hover {
-	background:#dddddd;
-}
-
-.tag_cloud {
-}
 .tag_cloud a {
 	white-space:nowrap;
 }
@@ -1005,7 +972,7 @@ a.showit:hover > span {
 }
 
 .ui-autocomplete-loading {
-	background:#ffffff url(images/indicator.png) right center no-repeat;
+	background:#ffffff url(images/indicator.gif) right center no-repeat;
 }
 
 .ui-autocomplete li:nth-child(odd) {
@@ -1710,7 +1677,7 @@ a.icon-rdarrow:hover       {width:20px;height:20px;background-image:url(images/r
 .icon-sex_m_9x9            {width:9px;height:9px;background-image:url(images/sex_m_9x9.png);}
 .icon-sex_u_15x15          {width:15px;height:15px;background-image:url(images/sex_u_15x15.png);}
 .icon-sex_u_9x9            {width:9px;height:9px;background-image:url(images/sex_u_9x9.png);}
-.icon-target               {width:15px;height:15px;background-image:url(images/buttons/target.png);}
+.icon-target               {width:15px;height:15px;background-image:url(images/target.png);}
 .icon-uarrow               {width:20px;height:20px;background-image:url(images/uarrow.png);}
 a.icon-uarrow:hover        {width:20px;height:20px;background-image:url(images/uarrow2.png);}
 .icon-udarrow              {width:20px;height:20px;background-image:url(images/udarrow.png);}

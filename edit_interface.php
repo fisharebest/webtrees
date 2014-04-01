@@ -426,33 +426,6 @@ case 'update':
 		}
 	}
 
-	//-- check for photo update
-	if (count($_FILES)>0) {
-		$folder = WT_Filter::post('folder');
-		$uploaded_files = array();
-		if (substr($folder, 0, 1) == "/") $folder = substr($folder, 1);
-		if (substr($folder, -1, 1) != "/") $folder .= "/";
-		foreach ($_FILES as $upload) {
-			if (!empty($upload['tmp_name'])) {
-				if (!move_uploaded_file($upload['tmp_name'], $MEDIA_DIRECTORY.$folder.basename($upload['name']))) {
-					$error .= "<br>".WT_I18N::translate('There was an error uploading your file.')."<br>".file_upload_error_text($upload['error']);
-					$uploaded_files[] = "";
-				} else {
-					$filename = $MEDIA_DIRECTORY.$folder.basename($upload['name']);
-					$uploaded_files[] = $MEDIA_DIRECTORY.$folder.basename($upload['name']);
-					if (!is_dir($MEDIA_DIRECTORY."thumbs/".$folder)) mkdir($MEDIA_DIRECTORY."thumbs/".$folder);
-					$thumbnail = $MEDIA_DIRECTORY."thumbs/".$folder.basename($upload['name']);
-					generate_thumbnail($filename, $thumbnail);
-					if (!empty($error)) {
-						echo "<span class=\"error\">", $error, "</span>";
-					}
-				}
-			} else {
-				$uploaded_files[] = "";
-			}
-		}
-	}
-
 	$newged = "";
 	if (!empty($_POST['NAME']))   $newged .= "\n1 NAME "   . $_POST['NAME'];
 	if (!empty($_POST['TYPE']))   $newged .= "\n2 TYPE "   . $_POST['TYPE'];
@@ -2299,7 +2272,7 @@ function keep_chan(WT_GedcomRecord $record=null) {
 			'<input type="checkbox" name="keep_chan" value="1"' . $checked . '>' .
 			WT_I18N::translate('Do not update the “last change” record') .
 			help_link('no_update_CHAN') .
-			$details;
+			$details .
 			'</td></tr>';
 	} else {
 		return '';
@@ -2594,7 +2567,6 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 					$new_marnm=$match[2];
 				}
 				break;
-			case 'add_child_to_individual_action':
 			case 'add_spouse_to_family_action':
 				break;
 			}
