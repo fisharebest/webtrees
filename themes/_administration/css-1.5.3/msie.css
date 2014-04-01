@@ -3,7 +3,7 @@
  * specification in place of its proprietary and non-standard method.
  */
 
-html[dir='rtl'] #links {*left:0px;}
+html[dir='rtl'] #links {*left:0;}
 #admin_menu ul {*margin:0 0 0 10px;}
 html[dir='rtl'] #admin_menu ul {*margin:0 10px 0 0;}
 #admin_menu li ul {	*margin:0 0 0 20px;}

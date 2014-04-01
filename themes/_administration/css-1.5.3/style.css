@@ -180,8 +180,8 @@ table#log_list {width:100%}
 
 /* Markdown */
 .markdown * {
-	padding: 0px;
-	margin: 0px;
+	padding: 0;
+	margin: 0;
 }
 
 .markdown a {
@@ -196,23 +196,23 @@ table#log_list {width:100%}
 }
 
 .markdown h1 {
-	margin: 0px 0px 10px;
+	margin: 0 0 10px;
 }
 
 .markdown h2 {
-	margin: 15px 0px 5px;
+	margin: 15px 0 5px;
 }
 
 .markdown h3 {
-	margin: 15px 0px 5px;
+	margin: 15px 0 5px;
 }
 
 .markdown h4 {
-	margin: 15px 0px 5px;
+	margin: 15px 0 5px;
 }
 
 .markdown p {
-	padding: 5px 0px 0px;
+	padding: 5px 0 0;
 }
 
 .markdown pre {
@@ -234,7 +234,7 @@ table#log_list {width:100%}
     overflow: auto;
     vertical-align: middle;
     margin: 0;
-    padding: 0px 5px;
+    padding: 0 5px;
 }
 
 .markdown pre code {
@@ -250,7 +250,7 @@ table#log_list {width:100%}
 
 .markdown ol,
 .markdown ul {
-	margin: 10px 0px 10px 10px;
+	margin: 10px 0 10px 10px;
 	padding-left: 15px;
 }
 
@@ -526,7 +526,7 @@ table#story_table {width:100%}
 [class^="icon-"], [class*=" icon-"] {display:inline-block; background:url('images/admin_icon_sprite.png') no-repeat; vertical-align:middle;}
 
 .icon-bullet {background-position:-66px -154px; width:16px; height:16px;}
-.icon-button_family {background-position:-112px 0px; width:16px; height:16px;}
+.icon-button_family {background-position:-112px 0; width:16px; height:16px;}
 .icon-button_find_facts {background-position:-38px -180px; width:16px; height:16px;}
 .icon-button_indi {background-position:-116px -180px; width:11px; height:16px;}
 .icon-button_media {background-position:-10px -154px; width:18px; height:16px;}
@@ -580,21 +580,21 @@ a.icon-uarrow:hover {background-position:-100px -94px; width:20px; height:20px;}
 .icon-mime-application-vnd-ms-excel      {background-position:-148px -196px;}
 .icon-mime-application-x-rar-compressed  {background-position: -50px  -98px;}
 .icon-mime-application-zip               {background-position: -50px -147px;}
-.icon-mime-application-x-shockwave-flash {background-position:-148px    0px;}
+.icon-mime-application-x-shockwave-flash {background-position:-148px    0;}
 .icon-mime-audio-mp3                     {background-position: -50px -245px;}
-.icon-mime-audio-mpeg                    {background-position: -50px    0px;}
+.icon-mime-audio-mpeg                    {background-position: -50px    0;}
 .icon-mime-audio-x-ms-wma                {background-position:  -1px -245px;}
 .icon-mime-audio-wav                     {background-position:  -1px  -98px;}
 .icon-mime-text-html                     {background-position: -99px -245px;}
 .icon-mime-text-x-gedcom                 {background-position: -50px  -49px;}
-.icon-mime-image-bmp                     {background-position: 197px    0px;}
+.icon-mime-image-bmp                     {background-position: 197px    0;}
 .icon-mime-image-gif                     {background-position:-197px  -49px;}
 .icon-mime-image-jpeg                    {background-position:  -1px -147px;}
 .icon-mime-image-png                     {background-position: -99px  -98px;}
 .icon-mime-image-svg                     {background-position:-197px -196px;}
 .icon-mime-image-tiff                    {background-position:-148px  -98px;}
 .icon-mime-video-quicktime               {background-position: -99px -147px;}
-.icon-mime-video-avi                     {background-position: -99px    0px;}
+.icon-mime-video-avi                     {background-position: -99px    0;}
 .icon-mime-video-x-ms-wmv                {background-position: -50px -196px;}
 
 /* Styling for the jquery.colorbox gallery */

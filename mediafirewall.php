@@ -142,7 +142,6 @@ function embedText($im, $text, $maxsize, $color, $font, $vpos, $hpos) {
 				case "left":
 				$taille=textlength($maxsize, $hypoth, $text);
 				$pos_y=($height*.85-$taille);
-				$taille_text=($taille-2)*(utf8_strlen($text));
 				$pos_x=$width*0.15;
 				$rotation=$calc_angle;
 				break;

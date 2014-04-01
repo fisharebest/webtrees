@@ -108,8 +108,6 @@ ul.tabs {
  	background: #ddeeff;
  	border: 1px solid #666;
  	height: 20px;
- 	padding-left: 2px;
- 	padding-top: 2px;
  	padding: 0;
 }
 
@@ -117,7 +115,6 @@ ul.tabs {
 ul.tabs li {
 	float: left;
  	list-style-type: none;
- 	margin-left: 2px;
  	margin: 0;
  	padding: 0;
 }
@@ -125,7 +122,6 @@ ul.tabs li {
 /* link inside the tab. uses a background image */
 ul.tabs a {
 	background-color: #efefef;
-	border-bottom: 0;
 	border-radius: 4px 4px 0 0;
 	border: 1px solid #666;
 	color: #777;
