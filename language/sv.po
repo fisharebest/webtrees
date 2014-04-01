@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Launchpad-Export-Date: 2013-08-04 19:01+0000\n"
-"X-Generator: Poedit 1.5.7\n"
+"X-Generator: Poedit 1.6.10\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -216,20 +216,20 @@ msgstr[1] "%d år"
 #, php-format
 msgctxt "FEMALE"
 msgid "%d × cousin"
-msgstr "Kusin i %d. led"
+msgstr "%d. kusin"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: includes/functions/functions.php:614
 #, php-format
 msgctxt "MALE"
 msgid "%d × cousin"
-msgstr "Kusin i %d. led"
+msgstr "%d. kusin"
 
 #: includes/functions/functions.php:652
 #, php-format
 msgctxt "MALE/FEMALE"
 msgid "%d × cousin"
-msgstr "Kusin i %d. led"
+msgstr "%d. kusin"
 
 #. I18N: This is the format string for full dates.  See http://php.net/date for codes
 #: library/WT/I18N.php:207
@@ -1129,7 +1129,7 @@ msgstr "Lägg till ny association"
 
 #: help_text.php:1134
 msgid "Add a new associate allows you to link a fact with an associated individual in the site.  This is one way in which you might record that someone was the godfather of another individual."
-msgstr "Lägg till ny association gör att du kan länka ett faktum med en associerad person på denna sajt. Detta är ett sätt att registrera att någon var gudfader till någon."
+msgstr "Lägg till ny association gör att du kan länka ett faktum med en associerad person på denna sajt. Detta är ett sätt att registrera att någon var gudfar till någon."
 
 #: modules_v3/relatives/module.php:242
 msgid "Add a new brother or sister"
@@ -2879,7 +2879,7 @@ msgstr "Brit milah"
 
 #: library/WT/Gedcom/Tag.php:820
 msgid "Brit milah of a brother"
-msgstr "Broderns brit milah"
+msgstr "Brors brit milah"
 
 #: library/WT/Gedcom/Tag.php:816
 msgid "Brit milah of a grandson"
@@ -2997,15 +2997,15 @@ msgstr "Sondotters begravning"
 
 #: library/WT/Gedcom/Tag.php:484
 msgid "Burial of a grandfather"
-msgstr "Mor- eller farfars begravning"
+msgstr "Gammelfars begravning"
 
 #: library/WT/Gedcom/Tag.php:485
 msgid "Burial of a grandmother"
-msgstr "Mor- eller farmors begravning"
+msgstr "Gammelmors begravning"
 
 #: library/WT/Gedcom/Tag.php:486
 msgid "Burial of a grandparent"
-msgstr "Begravning av en mor- eller farförälder"
+msgstr "Begravning av en gammelförälder"
 
 #: library/WT/Gedcom/Tag.php:466
 msgid "Burial of a grandson"
@@ -3335,7 +3335,7 @@ msgstr "Ändringar"
 
 #. I18N: title for list of recent changes
 #: modules_v3/recent_changes/module.php:70
-#, fuzzy, php-format
+#, php-format
 msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
 msgstr[0] "Sista dagens förändringar"
@@ -3517,72 +3517,72 @@ msgstr "Dop"
 
 #: library/WT/Gedcom/Tag.php:556
 msgid "Christening of a brother"
-msgstr "Brodern döpt"
+msgstr "Dop av en bror"
 
 #: library/WT/Gedcom/Tag.php:528
 msgid "Christening of a child"
-msgstr "Barnet döpt"
+msgstr "Dop av ett barn"
 
 #: library/WT/Gedcom/Tag.php:527
 msgid "Christening of a daughter"
-msgstr "Dottern döpt"
+msgstr "Dop av en dotter"
 
 #: library/WT/Gedcom/Tag.php:534 library/WT/Gedcom/Tag.php:540
 #: library/WT/Gedcom/Tag.php:546
 msgid "Christening of a grandchild"
-msgstr "Barnbarnet döpt"
+msgstr "Dop av ett barnbarn"
 
 #: library/WT/Gedcom/Tag.php:533
 msgid "Christening of a granddaughter"
-msgstr "Barnbarnet döpt"
+msgstr "Dop av ett barnbarn"
 
 #: library/WT/Gedcom/Tag.php:539
 msgctxt "daughter’s daughter"
 msgid "Christening of a granddaughter"
-msgstr "Dotterdottern döpt"
+msgstr "Dop av ett barnbarn"
 
 #: library/WT/Gedcom/Tag.php:545
 msgctxt "son’s daughter"
 msgid "Christening of a granddaughter"
-msgstr "Sondottern döpt"
+msgstr "Dop av ett barnbarn"
 
 #: library/WT/Gedcom/Tag.php:532
 msgid "Christening of a grandson"
-msgstr "Barnbarnet döpt"
+msgstr "Dop av ett barnbarn"
 
 #: library/WT/Gedcom/Tag.php:538
 msgctxt "daughter’s son"
 msgid "Christening of a grandson"
-msgstr "Dottersonen döpt"
+msgstr "Dop av ett barnbarn"
 
 #: library/WT/Gedcom/Tag.php:544
 msgctxt "son’s son"
 msgid "Christening of a grandson"
-msgstr "Sonsonen döpt"
+msgstr "Dop av ett barnbarn"
 
 #: library/WT/Gedcom/Tag.php:550
 msgid "Christening of a half-brother"
-msgstr "Halvbrodern döpt"
+msgstr "Dop av en halvbror"
 
 #: library/WT/Gedcom/Tag.php:552
 msgid "Christening of a half-sibling"
-msgstr "Halvsyskonet döpt"
+msgstr "Dop av ett halvsyskon"
 
 #: library/WT/Gedcom/Tag.php:551
 msgid "Christening of a half-sister"
-msgstr "Halvsystern döpt"
+msgstr "Dop av en halvsyster"
 
 #: library/WT/Gedcom/Tag.php:558
 msgid "Christening of a sibling"
-msgstr "Syskon döpt"
+msgstr "Dop av ett syskon"
 
 #: library/WT/Gedcom/Tag.php:557
 msgid "Christening of a sister"
-msgstr "Systern döpt"
+msgstr "Dop av en syster"
 
 #: library/WT/Gedcom/Tag.php:526
 msgid "Christening of a son"
-msgstr "Sonen döpt"
+msgstr "Dop av en son"
 
 #: library/WT/Stats.php:4827
 msgid "Christmas Island"
@@ -4057,11 +4057,11 @@ msgstr "Sondotters kremering"
 
 #: library/WT/Gedcom/Tag.php:587
 msgid "Cremation of a grandfather"
-msgstr "Mor- eller farfars kremering"
+msgstr "Gammelfars kremering"
 
 #: library/WT/Gedcom/Tag.php:588
 msgid "Cremation of a grandmother"
-msgstr "Mor- eller farmors kremering"
+msgstr "Gammelmors kremering"
 
 #: library/WT/Gedcom/Tag.php:569
 msgid "Cremation of a grandson"
@@ -4602,7 +4602,7 @@ msgstr "Faderns död"
 #: library/WT/Gedcom/Tag.php:656 library/WT/Gedcom/Tag.php:662
 #: library/WT/Gedcom/Tag.php:668
 msgid "Death of a grand-parent"
-msgstr "Far- eller morförälders död"
+msgstr "Gammelförälders död"
 
 #: library/WT/Gedcom/Tag.php:638 library/WT/Gedcom/Tag.php:644
 #: library/WT/Gedcom/Tag.php:650
@@ -4625,11 +4625,11 @@ msgstr "Sondotters död"
 
 #: library/WT/Gedcom/Tag.php:654
 msgid "Death of a grandfather"
-msgstr "Mor- eller farfars död"
+msgstr "Gammelfars död"
 
 #: library/WT/Gedcom/Tag.php:655
 msgid "Death of a grandmother"
-msgstr "Mor- eller farmors död"
+msgstr "Gammelmors död"
 
 #: library/WT/Gedcom/Tag.php:636
 msgid "Death of a grandson"
@@ -6719,11 +6719,11 @@ msgstr "Guddotter"
 
 #: library/WT/Gedcom/Code/Rela.php:104
 msgid "Godfather"
-msgstr "Gudfader"
+msgstr "Gudfar"
 
 #: library/WT/Gedcom/Code/Rela.php:107
 msgid "Godmother"
-msgstr "Gudmoder"
+msgstr "Gudmor"
 
 #. I18N: gedcom tag _GODP
 #: library/WT/Gedcom/Code/Rela.php:110 library/WT/Gedcom/Tag.php:715
@@ -6762,7 +6762,7 @@ msgstr "Examen"
 
 #: family.php:97
 msgid "Grandparents"
-msgstr "Far-/morföräldrar"
+msgstr "Gammelföräldrar"
 
 #: statistics.php:157
 msgid "Greatest age at death"
@@ -11742,7 +11742,7 @@ msgstr "Välj en fil från listan med filer som redan finns på servern, vilken 
 
 #: help_text.php:335
 msgid "Select a relationship name from the list.  Selecting <b>Godfather</b> means: <i>This associate is the godfather of the current individual</i>."
-msgstr "Välj ett släktförhållandenamn i listan. Väljer man <b>gudfader</b> betyder detta: <i>den valda är gudfader till den nuvarande personen.</i>"
+msgstr "Välj ett släktförhållandenamn i listan. Väljer man <b>gudfar</b> betyder detta: <i>den valda är gudfar till den nuvarande personen.</i>"
 
 #: modules_v3/googlemap/help_text.php:63
 msgid "Select an icon"
@@ -12532,7 +12532,6 @@ msgstr "Visar rad %1$s till %2$s av %3$s"
 
 #: library/WT/Controller/Fanchart.php:349
 #: library/WT/Controller/Hourglass.php:398 pedigree.php:228
-#, fuzzy
 msgid "Sibling"
 msgstr "Syskon"
 
@@ -15597,7 +15596,6 @@ msgid "You can re-enable these themes after the upgrade."
 msgstr "Du kan återaktivera dessa teman efter uppgraderingen."
 
 #: admin_trees_renumber.php:261
-#, fuzzy
 msgid "You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree."
 msgstr "Du kan numrera posterna i ett släktträd, så att dessa inre identifikationsnummer inte dubbleras i något annat släktträd."
 
@@ -16003,12 +16001,12 @@ msgstr "moster"
 #: includes/functions/functions.php:1006
 msgctxt "parent’s brother’s wife"
 msgid "aunt"
-msgstr "förälderns brors maka"
+msgstr "onkels maka"
 
 #: includes/functions/functions.php:862
 msgctxt "parent’s sister"
 msgid "aunt"
-msgstr "förälders syster"
+msgstr "tant"
 
 #: includes/functions/functions.php:833
 msgctxt "father’s sibling"
@@ -16413,15 +16411,15 @@ msgstr "uppskattad %s"
 
 #: includes/functions/functions.php:731
 msgid "ex-husband"
-msgstr "tidigare make"
+msgstr "ex-make"
 
 #: includes/functions/functions.php:757
 msgid "ex-spouse"
-msgstr "tidigare make/maka"
+msgstr "ex-make/maka"
 
 #: includes/functions/functions.php:744
 msgid "ex-wife"
-msgstr "tidigare maka"
+msgstr "ex-maka"
 
 #: admin_trees_config.php:1290 modules_v3/fact_sources/report.xml:6
 msgid "facts"
@@ -16580,7 +16578,7 @@ msgstr "kusin"
 #: includes/functions/functions.php:971
 msgctxt "father’s sister’s son"
 msgid "first cousin"
-msgstr "fasters son"
+msgstr "kusin"
 
 #: includes/functions/functions.php:977
 msgctxt "mother’s brother’s child"
@@ -16620,12 +16618,12 @@ msgstr "farfars brorsbarn"
 #: includes/functions/functions.php:1108
 msgctxt "father’s father’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr "farfars brordotter"
+msgstr "farfars brorsdotter"
 
 #: includes/functions/functions.php:1109
 msgctxt "father’s father’s brother’s son"
 msgid "first cousin once removed ascending"
-msgstr "farfars brorsson"
+msgstr "farfars brorson"
 
 #: includes/functions/functions.php:1113
 msgctxt "father’s father’s sister’s child"
@@ -16635,22 +16633,22 @@ msgstr "farfars systersbarn"
 #: includes/functions/functions.php:1111
 msgctxt "father’s father’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr "farfars systersdotter"
+msgstr "farfars systerdotter"
 
 #: includes/functions/functions.php:1112
 msgctxt "father’s father’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr "farfars systersson"
+msgstr "farfars systerson"
 
 #: includes/functions/functions.php:1116
 msgctxt "father’s mother’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr "farmors brors barn"
+msgstr "farmors brorsbarn"
 
 #: includes/functions/functions.php:1114
 msgctxt "father’s mother’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr "farmors brordotter"
+msgstr "farmors brorsdotter"
 
 #: includes/functions/functions.php:1115
 msgctxt "father’s mother’s brother’s son"
@@ -16660,7 +16658,7 @@ msgstr "farmors brorson"
 #: includes/functions/functions.php:1119
 msgctxt "father’s mother’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr "farmors systerbarn"
+msgstr "farmors systersbarn"
 
 #: includes/functions/functions.php:1117
 msgctxt "father’s mother’s sister’s daughter"
@@ -16690,7 +16688,7 @@ msgstr "morfars brorson"
 #: includes/functions/functions.php:1125
 msgctxt "mother’s father’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr "morfars systers barn"
+msgstr "morfars systersbarn"
 
 #: includes/functions/functions.php:1123
 msgctxt "mother’s father’s sister’s daughter"
@@ -16705,12 +16703,12 @@ msgstr "morfars systerson"
 #: includes/functions/functions.php:1128
 msgctxt "mother’s mother’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr "mormors brors barn"
+msgstr "mormors brorsbarn"
 
 #: includes/functions/functions.php:1126
 msgctxt "mother’s mother’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr "mormors brors dotter"
+msgstr "mormors brorsdotter"
 
 #: includes/functions/functions.php:1127
 msgctxt "mother’s mother’s brother’s son"
@@ -16834,27 +16832,27 @@ msgstr "barnbarn"
 #: includes/functions/functions.php:823
 msgctxt "daughter’s child"
 msgid "grandchild"
-msgstr "barnbarn"
+msgstr "dottersbarn"
 
 #: includes/functions/functions.php:873
 msgctxt "son’s child"
 msgid "grandchild"
-msgstr "sons barn"
+msgstr "sonsbarn"
 
 #: includes/functions/functions.php:818
 msgctxt "child’s daughter"
 msgid "granddaughter"
-msgstr "barns dotter"
+msgstr "barnsdotter"
 
 #: includes/functions/functions.php:824
 msgctxt "daughter’s daughter"
 msgid "granddaughter"
-msgstr "dotters dotter"
+msgstr "dottersdotter"
 
 #: includes/functions/functions.php:874
 msgctxt "son’s daughter"
 msgid "granddaughter"
-msgstr "sondotter"
+msgstr "sonsdotter"
 
 #: includes/functions/functions.php:926
 msgctxt "child’s daughter’s husband"
@@ -16874,27 +16872,27 @@ msgstr "sondotters make"
 #: includes/functions/functions.php:858
 msgctxt "parent’s father"
 msgid "grandfather"
-msgstr "förälders far"
+msgstr "gammelfar"
 
 #: includes/functions/functions.php:859
 msgctxt "parent’s mother"
 msgid "grandmother"
-msgstr "förälders mor"
+msgstr "gammelmor"
 
 #: includes/functions/functions.php:860
 msgctxt "parent’s parent"
 msgid "grandparent"
-msgstr "far-/morförälder"
+msgstr "gammelförälder"
 
 #: includes/functions/functions.php:820
 msgctxt "child’s son"
 msgid "grandson"
-msgstr "barns son"
+msgstr "barnsson"
 
 #: includes/functions/functions.php:826
 msgctxt "daughter’s son"
 msgid "grandson"
-msgstr "dotters son"
+msgstr "dottersson"
 
 #: includes/functions/functions.php:875
 msgctxt "son’s son"
@@ -17022,7 +17020,7 @@ msgstr "%d. generations niece"
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%d-1) granddaughter"
 msgid "great ×%d niece"
-msgstr "%d. generations brordotter"
+msgstr "%d. generations brorsdotter"
 
 #: includes/functions/functions.php:1429
 #, php-format
@@ -17125,7 +17123,7 @@ msgstr "4. generations syskonbarn"
 #: includes/functions/functions.php:1368
 msgctxt "(a man’s) brother’s great-great-great-granddaughter"
 msgid "great ×4 niece"
-msgstr "4. generations brordotter"
+msgstr "4. generations brorsdotter"
 
 #: includes/functions/functions.php:1370
 msgctxt "(a man’s) sister’s great-great-great-granddaughter"
@@ -17217,7 +17215,7 @@ msgstr "5. generations syskonbarn"
 #: includes/functions/functions.php:1395
 msgctxt "(a man’s) brother’s great ×4 granddaughter"
 msgid "great ×5 niece"
-msgstr "5. generations brordotter"
+msgstr "5. generations brorsdotter"
 
 #: includes/functions/functions.php:1397
 msgctxt "(a man’s) sister’s great ×4 granddaughter"
@@ -17401,32 +17399,32 @@ msgstr "morförälders syster"
 #: includes/functions/functions.php:1099
 msgctxt "parent’s father’s brother’s wife"
 msgid "great-aunt"
-msgstr "förälders farbrors maka"
+msgstr "gammelfarbrors maka"
 
 #: includes/functions/functions.php:1012
 msgctxt "parent’s father’s sister"
 msgid "great-aunt"
-msgstr "förälders faster"
+msgstr "gammelfaster"
 
 #: includes/functions/functions.php:1102
 msgctxt "parent’s mother’s brother’s wife"
 msgid "great-aunt"
-msgstr "förälders morbrors maka"
+msgstr "gammelmorbrors maka"
 
 #: includes/functions/functions.php:1018
 msgctxt "parent’s mother’s sister"
 msgid "great-aunt"
-msgstr "förälders moster"
+msgstr "gammelmoster"
 
 #: includes/functions/functions.php:1105
 msgctxt "parent’s parent’s brother’s wife"
 msgid "great-aunt"
-msgstr "förälder förälders brors maka"
+msgstr "gammelonkels maka"
 
 #: includes/functions/functions.php:1024
 msgctxt "parent’s parent’s sister"
 msgid "great-aunt"
-msgstr "förälder förälders syster"
+msgstr "gammeltant"
 
 #: includes/functions/functions.php:954
 msgctxt "father’s father’s sibling"
@@ -17436,7 +17434,7 @@ msgstr "farfars syskon"
 #: includes/functions/functions.php:1082
 msgctxt "father’s father’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "farfars syskon make/maka"
+msgstr "farfars syskons make/maka"
 
 #: includes/functions/functions.php:960
 msgctxt "father’s mother’s sibling"
@@ -17641,12 +17639,12 @@ msgstr "morförälders far"
 #: includes/functions/functions.php:1008
 msgctxt "parent’s father’s father"
 msgid "great-grandfather"
-msgstr "förälders farfar"
+msgstr "gammelfarfar"
 
 #: includes/functions/functions.php:1014
 msgctxt "parent’s mother’s father"
 msgid "great-grandfather"
-msgstr "förälders morfar"
+msgstr "gammelmorfar"
 
 #: includes/functions/functions.php:1020
 msgctxt "parent’s parent’s father"
@@ -17686,17 +17684,17 @@ msgstr "morförälderns mor"
 #: includes/functions/functions.php:1009
 msgctxt "parent’s father’s mother"
 msgid "great-grandmother"
-msgstr "förälders farmor"
+msgstr "gammelfarmor"
 
 #: includes/functions/functions.php:1015
 msgctxt "parent’s mother’s mother"
 msgid "great-grandmother"
-msgstr "förälders mormor"
+msgstr "gammelmormor"
 
 #: includes/functions/functions.php:1021
 msgctxt "parent’s parent’s mother"
 msgid "great-grandmother"
-msgstr "förälder förälders mor"
+msgstr "gammelförälders mor"
 
 #: includes/functions/functions.php:953
 msgctxt "father’s father’s parent"
@@ -17731,12 +17729,12 @@ msgstr "morförälders förälder"
 #: includes/functions/functions.php:1010
 msgctxt "parent’s father’s parent"
 msgid "great-grandparent"
-msgstr "förälders farförälder"
+msgstr "gammelfarförälder"
 
 #: includes/functions/functions.php:1016
 msgctxt "parent’s mother’s parent"
 msgid "great-grandparent"
-msgstr "förälders morförälder"
+msgstr "gammelmorförälder"
 
 #: includes/functions/functions.php:1022
 msgctxt "parent’s parent’s parent"
@@ -17980,7 +17978,7 @@ msgstr "brorbarns son"
 #: includes/functions/functions.php:909
 msgctxt "(a man’s) brother’s daughter’s son"
 msgid "great-nephew"
-msgstr "brordotters son"
+msgstr "brorsdotters son"
 
 #: includes/functions/functions.php:915
 msgctxt "(a man’s) brother’s son’s son"
@@ -18010,7 +18008,7 @@ msgstr "brorbarns son"
 #: includes/functions/functions.php:910
 msgctxt "(a woman’s) brother’s daughter’s son"
 msgid "great-nephew"
-msgstr "brordotters son"
+msgstr "brorsdotters son"
 
 #: includes/functions/functions.php:916
 msgctxt "(a woman’s) brother’s son’s son"
@@ -18055,7 +18053,7 @@ msgstr "brors barnbarn"
 #: includes/functions/functions.php:904
 msgctxt "(a man’s) brother’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr "brordotters barn"
+msgstr "brorsdotters barn"
 
 #: includes/functions/functions.php:911
 msgctxt "(a man’s) brother’s son’s child"
@@ -18085,7 +18083,7 @@ msgstr "brors barnbarn"
 #: includes/functions/functions.php:905
 msgctxt "(a woman’s) brother’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr "brordotters barn"
+msgstr "brorsdotters barn"
 
 #: includes/functions/functions.php:912
 msgctxt "(a woman’s) brother’s son’s child"
@@ -18260,32 +18258,32 @@ msgstr "morförälders systers make"
 #: includes/functions/functions.php:1007
 msgctxt "parent’s father’s brother"
 msgid "great-uncle"
-msgstr "förälders farbror"
+msgstr "gammelfarbror"
 
 #: includes/functions/functions.php:1101
 msgctxt "parent’s father’s sister’s husband"
 msgid "great-uncle"
-msgstr "förälder fars systers make"
+msgstr "gammelfasters make"
 
 #: includes/functions/functions.php:1013
 msgctxt "parent’s mother’s brother"
 msgid "great-uncle"
-msgstr "förälders morbror"
+msgstr "gammelmorbror"
 
 #: includes/functions/functions.php:1104
 msgctxt "parent’s mother’s sister’s husband"
 msgid "great-uncle"
-msgstr "förälder mors systers make"
+msgstr "gammelmosters make"
 
 #: includes/functions/functions.php:1019
 msgctxt "parent’s parent’s brother"
 msgid "great-uncle"
-msgstr "förälder förälders bror"
+msgstr "gammelonkel"
 
 #: includes/functions/functions.php:1107
 msgctxt "parent’s parent’s sister’s husband"
 msgid "great-uncle"
-msgstr "förälder förälders systers make"
+msgstr "gammeltants make"
 
 #. I18N: layout option for the fan chart
 #: library/WT/Controller/Fanchart.php:61
@@ -18578,7 +18576,7 @@ msgstr "svärförälder"
 #: includes/functions/functions.php:815
 msgctxt "brother’s son"
 msgid "nephew"
-msgstr "brors son"
+msgstr "brorson"
 
 #: includes/functions/functions.php:867
 msgctxt "sibling’s son"
@@ -18593,7 +18591,7 @@ msgstr "systerson"
 #: includes/functions/functions.php:908
 msgctxt "brother’s daughter’s husband"
 msgid "nephew-in-law"
-msgstr "brordotters make"
+msgstr "brorsdotters make"
 
 #: includes/functions/functions.php:1034
 msgctxt "sibling’s daughter’s husband"
@@ -18629,7 +18627,7 @@ msgstr "nästa"
 #: includes/functions/functions.php:814
 msgctxt "brother’s daughter"
 msgid "niece"
-msgstr "brors dotter"
+msgstr "brorsdotter"
 
 #: includes/functions/functions.php:866
 msgctxt "sibling’s daughter"
@@ -18704,7 +18702,7 @@ msgstr "ingen"
 #. I18N: time format “%a” - exactly 12:00:00
 #: includes/functions/functions_date.php:100
 msgid "noon"
-msgstr "Middag"
+msgstr "middag"
 
 #: modules_v3/googlemap/module.php:3830
 msgid "north"
@@ -19223,7 +19221,7 @@ msgstr "svärsons förälder"
 #: includes/functions/functions.php:821
 msgctxt "child’s spouse"
 msgid "son/daughter-in-law"
-msgstr "svärson/svärdotter"
+msgstr "svärbarn"
 
 #. I18N: An option in a list-box
 #: modules_v3/change_report/report.xml:7
@@ -19569,12 +19567,12 @@ msgstr "mosters make"
 #: includes/functions/functions.php:855
 msgctxt "parent’s brother"
 msgid "uncle"
-msgstr "förälders bror"
+msgstr "onkel"
 
 #: includes/functions/functions.php:1025
 msgctxt "parent’s sister’s husband"
 msgid "uncle"
-msgstr "förälder systers make"
+msgstr "tants make"
 
 #: library/WT/Controller/Pedigree.php:235 library/WT/Place.php:85
 #: modules_v3/GEDFact_assistant/_CENS/census_1_ctrl.php:52
