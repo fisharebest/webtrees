@@ -53,7 +53,7 @@ textarea#NOTE {font-size: 12px;height:250px; width:98.5%; overflow:auto;}
 .ltrnav {position:absolute; top:-15px; left:40px;}
 .rtlnav {position:absolute; top:-15px; right:40px;}
 .headimg {margin-top:-4px; border:0;}
-.headimg2 {height:17px;	border-style:none;margin:-3px;margin-left:0px;}
+.headimg2 {height:17px;	border-style:none;margin:-3px;margin-left:0;}
 #edit_interface-page input#personid {width:160px;}
 
 html[dir='rtl'] .cens_header {text-align:right;}
@@ -71,7 +71,7 @@ html[dir='rtl'] .cens_textinput {clear:both; float:right;}
 html[dir='rtl'] .cens_textinput_left  {float:right;}
 html[dir='rtl'] .cens_textinput_right  {float:left;}
 html[dir='rtl'] .cens_addrows {clear:both; float:right;}
-html[dir='rtl'] .headimg2 {margin-right:0px;}
+html[dir='rtl'] .headimg2 {margin-right:0;}
 html[dir='rtl'] .cens_text_header span:nth-of-type(1) {float:right;}
 html[dir='rtl'] .cens_text_header span:nth-of-type(3) {float:left;}
 

@@ -59,7 +59,7 @@ html[dir=rtl] input:required:valid, html[dir=rtl] textarea:required:valid, html[
 
 /* Title Line    */
 #header {height:50px;}
-span.title {float:left;font-size:24px; margin:16px 0px 3px 12px;}
+span.title {float:left;font-size:24px; margin:16px 0 3px 12px;}
 html[dir=rtl] span.title {float:right;margin:16px 12px 3px 3px;}
 
 /* Options Menu  */
@@ -91,12 +91,12 @@ html[dir=rtl] .makeMenu li ul li {text-align:right;}
 #main-menu li > ul {display:block;position:absolute;top:0;left:100%;right:auto;}
 #main-menu > li > a {height:37px;width:27px;}
 #main-menu > li > ul {left:0;right:auto;top:40px;}
-#main-menu a {display: block;text-decoration: none;padding: 0px 10px;margin: 0;white-space:nowrap;}
+#main-menu a {display: block;text-decoration: none;padding: 0 10px;margin: 0;white-space:nowrap;}
 #main-menu ul li:hover a, #main-menu li:hover li a {background: none;border: none;}
 #main-menu li:hover > ul {visibility:visible;opacity:1;-webkit-transition:visibility 0s linear 0s,opacity .2s linear 0s;-moz-transition:visibility 0s linear 0s,opacity .2s linear 0s;-o-transition:visibility 0s linear 0s,opacity .2s linear 0s;}
 
 /* First row submenu style*/
-#main-menu > li > ul > li:first-child {text-indent:0px;min-width:100px;width:100%;
+#main-menu > li > ul > li:first-child {text-indent:0;min-width:100px;width:100%;
 background: none;font-weight:bold;white-space:nowrap;
 font-size:14px;text-align:center;height:22px;line-height: 1.5;border-bottom:solid #ddd 1px;}
 
@@ -382,7 +382,7 @@ html[dir=rtl] #relationship_chart {margin-right:10px;}
 html[dir=rtl] .list_value, html[dir=rtl] .list_value_wrap {text-align:right;}
 
 .tabs_table {max-width:98%;}
-.facts_table {width:100%;padding:0px;}
+.facts_table {width:100%;padding:0;}
 .facts_label .submenu a {background:#ffffff;color:#000000;}
 .facts_label {border:1px solid #999999;border-radius:3px;padding:4px;text-align:center;width:20%;}
 .facts_label02,.facts_label03 {border-radius:3px;font-weight:700;padding:4px;text-align:center;}
@@ -440,7 +440,7 @@ a:hover .nameZoom {font-size:14px;color:#ff0000;font-weight:700;}
 
 .person0 {background:#ddddff;border:outset #999 1px;border-radius:3px;vertical-align:top;}
 .person1 {background:#aaffaa;border:outset #afa 1px;border-radius:3px;vertical-align:top;}
-.person2 {background:#ffaaaa;border:outset #faa 1px;border-width:1px;border-radius:3px;vertical-align:top;}
+.person2 {background:#ffaaaa;border:outset #faa 1px;border-radius:3px;vertical-align:top;}
 .person3 {background:#aaaadd;border:outset #55f 1px;border-radius:3px;vertical-align:top;}
 .person4 {background:#ff5555;border:outset #f55 1px;border-radius:3px;vertical-align:top;}
 .person5 {background:#55ff55;border:outset #5f5 1px;border-radius:3px;vertical-align:top;}
@@ -486,7 +486,7 @@ html[dir=rtl] .optionbox input {margin-left:5px;}
 
 a.showit {color:#000000;position:relative;text-decoration:none;}
 a.showit:hover {background:#ffff99;cursor:crosshair;}
-a.showit:hover > span {background:#444444;border-bottom:2px solid #000000;border-left:15px outset #000000;border-right:2px solid #000000;border-style:outset;border-top:2px solid #000000;color:#ffffff;display:block;font-size:15px;left:0;opacity:.85;padding:3px;position:absolute;text-align:left;top:22px;white-space:normal;width:225px;}
+a.showit:hover > span {background:#444444;border-bottom:2px solid #000000;border-left:15px outset #000000;border-right:2px solid #000000;border-top:2px solid #000000;color:#ffffff;display:block;font-size:15px;left:0;opacity:.85;padding:3px;position:absolute;text-align:left;top:22px;white-space:normal;width:225px;}
 
 .lifespan_outer {border:solid #00f 1px;border-radius:3px;height:600px;overflow:hidden;position:relative;width:99.5%;}
 .lifespan_outer a {color:#000000;}
@@ -989,7 +989,7 @@ html[dir=rtl] #edituser-table .value {margin:0 260px 0 0;}
 	#CB_All {display:none;}
 	#familybook_chart h3 {margin-bottom: 10px;}
 	#header_accordion1 {width: 510px!important}
-	#pedigree_chart {left:right;left:-90px;}
+	#pedigree_chart {left:-90px;}
 	html[dir=rtl] #pedigree_chart {left:auto;right:-90px;}
 	.lifespan_outer {position:relative;width:auto;height:auto;overflow:visible;border:none;}
 	.lifespan_people {position:absolute;width:auto;left:-10px;top:-60px;z-index:1;}
@@ -1103,21 +1103,21 @@ a.icon-uarrow:hover        {width:20px;height:20px;background-image:url(../image
 .icon-mime-application-vnd-ms-excel      {background-position:-148px -196px;}
 .icon-mime-application-x-rar-compressed  {background-position: -50px  -98px;}
 .icon-mime-application-zip               {background-position: -50px -147px;}
-.icon-mime-application-x-shockwave-flash {background-position:-148px    0px;}
+.icon-mime-application-x-shockwave-flash {background-position:-148px    0;}
 .icon-mime-audio-mp3                     {background-position: -50px -245px;}
-.icon-mime-audio-mpeg                    {background-position: -50px    0px;}
+.icon-mime-audio-mpeg                    {background-position: -50px    0;}
 .icon-mime-audio-x-ms-wma                {background-position:  -1px -245px;}
 .icon-mime-audio-wav                     {background-position:  -1px  -98px;}
 .icon-mime-text-html                     {background-position: -99px -245px;}
 .icon-mime-text-x-gedcom                 {background-position: -50px  -49px;}
-.icon-mime-image-bmp                     {background-position: 197px    0px;}
+.icon-mime-image-bmp                     {background-position: 197px    0;}
 .icon-mime-image-gif                     {background-position:-197px  -49px;}
 .icon-mime-image-jpeg                    {background-position:  -1px -147px;}
 .icon-mime-image-png                     {background-position: -99px  -98px;}
 .icon-mime-image-svg                     {background-position:-197px -196px;}
 .icon-mime-image-tiff                    {background-position:-148px  -98px;}
 .icon-mime-video-quicktime               {background-position: -99px -147px;}
-.icon-mime-video-avi                     {background-position: -99px    0px;}
+.icon-mime-video-avi                     {background-position: -99px    0;}
 .icon-mime-video-x-ms-wmv                {background-position: -50px -196px;}
 
 /* Silhouettes on charts */
