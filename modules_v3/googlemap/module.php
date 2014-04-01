@@ -53,22 +53,26 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		}
 
 		// Set default values
-		// TODO: do this once only, in a db_schema upgrade script.
-		$this->setSetting('GM_MAP_TYPE',         $this->getSetting('GM_MAP_TYPE',         'G_NORMAL_MAP'));  // G_PHYSICAL_MAP, G_NORMAL_MAP, G_SATELLITE_MAP, G_HYBRID_MAP
-		$this->setSetting('GM_MAX_ZOOM',         $this->getSetting('GM_MAX_ZOOM',         '20'));     // max zoom level
-		$this->setSetting('GM_MIN_ZOOM',         $this->getSetting('GM_MIN_ZOOM',         '2'));      // min zoom level
-		$this->setSetting('GM_PRECISION_0',      $this->getSetting('GM_PRECISION_0',      '0'));      // Country level
-		$this->setSetting('GM_PRECISION_1',      $this->getSetting('GM_PRECISION_1',      '1'));      // State level
-		$this->setSetting('GM_PRECISION_2',      $this->getSetting('GM_PRECISION_2',      '2'));      // City level
-		$this->setSetting('GM_PRECISION_3',      $this->getSetting('GM_PRECISION_3',      '3'));      // Neighborhood level
-		$this->setSetting('GM_PRECISION_4',      $this->getSetting('GM_PRECISION_4',      '4'));      // House level
-		$this->setSetting('GM_PRECISION_5',      $this->getSetting('GM_PRECISION_5',      '5'));      // Max prcision level
-		$this->setSetting('GM_XSIZE',            $this->getSetting('GM_XSIZE',            '600'));    // X-size of Google map
-		$this->setSetting('GM_YSIZE',            $this->getSetting('GM_YSIZE',            '400'));    // Y-size of Google map
-		$this->setSetting('GM_PH_XSIZE',         $this->getSetting('GM_PH_XSIZE',         '500'));    // X-size of Place Hierarchy Google map
-		$this->setSetting('GM_PH_YSIZE',         $this->getSetting('GM_PH_YSIZE',         '350'));    // Y-size of Place Hierarchy Google map
-		$this->setSetting('GM_PH_MARKER',        $this->getSetting('GM_PH_MARKER',        'G_FLAG')); // Possible values: G_FLAG = Flag, G_DEFAULT_ICON = Standard icon
-		$this->setSetting('GM_DISP_SHORT_PLACE', $this->getSetting('GM_DISP_SHORT_PLACE', '0'));      // Display full place name or only the actual level name
+		try {
+			// TODO: do this once only, in a db_schema upgrade script?
+			$this->setSetting('GM_MAP_TYPE',         $this->getSetting('GM_MAP_TYPE',         'G_NORMAL_MAP'));  // G_PHYSICAL_MAP, G_NORMAL_MAP, G_SATELLITE_MAP, G_HYBRID_MAP
+			$this->setSetting('GM_MAX_ZOOM',         $this->getSetting('GM_MAX_ZOOM',         '20'));     // max zoom level
+			$this->setSetting('GM_MIN_ZOOM',         $this->getSetting('GM_MIN_ZOOM',         '2'));      // min zoom level
+			$this->setSetting('GM_PRECISION_0',      $this->getSetting('GM_PRECISION_0',      '0'));      // Country level
+			$this->setSetting('GM_PRECISION_1',      $this->getSetting('GM_PRECISION_1',      '1'));      // State level
+			$this->setSetting('GM_PRECISION_2',      $this->getSetting('GM_PRECISION_2',      '2'));      // City level
+			$this->setSetting('GM_PRECISION_3',      $this->getSetting('GM_PRECISION_3',      '3'));      // Neighborhood level
+			$this->setSetting('GM_PRECISION_4',      $this->getSetting('GM_PRECISION_4',      '4'));      // House level
+			$this->setSetting('GM_PRECISION_5',      $this->getSetting('GM_PRECISION_5',      '5'));      // Max prcision level
+			$this->setSetting('GM_XSIZE',            $this->getSetting('GM_XSIZE',            '600'));    // X-size of Google map
+			$this->setSetting('GM_YSIZE',            $this->getSetting('GM_YSIZE',            '400'));    // Y-size of Google map
+			$this->setSetting('GM_PH_XSIZE',         $this->getSetting('GM_PH_XSIZE',         '500'));    // X-size of Place Hierarchy Google map
+			$this->setSetting('GM_PH_YSIZE',         $this->getSetting('GM_PH_YSIZE',         '350'));    // Y-size of Place Hierarchy Google map
+			$this->setSetting('GM_PH_MARKER',        $this->getSetting('GM_PH_MARKER',        'G_FLAG')); // Possible values: G_FLAG = Flag, G_DEFAULT_ICON = Standard icon
+			$this->setSetting('GM_DISP_SHORT_PLACE', $this->getSetting('GM_DISP_SHORT_PLACE', '0'));      // Display full place name or only the actual level name
+		} catch (Exception $ex) {
+			// Perhaps the module hasn't been installed yet (no entry in wt_modules)
+		}
 	}
 
 	// Extend WT_Module
@@ -1241,9 +1245,6 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			scrollwheel: true
 		};
 		var pm_map = new google.maps.Map(document.getElementById("pm_map"), myOptions);
-		google.maps.event.addListener(pm_map, "maptypechanged", function() {
-			map_type.refresh();
-		});
 		google.maps.event.addListener(pm_map, "click", function() {
 			if (document.getElementById(lastlinkid) != null) {
 				document.getElementById(lastlinkid).className = "person_box:target";
@@ -1799,18 +1800,6 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		$retlist[]=$placename; // Exact
 
 		return $retlist;
-	}
-
-	private function abbreviate($text) {
-		if (utf8_strlen($text)>13) {
-			if (trim(utf8_substr($text, 10, 1))!='') {
-				$desc = utf8_substr($text, 0, 11).'.';
-			} else {
-				$desc = trim(utf8_substr($text, 0, 11));
-			}
-		}
-		else $desc = $text;
-		return $desc;
 	}
 
 	private function get_lati_long_placelocation($place) {
@@ -2589,7 +2578,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 				?>
 				<div>
-				<iframe style="background:transparent; margin-top:-3px; margin-left:2px; width:530px;height:405px;padding:0;border:solid 0px black" src="module.php?mod=googlemap&amp;mod_action=wt_v3_street_view&amp;x=<?php echo $sv_lng; ?>&amp;y=<?php echo $sv_lat; ?>&amp;z=18&amp;t=2&amp;c=1&amp;s=1&amp;b=<?php echo $sv_dir; ?>&amp;p=<?php echo $sv_pitch; ?>&amp;m=<?php echo $sv_zoom; ?>&amp;j=1&amp;k=1&amp;v=1" marginwidth="0" marginheight="0" frameborder="0" scrolling="no"></iframe>
+				<iframe style="background:transparent; margin-top:-3px; margin-left:2px; width:530px;height:405px;padding:0;border:0" src="module.php?mod=googlemap&amp;mod_action=wt_v3_street_view&amp;x=<?php echo $sv_lng; ?>&amp;y=<?php echo $sv_lat; ?>&amp;z=18&amp;t=2&amp;c=1&amp;s=1&amp;b=<?php echo $sv_dir; ?>&amp;p=<?php echo $sv_pitch; ?>&amp;m=<?php echo $sv_zoom; ?>&amp;j=1&amp;k=1&amp;v=1" marginwidth="0" marginheight="0" frameborder="0" scrolling="no"></iframe>
 				</div>
 
 				<?php
@@ -2629,13 +2618,6 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			$i--;
 		}
 		return $levelo;
-	}
-
-	private function check_place($place_names, $place) {
-		if ($place == "Unknown") $place="";
-		if (in_array($place, $place_names)) {
-			return true;
-		}
 	}
 
 	private function print_how_many_people($level, $parent) {
@@ -3768,9 +3750,9 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					if (response.length > 0) {
 						for (i=0; i<response.length; i++) {
 							// 5 decimal places is approx 1 metre accuracy.
-							var name  = '<div id="gname" class="iwstyle">'+response[i].address_components[0].short_name+'<br>('+response[i].geometry.location.lng().toFixed(5)+','+response[i].geometry.location.lat().toFixed(5)+''
-								name +=	'<br><a href="#" onclick="setLoc(' + response[i].geometry.location.lat() + ', ' + response[i].geometry.location.lng() + ');"><div id="namelink"><?php echo WT_I18N::translate('Use this value'); ?></div></a>'
-								name += '</div>'
+							var name  = '<div id="gname" class="iwstyle">'+response[i].address_components[0].short_name+'<br>('+response[i].geometry.location.lng().toFixed(5)+','+response[i].geometry.location.lat().toFixed(5)+'';
+								name +=	'<br><a href="#" onclick="setLoc(' + response[i].geometry.location.lat() + ', ' + response[i].geometry.location.lng() + ');"><div id="namelink"><?php echo WT_I18N::translate('Use this value'); ?></div></a>';
+								name += '</div>';
 							var point = response[i].geometry.location;
 							var marker = createMarker(i, point, name);
 							bounds.extend(response[i].geometry.location);

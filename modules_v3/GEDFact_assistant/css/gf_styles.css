@@ -35,7 +35,7 @@
  
 /* Transparent cell border */
 .transparent {
-border: 0px solid transparent;
+border: 0;
 }
 
 /* top Search box */
@@ -55,7 +55,7 @@ border:0;
 height:17px;
 border-style:none;
 margin:-3px;
-margin-left:0px;
+margin-left:0;
 }
 
 /* Creates clickable <td> for fly-outs */ 
@@ -90,7 +90,7 @@ td #srch a {
 
 div #spouseFam {
 	margin-left:13px;
-	margin-top:0px;
+	margin-top:0;
 }
 
 /*-------------------------------------------------*/

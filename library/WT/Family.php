@@ -33,7 +33,6 @@ class WT_Family extends WT_GedcomRecord {
 
 	private $husb = null;
 	private $wife = null;
-	private $marriage = null;
 
 	// Create a Family object from either raw GEDCOM data or a database row
 	function __construct($xref, $gedcom, $pending, $gedcom_id) {

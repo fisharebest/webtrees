@@ -350,7 +350,7 @@ html[dir=rtl] .makeMenu li ul li {
 .person_box,
 .person_boxF,
 .person_boxNN {
-	margin: 1px 0px;
+	margin: 1px 0;
 }
 
 .person_box .details1,
@@ -979,7 +979,6 @@ a.showit:hover > span {
 	top: 22px;
 	left: 0;
 	width: 225px;
-	border-style: outset;
 	border-left: 15px outset #222;
 	border-top: 2px solid #222;
 	border-bottom: 2px solid #000;
@@ -1045,41 +1044,6 @@ a.showit:hover > span {
 	z-index: 100;
 }
 
-#map_type {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-}
-#map_type li
-{
-	display: block;
-	width: 70px;
-	text-align: center;
-	padding: 2px;
-	border: thin solid #aaa;
-	cursor: pointer;
-	float: left;
-	margin-left: 2px;
-}
-#map_type li.non_active
-{
-	background: #fff;
-	color: #000;
-	font-weight: normal;
-}
-#map_type li.active
-{
-	background: #888;
-	color: #fff;
-	font-weight: bold;
-}
-#map_type li:hover
-{
-	background: #ddd;
-}
-
-.tag_cloud {
-}
 .tag_cloud a {
 	white-space: nowrap;
 }
@@ -2448,7 +2412,7 @@ html[dir=rtl] fieldset {
 }
 #find-output .find-media-details ul {
 	padding: 0;
-	margin: 0px 20px 10px 20px;
+	margin: 0 20px 10px 20px;
 	list-style-type: none;
 }
 #find-facts-header .list_label {
@@ -3080,13 +3044,13 @@ a.icon-uarrow:hover {
 	background-position: -50px -147px;
 }
 .icon-mime-application-x-shockwave-flash {
-	background-position: -148px 0px;
+	background-position: -148px 0;
 }
 .icon-mime-audio-mp3 {
 	background-position: -50px -245px;
 }
 .icon-mime-audio-mpeg {
-	background-position: -50px 0px;
+	background-position: -50px 0;
 }
 .icon-mime-audio-x-ms-wma {
 	background-position: -1px -245px;
@@ -3101,7 +3065,7 @@ a.icon-uarrow:hover {
 	background-position: -50px -49px;
 }
 .icon-mime-image-bmp {
-	background-position: 197px 0px;
+	background-position: 197px 0;
 }
 .icon-mime-image-gif {
 	background-position: -197px -49px;
@@ -3122,7 +3086,7 @@ a.icon-uarrow:hover {
 	background-position: -99px -147px;
 }
 .icon-mime-video-avi {
-	background-position: -99px 0px;
+	background-position: -99px 0;
 }
 .icon-mime-video-x-ms-wmv {
 	background-position: -50px -196px;

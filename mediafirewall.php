@@ -142,7 +142,6 @@ function embedText($im, $text, $maxsize, $color, $font, $vpos, $hpos) {
 				case "left":
 				$taille=textlength($maxsize, $hypoth, $text);
 				$pos_y=($height*.85-$taille);
-				$taille_text=($taille-2)*(utf8_strlen($text));
 				$pos_x=$width*0.15;
 				$rotation=$calc_angle;
 				break;
@@ -202,7 +201,7 @@ function textlength($t, $mxl, $text) {
 function imagettftextErrorHandler($errno, $errstr, $errfile, $errline) {
 	global $useTTF, $serverFilename;
 	// log the error
-	AddToLog("Media Firewall error: >".$errstr."< in file >".$serverFilename."< (".getImageInfoForLog($serverFilename).")", 'error');
+	AddToLog("Media Firewall error: >" . $errstr . "< in file >" . $serverFilename . "<", 'error');
 
 	// change value of useTTF to false so the fallback watermarking can be used.
 	$useTTF = false;
@@ -362,7 +361,7 @@ if ($generatewatermark) {
 
 	} else {
 		// this image is defective.  log it
-		AddToLog("Media Firewall error: >".WT_I18N::translate('This media file is broken and cannot be watermarked')."< in file >".$serverFilename."< (".getImageInfoForLog($serverFilename).") memory used: ".memory_get_usage(), 'media');
+		AddToLog("Media Firewall error: >" . WT_I18N::translate('This media file is broken and cannot be watermarked') . "< in file >" . $serverFilename . "< memory used: " . memory_get_usage(), 'media');
 
 		// set usewatermark to false so image will simply be passed through below
 		$usewatermark = false;

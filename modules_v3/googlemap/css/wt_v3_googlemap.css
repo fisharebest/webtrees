@@ -108,8 +108,6 @@ ul.tabs {
  	background: #ddeeff;
  	border: 1px solid #666;
  	height: 20px;
- 	padding-left: 2px;
- 	padding-top: 2px;
  	padding: 0;
 }
 
@@ -117,7 +115,6 @@ ul.tabs {
 ul.tabs li {
 	float: left;
  	list-style-type: none;
- 	margin-left: 2px;
  	margin: 0;
  	padding: 0;
 }
@@ -125,7 +122,6 @@ ul.tabs li {
 /* link inside the tab. uses a background image */
 ul.tabs a {
 	background-color: #efefef;
-	border-bottom: 0;
 	border-radius: 4px 4px 0 0;
 	border: 1px solid #666;
 	color: #777;
@@ -219,46 +215,6 @@ ul.tabs a.current {
 
 .optionbox #gname {
 	white-space: normal;
-}
-
-/* googlemap_style */
-#map_type {
-	margin: 0;
- 	font-family: Arial;
- 	font-size: 10px;
- 	list-style: none;
- 	padding: 0;
-}
-
-#map_type li {
-	display: block;
- 	border: 1px solid #000;
- 	cursor: pointer;
- 	float: left;
- 	margin-left: 2px;
- 	padding: 2px;
- 	text-align: center;
- 	width: 70px;
-}
-
-#map_type li.non_active {
-	background: #fff;
- 	color: #000;
- 	font-weight: normal;
-}
-
-#map_type li.active {
-	background: #888;
- 	color: #fff;
- 	font-weight: bold;
-}
-
-#map_type li:hover {
-	background: #ddd;
-}
-
-#googlemap_left {
-	margin-top: -14px !important;
 }
 
 #side_bar .gallery img,

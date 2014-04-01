@@ -21,6 +21,8 @@
 define('WT_SCRIPT_NAME', 'setup.php');
 define('WT_CONFIG_FILE', 'config.ini.php');
 
+require 'library/autoload.php';
+
 // This script (uniquely) does not load session.php.
 // session.php won’t run until a configuration file exists…
 // This next block of code is a minimal version of session.php
@@ -55,10 +57,6 @@ if (version_compare(PHP_VERSION, WT_REQUIRED_PHP_VERSION)<0) {
 	exit;
 }
 
-// Invoke the Zend Framework Autoloader, so we can use Zend_XXXXX and WT_XXXXX classes
-set_include_path(WT_ROOT.'library'.PATH_SEPARATOR.get_include_path());
-require_once 'Zend/Loader/Autoloader.php';
-Zend_Loader_Autoloader::getInstance()->registerNamespace('WT_');
 require 'includes/functions/functions.php';
 require 'includes/functions/functions_utf-8.php';
 require 'includes/functions/functions_edit.php';

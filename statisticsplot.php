@@ -708,8 +708,6 @@ function calc_legend($grenzen_zas) {
 	global $legend, $zmax, $zgrenzen;
 
 	// calculate the legend values
-	$hulpar = array();
-	//-- get numbers out of $grenzen_zas
 	$hulpar = explode(',', $grenzen_zas);
 	$i=1;
 	// I18N: %d is a year

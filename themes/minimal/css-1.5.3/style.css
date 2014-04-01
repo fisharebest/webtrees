@@ -46,7 +46,7 @@ html[dir=rtl] input:required:valid, html[dir=rtl] textarea:required:valid, html[
 .makeMenu ul, #main-menu ul {z-index:210;}
 
 /* Row one */
-#header-title {font-size:175%;float:left;clear:left;font-size: 26px;font-weight: 900;}
+#header-title {float:left;clear:left;font-size: 26px;font-weight: 900;}
 #header-user-links {float:right;}
 html[dir=rtl] #header-title {float:right;clear:right;}
 html[dir=rtl] #header-user-links {float:left;clear:left;}
@@ -87,7 +87,7 @@ html[dir=rtl] .makeMenu li ul li {text-align:right;}
 
 /* header hover */
 #topMenu ul li:hover > ul {position:absolute;margin:0;display:block;text-align:left;padding:0;}
-#topMenu ul #menu-chart li:hover ul, #topMenu ul #menu-obje li:hover ul {position:absolute;display:block;margin-left:100%;left:0px;}
+#topMenu ul #menu-chart li:hover ul, #topMenu ul #menu-obje li:hover ul {position:absolute;display:block;margin-left:100%;left:0;}
 
 /* --- RTL --- */
 html[dir=rtl] #topMenu {float:right;}
@@ -97,8 +97,8 @@ html[dir=rtl] #topMenu ul ul {right:0;left:auto;}
 html[dir=rtl] #topMenu ul ul li {right:auto;/*resets the right:50% on the parent li */ clear:right;float:right;width:100%;}
 html[dir=rtl] #topMenu ul ul li a {text-align:right;}
 html[dir=rtl] #topMenu ul li:hover > ul {text-align:right;}
-html[dir=rtl] #topMenu ul #menu-chart li:hover ul {margin-right:100%;right:0px;left:auto;}
-html[dir=rtl] #topMenu ul #menu-obje li:hover ul {margin-right:100%;right:0px;left:auto;}
+html[dir=rtl] #topMenu ul #menu-chart li:hover ul {margin-right:100%;right:0;left:auto;}
+html[dir=rtl] #topMenu ul #menu-obje li:hover ul {margin-right:100%;right:0;left:auto;}
 
 #flash-messages {clear:both;}
 
@@ -865,7 +865,6 @@ a.showit:hover > span {
 	top:22px;
 	left:0;
 	width:225px;
-	border-style:outset;
 	border-left:15px outset #1f1f1f;
 	border-top:2px solid #1f1f1f;
 	border-bottom:2px solid #555555;
@@ -939,39 +938,6 @@ a.showit:hover > span {
 	z-index:100;
 }
 
-#map_type {
-	margin:0;
-	padding:0;
-	font-size:10px;
-	list-style:none;
-}
-#map_type li {
-	display:block;
-	width:70px;
-	text-align:center;
-	padding:2px;
-	border:1px solid #555555;
-	cursor:pointer;
-	float:left;
-	margin-left:2px;
-}
-#map_type li.non_active {
-	background:#ffffff;
-	color:#555555;
-	font-weight:normal;
-}
-
-#map_type li.active {
-	background:#808080;
-	color:#ffffff;
-	font-weight:bold;
-}
-#map_type li:hover {
-	background:#dddddd;
-}
-
-.tag_cloud {
-}
 .tag_cloud a {
 	white-space:nowrap;
 }
@@ -1005,7 +971,7 @@ a.showit:hover > span {
 }
 
 .ui-autocomplete-loading {
-	background:#ffffff url(images/indicator.png) right center no-repeat;
+	background:#ffffff url(images/indicator.gif) right center no-repeat;
 }
 
 .ui-autocomplete li:nth-child(odd) {
@@ -1601,7 +1567,7 @@ html[dir=rtl] #sb_content_extra_info .editfacts {float:left;}
 #find-output .find-media-details p {border:0;padding:0 5px 2px 5px;font-weight:normal;text-align:left;}
 #find-output .find-media-details div span {font-weight:normal;padding:0 5px 2px 5px;}
 #find-output p.find-media-title {font-weight:bold;}
-#find-output .find-media-details ul {padding:0;margin:0px 20px 10px 20px;list-style-type:none;}
+#find-output .find-media-details ul {padding:0;margin:0 20px 10px 20px;list-style-type:none;}
 #find-facts-header .list_label {text-align:inherit;}
 
 /* ============== search.php ======================= */
@@ -1630,7 +1596,7 @@ html[dir=rtl] #edituser-table .value {margin:0 260px 0 0;}
 
 @media print {
 	#backprint, #header, #topMenu, #separator  {display:none;}
-	#pedigree_chart {left:right;left:-80px;}
+	#pedigree_chart {left:-80px;}
 	#header_accordion1 {width: 510px!important}
 	html[dir=rtl] #pedigree_chart {left:auto;right:-80px;}
 	#header, #footer, .noprint {display:none !important;}
@@ -1710,7 +1676,7 @@ a.icon-rdarrow:hover       {width:20px;height:20px;background-image:url(images/r
 .icon-sex_m_9x9            {width:9px;height:9px;background-image:url(images/sex_m_9x9.png);}
 .icon-sex_u_15x15          {width:15px;height:15px;background-image:url(images/sex_u_15x15.png);}
 .icon-sex_u_9x9            {width:9px;height:9px;background-image:url(images/sex_u_9x9.png);}
-.icon-target               {width:15px;height:15px;background-image:url(images/buttons/target.png);}
+.icon-target               {width:15px;height:15px;background-image:url(images/target.png);}
 .icon-uarrow               {width:20px;height:20px;background-image:url(images/uarrow.png);}
 a.icon-uarrow:hover        {width:20px;height:20px;background-image:url(images/uarrow2.png);}
 .icon-udarrow              {width:20px;height:20px;background-image:url(images/udarrow.png);}
@@ -1749,21 +1715,21 @@ a.icon-udarrow             {width:20px;height:20px;background-image:url(images/u
 .icon-mime-application-vnd-ms-excel      {background-position:-148px -196px;}
 .icon-mime-application-x-rar-compressed  {background-position: -50px  -98px;}
 .icon-mime-application-zip               {background-position: -50px -147px;}
-.icon-mime-application-x-shockwave-flash {background-position:-148px    0px;}
+.icon-mime-application-x-shockwave-flash {background-position:-148px    0;}
 .icon-mime-audio-mp3                     {background-position: -50px -245px;}
-.icon-mime-audio-mpeg                    {background-position: -50px    0px;}
+.icon-mime-audio-mpeg                    {background-position: -50px    0;}
 .icon-mime-audio-x-ms-wma                {background-position:  -1px -245px;}
 .icon-mime-audio-wav                     {background-position:  -1px  -98px;}
 .icon-mime-text-html                     {background-position: -99px -245px;}
 .icon-mime-text-x-gedcom                 {background-position: -50px  -49px;}
-.icon-mime-image-bmp                     {background-position: 197px    0px;}
+.icon-mime-image-bmp                     {background-position: 197px    0;}
 .icon-mime-image-gif                     {background-position:-197px  -49px;}
 .icon-mime-image-jpeg                    {background-position:  -1px -147px;}
 .icon-mime-image-png                     {background-position: -99px  -98px;}
 .icon-mime-image-svg                     {background-position:-197px -196px;}
 .icon-mime-image-tiff                    {background-position:-148px  -98px;}
 .icon-mime-video-quicktime               {background-position: -99px -147px;}
-.icon-mime-video-avi                     {background-position: -99px    0px;}
+.icon-mime-video-avi                     {background-position: -99px    0;}
 .icon-mime-video-x-ms-wmv                {background-position: -50px -196px;}
 
 /* Silhouettes on charts */
