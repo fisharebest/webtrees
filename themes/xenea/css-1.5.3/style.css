@@ -1876,7 +1876,7 @@ html[dir=rtl] #sb_content_extra_info .editfacts {float:left;}
 #find-output .find-media-details p {border:0;padding:0 5px 2px 5px;font-weight:normal;text-align:left;}
 #find-output .find-media-details div span {font-weight:normal;padding:0 5px 2px 5px;}
 #find-output p.find-media-title {font-weight:bold;}
-#find-output .find-media-details ul {padding:0;margin:0px 20px 10px 20px;list-style-type:none;}
+#find-output .find-media-details ul {padding:0;margin:0 20px 10px 20px;list-style-type:none;}
 #find-facts-header .list_label {text-align:inherit;}
 
 /* ============== search.php ======================= */
@@ -2024,21 +2024,21 @@ a.icon-uarrow:hover        {width:20px;height:20px;background-image:url(images/u
 .icon-mime-application-vnd-ms-excel      {background-position:-148px -196px;}
 .icon-mime-application-x-rar-compressed  {background-position: -50px  -98px;}
 .icon-mime-application-zip               {background-position: -50px -147px;}
-.icon-mime-application-x-shockwave-flash {background-position:-148px    0px;}
+.icon-mime-application-x-shockwave-flash {background-position:-148px    0;}
 .icon-mime-audio-mp3                     {background-position: -50px -245px;}
-.icon-mime-audio-mpeg                    {background-position: -50px    0px;}
+.icon-mime-audio-mpeg                    {background-position: -50px    0;}
 .icon-mime-audio-x-ms-wma                {background-position:  -1px -245px;}
 .icon-mime-audio-wav                     {background-position:  -1px  -98px;}
 .icon-mime-text-html                     {background-position: -99px -245px;}
 .icon-mime-text-x-gedcom                 {background-position: -50px  -49px;}
-.icon-mime-image-bmp                     {background-position: 197px    0px;}
+.icon-mime-image-bmp                     {background-position: 197px    0;}
 .icon-mime-image-gif                     {background-position:-197px  -49px;}
 .icon-mime-image-jpeg                    {background-position:  -1px -147px;}
 .icon-mime-image-png                     {background-position: -99px  -98px;}
 .icon-mime-image-svg                     {background-position:-197px -196px;}
 .icon-mime-image-tiff                    {background-position:-148px  -98px;}
 .icon-mime-video-quicktime               {background-position: -99px -147px;}
-.icon-mime-video-avi                     {background-position: -99px    0px;}
+.icon-mime-video-avi                     {background-position: -99px    0;}
 .icon-mime-video-x-ms-wmv                {background-position: -50px -196px;}
 
 /* Silhouettes on charts */

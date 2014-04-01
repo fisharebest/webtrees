@@ -1,6 +1,6 @@
 .normal_inner_block {width: 100%;}
 a.showit:hover > span {filter: alpha(opacity=85);}
-form {margin-top: 0px; margin-bottom: 0px;}
+form {margin-top: 0; margin-bottom: 0;}
 .ltr {text-align: left;}
 
 .makeMenu {*clear: both; *width: 750px;}

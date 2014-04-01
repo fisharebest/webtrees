@@ -30,13 +30,13 @@ if (!defined('WT_WEBTREES')) {
 ?>
 
 
-	<table id="navenclose" class="optionbox" width="100%">
+	<table id="navenclose" class="optionbox">
 		<?php
 
 		//-- Search Function ------------------------------------------------------------
 		?>
 		<tr>
-			<td align="center" class="descriptionbox"><?php echo WT_I18N::translate('Add individuals'); ?></td>
+			<td class="descriptionbox"><?php echo WT_I18N::translate('Add individuals'); ?></td>
 		</tr>
 		<tr>
 			<td class="optionbox" >
@@ -62,7 +62,7 @@ if (!defined('WT_WEBTREES')) {
 			</td>
 		</tr>
 		<tr>
-			<td style="border: 0px solid transparent;">
+			<td>
 				<br>
 			</td>
 		</tr>
@@ -73,22 +73,16 @@ if (!defined('WT_WEBTREES')) {
 				?>
 
 				<tr>
-					<td align="center" style="border: 0px solid transparent;">
-						<table width="100%" class="fact_table" cellspacing="0" border="0">
+					<td>
+						<table class="fact_table">
 							<tr>
-								<td align="center" colspan=3 class="descriptionbox">
+								<td colspan="3" class="descriptionbox">
 								<?php
 								// Header text with "Head" button =================================================
 								$headImg  = '<i class="headimg vmiddle icon-button_head"></i>';
 								$headImg2 = '<i class="headimg2 vmiddle icon-button_head" title="'.WT_I18N::translate('Click to choose individual as head of family.').'"></i>';
 								echo WT_I18N::translate('Click %s to choose individual as head of family.', $headImg);
 								?>
-								</td>
-							</tr>
-
-							<tr>
-								<td>
-									<br>
 								</td>
 							</tr>
 
