@@ -34,110 +34,56 @@ if (!defined('WT_WEBTREES')) {
 	function getCenDate(cenyear) {
 		// Calculate census date from the census year selected
 		// UK CENSUS DATES
-			   if (cenyear == 1841) { var cendate = new Date(1841, 5, 06);    // 06 JUN 1841
-		} else if (cenyear == 1851) { var cendate = new Date(1851, 2, 30);    // 30 MAR 1851
-		} else if (cenyear == 1861) { var cendate = new Date(1861, 3, 07);    // 07 APR 1861
-		} else if (cenyear == 1871) { var cendate = new Date(1871, 3, 02);    // 02 APR 1871
-		} else if (cenyear == 1881) { var cendate = new Date(1881, 3, 03);    // 03 APR 1881
-		} else if (cenyear == 1891) { var cendate = new Date(1891, 3, 05);    // 05 APR 1891
-		} else if (cenyear == 1901) { var cendate = new Date(1901, 2, 31);    // 31 MAR 1901
-		} else if (cenyear == 1911) { var cendate = new Date(1911, 3, 02);    // 02 APR 1911
-		} else if (cenyear == 1921) { var cendate = new Date(1921, 3, 02);    // 02 APR 1921   // For Test Purposes
-		} else if (cenyear == 1931) { var cendate = new Date(1931, 3, 02);    // 02 APR 1931   // For Test Purposes
+		if        (cenyear == 1841) { var cendate = new Date(1841,  5,  6);  // 06 JUN 1841
+		} else if (cenyear == 1851) { var cendate = new Date(1851,  2, 30);  // 30 MAR 1851
+		} else if (cenyear == 1861) { var cendate = new Date(1861,  3,  7);  // 07 APR 1861
+		} else if (cenyear == 1871) { var cendate = new Date(1871,  3,  2);  // 02 APR 1871
+		} else if (cenyear == 1881) { var cendate = new Date(1881,  3,  3);  // 03 APR 1881
+		} else if (cenyear == 1891) { var cendate = new Date(1891,  3,  5);  // 05 APR 1891
+		} else if (cenyear == 1901) { var cendate = new Date(1901,  2, 31);  // 31 MAR 1901
+		} else if (cenyear == 1911) { var cendate = new Date(1911,  3,  2);  // 02 APR 1911
+		} else if (cenyear == 1921) { var cendate = new Date(1921,  3,  2);  // 02 APR 1921   // For Test Purposes
+		} else if (cenyear == 1931) { var cendate = new Date(1931,  3,  2);  // 02 APR 1931   // For Test Purposes
 		// USA CENSUS DATES
-		} else if (cenyear == 1790) { var cendate = new Date(1790, 7, 02);    // 02 AUG 1790
-		} else if (cenyear == 1800) { var cendate = new Date(1800, 7, 04);    // 04 AUG 1800
-		} else if (cenyear == 1810) { var cendate = new Date(1810, 7, 06);    // 06 AUG 1810
-		} else if (cenyear == 1820) { var cendate = new Date(1820, 7, 07);    // 07 AUG 1820
-		} else if (cenyear == 1830) { var cendate = new Date(1830, 5, 01);    // 01 JUN 1830
-		} else if (cenyear == 1840) { var cendate = new Date(1840, 5, 01);    // 01 JUN 1840
-		} else if (cenyear == 1850) { var cendate = new Date(1850, 5, 01);    // 01 JUN 1850
-		} else if (cenyear == 1860) { var cendate = new Date(1860, 5, 01);    // 01 JUN 1860
-		} else if (cenyear == 1870) { var cendate = new Date(1870, 5, 01);    // 01 JUN 1870
-		} else if (cenyear == 1880) { var cendate = new Date(1880, 5, 01);    // 01 JUN 1880
-		} else if (cenyear == 1890) { var cendate = new Date(1890, 5, 01);    // 01 JUN 1890
-		} else if (cenyear == 1900) { var cendate = new Date(1900, 5, 01);    // 01 JUN 1900
-		} else if (cenyear == 1910) { var cendate = new Date(1910, 3, 15);    // 15 APR 1910
-		} else if (cenyear == 1920) { var cendate = new Date(1920, 0, 01);    // 01 JAN 1920
-		} else if (cenyear == 1930) { var cendate = new Date(1930, 3, 01);    // 01 APR 1930
-		} else if (cenyear == 1940) { var cendate = new Date(1940, 3, 01);    // 01 APR 1940
+		} else if (cenyear == 1790) { var cendate = new Date(1790,  7,  2);  // 02 AUG 1790
+		} else if (cenyear == 1800) { var cendate = new Date(1800,  7,  4);  // 04 AUG 1800
+		} else if (cenyear == 1810) { var cendate = new Date(1810,  7,  6);  // 06 AUG 1810
+		} else if (cenyear == 1820) { var cendate = new Date(1820,  7,  7);  // 07 AUG 1820
+		} else if (cenyear == 1830) { var cendate = new Date(1830,  5,  1);  // 01 JUN 1830
+		} else if (cenyear == 1840) { var cendate = new Date(1840,  5,  1);  // 01 JUN 1840
+		} else if (cenyear == 1850) { var cendate = new Date(1850,  5,  1);  // 01 JUN 1850
+		} else if (cenyear == 1860) { var cendate = new Date(1860,  5,  1);  // 01 JUN 1860
+		} else if (cenyear == 1870) { var cendate = new Date(1870,  5,  1);  // 01 JUN 1870
+		} else if (cenyear == 1880) { var cendate = new Date(1880,  5,  1);  // 01 JUN 1880
+		} else if (cenyear == 1890) { var cendate = new Date(1890,  5,  1);  // 01 JUN 1890
+		} else if (cenyear == 1900) { var cendate = new Date(1900,  5,  1);  // 01 JUN 1900
+		} else if (cenyear == 1910) { var cendate = new Date(1910,  3, 15);  // 15 APR 1910
+		} else if (cenyear == 1920) { var cendate = new Date(1920,  1,  1);  // 01 JAN 1920
+		} else if (cenyear == 1930) { var cendate = new Date(1930,  3,  1);  // 01 APR 1930
+		} else if (cenyear == 1940) { var cendate = new Date(1940,  3,  1);  // 01 APR 1940
 		// FR CENSUS DATES
-		} else if (cenyear == 1876) { var cendate = new Date(1876, 31, 12);    // 02 AUG 1790
-		} else if (cenyear == 1881) { var cendate = new Date(1881, 31, 12);    // 04 AUG 1800
-		} else if (cenyear == 1886) { var cendate = new Date(1886, 31, 12);    // 06 AUG 1810
-		} else if (cenyear == 1891) { var cendate = new Date(1891, 31, 12);    // 07 AUG 1820
-		} else if (cenyear == 1896) { var cendate = new Date(1896, 31, 12);    // 01 JUN 1830
-		} else if (cenyear == 1901) { var cendate = new Date(1901,  31, 12);   // 01 JUN 1840
-		} else if (cenyear == 1906) { var cendate = new Date(1906,  31, 12);   // 01 JUN 1850
-		} else if (cenyear == 1911) { var cendate = new Date(1911,  31, 12);   // 01 JUN 1860
-		} else if (cenyear == 1916) { var cendate = new Date(1916,  31, 12);   // 01 JUN 1870
-		} else if (cenyear == 1921) { var cendate = new Date(1921,  31, 12);   // 01 JUN 1880
-		} else if (cenyear == 1926) { var cendate = new Date(1926,  31, 12);   // 01 JUN 1890
-		} else if (cenyear == 1931) { var cendate = new Date(1931,  31, 12);   // 01 JUN 1900
-		} else if (cenyear == 1936) { var cendate = new Date(1936,  31, 12);   // 15 APR 1910
-		} else if (cenyear == 1941) { var cendate = new Date(1941,  31, 12);   // 01 JAN 1920
-		} else if (cenyear == 1946) { var cendate = new Date(1946,  31, 12);   // 01 APR 1930
-		} else if (cenyear == 1951) { var cendate = new Date(1951,  31, 12);   // 01 APR 1940
+		} else if (cenyear == 1876) { var cendate = new Date(1876, 31, 12);  // 02 AUG 1790
+		} else if (cenyear == 1881) { var cendate = new Date(1881, 31, 12);  // 04 AUG 1800
+		} else if (cenyear == 1886) { var cendate = new Date(1886, 31, 12);  // 06 AUG 1810
+		} else if (cenyear == 1891) { var cendate = new Date(1891, 31, 12);  // 07 AUG 1820
+		} else if (cenyear == 1896) { var cendate = new Date(1896, 31, 12);  // 01 JUN 1830
+		} else if (cenyear == 1901) { var cendate = new Date(1901, 31, 12);  // 01 JUN 1840
+		} else if (cenyear == 1906) { var cendate = new Date(1906, 31, 12);  // 01 JUN 1850
+		} else if (cenyear == 1911) { var cendate = new Date(1911, 31, 12);  // 01 JUN 1860
+		} else if (cenyear == 1916) { var cendate = new Date(1916, 31, 12);  // 01 JUN 1870
+		} else if (cenyear == 1921) { var cendate = new Date(1921, 31, 12);  // 01 JUN 1880
+		} else if (cenyear == 1926) { var cendate = new Date(1926, 31, 12);  // 01 JUN 1890
+		} else if (cenyear == 1931) { var cendate = new Date(1931, 31, 12);  // 01 JUN 1900
+		} else if (cenyear == 1936) { var cendate = new Date(1936, 31, 12);  // 15 APR 1910
+		} else if (cenyear == 1941) { var cendate = new Date(1941, 31, 12);  // 01 JAN 1920
+		} else if (cenyear == 1946) { var cendate = new Date(1946, 31, 12);  // 01 APR 1930
+		} else if (cenyear == 1951) { var cendate = new Date(1951, 31, 12);  // 01 APR 1940
 
 		// Default Date
 		} else {
 			var cendate = new Date(1901, 2, 31);
 		}
 		return cendate;
-	}
-
-	function getPrevCenDate(cenyear) {
-		// UK PREVIOUS CENSUS DATES
-		       if (prevcenyear == 1841) { var prevcendate = new Date(1841, 5, 06);    // 06 JUN 1841
-		} else if (prevcenyear == 1951) { var prevcendate = new Date(1851, 2, 30);    // 30 MAR 1851
-		} else if (prevcenyear == 1861) { var prevcendate = new Date(1861, 3, 07);    // 07 APR 1861
-		} else if (prevcenyear == 1871) { var prevcendate = new Date(1871, 3, 02);    // 02 APR 1871
-		} else if (prevcenyear == 1881) { var prevcendate = new Date(1881, 3, 03);    // 03 APR 1881
-		} else if (prevcenyear == 1891) { var prevcendate = new Date(1891, 3, 05);    // 05 APR 1891
-		} else if (prevcenyear == 1901) { var prevcendate = new Date(1901, 2, 31);    // 31 MAR 1901
-		} else if (prevcenyear == 1911) { var prevcendate = new Date(1911, 3, 02);    // 02 APR 1911
-		} else if (trevcenyear == 1921) { var prevcendate = new Date(1921, 3, 02);    // 02 APR 1921   // For Test Purposes
-		} else if (prevcenyear == 1931) { var prevcendate = new Date(1931, 3, 02);    // 02 APR 1931   // For Test Purposes
-		// USA PREVIOUS CENSUS DATES
-		} else if (prevcenyear == 1790) { var prevcendate = new Date(1790, 7, 02);    // 02 AUG 1790
-		} else if (prevcenyear == 1800) { var prevcendate = new Date(1800, 7, 04);    // 04 AUG 1800
-		} else if (prevcenyear == 1810) { var prevcendate = new Date(1810, 7, 06);    // 06 AUG 1810
-		} else if (prevcenyear == 1820) { var prevcendate = new Date(1820, 7, 07);    // 07 AUG 1820
-		} else if (prevcenyear == 1830) { var prevcendate = new Date(1830, 5, 01);    // 01 JUN 1830
-		} else if (prevcenyear == 1840) { var prevcendate = new Date(1840, 5, 01);    // 01 JUN 1840
-		} else if (prevcenyear == 1850) { var prevcendate = new Date(1850, 5, 01);    // 01 JUN 1850
-		} else if (prevcenyear == 1860) { var prevcendate = new Date(1860, 5, 01);    // 01 JUN 1860
-		} else if (prevcenyear == 1870) { var prevcendate = new Date(1870, 5, 01);    // 01 JUN 1870
-		} else if (prevcenyear == 1880) { var prevcendate = new Date(1880, 5, 01);    // 01 JUN 1880
-		} else if (prevcenyear == 1890) { var prevcendate = new Date(1890, 5, 01);    // 01 JUN 1890
-		} else if (prevcenyear == 1900) { var prevcendate = new Date(1900, 5, 01);    // 01 JUN 1900
-		} else if (prevcenyear == 1910) { var prevcendate = new Date(1910, 3, 15);    // 15 APR 1910
-		} else if (prevcenyear == 1920) { var prevcendate = new Date(1920, 0, 01);    // 01 JAN 1920
-		} else if (prevcenyear == 1930) { var prevcendate = new Date(1930, 3, 01);    // 01 APR 1930
-		} else if (prevcenyear == 1940) { var prevcendate = new Date(1940, 4, 01);    // 01 APR 1940
-		//FR
-		} else if (prevcenyear == 1876) { var prevcendate = new Date(1876, 31, 12);    // 02 AUG 1790
-		} else if (prevcenyear == 1881) { var prevcendate = new Date(1881, 31, 12);    // 04 AUG 1800
-		} else if (prevcenyear == 1886) { var prevcendate = new Date(1886, 31, 12);    // 06 AUG 1810
-		} else if (prevcenyear == 1891) { var prevcendate = new Date(1891, 31, 12);    // 07 AUG 1820
-		} else if (prevcenyear == 1896) { var prevcendate = new Date(1896, 31, 12);    // 01 JUN 1830
-		} else if (prevcenyear == 1901) { var prevcendate = new Date(1901,  31, 12);   // 01 JUN 1840
-		} else if (prevcenyear == 1906) { var prevcendate = new Date(1906,  31, 12);   // 01 JUN 1850
-		} else if (prevcenyear == 1911) { var prevcendate = new Date(1911,  31, 12);   // 01 JUN 1860
-		} else if (prevcenyear == 1916) { var prevcendate = new Date(1916,  31, 12);   // 01 JUN 1870
-		} else if (prevcenyear == 1921) { var prevcendate = new Date(1921,  31, 12);   // 01 JUN 1880
-		} else if (prevcenyear == 1926) { var prevcendate = new Date(1926,  31, 12);   // 01 JUN 1890
-		} else if (prevcenyear == 1931) { var prevcendate = new Date(1931,  31, 12);   // 01 JUN 1900
-		} else if (prevcenyear == 1936) { var prevcendate = new Date(1936,  31, 12);   // 15 APR 1910
-		} else if (prevcenyear == 1941) { var prevcendate = new Date(1941,  31, 12);   // 01 JAN 1920
-		} else if (prevcenyear == 1946) { var prevcendate = new Date(1946,  31, 12);   // 01 APR 1930
-		} else if (prevcenyear == 1951) { var prevcendate = new Date(1951,  31, 12);   // 01 APR 1940
-
-		// Default Date
-		} else {
-			var prevcendate = new Date(1901, 2, 31);
-		}
-		return prevcendate;
 	}
 
 	function changeCtry() {

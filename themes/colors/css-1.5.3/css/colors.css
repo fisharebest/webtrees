@@ -496,12 +496,6 @@ a.showit:hover > span {background:#444444;border-bottom:2px solid #000000;border
 .lifespan_timeline {background:#ffffff;left:-10px;position:absolute;top:-65px;width:100%;}
 
 #map_nav {left:101%;position:relative;top:-484px;}
-#map_type {font-size:10px;list-style:none;margin:0;padding:0;}
-#map_type li {border:1px solid #000000;cursor:pointer;display:block;float:left;margin-left:2px;padding:2px;text-align:center;width:70px;}
-#map_type li:hover {background:#dddddd;}
-#map_type li.active {background:#888888;color:#ffffff;font-weight:700;}
-#map_type li.non_active {background:#ffffff;color:#000000;font-weight:400;}
-
 #tree_nav {left:90%;position:relative;top:-584px;z-index:100;}
 
 .ui-autocomplete-input {background:#eeeeaa;}

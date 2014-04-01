@@ -221,46 +221,6 @@ ul.tabs a.current {
 	white-space: normal;
 }
 
-/* googlemap_style */
-#map_type {
-	margin: 0;
- 	font-family: Arial;
- 	font-size: 10px;
- 	list-style: none;
- 	padding: 0;
-}
-
-#map_type li {
-	display: block;
- 	border: 1px solid #000;
- 	cursor: pointer;
- 	float: left;
- 	margin-left: 2px;
- 	padding: 2px;
- 	text-align: center;
- 	width: 70px;
-}
-
-#map_type li.non_active {
-	background: #fff;
- 	color: #000;
- 	font-weight: normal;
-}
-
-#map_type li.active {
-	background: #888;
- 	color: #fff;
- 	font-weight: bold;
-}
-
-#map_type li:hover {
-	background: #ddd;
-}
-
-#googlemap_left {
-	margin-top: -14px !important;
-}
-
 #side_bar .gallery img,
 .iwstyle .gallery img,
 .highlt_img .gallery img {
