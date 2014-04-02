@@ -74,7 +74,7 @@ if ($view!='simple') { // Use "simple" headers for popup windows
 			'<input type="hidden" name="action" value="general">',
 			'<input type="hidden" name="ged" value="', WT_GEDCOM, '">',
 			'<input type="hidden" name="topsearch" value="yes">',
-			'<input type="search" name="query" size="12" placeholder="', WT_I18N::translate('Search'), '" dir="auto">',
+			'<input type="search" name="query" size="12" placeholder="', WT_I18N::translate('Search'), '">',
 			'<input type="submit" name="search" value="&gt;">',
 			'</form>',
 		'</div>',

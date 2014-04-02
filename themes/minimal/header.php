@@ -95,7 +95,7 @@ if ($view!='simple') {
 		'<input type="hidden" name="action" value="general">',
 		'<input type="hidden" name="ged" value="', WT_GEDCOM, '">',
 		'<input type="hidden" name="topsearch" value="yes">',
-		'<input type="search" name="query" size="20" placeholder="', WT_I18N::translate('Search'), '" dir="auto">',
+		'<input type="search" name="query" size="20" placeholder="', WT_I18N::translate('Search'), '">',
 		'</form></li></ul></div>';
 
 	$menu_items=array(
