@@ -301,7 +301,6 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 				echo '<td>';
 				for ($i=$count; $i<$genoffset-1; $i++) {
 					echo '<table>';
-						 '<tr>';
 					$this->printEmptyBox($bwidth, $bheight);
 					echo '</tr>';
 					$this->printEmptyBox($bwidth, $bheight);
