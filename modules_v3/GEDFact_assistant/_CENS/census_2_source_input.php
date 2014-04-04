@@ -118,7 +118,7 @@ if (!defined('WT_WEBTREES')) {
 		changeAge(cenyear);
 		changeCols(cenyear);
 		changeMC(cenyear);
-		changeChBorn(cenyear)
+		changeChBorn(cenyear);
 		preview();
 
 		// Toggle Countries when the preset UK Cens Date has been been used -------------

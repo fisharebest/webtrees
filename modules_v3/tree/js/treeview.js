@@ -91,21 +91,21 @@ function TreeViewHandler(treeviewInstance, allPartners) {
 	
 	tv.centerOnRoot(); // fire ajax update if needed, which call setComplete() when all is loaded
 	return false;
-}
+};
 /**
  * Class TreeView setLoading method
  */
 TreeViewHandler.prototype.setLoading = function() {
 	this.treeview.css("cursor", "wait");
 	this.loadingImage.css("display", "block");
-}
+};
 /**
  * Class TreeView setComplete  method
  */
 TreeViewHandler.prototype.setComplete = function() {
 	this.treeview.css("cursor", "move");
 	this.loadingImage.css("display", "none");
-}
+};
 
 /**
  * Class TreeView getSize  method
@@ -124,7 +124,7 @@ TreeViewHandler.prototype.getSize = function() {
 	var frm = jQuery("#tvTreeBorder");
 	tv.treeview.css("width", frm.width());
 	tv.treeview.css("height", frm.height());*/
-}
+};
 
 /**
  * Class TreeView updateTree  method
@@ -200,7 +200,7 @@ TreeViewHandler.prototype.updateTree = function(center, button) {
 		tv.setComplete();
 	}
 	return false;
-}
+};
 
 /**
  * Class TreeView compacte  method
@@ -232,7 +232,7 @@ TreeViewHandler.prototype.compact = function() {
 	}
 	tv.setComplete();
 	return false;
-}
+};
 
 /**
  * Class TreeView centerOnRoot method
@@ -254,7 +254,7 @@ TreeViewHandler.prototype.centerOnRoot = function() {
 		this.updateTree(true);
 	}
 	return false;
-}
+};
 
 /**
  * Class TreeView expandBox method
@@ -316,7 +316,7 @@ TreeViewHandler.prototype.expandBox = function(box, event) {
 	// we must ajust the draggable treeview size to its content size
 	this.getSize();
 	return false;
-}
+};
 
 function createCookie(name,value,days) {
 	if (days) {
@@ -327,7 +327,7 @@ function createCookie(name,value,days) {
 		var expires = "";
 	}
 	document.cookie = name+"="+value+expires+"; path=/";
-}
+};
 
 function readCookie(name) {
 	var nameEQ = name + "=";
@@ -342,8 +342,8 @@ function readCookie(name) {
 		}
 	}
 	return null;
-}
+};
 
 function eraseCookie(name) {
 	createCookie(name,"",-1);
-}
+};
