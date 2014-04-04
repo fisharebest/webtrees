@@ -91,7 +91,7 @@ function TreeViewHandler(treeviewInstance, allPartners) {
 	
 	tv.centerOnRoot(); // fire ajax update if needed, which call setComplete() when all is loaded
 	return false;
-};
+}
 /**
  * Class TreeView setLoading method
  */
@@ -327,8 +327,7 @@ function createCookie(name,value,days) {
 		var expires = "";
 	}
 	document.cookie = name+"="+value+expires+"; path=/";
-};
-
+}
 function readCookie(name) {
 	var nameEQ = name + "=";
 	var ca = document.cookie.split(';');
@@ -342,8 +341,7 @@ function readCookie(name) {
 		}
 	}
 	return null;
-};
-
+}
 function eraseCookie(name) {
 	createCookie(name,"",-1);
-};
+}

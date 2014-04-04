@@ -3550,7 +3550,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				geocoder = new google.maps.Geocoder();
 				if (zoom) {
 					zoom = zoom;
-				}else {
+				} else {
 					zoom = pl_zoom;
 				}
 				// Define map
