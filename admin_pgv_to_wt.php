@@ -103,7 +103,7 @@ echo
 		.good {color: green;}
 		.bad {color: red !important;}
 		.indifferent {color: blue;}
-		#container p.pgv  {color: black; font-size: 12px; font-style: normal; font-weight:normal; padding:0; margin:10px 0 0 320px}
+		#container p.pgv  {color: black; font-size: 12px; font-style: normal; font-weight:normal; padding:0; margin:10px 0 0 320px;}
 	</style>';
 
 if ($error || !$PGV_PATH) {

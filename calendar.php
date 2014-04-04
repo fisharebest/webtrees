@@ -477,10 +477,10 @@ case 'calendar':
 			echo "<td class=\"optionbox wrap\">";
 		if ($d<1 || $d>$days_in_month)
 			if (count($cal_facts[0])>0) {
-				echo "<span class=\"cal_day\">", WT_I18N::translate('Day not set'), "</span><br style=\"clear: both\">";
-				echo "<div class=\"details1\" style=\"height: 150px; overflow: auto;\">";
-				echo calendar_list_text($cal_facts[0], "", "", false);
-				echo "</div>";
+				echo '<span class="cal_day">', WT_I18N::translate('Day not set'), '</span><br style="clear: both;">';
+				echo '<div class="details1" style="height: 150px; overflow: auto;">';
+				echo calendar_list_text($cal_facts[0], '', '', false);
+				echo '</div>';
 				$cal_facts[0]=array();
 			} else
 				echo '&nbsp;';
@@ -501,7 +501,7 @@ case 'calendar':
 					break;
 				}
 			}
-			echo '<br style="clear: both"><div class="details1" style="height: 150px; overflow: auto;">';
+			echo '<br style="clear: both;"><div class="details1" style="height: 150px; overflow: auto;">';
 			echo calendar_list_text($cal_facts[$d], "", "", false);
 			echo '</div>';
 		}

@@ -272,19 +272,19 @@ $controller->checkPrivacy();
 	<?php }
 		if (!isset($col)) $col = 0;
 		?>
-		<td class="person<?php echo $col; ?>" style="padding: 5px" valign="top">
+		<td class="person<?php echo $col; ?>" style="padding: 5px;" valign="top">
 			<?php echo WT_I18N::translate('Add another individual to the chart'), '<br>'; ?>
 			<input class="pedigree_form" type="text" size="5" id="newpid" name="newpid">
 			<?php echo print_findindi_link('newpid'); ?>
 			<br>
 			<br>
-			<div style="text-align: center"><input type="submit" value="<?php echo WT_I18N::translate('Add'); ?>"></div>
+			<div style="text-align: center;"><input type="submit" value="<?php echo WT_I18N::translate('Add'); ?>"></div>
 		</td>
 	<?php
 	if (count($controller->people)>0) {
 		$scalemod = round($controller->scale*.2) + 1;
 		?>
-		<td class="list_value" style="padding: 5px">
+		<td class="list_value" style="padding: 5px;">
 			<a href="<?php echo WT_SCRIPT_NAME."?".$controller->pidlinks."scale=".($controller->scale+$scalemod); ?>&amp;ged=<?php echo WT_GEDURL; ?>" class="icon-zoomin" title="<?php echo WT_I18N::translate('Zoom in'); ?>"></a><br>
 			<a href="<?php echo WT_SCRIPT_NAME."?".$controller->pidlinks."scale=".($controller->scale-$scalemod); ?>&amp;ged=<?php echo WT_GEDURL; ?>" class="icon-zoomout" title="<?php echo WT_I18N::translate('Zoom out'); ?>"></a><br>
 			<input type="button" value="<?php echo WT_I18N::translate('Clear chart'); ?>" onclick="window.location = 'timeline.php?ged=<?php echo WT_GEDURL; ?>';">

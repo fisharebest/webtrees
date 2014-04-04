@@ -141,17 +141,17 @@ $people = count($controller->people);
 					<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>">
 					<table>
 						<tr>
-							<td class="person0" style="padding: 5px" valign="top">
+							<td class="person0" style="padding: 5px;" valign="top">
 								<?php echo WT_I18N::translate('Add another individual to the chart'); ?>
 								<br>
 								<input class="pedigree_form" type="text" size="5" id="newpid" name="newpid">
 								<?php print_findindi_link('newpid'); ?>
 								<br>
-								<div style="text-align: center">
+								<div style="text-align: center;">
 									<?php echo WT_I18N::translate('Include the individual’s immediate family?'); ?>
 									<input type="checkbox" checked="checked" value="yes" name="addFamily">
 								</div>
-								<div style="text-align: center">
+								<div style="text-align: center;">
 									<input type="submit" value="<?php echo WT_I18N::translate('Add'); ?>">
 								</div>
 							</td>
@@ -209,7 +209,7 @@ $people = count($controller->people);
 		</div>
 		<!--  Floating div controls START -->
 		<div dir="ltr" style="position:relative; z-index: 100; filter: alpha(opacity=67); -moz-opacity: 0.67;  opacity: 0.67; width:180px; top: 80px;">
-			<table style="margin-left: 20px" dir="ltr" border="0" cellpadding="0">
+			<table style="margin-left: 20px;" dir="ltr" border="0" cellpadding="0">
 				<tr>
 					<td></td>
 					<td align="center"><a href="#" onclick="return false;" onmousedown="startScroll('down')" onmouseup="stopScroll()" class="icon-lsuparrow"></a></td>
