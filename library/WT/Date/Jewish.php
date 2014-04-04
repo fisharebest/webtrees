@@ -196,7 +196,7 @@ class WT_Date_Jewish extends WT_Date_Calendar {
 		$shortYear = $num %1000; //discard thousands
 		//next check for all possible single Hebrew digit years
 		$singleDigitYear=($shortYear < 11 || ($shortYear <100 && $shortYear % 10 == 0)  || ($shortYear <= 400 && $shortYear % 100 ==0));
-		$thousands = $num / 1000; //get # thousands
+		$thousands = (int)($num / 1000); //get # thousands
 		$sb = "";
 		//append thousands to String
 		if ($num % 1000 == 0) { // in year is 5000, 4000 etc
@@ -210,7 +210,7 @@ class WT_Date_Jewish extends WT_Date_Calendar {
 			$sb .= " ";
 		}
 		$num = $num % 1000; //remove 1000s
-		$hundreds = $num / 100; // # of hundreds
+		$hundreds = (int)($num / 100); // # of hundreds
 		$sb .= $jHundreds[$hundreds]; //add hundreds to String
 		$num = $num % 100; //remove 100s
 		if ($num == 15) { //special case 15
@@ -218,7 +218,7 @@ class WT_Date_Jewish extends WT_Date_Calendar {
 		} else if ($num == 16) { //special case 16
 			$sb .= $tavTaz[1];
 		} else {
-			$tens = $num / 10;
+			$tens = (int)($num / 10);
 			if ($num % 10 == 0) {                                    // if evenly divisable by 10
 				if ($singleDigitYear == false) {
 					$sb .= $jTenEnds[$tens]; // use end letters so that for example 5750 will end with an end nun

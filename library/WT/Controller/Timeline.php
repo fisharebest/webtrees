@@ -176,7 +176,7 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 		$yoffset = $yoffset + (($month / 12) * $this->scale);
 		$yoffset = $yoffset + (($day / 30) * ($this->scale/12));
 		$yoffset = (int)($yoffset);
-		$place = round($yoffset / $this->bheight);
+		$place = (int)($yoffset / $this->bheight);
 		$i=1;
 		$j=0;
 		$tyoffset = 0;
@@ -188,7 +188,7 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 				$tyoffset = -1 * $this->bheight * $j;
 				$j++;
 			}
-			$place = round(($yoffset+$tyoffset) / ($this->bheight));
+			$place = (int)(($yoffset+$tyoffset) / ($this->bheight));
 		}
 		$yoffset += $tyoffset;
 		$xoffset += abs($tyoffset);
