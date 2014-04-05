@@ -28,14 +28,14 @@
 
 /* Outer border around nav elements */
 .outer_nav {
-  border:3px #808080 outset;
- }
+  border: 3px #808080 outset;
+}
 
 #media-links table.facts_table{width:270px;}
  
 /* Transparent cell border */
 .transparent {
-border: 0;
+	border: 0;
 }
 
 /* top Search box */
@@ -48,14 +48,14 @@ input[type='text'] {
 
 /* "Head" button images */
 .headimg {
-margin-top:-4px;
-border:0;
+	margin-top: -4px;
+	border: 0;
 }
 .headimg2 {
-height:17px;
-border-style:none;
-margin:-3px;
-margin-left:0;
+	height: 17px;
+	border-style: none;
+	margin: -3px;
+	margin-left: 0;
 }
 
 /* Creates clickable <td> for fly-outs */ 
@@ -70,28 +70,32 @@ td #srch a {
 }
 
 /* Flyouts <td> */   
-#flyoutFam, #flyoutPar, #flyoutStep {
+#flyoutFam,
+#flyoutPar,
+#flyoutStep {
 	position: absolute; 
 	top: -15px; 
-	left: 80px;
+	left: 15px;
 	width: 150px;
 }
-#flyoutFamRTL, #flyoutParRTL, #flyoutStepRTL {
-	position: absolute; 
-	top: -15px; 
-	right: 35px;
+
+html[dir=rtl] #flyoutFam,
+html[dir=rtl] #flyoutPar,
+html[dir=rtl] #flyoutStep {
+	left: 0;
+	right: 15px;
 }
-#flyoutFam td, #flyoutPar td, #flyoutStep td, #flyoutFamRTL td, #flyoutParRTL td, #flyoutStepRTL td {
+
+#flyoutFam td,
+#flyoutPar td,
+#flyoutStep td {
 	white-space: normal; 
-	font-size:10px;
-	font-weight:normal;
+	font-size: 10px;
+	font-weight: normal;
 	text-decoration: none;
 }
 
 div #spouseFam {
-	margin-left:13px;
-	margin-top:0;
+	margin-left: 13px;
+	margin-top: 0;
 }
-
-/*-------------------------------------------------*/
-
