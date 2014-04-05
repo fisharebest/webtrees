@@ -106,7 +106,7 @@ html[dir=rtl] #lang-menu .makeMenu li ul {right:auto;left:0;}
 .makeMenu li:hover > ul {display:block;}
 .makeMenu li ul li a.lang-active, .makeMenu li ul li a.theme-active {color:#000066;font-weight:900;}
 
-html[dir=rtl] li up li {text-align:right;}
+html[dir=rtl] li ul li {text-align:right;}
 html[dir=rtl] .makeMenu li ul {left:auto;right:0;}
 html[dir=rtl] .makeMenu li ul li {text-align:right !important;}
 html[dir=rtl] #extra-menu {text-align:left;}

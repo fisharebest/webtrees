@@ -1823,7 +1823,7 @@ html[dir=rtl] .media-display-title {
 html[dir=rtl] .ui-tabs {
 	direction: rtl;
 }
-html[dir=rtl] ui-tabs .ui-tabs-nav li.ui-tabs-selected,
+html[dir=rtl] .ui-tabs .ui-tabs-nav li.ui-tabs-selected,
 html[dir=rtl] .ui-tabs .ui-tabs-nav li.ui-state-default {
 	float: right;
 }
