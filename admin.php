@@ -600,6 +600,7 @@ function old_paths() {
 		WT_ROOT.'library/Michelf',
 		WT_ROOT.'library/tcpdf',
 		WT_ROOT.'library/Zend',
+		WT_ROOT.'modules_v3/GEDFact_assistant/_CENS/census_asst_help.php',
 		WT_ROOT.'modules_v3/googlemap/admin_places.php',
 		WT_ROOT.'modules_v3/googlemap/defaultconfig.php',
 		WT_ROOT.'modules_v3/googlemap/googlemap.php',
