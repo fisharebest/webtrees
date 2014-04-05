@@ -416,10 +416,8 @@ case 'today':
 	echo '<td class="optionbox wrap">';
 
 	// Avoid an empty unordered list
-	ob_start();
-	echo calendar_list_text($indis, '<li>', '</li>', true);
-	$content = ob_get_clean();
-	if (!empty($content)) {
+	$content = calendar_list_text($indis, '<li>', '</li>', true);
+	if ($content) {
 		echo '<ul>', $content, '</ul>';
 	}
 
@@ -427,10 +425,8 @@ case 'today':
 	echo '<td class="optionbox wrap">';
 
 	// Avoid an empty unordered list
-	ob_start();
-	echo calendar_list_text($fams, "<li>", "</li>", true);
-	$content = ob_get_clean();
-	if (!empty($content)) {
+	$content = calendar_list_text($fams, '<li>', '</li>', true);
+	if ($content) {
 		echo '<ul>', $content, '</ul>';
 	}
 
@@ -502,7 +498,7 @@ case 'calendar':
 				}
 			}
 			echo '<br style="clear: both;"><div class="details1" style="height: 150px; overflow: auto;">';
-			echo calendar_list_text($cal_facts[$d], "", "", false);
+			echo calendar_list_text($cal_facts[$d], '', '', false);
 			echo '</div>';
 		}
 		echo '</td>';
@@ -575,23 +571,27 @@ function calendar_fact_text(WT_Fact $fact, $show_places) {
 function calendar_list_text($list, $tag1, $tag2, $show_sex_symbols) {
 	global $males, $females;
 
+	$html = '';
+
 	foreach ($list as $id=>$facts) {
-		$tmp=WT_GedcomRecord::GetInstance($id);
-		echo $tag1, '<a href="', $tmp->getHtmlUrl(), '">', $tmp->getFullName(), '</a> ';
+		$tmp = WT_GedcomRecord::GetInstance($id);
+		$html .= $tag1 . '<a href="' . $tmp->getHtmlUrl() . '">' . $tmp->getFullName() . '</a> ';
 		if ($show_sex_symbols && $tmp instanceof WT_Individual)
 			switch ($tmp->getSex()) {
 			case 'M':
-				echo '<i class="icon-sex_m_9x9" title="', WT_I18N::translate('Male'), '"></i>';
+				$html .= '<i class="icon-sex_m_9x9" title="' . WT_I18N::translate('Male') . '"></i>';
 				++$males;
 				break;
 			case 'F':
-				echo '<i class="icon-sex_f_9x9" title="', WT_I18N::translate('Female'), '"></i>';
+				$html .= '<i class="icon-sex_f_9x9" title="' . WT_I18N::translate('Female') . '"></i>';
 				++$females;
 				break;
 			default:
-				echo '<i class="icon-sex_u_9x9" title="',  WT_I18N::translate_c('unknown gender', 'Unknown'), '"></i>';
+				$html .= '<i class="icon-sex_u_9x9" title="' . WT_I18N::translate_c('unknown gender', 'Unknown') . '"></i>';
 				break;
 			}
-			echo '<div class="indent">', $facts, '</div>', $tag2;
+		$html .= '<div class="indent">' . $facts . '</div>' . $tag2;
 	}
+
+	return $html;
 }
