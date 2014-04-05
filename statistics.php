@@ -430,24 +430,36 @@ if (!$ajax) {
 				var box = document.getElementById(sel);
 				box.style.display = 'none';
 				var box_m = document.getElementById(sel+'_m');
-				if (box_m) box_m.style.display = 'none';
+				if (box_m) {
+					box_m.style.display = 'none';
+				}
 				if (sel=='map_opt') {
 					var box_axes = document.getElementById('axes');
-					if (box_axes) box_axes.style.display = '';
+					if (box_axes) {
+						box_axes.style.display = '';
+					}
 					var box_zyaxes = document.getElementById('zyaxes');
-					if (box_zyaxes) box_zyaxes.style.display = '';
+					if (box_zyaxes) {
+						box_zyaxes.style.display = '';
+					}
 				}
 			}
 			function statusShow(sel) {
 				var box = document.getElementById(sel);
 				box.style.display = '';
 				var box_m = document.getElementById(sel+'_m');
-				if (box_m) box_m.style.display = 'none';
+				if (box_m) {
+					box_m.style.display = 'none';
+				}
 				if (sel=='map_opt') {
 					var box_axes = document.getElementById('axes');
-					if (box_axes) box_axes.style.display = 'none';
+					if (box_axes) {
+						box_axes.style.display = 'none';
+					}
 					var box_zyaxes = document.getElementById('zyaxes');
-					if (box_zyaxes) box_zyaxes.style.display = 'none';
+					if (box_zyaxes) {
+						box_zyaxes.style.display = 'none';
+					}
 				}
 			}
 			function statusShowSurname(x) {

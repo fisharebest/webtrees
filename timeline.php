@@ -57,7 +57,9 @@ function ageMD(divbox, num) {
 }
 
 function factMD(divbox, num, mean) {
-	if (ob!=null) return;
+	if (ob!=null) {
+		return;
+	}
 	ob=divbox;
 	personnum=num;
 	boxmean = mean;
@@ -81,15 +83,22 @@ function MM(e) {
 		if (N) {
 			newy = e.pageY - tldiv.offsetTop;
 			newx = e.pageX - tldiv.offsetLeft;
-			if (oldx==0) oldx=newx;
-		}
-		else {
+			if (oldx==0) {
+				oldx = newx;
+			}
+		} else {
 			newy = event.clientY + document.documentElement.scrollTop - tldiv.offsetTop;
 			newx = event.clientX + document.documentElement.scrollLeft - tldiv.offsetLeft;
 		}
-		if ((newy >= topy-bheight/2)&&(newy<=bottomy)) newy = newy;
-		else if (newy < topy-bheight/2) newy = topy-bheight/2;
-		else newy = (bottomy-1);
+		if (newy >= topy-bheight / 2 && newy <= bottomy) {
+			newy = newy;
+		} else {
+			if (newy < topy - bheight / 2) {
+				newy = topy - bheight / 2;
+			} else {
+				newy = (bottomy - 1);
+			}
+		}
 		ob.style.top = newy+"px";
 		var tyear = ((newy+bheight-4 - topy) + scale)/scale + baseyear;
 		var year = Math.floor(tyear);
@@ -106,23 +115,31 @@ function MM(e) {
 		var yage = Math.floor(daydiff / 365);
 		var mage = Math.floor((daydiff-(yage*365))/30);
 		var dage = Math.floor(daydiff-(yage*365)-(mage*30));
-		if (dage<0) mage = mage -1;
+		if (dage<0) {
+			mage = mage - 1;
+		}
 		if (dage<-30) {
 			dage = 30+dage;
 		}
-		if (mage<0) yage = yage-1;
+		if (mage<0) {
+			yage = yage - 1;
+		}
 		if (mage<-11) {
 			mage = 12+mage;
 		}
 		var yearform = document.getElementById('yearform'+personnum);
 		var ageform = document.getElementById('ageform'+personnum);
 		yearform.innerHTML = year+"      "+month+" <?php echo utf8_substr(WT_I18N::translate('Month:'), 0, 1); ?>   "+day+" <?php echo utf8_substr(WT_I18N::translate('Day:'), 0, 1); ?>";
-		if (ba*yage>1 || ba*yage<-1 || ba*yage==0)
-			ageform.innerHTML = (ba*yage)+" <?php echo utf8_substr(WT_I18N::translate('years'), 0, 1); ?>   "+(ba*mage)+" <?php echo utf8_substr(WT_I18N::translate('Month:'), 0, 1); ?>   "+(ba*dage)+" <?php echo utf8_substr(WT_I18N::translate('Day:'), 0, 1); ?>";
-		else ageform.innerHTML = (ba*yage)+" <?php echo utf8_substr(WT_I18N::translate('Year:'), 0, 1); ?>   "+(ba*mage)+" <?php echo utf8_substr(WT_I18N::translate('Month:'), 0, 1); ?>   "+(ba*dage)+" <?php echo utf8_substr(WT_I18N::translate('Day:'), 0, 1); ?>";
+		if (ba*yage>1 || ba*yage<-1 || ba*yage==0) {
+			ageform.innerHTML = (ba * yage) + " <?php echo utf8_substr(WT_I18N::translate('years'), 0, 1); ?>   " + (ba * mage) + " <?php echo utf8_substr(WT_I18N::translate('Month:'), 0, 1); ?>   " + (ba * dage) + " <?php echo utf8_substr(WT_I18N::translate('Day:'), 0, 1); ?>";
+		} else {
+			ageform.innerHTML = (ba * yage) + " <?php echo utf8_substr(WT_I18N::translate('Year:'), 0, 1); ?>   " + (ba * mage) + " <?php echo utf8_substr(WT_I18N::translate('Month:'), 0, 1); ?>   " + (ba * dage) + " <?php echo utf8_substr(WT_I18N::translate('Day:'), 0, 1); ?>";
+		}
 		var line = document.getElementById('ageline'+personnum);
 		var temp = newx-oldx;
-		if (textDirection=='rtl') temp = temp * -1;
+		if (textDirection=='rtl') {
+			temp = temp * -1;
+		}
 		line.style.width=(line.width+temp)+"px";
 		oldx=newx;
 		return false;
@@ -132,7 +149,9 @@ function MM(e) {
 		if (N) {
 			newy = e.pageY - tldiv.offsetTop;
 			newx = e.pageX - tldiv.offsetLeft;
-			if (oldx==0) oldx=newx;
+			if (oldx==0) {
+				oldx = newx;
+			}
 			linewidth = e.pageX;
 		} else {
 			newy = event.clientY + document.documentElement.scrollTop - tldiv.offsetTop;
@@ -143,14 +162,28 @@ function MM(e) {
 		dbox = document.getElementById('dbox'+personnum);
 		var etopy, ebottomy;
 		// set up limits
-		if (boxmean-175 < topy) etopy = topy;
-		else etopy = boxmean-175;
-		if (boxmean+175 > bottomy) ebottomy = bottomy;
-		else ebottomy = boxmean+175;
+		if (boxmean-175 < topy) {
+			etopy = topy;
+		} else {
+			etopy = boxmean - 175;
+		}
+		if (boxmean+175 > bottomy) {
+			ebottomy = bottomy;
+		} else {
+			ebottomy = boxmean + 175;
+		}
 		// check if in the bounds of the limits
-		if ((newy >= etopy)&&(newy<=ebottomy)) newy = newy;
-		else if (newy < etopy) newy = etopy;
-		else if (newy >ebottomy) newy = ebottomy;
+		if ((newy >= etopy)&&(newy<=ebottomy)) {
+			newy = newy;
+		} else {
+			if (newy < etopy) {
+				newy = etopy;
+			} else {
+				if (newy > ebottomy) {
+					newy = ebottomy;
+				}
+			}
+		}
 		// calculate the change in Y position
 		var dy = newy-ob.offsetTop;
 		// check if we are above the starting point and switch the background image
@@ -178,22 +211,33 @@ function MM(e) {
 			state=0;
 		}
 		// the new X posistion moves the same as the y position
-		if (textDirection=='ltr') newx = dbox.offsetLeft+Math.abs(newy-boxmean);
-		else newx = dbox.offsetRight+Math.abs(newy-boxmean);
+		if (textDirection=='ltr') {
+			newx = dbox.offsetLeft + Math.abs(newy - boxmean);
+		} else {
+			newx = dbox.offsetRight + Math.abs(newy - boxmean);
+		}
 		// set the X position of the box
-		if (textDirection=='ltr') ob.style.left=newx+"px";
-		else ob.style.right=newx+"px";
+		if (textDirection=='ltr') {
+			ob.style.left = newx + "px";
+		}
+		else {
+			ob.style.right = newx + "px";
+		}
 		// set new top positions
 		ob.style.top = newy+"px";
 		// get the width for the diagnal box
 		var newwidth = (ob.offsetLeft-dbox.offsetLeft);
 		// set the width
 		dbox.style.width=newwidth+"px";
-		if (textDirection=='rtl') dbox.style.right = (dbox.offsetRight - newwidth) + 'px';
+		if (textDirection=='rtl') {
+			dbox.style.right = (dbox.offsetRight - newwidth) + 'px';
+		}
 		dbox.style.height=newwidth+"px";
 		// change the line width to the change in the mouse X position
 		line = document.getElementById('boxline'+personnum);
-		if (oldlinew!=0) line.width=line.width+(linewidth-oldlinew);
+		if (oldlinew!=0) {
+			line.width = line.width + (linewidth - oldlinew);
+		}
 		oldlinew = linewidth;
 		oldx=newx;
 		oldstate=state;
@@ -386,5 +430,7 @@ if (count($controller->people)>0) {
 <?php } ?>
 <script>
 	timeline_chart_div = document.getElementById("timeline_chart");
-	if (timeline_chart_div) timeline_chart_div.style.height = '<?php echo $baseyoffset+(($controller->topyear-$controller->baseyear)*$controller->scale*1.1); ?>px';
+	if (timeline_chart_div) {
+		timeline_chart_div.style.height = '<?php echo $baseyoffset+(($controller->topyear-$controller->baseyear)*$controller->scale*1.1); ?>px';
+	}
 </script>
