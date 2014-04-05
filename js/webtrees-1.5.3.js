@@ -20,6 +20,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+// "use strict";
+
 // Specifications for various types of popup edit window.
 // Choose positions to center in the smallest (1000x800) target screen
 var edit_window_specs='width=650,height=600,left=175,top=100,resizable=1,scrollbars=1'; // edit_interface.php, add_media.php, gedrecord.php
@@ -36,61 +38,51 @@ var fam_nav_specs='width=300,height=600,left=817,top=150,resizable=1,scrollbars=
 
 var pastefield, nameElement, remElement; // Elements to paste to
 
-// TODO: This function loads help_text.php twice.  It should only load it once.
-function helpDialog(which, mod) {
-	var url='help_text.php?help='+which+'&mod='+mod;
-	dialog=jQuery('<div></div>')
-		.load(url+' .helpcontent')
+// Create a modal dialog, fetching the contents from a URL
+function modalDialog(url, title, width) {
+	jQuery('<div title="' + title + '"></div>')
+		.load(url)
 		.dialog({
 			modal: true,
-			width: 500,
-			closeText: ""
+			width: typeof width === 'undefined' ? 700 : width,
+			open: function() {
+				// Close the window when we click outside it.
+				var self = this;
+				jQuery('.ui-widget-overlay').on('click', function () {
+					jQuery(self).dialog('close');
+				});
+			}
 		});
-	jQuery(".ui-widget-overlay").on("click", function () {
-		jQuery("div:ui-dialog:visible").dialog("close");
-	});
-	jQuery('.ui-dialog-title').load(url+' .helpheader');
+
 	return false;
 }
 
-// Create a modal dialog, fetching the contents from a URL
-function modalDialog(url, title) {
-	jQuery(document).ajaxComplete(function() {
-		jQuery('.ui-dialog').before('<div class="ui-widget-overlay" />');
-	});
-	dialog=jQuery('<div title="'+title+'"></div>')
-		.load(url)
-		.dialog({
-			modal: false,
-			width: 700,
-			closeText: "",
-			close: function(event, ui) {
-				jQuery(this).remove();
-				jQuery('.ui-widget-overlay').remove();
-			}
-		});
-	// Close the window when we click outside it.
-	jQuery(".ui-widget-overlay").on("click", function () {
-		jQuery("div:ui-dialog:visible").dialog("close");
-		jQuery(this).remove();
-	});
+// Create a modal dialog for a help message.
+function helpDialog(topic, module) {
+	var url = 'help_text.php?help=' + topic + '&mod=' + module;
+
+	modalDialog(url + ' .helpcontent', '', 500);
+	jQuery('.ui-dialog-title').load(url + ' .helpheader');
+
 	return false;
 }
 
 // Create a modal dialog to display notes
 function modalNotes(content, title) {
-	dialog=jQuery('<div title="'+title+'"></div>')
+	jQuery('<div title="' + title + '"></div>')
 		.html(content)
 		.dialog({
 			modal: true,
 			width: 500,
-			closeText: "",
-			close: function(event, ui) { jQuery(this).remove(); }
+			open: function() {
+				// Close the window when we click outside it.
+				var self = this;
+				jQuery('.ui-widget-overlay').on('click', function () {
+					jQuery(self).dialog('close');
+				});
+			}
 		});
-	// Close the window when we click outside it.
-	jQuery(".ui-widget-overlay").on("click", function () {
-		jQuery("div:ui-dialog:visible").dialog("close");
-	});
+
 	return false;
 }
 

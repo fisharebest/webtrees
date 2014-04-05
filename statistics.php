@@ -466,11 +466,13 @@ if (!$ajax) {
 					jQuery(response).dialog({
 						modal: true,
 						width: 964,
-						closeText: ""
-					});
-					// Close the window when we click outside it.
-					jQuery(".ui-widget-overlay").on("click", function () {
-						jQuery("div:ui-dialog:visible").dialog("close");
+						open: function() {
+							var self = this;
+							// Close the window when we click outside it.
+							jQuery(".ui-widget-overlay").on("click", function () {
+								$(self).dialog('close');
+							});
+						}
 					});
 				});
 				return false;
