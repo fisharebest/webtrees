@@ -1031,27 +1031,25 @@ if (!defined('WT_WEBTREES')) {
 							}"
 				id="censYear" name="censYear">
 		</select>
-		<input type="hidden" id="prevYear" name="prevYear" value="">&nbsp;&nbsp;&nbsp;
+		<input type="hidden" id="prevYear" name="prevYear" value="">
 	</div>
 
 	<div class="cens_sour_scs">
 		<div class="cens_sour_1">
 			<div class="cens_sour_2"><?php echo WT_I18N::translate('Title'); ?></div>
-			<script>
-				document.writeln('<input id="Titl" name="Titl" type="text" value="<?php echo WT_I18N::translate('Census transcript'),' - ', WT_Filter::escapeJs($wholename), ' - ', WT_I18N::translate('Household'); ?>">');
-			</script>
+			<input id="Titl" name="Titl" type="text" value="">
 		</div>
 		<div class="cens_sour_1">
 			<div class="cens_sour_2"><?php echo WT_Gedcom_Tag::getLabel('PAGE'); ?></div>
-			<input id="citation" name="citation" type="text" value="<?php echo ""; ?>">
+			<input id="citation" name="citation" type="text" value="">
 		</div>
 		<div class="cens_sour_1">
 			<div class="cens_sour_2"><?php echo WT_I18N::translate('Place'); ?></div>
-			<input id="locality" name="locality" type="text" value="<?php echo ""; ?>">
+			<input id="locality" name="locality" type="text" value="">
 		</div>
 		<div class="cens_sour_1">
 			<div class="cens_sour_2"><?php echo WT_I18N::translate('Notes'); ?></div>
-			<input id="notes" name="notes" type="text" value="<?php echo ""; ?>">
+			<input id="notes" name="notes" type="text" value="">
 		</div>
 	</div>
 </div>
