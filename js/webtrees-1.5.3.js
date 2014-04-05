@@ -1328,8 +1328,9 @@ function cal_generateSelectorContent(dateFieldId, dateDivId, date) {
 				} else {
 					content += 'class="optionbox"';
 				}
+			} else {
+				content += 'style="background-color:#EAEAEA; border: solid #AAAAAA 1px;"';
 			}
-			else content += 'style="background-color:#EAEAEA; border: solid #AAAAAA 1px;"';
 			content += '><a href="#" onclick="return cal_dateClicked(\''+dateFieldId+'\', \''+dateDivId+'\', '+tdate.getFullYear()+', '+tdate.getMonth()+', '+tdate.getDate()+');">';
 			content += tdate.getDate();
 			content += '</a></td>';
