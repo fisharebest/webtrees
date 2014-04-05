@@ -110,8 +110,8 @@ function closePopupAndReloadParent(url) {
 }
 
 // variables to hold mouse x-y pos.s
-	var msX = 0;
-	var msY = 0;
+var msX = 0;
+var msY = 0;
 
 //  the following javascript function is for the positioning and hide/show of
 //  DIV layers used in the display of the pedigree chart.
@@ -182,87 +182,90 @@ function MM_showHideLayers() { //v6.0
 }
 
 var show = false;
-	function togglechildrenbox(pid) {
-		if (!pid) {
-			pid = '';
-		} else {
-			pid = '.' + pid;
-		}
-		if (show) {
-			MM_showHideLayers('childbox'+pid, ' ', 'hide',' ');
-			show=false;
-		} else {
-			MM_showHideLayers('childbox'+pid, ' ', 'show', ' ');
-			show=true;
-		}
-		return false;
-	}
 
-	var lastfamilybox = "";
-	var popupopen = 0;
-	function show_family_box(boxid, pboxid) {
-		popupopen = 1;
-		lastfamilybox=boxid;
-		if (pboxid=='relatives') {
-			MM_showHideLayers('I' + boxid + 'links', 'followmouse', 'show', '' + pboxid);
-		} else {
-			famlinks = document.getElementById("I"+boxid+"links");
-			divbox = document.getElementById("out-"+boxid);
-			parentbox = document.getElementById("box"+boxid);
-			if (famlinks && divbox && parentbox) {
-				famlinks.style.top = "0px";
-				if (textDirection=="ltr") {
-					famleft = parseInt(divbox.style.width) + 15;
-				} else {
-					famleft = 0;
-				}
-				if (isNaN(famleft)) {
-					famleft = 0;
-					famlinks.style.top = parentbox.offsetTop + "px";
-				}
-				pagewidth = document.documentElement.offsetWidth + document.documentElement.scrollLeft;
-				if (textDirection=="rtl") {
-					pagewidth -= document.documentElement.scrollLeft;
-				}
-				if (famleft + parseInt(parentbox.style.left) > pagewidth - 100) {
-					famleft = 25;
-				}
-				famlinks.style.left = famleft + "px";
-				if (WT_SCRIPT_NAME.indexOf("index.php")!=-1) {
-					famlinks.style.left = "100%";
-				}
-				MM_showHideLayers('I'+boxid+'links', ' ', 'show',''+pboxid);
-				return;
+function togglechildrenbox(pid) {
+	if (!pid) {
+		pid = '';
+	} else {
+		pid = '.' + pid;
+	}
+	if (show) {
+		MM_showHideLayers('childbox'+pid, ' ', 'hide',' ');
+		show=false;
+	} else {
+		MM_showHideLayers('childbox'+pid, ' ', 'show', ' ');
+		show=true;
+	}
+	return false;
+}
+
+var lastfamilybox = "";
+var popupopen = 0;
+
+function show_family_box(boxid, pboxid) {
+	popupopen = 1;
+	lastfamilybox=boxid;
+	if (pboxid=='relatives') {
+		MM_showHideLayers('I' + boxid + 'links', 'followmouse', 'show', '' + pboxid);
+	} else {
+		famlinks = document.getElementById("I"+boxid+"links");
+		divbox = document.getElementById("out-"+boxid);
+		parentbox = document.getElementById("box"+boxid);
+		if (famlinks && divbox && parentbox) {
+			famlinks.style.top = "0px";
+			if (textDirection=="ltr") {
+				famleft = parseInt(divbox.style.width) + 15;
+			} else {
+				famleft = 0;
 			}
-			MM_showHideLayers('I'+boxid+'links', 'followmouse', 'show',''+pboxid);
+			if (isNaN(famleft)) {
+				famleft = 0;
+				famlinks.style.top = parentbox.offsetTop + "px";
+			}
+			pagewidth = document.documentElement.offsetWidth + document.documentElement.scrollLeft;
+			if (textDirection=="rtl") {
+				pagewidth -= document.documentElement.scrollLeft;
+			}
+			if (famleft + parseInt(parentbox.style.left) > pagewidth - 100) {
+				famleft = 25;
+			}
+			famlinks.style.left = famleft + "px";
+			if (WT_SCRIPT_NAME.indexOf("index.php")!=-1) {
+				famlinks.style.left = "100%";
+			}
+			MM_showHideLayers('I'+boxid+'links', ' ', 'show',''+pboxid);
+			return;
 		}
+		MM_showHideLayers('I'+boxid+'links', 'followmouse', 'show',''+pboxid);
 	}
+}
 
-	function hide_family_box(boxid) {
-		MM_showHideLayers('I'+boxid+'links', '', 'hide','');
-		popupopen = 0;
-		lastfamilybox="";
-	}
+function hide_family_box(boxid) {
+	MM_showHideLayers('I'+boxid+'links', '', 'hide','');
+	popupopen = 0;
+	lastfamilybox="";
+}
 
-	var timeouts = [];
-	function family_box_timeout(boxid) {
-		timeouts[boxid] = setTimeout("hide_family_box('"+boxid+"')", 2500);
-	}
+var timeouts = [];
 
-	function clear_family_box_timeout(boxid) {
-		clearTimeout(timeouts[boxid]);
-	}
+function family_box_timeout(boxid) {
+	timeouts[boxid] = setTimeout("hide_family_box('"+boxid+"')", 2500);
+}
 
-	function expand_layer(sid) {
-		if (jQuery("#"+sid+"_img").hasClass("icon-plus")) {
-			jQuery('#'+sid+"_img").removeClass("icon-plus").addClass("icon-minus");
-			jQuery('#'+sid).slideDown("fast");
-		} else {
-			jQuery('#'+sid+"_img").removeClass("icon-minus").addClass("icon-plus");
-			jQuery('#'+sid).slideUp("fast");
-		}
-		return false;
+function clear_family_box_timeout(boxid) {
+	clearTimeout(timeouts[boxid]);
+}
+
+function expand_layer(sid) {
+	if (jQuery("#"+sid+"_img").hasClass("icon-plus")) {
+		jQuery('#'+sid+"_img").removeClass("icon-plus").addClass("icon-minus");
+		jQuery('#'+sid).slideDown("fast");
+	} else {
+		jQuery('#'+sid+"_img").removeClass("icon-minus").addClass("icon-plus");
+		jQuery('#'+sid).slideUp("fast");
 	}
+	return false;
+}
 
 // Open the "edit interface" popup window
 function edit_interface(params, windowspecs, pastefield) {
@@ -824,6 +827,7 @@ function valid_date(datefield) {
 		datefield.value=datestr;
 	}
 }
+
 var oldheight = 0;
 var oldwidth = 0;
 var oldz = 0;
