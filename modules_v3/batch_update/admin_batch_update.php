@@ -95,7 +95,7 @@ class batch_update {
 						'</tr><tr><td valign="top">'.
 						'<br>'.implode('<br>',$this->PLUGIN->getActionButtons($this->curr_xref, $this->record)).'<br>'.
 						'</td><td dir="ltr" align="left">'.
-						$this->PLUGIN->getActionPreview($this->record);
+						$this->PLUGIN->getActionPreview($this->record) .
 						'</td></tr>';
 				} else {
 					$html.='<tr><td class="accepted" colspan=2>'.WT_I18N::translate('Nothing found.').'</td></tr>';

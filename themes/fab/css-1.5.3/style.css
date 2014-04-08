@@ -487,7 +487,7 @@ html[dir=rtl] #index_small_blocks {
 #familybook_chart .line3,
 #familybook_chart .pvline,
 #familybook_chart .spacer {
-	width: 3px
+	width: 3px;
 }
 #familybook_chart .line4 {
 	width: 7px; vertical-align:middle;
@@ -532,8 +532,8 @@ html[dir=rtl] #pedigree_chart {
 		border: solid #888 1px;
 		background: #fff;
 	}
-	#header_accordion1 {width: 510px!important}
-	.noprint {display:none!important;}
+	#header_accordion1 {width: 510px !important;}
+	.noprint {display:none !important;}
 	#header,
 	#footer,
 	#pedigree-page #people,
@@ -876,7 +876,7 @@ html[dir=rtl] #ancestry_chart li {
 }
 
 .vmiddle {
-	vertical-align: middle
+	vertical-align: middle;
 }
 
 /* Colors */
@@ -1013,7 +1013,7 @@ a.showit:hover > span {
 	left: -10px;
 	top: -65px;
 	z-index: 2;
-	background-color: #fff
+	background-color: #fff;
 }
 
 .lifespan_people {
@@ -1823,7 +1823,7 @@ html[dir=rtl] .media-display-title {
 html[dir=rtl] .ui-tabs {
 	direction: rtl;
 }
-html[dir=rtl] ui-tabs .ui-tabs-nav li.ui-tabs-selected,
+html[dir=rtl] .ui-tabs .ui-tabs-nav li.ui-tabs-selected,
 html[dir=rtl] .ui-tabs .ui-tabs-nav li.ui-state-default {
 	float: right;
 }
@@ -1928,7 +1928,7 @@ html[dir=rtl] .dataTables_filter {
 	float: left;
 }
 html[dir=rtl] .dataTables_info {
-	float: right
+	float: right;
 }
 html[dir=rtl] .dataTables_length {
 	float: left;
@@ -2057,7 +2057,7 @@ html[dir=rtl] .DataTables_sort_wrapper span {
 }
 .filtersH,
 .filtersF {
-	margin: 4px
+	margin: 4px;
 }
 .filtersH img {
 	margin-bottom: 2px;
@@ -2102,7 +2102,7 @@ html[dir=rtl] .repo-list th:last-child {
 /* ========= Sidebar ============== */
 #main {
 	min-width: 600px;
-	width: 100%
+	width: 100%;
 }
 #indi_left {
 	float: left;
@@ -3414,19 +3414,19 @@ html[dir=rtl] #save-cancel .cancel {
 
 html[dir=rtl] #cboxPrevious {
 	right: 27px;
-	left: auto
+	left: auto;
 }
 html[dir=rtl] #cboxNext {
 	right: 0;
-	left: auto
+	left: auto;
 }
 html[dir=rtl] #cboxCurrent {
 	right: auto;
-	left: 0
+	left: 0;
 }
 html[dir=rtl] #cboxClose {
 	right: auto;
-	left: 0
+	left: 0;
 }
 html[dir=rtl] #cboxSlideshow {
 	right: 57px;

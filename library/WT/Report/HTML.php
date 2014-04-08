@@ -179,27 +179,34 @@ class WT_Report_HTML extends WT_Report_Base {
 			->pageHeader();
 
 		// Setting up the styles
-		echo "\n<style type=\"text/css\">\n";
+		echo '<style type="text/css">';
 		foreach ($this->Styles as $class => $style) {
-			echo ".", $class, "{\n";
+			echo '.', $class, ' { ';
 			if ($style["font"]=="dejavusans") {
 				$style["font"] = $this->defaultFont;
 			}
-			echo "font-family: ", $style["font"], ";\n";
-			echo "font-size: ", $style["size"], "pt;\n";
+			echo 'font-family: ', $style['font'], '; ';
+			echo 'font-size: ', $style['size'], 'pt; ';
 			// Case-insensitive
-			if (stripos($style["style"], "B")!==false) echo "font-weight: bold;\n";
-			if (stripos($style["style"], "I")!==false) echo "font-style: italic;\n";
-			if (stripos($style["style"], "U")!==false) echo "text-decoration: underline;\n";
-			if (stripos($style["style"], "D")!==false) echo "text-decoration: line-through;\n";
-			echo "}\n";
+			if (stripos($style['style'], 'B')!==false) {
+				echo 'font-weight: bold; ';
+			}
+			if (stripos($style['style'], 'I')!==false) {
+				echo 'font-style: italic; ';
+			}
+			if (stripos($style['style'], 'U')!==false) {
+				echo 'text-decoration: underline; ';
+			}
+			if (stripos($style['style'], 'D')!==false) {
+				echo 'text-decoration: line-through; ';
+			}
+			echo '}', PHP_EOL;
 		}
 		unset($class, $style);
 		//-- header divider
-		echo "
-</style>
-<div id=\"headermargin\" style=\"position:relative;top:auto;height:", $this->headermargin, "pt;width:", $this->noMarginWidth, "pt;\"></div>
-<div id=\"headerdiv\" style=\"position:relative;top:auto;width:", $this->noMarginWidth, "pt;\">";
+		echo '</style>', PHP_EOL;
+		echo '<div id="headermargin" style="position: relative; top: auto; height: ', $this->headermargin, 'pt; width: ', $this->noMarginWidth, 'pt;"></div>';
+		echo '<div id="headerdiv" style="position: relative; top: auto; width: ', $this->noMarginWidth, 'pt;">';
 		foreach ($this->headerElements as $element) {
 			if (is_object($element)) {
 				$element->render($this);
@@ -210,8 +217,9 @@ class WT_Report_HTML extends WT_Report_Base {
 			}
 		}
 		//-- body
-		echo "
-</div><script>document.getElementById('headerdiv').style.height='", $this->topmargin - $this->headermargin - 6, "pt';</script><div id=\"bodydiv\" style=\"position:relative;top:auto;width:", $this->noMarginWidth, "pt;height:100%;\">";
+		echo '</div>';
+		echo '<script>document.getElementById("headerdiv").style.height="', $this->topmargin - $this->headermargin - 6, 'pt";</script>';
+		echo '<div id="bodydiv" style="position: relative; top: auto; width: ', $this->noMarginWidth, 'pt; height: 100%;">';
 		$this->Y = 0;
 		$this->maxY = 0;
 		$this->runPageHeader();
@@ -225,9 +233,10 @@ class WT_Report_HTML extends WT_Report_Base {
 			}
 		}
 		//-- footer
-		echo "
-</div><script>document.getElementById('bodydiv').style.height='", $this->maxY, "pt';</script><div id=\"bottommargin\" style=\"position:relative;top:auto;height:", $this->bottommargin - $this->footermargin, "pt;width:", $this->noMarginWidth, "pt;\"></div>
-<div id=\"footerdiv\" style=\"position:relative;top:auto;width: ", $this->noMarginWidth, "pt;height:auto;\">";
+		echo '</div>';
+		echo '<script>document.getElementById("bodydiv").style.height="', $this->maxY, 'pt";</script>';
+		echo '<div id="bottommargin" style="position: relative; top: auto; height: ', $this->bottommargin - $this->footermargin, 'pt;width:', $this->noMarginWidth, 'pt;"></div>';
+		echo '<div id="footerdiv" style="position: relative; top: auto; width: ', $this->noMarginWidth, 'pt;height:auto;">';
 		$this->Y = 0;
 		$this->X = 0;
 		$this->maxY = 0;
@@ -240,8 +249,9 @@ class WT_Report_HTML extends WT_Report_Base {
 				$this->AddPage();
 			}
 		}
-		echo "
-</div><script>document.getElementById('footerdiv').style.height='", $this->maxY, "pt';</script><div id=\"footermargin\" style=\"position:relative;top:auto;height:", $this->footermargin, "pt;width:", $this->noMarginWidth, "pt;\"></div>";
+		echo '</div>';
+		echo '<script>document.getElementById("footerdiv").style.height="', $this->maxY, 'pt";</script>';
+		echo '<div id="footermargin" style="position: relative; top: auto; height: ', $this->footermargin, 'pt;width:', $this->noMarginWidth, 'pt;"></div>';
 	}
 
 	/**
