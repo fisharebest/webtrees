@@ -91,7 +91,7 @@ class WT_Query_Media {
 			$args[] = $folder;
 			break;
 		default:
-			throw new Exception('Bad argument (subfolders=', $subfolders, ') in WT_Query_Media::mediaList()');
+			throw new Exception('Bad argument (subfolders=' . $subfolders . ') in WT_Query_Media::mediaList()');
 		}
 
 		// Apply search terms
@@ -109,7 +109,7 @@ class WT_Query_Media {
 			$sql .= " ORDER BY m_titl";
 			break;
 		default:
-			throw new Exception('Bad argument (sort=', $sort, ') in WT_Query_Media::mediaList()');
+			throw new Exception('Bad argument (sort=' . $sort . ') in WT_Query_Media::mediaList()');
 		}
 
 		$rows = WT_DB::prepare($sql)->execute($args)->fetchAll();

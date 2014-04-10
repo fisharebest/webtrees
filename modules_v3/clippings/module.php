@@ -576,6 +576,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 				'	<input type="radio" name="privatize_export" value="visitor"> '.WT_I18N::translate('Visitor').
 				'</td></tr>';
 		} elseif (WT_USER_CAN_ACCESS) {
+			$out.=
 				'<tr><td class="descriptionbox width50 wrap">'.WT_I18N::translate('Apply privacy settings?').help_link('apply_privacy').'</td>'.
 				'<td class="list_value">'.
 				'	<input type="radio" name="privatize_export" value="user" checked="checked"> '.WT_I18N::translate('Member').'<br>'.

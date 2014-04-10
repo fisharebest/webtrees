@@ -170,7 +170,7 @@ if ($search) {
 		$ct = '0';
 	}
 
-	echo '<div><p style="text-align:center">', WT_I18N::translate('Media Objects found'), ' ', $ct, '</p>';
+	echo '<div><p style="text-align: center;">', WT_I18N::translate('Media Objects found'), ' ', $ct, '</p>';
 
   if ($ct>0) {
 		$currentPage = ((int) ($start / $max)) + 1;
@@ -248,7 +248,7 @@ if ($search) {
 
 			echo '<table><tr><td style="vertical-align:top; white-space:normal;">';
 			echo $mediaobject->displayImage();
-			echo '</td><td class="list_value_wrap width100" style="border:none; padding-left:5px">';
+			echo '</td><td class="list_value_wrap width100" style="border: none; padding-left: 5px;">';
 			if (WT_USER_CAN_EDIT) {
 				echo WT_Controller_Media::getMediaListMenu($mediaobject);
 			}

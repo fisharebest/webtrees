@@ -138,11 +138,11 @@ class WT_DB {
 			// Highlight slow queries
 			$microtime*=1000; // convert to milliseconds
 			if ($microtime>1000) {
-				$microtime=sprintf('<span style="background-color:red">%.3f</span>', $microtime);
+				$microtime=sprintf('<span style="background-color: #ff0000;">%.3f</span>', $microtime);
 			} elseif ($microtime>100) {
-				$microtime=sprintf('<span style="background-color:orange">%.3f</span>', $microtime);
+				$microtime=sprintf('<span style="background-color: #ffa500;">%.3f</span>', $microtime);
 			} elseif ($microtime>1) {
-				$microtime=sprintf('<span style="background-color:yellow">%.3f</span>', $microtime);
+				$microtime=sprintf('<span style="background-color: #ffff00;">%.3f</span>', $microtime);
 			} else {
 			$microtime=sprintf('%.3f', $microtime);
 			}

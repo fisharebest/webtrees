@@ -27,6 +27,8 @@ require 'library/autoload.php';
 // session.php won’t run until a configuration file exists…
 // This next block of code is a minimal version of session.php
 define('WT_WEBTREES',    'webtrees');
+define('WT_SERVER_NAME', '');
+define('WT_SCRIPT_PATH', '');
 require 'includes/authentication.php'; // for AddToLog()
 require 'includes/functions/functions_db.php'; // for get/setSiteSetting()
 define('WT_DATA_DIR',    'data/');
@@ -151,7 +153,17 @@ if (!isset($_POST['lang'])) {
 	// However, this is unreliable, especially on servers with custom restrictions.
 	// Now, we just show the default values.  These can (hopefully!) be changed using the
 	// site settings page.
-	$maxmem=to_mb(ini_get('memory_limit'));
+	$memory_limit = ini_get('memory_limit');
+	switch (strtoupper(substr($memory_limit, -1))) {
+	case 'K':
+		$maxmem = (int)(substr($memory_limit, 0, strlen($memory_limit)-1)/1024);
+	case 'M':
+		$maxmem = (int)(substr($memory_limit, 0, strlen($memory_limit)-1));
+	case 'G':
+		$maxmem = (int)(1024*substr($memory_limit, 0, strlen($memory_limit)-1));
+	default:
+		$maxmem = $memory_limit;
+	}
 	$maxcpu=ini_get('max_execution_time');
 	echo
 		'<p>',
@@ -924,15 +936,3 @@ try {
 echo '</form>';
 echo '</body>';
 echo '</html>';
-
-function to_mb($str) {
-	if (substr($str, -1, 1)=='K') {
-		return floor(substr($str, 0, strlen($str)-1)/1024);
-	}
-	if (substr($str, -1, 1)=='M') {
-		return floor(substr($str, 0, strlen($str)-1));
-	}
-	if (substr($str, -1, 1)=='G') {
-		return floor(1024*substr($str, 0, strlen($str)-1));
-	}
-}

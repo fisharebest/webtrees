@@ -49,7 +49,9 @@ $controller
 				window.opener.insertRowToTable(id, name);
 			}
 			window.opener.<?php echo $callback; ?>(id);
-			if (window.opener.pastename) window.opener.pastename(name);
+			if (window.opener.pastename) {
+				window.opener.pastename(name);
+			}
 			<?php if (!$multiple) echo "window.close();"; ?>
 		}
 	}

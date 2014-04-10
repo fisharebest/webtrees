@@ -78,7 +78,7 @@ html[dir=rtl] .ui-tabs .ui-tabs-nav li {float: right;}
 html[dir=rtl] .dataTables_paginate {float:right;}
 html[dir=rtl] .dataTables_processing {float:right;}
 html[dir=rtl] .dataTables_filter {float:left;}
-html[dir=rtl] .dataTables_info {float:right}
+html[dir=rtl] .dataTables_info {float:right;}
 html[dir=rtl] .dataTables_length {float:left;}
 
 /* Drag-n-drop sorting for modules, etc. */
@@ -171,7 +171,7 @@ table.site_logs, table.site_change {background:#fdf5e6; border-collapse:separate
 .site_logs td, .site_change td {text-align:center; vertical-align:middle;}
 input.log-date {text-align:center; width:70px;}
 input.log-filter {width:120px;}
-table#log_list {width:100%}
+table#log_list {width:100%;}
 #log_list th {min-width:80px;white-space:nowrap;}
 #log_list pre {margin:0 0 20px 0;max-width:250px;white-space:pre-wrap;word-wrap: break-word;-ms-word-break: break-all;word-break: break-all;-webkit-hyphens: auto;-moz-hyphens: auto; hyphens: auto;}
 #log_list a {color:#0000ff;}
@@ -257,7 +257,7 @@ table#log_list {width:100%}
 
 /* PHP INFO */
 div.php_info {padding:10px; text-align:center; width:100%;}
-table.php_info {border-collapse:separate; border-spacing:0; text-align:left; width:98%}
+table.php_info {border-collapse:separate; border-spacing:0; text-align:left; width:98%;}
 html[dir=rtl] table.php_info {text-align:right;}
 .php_info td {border-bottom:1px solid #d3d3d3; border-right:0;}
 html[dir=rtl] .php_info td {border-left:0;}
@@ -292,7 +292,7 @@ html[dir=rtl] #merge3 th {text-align:right;}
 table.gedcom_table {background:#fdf5e6; border:1px inset #d9d6c4; border-collapse:separate; border-spacing:0; padding:5px; width:100%;}
 .gedcom_table th {font-weight:bold; font-size:105%; text-align:left; width:15%;}
 html[dir=rtl] .gedcom_table th {text-align:right;}
-.gedcom_table th+th {font-weight:normal; width:80%}
+.gedcom_table th+th {font-weight:normal; width:80%;}
 table.gedcom_table2 {background:#fdf5e6; border:1px inset #d9d6c4; border-collapse:separate; border-spacing:0; margin:20px 0; width:100%;}
 .gedcom_table2 th {font-weight:bold; font-size:105%; padding:5px; text-align:center;}
 .gedcom_table2 td {text-align:center;}
@@ -336,7 +336,7 @@ html[dir=rtl] #tree-download dt {clear:right; float:right; padding:5px 0 5px 5px
 html[dir=rtl] #tree-download dd {margin-right:300px;}
 
 /* USER LIST */
-table#list {width:100%}
+table#list {width:100%;}
 #list img {padding-left:15px; width:25px; vertical-align:middle;}
 html[dir=rtl] #list img {padding-right:15px;}
 #access img {width:11px;}
@@ -431,13 +431,13 @@ html[dir=rtl] #batch_update th {text-align:right;}
 #batch_update td {border-bottom:1px solid #d3d3d3; margin-left:20px;}
 html[dir=rtl] #batch_update td {margin-right:20px;}
 table#batch_update2 {background:#fdf5e6; border:1px inset #d9d6c4; border-collapse:separate; border-spacing:0; margin:10px 0 0 0; width:98%;}
-#batch_update2 th {font-size:115%; font-weight:bold; padding:5px; text-align:left; width:100%}
+#batch_update2 th {font-size:115%; font-weight:bold; padding:5px; text-align:left; width:100%;}
 html[dir=rtl] #batch_update2 th {text-align:right;}
 #batch_update2 td {text-align:center;}
 #batch_update2 td+td {text-align:left; border:2px inset #d3d3d3;}
 html[dir=rtl] #batch_update2 td+td {text-align:right;}
 #batch_update2 pre {margin:0; padding:5px;}
-.added_text {background:#808080; color:#ffffff; border:1px solid grey}
+.added_text {background:#808080; color:#ffffff; border:1px solid grey;}
 .deleted_text {text-decoration:line-through;}
 
 /* FAQ MODULE */
@@ -510,7 +510,7 @@ table#story_module, table#story_module2 {background:#fdf5e6; border:1px inset #d
 html[dir=rtl] #story_module th {text-align:right;}
 #story_module2 th, #story_module2 td {vertical-align:top; text-align:left;}
 html[dir=rtl] #story_module2 th, html[dir=rtl] #story_module2 td {text-align:right;}
-table#story_table {width:100%}
+table#story_table {width:100%;}
 #story_table_wrapper  {margin-top: 20px;}
 #admin_content form {padding:10px 0;}
 
@@ -618,8 +618,8 @@ a.icon-uarrow:hover {background-position:-100px -94px; width:20px; height:20px;}
 #cboxClose:hover {background-position:-25px -25px;}
 #cboxCurrent {bottom: 4px;color: #949494;left: 58px;position: absolute;}
 
-html[dir=rtl] #cboxPrevious {right:27px;left:auto}
-html[dir=rtl] #cboxNext {right:0;left:auto}
-html[dir=rtl] #cboxCurrent {right:auto;left:0}
-html[dir=rtl] #cboxClose {right:auto;left:0}
-html[dir=rtl] #cboxSlideshow {right:57px;left:0; }
+html[dir=rtl] #cboxPrevious {right:27px;left:auto;}
+html[dir=rtl] #cboxNext {right:0;left:auto;}
+html[dir=rtl] #cboxCurrent {right:auto;left:0;}
+html[dir=rtl] #cboxClose {right:auto;left:0;}
+html[dir=rtl] #cboxSlideshow {right:57px;left:0;}

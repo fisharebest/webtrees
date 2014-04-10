@@ -96,7 +96,7 @@ $user_languages = WT_DB::prepare(
 $stats = new WT_Stats(WT_GEDCOM);
 
 ?>
-<div id="content_container" style="visibility:hidden">
+<div id="content_container" style="visibility: hidden;">
 	<div id="x">
 		<h2><?php echo WT_WEBTREES, ' ', WT_VERSION; ?></h2>
 		<div id="about">
@@ -600,6 +600,7 @@ function old_paths() {
 		WT_ROOT.'library/Michelf',
 		WT_ROOT.'library/tcpdf',
 		WT_ROOT.'library/Zend',
+		WT_ROOT.'modules_v3/GEDFact_assistant/_CENS/census_asst_help.php',
 		WT_ROOT.'modules_v3/googlemap/admin_places.php',
 		WT_ROOT.'modules_v3/googlemap/defaultconfig.php',
 		WT_ROOT.'modules_v3/googlemap/googlemap.php',

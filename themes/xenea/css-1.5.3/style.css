@@ -91,7 +91,7 @@ html[dir=rtl] .hsearch {float:left;padding-left:10px;}
 /* LTR to RTL Translation */
 html[dir=rtl] #theme-menu {position:absolute;margin-right:10px;}
 html[dir=rtl] #fav-menu {position:absolute;right:80px;}
-html[dir=rtl] #login-menu {position:absolute;left:auto;right:50%}
+html[dir=rtl] #login-menu {position:absolute;left:auto;right:50%;}
 html[dir=rtl] #lang-menu {float:left;margin-left:10px;text-align:left;}
 html[dir=rtl] #lang-menu .makeMenu li ul {right:auto;left:0;}
 
@@ -106,7 +106,7 @@ html[dir=rtl] #lang-menu .makeMenu li ul {right:auto;left:0;}
 .makeMenu li:hover > ul {display:block;}
 .makeMenu li ul li a.lang-active, .makeMenu li ul li a.theme-active {color:#000066;font-weight:900;}
 
-html[dir=rtl] li up li {text-align:right;}
+html[dir=rtl] li ul li {text-align:right;}
 html[dir=rtl] .makeMenu li ul {left:auto;right:0;}
 html[dir=rtl] .makeMenu li ul li {text-align:right !important;}
 html[dir=rtl] #extra-menu {text-align:left;}
@@ -143,7 +143,7 @@ html[dir=rtl] #extra-menu.makeMenu li ul {left:0;right:auto;}
 	height:23px;left:auto;
 	line-height:23px;
 	text-align:left;
-	text-indent:26px;width:100%
+	text-indent:26px;width:100%;
 }
 
 /* Reverse left and right on RTL pages */
@@ -833,7 +833,7 @@ width:100%;
 #familybook_chart table {border-collapse: collapse; empty-cells: show;}
 #familybook_chart td {margin:0; padding:0;}
 #familybook_chart h2 {text-align:center;}
-#familybook_chart .line3, #familybook_chart .pvline, #familybook_chart .spacer {width: 3px}
+#familybook_chart .line3, #familybook_chart .pvline, #familybook_chart .spacer {width: 3px;}
 #familybook_chart .line4 {width: 7px; vertical-align:middle;}
 [ID^="vline"] {width:3px;}
 #familybook_chart h3 {font-size: 16px;text-align:center;}
@@ -1427,7 +1427,7 @@ html[dir=rtl] .person_box_template i[class^="icon-silhouette"] {
 .lb-menu > li:hover ul {display:block; top:36px;}
 .lb-menu a {display:block;}
 .lb-menu li a {color:#0000ff;font-weight:normal;padding-top:24px;}
-.lb-menu li a:hover {color:#ff0000;font-weight:normal}
+.lb-menu li a:hover {color:#ff0000;font-weight:normal;}
 .lb-menu li li a {padding:1px 10px 1px 5px;}
 .lb-image_edit, .lb-image_link {padding-right:5px;}
 html[dir=rtl] .lb-menu > li {float:right;}
@@ -1759,7 +1759,7 @@ html[dir=rtl] .css_right {float:right;}
 html[dir=rtl] .dataTables_paginate {float:right;}
 html[dir=rtl] .dataTables_processing {float:right;}
 html[dir=rtl] .dataTables_filter {float:left;}
-html[dir=rtl] .dataTables_info {float:right}
+html[dir=rtl] .dataTables_info {float:right;}
 html[dir=rtl] .dataTables_length {float:left;}
 html[dir=rtl] .DataTables_sort_wrapper {margin-right:20px;}
 html[dir=rtl] .DataTables_sort_wrapper span {left:auto;right:0;margin-right:-20px;}
@@ -1780,7 +1780,7 @@ html[dir=rtl] .DataTables_sort_wrapper span {left:auto;right:0;margin-right:-20p
 #statistics_chart {margin:auto;visibility:hidden;width:90%;}
 #source-edit, #note-edit, #repo-edit, #media-edit {overflow-x:auto;}
 .media-list td img {display:block;height:40px;width:auto;margin:3px auto;}
-.filtersH, .filtersF {margin:4px}
+.filtersH, .filtersF {margin:4px;}
 .filtersH img {margin-bottom:2px;}
 .filtersH .ui-state-default,.filtersF .ui-state-default {margin:0 2px;padding:2px;}
 .loading-image {background:transparent url(images/loading.gif) 50% 50% no-repeat;height:50px;margin:50px;}
@@ -1792,7 +1792,7 @@ html[dir=rtl] .DataTables_sort_wrapper span {left:auto;right:0;margin-right:-20p
 html[dir=rtl] .source-list th:last-child, html[dir=rtl] .note-list th:last-child, html[dir=rtl] .repo-list th:last-child {margin:0 1px 1px -2px;}
 
 /* ========= Sidebar ============== */
-#main {min-width:600px;width:100%}
+#main {min-width:600px;width:100%;}
 #indi_left {float:left;width:98%;}
 #tabs {background-color:#ffffff;border-color:#dddddd;float:left;width:100%;overflow:visible;}
 #sidebar {border-color:#dddddd;display:none;margin:5px 2px 0 0;height:auto;}
@@ -1906,7 +1906,7 @@ html[dir=rtl] #edituser-table .value {margin:0 260px 0 0;}
 	#header, #footer, .noprint {display:none !important;}
 	form, button, input {display:none;}
 	#pedigree_chart {right:auto;left:-80px;}
-	#header_accordion1 {width: 500px!important}
+	#header_accordion1 {width: 500px !important;}
 	html[dir=rtl] #pedigree_chart {left:auto;right:-80px;}
 	#familybook_chart h3 {margin-bottom: 10px;}
 	.lifespan_outer {position:relative;width:auto;height:auto;overflow:visible;border:none;}
@@ -2117,11 +2117,11 @@ html[dir=rtl] #save-cancel .cancel {float:left;}
 #cboxClose:hover {background-position:-25px -25px;}
 #cboxCurrent {bottom: 4px;color: #949494;left: 58px;position: absolute;}
 
-html[dir=rtl] #cboxPrevious {right:27px;left:auto}
-html[dir=rtl] #cboxNext {right:0;left:auto}
-html[dir=rtl] #cboxCurrent {right:auto;left:0}
-html[dir=rtl] #cboxClose {right:auto;left:0}
-html[dir=rtl] #cboxSlideshow {right:57px;left:0; }
+html[dir=rtl] #cboxPrevious {right:27px;left:auto;}
+html[dir=rtl] #cboxNext {right:0;left:auto;}
+html[dir=rtl] #cboxCurrent {right:auto;left:0;}
+html[dir=rtl] #cboxClose {right:auto;left:0;}
+html[dir=rtl] #cboxSlideshow {right:57px;left:0;}
 
 /* Census assistant module */
 table.table-census-assistant th {

@@ -22,7 +22,10 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 */
-
+/* Add a permanent scrollbar, to prevent "flickering" when hover effects lengthen page */
+html {
+overflow-y: scroll;
+}
 body {
 background-attachment:fixed;
 background-color:#c8e7ff;
@@ -244,7 +247,7 @@ height: auto;
 #menu-chart-pedigree {background-position:left -184px;} html[dir=rtl] #menu-chart-pedigree {background-position:right -184px;}
 #menu-chart-pedigree_map {background-position:left -207px;} html[dir=rtl] #menu-chart-pedigree_map {background-position:right -207px;}
 #menu-chart-relationship {background-position:left -230px;} html[dir=rtl] #menu-chart-relationship {background-position:right -230px;}
-#menu-chart-relationship li {background-position:left -230px;} html[dir=rtl] #menu-chart-relationship l {background-position:right -230px;}
+#menu-chart-relationship li {background-position:left -230px;} html[dir=rtl] #menu-chart-relationship li {background-position:right -230px;}
 #menu-chart-statistics {background-position:left -253px;} html[dir=rtl] #menu-chart-statistics {background-position:right -253px;}
 #menu-chart-timeline {background-position:left -276px;} html[dir=rtl] #menu-chart-timeline {background-position:right -276px;}
 #menu-chart-timeline li {background-position:left -276px;} html[dir=rtl] #menu-chart-timeline li {background-position:right -276px;}
@@ -428,8 +431,13 @@ color:#003399;
 }
 
 /* Base Color */
-.descriptionbox .submenu a,.blockcontent,.list_value,.list_value_wrap,.news_box,optionbox,.submenuitem_hover {
-background:#ffffff;
+.descriptionbox .submenu a,
+.blockcontent,
+.list_value,
+.list_value_wrap,
+.news_box,
+.submenuitem_hover {
+	background:#ffffff;
 }
 
 /* Link Color */
@@ -719,7 +727,7 @@ html[dir=rtl] #descendancy_chart ul {background-position:right top;margin:0 15px
 #familybook_chart table {border-collapse: collapse; empty-cells: show;}
 #familybook_chart td {margin:0; padding:0;}
 #familybook_chart h2 {text-align:center;}
-#familybook_chart .line3, #familybook_chart .pvline, #familybook_chart .spacer {width: 3px}
+#familybook_chart .line3, #familybook_chart .pvline, #familybook_chart .spacer {width: 3px;}
 #familybook_chart img.line4 {width: 7px; vertical-align:middle;}
 
 [ID^="vline"] {width:3px;}
@@ -931,7 +939,7 @@ font-weight:bold;
 
 a:hover .name1,a:hover.name2,a:hover .nameZoom  {
 color:#ff0000;
-font-weight:bold
+font-weight:bold;
 }
 
 .details1 {
@@ -2307,7 +2315,7 @@ html[dir=rtl] .css_right {float:right;}
 html[dir=rtl] .dataTables_paginate {float:right;}
 html[dir=rtl] .dataTables_processing {float:right;}
 html[dir=rtl] .dataTables_filter {float:left;}
-html[dir=rtl] .dataTables_info {float:right}
+html[dir=rtl] .dataTables_info {float:right;}
 html[dir=rtl] .dataTables_length {float:left;}
 html[dir=rtl] .DataTables_sort_wrapper {margin-right:20px;}
 html[dir=rtl] .DataTables_sort_wrapper span {left:auto;right:0;margin-right:-20px;}
@@ -2828,7 +2836,7 @@ html[dir=rtl] #edituser-table .value {margin:0 260px 0 0;}
 	#content {padding:0;}
 	#header,#footer,.noprint{display:none !important;}
 	#pedigree_chart {left:-80px;}
-	#header_accordion1 {width: 510px!important}
+	#header_accordion1 {width: 510px !important;}
 	html[dir=rtl] #pedigree_chart {left:auto;right:-80px;}
 	#topMenu,#header select,#header input,#footer select,#backprint,#sidebar,form,button,input,#CB_All, #separator {display:none;}
 	#familybook_chart h3 {margin-bottom: 10px; vertical-align:middle;}
@@ -3043,11 +3051,11 @@ html[dir=rtl] #save-cancel .cancel {float:left;}
 #cboxClose:hover {background-position:-25px -25px;}
 #cboxCurrent {bottom: 4px;color: #949494;left: 58px;position: absolute;}
 
-html[dir=rtl] #cboxPrevious {right:27px;left:auto}
-html[dir=rtl] #cboxNext {right:0;left:auto}
-html[dir=rtl] #cboxCurrent {right:auto;left:0}
-html[dir=rtl] #cboxClose {right:auto;left:0}
-html[dir=rtl] #cboxSlideshow {right:57px;left:0; }
+html[dir=rtl] #cboxPrevious {right:27px;left:auto;}
+html[dir=rtl] #cboxNext {right:0;left:auto;}
+html[dir=rtl] #cboxCurrent {right:auto;left:0;}
+html[dir=rtl] #cboxClose {right:auto;left:0;}
+html[dir=rtl] #cboxSlideshow {right:57px;left:0;}
 
 /* Census assistant module */
 table.table-census-assistant th {
