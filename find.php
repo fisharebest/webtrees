@@ -470,7 +470,7 @@ if ($type == "facts") {
 	<td><td></tbody></table>
 
 	<table id="tabAction"><tbody><tr>
-		<td colspan="2"><button id="btnOk" disabled="disabled" onclick="if (!this.disabled)DoOK();">', WT_I18N::translate('save'), '</button></td>
+		<td colspan="2"><button id="btnOk" disabled="disabled" onclick="if (!this.disabled) { DoOK(); }">', WT_I18N::translate('save'), '</button></td>
 	<tr></tbody></table>
 	</td></tr></table>
 	</form></div>';

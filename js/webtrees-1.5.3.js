@@ -20,6 +20,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+// "use strict";
+
 // Specifications for various types of popup edit window.
 // Choose positions to center in the smallest (1000x800) target screen
 var edit_window_specs='width=650,height=600,left=175,top=100,resizable=1,scrollbars=1'; // edit_interface.php, add_media.php, gedrecord.php
@@ -36,61 +38,51 @@ var fam_nav_specs='width=300,height=600,left=817,top=150,resizable=1,scrollbars=
 
 var pastefield, nameElement, remElement; // Elements to paste to
 
-// TODO: This function loads help_text.php twice.  It should only load it once.
-function helpDialog(which, mod) {
-	var url='help_text.php?help='+which+'&mod='+mod;
-	dialog=jQuery('<div></div>')
-		.load(url+' .helpcontent')
+// Create a modal dialog, fetching the contents from a URL
+function modalDialog(url, title, width) {
+	jQuery('<div title="' + title + '"></div>')
+		.load(url)
 		.dialog({
 			modal: true,
-			width: 500,
-			closeText: ""
+			width: typeof width === 'undefined' ? 700 : width,
+			open: function() {
+				// Close the window when we click outside it.
+				var self = this;
+				jQuery('.ui-widget-overlay').on('click', function () {
+					jQuery(self).dialog('close');
+				});
+			}
 		});
-	jQuery(".ui-widget-overlay").on("click", function () {
-		jQuery("div:ui-dialog:visible").dialog("close");
-	});
-	jQuery('.ui-dialog-title').load(url+' .helpheader');
+
 	return false;
 }
 
-// Create a modal dialog, fetching the contents from a URL
-function modalDialog(url, title) {
-	jQuery(document).ajaxComplete(function() {
-		jQuery('.ui-dialog').before('<div class="ui-widget-overlay" />');
-	});
-	dialog=jQuery('<div title="'+title+'"></div>')
-		.load(url)
-		.dialog({
-			modal: false,
-			width: 700,
-			closeText: "",
-			close: function(event, ui) {
-				jQuery(this).remove();
-				jQuery('.ui-widget-overlay').remove();
-			}
-		});
-	// Close the window when we click outside it.
-	jQuery(".ui-widget-overlay").on("click", function () {
-		jQuery("div:ui-dialog:visible").dialog("close");
-		jQuery(this).remove();
-	});
+// Create a modal dialog for a help message.
+function helpDialog(topic, module) {
+	var url = 'help_text.php?help=' + topic + '&mod=' + module;
+
+	modalDialog(url + ' .helpcontent', '', 500);
+	jQuery('.ui-dialog-title').load(url + ' .helpheader');
+
 	return false;
 }
 
 // Create a modal dialog to display notes
 function modalNotes(content, title) {
-	dialog=jQuery('<div title="'+title+'"></div>')
+	jQuery('<div title="' + title + '"></div>')
 		.html(content)
 		.dialog({
 			modal: true,
 			width: 500,
-			closeText: "",
-			close: function(event, ui) { jQuery(this).remove(); }
+			open: function() {
+				// Close the window when we click outside it.
+				var self = this;
+				jQuery('.ui-widget-overlay').on('click', function () {
+					jQuery(self).dialog('close');
+				});
+			}
 		});
-	// Close the window when we click outside it.
-	jQuery(".ui-widget-overlay").on("click", function () {
-		jQuery("div:ui-dialog:visible").dialog("close");
-	});
+
 	return false;
 }
 
@@ -118,8 +110,8 @@ function closePopupAndReloadParent(url) {
 }
 
 // variables to hold mouse x-y pos.s
-	var msX = 0;
-	var msY = 0;
+var msX = 0;
+var msY = 0;
 
 //  the following javascript function is for the positioning and hide/show of
 //  DIV layers used in the display of the pedigree chart.
@@ -146,16 +138,26 @@ function MM_showHideLayers() { //v6.0
 				if (pobj !== null) {
 					if (pobj.style.top!="auto" && args[i+3]!="relatives") {
 						obj.top=5+msY-parseInt(pobj.style.top)+'px';
-						if (textDirection=="ltr") obj.left=5+msX-parseInt(pobj.style.left)+'px';
-						if (textDirection=="rtl") obj.right=5+msX-parseInt(pobj.style.right)+'px';
+						if (textDirection=="ltr") {
+							obj.left = 5 + msX - parseInt(pobj.style.left) + 'px';
+						}
+						if (textDirection=="rtl") {
+							obj.right = 5 + msX - parseInt(pobj.style.right) + 'px';
+						}
 					} else {
 						obj.top="auto";
 						var pagewidth = document.documentElement.offsetWidth+document.documentElement.scrollLeft;
-						if (textDirection=="rtl") pagewidth -= document.documentElement.scrollLeft;
-						if (msX > pagewidth-160) msX = msX-150-pobj.offsetLeft;
+						if (textDirection=="rtl") {
+							pagewidth -= document.documentElement.scrollLeft;
+						}
+						if (msX > pagewidth-160) {
+							msX = msX - 150 - pobj.offsetLeft;
+						}
 						var contentdiv = document.getElementById("content");
 						msX = msX - contentdiv.offsetLeft;
-						if (textDirection=="ltr") obj.left=(5+msX)+'px';
+						if (textDirection=="ltr") {
+							obj.left = (5 + msX) + 'px';
+						}
 						obj.zIndex=1000;
 					}
 				} else {
@@ -180,74 +182,90 @@ function MM_showHideLayers() { //v6.0
 }
 
 var show = false;
-	function togglechildrenbox(pid) {
-		if (!pid) pid='';
-		else pid = '.'+pid;
-		if (show) {
-			MM_showHideLayers('childbox'+pid, ' ', 'hide',' ');
-			show=false;
-		} else {
-			MM_showHideLayers('childbox'+pid, ' ', 'show', ' ');
-			show=true;
-		}
-		return false;
-	}
 
-	var lastfamilybox = "";
-	var popupopen = 0;
-	function show_family_box(boxid, pboxid) {
-		popupopen = 1;
-		lastfamilybox=boxid;
-		if (pboxid=='relatives') MM_showHideLayers('I'+boxid+'links', 'followmouse', 'show',''+pboxid);
-		else {
-			famlinks = document.getElementById("I"+boxid+"links");
-			divbox = document.getElementById("out-"+boxid);
-			parentbox = document.getElementById("box"+boxid);
-			if (famlinks && divbox && parentbox) {
-				famlinks.style.top = "0px";
-				if (textDirection=="ltr") famleft = parseInt(divbox.style.width)+15;
-				else famleft = 0;
-				if (isNaN(famleft)) {
-					famleft = 0;
-					famlinks.style.top = parentbox.offsetTop+"px";
-				}
-				pagewidth = document.documentElement.offsetWidth+document.documentElement.scrollLeft;
-				if (textDirection=="rtl") pagewidth -= document.documentElement.scrollLeft;
-				if (famleft+parseInt(parentbox.style.left) > pagewidth-100) famleft=25;
-				famlinks.style.left = famleft + "px";
-				if (WT_SCRIPT_NAME.indexOf("index.php")!=-1) famlinks.style.left = "100%";
-				MM_showHideLayers('I'+boxid+'links', ' ', 'show',''+pboxid);
-				return;
+function togglechildrenbox(pid) {
+	if (!pid) {
+		pid = '';
+	} else {
+		pid = '.' + pid;
+	}
+	if (show) {
+		MM_showHideLayers('childbox'+pid, ' ', 'hide',' ');
+		show=false;
+	} else {
+		MM_showHideLayers('childbox'+pid, ' ', 'show', ' ');
+		show=true;
+	}
+	return false;
+}
+
+var lastfamilybox = "";
+var popupopen = 0;
+
+function show_family_box(boxid, pboxid) {
+	popupopen = 1;
+	lastfamilybox=boxid;
+	if (pboxid=='relatives') {
+		MM_showHideLayers('I' + boxid + 'links', 'followmouse', 'show', '' + pboxid);
+	} else {
+		famlinks = document.getElementById("I"+boxid+"links");
+		divbox = document.getElementById("out-"+boxid);
+		parentbox = document.getElementById("box"+boxid);
+		if (famlinks && divbox && parentbox) {
+			famlinks.style.top = "0px";
+			if (textDirection=="ltr") {
+				famleft = parseInt(divbox.style.width) + 15;
+			} else {
+				famleft = 0;
 			}
-			MM_showHideLayers('I'+boxid+'links', 'followmouse', 'show',''+pboxid);
+			if (isNaN(famleft)) {
+				famleft = 0;
+				famlinks.style.top = parentbox.offsetTop + "px";
+			}
+			pagewidth = document.documentElement.offsetWidth + document.documentElement.scrollLeft;
+			if (textDirection=="rtl") {
+				pagewidth -= document.documentElement.scrollLeft;
+			}
+			if (famleft + parseInt(parentbox.style.left) > pagewidth - 100) {
+				famleft = 25;
+			}
+			famlinks.style.left = famleft + "px";
+			if (WT_SCRIPT_NAME.indexOf("index.php")!=-1) {
+				famlinks.style.left = "100%";
+			}
+			MM_showHideLayers('I'+boxid+'links', ' ', 'show',''+pboxid);
+			return;
 		}
+		MM_showHideLayers('I'+boxid+'links', 'followmouse', 'show',''+pboxid);
 	}
+}
 
-	function hide_family_box(boxid) {
-		MM_showHideLayers('I'+boxid+'links', '', 'hide','');
-		popupopen = 0;
-		lastfamilybox="";
-	}
+function hide_family_box(boxid) {
+	MM_showHideLayers('I'+boxid+'links', '', 'hide','');
+	popupopen = 0;
+	lastfamilybox="";
+}
 
-	var timeouts = [];
-	function family_box_timeout(boxid) {
-		timeouts[boxid] = setTimeout("hide_family_box('"+boxid+"')", 2500);
-	}
+var timeouts = [];
 
-	function clear_family_box_timeout(boxid) {
-		clearTimeout(timeouts[boxid]);
-	}
+function family_box_timeout(boxid) {
+	timeouts[boxid] = setTimeout("hide_family_box('"+boxid+"')", 2500);
+}
 
-	function expand_layer(sid) {
-		if (jQuery("#"+sid+"_img").hasClass("icon-plus")) {
-			jQuery('#'+sid+"_img").removeClass("icon-plus").addClass("icon-minus");
-			jQuery('#'+sid).slideDown("fast");
-		} else {
-			jQuery('#'+sid+"_img").removeClass("icon-minus").addClass("icon-plus");
-			jQuery('#'+sid).slideUp("fast");
-		}
-		return false;
+function clear_family_box_timeout(boxid) {
+	clearTimeout(timeouts[boxid]);
+}
+
+function expand_layer(sid) {
+	if (jQuery("#"+sid+"_img").hasClass("icon-plus")) {
+		jQuery('#'+sid+"_img").removeClass("icon-plus").addClass("icon-minus");
+		jQuery('#'+sid).slideDown("fast");
+	} else {
+		jQuery('#'+sid+"_img").removeClass("icon-minus").addClass("icon-plus");
+		jQuery('#'+sid).slideUp("fast");
 	}
+	return false;
+}
 
 // Open the "edit interface" popup window
 function edit_interface(params, windowspecs, pastefield) {
@@ -732,18 +750,25 @@ function valid_date(datefield) {
 		var f3=parseInt(RegExp.$4, 10);
 		var f4=RegExp.$5;
 		var dmy='DMY';
-		if (typeof(locale_date_format)!='undefined')
-			if (locale_date_format=='MDY' || locale_date_format=='YMD')
-				dmy=locale_date_format;
+		if (typeof(locale_date_format)!='undefined') {
+			if (locale_date_format === 'MDY' || locale_date_format === 'YMD') {
+				dmy = locale_date_format;
+			}
+		}
 		var yyyy=new Date().getFullYear();
 		var yy=yyyy % 100;
 		var cc=yyyy - yy;
-		if (dmy=='DMY' && f1<=31 && f2<=12 || f1>13 && f1<=31 && f2<=12 && f3>31)
-			datestr=f0+f1+" "+months[f2-1]+" "+(f3>=100?f3:(f3<=yy?f3+cc:f3+cc-100));
-		else if (dmy=='MDY' && f1<=12 && f2<=31 || f2>13 && f2<=31 && f1<=12 && f3>31)
-			datestr=f0+f2+" "+months[f1-1]+" "+(f3>=100?f3:(f3<=yy?f3+cc:f3+cc-100));
-		else if (dmy=='YMD' && f2<=12 && f3<=31 || f3>13 && f3<=31 && f2<=12 && f1>31)
-			datestr=f0+f3+" "+months[f2-1]+" "+(f1>=100?f1:(f1<=yy?f1+cc:f1+cc-100));
+		if (dmy=='DMY' && f1<=31 && f2<=12 || f1>13 && f1<=31 && f2<=12 && f3>31) {
+				datestr = f0 + f1 + " " + months[f2 - 1] + " " + (f3 >= 100 ? f3 : (f3 <= yy ? f3 + cc : f3 + cc - 100));
+		} else {
+			if (dmy === 'MDY' && f1 <= 12 && f2 <= 31 || f2 > 13 && f2 <= 31 && f1 <= 12 && f3 > 31) {
+				datestr = f0 + f2 + " " + months[f1 - 1] + " " + (f3 >= 100 ? f3 : (f3 <= yy ? f3 + cc : f3 + cc - 100));
+			} else {
+				if (dmy === 'YMD' && f2 <= 12 && f3 <= 31 || f3 > 13 && f3 <= 31 && f2 <= 12 && f1 > 31) {
+					datestr = f0 + f3 + " " + months[f2 - 1] + " " + (f1 >= 100 ? f1 : (f1 <= yy ? f1 + cc : f1 + cc - 100));
+				}
+			}
+		}
 	}
 
 	// Shortcuts for date ranges
@@ -756,7 +781,9 @@ function valid_date(datefield) {
 	datestr=datestr.replace(/^[#]([\w ]+)$/, "CAL $1");
 	datestr=datestr.replace(/^([\w ]+) ?- ?([\w ]+)$/, "BET $1 AND $2");
 	datestr=datestr.replace(/^([\w ]+) ?~ ?([\w ]+)$/, "FROM $1 TO $2");
-	if (datestr.match(/^=([\d ()\/+*-]+)$/)) datestr=eval(RegExp.$1);
+	if (datestr.match(/^=([\d ()\/+*-]+)$/)) {
+		datestr = eval(RegExp.$1);
+	}
 
 	// Convert full months to short months
 	// TODO: also convert long/short months in other languages
@@ -800,6 +827,7 @@ function valid_date(datefield) {
 		datefield.value=datestr;
 	}
 }
+
 var oldheight = 0;
 var oldwidth = 0;
 var oldz = 0;
@@ -824,7 +852,9 @@ function expandbox(boxid, bstyle) {
 			fontdef.style.display='none';
 		}
 		restorebox(oldboxid, bstyle);
-		if (boxid==oldboxid) return true;
+		if (boxid==oldboxid) {
+			return true;
+		}
 	}
 
 	jQuery(document).ready(function() {
@@ -860,7 +890,9 @@ function expandbox(boxid, bstyle) {
 		oldheight=divbox.style.height;
 		oldwidth=divbox.style.width;
 		oldz = parentbox.style.zIndex;
-		if (url.indexOf("descendancy.php")==-1) parentbox.style.zIndex='100';
+		if (url.indexOf("descendancy.php")==-1) {
+			parentbox.style.zIndex = '100';
+		}
 		if (bstyle!=2) {
 			divbox.style.width='300px';
 			diff = 300-parseInt(oldwidth);
@@ -870,7 +902,9 @@ function expandbox(boxid, bstyle) {
 			}
 		}
 		divleft = parseInt(parentbox.style.left);
-		if (textDirection=="rtl") divleft = parseInt(parentbox.style.right);
+		if (textDirection=="rtl") {
+			divleft = parseInt(parentbox.style.right);
+		}
 		oldleft=divleft;
 		divleft = divleft - diff;
 		repositioned = 0;
@@ -901,7 +935,9 @@ function expandbox(boxid, bstyle) {
 			inbox.style.display='none';
 		}
 
-		if (inbox2) inbox2.style.display='none';
+		if (inbox2) {
+			inbox2.style.display = 'none';
+		}
 
 		fontdef = document.getElementById("fontdef-"+boxid);
 		if (fontdef) {
@@ -924,14 +960,22 @@ function expandbox(boxid, bstyle) {
 			thumb1.style.display='block';
 			oldimgw = thumb1.offsetWidth;
 			oldimgh = thumb1.offsetHeight;
-			if (oldimgw) thumb1.style.width = (oldimgw*2)+"px";
-			if (oldimgh) thumb1.style.height = (oldimgh*2)+"px";
+			if (oldimgw) {
+				thumb1.style.width = (oldimgw * 2) + "px";
+			}
+			if (oldimgh) {
+				thumb1.style.height = (oldimgh * 2) + "px";
+			}
 		}
 		if (gender) {
 			oldimgw1 = gender.offsetWidth;
 			oldimgh1 = gender.offsetHeight;
-			if (oldimgw1) gender.style.width = "15px";
-			if (oldimgh1) gender.style.height = "15px";
+			if (oldimgw1) {
+				gender.style.width = "15px";
+			}
+			if (oldimgh1) {
+				gender.style.height = "15px";
+			}
 		}
 	}
 	return true;
@@ -967,7 +1011,9 @@ function restorebox(boxid, bstyle) {
 	icons = document.getElementById("icons-"+boxid);
 	iconz = document.getElementById("iconz-"+boxid); // This is the Zoom icon
 	if (divbox) {
-		if (icons) icons.style.display = oldiconsdislpay;
+		if (icons) {
+			icons.style.display = oldiconsdislpay;
+		}
 		if (jQuery(iconz).hasClass("icon-zoomin")) {
 			jQuery(iconz).removeClass("icon-zoomin").addClass("icon-zoomout");
 		} else {
@@ -992,14 +1038,24 @@ function restorebox(boxid, bstyle) {
 		if (parentbox) {
 			parentbox.style.zIndex=oldz;
 		}
-		if (inbox) inbox.style.display='none';
-		if (inbox2) inbox2.style.display='block';
+		if (inbox) {
+			inbox.style.display = 'none';
+		}
+		if (inbox2) {
+			inbox2.style.display = 'block';
+		}
 		fontdef = document.getElementById("fontdef-"+boxid);
-		if (fontdef) fontdef.className = oldfont;
+		if (fontdef) {
+			fontdef.className = oldfont;
+		}
 		namedef = document.getElementById("namedef-"+boxid);
-		if (namedef) namedef.className = oldname;
+		if (namedef) {
+			namedef.className = oldname;
+		}
 		addnamedef = document.getElementById("addnamedef-"+boxid);
-		if (addnamedef) addnamedef.className = oldaddname;
+		if (addnamedef) {
+			addnamedef.className = oldaddname;
+		}
 	}
 	return true;
 }
@@ -1024,7 +1080,9 @@ function show_submenu(elementid, parentid, dir) {
 		var count = element.childNodes.length;
 		for (var i=0; i<count; i++) {
 			var child = element.childNodes[i];
-			if (child.offsetWidth > maxwidth+5) maxwidth = child.offsetWidth;
+			if (child.offsetWidth > maxwidth+5) {
+				maxwidth = child.offsetWidth;
+			}
 		}
 		if (element.offsetWidth <  maxwidth) {
 			element.style.width = maxwidth+"px";
@@ -1058,7 +1116,9 @@ function show_submenu(elementid, parentid, dir) {
 			}
 		}
 
-		if (element.offsetLeft < 0) element.style.left = "0px";
+		if (element.offsetLeft < 0) {
+			element.style.left = "0px";
+		}
 
 		//-- put scrollbars on really long menus
 		if (element.offsetHeight > 500) {
@@ -1171,12 +1231,16 @@ function cal_setDayHeaders(sun, mon, tue, wed, thu, fri, sat) {
 }
 
 function cal_setWeekStart(day) {
-	if (day >=0 && day < 7) weekStart = day;
+	if (day >=0 && day < 7) {
+		weekStart = day;
+	}
 }
 
 function cal_toggleDate(dateDivId, dateFieldId) {
 	var dateDiv = document.getElementById(dateDivId);
-	if (!dateDiv) return false;
+	if (!dateDiv) {
+		return false;
+	}
 
 	if (dateDiv.style.visibility=='visible') {
 		dateDiv.style.visibility = 'hidden';
@@ -1188,7 +1252,9 @@ function cal_toggleDate(dateDivId, dateFieldId) {
 	}
 
 	var dateField = document.getElementById(dateFieldId);
-	if (!dateField) return false;
+	if (!dateField) {
+		return false;
+	}
 
 	/* Javascript calendar functions only work with precise gregorian dates "D M Y" or "Y" */
 	var greg_regex = /((\d+ (JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC) )?\d+)/;
@@ -1216,14 +1282,18 @@ function cal_generateSelectorContent(dateFieldId, dateDivId, date) {
 	content += '<td><select name="'+dateFieldId+'_daySelect" id="'+dateFieldId+'_daySelect" onchange="return cal_updateCalendar(\''+dateFieldId+'\', \''+dateDivId+'\');">';
 	for (i=1; i<32; i++) {
 		content += '<option value="'+i+'"';
-		if (date.getDate()==i) content += ' selected="selected"';
+		if (date.getDate()==i) {
+			content += ' selected="selected"';
+		}
 		content += '>'+i+'</option>';
 	}
 	content += '</select></td>';
 	content += '<td><select name="'+dateFieldId+'_monSelect" id="'+dateFieldId+'_monSelect" onchange="return cal_updateCalendar(\''+dateFieldId+'\', \''+dateDivId+'\');">';
 	for (i=1; i<13; i++) {
 		content += '<option value="'+i+'"';
-		if (date.getMonth()+1==i) content += ' selected="selected"';
+		if (date.getMonth()+1==i) {
+			content += ' selected="selected"';
+		}
 		content += '>'+monthLabels[i]+'</option>';
 	}
 	content += '</select></td>';
@@ -1239,7 +1309,9 @@ function cal_generateSelectorContent(dateFieldId, dateDivId, date) {
 		content += daysOfWeek[j];
 		content += '</td>';
 		j++;
-		if (j>6) j=0;
+		if (j>6) {
+			j = 0;
+		}
 	}
 	content += '</tr>';
 
@@ -1255,10 +1327,14 @@ function cal_generateSelectorContent(dateFieldId, dateDivId, date) {
 		for (i=0; i<7; i++) {
 			content += '<td ';
 			if (tdate.getMonth()==date.getMonth()) {
-				if (tdate.getDate()==date.getDate()) content += 'class="descriptionbox"';
-				else content += 'class="optionbox"';
+				if (tdate.getDate()==date.getDate()) {
+					content += 'class="descriptionbox"';
+				} else {
+					content += 'class="optionbox"';
+				}
+			} else {
+				content += 'style="background-color:#EAEAEA; border: solid #AAAAAA 1px;"';
 			}
-			else content += 'style="background-color:#EAEAEA; border: solid #AAAAAA 1px;"';
 			content += '><a href="#" onclick="return cal_dateClicked(\''+dateFieldId+'\', \''+dateDivId+'\', '+tdate.getFullYear()+', '+tdate.getMonth()+', '+tdate.getDate()+');">';
 			content += tdate.getDate();
 			content += '</a></td>';
@@ -1276,25 +1352,34 @@ function cal_generateSelectorContent(dateFieldId, dateDivId, date) {
 
 function cal_setDateField(dateFieldId, year, month, day) {
 	var dateField = document.getElementById(dateFieldId);
-	if (!dateField) return false;
-	if (day<10) day = "0"+day;
+	if (!dateField) {
+		return false;
+	}
+	if (day<10) {
+		day = "0" + day;
+	}
 	dateField.value = day+' '+monthShort[month+1]+' '+year;
 	return false;
 }
 
 function cal_updateCalendar(dateFieldId, dateDivId) {
 	var dateSel = document.getElementById(dateFieldId+'_daySelect');
-	if (!dateSel) return false;
+	if (!dateSel) {
+		return false;
+	}
 	var monthSel = document.getElementById(dateFieldId+'_monSelect');
-	if (!monthSel) return false;
+	if (!monthSel) {
+		return false;
+	}
 	var yearInput = document.getElementById(dateFieldId+'_yearInput');
-	if (!yearInput) return false;
+	if (!yearInput) {
+		return false;
+	}
 
 	var month = parseInt(monthSel.options[monthSel.selectedIndex].value);
 	month = month-1;
 
 	var date = new Date(yearInput.value, month, dateSel.options[dateSel.selectedIndex].value);
-	if (!date) alert('Date error '+date);
 	cal_setDateField(dateFieldId, date.getFullYear(), date.getMonth(), date.getDate());
 
 	var dateDiv = document.getElementById(dateDivId);
@@ -1440,8 +1525,9 @@ function valid_lati_long(field, pos, neg) {
 	// 0.5698W ==> W0.5698
 	txt=txt.replace(/(.*)([N|S|E|W]+)$/g, '$2$1');
 	// 17.1234 ==> N17.1234
-	if (txt && txt.charAt(0)!=neg && txt.charAt(0)!=pos)
-		txt=pos+txt;
+	if (txt && txt.charAt(0)!=neg && txt.charAt(0)!=pos) {
+			txt = pos + txt;
+	}
 	field.value = txt;
 }
 

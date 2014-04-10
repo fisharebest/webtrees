@@ -3,21 +3,20 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2014-01-28 07:54+0000\n"
-"PO-Revision-Date: 2013-08-04 16:48+0000\n"
+"PO-Revision-Date: 2014-04-08 13:56+0100\n"
 "Last-Translator: fisharebest <fisharebest@gmail.com>\n"
 "Language-Team: \n"
-"Language: \n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Launchpad-Export-Date: 2013-08-04 19:03+0000\n"
-"X-Generator: Launchpad (build 16718)\n"
-"X-Poedit-Language: French\n"
+"X-Generator: Poedit 1.5.7\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-SearchPath-0: .\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
 
 #: modules_v3/ahnentafel_report/report.xml:157
 #: modules_v3/ahnentafel_report/report.xml:185
@@ -5835,59 +5834,59 @@ msgstr "Les FAQ sont des listes de questions et réponses, qui vous permettent d
 #. I18N: gedcom tag FACT
 #: library/WT/Gedcom/Tag.php:197
 msgid "Fact"
-msgstr "Évènement"
+msgstr "Fait"
 
 #: library/WT/Gedcom/Tag.php:702
 msgid "Fact 1"
-msgstr "Évènement 1"
+msgstr "Fait 1"
 
 #: library/WT/Gedcom/Tag.php:711
 msgid "Fact 10"
-msgstr "Évènement 10"
+msgstr "Fait 10"
 
 #: library/WT/Gedcom/Tag.php:712
 msgid "Fact 11"
-msgstr "Évènement 11"
+msgstr "Fait 11"
 
 #: library/WT/Gedcom/Tag.php:713
 msgid "Fact 12"
-msgstr "Évènement 12"
+msgstr "Fait 12"
 
 #: library/WT/Gedcom/Tag.php:714
 msgid "Fact 13"
-msgstr "Évènement 13"
+msgstr "Fait 13"
 
 #: library/WT/Gedcom/Tag.php:703
 msgid "Fact 2"
-msgstr "Évènement 2"
+msgstr "Fait 2"
 
 #: library/WT/Gedcom/Tag.php:704
 msgid "Fact 3"
-msgstr "Évènement 3"
+msgstr "Fait 3"
 
 #: library/WT/Gedcom/Tag.php:705
 msgid "Fact 4"
-msgstr "Évènement 4"
+msgstr "Fait 4"
 
 #: library/WT/Gedcom/Tag.php:706
 msgid "Fact 5"
-msgstr "Évènement 5"
+msgstr "Fait 5"
 
 #: library/WT/Gedcom/Tag.php:707
 msgid "Fact 6"
-msgstr "Évènement 6"
+msgstr "Fait 6"
 
 #: library/WT/Gedcom/Tag.php:708
 msgid "Fact 7"
-msgstr "Évènement 7"
+msgstr "Fait 7"
 
 #: library/WT/Gedcom/Tag.php:709
 msgid "Fact 8"
-msgstr "Évènement 8"
+msgstr "Fait 8"
 
 #: library/WT/Gedcom/Tag.php:710
 msgid "Fact 9"
-msgstr "Évènement 9"
+msgstr "Fait 9"
 
 #: admin_trees_config.php:1012
 msgid "Fact icons"
@@ -16375,17 +16374,17 @@ msgstr "belle-fille"
 #: includes/functions/functions.php:1136
 msgctxt "son’s wife’s father"
 msgid "daughter-in-law’s father"
-msgstr "belle-fille"
+msgstr "père de la belle-fille"
 
 #: includes/functions/functions.php:1137
 msgctxt "son’s wife’s mother"
 msgid "daughter-in-law’s mother"
-msgstr "belle-fille"
+msgstr "mère de la belle-fille"
 
 #: includes/functions/functions.php:1138
 msgctxt "son’s wife’s parent"
 msgid "daughter-in-law’s parent"
-msgstr "belle-fille"
+msgstr "parent de la belle-fille"
 
 #: library/WT/Stats.php:1722 library/WT/Stats.php:3578
 msgid "death"
@@ -19283,17 +19282,17 @@ msgstr "beau-fils"
 #: includes/functions/functions.php:1001
 msgctxt "daughter’s husband’s father"
 msgid "son-in-law’s father"
-msgstr "beau-fils"
+msgstr "père du beau-fils"
 
 #: includes/functions/functions.php:1002
 msgctxt "daughter’s husband’s mother"
 msgid "son-in-law’s mother"
-msgstr "beau-fils"
+msgstr "mère du beau-fils"
 
 #: includes/functions/functions.php:1003
 msgctxt "daughter’s husband’s parent"
 msgid "son-in-law’s parent"
-msgstr "beau-fils"
+msgstr "parent du beau-fils"
 
 #: includes/functions/functions.php:883
 msgctxt "child’s spouse"

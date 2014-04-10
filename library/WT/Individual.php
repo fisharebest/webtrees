@@ -867,21 +867,19 @@ class WT_Individual extends WT_GedcomRecord {
 		////////////////////////////////////////////////////////////////////////////
 
 		// Fix bad slashes.  e.g. 'John/Smith' => 'John/Smith/'
-		if (substr_count($full, '/')%2==1) {
-			$full=$full.'/';
-		} else {
-			$full=$full;
+		if (substr_count($full, '/') % 2 == 1) {
+			$full = $full.'/';
 		}
 
 		// GEDCOM uses "//" to indicate an unknown surname
-		$full=preg_replace('/\/\//', '/@N.N./', $full);
+		$full = preg_replace('/\/\//', '/@N.N./', $full);
 
 		// Extract the surname.
 		// Note, there may be multiple surnames, e.g. Jean /Vasquez/ y /Cortes/
 		if (preg_match('/\/.*\//', $full, $match)) {
-			$surname=str_replace('/', '', $match[0]);
+			$surname = str_replace('/', '', $match[0]);
 		} else {
-			$surname='';
+			$surname = '';
 		}
 
 		// If we don’t have a SURN record, extract it from the NAME

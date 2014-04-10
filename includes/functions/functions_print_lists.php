@@ -1552,7 +1552,7 @@ function print_changes_list($change_ids, $sort) {
 	$html = '';
 	foreach ($arr as $value) {
 		$html .= '<a href="' . $value['record']->getHtmlUrl() . '" class="list_item name2">' . $value['record']->getFullName() . '</a>';
-		$html .= '<div class="indent" style="margin-bottom:5px">';
+		$html .= '<div class="indent" style="margin-bottom: 5px;">';
 		if ($value['record'] instanceof WT_Individual) {
 			if ($value['record']->getAddName()) {
 				$html .= '<a href="' . $value['record']->getHtmlUrl() . '" class="list_item">' . $value['record']->getAddName() . '</a>';

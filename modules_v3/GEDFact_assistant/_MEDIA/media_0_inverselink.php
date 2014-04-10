@@ -164,7 +164,7 @@ if ($action == 'choose' && $paramok) {
 	echo '<table><tr><td>';
 		echo "<input type=\"text\" name=\"gid\" id=\"gid\" size=\"6\" value=\"\">";
 		// echo ' Enter Name or ID &nbsp; &nbsp; &nbsp; <b>OR</b> &nbsp; &nbsp; &nbsp;Search for ID ';
-	echo '</td><td style=" padding-bottom:2px; vertical-align:middle">';
+	echo '</td><td style="padding-bottom: 2px; vertical-align: middle;">';
 		echo '&nbsp;';
 		if (isset($WT_IMAGES["add"])) {
 			echo '<img style="border-style:none;" src="', $WT_IMAGES["add"], '" alt="', WT_I18N::translate('Add'), ' " title="', WT_I18N::translate('Add'), '" align="middle" name="addLink" value="" onclick="blankwin(); return false;">';

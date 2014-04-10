@@ -401,7 +401,7 @@ function print_sosa_family($famid, $childid, $sosa, $label="", $parid="", $gpari
 	global $pbwidth, $pbheight;
 
 	echo "<hr>";
-	echo "<p style='page-break-before:always'>";
+	echo "<p style='page-break-before: always;'>";
 	if (!empty($famid)) echo "<a name=\"{$famid}\"></a>";
 	print_family_parents(WT_Family::getInstance($famid), $sosa, $label, $parid, $gparid, $personcount);
 	$personcount++;
@@ -526,13 +526,16 @@ function print_cousins($famid, $personcount=1) {
 		$i = 1;
 		foreach ($fchildren as $fchil) {
 			if ($i==1) {
-			echo '<td><img width="10px" height="3px" align="top" style="padding-';
-		} else {
-			echo '<td><img width="10px" height="3px" style="padding-';
-		}
-			if ($TEXT_DIRECTION=='ltr') echo 'right';
-			else echo 'left';
-			echo ': 2px;" src="', $WT_IMAGES["hline"], '" alt=""></td><td>';
+				echo '<td><img width="10px" height="3px" align="top"';
+			} else {
+				echo '<td><img width="10px" height="3px"';
+			}
+			if ($TEXT_DIRECTION=='ltr') {
+				echo ' style="padding-right: 2px;"';
+			} else {
+				echo ' style="padding-left: 2px;"';
+			}
+			echo ' src="', $WT_IMAGES['hline'], '" alt=""></td><td>';
 			print_pedigree_person($fchil, 1 , 0, $personcount);
 			$personcount++;
 			echo '</td></tr>';
