@@ -28,7 +28,7 @@ html {overflow-y:scroll;}
 body {color:#555555;background-color:#ffffff;font:12px tahoma, arial, helvetica, sans-serif;}
 
 fieldset {margin:8px 8px 4px 8px;text-align:left;}
-html[dir=rtl] fieldset {text-align:right;}
+[dir=rtl] fieldset {text-align:right;}
 
 legend {font-weight:bold;}
 
@@ -38,7 +38,7 @@ a:hover {color:#555555;text-decoration:underline;}
 
 input:required:valid, textarea:required:valid {background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAONJREFUeNpi/P//PwMlgImBQjDwBrCgCzDOF2Zg+Adk/AOGDRvQfHZGoDWMxgyMDMb/Q1/NIt0F/xk8gIbNZPj7P41YL4AUGsM1//rfkuyeYMzw8z9xXgBqgNm0nuHnv0D/IH/juavmngV6oYY4F3z7y2DqY2oMpANB9MYl684yfP9Xw3Dzzw7sXgQmJGTM0MbjwdDKc0b2vt5/EM2QwunBoMyCVS1YPYYAMOwZ7FmiGLLYzjBYsSQD+QpALAjErNgMYERPyoyMjMxAih+IOYD4LxD/hOJfQLV/MaJ9NC8wAAQYAPbPfH2KJKx/AAAAAElFTkSuQmCC);background-position:right top; background-repeat:no-repeat;}
 input:required:invalid, textarea:required:invalid {background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAMpJREFUeNpi/P//PwMlgImBQjAMDGBBF1jFyOgBpFqAuOYPA8MOoAI4P+z//x0YJoBiARkvYWA486+k5D+IBuJqZD66WnAMogvMA9o4F6j4R3Lyf2R6IQODMVEGTAW6CoirgfjMB2/v/yB6CgNDYQ8W14IwRiB+A7rgOwNDYLChofGcrVvPgugfDAzR/yFhwUAwDJqBNj6Ulf0PooEhV4jMx+YCRvSknAeMBWDotwgwMKRzMTCcfQW0GcQHxkbNJCyxwDiaFxgAAgwAYy67YIOQ//cAAAAASUVORK5CYII=);background-position:right top; background-repeat:no-repeat;}
-html[dir=rtl] input:required:valid, html[dir=rtl] textarea:required:valid, html[dir=rtl] input:required:invalid, html[dir=rtl] textarea:required:invalid {background-position:left top;}
+[dir=rtl] input:required:valid, [dir=rtl] textarea:required:valid, [dir=rtl] input:required:invalid, [dir=rtl] textarea:required:invalid {background-position:left top;}
 
 /* ======= Layout for top header ======= */
 
@@ -48,8 +48,8 @@ html[dir=rtl] input:required:valid, html[dir=rtl] textarea:required:valid, html[
 /* Row one */
 #header-title {float:left;clear:left;font-size: 26px;font-weight: 900;}
 #header-user-links {float:right;}
-html[dir=rtl] #header-title {float:right;clear:right;}
-html[dir=rtl] #header-user-links {float:left;clear:left;}
+[dir=rtl] #header-title {float:right;clear:right;}
+[dir=rtl] #header-user-links {float:left;clear:left;}
 
 /* Row two */
 .makeMenu {font-size:14px;}
@@ -66,10 +66,10 @@ html[dir=rtl] #header-user-links {float:left;clear:left;}
 .lang-active, .theme-active {font-weight:900;}
 
 /* --- RTL --- */
-html[dir=rtl] .makeMenu li {float:right;}
-html[dir=rtl] .makeMenu li ul {left:auto;right:0;}
-html[dir=rtl] .makeMenu ul ul {top:0;left:auto;right:100px;}
-html[dir=rtl] .makeMenu li ul li {text-align:right;}
+[dir=rtl] .makeMenu li {float:right;}
+[dir=rtl] .makeMenu li ul {left:auto;right:0;}
+[dir=rtl] .makeMenu ul ul {top:0;left:auto;right:100px;}
+[dir=rtl] .makeMenu li ul li {text-align:right;}
 
 /* set up container for menu */
 #topMenu {position:relative;float:left;width:100%;margin-top:18px;border-bottom:1px solid;}
@@ -90,15 +90,15 @@ html[dir=rtl] .makeMenu li ul li {text-align:right;}
 #topMenu ul #menu-chart li:hover ul, #topMenu ul #menu-obje li:hover ul {position:absolute;display:block;margin-left:100%;left:0;}
 
 /* --- RTL --- */
-html[dir=rtl] #topMenu {float:right;}
-html[dir=rtl] #topMenu ul {right:auto;float:left;left:50%;}
-html[dir=rtl] #topMenu ul li {float:right;clear:left;right:50%;}
-html[dir=rtl] #topMenu ul ul {right:0;left:auto;}
-html[dir=rtl] #topMenu ul ul li {right:auto;/*resets the right:50% on the parent li */ clear:right;float:right;width:100%;}
-html[dir=rtl] #topMenu ul ul li a {text-align:right;}
-html[dir=rtl] #topMenu ul li:hover > ul {text-align:right;}
-html[dir=rtl] #topMenu ul #menu-chart li:hover ul {margin-right:100%;right:0;left:auto;}
-html[dir=rtl] #topMenu ul #menu-obje li:hover ul {margin-right:100%;right:0;left:auto;}
+[dir=rtl] #topMenu {float:right;}
+[dir=rtl] #topMenu ul {right:auto;float:left;left:50%;}
+[dir=rtl] #topMenu ul li {float:right;clear:left;right:50%;}
+[dir=rtl] #topMenu ul ul {right:0;left:auto;}
+[dir=rtl] #topMenu ul ul li {right:auto;/*resets the right:50% on the parent li */ clear:right;float:right;width:100%;}
+[dir=rtl] #topMenu ul ul li a {text-align:right;}
+[dir=rtl] #topMenu ul li:hover > ul {text-align:right;}
+[dir=rtl] #topMenu ul #menu-chart li:hover ul {margin-right:100%;right:0;left:auto;}
+[dir=rtl] #topMenu ul #menu-obje li:hover ul {margin-right:100%;right:0;left:auto;}
 
 #flash-messages {clear:both;}
 
@@ -364,7 +364,7 @@ table.center {
 	margin-right:15px;
 }
 
-html[dir=rtl] .icon {
+[dir=rtl] .icon {
 	padding-left:5pt;
 	padding-right:0;
 }
@@ -548,8 +548,8 @@ img.block {
 	width:100%;
 }
 
-html[dir=rtl] #index_main_blocks {float:right;}
-html[dir=rtl] #index_small_blocks {float:left;}
+[dir=rtl] #index_main_blocks {float:right;}
+[dir=rtl] #index_small_blocks {float:left;}
 
 #main_select,#available_select,#right_select {min-width:150px;}
 
@@ -583,7 +583,7 @@ width:100%;
 .tdmid {vertical-align:middle;}
 .tdbot, .tvertline {vertical-align:bottom;}
 
-html[dir=rtl] #familybook_chart {margin-right:10px;}
+[dir=rtl] #familybook_chart {margin-right:10px;}
 
 /*-- pedigree chart specific stylesheets --*/
 #pedigree-page table.list_table {margin:0 auto;width:500px;}
@@ -598,7 +598,7 @@ html[dir=rtl] #familybook_chart {margin-right:10px;}
 #pedigree_chart #childbox {border:1px solid;background-color:#ffffff;padding:5px;position:absolute;visibility:hidden;}
 
 /*-- pedigree chart rtl specific stylesheets --*/
-html[dir=rtl] #pedigree_chart {
+[dir=rtl] #pedigree_chart {
 left:auto;
 right:-20px;
 }
@@ -625,7 +625,7 @@ right:-20px;
 }
 
 /*-- descendancy chart rtl specific stylesheets --*/
-html[dir=rtl] #descendancy_chart ul {
+[dir=rtl] #descendancy_chart ul {
 background-position:right top;
 margin:0 15px 0 0;
 left:auto;
@@ -654,13 +654,13 @@ left:auto;
 #ancestry_chart li table {margin:5px 0;}
 
 /*-- ancestry chart rtl specific stylesheets --*/
-html[dir=rtl] #ancestry_chart ul {
+[dir=rtl] #ancestry_chart ul {
 background-position:right top;
 margin:0 15px 0 0;
 left:auto;
 }
 
-html[dir=rtl] #ancestry_chart li {
+[dir=rtl] #ancestry_chart li {
 margin:0;
 padding:0 2px 0 0;
 left:auto;
@@ -1041,7 +1041,7 @@ dt {
 	margin-right:10px;
 	clear:both;
 }
-html[dir=rtl] dt {
+[dir=rtl] dt {
 	float:right;
 	margin-right:auto;
 	margin-left:10px;
@@ -1063,7 +1063,7 @@ html[dir=rtl] dt {
 .theme_form ul {margin:-10px auto;-webkit-padding-start:0;width:90%;overflow:hidden;}
 .theme_form li {list-style:none;visibility:hidden;}
 .theme_form li ul li {float:left;padding:10px;visibility:visible;}
-html[dir=rtl] .theme_form li ul li  {float:right;}
+[dir=rtl] .theme_form li ul li  {float:right;}
 
 /* ======= Favourites block ========== */
 .user_favorites_block .person_box, .gedcom_favorites_block .person_box {margin:5px 0;}
@@ -1098,15 +1098,15 @@ overflow:visible !important;
 	max-width:   80px;
 	margin:      0 3px 0 0;
 }
-html[dir=rtl] .person_box_template img,
-html[dir=rtl] .person_box_template a.gallery {
+[dir=rtl] .person_box_template img,
+[dir=rtl] .person_box_template a.gallery {
 	float:  right;
 	margin: 0 0 0 3px;
 }
 .person_box_template i[class^="icon-silhouette"] {
 	float:left;
 }
-html[dir=rtl] .person_box_template i[class^="icon-silhouette"] {
+[dir=rtl] .person_box_template i[class^="icon-silhouette"] {
 	float:right;
 }
 
@@ -1122,7 +1122,7 @@ html[dir=rtl] .person_box_template i[class^="icon-silhouette"] {
 .lb-menu > li ul {display:none;}
 .lb-menu > li:hover ul {display:block; top:36px;}
 .lb-menu li li a {padding:1px 10px 1px 5px;}
-html[dir=rtl] .lb-menu > li {float:right;}
+[dir=rtl] .lb-menu > li {float:right;}
 
 /* ============== login.php ======================= */
 #login-register-page h2 {text-align:center;}
@@ -1144,7 +1144,7 @@ html[dir=rtl] .lb-menu > li {float:right;}
 #register-form textarea {vertical-align:top;width:223px;}
 #register-form div#registration-submit {text-align:center;}
 .login_block_block #login-form, .login_block_block #new_passwd_form {border:0;background:none;}
-html[dir=rtl] #login-form label, html[dir=rtl] #new_passwd_form label, html[dir=rtl] #register-form label, html[dir=rtl] #verify-form label {text-align:left;}
+[dir=rtl] #login-form label, [dir=rtl] #new_passwd_form label, [dir=rtl] #register-form label, [dir=rtl] #verify-form label {text-align:left;}
 
 /* ============== reportengine.php ======================= */
 #reportengine-page table {margin:20px auto;}
@@ -1194,7 +1194,7 @@ padding:0;
 	z-index:9999;
 }
 
-html[dir=rtl] .itr:hover .popup {left:0;right:auto;}
+[dir=rtl] .itr:hover .popup {left:0;right:auto;}
 
 /* styles for FindFacts pop-up */
 #layDefinedTags,#tabDefinedTagsShow {
@@ -1278,13 +1278,13 @@ div.faq_body {
 }
 .faq_top {float:right;}
 .faq_edit {float:right;}
-html[dir=rtl] .faq_top {float:left;}
-html[dir=rtl] .faq_edit {float:left;}
+[dir=rtl] .faq_top {float:left;}
+[dir=rtl] .faq_edit {float:left;}
 
 td.descriptionbox a {/* this keeps the tag color the same when it is a link as when not */
 	float:left;
 }
-html[dir=rtl] td.descriptionbox a {
+[dir=rtl] td.descriptionbox a {
 	float:right;
 }
 
@@ -1300,13 +1300,13 @@ html[dir=rtl] td.descriptionbox a {
 .editfacts {clear:both;padding-top:15px;} /* a container for the following three links */
 .editlink, .copylink, .deletelink {float:left;padding:0 5px 0 0;
 }
-html[dir=rtl] .editlink, html[dir=rtl] .copylink, html[dir=rtl] .deletelink {float:right;padding:0 0 0 5px;
+[dir=rtl] .editlink, [dir=rtl] .copylink, [dir=rtl] .deletelink {float:right;padding:0 0 0 5px;
 }
 span.link_text {}
 span.link_text:hover {text-decoration:underline;}
 /* Indi header */
 .field .editlink, .field .deletelink, .field .copylink {float:right;}
-html[dir=rtl].field .editlink, html[dir=rtl].field .deletelink {float:left;}
+[dir=rtl].field .editlink, [dir=rtl].field .deletelink {float:left;}
 /* =========== end edit, copy, delete links ==================== */
 
 /* =========== Indi header ================== */
@@ -1361,21 +1361,21 @@ html[dir=rtl].field .editlink, html[dir=rtl].field .deletelink {float:left;}
 
 .indi_table {clear:left;}
 #sex {float:right;}
-html[dir=rtl] #sex {float:left;}
+[dir=rtl] #sex {float:left;}
 #dates {float:right;}
 dd .editlink, dd .deletelink {float:right;}
 
-html[dir=rtl] #indi_header {float:right;padding:0 0 0 10px;}
-html[dir=rtl] #indi_header h3 {padding:0 30px 0 10px;text-align:right;}
-html[dir=rtl] #indi_header h3 .header_age {padding:5px 5px 5px 0;float:left;}
-html[dir=rtl] #main_name {float:right;}
-html[dir=rtl] #indi_mainimage {float:left;}
-html[dir=rtl] #indi_mainimage a img {float:left;}
-html[dir=rtl] #indi_note .fact_NOTE {float:right;margin:0 0 0 10px;}
-html[dir=rtl] #header_accordion1 {float:right;}
-html[dir=rtl] .indi_table {clear:right;}
-html[dir=rtl] #dates {float:left;}
-html[dir=rtl] dd .editlink, html[dir=rtl] dd .deletelink {float:left;}
+[dir=rtl] #indi_header {float:right;padding:0 0 0 10px;}
+[dir=rtl] #indi_header h3 {padding:0 30px 0 10px;text-align:right;}
+[dir=rtl] #indi_header h3 .header_age {padding:5px 5px 5px 0;float:left;}
+[dir=rtl] #main_name {float:right;}
+[dir=rtl] #indi_mainimage {float:left;}
+[dir=rtl] #indi_mainimage a img {float:left;}
+[dir=rtl] #indi_note .fact_NOTE {float:right;margin:0 0 0 10px;}
+[dir=rtl] #header_accordion1 {float:right;}
+[dir=rtl] .indi_table {clear:right;}
+[dir=rtl] #dates {float:left;}
+[dir=rtl] dd .editlink, [dir=rtl] dd .deletelink {float:left;}
 
 /* INDI IMAGE SPRITE */
 .male_gender, .female_gender, .unknown_gender {display:block;background:url(images/indi_sprite.png) no-repeat;}
@@ -1388,8 +1388,8 @@ html[dir=rtl] dd .editlink, html[dir=rtl] dd .deletelink {float:left;}
 #personal_facts_content .fact_NOTE, #personal_facts_content .fact_SOUR, #family-table .fact_NOTE, #family-table .fact_SOUR {margin:5px 3px 5px 0;clear:both;}
 .media-display-image {float:left;}
 .media-display-title {float:left;font-style:italic;margin:10px;}
-html[dir=rtl] .media-display-image {float:right;}
-html[dir=rtl] .media-display-title {float:right;}
+[dir=rtl] .media-display-image {float:right;}
+[dir=rtl] .media-display-title {float:right;}
 
 /* ========= jquery-ui.custom.css changes ============ */
 .ui-widget-content {color:#555555;}
@@ -1418,12 +1418,12 @@ html[dir=rtl] .media-display-title {float:right;}
 .ui-helper-reset {line-height:1.5;}
 .ui-state-highlight a {color:#ff0000;}
 
-html[dir=rtl] .ui-tabs {direction:rtl;}
-html[dir=rtl] .ui-tabs .ui-tabs-nav li.ui-tabs-active,
-html[dir=rtl] .ui-tabs .ui-tabs-nav li.ui-state-default {float:right;}
-html[dir=rtl] .ui-accordion .ui-accordion-header .ui-icon {right:.5em;}
-html[dir=rtl] .ui-dialog-title {float:right;}
-html[dir=rtl] .ui-dialog-titlebar-close {left:.3em;right:auto;}
+[dir=rtl] .ui-tabs {direction:rtl;}
+[dir=rtl] .ui-tabs .ui-tabs-nav li.ui-tabs-active,
+[dir=rtl] .ui-tabs .ui-tabs-nav li.ui-state-default {float:right;}
+[dir=rtl] .ui-accordion .ui-accordion-header .ui-icon {right:.5em;}
+[dir=rtl] .ui-dialog-title {float:right;}
+[dir=rtl] .ui-dialog-titlebar-close {left:.3em;right:auto;}
 
 /* ========= jQuery.datatable styling over-rides ============ */
 .odd {background-color:#dcdcdc;}
@@ -1445,14 +1445,14 @@ html[dir=rtl] .ui-dialog-titlebar-close {left:.3em;right:auto;}
 .DataTables_sort_wrapper {position:relative;margin:0 20px;}
 .DataTables_sort_wrapper span {left:0;margin-left:-20px;margin-top:-8px;position:absolute;top:50%;}
 
-html[dir=rtl] .css_right {float:right;}
-html[dir=rtl] .dataTables_paginate {float:right;}
-html[dir=rtl] .dataTables_processing {float:right;}
-html[dir=rtl] .dataTables_filter {float:left;}
-html[dir=rtl] .dataTables_info {float:right;}
-html[dir=rtl] .dataTables_length {float:left;}
-html[dir=rtl] .DataTables_sort_wrapper {margin-right:20px;}
-html[dir=rtl] .DataTables_sort_wrapper span {left:auto;right:0;margin-right:-20px;}
+[dir=rtl] .css_right {float:right;}
+[dir=rtl] .dataTables_paginate {float:right;}
+[dir=rtl] .dataTables_processing {float:right;}
+[dir=rtl] .dataTables_filter {float:left;}
+[dir=rtl] .dataTables_info {float:right;}
+[dir=rtl] .dataTables_length {float:left;}
+[dir=rtl] .DataTables_sort_wrapper {margin-right:20px;}
+[dir=rtl] .DataTables_sort_wrapper span {left:auto;right:0;margin-right:-20px;}
 
 /* ========= List styles ================= */
 .source-list, .note-list, .repo-list, .media-list, .indi-list, .fam-list {margin:5px auto;visibility:hidden;width:98%;}
@@ -1479,7 +1479,7 @@ html[dir=rtl] .DataTables_sort_wrapper span {left:auto;right:0;margin-right:-20p
 #searchAccordion-indi, #searchAccordion-fam, #searchAccordion-source, #searchAccordion-note {margin:auto;width:99%;}
 #place-hierarchy h2, #place-hierarchy h4 {text-align:center;}
 
-html[dir=rtl] .source-list th:last-child, html[dir=rtl] .note-list th:last-child, html[dir=rtl] .repo-list th:last-child {margin:0 1px 1px -2px;}
+[dir=rtl] .source-list th:last-child, [dir=rtl] .note-list th:last-child, [dir=rtl] .repo-list th:last-child {margin:0 1px 1px -2px;}
 
 /* ========= Sidebar ============== */
 #main {min-width:600px;width:100%;}
@@ -1496,11 +1496,11 @@ border:1px solid #888888;}
 #separator {display:block;background:#dddddd url(images/indi_sprite.png) no-repeat -26px 100px;min-width:6px;max-width:10px;width:0.75%;border:1px solid #888888;border-top-left-radius:3px;border-top-right-radius:3px;margin-top:5px;}
 .use-sidebar #separator {background:#dddddd url(images/indi_sprite.png) no-repeat -1px 100px;}
 
-html[dir=rtl] #indi_left {float:right;}
-html[dir=rtl] #sidebar {margin:5px 0 0 2px;}
-html[dir=rtl] .use-sidebar.sidebar-at-right #sidebar, html[dir=rtl] .sidebar-at-right #separator {float:left;}
-html[dir=rtl] #separator {background:#dddddd url(images/indi_sprite.png) no-repeat -1px 100px;}
-html[dir=rtl] .use-sidebar #separator {background:#dddddd url(images/indi_sprite.png) no-repeat -26px 100px;}
+[dir=rtl] #indi_left {float:right;}
+[dir=rtl] #sidebar {margin:5px 0 0 2px;}
+[dir=rtl] .use-sidebar.sidebar-at-right #sidebar, [dir=rtl] .sidebar-at-right #separator {float:left;}
+[dir=rtl] #separator {background:#dddddd url(images/indi_sprite.png) no-repeat -1px 100px;}
+[dir=rtl] .use-sidebar #separator {background:#dddddd url(images/indi_sprite.png) no-repeat -26px 100px;}
 
 /* ============== Sidebar content items ============== */
 /* Family navigator */
@@ -1515,9 +1515,9 @@ html[dir=rtl] .use-sidebar #separator {background:#dddddd url(images/indi_sprite
 .flyout3, .flyout3 a {background:none;border:none;text-decoration:none;text-align:left;margin-top:0;left:0;padding:0;}
 .famnav_link {font-size:12px;padding:0;width:100%;}
 
-html[dir=rtl] .flyout {text-align:right;left:210px;}
-html[dir=rtl] .flyout2 {text-align:right;right:40px;}
-html[dir=rtl] .flyout3 {text-align:right;}
+[dir=rtl] .flyout {text-align:right;left:210px;}
+[dir=rtl] .flyout2 {text-align:right;right:40px;}
+[dir=rtl] .flyout3 {text-align:right;}
 
 /* Descendancy */
 #sb_desc_content {margin-left:3px;font-size:0.8em;}
@@ -1526,8 +1526,8 @@ html[dir=rtl] .flyout3 {text-align:right;}
 .desc_tree_div {display:none;}
 .desc_tree_div ul {padding:0;margin-left:10px;margin-top:0;margin-right:0;}
 
-html[dir=rtl] #sb_desc_content {margin-right:3px;}
-html[dir=rtl] .desc_tree_div ul {margin-right:10px;margin-left:0;}
+[dir=rtl] #sb_desc_content {margin-right:3px;}
+[dir=rtl] .desc_tree_div ul {margin-right:10px;margin-left:0;}
 
 /* Individuals, Families */
 .sb_indi_surname_li, .sb_fam_surname_li {list-style-image:url(images/plus.png);}
@@ -1548,7 +1548,7 @@ html[dir=rtl] .desc_tree_div ul {margin-right:10px;margin-left:0;}
 #sb_content_extra_info span a {display:inline;}
 #sb_content_extra_info #hitcounter {border-top:1px solid #B2C7D7;font-weight:bold;padding-top:5px;}
 
-html[dir=rtl] #sb_content_extra_info .editfacts {float:left;}
+[dir=rtl] #sb_content_extra_info .editfacts {float:left;}
 
 /* ============== find.php ======================= */
 #find-page h3, #find-page h4 {margin:10px;text-align:center;}
@@ -1576,8 +1576,8 @@ html[dir=rtl] #sb_content_extra_info .editfacts {float:left;}
 #search-page-table .value {border-top:1px solid #000000;margin:0 0 0 170px;padding:5px;white-space:nowrap;}
 #search-page-table div:nth-of-type(2) {border:0;}
 #search-page-table p {margin:0;}
-html[dir=rtl] #search-page-table .label {float:right;}
-html[dir=rtl] #search-page-table .value {margin:0 170px 0 0;}
+[dir=rtl] #search-page-table .label {float:right;}
+[dir=rtl] #search-page-table .value {margin:0 170px 0 0;}
 
 /* ============== edituser.php ======================= */
 #edituser-page h2, #edituser_submit {margin:20px;text-align:center;}
@@ -1587,8 +1587,8 @@ html[dir=rtl] #search-page-table .value {margin:0 170px 0 0;}
 #edituser-table .label span {margin:0 10px;}
 #edituser-table div:nth-of-type(2) {border:0;}
 #edituser-table select {margin:0;}
-html[dir=rtl] #edituser-table .label {float:right;}
-html[dir=rtl] #edituser-table .value {margin:0 260px 0 0;}
+[dir=rtl] #edituser-table .label {float:right;}
+[dir=rtl] #edituser-table .value {margin:0 260px 0 0;}
 
 /* ======= Who is online block ========== */
 .logged_in_list {margin:5px 0 0 0;padding:0;line-height:20px;}
@@ -1597,7 +1597,7 @@ html[dir=rtl] #edituser-table .value {margin:0 260px 0 0;}
 	#backprint, #header, #topMenu, #separator  {display:none;}
 	#pedigree_chart {left:-80px;}
 	#header_accordion1 {width: 510px !important;}
-	html[dir=rtl] #pedigree_chart {left:auto;right:-80px;}
+	[dir=rtl] #pedigree_chart {left:auto;right:-80px;}
 	#header, #footer, .noprint {display:none !important;}
 	#familybook_chart h3 {margin-bottom: 10px;}
 	form, button, input {display:none;} /* buttons and input are used out of forms in sortable tables*/
@@ -1769,8 +1769,8 @@ a.icon-udarrow             {width:20px;height:20px;background-image:url(images/u
 #save-cancel input {padding:2px 8px;}
 #save-cancel .save {float:left;margin:5px;}
 #save-cancel .cancel {float:right;margin:5px;}
-html[dir=rtl] #save-cancel .save {float:right;}
-html[dir=rtl] #save-cancel .cancel {float:left;}
+[dir=rtl] #save-cancel .save {float:right;}
+[dir=rtl] #save-cancel .cancel {float:left;}
 #edit_interface-page,
 #addmedia-page {
 	margin-bottom: 50px;
@@ -1807,11 +1807,11 @@ html[dir=rtl] #save-cancel .cancel {float:left;}
 #cboxClose:hover {background-position:-25px -25px;}
 #cboxCurrent {bottom: 4px;color: #949494;left: 58px;position: absolute;}
 
-html[dir=rtl] #cboxPrevious {right:27px;left:auto;}
-html[dir=rtl] #cboxNext {right:0;left:auto;}
-html[dir=rtl] #cboxCurrent {right:auto;left:0;}
-html[dir=rtl] #cboxClose {right:auto;left:0;}
-html[dir=rtl] #cboxSlideshow {right:57px;left:0;}
+[dir=rtl] #cboxPrevious {right:27px;left:auto;}
+[dir=rtl] #cboxNext {right:0;left:auto;}
+[dir=rtl] #cboxCurrent {right:auto;left:0;}
+[dir=rtl] #cboxClose {right:auto;left:0;}
+[dir=rtl] #cboxSlideshow {right:57px;left:0;}
 
 /* Census assistant module */
 table.table-census-assistant th {

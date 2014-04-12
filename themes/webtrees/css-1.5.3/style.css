@@ -42,7 +42,7 @@ fieldset {
 	text-align: left;
 }
 
-html[dir=rtl] fieldset {
+[dir=rtl] fieldset {
 	text-align: right;
 }
 
@@ -159,10 +159,10 @@ textarea:required:invalid {
 	background-repeat: no-repeat;
 }
 
-html[dir=rtl] input:required:valid,
-html[dir=rtl] textarea:required:valid,
-html[dir=rtl] input:required:invalid,
-html[dir=rtl] textarea:required:invalid {
+[dir=rtl] input:required:valid,
+[dir=rtl] textarea:required:valid,
+[dir=rtl] input:required:invalid,
+[dir=rtl] textarea:required:invalid {
 	background-position: left top;
 }
 
@@ -679,7 +679,7 @@ a:hover .nameZoom {
 	vertical-align: bottom;
 }
 
-html[dir=rtl] #familybook_chart {
+[dir=rtl] #familybook_chart {
 	margin-right: 10px;
 }
 
@@ -702,7 +702,7 @@ html[dir=rtl] #familybook_chart {
 	left: 0;
 }
 
-html[dir=rtl] #pedigree_chart {
+[dir=rtl] #pedigree_chart {
 	left: auto;
 	right: 10px;
 }
@@ -752,7 +752,7 @@ html[dir=rtl] #pedigree_chart {
 	padding-bottom: 0;
 }
 
-html[dir=rtl] #descendancy_chart ul {
+[dir=rtl] #descendancy_chart ul {
 	background-position: right top;
 	margin: 0 15px 0 0;
 	left: auto;
@@ -788,13 +788,13 @@ html[dir=rtl] #descendancy_chart ul {
 	margin: 5px 0;
 }
 
-html[dir=rtl] #ancestry_chart ul {
+[dir=rtl] #ancestry_chart ul {
 	background-position: right top;
 	margin: 0 15px 0 0;
 	left: auto;
 }
 
-html[dir=rtl] #ancestry_chart li {
+[dir=rtl] #ancestry_chart li {
 	margin: 0;
 	padding: 0 2px 0 0;
 	left: auto;
@@ -890,7 +890,7 @@ html[dir=rtl] #ancestry_chart li {
 	padding-left: 10px;
 }
 
-html[dir=rtl] .title {
+[dir=rtl] .title {
 	float: right;
 	padding-right: 10px;
 }
@@ -899,7 +899,7 @@ html[dir=rtl] .title {
 	float: left;
 }
 
-html[dir=rtl] .header_img {
+[dir=rtl] .header_img {
 	float: right;
 }
 
@@ -907,7 +907,7 @@ html[dir=rtl] .header_img {
 	float: right;
 }
 
-html[dir=rtl] .header_search {
+[dir=rtl] .header_search {
 	float: left;
 }
 
@@ -1237,7 +1237,7 @@ dt {
 	margin-right: 10px;
 }
 
-html[dir=rtl] dt {
+[dir=rtl] dt {
 	float: right;
 	margin-right: auto;
 	margin-left: 10px;
@@ -1344,15 +1344,15 @@ td.descriptionbox a {
 	max-width: 80px;
 	width: auto;
 }
-html[dir=rtl] .person_box_template img,
-html[dir=rtl] .person_box_template a.gallery {
+[dir=rtl] .person_box_template img,
+[dir=rtl] .person_box_template a.gallery {
 	float: right;
 	margin: 0 0 0 4px;
 }
 .person_box_template i[class^="icon-silhouette"] {
 	float: left;
 }
-html[dir=rtl] .person_box_template i[class^="icon-silhouette"] {
+[dir=rtl] .person_box_template i[class^="icon-silhouette"] {
 	float: right;
 }
 
@@ -1418,7 +1418,7 @@ html[dir=rtl] .person_box_template i[class^="icon-silhouette"] {
 	border: none;
 }
 
-html[dir=rtl] .lb-menu > li {
+[dir=rtl] .lb-menu > li {
 	float: right;
 }
 
@@ -1552,15 +1552,15 @@ html[dir=rtl] .lb-menu > li {
 	background: none;
 }
 
-html[dir=rtl] #login-form label,
-html[dir=rtl] #new_passwd_form label,
-html[dir=rtl] #register-form label,
-html[dir=rtl] #verify-form label {
+[dir=rtl] #login-form label,
+[dir=rtl] #new_passwd_form label,
+[dir=rtl] #register-form label,
+[dir=rtl] #verify-form label {
 	text-align: left;
 }
 
-html[dir=rtl] #register-form div,
-html[dir=rtl] #verify-form div {
+[dir=rtl] #register-form div,
+[dir=rtl] #verify-form div {
 	text-align: left;
 }
 
@@ -1635,7 +1635,7 @@ html[dir=rtl] #verify-form div {
 	z-index: 9999;
 }
 
-html[dir=rtl] .itr:hover .popup {
+[dir=rtl] .itr:hover .popup {
 	left: 0;
 	right: auto;
 }
@@ -1893,9 +1893,9 @@ html[dir=rtl] .itr:hover .popup {
 	text-align: center;
 }
 
-html[dir=rtl] .source-list th:last-child,
-html[dir=rtl] .note-list th:last-child,
-html[dir=rtl] .repo-list th:last-child {
+[dir=rtl] .source-list th:last-child,
+[dir=rtl] .note-list th:last-child,
+[dir=rtl] .repo-list th:last-child {
 	margin: 0 1px 1px -2px;
 }
 
@@ -1917,11 +1917,11 @@ html[dir=rtl] .repo-list th:last-child {
 	width: 100%;
 }
 
-html[dir=rtl] #index_main_blocks {
+[dir=rtl] #index_main_blocks {
 	float: right;
 }
 
-html[dir=rtl] #index_small_blocks {
+[dir=rtl] #index_small_blocks {
 	float: left;
 }
 
@@ -2086,7 +2086,7 @@ html[dir=rtl] #index_small_blocks {
 	visibility: visible;
 }
 
-html[dir=rtl] .theme_form li ul li {
+[dir=rtl] .theme_form li ul li {
 	float: right;
 }
 
@@ -2129,11 +2129,11 @@ div.faq_body {
 	float: right;
 }
 
-html[dir=rtl] .faq_top {
+[dir=rtl] .faq_top {
 	float: left;
 }
 
-html[dir=rtl] .faq_edit {
+[dir=rtl] .faq_edit {
 	float: left;
 }
 
@@ -2243,29 +2243,29 @@ html[dir=rtl] .faq_edit {
 }
 
 /* Reverse left and right on RTL pages */
-html[dir=rtl] #topMenu {
+[dir=rtl] #topMenu {
 	float: right;
 }
 
-html[dir=rtl] #main-menu li {
+[dir=rtl] #main-menu li {
 	float: right;
 }
 
-html[dir=rtl] #main-menu li:hover > ul {
+[dir=rtl] #main-menu li:hover > ul {
 	right: 100%;
 	left: auto;
 }
 
-html[dir=rtl] #main-menu > li:hover > ul {
+[dir=rtl] #main-menu > li:hover > ul {
 	left: auto;
 	right: 0;
 }
 
-html[dir=rtl] #main-menu li li {
+[dir=rtl] #main-menu li li {
 	text-align: right;
 }
 
-html[dir=rtl] #main-menu li li a {
+[dir=rtl] #main-menu li li a {
 	float: right;
 	padding: 1px 5px 1px 10px;
 }
@@ -2339,546 +2339,546 @@ html[dir=rtl] #main-menu li li a {
 #menu-admin {
 	background-position: left 0;
 }
-html[dir=rtl] #menu-admin {
+[dir=rtl] #menu-admin {
 	background-position: right 0;
 }
 
 #menu-branches {
 	background-position: left -450px;
 }
-html[dir=rtl] #menu-branches {
+[dir=rtl] #menu-branches {
 	background-position: right -450px;
 }
 
 #menu-calendar-day {
 	background-position: left -60px;
 }
-html[dir=rtl] #menu-calendar-day {
+[dir=rtl] #menu-calendar-day {
 	background-position: right -60px;
 }
 
 #menu-calendar-month {
 	background-position: left -60px;
 }
-html[dir=rtl] #menu-calendar-month {
+[dir=rtl] #menu-calendar-month {
 	background-position: right -60px;
 }
 
 #menu-calendar-year {
 	background-position: left -60px;
 }
-html[dir=rtl] #menu-calendar-year {
+[dir=rtl] #menu-calendar-year {
 	background-position: right -60px;
 }
 
 #menu-chart-ancestry {
 	background-position: left -30px;
 }
-html[dir=rtl] #menu-chart-ancestry {
+[dir=rtl] #menu-chart-ancestry {
 	background-position: right -30px;
 }
 
 #menu-chart-compact {
 	background-position: left -30px;
 }
-html[dir=rtl] #menu-chart-compact {
+[dir=rtl] #menu-chart-compact {
 	background-position: right -30px;
 }
 
 #menu-chart-descendancy {
 	background-position: left -150px;
 }
-html[dir=rtl] #menu-chart-descendancy {
+[dir=rtl] #menu-chart-descendancy {
 	background-position: right -150px;
 }
 
 #menu-chart-familybook {
 	background-position: left -180px;
 }
-html[dir=rtl] #menu-chart-familybook {
+[dir=rtl] #menu-chart-familybook {
 	background-position: right -180px;
 }
 
 #menu-chart-fanchart {
 	background-position: left -210px;
 }
-html[dir=rtl] #menu-chart-fanchart {
+[dir=rtl] #menu-chart-fanchart {
 	background-position: right -210px;
 }
 
 #menu-chart-hourglass {
 	background-position: left -270px;
 }
-html[dir=rtl] #menu-chart-hourglass {
+[dir=rtl] #menu-chart-hourglass {
 	background-position: right -270px;
 }
 
 #menu-chart-lifespan {
 	background-position: left -660px;
 }
-html[dir=rtl] #menu-chart-lifespan {
+[dir=rtl] #menu-chart-lifespan {
 	background-position: right -660px;
 }
 
 #menu-chart-pedigree {
 	background-position: left -480px;
 }
-html[dir=rtl] #menu-chart-pedigree {
+[dir=rtl] #menu-chart-pedigree {
 	background-position: right -480px;
 }
 
 #menu-chart-pedigree_map {
 	background-position: left -720px;
 }
-html[dir=rtl] #menu-chart-pedigree_map {
+[dir=rtl] #menu-chart-pedigree_map {
 	background-position: right -720px;
 }
 
 #menu-chart-relationship {
 	background-position: left -540px;
 }
-html[dir=rtl] #menu-chart-relationship {
+[dir=rtl] #menu-chart-relationship {
 	background-position: right -540px;
 }
 
 #menu-chart-relationship li {
 	background-position: left -540px;
 }
-html[dir=rtl] #menu-chart-relationship li {
+[dir=rtl] #menu-chart-relationship li {
 	background-position: right -540px;
 }
 
 #menu-chart-statistics {
 	background-position: left -630px;
 }
-html[dir=rtl] #menu-chart-statistics {
+[dir=rtl] #menu-chart-statistics {
 	background-position: right -630px;
 }
 
 #menu-chart-timeline {
 	background-position: left -660px;
 }
-html[dir=rtl] #menu-chart-timeline {
+[dir=rtl] #menu-chart-timeline {
 	background-position: right -660px;
 }
 
 #menu-chart-timeline li {
 	background-position: left -660px;
 }
-html[dir=rtl] #menu-chart-timeline li {
+[dir=rtl] #menu-chart-timeline li {
 	background-position: right -660px;
 }
 
 #menu-chart-tree {
 	background-position: left -240px;
 }
-html[dir=rtl] #menu-chart-tree {
+[dir=rtl] #menu-chart-tree {
 	background-position: right -240px;
 }
 
 #menu-clippingsadd {
 	background-position: left -930px;
 }
-html[dir=rtl] #menu-clippingsadd {
+[dir=rtl] #menu-clippingsadd {
 	background-position: right -930px;
 }
 
 #menu-clippingscart {
 	background-position: left -900px;
 }
-html[dir=rtl] #menu-clippingscart {
+[dir=rtl] #menu-clippingscart {
 	background-position: right -900px;
 }
 
 #menu-fam-addchil {
 	background-position: left -1050px;
 }
-html[dir=rtl] #menu-fam-addchil {
+[dir=rtl] #menu-fam-addchil {
 	background-position: right -1050px;
 }
 
 #menu-fam-addfav {
 	background-position: left -870px;
 }
-html[dir=rtl] #menu-fam-addfav {
+[dir=rtl] #menu-fam-addfav {
 	background-position: right -870px;
 }
 
 #menu-fam-change {
 	background-position: left -90px;
 }
-html[dir=rtl] #menu-fam-change {
+[dir=rtl] #menu-fam-change {
 	background-position: right -90px;
 }
 
 #menu-fam-del {
 	background-position: left -840px;
 }
-html[dir=rtl] #menu-fam-del {
+[dir=rtl] #menu-fam-del {
 	background-position: right -840px;
 }
 
 #menu-fam-editraw {
 	background-position: left -90px;
 }
-html[dir=rtl] #menu-fam-editraw {
+[dir=rtl] #menu-fam-editraw {
 	background-position: right -90px;
 } /* needs new icon */
 
 #menu-fam-orderchil {
 	background-position: left -1080px;
 }
-html[dir=rtl] #menu-fam-orderchil {
+[dir=rtl] #menu-fam-orderchil {
 	background-position: right -1080px;
 }
 
 #menu-help-contents {
 	background-position: left -300px;
 }
-html[dir=rtl] #menu-help-contents {
+[dir=rtl] #menu-help-contents {
 	background-position: right -300px;
 }
 
 #menu-help-faq {
 	background-position: left -300px;
 }
-html[dir=rtl] #menu-help-faq {
+[dir=rtl] #menu-help-faq {
 	background-position: right -300px;
 }
 
 #menu-help-genealogy {
 	background-position: left -120px;
 }
-html[dir=rtl] #menu-help-genealogy {
+[dir=rtl] #menu-help-genealogy {
 	background-position: right -120px;
 }
 
 #menu-help-hide {
 	background-position: left -300px;
 }
-html[dir=rtl] #menu-help-hide {
+[dir=rtl] #menu-help-hide {
 	background-position: right -300px;
 }
 
 #menu-help-show {
 	background-position: left -300px;
 }
-html[dir=rtl] #menu-help-show {
+[dir=rtl] #menu-help-show {
 	background-position: right -300px;
 }
 
 #menu-help-technical {
 	background-position: left -120px;
 }
-html[dir=rtl] #menu-help-technical {
+[dir=rtl] #menu-help-technical {
 	background-position: right -120px;
 }
 
 #menu-help-wiki {
 	background-position: left -690px;
 }
-html[dir=rtl] #menu-help-wiki {
+[dir=rtl] #menu-help-wiki {
 	background-position: right -690px;
 }
 
 #menu-indi-addfav {
 	background-position: left -870px;
 }
-html[dir=rtl] #menu-indi-addfav {
+[dir=rtl] #menu-indi-addfav {
 	background-position: right -870px;
 }
 
 #menu-indi-addname {
 	background-position: left -780px;
 }
-html[dir=rtl] #menu-indi-addname {
+[dir=rtl] #menu-indi-addname {
 	background-position: right -780px;
 }
 
 #menu-indi-del {
 	background-position: left -840px;
 }
-html[dir=rtl] #menu-indi-del {
+[dir=rtl] #menu-indi-del {
 	background-position: right -840px;
 }
 
 #menu-indi-editraw {
 	background-position: left -750px;
 }
-html[dir=rtl] #menu-indi-editraw {
+[dir=rtl] #menu-indi-editraw {
 	background-position: right -750px;
 }
 
 #menu-indi-editsex {
 	background-position: left -810px;
 }
-html[dir=rtl] #menu-indi-editsex {
+[dir=rtl] #menu-indi-editsex {
 	background-position: right -810px;
 }
 
 #menu-list-fam {
 	background-position: left -90px;
 }
-html[dir=rtl] #menu-list-fam {
+[dir=rtl] #menu-list-fam {
 	background-position: right -90px;
 }
 
 #menu-list-indi {
 	background-position: left -120px;
 }
-html[dir=rtl] #menu-list-indi {
+[dir=rtl] #menu-list-indi {
 	background-position: right -120px;
 }
 
 #menu-list-note {
 	background-position: left -420px;
 }
-html[dir=rtl] #menu-list-note {
+[dir=rtl] #menu-list-note {
 	background-position: right -420px;
 }
 
 #menu-list-obje {
 	background-position: left -330px;
 }
-html[dir=rtl] #menu-list-obje {
+[dir=rtl] #menu-list-obje {
 	background-position: right -330px;
 }
 
 #menu-list-plac {
 	background-position: left -510px;
 }
-html[dir=rtl] #menu-list-plac {
+[dir=rtl] #menu-list-plac {
 	background-position: right -510px;
 }
 
 #menu-list-repo {
 	background-position: left -360px;
 }
-html[dir=rtl] #menu-list-repo {
+[dir=rtl] #menu-list-repo {
 	background-position: right -360px;
 }
 
 #menu-list-sour {
 	background-position: left -180px;
 }
-html[dir=rtl] #menu-list-sour {
+[dir=rtl] #menu-list-sour {
 	background-position: right -180px;
 }
 
 #menu-myaccount {
 	background-position: left -390px;
 }
-html[dir=rtl] #menu-myaccount {
+[dir=rtl] #menu-myaccount {
 	background-position: right -390px;
 }
 
 #menu-mypage {
 	background-position: left -390px;
 }
-html[dir=rtl] #menu-mypage {
+[dir=rtl] #menu-mypage {
 	background-position: right -390px;
 }
 
 #menu-mypedigree {
 	background-position: left -480px;
 }
-html[dir=rtl] #menu-mypedigree {
+[dir=rtl] #menu-mypedigree {
 	background-position: right -480px;
 }
 
 #menu-myrecord {
 	background-position: left -120px;
 }
-html[dir=rtl] #menu-myrecord {
+[dir=rtl] #menu-myrecord {
 	background-position: right -120px;
 }
 
 #menu-note-addfav {
 	background-position: left -870px;
 }
-html[dir=rtl] #menu-note-addfav {
+[dir=rtl] #menu-note-addfav {
 	background-position: right -870px;
 }
 
 #menu-note-del {
 	background-position: left -840px;
 }
-html[dir=rtl] #menu-note-del {
+[dir=rtl] #menu-note-del {
 	background-position: right -840px;
 }
 
 #menu-note-edit {
 	background-position: left -1020px;
 }
-html[dir=rtl] #menu-note-edit {
+[dir=rtl] #menu-note-edit {
 	background-position: right -1020px;
 }
 
 #menu-note-editraw {
 	background-position: left -1020px;
 }
-html[dir=rtl] #menu-note-editraw {
+[dir=rtl] #menu-note-editraw {
 	background-position: right -1020px;
 }
 
 #menu-obje-addfav {
 	background-position: left -870px;
 }
-html[dir=rtl] #menu-obje-addfav {
+[dir=rtl] #menu-obje-addfav {
 	background-position: right -870px;
 }
 
 #menu-obje-del {
 	background-position: left -840px;
 }
-html[dir=rtl] #menu-obje-del {
+[dir=rtl] #menu-obje-del {
 	background-position: right -840px;
 }
 
 #menu-obje-edit {
 	background-position: left -1110px;
 }
-html[dir=rtl] #menu-obje-edit {
+[dir=rtl] #menu-obje-edit {
 	background-position: right -1110px;
 }
 
 #menu-obje-editraw {
 	background-position: left -1110px;
 }
-html[dir=rtl] #menu-obje-editraw {
+[dir=rtl] #menu-obje-editraw {
 	background-position: right -1110px;
 }
 
 #menu-obje-link {
 	background-position: left -1140px;
 }
-html[dir=rtl] #menu-obje-link {
+[dir=rtl] #menu-obje-link {
 	background-position: right -1140px;
 }
 
 #menu-obje-link-fam {
 	background-position: left -90px;
 }
-html[dir=rtl] #menu-obje-link-fam {
+[dir=rtl] #menu-obje-link-fam {
 	background-position: right -90px;
 }
 
 #menu-obje-link-indi {
 	background-position: left -300px;
 }
-html[dir=rtl] #menu-obje-link-indi {
+[dir=rtl] #menu-obje-link-indi {
 	background-position: right -300px;
 }
 
 #menu-obje-link-sour {
 	background-position: left -180px;
 }
-html[dir=rtl] #menu-obje-link-sour {
+[dir=rtl] #menu-obje-link-sour {
 	background-position: right -180px;
 }
 
 #menu-repo-addfav {
 	background-position: left -870px;
 }
-html[dir=rtl] #menu-repo-addfav {
+[dir=rtl] #menu-repo-addfav {
 	background-position: right -870px;
 }
 
 #menu-repo-del {
 	background-position: left -840px;
 }
-html[dir=rtl] #menu-repo-del {
+[dir=rtl] #menu-repo-del {
 	background-position: right -840px;
 }
 
 #menu-repo-edit {
 	background-position: left -990px;
 }
-html[dir=rtl] #menu-repo-edit {
+[dir=rtl] #menu-repo-edit {
 	background-position: right -990px;
 }
 
 #menu-repo-editraw {
 	background-position: left -990px;
 }
-html[dir=rtl] #menu-repo-editraw {
+[dir=rtl] #menu-repo-editraw {
 	background-position: right -990px;
 }
 
 #menu-report li {
 	background-position: left -570px;
 }
-html[dir=rtl] #menu-report li {
+[dir=rtl] #menu-report li {
 	background-position: right -570px;
 }
 
 #menu-search-advanced {
 	background-position: left -600px;
 }
-html[dir=rtl] #menu-search-advanced {
+[dir=rtl] #menu-search-advanced {
 	background-position: right -600px;
 }
 
 #menu-search-general {
 	background-position: left -600px;
 }
-html[dir=rtl] #menu-search-general {
+[dir=rtl] #menu-search-general {
 	background-position: right -600px;
 }
 
 #menu-search-replace {
 	background-position: left -600px;
 }
-html[dir=rtl] #menu-search-replace {
+[dir=rtl] #menu-search-replace {
 	background-position: right -600px;
 }
 
 #menu-search-soundex {
 	background-position: left -600px;
 }
-html[dir=rtl] #menu-search-soundex {
+[dir=rtl] #menu-search-soundex {
 	background-position: right -600px;
 }
 
 #menu-sour-addfav {
 	background-position: left -870px;
 }
-html[dir=rtl] #menu-sour-addfav {
+[dir=rtl] #menu-sour-addfav {
 	background-position: right -870px;
 }
 
 #menu-sour-del {
 	background-position: left -840px;
 }
-html[dir=rtl] #menu-sour-del {
+[dir=rtl] #menu-sour-del {
 	background-position: right -840px;
 }
 
 #menu-sour-edit {
 	background-position: left -960px;
 }
-html[dir=rtl] #menu-sour-edit {
+[dir=rtl] #menu-sour-edit {
 	background-position: right -960px;
 }
 
 #menu-sour-editraw {
 	background-position: left -960px;
 }
-html[dir=rtl] #menu-sour-editraw {
+[dir=rtl] #menu-sour-editraw {
 	background-position: right -960px;
 }
 
 #menu-story-sub {
 	background-position: left -1208px;
 }
-html[dir=rtl] #menu-story-sub {
+[dir=rtl] #menu-story-sub {
 	background-position: right -1208px;
 }
 
 #menu-tree li {
 	background-position: left -240px;
 }
-html[dir=rtl] #menu-tree li {
+[dir=rtl] #menu-tree li {
 	background-position: right -240px;
 }
 
@@ -2956,32 +2956,32 @@ html[dir=rtl] #menu-tree li {
 	font-weight: 900;
 }
 
-html[dir=rtl] #extra-menu {
+[dir=rtl] #extra-menu {
 	float: left;
 	margin: 20px 0 0 10px;
 }
 
-html[dir=rtl] #extra-menu.makeMenu li ul {
+[dir=rtl] #extra-menu.makeMenu li ul {
 	left: 0;
 	right: auto;
 }
 
-html[dir=rtl] .makeMenu li ul {
+[dir=rtl] .makeMenu li ul {
 	left: auto;
 	right: 0;
 }
 
-html[dir=rtl] .makeMenu li ul li {
+[dir=rtl] .makeMenu li ul li {
 	text-align: right;
 }
 
-html[dir=rtl] .makeMenu li {
+[dir=rtl] .makeMenu li {
 	border-left: none;
 	border-right: 2px solid;
 }
 
-html[dir=rtl] .makeMenu li:first-child,
-html[dir=rtl] .makeMenu li ul li {
+[dir=rtl] .makeMenu li:first-child,
+[dir=rtl] .makeMenu li ul li {
 	border: none;
 }
 
@@ -3000,9 +3000,9 @@ delete links ============= */
 	float: left;
 }
 
-html[dir=rtl] .editlink,
-html[dir=rtl] .copylink,
-html[dir=rtl] .deletelink {
+[dir=rtl] .editlink,
+[dir=rtl] .copylink,
+[dir=rtl] .deletelink {
 	float: right;
 }
 
@@ -3017,8 +3017,8 @@ span.link_text {
 	float: right;
 }
 
-html[dir=rtl].field .editlink,
-html[dir=rtl].field .deletelink {
+[dir=rtl].field .editlink,
+[dir=rtl].field .deletelink {
 	float: left;
 }
 
@@ -3177,55 +3177,55 @@ dd .deletelink {
 	padding: 3px;
 }
 
-html[dir=rtl] #indi_header {
+[dir=rtl] #indi_header {
 	float: right;
 }
 
-html[dir=rtl] #indi_header h3 {
+[dir=rtl] #indi_header h3 {
 	padding: 0 30px 0 10px;
 	text-align: right;
 }
 
-html[dir=rtl] #indi_header h3 .header_age {
+[dir=rtl] #indi_header h3 .header_age {
 	padding: 5px 5px 5px 0;
 	float: left;
 }
 
-html[dir=rtl] #main_name {
+[dir=rtl] #main_name {
 	float: right;
 }
 
-html[dir=rtl] #indi_mainimage {
+[dir=rtl] #indi_mainimage {
 	float: right;
 }
 
-html[dir=rtl] #indi_mainimage a img {
+[dir=rtl] #indi_mainimage a img {
 	float: right;
 }
 
-html[dir=rtl] #indi_note .fact_NOTE {
+[dir=rtl] #indi_note .fact_NOTE {
 	float: right;
 	margin: 0 0 0 10px;
 }
 
-html[dir=rtl] #header_accordion1 {
+[dir=rtl] #header_accordion1 {
 	float: left;
 }
 
-html[dir=rtl] .indi_table {
+[dir=rtl] .indi_table {
 	clear: right;
 }
 
-html[dir=rtl] #sex {
+[dir=rtl] #sex {
 	float: left;
 }
 
-html[dir=rtl] #dates {
+[dir=rtl] #dates {
 	float: left;
 }
 
-html[dir=rtl] dd .editlink,
-html[dir=rtl] dd .deletelink {
+[dir=rtl] dd .editlink,
+[dir=rtl] dd .deletelink {
 	float: left;
 }
 
@@ -3284,7 +3284,7 @@ html[dir=rtl] dd .deletelink {
 .icon_arrow {
 	background-position: 90% -1166px;
 }
-html[dir=rtl] .icon_arrow {
+[dir=rtl] .icon_arrow {
 	background-position: 10% -1184px;
 }
 
@@ -3308,11 +3308,11 @@ html[dir=rtl] .icon_arrow {
 	margin: 10px;
 }
 
-html[dir=rtl] .media-display-image {
+[dir=rtl] .media-display-image {
 	float: right;
 }
 
-html[dir=rtl] .media-display-title {
+[dir=rtl] .media-display-title {
 	float: right;
 }
 
@@ -3363,24 +3363,24 @@ html[dir=rtl] .media-display-title {
 	color: #555555;
 }
 
-html[dir=rtl] .ui-tabs {
+[dir=rtl] .ui-tabs {
 	direction: rtl;
 }
 
-html[dir=rtl] ui-tabs .ui-tabs-nav li.ui-tabs-selected,
-html[dir=rtl] .ui-tabs .ui-tabs-nav li.ui-state-default {
+[dir=rtl] ui-tabs .ui-tabs-nav li.ui-tabs-selected,
+[dir=rtl] .ui-tabs .ui-tabs-nav li.ui-state-default {
 	float: right;
 }
 
-html[dir=rtl] .ui-accordion .ui-accordion-header .ui-icon {
+[dir=rtl] .ui-accordion .ui-accordion-header .ui-icon {
 	right: 0.5em;
 }
 
-html[dir=rtl] .ui-dialog-title {
+[dir=rtl] .ui-dialog-title {
 	float: right;
 }
 
-html[dir=rtl] .ui-dialog-titlebar-close {
+[dir=rtl] .ui-dialog-titlebar-close {
 	left: .3em;
 	right: auto;
 }
@@ -3476,35 +3476,35 @@ html[dir=rtl] .ui-dialog-titlebar-close {
 	margin-bottom: 10px;
 }
 
-html[dir=rtl] .css_right {
+[dir=rtl] .css_right {
 	float: right;
 }
 
-html[dir=rtl] .dataTables_paginate {
+[dir=rtl] .dataTables_paginate {
 	float: right;
 }
 
-html[dir=rtl] .dataTables_processing {
+[dir=rtl] .dataTables_processing {
 	float: right;
 }
 
-html[dir=rtl] .dataTables_filter {
+[dir=rtl] .dataTables_filter {
 	float: left;
 }
 
-html[dir=rtl] .dataTables_info {
+[dir=rtl] .dataTables_info {
 	float: right;
 }
 
-html[dir=rtl] .dataTables_length {
+[dir=rtl] .dataTables_length {
 	float: left;
 }
 
-html[dir=rtl] .DataTables_sort_wrapper {
+[dir=rtl] .DataTables_sort_wrapper {
 	margin-right: 20px;
 }
 
-html[dir=rtl] .DataTables_sort_wrapper span {
+[dir=rtl] .DataTables_sort_wrapper span {
 	left: auto;
 	right: 0;
 	margin-right: -20px;
@@ -3570,29 +3570,29 @@ html[dir=rtl] .DataTables_sort_wrapper span {
 	background: #99c2ff url(images/general_sprite.png) no-repeat -1px 100px;
 }
 
-html[dir=rtl] #indi_left {
+[dir=rtl] #indi_left {
 	float: right;
 }
 
-html[dir=rtl] #tabs {
+[dir=rtl] #tabs {
 	float: right;
 }
 
-html[dir=rtl] #sidebar {
+[dir=rtl] #sidebar {
 	margin: 5px 0 0 2px;
 }
 
-html[dir=rtl] .use-sidebar.sidebar-at-right #sidebar,
-html[dir=rtl] .sidebar-at-right #separator {
+[dir=rtl] .use-sidebar.sidebar-at-right #sidebar,
+[dir=rtl] .sidebar-at-right #separator {
 	float: left;
 }
 
-html[dir=rtl] #separator {
+[dir=rtl] #separator {
 	float: left;
 	background: #99c2ff url(images/general_sprite.png) no-repeat -1px 100px;
 }
 
-html[dir=rtl] .use-sidebar #separator {
+[dir=rtl] .use-sidebar #separator {
 	background: #99c2ff url(images/general_sprite.png) no-repeat -26px 100px;
 }
 
@@ -3651,17 +3651,17 @@ html[dir=rtl] .use-sidebar #separator {
 	padding: 0;
 }
 
-html[dir=rtl] .flyout {
+[dir=rtl] .flyout {
 	text-align: right;
 	left: 210px;
 }
 
-html[dir=rtl] .flyout2 {
+[dir=rtl] .flyout2 {
 	text-align: right;
 	right: 40px;
 }
 
-html[dir=rtl] .flyout3 {
+[dir=rtl] .flyout3 {
 	text-align: right;
 }
 
@@ -3695,11 +3695,11 @@ html[dir=rtl] .flyout3 {
 	margin-right: 0;
 }
 
-html[dir=rtl] #sb_desc_content {
+[dir=rtl] #sb_desc_content {
 	margin-right: 3px;
 }
 
-html[dir=rtl] .desc_tree_div ul {
+[dir=rtl] .desc_tree_div ul {
 	margin-right: 10px;
 	margin-left: 0;
 }
@@ -3782,7 +3782,7 @@ Families */
 	padding-top: 5px;
 }
 
-html[dir=rtl] #sb_content_extra_info .editfacts {
+[dir=rtl] #sb_content_extra_info .editfacts {
 	float: left;
 }
 
@@ -3925,11 +3925,11 @@ html[dir=rtl] #sb_content_extra_info .editfacts {
 	margin: 0;
 }
 
-html[dir=rtl] #search-page-table .label {
+[dir=rtl] #search-page-table .label {
 	float: right;
 }
 
-html[dir=rtl] #search-page-table .value {
+[dir=rtl] #search-page-table .value {
 	margin: 0 170px 0 0;
 }
 
@@ -3973,11 +3973,11 @@ html[dir=rtl] #search-page-table .value {
 	margin: 0;
 }
 
-html[dir=rtl] #edituser-table .label {
+[dir=rtl] #edituser-table .label {
 	float: right;
 }
 
-html[dir=rtl] #edituser-table .value {
+[dir=rtl] #edituser-table .value {
 	margin: 0 260px 0 0;
 }
 
@@ -4000,7 +4000,7 @@ html[dir=rtl] #edituser-table .value {
 	#header_accordion1 {
 		width: 510px!important;
 	}
-	html[dir=rtl] #pedigree_chart {
+	[dir=rtl] #pedigree_chart {
 		left: auto;
 		right: -80px;
 	}
@@ -4944,11 +4944,11 @@ a.icon-udarrow:hover {
 	margin: 5px;
 }
 
-html[dir=rtl] #save-cancel .save {
+[dir=rtl] #save-cancel .save {
 	float: right;
 }
 
-html[dir=rtl] #save-cancel .cancel {
+[dir=rtl] #save-cancel .cancel {
 	float: left;
 }
 
@@ -5137,27 +5137,27 @@ html[dir=rtl] #save-cancel .cancel {
 	position: absolute;
 }
 
-html[dir=rtl] #cboxPrevious {
+[dir=rtl] #cboxPrevious {
 	right: 27px;
 	left: auto;
 }
 
-html[dir=rtl] #cboxNext {
+[dir=rtl] #cboxNext {
 	right: 0;
 	left: auto;
 }
 
-html[dir=rtl] #cboxCurrent {
+[dir=rtl] #cboxCurrent {
 	right: auto;
 	left: 0;
 }
 
-html[dir=rtl] #cboxClose {
+[dir=rtl] #cboxClose {
 	right: auto;
 	left: 0;
 }
 
-html[dir=rtl] #cboxSlideshow {
+[dir=rtl] #cboxSlideshow {
 	right: 57px;
 	left: 0;
 }

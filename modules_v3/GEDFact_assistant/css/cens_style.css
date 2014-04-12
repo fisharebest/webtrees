@@ -28,7 +28,7 @@
 	height: 40px;
 }
 
-html[dir=rtl] .cens_header {
+[dir=rtl] .cens_header {
 	text-align: right;
 }
 
@@ -39,7 +39,7 @@ html[dir=rtl] .cens_header {
 	padding: 0;
 }
 
-html[dir=rtl] .cens_container {
+[dir=rtl] .cens_container {
 	float: right;
 }
 
@@ -56,7 +56,7 @@ html[dir=rtl] .cens_container {
 	overflow: auto;
 }
 
-html[dir=rtl] .cens_search {
+[dir=rtl] .cens_search {
 	float: left;
 }
 
@@ -68,7 +68,7 @@ html[dir=rtl] .cens_search {
 	overflow: hidden;
 }
 
-html[dir=rtl] .cens_sour {
+[dir=rtl] .cens_sour {
 	text-align: right;
 }
 
@@ -77,7 +77,7 @@ html[dir=rtl] .cens_sour {
 	width: 60px;
 }
 
-html[dir=rtl] .cens_sour_country {
+[dir=rtl] .cens_sour_country {
 	float: right;
 }
 
@@ -86,7 +86,7 @@ html[dir=rtl] .cens_sour_country {
 	width: 20px;
 }
 
-html[dir=rtl] .cens_sour_year {
+[dir=rtl] .cens_sour_year {
 	float: right;
 }
 
@@ -95,7 +95,7 @@ html[dir=rtl] .cens_sour_year {
 	width: 430px;
 }
 
-html[dir=rtl] .cens_sour_scs {
+[dir=rtl] .cens_sour_scs {
 	float: left;
 }
 
@@ -104,7 +104,7 @@ html[dir=rtl] .cens_sour_scs {
 	text-align: left;
 }
 
-html[dir=rtl] .cens_text {
+[dir=rtl] .cens_text {
 	text-align: right;
 }
 
@@ -118,7 +118,7 @@ html[dir=rtl] .cens_text {
 	float: left;
 }
 
-html[dir=rtl] .cens_text_header span:nth-of-type(1) {
+[dir=rtl] .cens_text_header span:nth-of-type(1) {
 	float: right;
 }
 
@@ -126,7 +126,7 @@ html[dir=rtl] .cens_text_header span:nth-of-type(1) {
 	float: right;
 }
 
-html[dir=rtl] .cens_text_header span:nth-of-type(3) {
+[dir=rtl] .cens_text_header span:nth-of-type(3) {
 	float: left;
 }
 
@@ -147,7 +147,7 @@ textarea#NOTE {
 	font-weight: bold;
 }
 
-html[dir=rtl] .cens_header_left {
+[dir=rtl] .cens_header_left {
 	float: right;
 }
 
@@ -156,7 +156,7 @@ html[dir=rtl] .cens_header_left {
 	width: 50%;
 }
 
-html[dir=rtl] .cens_header_right {
+[dir=rtl] .cens_header_right {
 	float: left;
 }
 
@@ -173,7 +173,7 @@ html[dir=rtl] .cens_header_right {
 	margin-top: 0.25em;
 }
 
-html[dir=rtl] .cens_sour_2 {
+[dir=rtl] .cens_sour_2 {
 	clear: right;
 	float: right;
 }
@@ -196,7 +196,7 @@ html[dir=rtl] .cens_sour_2 {
 	width: 860px;
 }
 
-html[dir=rtl] .cens_textinput {
+[dir=rtl] .cens_textinput {
 	float: right;
 }
 
@@ -206,7 +206,7 @@ html[dir=rtl] .cens_textinput {
 	text-align: center;
 }
 
-html[dir=rtl] .cens_textinput_left {
+[dir=rtl] .cens_textinput_left {
 	float: right;
 }
 
@@ -216,7 +216,7 @@ html[dir=rtl] .cens_textinput_left {
 	margin: 5px;
 }
 
-html[dir=rtl] .cens_textinput_right {
+[dir=rtl] .cens_textinput_right {
 	float: left;
 }
 
@@ -226,7 +226,7 @@ html[dir=rtl] .cens_textinput_right {
 	width: 860px;
 }
 
-html[dir=rtl] .cens_addrows {
+[dir=rtl] .cens_addrows {
 	float: right;
 }
 
@@ -274,7 +274,7 @@ html[dir=rtl] .cens_addrows {
 	margin-left: 0;
 }
 
-html[dir=rtl] .headimg2 {
+[dir=rtl] .headimg2 {
 	margin-left: auto;
 	margin-right: 0;
 }

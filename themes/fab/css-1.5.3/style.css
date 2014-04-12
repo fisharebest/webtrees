@@ -134,10 +134,10 @@ textarea:required:invalid {
 	background-position: right top;
 	background-repeat: no-repeat;
 }
-html[dir=rtl] input:required:valid,
-html[dir=rtl] textarea:required:valid,
-html[dir=rtl] input:required:invalid,
-html[dir=rtl] textarea:required:invalid {
+[dir=rtl] input:required:valid,
+[dir=rtl] textarea:required:valid,
+[dir=rtl] input:required:invalid,
+[dir=rtl] textarea:required:invalid {
 	background-position: left top;
 }
 
@@ -172,7 +172,7 @@ html[dir=rtl] textarea:required:invalid {
 #header-user-links {
 	float: right;
 }
-html[dir=rtl] #header-user-links {
+[dir=rtl] #header-user-links {
 	float: left;
 }
 #header-title {
@@ -180,7 +180,7 @@ html[dir=rtl] #header-user-links {
 	float: left;
 	clear: left;
 }
-html[dir=rtl] #header-title {
+[dir=rtl] #header-title {
 	float: right;
 	clear: right;
 }
@@ -273,7 +273,7 @@ html[dir=rtl] #header-title {
 	border: thin solid #aaa;
 }
 
-html[dir=rtl] .makeMenu li ul {
+[dir=rtl] .makeMenu li ul {
 	left: auto;
 	right: 0;
 }
@@ -283,7 +283,7 @@ html[dir=rtl] .makeMenu li ul {
 	top: 0;
 	left: 100px;
 }
-html[dir=rtl] .makeMenu ul ul {
+[dir=rtl] .makeMenu ul ul {
 	top: 0;
 	left: auto;
 	right: 100px;
@@ -294,7 +294,7 @@ html[dir=rtl] .makeMenu ul ul {
 	text-align: left;
 }
 
-html[dir=rtl] .makeMenu li ul li {
+[dir=rtl] .makeMenu li ul li {
 	text-align: right;
 }
 
@@ -371,7 +371,7 @@ html[dir=rtl] .makeMenu li ul li {
 	min-height: 50px;
 }
 
-html[dir=rtl] .person_box html[dir=rtl] .person_boxF html[dir=rtl] .person_boxNN {
+[dir=rtl] .person_box [dir=rtl] .person_boxF [dir=rtl] .person_boxNN {
 	margin: 0 3px 0 0;
 }
 
@@ -394,10 +394,10 @@ html[dir=rtl] .person_box html[dir=rtl] .person_boxF html[dir=rtl] .person_boxNN
 }
 #index_full_blocks {
 }
-html[dir=rtl] #index_main_blocks {
+[dir=rtl] #index_main_blocks {
 	float: right;
 }
-html[dir=rtl] #index_small_blocks {
+[dir=rtl] #index_small_blocks {
 	float: left;
 }
 
@@ -516,12 +516,12 @@ html[dir=rtl] #index_small_blocks {
 	vertical-align: bottom;
 }
 
-html[dir=rtl] #familybook_chart {
+[dir=rtl] #familybook_chart {
 	margin-right: 10px;
 }
 
 /*-- pedigree chart rtl specific stylesheets --*/
-html[dir=rtl] #pedigree_chart {
+[dir=rtl] #pedigree_chart {
 	left: auto;
 	right: 10px;
 }
@@ -764,13 +764,13 @@ li .person_boxF {
 }
 
 /*-- descendancy chart rtl specific stylesheets --*/
-html[dir=rtl] #descendancy_chart ul {
+[dir=rtl] #descendancy_chart ul {
 	background-position: right top;
 	left: auto;
 	margin: 0 15px 0 0;
 }
 
-html[dir=rtl] #descendancy_chart li {
+[dir=rtl] #descendancy_chart li {
 	margin: 0 -13px 0 0;
 	padding: 0 2px 0 0;
 	left: auto;
@@ -802,13 +802,13 @@ html[dir=rtl] #descendancy_chart li {
 }
 
 /*-- ancestry chart rtl specific stylesheets --*/
-html[dir=rtl] #ancestry_chart ul {
+[dir=rtl] #ancestry_chart ul {
 	background-position: right top;
 	margin: 0 15px 0 0;
 	left: auto;
 }
 
-html[dir=rtl] #ancestry_chart li {
+[dir=rtl] #ancestry_chart li {
 	margin: 0 -13px 0 0;
 	padding: 0 2px 0 0;
 	left: auto;
@@ -1062,7 +1062,7 @@ dt {
 	margin-right: 10px;
 	clear: both;
 }
-html[dir=rtl] dt {
+[dir=rtl] dt {
 	float: right;
 	margin-right: auto;
 	margin-left: 10px;
@@ -1134,15 +1134,15 @@ html[dir=rtl] dt {
 	max-width: 80px;
 	width: auto;
 }
-html[dir=rtl] .person_box_template img,
-html[dir=rtl] .person_box_template a.gallery {
+[dir=rtl] .person_box_template img,
+[dir=rtl] .person_box_template a.gallery {
 	float: right;
 	margin: 0 0 0 3px;
 }
 .person_box_template i[class^="icon-silhouette"] {
 	float: left;
 }
-html[dir=rtl] .person_box_template i[class^="icon-silhouette"] {
+[dir=rtl] .person_box_template i[class^="icon-silhouette"] {
 	float: right;
 }
 
@@ -1194,7 +1194,7 @@ html[dir=rtl] .person_box_template i[class^="icon-silhouette"] {
 .lb-image_edit, .lb-image_link{
 	padding-right: 5px;
 }
-html[dir=rtl] .lb-menu > li {
+[dir=rtl] .lb-menu > li {
 	float: right;
 }
 /* ============== login.php ======================= */
@@ -1294,10 +1294,10 @@ html[dir=rtl] .lb-menu > li {
 	border: 0;
 	background: none;
 }
-html[dir=rtl] #login-form label,
-html[dir=rtl] #new_passwd_form label,
-html[dir=rtl] #register-form label,
-html[dir=rtl] #verify-form label {
+[dir=rtl] #login-form label,
+[dir=rtl] #new_passwd_form label,
+[dir=rtl] #register-form label,
+[dir=rtl] #verify-form label {
 	text-align: left;
 }
 
@@ -1367,7 +1367,7 @@ html[dir=rtl] #verify-form label {
 	padding: 10px;
 	visibility: visible;
 }
-html[dir=rtl] .theme_form li ul li {
+[dir=rtl] .theme_form li ul li {
 	float: right;
 }
 
@@ -1444,7 +1444,7 @@ html[dir=rtl] .theme_form li ul li {
 	z-index: 9999;
 }
 
-html[dir=rtl] .itr:hover .popup {
+[dir=rtl] .itr:hover .popup {
 	left: 0;
 	right: auto;
 }
@@ -1536,10 +1536,10 @@ div.faq_body {
 .faq_edit {
 	float: right;
 }
-html[dir=rtl] .faq_top {
+[dir=rtl] .faq_top {
 	float: left;
 }
-html[dir=rtl] .faq_edit {
+[dir=rtl] .faq_edit {
 	float: left;
 }
 
@@ -1574,9 +1574,9 @@ ul.clist {
 .deletelink {
 	float: left;
 }
-html[dir=rtl] .editlink,
-html[dir=rtl] .copylink,
-html[dir=rtl] .deletelink {
+[dir=rtl] .editlink,
+[dir=rtl] .copylink,
+[dir=rtl] .deletelink {
 	float: right;
 }
 span.link_text {
@@ -1588,8 +1588,8 @@ span.link_text {
 .field .copylink {
 	float: right;
 }
-html[dir=rtl].field .editlink,
-html[dir=rtl].field .deletelink {
+[dir=rtl].field .editlink,
+[dir=rtl].field .deletelink {
 	float: left;
 }
 /* =========== end edit, copy, delete links ==================== */
@@ -1682,44 +1682,44 @@ dd .deletelink {
 	float: right;
 }
 
-html[dir=rtl] #indi_header {
+[dir=rtl] #indi_header {
 	float: right;
 }
-html[dir=rtl] #indi_header h3 {
+[dir=rtl] #indi_header h3 {
 	padding: 0 30px 0 10px;
 	text-align: right;
 }
-html[dir=rtl] #indi_header h3 .header_age {
+[dir=rtl] #indi_header h3 .header_age {
 	padding: 5px 5px 5px 0;
 	float: left;
 }
-html[dir=rtl] #main_name {
+[dir=rtl] #main_name {
 	float: right;
 }
-html[dir=rtl] #indi_mainimage {
+[dir=rtl] #indi_mainimage {
 	float: left;
 }
-html[dir=rtl] #indi_mainimage a img {
+[dir=rtl] #indi_mainimage a img {
 	float: left;
 }
-html[dir=rtl] #indi_note .fact_NOTE {
+[dir=rtl] #indi_note .fact_NOTE {
 	float: right;
 	margin: 0 0 0 10px;
 }
-html[dir=rtl] #header_accordion1 {
+[dir=rtl] #header_accordion1 {
 	float: right;
 }
-html[dir=rtl] .indi_table {
+[dir=rtl] .indi_table {
 	clear: right;
 }
-html[dir=rtl] #sex {
+[dir=rtl] #sex {
 	float: left;
 }
-html[dir=rtl] #dates {
+[dir=rtl] #dates {
 	float: left;
 }
-html[dir=rtl] dd .editlink,
-html[dir=rtl] dd .deletelink {
+[dir=rtl] dd .editlink,
+[dir=rtl] dd .deletelink {
 	float: left;
 }
 
@@ -1781,10 +1781,10 @@ html[dir=rtl] dd .deletelink {
 	font-style: italic;
 	margin: 10px;
 }
-html[dir=rtl] .media-display-image {
+[dir=rtl] .media-display-image {
 	float: right;
 }
-html[dir=rtl] .media-display-title {
+[dir=rtl] .media-display-title {
 	float: right;
 }
 
@@ -1819,20 +1819,20 @@ html[dir=rtl] .media-display-title {
 	padding: 6px;
 }
 
-html[dir=rtl] .ui-tabs {
+[dir=rtl] .ui-tabs {
 	direction: rtl;
 }
-html[dir=rtl] .ui-tabs .ui-tabs-nav li.ui-tabs-selected,
-html[dir=rtl] .ui-tabs .ui-tabs-nav li.ui-state-default {
+[dir=rtl] .ui-tabs .ui-tabs-nav li.ui-tabs-selected,
+[dir=rtl] .ui-tabs .ui-tabs-nav li.ui-state-default {
 	float: right;
 }
-html[dir=rtl] .ui-accordion .ui-accordion-header .ui-icon {
+[dir=rtl] .ui-accordion .ui-accordion-header .ui-icon {
 	right: 6px;
 }
-html[dir=rtl] .ui-dialog-title {
+[dir=rtl] .ui-dialog-title {
 	float: right;
 }
-html[dir=rtl] .ui-dialog-titlebar-close {
+[dir=rtl] .ui-dialog-titlebar-close {
 	left: 4px;
 	right: auto;
 }
@@ -1914,28 +1914,28 @@ html[dir=rtl] .ui-dialog-titlebar-close {
 	top: 50%;
 }
 
-html[dir=rtl] .css_right {
+[dir=rtl] .css_right {
 	float: right;
 }
-html[dir=rtl] .dataTables_paginate {
+[dir=rtl] .dataTables_paginate {
 	float: right;
 }
-html[dir=rtl] .dataTables_processing {
+[dir=rtl] .dataTables_processing {
 	float: right;
 }
-html[dir=rtl] .dataTables_filter {
+[dir=rtl] .dataTables_filter {
 	float: left;
 }
-html[dir=rtl] .dataTables_info {
+[dir=rtl] .dataTables_info {
 	float: right;
 }
-html[dir=rtl] .dataTables_length {
+[dir=rtl] .dataTables_length {
 	float: left;
 }
-html[dir=rtl] .DataTables_sort_wrapper {
+[dir=rtl] .DataTables_sort_wrapper {
 	margin-right: 20px;
 }
-html[dir=rtl] .DataTables_sort_wrapper span {
+[dir=rtl] .DataTables_sort_wrapper span {
 	left: auto;
 	right: 0;
 	margin-right: -20px;
@@ -2092,9 +2092,9 @@ html[dir=rtl] .DataTables_sort_wrapper span {
 	text-align: center;
 }
 
-html[dir=rtl] .source-list th:last-child,
-html[dir=rtl] .note-list th:last-child,
-html[dir=rtl] .repo-list th:last-child {
+[dir=rtl] .source-list th:last-child,
+[dir=rtl] .note-list th:last-child,
+[dir=rtl] .repo-list th:last-child {
 	margin: 0 1px 1px -2px;
 }
 
@@ -2154,24 +2154,24 @@ html[dir=rtl] .repo-list th:last-child {
 	background: #ccc url(images/indi_sprite.png) no-repeat -1px 100px;
 }
 
-html[dir=rtl] #indi_left {
+[dir=rtl] #indi_left {
 	float: right;
 }
-html[dir=rtl] #tabs {
+[dir=rtl] #tabs {
 	float: right;
 }
-html[dir=rtl] #sidebar {
+[dir=rtl] #sidebar {
 	margin: 5px 0 0 2px;
 }
-html[dir=rtl] .use-sidebar.sidebar-at-right #sidebar,
-html[dir=rtl] .sidebar-at-right #separator {
+[dir=rtl] .use-sidebar.sidebar-at-right #sidebar,
+[dir=rtl] .sidebar-at-right #separator {
 	float: left;
 }
-html[dir=rtl] #separator {
+[dir=rtl] #separator {
 	float: left;
 	background: #ccc url(images/indi_sprite.png) no-repeat -1px 100px;
 }
-html[dir=rtl] .use-sidebar #separator {
+[dir=rtl] .use-sidebar #separator {
 	background: #ccc url(images/indi_sprite.png) no-repeat -26px 100px;
 }
 
@@ -2223,15 +2223,15 @@ html[dir=rtl] .use-sidebar #separator {
 	width: 100%;
 }
 
-html[dir=rtl] .flyout {
+[dir=rtl] .flyout {
 	text-align: right;
 	left: 210px;
 }
-html[dir=rtl] .flyout2 {
+[dir=rtl] .flyout2 {
 	text-align: right;
 	right: 40px;
 }
-html[dir=rtl] .flyout3 {
+[dir=rtl] .flyout3 {
 	text-align: right;
 }
 
@@ -2257,10 +2257,10 @@ html[dir=rtl] .flyout3 {
 	margin-right: 0;
 }
 
-html[dir=rtl] #sb_desc_content {
+[dir=rtl] #sb_desc_content {
 	margin-right: 3px;
 }
-html[dir=rtl] .desc_tree_div ul {
+[dir=rtl] .desc_tree_div ul {
 	margin-right: 10px;
 	margin-left: 0;
 }
@@ -2320,14 +2320,14 @@ html[dir=rtl] .desc_tree_div ul {
 	display: inline;
 }
 
-html[dir=rtl] #sb_content_extra_info .editfacts {
+[dir=rtl] #sb_content_extra_info .editfacts {
 	float: left;
 }
 
 fieldset {
 	text-align: left;
 }
-html[dir=rtl] fieldset {
+[dir=rtl] fieldset {
 	text-align: right;
 }
 
@@ -2448,10 +2448,10 @@ html[dir=rtl] fieldset {
 #search-page-table p {
 	margin: 0;
 }
-html[dir=rtl] #search-page-table .label {
+[dir=rtl] #search-page-table .label {
 	float: right;
 }
-html[dir=rtl] #search-page-table .value {
+[dir=rtl] #search-page-table .value {
 	margin: 0 170px 0 0;
 }
 
@@ -2489,10 +2489,10 @@ html[dir=rtl] #search-page-table .value {
 #edituser-table select {
 	margin: 0;
 }
-html[dir=rtl] #edituser-table .label {
+[dir=rtl] #edituser-table .label {
 	float: right;
 }
-html[dir=rtl] #edituser-table .value {
+[dir=rtl] #edituser-table .value {
 	margin: 0 260px 0 0;
 }
 
@@ -3248,10 +3248,10 @@ a.icon-uarrow:hover {
 	float: right;
 	margin: 5px;
 }
-html[dir=rtl] #save-cancel .save {
+[dir=rtl] #save-cancel .save {
 	float: right;
 }
-html[dir=rtl] #save-cancel .cancel {
+[dir=rtl] #save-cancel .cancel {
 	float: left;
 }
 #edit_interface-page,
@@ -3411,23 +3411,23 @@ html[dir=rtl] #save-cancel .cancel {
 	position: absolute;
 }
 
-html[dir=rtl] #cboxPrevious {
+[dir=rtl] #cboxPrevious {
 	right: 27px;
 	left: auto;
 }
-html[dir=rtl] #cboxNext {
+[dir=rtl] #cboxNext {
 	right: 0;
 	left: auto;
 }
-html[dir=rtl] #cboxCurrent {
+[dir=rtl] #cboxCurrent {
 	right: auto;
 	left: 0;
 }
-html[dir=rtl] #cboxClose {
+[dir=rtl] #cboxClose {
 	right: auto;
 	left: 0;
 }
-html[dir=rtl] #cboxSlideshow {
+[dir=rtl] #cboxSlideshow {
 	right: 57px;
 	left: 0;
 }

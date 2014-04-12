@@ -81,9 +81,9 @@ td #srch a {
 	width: 150px;
 }
 
-html[dir=rtl] #flyoutFam,
-html[dir=rtl] #flyoutPar,
-html[dir=rtl] #flyoutStep {
+[dir=rtl] #flyoutFam,
+[dir=rtl] #flyoutPar,
+[dir=rtl] #flyoutStep {
 	left: 0;
 	right: 15px;
 }

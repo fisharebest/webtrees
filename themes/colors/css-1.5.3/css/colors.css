@@ -42,18 +42,18 @@ img.block {height:25px;}
 
 fieldset {margin:8px 8px 4px;padding:30px;text-align:left;}
 fieldset ol, fieldset li {margin:2px 0 0 5px;}
-html[dir=rtl] fieldset {text-align:right;}
-html[dir=rtl] fieldset ol, fieldset li {margin:2px 5px 0 0;}
+[dir=rtl] fieldset {text-align:right;}
+[dir=rtl] fieldset ol, fieldset li {margin:2px 5px 0 0;}
 
 dt {float:left;font-weight:bold;margin-right:10px;clear:both;}
-html[dir=rtl] dt {float:right;margin-right:auto;margin-left:10px;}
+[dir=rtl] dt {float:right;margin-right:auto;margin-left:10px;}
 
 * {margin:0;}
 td {padding:0;}
 
 input:required:valid, textarea:required:valid {background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAONJREFUeNpi/P//PwMlgImBQjDwBrCgCzDOF2Zg+Adk/AOGDRvQfHZGoDWMxgyMDMb/Q1/NIt0F/xk8gIbNZPj7P41YL4AUGsM1//rfkuyeYMzw8z9xXgBqgNm0nuHnv0D/IH/juavmngV6oYY4F3z7y2DqY2oMpANB9MYl684yfP9Xw3Dzzw7sXgQmJGTM0MbjwdDKc0b2vt5/EM2QwunBoMyCVS1YPYYAMOwZ7FmiGLLYzjBYsSQD+QpALAjErNgMYERPyoyMjMxAih+IOYD4LxD/hOJfQLV/MaJ9NC8wAAQYAPbPfH2KJKx/AAAAAElFTkSuQmCC);background-position:right top; background-repeat:no-repeat;}
 input:required:invalid, textarea:required:invalid {background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAMpJREFUeNpi/P//PwMlgImBQjAMDGBBF1jFyOgBpFqAuOYPA8MOoAI4P+z//x0YJoBiARkvYWA486+k5D+IBuJqZD66WnAMogvMA9o4F6j4R3Lyf2R6IQODMVEGTAW6CoirgfjMB2/v/yB6CgNDYQ8W14IwRiB+A7rgOwNDYLChofGcrVvPgugfDAzR/yFhwUAwDJqBNj6Ulf0PooEhV4jMx+YCRvSknAeMBWDotwgwMKRzMTCcfQW0GcQHxkbNJCyxwDiaFxgAAgwAYy67YIOQ//cAAAAASUVORK5CYII=);background-position:right top; background-repeat:no-repeat;}
-html[dir=rtl] input:required:valid, html[dir=rtl] textarea:required:valid, html[dir=rtl] input:required:invalid, html[dir=rtl] textarea:required:invalid {background-position:left top;}
+[dir=rtl] input:required:valid, [dir=rtl] textarea:required:valid, [dir=rtl] input:required:invalid, [dir=rtl] textarea:required:invalid {background-position:left top;}
 
 /* Set stack level for top two header menu rows */
 .makeMenu ul, #main-menu ul {z-index:210;}
@@ -61,7 +61,7 @@ html[dir=rtl] input:required:valid, html[dir=rtl] textarea:required:valid, html[
 /* Title Line    */
 #header {height:50px;}
 span.title {float:left;font-size:24px; margin:16px 0 3px 12px;}
-html[dir=rtl] span.title {float:right;margin:16px 12px 3px 3px;}
+[dir=rtl] span.title {float:right;margin:16px 12px 3px 3px;}
 
 /* Options Menu  */
 .makeMenu {float:right;margin:21px 10px 0 0;}
@@ -80,9 +80,9 @@ html[dir=rtl] span.title {float:right;margin:16px 12px 3px 3px;}
 .makeMenu li ul li:before,.makeMenu li:first-child:before {content:"";}
 .lang-active, .theme-active {font-weight:900;}
 
-html[dir=rtl] .makeMenu {display:block;float:left;margin:21px 0 0 10px;}
-html[dir=rtl] .makeMenu li ul {left:auto;right:0;}
-html[dir=rtl] .makeMenu li ul li {text-align:right;}
+[dir=rtl] .makeMenu {display:block;float:left;margin:21px 0 0 10px;}
+[dir=rtl] .makeMenu li ul {left:auto;right:0;}
+[dir=rtl] .makeMenu li ul li {text-align:right;}
 
 /* Menu setup  */
 #main-menu {display: inline-block;width:100%;margin:0;padding:0;height:48px;}
@@ -105,13 +105,13 @@ font-size:14px;text-align:center;height:22px;line-height: 1.5;border-bottom:soli
 #main-menu > li {background-image:url(../images/sprites-top-menu.png);background-repeat:no-repeat;height:40px;line-height:40px;margin:4px 0 0 16px;text-indent:32px;width:40px;}
 #main-menu li ul li {background-image:url(../images/sprites-sub-menu.png);background-repeat:no-repeat;height:28px;left:auto;line-height:25px;text-align:left;text-indent:22px;width:100%;}
 
-html[dir=rtl] #main-menu  {padding-right:16px;}
-html[dir=rtl] #main-menu li {float:right;}
-html[dir=rtl] #main-menu li:hover > ul {right:100%;left:auto;}
-html[dir=rtl] #main-menu > li:hover > ul {left:auto;right:0;}
-html[dir=rtl] #main-menu li li {text-align:right;}
-html[dir=rtl] #main-menu li li a {display:block; float:right;}
-html[dir=rtl] #main-menu > li > ul > li:first-child {text-align:center;}
+[dir=rtl] #main-menu  {padding-right:16px;}
+[dir=rtl] #main-menu li {float:right;}
+[dir=rtl] #main-menu li:hover > ul {right:100%;left:auto;}
+[dir=rtl] #main-menu > li:hover > ul {left:auto;right:0;}
+[dir=rtl] #main-menu li li {text-align:right;}
+[dir=rtl] #main-menu li li a {display:block; float:right;}
+[dir=rtl] #main-menu > li > ul > li:first-child {text-align:center;}
 
 #flash-messages {clear:both;}
 
@@ -134,112 +134,112 @@ html[dir=rtl] #main-menu > li > ul > li:first-child {text-align:center;}
 #menu-story     {background-position:center -616px;}
 
 /* Submenu Icons */
-#menu-chart-ancestry        {background-position:left -208px;} html[dir=rtl] #menu-chart-ancestry        {background-position:right -208px;}
-#menu-chart-fanchart        {background-position:left  -26px;} html[dir=rtl] #menu-chart-fanchart        {background-position:right -26px;}
-#menu-chart-compact         {background-position:left  -52px;} html[dir=rtl] #menu-chart-compact         {background-position:right -52px;}
-#menu-chart-descendancy     {background-position:left   -0px;} html[dir=rtl] #menu-chart-descendancy     {background-position:right  -0px;}
-#menu-chart-familybook      {background-position:left -104px;} html[dir=rtl] #menu-chart-familybook      {background-position:right -104px;}
-#menu-chart-hourglass       {background-position:left -130px;} html[dir=rtl] #menu-chart-hourglass       {background-position:right -130px;}
-#menu-chart-tree            {background-position:left -156px;} html[dir=rtl] #menu-chart-tree            {background-position:right -156px;}
-#menu-chart-lifespan        {background-position:left -182px;} html[dir=rtl] #menu-chart-lifespan        {background-position:right -182px;}
-#menu-chart-pedigree        {background-position:left -208px;} html[dir=rtl] #menu-chart-pedigree        {background-position:right -208px;}
-#menu-chart-pedigree_map    {background-position:left -234px;} html[dir=rtl] #menu-chart-pedigree_map    {background-position:right -234px;}
-#menu-chart-relationship    {background-position:left -260px;} html[dir=rtl] #menu-chart-relationship    {background-position:right -260px;}
-#menu-chart-relationship li {background-position:left -260px;} html[dir=rtl] #menu-chart-relationship li {background-position:right -260px;}
-#menu-chart-statistics      {background-position:left -286px;} html[dir=rtl] #menu-chart-statistics      {background-position:right -286px;}
-#menu-chart-timeline        {background-position:left -312px;} html[dir=rtl] #menu-chart-timeline        {background-position:right -312px;}
-#menu-chart-timeline li     {background-position:left -312px;} html[dir=rtl] #menu-chart-timeline li     {background-position:right -312px;}
+#menu-chart-ancestry        {background-position:left -208px;} [dir=rtl] #menu-chart-ancestry        {background-position:right -208px;}
+#menu-chart-fanchart        {background-position:left  -26px;} [dir=rtl] #menu-chart-fanchart        {background-position:right -26px;}
+#menu-chart-compact         {background-position:left  -52px;} [dir=rtl] #menu-chart-compact         {background-position:right -52px;}
+#menu-chart-descendancy     {background-position:left   -0px;} [dir=rtl] #menu-chart-descendancy     {background-position:right  -0px;}
+#menu-chart-familybook      {background-position:left -104px;} [dir=rtl] #menu-chart-familybook      {background-position:right -104px;}
+#menu-chart-hourglass       {background-position:left -130px;} [dir=rtl] #menu-chart-hourglass       {background-position:right -130px;}
+#menu-chart-tree            {background-position:left -156px;} [dir=rtl] #menu-chart-tree            {background-position:right -156px;}
+#menu-chart-lifespan        {background-position:left -182px;} [dir=rtl] #menu-chart-lifespan        {background-position:right -182px;}
+#menu-chart-pedigree        {background-position:left -208px;} [dir=rtl] #menu-chart-pedigree        {background-position:right -208px;}
+#menu-chart-pedigree_map    {background-position:left -234px;} [dir=rtl] #menu-chart-pedigree_map    {background-position:right -234px;}
+#menu-chart-relationship    {background-position:left -260px;} [dir=rtl] #menu-chart-relationship    {background-position:right -260px;}
+#menu-chart-relationship li {background-position:left -260px;} [dir=rtl] #menu-chart-relationship li {background-position:right -260px;}
+#menu-chart-statistics      {background-position:left -286px;} [dir=rtl] #menu-chart-statistics      {background-position:right -286px;}
+#menu-chart-timeline        {background-position:left -312px;} [dir=rtl] #menu-chart-timeline        {background-position:right -312px;}
+#menu-chart-timeline li     {background-position:left -312px;} [dir=rtl] #menu-chart-timeline li     {background-position:right -312px;}
 
-#menu-list-obje             {background-position:left -338px;} html[dir=rtl] #menu-list-obje             {background-position:right -338px;}
-#menu-list-plac             {background-position:left -364px;} html[dir=rtl] #menu-list-plac             {background-position:right -364px;}
-#menu-list-repo             {background-position:left -390px;} html[dir=rtl] #menu-list-repo             {background-position:right -390px;}
-#menu-list-note             {background-position:left -416px;} html[dir=rtl] #menu-list-note             {background-position:right -416px;}
-#menu-list-sour             {background-position:left -442px;} html[dir=rtl] #menu-list-sour             {background-position:right -442px;}
-#menu-branches              {background-position:left -468px;} html[dir=rtl] #menu-branches              {background-position:right -468px;}
-#menu-list-fam              {background-position:left -494px;} html[dir=rtl] #menu-list-fam              {background-position:right -494px;}
-#menu-list-indi             {background-position:left -520px;} html[dir=rtl] #menu-list-indi             {background-position:right -520px;}
+#menu-list-obje             {background-position:left -338px;} [dir=rtl] #menu-list-obje             {background-position:right -338px;}
+#menu-list-plac             {background-position:left -364px;} [dir=rtl] #menu-list-plac             {background-position:right -364px;}
+#menu-list-repo             {background-position:left -390px;} [dir=rtl] #menu-list-repo             {background-position:right -390px;}
+#menu-list-note             {background-position:left -416px;} [dir=rtl] #menu-list-note             {background-position:right -416px;}
+#menu-list-sour             {background-position:left -442px;} [dir=rtl] #menu-list-sour             {background-position:right -442px;}
+#menu-branches              {background-position:left -468px;} [dir=rtl] #menu-branches              {background-position:right -468px;}
+#menu-list-fam              {background-position:left -494px;} [dir=rtl] #menu-list-fam              {background-position:right -494px;}
+#menu-list-indi             {background-position:left -520px;} [dir=rtl] #menu-list-indi             {background-position:right -520px;}
 
 /* Report Icons  */
-#menu-report li             {background-position:left -546px;} html[dir=rtl] #menu-report li             {background-position:right -546px;}
+#menu-report li             {background-position:left -546px;} [dir=rtl] #menu-report li             {background-position:right -546px;}
 
 
 /* Calendar Icons */
-#menu-calendar-day          {background-position:left -572px;} html[dir=rtl] #menu-calendar-day          {background-position:right -572px;}
-#menu-calendar-month        {background-position:left -572px;} html[dir=rtl] #menu-calendar-month        {background-position:right -572px;}
-#menu-calendar-year         {background-position:left -572px;} html[dir=rtl] #menu-calendar-year         {background-position:right -572px;}
+#menu-calendar-day          {background-position:left -572px;} [dir=rtl] #menu-calendar-day          {background-position:right -572px;}
+#menu-calendar-month        {background-position:left -572px;} [dir=rtl] #menu-calendar-month        {background-position:right -572px;}
+#menu-calendar-year         {background-position:left -572px;} [dir=rtl] #menu-calendar-year         {background-position:right -572px;}
 
 /* Search Icons */
-#menu-search-general        {background-position:left -598px;} html[dir=rtl] #menu-search-general        {background-position:right -598px;}
-#menu-search-soundex        {background-position:left -598px;} html[dir=rtl] #menu-search-soundex        {background-position:right -598px;}
-#menu-search-advanced       {background-position:left -598px;} html[dir=rtl] #menu-search-advanced       {background-position:right -598px;}
-#menu-search-replace        {background-position:left -598px;} html[dir=rtl] #menu-search-replace        {background-position:right -598px;}
+#menu-search-general        {background-position:left -598px;} [dir=rtl] #menu-search-general        {background-position:right -598px;}
+#menu-search-soundex        {background-position:left -598px;} [dir=rtl] #menu-search-soundex        {background-position:right -598px;}
+#menu-search-advanced       {background-position:left -598px;} [dir=rtl] #menu-search-advanced       {background-position:right -598px;}
+#menu-search-replace        {background-position:left -598px;} [dir=rtl] #menu-search-replace        {background-position:right -598px;}
 
 /* Help Icons */
-#menu-help-genealogy        {background-position:left -624px;} html[dir=rtl] #menu-help-genealogy        {background-position:right -624px;}
-#menu-help-show             {background-position:left -624px;} html[dir=rtl] #menu-help-show             {background-position:right -624px;}
-#menu-help-contents         {background-position:left -624px;} html[dir=rtl] #menu-help-contents         {background-position:right -624px;}
-#menu-help-hide             {background-position:left -624px;} html[dir=rtl] #menu-help-hide             {background-position:right -624px;}
-#menu-help-faq              {background-position:left -624px;} html[dir=rtl] #menu-help-faq              {background-position:right -624px;}
-#menu-help-wiki             {background-position:left -650px;} html[dir=rtl] #menu-help-wiki             {background-position:right -650px;}
-#menu-help-technical        {background-position:left -676px;} html[dir=rtl] #menu-help-technical        {background-position:right -676px;}
+#menu-help-genealogy        {background-position:left -624px;} [dir=rtl] #menu-help-genealogy        {background-position:right -624px;}
+#menu-help-show             {background-position:left -624px;} [dir=rtl] #menu-help-show             {background-position:right -624px;}
+#menu-help-contents         {background-position:left -624px;} [dir=rtl] #menu-help-contents         {background-position:right -624px;}
+#menu-help-hide             {background-position:left -624px;} [dir=rtl] #menu-help-hide             {background-position:right -624px;}
+#menu-help-faq              {background-position:left -624px;} [dir=rtl] #menu-help-faq              {background-position:right -624px;}
+#menu-help-wiki             {background-position:left -650px;} [dir=rtl] #menu-help-wiki             {background-position:right -650px;}
+#menu-help-technical        {background-position:left -676px;} [dir=rtl] #menu-help-technical        {background-position:right -676px;}
 
 /* MyPage Icons */
-#menu-mypage                {background-position:left -676px;} html[dir=rtl] #menu-mypage                {background-position:right -676px;}
-#menu-myaccount             {background-position:left -676px;} html[dir=rtl] #menu-myaccount             {background-position:right -676px;}
-#menu-mypedigree            {background-position:left -208px;} html[dir=rtl] #menu-mypedigree            {background-position:right -208px;}
-#menu-myrecord              {background-position:left -520px;} html[dir=rtl] #menu-myrecord              {background-position:right -520px;}
-#menu-admin                 {background-position:left -728px;} html[dir=rtl] #menu-admin                 {background-position:right -728px;}
-#menu-tree li               {background-position:left -754px;} html[dir=rtl] #menu-tree li               {background-position:right -754px;}
+#menu-mypage                {background-position:left -676px;} [dir=rtl] #menu-mypage                {background-position:right -676px;}
+#menu-myaccount             {background-position:left -676px;} [dir=rtl] #menu-myaccount             {background-position:right -676px;}
+#menu-mypedigree            {background-position:left -208px;} [dir=rtl] #menu-mypedigree            {background-position:right -208px;}
+#menu-myrecord              {background-position:left -520px;} [dir=rtl] #menu-myrecord              {background-position:right -520px;}
+#menu-admin                 {background-position:left -728px;} [dir=rtl] #menu-admin                 {background-position:right -728px;}
+#menu-tree li               {background-position:left -754px;} [dir=rtl] #menu-tree li               {background-position:right -754px;}
 
 /* Family Icons */
-#menu-fam-addchil           {background-position:left -858px;} html[dir=rtl] #menu-fam-addchil           {background-position:right -858px;}
-#menu-fam-addfav            {background-position:left -832px;} html[dir=rtl] #menu-fam-addfav            {background-position:right -832px;}
-#menu-fam-change            {background-position:left -858px;} html[dir=rtl] #menu-fam-change            {background-position:right -858px;}
-#menu-fam-del               {background-position:left -936px;} html[dir=rtl] #menu-fam-del               {background-position:right -936px;}
-#menu-fam-editraw           {background-position:left -754px;} html[dir=rtl] #menu-fam-editraw           {background-position:right -574px;}
-#menu-fam-orderchil         {background-position:left -858px;} html[dir=rtl] #menu-fam-orderchil         {background-position:right -858px;}
+#menu-fam-addchil           {background-position:left -858px;} [dir=rtl] #menu-fam-addchil           {background-position:right -858px;}
+#menu-fam-addfav            {background-position:left -832px;} [dir=rtl] #menu-fam-addfav            {background-position:right -832px;}
+#menu-fam-change            {background-position:left -858px;} [dir=rtl] #menu-fam-change            {background-position:right -858px;}
+#menu-fam-del               {background-position:left -936px;} [dir=rtl] #menu-fam-del               {background-position:right -936px;}
+#menu-fam-editraw           {background-position:left -754px;} [dir=rtl] #menu-fam-editraw           {background-position:right -574px;}
+#menu-fam-orderchil         {background-position:left -858px;} [dir=rtl] #menu-fam-orderchil         {background-position:right -858px;}
 
 /* Clipping Icons */
-#menu-clippingscart         {background-position:left -702px;} html[dir=rtl] #menu-clippingscart         {background-position:right -702px;}
-#menu-clippingsadd          {background-position:left -702px;} html[dir=rtl] #menu-clippingsadd          {background-position:right -702px;}
+#menu-clippingscart         {background-position:left -702px;} [dir=rtl] #menu-clippingscart         {background-position:right -702px;}
+#menu-clippingsadd          {background-position:left -702px;} [dir=rtl] #menu-clippingsadd          {background-position:right -702px;}
 
 /* Edit Icons */
-#menu-indi-addname          {background-position:left -780px;} html[dir=rtl] #menu-indi-addname          {background-position:right -780px;}
-#menu-indi-editraw          {background-position:left -754px;} html[dir=rtl] #menu-indi-editraw          {background-position:right -574px;}
-#menu-indi-editsex          {background-position:left -780px;} html[dir=rtl] #menu-indi-editsex          {background-position:right -780px;}
-#menu-indi-del              {background-position:left -806px;} html[dir=rtl] #menu-indi-del              {background-position:right -806px;}
-#menu-indi-addfav           {background-position:left -832px;} html[dir=rtl] #menu-indi-addfav           {background-position:right -832px;}
+#menu-indi-addname          {background-position:left -780px;} [dir=rtl] #menu-indi-addname          {background-position:right -780px;}
+#menu-indi-editraw          {background-position:left -754px;} [dir=rtl] #menu-indi-editraw          {background-position:right -574px;}
+#menu-indi-editsex          {background-position:left -780px;} [dir=rtl] #menu-indi-editsex          {background-position:right -780px;}
+#menu-indi-del              {background-position:left -806px;} [dir=rtl] #menu-indi-del              {background-position:right -806px;}
+#menu-indi-addfav           {background-position:left -832px;} [dir=rtl] #menu-indi-addfav           {background-position:right -832px;}
 
 /* Edit Notes */
-#menu-note-addfav           {background-position:left -832px;} html[dir=rtl] #menu-note-fav              {background-position:right -832px;}
-#menu-note-del              {background-position:left -806px;} html[dir=rtl] #menu-note-del              {background-position:right -806px;}
-#menu-note-edit             {background-position:left -910px;} html[dir=rtl] #menu-note-edit             {background-position:right -910px;}
-#menu-note-editraw          {background-position:left -754px;} html[dir=rtl] #menu-note-editraw          {background-position:right -574px;}
+#menu-note-addfav           {background-position:left -832px;} [dir=rtl] #menu-note-fav              {background-position:right -832px;}
+#menu-note-del              {background-position:left -806px;} [dir=rtl] #menu-note-del              {background-position:right -806px;}
+#menu-note-edit             {background-position:left -910px;} [dir=rtl] #menu-note-edit             {background-position:right -910px;}
+#menu-note-editraw          {background-position:left -754px;} [dir=rtl] #menu-note-editraw          {background-position:right -574px;}
 
 /* Objects */
-#menu-obje-addfav           {background-position:left -832px;} html[dir=rtl] #menu-obje-addfav           {background-position:right -832px;}
-#menu-obje-del              {background-position:left -1040px;} html[dir=rtl] #menu-obje-del             {background-position:right -1040px;}
-#menu-obje-edit             {background-position:left -962px;} html[dir=rtl] #menu-obje-edit             {background-position:right -962px;}
-#menu-obje-editraw          {background-position:left -754px;} html[dir=rtl] #menu-obje-editraw          {background-position:right -574px;}
-#menu-obje-link             {background-position:left -988px;} html[dir=rtl] #menu-obje-link             {background-position:right -988px;}
-#menu-obje-link-fam         {background-position:left -494px;} html[dir=rtl] #menu-obje-link-fam         {background-position:right -494px;}
-#menu-obje-link-indi        {background-position:left -520px;} html[dir=rtl] #menu-obje-link-indi        {background-position:right -520px;}
-#menu-obje-link-sour        {background-position:left -442px;} html[dir=rtl] #menu-obje-link-sour        {background-position:right -442px;}
+#menu-obje-addfav           {background-position:left -832px;} [dir=rtl] #menu-obje-addfav           {background-position:right -832px;}
+#menu-obje-del              {background-position:left -1040px;} [dir=rtl] #menu-obje-del             {background-position:right -1040px;}
+#menu-obje-edit             {background-position:left -962px;} [dir=rtl] #menu-obje-edit             {background-position:right -962px;}
+#menu-obje-editraw          {background-position:left -754px;} [dir=rtl] #menu-obje-editraw          {background-position:right -574px;}
+#menu-obje-link             {background-position:left -988px;} [dir=rtl] #menu-obje-link             {background-position:right -988px;}
+#menu-obje-link-fam         {background-position:left -494px;} [dir=rtl] #menu-obje-link-fam         {background-position:right -494px;}
+#menu-obje-link-indi        {background-position:left -520px;} [dir=rtl] #menu-obje-link-indi        {background-position:right -520px;}
+#menu-obje-link-sour        {background-position:left -442px;} [dir=rtl] #menu-obje-link-sour        {background-position:right -442px;}
 
 /* Repository */
-#menu-repo-addfav           {background-position:left -832px;} html[dir=rtl] #menu-repo-addfav           {background-position:right -832px;}
-#menu-repo-del              {background-position:left -806px;} html[dir=rtl] #menu-repo-del              {background-position:right -806px;}
-#menu-repo-edit             {background-position:left -1014px;} html[dir=rtl] #menu-repo-edit            {background-position:right -1014px;}
-#menu-repo-editraw          {background-position:left -754px;} html[dir=rtl] #menu-repo-editraw          {background-position:right -574px;}
+#menu-repo-addfav           {background-position:left -832px;} [dir=rtl] #menu-repo-addfav           {background-position:right -832px;}
+#menu-repo-del              {background-position:left -806px;} [dir=rtl] #menu-repo-del              {background-position:right -806px;}
+#menu-repo-edit             {background-position:left -1014px;} [dir=rtl] #menu-repo-edit            {background-position:right -1014px;}
+#menu-repo-editraw          {background-position:left -754px;} [dir=rtl] #menu-repo-editraw          {background-position:right -574px;}
 
 /* Source */
-#menu-sour-addfav           {background-position:left -832px;} html[dir=rtl] #menu-sour-addfav           {background-position:right -832px;}
-#menu-sour-del              {background-position:left -1066px;} html[dir=rtl] #menu-sour-del             {background-position:right -1066px;}
-#menu-sour-edit             {background-position:left -884px;} html[dir=rtl] #menu-sour-edit             {background-position:right -884px;}
-#menu-sour-editraw          {background-position:left -754px;} html[dir=rtl] #menu-sour-editraw          {background-position:right -574px;}
+#menu-sour-addfav           {background-position:left -832px;} [dir=rtl] #menu-sour-addfav           {background-position:right -832px;}
+#menu-sour-del              {background-position:left -1066px;} [dir=rtl] #menu-sour-del             {background-position:right -1066px;}
+#menu-sour-edit             {background-position:left -884px;} [dir=rtl] #menu-sour-edit             {background-position:right -884px;}
+#menu-sour-editraw          {background-position:left -754px;} [dir=rtl] #menu-sour-editraw          {background-position:right -574px;}
 
 /* Stories */
-#menu-story-sub             {background-position:left -1092px;} html[dir=rtl] #menu-story-sub            {background-position:right -1040px;}
+#menu-story-sub             {background-position:left -1092px;} [dir=rtl] #menu-story-sub            {background-position:right -1040px;}
 
 /* families  */
 #content {clear:both;padding:10px 10px 0 10px;}
@@ -264,8 +264,8 @@ ul {margin:8px;padding-left:15px;padding-right:15px;}
 #index_main_blocks {clear:none;float:left;width:66%;}
 #index_small_blocks {clear:none;float:right;width:33%;}
 #index_full_blocks {clear:none;width:100%;}
-html[dir=rtl] #index_main_blocks {float:right;}
-html[dir=rtl] #index_small_blocks {float:left;}
+[dir=rtl] #index_main_blocks {float:right;}
+[dir=rtl] #index_small_blocks {float:left;}
 #index_small_blocks .name1 {color:#333333;}
 #random_picture {text-align:center;}
 #random_picture_box {width:100%;}
@@ -283,10 +283,10 @@ html[dir=rtl] #index_small_blocks {float:left;}
 .blockhc {padding:3px 3px 0;}
 .blockhc img {padding-right:3px;}
 
-html[dir=rtl] .blockh1 {background-image:url(../images/right1B.png);}
-html[dir=rtl] .blockh3 {background-image:url(../images/right3.png);}
-html[dir=rtl] .blockhc {padding:3px 0 0 3px;}
-html[dir=rtl] .blockhc img {padding-left:3px;}
+[dir=rtl] .blockh1 {background-image:url(../images/right1B.png);}
+[dir=rtl] .blockh3 {background-image:url(../images/right3.png);}
+[dir=rtl] .blockhc {padding:3px 0 0 3px;}
+[dir=rtl] .blockhc img {padding-left:3px;}
 
 #index_title {float:left;}
 
@@ -306,15 +306,15 @@ html[dir=rtl] .blockhc img {padding-left:3px;}
 #ancestry_chart li {list-style:none;margin:0 0 2px -13px;padding-bottom:0;padding-right:0;padding-top:0;}
 #ancestry_chart li table {margin:5px 0;}
 
-html[dir=rtl] #ancestry_chart ul {background-position:right top;margin:0 15px 0 0;left:auto;}
-html[dir=rtl] #ancestry_chart li {margin:0;padding:0 2px 0 0;left:auto;}
-html[dir=rtl] #ancestry_chart {margin-right:10px;}
+[dir=rtl] #ancestry_chart ul {background-position:right top;margin:0 15px 0 0;left:auto;}
+[dir=rtl] #ancestry_chart li {margin:0;padding:0 2px 0 0;left:auto;}
+[dir=rtl] #ancestry_chart {margin-right:10px;}
 
 #descendancy_chart{margin:20px;}
 #descendancy_chart ul {background-image:url(../images/vline.png);background-position:left top;background-repeat:repeat-y;list-style:none;margin:0 0 5px 15px;padding-bottom:0;padding-right:0;padding-top:0;}
 #descendancy_chart li {list-style:none;margin:0 0 0 -15px;padding-bottom:0;padding-right:0;padding-top:0;}
 
-html[dir=rtl] #descendancy_chart ul {background-position:right top;margin:0 15px 0 0;left:auto;}
+[dir=rtl] #descendancy_chart ul {background-position:right top;margin:0 15px 0 0;left:auto;}
 
 #familybook_chart {margin-left:10px; }
 #familybook_chart table {border-collapse: collapse; empty-cells: show;}
@@ -331,19 +331,19 @@ html[dir=rtl] #descendancy_chart ul {background-position:right top;margin:0 15px
 .tdmid {vertical-align:middle;}
 .tdbot, .tvertline {vertical-align:bottom;}
 
-html[dir=rtl] #familybook_chart {margin-right:10px;}
+[dir=rtl] #familybook_chart {margin-right:10px;}
 
 /*-- pedigree chart specific stylesheets --*/
 #pedigree-page table.list_table {margin:0 auto;width:500px;}
 .pedigree_chart_table {border:0;border-collapse:collapse;padding:0;width:100%;}
 #pedigree_chart {position:relative;top:-200px;left:0;}
-html[dir=rtl] #pedigree_chart {left:auto;right:0;}
+[dir=rtl] #pedigree_chart {left:auto;right:0;}
 #pedigree_canvas {color:#999999;position:absolute;top:200px;z-index:-1;}
 #pedigree_chart #childarrow, #pedigree_chart #uparrow, #pedigree_chart .shadow {position:absolute;}
 #pedigree_chart #childbox {border:1px solid;background-color:#ffffff;padding:5px;position:absolute;visibility:hidden;}
 
 #relationship_chart {margin-left:10px;}
-html[dir=rtl] #relationship_chart {margin-right:10px;}
+[dir=rtl] #relationship_chart {margin-right:10px;}
 
 #timeline_chart {position:relative;top:0;left:0;}
 
@@ -380,7 +380,7 @@ html[dir=rtl] #relationship_chart {margin-right:10px;}
 .list_value_wrap {border:1px solid #999999;border-radius:3px;padding:1px;text-align:left;vertical-align:top;white-space:normal;}
 .list_value_wrap p {margin: 10px 0;}
 
-html[dir=rtl] .list_value, html[dir=rtl] .list_value_wrap {text-align:right;}
+[dir=rtl] .list_value, [dir=rtl] .list_value_wrap {text-align:right;}
 
 .tabs_table {max-width:98%;}
 .facts_table {width:100%;padding:0;}
@@ -452,7 +452,7 @@ input, textarea {padding:0 3px;}
 
 .optionbox {border:solid #999 1px;border-radius:3px;font-size:12px;padding:3px;vertical-align:top;white-space:nowrap;}
 .optionbox input {margin-right:5px;}
-html[dir=rtl] .optionbox input {margin-left:5px;}
+[dir=rtl] .optionbox input {margin-left:5px;}
 
 .descriptionbox {border:1px solid #999999;border-radius:3px;padding:3px;vertical-align:top;white-space:nowrap;}
 .formField {font-size:12px;width:140px;}
@@ -558,15 +558,15 @@ a.showit > span {display:none;}
 	max-width: 60px;
 	width:     auto;
 }
-html[dir=rtl] .person_box_template img,
-html[dir=rtl] .person_box_template a.gallery {
+[dir=rtl] .person_box_template img,
+[dir=rtl] .person_box_template a.gallery {
 	float:  right;
 	margin: 0 0 0 3px;
 }
 .person_box_template i[class^="icon-silhouette"] {
 	float: left;
 }
-html[dir=rtl] .person_box_template i[class^="icon-silhouette"] {
+[dir=rtl] .person_box_template i[class^="icon-silhouette"] {
 	float: right;
 }
 
@@ -582,7 +582,7 @@ html[dir=rtl] .person_box_template i[class^="icon-silhouette"] {
 .theme_form ul {margin:-10px auto;-webkit-padding-start:0;width:90%;overflow:hidden;}
 .theme_form li {list-style:none;visibility:hidden;}
 .theme_form li ul li {float:left;padding:10px;visibility:visible;}
-html[dir=rtl] .theme_form li ul li  {float:right;}
+[dir=rtl] .theme_form li ul li  {float:right;}
 
 /* ======= Favourites block ========== */
 .user_favorites_block .person_box, .gedcom_favorites_block .person_box {margin:5px 0;}
@@ -614,7 +614,7 @@ html[dir=rtl] .theme_form li ul li  {float:right;}
 .makeMenu.lb-menu li a {color:#000;}
 .lb-image_edit, .lb-image_link {padding-right:5px;}
 .lb-menu > li:hover > ul {top:28px!important;}
-html[dir=rtl] .lb-menu > li {float:right;}
+[dir=rtl] .lb-menu > li {float:right;}
 
 .list_value_wrap .lb-image_edit {background:url(../images/image_edit.png) no-repeat 50% 20%;}
 .list_value_wrap .lb-image_link {background:url(../images/image_link.png) no-repeat 50% 20%;}
@@ -646,7 +646,7 @@ html[dir=rtl] .lb-menu > li {float:right;}
 #register-form div#registration-submit {text-align:center;}
 #register-form h4 {font-weight:400;text-align:center;}
 
-html[dir=rtl] #login-form label,html[dir=rtl] #new_passwd_form label,html[dir=rtl] #register-form label,html[dir=rtl] #verify-form label {text-align:left;}
+[dir=rtl] #login-form label,[dir=rtl] #new_passwd_form label,[dir=rtl] #register-form label,[dir=rtl] #verify-form label {text-align:left;}
 
 /* reportengine.php */
 #reportengine-page table {margin:20px auto;}
@@ -665,7 +665,7 @@ html[dir=rtl] #login-form label,html[dir=rtl] #new_passwd_form label,html[dir=rt
 .popup  li span {padding:0 5px;}
 .popup  li ul, .popup  li ul li, .popup  li span span {padding:0;}
 .itr:hover .popup {display:block;position:absolute;width:12em;right:0;}
-html[dir=rtl] .itr:hover .popup {left:0;right:auto;}
+[dir=rtl] .itr:hover .popup {left:0;right:auto;}
 
 /* FindFacts pop-up */
 #layDefinedTags,#tabDefinedTagsShow {width:450px;}
@@ -689,8 +689,8 @@ div.faq_body {clear:both;margin:1em 0;padding:.5em;}
 .faq_italic {font-size:12px;font-style:italic;font-weight:700;padding:0 10px;}
 .faq_top,.faq_edit {float:right;}
 
-html[dir=rtl] .faq_top {float:left;}
-html[dir=rtl] .faq_edit {float:left;}
+[dir=rtl] .faq_top {float:left;}
+[dir=rtl] .faq_edit {float:left;}
 
 ul.clist {color:#000000;list-style-image:none;margin:0;text-decoration:none;}
 
@@ -704,12 +704,12 @@ ul.clist {color:#000000;list-style-image:none;margin:0;text-decoration:none;}
 .editlink,.copylink,.deletelink {float:left;}
 span.link_text {display:none;}
 
-html[dir=rtl] .editlink, html[dir=rtl] .copylink, html[dir=rtl] .deletelink {float:right;}
+[dir=rtl] .editlink, [dir=rtl] .copylink, [dir=rtl] .deletelink {float:right;}
 
 /* Indi header */
 .field .editlink,.field .deletelink,.field .copylink {float:right;}
 
-html[dir=rtl].field  .editlink, html[dir=rtl].field  .deletelink {float:left;}
+[dir=rtl].field  .editlink, [dir=rtl].field  .deletelink {float:left;}
 
 #dates {color:#333333;float:right;}
 
@@ -749,18 +749,18 @@ html[dir=rtl].field  .editlink, html[dir=rtl].field  .deletelink {float:left;}
 
 .indi_table {clear:left;}
 
-html[dir=rtl] #dates {float:left;}
-html[dir=rtl] #indi_header h3 .header_age {padding:5px 5px 5px 0;float:left;}
-html[dir=rtl] #sex {float:left;}
-html[dir=rtl] dd .editlink, html[dir=rtl]  dd .deletelink {float:left;}
-html[dir=rtl] #header_accordion1 {float:left;}
-html[dir=rtl] #indi_header {float:right;}
-html[dir=rtl] #indi_header h3 {padding:0 30px 0 10px;text-align:right;}
-html[dir=rtl] #indi_mainimage {float:right;}
-html[dir=rtl] #indi_mainimage a img {float:right;}
-html[dir=rtl] #indi_note .fact_NOTE {float:right;margin:0 0 0 10px;}
-html[dir=rtl] #main_name {float:right;}
-html[dir=rtl] .indi_table {clear:right;}
+[dir=rtl] #dates {float:left;}
+[dir=rtl] #indi_header h3 .header_age {padding:5px 5px 5px 0;float:left;}
+[dir=rtl] #sex {float:left;}
+[dir=rtl] dd .editlink, [dir=rtl]  dd .deletelink {float:left;}
+[dir=rtl] #header_accordion1 {float:left;}
+[dir=rtl] #indi_header {float:right;}
+[dir=rtl] #indi_header h3 {padding:0 30px 0 10px;text-align:right;}
+[dir=rtl] #indi_mainimage {float:right;}
+[dir=rtl] #indi_mainimage a img {float:right;}
+[dir=rtl] #indi_note .fact_NOTE {float:right;margin:0 0 0 10px;}
+[dir=rtl] #main_name {float:right;}
+[dir=rtl] .indi_table {clear:right;}
 
 /* General sprite */
 .male_gender,.female_gender,.unknown_gender,.editicon,.copyicon,.deleteicon {background:url(../images/general_sprite.png) no-repeat left 0;background-color:transparent;display:block;}
@@ -780,9 +780,9 @@ html[dir=rtl] .indi_table {clear:right;}
 .facts_table .field img {vertical-align:middle;}
 .media-display-image {float:left;margin-top:5px;}
 .media-display-title {float:left;font-style:italic;font-weight:600;padding-left:3px;margin-top:5px;}
-html[dir=rtl] .media-display-image {float:right;}
-html[dir=rtl] .media-display-title {float:right;padding-right:3px;}
-html[dir=rtl] .facts_table .field em {padding-right:3px;}
+[dir=rtl] .media-display-image {float:right;}
+[dir=rtl] .media-display-title {float:right;padding-right:3px;}
+[dir=rtl] .facts_table .field em {padding-right:3px;}
 
 /* jquery-ui.custom.css changes  */
 span.link_text {display:none;}
@@ -801,12 +801,12 @@ span.link_text {display:none;}
 .ui-menu .ui-menu-item a {font-size: 12px;}
 .ui-menu .ui-menu-item a.ui-state-hover,.ui-menu .ui-menu-item a.ui-state-active {color: #ff0000;}
 
-html[dir=rtl] .ui-accordion .ui-accordion-header .ui-icon {right:0.5em;}
-html[dir=rtl] .ui-tabs {direction:rtl;}
-html[dir=rtl] .ui-tabs .ui-tabs-nav li.ui-tabs-selected,
-html[dir=rtl] .ui-tabs .ui-tabs-nav li.ui-state-default {float:right;}
-html[dir=rtl] .ui-dialog-title {float:right;}
-html[dir=rtl] .ui-dialog-titlebar-close {left:.3em;right:auto;}
+[dir=rtl] .ui-accordion .ui-accordion-header .ui-icon {right:0.5em;}
+[dir=rtl] .ui-tabs {direction:rtl;}
+[dir=rtl] .ui-tabs .ui-tabs-nav li.ui-tabs-selected,
+[dir=rtl] .ui-tabs .ui-tabs-nav li.ui-state-default {float:right;}
+[dir=rtl] .ui-dialog-title {float:right;}
+[dir=rtl] .ui-dialog-titlebar-close {left:.3em;right:auto;}
 
 /* jQuery over-rides */
 #loading {text-align:center;}
@@ -830,14 +830,14 @@ html[dir=rtl] .ui-dialog-titlebar-close {left:.3em;right:auto;}
 .DataTables_sort_wrapper span {left:0;margin-left:-20px;margin-top:-8px;position:absolute;top:50%;}
 .dataTables_paginate,.dataTables_processing,.dataTables_info {float:left;margin:5px;}
 
-html[dir=rtl] .css_right {float:right;}
-html[dir=rtl] .dataTables_paginate {float:right;}
-html[dir=rtl] .dataTables_processing {float:right;}
-html[dir=rtl] .dataTables_filter {float:left;}
-html[dir=rtl] .dataTables_info {float:right;}
-html[dir=rtl] .dataTables_length {float:left;}
-html[dir=rtl] .DataTables_sort_wrapper {margin-right:20px;}
-html[dir=rtl] .DataTables_sort_wrapper span {left:auto;right:0;margin-right:-20px;}
+[dir=rtl] .css_right {float:right;}
+[dir=rtl] .dataTables_paginate {float:right;}
+[dir=rtl] .dataTables_processing {float:right;}
+[dir=rtl] .dataTables_filter {float:left;}
+[dir=rtl] .dataTables_info {float:right;}
+[dir=rtl] .dataTables_length {float:left;}
+[dir=rtl] .DataTables_sort_wrapper {margin-right:20px;}
+[dir=rtl] .DataTables_sort_wrapper span {left:auto;right:0;margin-right:-20px;}
 
 /*  List styles */
 
@@ -877,7 +877,7 @@ html[dir=rtl] .DataTables_sort_wrapper span {left:auto;right:0;margin-right:-20p
 #searchAccordion-indi,#searchAccordion-fam,#searchAccordion-source,#searchAccordion-note {margin:auto;width:99%;}
 #search-result-tabs h3,#place-hierarchy h2,#place-hierarchy h4 {text-align:center;}
 
-html[dir=rtl] .source-list th:last-child, html[dir=rtl] .note-list th:last-child, html[dir=rtl] .repo-list th:last-child {margin:0 1px 1px -2px;}
+[dir=rtl] .source-list th:last-child, [dir=rtl] .note-list th:last-child, [dir=rtl] .repo-list th:last-child {margin:0 1px 1px -2px;}
 
 /* Sidebar  */
 #indi_left {float:left;width:98%;}
@@ -892,11 +892,11 @@ html[dir=rtl] .source-list th:last-child, html[dir=rtl] .note-list th:last-child
 .use-sidebar #sidebar {display:block;}
 .use-sidebar.sidebar-at-right #sidebar,.sidebar-at-right #separator {float:right;}
 
-html[dir=rtl] #indi_left,html[dir=rtl] #tabs {float:right;}
-html[dir=rtl] #sidebar {margin:5px 0 0 2px;}
-html[dir=rtl] #separator {background-image:url(../images/general_sprite.png);background-repeat:no-repeat;background-position:-1px 100px;}
-html[dir=rtl] .use-sidebar #separator {background-image:url(../images/general_sprite.png);background-repeat:no-repeat;background-position:-26px 100px;}
-html[dir=rtl] .use-sidebar.sidebar-at-right #sidebar,html[dir=rtl] .sidebar-at-right #separator {float:left;}
+[dir=rtl] #indi_left,[dir=rtl] #tabs {float:right;}
+[dir=rtl] #sidebar {margin:5px 0 0 2px;}
+[dir=rtl] #separator {background-image:url(../images/general_sprite.png);background-repeat:no-repeat;background-position:-1px 100px;}
+[dir=rtl] .use-sidebar #separator {background-image:url(../images/general_sprite.png);background-repeat:no-repeat;background-position:-26px 100px;}
+[dir=rtl] .use-sidebar.sidebar-at-right #sidebar,[dir=rtl] .sidebar-at-right #separator {float:left;}
 
 /* Sidebar content items */
 /* Family navigator */
@@ -909,9 +909,9 @@ html[dir=rtl] .use-sidebar.sidebar-at-right #sidebar,html[dir=rtl] .sidebar-at-r
 .flyout3,.flyout3 a {background:none;border:none;left:0;margin-top:0;padding:0;text-align:left;text-decoration:none;}
 .flyout4 {color:#000000;margin-left:0;margin-top:0;padding:3px;text-align:left;}
 
-html[dir=rtl] .flyout3 {text-align:right;}
-html[dir=rtl] .flyout {text-align:right;left:210px;}
-html[dir=rtl] .flyout2 {text-align:right;right:40px;}
+[dir=rtl] .flyout3 {text-align:right;}
+[dir=rtl] .flyout {text-align:right;left:210px;}
+[dir=rtl] .flyout2 {text-align:right;right:40px;}
 
 #sb_desc_content {font-size:0.8em;margin-left:3px;}
 #sb_desc_content ul {margin:0;padding:0;}
@@ -919,8 +919,8 @@ html[dir=rtl] .flyout2 {text-align:right;right:40px;}
 .desc_tree_div ul {margin-left:10px;margin-right:0;margin-top:0;padding:0;}
 .sb_desc_indi_li {list-style-type:none;}
 
-html[dir=rtl] #sb_desc_content {margin-right:3px;}
-html[dir=rtl] .desc_tree_div ul {margin-left:0;margin-right:10px;}
+[dir=rtl] #sb_desc_content {margin-right:3px;}
+[dir=rtl] .desc_tree_div ul {margin-left:0;margin-right:10px;}
 
 .sb_indi_surname_li,.sb_fam_surname_li {list-style-image:url(../images/plus.png);}
 
@@ -968,9 +968,9 @@ html[dir=rtl] .desc_tree_div ul {margin-left:0;margin-right:10px;}
 .name_tree_div li,.name_tree_div_visible li,#sb_clippings_content li {list-style:none;margin:0;padding:0;}
 .name_tree_div ul,.name_tree_div_visible ul,#sb_clippings_content ul {margin:0;padding:0;}
 
-html[dir=rtl] #sb_content_extra_info .editfacts,.find-media-details {float:left;}
-html[dir=rtl] #search-page-table .label {float:right;}
-html[dir=rtl] #search-page-table .value {margin:0 170px 0 0;}
+[dir=rtl] #sb_content_extra_info .editfacts,.find-media-details {float:left;}
+[dir=rtl] #search-page-table .label {float:right;}
+[dir=rtl] #search-page-table .value {margin:0 170px 0 0;}
 
 /*  edituser.php  */
 #edituser-page h2, #edituser_submit {margin:20px;text-align:center;}
@@ -980,8 +980,8 @@ html[dir=rtl] #search-page-table .value {margin:0 170px 0 0;}
 #edituser-table .label span {margin:0 10px;}
 #edituser-table div:nth-of-type(2) {border:0;}
 #edituser-table select {margin:0;}
-html[dir=rtl] #edituser-table .label {float:right;}
-html[dir=rtl] #edituser-table .value {margin:0 260px 0 0;}
+[dir=rtl] #edituser-table .label {float:right;}
+[dir=rtl] #edituser-table .value {margin:0 260px 0 0;}
 
 @media print {
 	form,button,input {display:none;}
@@ -991,7 +991,7 @@ html[dir=rtl] #edituser-table .value {margin:0 260px 0 0;}
 	#familybook_chart h3 {margin-bottom: 10px;}
 	#header_accordion1 {width: 510px !important;}
 	#pedigree_chart {left:-90px;}
-	html[dir=rtl] #pedigree_chart {left:auto;right:-90px;}
+	[dir=rtl] #pedigree_chart {left:auto;right:-90px;}
 	.lifespan_outer {position:relative;width:auto;height:auto;overflow:visible;border:none;}
 	.lifespan_people {position:absolute;width:auto;left:-10px;top:-60px;z-index:1;}
 }
@@ -1159,8 +1159,8 @@ a.icon-uarrow:hover        {width:20px;height:20px;background-image:url(../image
 #save-cancel input {padding:2px 8px;}
 #save-cancel .save {float:left;margin:5px;}
 #save-cancel .cancel {float:right;margin:5px;}
-html[dir=rtl] #save-cancel .save {float:right;}
-html[dir=rtl] #save-cancel .cancel {float:left;}
+[dir=rtl] #save-cancel .save {float:right;}
+[dir=rtl] #save-cancel .cancel {float:left;}
 #edit_interface-page,
 #addmedia-page {
 	margin-bottom: 50px;
@@ -1197,11 +1197,11 @@ html[dir=rtl] #save-cancel .cancel {float:left;}
 #cboxClose:hover {background-position:-25px -25px;}
 #cboxCurrent {bottom: 4px;color: #949494;left: 58px;position: absolute;}
 
-html[dir=rtl] #cboxPrevious {right:27px;left:auto;}
-html[dir=rtl] #cboxNext {right:0;left:auto;}
-html[dir=rtl] #cboxCurrent {right:auto;left:0;}
-html[dir=rtl] #cboxClose {right:auto;left:0;}
-html[dir=rtl] #cboxSlideshow {right:57px;left:0;}
+[dir=rtl] #cboxPrevious {right:27px;left:auto;}
+[dir=rtl] #cboxNext {right:0;left:auto;}
+[dir=rtl] #cboxCurrent {right:auto;left:0;}
+[dir=rtl] #cboxClose {right:auto;left:0;}
+[dir=rtl] #cboxSlideshow {right:57px;left:0;}
 
 /* Census assistant module */
 table.table-census-assistant th {
