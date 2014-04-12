@@ -3995,7 +3995,6 @@ html[dir=rtl] #edituser-table .value {
 	}
 
 	#pedigree_chart {
-		left: right;
 		left: -80px;
 	}
 
