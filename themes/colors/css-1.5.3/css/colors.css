@@ -670,7 +670,7 @@ html[dir=rtl] .itr:hover .popup {left:0;right:auto;}
 /* FindFacts pop-up */
 #layDefinedTags,#tabDefinedTagsShow {width:450px;}
 #tabDefinedTags {border-collapse:collapse;width:430px;}
-#layDefinedTags {border:inset 2px buttonface;height:285px;margin-left:auto;margin-right:auto;overflow:auto;}
+#layDefinedTags {height:285px;margin-left:auto;margin-right:auto;overflow:auto;}
 #tabDefinedTags th,#tabDefinedTags td {border:solid 1px #000000;margin:0;padding:3px;}
 #tabDefinedTags tbody th {font-weight:700;text-align:left;}
 #tabDefinedTags tr.sel {background-color:#d1d9ef;color:#888888;}

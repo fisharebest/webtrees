@@ -1824,7 +1824,6 @@ z-index:9999;
 html[dir=rtl] .itr:hover .popup {left:0;right:auto;}
 
 #layDefinedTags {
-border:inset 2px buttonface;
 height:285px;
 margin-left:auto;
 margin-right:auto;

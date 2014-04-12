@@ -1462,7 +1462,6 @@ html[dir=rtl] .itr:hover .popup {
 	margin-right: auto;
 	height: 285px;
 	overflow: auto;
-	border: inset 2px buttonface;
 }
 #tabDefinedTags {
 	border-collapse: collapse;
