@@ -81,7 +81,7 @@ header('Content-Type: text/html; charset=UTF-8');
 		a {color: black; font-weight: normal; text-decoration: none;}
 		a:hover {color: #81A9CB;}
 		h1 {color: #81A9CB; font-weight:normal;}
-		legend {color:#81A9CB; font-style: italic; font-weight:bold; padding: 0 5px 5px; align: top;}
+		legend {color:#81A9CB; font-style: italic; font-weight:bold; padding: 0 5px 5px;}
 		.good {color: green;}
 		.bad {color: red; font-weight: bold;}
 		.info {color: blue;}

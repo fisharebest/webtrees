@@ -3,17 +3,53 @@
  * specification in place of its proprietary and non-standard method.
  */
 
-.rela {filter: alpha(opacity=80);}
-a.showit:hover > span {filter: alpha(opacity=80);}
-.ltr {text-align: left;}
+.rela {
+	filter: alpha(opacity=80);
+}
 
+a.showit:hover > span {
+	filter: alpha(opacity=80);
+}
 
-#menu-theme, #menu-language, #menu-theme, #menu-favorites {*padding-right: 10px;}
-div.blockcontent {*margin-top:-2px;}
-#topMenu {*position: relative; *z-index: 1;}
-#header {*position: relative; *z-index: 2002; *height: 120px;}
-.makeMenu li ul { *top: 8px;}
-.itr {top: 30px;}
-.itr:hover .popup {top: 20px;}
+.ltr {
+	text-align: left;
+}
 
-.makeMenu,.makeMenu li ul{top:2px;}
+#menu-theme,
+#menu-language,
+#menu-theme,
+#menu-favorites {
+	*padding-right: 10px;
+}
+
+div.blockcontent {
+	*margin-top: -2px;
+}
+
+#topMenu {
+	*position: relative;
+	*z-index: 1;
+}
+
+#header {
+	*position: relative;
+	*z-index: 2002;
+	*height: 120px;
+}
+
+.makeMenu li ul {
+	*top: 8px;
+}
+
+.itr {
+	top: 30px;
+}
+
+.itr:hover .popup {
+	top: 20px;
+}
+
+.makeMenu,
+.makeMenu li ul {
+	top: 2px;
+}

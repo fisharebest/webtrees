@@ -62,8 +62,7 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Tab {
 		$html='<div id="'.$this->getName().'_content">';
 		//Show Lightbox-Album header Links
 		if (WT_USER_CAN_EDIT) {
-			$html.='<table class="facts_table"><tr>';
-			$html.='<td class="descriptionbox rela">';
+			$html.='<table class="facts_table"><tr><td class="descriptionbox rela">';
 			// Add a new media object
 			if (get_gedcom_setting(WT_GED_ID, 'MEDIA_UPLOAD') >= WT_USER_ACCESS_LEVEL) {
 				$html.='<span><a href="#" onclick="window.open(\'addmedia.php?action=showmediaform&linktoid='.$controller->record->getXref().'\', \'_blank\', \'resizable=1,scrollbars=1,top=50,height=780,width=600\');return false;">';
@@ -82,39 +81,21 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Tab {
 				$html.='<img src="'.WT_STATIC_URL.WT_MODULES_DIR.'lightbox/images/images.png" id="head_icon" class="icon" title="'.WT_I18N::translate('Re-order media').'" alt="'.WT_I18N::translate('Re-order media').'">';
 				$html.=WT_I18N::translate('Re-order media');
 				$html.='</a></span>';
-				$html.='</td>';
 			}
-			$html.='</tr></table>';
+			$html.='</td></tr></table>';
 		}
 		$media_found = false;
 
 		// Used when sorting media on album tab page
-		$html .= '<table width="100%" cellpadding="0" border="0">';
-		$html .= '<tr>';
-		$html .= '<td class="facts_value">';
-		$html .= '<div class="thumbcontainer">';
-		$html .= '<ul class="thumblist">';
+		$html .= '<table><tr><td class="facts_value">'; // one-cell table - for presentation only
+		$html .= '<ul class="album-list">';
 		foreach ($this->get_media() as $media) {
-			$html .= '<li class="li_norm">';
-			// ...and now the actual image
-			if (strpos($media->getFilename(), 'http://maps.google.')===0) {
-				$html .= '<table width="10px" style="margin-top:-90px;" class="pic" border="0"><tr>';
-			} else {
-				$html .= '<table width="10px" class="pic" border="0"><tr>';
-			}
-			$html .= '<td align="center" rowspan="2">';
-			$html .= '<div style="width:1px; height:100px;"></div>';
-			$html .= '</td>';
-			$html .= '<td colspan="3" valign="middle" align="center">';
+			$html .= '<li class="album-list-item">';
+			$html .= '<div class="album-image">';
 			$html .= $media->displayImage();
-			$html .= '</td></tr>';
+			$html .= '</div>';
 
 			//View Edit Menu ----------------------------------
-			$html .= '<tr>';
-			$html .= '<td width="5px"></td>';
-			$html .= '<td valign="bottom" align="center" class="nowrap">';
-
-
 
 			//Get media item Notes
 			$haystack = $media->getGedcom();
@@ -124,7 +105,7 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Tab {
 			$notes    = print_fact_notes($before . $needle . $after, 1, true, true);
 
 			// Prepare Below Thumbnail  menu ----------------------------------------------------
-			$mtitle = '<div style="max-width:120px;overflow:hidden;text-overflow:ellipsis;">' . $media->getFullName() . '</div>';
+			$mtitle = $media->getFullName();
 			$menu = new WT_Menu();
 			$menu->addLabel($mtitle, 'right');
 
@@ -205,20 +186,15 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Tab {
 					$menu->addSubMenu($submenu);
 				}
 			}
+			$html .= '<div class="album-title">';
 			$html .= $menu->getMenu();
-			$html .= '</td>';
-			$html .= '<td width="5px"></td>';
-			$html .= '</tr>';
-			$html .= '</table>';
+			$html .= '</div>';
 			$html .= '<input type="hidden" name="order1[' . $media->getXref() . ']" value="' . $sort_i . '">';
 			$sort_i++;
 			$html .= '</li>';
 		}
 		$html .= '</ul>';
-		$html .= '<div class="clearlist"></div>';
-		$html .= '</td>';
-		$html .= '</tr>';
-		$html .= '</table></div>';
+		$html .= '</td></tr></table>';
 		return $html;
 	}
 

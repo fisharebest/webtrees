@@ -30,9 +30,9 @@ html {
 }
 
 body {
-	color: #555555;
-	background-color: #ffffff;
-	font:12px tahoma,arial,helvetica,sans-serif;
+	color: #555;
+	background-color: #fff;
+	font: 12px tahoma, arial, helvetica, sans-serif;
 	margin: 1px;
 	padding-left: 5px;
 }
@@ -51,12 +51,12 @@ legend {
 }
 
 a {
-	color: #555555;
+	color: #555;
 	text-decoration: none;
 }
 
 a:hover {
-	color: #ff0000;
+	color: #f00;
 	text-decoration: none;
 }
 
@@ -97,10 +97,10 @@ img.block,
 input,
 button,
 textarea {
-	border-top-color: #ffffff;
-	border-left-color: #ffffff;
-	border-right-color: #555555;
-	border-bottom-color: #555555;
+	border-top-color: #fff;
+	border-left-color: #fff;
+	border-right-color: #555;
+	border-bottom-color: #555;
 	border-width: 1px;
 	font-size: 12px;
 }
@@ -123,7 +123,7 @@ input.image {
 }
 
 select {
-	border: 1px solid #555555;
+	border: 1px solid #555;
 	font-size: 12px;
 	margin: 0 7px;
 	padding: 1px;
@@ -134,13 +134,13 @@ form {
 }
 
 h2 {
-	color: #000066;
+	color: #006;
 	font-weight: bold;
 	font-size: 18px;
 }
 
 h4 {
-	color: #000066;
+	color: #006;
 	font-weight: bold;
 	font-size: 12px;
 }
@@ -197,6 +197,7 @@ textarea:required:invalid {
 
 .optionbox a img {
 }
+
 .button {
 	width: 60px;
 }
@@ -208,7 +209,7 @@ textarea:required:invalid {
 }
 
 .alpha_index {
-	color: #999999;
+	color: #999;
 }
 
 .person_box {
@@ -224,7 +225,7 @@ textarea:required:invalid {
 }
 
 .person_boxNN {
-	background-color: #ffffff;
+	background-color: #fff;
 	border: dashed #81a9cb 1px;
 	padding: 3px;
 }
@@ -232,7 +233,7 @@ textarea:required:invalid {
 .person_box:target,
 .news_box:target,
 #gedcom_stats:target {
-	background-color: #ffffcc;
+	background-color: #ffc;
 }
 
 .person_box_lifespan {
@@ -262,7 +263,7 @@ table.center {
 
 .list_label,
 .list_label_wrap {
-	color: #ffffff;
+	color: #fff;
 	background-color: #81a9cb;
 	font-weight: bold;
 	font-size: 12px;
@@ -305,7 +306,7 @@ table.center {
 
 .facts_label02,
 .facts_label03 {
-	color: #ffffff;
+	color: #fff;
 	font-size: 12px;
 	padding: 4px;
 	text-align: center;
@@ -344,31 +345,31 @@ table.center {
 }
 
 .name1 {
-	color: #555555;
+	color: #555;
 	font-weight: bold;
 	font-size: 12px;
 }
 
 a:hover .name1 {
-	color: #ff0000;
+	color: #f00;
 	font-weight: bold;
 	font-size: 12px;
 }
 
 a:hover .name2 {
-	color: #ff0000;
+	color: #f00;
 	font-weight: bold;
 	font-size: 12px;
 }
 
 a:hover .nameZoom {
-	color: #ff0000;
+	color: #f00;
 	font-weight: bold;
 	font-size: 14px;
 }
 
 .name2 {
-	color: #555555;
+	color: #555;
 	font-weight: bold;
 	font-size: 12px;
 }
@@ -382,7 +383,7 @@ a:hover .nameZoom {
 }
 
 .nameZoom {
-	color: #555555;
+	color: #555;
 	font-weight: bold;
 	font-size: 14px;
 }
@@ -397,7 +398,7 @@ a:hover .nameZoom {
 }
 
 .name_head {
-	color: #555555;
+	color: #555;
 	font-weight: bold;
 	font-size: 16px;
 	letter-spacing: .2px;
@@ -406,28 +407,29 @@ a:hover .nameZoom {
 }
 
 .date {
-	color: #333377;
+	color: #337;
 }
 
 .field {
 }
+
 .label {
 	font-weight: bold;
 }
 
 .error {
-	color: #dd0000;
+	color: #d00;
 	font-weight: bold;
 }
 
 .largeError {
-	color: #dd0000;
+	color: #d00;
 	font-size: large;
 	font-weight: bold;
 }
 
 .warning {
-	color: #ff0000;
+	color: #f00;
 	font-weight: bold;
 }
 
@@ -493,7 +495,7 @@ a:hover .nameZoom {
 }
 
 .parentdeath {
-	border: thin solid #888888;
+	border: thin solid #888;
 	padding: 1px;
 }
 
@@ -515,13 +517,13 @@ a:hover .nameZoom {
 }
 
 .hit-counter {
-	background: #000000;
-	color: #ffffff;
+	background: #000;
+	color: #fff;
 	font-weight: bold;
 }
 
 .border1 {
-	border: solid #000000 1px;
+	border: solid #000 1px;
 }
 
 .menuitem {
@@ -574,7 +576,7 @@ a:hover .nameZoom {
 
 .journal_box {
 	padding: 3pt;
-	border: thin solid #aaaaaa;
+	border: thin solid #aaa;
 	overflow: visible;
 }
 
@@ -605,12 +607,13 @@ a:hover .nameZoom {
 .rtl_cal_day {
 	direction: rtl;
 	float: right;
-	color: #0000ff;
+	color: #00f;
 	font-weight: bold;
 }
 
 .helpheader {
 }
+
 .helpcontent {
 	margin-left: 10px;
 	margin-right: 10px;
@@ -623,6 +626,7 @@ a:hover .nameZoom {
 #familybook_chart {
 	margin-left: 10px;
 }
+
 #familybook_chart table {
 	border-collapse: collapse;
 	empty-cells: show;
@@ -653,7 +657,7 @@ a:hover .nameZoom {
 }
 
 #familybook_chart h3 {
-	color: #000066;
+	color: #006;
 	font-size: 16px;
 	text-align: center;
 }
@@ -708,7 +712,7 @@ a:hover .nameZoom {
 }
 
 #pedigree_canvas {
-	color: #81A9CB;
+	color: #81a9cb;
 	position: absolute;
 	top: 200px;
 	z-index: -1000;
@@ -722,7 +726,7 @@ a:hover .nameZoom {
 
 #pedigree_chart #childbox {
 	border: 1px solid;
-	background-color: #ffffff;
+	background-color: #fff;
 	padding: 5px;
 	position: absolute;
 	visibility: hidden;
@@ -811,38 +815,38 @@ a:hover .nameZoom {
 }
 
 .person0 {
-	background-color: #aaaaff;
-	border: outset #aaaaff 1px;
+	background-color: #aaf;
+	border: outset #aaf 1px;
 	vertical-align: top;
 }
 
 .person1 {
-	background-color: #aaffaa;
-	border: outset #aaffaa 1px;
+	background-color: #afa;
+	border: outset #afa 1px;
 	vertical-align: top;
 }
 
 .person2 {
-	background-color: #ffaaaa;
-	border: outset #ffaaaa 1px;
+	background-color: #faa;
+	border: outset #faa 1px;
 	vertical-align: top;
 }
 
 .person3 {
-	background-color: #5555ff;
-	border: outset #5555ff 1px;
+	background-color: #55f;
+	border: outset #55f 1px;
 	vertical-align: top;
 }
 
 .person4 {
-	background-color: #ff5555;
-	border: outset #ff5555 1px;
+	background-color: #f55;
+	border: outset #f55 1px;
 	vertical-align: top;
 }
 
 .person5 {
-	background-color: #55ff55;
-	border: outset #55ff55 1px;
+	background-color: #5f5;
+	border: outset #5f5 1px;
 	vertical-align: top;
 }
 
@@ -855,7 +859,7 @@ a:hover .nameZoom {
 }
 
 .compact_view {
-	cursor:url(images/zoomin.png), n-resize;
+	cursor: url(images/zoomin.png), n-resize;
 }
 
 .compact_view p {
@@ -876,7 +880,7 @@ a:hover .nameZoom {
 }
 
 .search_hit {
-	background-color: #ffff00;
+	background-color: #ff0;
 }
 
 .search_item {
@@ -918,7 +922,7 @@ a:hover .nameZoom {
 /* Styles for the option boxes */
 /* Style for the top and bottom bar */
 .topbottombar {
-	color: #ffffff;
+	color: #fff;
 	background-color: #81a9cb;
 	font-weight: bold;
 	font-size: 12px;
@@ -928,7 +932,7 @@ a:hover .nameZoom {
 
 /* Style for the descriptionbox */
 .descriptionbox {
-	color: #ffffff;
+	color: #fff;
 	background-color: #81a9cb;
 	font-size: 12px;
 	vertical-align: top;
@@ -951,7 +955,7 @@ a:hover .nameZoom {
 
 /* Colors */
 .red {
-	color: #ff0000;
+	color: #f00;
 }
 
 .rela,
@@ -1035,6 +1039,7 @@ a:hover .nameZoom {
 .new {
 	outline: solid blue 1px;
 }
+
 .old {
 	outline: solid red 1px;
 }
@@ -1064,11 +1069,11 @@ a.showit:hover > span {
 	border-style: outset;
 	border-left: 15px outset #1f1f1f;
 	border-top: 2px solid #1f1f1f;
-	border-bottom: 2px solid #000000;
-	border-right: 2px solid #000000;
+	border-bottom: 2px solid #000;
+	border-right: 2px solid #000;
 	padding: 3px;
 	background: #4f4f4f;
-	color: #ffffff;
+	color: #fff;
 	font-size: 15px;
 	text-align: left;
 	opacity: .85;
@@ -1086,13 +1091,14 @@ a.showit:hover > span {
 	width: 99.5%;
 	height: 600px;
 	overflow: hidden;
-	border: solid #0000ff 1px;
+	border: solid #00f 1px;
 }
 
 .lifespan_outer a {
 }
+
 .lifespan_outer a:hover {
-	color: #ff0000;
+	color: #f00;
 	text-decoration: none;
 }
 
@@ -1102,7 +1108,7 @@ a.showit:hover > span {
 	left: -10px;
 	top: -65px;
 	z-index: 2;
-	background-color: #ffffff;
+	background-color: #fff;
 }
 
 .lifespan_people {
@@ -1111,29 +1117,6 @@ a.showit:hover > span {
 	left: -10px;
 	top: -60px;
 	z-index: 1;
-}
-
-.iwstyle {
-	width: 360px;
-}
-
-.iwstyle a {
-}
-
-.iwstyle a:hover {
-}
-
-#map_nav {
-	position: relative;
-	top: -484px;
-	left: 101%;
-}
-
-#tree_nav {
-	position: relative;
-	top: -584px;
-	left: 90%;
-	z-index: 100;
 }
 
 .tag_cloud {
@@ -1151,8 +1134,8 @@ a.showit:hover > span {
 
 .ui-autocomplete {
 	padding: 0;
-	border: 1px solid #000000;
-	background-color: #ffffff;
+	border: 1px solid #000;
+	background-color: #fff;
 	z-index: 99999;
 	list-style-position: outside;
 	list-style: none;
@@ -1174,16 +1157,17 @@ a.showit:hover > span {
 	line-height: 14px;
 	overflow: hidden;
 }
+
 .ui-autocomplete-loading {
-	background: #ffffff url(images/indicator.gif) right center no-repeat;
+	background: #fff url(images/indicator.gif) right center no-repeat;
 }
 
 .ui-autocomplete li:nth-child(odd) {
-	background-color: #eeeeee;
+	background-color: #eee;
 }
 
 .ui-autocomplete a.ui-state-focus {
-	color: #ff0000;
+	color: #f00;
 }
 
 .ui-sortable li {
@@ -1259,8 +1243,10 @@ dt {
 }
 
 td.descriptionbox a {
-	color: #ffffff;
-} /* this keeps the tag color the same when it is a link as when not */
+	color: #fff;
+}
+
+/* this keeps the tag color the same when it is a link as when not */
 
 .place {
 	padding-top: 5px;
@@ -1344,14 +1330,17 @@ td.descriptionbox a {
 	max-width: 80px;
 	width: auto;
 }
+
 [dir=rtl] .person_box_template img,
 [dir=rtl] .person_box_template a.gallery {
 	float: right;
 	margin: 0 0 0 4px;
 }
+
 .person_box_template i[class^="icon-silhouette"] {
 	float: left;
 }
+
 [dir=rtl] .person_box_template i[class^="icon-silhouette"] {
 	float: right;
 }
@@ -1461,7 +1450,7 @@ td.descriptionbox a {
 	font-weight: bold;
 }
 
-#login-register-page .confirm p+p {
+#login-register-page .confirm p + p {
 	font-size: 12px;
 	font-weight: normal;
 }
@@ -1484,7 +1473,7 @@ td.descriptionbox a {
 #register-form,
 #verify-form {
 	background-color: #edf7fd;
-	border: 1px outset #81A9CB;
+	border: 1px outset #81a9cb;
 	display: inline-block;
 	margin: 10px auto 0 auto;
 	padding: 5px;
@@ -1663,7 +1652,7 @@ td.descriptionbox a {
 
 #tabDefinedTags th,
 #tabDefinedTags td {
-	border: solid 1px #000000;
+	border: solid 1px #000;
 	margin: 0;
 	padding: 3px;
 }
@@ -1675,12 +1664,12 @@ td.descriptionbox a {
 
 #tabDefinedTags tr.sel {
 	background-color: #d1d9ef;
-	color: #888888;
+	color: #888;
 }
 
 #tabDefinedTags tr.unsel {
-	background-color: #ffffff;
-	color: #888888;
+	background-color: #fff;
+	color: #888;
 }
 
 #tabDefinedTagsShow {
@@ -1757,6 +1746,7 @@ td.descriptionbox a {
 .indi-list td,
 .fam-list td {
 }
+
 .surname-list td {
 	vertical-align: top;
 }
@@ -2146,8 +2136,8 @@ div.faq_body {
 }
 
 #topMenu {
-	border-top: 2px solid #81A9CB;
-	border-bottom: 2px solid #81A9CB;
+	border-top: 2px solid #81a9cb;
+	border-bottom: 2px solid #81a9cb;
 	float: left;
 	margin: 5px auto;
 	padding: 5px 0;
@@ -2202,8 +2192,8 @@ div.faq_body {
 #main-menu ul {
 	position: absolute;
 	display: none;
-	background: #ffffff;
-	border: thin solid #aaaaaa;
+	background: #fff;
+	border: thin solid #aaa;
 	padding: 5px 0;
 }
 
@@ -2339,6 +2329,7 @@ div.faq_body {
 #menu-admin {
 	background-position: left 0;
 }
+
 [dir=rtl] #menu-admin {
 	background-position: right 0;
 }
@@ -2346,6 +2337,7 @@ div.faq_body {
 #menu-branches {
 	background-position: left -450px;
 }
+
 [dir=rtl] #menu-branches {
 	background-position: right -450px;
 }
@@ -2353,6 +2345,7 @@ div.faq_body {
 #menu-calendar-day {
 	background-position: left -60px;
 }
+
 [dir=rtl] #menu-calendar-day {
 	background-position: right -60px;
 }
@@ -2360,6 +2353,7 @@ div.faq_body {
 #menu-calendar-month {
 	background-position: left -60px;
 }
+
 [dir=rtl] #menu-calendar-month {
 	background-position: right -60px;
 }
@@ -2367,6 +2361,7 @@ div.faq_body {
 #menu-calendar-year {
 	background-position: left -60px;
 }
+
 [dir=rtl] #menu-calendar-year {
 	background-position: right -60px;
 }
@@ -2374,6 +2369,7 @@ div.faq_body {
 #menu-chart-ancestry {
 	background-position: left -30px;
 }
+
 [dir=rtl] #menu-chart-ancestry {
 	background-position: right -30px;
 }
@@ -2381,6 +2377,7 @@ div.faq_body {
 #menu-chart-compact {
 	background-position: left -30px;
 }
+
 [dir=rtl] #menu-chart-compact {
 	background-position: right -30px;
 }
@@ -2388,6 +2385,7 @@ div.faq_body {
 #menu-chart-descendancy {
 	background-position: left -150px;
 }
+
 [dir=rtl] #menu-chart-descendancy {
 	background-position: right -150px;
 }
@@ -2395,6 +2393,7 @@ div.faq_body {
 #menu-chart-familybook {
 	background-position: left -180px;
 }
+
 [dir=rtl] #menu-chart-familybook {
 	background-position: right -180px;
 }
@@ -2402,6 +2401,7 @@ div.faq_body {
 #menu-chart-fanchart {
 	background-position: left -210px;
 }
+
 [dir=rtl] #menu-chart-fanchart {
 	background-position: right -210px;
 }
@@ -2409,6 +2409,7 @@ div.faq_body {
 #menu-chart-hourglass {
 	background-position: left -270px;
 }
+
 [dir=rtl] #menu-chart-hourglass {
 	background-position: right -270px;
 }
@@ -2416,6 +2417,7 @@ div.faq_body {
 #menu-chart-lifespan {
 	background-position: left -660px;
 }
+
 [dir=rtl] #menu-chart-lifespan {
 	background-position: right -660px;
 }
@@ -2423,6 +2425,7 @@ div.faq_body {
 #menu-chart-pedigree {
 	background-position: left -480px;
 }
+
 [dir=rtl] #menu-chart-pedigree {
 	background-position: right -480px;
 }
@@ -2430,6 +2433,7 @@ div.faq_body {
 #menu-chart-pedigree_map {
 	background-position: left -720px;
 }
+
 [dir=rtl] #menu-chart-pedigree_map {
 	background-position: right -720px;
 }
@@ -2437,6 +2441,7 @@ div.faq_body {
 #menu-chart-relationship {
 	background-position: left -540px;
 }
+
 [dir=rtl] #menu-chart-relationship {
 	background-position: right -540px;
 }
@@ -2444,6 +2449,7 @@ div.faq_body {
 #menu-chart-relationship li {
 	background-position: left -540px;
 }
+
 [dir=rtl] #menu-chart-relationship li {
 	background-position: right -540px;
 }
@@ -2451,6 +2457,7 @@ div.faq_body {
 #menu-chart-statistics {
 	background-position: left -630px;
 }
+
 [dir=rtl] #menu-chart-statistics {
 	background-position: right -630px;
 }
@@ -2458,6 +2465,7 @@ div.faq_body {
 #menu-chart-timeline {
 	background-position: left -660px;
 }
+
 [dir=rtl] #menu-chart-timeline {
 	background-position: right -660px;
 }
@@ -2465,6 +2473,7 @@ div.faq_body {
 #menu-chart-timeline li {
 	background-position: left -660px;
 }
+
 [dir=rtl] #menu-chart-timeline li {
 	background-position: right -660px;
 }
@@ -2472,6 +2481,7 @@ div.faq_body {
 #menu-chart-tree {
 	background-position: left -240px;
 }
+
 [dir=rtl] #menu-chart-tree {
 	background-position: right -240px;
 }
@@ -2479,6 +2489,7 @@ div.faq_body {
 #menu-clippingsadd {
 	background-position: left -930px;
 }
+
 [dir=rtl] #menu-clippingsadd {
 	background-position: right -930px;
 }
@@ -2486,6 +2497,7 @@ div.faq_body {
 #menu-clippingscart {
 	background-position: left -900px;
 }
+
 [dir=rtl] #menu-clippingscart {
 	background-position: right -900px;
 }
@@ -2493,6 +2505,7 @@ div.faq_body {
 #menu-fam-addchil {
 	background-position: left -1050px;
 }
+
 [dir=rtl] #menu-fam-addchil {
 	background-position: right -1050px;
 }
@@ -2500,6 +2513,7 @@ div.faq_body {
 #menu-fam-addfav {
 	background-position: left -870px;
 }
+
 [dir=rtl] #menu-fam-addfav {
 	background-position: right -870px;
 }
@@ -2507,6 +2521,7 @@ div.faq_body {
 #menu-fam-change {
 	background-position: left -90px;
 }
+
 [dir=rtl] #menu-fam-change {
 	background-position: right -90px;
 }
@@ -2514,6 +2529,7 @@ div.faq_body {
 #menu-fam-del {
 	background-position: left -840px;
 }
+
 [dir=rtl] #menu-fam-del {
 	background-position: right -840px;
 }
@@ -2521,13 +2537,17 @@ div.faq_body {
 #menu-fam-editraw {
 	background-position: left -90px;
 }
+
 [dir=rtl] #menu-fam-editraw {
 	background-position: right -90px;
-} /* needs new icon */
+}
+
+/* needs new icon */
 
 #menu-fam-orderchil {
 	background-position: left -1080px;
 }
+
 [dir=rtl] #menu-fam-orderchil {
 	background-position: right -1080px;
 }
@@ -2535,6 +2555,7 @@ div.faq_body {
 #menu-help-contents {
 	background-position: left -300px;
 }
+
 [dir=rtl] #menu-help-contents {
 	background-position: right -300px;
 }
@@ -2542,6 +2563,7 @@ div.faq_body {
 #menu-help-faq {
 	background-position: left -300px;
 }
+
 [dir=rtl] #menu-help-faq {
 	background-position: right -300px;
 }
@@ -2549,6 +2571,7 @@ div.faq_body {
 #menu-help-genealogy {
 	background-position: left -120px;
 }
+
 [dir=rtl] #menu-help-genealogy {
 	background-position: right -120px;
 }
@@ -2556,6 +2579,7 @@ div.faq_body {
 #menu-help-hide {
 	background-position: left -300px;
 }
+
 [dir=rtl] #menu-help-hide {
 	background-position: right -300px;
 }
@@ -2563,6 +2587,7 @@ div.faq_body {
 #menu-help-show {
 	background-position: left -300px;
 }
+
 [dir=rtl] #menu-help-show {
 	background-position: right -300px;
 }
@@ -2570,6 +2595,7 @@ div.faq_body {
 #menu-help-technical {
 	background-position: left -120px;
 }
+
 [dir=rtl] #menu-help-technical {
 	background-position: right -120px;
 }
@@ -2577,6 +2603,7 @@ div.faq_body {
 #menu-help-wiki {
 	background-position: left -690px;
 }
+
 [dir=rtl] #menu-help-wiki {
 	background-position: right -690px;
 }
@@ -2584,6 +2611,7 @@ div.faq_body {
 #menu-indi-addfav {
 	background-position: left -870px;
 }
+
 [dir=rtl] #menu-indi-addfav {
 	background-position: right -870px;
 }
@@ -2591,6 +2619,7 @@ div.faq_body {
 #menu-indi-addname {
 	background-position: left -780px;
 }
+
 [dir=rtl] #menu-indi-addname {
 	background-position: right -780px;
 }
@@ -2598,6 +2627,7 @@ div.faq_body {
 #menu-indi-del {
 	background-position: left -840px;
 }
+
 [dir=rtl] #menu-indi-del {
 	background-position: right -840px;
 }
@@ -2605,6 +2635,7 @@ div.faq_body {
 #menu-indi-editraw {
 	background-position: left -750px;
 }
+
 [dir=rtl] #menu-indi-editraw {
 	background-position: right -750px;
 }
@@ -2612,6 +2643,7 @@ div.faq_body {
 #menu-indi-editsex {
 	background-position: left -810px;
 }
+
 [dir=rtl] #menu-indi-editsex {
 	background-position: right -810px;
 }
@@ -2619,6 +2651,7 @@ div.faq_body {
 #menu-list-fam {
 	background-position: left -90px;
 }
+
 [dir=rtl] #menu-list-fam {
 	background-position: right -90px;
 }
@@ -2626,6 +2659,7 @@ div.faq_body {
 #menu-list-indi {
 	background-position: left -120px;
 }
+
 [dir=rtl] #menu-list-indi {
 	background-position: right -120px;
 }
@@ -2633,6 +2667,7 @@ div.faq_body {
 #menu-list-note {
 	background-position: left -420px;
 }
+
 [dir=rtl] #menu-list-note {
 	background-position: right -420px;
 }
@@ -2640,6 +2675,7 @@ div.faq_body {
 #menu-list-obje {
 	background-position: left -330px;
 }
+
 [dir=rtl] #menu-list-obje {
 	background-position: right -330px;
 }
@@ -2647,6 +2683,7 @@ div.faq_body {
 #menu-list-plac {
 	background-position: left -510px;
 }
+
 [dir=rtl] #menu-list-plac {
 	background-position: right -510px;
 }
@@ -2654,6 +2691,7 @@ div.faq_body {
 #menu-list-repo {
 	background-position: left -360px;
 }
+
 [dir=rtl] #menu-list-repo {
 	background-position: right -360px;
 }
@@ -2661,6 +2699,7 @@ div.faq_body {
 #menu-list-sour {
 	background-position: left -180px;
 }
+
 [dir=rtl] #menu-list-sour {
 	background-position: right -180px;
 }
@@ -2668,6 +2707,7 @@ div.faq_body {
 #menu-myaccount {
 	background-position: left -390px;
 }
+
 [dir=rtl] #menu-myaccount {
 	background-position: right -390px;
 }
@@ -2675,6 +2715,7 @@ div.faq_body {
 #menu-mypage {
 	background-position: left -390px;
 }
+
 [dir=rtl] #menu-mypage {
 	background-position: right -390px;
 }
@@ -2682,6 +2723,7 @@ div.faq_body {
 #menu-mypedigree {
 	background-position: left -480px;
 }
+
 [dir=rtl] #menu-mypedigree {
 	background-position: right -480px;
 }
@@ -2689,6 +2731,7 @@ div.faq_body {
 #menu-myrecord {
 	background-position: left -120px;
 }
+
 [dir=rtl] #menu-myrecord {
 	background-position: right -120px;
 }
@@ -2696,6 +2739,7 @@ div.faq_body {
 #menu-note-addfav {
 	background-position: left -870px;
 }
+
 [dir=rtl] #menu-note-addfav {
 	background-position: right -870px;
 }
@@ -2703,6 +2747,7 @@ div.faq_body {
 #menu-note-del {
 	background-position: left -840px;
 }
+
 [dir=rtl] #menu-note-del {
 	background-position: right -840px;
 }
@@ -2710,6 +2755,7 @@ div.faq_body {
 #menu-note-edit {
 	background-position: left -1020px;
 }
+
 [dir=rtl] #menu-note-edit {
 	background-position: right -1020px;
 }
@@ -2717,6 +2763,7 @@ div.faq_body {
 #menu-note-editraw {
 	background-position: left -1020px;
 }
+
 [dir=rtl] #menu-note-editraw {
 	background-position: right -1020px;
 }
@@ -2724,6 +2771,7 @@ div.faq_body {
 #menu-obje-addfav {
 	background-position: left -870px;
 }
+
 [dir=rtl] #menu-obje-addfav {
 	background-position: right -870px;
 }
@@ -2731,6 +2779,7 @@ div.faq_body {
 #menu-obje-del {
 	background-position: left -840px;
 }
+
 [dir=rtl] #menu-obje-del {
 	background-position: right -840px;
 }
@@ -2738,6 +2787,7 @@ div.faq_body {
 #menu-obje-edit {
 	background-position: left -1110px;
 }
+
 [dir=rtl] #menu-obje-edit {
 	background-position: right -1110px;
 }
@@ -2745,6 +2795,7 @@ div.faq_body {
 #menu-obje-editraw {
 	background-position: left -1110px;
 }
+
 [dir=rtl] #menu-obje-editraw {
 	background-position: right -1110px;
 }
@@ -2752,6 +2803,7 @@ div.faq_body {
 #menu-obje-link {
 	background-position: left -1140px;
 }
+
 [dir=rtl] #menu-obje-link {
 	background-position: right -1140px;
 }
@@ -2759,6 +2811,7 @@ div.faq_body {
 #menu-obje-link-fam {
 	background-position: left -90px;
 }
+
 [dir=rtl] #menu-obje-link-fam {
 	background-position: right -90px;
 }
@@ -2766,6 +2819,7 @@ div.faq_body {
 #menu-obje-link-indi {
 	background-position: left -300px;
 }
+
 [dir=rtl] #menu-obje-link-indi {
 	background-position: right -300px;
 }
@@ -2773,6 +2827,7 @@ div.faq_body {
 #menu-obje-link-sour {
 	background-position: left -180px;
 }
+
 [dir=rtl] #menu-obje-link-sour {
 	background-position: right -180px;
 }
@@ -2780,6 +2835,7 @@ div.faq_body {
 #menu-repo-addfav {
 	background-position: left -870px;
 }
+
 [dir=rtl] #menu-repo-addfav {
 	background-position: right -870px;
 }
@@ -2787,6 +2843,7 @@ div.faq_body {
 #menu-repo-del {
 	background-position: left -840px;
 }
+
 [dir=rtl] #menu-repo-del {
 	background-position: right -840px;
 }
@@ -2794,6 +2851,7 @@ div.faq_body {
 #menu-repo-edit {
 	background-position: left -990px;
 }
+
 [dir=rtl] #menu-repo-edit {
 	background-position: right -990px;
 }
@@ -2801,6 +2859,7 @@ div.faq_body {
 #menu-repo-editraw {
 	background-position: left -990px;
 }
+
 [dir=rtl] #menu-repo-editraw {
 	background-position: right -990px;
 }
@@ -2808,6 +2867,7 @@ div.faq_body {
 #menu-report li {
 	background-position: left -570px;
 }
+
 [dir=rtl] #menu-report li {
 	background-position: right -570px;
 }
@@ -2815,6 +2875,7 @@ div.faq_body {
 #menu-search-advanced {
 	background-position: left -600px;
 }
+
 [dir=rtl] #menu-search-advanced {
 	background-position: right -600px;
 }
@@ -2822,6 +2883,7 @@ div.faq_body {
 #menu-search-general {
 	background-position: left -600px;
 }
+
 [dir=rtl] #menu-search-general {
 	background-position: right -600px;
 }
@@ -2829,6 +2891,7 @@ div.faq_body {
 #menu-search-replace {
 	background-position: left -600px;
 }
+
 [dir=rtl] #menu-search-replace {
 	background-position: right -600px;
 }
@@ -2836,6 +2899,7 @@ div.faq_body {
 #menu-search-soundex {
 	background-position: left -600px;
 }
+
 [dir=rtl] #menu-search-soundex {
 	background-position: right -600px;
 }
@@ -2843,6 +2907,7 @@ div.faq_body {
 #menu-sour-addfav {
 	background-position: left -870px;
 }
+
 [dir=rtl] #menu-sour-addfav {
 	background-position: right -870px;
 }
@@ -2850,6 +2915,7 @@ div.faq_body {
 #menu-sour-del {
 	background-position: left -840px;
 }
+
 [dir=rtl] #menu-sour-del {
 	background-position: right -840px;
 }
@@ -2857,6 +2923,7 @@ div.faq_body {
 #menu-sour-edit {
 	background-position: left -960px;
 }
+
 [dir=rtl] #menu-sour-edit {
 	background-position: right -960px;
 }
@@ -2864,6 +2931,7 @@ div.faq_body {
 #menu-sour-editraw {
 	background-position: left -960px;
 }
+
 [dir=rtl] #menu-sour-editraw {
 	background-position: right -960px;
 }
@@ -2871,6 +2939,7 @@ div.faq_body {
 #menu-story-sub {
 	background-position: left -1208px;
 }
+
 [dir=rtl] #menu-story-sub {
 	background-position: right -1208px;
 }
@@ -2878,6 +2947,7 @@ div.faq_body {
 #menu-tree li {
 	background-position: left -240px;
 }
+
 [dir=rtl] #menu-tree li {
 	background-position: right -240px;
 }
@@ -2929,8 +2999,8 @@ div.faq_body {
 	font-weight: normal;
 	position: absolute;
 	top: 1.1em;
-	background-color: #ffffff;
-	border: thin solid #aaaaaa;
+	background-color: #fff;
+	border: thin solid #aaa;
 }
 
 .makeMenu li ul li {
@@ -2952,7 +3022,7 @@ div.faq_body {
 
 .lang-active,
 .theme-active {
-	color: #000066;
+	color: #006;
 	font-weight: 900;
 }
 
@@ -2992,7 +3062,9 @@ delete links ============= */
 .editfacts {
 	clear: left;
 	padding-top: 15px;
-} /* a container for the following three links */
+}
+
+/* a container for the following three links */
 
 .editlink,
 .copylink,
@@ -3072,13 +3144,13 @@ delete links ==================== */
 }
 
 #indi_header a {
-	color: #333377;
+	color: #337;
 	font-size: 0.75em;
 	font-weight: normal;
 }
 
 #indi_header a:hover {
-	color: #ff0000;
+	color: #f00;
 }
 
 #main_name {
@@ -3114,7 +3186,7 @@ delete links ==================== */
 }
 
 #indi_header a.warning {
-	color: #ff0000;
+	color: #f00;
 	font-size: 1em;
 }
 
@@ -3165,12 +3237,15 @@ dd .deletelink {
 	margin: 0 0 0.5em;
 	white-space: pre-wrap;
 }
+
 .markdown table {
 	border-collapse: collapse;
 }
+
 .markdown th {
 	font-weight: bold;
 }
+
 .markdown td,
 .markdown th {
 	border: solid thin #000;
@@ -3284,6 +3359,7 @@ dd .deletelink {
 .icon_arrow {
 	background-position: 90% -1166px;
 }
+
 [dir=rtl] .icon_arrow {
 	background-position: 10% -1184px;
 }
@@ -3314,6 +3390,45 @@ dd .deletelink {
 
 [dir=rtl] .media-display-title {
 	float: right;
+}
+
+/* Album tab */
+.album-list {
+	list-style-type: none;
+}
+
+.album-list-item {
+	display: inline-block;
+	text-align: center;
+	padding: 0 12px;
+	height: 112px;
+	width: 120px;
+}
+
+.album-list-item a img {
+	max-height: 78px;
+	max-width: 100px;
+	height: auto;
+	width: auto;
+}
+
+.album-list-item a:hover {
+	outline: thin solid #bdb071;
+}
+
+.album-image {
+	margin: auto;
+}
+
+.album-title {
+	padding-top: 4px;
+	width: 100%;
+}
+
+.album-title div {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 
 /* ========= jquery-ui.custom.css changes ============ */
@@ -3352,7 +3467,7 @@ dd .deletelink {
 }
 
 .ui-state-highlight a {
-	color: #ff0000;
+	color: #f00;
 }
 
 .ui-widget-header {
@@ -3360,7 +3475,7 @@ dd .deletelink {
 }
 
 .ui-widget-content {
-	color: #555555;
+	color: #555;
 }
 
 [dir=rtl] .ui-tabs {
@@ -3387,11 +3502,11 @@ dd .deletelink {
 
 /* jQuery.datatable styling general over-rides */
 .odd {
-	background-color: #E7EEF3 ;
+	background-color: #e7eef3;
 }
 
 .even {
-	background-color: #E6E6E6;
+	background-color: #e6e6e6;
 }
 
 .css_right {
@@ -3522,15 +3637,15 @@ dd .deletelink {
 }
 
 #tabs {
-	background-color: #ffffff;
-	border-color: #dddddd;
+	background-color: #fff;
+	border-color: #ddd;
 	float: left;
 	width: 100%;
 	overflow: visible;
 }
 
 #sidebar {
-	border-color: #dddddd;
+	border-color: #ddd;
 	display: none;
 	margin: 5px 2px 0 0;
 	height: auto;
@@ -3607,7 +3722,7 @@ dd .deletelink {
 }
 
 .nam a:hover {
-	color: #ff0000;
+	color: #f00;
 }
 
 .nav_content {
@@ -3630,7 +3745,7 @@ dd .deletelink {
 }
 
 .flyout2 a:hover {
-	color: #ff0000;
+	color: #f00;
 }
 
 .flyout4 {
@@ -3794,8 +3909,8 @@ Families */
 }
 
 #find-header {
-	background-color: #81A9CB;
-	border: 1px outset #81A9CB;
+	background-color: #81a9cb;
+	border: 1px outset #81a9cb;
 	margin: 10px auto;
 	padding: 5px 20px;
 	width: 50%;
@@ -3807,20 +3922,20 @@ Families */
 }
 
 #find-header span {
-	color: #ffffff;
+	color: #fff;
 	font-weight: bold;
 }
 
 #find-output,
 #find-output-special {
 	background-color: #edf7f9;
-	border: 1px outset #81A9CB;
+	border: 1px outset #81a9cb;
 	margin: 20px 5px;
 	padding: 10px;
 }
 
 #find-output p {
-	border-top: 1px solid #81A9CB;
+	border-top: 1px solid #81a9cb;
 	font-weight: bold;
 	margin: 0;
 	padding-top: 10px;
@@ -3828,9 +3943,9 @@ Families */
 }
 
 #find-media {
-	background-color: #81A9CB;
-	border: 1px outset #81A9CB;
-	color: #ffffff;
+	background-color: #81a9cb;
+	border: 1px outset #81a9cb;
+	color: #fff;
 	padding: 5px;
 	text-align: center;
 }
@@ -3843,12 +3958,12 @@ Families */
 }
 
 #find-output .find-media-dirs {
-	border-bottom: 1px solid #81A9CB;
+	border-bottom: 1px solid #81a9cb;
 	padding: 3px;
 }
 
 #find-output .find-media-media {
-	border: 1px solid #81A9CB;
+	border: 1px solid #81a9cb;
 	overflow: hidden;
 	margin: 1px;
 	padding: 2px;
@@ -3897,16 +4012,16 @@ Families */
 }
 
 #search-page-table {
-	background-color: #81A9CB;
-	border: 1px outset #cccccc;
+	background-color: #81a9cb;
+	border: 1px outset #ccc;
 	border-top: 0;
 	margin: 20px auto 0;
 	width: 580px;
 }
 
 #search-page-table .label {
-	border-top: 1px solid #cccccc;
-	color: #ffffff;
+	border-top: 1px solid #ccc;
+	color: #fff;
 	float: left;
 	font-weight: bold;
 	padding: 5px 10px 0;
@@ -3915,7 +4030,7 @@ Families */
 
 #search-page-table .value {
 	background-color: #edf7f9;
-	border-top: 1px solid #cccccc;
+	border-top: 1px solid #ccc;
 	margin: 0 0 0 170px;
 	padding: 5px;
 	white-space: nowrap;
@@ -3941,16 +4056,16 @@ Families */
 }
 
 #edituser-table {
-	background-color: #81A9CB;
-	border: 1px outset #cccccc;
+	background-color: #81a9cb;
+	border: 1px outset #ccc;
 	border-top: 0;
 	margin: 20px auto 0;
 	width: 800px;
 }
 
 #edituser-table .label {
-	border-top: 1px solid #cccccc;
-	color: #ffffff;
+	border-top: 1px solid #ccc;
+	color: #fff;
 	float: left;
 	font-weight: bold;
 	padding: 5px 10px 0;
@@ -3960,7 +4075,7 @@ Families */
 
 #edituser-table .value {
 	background-color: #edf7f9;
-	border-top: 1px solid #cccccc;
+	border-top: 1px solid #ccc;
 	margin: 0 0 0 260px;
 	padding: 5px;
 }
@@ -3998,8 +4113,9 @@ Families */
 	}
 
 	#header_accordion1 {
-		width: 510px!important;
+		width: 510px !important;
 	}
+
 	[dir=rtl] #pedigree_chart {
 		left: auto;
 		right: -80px;
@@ -4683,7 +4799,7 @@ a.icon-udarrow:hover {
 
 /* Generic MIME types */
 [class^="icon-mime-"],
-	[class*=" icon-mime-"] {
+[class*=" icon-mime-"] {
 	background-position: -99px -49px;
 }
 
@@ -4693,12 +4809,12 @@ a.icon-udarrow:hover {
 }
 
 [class^="icon-mime-audio-"],
-	[class*=" icon-mime-audio-"] {
+[class*=" icon-mime-audio-"] {
 	background-position: -197px -98px;
 }
 
 [class^="icon-mime-image-"],
-	[class*=" icon-mime-image-"] {
+[class*=" icon-mime-image-"] {
 	background-position: -148px -245px;
 }
 
@@ -4799,7 +4915,7 @@ a.icon-udarrow:hover {
 
 /* Edit interface pop-ups*/
 #edit_interface-page h4 {
-	color: #555555;
+	color: #555;
 	margin: 5px;
 }
 
@@ -5019,24 +5135,24 @@ a.icon-udarrow:hover {
 }
 
 #colorbox {
-	border: 2px solid #cccccc;
+	border: 2px solid #ccc;
 }
 
 #cboxOverlay {
 	position: fixed;
 	width: 100%;
 	height: 100%;
-	background: #cccccc;
+	background: #ccc;
 }
 
 #cboxContent {
-	background: #ffffff;
-	border: 5px solid #888888;
+	background: #fff;
+	border: 5px solid #888;
 }
 
 #cboxLoadedContent {
 	overflow: auto;
-	background: #ffffff;
+	background: #fff;
 	margin-bottom: 30px;
 	margin-top: 35px;
 }
@@ -5110,8 +5226,8 @@ a.icon-udarrow:hover {
 }
 
 #cboxSlideshow:hover {
-	color: #ff0000;
-	background: #ffffff;
+	color: #f00;
+	background: #fff;
 }
 
 #cboxClose {

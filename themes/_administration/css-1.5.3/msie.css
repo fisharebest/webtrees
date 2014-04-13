@@ -5,6 +5,7 @@
 #admin_menu ul {
 	*margin: 0 0 0 10px;
 }
+
 [dir=rtl] #admin_menu ul {
 	*margin: 0 10px 0 0;
 }
@@ -12,6 +13,7 @@
 #admin_menu li ul {
 	*margin: 0 0 0 20px;
 }
+
 [dir=rtl] #admin_menu li ul {
 	*margin: 0 20px 0 0;
 }
@@ -28,6 +30,7 @@
 #admin_menu ul {
 	*margin: 0 0 0 10px;
 }
+
 [dir=rtl] #admin_menu ul {
 	*margin: 0 10px 0 0;
 }
@@ -35,6 +38,7 @@
 #admin_menu li ul {
 	*margin: 0 0 0 20px;
 }
+
 [dir=rtl] #admin_menu li ul {
 	*margin: 0 20px 0 0;
 }
@@ -52,6 +56,7 @@
 #edit-options th {
 	text-align: left;
 }
+
 [dir=rtl] #file-options th,
 [dir=rtl] #privacy th,
 [dir=rtl] #config-media th,

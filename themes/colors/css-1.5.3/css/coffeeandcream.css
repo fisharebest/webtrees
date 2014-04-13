@@ -26,56 +26,57 @@
 
 /* Header */
 #header {
-background:#D4c7a7;
-color: #553e2f;
+	background: #d4c7a7;
+	color: #553e2f;
 }
 
 .title {
-text-decoration:none;
-color:#553e2f;}
+	text-decoration: none;
+	color: #553e2f;
+}
 
 /* Tbls and menus  */
 .descriptionbox, .descriptionbox a, .facts_label03,
-.topbottombar,.topbottombar a,.topbottombar h2,
-.facts_label,.facts_label a, .facts_label h2,.facts_label .date,
+.topbottombar, .topbottombar a, .topbottombar h2,
+.facts_label, .facts_label a, .facts_label h2, .facts_label .date,
 .list_label, .list_label a, #search-page-table, #edituser-table,
-#lightbox_content span a,#lightbox_content span a:hover,
-#separator, .use-sidebar #separator, #family_nav, 
-.ui-state-active a:link, .ui-state-active a:visited 
-{
-background-color:#93724f;
-color: #ffffff;
+#lightbox_content span a, #lightbox_content span a:hover,
+#separator, .use-sidebar #separator, #family_nav,
+.ui-state-active a:link, .ui-state-active a:visited {
+	background-color: #93724f;
+	color: #fff;
 }
+
 .ui-state-active, .ui-widget-content .ui-state-active {
-    background: none repeat scroll 0 0 #93724f;
+	background: none repeat scroll 0 0 #93724f;
 }
 
 /* Top Menu  */
 #main-menu {
-background:#93724F;
+	background: #93724f;
 
 }
 
 /* Base */
 #indi_header h3,
-.blockcontent,#search,#search-page-table .value,#edituser-table .value,
+.blockcontent, #search, #search-page-table .value, #edituser-table .value,
 .makeMenu ul li a:hover, .ui-widget-header, #save-cancel,
-.optionbox,#indi_header .ui-state-active a:link,
-.list_value,.list_value_wrap,.list_value_wrap a,
-#login-form,#new_passwd_form,#register-form {
-background:#F4EAD1;
+.optionbox, #indi_header .ui-state-active a:link,
+.list_value, .list_value_wrap, .list_value_wrap a,
+#login-form, #new_passwd_form, #register-form {
+	background: #f4ead1;
 }
 
 /* Alerts */
-.error,.warning,.red {
-color:#f00;
+.error, .warning, .red {
+	color: #f00;
 }
 
 /* Light Text */
 .makeMenu li a {
-color:#553e2f;
+	color: #553e2f;
 }
 
 .subheaders {
-color:#494949;
+	color: #494949;
 }

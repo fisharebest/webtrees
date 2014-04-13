@@ -55,11 +55,6 @@ echo
 	'<link type="text/css" rel="stylesheet" href="', WT_CSS_URL, 'msie.css">',
 	'<![endif]-->';
 
-// Additional css files required (Only if Lightbox installed)
-if (WT_USE_LIGHTBOX) {
-	echo '<link rel="stylesheet" type="text/css" href="', WT_STATIC_URL, WT_MODULES_DIR, 'lightbox/css/album_page.css" media="screen">';
-}
-
 echo
 	'</head>',
 	'<body id="body">';
