@@ -1992,6 +1992,45 @@ dd .deletelink {
 	float: right;
 }
 
+/* Album tab */
+.album-list {
+	list-style-type: none;
+}
+
+.album-list-item {
+	display: inline-block;
+	text-align: center;
+	padding: 0 12px;
+	height: 112px;
+	width: 120px;
+}
+
+.album-list-item a img {
+	max-height: 78px;
+	max-width: 100px;
+	height: auto;
+	width: auto;
+}
+
+.album-list-item a:hover {
+	outline: thin solid #bdb071;
+}
+
+.album-image {
+	margin: auto;
+}
+
+.album-title {
+	padding-top: 4px;
+	width: 100%;
+}
+
+.album-title div {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
 /* ========= jquery-ui.custom.css changes ============ */
 .ui-tabs .ui-tabs-panel {
 	background-color: #eee;
