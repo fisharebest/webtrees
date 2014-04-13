@@ -3,11 +3,18 @@
  * specification in place of its proprietary and non-standard method.
  */
 
-.rela {filter: alpha(opacity=80);}
-a.showit:hover > span {filter: alpha(opacity=80);}
-.itr { top: 30px;}
-.itr:hover .popup {top: 20px;}
+.rela {
+	filter: alpha(opacity=80);
+}
 
+a.showit:hover > span {
+	filter: alpha(opacity=80);
+}
 
+.itr {
+	top: 30px;
+}
 
-
+.itr:hover .popup {
+	top: 20px;
+}
