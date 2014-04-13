@@ -1119,29 +1119,6 @@ a.showit:hover > span {
 	z-index: 1;
 }
 
-.iwstyle {
-	width: 360px;
-}
-
-.iwstyle a {
-}
-
-.iwstyle a:hover {
-}
-
-#map_nav {
-	position: relative;
-	top: -484px;
-	left: 101%;
-}
-
-#tree_nav {
-	position: relative;
-	top: -584px;
-	left: 90%;
-	z-index: 100;
-}
-
 .tag_cloud {
 	text-align: center;
 }

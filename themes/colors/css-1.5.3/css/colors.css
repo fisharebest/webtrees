@@ -2180,19 +2180,6 @@ a.showit:hover > span {
 	width: 100%;
 }
 
-#map_nav {
-	left: 101%;
-	position: relative;
-	top: -484px;
-}
-
-#tree_nav {
-	left: 90%;
-	position: relative;
-	top: -584px;
-	z-index: 100;
-}
-
 .ui-autocomplete-input {
 	background: #eea;
 }
@@ -2254,10 +2241,6 @@ a.showit:hover > span {
 
 .gchart {
 	border: 1px solid #999;
-}
-
-.iwstyle {
-	width: 360px;
 }
 
 .line1,

@@ -2358,23 +2358,6 @@ a.showit:hover > span {
 	background: #fff;
 }
 
-.iwstyle {
-	width: 360px;
-}
-
-#map_nav {
-	position: relative;
-	top: -484px;
-	left: 101%;
-}
-
-#tree_nav {
-	position: relative;
-	top: -584px;
-	left: 90%;
-	z-index: 100;
-}
-
 .ui-autocomplete-input {
 	background: #eea;
 }
