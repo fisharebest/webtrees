@@ -597,7 +597,7 @@ function old_paths() {
 		WT_ROOT.'js/jquery-ui-1.10.3.js',
 		WT_ROOT.'js/webtrees-1.5.2.js',
 		WT_ROOT.'library/htmlpurifier-4.6.0',
-		WT_ROOT.'library/Michelf',
+		//WT_ROOT.'library/Michelf', On windows, this would delete library/michelf
 		WT_ROOT.'library/tcpdf',
 		WT_ROOT.'library/Zend',
 		WT_ROOT.'modules_v3/GEDFact_assistant/_CENS/census_asst_help.php',

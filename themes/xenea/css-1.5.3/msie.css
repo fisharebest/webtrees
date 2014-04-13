@@ -1,9 +1,27 @@
-.rela {filter: alpha(opacity=80);}
-.ltr {text-align: left;}
+.rela {
+	filter: alpha(opacity=80);
+}
 
-#content {*margin-top: 50px;}
-#fav-menu {*left: 30px;}
-html[dir='rtl'] #fav-menu {*right: 30px;}
+.ltr {
+	text-align: left;
+}
 
-.itr {height: 30px;}
-.itr:hover .popup {top: 28px;}
+#content {
+	*margin-top: 50px;
+}
+
+#fav-menu {
+	*left: 30px;
+}
+
+[dir=rtl] #fav-menu {
+	*right: 30px;
+}
+
+.itr {
+	height: 30px;
+}
+
+.itr:hover .popup {
+	top: 28px;
+}
