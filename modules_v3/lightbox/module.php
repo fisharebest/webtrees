@@ -92,15 +92,14 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Tab {
 		$html .= '<table width="100%" cellpadding="0" border="0">';
 		$html .= '<tr>';
 		$html .= '<td class="facts_value">';
-		$html .= '<div class="thumbcontainer">';
 		$html .= '<ul class="thumblist">';
 		foreach ($this->get_media() as $media) {
-			$html .= '<li class="li_norm">';
+			$html .= '<li>';
 			// ...and now the actual image
 			if (strpos($media->getFilename(), 'http://maps.google.')===0) {
-				$html .= '<table width="10px" style="margin-top:-90px;" class="pic" border="0"><tr>';
+				$html .= '<table style="margin-top:-90px;"><tr>';
 			} else {
-				$html .= '<table width="10px" class="pic" border="0"><tr>';
+				$html .= '<table><tr>';
 			}
 			$html .= '<td align="center" rowspan="2">';
 			$html .= '<div style="width:1px; height:100px;"></div>';
@@ -215,10 +214,9 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Tab {
 			$html .= '</li>';
 		}
 		$html .= '</ul>';
-		$html .= '<div class="clearlist"></div>';
 		$html .= '</td>';
 		$html .= '</tr>';
-		$html .= '</table></div>';
+		$html .= '</table>';
 		return $html;
 	}
 
