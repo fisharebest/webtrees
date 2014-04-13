@@ -98,7 +98,7 @@ echo
 		#container dl {margin:0 0 40px 25px;}
 		#container dt {display:inline; width: 320px; font-weight:normal; margin: 0 0 15px 0;}
 		#container dd {color: #81A9CB; margin-bottom:20px;font-weight:bold;}
-		#container p {color: #81A9CB; font-size: 14px; font-style: italic; font-weight:bold; padding: 0 5px 5px; align: top;}
+		#container p {color: #81A9CB; font-size: 14px; font-style: italic; font-weight:bold; padding: 0 5px 5px;}
 		h2 {color: #81A9CB;}
 		.good {color: green;}
 		.bad {color: red !important;}
