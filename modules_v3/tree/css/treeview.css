@@ -224,7 +224,7 @@ table#tvTreeBorder td,
 	max-width: 80px;
 	width: auto;
 }
-html[dir=rtl] #tv_tree div.tv_box img {
+[dir=rtl] #tv_tree div.tv_box img {
 	float: right;
 }
 #tv_tree div.tv_box .icon-silhouette-M,
@@ -232,9 +232,9 @@ html[dir=rtl] #tv_tree div.tv_box img {
 #tv_tree div.tv_box .icon-silhouette-U {
 	float: left;
 }
-html[dir=rtl] #tv_tree div.tv_box .icon-silhouette-M,
-html[dir=rtl] #tv_tree div.tv_box .icon-silhouette-F,
-html[dir=rtl] #tv_tree div.tv_box .icon-silhouette-U {
+[dir=rtl] #tv_tree div.tv_box .icon-silhouette-M,
+[dir=rtl] #tv_tree div.tv_box .icon-silhouette-F,
+[dir=rtl] #tv_tree div.tv_box .icon-silhouette-U {
 	float: right;
 }
 

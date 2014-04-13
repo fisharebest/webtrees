@@ -62,7 +62,7 @@
 	display: block; float: left; list-style-type: none;
 }
 
-html[dir=rtl] .thumblist  {
+[dir=rtl] .thumblist  {
 	float: right;
 }
 
@@ -71,7 +71,7 @@ html[dir=rtl] .thumblist  {
 	display: block; float: left; list-style-type: none; margin-right: 5px; padding-bottom: 0; padding-left: 4px; padding-right: 4px;
 }
 
-html[dir=rtl] .thumblist li  {
+[dir=rtl] .thumblist li  {
 	float: right; margin-left: 5px; margin-left: auto;
 }
 
