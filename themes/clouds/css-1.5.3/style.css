@@ -177,10 +177,8 @@ td {
 }
 
 /* Submenu horizontal */
-#main-menu #menu-chart li ul
-
-/
-main-menu #menu-obje li ul {
+#main-menu #menu-chart li ul,
+#main-menu #menu-obje li ul {
 	display: none;
 }
 
