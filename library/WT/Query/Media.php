@@ -73,7 +73,7 @@ class WT_Query_Media {
 		);
 
 		// Only show external files when we are looking at the root folder
-		if ($folder=='') {
+		if ($folder == '') {
 			$sql_external = " OR m_filename LIKE 'http://%' OR m_filename LIKE 'https://%'";
 		} else {
 			$sql_external = "";
@@ -83,12 +83,12 @@ class WT_Query_Media {
 		switch ($subfolders) {
 		case 'include':
 			$sql .= " AND (m_filename LIKE CONCAT(?, '%') $sql_external)";
-			$args[] = $folder;
+			$args[] = WT_Filter::escapeLike($folder);
 			break;
 		case 'exclude':
 			$sql .= " AND (m_filename LIKE CONCAT(?, '%')  AND m_filename NOT LIKE CONCAT(?, '%/%') $sql_external)";
-			$args[] = $folder;
-			$args[] = $folder;
+			$args[] = WT_Filter::escapeLike($folder);
+			$args[] = WT_Filter::escapeLike($folder);
 			break;
 		default:
 			throw new Exception('Bad argument (subfolders=' . $subfolders . ') in WT_Query_Media::mediaList()');
@@ -96,9 +96,9 @@ class WT_Query_Media {
 
 		// Apply search terms
 		if ($filter) {
-			$sql .= " AND (m_filename LIKE CONCAT('%', ?, '%') OR m_titl LIKE CONCAT('%', ?, '%'))";
-			$args[] = $filter;
-			$args[] = $filter;
+			$sql .= " AND (SUBSTRING_INDEX(m_filename, '/', -1) LIKE CONCAT('%', ?, '%') OR m_titl LIKE CONCAT('%', ?, '%'))";
+			$args[] = WT_Filter::escapeLike($filter);
+			$args[] = WT_Filter::escapeLike($filter);
 		}
 
 		switch ($sort) {
