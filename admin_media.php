@@ -99,7 +99,13 @@ case 'load_json':
 				"  OR   m_titl LIKE CONCAT('%', ?, '%'))" .
 				"	AND   m_filename NOT LIKE 'http://%'" .
 				" AND   m_filename NOT LIKE 'https://%'";
-		$ARGS1 = array($media_path, $media_folder, $media_path, $sSearch, $sSearch);
+		$ARGS1 = array(
+			$media_path,
+			$media_folder,
+			WT_Filter::escapeLike($media_path),
+			WT_Filter::escapeLike($sSearch),
+			WT_Filter::escapeLike($sSearch)
+		);
 		// Unfiltered rows
 		$SELECT2 =
 				"SELECT SQL_CACHE COUNT(*)" .
@@ -109,13 +115,16 @@ case 'load_json':
 				" AND   m_filename LIKE CONCAT(?, '%')" .
 				"	AND   m_filename NOT LIKE 'http://%'" .
 				" AND   m_filename NOT LIKE 'https://%'";
-		$ARGS2 = array($media_folder, $media_path);
+		$ARGS2 = array(
+			$media_folder,
+			$media_path
+		);
 
 		if ($subfolders=='exclude') {
 			$SELECT1 .= " AND m_filename NOT LIKE CONCAT(?, '%/%')";
-			$ARGS1[] = $media_path;
+			$ARGS1[] = WT_Filter::escapeLike($media_path);
 			$SELECT2 .= " AND m_filename NOT LIKE CONCAT(?, '%/%')";
-			$ARGS2[] = $media_path;
+			$ARGS2[] = WT_Filter::escapeLike($media_path);
 		}
 
 		if ($iDisplayLength>0) {
@@ -168,7 +177,10 @@ case 'load_json':
 				" FROM  `##media`" .
 				" WHERE (m_filename LIKE 'http://%' OR m_filename LIKE 'https://%')" .
 				" AND   (m_filename LIKE CONCAT('%', ?, '%') OR m_titl LIKE CONCAT('%', ?, '%'))";
-		$ARGS1 = array($sSearch, $sSearch);
+		$ARGS1 = array(
+			WT_Filter::escapeLike($sSearch),
+			WT_Filter::escapeLike($sSearch)
+		);
 		// Unfiltered rows
 		$SELECT2 =
 				"SELECT SQL_CACHE COUNT(*)" .
@@ -274,7 +286,7 @@ case 'load_json':
 			// Is there a pending record for this file?
 			$exists_pending = WT_DB::prepare(
 				"SELECT 1 FROM `##change` WHERE status='pending' AND new_gedcom LIKE CONCAT('%\n1 FILE ', ?, '\n%')"
-			)->execute(array($unused_file))->fetchOne();
+			)->execute(array(WT_Filter::escapeLike($unused_file)))->fetchOne();
 
 			// Form to create new media object in each tree
 			$create_form='';
@@ -382,7 +394,13 @@ function all_media_files($media_folder, $media_path, $subfolders, $filter) {
 		"  OR   m_titl LIKE CONCAT('%', ?, '%'))" .
 		"	AND   m_filename NOT LIKE 'http://%'" .
 		" AND   m_filename NOT LIKE 'https://%'"
-	)->execute(array($media_path, $media_folder, $media_path, $filter, $filter))->fetchOneColumn();
+	)->execute(array(
+		$media_path,
+		$media_folder,
+		WT_Filter::escapeLike($media_path),
+		WT_Filter::escapeLike($filter),
+		WT_Filter::escapeLike($filter)
+	))->fetchOneColumn();
 }
 
 function media_file_info($media_folder, $media_path, $file) {

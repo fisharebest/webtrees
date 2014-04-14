@@ -217,6 +217,10 @@ ul.tabs a.current {
 	white-space: normal;
 }
 
+.iwstyle {
+	width: 360px;
+}
+
 #side_bar .gallery img,
 .iwstyle .gallery img,
 .highlt_img .gallery img {
