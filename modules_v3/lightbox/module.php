@@ -100,7 +100,7 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Tab {
 			$notes    = print_fact_notes($before . $needle . $after, 1, true, true);
 
 			// Prepare Below Thumbnail  menu ----------------------------------------------------
-			$menu = new WT_Menu($media->getFullName());
+			$menu = new WT_Menu('<div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap">' . $media->getFullName() . '</div>');
 			$menu->addClass('', 'submenu');
 
 			// View Notes

@@ -2366,12 +2366,6 @@ dd .deletelink {
 	width: 100%;
 }
 
-.album-title div {
-	overflow: hidden;
-	white-space: nowrap;
-	text-overflow: ellipsis;
-}
-
 /* ========= jquery-ui.custom.css changes ============ */
 .ui-widget-content {
 	color: #555;
