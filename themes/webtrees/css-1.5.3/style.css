@@ -1188,12 +1188,6 @@ a.showit:hover > span {
 	white-space: normal;
 }
 
-ul.clist {
-	list-style-image: none;
-	text-decoration: none;
-	margin: 0;
-}
-
 .statistics-page {
 	text-align: center;
 }
@@ -3724,50 +3718,51 @@ dd .deletelink {
 	padding: 0;
 }
 
+.nav_content .facts_label{
+	width: 75px;
+}
+
+#sb_family_nav_content .clist {
+	margin: 0;
+}
+
+.famnav_title{
+	font-weight: bold;
+	display: block;
+	padding: 5px 0;
+}
+
 .flyout {
-	text-align: left;
-	margin-top: -20px;
-	right: 210px;
-	padding: 3px;
+    left: 40px;
+}
+
+.flyout a, .flyout a:hover {
+	color: #000000;
+    cursor: default;
+	text-decoration: none;
 }
 
 .flyout2 {
-	text-align: left;
-	margin-top: -2px;
-	left: 40px;
-	padding: 3px;
+    font-weight: 700;
+ }
+
+.flyout3 {
+    color: #362B36;
 }
 
-.flyout2 a:hover {
-	color: #f00;
-}
-
-.flyout4 {
-	text-align: left;
-	margin-top: 0;
-	margin-left: 0;
-	padding: 3px;
-}
-
-.flyout3,
-.flyout3 a {
-	background: none;
-	border: none;
-	text-decoration: none;
-	text-align: left;
-	margin-top: 0;
-	left: 0;
-	padding: 0;
+.flyout3:hover {
+	cursor: pointer;
+    color: #FF0000;
 }
 
 [dir=rtl] .flyout {
 	text-align: right;
-	left: 210px;
+	right: 40px;
 }
 
 [dir=rtl] .flyout2 {
 	text-align: right;
-	right: 40px;
+	left: 210px;
 }
 
 [dir=rtl] .flyout3 {
