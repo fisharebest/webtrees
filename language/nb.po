@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2014-01-28 07:54+0000\n"
-"PO-Revision-Date: 2013-05-16 07:10+0000\n"
-"Last-Translator: HRN <Unknown>\n"
+"PO-Revision-Date: 2014-04-15 18:21+0100\n"
+"Last-Translator: Eyolf Østrem <eyolf@ostrem.org>\n"
 "Language-Team: Norwegian Bokmal <nb@li.org>\n"
 "Language: nb\n"
 "MIME-Version: 1.0\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Launchpad-Export-Date: 2013-08-04 19:02+0000\n"
-"X-Generator: Launchpad (build 16718)\n"
+"X-Generator: Poedit 1.5.4\n"
 
 #: modules_v3/ahnentafel_report/report.xml:157
 #: modules_v3/ahnentafel_report/report.xml:185
@@ -21,7 +21,7 @@ msgstr ""
 #: modules_v3/ahnentafel_report/report.xml:333
 #: modules_v3/ahnentafel_report/report.xml:364
 msgid " but the details are unknown"
-msgstr " men nærmere detaljer er ukjente"
+msgstr " men nærmere detaljer er ikke kjent"
 
 #: modules_v3/ahnentafel_report/report.xml:156
 #: modules_v3/ahnentafel_report/report.xml:184
@@ -42,11 +42,11 @@ msgstr " i "
 
 #: statisticsplot.php:802
 msgid " per gender"
-msgstr " pr. kjønn"
+msgstr " etter kjønn"
 
 #: statisticsplot.php:804
 msgid " per time period"
-msgstr " /pr. tidsperiode"
+msgstr " etter tidsperiode"
 
 #: includes/functions/functions_print_facts.php:192
 #: includes/functions/functions_print_facts.php:197
@@ -141,8 +141,8 @@ msgstr "%1$s har ingen kobling tilbake til %2$s."
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1$s fil ble pakket ut på %2$s sekund."
+msgstr[1] "%1$s filer ble pakket ut på %2$s sekund."
 
 #. I18N: %1$s is an internal ID number such as R123.  %2$s and %3$s are record types, such as INDI or SOUR
 #: admin_trees_check.php:179
@@ -160,7 +160,7 @@ msgstr "%1$s × %2$s piksler"
 #: admin_site_upgrade.php:310
 #, php-format
 msgid "%1$sKB were downloaded in %2$s seconds."
-msgstr ""
+msgstr "%1$sKB ble hentet på %2$s sekund."
 
 #. I18N: A range of years, e.g. “1870–”, “1870–1920”, “–1920”
 #: library/WT/Individual.php:421
@@ -254,7 +254,7 @@ msgstr "%s"
 #: library/WT/Stats.php:4018
 #, php-format
 msgid "%s BCE"
-msgstr ""
+msgstr "%s f.Kr."
 
 #. I18N: size of file in KB
 #: admin_media.php:402 library/WT/Media.php:205
@@ -266,8 +266,8 @@ msgstr "%s KB"
 #, php-format
 msgid "%s child"
 msgid_plural "%s children"
-msgstr[0] "barn"
-msgstr[1] "barn"
+msgstr[0] "%s barn"
+msgstr[1] "%s barn"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: includes/functions/functions_date.php:59 library/WT/I18N.php:364
@@ -288,8 +288,8 @@ msgstr[1] "%s dager siden"
 #, php-format
 msgid "%s grandchild"
 msgid_plural "%s grandchildren"
-msgstr[0] "barnebarn"
-msgstr[1] "barnebarn"
+msgstr[0] "%s barnebarn"
+msgstr[1] "%s barnebarn"
 
 #: library/WT/I18N.php:410
 #, php-format
@@ -603,7 +603,7 @@ msgstr "<b>GUID</b> er i denne sammenheng en forkortelse for «Globalt Unik ID»
 
 #: help_text.php:1318
 msgid "<b>Important Note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
-msgstr "<b>Viktig:</b> Overflytningsveilederen kan ikke håndtere medieobjekter. Du blir nødt til å innstille din mediekonfigurasjon og flytte eller kopiere dine mediefiler manuelt etter at overflytningsveilederen er ferdig."
+msgstr "<b>Viktig:</b> Overflytningsveilederen kan ikke håndtere medieobjekter. Du blir nødt til å innstille din mediekonfigurasjon og flytte eller kopiere dine mediefiler manuelt etter at overflytningsassistenten er ferdig."
 
 #: help_text.php:1007
 msgid "<b>No</b> means that authenticated users can see the details of all living individuals.  <b>Yes</b> means that users can only see the private information of living individuals they are related to.<br><br>This option sets the default for all users who have access to this genealogical database.  The administrator can override this option for individual users by editing the user’s account details."
@@ -643,15 +643,15 @@ msgstr "<b>webtrees</b> svaradresse"
 
 #: login.php:144
 msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved."
-msgstr "<center><b>Velkommen til disse slektssidene!</b></center><br>Adgangen til nettstedet er begrenset til <u>autoriserte</u> brukere.<br><br>Har du en brukerkonto, kan du logge deg inn nedenfor. Dersom du ikke har en brukerkonto ennå, kan du søke om å få en ved å klikke på linken \"Søke om brukerkonto\".<br><br>Etter å ha kontrollert informasjonen i søknaden, vil administratoren på nettstedet enten godkjenne eller avslå søknaden din. Du vil motta en epost når søknaden er behandlet."
+msgstr "<center><b>Velkommen til disse slektssidene!</b></center><br>Adgangen til nettstedet er begrenset til <u>autoriserte</u> brukere.<br><br>Har du en brukerkonto, kan du logge deg inn nedenfor. Dersom du ikke har en brukerkonto ennå, kan du søke om å få en ved å klikke på lenken \"Søke om brukerkonto\".<br><br>Etter å ha kontrollert informasjonen i søknaden, vil administratoren på nettstedet enten godkjenne eller avslå søknaden din. Du vil motta en epost når søknaden er behandlet."
 
 #: login.php:147
 msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved."
-msgstr "<center><b>Velkommen til disse slektssidene!</b></center><br>Adgangen til nettstedet er begrenset til <u>familiemedlemmer</u>.<br><br>Har du en brukerkonto, kan du logge deg inn nedenfor. Dersom du ikke har en brukerkonto ennå, kan du søke om å få en ved å klikke på linken \"Søke om brukerkonto\".<br><br>Etter å ha kontrollert informasjonen i søknaden, vil administratoren på nettstedet enten godkjenne eller avslå søknaden din. Du vil motta en epost når søknaden er behandlet."
+msgstr "<center><b>Velkommen til disse slektssidene!</b></center><br>Adgangen til nettstedet er begrenset til <u>familiemedlemmer</u>.<br><br>Har du en brukerkonto, kan du logge deg inn nedenfor. Dersom du ikke har en brukerkonto ennå, kan du søke om å få en ved å klikke på lenken \"Søke om brukerkonto\".<br><br>Etter å ha kontrollert informasjonen i søknaden, vil administratoren på nettstedet enten godkjenne eller avslå søknaden din. Du vil motta en epost når søknaden er behandlet."
 
 #: login.php:141
 msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved."
-msgstr "<center><b>Velkommen til disse slektssidene!</b></center><br>Nettstedet er åpent for alle besøkende som har en brukerkonto.<br><br>Har du en brukerkonto, kan du logge deg inn nedenfor. Dersom du ikke har en brukerkonto ennå, kan du søke om å få en ved å klikke på linken \"Søke om brukerkonto\".<br><br>Etter å ha kontrollert informasjonen i søknaden, vil administratoren på nettstedet aktivere kontoen din. Du vil motta en epost når den er godkjent."
+msgstr "<center><b>Velkommen til disse slektssidene!</b></center><br>Nettstedet er åpent for alle besøkende som har en brukerkonto.<br><br>Har du en brukerkonto, kan du logge deg inn nedenfor. Dersom du ikke har en brukerkonto ennå, kan du søke om å få en ved å klikke på lenken \"Søke om brukerkonto\".<br><br>Etter å ha kontrollert informasjonen i søknaden, vil administratoren på nettstedet aktivere kontoen din. Du vil motta en epost når den er godkjent."
 
 #. I18N: default option in list of themes
 #: admin_trees_config.php:460 admin_users.php:202 admin_users.php:410
@@ -692,7 +692,7 @@ msgstr "En beskrivelse av begivenhetens eller faktumets årsak, f.eks. dødsårs
 #. I18N: Description of the “My page” module
 #: modules_v3/user_welcome/module.php:37
 msgid "A greeting message and useful links for a user."
-msgstr "Velkomstbeskjed og nyttige linker for brukeren."
+msgstr "Velkomstbeskjed og nyttige lenker for brukeren."
 
 #. I18N: Description of the “Home page” module
 #: modules_v3/gedcom_block/module.php:37
@@ -775,7 +775,7 @@ msgstr "En ny bruker (%1$s) har bedt om brukerkonto (%2$s) og har bekreftet E-ma
 
 #: admin.php:111 admin_site_upgrade.php:83
 msgid "A new version of webtrees is available."
-msgstr ""
+msgstr "Det finnes en ny versjon av webtrees."
 
 #. I18N: Description of the “Journal” module
 #: modules_v3/user_blog/module.php:45
@@ -944,7 +944,7 @@ msgstr "En bruker kan ikkee logge inn før både \"Epost bekreftet\" og \"Godkje
 
 #: help_text.php:1025
 msgid "A watermark is text that is added to an image, to discourage others from copying it without permission."
-msgstr ""
+msgstr "Et vannmerke er tekst som legges over et bilde for å gjøre det mindre attraktivt for andre å kopiere det uten tillatelse."
 
 #. I18N: time format “%A” - between 00:00:01 and 11:59:59
 #: includes/functions/functions_date.php:117
@@ -954,7 +954,8 @@ msgstr "Formiddag"
 #: modules_v3/ahnentafel_report/report.xml:13
 #: modules_v3/bdm_report/report.xml:12 modules_v3/birth_report/report.xml:10
 #: modules_v3/cemetery_report/report.xml:8
-#: modules_v3/change_report/report.xml:9 modules_v3/death_report/report.xml:11
+#: modules_v3/change_report/report.xml:9
+#: modules_v3/death_report/report.xml:11
 #: modules_v3/descendancy_report/report.xml:8
 #: modules_v3/fact_sources/report.xml:8
 #: modules_v3/family_group_report/report.xml:11
@@ -972,7 +973,8 @@ msgstr "A3"
 #: modules_v3/ahnentafel_report/report.xml:13
 #: modules_v3/bdm_report/report.xml:12 modules_v3/birth_report/report.xml:10
 #: modules_v3/cemetery_report/report.xml:8
-#: modules_v3/change_report/report.xml:9 modules_v3/death_report/report.xml:11
+#: modules_v3/change_report/report.xml:9
+#: modules_v3/death_report/report.xml:11
 #: modules_v3/descendancy_report/report.xml:8
 #: modules_v3/fact_sources/report.xml:8
 #: modules_v3/family_group_report/report.xml:11
@@ -1269,7 +1271,8 @@ msgid "Add a new wife"
 msgstr "Legg til en ny hustru"
 
 #. I18N: label for a yes/no option
-#: modules_v3/charts/module.php:237 modules_v3/gedcom_favorites/module.php:239
+#: modules_v3/charts/module.php:237
+#: modules_v3/gedcom_favorites/module.php:239
 #: modules_v3/recent_changes/module.php:162
 #: modules_v3/review_changes/module.php:170
 #: modules_v3/todays_events/module.php:156 modules_v3/todo/module.php:191
@@ -1367,7 +1370,7 @@ msgstr "Legg til notat"
 #: admin_trees_download.php:129 modules_v3/clippings/module.php:217
 #: modules_v3/clippings/module.php:603
 msgid "Add the GEDCOM media path to filenames"
-msgstr ""
+msgstr "Bruk filnavn med fullstendig filsti for mediefiler."
 
 #: modules_v3/clippings/module.php:108 modules_v3/clippings/module.php:528
 msgid "Add this individual and his direct line ancestors."
@@ -1391,7 +1394,7 @@ msgstr "Legg til denne personen, ektemaken og barn."
 
 #: modules_v3/clippings/module.php:128 modules_v3/clippings/module.php:548
 msgid "Add this source and families/individuals linked to it."
-msgstr "Legg til denne kilden og familier/personer den er linket til"
+msgstr "Legg til denne kilden og familier/personer den er lenket til"
 
 #: admin_trees_config.php:424 help_text.php:693
 msgid "Add to TITLE header tag"
@@ -1403,8 +1406,9 @@ msgstr "Legg i utklippsmappen"
 
 #. I18N: Menu option.  Add [the current page] to the list of favorites
 #: library/WT/Controller/Family.php:124
-#: library/WT/Controller/Individual.php:322 library/WT/Controller/Media.php:98
-#: library/WT/Controller/Note.php:78 library/WT/Controller/Repository.php:83
+#: library/WT/Controller/Individual.php:322
+#: library/WT/Controller/Media.php:98 library/WT/Controller/Note.php:78
+#: library/WT/Controller/Repository.php:83
 #: library/WT/Controller/Source.php:83 library/WT/MenuBar.php:526
 msgid "Add to favorites"
 msgstr "Legg til favoritter"
@@ -1412,7 +1416,7 @@ msgstr "Legg til favoritter"
 #: admin_site_other.php:31 admin_site_other.php:37
 #: themes/_administration/header.php:120
 msgid "Add unlinked records"
-msgstr "Tilføy ikke-linkede poster"
+msgstr "Tilføy ikke-lenkede poster"
 
 #: admin_trees_config.php:695
 msgid "Add watermarks to thumbnails?"
@@ -1460,14 +1464,14 @@ msgstr "Adelaide, Australia"
 msgid "Admin comments on user"
 msgstr "Kommentar fra admin til bruker"
 
-#: admin.php:33 library/WT/MenuBar.php:81 themes/_administration/header.php:62
-#: themes/_administration/header.php:93
+#: admin.php:33 library/WT/MenuBar.php:81
+#: themes/_administration/header.php:62 themes/_administration/header.php:93
 msgid "Administration"
 msgstr "Administrasjon"
 
 #: admin_trees_places.php:80
 msgid "Administration - place edit"
-msgstr ""
+msgstr "Administrasjon - masseoppdatering av stedsnavn"
 
 #: admin_users.php:186 admin_users.php:368 help_text.php:1397
 msgid "Administrator"
@@ -1791,7 +1795,7 @@ msgstr "Alle eksisterende PGV-brukere må ha forskjellige epostadresser"
 
 #: admin_trees_config.php:1136 help_text.php:505
 msgid "All family facts"
-msgstr ""
+msgstr "Alle slektsfakta"
 
 #: login.php:400
 msgid "All fields must be completed."
@@ -1799,11 +1803,11 @@ msgstr "Alle felt må fylles ut."
 
 #: admin_site_upgrade.php:394
 msgid "All files have read and write permission."
-msgstr ""
+msgstr "Alle filer har lese- og skrivetillatelse."
 
 #: admin_trees_config.php:1099 help_text.php:592
 msgid "All individual facts"
-msgstr ""
+msgstr "Alle personfakta"
 
 #: calendar.php:189 calendar.php:203 calendar.php:204 calendar.php:207
 #: calendar.php:208 calendar.php:445
@@ -1812,11 +1816,11 @@ msgstr "Alle personer"
 
 #: admin_trees_config.php:1202 help_text.php:798
 msgid "All repository facts"
-msgstr ""
+msgstr "Alle arkivfakta"
 
 #: admin_trees_config.php:1173 help_text.php:909
 msgid "All source facts"
-msgstr ""
+msgstr "Alle kildefakta"
 
 #. I18N: Description of the “CKEditor” module.  WYSIWYG = “what you see is what you get”
 #: modules_v3/ckeditor/module.php:39
@@ -1901,7 +1905,7 @@ msgstr "Redigeringsmeny for personer, familier, kilder, osv."
 #: admin_site_upgrade.php:337 admin_site_upgrade.php:356
 #: admin_site_upgrade.php:366 admin_site_upgrade.php:441
 msgid "An error occurred when unzipping the file."
-msgstr ""
+msgstr "Det oppstod en feil under utpakkingen av filen."
 
 #. I18N: Description of the “Interactive tree” module
 #: modules_v3/tree/module.php:38
@@ -2039,7 +2043,8 @@ msgctxt "LOCATIVE"
 msgid "April"
 msgstr "april"
 
-#: includes/functions/functions_print.php:999 library/WT/Date/Calendar.php:126
+#: includes/functions/functions_print.php:999
+#: library/WT/Date/Calendar.php:126
 msgctxt "NOMINATIVE"
 msgid "April"
 msgstr "april"
@@ -2083,8 +2088,9 @@ msgstr "Er du sikker på at du vil slette dette notatet?"
 #: includes/functions/functions_print_lists.php:1002
 #: includes/functions/functions_print_lists.php:1110
 #: includes/functions/functions_print_lists.php:1209
-#: library/WT/Controller/Individual.php:308 library/WT/Controller/Media.php:84
-#: library/WT/Controller/Note.php:71 library/WT/Controller/Repository.php:69
+#: library/WT/Controller/Individual.php:308
+#: library/WT/Controller/Media.php:84 library/WT/Controller/Note.php:71
+#: library/WT/Controller/Repository.php:69
 #: library/WT/Controller/Source.php:69
 #, php-format
 msgid "Are you sure you want to delete “%s”?"
@@ -2092,7 +2098,7 @@ msgstr "Er du sikker på at du vil slette “%s”?"
 
 #: modules_v3/lightbox/module.php:203
 msgid "Are you sure you want to remove links to this media object?"
-msgstr ""
+msgstr "Er du sikker på at du vil fjerne lenkene til dette medieobjektet?"
 
 #: modules_v3/gedcom_favorites/module.php:123
 msgid "Are you sure you want to remove this item from your list of Favorites?"
@@ -2100,7 +2106,7 @@ msgstr "Er du sikker på at du vil fjerne denne personen fra dine favoritter?"
 
 #: edit_changes.php:231
 msgid "Are you sure you want to undo all the changes to this family tree?"
-msgstr ""
+msgstr "Er du sikker på at du vil annullere alle endringene i dette slektstreet?"
 
 #: library/WT/Stats.php:3756
 msgid "Argentina"
@@ -2292,7 +2298,8 @@ msgstr "Av"
 msgid "Available blocks"
 msgstr "Tilgjengelige blokker"
 
-#: includes/functions/functions_print_lists.php:1945 library/WT/Stats.php:2367
+#: includes/functions/functions_print_lists.php:1945
+#: library/WT/Stats.php:2367
 msgid "Average age"
 msgstr "Gjennomsnittsalder"
 
@@ -2397,7 +2404,8 @@ msgid "Bangladesh"
 msgstr "Bangladesh"
 
 #. I18N: gedcom tag BAPM
-#: library/WT/Gedcom/Tag.php:117 modules_v3/missing_facts_report/report.xml:13
+#: library/WT/Gedcom/Tag.php:117
+#: modules_v3/missing_facts_report/report.xml:13
 msgid "Baptism"
 msgstr "Døpt på bekjennelse"
 
@@ -2471,7 +2479,8 @@ msgid "Baptism of a son"
 msgstr "Sønns dåp"
 
 #. I18N: gedcom tag BARM
-#: library/WT/Gedcom/Tag.php:120 modules_v3/missing_facts_report/report.xml:14
+#: library/WT/Gedcom/Tag.php:120
+#: modules_v3/missing_facts_report/report.xml:14
 msgid "Bar mitzvah"
 msgstr "Bar mitzvah"
 
@@ -2484,13 +2493,15 @@ msgid "Basic"
 msgstr "Grunnleggende"
 
 #. I18N: gedcom tag BASM
-#: library/WT/Gedcom/Tag.php:123 modules_v3/missing_facts_report/report.xml:15
+#: library/WT/Gedcom/Tag.php:123
+#: modules_v3/missing_facts_report/report.xml:15
 msgid "Bat mitzvah"
 msgstr "Bat mitzvah"
 
 #. I18N: Name of a module
 #: modules_v3/batch_update/admin_batch_update.php:60
-#: modules_v3/batch_update/module.php:29 modules_v3/batch_update/module.php:43
+#: modules_v3/batch_update/module.php:29
+#: modules_v3/batch_update/module.php:43
 #: modules_v3/googlemap/placehierarchy.php:179
 msgid "Batch update"
 msgstr "Masseoppdatering"
@@ -3005,7 +3016,8 @@ msgid "Bulgaria"
 msgstr "Bulgaria"
 
 #. I18N: gedcom tag BURI
-#: library/WT/Gedcom/Tag.php:133 modules_v3/family_group_report/report.xml:345
+#: library/WT/Gedcom/Tag.php:133
+#: modules_v3/family_group_report/report.xml:345
 #: modules_v3/family_group_report/report.xml:696
 #: modules_v3/family_group_report/report.xml:1037
 #: modules_v3/missing_facts_report/report.xml:22
@@ -3283,11 +3295,11 @@ msgstr "Dødsårsak"
 
 #: admin_site_upgrade.php:202
 msgid "Caution: old modules may not work, or they may prevent webtrees from working."
-msgstr ""
+msgstr "Advarsel: gamle moduler virker kanskje ikke, og de kan sette hele webtrees ut av funksjon. "
 
 #: admin_site_upgrade.php:265
 msgid "Caution: old themes may not work, or they may prevent webtrees from working."
-msgstr ""
+msgstr "Advarsel: gamle temaer virker kanskje ikke, og de kan sette hele webtrees ut av funksjon."
 
 #: library/WT/Stats.php:3807
 msgid "Cayman Islands"
@@ -3425,17 +3437,17 @@ msgstr "Sjekk rettighetene for å opprette en fil i denne mappen."
 
 #: admin_site_upgrade.php:377
 msgid "Check file permissions…"
-msgstr ""
+msgstr "Kontrollere filtillatelser…"
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:116
 msgid "Check for custom modules…"
-msgstr ""
+msgstr "Søke etter tilpassede moduler…"
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:218
 msgid "Check for custom themes…"
-msgstr ""
+msgstr "Søke etter tilpassede temaer…"
 
 #: admin_trees_check.php:28 themes/_administration/header.php:122
 msgid "Check for errors"
@@ -3444,7 +3456,7 @@ msgstr "Søk etter feil"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:97
 msgid "Check for pending changes…"
-msgstr ""
+msgstr "Søke etter ventende endringer…"
 
 #: help_text.php:460 relationship.php:138
 msgid "Check relationships by marriage"
@@ -3558,7 +3570,8 @@ msgid "Choose: "
 msgstr "Velg: "
 
 #. I18N: gedcom tag CHR
-#: library/WT/Gedcom/Tag.php:148 modules_v3/family_group_report/report.xml:200
+#: library/WT/Gedcom/Tag.php:148
+#: modules_v3/family_group_report/report.xml:200
 #: modules_v3/family_group_report/report.xml:551
 #: modules_v3/family_group_report/report.xml:892
 #: modules_v3/missing_facts_report/report.xml:13
@@ -3710,7 +3723,7 @@ msgstr "Klikk en rad, dra og slipp deretter for å endre rekkefølgen på medieo
 
 #: admin_trees_manage.php:271
 msgid "Click here for PhpGedView to <b>webtrees</b> transfer wizard"
-msgstr "Klikk her for \"PhpGedView til <b>webtrees</b>\" assistanse"
+msgstr "Klikk her for «PhpGedView til <b>webtrees</b>»-assistenten"
 
 #: modules_v3/faq/module.php:282
 msgid "Click here to Add, Edit, or Delete"
@@ -3722,7 +3735,7 @@ msgstr "Klikk her for å åpne og lukke sidepanelet"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:105
 msgid "Click name to add individual to add links list."
-msgstr "Klik på navn for å tilføye person til <b>Tilføy link</b>-listen."
+msgstr "Klik på navn for å tilføye person til <b>Tilføy lenke</b>-listen."
 
 #: modules_v3/faq/module.php:279
 msgid "Click on a title to go straight to it, or scroll down to read them all"
@@ -3739,7 +3752,7 @@ msgstr "Klikk for å velge personen som familieoverhode."
 
 #: help_text.php:1348
 msgid "Clicking on this link will show you a list of all of the individuals and families that have events occurring in this place.  When you get to the end of a place hierarchy, which is normally a town or city, the name list will be shown automatically."
-msgstr "Linket går til en liste over alle personene og familiene med begivenheter på dette stedet. Når du kommer til slutten av stedshierarkiet, hvilket vanligvis vil si en bygd/by, vises navnelisten automatisk."
+msgstr "Lenken fører til en liste over alle personer og familier med begivenheter knyttet til dette stedet. På siste nivå av stedshierarkiet, hvilket vanligvis vil si en bygd/by, vises navnelisten automatisk."
 
 #: help_text.php:1139
 msgid "Clicking the “+” icon will open the GEDFact shared note assistant window.<br>Specific help will be found there.<br><br>When you click the “save” button, the ID of the shared note will be pasted here."
@@ -3748,7 +3761,7 @@ msgstr "Hvis du klikker på \"+\", åpnes GEDFact-assistenten for Delte notater.
 #. I18N: The local time on the client/browser
 #: themes/_administration/header.php:84
 msgid "Client time"
-msgstr ""
+msgstr "Nettleserens tid"
 
 #. I18N: Name of a module
 #: modules_v3/clippings/module.php:32
@@ -3826,8 +3839,8 @@ msgid "Comoros"
 msgstr "Komorene"
 
 #: includes/functions/functions_print.php:95
-#: library/WT/Controller/Compact.php:48 library/WT/Controller/Fanchart.php:312
-#: library/WT/MenuBar.php:103
+#: library/WT/Controller/Compact.php:48
+#: library/WT/Controller/Fanchart.php:312 library/WT/MenuBar.php:103
 msgid "Compact tree"
 msgstr "Kompakt tre"
 
@@ -3870,7 +3883,8 @@ msgid "Confirm password"
 msgstr "Bekreft passord"
 
 #. I18N: gedcom tag CONF
-#: library/WT/Gedcom/Tag.php:157 modules_v3/missing_facts_report/report.xml:16
+#: library/WT/Gedcom/Tag.php:157
+#: modules_v3/missing_facts_report/report.xml:16
 msgid "Confirmation"
 msgstr "Konfirmert"
 
@@ -3939,12 +3953,12 @@ msgstr "Kopier"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:417
 msgid "Copy files…"
-msgstr ""
+msgstr "Kopiere filer…"
 
 #: admin_site_upgrade.php:388
 #, php-format
 msgid "Copy these files to the folder %s, replacing any that have the same name."
-msgstr ""
+msgstr "Kopierer disse filene til mappen %s, og overskriver eventuelle filer med samme navn."
 
 #. I18N: gedcom tag COPR
 #: library/WT/Gedcom/Tag.php:161
@@ -4055,7 +4069,8 @@ msgid "Create your own chart"
 msgstr "Lag ditt eget diagram"
 
 #. I18N: gedcom tag CREM
-#: library/WT/Gedcom/Tag.php:163 modules_v3/family_group_report/report.xml:309
+#: library/WT/Gedcom/Tag.php:163
+#: modules_v3/family_group_report/report.xml:309
 #: modules_v3/family_group_report/report.xml:336
 #: modules_v3/family_group_report/report.xml:660
 #: modules_v3/family_group_report/report.xml:687
@@ -4204,15 +4219,15 @@ msgstr "Egendefinert"
 
 #: calendar.php:269 includes/functions/functions_print.php:976
 msgid "Custom event"
-msgstr "Egendefinert hendelse"
+msgstr "Egendefinert begivenhet"
 
 #: includes/functions/functions_print.php:975
 msgid "Custom fact"
-msgstr ""
+msgstr "Egendefinert faktum"
 
 #: admin_site_upgrade.php:190 admin_site_upgrade.php:193
 msgid "Custom module"
-msgstr ""
+msgstr "Tilpasset modul"
 
 #: find.php:480
 msgid "Custom tags"
@@ -4220,7 +4235,7 @@ msgstr "Egendefinerte koder"
 
 #: admin_site_upgrade.php:250 admin_site_upgrade.php:253
 msgid "Custom theme"
-msgstr ""
+msgstr "Tilpasset tema"
 
 #: admin_site_config.php:163 help_text.php:1039
 msgid "Custom welcome text"
@@ -4290,7 +4305,8 @@ msgstr "Databasens brukernavn"
 #: help_text.php:205 library/WT/Gedcom/Tag.php:169
 #: modules_v3/bdm_report/report.xml:129 modules_v3/bdm_report/report.xml:155
 #: modules_v3/bdm_report/report.xml:189 modules_v3/birth_report/report.xml:37
-#: modules_v3/death_report/report.xml:43 modules_v3/fact_sources/report.xml:69
+#: modules_v3/death_report/report.xml:43
+#: modules_v3/fact_sources/report.xml:69
 #: modules_v3/fact_sources/report.xml:156
 #: modules_v3/marriage_report/report.xml:43
 #: modules_v3/occupation_report/report.xml:54
@@ -4399,7 +4415,7 @@ msgstr "Innførelsesdato i original kilde"
 
 #: library/WT/Gedcom/Tag.php:195
 msgid "Date of event"
-msgstr "Dato for hendelse"
+msgstr "Dato for begivenhet"
 
 #: library/WT/Gedcom/Tag.php:212
 #: modules_v3/missing_facts_report/report.xml:374
@@ -4879,8 +4895,9 @@ msgid "DejaVu"
 msgstr "DejaVu"
 
 #: admin_site_access.php:283 admin_site_change.php:273
-#: admin_site_clean.php:124 admin_site_logs.php:240 admin_trees_config.php:613
-#: admin_trees_manage.php:230 includes/functions/functions_print_facts.php:179
+#: admin_site_clean.php:124 admin_site_logs.php:240
+#: admin_trees_config.php:613 admin_trees_manage.php:230
+#: includes/functions/functions_print_facts.php:179
 #: includes/functions/functions_print_facts.php:182
 #: includes/functions/functions_print_facts.php:694
 #: includes/functions/functions_print_facts.php:890
@@ -4889,8 +4906,9 @@ msgstr "DejaVu"
 #: includes/functions/functions_print_lists.php:1110
 #: includes/functions/functions_print_lists.php:1209
 #: library/WT/Controller/Family.php:109
-#: library/WT/Controller/Individual.php:307 library/WT/Controller/Media.php:83
-#: library/WT/Controller/Note.php:70 library/WT/Controller/Repository.php:68
+#: library/WT/Controller/Individual.php:307
+#: library/WT/Controller/Media.php:83 library/WT/Controller/Note.php:70
+#: library/WT/Controller/Repository.php:68
 #: library/WT/Controller/Source.php:68 modules_v3/faq/module.php:396
 #: modules_v3/gedcom_news/module.php:119
 #: modules_v3/googlemap/admin_places.php:585
@@ -4922,7 +4940,7 @@ msgstr "Slett navn"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:466
 msgid "Delete temporary files…"
-msgstr ""
+msgstr "Slette midlertidige filer…"
 
 #: admin_site_clean.php:88
 msgid "Deleted files:"
@@ -4950,7 +4968,7 @@ msgstr "Denver, Colorado"
 
 #: admin_site_upgrade.php:84
 msgid "Depending on your server configuration, you may be able to upgrade automatically."
-msgstr ""
+msgstr "Hvis dine serverinnstillinger tillater det, kan oppdateringer gjøres automatisk."
 
 #: help_text.php:1222
 msgid "Descendant generations"
@@ -5135,11 +5153,11 @@ msgstr "Forfedre i direkte linje og deres familier"
 
 #: admin_site_upgrade.php:201
 msgid "Disable these modules"
-msgstr ""
+msgstr "Deaktivere disse modulene"
 
 #: admin_site_upgrade.php:264
 msgid "Disable these themes"
-msgstr ""
+msgstr "Deaktivere disse temaene"
 
 #. I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options
 #: library/WT/I18N.php:625
@@ -5232,7 +5250,7 @@ msgstr "Last ned"
 #: admin_site_upgrade.php:299
 #, php-format
 msgid "Download %s…"
-msgstr ""
+msgstr "Hente %s…"
 
 #: mediaviewer.php:104
 msgid "Download File"
@@ -5328,8 +5346,9 @@ msgstr "Ecuador"
 #: library/WT/Controller/Individual.php:229
 #: library/WT/Controller/Individual.php:238
 #: library/WT/Controller/Individual.php:247
-#: library/WT/Controller/Individual.php:266 library/WT/Controller/Media.php:52
-#: library/WT/Controller/Note.php:51 library/WT/Controller/Repository.php:51
+#: library/WT/Controller/Individual.php:266
+#: library/WT/Controller/Media.php:52 library/WT/Controller/Note.php:51
+#: library/WT/Controller/Repository.php:51
 #: library/WT/Controller/Source.php:51 modules_v3/faq/module.php:393
 #: modules_v3/gedcom_news/module.php:118
 #: modules_v3/googlemap/admin_places.php:585
@@ -5374,13 +5393,14 @@ msgstr "Endre notat"
 
 #: admin_trees_config.php:222
 msgid "Edit options"
-msgstr "Rediger innstillinger"
+msgstr "Redigeringsinnstillinger"
 
 #: edit_interface.php:78 edit_interface.php:139 edit_interface.php:188
 #: edit_interface.php:249 edit_interface.php:348 edit_interface.php:2802
 #: help_text.php:1161 library/WT/Controller/Family.php:116
-#: library/WT/Controller/Individual.php:314 library/WT/Controller/Media.php:90
-#: library/WT/Controller/Repository.php:75 library/WT/Controller/Source.php:75
+#: library/WT/Controller/Individual.php:314
+#: library/WT/Controller/Media.php:90 library/WT/Controller/Repository.php:75
+#: library/WT/Controller/Source.php:75
 msgid "Edit raw GEDCOM"
 msgstr "Endre opplysninger direkte i slektsfilen"
 
@@ -5554,7 +5574,8 @@ msgid "Endowment House"
 msgstr "Endowment House"
 
 #. I18N: gedcom tag ENGA
-#: library/WT/Gedcom/Tag.php:191 modules_v3/missing_facts_report/report.xml:17
+#: library/WT/Gedcom/Tag.php:191
+#: modules_v3/missing_facts_report/report.xml:17
 msgid "Engagement"
 msgstr "Forlovet"
 
@@ -5708,7 +5729,7 @@ msgstr "Europa"
 #: modules_v3/fact_sources/report.xml:154
 #: modules_v3/missing_facts_report/report.xml:52
 msgid "Event"
-msgstr "Hendelse"
+msgstr "Begivenhet"
 
 #: modules_v3/googlemap/googlemap.php:610 statistics.php:104
 #: statistics.php:206
@@ -5765,7 +5786,7 @@ msgstr "Utførelsesstatistikker"
 #: includes/functions/functions_print.php:255
 #, php-format
 msgid "Execution time: %1$s seconds. Database queries: %2$s. Memory usage: %3$s KB."
-msgstr ""
+msgstr "Utført på %1$s sekund. Databaseforespørsler: %2$s. Minnebruk: %3$s KB."
 
 #. I18N: placeholder text for registration-comments field
 #: login.php:428
@@ -5780,7 +5801,7 @@ msgstr "Eksport"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:281
 msgid "Export all family trees to GEDCOM files…"
-msgstr ""
+msgstr "Eksportere alle slektstrærne til GEDCOM-filer…"
 
 #: help_text.php:1211
 msgid "Export family tree"
@@ -5890,7 +5911,7 @@ msgstr "Faktaikoner"
 
 #: includes/functions/functions_print.php:966
 msgid "Fact or event"
-msgstr "Fakta eller hendelse"
+msgstr "Fakta eller begivenhet"
 
 #. I18N: Name of a module/tab on the individual page.
 #: modules_v3/individual_ext_report/report.xml:150
@@ -5898,7 +5919,7 @@ msgstr "Fakta eller hendelse"
 #: modules_v3/personal_facts/module.php:32
 #: modules_v3/random_media/module.php:262
 msgid "Facts and events"
-msgstr "Fakta og hendelser"
+msgstr "Fakta og begivenheter"
 
 #: admin_trees_config.php:1131
 msgid "Facts for family records"
@@ -6028,10 +6049,11 @@ msgstr "Familienyheter og kunngjøringer for nettstedet."
 msgid "Family of %s"
 msgstr "Familie til %s"
 
-#: admin_site_change.php:267 admin_site_change.php:291 admin_site_logs.php:234
-#: admin_site_logs.php:257 admin_trees_manage.php:181
-#: admin_trees_places.php:94 admin_users.php:227 admin_users.php:431
-#: edit_changes.php:182 modules_v3/batch_update/admin_batch_update.php:58
+#: admin_site_change.php:267 admin_site_change.php:291
+#: admin_site_logs.php:234 admin_site_logs.php:257
+#: admin_trees_manage.php:181 admin_trees_places.php:94 admin_users.php:227
+#: admin_users.php:431 edit_changes.php:182
+#: modules_v3/batch_update/admin_batch_update.php:58
 #: modules_v3/faq/module.php:352 modules_v3/googlemap/module.php:1469
 #: modules_v3/html/module.php:294 modules_v3/stories/module.php:332
 msgid "Family tree"
@@ -6060,7 +6082,8 @@ msgid "Family tree title"
 msgstr "Navn på familietre"
 
 #: admin.php:181 admin_trees_manage.php:28 search.php:219
-#: themes/_administration/header.php:104 themes/_administration/header.php:106
+#: themes/_administration/header.php:104
+#: themes/_administration/header.php:106
 msgid "Family trees"
 msgstr "Slektstrær (GEDCOM)"
 
@@ -6217,7 +6240,8 @@ msgctxt "LOCATIVE"
 msgid "February"
 msgstr "februar"
 
-#: includes/functions/functions_print.php:997 library/WT/Date/Calendar.php:124
+#: includes/functions/functions_print.php:997
+#: library/WT/Date/Calendar.php:124
 msgctxt "NOMINATIVE"
 msgid "February"
 msgstr "februar"
@@ -6294,9 +6318,10 @@ msgstr "Filer fra en tidligere versjon av <b>webtrees</b> er blitt funnet. Gamle
 msgid "Files marked with %s are required for proper operation and cannot be removed."
 msgstr "Filer merket %s er nødvendige for at webtree skal fungere, og kan ikke slettes."
 
-#: admin_site_change.php:271 admin_site_logs.php:238 find.php:186 find.php:201
-#: find.php:219 find.php:236 find.php:253 find.php:271 find.php:288
-#: find.php:479 library/WT/I18N.php:682 modules_v3/random_media/module.php:298
+#: admin_site_change.php:271 admin_site_logs.php:238 find.php:186
+#: find.php:201 find.php:219 find.php:236 find.php:253 find.php:271
+#: find.php:288 find.php:479 library/WT/I18N.php:682
+#: modules_v3/random_media/module.php:298
 msgid "Filter"
 msgstr "Filter"
 
@@ -6356,7 +6381,8 @@ msgid "Finland"
 msgstr "Finland"
 
 #. I18N: gedcom tag FCOM
-#: library/WT/Gedcom/Tag.php:211 modules_v3/missing_facts_report/report.xml:18
+#: library/WT/Gedcom/Tag.php:211
+#: modules_v3/missing_facts_report/report.xml:18
 msgid "First communion"
 msgstr "Første altergang"
 
@@ -6450,12 +6476,12 @@ msgstr "For ytterligere informasjon, kontakt"
 
 #: help_text.php:1494
 msgid "For optimal display on the Internet, <b>webtrees</b> uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ANSI (ISO-8859-1)</b>.<br><br>The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren’t sure, consult the documentation of that program.<br><br>Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program’s method for handling these special characters by some other means.  Consult your program’s manufacturer or author.<br><br>This <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8."
-msgstr "For den best mulige visning på nettet bruker <b>webtrees</b> tegnsettet UTF-8. Noen programmer, som for eksempel Family Tree Maker, kan ikke importere GEDCOM-filer i UTF-8. Hvis du krysser av denne ruten, vil filen konverteres fra <b>UTF-8</b> til <b>ANSI (ISO-8859-1)</b> ved nedlastningen.<br><br>Hvilket format du trenger, avhenger av hvilket program du skal arbeide med den nedlastede GEDCOM-filen i. Les programmets dokumentasjon hvis du er i tvil.<br><br>Merk at for at spesialtegn skal forbli uforandret, må du beholde filen i UTF-8 og finne en annen måte å konvertere den på til et format der ditt program kan behandle spesialtegn.  Kontakt evt. programmets produsent eller forfatter.<br><br>Denne <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia-artikkel\"><b>Wikipedia-artikkelen</b></a> inneholder omfattende informasjon om UTF-8, med nyttige linker videre til andre nettsteder."
+msgstr "For den best mulige visning på nettet bruker <b>webtrees</b> tegnsettet UTF-8. Noen programmer, som for eksempel Family Tree Maker, kan ikke importere GEDCOM-filer i UTF-8. Hvis du krysser av denne ruten, vil filen konverteres fra <b>UTF-8</b> til <b>ANSI (ISO-8859-1)</b> ved nedlastningen.<br><br>Hvilket format du trenger, avhenger av hvilket program du skal arbeide med den nedlastede GEDCOM-filen i. Les programmets dokumentasjon hvis du er i tvil.<br><br>Merk at for at spesialtegn skal forbli uforandret, må du beholde filen i UTF-8 og finne en annen måte å konvertere den på til et format der ditt program kan behandle spesialtegn.  Kontakt evt. programmets produsent eller forfatter.<br><br>Denne <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia-artikkel\"><b>Wikipedia-artikkelen</b></a> inneholder omfattende informasjon om UTF-8, med nyttige lenker videre til andre nettsteder."
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: help_text.php:417
 msgid "For sites with more than one family tree, this option will show the list of family trees in the main menu, the search pages, etc."
-msgstr ""
+msgstr "Avgjør om det på nettsteder med mer enn ett slektstre skal vises en liste over alle trærne i hovedmenyen, på søkesider osv."
 
 #: includes/functions/functions_print.php:372
 msgid "For technical support and information contact"
@@ -6469,11 +6495,11 @@ msgstr "For teknisk hjelp og slektsspørsmål, kontakt"
 #: admin_trees_config.php:935 help_text.php:175 help_text.php:187
 #: help_text.php:198 help_text.php:205 library/WT/Gedcom/Tag.php:216
 msgid "Format"
-msgstr "Format/type"
+msgstr "Formatering"
 
 #: admin_trees_config.php:940 help_text.php:525
 msgid "Format text and notes"
-msgstr ""
+msgstr "Formatering av tekst og notater"
 
 #: library/WT/Gedcom/Code/Pedi.php:55
 msgctxt "Female pedigree"
@@ -6655,7 +6681,8 @@ msgid "Gambia"
 msgstr "Gambia"
 
 #. I18N: gedcom tag SEX
-#: library/WT/Gedcom/Tag.php:300 modules_v3/family_group_report/report.xml:832
+#: library/WT/Gedcom/Tag.php:300
+#: modules_v3/family_group_report/report.xml:832
 #: modules_v3/individual_ext_report/report.xml:382
 #: modules_v3/individual_ext_report/report.xml:589
 #: modules_v3/individual_report/report.xml:384
@@ -7068,7 +7095,7 @@ msgstr "Hennes yrke var"
 
 #: modules_v3/googlemap/help_text.php:64
 msgid "Here an icon can be set or removed. Using this link a flag can be selected. When this geographic location is shown, this flag will be displayed."
-msgstr "Her kan man innstille eller fjerne et ikon. Med denne linken kan man velge et flagg, som brukes som markør når stedet vises."
+msgstr "Her kan man innstille eller fjerne et ikon. Med denne lenken kan man velge et flagg, som brukes som markør når stedet vises."
 
 #: modules_v3/googlemap/help_text.php:59
 msgid "Here the zoom level can be entered. This value will be used as the minimal value when displaying this geographic location on a map."
@@ -7080,7 +7107,7 @@ msgstr "Her kan du legge til fakta for posten du redigerer.<br><br>Velg først e
 
 #: help_text.php:1089
 msgid "Here you can add a source <b>Citation</b> to this record.<br><br>Just click the link, a window will open, and you can choose the source from the list (Find ID) or create a new source and then add the Citation.<br><br>Adding sources is an important part of genealogy because it allows other researchers to verify where you obtained your information."
-msgstr "Her kan du legge til et kilde-<b>Sitat</b> til posten.<br><br>Klikk på linken og det kommer opp et vindu der du kan velge kilden fra listen (Finn ID) eller opprette en ny kilde og så legge til Sitatet.<br><br>Kildebelegg er en viktig del av slektsforskningen fordi det gir andre forskere mulighet for å verifisere den informasjonen du presenterer."
+msgstr "Her kan du legge til et kilde-<b>Sitat</b> til posten.<br><br>Klikk på lenken og det kommer opp et vindu der du kan velge kilden fra listen (Finn ID) eller opprette en ny kilde og så legge til Sitatet.<br><br>Kildebelegg er en viktig del av slektsforskningen fordi det gir andre forskere mulighet for å verifisere den informasjonen du presenterer."
 
 #: help_text.php:1228
 msgid "Here you can change the diagram width from 50 percent to 300 percent.  At 100 percent the output image is about 640 pixels wide."
@@ -7092,7 +7119,7 @@ msgstr "Her kan du velge mellom to måter å vise stednavn. Hvis Ja er valgt vil
 
 #: help_text.php:1045
 msgid "Here you can choose text to appear on the login screen. You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the Help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.</div><br></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
-msgstr "Her kan du velge hvilken tekst som skal vises på innloggingssiden. Du kan bestemme hvilken av standardtekstene som passer best for ditt nettsted. Du kan også velge å skrive din egen velkomsttekst. Se hjelpeteksten under <b>Egendefinert velkomsttekst</b> for nærmere veiledning.<br><br>Standardtekstene er:<ul><li><b>Standardtekst som sier at alle brukere kan be om en brukerkonto:</b><div class=\"list_value_wrap\"><center><b>Velkommen til disse slektssidene!</b></center><br>Nettstedet er åpent for alle besøkere som har en brukerkonto.<br><br>Har du en brukerkonto, kan du logge deg inn nedenfor. Dersom du ikke har en brukerkonto ennå, kan du søke om å få en ved å klikke på linken \"Søke om brukerkonto\".<br><br>Etter å ha kontrollert informasjonen i søknaden, vil administratoren på nettstedet aktivere kontoen din. Du vil motta en epost når den er godkjent.</div><br></li><li><b>Standardtekst som sier at administratoren avgjøre søknader om brukerkonto:</b><div class=\"list_value_wrap\"><center><b>Velkommen til disse slektssidene!</b></center><br>Adgangen til nettstedet er begrenset til <u>autoriserte</u> brukere.<br><br>Har du en brukerkonto, kan du logge deg inn nedenfor. Dersom du ikke har en brukerkonto ennå, kan du søke om å få en ved å klikke på linken \"Søke om brukerkonto\".<br><br>Etter å ha kontrollert informasjonen i søknaden, vil administratoren på nettstedet enten godkjenne eller avslå søknaden din. Du vil motta en epost når søknaden er behandlet.</div><br></li><li><b>Standardtekst som sier at bare familiemedlemmer kan søke om brukerkonto:</b><div class=\"list_value_wrap\"><center><b>Velkommen til disse slektssidene!</b></center><br>Adgangen til nettstedet er begrenset til <u>familiemedlemmer</u>.<br><br>Har du en brukerkonto, kan du logge deg inn nedenfor. Dersom du ikke har en brukerkonto ennå, kan du søke om å få en ved å klikke på linken \"Søke om brukerkonto\".<br><br>Etter å ha kontrollert informasjonen i søknaden, vil administratoren på nettstedet enten godkjenne eller avslå søknaden din. Du vil motta en epost når søknaden er behandlet.</div></li></ul>"
+msgstr "Her kan du velge hvilken tekst som skal vises på innloggingssiden. Du kan bestemme hvilken av standardtekstene som passer best for ditt nettsted. Du kan også velge å skrive din egen velkomsttekst. Se hjelpeteksten under <b>Egendefinert velkomsttekst</b> for nærmere veiledning.<br><br>Standardtekstene er:<ul><li><b>Standardtekst som sier at alle brukere kan be om en brukerkonto:</b><div class=\"list_value_wrap\"><center><b>Velkommen til disse slektssidene!</b></center><br>Nettstedet er åpent for alle besøkere som har en brukerkonto.<br><br>Har du en brukerkonto, kan du logge deg inn nedenfor. Dersom du ikke har en brukerkonto ennå, kan du søke om å få en ved å klikke på lenken \"Søke om brukerkonto\".<br><br>Etter å ha kontrollert informasjonen i søknaden, vil administratoren på nettstedet aktivere kontoen din. Du vil motta en epost når den er godkjent.</div><br></li><li><b>Standardtekst som sier at administratoren avgjøre søknader om brukerkonto:</b><div class=\"list_value_wrap\"><center><b>Velkommen til disse slektssidene!</b></center><br>Adgangen til nettstedet er begrenset til <u>autoriserte</u> brukere.<br><br>Har du en brukerkonto, kan du logge deg inn nedenfor. Dersom du ikke har en brukerkonto ennå, kan du søke om å få en ved å klikke på lenken \"Søke om brukerkonto\".<br><br>Etter å ha kontrollert informasjonen i søknaden, vil administratoren på nettstedet enten godkjenne eller avslå søknaden din. Du vil motta en epost når søknaden er behandlet.</div><br></li><li><b>Standardtekst som sier at bare familiemedlemmer kan søke om brukerkonto:</b><div class=\"list_value_wrap\"><center><b>Velkommen til disse slektssidene!</b></center><br>Adgangen til nettstedet er begrenset til <u>familiemedlemmer</u>.<br><br>Har du en brukerkonto, kan du logge deg inn nedenfor. Dersom du ikke har en brukerkonto ennå, kan du søke om å få en ved å klikke på lenken \"Søke om brukerkonto\".<br><br>Etter å ha kontrollert informasjonen i søknaden, vil administratoren på nettstedet enten godkjenne eller avslå søknaden din. Du vil motta en epost når søknaden er behandlet.</div></li></ul>"
 
 #: modules_v3/googlemap/help_text.php:54
 msgid "Here you can enter the precision. Based on this setting the number of digits that will be used in the latitude and longitude is determined."
@@ -7335,7 +7362,7 @@ msgstr "Hvis denne ruten er krysset av, vil brukeren kunne redigere sine egne ko
 
 #: help_text.php:623
 msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, he is considered to be “alive”.  Children’s birth dates are considered to be such events for this purpose."
-msgstr "En person med andre begivenheter enn Død, Begravelse eller Kremering som er inntruffet nyligere enn for dette antall år siden, antas å være \"i live\", Barns fødselsdatoer regnes også som en slik hendelse."
+msgstr "En person med andre begivenheter enn Død, Begravelse eller Kremering som er inntruffet nyligere enn for dette antall år siden, antas å være \"i live\", Barns fødselsdatoer regnes også som begivenheter av denne typen."
 
 #: help_text.php:661
 msgid "If two family trees use the same media folder, then they will be able to share media files.  If they use different media folders, then their media files will be kept separate."
@@ -7367,7 +7394,7 @@ msgstr "Om du har et stort antall mediefiler, kan du organisere de i mapper og u
 
 #: help_text.php:1077
 msgid "If you have a note to add to this record, this is the place to do so.<br><br>Just click the link, a window will open, and you can type your note.  When you are finished typing, just click the button below the box, close the window, and that’s all."
-msgstr "Hvis du vil føyet et notat til denne posten, er dette stedet.<br><br>Klikk på linken, og et vindu vil komme opp der du kan skrive inn ditt notat. Når du er ferdig, klikk på \"Legg til\" øverst eller nederst og lukk vinduet."
+msgstr "Hvis du vil føyet et notat til denne posten, er dette stedet.<br><br>Klikk på lenken, og et vindu vil komme opp der du kan skrive inn ditt notat. Når du er ferdig, klikk på \"Legg til\" øverst eller nederst og lukk vinduet."
 
 #: admin_trees_manage.php:169
 msgid "If you have created media objects in webtrees, and have edited your gedcom off-line using a program that deletes media objects, then check this box to merge the current media objects with the new GEDCOM."
@@ -7416,7 +7443,7 @@ msgstr "Dimensjoner"
 
 #: admin_trees_config.php:719
 msgid "Images without watermarks"
-msgstr ""
+msgstr "Bilder uten vannmerker"
 
 #: modules_v3/family_nav/module.php:87
 msgid "Immediate Family"
@@ -7465,11 +7492,11 @@ msgstr "I dette feltet kan du angi en tekst for henvisningen for denne kilden. E
 
 #: calendar.php:128
 msgid "In this month…"
-msgstr "I denne måned …"
+msgstr "I denne måned…"
 
 #: calendar.php:131
 msgid "In this year…"
-msgstr "Hendelser i slekten…"
+msgstr "Familiebegivenheter i år…"
 
 #: modules_v3/googlemap/module.php:1499
 msgid "Include fully matched places: "
@@ -7522,7 +7549,7 @@ msgstr "Person 2"
 
 #: admin_trees_config.php:336 help_text.php:539
 msgid "Individual ID prefix"
-msgstr "Individ ID prefiks"
+msgstr "Prefix for Person-ID"
 
 #: statistics.php:558
 msgid "Individual distribution"
@@ -7530,7 +7557,7 @@ msgstr "Geografisk utbredelse"
 
 #: library/WT/Stats.php:1038 statistics.php:612
 msgid "Individual distribution chart"
-msgstr "Utbredelse pr individ"
+msgstr "Utbredelse pr person"
 
 #. I18N: Name of a module
 #: modules_v3/individuals/module.php:32
@@ -7541,8 +7568,8 @@ msgstr "Personliste"
 msgid "Individual pages"
 msgstr "Personsider"
 
-#: admin_users.php:229 admin_users.php:433 edituser.php:139 help_text.php:1201
-#: help_text.php:1362 help_text.php:1462
+#: admin_users.php:229 admin_users.php:433 edituser.php:139
+#: help_text.php:1201 help_text.php:1362 help_text.php:1462
 msgid "Individual record"
 msgstr "Personregistrering"
 
@@ -7571,7 +7598,7 @@ msgstr "Personer"
 
 #: library/WT/Stats.php:309 statistics.php:387
 msgid "Individuals with sources"
-msgstr "Individer med kilder"
+msgstr "Personer med kilder"
 
 #: famlist.php:255 indilist.php:255
 #, php-format
@@ -7682,7 +7709,7 @@ msgstr "Israel"
 
 #: admin_site_upgrade.php:81 admin_site_upgrade.php:85
 msgid "It can take several minutes to download and install the upgrade.  Be patient."
-msgstr ""
+msgstr "Det kan ta flere minutter å laste ned og installere oppdateringen. Vent vennligst."
 
 #: library/WT/Stats.php:3865
 msgid "Italy"
@@ -7737,7 +7764,8 @@ msgctxt "LOCATIVE"
 msgid "January"
 msgstr "januar"
 
-#: includes/functions/functions_print.php:996 library/WT/Date/Calendar.php:123
+#: includes/functions/functions_print.php:996
+#: library/WT/Date/Calendar.php:123
 msgctxt "NOMINATIVE"
 msgid "January"
 msgstr "januar"
@@ -8026,7 +8054,7 @@ msgstr "Laos"
 
 #: setup.php:168
 msgid "Large systems (50000 individuals): 64-128MB, 40-80 seconds"
-msgstr "Store systemer (50000 individer): 64-128MB, 40-80 sekunder"
+msgstr "Store systemer (50000 personer): 64-128MB, 40-80 sekunder"
 
 #: library/WT/Stats.php:2820 statistics.php:312
 msgid "Largest families"
@@ -8123,7 +8151,8 @@ msgstr "Libanon"
 #: modules_v3/ahnentafel_report/report.xml:13
 #: modules_v3/bdm_report/report.xml:12 modules_v3/birth_report/report.xml:10
 #: modules_v3/cemetery_report/report.xml:8
-#: modules_v3/change_report/report.xml:9 modules_v3/death_report/report.xml:11
+#: modules_v3/change_report/report.xml:9
+#: modules_v3/death_report/report.xml:11
 #: modules_v3/descendancy_report/report.xml:8
 #: modules_v3/fact_sources/report.xml:8
 #: modules_v3/family_group_report/report.xml:11
@@ -8154,7 +8183,8 @@ msgstr "Lesotho"
 #: modules_v3/ahnentafel_report/report.xml:13
 #: modules_v3/bdm_report/report.xml:12 modules_v3/birth_report/report.xml:10
 #: modules_v3/cemetery_report/report.xml:8
-#: modules_v3/change_report/report.xml:9 modules_v3/death_report/report.xml:11
+#: modules_v3/change_report/report.xml:9
+#: modules_v3/death_report/report.xml:11
 #: modules_v3/descendancy_report/report.xml:8
 #: modules_v3/fact_sources/report.xml:8
 #: modules_v3/family_group_report/report.xml:11
@@ -8283,7 +8313,7 @@ msgstr "Lokale filer"
 #. I18N: gedcom tag _LOC
 #: library/WT/Gedcom/Tag.php:730
 msgid "Location"
-msgstr ""
+msgstr "Stedspost"
 
 #: modules_v3/googlemap/admin_places.php:521
 msgid "Location not removed: this location contains sub-locations"
@@ -8411,7 +8441,7 @@ msgstr "Personnavn i postadresse"
 #: help_text.php:1190 includes/functions/functions_edit.php:223
 #: includes/functions/functions_edit.php:234
 msgid "Mailto link"
-msgstr "Mailto link"
+msgstr "\"Mailto\"-lenke"
 
 #: index_edit.php:260
 msgid "Main section blocks"
@@ -8516,14 +8546,15 @@ msgctxt "LOCATIVE"
 msgid "March"
 msgstr "mars"
 
-#: includes/functions/functions_print.php:998 library/WT/Date/Calendar.php:125
+#: includes/functions/functions_print.php:998
+#: library/WT/Date/Calendar.php:125
 msgctxt "NOMINATIVE"
 msgid "March"
 msgstr "mars"
 
 #: help_text.php:530
 msgid "Markdown is a simple system of formatting, used on websites such as Wikipedia.  It uses unobtrusive punctuation characters to create headings and sub-headings, bold and italic text, lists, tables, etc."
-msgstr ""
+msgstr "Markdown er et enkelt system for å markere formatering av ren tekst, som f.eks. brukes på nettsteder som Wikipedia. Overskrifter, fetstil, kursiv, lister, tabeller, osv. angis ved hjelp av enkle og logiske symboler, som ikke forstyrrer lesningen hvis man leser teksten direkte."
 
 #. I18N: gedcom tag MARR
 #: library/WT/Gedcom/Tag.php:238 modules_v3/ahnentafel_report/report.xml:453
@@ -8591,7 +8622,8 @@ msgid "Marriage Place contains"
 msgstr "Sted for vielse inneholder"
 
 #. I18N: gedcom tag MARB
-#: library/WT/Gedcom/Tag.php:233 modules_v3/missing_facts_report/report.xml:19
+#: library/WT/Gedcom/Tag.php:233
+#: modules_v3/missing_facts_report/report.xml:19
 msgid "Marriage banns"
 msgstr "Lysning"
 
@@ -8768,7 +8800,7 @@ msgstr "Martinique"
 #. I18N: Pretend to be another user, by logging in as them
 #: admin_users.php:215
 msgid "Masquerade as this user"
-msgstr ""
+msgstr "Figurér som denne brukeren"
 
 #: modules_v3/batch_update/plugins/search_replace.php:90
 msgid "Match the exact text, even if it occurs in the middle of a word."
@@ -8797,7 +8829,7 @@ msgstr "Maks. antall generasjoner av etterkommere"
 
 #: admin_trees_config.php:778 help_text.php:924
 msgid "Maximum number of surnames on individual list"
-msgstr "Maks. antall etternavn på individliste"
+msgstr "Maks. antall etternavn på personliste"
 
 #: admin_trees_config.php:826 help_text.php:649
 msgid "Maximum pedigree generations"
@@ -8847,7 +8879,7 @@ msgstr "Medford, Oregon"
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:87
 #: modules_v3/media/module.php:34 themes/_administration/header.php:138
 msgid "Media"
-msgstr "Medium"
+msgstr "Medier"
 
 #: admin_trees_config.php:358 help_text.php:666
 msgid "Media ID prefix"
@@ -8939,7 +8971,7 @@ msgstr "Middelhavet"
 
 #: setup.php:166
 msgid "Medium systems (5000 individuals): 32-64MB, 20-40 seconds"
-msgstr "Mellomstore systemer (5000 individer): 32-64MB, 20-40 sekunder"
+msgstr "Mellomstore systemer (5000 personer): 32-64MB, 20-40 sekunder"
 
 #: library/WT/Date/Jalali.php:123
 msgctxt "Abbreviation for Persian month: Mehr"
@@ -9425,8 +9457,9 @@ msgstr "Burma(Myanmar)"
 #: modules_v3/birth_report/report.xml:5 modules_v3/birth_report/report.xml:33
 #: modules_v3/cemetery_report/report.xml:38
 #: modules_v3/change_report/report.xml:53
-#: modules_v3/change_report/report.xml:93 modules_v3/death_report/report.xml:5
-#: modules_v3/death_report/report.xml:35 modules_v3/fact_sources/report.xml:59
+#: modules_v3/change_report/report.xml:93
+#: modules_v3/death_report/report.xml:5 modules_v3/death_report/report.xml:35
+#: modules_v3/fact_sources/report.xml:59
 #: modules_v3/fact_sources/report.xml:152
 #: modules_v3/fact_sources/report.xml:263
 #: modules_v3/fact_sources/report.xml:314
@@ -9721,11 +9754,11 @@ msgstr "Ingen kontaktmåte"
 
 #: admin_site_upgrade.php:207
 msgid "No custom modules are enabled."
-msgstr ""
+msgstr "Ingen tilpassede moduler er aktivert."
 
 #: admin_site_upgrade.php:270
 msgid "No custom themes are enabled."
-msgstr ""
+msgstr "Ingen tilpassede temaer er aktivert."
 
 #: admin_trees_check.php:227
 msgid "No errors were found."
@@ -9766,8 +9799,8 @@ msgstr "Ingen begivenheter for levende personer finnes for i morgen."
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Ingen begivenheter for nålevende personer den nærmeste %s dag."
+msgstr[1] "Ingen begivenheter for nålevende personer de neste %s dagene."
 
 #: library/WT/Controller/Family.php:164
 msgid "No facts for this family."
@@ -9813,7 +9846,7 @@ msgstr "Ingen steder funnet"
 
 #: admin_trees_places.php:121
 msgid "No places were found."
-msgstr ""
+msgstr "Ingen steder ble funnet."
 
 #: admin_site_config.php:44
 msgid "No predefined text"
@@ -9837,7 +9870,7 @@ msgstr "Ordinans under livstid - ikke knyttet til et tempel"
 
 #: admin_site_upgrade.php:67
 msgid "No upgrade information is available."
-msgstr ""
+msgstr "Ingen opplysninger om mulige oppdateringer tilgjengelige."
 
 #: library/WT/Stats.php:1069
 msgid "Nobody at all"
@@ -9850,9 +9883,9 @@ msgstr "Nattlig"
 
 #: admin_trees_download.php:114 admin_users.php:455 famlist.php:113
 #: famlist.php:143 indilist.php:113 indilist.php:143 library/WT/Stats.php:733
-#: modules_v3/cemetery_report/report.xml:7 modules_v3/clippings/module.php:201
-#: modules_v3/clippings/module.php:585 modules_v3/death_report/report.xml:10
-#: modules_v3/families/module.php:149
+#: modules_v3/cemetery_report/report.xml:7
+#: modules_v3/clippings/module.php:201 modules_v3/clippings/module.php:585
+#: modules_v3/death_report/report.xml:10 modules_v3/families/module.php:149
 #: modules_v3/individual_ext_report/report.xml:11
 #: modules_v3/individual_report/report.xml:8
 #: modules_v3/individuals/module.php:148
@@ -10169,7 +10202,7 @@ msgstr "På denne dag"
 
 #: calendar.php:125
 msgid "On this day…"
-msgstr "Årsdag for hendelser i slekten…"
+msgstr "Årsdag for familiebegivenheter…"
 
 #: includes/functions/functions_edit.php:211
 #: includes/functions/functions_print_facts.php:253
@@ -10367,7 +10400,8 @@ msgstr "Side %s av %s"
 #: modules_v3/ahnentafel_report/report.xml:13
 #: modules_v3/bdm_report/report.xml:12 modules_v3/birth_report/report.xml:10
 #: modules_v3/cemetery_report/report.xml:8
-#: modules_v3/change_report/report.xml:9 modules_v3/death_report/report.xml:11
+#: modules_v3/change_report/report.xml:9
+#: modules_v3/death_report/report.xml:11
 #: modules_v3/descendancy_report/report.xml:8
 #: modules_v3/fact_sources/report.xml:8
 #: modules_v3/family_group_report/report.xml:11
@@ -10579,16 +10613,16 @@ msgstr "PhpGedView må bruke samme database som <b>webtrees</b>"
 
 #: admin_pgv_to_wt.php:114 help_text.php:1303
 msgid "PhpGedView to <b>webtrees</b> transfer wizard"
-msgstr "PhpGedView til <b>webtrees</b> overføringshjelp"
+msgstr "«PhpGedView til <b>webtrees</b>»-assistent"
 
 #: admin_pgv_to_wt.php:34
 msgid "PhpGedView to webtrees transfer wizard"
-msgstr "PhpGedView til webtrees overføringshjelp"
+msgstr "«PhpGedView til webtrees»-assistent"
 
 #. I18N: The name of a colour-scheme
 #: themes/colors/theme.php:88
 msgid "Pink Plastic"
-msgstr "Rosa plastikk"
+msgstr "Rosa plast"
 
 #: library/WT/Stats.php:3928
 msgid "Pitcairn"
@@ -10630,7 +10664,7 @@ msgstr "Stedsnavn inneholder:"
 
 #: modules_v3/top10_pageviews/module.php:140
 msgid "Place counts before or after name?"
-msgstr "Plasser antall før eller etter navn?"
+msgstr "Plassér antallet før eller etter navn?"
 
 #: library/WT/MenuBar.php:298 modules_v3/googlemap/module.php:259
 #: placelist.php:38 placelist.php:40 placelist.php:145
@@ -10647,7 +10681,7 @@ msgstr "Stedsnavn er ofte for lange til å passe i skjemaer, lister osv. Disse k
 
 #: library/WT/Gedcom/Tag.php:116
 msgid "Place of LDS baptism"
-msgstr "Sted for mormondåp"
+msgstr "Sted for mormonerdåp"
 
 #: library/WT/Gedcom/Tag.php:304
 msgid "Place of LDS child sealing"
@@ -10728,7 +10762,7 @@ msgstr "Forlovelsessted"
 
 #: library/WT/Gedcom/Tag.php:196
 msgid "Place of event"
-msgstr "Sted for hendelse"
+msgstr "Sted for begivenhet"
 
 #: library/WT/Gedcom/Tag.php:213
 #: modules_v3/missing_facts_report/report.xml:385
@@ -10752,7 +10786,7 @@ msgstr "Sted for lysning"
 
 #: library/WT/Gedcom/Tag.php:258
 msgid "Place of naturalization"
-msgstr "Sted for Statsborgerskap"
+msgstr "Sted for statsborgerskap"
 
 #: library/WT/Gedcom/Tag.php:272
 msgid "Place of ordination"
@@ -10765,12 +10799,12 @@ msgstr "Bostedets navn"
 #: admin_site_upgrade.php:402
 #, php-format
 msgid "Place the site offline, by creating the file %s…"
-msgstr ""
+msgstr "Sett nettstedet offline ved å opprette filen %s…"
 
 #: admin_site_upgrade.php:452
 #, php-format
 msgid "Place the site online, by deleting the file %s…"
-msgstr ""
+msgstr "Sett nettstedet online ved å slette filen %s…"
 
 #: admin_trees_config.php:895 statistics.php:401
 msgid "Places"
@@ -10778,7 +10812,7 @@ msgstr "Steder"
 
 #: find.php:613
 msgid "Places found"
-msgstr "Steder funnet"
+msgstr "Antall steder funnet"
 
 #. I18N: %s is a country or region
 #: placelist.php:143
@@ -10788,22 +10822,23 @@ msgstr "Steder i %s"
 
 #: help_text.php:330
 msgid "Places should be entered according to the standards for genealogy.  In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels.  The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place.  The first part, “Salt Lake City,” is the city or township where the event occurred.  In some countries, there may be municipalities or districts inside a city which are important to note.  In that case, they should come before the city.  The next part, “Salt Lake,” is the county.  “Utah” is the state, and “USA” is the country.  It is important to note each place because genealogical records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas.  Suppose, in the example above, you didn’t know the county for Salt Lake City.  You should then record it like this: “Salt Lake City, , Utah, USA”.  Suppose you only know that an individual was born in Utah.  You would enter the information like this: “, , Utah, USA”.  <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
-msgstr ""
+msgstr "Stedsnavn bør innføres i overensstemmelse med genealogiske standarder: den mest spesifikke informasjonen om stedet skrives først, deretter arbeider man seg opp gjennom hierarkiet til det minst spesifikke nivået, med komma som skilletegn mellom nivåene. Navnene du bruker for å angi stedene bør representere de ulike nivåene i stats- eller kirkeadministrasjonen der sentrale registre føres og oppbevares, og hvilket nivå du innfører en bestemt informasjon på, bør samsvare med hvilket nivå informasjonen er innført på.<br><br>For eksempel, et sted som Brødstadbotn i Troms kunne føres inn som «Brøstadbotn, Dyrøy, Troms, NOR». Første del av stedsangivelsen, «Brøstadbotn», er stedet hvor begivenheten fant sted. Neste del, «Dyrøy», er kommunen. «Troms» er fylket, og «NOR» er landet. Det er viktig å angi alle nivåene, siden administrasjonen på hvert nivå kan føre relevante registre.<br><br>Hvis et nivå i stedsangivelsen er ukjent, bør dette angis med en tom plass mellom to kommaer. Hvis du for eksempel ikke vet hvilken kommune Brøstadbotn ligger i, bør det innføres som «Brøstadbotn, , Troms, NOR». Hvis du ikke vet mer enn at en person er født i Troms, vil stedsnavnet kunne innføres som «, , Troms, NOR».<br><br>Du kan bruke <b>Finn stedet</b> for å finne steder som allerede forekommer i databasen."
 
-#: modules_v3/random_media/module.php:130 themes/_administration/header.php:31
-#: themes/clouds/header.php:34 themes/colors/header.php:37
-#: themes/fab/header.php:34 themes/minimal/header.php:34
-#: themes/webtrees/header.php:35 themes/xenea/header.php:34
+#: modules_v3/random_media/module.php:130
+#: themes/_administration/header.php:31 themes/clouds/header.php:34
+#: themes/colors/header.php:37 themes/fab/header.php:34
+#: themes/minimal/header.php:34 themes/webtrees/header.php:35
+#: themes/xenea/header.php:34
 msgid "Play"
 msgstr "Start avspilling"
 
 #: login.php:325
 msgid "Please click on the following link and fill in the requested data to confirm your request and email address."
-msgstr "Vennligst klikk på linken under og fyll ut riktige data for å bekrefte kontoen og epost-adressen din."
+msgstr "Klikk på lenken nedenfor og fyll ut som anført i skjemaet for å bekrefte kontoen og epost-adressen din."
 
 #: search.php:77
 msgid "Please enter a Given name, Last name, or Place in addition to Year"
-msgstr "Vennligs oppgi et fornavn, etternavn eller et sted i tillegg til årstall"
+msgstr "Angi et fornavn, etternavn eller stedsnavn i tillegg til årstall"
 
 #: message.php:102
 msgid "Please enter a message subject."
@@ -10811,16 +10846,16 @@ msgstr "Skriv inn tekst i emnefeltet."
 
 #: message.php:61
 msgid "Please enter a valid email address."
-msgstr "Vennligst oppgi en gyldig epostadresse."
+msgstr "Angi en gyldig epostadresse."
 
 #: find.php:142 modules_v3/GEDFact_assistant/_CENS/census_3_find.php:60
 #: modules_v3/GEDFact_assistant/module.php:115 search.php:40 search.php:62
 msgid "Please enter more than one character"
-msgstr "Venligst skriv inn mer enn bare en bokstav"
+msgstr "Feltet må inneholde mer enn bare én bokstav"
 
 #: message.php:107
 msgid "Please enter some message text before sending."
-msgstr "Skriv inn en tekst før den sendes."
+msgstr "Beskjedfeltet må inneholde tekst før beskjeden kan sendes."
 
 #: message.php:129
 msgid "Please provide your email address so that we may contact you in response to this message.  If you do not provide your email address we will not be able to respond to your inquiry.  Your email address will not be used in any other way besides responding to this inquiry."
@@ -10917,7 +10952,7 @@ msgstr "Presisjon"
 
 #: modules_v3/googlemap/help_text.php:36 modules_v3/googlemap/module.php:308
 msgid "Precision of the latitude and longitude"
-msgstr "Nøyaktighet for lengde og breddegrad"
+msgstr "Presisjon for lengde- og breddegrad"
 
 #: admin_site_config.php:46
 msgid "Predefined text that states admin will decide on each request for a user account"
@@ -10931,7 +10966,8 @@ msgstr "Forhåndsdefinert tekst som sier at alle besøkende kan be om en brukerk
 msgid "Predefined text that states only family members can request a user account"
 msgstr "Forhåndsdefinert tekst som sier at kun familiemedlemmer kan søke om brukerkonto"
 
-#: admin_users.php:192 admin_users.php:394 edituser.php:171 help_text.php:1179
+#: admin_users.php:192 admin_users.php:394 edituser.php:171
+#: help_text.php:1179
 msgid "Preferred contact method"
 msgstr "Foretrukket kontaktmetode"
 
@@ -11030,7 +11066,7 @@ msgstr "Eiendom"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_4_text.php:36
 msgid "Proposed Census Text&nbsp;&nbsp;"
-msgstr "Foreslått tekst for folketelling"
+msgstr "Foreslått tekst for folketelling&nbsp;&nbsp;"
 
 #: library/WT/Gedcom/Code/Temp.php:156
 msgid "Provo, Utah"
@@ -11224,8 +11260,8 @@ msgstr "Endre rekkefølge på familier"
 msgid "Re-order media"
 msgstr "Endre rekkefølge på media"
 
-#: admin_users.php:366 admin_users.php:572 edituser.php:135 help_text.php:1352
-#: login.php:303 login.php:402
+#: admin_users.php:366 admin_users.php:572 edituser.php:135
+#: help_text.php:1352 login.php:303 login.php:402
 msgid "Real name"
 msgstr "Fullt navn"
 
@@ -11322,7 +11358,7 @@ msgstr "Regulært uttrykk"
 #. I18N: http://en.wikipedia.org/wiki/Regular_expression
 #: modules_v3/batch_update/plugins/search_replace.php:93
 msgid "Regular expressions are an advanced pattern matching technique."
-msgstr ""
+msgstr "Regulære uttrykk er en avansert teknikk for mønstergjenkjenning."
 
 #. I18N: Name of a module/report
 #: modules_v3/individual_ext_report/module.php:33
@@ -11369,9 +11405,9 @@ msgid "Relationship: %s"
 msgstr "Forhold: %s"
 
 #: includes/functions/functions_print.php:577
-#: includes/functions/functions_print_lists.php:290 library/WT/MenuBar.php:108
-#: library/WT/MenuBar.php:226 library/WT/MenuBar.php:251 relationship.php:71
-#: relationship.php:86
+#: includes/functions/functions_print_lists.php:290
+#: library/WT/MenuBar.php:108 library/WT/MenuBar.php:226
+#: library/WT/MenuBar.php:251 relationship.php:71 relationship.php:86
 msgid "Relationships"
 msgstr "Slektskapsforhold"
 
@@ -11382,7 +11418,8 @@ msgid "Relationships between %1$s and %2$s"
 msgstr "Slektskapsforhold mellom %1$s og %2$s"
 
 #. I18N: gedcom tag RELI
-#: library/WT/Gedcom/Tag.php:287 modules_v3/missing_facts_report/report.xml:23
+#: library/WT/Gedcom/Tag.php:287
+#: modules_v3/missing_facts_report/report.xml:23
 #: modules_v3/missing_facts_report/report.xml:583
 msgid "Religion"
 msgstr "Religion"
@@ -11783,14 +11820,15 @@ msgstr "Besegling annullert (skilsmisse)"
 #: library/WT/MenuBar.php:412 lifespan.php:193 medialist.php:152
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:59
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:79
-#: modules_v3/descendancy/module.php:102 modules_v3/descendancy/module.php:131
-#: modules_v3/families/module.php:141 modules_v3/individuals/module.php:141
-#: search.php:157 search.php:260 search.php:262 search.php:264
-#: search_advanced.php:293 themes/clouds/header.php:79
-#: themes/clouds/header.php:80 themes/colors/header.php:120
-#: themes/colors/header.php:121 themes/fab/header.php:95
-#: themes/minimal/header.php:98 themes/webtrees/header.php:82
-#: themes/webtrees/header.php:83 themes/xenea/header.php:77
+#: modules_v3/descendancy/module.php:102
+#: modules_v3/descendancy/module.php:131 modules_v3/families/module.php:141
+#: modules_v3/individuals/module.php:141 search.php:157 search.php:260
+#: search.php:262 search.php:264 search_advanced.php:293
+#: themes/clouds/header.php:79 themes/clouds/header.php:80
+#: themes/colors/header.php:120 themes/colors/header.php:121
+#: themes/fab/header.php:95 themes/minimal/header.php:98
+#: themes/webtrees/header.php:82 themes/webtrees/header.php:83
+#: themes/xenea/header.php:77
 msgid "Search"
 msgstr "Søk"
 
@@ -11803,7 +11841,7 @@ msgstr "Søk og erstatt"
 #. I18N: Description of the “Search and replace” option of the batch update module
 #: modules_v3/batch_update/plugins/search_replace.php:39
 msgid "Search and replace text, using simple searches or advanced pattern matching."
-msgstr ""
+msgstr "Søk og erstatt tekst, med enkel søk eller med avansert mønstergjenkjenning."
 
 #: includes/session.php:583
 msgid "Search engine"
@@ -11850,7 +11888,7 @@ msgstr "Sikker forbindelse"
 #: modules_v3/batch_update/plugins/search_replace.php:93
 #, php-format
 msgid "See %s for more information."
-msgstr ""
+msgstr "Se %s for ytterligere informasjon."
 
 #: includes/functions/functions_edit.php:311 reportengine.php:261
 msgid "Select a date"
@@ -12048,7 +12086,7 @@ msgstr "Servernavn"
 #. I18N: The local time on the server
 #: themes/_administration/header.php:81
 msgid "Server time"
-msgstr ""
+msgstr "Serverens tid."
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:94 help_text.php:728
@@ -12058,9 +12096,10 @@ msgstr "Session timeout"
 #: admin_media.php:444 inverselink.php:165 library/WT/Controller/Media.php:64
 #: library/WT/Controller/Media.php:145 modules_v3/lightbox/module.php:181
 msgid "Set link"
-msgstr "Sett link"
+msgstr "Angi lenke"
 
-#: themes/_administration/header.php:124 themes/_administration/header.php:136
+#: themes/_administration/header.php:124
+#: themes/_administration/header.php:136
 msgid "Set the default blocks"
 msgstr "Angi standardblokker"
 
@@ -12154,14 +12193,14 @@ msgstr "Delt notat"
 msgid "Shared note contains:"
 msgstr "Delt notat inneholder:"
 
-#: includes/functions/functions_print_lists.php:932 library/WT/MenuBar.php:310
-#: notelist.php:29 notelist.php:33 search.php:127
+#: includes/functions/functions_print_lists.php:932
+#: library/WT/MenuBar.php:310 notelist.php:29 notelist.php:33 search.php:127
 msgid "Shared notes"
 msgstr "Delte notater"
 
 #: help_text.php:358
 msgid "Shared notes are free-form text and will appear in the Fact Details section of the page.<br><br>Each shared note can be linked to more than one individual, family, source, or event."
-msgstr "Et Delt notat er et fritt tekstfelt, og det vil vises på Fakta-fanebladet på siden.<br><br>Hvert enkelt Delt notat kan knyttes til mer enn en person, familie, kilde eller hendelse."
+msgstr "Et Delt notat er et fritt tekstfelt, og det vil vises på Fakta-fanebladet på siden.<br><br>Hvert enkelt Delt notat kan knyttes til mer enn en person, familie, kilde eller begivenhet."
 
 #: find.php:659
 msgid "Shared notes found"
@@ -12169,7 +12208,7 @@ msgstr "Delte notater funnet"
 
 #: help_text.php:1149
 msgid "Shared notes, like regular notes, are free-form text.  Unlike regular notes, each shared note can be linked to more than one individual, family, source, or fact.<br><br>By clicking the appropriate icon, you can establish a link to an existing shared note or create a new shared note and at the same time link to it.  If a link to an existing shared note has already been established, you can also edit that note’s contents.<br><ul><li><b>Link to an existing shared note</b><div style=\"padding-left:20px;\">If you already know the ID number of the desired shared note, you can enter that number directly into the field.<br><br>When you click the <b>Find shared note</b> icon, you will be able to search the text of all existing shared notes and then choose one of them.  The ID number of the chosen note will be entered into the field automatically.<br><br>You must click the <b>Add</b> button to update the original record.</div><br></li><li><b>Create a new shared note</b><div style=\"padding-left:20px;\">When you click the <b>Create a new shared note</b> icon, a new window will open.  You can enter the text of the new note as you wish.  As with regular notes, you can enter URLs.<br><br>When you click the <b>Save</b> button, you will see a message with the ID number of the newly created shared note.  You should click on this message to close the editing window and also copy that new ID number directly into the ID number field.  If you just close the window, the newly created ID number will not be copied automatically.<br><br>You must click the <b>Add</b> button to update the original record.</div><br></li><li><b>Edit an existing shared note</b><div style=\"padding-left:20px;\">When you click the <b>Edit shared note</b> icon, a new window will open.  You can change the text of the existing shared note as you wish.  As with regular notes, you can enter URLs.<br><br>When you click the <b>Save</b> button, the text of the shared note will be updated.  You can close the window and then click the <b>Save</b> button again.<br><br>When you change the text of a shared note, your change will be reflected in all places to which that shared note is currently linked.  New links that you establish after having made your change will also use the updated text.</div></li></ul>"
-msgstr "Delte notater, liksom vanlige notater, er fri tekst. Til forskjell fra vanlige notater kan et delt notat knyttes til mer enn én person, familie, kilde eller hendelse.<br><br>Ved å klikke på linken til delte notater kan du opprette en link til et eksisterende delt notat eller gjøre et nytt og samtidig linke til det. Hvis det allerede er opprettet en link til et eksisterende delt notat, kan du også redigere dets innhold.<br><ul><li><b>Link til et eksisterende delt notat</b><div style=\"padding-left:20px;\">Hvis du allerede kjenner ID-nummeret til det notatet du er ute etter, kan du føre det inn direkte i feltet.<br><br>Hvis du klikker på <b>Finn delt notat</b>-ikonet, kan du der søke i teksten til alle de delte notatene du har og velge ett av dem. Det valgte notatets ID-nummer vil bli skrevet inn i feltet automatisk.<br><br>Du må klikke på <b>Legg til</b> for å oppdatere posten du kom fra.</div><br></li><li><b>Opprett et nytt delt notat</b><div style=\"padding-left:20px;\">Hvis du klikker på <b>Opprett et nytt delt notat</b>-ikonet, vil et nytt vindu åpnes, der du kan føre inn den nye notens tekst. Som med vanlige notater kan du også skrive inn URL'er<br><br>Når du klikker på <b>Lagre</b>, vil du se en beskjed med ID-nummeret til det notat du nettopp har laget. Klikk på beskjeden for å lukke vinduet og overføre det nye ID-nummeret direkte til ID-nummerfeltet. Hvis du bare lukker vinduet, vil ID-nummeret ikke bli kopiert automatisk.<br><br>Du må klikke på <b>Legg til</b> for å oppdatere posten du kom fra.</div><br></li><li><b>Rediger et eksisterende delt notat</b><div style=\"padding-left:20px;\">Når du klikker på <b>Rediger delt notat</b>-ikonet, vil et nytt vindu åpnes, der du endre i det delte notatets tekst. Som med vanlige notater kan du også skrive inn URL'er.<br><br>Når du klikker på <b>Lagre</b>, blir den delte notens tekst bli oppdatert. Du kan lukke vinduet og så klikke på <b>Lagre</b> igjen.<br><br>Når du endrer i et delt notats tekst, vil de forandringene du gjør vises overalt der det delte notatet er linket. Nye linker som du oppretter etter at forandringene er gjort, vil også ha den oppdaterte teksten.</div></li></ul>"
+msgstr "Delte notater, liksom vanlige notater, er fri tekst. Til forskjell fra vanlige notater kan et delt notat knyttes til mer enn én person, familie, kilde eller begivenhet.<br><br>Ved å klikke på lenken til delte notater kan du opprette en lenke til et eksisterende delt notat eller gjøre et nytt og samtidig lenke til det. Hvis det allerede er opprettet en lenke til et eksisterende delt notat, kan du også redigere dets innhold.<br><ul><li><b>Link til et eksisterende delt notat</b><div style=\"padding-left:20px;\">Hvis du allerede kjenner ID-nummeret til det notatet du er ute etter, kan du føre det inn direkte i feltet.<br><br>Hvis du klikker på <b>Finn delt notat</b>-ikonet, kan du der søke i teksten til alle de delte notatene du har og velge ett av dem. Det valgte notatets ID-nummer vil bli skrevet inn i feltet automatisk.<br><br>Du må klikke på <b>Legg til</b> for å oppdatere posten du kom fra.</div><br></li><li><b>Opprett et nytt delt notat</b><div style=\"padding-left:20px;\">Hvis du klikker på <b>Opprett et nytt delt notat</b>-ikonet, vil et nytt vindu åpnes, der du kan føre inn den nye notens tekst. Som med vanlige notater kan du også skrive inn URL'er<br><br>Når du klikker på <b>Lagre</b>, vil du se en beskjed med ID-nummeret til det notat du nettopp har laget. Klikk på beskjeden for å lukke vinduet og overføre det nye ID-nummeret direkte til ID-nummerfeltet. Hvis du bare lukker vinduet, vil ID-nummeret ikke bli kopiert automatisk.<br><br>Du må klikke på <b>Legg til</b> for å oppdatere posten du kom fra.</div><br></li><li><b>Rediger et eksisterende delt notat</b><div style=\"padding-left:20px;\">Når du klikker på <b>Rediger delt notat</b>-ikonet, vil et nytt vindu åpnes, der du endre i det delte notatets tekst. Som med vanlige notater kan du også skrive inn URL'er.<br><br>Når du klikker på <b>Lagre</b>, blir den delte notens tekst bli oppdatert. Du kan lukke vinduet og så klikke på <b>Lagre</b> igjen.<br><br>Når du endrer i et delt notats tekst, vil de forandringene du gjør vises overalt der det delte notatet er linket. Nye linker som du oppretter etter at forandringene er gjort, vil også ha den oppdaterte teksten.</div></li></ul>"
 
 #. I18N: http://en.wikipedia.org/wiki/Shawwal
 #: library/WT/Date/Hijri.php:72
@@ -12343,7 +12382,7 @@ msgstr "Vis en aldersmarkør?"
 #. I18N: A site configuration setting
 #: admin_trees_config.php:967 help_text.php:703
 msgid "Show chart details by default"
-msgstr ""
+msgstr "Vis detaljer i diagrammer som standard"
 
 #: modules_v3/ahnentafel_report/report.xml:12
 msgid "Show children of ancestors?"
@@ -12400,7 +12439,7 @@ msgstr "Vis dato for siste oppdatering?"
 
 #: admin_trees_config.php:496 help_text.php:838
 msgid "Show dead individuals"
-msgstr "Vis døde personer"
+msgstr "Vis avdøde personer"
 
 #: ancestry.php:126 descendancy.php:84 familybook.php:47 hourglass.php:55
 #: modules_v3/charts/module.php:210 pedigree.php:52 relationship.php:101
@@ -12413,7 +12452,7 @@ msgstr "Vis skilte par."
 
 #: admin_trees_config.php:655 help_text.php:874
 msgid "Show download link in media viewer"
-msgstr "Vis link for nedlasting i media viewer"
+msgstr "Vis lenke for nedlasting i medieviseren"
 
 #: admin_trees_config.php:855
 msgid "Show events of close relatives on individual page"
@@ -12442,7 +12481,7 @@ msgstr "Vis stedsnavn som ikke er i bruk"
 
 #: includes/functions/functions_print_lists.php:93
 msgid "Show individuals born more than 100 years ago."
-msgstr "Vis personer som er født for mer enn 100 år siden."
+msgstr "Vis personer som er født for over 100 år siden."
 
 #: includes/functions/functions_print_lists.php:94
 msgid "Show individuals born within the last 100 years."
@@ -12460,7 +12499,7 @@ msgstr "Vis personer som er døde eller par hvor begge pertnere er døde."
 
 #: includes/functions/functions_print_lists.php:91
 msgid "Show individuals who died more than 100 years ago."
-msgstr "Vis personer som døde for mer enn 100 år siden."
+msgstr "Vis personer som døde for over 100 år siden."
 
 #: includes/functions/functions_print_lists.php:92
 msgid "Show individuals who died within the last 100 years."
@@ -12476,7 +12515,7 @@ msgstr "Vis lenke til statistikkdiagram?"
 
 #: admin_site_config.php:91 help_text.php:416
 msgid "Show list of family trees"
-msgstr ""
+msgstr "Vis liste over slektstrær"
 
 #: modules_v3/ahnentafel_report/report.xml:9
 #: modules_v3/family_group_report/report.xml:8
@@ -12513,7 +12552,7 @@ msgstr "Vis kun personer hvor kjønn er ukjent."
 
 #: modules_v3/random_media/module.php:260
 msgid "Show only individuals, events, or all?"
-msgstr "Vis bare personer, hendelser eller alle?"
+msgstr "Vis bare personer, begivenheter eller alle?"
 
 #: includes/functions/functions_print_lists.php:86
 msgid "Show only males."
@@ -12785,7 +12824,7 @@ msgstr "Slovenia"
 
 #: setup.php:164
 msgid "Small systems (500 individuals): 16-32MB, 10-20 seconds"
-msgstr "Små systemer (500 individer): 16-32MB, 10-20 sekunder"
+msgstr "Små systemer (500 personer): 16-32MB, 10-20 sekunder"
 
 #: library/WT/Gedcom/Code/Temp.php:174
 msgid "Snowflake, Arizona"
@@ -12807,7 +12846,7 @@ msgstr "Somalia"
 #. I18N: A “path” is something like “C:\Documents\My_User\Genealogy\Photos\Gravestones\John_Smith.jpeg”
 #: help_text.php:548
 msgid "Some genealogy applications create GEDCOM files that contain media filenames with full paths.  These paths will not exist on the web-server.  To allow webtrees to find the file, the first part of the path must be removed."
-msgstr "Enkelte slektsprogram oppretter GEDCOM-filer som inneholder navn på mediefiler med full bane. Disse benene vil ikke finnes på webserveren. For at webtrees skal kunne finne disse filene, må første delen av banen tas bort."
+msgstr "Noen slektsprogrammer skaper GEDCOM-filer hvor filnavnene til mediefilene inneholder hele filstien. Disse stiene vil ikke finnes på webserveren. For at webtrees skal kunne finne disse filene, må første delen av stien, frem til selve filnavnet, fjernes."
 
 #: help_text.php:1050
 msgid "Some genealogy programs wrap notes at word boundaries while others wrap notes anywhere.  This can cause <b>webtrees</b> to run words together.  Setting this to <b>Yes</b> will add a space between words where they are wrapped in the original GEDCOM during the import process. If you have already imported the file you will need to re-import it."
@@ -12866,7 +12905,8 @@ msgstr "Høres ut som"
 #: includes/functions/functions_print_facts.php:522 inverselink.php:132
 #: library/WT/Gedcom/Tag.php:306 modules_v3/bdm_report/report.xml:133
 #: modules_v3/bdm_report/report.xml:159 modules_v3/bdm_report/report.xml:193
-#: modules_v3/birth_report/report.xml:40 modules_v3/death_report/report.xml:51
+#: modules_v3/birth_report/report.xml:40
+#: modules_v3/death_report/report.xml:51
 #: modules_v3/fact_sources/module.php:33 modules_v3/fact_sources/report.xml:3
 #: modules_v3/fact_sources/report.xml:40
 #: modules_v3/marriage_report/report.xml:51
@@ -12916,8 +12956,8 @@ msgstr "Kildetype"
 #: modules_v3/individual_ext_report/report.xml:635
 #: modules_v3/individual_report/report.xml:635
 #: modules_v3/lightbox/module.php:154 modules_v3/sources_tab/module.php:34
-#: note.php:136 repo.php:92 search.php:122 sourcelist.php:29 sourcelist.php:33
-#: statistics.php:347 statistics.php:384
+#: note.php:136 repo.php:92 search.php:122 sourcelist.php:29
+#: sourcelist.php:33 statistics.php:347 statistics.php:384
 msgid "Sources"
 msgstr "Kilder"
 
@@ -13062,10 +13102,11 @@ msgstr "Dødfødt: unntak"
 msgid "Stockholm, Sweden"
 msgstr "Stockholm, Sverige"
 
-#: modules_v3/random_media/module.php:130 themes/_administration/header.php:31
-#: themes/clouds/header.php:34 themes/colors/header.php:37
-#: themes/fab/header.php:34 themes/minimal/header.php:34
-#: themes/webtrees/header.php:35 themes/xenea/header.php:34
+#: modules_v3/random_media/module.php:130
+#: themes/_administration/header.php:31 themes/clouds/header.php:34
+#: themes/colors/header.php:37 themes/fab/header.php:34
+#: themes/minimal/header.php:34 themes/webtrees/header.php:35
+#: themes/xenea/header.php:34
 msgid "Stop"
 msgstr "Stopp avspilling"
 
@@ -13339,16 +13380,16 @@ msgstr "Haag, Nederland"
 
 #: help_text.php:875
 msgid "The Media Viewer can show a link which, when clicked, will download the media file to the local PC.<br><br>You may want to hide the download link for security reasons."
-msgstr "Mediaviseren kan vise en lenke, som hvis man klikker på den vil laste mediafilen ned til lokal datamaskin.<br><br>Du vil kanskje skjule nedlastningslinken av sikkerhetshensyn."
+msgstr "Mediaviseren kan vise en lenke, som hvis man klikker på den vil laste mediafilen ned til lokal datamaskin.<br><br>Du vil kanskje skjule nedlastningslenken av sikkerhetshensyn."
 
 #: help_text.php:1304
 msgid "The PGV to <b>webtrees</b> wizard is an automated process to assist administrators make the move from a PGV installation to a new <b>webtrees</b> one. It will transfer all PGV GEDCOM and other database information directly to your new <b>webtrees</b> database. The following requirements are necessary:"
-msgstr "\"PGV til webtrees\"-hjelperen er en automatisert prosess for å bistå administratorer i å flytte fra en PGV-installasjon til en ny  <b>webtrees</b>-installasjon. Alle PGV GEDCOM-data og annen databaseinformasjon vil bli overført direkte til din nye <b>webtrees</b>-database. Følgende forutsetninger må være oppfylt:"
+msgstr "«PGV til webtrees»-assistenten er en automatisert prosess for å bistå administratorer i å flytte fra en PGV-installasjon til en ny  <b>webtrees</b>-installasjon. Alle PGV GEDCOM-data og annen databaseinformasjon vil bli overført direkte til din nye <b>webtrees</b>-database. Følgende forutsetninger må være oppfylt:"
 
 #: save.php:263
 #, php-format
 msgid "The administrator at the webtrees site %s has approved your application for an account.  You may now login by accessing the following link: %s"
-msgstr "Administratoren på nettstedet %s har godkjent søknaden om en konto. Du kan nå logge på via følgende link: %s"
+msgstr "Administratoren på nettstedet %s har godkjent søknaden om en konto. Du kan nå logge på via følgende lenke: %s"
 
 #: login.php:556
 msgid "The administrator has been informed.  As soon as he gives you permission to login, you can login with your user name and password."
@@ -13368,7 +13409,7 @@ msgstr "Forandringene i \"%s\" er blitt avvist."
 
 #: modules_v3/clippings/module.php:142
 msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the <b>Download Now</b> link.  Follow the instructions and links.</li></ul>"
-msgstr "Utklippsholderen lar deg gjøre \"utklipp\" fra slektstreet og pakke dem i en samlet fil i GEDCOM-format, som kan lastes ned og importeres i ditt eget slektsprogram.<br><ul><li>Hvordan gjør man utklipp?<br>Det er meget enkelt. Overalt hvor du ser et klikkbart navn (person, familie eller kilde) kan du gå til personens Fakta-side. Der vil menypunktet <b>Legg i utklippsmappen</b> ha kommet til i hovedmenyen. Når du klikker på linken, kan du velge blant flere alternativer for hva som skal med i utklippet.</li><li>Hvordan hentes det ned?<br>Så snart du har utklipp i din mappe, kan du hente dem hjem ved å klikke på <b>Last ned</b>. Følg instruksjonene og linkene.</li></ul>"
+msgstr "Utklippsholderen lar deg gjøre \"utklipp\" fra slektstreet og pakke dem i en samlet fil i GEDCOM-format, som kan lastes ned og importeres i ditt eget slektsprogram.<br><ul><li>Hvordan gjør man utklipp?<br>Det er meget enkelt. Overalt hvor du ser et klikkbart navn (person, familie eller kilde) kan du gå til personens Fakta-side. Der vil menypunktet <b>Legg i utklippsmappen</b> ha kommet til i hovedmenyen. Når du klikker på lenken, kan du velge blant flere alternativer for hva som skal med i utklippet.</li><li>Hvordan hentes det ned?<br>Så snart du har utklipp i din mappe, kan du hente dem hjem ved å klikke på <b>Last ned</b>. Følg instruksjonene og lenkene.</li></ul>"
 
 #: help_text.php:1314
 msgid "The current <b>webtrees</b> admin username must be the same as an existing PGV admin username"
@@ -13409,7 +13450,7 @@ msgstr "Filen “%s” eksisterer allerede. Bruk et annet filnavn."
 #: admin_site_upgrade.php:406 admin_site_upgrade.php:436
 #, php-format
 msgid "The file %s could not be created."
-msgstr ""
+msgstr "Filen %s kunne ikke opprettes."
 
 #: admin_media.php:60 admin_media.php:67 admin_site_upgrade.php:457
 #: admin_site_upgrade.php:477
@@ -13420,12 +13461,12 @@ msgstr "Filen %s kunne ikke slettes."
 #: admin_site_upgrade.php:384
 #, php-format
 msgid "The file %s could not be updated."
-msgstr ""
+msgstr "Filen %s kunne ikke oppdateres."
 
 #: admin_site_upgrade.php:408
 #, php-format
 msgid "The file %s was created."
-msgstr ""
+msgstr "Filen %s ble opprettet."
 
 #: admin_media.php:58 admin_media.php:65 admin_site_upgrade.php:455
 #: admin_site_upgrade.php:475
@@ -13448,7 +13489,7 @@ msgstr "Filen “%s” finnes ikke."
 #: admin_site_upgrade.php:471
 #, php-format
 msgid "The folder %s could not be deleted."
-msgstr ""
+msgstr "Mappen %s kunne ikke slettes."
 
 #: addmedia.php:111 addmedia.php:122 addmedia.php:134 addmedia.php:273
 #: addmedia.php:284 addmedia.php:296 admin_media_upload.php:61
@@ -13468,7 +13509,7 @@ msgstr "Mappen %s ble opprettet."
 #: admin_site_upgrade.php:469
 #, php-format
 msgid "The folder %s was deleted."
-msgstr ""
+msgstr "Mappen %s ble slettet."
 
 #: help_text.php:587
 msgid "The folder can be specified in full (e.g. /home/user_name/webtrees_data/) or relative to the installation folder (e.g. ../../webtrees_data/)."
@@ -13497,11 +13538,11 @@ msgstr "Følgende melding har blitt sendt til din brukerkonto fra "
 
 #: admin_trees_places.php:108
 msgid "The following places were changed:"
-msgstr ""
+msgstr "Følgende stedsnavn ble forandret:"
 
 #: admin_trees_places.php:108
 msgid "The following places would be changed:"
-msgstr ""
+msgstr "Følgende stedsnavn ville bli forandret:"
 
 #: admin_site_access.php:271
 msgid "The following rules are used to decide whether a visitor is a human being (allow full access), a search-engine robot (allow restricted access) or an unwanted crawler (deny all access)."
@@ -13548,12 +13589,12 @@ msgstr "Mediefilene du laster opp kan - og bør kanskje - kalles noe annet på s
 
 #: setup.php:160
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
-msgstr "Minne- og CPU-tidsforbruk er avhengig av antall individer i ditt familietre."
+msgstr "Minne- og CPU-tidsforbruk er avhengig av antall personer i ditt familietre."
 
 #: admin_site_upgrade.php:387
 #, php-format
 msgid "The new files are currently located in the folder %s."
-msgstr ""
+msgstr "De nye filene ligger nå i mappen %s."
 
 #: help_text.php:1248
 msgid "The number of occurrences of the specified name will be shown on the map. If you leave this field empty, the most common surname will be used."
@@ -13612,7 +13653,7 @@ msgstr "Tid i sekunder som en <b>webtrees</b> økt er aktiv før ny innlogging k
 
 #: admin_site_upgrade.php:483
 msgid "The upgrade is complete."
-msgstr ""
+msgstr "Oppdateringen er fullført."
 
 #: login.php:306
 msgid "The user has been sent an e-mail with the information necessary to confirm the access request"
@@ -13682,7 +13723,7 @@ msgstr "Det er ikke noen bilder eller andre medier knyttet til denne personen."
 
 #: admin_site_upgrade.php:107
 msgid "There are no pending changes."
-msgstr ""
+msgstr "Det er ingen ventende endringer."
 
 #: modules_v3/todo/module.php:127
 msgid "There are no research tasks in this family tree."
@@ -13731,7 +13772,7 @@ msgstr "På disse sidene finner du alle innstillingene og verktøyene for denne 
 #. I18N: do not translate the #keywords#
 #: modules_v3/html/module.php:159
 msgid "This GEDCOM (family tree) was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#."
-msgstr "Dette slektstreet (GEDCOM) ble sist oppdatert #gedcomUpdated#. Det er til sammen #totalSurnames# etternavn i slektstreet. Den eldste opptegnelse er #firstEventName#s #firstEventType# i #firstEventYear#. Den nyeste hendelse er #lastEventName#s #lastEventType# i #lastEventYear#.<br><br>HVis du har kommentarer eller spørsmål, kontakt #contactWebmaster#."
+msgstr "Dette slektstreet (GEDCOM) ble sist oppdatert #gedcomUpdated#. Det er til sammen #totalSurnames# etternavn i slektstreet. Den eldste opptegnelse er #firstEventName#s #firstEventType# i #firstEventYear#. Den nyeste begivenhet er #lastEventName#s #lastEventType# i #lastEventYear#.<br><br>HVis du har kommentarer eller spørsmål, kontakt #contactWebmaster#."
 
 #. I18N: %1$s and %2$s are the names of character encodings, such as ISO-8859-1 or ASCII
 #: import.php:148
@@ -13838,7 +13879,7 @@ msgstr "Denne mappen vil bli brukt til å lagre mediefiler for dette slektstreet
 
 #: library/WT/Filter.php:277
 msgid "This form has expired.  Try again."
-msgstr ""
+msgstr "Skjemaet er utløpt. Prøv igjen."
 
 #: individual.php:91 library/WT/Controller/Chart.php:45
 msgid "This individual does not exist or you do not have permission to view it."
@@ -13902,7 +13943,7 @@ msgstr "Dette er en kommaseparert liste med GEDCOM-fakta som blir vist på skjer
 
 #: help_text.php:1202
 msgid "This is a link to your own record in the family tree.  If this is the wrong individual, contact an administrator."
-msgstr "Dette er en link til opplysningene om deg i slektstreet. Hvis det ikke er den riktige person, kontakt vennligst en administrator."
+msgstr "Dette er en lenke til opplysningene om deg i slektstreet. Hvis det ikke er den riktige person, kontakt vennligst en administrator."
 
 #: help_text.php:268
 msgid "This is an optional field that can be used to enter the file format of the multimedia object.  Some genealogy programs may look at this field to determine how to handle the item.  However, since media do not transfer across computer systems very well, this field is not very important."
@@ -13923,11 +13964,11 @@ msgstr "Versalfølsom. Om en database med dette navn ikke allerede eksisterer, v
 #. I18N: Help text for the “Show chart details by default” tree configuration setting
 #: help_text.php:704
 msgid "This is the initial setting for the “show details” option on the charts."
-msgstr ""
+msgstr "Dette er standardinnstillingen for \"Vis detaljer\"-alternativet i slektsdiagrammer."
 
 #: admin_site_upgrade.php:72
 msgid "This is the latest version of webtrees.  No upgrade is available."
-msgstr ""
+msgstr "Dette er den nyeste versjonen av webtrees. Det er ingen oppdateringer."
 
 #: help_text.php:506
 msgid "This is the list of GEDCOM facts that your users can add to families.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique family facts</i> list."
@@ -14264,7 +14305,7 @@ msgstr "Denne delen gir deg mulighet til å legge til en ny kildehenvisning til 
 #. I18N: http://en.wikipedia.org/wiki/Https
 #: admin_site_upgrade.php:317
 msgid "This server does not support secure downloads using HTTPS."
-msgstr ""
+msgstr "Serveren tilbyr ikke sikker nedlastning med HTTPS."
 
 #: setup.php:171
 #, php-format
@@ -14281,7 +14322,7 @@ msgstr "Dette skal være en liste med faktatyper, adskilt med komma eller mellom
 
 #: admin_site_upgrade.php:41
 msgid "This site is being upgraded.  Try again in a few minutes."
-msgstr ""
+msgstr "Nettsteder oppdateres. Prøv igjen om et par minutter."
 
 #: source.php:73
 msgid "This source does not exist or you do not have permission to view it."
@@ -14348,7 +14389,7 @@ msgstr "Dette vil vise alle stedene fra den valgte slektsbasen. Som standard vil
 
 #: admin_trees_places.php:89
 msgid "This will update the highest-level part or parts of the place name.  For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."
-msgstr ""
+msgstr "Dette vil oppdatere det/de høyeste nivået/-er av stedsnavnet. \"Mexico\" vil for eksempel finne \"Quintana Roo, Mexico\", men ikke \"Santa Fe, New Mexico\"."
 
 #: includes/functions/functions_print.php:1014
 #: library/WT/Date/Calendar.php:222
@@ -14479,7 +14520,7 @@ msgstr "For å hjelpe deg igang med denne blokken, har vi laget noen standard-ma
 
 #: admin_site_upgrade.php:386
 msgid "To complete the upgrade, you should install the files manually."
-msgstr ""
+msgstr "For å fullføre oppdateringen må filene installeres manuelt."
 
 #: modules_v3/todo/help_text.php:34
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
@@ -14487,7 +14528,7 @@ msgstr "For å opprette nye forskningsoppgaver må først \"forskningsoppgave\" 
 
 #: help_text.php:528
 msgid "To ensure compatibility with other genealogy applications, notes, text, and transcripts should be recorded in simple, unformatted text.  However, formatting is often desirable to aid presentation, comprehension, etc."
-msgstr ""
+msgstr "For å sikre kompatibilitet med andre slektsforskningsprogrammer bør notater, tekster og transkripsjoner nedtegnes med enkel, uformatert tekst. Det er likevel ofte ønskelig med en viss formatering for å gjøre fremstillingen tydeligere."
 
 #: admin_media.php:451 library/WT/Controller/Media.php:69
 #: library/WT/Controller/Media.php:151 modules_v3/lightbox/module.php:189
@@ -14502,7 +14543,7 @@ msgstr "Til person"
 #: admin_site_upgrade.php:389
 #, php-format
 msgid "To prevent visitors from accessing the site while you are in the middle of copying files, you can temporarily create a file %s on the server.  If it contains a message, it will be displayed to visitors."
-msgstr ""
+msgstr "For å unngå at noen besøker nettstedet mens du er i ferd med å kopiere filer, kan du skape en midlertidig fil %s på serveren. Hvis filen inneholder en tekst, vil denne bli vist til besøkeren."
 
 #. I18N: “Apache” is a software program.
 #: help_text.php:583
@@ -14520,7 +14561,7 @@ msgstr "Til kilde"
 
 #: modules_v3/sitemap/module.php:265
 msgid "To tell search engines that sitemaps are available, you can use the following links."
-msgstr "Følgende linker kan brukes for å meddele søkemotorene at nettstedskart er tilgjengelige."
+msgstr "Følgende lenker kan brukes for å meddele søkemotorene at nettstedskart er tilgjengelige."
 
 #: modules_v3/sitemap/module.php:261
 msgid "To tell search engines that sitemaps are available, you should add the following line to your robots.txt file."
@@ -14653,7 +14694,7 @@ msgstr "Totalt antall fornavn"
 #: modules_v3/occupation_report/report.xml:91
 #: modules_v3/relative_ext_report/report.xml:145
 msgid "Total individuals"
-msgstr "Antall individer"
+msgstr "Antall personer"
 
 #: calendar.php:440 find.php:505 modules_v3/GEDFact_assistant/module.php:160
 #: statistics.php:84
@@ -14804,7 +14845,7 @@ msgstr "Sovjetunionen"
 #. I18N: Timezone - http://en.wikipedia.org/wiki/UTC
 #: admin_site_upgrade.php:41 themes/_administration/header.php:87
 msgid "UTC"
-msgstr ""
+msgstr "UTC"
 
 #: library/WT/Stats.php:3989
 msgid "Uganda"
@@ -14915,7 +14956,7 @@ msgstr "Ikke bekreftet av bruker"
 #: admin_site_upgrade.php:328
 #, php-format
 msgid "Unzip %s to a temporary folder…"
-msgstr ""
+msgstr "Pakke ut %s til en midlertidig mappe…"
 
 #. I18N: Name of a module
 #: modules_v3/upcoming_events/module.php:32
@@ -14933,11 +14974,11 @@ msgstr "Oppdater alt"
 
 #: admin_trees_places.php:85
 msgid "Update all the place names in a family tree"
-msgstr ""
+msgstr "Oppdater alle stedsnavnene i et slektstre"
 
 #: themes/_administration/header.php:121
 msgid "Update place names"
-msgstr ""
+msgstr "Oppdater stedsnavn"
 
 #: admin_site_merge.php:152
 msgid "Updating linked record"
@@ -14946,7 +14987,7 @@ msgstr "Oppdaterer data som er knyttet til denne"
 #. I18N: Ignore the warnings, and [...]
 #: admin_site_upgrade.php:202 admin_site_upgrade.php:265
 msgid "Upgrade anyway"
-msgstr ""
+msgstr "Oppdater likevel"
 
 #. I18N: %s is a version number, such as 1.2.3
 #: admin.php:113 admin_site_upgrade.php:86
@@ -14956,7 +14997,7 @@ msgstr "Oppdatér til webtrees %s"
 
 #: admin_site_upgrade.php:55
 msgid "Upgrade wizard"
-msgstr ""
+msgstr "Oppdateringsassistent"
 
 #: admin_media_upload.php:234 admin_trees_manage.php:225
 #: modules_v3/googlemap/admin_places.php:661
@@ -15074,8 +15115,8 @@ msgstr "Bruk denne siden til å endre eller fjerne familiemedlemmer.<br><br>For 
 msgid "Use this value"
 msgstr "Bruk denne verdien"
 
-#: admin_site_change.php:264 admin_site_change.php:290 admin_site_logs.php:231
-#: admin_site_logs.php:256 edit_changes.php:180
+#: admin_site_change.php:264 admin_site_change.php:290
+#: admin_site_logs.php:231 admin_site_logs.php:256 edit_changes.php:180
 msgid "User"
 msgstr "Bruker"
 
@@ -15358,11 +15399,11 @@ msgstr "Vannmerker"
 
 #: help_text.php:1027
 msgid "Watermarks are optional and normally shown just to visitors."
-msgstr ""
+msgstr "Vannmerker er valgfrie og vises vanligvis bare til anonyme besøkere."
 
 #: help_text.php:1029
 msgid "Watermarks can be slow to generate for large images.  Busy sites may prefer to generate them once and store the watermarked image on the server."
-msgstr ""
+msgstr "Det kan ta lang tid å opprette vannmerker for store bilder. På nettsteder med mye trafikk kan det lønne seg å generere dem en gang og lagre de vannmerkede bildene på serveren. "
 
 #: login.php:374
 #, php-format
@@ -15376,11 +15417,11 @@ msgstr "Vi vil nå sende en bekreftelse på epost til adressen <b>%s</b>. Du må
 
 #: admin_trees_config.php:420
 msgid "Web site and META tag settings"
-msgstr "Nettside og META settinger"
+msgstr "Innstillinger for nettstedet og for META-tagger"
 
 #: admin_site_config.php:97 help_text.php:828
 msgid "Website URL"
-msgstr "Nttsted URL"
+msgstr "Nettstedets URL"
 
 #: includes/functions/functions_print.php:1013
 #: library/WT/Date/Calendar.php:221
@@ -15444,7 +15485,7 @@ msgstr "Når en ny kilde legges til i <b>webtrees</b>, får den automatisk et ny
 
 #: help_text.php:1468
 msgid "When a user registers for an account, an email is sent to their email address with a verification link.  When they click this link, we know the email address is correct, and the “email verified” option is selected automatically."
-msgstr "Når en bruker registrerer seg for å få en konto, blir en e-post med en bekreftelseslink sendt til den registrerte adressen. Når de klikker på denne linken, vet vi at adressen er korrekt, og \"Epost bekreftet\" blir automatisk angitt."
+msgstr "Når en bruker registrerer seg for å få en konto, blir en e-post med en bekreftelseslenke sendt til den registrerte adressen. Når de klikker på denne lenken, vet vi at adressen er korrekt, og \"Epost bekreftet\" blir automatisk angitt."
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:44
 msgid "When adding a Link, the ID field cannot be empty."
@@ -15472,7 +15513,7 @@ msgstr "Hvis denne boksen er krysset i, vises alle Kilde- eller Notat-poster for
 
 #: help_text.php:1404
 msgid "When this option is selected, webtrees will calculate the age differences between siblings, children, spouses, etc."
-msgstr ""
+msgstr "Hvis dette feltet er ikrysset, vil webtrees beregne aldersforskjellen mellom søsken, barn, ektefeller, osv."
 
 #: help_text.php:931
 msgid "When you add a new family member, a default surname can be provided.  This surname will depend on the local tradition."
@@ -15488,7 +15529,7 @@ msgstr "Hvis denne ruten krysses i, vil GEDCOM-filen komprimeres til ZIP-format 
 
 #: help_text.php:1083
 msgid "When you click the <b>Add a new shared note</b> link, a new window will open.  You can choose to link to an existing shared note, or you can create a new shared note and at the same time create a link to it."
-msgstr "Når du klikker på <b>Legg til nytt Delt notat</b>, kommer det opp et nytt vindu. Du kan velge å linke til et allerede eksisterende Delt notat, eller du kan opprette et nytt Delt notat og samtidig skape en link til det."
+msgstr "Når du klikker på <b>Legg til nytt Delt notat</b>, kommer det opp et nytt vindu. Du kan velge å lenke til et allerede eksisterende Delt notat, eller du kan opprette et nytt Delt notat og samtidig skape en lenke til det."
 
 #: modules_v3/clippings/help_text.php:37
 msgid "When you click this link your clippings cart will be totally emptied.<br><br>If you don’t want to remove all individuals, families, etc. from the clippings cart, you can remove items individually by clicking the <b>Remove</b> link in the name boxes.  There is <u>no</u> confirmation dialog when you click either of these links;  the requested deletion takes place immediately."
@@ -15661,7 +15702,7 @@ msgstr "Du (eller noen som utgir seg for deg) har bedt om brukerkonto på %1$s v
 
 #: login.php:271 message.php:68
 msgid "You are not allowed to send messages that contain external links."
-msgstr "Du har ikke tillatelse til å sende meldinger som inneholder eksterne linker."
+msgstr "Du har ikke tillatelse til å sende meldinger som inneholder eksterne lenker."
 
 #. I18N: Help text for the "Default Theme" site configuration setting
 #: help_text.php:985
@@ -15692,11 +15733,11 @@ msgstr "Du kan nå logge deg inn med brukernavnet og passordet ditt."
 
 #: admin_site_upgrade.php:201
 msgid "You can re-enable these modules after the upgrade."
-msgstr ""
+msgstr "Disse modulene kan gjenaktiveres etter oppdateringen."
 
 #: admin_site_upgrade.php:264
 msgid "You can re-enable these themes after the upgrade."
-msgstr ""
+msgstr "Disse temaene kan gjenaktiveres etter oppdateringen."
 
 #: help_text.php:643 help_text.php:682
 msgid "You can request a higher or lower limit, although the server may ignore this request."
@@ -15704,7 +15745,7 @@ msgstr "Du kan be om en høyere eller lavere grense, selv om serveren kan ignore
 
 #: modules_v3/batch_update/plugins/death_y.php:32
 msgid "You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc."
-msgstr "Beregningen av personvernskriterier kan gjøres raskere hvis en dødsangivelse legges til for individer man ut fra andre kilder vet er døde, men der man ikke har en presis døds-, begravelses-, kremasjonsdag e.l."
+msgstr "Beregningen av personvernskriterier kan gjøres raskere hvis en dødsangivelse legges til for personer man ut fra andre kilder vet er døde, men hvor man ikke har en presis døds-, begravelses-, kremasjonsdag e.l."
 
 #: login.php:85
 msgid "You cannot login because your browser does not accept cookies."
@@ -15744,7 +15785,7 @@ msgstr "Du kan angi en URL som starter med &laquo;http://&raquo;."
 
 #: modules_v3/faq/help_text.php:35
 msgid "You may use HTML to format the answer and to add links to other websites."
-msgstr "HTML kan brukes for å formatere svaret og for å linke til andre nettsteder."
+msgstr "HTML kan brukes for å formatere svaret og for å lenke til andre nettsteder."
 
 #: setup.php:203
 msgid "You must change this before you can continue."
@@ -15826,7 +15867,7 @@ msgstr "Du sendte følgende melding til en annen bruker:"
 
 #: admin_site_upgrade.php:102
 msgid "You should accept or reject all pending changes before upgrading."
-msgstr ""
+msgstr "Alle ventende endringer må behandles før oppdateringen kan skje."
 
 #: help_text.php:1151
 msgid "You should avoid using the vertical line character &ldquo;|&rdquo; in your notes.  It is used internally by webtrees and may cause your note to display incorrectly."
@@ -15834,11 +15875,11 @@ msgstr "Du bør unngå å bruke den loddrette streken &ldquo;|&rdquo; i dine not
 
 #: admin_site_upgrade.php:200
 msgid "You should consult the module’s author to confirm compatibility with this version of webtrees."
-msgstr ""
+msgstr "Du bør kontakte den som har laget modulen for å forsikre deg om at den er kompatibel med denne versjonen av webtrees."
 
 #: admin_site_upgrade.php:263
 msgid "You should consult the theme’s author to confirm compatibility with this version of webtrees."
-msgstr ""
+msgstr "Du bør kontakte den som har laget temaet for å forsikre deg om at det er kompatibelt med denne versjonen av webtrees."
 
 #. I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’
 #: login.php:272 message.php:69
@@ -16287,7 +16328,8 @@ msgid "change of name"
 msgstr "navn ved navneforandring"
 
 #: edit_interface.php:2058 edit_interface.php:2080
-#: includes/functions/functions.php:827 modules_v3/googlemap/googlemap.php:234
+#: includes/functions/functions.php:827
+#: modules_v3/googlemap/googlemap.php:234
 #: modules_v3/googlemap/googlemap.php:268
 msgid "child"
 msgstr "barn"
@@ -16313,7 +16355,8 @@ msgstr "klikk for å redigere"
 #: modules_v3/GEDFact_assistant/_CENS/census_3_find.php:190
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:600
 #: modules_v3/GEDFact_assistant/module.php:135
-#: modules_v3/googlemap/module.php:628 modules_v3/googlemap/places_edit.php:83
+#: modules_v3/googlemap/module.php:628
+#: modules_v3/googlemap/places_edit.php:83
 #: modules_v3/googlemap/places_edit.php:101
 #: modules_v3/googlemap/places_edit.php:336
 msgid "close"
@@ -16472,19 +16515,19 @@ msgstr "aktiver"
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: library/WT/Gedcom/Code/Name.php:97
 msgid "estate name"
-msgstr ""
+msgstr "gårdsnavn"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: library/WT/Gedcom/Code/Name.php:94
 msgctxt "FEMALE"
 msgid "estate name"
-msgstr ""
+msgstr "gårdsnavn"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: library/WT/Gedcom/Code/Name.php:91
 msgctxt "MALE"
 msgid "estate name"
-msgstr ""
+msgstr "gårdsnavn"
 
 #. I18N: Gedcom EST dates
 #: library/WT/Date.php:237
@@ -16864,8 +16907,8 @@ msgid "from"
 msgstr "fra"
 
 #. I18N: from 1700 interval 50 years
-#: statistics.php:649 statistics.php:651 statistics.php:653 statistics.php:655
-#: statistics.php:657 statistics.php:659
+#: statistics.php:649 statistics.php:651 statistics.php:653
+#: statistics.php:655 statistics.php:657 statistics.php:659
 #, php-format
 msgid "from %1$s interval %2$s year"
 msgid_plural "from %1$s interval %2$s years"
@@ -16988,58 +17031,70 @@ msgctxt "son’s son’s wife"
 msgid "grandson’s wife"
 msgstr "barnebarns hustru"
 
-#: includes/functions/functions.php:1333 includes/functions/functions.php:1342
+#: includes/functions/functions.php:1333
+#: includes/functions/functions.php:1342
 #: includes/functions/functions.php:1353
 #, php-format
 msgid "great x%d aunt"
 msgstr "%dx grandtante"
 
-#: includes/functions/functions.php:1334 includes/functions/functions.php:1343
+#: includes/functions/functions.php:1334
+#: includes/functions/functions.php:1343
 #: includes/functions/functions.php:1354
 #, php-format
 msgid "great x%d aunt/uncle"
 msgstr "%dx tipp-oldeforelders søsken"
 
-#: includes/functions/functions.php:1675 includes/functions/functions.php:1688
+#: includes/functions/functions.php:1675
+#: includes/functions/functions.php:1688
 #, php-format
 msgid "great x%d grandchild"
 msgstr "%dx tip-oldebarn"
 
-#: includes/functions/functions.php:1674 includes/functions/functions.php:1687
+#: includes/functions/functions.php:1674
+#: includes/functions/functions.php:1687
 #, php-format
 msgid "great x%d granddaughter"
 msgstr "%dx tip-oldebarn"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
-#: includes/functions/functions.php:1578 includes/functions/functions.php:1585
-#: includes/functions/functions.php:1592 includes/functions/functions.php:1600
+#: includes/functions/functions.php:1578
+#: includes/functions/functions.php:1585
+#: includes/functions/functions.php:1592
+#: includes/functions/functions.php:1600
 #: includes/functions/functions.php:1610
 #, php-format
 msgid "great x%d grandfather"
 msgstr "%dx tippoldefar"
 
-#: includes/functions/functions.php:1579 includes/functions/functions.php:1586
-#: includes/functions/functions.php:1593 includes/functions/functions.php:1601
+#: includes/functions/functions.php:1579
+#: includes/functions/functions.php:1586
+#: includes/functions/functions.php:1593
+#: includes/functions/functions.php:1601
 #: includes/functions/functions.php:1611
 #, php-format
 msgid "great x%d grandmother"
 msgstr "%dx tippoldemor"
 
-#: includes/functions/functions.php:1580 includes/functions/functions.php:1587
-#: includes/functions/functions.php:1594 includes/functions/functions.php:1602
+#: includes/functions/functions.php:1580
+#: includes/functions/functions.php:1587
+#: includes/functions/functions.php:1594
+#: includes/functions/functions.php:1602
 #: includes/functions/functions.php:1612
 #, php-format
 msgid "great x%d grandparent"
 msgstr "%dx tip-oldeforelder"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
-#: includes/functions/functions.php:1673 includes/functions/functions.php:1686
+#: includes/functions/functions.php:1673
+#: includes/functions/functions.php:1686
 #, php-format
 msgid "great x%d grandson"
 msgstr "%dx tip-oldebarn"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
-#: includes/functions/functions.php:1506 includes/functions/functions.php:1517
+#: includes/functions/functions.php:1506
+#: includes/functions/functions.php:1517
 #, php-format
 msgid "great x%d nephew"
 msgstr ""
@@ -17062,7 +17117,8 @@ msgctxt "(a woman’s) great x%d nephew"
 msgid "great x%d nephew"
 msgstr "%dx grandnevø"
 
-#: includes/functions/functions.php:1508 includes/functions/functions.php:1519
+#: includes/functions/functions.php:1508
+#: includes/functions/functions.php:1519
 #, php-format
 msgid "great x%d nephew/niece"
 msgstr ""
@@ -17085,7 +17141,8 @@ msgctxt "(a woman’s) great x%d nephew/niece"
 msgid "great x%d nephew/niece"
 msgstr ""
 
-#: includes/functions/functions.php:1507 includes/functions/functions.php:1518
+#: includes/functions/functions.php:1507
+#: includes/functions/functions.php:1518
 #, php-format
 msgid "great x%d niece"
 msgstr "%dx grandniese"
@@ -17109,7 +17166,8 @@ msgid "great x%d niece"
 msgstr "%dx grandniese"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
-#: includes/functions/functions.php:1332 includes/functions/functions.php:1352
+#: includes/functions/functions.php:1332
+#: includes/functions/functions.php:1352
 #, php-format
 msgid "great x%d uncle"
 msgstr "%dx grandonkel"
@@ -18450,8 +18508,8 @@ msgstr "navn ved immigrasjon"
 msgid "interpreted %s (%s)"
 msgstr "antatt %s (%s)"
 
-#: statistics.php:575 statistics.php:577 statistics.php:579 statistics.php:586
-#: statistics.php:588
+#: statistics.php:575 statistics.php:577 statistics.php:579
+#: statistics.php:586 statistics.php:588
 #, php-format
 msgid "interval %s year"
 msgid_plural "interval %s years"
@@ -18530,7 +18588,7 @@ msgstr "pikenavn"
 #. I18N: https://en.wikipedia.org/wiki/Markdown
 #: admin_trees_config.php:947
 msgid "markdown"
-msgstr ""
+msgstr "markdown"
 
 #: library/WT/Stats.php:1723 library/WT/Stats.php:3579
 msgid "marriage"
@@ -18566,7 +18624,7 @@ msgstr "navn som gift"
 #. I18N: verb: pretend to be someone else
 #: admin_users.php:216
 msgid "masquerade"
-msgstr ""
+msgstr "figurere"
 
 #: includes/functions/functions.php:910
 msgctxt "mother’s father"
@@ -19313,7 +19371,8 @@ msgid "sort by date of birth"
 msgstr "sorter etter fødselsdato"
 
 #. I18N: An option in a list-box
-#: modules_v3/bdm_report/report.xml:11 modules_v3/cemetery_report/report.xml:6
+#: modules_v3/bdm_report/report.xml:11
+#: modules_v3/cemetery_report/report.xml:6
 #: modules_v3/death_report/report.xml:9
 #: modules_v3/relative_ext_report/report.xml:7 reportengine.php:522
 msgid "sort by date of death"
