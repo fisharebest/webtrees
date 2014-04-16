@@ -3215,21 +3215,22 @@ dd .deletelink {
 	float: right;
 }
 
-#indi_note .fact_NOTE {
+.fact_NOTE {
 	float: left;
 	margin: 0 5px 0 0;
 }
 
-#indi_note .fact_SOUR {
+.fact_SOUR {
 	margin: 3px 0;
 }
 
-#indi_note .fact_SOUR a {
+.fact_SOUR a {
 	font-size: 100%;
 }
 
-#indi_note .fact_NOTE,
-#indi_note .fact_SOUR {
+.fact_NOTE,
+.fact_SOUR,
+.note-details {
 	clear: both;
 }
 
