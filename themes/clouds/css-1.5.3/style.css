@@ -109,9 +109,9 @@ td {
 }
 
 /* ===== */
-/* Layout Left Main menu  */
+/* Layout Left Main menu */
 
-/* set up div container  */
+/* set up div container */
 #topMenu {
 	background: #acf;
 	clear: both;
@@ -205,7 +205,7 @@ td {
 	margin-right: 100%;
 }
 
-/*  Mainmenu Icons*/
+/* Mainmenu Icons*/
 #main-menu > li {
 	background-image: url(images/sprites-top-menu.png);
 	background-repeat: no-repeat;
@@ -220,7 +220,7 @@ td {
 	left: auto;
 }
 
-/*  Submenu Icons */
+/* Submenu Icons */
 #main-menu li ul li {
 	background-image: url(images/sprites-sub-menu.png);
 	background-repeat: no-repeat;
@@ -234,7 +234,7 @@ td {
 	text-indent: 0;
 }
 
-/*  Delete tag from mainmenu icons */
+/* Delete tag from mainmenu icons */
 #main-menu > li > a {
 	color: #2a2b2d;
 	height: 17px;
@@ -681,7 +681,7 @@ td {
 	background-position: right -667px;
 }
 
-/* Family Icons  */
+/* Family Icons */
 #menu-fam-addchil {
 	background-position: left -759px;
 }
@@ -788,7 +788,7 @@ td {
 	background-position: right -736px;
 }
 
-/* Edit Notes  */
+/* Edit Notes */
 #menu-note-addfav {
 	background-position: left -736px;
 }
@@ -821,7 +821,7 @@ td {
 	background-position: right -667px;
 }
 
-/* Objects  */
+/* Objects */
 #menu-obje-addfav {
 	background-position: left -736px;
 }
@@ -919,7 +919,7 @@ td {
 	background-position: right -667px;
 }
 
-/*  Source  */
+/* Source */
 #menu-sour-addfav {
 	background-position: left -736px;
 }
@@ -952,7 +952,7 @@ td {
 	background-position: right -667px;
 }
 
-/*  Stories  */
+/* Stories */
 #menu-story-sub {
 	background-position: left -920px;
 }
@@ -1112,12 +1112,12 @@ a.link:hover {
 	color: #006;
 }
 
-/*   Edit Facts */
+/* Edit Facts */
 td.descriptionbox div a {
 	color: #fff;
 }
 
-/*   End Edit Facts  */
+/* End Edit Facts */
 .facts_label .submenu a {
 	background: #fff;
 	color: #000;
@@ -1971,7 +1971,6 @@ a:hover .nameZoom {
 	font-size: 11px;
 	background-color: #fff;
 	border: 1px solid #ccc;
-	white-space: nowrap;
 	padding: 3px 3px 0 3px;
 }
 
@@ -2414,10 +2413,6 @@ a.showit:hover > span {
 
 .wrap {
 	white-space: normal;
-}
-
-ul.clist {
-	list-style-image: none;
 }
 
 .statistics-page {
@@ -3010,7 +3005,7 @@ div.faq_title {
 	width: 98%;
 }
 
-/* FAQ table  */
+/* FAQ table */
 table.faq {
 	background-color: #eee;
 	margin: 5px 0 15px 5px;
@@ -3050,7 +3045,7 @@ ul.clist {
 	font-size: 200%;
 }
 
-/* edit, copy, delete links  */
+/* edit, copy, delete links */
 .editfacts {
 	clear: left;
 	padding-top: 15px;
@@ -3884,46 +3879,45 @@ span.link_text {
 	margin-top: 8px;
 }
 
+.nav_content .facts_label {
+	width: 75px;
+}
+
+.famnav_title {
+	font-weight: bold;
+	display: block;
+	padding: 5px 0;
+}
+
 .flyout {
-	color: #000;
-	margin-top: -20px;
-	padding: 3px;
-	right: 210px;
-	text-align: left;
-}
-
-.flyout2 {
-	background: #fff;
-	border: 1px solid #ccc;
-	color: #000;
 	left: 40px;
-	margin-top: -2px;
 	padding: 3px;
-	text-align: left;
+	background-color: #ecf5ff;
+	border: 1px solid #ccc;
 }
 
-.flyout2 a:hover {
-	color: #2f416f;
-	text-decoration: underline !important;
+[dir=rtl] .flyout {
+	left: auto;
+	right: 40px;
 }
 
-.flyout3,
-.flyout3 a {
-	background: none;
-	border: none;
-	left: 0;
-	margin-top: 0;
-	padding: 0;
-	text-align: left;
+.flyout a, .flyout a:hover {
+	color: #000;
+	cursor: default;
 	text-decoration: none;
 }
 
-.flyout4 {
-	color: #000;
-	margin-left: 0;
-	margin-top: 0;
-	padding: 3px;
-	text-align: left;
+.flyout2 {
+	font-weight: 700;
+}
+
+.flyout3 {
+	color: #039;
+}
+
+.flyout3:hover {
+	cursor: pointer;
+	color: #f00;
 }
 
 .nam a:hover {
@@ -3933,20 +3927,6 @@ span.link_text {
 .nav_content {
 	padding: 0;
 	width: 100%;
-}
-
-[dir=rtl] .flyout3 {
-	text-align: right;
-}
-
-[dir=rtl] .flyout {
-	text-align: right;
-	left: 210px;
-}
-
-[dir=rtl] .flyout2 {
-	text-align: right;
-	right: 40px;
 }
 
 /* Descendancy */
