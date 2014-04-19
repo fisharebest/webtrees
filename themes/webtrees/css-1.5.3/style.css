@@ -543,7 +543,6 @@ a:hover .nameZoom {
 	font-size: 11px;
 	background-color: #edf7fd;
 	border: solid #81a9cb 1px;
-	white-space: nowrap;
 	visibility: hidden;
 	position: absolute;
 	padding: 5px;
@@ -555,7 +554,6 @@ a:hover .nameZoom {
 	text-decoration: none;
 	font-size: 11px;
 	background-color: #edf7fd;
-	white-space: nowrap;
 	padding: 1px;
 }
 

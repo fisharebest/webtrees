@@ -1898,7 +1898,6 @@ a:hover .nameZoom {
 
 .submenu {
 	font-size: 11px;
-	white-space: nowrap;
 }
 
 .submenuitem,
@@ -1907,7 +1906,6 @@ a:hover .nameZoom {
 	border: 1px solid #ccc;
 	height: 20px;
 	padding: 3px 3px 0;
-	white-space: nowrap;
 }
 
 .theme_form {
