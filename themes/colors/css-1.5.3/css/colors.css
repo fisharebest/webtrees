@@ -150,7 +150,7 @@ textarea:required:invalid {
 	z-index: 210;
 }
 
-/* Title Line    */
+/* Title Line */
 #header {
 	height: 50px;
 }
@@ -166,7 +166,7 @@ span.title {
 	margin: 16px 12px 3px 3px;
 }
 
-/* Options Menu  */
+/* Options Menu */
 .makeMenu {
 	float: right;
 	margin: 21px 10px 0 0;
@@ -262,7 +262,7 @@ span.title {
 	text-align: right;
 }
 
-/* Menu setup  */
+/* Menu setup */
 #main-menu {
 	display: inline-block;
 	width: 100%;
@@ -657,7 +657,7 @@ span.title {
 	background-position: right -520px;
 }
 
-/* Report Icons  */
+/* Report Icons */
 #menu-report li {
 	background-position: left -546px;
 }
@@ -1110,7 +1110,7 @@ span.title {
 	background-position: right -1040px;
 }
 
-/* families  */
+/* families */
 #content {
 	clear: both;
 	padding: 10px 10px 0 10px;
@@ -2814,7 +2814,7 @@ a.showit > span {
 	width: 50%;
 }
 
-/* FAQ table  */
+/* FAQ table */
 table.faq {
 	background-color: #eee;
 	margin: 5px 0 15px 5px;
@@ -2866,19 +2866,19 @@ ul.clist {
 	text-decoration: none;
 }
 
-/* Find special characters  */
+/* Find special characters */
 .largechars {
 	font-family: monospace;
 	font-size: 200%;
 }
 
-/* edit, copy, delete links  */
+/* edit, copy, delete links */
 .editfacts {
 	clear: left;
 	padding-top: 15px;
 }
 
-/* container for next two links  */
+/* container for next two links */
 .editlink,
 .copylink,
 .deletelink {
@@ -3164,7 +3164,7 @@ dd .deletelink {
 	content: " »";
 }
 
-/*  Indi tabs  */
+/* Indi tabs */
 /* Facts & Events */
 #personal_facts_content .fact_NOTE,
 #personal_facts_content .fact_SOUR,
@@ -3243,7 +3243,7 @@ dd .deletelink {
 	width: 100%;
 }
 
-/* jquery-ui.custom.css changes  */
+/* jquery-ui.custom.css changes */
 span.link_text {
 	display: none;
 }
@@ -3458,7 +3458,7 @@ span.link_text {
 	margin-right: -20px;
 }
 
-/*  List styles */
+/* List styles */
 
 .source-list,
 .note-list,
@@ -3652,7 +3652,7 @@ span.link_text {
 	margin: 0 1px 1px -2px;
 }
 
-/* Sidebar  */
+/* Sidebar */
 #indi_left {
 	float: left;
 	width: 98%;
@@ -3757,7 +3757,7 @@ span.link_text {
 	width: 75px;
 }
 
-.famnav_title{
+.famnav_title {
 	font-weight: bold;
 	display: block;
 	padding: 5px 0;
@@ -3766,37 +3766,28 @@ span.link_text {
 .flyout {
 	left: 40px;
 	padding: 3px;
-	background-color: #FFFFFF;
-	border: 1px solid #CCCCCC;
+	background-color: #fff;
+	border: 1px solid #ccc;
+}
+
+[dir=rtl] .flyout {
+	left: auto;
+	right: 40px;
 }
 
 .flyout a, .flyout a:hover {
-	color: #000000;
-    cursor: default;
+	color: #000;
+	cursor: default;
 	text-decoration: none;
 }
 
 .flyout2 {
 	font-weight: 700;
- }
+}
 
 .flyout3:hover {
 	cursor: pointer;
 	text-decoration: underline;
-}
-
-[dir=rtl] .flyout {
-	text-align: right;
-	right: 40px;
-}
-
-[dir=rtl] .flyout2 {
-	text-align: right;
-	left: 210px;
-}
-
-[dir=rtl] .flyout3 {
-	text-align: right;
 }
 
 #sb_desc_content {
@@ -3834,7 +3825,7 @@ span.link_text {
 	list-style-image: url(../images/plus.png);
 }
 
-/* Extra Info  */
+/* Extra Info */
 #sb_content_extra_info {
 	font-size: 80%;
 	font-weight: 700;
@@ -3866,7 +3857,7 @@ span.link_text {
 	display: inline;
 }
 
-/* find.php   */
+/* find.php */
 #find-page h3,
 #find-page h4 {
 	margin: 10px;
@@ -3961,7 +3952,7 @@ span.link_text {
 	font-weight: 700;
 }
 
-/* search.php  */
+/* search.php */
 #search-page h2,
 #search_submit {
 	margin: 20px;
@@ -4040,7 +4031,7 @@ span.link_text {
 	margin: 0 170px 0 0;
 }
 
-/*  edituser.php  */
+/* edituser.php */
 #edituser-page h2,
 #edituser_submit {
 	margin: 20px;

@@ -109,9 +109,9 @@ td {
 }
 
 /* ===== */
-/* Layout Left Main menu  */
+/* Layout Left Main menu */
 
-/* set up div container  */
+/* set up div container */
 #topMenu {
 	background: #acf;
 	clear: both;
@@ -205,7 +205,7 @@ td {
 	margin-right: 100%;
 }
 
-/*  Mainmenu Icons*/
+/* Mainmenu Icons*/
 #main-menu > li {
 	background-image: url(images/sprites-top-menu.png);
 	background-repeat: no-repeat;
@@ -220,7 +220,7 @@ td {
 	left: auto;
 }
 
-/*  Submenu Icons */
+/* Submenu Icons */
 #main-menu li ul li {
 	background-image: url(images/sprites-sub-menu.png);
 	background-repeat: no-repeat;
@@ -234,7 +234,7 @@ td {
 	text-indent: 0;
 }
 
-/*  Delete tag from mainmenu icons */
+/* Delete tag from mainmenu icons */
 #main-menu > li > a {
 	color: #2a2b2d;
 	height: 17px;
@@ -681,7 +681,7 @@ td {
 	background-position: right -667px;
 }
 
-/* Family Icons  */
+/* Family Icons */
 #menu-fam-addchil {
 	background-position: left -759px;
 }
@@ -788,7 +788,7 @@ td {
 	background-position: right -736px;
 }
 
-/* Edit Notes  */
+/* Edit Notes */
 #menu-note-addfav {
 	background-position: left -736px;
 }
@@ -821,7 +821,7 @@ td {
 	background-position: right -667px;
 }
 
-/* Objects  */
+/* Objects */
 #menu-obje-addfav {
 	background-position: left -736px;
 }
@@ -919,7 +919,7 @@ td {
 	background-position: right -667px;
 }
 
-/*  Source  */
+/* Source */
 #menu-sour-addfav {
 	background-position: left -736px;
 }
@@ -952,7 +952,7 @@ td {
 	background-position: right -667px;
 }
 
-/*  Stories  */
+/* Stories */
 #menu-story-sub {
 	background-position: left -920px;
 }
@@ -1112,12 +1112,12 @@ a.link:hover {
 	color: #006;
 }
 
-/*   Edit Facts */
+/* Edit Facts */
 td.descriptionbox div a {
 	color: #fff;
 }
 
-/*   End Edit Facts  */
+/* End Edit Facts */
 .facts_label .submenu a {
 	background: #fff;
 	color: #000;
@@ -2416,10 +2416,6 @@ a.showit:hover > span {
 	white-space: normal;
 }
 
-ul.clist {
-	list-style-image: none;
-}
-
 .statistics-page {
 	text-align: center;
 }
@@ -3010,7 +3006,7 @@ div.faq_title {
 	width: 98%;
 }
 
-/* FAQ table  */
+/* FAQ table */
 table.faq {
 	background-color: #eee;
 	margin: 5px 0 15px 5px;
@@ -3050,7 +3046,7 @@ ul.clist {
 	font-size: 200%;
 }
 
-/* edit, copy, delete links  */
+/* edit, copy, delete links */
 .editfacts {
 	clear: left;
 	padding-top: 15px;
@@ -3887,7 +3883,8 @@ span.link_text {
 .nav_content .facts_label {
 	width: 75px;
 }
-.famnav_title{
+
+.famnav_title {
 	font-weight: bold;
 	display: block;
 	padding: 5px 0;
@@ -3896,13 +3893,18 @@ span.link_text {
 .flyout {
 	left: 40px;
 	padding: 3px;
-	background-color: #ECF5FF;
-	border: 1px solid #cccccc;
+	background-color: #ecf5ff;
+	border: 1px solid #ccc;
+}
+
+[dir=rtl] .flyout {
+	left: auto;
+	right: 40px;
 }
 
 .flyout a, .flyout a:hover {
-	color: #000000;
-    cursor: default;
+	color: #000;
+	cursor: default;
 	text-decoration: none;
 }
 
@@ -3911,26 +3913,12 @@ span.link_text {
 }
 
 .flyout3 {
-    color: #003399;
+	color: #039;
 }
 
 .flyout3:hover {
 	cursor: pointer;
-    color: #FF0000;
-}
-
-[dir=rtl] .flyout {
-	text-align: right;
-	right: 40px;
-}
-
-[dir=rtl] .flyout2 {
-	text-align: right;
-	left: 210px;
-}
-
-[dir=rtl] .flyout3 {
-	text-align: right;
+	color: #f00;
 }
 
 .nam a:hover {
