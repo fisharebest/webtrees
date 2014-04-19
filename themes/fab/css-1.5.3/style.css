@@ -81,13 +81,14 @@ img.block {
 	vertical-align: middle;
 }
 
-.line1, 
-.line2, 
+.line1,
+.line2,
 .line3 {
 	vertical-align: middle;
 }
+
 #hourglass_chart img.line4 {
-	vertical-align:middle;
+	vertical-align: middle;
 }
 
 .line5 {
@@ -107,10 +108,12 @@ legend {
 a {
 	text-decoration: none;
 }
+
 a:link,
 a:visited {
 	color: #369;
 }
+
 a:hover,
 a:active {
 	text-decoration: underline;
@@ -128,16 +131,18 @@ textarea:required:valid {
 	background-position: right top;
 	background-repeat: no-repeat;
 }
+
 input:required:invalid,
 textarea:required:invalid {
 	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAMpJREFUeNpi/P//PwMlgImBQjAMDGBBF1jFyOgBpFqAuOYPA8MOoAI4P+z//x0YJoBiARkvYWA486+k5D+IBuJqZD66WnAMogvMA9o4F6j4R3Lyf2R6IQODMVEGTAW6CoirgfjMB2/v/yB6CgNDYQ8W14IwRiB+A7rgOwNDYLChofGcrVvPgugfDAzR/yFhwUAwDJqBNj6Ulf0PooEhV4jMx+YCRvSknAeMBWDotwgwMKRzMTCcfQW0GcQHxkbNJCyxwDiaFxgAAgwAYy67YIOQ//cAAAAASUVORK5CYII=);
 	background-position: right top;
 	background-repeat: no-repeat;
 }
-html[dir=rtl] input:required:valid,
-html[dir=rtl] textarea:required:valid,
-html[dir=rtl] input:required:invalid,
-html[dir=rtl] textarea:required:invalid {
+
+[dir=rtl] input:required:valid,
+[dir=rtl] textarea:required:valid,
+[dir=rtl] input:required:invalid,
+[dir=rtl] textarea:required:invalid {
 	background-position: left top;
 }
 
@@ -169,30 +174,37 @@ html[dir=rtl] textarea:required:invalid {
 	color: #888;
 	text-align: center;
 }
+
 #header-user-links {
 	float: right;
 }
-html[dir=rtl] #header-user-links {
+
+[dir=rtl] #header-user-links {
 	float: left;
 }
+
 #header-title {
 	font-size: x-large;
 	float: left;
 	clear: left;
 }
-html[dir=rtl] #header-title {
+
+[dir=rtl] #header-title {
 	float: right;
 	clear: right;
 }
+
 #header-menu {
 	clear: both;
 	text-align: center;
 	padding-top: 12px;
 }
+
 #content {
 	margin-top: 12px;
 	margin-bottom: 12px;
 }
+
 #footer {
 	clear: both;
 	text-align: center;
@@ -204,12 +216,15 @@ html[dir=rtl] #header-title {
 	background-color: #eee;
 	clear: none;
 }
+
 .blockheader {
 	font-weight: bold;
 }
+
 .charts_block {
 	overflow: auto;
 }
+
 #link_change_blocks {
 	clear: both;
 	margin: 0 auto;
@@ -217,9 +232,11 @@ html[dir=rtl] #header-title {
 	text-align: center;
 	width: 400px;
 }
+
 #link_change_blocks span {
 	padding: 0 50px;
 }
+
 #link_change_blocks span span {
 	padding: 0 3px;
 }
@@ -227,16 +244,18 @@ html[dir=rtl] #header-title {
 #random_picture {
 	text-align: center;
 }
+
 #random_picture_box {
 	width: 100%;
 }
 
 /* Pending edits - TODO perhaps show differently in different contexts? */
 .new {
-	 outline: solid #00f 1px;
+	outline: solid #00f 1px;
 }
+
 .old {
-	 outline: solid #f00 1px;
+	outline: solid #f00 1px;
 }
 
 /* Set stack level for top two header menu rows */
@@ -257,9 +276,11 @@ html[dir=rtl] #header-title {
 .makeMenu li:before {
 	content: " | ";
 }
+
 .makeMenu li ul li:before {
 	content: "";
 }
+
 .makeMenu li:first-child:before {
 	content: "";
 }
@@ -273,7 +294,7 @@ html[dir=rtl] #header-title {
 	border: thin solid #aaa;
 }
 
-html[dir=rtl] .makeMenu li ul {
+[dir=rtl] .makeMenu li ul {
 	left: auto;
 	right: 0;
 }
@@ -283,7 +304,8 @@ html[dir=rtl] .makeMenu li ul {
 	top: 0;
 	left: 100px;
 }
-html[dir=rtl] .makeMenu ul ul {
+
+[dir=rtl] .makeMenu ul ul {
 	top: 0;
 	left: auto;
 	right: 100px;
@@ -294,7 +316,7 @@ html[dir=rtl] .makeMenu ul ul {
 	text-align: left;
 }
 
-html[dir=rtl] .makeMenu li ul li {
+[dir=rtl] .makeMenu li ul li {
 	text-align: right;
 }
 
@@ -327,11 +349,12 @@ html[dir=rtl] .makeMenu li ul li {
 }
 
 #menu-language li {
-	text-align: left;
-} /* The language menu is always LTR, even on RTL pages */
+	text-align: left; /* The language menu is always LTR, even on RTL pages */
+}
+
 #menu-theme li {
-	text-align: left;
-} /* The theme menu is always LTR, even on RTL pages */
+	text-align: left; /* The theme menu is always LTR, even on RTL pages */
+}
 
 /* person boxes are used in various charts */
 
@@ -371,14 +394,14 @@ html[dir=rtl] .makeMenu li ul li {
 	min-height: 50px;
 }
 
-html[dir=rtl] .person_box html[dir=rtl] .person_boxF html[dir=rtl] .person_boxNN {
+[dir=rtl] .person_box [dir=rtl] .person_boxF [dir=rtl] .person_boxNN {
 	margin: 0 3px 0 0;
 }
-
 
 .action_headerF {
 	background: #fdd;
 }
+
 .action_header {
 	background: #ddf;
 }
@@ -388,16 +411,20 @@ html[dir=rtl] .person_box html[dir=rtl] .person_boxF html[dir=rtl] .person_boxNN
 	width: 60%;
 	float: left;
 }
+
 #index_small_blocks {
 	width: 40%;
 	float: right;
 }
+
 #index_full_blocks {
 }
-html[dir=rtl] #index_main_blocks {
+
+[dir=rtl] #index_main_blocks {
 	float: right;
 }
-html[dir=rtl] #index_small_blocks {
+
+[dir=rtl] #index_small_blocks {
 	float: left;
 }
 
@@ -411,6 +438,7 @@ html[dir=rtl] #index_small_blocks {
 .gedcom_block_block table {
 	margin: auto;
 }
+
 .user_welcome_block td,
 .gedcom_block_block td {
 	width: 33%;
@@ -427,28 +455,33 @@ html[dir=rtl] #index_small_blocks {
 	margin: 0 auto;
 	width: 500px;
 }
+
 .pedigree_chart_table {
 	border: 0;
 	border-collapse: collapse;
 	padding: 0;
 	width: 100%;
 }
+
 #pedigree_chart {
 	position: relative;
 	top: -200px;
 	left: 0;
 }
+
 #pedigree_canvas {
 	color: #aaa;
 	position: absolute;
 	top: 200px;
 	z-index: -1000;
 }
+
 #pedigree_chart #childarrow,
 #pedigree_chart #uparrow,
 #pedigree_chart .shadow {
 	position: absolute;
 }
+
 #pedigree_chart #childbox {
 	border: 1px solid;
 	background-color: #fff;
@@ -460,6 +493,7 @@ html[dir=rtl] #index_small_blocks {
 .compact_view {
 	cursor: url(images/zoomin.png), n-resize;
 }
+
 .compact_view p {
 	font-size: smaller;
 	margin: 0;
@@ -473,34 +507,44 @@ html[dir=rtl] #index_small_blocks {
 #familybook_chart {
 	margin-left: 10px;
 }
+
 #familybook_chart table {
 	border-collapse: collapse;
 	empty-cells: show;
 }
+
 #familybook_chart td {
 	margin: 0;
 	padding: 0;
 }
+
 #familybook_chart h2 {
 	text-align: center;
 }
+
 #familybook_chart .line3,
 #familybook_chart .pvline,
 #familybook_chart .spacer {
 	width: 3px;
 }
+
 #familybook_chart .line4 {
-	width: 7px; vertical-align:middle;
+	width: 7px;
+	vertical-align: middle;
 }
+
 [ID^="vline"] {
 	width: 3px;
 }
+
 #familybook_chart h3 {
 	text-align: center;
 }
+
 #relationship-page h3 {
 	margin: 20px 0 0 20px;
 }
+
 #relationship_chart {
 	margin: 0 20px 0;
 }
@@ -508,20 +552,22 @@ html[dir=rtl] #index_small_blocks {
 .tdtop {
 	vertical-align: top;
 }
+
 .tdmid {
 	vertical-align: middle;
 }
+
 .tdbot,
 .tvertline {
 	vertical-align: bottom;
 }
 
-html[dir=rtl] #familybook_chart {
+[dir=rtl] #familybook_chart {
 	margin-right: 10px;
 }
 
 /*-- pedigree chart rtl specific stylesheets --*/
-html[dir=rtl] #pedigree_chart {
+[dir=rtl] #pedigree_chart {
 	left: auto;
 	right: 10px;
 }
@@ -532,17 +578,30 @@ html[dir=rtl] #pedigree_chart {
 		border: solid #888 1px;
 		background: #fff;
 	}
-	#header_accordion1 {width: 510px !important;}
-	.noprint {display:none !important;}
+
+	#header_accordion1 {
+		width: 510px !important;
+	}
+
+	.noprint {
+		display: none !important;
+	}
+
 	#header,
 	#footer,
 	#pedigree-page #people,
 	#CB_ALL, label,
 	#separator {
-		display:none;
+		display: none;
 	}
-	#familybook_chart h3 {margin-bottom: 10px;}
-	form, button, input {display:none;}
+
+	#familybook_chart h3 {
+		margin-bottom: 10px;
+	}
+
+	form, button, input {
+		display: none;
+	}
 }
 
 /* Tabular data */
@@ -551,6 +610,7 @@ html[dir=rtl] #pedigree_chart {
 	margin-left: auto;
 	margin-right: auto;
 }
+
 .topbottombar,
 .descriptionbox {
 	font-weight: bold;
@@ -558,12 +618,14 @@ html[dir=rtl] #pedigree_chart {
 	vertical-align: top;
 	white-space: nowrap;
 }
+
 .optionbox {
 	background-color: #ddd;
 	color: #000;
 	vertical-align: top;
 	white-space: nowrap;
 }
+
 .facts_label,
 .facts_label02,
 .facts_label03 {
@@ -571,6 +633,7 @@ html[dir=rtl] #pedigree_chart {
 	width: 20%;
 	text-align: center;
 }
+
 .facts_value {
 	background-color: #ddd;
 }
@@ -579,6 +642,7 @@ html[dir=rtl] #pedigree_chart {
 .list_value {
 	white-space: nowrap;
 }
+
 .list_label_wrap,
 .list_value_wrap {
 	white-space: normal;
@@ -608,6 +672,7 @@ html[dir=rtl] #pedigree_chart {
 .ui-autocomplete-input {
 	background-color: #eea;
 }
+
 .ui-autocomplete {
 	padding: 0;
 	border: thin solid #aaa;
@@ -619,6 +684,7 @@ html[dir=rtl] #pedigree_chart {
 	max-height: 200px;
 	overflow-y: auto;
 }
+
 .ui-autocomplete li {
 	margin: 0;
 	padding: 2px 5px;
@@ -628,9 +694,11 @@ html[dir=rtl] #pedigree_chart {
 	line-height: 14px; /* absolute setting required for firefox? */
 	overflow: hidden;
 }
+
 .ui-autocomplete-loading {
 	background: #fff url(images/indicator.gif) right center no-repeat;
 }
+
 .ui-autocomplete li:nth-child(odd) {
 	background-color: #eee;
 }
@@ -653,9 +721,11 @@ html[dir=rtl] #pedigree_chart {
 	margin-left: auto;
 	margin-right: auto;
 }
+
 .nowrap {
 	white-space: nowrap;
 }
+
 .wrap {
 	white-space: normal;
 }
@@ -736,9 +806,10 @@ html[dir=rtl] #pedigree_chart {
 }
 
 /*-- descendancy chart specific stylesheets --*/
-#descendancy_chart{
+#descendancy_chart {
 	margin: 20px;
 }
+
 #descendancy_chart ul {
 	background-image: url(images/vline.png);
 	background-repeat: repeat-y;
@@ -758,19 +829,20 @@ html[dir=rtl] #pedigree_chart {
 	padding-right: 0;
 	padding-bottom: 0;
 }
+
 li .person_box,
 li .person_boxF {
 	margin: 3px 0 3px 0;
 }
 
 /*-- descendancy chart rtl specific stylesheets --*/
-html[dir=rtl] #descendancy_chart ul {
+[dir=rtl] #descendancy_chart ul {
 	background-position: right top;
 	left: auto;
 	margin: 0 15px 0 0;
 }
 
-html[dir=rtl] #descendancy_chart li {
+[dir=rtl] #descendancy_chart li {
 	margin: 0 -13px 0 0;
 	padding: 0 2px 0 0;
 	left: auto;
@@ -797,18 +869,19 @@ html[dir=rtl] #descendancy_chart li {
 	padding-right: 0;
 	padding-bottom: 0;
 }
+
 #ancestry_chart li table {
 	margin: 5px 0;
 }
 
 /*-- ancestry chart rtl specific stylesheets --*/
-html[dir=rtl] #ancestry_chart ul {
+[dir=rtl] #ancestry_chart ul {
 	background-position: right top;
 	margin: 0 15px 0 0;
 	left: auto;
 }
 
-html[dir=rtl] #ancestry_chart li {
+[dir=rtl] #ancestry_chart li {
 	margin: 0 -13px 0 0;
 	padding: 0 2px 0 0;
 	left: auto;
@@ -827,7 +900,6 @@ html[dir=rtl] #ancestry_chart li {
 	top: 0;
 	left: 0;
 }
-
 
 .person0 {
 	background-color: #aaf;
@@ -871,6 +943,7 @@ html[dir=rtl] #ancestry_chart li {
 .search_hit {
 	background-color: #ff0;
 }
+
 .search_item {
 	font-weight: 600;
 }
@@ -1023,26 +1096,6 @@ a.showit:hover > span {
 	top: -60px;
 	z-index: 1;
 }
-.iwstyle {
-	width: 360px;
-}
-.iwstyle a {
-}
-.iwstyle a:hover {
-}
-
-#map_nav {
-	position: relative;
-	top: -484px;
-	left: 101%;
-}
-
-#tree_nav {
-	position: relative;
-	top: -584px;
-	left: 90%;
-	z-index: 100;
-}
 
 .tag_cloud a {
 	white-space: nowrap;
@@ -1062,7 +1115,8 @@ dt {
 	margin-right: 10px;
 	clear: both;
 }
-html[dir=rtl] dt {
+
+[dir=rtl] dt {
 	float: right;
 	margin-right: auto;
 	margin-left: 10px;
@@ -1072,6 +1126,7 @@ html[dir=rtl] dt {
 	text-align: center;
 	margin-bottom: 20px;
 }
+
 #pending h3 {
 	text-align: center;
 	margin-top: 20px;
@@ -1106,26 +1161,32 @@ html[dir=rtl] dt {
 #relationship_chart .person_box,
 #relationship_chart .person_boxF,
 #relationship_chart .person_boxNN {
-	overflow:visible !important;
+	overflow: visible !important;
 }
+
 .person_box_template .style1 {
 	overflow: hidden;
 }
+
 .person_box_template .style0 {
 	padding: 2px;
 }
+
 .person_box_template .noprint {
-	 width: 25px;
-	 height: 50px;
-	 position: relative;
+	width: 25px;
+	height: 50px;
+	position: relative;
 }
+
 .person_box_template .chart_textbox {
 	height: auto;
 	overflow: hidden;
 }
+
 .person_box_template .details div {
 	display: block;
 }
+
 .person_box_template a.gallery img {
 	float: left;
 	height: 50px;
@@ -1134,15 +1195,18 @@ html[dir=rtl] dt {
 	max-width: 80px;
 	width: auto;
 }
-html[dir=rtl] .person_box_template img,
-html[dir=rtl] .person_box_template a.gallery {
+
+[dir=rtl] .person_box_template img,
+[dir=rtl] .person_box_template a.gallery {
 	float: right;
 	margin: 0 0 0 3px;
 }
+
 .person_box_template i[class^="icon-silhouette"] {
 	float: left;
 }
-html[dir=rtl] .person_box_template i[class^="icon-silhouette"] {
+
+[dir=rtl] .person_box_template i[class^="icon-silhouette"] {
 	float: right;
 }
 
@@ -1151,9 +1215,11 @@ html[dir=rtl] .person_box_template i[class^="icon-silhouette"] {
 #medialist-page .list_table_controls {
 	margin: 0 auto;
 }
+
 #medialist-page .list_table_controls {
 	width: 100%;
 }
+
 .list_table_controls td {
 	min-width: 40px;
 	text-align: center;
@@ -1164,62 +1230,80 @@ html[dir=rtl] .person_box_template i[class^="icon-silhouette"] {
 	display: inline-block;
 	margin: 0;
 }
+
 .lb-menu ul {
 	display: block;
 	list-style-type: none;
 }
+
 .lb-menu > li {
 	font-weight: normal;
 	float: left;
 	top: 0;
 }
+
 .lb-menu li:first-child {
 	padding-left: 0;
 }
+
 .lb-menu > li ul {
 	display: none;
 }
+
 .lb-menu > li:hover ul {
-	display: block; top: 36px;
+	display: block;
+	top: 36px;
 }
+
 .lb-menu li a {
 	padding-top: 24px;
 }
+
 .lb-menu li li a {
 	padding: 1px 10px 1px 5px;
 }
-.makeMenu.lb-menu li:before{
+
+.makeMenu.lb-menu li:before {
 	content: "";
 }
-.lb-image_edit, .lb-image_link{
+
+.lb-image_edit, .lb-image_link {
 	padding-right: 5px;
 }
-html[dir=rtl] .lb-menu > li {
+
+[dir=rtl] .lb-menu > li {
 	float: right;
 }
+
 /* ============== login.php ======================= */
 #login-register-page h2 {
 	text-align: center;
 }
+
 #login-register-page .warning {
 	margin: 20px auto;
 	text-align: center;
 }
+
 #login-register-page .back {
 	font-weight: bold;
 	text-align: center;
 }
+
 #login-register-page .confirm {
 	margin: 20px auto;
 	text-align: justify;
 	width: 500px;
 }
+
 #login-register-page .confirm p {
 	font-weight: bold;
 }
-#login-register-page .confirm p+p {
+
+#login-register-page .confirm p + p {
 	font-weight: normal;
 }
+
 #login-text,
 #register-text,
 #user-verify {
@@ -1227,13 +1311,15 @@ html[dir=rtl] .lb-menu > li {
 	width: 610px;
 	text-align: justify;
 }
+
 #login-box,
 #register-box {
 	text-align: center;
 }
+
 #login-form,
 #new_passwd_form,
-#register-form ,
+#register-form,
 #verify-form {
 	background-color: #ccc;
 	border: 1px solid #aaa;
@@ -1242,6 +1328,7 @@ html[dir=rtl] .lb-menu > li {
 	margin: 10px auto 0 auto;
 	padding: 5px;
 }
+
 #login-form div,
 #login-form div a,
 #new_passwd_form div,
@@ -1252,52 +1339,62 @@ html[dir=rtl] .lb-menu > li {
 	padding: 5px;
 	text-align: center;
 }
+
 #login-form label,
 #new_passwd_form label,
 #verify-form label {
 	display: block;
 	text-align: right;
 }
+
 #login-form label input,
 #new_passwd_form label input,
 #verify-form input {
 	width: 140px;
 	margin: 0 10px;
 }
+
 #new_passwd_form h4,
 #register-form h4 {
 	font-weight: normal;
 	text-align: center;
 }
+
 #register-form div,
 #verify-form div {
 	text-align: right;
 }
+
 #register-form label input,
 #register-form label select,
 #register-form textarea {
 	width: 220px;
 	margin: 0 10px;
 }
+
 #register-form label select {
 	margin: 0 10px;
 	width: 228px;
 }
+
 #register-form textarea {
 	vertical-align: top;
 }
+
 #register-form div#registration-submit {
 	text-align: center;
 }
+
 .login_block_block #login-form,
 .login_block_block #new_passwd_form {
 	border: 0;
 	background: none;
 }
-html[dir=rtl] #login-form label,
-html[dir=rtl] #new_passwd_form label,
-html[dir=rtl] #register-form label,
-html[dir=rtl] #verify-form label {
+
+[dir=rtl] #login-form label,
+[dir=rtl] #new_passwd_form label,
+[dir=rtl] #register-form label,
+[dir=rtl] #verify-form label {
 	text-align: left;
 }
 
@@ -1305,15 +1402,18 @@ html[dir=rtl] #verify-form label {
 #reportengine-page table {
 	margin: 20px auto;
 }
+
 #reportengine-page .report-type {
 	overflow: hidden;
 	margin: auto;
 	width: 180px;
 }
+
 #reportengine-page .report-type div {
 	float: left;
 	margin: 0 20px;
 }
+
 #reportengine-page .report-type p {
 	margin: 0;
 	text-align: center;
@@ -1324,16 +1424,19 @@ html[dir=rtl] #verify-form label {
 .gedcom_favorites_block .person_boxNN {
 	height: auto;
 }
+
 .user_favorites_block .person_box,
 .user_favorites_block .person_boxF,
 .user_favorites_block .person_boxNN {
 	height: auto;
 }
+
 .gedcom_favorites_block .person_box .details2,
 .gedcom_favorites_block .person_boxF.details2,
 .gedcom_favorites_block .person_boxNN.details2 {
 	min-height: 40px;
 }
+
 .user_favorites_block .person_box .details2,
 .user_favorites_block .person_boxF.details2,
 .user_favorites_block .person_boxNN.details2 {
@@ -1344,9 +1447,11 @@ html[dir=rtl] #verify-form label {
 .gedcom_stats_block table td {
 	vertical-align: top;
 }
+
 .gedcom_stats_block table td td {
 	vertical-align: middle;
 }
+
 .gedcom_stats_block td .stats_value {
 	text-align: center;
 }
@@ -1358,16 +1463,19 @@ html[dir=rtl] #verify-form label {
 	width: 90%;
 	overflow: hidden;
 }
+
 .theme_form li {
 	list-style: none;
 	visibility: hidden;
 }
+
 .theme_form li ul li {
 	float: left;
 	padding: 10px;
 	visibility: visible;
 }
-html[dir=rtl] .theme_form li ul li {
+
+[dir=rtl] .theme_form li ul li {
 	float: right;
 }
 
@@ -1376,20 +1484,25 @@ html[dir=rtl] .theme_form li ul li {
 .gedcom_favorites_block .person_box {
 	margin: 5px 0;
 }
+
 .add_fav_head {
 	font-weight: 900;
 	margin: 5px 0;
 }
+
 .add_fav_head i {
 	margin: 0 5px 1px 5px;
 }
+
 .add_fav_ref label {
 	display: inline-block;
 	min-width: 100px;
 }
+
 .add_fav_ref label:after {
 	content: ":";
 }
+
 .add_fav_ref input {
 	margin: 0 5px;
 }
@@ -1444,7 +1557,7 @@ html[dir=rtl] .theme_form li ul li {
 	z-index: 9999;
 }
 
-html[dir=rtl] .itr:hover .popup {
+[dir=rtl] .itr:hover .popup {
 	left: 0;
 	right: auto;
 }
@@ -1454,66 +1567,80 @@ html[dir=rtl] .itr:hover .popup {
 #tabDefinedTagsShow {
 	width: 450px;
 }
+
 #tabDefinedTags {
 	width: 430px;
 }
+
 #layDefinedTags {
 	margin-left: auto;
 	margin-right: auto;
 	height: 285px;
 	overflow: auto;
-	border: inset 2px buttonface;
 }
+
 #tabDefinedTags {
 	border-collapse: collapse;
 }
+
 #tabDefinedTags th,
 #tabDefinedTags td {
 	border: solid 1px #000;
 	margin: 0;
 	padding: 3px;
 }
+
 #tabDefinedTags tbody th {
 	text-align: left;
 	font-weight: bold;
 }
+
 #tabDefinedTags tr.sel {
 	background-color: #cde;
 	color: #888;
 }
+
 #tabDefinedTags tr.unsel {
 	background-color: #fff;
 	color: #888;
 }
+
 #tabDefinedTagsShow {
 	margin-left: auto;
 	margin-right: auto;
 }
+
 #tabDefinedTagsShow td {
 	width: 50%;
 	text-align: center;
 }
+
 #tabFilterAndCustom {
 	margin-left: auto;
 	margin-right: auto;
 }
+
 #tabAction {
 	margin-left: auto;
 	margin-right: auto;
 }
+
 #tabAction td {
 	width: 50%;
 	text-align: center;
 }
+
 /* FAQ table styles */
 table.faq {
 	background-color: #ddd;
 	margin: 5px 0 50px 5px;
 	width: 98%;
 }
+
 table.faq tr.odd td {
 	background-color: #eee;
 }
+
 div.faq_title {
 	background-color: #ddd;
 	margin: 12px 0 0 12px;
@@ -1521,26 +1648,32 @@ div.faq_title {
 	font-weight: bold;
 	width: 98%;
 }
+
 div.faq_body {
 	clear: both;
 	margin: 12px 0;
 	padding: 12px;
 }
+
 .faq_italic {
 	font-style: italic;
 	font-weight: bold;
 	padding: 0 10px;
 }
+
 .faq_top {
 	float: right;
 }
+
 .faq_edit {
 	float: right;
 }
-html[dir=rtl] .faq_top {
+
+[dir=rtl] .faq_top {
 	float: left;
 }
-html[dir=rtl] .faq_edit {
+
+[dir=rtl] .faq_edit {
 	float: left;
 }
 
@@ -1552,7 +1685,6 @@ ul.clist {
 	text-decoration: none;
 	color: #000;
 	margin: 0;
-	margin-left: -23px;
 }
 
 /* Find special characters */
@@ -1560,39 +1692,48 @@ ul.clist {
 	font-family: monospace;
 	font-size: xx-large;
 }
+
 /* ========= Positioning edit, copy, delete links ============= */
 /* General use */
 .editfacts {
 	clear: left;
 	padding-top: 15px;
-} /* a container for the following three links */
+}
+
+/* a container for the following three links */
 .editfacts a:hover,
 .field a:hover {
 	background-color: transparent !important;
 }
+
 .editlink,
 .copylink,
 .deletelink {
 	float: left;
 }
-html[dir=rtl] .editlink,
-html[dir=rtl] .copylink,
-html[dir=rtl] .deletelink {
+
+[dir=rtl] .editlink,
+[dir=rtl] .copylink,
+[dir=rtl] .deletelink {
 	float: right;
 }
+
 span.link_text {
 	display: none;
 }
+
 /* Indi header */
 .field .editlink,
 .field .deletelink,
 .field .copylink {
 	float: right;
 }
-html[dir=rtl].field .editlink,
-html[dir=rtl].field .deletelink {
+
+[dir=rtl].field .editlink,
+[dir=rtl].field .deletelink {
 	float: left;
 }
+
 /* =========== end edit, copy, delete links ==================== */
 
 /* =========== Indi header ================== */
@@ -1604,6 +1745,7 @@ html[dir=rtl].field .deletelink {
 	margin: 5px 0;
 	padding: 0 10px;
 }
+
 #indi_header h3 {
 	color: #369;
 	font-weight: bold;
@@ -1611,116 +1753,143 @@ html[dir=rtl].field .deletelink {
 	padding: 0 10px 0 30px;
 	text-align: left;
 }
+
 #indi_header h3.name_one {
 	overflow: hidden;
 	position: relative;
 	font-size: larger;
 }
+
 #indi_header h3 .header_age {
 	padding: 5px 0 5px 5px;
 	float: right;
 	font-weight: normal;
 	font-size: smaller;
 }
+
 #indi_mainimage {
 	float: right;
 }
+
 #indi_mainimage a img {
 	float: right;
 	padding: 0;
 }
+
 .indi_name_details {
 	margin: 0;
 	overflow: hidden !important;
 	padding: 5px;
 }
+
 .indi_name_details dt:after {
 	content: ":";
 }
+
 #indi_note {
 	margin: 0 0 5px 0;
 }
+
 #indi_note .fact_NOTE {
 	float: left;
 	margin: 0 10px 0 0;
 }
+
 #indi_note .fact_NOTE,
 #indi_note .fact_SOUR {
 	clear: both;
 }
 
 .markdown p {
-	margin:      0 0 0.5em;
+	margin: 0 0 0.5em;
 	white-space: pre-wrap;
 }
+
 .markdown table {
 	border-collapse: collapse;
 }
+
 .markdown th {
 	font-weight: bold;
 }
+
 .markdown td,
 .markdown th {
-	border:  solid thin #000;
+	border: solid thin #000;
 	padding: 3px;
 }
 
 #header_accordion1 {
 	float: left;
 }
+
 .indi_table {
 	clear: left;
 }
+
 #sex {
 	float: right;
 }
+
 #dates {
 	color: #369;
 	float: right;
 }
+
 dd .editlink,
 dd .deletelink {
 	float: right;
 }
 
-html[dir=rtl] #indi_header {
+[dir=rtl] #indi_header {
 	float: right;
 }
-html[dir=rtl] #indi_header h3 {
+
+[dir=rtl] #indi_header h3 {
 	padding: 0 30px 0 10px;
 	text-align: right;
 }
-html[dir=rtl] #indi_header h3 .header_age {
+
+[dir=rtl] #indi_header h3 .header_age {
 	padding: 5px 5px 5px 0;
 	float: left;
 }
-html[dir=rtl] #main_name {
+
+[dir=rtl] #main_name {
 	float: right;
 }
-html[dir=rtl] #indi_mainimage {
+
+[dir=rtl] #indi_mainimage {
 	float: left;
 }
-html[dir=rtl] #indi_mainimage a img {
+
+[dir=rtl] #indi_mainimage a img {
 	float: left;
 }
-html[dir=rtl] #indi_note .fact_NOTE {
+
+[dir=rtl] #indi_note .fact_NOTE {
 	float: right;
 	margin: 0 0 0 10px;
 }
-html[dir=rtl] #header_accordion1 {
+
+[dir=rtl] #header_accordion1 {
 	float: right;
 }
-html[dir=rtl] .indi_table {
+
+[dir=rtl] .indi_table {
 	clear: right;
 }
-html[dir=rtl] #sex {
+
+[dir=rtl] #sex {
 	float: left;
 }
-html[dir=rtl] #dates {
+
+[dir=rtl] #dates {
 	float: left;
 }
-html[dir=rtl] dd .editlink,
-html[dir=rtl] dd .deletelink {
+
+[dir=rtl] dd .editlink,
+[dir=rtl] dd .deletelink {
 	float: left;
 }
 
@@ -1734,31 +1903,37 @@ html[dir=rtl] dd .deletelink {
 	display: block;
 	background: url(images/indi_sprite.png) no-repeat;
 }
+
 .female_gender {
 	background-position: -45px 3px;
 	width: 24px;
 	height: 30px;
 }
+
 .male_gender {
 	background-position: -72px 3px;
 	width: 24px;
 	height: 30px;
 }
+
 .unknown_gender {
 	background-position: -100px 4px;
 	width: 24px;
 	height: 30px;
 }
+
 .editicon {
 	background-position: -40px -32px;
 	width: 24px;
 	height: 16px;
 }
+
 .copyicon {
 	background-position: -70px -32px;
 	width: 24px;
 	height: 16px;
 }
+
 .deleteicon {
 	background-position: -100px -32px;
 	width: 24px;
@@ -1774,19 +1949,56 @@ html[dir=rtl] dd .deletelink {
 	margin: 5px 3px 5px 0;
 	clear: both;
 }
+
 .media-display-image {
 	float: left;
 }
+
 .media-display-title {
 	float: left;
 	font-style: italic;
 	margin: 10px;
 }
-html[dir=rtl] .media-display-image {
+
+[dir=rtl] .media-display-image {
 	float: right;
 }
-html[dir=rtl] .media-display-title {
+
+[dir=rtl] .media-display-title {
 	float: right;
+}
+
+/* Album tab */
+.album-list {
+	list-style-type: none;
+}
+
+.album-list-item {
+	display: inline-block;
+	text-align: center;
+	padding: 0 12px;
+	height: 112px;
+	width: 120px;
+}
+
+.album-list-item a img {
+	max-height: 78px;
+	max-width: 100px;
+	height: auto;
+	width: auto;
+}
+
+.album-list-item a:hover {
+	outline: thin solid #bdb071;
+}
+
+.album-image {
+	margin: auto;
+}
+
+.album-title {
+	padding-top: 4px;
+	width: 100%;
 }
 
 /* ========= jquery-ui.custom.css changes ============ */
@@ -1796,13 +2008,13 @@ html[dir=rtl] .media-display-title {
 	padding: 4px;
 }
 
-
 .ui-accordion .ui-accordion-header .ui-icon {
 	position: absolute;
 	left: 6px;
 	top: 50%;
 	margin-top: -8px;
 }
+
 .ui-accordion .ui-accordion-content {
 	padding: 12px 1px;
 	border-top: 0;
@@ -1813,27 +2025,33 @@ html[dir=rtl] .media-display-title {
 	overflow: visible;
 	display: none;
 }
+
 .ui-accordion .ui-accordion-content-active {
 	display: block;
 }
+
 .ui-accordion .ui-accordion-header a {
 	padding: 6px;
 }
 
-html[dir=rtl] .ui-tabs {
+[dir=rtl] .ui-tabs {
 	direction: rtl;
 }
-html[dir=rtl] .ui-tabs .ui-tabs-nav li.ui-tabs-selected,
-html[dir=rtl] .ui-tabs .ui-tabs-nav li.ui-state-default {
+
+[dir=rtl] .ui-tabs .ui-tabs-nav li.ui-tabs-selected,
+[dir=rtl] .ui-tabs .ui-tabs-nav li.ui-state-default {
 	float: right;
 }
-html[dir=rtl] .ui-accordion .ui-accordion-header .ui-icon {
+
+[dir=rtl] .ui-accordion .ui-accordion-header .ui-icon {
 	right: 6px;
 }
-html[dir=rtl] .ui-dialog-title {
+
+[dir=rtl] .ui-dialog-title {
 	float: right;
 }
-html[dir=rtl] .ui-dialog-titlebar-close {
+
+[dir=rtl] .ui-dialog-titlebar-close {
 	left: 4px;
 	right: auto;
 }
@@ -1842,35 +2060,44 @@ html[dir=rtl] .ui-dialog-titlebar-close {
 .odd {
 	background-color: LightGrey;
 }
+
 .even {
 	background-color: #fff;
 }
+
 .css_right {
 	float: left;
 }
+
 .fg-button {
 	padding: 2px 6px;
 }
+
 .fg-toolbar {
 	background: #eee;
 	border-color: #aaa;
 }
+
 .dataTables_paginate {
 	float: left;
 	margin: 5px;
 }
+
 .dataTables_processing {
 	float: left;
 	margin: 5px;
 }
+
 .dataTables_filter {
 	float: right;
 	margin: 4px;
 }
+
 .dataTables_info {
 	float: left;
 	margin: 5px;
 }
+
 .recent_changes_block .dataTables_info,
 .upcoming_events_block .dataTables_info,
 .todays_events_block .dataTables_info,
@@ -1878,35 +2105,44 @@ html[dir=rtl] .ui-dialog-titlebar-close {
 .yahrzeit_block .dataTables_info {
 	padding: 0;
 }
+
 .upcoming_events_block .dataTables_info,
 .todays_events_block .dataTables_info {
 	padding: 2px 0 0 0;
 }
+
 .upcoming_events_block button,
 .todays_events_block button {
 	margin: 5px 20px;
 }
+
 .dataTables_length {
 	float: right;
 	margin: 5px;
 }
+
 .dataTables_length select,
 .dataTables_filter input {
 	padding: 1px;
 }
+
 .ui-widget-header {
 	font-weight: normal;
 }
+
 .dt-clear {
 	clear: both;
 }
+
 #loading {
 	text-align: center;
 }
+
 .DataTables_sort_wrapper {
 	position: relative;
 	margin: 0 20px;
 }
+
 .DataTables_sort_wrapper span {
 	left: 0;
 	margin-left: -20px;
@@ -1915,28 +2151,35 @@ html[dir=rtl] .ui-dialog-titlebar-close {
 	top: 50%;
 }
 
-html[dir=rtl] .css_right {
+[dir=rtl] .css_right {
 	float: right;
 }
-html[dir=rtl] .dataTables_paginate {
+
+[dir=rtl] .dataTables_paginate {
 	float: right;
 }
-html[dir=rtl] .dataTables_processing {
+
+[dir=rtl] .dataTables_processing {
 	float: right;
 }
-html[dir=rtl] .dataTables_filter {
+
+[dir=rtl] .dataTables_filter {
 	float: left;
 }
-html[dir=rtl] .dataTables_info {
+
+[dir=rtl] .dataTables_info {
 	float: right;
 }
-html[dir=rtl] .dataTables_length {
+
+[dir=rtl] .dataTables_length {
 	float: left;
 }
-html[dir=rtl] .DataTables_sort_wrapper {
+
+[dir=rtl] .DataTables_sort_wrapper {
 	margin-right: 20px;
 }
-html[dir=rtl] .DataTables_sort_wrapper span {
+
+[dir=rtl] .DataTables_sort_wrapper span {
 	left: auto;
 	right: 0;
 	margin-right: -20px;
@@ -1953,10 +2196,12 @@ html[dir=rtl] .DataTables_sort_wrapper span {
 	visibility: hidden;
 	width: 98%;
 }
+
 .surname-list,
 .givn-list {
 	margin: 5px auto;
 }
+
 .source-list table,
 .note-list table,
 .repo-list table,
@@ -1965,6 +2210,7 @@ html[dir=rtl] .DataTables_sort_wrapper span {
 .fam-list table {
 	width: 100%;
 }
+
 .source-list td,
 .note-list td,
 .repo-list td,
@@ -1977,18 +2223,22 @@ html[dir=rtl] .DataTables_sort_wrapper span {
 .givn-list td {
 	padding: 2px 5px;
 }
+
 .indi-list td,
 .fam-list td {
 	color: #555;
 }
+
 .surname-list td {
 	vertical-align: top;
 }
+
 .indi-list .stats,
 .fam-list .stats {
 	margin: 0 auto;
 	width: auto;
 }
+
 .source-list th,
 .note-list th,
 .repo-list th,
@@ -2005,6 +2255,7 @@ html[dir=rtl] .DataTables_sort_wrapper span {
 	cursor: pointer;
 	white-space: nowrap;
 }
+
 .source-list th:last-child,
 .note-list th:last-child,
 .repo-list th:last-child {
@@ -2012,12 +2263,14 @@ html[dir=rtl] .DataTables_sort_wrapper span {
 	padding: 3px 0 4px;
 	width: 24px;
 }
+
 .givn-list th {
 	cursor: pointer;
 	white-space: nowrap;
 	padding: 2px;
 	text-align: center;
 }
+
 #source-details h2,
 #sourcelist-page h2,
 #note-details h2,
@@ -2030,6 +2283,7 @@ html[dir=rtl] .DataTables_sort_wrapper span {
 	margin-bottom: 20px;
 	text-align: center;
 }
+
 #source-tabs,
 #note-tabs,
 #repo-tabs,
@@ -2038,49 +2292,59 @@ html[dir=rtl] .DataTables_sort_wrapper span {
 	visibility: hidden;
 	width: 80%;
 }
+
 #statistics_chart {
 	margin: auto;
 	visibility: hidden;
 	width: 90%;
 }
+
 #source-edit,
 #note-edit,
 #repo-edit,
 #media-edit {
 	overflow-x: auto;
 }
+
 .media-list td img {
 	display: block;
 	height: 40px;
 	width: auto;
 	margin: 3px auto;
 }
+
 .filtersH,
 .filtersF {
 	margin: 4px;
 }
+
 .filtersH img {
 	margin-bottom: 2px;
 }
+
 .filtersH .ui-state-default,
 .filtersF .ui-state-default {
 	margin: 0 2px;
 	padding: 2px;
 }
+
 .loading-image {
 	background: transparent url(images/loading.gif) 50% 50% no-repeat;
 	height: 50px;
 	margin: 50px;
 }
+
 #search-result-tabs,
 #places-tabs {
 	margin: auto;
 	width: 98%;
 	visibility: hidden;
 }
+
 #search-result-tabs h3 {
 	text-align: center;
 }
+
 #searchAccordion-indi,
 #searchAccordion-fam,
 #searchAccordion-source,
@@ -2088,14 +2352,15 @@ html[dir=rtl] .DataTables_sort_wrapper span {
 	margin: auto;
 	width: 99%;
 }
+
 #place-hierarchy h2,
 #place-hierarchy h4 {
 	text-align: center;
 }
 
-html[dir=rtl] .source-list th:last-child,
-html[dir=rtl] .note-list th:last-child,
-html[dir=rtl] .repo-list th:last-child {
+[dir=rtl] .source-list th:last-child,
+[dir=rtl] .note-list th:last-child,
+[dir=rtl] .repo-list th:last-child {
 	margin: 0 1px 1px -2px;
 }
 
@@ -2104,41 +2369,51 @@ html[dir=rtl] .repo-list th:last-child {
 	min-width: 600px;
 	width: 100%;
 }
+
 #indi_left {
 	float: left;
 	width: 98%;
 }
+
 #tabs {
 	float: left;
 	width: 98%;
 	overflow: visible;
 }
+
 #sidebar {
 	display: none;
 	margin: 5px 2px 0 0;
 	height: auto;
 }
+
 #sidebarAccordion,
 #sidebarAccordion2 {
 	width: auto;
 }
+
 #sidebarAccordion h3,
 #sidebarAccordion2 h3 {
 	text-align: center;
 }
+
 .use-sidebar #indi_left {
 	width: 77%;
 }
+
 .use-sidebar #sidebar {
 	display: block;
 }
+
 .sidebar-at-right #sidebar {
 	width: 20%;
 }
+
 .use-sidebar.sidebar-at-right #sidebar,
 .sidebar-at-right #separator {
 	float: right;
 }
+
 #separator {
 	float: right;
 	display: block;
@@ -2151,28 +2426,34 @@ html[dir=rtl] .repo-list th:last-child {
 	border-top-right-radius: 4px;
 	margin-top: 5px;
 }
+
 .use-sidebar #separator {
 	background: #ccc url(images/indi_sprite.png) no-repeat -1px 100px;
 }
 
-html[dir=rtl] #indi_left {
+[dir=rtl] #indi_left {
 	float: right;
 }
-html[dir=rtl] #tabs {
+
+[dir=rtl] #tabs {
 	float: right;
 }
-html[dir=rtl] #sidebar {
+
+[dir=rtl] #sidebar {
 	margin: 5px 0 0 2px;
 }
-html[dir=rtl] .use-sidebar.sidebar-at-right #sidebar,
-html[dir=rtl] .sidebar-at-right #separator {
+
+[dir=rtl] .use-sidebar.sidebar-at-right #sidebar,
+[dir=rtl] .sidebar-at-right #separator {
 	float: left;
 }
-html[dir=rtl] #separator {
+
+[dir=rtl] #separator {
 	float: left;
 	background: #ccc url(images/indi_sprite.png) no-repeat -1px 100px;
 }
-html[dir=rtl] .use-sidebar #separator {
+
+[dir=rtl] .use-sidebar #separator {
 	background: #ccc url(images/indi_sprite.png) no-repeat -26px 100px;
 }
 
@@ -2181,59 +2462,58 @@ html[dir=rtl] .use-sidebar #separator {
 #sb_content_family_nav {
 	padding: 0;
 }
+
 #sb_family_nav_content {
 	margin-top: 2px;
 }
+
 .nav_content {
 	width: 100%;
 	padding: 10px 0;
 }
-.flyout {
-	color: #000;
-	text-align: left;
-	margin-top: -20px;
-	right: 210px;
-	padding: 3px;
-}
-.flyout2 {
-	color: #000;
-	text-align: left;
-	margin-top: -2px;
-	left: 40px;
-	padding: 3px;
-}
-.flyout4 {
-	color: #000;
-	text-align: left;
-	margin-top: 0;
-	margin-left: 0;
-	padding: 3px;
-}
-.flyout3,
-.flyout3 a {
-	background: none;
-	border: none;
-	text-decoration: none;
-	text-align: left;
-	margin-top: 0;
-	left: 0;
-	padding: 0;
-}
+
 .famnav_link div {
 	padding: 0;
 	width: 100%;
 }
 
-html[dir=rtl] .flyout {
-	text-align: right;
-	left: 210px;
+.nav_content .facts_label {
+	width: 75px;
 }
-html[dir=rtl] .flyout2 {
-	text-align: right;
+
+.famnav_title {
+	font-weight: bold;
+	display: block;
+	padding: 5px 0;
+}
+
+.flyout {
+	left: 40px;
+	padding: 3px;
+}
+
+[dir=rtl] .flyout {
+	left: auto;
 	right: 40px;
 }
-html[dir=rtl] .flyout3 {
-	text-align: right;
+
+.flyout a, .flyout a:hover {
+	color: #000;
+	cursor: default;
+	text-decoration: none;
+}
+
+.flyout2 {
+	font-weight: 700;
+}
+
+.flyout3 {
+	color: #369;
+}
+
+.flyout3:hover {
+	cursor: pointer;
+	text-decoration: underline;
 }
 
 /* Descendancy */
@@ -2241,16 +2521,20 @@ html[dir=rtl] .flyout3 {
 	margin-left: 4px;
 	font-size: smaller;
 }
+
 #sb_desc_content ul {
 	padding: 0;
 	margin: 0;
 }
+
 .sb_desc_indi_li {
 	list-style-type: none;
 }
+
 .desc_tree_div {
 	display: none;
 }
+
 .desc_tree_div ul {
 	padding: 0;
 	margin-left: 10px;
@@ -2258,10 +2542,11 @@ html[dir=rtl] .flyout3 {
 	margin-right: 0;
 }
 
-html[dir=rtl] #sb_desc_content {
+[dir=rtl] #sb_desc_content {
 	margin-right: 3px;
 }
-html[dir=rtl] .desc_tree_div ul {
+
+[dir=rtl] .desc_tree_div ul {
 	margin-right: 10px;
 	margin-left: 0;
 }
@@ -2271,19 +2556,23 @@ html[dir=rtl] .desc_tree_div ul {
 .sb_fam_surname_li {
 	list-style-image: url(images/plus.png);
 }
+
 .name_tree_div li,
 .name_tree_div_visible li {
 	white-space: normal;
 }
+
 .name_tree_div {
 	display: none;
 }
+
 .name_tree_div li,
 .name_tree_div_visible li {
 	list-style: none;
 	margin: 0;
 	padding: 0;
 }
+
 .name_tree_div ul,
 .name_tree_div_visible ul {
 	padding: 0;
@@ -2296,6 +2585,7 @@ html[dir=rtl] .desc_tree_div ul {
 	margin: 0;
 	padding: 0;
 }
+
 #sb_clippings_content ul {
 	padding: 0;
 	margin: 0;
@@ -2307,28 +2597,33 @@ html[dir=rtl] .desc_tree_div ul {
 	overflow: hidden;
 	padding: 4px;
 }
+
 #sb_content_extra_info .editfacts {
 	float: right;
 	margin-top: -10px;
 }
+
 #sb_content_extra_info a {
 	display: block;
 }
+
 #sb_content_extra_info span {
 	font-weight: normal;
 }
+
 #sb_content_extra_info span a {
 	display: inline;
 }
 
-html[dir=rtl] #sb_content_extra_info .editfacts {
+[dir=rtl] #sb_content_extra_info .editfacts {
 	float: left;
 }
 
 fieldset {
 	text-align: left;
 }
-html[dir=rtl] fieldset {
+
+[dir=rtl] fieldset {
 	text-align: right;
 }
 
@@ -2338,6 +2633,7 @@ html[dir=rtl] fieldset {
 	margin: 10px;
 	text-align: center;
 }
+
 #find-header {
 	background-color: #ccc;
 	border: 1px solid #aaa;
@@ -2346,13 +2642,16 @@ html[dir=rtl] fieldset {
 	padding: 5px 20px;
 	width: 50%;
 }
+
 #find-header p {
 	margin: 5px;
 	text-align: center;
 }
+
 #find-header span {
 
 }
+
 #find-output,
 #find-output-special {
 	background-color: #ddd;
@@ -2361,6 +2660,7 @@ html[dir=rtl] fieldset {
 	margin: 20px 5px;
 	padding: 10px;
 }
+
 #find-output p {
 	border-top: 1px solid #aaa;
 	font-weight: bold;
@@ -2368,53 +2668,64 @@ html[dir=rtl] fieldset {
 	padding-top: 10px;
 	text-align: center;
 }
+
 #find-media {
 	background-color: #ccc;
 	border: 1px solid #aaa;
 	padding: 5px;
 	text-align: center;
 }
+
 #find-media span {
 	border: 0;
 	font-weight: bold;
 	margin: auto;
 	padding: 5px;
 }
+
 #find-output .find-media-dirs {
 	border-bottom: 1px solid #aaa;
 	padding: 3px;
 }
+
 #find-output .find-media-media {
 	border: 1px solid #aaa;
 	overflow: hidden;
 	margin: 1px;
 	padding: 2px;
 }
+
 #find-output .find-media-thumb {
 	clear: left;
 	float: left;
 }
+
 #find-output .find-media-details {
 	float: left;
 }
+
 #find-output .find-media-details p {
 	border: 0;
 	padding: 0 5px 2px 5px;
 	font-weight: normal;
 	text-align: left;
 }
+
 #find-output .find-media-details div span {
 	font-weight: normal;
 	padding: 0 5px 2px 5px;
 }
+
 #find-output p.find-media-title {
 	font-weight: bold;
 }
+
 #find-output .find-media-details ul {
 	padding: 0;
 	margin: 0 20px 10px 20px;
 	list-style-type: none;
 }
+
 #find-facts-header .list_label {
 	text-align: inherit;
 }
@@ -2425,6 +2736,7 @@ html[dir=rtl] fieldset {
 	margin: 20px;
 	text-align: center;
 }
+
 #search-page-table {
 	background-color: #ccc;
 	border: 1px solid #aaa;
@@ -2432,6 +2744,7 @@ html[dir=rtl] fieldset {
 	margin: 20px auto 0;
 	width: 580px;
 }
+
 #search-page-table .label {
 	float: left;
 	font-weight: bold;
@@ -2439,6 +2752,7 @@ html[dir=rtl] fieldset {
 	padding: 5px 10px 0;
 	width: 150px;
 }
+
 #search-page-table .value {
 	background-color: #ddd;
 	border: 1px solid #fff;
@@ -2446,13 +2760,16 @@ html[dir=rtl] fieldset {
 	padding: 5px;
 	white-space: nowrap;
 }
+
 #search-page-table p {
 	margin: 0;
 }
-html[dir=rtl] #search-page-table .label {
+
+[dir=rtl] #search-page-table .label {
 	float: right;
 }
-html[dir=rtl] #search-page-table .value {
+
+[dir=rtl] #search-page-table .value {
 	margin: 0 170px 0 0;
 }
 
@@ -2462,6 +2779,7 @@ html[dir=rtl] #search-page-table .value {
 	margin: 20px;
 	text-align: center;
 }
+
 #edituser-table {
 	background-color: #ccc;
 	border: 1px solid #aaa;
@@ -2470,6 +2788,7 @@ html[dir=rtl] #search-page-table .value {
 	margin: 20px auto 0;
 	width: 800px;
 }
+
 #edituser-table .label {
 	float: left;
 	font-weight: bold;
@@ -2478,22 +2797,27 @@ html[dir=rtl] #search-page-table .value {
 	width: 240px;
 	white-space: nowrap;
 }
+
 #edituser-table .value {
 	background-color: #ddd;
 	border: 1px solid #fff;
 	margin: 0 0 0 260px;
 	padding: 5px;
 }
+
 #edituser-table .label span {
 	margin: 0 10px;
 }
+
 #edituser-table select {
 	margin: 0;
 }
-html[dir=rtl] #edituser-table .label {
+
+[dir=rtl] #edituser-table .label {
 	float: right;
 }
-html[dir=rtl] #edituser-table .value {
+
+[dir=rtl] #edituser-table .value {
 	margin: 0 260px 0 0;
 }
 
@@ -2511,482 +2835,578 @@ html[dir=rtl] #edituser-table .value {
 	vertical-align: text-bottom;
 	background-repeat: no-repeat;
 }
+
 .icon-add {
 	width: 14px;
 	height: 15px;
 	background-image: url(images/add.png);
 }
+
 .icon-admin {
 	width: 30px;
 	height: 30px;
 	background-image: url(images/admin.png);
 }
+
 .icon-bing {
 	width: 16px;
 	height: 16px;
 	background-image: url(images/bing.png);
 }
+
 .icon-button_addmedia {
 	width: 18px;
 	height: 16px;
 	background-image: url(images/buttons/addmedia.png);
 }
+
 .icon-button_addnote {
 	width: 17px;
 	height: 15px;
 	background-image: url(images/buttons/addnote.png);
 }
+
 .icon-button_addrepository {
 	width: 15px;
 	height: 15px;
 	background-image: url(images/buttons/addrepository.png);
 }
+
 .icon-button_addsource {
 	width: 18px;
 	height: 16px;
 	background-image: url(images/buttons/addsource.png);
 }
+
 .icon-button_calendar {
 	width: 19px;
 	height: 15px;
 	background-image: url(images/buttons/calendar.png);
 }
+
 .icon-button_family {
 	width: 14px;
 	height: 15px;
 	background-image: url(images/buttons/family.png);
 }
+
 .icon-button_find_facts {
 	width: 20px;
 	height: 20px;
 	background-image: url(images/buttons/find_facts.png);
 }
+
 .icon-button_head {
 	width: 12px;
 	height: 18px;
 	background-image: url(images/buttons/head.png);
 }
+
 .icon-button_indi {
 	width: 11px;
 	height: 15px;
 	background-image: url(images/buttons/indi.png);
 }
+
 .icon-button_keyboard {
 	width: 30px;
 	height: 15px;
 	background-image: url(images/buttons/keyboard.png);
 }
+
 .icon-button_media {
 	width: 18px;
 	height: 16px;
 	background-image: url(images/buttons/media.png);
 }
+
 .icon-button_note {
 	width: 17px;
 	height: 15px;
 	background-image: url(images/buttons/note.png);
 }
+
 .icon-button_place {
 	width: 15px;
 	height: 15px;
 	background-image: url(images/buttons/place.png);
 }
+
 .icon-button_repository {
 	width: 15px;
 	height: 15px;
 	background-image: url(images/buttons/repository.png);
 }
+
 .icon-button_source {
 	width: 18px;
 	height: 16px;
 	background-image: url(images/buttons/source.png);
 }
+
 .icon-cfamily {
 	width: 24px;
 	height: 24px;
 	background-image: url(images/cfamily.png);
 }
+
 .icon-childless {
 	width: 25px;
 	height: 25px;
 	background-image: url(images/childless.png);
 }
+
 .icon-children {
 	width: 16px;
 	height: 16px;
 	background-image: url(images/children.png);
 }
+
 .icon-clippings {
 	width: 24px;
 	height: 24px;
 	background-image: url(images/clippings.png);
 }
+
 .icon-darrow {
 	width: 20px;
 	height: 20px;
 	background-image: url(images/darrow.png);
 }
+
 a.icon-darrow:hover {
 	width: 20px;
 	height: 20px;
 	background-image: url(images/darrow2.png);
 }
+
 .icon-ddarrow {
 	width: 20px;
 	height: 20px;
 	background-image: url(images/ddarrow.png);
 }
+
 .icon-edit_indi {
 	width: 25px;
 	height: 25px;
 	background-image: url(images/edit_indi.png);
 }
+
 .icon-email {
 	width: 16px;
 	height: 16px;
 	background-image: url(images/email.png);
 }
+
 .icon-fam-list {
 	width: 24px;
 	height: 24px;
 	background-image: url(images/sfamily.png);
 }
+
 .icon-googlemaps {
 	width: 16px;
 	height: 16px;
 	background-image: url(images/googlemaps.png);
 }
+
 .icon-help {
 	cursor: help;
 	width: 15px;
 	height: 15px;
 	background-image: url(images/help.png);
 }
+
 .icon-indis {
 	width: 24px;
 	height: 24px;
 	background-image: url(images/indis.png);
 }
+
 .icon-indi-list {
 	width: 50px;
 	height: 50px;
 	background-image: url(images/indis.png);
 }
+
 .icon-larrow {
 	width: 20px;
 	height: 20px;
 	background-image: url(images/larrow.png);
 }
+
 a.icon-larrow:hover {
 	width: 20px;
 	height: 20px;
 	background-image: url(images/larrow2.png);
 }
+
 .icon-ldarrow {
 	width: 20px;
 	height: 20px;
 	background-image: url(images/ldarrow.png);
 }
+
 .icon-lifespan-chunk {
 	width: 50px;
 	height: 37px;
 	background-image: url(images/lifespan-chunk.png);
 }
+
 .icon-loading-small {
 	width: 16px;
 	height: 16px;
 	background-image: url(images/indicator.gif);
 }
+
 .icon-loading-large {
 	width: 32px;
 	height: 32px;
 	background-image: url(images/loading.gif);
 }
+
 .icon-lsdnarrow {
 	width: 48px;
 	height: 48px;
 	background-image: url(images/lifespan-down.png);
 }
+
 .icon-lsltarrow {
 	width: 48px;
 	height: 48px;
 	background-image: url(images/lifespan-left.png);
 }
+
 .icon-lsrtarrow {
 	width: 48px;
 	height: 48px;
 	background-image: url(images/lifespan-right.png);
 }
+
 .icon-lsuparrow {
 	width: 48px;
 	height: 48px;
 	background-image: url(images/lifespan-up.png);
 }
+
 .icon-media {
 	width: 24px;
 	height: 24px;
 	background-image: url(images/media.png);
 }
+
 .icon-media-list {
 	width: 24px;
 	height: 24px;
 	background-image: url(images/media.png);
 }
+
 .icon-media-next {
 	width: 20px;
 	height: 20px;
 	background-image: url(images/rdarrow.png);
 }
+
 .icon-media-play {
 	width: 20px;
 	height: 20px;
 	background-image: url(images/rarrow.png);
 }
+
 .icon-media-prev {
 	width: 20px;
 	height: 20px;
 	background-image: url(images/ldarrow.png);
 }
+
 .icon-media-shuffle {
 	width: 10px;
 	height: 10px;
 	background-image: url(images/reorder.png);
 }
+
 .icon-media-stop {
 	width: 20px;
 	height: 20px;
 	background-image: url(images/stop.png);
 }
+
 .icon-minus {
 	width: 11px;
 	height: 11px;
 	background-image: url(images/minus.png);
 }
+
 .icon-mypage {
 	width: 25px;
 	height: 25px;
 	background-image: url(images/mypage.png);
 }
+
 .icon-note {
 	width: 16px;
 	height: 16px;
 	background-image: url(images/notes.png);
 }
+
 .icon-note-list {
 	width: 16px;
 	height: 16px;
 	background-image: url(images/notes.png);
 }
+
 .icon-osm {
 	width: 16px;
 	height: 16px;
 	background-image: url(images/osm.png);
 }
+
 .icon-patriarch {
 	width: 24px;
 	height: 24px;
 	background-image: url(images/patriarch.png);
 }
+
 .icon-pedigree {
 	width: 24px;
 	height: 24px;
 	background-image: url(images/pedigree.png);
 }
+
 .icon-pin-in {
 	width: 16px;
 	height: 16px;
 	background-image: url(images/pin-in.png);
 }
+
 .icon-pin-out {
 	width: 16px;
 	height: 16px;
 	background-image: url(images/pin-out.png);
 }
+
 .icon-place {
 	width: 24px;
 	height: 24px;
 	background-image: url(images/place.png);
 }
+
 .icon-plus {
 	width: 11px;
 	height: 11px;
 	background-image: url(images/plus.png);
 }
+
 .icon-rarrow {
 	width: 20px;
 	height: 20px;
 	background-image: url(images/rarrow.png);
 }
+
 a.icon-rarrow:hover {
 	width: 20px;
 	height: 20px;
 	background-image: url(images/rarrow2.png);
 }
+
 .icon-rdarrow {
 	width: 20px;
 	height: 20px;
 	background-image: url(images/rdarrow.png);
 }
+
 .icon-reminder {
 	width: 15px;
 	height: 12px;
 	background-image: url(images/reminder.png);
 }
+
 .icon-remove {
 	width: 14px;
 	height: 15px;
 	background-image: url(images/remove.png);
 }
+
 .icon-repository {
 	width: 30px;
 	height: 30px;
 	background-image: url(images/repository.png);
 }
+
 .icon-repo-list {
 	width: 30px;
 	height: 30px;
 	background-image: url(images/repository.png);
 }
+
 .icon-resn-confidential {
 	width: 16px;
 	height: 16px;
 	background-image: url(images/resn_confidential.png);
 }
+
 .icon-resn-locked {
 	width: 16px;
 	height: 16px;
 	background-image: url(images/resn_locked.png);
 }
+
 .icon-resn-none {
 	width: 16px;
 	height: 16px;
 	background-image: url(images/resn_none.png);
 }
+
 .icon-resn-privacy {
 	width: 16px;
 	height: 16px;
 	background-image: url(images/resn_privacy.png);
 }
+
 .icon-rings {
 	width: 9px;
 	height: 9px;
 	background-image: url(images/rings.png);
 }
+
 .icon-search {
 	width: 24px;
 	height: 24px;
 	background-image: url(images/search.png);
 }
+
 .icon-selected {
 	width: 12px;
 	height: 12px;
 	background-image: url(images/selected.png);
 }
+
 .icon-sex_f_15x15 {
 	width: 15px;
 	height: 15px;
 	background-image: url(images/sex_f_15x15.png);
 }
+
 .icon-sex_f_9x9 {
 	width: 9px;
 	height: 9px;
 	background-image: url(images/sex_f_9x9.png);
 }
+
 .icon-sex_m_15x15 {
 	width: 15px;
 	height: 15px;
 	background-image: url(images/sex_m_15x15.png);
 }
+
 .icon-sex_m_9x9 {
 	width: 9px;
 	height: 9px;
 	background-image: url(images/sex_m_9x9.png);
 }
+
 .icon-sex_u_15x15 {
 	width: 15px;
 	height: 15px;
 	background-image: url(images/sex_u_15x15.png);
 }
+
 .icon-sex_u_9x9 {
 	width: 9px;
 	height: 9px;
 	background-image: url(images/sex_u_9x9.png);
 }
+
 .icon-sfamily {
 	width: 24px;
 	height: 24px;
 	background-image: url(images/sfamily.png);
 }
+
 .icon-slide_close {
 	width: 22px;
 	height: 20px;
 	background-image: url(images/close.png);
 }
+
 .icon-slide_open {
 	width: 20px;
 	height: 22px;
 	background-image: url(images/open.png);
 }
+
 .icon-source {
 	width: 24px;
 	height: 24px;
 	background-image: url(images/source.png);
 }
+
 .icon-source-list {
 	width: 24px;
 	height: 24px;
 	background-image: url(images/source.png);
 }
+
 .icon-target {
 	width: 15px;
 	height: 15px;
 	background-image: url(images/buttons/target.png);
 }
+
 .icon-tree {
 	width: 24px;
 	height: 24px;
 	background-image: url(images/gedcom.png);
 }
+
 .icon-uarrow {
 	width: 20px;
 	height: 20px;
 	background-image: url(images/uarrow.png);
 }
+
 a.icon-uarrow:hover {
 	width: 20px;
 	height: 20px;
 	background-image: url(images/uarrow2.png);
 }
+
 .icon-udarrow {
 	width: 20px;
 	height: 20px;
 	background-image: url(images/udarrow.png);
 }
+
 .icon-user_add {
 	width: 24px;
 	height: 24px;
 	background-image: url(images/user_add.png);
 }
+
 .icon-warning {
 	width: 17px;
 	height: 17px;
 	background-image: url(images/warning.png);
 }
+
 .icon-webtrees {
 	width: 100px;
 	height: 21px;
 	background-image: url(images/webtrees.png);
 }
+
 .icon-wiki {
 	width: 16px;
 	height: 16px;
 	background-image: url(images/w_button.png);
 }
+
 .icon-zoomin {
 	width: 25px;
 	height: 25px;
 	background-image: url(images/zoomin.png);
 }
+
 .icon-zoomout {
 	width: 25px;
 	height: 25px;
@@ -3002,92 +3422,119 @@ a.icon-uarrow:hover {
 	width: 48px;
 	height: 48px;
 }
+
 /* Generic MIME types */
 [class^="icon-mime-"],
 [class*=" icon-mime-"] {
 	background-position: -99px -49px;
 }
+
 [class^="icon-mime-application-"],
 [class*=" icon-mime-application-"] {
 	background-position: -99px -196px;
 }
+
 [class^="icon-mime-audio-"],
 [class*=" icon-mime-audio-"] {
 	background-position: -197px -98px;
 }
+
 [class^="icon-mime-image-"],
 [class*=" icon-mime-image-"] {
 	background-position: -148px -245px;
 }
+
 [class^="icon-mime-text-"],
 [class*=" icon-mime-text-"] {
 	background-position: -197px -147px;
 }
+
 [class^="icon-mime-video-"],
 [class*=" icon-mime-video-"] {
 	background-position: -148px -147px;
 }
+
 /* Specific MIME types */
 .icon-mime-application-pdf {
 	background-position: -1px -49px;
 }
+
 .icon-mime-application-msword {
 	background-position: -148px -49px;
 }
+
 .icon-mime-application-vnd-ms-excel {
 	background-position: -148px -196px;
 }
+
 .icon-mime-application-x-rar-compressed {
 	background-position: -50px -98px;
 }
+
 .icon-mime-application-zip {
 	background-position: -50px -147px;
 }
+
 .icon-mime-application-x-shockwave-flash {
 	background-position: -148px 0;
 }
+
 .icon-mime-audio-mp3 {
 	background-position: -50px -245px;
 }
+
 .icon-mime-audio-mpeg {
 	background-position: -50px 0;
 }
+
 .icon-mime-audio-x-ms-wma {
 	background-position: -1px -245px;
 }
+
 .icon-mime-audio-wav {
 	background-position: -1px -98px;
 }
+
 .icon-mime-text-html {
 	background-position: -99px -245px;
 }
+
 .icon-mime-text-x-gedcom {
 	background-position: -50px -49px;
 }
+
 .icon-mime-image-bmp {
 	background-position: 197px 0;
 }
+
 .icon-mime-image-gif {
 	background-position: -197px -49px;
 }
+
 .icon-mime-image-jpeg {
 	background-position: -1px -147px;
 }
+
 .icon-mime-image-png {
 	background-position: -99px -98px;
 }
+
 .icon-mime-image-svg {
 	background-position: -197px -196px;
 }
+
 .icon-mime-image-tiff {
 	background-position: -148px -98px;
 }
+
 .icon-mime-video-quicktime {
 	background-position: -99px -147px;
 }
+
 .icon-mime-video-avi {
 	background-position: -99px 0;
 }
+
 .icon-mime-video-x-ms-wmv {
 	background-position: -50px -196px;
 }
@@ -3098,30 +3545,36 @@ a.icon-uarrow:hover {
 	height: 45px;
 	background-image: url(images/silhouette_female_small.png);
 }
+
 .icon-silhouette-M {
 	width: 37px;
 	height: 45px;
 	background-image: url(images/silhouette_male_small.png);
 }
+
 .icon-silhouette-U {
 	width: 37px;
 	height: 45px;
 	background-image: url(images/silhouette_unknown_small.png);
 }
+
 /* Silhouettes on individual pages */
 #indi_mainimage {
 	min-width: 100px;
 }
+
 #indi_mainimage .icon-silhouette-F {
 	width: 99px;
 	height: 106px;
 	background-image: url(images/silhouette_female.png);
 }
+
 #indi_mainimage .icon-silhouette-M {
 	width: 99px;
 	height: 99px;
 	background-image: url(images/silhouette_male.png);
 }
+
 #indi_mainimage .icon-silhouette-U {
 	width: 100px;
 	height: 97px;
@@ -3133,9 +3586,11 @@ a.icon-uarrow:hover {
 	color: #555;
 	margin: 5px;
 }
+
 #edit_interface-page .optionbox span {
 	margin: 0 5px;
 }
+
 #edit_interface-page #LATI,
 #edit_interface-page #LONG,
 #edit_interface-page #SPFX,
@@ -3145,6 +3600,7 @@ a.icon-uarrow:hover {
 	margin: 0 5px;
 	width: 88px;
 }
+
 #edit_interface-page #GIVN,
 #edit_interface-page #SURN,
 #edit_interface-page #_MARNM {
@@ -3152,6 +3608,7 @@ a.icon-uarrow:hover {
 	margin: 0 5px;
 	width: 180px;
 }
+
 #edit_interface-page input[type="text"],
 #edit_interface-page #NAME_display {
 	line-height: 18px;
@@ -3159,10 +3616,12 @@ a.icon-uarrow:hover {
 	vertical-align: top;
 	width: 240px;
 }
+
 #edit_interface-page input[type="text"][id*="PAGE"],
 #edit_interface-page input[type="text"][id*="_UID"] {
 	width: 350px;
 }
+
 #edit_interface-page input[type="text"][id*="SOUR"],
 #edit_interface-page input[type="text"][id*="REPO"],
 #edit_interface-page input[type="text"][id*="OBJE"],
@@ -3172,89 +3631,112 @@ a.icon-uarrow:hover {
 #edit_interface-page input[type="text"][id*="SHARED_NOTE"] {
 	width: 250px;
 }
+
 #edit_interface-page input[type="text"][id$="DATE"] {
 	width: 160px;
 }
+
 #edit_interface-page input[type="text"][id^="TIME"] {
 	width: 100px;
 }
+
 #edit_interface-page input[type="text"][id*="OBJE_FILE"] {
 	width: 200px;
 }
+
 #edit_interface-page input[type="text"][id*="SOUR_TITL"] {
 	width: 250px;
 }
+
 #edit_interface-page input[id*="TEXT"] {
 	height: 140px;
 	width: 440px;
 }
+
 #edit_interface-page textarea {
 	margin: 0 5px;
 	width: 440px;
 }
+
 #edit_interface-page textarea[id*="NOTE"] {
 	height: 240px;
 }
+
 #edit_interface-page textarea[id*="TEXT"],
 #edit_interface-page textarea[id*="PUBL"] {
 	height: 140px;
 }
+
 #edit_interface-page textarea[id^="newgedrec"] {
 	line-height: 18px;
 	width: 605px;
 }
+
 #edit_interface-page textarea#gedcom {
 	height: 364px;
 }
+
 #edit_interface-page textarea[id*="ADDR"],
 #edit_interface-page input[id*="ADDR"] {
 	height: 80px;
 	width: 300px;
 }
+
 #edit_interface-page #changefam {
 	padding: 5px;
 }
+
 #edit_interface-page #changefam table {
 	margin: 10px auto;
 	min-width: 400px;
 	max-width: 650px;
 }
+
 #edit_interface-page #changefam span {
 	margin: 0;
 }
+
 #edit_interface-page #changefam td {
 	padding: 5px;
 	white-space: normal;
 }
+
 #edit_interface-page #changefam td.child {
 	text-align: center;
 }
+
 #save-cancel {
 	background-color: #eee;
-	border-radius:    4px;
-	border:           solid #999 1px;
-	bottom:           0;
-	margin:           0;
-	position:         fixed;
-	width:            96.5%;
+	border-radius: 4px;
+	border: solid #999 1px;
+	bottom: 0;
+	margin: 0;
+	position: fixed;
+	width: 96.5%;
 }
+
 #save-cancel input {
 	padding: 2px 8px;
 }
+
 #save-cancel .save {
 	float: left;
 	margin: 5px;
 }
+
 #save-cancel .cancel {
 	float: right;
 	margin: 5px;
 }
-html[dir=rtl] #save-cancel .save {
+
+[dir=rtl] #save-cancel .save {
 	float: right;
 }
-html[dir=rtl] #save-cancel .cancel {
+
+[dir=rtl] #save-cancel .cancel {
 	float: left;
 }
+
 #edit_interface-page,
 #addmedia-page {
 	margin-bottom: 50px;
@@ -3266,17 +3748,21 @@ html[dir=rtl] #save-cancel .cancel {
 	margin: 0 5px;
 	width: 350px;
 }
+
 #addmedia-page .optionbox select {
 	margin: 0 5px;
 }
+
 #addmedia-page .optionbox p.sub {
 	font-size: smaller;
 	margin: 0 5px;
 }
+
 #addmedia-page input[type="text"][id*="PAGE"],
 #addmedia-page input[type="text"][id*="_UID"] {
 	width: 350px;
 }
+
 #addmedia-page input[type="text"][id*="SOUR"],
 #addmedia-page input[type="text"][id*="REPO"],
 #addmedia-page input[type="text"][id*="OBJE"],
@@ -3286,14 +3772,17 @@ html[dir=rtl] #save-cancel .cancel {
 #addmedia-page input[type="text"][id*="SHARED_NOTE"] {
 	width: 70px;
 }
+
 #addmedia-page input[id*="TEXT"] {
 	height: 140px;
 	width: 440px;
 }
+
 #addmedia-page textarea {
 	margin: 0 5px;
 	width: 440px;
 }
+
 #addmedia-page textarea[id*="NOTE"] {
 	height: 240px;
 }
@@ -3308,25 +3797,30 @@ html[dir=rtl] #save-cancel .cancel {
 	z-index: 9999;
 	overflow: hidden;
 }
+
 #colorbox {
 	border: 2px solid #ccc;
 }
+
 #cboxOverlay {
 	position: fixed;
 	width: 100%;
 	height: 100%;
 	background: #ccc;
 }
+
 #cboxContent {
 	background: #fff;
 	border: 5px solid #888;
 }
+
 #cboxLoadedContent {
 	overflow: auto;
 	background: #fff;
 	margin-bottom: 30px;
 	margin-top: 35px;
 }
+
 #cboxTitle {
 	position: absolute;
 	left: 0;
@@ -3344,6 +3838,7 @@ html[dir=rtl] #save-cancel .cancel {
 	display: block;
 	max-width: none;
 }
+
 .cboxIframe {
 	width: 100%;
 	height: 100%;
@@ -3362,9 +3857,11 @@ html[dir=rtl] #save-cancel .cancel {
 	margin: 10px;
 	border: 0;
 }
+
 #cboxPrevious:hover {
 	background-position: -75px -25px;
 }
+
 #cboxNext {
 	position: absolute;
 	bottom: 0;
@@ -3376,9 +3873,11 @@ html[dir=rtl] #save-cancel .cancel {
 	margin: 10px;
 	border: 0;
 }
+
 #cboxNext:hover {
 	background-position: -50px -25px;
 }
+
 #cboxSlideshow {
 	position: absolute;
 	bottom: 5px;
@@ -3387,10 +3886,12 @@ html[dir=rtl] #save-cancel .cancel {
 	border: 0;
 	background: none;
 }
+
 #cboxSlideshow:hover {
 	color: #f00;
 	background: #fff;
 }
+
 #cboxClose {
 	position: absolute;
 	bottom: 0;
@@ -3402,9 +3903,11 @@ html[dir=rtl] #save-cancel .cancel {
 	margin: 10px;
 	border: 0;
 }
+
 #cboxClose:hover {
 	background-position: -25px -25px;
 }
+
 #cboxCurrent {
 	bottom: 4px;
 	color: #888;
@@ -3412,23 +3915,27 @@ html[dir=rtl] #save-cancel .cancel {
 	position: absolute;
 }
 
-html[dir=rtl] #cboxPrevious {
+[dir=rtl] #cboxPrevious {
 	right: 27px;
 	left: auto;
 }
-html[dir=rtl] #cboxNext {
+
+[dir=rtl] #cboxNext {
 	right: 0;
 	left: auto;
 }
-html[dir=rtl] #cboxCurrent {
+
+[dir=rtl] #cboxCurrent {
 	right: auto;
 	left: 0;
 }
-html[dir=rtl] #cboxClose {
+
+[dir=rtl] #cboxClose {
 	right: auto;
 	left: 0;
 }
-html[dir=rtl] #cboxSlideshow {
+
+[dir=rtl] #cboxSlideshow {
 	right: 57px;
 	left: 0;
 }
@@ -3436,23 +3943,26 @@ html[dir=rtl] #cboxSlideshow {
 /* Census assistant module */
 table.table-census-assistant th {
 	font-weight: bold;
-	text-align:  left;
+	text-align: left;
 }
 
 /* Stories module */
 .story_title {
 	padding-top: 12px;
-	height:      32px;
-	font-size:   13px;
+	height: 32px;
+	font-size: 13px;
 	font-weight: 700;
 }
+
 .story_body {
-	padding:     20px;
+	padding: 20px;
 	white-space: normal;
 }
+
 .story_edit {
 	padding: 12px;
 }
+
 /* User content in stories tab */
 #stories h2,
 #stories h3,
@@ -3460,6 +3970,7 @@ table.table-census-assistant th {
 #stories h5 {
 	padding-top: 20px;
 }
+
 #stories p {
 	padding-top: 8px;
 }

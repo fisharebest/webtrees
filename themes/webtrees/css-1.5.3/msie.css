@@ -1,11 +1,16 @@
 form {
-	margin-top: 0; margin-bottom: 0;
+	margin-top: 0;
+	margin-bottom: 0;
 }
 
 .normal_inner_block {
 	width: 100%;
 }
-.ltr {text-align: left;}
+
+.ltr {
+	text-align: left;
+}
+
 /*
  * The following style definitions can be removed when IE supports the "opacity"
  * specification in place of its proprietary and non-standard method.
@@ -17,5 +22,11 @@ form {
 a.showit:hover > span {
 	filter: alpha(opacity=80);
 }
-.itr {height: 30px;}
-.itr:hover .popup {top: 20px;}
+
+.itr {
+	height: 30px;
+}
+
+.itr:hover .popup {
+	top: 20px;
+}

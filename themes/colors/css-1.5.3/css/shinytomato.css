@@ -26,56 +26,57 @@
 
 /* Header */
 #header {
-background:#f21107;
-color: #FFFFFF;
+	background: #f21107;
+	color: #fff;
 }
 
 .title {
-text-decoration:none;
-color:#FFFFFF;}
+	text-decoration: none;
+	color: #fff;
+}
 
 /* Tbls and menus  */
 .descriptionbox, .descriptionbox a, .facts_label03,
-.topbottombar,.topbottombar a,.topbottombar h2,
-.facts_label,.facts_label a, .facts_label h2,.facts_label .date,
+.topbottombar, .topbottombar a, .topbottombar h2,
+.facts_label, .facts_label a, .facts_label h2, .facts_label .date,
 .list_label, .list_label a, #search-page-table, #edituser-table,
-#lightbox_content span a,#lightbox_content span a:hover,
-#separator, .use-sidebar #separator, #family_nav, 
-.ui-state-active a:link, .ui-state-active a:visited 
-{
-background-color:#F96058;
-color: #ffffff;
+#lightbox_content span a, #lightbox_content span a:hover,
+#separator, .use-sidebar #separator, #family_nav,
+.ui-state-active a:link, .ui-state-active a:visited {
+	background-color: #f96058;
+	color: #fff;
 }
+
 .ui-state-active, .ui-widget-content .ui-state-active {
-    background: none repeat scroll 0 0 #F96058;
+	background: none repeat scroll 0 0 #f96058;
 }
 
 /* Top Menu  */
 #main-menu {
-background:#a1443a;
+	background: #a1443a;
 
 }
 
 /* Base */
 #indi_header h3,
-.blockcontent,#search,#search-page-table .value,#edituser-table .value,
+.blockcontent, #search, #search-page-table .value, #edituser-table .value,
 .makeMenu ul li a:hover, .ui-widget-header, #save-cancel,
-.optionbox,#indi_header .ui-state-active a:link,
-.list_value,.list_value_wrap,.list_value_wrap a,
-#login-form,#new_passwd_form,#register-form {
-background:#f0eaf0;
+.optionbox, #indi_header .ui-state-active a:link,
+.list_value, .list_value_wrap, .list_value_wrap a,
+#login-form, #new_passwd_form, #register-form {
+	background: #f0eaf0;
 }
 
 /* Alerts */
-.error,.warning,.red {
-color:#f00;
+.error, .warning, .red {
+	color: #f00;
 }
 
 /* Light Text */
 .makeMenu li a {
-color:#FFFFFF;
+	color: #fff;
 }
 
 .subheaders {
-color:#515d52;
+	color: #515d52;
 }

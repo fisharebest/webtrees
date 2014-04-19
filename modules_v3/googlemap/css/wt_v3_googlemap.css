@@ -217,6 +217,10 @@ ul.tabs a.current {
 	white-space: normal;
 }
 
+.iwstyle {
+	width: 360px;
+}
+
 #side_bar .gallery img,
 .iwstyle .gallery img,
 .highlt_img .gallery img {
@@ -227,9 +231,9 @@ ul.tabs a.current {
 	width: auto;
 }
 
-html[dir="rtl"] #side_bar .gallery img,
-html[dir="rtl"] .iwstyle .gallery img,
-html[dir="rtl"] .highlt_img .gallery img {
+[dir=rtl] #side_bar .gallery img,
+[dir=rtl] .iwstyle .gallery img,
+[dir=rtl] .highlt_img .gallery img {
 	float: right;
 	margin: 0 0 0 4px;
 }
@@ -243,12 +247,12 @@ html[dir="rtl"] .highlt_img .gallery img {
 	float: left;
 }
 
-html[dir="rtl"] #side_bar .icon-silhouette-M,
-html[dir="rtl"] #side_bar .icon-silhouette-F,
-html[dir="rtl"] #side_bar .icon-silhouette-U,
-html[dir="rtl"] .iwstyle .icon-silhouette-M,
-html[dir="rtl"] .iwstyle .icon-silhouette-F,
-html[dir="rtl"] .iwstyle .icon-silhouette-U {
+[dir=rtl] #side_bar .icon-silhouette-M,
+[dir=rtl] #side_bar .icon-silhouette-F,
+[dir=rtl] #side_bar .icon-silhouette-U,
+[dir=rtl] .iwstyle .icon-silhouette-M,
+[dir=rtl] .iwstyle .icon-silhouette-F,
+[dir=rtl] .iwstyle .icon-silhouette-U {
 	float: right;
 }
 
@@ -257,5 +261,5 @@ html[dir="rtl"] .iwstyle .icon-silhouette-U {
 }
 #side_bar .NAME {padding-left:5px;}
 #side_bar img {padding-right:5px;}
-html[dir="rtl"] #side_bar .NAME {padding-right:5px;}
-html[dir="rtl"] #side_bar img {padding-left:5px;}
+[dir=rtl] #side_bar .NAME {padding-right:5px;}
+[dir=rtl] #side_bar img {padding-left:5px;}
