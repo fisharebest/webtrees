@@ -599,7 +599,7 @@ msgstr "9."
 
 #: help_text.php:559
 msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM originates.  The goal of the Family History Center is to have a central repository of genealogical data and expose it through web services. This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM with anyone else, you do not need to let <b>webtrees</b> create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM."
-msgstr "In diesem Zusammenhang ist <b>GUID</b> ein Akronym für «Globally Unique ID».<br><br>Solche Nummern sollen Personen so identifizieren, dass jede Person immer die gleiche Nummer erhält. Das hat zum Zweck dass zentrale Behörden, wie zum Beispiel der Family History Center der HLT-Kirche in Salt Lake City, oder sogar andere Programme die auf Ihrem Computer laufen, bestimmen können dass sie die gleiche Person behandeln, gleich der Ursprung der GEDCOM-Datei. Eines der Ziele des Family History Centers ist eine einzige genealogische Datenbank, die über das Internet zugreifbar ist, und worin jedes Programm Zugriff zu den Daten hat, und worin jedes Programm auch seine eigene Daten ergänzen kann.<br><br>Falls Sie Ihre Datenbank nicht mit Anderen tauschen möchten, ist es nicht notwending, dass <b>webtrees</b> solche ID-Nummern erstellt. Es ist auch nicht falsch, dass PhpGedView diese Nummern immer erstellt."
+msgstr "In diesem Zusammenhang ist <b>GUID</b> ein Akronym für «Globally Unique ID».<br><br>Solche Nummern sollen Personen so identifizieren, dass jede Person immer die gleiche Nummer erhält. Das hat zum Zweck dass zentrale Institutionen, wie zum Beispiel der Family History Center der HLT-Kirche in Salt Lake City, oder sogar andere Programme die auf Ihrem Computer laufen, bestimmen können dass sie die gleiche Person behandeln, gleich der Ursprung der GEDCOM-Datei. Eines der Ziele des Family History Centers ist eine einzige genealogische Datenbank, die über das Internet zugreifbar ist, und worin jedes Programm Zugriff zu den Daten hat, und worin jedes Programm auch seine eigene Daten ergänzen kann.<br><br>Falls Sie Ihre Datenbank nicht mit Anderen tauschen möchten, ist es nicht notwending, dass <b>webtrees</b> solche ID-Nummern erstellt. Es ist auch nicht falsch, dass PhpGedView diese Nummern immer erstellt."
 
 #: help_text.php:1318
 msgid "<b>Important Note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
@@ -643,15 +643,15 @@ msgstr "<b>webtrees</b> Mail Antwort-Adresse"
 
 #: login.php:144
 msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved."
-msgstr "<center><b>Willkommen auf dieser Genealogie Webseite</b></center><br>Der Zugriff auf diese Seite ist nur <u>autorisierten</u> Benutzern erlaubt.<br><br>Wenn Sie bereits einen Benutzernamen haben, können Sie sich auf dieser Seite anmelden. Wenn Sie noch keinen Zugang besitzen, können Sie diesen beantragen, indem Sie auf den entsprechenden Link klicken.<br><br>Sobald Ihre Angaben überprüft sind, wird der Verwalter Ihrem Antrag zustimmen (oder ihn ablehnen). Sie werden eine Mail mit dem Antragsergebnis erhalten."
+msgstr "<center><b>Willkommen auf dieser Genealogie Webseite</b></center><br>Der Zugriff auf diese Seite ist nur <u>autorisierten</u> Benutzern erlaubt.<br><br>Wenn Sie bereits einen Benutzernamen haben, können Sie sich auf dieser Seite anmelden. Wenn Sie noch keinen Zugang besitzen, können Sie diesen beantragen, indem Sie auf den entsprechenden Link klicken.<br><br>Sobald Ihre Angaben überprüft sind, wird der Verwalter Ihrem Antrag zustimmen (oder ihn ablehnen). Sie werden eine Mail mit dem Anfrageergebnis erhalten."
 
 #: login.php:147
 msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved."
-msgstr "<center><b>Willkommen auf dieser Genealogie Webseite</b></center><br>Den Zugriff auf diese Seite erhalten <u>nur Familienmitglieder</u>.<br><br>Wenn Sie bereits einen Benutzernamen haben, können Sie sich auf dieser Seite anmelden. Wenn Sie noch keinen Zugang besitzen, können Sie diesen beantragen, indem Sie auf den entsprechenden Link klicken.<br><br>Sobald Ihre Angaben überprüft sind, wird der Verwalter Ihrem Antrag zustimmen (oder ihn ablehnen).<br>Sie werden eine Mail mit dem Antragsergebnis erhalten."
+msgstr "<center><b>Willkommen auf dieser Genealogie Webseite</b></center><br>Den Zugriff auf diese Seite erhalten <u>nur Familienmitglieder</u>.<br><br>Wenn Sie bereits einen Benutzernamen haben, können Sie sich auf dieser Seite anmelden. Wenn Sie noch keinen Zugang besitzen, können Sie diesen beantragen, indem Sie auf den entsprechenden Link klicken.<br><br>Sobald Ihre Angaben überprüft sind, wird der Verwalter Ihrem Registrierungswunsch zustimmen (oder ihn ablehnen).<br>Sie werden eine Mail mit dem Anfrageergebnis erhalten."
 
 #: login.php:141
 msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved."
-msgstr "<center><b>Willkommen auf dieser Genealogie Webseite</b></center><br>Den Zugriff auf diese Seite erhält jeder Benutzer, der einen Zugang beantragt hat und vom Verwalter bestätigt wurde.<br><br>Wenn Sie bereits einen Benutzernamen haben, können Sie sich auf dieser Seite anmelden. Wenn Sie noch keinen Zugang besitzen, können Sie diesen beantragen, indem Sie auf den entsprechenden Link klicken.<br><br>Sobald Ihre Angaben überprüft sind, wird der Verwalter Ihren Zugang freigeben. Sie werden dann eine Bestätigungs-Mail erhalten."
+msgstr "<center><b>Willkommen auf dieser Genealogie Webseite</b></center><br>Den Zugriff auf diese Seite erhält jeder Benutzer, der einen Zugang beantragt hat und vom Verwalter bestätigt wurde.<br><br>Wenn Sie bereits einen Benutzernamen haben, können Sie sich auf dieser Seite anmelden. Wenn Sie noch keinen Zugang besitzen, können Sie diesen beantragen, indem Sie auf den entsprechenden Link klicken.<br><br>Sobald Ihre Angaben überprüft sind, wird der Verwalter Ihren Zugang freigeben. Sie werden dann eine Bestätigungsmail erhalten."
 
 #. I18N: default option in list of themes
 #: admin_trees_config.php:460 admin_users.php:202 admin_users.php:410
@@ -1728,7 +1728,7 @@ msgstr "Alter bezogen auf Sterbejahr"
 #. I18N: gedcom tag AGNC
 #: library/WT/Gedcom/Tag.php:107
 msgid "Agency"
-msgstr "Behörde"
+msgstr "Institution"
 
 #: library/WT/Stats.php:3751
 msgid "Aland Islands"
@@ -11497,15 +11497,15 @@ msgstr "Neues Kennwort beantragen"
 #: login.php:183 login.php:259 modules_v3/gedcom_block/module.php:52
 #: modules_v3/login_block/module.php:87
 msgid "Request new user account"
-msgstr "Benutzer Antrag"
+msgstr "Registrierung als Benutzer"
 
 #: admin_site_config.php:82 help_text.php:818
 msgid "Require an administrator to approve new user registrations"
-msgstr "Verwalterzustimmung zu neuen Benutzeranträgen erforderlich"
+msgstr "Verwalterzustimmung zu neuen Benutzeranfragen erforderlich"
 
 #: admin_trees_config.php:480 help_text.php:823
 msgid "Require visitor authentication"
-msgstr "Besucher Login notwendig"
+msgstr "Besucher-Login notwendig"
 
 #. I18N: gedcom tag _TODO
 #: library/WT/Gedcom/Tag.php:809
@@ -13561,7 +13561,7 @@ msgstr "Die Anzahl des gewählten Nachnamens wird auf einer Landkarte gezeigt.  
 
 #: help_text.php:55
 msgid "The organization, institution, corporation, individual, or other entity that has authority.<br><br>For example, an employer of an individual, or a church that administered rites or events, or an organization responsible for creating and/or archiving records."
-msgstr "Zuständige Organisation, Behörde, Person, Unternehmen, usw.<br><br>Z.B., Arbeitgeber der Person, oder Kirche wo das Ereignis stattfand, oder für Urkunden zuständige Behörde."
+msgstr "Zuständige Organisation, Institution, Person, Unternehmen usw.<br><br>Z.B., Arbeitgeber der Person oder Kirche wo das Ereignis stattfand oder die für Urkunden zuständige Behörde."
 
 #: setup.php:380
 msgid "The password needs to be at least six characters long."
@@ -15064,7 +15064,7 @@ msgstr "Dieses Feld deutet an dass das Medienobjekt als primäres Objekt der ver
 
 #: help_text.php:1358
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site.  You can also use this to enter any other comments you may have for the site administrator."
-msgstr "Bitte benutzen Sie dieses Feld um dem Verwalter mitzuteilen warum Sie einen Zugangsantrag machen und wie Sie mit diesem Stammbaum verbunden sind.  Sie können hier auch andere Bemerkungen machen, die Sie dem Verwalter mitteilen möchten."
+msgstr "Bitte benutzen Sie dieses Feld um dem Verwalter mitzuteilen warum Sie sich registrieren lassen wollen und wie Sie mit diesem Stammbaum verbunden sind.  Sie können hier auch andere Bemerkungen machen, die Sie dem Verwalter mitteilen möchten."
 
 #: edit_interface.php:1971
 msgid "Use this page to change or remove family members.<br><br>For each member in the family, you can use the Change link to choose a different individual to fill that role in the family.  You can also use the Remove link to remove that individual from the family.<br><br>When you have finished changing the family members, click the save button to save the changes."
@@ -15085,7 +15085,7 @@ msgstr "Benutzer Verwaltung"
 
 #: admin_users.php:525
 msgid "User didn’t verify within 7 days."
-msgstr "Anmeldungsantrag nicht selbst bestätigt"
+msgstr "Registrierungswunsch nicht bestätigt"
 
 #: admin_users.php:535
 msgid "User not verified by administrator."
@@ -15093,11 +15093,11 @@ msgstr "Vom Verwalter unbestätigter Benutzer"
 
 #: admin_trees_config.php:442
 msgid "User options"
-msgstr "Benutzer Einstellungen"
+msgstr "Benutzer-Einstellungen"
 
 #: login.php:452 login.php:458 login.php:515 login.php:519
 msgid "User verification"
-msgstr "Benutzer Verifizierung"
+msgstr "Benutzer-Verifizierung"
 
 #. I18N: http://en.wikipedia.org/wiki/User_agent_string
 #: admin_site_access.php:280 admin_site_access.php:295
@@ -15367,12 +15367,12 @@ msgstr "Das Erzeugen von Wasserzeichen kann für große Bilder sehr langsam sein
 #: login.php:374
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To login to this site, you will need to know your user name and password."
-msgstr "Ihnen wird nun eine Bestätigungsmail an die Adresse <b>%s</b> geschickt.  Sie müssen den in der Mail enthaltenen Anweisungen folgen, um Ihren Benutzernamen zu aktivieren. Falls Sie innerhalb von 7 Tagen nicht reagieren, wird Ihr Antrag automatisch abgewiesen.  Sie müssen dann erneut antragen.<br><br>Wenn Sie den Anweisungen in der Bestätigungsmail gefolgt sind, muss der Verwalter Ihren Benutzernamen noch freischalten, bevor Sie ihn benutzen können.<br><br>Um sich auf dieser Webseite anzumelden, benötigen Sie Ihren Benutzernamen und Ihr Kennwort."
+msgstr "Ihnen wird nun eine Bestätigungsmail an die Adresse <b>%s</b> geschickt.  Sie müssen den in der Mail enthaltenen Anweisungen folgen, um Ihren Benutzernamen zu aktivieren. Falls Sie innerhalb von 7 Tagen nicht reagieren, wird Ihr Registrierungswunsch automatisch abgewiesen. Sie müssen dann erneut anfragen.<br><br>Wenn Sie den Anweisungen in der Bestätigungsmail gefolgt sind, muss der Verwalter Ihren Benutzernamen noch freischalten, bevor Sie ihn benutzen können.<br><br>Um sich auf dieser Webseite anzumelden, benötigen Sie Ihren Benutzernamen und Ihr Kennwort."
 
 #: login.php:376
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, you can login.  To login to this site, you will need to know your user name and password."
-msgstr "Ihnen wird nun eine Bestätigungsmail an die Adresse <b>%s</b> geschickt. Sie müssen den in der Mail enthaltenen Anweisungen folgen, um Ihren Benutzernamen zu aktivieren. Falls Sie innerhalb von 7 Tagen nicht reagieren, wird Ihr Antrag automatisch abgewiesen. Sie müssen dann erneut antragen.<br><br>Wenn Sie den Anweisungen in der Bestätigungs Mail gefolgt sind, können Sie sich sofort auf dieser Webseite anmelden. Dazu benötigen Sie Ihren Benutzernamen und Ihr Kennwort."
+msgstr "Ihnen wird nun eine Bestätigungsmail an die Adresse <b>%s</b> geschickt. Sie müssen den in der Mail enthaltenen Anweisungen folgen, um Ihren Benutzernamen zu aktivieren. Falls Sie innerhalb von 7 Tagen nicht reagieren, wird Ihr Registrierungswunsch automatisch abgewiesen. Sie müssen dann erneut anfragen.<br><br>Wenn Sie den Anweisungen in der Bestätigungs Mail gefolgt sind, können Sie sich sofort auf dieser Webseite anmelden. Dazu benötigen Sie Ihren Benutzernamen und Ihr Kennwort."
 
 #: admin_trees_config.php:420
 msgid "Web site and META tag settings"
@@ -15657,7 +15657,7 @@ msgstr "Jemen"
 #: login.php:323
 #, php-format
 msgid "You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s."
-msgstr "Sie selbst (oder jemand der sich für Sie ausgibt) hat am %1$s ein Benutzerkonto unter Benutzung der E-Mail-Adresse %2$s beantragt."
+msgstr "Sie selbst (oder jemand der sich für Sie ausgibt) hat am %1$s ein Benutzerkonto unter Benutzung der E-Mail-Adresse %2$s angefragt."
 
 #: login.php:271 message.php:68
 msgid "You are not allowed to send messages that contain external links."
@@ -15724,7 +15724,7 @@ msgstr "Sie haben zweimal die selbe ID eingegeben. Das Zusammenfügen ist nicht 
 
 #: login.php:554
 msgid "You have confirmed your request to become a registered user."
-msgstr "Sie haben Ihren Antrag als Benutzer bestätigt."
+msgstr "Sie haben Ihre Registrierungsanfrage als Benutzer bestätigt."
 
 #: modules_v3/user_messages/module.php:81
 msgid "You have no pending messages."
