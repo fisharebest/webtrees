@@ -1404,25 +1404,6 @@ a.showit:hover > span {
 
 /* End of Autocomplete styles*/
 
-/* Flyout menu Styles */
-.flyout {
-	color: #000;
-	text-align: left;
-	margin-top: -20px;
-	right: 210px;
-	padding: 3px;
-}
-
-.flyoutrtl {
-	color: #000;
-	text-align: right;
-	margin-top: -20px;
-	left: 210px;
-	padding: 3px;
-}
-
-/* End of Flyout Menu styles*/
-
 .nowrap {
 	white-space: nowrap;
 }
@@ -2928,63 +2909,45 @@ dd .deletelink {
 	padding: 10px 0 0 0;
 }
 
-.flyout {
-	color: #000;
-	text-align: left;
-	margin-top: -20px;
-	right: 210px;
-	padding: 3px;
-}
-
-.flyout2 {
-	color: #000;
-	text-align: left;
-	margin-top: -2px;
-	left: 40px;
-	padding: 3px;
-}
-
-.flyout2 a:hover {
-	color: #555;
-}
-
-.flyout4 {
-	color: #000;
-	text-align: left;
-	margin-top: 0;
-	margin-left: 0;
-	padding: 3px;
-}
-
-.flyout3,
-.flyout3 a {
-	background: none;
-	border: none;
-	text-decoration: none;
-	text-align: left;
-	margin-top: 0;
-	left: 0;
-	padding: 0;
-}
-
 .famnav_link {
 	font-size: 12px;
 	padding: 0;
 	width: 100%;
 }
 
-[dir=rtl] .flyout {
-	text-align: right;
-	left: 210px;
+.nav_content .facts_label {
+	width: 75px;
 }
 
-[dir=rtl] .flyout2 {
-	text-align: right;
+.famnav_title {
+	font-weight: bold;
+	display: block;
+	padding: 5px 0;
+}
+
+.flyout {
+	left: 40px;
+	padding: 3px;
+}
+
+[dir=rtl] .flyout {
+	left: auto;
 	right: 40px;
 }
 
-[dir=rtl] .flyout3 {
-	text-align: right;
+.flyout a, .flyout a:hover {
+	color: #000;
+	cursor: default;
+	text-decoration: none;
+}
+
+.flyout2 {
+	font-weight: 700;
+}
+
+.flyout3:hover {
+	cursor: pointer;
+	text-decoration: underline;
 }
 
 /* Descendancy */

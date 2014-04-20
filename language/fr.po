@@ -13860,7 +13860,7 @@ msgstr "Cet individu a été supprimé. Veuillez examiner la suppression puis l�
 
 #: individual.php:77
 msgid "This individual has been edited.  The changes need to be reviewed by a moderator."
-msgstr "La fiche de cet individu a été modifiée. Les modification doivent être révisées par un gestionnaire."
+msgstr "La fiche de cet individu a été modifiée. Les modifications doivent être révisées par un gestionnaire."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: individual.php:68

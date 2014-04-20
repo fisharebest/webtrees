@@ -858,7 +858,7 @@ textarea:required:invalid {
 	background-position: right -667px;
 }
 
-/* Family Icons  */
+/* Family Icons */
 #menu-fam-addchil {
 	background-position: left -759px;
 }
@@ -1532,7 +1532,6 @@ a:hover .nameZoom {
 	font-size: 11px;
 	background-color: #ecf5ff;
 	border: solid #84beff 1px;
-	white-space: nowrap;
 }
 
 .submenuitem {
@@ -1542,7 +1541,6 @@ a:hover .nameZoom {
 	font-size: 11px;
 	text-decoration: none;
 	background-color: #ecf5ff;
-	white-space: nowrap;
 	padding: 1px;
 }
 
@@ -3889,43 +3887,8 @@ dd .deletelink {
 	padding: 10px 0;
 }
 
-.flyout {
-	color: #000;
-	text-align: left;
-	margin-top: -20px;
-	right: 210px;
-	padding: 3px;
-}
-
-.flyout2 {
-	color: #000;
-	text-align: left;
-	margin-top: -2px;
-	left: 40px;
-	padding: 3px;
-}
-
-.flyout2 a:hover {
-	color: #f00;
-}
-
-.flyout4 {
-	color: #000;
-	text-align: left;
-	margin-top: 0;
-	margin-left: 0;
-	padding: 3px;
-}
-
-.flyout3,
-.flyout3 a {
-	background: none;
-	border: none;
-	text-decoration: none;
-	text-align: left;
-	margin-top: 0;
-	left: 0;
-	padding: 0;
+.nav_content .facts_label {
+	width: 75px;
 }
 
 .famnav_link {
@@ -3934,18 +3897,39 @@ dd .deletelink {
 	width: 100%;
 }
 
-[dir=rtl] .flyout {
-	text-align: right;
-	left: 210px;
+.famnav_title {
+	font-weight: bold;
+	display: block;
+	padding: 5px 0;
 }
 
-[dir=rtl] .flyout2 {
-	text-align: right;
+.flyout {
+	left: 40px;
+	padding: 3px;
+}
+
+[dir=rtl] .flyout {
+	left: auto;
 	right: 40px;
 }
 
-[dir=rtl] .flyout3 {
-	text-align: right;
+.flyout a, .flyout a:hover {
+	color: #000;
+	cursor: default;
+	text-decoration: none;
+}
+
+.flyout2 {
+	font-weight: 700;
+}
+
+.flyout3 {
+	cursor: pointer;
+	color: #362b36;
+}
+
+.flyout3:hover {
+	color: #f00;
 }
 
 .sb_indi_surname_li,

@@ -85,7 +85,7 @@ class WT_Controller_Page extends WT_Controller_Base {
 		require_once WT_ROOT.'includes/functions/functions.php'; // for get_query_url
 		if (
 			$ged_id==WT_GED_ID && !WT_USER_GEDCOM_ADMIN ||
-			$ged_id!=WT_GED_ID && userGedcomAdmin(WT_USER_ID, $gedcom_id)
+			$ged_id!=WT_GED_ID && !userGedcomAdmin(WT_USER_ID, $ged_id)
 		) {
 			header('Location: '.WT_LOGIN_URL.'?url='.rawurlencode(get_query_url()));
 			exit;

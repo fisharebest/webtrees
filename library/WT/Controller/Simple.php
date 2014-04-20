@@ -52,7 +52,7 @@ class WT_Controller_Simple extends WT_Controller_Page {
 	public function requireManagerLogin($ged_id=WT_GED_ID) {
 		if (
 			$ged_id==WT_GED_ID && !WT_USER_GEDCOM_ADMIN ||
-			$ged_id!=WT_GED_ID && userGedcomAdmin(WT_USER_ID, $gedcom_id)
+			$ged_id!=WT_GED_ID && !userGedcomAdmin(WT_USER_ID, $ged_id)
 		) {
 			$this->addInlineJavascript('opener.window.location.reload(); window.close();');
 			exit;
