@@ -555,6 +555,7 @@ a:hover .nameZoom {
 	font-size: 11px;
 	background-color: #edf7fd;
 	padding: 1px;
+	white-space: nowrap;
 }
 
 .submenuitem_hover {
