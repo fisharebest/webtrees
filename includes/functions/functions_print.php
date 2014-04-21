@@ -536,70 +536,65 @@ function highlight_search_hits($string) {
 }
 
 // Print the associations from the associated individuals in $event to the individuals in $record
-function print_asso_rela_record(WT_Fact $event, WT_GedcomRecord $record) {
+function format_asso_rela_record(WT_Fact $event) {
 	global $SEARCH_SPIDER;
 
+	$parent = $event->getParent();
 	// To whom is this record an assocate?
-	if ($record instanceof WT_Individual) {
+	if ($parent instanceof WT_Individual) {
 		// On an individual page, we just show links to the person
-		$associates=array($record);
-	} elseif ($record instanceof WT_Family) {
+		$associates = array($parent);
+	} elseif ($parent instanceof WT_Family) {
 		// On a family page, we show links to both spouses
-		$associates=$record->getSpouses();
+		$associates = $parent->getSpouses();
 	} else {
 		// On other pages, it does not make sense to show associates
-		return;
+		return '';
 	}
 
 	preg_match_all('/^1 ASSO @('.WT_REGEX_XREF.')@((\n[2-9].*)*)/', $event->getGedcom(), $amatches1, PREG_SET_ORDER);
 	preg_match_all('/\n2 _?ASSO @('.WT_REGEX_XREF.')@((\n[3-9].*)*)/', $event->getGedcom(), $amatches2, PREG_SET_ORDER);
+
+	$html = '';
 	// For each ASSO record
 	foreach (array_merge($amatches1, $amatches2) as $amatch) {
-		$person=WT_Individual::getInstance($amatch[1]);
+		$person = WT_Individual::getInstance($amatch[1]);
 		if ($person) {
+			// Is there a "RELA" tag
 			if (preg_match('/\n[23] RELA (.+)/', $amatch[2], $rmatch)) {
-				$rela=$rmatch[1];
+				// Use the supplied relationship as a label
+				$label = WT_Gedcom_Code_Rela::getValue($rmatch[1], $person);
 			} else {
-				$rela='';
+				// Use a default label
+				$label = WT_Gedcom_Tag::getLabel('ASSO', $person);
 			}
-			$html=array();
-			foreach ($associates as $associate) {
-				if ($associate) {
-					if ($rela) {
-						$label='<span class="rela_type">'.WT_Gedcom_Code_Rela::getValue($rela, $person).':&nbsp;</span>';
-						$label_2='<span class="rela_name">'.get_associate_relationship_name($associate, $person).'</span>';
-					} else {
-						// Generate an automatic RELA
-						$label='';
-						$label_2='<span class="rela_name">'.get_associate_relationship_name($associate, $person).'</span>';
-					}
-					if (!$label && !$label_2) {
-						$label=WT_I18N::translate('Relationships');
-						$label_2='';
-					}
-					// For family records (e.g. MARR), identify the spouse with a sex icon
-					if ($record instanceof WT_Family) {
-						$label_2=$associate->getSexImage().$label_2;
+
+			$values = array('<a href="' . $person->getHtmlUrl() . '">' . $person->getFullName() . '</a>');
+			if (!$SEARCH_SPIDER) {
+				foreach ($associates as $associate) {
+					$relationship_name = get_associate_relationship_name($associate, $person);
+					if (!$relationship_name) {
+						$relationship_name = WT_Gedcom_Tag::getLabel('RELA');
 					}
 
-					if ($SEARCH_SPIDER) {
-						$html[]=$label_2; // Search engines cannot use the relationship chart.
-					} else {
-						$html[]='<a href="relationship.php?pid1='.$associate->getXref().'&amp;pid2='.$person->getXref().'&amp;ged='.WT_GEDURL.'">'.$label_2.'</a>';
+					if ($parent instanceof WT_Family) {
+						// For family ASSO records (e.g. MARR), identify the spouse with a sex icon
+						$relationship_name .= $associate->getSexImage();
 					}
+
+					$values[] = '<a href="relationship.php?pid1=' . $associate->getXref() . '&amp;pid2=' . $person->getXref() . '&amp;ged=' . WT_GEDURL . '">' . $relationship_name . '</a>';
 				}
 			}
-			$html=array_unique($html);
-			echo
-				'<div class="fact_ASSO">',$label,
-				implode(WT_I18N::$list_separator, $html),
-				' - ',
-				'<a href="', $person->getHtmlUrl().'">', $person->getFullName(), '</a>';
-				echo '</div>';
+			$value = implode(' — ', $values);
+
+			// Use same markup as WT_Gedcom_Tag::getLabelValue()
+			$asso = WT_I18N::translate('<span class="label">%1$s:</span> <span class="field" dir="auto">%2$s</span>', $label, $value);
 		} else {
-			echo WT_Gedcom_Tag::getLabelValue('ASSO', '<span class="error">' . $amatch[1] . '</span>');
+			$asso = WT_Gedcom_Tag::getLabelValue('ASSO', '<span class="error">' . $amatch[1] . '</span>');
 		}
+		$html .= '<div class="fact_ASSO">' . $asso . '</div>';
 	}
+	return $html;
 }
 
 /**

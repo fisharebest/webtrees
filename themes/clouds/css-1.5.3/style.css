@@ -1972,6 +1972,7 @@ a:hover .nameZoom {
 	background-color: #fff;
 	border: 1px solid #ccc;
 	padding: 3px 3px 0 3px;
+	white-space: nowrap;
 }
 
 .submenuitem_hover {
