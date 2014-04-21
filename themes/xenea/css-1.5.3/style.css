@@ -1542,6 +1542,7 @@ a:hover .nameZoom {
 	text-decoration: none;
 	background-color: #ecf5ff;
 	padding: 1px;
+	white-space: nowrap;
 }
 
 .submenuitem a,
