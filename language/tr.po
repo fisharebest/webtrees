@@ -13686,7 +13686,7 @@ msgstr "Bu aile ağacında hiçbir araştırma görevleri mevcut değil."
 #: themes/colors/footer.php:43 themes/webtrees/footer.php:42
 #: themes/xenea/footer.php:41
 msgid "There are pending changes for you to moderate."
-msgstr "Ilımlıda bekleyen değişiklikler mevcut."
+msgstr "Onaylanmayı bekleyen değişiklikler mevcut."
 
 #: modules_v3/recent_changes/module.php:80
 #, php-format
