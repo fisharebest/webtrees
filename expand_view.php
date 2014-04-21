@@ -72,9 +72,7 @@ foreach ($facts as $event) {
 		break;
 	case 'ASSO':
 		// Associates
-		echo '<div><span class="details_label">', $event->getLabel(), '</span> ';
-		print_asso_rela_record($event, $person);
-		echo '</div>';
+		echo format_asso_rela_record($event);
 		break;
 	default:
 		// Simple version of print_fact()
