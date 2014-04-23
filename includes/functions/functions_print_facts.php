@@ -223,7 +223,7 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 		echo '<div class="field"><a href="https://familysearch.org/search/tree/results#count=20&query=afn:', rawurlencode($fact->getValue()), '" target="new">', WT_Filter::escapeHtml($fact->getValue()), '</a></div>';
 		break;
 	case 'ASSO':
-		// we handle this later, in print_asso_rela_record()
+		// we handle this later, in format_asso_rela_record()
 		break;
 	case 'EMAIL':
 	case 'EMAI':
@@ -333,7 +333,7 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 	}
 
 	// Print the associates of this fact/event
-	print_asso_rela_record($fact, $record);
+	echo format_asso_rela_record($fact);
 
 	// Print any other "2 XXXX" attributes, in the order in which they appear.
 	preg_match_all('/\n2 ('.WT_REGEX_TAG.') (.+)/', $fact->getGedcom(), $matches, PREG_SET_ORDER);

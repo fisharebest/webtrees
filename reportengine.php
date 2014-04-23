@@ -29,8 +29,8 @@ require WT_ROOT.'includes/functions/functions_rtl.php';
 
 $controller=new WT_Controller_Page();
 
-$famid   =WT_Filter::get('famid');
-$pid     =WT_Filter::get('pid');
+$famid   =WT_Filter::get('famid', WT_REGEX_XREF);
+$pid     =WT_Filter::get('pid', WT_REGEX_XREF);
 $action  =WT_Filter::get('action', 'choose|setup|run', 'choose');
 $report  =WT_Filter::get('report');
 $output  =WT_Filter::get('output', 'HTML|PDF', 'PDF');
