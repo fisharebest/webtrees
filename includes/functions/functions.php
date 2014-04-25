@@ -190,60 +190,6 @@ function load_gedcom_settings($ged_id=WT_GED_ID) {
 }
 
 /**
- * Webtrees Error Handling function
- *
- * This function will be called by PHP whenever an error occurs.  The error handling
- * is set in the session.php
- * @see http://us2.php.net/manual/en/function.set-error-handler.php
- */
-function wt_error_handler($errno, $errstr, $errfile, $errline) {
-	if ((error_reporting() > 0)&&($errno<2048)) {
-		if (WT_ERROR_LEVEL==0) {
-			return;
-		}
-		$fmt_msg="<br>ERROR {$errno}: {$errstr}<br>";
-		$log_msg="ERROR {$errno}: {$errstr};";
-		// Although debug_backtrace should always exist in PHP5, without this check, PHP sometimes crashes.
-		// Possibly calling it generates an error, which causes infinite recursion??
-		if ($errno<16 && function_exists("debug_backtrace") && strstr($errstr, "headers already sent by")===false) {
-			$backtrace=debug_backtrace();
-			$num=count($backtrace);
-			if (WT_ERROR_LEVEL==1) {
-				$num=1;
-			}
-			for ($i=0; $i<$num; $i++) {
-				if ($i==0) {
-					$fmt_msg.="0 Error occurred on ";
-					$log_msg.="\n0 Error occurred on ";
-				} else {
-					$fmt_msg.="{$i} called from ";
-					$log_msg.="\n{$i} called from ";
-				}
-				if (isset($backtrace[$i]["line"]) && isset($backtrace[$i]["file"])) {
-					$fmt_msg.="line <b>{$backtrace[$i]['line']}</b> of file <b>".basename($backtrace[$i]['file'])."</b>";
-					$log_msg.="line {$backtrace[$i]['line']} of file ".basename($backtrace[$i]['file']);
-				}
-				if ($i<$num-1) {
-					$fmt_msg.=" in function <b>".$backtrace[$i+1]['function']."</b>";
-					$log_msg.=" in function ".$backtrace[$i+1]['function'];
-				}
-				$fmt_msg.="<br>";
-			}
-		}
-		echo $fmt_msg;
-		if (function_exists('AddToLog')) {
-			AddToLog($log_msg, 'error');
-		}
-		if ($errno==1) {
-			die();
-		}
-	}
-	return false;
-}
-
-// ************************************************* START OF GEDCOM FUNCTIONS ********************************* //
-
-/**
  * get a gedcom subrecord
  *
  * searches a gedcom record and returns a subrecord of it.  A subrecord is defined starting at a
