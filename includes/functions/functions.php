@@ -333,12 +333,6 @@ function get_cont($nlevel, $nrec) {
 	return rtrim($text, " ");
 }
 
-// ************************************************* START OF SORTING FUNCTIONS ********************************* //
-// Function to sort GEDCOM fact tags based on their translations
-function factsort($a, $b) {
-	return utf8_strcasecmp(WT_I18N::translate($a), WT_I18N::translate($b));
-}
-
 ////////////////////////////////////////////////////////////////////////////////
 // Sort a list events for the today/upcoming blocks
 ////////////////////////////////////////////////////////////////////////////////
