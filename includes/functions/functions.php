@@ -26,42 +26,17 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-// Fetch a remote file.  Stream wrappers are disabled on
-// many hosts, and do not allow the detection of timeout.
-function fetch_remote_file($host, $path, $timeout=3) {
-	$fp=@fsockopen($host, '80', $errno, $errstr, $timeout );
-	if (!$fp) {
-		return null;
-	}
-
-	fputs($fp, "GET $path HTTP/1.0\r\nHost: $host\r\nConnection: Close\r\n\r\n");
-
-	$response='';
-	while ($data=fread($fp, 65536)) {
-		$response.=$data;
-	}
-	fclose($fp);
-
-	// Take account of a “moved” response.
-	if (substr($response, 0, 12)=='HTTP/1.1 303' && preg_match('/\nLocation: http:\/\/([a-z0-9.-]+)(.+)/', $response, $match)) {
-		return fetch_remote_file($match[1], $match[2]);
-	} else {
-		// The response includes headers, a blank line, then the content
-		return substr($response, strpos($response, "\r\n\r\n") + 4);
-	}
-}
-
 // Check with the webtrees.net server for the latest version of webtrees.
 // Fetching the remote file can be slow, so check infrequently, and cache the result.
 // Pass the current versions of webtrees, PHP and MySQL, as the response
 // may be different for each.  The server logs are used to generate
 // installation statistics which can be found at http://svn.webtrees.net/statistics.html
 function fetch_latest_version() {
-	$last_update_timestamp=WT_Site::preference('LATEST_WT_VERSION_TIMESTAMP');
+	$last_update_timestamp = WT_Site::preference('LATEST_WT_VERSION_TIMESTAMP');
 	if ($last_update_timestamp < WT_TIMESTAMP - 24*60*60) {
-		$row=WT_DB::prepare("SHOW VARIABLES LIKE 'version'")->fetchOneRow();
-		$params='?w='.WT_VERSION.'&p='.PHP_VERSION.'&m='.$row->value.'&o='.(DIRECTORY_SEPARATOR=='/'?'u':'w');
-		$latest_version_txt=fetch_remote_file('svn.webtrees.net', '/build/latest-version.txt'.$params);
+		$row = WT_DB::prepare("SHOW VARIABLES LIKE 'version'")->fetchOneRow();
+		$params = '?w='.WT_VERSION.'&p='.PHP_VERSION.'&m='.$row->value.'&o='.(DIRECTORY_SEPARATOR=='/'?'u':'w');
+		$latest_version_txt = WT_File::fetchUrl('http://svn.webtrees.net/build/latest-version.txt' . $params);
 		if ($latest_version_txt) {
 			WT_Site::preference('LATEST_WT_VERSION', $latest_version_txt);
 			WT_Site::preference('LATEST_WT_VERSION_TIMESTAMP', WT_TIMESTAMP);
