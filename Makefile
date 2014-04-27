@@ -36,6 +36,7 @@ GZIP=gzip -9
 update: $(MO_FILES) $(CSS_RTL_FILES) $(PNG_RTL_FILES)
 
 vendor:
+	composer.phar self-update
 	composer.phar update
 	composer.phar dump-autoload --optimize
 
