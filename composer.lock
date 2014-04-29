@@ -3,20 +3,20 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "ee294f74bbc203e88b588cd07880c42c",
+    "hash": "e45b6fb68c9db8d3398bd31d828eed57",
     "packages": [
         {
             "name": "bombayworks/zendframework1",
-            "version": "v1.12.5",
+            "version": "v1.12.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bombayworks/zendframework1.git",
-                "reference": "3f8af440199be5eb31cc9e73c196278227bb73af"
+                "reference": "f83796e2fcaf18bea1480988ab61de02a8168535"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bombayworks/zendframework1/zipball/3f8af440199be5eb31cc9e73c196278227bb73af",
-                "reference": "3f8af440199be5eb31cc9e73c196278227bb73af",
+                "url": "https://api.github.com/repos/bombayworks/zendframework1/zipball/f83796e2fcaf18bea1480988ab61de02a8168535",
+                "reference": "f83796e2fcaf18bea1480988ab61de02a8168535",
                 "shasum": ""
             },
             "require": {
@@ -56,7 +56,7 @@
                 "ZF1",
                 "framework"
             ],
-            "time": "2014-03-07 17:08:56"
+            "time": "2014-04-15 17:01:21"
         },
         {
             "name": "ezyang/htmlpurifier",
@@ -102,6 +102,45 @@
                 "html"
             ],
             "time": "2013-11-30 08:25:19"
+        },
+        {
+            "name": "ircmaxell/password-compat",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ircmaxell/password_compat.git",
+                "reference": "1fc1521b5e9794ea77e4eca30717be9635f1d4f4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ircmaxell/password_compat/zipball/1fc1521b5e9794ea77e4eca30717be9635f1d4f4",
+                "reference": "1fc1521b5e9794ea77e4eca30717be9635f1d4f4",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "lib/password.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anthony Ferrara",
+                    "email": "ircmaxell@php.net",
+                    "homepage": "http://blog.ircmaxell.com"
+                }
+            ],
+            "description": "A compatibility library for the proposed simplified password hashing algorithm: https://wiki.php.net/rfc/password_hash",
+            "homepage": "https://github.com/ircmaxell/password_compat",
+            "keywords": [
+                "hashing",
+                "password"
+            ],
+            "time": "2013-04-30 19:58:08"
         },
         {
             "name": "michelf/php-markdown",
@@ -207,11 +246,11 @@
         },
         {
             "name": "tecnick.com/tcpdf",
-            "version": "6.0.062",
+            "version": "6.0.071",
             "source": {
                 "type": "git",
                 "url": "git://git.code.sf.net/p/tcpdf/code",
-                "reference": "cada5f0ef8c1bb0799f2694ea501db437b02a2ea"
+                "reference": "e85569fc0351501ed51643df1b12f66696727b8a"
             },
             "require": {
                 "php": ">=5.3.0"
@@ -260,7 +299,7 @@
                 "pdf417",
                 "qrcode"
             ],
-            "time": "2014-03-02 10:22:27"
+            "time": "2014-04-25 18:13:02"
         }
     ],
     "packages-dev": [

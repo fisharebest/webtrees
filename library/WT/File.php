@@ -34,9 +34,10 @@ class WT_File {
 	//////////////////////////////////////////////////////////////////////////////
 
 	public static function fetchUrl($url, $stream=null) {
-		$host = parse_url($url, PHP_URL_HOST);
-		$port = parse_url($url, PHP_URL_PORT);
-		$path = parse_url($url, PHP_URL_PATH);
+		$host  = parse_url($url, PHP_URL_HOST);
+		$port  = parse_url($url, PHP_URL_PORT);
+		$path  = parse_url($url, PHP_URL_PATH);
+		$query = parse_url($url, PHP_URL_QUERY);
 
 		if (!$port) {
 			$port = parse_url($url, PHP_URL_SCHEME) == 'https' ? 443 : 80;
@@ -49,7 +50,7 @@ class WT_File {
 			return null;
 		}
 
-		fputs($fp, "GET $path HTTP/1.0\r\nHost: $host\r\nConnection: Close\r\n\r\n");
+		fputs($fp, "GET $path?$query HTTP/1.0\r\nHost: $host\r\nConnection: Close\r\n\r\n");
 
 		// The first part of the response include the HTTP headers
 		$response = fread($fp, 65536);
