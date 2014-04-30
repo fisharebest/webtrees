@@ -145,26 +145,30 @@ case 'delete-source':
 		// Delete links to this record
 		foreach (fetch_all_links($record->getXref(), $record->getGedcomId()) as $xref) {
 			$linker = WT_GedcomRecord::getInstance($xref);
-			$gedcom =$linker->getGedcom();
-			$gedcom = remove_links($gedcom, $record->getXref());
-			// If we have removed a link from a family to an individual, and it has only one member
-			if (preg_match('/^0 @'.WT_REGEX_XREF.'@ FAM/', $gedcom) && preg_match_all('/\n1 (HUSB|WIFE|CHIL) @(' . WT_REGEX_XREF . ')@/', $gedcom, $match)==1) {
-				// Delete the family
-				$family = WT_GedcomRecord::getInstance($xref);
-				WT_FlashMessages::addMessage(/* I18N: %s is the name of a family group, e.g. “Husband name + Wife name” */ WT_I18N::translate('The family “%s” has been deleted, as it only has one member.', $family->getFullName()));
-				$family->deleteRecord();
-				// Delete any remaining link to this family
-				if ($match) {
-					$relict = WT_GedcomRecord::getInstance($match[2][0]);
-					$gedcom = $relict->getGedcom();
-					$gedcom = remove_links($gedcom, $linker->getXref());
-					$relict->updateRecord($gedcom, false);
-					WT_FlashMessages::addMessage(/* I18N: %s are names of records, such as sources, repositories or individuals */ WT_I18N::translate('The link from “%1$s” to “%2$s” has been deleted.', $relict->getFullName(), $family->getFullName()));
+			$old_gedcom =$linker->getGedcom();
+			$new_gedcom = remove_links($old_gedcom, $record->getXref());
+			// fetch_all_links() does not take account of pending changes.  The links (or even the
+			// record itself) may have already been deleted.
+			if ($old_gedcom !== $new_gedcom) {
+				// If we have removed a link from a family to an individual, and it has only one member
+				if (preg_match('/^0 @'.WT_REGEX_XREF.'@ FAM/', $new_gedcom) && preg_match_all('/\n1 (HUSB|WIFE|CHIL) @(' . WT_REGEX_XREF . ')@/', $new_gedcom, $match)==1) {
+					// Delete the family
+					$family = WT_GedcomRecord::getInstance($xref);
+					WT_FlashMessages::addMessage(/* I18N: %s is the name of a family group, e.g. “Husband name + Wife name” */ WT_I18N::translate('The family “%s” has been deleted, as it only has one member.', $family->getFullName()));
+					$family->deleteRecord();
+					// Delete any remaining link to this family
+					if ($match) {
+						$relict = WT_GedcomRecord::getInstance($match[2][0]);
+						$new_gedcom = $relict->getGedcom();
+						$new_gedcom = remove_links($new_gedcom, $linker->getXref());
+						$relict->updateRecord($new_gedcom, false);
+						WT_FlashMessages::addMessage(/* I18N: %s are names of records, such as sources, repositories or individuals */ WT_I18N::translate('The link from “%1$s” to “%2$s” has been deleted.', $relict->getFullName(), $family->getFullName()));
+					}
+				} else {
+					// Remove links from $linker to $record
+					WT_FlashMessages::addMessage(/* I18N: %s are names of records, such as sources, repositories or individuals */ WT_I18N::translate('The link from “%1$s” to “%2$s” has been deleted.', $linker->getFullName(), $record->getFullName()));
+					$linker->updateRecord($new_gedcom, false);
 				}
-			} else {
-				// Remove links from $linker to $record
-				WT_FlashMessages::addMessage(/* I18N: %s are names of records, such as sources, repositories or individuals */ WT_I18N::translate('The link from “%1$s” to “%2$s” has been deleted.', $linker->getFullName(), $record->getFullName()));
-				$linker->updateRecord($gedcom, false);
 			}
 		}
 		// Delete the record itself
