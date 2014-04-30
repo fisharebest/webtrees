@@ -11025,7 +11025,7 @@ msgstr "Privat"
 #. I18N: gedcom tag PROB
 #: library/WT/Gedcom/Tag.php:281
 msgid "Probate"
-msgstr "Styrka testamente"
+msgstr "Bouppteckning"
 
 #. I18N: gedcom tag PROP
 #: library/WT/Gedcom/Tag.php:282

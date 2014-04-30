@@ -3,21 +3,20 @@ msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2014-01-28 07:54+0000\n"
-"PO-Revision-Date: 2013-05-21 12:27+0000\n"
-"Last-Translator: HRN <Unknown>\n"
+"PO-Revision-Date: 2014-04-22 21:30+0300\n"
+"Last-Translator: HRN\n"
 "Language-Team: \n"
-"Language: \n"
+"Language: nn\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Launchpad-Export-Date: 2013-08-04 19:03+0000\n"
-"X-Generator: Launchpad (build 16718)\n"
-"X-Poedit-Language: Norwegian Bokmal\n"
+"X-Generator: Poedit 1.5.7\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-SearchPath-0: .\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
 
 #: modules_v3/ahnentafel_report/report.xml:157
 #: modules_v3/ahnentafel_report/report.xml:185
@@ -47,11 +46,11 @@ msgstr " i "
 
 #: statisticsplot.php:802
 msgid " per gender"
-msgstr " / mann-kvinne"
+msgstr "etter kjønn"
 
 #: statisticsplot.php:804
 msgid " per time period"
-msgstr " / per tidbolk"
+msgstr "etter tidbolk"
 
 #: includes/functions/functions_print_facts.php:192
 #: includes/functions/functions_print_facts.php:197
@@ -146,8 +145,8 @@ msgstr "%1$s har ingen kopling tilbake til %2$s."
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1$s fil blei pakka ut på %2$s sekund."
+msgstr[1] "%1$s filer vart pakka ut på %2$s sekund."
 
 #. I18N: %1$s is an internal ID number such as R123.  %2$s and %3$s are record types, such as INDI or SOUR
 #: admin_trees_check.php:179
@@ -165,7 +164,7 @@ msgstr "%1$s × %2$s pikslar"
 #: admin_site_upgrade.php:310
 #, php-format
 msgid "%1$sKB were downloaded in %2$s seconds."
-msgstr ""
+msgstr "%1$sKB blei lasta ned på %2$s sekund."
 
 #. I18N: A range of years, e.g. “1870–”, “1870–1920”, “–1920”
 #: library/WT/Individual.php:421
@@ -259,7 +258,7 @@ msgstr "%s"
 #: library/WT/Stats.php:4018
 #, php-format
 msgid "%s BCE"
-msgstr ""
+msgstr "%s Fvt."
 
 #. I18N: size of file in KB
 #: admin_media.php:402 library/WT/Media.php:205
@@ -271,8 +270,8 @@ msgstr "%s KB"
 #, php-format
 msgid "%s child"
 msgid_plural "%s children"
-msgstr[0] "barn"
-msgstr[1] "born"
+msgstr[0] "%s barn"
+msgstr[1] "%s born"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: includes/functions/functions_date.php:59 library/WT/I18N.php:364
@@ -293,8 +292,8 @@ msgstr[1] "%s dagar sidan"
 #, php-format
 msgid "%s grandchild"
 msgid_plural "%s grandchildren"
-msgstr[0] "barnebarn"
-msgstr[1] "barnebarn"
+msgstr[0] "%s barnebarn"
+msgstr[1] "%s barnebarn"
 
 #: library/WT/I18N.php:410
 #, php-format
@@ -780,7 +779,7 @@ msgstr "Ein ny brukar (%1$s) har bedet om brukarkonto (%2$s) og har stadfesta e-
 
 #: admin.php:111 admin_site_upgrade.php:83
 msgid "A new version of webtrees is available."
-msgstr ""
+msgstr "Ein ny versjon av webtrees er tilgjengeleg."
 
 #. I18N: Description of the “Journal” module
 #: modules_v3/user_blog/module.php:45
@@ -949,7 +948,7 @@ msgstr "Ein brukar kan ikkje logge inn før både \"E-post stadfesta\" og \"Godk
 
 #: help_text.php:1025
 msgid "A watermark is text that is added to an image, to discourage others from copying it without permission."
-msgstr ""
+msgstr "Eit vassmerke er tekst som vert lagt til eit bilete, for å ikkje oppmuntre andre til å kopiere biletet utan løyve."
 
 #. I18N: time format “%A” - between 00:00:01 and 11:59:59
 #: includes/functions/functions_date.php:117
@@ -1372,7 +1371,7 @@ msgstr "Legg til artikkel"
 #: admin_trees_download.php:129 modules_v3/clippings/module.php:217
 #: modules_v3/clippings/module.php:603
 msgid "Add the GEDCOM media path to filenames"
-msgstr ""
+msgstr "Legg til GEDCOM mediebane til filnamn"
 
 #: modules_v3/clippings/module.php:108 modules_v3/clippings/module.php:528
 msgid "Add this individual and his direct line ancestors."
@@ -1472,7 +1471,7 @@ msgstr "Administrasjon"
 
 #: admin_trees_places.php:80
 msgid "Administration - place edit"
-msgstr ""
+msgstr "Administrasjon - endring av stadar"
 
 #: admin_users.php:186 admin_users.php:368 help_text.php:1397
 msgid "Administrator"
@@ -1796,7 +1795,7 @@ msgstr "Alle eksisterande PGV-brukarar må ha ulike e-postadresser"
 
 #: admin_trees_config.php:1136 help_text.php:505
 msgid "All family facts"
-msgstr ""
+msgstr "Alle familiefakta"
 
 #: login.php:400
 msgid "All fields must be completed."
@@ -1804,11 +1803,11 @@ msgstr "Alle felt må fyllast ut."
 
 #: admin_site_upgrade.php:394
 msgid "All files have read and write permission."
-msgstr ""
+msgstr "Alle filer har lese og skriverettar."
 
 #: admin_trees_config.php:1099 help_text.php:592
 msgid "All individual facts"
-msgstr ""
+msgstr "Alle personfakta"
 
 #: calendar.php:189 calendar.php:203 calendar.php:204 calendar.php:207
 #: calendar.php:208 calendar.php:445
@@ -1817,11 +1816,11 @@ msgstr "Alle personar"
 
 #: admin_trees_config.php:1202 help_text.php:798
 msgid "All repository facts"
-msgstr ""
+msgstr "Alle arkivfakta"
 
 #: admin_trees_config.php:1173 help_text.php:909
 msgid "All source facts"
-msgstr ""
+msgstr "Alle kjeldefakta"
 
 #. I18N: Description of the “CKEditor” module.  WYSIWYG = “what you see is what you get”
 #: modules_v3/ckeditor/module.php:39
@@ -1906,7 +1905,7 @@ msgstr "Redigeringsmeny for personar, familiar, kjelder, osb."
 #: admin_site_upgrade.php:337 admin_site_upgrade.php:356
 #: admin_site_upgrade.php:366 admin_site_upgrade.php:441
 msgid "An error occurred when unzipping the file."
-msgstr ""
+msgstr "Ein feil oppstod under utpakking av fila."
 
 #. I18N: Description of the “Interactive tree” module
 #: modules_v3/tree/module.php:38
@@ -2097,7 +2096,7 @@ msgstr "Er du sikker på at du vil slette “%s”?"
 
 #: modules_v3/lightbox/module.php:203
 msgid "Are you sure you want to remove links to this media object?"
-msgstr ""
+msgstr "Er du sikker på at du vil ta bort lenker til dette medieobjektet?"
 
 #: modules_v3/gedcom_favorites/module.php:123
 msgid "Are you sure you want to remove this item from your list of Favorites?"
@@ -2105,7 +2104,7 @@ msgstr "Er du sikker på at du vil fjerne denne personen frå dine favorittar?"
 
 #: edit_changes.php:231
 msgid "Are you sure you want to undo all the changes to this family tree?"
-msgstr ""
+msgstr "Er du sikker på at du vil gjere om alle endringane i dette familietreet?"
 
 #: library/WT/Stats.php:3756
 msgid "Argentina"
@@ -2198,12 +2197,12 @@ msgstr "Observatør"
 #: library/WT/Gedcom/Code/Rela.php:56
 msgctxt "FEMALE"
 msgid "Attending"
-msgstr ""
+msgstr "Observatør"
 
 #: library/WT/Gedcom/Code/Rela.php:55
 msgctxt "MALE"
 msgid "Attending"
-msgstr ""
+msgstr "Observatør"
 
 #: library/WT/Gedcom/Tag.php:883
 msgid "Audio"
@@ -3288,11 +3287,11 @@ msgstr "Dødsårsak"
 
 #: admin_site_upgrade.php:202
 msgid "Caution: old modules may not work, or they may prevent webtrees from working."
-msgstr ""
+msgstr "Åtvaring: det er mogeleg at gamle modular ikkje fungerer, eller dei kan hindre webtrees frå å fungere."
 
 #: admin_site_upgrade.php:265
 msgid "Caution: old themes may not work, or they may prevent webtrees from working."
-msgstr ""
+msgstr "Åtvaring: det er mogeleg at gamle tema ikkje fungerer, eller dei kan hindre webtrees frå å fungere."
 
 #: library/WT/Stats.php:3807
 msgid "Cayman Islands"
@@ -3430,17 +3429,17 @@ msgstr "Kontroller rettar for å opprette filer i denne katalogen."
 
 #: admin_site_upgrade.php:377
 msgid "Check file permissions…"
-msgstr ""
+msgstr "Kontrollerer filrettar..."
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:116
 msgid "Check for custom modules…"
-msgstr ""
+msgstr "Ser etter eigentilpassa modular..."
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:218
 msgid "Check for custom themes…"
-msgstr ""
+msgstr "Ser etter eigentilpassa tema..."
 
 #: admin_trees_check.php:28 themes/_administration/header.php:122
 msgid "Check for errors"
@@ -3449,7 +3448,7 @@ msgstr "Søk etter feil"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:97
 msgid "Check for pending changes…"
-msgstr ""
+msgstr "Ser etter ventande endringar..."
 
 #: help_text.php:460 relationship.php:138
 msgid "Check relationships by marriage"
@@ -3753,7 +3752,7 @@ msgstr "Klikk på \"+\"-ikonet, for å opne GEDFact-assistenten for Delte notat 
 #. I18N: The local time on the client/browser
 #: themes/_administration/header.php:84
 msgid "Client time"
-msgstr ""
+msgstr "Nettlesartid"
 
 #. I18N: Name of a module
 #: modules_v3/clippings/module.php:32
@@ -3944,12 +3943,12 @@ msgstr "Kopier"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:417
 msgid "Copy files…"
-msgstr ""
+msgstr "Kopierer filer..."
 
 #: admin_site_upgrade.php:388
 #, php-format
 msgid "Copy these files to the folder %s, replacing any that have the same name."
-msgstr ""
+msgstr "Kopier desse filene til mappa %s, ved å erstatte filer med same namn."
 
 #. I18N: gedcom tag COPR
 #: library/WT/Gedcom/Tag.php:161
@@ -4213,11 +4212,11 @@ msgstr "Eigendefinert hending"
 
 #: includes/functions/functions_print.php:975
 msgid "Custom fact"
-msgstr ""
+msgstr "Eigedefinert faktum"
 
 #: admin_site_upgrade.php:190 admin_site_upgrade.php:193
 msgid "Custom module"
-msgstr ""
+msgstr "Eigentilpassa modul"
 
 #: find.php:480
 msgid "Custom tags"
@@ -4225,7 +4224,7 @@ msgstr "Eigendefinerte koder"
 
 #: admin_site_upgrade.php:250 admin_site_upgrade.php:253
 msgid "Custom theme"
-msgstr ""
+msgstr "Eigetilpassa tema"
 
 #: admin_site_config.php:163 help_text.php:1039
 msgid "Custom welcome text"
@@ -4927,7 +4926,7 @@ msgstr "Slett namn"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:466
 msgid "Delete temporary files…"
-msgstr ""
+msgstr "Slettar mellombelse filer..."
 
 #: admin_site_clean.php:88
 msgid "Deleted files:"
@@ -4955,7 +4954,7 @@ msgstr "Denver, Colorado"
 
 #: admin_site_upgrade.php:84
 msgid "Depending on your server configuration, you may be able to upgrade automatically."
-msgstr ""
+msgstr "Avhengig av din serverkonfigurasjon, kan du ha høve til å oppgradere automatisk."
 
 #: help_text.php:1222
 msgid "Descendant generations"
@@ -5140,11 +5139,11 @@ msgstr "Anar i direkte linje og deira familier"
 
 #: admin_site_upgrade.php:201
 msgid "Disable these modules"
-msgstr ""
+msgstr "Inaktiver desse modulane"
 
 #: admin_site_upgrade.php:264
 msgid "Disable these themes"
-msgstr ""
+msgstr "Inaktiver desse temaa"
 
 #. I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options
 #: library/WT/I18N.php:625
@@ -5237,7 +5236,7 @@ msgstr "Last ned"
 #: admin_site_upgrade.php:299
 #, php-format
 msgid "Download %s…"
-msgstr ""
+msgstr "Lastar ned %s..."
 
 #: mediaviewer.php:104
 msgid "Download File"
@@ -5770,7 +5769,7 @@ msgstr "Utføringsstatistikk"
 #: includes/functions/functions_print.php:255
 #, php-format
 msgid "Execution time: %1$s seconds. Database queries: %2$s. Memory usage: %3$s KB."
-msgstr ""
+msgstr "Utføringstid: %1$s sekund. Databasespørringar: %2$s. Minnebruk: %3$s KB."
 
 #. I18N: placeholder text for registration-comments field
 #: login.php:428
@@ -5785,7 +5784,7 @@ msgstr "Eksporter"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:281
 msgid "Export all family trees to GEDCOM files…"
-msgstr ""
+msgstr "Eksporterer alle familietre til GEDCOM-filer..."
 
 #: help_text.php:1211
 msgid "Export family tree"
@@ -6103,7 +6102,7 @@ msgstr "Familie med rada-foreldre"
 #. I18N: “sealing” is a Mormon ceremony.
 #: library/WT/Gedcom/Code/Pedi.php:90
 msgid "Family with sealing parents"
-msgstr ""
+msgstr "Familie med besegla foreldre"
 
 #: includes/functions/functions_print.php:107
 msgid "Family with spouse"
@@ -6460,7 +6459,7 @@ msgstr "For best mogeleg syning på nettet nyttar <b>webtrees</b> teiknsettet UT
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: help_text.php:417
 msgid "For sites with more than one family tree, this option will show the list of family trees in the main menu, the search pages, etc."
-msgstr ""
+msgstr "For sider med fleire enn eitt familietre, vil dette valet syne ei liste over familietre i hovudmenyen, på søkesider osb."
 
 #: includes/functions/functions_print.php:372
 msgid "For technical support and information contact"
@@ -6478,7 +6477,7 @@ msgstr "Format"
 
 #: admin_trees_config.php:940 help_text.php:525
 msgid "Format text and notes"
-msgstr ""
+msgstr "Formater tekst og notatar"
 
 #: library/WT/Gedcom/Code/Pedi.php:55
 msgctxt "Female pedigree"
@@ -7421,7 +7420,7 @@ msgstr "Dimensjonar på bilete"
 
 #: admin_trees_config.php:719
 msgid "Images without watermarks"
-msgstr ""
+msgstr "Bileter utan vassmerke"
 
 #: modules_v3/family_nav/module.php:87
 msgid "Immediate Family"
@@ -7478,7 +7477,7 @@ msgstr "I dette år …"
 
 #: modules_v3/googlemap/module.php:1499
 msgid "Include fully matched places: "
-msgstr "Inkluder stadar med 100% match: "
+msgstr "Inkluder identiske stadar: "
 
 #: famlist.php:178 indilist.php:178
 #, php-format
@@ -7634,7 +7633,7 @@ msgstr "interne meldingar"
 #: help_text.php:1186 includes/functions/functions_edit.php:221
 #: includes/functions/functions_edit.php:232
 msgid "Internal messaging with emails"
-msgstr "Interne meldingar med kopi til e-post"
+msgstr "Interne meldingar med kopi til E-post"
 
 #. I18N: gedcom tag _INTE
 #: library/WT/Gedcom/Tag.php:728
@@ -7687,7 +7686,7 @@ msgstr "Israel"
 
 #: admin_site_upgrade.php:81 admin_site_upgrade.php:85
 msgid "It can take several minutes to download and install the upgrade.  Be patient."
-msgstr ""
+msgstr "Det kan ta fleire minutt å laste ned og installere oppgraderinga. Ver tolmodig."
 
 #: library/WT/Stats.php:3865
 msgid "Italy"
@@ -8288,7 +8287,7 @@ msgstr "Lokale filer"
 #. I18N: gedcom tag _LOC
 #: library/WT/Gedcom/Tag.php:730
 msgid "Location"
-msgstr ""
+msgstr "Stad"
 
 #: modules_v3/googlemap/admin_places.php:521
 msgid "Location not removed: this location contains sub-locations"
@@ -8528,7 +8527,7 @@ msgstr "mars"
 
 #: help_text.php:530
 msgid "Markdown is a simple system of formatting, used on websites such as Wikipedia.  It uses unobtrusive punctuation characters to create headings and sub-headings, bold and italic text, lists, tables, etc."
-msgstr ""
+msgstr "Markdown er eit enkelt system for formattering, nytta på websider som til dømes Wikipedia. Det vert nytta enkel teiknsetting for å danne overskrifter, tjukk og utheva tekst, lister, tabellar, osb."
 
 #. I18N: gedcom tag MARR
 #: library/WT/Gedcom/Tag.php:238 modules_v3/ahnentafel_report/report.xml:453
@@ -8773,7 +8772,7 @@ msgstr "Martinique"
 #. I18N: Pretend to be another user, by logging in as them
 #: admin_users.php:215
 msgid "Masquerade as this user"
-msgstr ""
+msgstr "Opptre som denne brukaren"
 
 #: modules_v3/batch_update/plugins/search_replace.php:90
 msgid "Match the exact text, even if it occurs in the middle of a word."
@@ -9726,11 +9725,11 @@ msgstr "Ingen kontaktmåte"
 
 #: admin_site_upgrade.php:207
 msgid "No custom modules are enabled."
-msgstr ""
+msgstr "Ingen eigentilpassa modular er aktiverte."
 
 #: admin_site_upgrade.php:270
 msgid "No custom themes are enabled."
-msgstr ""
+msgstr "Ingen eigentilpassa tema er aktiverte."
 
 #: admin_trees_check.php:227
 msgid "No errors were found."
@@ -9771,8 +9770,8 @@ msgstr "Ingen hendingar for nolevende personar finnast for i morgon."
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Ingen hendingar for nolevande personar finnast for den neste %s dagen."
+msgstr[1] "Ingen hendingar for nolevande personar finnast for dei neste %s dagane."
 
 #: library/WT/Controller/Family.php:164
 msgid "No facts for this family."
@@ -9818,7 +9817,7 @@ msgstr "Ingen stadar funne"
 
 #: admin_trees_places.php:121
 msgid "No places were found."
-msgstr ""
+msgstr "Ingen stadar vart funne."
 
 #: admin_site_config.php:44
 msgid "No predefined text"
@@ -9842,7 +9841,7 @@ msgstr "Ordinans under livstid - ikkje knytt til eit tempel"
 
 #: admin_site_upgrade.php:67
 msgid "No upgrade information is available."
-msgstr ""
+msgstr "Ingen informasjon om oppgradering er tilgjengeleg."
 
 #: library/WT/Stats.php:1069
 msgid "Nobody at all"
@@ -10770,12 +10769,12 @@ msgstr "Namn på bustad"
 #: admin_site_upgrade.php:402
 #, php-format
 msgid "Place the site offline, by creating the file %s…"
-msgstr ""
+msgstr "Gjer nettstaden offline, ved å opprette fila %s…"
 
 #: admin_site_upgrade.php:452
 #, php-format
 msgid "Place the site online, by deleting the file %s…"
-msgstr ""
+msgstr "Gjer nettstaden online, ved å slette fila %s…"
 
 #: admin_trees_config.php:895 statistics.php:401
 msgid "Places"
@@ -10793,7 +10792,7 @@ msgstr "Stadar i %s"
 
 #: help_text.php:330
 msgid "Places should be entered according to the standards for genealogy.  In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels.  The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place.  The first part, “Salt Lake City,” is the city or township where the event occurred.  In some countries, there may be municipalities or districts inside a city which are important to note.  In that case, they should come before the city.  The next part, “Salt Lake,” is the county.  “Utah” is the state, and “USA” is the country.  It is important to note each place because genealogical records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas.  Suppose, in the example above, you didn’t know the county for Salt Lake City.  You should then record it like this: “Salt Lake City, , Utah, USA”.  Suppose you only know that an individual was born in Utah.  You would enter the information like this: “, , Utah, USA”.  <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
-msgstr ""
+msgstr "Stadnamn bør registrerast i tråd med genealogiske standarder: den mest spesifikke informasjonen om staden vert skrive fyrst, deretter arbeider ein seg opp gjennom hierarkiet til det minst spesifikke nivået, med komma som skiljeteikn mellom nivåa. Namna du nyttar for å oppgje stadane bør representere dei ulike nivåa i stats- eller kyrkjeadministrasjonen der sentrale register vert førte og oppbevarte.<br><br>Til dømes kan ein stad som Bjørkedal i Møre og Romsdal registrerast som «Bjørkedal, Volda, Møre og Romsdal, NOR». Første del av stadregistreringa, «Bjørkedal», er staden der hendinga fann stad. Neste del, «Volda», er kommunen. «Møre og Romsdal» er fylket, og «NOR» er landet. Det er viktig å angi alle nivåa, sidan administrasjonen på kvart nivå kan føre relevante register.<br><br>Om eit nivå i stadnamnet er ukjent, bør dette registrerast med ein tom plass mellom to komma. Hvis du til dømes ikkje veit kva kommune Bjørkedal ligg i, bør det registrerast som «Bjørkedal, , Møre og Romsdal, NOR». Om du ikkje veit meir enn at ein person er fødd i Møre og Romsdal, vil stadnamnet kunne skrivast som «, , Møre og Romsdal, NOR».<br><br>Du kan bruke <b>Finn stad</b> for å finne stadar som allereie finnast i databasen."
 
 #: modules_v3/random_media/module.php:130 themes/_administration/header.php:31
 #: themes/clouds/header.php:34 themes/colors/header.php:37
@@ -10956,7 +10955,7 @@ msgstr "Presentering"
 #. I18N: http://en.wikipedia.org/wiki/President_of_the_Church
 #: library/WT/Gedcom/Code/Temp.php:153
 msgid "President’s Office"
-msgstr ""
+msgstr "President’s Office"
 
 #: library/WT/Gedcom/Code/Temp.php:155
 msgid "Preston, England"
@@ -11327,7 +11326,7 @@ msgstr "Regulære uttrykk"
 #. I18N: http://en.wikipedia.org/wiki/Regular_expression
 #: modules_v3/batch_update/plugins/search_replace.php:93
 msgid "Regular expressions are an advanced pattern matching technique."
-msgstr ""
+msgstr "Regulære uttrykk er ein avansert teknikk for mønsterattkjenning."
 
 #. I18N: Name of a module/report
 #: modules_v3/individual_ext_report/module.php:33
@@ -11808,7 +11807,7 @@ msgstr "Søk og erstatt"
 #. I18N: Description of the “Search and replace” option of the batch update module
 #: modules_v3/batch_update/plugins/search_replace.php:39
 msgid "Search and replace text, using simple searches or advanced pattern matching."
-msgstr ""
+msgstr "Søk og erstatt tekst, ved hjelp av enkle søk eller avansert mønsterattkjenning."
 
 #: includes/session.php:583
 msgid "Search engine"
@@ -11855,7 +11854,7 @@ msgstr "Sikker forbindelse"
 #: modules_v3/batch_update/plugins/search_replace.php:93
 #, php-format
 msgid "See %s for more information."
-msgstr ""
+msgstr "Sjå %s for meir informasjon."
 
 #: includes/functions/functions_edit.php:311 reportengine.php:261
 msgid "Select a date"
@@ -12053,7 +12052,7 @@ msgstr "Servernamn"
 #. I18N: The local time on the server
 #: themes/_administration/header.php:81
 msgid "Server time"
-msgstr ""
+msgstr "Servertid"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:94 help_text.php:728
@@ -12348,7 +12347,7 @@ msgstr "Syn ein aldersmarkør?"
 #. I18N: A site configuration setting
 #: admin_trees_config.php:967 help_text.php:703
 msgid "Show chart details by default"
-msgstr ""
+msgstr "Syn diagramdetaljar som standard"
 
 #: modules_v3/ahnentafel_report/report.xml:12
 msgid "Show children of ancestors?"
@@ -12481,7 +12480,7 @@ msgstr "Syne lenke til statistikkdiagram?"
 
 #: admin_site_config.php:91 help_text.php:416
 msgid "Show list of family trees"
-msgstr ""
+msgstr "Syn liste over familietre"
 
 #: modules_v3/ahnentafel_report/report.xml:9
 #: modules_v3/family_group_report/report.xml:8
@@ -13414,7 +13413,7 @@ msgstr "Fila “%s” fins allereie. Bruk eit anna filnamn."
 #: admin_site_upgrade.php:406 admin_site_upgrade.php:436
 #, php-format
 msgid "The file %s could not be created."
-msgstr ""
+msgstr "Fila %s kunne ikkje opprettast."
 
 #: admin_media.php:60 admin_media.php:67 admin_site_upgrade.php:457
 #: admin_site_upgrade.php:477
@@ -13425,12 +13424,12 @@ msgstr "Fila %s kunne ikkje slettast."
 #: admin_site_upgrade.php:384
 #, php-format
 msgid "The file %s could not be updated."
-msgstr ""
+msgstr "Fila %s kunne ikkje oppdaterast."
 
 #: admin_site_upgrade.php:408
 #, php-format
 msgid "The file %s was created."
-msgstr ""
+msgstr "Fila %s blei oppretta."
 
 #: admin_media.php:58 admin_media.php:65 admin_site_upgrade.php:455
 #: admin_site_upgrade.php:475
@@ -13453,7 +13452,7 @@ msgstr "Fila «%s» eksisterar ikkje."
 #: admin_site_upgrade.php:471
 #, php-format
 msgid "The folder %s could not be deleted."
-msgstr ""
+msgstr "Mappa %s kunne ikkje slettast."
 
 #: addmedia.php:111 addmedia.php:122 addmedia.php:134 addmedia.php:273
 #: addmedia.php:284 addmedia.php:296 admin_media_upload.php:61
@@ -13473,7 +13472,7 @@ msgstr "Mappa %s blei oppretta"
 #: admin_site_upgrade.php:469
 #, php-format
 msgid "The folder %s was deleted."
-msgstr ""
+msgstr "Mappa %s blei sletta."
 
 #: help_text.php:587
 msgid "The folder can be specified in full (e.g. /home/user_name/webtrees_data/) or relative to the installation folder (e.g. ../../webtrees_data/)."
@@ -13502,11 +13501,11 @@ msgstr "Følgjande melding blei sendt til din konto i webtrees frå "
 
 #: admin_trees_places.php:108
 msgid "The following places were changed:"
-msgstr ""
+msgstr "Følgjande stadar blei endra:"
 
 #: admin_trees_places.php:108
 msgid "The following places would be changed:"
-msgstr ""
+msgstr "Følgjande stadar vil bli endra:"
 
 #: admin_site_access.php:271
 msgid "The following rules are used to decide whether a visitor is a human being (allow full access), a search-engine robot (allow restricted access) or an unwanted crawler (deny all access)."
@@ -13558,7 +13557,7 @@ msgstr "Minne- og CPU-tidsbruk er avhengig av mengd på personar i ditt familiet
 #: admin_site_upgrade.php:387
 #, php-format
 msgid "The new files are currently located in the folder %s."
-msgstr ""
+msgstr "Dei nye filene er no plasserte i mappa %s."
 
 #: help_text.php:1248
 msgid "The number of occurrences of the specified name will be shown on the map. If you leave this field empty, the most common surname will be used."
@@ -13617,7 +13616,7 @@ msgstr "Tid i sekund som ei <b>webtrees</b> økt er aktiv før det vert krevd ny
 
 #: admin_site_upgrade.php:483
 msgid "The upgrade is complete."
-msgstr ""
+msgstr "Oppgraderinga er fullført."
 
 #: login.php:306
 msgid "The user has been sent an e-mail with the information necessary to confirm the access request"
@@ -13687,7 +13686,7 @@ msgstr "Det er ingen medieobjekt knytta til denne personen."
 
 #: admin_site_upgrade.php:107
 msgid "There are no pending changes."
-msgstr ""
+msgstr "Det finnast ingen ventande endringar."
 
 #: modules_v3/todo/module.php:127
 msgid "There are no research tasks in this family tree."
@@ -13843,7 +13842,7 @@ msgstr "Denne mappa vil verte nytta til å lagre mediefiler for dette familietre
 
 #: library/WT/Filter.php:277
 msgid "This form has expired.  Try again."
-msgstr ""
+msgstr "Dette skjemaet er utgått. Prøv igjen."
 
 #: individual.php:91 library/WT/Controller/Chart.php:45
 msgid "This individual does not exist or you do not have permission to view it."
@@ -13928,11 +13927,11 @@ msgstr "Versalkjensleg. Om ein database med dette namn frå før ikkje eksistera
 #. I18N: Help text for the “Show chart details by default” tree configuration setting
 #: help_text.php:704
 msgid "This is the initial setting for the “show details” option on the charts."
-msgstr ""
+msgstr "Dette er førehandsettinga for valet \"syn detaljar\" i diagram."
 
 #: admin_site_upgrade.php:72
 msgid "This is the latest version of webtrees.  No upgrade is available."
-msgstr ""
+msgstr "Dette er den siste versjonen av webtrees. Ingen oppgradering er tilgjengeleg."
 
 #: help_text.php:506
 msgid "This is the list of GEDCOM facts that your users can add to families.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique family facts</i> list."
@@ -14269,7 +14268,7 @@ msgstr "Denne delen gjer det mogeleg å leggje til ei ny kjeldetilvising til den
 #. I18N: http://en.wikipedia.org/wiki/Https
 #: admin_site_upgrade.php:317
 msgid "This server does not support secure downloads using HTTPS."
-msgstr ""
+msgstr "Denne serveren støttar ikkje sikker nedlasting via HTTPS."
 
 #: setup.php:171
 #, php-format
@@ -14286,7 +14285,7 @@ msgstr "Dette skal vere ei liste med faktatypar, skilt med komma eller mellomrom
 
 #: admin_site_upgrade.php:41
 msgid "This site is being upgraded.  Try again in a few minutes."
-msgstr ""
+msgstr "Denne nettstaden er under oppgradering. Prøv att om få minutt."
 
 #: source.php:73
 msgid "This source does not exist or you do not have permission to view it."
@@ -14349,11 +14348,11 @@ msgstr "Dette vil slette alle slektsdata frå <b>%s</b> og erstatte dei med data
 
 #: modules_v3/googlemap/module.php:1707
 msgid "This will list all the places from the selected GEDCOM file. By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables"
-msgstr "Funksjonen vil syne alle stadar frå den valgte GEDCOM-fila. Som standard vil dette IKKjE INKLUDERE stadar som matcher 100% mellom GEDCOM-fila og GoogleMap tabellane"
+msgstr "Funksjonen vil syne alle stadar frå den valgte GEDCOM-fila. Som standard vil dette IKKJE INKLUDERE stadar som matcher heilt mellom GEDCOM-fila og GoogleMap tabellane"
 
 #: admin_trees_places.php:89
 msgid "This will update the highest-level part or parts of the place name.  For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."
-msgstr ""
+msgstr "Dette vil oppdatere ein del eller delar av stadnamnet på det høgaste nivået. Til dømes, “Mexico” vil matche “Quintana Roo, Mexico”, men ikkje “Santa Fe, New Mexico”."
 
 #: includes/functions/functions_print.php:1014
 #: library/WT/Date/Calendar.php:222
@@ -14484,7 +14483,7 @@ msgstr "For å hjelpe deg igang med denne blokka, har vi laga nokre standardmala
 
 #: admin_site_upgrade.php:386
 msgid "To complete the upgrade, you should install the files manually."
-msgstr ""
+msgstr "For å fullføre oppgraderinga, må du installere filene manuelt."
 
 #: modules_v3/todo/help_text.php:34
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
@@ -14492,7 +14491,7 @@ msgstr "For å opprette nye forskningsoppgåver må først \"forskningsoppgåve\
 
 #: help_text.php:528
 msgid "To ensure compatibility with other genealogy applications, notes, text, and transcripts should be recorded in simple, unformatted text.  However, formatting is often desirable to aid presentation, comprehension, etc."
-msgstr ""
+msgstr "For å sikre kompatibilitet med annan programvare for genealogi, bør notatar, tekst, og transkript skrivast i enkel, uformatert skrift. På ei anna side er det ofte ynkjeleg å nytte formatert tekst for å betre presentasjon, framstilling osb."
 
 #: admin_media.php:451 library/WT/Controller/Media.php:69
 #: library/WT/Controller/Media.php:151 modules_v3/lightbox/module.php:189
@@ -14507,7 +14506,7 @@ msgstr "Til person"
 #: admin_site_upgrade.php:389
 #, php-format
 msgid "To prevent visitors from accessing the site while you are in the middle of copying files, you can temporarily create a file %s on the server.  If it contains a message, it will be displayed to visitors."
-msgstr ""
+msgstr "For å hindre besøkande å få tilgang til nettstaden under kopiering av filer, kan du opprette ei mellombels fil %s på serveren. Om fila inneheld ei melding, vil den synast til besøkande."
 
 #. I18N: “Apache” is a software program.
 #: help_text.php:583
@@ -14809,7 +14808,7 @@ msgstr "Sovjetunionen"
 #. I18N: Timezone - http://en.wikipedia.org/wiki/UTC
 #: admin_site_upgrade.php:41 themes/_administration/header.php:87
 msgid "UTC"
-msgstr ""
+msgstr "UTC"
 
 #: library/WT/Stats.php:3989
 msgid "Uganda"
@@ -14920,7 +14919,7 @@ msgstr "Ikkje stadfesta av brukar"
 #: admin_site_upgrade.php:328
 #, php-format
 msgid "Unzip %s to a temporary folder…"
-msgstr ""
+msgstr "Pakkar ut %s til mellombels mappe..."
 
 #. I18N: Name of a module
 #: modules_v3/upcoming_events/module.php:32
@@ -14938,11 +14937,11 @@ msgstr "Oppdater alt"
 
 #: admin_trees_places.php:85
 msgid "Update all the place names in a family tree"
-msgstr ""
+msgstr "Oppdater alle stadnamn i eit familietre"
 
 #: themes/_administration/header.php:121
 msgid "Update place names"
-msgstr ""
+msgstr "Oppdater stadnamn"
 
 #: admin_site_merge.php:152
 msgid "Updating linked record"
@@ -14951,7 +14950,7 @@ msgstr "Oppdaterer data som er knytt til denne"
 #. I18N: Ignore the warnings, and [...]
 #: admin_site_upgrade.php:202 admin_site_upgrade.php:265
 msgid "Upgrade anyway"
-msgstr ""
+msgstr "Oppgrader likevel"
 
 #. I18N: %s is a version number, such as 1.2.3
 #: admin.php:113 admin_site_upgrade.php:86
@@ -14961,7 +14960,7 @@ msgstr "Oppgrader til webtrees %s"
 
 #: admin_site_upgrade.php:55
 msgid "Upgrade wizard"
-msgstr ""
+msgstr "Hjelpar for oppgradering"
 
 #: admin_media_upload.php:234 admin_trees_manage.php:225
 #: modules_v3/googlemap/admin_places.php:661
@@ -15363,11 +15362,11 @@ msgstr "Vassmerker"
 
 #: help_text.php:1027
 msgid "Watermarks are optional and normally shown just to visitors."
-msgstr ""
+msgstr "Vassmerker er valfrie, og synast normalt berre til besøkande."
 
 #: help_text.php:1029
 msgid "Watermarks can be slow to generate for large images.  Busy sites may prefer to generate them once and store the watermarked image on the server."
-msgstr ""
+msgstr "Vassmerker kan vere tidkrevjande å generere for store filer. For nettstadar med stor trafikk, kan det vere ønskeleg å generere desse ein gong, og lagre vassmerka bilete på serveren."
 
 #: login.php:374
 #, php-format
@@ -15477,7 +15476,7 @@ msgstr "Om denne boksa er kryssa av, synast alle Kjelde- eller Notat-poster for 
 
 #: help_text.php:1404
 msgid "When this option is selected, webtrees will calculate the age differences between siblings, children, spouses, etc."
-msgstr ""
+msgstr "Om dette vert valt, vil webtrees kalkulere aldersskilnad mellom sysken, born, ektefellar, osb."
 
 #: help_text.php:931
 msgid "When you add a new family member, a default surname can be provided.  This surname will depend on the local tradition."
@@ -15697,11 +15696,11 @@ msgstr "Du kan nå logge deg inn med brukarnamvnet og passordet ditt."
 
 #: admin_site_upgrade.php:201
 msgid "You can re-enable these modules after the upgrade."
-msgstr ""
+msgstr "Du kan reaktivere desse modulane etter oppgraderinga."
 
 #: admin_site_upgrade.php:264
 msgid "You can re-enable these themes after the upgrade."
-msgstr ""
+msgstr "Du kan reaktivere desse temaa etter oppgraderinga."
 
 #: help_text.php:643 help_text.php:682
 msgid "You can request a higher or lower limit, although the server may ignore this request."
@@ -15831,7 +15830,7 @@ msgstr "Du sendte følgjande melding til ein brukar av webtrees:"
 
 #: admin_site_upgrade.php:102
 msgid "You should accept or reject all pending changes before upgrading."
-msgstr ""
+msgstr "Du må akseptere eller forkaste alle ventande endringar før oppgradering."
 
 #: help_text.php:1151
 msgid "You should avoid using the vertical line character &ldquo;|&rdquo; in your notes.  It is used internally by webtrees and may cause your note to display incorrectly."
@@ -15839,11 +15838,11 @@ msgstr "Du bør unngå å nytte den loddrette streken &ldquo;|&rdquo; i dine not
 
 #: admin_site_upgrade.php:200
 msgid "You should consult the module’s author to confirm compatibility with this version of webtrees."
-msgstr ""
+msgstr "Du bør konsultere utgjevaren av denne modulen for å stadfeste at den er kompatibel med denne versjonen av webtrees."
 
 #: admin_site_upgrade.php:263
 msgid "You should consult the theme’s author to confirm compatibility with this version of webtrees."
-msgstr ""
+msgstr "Du bør konsultere utgjevaren av dette temaet for å stadfeste at det er kompatibelt med denne versjonen av webtrees."
 
 #. I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’
 #: login.php:272 message.php:69
@@ -16422,7 +16421,7 @@ msgstr "desimalar"
 
 #: admin_trees_config.php:491
 msgid "disable"
-msgstr "deaktiver"
+msgstr "inaktiver"
 
 #: modules_v3/googlemap/places_edit.php:308
 msgid "east"
@@ -16477,19 +16476,19 @@ msgstr "aktiver"
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: library/WT/Gedcom/Code/Name.php:97
 msgid "estate name"
-msgstr ""
+msgstr "gardsnamn"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: library/WT/Gedcom/Code/Name.php:94
 msgctxt "FEMALE"
 msgid "estate name"
-msgstr ""
+msgstr "gardsnamn"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: library/WT/Gedcom/Code/Name.php:91
 msgctxt "MALE"
 msgid "estate name"
-msgstr ""
+msgstr "gardsnamn"
 
 #. I18N: Gedcom EST dates
 #: library/WT/Date.php:237
@@ -16916,7 +16915,7 @@ msgstr "dotterbarn"
 #: includes/functions/functions.php:935
 msgctxt "son’s child"
 msgid "grandchild"
-msgstr "barnebarn"
+msgstr "sonebarn"
 
 #: includes/functions/functions.php:880
 msgctxt "child’s daughter"
@@ -17003,7 +17002,7 @@ msgstr "%dx grandtante"
 #: includes/functions/functions.php:1354
 #, php-format
 msgid "great x%d aunt/uncle"
-msgstr "%dx tippoldeforelder sitt sysken"
+msgstr "%dx grandonkel/-tante"
 
 #: includes/functions/functions.php:1675 includes/functions/functions.php:1688
 #, php-format
@@ -17070,25 +17069,25 @@ msgstr "%dx grandnevø"
 #: includes/functions/functions.php:1508 includes/functions/functions.php:1519
 #, php-format
 msgid "great x%d nephew/niece"
-msgstr ""
+msgstr "%dx grandnevø/-niese"
 
 #: includes/functions/functions.php:1497
 #, php-format
 msgctxt "(a man’s) brother’s great x(%d-1) grandchild"
 msgid "great x%d nephew/niece"
-msgstr ""
+msgstr "%dx grandnevø/-niese"
 
 #: includes/functions/functions.php:1499
 #, php-format
 msgctxt "(a man’s) sister’s great x(%d-1) grandchild"
 msgid "great x%d nephew/niece"
-msgstr ""
+msgstr "%dx grandnevø/-niese"
 
 #: includes/functions/functions.php:1501
 #, php-format
 msgctxt "(a woman’s) great x%d nephew/niece"
 msgid "great x%d nephew/niece"
-msgstr ""
+msgstr "%dx grandnevø/-niese"
 
 #: includes/functions/functions.php:1507 includes/functions/functions.php:1518
 #, php-format
@@ -17123,19 +17122,19 @@ msgstr "%dx grandonkel"
 #, php-format
 msgctxt "great x(%d-1) grandfather’s brother"
 msgid "great x%d uncle"
-msgstr "%dx tippoldefars bror"
+msgstr "%dx grandonkel"
 
 #: includes/functions/functions.php:1340
 #, php-format
 msgctxt "great x(%d-1) grandmother’s brother"
 msgid "great x%d uncle"
-msgstr "%dx tippoldemors bror"
+msgstr "%dx grandonkel"
 
 #: includes/functions/functions.php:1341
 #, php-format
 msgctxt "great x(%d-1) grandparent’s brother"
 msgid "great x%d uncle"
-msgstr "%dx tippoldeforelders bror"
+msgstr "%dx grandonkel"
 
 #: includes/functions/functions.php:1290
 msgid "great x4 aunt"
@@ -17143,7 +17142,7 @@ msgstr "4x grandtante"
 
 #: includes/functions/functions.php:1291
 msgid "great x4 aunt/uncle"
-msgstr "tipptippoldeforelder sitt sysken"
+msgstr "4x grandonkel/-tante"
 
 #: includes/functions/functions.php:1639
 msgid "great x4 grandchild"
@@ -17172,57 +17171,57 @@ msgstr "3x tippoldebarn"
 #: includes/functions/functions.php:1422
 msgctxt "(a man’s) brother’s great-great-great-grandson"
 msgid "great x4 nephew"
-msgstr "tipptippoldebarn av bror"
+msgstr "4x grandnevø"
 
 #: includes/functions/functions.php:1424
 msgctxt "(a man’s) sister’s great-great-great-grandson"
 msgid "great x4 nephew"
-msgstr "tipptippoldebarn av syster"
+msgstr "4x grandnevø"
 
 #: includes/functions/functions.php:1426
 msgctxt "(a woman’s) great x4 nephew"
 msgid "great x4 nephew"
-msgstr "tipptippoldebarn av sysken"
+msgstr "4x grandnevø"
 
 #: includes/functions/functions.php:1438
 msgctxt "(a man’s) brother’s great-great-great-grandchild"
 msgid "great x4 nephew/niece"
-msgstr "tipptippoldebarn av bror"
+msgstr "4x grandnevø/-niese"
 
 #: includes/functions/functions.php:1440
 msgctxt "(a man’s) sister’s great-great-great-grandchild"
 msgid "great x4 nephew/niece"
-msgstr "tipptippoldebarn av syster"
+msgstr "4x grandnevø/-niese"
 
 #: includes/functions/functions.php:1442
 msgctxt "(a woman’s) great x4 nephew/niece"
 msgid "great x4 nephew/niece"
-msgstr "tipptippoldebarn av sysken"
+msgstr "4x grandnevø/-niese"
 
 #: includes/functions/functions.php:1430
 msgctxt "(a man’s) brother’s great-great-great-granddaughter"
 msgid "great x4 niece"
-msgstr "tipptippoldebarn av bror"
+msgstr "4x grandniese"
 
 #: includes/functions/functions.php:1432
 msgctxt "(a man’s) sister’s great-great-great-granddaughter"
 msgid "great x4 niece"
-msgstr "tipptippoldebarn av syster"
+msgstr "4x grandniese"
 
 #: includes/functions/functions.php:1434
 msgctxt "(a woman’s) great x4 niece"
 msgid "great x4 niece"
-msgstr "tipptippoldebarn av sysken"
+msgstr "4x grandniese"
 
 #: includes/functions/functions.php:1287
 msgctxt "great-great-great-grandfather’s brother"
 msgid "great x4 uncle"
-msgstr "tipptippoldefars bror"
+msgstr "4x grandonkel"
 
 #: includes/functions/functions.php:1288
 msgctxt "great-great-great-grandmother’s brother"
 msgid "great x4 uncle"
-msgstr "tipptippoldemors bror"
+msgstr "4x grandonkel"
 
 #: includes/functions/functions.php:1289
 msgctxt "great-great-great-grandparent’s brother"
@@ -17235,7 +17234,7 @@ msgstr "5x grandtante"
 
 #: includes/functions/functions.php:1301
 msgid "great x5 aunt/uncle"
-msgstr "3x tippoldeforelder sitt sysken"
+msgstr "5x grandonkel/-tante"
 
 #: includes/functions/functions.php:1646
 msgid "great x5 grandchild"
@@ -17264,57 +17263,57 @@ msgstr "4x tippoldebarn"
 #: includes/functions/functions.php:1449
 msgctxt "(a man’s) brother’s great x4 grandson"
 msgid "great x5 nephew"
-msgstr "3x tippoldebarn av bror"
+msgstr "5x grandnevø"
 
 #: includes/functions/functions.php:1451
 msgctxt "(a man’s) sister’s great x4 grandson"
 msgid "great x5 nephew"
-msgstr "3x tippoldebarn av syster"
+msgstr "5x grandnevø"
 
 #: includes/functions/functions.php:1453
 msgctxt "(a woman’s) great x5 nephew"
 msgid "great x5 nephew"
-msgstr "3x tippoldebarn av sysken"
+msgstr "5x grandnevø"
 
 #: includes/functions/functions.php:1465
 msgctxt "(a man’s) brother’s great x4 grandchild"
 msgid "great x5 nephew/niece"
-msgstr "3x tippoldebarn av bror"
+msgstr "5x grandnevø/-niese"
 
 #: includes/functions/functions.php:1467
 msgctxt "(a man’s) sister’s great x4 grandchild"
 msgid "great x5 nephew/niece"
-msgstr "3x tippoldebarn av syster"
+msgstr "5x grandnevø/-niese"
 
 #: includes/functions/functions.php:1469
 msgctxt "(a woman’s) great x5 nephew/niece"
 msgid "great x5 nephew/niece"
-msgstr "3x tippoldebarn av sysken"
+msgstr "5x grandnevø/-niese"
 
 #: includes/functions/functions.php:1457
 msgctxt "(a man’s) brother’s great x4 granddaughter"
 msgid "great x5 niece"
-msgstr "3x tippoldebarn av bror"
+msgstr "5x grandniese"
 
 #: includes/functions/functions.php:1459
 msgctxt "(a man’s) sister’s great x4 granddaughter"
 msgid "great x5 niece"
-msgstr "3x tippoldebarn av syster"
+msgstr "5x grandniese"
 
 #: includes/functions/functions.php:1461
 msgctxt "(a woman’s) great x5 niece"
 msgid "great x5 niece"
-msgstr "3x tippoldebarn av sysken"
+msgstr "5x grandniese"
 
 #: includes/functions/functions.php:1297
 msgctxt "great x4 grandfather’s brother"
 msgid "great x5 uncle"
-msgstr "3x tippoldefars bror"
+msgstr "5x grandonkel"
 
 #: includes/functions/functions.php:1298
 msgctxt "great x4 grandmother’s brother"
 msgid "great x5 uncle"
-msgstr "3x tippoldemors bror"
+msgstr "5x grandonkel"
 
 #: includes/functions/functions.php:1299
 msgctxt "great x4 grandparent’s brother"
@@ -17327,7 +17326,7 @@ msgstr "6x grandtante"
 
 #: includes/functions/functions.php:1311
 msgid "great x6 aunt/uncle"
-msgstr "4x tippoldeforelder sitt sysken"
+msgstr "6x grandonkel/-tante"
 
 #: includes/functions/functions.php:1653
 msgid "great x6 grandchild"
@@ -17356,12 +17355,12 @@ msgstr "5x tippoldebarn"
 #: includes/functions/functions.php:1307
 msgctxt "great x5 grandfather’s brother"
 msgid "great x6 uncle"
-msgstr "4x tippoldefars bror"
+msgstr "6x grandonkel"
 
 #: includes/functions/functions.php:1308
 msgctxt "great x5 grandmother’s brother"
 msgid "great x6 uncle"
-msgstr "4x tippoldemors bror"
+msgstr "6x grandonkel"
 
 #: includes/functions/functions.php:1309
 msgctxt "great x5 grandparent’s brother"
@@ -17374,7 +17373,7 @@ msgstr "7x grandtante"
 
 #: includes/functions/functions.php:1321
 msgid "great x7 aunt/uncle"
-msgstr "5x tippoldeforelder sitt sysken"
+msgstr "7x grandonkel/-tante"
 
 #: includes/functions/functions.php:1660
 msgid "great x7 grandchild"
@@ -17403,12 +17402,12 @@ msgstr "6x tippoldebarn"
 #: includes/functions/functions.php:1317
 msgctxt "great x6 grandfather’s brother"
 msgid "great x7 uncle"
-msgstr "5x tippoldefars bror"
+msgstr "7x grandonkel"
 
 #: includes/functions/functions.php:1318
 msgctxt "great x6 grandmother’s brother"
 msgid "great x7 uncle"
-msgstr "5x tippoldemors bror"
+msgstr "7x grandonkel"
 
 #: includes/functions/functions.php:1319
 msgctxt "great x6 grandparent’s brother"
@@ -17508,92 +17507,92 @@ msgstr "grandtante"
 #: includes/functions/functions.php:1016
 msgctxt "father’s father’s sibling"
 msgid "great-aunt/uncle"
-msgstr "farfars sitt sysken"
+msgstr "grandonkel/-tante"
 
 #: includes/functions/functions.php:1144
 msgctxt "father’s father’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "grandtante/-onkel"
+msgstr "grandonkel/-tante"
 
 #: includes/functions/functions.php:1022
 msgctxt "father’s mother’s sibling"
 msgid "great-aunt/uncle"
-msgstr "farmor sitt sysken"
+msgstr "grandonkel/-tante"
 
 #: includes/functions/functions.php:1147
 msgctxt "father’s mother’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "grandtante/-onkel"
+msgstr "grandonkel/-tante"
 
 #: includes/functions/functions.php:1028
 msgctxt "father’s parent’s sibling"
 msgid "great-aunt/uncle"
-msgstr "besteforelder sitt sysken"
+msgstr "grandonkel/-tante"
 
 #: includes/functions/functions.php:1150
 msgctxt "father’s parent’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "grandtante/-onkel"
+msgstr "grandonkel/-tante"
 
 #: includes/functions/functions.php:1047
 msgctxt "mother’s father’s sibling"
 msgid "great-aunt/uncle"
-msgstr "morfar sitt sysken"
+msgstr "grandonkel/-tante"
 
 #: includes/functions/functions.php:1153
 msgctxt "mother’s father’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "grandtante/-onkel"
+msgstr "grandonkel/-tante"
 
 #: includes/functions/functions.php:1056
 msgctxt "mother’s mother’s sibling"
 msgid "great-aunt/uncle"
-msgstr "mormor sitt sysken"
+msgstr "grandonkel/-tante"
 
 #: includes/functions/functions.php:1156
 msgctxt "mother’s mother’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "grandtante/-onkel"
+msgstr "grandonkel/-tante"
 
 #: includes/functions/functions.php:1062
 msgctxt "mother’s parent’s sibling"
 msgid "great-aunt/uncle"
-msgstr "besteforelder sitt sysken"
+msgstr "grandonkel/-tante"
 
 #: includes/functions/functions.php:1159
 msgctxt "mother’s parent’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "grandtante/-onkel"
+msgstr "grandonkel/-tante"
 
 #: includes/functions/functions.php:1073
 msgctxt "parent’s father’s sibling"
 msgid "great-aunt/uncle"
-msgstr "bestefar sitt sysken"
+msgstr "grandonkel/-tante"
 
 #: includes/functions/functions.php:1162
 msgctxt "parent’s father’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "grandtante/-onkel"
+msgstr "grandonkel/-tante"
 
 #: includes/functions/functions.php:1079
 msgctxt "parent’s mother’s sibling"
 msgid "great-aunt/uncle"
-msgstr "bestemor sitt sysken"
+msgstr "grandonkel/-tante"
 
 #: includes/functions/functions.php:1165
 msgctxt "parent’s mother’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "grandtante/-onkel"
+msgstr "grandonkel/-tante"
 
 #: includes/functions/functions.php:1085
 msgctxt "parent’s parent’s sibling"
 msgid "great-aunt/uncle"
-msgstr "besteforelder sitt sysken"
+msgstr "grandonkel/-tante"
 
 #: includes/functions/functions.php:1168
 msgctxt "parent’s parent’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "grandtante/-onkel"
+msgstr "grandonkel/-tante"
 
 #: includes/functions/functions.php:983
 msgctxt "child’s child’s child"
@@ -17871,7 +17870,7 @@ msgstr "2x grandtante"
 
 #: includes/functions/functions.php:1271
 msgid "great-great-aunt/uncle"
-msgstr "oldeforelder sitt sysken"
+msgstr "2x grandonkel/-tante"
 
 #: includes/functions/functions.php:1625
 msgid "great-great-grandchild"
@@ -17903,7 +17902,7 @@ msgstr "3x grandtante"
 
 #: includes/functions/functions.php:1281
 msgid "great-great-great-aunt/uncle"
-msgstr "tippoldeforelder sitt sysken"
+msgstr "3x grandonkel/-tante"
 
 #: includes/functions/functions.php:1632
 msgid "great-great-great-grandchild"
@@ -17932,57 +17931,57 @@ msgstr "tipptippoldebarn"
 #: includes/functions/functions.php:1395
 msgctxt "(a man’s) brother’s great-great-grandson"
 msgid "great-great-great-nephew"
-msgstr "tippoldebarn av bror"
+msgstr "3x grandnevø"
 
 #: includes/functions/functions.php:1397
 msgctxt "(a man’s) sister’s great-great-grandson"
 msgid "great-great-great-nephew"
-msgstr "tippoldebarn av syster"
+msgstr "3x grandnevø"
 
 #: includes/functions/functions.php:1399
 msgctxt "(a woman’s) great-great-great-nephew"
 msgid "great-great-great-nephew"
-msgstr "tippoldebarn av sysken"
+msgstr "3x grandnevø"
 
 #: includes/functions/functions.php:1411
 msgctxt "(a man’s) brother’s great-great-grandchild"
 msgid "great-great-great-nephew/niece"
-msgstr "tippoldebarn av bror"
+msgstr "3x grandnevø/-niese"
 
 #: includes/functions/functions.php:1413
 msgctxt "(a man’s) sister’s great-great-grandchild"
 msgid "great-great-great-nephew/niece"
-msgstr "tippoldebarn av syster"
+msgstr "3x grandnevø/-niese"
 
 #: includes/functions/functions.php:1415
 msgctxt "(a woman’s) great-great-great-nephew/niece"
 msgid "great-great-great-nephew/niece"
-msgstr "tippoldebarn av sysken"
+msgstr "3x grandnevø/-niese"
 
 #: includes/functions/functions.php:1403
 msgctxt "(a man’s) brother’s great-great-granddaughter"
 msgid "great-great-great-niece"
-msgstr "tippoldebarn av bror"
+msgstr "3x grandniese"
 
 #: includes/functions/functions.php:1405
 msgctxt "(a man’s) sister’s great-great-granddaughter"
 msgid "great-great-great-niece"
-msgstr "tippoldebarn av syster"
+msgstr "3x grandniese"
 
 #: includes/functions/functions.php:1407
 msgctxt "(a woman’s) great-great-great-niece"
 msgid "great-great-great-niece"
-msgstr "tippoldebarn av sysken"
+msgstr "3x grandniese"
 
 #: includes/functions/functions.php:1277
 msgctxt "great-great-grandfather’s brother"
 msgid "great-great-great-uncle"
-msgstr "tippoldefars bror"
+msgstr "3x grandonkel"
 
 #: includes/functions/functions.php:1278
 msgctxt "great-great-grandmother’s brother"
 msgid "great-great-great-uncle"
-msgstr "tippoldemors bror"
+msgstr "3x grandonkel"
 
 #: includes/functions/functions.php:1279
 msgctxt "great-great-grandparent’s brother"
@@ -17992,57 +17991,57 @@ msgstr "3x grandonkel"
 #: includes/functions/functions.php:1368
 msgctxt "(a man’s) brother’s great-grandson"
 msgid "great-great-nephew"
-msgstr "oldebarn av bror"
+msgstr "2x grandnevø"
 
 #: includes/functions/functions.php:1370
 msgctxt "(a man’s) sister’s great-grandson"
 msgid "great-great-nephew"
-msgstr "oldebarn av syster"
+msgstr "2x grandnevø"
 
 #: includes/functions/functions.php:1372
 msgctxt "(a woman’s) great-great-nephew"
 msgid "great-great-nephew"
-msgstr "oldebarn av sysken"
+msgstr "2x grandnevø"
 
 #: includes/functions/functions.php:1384
 msgctxt "(a man’s) brother’s great-grandchild"
 msgid "great-great-nephew/niece"
-msgstr "oldebarn av bror"
+msgstr "2x grandnevø/-niese"
 
 #: includes/functions/functions.php:1386
 msgctxt "(a man’s) sister’s great-grandchild"
 msgid "great-great-nephew/niece"
-msgstr "oldebarn av syster"
+msgstr "2x grandnevø/-niese"
 
 #: includes/functions/functions.php:1388
 msgctxt "(a woman’s) great-great-nephew/niece"
 msgid "great-great-nephew/niece"
-msgstr "oldebarn av sysken"
+msgstr "2x grandnevø/-niese"
 
 #: includes/functions/functions.php:1376
 msgctxt "(a man’s) brother’s great-granddaughter"
 msgid "great-great-niece"
-msgstr "oldebarn av bror"
+msgstr "2x grandniese"
 
 #: includes/functions/functions.php:1378
 msgctxt "(a man’s) sister’s great-granddaughter"
 msgid "great-great-niece"
-msgstr "oldebarn av syster"
+msgstr "2x grandniese"
 
 #: includes/functions/functions.php:1380
 msgctxt "(a woman’s) great-great-niece"
 msgid "great-great-niece"
-msgstr "oldebarn av sysken"
+msgstr "2x grandniese"
 
 #: includes/functions/functions.php:1267
 msgctxt "great-grandfather’s brother"
 msgid "great-great-uncle"
-msgstr "oldefars bror"
+msgstr "2x grandonkel"
 
 #: includes/functions/functions.php:1268
 msgctxt "great-grandmother’s brother"
 msgid "great-great-uncle"
-msgstr "oldemors bror"
+msgstr "2x grandonkel"
 
 #: includes/functions/functions.php:1269
 msgctxt "great-grandparent’s brother"
@@ -18535,7 +18534,7 @@ msgstr "jentenamn"
 #. I18N: https://en.wikipedia.org/wiki/Markdown
 #: admin_trees_config.php:947
 msgid "markdown"
-msgstr ""
+msgstr "markdown"
 
 #: library/WT/Stats.php:1723 library/WT/Stats.php:3579
 msgid "marriage"
@@ -18571,7 +18570,7 @@ msgstr "namn som gift"
 #. I18N: verb: pretend to be someone else
 #: admin_users.php:216
 msgid "masquerade"
-msgstr ""
+msgstr "opptre"
 
 #: includes/functions/functions.php:910
 msgctxt "mother’s father"

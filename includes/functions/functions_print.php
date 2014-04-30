@@ -955,7 +955,9 @@ function print_add_new_fact($id, $usedfacts, $type) {
 	foreach ($addfacts as $addfact) {
 		$translated_addfacts[$addfact] = WT_Gedcom_Tag::getLabel($addfact);
 	}
-	uasort($translated_addfacts, 'factsort');
+	uasort($translated_addfacts, function ($x, $y) {
+		return utf8_strcasecmp(WT_I18N::translate($x), WT_I18N::translate($y));
+	});
 	echo '<tr><td class="descriptionbox">';
 	echo WT_I18N::translate('Fact or event');
 	echo help_link('add_facts'), '</td>';
