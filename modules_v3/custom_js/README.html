@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!--
+/**
+  *  webtrees
+
+  *  Version 1.1
+  *  Copyright (C) 2011 webtrees Development Team. All rights reserved.
+  *
+  *  This and other information can be found on line at
+  *  http://webtrees.net
+  *
+  *  The installation instructions can also be found in the wiki at:
+  *  http://wiki.webtrees.net/Main_Page
+  *
+  *  # $Id: readme.html 8584 2010-06-03 00:12:40Z nigel $
+ */
+-->
+
+<head>
+    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+    <title>webtrees ReadMe file</title>
+    <style type='text/css'>
+        body{color:black;background-color:white;font:14px tahoma arial helvetica sans-serif;padding:10px;margin-right: 30px}
+        a{color:#81A9CB;font-weight:normal;text-decoration:none}
+        a:hover{color:#448DC9}
+        h1{color:#81A9CB;font-weight:normal}
+        li{line-height:150%}
+        .container{overflow:hidden;width:100%}
+        .container>a:first-child{float:left}
+        .container>div{color:#81A9CB;float:right}
+        hr{margin-top:16px}
+
+
+    </style>
+</head>
+<body>
+    <a id='top'><h1><strong>webtrees</strong> ReadMe File</h1></a>
+    <h2>For Module: Custom JavaScript</h2>
+    <ol>
+        <li><a href='#purpose'>Purpose of the module</a></li>
+        <li><a href='#install'>Installing the module</a></li>
+        <li><a href='#use'>How to use the module</a></li>
+    </ol>
+    <hr>
+    <!-- PURPOSE -->
+    <div class='container'>
+        <a id='purpose'>
+            <h3>Purpose of the module</h3>
+        </a>
+        <div>
+            <a href='#top'>
+                back to top
+            </a>
+        </div>
+    </div>
+    This module provides administrators with the ability to add custom JavaScript to <strong>webtrees</strong>. The module consists of one file in addition to this 'Read me' file.
+    <hr>
+    <!-- INSTALLING -->
+    <div class='container'>
+        <a id='install'>
+            <h3>Installing the module</h3>
+        </a>
+        <div>
+            <a href='#top'>
+                back to top
+            </a>
+        </div>
+    </div>
+    Installation is very simple.
+    <ul>
+        <li>Extract the files from the zip container into your server's <strong>webtrees</strong> modules folder (currently called modules_v3); this will create a new folder there called 'custom_js' containing module.php and README.html (this file).</li>
+        <li>Login to <strong>webtrees</strong> as administrator and go to Module Administration (Admin -> Module Administration). Look down the list of installed modules for 'Custom JavaScript' and ensure it is ticked as 'enabled'.
+        </li>
+        <li>Go to the module configuration screen and put in your custom JavaScript (without &lt;script&gt;&lt;/script&gt; tags), save the configuration and you are ready.
+        </li>
+        <li>
+            Note that your custom JavaScript can include embedded variables from the WT_Stats class.
+        </li>
+    </ul>
+    <hr>
+    <!-- USE-->
+    <div class='container'>
+        <a id='use'>
+            <h3>How to use the module</h3>
+        </a>
+        <div>
+            <a href='#top'>
+                back to top
+            </a>
+        </div>
+    </div>
+    One possible use for this module is to implement <a href='http://www.google.com/analytics/'>Google Analytics</a> on your site.
+    <hr>
+</body>
+</html>

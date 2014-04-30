@@ -1,0 +1,356 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="generator" content="UltraEdit">
+<meta name="author" content="BertKoor.nl">
+<meta name="description" content="This page allows a webtrees admin iterate through all the objects in his gedcom.">
+<link rel="shortcut icon" href="http://webtrees.net/templates/webtrees/favicon.ico" type="image/x-icon">
+<title>webtrees Object Iterator</title>
+<script type="text/javascript">
+var baseUrl, gedcom, objType, objNum, showConfig, showUrl;
+
+function init() {
+    // read variable values from cookie, apply defaults when nescessary
+    showConfig = getCookieInt("showConfig", 1);
+    showUrl = getCookieInt("showUrl", 0);
+    showHide();
+    
+    baseUrl = getCookieStr("baseUrl");
+    if (baseUrl == "") {
+        baseUrl = "http://webtrees.net/webtrees_demo";
+    }
+    gedcom = getCookieStr("gedcom");
+    var list = getCookieStr("gedcomList").split(';');
+	var sel = document.getElementById("gedcomList")
+	for (var i=0; i<list.length; i++) {
+		var option = document.createElement("option");
+		if (list[i] == "" || list[i] == "_dflt") {
+            option.text = "default";
+		    option.value = "_dflt";
+		} else {
+            option.text = list[i];
+		    option.value = list[i];
+		}
+		if (i==0) {
+			option.selected = true;
+		}
+		sel.add(option, null);
+	}
+
+    getObject();
+
+    // set variable values in the form
+    document.getElementById("baseUrl").value = baseUrl;
+    document.getElementById("gedcom").value = gedcom;
+
+    // show page in iframe
+    setUrl();
+}
+
+function showHide() {
+    if (showConfig == 0) {
+        document.getElementById("configLine").style.display = "none";
+        document.getElementById("btnConfig").innerHTML = "Show config";
+    } else {
+        document.getElementById("configLine").style.display = "";
+        document.getElementById("btnConfig").innerHTML = "Hide config";
+    }
+    if (showUrl == 0) {
+        document.getElementById("urlLine").style.display = "none";
+        document.getElementById("btnUrl").innerHTML = "Show url";
+    } else {
+        document.getElementById("urlLine").style.display = "";
+        document.getElementById("btnUrl").innerHTML = "Hide url";
+    }
+    scrSize();
+}
+
+function scrSize() {
+    yScr = window.innerHeight;
+    yIt = document.getElementById("iterator").clientHeight + 20;
+    try {
+        document.getElementById("iFrame").height = (yScr - yIt) + "px";
+    } catch (err) {
+        alert(err);
+    }
+}
+
+function toggleConfig() {
+    showConfig = (showConfig == 0) ? 1 : 0;
+    setCookie("showConfig", showConfig);
+    showHide();
+}
+
+function toggleUrl() {
+    showUrl = (showUrl == 0) ? 1 : 0;
+    setCookie("showUrl", showUrl);
+    showHide();
+}
+
+function reset() {
+    deleteWholeCookie();
+    init();
+}
+
+function urlSet() {
+    baseUrl = document.getElementById("baseUrl").value;
+    if (baseUrl.indexOf(".php") > 0) {
+        var p = baseUrl.lastIndexOf("/");
+        baseUrl = baseUrl.substr(0, p);
+        document.getElementById("baseUrl").value = baseUrl;
+    }
+    setCookie("baseUrl", baseUrl);
+    setUrl();
+}
+
+function selectGedcom() {
+    var value = getSelectValue("gedcomList");
+    document.getElementById("gedcomInput").style.display = ((value == "_new") ? "" : "none");
+    if (value != "_new") {
+        gedcom = (value == "_dflt") ? "" : value;
+        document.getElementById("gedcom").value = gedcom;
+        var list = getCookieStr("gedcomList").split(';');
+        var i = list.indexOf(value);
+        list.splice(i,1);
+        list.splice(0,0,value);
+        setCookie("gedcomList", list.join(';'));
+        getObject();
+        setUrl();
+    }
+}
+
+function gedSet() {
+    gedcom = document.getElementById("gedcom").value;
+    var list = getCookieStr("gedcomList").split(';');
+	if (list.indexOf(gedcom) < 0) {
+		list.splice(0,0,gedcom);
+		if (list.length > 5) {
+			list.splice(5,1);
+		}
+        setCookie("gedcomList", list.join(';'));
+		var option = document.createElement("option");
+		option.text = gedcom;
+		option.value = gedcom;
+		var sel = document.getElementById("gedcomList");
+		sel.add(option, null);
+		setSelectValue("gedcomList", gedcom);
+		document.getElementById("gedcomInput").style.display = "none";
+	}
+    setCookie("gedcom", gedcom);
+    getObject();
+    setUrl();
+}
+
+function setUrl() {
+	var value = document.getElementById("url").value;
+	var urls = getCookieStr("url").split(';');
+}
+
+
+function typeSet() {
+    objType = getSelectValue("objType");
+    setCookie(gedcom + "ObjType", objType);
+    getObject();
+    setUrl();
+}
+
+function getObject() {
+    objType = getCookieStr(gedcom + "ObjType");
+    if (objType == "") {
+        objType = "idx";
+    }
+    setSelectValue("objType", objType);
+    if (objType == "idx") {
+        setNumSel(true);
+        document.getElementById("objNum").value = "n/a";
+    } else {
+        setNumSel(false);
+        objNum = getCookieInt(gedcom + objType, 1);
+        document.getElementById("objNum").value = objNum;
+    }
+}
+
+function setNumSel(val) {
+    var el = document.getElementById("numSel")
+    var childs = el.children;
+    for (var i=0; i< childs.length; i++) {
+        childs[i].disabled = val;
+    }
+}
+
+function prev() {
+    objNum--;
+    setNr();
+}
+
+function next() {
+    objNum++;
+    setNr();
+}
+
+function nrSet() {
+    objNum = parseInt(document.getElementById("objNum").value);
+    setNr();
+}
+
+function setNr() {
+    document.getElementById("objNum").value = objNum;
+    setCookie(gedcom + objType, objNum);
+    setUrl();
+}
+
+function setUrl() {
+    var page;
+    if (objType == "idx") {
+        page = "index.php?ctype=gedcom";
+    } else if (objType == "I") {
+        page = "individual.php?pid=I" + objNum;
+    } else if (objType == "F") {
+        page = "family.php?famid=F" + objNum;
+    } else if (objType == "S") {
+        page = "source.php?sid=S" + objNum;
+    } else if (objType == "R") {
+        page = "repo.php?rid=R" + objNum;
+    } else if (objType == "M") {
+        page = "mediaviewer.php?mid=M" + objNum;
+    } else if (objType == "N") {
+        page = "note.php?nid=N" + objNum;
+    }
+    if (gedcom != "") {
+        page = page + "&ged=" + gedcom;
+    }
+    var uri = baseUrl + "/" + page;
+    document.getElementById("fullUrl").value = uri;
+    document.getElementById("iFrame").src = uri;
+}
+
+
+function getSelectValue(fieldName) {
+    var radioSet = document.getElementById(fieldName);
+    for (var i=0; i < radioSet.length; i++) {
+        if (radioSet[i].selected) {
+            return radioSet[i].value;
+        }
+    }
+}
+
+function setSelectValue(fieldName, value) {
+    var radioSet = document.getElementById(fieldName);
+    for (var i=0; i < radioSet.length; i++) {
+        if (radioSet[i].value == value) {
+            radioSet[i].selected = true;
+        } else {
+            radioSet[i].selected = false;
+        }
+    }
+}
+
+function getCookieStr(name) {
+    var value = getCookie(name);
+    if (value == null) {
+        return "";
+    } else {
+        return value;
+    }
+}
+
+function getCookieInt(name, dflt) {
+    var value = getCookie(name);
+    if (value == null) {
+        return dflt;
+    } else {
+        return parseInt(value);
+    }
+}
+
+function getCookie(sName) {
+    // cookies are separated by semicolons
+    var aCookie = document.cookie.split("; ");
+    for (var i=0; i < aCookie.length; i++) {
+        // a name/value pair (a crumb) is separated by an equal sign
+        var aCrumb = aCookie[i].split("=");
+        if (sName == aCrumb[0]) {
+	       return unescape(aCrumb[1]);
+        }
+    }
+
+    // a cookie with the requested name does not exist
+    return null;
+}
+
+function setCookie(sName, sValue) {
+    var date = new Date();
+    date.setTime (date.getTime() + 3E11);   // about 10 years = "forever"
+    document.cookie = sName + "=" + escape(sValue) + "; expires=" + date.toGMTString();
+}
+
+function deleteWholeCookie() {
+    var aCookie = document.cookie.split("; ");
+    for (var i=0; i < aCookie.length; i++) {
+        var aCrumb = aCookie[i].split("=");
+        deleteCookie (aCrumb[0]);
+    }
+}
+
+function deleteCookie(sName) {
+    var date = new Date();
+    date.setTime (date.getTime() - 3E11);   // about 10 years = "stoneage"
+    document.cookie = sName +"=; expires=" + date.toGMTString();
+}
+
+
+</script>
+</head>
+<body onload="init()" onresize="scrSize()">
+<div id="iterator" style="background-color:#f0f0f0">
+    <div style="float:right">
+        <button id="btnConfig" onclick="toggleConfig()"></button>
+        <button id="btnUrl" onclick="toggleUrl()"></button>
+    </div>
+        <table border="0">
+            <tr id="configLine">
+                <th>Base url:</th><td colspan="4"><input id="baseUrl" type="text" size="55" onchange="urlSet()"></td>
+                <th>GedCom:</th>
+                <td>
+					<select id="gedcomList" onchange="selectGedcom()">
+						<option value="_new">Specify...</option>
+					</select>
+                </td>
+                <td><button onclick="reset()">Reset</button></td>
+            </tr>
+            <tr>
+                <th>Object type:</th>
+                <td>
+                    <select id="objType" onchange="typeSet()">
+                        <option value="idx">Index page</option>
+                        <option value="I">Individual</option>
+                        <option value="F">Family</option>
+                        <option value="S">Source</option>
+                        <option value="R">Repository</option>
+                        <option value="M">Media</option>
+                        <option value="N">Note</option>
+                    </select>
+                </td>
+                <td width="20px"/>
+                <th>Number:</th>
+                <td id="numSel">
+                    <button onclick="prev()">prev</button>
+                    <input id="objNum" type="number" size="6" onchange="nrSet()">
+                    <button onclick="next()">next</button>
+                </td>
+                <td width="50px"/>
+                <td colspan="2">
+                    <div id="gedcomInput" style="display:none;">
+                        <input id="gedcom" type="text" size="18" onchange="gedSet()"></td>
+                    </div>
+                <td/>
+            </tr>
+            <tr id="urlLine">
+                <th>Full url:</th><td colspan="7"><input id="fullUrl" readonly="readonly" size="99"></td>
+            </tr>
+        </table>
+</div>
+<iframe id="iFrame" width="100%" height="90%" frameborder="1" scrolling="auto">Unfortunately, your browser does not support inline frames.</iframe>
+</body>
+</html>

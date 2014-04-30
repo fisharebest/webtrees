@@ -403,9 +403,9 @@ if ($SEARCH_SPIDER) {
 
 Zend_Session::start($cfg);
 
-// Register a session “namespace” to store session data.  This is better than
+// Register a session “namespace�? to store session data.  This is better than
 // using $_SESSION, as we can avoid clashes with other modules or applications,
-// and problems with servers that have enabled “register_globals”.
+// and problems with servers that have enabled “register_globals�?.
 $WT_SESSION=new Zend_Session_Namespace('WEBTREES');
 
 if (!$SEARCH_SPIDER && !$WT_SESSION->initiated) {
@@ -545,7 +545,7 @@ if (WT_USER_ID) {
 
 // Set the theme
 if (substr(WT_SCRIPT_NAME, 0, 5)=='admin' || WT_SCRIPT_NAME=='module.php' && substr(WT_Filter::get('mod_action'), 0, 5)=='admin') {
-	// Administration scripts begin with “admin” and use a special administration theme
+	// Administration scripts begin with “admin�? and use a special administration theme
 	define('WT_THEME_DIR', WT_THEMES_DIR.'_administration/');
 } else {
 	if (WT_Site::preference('ALLOW_USER_THEMES')) {
