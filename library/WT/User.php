@@ -25,14 +25,14 @@ if (!defined('WT_WEBTREES')) {
 
 class WT_User {
 	// Reasons why a user authentication attempt failed
-	const ERROR_ACCOUNT_NOT_VERIFIED = -1;
-	const ERROR_ACCOUNT_NOT_APPROVED = -2;
-	const ERROR_INCORRECT_PASSWORD   = -3;
-	const ERROR_NO_SUCH_USER         = -4;
-	const ERROR_NO_SESSION_COOKIES   = -5;
+	const ACCOUNT_NOT_VERIFIED = 'ACCOUNT_NOT_VERIFIED';
+	const ACCOUNT_NOT_APPROVED = 'ACCOUNT_NOT_APPROVED';
+	const INCORRECT_PASSWORD   = 'INCORRECT_PASSWORD';
+	const NO_SUCH_USER         = 'NO_SUCH_USER';
+	const NO_SESSION_COOKIES   = 'NO_SESSION_COOKIES';
 	// Reasons why a user account cannot be created
-	const ERROR_DUPLICATE_USER_NAME  = -6;
-	const ERROR_DUPLICATE_EMAIL      = -7;
+	const DUPLICATE_USER_NAME  = 'DUPLICATE_USER_NAME';
+	const DUPLICATE_EMAIL      = 'DUPLICATE_EMAIL';
 
 	// Attributes of the user, from the wt_user table
 	private $user_id;
@@ -43,37 +43,85 @@ class WT_User {
 	// Settings for the user, from the wt_user_setting table
 	private $settings;
 
-	public function __construct($user_id) {
-		$row = WT_DB::prepare(
-			"SELECT SQL_CACHE user_name, real_name, email FROM `##user` WHERE user_id = ?"
-		)->execute(array($user_id))->fetchOneRow();
+	// The current user
+	private static $current_user;
 
-		$this->user_id   = $user_id;
-		$this->user_name = $row->user_name;
-		$this->real_name = $row->real_name;
-		$this->email     = $row->email;
+	public static function currentUser() {
+		global $WT_SESSION;
+
+		if (self::$current_user === null) {
+			self::$current_user = new WT_User($WT_SESSION->wt_user);
+		}
+
+		return self::$current_user;
+	}
+
+	public static function isLoggedIn() {
+		return self::currentUser()->getUserId() !== null;
+	}
+
+	public static function isAdmin() {
+		return self::currentUser()->getSetting('canadmin');
+	}
+
+	public static function isManager(WT_Tree $tree) {
+		return self::isAdmin() || $tree->userPreference(self::currentUser(), 'canedit') === 'admin';
+	}
+
+	public static function isModerator(WT_Tree $tree) {
+		return self::isManager($tree) || $tree->userPreference(self::currentUser(), 'canedit') === 'accept';
+	}
+
+	public static function isEditor(WT_Tree $tree) {
+		return self::isModerator($tree) || $tree->userPreference(self::currentUser(), 'canedit') === 'edit';
+	}
+
+	public static function isMember(WT_Tree $tree) {
+		return self::isEditor($tree) || $tree->userPreference(self::currentUser(), 'canedit') === 'access';
 	}
 
 	// Create a new user.
 	//
-	// On success, return the user_id of the account.
-	// On failure, return the reason for failure.
-	public function create($user_name, $real_name, $email, $password) {
+	// On success, return a new user object.
+	// On failure, throw an exception.
+	public static function create($user_name, $real_name, $email, $password) {
 		self::passwordCompatibility();
 
 		if (WT_DB::prepare("SELECT 1 FROM `##user` WHERE user_name = ?")->execute(array($user_name))->fetchOne()) {
-			return self::ERROR_DUPLICATE_USER_NAME;
+			throw new exception(self::DUPLICATE_USER_NAME);
 		}
 
 		if (WT_DB::prepare("SELECT 1 FROM `##user` WHERE email = ?")->execute(array($email))->fetchOne()) {
-			return self::ERROR_DUPLICATE_EMAIL;
+			throw new exception(self::DUPLICATE_EMAIL);
 		}
 
 		WT_DB::prepare(
 			"INSERT INTO `##user` (user_name, real_name, email, password) VALUES (?, ?, ?, ?)"
 		)->execute(array($user_name, $real_name, $email, password_hash($password, PASSWORD_DEFAULT)));
 
-		return WT_DB::prepare("SELECT LAST_INSERT_ID()")->fetchOne();
+		$user = new WT_User();
+		$user->user_id = WT_DB::prepare("SELECT LAST_INSERT_ID()")->fetchOne();
+		$user->user_name = $user_name;
+		$user->real_name = $real_name;
+		$user->email = $email;
+
+		return $user;
+	}
+
+	// Create a new user object from a row in the database
+	public function __construct($user_id=null) {
+		if ($user_id !== null) {
+			$row = WT_DB::prepare(
+				"SELECT SQL_CACHE user_name, real_name, email FROM `##user` WHERE user_id = ?"
+			)->execute(array($user_id))->fetchOneRow();
+
+			if ($row) {
+				$this->user_id   = $user_id;
+				$this->user_name = $row->user_name;
+				$this->real_name = $row->real_name;
+				$this->email     = $row->email;
+			}
+		}
 	}
 
 	// Getters and setters for user attributes
@@ -128,9 +176,13 @@ class WT_User {
 	// that many of them, fetch them all in one database query
 	public function getSetting($setting_name, $default=null) {
 		if ($this->settings === null) {
-			$this->settings = WT_DB::prepare(
-				"SELECT SQL_CACHE setting_name, setting_value FROM `##user_setting` WHERE user_id = ?"
-			)->execute(array($this->user_id))->fetchAssoc();
+			if ($this->isLoggedIn()) {
+				$this->settings = WT_DB::prepare(
+					"SELECT SQL_CACHE setting_name, setting_value FROM `##user_setting` WHERE user_id = ?"
+				)->execute(array($this->user_id))->fetchAssoc();
+			} else {
+				$this->settings = array();
+			}
 		}
 
 		if (array_key_exists($setting_name, $this->settings)) {
