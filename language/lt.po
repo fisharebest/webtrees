@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2014-01-28 07:54+0000\n"
-"PO-Revision-Date: 2014-04-19 20:27+0200\n"
+"PO-Revision-Date: 2014-04-23 23:25+0200\n"
 "Last-Translator: Vytautas Krivickas <vytautas.krivickas@gmail.com>\n"
 "Language-Team: \n"
 "Language: lt\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Launchpad-Export-Date: 2013-08-04 19:02+0000\n"
 "X-Generator: Poedit 1.6.4\n"
-"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -122,7 +122,7 @@ msgstr "%1$s (%2$d)"
 #: library/WT/Controller/Individual.php:186 library/WT/Date.php:248
 #, php-format
 msgid "%1$s (%2$s)"
-msgstr ""
+msgstr "%1$s (%2$s)"
 
 #. I18N: placeholders are GEDCOM IDs, such as R123
 #: admin_trees_check.php:159
@@ -140,22 +140,22 @@ msgstr "%1$s neegzistuoja. Gal turėjote omenyje %2$s?"
 #: admin_trees_check.php:190
 #, php-format
 msgid "%1$s does not have a link back to %2$s."
-msgstr ""
+msgstr "%1$s neturi nuorodos atgal į %2$s."
 
 #. I18N: [...] from the .ZIP file, %2$s is a (fractional) number of seconds
 #: admin_site_upgrade.php:364 admin_site_upgrade.php:439
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%1$s byla buvo išgauta per %2$s sekundes."
+msgstr[1] "%1$s bylos buvo išgautos per %2$s sekundes."
+msgstr[2] "%1$s bylų buvo išgauta per %2$s sekundes."
 
 #. I18N: %1$s is an internal ID number such as R123.  %2$s and %3$s are record types, such as INDI or SOUR
 #: admin_trees_check.php:179
 #, php-format
 msgid "%1$s is a %2$s but a %3$s is expected."
-msgstr ""
+msgstr "%1$s yra %2$s bet mes tikimės %3$s."
 
 #. I18N: image dimensions, width × height
 #: admin_media.php:406 library/WT/Media.php:286
@@ -167,7 +167,7 @@ msgstr "%1$s × %2$s pikseliai"
 #: admin_site_upgrade.php:310
 #, php-format
 msgid "%1$sKB were downloaded in %2$s seconds."
-msgstr ""
+msgstr "%1$sKB buvo atsiusti per %2$s sekundes."
 
 #. I18N: A range of years, e.g. “1870–”, “1870–1920”, “–1920”
 #: library/WT/Individual.php:421
@@ -267,7 +267,7 @@ msgstr "%s"
 #: library/WT/Stats.php:4018
 #, php-format
 msgid "%s BCE"
-msgstr ""
+msgstr "%s BCE"
 
 #. I18N: size of file in KB
 #: admin_media.php:402 library/WT/Media.php:205
@@ -279,8 +279,9 @@ msgstr "%s KB"
 #, php-format
 msgid "%s child"
 msgid_plural "%s children"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s vaikas"
+msgstr[1] "%s vaikai"
+msgstr[2] "%s vaikų"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: includes/functions/functions_date.php:59 library/WT/I18N.php:364
@@ -303,8 +304,9 @@ msgstr[2] "prieš %s dienas"
 #, php-format
 msgid "%s grandchild"
 msgid_plural "%s grandchildren"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s anūkas"
+msgstr[1] "%s anūkai"
+msgstr[2] "%s anūkų"
 
 #: library/WT/I18N.php:410
 #, php-format
@@ -326,7 +328,7 @@ msgstr[2] "%s asmenų yra viešai nerodomi."
 #: setup.php:116
 #, php-format
 msgid "%s is disabled on this server.  You cannot install webtrees until it is enabled.  Please ask your server’s administrator to enable it."
-msgstr ""
+msgstr "%s išjungta šiame serveryje.  Jūs negalite įdiegti webtrees, kol tai nėra įjungta. Kreipkitės į jusų serverio administratorių kad tai būtu įjungta."
 
 #: modules_v3/user_messages/module.php:66
 #, php-format
@@ -451,13 +453,13 @@ msgstr "%s%%"
 #: library/WT/Date/Julian.php:95
 #, php-format
 msgid "%s&nbsp;BCE"
-msgstr ""
+msgstr "%s&nbsp;BCE"
 
 #. I18N: CE=Common Era, for Julian years > 0.  See http://en.wikipedia.org/wiki/Common_Era
 #: library/WT/Date/Julian.php:98 library/WT/Date/Julian.php:100
 #, php-format
 msgid "%s&nbsp;CE"
-msgstr ""
+msgstr "%s&nbsp;CE"
 
 #. I18N: first/default option in a drop-down listbox
 #: modules_v3/googlemap/module.php:1473 modules_v3/googlemap/module.php:1489
@@ -629,11 +631,11 @@ msgstr ""
 
 #: help_text.php:1318
 msgid "<b>Important Note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
-msgstr ""
+msgstr "<b>Svarbi pastaba:</b> Persiuntimo vediklis negali padėti perkelti medijos elementus. Jums reikės sukurti ir perkelti ar perkopijuoti savo medijos konfigūraciją ir elementus atskirai po persiuntimo vediklio pabaigos."
 
 #: help_text.php:1007
 msgid "<b>No</b> means that authenticated users can see the details of all living individuals.  <b>Yes</b> means that users can only see the private information of living individuals they are related to.<br><br>This option sets the default for all users who have access to this genealogical database.  The administrator can override this option for individual users by editing the user’s account details."
-msgstr ""
+msgstr "<b>Ne</b> reiškia, kad prisijunge vartotojai gali matyti visų gyvenančių asmenų duomenys. <b>Taip</b> reiškia, kad vartotojai gali matyti tik asmeninę informaciją gyvenančių asmenų su kurias jie yra artimi giminaičiai.<br>Ši parinktis yra nustatyta visiems naudotojams, kurie turi prieigą prie šios genealoginės bazėje. Administratorius gali pakeisti šią parinktį atskirų vartotojų redaguodami vartotojo sąskaitos duomenis."
 
 #: message.php:118
 msgid "<b>Please Note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogical data, please include the sources where you obtained the data."
@@ -693,11 +695,11 @@ msgstr "<div class=\"largeError\">Įspėjimas:</div><div class=\"error\">Užpild
 #: library/WT/Gedcom/Tag.php:843
 #, php-format
 msgid "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
-msgstr ""
+msgstr "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
 
 #: modules_v3/faq/help_text.php:45
 msgid "A FAQ item can be displayed on just one of the family trees, or on all the family trees."
-msgstr ""
+msgstr "DUK gali buti rodomas tik ant vieno šeimos medžio arba ant visų."
 
 #: help_text.php:320
 msgid "A child may have more than one set of parents.  The relationship between the child and the parents can be biological, legal, or based on local culture and tradition.  If no pedigree is specified, then a biological relationship will be assumed."
@@ -801,7 +803,7 @@ msgstr "Naujas vartotojas (%1$s) paprąšė prieigos sąskaitos (%2$s) ir patvir
 
 #: admin.php:111 admin_site_upgrade.php:83
 msgid "A new version of webtrees is available."
-msgstr ""
+msgstr "Nauja webtrees versija yra prieinama."
 
 #. I18N: Description of the “Journal” module
 #: modules_v3/user_blog/module.php:45
@@ -970,12 +972,12 @@ msgstr ""
 
 #: help_text.php:1025
 msgid "A watermark is text that is added to an image, to discourage others from copying it without permission."
-msgstr ""
+msgstr "Vandenženklis yra tekstas, kuris pridedamas prie atvaizdo, atgrasinti kitus nuo kopijavimo be leidimo."
 
 #. I18N: time format “%A” - between 00:00:01 and 11:59:59
 #: includes/functions/functions_date.php:117
 msgid "A.M."
-msgstr ""
+msgstr "iki pietų"
 
 #: modules_v3/ahnentafel_report/report.xml:13
 #: modules_v3/bdm_report/report.xml:12 modules_v3/birth_report/report.xml:10
@@ -1028,31 +1030,31 @@ msgstr "Aba, Nigerija"
 #: library/WT/Date/Jalali.php:124
 msgctxt "Abbreviation for Persian month: Aban"
 msgid "Aban"
-msgstr ""
+msgstr "Aban"
 
 #. I18N:  8th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:70
 msgctxt "GENITIVE"
 msgid "Aban"
-msgstr ""
+msgstr "Aban"
 
 #. I18N:  8th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:106
 msgctxt "INSTRUMENTAL"
 msgid "Aban"
-msgstr ""
+msgstr "Aban"
 
 #. I18N:  8th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:88
 msgctxt "LOCATIVE"
 msgid "Aban"
-msgstr ""
+msgstr "Aban"
 
 #. I18N:  8th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:52
 msgctxt "NOMINATIVE"
 msgid "Aban"
-msgstr ""
+msgstr "Aban"
 
 #: admin_trees_config.php:900 help_text.php:884
 msgid "Abbreviate place names"
@@ -1065,7 +1067,7 @@ msgstr "Santrumpa"
 
 #: library/WT/Stats.php:3747
 msgid "Acadia"
-msgstr ""
+msgstr "Akadijos"
 
 #: edit_changes.php:178 edit_changes.php:186
 msgid "Accept"
@@ -1088,62 +1090,62 @@ msgstr "Akra, Gana"
 #: library/WT/Date/Jewish.php:105
 msgctxt "GENITIVE"
 msgid "Adar"
-msgstr ""
+msgstr "Adar"
 
 #: library/WT/Date/Jewish.php:141
 msgctxt "INSTRUMENTAL"
 msgid "Adar"
-msgstr ""
+msgstr "Adar"
 
 #: library/WT/Date/Jewish.php:123
 msgctxt "LOCATIVE"
 msgid "Adar"
-msgstr ""
+msgstr "Adar"
 
 #: library/WT/Date/Jewish.php:87
 msgctxt "NOMINATIVE"
 msgid "Adar"
-msgstr ""
+msgstr "Adar"
 
 #: library/WT/Date/Jewish.php:105
 msgctxt "GENITIVE"
 msgid "Adar I"
-msgstr ""
+msgstr "Adar I"
 
 #: library/WT/Date/Jewish.php:141
 msgctxt "INSTRUMENTAL"
 msgid "Adar I"
-msgstr ""
+msgstr "Adar I"
 
 #: library/WT/Date/Jewish.php:123
 msgctxt "LOCATIVE"
 msgid "Adar I"
-msgstr ""
+msgstr "Adar I"
 
 #: library/WT/Date/Jewish.php:87
 msgctxt "NOMINATIVE"
 msgid "Adar I"
-msgstr ""
+msgstr "Adar I"
 
 #: library/WT/Date/Jewish.php:106
 msgctxt "GENITIVE"
 msgid "Adar II"
-msgstr ""
+msgstr "Adar II"
 
 #: library/WT/Date/Jewish.php:142
 msgctxt "INSTRUMENTAL"
 msgid "Adar II"
-msgstr ""
+msgstr "Adar II"
 
 #: library/WT/Date/Jewish.php:124
 msgctxt "LOCATIVE"
 msgid "Adar II"
-msgstr ""
+msgstr "Adar II"
 
 #: library/WT/Date/Jewish.php:88
 msgctxt "NOMINATIVE"
 msgid "Adar II"
-msgstr ""
+msgstr "Adar II"
 
 #: admin_trees_config.php:581 edit_interface.php:2090
 #: includes/functions/functions_print.php:923
@@ -1160,7 +1162,7 @@ msgstr "Pridėti"
 
 #: modules_v3/googlemap/admin_places.php:629
 msgid "Add  a new geographic location"
-msgstr ""
+msgstr "Pridėti naują geografinę vietovę"
 
 #: modules_v3/clippings/module.php:484
 #, php-format
@@ -1263,7 +1265,7 @@ msgstr "Pridėti naują pastabą"
 
 #: includes/functions/functions_edit.php:886
 msgid "Add a new restriction"
-msgstr ""
+msgstr "Pridėti naują apribojimą"
 
 #: help_text.php:1082 help_text.php:1148
 #: includes/functions/functions_edit.php:863
@@ -1393,7 +1395,7 @@ msgstr "Įtraukti istoriją"
 #: admin_trees_download.php:129 modules_v3/clippings/module.php:217
 #: modules_v3/clippings/module.php:603
 msgid "Add the GEDCOM media path to filenames"
-msgstr ""
+msgstr "Pridėti GEDCOM medijos aplanka prie bylos vardo"
 
 #: modules_v3/clippings/module.php:108 modules_v3/clippings/module.php:528
 msgid "Add this individual and his direct line ancestors."
@@ -1493,7 +1495,7 @@ msgstr "Administravimas"
 
 #: admin_trees_places.php:80
 msgid "Administration - place edit"
-msgstr ""
+msgstr "Administravimas - vietovių koregavimas"
 
 #: admin_users.php:186 admin_users.php:368 help_text.php:1397
 msgid "Administrator"
@@ -1758,7 +1760,7 @@ msgstr "Istituzione"
 
 #: library/WT/Stats.php:3751
 msgid "Aland Islands"
-msgstr ""
+msgstr "Aland salos"
 
 #: library/WT/Stats.php:3752
 msgid "Albania"
@@ -1813,11 +1815,11 @@ msgstr "Visi PGV pakeitimai turi būti patvirtinti"
 
 #: help_text.php:1316
 msgid "All existing PGV users must have distinct email addresses"
-msgstr ""
+msgstr "Visi esami PGV vartotojai turi turėti skirtingus elektroninio pašto adresus"
 
 #: admin_trees_config.php:1136 help_text.php:505
 msgid "All family facts"
-msgstr ""
+msgstr "Visi šeimos faktai"
 
 #: login.php:400
 msgid "All fields must be completed."
@@ -1825,11 +1827,11 @@ msgstr "Visi laukai turi būti užpildyti."
 
 #: admin_site_upgrade.php:394
 msgid "All files have read and write permission."
-msgstr ""
+msgstr "Visos bylos turi skaitymo ir rašymo leidima."
 
 #: admin_trees_config.php:1099 help_text.php:592
 msgid "All individual facts"
-msgstr ""
+msgstr "Visi asmens faktai"
 
 #: calendar.php:189 calendar.php:203 calendar.php:204 calendar.php:207
 #: calendar.php:208 calendar.php:445
@@ -1838,11 +1840,11 @@ msgstr "Visi asmenys"
 
 #: admin_trees_config.php:1202 help_text.php:798
 msgid "All repository facts"
-msgstr ""
+msgstr "Visi saugyklos faktai"
 
 #: admin_trees_config.php:1173 help_text.php:909
 msgid "All source facts"
-msgstr ""
+msgstr "Visi šaltinio faktai"
 
 #. I18N: Description of the “CKEditor” module.  WYSIWYG = “what you see is what you get”
 #: modules_v3/ckeditor/module.php:39
@@ -1913,7 +1915,7 @@ msgstr "Alternatyvus būdas pasirinkti naują temą."
 
 #: help_text.php:65
 msgid "An associate is another individual who was involved with this fact or event, such as a witness or a priest."
-msgstr ""
+msgstr "Kompanjonas yra kitas asmuo, kuris yra šio fakto ar įvykio dalyvis, pavyzdžiui, liudytojas arba kunigas."
 
 #: help_text.php:60
 msgid "An associate is another individual who was involved with this individual, such as a friend or an employer."
@@ -1927,7 +1929,7 @@ msgstr "Redagavimo meniu asmenų, šeimų, šaltinių ir t.t."
 #: admin_site_upgrade.php:337 admin_site_upgrade.php:356
 #: admin_site_upgrade.php:366 admin_site_upgrade.php:441
 msgid "An error occurred when unzipping the file."
-msgstr ""
+msgstr "Klaida ivyko bylos išplėtime."
 
 #. I18N: Description of the “Interactive tree” module
 #: modules_v3/tree/module.php:38
@@ -1954,7 +1956,7 @@ msgstr "Protėvių interesai"
 
 #: modules_v3/ahnentafel_report/report.xml:52
 msgid "Ancestors of "
-msgstr ""
+msgstr "Protėviai"
 
 #. I18N: %s is an individual’s name
 #: library/WT/Controller/Ancestry.php:78
@@ -2118,7 +2120,7 @@ msgstr "Ar tikrai norite ištrinti “%s”?"
 
 #: modules_v3/lightbox/module.php:203
 msgid "Are you sure you want to remove links to this media object?"
-msgstr ""
+msgstr "Ar jus tikrai norite ištrinti nuorodas į šį medijos elementą?"
 
 #: modules_v3/gedcom_favorites/module.php:123
 msgid "Are you sure you want to remove this item from your list of Favorites?"
@@ -2126,7 +2128,7 @@ msgstr "Ar tikrai norite pašalinti šį elementą iš sąrašo Mėgstamiausi?"
 
 #: edit_changes.php:231
 msgid "Are you sure you want to undo all the changes to this family tree?"
-msgstr ""
+msgstr "Ar tikrai norite atmesti visus pakeitumus šiame šeimos medyje?"
 
 #: library/WT/Stats.php:3756
 msgid "Argentina"
@@ -2200,7 +2202,7 @@ msgstr "Atlanta, Džordžija"
 
 #: library/WT/Gedcom/Code/Rela.php:51
 msgid "Attendant"
-msgstr ""
+msgstr "Palydovas(ė)"
 
 #: library/WT/Gedcom/Code/Rela.php:50
 msgctxt "FEMALE"
@@ -2214,7 +2216,7 @@ msgstr "Palydovas"
 
 #: library/WT/Gedcom/Code/Rela.php:57
 msgid "Attending"
-msgstr ""
+msgstr "Dalyvaujanti(s)"
 
 #: library/WT/Gedcom/Code/Rela.php:56
 msgctxt "FEMALE"
@@ -2297,22 +2299,22 @@ msgstr "Automatiškai skleisti šaltinius"
 #: library/WT/Date/Jewish.php:111
 msgctxt "GENITIVE"
 msgid "Av"
-msgstr ""
+msgstr "Av"
 
 #: library/WT/Date/Jewish.php:147
 msgctxt "INSTRUMENTAL"
 msgid "Av"
-msgstr ""
+msgstr "Av"
 
 #: library/WT/Date/Jewish.php:129
 msgctxt "LOCATIVE"
 msgid "Av"
-msgstr ""
+msgstr "Av"
 
 #: library/WT/Date/Jewish.php:93
 msgctxt "NOMINATIVE"
 msgid "Av"
-msgstr ""
+msgstr "Av"
 
 #: index_edit.php:263
 msgid "Available blocks"
@@ -2332,11 +2334,11 @@ msgstr "Vidutinė gyvenimo trukmė"
 #: library/WT/Stats.php:2361 library/WT/Stats.php:2365
 #: library/WT/Stats.php:2367
 msgid "Average age in century of marriage"
-msgstr ""
+msgstr "Vidutinis amžius santuokos amžiuje"
 
 #: library/WT/Stats.php:1615 library/WT/Stats.php:1627
 msgid "Average age related to death century"
-msgstr ""
+msgstr "Vidutinis amžius mirties amžiuje"
 
 #: library/WT/Stats.php:2870 modules_v3/gedcom_stats/module.php:178
 #: modules_v3/gedcom_stats/module.php:357 modules_v3/html/module.php:250
@@ -2347,31 +2349,31 @@ msgstr "Vidutinis vaikų skaičius šeimoje"
 #: library/WT/Date/Jalali.php:125
 msgctxt "Abbreviation for Persian month: Azar"
 msgid "Azar"
-msgstr ""
+msgstr "Azar"
 
 #. I18N:  9th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:71
 msgctxt "GENITIVE"
 msgid "Azar"
-msgstr ""
+msgstr "Azar"
 
 #. I18N:  9th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:107
 msgctxt "INSTRUMENTAL"
 msgid "Azar"
-msgstr ""
+msgstr "Azar"
 
 #. I18N:  9th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:89
 msgctxt "LOCATIVE"
 msgid "Azar"
-msgstr ""
+msgstr "Azar"
 
 #. I18N:  9th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:53
 msgctxt "NOMINATIVE"
 msgid "Azar"
-msgstr ""
+msgstr "Azar"
 
 #: library/WT/Stats.php:3764
 msgid "Azerbaijan"
@@ -2384,7 +2386,7 @@ msgstr "Azorai"
 #: library/WT/Date/Jalali.php:127
 msgctxt "Abbreviation for Persian month: Bahman"
 msgid "Bah"
-msgstr ""
+msgstr "Bah"
 
 #: library/WT/Stats.php:3773
 msgid "Bahamas"
@@ -2394,25 +2396,25 @@ msgstr "Bahamos"
 #: library/WT/Date/Jalali.php:73
 msgctxt "GENITIVE"
 msgid "Bahman"
-msgstr ""
+msgstr "Bahman"
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:109
 msgctxt "INSTRUMENTAL"
 msgid "Bahman"
-msgstr ""
+msgstr "Bahman"
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:91
 msgctxt "LOCATIVE"
 msgid "Bahman"
-msgstr ""
+msgstr "Bahman"
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:55
 msgctxt "NOMINATIVE"
 msgid "Bahman"
-msgstr ""
+msgstr "Bahman"
 
 #: library/WT/Stats.php:3772
 msgid "Bahrain"
@@ -2425,7 +2427,7 @@ msgstr "Bangladešas"
 #. I18N: gedcom tag BAPM
 #: library/WT/Gedcom/Tag.php:117 modules_v3/missing_facts_report/report.xml:13
 msgid "Baptism"
-msgstr ""
+msgstr "Krikštas"
 
 #: library/WT/Gedcom/Tag.php:417
 msgid "Baptism of a brother"
@@ -2499,7 +2501,7 @@ msgstr "Sūnaus krikštas"
 #. I18N: gedcom tag BARM
 #: library/WT/Gedcom/Tag.php:120 modules_v3/missing_facts_report/report.xml:14
 msgid "Bar mitzvah"
-msgstr ""
+msgstr "Bar mitzvah"
 
 #: library/WT/Stats.php:3780
 msgid "Barbados"
@@ -2512,7 +2514,7 @@ msgstr "Pagrindiniai"
 #. I18N: gedcom tag BASM
 #: library/WT/Gedcom/Tag.php:123 modules_v3/missing_facts_report/report.xml:15
 msgid "Bat mitzvah"
-msgstr ""
+msgstr "Bat mitzvah"
 
 #. I18N: Name of a module
 #: modules_v3/batch_update/admin_batch_update.php:60
@@ -2592,7 +2594,7 @@ msgstr "Billings, Montana"
 #. I18N: gedcom tag BLOB
 #: library/WT/Gedcom/Tag.php:132
 msgid "Binary data object"
-msgstr ""
+msgstr "Dvejetainis duomenų objektas"
 
 #: library/WT/Gedcom/Code/Temp.php:74
 msgid "Birmingham, Alabama"
@@ -2738,7 +2740,7 @@ msgstr "Gimė"
 
 #: modules_v3/birth_report/report.xml:6
 msgid "Birth Place contains"
-msgstr "Gimimo vietos yra"
+msgstr "Gimimo vieta turi"
 
 #: library/WT/Stats.php:986 statistics.php:562
 msgid "Birth by country"
@@ -2893,7 +2895,7 @@ msgstr "Skrajutė"
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: library/WT/Gedcom/Code/Stat.php:54
 msgid "Born in the covenant"
-msgstr ""
+msgstr "Gimė sandoroje"
 
 #: library/WT/Stats.php:3774
 msgid "Bosnia and Herzegovina"
@@ -2936,7 +2938,7 @@ msgstr "Atšakos"
 #: library/WT/Controller/Branches.php:41
 #, php-format
 msgid "Branches of the %s family"
-msgstr ""
+msgstr "Atšakos %s šeimos"
 
 #: library/WT/Stats.php:3779
 msgid "Brazil"
@@ -3001,22 +3003,22 @@ msgstr "Brolis"
 #: library/WT/Date/French.php:66
 msgctxt "GENITIVE"
 msgid "Brumaire"
-msgstr ""
+msgstr "Brumaire"
 
 #: library/WT/Date/French.php:100
 msgctxt "INSTRUMENTAL"
 msgid "Brumaire"
-msgstr ""
+msgstr "Brumaire"
 
 #: library/WT/Date/French.php:83
 msgctxt "LOCATIVE"
 msgid "Brumaire"
-msgstr ""
+msgstr "Brumaire"
 
 #: library/WT/Date/French.php:49
 msgctxt "NOMINATIVE"
 msgid "Brumaire"
-msgstr ""
+msgstr "Brumaire"
 
 #: library/WT/Stats.php:3781
 msgid "Brunei Darussalam"
@@ -3083,7 +3085,7 @@ msgstr "Senelės laidotuvės"
 
 #: library/WT/Gedcom/Tag.php:489
 msgid "Burial of a grandparent"
-msgstr ""
+msgstr "Senelio(ės) laidotuvės"
 
 #: library/WT/Gedcom/Tag.php:469
 msgid "Burial of a grandson"
@@ -3169,7 +3171,7 @@ msgstr "Žmonos laidotuvės"
 
 #: modules_v3/cemetery_report/report.xml:5
 msgid "Burial place contains"
-msgstr ""
+msgstr "Laidojimo vieta turi"
 
 #: library/WT/Stats.php:3769
 msgid "Burkina Faso"
@@ -3195,7 +3197,7 @@ msgstr "Pirkėjas"
 
 #: help_text.php:1414
 msgid "By default this chart does not show spouses for the descendants because it makes the chart harder to read and understand.  Turning this option on will show spouses on the chart."
-msgstr ""
+msgstr "Normaliai ši diagrama nerodo palikuonių sutuoktinių nes tada ji tampa sunkiau skaitoma ir suprantama. Įjungiant šį pasirinkimą sutuoktiniai bus pridėti. "
 
 #. I18N: Help text for the "Port number" site configuration setting
 #: help_text.php:769
@@ -3210,14 +3212,15 @@ msgstr "Įprastai rodomos vietovės susietos su jūsų šeimos medžiu. Pasirink
 #, php-format
 msgid "By default, your server allows scripts to run for %s second."
 msgid_plural "By default, your server allows scripts to run for %s seconds."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Normaliai jūsų serveris leidžia skriptus veikti %s sekunde."
+msgstr[1] "Normaliai jūsų serveris leidžia skriptus veikti %s sekundes."
+msgstr[2] "Normaliai jūsų serveris leidžia skriptus veikti %s sekundžių."
 
 #. I18N: %s is an amount of memory, such as 32MB
 #: help_text.php:680
 #, php-format
 msgid "By default, your server allows scripts to use %s of memory."
-msgstr ""
+msgstr "Normaliai jūsų serveris leidžia skriptams naudotis %s atminties."
 
 #. I18N: Name of a module.  CKEditor is a trademark.  Do not translate it?  http://ckeditor.com
 #: modules_v3/ckeditor/module.php:34
@@ -3309,11 +3312,11 @@ msgstr "Mirties priežastis"
 
 #: admin_site_upgrade.php:202
 msgid "Caution: old modules may not work, or they may prevent webtrees from working."
-msgstr ""
+msgstr "Atsargiai: seni moduliai gali neveikti, arba jie gali sustabdyti webtrees veikla."
 
 #: admin_site_upgrade.php:265
 msgid "Caution: old themes may not work, or they may prevent webtrees from working."
-msgstr ""
+msgstr "Atsargiai: senos temos gali neveikti, arba jie gali sustabdyti webtrees veikla."
 
 #: library/WT/Stats.php:3807
 msgid "Cayman Islands"
@@ -3420,7 +3423,7 @@ msgstr[2] "Paskutinių %s dienų pakeitimai"
 
 #: themes/_administration/header.php:123
 msgid "Changes log"
-msgstr ""
+msgstr "Pakeitimų sąrašas"
 
 #: library/WT/Stats.php:3792
 msgid "Channel Islands"
@@ -3452,17 +3455,17 @@ msgstr "Patikrinkite šio aplanko prieigos teises."
 
 #: admin_site_upgrade.php:377
 msgid "Check file permissions…"
-msgstr ""
+msgstr "Tikrinami bylos leidimai…"
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:116
 msgid "Check for custom modules…"
-msgstr ""
+msgstr "Ieškoma nestandartinių modulių…"
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:218
 msgid "Check for custom themes…"
-msgstr ""
+msgstr "Ieškoma nestandartinių temų…"
 
 #: admin_trees_check.php:28 themes/_administration/header.php:122
 msgid "Check for errors"
@@ -3471,7 +3474,7 @@ msgstr "Klaidų tikrinimas"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:97
 msgid "Check for pending changes…"
-msgstr ""
+msgstr "Ieškoma laukiamų pakeitimų…"
 
 #: help_text.php:460 relationship.php:138
 msgid "Check relationships by marriage"
@@ -3523,7 +3526,7 @@ msgstr "Vaikų šeimoje"
 #: modules_v3/ahnentafel_report/report.xml:396
 #: modules_v3/descendancy_report/report.xml:481
 msgid "Children of "
-msgstr "vaikai "
+msgstr "Vaikai "
 
 #. I18N: In the Icelandic surname tradition, ...
 #: help_text.php:964
@@ -3533,22 +3536,22 @@ msgstr ""
 #. I18N: In the Spanish surname tradition, ...
 #: help_text.php:954
 msgid "Children take one surname from the father and one surname from the mother."
-msgstr ""
+msgstr "Vaikai gauna viena tėvo pavardę ir viena motinos pavardę."
 
 #. I18N: In the Portuguese surname tradition, ...
 #: help_text.php:959
 msgid "Children take one surname from the mother and one surname from the father."
-msgstr ""
+msgstr "Vaikai gauna viena motinos pavardę ir viena tėvo pavardę."
 
 #. I18N: In the patrilineal surname tradition, ...
 #: help_text.php:937 help_text.php:947 help_text.php:968 help_text.php:975
 msgid "Children take their father’s surname."
-msgstr ""
+msgstr "Vaikai gauna tėvo pavardę."
 
 #. I18N: In the matrilineal surname tradition, ...
 #: help_text.php:943
 msgid "Children take their mother’s surname."
-msgstr ""
+msgstr "Vaikai gauna motinos pavardę."
 
 #: library/WT/Stats.php:3793
 msgid "Chile"
@@ -3667,7 +3670,7 @@ msgstr "Kalėdų sala"
 
 #: library/WT/Gedcom/Code/Rela.php:73
 msgid "Circumciser"
-msgstr ""
+msgstr "Apipjaustytojas"
 
 #. I18N: gedcom tag PAGE
 #: library/WT/Gedcom/Tag.php:273 modules_v3/fact_sources/report.xml:71
@@ -3699,22 +3702,22 @@ msgstr "Civilinė santuoka"
 
 #: library/WT/Gedcom/Code/Rela.php:78
 msgid "Civil registrar"
-msgstr "Civilinė metrikacija"
+msgstr "Civilinės metrikos registratorius(ė)"
 
 #: library/WT/Gedcom/Code/Rela.php:77
 msgctxt "FEMALE"
 msgid "Civil registrar"
-msgstr ""
+msgstr "Civilinės metrikos registratorė"
 
 #: library/WT/Gedcom/Code/Rela.php:76
 msgctxt "MALE"
 msgid "Civil registrar"
-msgstr ""
+msgstr "Civilinės metrikos registratorius"
 
 #. I18N: The “Data folder” is a configuration setting
 #: admin_site_clean.php:28 themes/_administration/header.php:102
 msgid "Clean up data folder"
-msgstr ""
+msgstr "Išvalyti duomenų aplanką"
 
 #: lifespan.php:196 timeline.php:302
 msgid "Clear chart"
@@ -3775,7 +3778,7 @@ msgstr ""
 #. I18N: The local time on the client/browser
 #: themes/_administration/header.php:84
 msgid "Client time"
-msgstr ""
+msgstr "Kliento laikas"
 
 #. I18N: Name of a module
 #: modules_v3/clippings/module.php:32
@@ -3826,7 +3829,7 @@ msgstr "Columbus, Ohajo"
 
 #: medialist.php:134
 msgid "Columns per page"
-msgstr ""
+msgstr "Stulpeliai per puslapį"
 
 #. I18N: gedcom tag COMM
 #: admin_site_access.php:282 library/WT/Gedcom/Tag.php:154
@@ -3966,12 +3969,12 @@ msgstr "Kopijuoti"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:417
 msgid "Copy files…"
-msgstr ""
+msgstr "Kopijuoti bylas…"
 
 #: admin_site_upgrade.php:388
 #, php-format
 msgid "Copy these files to the folder %s, replacing any that have the same name."
-msgstr ""
+msgstr "Nukopijuokite šias bylas į %s aplanką, pakeičiant visas kurios turi tą patį pavadinimą."
 
 #. I18N: gedcom tag COPR
 #: library/WT/Gedcom/Tag.php:161
@@ -4027,7 +4030,7 @@ msgstr "Apskritis"
 
 #: admin_media.php:284
 msgid "Create"
-msgstr ""
+msgstr "Sukurti"
 
 #: admin_trees_manage.php:246 help_text.php:1067
 msgid "Create a new family tree"
@@ -4041,7 +4044,7 @@ msgstr "Sukurti naują asmenį"
 #. I18N: A media object that is not linked to any other record
 #: addmedia.php:89 addmedia.php:406 admin_site_other.php:69
 msgid "Create a new media object"
-msgstr ""
+msgstr "Sukurti naują medijos objektą"
 
 #. I18N: A note that is not linked to any other record
 #: admin_site_other.php:55
@@ -4235,11 +4238,11 @@ msgstr "Pasirinktinis įvykis"
 
 #: includes/functions/functions_print.php:975
 msgid "Custom fact"
-msgstr ""
+msgstr "Pasirinktinis faktas"
 
 #: admin_site_upgrade.php:190 admin_site_upgrade.php:193
 msgid "Custom module"
-msgstr ""
+msgstr "Pasirinktinis modulis"
 
 #: find.php:480
 msgid "Custom tags"
@@ -4247,7 +4250,7 @@ msgstr "Pasirinktinės žymės"
 
 #: admin_site_upgrade.php:250 admin_site_upgrade.php:253
 msgid "Custom theme"
-msgstr ""
+msgstr "Pasirinktinė tema"
 
 #: admin_site_config.php:163 help_text.php:1039
 msgid "Custom welcome text"
@@ -4355,7 +4358,7 @@ msgstr "Įvaikinimo data"
 #: library/WT/Gedcom/Tag.php:118
 #: modules_v3/missing_facts_report/report.xml:125
 msgid "Date of baptism"
-msgstr ""
+msgstr "Krikšto data"
 
 #: library/WT/Gedcom/Tag.php:121
 #: modules_v3/missing_facts_report/report.xml:208
@@ -4409,7 +4412,7 @@ msgstr "Mirties data"
 
 #: library/WT/Gedcom/Tag.php:204
 msgid "Date of divorce"
-msgstr ""
+msgstr "Skyrybų data"
 
 #: library/WT/Gedcom/Tag.php:186
 msgid "Date of emigration"
@@ -4489,11 +4492,11 @@ msgstr "Registracijos data"
 #: help_text.php:448
 #, php-format
 msgid "Dates are only converted if they are valid for the calendar.  For example, only dates between %1$s and %2$s will be converted to the French calendar and only dates after %3$s will be converted to the Gregorian calendar."
-msgstr ""
+msgstr "Datos yra pakeistos tik jeigu jos galioja tame kalendoriuje. Pazyzdžiui tik datos tarp %1$s ir %2$s bus pakeistos į Prancūzų kalendorių ir tik datos po %3$s bus pakeistos į Grigaliaus kalendorių."
 
 #: help_text.php:173
 msgid "Dates are stored using English abbreviations and keywords.  Shortcuts are available as alternatives to these abbreviations and keywords."
-msgstr "Datos yra saugomos naudojant anglų santrumpas ir žodžius. Nuorodos yra prieinamas kaip alternatyva šiems sutrumpinimams ir raktažodžiams."
+msgstr "Datos yra saugomos naudojant Anglų santrumpas ir žodžius. Nuorodos yra prieinamos kaip alternatyva šiems sutrumpinimams ir raktažodžiams."
 
 #: modules_v3/family_group_report/report.xml:797
 #: modules_v3/individual_ext_report/report.xml:553
@@ -4649,7 +4652,7 @@ msgstr "Mirė"
 
 #: modules_v3/death_report/report.xml:6
 msgid "Death Place contains"
-msgstr ""
+msgstr "Mirties vieta turi"
 
 #: library/WT/Stats.php:1003 statistics.php:570
 msgid "Death by country"
@@ -4845,7 +4848,7 @@ msgstr "Gruodžio"
 
 #: library/WT/Date/French.php:130
 msgid "Decidi"
-msgstr ""
+msgstr "Decidi"
 
 #: modules_v3/html/module.php:298
 msgid "Default"
@@ -4853,7 +4856,7 @@ msgstr "Numatytas"
 
 #: modules_v3/gedcom_block/module.php:49
 msgid "Default chart"
-msgstr ""
+msgstr "Įprasta diagrama"
 
 #: admin_trees_manage.php:244 help_text.php:1113
 msgid "Default family tree"
@@ -4862,7 +4865,7 @@ msgstr "Įprastas šeimos medis"
 #: admin_trees_config.php:241 admin_users.php:228 admin_users.php:432
 #: edituser.php:143 help_text.php:1118 modules_v3/gedcom_block/module.php:50
 msgid "Default individual"
-msgstr ""
+msgstr "Įprastas asmuo"
 
 #: modules_v3/googlemap/module.php:264
 msgid "Default map type"
@@ -4936,7 +4939,7 @@ msgstr "Ištrinti pažymėtas žinutes"
 
 #: modules_v3/googlemap/admin_places.php:337
 msgid "Delete all existing geographic data before importing the file."
-msgstr ""
+msgstr "Prieš importuodami bylą ištrinkite visus esamus geografinius duomenis."
 
 #: themes/_administration/header.php:135
 msgid "Delete inactive users"
@@ -4949,7 +4952,7 @@ msgstr "Ištrinti vardą"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:466
 msgid "Delete temporary files…"
-msgstr ""
+msgstr "Ištrinti laikinas bylas…"
 
 #: admin_site_clean.php:88
 msgid "Deleted files:"
@@ -4977,7 +4980,7 @@ msgstr "Denver, Kolorado"
 
 #: admin_site_upgrade.php:84
 msgid "Depending on your server configuration, you may be able to upgrade automatically."
-msgstr ""
+msgstr "Priklausomai nuo jūsų serverio, jums gali būti suteikta galimybė atnaujinti automatiškai."
 
 #: help_text.php:1222
 msgid "Descendant generations"
@@ -5056,79 +5059,79 @@ msgstr "Detroit, Mičiganas"
 #: library/WT/Date/Jalali.php:126
 msgctxt "Abbreviation for Persian month: Dey"
 msgid "Dey"
-msgstr ""
+msgstr "Dey"
 
 #. I18N: 10th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:72
 msgctxt "GENITIVE"
 msgid "Dey"
-msgstr ""
+msgstr "Dey"
 
 #. I18N: 10th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:108
 msgctxt "INSTRUMENTAL"
 msgid "Dey"
-msgstr ""
+msgstr "Dey"
 
 #. I18N: 10th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:90
 msgctxt "LOCATIVE"
 msgid "Dey"
-msgstr ""
+msgstr "Dey"
 
 #. I18N: 10th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:54
 msgctxt "NOMINATIVE"
 msgid "Dey"
-msgstr ""
+msgstr "Dey"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: library/WT/Date/Hijri.php:74
 msgctxt "GENITIVE"
 msgid "Dhu al-Hijjah"
-msgstr ""
+msgstr "Dhu al-Hijjah"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: library/WT/Date/Hijri.php:108
 msgctxt "INSTRUMENTAL"
 msgid "Dhu al-Hijjah"
-msgstr ""
+msgstr "Dhu al-Hijjah"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: library/WT/Date/Hijri.php:91
 msgctxt "LOCATIVE"
 msgid "Dhu al-Hijjah"
-msgstr ""
+msgstr "Dhu al-Hijjah"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: library/WT/Date/Hijri.php:57
 msgctxt "NOMINATIVE"
 msgid "Dhu al-Hijjah"
-msgstr ""
+msgstr "Dhu al-Hijjah"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: library/WT/Date/Hijri.php:73
 msgctxt "GENITIVE"
 msgid "Dhu al-Qi’dah"
-msgstr ""
+msgstr "Dhu al-Qi’dah"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: library/WT/Date/Hijri.php:107
 msgctxt "INSTRUMENTAL"
 msgid "Dhu al-Qi’dah"
-msgstr ""
+msgstr "Dhu al-Qi’dah"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: library/WT/Date/Hijri.php:90
 msgctxt "LOCATIVE"
 msgid "Dhu al-Qi’dah"
-msgstr ""
+msgstr "Dhu al-Qi’dah"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: library/WT/Date/Hijri.php:56
 msgctxt "NOMINATIVE"
 msgid "Dhu al-Qi’dah"
-msgstr ""
+msgstr "Dhu al-Qi’dah"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: library/WT/Gedcom/Code/Stat.php:60
@@ -5162,11 +5165,11 @@ msgstr "Tiesioginė protėvių ir jų šeimų linija"
 
 #: admin_site_upgrade.php:201
 msgid "Disable these modules"
-msgstr ""
+msgstr "Išjunkite šiuos modulius"
 
 #: admin_site_upgrade.php:264
 msgid "Disable these themes"
-msgstr ""
+msgstr "Išjunkite šias temas"
 
 #. I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options
 #: library/WT/I18N.php:625
@@ -5220,7 +5223,7 @@ msgstr "Jei norite išsaugoti orginalų vardą, tai nekeisti."
 
 #: modules_v3/googlemap/admin_places.php:341
 msgid "Do not create new locations, just import coordinates for existing locations."
-msgstr ""
+msgstr "Nekurti naujų vietų, tik įkelti koordinatės esamom vietom."
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: library/WT/Gedcom/Code/Stat.php:73
@@ -5253,17 +5256,17 @@ msgstr "Dominikos Respublika"
 
 #: admin_trees_manage.php:221 modules_v3/googlemap/admin_places.php:675
 msgid "Download"
-msgstr "Atsisiųsti"
+msgstr "Parsisiųsti"
 
 #. I18N: The system is about to [...]; %s is a URL.
 #: admin_site_upgrade.php:299
 #, php-format
 msgid "Download %s…"
-msgstr ""
+msgstr "Parsisiųsti %s…"
 
 #: mediaviewer.php:104
 msgid "Download File"
-msgstr "Parsisiųsti failą"
+msgstr "Parsisiųsti bylą"
 
 #: admin_trees_download.php:30
 msgid "Download GEDCOM"
@@ -5276,19 +5279,19 @@ msgstr "Parsisiųsti dabar"
 
 #: help_text.php:1128
 msgid "Download ZIP file"
-msgstr "Atsisiųsti ZIP failą"
+msgstr "Parsisiųsti ZIP bylą"
 
 #: help_text.php:1123
 msgid "Download family tree"
-msgstr "Atsisiųsti šeimos medį"
+msgstr "Parsisiųsti šeimos medį"
 
 #: modules_v3/googlemap/admin_places.php:667
 msgid "Download geographic data"
-msgstr ""
+msgstr "Parsisiųsti geografinius duomenis"
 
 #: library/WT/Date/French.php:122
 msgid "Duodi"
-msgstr ""
+msgstr "Duodi"
 
 #: admin_users.php:261 edituser.php:59 login.php:268
 msgid "Duplicate email address.  A user with that email already exists."
@@ -5470,22 +5473,22 @@ msgstr "Aukštis"
 #: library/WT/Date/Jewish.php:112
 msgctxt "GENITIVE"
 msgid "Elul"
-msgstr ""
+msgstr "Elul"
 
 #: library/WT/Date/Jewish.php:148
 msgctxt "INSTRUMENTAL"
 msgid "Elul"
-msgstr ""
+msgstr "Elul"
 
 #: library/WT/Date/Jewish.php:130
 msgctxt "LOCATIVE"
 msgid "Elul"
-msgstr ""
+msgstr "Elul"
 
 #: library/WT/Date/Jewish.php:94
 msgctxt "NOMINATIVE"
 msgid "Elul"
-msgstr ""
+msgstr "Elul"
 
 #: admin_users.php:573
 msgid "Email"
@@ -5565,7 +5568,7 @@ msgstr "Įjungus šią parinktį, bus priversti visi svetainės lankytojai prisi
 #. I18N [...] of a range of addresses
 #: admin_site_access.php:278
 msgid "End IP address"
-msgstr ""
+msgstr "Galutinis IP adresas"
 
 #: lifespan.php:171
 msgid "End year"
@@ -5578,7 +5581,7 @@ msgstr "Užbaigiama sritis nuo datų pakeitimo"
 #. I18N: http://en.wikipedia.org/wiki/Endowment_house
 #: library/WT/Gedcom/Code/Temp.php:96
 msgid "Endowment House"
-msgstr ""
+msgstr "Endowment House"
 
 #. I18N: gedcom tag ENGA
 #: library/WT/Gedcom/Tag.php:191 modules_v3/missing_facts_report/report.xml:17
@@ -5674,7 +5677,7 @@ msgstr "Pusiaujo Gvinėja"
 
 #: library/WT/Stats.php:3820
 msgid "Eritrea"
-msgstr ""
+msgstr "Eritrėja"
 
 #: downloadbackup.php:32
 msgid "Error"
@@ -5688,31 +5691,31 @@ msgstr ""
 #: library/WT/Date/Jalali.php:128
 msgctxt "Abbreviation for Persian month: Esfand"
 msgid "Esf"
-msgstr ""
+msgstr "Esf"
 
 #. I18N: 12th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:74
 msgctxt "GENITIVE"
 msgid "Esfand"
-msgstr ""
+msgstr "Esfand"
 
 #. I18N: 12th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:110
 msgctxt "INSTRUMENTAL"
 msgid "Esfand"
-msgstr ""
+msgstr "Esfand"
 
 #. I18N: 12th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:92
 msgctxt "LOCATIVE"
 msgid "Esfand"
-msgstr ""
+msgstr "Esfand"
 
 #. I18N: 12th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:56
 msgctxt "NOMINATIVE"
 msgid "Esfand"
-msgstr ""
+msgstr "Esfand"
 
 #: admin_trees_config.php:786 help_text.php:843
 msgid "Estimated dates for birth and death"
@@ -6157,31 +6160,31 @@ msgstr "Vėduoklės diagrama %s"
 #: library/WT/Date/Jalali.php:117
 msgctxt "Abbreviation for Persian month: Farvardin"
 msgid "Far"
-msgstr ""
+msgstr "Far"
 
 #. I18N:  1st month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:63
 msgctxt "GENITIVE"
 msgid "Farvardin"
-msgstr ""
+msgstr "Farvardin"
 
 #. I18N:  1st month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:99
 msgctxt "INSTRUMENTAL"
 msgid "Farvardin"
-msgstr ""
+msgstr "Farvardin"
 
 #. I18N:  1st month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:81
 msgctxt "LOCATIVE"
 msgid "Farvardin"
-msgstr ""
+msgstr "Farvardin"
 
 #. I18N:  1st month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:45
 msgctxt "NOMINATIVE"
 msgid "Farvardin"
-msgstr ""
+msgstr "Farvardin"
 
 #: modules_v3/bdm_report/report.xml:115
 #: modules_v3/family_group_report/report.xml:461
@@ -6409,22 +6412,22 @@ msgstr "Flandrija"
 #: library/WT/Date/French.php:72
 msgctxt "GENITIVE"
 msgid "Floréal"
-msgstr ""
+msgstr "Floréal"
 
 #: library/WT/Date/French.php:106
 msgctxt "INSTRUMENTAL"
 msgid "Floréal"
-msgstr ""
+msgstr "Floréal"
 
 #: library/WT/Date/French.php:89
 msgctxt "LOCATIVE"
 msgid "Floréal"
-msgstr ""
+msgstr "Floréal"
 
 #: library/WT/Date/French.php:55
 msgctxt "NOMINATIVE"
 msgid "Floréal"
-msgstr ""
+msgstr "Floréal"
 
 #: medialist.php:79
 msgid "Folder"
@@ -6592,22 +6595,22 @@ msgstr "Draugas"
 #: library/WT/Date/French.php:67
 msgctxt "GENITIVE"
 msgid "Frimaire"
-msgstr ""
+msgstr "Frimaire"
 
 #: library/WT/Date/French.php:101
 msgctxt "INSTRUMENTAL"
 msgid "Frimaire"
-msgstr ""
+msgstr "Frimaire"
 
 #: library/WT/Date/French.php:84
 msgctxt "LOCATIVE"
 msgid "Frimaire"
-msgstr ""
+msgstr "Frimaire"
 
 #: library/WT/Date/French.php:50
 msgctxt "NOMINATIVE"
 msgid "Frimaire"
-msgstr ""
+msgstr "Frimaire"
 
 #. I18N: %s are both user-input date fields
 #: admin_site_change.php:248 admin_site_logs.php:218
@@ -6618,22 +6621,22 @@ msgstr "Nuo %s iki %s"
 #: library/WT/Date/French.php:76
 msgctxt "GENITIVE"
 msgid "Fructidor"
-msgstr ""
+msgstr "Fructidor"
 
 #: library/WT/Date/French.php:110
 msgctxt "INSTRUMENTAL"
 msgid "Fructidor"
-msgstr ""
+msgstr "Fructidor"
 
 #: library/WT/Date/French.php:93
 msgctxt "LOCATIVE"
 msgid "Fructidor"
-msgstr ""
+msgstr "Fructidor"
 
 #: library/WT/Date/French.php:59
 msgctxt "NOMINATIVE"
 msgid "Fructidor"
-msgstr ""
+msgstr "Fructidor"
 
 #: library/WT/Gedcom/Code/Temp.php:100
 msgid "Fukuoka, Japan"
@@ -6766,22 +6769,22 @@ msgstr "Vokėtija"
 #: library/WT/Date/French.php:71
 msgctxt "GENITIVE"
 msgid "Germinal"
-msgstr ""
+msgstr "Germinal"
 
 #: library/WT/Date/French.php:105
 msgctxt "INSTRUMENTAL"
 msgid "Germinal"
-msgstr ""
+msgstr "Germinal"
 
 #: library/WT/Date/French.php:88
 msgctxt "LOCATIVE"
 msgid "Germinal"
-msgstr ""
+msgstr "Germinal"
 
 #: library/WT/Date/French.php:54
 msgctxt "NOMINATIVE"
 msgid "Germinal"
-msgstr ""
+msgstr "Germinal"
 
 #: library/WT/Stats.php:3836
 msgid "Ghana"
@@ -6919,7 +6922,7 @@ msgstr "Guamas"
 
 #: library/WT/Gedcom/Code/Rela.php:129
 msgid "Guardian"
-msgstr ""
+msgstr "Globėja(s)"
 
 #: library/WT/Gedcom/Code/Rela.php:128
 msgctxt "FEMALE"
@@ -7000,7 +7003,7 @@ msgstr "Jis vedė"
 
 #: modules_v3/ahnentafel_report/report.xml:219
 msgid "He resided at"
-msgstr ""
+msgstr "Jis gyveno"
 
 #: modules_v3/descendancy_report/report.xml:399
 msgid "He was born"
@@ -7132,22 +7135,22 @@ msgstr "Hermosillo, Meksika"
 #: library/WT/Date/Jewish.php:101
 msgctxt "GENITIVE"
 msgid "Heshvan"
-msgstr ""
+msgstr "Heshvan"
 
 #: library/WT/Date/Jewish.php:137
 msgctxt "INSTRUMENTAL"
 msgid "Heshvan"
-msgstr ""
+msgstr "Heshvan"
 
 #: library/WT/Date/Jewish.php:119
 msgctxt "LOCATIVE"
 msgid "Heshvan"
-msgstr ""
+msgstr "Heshvan"
 
 #: library/WT/Date/Jewish.php:83
 msgctxt "NOMINATIVE"
 msgid "Heshvan"
-msgstr ""
+msgstr "Heshvan"
 
 #: admin_trees_config.php:221
 msgid "Hide &amp; show"
@@ -7354,7 +7357,7 @@ msgstr ""
 #: help_text.php:281
 #, php-format
 msgid "If the surname is unknown, use empty slashes: <%s>Mary //<%s>"
-msgstr ""
+msgstr "Jeigu pavardė nėra žinoma naudokite tuščias nerijas: <%s>Marija //<%s>"
 
 #: help_text.php:1458
 msgid "If this box is checked, this user will be able to edit his account information.  Although this is not generally recommended, you can create a single user name and password for multiple users.  When this box is unchecked for all users with the shared account, they are prevented from editing the account information and only an administrator can alter that account."
@@ -7443,7 +7446,7 @@ msgstr "Paveikslo matmenys"
 
 #: admin_trees_config.php:719
 msgid "Images without watermarks"
-msgstr ""
+msgstr "Paveikslai be vandenženklių"
 
 #: modules_v3/family_nav/module.php:87
 msgid "Immediate Family"
@@ -7515,7 +7518,7 @@ msgstr "Įtraukti mediją (automatiškai suspaus failus)"
 #. I18N: Label for check-box
 #: admin_media.php:572 medialist.php:106
 msgid "Include subfolders"
-msgstr ""
+msgstr "Įtraukti poaplankius"
 
 #: lifespan.php:153
 msgid "Include the individual’s immediate family?"
@@ -7709,7 +7712,7 @@ msgstr "Izraelis"
 
 #: admin_site_upgrade.php:81 admin_site_upgrade.php:85
 msgid "It can take several minutes to download and install the upgrade.  Be patient."
-msgstr ""
+msgstr "Tai gali užtrukti keletą minučių atsisiųsti ir įdiegti atnaujinimą. Būkite kantrūs."
 
 #: library/WT/Stats.php:3865
 msgid "Italy"
@@ -7718,22 +7721,22 @@ msgstr "Italija"
 #: library/WT/Date/Jewish.php:108
 msgctxt "GENITIVE"
 msgid "Iyar"
-msgstr ""
+msgstr "Iyar"
 
 #: library/WT/Date/Jewish.php:144
 msgctxt "INSTRUMENTAL"
 msgid "Iyar"
-msgstr ""
+msgstr "Iyar"
 
 #: library/WT/Date/Jewish.php:126
 msgctxt "LOCATIVE"
 msgid "Iyar"
-msgstr ""
+msgstr "Iyar"
 
 #: library/WT/Date/Jewish.php:90
 msgctxt "NOMINATIVE"
 msgid "Iyar"
-msgstr ""
+msgstr "Iyar"
 
 #. I18N: The Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:40
@@ -7835,49 +7838,49 @@ msgstr "Liepos"
 #: library/WT/Date/Hijri.php:67
 msgctxt "GENITIVE"
 msgid "Jumada al-awwal"
-msgstr ""
+msgstr "Jumada al-awwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal
 #: library/WT/Date/Hijri.php:101
 msgctxt "INSTRUMENTAL"
 msgid "Jumada al-awwal"
-msgstr ""
+msgstr "Jumada al-awwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal
 #: library/WT/Date/Hijri.php:84
 msgctxt "LOCATIVE"
 msgid "Jumada al-awwal"
-msgstr ""
+msgstr "Jumada al-awwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal
 #: library/WT/Date/Hijri.php:50
 msgctxt "NOMINATIVE"
 msgid "Jumada al-awwal"
-msgstr ""
+msgstr "Jumada al-awwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Jumada_al-thani
 #: library/WT/Date/Hijri.php:68
 msgctxt "GENITIVE"
 msgid "Jumada al-thani"
-msgstr ""
+msgstr "Jumada al-thani"
 
 #. I18N: http://en.wikipedia.org/wiki/Jumada_al-thani
 #: library/WT/Date/Hijri.php:102
 msgctxt "INSTRUMENTAL"
 msgid "Jumada al-thani"
-msgstr ""
+msgstr "Jumada al-thani"
 
 #. I18N: http://en.wikipedia.org/wiki/Jumada_al-thani
 #: library/WT/Date/Hijri.php:85
 msgctxt "LOCATIVE"
 msgid "Jumada al-thani"
-msgstr ""
+msgstr "Jumada al-thani"
 
 #. I18N: http://en.wikipedia.org/wiki/Jumada_al-thani
 #: library/WT/Date/Hijri.php:51
 msgctxt "NOMINATIVE"
 msgid "Jumada al-thani"
-msgstr ""
+msgstr "Jumada al-thani"
 
 #: library/WT/Date/Calendar.php:196
 msgctxt "Abbreviation for June"
@@ -7928,31 +7931,31 @@ msgstr "Raktinių žodžių pavyzdžiai"
 #: library/WT/Date/Jalali.php:119
 msgctxt "Abbreviation for Persian month: Khordad"
 msgid "Khor"
-msgstr ""
+msgstr "Khor"
 
 #. I18N:  3rd month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:65
 msgctxt "GENITIVE"
 msgid "Khordad"
-msgstr ""
+msgstr "Khordad"
 
 #. I18N:  3rd month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:101
 msgctxt "INSTRUMENTAL"
 msgid "Khordad"
-msgstr ""
+msgstr "Khordad"
 
 #. I18N:  3rd month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:83
 msgctxt "LOCATIVE"
 msgid "Khordad"
-msgstr ""
+msgstr "Khordad"
 
 #. I18N:  3rd month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:47
 msgctxt "NOMINATIVE"
 msgid "Khordad"
-msgstr ""
+msgstr "Khordad"
 
 #: library/WT/Gedcom/Code/Temp.php:115
 msgid "Kiev, Ukraine"
@@ -7965,22 +7968,22 @@ msgstr "Kiribatis"
 #: library/WT/Date/Jewish.php:102
 msgctxt "GENITIVE"
 msgid "Kislev"
-msgstr ""
+msgstr "Kislev"
 
 #: library/WT/Date/Jewish.php:138
 msgctxt "INSTRUMENTAL"
 msgid "Kislev"
-msgstr ""
+msgstr "Kislev"
 
 #: library/WT/Date/Jewish.php:120
 msgctxt "LOCATIVE"
 msgid "Kislev"
-msgstr ""
+msgstr "Kislev"
 
 #: library/WT/Date/Jewish.php:84
 msgctxt "NOMINATIVE"
 msgid "Kislev"
-msgstr ""
+msgstr "Kislev"
 
 #: library/WT/Gedcom/Code/Temp.php:116
 msgid "Kona, Hawaii"
@@ -8305,12 +8308,12 @@ msgstr "Įkeliama…"
 #. I18N: “Local files” are stored on this computer
 #: admin_media.php:539
 msgid "Local files"
-msgstr ""
+msgstr "Vietinės bylos"
 
 #. I18N: gedcom tag _LOC
 #: library/WT/Gedcom/Tag.php:730
 msgid "Location"
-msgstr ""
+msgstr "Vietovė"
 
 #: modules_v3/googlemap/admin_places.php:521
 msgid "Location not removed: this location contains sub-locations"
@@ -8550,7 +8553,7 @@ msgstr "Kovo"
 
 #: help_text.php:530
 msgid "Markdown is a simple system of formatting, used on websites such as Wikipedia.  It uses unobtrusive punctuation characters to create headings and sub-headings, bold and italic text, lists, tables, etc."
-msgstr ""
+msgstr "Markdown yra paprasta formatavimo sistema, naudojama svetainių kaip Wikipedia. Ji naudoja neįkyrius skyrybos ženklus kurti antraštes ir papunkčius, paryškintus ir kursyvus raštus, sąrašus, lenteles ir tt"
 
 #. I18N: gedcom tag MARR
 #: library/WT/Gedcom/Tag.php:238 modules_v3/ahnentafel_report/report.xml:453
@@ -8615,7 +8618,7 @@ msgstr "Santuokos datos srities pradžia"
 
 #: modules_v3/marriage_report/report.xml:6
 msgid "Marriage Place contains"
-msgstr ""
+msgstr "Santuokos vieta turi"
 
 #. I18N: gedcom tag MARB
 #: library/WT/Gedcom/Tag.php:233 modules_v3/missing_facts_report/report.xml:19
@@ -8795,7 +8798,7 @@ msgstr "Martinika"
 #. I18N: Pretend to be another user, by logging in as them
 #: admin_users.php:215
 msgid "Masquerade as this user"
-msgstr ""
+msgstr "Maskuotis kaip šis vartotojas"
 
 #: modules_v3/batch_update/plugins/search_replace.php:90
 msgid "Match the exact text, even if it occurs in the middle of a word."
@@ -8971,31 +8974,31 @@ msgstr "Vidutinės sistemos (5000 individų): 32-64MB, 20-40 sekundžių"
 #: library/WT/Date/Jalali.php:123
 msgctxt "Abbreviation for Persian month: Mehr"
 msgid "Mehr"
-msgstr ""
+msgstr "Mehr"
 
 #. I18N:  7th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:69
 msgctxt "GENITIVE"
 msgid "Mehr"
-msgstr ""
+msgstr "Mehr"
 
 #. I18N:  7th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:105
 msgctxt "INSTRUMENTAL"
 msgid "Mehr"
-msgstr ""
+msgstr "Mehr"
 
 #. I18N:  7th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:87
 msgctxt "LOCATIVE"
 msgid "Mehr"
-msgstr ""
+msgstr "Mehr"
 
 #. I18N:  7th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:51
 msgctxt "NOMINATIVE"
 msgid "Mehr"
-msgstr ""
+msgstr "Mehr"
 
 #: library/WT/Gedcom/Code/Temp.php:128
 msgid "Melbourne, Australia"
@@ -9074,22 +9077,22 @@ msgstr "Žinutės"
 #: library/WT/Date/French.php:74
 msgctxt "GENITIVE"
 msgid "Messidor"
-msgstr ""
+msgstr "Messidor"
 
 #: library/WT/Date/French.php:108
 msgctxt "INSTRUMENTAL"
 msgid "Messidor"
-msgstr ""
+msgstr "Messidor"
 
 #: library/WT/Date/French.php:91
 msgctxt "LOCATIVE"
 msgid "Messidor"
-msgstr ""
+msgstr "Messidor"
 
 #: library/WT/Date/French.php:57
 msgctxt "NOMINATIVE"
 msgid "Messidor"
-msgstr ""
+msgstr "Messidor"
 
 #: library/WT/Stats.php:3894
 msgid "Mexico"
@@ -9257,31 +9260,31 @@ msgstr "Montseratas"
 #: library/WT/Date/Jalali.php:121
 msgctxt "Abbreviation for Persian month: Mordad"
 msgid "Mor"
-msgstr ""
+msgstr "Mor"
 
 #. I18N:  5th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:67
 msgctxt "GENITIVE"
 msgid "Mordad"
-msgstr ""
+msgstr "Mordad"
 
 #. I18N:  5th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:103
 msgctxt "INSTRUMENTAL"
 msgid "Mordad"
-msgstr ""
+msgstr "Mordad"
 
 #. I18N:  5th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:85
 msgctxt "LOCATIVE"
 msgid "Mordad"
-msgstr ""
+msgstr "Mordad"
 
 #. I18N:  5th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:49
 msgctxt "NOMINATIVE"
 msgid "Mordad"
-msgstr ""
+msgstr "Mordad"
 
 #: library/WT/Stats.php:3889
 msgid "Morocco"
@@ -9384,25 +9387,25 @@ msgstr "Mt. Timpanogos, Juta"
 #: library/WT/Date/Hijri.php:63
 msgctxt "GENITIVE"
 msgid "Muharram"
-msgstr ""
+msgstr "Muharram"
 
 #. I18N: http://en.wikipedia.org/wiki/Muharram
 #: library/WT/Date/Hijri.php:97
 msgctxt "INSTRUMENTAL"
 msgid "Muharram"
-msgstr ""
+msgstr "Muharram"
 
 #. I18N: http://en.wikipedia.org/wiki/Muharram
 #: library/WT/Date/Hijri.php:80
 msgctxt "LOCATIVE"
 msgid "Muharram"
-msgstr ""
+msgstr "Muharram"
 
 #. I18N: http://en.wikipedia.org/wiki/Muharram
 #: library/WT/Date/Hijri.php:46
 msgctxt "NOMINATIVE"
 msgid "Muharram"
-msgstr ""
+msgstr "Muharram"
 
 #: includes/functions/functions_print_lists.php:510
 msgid "Multiple marriages"
@@ -9614,7 +9617,7 @@ msgstr "Naujoji Zelandija"
 
 #: admin_site_change.php:261 admin_site_change.php:289
 msgid "New data"
-msgstr ""
+msgstr "Naujos duomenys"
 
 #. I18N: %s is a server name/URL
 #: login.php:314
@@ -9669,22 +9672,22 @@ msgstr "Nigerija"
 #: library/WT/Date/Jewish.php:107
 msgctxt "GENITIVE"
 msgid "Nissan"
-msgstr ""
+msgstr "Nissan"
 
 #: library/WT/Date/Jewish.php:143
 msgctxt "INSTRUMENTAL"
 msgid "Nissan"
-msgstr ""
+msgstr "Nissan"
 
 #: library/WT/Date/Jewish.php:125
 msgctxt "LOCATIVE"
 msgid "Nissan"
-msgstr ""
+msgstr "Nissan"
 
 #: library/WT/Date/Jewish.php:89
 msgctxt "NOMINATIVE"
 msgid "Nissan"
-msgstr ""
+msgstr "Nissan"
 
 #: library/WT/Stats.php:3918
 msgid "Niue"
@@ -9693,22 +9696,22 @@ msgstr "Niue salos"
 #: library/WT/Date/French.php:68
 msgctxt "GENITIVE"
 msgid "Nivôse"
-msgstr ""
+msgstr "Nivôse"
 
 #: library/WT/Date/French.php:102
 msgctxt "INSTRUMENTAL"
 msgid "Nivôse"
-msgstr ""
+msgstr "Nivôse"
 
 #: library/WT/Date/French.php:85
 msgctxt "LOCATIVE"
 msgid "Nivôse"
-msgstr ""
+msgstr "Nivôse"
 
 #: library/WT/Date/French.php:51
 msgctxt "NOMINATIVE"
 msgid "Nivôse"
-msgstr ""
+msgstr "Nivôse"
 
 #: admin_users.php:469 includes/functions/functions_print_facts.php:287
 msgid "No"
@@ -9748,11 +9751,11 @@ msgstr "Nėra susisiekimo būdo"
 
 #: admin_site_upgrade.php:207
 msgid "No custom modules are enabled."
-msgstr ""
+msgstr "Nėra įjungtų nestandartinių modulių"
 
 #: admin_site_upgrade.php:270
 msgid "No custom themes are enabled."
-msgstr ""
+msgstr "Nėra įjungtų nestandartinių temų"
 
 #: admin_trees_check.php:227
 msgid "No errors were found."
@@ -9828,7 +9831,7 @@ msgstr "Tenkinančių sąlygą faktų nerasta"
 
 #: addmedia.php:179 addmedia.php:318 admin_media_upload.php:121
 msgid "No media file was provided."
-msgstr ""
+msgstr "Medijos byla nebuvo suteikta."
 
 #: relationship.php:169
 msgid "No other link between the two individuals could be found."
@@ -9841,7 +9844,7 @@ msgstr "Vietovė nerasta"
 
 #: admin_trees_places.php:121
 msgid "No places were found."
-msgstr ""
+msgstr "Jokių vietovių nerasta."
 
 #: admin_site_config.php:44
 msgid "No predefined text"
@@ -9865,7 +9868,7 @@ msgstr ""
 
 #: admin_site_upgrade.php:67
 msgid "No upgrade information is available."
-msgstr ""
+msgstr "Nėra atnaujinimo informacijos."
 
 #: library/WT/Stats.php:1069
 msgid "Nobody at all"
@@ -10114,7 +10117,7 @@ msgstr "Spa"
 
 #: library/WT/Date/French.php:128
 msgid "Octidi"
-msgstr ""
+msgstr "Octidi"
 
 #: library/WT/Date/Calendar.php:149
 msgctxt "GENITIVE"
@@ -10147,7 +10150,7 @@ msgstr "Oklahoma City, Oklahoma"
 
 #: admin_site_change.php:258 admin_site_change.php:288
 msgid "Old data"
-msgstr ""
+msgstr "Seni duomenys"
 
 #: pedigree.php:67
 msgid "Oldest at bottom"
@@ -10226,7 +10229,7 @@ msgstr "Parametrai:"
 #: library/WT/Date/Jalali.php:118
 msgctxt "Abbreviation for Persian month: Ordibehesht"
 msgid "Ord"
-msgstr ""
+msgstr "Ord"
 
 #: admin_module_menus.php:74 admin_module_sidebar.php:74
 #: admin_module_tabs.php:74
@@ -10237,25 +10240,25 @@ msgstr "Tvarka"
 #: library/WT/Date/Jalali.php:64
 msgctxt "GENITIVE"
 msgid "Ordibehesht"
-msgstr ""
+msgstr "Ordibehesht"
 
 #. I18N:  2nd month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:100
 msgctxt "INSTRUMENTAL"
 msgid "Ordibehesht"
-msgstr ""
+msgstr "Ordibehesht"
 
 #. I18N:  2nd month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:82
 msgctxt "LOCATIVE"
 msgid "Ordibehesht"
-msgstr ""
+msgstr "Ordibehesht"
 
 #. I18N:  2nd month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:46
 msgctxt "NOMINATIVE"
 msgid "Ordibehesht"
-msgstr ""
+msgstr "Ordibehesht"
 
 #. I18N: gedcom tag ORDI
 #: library/WT/Gedcom/Tag.php:268
@@ -10307,7 +10310,7 @@ msgstr "Kiti"
 
 #: modules_v3/googlemap/admin_places.php:345
 msgid "Overwrite existing coordinates."
-msgstr ""
+msgstr "Perrašyti esamas koordinates."
 
 #: statistics.php:69
 msgid "Own charts"
@@ -10330,7 +10333,7 @@ msgstr "Savininkas"
 #. I18N: time format “%A” - between 12:00:01 and 23:59:59
 #: includes/functions/functions_date.php:121
 msgid "P.M."
-msgstr ""
+msgstr "po pietų"
 
 #: help_text.php:1308
 msgid "PGV must be version 4.2.3, or any SVN up to #6973"
@@ -10620,7 +10623,7 @@ msgstr "Rožinis plastikas"
 
 #: library/WT/Stats.php:3928
 msgid "Pitcairn"
-msgstr ""
+msgstr "Pitkerno salos"
 
 #. I18N: gedcom tag PLAC
 #: library/WT/Gedcom/Tag.php:276
@@ -10675,7 +10678,7 @@ msgstr ""
 
 #: library/WT/Gedcom/Tag.php:116
 msgid "Place of LDS baptism"
-msgstr ""
+msgstr "Mormonų krikšto vieta"
 
 #: library/WT/Gedcom/Tag.php:304
 msgid "Place of LDS child sealing"
@@ -10696,7 +10699,7 @@ msgstr "Įvaikinimo vieta"
 #: library/WT/Gedcom/Tag.php:119
 #: modules_v3/missing_facts_report/report.xml:136
 msgid "Place of baptism"
-msgstr ""
+msgstr "Krikšto vieta"
 
 #: library/WT/Gedcom/Tag.php:122
 #: modules_v3/missing_facts_report/report.xml:219
@@ -10857,22 +10860,22 @@ msgstr "Prašome pateikti savo elektroninį paštą, kad galėtume susiekti su j
 #: library/WT/Date/French.php:69
 msgctxt "GENITIVE"
 msgid "Pluviôse"
-msgstr ""
+msgstr "Pluviôse"
 
 #: library/WT/Date/French.php:103
 msgctxt "INSTRUMENTAL"
 msgid "Pluviôse"
-msgstr ""
+msgstr "Pluviôse"
 
 #: library/WT/Date/French.php:86
 msgctxt "LOCATIVE"
 msgid "Pluviôse"
-msgstr ""
+msgstr "Pluviôse"
 
 #: library/WT/Date/French.php:52
 msgctxt "NOMINATIVE"
 msgid "Pluviôse"
-msgstr ""
+msgstr "Pluviôse"
 
 #: library/WT/Stats.php:3933
 msgid "Poland"
@@ -10922,22 +10925,22 @@ msgstr "Pašto indeksas"
 #: library/WT/Date/French.php:73
 msgctxt "GENITIVE"
 msgid "Prairial"
-msgstr ""
+msgstr "Prairial"
 
 #: library/WT/Date/French.php:107
 msgctxt "INSTRUMENTAL"
 msgid "Prairial"
-msgstr ""
+msgstr "Prairial"
 
 #: library/WT/Date/French.php:90
 msgctxt "LOCATIVE"
 msgid "Prairial"
-msgstr ""
+msgstr "Prairial"
 
 #: library/WT/Date/French.php:56
 msgctxt "NOMINATIVE"
 msgid "Prairial"
-msgstr ""
+msgstr "Prairial"
 
 #: modules_v3/googlemap/places_edit.php:258
 msgid "Precision"
@@ -10995,7 +10998,7 @@ msgstr "Dvasininkas"
 
 #: library/WT/Date/French.php:121
 msgid "Primidi"
-msgstr ""
+msgstr "Primidi"
 
 #: modules_v3/family_group_report/report.xml:10
 msgid "Print basic events when blank?"
@@ -11084,7 +11087,7 @@ msgstr "Duomenų kokybė"
 
 #: library/WT/Date/French.php:124
 msgid "Quartidi"
-msgstr ""
+msgstr "Quartidi"
 
 #: modules_v3/faq/module.php:166
 msgid "Question"
@@ -11092,23 +11095,23 @@ msgstr "Klausimas"
 
 #: admin_trees_config.php:1160 help_text.php:510
 msgid "Quick family facts"
-msgstr "Trumpai apie šeimą"
+msgstr "Greiti šeimos faktai"
 
 #: admin_trees_config.php:1123 help_text.php:597
 msgid "Quick individual facts"
-msgstr "Trumpai apie asmenį"
+msgstr "Greiti asmens faktai"
 
 #: admin_trees_config.php:1218 help_text.php:803
 msgid "Quick repository facts"
-msgstr ""
+msgstr "Greiti saugyklos faktai"
 
 #: admin_trees_config.php:1189 help_text.php:914
 msgid "Quick source facts"
-msgstr ""
+msgstr "Greiti šaltinio faktai"
 
 #: library/WT/Date/French.php:125
 msgid "Quintidi"
-msgstr ""
+msgstr "Quintidi"
 
 #. I18N: When replying to an email, the subject becomes “RE: <subject>”
 #: modules_v3/user_messages/module.php:107
@@ -11128,78 +11131,78 @@ msgstr "Rabinas"
 #: library/WT/Date/Hijri.php:65
 msgctxt "GENITIVE"
 msgid "Rabi’ al-awwal"
-msgstr ""
+msgstr "Rabi’ al-awwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: library/WT/Date/Hijri.php:99
 msgctxt "INSTRUMENTAL"
 msgid "Rabi’ al-awwal"
-msgstr ""
+msgstr "Rabi’ al-awwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: library/WT/Date/Hijri.php:82
 msgctxt "LOCATIVE"
 msgid "Rabi’ al-awwal"
-msgstr ""
+msgstr "Rabi’ al-awwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: library/WT/Date/Hijri.php:48
 msgctxt "NOMINATIVE"
 msgid "Rabi’ al-awwal"
-msgstr ""
+msgstr "Rabi’ al-awwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: library/WT/Date/Hijri.php:66
 msgctxt "GENITIVE"
 msgid "Rabi’ al-thani"
-msgstr ""
+msgstr "Rabi’ al-thani"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: library/WT/Date/Hijri.php:100
 msgctxt "INSTRUMENTAL"
 msgid "Rabi’ al-thani"
-msgstr ""
+msgstr "Rabi’ al-thani"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: library/WT/Date/Hijri.php:83
 msgctxt "LOCATIVE"
 msgid "Rabi’ al-thani"
-msgstr ""
+msgstr "Rabi’ al-thani"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: library/WT/Date/Hijri.php:49
 msgctxt "NOMINATIVE"
 msgid "Rabi’ al-thani"
-msgstr ""
+msgstr "Rabi’ al-thani"
 
 #. I18N: This is an Arabic word, pronounced “ra DAH”.  It is child-to-parent pedigree, established by wet-nursing.
 #: library/WT/Gedcom/Code/Pedi.php:67
 msgid "Rada"
-msgstr ""
+msgstr "Rada"
 
 #. I18N: http://en.wikipedia.org/wiki/Rajab
 #: library/WT/Date/Hijri.php:69
 msgctxt "GENITIVE"
 msgid "Rajab"
-msgstr ""
+msgstr "Rajab"
 
 #. I18N: http://en.wikipedia.org/wiki/Rajab
 #: library/WT/Date/Hijri.php:103
 msgctxt "INSTRUMENTAL"
 msgid "Rajab"
-msgstr ""
+msgstr "Rajab"
 
 #. I18N: http://en.wikipedia.org/wiki/Rajab
 #: library/WT/Date/Hijri.php:86
 msgctxt "LOCATIVE"
 msgid "Rajab"
-msgstr ""
+msgstr "Rajab"
 
 #. I18N: http://en.wikipedia.org/wiki/Rajab
 #: library/WT/Date/Hijri.php:52
 msgctxt "NOMINATIVE"
 msgid "Rajab"
-msgstr ""
+msgstr "Rajab"
 
 #: library/WT/Gedcom/Code/Temp.php:157
 msgid "Raleigh, North Carolina"
@@ -11209,25 +11212,25 @@ msgstr "Raleigh, Šiaurės Karolina"
 #: library/WT/Date/Hijri.php:71
 msgctxt "GENITIVE"
 msgid "Ramadan"
-msgstr ""
+msgstr "Ramadan"
 
 #. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: library/WT/Date/Hijri.php:105
 msgctxt "INSTRUMENTAL"
 msgid "Ramadan"
-msgstr ""
+msgstr "Ramadan"
 
 #. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: library/WT/Date/Hijri.php:88
 msgctxt "LOCATIVE"
 msgid "Ramadan"
-msgstr ""
+msgstr "Ramadan"
 
 #. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: library/WT/Date/Hijri.php:54
 msgctxt "NOMINATIVE"
 msgid "Ramadan"
-msgstr ""
+msgstr "Ramadan"
 
 #. I18N: Description of the “Slide show” module
 #: modules_v3/random_media/module.php:37
@@ -11243,14 +11246,14 @@ msgstr "Perrikiuoti vaikus"
 #: library/WT/Controller/Individual.php:299
 #: modules_v3/relatives/module.php:338
 msgid "Re-order families"
-msgstr ""
+msgstr "Perrikiuoti šeimas"
 
 #. I18N: gedcom tag _WT_OBJE_SORT
 #: edit_interface.php:1708 edit_interface.php:1805
 #: library/WT/Gedcom/Tag.php:815 modules_v3/lightbox/module.php:82
 #: modules_v3/lightbox/module.php:83
 msgid "Re-order media"
-msgstr "Pertvarkyti mediją"
+msgstr "Perrikiuoti mediją"
 
 #: admin_users.php:366 admin_users.php:572 edituser.php:135 help_text.php:1352
 #: login.php:303 login.php:402
@@ -11389,7 +11392,7 @@ msgstr "Ryšys su motina"
 #. I18N: gedcom tag PEDI
 #: library/WT/Gedcom/Tag.php:274
 msgid "Relationship to parents"
-msgstr ""
+msgstr "Ryšys su tėvais"
 
 #: relationship.php:173
 #, php-format
@@ -11666,25 +11669,25 @@ msgstr "Sacramento, Kalifornija"
 #: library/WT/Date/Hijri.php:64
 msgctxt "GENITIVE"
 msgid "Safar"
-msgstr ""
+msgstr "Safar"
 
 #. I18N: http://en.wikipedia.org/wiki/Safar
 #: library/WT/Date/Hijri.php:98
 msgctxt "INSTRUMENTAL"
 msgid "Safar"
-msgstr ""
+msgstr "Safar"
 
 #. I18N: http://en.wikipedia.org/wiki/Safar
 #: library/WT/Date/Hijri.php:81
 msgctxt "LOCATIVE"
 msgid "Safar"
-msgstr ""
+msgstr "Safar"
 
 #. I18N: http://en.wikipedia.org/wiki/Safar
 #: library/WT/Date/Hijri.php:47
 msgctxt "NOMINATIVE"
 msgid "Safar"
-msgstr ""
+msgstr "Safar"
 
 #. I18N: The name of a colour-scheme
 #: themes/colors/theme.php:89
@@ -11729,7 +11732,7 @@ msgstr "San Diego, Kalifornija"
 
 #: library/WT/Gedcom/Code/Temp.php:171
 msgid "San Jose, Costa Rica"
-msgstr ""
+msgstr "San Chosė, Kosta Rika"
 
 #: library/WT/Stats.php:3960
 msgid "San Marino"
@@ -11741,7 +11744,7 @@ msgstr "Santjago, Čilė"
 
 #: library/WT/Gedcom/Code/Temp.php:167
 msgid "Santo Domingo, Dom. Rep."
-msgstr ""
+msgstr "Santo Domingas, Dominikos Respublika"
 
 #: library/WT/Gedcom/Code/Temp.php:175
 msgid "Sao Paulo, Brazil"
@@ -11911,7 +11914,7 @@ msgstr "Pasirink vėliavą"
 #. I18N: Description of the “Clippings cart” module
 #: modules_v3/clippings/module.php:37
 msgid "Select records from your family tree and save them as a GEDCOM file."
-msgstr "Pasirinkite įrašus iš Jūsų šeimos medžio ir juos išsaugokite, kaip GEDCOM bylą."
+msgstr "Pasirinkite įškarpas iš Jūsų šeimos medžio ir juos išsaugokite, kaip GEDCOM bylą."
 
 #: reportengine.php:134
 msgid "Select report"
@@ -11919,11 +11922,11 @@ msgstr "Išsirinkite raportą"
 
 #: statistics.php:572 statistics.php:583 statistics.php:592
 msgid "Select the desired age interval"
-msgstr ""
+msgstr "Pasirinkite norimą amžiaus potarpį"
 
 #: statistics.php:601
 msgid "Select the desired count interval"
-msgstr ""
+msgstr "Pasirinkite norimą potarpį"
 
 #: modules_v3/gedcom_stats/module.php:292
 msgid "Select the stats to show in this block"
@@ -11992,12 +11995,12 @@ msgstr "Ar siųsti priminimo laiškus?"
 #. I18N: A site configuration setting
 #: admin_site_config.php:111 help_text.php:753
 msgid "Sender name"
-msgstr ""
+msgstr "Siuntėjo vardas"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:142 help_text.php:758
 msgid "Sending server name"
-msgstr ""
+msgstr "Siuntančio serverio vardas"
 
 #: library/WT/Stats.php:3950
 msgid "Senegal"
@@ -12040,7 +12043,7 @@ msgstr "Rugsėjo"
 
 #: library/WT/Date/French.php:127
 msgid "Septidi"
-msgstr ""
+msgstr "Septidi"
 
 #: library/WT/Stats.php:3951
 msgid "Serbia"
@@ -12076,7 +12079,7 @@ msgstr "Serverio vardas"
 #. I18N: The local time on the server
 #: themes/_administration/header.php:81
 msgid "Server time"
-msgstr ""
+msgstr "Serverio laikas"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:94 help_text.php:728
@@ -12138,7 +12141,7 @@ msgstr "<b>webtrees</b> nustatymų vedlys"
 
 #: library/WT/Date/French.php:126
 msgid "Sextidi"
-msgstr ""
+msgstr "Sextidi"
 
 #: library/WT/Stats.php:3971
 msgid "Seychelles"
@@ -12147,31 +12150,31 @@ msgstr "Seišelių salos"
 #: library/WT/Date/Jalali.php:122
 msgctxt "Abbreviation for Persian month: Shahrivar"
 msgid "Shah"
-msgstr ""
+msgstr "Shah"
 
 #. I18N:  6th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:68
 msgctxt "GENITIVE"
 msgid "Shahrivar"
-msgstr ""
+msgstr "Shahrivar"
 
 #. I18N:  6th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:104
 msgctxt "INSTRUMENTAL"
 msgid "Shahrivar"
-msgstr ""
+msgstr "Shahrivar"
 
 #. I18N:  6th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:86
 msgctxt "LOCATIVE"
 msgid "Shahrivar"
-msgstr ""
+msgstr "Shahrivar"
 
 #. I18N:  6th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:50
 msgctxt "NOMINATIVE"
 msgid "Shahrivar"
-msgstr ""
+msgstr "Shahrivar"
 
 #: edit_interface.php:1388 edit_interface.php:1496 inverselink.php:154
 #: library/WT/Gedcom/Tag.php:301 note.php:147 note.php:157
@@ -12203,49 +12206,49 @@ msgstr ""
 #: library/WT/Date/Hijri.php:72
 msgctxt "GENITIVE"
 msgid "Shawwal"
-msgstr ""
+msgstr "Shawwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Shawwal
 #: library/WT/Date/Hijri.php:106
 msgctxt "INSTRUMENTAL"
 msgid "Shawwal"
-msgstr ""
+msgstr "Shawwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Shawwal
 #: library/WT/Date/Hijri.php:89
 msgctxt "LOCATIVE"
 msgid "Shawwal"
-msgstr ""
+msgstr "Shawwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Shawwal
 #: library/WT/Date/Hijri.php:55
 msgctxt "NOMINATIVE"
 msgid "Shawwal"
-msgstr ""
+msgstr "Shawwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Sha%27aban
 #: library/WT/Date/Hijri.php:70
 msgctxt "GENITIVE"
 msgid "Sha’aban"
-msgstr ""
+msgstr "Sha’aban"
 
 #. I18N: http://en.wikipedia.org/wiki/Sha%27aban
 #: library/WT/Date/Hijri.php:104
 msgctxt "INSTRUMENTAL"
 msgid "Sha’aban"
-msgstr ""
+msgstr "Sha’aban"
 
 #. I18N: http://en.wikipedia.org/wiki/Sha%27aban
 #: library/WT/Date/Hijri.php:87
 msgctxt "LOCATIVE"
 msgid "Sha’aban"
-msgstr ""
+msgstr "Sha’aban"
 
 #. I18N: http://en.wikipedia.org/wiki/Sha%27aban
 #: library/WT/Date/Hijri.php:53
 msgctxt "NOMINATIVE"
 msgid "Sha’aban"
-msgstr ""
+msgstr "Sha’aban"
 
 #: modules_v3/descendancy_report/report.xml:356
 msgid "She "
@@ -12262,7 +12265,7 @@ msgstr "Ji ištekėjo"
 
 #: modules_v3/ahnentafel_report/report.xml:220
 msgid "She resided at"
-msgstr ""
+msgstr "Ji gyveno"
 
 #: modules_v3/descendancy_report/report.xml:329
 msgid "She was born"
@@ -12284,22 +12287,22 @@ msgstr "Ji buvo kremuota"
 #: library/WT/Date/Jewish.php:104
 msgctxt "GENITIVE"
 msgid "Shevat"
-msgstr ""
+msgstr "Shevat"
 
 #: library/WT/Date/Jewish.php:140
 msgctxt "INSTRUMENTAL"
 msgid "Shevat"
-msgstr ""
+msgstr "Shevat"
 
 #: library/WT/Date/Jewish.php:122
 msgctxt "LOCATIVE"
 msgid "Shevat"
-msgstr ""
+msgstr "Shevat"
 
 #: library/WT/Date/Jewish.php:86
 msgctxt "NOMINATIVE"
 msgid "Shevat"
-msgstr ""
+msgstr "Shevat"
 
 #. I18N: The name of a colour-scheme
 #: themes/colors/theme.php:90
@@ -12371,7 +12374,7 @@ msgstr "Ar rodyti amžiaus žymeklį?"
 #. I18N: A site configuration setting
 #: admin_trees_config.php:967 help_text.php:703
 msgid "Show chart details by default"
-msgstr ""
+msgstr "Įprastai rodyti pilnas schemas"
 
 #: modules_v3/ahnentafel_report/report.xml:12
 msgid "Show children of ancestors?"
@@ -12461,7 +12464,7 @@ msgstr "Rodyti pažymėtus vaizdus žmonių asmeniniuose įrašuose"
 
 #: help_text.php:834
 msgid "Show hit counters on Portal and Individual pages."
-msgstr ""
+msgstr "Rodyti skaitliukus ant portalo ir asmenų puslapių."
 
 #: modules_v3/googlemap/admin_places.php:570
 #: modules_v3/googlemap/help_text.php:78
@@ -12504,7 +12507,7 @@ msgstr "Ar rodyti nuorodą į statistikos diagramas?"
 
 #: admin_site_config.php:91 help_text.php:416
 msgid "Show list of family trees"
-msgstr ""
+msgstr "Rodyti šeimos medžių sąrašą"
 
 #: modules_v3/ahnentafel_report/report.xml:9
 #: modules_v3/family_group_report/report.xml:8
@@ -12600,7 +12603,7 @@ msgstr "Rodyti gyvenamąsias vietas?"
 
 #: help_text.php:900
 msgid "Show runtime statistics and database queries at the bottom of every page."
-msgstr ""
+msgstr "Rodyti vykdymo laiko statistiką ir duomenų bazės užklausas kiekvieno puslapio apačioje."
 
 #: modules_v3/random_media/module.php:375
 msgid "Show slide show controls?"
@@ -12762,22 +12765,22 @@ msgstr "Svetainės turinio žemėlapiai yra būdas pranešti paieškos tarnyboms
 #: library/WT/Date/Jewish.php:109
 msgctxt "GENITIVE"
 msgid "Sivan"
-msgstr ""
+msgstr "Sivan"
 
 #: library/WT/Date/Jewish.php:145
 msgctxt "INSTRUMENTAL"
 msgid "Sivan"
-msgstr ""
+msgstr "Sivan"
 
 #: library/WT/Date/Jewish.php:127
 msgctxt "LOCATIVE"
 msgid "Sivan"
-msgstr ""
+msgstr "Sivan"
 
 #: library/WT/Date/Jewish.php:91
 msgctxt "NOMINATIVE"
 msgid "Sivan"
-msgstr ""
+msgstr "Sivan"
 
 #: modules_v3/googlemap/module.php:279 modules_v3/googlemap/module.php:397
 msgid "Size of map (in pixels)"
@@ -12881,7 +12884,7 @@ msgstr "Rikiavimo tvarka"
 #: library/WT/Controller/Branches.php:159
 #: library/WT/Controller/Branches.php:194
 msgid "Sosa"
-msgstr ""
+msgstr "Sosa"
 
 #: search_advanced.php:159 search_advanced.php:221 search_advanced.php:236
 #: search_advanced.php:258 search_advanced.php:273
@@ -13035,7 +13038,7 @@ msgstr "Standartinis"
 #. I18N [...] of a range of addresses
 #: admin_site_access.php:276
 msgid "Start IP address"
-msgstr ""
+msgstr "Pradinis IP adresas"
 
 #: library/WT/Controller/Descendancy.php:149
 #: library/WT/Controller/Descendancy.php:222
@@ -13149,7 +13152,7 @@ msgstr "Sudanas"
 
 #: modules_v3/googlemap/module.php:371
 msgid "Suffixes"
-msgstr ""
+msgstr "Priesagos"
 
 #: includes/functions/functions_print.php:1010
 #: library/WT/Date/Calendar.php:225
@@ -13208,7 +13211,7 @@ msgstr ""
 
 #: library/WT/Gedcom/Code/Temp.php:179
 msgid "Suva, Fiji"
-msgstr ""
+msgstr "Suva, Fidžis"
 
 #: library/WT/Stats.php:3956
 msgid "Svalbard and Jan Mayen Islands"
@@ -13273,22 +13276,22 @@ msgstr "Tampico, Meksika"
 #: library/WT/Date/Jewish.php:110
 msgctxt "GENITIVE"
 msgid "Tamuz"
-msgstr ""
+msgstr "Tamuz"
 
 #: library/WT/Date/Jewish.php:146
 msgctxt "INSTRUMENTAL"
 msgid "Tamuz"
-msgstr ""
+msgstr "Tamuz"
 
 #: library/WT/Date/Jewish.php:128
 msgctxt "LOCATIVE"
 msgid "Tamuz"
-msgstr ""
+msgstr "Tamuz"
 
 #: library/WT/Date/Jewish.php:92
 msgctxt "NOMINATIVE"
 msgid "Tamuz"
-msgstr ""
+msgstr "Tamuz"
 
 #: library/WT/Stats.php:3988
 msgid "Tanzania"
@@ -13319,22 +13322,22 @@ msgstr "Žemės paviršiaus sluoksnis"
 #: library/WT/Date/Jewish.php:103
 msgctxt "GENITIVE"
 msgid "Tevet"
-msgstr ""
+msgstr "Tevet"
 
 #: library/WT/Date/Jewish.php:139
 msgctxt "INSTRUMENTAL"
 msgid "Tevet"
-msgstr ""
+msgstr "Tevet"
 
 #: library/WT/Date/Jewish.php:121
 msgctxt "LOCATIVE"
 msgid "Tevet"
-msgstr ""
+msgstr "Tevet"
 
 #: library/WT/Date/Jewish.php:85
 msgctxt "NOMINATIVE"
 msgid "Tevet"
-msgstr ""
+msgstr "Tevet"
 
 #. I18N: gedcom tag TEXT
 #: library/WT/Gedcom/Tag.php:316
@@ -13437,34 +13440,34 @@ msgstr "Šis %s bylos pavadinimas jau naudojamas. Prašome naudoti kitą pavadin
 #: admin_site_upgrade.php:406 admin_site_upgrade.php:436
 #, php-format
 msgid "The file %s could not be created."
-msgstr ""
+msgstr "Byla %s negali būti sukurta."
 
 #: admin_media.php:60 admin_media.php:67 admin_site_upgrade.php:457
 #: admin_site_upgrade.php:477
 #, php-format
 msgid "The file %s could not be deleted."
-msgstr ""
+msgstr "Byla %s negali būti ištrinta."
 
 #: admin_site_upgrade.php:384
 #, php-format
 msgid "The file %s could not be updated."
-msgstr ""
+msgstr "Byla %s negali bųti įkelta."
 
 #: admin_site_upgrade.php:408
 #, php-format
 msgid "The file %s was created."
-msgstr ""
+msgstr "Byla %s sukurta"
 
 #: admin_media.php:58 admin_media.php:65 admin_site_upgrade.php:455
 #: admin_site_upgrade.php:475
 #, php-format
 msgid "The file %s was deleted."
-msgstr ""
+msgstr "Byla %s ištrinta."
 
 #: admin_media_upload.php:136 admin_media_upload.php:155
 #, php-format
 msgid "The file %s was uploaded."
-msgstr ""
+msgstr "Byla %s įkelta."
 
 #. I18N: %s is a filename
 #: library/WT/Controller/Fanchart.php:142 medialist.php:282
@@ -13476,7 +13479,7 @@ msgstr "“%s” byla neegzistuoja."
 #: admin_site_upgrade.php:471
 #, php-format
 msgid "The folder %s could not be deleted."
-msgstr ""
+msgstr "Duomenų aplanka %s negali būti ištrinta."
 
 #: addmedia.php:111 addmedia.php:122 addmedia.php:134 addmedia.php:273
 #: addmedia.php:284 addmedia.php:296 admin_media_upload.php:61
@@ -13484,19 +13487,19 @@ msgstr ""
 #: admin_trees_config.php:190
 #, php-format
 msgid "The folder %s does not exist, and it could not be created."
-msgstr "Duomenų aplankas %s neegzistuoja ir negali būti sukurtas."
+msgstr "Duomenų aplanka %s neegzistuoja ir negali būti sukurta."
 
 #: addmedia.php:109 addmedia.php:120 addmedia.php:271 addmedia.php:282
 #: admin_media_upload.php:59 admin_media_upload.php:70
 #: admin_trees_config.php:188
 #, php-format
 msgid "The folder %s was created."
-msgstr "Duomenų aplankas %s sukurtas."
+msgstr "Duomenų aplanka %s sukurta."
 
 #: admin_site_upgrade.php:469
 #, php-format
 msgid "The folder %s was deleted."
-msgstr ""
+msgstr "Duomenų aplanka %s ištrinta."
 
 #: help_text.php:587
 msgid "The folder can be specified in full (e.g. /home/user_name/webtrees_data/) or relative to the installation folder (e.g. ../../webtrees_data/)."
@@ -13640,7 +13643,7 @@ msgstr ""
 
 #: admin_site_upgrade.php:483
 msgid "The upgrade is complete."
-msgstr ""
+msgstr "Atnaujinimas baigtas."
 
 #: login.php:306
 msgid "The user has been sent an e-mail with the information necessary to confirm the access request"
@@ -13710,7 +13713,7 @@ msgstr "Šis asmuo neturi medijos objektų."
 
 #: admin_site_upgrade.php:107
 msgid "There are no pending changes."
-msgstr ""
+msgstr "Nėra nepatikrintų pakeitimų."
 
 #: modules_v3/todo/module.php:127
 msgid "There are no research tasks in this family tree."
@@ -13735,22 +13738,22 @@ msgstr "Siunčiant failą užfiksuota klaida."
 #: library/WT/Date/French.php:75
 msgctxt "GENITIVE"
 msgid "Thermidor"
-msgstr ""
+msgstr "Thermidor"
 
 #: library/WT/Date/French.php:109
 msgctxt "INSTRUMENTAL"
 msgid "Thermidor"
-msgstr ""
+msgstr "Thermidor"
 
 #: library/WT/Date/French.php:92
 msgctxt "LOCATIVE"
 msgid "Thermidor"
-msgstr ""
+msgstr "Thermidor"
 
 #: library/WT/Date/French.php:58
 msgctxt "NOMINATIVE"
 msgid "Thermidor"
-msgstr ""
+msgstr "Thermidor"
 
 #: admin.php:104
 msgid "These pages provide access to all the configuration settings and management tools for this <b>webtrees</b> site."
@@ -13866,7 +13869,7 @@ msgstr ""
 
 #: library/WT/Filter.php:277
 msgid "This form has expired.  Try again."
-msgstr ""
+msgstr "Šio formos laikas yra pasibaigęs. Bandykite dar kartą."
 
 #: individual.php:91 library/WT/Controller/Chart.php:45
 msgid "This individual does not exist or you do not have permission to view it."
@@ -13955,7 +13958,7 @@ msgstr ""
 
 #: admin_site_upgrade.php:72
 msgid "This is the latest version of webtrees.  No upgrade is available."
-msgstr ""
+msgstr "Tai yra naujausia webtrees versija. Nėra jokiu atnaujinimų."
 
 #: help_text.php:506
 msgid "This is the list of GEDCOM facts that your users can add to families.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique family facts</i> list."
@@ -14024,23 +14027,23 @@ msgstr "Tai tavo realus vardas, kaip kad norėtumėte matyti jį ekrane."
 
 #: admin_trees_check.php:130
 msgid "This may be a mistake in your data."
-msgstr ""
+msgstr "Tai gali būti klaida jūsų duomenyse."
 
 #: admin_trees_check.php:129
 msgid "This may cause a problem for other applications."
-msgstr ""
+msgstr "Tai gali sukelti problemų kitose programose."
 
 #: admin_trees_check.php:128
 msgid "This may cause a problem for webtrees."
-msgstr ""
+msgstr "Tai gali sukelti problemų webtrees programai."
 
 #: admin_media.php:414
 msgid "This media file does not exist."
-msgstr ""
+msgstr "Ši medijos byla neegzistuoja."
 
 #: admin_media.php:411
 msgid "This media file exists, but cannot be accessed."
-msgstr ""
+msgstr "Ši medijos byla egzistuoja, bet negali būti atverta."
 
 #: mediafirewall.php:365
 msgid "This media file is broken and cannot be watermarked"
@@ -14072,7 +14075,7 @@ msgstr "Šis objektas buvo keistas. Jūs turite peržiūrėti keitimus ir tada %
 
 #: admin_media.php:487 find.php:582
 msgid "This media object is not linked to any other record."
-msgstr ""
+msgstr "Šis medijos objektas neturi nuorodų į bet kokį kitą įrašą."
 
 #: includes/authentication.php:234 includes/authentication.php:291
 msgid "This message was sent while viewing the following URL: "
@@ -14094,7 +14097,7 @@ msgstr "Tai turi turėti ne mažiau kaip šešis simbolius. Yra skirtumas ar tai
 #. I18N: Help text for the “Sender name” site configuration setting
 #: help_text.php:754
 msgid "This name is used in the “From” field, when sending automatic emails from this server."
-msgstr ""
+msgstr "Šis vardas naudojamas \"Nuo\" lauke, siunčiant automatinius laiškus iš šio serverio."
 
 #: note.php:73
 msgid "This note does not exist or you do not have permission to view it."
@@ -14292,7 +14295,7 @@ msgstr ""
 #. I18N: http://en.wikipedia.org/wiki/Https
 #: admin_site_upgrade.php:317
 msgid "This server does not support secure downloads using HTTPS."
-msgstr ""
+msgstr "Šis serveris nepalaiko saugaus parsisiuntimo naudojant HTTPS."
 
 #: setup.php:171
 #, php-format
@@ -14301,7 +14304,7 @@ msgstr "Šio serverio atminties riba yra %dMB ir CPU laiko limitas yra %d sekund
 
 #: help_text.php:553
 msgid "This setting is only used when you read or write GEDCOM files."
-msgstr ""
+msgstr "Šis nustatymas yra naudojamas tik tada, kai jūs skaitote ar rašote GEDCOM bylas."
 
 #: help_text.php:456
 msgid "This should be a comma or space separated list of facts, in addition to Birth and Death, that you want to appear in chart boxes such as the pedigree chart.  This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard.  For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
@@ -14309,7 +14312,7 @@ msgstr ""
 
 #: admin_site_upgrade.php:41
 msgid "This site is being upgraded.  Try again in a few minutes."
-msgstr ""
+msgstr "Ši svetainė yra tobulinama. Pabandykite dar kartą po kelių minučių."
 
 #: source.php:73
 msgid "This source does not exist or you do not have permission to view it."
@@ -14440,51 +14443,51 @@ msgstr "Rytų Timoras"
 #: library/WT/Date/Jalali.php:120
 msgctxt "Abbreviation for Persian month: Tir"
 msgid "Tir"
-msgstr ""
+msgstr "Tir"
 
 #. I18N:  4th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:66
 msgctxt "GENITIVE"
 msgid "Tir"
-msgstr ""
+msgstr "Tir"
 
 #. I18N:  4th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:102
 msgctxt "INSTRUMENTAL"
 msgid "Tir"
-msgstr ""
+msgstr "Tir"
 
 #. I18N:  4th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:84
 msgctxt "LOCATIVE"
 msgid "Tir"
-msgstr ""
+msgstr "Tir"
 
 #. I18N:  4th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:48
 msgctxt "NOMINATIVE"
 msgid "Tir"
-msgstr ""
+msgstr "Tir"
 
 #: library/WT/Date/Jewish.php:100
 msgctxt "GENITIVE"
 msgid "Tishrei"
-msgstr ""
+msgstr "Tishrei"
 
 #: library/WT/Date/Jewish.php:136
 msgctxt "INSTRUMENTAL"
 msgid "Tishrei"
-msgstr ""
+msgstr "Tishrei"
 
 #: library/WT/Date/Jewish.php:118
 msgctxt "LOCATIVE"
 msgid "Tishrei"
-msgstr ""
+msgstr "Tishrei"
 
 #: library/WT/Date/Jewish.php:82
 msgctxt "NOMINATIVE"
 msgid "Tishrei"
-msgstr ""
+msgstr "Tishrei"
 
 #. I18N: gedcom tag TITL
 #: library/WT/Gedcom/Tag.php:318
@@ -14507,7 +14510,7 @@ msgstr "Norėdami padėti jums pradėti dirbti su šiuo langu, mes sukūrėme ke
 
 #: admin_site_upgrade.php:386
 msgid "To complete the upgrade, you should install the files manually."
-msgstr ""
+msgstr "Norėdami baigti atnaujinimą, jūs turite įdiegti bylas rankiniu būdu."
 
 #: modules_v3/todo/help_text.php:34
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
@@ -14530,7 +14533,7 @@ msgstr "Į asmenį"
 #: admin_site_upgrade.php:389
 #, php-format
 msgid "To prevent visitors from accessing the site while you are in the middle of copying files, you can temporarily create a file %s on the server.  If it contains a message, it will be displayed to visitors."
-msgstr ""
+msgstr "Sutrukdyti lankytojams prieigą prie svetainės, kai esate viduryje bylų kopijvimo, galite laikinai sukurti %s byla serveryje. Jeigu joje yra žinutę ji bus rodoma lankytojams."
 
 #. I18N: “Apache” is a software program.
 #: help_text.php:583
@@ -14744,7 +14747,7 @@ msgstr "Transilvanija"
 
 #: library/WT/Date/French.php:123
 msgid "Tridi"
-msgstr ""
+msgstr "Tridi"
 
 #: library/WT/Stats.php:3983
 msgid "Trinidad and Tobago"
@@ -14797,7 +14800,7 @@ msgstr "Vietovių žymeklių tipas vietovių hierarchijoje"
 #. I18N: placeholder text for repeat-password field
 #: admin_users.php:390 login.php:423
 msgid "Type the password again."
-msgstr ""
+msgstr "Įrašykite slaptažodi dar vieną kartą"
 
 #: help_text.php:1299 setup.php:406
 msgid "Type your password again, to make sure you have typed it correctly."
@@ -14813,7 +14816,7 @@ msgstr "Klaidos tipas"
 #: library/WT/Gedcom/Tag.php:324 library/WT/Gedcom/Tag.php:328
 #: library/WT/Gedcom/Tag.php:812
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: library/WT/Stats.php:3991
 msgid "US Minor Outlying Islands"
@@ -14834,7 +14837,7 @@ msgstr "TSSR"
 #. I18N: Timezone - http://en.wikipedia.org/wiki/UTC
 #: admin_site_upgrade.php:41 themes/_administration/header.php:87
 msgid "UTC"
-msgstr ""
+msgstr "UTC"
 
 #: library/WT/Stats.php:3989
 msgid "Uganda"
@@ -14881,11 +14884,11 @@ msgstr "Unikalūs faktai apie asmenį"
 
 #: admin_trees_config.php:1210 help_text.php:808
 msgid "Unique repository facts"
-msgstr ""
+msgstr "Unikalūs saugyklos faktai"
 
 #: admin_trees_config.php:1181 help_text.php:919
 msgid "Unique source facts"
-msgstr ""
+msgstr "Unikalūs šaltinio faktai"
 
 #: library/WT/Stats.php:3755
 msgid "United Arab Emirates"
@@ -14931,7 +14934,7 @@ msgstr "Neatpažintas GEDCOM kodas"
 
 #: admin_media.php:545
 msgid "Unused files"
-msgstr ""
+msgstr "Nenaudojamos bylos"
 
 #: admin.php:159
 msgid "Unverified by Administrator"
@@ -14945,7 +14948,7 @@ msgstr "Nepatvirtinti nario"
 #: admin_site_upgrade.php:328
 #, php-format
 msgid "Unzip %s to a temporary folder…"
-msgstr ""
+msgstr "Išpakuokite %s į laikiną aplanką…"
 
 #. I18N: Name of a module
 #: modules_v3/upcoming_events/module.php:32
@@ -14963,11 +14966,11 @@ msgstr "Atnaujinti viską"
 
 #: admin_trees_places.php:85
 msgid "Update all the place names in a family tree"
-msgstr ""
+msgstr "Atnaujinkite visus vietovardžius šeimos medyje"
 
 #: themes/_administration/header.php:121
 msgid "Update place names"
-msgstr ""
+msgstr "Atnaujinkite vietovardžius"
 
 #: admin_site_merge.php:152
 msgid "Updating linked record"
@@ -14976,7 +14979,7 @@ msgstr "Atnaujinamas susijęs įrašas"
 #. I18N: Ignore the warnings, and [...]
 #: admin_site_upgrade.php:202 admin_site_upgrade.php:265
 msgid "Upgrade anyway"
-msgstr ""
+msgstr "Vistiek atnaujink"
 
 #. I18N: %s is a version number, such as 1.2.3
 #: admin.php:113 admin_site_upgrade.php:86
@@ -14986,7 +14989,7 @@ msgstr "Naujinti į webtrees %s"
 
 #: admin_site_upgrade.php:55
 msgid "Upgrade wizard"
-msgstr ""
+msgstr "Atnaujinimo vedlys"
 
 #: admin_media_upload.php:234 admin_trees_manage.php:225
 #: modules_v3/googlemap/admin_places.php:661
@@ -14999,12 +15002,12 @@ msgstr "Įkelti šeimos medį"
 
 #: modules_v3/googlemap/admin_places.php:654
 msgid "Upload geographic data"
-msgstr ""
+msgstr "Įkelti geografinius duomenis"
 
 #: admin_media_upload.php:32 admin_media_upload.php:177 help_text.php:1428
 #: themes/_administration/header.php:140
 msgid "Upload media files"
-msgstr "Nusiųsti medijos failus"
+msgstr "Įkelti medijos failus"
 
 #: help_text.php:1429
 msgid "Upload one or more media files from your local computer.  Media files can be pictures, video, audio, or other formats."
@@ -15025,7 +15028,7 @@ msgstr "Naudoti GeoVardų duomenų bazę vietovardžių rašymo užbaigimui"
 
 #: modules_v3/googlemap/module.php:393
 msgid "Use Google Maps™ for the place hierarchy"
-msgstr ""
+msgstr "Naudokite \"Google Maps™\" vietovių hierarchijoms"
 
 #: admin_site_config.php:40
 msgid "Use PHP mail to send messages"
@@ -15048,8 +15051,9 @@ msgstr "Naudokite &laquo;?&raquo; vienam rašmens atitikimui, naudokite &laquo;*
 #, php-format
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Naudokite bent %s rašmenį."
+msgstr[1] "Naudokite bent %s rašmenis."
+msgstr[2] "Naudokite bent %s rašmenų."
 
 #: modules_v3/family_group_report/report.xml:13
 #: modules_v3/individual_ext_report/report.xml:14
@@ -15070,7 +15074,7 @@ msgstr "Naudoti slaptažodį"
 
 #: help_text.php:1006
 msgid "Use relationship privacy"
-msgstr ""
+msgstr "Naudokite santykių privatumą"
 
 #: help_text.php:1017
 msgid "Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the gender of the individual in question.<br><br><table><tr><td wrap valign=\"middle\">This image might be used when the gender of the individual is unknown:"
@@ -15132,7 +15136,7 @@ msgstr "Naudotojo patvirtinimas"
 #. I18N: http://en.wikipedia.org/wiki/User_agent_string
 #: admin_site_access.php:280 admin_site_access.php:295
 msgid "User-agent string"
-msgstr ""
+msgstr "Naudotojo agento eilutę"
 
 #: admin_site_config.php:133 admin_users.php:372 admin_users.php:571
 #: edituser.php:133 help_text.php:743 help_text.php:1483 login.php:162
@@ -15147,12 +15151,12 @@ msgstr "Vartotojo vardas ar elektroninis adresas"
 
 #: help_text.php:1486
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
-msgstr ""
+msgstr "Vartotojo vardai yra didžiųjų ir mažųjų raidžių ir ignoruoja kirčiuotas raides, tad \"chloe\", \"Chloë\" ir \"Chloe\", yra laikomi tuo patčiu."
 
 #: help_text.php:1488
 #, php-format
 msgid "Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;"
-msgstr ""
+msgstr "Vartotojo varde negali būti šių simbolių: &lt; &gt; &quot; %% { } ;"
 
 #: admin.php:133 themes/_administration/header.php:130
 msgid "Users"
@@ -15189,22 +15193,22 @@ msgstr "Vatikanas"
 #: library/WT/Date/French.php:65
 msgctxt "GENITIVE"
 msgid "Vendémiaire"
-msgstr ""
+msgstr "Vendémiaire"
 
 #: library/WT/Date/French.php:99
 msgctxt "INSTRUMENTAL"
 msgid "Vendémiaire"
-msgstr ""
+msgstr "Vendémiaire"
 
 #: library/WT/Date/French.php:82
 msgctxt "LOCATIVE"
 msgid "Vendémiaire"
-msgstr ""
+msgstr "Vendémiaire"
 
 #: library/WT/Date/French.php:48
 msgctxt "NOMINATIVE"
 msgid "Vendémiaire"
-msgstr ""
+msgstr "Vendémiaire"
 
 #: library/WT/Stats.php:3997
 msgid "Venezuela"
@@ -15213,22 +15217,22 @@ msgstr "Venesuela"
 #: library/WT/Date/French.php:70
 msgctxt "GENITIVE"
 msgid "Ventôse"
-msgstr ""
+msgstr "Ventôse"
 
 #: library/WT/Date/French.php:104
 msgctxt "INSTRUMENTAL"
 msgid "Ventôse"
-msgstr ""
+msgstr "Ventôse"
 
 #: library/WT/Date/French.php:87
 msgctxt "LOCATIVE"
 msgid "Ventôse"
-msgstr ""
+msgstr "Ventôse"
 
 #: library/WT/Date/French.php:53
 msgctxt "NOMINATIVE"
 msgid "Ventôse"
-msgstr ""
+msgstr "Ventôse"
 
 #: library/WT/Gedcom/Code/Temp.php:187
 msgid "Veracruz, Mexico"
@@ -15388,11 +15392,11 @@ msgstr "Vandensženklai"
 
 #: help_text.php:1027
 msgid "Watermarks are optional and normally shown just to visitors."
-msgstr ""
+msgstr "Vandenženkliai yra neprivalomi ir paprastai rodomi tik lankytojams."
 
 #: help_text.php:1029
 msgid "Watermarks can be slow to generate for large images.  Busy sites may prefer to generate them once and store the watermarked image on the server."
-msgstr ""
+msgstr "Vandenženkliai gali būti lėtai generuojami ant didelių vaizdų. Dažnai naudojamos svetainės gali buti labiau linkusios skurti juos vieną kartą ir išsaugoti vaizdus su vandenženkliais serveryje."
 
 #: login.php:374
 #, php-format
@@ -15610,7 +15614,7 @@ msgstr "Žmonos pavardė keičiama vyro pavarde"
 
 #: modules_v3/batch_update/plugins/search_replace.php:111
 msgid "Wildcards"
-msgstr ""
+msgstr "Pakaitos simboliai"
 
 #. I18N: gedcom tag WILL
 #: library/WT/Gedcom/Tag.php:327
@@ -15649,7 +15653,7 @@ msgstr "Liudininkas"
 #. I18N: In the paternal surname tradition, ...
 #: help_text.php:949 help_text.php:969 help_text.php:976
 msgid "Wives take their husband’s surname."
-msgstr ""
+msgstr "Žmona ima vyro pavardę."
 
 #: statistics.php:623
 msgid "World"
@@ -15673,7 +15677,7 @@ msgstr "Metai"
 
 #: help_text.php:1093
 msgid "Year input box"
-msgstr ""
+msgstr "Metų įvesties laukelis"
 
 #: timeline.php:130 timeline.php:362
 msgid "Year:"
@@ -15687,20 +15691,20 @@ msgstr "Jemenas"
 #: login.php:323
 #, php-format
 msgid "You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s."
-msgstr "Jūs (ar kas nors apsimetes jumis) paprašė sregistracijos %1$s naudojant elektroninio pašto adresą %2$s."
+msgstr "Jūs (ar kas nors apsimetes jumis) paprašė registracijos %1$s naudojant elektroninio pašto adresą %2$s."
 
 #: login.php:271 message.php:68
 msgid "You are not allowed to send messages that contain external links."
-msgstr ""
+msgstr "Jums neleidžiama siųsti laiškus, kurie turi išorines nuorodas."
 
 #. I18N: Help text for the "Default Theme" site configuration setting
 #: help_text.php:985
 msgid "You can change the appearance of <b>webtrees</b> using “themes”.  Each theme has a different style, layout, color scheme, etc."
-msgstr ""
+msgstr "Jūs galite pakeisti <b>webtrees</b> išvaizdą naudojant \"Temas\". Kiekviena tema turi skirtingą stilių, išdėstymą, spalvų schemą, ir tt"
 
 #: help_text.php:1279
 msgid "You can click this button to see whether there is another relationship path between the two individuals.  Previously found paths can be displayed again by clicking the link with the path number."
-msgstr ""
+msgstr "Galite spustelėti šį mygtuką, norėdami pamatyti ar yra kitas ryšys tarp šių dviejų asmenų. Anksčiau rasti ryšiai gali būti vėl rodomi paspaudus nuoroda su ryšio numeriu."
 
 #. I18N: %s is a URL
 #: help_text.php:1165
@@ -15722,15 +15726,15 @@ msgstr "Dabar galite prisijungti naudodami naudotojo vardą ir slaptažodį."
 
 #: admin_site_upgrade.php:201
 msgid "You can re-enable these modules after the upgrade."
-msgstr ""
+msgstr "Jūs galite iš naujo įgalinti šiuos modulius po atnaujinimo."
 
 #: admin_site_upgrade.php:264
 msgid "You can re-enable these themes after the upgrade."
-msgstr ""
+msgstr "Jūs galite iš naujo įgalinti šias temas po atnaujinimo."
 
 #: help_text.php:643 help_text.php:682
 msgid "You can request a higher or lower limit, although the server may ignore this request."
-msgstr ""
+msgstr "Jūs galite prašyti didesnę arba mažesnę ribą, nors serveris gali ignoruoti šį prašymą."
 
 #: modules_v3/batch_update/plugins/death_y.php:32
 msgid "You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc."
@@ -15811,7 +15815,7 @@ msgstr "Jūs turite nurodyti elektronino pašto adresą."
 
 #: help_text.php:1312
 msgid "You must export your latest GEDCOM data"
-msgstr ""
+msgstr "Jūs turite eksportuoti savo naujausius GEDCOM duomenis"
 
 #: edit_interface.php:1558
 msgid "You must provide a repository name"
@@ -15831,7 +15835,7 @@ msgstr "Turite nurodyti priežastį atskiru įrašu, prieš galėdami apriboti n
 
 #: admin_pgv_to_wt.php:1058
 msgid "You need to login again, using your PhpGedView username and password."
-msgstr ""
+msgstr "Jums reikia prisijungti dar karta, naudojant jūsų PhpGedView vartotojo vardą ir slaptažodį."
 
 #: setup.php:389
 msgid "You need to set up an administrator account.  This account can control all aspects of this <b>webtrees</b> installation.  Please choose a strong password."
@@ -15839,12 +15843,12 @@ msgstr "Jūs turite sukurti administratoriaus abonementą. Šis abonementas gali
 
 #: login.php:499
 msgid "You now need to review the account details, and set the “approved” status to “yes”."
-msgstr ""
+msgstr "Jūms dabar reikia peržiūrėti paskyros informaciją, ir nustatyti statusą \"patvirtintas\" į \"taip\"."
 
 #. I18N: Help text for the “Login URL” site configuration setting
 #: help_text.php:618
 msgid "You only need to enter a Login URL if you want to redirect to a different site or location when your users login.  This is very useful if you need to switch from http to https when your users login.  Include the full URL to <i>login.php</i>.  For example, https://www.yourserver.com/webtrees/login.php ."
-msgstr ""
+msgstr "Jums tereikia įvesti Prisijungimo URL, jei norite nukreipti į kitą svetainę arba vietą, kai vartotojai prisijungia. Tai labai naudinga, jei norite pereiti nuo HTTP į HTTPS kai jūsų vartotojai prisijungė. Įtraukti visą URL <i>login.php</i>. Pavyzdžiui, https://www.jususerveris.lt/webtrees/login.php ."
 
 #: includes/authentication.php:241
 msgid "You sent the following message to a webtrees administrator:"
@@ -15856,19 +15860,19 @@ msgstr "Jūs išsiuntėte šią žinutę kilmės medžio nariui:"
 
 #: admin_site_upgrade.php:102
 msgid "You should accept or reject all pending changes before upgrading."
-msgstr ""
+msgstr "Jūs turite priimpti ar atmesti visus laukiančius pakeitimus prieš idegiant nauja versija."
 
 #: help_text.php:1151
 msgid "You should avoid using the vertical line character &ldquo;|&rdquo; in your notes.  It is used internally by webtrees and may cause your note to display incorrectly."
-msgstr ""
+msgstr "Turėtumėte vengti naudoti vertikalios linijos simbolį &ldquo;|&rdquo; savo pastabose. Jis yra naudojamas webtrees viduje ir del to jūsų pastabos gali rodytis neteisingai."
 
 #: admin_site_upgrade.php:200
 msgid "You should consult the module’s author to confirm compatibility with this version of webtrees."
-msgstr ""
+msgstr "Jūs turėtumėte pasikonsultuoti su modulio autoriumi patvirtinti suderinamumą su šia webtrees versiją."
 
 #: admin_site_upgrade.php:263
 msgid "You should consult the theme’s author to confirm compatibility with this version of webtrees."
-msgstr ""
+msgstr "Jūs turėtumėte pasikonsultuoti su temos autoriumi patvirtinti suderinamumą su šia webtrees versiją."
 
 #. I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’
 #: login.php:272 message.php:69
@@ -15878,7 +15882,7 @@ msgstr "Turėtumėte ištrinti “%1$s” iš “%2$s” ir pabandyti dar kartą
 
 #: help_text.php:1472
 msgid "You should not approve an account unless you know that the email address is correct."
-msgstr ""
+msgstr "Jūs turėtumėt nepatvirtinti sąskaitos, nebent jus žinote, kad elektroninio pašto adresas yra teisingas."
 
 #: login.php:310
 msgid "You will be informed by e-mail when this prospective user has confirmed the request.  After this, the user will be able to login without any action on your part."
@@ -15952,7 +15956,7 @@ msgstr "Zimbabvė"
 
 #: help_text.php:1498
 msgid "Zip clippings"
-msgstr ""
+msgstr "Suspausti ištraukas"
 
 #: admin_trees_download.php:105 modules_v3/clippings/module.php:192
 #: modules_v3/clippings/module.php:574
@@ -16000,7 +16004,7 @@ msgstr "Priartinimas="
 #. I18N: time format “%a” - between 00:00:01 and 11:59:59
 #: includes/functions/functions_date.php:105
 msgid "a.m."
-msgstr ""
+msgstr "iki pietų"
 
 #. I18N: Gedcom ABT dates
 #: library/WT/Date.php:235
@@ -16023,7 +16027,7 @@ msgstr "patvirtinti"
 #. I18N: the status of an edit accepted/rejected/pending
 #: admin_site_change.php:33
 msgid "accepted"
-msgstr ""
+msgstr "priimptas"
 
 #. I18N: The name given to a child by its adoptive parents
 #: library/WT/Gedcom/Code/Name.php:49
@@ -16502,19 +16506,19 @@ msgstr "įjungti"
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: library/WT/Gedcom/Code/Name.php:97
 msgid "estate name"
-msgstr ""
+msgstr "Dvarininko(ės) vardas"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: library/WT/Gedcom/Code/Name.php:94
 msgctxt "FEMALE"
 msgid "estate name"
-msgstr ""
+msgstr "Dvarininkės vardas"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: library/WT/Gedcom/Code/Name.php:91
 msgctxt "MALE"
 msgid "estate name"
-msgstr ""
+msgstr "Dvarininko vardas"
 
 #. I18N: Gedcom EST dates
 #: library/WT/Date.php:237
@@ -16899,8 +16903,9 @@ msgstr "nuo"
 #, php-format
 msgid "from %1$s interval %2$s year"
 msgid_plural "from %1$s interval %2$s years"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "nuo %1$s kas %2$s metas"
+msgstr[1] "nuo %1$s kas %2$s metai"
+msgstr[2] "nuo %1$s kas %2$s metų"
 
 #. I18N: Gedcom FROM dates
 #: library/WT/Date.php:241
@@ -16926,7 +16931,7 @@ msgstr "lytis"
 #. I18N: button label
 #: edit_interface.php:2809
 msgid "go to new individual"
-msgstr ""
+msgstr "rodyk naują asmenį"
 
 #: includes/functions/functions.php:879
 msgctxt "child’s child"
@@ -18485,8 +18490,9 @@ msgstr "nutraukta %s (%s)"
 #, php-format
 msgid "interval %s year"
 msgid_plural "interval %s years"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "kas %s metas"
+msgstr[1] "kas %s metai"
+msgstr[2] "kas %s metų"
 
 #: statistics.php:603
 msgid "interval one child"
@@ -18508,22 +18514,22 @@ msgstr "Žydiškas kalendorius"
 #: library/WT/Date/French.php:77
 msgctxt "GENITIVE"
 msgid "jours complémentaires"
-msgstr ""
+msgstr "jours complémentaires"
 
 #: library/WT/Date/French.php:111
 msgctxt "INSTRUMENTAL"
 msgid "jours complémentaires"
-msgstr ""
+msgstr "jours complémentaires"
 
 #: library/WT/Date/French.php:94
 msgctxt "LOCATIVE"
 msgid "jours complémentaires"
-msgstr ""
+msgstr "jours complémentaires"
 
 #: library/WT/Date/French.php:60
 msgctxt "NOMINATIVE"
 msgid "jours complémentaires"
-msgstr ""
+msgstr "jours complémentaires"
 
 #. I18N: button label, last page
 #: library/WT/I18N.php:669
@@ -18560,7 +18566,7 @@ msgstr "mergautinė pavardė"
 #. I18N: https://en.wikipedia.org/wiki/Markdown
 #: admin_trees_config.php:947
 msgid "markdown"
-msgstr ""
+msgstr "markdown"
 
 #: library/WT/Stats.php:1723 library/WT/Stats.php:3579
 msgid "marriage"
@@ -18596,7 +18602,7 @@ msgstr "pavardė po santuokos"
 #. I18N: verb: pretend to be someone else
 #: admin_users.php:216
 msgid "masquerade"
-msgstr ""
+msgstr "maskuotis"
 
 #: includes/functions/functions.php:910
 msgctxt "mother’s father"
@@ -18616,7 +18622,7 @@ msgstr "senelė"
 #. I18N: https://en.wikipedia.org/wiki/Matrilineal (a system where children take their mother’s surname
 #: admin_trees_config.php:1255 help_text.php:940
 msgid "matrilineal"
-msgstr ""
+msgstr "pagal moterišką liniją"
 
 #: modules_v3/googlemap/module.php:295
 msgid "maximum"
@@ -18847,7 +18853,7 @@ msgstr "bendra"
 #. I18N: time format “%a” - between 12:00:01 and 23:59:59
 #: includes/functions/functions_date.php:109
 msgid "p.m."
-msgstr ""
+msgstr "po pietų"
 
 #: includes/functions/functions.php:785
 msgid "parent"
@@ -18891,12 +18897,12 @@ msgstr "senelis"
 #. I18N: https://en.wikipedia.org/wiki/Patrilineal (a system where children take their father’s surname
 #: admin_trees_config.php:1255 help_text.php:934
 msgid "patrilineal"
-msgstr ""
+msgstr "pagal vyrišką liniją"
 
 #. I18N: the status of an edit accepted/rejected/pending
 #: admin_site_change.php:35
 msgid "pending"
-msgstr ""
+msgstr "nepatikrintas"
 
 #: statistics.php:668 statisticsplot.php:788
 msgid "percentage"
@@ -18915,7 +18921,7 @@ msgstr "ankstesnis"
 #. I18N: Quality of source information - GEDCOM tag “QUAY 3”
 #: library/WT/Gedcom/Code/Quay.php:33
 msgid "primary evidence"
-msgstr ""
+msgstr "pagrindinis įrodymas"
 
 #: statistics.php:596
 msgid "quarters after marriage"
@@ -18924,7 +18930,7 @@ msgstr "ketvirčiai po vedybų"
 #. I18N: Quality of source information - GEDCOM tag “QUAY 1”
 #: library/WT/Gedcom/Code/Quay.php:37
 msgid "questionable evidence"
-msgstr ""
+msgstr "abejotinas įrodymas"
 
 #: admin_trees_config.php:1271 modules_v3/fact_sources/report.xml:6
 msgid "records"
@@ -18945,7 +18951,7 @@ msgstr "atšaukti"
 #. I18N: the status of an edit accepted/rejected/pending
 #: admin_site_change.php:34
 msgid "rejected"
-msgstr ""
+msgstr "atmestas"
 
 #. I18N: A name taken when entering a religion or a religious order
 #: library/WT/Gedcom/Code/Name.php:138
@@ -18980,7 +18986,7 @@ msgstr "rezultatai:"
 #. I18N: http://en.wikipedia.org/wiki/Web_crawler
 #: admin_site_access.php:109 admin_site_access.php:302
 msgid "robot"
-msgstr ""
+msgstr "robotas"
 
 #. I18N: button label
 #: addmedia.php:734 admin_module_blocks.php:91 admin_module_menus.php:112
@@ -19176,7 +19182,7 @@ msgstr "protetos anūkas"
 #. I18N: Quality of source information - GEDCOM tag “QUAY 2”
 #: library/WT/Gedcom/Code/Quay.php:35
 msgid "secondary evidence"
-msgstr ""
+msgstr "antrinis įrodymas"
 
 #. I18N: select all (of the family trees)
 #: search.php:211
@@ -19761,7 +19767,7 @@ msgstr "nežinoma"
 #. I18N: Quality of source information - GEDCOM tag “QUAY 0”
 #: library/WT/Gedcom/Code/Quay.php:39
 msgid "unreliable evidence"
-msgstr ""
+msgstr "nepatikimi įrodymai"
 
 #. I18N: button label
 #: admin_trees_places.php:102
