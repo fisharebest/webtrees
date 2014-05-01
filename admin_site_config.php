@@ -76,12 +76,6 @@ $WELCOME_TEXT_AUTH_MODE_OPTIONS = array(
 							<dt><?php echo WT_I18N::translate('PHP time limit'), help_link('MAX_EXECUTION_TIME'); ?></dt>
 							<dd><?php echo edit_field_inline('site_setting-MAX_EXECUTION_TIME', WT_Site::preference('MAX_EXECUTION_TIME'), $controller); ?></dd>
 
-							<dt><?php echo WT_I18N::translate('Allow visitors to request account registration'), help_link('USE_REGISTRATION_MODULE'); ?></dt>
-							<dd><?php echo edit_field_yes_no_inline('site_setting-USE_REGISTRATION_MODULE', WT_Site::preference('USE_REGISTRATION_MODULE'), $controller); ?></dd>
-
-							<dt><?php echo WT_I18N::translate('Require an administrator to approve new user registrations'), help_link('REQUIRE_ADMIN_AUTH_REGISTRATION'); ?></dt>
-							<dd><?php echo edit_field_yes_no_inline('site_setting-REQUIRE_ADMIN_AUTH_REGISTRATION', WT_Site::preference('REQUIRE_ADMIN_AUTH_REGISTRATION'), $controller); ?></dd>
-
 							<dt><?php echo WT_I18N::translate('Allow users to select their own theme'), help_link('ALLOW_USER_THEMES'); ?></dt>
 							<dd><?php echo edit_field_yes_no_inline('site_setting-ALLOW_USER_THEMES', WT_Site::preference('ALLOW_USER_THEMES'), $controller); ?></dd>
 
@@ -162,6 +156,12 @@ $WELCOME_TEXT_AUTH_MODE_OPTIONS = array(
 
 							<dt><?php echo WT_I18N::translate('Custom welcome text'), ' — ', WT_LOCALE, help_link('WELCOME_TEXT_AUTH_MODE_CUST'); ?></dt>
 							<dd><?php echo edit_text_inline('site_setting-WELCOME_TEXT_AUTH_MODE_4', WT_Site::preference('WELCOME_TEXT_AUTH_MODE_'.WT_LOCALE), $controller); ?></dd>
+
+							<dt><?php echo WT_I18N::translate('Allow visitors to request account registration'), help_link('USE_REGISTRATION_MODULE'); ?></dt>
+							<dd><?php echo edit_field_yes_no_inline('site_setting-USE_REGISTRATION_MODULE', WT_Site::preference('USE_REGISTRATION_MODULE'), $controller); ?></dd>
+
+							<dt><?php echo WT_I18N::translate('Require an administrator to approve new user registrations'), help_link('REQUIRE_ADMIN_AUTH_REGISTRATION'); ?></dt>
+							<dd><?php echo edit_field_yes_no_inline('site_setting-REQUIRE_ADMIN_AUTH_REGISTRATION', WT_Site::preference('REQUIRE_ADMIN_AUTH_REGISTRATION'), $controller); ?></dd>
 
 							<dt><?php echo WT_I18N::translate('Show acceptable use agreement on “Request new user account” page'), help_link('SHOW_REGISTER_CAUTION'); ?></dt>
 							<dd><?php echo edit_field_yes_no_inline('site_setting-SHOW_REGISTER_CAUTION', WT_Site::preference('SHOW_REGISTER_CAUTION'), $controller); ?></dd>
