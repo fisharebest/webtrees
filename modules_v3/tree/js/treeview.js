@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
-function TreeViewHandler(treeviewInstance, allPartners) {
+function TreeViewHandler(treeviewInstance) {
 	this.treeview = jQuery("#" + treeviewInstance + "_in");
 	this.loadingImage = jQuery("#" + treeviewInstance + "_loading");
 	this.toolbox = jQuery("#tv_tools");
@@ -25,9 +25,8 @@ function TreeViewHandler(treeviewInstance, allPartners) {
 	this.zoom = 100; // in percent
 	this.boxWidth = 180; // default family box width
 	this.boxExpandedWidth = 250; // default expanded family box width
-	this.cookieDays = 360; // lifetime of preferences memory, in days
+	this.cookieDays = 3; // lifetime of preferences memory, in days
 	this.ajaxUrl = "module.php?mod=tree&instance=" + treeviewInstance + 
-		"&allPartners=" + (allPartners ? "true" : "false") + 
 		"&mod_action=";
 
 	this.container = this.treeview.parent(); // Store the container element ("#" + treeviewInstance + "_out")
@@ -40,10 +39,6 @@ function TreeViewHandler(treeviewInstance, allPartners) {
 	// Restore user preferences
 	if (readCookie("compact") == "true") {
 		tv.compact();
-	}
-	// set/reset the cookie allPartners
-	if (readCookie("allPartners") != allPartners) {
-		createCookie("allPartners", allPartners, this.cookieDays);
 	}
 
 	// Define the draggables
@@ -58,6 +53,12 @@ function TreeViewHandler(treeviewInstance, allPartners) {
 	tv.toolbox.find("#tvbCompact").each(function(index, tvCompact) {
 		tvCompact.onclick = function() {
 			tv.compact();
+		}
+	});
+	// If we click the "hide/show all partners" button, toggle the setting before reloading the page
+	tv.toolbox.find("#tvbAllPartners").each(function(index, tvAllPartners) {
+		tvAllPartners.onclick = function() {
+			createCookie("allPartners", readCookie("allPartners") === "true" ? "false" : "true", tv.cookieDays);
 		}
 	});
 	tv.toolbox.find("#tvbOpen").each(function(index, tvbOpen) {
@@ -90,7 +91,6 @@ function TreeViewHandler(treeviewInstance, allPartners) {
 	});
 	
 	tv.centerOnRoot(); // fire ajax update if needed, which call setComplete() when all is loaded
-	return false;
 }
 /**
  * Class TreeView setLoading method
@@ -176,7 +176,7 @@ TreeViewHandler.prototype.updateTree = function(center, button) {
 					tv.treeview.find(".tv_box").css("width", "auto");
 				}
 				tv.updating = true; // avoid an unuseful recursive call when all requested persons are loaded
-				if (center == true) {
+				if (center) {
 					tv.centerOnRoot();
 				}
 				if (button) {
@@ -203,7 +203,7 @@ TreeViewHandler.prototype.updateTree = function(center, button) {
 };
 
 /**
- * Class TreeView compacte  method
+ * Class TreeView compact method
  */
 TreeViewHandler.prototype.compact = function() {
 	var tv = this;
@@ -341,7 +341,4 @@ function readCookie(name) {
 		}
 	}
 	return null;
-}
-function eraseCookie(name) {
-	createCookie(name,"",-1);
 }
