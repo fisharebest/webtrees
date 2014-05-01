@@ -80,18 +80,13 @@ if ($pid=="") {
 				?>
 			</td>
 		</tr>
-		<tr>
-			<td class="transparent;">
-				<br>
-			</td>
-		</tr>
 
 		<?php
 		//-- Add Family Members to Census  -------------------------------------------
 		global $spouselinks, $parentlinks;
 		?>
 		<tr>
-		 <td align="center"class="transparent;">
+		 <td align="center">
 		   <table width="100%" class="fact_table" cellspacing="0" border="0">
 			<tr>
 				<td align="center" colspan=3 class="descriptionbox wrap">
