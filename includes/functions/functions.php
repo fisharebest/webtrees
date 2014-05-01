@@ -1295,9 +1295,9 @@ function get_relationship_name_from_path($path, WT_Individual $person1=null, WT_
 			default:
 				switch ($sex2) {
 				case 'M': // I18N: if you need a different number for %d, contact the developers, as a code-change is required
-				          return WT_I18N::translate('great x%d uncle', $up-2);
-				case 'F': return WT_I18N::translate('great x%d aunt', $up-2);
-				case 'U': return WT_I18N::translate('great x%d aunt/uncle', $up-2);
+				          return WT_I18N::translate('great x%d uncle', $up-1);
+				case 'F': return WT_I18N::translate('great x%d aunt', $up-1);
+				case 'U': return WT_I18N::translate('great x%d aunt/uncle', $up-1);
 				}
 			}
 		}

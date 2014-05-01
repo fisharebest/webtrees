@@ -342,7 +342,7 @@ function user_contact_link($user_id) {
 		$email=getUserEmail($user_id);
 		return '<a href="mailto:' . WT_Filter::escapeHtml($email).'">'.WT_Filter::escapeHtml($fullname).'</a>';
 	default:
-		return "<a href='#' onclick='message(\"" . WT_Filter::escapeJs(get_user_name($user_id)) . "\", \"" . $method . "\", \"" . WT_Filter::escapeJs(get_query_url()) . "\", \"\");return false;'>" . WT_Filter::escapeHtml($fullname) . '</a>';
+		return "<a href='#' onclick='message(\"" . WT_Filter::escapeJs(get_user_name($user_id)) . "\", \"" . $method . "\", \"" . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_Filter::escapeJs(get_query_url()) . "\", \"\");return false;'>" . WT_Filter::escapeHtml($fullname) . '</a>';
 	}
 }
 
@@ -445,7 +445,6 @@ function print_fact_notes($factrec, $level, $textOnly=false) {
 	$nlevel = $level+1;
 	$ct = preg_match_all("/$level NOTE (.*)/", $factrec, $match, PREG_SET_ORDER);
 	for ($j=0; $j<$ct; $j++) {
-		$nid = str_replace("@","",$match[$j][1]);
 		$spos1 = strpos($factrec, $match[$j][0], $previous_spos);
 		$spos2 = strpos($factrec."\n$level", "\n$level", $spos1+1);
 		if (!$spos2) $spos2 = strlen($factrec);
@@ -469,7 +468,7 @@ function print_fact_notes($factrec, $level, $textOnly=false) {
 					}
 				}
 			} else {
-				$data='<div class="fact_NOTE"><span class="label">'.WT_I18N::translate('Note').'</span>: <span class="field error">'.$nid.'</span></div>';
+				$data='<div class="fact_NOTE"><span class="label">'.WT_I18N::translate('Note').'</span>: <span class="field error">'.$nmatch[1].'</span></div>';
 			}
 		}
 		if (!$textOnly) {
