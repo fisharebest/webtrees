@@ -231,7 +231,7 @@ function addMessage($message) {
 	if (!empty($message['url'])) {
 		$copy_email .=
 			WT_Mail::EOL . WT_Mail::EOL . '--------------------------------------' . WT_Mail::EOL .
-			WT_I18N::translate('This message was sent while viewing the following URL: ') . WT_SERVER_NAME . WT_SCRIPT_PATH . $message['url'] . WT_Mail::EOL;
+			WT_I18N::translate('This message was sent while viewing the following URL: ') . $message['url'] . WT_Mail::EOL;
 	}
 	$copy_email .= WT_Mail::auditFooter();
 	if (!$user_id_from) {
@@ -288,8 +288,7 @@ function addMessage($message) {
 			$message['body'] .=
 				WT_Mail::EOL . WT_Mail::EOL .
 				'--------------------------------------' . WT_Mail::EOL .
-				WT_I18N::translate('This message was sent while viewing the following URL: ') . WT_Mail::EOL .
-				$message['url'];
+				WT_I18N::translate('This message was sent while viewing the following URL: ') . $message['url'] . WT_Mail::EOL;
 		}
 		$message['body'] .= WT_Mail::auditFooter();
 	}
