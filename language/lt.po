@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2014-01-28 07:54+0000\n"
-"PO-Revision-Date: 2014-04-23 23:25+0200\n"
+"PO-Revision-Date: 2014-05-01 16:55+0200\n"
 "Last-Translator: Vytautas Krivickas <vytautas.krivickas@gmail.com>\n"
 "Language-Team: \n"
 "Language: lt\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Launchpad-Export-Date: 2013-08-04 19:02+0000\n"
-"X-Generator: Poedit 1.6.4\n"
+"X-Generator: Poedit 1.6.5\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -2521,7 +2521,7 @@ msgstr "Bat mitzvah"
 #: modules_v3/batch_update/module.php:29 modules_v3/batch_update/module.php:43
 #: modules_v3/googlemap/placehierarchy.php:179
 msgid "Batch update"
-msgstr "Grupės atnaujinimas"
+msgstr "Grupinis atnaujinimas"
 
 #: library/WT/Gedcom/Code/Temp.php:81
 msgid "Baton Rouge, Louisiana"
@@ -5781,7 +5781,7 @@ msgstr "Neįtraukti asmenų su “%s”, kurių pavardės pasikeitė po vedybų"
 
 #: admin_media.php:575
 msgid "Exclude subfolders"
-msgstr ""
+msgstr "Išskirti poaplankius"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: library/WT/Gedcom/Code/Stat.php:76
@@ -5824,7 +5824,7 @@ msgstr "Į privatu įtraukti ir mirusius asmenis"
 #. I18N: “External files” are stored on other computers
 #: admin_media.php:542
 msgid "External files"
-msgstr ""
+msgstr "Išorinės bylos"
 
 #: admin_media.php:579
 msgid "External media files have a URL instead of a filename."
@@ -6322,7 +6322,7 @@ msgstr "Rastos bylos iš ankstesnės kilmės medžio versijos. Senos bylos karta
 #: admin_site_clean.php:83
 #, php-format
 msgid "Files marked with %s are required for proper operation and cannot be removed."
-msgstr "Bylos pažymėtos su %s privalomi tinkamam veikimui ir negali būti pašalinti."
+msgstr "Bylos pažymėtos su %s yra privalomos tinkamam veikimui ir negali būti pašalintos."
 
 #: admin_site_change.php:271 admin_site_logs.php:238 find.php:186 find.php:201
 #: find.php:219 find.php:236 find.php:253 find.php:271 find.php:288
@@ -9034,7 +9034,7 @@ msgstr "Merkurijaus"
 
 #: admin_site_merge.php:270
 msgid "Merge from ID:"
-msgstr "Sujungti nuo ID:"
+msgstr "Sujungti iš ID:"
 
 #: admin_site_merge.php:32 admin_site_merge.php:78 admin_site_merge.php:146
 #: admin_site_merge.php:243 help_text.php:1169
@@ -9044,7 +9044,7 @@ msgstr "Sujungti įrašus"
 
 #: admin_site_merge.php:249
 msgid "Merge to ID:"
-msgstr "Sujungti iki ID:"
+msgstr "Sujungti į ID:"
 
 #: library/WT/Gedcom/Code/Temp.php:130
 msgid "Merida, Mexico"
@@ -12093,15 +12093,15 @@ msgstr "Nustatykite nuorodą"
 
 #: themes/_administration/header.php:124 themes/_administration/header.php:136
 msgid "Set the default blocks"
-msgstr ""
+msgstr "Nustatyti įprastus blokus"
 
 #: themes/_administration/header.php:124
 msgid "Set the default blocks for new family trees"
-msgstr ""
+msgstr "Nustatyti įprastus blokus naujiems šeimos medžiams"
 
 #: themes/_administration/header.php:136
 msgid "Set the default blocks for new users"
-msgstr ""
+msgstr "Nustatyti įprastus blokus naujiems vartotojams"
 
 #: help_text.php:486
 msgid "Set the default number of generations to display on descendancy and pedigree charts."
@@ -12950,7 +12950,7 @@ msgstr "Šaltinio tipas"
 #: note.php:136 repo.php:92 search.php:122 sourcelist.php:29 sourcelist.php:33
 #: statistics.php:347 statistics.php:384
 msgid "Sources"
-msgstr "Šaltinių"
+msgstr "Šaltiniai"
 
 #: modules_v3/missing_facts_report/report.xml:11
 msgid "Sources to the events"
@@ -13202,12 +13202,12 @@ msgstr "Pavardžių tradicija"
 #. I18N: In the Lithuanian surname tradition, ...
 #: help_text.php:978
 msgid "Surnames are inflected to indicate an individual’s gender and marital status."
-msgstr ""
+msgstr "Pavardės keičiasi pagal asmens lytį ir šeimyninę padėtį"
 
 #. I18N: In the Polish surname tradition, ...
 #: help_text.php:971
 msgid "Surnames are inflected to indicate an individual’s gender."
-msgstr ""
+msgstr "Pavardės keičiasi pagal asmens lytį"
 
 #: library/WT/Gedcom/Code/Temp.php:179
 msgid "Suva, Fiji"
@@ -13536,11 +13536,11 @@ msgstr ""
 
 #: admin_site_access.php:271
 msgid "The following rules are used to decide whether a visitor is a human being (allow full access), a search-engine robot (allow restricted access) or an unwanted crawler (deny all access)."
-msgstr ""
+msgstr "Šios taisyklės yra naudojamos sprendžiant ar lankytojas yra asmuo (leidžiamas pilnas priėjimas), paieškų sistemos robotas (laidžiamas ribotas priėjimas) ar nenorimas vikšrinis (neleidžiamas priėjimas)."
 
 #: admin_site_access.php:288
 msgid "The following visitors were not recognized, and were assumed to be search engines."
-msgstr ""
+msgstr "Šitie lankytojai nebuvo atpažinti ir buvo palaikyti paieškų sistemomis."
 
 #: help_text.php:1504
 msgid "The help text has not been written for this item."
@@ -14379,7 +14379,7 @@ msgstr "Šis sąrašas visų vietovių iš pasirinkto GEDCOM failo. Pagal nutyl�
 
 #: admin_trees_places.php:89
 msgid "This will update the highest-level part or parts of the place name.  For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."
-msgstr ""
+msgstr "Ši funkcija atnaujins aukščiausia vietovardžio dalį ar dalis. Pavyzdžiuj, “Mexico” suras “Quintana Roo, Mexico”, bet ne “Santa Fe, New Mexico”."
 
 #: includes/functions/functions_print.php:1014
 #: library/WT/Date/Calendar.php:222
