@@ -867,6 +867,18 @@ function print_main_notes(WT_Fact $fact, $level) {
 
 	$ct = preg_match_all("/$level NOTE(.*)/", $factrec, $match, PREG_SET_ORDER);
 	for ($j=0; $j<$ct; $j++) {
+		// Note object, or inline note?
+		if (preg_match("/$level NOTE @(.*)@/", $match[$j][0], $nmatch)) {
+			$nid = $nmatch[1];
+			$note = WT_Note::getInstance($nid);
+			if ($note && !$note->canShow()) {
+				continue;
+			}
+		} else {
+			$nid = null;
+			$note = null;
+		}
+
 		if ($level>=2) echo '<tr class="row_note2">';
 		else echo '<tr>';
 		echo '<td class="descriptionbox';
@@ -920,19 +932,13 @@ function print_main_notes(WT_Fact $fact, $level) {
 			}
 		}
 		echo '</td>';
-		if (preg_match("/$level NOTE @(.*)@/", $match[$j][0], $nmatch)) {
+		if ($note) {
 			// Note objects
-			$nid = $nmatch[1];
-			$note = WT_Note::getInstance($nid);
-			if ($note) {
+			if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
 				// If Census assistant installed, allow it to format the note
-				if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
-					$text = GEDFact_assistant_WT_Module::formatCensusNote($note);
-				} else {
-					$text = WT_Filter::formatText($note->getNote(), $WT_TREE);
-				}
+				$text = GEDFact_assistant_WT_Module::formatCensusNote($note);
 			} else {
-				$text = '<span class="error">' . WT_Filter::escapeHtml($nid) . '</span>';
+				$text = WT_Filter::formatText($note->getNote(), $WT_TREE);
 			}
 		} else {
 			// Inline notes
