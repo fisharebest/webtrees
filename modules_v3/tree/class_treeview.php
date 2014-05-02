@@ -125,7 +125,7 @@ class TreeView {
 	/**
 	 * Return the details for a person
 	 */
-	private function getPersonDetails(WT_Individual $individual, WT_Family $family) {
+	private function getPersonDetails(WT_Individual $individual, WT_Family $family = null) {
 		$r = $this->getThumbnail($individual);
 		$r .= '<a class="tv_link" href="' . $individual->getHtmlUrl() . '">' . $individual->getFullName() . '</a> <a href="module.php?mod=tree&amp;mod_action=treeview&amp;rootid=' . $individual->getXref() . '" title="' . WT_I18N::translate('Interactive tree of %s', strip_tags($individual->getFullName())) . '" class="icon-button_indi tv_link tv_treelink"></a>';
 		foreach ($individual->getFacts(WT_EVENTS_BIRT, true) as $fact) {
