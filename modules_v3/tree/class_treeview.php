@@ -63,9 +63,9 @@ class TreeView {
 		$r .= '</div><h2 id="tree-title">' .
 			WT_I18N::translate('Interactive tree of %s', $rootPerson->getFullName()) .
 			'</h2><div id="' . $this->name . '_in" class="tv_in" dir="ltr">';
-		$parent = null;
-		$r .= $this->drawPerson($rootPerson, $generations, 0, $parent, '', true);
+		$r .= $this->drawPerson($rootPerson, $generations, 0, null, null, true);
 		$r .= '</div></div>'; // Close the tv_in and the tv_out div
+
 		return array($r, 'var ' . $this->name . 'Handler = new TreeViewHandler("' . $this->name . '");');
 	}
 
@@ -106,27 +106,26 @@ class TreeView {
 	/**
 	 * Get the details for a person and their life partner(s)
 	 *
-	 * @param string $pid the person id to return the details for
+	 * @param WT_Individual $individual the individual to return the details for
 	 *
 	 * @return string
 	 */
-	public function getDetails($pid) {
-
-		$person = WT_Individual::getInstance($pid);
-		$r = $this->getPersonDetails($person, null);
-		foreach ($person->getSpouseFamilies() as $family) {
-			$spouse = $family->getSpouse($person);
+	public function getDetails(WT_Individual $individual) {
+		$r = $this->getPersonDetails($individual, null);
+		foreach ($individual->getSpouseFamilies() as $family) {
+			$spouse = $family->getSpouse($individual);
 			if ($spouse) {
 				$r .= $this->getPersonDetails($spouse, $family);
 			}
 		}
+
 		return $r;
 	}
 
 	/**
 	 * Return the details for a person
 	 */
-	private function getPersonDetails($individual, $family) {
+	private function getPersonDetails(WT_Individual $individual, WT_Family $family) {
 		$r = $this->getThumbnail($individual);
 		$r .= '<a class="tv_link" href="' . $individual->getHtmlUrl() . '">' . $individual->getFullName() . '</a> <a href="module.php?mod=tree&amp;mod_action=treeview&amp;rootid=' . $individual->getXref() . '" title="' . WT_I18N::translate('Interactive tree of %s', strip_tags($individual->getFullName())) . '" class="icon-button_indi tv_link tv_treelink"></a>';
 		foreach ($individual->getFacts(WT_EVENTS_BIRT, true) as $fact) {
@@ -210,10 +209,10 @@ class TreeView {
 	 * (for "life partner") here fits much better than "spouse" or "mate"
 	 * to translate properly the modern french meaning of "conjoint"
 	 */
-	private function drawPerson(WT_Individual $person, $gen, $state, WT_Family $pfamily, $order, $isRoot = false) {
+	private function drawPerson(WT_Individual $person, $gen, $state, WT_Family $pfamily = null, $order = null, $isRoot = false) {
 		global $TEXT_DIRECTION;
 
-		if ($gen < 0 || empty($person)) {
+		if ($gen < 0) {
 			return '';
 		}
 		if (!empty($pfamily)) {
@@ -308,27 +307,33 @@ class TreeView {
 	/**
 	 * Draw a person name preceded by sex icon, with parents as tooltip
 	 *
-	 * @param WT_Individual $p      a person
-	 * @param string        $dashed if = 'dashed' print dashed top border to separate multiple spuses
+	 * @param WT_Individual $individual an individual
+	 * @param string        $dashed     if = 'dashed' print dashed top border to separate multiple spuses
 	 *
 	 * @return string
 	 */
-	private function drawPersonName(WT_Individual $p, $dashed = '') {
+	private function drawPersonName(WT_Individual $individual, $dashed = '') {
 		if ($this->allPartners === 'true') {
-			$f = $p->getPrimaryChildFamily();
+			$f = $individual->getPrimaryChildFamily();
 			if ($f) {
-				switch ($p->getSex()) {
+				switch ($individual->getSex()) {
 				case 'M':
-					$title = ' title="' . strip_tags( /* I18N: e.g. “Son of [father name & mother name]” */
-							WT_I18N::translate('Son of %s', $f->getFullName())) . '"';
+					$title = ' title="' . strip_tags(
+						/* I18N: e.g. “Son of [father name & mother name]” */
+						WT_I18N::translate('Son of %s', $f->getFullName())
+					) . '"';
 					break;
 				case 'F':
-					$title = ' title="' . strip_tags( /* I18N: e.g. “Daughter of [father name & mother name]” */
-							WT_I18N::translate('Daughter of %s', $f->getFullName())) . '"';
+					$title = ' title="' . strip_tags(
+						/* I18N: e.g. “Daughter of [father name & mother name]” */
+						WT_I18N::translate('Daughter of %s', $f->getFullName())
+					) . '"';
 					break;
 				case 'U':
-					$title = ' title="' . strip_tags( /* I18N: e.g. “Child of [father name & mother name]” */
-							WT_I18N::translate('Child of %s', $f->getFullName())) . '"';
+					$title = ' title="' . strip_tags(
+						/* I18N: e.g. “Child of [father name & mother name]” */
+						WT_I18N::translate('Child of %s', $f->getFullName())
+					) . '"';
 					break;
 				}
 			} else {
@@ -337,23 +342,23 @@ class TreeView {
 		} else {
 			$title = '';
 		}
-		$sex = $p->getSex();
-		$r = '<div class="tv' . $sex . ' ' . $dashed . '"' . $title . '><a href="' . $p->getHtmlUrl() . '"></a>' . $p->getFullName() . ' <span class="dates">' . $p->getLifeSpan() . '</span></div>';
+		$sex = $individual->getSex();
+		$r = '<div class="tv' . $sex . ' ' . $dashed . '"' . $title . '><a href="' . $individual->getHtmlUrl() . '"></a>' . $individual->getFullName() . ' <span class="dates">' . $individual->getLifeSpan() . '</span></div>';
 		return $r;
 	}
 
 	/**
 	 * Get the thumbnail image for the given person
 	 *
-	 * @param WT_Individual $person
+	 * @param WT_Individual $individual
 	 *
 	 * @return string
 	 */
-	private function getThumbnail(WT_Individual $person) {
+	private function getThumbnail(WT_Individual $individual) {
 		global $SHOW_HIGHLIGHT_IMAGES;
 
 		if ($SHOW_HIGHLIGHT_IMAGES) {
-			return $person->displayImage();
+			return $individual->displayImage();
 		} else {
 			return '';
 		}
@@ -371,15 +376,13 @@ class TreeView {
 	 * Therefore, Firefox is a good choice to print very big trees.
 	 */
 	private function drawVerticalLine($order) {
-		$r = '<td class="tv_vline tv_vline_' . $order . '"><div class="tv_vline tv_vline_' . $order . '"></div></td>';
-		return $r;
+		return '<td class="tv_vline tv_vline_' . $order . '"><div class="tv_vline tv_vline_' . $order . '"></div></td>';
 	}
 
 	/**
 	 * Draw an horizontal line
 	 */
 	private function drawHorizontalLine() {
-		$r = '<td class="tv_hline"><div class="tv_hline"></div></td>';
-		return $r;
+		return '<td class="tv_hline"><div class="tv_hline"></div></td>';
 	}
 }
