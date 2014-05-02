@@ -865,7 +865,7 @@ function print_main_notes(WT_Fact $fact, $level) {
 		$can_edit = $level==1 && $fact->canEdit();
 	}
 
-	$ct = preg_match_all("/$level NOTE(.*)/", $factrec, $match, PREG_SET_ORDER);
+	$ct = preg_match_all("/$level NOTE (.*)/", $factrec, $match, PREG_SET_ORDER);
 	for ($j=0; $j<$ct; $j++) {
 		// Note object, or inline note?
 		if (preg_match("/$level NOTE @(.*)@/", $match[$j][0], $nmatch)) {
