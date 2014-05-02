@@ -102,8 +102,7 @@ table#tvTreeBorder td,
 /* TD container for a vertical line */
 #tv_tree table.tv_tree td.tv_vline {
 	width: 1px;
-	background-repeat: repeat-x;
-	background-position: 50% 50%;
+	background: repeat-x 50% 50%;
 	height: 100%; /* required */
 }
 #tv_tree table.tv_tree td.tv_vline_h {
@@ -192,9 +191,7 @@ table#tvTreeBorder td,
 	clear: both;
 	border: 0;
 	margin: 0;
-	padding: 1px;
-	padding-left: 4px;
-	padding-right: 4px;
+	padding: 1px 4px;
 	border-radius: 4px; /* customizable */
 }
 #tv_tree div.tv_box i.dates {
@@ -310,8 +307,7 @@ table#tvTreeBorder td,
 	vertical-align: middle;
 }
 #tv_tools ul li a.help img.icon {
-	margin: 0;
-	margin-top: 3px;
+	margin: 3px 0 0;
 	padding: 0;
 	width: 15px;
 	height: 15px;
@@ -338,9 +334,7 @@ table#tvTreeBorder td,
 	color: #000;
 	border: 0;
 	margin: 0;
-	padding: 0;
-	padding-left: 4px;
-	padding-right: 4px;
+	padding: 0 4px;
 }
 
 .tvM {background-color: #DDF !important;}
