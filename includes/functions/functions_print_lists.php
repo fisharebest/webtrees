@@ -228,7 +228,6 @@ function format_indi_table($datalist, $option='') {
 	//-- table body
 	$html .= '<tbody>';
 	$d100y=new WT_Date(date('Y')-100);  // 100 years ago
-	$dateY = date('Y');
 	$unique_indis=array(); // Don't double-count indis with multiple names.
 	foreach ($datalist as $key=>$value) {
 		if (is_object($value)) { // Array of objects
@@ -305,7 +304,6 @@ function format_indi_table($datalist, $option='') {
 			}
 		} else {
 			$birth_date=$person->getEstimatedBirthDate();
-			$birth_jd=$birth_date->JD();
 			if ($SHOW_EST_LIST_DATES) {
 				$html .= $birth_date->Display(!$SEARCH_SPIDER);
 			} else {
@@ -350,7 +348,6 @@ function format_indi_table($datalist, $option='') {
 			}
 		} else {
 			$death_date=$person->getEstimatedDeathDate();
-			$death_jd=$death_date->JD();
 			if ($SHOW_EST_LIST_DATES) {
 				$html .= $death_date->Display(!$SEARCH_SPIDER);
 			} else if ($person->isDead()) {
