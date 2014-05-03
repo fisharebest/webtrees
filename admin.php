@@ -618,6 +618,9 @@ function old_paths() {
 		WT_ROOT.'themes/minimal/css-1.5.2',
 		WT_ROOT.'themes/webtrees/css-1.5.2',
 		WT_ROOT.'themes/xenea/css-1.5.2',
+		// Removed in 1.5.4
+		WT_ROOT.'js/jquery.colorbox-1.4.15.js',
+		WT_ROOT.'js/webtrees-1.5.3.js',
 	);
 }
 

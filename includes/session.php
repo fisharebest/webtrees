@@ -49,13 +49,13 @@ if (WT_USE_GOOGLE_API) {
 	define('WT_JQUERY_URL',        WT_STATIC_URL.'js/jquery-1.11.0.js');
 	define('WT_JQUERYUI_URL',      WT_STATIC_URL.'js/jquery-ui-1.10.4.js');
 }
-define('WT_JQUERY_COLORBOX_URL',   WT_STATIC_URL.'js/jquery.colorbox-1.4.15.js');
+define('WT_JQUERY_COLORBOX_URL',   WT_STATIC_URL.'js/jquery.colorbox-1.5.9.js');
 define('WT_JQUERY_COOKIE_URL',     WT_STATIC_URL.'js/jquery.cookie-1.4.0.js');
 define('WT_JQUERY_DATATABLES_URL', WT_STATIC_URL.'js/jquery.datatables-1.9.4.js');
 define('WT_JQUERY_JEDITABLE_URL',  WT_STATIC_URL.'js/jquery.jeditable-1.7.1.js');
 define('WT_JQUERY_WHEELZOOM_URL',  WT_STATIC_URL.'js/jquery.wheelzoom-1.1.2.js');
 define('WT_MODERNIZR_URL',         WT_STATIC_URL.'js/modernizr.custom-2.6.2.js');
-define('WT_WEBTREES_JS_URL',       WT_STATIC_URL.'js/webtrees-1.5.3.js');
+define('WT_WEBTREES_JS_URL',       WT_STATIC_URL.'js/webtrees-1.5.4.js');
 
 // Location of our modules and themes.  These are used as URLs and folder paths.
 define('WT_MODULES_DIR', 'modules_v3/'); // Update setup.php and build/Makefile when this changes
