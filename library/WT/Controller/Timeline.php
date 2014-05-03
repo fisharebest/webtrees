@@ -49,19 +49,19 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 		$this->setPageTitle(WT_I18N::translate('Timeline'));
 
 		$this->baseyear = date("Y");
-		//-- new pid
+		// new pid
 		$newpid = WT_Filter::get('newpid', WT_REGEX_XREF);
 
-		//-- pids array
+		// pids array
 		$this->pids = WT_Filter::getArray('pids', WT_REGEX_XREF);
-		//-- make sure that arrays are indexed by numbers
+		// make sure that arrays are indexed by numbers
 		$this->pids = array_values($this->pids);
 		if (!empty($newpid) && !in_array($newpid, $this->pids)) {
 			$this->pids[] = $newpid;
 		}
 		if (count($this->pids)==0) $this->pids[] = $this->getSignificantIndividual()->getXref();
 		$remove = WT_Filter::get('remove', WT_REGEX_XREF);
-		//-- cleanup user input
+		// cleanup user input
 		$newpids = array();
 		foreach ($this->pids as $value) {
 			if ($value!=$remove) {
@@ -77,7 +77,7 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 		/* @var $indi Person */
 		foreach ($this->people as $p=>$indi) {
 			if (!is_null($indi) && $indi->canShow()) {
-				//-- setup string of valid pids for links
+				// setup string of valid pids for links
 				$this->pidlinks .= "pids%5B%5D=".$indi->getXref()."&amp;";
 				$bdate = $indi->getBirthDate();
 				if ($bdate->isOK()) {
@@ -98,10 +98,10 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 					}
 				}
 				foreach ($facts as $event) {
-					//-- get the fact type
+					// get the fact type
 					$fact = $event->getTag();
 					if (!in_array($fact, $this->nonfacts)) {
-						//-- check for a date
+						// check for a date
 						$date = $event->getDate();
 						$date=$date->MinDate();
 						$date=$date->convert_to_cal('gregorian');
@@ -112,7 +112,7 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 							if (!$indi->isDead())
 								$this->topyear=max($this->topyear, date('Y'));
 							$event->temp = $p;
-							//-- do not add the same fact twice (prevents marriages from being added multiple times)
+							// do not add the same fact twice (prevents marriages from being added multiple times)
 							// TODO - this code does not work.  If both spouses are shown, their marriage is duplicated...
 							if (!in_array($event, $this->indifacts, true)) $this->indifacts[] = $event;
 						}
@@ -164,7 +164,7 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 		if ($fact=="EVEN" || $fact=="FACT") {
 			$fact = $event->getAttribute('TYPE');
 			}
-		//-- check if this is a family fact
+		// check if this is a family fact
 		$gdate=$event->getDate();
 		$date=$gdate->MinDate();
 		$date=$date->convert_to_cal('gregorian');
@@ -194,7 +194,7 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 		$xoffset += abs($tyoffset);
 		$placements[$place] = $yoffset;
 
-		echo "<div id=\"fact$factcount\" style=\"position:absolute; ".($TEXT_DIRECTION =="ltr"?"left: ".($xoffset):"right: ".($xoffset))."px; top:".($yoffset)."px; font-size: 8pt; height: ".($this->bheight)."px;\" onmousedown=\"factMD(this, '".$factcount."', ".($yoffset-$tyoffset).");\">";
+		echo "<div id=\"fact$factcount\" style=\"position:absolute; ".($TEXT_DIRECTION =="ltr"?"left: ".($xoffset):"right: ".($xoffset))."px; top:".($yoffset)."px; font-size: 8pt; height: ".($this->bheight)."px;\" onmousedown=\"factMouseDown(this, '".$factcount."', ".($yoffset-$tyoffset).");\">";
 		echo "<table cellspacing=\"0\" cellpadding=\"0\" border=\"0\" style=\"cursor: hand;\"><tr><td>";
 		echo "<img src=\"".$WT_IMAGES["hline"]."\" name=\"boxline$factcount\" id=\"boxline$factcount\" height=\"3\" align=\"left\" width=\"10\" alt=\"\" style=\"padding-";
 		if ($TEXT_DIRECTION=="ltr") echo "left";
@@ -202,10 +202,10 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 		echo ": 3px;\">";
 		$col = $event->temp % 6;
 		echo "</td><td valign=\"top\" class=\"person".$col."\">";
-		if (count($this->pids) > 6) echo $event->getParent()->getFullName()." - ";
+		if (count($this->pids) > 6) echo $event->getParent()->getFullName() . ' — ';
 		$record=$event->getParent();
 		echo $event->getLabel();
-		echo " -- ";
+		echo ' — ';
 		if ($record instanceof WT_Individual) {
 			echo format_fact_date($event, $record, false, false);
 		} elseif ($record instanceof WT_Family) {
@@ -232,7 +232,7 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 		if (!$event->getPlace()->isEmpty()) {
 			echo ' — ' . $event->getPlace()->getShortName();
 		}
-		//-- print spouse name for marriage events
+		// print spouse name for marriage events
 		if (isset($event->spouse)) {
 			$spouse = $event->spouse;
 		} else {
@@ -270,7 +270,7 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 				$ypos = "0%";
 			}
 		}
-		//-- print the diagnal line
+		// print the diagnal line
 		echo "<div id=\"dbox$factcount\" style=\"position:absolute; ".($TEXT_DIRECTION =="ltr"?"left: ".($basexoffset+25):"right: ".($basexoffset+25))."px; top:".($dyoffset)."px; font-size: 8pt; height: ".(abs($tyoffset))."px; width: ".(abs($tyoffset))."px;";
 		echo " background-image: url('".$WT_IMAGES[$img]."');";
 		echo " background-position: 0% $ypos;\">";

@@ -188,24 +188,18 @@ function load_gedcom_settings($ged_id=WT_GED_ID) {
  */
 function get_sub_record($level, $tag, $gedrec, $num=1) {
 	if (empty($gedrec)) {
-		return "";
+		return '';
 	}
 	// -- adding \n before and after gedrec
 	$gedrec = "\n".$gedrec."\n";
-	$pos1=0;
-	$subrec = "";
 	$tag = trim($tag);
 	$searchTarget = "~[\n]".$tag."[\s]~";
 	$ct = preg_match_all($searchTarget, $gedrec, $match, PREG_SET_ORDER | PREG_OFFSET_CAPTURE);
 	if ($ct==0) {
-		$tag = preg_replace('/(\w+)/', "_$1", $tag);
-		$ct = preg_match_all($searchTarget, $gedrec, $match, PREG_SET_ORDER | PREG_OFFSET_CAPTURE);
-		if ($ct==0) {
-			return "";
-		}
+		return '';
 	}
 	if ($ct<$num) {
-		return "";
+		return '';
 	}
 	$pos1 = $match[$num-1][0][1];
 	$pos2 = strpos($gedrec, "\n$level", $pos1+1);
@@ -285,7 +279,7 @@ function event_sort_name($a, $b) {
  * using the compare type function
  * 3. Then merge the arrays back into the original array using the compare type function
  *
- * @param unknown_type $arr
+ * @param WT_Fact[] $arr
  */
 function sort_facts(&$arr) {
 	$dated = array();

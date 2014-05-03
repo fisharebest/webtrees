@@ -64,7 +64,7 @@ function spanLTRRTL($inputText, $direction='BOTH', $class='') {
 	global $TEXT_DIRECTION;
 	global $openPar, $closePar, $punctuation;
 	global $numbers, $numberPrefix, $numberPunctuation;
-	global $previousState, $currentState, $posSpanStart, $waitingText;
+	global $previousState, $currentState, $waitingText;
 	global $startLTR, $endLTR, $startRTL, $endRTL, $lenStart, $lenEnd;
 	static $spanNumber = 0;
 

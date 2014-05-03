@@ -3682,11 +3682,8 @@ function DescriptionEHandler() {
 * @return string
 */
 function get_gedcom_value($tag, $level, $gedrec, $truncate='') {
-	global $GEDCOM;
-	$ged_id=get_id_from_gedcom($GEDCOM);
-
 	if (empty($gedrec)) {
-		return "";
+		return '';
 	}
 	$tags = explode(':', $tag);
 	$origlevel = $level;
@@ -3695,7 +3692,7 @@ function get_gedcom_value($tag, $level, $gedrec, $truncate='') {
 	}
 
 	$subrec = $gedrec;
-	foreach ($tags as $indexval => $t) {
+	foreach ($tags as $t) {
 		$lastsubrec = $subrec;
 		$subrec = get_sub_record($level, "$level $t", $subrec);
 		if (empty($subrec) && $origlevel==0) {
@@ -3749,48 +3746,40 @@ function get_gedcom_value($tag, $level, $gedrec, $truncate='') {
 }
 
 function add_ancestors(&$list, $pid, $children=false, $generations=-1, $show_empty=false) {
-	$total_num_skipped = 0;
-	$skipped_gen = 0;
-	$num_skipped = 0;
 	$genlist = array($pid);
 	$list[$pid]->generation = 1;
 	while (count($genlist)>0) {
 		$id = array_shift($genlist);
-		if (strpos($id, "empty")===0) continue; // id can be something like “empty7”
+		if (strpos($id, 'empty') === 0) {
+			continue; // id can be something like “empty7”
+		}
 		$person = WT_Individual::getInstance($id);
-		$famids = $person->getChildFamilies();
-		if (count($famids)>0) {
-			$num_skipped = 0;
-			foreach ($famids as $famid => $family) {
-				$husband = $family->getHusband();
-				$wife = $family->getWife();
+		foreach ($person->getChildFamilies() as $family) {
+			$husband = $family->getHusband();
+			$wife = $family->getWife();
+			if ($husband) {
+				$list[$husband->getXref()] = $husband;
+				$list[$husband->getXref()]->generation = $list[$id]->generation+1;
+			}
+			if ($wife) {
+				$list[$wife->getXref()] = $wife;
+				$list[$wife->getXref()]->generation = $list[$id]->generation+1;
+			}
+			if ($generations == -1 || $list[$id]->generation+1 < $generations) {
 				if ($husband) {
-					$list[$husband->getXref()] = $husband;
-					$list[$husband->getXref()]->generation = $list[$id]->generation+1;
+					array_push($genlist, $husband->getXref());
 				}
 				if ($wife) {
-					$list[$wife->getXref()] = $wife;
-					$list[$wife->getXref()]->generation = $list[$id]->generation+1;
+					array_push($genlist, $wife->getXref());
 				}
-				if ($generations == -1 || $list[$id]->generation+1 < $generations) {
-					$skipped_gen = $list[$id]->generation+1;
-					if ($husband) {
-						array_push($genlist, $husband->getXref());
-					}
-					if ($wife) {
-						array_push($genlist, $wife->getXref());
-					}
-				}
-				$total_num_skipped++;
-				if ($children) {
-					$childs = $family->getChildren();
-					foreach ($childs as $child) {
-						$list[$child->getXref()] = $child;
-						if (isset($list[$id]->generation))
-							$list[$child->getXref()]->generation = $list[$id]->generation;
-						else
-							$list[$child->getXref()]->generation = 1;
-					}
+			}
+			if ($children) {
+				foreach ($family->getChildren() as $child) {
+					$list[$child->getXref()] = $child;
+					if (isset($list[$id]->generation))
+						$list[$child->getXref()]->generation = $list[$id]->generation;
+					else
+						$list[$child->getXref()]->generation = 1;
 				}
 			}
 		}
@@ -3799,7 +3788,9 @@ function add_ancestors(&$list, $pid, $children=false, $generations=-1, $show_emp
 
 function add_descendancy(&$list, $pid, $parents=false, $generations=-1) {
 	$person = WT_Individual::getInstance($pid);
-	if ($person==null) return;
+	if ($person==null) {
+		return;
+	}
 	if (!isset($list[$pid])) {
 		$list[$pid] = $person;
 	}

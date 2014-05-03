@@ -787,7 +787,7 @@ function format_fact_date(WT_Fact $event, WT_GedcomRecord $record, $anchor=false
 * @param boolean $lds option to print LDS TEMPle and STATus
 */
 function format_fact_place(WT_Fact $event, $anchor=false, $sub_records=false, $lds=false) {
-	global $SHOW_PEDIGREE_PLACES, $SHOW_PEDIGREE_PLACES_SUFFIX, $SEARCH_SPIDER;
+	global $SEARCH_SPIDER;
 
 	if ($anchor) {
 		// Show the full place name, for facts/events tab
@@ -836,7 +836,6 @@ function format_fact_place(WT_Fact $event, $anchor=false, $sub_records=false, $l
 	}
 	if ($lds) {
 		if (preg_match('/2 TEMP (.*)/', $event->getGedcom(), $match)) {
-			$tcode=trim($match[1]);
 			$html.='<br>'.WT_I18N::translate('LDS temple').': '.WT_Gedcom_Code_Temp::templeName($match[1]);
 		}
 		if (preg_match('/2 STAT (.*)/', $event->getGedcom(), $match)) {
@@ -855,7 +854,7 @@ function format_fact_place(WT_Fact $event, $anchor=false, $sub_records=false, $l
 * If the fact already exists in the second array, delete it from the first one.
 */
 function CheckFactUnique($uniquefacts, $recfacts, $type) {
-	foreach ($recfacts as $indexval => $factarray) {
+	foreach ($recfacts as $factarray) {
 		$fact=false;
 		if (is_object($factarray)) {
 			/* @var $factarray Event */
@@ -1032,7 +1031,7 @@ function print_specialchar_link($element_id) {
 
 function print_autopaste_link($element_id, $choices) {
 	echo '<small>';
-	foreach ($choices as $indexval => $choice) {
+	foreach ($choices as $choice) {
 		echo '<span onclick="document.getElementById(\'', $element_id, '\').value=';
 		echo '\'', $choice, '\';';
 		echo " return false;\">", $choice, '</span> ';

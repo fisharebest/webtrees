@@ -228,7 +228,6 @@ function format_indi_table($datalist, $option='') {
 	//-- table body
 	$html .= '<tbody>';
 	$d100y=new WT_Date(date('Y')-100);  // 100 years ago
-	$dateY = date('Y');
 	$unique_indis=array(); // Don't double-count indis with multiple names.
 	foreach ($datalist as $key=>$value) {
 		if (is_object($value)) { // Array of objects
@@ -305,7 +304,6 @@ function format_indi_table($datalist, $option='') {
 			}
 		} else {
 			$birth_date=$person->getEstimatedBirthDate();
-			$birth_jd=$birth_date->JD();
 			if ($SHOW_EST_LIST_DATES) {
 				$html .= $birth_date->Display(!$SEARCH_SPIDER);
 			} else {
@@ -350,7 +348,6 @@ function format_indi_table($datalist, $option='') {
 			}
 		} else {
 			$death_date=$person->getEstimatedDeathDate();
-			$death_jd=$death_date->JD();
 			if ($SHOW_EST_LIST_DATES) {
 				$html .= $death_date->Display(!$SEARCH_SPIDER);
 			} else if ($person->isDead()) {
@@ -648,7 +645,7 @@ function format_fam_table($datalist, $option='') {
 	$html .= '</tr></thead>';
 	//-- table body
 	$html .= '<tbody>';
-	$num = 0;
+
 	$d100y=new WT_Date(date('Y')-100);  // 100 years ago
 	foreach ($datalist as $family) {
 		//-- Retrieve husband and wife
@@ -937,7 +934,7 @@ function format_sour_table($datalist) {
 	$html .= '</tr></thead>';
 	//-- table body
 	$html .= '<tbody>';
-	$n=0;
+
 	foreach ($datalist as $source) {
 		if (!$source->canShow()) {
 			continue;
@@ -1120,7 +1117,8 @@ function format_note_table($datalist) {
 
 // print a table of repositories
 function format_repo_table($repos) {
-	global $SHOW_LAST_CHANGE, $SEARCH_SPIDER, $controller;
+	global $SHOW_LAST_CHANGE, $controller;
+
 	$html = '';
 	$table_id = 'ID'.(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	$controller
@@ -1163,7 +1161,7 @@ function format_repo_table($repos) {
 	$html .= '</tr></thead>';
 	//-- table body
 	$html .= '<tbody>';
-	$n=0;
+
 	foreach ($repos as $repo) {
 		if (!$repo->canShow()) {
 			continue;
@@ -1270,7 +1268,7 @@ function format_media_table($datalist) {
 	$html .= '</tr></thead>';
 	//-- table body
 	$html .= '<tbody>';
-	$n = 0;
+
 	foreach ($datalist as $media) {
 		if ($media->canShow()) {
 			$name = $media->getFullName();
@@ -1388,7 +1386,7 @@ function format_surname_table($surnames, $script) {
 		// Surname count
 		$html.='<td>';
 		$subtotal=0;
-		foreach ($surns as $spfxsurn=>$indis) {
+		foreach ($surns as $indis) {
 			$subtotal+=count($indis);
 			$html.=WT_I18N::number(count($indis)).'<br>';
 		}
@@ -1482,7 +1480,7 @@ function format_surname_list($surnames, $style, $totals, $script) {
 
 		if ($totals) {
 			$subtotal=0;
-			foreach ($surns as $spfxsurn=>$indis) {
+			foreach ($surns as $indis) {
 				$subtotal+=count($indis);
 			}
 			$subhtml.='&nbsp;('.WT_I18N::number($subtotal).')';
@@ -1498,7 +1496,6 @@ function format_surname_list($surnames, $style, $totals, $script) {
 	case 3:
 		$i = 0;
 		$count = count($html);
-		$count_indi = 0;
 		$col = 1;
 		if ($count>36) $col=4;
 		else if ($count>18) $col=3;
@@ -1507,7 +1504,7 @@ function format_surname_list($surnames, $style, $totals, $script) {
 		$html2 ='<table class="list_table"><tr>';
 		$html2.='<td class="list_value" style="padding: 14px;">';
 
-		foreach ($html as $surn=>$surns) {
+		foreach ($html as $surns) {
 			$html2.= $surns.'<br>';
 			$i++;
 			if ($i==$newcol && $i<$count) {
@@ -1568,7 +1565,6 @@ function print_changes_list($change_ids, $sort) {
 function print_changes_table($change_ids, $sort) {
 	global $controller;
 
-	$return = '';
 	$n = 0;
 	$table_id = "ID" . (int)(microtime() * 1000000); // create a unique ID
 	switch ($sort) {
@@ -1983,12 +1979,14 @@ function print_chart_by_age($data, $title) {
 function print_chart_by_decade($data, $title) {
 	$count = 0;
 	$vmax = 0;
-	foreach ($data as $age=>$v) {
+	foreach ($data as $v) {
 		$n = strlen($v);
 		$vmax = max($vmax, $n);
 		$count += $n;
 	}
-	if ($count<1) return;
+	if ($count<1) {
+		return;
+	}
 	$chart_url = "https://chart.googleapis.com/chart?cht=bvs"; // chart type
 	$chart_url .= "&amp;chs=360x150"; // size
 	$chart_url .= "&amp;chbh=3,3"; // bvg : 4,1,2
