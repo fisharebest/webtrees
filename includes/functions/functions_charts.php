@@ -373,7 +373,7 @@ function print_family_children(WT_Family $family, $childid = '', $sosa = 0, $lab
 		echo "<tr>";
 		print_sosa_number($sosa, $child);
 		echo "<td valign=\"top\">";
-		print_pedigree_person(WT_Individual::getInstance($childid), 1, 0, $personcount++);
+		print_pedigree_person(WT_Individual::getInstance($childid), 1, 0, $personcount);
 		echo "</td></tr>";
 	}
 	echo "</table><br>";

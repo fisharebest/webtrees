@@ -1506,8 +1506,8 @@ function insert_missing_subtags($level1tag, $add_date=false) {
 				add_simple_tag("2 {$tag}");
 				if ($tag=='PLAC') {
 					if (preg_match_all('/('.WT_REGEX_TAG.')/', $ADVANCED_PLAC_FACTS, $match)) {
-						foreach ($match[1] as $tag) {
-							add_simple_tag("3 $tag", '', WT_Gedcom_Tag::getLabel("{$level1tag}:PLAC:{$tag}"));
+						foreach ($match[1] as $ptag) {
+							add_simple_tag("3 $ptag", '', WT_Gedcom_Tag::getLabel("{$level1tag}:PLAC:{$ptag}"));
 						}
 					}
 					add_simple_tag('3 MAP');
