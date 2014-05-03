@@ -1180,7 +1180,7 @@ function updateRest($inputRec, $levelOverride="no") {
 * @return string The updated gedcom record
 */
 function handle_updates($newged, $levelOverride="no") {
-	global $glevels, $islink, $tag, $uploaded_files, $text, $NOTE, $WORD_WRAPPED_NOTES;
+	global $glevels, $islink, $tag, $uploaded_files, $text;
 
 	if ($levelOverride=="no" || count($glevels)==0) $levelAdjust = 0;
 	else $levelAdjust = $levelOverride - $glevels[0];
@@ -1291,8 +1291,7 @@ function create_add_form($fact) {
 
 // Create a form to edit a WT_Fact object
 function create_edit_form(WT_GedcomRecord $record, WT_Fact $fact) {
-	global $WORD_WRAPPED_NOTES, $ADVANCED_PLAC_FACTS, $date_and_time, $FULL_SOURCES;
-	global $tags;
+	global $ADVANCED_PLAC_FACTS, $date_and_time, $FULL_SOURCES, $tags;
 
 	$pid = $record->getXref();
 
@@ -1309,12 +1308,6 @@ function create_edit_form(WT_GedcomRecord $record, WT_Fact $fact) {
 	$level0type = $parent::RECORD_TYPE;
 	$level1type = $type;
 
-	if (count($fields)>2) {
-		$ct = preg_match("/@.*@/", $fields[2]);
-		$levellink = $ct > 0;
-	} else {
-		$levellink = false;
-	}
 	$i = $linenum;
 	$inSource = false;
 	$levelSource = 0;

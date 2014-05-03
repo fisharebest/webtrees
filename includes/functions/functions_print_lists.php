@@ -1388,7 +1388,7 @@ function format_surname_table($surnames, $script) {
 		// Surname count
 		$html.='<td>';
 		$subtotal=0;
-		foreach ($surns as $spfxsurn=>$indis) {
+		foreach ($surns as $indis) {
 			$subtotal+=count($indis);
 			$html.=WT_I18N::number(count($indis)).'<br>';
 		}
@@ -1482,7 +1482,7 @@ function format_surname_list($surnames, $style, $totals, $script) {
 
 		if ($totals) {
 			$subtotal=0;
-			foreach ($surns as $spfxsurn=>$indis) {
+			foreach ($surns as $indis) {
 				$subtotal+=count($indis);
 			}
 			$subhtml.='&nbsp;('.WT_I18N::number($subtotal).')';
@@ -1498,7 +1498,6 @@ function format_surname_list($surnames, $style, $totals, $script) {
 	case 3:
 		$i = 0;
 		$count = count($html);
-		$count_indi = 0;
 		$col = 1;
 		if ($count>36) $col=4;
 		else if ($count>18) $col=3;
@@ -1507,7 +1506,7 @@ function format_surname_list($surnames, $style, $totals, $script) {
 		$html2 ='<table class="list_table"><tr>';
 		$html2.='<td class="list_value" style="padding: 14px;">';
 
-		foreach ($html as $surn=>$surns) {
+		foreach ($html as $surns) {
 			$html2.= $surns.'<br>';
 			$i++;
 			if ($i==$newcol && $i<$count) {
@@ -1568,7 +1567,6 @@ function print_changes_list($change_ids, $sort) {
 function print_changes_table($change_ids, $sort) {
 	global $controller;
 
-	$return = '';
 	$n = 0;
 	$table_id = "ID" . (int)(microtime() * 1000000); // create a unique ID
 	switch ($sort) {
@@ -1983,12 +1981,14 @@ function print_chart_by_age($data, $title) {
 function print_chart_by_decade($data, $title) {
 	$count = 0;
 	$vmax = 0;
-	foreach ($data as $age=>$v) {
+	foreach ($data as $v) {
 		$n = strlen($v);
 		$vmax = max($vmax, $n);
 		$count += $n;
 	}
-	if ($count<1) return;
+	if ($count<1) {
+		return;
+	}
 	$chart_url = "https://chart.googleapis.com/chart?cht=bvs"; // chart type
 	$chart_url .= "&amp;chs=360x150"; // size
 	$chart_url .= "&amp;chbh=3,3"; // bvg : 4,1,2
