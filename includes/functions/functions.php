@@ -279,7 +279,7 @@ function event_sort_name($a, $b) {
  * using the compare type function
  * 3. Then merge the arrays back into the original array using the compare type function
  *
- * @param unknown_type $arr
+ * @param WT_Fact[] $arr
  */
 function sort_facts(&$arr) {
 	$dated = array();

@@ -1476,7 +1476,7 @@ function paste_char(value) {
 		pastefield.focus();
 		sel = document.selection.createRange();
 		sel.text = value;
-	} else if (pastefield.selectionStart || pastefield.selectionStart == 0) {
+	} else if (pastefield.selectionStart || pastefield.selectionStart === 0) {
 		// Mozilla/Chrome/Safari
 		pastefield.value =
 			pastefield.value.substring(0, pastefield.selectionStart) +
