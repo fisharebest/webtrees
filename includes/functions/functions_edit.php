@@ -753,7 +753,7 @@ function add_simple_tag(
 	if ($value && $value!='new' && $islink) {
 		switch ($fact) {
 		case 'ASSO':
-		case 'ASSO':
+		case '_ASSO':
 			$tmp = WT_Individual::getInstance($value);
 			if ($tmp) {
 				echo ' ', $tmp->getFullname();
