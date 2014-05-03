@@ -2035,7 +2035,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			};
 
 			function getMarkerImage(iconColor) {
-				if ((typeof(iconColor)=='undefined') || (iconColor==null)) {
+				if (typeof(iconColor) === 'undefined' || iconColor === null) {
 					iconColor = 'red';
 				}
 				if (!gicons[iconColor]) {

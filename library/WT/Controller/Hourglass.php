@@ -161,7 +161,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 
 				//-- print an Ajax arrow on the last generation of the adult male
 				if ($count==$this->generations-1 && $family->getHusband()->getChildFamilies()) {
-					echo "<a href=\"#\" onclick=\"return ChangeDiv('td_".$ARID."','".$ARID."','".$this->show_full."','".$this->show_spouse."','".$this->box_width."')\" class=\"".$this->right_arrow."\"></a> ";
+					echo "<a href=\"#\" onclick=\"return changeDiv('td_".$ARID."','".$ARID."','".$this->show_full."','".$this->show_spouse."','".$this->box_width."')\" class=\"".$this->right_arrow."\"></a> ";
 				}
 				//-- recursively get the father’s family
 				$this->print_person_pedigree($family->getHusband(), $count+1);
@@ -180,7 +180,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 
 				//-- print an ajax arrow on the last generation of the adult female
 				if ($count==$this->generations-1 && $family->getWife()->getChildFamilies()) {
-					echo "<a href=\"#\" onclick=\"ChangeDiv('td_".$ARID."','".$ARID."','".$this->show_full."','".$this->show_spouse."','".$this->box_width."'); return false;\" class=\"".$this->right_arrow."\"></a> ";
+					echo "<a href=\"#\" onclick=\"changeDiv('td_".$ARID."','".$ARID."','".$this->show_full."','".$this->show_spouse."','".$this->box_width."'); return false;\" class=\"".$this->right_arrow."\"></a> ";
 				}
 
 				//-- recursively print the mother’s family
@@ -294,7 +294,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 			if ($kcount==0) {
 				echo "&nbsp;</td><td width=\"$bwidth\">";
 			} else {
-				echo "<a href=\"$pid\" onclick=\"return ChangeDis('td_".$pid."','".$pid."','".$this->show_full."','".$this->show_spouse."','".$this->box_width."')\" class=\"".$this->left_arrow."\"></a>";
+				echo "<a href=\"$pid\" onclick=\"return changeDis('td_".$pid."','".$pid."','".$this->show_full."','".$this->show_spouse."','".$this->box_width."')\" class=\"".$this->left_arrow."\"></a>";
 				//-- move the arrow up to line up with the correct box
 				if ($this->show_spouse) {
 					foreach ($families as $family) {
@@ -467,7 +467,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 		}
 
 	// Hourglass control..... Ajax arrows at the end of chart
-	function ChangeDiv(div_id, ARID, full, spouse, width) {
+	function changeDiv(div_id, ARID, full, spouse, width) {
 		var divelement = document.getElementById(div_id);
 		var oXmlHttp = createXMLHttp();
 		oXmlHttp.open("get", "hourglass_ajax.php?show_full="+full+"&rootid="+ ARID + "&generations=1&box_width="+width+"&show_spouse="+spouse, true);
@@ -484,14 +484,12 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 	}
 
 	// Hourglass control..... Ajax arrows at the end of descendants chart
-	function ChangeDis(div_id, ARID, full, spouse, width) {
+	function changeDis(div_id, ARID, full, spouse, width) {
 		var divelement = document.getElementById(div_id);
 		var oXmlHttp = createXMLHttp();
 		oXmlHttp.open("get", "hourglass_ajax.php?type=desc&show_full="+full+"&rootid="+ ARID + "&generations=1&box_width="+width+"&show_spouse="+spouse, true);
-		oXmlHttp.onreadystatechange=function()
-		{
-			if (oXmlHttp.readyState==4)
-			{
+		oXmlHttp.onreadystatechange=function() {
+			if (oXmlHttp.readyState === 4) {
 				divelement.innerHTML = oXmlHttp.responseText;
 				sizeLines();
 			}
