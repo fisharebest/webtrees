@@ -46,7 +46,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 	var $ARID;
 
 	function __construct($rootid='', $show_full=1, $generations=3) {
-		global $USE_RIN, $MAX_ALIVE_AGE, $GEDCOM, $bheight, $bwidth, $cbwidth, $cbheight, $bhalfheight, $PEDIGREE_FULL_DETAILS, $MAX_DESCENDANCY_GENERATIONS;
+		global $bheight, $bwidth, $cbwidth, $cbheight, $bhalfheight, $PEDIGREE_FULL_DETAILS, $MAX_DESCENDANCY_GENERATIONS;
 		global $TEXT_DIRECTION, $show_full;
 
 		parent::__construct();

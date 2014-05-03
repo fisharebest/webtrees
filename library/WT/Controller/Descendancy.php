@@ -52,7 +52,7 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 	var $show_cousins;
 
 	function __construct() {
-		global $USE_RIN, $MAX_ALIVE_AGE, $bwidth, $bheight, $cbwidth, $cbheight, $pbwidth, $pbheight, $GEDCOM, $PEDIGREE_FULL_DETAILS, $MAX_DESCENDANCY_GENERATIONS, $DEFAULT_PEDIGREE_GENERATIONS, $show_full;
+		global $bwidth, $bheight, $cbwidth, $cbheight, $pbwidth, $pbheight, $PEDIGREE_FULL_DETAILS, $MAX_DESCENDANCY_GENERATIONS, $DEFAULT_PEDIGREE_GENERATIONS, $show_full;
 
 		parent::__construct();
 
