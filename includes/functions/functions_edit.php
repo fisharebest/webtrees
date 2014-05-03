@@ -628,7 +628,7 @@ function add_simple_tag(
 		echo "document.getElementById('", $element_id, "').style.display='none'";
 		echo '</script>';
 		echo "<select id=\"", $element_id, "_sel\" onchange=\"document.getElementById('", $element_id, "').value=this.value;\" >";
-		foreach (array("Unknown", "Civil", "Religious", "Partners") as $indexval => $key) {
+		foreach (array("Unknown", "Civil", "Religious", "Partners") as $key) {
 			if ($key=="Unknown") echo "<option value=\"\"";
 			else echo "<option value=\"", $key, "\"";
 			$a=strtolower($key);
@@ -966,7 +966,7 @@ function addNewSex() {
 	}
 }
 function addNewFact($fact) {
-	global $tagSOUR, $ADVANCED_PLAC_FACTS;
+	global $ADVANCED_PLAC_FACTS;
 
 	$FACT = WT_Filter::post($fact);
 	$DATE = WT_Filter::post("{$fact}_DATE");
@@ -1091,12 +1091,13 @@ function splitSOUR() {
 * See the handle_updates() function for details.
 *
 */
-function updateSOUR($inputRec, $levelOverride="no") {
+function updateSOUR($inputRec, $levelOverride = 'no') {
 	global $glevels, $tag, $islink, $text;
 	global $glevelsSOUR, $tagSOUR, $islinkSOUR, $textSOUR;
-	global $glevelsRest, $tagRest, $islinkRest, $textRest;
 
-	if (count($tagSOUR)==0) return $inputRec; // No update required
+	if (count($tagSOUR)==0) {
+		return $inputRec; // No update required
+	}
 
 	// Save original interface update arrays before replacing them with the xxxSOUR ones
 	$glevelsSave = $glevels;
@@ -1127,12 +1128,13 @@ function updateSOUR($inputRec, $levelOverride="no") {
 * See the handle_updates() function for details.
 *
 */
-function updateRest($inputRec, $levelOverride="no") {
+function updateRest($inputRec, $levelOverride = 'no') {
 	global $glevels, $tag, $islink, $text;
-	global $glevelsSOUR, $tagSOUR, $islinkSOUR, $textSOUR;
 	global $glevelsRest, $tagRest, $islinkRest, $textRest;
 
-	if (count($tagRest)==0) return $inputRec; // No update required
+	if (count($tagRest)==0) {
+		return $inputRec; // No update required
+	}
 
 	// Save original interface update arrays before replacing them with the xxxRest ones
 	$glevelsSave = $glevels;

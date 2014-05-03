@@ -847,7 +847,7 @@ function getSourceStructure($srec) {
 
 // Print a row for the notes tab on the individual page
 function print_main_notes(WT_Fact $fact, $level) {
-	global $GEDCOM, $WT_TREE, $SHOW_FACT_ICONS, $TEXT_DIRECTION;
+	global $WT_TREE, $SHOW_FACT_ICONS;
 
 	$factrec = $fact->getGedcom();
 	$fact_id = $fact->getFactId();
@@ -987,7 +987,6 @@ function print_main_notes(WT_Fact $fact, $level) {
 // Print a row for the media tab on the individual page
 function print_main_media(WT_Fact $fact, $level) {
 	$factrec = $fact->getGedcom();
-	$fact_id = $fact->getFactId();
 	$parent  = $fact->getParent();
 
 	if ($fact->isNew()) {
@@ -1017,7 +1016,7 @@ function print_main_media(WT_Fact $fact, $level) {
 				echo ' rela';
 			}
 			echo ' ', $styleadd, ' width20">';
-			$temp = preg_match("/^\d (\w*)/", $factrec, $factname);
+			preg_match("/^\d (\w*)/", $factrec, $factname);
 			$factlines = explode("\n", $factrec); // 1 BIRT Y\n2 SOUR ...
 			$factwords = explode(" ", $factlines[0]); // 1 BIRT Y
 			$factname = $factwords[1]; // BIRT

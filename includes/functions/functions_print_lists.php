@@ -648,7 +648,7 @@ function format_fam_table($datalist, $option='') {
 	$html .= '</tr></thead>';
 	//-- table body
 	$html .= '<tbody>';
-	$num = 0;
+
 	$d100y=new WT_Date(date('Y')-100);  // 100 years ago
 	foreach ($datalist as $family) {
 		//-- Retrieve husband and wife
@@ -937,7 +937,7 @@ function format_sour_table($datalist) {
 	$html .= '</tr></thead>';
 	//-- table body
 	$html .= '<tbody>';
-	$n=0;
+
 	foreach ($datalist as $source) {
 		if (!$source->canShow()) {
 			continue;
@@ -1120,7 +1120,8 @@ function format_note_table($datalist) {
 
 // print a table of repositories
 function format_repo_table($repos) {
-	global $SHOW_LAST_CHANGE, $SEARCH_SPIDER, $controller;
+	global $SHOW_LAST_CHANGE, $controller;
+
 	$html = '';
 	$table_id = 'ID'.(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	$controller
@@ -1163,7 +1164,7 @@ function format_repo_table($repos) {
 	$html .= '</tr></thead>';
 	//-- table body
 	$html .= '<tbody>';
-	$n=0;
+
 	foreach ($repos as $repo) {
 		if (!$repo->canShow()) {
 			continue;
@@ -1270,7 +1271,7 @@ function format_media_table($datalist) {
 	$html .= '</tr></thead>';
 	//-- table body
 	$html .= '<tbody>';
-	$n = 0;
+
 	foreach ($datalist as $media) {
 		if ($media->canShow()) {
 			$name = $media->getFullName();

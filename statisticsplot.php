@@ -244,15 +244,12 @@ function mamo1() {
 	unset($indi, $fam);
 }
 
-//Months between marriage and first child
+// Months between marriage and first child
 function mamam() {
-	global $z_as, $n1;
-//TODO
-
-echo 'not working yet';
+	echo 'not working yet';
 }
 
-//Age related to birth year
+// Age related to birth year
 function agbi() {
 	global $z_as, $zgrenzen, $stats, $n1;
 

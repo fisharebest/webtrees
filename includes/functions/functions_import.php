@@ -676,7 +676,6 @@ function import_record($gedrec, $ged_id, $update) {
 		// Convert inline media into media objects
 		$gedrec = convert_inline_media($ged_id, $gedrec);
 
-		$record = new WT_Family($xref, $gedrec, null, $ged_id);
 		if (preg_match('/\n1 HUSB @('.WT_REGEX_XREF.')@/', $gedrec, $match)) {
 			$husb = $match[1];
 		} else {
@@ -687,11 +686,7 @@ function import_record($gedrec, $ged_id, $update) {
 		} else {
 			$wife = '';
 		}
-		if ($nchi = preg_match_all('/\n1 CHIL @('.WT_REGEX_XREF.')@/', $gedrec, $match)) {
-			$chil = implode(';', $match[1]).';';
-		} else {
-			$chil = '';
-		}
+		$nchi = preg_match_all('/\n1 CHIL @('.WT_REGEX_XREF.')@/', $gedrec, $match);
 		if (preg_match('/\n1 NCHI (\d+)/', $gedrec, $match)) {
 			$nchi = max($nchi, $match[1]);
 		}
@@ -751,7 +746,6 @@ function import_record($gedrec, $ged_id, $update) {
 	case 'TRLR':
 	case 'SUBM':
 	case 'SUBN':
-		$record = new WT_GedcomRecord($xref, $gedrec, null, $ged_id);
 		$sql_insert_other->execute(array($xref, $ged_id, $type, $gedrec));
 		// Update the cross-reference/index tables.
 		update_links ($xref, $ged_id, $gedrec);
@@ -814,7 +808,7 @@ function update_places($gid, $ged_id, $gedrec) {
 		$parent_id = 0;
 		$search = true;
 
-		foreach ($secalp as $indexval => $place) {
+		foreach ($secalp as $place) {
 			$place = trim($place);
 			$key = strtolower($place."_".$parent_id);
 			//-- if this place has already been added then we don't need to add it again
@@ -1059,10 +1053,8 @@ function reject_all_changes($xref, $ged_id) {
 * @param string $gedrec
 */
 function update_record($gedrec, $ged_id, $delete) {
-	global $GEDCOM;
-
 	if (preg_match('/^0 @('.WT_REGEX_XREF.')@ ('.WT_REGEX_TAG.')/', $gedrec, $match)) {
-		list(,$gid, $type)=$match;
+		list(,$gid, $type) = $match;
 	} else {
 		echo "ERROR: Invalid gedcom record.";
 		return false;
@@ -1079,11 +1071,11 @@ function update_record($gedrec, $ged_id, $delete) {
 
 	//-- delete any unlinked places
 	foreach ($placeids as $p_id) {
-		$num=
+		$num =
 			WT_DB::prepare("SELECT count(pl_p_id) FROM `##placelinks` WHERE pl_p_id=? AND pl_file=?")
 			->execute(array($p_id, $ged_id))
 			->fetchOne();
-		if ($num==0) {
+		if ($num == 0) {
 			WT_DB::prepare("DELETE FROM `##places` WHERE p_id=? AND p_file=?")->execute(array($p_id, $ged_id));
 		}
 	}
