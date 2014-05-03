@@ -298,21 +298,21 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 				->addInlineJavascript('
 					jQuery("#story_table").dataTable({
-						"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
+						dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 						'.WT_I18N::datatablesI18N().',
-						"bAutoWidth":false,
-						"bPaginate": true,
-						"sPaginationType": "full_numbers",
-						"bLengthChange": true,
-						"bFilter": true,
-						"bInfo": true,
-						"bJQueryUI": true,
-						"aaSorting": [[0,"asc"]],
-						"aoColumns": [
+						autoWidth: false,
+						paging: true,
+						pagingType: "full_numbers",
+						lengthChange: true,
+						filter: true,
+						info: true,
+						jQueryUI: true,
+						sorting: [[0,"asc"]],
+						columns: [
 							/* 0-name */ null,
 							/* 1-NAME */ null,
-							/* 2-NAME */ { bSortable:false },
-							/* 3-NAME */ { bSortable:false }
+							/* 2-NAME */ { sortable:false },
+							/* 3-NAME */ { sortable:false }
 						]
 					});
 				');
@@ -375,17 +375,17 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 			->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 			->addInlineJavascript('
 				jQuery("#story_table").dataTable({
-					"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
+					dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 					'.WT_I18N::datatablesI18N().',
-					"bAutoWidth":false,
-					"bPaginate": true,
-					"sPaginationType": "full_numbers",
-					"bLengthChange": true,
-					"bFilter": true,
-					"bInfo": true,
-					"bJQueryUI": true,
-					"aaSorting": [[0,"asc"]],
-					"aoColumns": [
+					autoWidth: false,
+					paging: true,
+					pagingType: "full_numbers",
+					lengthChange: true,
+					filter: true,
+					info: true,
+					jQueryUI: true,
+					sorting: [[0,"asc"]],
+					columns: [
 						/* 0-name */ null,
 						/* 1-NAME */ null
 					]

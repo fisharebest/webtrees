@@ -45,41 +45,41 @@ function format_indi_table($datalist, $option='') {
 			jQuery.fn.dataTableExt.oSort["num-html-asc" ]=function(a,b) {a=parseFloat(a.replace(/<[^<]*>/, "")); b=parseFloat(b.replace(/<[^<]*>/, "")); return (a<b) ? -1 : (a>b ? 1 : 0);};
 			jQuery.fn.dataTableExt.oSort["num-html-desc"]=function(a,b) {a=parseFloat(a.replace(/<[^<]*>/, "")); b=parseFloat(b.replace(/<[^<]*>/, "")); return (a>b) ? -1 : (a<b ? 1 : 0);};
 			var oTable'.$table_id.' = jQuery("#'.$table_id.'").dataTable( {
-				"sDom": \'<"H"<"filtersH_'.$table_id.'">T<"dt-clear">pf<"dt-clear">irl>t<"F"pl<"dt-clear"><"filtersF_'.$table_id.'">>\',
+				dom: \'<"H"<"filtersH_'.$table_id.'">T<"dt-clear">pf<"dt-clear">irl>t<"F"pl<"dt-clear"><"filtersF_'.$table_id.'">>\',
 				'.WT_I18N::datatablesI18N().',
-				"bJQueryUI": true,
-				"bAutoWidth":false,
-				"bProcessing": true,
-				"bRetrieve": true,
-				"aoColumns": [
-					/*  0 givn      */ {"iDataSort": 2},
-					/*  1 surn      */ {"iDataSort": 3},
-					/*  2 GIVN,SURN */ {"sType": "unicode", "bVisible": false},
-					/*  3 SURN,GIVN */ {"sType": "unicode", "bVisible": false},
-					/*  4 sosa      */ {"iDataSort": 5, "sClass": "center", "bVisible": '.($option=='sosa'?'true':'false').'},
-					/*  5 SOSA      */ {"sType": "numeric", "bVisible": false},
-					/*  6 birt date */ {"iDataSort": 7},
-					/*  7 BIRT:DATE */ {"bVisible": false},
-					/*  8 anniv     */ {"bSortable": false, "sClass": "center"},
-					/*  9 birt plac */ {"sType": "unicode"},
-					/* 10 children  */ {"iDataSort": 11, "sClass": "center"},
-					/* 11 children  */ {"sType": "numeric", "bVisible": false},
-					/* 12 deat date */ {"iDataSort": 13},
-					/* 13 DEAT:DATE */ {"bVisible": false},
-					/* 14 anniv     */ {"bSortable": false, "sClass": "center"},
-					/* 15 age       */ {"iDataSort": 16, "sClass": "center"},
-					/* 16 AGE       */ {"sType": "numeric", "bVisible": false},
-					/* 17 deat plac */ {"sType": "unicode"},
-					/* 18 CHAN      */ {"iDataSort": 19, "bVisible": '.($SHOW_LAST_CHANGE?'true':'false').'},
-					/* 19 CHAN_sort */ {"bVisible": false},
-					/* 20 SEX       */ {"bVisible": false},
-					/* 21 BIRT      */ {"bVisible": false},
-					/* 22 DEAT      */ {"bVisible": false},
-					/* 23 TREE      */ {"bVisible": false}
+				jQueryUI: true,
+				autoWidth: false,
+				processing: true,
+				retrieve: true,
+				columns: [
+					/*  0 givn      */ { dataSort: 2 },
+					/*  1 surn      */ { dataSort: 3 },
+					/*  2 GIVN,SURN */ { type: "unicode", visible: false },
+					/*  3 SURN,GIVN */ { type: "unicode", visible: false },
+					/*  4 sosa      */ { dataSort: 5, class: "center", visible: '.($option=='sosa'?'true':'false').' },
+					/*  5 SOSA      */ { type: "numeric", visible: false },
+					/*  6 birt date */ { dataSort: 7 },
+					/*  7 BIRT:DATE */ { visible: false },
+					/*  8 anniv     */ { sortable: false, class: "center" },
+					/*  9 birt plac */ { type: "unicode" },
+					/* 10 children  */ { dataSort: 11, class: "center" },
+					/* 11 children  */ { type: "numeric", visible: false },
+					/* 12 deat date */ { dataSort: 13 },
+					/* 13 DEAT:DATE */ { visible: false },
+					/* 14 anniv     */ { sortable: false, class: "center" },
+					/* 15 age       */ { dataSort: 16, class: "center" },
+					/* 16 AGE       */ { type: "numeric", visible: false },
+					/* 17 deat plac */ { type: "unicode" },
+					/* 18 CHAN      */ { dataSort: 19, visible: '.($SHOW_LAST_CHANGE?'true':'false').' },
+					/* 19 CHAN_sort */ { visible: false },
+					/* 20 SEX       */ { visible: false },
+					/* 21 BIRT      */ { visible: false },
+					/* 22 DEAT      */ { visible: false },
+					/* 23 TREE      */ { visible: false }
 				],
-				"aaSorting": [['.($option=='sosa'?'4, "asc"':'1, "asc"').']],
-				"iDisplayLength": 20,
-				"sPaginationType": "full_numbers"
+				sorting: [['.($option=='sosa'?'4, "asc"':'1, "asc"').']],
+				displayLength: 20,
+				pagingType: "full_numbers"
 			});
 
 			jQuery("div.filtersH_'.$table_id.'").html("'.WT_Filter::escapeJs(
@@ -457,40 +457,40 @@ function format_fam_table($datalist, $option='') {
 			jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
 			jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
 			var oTable'.$table_id.'=jQuery("#'.$table_id.'").dataTable( {
-				"sDom": \'<"H"<"filtersH_'.$table_id.'"><"dt-clear">pf<"dt-clear">irl>t<"F"pl<"dt-clear"><"filtersF_'.$table_id.'">>\',
+				dom: \'<"H"<"filtersH_'.$table_id.'"><"dt-clear">pf<"dt-clear">irl>t<"F"pl<"dt-clear"><"filtersF_'.$table_id.'">>\',
 				'.WT_I18N::datatablesI18N().',
-				"bJQueryUI": true,
-				"bAutoWidth":false,
-				"bProcessing": true,
-				"bRetrieve": true,
-				"aoColumns": [
-					/*  0 husb givn */ {"iDataSort": 2},
-					/*  1 husb surn */ {"iDataSort": 3},
-					/*  2 GIVN,SURN */ {"sType": "unicode", "bVisible": false},
-					/*  3 SURN,GIVN */ {"sType": "unicode", "bVisible": false},
-					/*  4 age       */ {"iDataSort": 5, "sClass": "center"},
-					/*  5 AGE       */ {"sType": "numeric", "bVisible": false},
-					/*  6 wife givn */ {"iDataSort": 8},
-					/*  7 wife surn */ {"iDataSort": 9},
-					/*  8 GIVN,SURN */ {"sType": "unicode", "bVisible": false},
-					/*  9 SURN,GIVN */ {"sType": "unicode", "bVisible": false},
-					/* 10 age       */ {"iDataSort": 11, "sClass": "center"},
-					/* 11 AGE       */ {"sType": "numeric", "bVisible": false},
-					/* 12 marr date */ {"iDataSort": 13},
-					/* 13 MARR:DATE */ {"bVisible": false},
-					/* 14 anniv     */ {"bSortable": false, "sClass": "center"},
-					/* 15 marr plac */ {"sType": "unicode"},
-					/* 16 children  */ {"iDataSort": 17, "sClass": "center"},
-					/* 17 NCHI      */ {"sType": "numeric", "bVisible": false},
-					/* 18 CHAN      */ {"iDataSort": 19, "bVisible": '.($SHOW_LAST_CHANGE?'true':'false').'},
-					/* 19 CHAN_sort */ {"bVisible": false},
-					/* 20 MARR      */ {"bVisible": false},
-					/* 21 DEAT      */ {"bVisible": false},
-					/* 22 TREE      */ {"bVisible": false}
+				jQueryUI: true,
+				autoWidth: false,
+				processing: true,
+				retrieve: true,
+				columns: [
+					/*  0 husb givn */ {dataSort: 2},
+					/*  1 husb surn */ {dataSort: 3},
+					/*  2 GIVN,SURN */ {type: "unicode", visible: false},
+					/*  3 SURN,GIVN */ {type: "unicode", visible: false},
+					/*  4 age       */ {dataSort: 5, class: "center"},
+					/*  5 AGE       */ {type: "numeric", visible: false},
+					/*  6 wife givn */ {dataSort: 8},
+					/*  7 wife surn */ {dataSort: 9},
+					/*  8 GIVN,SURN */ {type: "unicode", visible: false},
+					/*  9 SURN,GIVN */ {type: "unicode", visible: false},
+					/* 10 age       */ {dataSort: 11, class: "center"},
+					/* 11 AGE       */ {type: "numeric", visible: false},
+					/* 12 marr date */ {dataSort: 13},
+					/* 13 MARR:DATE */ {visible: false},
+					/* 14 anniv     */ {sortable: false, class: "center"},
+					/* 15 marr plac */ {type: "unicode"},
+					/* 16 children  */ {dataSort: 17, class: "center"},
+					/* 17 NCHI      */ {type: "numeric", visible: false},
+					/* 18 CHAN      */ {dataSort: 19, visible: '.($SHOW_LAST_CHANGE?'true':'false').'},
+					/* 19 CHAN_sort */ {visible: false},
+					/* 20 MARR      */ {visible: false},
+					/* 21 DEAT      */ {visible: false},
+					/* 22 TREE      */ {visible: false}
 				],
-				"aaSorting": [[1, "asc"]],
-				"iDisplayLength": 20,
-				"sPaginationType": "full_numbers"
+				sorting: [[1, "asc"]],
+				displayLength: 20,
+				pagingType: "full_numbers"
 		   });
 
 			jQuery("div.filtersH_'.$table_id.'").html("'.WT_Filter::escapeJs(
@@ -884,29 +884,29 @@ function format_sour_table($datalist) {
 			jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
 			jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
 			jQuery("#'.$table_id.'").dataTable( {
-				"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
+				dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 				'.WT_I18N::datatablesI18N().',
-				"bJQueryUI": true,
-				"bAutoWidth":false,
-				"bProcessing": true,
-				"aoColumns": [
-					/*  0 title		*/ {"iDataSort": 1},
-					/*  1 TITL		*/ {"bVisible": false, "sType": "unicode"},
-					/*  2 author 	*/ {"sType": "unicode"},
-					/*  3 #indi  	*/ {"iDataSort": 4, "sClass": "center"},
-					/*  4 #INDI  	*/ {"sType": "numeric", "bVisible": false},
-					/*  5 #fam   	*/ {"iDataSort": 6, "sClass": "center"},
-					/*  6 #FAM   	*/ {"sType": "numeric", "bVisible": false},
-					/*  7 #obje  	*/ {"iDataSort": 8, "sClass": "center"},
-					/*  8 #OBJE		*/ {"sType": "numeric", "bVisible": false},
-					/*  9 #note		*/ {"iDataSort": 10, "sClass": "center"},
-					/* 10 #NOTE		*/ {"sType": "numeric", "bVisible": false},
-					/* 11 CHAN      */ {"iDataSort": 12, "bVisible": '.($SHOW_LAST_CHANGE?'true':'false').'},
-					/* 12 CHAN_sort */ {"bVisible": false},
-					/* 13 DELETE 	*/ {"bVisible": '.(WT_USER_GEDCOM_ADMIN?'true':'false').', "bSortable": false}
+				jQueryUI: true,
+				autoWidth: false,
+				processing: true,
+				columns: [
+					/*  0 title		*/ { dataSort: 1 },
+					/*  1 TITL		*/ { visible: false, type: "unicode" },
+					/*  2 author 	*/ { type: "unicode" },
+					/*  3 #indi  	*/ { dataSort: 4, class: "center" },
+					/*  4 #INDI  	*/ { type: "numeric", visible: false },
+					/*  5 #fam   	*/ { dataSort: 6, class: "center" },
+					/*  6 #FAM   	*/ { type: "numeric", visible: false },
+					/*  7 #obje  	*/ { dataSort: 8, class: "center" },
+					/*  8 #OBJE		*/ { type: "numeric", visible: false },
+					/*  9 #note		*/ { dataSort: 10, class: "center" },
+					/* 10 #NOTE		*/ { type: "numeric", visible: false },
+					/* 11 CHAN      */ { dataSort: 12, visible: '.($SHOW_LAST_CHANGE?'true':'false').' },
+					/* 12 CHAN_sort */ { visible: false },
+					/* 13 DELETE 	*/ { visible: '.(WT_USER_GEDCOM_ADMIN?'true':'false').', sortable: false }
 				],
-				"iDisplayLength": 20,
-				"sPaginationType": "full_numbers"
+				displayLength: 20,
+				pagingType: "full_numbers"
 		   });
 			jQuery(".source-list").css("visibility", "visible");
 			jQuery(".loading-image").css("display", "none");
@@ -1018,28 +1018,28 @@ function format_note_table($datalist) {
 			jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
 			jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
 			jQuery("#'.$table_id.'").dataTable({
-			"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
-			'.WT_I18N::datatablesI18N().',
-			"bJQueryUI": true,
-			"bAutoWidth":false,
-			"bProcessing": true,
-			"aoColumns": [
-				/*  0 title  	*/ {"sType": "unicode"},
-				/*  1 #indi  	*/ {"iDataSort": 2, "sClass": "center"},
-				/*  2 #INDI  	*/ {"sType": "numeric", "bVisible": false},
-				/*  3 #fam   	*/ {"iDataSort": 4, "sClass": "center"},
-				/*  4 #FAM   	*/ {"sType": "numeric", "bVisible": false},
-				/*  5 #obje  	*/ {"iDataSort": 6, "sClass": "center"},
-				/*  6 #OBJE  	*/ {"sType": "numeric", "bVisible": false},
-				/*  7 #sour  	*/ {"iDataSort": 8, "sClass": "center"},
-				/*  8 #SOUR  	*/ {"sType": "numeric", "bVisible": false},
-				/*  9 CHAN      */ {"iDataSort": 10, "bVisible": '.($SHOW_LAST_CHANGE?'true':'false').'},
-				/* 10 CHAN_sort */ {"bVisible": false},
-				/* 11 DELETE 	*/ {"bVisible": '.(WT_USER_GEDCOM_ADMIN?'true':'false').', "bSortable": false}
-			],
-			"iDisplayLength": 20,
-			"sPaginationType": "full_numbers"
-	   });
+				dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
+				'.WT_I18N::datatablesI18N().',
+				jQueryUI: true,
+				autoWidth: false,
+				processing: true,
+				columns: [
+					/*  0 title  	*/ { type: "unicode" },
+					/*  1 #indi  	*/ { dataSort: 2, class: "center" },
+					/*  2 #INDI  	*/ { type: "numeric", visible: false },
+					/*  3 #fam   	*/ { dataSort: 4, class: "center" },
+					/*  4 #FAM   	*/ { type: "numeric", visible: false },
+					/*  5 #obje  	*/ { dataSort: 6, class: "center" },
+					/*  6 #OBJE  	*/ { type: "numeric", visible: false },
+					/*  7 #sour  	*/ { dataSort: 8, class: "center" },
+					/*  8 #SOUR  	*/ { type: "numeric", visible: false },
+					/*  9 CHAN      */ { dataSort: 10, visible: '.($SHOW_LAST_CHANGE?'true':'false').' },
+					/* 10 CHAN_sort */ { visible: false },
+					/* 11 DELETE 	*/ { visible: '.(WT_USER_GEDCOM_ADMIN?'true':'false').', sortable: false }
+				],
+				displayLength: 20,
+				pagingType: "full_numbers"
+			});
 			jQuery(".note-list").css("visibility", "visible");
 			jQuery(".loading-image").css("display", "none");
 		');
@@ -1127,24 +1127,24 @@ function format_repo_table($repos) {
 			jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
 			jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
 			jQuery("#'.$table_id.'").dataTable({
-			"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
-			'.WT_I18N::datatablesI18N().',
-			"bJQueryUI": true,
-			"bAutoWidth":false,
-			"bProcessing": true,
-			"aoColumns": [
-				/* 0 name   	*/ {"sType": "unicode"},
-				/* 1 #sour  	*/ {"iDataSort": 2, "sClass": "center"},
-				/* 2 #SOUR		*/ {"sType": "numeric", "bVisible": false},
-				/* 3 CHAN		*/ {"iDataSort": 4, "bVisible": '.($SHOW_LAST_CHANGE?'true':'false').'},
-				/* 4 CHAN_sort	*/ {"bVisible": false},
-				/* 5 DELETE 	*/ {"bVisible": '.(WT_USER_GEDCOM_ADMIN?'true':'false').', "bSortable": false}
-			],
-			"iDisplayLength": 20,
-			"sPaginationType": "full_numbers"
-	   });
-		jQuery(".repo-list").css("visibility", "visible");
-		jQuery(".loading-image").css("display", "none");
+				dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
+				'.WT_I18N::datatablesI18N().',
+				jQueryUI: true,
+				autoWidth: false,
+				processing: true,
+				columns: [
+					/* 0 name   	*/ { type: "unicode" },
+					/* 1 #sour  	*/ { dataSort: 2, class: "center" },
+					/* 2 #SOUR		*/ { type: "numeric", visible: false },
+					/* 3 CHAN		*/ { dataSort: 4, visible: '.($SHOW_LAST_CHANGE?'true':'false').' },
+					/* 4 CHAN_sort	*/ { visible: false },
+					/* 5 DELETE 	*/ { visible: '.(WT_USER_GEDCOM_ADMIN?'true':'false').', sortable: false }
+				],
+				displayLength: 20,
+				pagingType: "full_numbers"
+			});
+			jQuery(".repo-list").css("visibility", "visible");
+			jQuery(".loading-image").css("display", "none");
 		');
 
 	//--table wrapper
@@ -1226,28 +1226,28 @@ function format_media_table($datalist) {
 			jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
 			jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
 			jQuery("#'.$table_id.'").dataTable({
-			"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
-			'.WT_I18N::datatablesI18N().',
-			"bJQueryUI": true,
-			"bAutoWidth":false,
-			"bProcessing": true,
-			"aoColumns": [
-				/* 0 media		*/ {"bSortable": false},
-				/* 1 title		*/ {"sType": "unicode"},
-				/* 2 #indi		*/ {"iDataSort": 3, "sClass": "center"},
-				/* 3 #INDI		*/ {"sType": "numeric", "bVisible": false},
-				/* 4 #fam		*/ {"iDataSort": 5, "sClass": "center"},
-				/* 5 #FAM		*/ {"sType": "numeric", "bVisible": false},
-				/* 6 #sour		*/ {"iDataSort": 7, "sClass": "center"},
-				/* 7 #SOUR		*/ {"sType": "numeric", "bVisible": false},
-				/* 8 CHAN		*/ {"iDataSort": 9, "bVisible": '.($SHOW_LAST_CHANGE?'true':'false').'},
-				/* 9 CHAN_sort	*/ {"bVisible": false},
-			],
-			"iDisplayLength": 20,
-			"sPaginationType": "full_numbers"
-	   });
-		jQuery(".media-list").css("visibility", "visible");
-		jQuery(".loading-image").css("display", "none");
+				dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
+				'.WT_I18N::datatablesI18N().',
+				jQueryUI: true,
+				autoWidth:false,
+				processing: true,
+				columns: [
+					/* 0 media		*/ { sortable: false },
+					/* 1 title		*/ { type: "unicode" },
+					/* 2 #indi		*/ { dataSort: 3, class: "center" },
+					/* 3 #INDI		*/ { type: "numeric", visible: false },
+					/* 4 #fam		*/ { dataSort: 5, class: "center" },
+					/* 5 #FAM		*/ { type: "numeric", visible: false },
+					/* 6 #sour		*/ { dataSort: 7, class: "center" },
+					/* 7 #SOUR		*/ { type: "numeric", visible: false },
+					/* 8 CHAN		*/ { dataSort: 9, visible: '.($SHOW_LAST_CHANGE?'true':'false').' },
+					/* 9 CHAN_sort	*/ { visible: false },
+				],
+				displayLength: 20,
+				pagingType: "full_numbers"
+			});
+			jQuery(".media-list").css("visibility", "visible");
+			jQuery(".loading-image").css("display", "none");
 		');
 
 	//--table wrapper
@@ -1331,17 +1331,17 @@ function format_surname_table($surnames, $script) {
 			jQuery.fn.dataTableExt.oSort["num-asc" ]=function(a,b) {a=parseFloat(a); b=parseFloat(b); return (a<b) ? -1 : (a>b ? 1 : 0);};
 			jQuery.fn.dataTableExt.oSort["num-desc"]=function(a,b) {a=parseFloat(a); b=parseFloat(b); return (a>b) ? -1 : (a<b ? 1 : 0);};
 			jQuery(".surname-list").dataTable( {
-			"sDom": \'t\',
-			"bJQueryUI": true,
-			"bAutoWidth":false,
-			"bPaginate": false,
-			"aaSorting": [],
-			"aoColumns": [
-				/*  0 name  */ {iDataSort:1},
-				/*  1 NAME  */ {bVisible:false},
-				/*  2 count */ {iDataSort:3, sClass:"center"},
-				/*  3 COUNT */ {bVisible:false}
-			],
+				dom: \'t\',
+				jQueryUI: true,
+				autoWidth: false,
+				paging: false,
+				sorting: [],
+				columns: [
+					/*  0 name  */ { dataSort: 1 },
+					/*  1 NAME  */ { visible: false },
+					/*  2 count */ { dataSort: 3, class: "center" },
+					/*  3 COUNT */ { visible: false }
+				],
 			});
 		');
 
@@ -1585,21 +1585,21 @@ function print_changes_table($change_ids, $sort) {
 			jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
 			jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
 			jQuery("#'.$table_id.'").dataTable({
-				"sDom": \'t\',
-				"bPaginate": false,
-				"bAutoWidth":false,
-				"bLengthChange": false,
-				"bFilter": false,
+				dom: \'t\',
+				paging: false,
+				autoWidth:false,
+				lengthChange: false,
+				filter: false,
 				'.WT_I18N::datatablesI18N().',
-				"bJQueryUI": true,
-				"aaSorting": ['.$aaSorting.'],
-				"aoColumns": [
-					/* 0-Type */    {"bSortable": false, "sClass": "center"},
-					/* 1-Record */  {"iDataSort": 5},
-					/* 2-Change */  {"iDataSort": 4},
+				jQueryUI: true,
+				sorting: ['.$aaSorting.'],
+				columns: [
+					/* 0-Type */    { sortable: false, class: "center" },
+					/* 1-Record */  { dataSort: 5 },
+					/* 2-Change */  { dataSort: 4 },
 					/* 3-By */      null,
-					/* 4-DATE */    {"bVisible": false},
-					/* 5-SORTNAME */{"sType": "unicode", "bVisible": false}
+					/* 4-DATE */    { visible: false },
+					/* 5-SORTNAME */{ type: "unicode", visible: false }
 				]
 			});
 		');
@@ -1683,23 +1683,23 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 		->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 		->addInlineJavascript('
 			jQuery("#'.$table_id.'").dataTable({
-				"sDom": \'t\',
+				dom: \'t\',
 				'.WT_I18N::datatablesI18N().',
-				"bAutoWidth":false,
-				"bPaginate": false,
-				"bLengthChange": false,
-				"bFilter": false,
-				"bInfo": true,
-				"bJQueryUI": true,
-				"aaSorting": [[ '.($sort_by=='alpha' ? 1 : 3).', "asc"]],
-				"aoColumns": [
-					/* 0-Record */ { "iDataSort": 1},
-					/* 1-NAME */   { "bVisible": false },
-					/* 2-Date */   { "iDataSort": 3 },
-					/* 3-DATE */   { "bVisible": false },
-					/* 4-Anniv. */ { "iDataSort": 5, "sClass": "center"},
-					/* 5-ANNIV  */ { "sType": "numeric", "bVisible": false},
-					/* 6-Event */  { "sClass": "center" }
+				autoWidth: false,
+				paging: false,
+				lengthChange: false,
+				filter: false,
+				info: true,
+				jQueryUI: true,
+				sorting: [[ '.($sort_by=='alpha' ? 1 : 3).', "asc"]],
+				columns: [
+					/* 0-Record */ { dataSort: 1 },
+					/* 1-NAME */   { visible: false },
+					/* 2-Date */   { dataSort: 3 },
+					/* 3-DATE */   { visible: false },
+					/* 4-Anniv. */ { dataSort: 5, class: "center" },
+					/* 5-ANNIV  */ { type: "numeric", visible: false },
+					/* 6-Event */  { class: "center" }
 				]
 			});
 		');

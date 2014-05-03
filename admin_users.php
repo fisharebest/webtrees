@@ -70,46 +70,48 @@ $verified_by_admin  = WT_Filter::postBool('verified_by_admin');
 switch ($action) {
 case 'loadrows':
 	// Generate an AJAX/JSON response for datatables to load a block of rows
-	$sSearch=WT_Filter::get('sSearch');
+	$search = WT_Filter::get('search');
+	$search = $search['value'];
+	$start  = WT_Filter::getInteger('start');
+	$length = WT_Filter::getInteger('length');
+
 	$WHERE=" WHERE u.user_id>0";
 	$ARGS=array();
-	if ($sSearch) {
+	if ($search) {
 		$WHERE.=
 			" AND (".
 			" user_name LIKE CONCAT('%', ?, '%') OR " .
 			" real_name LIKE CONCAT('%', ?, '%') OR " .
 			" email     LIKE CONCAT('%', ?, '%'))";
-		$ARGS=array($sSearch, $sSearch, $sSearch);
+		$ARGS=array($search, $search, $search);
 	} else {
 	}
-	$iDisplayStart  = WT_Filter::getInteger('iDisplayStart');
-	$iDisplayLength = WT_Filter::getInteger('iDisplayLength');
-	set_user_setting(WT_USER_ID, 'admin_users_page_size', $iDisplayLength);
-	if ($iDisplayLength>0) {
-		$LIMIT=" LIMIT " . $iDisplayStart . ',' . $iDisplayLength;
+	set_user_setting(WT_USER_ID, 'admin_users_page_size', $length);
+	if ($length > 0) {
+		$LIMIT = " LIMIT " . $start . ',' . $length;
 	} else {
-		$LIMIT="";
+		$LIMIT = "";
 	}
-	$iSortingCols = WT_Filter::getInteger('iSortingCols');
-	if ($iSortingCols) {
+	$order = WT_Filter::get('order');
+	if ($order) {
 		$ORDER_BY=' ORDER BY ';
-		for ($i=0; $i<$iSortingCols; ++$i) {
+		for ($i = 0; $i < count($order); ++$i) {
+			if ($i > 0) {
+				$ORDER_BY .= ',';
+			}
 			// Datatables numbers columns 0, 1, 2, ...
 			// MySQL numbers columns 1, 2, 3, ...
-			switch (WT_Filter::get('sSortDir_'.$i)) {
+			switch ($order[$i]['dir']) {
 			case 'asc':
-				$ORDER_BY.=(1 + WT_Filter::getInteger('iSortCol_'.$i)).' ASC ';
+				$ORDER_BY .= (1 + $order[$i]['column']) . ' ASC ';
 				break;
 			case 'desc':
-				$ORDER_BY.=(1 + WT_Filter::getInteger('iSortCol_'.$i)).' DESC ';
+				$ORDER_BY .= (1 + $order[$i]['column']) . ' DESC ';
 				break;
-			}
-			if ($i<$iSortingCols-1) {
-				$ORDER_BY.=',';
 			}
 		}
 	} else {
-		$ORDER_BY='';
+		$ORDER_BY = '1 ASC';
 	}
 
 	$sql=
@@ -125,55 +127,55 @@ case 'loadrows':
 		$LIMIT;
 
 	// This becomes a JSON list, not array, so need to fetch with numeric keys.
-	$aaData=WT_DB::prepare($sql)->execute($ARGS)->fetchAll(PDO::FETCH_NUM);
+	$data=WT_DB::prepare($sql)->execute($ARGS)->fetchAll(PDO::FETCH_NUM);
 
 	// Reformat various columns for display
-	foreach ($aaData as &$aData) {
-		$aData[0]='<a href="#" title="'.WT_I18N::translate('Details').'">&nbsp;</a>';
+	foreach ($data as &$datum) {
+		$datum[0]='<a href="#" title="'.WT_I18N::translate('Details').'">&nbsp;</a>';
 		// $aData[1] is the user ID
-		$user_id  =$aData[1];
-		$user_name=$aData[2];
-		$aData[2]=edit_field_inline('user-user_name-'.$user_id, $aData[2]);
-		$aData[3]=edit_field_inline('user-real_name-'.$user_id, $aData[3]);
-		$aData[4]=edit_field_inline('user-email-'.    $user_id, $aData[4]);
+		$user_id  =$datum[1];
+		$user_name=$datum[2];
+		$datum[2]=edit_field_inline('user-user_name-'.$user_id, $datum[2]);
+		$datum[3]=edit_field_inline('user-real_name-'.$user_id, $datum[3]);
+		$datum[4]=edit_field_inline('user-email-'.    $user_id, $datum[4]);
 		// $aData[5] is a link to an email icon
 		if ($user_id != WT_USER_ID) {
-			$aData[5]='<i class="icon-email" onclick="return message(\''.$user_name.'\', \'\', \'\');"></i>';
+			$datum[5]='<i class="icon-email" onclick="return message(\''.$user_name.'\', \'\', \'\');"></i>';
 		}
-		$aData[6]=edit_field_language_inline('user_setting-'.$user_id.'-language', $aData[6]);
+		$datum[6]=edit_field_language_inline('user_setting-'.$user_id.'-language', $datum[6]);
 		// $aData[7] is the sortable registration timestamp
-		$aData[8]=format_timestamp($aData[8]);
-		if (date("U") - $aData[7] > 604800 && !$aData[11]) {
-			$aData[8]='<span class="red">'.$aData[8].'</span>';
+		$datum[8]=format_timestamp($datum[8]);
+		if (date("U") - $datum[7] > 604800 && !$datum[11]) {
+			$datum[8]='<span class="red">'.$datum[8].'</span>';
 		}
 		// $aData[9] is the sortable last-login timestamp
-		if ($aData[9]) {
-			$aData[10]=format_timestamp($aData[9]).'<br>'.WT_I18N::time_ago(WT_TIMESTAMP - $aData[9]);
+		if ($datum[9]) {
+			$datum[10]=format_timestamp($datum[9]).'<br>'.WT_I18N::time_ago(WT_TIMESTAMP - $datum[9]);
 		} else {
-			$aData[10]=WT_I18N::translate('Never');
+			$datum[10]=WT_I18N::translate('Never');
 		}
-		$aData[11]=edit_field_yes_no_inline('user_setting-'.$user_id.'-verified-',          $aData[11]);
-		$aData[12]=edit_field_yes_no_inline('user_setting-'.$user_id.'-verified_by_admin-', $aData[12]);
+		$datum[11]=edit_field_yes_no_inline('user_setting-'.$user_id.'-verified-',          $datum[11]);
+		$datum[12]=edit_field_yes_no_inline('user_setting-'.$user_id.'-verified_by_admin-', $datum[12]);
 		// Add extra column for "delete" action
 		if ($user_id != WT_USER_ID) {
-			$aData[13]='<div class="icon-delete" onclick="delete_user(\'' . WT_I18N::translate('Are you sure you want to delete “%s”?', WT_Filter::escapeJs($user_name)) . '\', \'' . WT_Filter::escapeJs($user_id) . '\');"></div>';
+			$datum[13]='<div class="icon-delete" onclick="delete_user(\'' . WT_I18N::translate('Are you sure you want to delete “%s”?', WT_Filter::escapeJs($user_name)) . '\', \'' . WT_Filter::escapeJs($user_id) . '\');"></div>';
 		} else {
 			// Do not delete ourself!
-			$aData[13]='';
+			$datum[13]='';
 		}
 	}
 
 	// Total filtered/unfiltered rows
-	$iTotalDisplayRecords=WT_DB::prepare("SELECT FOUND_ROWS()")->fetchOne();
-	$iTotalRecords=WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##user` WHERE user_id>0")->fetchOne();
+	$recordsFiltered = WT_DB::prepare("SELECT FOUND_ROWS()")->fetchOne();
+	$recordsTotal = WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##user` WHERE user_id>0")->fetchOne();
 
 	Zend_Session::writeClose();
 	header('Content-type: application/json');
 	echo json_encode(array( // See http://www.datatables.net/usage/server-side
-		'sEcho'                => WT_Filter::getInteger('sEcho'), // Always an integer
-		'iTotalRecords'        => $iTotalRecords,
-		'iTotalDisplayRecords' => $iTotalDisplayRecords,
-		'aaData'               => $aaData
+		'draw'            => WT_Filter::getInteger('draw'), // String, but always an integer
+		'recordsTotal'    => $recordsTotal,
+		'recordsFiltered' => $recordsFiltered,
+		'data'            => $data
 	));
 	exit;
 case 'load1row':
@@ -591,33 +593,33 @@ default:
 		->addExternalJavascript(WT_JQUERY_JEDITABLE_URL)
 		->addInlineJavascript('
 			var oTable = jQuery("#list").dataTable({
-				"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
+				dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 				'.WT_I18N::datatablesI18N().',
-				"bProcessing"     : true,
-				"bServerSide"     : true,
-				"sAjaxSource"     : "'.WT_SCRIPT_NAME.'?action=loadrows",
-				"bJQueryUI": true,
-				"bAutoWidth":false,
-				"iDisplayLength": '.get_user_setting(WT_USER_ID, 'admin_users_page_size', 10).',
-				"sPaginationType": "full_numbers",
-				"aaSorting": [[2,"asc"]],
-				"aoColumns": [
-					/* details           */ { bSortable:false, sClass:"icon-open" },
-					/* user-id           */ { bVisible:false },
+				processing: true,
+				serverSide: true,
+				ajax: "'.WT_SCRIPT_NAME.'?action=loadrows",
+				jQueryUI: true,
+				autoWidth: false,
+				pageLength: '.get_user_setting(WT_USER_ID, 'admin_users_page_size', 10).',
+				pagingType: "full_numbers",
+				sorting: [[2,"asc"]],
+				columns: [
+					/* details           */ { sortable: false, class: "icon-open" },
+					/* user-id           */ { visible: false },
 					/* user_name         */ null,
 					/* real_name         */ null,
 					/* email             */ null,
-					/* email link        */ { bSortable:false },
+					/* email link        */ { sortable: false },
 					/* language          */ null,
-					/* registered (sort) */ { bVisible:false },
-					/* registered        */ { iDataSort:7 },
-					/* last_login (sort) */ { bVisible:false },
-					/* last_login        */ { iDataSort:9 },
-					/* verified          */ { sClass:"center" },
-					/* approved          */ { sClass:"center" },
-					/* delete            */ { bSortable:false }
+					/* registered (sort) */ { visible: false },
+					/* registered        */ { dataSort: 7 },
+					/* last_login (sort) */ { visible: false },
+					/* last_login        */ { dataSort: 9 },
+					/* verified          */ { class: "center" },
+					/* approved          */ { class: "center" },
+					/* delete            */ { sortable: false }
 				],
-				"fnDrawCallback": function() {
+				"drawCallback": function() {
 					// Our JSON responses include Javascript as well as HTML.  This does not get executed automatically…
 					jQuery("#list script").each(function() {
 						eval(this.text);

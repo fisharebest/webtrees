@@ -66,22 +66,22 @@ class todo_WT_Module extends WT_Module implements WT_Module_Block {
 		$controller
 			->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 			->addInlineJavascript('
-				jQuery("#'.$table_id.'").dataTable( {
-				"sDom": \'t\',
-				'.WT_I18N::datatablesI18N().',
-				"bAutoWidth":false,
-				"bPaginate": false,
-				"bLengthChange": false,
-				"bFilter": false,
-				"bInfo": true,
-				"bJQueryUI": true,
-				"aoColumns": [
-					/* 0-DATE */   		{ "bVisible": false },
-					/* 1-Date */		{ "iDataSort": 0 },
-					/* 1-Record */ 		{},
-					/* 2-Username */	{},
-					/* 3-Text */		{}
-				]
+				jQuery("#'.$table_id.'").dataTable({
+					dom: \'t\',
+					'.WT_I18N::datatablesI18N().',
+					autoWidth: false,
+					paginate: false,
+					lengthChange: false,
+					filter: false,
+					info: true,
+					jQueryUI: true,
+					columns: [
+						/* 0-DATE */   		{ visible: false },
+						/* 1-Date */		{ dataSort: 0 },
+						/* 1-Record */ 		null,
+						/* 2-Username */	null,
+						/* 3-Text */		null
+					]
 				});
 			jQuery("#'.$table_id.'").css("visibility", "visible");
 			jQuery(".loading-image").css("display", "none");
