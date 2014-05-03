@@ -50,7 +50,7 @@ if (WT_USE_GOOGLE_API) {
 	define('WT_JQUERYUI_URL',      WT_STATIC_URL.'js/jquery-ui-1.10.4.js');
 }
 define('WT_JQUERY_COLORBOX_URL',   WT_STATIC_URL.'js/jquery.colorbox-1.5.9.js');
-define('WT_JQUERY_COOKIE_URL',     WT_STATIC_URL.'js/jquery.cookie-1.4.0.js');
+define('WT_JQUERY_COOKIE_URL',     WT_STATIC_URL.'js/jquery.cookie-1.4.1.js');
 define('WT_JQUERY_DATATABLES_URL', WT_STATIC_URL.'js/jquery.datatables-1.10.0.js');
 define('WT_JQUERY_JEDITABLE_URL',  WT_STATIC_URL.'js/jquery.jeditable-1.7.1.js');
 define('WT_JQUERY_WHEELZOOM_URL',  WT_STATIC_URL.'js/jquery.wheelzoom-1.1.2.js');
