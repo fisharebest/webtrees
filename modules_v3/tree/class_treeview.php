@@ -49,6 +49,8 @@ class TreeView {
 	public function drawViewport(WT_Individual $rootPerson, $generations) {
 		if (WT_SCRIPT_NAME == 'individual.php') {
 			$path = $rootPerson->getHtmlUrl();
+		} elseif (WT_SCRIPT_NAME == 'index.php') {
+			$path = WT_SCRIPT_NAME . '?ctype=user&amp;ged=' . WT_GEDURL;
 		} else {
 			$path = 'module.php?mod=tree&amp;mod_action=treeview&amp;rootid=' . $rootPerson->getXref();
 		}
