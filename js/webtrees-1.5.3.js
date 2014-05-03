@@ -100,10 +100,10 @@ function modalDialogSubmitAjax(form) {
 
 function closePopupAndReloadParent(url) {
 	if (parent.opener) {
-		if (!url) {
-			parent.opener.location.reload();
+		if (url) {
+			parent.opener.location = url;
 		} else {
-			parent.opener.location=url;
+			parent.opener.location.reload();
 		}
 	}
 	window.close();
@@ -125,56 +125,56 @@ function MM_showHideLayers() { //v6.0
 			}
 			v=args[i+2];
 			if (v=='toggle') {
-				if (obj.visibility.indexOf('hid')!=-1) {
-					v='show';
+				if (obj.visibility.indexOf('hid') == -1) {
+					v = 'hide';
 				} else {
-					v='hide';
+					v = 'show';
 				}
 			}
 			v=(v=='show')?'visible':(v=='hide')?'hidden':v;
 			obj.visibility=v;
 			if (args[i+1]=='followmouse') {
 				var pobj = document.getElementById(args[i+3]);
-				if (pobj !== null) {
-					if (pobj.style.top!="auto" && args[i+3]!="relatives") {
-						obj.top=5+msY-parseInt(pobj.style.top)+'px';
-						if (textDirection=="ltr") {
+				if (pobj === null) {
+					var Xadjust;
+					if (WT_SCRIPT_NAME.indexOf("fanchart") > 0) {
+						obj.top = (msY - 20) + 'px';
+						obj.left = (msX - 20) + 'px';
+					} else if (WT_SCRIPT_NAME.indexOf("index.php") == -1) {
+						Xadjust = document.getElementById('content').offsetLeft;
+						obj.left = (5 + (msX - Xadjust)) + 'px';
+						obj.top = "auto";
+					} else {
+						Xadjust = document.getElementById('content').offsetLeft;
+						obj.top = (msY - 50) + 'px';
+						obj.left = (10 + (msX - Xadjust)) + 'px';
+					}
+					obj.zIndex = 1000;
+				} else {
+					if (pobj.style.top != "auto" && args[i + 3] != "relatives") {
+						obj.top = 5 + msY - parseInt(pobj.style.top) + 'px';
+						if (textDirection == "ltr") {
 							obj.left = 5 + msX - parseInt(pobj.style.left) + 'px';
 						}
-						if (textDirection=="rtl") {
+						if (textDirection == "rtl") {
 							obj.right = 5 + msX - parseInt(pobj.style.right) + 'px';
 						}
 					} else {
-						obj.top="auto";
-						var pagewidth = document.documentElement.offsetWidth+document.documentElement.scrollLeft;
-						if (textDirection=="rtl") {
+						obj.top = "auto";
+						var pagewidth = document.documentElement.offsetWidth + document.documentElement.scrollLeft;
+						if (textDirection == "rtl") {
 							pagewidth -= document.documentElement.scrollLeft;
 						}
-						if (msX > pagewidth-160) {
+						if (msX > pagewidth - 160) {
 							msX = msX - 150 - pobj.offsetLeft;
 						}
 						var contentdiv = document.getElementById("content");
 						msX = msX - contentdiv.offsetLeft;
-						if (textDirection=="ltr") {
+						if (textDirection == "ltr") {
 							obj.left = (5 + msX) + 'px';
 						}
-						obj.zIndex=1000;
+						obj.zIndex = 1000;
 					}
-				} else {
-					var Xadjust;
-					if (WT_SCRIPT_NAME.indexOf("fanchart")>0) {
-						obj.top=(msY-20)+'px';
-						obj.left=(msX-20)+'px';
-					} else if (WT_SCRIPT_NAME.indexOf("index.php")==-1) {
-						Xadjust = document.getElementById('content').offsetLeft;
-						obj.left=(5+(msX-Xadjust))+'px';
-						obj.top="auto";
-					} else {
-						Xadjust = document.getElementById('content').offsetLeft;
-						obj.top=(msY-50)+'px';
-						obj.left=(10+(msX-Xadjust))+'px';
-					}
-					obj.zIndex=1000;
 				}
 			}
 		}
@@ -184,10 +184,10 @@ function MM_showHideLayers() { //v6.0
 var show = false;
 
 function togglechildrenbox(pid) {
-	if (!pid) {
-		pid = '';
-	} else {
+	if (pid) {
 		pid = '.' + pid;
+	} else {
+		pid = '';
 	}
 	if (show) {
 		MM_showHideLayers('childbox'+pid, ' ', 'hide',' ');
