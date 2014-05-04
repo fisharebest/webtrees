@@ -1736,6 +1736,10 @@ table.width66 {
 	padding: 0;
 }
 
+div.fact_SHARED_NOTE {
+	clear:both
+}
+
 .tabs_table {
 	max-width: 98%;
 }

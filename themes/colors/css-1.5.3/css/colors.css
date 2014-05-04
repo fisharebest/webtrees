@@ -1681,6 +1681,10 @@ ul {
 	padding: 0;
 }
 
+div.fact_SHARED_NOTE {
+	clear:both
+}
+
 .facts_label .submenu a {
 	background: #fff;
 	color: #000;
@@ -1882,7 +1886,7 @@ a:hover .nameZoom {
 
 .source_citations {
 	display: none;
-}
+}	
 
 .subheaders {
 	font-size: 16px;
