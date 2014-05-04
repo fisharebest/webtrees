@@ -50,7 +50,7 @@ class WT_Controller_Pedigree extends WT_Controller_Chart {
 		global $bwidth, $bheight, $cbwidth, $cbheight, $baseyoffset, $basexoffset, $byspacing, $bxspacing;
 		global $linewidth, $shadowcolor, $shadowblur, $shadowoffsetX, $shadowoffsetY;
 
-		global $BROWSER_TYPE, $show_full, $talloffset;
+		global $show_full, $talloffset;
 
 		parent::__construct();
 

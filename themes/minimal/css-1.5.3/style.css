@@ -468,6 +468,10 @@ table.center {
 	width: 100%;
 }
 
+div.fact_SHARED_NOTE {
+	clear:both
+}
+
 .facts_label {
 	color: #555;
 	background-color: #eee;
@@ -4315,7 +4319,7 @@ a.icon-udarrow {
 
 [dir=rtl] #cboxSlideshow {
 	right: 57px;
-	left: 0;
+	left: auto;
 }
 
 /* Census assistant module */

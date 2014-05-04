@@ -208,18 +208,59 @@
         ]
     },
     {
+        "name": "ircmaxell/password-compat",
+        "version": "1.0.3",
+        "version_normalized": "1.0.3.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/ircmaxell/password_compat.git",
+            "reference": "1fc1521b5e9794ea77e4eca30717be9635f1d4f4"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/ircmaxell/password_compat/zipball/1fc1521b5e9794ea77e4eca30717be9635f1d4f4",
+            "reference": "1fc1521b5e9794ea77e4eca30717be9635f1d4f4",
+            "shasum": ""
+        },
+        "time": "2013-04-30 19:58:08",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "lib/password.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Anthony Ferrara",
+                "email": "ircmaxell@php.net",
+                "homepage": "http://blog.ircmaxell.com"
+            }
+        ],
+        "description": "A compatibility library for the proposed simplified password hashing algorithm: https://wiki.php.net/rfc/password_hash",
+        "homepage": "https://github.com/ircmaxell/password_compat",
+        "keywords": [
+            "hashing",
+            "password"
+        ]
+    },
+    {
         "name": "tecnick.com/tcpdf",
-        "version": "6.0.071",
-        "version_normalized": "6.0.071.0",
+        "version": "6.0.073",
+        "version_normalized": "6.0.073.0",
         "source": {
             "type": "git",
             "url": "git://git.code.sf.net/p/tcpdf/code",
-            "reference": "e85569fc0351501ed51643df1b12f66696727b8a"
+            "reference": "214e1ea511d9c251f33412884b5360f8de1a4df9"
         },
         "require": {
             "php": ">=5.3.0"
         },
-        "time": "2014-04-25 18:13:02",
+        "time": "2014-04-29 20:58:11",
         "type": "library",
         "installation-source": "source",
         "autoload": {
@@ -264,47 +305,6 @@
             "pdf",
             "pdf417",
             "qrcode"
-        ]
-    },
-    {
-        "name": "ircmaxell/password-compat",
-        "version": "1.0.3",
-        "version_normalized": "1.0.3.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/ircmaxell/password_compat.git",
-            "reference": "1fc1521b5e9794ea77e4eca30717be9635f1d4f4"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/ircmaxell/password_compat/zipball/1fc1521b5e9794ea77e4eca30717be9635f1d4f4",
-            "reference": "1fc1521b5e9794ea77e4eca30717be9635f1d4f4",
-            "shasum": ""
-        },
-        "time": "2013-04-30 19:58:08",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "files": [
-                "lib/password.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Anthony Ferrara",
-                "email": "ircmaxell@php.net",
-                "homepage": "http://blog.ircmaxell.com"
-            }
-        ],
-        "description": "A compatibility library for the proposed simplified password hashing algorithm: https://wiki.php.net/rfc/password_hash",
-        "homepage": "https://github.com/ircmaxell/password_compat",
-        "keywords": [
-            "hashing",
-            "password"
         ]
     }
 ]

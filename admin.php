@@ -618,6 +618,14 @@ function old_paths() {
 		WT_ROOT.'themes/minimal/css-1.5.2',
 		WT_ROOT.'themes/webtrees/css-1.5.2',
 		WT_ROOT.'themes/xenea/css-1.5.2',
+		// Removed in 1.5.4
+		WT_ROOT.'js/jquery.colorbox-1.4.15.js',
+		WT_ROOT.'js/jquery.cookie-1.4.0.js',
+		WT_ROOT.'js/jquery.datatables-1.9.4.js',
+		WT_ROOT.'js/jquery.jeditable-1.7.1.js',
+		WT_ROOT.'js/jquery.wheelzoom-1.1.2.js',
+		WT_ROOT.'js/jquery-1.11.0.js',
+		WT_ROOT.'js/webtrees-1.5.3.js',
 	);
 }
 

@@ -75,23 +75,25 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 		$lines = explode("\n", $data);
 		// more than 1 line : recursive calls
 		if (count($lines)>1) {
-			$text = "";
-			foreach ($lines as $indexval => $line) $text .= $this->split_align_text($line, $maxlen)."\n";
+			$text = '';
+			foreach ($lines as $line) {
+				$text .= $this->split_align_text($line, $maxlen)."\n";
+			}
 			return $text;
 		}
 		// process current line word by word
-		$split = explode(" ", $data);
-		$text = "";
-		$line = "";
+		$split = explode(' ', $data);
+		$text = '';
+		$line = '';
 		// do not split hebrew line
 
 		$found = false;
-		foreach ($RTLOrd as $indexval => $ord) {
+		foreach ($RTLOrd as $ord) {
 			if (strpos($data, chr($ord)) !== false) $found=true;
 		}
 		if ($found) $line=$data;
 		else
-		foreach ($split as $indexval => $word) {
+		foreach ($split as $word) {
 			$len = strlen($line);
 			//if (!empty($line) and ord($line{0})==215) $len/=2; // hebrew text
 			$wlen = strlen($word);

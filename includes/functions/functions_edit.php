@@ -352,9 +352,7 @@ function add_simple_tag(
 	$tag, $upperlevel = '', $label = '', $extra = null,
 	WT_Individual $person = null
 ) {
-	global $MEDIA_DIRECTORY, $tags, $emptyfacts, $main_fact, $TEXT_DIRECTION;
-	global $NPFX_accept, $SPFX_accept, $NSFX_accept, $FILE_FORM_accept, $upload_count;
-	global $xref, $bdm, $action, $CensDate;
+	global $tags, $emptyfacts, $main_fact, $FILE_FORM_accept, $xref, $bdm, $action;
 	global $QUICK_REQUIRED_FACTS, $QUICK_REQUIRED_FAMFACTS, $PREFER_LEVEL2_SOURCES;
 
 	$subnamefacts = array("NPFX", "GIVN", "SPFX", "SURN", "NSFX", "_MARNM_SURN");
@@ -628,7 +626,7 @@ function add_simple_tag(
 		echo "document.getElementById('", $element_id, "').style.display='none'";
 		echo '</script>';
 		echo "<select id=\"", $element_id, "_sel\" onchange=\"document.getElementById('", $element_id, "').value=this.value;\" >";
-		foreach (array("Unknown", "Civil", "Religious", "Partners") as $indexval => $key) {
+		foreach (array("Unknown", "Civil", "Religious", "Partners") as $key) {
 			if ($key=="Unknown") echo "<option value=\"\"";
 			else echo "<option value=\"", $key, "\"";
 			$a=strtolower($key);
@@ -755,7 +753,7 @@ function add_simple_tag(
 	if ($value && $value!='new' && $islink) {
 		switch ($fact) {
 		case 'ASSO':
-		case 'ASSO':
+		case '_ASSO':
 			$tmp = WT_Individual::getInstance($value);
 			if ($tmp) {
 				echo ' ', $tmp->getFullname();
@@ -966,7 +964,7 @@ function addNewSex() {
 	}
 }
 function addNewFact($fact) {
-	global $tagSOUR, $ADVANCED_PLAC_FACTS;
+	global $ADVANCED_PLAC_FACTS;
 
 	$FACT = WT_Filter::post($fact);
 	$DATE = WT_Filter::post("{$fact}_DATE");
@@ -1091,12 +1089,13 @@ function splitSOUR() {
 * See the handle_updates() function for details.
 *
 */
-function updateSOUR($inputRec, $levelOverride="no") {
+function updateSOUR($inputRec, $levelOverride = 'no') {
 	global $glevels, $tag, $islink, $text;
 	global $glevelsSOUR, $tagSOUR, $islinkSOUR, $textSOUR;
-	global $glevelsRest, $tagRest, $islinkRest, $textRest;
 
-	if (count($tagSOUR)==0) return $inputRec; // No update required
+	if (count($tagSOUR)==0) {
+		return $inputRec; // No update required
+	}
 
 	// Save original interface update arrays before replacing them with the xxxSOUR ones
 	$glevelsSave = $glevels;
@@ -1127,12 +1126,13 @@ function updateSOUR($inputRec, $levelOverride="no") {
 * See the handle_updates() function for details.
 *
 */
-function updateRest($inputRec, $levelOverride="no") {
+function updateRest($inputRec, $levelOverride = 'no') {
 	global $glevels, $tag, $islink, $text;
-	global $glevelsSOUR, $tagSOUR, $islinkSOUR, $textSOUR;
 	global $glevelsRest, $tagRest, $islinkRest, $textRest;
 
-	if (count($tagRest)==0) return $inputRec; // No update required
+	if (count($tagRest)==0) {
+		return $inputRec; // No update required
+	}
 
 	// Save original interface update arrays before replacing them with the xxxRest ones
 	$glevelsSave = $glevels;
@@ -1180,7 +1180,7 @@ function updateRest($inputRec, $levelOverride="no") {
 * @return string The updated gedcom record
 */
 function handle_updates($newged, $levelOverride="no") {
-	global $glevels, $islink, $tag, $uploaded_files, $text, $NOTE, $WORD_WRAPPED_NOTES;
+	global $glevels, $islink, $tag, $uploaded_files, $text;
 
 	if ($levelOverride=="no" || count($glevels)==0) $levelAdjust = 0;
 	else $levelAdjust = $levelOverride - $glevels[0];
@@ -1291,8 +1291,7 @@ function create_add_form($fact) {
 
 // Create a form to edit a WT_Fact object
 function create_edit_form(WT_GedcomRecord $record, WT_Fact $fact) {
-	global $WORD_WRAPPED_NOTES, $ADVANCED_PLAC_FACTS, $date_and_time, $FULL_SOURCES;
-	global $tags;
+	global $ADVANCED_PLAC_FACTS, $date_and_time, $FULL_SOURCES, $tags;
 
 	$pid = $record->getXref();
 
@@ -1309,12 +1308,6 @@ function create_edit_form(WT_GedcomRecord $record, WT_Fact $fact) {
 	$level0type = $parent::RECORD_TYPE;
 	$level1type = $type;
 
-	if (count($fields)>2) {
-		$ct = preg_match("/@.*@/", $fields[2]);
-		$levellink = $ct > 0;
-	} else {
-		$levellink = false;
-	}
 	$i = $linenum;
 	$inSource = false;
 	$levelSource = 0;
@@ -1513,8 +1506,8 @@ function insert_missing_subtags($level1tag, $add_date=false) {
 				add_simple_tag("2 {$tag}");
 				if ($tag=='PLAC') {
 					if (preg_match_all('/('.WT_REGEX_TAG.')/', $ADVANCED_PLAC_FACTS, $match)) {
-						foreach ($match[1] as $tag) {
-							add_simple_tag("3 $tag", '', WT_Gedcom_Tag::getLabel("{$level1tag}:PLAC:{$tag}"));
+						foreach ($match[1] as $ptag) {
+							add_simple_tag("3 $ptag", '', WT_Gedcom_Tag::getLabel("{$level1tag}:PLAC:{$ptag}"));
 						}
 					}
 					add_simple_tag('3 MAP');

@@ -119,11 +119,10 @@ function ReportSHandler($attrs) {
 }
 
 function varSHandler($attrs) {
-	global $text, $vars, $fact, $desc, $type, $generation;
+	global $text, $fact, $desc, $type;
 
 	$var = $attrs["var"];
 	if (!empty($var)) {
-		$match = array();
 		$tfact = $fact;
 		if ($fact=="EVEN") {
 			$tfact = $type;

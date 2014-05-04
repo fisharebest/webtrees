@@ -450,6 +450,10 @@ textarea:required:invalid {
 	width: 100%;
 }
 
+div.fact_SHARED_NOTE {
+	clear:both
+}
+
 /*-- pedigree chart specific stylesheets --*/
 #pedigree-page table.list_table {
 	margin: 0 auto;
@@ -3937,7 +3941,7 @@ a.icon-uarrow:hover {
 
 [dir=rtl] #cboxSlideshow {
 	right: 57px;
-	left: 0;
+	left: autp;
 }
 
 /* Census assistant module */
