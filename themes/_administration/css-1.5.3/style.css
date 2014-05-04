@@ -2491,5 +2491,5 @@ a.icon-uarrow:hover {
 
 [dir=rtl] #cboxSlideshow {
 	right: 57px;
-	left: 0;
+	left: auto;
 }
