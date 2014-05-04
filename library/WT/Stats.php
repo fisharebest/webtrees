@@ -3278,18 +3278,18 @@ class WT_Stats {
 				->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 				->addInlineJavascript('
 					jQuery("#'.$table_id.'").dataTable({
-						"sDom": \'t\',
-						"bAutoWidth":false,
-						"bPaginate": false,
-						"bLengthChange": false,
-						"bFilter": false,
-						"bInfo": false,
-						"bJQueryUI": true,
-						"aaSorting": [[1,"desc"]],
-						"aoColumns": [
+						dom: \'t\',
+						autoWidth: false,
+						paging: false,
+						lengthChange: false,
+						filter: false,
+						info: false,
+						jQueryUI: true,
+						sorting: [[1,"desc"]],
+						columns: [
 							/* 0-name */ {},
-							/* 1-count */ { sClass:"center", iDataSort:2},
-							/* 2-COUNT */ { bVisible:false}
+							/* 1-count */ { class: "center", dataSort: 2},
+							/* 2-COUNT */ { visible: false}
 						]
 					});
 					jQuery("#'.$table_id.'").css("visibility", "visible");

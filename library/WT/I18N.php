@@ -636,7 +636,7 @@ class WT_I18N {
 			$callback='';
 		} else {
 			$callback=',
-				"fnInfoCallback": function(oSettings, iStart, iEnd, iMax, iTotal, sPre) {
+				"infoCallback": function(oSettings, iStart, iEnd, iMax, iTotal, sPre) {
 					return sPre
 						.replace(/0/g, "'.utf8_substr($digits, 0, 1).'")
 						.replace(/1/g, "'.utf8_substr($digits, 1, 1).'")
@@ -648,8 +648,8 @@ class WT_I18N {
 						.replace(/7/g, "'.utf8_substr($digits, 7, 1).'")
 						.replace(/8/g, "'.utf8_substr($digits, 8, 1).'")
 						.replace(/9/g, "'.utf8_substr($digits, 9, 1).'");
-                },
-				"fnFormatNumber": function(iIn) {
+				},
+				"formatNumber": function(iIn) {
 					return String(iIn)
 						.replace(/0/g, "'.utf8_substr($digits, 0, 1).'")
 						.replace(/1/g, "'.utf8_substr($digits, 1, 1).'")
@@ -666,25 +666,25 @@ class WT_I18N {
 		}
 
 		return
-			'"oLanguage": {'.
-			' "oPaginate": {'.
-			'  "sFirst":    "'./* I18N: button label, first page    */ WT_I18N::translate('first').'",'.
-			'  "sLast":     "'./* I18N: button label, last page     */ WT_I18N::translate('last').'",'.
-			'  "sNext":     "'./* I18N: button label, next page     */ WT_I18N::translate('next').'",'.
-			'  "sPrevious": "'./* I18N: button label, previous page */ WT_I18N::translate('previous').'"'.
+			'"language": {'.
+			' "paginate": {'.
+			'  "first":    "'./* I18N: button label, first page    */ WT_I18N::translate('first').'",'.
+			'  "last":     "'./* I18N: button label, last page     */ WT_I18N::translate('last').'",'.
+			'  "next":     "'./* I18N: button label, next page     */ WT_I18N::translate('next').'",'.
+			'  "previous": "'./* I18N: button label, previous page */ WT_I18N::translate('previous').'"'.
 			' },'.
-			' "sEmptyTable":     "'.WT_I18N::translate('No records to display').'",'.
-			' "sInfo":           "'./* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '_START_', '_END_', '_TOTAL_').'",'.
-			' "sInfoEmpty":      "'.WT_I18N::translate('Showing %1$s to %2$s of %3$s', 0, 0, 0).'",'.
-			' "sInfoFiltered":   "'./* I18N: %s is a placeholder for a number */ WT_I18N::translate('(filtered from %s total entries)', '_MAX_').'",'.
-			' "sInfoPostfix":    "",'.
-			' "sInfoThousands":  "'.$symbols['group'].'",'.
-			' "sLengthMenu":     "'.WT_Filter::escapeJs($length_menu).'",'.
-			' "sLoadingRecords": "'.WT_I18N::translate('Loading…').'",'.
-			' "sProcessing":     "'.WT_I18N::translate('Loading…').'",'.
-			' "sSearch":         "'.WT_I18N::translate('Filter').'",'.
-			' "sUrl":            "",'.
-			' "sZeroRecords":    "'.WT_I18N::translate('No records to display').'"'.
+			' "emptyTable":     "'.WT_I18N::translate('No records to display').'",'.
+			' "info":           "'./* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '_START_', '_END_', '_TOTAL_').'",'.
+			' "infoEmpty":      "'.WT_I18N::translate('Showing %1$s to %2$s of %3$s', 0, 0, 0).'",'.
+			' "infoFiltered":   "'./* I18N: %s is a placeholder for a number */ WT_I18N::translate('(filtered from %s total entries)', '_MAX_').'",'.
+			' "infoPostfix":    "",'.
+			' "infoThousands":  "'.$symbols['group'].'",'.
+			' "lengthMenu":     "'.WT_Filter::escapeJs($length_menu).'",'.
+			' "loadingRecords": "'.WT_I18N::translate('Loading…').'",'.
+			' "processing":     "'.WT_I18N::translate('Loading…').'",'.
+			' "search":         "'.WT_I18N::translate('Filter').'",'.
+			' "url":            "",'.
+			' "zeroRecords":    "'.WT_I18N::translate('No records to display').'"'.
 			'}'.
 			$callback;
 	}

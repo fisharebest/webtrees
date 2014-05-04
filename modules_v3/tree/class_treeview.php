@@ -98,7 +98,9 @@ class TreeView {
 				$fid = $params[0];
 				$order = $params[1];
 				$f = WT_Family::getInstance($fid);
-				$r[] = $this->drawPerson($f->getHusband(), 0, 1, $f, $order);
+				if ($f->getHusband()) {
+					$r[] = $this->drawPerson($f->getHusband(), 0, 1, $f, $order);
+				}
 				break;
 			}
 		}
