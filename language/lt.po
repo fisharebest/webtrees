@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2014-05-03 00:09+0100\n"
-"PO-Revision-Date: 2014-05-01 16:55+0200\n"
+"PO-Revision-Date: 2014-05-04 22:37+0200\n"
 "Last-Translator: Vytautas Krivickas <vytautas.krivickas@gmail.com>\n"
 "Language-Team: \n"
 "Language: lt\n"
@@ -14,8 +14,8 @@ msgstr ""
 "X-Launchpad-Export-Date: 2013-08-04 19:02+0000\n"
 "X-Generator: Poedit 1.6.5\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+"X-Poedit-Basepath: ..\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: modules_v3/ahnentafel_report/report.xml:157
@@ -147,9 +147,9 @@ msgstr "%1$s neturi nuorodos atgal į %2$s."
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] "%1$s byla buvo išgauta per %2$s sekundes."
-msgstr[1] "%1$s bylos buvo išgautos per %2$s sekundes."
-msgstr[2] "%1$s bylų buvo išgauta per %2$s sekundes."
+msgstr[0] "%1$s byla buvo išpakuota per %2$s sekundes."
+msgstr[1] "%1$s bylos buvo išpakuotos per %2$s sekundes."
+msgstr[2] "%1$s bylų buvo išpakuota per %2$s sekundes."
 
 #. I18N: %1$s is an internal ID number such as R123.  %2$s and %3$s are record types, such as INDI or SOUR
 #: admin_trees_check.php:179
@@ -499,22 +499,22 @@ msgstr "(amžius daugiau negu %s)"
 #: library/WT/I18N.php:679
 #, php-format
 msgid "(filtered from %s total entries)"
-msgstr "atrinkta iš %s įrašų"
+msgstr "(atrinkta iš %s įrašų)"
 
 #. I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan 1900 (in childhood)
 #: library/WT/I18N.php:347
 msgid "(in childhood)"
-msgstr "vaikystėje"
+msgstr "(vaikystėje)"
 
 #. I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan 1900 (in infancy)
 #: library/WT/I18N.php:344
 msgid "(in infancy)"
-msgstr "kūdikystėje"
+msgstr "(kūdikystėje)"
 
 #. I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan 1900 (stillborn)
 #: library/WT/I18N.php:341
 msgid "(stillborn)"
-msgstr "gimė negyvas"
+msgstr "(gimė negyvas)"
 
 #. I18N: This punctuation is used to separate lists of items.
 #: library/WT/I18N.php:182
@@ -1730,7 +1730,7 @@ msgstr "Amžių skirtumas"
 
 #: statistics.php:564 statisticsplot.php:923
 msgid "Age in year of first marriage"
-msgstr "amžius pirmųjų vedybų metais"
+msgstr "Amžius pirmųjų vedybų metais"
 
 #: includes/functions/functions_print_lists.php:871 statistics.php:254
 #: statistics.php:560 statisticsplot.php:920
@@ -2598,7 +2598,7 @@ msgstr "Dvejetainis duomenų objektas"
 
 #: includes/functions/functions_print.php:829
 msgid "Bing Maps™"
-msgstr ""
+msgstr "Bing Maps™"
 
 #: library/WT/Gedcom/Code/Temp.php:74
 msgid "Birmingham, Alabama"
@@ -3123,19 +3123,19 @@ msgstr "Vyro laidotuvės"
 
 #: library/WT/Gedcom/Tag.php:499
 msgid "Burial of a maternal grandfather"
-msgstr "Senelio iš mamos pusės laidotuvės"
+msgstr "Senelio iš motinos pusės laidotuvės"
 
 #: library/WT/Gedcom/Tag.php:500
 msgid "Burial of a maternal grandmother"
-msgstr "Senelės iš mamos pusės laidotuvės"
+msgstr "Senelės iš motinos pusės laidotuvės"
 
 #: library/WT/Gedcom/Tag.php:501
 msgid "Burial of a maternal grandparent"
-msgstr "Mamos senelių laidotuvės"
+msgstr "Motinos senelių laidotuvės"
 
 #: library/WT/Gedcom/Tag.php:512
 msgid "Burial of a mother"
-msgstr "Mamos laidotuvės"
+msgstr "Motinos laidotuvės"
 
 #: library/WT/Gedcom/Tag.php:513
 msgid "Burial of a parent"
@@ -3949,7 +3949,7 @@ msgstr "Konvertuoti iš UTF-8 į ANSI"
 #: admin_trees_download.php:123 modules_v3/clippings/module.php:209
 #: modules_v3/clippings/module.php:588
 msgid "Convert from UTF-8 to ANSI (ISO-8859-1)"
-msgstr "UTF-8 keisti į ANSI (ISO-8859-1)"
+msgstr "Konvertuoti iš UTF-8 į ANSI (ISO-8859-1)"
 
 #: library/WT/Stats.php:3799
 msgid "Cook Islands"
@@ -4174,15 +4174,15 @@ msgstr "Vyro kremacija"
 
 #: library/WT/Gedcom/Tag.php:602
 msgid "Cremation of a maternal grandfather"
-msgstr "Senelės iš mamos pusės kremacija"
+msgstr "Senelės iš motinos pusės kremacija"
 
 #: library/WT/Gedcom/Tag.php:603
 msgid "Cremation of a maternal grandmother"
-msgstr "Senelės iš mamos pusės kremacija"
+msgstr "Senelės iš motinos pusės kremacija"
 
 #: library/WT/Gedcom/Tag.php:615
 msgid "Cremation of a mother"
-msgstr "Mamos kremacija"
+msgstr "motinos kremacija"
 
 #: library/WT/Gedcom/Tag.php:616
 msgid "Cremation of a parent"
@@ -4512,7 +4512,7 @@ msgstr "Duktė %s"
 
 #: admin.php:234 calendar.php:138 library/WT/MenuBar.php:372
 msgid "Day"
-msgstr "diena"
+msgstr "Diena"
 
 #: calendar.php:476
 msgid "Day not set"
@@ -4660,11 +4660,11 @@ msgstr "Mirtys pagal šalis"
 
 #: modules_v3/bdm_report/report.xml:10 modules_v3/death_report/report.xml:8
 msgid "Death date range end"
-msgstr "mirčių laikotarpis baigiasi"
+msgstr "Mirčių laikotarpis baigiasi"
 
 #: modules_v3/bdm_report/report.xml:9 modules_v3/death_report/report.xml:7
 msgid "Death date range start"
-msgstr "mirčių laikotarpis prasideda"
+msgstr "Mirčių laikotarpis prasideda"
 
 #: library/WT/Gedcom/Tag.php:687
 msgid "Death of a brother"
@@ -4746,7 +4746,7 @@ msgstr "Vyro mirtis"
 
 #: library/WT/Gedcom/Tag.php:669
 msgid "Death of a maternal grandfather"
-msgstr "Senelio iš mamos pusės mirtis"
+msgstr "Senelio iš motinos pusės mirtis"
 
 #: library/WT/Gedcom/Tag.php:670
 msgid "Death of a maternal grandmother"
@@ -5683,7 +5683,7 @@ msgstr "Klaida"
 #: import.php:191
 #, php-format
 msgid "Error: converting GEDCOM files from %s encoding to UTF-8 encoding not currently supported."
-msgstr ""
+msgstr "Klaida: konvertavimas GEDCOM bylų iš %s kodavimo į UTF-8 kodavimą šiuo metu yra napalaikomas."
 
 #: library/WT/Date/Jalali.php:128
 msgctxt "Abbreviation for Persian month: Esfand"
@@ -5755,7 +5755,7 @@ msgstr ""
 
 #: help_text.php:1378
 msgid "Everybody has this role, including visitors to the site and search engines."
-msgstr ""
+msgstr "Visi turi šį vaidmenį, įskaitant svetainės lankytojus ir paieškos sistemas."
 
 #: search_advanced.php:156 search_advanced.php:218 search_advanced.php:233
 #: search_advanced.php:255 search_advanced.php:270
@@ -5791,7 +5791,7 @@ msgstr "Vykdymo statistika"
 #: includes/functions/functions_print.php:255
 #, php-format
 msgid "Execution time: %1$s seconds. Database queries: %2$s. Memory usage: %3$s KB."
-msgstr ""
+msgstr "Vykdymo laikas: %1$s sek. Duomenų bazės užklausos: %2$s. Atminties naudojimas: %3$s KB."
 
 #. I18N: placeholder text for registration-comments field
 #: login.php:428
@@ -5806,7 +5806,7 @@ msgstr "Eksportuoti"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:281
 msgid "Export all family trees to GEDCOM files…"
-msgstr ""
+msgstr "Eksportuoti visus šeimos medžius į GEDCOM bylas…"
 
 #: help_text.php:1211
 msgid "Export family tree"
@@ -5824,7 +5824,7 @@ msgstr "Išorinės bylos"
 
 #: admin_media.php:591
 msgid "External media files have a URL instead of a filename."
-msgstr ""
+msgstr "Išorinės medijos bylos turi URL vietoj bylovardžio."
 
 #. I18N: Name of a module/sidebar
 #: modules_v3/extra_info/module.php:29
@@ -5996,7 +5996,7 @@ msgstr "Šeima"
 
 #: admin_trees_config.php:341 help_text.php:520
 msgid "Family ID prefix"
-msgstr "Šeimų ID priedėlis"
+msgstr "Šeimų ID priešdėlis"
 
 #. I18N: gedcom tag FAMC
 #: library/WT/Gedcom/Tag.php:199
@@ -6118,7 +6118,7 @@ msgstr "Šeima su tėvais"
 #. I18N: “rada” is an Arabic word, pronounced “ra DAH”.  It is child-to-parent pedigree, established by wet-nursing.
 #: library/WT/Gedcom/Code/Pedi.php:91
 msgid "Family with rada parents"
-msgstr ""
+msgstr "Šeima so rados tėvais"
 
 #. I18N: “sealing” is a Mormon ceremony.
 #: library/WT/Gedcom/Code/Pedi.php:90
@@ -6374,7 +6374,7 @@ msgstr "Surasti kitą ryšį"
 
 #: help_text.php:1278
 msgid "Find next relationship path"
-msgstr ""
+msgstr "Surasti kitą šeimininį ryšį"
 
 #: library/WT/Stats.php:3825
 msgid "Finland"
@@ -6479,7 +6479,7 @@ msgstr ""
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: help_text.php:417
 msgid "For sites with more than one family tree, this option will show the list of family trees in the main menu, the search pages, etc."
-msgstr ""
+msgstr "Svetainėse su daugiau negu vienu šeimos medžiu ši parinktis parodys šeimos medžių sąrašą pagrindiniame meniu, paieškų puslapyje ir t.t."
 
 #: includes/functions/functions_print.php:372
 msgid "For technical support and information contact"
@@ -6497,7 +6497,7 @@ msgstr "Formatas"
 
 #: admin_trees_config.php:939 help_text.php:525
 msgid "Format text and notes"
-msgstr ""
+msgstr "Teksto ir pastabų formatas"
 
 #: library/WT/Gedcom/Code/Pedi.php:55
 msgctxt "Female pedigree"
@@ -6655,12 +6655,12 @@ msgstr "GEDCOM byla"
 #: help_text.php:1217 help_text.php:1263
 #, php-format
 msgid "GEDCOM files are stored in the %s folder."
-msgstr ""
+msgstr "GEDCOM bylos yra išsaugotos %s aplankoje."
 
 #. I18N: A media path (e.g. c:\aaa\bbb\ccc\ddd.jpeg) in a GEDCOM file
 #: admin_trees_config.php:634 help_text.php:544
 msgid "GEDCOM media path"
-msgstr ""
+msgstr "GEDCOM medijos bylų aplanka"
 
 #: admin_site_merge.php:208
 msgid "GEDCOM record successfully deleted."
@@ -7379,7 +7379,7 @@ msgstr "Jei jūs turite daug nesusietų vietovių įrašų, tai gali stabdyti s�
 
 #: help_text.php:1441
 msgid "If you have a large number of media files, you can organize them into folders and subfolders."
-msgstr ""
+msgstr "Jei jūs turite daug medijos bylų jūs galite sugrupuoti jas į aplankas ir poaplankes."
 
 #: help_text.php:1077
 msgid "If you have a note to add to this record, this is the place to do so.<br><br>Just click the link, a window will open, and you can type your note.  When you are finished typing, just click the button below the box, close the window, and that’s all."
@@ -7445,7 +7445,7 @@ msgstr "Importuoti"
 
 #: modules_v3/googlemap/module.php:4433
 msgid "Import all places from a family tree"
-msgstr ""
+msgstr "Idėti visas vietoves iš šeimos medžio"
 
 #: help_text.php:1257
 msgid "Import family tree"
@@ -7534,7 +7534,7 @@ msgstr "Asmuo 2"
 
 #: admin_trees_config.php:335 help_text.php:539
 msgid "Individual ID prefix"
-msgstr "Asmenų ID priedėlis"
+msgstr "Asmenų ID priešdėlis"
 
 #: statistics.php:572
 msgid "Individual distribution"
@@ -8145,7 +8145,7 @@ msgstr "Libanas"
 #: modules_v3/relative_ext_report/report.xml:8
 msgctxt "paper size"
 msgid "Legal"
-msgstr ""
+msgstr "Legal"
 
 #. I18N: gedcom tag LEGA
 #: library/WT/Gedcom/Tag.php:230
@@ -8176,7 +8176,7 @@ msgstr "Lesotas"
 #: modules_v3/relative_ext_report/report.xml:8
 msgctxt "paper size"
 msgid "Letter"
-msgstr ""
+msgstr "Letter"
 
 #: modules_v3/googlemap/module.php:419 modules_v3/googlemap/module.php:1626
 #: modules_v3/googlemap/module.php:3945
@@ -8202,7 +8202,7 @@ msgstr "Gyvenimo trukmė"
 #: help_text.php:1273 library/WT/Controller/Lifespan.php:74
 #: library/WT/MenuBar.php:107 lifespan.php:136
 msgid "Lifespans"
-msgstr "Gyvenimo trukmė"
+msgstr "Gyvenimo trukmės"
 
 #: library/WT/Gedcom/Code/Temp.php:118
 msgid "Lima, Peru"
@@ -8703,7 +8703,7 @@ msgstr "Įsesers vedybos"
 #. I18N: ...to another spouse
 #: library/WT/Gedcom/Tag.php:770
 msgid "Marriage of a mother"
-msgstr "Mamos vedybos"
+msgstr "motinos vedybos"
 
 #. I18N: ...to another spouse
 #: library/WT/Gedcom/Tag.php:771
@@ -9132,7 +9132,7 @@ msgstr "Trūksta duomenų"
 
 #: edit_changes.php:198
 msgid "Moderate pending changes"
-msgstr ""
+msgstr "Yra nauji pataisymai laukiantys sprendimų"
 
 #. I18N: Listbox entry; name of a role
 #: admin_users.php:43 help_text.php:1389
@@ -9307,11 +9307,11 @@ msgstr "Motina"
 #: library/WT/Individual.php:808
 #, php-format
 msgid "Mother: %s"
-msgstr "Mama: %s"
+msgstr "Motina: %s"
 
 #: includes/functions/functions_print.php:621
 msgid "Mother’s age"
-msgstr "Mamos amžius"
+msgstr "motinos amžius"
 
 #. I18N: A step-family.  %s is an individual’s name
 #: library/WT/Individual.php:755
@@ -9556,7 +9556,7 @@ msgstr "Olandijos Antilai"
 
 #: library/WT/Stats.php:3923
 msgid "Neutral Zone"
-msgstr "neutrali zona"
+msgstr "Neutrali Zona"
 
 #: admin_users.php:153
 msgid "Never"
@@ -9743,8 +9743,9 @@ msgstr "Klaidų nerasta."
 #, php-format
 msgid "No events exist for the next %s day."
 msgid_plural "No events exist for the next %s days."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Nėra įvykių per ateinančią %s dieną."
+msgstr[1] "Nėra įvykių per ateinančias %s dienas."
+msgstr[2] "Nėra įvykių per ateinančias %s dienų."
 
 #: includes/functions/functions_print_lists.php:1786
 #: includes/functions/functions_print_lists.php:1893
@@ -9772,9 +9773,9 @@ msgstr "Nėra gyvų žmonių įvykių rytojui."
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Nėra gyvų žmonių įvykių per ateinančią %s dieną."
+msgstr[1] "Nėra gyvų žmonių įvykių per ateinančias %s dienas."
+msgstr[2] "Nėra gyvų žmonių įvykių per ateinančias %s dienų."
 
 #: library/WT/Controller/Family.php:164
 msgid "No facts for this family."
@@ -9936,7 +9937,7 @@ msgstr "Pastaba"
 
 #: admin_trees_config.php:360 help_text.php:698
 msgid "Note ID prefix"
-msgstr "Pastabų ID priedėlis"
+msgstr "Pastabų ID priešdėlis"
 
 #: help_text.php:343
 msgid "Note that if a user account is linked to a record, then that user will always be able to view that record."
@@ -10157,7 +10158,7 @@ msgstr "Vyriausias"
 
 #: statistics.php:289
 msgid "Oldest mother"
-msgstr "Vyriausia mama"
+msgstr "Vyriausia motina"
 
 #. I18N: The name of a colour-scheme
 #: themes/colors/theme.php:87
@@ -10199,11 +10200,11 @@ msgstr "Oops! webtrees negalėjo šioje aplankoje sukurti bylos"
 
 #: includes/functions/functions_print.php:830
 msgid "OpenStreetMap™"
-msgstr ""
+msgstr "OpenStreetMap™"
 
 #: modules_v3/googlemap/help_text.php:41 modules_v3/googlemap/module.php:406
 msgid "Optional prefixes and suffixes"
-msgstr ""
+msgstr "Neprivalomi prišdėliai ir priesagos"
 
 #: admin_users.php:503 relationship.php:88
 msgid "Options:"
@@ -10773,12 +10774,12 @@ msgstr "Būstinės vieta"
 #: admin_site_upgrade.php:406
 #, php-format
 msgid "Place the site offline, by creating the file %s…"
-msgstr ""
+msgstr "Įdedame svetainę į neveiklia būklę sukurdami %s bylą…"
 
 #: admin_site_upgrade.php:457
 #, php-format
 msgid "Place the site online, by deleting the file %s…"
-msgstr ""
+msgstr "Išvedam svetainę iš neveiklios būklės ištrindami %s bylą…"
 
 #: admin_trees_config.php:894 statistics.php:401
 msgid "Places"
@@ -10945,7 +10946,7 @@ msgstr "Kokiam susisiekimo metodui teikiate primenybę"
 
 #: modules_v3/googlemap/module.php:410
 msgid "Prefixes"
-msgstr ""
+msgstr "Priešdėliai"
 
 #: modules_v3/recent_changes/module.php:144
 #: modules_v3/todays_events/module.php:139
@@ -10979,7 +10980,7 @@ msgstr "Primidi"
 
 #: modules_v3/family_group_report/report.xml:10
 msgid "Print basic events when blank?"
-msgstr ""
+msgstr "Atspausdinti pagrindinius įvykius jei tušti?"
 
 #: admin_trees_config.php:217
 msgid "Privacy"
@@ -11330,7 +11331,7 @@ msgstr "Normali išraiška"
 #. I18N: http://en.wikipedia.org/wiki/Regular_expression
 #: modules_v3/batch_update/plugins/search_replace.php:93
 msgid "Regular expressions are an advanced pattern matching technique."
-msgstr ""
+msgstr "Normalios išraiškos yra išplėstos rašto atitikimo metodas."
 
 #. I18N: Name of a module/report
 #: modules_v3/individual_ext_report/module.php:33
@@ -11486,7 +11487,7 @@ msgstr "Saugykla"
 
 #: admin_trees_config.php:354 help_text.php:813
 msgid "Repository ID prefix"
-msgstr "Informacijos šaltinio ID priedėlis"
+msgstr "Informacijos šaltinio ID priešdėlis"
 
 #: find.php:249
 msgid "Repository contains:"
@@ -11576,7 +11577,7 @@ msgstr "Išėjimas į pensiją"
 
 #: library/WT/Stats.php:3941
 msgid "Reunion"
-msgstr ""
+msgstr "Reunion"
 
 #: index_edit.php:266
 msgid "Right section blocks"
@@ -11856,7 +11857,7 @@ msgstr "Saugus sujungimas"
 #: modules_v3/batch_update/plugins/search_replace.php:93
 #, php-format
 msgid "See %s for more information."
-msgstr ""
+msgstr "Surask daugiau informacijos čia: %s"
 
 #: includes/functions/functions_edit.php:311 reportengine.php:260
 msgid "Select a date"
@@ -12599,7 +12600,7 @@ msgstr "Rodyti statistikos diagramas"
 #: admin_trees_config.php:904
 #, php-format
 msgid "Show the %1$s %2$s parts of a place name."
-msgstr ""
+msgstr "Rodyti %1$s %2$s vietovardžio dalis."
 
 #: modules_v3/html/module.php:317
 msgid "Show the date and time of update"
@@ -12701,7 +12702,7 @@ msgstr "Paprastas paieškos filtras"
 
 #: help_text.php:1419
 msgid "Simple search filter based on the characters entered, no wildcards are accepted."
-msgstr ""
+msgstr "Paprastos paieškos filtras remiasi įvestomis raidėmis, jokie pakaitos simboliai nėra priimami."
 
 #: library/WT/Stats.php:3952
 msgid "Singapore"
@@ -12887,7 +12888,7 @@ msgstr "Šaltinis"
 
 #: admin_trees_config.php:347 help_text.php:904
 msgid "Source ID prefix"
-msgstr "Šaltinio ID priedėlis"
+msgstr "Šaltinio ID priešdėlis"
 
 #: help_text.php:535
 msgid "Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source.  If you don’t use these fields, you can disable them when creating new source citations."
@@ -13215,7 +13216,7 @@ msgstr "Skirtukas"
 
 #: setup.php:363
 msgid "Table prefix"
-msgstr "Lentelės prefiksas"
+msgstr "Lentelės priešdėlis"
 
 #: themes/_administration/header.php:147
 msgid "Tabs"
@@ -13496,11 +13497,11 @@ msgstr "Šis pranešimas buvo išsiųstas į jūsų kilmės medžio nario sąska
 
 #: admin_trees_places.php:108
 msgid "The following places were changed:"
-msgstr ""
+msgstr "Sekančios vietovės buvo pakeistos:"
 
 #: admin_trees_places.php:108
 msgid "The following places would be changed:"
-msgstr ""
+msgstr "Sekančios vietovės būtų pakeistos:"
 
 #: admin_site_access.php:271
 msgid "The following rules are used to decide whether a visitor is a human being (allow full access), a search-engine robot (allow restricted access) or an unwanted crawler (deny all access)."
@@ -13552,7 +13553,7 @@ msgstr "Atminties ir procesoriaus reikalavimai, priklauso nuo įrašų skaičiau
 #: admin_site_upgrade.php:391
 #, php-format
 msgid "The new files are currently located in the folder %s."
-msgstr ""
+msgstr "Naujos bylos dabar yra %s aplankoje."
 
 #: help_text.php:1248
 msgid "The number of occurrences of the specified name will be shown on the map. If you leave this field empty, the most common surname will be used."
@@ -13568,7 +13569,7 @@ msgstr "Slaptažodis turi būti bent iš šešių simbolių."
 
 #: help_text.php:739
 msgid "The password required for authentication with the SMTP server."
-msgstr ""
+msgstr "Reikalingas slaptažodis naudojant autentifikuotą SMTP serverį."
 
 #: setup.php:392
 msgid "The passwords do not match."
@@ -13576,7 +13577,7 @@ msgstr "Slaptažodžiai nesutampa."
 
 #: setup.php:365
 msgid "The prefix is optional, but recommended.  By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want."
-msgstr "Prefix nėra privalomas, tačiau rekomenduojamas. Suteikdami lentelės pavadinimui unikalų priešdėlį, galite leisti kelias skirtingas programas naudoti tą pačią duomenų bazę. \"wt_\" siūloma, bet gali būti, kokia jums patinka."
+msgstr "Priešdėlis nėra privalomas, tačiau rekomenduojamas. Suteikdami lentelės pavadinimui unikalų priešdėlį, galite leisti kelias skirtingas programas naudoti tą pačią duomenų bazę. \"wt_\" siūloma, bet gali būti, kokia jums patinka."
 
 #: modules_v3/batch_update/plugins/search_replace.php:82
 msgid "The regex appears to contain an error.  It can’t be used."
@@ -13602,12 +13603,12 @@ msgstr "Nurodytas aplankas netalpina PhpGedView įrenginio"
 #: help_text.php:279
 #, php-format
 msgid "The surname is enclosed by slashes: <%s>John Paul /Smith/<%s>"
-msgstr ""
+msgstr "Pavardė yra apsupta nerijos ribomis: <%s>Vardenis /Pavardenis/<%s>"
 
 #. I18N: Help text for the “Session timeout” site configuration setting
 #: help_text.php:729
 msgid "The time in seconds that a <b>webtrees</b> session remains active before requiring a login.  The default is 7200, which is 2 hours."
-msgstr ""
+msgstr "Laikotarpis sekundėmis per kurį <b>webtrees</b> sesija pasilieka atidaryta be kito prisijungimo. Įprastai tai yra 7200, arba 2 valandos."
 
 #: admin_site_upgrade.php:489
 msgid "The upgrade is complete."
@@ -13764,7 +13765,7 @@ msgstr ""
 
 #: setup.php:335 setup.php:346
 msgid "This database and table-prefix appear to be used by another application.  If you have an existing PhpGedView system, you should create a new webtrees system.  You can import your PhpGedView data and settings later."
-msgstr "Šis duomenų bazės vardas ir lentelių prefiksas yra naudojamas kitos programos. Jeigu jau turite PhpGedView sistema, jums reikia sukurti naują webtrees sistemą. Galėsite importuoti savo PhpGedView duomenis ir nustatymus vėliau."
+msgstr "Šis duomenų bazės vardas ir lentelių priešdėlis yra naudojamas kitos programos. Jeigu jau turite PhpGedView sistema, jums reikia sukurti naują webtrees sistemą. Galėsite importuoti savo PhpGedView duomenis ir nustatymus vėliau."
 
 #: setup.php:243
 #, php-format
@@ -13837,7 +13838,7 @@ msgstr ""
 
 #: help_text.php:657
 msgid "This folder will be used to store the media files for this family tree."
-msgstr ""
+msgstr "Ši aplanka bus naudota išsaugoti medijos byloms šiam šeimos medžiuj."
 
 #: library/WT/Filter.php:295
 msgid "This form has expired.  Try again."
@@ -14626,7 +14627,7 @@ msgstr "Iš viso įvykių"
 #: modules_v3/fact_sources/report.xml:351
 #: modules_v3/marriage_report/report.xml:111
 msgid "Total families"
-msgstr "iš viso šeimų"
+msgstr "Iš viso šeimų"
 
 #: calendar.php:444 find.php:519 statistics.php:205
 #, php-format
@@ -14635,7 +14636,7 @@ msgstr "Iš viso šeimų: %s"
 
 #: statistics.php:88
 msgid "Total females"
-msgstr "iš viso moterų"
+msgstr "Iš viso moterų"
 
 #: statistics.php:187
 msgid "Total given names"
@@ -14652,7 +14653,7 @@ msgstr "Iš viso vardų"
 #: modules_v3/occupation_report/report.xml:91
 #: modules_v3/relative_ext_report/report.xml:145
 msgid "Total individuals"
-msgstr "iš viso vardų"
+msgstr "Iš viso vardų"
 
 #: calendar.php:436 find.php:494 modules_v3/GEDFact_assistant/module.php:160
 #: statistics.php:84
@@ -14666,7 +14667,7 @@ msgstr "Iš viso gyvenačių"
 
 #: statistics.php:87
 msgid "Total males"
-msgstr "iš viso vyrų"
+msgstr "Iš viso vyrų"
 
 #: statistics.php:209
 msgid "Total marriages"
@@ -14914,7 +14915,7 @@ msgstr "Nepatvirtinti nario"
 #: admin_site_upgrade.php:330
 #, php-format
 msgid "Unzip %s to a temporary folder…"
-msgstr "Išpakuokite %s į laikiną aplanką…"
+msgstr "%s išpakavimas į laikiną aplanką…"
 
 #. I18N: Name of a module
 #: modules_v3/upcoming_events/module.php:32
@@ -15877,7 +15878,7 @@ msgstr "Jauniausias"
 
 #: statistics.php:281
 msgid "Youngest mother"
-msgstr "Jauniausia mama"
+msgstr "Jauniausia motina"
 
 #: includes/authentication.php:282 message.php:127
 msgid "Your Name:"
@@ -16174,72 +16175,72 @@ msgstr "brolis"
 #: includes/functions/functions.php:926
 msgctxt "brother’s wife’s brother"
 msgid "brother-in-law"
-msgstr "svainis arba dieveris"
+msgstr "svainis"
 
 #: includes/functions/functions.php:845
 msgctxt "husband’s brother"
 msgid "brother-in-law"
-msgstr "svainis arba dieveris"
+msgstr "svainis"
 
 #: includes/functions/functions.php:984
 msgctxt "husband’s sister’s husband"
 msgid "brother-in-law"
-msgstr "svainis arba dieveris"
+msgstr "svainis"
 
 #: includes/functions/functions.php:879
 msgctxt "sister’s husband"
 msgid "brother-in-law"
-msgstr "svainis arba dieveris"
+msgstr "svainis"
 
 #: includes/functions/functions.php:1061
 msgctxt "sister’s husband’s brother"
 msgid "brother-in-law"
-msgstr "svainis arba dieveris"
+msgstr "svainis"
 
 #: includes/functions/functions.php:885
 msgctxt "spouse’s brother"
 msgid "brother-in-law"
-msgstr "svainis arba dieveris"
+msgstr "svainis"
 
 #: includes/functions/functions.php:894
 msgctxt "wife’s brother"
 msgid "brother-in-law"
-msgstr "svainis arba dieveris"
+msgstr "svainis"
 
 #: includes/functions/functions.php:1086
 msgctxt "wife’s sister’s husband"
 msgid "brother-in-law"
-msgstr "svainis arba dieveris"
+msgstr "svainis"
 
 #: includes/functions/functions.php:927
 msgctxt "brother’s wife’s sibling"
 msgid "brother/sister-in-law"
-msgstr "svainis/dieveris/svainė/brolienė"
+msgstr "svainis/svainė"
 
 #: includes/functions/functions.php:850
 msgctxt "husband’s sibling"
 msgid "brother/sister-in-law"
-msgstr "svainis/dieveris/svainė/brolienė"
+msgstr "svainis/svainė"
 
 #: includes/functions/functions.php:876
 msgctxt "sibling’s spouse"
 msgid "brother/sister-in-law"
-msgstr "svainis/dieveris/svainė/brolienė"
+msgstr "svainis/svainė"
 
 #: includes/functions/functions.php:1062
 msgctxt "sister’s husband’s sibling"
 msgid "brother/sister-in-law"
-msgstr "svainis/dieveris/svainė/brolienė"
+msgstr "svainis/svainė"
 
 #: includes/functions/functions.php:893
 msgctxt "spouse’s sibling"
 msgid "brother/sister-in-law"
-msgstr "svainis/dieveris/svainė/brolienė"
+msgstr "svainis/svainė"
 
 #: includes/functions/functions.php:899
 msgctxt "wife’s sibling"
 msgid "brother/sister-in-law"
-msgstr "svainis/dieveris/svainė/brolienė"
+msgstr "svainis/svainė"
 
 #: modules_v3/top10_surnames/module.php:162
 msgid "bullet list"
@@ -16251,7 +16252,7 @@ msgstr "laidojimas"
 
 #: library/WT/Gedcom/Tag.php:802
 msgid "by"
-msgstr "Paskutinis keitė"
+msgstr "pakeitė"
 
 #. I18N: Gedcom CAL dates
 #: library/WT/Date.php:236
@@ -16374,7 +16375,7 @@ msgstr "svotas - marčios tėvas"
 #: includes/functions/functions.php:1083
 msgctxt "son’s wife’s mother"
 msgid "daughter-in-law’s mother"
-msgstr "svočia - marčios mama"
+msgstr "svočia - marčios motina"
 
 #: includes/functions/functions.php:1084
 msgctxt "son’s wife’s parent"
@@ -16472,19 +16473,19 @@ msgstr "įjungti"
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: library/WT/Gedcom/Code/Name.php:97
 msgid "estate name"
-msgstr "Dvarininko(ės) vardas"
+msgstr "dvarininko vardas"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: library/WT/Gedcom/Code/Name.php:94
 msgctxt "FEMALE"
 msgid "estate name"
-msgstr "Dvarininkės vardas"
+msgstr "dvarininkės vardas"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: library/WT/Gedcom/Code/Name.php:91
 msgctxt "MALE"
 msgid "estate name"
-msgstr "Dvarininko vardas"
+msgstr "dvarininko vardas"
 
 #. I18N: Gedcom EST dates
 #: library/WT/Date.php:237
@@ -18372,47 +18373,47 @@ msgstr "pusė apskritimo"
 #: includes/functions/functions.php:843
 msgctxt "father’s son"
 msgid "half-brother"
-msgstr "netikras brolis"
+msgstr "įbrolis"
 
 #: includes/functions/functions.php:862
 msgctxt "mother’s son"
 msgid "half-brother"
-msgstr "netikras brolis"
+msgstr "įbrolis"
 
 #: includes/functions/functions.php:871
 msgctxt "parent’s son"
 msgid "half-brother"
-msgstr "netikras brolis"
+msgstr "įbrolis"
 
 #: includes/functions/functions.php:836
 msgctxt "father’s child"
 msgid "half-sibling"
-msgstr "netikras brolis/sesuo"
+msgstr "įbrolis/įseserė"
 
 #: includes/functions/functions.php:854
 msgctxt "mother’s child"
 msgid "half-sibling"
-msgstr "netikras brolis/sesuo"
+msgstr "įbrolis/įseserė"
 
 #: includes/functions/functions.php:864
 msgctxt "parent’s child"
 msgid "half-sibling"
-msgstr "netikras brolis/sesuo"
+msgstr "įbrolis/įseserė"
 
 #: includes/functions/functions.php:837
 msgctxt "father’s daughter"
 msgid "half-sister"
-msgstr "netikra sesuo"
+msgstr "įseserė"
 
 #: includes/functions/functions.php:855
 msgctxt "mother’s daughter"
 msgid "half-sister"
-msgstr "netikra sesuo"
+msgstr "įseserė"
 
 #: includes/functions/functions.php:865
 msgctxt "parent’s daughter"
 msgid "half-sister"
-msgstr "netikra sesuo"
+msgstr "įseserė"
 
 #: statistics.php:611
 msgid "half-year after marriage"
@@ -18577,12 +18578,12 @@ msgstr "maskuotis"
 #: includes/functions/functions.php:856
 msgctxt "mother’s father"
 msgid "maternal grandfather"
-msgstr "senelis iš mamos pusės"
+msgstr "senelis iš motinos pusės"
 
 #: includes/functions/functions.php:858
 msgctxt "mother’s mother"
 msgid "maternal grandmother"
-msgstr "senelė iš mamos pusės"
+msgstr "senelė iš motinos pusės"
 
 #: includes/functions/functions.php:859
 msgctxt "mother’s parent"
@@ -18624,15 +18625,15 @@ msgstr "mėnesis"
 
 #: statistics.php:608
 msgid "months after marriage"
-msgstr "Mėnesiai po vedybų"
+msgstr "mėnesiai po vedybų"
 
 #: statistics.php:609
 msgid "months before and after marriage"
-msgstr "Mėnesiai prieš ir po vedybų"
+msgstr "mėnesiai prieš ir po vedybų"
 
 #: includes/functions/functions.php:729
 msgid "mother"
-msgstr "mama"
+msgstr "motina"
 
 #: includes/functions/functions.php:849
 msgctxt "husband’s mother"
@@ -18882,7 +18883,7 @@ msgstr "procentais"
 #. I18N: button label
 #: admin_trees_places.php:101
 msgid "preview"
-msgstr "Peržiūra"
+msgstr "peržiūra"
 
 #. I18N: button label, previous page
 #: library/WT/I18N.php:674 modules_v3/batch_update/admin_batch_update.php:91
@@ -19211,42 +19212,42 @@ msgstr "sesuo"
 #: includes/functions/functions.php:824
 msgctxt "brother’s wife"
 msgid "sister-in-law"
-msgstr "brolienė arba svainė"
+msgstr "svainė"
 
 #: includes/functions/functions.php:928
 msgctxt "brother’s wife’s sister"
 msgid "sister-in-law"
-msgstr "brolienė arba svainė"
+msgstr "svainė"
 
 #: includes/functions/functions.php:983
 msgctxt "husband’s brother’s wife"
 msgid "sister-in-law"
-msgstr "brolienė arba svainė"
+msgstr "svainė"
 
 #: includes/functions/functions.php:851
 msgctxt "husband’s sister"
 msgid "sister-in-law"
-msgstr "brolienė arba svainė"
+msgstr "svainė"
 
 #: includes/functions/functions.php:1063
 msgctxt "sister’s husband’s sister"
 msgid "sister-in-law"
-msgstr "brolienė arba svainė"
+msgstr "svainė"
 
 #: includes/functions/functions.php:890
 msgctxt "spouse’s sister"
 msgid "sister-in-law"
-msgstr "brolienė arba svainė"
+msgstr "svainė"
 
 #: includes/functions/functions.php:1085
 msgctxt "wife’s brother’s wife"
 msgid "sister-in-law"
-msgstr "brolienė arba svainė"
+msgstr "svainė"
 
 #: includes/functions/functions.php:900
 msgctxt "wife’s sister"
 msgid "sister-in-law"
-msgstr "brolienė arba svainė"
+msgstr "svainė"
 
 #: includes/functions/functions.php:631
 msgctxt "FEMALE"
@@ -19327,7 +19328,7 @@ msgstr "rikiuoti pagal gimimo datą"
 #: modules_v3/death_report/report.xml:9
 #: modules_v3/relative_ext_report/report.xml:7 reportengine.php:521
 msgid "sort by date of death"
-msgstr "rikuoti pagal mirties datą"
+msgstr "rikiuoti pagal mirties datą"
 
 #. I18N: An option in a list-box
 #: edit_interface.php:2202 modules_v3/marriage_report/report.xml:9
@@ -19338,12 +19339,12 @@ msgstr "rikiuoti pagal vedybų datą"
 #. I18N: An option in a list-box
 #: modules_v3/recent_changes/module.php:156
 msgid "sort by date, newest first"
-msgstr "rūšiuoti pagal datą, pirmiausia naujausi"
+msgstr "rikiuoti pagal datą, pirmiausia naujausi"
 
 #. I18N: An option in a list-box
 #: modules_v3/recent_changes/module.php:155
 msgid "sort by date, oldest first"
-msgstr "rūšiuoti pagal datą, pirma seniausi"
+msgstr "rikiuoti pagal datą, pirma seniausi"
 
 #. I18N: An option in a list-box
 #: medialist.php:93
@@ -19521,7 +19522,7 @@ msgstr "dešimtos eilės pusbrolis/pusseserė"
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:79
 msgid "the database connection settings in the file <b>/data/config.ini.php</b> are still correct"
-msgstr "Duomenų bazės ryšio nustatymai <b>/data/config.ini.php</b> faile vis dar teisingi"
+msgstr "duomenų bazės ryšio nustatymai <b>/data/config.ini.php</b> faile vis dar teisingi"
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:80
@@ -19743,7 +19744,7 @@ msgstr "nepatikimi įrodymai"
 #. I18N: button label
 #: admin_trees_places.php:102
 msgid "update"
-msgstr "Atnaujinti"
+msgstr "atnaujinti"
 
 #. I18N: This is the name of the MySQL collation that applies to your language.  A list is available at http://dev.mysql.com/doc/refman/5.0/en/charset-unicode-sets.html
 #: library/WT/I18N.php:185
@@ -19765,29 +19766,29 @@ msgstr "gimė"
 #: includes/authentication.php:272 includes/authentication.php:331
 #: message.php:40
 msgid "webtrees Message"
-msgstr "giminės medžio žinutė"
+msgstr "webtrees žinutė"
 
 #: includes/functions/functions_edit.php:220
 #: includes/functions/functions_edit.php:231
 msgid "webtrees internal messaging"
-msgstr "kilmės medžio vidaus žinučių sistema"
+msgstr "webtrees vidaus žinučių sistema"
 
 #: admin_trees_config.php:376
 msgid "webtrees reply address"
-msgstr "kilmės medžio atsakymų adresas"
+msgstr "webtrees atsakymų adresas"
 
 #: includes/functions/functions_edit.php:222
 #: includes/functions/functions_edit.php:233
 msgid "webtrees sends emails with no storage"
-msgstr "kilmės medis siunčia el. laiškus be atminties"
+msgstr "webtrees siunčia el. laiškus be atminties"
 
 #: includes/functions/functions_print.php:513
 msgid "webtrees wiki"
-msgstr "Kilmės medžio vikis"
+msgstr "webtrees vikis"
 
 #: help_text.php:1306
 msgid "webtrees’ database must be on the same server as PGV’s"
-msgstr "kilmės medžio duomenų bazė turi būti tame pačiame serveryje, kaip ir PGV's"
+msgstr "webtrees duomenų bazė turi būti tame pačiame serveryje, kaip ir PGV's"
 
 #: modules_v3/googlemap/module.php:3888
 msgid "west"
@@ -19824,7 +19825,7 @@ msgstr "taip"
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:81
 msgid "you can connect to the database using other applications, such as phpmyadmin"
-msgstr "Jūs galite prisijungti prie duomenų bazės naudodami kitas programas, tokias kaip phpmyadmin"
+msgstr "jūs galite prisijungti prie duomenų bazės naudodami kitas programas, tokias kaip phpmyadmin"
 
 #: includes/functions/functions.php:782
 msgid "younger brother"
@@ -20018,7 +20019,7 @@ msgstr "…"
 #~ msgstr "Dažniausiai lankomi įrašai"
 
 #~ msgid "Mother’s Birthplace - (Chapman format)"
-#~ msgstr "Mamos gimtinė - (Chapman formatas)"
+#~ msgstr "motinos gimtinė - (Chapman formatas)"
 
 #~ msgid "Name List"
 #~ msgstr "Vardų sąrašas"
