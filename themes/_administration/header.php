@@ -108,7 +108,7 @@ if (WT_USER_IS_ADMIN) {
 echo '<li><ul>';
 //-- gedcom list
 foreach (WT_Tree::getAll() as $tree) {
-	if (userGedcomAdmin(WT_USER_ID, $tree->tree_id)) {
+	if (WT_User::currentUser()->isManager($tree)) {
 		// Add a title="" element, since long tree titles are cropped
 		echo
 			'<li><span><a ', (WT_SCRIPT_NAME=='admin_trees_config.php' && WT_GED_ID==$tree->tree_id ? 'class="current" ' : ''), 'href="admin_trees_config.php?ged='.$tree->tree_name_url.'" title="', WT_Filter::escapeHtml($tree->tree_title), '" dir="auto">', $tree->tree_title_html,

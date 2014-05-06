@@ -41,14 +41,14 @@ class WT_Controller_Ajax extends WT_Controller_Base {
 	}
 
 	// Restrict access
-	public function requireManagerLogin($ged_id=WT_GED_ID) {
-		if (
-			$ged_id==WT_GED_ID && !WT_USER_GEDCOM_ADMIN ||
-			$ged_id!=WT_GED_ID && !userGedcomAdmin(WT_USER_ID, $ged_id)
-		) {
+	public function requireManagerLogin() {
+		global $WT_TREE;
+
+		if (!WT_User::currentUser()->isManager($WT_TREE)) {
 			header('HTTP/1.0 403 Access Denied');
 			exit;
 		}
+
 		return $this;
 	}
 }

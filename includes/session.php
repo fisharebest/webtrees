@@ -367,7 +367,7 @@ session_set_save_handler(
 			" ip_address   = VALUES(ip_address)," .
 			" session_data = VALUES(session_data)," .
 			" session_time = CURRENT_TIMESTAMP - SECOND(CURRENT_TIMESTAMP)"
-		)->execute(array($id, WT_USER_ID, $WT_REQUEST->getClientIp(), $data));
+		)->execute(array($id, (int)WT_User::currentUser()->getUserId(), $WT_REQUEST->getClientIp(), $data));
 		return true;
 	},
 	// destroy
@@ -417,9 +417,9 @@ if (!$SEARCH_SPIDER && !$WT_SESSION->initiated) {
 }
 
 // Who are we?
-define('WT_USER_ID',       getUserId());
-define('WT_USER_NAME',     getUserName());
-define('WT_USER_IS_ADMIN', userIsAdmin(WT_USER_ID));
+define('WT_USER_ID',       WT_User::currentUser()->getUserId());
+define('WT_USER_NAME',     WT_User::currentUser()->getUserName());
+define('WT_USER_IS_ADMIN', WT_User::currentUser()->isAdmin());
 
 // Set the active GEDCOM
 if (isset($_REQUEST['ged'])) {
@@ -449,10 +449,10 @@ if ($WT_TREE) {
 	define('WT_GEDURL',            $WT_TREE->tree_name_url);
 	define('WT_TREE_TITLE',        $WT_TREE->tree_title_html);
 	define('WT_IMPORTED',          $WT_TREE->imported);
-	define('WT_USER_GEDCOM_ADMIN', WT_USER_IS_ADMIN     || userGedcomAdmin(WT_USER_ID, WT_GED_ID));
-	define('WT_USER_CAN_ACCEPT',   $WT_TREE->canAcceptChanges(WT_USER_ID));
-	define('WT_USER_CAN_EDIT',     WT_USER_CAN_ACCEPT   || userCanEdit    (WT_USER_ID, WT_GED_ID));
-	define('WT_USER_CAN_ACCESS',   WT_USER_CAN_EDIT     || userCanAccess  (WT_USER_ID, WT_GED_ID));
+	define('WT_USER_GEDCOM_ADMIN', WT_User::currentUser()->isManager($WT_TREE));
+	define('WT_USER_CAN_ACCEPT',   WT_User::currentUser()->isModerator($WT_TREE));
+	define('WT_USER_CAN_EDIT',     WT_User::currentUser()->isEditor($WT_TREE));
+	define('WT_USER_CAN_ACCESS',   WT_User::currentUser()->isMember($WT_TREE));
 	define('WT_USER_GEDCOM_ID',    $WT_TREE->userPreference(WT_USER_ID, 'gedcomid'));
 	define('WT_USER_ROOT_ID',      $WT_TREE->userPreference(WT_USER_ID, 'rootid') ? $WT_TREE->userPreference(WT_USER_ID, 'rootid') : WT_USER_GEDCOM_ID);
 	define('WT_USER_PATH_LENGTH',  $WT_TREE->userPreference(WT_USER_ID, 'RELATIONSHIP_PATH_LENGTH'));
@@ -506,13 +506,14 @@ if (WT_USER_ID) {
 define('WT_CLIENT_JD', 2440588 + (int)(WT_CLIENT_TIMESTAMP/86400));
 
 // Application configuration data - things that aren’t (yet?) user-editable
-require WT_ROOT.'includes/config_data.php';
+require WT_ROOT . 'includes/config_data.php';
 
 // If we are logged in, and logout=1 has been added to the URL, log out
 // If we were logged in, but our account has been deleted, log out.
-if (WT_USER_ID && (WT_Filter::getBool('logout') || !WT_USER_NAME)) {
-	userLogout(WT_USER_ID);
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
+if (WT_Filter::getBool('logout')) {
+	AddToLog('Logout ' . WT_User::currentUser()->getUserName(), 'auth');
+	WT_User::logout();
+	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH);
 	exit;
 }
 

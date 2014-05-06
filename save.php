@@ -172,39 +172,37 @@ case 'user':
 	// ID format:  user-{column_name}-{user_id}
 	//////////////////////////////////////////////////////////////////////////////
 
+	$user = new WT_User($id2);
+
 	// Authorisation
-	if (!(WT_USER_IS_ADMIN || WT_USER_ID && WT_USER_ID==$id2)) {
+	if (!WT_User::currentUser()->isAdmin() && WT::currentUser() != $user) {
 		fail();
 	}
 
 	// Validation
 	switch ($id1) {
 	case 'password':
+		$user->setPassword($value);
 		// The password will be displayed as "click to edit" on screen.
 		// Accept the update, but pretend to fail.  This will leave the "click to edit" on screen
-		if ($value) {
-			set_user_password($id2, $value);
-		}
 		fail();
+		break;
 	case 'user_name':
+		$user->setUserName($value);
+		break;
 	case 'real_name':
+		$user->setRealName($value);
+		break;
 	case 'email':
+		$user->setEmail($value);
 		break;
 	default:
 		// An unrecognized setting
 		fail();
+		break;
 	}
-
-	// Authorised and valid - make update
-	try {
-		WT_DB::prepare("UPDATE `##user` SET {$id1}=? WHERE user_id=?")
-			->execute(array($value, $id2));
-		AddToLog('User ID: '.$id2. ' changed '.$id1.' to '.$value, 'auth');
-		ok();
-	} catch (PDOException $ex) {
-		// Duplicate email or username?
-		fail();
-	}
+	ok();
+	break;
 
 case 'user_gedcom_setting':
 	//////////////////////////////////////////////////////////////////////////////
@@ -212,26 +210,20 @@ case 'user_gedcom_setting':
 	// ID format:  user_gedcom_setting-{user_id}-{gedcom_id}-{setting_name}
 	//////////////////////////////////////////////////////////////////////////////
 
-	// Authorisation
-	if (!(WT_USER_IS_ADMIN || userGedcomAdmin($id2, $id3))) {
-		fail();
-	}
-
-	// Validation
 	switch($id3) {
 	case 'rootid':
 	case 'gedcomid':
 	case 'canedit':
 	case 'RELATIONSHIP_PATH_LENGTH':
-		break;
-	default:
-		// An unrecognized setting
-		fail();
+		$tree = WT_Tree::get($id2);
+		if (WT_User::currentUser()->isManager($tree)) {
+			$tree->userPreference($id1, $id3, $value);
+			ok();
+			break;
+		}
 	}
-
-	// Authorised and valid - make update
-	WT_Tree::get($id2)->userPreference($id1, $id3, $value);
-	ok();
+	fail();
+	break;
 
 case 'user_setting':
 	//////////////////////////////////////////////////////////////////////////////

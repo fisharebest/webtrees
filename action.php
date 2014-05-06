@@ -180,20 +180,21 @@ case 'delete-source':
 
 case 'delete-user':
 	$user_id = WT_Filter::postInteger('user_id');
+	$user = new WT_User($user_id);
 
-	if (WT_USER_IS_ADMIN && WT_USER_ID != $user_id) {
-		AddToLog('deleted user ->' . get_user_name($user_id) . '<-', 'auth');
-		delete_user($user_id);
+	if (WT_USER_IS_ADMIN && WT_USER_ID != $user->getUserId()) {
+		AddToLog('Deleted user: ' . $user->getUserName(), 'auth');
+		$user->delete();
 	}
 	break;
 
 case 'masquerade':
 	$user_id   = WT_Filter::postInteger('user_id');
-	$all_users = get_all_users('ASC', 'username');
+	$user = new WT_User($user_id);
 
-	if (WT_USER_IS_ADMIN && WT_USER_ID != $user_id && array_key_exists($user_id, $all_users)) {
-		AddToLog('masquerade as user ->' . get_user_name($user_id) . '<-', 'auth');
-		$WT_SESSION->wt_user = $user_id;
+	if (WT_USER_IS_ADMIN && WT_USER_ID != $user->getUserId() && null != $user->getUserId() && ) {
+		AddToLog('Masquerade as user: ' . $user->getUserName(), 'auth');
+		$WT_SESSION->wt_user = $user->getUserId();
 		Zend_Session::regenerateId();
 		Zend_Session::writeClose();
 	} else {
