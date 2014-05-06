@@ -142,7 +142,7 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Tab {
 				$submenu->addOnclick("return window.open('addmedia.php?action=editmedia&amp;pid=".$media->getXref()."', '_blank', edit_window_specs);");
 				$submenu->addClass("submenuitem");
 				$menu->addSubMenu($submenu);
-				if (WT_USER_IS_ADMIN) {
+				if (\WT\Auth::isAdmin()) {
 					// Manage Links
 					if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
 						$submenu = new WT_Menu(WT_I18N::translate('Manage links'));

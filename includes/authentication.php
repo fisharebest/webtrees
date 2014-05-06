@@ -33,174 +33,15 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-// authenticate a username and password
-//
-// On success, store the user-id in the session and return it
-// On failure, return an error code
-function authenticateUser($user_name, $password) {
-	global $WT_SESSION;
-
-	// If no cookies are available, then we cannot log in.
-	if (!isset($_COOKIE[WT_SESSION_NAME])) {
-		return -5;
-	}
-
-	if ($user_id=get_user_id($user_name)) {
-		if (check_user_password($user_id, $password)) {
-			$is_admin=get_user_setting($user_id, 'canadmin');
-			$verified=get_user_setting($user_id, 'verified');
-			$approved=get_user_setting($user_id, 'verified_by_admin');
-			if ($verified && $approved || $is_admin) {
-				// Whenever we change our authorisation level change the session ID
-				Zend_Session::regenerateId();
-				$WT_SESSION->wt_user = $user_id;
-				AddToLog('Login successful ->'.$user_name.'<-', 'auth');
-				return $user_id;
-			} elseif (!$is_admin && !$verified) {
-				AddToLog('Login failed ->'.$user_name.'<- not verified', 'auth');
-				return -1;
-			} elseif (!$is_admin && !$approved) {
-				AddToLog('Login failed ->'.$user_name.'<- not approved', 'auth');
-				return -2;
-			}
-		} else {
-			AddToLog('Login failed ->'.$user_name.'<- bad password', 'auth');
-			return -3;
-		}
-	}
-	AddToLog('Login failed ->'.$user_name.'<- bad username', 'auth');
-	return -4;
-}
-
 /**
- * logs a user out of the system
- * @param string $user_id logout a specific user
- */
-function userLogout($user_id) {
-	AddToLog('Logout '.getUserName($user_id), 'auth');
-	// If we are logging ourself out, then end our session too.
-	if (WT_USER_ID==$user_id) {
-		Zend_Session::destroy();
-	}
-}
-
-/**
- * get the current user’s ID and Name
+ * Used in custom theme headers...
  *
- * Returns 0 and NULL if we are not logged in.
- *
- * If you want to embed webtrees within a content management system, you would probably
- * rewrite these functions to extract the data from the parent system, and then
- * populate webtrees' user/user_setting/user_gedcom_setting tables as appropriate.
- *
+ * @deprecated
  */
-
-function getUserId() {
-	global $WT_SESSION;
-
-	return (int)($WT_SESSION->wt_user);
-}
-
-function getUserName() {
-	if (getUserID()) {
-		return get_user_name(getUserID());
-	} else {
-		return null;
-	}
-}
-
-/**
- * check if given username is an admin
- */
-function userIsAdmin($user_id=WT_USER_ID) {
-	if ($user_id) {
-		return get_user_setting($user_id, 'canadmin');
-	} else {
-		return false;
-	}
-}
-
-/**
- * check if given username is an admin for the given gedcom
- */
-function userGedcomAdmin($user_id=WT_USER_ID, $ged_id=WT_GED_ID) {
-	if ($user_id) {
-		return WT_Tree::get($ged_id)->userPreference($user_id, 'canedit')=='admin' || userIsAdmin($user_id);
-	} else {
-		return false;
-	}
-}
-
-/**
- * check if the given user has access privileges on this gedcom
- */
-function userCanAccess($user_id=WT_USER_ID, $ged_id=WT_GED_ID) {
-	if ($user_id) {
-		if (userIsAdmin($user_id)) {
-			return true;
-		} else {
-			$tmp=WT_Tree::get($ged_id)->userPreference($user_id, 'canedit');
-			return $tmp=='admin' || $tmp=='accept' || $tmp=='edit' || $tmp=='access';
-		}
-	} else {
-		return false;
-	}
-}
-
-/**
- * check if the given user has write privileges for the given gedcom
- */
-function userCanEdit($user_id=WT_USER_ID, $ged_id=WT_GED_ID) {
-
-	if ($user_id) {
-		if (userIsAdmin($user_id)) {
-			return true;
-		} else {
-			$tmp=WT_Tree::get($ged_id)->userPreference($user_id, 'canedit');
-			return $tmp=='admin' || $tmp=='accept' || $tmp=='edit';
-		}
-	} else {
-		return false;
-	}
-}
-
-// Get the full name for a user
 function getUserFullName($user_id) {
-	return WT_DB::prepare("SELECT SQL_CACHE real_name FROM `##user` WHERE user_id=?")->execute(array($user_id))->fetchOne();
+	return \WT\User::find($user_id)->getRealName();
 }
 
-// Set the full name for a user
-function setUserFullName($user_id, $real_name) {
-	return WT_DB::prepare("UPDATE `##user` SET real_name=? WHERE user_id=?")->execute(array($real_name, $user_id));
-}
-
-// Get the email for a user
-function getUserEmail($user_id) {
-	return WT_DB::prepare("SELECT SQL_CACHE email FROM `##user` WHERE user_id=?")->execute(array($user_id))->fetchOne();
-}
-
-// Set the email for a user
-function setUserEmail($user_id, $email) {
-	return WT_DB::prepare("UPDATE `##user` SET email=? WHERE user_id=?")->execute(array($email, $user_id));
-}
-
-// add a message into the log-file
-// Note that while transfering data from PhpGedView to WT, we delete the WT users and
-// replace with PhpGedView users.  Hence the current user_id is not always available.
-function AddToLog($log_message, $log_type='error') {
-	global $WT_REQUEST;
-	WT_DB::prepare(
-		"INSERT INTO `##log` (log_type, log_message, ip_address, user_id, gedcom_id) VALUES (?, ?, ?, ?, ?)"
-	)->execute(array(
-		$log_type,
-		$log_message,
-		$WT_REQUEST->getClientIp(),
-		defined('WT_USER_ID') && WT_USER_ID && WT_SCRIPT_NAME!='admin_pgv_to_wt.php' ? WT_USER_ID : null,
-		defined('WT_GED_ID') ? WT_GED_ID : null
-	));
-}
-
-//----------------------------------- AddToSearchLog
 //-- requires a string to add into the searchlog-file
 function AddToSearchLog($log_message, $geds) {
 	global $WT_REQUEST;
@@ -220,11 +61,11 @@ function AddToSearchLog($log_message, $geds) {
 function addMessage($message) {
 	global $WT_TREE, $WT_REQUEST;
 
-	$user_id_from=get_user_id($message['from']);
-	$user_id_to  =get_user_id($message['to']);
+	$sender    = \WT\User::findByIdentifier($message['from']);
+	$recipient = \WT\User::findByIdentifier($message['to']);
 
 	// Switch to the "from" user’s language
-	WT_I18N::init(get_user_setting($user_id_from, 'language'));
+	WT_I18N::init($sender->getSetting('language'));
 
 	// Setup the message body for the "from" user
 	$copy_email = $message['body'];
@@ -234,19 +75,19 @@ function addMessage($message) {
 			WT_I18N::translate('This message was sent while viewing the following URL: ') . $message['url'] . WT_Mail::EOL;
 	}
 	$copy_email .= WT_Mail::auditFooter();
-	if (!$user_id_from) {
+	if (!$sender) {
 		// Message from a visitor
 		$from = $message['from'];
 		$fromFullName = $message['from_name'];
 		$copy_email = WT_I18N::translate('You sent the following message to a webtrees administrator:') . WT_Mail::EOL . WT_Mail::EOL . WT_Mail::EOL . $copy_email;
 	} else {
 		// Message from a logged-in user
-		$from = getUserEmail($user_id_from);
-		$fromFullName = getUserFullName($user_id_from);
-		$copy_email = WT_I18N::translate('You sent the following message to a webtrees user:') . ' ' . getUserFullName($user_id_to) . WT_Mail::EOL . WT_Mail::EOL . $copy_email;
+		$from = $sender->getEmail();
+		$fromFullName = $sender->getRealName();
+		$copy_email = WT_I18N::translate('You sent the following message to a webtrees user:') . ' ' . $recipient->getRealName() . WT_Mail::EOL . WT_Mail::EOL . $copy_email;
 	}
 	if ($message['method']!='messaging') {
-		if (!$user_id_from) {
+		if (!$sender) {
 			$original_email = WT_I18N::translate('The following message has been sent to your webtrees user account from ');
 			if (!empty($message['from_name'])) {
 				$original_email .= $message['from_name'] . WT_Mail::EOL . WT_Mail::EOL . $message['body'];
@@ -276,14 +117,14 @@ function addMessage($message) {
 	}
 
 	//-- Load the "to" users language
-	WT_I18N::init(get_user_setting($user_id_to, 'language'));
+	WT_I18N::init($recipient->getSetting('language'));
 	if (isset($message['from_name'])) {
 		$message['body'] =
 			WT_I18N::translate('Your Name:') . ' ' . $message['from_name'] . WT_Mail::EOL .
 			WT_I18N::translate('Email address:')." ".$message['from_email'] . WT_Mail::EOL . WT_Mail::EOL .
 			$message['body'];
 	}
-	if (!userIsAdmin($user_id_from)) {
+	if (!$sender->isAdmin()) {
 		if (!empty($message['url'])) {
 			$message['body'] .=
 				WT_Mail::EOL . WT_Mail::EOL .
@@ -300,38 +141,37 @@ function addMessage($message) {
 			->execute(array(
 				$message['from'],
 				$WT_REQUEST->getClientIp(),
-				get_user_id($message['to']),
+				$recipient->getUserId(),
 				$message['subject'],
 				str_replace('<br>', '', $message['body']) // Remove the <br> that we added for the external email.  TODO: create different messages
 			));
 	}
 	if ($message['method']!='messaging') {
-		if (!$user_id_from) {
+		if (!$sender) {
 			$original_email = WT_I18N::translate('The following message has been sent to your webtrees user account from ');
 			if (!empty($message['from_name'])) {
-				$original_email .= $message['from_name'] . WT_Mail::EOL . WT_Mail::EOL . $message['body'];
+				$original_email .= $message['from_name'];
 			} else {
-				$original_email .= $from . WT_Mail::EOL . WT_Mail::EOL . $message['body'];
+				$original_email .= $from;
 			}
 		} else {
 			$original_email = WT_I18N::translate('The following message has been sent to your webtrees user account from ');
-			$original_email .= $fromFullName . WT_Mail::EOL . WT_Mail::EOL . $message['body'];
+			$original_email .= $fromFullName;
 		}
-		if (getUserEmail($user_id_to)) {
-			WT_Mail::send(
-				// From:
-				$WT_TREE,
-				// To:
-				getUserEmail($user_id_to),
-				getUserFullName($user_id_to),
-				// Reply-To:
-				$from,
-				$fromFullName,
-				// Message
-				WT_I18N::translate('webtrees Message') . ' - ' . $message['subject'],
-				$original_email
-			);
-		}
+		$original_email .= WT_Mail::EOL . WT_Mail::EOL . $message['body'];
+		WT_Mail::send(
+			// From:
+			$WT_TREE,
+			// To:
+			$recipient->getEmail(),
+			$recipient->getRealName(),
+			// Reply-To:
+			$from,
+			$fromFullName,
+			// Message
+			WT_I18N::translate('webtrees Message') . ' - ' . $message['subject'],
+			$original_email
+		);
 	}
 
 	WT_I18N::init(WT_LOCALE); // restore language settings if needed

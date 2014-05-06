@@ -201,7 +201,7 @@ function textlength($t, $mxl, $text) {
 function imagettftextErrorHandler($errno, $errstr, $errfile, $errline) {
 	global $useTTF, $serverFilename;
 	// log the error
-	AddToLog("Media Firewall error: >" . $errstr . "< in file >" . $serverFilename . "<", 'error');
+	\WT\Log::addErrorLog("Media Firewall error: >" . $errstr . "< in file >" . $serverFilename . "<");
 
 	// change value of useTTF to false so the fallback watermarking can be used.
 	$useTTF = false;
@@ -361,7 +361,7 @@ if ($generatewatermark) {
 
 	} else {
 		// this image is defective.  log it
-		AddToLog("Media Firewall error: >" . WT_I18N::translate('This media file is broken and cannot be watermarked') . "< in file >" . $serverFilename . "< memory used: " . memory_get_usage(), 'media');
+		\WT\Log::addMediaLog("Media Firewall error: >" . WT_I18N::translate('This media file is broken and cannot be watermarked') . "< in file >" . $serverFilename . "< memory used: " . memory_get_usage());
 
 		// set usewatermark to false so image will simply be passed through below
 		$usewatermark = false;

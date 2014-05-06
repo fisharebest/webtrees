@@ -27,7 +27,7 @@ require WT_ROOT.'includes/functions/functions_edit.php';
 
 $controller=new WT_Controller_Simple();
 $controller
-	->requireAcceptLogin()
+	->restrictAccess(\WT\Auth::isModerator())
 	->setPageTitle(WT_I18N::translate('Pending changes'))
 	->pageHeader();
 
@@ -87,7 +87,7 @@ case 'accept':
 			update_record($change->new_gedcom, $gedcom_id, false);
 		}
 		WT_DB::prepare("UPDATE `##change` SET status='accepted' WHERE change_id=?")->execute(array($change->change_id));
-		AddToLog("Accepted change {$change->change_id} for {$change->xref} / {$change->gedcom_name} into database", 'edit');
+		\WT\Log::addEditLog("Accepted change {$change->change_id} for {$change->xref} / {$change->gedcom_name} into database");
 	}
 	break;
 case 'undoall':
@@ -114,7 +114,7 @@ case 'acceptall':
 			update_record($change->new_gedcom, $change->gedcom_id, false);
 		}
 		WT_DB::prepare("UPDATE `##change` SET status='accepted' WHERE change_id=?")->execute(array($change->change_id));
-		AddToLog("Accepted change {$change->change_id} for {$change->xref} / {$change->gedcom_name} into database", 'edit');
+		\WT\Log::addEditLog("Accepted change {$change->change_id} for {$change->xref} / {$change->gedcom_name} into database");
 	}
 	break;
 }

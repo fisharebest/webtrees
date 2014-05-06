@@ -179,23 +179,20 @@ case 'delete-source':
 	break;
 
 case 'delete-user':
-	$user_id = WT_Filter::postInteger('user_id');
+	$user = \WT\User::find(WT_Filter::postInteger('user_id'));
 
-	if (WT_USER_IS_ADMIN && WT_USER_ID != $user_id) {
-		AddToLog('deleted user ->' . get_user_name($user_id) . '<-', 'auth');
-		delete_user($user_id);
+	if ($user && \WT\Auth::isAdmin() && \WT\Auth::user() !== $user) {
+		\WT\Log::addAuthenticationLog('Deleted user: ' . $user->getUserName());
+		$user->delete();
 	}
 	break;
 
 case 'masquerade':
-	$user_id   = WT_Filter::postInteger('user_id');
-	$all_users = get_all_users('ASC', 'username');
+	$user = \WT\User::find(WT_Filter::postInteger('user_id'));
 
-	if (WT_USER_IS_ADMIN && WT_USER_ID != $user_id && array_key_exists($user_id, $all_users)) {
-		AddToLog('masquerade as user ->' . get_user_name($user_id) . '<-', 'auth');
-		$WT_SESSION->wt_user = $user_id;
-		Zend_Session::regenerateId();
-		Zend_Session::writeClose();
+	if ($user && \WT\Auth::isAdmin() && \WT\Auth::user() !== $user) {
+		\WT\Log::addAuthenticationLog('Masquerade as user: ' . $user->getUserName());
+		\WT\Auth::login($user);
 	} else {
 		header('HTTP/1.0 406 Not Acceptable');
 	}
@@ -246,9 +243,9 @@ case 'theme':
 	$theme_dir=WT_Filter::post('theme');
 	if (WT_Site::preference('ALLOW_USER_THEMES') && in_array($theme_dir, get_theme_names())) {
 		$WT_SESSION->theme_dir=$theme_dir;
-		if (WT_USER_ID) {
+		if (\WT\Auth::id()) {
 			// Remember our selection
-			set_user_setting(WT_USER_ID, 'theme', $theme_dir);
+			\WT\Auth::user()->setSetting('theme', $theme_dir);
 		}
 	} else {
 		// Request for a non-existant theme.

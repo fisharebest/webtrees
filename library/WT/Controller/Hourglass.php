@@ -21,11 +21,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 class WT_Controller_Hourglass extends WT_Controller_Chart {
 	var $pid = "";
 
@@ -212,7 +207,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 			$tablealign = "left";
 			$otablealign = "right";
 		}
-		
+
 		//-- put a space between families on the last generation
 		if ($count==$this->dgenerations-1) {
 			if (isset($lastGenSecondFam)) echo "<br>";

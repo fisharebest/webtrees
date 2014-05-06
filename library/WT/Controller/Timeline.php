@@ -21,11 +21,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 class WT_Controller_Timeline extends WT_Controller_Page {
 	var $bheight = 30;
 	var $placements = array();
@@ -141,13 +136,11 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 				if (!$this->people[$i]->canShow()) {
 					if ($this->people[$i]->canShowName()) {
 						echo "&nbsp;<a href=\"".$this->people[$i]->getHtmlUrl()."\">".$this->people[$i]->getFullName()."</a>";
-						print_privacy_error();
+						echo '<div class="error">', WT_I18N::translate('This information is private and cannot be shown.'), '</div>';
 						echo "<br>";
 						$printed = true;
-					}
-					else if (!$printed) {
-						print_privacy_error();
-						echo "<br>";
+					} elseif (!$printed) {
+						echo '<div class="error">', WT_I18N::translate('This information is private and cannot be shown.'), '</div>';
 					}
 				}
 			}

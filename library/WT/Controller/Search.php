@@ -21,11 +21,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 class WT_Controller_Search extends WT_Controller_Page {
 	public $action;
 	// TODO: decide if these variables are public/private/protected (or unused)
@@ -386,7 +381,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 			return;
 		}
 
-		AddToLog("Search And Replace old:".$oldquery." new:".$this->replace, 'edit');
+		\WT\Log::addEditLog("Search And Replace old:".$oldquery." new:".$this->replace);
 		$manual_save = true;
 		// Include edit functions.
 		require_once WT_ROOT.'includes/functions/functions_edit.php';

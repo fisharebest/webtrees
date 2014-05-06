@@ -23,11 +23,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 /**
  * Main WT Report Class for PDF
  */
@@ -91,8 +86,8 @@ class WT_Report_PDF extends WT_Report_Base {
 		// Set the document information
 		// Only admin should see the version number
 		$appversion = WT_WEBTREES;
-		if (WT_USER_IS_ADMIN) {
-			$appversion .= " " . WT_VERSION;
+		if (\WT\Auth::isAdmin()) {
+			$appversion .= " ".WT_VERSION;
 		}
 		$this->pdf->SetCreator($appversion . " (" . parent::wt_url . ")");
 		// Not implemented yet - WT_Report_Base::setup()
@@ -115,7 +110,9 @@ class WT_Report_PDF extends WT_Report_Base {
 	/**
 	 * Add an element - WT_Report_PDF
 	 *
-	 * @param object|string &$element Object or string
+	 * @param object|string $element Object or string
+	 *
+	 * @return int
 	 */
 	function addElement($element) {
 		if ($this->processing == "B") {
@@ -431,7 +428,7 @@ class PDF extends TCPDF {
 	/**
 	 * Add an element to the Header -PDF
 	 *
-	 * @param object|string &$element
+	 * @param object|string $element
 	 *
 	 * @return int The number of the Header elements
 	 */
@@ -444,7 +441,7 @@ class PDF extends TCPDF {
 	/**
 	 * Add an element to the Page Header -PDF
 	 *
-	 * @param object|string &$element
+	 * @param object|string $element
 	 *
 	 * @return int The number of the Page Header elements
 	 */
@@ -457,7 +454,7 @@ class PDF extends TCPDF {
 	/**
 	 * Add an element to the Body -PDF
 	 *
-	 * @param object|string &$element
+	 * @param object|string $element
 	 *
 	 * @return int The number of the Body elements
 	 */
@@ -470,7 +467,7 @@ class PDF extends TCPDF {
 	/**
 	 * Add an element to the Footer -PDF
 	 *
-	 * @param object|string &$element
+	 * @param object|string $element
 	 *
 	 * @return int The number of the Footer elements
 	 */
@@ -613,7 +610,7 @@ class PDF extends TCPDF {
 	/**
 	 * Checks the Footnote and numbers them
 	 *
-	 * @param object &$footnote
+	 * @param object $footnote
 	 *
 	 * @return boolen false if not numbered befor | object if already numbered
 	 */
@@ -722,7 +719,9 @@ class CellPDF extends Cell {
 	/**
 	 * PDF Cell renderer
 	 *
-	 * @param PDF &$pdf
+	 * @param PDF $pdf
+	 *
+	 * @return void
 	 */
 	function render(&$pdf) {
 		/**
@@ -929,7 +928,9 @@ class TextBoxPDF extends TextBox {
 	/**
 	 * PDF Text Box renderer
 	 *
-	 * @param PDF &$pdf
+	 * @param PDF $pdf
+	 *
+	 * @return bool|int
 	 */
 	function render(&$pdf) {
 
@@ -1262,7 +1263,9 @@ class TextPDF extends Text {
 	/**
 	 * PDF Text renderer
 	 *
-	 * @param PDF &$pdf
+	 * @param PDF $pdf
+	 *
+	 * @return void
 	 */
 	function render(&$pdf) {
 		// Set up the style
@@ -1306,7 +1309,7 @@ class TextPDF extends Text {
 	 *
 	 * The height is already calculated in getWidth()
 	 *
-	 * @param PDF &$pdf
+	 * @param PDF $pdf
 	 *
 	 * @return float 0
 	 */
@@ -1317,7 +1320,7 @@ class TextPDF extends Text {
 	/**
 	 * Splits the text into lines if necessary to fit into a giving cell
 	 *
-	 * @param PDF &$pdf
+	 * @param PDF $pdf
 	 *
 	 * @return array
 	 */
@@ -1413,7 +1416,9 @@ class FootnotePDF extends Footnote {
 	/**
 	 * PDF Footnotes number renderer
 	 *
-	 * @param PDF &$pdf
+	 * @param PDF $pdf
+	 *
+	 * @return void
 	 */
 	function render(&$pdf) {
 		$pdf->setCurrentStyle("footnotenum");
@@ -1424,7 +1429,9 @@ class FootnotePDF extends Footnote {
 	 * Write the Footnote text
 	 * Uses style name "footnote" by default
 	 *
-	 * @param PDF &$pdf
+	 * @param PDF $pdf
+	 *
+	 * @return void
 	 */
 	function renderFootnote(&$pdf) {
 		if ($pdf->getCurrentStyle() != $this->styleName) {
@@ -1448,7 +1455,7 @@ class FootnotePDF extends Footnote {
 	/**
 	 * Returns the height in points of the Footnote element
 	 *
-	 * @param PDF &$pdf
+	 * @param PDF $pdf
 	 *
 	 * @return float $h
 	 */
@@ -1568,6 +1575,8 @@ class PageHeaderPDF extends PageHeader {
 	 * PageHeader element renderer
 	 *
 	 * @param PDF $pdf
+	 *
+	 * @return void
 	 */
 	function render(&$pdf) {
 		$pdf->clearPageHeader();
@@ -1590,6 +1599,8 @@ class ImagePDF extends Image {
 	 * PDF image renderer
 	 *
 	 * @param PDF $pdf
+	 *
+	 * @return void
 	 */
 	function render(&$pdf) {
 		global $lastpicbottom, $lastpicpage, $lastpicleft, $lastpicright;
@@ -1697,6 +1708,8 @@ class LinePDF extends Line {
 	 * PDF line renderer
 	 *
 	 * @param PDF $pdf
+	 *
+	 * @return void
 	 */
 	function render(&$pdf) {
 		if ($this->x1 == ".") {
