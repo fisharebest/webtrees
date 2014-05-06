@@ -1274,6 +1274,10 @@ th {
 	width: 99%;
 }
 
+div.fact_SHARED_NOTE {
+	clear:both
+}
+
 .facts_label {
 	color: #006;
 	background-color: #c3dfff;
@@ -5399,7 +5403,7 @@ a.icon-uarrow:hover {
 
 [dir=rtl] #cboxSlideshow {
 	right: 57px;
-	left: 0;
+	left: auto;
 }
 
 /* Census assistant module */
