@@ -247,9 +247,8 @@ class WT_Controller_Clippings {
 				$this->media_list = $media;
 			}
 			$filetext .= "0 @WEBTREES@ SOUR\n1 TITL ".WT_SERVER_NAME.WT_SCRIPT_PATH."\n";
-			if ($user_id = get_gedcom_setting(WT_GED_ID, 'CONTACT_EMAIL')) {
-				$user = new WT_User($user_id);
-				$filetext .= "1 AUTH " . $user->getRealName()) . "\n";
+			if ($user_id=get_gedcom_setting(WT_GED_ID, 'CONTACT_EMAIL')) {
+				$filetext .= "1 AUTH " . getUserFullName($user_id) . "\n";
 			}
 			$filetext .= "0 TRLR\n";
 			//-- make sure the preferred line endings are used

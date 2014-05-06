@@ -118,8 +118,11 @@ class WT_Tree {
 	}
 
 	// Can a user accept changes for this tree?
-	public function canAcceptChanges(WT_User $user) {
-		return $user->isAdmin() || $user->isModerator($this);
+	public function canAcceptChanges($user_id) {
+		return
+			userIsAdmin($user_id) ||
+			$this->userPreference($user_id, 'canedit')=='admin' ||
+			$this->userPreference($user_id, 'canedit')=='accept';
 	}
 
 	// Fetch all the trees that we have permission to access.

@@ -141,11 +141,13 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 				if (!$this->people[$i]->canShow()) {
 					if ($this->people[$i]->canShowName()) {
 						echo "&nbsp;<a href=\"".$this->people[$i]->getHtmlUrl()."\">".$this->people[$i]->getFullName()."</a>";
-						echo '<div class="error">', WT_I18N::translate('This information is private and cannot be shown.'), '</div>';
+						print_privacy_error();
 						echo "<br>";
 						$printed = true;
-					} elseif (!$printed) {
-						echo '<div class="error">', WT_I18N::translate('This information is private and cannot be shown.'), '</div>';
+					}
+					else if (!$printed) {
+						print_privacy_error();
+						echo "<br>";
 					}
 				}
 			}

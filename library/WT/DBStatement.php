@@ -24,11 +24,6 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-/**
- * Class WT_DB
- *
- * @method WT_DBStatement execute(array|null)
- */
 class WT_DBStatement {
 	//////////////////////////////////////////////////////////////////////////////
 	// CONSTRUCTION

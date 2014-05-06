@@ -41,7 +41,7 @@ class user_welcome_WT_Module extends WT_Module implements WT_Module_Block {
 	public function getBlock($block_id, $template=true, $cfg=null) {
 		$id=$this->getName().$block_id;
 		$class=$this->getName().'_block';
-		$title = '<span dir="auto">' . /* I18N: A greeting; %s is the user’s name */ WT_I18N::translate('Welcome %s', WT_User::currentUser()->getRealName()) . '</span>';
+		$title = '<span dir="auto">'./* I18N: A greeting; %s is the user’s name */ WT_I18N::translate('Welcome %s', getUserFullName(WT_USER_ID)).'</span>';
 		$content = '<table><tr>';
 		if (get_user_setting(WT_USER_ID, 'editaccount')) {
 			$content .= '<td><a href="edituser.php"><i class="icon-mypage"></i><br>'.WT_I18N::translate('My account').'</a></td>';
@@ -50,7 +50,8 @@ class user_welcome_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= '<td><a href="pedigree.php?rootid='.WT_USER_GEDCOM_ID.'&amp;ged='.WT_GEDURL.'"><i class="icon-pedigree"></i><br>'.WT_I18N::translate('My pedigree').'</a></td>';
 			$content .= '<td><a href="individual.php?pid='.WT_USER_GEDCOM_ID.'&amp;ged='.WT_GEDURL.'"><i class="icon-indis"></i><br>'.WT_I18N::translate('My individual record').'</a></td>';
 		}
-		$content .= '</tr></table>';
+		$content .= '</tr>';
+		$content .= '</table>';
 
 		if ($template) {
 			require WT_THEME_DIR.'templates/block_main_temp.php';

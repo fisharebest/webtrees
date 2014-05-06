@@ -57,34 +57,50 @@ if (!$url)           $url           = WT_Filter::get('url'); // Not actually a U
 
 // This parameter may come from generated login links
 if (!$url) {
-	$url = WT_Filter::getUrl('url');
+	$url=WT_Filter::getUrl('url');
 }
 
-$message = '';
+$message='';
 
 switch ($action) {
 case 'login':
 default:
-	if ($action === 'login') {
-		try {
-			WT_User::login($username, $password);
-			AddToLog('Login successful: ' . WT_User::currentUser()->getUserName(), 'auth');
+	if ($action == 'login') {
+		$user_id = authenticateUser($username, $password);
+		switch ($user_id) {
+		case -1: // not validated
+			$message = WT_I18N::translate('This account has not been verified.  Please check your email for a verification message.');
+			break;
 
+		case -2: // not approved
+			$message = WT_I18N::translate('This account has not been approved.  Please wait for an administrator to approve it.');
+			break;
+
+		case -3: // bad password
+		case -4: // bad username
+			$message = WT_I18N::translate('The username or password is incorrect.');
+			break;
+
+		case -5: // no cookies
+			$message = WT_I18N::translate('You cannot login because your browser does not accept cookies.');
+			break;
+
+		default: // Success
 			$WT_SESSION->timediff  = $timediff;
-			$WT_SESSION->locale    = WT_User::currentUser()->getSetting('language');
-			$WT_SESSION->theme_dir = WT_User::currentUser()->getSetting('theme');
+			$WT_SESSION->locale    = get_user_setting($user_id, 'language');
+			$WT_SESSION->theme_dir = get_user_setting($user_id, 'theme');
 
 			// If we’ve clicked login from the login page, we don’t want to go back there.
 			if (strpos($url, WT_SCRIPT_NAME) === 0) {
-				$url = 'index.php';
+				$url='index.php';
 			}
 
 			// We're logging in as an administrator
-			if (WT_User::currentUser()->isAdmin()) {
+			if (userIsAdmin($user_id)) {
 				// Check for updates
-				$latest_version_txt = fetch_latest_version();
+				$latest_version_txt=fetch_latest_version();
 				if (preg_match('/^[0-9.]+\|[0-9.]+\|/', $latest_version_txt)) {
-					list($latest_version, $earliest_version, $download_url) = explode('|', $latest_version_txt);
+					list($latest_version, $earliest_version, $download_url)=explode('|', $latest_version_txt);
 					if (version_compare(WT_VERSION, $latest_version)<0) {
 						// An upgrade is available.  Let the admin know, by redirecting to the upgrade wizard
 						$url = 'admin_site_upgrade.php';
@@ -92,7 +108,7 @@ default:
 				} else {
 					// Cannot determine the latest version
 				}
-
+				
 			}
 
 			// Redirect to the target URL
@@ -101,29 +117,6 @@ default:
 			// as it doesn’t always happen when using APC.
 			Zend_Session::writeClose();
 			exit;
-		} catch (Exception $ex) {
-			switch ($ex->getMessage()) {
-			case WT_User::ACCOUNT_NOT_VERIFIED:
-				AddToLog('Login failed (not verified by user): ' . $username, 'auth');
-				$message = WT_I18N::translate('This account has not been verified.  Please check your email for a verification message.');
-				break;
-			case WT_User::ACCOUNT_NOT_APPROVED:
-				AddToLog('Login failed (not approved by admin): ' . $username, 'auth');
-				$message = WT_I18N::translate('This account has not been approved.  Please wait for an administrator to approve it.');
-				break;
-			case WT_User::INCORRECT_PASSWORD:
-				AddToLog('Login failed (incorrect password): ' . $username, 'auth');
-				$message = WT_I18N::translate('The username or password is incorrect.');
-				break;
-			case WT_User::NO_SUCH_USER:
-				AddToLog('Login failed (no such user/email): ' . $username, 'auth');
-				$message = WT_I18N::translate('The username or password is incorrect.');
-				break;
-			case WT_User::NO_SESSION_COOKIES:
-				AddToLog('Login failed (no session cookies): ' . $username, 'auth');
-				$message = WT_I18N::translate('You cannot login because your browser does not accept cookies.');
-				break;
-			}
 		}
 	}
 
@@ -164,9 +157,7 @@ default:
 		<input type="hidden" name="action" value="login">
 		<input type="hidden" name="url" value="', WT_Filter::escapeHtml($url), '">
 		<input type="hidden" name="timediff" value="0">';
-		if ($message) {
-			echo '<p class="error">', $message, '</p>';
-		}
+		if (!empty($message)) echo '<span class="error"><br><b>', $message, '</b><br><br></span>';
 		echo '<div>
 			<label for="username">', WT_I18N::translate('Username'),
 			'<input type="text" id="username" name="username" value="', WT_Filter::escapeHtml($username), '" class="formField" autofocus>
@@ -223,8 +214,6 @@ case 'requestpw':
 		"SELECT user_id FROM `##user` WHERE ? IN (user_name, email)"
 	)->execute(array($user_name))->fetchOne();
 	if ($user_id) {
-		$user = new WT_User($user_id);
-
 		$passchars = 'abcdefghijklmnopqrstuvqxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 		$user_new_pw = '';
 		$max = strlen($passchars)-1;
@@ -233,16 +222,18 @@ case 'requestpw':
 			$user_new_pw .= $passchars{$index};
 		}
 
-		$user->setPassword($user_new_pw);
-		AddToLog('Password request was sent to user: ' . $user->getUserName(), 'auth');
+		set_user_password($user_id, $user_new_pw);
+		set_user_setting($user_id, 'pwrequested', 1);
+
+		AddToLog('Password request was sent to user: '.$user_name, 'auth');
 
 		WT_Mail::system_message(
 			$WT_TREE,
 			$user_id,
 			WT_I18N::translate('Lost password request'),
-			WT_I18N::translate('Hello %s…', $user->getRealName() . WT_Mail::EOL . WT_Mail::EOL .
+			WT_I18N::translate('Hello %s…', getUserFullName($user_id)) . WT_Mail::EOL . WT_Mail::EOL .
 			WT_I18N::translate('A new password was requested for your user name.') . WT_Mail::EOL . WT_Mail::EOL .
-			WT_I18N::translate('Username') . ": " . $user->getUserName() . WT_Mail::EOL .
+			WT_I18N::translate('Username') . ": " . $user_name . WT_Mail::EOL .
 			WT_I18N::translate('Password') . ": " . $user_new_pw  . WT_Mail::EOL . WT_Mail::EOL .
 			WT_I18N::translate('After you have logged in, select the “My Account” link under the “My Page” menu and fill in the password fields to change your password.') . WT_Mail::EOL . WT_Mail::EOL .
 			'<a href="' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'login.php?ged=' . WT_GEDURL . '">' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'login.php?ged=' . WT_GEDURL . '</a>'
@@ -301,8 +292,8 @@ case 'register':
 			set_user_setting($user_id, 'sessiontime',       0);
 
 			// Generate an email in the admin’s language
-			$webmaster = new WT_User(get_gedcom_setting(WT_GED_ID, 'WEBMASTER_USER_ID'));
-			WT_I18N::init($webmaster->getSetting('language'));
+			$webmaster_user_id=get_gedcom_setting(WT_GED_ID, 'WEBMASTER_USER_ID');
+			WT_I18N::init(get_user_setting($webmaster_user_id, 'language'));
 
 			$mail1_body =
 				WT_I18N::translate('Hello administrator…') . WT_Mail::EOL . WT_Mail::EOL .
@@ -363,8 +354,8 @@ case 'register':
 				// From:
 				$WT_TREE,
 				// To:
-				$webmaster->getUserId(),
-				$webmaster->getRealName(),
+				getUserEmail($webmaster_user_id),
+				getUserFullName($webmaster_user_id),
 				// Reply-To:
 				$WEBTREES_EMAIL,
 				$WEBTREES_EMAIL,
@@ -372,10 +363,10 @@ case 'register':
 				$mail1_subject,
 				$mail1_body
 			);
-			$mail1_method = $webmaster->getSetting('contact_method');
+			$mail1_method = get_user_setting($webmaster_user_id, 'contact_method');
 			if ($mail1_method!='messaging3' && $mail1_method!='mailto' && $mail1_method!='none') {
 				WT_DB::prepare("INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)")
-					->execute(array($user_email, $WT_REQUEST->getClientIp(), $webmaster->getUserId(), $mail1_subject, WT_Filter::unescapeHtml($mail1_body)));
+					->execute(array($user_email, $WT_REQUEST->getClientIp(), $webmaster_user_id, $mail1_subject, WT_Filter::unescapeHtml($mail1_body)));
 			}
 
 			echo '<div class="confirm"><p>', WT_I18N::translate('Hello %s…<br>Thank you for your registration.', $user_realname), '</p><p>';
@@ -491,19 +482,18 @@ case 'verify_hash':
 	}
 
 	// switch language to webmaster settings
-	$webmaster = new WT_User(get_gedcom_setting(WT_GED_ID, 'WEBMASTER_USER_ID'));
-	WT_I18N::init($webmaster->getSetting('language'));
+	$webmaster_user_id = get_gedcom_setting(WT_GED_ID, 'WEBMASTER_USER_ID');
+	WT_I18N::init(get_user_setting($webmaster_user_id, 'language'));
 
 	$user_id = get_user_id($user_name);
-	$user = new WT_User($user_id);
 	$mail1_body =
 		WT_I18N::translate('Hello administrator…') . WT_Mail::EOL . WT_Mail::EOL .
 		/* I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address */
 		WT_I18N::translate(
 			'A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s).',
-			$user->getRealName(),
-			$user->getUserName(),
-			$user->getEmail()
+			getUserFullName($user_id),
+			$user_name,
+			getUserEmail($user_id)
 		) . WT_Mail::EOL . WT_Mail::EOL;
 	if ($REQUIRE_ADMIN_AUTH_REGISTRATION && !get_user_setting($user_id, 'verified_by_admin')) {
 		$mail1_body .= WT_I18N::translate('You now need to review the account details, and set the “approved” status to “yes”.');
@@ -512,15 +502,15 @@ case 'verify_hash':
 	}
 	$mail1_body .=
 		WT_Mail::EOL .
-		'<a href="'. WT_SERVER_NAME.WT_SCRIPT_PATH."admin_users.php?filter=" . rawurlencode($user->getUserName()) . '">' .
-		WT_SERVER_NAME.WT_SCRIPT_PATH."admin_users.php?filter=" . rawurlencode($user->getUserName()) .
+		'<a href="'. WT_SERVER_NAME.WT_SCRIPT_PATH."admin_users.php?filter=" . rawurlencode($user_name) . '">' .
+		WT_SERVER_NAME.WT_SCRIPT_PATH."admin_users.php?filter=" . rawurlencode($user_name) .
 		'</a>' .
 		WT_Mail::auditFooter();
 
 	$mail1_subject = /* I18N: %s is a server name/URL */ WT_I18N::translate('New user at %s', WT_SERVER_NAME . WT_SCRIPT_PATH . ' ' . $WT_TREE->tree_title);
 
 	// Change to the new user’s language
-	WT_I18N::init($user->getSetting('language'));
+	WT_I18N::init(get_user_setting($user_id, 'language'));
 
 	$controller->setPageTitle(WT_I18N::translate('User verification'));
 	$controller->pageHeader();
@@ -537,8 +527,8 @@ case 'verify_hash':
 				// From:
 				$WT_TREE,
 				// To:
-				$webmaster->getEmail(),
-				$webmaster->getRealName(),
+				getUserEmail($webmaster_user_id),
+				getUserFullName($webmaster_user_id),
 				// Reply-To:
 				$WEBTREES_EMAIL,
 				$WEBTREES_EMAIL,
@@ -546,13 +536,14 @@ case 'verify_hash':
 				$mail1_subject,
 				$mail1_body
 			);
-			$mail1_method  = $webmaster->getSetting('CONTACT_METHOD');
+			$mail1_method  = get_user_setting($webmaster_user_id, 'CONTACT_METHOD');
 			if ($mail1_method!='messaging3' && $mail1_method!='mailto' && $mail1_method!='none') {
 				WT_DB::prepare("INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)")
-					->execute(array($user_name, $WT_REQUEST->getClientIp(), $webmaster->getUserId(), $mail1_subject, WT_Filter::unescapeHtml($mail1_body)));
+					->execute(array($user_name, $WT_REQUEST->getClientIp(), $webmaster_user_id, $mail1_subject, WT_Filter::unescapeHtml($mail1_body)));
 			}
 
 			set_user_setting($user_id, 'verified', 1);
+			set_user_setting($user_id, 'pwrequested', null);
 			set_user_setting($user_id, 'reg_timestamp', date("U"));
 			set_user_setting($user_id, 'reg_hashcode', null);
 			if (!$REQUIRE_ADMIN_AUTH_REGISTRATION) {

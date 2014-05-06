@@ -174,7 +174,7 @@ case 'importform':
 
 // List the gedcoms available to this user
 foreach (WT_Tree::GetAll() as $tree) {
-	if (WT_User::currentUser()->isManager($tree)) {
+	if (userGedcomAdmin(WT_USER_ID, $tree->tree_id)) {
 
 		echo
 			'<table class="gedcom_table">',

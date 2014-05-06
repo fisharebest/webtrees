@@ -59,10 +59,9 @@ class WT_Mail {
 
 	// Send an automated system message (such as a password reminder) from a tree to a user.
 	public static function system_message(WT_Tree $tree, $user_id, $subject, $message) {
-		$user = new WT_User($user_id);
 		return self::send(
 			$tree,
-			$user->getEmail(),                     $user->getRealName(),
+			getUserEmail($user_id),                getUserFullName($user_id),
 			WT_Site::preference('SMTP_FROM_NAME'), $tree->preference('title'),
 			$subject,
 			$message

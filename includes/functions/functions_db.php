@@ -43,24 +43,14 @@ function fetch_all_links($xref, $gedcom_id) {
 }
 
 // Find out if there are any pending changes that a given user may accept
-function exists_pending_change(WT_User $user = null, WT_Tree $tree = null) {
-	global $WT_TREE;
-
-	if ($user === null) {
-		$user = WT_User::currentUser();
-	}
-
-	if ($tree === null) {
-		$tree = $WT_TREE;
-	}
-
+function exists_pending_change($user_id=WT_USER_ID, $ged_id=WT_GED_ID) {
 	return
-		$tree->canAcceptChanges($user) &&
+		WT_Tree::get($ged_id)->canAcceptChanges($user_id) &&
 		WT_DB::prepare(
 			"SELECT 1".
 			" FROM `##change`".
 			" WHERE status='pending' AND gedcom_id=?"
-		)->execute(array($tree->tree_id))->fetchOne();
+		)->execute(array($ged_id))->fetchOne();
 }
 
 // get a list of all the sources
@@ -1087,6 +1077,26 @@ function create_user($username, $realname, $email, $password) {
 		WT_DB::prepare("SELECT SQL_CACHE user_id FROM `##user` WHERE user_name=?")
 		->execute(array($username))->fetchOne();
 	return $user_id;
+}
+
+function rename_user($user_id, $new_username) {
+	WT_DB::prepare("UPDATE `##user` SET user_name=?   WHERE user_id  =?")->execute(array($new_username, $user_id));
+}
+
+function delete_user($user_id) {
+	// Don't delete the logs.
+	WT_DB::prepare("UPDATE `##log` SET user_id=NULL   WHERE user_id =?")->execute(array($user_id));
+	// Take over the user’s pending changes.
+	// TODO: perhaps we should prevent deletion of users with pending changes?
+	WT_DB::prepare("DELETE FROM `##change` WHERE user_id=? AND status='accepted'")->execute(array($user_id));
+	WT_DB::prepare("UPDATE `##change` SET user_id=? WHERE user_id=?")->execute(array(WT_USER_ID, $user_id));
+
+	WT_DB::prepare("DELETE `##block_setting` FROM `##block_setting` JOIN `##block` USING (block_id) WHERE user_id=?")->execute(array($user_id));
+	WT_DB::prepare("DELETE FROM `##block`               WHERE user_id=?"    )->execute(array($user_id));
+	WT_DB::prepare("DELETE FROM `##user_gedcom_setting` WHERE user_id=?"    )->execute(array($user_id));
+	WT_DB::prepare("DELETE FROM `##user_setting`        WHERE user_id=?"    )->execute(array($user_id));
+	WT_DB::prepare("DELETE FROM `##message`             WHERE user_id=?"    )->execute(array($user_id));
+	WT_DB::prepare("DELETE FROM `##user`                WHERE user_id=?"    )->execute(array($user_id));
 }
 
 function get_all_users($order='ASC', $key='realname') {

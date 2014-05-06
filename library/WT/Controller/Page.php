@@ -72,59 +72,54 @@ class WT_Controller_Page extends WT_Controller_Base {
 
 	// Restrict access
 	public function requireAdminLogin() {
-		if (!WT_User::currentUser()->isAdmin()) {
-			header('Location: ' . WT_LOGIN_URL . '?url='.rawurlencode(get_query_url()));
+		require_once WT_ROOT.'includes/functions/functions.php'; // for get_query_url
+		if (!WT_USER_IS_ADMIN) {
+			header('Location: '.WT_LOGIN_URL.'?url='.rawurlencode(get_query_url()));
 			exit;
 		}
-
 		return $this;
 	}
 
 	// Restrict access
-	public function requireManagerLogin() {
-		global $WT_TREE;
-
-		if (!WT_User::currentUser()->isManager($WT_TREE)) {
-			header('Location: ' . WT_LOGIN_URL . '?url='.rawurlencode(get_query_url()));
+	public function requireManagerLogin($ged_id=WT_GED_ID) {
+		require_once WT_ROOT.'includes/functions/functions.php'; // for get_query_url
+		if (
+			$ged_id==WT_GED_ID && !WT_USER_GEDCOM_ADMIN ||
+			$ged_id!=WT_GED_ID && !userGedcomAdmin(WT_USER_ID, $ged_id)
+		) {
+			header('Location: '.WT_LOGIN_URL.'?url='.rawurlencode(get_query_url()));
 			exit;
 		}
-
 		return $this;
 	}
 
 	// Restrict access
 	public function requireAcceptLogin() {
-		global $WT_TREE;
-
-		if (!WT_User::currentUser()->isModerator($WT_TREE)) {
-			header('Location: ' . WT_LOGIN_URL . '?url='.rawurlencode(get_query_url()));
+		require_once WT_ROOT.'includes/functions/functions.php'; // for get_query_url
+		if (!WT_USER_CAN_ACCEPT) {
+			header('Location: '.WT_LOGIN_URL.'?url='.rawurlencode(get_query_url()));
 			exit;
 		}
-
 		return $this;
 	}
 
 	// Restrict access
 	public function requireEditorLogin() {
-		global $WT_TREE;
-
-		if (!WT_User::currentUser()->isEditor($WT_TREE)) {
-			header('Location: ' . WT_LOGIN_URL . '?url='.rawurlencode(get_query_url()));
+		require_once WT_ROOT.'includes/functions/functions.php'; // for get_query_url
+		if (!WT_USER_CAN_EDIT) {
+			header('Location: '.WT_LOGIN_URL.'?url='.rawurlencode(get_query_url()));
 			exit;
 		}
-
 		return $this;
 	}
 
 	// Restrict access
 	public function requireMemberLogin() {
-		global $WT_TREE;
-
-		if (!WT_User::currentUser()->isMember($WT_TREE)) {
-			header('Location: ' . WT_LOGIN_URL . '?url='.rawurlencode(get_query_url()));
+		require_once WT_ROOT.'includes/functions/functions.php'; // for get_query_url
+		if (!WT_USER_ID) {
+			header('Location: '.WT_LOGIN_URL.'?url='.rawurlencode(get_query_url()));
 			exit;
 		}
-
 		return $this;
 	}
 

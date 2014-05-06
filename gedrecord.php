@@ -39,7 +39,7 @@ if (
 	exit;
 } elseif (!$obj || !$obj->canShow()) {
 	$controller->pageHeader();
-	echo '<div class="error">', WT_I18N::translate('This information is private and cannot be shown.'), '</div>';
+	print_privacy_error();
 } else {
 	$controller->pageHeader();
 	echo

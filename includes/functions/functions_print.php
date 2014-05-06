@@ -314,11 +314,10 @@ function whoisonline() {
 	if (WT_USER_ID) {
 		$i=0;
 		foreach ($loggedusers as $user_id=>$user_name) {
-			$user = new WT_User($user_id);
 			$content .= '<div class="logged_in_name">';
-			$content .= WT_Filter::escapeHtml($user->getRealName()) . ' - ' . WT_Filter::escapeHtml($user->getUserName());
-			if (WT_USER_ID != $user->getUserId() && $user->getSetting('contactmethod') != 'none') {
-				$content .= ' <a class="icon-email" href="#" onclick="return message(\'' . WT_Filter::escapeJs($user->getUserName()) . '\', \'\', \'' . WT_Filter::escapeJs(get_query_url()) . '\');" title="' . WT_I18N::translate('Send message').'"></a>';
+			$content .= WT_Filter::escapeHtml(getUserFullName($user_id) . ' - ' . $user_name);
+			if (true || WT_USER_ID!=$user_id && get_user_setting($user_id, 'contactmethod')!="none") {
+				$content .= ' <a class="icon-email" href="#" onclick="return message(\'' . WT_Filter::escapeJs($user_name) . '\', \'\', \'' . WT_Filter::escapeJs(get_query_url()) . '\');" title="' . WT_I18N::translate('Send message').'"></a>';
 			}
 			$i++;
 			$content .= '</div>';
@@ -332,16 +331,15 @@ function whoisonline() {
 // Print a link to allow email/messaging contact with a user
 // Optionally specify a method (used for webmaster/genealogy contacts)
 function user_contact_link($user_id) {
-	$user = new WT_User($user_id);
+	$method = get_user_setting($user_id, 'contactmethod');
 
-	$method   = $user->getSetting('contactmethod');
-	$fullname = $user->getRealName($user_id);
-	$email    = $user->getEmail();
+	$fullname = getUserFullName($user_id);
 
 	switch ($method) {
 	case 'none':
 		return '';
 	case 'mailto':
+		$email=getUserEmail($user_id);
 		return '<a href="mailto:' . WT_Filter::escapeHtml($email).'">'.WT_Filter::escapeHtml($fullname).'</a>';
 	default:
 		return "<a href='#' onclick='message(\"" . WT_Filter::escapeJs(get_user_name($user_id)) . "\", \"" . $method . "\", \"" . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_Filter::escapeJs(get_query_url()) . "\", \"\");return false;'>" . WT_Filter::escapeHtml($fullname) . '</a>';
@@ -482,6 +480,26 @@ function print_fact_notes($factrec, $level, $textOnly=false) {
 		}
 	}
 	return $data;
+}
+
+//-- function to print a privacy error with contact method
+function print_privacy_error() {
+	$user_id=get_gedcom_setting(WT_GED_ID, 'CONTACT_USER_ID');
+	$method=get_user_setting($user_id, 'contactmethod');
+	$fullname=getUserFullName($user_id);
+
+	echo '<div class="error">', WT_I18N::translate('This information is private and cannot be shown.'), '</div>';
+	switch ($method) {
+	case 'none':
+		break;
+	case 'mailto':
+		$email=getUserEmail($user_id);
+		echo '<div class="error">', WT_I18N::translate('For more information contact'), ' ', '<a href="mailto:'.WT_Filter::escapeHtml($email).'">'.WT_Filter::escapeHtml($fullname).'</a>', '</div>';
+		break;
+	default:
+		echo '<div class="error">', WT_I18N::translate('For more information contact'), ' ', "<a href='#' onclick='message(\"", WT_Filter::escapeHtml(get_user_name($user_id)), "\", \"", $method, "\", \"", WT_Filter::escapeJs(get_query_url()), "\", \"\"); return false;'>", WT_Filter::escapeHtml($fullname), '</a>', '</div>';
+		break;
+	}
 }
 
 // Print a link for a popup help window

@@ -38,9 +38,9 @@ if ($user_id) {
 // Only managers can edit the "home page"
 // Only a user or an admin can edit a user’s "my page"
 if (
-	$gedcom_id < 0 && !WT_User::currentUser()->isAdmin() ||
-	$gedcom_id > 0 && !WT_User::currentUser()->isManager(WT_Tree::get($gedcom_id)) ||
-	$user_id && WT_User::currentUser()->getUserId() != $user_id && !WT_User::currentUser()->isAdmin()
+	$gedcom_id<0 && !WT_USER_IS_ADMIN ||
+	$gedcom_id>0 && !userGedcomAdmin(WT_USER_ID, $gedcom_id) ||
+	$user_id && WT_USER_ID!=$user_id && !WT_USER_IS_ADMIN
 ) {
 	$controller->pageHeader();
 	$controller->addInlineJavascript('window.location.reload();');
