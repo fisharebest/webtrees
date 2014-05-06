@@ -14319,7 +14319,7 @@ msgstr "Dette vil vise alle stederne fra den valgte gedcom fil. Som standard vil
 
 #: admin_trees_places.php:89
 msgid "This will update the highest-level part or parts of the place name.  For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."
-msgstr ""
+msgstr "Denne funktion vil opdatere det højeste level eller dele af sted(navne). Eksempel, “Mexico” vil matche “Quintana Roo, Mexico”, men ikke “Santa Fe, New Mexico”."
 
 #: includes/functions/functions_print.php:1009
 #: library/WT/Date/Calendar.php:222
@@ -14904,7 +14904,7 @@ msgstr "Opdater alle"
 
 #: admin_trees_places.php:85
 msgid "Update all the place names in a family tree"
-msgstr ""
+msgstr "Opdater alle sted(navne) i familie træet"
 
 #: themes/_administration/header.php:121
 msgid "Update place names"
