@@ -458,11 +458,6 @@ if ($PGV_SCHEMA_VERSION>=12) {
 			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".
 			" JOIN `##user` ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)".
 			" UNION ALL".
-			" SELECT user_id, 'pwrequested', ".
-			" CASE WHEN u_pwrequested IN ('Y', 'yes') THEN 1 WHEN u_pwrequested IN ('N', 'no') THEN 0 ELSE u_pwrequested END".
-			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".
-			" JOIN `##user` ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)".
-			" UNION ALL".
 			" SELECT user_id, 'reg_timestamp', u_reg_timestamp".
 			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".
 			" JOIN `##user` ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)".

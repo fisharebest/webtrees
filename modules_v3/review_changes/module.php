@@ -63,13 +63,13 @@ class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 			// There are pending changes - tell moderators/managers/administrators about them.
 			if (WT_TIMESTAMP - WT_Site::preference('LAST_CHANGE_EMAIL') > (60*60*24*$days)) {
 				// Which users have pending changes?
-				foreach (get_all_users() as $user_id=>$user_name) {
-					if (get_user_setting($user_id, 'contactmethod') != 'none') {
+				foreach (WT_User::getAll() as $user) {
+					if ($user->getSetting('contactmethod') !== 'none') {
 						foreach (WT_Tree::getAll() as $tree) {
-							if (exists_pending_change($user_id, $tree->tree_id)) {
+							if (exists_pending_change($user, $tree)) {
 								WT_Mail::system_message(
 									$tree,
-									$user_id,
+									$user->getUserId(),
 									WT_I18N::translate('Pending changes'),
 									WT_I18N::translate('There are pending changes for you to moderate.') .
 									WT_Mail::EOL . WT_MAIL::EOL .

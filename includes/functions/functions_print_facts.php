@@ -452,7 +452,7 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 	}
 	echo print_fact_sources($fact->getGedcom(), 2);
 	echo print_fact_notes($fact->getGedcom(), 2);
-	print_media_links($fact->getGedcom(), 2, $parent->getXref());
+	print_media_links($fact->getGedcom(), 2);
 	echo '</td></tr>';
 }
 //------------------- end print fact function
@@ -556,24 +556,22 @@ function print_fact_sources($factrec, $level) {
 }
 
 //-- Print the links to media objects
-function print_media_links($factrec, $level, $pid='') {
-	global $TEXT_DIRECTION;
-	global $SEARCH_SPIDER;
-	global $THUMBNAIL_WIDTH;
-	global $GEDCOM, $HIDE_GEDCOM_ERRORS;
+function print_media_links($factrec, $level) {
+	global $SEARCH_SPIDER, $HIDE_GEDCOM_ERRORS;
 
-	$ged_id=get_id_from_gedcom($GEDCOM);
 	$nlevel = $level+1;
-	if ($level==1) $size=50;
-	else $size=25;
-	if (preg_match_all("/$level OBJE @(.*)@/", $factrec, $omatch, PREG_SET_ORDER) == 0) return;
+	if (preg_match_all("/$level OBJE @(.*)@/", $factrec, $omatch, PREG_SET_ORDER) == 0) {
+		return;
+	}
 	$objectNum = 0;
 	while ($objectNum < count($omatch)) {
 		$media_id = $omatch[$objectNum][1];
-		$media=WT_Media::getInstance($media_id);
+		$media = WT_Media::getInstance($media_id);
 		if ($media) {
 			if ($media->canShow()) {
-				if ($objectNum > 0) echo '<br class="media-separator" style="clear:both;">';
+				if ($objectNum > 0) {
+					echo '<br class="media-separator" style="clear:both;">';
+				}
 				echo '<div class="media-display"><div class="media-display-image">';
 				echo $media->displayImage();
 				echo '</div>'; // close div "media-display-image"
@@ -595,7 +593,7 @@ function print_media_links($factrec, $level, $pid='') {
 				//-- print spouse name for marriage events
 				$ct = preg_match("/WT_SPOUSE: (.*)/", $factrec, $match);
 				if ($ct>0) {
-					$spouse=WT_Individual::getInstance($match[1]);
+					$spouse = WT_Individual::getInstance($match[1]);
 					if ($spouse) {
 						echo '<a href="', $spouse->getHtmlUrl(), '">';
 						echo $spouse->getFullName();
@@ -603,7 +601,7 @@ function print_media_links($factrec, $level, $pid='') {
 					}
 					if (empty($SEARCH_SPIDER)) {
 						$ct = preg_match("/WT_FAMILY_ID: (.*)/", $factrec, $match);
-						if ($ct>0) {
+						if ($ct > 0) {
 							$famid = trim($match[1]);
 							$family = WT_Family::getInstance($famid);
 							if ($family) {
@@ -615,13 +613,13 @@ function print_media_links($factrec, $level, $pid='') {
 				}
 				echo print_fact_notes($media->getGedcom(), $nlevel);
 				echo print_fact_sources($media->getGedcom(), $nlevel);
-				echo '</div>';//close div "media-display-title"
-				echo '</div>';//close div "media-display"
+				echo '</div>'; //close div "media-display-title"
+				echo '</div>'; //close div "media-display"
 			}
 		} elseif (!$HIDE_GEDCOM_ERRORS) {
 			echo '<p class="ui-state-error">', $media_id, '</p>';
 		}
-		$objectNum ++;
+		$objectNum++;
 	}
 }
 
@@ -663,7 +661,6 @@ function print_main_sources(WT_Fact $fact, $level) {
 			echo '<td class="descriptionbox';
 			if ($level>1) echo ' rela';
 			echo ' ', $styleadd, ' width20">';
-			$temp = preg_match("/^\d (\w*)/", $factrec, $factname);
 			$factlines = explode("\n", $factrec); // 1 BIRT Y\n2 SOUR ...
 			$factwords = explode(" ", $factlines[0]); // 1 BIRT Y
 			$factname = $factwords[1]; // BIRT
@@ -821,7 +818,6 @@ function getSourceStructure($srec) {
 	if ($srec) {
 		$subrecords=explode("\n", $srec);
 		for ($i=0; $i<count($subrecords); $i++) {
-			$level=substr($subrecords[$i], 0, 1);
 			$tag  =substr($subrecords[$i], 2, 4);
 			$text =substr($subrecords[$i], 7);
 			$i++;
@@ -847,7 +843,7 @@ function getSourceStructure($srec) {
 
 // Print a row for the notes tab on the individual page
 function print_main_notes(WT_Fact $fact, $level) {
-	global $GEDCOM, $WT_TREE, $SHOW_FACT_ICONS, $TEXT_DIRECTION;
+	global $WT_TREE, $SHOW_FACT_ICONS;
 
 	$factrec = $fact->getGedcom();
 	$fact_id = $fact->getFactId();
@@ -865,8 +861,20 @@ function print_main_notes(WT_Fact $fact, $level) {
 		$can_edit = $level==1 && $fact->canEdit();
 	}
 
-	$ct = preg_match_all("/$level NOTE(.*)/", $factrec, $match, PREG_SET_ORDER);
+	$ct = preg_match_all("/$level NOTE (.*)/", $factrec, $match, PREG_SET_ORDER);
 	for ($j=0; $j<$ct; $j++) {
+		// Note object, or inline note?
+		if (preg_match("/$level NOTE @(.*)@/", $match[$j][0], $nmatch)) {
+			$nid = $nmatch[1];
+			$note = WT_Note::getInstance($nid);
+			if ($note && !$note->canShow()) {
+				continue;
+			}
+		} else {
+			$nid = null;
+			$note = null;
+		}
+
 		if ($level>=2) echo '<tr class="row_note2">';
 		else echo '<tr>';
 		echo '<td class="descriptionbox';
@@ -920,19 +928,13 @@ function print_main_notes(WT_Fact $fact, $level) {
 			}
 		}
 		echo '</td>';
-		if (preg_match("/$level NOTE @(.*)@/", $match[$j][0], $nmatch)) {
+		if ($note) {
 			// Note objects
-			$nid = $nmatch[1];
-			$note = WT_Note::getInstance($nid);
-			if ($note) {
+			if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
 				// If Census assistant installed, allow it to format the note
-				if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
-					$text = GEDFact_assistant_WT_Module::formatCensusNote($note);
-				} else {
-					$text = WT_Filter::formatText($note->getNote(), $WT_TREE);
-				}
+				$text = GEDFact_assistant_WT_Module::formatCensusNote($note);
 			} else {
-				$text = '<span class="error">' . WT_Filter::escapeHtml($nid) . '</span>';
+				$text = WT_Filter::formatText($note->getNote(), $WT_TREE);
 			}
 		} else {
 			// Inline notes
@@ -981,7 +983,6 @@ function print_main_notes(WT_Fact $fact, $level) {
 // Print a row for the media tab on the individual page
 function print_main_media(WT_Fact $fact, $level) {
 	$factrec = $fact->getGedcom();
-	$fact_id = $fact->getFactId();
 	$parent  = $fact->getParent();
 
 	if ($fact->isNew()) {
@@ -1011,7 +1012,7 @@ function print_main_media(WT_Fact $fact, $level) {
 				echo ' rela';
 			}
 			echo ' ', $styleadd, ' width20">';
-			$temp = preg_match("/^\d (\w*)/", $factrec, $factname);
+			preg_match("/^\d (\w*)/", $factrec, $factname);
 			$factlines = explode("\n", $factrec); // 1 BIRT Y\n2 SOUR ...
 			$factwords = explode(" ", $factlines[0]); // 1 BIRT Y
 			$factname = $factwords[1]; // BIRT

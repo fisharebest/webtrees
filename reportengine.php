@@ -29,8 +29,8 @@ require WT_ROOT.'includes/functions/functions_rtl.php';
 
 $controller=new WT_Controller_Page();
 
-$famid   =WT_Filter::get('famid');
-$pid     =WT_Filter::get('pid');
+$famid   =WT_Filter::get('famid', WT_REGEX_XREF);
+$pid     =WT_Filter::get('pid', WT_REGEX_XREF);
 $action  =WT_Filter::get('action', 'choose|setup|run', 'choose');
 $report  =WT_Filter::get('report');
 $output  =WT_Filter::get('output', 'HTML|PDF', 'PDF');
@@ -99,7 +99,7 @@ foreach ($vars as $name=>$var) {
 $vars = $newvars;
 unset($newvars);
 
-foreach ($varnames as $indexval => $name) {
+foreach ($varnames as $name) {
 	if (!isset($vars[$name])) {
 		$vars[$name]['id'] = '';
 	}
@@ -183,7 +183,7 @@ elseif ($action=='setup') {
 	if (!isset($report_array['inputs'])) {
 		$report_array['inputs'] = array();
 	}
-	foreach ($report_array['inputs'] as $indexval => $input) {
+	foreach ($report_array['inputs'] as $input) {
 		echo '<tr><td class="descriptionbox wrap">';
 		echo '<input type="hidden" name="varnames[]" value="', WT_Filter::escapeHtml($input["name"]), '">';
 		echo WT_I18N::translate($input['value']), '</td><td class="optionbox">';
@@ -232,7 +232,7 @@ elseif ($action=='setup') {
 		if ($input['type']=='select') {
 			echo '<select name="vars[', WT_Filter::escapeHtml($input['name']), ']" id="', WT_Filter::escapeHtml($input['name']), '_var">';
 			$options = preg_split('/[|]+/', $input['options']);
-			foreach ($options as $indexval => $option) {
+			foreach ($options as $option) {
 				$opt = explode('=>', $option);
 				list($value, $display)=$opt;
 				if (substr($display, 0, 18)=='WT_I18N::translate' || substr($display, 0, 15) == 'WT_I18N::number' || substr($display, 0, 23)=='WT_Gedcom_Tag::getLabel') {

@@ -41,31 +41,35 @@ class WT_Controller_Simple extends WT_Controller_Page {
 
 	// Restrict access
 	public function requireAdminLogin() {
-		if (!WT_USER_IS_ADMIN) {
+		if (!WT_User::currentUser()->isAdmin()) {
 			$this->addInlineJavascript('opener.window.location.reload(); window.close();');
 			exit;
 		}
+
 		return $this;
 	}
 
 	// Restrict access
-	public function requireManagerLogin($ged_id=WT_GED_ID) {
-		if (
-			$ged_id==WT_GED_ID && !WT_USER_GEDCOM_ADMIN ||
-			$ged_id!=WT_GED_ID && !userGedcomAdmin(WT_USER_ID, $ged_id)
-		) {
+	public function requireManagerLogin() {
+		global $WT_TREE;
+
+		if (!WT_User::currentUser()->isManager($WT_TREE)) {
 			$this->addInlineJavascript('opener.window.location.reload(); window.close();');
 			exit;
 		}
+
 		return $this;
 	}
 
 	// Restrict access
 	public function requireMemberLogin() {
-		if (!WT_USER_ID) {
+		global $WT_TREE;
+
+		if (!WT_User::currentUser()->isMember($WT_TREE)) {
 			$this->addInlineJavascript('opener.window.location.reload(); window.close();');
 			exit;
 		}
+
 		return $this;
 	}
 }

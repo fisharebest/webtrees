@@ -39,6 +39,10 @@ $type   = WT_Filter::get('type', 'auth|change|config|debug|edit|error|media|sear
 $text   = WT_Filter::get('text');
 $ip     = WT_Filter::get('ip');
 $user   = WT_Filter::get('user');
+
+$search = WT_Filter::get('search');
+$search = isset($search['value']) ? $search['value'] : null;
+
 if (WT_USER_IS_ADMIN) {
 	// Administrators can see all logs
 	$gedc = WT_Filter::get('gedc');
@@ -49,6 +53,10 @@ if (WT_USER_IS_ADMIN) {
 
 $query=array();
 $args =array();
+if ($search) {
+	$query[] = "log_message LIKE CONCAT('%', ?, '%')";
+	$args [] = $search;
+}
 if ($from) {
 	$query[]='log_time>=?';
 	$args []=$from;
@@ -120,60 +128,54 @@ case 'export':
 	exit;
 case 'load_json':
 	Zend_Session::writeClose();
-	$iDisplayStart  = WT_Filter::getInteger('iDisplayStart');
-	$iDisplayLength = WT_Filter::getInteger('iDisplayLength');
-	set_user_setting(WT_USER_ID, 'admin_site_log_page_size', $iDisplayLength);
-	if ($iDisplayLength>0) {
-		$LIMIT=" LIMIT " . $iDisplayStart . ',' . $iDisplayLength;
+	$start  = WT_Filter::getInteger('start');
+	$length = WT_Filter::getInteger('length');
+	set_user_setting(WT_USER_ID, 'admin_site_log_page_size', $length);
+
+	if ($length>0) {
+		$LIMIT=" LIMIT " . $start . ',' . $length;
 	} else {
 		$LIMIT="";
 	}
-	$iSortingCols = WT_Filter::getInteger('iSortingCols');
-	if ($iSortingCols) {
+
+	$order = WT_Filter::get('order');
+	if ($order) {
 		$ORDER_BY=' ORDER BY ';
-		for ($i=0; $i<$iSortingCols; ++$i) {
+		for ($i = 0; $i < count($order); ++$i) {
+			if ($i > 0) {
+				$ORDER_BY .= ',';
+			}
 			// Datatables numbers columns 0, 1, 2, ...
 			// MySQL numbers columns 1, 2, 3, ...
-			switch (WT_Filter::get('sSortDir_'.$i)) {
+			switch ($order[$i]['dir']) {
 			case 'asc':
-				if (WT_Filter::getInteger('iSortCol_'.$i)==0) {
-					$ORDER_BY.='log_id ASC '; // column 0 is "timestamp", using log_id gives the correct order for events in the same second
-				} else {
-					$ORDER_BY.=(1 + WT_Filter::getInteger('iSortCol_'.$i)).' ASC ';
-				}
+				$ORDER_BY .= (1 + $order[$i]['column']) . ' ASC ';
 				break;
 			case 'desc':
-				if (WT_Filter::getInteger('iSortCol_'.$i)==0) {
-					$ORDER_BY.='log_id DESC ';
-				} else {
-					$ORDER_BY.=(1 + WT_Filter::getInteger('iSortCol_'.$i)).' DESC ';
-				}
+				$ORDER_BY .= (1 + $order[$i]['column']) . ' DESC ';
 				break;
-			}
-			if ($i<$iSortingCols-1) {
-				$ORDER_BY.=',';
 			}
 		}
 	} else {
-		$ORDER_BY='1 DESC';
+		$ORDER_BY = '1 ASC';
 	}
 
 	// This becomes a JSON list, not array, so need to fetch with numeric keys.
-	$aaData=WT_DB::prepare($SELECT1.$WHERE.$ORDER_BY.$LIMIT)->execute($args)->fetchAll(PDO::FETCH_NUM);
-	foreach ($aaData as &$row) {
-		$row[2]=WT_Filter::escapeHtml($row[2]);
+	$data = WT_DB::prepare($SELECT1.$WHERE.$ORDER_BY.$LIMIT)->execute($args)->fetchAll(PDO::FETCH_NUM);
+	foreach ($data as &$datum) {
+		$datum[2] = WT_Filter::escapeHtml($datum[2]);
 	}
 
 	// Total filtered/unfiltered rows
-	$iTotalDisplayRecords=WT_DB::prepare("SELECT FOUND_ROWS()")->fetchColumn();
-	$iTotalRecords=WT_DB::prepare($SELECT2.$WHERE)->execute($args)->fetchColumn();
+	$recordsFiltered=WT_DB::prepare("SELECT FOUND_ROWS()")->fetchColumn();
+	$recordsTotal=WT_DB::prepare($SELECT2.$WHERE)->execute($args)->fetchColumn();
 
 	header('Content-type: application/json');
 	echo json_encode(array( // See http://www.datatables.net/usage/server-side
-		'sEcho'                => WT_Filter::getInteger('sEcho'), // Always an integer
-		'iTotalRecords'        => $iTotalRecords,
-		'iTotalDisplayRecords' => $iTotalDisplayRecords,
-		'aaData'               => $aaData
+		'sEcho'           => WT_Filter::getInteger('sEcho'), // Always an integer
+		'recordsTotal'    => $recordsTotal,
+		'recordsFiltered' => $recordsFiltered,
+		'data'            => $data
 	));
 	exit;
 }
@@ -182,17 +184,17 @@ $controller
 	->pageHeader()
 	->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 	->addInlineJavascript('
-		var oTable=jQuery("#log_list").dataTable( {
-			"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
-			"bProcessing": true,
-			"bServerSide": true,
-			"sAjaxSource": "'.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME.'?action=load_json&from='.$from.'&to='.$to.'&type='.$type.'&text='.rawurlencode($text).'&ip='.rawurlencode($ip).'&user='.rawurlencode($user).'&gedc='.rawurlencode($gedc).'",
+		jQuery("#log_list").dataTable( {
+			dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
+			processing: true,
+			serverSide: true,
+			ajax: "'.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME.'?action=load_json&from='.$from.'&to='.$to.'&type='.$type.'&text='.rawurlencode($text).'&ip='.rawurlencode($ip).'&user='.rawurlencode($user).'&gedc='.rawurlencode($gedc).'",
 			'.WT_I18N::datatablesI18N(array(10,20,50,100,500,1000,-1)).',
-			"bJQueryUI": true,
-			"bAutoWidth":false,
-			"aaSorting": [[ 0, "desc" ]],
-			"iDisplayLength": '.get_user_setting(WT_USER_ID, 'admin_site_log_page_size', 20).',
-			"sPaginationType": "full_numbers"
+			jQueryUI: true,
+			autoWidth: false,
+			sorting: [[ 0, "desc" ]],
+			pageLength: '.get_user_setting(WT_USER_ID, 'admin_site_log_page_size', 20).',
+			pagingType: "full_numbers"
 		});
 	');
 

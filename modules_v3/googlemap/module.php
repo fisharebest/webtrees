@@ -2035,7 +2035,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			};
 
 			function getMarkerImage(iconColor) {
-				if ((typeof(iconColor)=='undefined') || (iconColor==null)) {
+				if (typeof(iconColor) === 'undefined' || iconColor === null) {
 					iconColor = 'red';
 				}
 				if (!gicons[iconColor]) {
@@ -4318,7 +4318,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		?>
 		<script>
 		function updateList(inactive) {
-			window.location.href='<?php if (strstrb($_SERVER['REQUEST_URI'], '&inactive')) { $uri=strstrb($_SERVER['REQUEST_URI'], '&inactive');} else { $uri=$_SERVER['REQUEST_URI']; } echo $uri, '&inactive='; ?>'+inactive;
+			window.location.href='<?php if (strstr($_SERVER['REQUEST_URI'], '&inactive', true)) { $uri=strstr($_SERVER['REQUEST_URI'], '&inactive', true);} else { $uri=$_SERVER['REQUEST_URI']; } echo $uri, '&inactive='; ?>'+inactive;
 		}
 
 		function edit_place_location(placeid) {

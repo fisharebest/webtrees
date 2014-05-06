@@ -26,42 +26,17 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-// Fetch a remote file.  Stream wrappers are disabled on
-// many hosts, and do not allow the detection of timeout.
-function fetch_remote_file($host, $path, $timeout=3) {
-	$fp=@fsockopen($host, '80', $errno, $errstr, $timeout );
-	if (!$fp) {
-		return null;
-	}
-
-	fputs($fp, "GET $path HTTP/1.0\r\nHost: $host\r\nConnection: Close\r\n\r\n");
-
-	$response='';
-	while ($data=fread($fp, 65536)) {
-		$response.=$data;
-	}
-	fclose($fp);
-
-	// Take account of a “moved” response.
-	if (substr($response, 0, 12)=='HTTP/1.1 303' && preg_match('/\nLocation: http:\/\/([a-z0-9.-]+)(.+)/', $response, $match)) {
-		return fetch_remote_file($match[1], $match[2]);
-	} else {
-		// The response includes headers, a blank line, then the content
-		return substr($response, strpos($response, "\r\n\r\n") + 4);
-	}
-}
-
 // Check with the webtrees.net server for the latest version of webtrees.
 // Fetching the remote file can be slow, so check infrequently, and cache the result.
 // Pass the current versions of webtrees, PHP and MySQL, as the response
 // may be different for each.  The server logs are used to generate
 // installation statistics which can be found at http://svn.webtrees.net/statistics.html
 function fetch_latest_version() {
-	$last_update_timestamp=WT_Site::preference('LATEST_WT_VERSION_TIMESTAMP');
+	$last_update_timestamp = WT_Site::preference('LATEST_WT_VERSION_TIMESTAMP');
 	if ($last_update_timestamp < WT_TIMESTAMP - 24*60*60) {
-		$row=WT_DB::prepare("SHOW VARIABLES LIKE 'version'")->fetchOneRow();
-		$params='?w='.WT_VERSION.'&p='.PHP_VERSION.'&m='.$row->value.'&o='.(DIRECTORY_SEPARATOR=='/'?'u':'w');
-		$latest_version_txt=fetch_remote_file('svn.webtrees.net', '/build/latest-version.txt'.$params);
+		$row = WT_DB::prepare("SHOW VARIABLES LIKE 'version'")->fetchOneRow();
+		$params = '?w='.WT_VERSION.'&p='.PHP_VERSION.'&m='.$row->value.'&o='.(DIRECTORY_SEPARATOR=='/'?'u':'w');
+		$latest_version_txt = WT_File::fetchUrl('http://svn.webtrees.net/build/latest-version.txt' . $params);
 		if ($latest_version_txt) {
 			WT_Site::preference('LATEST_WT_VERSION', $latest_version_txt);
 			WT_Site::preference('LATEST_WT_VERSION_TIMESTAMP', WT_TIMESTAMP);
@@ -190,60 +165,6 @@ function load_gedcom_settings($ged_id=WT_GED_ID) {
 }
 
 /**
- * Webtrees Error Handling function
- *
- * This function will be called by PHP whenever an error occurs.  The error handling
- * is set in the session.php
- * @see http://us2.php.net/manual/en/function.set-error-handler.php
- */
-function wt_error_handler($errno, $errstr, $errfile, $errline) {
-	if ((error_reporting() > 0)&&($errno<2048)) {
-		if (WT_ERROR_LEVEL==0) {
-			return;
-		}
-		$fmt_msg="<br>ERROR {$errno}: {$errstr}<br>";
-		$log_msg="ERROR {$errno}: {$errstr};";
-		// Although debug_backtrace should always exist in PHP5, without this check, PHP sometimes crashes.
-		// Possibly calling it generates an error, which causes infinite recursion??
-		if ($errno<16 && function_exists("debug_backtrace") && strstr($errstr, "headers already sent by")===false) {
-			$backtrace=debug_backtrace();
-			$num=count($backtrace);
-			if (WT_ERROR_LEVEL==1) {
-				$num=1;
-			}
-			for ($i=0; $i<$num; $i++) {
-				if ($i==0) {
-					$fmt_msg.="0 Error occurred on ";
-					$log_msg.="\n0 Error occurred on ";
-				} else {
-					$fmt_msg.="{$i} called from ";
-					$log_msg.="\n{$i} called from ";
-				}
-				if (isset($backtrace[$i]["line"]) && isset($backtrace[$i]["file"])) {
-					$fmt_msg.="line <b>{$backtrace[$i]['line']}</b> of file <b>".basename($backtrace[$i]['file'])."</b>";
-					$log_msg.="line {$backtrace[$i]['line']} of file ".basename($backtrace[$i]['file']);
-				}
-				if ($i<$num-1) {
-					$fmt_msg.=" in function <b>".$backtrace[$i+1]['function']."</b>";
-					$log_msg.=" in function ".$backtrace[$i+1]['function'];
-				}
-				$fmt_msg.="<br>";
-			}
-		}
-		echo $fmt_msg;
-		if (function_exists('AddToLog')) {
-			AddToLog($log_msg, 'error');
-		}
-		if ($errno==1) {
-			die();
-		}
-	}
-	return false;
-}
-
-// ************************************************* START OF GEDCOM FUNCTIONS ********************************* //
-
-/**
  * get a gedcom subrecord
  *
  * searches a gedcom record and returns a subrecord of it.  A subrecord is defined starting at a
@@ -267,24 +188,18 @@ function wt_error_handler($errno, $errstr, $errfile, $errline) {
  */
 function get_sub_record($level, $tag, $gedrec, $num=1) {
 	if (empty($gedrec)) {
-		return "";
+		return '';
 	}
 	// -- adding \n before and after gedrec
 	$gedrec = "\n".$gedrec."\n";
-	$pos1=0;
-	$subrec = "";
 	$tag = trim($tag);
 	$searchTarget = "~[\n]".$tag."[\s]~";
 	$ct = preg_match_all($searchTarget, $gedrec, $match, PREG_SET_ORDER | PREG_OFFSET_CAPTURE);
 	if ($ct==0) {
-		$tag = preg_replace('/(\w+)/', "_$1", $tag);
-		$ct = preg_match_all($searchTarget, $gedrec, $match, PREG_SET_ORDER | PREG_OFFSET_CAPTURE);
-		if ($ct==0) {
-			return "";
-		}
+		return '';
 	}
 	if ($ct<$num) {
-		return "";
+		return '';
 	}
 	$pos1 = $match[$num-1][0][1];
 	$pos2 = strpos($gedrec, "\n$level", $pos1+1);
@@ -333,12 +248,6 @@ function get_cont($nlevel, $nrec) {
 	return rtrim($text, " ");
 }
 
-// ************************************************* START OF SORTING FUNCTIONS ********************************* //
-// Function to sort GEDCOM fact tags based on their translations
-function factsort($a, $b) {
-	return utf8_strcasecmp(WT_I18N::translate($a), WT_I18N::translate($b));
-}
-
 ////////////////////////////////////////////////////////////////////////////////
 // Sort a list events for the today/upcoming blocks
 ////////////////////////////////////////////////////////////////////////////////
@@ -370,7 +279,7 @@ function event_sort_name($a, $b) {
  * using the compare type function
  * 3. Then merge the arrays back into the original array using the compare type function
  *
- * @param unknown_type $arr
+ * @param WT_Fact[] $arr
  */
 function sort_facts(&$arr) {
 	$dated = array();
@@ -1380,9 +1289,9 @@ function get_relationship_name_from_path($path, WT_Individual $person1=null, WT_
 			default:
 				switch ($sex2) {
 				case 'M': // I18N: if you need a different number for %d, contact the developers, as a code-change is required
-				          return WT_I18N::translate('great x%d uncle', $up-2);
-				case 'F': return WT_I18N::translate('great x%d aunt', $up-2);
-				case 'U': return WT_I18N::translate('great x%d aunt/uncle', $up-2);
+				          return WT_I18N::translate('great x%d uncle', $up-1);
+				case 'F': return WT_I18N::translate('great x%d aunt', $up-1);
+				case 'U': return WT_I18N::translate('great x%d aunt/uncle', $up-1);
 				}
 			}
 		}
@@ -1948,10 +1857,4 @@ function get_new_xref($type='INDI', $ged_id=WT_GED_ID) {
  */
 function isFileExternal($file) {
 	return strpos($file, '://') !== false;
-}
-
-// Returns the part of the haystack before the first occurrence of the needle.
-// Use it to emulate the before_needle php 5.3.0 strstr function
-function strstrb($haystack, $needle){
-	return substr($haystack, 0, strpos($haystack, $needle));
 }

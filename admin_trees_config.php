@@ -383,12 +383,14 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 					</td>
 					<td><select name="NEW_CONTACT_USER_ID">
 					<?php
-						$CONTACT_USER_ID=get_gedcom_setting(WT_GED_ID, 'CONTACT_USER_ID');
-						foreach (get_all_users() as $user_id=>$user_name) {
-							if (get_user_setting($user_id, 'verified_by_admin')) {
-								echo "<option value=\"".$user_id."\"";
-								if ($CONTACT_USER_ID==$user_id) echo " selected=\"selected\"";
-								echo ">".getUserFullName($user_id)." - ".$user_name."</option>";
+						$CONTACT_USER_ID = get_gedcom_setting(WT_GED_ID, 'CONTACT_USER_ID');
+						foreach (WT_User::getAll() as $user) {
+							if ($user->getSetting('verified_by_admin')) {
+								echo "<option value=\"" . $user->getUserId() . "\"";
+								if ($CONTACT_USER_ID == $user->getUserId()) {
+									echo " selected=\"selected\"";
+								}
+								echo '>' . WT_Filter::escapeHtml($user->getRealName()) . ' - ' . WT_Filter::escapeHtml($user->getUserName()) . '</option>';
 							}
 						}
 					?>
@@ -401,13 +403,13 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 					</td>
 					<td><select name="NEW_WEBMASTER_USER_ID">
 					<?php
-						$WEBMASTER_USER_ID=get_gedcom_setting(WT_GED_ID, 'WEBMASTER_USER_ID');
-						foreach (get_all_users() as $user_id=>$user_name) {
-							if (userIsAdmin($user_id)) {
-								echo "<option value=\"".$user_id."\"";
-								if ($WEBMASTER_USER_ID==$user_id) echo " selected=\"selected\"";
-								echo ">".getUserFullName($user_id)." - ".$user_name."</option>";
+						$WEBMASTER_USER_ID = get_gedcom_setting(WT_GED_ID, 'WEBMASTER_USER_ID');
+						foreach (WT_User::getAdmins() as $user) {
+							echo '<option value="' . $user_id . '"';
+							if ($WEBMASTER_USER_ID == $user->getUserId()) {
+								echo ' selected="selected"';
 							}
+							echo '>' . $user->getFullName() . ' - ' . $user->getUserName() . '</option>';
 						}
 					?>
 					</select>

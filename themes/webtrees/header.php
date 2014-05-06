@@ -58,7 +58,7 @@ $this
 			<li>
 				<?php
 				if (WT_USER_ID) {
-					echo '<a href="edituser.php">', WT_I18N::translate('Logged in as '), ' ', getUserFullName(WT_USER_ID), '</a></li> <li>', logout_link();
+					echo '<a href="edituser.php">', WT_I18N::translate('Logged in as '), ' ', WT_Filter::escapeHtml(WT_User::currentUser()->getRealName()), '</a></li> <li>', logout_link();
 				} else {
 					echo login_link();
 				}

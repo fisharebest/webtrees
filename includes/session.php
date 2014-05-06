@@ -29,7 +29,7 @@ if (!defined('WT_SCRIPT_NAME')) {
 
 // Identify ourself
 define('WT_WEBTREES',     'webtrees');
-define('WT_VERSION',      '1.5.3-dev');
+define('WT_VERSION',      '1.5.4-dev');
 define('WT_VERSION_TEXT', WT_VERSION); // Deprecated
 
 // External URLs
@@ -43,19 +43,19 @@ define('WT_STATIC_URL', ''); // For example, http://my.cdn.com/webtrees-static-1
 // Optionally, load major JS libraries from Google’s public CDN
 define ('WT_USE_GOOGLE_API', false);
 if (WT_USE_GOOGLE_API) {
-	define('WT_JQUERY_URL',        'https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js');
+	define('WT_JQUERY_URL',        'https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js');
 	define('WT_JQUERYUI_URL',      'https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js');
 } else {
-	define('WT_JQUERY_URL',        WT_STATIC_URL.'js/jquery-1.11.0.js');
+	define('WT_JQUERY_URL',        WT_STATIC_URL.'js/jquery-1.11.1.js');
 	define('WT_JQUERYUI_URL',      WT_STATIC_URL.'js/jquery-ui-1.10.4.js');
 }
-define('WT_JQUERY_COLORBOX_URL',   WT_STATIC_URL.'js/jquery.colorbox-1.4.15.js');
-define('WT_JQUERY_COOKIE_URL',     WT_STATIC_URL.'js/jquery.cookie-1.4.0.js');
-define('WT_JQUERY_DATATABLES_URL', WT_STATIC_URL.'js/jquery.datatables-1.9.4.js');
-define('WT_JQUERY_JEDITABLE_URL',  WT_STATIC_URL.'js/jquery.jeditable-1.7.1.js');
-define('WT_JQUERY_WHEELZOOM_URL',  WT_STATIC_URL.'js/jquery.wheelzoom-1.1.2.js');
+define('WT_JQUERY_COLORBOX_URL',   WT_STATIC_URL.'js/jquery.colorbox-1.5.9.js');
+define('WT_JQUERY_COOKIE_URL',     WT_STATIC_URL.'js/jquery.cookie-1.4.1.js');
+define('WT_JQUERY_DATATABLES_URL', WT_STATIC_URL.'js/jquery.datatables-1.10.0.js');
+define('WT_JQUERY_JEDITABLE_URL',  WT_STATIC_URL.'js/jquery.jeditable-1.7.3.js');
+define('WT_JQUERY_WHEELZOOM_URL',  WT_STATIC_URL.'js/jquery.wheelzoom-2.0.0.js');
 define('WT_MODERNIZR_URL',         WT_STATIC_URL.'js/modernizr.custom-2.6.2.js');
-define('WT_WEBTREES_JS_URL',       WT_STATIC_URL.'js/webtrees-1.5.3.js');
+define('WT_WEBTREES_JS_URL',       WT_STATIC_URL.'js/webtrees-1.5.4.js');
 
 // Location of our modules and themes.  These are used as URLs and folder paths.
 define('WT_MODULES_DIR', 'modules_v3/'); // Update setup.php and build/Makefile when this changes
@@ -203,7 +203,51 @@ require WT_ROOT.'includes/functions/functions_date.php';
 require WT_ROOT.'includes/functions/functions_charts.php';
 require WT_ROOT.'includes/functions/functions_utf-8.php';
 
-set_error_handler('wt_error_handler');
+// Set a custom error handler
+set_error_handler(function ($errno, $errstr, $errfile, $errline) {
+	if ((error_reporting() > 0)&&($errno<2048)) {
+		if (WT_ERROR_LEVEL==0) {
+			return;
+		}
+		$fmt_msg="<br>ERROR {$errno}: {$errstr}<br>";
+		$log_msg="ERROR {$errno}: {$errstr};";
+		// Although debug_backtrace should always exist in PHP5, without this check, PHP sometimes crashes.
+		// Possibly calling it generates an error, which causes infinite recursion??
+		if ($errno < 16 && function_exists("debug_backtrace") && strstr($errstr, "headers already sent by") === false) {
+			$backtrace = debug_backtrace();
+			$num = count($backtrace);
+			if (WT_ERROR_LEVEL == 1) {
+				$num = 1;
+			}
+			for ($i = 0; $i < $num; $i++) {
+				if ($i === 0) {
+					$fmt_msg .= "0 Error occurred on ";
+					$log_msg .= "\n0 Error occurred on ";
+				} else {
+					$fmt_msg .= "{$i} called from ";
+					$log_msg .= "\n{$i} called from ";
+				}
+				if (isset($backtrace[$i]["line"]) && isset($backtrace[$i]["file"])) {
+					$fmt_msg .= "line <b>{$backtrace[$i]['line']}</b> of file <b>".basename($backtrace[$i]['file'])."</b>";
+					$log_msg .= "line {$backtrace[$i]['line']} of file ".basename($backtrace[$i]['file']);
+				}
+				if ($i<$num-1) {
+					$fmt_msg .= " in function <b>".$backtrace[$i+1]['function']."</b>";
+					$log_msg .= " in function ".$backtrace[$i+1]['function'];
+				}
+				$fmt_msg .= "<br>";
+			}
+		}
+		echo $fmt_msg;
+		if (function_exists('AddToLog')) {
+			AddToLog($log_msg, 'error');
+		}
+		if ($errno == 1) {
+			die();
+		}
+	}
+	return false;
+});
 
 // Load our configuration file, so we can connect to the database
 if (file_exists(WT_ROOT.'data/config.ini.php')) {
@@ -323,7 +367,7 @@ session_set_save_handler(
 			" ip_address   = VALUES(ip_address)," .
 			" session_data = VALUES(session_data)," .
 			" session_time = CURRENT_TIMESTAMP - SECOND(CURRENT_TIMESTAMP)"
-		)->execute(array($id, WT_USER_ID, $WT_REQUEST->getClientIp(), $data));
+		)->execute(array($id, (int)WT_User::currentUser()->getUserId(), $WT_REQUEST->getClientIp(), $data));
 		return true;
 	},
 	// destroy
@@ -373,9 +417,9 @@ if (!$SEARCH_SPIDER && !$WT_SESSION->initiated) {
 }
 
 // Who are we?
-define('WT_USER_ID',       getUserId());
-define('WT_USER_NAME',     getUserName());
-define('WT_USER_IS_ADMIN', userIsAdmin(WT_USER_ID));
+define('WT_USER_ID',       WT_User::currentUser()->getUserId());
+define('WT_USER_NAME',     WT_User::currentUser()->getUserName());
+define('WT_USER_IS_ADMIN', WT_User::currentUser()->isAdmin());
 
 // Set the active GEDCOM
 if (isset($_REQUEST['ged'])) {
@@ -405,10 +449,10 @@ if ($WT_TREE) {
 	define('WT_GEDURL',            $WT_TREE->tree_name_url);
 	define('WT_TREE_TITLE',        $WT_TREE->tree_title_html);
 	define('WT_IMPORTED',          $WT_TREE->imported);
-	define('WT_USER_GEDCOM_ADMIN', WT_USER_IS_ADMIN     || userGedcomAdmin(WT_USER_ID, WT_GED_ID));
-	define('WT_USER_CAN_ACCEPT',   $WT_TREE->canAcceptChanges(WT_USER_ID));
-	define('WT_USER_CAN_EDIT',     WT_USER_CAN_ACCEPT   || userCanEdit    (WT_USER_ID, WT_GED_ID));
-	define('WT_USER_CAN_ACCESS',   WT_USER_CAN_EDIT     || userCanAccess  (WT_USER_ID, WT_GED_ID));
+	define('WT_USER_GEDCOM_ADMIN', WT_User::currentUser()->isManager($WT_TREE));
+	define('WT_USER_CAN_ACCEPT',   WT_User::currentUser()->isModerator($WT_TREE));
+	define('WT_USER_CAN_EDIT',     WT_User::currentUser()->isEditor($WT_TREE));
+	define('WT_USER_CAN_ACCESS',   WT_User::currentUser()->isMember($WT_TREE));
 	define('WT_USER_GEDCOM_ID',    $WT_TREE->userPreference(WT_USER_ID, 'gedcomid'));
 	define('WT_USER_ROOT_ID',      $WT_TREE->userPreference(WT_USER_ID, 'rootid') ? $WT_TREE->userPreference(WT_USER_ID, 'rootid') : WT_USER_GEDCOM_ID);
 	define('WT_USER_PATH_LENGTH',  $WT_TREE->userPreference(WT_USER_ID, 'RELATIONSHIP_PATH_LENGTH'));
@@ -462,13 +506,14 @@ if (WT_USER_ID) {
 define('WT_CLIENT_JD', 2440588 + (int)(WT_CLIENT_TIMESTAMP/86400));
 
 // Application configuration data - things that aren’t (yet?) user-editable
-require WT_ROOT.'includes/config_data.php';
+require WT_ROOT . 'includes/config_data.php';
 
 // If we are logged in, and logout=1 has been added to the URL, log out
 // If we were logged in, but our account has been deleted, log out.
-if (WT_USER_ID && (WT_Filter::getBool('logout') || !WT_USER_NAME)) {
-	userLogout(WT_USER_ID);
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
+if (WT_Filter::getBool('logout')) {
+	AddToLog('Logout ' . WT_User::currentUser()->getUserName(), 'auth');
+	WT_User::logout();
+	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH);
 	exit;
 }
 

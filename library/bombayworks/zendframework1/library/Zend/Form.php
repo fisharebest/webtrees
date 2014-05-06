@@ -2494,7 +2494,27 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
      */
     public function hasErrors()
     {
-        return $this->_errorsExist;
+        $errors = $this->_errorsExist;
+
+        if (!$errors) {
+            /** @var Zend_Form_Element $element */
+            foreach ($this->getElements() as $element) {
+                if ($element->hasErrors()) {
+                    $errors = true;
+                    break;
+                }
+            }
+
+            /** @var Zend_Form_SubForm $subForm */
+            foreach ($this->getSubForms() as $subForm) {
+                if ($subForm->hasErrors()) {
+                    $errors = true;
+                    break;
+                }
+            }
+        }
+
+        return $errors;
     }
 
     /**

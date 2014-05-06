@@ -40,6 +40,7 @@ $controller=new WT_Controller_Simple();
 $controller->setPageTitle(WT_I18N::translate('webtrees Message'));
 
 $to_user_id=get_user_id($to);
+$to_user = new WT_User($to_user_id);
 
 // Only admins can send broadcast messages
 if ((!$to_user_id || $to=='all' || $to=='last_6mo' || $to=='never_logged') && !WT_USER_IS_ADMIN) {
@@ -121,7 +122,7 @@ case 'compose':
 	echo WT_Filter::getCsrf();
 	echo '<table>';
 	if ($to != 'all' && $to != 'last_6mo' && $to != 'never_logged') {
-		echo '<tr><td></td><td>', WT_I18N::translate('This message will be sent to %s', '<b>'.getUserFullName($to_user_id).'</b>'), '</td></tr>';
+		echo '<tr><td></td><td>', WT_I18N::translate('This message will be sent to %s', '<b>' . WT_Filter::escapeHtml($to_user->getRealName()) . '</b>'), '</td></tr>';
 	}
 	if (!WT_USER_ID) {
 		echo '<tr><td valign="top" width="15%" align="right">', WT_I18N::translate('Your Name:'), '</td>';

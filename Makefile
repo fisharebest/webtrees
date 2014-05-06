@@ -11,9 +11,9 @@ WT_VERSION=$(shell grep "'WT_VERSION'" includes/session.php | cut -d "'" -f 4 | 
 WT_RELEASE=$(shell grep "'WT_VERSION'" includes/session.php | cut -d "'" -f 4 | awk -F - '{print $$2}')
 
 # Location of minification tools
-CLOSURE_JS=$(BUILD_DIR)/compiler-20121212.jar
+CLOSURE_JS=$(BUILD_DIR)/compiler-20140407.jar
 CLOSURE_CSS=$(BUILD_DIR)/closure-stylesheets-20111230.jar
-YUI_COMPRESSOR=$(BUILD_DIR)/yuicompressor-2.4.7.jar
+YUI_COMPRESSOR=$(BUILD_DIR)/yuicompressor-2.4.8.jar
 HTML_COMPRESSION=$(BUILD_DIR)/htmlcompressor-1.5.3.jar
 
 # Files to minify
@@ -36,6 +36,7 @@ GZIP=gzip -9
 update: $(MO_FILES) $(CSS_RTL_FILES) $(PNG_RTL_FILES)
 
 vendor:
+	composer.phar self-update
 	composer.phar update
 	composer.phar dump-autoload --optimize
 

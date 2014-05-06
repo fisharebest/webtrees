@@ -1,3 +1,39 @@
+6.0.073 (2014-04-29)
+	- Bug #913 "Possible bug with line-height" was fixed.
+	- Bug #914 "MultiCell and FitCell" was fixed.
+	- Bug #915 "Problem with SVG Image using Radial Gradients" was fixed.
+
+6.0.072 (2014-04-27)
+	- Deprecated curly braces substring syntax was replaced with square braces.
+
+6.0.071 (2014-04-25)
+	- Bug #911 "error with buffered png pics" was fixed.
+
+6.0.070 (2014-04-24)
+	- Bug #910 "An SVG image is being cut off (with clipping mask) when you use align options" was fixed.
+
+6.0.069 (2014-04-24)
+	- Datamatrix Base256 encoding was fixed.
+
+6.0.068 (2014-04-22)
+	- Some Datamatrix barcode bugs were fixed.
+
+6.0.067 (2014-04-21)
+	- startLayer() method signature was changed to include a new "lock" parameter.
+
+6.0.066 (2014-04-20)
+	- Bug #908 "Linebreak is not considered when getting length of the next string" was fixed.
+
+6.0.065 (2014-04-10)
+	- Bug #905 "RGB percentage color bug in convertHTMLColorToDec()" was fixed.
+
+6.0.064 (2014-04-07)
+	- Header and Footer fonts are now set by default.
+	- Bug #904 "PDF corrupted" was fixed.
+
+6.0.063 (2014-04-03)
+	- Method TCPDF_IMAGES::_parsepng() was fixed to support transparency in Indexed images.
+
 6.0.062 (2014-03-02)
 	- The method startLayer() now accepts the NULL value for the $print parameter to not set the print layer option.
 

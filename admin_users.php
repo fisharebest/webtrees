@@ -70,46 +70,48 @@ $verified_by_admin  = WT_Filter::postBool('verified_by_admin');
 switch ($action) {
 case 'loadrows':
 	// Generate an AJAX/JSON response for datatables to load a block of rows
-	$sSearch=WT_Filter::get('sSearch');
+	$search = WT_Filter::get('search');
+	$search = $search['value'];
+	$start  = WT_Filter::getInteger('start');
+	$length = WT_Filter::getInteger('length');
+
 	$WHERE=" WHERE u.user_id>0";
 	$ARGS=array();
-	if ($sSearch) {
+	if ($search) {
 		$WHERE.=
 			" AND (".
 			" user_name LIKE CONCAT('%', ?, '%') OR " .
 			" real_name LIKE CONCAT('%', ?, '%') OR " .
 			" email     LIKE CONCAT('%', ?, '%'))";
-		$ARGS=array($sSearch, $sSearch, $sSearch);
+		$ARGS=array($search, $search, $search);
 	} else {
 	}
-	$iDisplayStart  = WT_Filter::getInteger('iDisplayStart');
-	$iDisplayLength = WT_Filter::getInteger('iDisplayLength');
-	set_user_setting(WT_USER_ID, 'admin_users_page_size', $iDisplayLength);
-	if ($iDisplayLength>0) {
-		$LIMIT=" LIMIT " . $iDisplayStart . ',' . $iDisplayLength;
+	set_user_setting(WT_USER_ID, 'admin_users_page_size', $length);
+	if ($length > 0) {
+		$LIMIT = " LIMIT " . $start . ',' . $length;
 	} else {
-		$LIMIT="";
+		$LIMIT = "";
 	}
-	$iSortingCols = WT_Filter::getInteger('iSortingCols');
-	if ($iSortingCols) {
+	$order = WT_Filter::get('order');
+	if ($order) {
 		$ORDER_BY=' ORDER BY ';
-		for ($i=0; $i<$iSortingCols; ++$i) {
+		for ($i = 0; $i < count($order); ++$i) {
+			if ($i > 0) {
+				$ORDER_BY .= ',';
+			}
 			// Datatables numbers columns 0, 1, 2, ...
 			// MySQL numbers columns 1, 2, 3, ...
-			switch (WT_Filter::get('sSortDir_'.$i)) {
+			switch ($order[$i]['dir']) {
 			case 'asc':
-				$ORDER_BY.=(1 + WT_Filter::getInteger('iSortCol_'.$i)).' ASC ';
+				$ORDER_BY .= (1 + $order[$i]['column']) . ' ASC ';
 				break;
 			case 'desc':
-				$ORDER_BY.=(1 + WT_Filter::getInteger('iSortCol_'.$i)).' DESC ';
+				$ORDER_BY .= (1 + $order[$i]['column']) . ' DESC ';
 				break;
-			}
-			if ($i<$iSortingCols-1) {
-				$ORDER_BY.=',';
 			}
 		}
 	} else {
-		$ORDER_BY='';
+		$ORDER_BY = '1 ASC';
 	}
 
 	$sql=
@@ -125,55 +127,55 @@ case 'loadrows':
 		$LIMIT;
 
 	// This becomes a JSON list, not array, so need to fetch with numeric keys.
-	$aaData=WT_DB::prepare($sql)->execute($ARGS)->fetchAll(PDO::FETCH_NUM);
+	$data=WT_DB::prepare($sql)->execute($ARGS)->fetchAll(PDO::FETCH_NUM);
 
 	// Reformat various columns for display
-	foreach ($aaData as &$aData) {
-		$aData[0]='<a href="#" title="'.WT_I18N::translate('Details').'">&nbsp;</a>';
+	foreach ($data as &$datum) {
+		$datum[0]='<a href="#" title="'.WT_I18N::translate('Details').'">&nbsp;</a>';
 		// $aData[1] is the user ID
-		$user_id  =$aData[1];
-		$user_name=$aData[2];
-		$aData[2]=edit_field_inline('user-user_name-'.$user_id, $aData[2]);
-		$aData[3]=edit_field_inline('user-real_name-'.$user_id, $aData[3]);
-		$aData[4]=edit_field_inline('user-email-'.    $user_id, $aData[4]);
+		$user_id  =$datum[1];
+		$user_name=$datum[2];
+		$datum[2]=edit_field_inline('user-user_name-'.$user_id, $datum[2]);
+		$datum[3]=edit_field_inline('user-real_name-'.$user_id, $datum[3]);
+		$datum[4]=edit_field_inline('user-email-'.    $user_id, $datum[4]);
 		// $aData[5] is a link to an email icon
 		if ($user_id != WT_USER_ID) {
-			$aData[5]='<i class="icon-email" onclick="return message(\''.$user_name.'\', \'\', \'\');"></i>';
+			$datum[5]='<i class="icon-email" onclick="return message(\''.$user_name.'\', \'\', \'\');"></i>';
 		}
-		$aData[6]=edit_field_language_inline('user_setting-'.$user_id.'-language', $aData[6]);
+		$datum[6]=edit_field_language_inline('user_setting-'.$user_id.'-language', $datum[6]);
 		// $aData[7] is the sortable registration timestamp
-		$aData[8]=format_timestamp($aData[8]);
-		if (date("U") - $aData[7] > 604800 && !$aData[11]) {
-			$aData[8]='<span class="red">'.$aData[8].'</span>';
+		$datum[8]=format_timestamp($datum[8]);
+		if (date("U") - $datum[7] > 604800 && !$datum[11]) {
+			$datum[8]='<span class="red">'.$datum[8].'</span>';
 		}
 		// $aData[9] is the sortable last-login timestamp
-		if ($aData[9]) {
-			$aData[10]=format_timestamp($aData[9]).'<br>'.WT_I18N::time_ago(WT_TIMESTAMP - $aData[9]);
+		if ($datum[9]) {
+			$datum[10]=format_timestamp($datum[9]).'<br>'.WT_I18N::time_ago(WT_TIMESTAMP - $datum[9]);
 		} else {
-			$aData[10]=WT_I18N::translate('Never');
+			$datum[10]=WT_I18N::translate('Never');
 		}
-		$aData[11]=edit_field_yes_no_inline('user_setting-'.$user_id.'-verified-',          $aData[11]);
-		$aData[12]=edit_field_yes_no_inline('user_setting-'.$user_id.'-verified_by_admin-', $aData[12]);
+		$datum[11]=edit_field_yes_no_inline('user_setting-'.$user_id.'-verified-',          $datum[11]);
+		$datum[12]=edit_field_yes_no_inline('user_setting-'.$user_id.'-verified_by_admin-', $datum[12]);
 		// Add extra column for "delete" action
 		if ($user_id != WT_USER_ID) {
-			$aData[13]='<div class="icon-delete" onclick="delete_user(\'' . WT_I18N::translate('Are you sure you want to delete “%s”?', WT_Filter::escapeJs($user_name)) . '\', \'' . WT_Filter::escapeJs($user_id) . '\');"></div>';
+			$datum[13]='<div class="icon-delete" onclick="delete_user(\'' . WT_I18N::translate('Are you sure you want to delete “%s”?', WT_Filter::escapeJs($user_name)) . '\', \'' . WT_Filter::escapeJs($user_id) . '\');"></div>';
 		} else {
 			// Do not delete ourself!
-			$aData[13]='';
+			$datum[13]='';
 		}
 	}
 
 	// Total filtered/unfiltered rows
-	$iTotalDisplayRecords=WT_DB::prepare("SELECT FOUND_ROWS()")->fetchOne();
-	$iTotalRecords=WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##user` WHERE user_id>0")->fetchOne();
+	$recordsFiltered = WT_DB::prepare("SELECT FOUND_ROWS()")->fetchOne();
+	$recordsTotal = WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##user` WHERE user_id>0")->fetchOne();
 
 	Zend_Session::writeClose();
 	header('Content-type: application/json');
 	echo json_encode(array( // See http://www.datatables.net/usage/server-side
-		'sEcho'                => WT_Filter::getInteger('sEcho'), // Always an integer
-		'iTotalRecords'        => $iTotalRecords,
-		'iTotalDisplayRecords' => $iTotalDisplayRecords,
-		'aaData'               => $aaData
+		'draw'            => WT_Filter::getInteger('draw'), // String, but always an integer
+		'recordsTotal'    => $recordsTotal,
+		'recordsFiltered' => $recordsFiltered,
+		'data'            => $data
 	));
 	exit;
 case 'load1row':
@@ -264,22 +266,19 @@ case 'createuser':
 		WT_FlashMessages::addMessage(WT_I18N::translate('Passwords do not match.'));
 		$action='createform';
 	} else {
-		// Create new uers
-		$user_id=create_user($username, $realname, $emailaddress, $pass1);
-		set_user_setting($user_id, 'reg_timestamp', date('U'));
-		set_user_setting($user_id, 'sessiontime', '0');
-		setUserFullName ($user_id, $realname);
-		setUserEmail    ($user_id, $emailaddress);
-		set_user_setting($user_id, 'theme',                $user_theme);
-		set_user_setting($user_id, 'language',             $user_language);
-		set_user_setting($user_id, 'contactmethod',        $new_contact_method);
-		set_user_setting($user_id, 'comment',              $new_comment);
-		set_user_setting($user_id, 'auto_accept',          $new_auto_accept);
-		set_user_setting($user_id, 'canadmin',             $canadmin);
-		set_user_setting($user_id, 'visibleonline',        $visibleonline);
-		set_user_setting($user_id, 'editaccount',          $editaccount);
-		set_user_setting($user_id, 'verified',             $verified);
-		set_user_setting($user_id, 'verified_by_admin',    $verified_by_admin);
+		$user = WT_User::create($username, $realname, $emailaddress, $pass1);
+		$user
+			->setSetting('reg_timestamp', date('U'))
+			->setSetting('sessiontime', '0')
+			->setSetting('theme',                $user_theme)
+			->setSetting('language',             $user_language)
+			->setSetting('contactmethod',        $new_contact_method)
+			->setSetting('auto_accept',          $new_auto_accept)
+			->setSetting('canadmin',             $canadmin)
+			->setSetting('visibleonline',        $visibleonline)
+			->setSetting('editaccount',          $editaccount)
+			->setSetting('verified',             $verified)
+			->setSetting('verified_by_admin',    $verified_by_admin);
 		foreach (WT_Tree::getAll() as $tree) {
 			$tree->userPreference($user_id, 'gedcomid', WT_Filter::post('gedcomid'.$tree->tree_id, WT_REGEX_XREF));
 			$tree->userPreference($user_id, 'rootid',   WT_Filter::post('rootid'.$tree->tree_id, WT_REGEX_XREF));
@@ -504,36 +503,34 @@ case 'cleanup':
 	<?php
 	// Check users not logged in too long
 	$ucnt = 0;
-	foreach (get_all_users() as $user_id=>$user_name) {
-		$userName = getUserFullName($user_id);
-		if ((int)get_user_setting($user_id, 'sessiontime') == "0")
-			$datelogin = (int)get_user_setting($user_id, 'reg_timestamp');
-		else
-			$datelogin = (int)get_user_setting($user_id, 'sessiontime');
-		if ((mktime(0, 0, 0, (int)date("m")-$month, (int)date("d"), (int)date("Y")) > $datelogin) && get_user_setting($user_id, 'verified') && get_user_setting($user_id, 'verified_by_admin')) {
-			?><tr><td><?php echo $user_name, " - <p>", $userName, "</p>", WT_I18N::translate('User’s account has been inactive too long: ');
+	foreach (WT_User::getAll() as $user) {
+		if ($user->getSetting('sessiontime') == "0") {
+			$datelogin = (int)$user->getSetting('reg_timestamp');
+		} else {
+			$datelogin = (int)$user->getSetting('sessiontime');
+		}
+		if ((mktime(0, 0, 0, (int)date("m")-$month, (int)date("d"), (int)date("Y")) > $datelogin) && $user->getSetting('verified') && $user->getSetting('verified_by_admin')) {
+			?><tr><td><?php echo WT_Filter::escapeHtml($user->getUserName()), " - <p>", WT_Filter::escapeHtml($user->getRealName()), "</p>", WT_I18N::translate('User’s account has been inactive too long: ');
 			echo timestamp_to_gedcom_date($datelogin)->Display(false);
 			$ucnt++;
-			?></td><td><input type="checkbox" name="<?php echo "del_", str_replace(array(".", "-", " "), array("_", "_", "_"), $user_name); ?>" value="1"></td></tr><?php
+			?></td><td><input type="checkbox" name="del_<?php echo $user->getUserId(); ?>" value="1"></td></tr><?php
 		}
 	}
 
 	// Check unverified users
-	foreach (get_all_users() as $user_id=>$user_name) {
-		if (((date("U") - (int)get_user_setting($user_id, 'reg_timestamp')) > 604800) && !get_user_setting($user_id, 'verified')) {
-			$userName = getUserFullName($user_id);
-			?><tr><td><?php echo $user_name, " - ", $userName, ":&nbsp;&nbsp;", WT_I18N::translate('User didn’t verify within 7 days.');
+	foreach (WT_User::getAll() as $user) {
+		if (((date("U") - (int)$user->getSetting('reg_timestamp')) > 604800) && !$user->getSetting('verified')) {
+			?><tr><td><?php echo WT_Filter::escapeHtml($user->getUserName()), " - ", WT_Filter::escapeHtml($user->getRealName()), ":&nbsp;&nbsp;", WT_I18N::translate('User didn’t verify within 7 days.');
 			$ucnt++;
-			?></td><td><input type="checkbox" checked="checked" name="<?php echo "del_", str_replace(array(".", "-", " "), array("_",  "_", "_"), $user_name); ?>" value="1"></td></tr><?php
+			?></td><td><input type="checkbox" checked="checked" name="del_<?php echo $user->getUserId(); ?>" value="1"></td></tr><?php
 		}
 	}
 
 	// Check users not verified by admin
-	foreach (get_all_users() as $user_id=>$user_name) {
-		if (!get_user_setting($user_id, 'verified_by_admin') && get_user_setting($user_id, 'verified')) {
-			$userName = getUserFullName($user_id);
-			?><tr><td><?php echo $user_name, " - ", $userName, ":&nbsp;&nbsp;", WT_I18N::translate('User not verified by administrator.');
-			?></td><td><input type="checkbox" name="<?php echo "del_", str_replace(array(".", "-", " "), array("_", "_", "_"), $user_name); ?>" value="1"></td></tr><?php
+	foreach (WT_User::getAll() as $user) {
+		if (!$user->getSetting('verified_by_admin') && $user->getSetting('verified')) {
+			?><tr><td><?php echo WT_Filter::escapeHtml($user->getUserName()), " - ", WT_Filter::escapeHtml($user->getRealName()), ":&nbsp;&nbsp;", WT_I18N::translate('User not verified by administrator.');
+			?></td><td><input type="checkbox" name="del_<?php echo $user->getUserId(); ?>" value="1"></td></tr><?php
 			$ucnt++;
 		}
 	}
@@ -551,12 +548,11 @@ case 'cleanup':
 	</form><?php
 	break;
 case 'cleanup2':
-	foreach (get_all_users() as $user_id=>$user_name) {
-		$var = "del_".str_replace(array(".", "-", " "), array("_", "_", "_"), $user_name);
-		if (WT_Filter::post($var)=='1') {
-			delete_user($user_id);
-			AddToLog("deleted user ->{$user_name}<-", 'auth');
-			echo WT_I18N::translate('Deleted user: '); echo $user_name, "<br>";
+	foreach (WT_User::getAll() as $user) {
+		if (WT_Filter::post('del_' . $user->getUserId()) == '1') {
+			AddToLog('Deleted user: ' . $user->getUserName() , 'auth');
+			echo WT_I18N::translate('Deleted user: '), $user->getUserName(), '<br>';
+			$user->delete();
 		}
 	}
 	break;
@@ -591,33 +587,33 @@ default:
 		->addExternalJavascript(WT_JQUERY_JEDITABLE_URL)
 		->addInlineJavascript('
 			var oTable = jQuery("#list").dataTable({
-				"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
+				dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 				'.WT_I18N::datatablesI18N().',
-				"bProcessing"     : true,
-				"bServerSide"     : true,
-				"sAjaxSource"     : "'.WT_SCRIPT_NAME.'?action=loadrows",
-				"bJQueryUI": true,
-				"bAutoWidth":false,
-				"iDisplayLength": '.get_user_setting(WT_USER_ID, 'admin_users_page_size', 10).',
-				"sPaginationType": "full_numbers",
-				"aaSorting": [[2,"asc"]],
-				"aoColumns": [
-					/* details           */ { bSortable:false, sClass:"icon-open" },
-					/* user-id           */ { bVisible:false },
+				processing: true,
+				serverSide: true,
+				ajax: "'.WT_SCRIPT_NAME.'?action=loadrows",
+				jQueryUI: true,
+				autoWidth: false,
+				pageLength: '.get_user_setting(WT_USER_ID, 'admin_users_page_size', 10).',
+				pagingType: "full_numbers",
+				sorting: [[2,"asc"]],
+				columns: [
+					/* details           */ { sortable: false, class: "icon-open" },
+					/* user-id           */ { visible: false },
 					/* user_name         */ null,
 					/* real_name         */ null,
 					/* email             */ null,
-					/* email link        */ { bSortable:false },
+					/* email link        */ { sortable: false },
 					/* language          */ null,
-					/* registered (sort) */ { bVisible:false },
-					/* registered        */ { iDataSort:7 },
-					/* last_login (sort) */ { bVisible:false },
-					/* last_login        */ { iDataSort:9 },
-					/* verified          */ { sClass:"center" },
-					/* approved          */ { sClass:"center" },
-					/* delete            */ { bSortable:false }
+					/* registered (sort) */ { visible: false },
+					/* registered        */ { dataSort: 7 },
+					/* last_login (sort) */ { visible: false },
+					/* last_login        */ { dataSort: 9 },
+					/* verified          */ { class: "center" },
+					/* approved          */ { class: "center" },
+					/* delete            */ { sortable: false }
 				],
-				"fnDrawCallback": function() {
+				"drawCallback": function() {
 					// Our JSON responses include Javascript as well as HTML.  This does not get executed automatically…
 					jQuery("#list script").each(function() {
 						eval(this.text);

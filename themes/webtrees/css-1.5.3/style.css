@@ -296,6 +296,10 @@ table.center {
 	width: 100%;
 }
 
+div.fact_SHARED_NOTE {
+	clear:both
+}
+
 .facts_label {
 	background-color: #81a9cb;
 	font-size: 12px;
@@ -5254,7 +5258,7 @@ a.icon-udarrow:hover {
 
 [dir=rtl] #cboxSlideshow {
 	right: 57px;
-	left: 0;
+	left: auto;
 }
 
 /* Census assistant module */

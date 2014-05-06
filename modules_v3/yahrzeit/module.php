@@ -124,23 +124,23 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 				->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 				->addInlineJavascript('
 					jQuery("#'.$table_id.'").dataTable({
-						"sDom": \'t\',
+						dom: \'t\',
 						'.WT_I18N::datatablesI18N().',
-						"bAutoWidth":false,
-						"bPaginate": false,
-						"bLengthChange": false,
-						"bFilter": false,
-						"bInfo": true,
-						"bJQueryUI": true,
-						"aaSorting": [[5,"asc"]],
-						"aoColumns": [
-							/* 0-name */ { "iDataSort": 1 },
-							/* 1-NAME */ { "bVisible": false },
-							/* 2-date */ { "iDataSort": 3 },
-							/* 3-DATE */ { "bVisible": false },
-							/* 4-Aniv */ { "sClass": "center"},
-							/* 5-yart */ { "iDataSort": 6 },
-							/* 6-YART */ { "bVisible": false }
+						autoWidth: false,
+						paginate: false,
+						lengthChange: false,
+						filter: false,
+						info: true,
+						jQueryUI: true,
+						sorting: [[5,"asc"]],
+						columns: [
+							/* 0-name */ { dataSort: 1 },
+							/* 1-NAME */ { visible: false },
+							/* 2-date */ { dataSort: 3 },
+							/* 3-DATE */ { visible: false },
+							/* 4-Aniv */ { class: "center"},
+							/* 5-yart */ { dataSort: 6 },
+							/* 6-YART */ { visible: false }
 						]
 					});
 					jQuery("#'.$table_id.'").css("visibility", "visible");

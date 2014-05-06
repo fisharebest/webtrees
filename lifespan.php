@@ -179,13 +179,13 @@ $people = count($controller->people);
 								</select>
 							</td>
 							<td>
-								<input type="text" name="beginYear" size="5" value="<?php echo $controller->beginYear==0?'':$controller->beginYear; ?>">
+								<input type="text" name="beginYear" size="5" value="<?php echo $controller->beginYear==0 ? '' : $controller->beginYear; ?>">
 							</td>
 							<td>
-								<input type="text" name="endYear" size="5" value="<?php echo $controller->endYear==0?'':$controller->endYear; ?>">
+								<input type="text" name="endYear" size="5" value="<?php echo $controller->endYear==0 ? '' : $controller->endYear; ?>">
 							</td>
 							<td>
-								<input type="text" name="place" size="15" value="<?php echo $controller->place; ?>">
+								<input type="text" name="place" size="15" value="<?php echo WT_Filter::escapeHtml($controller->place); ?>">
 							</td>
 							<td>
 								<input type="submit" name="search" value="<?php echo WT_I18N::translate('Search'); ?>">

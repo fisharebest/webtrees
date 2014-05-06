@@ -84,27 +84,27 @@ $controller
 				});
 	  }
 
-		var oTable = jQuery("#installed_table").dataTable( {
-			"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
+		jQuery("#installed_table").dataTable( {
+			dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 			'.WT_I18N::datatablesI18N().',
-			"bJQueryUI": true,
-			"bAutoWidth":false,
-			"aaSorting": [[ 1, "asc" ]],
-			"iDisplayLength": 10,
-			"sPaginationType": "full_numbers",
-			"bStateSave": true,
-			"iCookieDuration": 180,
-			"aoColumns" : [
-				{ bSortable: false, sClass: "center" },
+			jQueryUI: true,
+			autoWidth: false,
+			sorting: [[ 1, "asc" ]],
+			pageLength: 10,
+			pagingType: "full_numbers",
+			stateSave: true,
+			stateDuration: 180,
+			columns : [
+				{ sortable: false, class: "center" },
 				null,
 				null,
-				{ sClass: "center" },
-				{ sClass: "center" },
-				{ sClass: "center" },
-				{ sClass: "center" },
-				{ sClass: "center", bVisible: false }, // The WT_Module system does not yet include charts
-				{ sClass: "center" },
-				{ sClass: "center", bVisible: false } // The WT_Module system does not yet include themes
+				{ class: "center" },
+				{ class: "center" },
+				{ class: "center" },
+				{ class: "center" },
+				{ class: "center", visible: false }, // The WT_Module system does not yet include charts
+				{ class: "center" },
+				{ class: "center", visible: false } // The WT_Module system does not yet include themes
 			]
 		});
 	');
