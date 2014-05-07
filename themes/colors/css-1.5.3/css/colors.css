@@ -330,9 +330,6 @@ span.title {
 #main-menu li:hover > ul {
 	visibility: visible;
 	opacity: 1;
-	-webkit-transition: visibility 0s linear 0s, opacity .2s linear 0s;
-	-moz-transition: visibility 0s linear 0s, opacity .2s linear 0s;
-	-o-transition: visibility 0s linear 0s, opacity .2s linear 0s;
 }
 
 /* First row submenu style*/
