@@ -420,7 +420,7 @@ class WT_Media extends WT_GedcomRecord {
 			' type="'           . $this->mimeType()                  . '"' .
 			' data-obje-url="'  . $this->getHtmlUrl()                . '"' .
 			' data-obje-note="' . WT_Filter::escapeHtml($this->getNote()) . '"' .
-			' data-title="'     . strip_tags($this->getFullName())   . '"' .
+			' data-title="'     . WT_Filter::escapeHtml($this->getFullName())   . '"' .
 			'>' . $image . '</a>';
 	}
 
