@@ -110,12 +110,10 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 	}
 
 	/**
-	* print information for a name record
-	*
-	* Called from the individual information page
-	* @see individual.php
-	* @param Event $event the event object
-	*/
+	 * print information for a name record
+	 *
+	 * @param WT_Fact $event the event object
+	 */
 	function print_name_record(WT_Fact $event) {
 
 		$factrec = $event->getGedcom();
@@ -206,12 +204,10 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 	}
 
 	/**
-	* print information for a sex record
-	*
-	* Called from the individual information page
-	* @see individual.php
-	* @param Event $event the Event object
-	*/
+	 * print information for a sex record
+	 *
+	 * @param WT_Fact $event the Event object
+	 */
 	function print_sex_record(WT_Fact $event) {
 		$sex = $event->getValue();
 		if (empty($sex)) $sex = 'U';
@@ -254,8 +250,8 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 		echo '</span>';
 	}
 	/**
-	* get edit menu
-	*/
+	 * get edit menu
+	 */
 	function getEditMenu() {
 		$SHOW_GEDCOM_RECORD=get_gedcom_setting(WT_GED_ID, 'SHOW_GEDCOM_RECORD');
 
@@ -331,11 +327,12 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 	}
 
 	/**
-	* get the person box stylesheet class
-	* for the given person
-	* @param Person $person
-	* @return string returns 'person_box', 'person_boxF', or 'person_boxNN'
-	*/
+	 * get the person box stylesheet class for the given person
+	 *
+	 * @param Person $person
+	 *
+	 * @return string returns 'person_box', 'person_boxF', or 'person_boxNN'
+	 */
 	function getPersonStyle($person) {
 		switch($person->getSex()) {
 			case 'M':

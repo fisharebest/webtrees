@@ -32,8 +32,8 @@ require_once WT_ROOT.'includes/functions/functions_export.php';
 require_once WT_ROOT.'library/pclzip.lib.php';
 
 /**
-* Main controller class for the Clippings page.
-*/
+ * Main controller class for the Clippings page.
+ */
 class WT_Controller_Clippings {
 
 	var $download_data;

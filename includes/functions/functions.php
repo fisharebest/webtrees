@@ -175,15 +175,15 @@ function load_gedcom_settings($ged_id=WT_GED_ID) {
  * 2 PLAC Phoenix, Maricopa, Arizona</code>
  * The following example is the DATE subrecord of the above BIRT subrecord:
  * <code>2 DATE 1 JAN 1900</code>
- * @author John Finlay (yalnifj)
- * @author Roland Dalmulder (roland-d)
- * @param int $level the N level of the subrecord to get
- * @param string $tag a gedcom tag or string to search for in the record (ie 1 BIRT or 2 DATE)
+ *
+ * @param int    $level  the N level of the subrecord to get
+ * @param string $tag    a gedcom tag or string to search for in the record (ie 1 BIRT or 2 DATE)
  * @param string $gedrec the parent gedcom record to search in
- * @param int $num this allows you to specify which matching <var>$tag</var> to get.  Oftentimes a
- * gedcom record will have more that 1 of the same type of subrecord.  An individual may have
- * multiple events for example.  Passing $num=1 would get the first 1.  Passing $num=2 would get the
- * second one, etc.
+ * @param int    $num    this allows you to specify which matching <var>$tag</var> to get.  Oftentimes a
+ *                       gedcom record will have more that 1 of the same type of subrecord.  An individual may have
+ *                       multiple events for example.  Passing $num=1 would get the first 1.  Passing $num=2 would get the
+ *                       second one, etc.
+ *
  * @return string the subrecord that was found or an empty string "" if not found.
  */
 function get_sub_record($level, $tag, $gedrec, $num=1) {
@@ -357,11 +357,13 @@ function get_associate_relationship_name(WT_Individual $person1, WT_Individual $
 /**
  * Get relationship between two individuals in the gedcom
  *
- * @param string $pid1 - the ID of the first person to compute the relationship from
- * @param string $pid2 - the ID of the second person to compute the relatiohip to
- * @param bool $followspouse = whether to add spouses to the path
- * @param int $maxlength - the maximum length of path
- * @param int $path_to_find - which path in the relationship to find, 0 is the shortest path, 1 is the next shortest path, etc
+ * @param WT_Individual $person1 the person to compute the relationship from
+ * @param WT_Individual $person2 the person to compute the relatiohip to
+ * @param bool          $followspouse whether to add spouses to the path
+ * @param int           $maxlength    the maximum length of path
+ * @param int           $path_to_find which path in the relationship to find, 0 is the shortest path, 1 is the next shortest path, etc
+ *
+ * @return array|bool An array of nodes on the relationship path, or false if no path found
  */
 function get_relationship(WT_Individual $person1, WT_Individual $person2, $followspouse=true, $maxlength=0, $path_to_find=0) {
 	if ($person1 === $person2) {

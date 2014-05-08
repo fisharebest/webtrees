@@ -47,8 +47,8 @@ class WT_Stats {
 	}
 
 	/**
-	* Return a string of all supported tags and an example of its output in table row form.
-	*/
+	 * Return a string of all supported tags and an example of its output in table row form.
+	 */
 	function getAllTagsTable() {
 		$examples = array();
 		foreach (get_class_methods($this) as $method) {
@@ -82,8 +82,8 @@ class WT_Stats {
 	}
 
 	/**
-	* Return a string of all supported tags in plain text.
-	*/
+	 * Return a string of all supported tags in plain text.
+	 */
 	function getAllTagsText() {
 		$examples = array();
 		foreach (get_class_methods($this) as $method) {
@@ -98,8 +98,8 @@ class WT_Stats {
 	}
 
 	/*
-	* Get tags and their parsed results.
-	*/
+	 * Get tags and their parsed results.
+	 */
 	function getTags($text) {
 		static $funcs;
 
@@ -114,8 +114,8 @@ class WT_Stats {
 		$new_values = array(); // value to replace it with
 
 		/*
-		* Parse block tags.
-		*/
+		 * Parse block tags.
+		 */
 		for ($i=0; $i < $c; $i++) {
 			$full_tag = $tags[$i];
 			// Added for new parameter support
@@ -145,8 +145,8 @@ class WT_Stats {
 	}
 
 	/*
-	* Embed tags in text
-	*/
+	 * Embed tags in text
+	 */
 	function embedTags($text) {
 		if (strpos($text, '#')!==false) {
 			list($new_tags, $new_values) = $this->getTags($text);
@@ -1819,8 +1819,8 @@ class WT_Stats {
 ///////////////////////////////////////////////////////////////////////////////
 
 	/*
-	* Query the database for marriage tags.
-	*/
+	 * Query the database for marriage tags.
+	 */
 	function _marriageQuery($type='full', $age_dir='ASC', $sex='F', $show_years=false) {
 		if ($sex == 'F') {$sex_field = 'f_wife';} else {$sex_field = 'f_husb';}
 		if ($age_dir != 'ASC') {$age_dir = 'DESC';}
@@ -3199,9 +3199,8 @@ class WT_Stats {
 ///////////////////////////////////////////////////////////////////////////////
 
 	/*
-	* Most Common Given Names Block
-	* Original block created by kiwi
-	*/
+	 * Most Common Given Names Block
+	 */
 	static function _commonGivenQuery($sex='B', $type='list', $show_tot=false, $params=null) {
 		global $TEXT_DIRECTION, $GEDCOM;
 		static $sort_types = array('count'=>'asort', 'rcount'=>'arsort', 'alpha'=>'ksort', 'ralpha'=>'krsort');
@@ -3570,8 +3569,8 @@ class WT_Stats {
 	static function hitCountObje($params=null) {return self::_getHitCount('mediaviewer.php',$params);}
 
 	/*
-	* Leave for backwards compatability? Anybody using this?
-	*/
+	 * Leave for backwards compatability? Anybody using this?
+	 */
 	static function _getEventType($type) {
 		$eventTypes=array(
 			'BIRT'=>WT_I18N::translate('birth'),

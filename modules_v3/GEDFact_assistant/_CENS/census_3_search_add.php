@@ -1258,11 +1258,14 @@ if (!defined('WT_WEBTREES')) {
  * print the information for an individual chart box
  *
  * find and print a given individuals information for a pedigree chart
- * @param string $pid the Gedcom Xref ID of the   to print
- * @param int $style the style to print the box in, 1 for smaller boxes, 2 for larger boxes
- * @param boolean $show_famlink set to true to show the icons for the popup links and the zoomboxes
- * @param int $count on some charts it is important to keep a count of how many boxes were printed
- */
+ *
+ * @param string $pid   the Gedcom Xref ID of the   to print
+ * @param int    $style the style to print the box in, 1 for smaller boxes, 2 for larger boxes
+ * @param int    $count on some charts it is important to keep a count of how many boxes were printed
+ * @param string $personcount
+ * @param        $currpid
+ * @param        $censyear
+  */
 
 function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", $currpid, $censyear) {
 	global $SHOW_HIGHLIGHT_IMAGES, $bwidth, $bheight, $PEDIGREE_FULL_DETAILS, $SHOW_PEDIGREE_PLACES;

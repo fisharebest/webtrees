@@ -132,8 +132,8 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 	}
 
 	/**
-	* check the privacy of the incoming people to make sure they can be shown
-	*/
+	 * check the privacy of the incoming people to make sure they can be shown
+	 */
 	function checkPrivacy() {
 		$printed = false;
 		for ($i=0; $i<count($this->people); $i++) {

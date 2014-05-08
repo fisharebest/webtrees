@@ -29,13 +29,15 @@ if (!defined('WT_WEBTREES')) {
 }
 
 /**
-* print the information for an individual chart box
-*
-* find and print a given individuals information for a pedigree chart
-* @param string $pid the Gedcom Xref ID of the   to print
-* @param int $style the style to print the box in, 1 for smaller boxes, 2 for larger boxes
-* @param int $count on some charts it is important to keep a count of how many boxes were printed
-*/
+ * print the information for an individual chart box
+ *
+ * find and print a given individuals information for a pedigree chart
+ *
+ * @param WT_Individual $person The person to print
+ * @param int           $style  the style to print the box in, 1 for smaller boxes, 2 for larger boxes
+ * @param int           $count  on some charts it is important to keep a count of how many boxes were printed
+ * @param string        $personcount
+ */
 function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 	global $GEDCOM;
 	global $SHOW_HIGHLIGHT_IMAGES, $bwidth, $bheight, $PEDIGREE_FULL_DETAILS, $SHOW_PEDIGREE_PLACES;
@@ -55,7 +57,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 		echo "<div id=\"out-", rand(), "\" class=\"person_boxNN\" style=\"width: ", $bwidth, "px; height: ", $bheight, "px; overflow: hidden;\">";
 		echo '<br>';
 		echo '</div>';
-		return false;
+		return;
 	}
 	$pid=$person->getXref();
 	if ($count==0) $count = rand();
@@ -242,10 +244,10 @@ function header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CA
 }
 
 /**
-* Prints Exection Statistics
-*
-* prints out the execution time and the databse queries
-*/
+ * Prints Exection Statistics
+ *
+ * prints out the execution time and the databse queries
+ */
 function execution_stats() {
 	global $start_time;
 
@@ -383,13 +385,15 @@ function contact_links($ged_id=WT_GED_ID) {
 }
 
 /**
-* print a note record
-* @param string $text
-* @param int $nlevel the level of the note record
-* @param string $nrec the note record to print
-* @param bool $textOnly Don't print the "Note: " introduction
-* @return boolean
-*/
+ * print a note record
+ *
+ * @param string $text
+ * @param int    $nlevel   the level of the note record
+ * @param string $nrec     the note record to print
+ * @param bool   $textOnly Don't print the "Note: " introduction
+ *
+ * @return boolean
+ */
 function print_note_record($text, $nlevel, $nrec, $textOnly=false) {
 	global $WT_TREE;
 	
@@ -434,11 +438,14 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false) {
 }
 
 /**
-* Print all of the notes in this fact record
-* @param string $factrec the factrecord to print the notes from
-* @param int $level The level of the factrecord
-* @param bool $textOnly Don't print the "Note: " introduction
-*/
+ * Print all of the notes in this fact record
+ *
+ * @param string $factrec  the factrecord to print the notes from
+ * @param int    $level    The level of the factrecord
+ * @param bool   $textOnly Don't print the "Note: " introduction
+ *
+ * @return string HTML
+ */
 function print_fact_notes($factrec, $level, $textOnly=false) {
 	$data = "";
 	$previous_spos = 0;
@@ -597,10 +604,13 @@ function format_asso_rela_record(WT_Fact $event) {
 }
 
 /**
-* Format age of parents in HTML
-*
-* @param string $pid child ID
-*/
+ * Format age of parents in HTML
+ *
+ * @param WT_Individual $person child
+ * @param WT_Date       $birth_date
+ *
+ * @return string HTML
+ */
 function format_parents_age(WT_Individual $person, WT_Date $birth_date) {
 	$html='';
 	$families=$person->getChildFamilies();
@@ -778,14 +788,17 @@ function format_fact_date(WT_Fact $event, WT_GedcomRecord $record, $anchor=false
 	}
 	return $html;
 }
+
 /**
-* print fact PLACe TEMPle STATus
-*
-* @param Event $event gedcom fact record
-* @param boolean $anchor option to print a link to placelist
-* @param boolean $sub option to print place subrecords
-* @param boolean $lds option to print LDS TEMPle and STATus
-*/
+ * print fact PLACe TEMPle STATus
+ *
+ * @param WT_Fact $event       gedcom fact record
+ * @param bool    $anchor      to print a link to placelist
+ * @param bool    $sub_records to print place subrecords
+ * @param bool    $lds         to print LDS TEMPle and STATus
+ *
+ * @return string HTML
+ */
 function format_fact_place(WT_Fact $event, $anchor=false, $sub_records=false, $lds=false) {
 	global $SEARCH_SPIDER;
 
@@ -850,9 +863,9 @@ function format_fact_place(WT_Fact $event, $anchor=false, $sub_records=false, $l
 }
 
 /**
-* Check for facts that may exist only once for a certain record type.
-* If the fact already exists in the second array, delete it from the first one.
-*/
+ * Check for facts that may exist only once for a certain record type.
+ * If the fact already exists in the second array, delete it from the first one.
+ */
 function CheckFactUnique($uniquefacts, $recfacts, $type) {
 	foreach ($recfacts as $factarray) {
 		$fact=false;
@@ -878,11 +891,12 @@ function CheckFactUnique($uniquefacts, $recfacts, $type) {
 }
 
 /**
-* Print a new fact box on details pages
-* @param string $id the id of the person, family, source etc the fact will be added to
-* @param array $usedfacts an array of facts already used in this record
-* @param string $type the type of record INDI, FAM, SOUR etc
-*/
+ * Print a new fact box on details pages
+ *
+ * @param string $id        the id of the person, family, source etc the fact will be added to
+ * @param array  $usedfacts an array of facts already used in this record
+ * @param string $type      the type of record INDI, FAM, SOUR etc
+ */
 function print_add_new_fact($id, $usedfacts, $type) {
 	global $WT_SESSION;
 
@@ -978,10 +992,8 @@ function print_add_new_fact($id, $usedfacts, $type) {
 }
 
 /**
-* javascript declaration for calendar popup
-*
-* @param none
-*/
+ * javascript declaration for calendar popup
+ */
 function init_calendar_popup() {
 	global $WEEK_START, $controller;
 
