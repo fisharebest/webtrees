@@ -825,9 +825,9 @@ function format_fact_place(WT_Fact $event, $anchor=false, $sub_records=false, $l
 			if ($map_lati && $map_long) {
 				$map_lati = trim(strtr($map_lati, "NSEW,�", " - -. ")); // S5,6789 ==> -5.6789
 				$map_long = trim(strtr($map_long, "NSEW,�", " - -. ")); // E3.456� ==> 3.456
-				$html .= ' <a rel="nollow" href="https://maps.google.com/maps?q=' . $map_lati . ',' . $map_long . '" class="icon-googlemaps" title="' . WT_I18N::translate('Google Maps™') . '"></a>';
-				$html .= ' <a rel="nollow" href="https://www.bing.com/maps/?lvl=15&cp=' . $map_lati . '~' . $map_long . '" class="icon-bing" title="' . WT_I18N::translate('Bing Maps™') . '"></a>';
-				$html .= ' <a rel="nollow" href="https://www.openstreetmap.org/#map=15/' . $map_lati . '/' . $map_long . '" class="icon-osm" title="' . WT_I18N::translate('OpenStreetMap™') . '"></a>';
+				$html .= ' <a rel="nofollow" href="https://maps.google.com/maps?q=' . $map_lati . ',' . $map_long . '" class="icon-googlemaps" title="' . WT_I18N::translate('Google Maps™') . '"></a>';
+				$html .= ' <a rel="nofollow" href="https://www.bing.com/maps/?lvl=15&cp=' . $map_lati . '~' . $map_long . '" class="icon-bing" title="' . WT_I18N::translate('Bing Maps™') . '"></a>';
+				$html .= ' <a rel="nofollow" href="https://www.openstreetmap.org/#map=15/' . $map_lati . '/' . $map_long . '" class="icon-osm" title="' . WT_I18N::translate('OpenStreetMap™') . '"></a>';
 			}
 			if (preg_match('/\d NOTE (.*)/', $placerec, $match)) {
 				$html .= '<br>' . print_fact_notes($placerec, 3);
