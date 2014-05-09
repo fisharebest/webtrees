@@ -2855,11 +2855,11 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 	}
 
 	/**
-	* if the user manually changed the NAME field, then update the textual
-	* HTML representation of it
-	* If the value changed set manualChange to true so that changing
-	* the other fields doesn’t change the NAME line
-	*/
+	 * if the user manually changed the NAME field, then update the textual
+	 * HTML representation of it
+	 * If the value changed set manualChange to true so that changing
+	 * the other fields doesn’t change the NAME line
+	 */
 	function updateTextName(eid) {
 		var element = document.getElementById(eid);
 		if (element) {

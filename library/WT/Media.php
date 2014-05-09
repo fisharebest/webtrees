@@ -182,7 +182,9 @@ class WT_Media extends WT_GedcomRecord {
 
 	/**
 	 * check if the file exists on this server
-	 * @param which string - specify either 'main' or 'thumb'
+	 *
+	 * @param string $which specify either 'main' or 'thumb'
+	 *
 	 * @return boolean
 	 */
 	public function fileExists($which='main') {
@@ -196,7 +198,8 @@ class WT_Media extends WT_GedcomRecord {
 
 	/**
 	 * get the media file size in KB
-	 * @param which string - specify either 'main' or 'thumb'
+	 *
+	 * @param string $which specify either 'main' or 'thumb'
 	 * @return string
 	 */
 	public function getFilesize($which='main') {
@@ -207,7 +210,8 @@ class WT_Media extends WT_GedcomRecord {
 
 	/**
 	 * get the media file size, unformatted
-	 * @param which string - specify either 'main' or 'thumb'
+	 *
+	 * @param string $which specify either 'main' or 'thumb'
 	 * @return number
 	 */
 	public function getFilesizeraw($which='main') {
@@ -217,8 +221,10 @@ class WT_Media extends WT_GedcomRecord {
 
 	/**
 	 * get filemtime for the media file
-	 * @param which string - specify either 'main' or 'thumb'
-	 * @return number
+	 *
+	 * @param string $which specify either 'main' or 'thumb'
+	 *
+	 * @return int
 	 */
 	public function getFiletime($which='main') {
 		if ($this->fileExists($which)) return @filemtime($this->getServerFilename($which));
@@ -227,19 +233,23 @@ class WT_Media extends WT_GedcomRecord {
 
 	/**
 	 * generate an etag specific to this media item and the current user
-	 * @param which string - specify either 'main' or 'thumb'
-	 * @return number
+	 *
+	 * @param string $which - specify either 'main' or 'thumb'
+	 *
+	 * @return string
 	 */
 	public function getEtag($which='main') {
 		// setup the etag.  use enough info so that if anything important changes, the etag won’t match
 		global $SHOW_NO_WATERMARK;
 		if ($this->isExternal()) {
 			// etag not really defined for external media
+
 			return '';
 		}
 		$etag_string = basename($this->getServerFilename($which)).$this->getFiletime($which).WT_GEDCOM.WT_USER_ACCESS_LEVEL.$SHOW_NO_WATERMARK;
 		$etag_string = dechex(crc32($etag_string));
-		return ($etag_string);
+
+		return $etag_string;
 	}
 
 	// TODO Deprecated? This does not need to be a function here.
@@ -262,9 +272,11 @@ class WT_Media extends WT_GedcomRecord {
 
 	/**
 	 * get image properties
-	 * @param which string - specify either 'main' or 'thumb'
-	 * @param addWidth int - amount to add to width
-	 * @param addHeight int - amount to add to height
+	 *
+	 * @param string $which     specify either 'main' or 'thumb'
+	 * @param int    $addWidth  amount to add to width
+	 * @param int    $addHeight amount to add to height
+	 *
 	 * @return array
 	 */
 	public function getImageAttributes($which='main',$addWidth=0,$addHeight=0) {

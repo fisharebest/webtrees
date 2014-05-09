@@ -359,7 +359,6 @@ function getUserMessages($user_id) {
  * If the $news array has an ['id'] field then the function assumes that it is
  * as update of an older news item.
  *
- * @author John Finlay
  * @param array $news a news item array
  */
 function addNews($news) {
@@ -375,8 +374,9 @@ function addNews($news) {
 /**
  * Deletes a news item from the database
  *
- * @author John Finlay
  * @param int $news_id the id number of the news item to delete
+ *
+ * @return bool
  */
 function deleteNews($news_id) {
 	return (bool)WT_DB::prepare("DELETE FROM `##news` WHERE news_id=?")->execute(array($news_id));
@@ -427,6 +427,8 @@ function getGedcomNews($gedcom_id) {
  * Gets the news item for the given news id
  *
  * @param int $news_id the id of the news entry to get
+ *
+ * @return array|null
  */
 function getNewsItem($news_id) {
 	$row=

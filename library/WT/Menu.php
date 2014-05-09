@@ -41,12 +41,14 @@ class WT_Menu {
 	var $submenus;
 
 	/**
-	* Constructor for the menu class
-	* @param string $label the label for the menu item (usually a wt_lang variable)
-	* @param string $link The link that the user should be taken to when clicking on the menuitem
-	* @param string $pos The position of the label relative to the icon (right, left, top, bottom)
-	* @param string $flyout The direction where any submenus should appear relative to the menu item (right, down)
-	*/
+	 * Constructor for the menu class
+	 *
+	 * @param string $label    the label for the menu item (usually a wt_lang variable)
+	 * @param string $link     The link that the user should be taken to when clicking on the menuitem
+	 * @param null   $id
+	 * @param string $labelpos The position of the label relative to the icon (right, left, top, bottom)
+	 * @param string $flyout   The direction where any submenus should appear relative to the menu item (right, down)
+	 */
 	function __construct($label=' ', $link='#', $id=null, $labelpos='right', $flyout='down')
 	{
 		$this->label   =$label;
@@ -194,9 +196,10 @@ class WT_Menu {
 	}
 
 	/**
-	* returns the number of submenus in this menu
-	* @return int
-	*/
+	 * returns the number of submenus in this menu
+	 *
+	 * @return int
+	 */
 	function subCount() {
 		return count($this->submenus);
 	}

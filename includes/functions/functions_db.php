@@ -358,10 +358,13 @@ function search_indis_soundex($soundex, $lastname, $firstname, $place, $geds) {
 }
 
 /**
-* get recent changes since the given julian day inclusive
-* @author yalnifj
-* @param int $jd, leave empty to include all
-*/
+ * get recent changes since the given julian day inclusive
+ *
+ * @param int  $jd , leave empty to include all
+ * @param bool $allgeds
+ *
+ * @return array List of XREFs of records with changes
+ */
 function get_recent_changes($jd=0, $allgeds=false) {
 	$sql="SELECT d_gid FROM `##dates` WHERE d_fact='CHAN' AND d_julianday1>=?";
 	$vars=array($jd);
@@ -369,7 +372,7 @@ function get_recent_changes($jd=0, $allgeds=false) {
 		$sql.=" AND d_file=?";
 		$vars[]=WT_GED_ID;
 	}
-	$sql.=" ORDER BY d_julianday1 DESC";
+	$sql .= " ORDER BY d_julianday1 DESC";
 
 	return WT_DB::prepare($sql)->execute($vars)->fetchOneColumn();
 }
@@ -722,7 +725,10 @@ function find_rin_id($rin) {
  *
  * This function returns a simple array of the most common surnames
  * found in the individuals list.
+ *
  * @param int $min the number of times a surname must occur before it is added to the array
+ *
+ * @return array
  */
 function get_common_surnames($min) {
 	$COMMON_NAMES_ADD   =get_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_ADD');
@@ -751,12 +757,14 @@ function get_common_surnames($min) {
 }
 
 /**
-* get the top surnames
-* @param int $ged_id fetch surnames from this gedcom
-* @param int $min only fetch surnames occuring this many times
-* @param int $max only fetch this number of surnames (0=all)
-* @return array
-*/
+ * get the top surnames
+ *
+ * @param int $ged_id fetch surnames from this gedcom
+ * @param int $min    only fetch surnames occuring this many times
+ * @param int $max    only fetch this number of surnames (0=all)
+ *
+ * @return array
+ */
 function get_top_surnames($ged_id, $min, $max) {
 	// Use n_surn, rather than n_surname, as it is used to generate URLs for
 	// the indi-list, etc.

@@ -105,10 +105,8 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 	/**
 	 * Prints pedigree of the person passed in. Which is the descendancy
 	 *
-	 * @param mixed $pid ID of person to print the pedigree for
-	 * @param mixed $count generation count, so it recursively calls itself
-	 * @access public
-	 * @return void
+	 * @param string $person ID of person to print the pedigree for
+	 * @param int    $count  generation count, so it recursively calls itself
 	 */
 	function print_person_pedigree($person, $count) {
 		global $WT_IMAGES, $bheight, $bwidth, $bhalfheight;
@@ -196,15 +194,16 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 	/**
 	 * Prints descendency of passed in person
 	 *
-	 * @param mixed $pid ID of person to print descendency for
-	 * @param mixed $count count of generations to print
-	 * @access public
-	 * @return void
+	 * @param       $person person to print descendency for
+	 * @param mixed $count  count of generations to print
+	 * @param bool  $showNav
+	 *
+	 * @return int
 	 */
 	function print_descendency($person, $count, $showNav=true) {
 		global $TEXT_DIRECTION, $WT_IMAGES, $bheight, $bwidth, $bhalfheight, $lastGenSecondFam;
 
-		if ($count>$this->dgenerations) return 0;
+		if ($count>$this->dgenerations) return;
 		if (!$person) return;
 		$pid=$person->getXref();
 		$tablealign = "right";

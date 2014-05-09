@@ -38,8 +38,8 @@ class WT_Controller_Repository extends WT_Controller_GedcomRecord {
 	}
 
 	/**
-	* get edit menu
-	*/
+	 * get edit menu
+	 */
 	function getEditMenu() {
 		$SHOW_GEDCOM_RECORD=get_gedcom_setting(WT_GED_ID, 'SHOW_GEDCOM_RECORD');
 

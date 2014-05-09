@@ -126,11 +126,12 @@ $controller
 	->pageHeader()
 	->addInlineJavascript('
 	/**
-	* Move Up Block Javascript function
-	*
-	* This function moves the selected option up in the given select list
-	* @param String section_name the name of the select to move the options
-	*/
+	 * Move Up Block Javascript function
+	 *
+	 * This function moves the selected option up in the given select list
+	 *
+	 * @param String section_name the name of the select to move the options
+	 */
 	function move_up_block(section_name) {
 		section_select = document.getElementById(section_name);
 		if (section_select) {
@@ -144,11 +145,12 @@ $controller
 	}
 
 	/**
-	* Move Down Block Javascript function
-	*
-	* This function moves the selected option down in the given select list
-	* @param String section_name the name of the select to move the options
-	*/
+	 * Move Down Block Javascript function
+	 *
+	 * This function moves the selected option down in the given select list
+	 *
+	 * @param String section_name the name of the select to move the options
+	 */
 	function move_down_block(section_name) {
 		section_select = document.getElementById(section_name);
 		if (section_select) {
@@ -163,13 +165,13 @@ $controller
 	}
 
 	/**
-	* Move Block from one column to the other Javascript function
-	*
-	* This function moves the selected option down in the given select list
-	* @author KosherJava
-	* @param String from_column the name of the select to move the option from
-	* @param String to_column the name of the select to remove the option to
-	*/
+	 * Move Block from one column to the other Javascript function
+	 *
+	 * This function moves the selected option down in the given select list
+	 *
+	 * @param String from_column the name of the select to move the option from
+	 * @param String to_column the name of the select to remove the option to
+	 */
 	function move_left_right_block(from_column, to_column) {
 		to_select = document.getElementById(to_column);
 		from_select = document.getElementById(from_column);
@@ -185,10 +187,10 @@ $controller
 		}
 	}
 	/**
-	* Select Options Javascript function
-	*
-	* This function selects all the options in the multiple select lists
-	*/
+	 * Select Options Javascript function
+	 *
+	 * This function selects all the options in the multiple select lists
+	 */
 	function select_options() {
 		section_select = document.getElementById("main_select");
 		if (section_select) {
@@ -204,12 +206,14 @@ $controller
 		}
 		return true;
 	}
+
 	/**
-	* Show Block Description Javascript function
-	*
-	* This function shows a description for the selected option
-	* @param String list_name the name of the select to get the option from
-	*/
+	 * Show Block Description Javascript function
+	 *
+	 * This function shows a description for the selected option
+	 *
+	 * @param String list_name the name of the select to get the option from
+	 */
 	function show_description(list_name) {
 		list_select = document.getElementById(list_name);
 		instruct = document.getElementById("instructions");

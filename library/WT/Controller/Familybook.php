@@ -78,8 +78,8 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 	}
 
 	/**
-	* Prints descendency of passed in person
-	*/
+	 * Prints descendency of passed in person
+	 */
 	function print_descendency($person, $count) {
 		global $TEXT_DIRECTION, $WT_IMAGES, $bwidth, $bheight, $bhalfheight;
 		global $show_full, $box_width; // print_pedigree_person() requires these globals.
@@ -227,8 +227,8 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 	}
 
 	/**
-	* Prints pedigree of the person passed in
-	*/
+	 * Prints pedigree of the person passed in
+	 */
 	function print_person_pedigree($person, $count) {
 		global $WT_IMAGES, $bheight, $bwidth, $bhalfheight;
 		if ($count>=$this->generations) return;
@@ -333,8 +333,8 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 		return $maxdc;
 	}
 	/**
-	* Print empty box
-	*/
+	 * Print empty box
+	 */
 	function printEmptyBox($bwidth, $bheight){
 	echo '<tr>',
 		 '<td>',

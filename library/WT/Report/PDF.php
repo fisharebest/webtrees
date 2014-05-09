@@ -29,47 +29,52 @@ if (!defined('WT_WEBTREES')) {
 }
 
 /**
-* Main WT Report Class for PDF
-*
-* @package webtrees
-* @subpackage Reports
-*/
+ * Main WT Report Class for PDF
+ */
 class WT_Report_PDF extends WT_Report_Base {
 	/**
-	* PDF compression - Zlib extension is required
-	* @var boolean const
-	*/
+	 * PDF compression - Zlib extension is required
+	 *
+	 * @var boolean const
+	 */
 	const compression = true;
 	/**
-	* If TRUE reduce the RAM memory usage by caching temporary data on filesystem (slower).
-	* @var boolean const
-	*/
+	 * If TRUE reduce the RAM memory usage by caching temporary data on filesystem (slower).
+	 *
+	 * @var boolean const
+	 */
 	const diskcache = false;
 	/**
-	* TRUE means that the input text is unicode (PDF)
-	* @var boolean const
-	*/
+	 * TRUE means that the input text is unicode (PDF)
+	 *
+	 * @var boolean const
+	 */
 	const unicode = true;
 	/**
-	* FALSE means that the full font is embedded, TRUE means only the used chars
-	* in TCPDF v5.9 font subsetting is a very slow process, this leads to larger files
-	* @var boolean const
-	*/
+	 * FALSE means that the full font is embedded, TRUE means only the used chars
+	 * in TCPDF v5.9 font subsetting is a very slow process, this leads to larger files
+	 *
+	 * @var boolean const
+	 */
 	const subsetting = false;
 	/**
-	* A new object of the PDF class
-	* @var PDF
-	*/
+	 * A new object of the PDF class
+	 *
+	 * @var PDF
+	 */
 	public $pdf;
 
 	/**
-	* PDF Setup - WT_Report_PDF
-	*/
+	 * PDF Setup - WT_Report_PDF
+	 */
 	function setup() {
 		parent::setup();
 
 		// Setup the PDF class with custom size pages because WT supports more page sizes. If WT sends an unknown size name then the default would be A4
-		$this->pdf = new PDF($this->orientation, parent::unit, array($this->pagew, $this->pageh), self::unicode, "UTF-8", self::diskcache);
+		$this->pdf = new PDF($this->orientation, parent::unit, array(
+			$this->pagew,
+			$this->pageh
+		), self::unicode, "UTF-8", self::diskcache);
 
 		// Setup the PDF margins
 		$this->pdf->setMargins($this->leftmargin, $this->topmargin, $this->rightmargin);
@@ -87,9 +92,9 @@ class WT_Report_PDF extends WT_Report_Base {
 		// Only admin should see the version number
 		$appversion = WT_WEBTREES;
 		if (WT_USER_IS_ADMIN) {
-			$appversion .= " ".WT_VERSION;
+			$appversion .= " " . WT_VERSION;
 		}
-		$this->pdf->SetCreator($appversion." (".parent::wt_url.")");
+		$this->pdf->SetCreator($appversion . " (" . parent::wt_url . ")");
 		// Not implemented yet - WT_Report_Base::setup()
 		$this->pdf->SetAuthor($this->rauthor);
 		$this->pdf->SetTitle($this->title);
@@ -108,9 +113,10 @@ class WT_Report_PDF extends WT_Report_Base {
 	}
 
 	/**
-	* Add an element - WT_Report_PDF
-	* @param object|string &$element Object or string
-	*/
+	 * Add an element - WT_Report_PDF
+	 *
+	 * @param object|string &$element Object or string
+	 */
 	function addElement($element) {
 		if ($this->processing == "B") {
 			return $this->pdf->addBody($element);
@@ -119,6 +125,7 @@ class WT_Report_PDF extends WT_Report_Base {
 		} elseif ($this->processing == "F") {
 			return $this->pdf->addFooter($element);
 		}
+
 		return 0;
 	}
 
@@ -127,237 +134,263 @@ class WT_Report_PDF extends WT_Report_Base {
 		header('Expires:');
 		header('Pragma:');
 		header('Cache-control:');
-		$this->pdf->Output('webtrees-'.uniqid().'.pdf', 'I');
+		$this->pdf->Output('webtrees-' . uniqid() . '.pdf', 'I');
 	}
 
 	/**
-	* Clear the Header - WT_Report_PDF
-	*/
+	 * Clear the Header - WT_Report_PDF
+	 */
 	function clearHeader() {
 		$this->pdf->clearHeader();
 	}
 
 	/**
-	* Clear the Page Header - WT_Report_PDF
-	*/
+	 * Clear the Page Header - WT_Report_PDF
+	 */
 	function clearPageHeader() {
 		$this->pdf->clearPageHeader();
 	}
 
 	/**
-	* Create a new Cell object - WT_Report_PDF
-	*
-	* @param int $width cell width (expressed in points)
-	* @param int $height cell height (expressed in points)
-	* @param mixed $border Border style
-	* @param string $align Text alignement
-	* @param string $bgcolor Background color code
-	* @param string $style The name of the text style
-	* @param int $ln Indicates where the current position should go after the call
-	* @param mixed $top Y-position
-	* @param mixed $left X-position
-	* @param int $fill Indicates if the cell background must be painted (1) or transparent (0). Default value: 1
-	* @param int $stretch Stretch carachter mode
-	* @param string $bocolor Border color
-	* @param string $tcolor Text color
-	* @param bolean $reseth
-	* @return CellPDF
-	*/
-	function createCell($width, $height, $border, $align, $bgcolor, $style, $ln, $top, $left, $fill, $stretch, $bocolor, $tcolor, $reseth) {
+	 * Create a new Cell object - WT_Report_PDF
+	 *
+	 * @param int    $width   cell width (expressed in points)
+	 * @param int    $height  cell height (expressed in points)
+	 * @param mixed  $border  Border style
+	 * @param string $align   Text alignement
+	 * @param string $bgcolor Background color code
+	 * @param string $style   The name of the text style
+	 * @param int    $ln      Indicates where the current position should go after the call
+	 * @param mixed  $top     Y-position
+	 * @param mixed  $left    X-position
+	 * @param int    $fill    Indicates if the cell background must be painted (1) or transparent (0). Default value: 1
+	 * @param int    $stretch Stretch carachter mode
+	 * @param string $bocolor Border color
+	 * @param string $tcolor  Text color
+	 * @param bolean $reseth
+	 *
+	 * @return CellPDF
+	 */
+	function createCell(
+		$width, $height, $border, $align, $bgcolor, $style, $ln, $top, $left, $fill, $stretch, $bocolor, $tcolor, $reseth
+	) {
 		return new CellPDF($width, $height, $border, $align, $bgcolor, $style, $ln, $top, $left, $fill, $stretch, $bocolor, $tcolor, $reseth);
 	}
 
 	/**
-	* Create a new TextBox object - WT_Report_PDF
-	*
-	* @param float $width Text box width
-	* @param float $height Text box height
-	* @param boolean $border
-	* @param string $bgcolor Background color code in HTML
-	* @param boolean $newline
-	* @param mixed $left
-	* @param mixed $top
-	* @param boolean $pagecheck
-	* @param string $style
-	* @param boolean $fill
-	* @param boolean $padding
-	* @param boolaen $reseth
-	* @return TextBoxPDF
-	*/
-	function createTextBox($width, $height, $border, $bgcolor, $newline, $left, $top, $pagecheck, $style, $fill, $padding, $reseth) {
+	 * Create a new TextBox object - WT_Report_PDF
+	 *
+	 * @param float   $width   Text box width
+	 * @param float   $height  Text box height
+	 * @param boolean $border
+	 * @param string  $bgcolor Background color code in HTML
+	 * @param boolean $newline
+	 * @param mixed   $left
+	 * @param mixed   $top
+	 * @param boolean $pagecheck
+	 * @param string  $style
+	 * @param boolean $fill
+	 * @param boolean $padding
+	 * @param boolaen $reseth
+	 *
+	 * @return TextBoxPDF
+	 */
+	function createTextBox(
+		$width, $height, $border, $bgcolor, $newline, $left, $top, $pagecheck, $style, $fill, $padding, $reseth
+	) {
 		return new TextBoxPDF($width, $height, $border, $bgcolor, $newline, $left, $top, $pagecheck, $style, $fill, $padding, $reseth);
 	}
 
 	/**
-	* Create a new Text object- WT_Report_PDF
-	*
-	* @param string $style The name of the text style
-	* @param string $color HTML color code
-	* @return TextPDF
-	*/
+	 * Create a new Text object- WT_Report_PDF
+	 *
+	 * @param string $style The name of the text style
+	 * @param string $color HTML color code
+	 *
+	 * @return TextPDF
+	 */
 	function createText($style, $color) {
 		return new TextPDF($style, $color);
 	}
 
 	/**
-	* Create a new Footnote object - WT_Report_PDF
-	* @param string $style Style name
-	* @return FootnotePDF
-	*/
+	 * Create a new Footnote object - WT_Report_PDF
+	 *
+	 * @param string $style Style name
+	 *
+	 * @return FootnotePDF
+	 */
 	function createFootnote($style) {
 		return new FootnotePDF($style);
 	}
 
 	/**
-	* Create a new Page Header object - WT_Report_PDF
-	* @return PageHeaderPDF
-	*/
+	 * Create a new Page Header object - WT_Report_PDF
+	 *
+	 * @return PageHeaderPDF
+	 */
 	function createPageHeader() {
 		return new PageHeaderPDF();
 	}
 
 	/**
-	* Create a new image object - WT_Report_PDF
-	* @param string $file Filename
-	* @param mixed $x
-	* @param mixed $y
-	* @param int $w Image width
-	* @param int $h Image height
-	* @param string $align L:left, C:center, R:right or empty to use x/y
-	* @param string $ln T:same line, N:next line
-	* @return ImagePDF
-	*/
+	 * Create a new image object - WT_Report_PDF
+	 *
+	 * @param string $file  Filename
+	 * @param mixed  $x
+	 * @param mixed  $y
+	 * @param int    $w     Image width
+	 * @param int    $h     Image height
+	 * @param string $align L:left, C:center, R:right or empty to use x/y
+	 * @param string $ln    T:same line, N:next line
+	 *
+	 * @return ImagePDF
+	 */
 	function createImage($file, $x, $y, $w, $h, $align, $ln) {
 		return new ImagePDF($file, $x, $y, $w, $h, $align, $ln);
 	}
 
 	/**
-	* Create a new image object from WT_Media Object - WT_Report_PDF
-	* @param string $mediaobject WT_Media Object
-	* @param mixed $x
-	* @param mixed $y
-	* @param int $w Image width
-	* @param int $h Image height
-	* @param string $align L:left, C:center, R:right or empty to use x/y
-	* @param string $ln T:same line, N:next line
-	* @return ImagePDF
-	*/
+	 * Create a new image object from WT_Media Object - WT_Report_PDF
+	 *
+	 * @param string $mediaobject WT_Media Object
+	 * @param mixed  $x
+	 * @param mixed  $y
+	 * @param int    $w           Image width
+	 * @param int    $h           Image height
+	 * @param string $align       L:left, C:center, R:right or empty to use x/y
+	 * @param string $ln          T:same line, N:next line
+	 *
+	 * @return ImagePDF
+	 */
 	function createImageFromObject($mediaobject, $x, $y, $w, $h, $align, $ln) {
 		return new ImagePDF($mediaobject->getServerFilename('thumb'), $x, $y, $w, $h, $align, $ln);
 	}
 
 	/**
-	* Create a new line object - WT_Report_PDF
-	* @param mixed $x1
-	* @param mixed $y1
-	* @param mixed $x2
-	* @param mixed $y2
-	* @return LinePDF
-	*/
+	 * Create a new line object - WT_Report_PDF
+	 *
+	 * @param mixed $x1
+	 * @param mixed $y1
+	 * @param mixed $x2
+	 * @param mixed $y2
+	 *
+	 * @return LinePDF
+	 */
 	function createLine($x1, $y1, $x2, $y2) {
 		return new LinePDF($x1, $y1, $x2, $y2);
 	}
 
 	/**
-	* @return HtmlPDF
-	*/
+	 * @param $tag
+	 * @param $attrs
+	 *
+	 * @return HtmlPDF
+	 */
 	function createHTML($tag, $attrs) {
 		return new HtmlPDF($tag, $attrs);
 	}
 } //-- end Report
 
 /**
-* WT Report PDF Class
-*
-* This class inherits from the TCPDF class and is used to generate the PDF document
-* @package webtrees
-* @subpackage Reports
-*/
+ * WT Report PDF Class
+ *
+ * This class inherits from the TCPDF class and is used to generate the PDF document
+ */
 class PDF extends TCPDF {
 	/**
-	* Array of elements in the header
-	* @var array
-	*/
+	 * Array of elements in the header
+	 *
+	 * @var array
+	 */
 	public $headerElements = array();
 	/**
-	* Array of elements in the page header
-	* @var array
-	*/
+	 * Array of elements in the page header
+	 *
+	 * @var array
+	 */
 	public $pageHeaderElements = array();
 	/**
-	* Array of elements in the footer
-	* @var array
-	*/
+	 * Array of elements in the footer
+	 *
+	 * @var array
+	 */
 	public $footerElements = array();
 	/**
-	* Array of elements in the body
-	* @var array
-	*/
+	 * Array of elements in the body
+	 *
+	 * @var array
+	 */
 	public $bodyElements = array();
 	/**
-	* Array of elements in the footer notes
-	* @var array
-	*/
+	 * Array of elements in the footer notes
+	 *
+	 * @var array
+	 */
 	public $printedfootnotes = array();
 	/**
-	* Currently used style name
-	* @var string
-	*/
+	 * Currently used style name
+	 *
+	 * @var string
+	 */
 	public $currentStyle;
 	/**
-	* The last cell height
-	* @var int
-	*/
+	 * The last cell height
+	 *
+	 * @var int
+	 */
 	public $lastCellHeight = 0;
 	/**
-	* The largest font size within a TextBox
-	* to calculate the height
-	* @var int
-	*/
+	 * The largest font size within a TextBox
+	 * to calculate the height
+	 *
+	 * @var int
+	 */
 	public $largestFontHeight = 0;
 	/**
-	* The last pictures page number
-	* @var int
-	*/
+	 * The last pictures page number
+	 *
+	 * @var int
+	 */
 	public $lastpicpage = 0;
 
 	public $wt_report;
 
 	/**
-	* PDF Header -PDF
-	*/
+	 * PDF Header -PDF
+	 */
 	function Header() {
 		foreach ($this->headerElements as $element) {
 			if (is_object($element)) {
 				$element->render($this);
-			} elseif (is_string($element) && $element=="footnotetexts") {
+			} elseif (is_string($element) && $element == "footnotetexts") {
 				$this->Footnotes();
-			} elseif (is_string($element) && $element=="addpage") {
+			} elseif (is_string($element) && $element == "addpage") {
 				$this->newPage();
 			}
 		}
 		foreach ($this->pageHeaderElements as $element) {
 			if (is_object($element)) {
 				$element->render($this);
-			} elseif (is_string($element) && $element=="footnotetexts") {
+			} elseif (is_string($element) && $element == "footnotetexts") {
 				$this->Footnotes();
-			} elseif (is_string($element) && $element=="addpage") {
+			} elseif (is_string($element) && $element == "addpage") {
 				$this->newPage();
 			}
 		}
 	}
 
 	/**
-	* PDF Body -PDF
-	*/
+	 * PDF Body -PDF
+	 */
 	function Body() {
 		$this->AddPage();
 		foreach ($this->bodyElements as $key => $element) {
 			if (is_object($element)) {
 				$element->render($this);
-			} elseif (is_string($element) && $element=="footnotetexts") {
+			} elseif (is_string($element) && $element == "footnotetexts") {
 				$this->Footnotes();
-			} elseif (is_string($element) && $element=="addpage") {
+			} elseif (is_string($element) && $element == "addpage") {
 				$this->newPage();
 			}
 			// Delete used elements in hope to reduce 'some' memory usage
@@ -366,8 +399,8 @@ class PDF extends TCPDF {
 	}
 
 	/**
-	* PDF Footnotes -PDF
-	*/
+	 * PDF Footnotes -PDF
+	 */
 	function Footnotes() {
 		foreach ($this->printedfootnotes as $element) {
 			if (($this->GetY() + $element->getFootnoteHeight($this)) > $this->getPageHeight()) {
@@ -381,58 +414,70 @@ class PDF extends TCPDF {
 	}
 
 	/**
-	* PDF Footer -PDF
-	*/
+	 * PDF Footer -PDF
+	 */
 	function Footer() {
 		foreach ($this->footerElements as $element) {
 			if (is_object($element)) {
 				$element->render($this);
-			} elseif (is_string($element) && $element=="footnotetexts") {
+			} elseif (is_string($element) && $element == "footnotetexts") {
 				$this->Footnotes();
-			} elseif (is_string($element) && $element=="addpage") {
+			} elseif (is_string($element) && $element == "addpage") {
 				$this->newPage();
 			}
 		}
 	}
 
 	/**
-	* Add an element to the Header -PDF
-	* @param object|string &$element
-	* @return int The number of the Header elements
-	*/
+	 * Add an element to the Header -PDF
+	 *
+	 * @param object|string &$element
+	 *
+	 * @return int The number of the Header elements
+	 */
 	function addHeader($element) {
 		$this->headerElements[] = $element;
-		return count($this->headerElements)-1;
+
+		return count($this->headerElements) - 1;
 	}
 
 	/**
-	* Add an element to the Page Header -PDF
-	* @param object|string &$element
-	* @return int The number of the Page Header elements
-	*/
+	 * Add an element to the Page Header -PDF
+	 *
+	 * @param object|string &$element
+	 *
+	 * @return int The number of the Page Header elements
+	 */
 	function addPageHeader($element) {
 		$this->pageHeaderElements[] = $element;
-		return count($this->pageHeaderElements)-1;
+
+		return count($this->pageHeaderElements) - 1;
 	}
 
 	/**
-	* Add an element to the Body -PDF
-	* @param object|string &$element
-	* @return int The number of the Body elements
-	*/
+	 * Add an element to the Body -PDF
+	 *
+	 * @param object|string &$element
+	 *
+	 * @return int The number of the Body elements
+	 */
 	function addBody($element) {
 		$this->bodyElements[] = $element;
-		return count($this->bodyElements)-1;
+
+		return count($this->bodyElements) - 1;
 	}
 
 	/**
-	* Add an element to the Footer -PDF
-	* @param object|string &$element
-	* @return int The number of the Footer elements
-	*/
+	 * Add an element to the Footer -PDF
+	 *
+	 * @param object|string &$element
+	 *
+	 * @return int The number of the Footer elements
+	 */
 	function addFooter($element) {
 		$this->footerElements[] = $element;
-		return count($this->footerElements)-1;
+
+		return count($this->footerElements) - 1;
 	}
 
 	function removeHeader($index) {
@@ -452,16 +497,16 @@ class PDF extends TCPDF {
 	}
 
 	/**
-	* Clear the Header -PDF
-	*/
+	 * Clear the Header -PDF
+	 */
 	function clearHeader() {
 		unset($this->headerElements);
 		$this->headerElements = array();
 	}
 
 	/**
-	* Clear the Page Header -PDF
-	*/
+	 * Clear the Page Header -PDF
+	 */
 	function clearPageHeader() {
 		unset($this->pageHeaderElements);
 		$this->pageHeaderElements = array();
@@ -472,42 +517,49 @@ class PDF extends TCPDF {
 	}
 
 	/**
-	* Get the currently used style name -PDF
-	* @return string
-	*/
+	 * Get the currently used style name -PDF
+	 *
+	 * @return string
+	 */
 	function getCurrentStyle() {
 		return $this->currentStyle;
 	}
 
 	/**
-	* Setup a style for usage -PDF
-	* @param string $s Style name
-	*/
+	 * Setup a style for usage -PDF
+	 *
+	 * @param string $s Style name
+	 */
 	function setCurrentStyle($s) {
 		$this->currentStyle = $s;
-		$style = $this->wt_report->getStyle($s);
+		$style              = $this->wt_report->getStyle($s);
 		$this->SetFont($style['font'], $style['style'], $style['size']);
-		}
+	}
 
 	/**
-	* Get the style -PDF
-	* @param string $s Style name
-	* @return array
-	*/
+	 * Get the style -PDF
+	 *
+	 * @param string $s Style name
+	 *
+	 * @return array
+	 */
 	function getStyle($s) {
 		if (!isset($this->wt_report->Styles[$s])) {
-			$s = $this->getCurrentStyle();
+			$s                           = $this->getCurrentStyle();
 			$this->wt_report->Styles[$s] = $s;
 		}
+
 		return $this->wt_report->Styles[$s];
 	}
 
 	/**
-	* Add margin when static horizontal position is used -PDF
-	* RTL supported
-	* @param float $x Static position
-	* @return float
-	*/
+	 * Add margin when static horizontal position is used -PDF
+	 * RTL supported
+	 *
+	 * @param float $x Static position
+	 *
+	 * @return float
+	 */
 	function addMarginX($x) {
 		$m = $this->getMargins();
 		if ($this->getRTL()) {
@@ -516,14 +568,16 @@ class PDF extends TCPDF {
 			$x += $m['left'];
 		}
 		$this->SetX($x);
+
 		return $x;
 	}
 
 	/**
-	* Get the maximum line width to draw from the curren position -PDF
-	* RTL supported
-	* @return float
-	*/
+	 * Get the maximum line width to draw from the curren position -PDF
+	 * RTL supported
+	 *
+	 * @return float
+	 */
 	function getMaxLineWidth() {
 		$m = $this->getMargins();
 		if ($this->getRTL()) {
@@ -534,40 +588,45 @@ class PDF extends TCPDF {
 	}
 
 	function getFootnotesHeight() {
-		$h=0;
+		$h = 0;
 		foreach ($this->printedfootnotes as $element) {
-			$h+=$element->getHeight($this);
+			$h += $element->getHeight($this);
 		}
+
 		return $h;
 	}
 
 	/**
-	* Returns the the current font size height -PDF
-	* @return int
-	*/
+	 * Returns the the current font size height -PDF
+	 *
+	 * @return int
+	 */
 	function getCurrentStyleHeight() {
 		if (empty($this->currentStyle)) {
 			return $this->wt_report->defaultFontSize;
 		}
 		$style = $this->wt_report->getStyle($this->currentStyle);
+
 		return $style['size'];
 	}
 
 	/**
-	* Checks the Footnote and numbers them
-	*
-	* @param object &$footnote
-	* @return boolen false if not numbered befor | object if already numbered
-	*/
+	 * Checks the Footnote and numbers them
+	 *
+	 * @param object &$footnote
+	 *
+	 * @return boolen false if not numbered befor | object if already numbered
+	 */
 	function checkFootnote(&$footnote) {
-		$ct = count($this->printedfootnotes);
+		$ct  = count($this->printedfootnotes);
 		$val = $footnote->getValue();
-		$i = 0;
+		$i   = 0;
 		while ($i < $ct) {
 			if ($this->printedfootnotes[$i]->getValue() == $val) {
 				// If this footnote already exist then set up the numbers for this object
 				$footnote->setNum($i + 1);
 				$footnote->setAddlink($i + 1);
+
 				return $this->printedfootnotes[$i];
 			}
 			$i++;
@@ -576,13 +635,14 @@ class PDF extends TCPDF {
 		$footnote->setNum($ct + 1);
 		$footnote->setAddlink($this->AddLink());
 		$this->printedfootnotes[] = $footnote;
+
 		return false;
 	}
 
 	/**
-	* Used this function instead of AddPage()
-	* This function will make sure that images will not be overwritten
-	*/
+	 * Used this function instead of AddPage()
+	 * This function will make sure that images will not be overwritten
+	 */
 	function newPage() {
 		if ($this->lastpicpage > $this->getPage()) {
 			$this->setPage($this->lastpicpage);
@@ -592,67 +652,84 @@ class PDF extends TCPDF {
 
 
 	/*******************************************
-	* TCPDF protected functions
-	*******************************************/
+	 * TCPDF protected functions
+	 *******************************************/
 
 	/**
-	* Add a page if needed -PDF
-	* @param $height Cell height. Default value: 0
-	* @return boolean true in case of page break, false otherwise
-	*/
+	 * Add a page if needed -PDF
+	 *
+	 * @param $height Cell height. Default value: 0
+	 *
+	 * @return boolean true in case of page break, false otherwise
+	 */
 	function checkPageBreakPDF($height) {
 		return $this->checkPageBreak($height);
 	}
 
 	/**
-	* Returns the remaining width between the current position and margins -PDF
-	* @return float Remaining width
-	*/
+	 * Returns the remaining width between the current position and margins -PDF
+	 *
+	 * @return float Remaining width
+	 */
 	function getRemainingWidthPDF() {
 		return $this->getRemainingWidth();
 	}
-
 } //-- END PDF
 
 /**
-* Cell element - PDF
-*
-* @package webtrees
-* @subpackage Reports
-*/
+ * Cell element - PDF
+ */
 class CellPDF extends Cell {
 	/**
-	* Create a class CELL for PDF
-	*
-	* @param int $width cell width (expressed in points)
-	* @param int $height cell height (expressed in points)
-	* @param mixed $border Border style
-	* @param string $align Text alignement
-	* @param string $bgcolor Background color code
-	* @param string $style The name of the text style
-	* @param int $ln Indicates where the current position should go after the call
-	* @param mixed $top Y-position
-	* @param mixed $left X-position
-	* @param int $fill Indicates if the cell background must be painted (1) or transparent (0). Default value: 1
-	* @param int $stretch Stretch carachter mode
-	* @param string $bocolor Border color
-	* @param string $tcolor Text color
-	* @param boolean $reseth
-	*/
-	function CellPDF($width, $height, $border, $align, $bgcolor, $style, $ln, $top, $left, $fill, $stretch, $bocolor, $tcolor, $reseth) {
-		parent::Cell($width, $height, $border, $align, $bgcolor, $style, $ln, $top, $left, $fill, $stretch, $bocolor, $tcolor, $reseth);
+	 * Create a class CELL for PDF
+	 *
+	 * @param int     $width   cell width (expressed in points)
+	 * @param int     $height  cell height (expressed in points)
+	 * @param mixed   $border  Border style
+	 * @param string  $align   Text alignement
+	 * @param string  $bgcolor Background color code
+	 * @param string  $style   The name of the text style
+	 * @param int     $ln      Indicates where the current position should go after the call
+	 * @param mixed   $top     Y-position
+	 * @param mixed   $left    X-position
+	 * @param int     $fill    Indicates if the cell background must be painted (1) or transparent (0). Default value: 1
+	 * @param int     $stretch Stretch carachter mode
+	 * @param string  $bocolor Border color
+	 * @param string  $tcolor  Text color
+	 * @param boolean $reseth
+	 */
+	function CellPDF(
+		$width, $height, $border, $align, $bgcolor, $style, $ln, $top, $left, $fill, $stretch, $bocolor, $tcolor, $reseth
+	) {
+		parent::Cell(
+			$width,
+			$height,
+			$border,
+			$align,
+			$bgcolor,
+			$style,
+			$ln,
+			$top,
+			$left,
+			$fill,
+			$stretch,
+			$bocolor,
+			$tcolor,
+			$reseth
+		);
 	}
 
 	/**
-	* PDF Cell renderer
-	* @param PDF &$pdf
-	*/
+	 * PDF Cell renderer
+	 *
+	 * @param PDF &$pdf
+	 */
 	function render(&$pdf) {
 		/**
-		* Use these variables to update/manipulate values
-		* Repeted classes would reupdate all their class variables again, Header/Page Header/Footer
-		* This is the bugfree version
-		*/
+		 * Use these variables to update/manipulate values
+		 * Repeted classes would reupdate all their class variables again, Header/Page Header/Footer
+		 * This is the bugfree version
+		 */
 		$cX = 0; // Class Left
 
 		// Set up the text style
@@ -662,7 +739,7 @@ class CellPDF extends Cell {
 		$temptext = str_replace("#PAGENUM#", $pdf->PageNo(), $this->text);
 		// underline «title» part of Source item
 		$temptext = str_replace(array('«', '»'), array('<u>', '</u>'), $temptext);
-		$match = array();
+		$match    = array();
 		// Indicates if the cell background must be painted (1) or transparent (0)
 		if ($this->fill == 1) {
 			if (!empty($this->bgcolor)) {
@@ -673,9 +750,10 @@ class CellPDF extends Cell {
 					$b = hexdec($match[3]);
 					$pdf->SetFillColor($r, $g, $b);
 				}
+			} // If no color set then don't fill
+			else {
+				$this->fill = 0;
 			}
-			// If no color set then don't fill
-			else $this->fill = 0;
 		}
 		// Paint the Border color if set
 		if (!empty($this->bocolor)) {
@@ -700,9 +778,10 @@ class CellPDF extends Cell {
 		// If current position (left)
 		if ($this->left == ".") {
 			$cX = $pdf->GetX();
+		} // For static position add margin (also updates X)
+		else {
+			$cX = $pdf->addMarginX($this->left);
 		}
-		// For static position add margin (also updates X)
-		else $cX = $pdf->addMarginX($this->left);
 
 		// Check the width if set to page wide OR set by xml to larger then page wide
 		if (($this->width == 0) or ($this->width > $pdf->getRemainingWidthPDF())) {
@@ -723,12 +802,11 @@ class CellPDF extends Cell {
 		if (!empty($temptext)) {
 			$cHT = $pdf->getNumLines($temptext, $this->width);
 			$cHT = $cHT * $pdf->getCellHeightRatio() * $pdf->getCurrentStyleHeight();
-			$cM = $pdf->getMargins();
+			$cM  = $pdf->getMargins();
 			// Add padding
 			if (is_array($cM['cell'])) {
 				$cHT += ($cM['padding_bottom'] + $cM['padding_top']);
-			}
-			else {
+			} else {
 				$cHT += ($cM['cell'] * 2);
 			}
 			// Add a new page if needed
@@ -738,12 +816,24 @@ class CellPDF extends Cell {
 			$temptext = spanLTRRTL($temptext, "BOTH");
 		}
 		// HTML ready - last value is true
-		$pdf->MultiCell($this->width, $this->height, $temptext, $this->border, $this->align, $this->fill, $this->newline, $cX, $this->top, $this->reseth, $this->stretch, true);
+		$pdf->MultiCell(
+			$this->width,
+			$this->height,
+			$temptext,
+			$this->border,
+			$this->align,
+			$this->fill,
+			$this->newline,
+			$cX,
+			$this->top,
+			$this->reseth,
+			$this->stretch,
+			true
+		);
 		// Reset the last cell height for the next line
 		if ($this->newline >= 1) {
 			$pdf->lastCellHeight = 0;
-		}
-		// OR save the last height if heigher then before
+		} // OR save the last height if heigher then before
 		elseif ($pdf->lastCellHeight < $pdf->getLastH()) {
 			$pdf->lastCellHeight = $pdf->getLastH();
 		}
@@ -759,12 +849,8 @@ class CellPDF extends Cell {
 }
 
 /**
-* HTML element - PDF Report
-*
-* @package webtrees
-* @subpackage Reports
-* @todo add info
-*/
+ * HTML element - PDF Report
+ */
 class HtmlPDF extends Html {
 
 	function HtmlPDF($tag, $attrs) {
@@ -779,13 +865,13 @@ class HtmlPDF extends Html {
 			$this->attrs['width'] *= 3.9;
 		}
 
-		$this->text = $this->getStart().$this->text;
+		$this->text = $this->getStart() . $this->text;
 		foreach ($this->elements as $element) {
-			if (is_string($element) && $element=="footnotetexts") {
+			if (is_string($element) && $element == "footnotetexts") {
 				$pdf->Footnotes();
-			} elseif (is_string($element) && $element=="addpage") {
+			} elseif (is_string($element) && $element == "addpage") {
 				$pdf->newPage();
-			} elseif ($element->get_type()=="Html") {
+			} elseif ($element->get_type() == "Html") {
 				$this->text .= $element->render($pdf, true);
 			} else {
 				$element->render($pdf);
@@ -796,47 +882,59 @@ class HtmlPDF extends Html {
 			return $this->text;
 		}
 		$pdf->writeHTML($this->text); //prints 2 empty cells in the Expanded Relatives report
-//@@	$pdf->writeHTML($this->text.'@1'); //@@
+		//@@	$pdf->writeHTML($this->text.'@1'); //@@
 		return 0;
 	}
 }
 
 /**
-* TextBox element
-*
-* @package webtrees
-* @subpackage Reports
-* @todo add info
-*/
+ * TextBox element
+ */
 class TextBoxPDF extends TextBox {
 	/**
-	* Create a class Text Box for PDF
-	*
-	* @param float $width Text box width
-	* @param float $height Text box height
-	* @param boolean $border
-	* @param string $bgcolor Background color code in HTML
-	* @param boolean $newline
-	* @param mixed $left
-	* @param mixed $top
-	* @param boolean $pagecheck
-	* @param string $style
-	* @param boolean $fill
-	* @param boolean $padding
-	* @param boolean $reseth Reset the last height after this bos is done
-	*/
-	function TextBoxPDF($width, $height, $border, $bgcolor, $newline, $left, $top, $pagecheck, $style, $fill, $padding, $reseth) {
-		parent::TextBox($width, $height, $border, $bgcolor, $newline, $left, $top, $pagecheck, $style, $fill, $padding, $reseth);
+	 * Create a class Text Box for PDF
+	 *
+	 * @param float   $width   Text box width
+	 * @param float   $height  Text box height
+	 * @param boolean $border
+	 * @param string  $bgcolor Background color code in HTML
+	 * @param boolean $newline
+	 * @param mixed   $left
+	 * @param mixed   $top
+	 * @param boolean $pagecheck
+	 * @param string  $style
+	 * @param boolean $fill
+	 * @param boolean $padding
+	 * @param boolean $reseth  Reset the last height after this bos is done
+	 */
+	function TextBoxPDF(
+		$width, $height, $border, $bgcolor, $newline, $left, $top, $pagecheck, $style, $fill, $padding, $reseth
+	) {
+		parent::TextBox(
+			$width,
+			$height,
+			$border,
+			$bgcolor,
+			$newline,
+			$left,
+			$top,
+			$pagecheck,
+			$style,
+			$fill,
+			$padding,
+			$reseth
+		);
 	}
 
 	/**
-	* PDF Text Box renderer
-	* @param PDF &$pdf
-	*/
+	 * PDF Text Box renderer
+	 *
+	 * @param PDF &$pdf
+	 */
 	function render(&$pdf) {
 
-		$newelements = array();
-		$lastelement = "";
+		$newelements      = array();
+		$lastelement      = "";
 		$footnote_element = array();
 		// Element counter
 		$cE = count($this->elements);
@@ -860,23 +958,21 @@ class TextBoxPDF extends TextBox {
 							$lastelement->addText(str_replace("\n", "<br>", $element->getValue()));
 						} elseif (!empty($lastelement)) {
 							$newelements[] = $lastelement;
-							$lastelement = $element;
+							$lastelement   = $element;
 						}
 					}
-				}
-				// Collect the Footnote links
+				} // Collect the Footnote links
 				elseif ($element->get_type() == "Footnote") {
 					// Check if the Footnote has been set with it’s link number
 					$pdf->checkFootnote($element);
 					// Save first the last element if any
 					if (!empty($lastelement)) {
 						$newelements[] = $lastelement;
-						$lastelement = array();
+						$lastelement   = array();
 					}
 					// Save the Footnote with it’s link number as key for sorting later
 					$footnote_element[$element->num] = $element;
-				}
-				//-- do not keep empty footnotes
+				} //-- do not keep empty footnotes
 				elseif (($element->get_type() != "Footnote") || (trim($element->getValue()) != "")) {
 					if (!empty($footnote_element)) {
 						ksort($footnote_element);
@@ -887,14 +983,14 @@ class TextBoxPDF extends TextBox {
 					}
 					if (!empty($lastelement)) {
 						$newelements[] = $lastelement;
-						$lastelement = array();
+						$lastelement   = array();
 					}
 					$newelements[] = $element;
 				}
 			} else {
 				if (!empty($lastelement)) {
 					$newelements[] = $lastelement;
-					$lastelement = array();
+					$lastelement   = array();
 				}
 				if (!empty($footnote_element)) {
 					ksort($footnote_element);
@@ -919,10 +1015,10 @@ class TextBoxPDF extends TextBox {
 		unset($footnote_element, $lastelement, $links, $newelements);
 
 		/**
-		* Use these variables to update/manipulate values
-		* Repeted classes would reupdate all their class variables again, Header/Page Header/Footer
-		* This is the bugfree version
-		*/
+		 * Use these variables to update/manipulate values
+		 * Repeted classes would reupdate all their class variables again, Header/Page Header/Footer
+		 * This is the bugfree version
+		 */
 		$cH = 0; // Class Height
 		$cW = 0; // Class Width
 		$cX = 0; // Class Left
@@ -933,9 +1029,10 @@ class TextBoxPDF extends TextBox {
 		// If current position (left)
 		if ($this->left == ".") {
 			$cX = $pdf->GetX();
+		} // For static position add margin (returns and updates X)
+		else {
+			$cX = $pdf->addMarginX($this->left);
 		}
-		// For static position add margin (returns and updates X)
-		else $cX = $pdf->addMarginX($this->left);
 
 		// If current position (top)
 		if ($this->top == ".") {
@@ -958,13 +1055,12 @@ class TextBoxPDF extends TextBox {
 		// Temp Width with cell padding
 		if (is_array($cM['cell'])) {
 			$cWT = $cW - ($cM['padding_left'] + $cM['padding_right']);
-		}
-		else {
+		} else {
 			$cWT = $cW - ($cM['cell'] * 2);
 		}
 		// Element height (exept text)
 		$eH = 0;
-		$w = 0;
+		$w  = 0;
 		// Temp Height
 		$cHT = 0;
 		//-- $lw is an array
@@ -1000,7 +1096,7 @@ class TextBoxPDF extends TextBox {
 				$eH += $this->elements[$i]->getHeight($pdf);
 			}
 			//else {
-				//$h += $pdf->getFootnotesHeight();
+			//$h += $pdf->getFootnotesHeight();
 			//}
 		}
 
@@ -1018,16 +1114,14 @@ class TextBoxPDF extends TextBox {
 				if ($this->padding) {
 					if (is_array($cM['cell'])) {
 						$cHT += ($cM['padding_bottom'] + $cM['padding_top']);
-					}
-					else {
+					} else {
 						$cHT += ($cM['cell'] * 2);
 					}
 				}
 				if ($cH < $cHT) {
 					$cH = $cHT;
 				}
-			}
-			// This is any other element
+			} // This is any other element
 			elseif ($cH < $eH) {
 				$cH = $eH;
 			}
@@ -1047,7 +1141,9 @@ class TextBoxPDF extends TextBox {
 
 		// Setup the border and background color
 		$cS = ""; // Class Style
-		if ($this->border) $cS = "D"; // D or empty string: Draw (default)
+		if ($this->border) {
+			$cS = "D";
+		} // D or empty string: Draw (default)
 		$match = array();
 		// Fill the background
 		if ($this->fill) {
@@ -1068,7 +1164,7 @@ class TextBoxPDF extends TextBox {
 			if (!$pdf->getRTL()) {
 				$cXM = $cX;
 			} else {
-				$cXM=($pdf->getPageWidth())-$cX-$cW;
+				$cXM = ($pdf->getPageWidth()) - $cX - $cW;
 			}
 			//echo "<br>cX=".$cX."  cXM=".$cXM."  cW=".$cW."  LW=".$pdf->getPageWidth()."  RW=".$pdf->getRemainingWidthPDF()."  MLW=".$pdf->getMaxLineWidth();
 			$pdf->Rect($cXM, $cY, $cW, $cH, $cS);
@@ -1078,8 +1174,7 @@ class TextBoxPDF extends TextBox {
 			if ($cHT > 0) {
 				if (is_array($cM['cell'])) {
 					$pdf->SetY($cY + $cM['padding_top']);
-				}
-				else {
+				} else {
 					$pdf->SetY($cY + $cM['cell']);
 				}
 			}
@@ -1089,13 +1184,11 @@ class TextBoxPDF extends TextBox {
 			if ($this->padding) {
 				if (is_array($cM['cell'])) {
 					$pdf->SetLeftMargin($cX + $cM['padding_left']);
-				}
-				else {
+				} else {
 					$pdf->SetLeftMargin($cX + $cM['cell']);
 				}
 				$pdf->SetRightMargin($pdf->getRemainingWidthPDF() - $cW + $cM['right']);
-			}
-			else {
+			} else {
 				$pdf->SetLeftMargin($cX);
 				$pdf->SetRightMargin($pdf->getRemainingWidthPDF() - $cW + $cM['right']);
 			}
@@ -1103,14 +1196,13 @@ class TextBoxPDF extends TextBox {
 			if ($this->padding) {
 				if (is_array($cM['cell'])) {
 					$pdf->SetRightMargin($cX + $cM['padding_right']);
-				}
-				else {
+				} else {
 					$pdf->SetRightMargin($cX + $cM['cell']);
 				}
-				$pdf->SetLeftMargin($pdf->getRemainingWidthPDF() - $cW  + $cM['left']);
+				$pdf->SetLeftMargin($pdf->getRemainingWidthPDF() - $cW + $cM['left']);
 			} else {
 				$pdf->SetRightMargin($cX);
-				$pdf->SetLeftMargin($pdf->getRemainingWidthPDF() - $cW  + $cM['left']);
+				$pdf->SetLeftMargin($pdf->getRemainingWidthPDF() - $cW + $cM['left']);
 			}
 		}
 		// Save the current page number
@@ -1148,32 +1240,30 @@ class TextBoxPDF extends TextBox {
 			$pdf->SetY($cY + $cH);
 			$pdf->lastCellHeight = 0;
 		}
+
 		return true;
 	}
 }
 
 /**
-* Text element
-*
-* @package webtrees
-* @subpackage Reports
-* @todo add info
-*/
+ * Text element
+ */
 class TextPDF extends Text {
 	/**
-	* Create a Text class for PDF
-	*
-	* @param string $style The name of the text style
-	* @param string $color HTML color code
-	*/
+	 * Create a Text class for PDF
+	 *
+	 * @param string $style The name of the text style
+	 * @param string $color HTML color code
+	 */
 	function TextPDF($style, $color) {
 		parent::Text($style, $color);
 	}
 
 	/**
-	* PDF Text renderer
-	* @param PDF &$pdf
-	*/
+	 * PDF Text renderer
+	 *
+	 * @param PDF &$pdf
+	 */
 	function render(&$pdf) {
 		// Set up the style
 		if ($pdf->getCurrentStyle() != $this->styleName) {
@@ -1194,29 +1284,43 @@ class TextPDF extends Text {
 			$pdf->SetTextColor(0, 0, 0);
 		}
 		$temptext = spanLTRRTL($temptext, "BOTH");
-		$temptext = str_replace(array('<br><span dir="rtl" >', '<br><span dir="ltr" >', '> ',  ' <'), array('<span dir="rtl" ><br>', '<span dir="ltr" ><br>', '>&nbsp;', '&nbsp;<'), $temptext);
- 		$pdf->writeHTML($temptext, false, false, true, false, ""); //change height - line break etc. - the form is mirror on rtl pages
+		$temptext = str_replace(
+			array('<br><span dir="rtl" >', '<br><span dir="ltr" >', '> ', ' <'),
+			array('<span dir="rtl" ><br>', '<span dir="ltr" ><br>', '>&nbsp;', '&nbsp;<'),
+			$temptext
+		);
+		$pdf->writeHTML(
+			$temptext,
+			false,
+			false,
+			true,
+			false,
+			""
+		); //change height - line break etc. - the form is mirror on rtl pages
 		// Reset the text color to black or it will be inherited
 		$pdf->SetTextColor(0, 0, 0);
 	}
 
 	/**
-	* Returns the height in points of the text element
-	*
-	* The height is already calculated in getWidth()
-	* @param PDF &$pdf
-	* @return float 0
-	*/
+	 * Returns the height in points of the text element
+	 *
+	 * The height is already calculated in getWidth()
+	 *
+	 * @param PDF &$pdf
+	 *
+	 * @return float 0
+	 */
 	function getHeight(&$pdf) {
 		return 0;
 	}
 
 	/**
-	* Splits the text into lines if necessary to fit into a giving cell
-	*
-	* @param PDF &$pdf
-	* @return array
-	*/
+	 * Splits the text into lines if necessary to fit into a giving cell
+	 *
+	 * @param PDF &$pdf
+	 *
+	 * @return array
+	 */
 	function getWidth(&$pdf) {
 		// Setup the style name, a font must be selected to calculate the width
 		if ($pdf->getCurrentStyle() != $this->styleName) {
@@ -1236,29 +1340,29 @@ class TextPDF extends Text {
 		if ($this->wrapWidthRemaining > 0) {
 			// Check with line counter too!
 			// but floor the $wrapWidthRemaining first to keep it bugfree!
-			$wrapWidthRemaining = (int)($this->wrapWidthRemaining);
+			$wrapWidthRemaining = (int) ($this->wrapWidthRemaining);
 			if (($lw >= ($wrapWidthRemaining)) or ($lfct > 1)) {
 				$newtext = "";
-				$lines = explode("\n", $this->text);
+				$lines   = explode("\n", $this->text);
 				// Go throught the text line by line
 				foreach ($lines as $line) {
 					// Line width in points + a little margin
 					$lw = $pdf->GetStringWidth($line);
 					// If the line has to be wraped
 					if ($lw >= $wrapWidthRemaining) {
-						$words = explode(" ", $line);
+						$words    = explode(" ", $line);
 						$addspace = count($words);
-						$lw = 0;
+						$lw       = 0;
 						foreach ($words as $word) {
 							$addspace--;
-							$lw += $pdf->GetStringWidth($word." ");
+							$lw += $pdf->GetStringWidth($word . " ");
 							if ($lw <= $wrapWidthRemaining) {
 								$newtext .= $word;
 								if ($addspace != 0) {
 									$newtext .= " ";
 								}
 							} else {
-								$lw = $pdf->GetStringWidth($word." ");
+								$lw = $pdf->GetStringWidth($word . " ");
 								$newtext .= "\n$word";
 								if ($addspace != 0) {
 									$newtext .= " ";
@@ -1273,7 +1377,7 @@ class TextPDF extends Text {
 					// Check the Line Feed counter
 					if ($lfct > 1) {
 						// Add a new line as long as it’s not the last line
-						$newtext.= "\n";
+						$newtext .= "\n";
 						// Reset the line width
 						$lw = 0;
 						// Reset the wrap width to the cell width
@@ -1282,47 +1386,46 @@ class TextPDF extends Text {
 					$lfct--;
 				}
 				$this->text = $newtext;
-				$lfct = substr_count($this->text, "\n");
+				$lfct       = substr_count($this->text, "\n");
+
 				return array($lw, 1, $lfct);
 			}
 		}
-		$l = 0;
+		$l    = 0;
 		$lfct = substr_count($this->text, "\n");
 		if ($lfct > 0) {
 			$l = 2;
 		}
+
 		return array($lw, $l, $lfct);
 	}
 }
 
 /**
-* Footnote element
-*
-* @package webtrees
-* @subpackage Reports
-* @todo add info
-*/
+ * Footnote element
+ */
 class FootnotePDF extends Footnote {
 
-	function FootnotePDF($style="") {
+	function FootnotePDF($style = "") {
 		parent::Footnote($style);
 	}
 
 	/**
-	* PDF Footnotes number renderer
-	* @param PDF &$pdf
-	*/
+	 * PDF Footnotes number renderer
+	 *
+	 * @param PDF &$pdf
+	 */
 	function render(&$pdf) {
 		$pdf->setCurrentStyle("footnotenum");
 		$pdf->Write($pdf->getCurrentStyleHeight(), $this->numText, $this->addlink); //source link numbers after name
 	}
 
 	/**
-	* Write the Footnote text
-	* Uses style name "footnote" by default
-	*
-	* @param PDF &$pdf
-	*/
+	 * Write the Footnote text
+	 * Uses style name "footnote" by default
+	 *
+	 * @param PDF &$pdf
+	 */
 	function renderFootnote(&$pdf) {
 		if ($pdf->getCurrentStyle() != $this->styleName) {
 			$pdf->setCurrentStyle($this->styleName);
@@ -1333,9 +1436,9 @@ class FootnotePDF extends Footnote {
 		// Print first the source number
 		// working
 		if ($pdf->getRTL()) {
-			$pdf->writeHTML("<span> .".$this->num."</span>", false, false, false, false, "");
+			$pdf->writeHTML("<span> ." . $this->num . "</span>", false, false, false, false, "");
 		} else {
-			$temptext = "<span>".$this->num.". </span>".$temptext;
+			$temptext = "<span>" . $this->num . ". </span>" . $temptext;
 		}
 		// underline «title» part of Source item
 		$temptext = str_replace(array('«', '»'), array('<u>', '</u>'), $temptext);
@@ -1343,16 +1446,17 @@ class FootnotePDF extends Footnote {
 	}
 
 	/**
-	* Returns the height in points of the Footnote element
-	*
-	* @param PDF &$pdf
-	* @return float $h
-	*/
+	 * Returns the height in points of the Footnote element
+	 *
+	 * @param PDF &$pdf
+	 *
+	 * @return float $h
+	 */
 	function getFootnoteHeight(&$pdf) {
 		//$style = $pdf->getStyle($this->styleName);
 		//$ct = substr_count($this->numText, "\n");
 		//if ($ct > 0) {
-			//$ct += 1;
+		//$ct += 1;
 		//}
 		//$h = ($style['size'] * $ct);
 		//return $h;
@@ -1360,12 +1464,13 @@ class FootnotePDF extends Footnote {
 	}
 
 	/**
-	* Splits the text into lines to fit into a giving cell
-	* and returns the last lines width
-	*
-	* @param PDF &$pdf
-	* @return array
-	*/
+	 * Splits the text into lines to fit into a giving cell
+	 * and returns the last lines width
+	 *
+	 * @param PDF $pdf
+	 *
+	 * @return array
+	 */
 	function getWidth(&$pdf) {
 		// Setup the style name, a font must be selected to calculate the width
 		$pdf->setCurrentStyle("footnotenum");
@@ -1389,29 +1494,29 @@ class FootnotePDF extends Footnote {
 		if ($this->wrapWidthRemaining > 0) {
 			// Check with line counter too!
 			// but floor the $wrapWidthRemaining first to keep it bugfree!
-			$wrapWidthRemaining = (int)($this->wrapWidthRemaining);
+			$wrapWidthRemaining = (int) ($this->wrapWidthRemaining);
 			if (($lw >= $wrapWidthRemaining) or ($lfct > 1)) {
 				$newtext = "";
-				$lines = explode("\n", $this->numText);
+				$lines   = explode("\n", $this->numText);
 				// Go throught the text line by line
 				foreach ($lines as $line) {
 					// Line width in points
 					$lw = ceil($pdf->GetStringWidth($line));
 					// If the line has to be wraped
 					if ($lw >= $wrapWidthRemaining) {
-						$words = explode(" ", $line);
+						$words    = explode(" ", $line);
 						$addspace = count($words);
-						$lw = 0;
+						$lw       = 0;
 						foreach ($words as $word) {
 							$addspace--;
-							$lw += ceil($pdf->GetStringWidth($word." "));
+							$lw += ceil($pdf->GetStringWidth($word . " "));
 							if ($lw < $wrapWidthRemaining) {
 								$newtext .= $word;
 								if ($addspace != 0) {
 									$newtext .= " ";
 								}
 							} else {
-								$lw = $pdf->GetStringWidth($word." ");
+								$lw = $pdf->GetStringWidth($word . " ");
 								$newtext .= "\n$word";
 								if ($addspace != 0) {
 									$newtext .= " ";
@@ -1426,7 +1531,7 @@ class FootnotePDF extends Footnote {
 					// Check the Line Feed counter
 					if ($lfct > 1) {
 						// Add a new line feed as long as it’s not the last line
-						$newtext.= "\n";
+						$newtext .= "\n";
 						// Reset the line width
 						$lw = 0;
 						// Reset the wrap width to the cell width
@@ -1435,25 +1540,24 @@ class FootnotePDF extends Footnote {
 					$lfct--;
 				}
 				$this->numText = $newtext;
-				$lfct = substr_count($this->numText, "\n");
+				$lfct          = substr_count($this->numText, "\n");
+
 				return array($lw, 1, $lfct);
 			}
 		}
-		$l = 0;
+		$l    = 0;
 		$lfct = substr_count($this->numText, "\n");
 		if ($lfct > 0) {
 			$l = 2;
 		}
+
 		return array($lw, $l, $lfct);
 	}
 }
 
 /**
-* PageHeader element
-*
-* @package webtrees
-* @subpackage Reports
-*/
+ * PageHeader element
+ */
 class PageHeaderPDF extends PageHeader {
 
 	function PageHeaderPDF() {
@@ -1461,9 +1565,10 @@ class PageHeaderPDF extends PageHeader {
 	}
 
 	/**
-	* PageHeader element renderer
-	* @param PDF &$pdf
-	*/
+	 * PageHeader element renderer
+	 *
+	 * @param PDF $pdf
+	 */
 	function render(&$pdf) {
 		$pdf->clearPageHeader();
 		foreach ($this->elements as $element) {
@@ -1473,11 +1578,8 @@ class PageHeaderPDF extends PageHeader {
 }
 
 /**
-* ImagePDF class element
-*
-* @package webtrees
-* @subpackage Reports
-*/
+ * ImagePDF class element
+ */
 class ImagePDF extends Image {
 
 	function ImagePDF($file, $x, $y, $w, $h, $align, $ln) {
@@ -1485,9 +1587,10 @@ class ImagePDF extends Image {
 	}
 
 	/**
-	* PDF image renderer
-	* @param PDF &$pdf
-	*/
+	 * PDF image renderer
+	 *
+	 * @param PDF $pdf
+	 */
 	function render(&$pdf) {
 		global $lastpicbottom, $lastpicpage, $lastpicleft, $lastpicright;
 
@@ -1500,31 +1603,58 @@ class ImagePDF extends Image {
 		// If current position (left)set "."
 		if ($this->x == ".") {
 			$this->x = $pdf->GetX();
-		}
-		// For static position add margin
-		else  {
+		} // For static position add margin
+		else {
 			$this->x = $pdf->addMarginX($this->x);
 			$pdf->SetX($curx);
 		}
 		if ($this->y == ".") {
 			//-- first check for a collision with the last picture
 			if (isset($lastpicbottom)) {
-				if (($pdf->PageNo()==$lastpicpage) && ($lastpicbottom >= $pdf->GetY()) && ($this->x >= $lastpicleft) && ($this->x <= $lastpicright))
+				if (($pdf->PageNo() == $lastpicpage) && ($lastpicbottom >= $pdf->GetY(
+						)) && ($this->x >= $lastpicleft) && ($this->x <= $lastpicright)
+				) {
 					$pdf->SetY($lastpicbottom + 5);
+				}
 			}
 			$this->y = $pdf->GetY();
 		} else {
 			$pdf->SetY($this->y);
 		}
-		if ($pdf->getRTL())
-			$pdf->Image($this->file, $pdf->getPageWidth()-$this->x, $this->y, $this->width, $this->height, "", "", $this->line, false, 72, $this->align);
-		else
-			$pdf->Image($this->file, $this->x, $this->y, $this->width, $this->height, "", "", $this->line, false, 72, $this->align);
-		$lastpicpage = $pdf->PageNo();
+		if ($pdf->getRTL()) {
+			$pdf->Image(
+				$this->file,
+				$pdf->getPageWidth() - $this->x,
+				$this->y,
+				$this->width,
+				$this->height,
+				"",
+				"",
+				$this->line,
+				false,
+				72,
+				$this->align
+			);
+		} else {
+			$pdf->Image(
+				$this->file,
+				$this->x,
+				$this->y,
+				$this->width,
+				$this->height,
+				"",
+				"",
+				$this->line,
+				false,
+				72,
+				$this->align
+			);
+		}
+		$lastpicpage      = $pdf->PageNo();
 		$pdf->lastpicpage = $pdf->getPage();
-		$lastpicleft = $this->x;
-		$lastpicright = $this->x + $this->width;
-		$lastpicbottom = $this->y + $this->height;
+		$lastpicleft      = $this->x;
+		$lastpicright     = $this->x + $this->width;
+		$lastpicbottom    = $this->y + $this->height;
 		// Setup for the next line
 		if ($this->line == "N") {
 			$pdf->SetY($lastpicbottom);
@@ -1532,10 +1662,12 @@ class ImagePDF extends Image {
 	}
 
 	/**
-	* Get the image height
-	* @param PDF &$pdf
-	* @return float
-	*/
+	 * Get the image height
+	 *
+	 * @param PDF $pdf
+	 *
+	 * @return float
+	 */
 	function getHeight(&$pdf) {
 		return $this->height;
 	}
@@ -1546,39 +1678,44 @@ class ImagePDF extends Image {
 }
 
 /**
-* Line element
-*
-* @package webtrees
-* @subpackage Reports
-* @todo add info
-*/
+ * Line element
+ */
 class LinePDF extends Line {
 	/**
-	* Create a line class -PDF
-	* @param mixed $x1
-	* @param mixed $y1
-	* @param mixed $x2
-	* @param mixed $y2
-	*/
+	 * Create a line class -PDF
+	 *
+	 * @param mixed $x1
+	 * @param mixed $y1
+	 * @param mixed $x2
+	 * @param mixed $y2
+	 */
 	function LinePDF($x1, $y1, $x2, $y2) {
 		parent::Line($x1, $y1, $x2, $y2);
 	}
 
 	/**
-	* PDF line renderer
-	* @param PDF &$pdf
-	*/
+	 * PDF line renderer
+	 *
+	 * @param PDF $pdf
+	 */
 	function render(&$pdf) {
-		if ($this->x1 == ".") $this->x1=$pdf->GetX();
-		if ($this->y1 == ".") $this->y1=$pdf->GetY();
+		if ($this->x1 == ".") {
+			$this->x1 = $pdf->GetX();
+		}
+		if ($this->y1 == ".") {
+			$this->y1 = $pdf->GetY();
+		}
 		if ($this->x2 == ".") {
 			$this->x2 = $pdf->getMaxLineWidth();
 		}
-		if ($this->y2 == ".") $this->y2=$pdf->GetY();
-		if ($pdf->getRTL())
-			$pdf->Line($pdf->getPageWidth()-$this->x1, $this->y1, $pdf->getPageWidth()-$this->x2, $this->y2);
-		else
+		if ($this->y2 == ".") {
+			$this->y2 = $pdf->GetY();
+		}
+		if ($pdf->getRTL()) {
+			$pdf->Line($pdf->getPageWidth() - $this->x1, $this->y1, $pdf->getPageWidth() - $this->x2, $this->y2);
+		} else {
 			$pdf->Line($this->x1, $this->y1, $this->x2, $this->y2);
+		}
 		//@@ pedigree report lines - family, deaths, cemeteries???
 	}
 }

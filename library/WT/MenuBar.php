@@ -381,9 +381,13 @@ class WT_MenuBar {
 	}
 
 	/**
-	* get the reports menu
-	* @return WT_Menu the menu item
-	*/
+	 * get the reports menu
+	 *
+	 * @param string $pid
+	 * @param string $famid
+	 *
+	 * @return WT_Menu the menu item
+	 */
 	public static function getReportsMenu($pid='', $famid='') {
 		global $SEARCH_SPIDER;
 
@@ -399,6 +403,7 @@ class WT_MenuBar {
 				$menu->addSubmenu($submenu);
 			}
 		}
+
 		return $menu;
 	}
 

@@ -65,10 +65,12 @@ function get_age_at_event($age_string, $show_years) {
 }
 
 /**
-* Parse a time string into its different parts
-* @param string $timestr the time as it was taken from the TIME tag
-* @return array returns an array with the hour, minutes, and seconds
-*/
+ * Parse a time string into its different parts
+ *
+ * @param string $timestr the time as it was taken from the TIME tag
+ *
+ * @return array returns an array with the hour, minutes, and seconds
+ */
 function parse_time($timestr)
 {
 	$time = explode(':', $timestr.':0:0');

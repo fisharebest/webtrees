@@ -39,8 +39,8 @@ class WT_Controller_Media extends WT_Controller_GedcomRecord {
 	}
 
 	/**
-	* get edit menu
-	*/
+	 * get edit menu
+	 */
 	function getEditMenu() {
 		$SHOW_GEDCOM_RECORD=get_gedcom_setting(WT_GED_ID, 'SHOW_GEDCOM_RECORD');
 
@@ -112,9 +112,12 @@ class WT_Controller_Media extends WT_Controller_GedcomRecord {
 	}
 
 	/**
-	* return a list of facts
-	* @return array
-	*/
+	 * return a list of facts
+	 *
+	 * @param bool $includeFileName
+	 *
+	 * @return array
+	 */
 	function getFacts($includeFileName=true) {
 		$facts = $this->record->getFacts();
 
@@ -134,8 +137,8 @@ class WT_Controller_Media extends WT_Controller_GedcomRecord {
 	}
 
 	/**
-	* edit menu items used in media list
-	*/
+	 * edit menu items used in media list
+	 */
 	static function getMediaListMenu($mediaobject) {
 		$html='<div class="lightbox-menu"><ul class="makeMenu lb-menu">';
 		$menu = new WT_Menu(WT_I18N::translate('Edit details'));
