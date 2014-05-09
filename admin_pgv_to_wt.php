@@ -621,6 +621,10 @@ foreach ($GEDCOMS as $GEDCOM=>$GED_DATA) {
 	if (substr($config, 0, 1)=='.') {
 		$config=$PGV_PATH.'/'.$config;
 	}
+	// Some settings were added in later versions of PGV, and may not be set if the
+	// user has not used the PGV admin pages since upgrading.
+	$NOTE_FACTS_ADD = '';
+	$FULL_SOURCES = '';
 	if (is_readable($config)) {
 		echo '<p>Reading configuration file ', $config, '</p>';
 		require $config;
