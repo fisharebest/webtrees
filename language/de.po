@@ -676,11 +676,11 @@ msgstr "Ein FAQ-Eintrag kann entweder nur in einem oder in allen Familienbäumen
 
 #: help_text.php:320
 msgid "A child may have more than one set of parents.  The relationship between the child and the parents can be biological, legal, or based on local culture and tradition.  If no pedigree is specified, then a biological relationship will be assumed."
-msgstr "Ein Kind kann in mehreren Elternbeziehungen stehen. Diese Beziehung kann sohl biologisch, rechtlich, oder aber in der lokalen Kultur und Tradition begründet sein. Sofern keine gesonderte Verwandschaft angegeben ist, wird eine biologische Elternschaft angenommen."
+msgstr "Ein Kind kann in mehreren Elternbeziehungen stehen. Diese Beziehung kann sowohl biologisch, rechtlich, oder aber in der lokalen Kultur und Tradition begründet sein. Sofern keine gesonderte Verwandschaft angegeben ist, wird eine biologische Elternschaft angenommen."
 
 #: modules_v3/batch_update/plugins/duplicate_links.php:32
 msgid "A common error is to have multiple links to the same record, for example listing the same child more than once in a family record."
-msgstr "Oft vorkommende Fehler sind mehrfache Verbindungen zwischen den selben Datensätzen.  Zum Beispiel, ein Kind das mehr als einmal in der selben Familie eingetragen ist."
+msgstr "Oft vorkommende Fehler sind mehrfache Verbindungen zwischen den selben Datensätzen, beispielsweise ein Kind, das mehr als einmal in der selben Familie eingetragen ist."
 
 #: setup.php:356
 msgid "A database server can store many separate databases.  You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
@@ -799,13 +799,13 @@ msgstr "Ein als Baum gestalteter Bericht über Vorfahren einer Person."
 #: modules_v3/ahnentafel_report/module.php:39
 #: modules_v3/ahnentafel_report/report.xml:5
 msgid "A report of an individual’s ancestors, in a narrative style."
-msgstr "Ein als Erzählung aufbereiteter  Bericht über einen einzelnen Vorfahren."
+msgstr "Ein als Erzählung aufbereiteter Bericht über einen einzelnen Vorfahren."
 
 #. I18N: Description of the “Descendants” module
 #: modules_v3/descendancy_report/module.php:39
 #: modules_v3/descendancy_report/report.xml:4
 msgid "A report of an individual’s descendants, in a narrative style."
-msgstr "Ein Bericht über Nachkommen einer Person, in einem erzählenden Stil."
+msgstr "Ein Bericht über die Nachkommen einer Person, in einem erzählenden Stil."
 
 #. I18N: Description of the “Individual” module
 #: modules_v3/individual_report/module.php:39
@@ -2570,7 +2570,7 @@ msgstr "Binäres Datenobjekt"
 
 #: includes/functions/functions_print.php:829
 msgid "Bing Maps™"
-msgstr ""
+msgstr "Bing Maps™"
 
 #: library/WT/Gedcom/Code/Temp.php:74
 msgid "Birmingham, Alabama"
@@ -10168,7 +10168,7 @@ msgstr "Uups! webtrees konnte in diesem Ordner keine Dateien erstellen."
 
 #: includes/functions/functions_print.php:830
 msgid "OpenStreetMap™"
-msgstr ""
+msgstr "OpenStreetMap™"
 
 #: modules_v3/googlemap/help_text.php:41 modules_v3/googlemap/module.php:406
 msgid "Optional prefixes and suffixes"
@@ -13610,11 +13610,11 @@ msgstr "Die Version von %s ist zu alt."
 
 #: help_text.php:997
 msgid "The website www.geonames.org provides a large database of place names.  This can be searched when entering new places.  To use this feature, you must register for a free account at www.geonames.org and provide the username."
-msgstr ""
+msgstr "Die Webseite www.genames.org bietet einen große Datenbank mit Ortsnamen, die beim Eingeben eines neuen Ortes durchsucht werden kann. Um diese Funktion zu nutzen, müssen Sie einen kostenlosen Account bei www.genames.org registriert haben und den Usernamen angeben."
 
 #: setup.php:934
 msgid "The webtrees developers would be very interested to learn about this error.  If you contact them, they will help you resolve the problem."
-msgstr "Die webtrees Entwickler sind sehr daran interessiert aus diesen Fehler zu analysieren. Wenn Sie diese kontaktieren werden diese ihnen helfen dieses Problem zu lösen."
+msgstr "Die webtrees Entwickler sind sehr daran interessiert aus diesen Fehler zu lernen. Wenn Sie diese kontaktieren, dann werden diese Ihnen helfen das Problem zu lösen."
 
 #: admin_modules.php:130 admin_modules.php:148 admin_users.php:201
 #: admin_users.php:407 edituser.php:154 help_text.php:983
