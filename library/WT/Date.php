@@ -183,7 +183,6 @@ class WT_Date {
 				} else {
 					$d1tmp='';
 				}
-				$q1tmp=$this->qual1;
 				if (is_null($this->date2)) {
 					$d2conv=null;
 					$d2tmp='';
@@ -195,7 +194,6 @@ class WT_Date {
 						$d2tmp='';
 					}
 				}
-				$q2tmp=$this->qual2;
 				// If the date is different to the unconverted date, add it to the date string.
 				if ($d1!=$d1tmp && $d1tmp!='') {
 					if ($url) {

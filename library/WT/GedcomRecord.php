@@ -365,8 +365,6 @@ class WT_GedcomRecord {
 	// Remove private data from the raw gedcom record.
 	// Return both the visible and invisible data.  We need the invisible data when editing.
 	public function privatizeGedcom($access_level) {
-		global $global_facts, $person_facts;
-
 		if ($access_level==WT_PRIV_HIDE) {
 			// We may need the original record, for example when downloading a GEDCOM or clippings cart
 			return $this->gedcom;
@@ -883,7 +881,7 @@ class WT_GedcomRecord {
 
 		// First line of record may contain data - e.g. NOTE records.
 		list($new_gedcom) = explode("\n", $old_gedcom, 2);
-		$old_chan = $this->getFirstFact('CHAN');
+
 		// Replacing (or deleting) an existing fact
 		foreach ($this->getFacts(null, false, WT_PRIV_HIDE) as $fact) {
 			if (!$fact->isOld()) {
