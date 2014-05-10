@@ -320,6 +320,7 @@ elseif ($action=='run') {
 	 * element handlers array
 	 *
 	 * Converts XML element names into functions
+	 *
 	 * @global array $elementHandler
 	 */
 	$elementHandler = array();
@@ -378,10 +379,10 @@ elseif ($action=='run') {
 	$elementHandler['sp']['start']               = 'spSHandler';
 
 	/**
-	* A new object of the currently used element class
-	*
-	* @global object $currentElement
-	*/
+	 * A new object of the currently used element class
+	 *
+	 * @global object $currentElement
+	 */
 	$currentElement = new Element();
 
 	/**
@@ -389,22 +390,23 @@ elseif ($action=='run') {
 	 *
 	 * This variable is turned on or off by the element handlers to tell whether the inner character
 	 * Data should be printed
+	 *
 	 * @global boolean $printData
 	 */
 	$printData = false;
 
 	/**
-	* Title collector. Mark it if it has already been used
-	*
-	* @global boolean $reportTitle
-	*/
+	 * Title collector. Mark it if it has already been used
+	 *
+	 * @global boolean $reportTitle
+	 */
 	$reportTitle = false;
 
 	/**
-	* Description collector. Mark it if it has already been used
-	*
-	* @global boolean $reportDescription
-	*/
+	 * Description collector. Mark it if it has already been used
+	 *
+	 * @global boolean $reportDescription
+	 */
 	$reportDescription = false;
 
 	/**
@@ -418,69 +420,58 @@ elseif ($action=='run') {
 	$printDataStack = array();
 
 	/**
-	* @todo add info
-	* @global array $wt_reportStack
-	*/
+	 * @global array $wt_reportStack
+	 */
 	$wt_reportStack = array();
 
 	/**
-	* @todo add info
-	* @global array $gedrecStack
-	*/
+	 * @global array $gedrecStack
+	 */
 	$gedrecStack = array();
 
 	/**
-	* @todo add info
-	* @global array $repeatsStack
-	*/
+	 * @global array $repeatsStack
+	 */
 	$repeatsStack = array();
 
 	/**
-	* @todo add info
-	* @global array $parserStack
-	*/
+	 * @global array $parserStack
+	 */
 	$parserStack = array();
 
 	/**
-	* @todo add info
-	* @global array $repeats
-	*/
+	 * @global array $repeats
+	 */
 	$repeats = array();
 
 	/**
-	* @todo add info
-	* @global string $gedrec
-	*/
+	 * @global string $gedrec
+	 */
 	$gedrec = '';
 
 	/**
-	* @todo add info
-	* @global ???? $repeatBytes
-	*/
+	 * @global ???? $repeatBytes
+	 */
 	$repeatBytes = 0;
 
 	/**
-	* @todo add info
-	* @global resource $parser
-	*/
+	 * @global resource $parser
+	 */
 	$parser = '';
 
 	/**
-	* @todo add info
-	* @global int $processRepeats
-	*/
+	 * @global int $processRepeats
+	 */
 	$processRepeats = 0;
 
 	/**
-	* @todo add info
-	* @global ???? $processIfs
-	*/
+	 * @global ???? $processIfs
+	 */
 	$processIfs = 0;
 
 	/**
-	* @todo add info
-	* @global ???? $processGedcoms
-	*/
+	 * @global ???? $processGedcoms
+	 */
 	$processGedcoms = 0;
 
 	/**

@@ -388,9 +388,9 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 			}
 			break;
 		case '_WT_USER':
-			$fullname=getUserFullname(get_user_id($match[2])); // may not exist
-			if ($fullname) {
-				echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $fullname);
+			$user = \WT\User::findByIdentifier($match[2]); // may not exist
+			if ($user) {
+				echo WT_Gedcom_Tag::getLabelValue('_WT_USER', WT_Filter::escapeHtml($user->getRealName()));
 			} else {
 				echo WT_Gedcom_Tag::getLabelValue('_WT_USER', WT_Filter::escapeHtml($match[2]));
 			}
@@ -455,13 +455,13 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 	print_media_links($fact->getGedcom(), 2);
 	echo '</td></tr>';
 }
-//------------------- end print fact function
 
 /**
  * print a repository record
  *
  * find and print repository information attached to a source
- * @param string $sid  the Gedcom Xref ID of the repository to print
+ *
+ * @param $xref the Gedcom Xref ID of the repository to print
  */
 function print_repository_record($xref) {
 	$repository=WT_Repository::getInstance($xref);
@@ -477,8 +477,11 @@ function print_repository_record($xref) {
  *
  * this function is called by the print_fact function and other functions to
  * print any source information attached to the fact
+ *
  * @param string $factrec The fact record to look for sources in
- * @param int $level The level to look for sources at
+ * @param int    $level   The level to look for sources at
+ *
+ * @return string HTML text
  */
 function print_fact_sources($factrec, $level) {
 	global $EXPAND_SOURCES;

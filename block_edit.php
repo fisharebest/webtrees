@@ -28,7 +28,11 @@ $block = WT_DB::prepare(
 
 // Check access.  (1) the block must exist, (2) gedcom blocks require
 // managers, (3) user blocks require the user or an admin
-if (!$block || $block->gedcom_id && !userGedcomAdmin(WT_USER_ID, $block->gedcom_id) || $block->user_id && $block->user_id!=WT_USER_ID && !WT_USER_IS_ADMIN) {
+if (
+	!$block ||
+	$block->gedcom_id && !\WT\Auth::isManager(WT_Tree::get($block->gedcom_id)) ||
+	$block->user_id && $block->user_id != \WT\Auth::id() && !\WT\Auth::isAdmin()
+) {
 	exit;
 }
 

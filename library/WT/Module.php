@@ -117,7 +117,7 @@ abstract class WT_Module {
 					$modules[$module_name]=new $class();
 				} else {
 					// Module has been deleted from disk?  Disable it.
-					AddToLog("Module {$module_name} has been deleted from disk - disabling it", 'config');
+					\WT\Log::addConfigurationLog("Module {$module_name} has been deleted from disk - disabling it");
 					WT_DB::prepare(
 						"UPDATE `##module` SET status='disabled' WHERE module_name=?"
 					)->execute(array($module_name));
@@ -147,7 +147,7 @@ abstract class WT_Module {
 				$array[$module_name]=new $class();
 			} else {
 				// Module has been deleted from disk?  Disable it.
-				AddToLog("Module {$module_name} has been deleted from disk - disabling it", 'config');
+				\WT\Log::addConfigurationLog("Module {$module_name} has been deleted from disk - disabling it");
 				WT_DB::prepare(
 					"UPDATE `##module` SET status='disabled' WHERE module_name=?"
 				)->execute(array($module_name));

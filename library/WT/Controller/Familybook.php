@@ -21,11 +21,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 class WT_Controller_Familybook extends WT_Controller_Chart {
 	// Data for the view
 	public $pid	       =null;
@@ -78,8 +73,8 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 	}
 
 	/**
-	* Prints descendency of passed in person
-	*/
+	 * Prints descendency of passed in person
+	 */
 	function print_descendency($person, $count) {
 		global $TEXT_DIRECTION, $WT_IMAGES, $bwidth, $bheight, $bhalfheight;
 		global $show_full, $box_width; // print_pedigree_person() requires these globals.
@@ -189,17 +184,17 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 			echo '<td width="',$bwidth,'">';
 		}
 
-		if ($numkids==0) {
+		if ($numkids == 0) {
 			$numkids = 1;
 		}
 		echo '<table><tr><td>';
 		if ($person) {
 			print_pedigree_person($person);
 					echo '</td><td>',
-			 '<img class="line2" src="',$WT_IMAGES["hline"],'" width="8" height="3" alt="">';
-		} else  if ($kids==1 ) 
-			echo '<div style="width:',$bwidth+19,'px; height:',$bheight+8,'px;"></div>',
-				 '</td><td>';
+			 '<img class="line2" src="', $WT_IMAGES['hline'], '" width="8" height="3" alt="">';
+		} elseif ($kids === 1) {
+			echo '<div style="width:', $bwidth + 19, 'px; height:', $bheight + 8, 'px;"></div></td><td>';
+		}
 
 		//----- Print the spouse
 		if ($count==1 ) {
@@ -227,8 +222,8 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 	}
 
 	/**
-	* Prints pedigree of the person passed in
-	*/
+	 * Prints pedigree of the person passed in
+	 */
 	function print_person_pedigree($person, $count) {
 		global $WT_IMAGES, $bheight, $bwidth, $bhalfheight;
 		if ($count>=$this->generations) return;
@@ -333,8 +328,8 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 		return $maxdc;
 	}
 	/**
-	* Print empty box
-	*/
+	 * Print empty box
+	 */
 	function printEmptyBox($bwidth, $bheight){
 	echo '<tr>',
 		 '<td>',

@@ -29,13 +29,15 @@ if (!defined('WT_WEBTREES')) {
 }
 
 /**
-* print the information for an individual chart box
-*
-* find and print a given individuals information for a pedigree chart
-* @param string $pid the Gedcom Xref ID of the   to print
-* @param int $style the style to print the box in, 1 for smaller boxes, 2 for larger boxes
-* @param int $count on some charts it is important to keep a count of how many boxes were printed
-*/
+ * print the information for an individual chart box
+ *
+ * find and print a given individuals information for a pedigree chart
+ *
+ * @param WT_Individual $person The person to print
+ * @param int           $style  the style to print the box in, 1 for smaller boxes, 2 for larger boxes
+ * @param int           $count  on some charts it is important to keep a count of how many boxes were printed
+ * @param string        $personcount
+ */
 function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 	global $GEDCOM;
 	global $SHOW_HIGHLIGHT_IMAGES, $bwidth, $bheight, $PEDIGREE_FULL_DETAILS, $SHOW_PEDIGREE_PLACES;
@@ -55,7 +57,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 		echo "<div id=\"out-", rand(), "\" class=\"person_boxNN\" style=\"width: ", $bwidth, "px; height: ", $bheight, "px; overflow: hidden;\">";
 		echo '<br>';
 		echo '</div>';
-		return false;
+		return;
 	}
 	$pid=$person->getXref();
 	if ($count==0) $count = rand();
@@ -242,10 +244,10 @@ function header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CA
 }
 
 /**
-* Prints Exection Statistics
-*
-* prints out the execution time and the databse queries
-*/
+ * Prints Exection Statistics
+ *
+ * prints out the execution time and the databse queries
+ */
 function execution_stats() {
 	global $start_time;
 
@@ -291,9 +293,9 @@ function whoisonline() {
 	$NumAnonymous = 0;
 	$loggedusers = array ();
 	$content='';
-	foreach (get_logged_in_users() as $user_id=>$user_name) {
-		if (WT_USER_IS_ADMIN || get_user_setting($user_id, 'visibleonline')) {
-			$loggedusers[$user_id]=$user_name;
+	foreach (\WT\User::allLoggedIn() as $user) {
+		if (\WT\Auth::isAdmin() || $user->getSetting('visibleonline')) {
+			$loggedusers[] = $user;
 		} else {
 			$NumAnonymous++;
 		}
@@ -312,14 +314,12 @@ function whoisonline() {
 	$content .= '</div>';
 	$content .= '<div class="logged_in_list">';
 	if (WT_USER_ID) {
-		$i=0;
-		foreach ($loggedusers as $user_id=>$user_name) {
+		foreach ($loggedusers as $user) {
 			$content .= '<div class="logged_in_name">';
-			$content .= WT_Filter::escapeHtml(getUserFullName($user_id) . ' - ' . $user_name);
-			if (true || WT_USER_ID!=$user_id && get_user_setting($user_id, 'contactmethod')!="none") {
-				$content .= ' <a class="icon-email" href="#" onclick="return message(\'' . WT_Filter::escapeJs($user_name) . '\', \'\', \'' . WT_Filter::escapeJs(get_query_url()) . '\');" title="' . WT_I18N::translate('Send message').'"></a>';
+			$content .= WT_Filter::escapeHtml($user->getRealName()) . ' - ' . WT_Filter::escapeHtml($user->getUserName());
+			if (WT_USER_ID != $user->getUserId() && $user->getSetting('contactmethod') != 'none') {
+				$content .= ' <a class="icon-email" href="#" onclick="return message(\'' . WT_Filter::escapeJs($user->getUserName()) . '\', \'\', \'' . WT_Filter::escapeJs(get_query_url()) . '\');" title="' . WT_I18N::translate('Send message').'"></a>';
 			}
-			$i++;
 			$content .= '</div>';
 		}
 	}
@@ -331,18 +331,21 @@ function whoisonline() {
 // Print a link to allow email/messaging contact with a user
 // Optionally specify a method (used for webmaster/genealogy contacts)
 function user_contact_link($user_id) {
-	$method = get_user_setting($user_id, 'contactmethod');
+	$user = \WT\User::find($user_id);
 
-	$fullname = getUserFullName($user_id);
+	if ($user) {
+		$method = $user->getSetting('contactmethod');
 
-	switch ($method) {
-	case 'none':
+		switch ($method) {
+		case 'none':
+			return '';
+		case 'mailto':
+			return '<a href="mailto:' . WT_Filter::escapeHtml($user->getEmail()).'">'.WT_Filter::escapeHtml($user->getRealName($user_id)).'</a>';
+		default:
+			return "<a href='#' onclick='message(\"" . WT_Filter::escapeJs($user->getUserName()) . "\", \"" . $method . "\", \"" . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_Filter::escapeJs(get_query_url()) . "\", \"\");return false;'>" . WT_Filter::escapeHtml($user->getRealName($user_id)) . '</a>';
+		}
+	} else {
 		return '';
-	case 'mailto':
-		$email=getUserEmail($user_id);
-		return '<a href="mailto:' . WT_Filter::escapeHtml($email).'">'.WT_Filter::escapeHtml($fullname).'</a>';
-	default:
-		return "<a href='#' onclick='message(\"" . WT_Filter::escapeJs(get_user_name($user_id)) . "\", \"" . $method . "\", \"" . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_Filter::escapeJs(get_query_url()) . "\", \"\");return false;'>" . WT_Filter::escapeHtml($fullname) . '</a>';
 	}
 }
 
@@ -383,16 +386,18 @@ function contact_links($ged_id=WT_GED_ID) {
 }
 
 /**
-* print a note record
-* @param string $text
-* @param int $nlevel the level of the note record
-* @param string $nrec the note record to print
-* @param bool $textOnly Don't print the "Note: " introduction
-* @return boolean
-*/
+ * print a note record
+ *
+ * @param string $text
+ * @param int    $nlevel   the level of the note record
+ * @param string $nrec     the note record to print
+ * @param bool   $textOnly Don't print the "Note: " introduction
+ *
+ * @return boolean
+ */
 function print_note_record($text, $nlevel, $nrec, $textOnly=false) {
 	global $WT_TREE;
-	
+
 	$text .= get_cont($nlevel, $nrec);
 
 	// Check if shared note (we have already checked that it exists)
@@ -434,11 +439,14 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false) {
 }
 
 /**
-* Print all of the notes in this fact record
-* @param string $factrec the factrecord to print the notes from
-* @param int $level The level of the factrecord
-* @param bool $textOnly Don't print the "Note: " introduction
-*/
+ * Print all of the notes in this fact record
+ *
+ * @param string $factrec  the factrecord to print the notes from
+ * @param int    $level    The level of the factrecord
+ * @param bool   $textOnly Don't print the "Note: " introduction
+ *
+ * @return string HTML
+ */
 function print_fact_notes($factrec, $level, $textOnly=false) {
 	$data = "";
 	$previous_spos = 0;
@@ -480,26 +488,6 @@ function print_fact_notes($factrec, $level, $textOnly=false) {
 		}
 	}
 	return $data;
-}
-
-//-- function to print a privacy error with contact method
-function print_privacy_error() {
-	$user_id=get_gedcom_setting(WT_GED_ID, 'CONTACT_USER_ID');
-	$method=get_user_setting($user_id, 'contactmethod');
-	$fullname=getUserFullName($user_id);
-
-	echo '<div class="error">', WT_I18N::translate('This information is private and cannot be shown.'), '</div>';
-	switch ($method) {
-	case 'none':
-		break;
-	case 'mailto':
-		$email=getUserEmail($user_id);
-		echo '<div class="error">', WT_I18N::translate('For more information contact'), ' ', '<a href="mailto:'.WT_Filter::escapeHtml($email).'">'.WT_Filter::escapeHtml($fullname).'</a>', '</div>';
-		break;
-	default:
-		echo '<div class="error">', WT_I18N::translate('For more information contact'), ' ', "<a href='#' onclick='message(\"", WT_Filter::escapeHtml(get_user_name($user_id)), "\", \"", $method, "\", \"", WT_Filter::escapeJs(get_query_url()), "\", \"\"); return false;'>", WT_Filter::escapeHtml($fullname), '</a>', '</div>';
-		break;
-	}
 }
 
 // Print a link for a popup help window
@@ -597,10 +585,13 @@ function format_asso_rela_record(WT_Fact $event) {
 }
 
 /**
-* Format age of parents in HTML
-*
-* @param string $pid child ID
-*/
+ * Format age of parents in HTML
+ *
+ * @param WT_Individual $person child
+ * @param WT_Date       $birth_date
+ *
+ * @return string HTML
+ */
 function format_parents_age(WT_Individual $person, WT_Date $birth_date) {
 	$html='';
 	$families=$person->getChildFamilies();
@@ -778,14 +769,17 @@ function format_fact_date(WT_Fact $event, WT_GedcomRecord $record, $anchor=false
 	}
 	return $html;
 }
+
 /**
-* print fact PLACe TEMPle STATus
-*
-* @param Event $event gedcom fact record
-* @param boolean $anchor option to print a link to placelist
-* @param boolean $sub option to print place subrecords
-* @param boolean $lds option to print LDS TEMPle and STATus
-*/
+ * print fact PLACe TEMPle STATus
+ *
+ * @param WT_Fact $event       gedcom fact record
+ * @param bool    $anchor      to print a link to placelist
+ * @param bool    $sub_records to print place subrecords
+ * @param bool    $lds         to print LDS TEMPle and STATus
+ *
+ * @return string HTML
+ */
 function format_fact_place(WT_Fact $event, $anchor=false, $sub_records=false, $lds=false) {
 	global $SEARCH_SPIDER;
 
@@ -825,9 +819,9 @@ function format_fact_place(WT_Fact $event, $anchor=false, $sub_records=false, $l
 			if ($map_lati && $map_long) {
 				$map_lati = trim(strtr($map_lati, "NSEW,�", " - -. ")); // S5,6789 ==> -5.6789
 				$map_long = trim(strtr($map_long, "NSEW,�", " - -. ")); // E3.456� ==> 3.456
-				$html .= ' <a rel="nollow" href="https://maps.google.com/maps?q=' . $map_lati . ',' . $map_long . '" class="icon-googlemaps" title="' . WT_I18N::translate('Google Maps™') . '"></a>';
-				$html .= ' <a rel="nollow" href="https://www.bing.com/maps/?lvl=15&cp=' . $map_lati . '~' . $map_long . '" class="icon-bing" title="' . WT_I18N::translate('Bing Maps™') . '"></a>';
-				$html .= ' <a rel="nollow" href="https://www.openstreetmap.org/#map=15/' . $map_lati . '/' . $map_long . '" class="icon-osm" title="' . WT_I18N::translate('OpenStreetMap™') . '"></a>';
+				$html .= ' <a rel="nofollow" href="https://maps.google.com/maps?q=' . $map_lati . ',' . $map_long . '" class="icon-googlemaps" title="' . WT_I18N::translate('Google Maps™') . '"></a>';
+				$html .= ' <a rel="nofollow" href="https://www.bing.com/maps/?lvl=15&cp=' . $map_lati . '~' . $map_long . '" class="icon-bing" title="' . WT_I18N::translate('Bing Maps™') . '"></a>';
+				$html .= ' <a rel="nofollow" href="https://www.openstreetmap.org/#map=15/' . $map_lati . '/' . $map_long . '" class="icon-osm" title="' . WT_I18N::translate('OpenStreetMap™') . '"></a>';
 			}
 			if (preg_match('/\d NOTE (.*)/', $placerec, $match)) {
 				$html .= '<br>' . print_fact_notes($placerec, 3);
@@ -850,9 +844,9 @@ function format_fact_place(WT_Fact $event, $anchor=false, $sub_records=false, $l
 }
 
 /**
-* Check for facts that may exist only once for a certain record type.
-* If the fact already exists in the second array, delete it from the first one.
-*/
+ * Check for facts that may exist only once for a certain record type.
+ * If the fact already exists in the second array, delete it from the first one.
+ */
 function CheckFactUnique($uniquefacts, $recfacts, $type) {
 	foreach ($recfacts as $factarray) {
 		$fact=false;
@@ -878,11 +872,12 @@ function CheckFactUnique($uniquefacts, $recfacts, $type) {
 }
 
 /**
-* Print a new fact box on details pages
-* @param string $id the id of the person, family, source etc the fact will be added to
-* @param array $usedfacts an array of facts already used in this record
-* @param string $type the type of record INDI, FAM, SOUR etc
-*/
+ * Print a new fact box on details pages
+ *
+ * @param string $id        the id of the person, family, source etc the fact will be added to
+ * @param array  $usedfacts an array of facts already used in this record
+ * @param string $type      the type of record INDI, FAM, SOUR etc
+ */
 function print_add_new_fact($id, $usedfacts, $type) {
 	global $WT_SESSION;
 
@@ -978,10 +973,8 @@ function print_add_new_fact($id, $usedfacts, $type) {
 }
 
 /**
-* javascript declaration for calendar popup
-*
-* @param none
-*/
+ * javascript declaration for calendar popup
+ */
 function init_calendar_popup() {
 	global $WEEK_START, $controller;
 

@@ -584,13 +584,14 @@ function reformat_record_import($rec) {
 }
 
 /**
-* import record into database
-*
-* this function will parse the given gedcom record and add it to the database
-* @param string $gedrec the raw gedcom record to parse
-* @param integer $ged_id import the record into this gedcom
-* @param boolean $update whether or not this is an updated record that has been accepted
-*/
+ * import record into database
+ *
+ * this function will parse the given gedcom record and add it to the database
+ *
+ * @param string  $gedrec the raw gedcom record to parse
+ * @param integer $ged_id import the record into this gedcom
+ * @param boolean $update whether or not this is an updated record that has been accepted
+ */
 function import_record($gedrec, $ged_id, $update) {
 	global $USE_RIN, $GENERATE_UIDS, $keep_media;
 
@@ -761,10 +762,12 @@ function import_record($gedrec, $ged_id, $update) {
 }
 
 /**
-* extract all places from the given record and insert them
-* into the places table
-* @param string $gedrec
-*/
+ * extract all places from the given record and insert them into the places table
+ *
+ * @param        $gid
+ * @param        $ged_id
+ * @param string $gedrec
+ */
 function update_places($gid, $ged_id, $gedrec) {
 	global $placecache;
 
@@ -988,12 +991,13 @@ function create_media_object($level, $gedrec, $ged_id) {
 }
 
 /**
-* delete a gedcom from the database
-*
-* deletes all of the imported data about a gedcom from the database
-* @param string $ged_id the gedcom to remove from the database
-* @param boolean $keepmedia Whether or not to keep media and media links in the tables
-*/
+ * delete a gedcom from the database
+ *
+ * deletes all of the imported data about a gedcom from the database
+ *
+ * @param string  $ged_id    the gedcom to remove from the database
+ * @param boolean $keepmedia Whether or not to keep media and media links in the tables
+ */
 function empty_database($ged_id, $keepmedia) {
 	WT_DB::prepare("DELETE FROM `##individuals` WHERE i_file   =?")->execute(array($ged_id));
 	WT_DB::prepare("DELETE FROM `##families`    WHERE f_file   =?")->execute(array($ged_id));
@@ -1035,7 +1039,7 @@ function accept_all_changes($xref, $ged_id) {
 			" SET status='accepted'".
 			" WHERE status='pending' AND xref=? AND gedcom_id=?"
 		)->execute(array($xref, $ged_id));
-		AddToLog("Accepted change {$change->change_id} for {$xref} / {$change->gedcom_name} into database", 'edit');
+		\WT\Log::addEditLog("Accepted change {$change->change_id} for {$xref} / {$change->gedcom_name} into database");
 	}
 }
 
@@ -1049,15 +1053,18 @@ function reject_all_changes($xref, $ged_id) {
 }
 
 /**
-* update a record in the database
-* @param string $gedrec
-*/
+ * update a record in the database
+ *
+ * @param string $gedrec
+ * @param int    $ged_id
+ * @param bool   $delete
+ */
 function update_record($gedrec, $ged_id, $delete) {
 	if (preg_match('/^0 @('.WT_REGEX_XREF.')@ ('.WT_REGEX_TAG.')/', $gedrec, $match)) {
 		list(,$gid, $type) = $match;
 	} else {
 		echo "ERROR: Invalid gedcom record.";
-		return false;
+		return;
 	}
 
 	// TODO deleting unlinked places can be done more efficiently in a single query
@@ -1136,14 +1143,15 @@ function uuid() {
 }
 
 /**
-* Produces checksums compliant with a Family Search guideline from 2007
-* these checksums are compatible with PAF, Legacy, RootsMagic and other applications
-* following these guidelines. This prevents dropping and recreation of UID's
-*
-* @author Veit Olschinski
-* @param string $uid the 32 hexadecimal character long uid
-* @return string containing the checksum string for the uid
-*/
+ * Produces checksums compliant with a Family Search guideline from 2007
+ *
+ * These checksums are compatible with PAF, Legacy, RootsMagic and other applications
+ * following these guidelines. This prevents dropping and recreation of UID's
+ *
+ * @param string $uid the 32 hexadecimal character long uid
+ *
+ * @return string containing the checksum string for the uid
+ */
 function getCheckSums($uid) {
 	$checkA=0; // a sum of the bytes
 	$checkB=0; // a sum of the incremental values of checkA

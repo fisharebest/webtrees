@@ -21,11 +21,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 class WT_Controller_Hourglass extends WT_Controller_Chart {
 	var $pid = "";
 
@@ -105,10 +100,8 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 	/**
 	 * Prints pedigree of the person passed in. Which is the descendancy
 	 *
-	 * @param mixed $pid ID of person to print the pedigree for
-	 * @param mixed $count generation count, so it recursively calls itself
-	 * @access public
-	 * @return void
+	 * @param string $person ID of person to print the pedigree for
+	 * @param int    $count  generation count, so it recursively calls itself
 	 */
 	function print_person_pedigree($person, $count) {
 		global $WT_IMAGES, $bheight, $bwidth, $bhalfheight;
@@ -196,15 +189,16 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 	/**
 	 * Prints descendency of passed in person
 	 *
-	 * @param mixed $pid ID of person to print descendency for
-	 * @param mixed $count count of generations to print
-	 * @access public
-	 * @return void
+	 * @param       $person person to print descendency for
+	 * @param mixed $count  count of generations to print
+	 * @param bool  $showNav
+	 *
+	 * @return int
 	 */
 	function print_descendency($person, $count, $showNav=true) {
 		global $TEXT_DIRECTION, $WT_IMAGES, $bheight, $bwidth, $bhalfheight, $lastGenSecondFam;
 
-		if ($count>$this->dgenerations) return 0;
+		if ($count>$this->dgenerations) return;
 		if (!$person) return;
 		$pid=$person->getXref();
 		$tablealign = "right";
@@ -213,7 +207,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 			$tablealign = "left";
 			$otablealign = "right";
 		}
-		
+
 		//-- put a space between families on the last generation
 		if ($count==$this->dgenerations-1) {
 			if (isset($lastGenSecondFam)) echo "<br>";

@@ -18,11 +18,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 class WT_Site {
 	static $setting=null;
 
@@ -47,7 +42,7 @@ class WT_Site {
 			// If parameter two is specified, then SET the setting
 			if (self::preference($setting_name)!=$setting_value) {
 				// Audit log of changes
-				AddToLog('Site setting "'.$setting_name.'" set to "'.$setting_value.'"', 'config');
+				\WT\Log::addConfigurationLog('Site setting "' . $setting_name . '" set to "' . $setting_value . '"');
 			}
 			WT_DB::prepare(
 				"REPLACE INTO `##site_setting` (setting_name, setting_value) VALUES (?, LEFT(?, 255))"

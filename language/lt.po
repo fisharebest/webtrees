@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2014-05-03 00:09+0100\n"
-"PO-Revision-Date: 2014-05-04 22:37+0200\n"
+"PO-Revision-Date: 2014-05-05 22:47+0200\n"
 "Last-Translator: Vytautas Krivickas <vytautas.krivickas@gmail.com>\n"
 "Language-Team: \n"
 "Language: lt\n"
@@ -1691,7 +1691,7 @@ msgstr "Po šeimos medžio sukūrimo, Jūs galėsite įkelti arba importuoti duo
 
 #: login.php:238
 msgid "After you have logged in, select the “My Account” link under the “My Page” menu and fill in the password fields to change your password."
-msgstr "Prisijungus, pasirinkite «Mano prisijungimo informacija» nuorodą iš «Mano MyGedView puslapis» meniu ir slaptažodžiui pakeisti užpildykite laukelius."
+msgstr "Prisijungus, pasirinkite „Mano prisijungimo informacija“ nuorodą iš „Mano MyGedView puslapis“ meniu ir slaptažodžiui pakeisti užpildykite laukelius."
 
 #. I18N: gedcom tag AGE
 #: autocomplete.php:114 includes/functions/functions_print.php:718
@@ -1850,7 +1850,7 @@ msgstr "Visi šaltinio faktai"
 #. I18N: Description of the “CKEditor” module.  WYSIWYG = “what you see is what you get”
 #: modules_v3/ckeditor/module.php:39
 msgid "Allow other modules to edit text using a “WYSIWYG” editor, instead of using HTML codes."
-msgstr "Leidžia kitiems moduliams keisti tekstą naudojant “WYSIWYG” editorių, vietoje naudojimo HTML kodo."
+msgstr "Leidžia kitiems moduliams keisti tekstą naudojant „WYSIWYG“ editorių, vietoje naudojimo HTML kodo."
 
 #: admin_users.php:195 admin_users.php:391
 msgid "Allow this user to edit his account information"
@@ -1892,7 +1892,7 @@ msgstr "Samoa americane"
 #. I18N: Description of the “Album” module
 #: modules_v3/lightbox/module.php:39
 msgid "An alternative to the “media” tab, and an enhanced image viewer."
-msgstr "Alternatyva \"medijos\" kortelei, ir išplėstai paveikslėlio žiūryklei."
+msgstr "Alternatyva „medijos“ kortelei, ir išplėstai paveikslėlio žiūryklei."
 
 #. I18N: Description of the “Charts” module
 #: modules_v3/charts/module.php:37
@@ -1920,7 +1920,7 @@ msgstr "Kompanjonas yra kitas asmuo, kuris yra šio fakto ar įvykio dalyvis, pa
 
 #: help_text.php:60
 msgid "An associate is another individual who was involved with this individual, such as a friend or an employer."
-msgstr ""
+msgstr "Kompanjonas yra kitas asmuo, kuris bendradarbiavo su šiuo asmeniu, pavyzdžiui, draugas arba darbdavys."
 
 #. I18N: Description of the “Edit” module
 #: modules_v3/page_menu/module.php:37
@@ -2117,7 +2117,7 @@ msgstr "Ar jūs tikrai norite ištrinti šią istoriją?"
 #: library/WT/Controller/Source.php:69
 #, php-format
 msgid "Are you sure you want to delete “%s”?"
-msgstr "Ar tikrai norite ištrinti “%s”?"
+msgstr "Ar tikrai norite ištrinti „%s“?"
 
 #: modules_v3/lightbox/module.php:175
 msgid "Are you sure you want to remove links to this media object?"
@@ -3989,7 +3989,7 @@ msgstr "Korporacija"
 
 #: modules_v3/batch_update/plugins/name_format.php:32
 msgid "Correct NAME records of the form “John/DOE/” or “John /DOE”, as produced by older genealogy programs."
-msgstr "Taisyti VARDO įrašus formos 'Vardenis/PAVARDENIS/' arba 'Vardenis /Pavardenis', kaip buvo naudojama senesnėse genealoginėse programose."
+msgstr "Taisyti VARDO įrašus formos „Vardenis/PAVARDENIS/“ arba „Vardenis /Pavardenis“, kaip buvo naudojama senesnėse genealoginėse programose."
 
 #: library/WT/Stats.php:3803
 msgid "Costa Rica"
@@ -5239,7 +5239,7 @@ msgstr ""
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:581
 #: modules_v3/batch_update/admin_batch_update.php:339
 msgid "Do not update the “last change” record"
-msgstr "Neatnaujinti \"paskutinių pakeitimų\" įrašo"
+msgstr "Neatnaujinti „paskutinių pakeitimų“ įrašo"
 
 #: library/WT/Gedcom/Tag.php:888
 msgid "Document"
@@ -5773,7 +5773,7 @@ msgstr "Tikslus tekstas"
 #: famlist.php:176 indilist.php:176
 #, php-format
 msgid "Exclude individuals with “%s” as a married name"
-msgstr "Neįtraukti asmenų su “%s”, kurių pavardės pasikeitė po vedybų"
+msgstr "Neįtraukti asmenų su „%s“, kurių pavardės pasikeitė po vedybų"
 
 #: admin_media.php:587
 msgid "Exclude subfolders"
@@ -6303,12 +6303,12 @@ msgstr "Bylos pavadinimas"
 #: addmedia.php:151 addmedia.php:290 admin_media_upload.php:112
 #, php-format
 msgid "Filenames are not allowed to contain the character “%s”."
-msgstr "Bylų pavadinimuose negali būti naudojami “%s” ženklai."
+msgstr "Bylų pavadinimuose negali būti naudojami „%s“ ženklai."
 
 #: addmedia.php:156 addmedia.php:295 admin_media_upload.php:117
 #, php-format
 msgid "Filenames are not allowed to have the extension “%s”."
-msgstr "Bylų pavadinimai negali turėti “%s” plėtinių."
+msgstr "Bylų pavadinimai negali turėti „%s“ plėtinių."
 
 #: admin.php:123
 msgid "Files have been found from a previous version of webtrees.  Old files can sometimes be a security risk.  You should delete them."
@@ -7490,7 +7490,7 @@ msgstr "Įtraukti pilnai atitinkančias vietoves: "
 #: famlist.php:178 indilist.php:178
 #, php-format
 msgid "Include individuals with “%s” as a married name"
-msgstr "Įtraukti asmenis su “%s”, kaip santuokos vardą"
+msgstr "Įtraukti asmenis su „%s“, kaip santuokos vardą"
 
 #: help_text.php:1268 modules_v3/clippings/module.php:190
 #: modules_v3/clippings/module.php:565
@@ -9112,7 +9112,7 @@ msgstr "Tarnyba kariuomenėje"
 
 #: admin_trees_config.php:736 help_text.php:475
 msgid "Min. no. of occurrences to be a “common surname”"
-msgstr "Min. kiekis atitikimų, esančių su \"bendromis pavardėmis\""
+msgstr "Min. kiekis atitikimų, esančių su „bendromis pavardėmis“"
 
 #: modules_v3/googlemap/help_text.php:32
 msgid "Minimum and maximum zoom level for the Google map. 1 is the full map, 15 is single house. Note that 15 is only available in certain areas."
@@ -9743,29 +9743,29 @@ msgstr "Klaidų nerasta."
 #, php-format
 msgid "No events exist for the next %s day."
 msgid_plural "No events exist for the next %s days."
-msgstr[0] "Nėra įvykių per ateinančią %s dieną."
-msgstr[1] "Nėra įvykių per ateinančias %s dienas."
-msgstr[2] "Nėra įvykių per ateinančias %s dienų."
+msgstr[0] "Per ateinančią %s dieną nėra įvykių."
+msgstr[1] "Per ateinančias %s dienas nėra įvykių."
+msgstr[2] "Per ateinančias %s dienų nėra įvykių."
 
 #: includes/functions/functions_print_lists.php:1786
 #: includes/functions/functions_print_lists.php:1893
 msgid "No events exist for today."
-msgstr "Šiandienai įvykių nėra."
+msgstr "Šiandien įvykių nėra."
 
 #: includes/functions/functions_print_lists.php:1796
 #: includes/functions/functions_print_lists.php:1903
 msgid "No events exist for tomorrow."
-msgstr "Rytojui įvykių nėra."
+msgstr "Rytoj įvykių nėra."
 
 #: includes/functions/functions_print_lists.php:1788
 #: includes/functions/functions_print_lists.php:1895
 msgid "No events for living individuals exist for today."
-msgstr "Šiandien, įvykių susijusių su gyvais žmonėmis, nėra."
+msgstr "Šiandien nėra įvykių susijusių su gyvais asmenimis."
 
 #: includes/functions/functions_print_lists.php:1803
 #: includes/functions/functions_print_lists.php:1910
 msgid "No events for living individuals exist for tomorrow."
-msgstr "Nėra gyvų žmonių įvykių rytojui."
+msgstr "Rytoj nėra įvykių susijusių su gyvais asmenimis."
 
 #. I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
 #: includes/functions/functions_print_lists.php:1806
@@ -9773,9 +9773,9 @@ msgstr "Nėra gyvų žmonių įvykių rytojui."
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
-msgstr[0] "Nėra gyvų žmonių įvykių per ateinančią %s dieną."
-msgstr[1] "Nėra gyvų žmonių įvykių per ateinančias %s dienas."
-msgstr[2] "Nėra gyvų žmonių įvykių per ateinančias %s dienų."
+msgstr[0] "Per ateinančią %s dieną nėra įvykių susijusių su gyvais asmenimis."
+msgstr[1] "Per ateinančias %s dienas nėra įvykių susijusių su gyvais asmenimis."
+msgstr[2] "Per ateinančias %s dienų nėra įvykių susijusių su gyvais asmenimis."
 
 #: library/WT/Controller/Family.php:164
 msgid "No facts for this family."
@@ -9951,8 +9951,9 @@ msgstr ""
 #, php-format
 msgid "Note: “living” is defined (if no death or burial is known) as ending %d year after birth or estimated birth."
 msgid_plural "Note: “living” is defined (if no death or burial is known) as ending %d years after birth or estimated birth."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Pastaba: „gyvenantis“ yra nustatytas jei jaunesnis nei %d metai nuo gimimo datos arba apskaičiuotos gimimo datos, jeigu nėra įrašyta mirtis ar laidotuvės "
+msgstr[1] "Pastaba: „gyvenantis“ yra nustatytas jei jaunesnis nei %d metai nuo gimimo datos arba apskaičiuotos gimimo datos, jeigu nėra įrašyta mirtis ar laidotuvės "
+msgstr[2] "Pastaba: „gyvenantis“ yra nustatytas jei jaunesnis nei %d metų nuo gimimo datos arba apskaičiuotos gimimo datos, jeigu nėra įrašyta mirtis ar laidotuvės "
 
 #. I18N: Name of a module
 #: admin.php:214 admin.php:271 library/WT/Controller/Search.php:574
@@ -10331,12 +10332,12 @@ msgstr "Dėl failo plėtinio PHP užblokavo jį"
 #: setup.php:135
 #, php-format
 msgid "PHP extension “%1$s” is disabled.  Without it, the following features will not work: %2$s.  Please ask your server’s administrator to enable it."
-msgstr "PHP išplėtimas \"%1$s\" yra išjungtas. Be to, neveiks šios funkcijos: %2$s . Prašome kreiptis į serverio administratorių, kad jis įjungtu PHP išplėtimą."
+msgstr "PHP išplėtimas „%1$s“ yra išjungtas. Be to, neveiks šios funkcijos: %2$s. Prašome kreiptis į serverio administratorių, kad jis įjungtu PHP išplėtimą."
 
 #: setup.php:123
 #, php-format
 msgid "PHP extension “%s” is disabled.  You cannot install webtrees until this is enabled.  Please ask your server’s administrator to enable it."
-msgstr "PHP išplėtimas \"%s\" yra išjungtas. Jūs negalite įdiegti kilmės medžio kol ši funkcija išjungta. Prašome kreiptis į serverio administratorių, kad jis įjungtų PHP išplėtimą."
+msgstr "PHP išplėtimas „%s“ yra išjungtas. Jūs negalite įdiegti kilmės medžio kol ši funkcija išjungta. Prašome kreiptis į serverio administratorių, kad jis įjungtų PHP išplėtimą."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:73
@@ -10351,7 +10352,7 @@ msgstr "PHP informacija"
 #: setup.php:144
 #, php-format
 msgid "PHP setting “%1$s” is disabled. Without it, the following features will not work: %2$s.  Please ask your server’s administrator to enable it."
-msgstr "PHP nustatymas \"%1$s\" yra išjungtas. Be to, neveiks šios funkcijos: %2$s . Prašome kreiptis į serverio administratorių, kad jis pakeistų PHP nustatymus."
+msgstr "PHP nustatymas „%1$s“ yra išjungtas. Be to, neveiks šios funkcijos: %2$s . Prašome kreiptis į serverio administratorių, kad jis pakeistų PHP nustatymus."
 
 #: admin_site_config.php:76 help_text.php:635
 msgid "PHP time limit"
@@ -10467,7 +10468,7 @@ msgstr "Slaptažodžiai nesutampa."
 
 #: help_text.php:1294
 msgid "Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different to “SECRET”."
-msgstr "Slaptažodis turi būti bent 6 simbolių ilgio ir susidaryti iš didžiųjų bei mažųjų raidžių, kaip šis \"paslaptis\" skiriasi nuo \"PASLAPTIS\"."
+msgstr "Slaptažodis turi būti bent 6 simbolių ilgio ir susidaryti iš didžiųjų bei mažųjų raidžių, kaip šis „paslaptis“ skiriasi nuo „PASLAPTIS“."
 
 #: admin_users.php:338 edituser.php:113
 msgid "Passwords must contain at least 6 characters."
@@ -11530,7 +11531,7 @@ msgstr "Tyrimo užduotys yra išskirtinis įvykis, pridedamas prie asmens savo �
 
 #: modules_v3/todo/help_text.php:36
 msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”.  Other genealogy applications may not recognize this tag."
-msgstr "Tyrimo užduotys yra saugomi naudojant pritaikytą GEDCOM gairę “_TODO”.  Kitos genealogijos programos gali neatpažinti šios gairės."
+msgstr "Tyrimo užduotys yra saugomi naudojant pritaikytą GEDCOM gairę „_TODO“.  Kitos genealogijos programos gali neatpažinti šios gairės."
 
 #: includes/functions/functions_print_lists.php:97
 #: includes/functions/functions_print_lists.php:511 medialist.php:152
@@ -12307,7 +12308,7 @@ msgstr "Rodyti"
 
 #: admin_site_config.php:166 help_text.php:894
 msgid "Show acceptable use agreement on “Request new user account” page"
-msgstr "Rodyti svetainės naudojimosi susitarimo tekstą puslapyje \"Naujo lankytojo registracija\""
+msgstr "Rodyti svetainės naudojimosi susitarimo tekstą puslapyje „Naujo lankytojo registracija“"
 
 #: help_text.php:879
 msgid "Show age of parents next to child’s birthdate"
@@ -12656,12 +12657,12 @@ msgstr "Rodyti lankytojams"
 #: includes/functions/functions_print_lists.php:96
 #: includes/functions/functions_print_lists.php:505
 msgid "Show “leaves” couples or individuals.  These are individuals who are alive but have no children recorded in the database."
-msgstr "Rodyti «lapus» porų arba individų. Tai yra asmenis, kurie yra gyvi, bet neturi vaikų registruotų duomenų bazėje."
+msgstr "Rodyti „lapus“ porų arba individų. Tai yra asmenis, kurie yra gyvi, bet neturi vaikų registruotų duomenų bazėje."
 
 #: includes/functions/functions_print_lists.php:95
 #: includes/functions/functions_print_lists.php:504
 msgid "Show “roots” couples or individuals.  These individuals may also be called “patriarchs”.  They are individuals who have no parents recorded in the database."
-msgstr "Rodyti «šaknis» porų arba individų. Šie žmonės taip pat gali būti vadinami \"patriarchais\". Jie yra asmenys, kurie neturi tėvų registruotų duomenų bazėje."
+msgstr "Rodyti „šaknis“ porų arba individų. Šie žmonės taip pat gali būti vadinami „patriarchais“. Jie yra asmenys, kurie neturi tėvų registruotų duomenų bazėje."
 
 #. I18N: %s are placeholders for numbers
 #: library/WT/I18N.php:677 library/WT/I18N.php:678
@@ -13358,17 +13359,17 @@ msgstr "Administratorius buvo informuotas. Kai tik jis suteiks teises prisijungi
 #: action.php:57
 #, php-format
 msgid "The changes to “%s” have been accepted."
-msgstr "Pakeitimai nuo “%s” buvo priimti."
+msgstr "Pakeitimai nuo „%s“ buvo priimti."
 
 #. I18N: %s is the name of an individual, source or other record
 #: action.php:237
 #, php-format
 msgid "The changes to “%s” have been rejected."
-msgstr "Pakeitimai nuo “%s” buvo atmesti."
+msgstr "Pakeitimai nuo „%s“ buvo atmesti."
 
 #: modules_v3/clippings/module.php:142
 msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the <b>Download Now</b> link.  Follow the instructions and links.</li></ul>"
-msgstr "Iškarpų krepšelis Jums leidžia paimti ištraukas (\"iškarpas\") iš šio šeimos medžio ir sudėti jas į vieną failą atsisiuntimui bei vėliau importuoti į savo nuosavą genealogijos programą.  Atsisiunčiamasis failas yra įrašytas GEDCOM formatu.<br><ul><li>Kaip iškirpinėti?<br>Tai tikrai yra paprasta. Kuomet tik pamatote paspaudžiamą vardą (asmenį, šeimą, ar šaltinį), Jūs galite nueiti į šio vardo Duomenų puslapį. Ten Jūs pamatysite <b>Pridėti į iškarpų krepšelį</b> parinktį.  Kuomet tik Jūs spragtelėsite šią nuorodą, Jums bus pasiūlytos kelios parinktys atsisiuntimui.</li><li>Kaip atsisiųsti?<br>Kai turėsite elementus savo krepšelyje, Jūs galėsite atsisiųsti juos paprasčiausiai paspausdami <b>Atsisiųsti dabar</b> nuorodą.  Sekite instrukcijas ir nuorodas.</li></ul>"
+msgstr "Iškarpų krepšelis Jums leidžia paimti ištraukas („iškarpas“) iš šio šeimos medžio ir sudėti jas į vieną failą atsisiuntimui bei vėliau importuoti į savo nuosavą genealogijos programą.  Atsisiunčiamasis failas yra įrašytas GEDCOM formatu.<br><ul><li>Kaip iškirpinėti?<br>Tai tikrai yra paprasta. Kuomet tik pamatote paspaudžiamą vardą (asmenį, šeimą, ar šaltinį), Jūs galite nueiti į šio vardo Duomenų puslapį. Ten Jūs pamatysite <b>Pridėti į iškarpų krepšelį</b> parinktį.  Kuomet tik Jūs spragtelėsite šią nuorodą, Jums bus pasiūlytos kelios parinktys atsisiuntimui.</li><li>Kaip atsisiųsti?<br>Kai turėsite elementus savo krepšelyje, Jūs galėsite atsisiųsti juos paprasčiausiai paspausdami <b>Atsisiųsti dabar</b> nuorodą.  Sekite instrukcijas ir nuorodas.</li></ul>"
 
 #: help_text.php:1314
 msgid "The current <b>webtrees</b> admin username must be the same as an existing PGV admin username"
@@ -13399,7 +13400,7 @@ msgstr "Šio asmens duomenys yra privatūs."
 #: action.php:157
 #, php-format
 msgid "The family “%s” has been deleted, as it only has one member."
-msgstr "Šeima “%s” buvo ištrinta, nes joje buvo tik vienas narys."
+msgstr "Šeima „%s“ buvo ištrinta, nes joje buvo tik vienas narys."
 
 #: addmedia.php:170 admin_media_upload.php:131
 #, php-format
@@ -13443,7 +13444,7 @@ msgstr "Byla %s įkelta."
 #: mediaviewer.php:107
 #, php-format
 msgid "The file “%s” does not exist."
-msgstr "“%s” byla neegzistuoja."
+msgstr "„%s“ byla neegzistuoja."
 
 #: admin_site_upgrade.php:477
 #, php-format
@@ -13536,7 +13537,7 @@ msgstr ""
 #: library/WT/Controller/GedcomRecord.php:44
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been deleted."
-msgstr "Nuoroda iš “%1$s” į “%2$s” buvo pašalinta."
+msgstr "Nuoroda iš „%1$s“ į „%2$s“ buvo pašalinta."
 
 #: mediafirewall.php:35
 msgid "The media file was not found in this family tree"
@@ -13577,7 +13578,7 @@ msgstr "Slaptažodžiai nesutampa."
 
 #: setup.php:365
 msgid "The prefix is optional, but recommended.  By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want."
-msgstr "Priešdėlis nėra privalomas, tačiau rekomenduojamas. Suteikdami lentelės pavadinimui unikalų priešdėlį, galite leisti kelias skirtingas programas naudoti tą pačią duomenų bazę. \"wt_\" siūloma, bet gali būti, kokia jums patinka."
+msgstr "Priešdėlis nėra privalomas, tačiau rekomenduojamas. Suteikdami lentelės pavadinimui unikalų priešdėlį, galite leisti kelias skirtingas programas naudoti tą pačią duomenų bazę. „wt_“ siūloma, bet gali būti, kokia jums patinka."
 
 #: modules_v3/batch_update/plugins/search_replace.php:82
 msgid "The regex appears to contain an error.  It can’t be used."
@@ -13968,7 +13969,7 @@ msgstr ""
 #. I18N: Help text for the “Server name” site configuration setting
 #: help_text.php:764
 msgid "This is the name of the SMTP server. “localhost” means that the mail service is running on the same computer as your web server."
-msgstr "Tai yra SMTP serverio vardas. 'Localhost' reiškia, kad pašto paslaugos teikėjas veikia tame pačiame kompiuteryje kaip ir jūsų interneto serveris."
+msgstr "Tai yra SMTP serverio vardas. „Localhost“ reiškia, kad pašto paslaugos teikėjas veikia tame pačiame kompiuteryje kaip ir jūsų interneto serveris."
 
 #: help_text.php:476
 msgid "This is the number of times that a surname must occur before it shows up in the Common Surname list on the Home Page."
@@ -14070,7 +14071,7 @@ msgstr "Tai turi turėti ne mažiau kaip šešis simbolius. Yra skirtumas ar tai
 #. I18N: Help text for the “Sender name” site configuration setting
 #: help_text.php:754
 msgid "This name is used in the “From” field, when sending automatic emails from this server."
-msgstr "Šis vardas naudojamas \"Nuo\" lauke, siunčiant automatinius laiškus iš šio serverio."
+msgstr "Šis vardas naudojamas „Nuo“ lauke, siunčiant automatinius laiškus iš šio serverio."
 
 #: note.php:73
 msgid "This note does not exist or you do not have permission to view it."
@@ -14346,7 +14347,7 @@ msgstr "Šis sąrašas visų vietovių iš pasirinkto GEDCOM failo. Pagal nutyl�
 
 #: admin_trees_places.php:89
 msgid "This will update the highest-level part or parts of the place name.  For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."
-msgstr "Ši funkcija atnaujins aukščiausia vietovardžio dalį ar dalis. Pavyzdžiuj, “Mexico” suras “Quintana Roo, Mexico”, bet ne “Santa Fe, New Mexico”."
+msgstr "Ši funkcija atnaujins aukščiausia vietovardžio dalį ar dalis. Pavyzdžiuj, „Mexico“ suras „Quintana Roo, Mexico“, bet ne „Santa Fe, New Mexico“."
 
 #: includes/functions/functions_print.php:1009
 #: library/WT/Date/Calendar.php:222
@@ -14481,7 +14482,7 @@ msgstr "Norėdami baigti atnaujinimą, jūs turite įdiegti bylas rankiniu būdu
 
 #: modules_v3/todo/help_text.php:34
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
-msgstr "Kad sukurtumėte naujas tyrimo užduotis, Jūs pirmiausia turite pridėti “tyrimo užduotis” į faktų ir įvykių sąrašą, kuris randasi šeimos medžio nustatymuose."
+msgstr "Kad sukurtumėte naujas tyrimo užduotis, Jūs pirmiausia turite pridėti „tyrimo užduotis“ į faktų ir įvykių sąrašą, kuris randasi šeimos medžio nustatymuose."
 
 #: help_text.php:528
 msgid "To ensure compatibility with other genealogy applications, notes, text, and transcripts should be recorded in simple, unformatted text.  However, formatting is often desirable to aid presentation, comprehension, etc."
@@ -15119,7 +15120,7 @@ msgstr "Vartotojo vardas ar elektroninis adresas"
 
 #: help_text.php:1486
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
-msgstr "Vartotojo vardai yra didžiųjų ir mažųjų raidžių ir ignoruoja kirčiuotas raides, tad \"chloe\", \"Chloë\" ir \"Chloe\", yra laikomi tuo patčiu."
+msgstr "Vartotojo vardai yra didžiųjų ir mažųjų raidžių ir ignoruoja kirčiuotas raides, tad „chloe“, „Chloë“ ir „Chloe“, yra laikomi tuo patčiu."
 
 #: help_text.php:1488
 #, php-format
@@ -15668,7 +15669,7 @@ msgstr "Jums neleidžiama siųsti laiškus, kurie turi išorines nuorodas."
 #. I18N: Help text for the "Default Theme" site configuration setting
 #: help_text.php:985
 msgid "You can change the appearance of <b>webtrees</b> using “themes”.  Each theme has a different style, layout, color scheme, etc."
-msgstr "Jūs galite pakeisti <b>webtrees</b> išvaizdą naudojant \"Temas\". Kiekviena tema turi skirtingą stilių, išdėstymą, spalvų schemą, ir tt"
+msgstr "Jūs galite pakeisti <b>webtrees</b> išvaizdą naudojant „Temas“. Kiekviena tema turi skirtingą stilių, išdėstymą, spalvų schemą, ir tt"
 
 #: help_text.php:1279
 msgid "You can click this button to see whether there is another relationship path between the two individuals.  Previously found paths can be displayed again by clicking the link with the path number."
@@ -15811,7 +15812,7 @@ msgstr "Jūs turite sukurti administratoriaus abonementą. Šis abonementas gali
 
 #: login.php:499
 msgid "You now need to review the account details, and set the “approved” status to “yes”."
-msgstr "Jūms dabar reikia peržiūrėti paskyros informaciją, ir nustatyti statusą \"patvirtintas\" į \"taip\"."
+msgstr "Jūms dabar reikia peržiūrėti paskyros informaciją, ir nustatyti statusą „patvirtintas“ į „taip“."
 
 #. I18N: Help text for the “Login URL” site configuration setting
 #: help_text.php:618
@@ -15846,7 +15847,7 @@ msgstr "Jūs turėtumėte pasikonsultuoti su temos autoriumi patvirtinti suderin
 #: login.php:272 message.php:69
 #, php-format
 msgid "You should delete the “%1$s” from “%2$s” and try again."
-msgstr "Turėtumėte ištrinti “%1$s” iš “%2$s” ir pabandyti dar kartą."
+msgstr "Turėtumėte ištrinti „%1$s“ iš „%2$s“ ir pabandyti dar kartą."
 
 #: help_text.php:1472
 msgid "You should not approve an account unless you know that the email address is correct."
@@ -15904,7 +15905,7 @@ msgstr "Jūsų serverio administratorius jums pateiks susijungimo detales."
 
 #: modules_v3/batch_update/admin_batch_update.php:75
 msgid "Your user account does not have “automatically approve changes” enabled.  You will only be able to change one record at a time."
-msgstr "Jums nėra įjungta \"automatiškai patvirtinti pakeitimus\" nuostata. Jums tik galima pakeisti vieną įrašą vienu metu."
+msgstr "Jums nėra įjungta „automatiškai patvirtinti pakeitimus“ nuostata. Jums tik galima pakeisti vieną įrašą vienu metu."
 
 #: library/WT/Stats.php:4007
 msgid "Yugoslavia"
@@ -19843,13 +19844,13 @@ msgstr "jaunesnė sesuo"
 #: library/WT/Individual.php:945
 #, php-format
 msgid "“%s”"
-msgstr "“%s”"
+msgstr "„%s“"
 
 #. I18N: %s is the name of an individual, source or other record
 #: modules_v3/user_favorites/module.php:78
 #, php-format
 msgid "“%s” has been added to your favorites."
-msgstr "“%s” buvo pridėtas prie Jūsų mėgstamiausių."
+msgstr "„%s“ buvo pridėtas prie Jūsų mėgstamiausių."
 
 #: library/WT/Note.php:85
 msgid "…"

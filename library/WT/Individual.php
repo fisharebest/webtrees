@@ -21,11 +21,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 class WT_Individual extends WT_GedcomRecord {
 	const RECORD_TYPE = 'INDI';
 	const SQL_FETCH   = "SELECT i_gedcom FROM `##individuals` WHERE i_id=? AND i_file=?";
@@ -376,9 +371,10 @@ class WT_Individual extends WT_GedcomRecord {
 	}
 
 	/**
-	* get the birth year
-	* @return string the year of birth
-	*/
+	 * get the birth year
+	 *
+	 * @return string the year of birth
+	 */
 	function getBirthYear() {
 		return $this->getBirthDate()->MinDate()->Format('%Y');
 	}
@@ -404,9 +400,10 @@ class WT_Individual extends WT_GedcomRecord {
 	}
 
 	/**
-	* get the death year
-	* @return string the year of death
-	*/
+	 * get the death year
+	 *
+	 * @return string the year of death
+	 */
 	function getDeathYear() {
 		return $this->getDeathDate()->MinDate()->Format('%Y');
 	}
@@ -778,11 +775,13 @@ class WT_Individual extends WT_GedcomRecord {
 	}
 
 	/**
-	* get primary parents names for this individual
-	* @param string $classname optional css class
-	* @param string $display optional css style display
-	* @return string a div block with father & mother names
-	*/
+	 * get primary parents names for this individual
+	 *
+	 * @param string $classname optional css class
+	 * @param string $display   optional css style display
+	 *
+	 * @return string a div block with father & mother names
+	 */
 	function getPrimaryParentsNames($classname='', $display='') {
 		$fam = $this->getPrimaryChildFamily();
 		if (!$fam) return '';

@@ -21,11 +21,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 class WT_Controller_Ancestry extends WT_Controller_Chart {
 	var $pid = '';
 	var $user = false;
@@ -88,8 +83,8 @@ class WT_Controller_Ancestry extends WT_Controller_Chart {
 	/**
 	 * print a child ascendancy
 	 *
-	 * @param string $pid individual Gedcom Id
-	 * @param int $sosa child sosa number
+	 * @param     $person
+	 * @param int $sosa  child sosa number
 	 * @param int $depth the ascendancy depth to show
 	 */
 	function print_child_ascendancy($person, $sosa, $depth) {
