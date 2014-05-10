@@ -247,8 +247,8 @@ $url=
 	'&amp;gedc='.rawurlencode($gedc);
 
 $users_array = array();
-foreach (\WT\User::all() as $user) {
-	$users_array[$user->getUserName()] = $user->getUserName();
+foreach (\WT\User::all() as $tmp_user) {
+	$users_array[$tmp_user->getUserName()] = $tmp_user->getUserName();
 }
 
 echo

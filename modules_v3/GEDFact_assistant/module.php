@@ -206,7 +206,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 
 	// Convert custom markup into HTML
 	public static function formatCensusNote(WT_Note $note) {
-		global $controller, $WT_TREE;
+		global $WT_TREE;
 
 		$headers = array(
 			'AgM'        => 'Age at first marriage',

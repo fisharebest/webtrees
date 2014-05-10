@@ -154,8 +154,6 @@ class WT_MenuBar {
 				break;
 
 			case 'timeline':
-				//-- timeline
-				$link = 'timeline.php?ged='.WT_GEDURL;
 				$submenu = new WT_Menu($menuName, 'timeline.php?pids%5B%5D='.$indi_xref.'&amp;ged='.WT_GEDURL, 'menu-chart-timeline');
 				if ($controller instanceof WT_Controller_Family && $controller->record) {
 					// Build a sortable list of submenu items and then sort it in localized name order
