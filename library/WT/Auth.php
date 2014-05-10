@@ -155,8 +155,6 @@ class Auth {
 	 * @return User|null
 	 */
 	public static function user() {
-		global $WT_SESSION;
-
 		return User::find(Auth::id());
 	}
 

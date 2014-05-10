@@ -531,15 +531,6 @@ define('WT_CLIENT_JD', 2440588 + (int)(WT_CLIENT_TIMESTAMP/86400));
 // Application configuration data - things that aren’t (yet?) user-editable
 require WT_ROOT . 'includes/config_data.php';
 
-// If we are logged in, and logout=1 has been added to the URL, log out
-// If we were logged in, but our account has been deleted, log out.
-if (WT_Filter::getBool('logout')) {
-	\WT\Log::addAuthenticationLog('Logout: ' . \WT\Auth::user()->getUserName());
-	\WT\Auth::logout();
-	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH);
-	exit;
-}
-
 // The login URL must be an absolute URL, and can be user-defined
 if (WT_Site::preference('LOGIN_URL')) {
 	define('WT_LOGIN_URL', WT_Site::preference('LOGIN_URL'));
@@ -548,7 +539,7 @@ if (WT_Site::preference('LOGIN_URL')) {
 }
 
 // If there is no current tree and we need one, then redirect somewhere
-if (WT_SCRIPT_NAME!='admin_trees_manage.php' && WT_SCRIPT_NAME!='admin_pgv_to_wt.php' && WT_SCRIPT_NAME!='login.php' && WT_SCRIPT_NAME!='import.php' && WT_SCRIPT_NAME!='help_text.php' && WT_SCRIPT_NAME!='message.php') {
+if (WT_SCRIPT_NAME!='admin_trees_manage.php' && WT_SCRIPT_NAME!='admin_pgv_to_wt.php' && WT_SCRIPT_NAME!='login.php' && WT_SCRIPT_NAME!='logout.php' && WT_SCRIPT_NAME!='import.php' && WT_SCRIPT_NAME!='help_text.php' && WT_SCRIPT_NAME!='message.php') {
 	if (!$WT_TREE || !WT_IMPORTED) {
 		if (\WT\Auth::isAdmin()) {
 			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'admin_trees_manage.php');

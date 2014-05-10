@@ -88,7 +88,7 @@ case 'login':
 		}
 
 		\WT\Auth::login($user);
-		\WT\Log::addAuthenticationLog('Login successful: ' . \WT\Auth::user()->getUserName());
+		\WT\Log::addAuthenticationLog('Login: ' . \WT\Auth::user()->getUserName() . '/' . \WT\Auth::user()->getRealName());
 
 		$WT_SESSION->timediff  = $timediff;
 		$WT_SESSION->locale    = \WT\Auth::user()->getSetting('language');
