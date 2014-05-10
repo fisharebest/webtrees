@@ -31,9 +31,7 @@ class Auth {
 	 * @return bool
 	 */
 	public static function check() {
-		global $WT_SESSION;
-
-		return $WT_SESSION->wt_user !== null;
+		return Auth::id() !== null;
 	}
 
 	/**
@@ -143,12 +141,12 @@ class Auth {
 	/**
 	 * The ID of the authenticated user, from the current session.
 	 *
-	 * @return int|null
+	 * @return string|null
 	 */
 	public static function id() {
 		global $WT_SESSION;
 
-		return $WT_SESSION->wt_user;
+		return $WT_SESSION ? $WT_SESSION->wt_user : null;
 	}
 
 	/**
@@ -159,7 +157,7 @@ class Auth {
 	public static function user() {
 		global $WT_SESSION;
 
-		return User::find($WT_SESSION->wt_user);
+		return User::find(Auth::id());
 	}
 
 	/**

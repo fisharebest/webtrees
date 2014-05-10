@@ -534,7 +534,7 @@ require WT_ROOT . 'includes/config_data.php';
 // If we are logged in, and logout=1 has been added to the URL, log out
 // If we were logged in, but our account has been deleted, log out.
 if (WT_Filter::getBool('logout')) {
-	\WT\Log::addAuthenticationLog('Logout ' . \WT\Auth::user()->getUserName());
+	\WT\Log::addAuthenticationLog('Logout: ' . \WT\Auth::user()->getUserName());
 	\WT\Auth::logout();
 	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH);
 	exit;

@@ -59,39 +59,34 @@ $message = '';
 
 switch ($action) {
 case 'login':
-	if (!$_COOKIE) {
-		\WT\Log::addAuthenticationLog('Login failed (no session cookies): ' . $username);
-		$message = WT_I18N::translate('You cannot login because your browser does not accept cookies.');
-		break;
-	}
+	try {
+		if (!$_COOKIE) {
+			\WT\Log::addAuthenticationLog('Login failed (no session cookies): ' . $username);
+			throw new Exception(WT_I18N::translate('You cannot login because your browser does not accept cookies.'));
+		}
 
-	$user = \WT\User::findByIdentifier($username);
+		$user = \WT\User::findByIdentifier($username);
 
-	if (!$user) {
-		\WT\Log::addAuthenticationLog('Login failed (no such user/email): ' . $username);
-		$message = WT_I18N::translate('The username or password is incorrect.');
-		break;
-	}
+		if (!$user) {
+			\WT\Log::addAuthenticationLog('Login failed (no such user/email): ' . $username);
+			throw new Exception(WT_I18N::translate('The username or password is incorrect.'));
+		}
 
-	if (!$user->checkPassword($password)) {
-		\WT\Log::addAuthenticationLog('Login failed (incorrect password): ' . $username);
-		$message = WT_I18N::translate('The username or password is incorrect.');
-		break;
-	}
+		if (!$user->checkPassword($password)) {
+			\WT\Log::addAuthenticationLog('Login failed (incorrect password): ' . $username);
+			throw new Exception(WT_I18N::translate('The username or password is incorrect.'));
+		}
 
-	if (!$user->getSetting('verified')) {
-		\WT\Log::addAuthenticationLog('Login failed (not verified by user): ' . $username);
-		$message = WT_I18N::translate('This account has not been verified.  Please check your email for a verification message.');
-		break;
-	}
+		if (!$user->getSetting('verified')) {
+			\WT\Log::addAuthenticationLog('Login failed (not verified by user): ' . $username);
+			throw new Exception(WT_I18N::translate('This account has not been verified.  Please check your email for a verification message.'));
+		}
 
-	if (!$user->getSetting('verified_by_admin')) {
-		\WT\Log::addAuthenticationLog('Login failed (not approved by admin): ' . $username);
-		$message = WT_I18N::translate('This account has not been approved.  Please wait for an administrator to approve it.');
-		break;
-	}
+		if (!$user->getSetting('verified_by_admin')) {
+			\WT\Log::addAuthenticationLog('Login failed (not approved by admin): ' . $username);
+			throw new Exception(WT_I18N::translate('This account has not been approved.  Please wait for an administrator to approve it.'));
+		}
 
-	if (!$message) {
 		\WT\Auth::login($user);
 		\WT\Log::addAuthenticationLog('Login successful: ' . \WT\Auth::user()->getUserName());
 
@@ -125,6 +120,8 @@ case 'login':
 		// as it doesn’t always happen when using APC.
 		Zend_Session::writeClose();
 		exit;
+	} catch (Exception $ex) {
+		$message = $ex->getMessage();
 	}
 	// No break;
 
