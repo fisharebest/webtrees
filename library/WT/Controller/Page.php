@@ -18,11 +18,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 class WT_Controller_Page extends WT_Controller_Base {
 	// Page header information
 	const     DOCTYPE       ='<!DOCTYPE html>';  // HTML5
@@ -71,55 +66,12 @@ class WT_Controller_Page extends WT_Controller_Base {
 	}
 
 	// Restrict access
-	public function requireAdminLogin() {
-		require_once WT_ROOT.'includes/functions/functions.php'; // for get_query_url
-		if (!WT_USER_IS_ADMIN) {
-			header('Location: '.WT_LOGIN_URL.'?url='.rawurlencode(get_query_url()));
+	public function restrictAccess($condition) {
+		if ($condition !== true) {
+			header('Location: ' . WT_LOGIN_URL . '?url='.rawurlencode(get_query_url()));
 			exit;
 		}
-		return $this;
-	}
 
-	// Restrict access
-	public function requireManagerLogin($ged_id=WT_GED_ID) {
-		require_once WT_ROOT.'includes/functions/functions.php'; // for get_query_url
-		if (
-			$ged_id==WT_GED_ID && !WT_USER_GEDCOM_ADMIN ||
-			$ged_id!=WT_GED_ID && !userGedcomAdmin(WT_USER_ID, $ged_id)
-		) {
-			header('Location: '.WT_LOGIN_URL.'?url='.rawurlencode(get_query_url()));
-			exit;
-		}
-		return $this;
-	}
-
-	// Restrict access
-	public function requireAcceptLogin() {
-		require_once WT_ROOT.'includes/functions/functions.php'; // for get_query_url
-		if (!WT_USER_CAN_ACCEPT) {
-			header('Location: '.WT_LOGIN_URL.'?url='.rawurlencode(get_query_url()));
-			exit;
-		}
-		return $this;
-	}
-
-	// Restrict access
-	public function requireEditorLogin() {
-		require_once WT_ROOT.'includes/functions/functions.php'; // for get_query_url
-		if (!WT_USER_CAN_EDIT) {
-			header('Location: '.WT_LOGIN_URL.'?url='.rawurlencode(get_query_url()));
-			exit;
-		}
-		return $this;
-	}
-
-	// Restrict access
-	public function requireMemberLogin() {
-		require_once WT_ROOT.'includes/functions/functions.php'; // for get_query_url
-		if (!WT_USER_ID) {
-			header('Location: '.WT_LOGIN_URL.'?url='.rawurlencode(get_query_url()));
-			exit;
-		}
 		return $this;
 	}
 

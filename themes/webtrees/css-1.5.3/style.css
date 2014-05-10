@@ -3473,7 +3473,7 @@ dd .deletelink {
 	direction: rtl;
 }
 
-[dir=rtl] ui-tabs .ui-tabs-nav li.ui-tabs-selected,
+[dir=rtl] .ui-tabs .ui-tabs-nav li.ui-tabs-selected,
 [dir=rtl] .ui-tabs .ui-tabs-nav li.ui-state-default {
 	float: right;
 }

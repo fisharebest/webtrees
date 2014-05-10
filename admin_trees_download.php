@@ -28,7 +28,7 @@ require WT_ROOT.'includes/functions/functions_export.php';
 $controller=new WT_Controller_Page();
 $controller
 	->setPageTitle(WT_I18N::translate('Download GEDCOM'))
-	->requireManagerLogin();
+	->restrictAccess(\WT\Auth::isManager());
 
 // Validate user parameters
 $action           = WT_Filter::get('action',           'download');

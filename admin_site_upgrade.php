@@ -51,7 +51,7 @@ $themes_action       = WT_Filter::post('themes',   'ignore|disable');
 
 $controller = new WT_Controller_Page();
 $controller
-	->requireAdminLogin()
+	->restrictAccess(\WT\Auth::isAdmin())
 	->setPageTitle(WT_I18N::translate('Upgrade wizard'))
 	->pageHeader();
 
@@ -102,7 +102,7 @@ if ($changes) {
 	echo '<br>', WT_I18N::translate('You should accept or reject all pending changes before upgrading.'), $icon_failure;
 	echo '<br><button onclick="window.open(\'edit_changes.php\',\'_blank\', chan_window_specs); return false;"">', WT_I18N::translate('Pending changes'), '</button>';
 	echo '</li></ul></form>';
-	exit;	
+	exit;
 } else {
 	echo '<br>', WT_I18N::translate('There are no pending changes.'), $icon_success;
 }
@@ -201,7 +201,7 @@ if ($custom_modules) {
 	echo '<br>', '<button type="submit" name="modules" value="disable">', WT_I18N::translate('Disable these modules'), '</button> — ', WT_I18N::translate('You can re-enable these modules after the upgrade.');
 	echo '<br>', '<button type="submit" name="modules" value="ignore">', /* I18N: Ignore the warnings, and [...] */ WT_I18N::translate('Upgrade anyway'), '</button> — ', WT_I18N::translate('Caution: old modules may not work, or they may prevent webtrees from working.');
 	echo '</li></ul></form>';
-	exit;	
+	exit;
 } else {
 	if ($modules_action != 'ignore') {
 		echo '<br>', WT_I18N::translate('No custom modules are enabled.'), $icon_success;
@@ -264,7 +264,7 @@ if ($custom_themes) {
 	echo '<br>', '<button type="submit" name="themes" value="disable">', WT_I18N::translate('Disable these themes'), '</button> — ', WT_I18N::translate('You can re-enable these themes after the upgrade.');
 	echo '<br>', '<button type="submit" name="themes" value="ignore">', WT_I18N::translate('Upgrade anyway'), '</button> — ', WT_I18N::translate('Caution: old themes may not work, or they may prevent webtrees from working.');
 	echo '</li></ul></form>';
-	exit;	
+	exit;
 } else {
 	if ($themes_action != 'ignore') {
 		echo '<br>', WT_I18N::translate('No custom themes are enabled.'), $icon_success;
@@ -338,7 +338,7 @@ $res = $archive->properties();
 if (!is_array($res) || $res['status'] != 'ok') {
 	echo '<br>', WT_I18N::translate('An error occurred when unzipping the file.'), $icon_failure;
 	echo '</li></ul></form>';
-	exit;	
+	exit;
 }
 
 $num_files = $res['nb'];
@@ -361,14 +361,14 @@ if (is_array($res)) {
 			var_dump($result);
 			echo '</pre>';
 			echo '</li></ul></form>';
-			exit;	
+			exit;
 		}
 	}
 	echo '<br>', /* I18N: [...] from the .ZIP file, %2$s is a (fractional) number of seconds */ WT_I18N::plural('%1$s file was extracted in %2$s seconds.', '%1$s files were extracted in %2$s seconds.', count($res), count($res), WT_I18N::number($end_time - $start_time, 2)), $icon_success;
 } else {
 	echo '<br>', WT_I18N::translate('An error occurred when unzipping the file.'), $icon_failure;
 	echo '</li></ul></form>';
-	exit;	
+	exit;
 }
 
 echo '</li>'; flush();
@@ -445,7 +445,7 @@ if (is_array($res)) {
 } else {
 	echo '<br>', WT_I18N::translate('An error occurred when unzipping the file.'), $icon_failure;
 	echo '</li></ul></form>';
-	exit;	
+	exit;
 }
 
 echo '</li>'; flush();

@@ -24,7 +24,7 @@ require WT_ROOT.'includes/functions/functions_edit.php';
 
 $controller=new WT_Controller_Page();
 $controller
-	->requireAdminLogin()
+	->restrictAccess(\WT\Auth::isAdmin())
 	->setPageTitle(WT_I18N::translate('Family trees'));
 
 // Don’t allow the user to cancel the request.  We do not want to be left
@@ -174,7 +174,7 @@ case 'importform':
 
 // List the gedcoms available to this user
 foreach (WT_Tree::GetAll() as $tree) {
-	if (userGedcomAdmin(WT_USER_ID, $tree->tree_id)) {
+	if (\WT\Auth::isManager($tree)) {
 
 		echo
 			'<table class="gedcom_table">',
@@ -238,7 +238,7 @@ foreach (WT_Tree::GetAll() as $tree) {
 }
 
 // Options for creating new gedcoms and setting defaults
-if (WT_USER_IS_ADMIN) {
+if (\WT\Auth::isAdmin()) {
 	echo '<table class="gedcom_table2"><tr>';
 	if (count(WT_Tree::GetAll())>1) {
 		echo '<th>', WT_I18N::translate('Default family tree'), help_link('default_gedcom'), '</th>';
@@ -264,7 +264,7 @@ if (WT_USER_IS_ADMIN) {
 		'</tr></table><br>';
 
 		// display link to PGV-WT transfer wizard on first visit to this page, before any GEDCOM is loaded
-		if (count(WT_Tree::GetAll())==0 && get_user_count()==1) {
+		if (count(WT_Tree::GetAll())==0 && count(\WT\User::all())==1) {
 			echo
 				'<div class="center">',
 				'<a style="color:green; font-weight:bold;" href="admin_pgv_to_wt.php">',

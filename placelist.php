@@ -86,7 +86,7 @@ case 'hierarchy':
 	} else {
 		$gm_module = null;
 	}
-	
+
 	// Find this place and its ID
 	$place=new WT_Place(implode(', ', array_reverse($parent)), WT_GED_ID);
 	$place_id=$place->getPlaceId();

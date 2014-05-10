@@ -1039,7 +1039,7 @@ function accept_all_changes($xref, $ged_id) {
 			" SET status='accepted'".
 			" WHERE status='pending' AND xref=? AND gedcom_id=?"
 		)->execute(array($xref, $ged_id));
-		AddToLog("Accepted change {$change->change_id} for {$xref} / {$change->gedcom_name} into database", 'edit');
+		\WT\Log::addEditLog("Accepted change {$change->change_id} for {$xref} / {$change->gedcom_name} into database");
 	}
 }
 

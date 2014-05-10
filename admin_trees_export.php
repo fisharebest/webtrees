@@ -24,7 +24,7 @@ require './includes/session.php';
 $controller=new WT_Controller_Ajax();
 $controller
 	->pageHeader()
-	->requireManagerLogin();
+	->restrictAccess(\WT\Auth::isManager());
 
 $filename = WT_DATA_DIR . $WT_TREE->tree_name;
 // Force a ".ged" suffix

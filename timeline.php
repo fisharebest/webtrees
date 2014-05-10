@@ -296,7 +296,7 @@ $controller->checkPrivacy();
 			<br>
 		<?php
 		} else {
-			print_privacy_error();
+			echo '<div class="error">', WT_I18N::translate('This information is private and cannot be shown.'), '</div>';
 			?>
 			<input type="hidden" name="pids[<?php echo $p; ?>]" value="<?php echo WT_Filter::escapeHtml($pid); ?>">
 				<br>

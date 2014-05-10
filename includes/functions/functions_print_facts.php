@@ -388,9 +388,9 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 			}
 			break;
 		case '_WT_USER':
-			$fullname=getUserFullname(get_user_id($match[2])); // may not exist
-			if ($fullname) {
-				echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $fullname);
+			$user = \WT\User::findByIdentifier($match[2]); // may not exist
+			if ($user) {
+				echo WT_Gedcom_Tag::getLabelValue('_WT_USER', WT_Filter::escapeHtml($user->getRealName()));
 			} else {
 				echo WT_Gedcom_Tag::getLabelValue('_WT_USER', WT_Filter::escapeHtml($match[2]));
 			}

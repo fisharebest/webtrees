@@ -570,7 +570,7 @@ function shiftlinks() {
 		</tr>
 		<?php
 		// Admin Option CHAN log update override =======================
-		if (WT_USER_IS_ADMIN) {
+		if (\WT\Auth::isAdmin()) {
 			echo "<tr><td class=\"descriptionbox wrap width25\">";
 			echo WT_Gedcom_Tag::getLabel('CHAN'), "</td><td class=\"optionbox wrap\">";
 			if ($NO_UPDATE_CHAN) {

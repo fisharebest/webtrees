@@ -26,7 +26,7 @@ require './includes/session.php';
 
 $controller=new WT_Controller_Page();
 $controller
-	->requireAdminLogin()
+	->restrictAccess(\WT\Auth::isAdmin())
 	->setPageTitle(WT_I18N::translate('User administration'));
 
 require_once WT_ROOT.'includes/functions/functions_edit.php';
@@ -84,9 +84,8 @@ case 'loadrows':
 			" real_name LIKE CONCAT('%', ?, '%') OR " .
 			" email     LIKE CONCAT('%', ?, '%'))";
 		$ARGS=array($search, $search, $search);
-	} else {
 	}
-	set_user_setting(WT_USER_ID, 'admin_users_page_size', $length);
+	\WT\Auth::user()->setSetting('admin_users_page_size', $length);
 	if ($length > 0) {
 		$LIMIT = " LIMIT " . $start . ',' . $length;
 	} else {
@@ -167,7 +166,7 @@ case 'loadrows':
 
 	// Total filtered/unfiltered rows
 	$recordsFiltered = WT_DB::prepare("SELECT FOUND_ROWS()")->fetchOne();
-	$recordsTotal = WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##user` WHERE user_id>0")->fetchOne();
+	$recordsTotal = \WT\User::count();
 
 	Zend_Session::writeClose();
 	header('Content-type: application/json');
@@ -181,39 +180,40 @@ case 'loadrows':
 case 'load1row':
 	// Generate an AJAX response for datatables to load expanded row
 	$user_id = WT_Filter::getInteger('user_id');
+	$user = \WT\User::find($user_id);
 	Zend_Session::writeClose();
 	header('Content-type: text/html; charset=UTF-8');
 	echo '<h2>', WT_I18N::translate('Details'), '</h2>';
 	echo '<dl>';
 	echo '<dt>', WT_I18N::translate('Administrator'), '</dt>';
-	echo '<dd>', edit_field_yes_no_inline('user_setting-'.$user_id.'-canadmin', get_user_setting($user_id, 'canadmin')), '</dd>';
+	echo '<dd>', edit_field_yes_no_inline('user_setting-'.$user_id.'-canadmin', $user->getSetting('canadmin')), '</dd>';
 
 	echo '<dt>', WT_I18N::translate('Password'), '</dt>';
 	echo '<dd>', edit_field_inline('user-password-'.$user_id, ''), '</dd>';
 
 	echo '<dt>', WT_I18N::translate('Preferred contact method'), '</dt>';
-	echo '<dd>', edit_field_contact_inline('user_setting-'.$user_id.'-contactmethod', get_user_setting($user_id, 'contactmethod')), '</dd>';
+	echo '<dd>', edit_field_contact_inline('user_setting-'.$user_id.'-contactmethod', $user->getSetting('contactmethod')), '</dd>';
 
 	echo '<dt>', WT_I18N::translate('Allow this user to edit his account information'), '</dt>';
-	echo '<dd>', edit_field_yes_no_inline('user_setting-'.$user_id.'-editaccount', get_user_setting($user_id, 'editaccount')), '</dd>';
+	echo '<dd>', edit_field_yes_no_inline('user_setting-'.$user_id.'-editaccount', $user->getSetting('editaccount')), '</dd>';
 
 	echo '<dt>', WT_I18N::translate('Automatically approve changes made by this user'), '</dt>';
-	echo '<dd>', edit_field_yes_no_inline('user_setting-'.$user_id.'-auto_accept', get_user_setting($user_id, 'auto_accept')), '</dd>';
+	echo '<dd>', edit_field_yes_no_inline('user_setting-'.$user_id.'-auto_accept', $user->getSetting('auto_accept')), '</dd>';
 
 	echo '<dt>', WT_I18N::translate('Theme'), '</dt>';
-	echo '<dd>', select_edit_control_inline('user_setting-'.$user_id.'-theme', array_flip(get_theme_names()), WT_I18N::translate('<default theme>'), get_user_setting($user_id, 'theme')), '</dd>';
+	echo '<dd>', select_edit_control_inline('user_setting-'.$user_id.'-theme', array_flip(get_theme_names()), WT_I18N::translate('<default theme>'), $user->getSetting('theme')), '</dd>';
 
 	echo '<dt>', WT_I18N::translate('Visible to other users when online'), '</dt>';
-	echo '<dd>', edit_field_yes_no_inline('user_setting-'.$user_id.'-visibleonline', get_user_setting($user_id, 'visibleonline')), '</dd>';
+	echo '<dd>', edit_field_yes_no_inline('user_setting-'.$user_id.'-visibleonline', $user->getSetting('visibleonline')), '</dd>';
 
 	echo '<dt>', WT_I18N::translate('Comments'), '</dt>';
-	echo '<dd>', edit_field_inline('user_setting-'.$user_id.'-comment', get_user_setting($user_id, 'comment')), '</dd>';
+	echo '<dd>', edit_field_inline('user_setting-'.$user_id.'-comment', $user->getSetting('comment')), '</dd>';
 
 	echo '<dt>', WT_I18N::translate('My page'), '</dt>';
 	echo '<dd><a href="#" onclick="modalDialog(\'index_edit.php?user_id='.$user_id.'\', \'', WT_I18N::translate('Change the blocks on this page'), '\');">', WT_I18N::translate('Change the blocks on this page'), '</a></dd>';
 
 	// Masquerade as others users - but not other administrators
-	if (!get_user_setting($user_id, 'canadmin')) {
+	if (!\WT\Auth::isAdmin($user)) {
 		echo '<dt>', /* I18N: Pretend to be another user, by logging in as them */ WT_I18N::translate('Masquerade as this user'), '</dt>';
 		echo '<dd><a href="#" onclick="return masquerade(', $user_id, ')">', /* I18N: verb: pretend to be someone else */ WT_I18N::translate('masquerade'), '</a></dd>';
 	}
@@ -256,32 +256,30 @@ case 'load1row':
 case 'createuser':
 	if (!WT_Filter::checkCsrf()) {
 		$action='createform';
-	} elseif (get_user_id($username)) {
+	} elseif (\WT\User::findByIdentifier($username)) {
 		WT_FlashMessages::addMessage(WT_I18N::translate('Duplicate user name.  A user with that user name already exists.  Please choose another user name.'));
 		$action='createform';
-	} elseif (get_user_by_email($emailaddress)) {
+	} elseif (\WT\User::findByIdentifier($emailaddress)) {
 		WT_FlashMessages::addMessage(WT_I18N::translate('Duplicate email address.  A user with that email already exists.'));
 		$action='createform';
 	} elseif ($pass1!=$pass2) {
 		WT_FlashMessages::addMessage(WT_I18N::translate('Passwords do not match.'));
 		$action='createform';
 	} else {
-		// Create new uers
-		$user_id=create_user($username, $realname, $emailaddress, $pass1);
-		set_user_setting($user_id, 'reg_timestamp', date('U'));
-		set_user_setting($user_id, 'sessiontime', '0');
-		setUserFullName ($user_id, $realname);
-		setUserEmail    ($user_id, $emailaddress);
-		set_user_setting($user_id, 'theme',                $user_theme);
-		set_user_setting($user_id, 'language',             $user_language);
-		set_user_setting($user_id, 'contactmethod',        $new_contact_method);
-		set_user_setting($user_id, 'comment',              $new_comment);
-		set_user_setting($user_id, 'auto_accept',          $new_auto_accept);
-		set_user_setting($user_id, 'canadmin',             $canadmin);
-		set_user_setting($user_id, 'visibleonline',        $visibleonline);
-		set_user_setting($user_id, 'editaccount',          $editaccount);
-		set_user_setting($user_id, 'verified',             $verified);
-		set_user_setting($user_id, 'verified_by_admin',    $verified_by_admin);
+		$user = \WT\User::create($username, $realname, $emailaddress, $pass1);
+		$user
+			->setSetting('reg_timestamp', date('U'))
+			->setSetting('sessiontime', '0')
+			->setSetting('theme',                $user_theme)
+			->setSetting('language',             $user_language)
+			->setSetting('contactmethod',        $new_contact_method)
+			->setSetting('comment',              $new_comment)
+			->setSetting('auto_accept',          $new_auto_accept)
+			->setSetting('canadmin',             $canadmin)
+			->setSetting('visibleonline',        $visibleonline)
+			->setSetting('editaccount',          $editaccount)
+			->setSetting('verified',             $verified)
+			->setSetting('verified_by_admin',    $verified_by_admin);
 		foreach (WT_Tree::getAll() as $tree) {
 			$tree->userPreference($user_id, 'gedcomid', WT_Filter::post('gedcomid'.$tree->tree_id, WT_REGEX_XREF));
 			$tree->userPreference($user_id, 'rootid',   WT_Filter::post('rootid'.$tree->tree_id, WT_REGEX_XREF));
@@ -293,7 +291,7 @@ case 'createuser':
 				$tree->userPreference($user_id, 'RELATIONSHIP_PATH_LENGTH', null);
 			}
 		}
-		AddToLog("User ->{$username}<- created", 'auth');
+		\WT\Log::addAuthenticationLog("User ->{$username}<- created");
 		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME);
 		WT_Session::writeClose();
 		exit;
@@ -417,7 +415,7 @@ case 'createform':
 					</td>';
 				}
 			echo '</tr>';
-			if (WT_USER_IS_ADMIN) {
+			if (\WT\Auth::isAdmin()) {
 			echo '<tr>
 				<td>', WT_I18N::translate('Admin comments on user'), '</td>
 				<td colspan="3"><textarea style="width:95%;" rows="5" name="new_comment" value="', WT_Filter::escapeHtml($new_comment), '"></textarea></td>
@@ -506,36 +504,34 @@ case 'cleanup':
 	<?php
 	// Check users not logged in too long
 	$ucnt = 0;
-	foreach (get_all_users() as $user_id=>$user_name) {
-		$userName = getUserFullName($user_id);
-		if ((int)get_user_setting($user_id, 'sessiontime') == "0")
-			$datelogin = (int)get_user_setting($user_id, 'reg_timestamp');
-		else
-			$datelogin = (int)get_user_setting($user_id, 'sessiontime');
-		if ((mktime(0, 0, 0, (int)date("m")-$month, (int)date("d"), (int)date("Y")) > $datelogin) && get_user_setting($user_id, 'verified') && get_user_setting($user_id, 'verified_by_admin')) {
-			?><tr><td><?php echo $user_name, " - <p>", $userName, "</p>", WT_I18N::translate('User’s account has been inactive too long: ');
+	foreach (\WT\User::all() as $user) {
+		if ($user->getSetting('sessiontime') == "0") {
+			$datelogin = (int)$user->getSetting('reg_timestamp');
+		} else {
+			$datelogin = (int)$user->getSetting('sessiontime');
+		}
+		if ((mktime(0, 0, 0, (int)date("m")-$month, (int)date("d"), (int)date("Y")) > $datelogin) && $user->getSetting('verified') && $user->getSetting('verified_by_admin')) {
+			?><tr><td><?php echo WT_Filter::escapeHtml($user->getUserName()), " - <p>", WT_Filter::escapeHtml($user->getRealName()), "</p>", WT_I18N::translate('User’s account has been inactive too long: ');
 			echo timestamp_to_gedcom_date($datelogin)->Display(false);
 			$ucnt++;
-			?></td><td><input type="checkbox" name="<?php echo "del_", str_replace(array(".", "-", " "), array("_", "_", "_"), $user_name); ?>" value="1"></td></tr><?php
+			?></td><td><input type="checkbox" name="del_<?php echo $user->getUserId(); ?>" value="1"></td></tr><?php
 		}
 	}
 
 	// Check unverified users
-	foreach (get_all_users() as $user_id=>$user_name) {
-		if (((date("U") - (int)get_user_setting($user_id, 'reg_timestamp')) > 604800) && !get_user_setting($user_id, 'verified')) {
-			$userName = getUserFullName($user_id);
-			?><tr><td><?php echo $user_name, " - ", $userName, ":&nbsp;&nbsp;", WT_I18N::translate('User didn’t verify within 7 days.');
+	foreach (\WT\User::all() as $user) {
+		if (((date("U") - (int)$user->getSetting('reg_timestamp')) > 604800) && !$user->getSetting('verified')) {
+			?><tr><td><?php echo WT_Filter::escapeHtml($user->getUserName()), " - ", WT_Filter::escapeHtml($user->getRealName()), ":&nbsp;&nbsp;", WT_I18N::translate('User didn’t verify within 7 days.');
 			$ucnt++;
-			?></td><td><input type="checkbox" checked="checked" name="<?php echo "del_", str_replace(array(".", "-", " "), array("_",  "_", "_"), $user_name); ?>" value="1"></td></tr><?php
+			?></td><td><input type="checkbox" checked="checked" name="del_<?php echo $user->getUserId(); ?>" value="1"></td></tr><?php
 		}
 	}
 
 	// Check users not verified by admin
-	foreach (get_all_users() as $user_id=>$user_name) {
-		if (!get_user_setting($user_id, 'verified_by_admin') && get_user_setting($user_id, 'verified')) {
-			$userName = getUserFullName($user_id);
-			?><tr><td><?php echo $user_name, " - ", $userName, ":&nbsp;&nbsp;", WT_I18N::translate('User not verified by administrator.');
-			?></td><td><input type="checkbox" name="<?php echo "del_", str_replace(array(".", "-", " "), array("_", "_", "_"), $user_name); ?>" value="1"></td></tr><?php
+	foreach (\WT\User::all() as $user) {
+		if (!$user->getSetting('verified_by_admin') && $user->getSetting('verified')) {
+			?><tr><td><?php echo WT_Filter::escapeHtml($user->getUserName()), " - ", WT_Filter::escapeHtml($user->getRealName()), ":&nbsp;&nbsp;", WT_I18N::translate('User not verified by administrator.');
+			?></td><td><input type="checkbox" name="del_<?php echo $user->getUserId(); ?>" value="1"></td></tr><?php
 			$ucnt++;
 		}
 	}
@@ -553,12 +549,11 @@ case 'cleanup':
 	</form><?php
 	break;
 case 'cleanup2':
-	foreach (get_all_users() as $user_id=>$user_name) {
-		$var = "del_".str_replace(array(".", "-", " "), array("_", "_", "_"), $user_name);
-		if (WT_Filter::post($var)=='1') {
-			delete_user($user_id);
-			AddToLog("deleted user ->{$user_name}<-", 'auth');
-			echo WT_I18N::translate('Deleted user: '); echo $user_name, "<br>";
+	foreach (\WT\User::all() as $user) {
+		if (WT_Filter::post('del_' . $user->getUserId()) == '1') {
+			\WT\Log::addAuthenticationLog('Deleted user: ' . $user->getUserName());
+			echo WT_I18N::translate('Deleted user: '), $user->getUserName(), '<br>';
+			$user->delete();
 		}
 	}
 	break;
@@ -600,7 +595,7 @@ default:
 				ajax: "'.WT_SCRIPT_NAME.'?action=loadrows",
 				jQueryUI: true,
 				autoWidth: false,
-				pageLength: '.get_user_setting(WT_USER_ID, 'admin_users_page_size', 10).',
+				pageLength: ' . \WT\Auth::user()->getSetting('admin_users_page_size', 10).',
 				pagingType: "full_numbers",
 				sorting: [[2,"asc"]],
 				columns: [

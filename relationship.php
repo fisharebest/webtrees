@@ -160,7 +160,7 @@ if ($person1 && $person1->canShowName() && $person2 && $person2->canShowName()) 
 $maxyoffset = $Dbaseyoffset;
 if ($person1 && $person2) {
 	if (!$disp) {
-		print_privacy_error();
+		echo '<div class="error">', WT_I18N::translate('This information is private and cannot be shown.'), '</div>';
 	} elseif (!$node) {
 		if ($path_to_find==0) {
 			echo '<p class="error">', WT_I18N::translate('No link between the two individuals could be found.'), '</p>';

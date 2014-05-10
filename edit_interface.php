@@ -29,7 +29,7 @@ $action = WT_Filter::post('action', null, WT_Filter::get('action'));
 
 $controller=new WT_Controller_Simple();
 $controller
-	->requireEditorLogin()
+	->restrictAccess(\WT\Auth::isEditor())
 	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
 	->addInlineJavascript('
 	var locale_date_format="' . preg_replace('/[^DMY]/', '', str_replace(array('J', 'F'), array('D', 'M'), strtoupper($DATE_FORMAT))). '";
@@ -311,7 +311,7 @@ case 'edit':
 		}
 		break;
 	}
-	if (WT_USER_IS_ADMIN || $SHOW_GEDCOM_RECORD) {
+	if (\WT\Auth::isAdmin() || $SHOW_GEDCOM_RECORD) {
 		echo
 			'<br><br><a href="edit_interface.php?action=editrawfact&amp;xref=', $xref, '&amp;fact_id=', $fact_id, '&amp;ged=', WT_GEDURL, '">',
 			WT_I18N::translate('Edit raw GEDCOM'),
@@ -714,7 +714,7 @@ case 'add_parent_to_individual_action':
 ////////////////////////////////////////////////////////////////////////////////
 case 'add_unlinked_indi':
 	$controller
-		->requireManagerLogin()
+		->restrictAccess(\WT\Auth::isManager())
 		->setPageTitle(WT_I18N::translate('Create a new individual'))
 		->pageHeader();
 
@@ -734,7 +734,7 @@ case 'add_unlinked_indi_action':
 	}
 
 	$controller
-		->requireManagerLogin()
+		->restrictAccess(\WT\Auth::isManager())
 		->pageHeader();
 
 	splitSOUR();
@@ -2254,7 +2254,7 @@ case 'reorder_fams_update':
 function keep_chan(WT_GedcomRecord $record=null) {
 	global $NO_UPDATE_CHAN;
 
-	if (WT_USER_IS_ADMIN) {
+	if (\WT\Auth::isAdmin()) {
 		$checked = $NO_UPDATE_CHAN ? ' checked="checked"' : '';
 
 		if ($record) {
@@ -2725,7 +2725,7 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 	}
 
 	// If we are editing an existing name, allow raw GEDCOM editing
-	if ($name_fact && (WT_USER_IS_ADMIN || $SHOW_GEDCOM_RECORD)) {
+	if ($name_fact && (\WT\Auth::isAdmin() || $SHOW_GEDCOM_RECORD)) {
 		echo
 			'<br><br><a href="edit_interface.php?action=editrawfact&amp;xref=', $xref, '&amp;fact_id=', $name_fact->getFactId(), '&amp;ged=', WT_GEDURL, '">',
 			WT_I18N::translate('Edit raw GEDCOM'),

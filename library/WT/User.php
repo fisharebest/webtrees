@@ -1,4 +1,5 @@
-<?php
+<?php namespace WT;
+
 // Provide an interface to the wt_user table
 //
 // webtrees: Web based Family History software
@@ -18,109 +19,248 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
+use WT_DB;
+use WT_Tree;
 
-class WT_User {
-	// Reasons why a user authentication attempt failed
-	const ACCOUNT_NOT_VERIFIED = 'ACCOUNT_NOT_VERIFIED';
-	const ACCOUNT_NOT_APPROVED = 'ACCOUNT_NOT_APPROVED';
-	const INCORRECT_PASSWORD   = 'INCORRECT_PASSWORD';
-	const NO_SUCH_USER         = 'NO_SUCH_USER';
-	const NO_SESSION_COOKIES   = 'NO_SESSION_COOKIES';
-	// Reasons why a user account cannot be created
-	const DUPLICATE_USER_NAME  = 'DUPLICATE_USER_NAME';
-	const DUPLICATE_EMAIL      = 'DUPLICATE_EMAIL';
-
-	// Attributes of the user, from the wt_user table
+class User {
+	/** @var  string $user_id The primary key of this user. */
 	private $user_id;
+
+	/** @var  string $user_name The login name of this user. */
 	private $user_name;
+
+	/** @var  string $real_name The real (display) name of this user. */
 	private $real_name;
+
+	/** @var  string $email The email address of this user. */
 	private $email;
 
-	// Settings for the user, from the wt_user_setting table
+	/** @var array $settings Settings for the user, from the wt_user_setting table. */
 	private $settings;
 
-	// The current user
-	private static $current_user;
+	/** @var  User[] $cache Only fetch users from the database once. */
+	private static $cache = array();
 
-	public static function currentUser() {
-		global $WT_SESSION;
-
-		if (self::$current_user === null) {
-			self::$current_user = new WT_User($WT_SESSION->wt_user);
+	/**
+	 * Find the user with a specified user_id.
+	 *
+	 * @param int|null $user_id
+	 *
+	 * @return User|null
+	 */
+	public static function find($user_id) {
+		if (!array_key_exists($user_id, self::$cache)) {
+			$row = WT_DB::prepare(
+				"SELECT SQL_CACHE user_id, user_name, real_name, email FROM `##user` WHERE user_id = ?"
+			)->execute(array($user_id))->fetchOneRow();
+			if ($row) {
+				self::$cache[$user_id] = new User($row);
+			} else {
+				self::$cache[$user_id] = null;
+			}
 		}
 
-		return self::$current_user;
+		return self::$cache[$user_id];
 	}
 
-	public static function isLoggedIn() {
-		return self::currentUser()->getUserId() !== null;
+	/**
+	 * Find the user with a specified user_id.
+	 *
+	 * @param string $identifier
+	 *
+	 * @return User|null
+	 */
+	public static function findByIdentifier($identifier) {
+		$user_id = WT_DB::prepare(
+			"SELECT SQL_CACHE user_id FROM `wt_user` WHERE ? IN (user_name, email)"
+		)->execute(array($identifier))->fetchOne();
+
+		return self::find($user_id);
 	}
 
-	public static function isAdmin() {
-		return self::currentUser()->getSetting('canadmin');
+	/**
+	 * Find the user with a specified genealogy record.
+	 *
+	 * @param WT_Tree $tree
+	 * @param string $xref
+	 *
+	 * @return User|null
+	 */
+	public static function findByGenealogyRecord(WT_Tree $tree, $xref) {
+		$user_id = WT_DB::prepare(
+			"SELECT SQL_CACHE user_id" .
+			" FROM `##user_gedcom_setting`" .
+			" WHERE gedcom_id = ? AND setting_name = 'gedcomid' AND setting_value = ?"
+		)->execute(array($tree->tree_id, $xref))->fetchOne();
+
+		return self::find($user_id);
 	}
 
-	public static function isManager(WT_Tree $tree) {
-		return self::isAdmin() || $tree->userPreference(self::currentUser(), 'canedit') === 'admin';
+	/**
+	 * Find the latest user to register.
+	 *
+	 * @return User|null
+	 */
+	public static function findLatestToRegister() {
+		$user_id = WT_DB::prepare(
+			"SELECT SQL_CACHE u.user_id" .
+			" FROM `##user` u" .
+			" LEFT JOIN `##user_setting` us ON (u.user_id=us.user_id AND us.setting_name='reg_timestamp') " .
+			" ORDER BY us.setting_value DESC LIMIT 1"
+		)->execute()->fetchOne();
+
+		return self::find($user_id);
 	}
 
-	public static function isModerator(WT_Tree $tree) {
-		return self::isManager($tree) || $tree->userPreference(self::currentUser(), 'canedit') === 'accept';
-	}
-
-	public static function isEditor(WT_Tree $tree) {
-		return self::isModerator($tree) || $tree->userPreference(self::currentUser(), 'canedit') === 'edit';
-	}
-
-	public static function isMember(WT_Tree $tree) {
-		return self::isEditor($tree) || $tree->userPreference(self::currentUser(), 'canedit') === 'access';
-	}
-
-	// Create a new user.
-	//
-	// On success, return a new user object.
-	// On failure, throw an exception.
+	/**
+	 * Create a new user.
+	 *
+	 * The calling code needs to check for duplicates identifiers before calling
+	 * this function.
+	 *
+	 * @param string $user_name
+	 * @param string $real_name
+	 * @param string $email
+	 * @param string $password
+	 *
+	 * @return \WT\User
+	 */
 	public static function create($user_name, $real_name, $email, $password) {
-		self::passwordCompatibility();
-
-		if (WT_DB::prepare("SELECT 1 FROM `##user` WHERE user_name = ?")->execute(array($user_name))->fetchOne()) {
-			throw new exception(self::DUPLICATE_USER_NAME);
-		}
-
-		if (WT_DB::prepare("SELECT 1 FROM `##user` WHERE email = ?")->execute(array($email))->fetchOne()) {
-			throw new exception(self::DUPLICATE_EMAIL);
-		}
-
 		WT_DB::prepare(
 			"INSERT INTO `##user` (user_name, real_name, email, password) VALUES (?, ?, ?, ?)"
 		)->execute(array($user_name, $real_name, $email, password_hash($password, PASSWORD_DEFAULT)));
 
-		$user = new WT_User();
-		$user->user_id = WT_DB::prepare("SELECT LAST_INSERT_ID()")->fetchOne();
-		$user->user_name = $user_name;
-		$user->real_name = $real_name;
-		$user->email = $email;
-
-		return $user;
+		return User::findByIdentifier($user_name);
 	}
 
-	// Create a new user object from a row in the database
-	public function __construct($user_id=null) {
-		if ($user_id !== null) {
-			$row = WT_DB::prepare(
-				"SELECT SQL_CACHE user_name, real_name, email FROM `##user` WHERE user_id = ?"
-			)->execute(array($user_id))->fetchOneRow();
+	/**
+	 * Get a count of all users.
+	 *
+	 * @return int
+	 */
+	public static function count() {
+		return (int)WT_DB::prepare(
+			"SELECT SQL_CACHE COUNT(*)" .
+			" FROM `##user`" .
+			" WHERE user_id > 0"
+		)->fetchOne();
+	}
 
-			if ($row) {
-				$this->user_id   = $user_id;
-				$this->user_name = $row->user_name;
-				$this->real_name = $row->real_name;
-				$this->email     = $row->email;
+	/**
+	 * Get a list of all users.
+	 *
+	 * @return array
+	 */
+	public static function all() {
+		$users = array();
+
+		$rows = WT_DB::prepare(
+			"SELECT SQL_CACHE user_id, user_name, real_name, email" .
+			" FROM `##user`" .
+			" WHERE user_id > 0" .
+			" ORDER BY user_name"
+		)->fetchAll();
+
+		foreach ($rows as $row) {
+			$users[] = new User($row);
+		}
+
+		return $users;
+	}
+
+	/**
+	 * Get a list of all administrators.
+	 *
+	 * @return array
+	 */
+	public static function allAdmins() {
+		$rows = WT_DB::prepare(
+			"SELECT SQL_CACHE user_id, user_name, real_name, email" .
+			" FROM `##user`" .
+			" JOIN `##user_setting` USING (user_id)" .
+			" WHERE user_id > 0" .
+			"   AND setting_name = 'canadmin'" .
+			"   AND setting_value = '1'"
+		)->fetchAll();
+
+		$users = array();
+		foreach ($rows as $row) {
+			$users[] = new User($row);
+		}
+
+		return $users;
+	}
+
+	/**
+	 * Get a list of all users who are currently logged in.
+	 *
+	 * @return array
+	 */
+	public static function allLoggedIn() {
+		$rows = WT_DB::prepare(
+			"SELECT SQL_NO_CACHE DISTINCT user_id, user_name, real_name, email".
+			" FROM `##user`".
+			" JOIN `##session` USING (user_id)"
+		)->fetchAll();
+
+		$users = array();
+		foreach ($rows as $row) {
+			$users[] = new User($row);
+		}
+
+		return $users;
+	}
+
+	/**
+	 * Create a new user object from a row in the database.
+	 *
+	 * @param \stdclass $user A row from the wt_user table
+	 */
+	private function __construct(\stdClass $user) {
+		$this->user_id   = $user->user_id;
+		$this->user_name = $user->user_name;
+		$this->real_name = $user->real_name;
+		$this->email     = $user->email;
+	}
+
+	/**
+	 * Delete a user
+	 */
+	function delete() {
+		// Don't delete the logs.
+		WT_DB::prepare("UPDATE `##log` SET user_id=NULL WHERE user_id =?")->execute(array($this->user_id));
+		// Take over the user’s pending changes.
+		// TODO: perhaps we should prevent deletion of users with pending changes?
+		WT_DB::prepare("DELETE FROM `##change` WHERE user_id=? AND status='accepted'")->execute(array($this->user_id));
+		WT_DB::prepare("UPDATE `##change` SET user_id=? WHERE user_id=?")->execute(array($this->user_id, $this->user_id));
+
+		WT_DB::prepare("DELETE `##block_setting` FROM `##block_setting` JOIN `##block` USING (block_id) WHERE user_id=?")->execute(array($this->user_id));
+		WT_DB::prepare("DELETE FROM `##block` WHERE user_id=?")->execute(array($this->user_id));
+		WT_DB::prepare("DELETE FROM `##user_gedcom_setting` WHERE user_id=?")->execute(array($this->user_id));
+		WT_DB::prepare("DELETE FROM `##gedcom_setting` WHERE setting_value=? AND setting_name in ('CONTACT_USER_ID', 'WEBMASTER_USER_ID')")->execute(array($this->user_id));
+		WT_DB::prepare("DELETE FROM `##user_setting` WHERE user_id=?")->execute(array($this->user_id));
+		WT_DB::prepare("DELETE FROM `##message` WHERE user_id=?")->execute(array($this->user_id));
+		WT_DB::prepare("DELETE FROM `##user` WHERE user_id=?")->execute(array($this->user_id));
+	}
+
+	/** Validate a supplied password
+	 *
+	 * @param string $password
+	 *
+	 * @return bool
+	 */
+	public function checkPassword($password) {
+		$password_hash = WT_DB::prepare(
+			"SELECT password FROM `##user` WHERE user_id = ?"
+		)->execute(array($this->user_id))->fetchOne();
+
+		if (password_verify($password, $password_hash)) {
+			if (password_needs_rehash($password_hash, PASSWORD_DEFAULT)) {
+				$this->setPassword($password);
 			}
+			return true;
+		} else {
+			return false;
 		}
 	}
 
@@ -134,10 +274,14 @@ class WT_User {
 	}
 
 	public function setUserName($user_name) {
-		$this->user_name = $user_name;
-		WT_DB::prepare(
-			"UPDATE `##user` SET user_name = ? WHERE user_id = ?"
-		)->execute(array($user_name, $this->user_id));
+		if ($this->user_name !== $user_name) {
+			$this->user_name = $user_name;
+			WT_DB::prepare(
+				"UPDATE `##user` SET user_name = ? WHERE user_id = ?"
+			)->execute(array($user_name, $this->user_id));
+		}
+
+		return $this;
 	}
 
 	public function getRealName() {
@@ -145,10 +289,14 @@ class WT_User {
 	}
 
 	public function setRealName($real_name) {
-		$this->real_name = $real_name;
-		WT_DB::prepare(
-			"UPDATE `##user` SET real_name = ? WHERE user_id = ?"
-		)->execute(array($real_name, $this->user_id));
+		if ($this->real_name !== $real_name) {
+			$this->real_name = $real_name;
+			WT_DB::prepare(
+				"UPDATE `##user` SET real_name = ? WHERE user_id = ?"
+			)->execute(array($real_name, $this->user_id));
+		}
+
+		return $this;
 	}
 
 	public function getEmail() {
@@ -156,27 +304,38 @@ class WT_User {
 	}
 
 	public function setEmail($email) {
-		$this->email = $email;
-		WT_DB::prepare(
-			"UPDATE `##user` SET email = ? WHERE user_id = ?"
-		)->execute(array($email, $this->user_id));
+		if ($this->email !== $email) {
+			$this->email = $email;
+			WT_DB::prepare(
+				"UPDATE `##user` SET email = ? WHERE user_id = ?"
+			)->execute(array($email, $this->user_id));
+		}
+
+		return $this;
 	}
 
 	public function setPassword($password) {
-		self::passwordCompatibility();
-
 		WT_DB::prepare(
 			"UPDATE `##user` SET password = ? WHERE user_id = ?"
 		)->execute(array(password_hash($password, PASSWORD_DEFAULT), $this->user_id));
+
+		return $this;
 	}
 
-	// Fetch a user option/setting from the wt_user_setting table
-	//
-	// Since we'll fetch several settings for each user, and since there aren’t
-	// that many of them, fetch them all in one database query
-	public function getSetting($setting_name, $default=null) {
+	/**
+	 * Fetch a user option/setting from the wt_user_setting table
+	 *
+	 * Since we'll fetch several settings for each user, and since there aren’t
+	 * that many of them, fetch them all in one database query
+	 *
+	 * @param string      $setting_name
+	 * @param string|null $default
+	 *
+	 * @return string
+	 */
+	public function getSetting($setting_name, $default = null) {
 		if ($this->settings === null) {
-			if ($this->isLoggedIn()) {
+			if ($this->getUserId()) {
 				$this->settings = WT_DB::prepare(
 					"SELECT SQL_CACHE setting_name, setting_value FROM `##user_setting` WHERE user_id = ?"
 				)->execute(array($this->user_id))->fetchAssoc();
@@ -192,94 +351,25 @@ class WT_User {
 		}
 	}
 
-	// Update a setting for the user.
+	/**
+	 * Update a setting for the user.
+	 *
+	 * @param string $setting_name
+	 * @param string $setting_value
+	 *
+	 * @return User
+	 */
 	public function setSetting($setting_name, $setting_value) {
-		if ($setting_value===null) {
+		if ($setting_value === null) {
 			WT_DB::prepare("DELETE FROM `##user_setting` WHERE user_id=? AND setting_name=?")
 				->execute(array($this->user_id, $setting_name));
 			unset($this->settings[$setting_name]);
-		} else {
+		} elseif ($this->settings[$setting_name] !== $setting_value) {
 			WT_DB::prepare("REPLACE INTO `##user_setting` (user_id, setting_name, setting_value) VALUES (?, ?, LEFT(?, 255))")
 				->execute(array($this->user_id, $setting_name, $setting_value));
 			$this->settings[$setting_name] = $setting_value;
 		}
-	}
 
-	// PHP5.5 provides new password hash functions.
-	// For earlier versions, use a compatibility library.
-	private static function passwordCompatibility() {
-		if (!function_exists('password_hash')) {
-			// The compatibility library requires the $2$y salt prefix, which is available in
-			// PHP5.3.7 and *some* earlier/patched versions.
-			$hash = '$2y$04$usesomesillystringfore7hnbRJHxXVLeakoG8K30oukPsA.ztMG';
-			if (crypt("password", $hash) === $hash) {
-				require 'library/ircmaxell/password-compat/lib/password.php';
-			} else {
-				// For older/unpatched versions of PHP, use the default crypt behaviour.
-				function password_hash($password, $algo, $options=array()) {
-					$salt = '$2a$12$';
-					$salt_chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789./';
-					for ($i = 0; $i < 22; ++$i) {
-						$salt .= setsubstr($salt_chars, mt_rand(0, 63), 1);
-					}
-					return crypt($password, $salt);
-				}
-				function password_needs_rehash($password, $algo, $options=array()) {
-					return false;
-				}
-				function password_verify($password, $hash) {
-					return crypt($password, $hash) === $hash;
-				}
-				define('PASSWORD_DEFAULT', 1);
-			}
-		}
-	}
-
-	// Authenticate a username/password combination.
-	//
-	// On success, return the user_id of the account.
-	// On failure, return the reason for failure.
-	public static function authenticate($user_name, $password) {
-		self::passwordCompatibility();
-
-		// If no cookies are available, then we cannot log in.
-		if (empty($_COOKIE)) {
-			return self::NO_SESSION_COOKIES;
-		}
-
-		$row = WT_DB::prepare(
-			"SELECT SQL_CACHE user_id, password FROM `wt_user` WHERE user_name = ? OR email = ?"
-		)->execute(array($user_name, $user_name))->fetchOneRow();
-
-		if (!$row) {
-			// No such user with that username or email address
-			return self::NO_SUCH_USER;
-		}
-
-		$user = new WT_User($row->user_id);
-		if (!password_verify($password, $row->password)) {
-			// Incorrect password
-			return self::INCORRECT_PASSWORD;
-		}
-
-		// Was the password hash created using an old or insecure algorithm?
-		if (password_needs_rehash($row->password, PASSWORD_DEFAULT)) {
-			// Generate a new hash
-			$user->setPassword(password_hash($password, PASSWORD_DEFAULT));
-		}
-
-		if (!$user->getSetting('verified') && !$user->getSetting('canadmin')) {
-			// The user has not verified their email address.
-			return self::ACCOUNT_NOT_VERIFIED;
-		}
-
-		if (!$user->getSetting('verified_by_admin') && !$user->getSetting('canadmin')) {
-			// An administrator has not approved the account.
-			// Admins do not need to be approved.
-			return self::ACCOUNT_NOT_APPROVED;
-		}
-
-		// All checks passed.  The user is permitted to log in.
-		return $row->user_id;
+		return $this;
 	}
 }

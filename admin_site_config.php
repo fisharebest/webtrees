@@ -24,7 +24,7 @@ require WT_ROOT.'includes/functions/functions_edit.php';
 
 $controller=new WT_Controller_Page();
 $controller
-	->requireAdminLogin()
+	->restrictAccess(\WT\Auth::isAdmin())
 	->addExternalJavascript(WT_JQUERY_JEDITABLE_URL)
 	->addInlineJavascript('jQuery("#tabs").tabs();')
 	->setPageTitle(WT_I18N::translate('Site configuration'))

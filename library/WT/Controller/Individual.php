@@ -21,11 +21,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 require_once WT_ROOT.'includes/functions/functions_import.php';
 
@@ -115,6 +110,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 	 * @param WT_Fact $event the event object
 	 */
 	function print_name_record(WT_Fact $event) {
+		global $WT_TREE;
 
 		$factrec = $event->getGedcom();
 
@@ -144,11 +140,10 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 		$dummy->setPrimaryName(0);
 		echo '<dd class="field">', $dummy->getFullName();
 		if ($this->name_count == 1) {
-			if (WT_USER_IS_ADMIN) {
-				$user_id=get_user_from_gedcom_xref(WT_GED_ID, $this->record->getXref());
-				if ($user_id) {
-					$user_name=get_user_name($user_id);
-					echo '<span> - <a class="warning" href="admin_users.php?filter='.$user_name.'">'.$user_name.'</a></span>';
+			if (\WT\Auth::isAdmin()) {
+				$user = \WT\User::findByGenealogyRecord($WT_TREE, $this->record->getXref());
+				if ($user) {
+					echo '<span> - <a class="warning" href="admin_users.php?filter=' . WT_Filter::escapeHtml($user->getUserName()) . '">' . WT_Filter::escapeHtml($user->getUserName()) . '</a></span>';
 				}
 			}
 		}
@@ -306,7 +301,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 		}
 
 		// edit raw
-		if (WT_USER_IS_ADMIN || WT_USER_CAN_EDIT && $SHOW_GEDCOM_RECORD) {
+		if (\WT\Auth::isAdmin() || WT_USER_CAN_EDIT && $SHOW_GEDCOM_RECORD) {
 			$submenu = new WT_Menu(WT_I18N::translate('Edit raw GEDCOM'), '#', 'menu-indi-editraw');
 			$submenu->addOnclick("return edit_raw('" . $this->record->getXref() . "');");
 			$menu->addSubmenu($submenu);

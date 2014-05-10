@@ -24,11 +24,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
 class WT_Stats {
@@ -661,19 +656,19 @@ class WT_Stats {
 
 	static function totalUsers($params=null) {
 		if (!empty($params[0])) {
-			$total=get_user_count() + (int)$params[0];
+			$total = count(\WT\User::all()) + (int)$params[0];
 		} else {
-			$total=get_user_count();
+			$total = count(\WT\User::all());
 		}
 		return WT_I18N::number($total);
 	}
 
 	static function totalAdmins() {
-		return WT_I18N::number(get_admin_user_count());
+		return WT_I18N::number(count(\WT\User::allAdmins()));
 	}
 
 	static function totalNonAdmins() {
-		return WT_I18N::number(get_non_admin_user_count());
+		return WT_I18N::number(count(\WT\User::all()) - count(\WT\User::allAdmins()));
 	}
 
 	function _totalMediaType($type='all') {
@@ -3375,10 +3370,9 @@ class WT_Stats {
 		// List active users
 		$NumAnonymous = 0;
 		$loggedusers = array ();
-		$x = get_logged_in_users();
-		foreach ($x as $user_id=>$user_name) {
-			if (WT_USER_IS_ADMIN || get_user_setting($user_id, 'visibleonline')) {
-				$loggedusers[$user_id] = $user_name;
+		foreach (\WT\User::allLoggedIn() as $user) {
+			if (\WT\Auth::isAdmin() || $user->getSetting('visibleonline')) {
+				$loggedusers[] = $user;
 			} else {
 				$NumAnonymous++;
 			}
@@ -3405,18 +3399,18 @@ class WT_Stats {
 				$content .= ': ';
 			}
 		}
-		if (WT_USER_ID) {
-			foreach ($loggedusers as $user_id=>$user_name) {
+		if (\WT\Auth::check()) {
+			foreach ($loggedusers as $user) {
 				if ($type == 'list') {
-					$content .= "<li>".WT_Filter::escapeHtml(getUserFullName($user_id))." - {$user_name}";
+					$content .= "<li>" . WT_Filter::escapeHtml($user->getRealName()) . ' - ' . WT_Filter::escapeHtml($user->getUserName());
 				} else {
-					$content .= WT_Filter::escapeHtml(getUserFullName($user_id))." - {$user_name}";
+					$content .= WT_Filter::escapeHtml($user->getRealName()) . ' - ' . WT_Filter::escapeHtml($user->getUserName());
 				}
-				if (WT_USER_ID != $user_id && get_user_setting($user_id, 'contactmethod') != 'none') {
+				if (WT_USER_ID != $user->getUserId() && $user->getSetting('contactmethod') != 'none') {
 					if ($type == 'list') {
-						$content .= '<br><a class="icon-email" href="#" onclick="return message(\'' . WT_Filter::escapeJs($user_id) . '\', \'\', \'' . WT_Filter::escapeJs(get_query_url()) . '\');" title="' . WT_I18N::translate('Send message') . '"></a>';
+						$content .= '<br><a class="icon-email" href="#" onclick="return message(\'' . $user->getUserId() . '\', \'\', \'' . WT_Filter::escapeJs(get_query_url()) . '\');" title="' . WT_I18N::translate('Send message') . '"></a>';
 					} else {
-						$content .= ' <a class="icon-email" href="#" onclick="return message(\'' . WT_Filter::escapeJs($user_id) . '\', \'\', \'' . WT_Filter::escapeJs(get_query_url()) . '\');" title="' . WT_I18N::translate('Send message') . '"></a>';
+						$content .= ' <a class="icon-email" href="#" onclick="return message(\'' . $user->getUserId() . '\', \'\', \'' . WT_Filter::escapeJs(get_query_url()) . '\');" title="' . WT_I18N::translate('Send message') . '"></a>';
 					}
 				}
 				if ($type == 'list') {
@@ -3433,13 +3427,20 @@ class WT_Stats {
 	static function _usersLoggedInTotal($type='all') {
 		$anon = 0;
 		$visible = 0;
-		$x = get_logged_in_users();
-		foreach ($x as $user_id=>$user_name) {
-			if (WT_USER_IS_ADMIN || get_user_setting($user_id, 'visibleonline')) {$visible++;} else {$anon++;}
+		foreach (\WT\User::allLoggedIn() as $user) {
+			if (\WT\Auth::isAdmin() || $user->getSetting('visibleonline')) {
+				$visible++;
+			} else {
+				$anon++;
+			}
 		}
-		if ($type == 'anon') {return $anon;}
-		elseif ($type == 'visible') {return $visible;}
-		else {return $visible + $anon;}
+		if ($type == 'anon') {
+			return $anon;
+		} elseif ($type == 'visible') {
+			return $visible;
+		} else {
+			return $visible + $anon;
+		}
 	}
 
 	static function usersLoggedIn    () { return self::_usersLoggedIn('nolist'); }
@@ -3449,46 +3450,69 @@ class WT_Stats {
 	static function usersLoggedInTotalAnon   () { return self::_usersLoggedInTotal('anon'   ); }
 	static function usersLoggedInTotalVisible() { return self::_usersLoggedInTotal('visible'); }
 
-	static function userID() {return getUserId();}
-	static function userName($params=null) {
-		if (getUserID()) {
-			return getUserName();
+	static function userID() {
+		return \WT\Auth::id();
+	}
+
+
+	static function userName($params = null) {
+		if (\WT\Auth::check()) {
+			return \WT\Auth::user()->getUserName();
+		} elseif (is_array($params) && isset($params[0]) && $params[0] != '') {
+			# if #username:visitor# was specified, then "visitor" will be returned when the user is not logged in
+			return $params[0];
 		} else {
-			if (is_array($params) && isset($params[0]) && $params[0] != '') {
-				# if #username:visitor# was specified, then "visitor" will be returned when the user is not logged in
-				return $params[0];
-			}
-			else return null;
+			return null;
 		}
 	}
-	static function userFullName() {return getUserFullName(getUserId());}
+	static function userFullName() {
+		return \WT\Auth::check() ? \WT\Auth::user()->getRealName() : '';
+	}
 
-	static function _getLatestUserData($type='userid', $params=null) {
+	static function _getLatestUserData($type = 'userid', $params = null) {
 		global $DATE_FORMAT, $TIME_FORMAT;
 		static $user_id = null;
 
 		if ($user_id === null) {
-			$user_id=get_newest_registered_user();
+			$user = \WT\User::findLatestToRegister();
+		} else {
+			$user = \WT\User::find($user_id);
 		}
 
 		switch($type) {
 			default:
 			case 'userid':
-				return $user_id;
+				return $user->getUserId();
 			case 'username':
-				return get_user_name($user_id);
+				return $user->getUserName();
 			case 'fullname':
-				return getUserFullName($user_id);
+				return $user->getRealName();
 			case 'regdate':
-				if (is_array($params) && isset($params[0]) && $params[0] != '') {$datestamp = $params[0];} else {$datestamp = $DATE_FORMAT;}
-				return timestamp_to_gedcom_date(get_user_setting($user_id, 'reg_timestamp'))->Display(false, $datestamp);
+				if (is_array($params) && isset($params[0]) && $params[0] != '') {
+					$datestamp = $params[0];
+				} else {
+					$datestamp = $DATE_FORMAT;
+				}
+				return timestamp_to_gedcom_date($user->getSetting('reg_timestamp'))->Display(false, $datestamp);
 			case 'regtime':
-				if (is_array($params) && isset($params[0]) && $params[0] != '') {$datestamp = $params[0];} else {$datestamp = str_replace('%', '', $TIME_FORMAT);}
-				return date($datestamp, get_user_setting($user_id, 'reg_timestamp'));
+				if (is_array($params) && isset($params[0]) && $params[0] != '') {
+					$datestamp = $params[0];
+				} else {
+					$datestamp = str_replace('%', '', $TIME_FORMAT);
+				}
+				return date($datestamp, $user->getSetting('reg_timestamp'));
 			case 'loggedin':
-				if (is_array($params) && isset($params[0]) && $params[0] != '') {$yes = $params[0];} else {$yes = WT_I18N::translate('yes');}
-				if (is_array($params) && isset($params[1]) && $params[1] != '') {$no = $params[1];} else {$no = WT_I18N::translate('no');}
-				return WT_DB::prepare("SELECT SQL_NO_CACHE 1 FROM `##session` WHERE user_id=? LIMIT 1")->execute(array($user_id))->fetchOne() ? $yes : $no;
+				if (is_array($params) && isset($params[0]) && $params[0] != '') {
+					$yes = $params[0];
+				} else {
+					$yes = WT_I18N::translate('yes');
+				}
+				if (is_array($params) && isset($params[1]) && $params[1] != '') {
+					$no = $params[1];
+				} else {
+					$no = WT_I18N::translate('no');
+				}
+				return WT_DB::prepare("SELECT SQL_NO_CACHE 1 FROM `##session` WHERE user_id=? LIMIT 1")->execute(array($user->getUserId()))->fetchOne() ? $yes : $no;
 		}
 	}
 
@@ -3547,7 +3571,8 @@ class WT_Stats {
 			$page_parameter='gedcom:'.get_id_from_gedcom($page_parameter ? $page_parameter : WT_GEDCOM);
 		} elseif ($page_name=='index.php') {
 			// index.php?ctype=user
-			$page_parameter='user:'.($page_parameter ? get_user_id($page_parameter) : WT_USER_ID);
+			$user = \WT\User::findByIdentifier($page_parameter);
+			$page_parameter='user:'.($user ? $user->getUserId() : \WT\Auth::id());
 		} else {
 			// indi/fam/sour/etc.
 		}

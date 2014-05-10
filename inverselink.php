@@ -29,7 +29,7 @@ require WT_ROOT.'includes/functions/functions_edit.php';
 
 $controller=new WT_Controller_Simple();
 $controller
-	->requireEditorLogin()
+	->restrictAccess(\WT\Auth::isEditor())
 	->setPageTitle(WT_I18N::translate('Link to an existing media object'))
 	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
 	->pageHeader();

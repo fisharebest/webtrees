@@ -23,11 +23,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 /**
  * Enable HTML code to pass for testing
  * false = use the old style, HTML disabled
@@ -685,6 +680,8 @@ class WT_Report_Base {
 	 * Process the Header , Page header, Body or Footer - WT_Report_Base
 	 *
 	 * @param string $p Header (H), Page header (PH), Body (B) or Footer (F)
+	 *
+	 * @return int
 	 */
 	function setProcessing($p) {
 		$this->processing = $p;
@@ -696,6 +693,8 @@ class WT_Report_Base {
 	 * Add the Title when raw character data is used in Title - WT_Report_Base
 	 *
 	 * @param string $data
+	 *
+	 * @return int
 	 */
 	function addTitle($data) {
 		$this->title .= $data;
@@ -707,6 +706,8 @@ class WT_Report_Base {
 	 * Add the Description when raw character data is used in Description - WT_Report_Base
 	 *
 	 * @param string $data
+	 *
+	 * @return int
 	 */
 	function addDescription($data) {
 		$this->rsubject .= $data;
@@ -720,6 +721,8 @@ class WT_Report_Base {
 	 * @see StyleSHandler()
 	 *
 	 * @param array $style
+	 *
+	 * @return int
 	 */
 	function addStyle($style) {
 		$this->Styles[$style['name']] = $style;
@@ -755,7 +758,9 @@ class Element {
 	/**
 	 * Element renderer
 	 *
-	 * @param &$renderer
+	 * @param $renderer
+	 *
+	 * @return int
 	 */
 	function render(&$renderer) {
 		//print "Nothing rendered.  Something bad happened";
@@ -1179,6 +1184,8 @@ class TextBox extends Element {
 	 * @param boolean $fill
 	 * @param boolean $padding
 	 * @param boolean $reseth
+	 *
+	 * @return int
 	 */
 	function TextBox(
 		$width, $height, $border, $bgcolor, $newline, $left, $top, $pagecheck, $style, $fill, $padding, $reseth
@@ -1202,7 +1209,9 @@ class TextBox extends Element {
 	/**
 	 * Add an element to the TextBox
 	 *
-	 * @param object|string &$element
+	 * @param object|string $element
+	 *
+	 * @return int
 	 */
 	function addElement($element) {
 		$this->elements[] = $element;
@@ -1254,6 +1263,8 @@ class Text extends Element {
 	 *
 	 * @param string $style The name of the text style
 	 * @param string $color HTML color code
+	 *
+	 * @return int
 	 */
 	function Text($style, $color) {
 		$this->text               = "";
@@ -1416,6 +1427,8 @@ class PageHeader extends Element {
 	 * Add element - PageHeader
 	 *
 	 * @param $element
+	 *
+	 * @return int
 	 */
 	function addElement($element) {
 		$this->elements[] = $element;
@@ -1490,6 +1503,8 @@ class Image extends Element {
 	 * @param float  $h     Height of the image
 	 * @param string $align Placement of the image. L: left, C:center, R:right
 	 * @param string $ln    T:same line, N:next line
+	 *
+	 * @return int
 	 */
 	function Image($file, $x, $y, $w, $h, $align, $ln) {
 		$this->file   = $file;
@@ -1557,6 +1572,8 @@ class Line extends Element {
 	 * @param mixed $y1
 	 * @param mixed $x2
 	 * @param mixed $y2
+	 *
+	 * @return int
 	 */
 	function Line($x1, $y1, $x2, $y2) {
 		$this->x1 = $x1;
