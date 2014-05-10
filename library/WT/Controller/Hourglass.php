@@ -189,9 +189,9 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 	/**
 	 * Prints descendency of passed in person
 	 *
-	 * @param       $person person to print descendency for
-	 * @param mixed $count  count of generations to print
-	 * @param bool  $showNav
+	 * @param WT_Individual $person person to print descendency for
+	 * @param mixed         $count  count of generations to print
+	 * @param bool          $showNav
 	 *
 	 * @return int
 	 */

@@ -324,7 +324,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 	/**
 	 * get the person box stylesheet class for the given person
 	 *
-	 * @param Person $person
+	 * @param WT_Individual $person
 	 *
 	 * @return string returns 'person_box', 'person_boxF', or 'person_boxNN'
 	 */
