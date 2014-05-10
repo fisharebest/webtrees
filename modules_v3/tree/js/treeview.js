@@ -59,6 +59,7 @@ function TreeViewHandler(treeview_instance) {
 	tv.toolbox.find("#tvbAllPartners").each(function (index, tvAllPartners) {
 		tvAllPartners.onclick = function () {
 			createCookie("allPartners", readCookie("allPartners") === "true" ? "false" : "true", tv.cookieDays);
+			document.location = document.location;
 		};
 	});
 	tv.toolbox.find("#tvbOpen").each(function (index, tvbOpen) {
