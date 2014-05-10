@@ -74,19 +74,19 @@ class WT_DBStatement {
 				trigger_error('WT_DBStatement::execute() called twice.', E_USER_ERROR);
 			} else {
 				if ($params) {
-					$this->bind_variables=$params[0];
+					$this->bind_variables = $params[0];
 					foreach ($params[0] as &$param) {
-						if ($param===false) {
+						if ($param === false) {
 							// For consistency, otherwise true=>'1' and false=>''
-							$param=0;
+							$param = 0;
 						}
 					}
 				}
-				$start=microtime(true);
-				$result=call_user_func_array(array($this->pdostatement, $function), $params);
-				$end=microtime(true);
-				$this->executed=!preg_match('/^(insert|delete|update|create|alter) /i', $this->pdostatement->queryString);
-				WT_DB::logQuery($this->pdostatement->queryString, $this->pdostatement->rowCount(), $end-$start, $this->bind_variables);
+				$start = microtime(true);
+				call_user_func_array(array($this->pdostatement, $function), $params);
+				$end = microtime(true);
+				$this->executed = !preg_match('/^(insert|delete|update|create|alter) /i', $this->pdostatement->queryString);
+				WT_DB::logQuery($this->pdostatement->queryString, $this->pdostatement->rowCount(), $end - $start, $this->bind_variables);
 				return $this;
 			}
 		case 'fetch':
