@@ -47,7 +47,7 @@ class fancy_branches_WT_Module extends WT_Module implements WT_Module_Config, WT
 
 			$controller=new WT_Controller_Page;
 			$controller
-				->requireAdminLogin()
+				->restrictAccess(\WT\Auth::isAdmin())
 				->setPageTitle(WT_I18N::translate('Configuration page for the Simpl Branches Module'))
 				->pageHeader()
 				->addInlineJavaScript ('
@@ -59,7 +59,7 @@ class fancy_branches_WT_Module extends WT_Module implements WT_Module_Config, WT
 			$save = WT_Filter::postBool('save');
 			if (isset($save)) {
 				set_module_setting($this->getName(), 'SB',  WT_Filter::postInteger('NEW_SB'));
-				AddToLog($this->getTitle().' config updated', 'config');
+				\WT\Log::addConfigurationLog($this->getTitle().' config updated');
 			}
 
 			$SB = get_module_setting($this->getName(), 'SB');
