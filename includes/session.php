@@ -134,7 +134,7 @@ if (!function_exists('password_hash')) {
 	// in PHP5.3.7 and *some* earlier/patched versions.
 	$hash = '$2y$04$usesomesillystringfore7hnbRJHxXVLeakoG8K30oukPsA.ztMG';
 	if (crypt("password", $hash) === $hash) {
-		require 'library/ircmaxell/password-compat/lib/password.php';
+		require WT_ROOT.'library/ircmaxell/password-compat/lib/password.php';
 	} else {
 		// For older/unpatched versions of PHP, use the default crypt behaviour.
 		function password_hash($password) {
@@ -176,7 +176,7 @@ if (version_compare(PHP_VERSION, '5.4', '<') && get_magic_quotes_gpc()) {
 	unset($process);
 }
 
-require 'library/autoload.php';
+require WT_ROOT.'library/autoload.php';
 
 // PHP requires a time zone to be set in php.ini
 if (!ini_get('date.timezone')) {
