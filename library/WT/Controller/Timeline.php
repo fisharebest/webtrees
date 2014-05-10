@@ -148,15 +148,9 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 	}
 
 	function print_time_fact(WT_Fact $event) {
-		global $basexoffset, $baseyoffset, $factcount, $TEXT_DIRECTION, $WT_IMAGES, $SHOW_PEDIGREE_PLACES, $placements;
+		global $basexoffset, $baseyoffset, $factcount, $TEXT_DIRECTION, $WT_IMAGES, $placements;
 
-		/* @var $event Event */
-		$factrec = $event->getGedcom();
-		$fact = $event->getTag();
 		$desc = $event->getValue();
-		if ($fact=="EVEN" || $fact=="FACT") {
-			$fact = $event->getAttribute('TYPE');
-			}
 		// check if this is a family fact
 		$gdate=$event->getDate();
 		$date=$gdate->MinDate();
@@ -236,7 +230,6 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 				if ($this->pids[$p]==$spouse->getXref()) break;
 			}
 			if ($p==count($this->pids)) $p = $event->temp;
-			$col = $p % 6;
 			if ($spouse->getXref()!=$this->pids[$p]) {
 				echo ' <a href="', $spouse->getHtmlUrl(), '">', $spouse->getFullName(), '</a>';
 			} else {

@@ -35,7 +35,6 @@ function format_indi_table($datalist, $option='') {
 
 	$table_id = 'ID'.(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	$SHOW_EST_LIST_DATES=get_gedcom_setting(WT_GED_ID, 'SHOW_EST_LIST_DATES');
-	if ($option=='MARR_PLAC') return;
 	$html = '';
 	$controller
 		->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
@@ -240,13 +239,9 @@ function format_indi_table($datalist, $option='') {
 			if (isset($value[4])) $gid = $value[4]; // from indilist ALL
 			$person = WT_Individual::getInstance($gid);
 		}
-		if (is_null($person)) continue;
-		if (!$person->canShowName()) {
+		if (!$person || !$person->canShowName()) {
 			continue;
 		}
-		//-- place filtering
-		if ($option=='BIRT_PLAC' && strstr($person->getBirthPlace(), $filter)===false) continue;
-		if ($option=='DEAT_PLAC' && strstr($person->getDeathPlace(), $filter)===false) continue;
 		if ($person->isNew()) {
 			$class = ' class="new"';
 		} elseif ($person->isOld()) {
@@ -445,10 +440,9 @@ function format_indi_table($datalist, $option='') {
 }
 
 // print a table of families
-function format_fam_table($datalist, $option='') {
+function format_fam_table($datalist) {
 	global $GEDCOM, $SHOW_LAST_CHANGE, $SEARCH_SPIDER, $controller;
 	$table_id = 'ID'.(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
-	if ($option=='BIRT_PLAC' || $option=='DEAT_PLAC') return;
 	$html = '';
 
 	$controller
@@ -656,8 +650,6 @@ function format_fam_table($datalist, $option='') {
 		if (!$family->canShow()) {
 			continue;
 		}
-		//-- place filtering
-		if ($option=='MARR_PLAC' && strstr($family->getMarriagePlace(), $filter)===false) continue;
 		if ($family->isNew()) {
 			$class = ' class="new"';
 		} elseif ($family->isOld()) {
