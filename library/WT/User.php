@@ -72,7 +72,7 @@ class User {
 	 */
 	public static function findByIdentifier($identifier) {
 		$user_id = WT_DB::prepare(
-			"SELECT SQL_CACHE user_id FROM `wt_user` WHERE ? IN (user_name, email)"
+			"SELECT SQL_CACHE user_id FROM `##user` WHERE ? IN (user_name, email)"
 		)->execute(array($identifier))->fetchOne();
 
 		return self::find($user_id);
