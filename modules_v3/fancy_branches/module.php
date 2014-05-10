@@ -27,7 +27,7 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class fancy_branches_WT_Module extends WT_Module implements WT_Module_Config, WT_Module_Menu {
-		
+
 	// Extend WT_Module
 	public function getTitle() {
 		return /* Name of a module (not translatable) */  'Fancy Branches';
@@ -37,14 +37,14 @@ class fancy_branches_WT_Module extends WT_Module implements WT_Module_Config, WT
 	public function getDescription() {
 		return /* I18N: Description of the module */ WT_I18N::translate('A replacement for the standard webtrees Branches list');
 	}
-	
+
 	// Extend WT_Module_Config
 	public function modAction($mod_action) {
 		switch($mod_action) {
 		case 'admin_config':
-			
+
 			require WT_ROOT.'includes/functions/functions_edit.php';
-								
+
 			$controller=new WT_Controller_Page;
 			$controller
 				->requireAdminLogin()
@@ -52,68 +52,68 @@ class fancy_branches_WT_Module extends WT_Module implements WT_Module_Config, WT
 				->pageHeader()
 				->addInlineJavaScript ('
 					jQuery("form input:checkbox").click(function(){
-						this.value = this.checked ? 1 : 0;      
+						this.value = this.checked ? 1 : 0;
 					});
-				');	
-			
+				');
+
 			$save = WT_Filter::postBool('save');
 			if (isset($save)) {
-				set_module_setting($this->getName(), 'SB',  WT_Filter::postInteger('NEW_SB'));				
+				set_module_setting($this->getName(), 'SB',  WT_Filter::postInteger('NEW_SB'));
 				AddToLog($this->getTitle().' config updated', 'config');
-			}			
-			
-			$SB = get_module_setting($this->getName(), 'SB');			
+			}
+
+			$SB = get_module_setting($this->getName(), 'SB');
 			echo '
 				<h2>'.$controller->getPageTitle().'</h2>
 				<form method="post" name="configform" action="'.$this->getConfigLink().'">
 					<label>'.WT_I18N::translate('Use d\'Aboville numbering system').'</label>'
 					.two_state_checkbox('NEW_SB', $SB).'
 					<input type="submit" name="save" value="'.WT_I18N::translate('Save').'" />
-				</form>';				
+				</form>';
 			break;
 		}
 	}
-	
+
 	// Implement WT_Module_Config
 	public function getConfigLink() {
 		return 'module.php?mod='.$this->getName().'&amp;mod_action=admin_config';
-	}		
-	
+	}
+
 	// Implement WT_Module_Menu
 	public function defaultMenuOrder() {
 		return 999;
-	}   
+	}
 
 	// Implement WT_Module_Menu
 	public function getMenu() {
 		// We don't actually have a menu - this is just a convenient "hook" to execute code at the right time during page execution
-		global $controller;    
-		
+		global $controller;
+
 		if (WT_SCRIPT_NAME == 'branches.php') {
 			// load the module stylesheet
-			echo $this->includeCss(WT_MODULES_DIR.$this->getName().'/style.css');	
-				
+			echo $this->includeCss(WT_MODULES_DIR.$this->getName().'/style.css');
+
 			$controller
 				->addExternalJavaScript(WT_MODULES_DIR.$this->getName().'/js/jquery.treeview.js')
-				->addInlineJavaScript('			
+				->addInlineJavaScript('
 				jQuery("#branches-page form")
 					.after("<div id=\"treecontrol\"><a href=\"#\">'.WT_I18N::translate('Collapse all').'</a> | <a href=\"#\">'.WT_I18N::translate('Expand all').'</a></div>")
 					.after("<div class=\"loading-image\">&nbsp;</div>");
-				
+
 				jQuery(jQuery("#branches-page ol").get().reverse()).each(function(){
 					var html = jQuery(this).html();
 					if (html == "") {
 						jQuery(this).remove();
 					}
-					else { 
-  						jQuery(this).replaceWith("<ul>" + html +"</ul>") 
+					else {
+  						jQuery(this).replaceWith("<ul>" + html +"</ul>")
 					}
 				});
 				jQuery("#branches-page ul:first").attr("id", "branch-list");
-									
+
 				jQuery("li[title='.WT_I18N::translate('Private').']").hide();
 			');
-			
+
 			// Instigate the "d'Aboville" numbering system. Use it by default. The user can change it on the configuration page.
 			$SB = get_module_setting($this->getName(), 'SB');
 			if (!isset($SB) || $SB == 1) {
@@ -121,8 +121,8 @@ class fancy_branches_WT_Module extends WT_Module implements WT_Module_Config, WT
 					jQuery("#branch-list, #branch-list ul, #branch-list li").addClass("aboville");
 				');
 			}
-			
-			$controller->addInlineJavaScript('									
+
+			$controller->addInlineJavaScript('
 				jQuery("#branch-list").treeview({
 					collapsed: true,
 					animated: "slow",
@@ -130,12 +130,12 @@ class fancy_branches_WT_Module extends WT_Module implements WT_Module_Config, WT
 				});
 				jQuery("#branch-list").css("visibility", "visible");
 				jQuery(".loading-image").css("display", "none");
-			');	
+			');
 		}
 		return null;
 	}
-	
-	// Implement the css stylesheet for this module		
+
+	// Implement the css stylesheet for this module
 	private function includeCss($css) {
 		return
 			'<script>
@@ -149,5 +149,5 @@ class fancy_branches_WT_Module extends WT_Module implements WT_Module_Config, WT
 					document.getElementsByTagName("head")[0].appendChild(newSheet);
 				}
 			</script>';
-	}	
+	}
 }
