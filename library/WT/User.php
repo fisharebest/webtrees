@@ -20,6 +20,7 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 use WT_DB;
+use WT_Individual;
 use WT_Tree;
 
 class User {
@@ -81,17 +82,17 @@ class User {
 	/**
 	 * Find the user with a specified genealogy record.
 	 *
-	 * @param WT_Tree $tree
-	 * @param string $xref
+	 * @param WT_Tree       $tree
+	 * @param WT_Individual $individual
 	 *
 	 * @return User|null
 	 */
-	public static function findByGenealogyRecord(WT_Tree $tree, $xref) {
+	public static function findByGenealogyRecord(WT_Tree $tree, $individual) {
 		$user_id = WT_DB::prepare(
 			"SELECT SQL_CACHE user_id" .
 			" FROM `##user_gedcom_setting`" .
 			" WHERE gedcom_id = ? AND setting_name = 'gedcomid' AND setting_value = ?"
-		)->execute(array($tree->tree_id, $xref))->fetchOne();
+		)->execute(array($tree->tree_id, $individual->getXref()))->fetchOne();
 
 		return self::find($user_id);
 	}
@@ -123,7 +124,7 @@ class User {
 	 * @param string $email
 	 * @param string $password
 	 *
-	 * @return \WT\User
+	 * @return User
 	 */
 	public static function create($user_name, $real_name, $email, $password) {
 		WT_DB::prepare(
@@ -149,7 +150,7 @@ class User {
 	/**
 	 * Get a list of all users.
 	 *
-	 * @return array
+	 * @return User[]
 	 */
 	public static function all() {
 		$users = array();
@@ -171,7 +172,7 @@ class User {
 	/**
 	 * Get a list of all administrators.
 	 *
-	 * @return array
+	 * @return User[]
 	 */
 	public static function allAdmins() {
 		$rows = WT_DB::prepare(
@@ -194,7 +195,7 @@ class User {
 	/**
 	 * Get a list of all users who are currently logged in.
 	 *
-	 * @return array
+	 * @return User[]
 	 */
 	public static function allLoggedIn() {
 		$rows = WT_DB::prepare(
@@ -229,11 +230,9 @@ class User {
 	function delete() {
 		// Don't delete the logs.
 		WT_DB::prepare("UPDATE `##log` SET user_id=NULL WHERE user_id =?")->execute(array($this->user_id));
-		// Take over the user’s pending changes.
-		// TODO: perhaps we should prevent deletion of users with pending changes?
+		// Take over the user’s pending changes. (What else could we do with them?)
 		WT_DB::prepare("DELETE FROM `##change` WHERE user_id=? AND status='accepted'")->execute(array($this->user_id));
 		WT_DB::prepare("UPDATE `##change` SET user_id=? WHERE user_id=?")->execute(array($this->user_id, $this->user_id));
-
 		WT_DB::prepare("DELETE `##block_setting` FROM `##block_setting` JOIN `##block` USING (block_id) WHERE user_id=?")->execute(array($this->user_id));
 		WT_DB::prepare("DELETE FROM `##block` WHERE user_id=?")->execute(array($this->user_id));
 		WT_DB::prepare("DELETE FROM `##user_gedcom_setting` WHERE user_id=?")->execute(array($this->user_id));
@@ -331,7 +330,7 @@ class User {
 	 * @param string      $setting_name
 	 * @param string|null $default
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 	public function getSetting($setting_name, $default = null) {
 		if ($this->settings === null) {
