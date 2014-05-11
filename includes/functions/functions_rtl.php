@@ -44,7 +44,8 @@ $punctuation = ',.:;?!';
  * text that has been passed through the PrintReady() function before that text is stored
  * in the database.  The database should NEVER contain these characters.
  *
- * @param  string The string from which the &lrm; and &rlm; characters should be stripped
+ * @param  string $inputText The string from which the &lrm; and &rlm; characters should be stripped
+ *
  * @return string The input string, with &lrm; and &rlm; stripped
  */
 function stripLRMRLM($inputText) {
@@ -64,7 +65,7 @@ function spanLTRRTL($inputText, $direction='BOTH', $class='') {
 	global $TEXT_DIRECTION;
 	global $openPar, $closePar, $punctuation;
 	global $numbers, $numberPrefix, $numberPunctuation;
-	global $previousState, $currentState, $posSpanStart, $waitingText;
+	global $previousState, $currentState, $waitingText;
 	global $startLTR, $endLTR, $startRTL, $endRTL, $lenStart, $lenEnd;
 	static $spanNumber = 0;
 

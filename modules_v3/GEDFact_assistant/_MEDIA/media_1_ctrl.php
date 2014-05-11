@@ -80,18 +80,13 @@ if ($pid=="") {
 				?>
 			</td>
 		</tr>
-		<tr>
-			<td class="transparent;">
-				<br>
-			</td>
-		</tr>
 
 		<?php
 		//-- Add Family Members to Census  -------------------------------------------
 		global $spouselinks, $parentlinks;
 		?>
 		<tr>
-		 <td align="center"class="transparent;">
+		 <td align="center">
 		   <table width="100%" class="fact_table" cellspacing="0" border="0">
 			<tr>
 				<td align="center" colspan=3 class="descriptionbox wrap">
@@ -130,8 +125,8 @@ if ($pid=="") {
 				if ($people["husb"]) {
 					$fulln = strip_tags($people['husb']->getFullName());
 					$menu = new WT_Menu($headImg, "edit_interface.php?action=addmedia_links&amp;noteid=newnote&amp;pid=".$people["husb"]->getXref()."&amp;gedcom=".WT_GEDURL);
-					$slabel  = print_pedigree_person_nav2($people["husb"]->getXref());
-					$slabel .= $parentlinks;
+					print_pedigree_person_nav2($people["husb"]->getXref());
+					$slabel = $parentlinks;
 					$submenu = new WT_Menu($slabel);
 					$menu->addSubMenu($submenu);
 
@@ -167,8 +162,8 @@ if ($pid=="") {
 				if ($people["wife"]) {
 					$fulln =strip_tags($people['wife']->getFullName());
 					$menu = new WT_Menu($headImg, "edit_interface.php?action=addmedia_links&amp;noteid=newnote&amp;pid=".$people["wife"]->getXref()."&amp;gedcom=".WT_GEDURL);
-					$slabel  = print_pedigree_person_nav2($people["wife"]->getXref());
-					$slabel .= $parentlinks;
+					print_pedigree_person_nav2($people["wife"]->getXref());
+					$slabel = $parentlinks;
 					$submenu = new WT_Menu($slabel);
 					$menu->addSubMenu($submenu);
 					?>
@@ -204,8 +199,8 @@ if ($pid=="") {
 					foreach ($people["children"] as $key=>$child) {
 						$fulln =strip_tags($child->getFullName());
 						$menu = new WT_Menu($headImg, "edit_interface.php?action=addmedia_links&amp;noteid=newnote&amp;pid=".$child->getXref()."&amp;gedcom=".WT_GEDURL);
-						$slabel  = print_pedigree_person_nav2($child->getXref());
-						$slabel .= $spouselinks;
+						print_pedigree_person_nav2($child->getXref());
+						$slabel = $spouselinks;
 						$submenu = new WT_Menu($slabel);
 						$menu->addSubMenu($submenu);
 
@@ -263,8 +258,8 @@ if ($pid=="") {
 				if ($people["husb"]) {
 					$fulln =strip_tags($people['husb']->getFullName());
 					$menu = new WT_Menu($headImg, "edit_interface.php?action=addmedia_links&amp;noteid=newnote&amp;pid=".$people["husb"]->getXref()."&amp;gedcom=".WT_GEDURL);
-					$slabel  = print_pedigree_person_nav2($people["husb"]->getXref());
-					$slabel .= $parentlinks;
+					print_pedigree_person_nav2($people["husb"]->getXref());
+					$slabel = $parentlinks;
 					$submenu = new WT_Menu($slabel);
 					$menu->addSubMenu($submenu);
 					if ($people["husb"]->getDeathYear() == 0) { $DeathYr = ""; } else { $DeathYr = $people["husb"]->getDeathYear(); }
@@ -301,8 +296,8 @@ if ($pid=="") {
 				if ($people["wife"]) {
 					$fulln =strip_tags($people['wife']->getFullName());
 					$menu = new WT_Menu($headImg, "edit_interface.php?action=addmedia_links&amp;noteid=newnote&amp;pid=".$people["wife"]->getXref()."&amp;gedcom=".WT_GEDURL);
-					$slabel  = print_pedigree_person_nav2($people["wife"]->getXref());
-					$slabel .= $parentlinks;
+					print_pedigree_person_nav2($people["wife"]->getXref());
+					$slabel = $parentlinks;
 					$submenu = new WT_Menu($slabel);
 					$menu->addSubMenu($submenu);
 					if ($people["wife"]->getDeathYear() == 0) { $DeathYr = ""; } else { $DeathYr = $people["wife"]->getDeathYear(); }
@@ -341,8 +336,8 @@ if ($pid=="") {
 					foreach ($people["children"] as $key=>$child) {
 						$fulln =strip_tags($child->getFullName());
 						$menu = new WT_Menu($headImg, "edit_interface.php?action=addmedia_links&amp;noteid=newnote&amp;pid=".$child->getXref()."&amp;gedcom=".WT_GEDURL);
-						$slabel  = print_pedigree_person_nav2($child->getXref());
-						$slabel .= $spouselinks;
+						print_pedigree_person_nav2($child->getXref());
+						$slabel = $spouselinks;
 						$submenu = new WT_Menu($slabel);
 						$menu->addSubMenu($submenu); if ($child->getDeathYear() == 0) { $DeathYr = ""; } else { $DeathYr = $child->getDeathYear(); }
 						if ($child->getBirthYear() == 0) { $BirthYr = ""; } else { $BirthYr = $child->getBirthYear(); }
@@ -408,8 +403,8 @@ if ($pid=="") {
 				if ($people["husb"]) {
 					$fulln =strip_tags($people['husb']->getFullName());
 					$menu = new WT_Menu($headImg, "edit_interface.php?action=addmedia_links&amp;noteid=newnote&amp;pid=".$people["husb"]->getXref()."&amp;gedcom=".WT_GEDURL);
-					$slabel  = print_pedigree_person_nav2($people["husb"]->getXref());
-					$slabel .= $parentlinks;
+					print_pedigree_person_nav2($people["husb"]->getXref());
+					$slabel = $parentlinks;
 					$submenu = new WT_Menu($slabel);
 					$menu->addSubMenu($submenu);
 					if ($people["husb"]->getDeathYear() == 0) { $DeathYr = ""; } else { $DeathYr = $people["husb"]->getDeathYear(); }
@@ -447,8 +442,8 @@ if ($pid=="") {
 				if ($people["wife"]) {
 					$fulln =strip_tags($people['wife']->getFullName());
 					$menu = new WT_Menu($headImg, "edit_interface.php?action=addmedia_links&amp;noteid=newnote&amp;pid=".$people["wife"]->getXref()."&amp;gedcom=".WT_GEDURL);
-					$slabel  = print_pedigree_person_nav2($people["wife"]->getXref());
-					$slabel .= $parentlinks;
+					print_pedigree_person_nav2($people["wife"]->getXref());
+					$slabel = $parentlinks;
 					$submenu = new WT_Menu($slabel);
 					$menu->addSubMenu($submenu);
 					if ($people["wife"]->getDeathYear() == 0) { $DeathYr = ""; } else { $DeathYr = $people["wife"]->getDeathYear(); }
@@ -484,8 +479,8 @@ if ($pid=="") {
 				foreach ($people["children"] as $key=>$child) {
 						$fulln =strip_tags($child->getFullName());
 						$menu = new WT_Menu($headImg, "edit_interface.php?action=addmedia_links&amp;noteid=newnote&amp;pid=".$child->getXref()."&amp;gedcom=".WT_GEDURL);
-						$slabel = print_pedigree_person_nav2($child->getXref());
-						$slabel .= $spouselinks;
+						print_pedigree_person_nav2($child->getXref());
+						$slabel = $spouselinks;
 						$submenu = new WT_Menu($slabel);
 						$menu->addSubmenu($submenu);
 						?>
@@ -568,21 +563,12 @@ function print_pedigree_person_nav2($pid) {
 
 	if ($person->canShowName() && !$SEARCH_SPIDER) {
 		//-- draw a box for the family popup
-		if ($TEXT_DIRECTION=="rtl") {
-			$spouselinks .= "<table id=\"flyoutFamRTL\" class=\"person_box$isF\"><tr><td class=\"name2 rtl\">";
-			$spouselinks .= "<b>" . WT_I18N::translate('Family') . "</b> (" .$person->getFullName(). ")<br>";
-			$parentlinks .= "<table id=\"flyoutParRTL\" class=\"person_box$isF\"><tr><td class=\"name2 rtl\">";
-			$parentlinks .= "<b>" . WT_I18N::translate('Parents') . "</b> (" .$person->getFullName(). ")<br>";
-			$step_parentlinks .= "<table id=\"flyoutStepRTL\" class=\"person_box$isF\"><tr><td class=\"name2 rtl\">";
-			$step_parentlinks .= "<b>" . WT_I18N::translate('Parents') . "</b> (" .$person->getFullName(). ")<br>";
-		} else {
-			$spouselinks .= "<table id=\"flyoutFam\" class=\"person_box$isF\"><tr><td class=\"name2 ltr\">";
-			$spouselinks .= "<b>" . WT_I18N::translate('Family') . "</b> (" .$person->getFullName(). ")<br>";
-			$parentlinks .= "<table id=\"flyoutPar\" class=\"person_box$isF\"><tr><td class=\"name2 ltr\">";
-			$parentlinks .= "<b>" . WT_I18N::translate('Parents') . "</b> (" .$person->getFullName(). ")<br>";
-			$step_parentlinks .= "<table id=\"flyoutStep\" class=\"person_box$isF\"><tr><td class=\"name2 ltr\">";
-			$step_parentlinks .= "<b>" . WT_I18N::translate('Parents') . "</b> (" .$person->getFullName(). ")<br>";
-		}
+		$spouselinks .= "<table id=\"flyoutFam\" class=\"person_box$isF\"><tr><td class=\"name2 ltr\">";
+		$spouselinks .= "<b>" . WT_I18N::translate('Family') . "</b> (" .$person->getFullName(). ")<br>";
+		$parentlinks .= "<table id=\"flyoutPar\" class=\"person_box$isF\"><tr><td class=\"name2 ltr\">";
+		$parentlinks .= "<b>" . WT_I18N::translate('Parents') . "</b> (" .$person->getFullName(). ")<br>";
+		$step_parentlinks .= "<table id=\"flyoutStep\" class=\"person_box$isF\"><tr><td class=\"name2 ltr\">";
+		$step_parentlinks .= "<b>" . WT_I18N::translate('Parents') . "</b> (" .$person->getFullName(). ")<br>";
 		$persons       = '';
 		$person_parent = '';
 		$person_step   = '';

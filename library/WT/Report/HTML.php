@@ -23,84 +23,100 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 /**
-* Main WT Report Class for HTML
-*
-* @package webtrees
-* @subpackage Reports
-*/
+ * Main WT Report Class for HTML
+ */
 class WT_Report_HTML extends WT_Report_Base {
 	/**
-	* Cell padding
-	* @var int
-	*/
+	 * Cell padding
+	 *
+	 * @var int
+	 */
 	public $cPadding = 2;
+
 	/**
-	* Cell height ratio
-	* @var float
-	*/
+	 * Cell height ratio
+	 *
+	 * @var float
+	 */
 	public $cellHeightRatio = 1.8;
+
 	/**
-	* Current horizontal position
-	* @var int
-	*/
+	 * Current horizontal position
+	 *
+	 * @var int
+	 */
 	public $X = 0;
+
 	/**
-	* Current vertical position
-	* @var int
-	*/
+	 * Current vertical position
+	 *
+	 * @var int
+	 */
 	public $Y = 0;
+
 	/**
-	* Currently used style name
-	* @var string
-	*/
+	 * Currently used style name
+	 *
+	 * @var string
+	 */
 	public $currentStyle = '';
+
 	/**
-	* Page number counter
-	* @var int
-	*/
+	 * Page number counter
+	 *
+	 * @var int
+	 */
 	public $pageN = 1;
+
 	/**
-	* Store the page width without left and right margins
-	* In HTML, we don't need this
-	* @var int
-	*/
+	 * Store the page width without left and right margins
+	 *
+	 * In HTML, we don't need this
+	 *
+	 * @var int
+	 */
 	public $noMarginWidth = 0;
+
 	/**
-	* Last cell height
-	* @var int
-	*/
+	 * Last cell height
+	 *
+	 * @var int
+	 */
 	public $lastCellHeight = 0;
+
 	/**
-	* LTR or RTL alignement
-	* "left" on LTR, "right" on RTL
-	* Used in <div >
-	* @var string
-	*/
+	 * LTR or RTL alignement; "left" on LTR, "right" on RTL
+	 * Used in <div>
+	 *
+	 * @var string
+	 */
 	public $alignRTL = 'left';
+
 	/**
-	* LTR or RTL entity
-	*
-	* @var string
-	*/
+	 * LTR or RTL entity
+	 *
+	 * @var string
+	 */
 	public $entityRTL = '&lrm;';
+
 	/**
-	* Largest Font Height is used by TextBox etc.
-	* Use this to calculate a the text height.
-	* This makes sure that the text fits into the cell/box when different font sizes are used
-	* @var int
-	*/
+	 * Largest Font Height is used by TextBox etc.
+	 *
+	 * Use this to calculate a the text height.
+	 * This makes sure that the text fits into the cell/box when different font sizes are used
+	 *
+	 * @var int
+	 */
 	public $largestFontHeight = 0;
+
 	/**
-	* Keep track of the highest Y position
-	* Used with Header div / Body div / Footer div / "addpage" / The bottom of the last image etc.
-	* @var float
-	*/
+	 * Keep track of the highest Y position
+	 *
+	 * Used with Header div / Body div / Footer div / "addpage" / The bottom of the last image etc.
+	 *
+	 * @var float
+	 */
 	public $maxY = 0;
 
 	public $headerElements = array();
@@ -111,8 +127,8 @@ class WT_Report_HTML extends WT_Report_Base {
 
 
 	/**
-	* HTML Setup - WT_Report_HTML
-	*/
+	 * HTML Setup - WT_Report_HTML
+	 */
 	function setup() {
 		parent::setup();
 
@@ -179,27 +195,34 @@ class WT_Report_HTML extends WT_Report_Base {
 			->pageHeader();
 
 		// Setting up the styles
-		echo "\n<style type=\"text/css\">\n";
+		echo '<style type="text/css">';
 		foreach ($this->Styles as $class => $style) {
-			echo ".", $class, "{\n";
+			echo '.', $class, ' { ';
 			if ($style["font"]=="dejavusans") {
 				$style["font"] = $this->defaultFont;
 			}
-			echo "font-family: ", $style["font"], ";\n";
-			echo "font-size: ", $style["size"], "pt;\n";
+			echo 'font-family: ', $style['font'], '; ';
+			echo 'font-size: ', $style['size'], 'pt; ';
 			// Case-insensitive
-			if (stripos($style["style"], "B")!==false) echo "font-weight: bold;\n";
-			if (stripos($style["style"], "I")!==false) echo "font-style: italic;\n";
-			if (stripos($style["style"], "U")!==false) echo "text-decoration: underline;\n";
-			if (stripos($style["style"], "D")!==false) echo "text-decoration: line-through;\n";
-			echo "}\n";
+			if (stripos($style['style'], 'B')!==false) {
+				echo 'font-weight: bold; ';
+			}
+			if (stripos($style['style'], 'I')!==false) {
+				echo 'font-style: italic; ';
+			}
+			if (stripos($style['style'], 'U')!==false) {
+				echo 'text-decoration: underline; ';
+			}
+			if (stripos($style['style'], 'D')!==false) {
+				echo 'text-decoration: line-through; ';
+			}
+			echo '}', PHP_EOL;
 		}
 		unset($class, $style);
 		//-- header divider
-		echo "
-</style>
-<div id=\"headermargin\" style=\"position:relative;top:auto;height:", $this->headermargin, "pt;width:", $this->noMarginWidth, "pt;\"></div>
-<div id=\"headerdiv\" style=\"position:relative;top:auto;width:", $this->noMarginWidth, "pt;\">";
+		echo '</style>', PHP_EOL;
+		echo '<div id="headermargin" style="position: relative; top: auto; height: ', $this->headermargin, 'pt; width: ', $this->noMarginWidth, 'pt;"></div>';
+		echo '<div id="headerdiv" style="position: relative; top: auto; width: ', $this->noMarginWidth, 'pt;">';
 		foreach ($this->headerElements as $element) {
 			if (is_object($element)) {
 				$element->render($this);
@@ -210,8 +233,9 @@ class WT_Report_HTML extends WT_Report_Base {
 			}
 		}
 		//-- body
-		echo "
-</div><script>document.getElementById('headerdiv').style.height='", $this->topmargin - $this->headermargin - 6, "pt';</script><div id=\"bodydiv\" style=\"position:relative;top:auto;width:", $this->noMarginWidth, "pt;height:100%;\">";
+		echo '</div>';
+		echo '<script>document.getElementById("headerdiv").style.height="', $this->topmargin - $this->headermargin - 6, 'pt";</script>';
+		echo '<div id="bodydiv" style="position: relative; top: auto; width: ', $this->noMarginWidth, 'pt; height: 100%;">';
 		$this->Y = 0;
 		$this->maxY = 0;
 		$this->runPageHeader();
@@ -225,9 +249,10 @@ class WT_Report_HTML extends WT_Report_Base {
 			}
 		}
 		//-- footer
-		echo "
-</div><script>document.getElementById('bodydiv').style.height='", $this->maxY, "pt';</script><div id=\"bottommargin\" style=\"position:relative;top:auto;height:", $this->bottommargin - $this->footermargin, "pt;width:", $this->noMarginWidth, "pt;\"></div>
-<div id=\"footerdiv\" style=\"position:relative;top:auto;width: ", $this->noMarginWidth, "pt;height:auto;\">";
+		echo '</div>';
+		echo '<script>document.getElementById("bodydiv").style.height="', $this->maxY, 'pt";</script>';
+		echo '<div id="bottommargin" style="position: relative; top: auto; height: ', $this->bottommargin - $this->footermargin, 'pt;width:', $this->noMarginWidth, 'pt;"></div>';
+		echo '<div id="footerdiv" style="position: relative; top: auto; width: ', $this->noMarginWidth, 'pt;height:auto;">';
 		$this->Y = 0;
 		$this->X = 0;
 		$this->maxY = 0;
@@ -240,29 +265,31 @@ class WT_Report_HTML extends WT_Report_Base {
 				$this->AddPage();
 			}
 		}
-		echo "
-</div><script>document.getElementById('footerdiv').style.height='", $this->maxY, "pt';</script><div id=\"footermargin\" style=\"position:relative;top:auto;height:", $this->footermargin, "pt;width:", $this->noMarginWidth, "pt;\"></div>";
+		echo '</div>';
+		echo '<script>document.getElementById("footerdiv").style.height="', $this->maxY, 'pt";</script>';
+		echo '<div id="footermargin" style="position: relative; top: auto; height: ', $this->footermargin, 'pt;width:', $this->noMarginWidth, 'pt;"></div>';
 	}
 
 	/**
-	* Create a new Cell object - WT_Report_HTML
-	*
-	* @param int $width cell width (expressed in points)
-	* @param int $height cell height (expressed in points)
-	* @param mixed $border Border style
-	* @param string $align Text alignement
-	* @param string $bgcolor Background color code
-	* @param string $style The name of the text style
-	* @param int $ln Indicates where the current position should go after the call
-	* @param mixed $top Y-position
-	* @param mixed $left X-position
-	* @param int $fill Indicates if the cell background must be painted (1) or transparent (0). Default value: 0.
-	* @param int $stretch Stretch carachter mode
-	* @param string $bocolor Border color
-	* @param string $tcolor Text color
-	* @param boolean $reseth
-	* @return object CellHTML
-	*/
+	 * Create a new Cell object - WT_Report_HTML
+	 *
+	 * @param int     $width   cell width (expressed in points)
+	 * @param int     $height  cell height (expressed in points)
+	 * @param mixed   $border  Border style
+	 * @param string  $align   Text alignement
+	 * @param string  $bgcolor Background color code
+	 * @param string  $style   The name of the text style
+	 * @param int     $ln      Indicates where the current position should go after the call
+	 * @param mixed   $top     Y-position
+	 * @param mixed   $left    X-position
+	 * @param int     $fill    Indicates if the cell background must be painted (1) or transparent (0). Default value: 0.
+	 * @param int     $stretch Stretch carachter mode
+	 * @param string  $bocolor Border color
+	 * @param string  $tcolor  Text color
+	 * @param boolean $reseth
+	 *
+	 * @return object CellHTML
+	 */
 	function createCell($width, $height, $border, $align, $bgcolor, $style, $ln, $top, $left, $fill, $stretch, $bocolor, $tcolor, $reseth) {
 		return new CellHTML($width, $height, $border, $align, $bgcolor, $style, $ln, $top, $left, $fill, $stretch, $bocolor, $tcolor, $reseth);
 	}
@@ -300,22 +327,19 @@ class WT_Report_HTML extends WT_Report_Base {
 	}
 
 	/**
-	* Clear the Header - WT_Report_HTML
-	*/
+	 * Clear the Header - WT_Report_HTML
+	 */
 	function clearHeader() {
 		$this->headerElements = array();
 	}
 
-
 	/****************************
-	* Local HTML Report functions
-	****************************/
-
+	 * Local HTML Report functions
+	 ****************************/
 
 	/**
-	* Update the Page Number and set a new Y if max Y is larger - WT_Report_HTML
-	* @todo add page break - <p style='page-break-before:always'>
-	*/
+	 * Update the Page Number and set a new Y if max Y is larger - WT_Report_HTML
+	 */
 	function AddPage() {
 		//echo("\n\n<p style=\"page-break-before:always;\"><p>\n");
 		$this->pageN++;
@@ -333,9 +357,10 @@ class WT_Report_HTML extends WT_Report_Base {
 	}
 
 	/**
-	* Uppdate max Y to keep track it incase of a pagebreak - WT_Report_HTML
-	* @param float $y
-	*/
+	 * Uppdate max Y to keep track it incase of a pagebreak - WT_Report_HTML
+	 *
+	 * @param float $y
+	 */
 	function addMaxY($y) {
 		if ($this->maxY < $y) {
 			$this->maxY = $y;
@@ -348,10 +373,12 @@ class WT_Report_HTML extends WT_Report_Base {
 	}
 
 	/**
-	* Checks the Footnote and numbers them - WT_Report_HTML
-	* @param object &$footnote
-	* @return boolen false if not numbered before | object if already numbered
-	*/
+	 * Checks the Footnote and numbers them - WT_Report_HTML
+	 *
+	 * @param object $footnote
+	 *
+	 * @return boolen false if not numbered before | object if already numbered
+	 */
 	function checkFootnote(&$footnote) {
 		$ct = count($this->printedfootnotes);
 		$i = 0;
@@ -373,17 +400,19 @@ class WT_Report_HTML extends WT_Report_Base {
 	}
 
 	/**
-	* Clear the Page Header - WT_Report_HTML
-	*/
+	 * Clear the Page Header - WT_Report_HTML
+	 */
 	function clearPageHeader() {
 		$this->pageHeaderElements = array();
 	}
 
 	/**
-	* Count the number of lines - WT_Report_HTML
-	* @param string &$str
-	* @return int Number of lines. 0 if empty line
-	*/
+	 * Count the number of lines - WT_Report_HTML
+	 *
+	 * @param string $str
+	 *
+	 * @return int Number of lines. 0 if empty line
+	 */
 	function countLines(&$str) {
 		if ($str == "") {
 			return 0;
@@ -412,9 +441,10 @@ class WT_Report_HTML extends WT_Report_Base {
 	}
 
 	/**
-	* Get the maximum width from current position to the margin - WT_Report_HTML
-	* @return float
-	*/
+	 * Get the maximum width from current position to the margin - WT_Report_HTML
+	 *
+	 * @return float
+	 */
 	function getRemainingWidth() {
 		return (int)($this->noMarginWidth - $this->X);
 	}
@@ -429,10 +459,12 @@ class WT_Report_HTML extends WT_Report_Base {
 	}
 
 	/**
-	* Get a text height in points - WT_Report_HTML
-	* @param &$str
-	* @return int
-	*/
+	 * Get a text height in points - WT_Report_HTML
+	 *
+	 * @param $str
+	 *
+	 * @return int
+	 */
 	function getTextCellHeight(&$str) {
 		// Count the number of lines to calculate the height
 		$nl = $this->countLines($str);
@@ -441,25 +473,28 @@ class WT_Report_HTML extends WT_Report_Base {
 	}
 
 	/**
-	* Get the current X position - WT_Report_HTML
-	* @return float
-	*/
+	 * Get the current X position - WT_Report_HTML
+	 *
+	 * @return float
+	 */
 	function GetX() {
 		return $this->X;
 	}
 
 	/**
-	* Get the current Y position - WT_Report_HTML
-	* @return float
-	*/
+	 * Get the current Y position - WT_Report_HTML
+	 *
+	 * @return float
+	 */
 	function GetY() {
 		return $this->Y;
 	}
 
 	/**
-	* Get the current page number - WT_Report_HTML
-	* @return int
-	*/
+	 * Get the current page number - WT_Report_HTML
+	 *
+	 * @return int
+	 */
 	function PageNo() {
 		return $this->pageN;
 	}
@@ -469,18 +504,21 @@ class WT_Report_HTML extends WT_Report_Base {
 	}
 
 	/**
-	* Set the X position - WT_Report_HTML
-	* @param float $x
-	*/
+	 * Set the X position - WT_Report_HTML
+	 *
+	 * @param float $x
+	 */
 	function SetX($x) {
 		$this->X = $x;
 	}
 
 	/**
-	* Set the Y position - WT_Report_HTML
-	* Also updates Max Y position
-	* @param float $y
-	*/
+	 * Set the Y position - WT_Report_HTML
+	 *
+	 * Also updates Max Y position
+	 *
+	 * @param float $y
+	 */
 	function SetY($y) {
 		$this->Y = $y;
 		if ($this->maxY < $y) {
@@ -489,11 +527,13 @@ class WT_Report_HTML extends WT_Report_Base {
 	}
 
 	/**
-	* Set the X and Y position - WT_Report_HTML
-	* Also updates Max Y position
-	* @param float $x
-	* @param float $y
-	*/
+	 * Set the X and Y position - WT_Report_HTML
+	 *
+	 * Also updates Max Y position
+	 *
+	 * @param float $x
+	 * @param float $y
+	 */
 	function SetXY($x, $y) {
 		$this->X = $x;
 		// Don't reinvent the wheel, use this instead
@@ -501,11 +541,13 @@ class WT_Report_HTML extends WT_Report_Base {
 	}
 
 	/**
-	* Wrap text - WT_Report_HTML
-	* @param string &$str Text to wrap
-	* @param int $width Width in points the text has to fit into
-	* @return string
-	*/
+	 * Wrap text - WT_Report_HTML
+	 *
+	 * @param string $str  Text to wrap
+	 * @param int    $width Width in points the text has to fit into
+	 *
+	 * @return string
+	 */
 	function textWrap(&$str, $width) {
 		// Calculate the line width
 		$lw = (int)($width / ($this->getCurrentStyleHeight() / 2));
@@ -528,10 +570,12 @@ class WT_Report_HTML extends WT_Report_Base {
 	}
 
 	/**
-	* Write text - WT_Report_HTML
-	* @param string $text Text to print
-	* @param string $color HTML RGB color code (Ex: #001122)
-	*/
+	 * Write text - WT_Report_HTML
+	 *
+	 * @param string $text  Text to print
+	 * @param string $color HTML RGB color code (Ex: #001122)
+	 * @param bool   $useclass
+	 */
 	function write($text, $color="", $useclass=true) {
 		global $TEXT_DIRECTION;
 
@@ -554,40 +598,39 @@ class WT_Report_HTML extends WT_Report_Base {
 
 } //-- end Report
 
-
 /**
-* Cell element - HTML
-*
-* @package webtrees
-* @subpackage Reports
-* @todo add info and fix border and filling
-*/
+ * Cell element - HTML
+ */
 class CellHTML extends Cell {
 	/**
-	* Create a class CELL for HTML
-	* @param int $width cell width (expressed in points)
-	* @param int $height cell height (expressed in points)
-	* @param mixed $border Border style
-	* @param string $align Text alignement
-	* @param string $bgcolor Background color code
-	* @param string $style The name of the text style
-	* @param int $ln Indicates where the current position should go after the call
-	* @param mixed $top Y-position
-	* @param mixed $left X-position
-	* @param int $fill Indicates if the cell background must be painted (1) or transparent (0). Default value: 0.
-	* @param int $stretch Stretch carachter mode
-	* @param string $bocolor Border color
-	* @param string $tcolor Text color
-	* @param boolean $reseth
-	*/
+	 * Create a class CELL for HTML
+	 *
+	 * @param int     $width   cell width (expressed in points)
+	 * @param int     $height  cell height (expressed in points)
+	 * @param mixed   $border  Border style
+	 * @param string  $align   Text alignement
+	 * @param string  $bgcolor Background color code
+	 * @param string  $style   The name of the text style
+	 * @param int     $ln      Indicates where the current position should go after the call
+	 * @param mixed   $top     Y-position
+	 * @param mixed   $left    X-position
+	 * @param int     $fill    Indicates if the cell background must be painted (1) or transparent (0). Default value: 0.
+	 * @param int     $stretch Stretch carachter mode
+	 * @param string  $bocolor Border color
+	 * @param string  $tcolor  Text color
+	 * @param boolean $reseth
+	 */
 	function CellHTML($width, $height, $border, $align, $bgcolor, $style, $ln, $top, $left, $fill, $stretch, $bocolor, $tcolor, $reseth) {
 		parent::Cell($width, $height, $border, $align, $bgcolor, $style, $ln, $top, $left, $fill, $stretch, $bocolor, $tcolor, $reseth);
 	}
 
 	/**
-	* HTML Cell renderer
-	* @param WT_Report_HTML &$html
-	*/
+	 * HTML Cell renderer
+	 *
+	 * @param WT_Report_HTML $html
+	 *
+	 * @return void
+	 */
 	function render(&$html) {
 		//@@ report title, indi report sub-titles, total indis, generated by & date, indi note text	- why is the text printed on 2 lines?? What adds \n?
 
@@ -604,8 +647,8 @@ class CellHTML extends Cell {
 		}
 
 		/**
-		* Keep the original values, use these local variables
-		*/
+		 * Keep the original values, use these local variables
+		 */
 		$cW = 0; // Class Width
 		$cP = 0; // Class Padding
 
@@ -769,21 +812,14 @@ class CellHTML extends Cell {
 }
 
 /**
-* HTML element - HTML Report
-*
-* @package webtrees
-* @subpackage Reports
-* @todo add info
-*/
+ * HTML element - HTML Report
+ */
 class HtmlHTML extends Html {
 
 	function HtmlHTML($tag, $attrs) {
 		parent::Html($tag, $attrs);
 	}
 
-	/**
-	*  @todo temporary fix
-	*/
 	function render(&$html, $sub = false, $inat=true) {
 
 		if (!empty($this->attrs["wt_style"])) $html->setCurrentStyle($this->attrs["wt_style"]);
@@ -822,11 +858,8 @@ class HtmlHTML extends Html {
 }
 
 /**
-* TextBox element - HTML Report
-*
-* @package webtrees
-* @subpackage Reports
-*/
+ * TextBox element - HTML Report
+ */
 class TextBoxHTML extends TextBox {
 
 	function TextBoxHTML($width, $height, $border, $bgcolor, $newline, $left, $top, $pagecheck, $style, $fill, $padding, $reseth) {
@@ -918,10 +951,10 @@ class TextBoxHTML extends TextBox {
 		unset($footnote_element, $lastelement, $links, $newelements);
 
 		/**
-		* Use these variables to update/manipulate values
-		* Repeted classes would reupdate all their class variables again, Header/Page Header/Footer
-		* This is the bugfree version
-		*/
+		 * Use these variables to update/manipulate values
+		 * Repeted classes would reupdate all their class variables again, Header/Page Header/Footer
+		 * This is the bugfree version
+		 */
 		$cH = 0; // Class Height
 		$cX = 0; // Class Left
 		// Protect height, width, lastheight from padding
@@ -1091,12 +1124,8 @@ class TextBoxHTML extends TextBox {
 }
 
 /**
-* Text element - HTML Report
-*
-* @package webtrees
-* @subpackage Reports
-* @todo add info
-*/
+ * Text element - HTML Report
+ */
 class TextHTML extends Text {
 
 	function TextHTML($style, $color) {
@@ -1104,11 +1133,12 @@ class TextHTML extends Text {
 	}
 
 	/**
-	* @todo temporary fix
-	* @param WT_Report_HTML &$html
-	* @param int $curx
-	* @param boolean $attrib Is is called from a different element?
-	*/
+	 * @param WT_Report_HTML $html
+	 * @param int            $curx
+	 * @param boolean        $attrib Is is called from a different element?
+	 *
+	 * @return void
+	 */
 	function render(&$html, $curx=0, $attrib=true) {
 
 		// Setup the style name
@@ -1158,12 +1188,14 @@ class TextHTML extends Text {
 	}
 
 	/**
-	* Returns the height in points of the text element
-	*
-	* The height is already calculated in getWidth()
-	* @param WT_Report_HTML &$html
-	* @return float 0
-	*/
+	 * Returns the height in points of the text element
+	 *
+	 * The height is already calculated in getWidth()
+	 *
+	 * @param WT_Report_HTML $html
+	 *
+	 * @return float
+	 */
 	function getHeight(&$html) {
 		$ct = substr_count($this->text, "\n");
 		if ($ct>0) {
@@ -1171,14 +1203,15 @@ class TextHTML extends Text {
 		}
 		$style = $html->getStyle($this->styleName);
 		return ($style["size"] * $ct) * $html->cellHeightRatio;
-		//return 0;
 	}
 
 	/**
-	* Get the width of text and wrap it too
-	* @param WT_Report_HTML &$html
-	* @return array
-	*/
+	 * Get the width of text and wrap it too
+	 *
+	 * @param WT_Report_HTML $html
+	 *
+	 * @return array
+	 */
 	function getWidth(&$html) {
 		// Setup the style name
 		if ($html->getCurrentStyle() != $this->styleName) {
@@ -1258,12 +1291,8 @@ class TextHTML extends Text {
 }
 
 /**
-* Footnote element
-*
-* @package webtrees
-* @subpackage Reports
-* @todo add info
-*/
+ * Footnote element
+ */
 class FootnoteHTML extends Footnote {
 
 	function FootnoteHTML($style="") {
@@ -1271,9 +1300,12 @@ class FootnoteHTML extends Footnote {
 	}
 
 	/**
-	* HTML Footnotes number renderer
-	* @param WT_Report_HTML &$html
-	*/
+	 * HTML Footnotes number renderer
+	 *
+	 * @param WT_Report_HTML $html
+	 *
+	 * @return void
+	 */
 	function render(&$html) {
 		$html->setCurrentStyle("footnotenum");
 		// 'vertical-align:super' is not working properly in IE 8
@@ -1286,11 +1318,14 @@ class FootnoteHTML extends Footnote {
 	}
 
 	/**
-	* Write the Footnote text
-	* Uses style name "footnote" by default
-	*
-	* @param WT_Report_HTML &$html
-	*/
+	 * Write the Footnote text
+	 *
+	 * Uses style name "footnote" by default
+	 *
+	 * @param WT_Report_HTML $html
+	 *
+	 * @return void
+	 */
 	function renderFootnote(&$html) {
 
 		if ($html->getCurrentStyle() != $this->styleName) {
@@ -1309,12 +1344,13 @@ class FootnoteHTML extends Footnote {
 	}
 
 	/**
-	* Calculates the Footnotes height
-	*
-	* @param WT_Report_HTML &$html
-	* @param $cellWidth The width of the cell to use it for text wraping
-	* @return Footnote height in points
-	*/
+	 * Calculates the Footnotes height
+	 *
+	 * @param WT_Report_HTML $html
+	 * @param int            $cellWidth The width of the cell to use it for text wraping
+	 *
+	 * @return Footnote height in points
+	 */
 	function getFootnoteHeight(&$html, $cellWidth=0) {
 		if ($html->getCurrentStyle() != $this->styleName) {
 			$html->setCurrentStyle($this->styleName);
@@ -1330,13 +1366,15 @@ class FootnoteHTML extends Footnote {
 	}
 
 	/**
-	* Get the width of text
-	* Breaks up a text into lines if needed
-	*
-	* @param WT_Report_HTML &$html
-	* @return array
-	*/
-	function getWidth(&$html) {
+	 * Get the width of text
+	 *
+	 * Breaks up a text into lines if needed
+	 *
+	 * @param WT_Report_HTML $html
+	 *
+	 * @return array
+	 */
+	function getWidth($html) {
 		// Setup the style name
 		$html->setCurrentStyle("footnotenum");
 
@@ -1418,12 +1456,8 @@ class FootnoteHTML extends Footnote {
 }
 
 /**
-* PageHeader element
-*
-* @package webtrees
-* @subpackage Reports
-* @todo add info
-*/
+ * PageHeader element
+ */
 class PageHeaderHTML extends PageHeader {
 	function PageHeaderHTML() {
 		parent::PageHeader();
@@ -1438,12 +1472,8 @@ class PageHeaderHTML extends PageHeader {
 }
 
 /**
-* Image element
-*
-* @package webtrees
-* @subpackage Reports
-* @todo add info
-*/
+ * Image element
+ */
 class ImageHTML extends Image {
 
 	function ImageHTML($file, $x, $y, $w, $h, $align, $ln) {
@@ -1451,9 +1481,12 @@ class ImageHTML extends Image {
 	}
 
 	/**
-	* Image renderer
-	* @param WT_Report_HTML &$html
-	*/
+	 * Image renderer
+	 *
+	 * @param WT_Report_HTML $html
+	 *
+	 * @return void
+	 */
 	function render(&$html) {
 		global $lastpicbottom, $lastpicpage, $lastpicleft, $lastpicright;
 
@@ -1503,12 +1536,15 @@ class ImageHTML extends Image {
 	}
 
 	/**
-	* Get the image height
-	* This would be called from the TextBox only for multiple images
-	* so we add a bit bottom space between the images
-	* @param WT_Report_HTML &$html
-	* @return float
-	*/
+	 * Get the image height
+	 *
+	 * This would be called from the TextBox only for multiple images
+	 * so we add a bit bottom space between the images
+	 *
+	 * @param WT_Report_HTML $html
+	 *
+	 * @return float
+	 */
 	function getHeight(&$html) {
 		return $this->height + ($html->cPadding * 2);
 	}
@@ -1516,28 +1552,28 @@ class ImageHTML extends Image {
 } //-- END Image
 
 /**
-* Line element - HTML Report
-*
-* @package webtrees
-* @subpackage Reports
-* @todo add info
-*/
+ * Line element - HTML Report
+ */
 class LineHTML extends Line {
 	/**
-	* Create a line class -HTML
-	* @param mixed $x1
-	* @param mixed $y1
-	* @param mixed $x2
-	* @param mixed $y2
-	*/
+	 * Create a line class -HTML
+	 *
+	 * @param mixed $x1
+	 * @param mixed $y1
+	 * @param mixed $x2
+	 * @param mixed $y2
+	 */
 	function LineHTML($x1, $y1, $x2, $y2) {
 		parent::Line($x1, $y1, $x2, $y2);
 	}
 
 	/**
-	* HTML line renderer
-	* @param WT_Report_HTML &$html
-	*/
+	 * HTML line renderer
+	 *
+	 * @param WT_Report_HTML $html
+	 *
+	 * @return void
+	 */
 	function render(&$html) {
 		if ($this->x1==".") $this->x1=$html->GetX();
 		if ($this->y1==".") $this->y1=$html->GetY();
@@ -1560,4 +1596,4 @@ class LineHTML extends Line {
 		$html->addMaxY($this->y2);
 //echo "<br>AA";//@@
 	}
-} //-- END Line
+}

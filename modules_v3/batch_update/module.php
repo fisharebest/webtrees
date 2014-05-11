@@ -41,7 +41,7 @@ class batch_update_WT_Module extends WT_Module implements WT_Module_Config{
 			$controller=new WT_Controller_Page();
 			$controller
 				->setPageTitle(WT_I18N::translate('Batch update'))
-				->requireAdminLogin()
+				->restrictAccess(\WT\Auth::isAdmin())
 				->pageHeader();
 
 			// TODO: these files should be methods in this class

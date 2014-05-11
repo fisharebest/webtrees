@@ -20,10 +20,14 @@
 
 define('WT_SCRIPT_NAME', 'site-offline.php');
 
+require 'library/autoload.php';
+
 // This script does not load session.php.
 // session.php won’t run until a configuration file and database connection exist...
 // This next block of code is a minimal version of session.php
 define('WT_WEBTREES', 'webtrees');
+define('WT_SERVER_NAME', '');
+define('WT_SCRIPT_PATH', '');
 define('WT_ROOT', '');
 define('WT_GED_ID', 0);
 define('WT_USER_ID', 0);
@@ -31,10 +35,6 @@ define('WT_DATA_DIR', realpath('data').DIRECTORY_SEPARATOR);
 define('WT_DEBUG_LANG', false); // The translation library needs this
 $WT_SESSION=new stdClass();
 $WT_SESSION->locale='';
-// Invoke the Zend Framework Autoloader, so we can use Zend_XXXXX and WT_XXXXX classes
-set_include_path(WT_ROOT.'library'.PATH_SEPARATOR.get_include_path());
-require_once 'Zend/Loader/Autoloader.php';
-Zend_Loader_Autoloader::getInstance()->registerNamespace('WT_');
 require 'includes/functions/functions.php';
 require WT_ROOT.'includes/functions/functions_utf-8.php';
 define('WT_LOCALE', WT_I18N::init());

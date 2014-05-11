@@ -18,13 +18,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 class WT_Controller_Simple extends WT_Controller_Page {
-
 	// Popup windows don't always need a title
 	public function __construct() {
 		parent::__construct();
@@ -40,32 +34,12 @@ class WT_Controller_Simple extends WT_Controller_Page {
 	}
 
 	// Restrict access
-	public function requireAdminLogin() {
-		if (!WT_USER_IS_ADMIN) {
+	public function restrictAccess($condition) {
+		if ($condition !== true) {
 			$this->addInlineJavascript('opener.window.location.reload(); window.close();');
 			exit;
 		}
-		return $this;
-	}
 
-	// Restrict access
-	public function requireManagerLogin($ged_id=WT_GED_ID) {
-		if (
-			$ged_id==WT_GED_ID && !WT_USER_GEDCOM_ADMIN ||
-			$ged_id!=WT_GED_ID && userGedcomAdmin(WT_USER_ID, $gedcom_id)
-		) {
-			$this->addInlineJavascript('opener.window.location.reload(); window.close();');
-			exit;
-		}
-		return $this;
-	}
-
-	// Restrict access
-	public function requireMemberLogin() {
-		if (!WT_USER_ID) {
-			$this->addInlineJavascript('opener.window.location.reload(); window.close();');
-			exit;
-		}
 		return $this;
 	}
 }

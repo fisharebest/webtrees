@@ -220,9 +220,9 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 					$class = 'facts_label';
 				}
 				$next = new WT_Date('');
-				foreach ($person->getFacts(WT_EVENTS_BIRT) as $fact) {
-					if ($fact->getDate()->isOK()) {
-						$next=$fact->getDate();
+				foreach ($person->getFacts(WT_EVENTS_BIRT) as $bfact) {
+					if ($bfact->getDate()->isOK()) {
+						$next=$bfact->getDate();
 						break;
 					}
 				}

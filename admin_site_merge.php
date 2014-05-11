@@ -28,14 +28,14 @@ require './includes/session.php';
 
 $controller=new WT_Controller_Page;
 $controller
-	->requireManagerLogin()
+	->restrictAccess(\WT\Auth::isManager())
 	->setPageTitle(WT_I18N::translate('Merge records'))
 	->pageHeader();
 
 require_once WT_ROOT.'includes/functions/functions_edit.php';
 require_once WT_ROOT.'includes/functions/functions_import.php';
 
-$ged=$GEDCOM;
+$ged    = $GEDCOM;
 $gid1   = WT_Filter::post('gid1', WT_REGEX_XREF);
 $gid2   = WT_Filter::post('gid2', WT_REGEX_XREF);
 $action = WT_Filter::post('action', 'choose|select|merge', 'choose');
@@ -69,10 +69,14 @@ if ($action!='choose') {
 			$facts1 = array();
 			$facts2 = array();
 			foreach ($rec1->getFacts() as $fact) {
-				$facts1[$fact->getFactId()]=$fact;
+				if (!$fact->isOld()) {
+					$facts1[$fact->getFactId()]=$fact;
+				}
 			}
 			foreach ($rec2->getFacts() as $fact) {
-				$facts2[$fact->getFactId()]=$fact;
+				if (!$fact->isOld()) {
+					$facts2[$fact->getFactId()]=$fact;
+				}
 			}
 			if ($action=='select') {
 				echo '<div id="merge2"><h3>', WT_I18N::translate('Merge records'), '</h3>';
@@ -149,14 +153,16 @@ if ($action!='choose') {
 					$ids=fetch_all_links($gid2, WT_GED_ID);
 					foreach ($ids as $id) {
 						$record=WT_GedcomRecord::getInstance($id);
-						echo WT_I18N::translate('Updating linked record'), ' ', $id, '<br>';
-						$gedcom=str_replace("@$gid2@", "@$gid1@", $record->getGedcom());
-						$gedcom=preg_replace(
-							'/(\n1.*@.+@.*(?:(?:\n[2-9].*)*))((?:\n1.*(?:\n[2-9].*)*)*\1)/',
-							'$2',
-							$gedcom
-						);
-						$record->updateRecord($gedcom, true);
+						if (!$record->isOld()) {
+							echo WT_I18N::translate('Updating linked record'), ' ', $id, '<br>';
+							$gedcom=str_replace("@$gid2@", "@$gid1@", $record->getGedcom());
+							$gedcom=preg_replace(
+								'/(\n1.*@.+@.*(?:(?:\n[2-9].*)*))((?:\n1.*(?:\n[2-9].*)*)*\1)/',
+								'$2',
+								$gedcom
+							);
+							$record->updateRecord($gedcom, true);
+						}
 					}
 					// Update any linked user-accounts
 					WT_DB::prepare(
@@ -218,24 +224,17 @@ if ($action!='choose') {
 }
 if ($action=='choose') {
 	$controller->addInlineJavascript('
-	var pasteto;
 	function iopen_find(textbox, gedselect) {
-		pasteto = textbox;
 		ged = gedselect.options[gedselect.selectedIndex].value;
-		findwin = window.open("find.php?type=indi&ged="+ged, "_blank", find_window_specs);
+		findIndi(textbox, null, ged);
 	}
 	function fopen_find(textbox, gedselect) {
-		pasteto = textbox;
 		ged = gedselect.options[gedselect.selectedIndex].value;
-		findwin = window.open("find.php?type=fam&ged="+ged, "_blank", find_window_specs);
+		findFamily(textbox, ged);
 	}
 	function sopen_find(textbox, gedselect) {
-		pasteto = textbox;
 		ged = gedselect.options[gedselect.selectedIndex].value;
-		findwin = window.open("find.php?type=source&ged="+ged, "_blank", find_window_specs);
-	}
-	function paste_id(value) {
-		pasteto.value=value;
+		findSource(textbox, null, ged);
 	}
 	');
 

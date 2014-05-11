@@ -18,11 +18,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 class WT_Query_Name {
 	// Get a list of initial letters, for lists of names
 	private static function _getAlphabet() {
@@ -208,7 +203,7 @@ class WT_Query_Name {
 	// Get a list of initial surname letters for indilist.php and famlist.php
 	// $marnm - if set, include married names
 	// $fams - if set, only consider individuals with FAMS records
-	static public function surnameAlpha($marnm, $fams, $ged_id) {
+	static public function surnameAlpha($marnm, $fams, $ged_id, $countRecords = true) {
 		$alphas=array();
 
 		$sql=
@@ -222,7 +217,10 @@ class WT_Query_Name {
 		// are any names beginning with that letter.  It looks better to
 		// show the full alphabet, rather than omitting rare letters such as X
 		foreach (self::_getAlphabet() as $letter) {
-			$count=WT_DB::prepare($sql." AND ".self::_getInitialSql('n_surn', $letter))->fetchOne();
+			$count = 1;
+			if ($countRecords) {
+				$count=WT_DB::prepare($sql." AND ".self::_getInitialSql('n_surn', $letter))->fetchOne();
+			}
 			$alphas[$letter]=WT_I18N::number($count);
 		}
 
@@ -235,7 +233,7 @@ class WT_Query_Name {
 			" WHERE n_file={$ged_id} AND n_surn<>''".
 			($marnm ? "" : " AND n_type!='_MARNM'");
 
-		foreach (self::_getAlphabet() as $n=>$letter) {
+		foreach (self::_getAlphabet() as $letter) {
 			$sql.=" AND n_surn NOT LIKE '".$letter."%' COLLATE ".WT_I18N::$collation;
 		}
 		$sql.=" GROUP BY LEFT(n_surn, 1) ORDER BY LEFT(n_surn, 1)='', LEFT(n_surn, 1)='@', LEFT(n_surn, 1)";
@@ -318,7 +316,7 @@ class WT_Query_Name {
 			$sql.=" AND n_surn NOT IN ('', '@N.N.')";
 		}
 
-		foreach (self::_getAlphabet() as $n=>$letter) {
+		foreach (self::_getAlphabet() as $letter) {
 			$sql.=" AND n_givn NOT LIKE '".$letter."%' COLLATE ".WT_I18N::$collation;
 		}
 		$sql.=" GROUP BY LEFT(n_givn, 1) ORDER BY LEFT(n_givn, 1)='@', LEFT(n_givn, 1)='', LEFT(n_givn, 1)";

@@ -48,7 +48,7 @@ function getMenuAsCustomList($menu) {
 $theme_name = "clouds";
 
 // A version number in the path prevents browser-cache problems during upgrade
-define('WT_CSS_URL', WT_THEME_URL . 'css-1.5.2/');
+define('WT_CSS_URL', WT_THEME_URL . 'css-1.5.3/');
 
 $headerfile = WT_THEME_DIR . 'header.php';
 $footerfile = WT_THEME_DIR . 'footer.php';

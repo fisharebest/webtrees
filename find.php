@@ -91,12 +91,12 @@ case "source":
 case "specialchar":
 	$controller->setPageTitle(WT_I18N::translate('Find a special character'));
 	$language_filter = WT_Filter::get('language_filter');
-	if (WT_USER_ID) {
+	if (\WT\Auth::id()) {
 		// Users will probably always want the same language, so remember their setting
 		if (!$language_filter) {
-			$language_filter=get_user_setting(WT_USER_ID, 'default_language_filter');
+			$language_filter = \WT\Auth::user()->getSetting('default_language_filter');
 		} else {
-			set_user_setting(WT_USER_ID, 'default_language_filter', $language_filter);
+			\WT\Auth::user()->setSetting('default_language_filter', $language_filter);
 		}
 	}
 	require WT_ROOT.'includes/specialchars.php';
@@ -217,7 +217,7 @@ if ($type == 'media') {
 	echo '" autofocus>',
 	help_link('simple_filter'),
 	'<p><input type="submit" name="search" value="', WT_I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">&nbsp;
-	<input type="submit" name="all" value="', WT_I18N::translate('Display all'), '" onclick=\"this.form.subclick.value=this.name\">
+	<input type="submit" name="all" value="', WT_I18N::translate('Display all'), '" onclick="this.form.subclick.value=this.name">
 	</p></form></div>';
 }
 
@@ -334,23 +334,12 @@ if ($type == "facts") {
 	DefaultTag.prototype= {
 		_newCounter:0
 		,view:function() {
-			var row=document.createElement("tr"),cell,o;
+			var row=document.createElement("tr"),cell;
 			row.appendChild(cell=document.createElement("td"));
-			o=null;
-			if (document.all) {
-				//Old IEs handle the creation of a checkbox already checked, as far as I know, only in this way
-				try {
-					o=document.createElement("<input type='checkbox' id='tag"+this._counter+"' "+(this.selected?"checked='checked'":"")+">");
-				} catch(e) {
-					o=null;
-				}
-			}
-			if (!o) {
-				o=document.createElement("input");
-				o.setAttribute("id","tag"+this._counter);
-				o.setAttribute("type","checkbox");
-				if (this.selected) o.setAttribute("checked", "checked");
-			}
+			var o = document.createElement("input");
+			o.id = "tag"+this._counter;
+			o.type = "checkbox";
+			o.checked = this.selected;
 			o.DefaultTag=this;
 			o.ParentRow=row;
 			o.onclick=function() {
@@ -481,7 +470,7 @@ if ($type == "facts") {
 	<td><td></tbody></table>
 
 	<table id="tabAction"><tbody><tr>
-		<td colspan="2"><button id="btnOk" disabled="disabled" onclick="if (!this.disabled)DoOK();">', WT_I18N::translate('save'), '</button></td>
+		<td colspan="2"><button id="btnOk" disabled="disabled" onclick="if (!this.disabled) { DoOK(); }">', WT_I18N::translate('save'), '</button></td>
 	<tr></tbody></table>
 	</td></tr></table>
 	</form></div>';
@@ -676,7 +665,9 @@ if ($action=="filter") {
 			usort($mysourcelist, array('WT_GedcomRecord', 'Compare'));
 			echo '<ul>';
 			foreach ($mysourcelist as $source) {
-				echo '<li><a href="', $source->getHtmlUrl(), '" onclick="pasteid(\'', $source->getXref(), '\');"><span class="list_item">', $source->getFullName(),'</span></a></li>';
+				echo '<li><a href="', $source->getHtmlUrl(), '" onclick="pasteid(\'', $source->getXref(), '\', \'',
+					WT_Filter::escapeJs($source->getFullName()), '\');"><span class="list_item">',
+					$source->getFullName(),'</span></a></li>';
 			}
 			echo '</ul>
 			<p>', WT_I18N::translate('Total sources: %s', count($mysourcelist)), '</p>';

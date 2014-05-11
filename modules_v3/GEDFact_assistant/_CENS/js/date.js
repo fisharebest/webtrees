@@ -472,26 +472,26 @@ Date.prototype.add = function(interval, number) {
 
 // Calculate Julian Date
 function calculateJD(calendarDate) {
-   cdDate = new Date(calendarDate)
-   year = cdDate.getYear()          //added + 1900 10/03/2003
+   cdDate = new Date(calendarDate);
+   year = cdDate.getYear();          //added + 1900 10/03/2003
    if (year < 1000 ) {year+=1900}  // modified 10/03/2003
-   //year = 1900+cdDate.getYear()
-   month = cdDate.getMonth() + 1 //getMonth() returns 0-11
-   day = cdDate.getDate()
-   hour = cdDate.getHours()
-   min = cdDate.getMinutes()
-   sec = cdDate.getSeconds()
-   univTime = hour+(min/60)+(sec/3600)
+   //year = 1900+cdDate.getYear();
+   month = cdDate.getMonth() + 1; //getMonth() returns 0-11
+   day = cdDate.getDate();
+   hour = cdDate.getHours();
+   min = cdDate.getMinutes();
+   sec = cdDate.getSeconds();
+   univTime = hour+(min/60)+(sec/3600);
    if ((100*year+month-190002.5) >= 0) {sign = 1}
       else {sign = -1}
    with (Math) {
-      part1 = 367 * year
-      part2 = floor((7*(year+floor((month+9)/12)))/4)
-      part3 = day+floor((275*month)/9)
-      part4 = 1721013.5+(univTime/24)
-      part5 = 0.5*sign
+      part1 = 367 * year;
+      part2 = floor((7*(year+floor((month+9)/12)))/4);
+      part3 = day+floor((275*month)/9);
+      part4 = 1721013.5+(univTime/24);
+      part5 = 0.5*sign;
       jd = part1-part2+part3+part4-part5+0.5
    }
-   return jd
+   return jd;
 }
 

@@ -55,11 +55,6 @@ echo
 	'<link type="text/css" rel="stylesheet" href="', WT_CSS_URL, 'msie.css">',
 	'<![endif]-->';
 
-// Additional css files required (Only if Lightbox installed)
-if (WT_USE_LIGHTBOX) {
-	echo '<link rel="stylesheet" type="text/css" href="', WT_STATIC_URL, WT_MODULES_DIR, 'lightbox/css/album_page.css" media="screen">';
-}
-
 echo
 	'</head>',
 	'<body id="body">';
@@ -71,7 +66,7 @@ if ($view!='simple') {
 	echo '<div id="header-user-links">';
 	echo '<ul class="makeMenu">';
 	if (WT_USER_ID) {
-		echo '<li><a href="edituser.php">', getUserFullName(WT_USER_ID), '</a></li> <li>', logout_link(), '</li>';
+		echo '<li><a href="edituser.php">', WT_Filter::escapeHtml(\WT\Auth::user()->getRealName()), '</a></li> <li>', logout_link(), '</li>';
 		if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
 			echo ' <li><a href="#" onclick="window.open(\'edit_changes.php\',\'_blank\',chan_window_specs); return false;" style="color:red;">', WT_I18N::translate('Pending changes'), '</a></li>';
 		}
@@ -95,7 +90,7 @@ if ($view!='simple') {
 		'<input type="hidden" name="action" value="general">',
 		'<input type="hidden" name="ged" value="', WT_GEDCOM, '">',
 		'<input type="hidden" name="topsearch" value="yes">',
-		'<input type="search" name="query" size="20" placeholder="', WT_I18N::translate('Search'), '" dir="auto">',
+		'<input type="search" name="query" size="20" placeholder="', WT_I18N::translate('Search'), '">',
 		'</form></li></ul></div>';
 
 	$menu_items=array(

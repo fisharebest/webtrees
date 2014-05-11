@@ -1,0 +1,82 @@
+/*
+ * Style for Colors theme
+ *
+ * webtrees: Web based Family History software
+ * Copyright (C) 2014 webtrees development team.
+ *
+ * Derived from PhpGedView
+ * Copyright (C) 2002 to 2010 PGV Development Team.  All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+ */
+
+/* Sage Palette */
+
+/* Header */
+#header {
+	background: #767647;
+	color: #fff;
+}
+
+.title {
+	text-decoration: none;
+	color: #fff;
+}
+
+/* Tbls and menus  */
+.descriptionbox, .descriptionbox a, .facts_label03,
+.topbottombar, .topbottombar a, .topbottombar h2,
+.facts_label, .facts_label a, .facts_label h2, .facts_label .date,
+.list_label, .list_label a, #search-page-table, #edituser-table,
+#lightbox_content span a, #lightbox_content span a:hover,
+#separator, .use-sidebar #separator, #family_nav,
+.ui-state-active a:link, .ui-state-active a:visited {
+	background-color: #cca;
+	color: #333;
+}
+
+.ui-state-active, .ui-widget-content .ui-state-active {
+	background: none repeat scroll 0 0 #cca;
+}
+
+/* Top Menu  */
+#main-menu {
+	background: #cca;
+
+}
+
+/* Base */
+#indi_header h3,
+.blockcontent, #search, #search-page-table .value, #edituser-table .value,
+.makeMenu ul li a:hover, .ui-widget-header, #save-cancel,
+.optionbox, #indi_header .ui-state-active a:link,
+.list_value, .list_value_wrap, .list_value_wrap a,
+#login-form, #new_passwd_form, #register-form {
+	background: #eed;
+}
+
+/* Alerts */
+.error, .warning, .red {
+	color: #f00;
+}
+
+/* Light Text */
+.makeMenu li a {
+	color: #fff;
+}
+
+.subheaders {
+	color: #494949;
+}

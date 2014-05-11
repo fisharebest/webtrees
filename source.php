@@ -161,27 +161,19 @@ echo '<div id="source-tabs">
 
 	// Individuals linked to this source
 	if ($linked_indi) {
-		echo '<div id="indi-sources">';
-		echo format_indi_table($linked_indi, $controller->record->getFullName());
-		echo '</div>'; //close "indi-sources"
+		echo '<div id="indi-sources">', format_indi_table($linked_indi), '</div>';
 	}
 	// Families linked to this source
 	if ($linked_fam) {
-		echo '<div id="fam-sources">';
-		echo format_fam_table($linked_fam, $controller->record->getFullName());
-		echo '</div>'; //close "fam-sources"
+		echo '<div id="fam-sources">', format_fam_table($linked_fam), '</div>';
 	}
 	// Media Items linked to this source
 	if ($linked_obje) {
-		echo '<div id="media-sources">';
-		echo format_media_table($linked_obje, $controller->record->getFullName());
-		echo '</div>'; //close "media-sources"
+		echo '<div id="media-sources">', format_media_table($linked_obje), '</div>';
 	}
 	// Shared Notes linked to this source
 	if ($linked_note) {
-		echo '<div id="note-sources">';
-		echo format_note_table($linked_note, $controller->record->getFullName());
-		echo '</div>'; //close "note-sources"
+		echo '<div id="note-sources">', format_note_table($linked_note), '</div>';
 	}
 echo '</div>'; //close div "source-tabs"
 echo '</div>'; //close div "source-details"

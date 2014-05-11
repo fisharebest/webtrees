@@ -29,8 +29,8 @@ require WT_ROOT.'includes/functions/functions_rtl.php';
 
 $controller=new WT_Controller_Page();
 
-$famid   =WT_Filter::get('famid');
-$pid     =WT_Filter::get('pid');
+$famid   =WT_Filter::get('famid', WT_REGEX_XREF);
+$pid     =WT_Filter::get('pid', WT_REGEX_XREF);
 $action  =WT_Filter::get('action', 'choose|setup|run', 'choose');
 $report  =WT_Filter::get('report');
 $output  =WT_Filter::get('output', 'HTML|PDF', 'PDF');
@@ -99,7 +99,7 @@ foreach ($vars as $name=>$var) {
 $vars = $newvars;
 unset($newvars);
 
-foreach ($varnames as $indexval => $name) {
+foreach ($varnames as $name) {
 	if (!isset($vars[$name])) {
 		$vars[$name]['id'] = '';
 	}
@@ -169,7 +169,6 @@ elseif ($action=='setup') {
 	$controller
 		->setPageTitle($report_array['title'])
 		->pageHeader()
-		->addInlineJavascript('var pastefield; function paste_id(value) { pastefield.value=value; }') // For the 'find indi' link
 		->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');
 
 	init_calendar_popup();
@@ -184,7 +183,7 @@ elseif ($action=='setup') {
 	if (!isset($report_array['inputs'])) {
 		$report_array['inputs'] = array();
 	}
-	foreach ($report_array['inputs'] as $indexval => $input) {
+	foreach ($report_array['inputs'] as $input) {
 		echo '<tr><td class="descriptionbox wrap">';
 		echo '<input type="hidden" name="varnames[]" value="', WT_Filter::escapeHtml($input["name"]), '">';
 		echo WT_I18N::translate($input['value']), '</td><td class="optionbox">';
@@ -233,7 +232,7 @@ elseif ($action=='setup') {
 		if ($input['type']=='select') {
 			echo '<select name="vars[', WT_Filter::escapeHtml($input['name']), ']" id="', WT_Filter::escapeHtml($input['name']), '_var">';
 			$options = preg_split('/[|]+/', $input['options']);
-			foreach ($options as $indexval => $option) {
+			foreach ($options as $option) {
 				$opt = explode('=>', $option);
 				list($value, $display)=$opt;
 				if (substr($display, 0, 18)=='WT_I18N::translate' || substr($display, 0, 15) == 'WT_I18N::number' || substr($display, 0, 23)=='WT_Gedcom_Tag::getLabel') {
@@ -259,7 +258,7 @@ elseif ($action=='setup') {
 				echo print_findsource_link($input['name']);
 			} elseif ($input['lookup']=='DATE') {
 				echo ' <a href="#" onclick="cal_toggleDate(\'div_', WT_Filter::EscapeJs($input['name']), '\', \'', WT_Filter::EscapeJs($input['name']), '\'); return false;" class="icon-button_calendar" title="', WT_I18N::translate('Select a date'), '"></a>';
-				echo '<div id="div_', WT_Filter::EscapeHtml($input['name']), '" style="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;"></div>';
+				echo '<div id="div_', WT_Filter::EscapeHtml($input['name']), '" style="position:absolute;visibility:hidden;background-color:white;"></div>';
 			}
 		}
 		echo '</td></tr>';
@@ -321,6 +320,7 @@ elseif ($action=='run') {
 	 * element handlers array
 	 *
 	 * Converts XML element names into functions
+	 *
 	 * @global array $elementHandler
 	 */
 	$elementHandler = array();
@@ -379,10 +379,10 @@ elseif ($action=='run') {
 	$elementHandler['sp']['start']               = 'spSHandler';
 
 	/**
-	* A new object of the currently used element class
-	*
-	* @global object $currentElement
-	*/
+	 * A new object of the currently used element class
+	 *
+	 * @global object $currentElement
+	 */
 	$currentElement = new Element();
 
 	/**
@@ -390,22 +390,23 @@ elseif ($action=='run') {
 	 *
 	 * This variable is turned on or off by the element handlers to tell whether the inner character
 	 * Data should be printed
+	 *
 	 * @global boolean $printData
 	 */
 	$printData = false;
 
 	/**
-	* Title collector. Mark it if it has already been used
-	*
-	* @global boolean $reportTitle
-	*/
+	 * Title collector. Mark it if it has already been used
+	 *
+	 * @global boolean $reportTitle
+	 */
 	$reportTitle = false;
 
 	/**
-	* Description collector. Mark it if it has already been used
-	*
-	* @global boolean $reportDescription
-	*/
+	 * Description collector. Mark it if it has already been used
+	 *
+	 * @global boolean $reportDescription
+	 */
 	$reportDescription = false;
 
 	/**
@@ -419,69 +420,58 @@ elseif ($action=='run') {
 	$printDataStack = array();
 
 	/**
-	* @todo add info
-	* @global array $wt_reportStack
-	*/
+	 * @global array $wt_reportStack
+	 */
 	$wt_reportStack = array();
 
 	/**
-	* @todo add info
-	* @global array $gedrecStack
-	*/
+	 * @global array $gedrecStack
+	 */
 	$gedrecStack = array();
 
 	/**
-	* @todo add info
-	* @global array $repeatsStack
-	*/
+	 * @global array $repeatsStack
+	 */
 	$repeatsStack = array();
 
 	/**
-	* @todo add info
-	* @global array $parserStack
-	*/
+	 * @global array $parserStack
+	 */
 	$parserStack = array();
 
 	/**
-	* @todo add info
-	* @global array $repeats
-	*/
+	 * @global array $repeats
+	 */
 	$repeats = array();
 
 	/**
-	* @todo add info
-	* @global string $gedrec
-	*/
+	 * @global string $gedrec
+	 */
 	$gedrec = '';
 
 	/**
-	* @todo add info
-	* @global ???? $repeatBytes
-	*/
+	 * @global ???? $repeatBytes
+	 */
 	$repeatBytes = 0;
 
 	/**
-	* @todo add info
-	* @global resource $parser
-	*/
+	 * @global resource $parser
+	 */
 	$parser = '';
 
 	/**
-	* @todo add info
-	* @global int $processRepeats
-	*/
+	 * @global int $processRepeats
+	 */
 	$processRepeats = 0;
 
 	/**
-	* @todo add info
-	* @global ???? $processIfs
-	*/
+	 * @global ???? $processIfs
+	 */
 	$processIfs = 0;
 
 	/**
-	* @todo add info
-	* @global ???? $processGedcoms
-	*/
+	 * @global ???? $processGedcoms
+	 */
 	$processGedcoms = 0;
 
 	/**

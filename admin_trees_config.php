@@ -27,7 +27,7 @@ require './includes/session.php';
 
 $controller=new WT_Controller_Page();
 $controller
-	->requireManagerLogin()
+	->restrictAccess(\WT\Auth::isManager())
 	->setPageTitle(WT_I18N::translate('Family tree configuration'));
 
 require WT_ROOT.'includes/functions/functions_edit.php';
@@ -103,6 +103,7 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'GEDCOM_ID_PREFIX',             WT_Filter::post('NEW_GEDCOM_ID_PREFIX'));
 	set_gedcom_setting(WT_GED_ID, 'GEDCOM_MEDIA_PATH',            WT_Filter::post('NEW_GEDCOM_MEDIA_PATH'));
 	set_gedcom_setting(WT_GED_ID, 'GENERATE_UIDS',                WT_Filter::postBool('NEW_GENERATE_UIDS'));
+	set_gedcom_setting(WT_GED_ID, 'GEONAMES_ACCOUNT',             WT_Filter::post('NEW_GEONAMES_ACCOUNT'));
 	set_gedcom_setting(WT_GED_ID, 'HIDE_GEDCOM_ERRORS',           WT_Filter::postBool('NEW_HIDE_GEDCOM_ERRORS'));
 	set_gedcom_setting(WT_GED_ID, 'HIDE_LIVE_PEOPLE',             WT_Filter::postBool('NEW_HIDE_LIVE_PEOPLE'));
 	set_gedcom_setting(WT_GED_ID, 'GEDCOM_MEDIA_PATH',            WT_Filter::post('GEDCOM_MEDIA_PATH'));
@@ -163,7 +164,6 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'SURNAME_TRADITION',            WT_Filter::post('NEW_SURNAME_TRADITION'));
 	set_gedcom_setting(WT_GED_ID, 'THEME_DIR',                    WT_Filter::post('NEW_THEME_DIR'));
 	set_gedcom_setting(WT_GED_ID, 'THUMBNAIL_WIDTH',              WT_Filter::post('NEW_THUMBNAIL_WIDTH'));
-	set_gedcom_setting(WT_GED_ID, 'USE_GEONAMES',                 WT_Filter::postBool('NEW_USE_GEONAMES'));
 	set_gedcom_setting(WT_GED_ID, 'USE_RIN',                      WT_Filter::postBool('NEW_USE_RIN'));
 	set_gedcom_setting(WT_GED_ID, 'USE_SILHOUETTE',               WT_Filter::postBool('NEW_USE_SILHOUETTE'));
 	set_gedcom_setting(WT_GED_ID, 'WATERMARK_THUMB',              WT_Filter::postBool('NEW_WATERMARK_THUMB'));
@@ -199,8 +199,7 @@ case 'update':
 
 $controller
 	->pageHeader()
-	->addInlineJavascript('jQuery("#tabs").tabs(); jQuery("#tabs").css("display", "inline");')
-	->addInlineJavascript('var pastefield; function paste_id(value) { pastefield.value=value; }');
+	->addInlineJavascript('jQuery("#tabs").tabs(); jQuery("#tabs").css("display", "inline");');
 
 if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for multiple GEDCOMs. Can be reinstated when fixed (https://bugs.launchpad.net/webtrees/+bug/613235)
 	$controller->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');
@@ -384,12 +383,14 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 					</td>
 					<td><select name="NEW_CONTACT_USER_ID">
 					<?php
-						$CONTACT_USER_ID=get_gedcom_setting(WT_GED_ID, 'CONTACT_USER_ID');
-						foreach (get_all_users() as $user_id=>$user_name) {
-							if (get_user_setting($user_id, 'verified_by_admin')) {
-								echo "<option value=\"".$user_id."\"";
-								if ($CONTACT_USER_ID==$user_id) echo " selected=\"selected\"";
-								echo ">".getUserFullName($user_id)." - ".$user_name."</option>";
+						$CONTACT_USER_ID = get_gedcom_setting(WT_GED_ID, 'CONTACT_USER_ID');
+						foreach (\WT\User::all() as $user) {
+							if ($user->getSetting('verified_by_admin')) {
+								echo "<option value=\"" . $user->getUserId() . "\"";
+								if ($CONTACT_USER_ID == $user->getUserId()) {
+									echo " selected=\"selected\"";
+								}
+								echo '>' . WT_Filter::escapeHtml($user->getRealName()) . ' - ' . WT_Filter::escapeHtml($user->getUserName()) . '</option>';
 							}
 						}
 					?>
@@ -402,13 +403,13 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 					</td>
 					<td><select name="NEW_WEBMASTER_USER_ID">
 					<?php
-						$WEBMASTER_USER_ID=get_gedcom_setting(WT_GED_ID, 'WEBMASTER_USER_ID');
-						foreach (get_all_users() as $user_id=>$user_name) {
-							if (userIsAdmin($user_id)) {
-								echo "<option value=\"".$user_id."\"";
-								if ($WEBMASTER_USER_ID==$user_id) echo " selected=\"selected\"";
-								echo ">".getUserFullName($user_id)." - ".$user_name."</option>";
+						$WEBMASTER_USER_ID = get_gedcom_setting(WT_GED_ID, 'WEBMASTER_USER_ID');
+						foreach (\WT\User::allAdmins() as $user) {
+							echo '<option value="' . $user->getUserId() . '"';
+							if ($WEBMASTER_USER_ID == $user->getUserId()) {
+								echo ' selected="selected"';
 							}
+							echo '>' . $user->getRealName() . ' - ' . $user->getUserName() . '</option>';
 						}
 					?>
 					</select>
@@ -1273,10 +1274,10 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 			</tr>
 			<tr>
 				<td>
-					<?php echo WT_I18N::translate('Use GeoNames database for autocomplete on places'), help_link('USE_GEONAMES'); ?>
+					<?php echo /* I18N: GeoNames is the www.geonames.org website */ WT_I18N::translate('Use GeoNames database for autocomplete on places'), help_link('GEONAMES_ACCOUNT'); ?>
 				</td>
 				<td>
-					<?php echo edit_field_yes_no('NEW_USE_GEONAMES', get_gedcom_setting(WT_GED_ID, 'USE_GEONAMES')); ?>
+					<input type="text" id="NEW_GEONAMES_ACCOUNT" name="NEW_GEONAMES_ACCOUNT" value="<?php echo WT_Filter::escapeHtml(get_gedcom_setting(WT_GED_ID, 'GEONAMES_ACCOUNT')); ?>" size="40" maxlength="255" dir="ltr" placeholder="<?php echo WT_I18N::translate('Username'); ?>">
 				</td>
 			</tr>
 			<tr>

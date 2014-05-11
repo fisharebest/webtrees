@@ -992,9 +992,9 @@ case 'THUMBNAIL_WIDTH':
 	$text=WT_I18N::translate('This is the width (in pixels) that the program will use when automatically generating thumbnails.  The default setting is 100.');
 	break;
 
-case 'USE_GEONAMES':
+case 'GEONAMES_ACCOUNT':
 	$title=WT_I18N::translate('Use GeoNames database for autocomplete on places');
-	$text=WT_I18N::translate('Should the GeoNames database be used to provide more suggestions for place names?<br><br>When this option is set to <b>Yes</b>, the GeoNames database will be queried to supply suggestions for the place name being entered.  When set to <b>No</b>, only the current genealogical database will be searched.  As you enter more of the place name, the suggestion will become more precise.  This option can slow down data entry, particularly if your Internet connection is slow.<br><br>The GeoNames geographical database is accessible free of charge. It currently contains over 8,000,000 geographical names.');
+	$text=WT_I18N::translate('The website www.geonames.org provides a large database of place names.  This can be searched when entering new places.  To use this feature, you must register for a free account at www.geonames.org and provide the username.');
 	break;
 
 case 'USE_REGISTRATION_MODULE':
@@ -1334,7 +1334,7 @@ case 'pending_changes':
 		'</p><p>'.
 		WT_I18N::translate('Pending changes are only shown when your account has permission to edit.  When you log out, you will no longer be able to see them.  Also, pending changes are only shown on certain pages.  For example, they are not shown in lists, reports, or search results.').
 		'</p>';
-	if (WT_USER_IS_ADMIN) {
+	if (\WT\Auth::isAdmin()) {
 		$text.=
 			'<p>'.
 			WT_I18N::translate('Each user account has an option to “automatically accept changes”.  When this is enabled, any changes made by that user are saved immediately.  Many administrators enable this for their own user account.').

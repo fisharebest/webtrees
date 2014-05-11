@@ -18,11 +18,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 class WT_Query_Media {
 	// Generate a list of all the folders in the current tree - for the media list.
 	public static function folderList() {
@@ -73,7 +68,7 @@ class WT_Query_Media {
 		);
 
 		// Only show external files when we are looking at the root folder
-		if ($folder=='') {
+		if ($folder == '') {
 			$sql_external = " OR m_filename LIKE 'http://%' OR m_filename LIKE 'https://%'";
 		} else {
 			$sql_external = "";
@@ -83,22 +78,22 @@ class WT_Query_Media {
 		switch ($subfolders) {
 		case 'include':
 			$sql .= " AND (m_filename LIKE CONCAT(?, '%') $sql_external)";
-			$args[] = $folder;
+			$args[] = WT_Filter::escapeLike($folder);
 			break;
 		case 'exclude':
 			$sql .= " AND (m_filename LIKE CONCAT(?, '%')  AND m_filename NOT LIKE CONCAT(?, '%/%') $sql_external)";
-			$args[] = $folder;
-			$args[] = $folder;
+			$args[] = WT_Filter::escapeLike($folder);
+			$args[] = WT_Filter::escapeLike($folder);
 			break;
 		default:
-			throw new Exception('Bad argument (subfolders=', $subfolders, ') in WT_Query_Media::mediaList()');
+			throw new Exception('Bad argument (subfolders=' . $subfolders . ') in WT_Query_Media::mediaList()');
 		}
 
 		// Apply search terms
 		if ($filter) {
-			$sql .= " AND (m_filename LIKE CONCAT('%', ?, '%') OR m_titl LIKE CONCAT('%', ?, '%'))";
-			$args[] = $filter;
-			$args[] = $filter;
+			$sql .= " AND (SUBSTRING_INDEX(m_filename, '/', -1) LIKE CONCAT('%', ?, '%') OR m_titl LIKE CONCAT('%', ?, '%'))";
+			$args[] = WT_Filter::escapeLike($filter);
+			$args[] = WT_Filter::escapeLike($filter);
 		}
 
 		switch ($sort) {
@@ -109,7 +104,7 @@ class WT_Query_Media {
 			$sql .= " ORDER BY m_titl";
 			break;
 		default:
-			throw new Exception('Bad argument (sort=', $sort, ') in WT_Query_Media::mediaList()');
+			throw new Exception('Bad argument (sort=' . $sort . ') in WT_Query_Media::mediaList()');
 		}
 
 		$rows = WT_DB::prepare($sql)->execute($args)->fetchAll();

@@ -39,10 +39,10 @@ $url        = WT_Filter::postUrl('url', WT_Filter::getUrl('url'));
 $controller=new WT_Controller_Simple();
 $controller->setPageTitle(WT_I18N::translate('webtrees Message'));
 
-$to_user_id=get_user_id($to);
+$to_user = \WT\User::findByIdentifier($to);
 
 // Only admins can send broadcast messages
-if ((!$to_user_id || $to=='all' || $to=='last_6mo' || $to=='never_logged') && !WT_USER_IS_ADMIN) {
+if ((!$to_user || $to=='all' || $to=='last_6mo' || $to=='never_logged') && !\WT\Auth::isAdmin()) {
 	// TODO, what if we have a user called "all" or "last_6mo" or "never_logged" ???
 	WT_FlashMessages::addMessage(WT_I18N::translate('Message was not sent'));
 	$controller->pageHeader();
@@ -67,7 +67,7 @@ if (WT_USER_ID) {
 		$errors.=
 			'<p class="ui-state-error">'.WT_I18N::translate('You are not allowed to send messages that contain external links.').'</p>'.
 			'<p class="ui-state-highlight">'./* I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’ */ WT_I18N::translate('You should delete the “%1$s” from “%2$s” and try again.', $match[2], $match[1]).'</p>'.
-		AddToLog('Possible spam message from "'.$from_name.'"/"'.$from_email.'", IP="'.$WT_REQUEST->getClientIp().'", subject="'.$subject.'", body="'.$body.'"', 'auth');
+			\WT\Log::addAuthenticationLog('Possible spam message from "'.$from_name.'"/"'.$from_email.'", subject="'.$subject.'", body="'.$body.'"');
 		$action='compose';
 	}
 	$from=$from_email;
@@ -82,7 +82,7 @@ case 'compose':
 case 'send':
 	// Only send messages if we've come straight from the compose page.
 	if (!$WT_SESSION->good_to_send) {
-		AddToLog('Attempt to send message without visiting the compose page.  Spam attack?', 'auth');
+		\WT\Log::addAuthenticationLog('Attempt to send message without visiting the compose page.  Spam attack?');
 		$action='compose';
 	}
 	if (!WT_Filter::checkCsrf()) {
@@ -121,8 +121,7 @@ case 'compose':
 	echo WT_Filter::getCsrf();
 	echo '<table>';
 	if ($to != 'all' && $to != 'last_6mo' && $to != 'never_logged') {
-		echo '<tr><td></td><td>', WT_I18N::translate('This message will be sent to %s', '<b>'.getUserFullName($to_user_id).'</b>'), '<br>';
-		echo /* I18N: %s is the name of a language */ WT_I18N::translate('This user prefers to receive messages in %s', WT_I18N::languageName(get_user_setting($to_user_id, 'language'))), '</td></tr>';
+		echo '<tr><td></td><td>', WT_I18N::translate('This message will be sent to %s', '<b>' . WT_Filter::escapeHtml($to_user->getRealName()) . '</b>'), '</td></tr>';
 	}
 	if (!WT_USER_ID) {
 		echo '<tr><td valign="top" width="15%" align="right">', WT_I18N::translate('Your Name:'), '</td>';
@@ -157,26 +156,28 @@ case 'send':
 
 	$toarray = array($to);
 	if ($to == 'all') {
-		$toarray = get_all_users();
+		$toarray = array();
+		foreach (\WT\User::all() as $user) {
+			$toarray[$user->getUserId()] = $user->getUserName();
+		}
 	}
 	if ($to == 'never_logged') {
 		$toarray = array();
-		foreach (get_all_users() as $user_id=>$user_name) {
-			if (get_user_setting($user_id,'verified_by_admin') && get_user_setting($user_id, 'reg_timestamp') > get_user_setting($user_id, 'sessiontime')) {
-				$toarray[$user_id] = $user_name;
+		foreach (\WT\User::all() as $user) {
+			if ($user->getSetting('verified_by_admin') && $user->getSetting('reg_timestamp') > $user->getSetting('sessiontime')) {
+				$toarray[$user->getUserId()] = $user->getUserName();
 			}
 		}
 	}
 	if ($to == 'last_6mo') {
 		$toarray = array();
 		$sixmos = 60*60*24*30*6; //-- timestamp for six months
-		foreach (get_all_users() as $user_id=>$user_name) {
-			if (get_user_setting($user_id,'sessiontime')>0 && (WT_TIMESTAMP - get_user_setting($user_id, 'sessiontime') > $sixmos)) {
-				$toarray[$user_id] = $user_name;
-			}
-			//-- not verified by registration past 6 months
-			else if (!get_user_setting($user_id, 'verified_by_admin') && (WT_TIMESTAMP - get_user_setting($user_id, 'reg_timestamp') > $sixmos)) {
-				$toarray[$user_id] = $user_name;
+		foreach (\WT\User::all() as $user) {
+			if ($user->getSetting('sessiontime')>0 && (WT_TIMESTAMP - $user->getSetting('sessiontime') > $sixmos)) {
+				$toarray[$user->getUserId()] = $user->getUserName();
+			} elseif (!$user->getSetting('verified_by_admin') && (WT_TIMESTAMP - $user->getSetting('reg_timestamp') > $sixmos)) {
+				//-- not verified by registration past 6 months
+				$toarray[$user->getUserId()] = $user->getUserName();
 			}
 		}
 	}
@@ -199,7 +200,7 @@ case 'send':
 			WT_FlashMessages::addMessage(WT_I18N::translate('Message successfully sent to %s', WT_Filter::escapeHtml($to)));
 		} else {
 			WT_FlashMessages::addMessage(WT_I18N::translate('Message was not sent'));
-			AddToLog('Unable to send message.  FROM:'.$from.' TO:'.$to.' (failed to send)', 'error');
+			\WT\Log::addErrorLog('Unable to send message.  FROM:'.$from.' TO:'.$to.' (failed to send)');
 		}
 		$i++;
 	}

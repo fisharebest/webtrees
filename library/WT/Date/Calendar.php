@@ -28,11 +28,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 class WT_Date_Calendar {
 	const CALENDAR_ESCAPE = '@#DUNKNOWN@';
 	const MONTHS_IN_YEAR  = 12;
@@ -277,7 +272,6 @@ class WT_Date_Calendar {
 		$dm=$m-max($this->m,1);
 		$dd=$d-max($this->d,1);
 		if ($dd<0) {
-			$dd+=$this->DaysInMonth();
 			$dm--;
 		}
 		if ($dm<0) {

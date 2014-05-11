@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
-*/
+ */
 
 div.infowindow {
 	max-height: 240px;
@@ -108,8 +108,6 @@ ul.tabs {
  	background: #ddeeff;
  	border: 1px solid #666;
  	height: 20px;
- 	padding-left: 2px;
- 	padding-top: 2px;
  	padding: 0;
 }
 
@@ -117,7 +115,6 @@ ul.tabs {
 ul.tabs li {
 	float: left;
  	list-style-type: none;
- 	margin-left: 2px;
  	margin: 0;
  	padding: 0;
 }
@@ -125,7 +122,6 @@ ul.tabs li {
 /* link inside the tab. uses a background image */
 ul.tabs a {
 	background-color: #efefef;
-	border-bottom: 0;
 	border-radius: 4px 4px 0 0;
 	border: 1px solid #666;
 	color: #777;
@@ -221,44 +217,8 @@ ul.tabs a.current {
 	white-space: normal;
 }
 
-/* googlemap_style */
-#map_type {
-	margin: 0;
- 	font-family: Arial;
- 	font-size: 10px;
- 	list-style: none;
- 	padding: 0;
-}
-
-#map_type li {
-	display: block;
- 	border: 1px solid #000;
- 	cursor: pointer;
- 	float: left;
- 	margin-left: 2px;
- 	padding: 2px;
- 	text-align: center;
- 	width: 70px;
-}
-
-#map_type li.non_active {
-	background: #fff;
- 	color: #000;
- 	font-weight: normal;
-}
-
-#map_type li.active {
-	background: #888;
- 	color: #fff;
- 	font-weight: bold;
-}
-
-#map_type li:hover {
-	background: #ddd;
-}
-
-#googlemap_left {
-	margin-top: -14px !important;
+.iwstyle {
+	width: 360px;
 }
 
 #side_bar .gallery img,
@@ -271,9 +231,9 @@ ul.tabs a.current {
 	width: auto;
 }
 
-html[dir="rtl"] #side_bar .gallery img,
-html[dir="rtl"] .iwstyle .gallery img,
-html[dir="rtl"] .highlt_img .gallery img {
+[dir=rtl] #side_bar .gallery img,
+[dir=rtl] .iwstyle .gallery img,
+[dir=rtl] .highlt_img .gallery img {
 	float: right;
 	margin: 0 0 0 4px;
 }
@@ -287,12 +247,12 @@ html[dir="rtl"] .highlt_img .gallery img {
 	float: left;
 }
 
-html[dir="rtl"] #side_bar .icon-silhouette-M,
-html[dir="rtl"] #side_bar .icon-silhouette-F,
-html[dir="rtl"] #side_bar .icon-silhouette-U,
-html[dir="rtl"] .iwstyle .icon-silhouette-M,
-html[dir="rtl"] .iwstyle .icon-silhouette-F,
-html[dir="rtl"] .iwstyle .icon-silhouette-U {
+[dir=rtl] #side_bar .icon-silhouette-M,
+[dir=rtl] #side_bar .icon-silhouette-F,
+[dir=rtl] #side_bar .icon-silhouette-U,
+[dir=rtl] .iwstyle .icon-silhouette-M,
+[dir=rtl] .iwstyle .icon-silhouette-F,
+[dir=rtl] .iwstyle .icon-silhouette-U {
 	float: right;
 }
 
@@ -301,5 +261,5 @@ html[dir="rtl"] .iwstyle .icon-silhouette-U {
 }
 #side_bar .NAME {padding-left:5px;}
 #side_bar img {padding-right:5px;}
-html[dir="rtl"] #side_bar .NAME {padding-right:5px;}
-html[dir="rtl"] #side_bar img {padding-left:5px;}
+[dir=rtl] #side_bar .NAME {padding-right:5px;}
+[dir=rtl] #side_bar img {padding-left:5px;}

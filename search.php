@@ -51,14 +51,7 @@ $controller
 
 			// display an error message if there is insufficient data to perform a search on
 			if (year == "") {
-				message = true;
-				if (fname.length >= 2)
-					message = false;
-				if (lname.length >= 2)
-					message = false;
-				if (place.length >= 2)
-					message = false;
-				if (message) {
+				if (fname.length < 2 && lname.length < 2 && place.length < 2) {
 					alert("<?php echo WT_I18N::translate('Please enter more than one character'); ?>");
 					return false;
 				}
@@ -66,14 +59,7 @@ $controller
 
 			// display a special error if the year is entered without a valid Given Name, Last Name, or Place
 			if (year != "") {
-				message = true;
-				if (fname != "")
-					message = false;
-				if (lname != "")
-					message = false;
-				if (place != "")
-					message = false;
-				if (message) {
+				if (fname === "" && lname === "" && place === "") {
 					alert("<?php echo WT_I18N::translate('Please enter a Given name, Last name, or Place in addition to Year'); ?>");
 					frm.firstname.focus();
 					return false;
@@ -92,11 +78,6 @@ echo '<div id="search-page">
 	echo '<form method="post" name="searchform" onsubmit="return checknames(this);" action="search.php"><input type="hidden" name="action" value="', $controller->action, '"><input type="hidden" name="isPostBack" value="true">
 	<div id="search-page-table">';
   		?>
-		<script>
-	        function paste_char(value) {
-	            document.searchform.query.value+=value;
-	        }
-	    </script>
 		<?php
 		//========== General search Form ==========
 		if ($controller->action == "general") {

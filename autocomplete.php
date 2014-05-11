@@ -234,14 +234,15 @@ case 'PLAC': // Place names (with hierarchy), that include the search term
 	foreach (WT_Place::findPlaces($term, WT_GED_ID) as $place) {
 		$data[]=$place->getGedcomName();
 	}
-	if (!$data && get_gedcom_setting(WT_GED_ID, 'USE_GEONAMES')) {
+	if (!$data && get_gedcom_setting(WT_GED_ID, 'GEONAMES_ACCOUNT')) {
 		// No place found?  Use an external gazetteer
 		$url=
-			"http://ws.geonames.org/searchJSON".
+			"http://api.geonames.org/searchJSON".
 			"?name_startsWith=".urlencode($term).
 			"&lang=".WT_LOCALE.
 			"&fcode=CMTY&fcode=ADM4&fcode=PPL&fcode=PPLA&fcode=PPLC".
-			"&style=full";
+			"&style=full".
+			"&username=" . get_gedcom_setting(WT_GED_ID, 'GEONAMES_ACCOUNT');
 		// try to use curl when file_get_contents not allowed
 		if (ini_get('allow_url_fopen')) {
 			$json = file_get_contents($url);

@@ -1,0 +1,9 @@
+/*
+ * iPad Specific style
+ */
+@media only screen and (orientation: portrait) {
+	/* portrait styles here */
+	#wrap {
+		width: 768px;
+	}
+}

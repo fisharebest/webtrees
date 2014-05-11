@@ -43,20 +43,21 @@ if ($show_all_firstnames=='yes') {
 	$falpha = WT_Filter::get('falpha'); // All first names beginning with this letter
 }
 
-$show_marnm=get_user_setting(WT_USER_ID, WT_SCRIPT_NAME.'_show_marnm');
 switch (WT_Filter::get('show_marnm', 'no|yes')) {
 case 'no':
-	$show_marnm=false;
-	if (WT_USER_ID) {
-		set_user_setting(WT_USER_ID, WT_SCRIPT_NAME.'_show_marnm', $show_marnm);
+	$show_marnm = false;
+	if (\WT\Auth::id()) {
+		\WT\Auth::user()->setSetting(WT_USER_ID, WT_SCRIPT_NAME.'_show_marnm', $show_marnm);
 	}
 	break;
 case 'yes':
-	$show_marnm=true;
-	if (WT_USER_ID) {
-		set_user_setting(WT_USER_ID, WT_SCRIPT_NAME.'_show_marnm', $show_marnm);
+	$show_marnm = true;
+	if (\WT\Auth::id()) {
+		\WT\Auth::user()->setSetting(WT_USER_ID, WT_SCRIPT_NAME.'_show_marnm', $show_marnm);
 	}
 	break;
+default:
+	$show_marnm = \WT\Auth::id() && \WT\Auth::user()->getSetting(WT_SCRIPT_NAME.'_show_marnm');
 }
 
 // Make sure selections are consistent.

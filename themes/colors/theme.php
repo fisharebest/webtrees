@@ -94,10 +94,10 @@ $COLOR_THEME_LIST=array(
 // If we've selected a new palette, and we are logged in, set this value as a default.
 if (isset($_GET['themecolor']) && array_key_exists($_GET['themecolor'], $COLOR_THEME_LIST)) {
 	// Request to change color
-	$subColor=$_GET['themecolor'];
-	if (WT_USER_ID) {
-		set_user_setting(WT_USER_ID, 'themecolor', $subColor);
-		if (WT_USER_IS_ADMIN) {
+	$subColor = $_GET['themecolor'];
+	if (\WT\Auth::id()) {
+		\WT\Auth::user()->setSetting('themecolor', $subColor);
+		if (\WT\Auth::isAdmin()) {
 			WT_Site::preference('DEFAULT_COLOR_PALETTE', $subColor);
 		}
 	}
@@ -106,28 +106,28 @@ if (isset($_GET['themecolor']) && array_key_exists($_GET['themecolor'], $COLOR_T
 	$WT_SESSION->subColor=$subColor;
 }
 // If we are logged in, use our preference
-$subColor=null;
-if (WT_USER_ID) {
-	$subColor=get_user_setting(WT_USER_ID, 'themecolor');
+$subColor = null;
+if (\WT\Auth::id()) {
+	$subColor = \WT\Auth::user()->getSetting('themecolor');
 }
 // If not logged in or no preference, use one we selected earlier in the session?
 if (!$subColor) {
-	$subColor=$WT_SESSION->subColor;
+	$subColor = $WT_SESSION->subColor;
 }
 // We haven't selected one this session?  Use the site default
 if (!$subColor) {
-	$subColor=WT_Site::preference('DEFAULT_COLOR_PALETTE');
+	$subColor = WT_Site::preference('DEFAULT_COLOR_PALETTE');
 }
 // Make sure our selected palette actually exists
 if (!array_key_exists($subColor, $COLOR_THEME_LIST)) {
-	$subColor='ash';
+	$subColor = 'ash';
 }
 
 // Theme name - this needs double quotes, as file is scanned/parsed by script
 $theme_name = "colors";
 
 // A version number in the path prevents browser-cache problems during upgrade
-define('WT_CSS_URL', WT_THEME_URL . 'css-1.5.2/');
+define('WT_CSS_URL', WT_THEME_URL . 'css-1.5.3/');
 
 $footerfile = WT_THEME_DIR . 'footer.php';
 $headerfile = WT_THEME_DIR . 'header.php';

@@ -18,11 +18,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 class WT_Tree {
 	// Tree attributes
 	public $tree_id         =null; // The "gedcom ID" number
@@ -78,7 +73,7 @@ class WT_Tree {
 			if ($this->preference($setting_name)!=$setting_value) {
 				$this->preference[$setting_name]=$setting_value;
 				// Audit log of changes
-				AddToLog('Gedcom setting "'.$setting_name.'" set to "'.$setting_value.'"', 'config');
+				\WT\Log::addConfigurationLog('Gedcom setting "' . $setting_name . '" set to "' . $setting_value . '"');
 			}
 			WT_DB::prepare(
 				"REPLACE INTO `##gedcom_setting` (gedcom_id, setting_name, setting_value) VALUES (?, ?, LEFT(?, 255))"
@@ -108,7 +103,7 @@ class WT_Tree {
 			// If parameter two is specified, then SET the setting.
 			if ($this->preference($setting_name)!=$setting_value) {
 				// Audit log of changes
-				AddToLog('Gedcom setting "'.$setting_name.'" set to "'.$setting_value.'"', 'config');
+				\WT\Log::addConfigurationLog('Gedcom setting "'.$setting_name.'" set to "'.$setting_value.'"');
 			}
 			WT_DB::prepare(
 				"REPLACE INTO `##user_gedcom_setting` (user_id, gedcom_id, setting_name, setting_value) VALUES (?, ?, ?, LEFT(?, 255))"
@@ -118,11 +113,8 @@ class WT_Tree {
 	}
 
 	// Can a user accept changes for this tree?
-	public function canAcceptChanges($user_id) {
-		return
-			userIsAdmin($user_id) ||
-			$this->userPreference($user_id, 'canedit')=='admin' ||
-			$this->userPreference($user_id, 'canedit')=='accept';
+	public function canAcceptChanges(\WT\User $user) {
+		return \WT\Auth::isModerator($this, $user);
 	}
 
 	// Fetch all the trees that we have permission to access.
@@ -305,7 +297,6 @@ class WT_Tree {
 		}
 		set_gedcom_setting($tree_id, 'THEME_DIR',                    'webtrees');
 		set_gedcom_setting($tree_id, 'THUMBNAIL_WIDTH',              '100');
-		set_gedcom_setting($tree_id, 'USE_GEONAMES',                 false);
 		set_gedcom_setting($tree_id, 'USE_RIN',                      false);
 		set_gedcom_setting($tree_id, 'USE_SILHOUETTE',               true);
 		set_gedcom_setting($tree_id, 'WATERMARK_THUMB',              false);
@@ -401,7 +392,7 @@ class WT_Tree {
 		if ($file_pointer === false) {
 			return false;
 		}
-			
+
 		$buffer = reformat_record_export(gedcom_header($this->tree_name));
 
 		$stmt = WT_DB::prepare(

@@ -24,7 +24,7 @@ require WT_ROOT.'includes/functions/functions_edit.php';
 
 $controller=new WT_Controller_Page();
 $controller
-	->requireAdminLogin()
+	->restrictAccess(\WT\Auth::isAdmin())
 	->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 	->addExternalJavascript(WT_JQUERY_JEDITABLE_URL)
 	->setPageTitle(WT_I18N::translate('Site access rules'));
@@ -44,6 +44,11 @@ case 'robot':
 case 'load_rules':
 	Zend_Session::writeClose();
 	// AJAX callback for datatables
+	$search = WT_Filter::get('search');
+	$search = $search['value'];
+	$start  = WT_Filter::getInteger('start');
+	$length = WT_Filter::getInteger('length');
+
 	$sql=
 		"SELECT SQL_CALC_FOUND_ROWS".
 		" INET_NTOA(ip_address_start), ip_address_start, INET_NTOA(ip_address_end), ip_address_end, user_agent_pattern, rule, comment, site_access_rule_id".
@@ -51,148 +56,146 @@ case 'load_rules':
 		" WHERE rule<>'unknown'";
 	$args=array();
 
-	$sSearch = WT_Filter::get('sSearch');
-	if ($sSearch) {
+	if ($search) {
 		$sql.=
 			" AND (INET_ATON(?) BETWEEN ip_address_start AND ip_address_end".
 			" OR INET_NTOA(ip_address_start) LIKE CONCAT('%', ?, '%')".
 			" OR INET_NTOA(ip_address_end) LIKE CONCAT('%', ?, '%')".
 			" OR user_agent_pattern LIKE CONCAT('%', ?, '%')".
 			" OR comment LIKE CONCAT('%', ?, '%'))";
-		$args[]=$sSearch;
-		$args[]=$sSearch;
-		$args[]=$sSearch;
-		$args[]=$sSearch;
-		$args[]=$sSearch;
+		$args[]=$search;
+		$args[]=$search;
+		$args[]=$search;
+		$args[]=$search;
+		$args[]=$search;
 	}
 
-	$iSortingCols = WT_Filter::getInteger('iSortingCols');
-	if ($iSortingCols) {
-		$sql.=" ORDER BY ";
-		for ($i=0; $i<$iSortingCols; ++$i) {
+	$order = WT_Filter::get('order');
+	if ($order) {
+		$sql .= ' ORDER BY ';
+		for ($i = 0; $i < count($order); ++$i) {
+			if ($i > 0) {
+				$sql .= ',';
+			}
 			// Datatables numbers columns 0, 1, 2, ...
 			// MySQL numbers columns 1, 2, 3, ...
-			switch (WT_Filter::get('sSortDir_'.$i)) {
+			switch ($order[$i]['dir']) {
 			case 'asc':
-				$sql.=(1 + WT_Filter::getInteger('iSortCol_'.$i)).' ASC ';
+				$sql .= (1 + $order[$i]['column']) . ' ASC ';
 				break;
 			case 'desc':
-				$sql.=(1 + WT_Filter::getInteger('iSortCol_'.$i)).' DESC ';
+				$sql .= (1 + $order[$i]['column']) . ' DESC ';
 				break;
-			}
-			if ($i<$iSortingCols-1) {
-				$sql.=',';
 			}
 		}
 	} else {
-		$sql.=" ORDER BY updated DESC";
+		$sql .= 'ORDER BY 1 ASC';
 	}
 
-	$iDisplayStart  = WT_Filter::getInteger('iDisplayStart');
-	$iDisplayLength = WT_Filter::getInteger('iDisplayLength');
-	if ($iDisplayLength>0) {
-		$sql.=" LIMIT " . $iDisplayStart . ',' . $iDisplayLength;
+	if ($length>0) {
+		$sql.=" LIMIT " . $start . ',' . $length;
 	}
 
 	// This becomes a JSON list, not a JSON array, so we need numeric keys.
-	$aaData=WT_DB::prepare($sql)->execute($args)->fetchAll(PDO::FETCH_NUM);
+	$data = WT_DB::prepare($sql)->execute($args)->fetchAll(PDO::FETCH_NUM);
 	// Reformat the data for display
-	foreach ($aaData as &$row) {
-		$site_access_rule_id=$row[7];
-		$user_agent=$row[4];
-		$row[0]=edit_field_inline('site_access_rule-ip_address_start-'.$site_access_rule_id, $row[0]);
-		$row[2]=edit_field_inline('site_access_rule-ip_address_end-'.$site_access_rule_id, $row[2]);
-		$row[4]=edit_field_inline('site_access_rule-user_agent_pattern-'.$site_access_rule_id, $row[4]);
-		$row[5]=select_edit_control_inline('site_access_rule-rule-'.$site_access_rule_id, array(
-			'allow'=>/* I18N: An access rule - allow access to the site */ WT_I18N::translate('allow'),
-			'deny' =>/* I18N: An access rule - deny access to the site */  WT_I18N::translate('deny'),
-			'robot'=>/* I18N: http://en.wikipedia.org/wiki/Web_crawler */  WT_I18N::translate('robot'),
-		), null, $row[5]);
-		$row[6]=edit_field_inline('site_access_rule-comment-'.$site_access_rule_id, $row[6]);
-		$row[7]='<i class="icon-delete" onclick="if (confirm(\''.WT_Filter::escapeHtml(WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($user_agent))).'\')) { document.location=\''.WT_SCRIPT_NAME.'?action=delete&amp;site_access_rule_id='.$site_access_rule_id.'\'; }"></i>';
+	foreach ($data as &$datum) {
+		$site_access_rule_id = $datum[7];
+		$user_agent = $datum[4];
+		$datum[0] = edit_field_inline('site_access_rule-ip_address_start-' . $site_access_rule_id, $datum[0]);
+		$datum[2] = edit_field_inline('site_access_rule-ip_address_end-' . $site_access_rule_id, $datum[2]);
+		$datum[4] = edit_field_inline('site_access_rule-user_agent_pattern-' . $site_access_rule_id, $datum[4]);
+		$datum[5] = select_edit_control_inline('site_access_rule-rule-' . $site_access_rule_id, array(
+			'allow' => /* I18N: An access rule - allow access to the site */ WT_I18N::translate('allow'),
+			'deny'  => /* I18N: An access rule - deny access to the site */  WT_I18N::translate('deny'),
+			'robot' => /* I18N: http://en.wikipedia.org/wiki/Web_crawler */  WT_I18N::translate('robot'),
+		), null, $datum[5]);
+		$datum[6] = edit_field_inline('site_access_rule-comment-'.$site_access_rule_id, $datum[6]);
+		$datum[7] = '<i class="icon-delete" onclick="if (confirm(\'' . WT_Filter::escapeHtml(WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($user_agent))).'\')) { document.location=\'' . WT_SCRIPT_NAME . '?action=delete&amp;site_access_rule_id=' . $site_access_rule_id . '\'; }"></i>';
 	}
 
-	// Total filtered rows
-	$iTotalDisplayRecords=WT_DB::prepare("SELECT FOUND_ROWS()")->fetchColumn();
-	// Total unfiltered rows
-	$iTotalRecords=WT_DB::prepare("SELECT COUNT(*) FROM `##site_access_rule` WHERE rule<>'unknown'")->fetchColumn();
+	// Total filtered/unfiltered rows
+	$recordsFiltered = WT_DB::prepare("SELECT FOUND_ROWS()")->fetchColumn();
+	$recordsTotal = WT_DB::prepare("SELECT COUNT(*) FROM `##site_access_rule` WHERE rule<>'unknown'")->fetchColumn();
 
 	header('Content-type: application/json');
 	echo json_encode(array( // See http://www.datatables.net/usage/server-side
-		'sEcho'                => WT_Filter::getInteger('sEcho'), // Always an integer
-		'iTotalRecords'        => $iTotalRecords,
-		'iTotalDisplayRecords' => $iTotalDisplayRecords,
-		'aaData'               => $aaData
+		'draw'            => WT_Filter::getInteger('draw'), // Always an integer
+		'recordsTotal'    => $recordsTotal,
+		'recordsFiltered' => $recordsFiltered,
+		'data'            => $data
 	));
 	exit;
 case 'load_unknown':
 	Zend_Session::writeClose();
 	// AJAX callback for datatables
+	$search = WT_Filter::get('search');
+	$search = $search['value'];
+	$start  = WT_Filter::getInteger('start');
+	$length = WT_Filter::getInteger('length');
+
 	$sql=
 		"SELECT SQL_CALC_FOUND_ROWS".
 		" INET_NTOA(ip_address_start), ip_address_start, user_agent_pattern, DATE(updated) AS updated, site_access_rule_id".
 		" FROM `##site_access_rule`".
 		" WHERE rule='unknown'";
-	$args=array();
+	$args = array();
 
-	$sSearch = WT_Filter::get('sSearch');
-	if ($sSearch) {
-		$sql.=
+	if ($search) {
+		$sql .=
 			" AND (INET_ATON(ip_address_start) LIKE CONCAT('%', ?, '%')".
 			" OR user_agent_pattern LIKE CONCAT('%', ?, '%'))";
-		$args[]=$sSearch;
-		$args[]=$sSearch;
+		$args[] = $search;
+		$args[] = $search;
 	}
 
-	$iSortingCols = WT_Filter::getInteger('iSortingCols');
-	if ($iSortingCols) {
-		$sql.=" ORDER BY ";
-		for ($i=0; $i<$iSortingCols; ++$i) {
+	$order = WT_Filter::get('order');
+	if ($order) {
+		$sql .= ' ORDER BY ';
+		for ($i = 0; $i < count($order); ++$i) {
+			if ($i > 0) {
+				$sql .= ',';
+			}
 			// Datatables numbers columns 0, 1, 2, ...
 			// MySQL numbers columns 1, 2, 3, ...
-			switch (WT_Filter::get('sSortDir_'.$i)) {
+			switch ($order[$i]['dir']) {
 			case 'asc':
-				$sql.=(1 + WT_Filter::getInteger('iSortCol_'.$i)).' ASC ';
+				$sql .= (1 + $order[$i]['column']) . ' ASC ';
 				break;
 			case 'desc':
-				$sql.=(1 + WT_Filter::getInteger('iSortCol_'.$i)).' DESC ';
+				$sql .= (1 + $order[$i]['column']) . ' DESC ';
 				break;
-			}
-			if ($i<$iSortingCols-1) {
-				$sql.=',';
 			}
 		}
 	} else {
-		$sql.=" ORDER BY updated DESC";
+		$sql .= 'ORDER BY 1 ASC';
 	}
 
-	$iDisplayStart  = WT_Filter::getInteger('iDisplayStart');
-	$iDisplayLength = WT_Filter::getInteger('iDisplayLength');
-	if ($iDisplayLength>0) {
-		$sql.=" LIMIT " . $iDisplayStart . ',' . $iDisplayLength;
+
+	if ($length>0) {
+		$sql .= " LIMIT " . $start . ',' . $length;
 	}
 
 	// This becomes a JSON list, not a JSON array, so we need numeric keys.
-	$aaData=WT_DB::prepare($sql)->execute($args)->fetchAll(PDO::FETCH_NUM);
+	$data = WT_DB::prepare($sql)->execute($args)->fetchAll(PDO::FETCH_NUM);
 	// Reformat the data for display
-	foreach ($aaData as &$row) {
-		$site_access_rule_id=$row[4];
-		$row[4]='<i class="icon-yes" onclick="document.location=\''.WT_SCRIPT_NAME.'?action=allow&amp;site_access_rule_id='.$site_access_rule_id.'\';"></i>';
-		$row[5]='<i class="icon-yes" onclick="document.location=\''.WT_SCRIPT_NAME.'?action=deny&amp;site_access_rule_id='.$site_access_rule_id.'\';"></i>';
-		$row[6]='<i class="icon-yes" onclick="document.location=\''.WT_SCRIPT_NAME.'?action=robot&amp;site_access_rule_id='.$site_access_rule_id.'\';"></i>';
+	foreach ($data as &$datum) {
+		$site_access_rule_id=$datum[4];
+		$datum[4] = '<i class="icon-yes" onclick="document.location=\'' . WT_SCRIPT_NAME . '?action=allow&amp;site_access_rule_id=' . $site_access_rule_id . '\';"></i>';
+		$datum[5] = '<i class="icon-yes" onclick="document.location=\'' . WT_SCRIPT_NAME .  '?action=deny&amp;site_access_rule_id=' . $site_access_rule_id . '\';"></i>';
+		$datum[6] = '<i class="icon-yes" onclick="document.location=\'' . WT_SCRIPT_NAME . '?action=robot&amp;site_access_rule_id=' . $site_access_rule_id . '\';"></i>';
 	}
 
-	// Total filtered rows
-	$iTotalDisplayRecords=WT_DB::prepare("SELECT FOUND_ROWS()")->fetchColumn();
-	// Total unfiltered rows
-	$iTotalRecords=WT_DB::prepare("SELECT COUNT(*) FROM `##site_access_rule` WHERE rule='unknown'")->fetchColumn();
+	// Total filtered/unfiltered rows
+	$recordsFiltered = WT_DB::prepare("SELECT FOUND_ROWS()")->fetchColumn();
+	$recordsTotal    = WT_DB::prepare("SELECT COUNT(*) FROM `##site_access_rule` WHERE rule<>'unknown'")->fetchColumn();
 
 	header('Content-type: application/json');
 	echo json_encode(array( // See http://www.datatables.net/usage/server-side
-		'sEcho'                => WT_Filter::getInteger('sEcho'), // Always an integer
-		'iTotalRecords'        => $iTotalRecords,
-		'iTotalDisplayRecords' => $iTotalDisplayRecords,
-		'aaData'               => $aaData
+		'draw'            => WT_Filter::getInteger('draw'), // Always an integer
+		'recordsTotal'    => $recordsTotal,
+		'recordsFiltered' => $recordsFiltered,
+		'data'            => $data
 	));
 	exit;
 }
@@ -203,27 +206,27 @@ $controller
 		jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
 		jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
 		jQuery("#site_access_rules").dataTable({
-			"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
-			"sAjaxSource": "'.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME.'?action=load_rules",
-			"bServerSide":true,
+			dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
+			ajax: "'.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME.'?action=load_rules",
+			serverSide: true,
 			'.WT_I18N::datatablesI18N().',
-			"bJQueryUI": true,
-			"bAutoWidth":false,
-			"bProcessing": true,
-			"sPaginationType": "full_numbers",
-			"bStateSave": true,
-			"iCookieDuration": 180,
-			"aoColumns": [
-				/* 0 ip_address_start        */ {"iDataSort": 1, "sClass": "ip_address"},
-				/* 1 ip_address_start (sort) */ {"sType": "numeric", "bVisible": false},
-				/* 2 ip_address_end          */ {"iDataSort": 3, "sClass": "ip_address"},
-				/* 3 ip_address_end (sort)   */ {"sType": "numeric", "bVisible": false},
-				/* 4 user_agent_pattern      */ {"sClass": "ua_string"},
-				/* 5 comment                 */ {},
-				/* 6 rule                    */ {},
-				/* 7 <delete>                */ {"bSortable": false, "sClass": "center"}
+			jQueryUI: true,
+			autoWidth: false,
+			processing: true,
+			pagingType: "full_numbers",
+			stateSave: true,
+			stateDuration: 180,
+			columns: [
+				/* 0 ip_address_start        */ { dataSort: 1, class: "ip_address" },
+				/* 1 ip_address_start (sort) */ { type: "numeric", visible: false },
+				/* 2 ip_address_end          */ { dataSort: 3, class: "ip_address" },
+				/* 3 ip_address_end (sort)   */ { type: "numeric", visible: false },
+				/* 4 user_agent_pattern      */ { class: "ua_string" },
+				/* 5 comment                 */ { },
+				/* 6 rule                    */ { },
+				/* 7 <delete>                */ { sortable: false, class: "center" }
 			],
-			"fnDrawCallback": function() {
+			fnDrawCallback: function() {
 				// Our JSON responses include Javascript as well as HTML.  This does not get
 				// executed, So extract it, and execute it
 				jQuery("#site_access_rules script").each(function() {
@@ -232,24 +235,24 @@ $controller
 			}
 		});
 		jQuery("#unknown_site_visitors").dataTable({
-			"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
-			"sAjaxSource": "'.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME.'?action=load_unknown",
-			"bServerSide":true,
+			dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
+			ajax: "'.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME.'?action=load_unknown",
+			serverSide: true,
 			'.WT_I18N::datatablesI18N().',
-			"bJQueryUI": true,
-			"bAutoWidth":false,
-			"bProcessing": true,
-			"bStateSave": true,
-			"iCookieDuration": 180,
-			"sPaginationType": "full_numbers",
-			"aoColumns": [
-				/* 0 ip_address         */ {"iDataSort": 1, "sClass": "ip_address"},
-				/* 0 ip_address (sort)  */ {"sType": "numeric", "bVisible": false},
-				/* 1 user_agent_pattern */ {"sClass": "ua_string"},
-				/* 2 updated            */ {"sClass": "ua_string"},
-				/* 3 <allowed>          */ {"bSortable": false, "sClass": "center"},
-				/* 4 <banned>           */ {"bSortable": false, "sClass": "center"},
-				/* 5 <search-engine>    */ {"bSortable": false, "sClass": "center"}
+			jQueryUI: true,
+			autoWidth: false,
+			processing: true,
+			stateSave: true,
+			stateDuration: 180,
+			pagingType: "full_numbers",
+			columns: [
+				/* 0 ip_address         */ { dataSort: 1, class: "ip_address" },
+				/* 0 ip_address (sort)  */ { type: "numeric", visible: false },
+				/* 1 user_agent_pattern */ { class: "ua_string" },
+				/* 2 updated            */ { class: "ua_string" },
+				/* 3 <allowed>          */ { sortable: false, class: "center" },
+				/* 4 <banned>           */ { sortable: false, class: "center" },
+				/* 5 <search-engine>    */ { sortable: false, class: "center" }
 			]
 		});
 	');

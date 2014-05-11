@@ -52,7 +52,6 @@ $person1=WT_Individual::getInstance($pid1);
 $person2=WT_Individual::getInstance($pid2);
 
 $controller
-	->addInlineJavascript('var pastefield; function paste_id(value) { pastefield.value=value; }') // For the 'find indi' link
 	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');
 
 if ($person1 && $person1->canShowName() && $person2 && $person2->canShowName()) {
@@ -161,7 +160,7 @@ if ($person1 && $person1->canShowName() && $person2 && $person2->canShowName()) 
 $maxyoffset = $Dbaseyoffset;
 if ($person1 && $person2) {
 	if (!$disp) {
-		print_privacy_error();
+		echo '<div class="error">', WT_I18N::translate('This information is private and cannot be shown.'), '</div>';
 	} elseif (!$node) {
 		if ($path_to_find==0) {
 			echo '<p class="error">', WT_I18N::translate('No link between the two individuals could be found.'), '</p>';
@@ -282,6 +281,7 @@ if ($person1 && $person2) {
 						$joiny = $joiny+$asc*$lh;
 						echo "<div id=\"joinb", $index, "\" style=\"position:absolute; ", $TEXT_DIRECTION=='ltr'?'left':'right', ':', $joinx + $Dbxspacing, 'px; top:', $joiny + $Dbyspacing, "px;\" align=\"center\"><img src=\"", $WT_IMAGES["hline"], "\" align=\"left\" width=\"", $joinw, "\" height=\"", $joinh, "\" alt=\"\"></div>";
 					}
+					else $change_count='';
 					$previous='parent';
 					break;
 				case 'brother':
@@ -344,6 +344,7 @@ if ($person1 && $person2) {
 						$joiny = $joiny-$asc*$lh;
 						echo '<div id="joinb', $index, '" style="position:absolute; ', $TEXT_DIRECTION=='ltr'?'left':'right', ':', $joinx+$Dbxspacing, 'px; top:', $joiny+$Dbyspacing, 'px;" align="center"><img src="', $WT_IMAGES['hline'], '" align="left" width="', $joinw, '" height="', $joinh, '" alt=""></div>';
 					}
+					else $change_count='';
 					$previous='child';
 					break;
 				}

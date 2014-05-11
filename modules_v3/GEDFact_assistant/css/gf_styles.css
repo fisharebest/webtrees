@@ -23,75 +23,81 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
- 
+
 /* --------- Styles used in /_MEDIA/media_3_search.php ---*/
 
 /* Outer border around nav elements */
 .outer_nav {
-  border:3px #808080 outset;
- }
+	border: 3px #808080 outset;
+}
 
-#media-links table.facts_table{width:270px;}
- 
+#media-links table.facts_table {
+	width: 270px;
+}
+
 /* Transparent cell border */
 .transparent {
-border: 0px solid transparent;
+	border: 0;
 }
 
 /* top Search box */
 input[type='text'] {
-    background: #FFFFFF;
-    color: #000000;
-    border: 1px solid #000000;
+	background: #FFFFFF;
+	color: #000000;
+	border: 1px solid #000000;
 	width: 120px;
 }
 
 /* "Head" button images */
 .headimg {
-margin-top:-4px;
-border:0;
+	margin-top: -4px;
+	border: 0;
 }
 .headimg2 {
-height:17px;
-border-style:none;
-margin:-3px;
-margin-left:0px;
+	height: 17px;
+	border-style: none;
+	margin: -3px;
+	margin-left: 0;
 }
 
-/* Creates clickable <td> for fly-outs */ 
-td a { 
+/* Creates clickable <td> for fly-outs */
+td a {
 	display: block;
 	text-decoration: none;
 }
 
- /* Prevents clickable td for Search <td> */ 
-td #srch a { 
-	display: inline; 
+	/* Prevents clickable td for Search <td> */
+td #srch a {
+	display: inline;
 }
 
-/* Flyouts <td> */   
-#flyoutFam, #flyoutPar, #flyoutStep {
-	position: absolute; 
-	top: -15px; 
-	left: 80px;
+/* Flyouts <td> */
+#flyoutFam,
+#flyoutPar,
+#flyoutStep {
+	position: absolute;
+	top: -15px;
+	left: 15px;
 	width: 150px;
 }
-#flyoutFamRTL, #flyoutParRTL, #flyoutStepRTL {
-	position: absolute; 
-	top: -15px; 
-	right: 35px;
+
+[dir=rtl] #flyoutFam,
+[dir=rtl] #flyoutPar,
+[dir=rtl] #flyoutStep {
+	left: 0;
+	right: 15px;
 }
-#flyoutFam td, #flyoutPar td, #flyoutStep td, #flyoutFamRTL td, #flyoutParRTL td, #flyoutStepRTL td {
-	white-space: normal; 
-	font-size:10px;
-	font-weight:normal;
+
+#flyoutFam td,
+#flyoutPar td,
+#flyoutStep td {
+	white-space: normal;
+	font-size: 10px;
+	font-weight: normal;
 	text-decoration: none;
 }
 
 div #spouseFam {
-	margin-left:13px;
-	margin-top:0px;
+	margin-left: 13px;
+	margin-top: 0;
 }
-
-/*-------------------------------------------------*/
-

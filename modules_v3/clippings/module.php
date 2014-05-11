@@ -140,11 +140,6 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 				if ($clip_ctrl->action!='add') {
 
 					echo WT_I18N::translate('The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the <b>Download Now</b> link.  Follow the instructions and links.</li></ul>');
-
-					echo '<script>';
-					echo 'var pastefield;';
-					echo 'function paste_id(value) {pastefield.value=value;}';
-					echo '</script>';
 					?>
 					<form method="get" name="addin" action="module.php">
 					<input type="hidden" name="mod" value="clippings">
@@ -197,7 +192,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 
 					<?php if (WT_USER_GEDCOM_ADMIN) {	?>
 						<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('Apply privacy settings?'), help_link('apply_privacy'); ?></td>
-						<td class="list_value">
+						<td class="optionbox">
 							<input type="radio" name="privatize_export" value="none" checked="checked"> <?php echo WT_I18N::translate('None'); ?><br>
 							<input type="radio" name="privatize_export" value="gedadmin"> <?php echo WT_I18N::translate('Manager'); ?><br>
 							<input type="radio" name="privatize_export" value="user"> <?php echo WT_I18N::translate('Member'); ?><br>
@@ -205,7 +200,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 						</td></tr>
 					<?php } elseif (WT_USER_CAN_ACCESS) {	?>
 						<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('Apply privacy settings?'), help_link('apply_privacy'); ?></td>
-						<td class="list_value">
+						<td class="optionbox">
 							<input type="radio" name="privatize_export" value="user" checked="checked"> <?php echo WT_I18N::translate('Member'); ?><br>
 							<input type="radio" name="privatize_export" value="visitor"> <?php echo WT_I18N::translate('Visitor'); ?>
 						</td></tr>
@@ -215,7 +210,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 					<td class="optionbox"><input type="checkbox" name="convert" value="yes"></td></tr>
 
 					<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('Add the GEDCOM media path to filenames'), help_link('GEDCOM_MEDIA_PATH'); ?></td>
-					<td class="list_value">
+					<td class="optionbox">
 						<input type="checkbox" name="conv_path" value="<?php echo WT_Filter::escapeHtml($GEDCOM_MEDIA_PATH); ?>">
 						<span dir="auto"><?php echo WT_Filter::escapeHtml($GEDCOM_MEDIA_PATH); ?></span>
 					</td></tr>
@@ -229,13 +224,6 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 					</table>
 					<br>
 
-					<script>
-					var pastefield;
-					function paste_id(value)
-					{
-						pastefield.value=value;
-					}
-					</script>
 					<form method="get" name="addin" action="module.php">
 					<input type="hidden" name="mod" value="clippings">
 					<input type="hidden" name="mod_action" value="index">
@@ -588,6 +576,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 				'	<input type="radio" name="privatize_export" value="visitor"> '.WT_I18N::translate('Visitor').
 				'</td></tr>';
 		} elseif (WT_USER_CAN_ACCESS) {
+			$out.=
 				'<tr><td class="descriptionbox width50 wrap">'.WT_I18N::translate('Apply privacy settings?').help_link('apply_privacy').'</td>'.
 				'<td class="list_value">'.
 				'	<input type="radio" name="privatize_export" value="user" checked="checked"> '.WT_I18N::translate('Member').'<br>'.
