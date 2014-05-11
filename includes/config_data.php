@@ -190,6 +190,7 @@ $nondatefacts=array(
 	'CHIL',
 	'EMAIL',
 	'FAX',
+	'FILE',
 	'HUSB',
 	'NAME',
 	'NCHI',
