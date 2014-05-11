@@ -35,8 +35,6 @@ if (!defined('WT_WEBTREES')) {
  */
 define('WT_CLASS_REPORTPEDIGREE_PHP', '');
 
-require_once WT_ROOT.'library/tcpdf/tcpdf.php';
-
 /**
  * Main Report Pedigree on single Page Class for PDF
  *
