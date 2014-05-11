@@ -333,21 +333,24 @@ function print_addnewsource_link($element_id) {
 }
 
 /**
-* add a new tag input field
-*
-* called for each fact to be edited on a form.
-* Fact level=0 means a new empty form : data are POSTed by name
-* else data are POSTed using arrays :
-* glevels[] : tag level
-*  islink[] : tag is a link
-*     tag[] : tag name
-*    text[] : tag value
-*
-* @param string $tag fact record to edit (eg 2 DATE xxxxx)
-* @param string $upperlevel optional upper level tag (eg BIRT)
-* @param string $label An optional label to echo instead of the default
-* @param string $extra optional text to display after the input field
-*/
+ * add a new tag input field
+ *
+ * called for each fact to be edited on a form.
+ * Fact level=0 means a new empty form : data are POSTed by name
+ * else data are POSTed using arrays :
+ * glevels[] : tag level
+ *  islink[] : tag is a link
+ *     tag[] : tag name
+ *    text[] : tag value
+ *
+ * @param string        $tag        fact record to edit (eg 2 DATE xxxxx)
+ * @param string        $upperlevel optional upper level tag (eg BIRT)
+ * @param string        $label      An optional label to echo instead of the default
+ * @param string        $extra      optional text to display after the input field
+ * @param WT_Individual $person     For male/female translations
+ *
+ * @return string
+ */
 function add_simple_tag(
 	$tag, $upperlevel = '', $label = '', $extra = null,
 	WT_Individual $person = null
@@ -1012,28 +1015,28 @@ function addNewFact($fact) {
 }
 
 /**
-* This function splits the $glevels, $tag, $islink, and $text arrays so that the
-* entries associated with a SOUR record are separate from everything else.
-*
-* Input arrays:
-* - $glevels[] - an array of the gedcom level for each line that was edited
-* - $tag[] - an array of the tags for each gedcom line that was edited
-* - $islink[] - an array of 1 or 0 values to indicate when the text is a link element
-* - $text[] - an array of the text data for each line
-*
-* Output arrays:
-* ** For the SOUR record:
-* - $glevelsSOUR[] - an array of the gedcom level for each line that was edited
-* - $tagSOUR[] - an array of the tags for each gedcom line that was edited
-* - $islinkSOUR[] - an array of 1 or 0 values to indicate when the text is a link element
-* - $textSOUR[] - an array of the text data for each line
-* ** For the remaining records:
-* - $glevelsRest[] - an array of the gedcom level for each line that was edited
-* - $tagRest[] - an array of the tags for each gedcom line that was edited
-* - $islinkRest[] - an array of 1 or 0 values to indicate when the text is a link element
-* - $textRest[] - an array of the text data for each line
-*
-*/
+ * This function splits the $glevels, $tag, $islink, and $text arrays so that the
+ * entries associated with a SOUR record are separate from everything else.
+ *
+ * Input arrays:
+ * - $glevels[] - an array of the gedcom level for each line that was edited
+ * - $tag[] - an array of the tags for each gedcom line that was edited
+ * - $islink[] - an array of 1 or 0 values to indicate when the text is a link element
+ * - $text[] - an array of the text data for each line
+ *
+ * Output arrays:
+ * ** For the SOUR record:
+ * - $glevelsSOUR[] - an array of the gedcom level for each line that was edited
+ * - $tagSOUR[] - an array of the tags for each gedcom line that was edited
+ * - $islinkSOUR[] - an array of 1 or 0 values to indicate when the text is a link element
+ * - $textSOUR[] - an array of the text data for each line
+ * ** For the remaining records:
+ * - $glevelsRest[] - an array of the gedcom level for each line that was edited
+ * - $tagRest[] - an array of the tags for each gedcom line that was edited
+ * - $islinkRest[] - an array of 1 or 0 values to indicate when the text is a link element
+ * - $textRest[] - an array of the text data for each line
+ *
+ */
 function splitSOUR() {
 	global $glevels, $tag, $islink, $text;
 	global $glevelsSOUR, $tagSOUR, $islinkSOUR, $textSOUR;
@@ -1083,12 +1086,12 @@ function splitSOUR() {
 }
 
 /**
-* Add new GEDCOM lines from the $xxxSOUR interface update arrays, which
-* were produced by the splitSOUR() function.
-*
-* See the handle_updates() function for details.
-*
-*/
+ * Add new GEDCOM lines from the $xxxSOUR interface update arrays, which
+ * were produced by the splitSOUR() function.
+ *
+ * See the handle_updates() function for details.
+ *
+ */
 function updateSOUR($inputRec, $levelOverride = 'no') {
 	global $glevels, $tag, $islink, $text;
 	global $glevelsSOUR, $tagSOUR, $islinkSOUR, $textSOUR;
@@ -1120,12 +1123,12 @@ function updateSOUR($inputRec, $levelOverride = 'no') {
 }
 
 /**
-* Add new GEDCOM lines from the $xxxRest interface update arrays, which
-* were produced by the splitSOUR() function.
-*
-* See the handle_updates() function for details.
-*
-*/
+ * Add new GEDCOM lines from the $xxxRest interface update arrays, which
+ * were produced by the splitSOUR() function.
+ *
+ * See the handle_updates() function for details.
+ *
+ */
 function updateRest($inputRec, $levelOverride = 'no') {
 	global $glevels, $tag, $islink, $text;
 	global $glevelsRest, $tagRest, $islinkRest, $textRest;
@@ -1157,28 +1160,30 @@ function updateRest($inputRec, $levelOverride = 'no') {
 }
 
 /**
-* Add new gedcom lines from interface update arrays
-* The edit_interface and add_simple_tag function produce the following
-* arrays incoming from the $_POST form
-* - $glevels[] - an array of the gedcom level for each line that was edited
-* - $tag[] - an array of the tags for each gedcom line that was edited
-* - $islink[] - an array of 1 or 0 values to tell whether the text is a link element and should be surrounded by @@
-* - $text[] - an array of the text data for each line
-* With these arrays you can recreate the gedcom lines like this
-* <code>$glevel[0].' '.$tag[0].' '.$text[0]</code>
-* There will be an index in each of these arrays for each line of the gedcom
-* fact that is being edited.
-* If the $text[] array is empty for the given line, then it means that the
-* user removed that line during editing or that the line is supposed to be
-* empty (1 DEAT, 1 BIRT) for example.  To know if the line should be removed
-* there is a section of code that looks ahead to the next lines to see if there
-* are sub lines.  For example we don't want to remove the 1 DEAT line if it has
-* a 2 PLAC or 2 DATE line following it.  If there are no sub lines, then the line
-* can be safely removed.
-* @param string $newged the new gedcom record to add the lines to
-* @param int $levelOverride Override GEDCOM level specified in $glevels[0]
-* @return string The updated gedcom record
-*/
+ * Add new gedcom lines from interface update arrays
+ * The edit_interface and add_simple_tag function produce the following
+ * arrays incoming from the $_POST form
+ * - $glevels[] - an array of the gedcom level for each line that was edited
+ * - $tag[] - an array of the tags for each gedcom line that was edited
+ * - $islink[] - an array of 1 or 0 values to tell whether the text is a link element and should be surrounded by @@
+ * - $text[] - an array of the text data for each line
+ * With these arrays you can recreate the gedcom lines like this
+ * <code>$glevel[0].' '.$tag[0].' '.$text[0]</code>
+ * There will be an index in each of these arrays for each line of the gedcom
+ * fact that is being edited.
+ * If the $text[] array is empty for the given line, then it means that the
+ * user removed that line during editing or that the line is supposed to be
+ * empty (1 DEAT, 1 BIRT) for example.  To know if the line should be removed
+ * there is a section of code that looks ahead to the next lines to see if there
+ * are sub lines.  For example we don't want to remove the 1 DEAT line if it has
+ * a 2 PLAC or 2 DATE line following it.  If there are no sub lines, then the line
+ * can be safely removed.
+ *
+ * @param string     $newged        the new gedcom record to add the lines to
+ * @param int|string $levelOverride Override GEDCOM level specified in $glevels[0]
+ *
+ * @return string The updated gedcom record
+ */
 function handle_updates($newged, $levelOverride="no") {
 	global $glevels, $islink, $tag, $uploaded_files, $text;
 
@@ -1249,9 +1254,10 @@ function handle_updates($newged, $levelOverride="no") {
 }
 
 /**
-* builds the form for adding new facts
-* @param string $fact the new fact we are adding
-*/
+ * builds the form for adding new facts
+ *
+ * @param string $fact the new fact we are adding
+ */
 function create_add_form($fact) {
 	global $tags, $FULL_SOURCES, $emptyfacts;
 
@@ -1427,9 +1433,11 @@ function create_edit_form(WT_GedcomRecord $record, WT_Fact $fact) {
 }
 
 /**
-* Populates the global $tags array with any missing sub-tags.
-* @param string $level1tag the type of the level 1 gedcom record
-*/
+ * Populates the global $tags array with any missing sub-tags.
+ *
+ * @param string $level1tag the type of the level 1 gedcom record
+ * @param bool   $add_date
+ */
 function insert_missing_subtags($level1tag, $add_date=false) {
 	global $tags, $date_and_time, $level2_tags, $ADVANCED_PLAC_FACTS, $ADVANCED_NAME_FACTS;
 	global $nondatefacts, $nonplacfacts;

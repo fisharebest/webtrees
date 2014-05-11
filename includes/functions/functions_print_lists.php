@@ -35,7 +35,6 @@ function format_indi_table($datalist, $option='') {
 
 	$table_id = 'ID'.(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	$SHOW_EST_LIST_DATES=get_gedcom_setting(WT_GED_ID, 'SHOW_EST_LIST_DATES');
-	if ($option=='MARR_PLAC') return;
 	$html = '';
 	$controller
 		->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
@@ -240,13 +239,9 @@ function format_indi_table($datalist, $option='') {
 			if (isset($value[4])) $gid = $value[4]; // from indilist ALL
 			$person = WT_Individual::getInstance($gid);
 		}
-		if (is_null($person)) continue;
-		if (!$person->canShowName()) {
+		if (!$person || !$person->canShowName()) {
 			continue;
 		}
-		//-- place filtering
-		if ($option=='BIRT_PLAC' && strstr($person->getBirthPlace(), $filter)===false) continue;
-		if ($option=='DEAT_PLAC' && strstr($person->getDeathPlace(), $filter)===false) continue;
 		if ($person->isNew()) {
 			$class = ' class="new"';
 		} elseif ($person->isOld()) {
@@ -445,10 +440,9 @@ function format_indi_table($datalist, $option='') {
 }
 
 // print a table of families
-function format_fam_table($datalist, $option='') {
+function format_fam_table($datalist) {
 	global $GEDCOM, $SHOW_LAST_CHANGE, $SEARCH_SPIDER, $controller;
 	$table_id = 'ID'.(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
-	if ($option=='BIRT_PLAC' || $option=='DEAT_PLAC') return;
 	$html = '';
 
 	$controller
@@ -656,8 +650,6 @@ function format_fam_table($datalist, $option='') {
 		if (!$family->canShow()) {
 			continue;
 		}
-		//-- place filtering
-		if ($option=='MARR_PLAC' && strstr($family->getMarriagePlace(), $filter)===false) continue;
 		if ($family->isNew()) {
 			$class = ' class="new"';
 		} elseif ($family->isOld()) {
@@ -890,20 +882,20 @@ function format_sour_table($datalist) {
 				autoWidth: false,
 				processing: true,
 				columns: [
-					/*  0 title		*/ { dataSort: 1 },
-					/*  1 TITL		*/ { visible: false, type: "unicode" },
-					/*  2 author 	*/ { type: "unicode" },
-					/*  3 #indi  	*/ { dataSort: 4, class: "center" },
-					/*  4 #INDI  	*/ { type: "numeric", visible: false },
-					/*  5 #fam   	*/ { dataSort: 6, class: "center" },
-					/*  6 #FAM   	*/ { type: "numeric", visible: false },
-					/*  7 #obje  	*/ { dataSort: 8, class: "center" },
-					/*  8 #OBJE		*/ { type: "numeric", visible: false },
-					/*  9 #note		*/ { dataSort: 10, class: "center" },
-					/* 10 #NOTE		*/ { type: "numeric", visible: false },
+					/*  0 title     */ { dataSort: 1 },
+					/*  1 TITL      */ { visible: false, type: "unicode" },
+					/*  2 author    */ { type: "unicode" },
+					/*  3 #indi     */ { dataSort: 4, class: "center" },
+					/*  4 #INDI     */ { type: "numeric", visible: false },
+					/*  5 #fam      */ { dataSort: 6, class: "center" },
+					/*  6 #FAM      */ { type: "numeric", visible: false },
+					/*  7 #obje     */ { dataSort: 8, class: "center" },
+					/*  8 #OBJE     */ { type: "numeric", visible: false },
+					/*  9 #note     */ { dataSort: 10, class: "center" },
+					/* 10 #NOTE     */ { type: "numeric", visible: false },
 					/* 11 CHAN      */ { dataSort: 12, visible: '.($SHOW_LAST_CHANGE?'true':'false').' },
 					/* 12 CHAN_sort */ { visible: false },
-					/* 13 DELETE 	*/ { visible: '.(WT_USER_GEDCOM_ADMIN?'true':'false').', sortable: false }
+					/* 13 DELETE    */ { visible: '.(WT_USER_GEDCOM_ADMIN?'true':'false').', sortable: false }
 				],
 				displayLength: 20,
 				pagingType: "full_numbers"
@@ -1024,18 +1016,18 @@ function format_note_table($datalist) {
 				autoWidth: false,
 				processing: true,
 				columns: [
-					/*  0 title  	*/ { type: "unicode" },
-					/*  1 #indi  	*/ { dataSort: 2, class: "center" },
-					/*  2 #INDI  	*/ { type: "numeric", visible: false },
-					/*  3 #fam   	*/ { dataSort: 4, class: "center" },
-					/*  4 #FAM   	*/ { type: "numeric", visible: false },
-					/*  5 #obje  	*/ { dataSort: 6, class: "center" },
-					/*  6 #OBJE  	*/ { type: "numeric", visible: false },
-					/*  7 #sour  	*/ { dataSort: 8, class: "center" },
-					/*  8 #SOUR  	*/ { type: "numeric", visible: false },
+					/*  0 title     */ { type: "unicode" },
+					/*  1 #indi     */ { dataSort: 2, class: "center" },
+					/*  2 #INDI     */ { type: "numeric", visible: false },
+					/*  3 #fam      */ { dataSort: 4, class: "center" },
+					/*  4 #FAM      */ { type: "numeric", visible: false },
+					/*  5 #obje     */ { dataSort: 6, class: "center" },
+					/*  6 #OBJE     */ { type: "numeric", visible: false },
+					/*  7 #sour     */ { dataSort: 8, class: "center" },
+					/*  8 #SOUR     */ { type: "numeric", visible: false },
 					/*  9 CHAN      */ { dataSort: 10, visible: '.($SHOW_LAST_CHANGE?'true':'false').' },
 					/* 10 CHAN_sort */ { visible: false },
-					/* 11 DELETE 	*/ { visible: '.(WT_USER_GEDCOM_ADMIN?'true':'false').', sortable: false }
+					/* 11 DELETE    */ { visible: '.(WT_USER_GEDCOM_ADMIN?'true':'false').', sortable: false }
 				],
 				displayLength: 20,
 				pagingType: "full_numbers"
@@ -1133,12 +1125,12 @@ function format_repo_table($repos) {
 				autoWidth: false,
 				processing: true,
 				columns: [
-					/* 0 name   	*/ { type: "unicode" },
-					/* 1 #sour  	*/ { dataSort: 2, class: "center" },
-					/* 2 #SOUR		*/ { type: "numeric", visible: false },
-					/* 3 CHAN		*/ { dataSort: 4, visible: '.($SHOW_LAST_CHANGE?'true':'false').' },
-					/* 4 CHAN_sort	*/ { visible: false },
-					/* 5 DELETE 	*/ { visible: '.(WT_USER_GEDCOM_ADMIN?'true':'false').', sortable: false }
+					/* 0 name      */ { type: "unicode" },
+					/* 1 #sour     */ { dataSort: 2, class: "center" },
+					/* 2 #SOUR     */ { type: "numeric", visible: false },
+					/* 3 CHAN      */ { dataSort: 4, visible: '.($SHOW_LAST_CHANGE?'true':'false').' },
+					/* 4 CHAN_sort */ { visible: false },
+					/* 5 DELETE    */ { visible: '.(WT_USER_GEDCOM_ADMIN?'true':'false').', sortable: false }
 				],
 				displayLength: 20,
 				pagingType: "full_numbers"
@@ -1232,16 +1224,16 @@ function format_media_table($datalist) {
 				autoWidth:false,
 				processing: true,
 				columns: [
-					/* 0 media		*/ { sortable: false },
-					/* 1 title		*/ { type: "unicode" },
-					/* 2 #indi		*/ { dataSort: 3, class: "center" },
-					/* 3 #INDI		*/ { type: "numeric", visible: false },
-					/* 4 #fam		*/ { dataSort: 5, class: "center" },
-					/* 5 #FAM		*/ { type: "numeric", visible: false },
-					/* 6 #sour		*/ { dataSort: 7, class: "center" },
-					/* 7 #SOUR		*/ { type: "numeric", visible: false },
-					/* 8 CHAN		*/ { dataSort: 9, visible: '.($SHOW_LAST_CHANGE?'true':'false').' },
-					/* 9 CHAN_sort	*/ { visible: false },
+					/* 0 media     */ { sortable: false },
+					/* 1 title     */ { type: "unicode" },
+					/* 2 #indi     */ { dataSort: 3, class: "center" },
+					/* 3 #INDI     */ { type: "numeric", visible: false },
+					/* 4 #fam      */ { dataSort: 5, class: "center" },
+					/* 5 #FAM      */ { type: "numeric", visible: false },
+					/* 6 #sour     */ { dataSort: 7, class: "center" },
+					/* 7 #SOUR     */ { type: "numeric", visible: false },
+					/* 8 CHAN      */ { dataSort: 9, visible: '.($SHOW_LAST_CHANGE?'true':'false').' },
+					/* 9 CHAN_sort */ { visible: false },
 				],
 				displayLength: 20,
 				pagingType: "full_numbers"

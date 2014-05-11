@@ -18,11 +18,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 class WT_Controller_Page extends WT_Controller_Base {
 	// Page header information
 	const     DOCTYPE       ='<!DOCTYPE html>';  // HTML5
@@ -71,56 +66,8 @@ class WT_Controller_Page extends WT_Controller_Base {
 	}
 
 	// Restrict access
-	public function requireAdminLogin() {
-		if (!WT_User::currentUser()->isAdmin()) {
-			header('Location: ' . WT_LOGIN_URL . '?url='.rawurlencode(get_query_url()));
-			exit;
-		}
-
-		return $this;
-	}
-
-	// Restrict access
-	public function requireManagerLogin() {
-		global $WT_TREE;
-
-		if (!WT_User::currentUser()->isManager($WT_TREE)) {
-			header('Location: ' . WT_LOGIN_URL . '?url='.rawurlencode(get_query_url()));
-			exit;
-		}
-
-		return $this;
-	}
-
-	// Restrict access
-	public function requireAcceptLogin() {
-		global $WT_TREE;
-
-		if (!WT_User::currentUser()->isModerator($WT_TREE)) {
-			header('Location: ' . WT_LOGIN_URL . '?url='.rawurlencode(get_query_url()));
-			exit;
-		}
-
-		return $this;
-	}
-
-	// Restrict access
-	public function requireEditorLogin() {
-		global $WT_TREE;
-
-		if (!WT_User::currentUser()->isEditor($WT_TREE)) {
-			header('Location: ' . WT_LOGIN_URL . '?url='.rawurlencode(get_query_url()));
-			exit;
-		}
-
-		return $this;
-	}
-
-	// Restrict access
-	public function requireMemberLogin() {
-		global $WT_TREE;
-
-		if (!WT_User::currentUser()->isMember($WT_TREE)) {
+	public function restrictAccess($condition) {
+		if ($condition !== true) {
 			header('Location: ' . WT_LOGIN_URL . '?url='.rawurlencode(get_query_url()));
 			exit;
 		}

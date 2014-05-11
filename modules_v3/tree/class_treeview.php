@@ -25,7 +25,7 @@ if (!defined('WT_WEBTREES')) {
 
 class TreeView {
 	private $name;
-	private $allPartners;
+	private $all_partners;
 
 	/**
 	 * Treeview Constructor
@@ -34,41 +34,43 @@ class TreeView {
 	 */
 	function __construct($name = 'tree') {
 		$this->name = $name;
-		$this->allPartners = WT_Filter::cookie('allPartners', 'true|false', 'true');
+		$this->all_partners = WT_Filter::cookie('allPartners', 'true|false', 'true');
 	}
 
 	/**
 	 * Draw the viewport which creates the draggable/zoomable framework
 	 * Size is set by the container, as the viewport can scale itself automatically
 	 *
-	 * @param WT_Individual $rootPerson  the id of the root person
+	 * @param WT_Individual $root_person  the id of the root person
 	 * @param int           $generations number of generations to draw
 	 *
-	 * @return string
+	 * @return array        HTML and Javascript
 	 */
-	public function drawViewport(WT_Individual $rootPerson, $generations) {
-		if (WT_SCRIPT_NAME == 'individual.php') {
-			$path = $rootPerson->getHtmlUrl();
-		} elseif (WT_SCRIPT_NAME == 'index.php') {
-			$path = WT_SCRIPT_NAME . '?ctype=user&amp;ged=' . WT_GEDURL;
-		} else {
-			$path = 'module.php?mod=tree&amp;mod_action=treeview&amp;rootid=' . $rootPerson->getXref();
-		}
-		$r = '<a name="tv_content"></a><div id="' . $this->name . '_out" class="tv_out">';
+	public function drawViewport(WT_Individual $root_person, $generations) {
+		$html = '
+			<a name="tv_content"></a>
+			<div id="' . $this->name . '_out" class="tv_out">
+				<div id="tv_tools" class="noprint">
+					<ul>
+						<li id="tvbCompact" class="tv_button">
+							<img src="' . WT_STATIC_URL . WT_MODULES_DIR . 'tree/images/compact.png" alt="' . WT_I18N::translate('Use compact layout') . '" title="' . WT_I18N::translate('Use compact layout') . '">
+						</li>
+						<li id="tvbAllPartners" class="tv_button' . ($this->all_partners === 'true' ? ' tvPressed' : '') . '">
+							<a class="icon-sfamily" href="#" title="' . WT_I18N::translate('Show all spouses and ancestors') . '"></a>
+						</li>
+						<li class="tv_button" id="' . $this->name . '_loading">
+							<i class="icon-loading-small"></i>
+						</li>
+					</ul>
+				</div>
+				<h2 id="tree-title">' . WT_I18N::translate('Interactive tree of %s', $root_person->getFullName()) . '</h2>
+				<div id="' . $this->name . '_in" class="tv_in" dir="ltr">
+					' . $this->drawPerson($root_person, $generations, 0, null, null, true) .'
+				</div>
+			</div>
+		';
 
-		// Add the toolbar
-		$r .= '<div id="tv_tools" class="noprint"><ul>' .
-			'<li id="tvbCompact" class="tv_button"><img src="' . WT_STATIC_URL . WT_MODULES_DIR . 'tree/images/compact.png" alt="' . WT_I18N::translate('Use compact layout') . '" title="' . WT_I18N::translate('Use compact layout') . '"></li>' .
-			'<li id="tvbAllPartners" class="tv_button' . ($this->allPartners === 'true' ? ' tvPressed' : '') . '"><a class="icon-sfamily" href="' . $path . '" title="' . WT_I18N::translate('Show all spouses and ancestors') . '"></a></li>';
-		// Hidden loading image
-		$r .= '<li class="tv_button" id="' . $this->name . '_loading"><i class="icon-loading-small"></i></li></ul>';
-		$r .= '</div><h2 id="tree-title">' .
-			WT_I18N::translate('Interactive tree of %s', $rootPerson->getFullName()) .
-			'</h2><div id="' . $this->name . '_in" class="tv_in" dir="ltr">';
-		$r .= $this->drawPerson($rootPerson, $generations, 0, null, null, true);
-		$r .= '</div></div>'; // Close the tv_in and the tv_out div
-
-		return array($r, 'var ' . $this->name . 'Handler = new TreeViewHandler("' . $this->name . '");');
+		return array($html, 'var ' . $this->name . 'Handler = new TreeViewHandler("' . $this->name . '");');
 	}
 
 	/**
@@ -115,48 +117,48 @@ class TreeView {
 	 * @return string
 	 */
 	public function getDetails(WT_Individual $individual) {
-		$r = $this->getPersonDetails($individual, null);
+		$html = $this->getPersonDetails($individual, null);
 		foreach ($individual->getSpouseFamilies() as $family) {
 			$spouse = $family->getSpouse($individual);
 			if ($spouse) {
-				$r .= $this->getPersonDetails($spouse, $family);
+				$html .= $this->getPersonDetails($spouse, $family);
 			}
 		}
 
-		return $r;
+		return $html;
 	}
 
 	/**
 	 * Return the details for a person
 	 */
 	private function getPersonDetails(WT_Individual $individual, WT_Family $family = null) {
-		$r = $this->getThumbnail($individual);
-		$r .= '<a class="tv_link" href="' . $individual->getHtmlUrl() . '">' . $individual->getFullName() . '</a> <a href="module.php?mod=tree&amp;mod_action=treeview&amp;rootid=' . $individual->getXref() . '" title="' . WT_I18N::translate('Interactive tree of %s', strip_tags($individual->getFullName())) . '" class="icon-button_indi tv_link tv_treelink"></a>';
+		$hmtl = $this->getThumbnail($individual);
+		$hmtl .= '<a class="tv_link" href="' . $individual->getHtmlUrl() . '">' . $individual->getFullName() . '</a> <a href="module.php?mod=tree&amp;mod_action=treeview&amp;rootid=' . $individual->getXref() . '" title="' . WT_I18N::translate('Interactive tree of %s', strip_tags($individual->getFullName())) . '" class="icon-button_indi tv_link tv_treelink"></a>';
 		foreach ($individual->getFacts(WT_EVENTS_BIRT, true) as $fact) {
-			$r .= $fact->summary();
+			$hmtl .= $fact->summary();
 		}
 		if ($family) {
 			foreach ($family->getFacts(WT_EVENTS_MARR, true) as $fact) {
-				$r .= $fact->summary();
+				$hmtl .= $fact->summary();
 			}
 		}
 		foreach ($individual->getFacts(WT_EVENTS_DEAT, true) as $fact) {
-			$r .= $fact->summary();
+			$hmtl .= $fact->summary();
 		}
-		return '<div class="tv' . $individual->getSex() . ' tv_person_expanded">' . $r . '</div>';
+		return '<div class="tv' . $individual->getSex() . ' tv_person_expanded">' . $hmtl . '</div>';
 	}
 
 	/**
 	 * Draw the children for some families
 	 *
-	 * @param Array   $familyList array of families to draw the children for
+	 * @param array   $familyList array of families to draw the children for
 	 * @param int     $gen        number of generations to draw
 	 * @param boolean $ajax       setted to true for an ajax call
 	 *
 	 * @return string
 	 */
-	private function drawChildren($familyList, $gen = 1, $ajax = false) {
-		$r = '';
+	private function drawChildren(array $familyList, $gen = 1, $ajax = false) {
+		$html = '';
 		$children2draw = array();
 		$f2load = array();
 
@@ -165,11 +167,11 @@ class TreeView {
 				continue;
 			}
 			$children = $f->getChildren();
-			if (count($children) > 0) {
+			if ($children) {
 				$f2load[] = $f->getXref();
-				foreach ($children as $ch) {
+				foreach ($children as $child) {
 					// Eliminate duplicates - e.g. when adopted by a step-parent
-					$children2draw[$ch->getXref()] = $ch;
+					$children2draw[$child->getXref()] = $child;
 				}
 			}
 		}
@@ -188,13 +190,13 @@ class TreeView {
 				} else {
 					$co = 'h';
 				}
-				$r .= $this->drawPerson($child, $gen - 1, -1, null, $co);
+				$html .= $this->drawPerson($child, $gen - 1, -1, null, $co);
 			}
 			if (!$ajax) {
-				$r = '<td align="right"' . ($gen == 0 ? ' abbr="c' . $f2load . '"' : '') . '>' . $r . '</td>' . $this->drawHorizontalLine();
+				$html = '<td align="right"' . ($gen == 0 ? ' abbr="c' . $f2load . '"' : '') . '>' . $html . '</td>' . $this->drawHorizontalLine();
 			}
 		}
-		return $r;
+		return $html;
 	}
 
 	/**
@@ -225,39 +227,38 @@ class TreeView {
 			$partner = $person->getCurrentSpouse();
 		}
 		if ($isRoot) {
-			$r = '<table id="tvTreeBorder" class="tv_tree"><tbody><tr><td id="tv_tree_topleft"></td><td id="tv_tree_top"></td><td id="tv_tree_topright"></td></tr><tr><td id="tv_tree_left"></td><td>';
+			$html = '<table id="tvTreeBorder" class="tv_tree"><tbody><tr><td id="tv_tree_topleft"></td><td id="tv_tree_top"></td><td id="tv_tree_topright"></td></tr><tr><td id="tv_tree_left"></td><td>';
 		} else {
-			$r = '';
+			$html = '';
 		}
-		/* height 1% : this hack enable the div auto-dimensionning in td for FF & Chrome */
-		$r .= '<table class="tv_tree"' . ($isRoot ? ' id="tv_tree"' : '') . ' style="height: 1%"><tbody><tr>';
+		/* height 1% : this hack enable the div auto-dimensioning in td for FF & Chrome */
+		$html .= '<table class="tv_tree"' . ($isRoot ? ' id="tv_tree"' : '') . ' style="height: 1%"><tbody><tr>';
 
 		if ($state <= 0) {
 			// draw children
-			$r .= $this->drawChildren($person->getSpouseFamilies(), $gen);
+			$html .= $this->drawChildren($person->getSpouseFamilies(), $gen);
 		} else {
 			// draw the parent’s lines
-			$r .= $this->drawVerticalLine($order) . $this->drawHorizontalLine();
+			$html .= $this->drawVerticalLine($order) . $this->drawHorizontalLine();
 		}
 
 		/* draw the person. Do NOT add person or family id as an id, since a same person could appear more than once in the tree !!! */
 		// Fixing the width for td to the box initial width when the person is the root person fix a rare bug that happen when a person without child and without known parents is the root person : an unwanted white rectangle appear at the right of the person’s boxes, otherwise.
-		$r .= '<td' . ($isRoot ? ' style="width:1px"' : '') . '><div class="tv_box' . ($isRoot ? ' rootPerson' : '') . '" dir="' . $TEXT_DIRECTION . '" style="text-align: ' . ($TEXT_DIRECTION == "rtl" ? "right" : "left") . '; direction: ' . $TEXT_DIRECTION . '" abbr="' . $person->getXref() . '" onclick="' . $this->name . 'Handler.expandBox(this, event);">';
-		$r .= $this->drawPersonName($person);
-		$fop = Array(); // $fop is fathers of partners
+		$html .= '<td' . ($isRoot ? ' style="width:1px"' : '') . '><div class="tv_box' . ($isRoot ? ' rootPerson' : '') . '" dir="' . $TEXT_DIRECTION . '" style="text-align: ' . ($TEXT_DIRECTION == "rtl" ? "right" : "left") . '; direction: ' . $TEXT_DIRECTION . '" abbr="' . $person->getXref() . '" onclick="' . $this->name . 'Handler.expandBox(this, event);">';
+		$html .= $this->drawPersonName($person);
+		$fop = array(); // $fop is fathers of partners
 		if (!is_null($partner)) {
-			$sfams = $person->getSpouseFamilies();
 			$dashed = '';
-			foreach ($sfams as $family) {
-				$p = $family->getSpouse($person);
-				if ($p) {
-					if (($p === $partner) || $this->allPartners === 'true') {
-						$pf = $p->getPrimaryChildFamily();
-						if (!empty($pf)) {
-							$fop[] = Array($pf->getHusband(), $pf);
+			foreach ($person->getSpouseFamilies() as $family) {
+				$spouse = $family->getSpouse($person);
+				if ($spouse) {
+					if ($spouse === $partner || $this->all_partners === 'true') {
+						$spouse_parents = $spouse->getPrimaryChildFamily();
+						if ($spouse_parents && $spouse_parents->getHusband()) {
+							$fop[] = array($spouse_parents->getHusband(), $spouse_parents);
 						}
-						$r .= $this->drawPersonName($p, $dashed);
-						if ($this->allPartners !== 'true') {
+						$html .= $this->drawPersonName($spouse, $dashed);
+						if ($this->all_partners !== 'true') {
 							break; // we can stop here the foreach loop
 						}
 						$dashed = 'dashed';
@@ -265,7 +266,7 @@ class TreeView {
 				}
 			}
 		}
-		$r .= '</div></td>';
+		$html .= '</div></td>';
 
 		$primaryChildFamily = $person->getPrimaryChildFamily();
 		if (!empty($primaryChildFamily)) {
@@ -275,17 +276,17 @@ class TreeView {
 			}
 		}
 		if (!empty($parent) || count($fop) || ($state < 0)) {
-			$r .= $this->drawHorizontalLine();
+			$html .= $this->drawHorizontalLine();
 		}
 		/* draw the parents */
 		if ($state >= 0 && (!empty($parent) || count($fop))) {
 			$unique = (empty($parent) || count($fop) == 0);
-			$r .= '<td align="left"><table class="tv_tree"><tbody>';
+			$html .= '<td align="left"><table class="tv_tree"><tbody>';
 			if (!empty($parent)) {
 				$u = $unique ? 'c' : 't';
-				$r .= '<tr><td ' . ($gen == 0 ? ' abbr="p' . $primaryChildFamily->getXref() . '@' . $u . '"' : '') . '>';
-				$r .= $this->drawPerson($parent, $gen - 1, 1, $primaryChildFamily, $u);
-				$r .= '</td></tr>';
+				$html .= '<tr><td ' . ($gen == 0 ? ' abbr="p' . $primaryChildFamily->getXref() . '@' . $u . '"' : '') . '>';
+				$html .= $this->drawPerson($parent, $gen - 1, 1, $primaryChildFamily, $u);
+				$html .= '</td></tr>';
 			}
 			if (count($fop)) {
 				$n = 0;
@@ -293,19 +294,19 @@ class TreeView {
 				foreach ($fop as $p) {
 					$n++;
 					$u = $unique ? 'c' : ($n == $nb || empty($p[1]) ? 'b' : 'h');
-					$r .= '<tr><td ' . ($gen == 0 ? ' abbr="p' . $p[1]->getXref() . '@' . $u . '"' : '') . '>' . $this->drawPerson($p[0], $gen - 1, 1, $p[1], $u) . '</td></tr>';
+					$html .= '<tr><td ' . ($gen == 0 ? ' abbr="p' . $p[1]->getXref() . '@' . $u . '"' : '') . '>' . $this->drawPerson($p[0], $gen - 1, 1, $p[1], $u) . '</td></tr>';
 				}
 			}
-			$r .= '</tbody></table></td>';
+			$html .= '</tbody></table></td>';
 		}
 		if ($state < 0) {
-			$r .= $this->drawVerticalLine($order);
+			$html .= $this->drawVerticalLine($order);
 		}
-		$r .= '</tr></tbody></table>';
+		$html .= '</tr></tbody></table>';
 		if ($isRoot) {
-			$r .= '</td><td id="tv_tree_right"></td></tr><tr><td id="tv_tree_bottomleft"></td><td id="tv_tree_bottom"></td><td id="tv_tree_bottomright"></td></tr></tbody></table>';
+			$html .= '</td><td id="tv_tree_right"></td></tr><tr><td id="tv_tree_bottomleft"></td><td id="tv_tree_bottom"></td><td id="tv_tree_bottomright"></td></tr></tbody></table>';
 		}
-		return $r;
+		return $html;
 	}
 
 	/**
@@ -317,26 +318,26 @@ class TreeView {
 	 * @return string
 	 */
 	private function drawPersonName(WT_Individual $individual, $dashed = '') {
-		if ($this->allPartners === 'true') {
-			$f = $individual->getPrimaryChildFamily();
-			if ($f) {
+		if ($this->all_partners === 'true') {
+			$family = $individual->getPrimaryChildFamily();
+			if ($family) {
 				switch ($individual->getSex()) {
 				case 'M':
 					$title = ' title="' . strip_tags(
 						/* I18N: e.g. “Son of [father name & mother name]” */
-						WT_I18N::translate('Son of %s', $f->getFullName())
+						WT_I18N::translate('Son of %s', $family->getFullName())
 					) . '"';
 					break;
 				case 'F':
 					$title = ' title="' . strip_tags(
 						/* I18N: e.g. “Daughter of [father name & mother name]” */
-						WT_I18N::translate('Daughter of %s', $f->getFullName())
+						WT_I18N::translate('Daughter of %s', $family->getFullName())
 					) . '"';
 					break;
 				case 'U':
 					$title = ' title="' . strip_tags(
 						/* I18N: e.g. “Child of [father name & mother name]” */
-						WT_I18N::translate('Child of %s', $f->getFullName())
+						WT_I18N::translate('Child of %s', $family->getFullName())
 					) . '"';
 					break;
 				}
@@ -347,8 +348,7 @@ class TreeView {
 			$title = '';
 		}
 		$sex = $individual->getSex();
-		$r = '<div class="tv' . $sex . ' ' . $dashed . '"' . $title . '><a href="' . $individual->getHtmlUrl() . '"></a>' . $individual->getFullName() . ' <span class="dates">' . $individual->getLifeSpan() . '</span></div>';
-		return $r;
+		return '<div class="tv' . $sex . ' ' . $dashed . '"' . $title . '><a href="' . $individual->getHtmlUrl() . '"></a>' . $individual->getFullName() . ' <span class="dates">' . $individual->getLifeSpan() . '</span></div>';
 	}
 
 	/**

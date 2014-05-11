@@ -24,7 +24,7 @@ require WT_ROOT.'includes/functions/functions_edit.php';
 
 $controller=new WT_Controller_Page();
 $controller
-	->requireAdminLogin()
+	->restrictAccess(\WT\Auth::isAdmin())
 	->setPageTitle(WT_I18N::translate('Module administration'));
 
 $modules = WT_Module::getInstalledModules('disabled');

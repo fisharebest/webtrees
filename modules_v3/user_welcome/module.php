@@ -41,9 +41,9 @@ class user_welcome_WT_Module extends WT_Module implements WT_Module_Block {
 	public function getBlock($block_id, $template=true, $cfg=null) {
 		$id=$this->getName().$block_id;
 		$class=$this->getName().'_block';
-		$title = '<span dir="auto">' . /* I18N: A greeting; %s is the user’s name */ WT_I18N::translate('Welcome %s', WT_User::currentUser()->getRealName()) . '</span>';
+		$title = '<span dir="auto">' . /* I18N: A greeting; %s is the user’s name */ WT_I18N::translate('Welcome %s', \WT\Auth::user()->getRealName()) . '</span>';
 		$content = '<table><tr>';
-		if (get_user_setting(WT_USER_ID, 'editaccount')) {
+		if (\WT\Auth::user()->getSetting('editaccount')) {
 			$content .= '<td><a href="edituser.php"><i class="icon-mypage"></i><br>'.WT_I18N::translate('My account').'</a></td>';
 		}
 		if (WT_USER_GEDCOM_ID) {

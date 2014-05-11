@@ -291,7 +291,7 @@ class WT_Filter {
 	public static function checkCsrf() {
 		if (WT_Filter::post('csrf') !== WT_Filter::getCsrfToken()) {
 			// Oops.  Something is not quite right
-			AddToLog('CSRF mismatch - session expired or malicious attack', 'auth');
+			\WT\Log::addAuthenticationLog('CSRF mismatch - session expired or malicious attack');
 			WT_FlashMessages::addMessage(WT_I18N::translate('This form has expired.  Try again.'));
 			return false;
 		}

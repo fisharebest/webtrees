@@ -30,8 +30,8 @@ $block = WT_DB::prepare(
 // managers, (3) user blocks require the user or an admin
 if (
 	!$block ||
-	$block->gedcom_id && !WT_User::currentUser()->isManager(WT_Tree::get($block->gedcom_id)) ||
-	$block->user_id && $block->user_id != WT_User::currentUser()->getUserId() && !WT_User::currentUser()->isAdmin()
+	$block->gedcom_id && !\WT\Auth::isManager(WT_Tree::get($block->gedcom_id)) ||
+	$block->user_id && $block->user_id != \WT\Auth::id() && !\WT\Auth::isAdmin()
 ) {
 	exit;
 }

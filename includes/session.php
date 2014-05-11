@@ -126,6 +126,38 @@ $start_time=microtime(true);
 // We want to know about all PHP errors
 error_reporting(E_ALL | E_STRICT);
 
+////////////////////////////////////////////////////////////////////////////////
+// Provide password functions for PHP5.4 and earlier
+////////////////////////////////////////////////////////////////////////////////
+if (!function_exists('password_hash')) {
+	// The compatibility library requires the $2$y salt prefix, which is available
+	// in PHP5.3.7 and *some* earlier/patched versions.
+	$hash = '$2y$04$usesomesillystringfore7hnbRJHxXVLeakoG8K30oukPsA.ztMG';
+	if (crypt("password", $hash) === $hash) {
+		require WT_ROOT.'library/ircmaxell/password-compat/lib/password.php';
+	} else {
+		// For older/unpatched versions of PHP, use the default crypt behaviour.
+		function password_hash($password) {
+			$salt = '$2a$12$';
+			$salt_chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789./';
+			for ($i = 0; $i < 22; ++$i) {
+				$salt .= substr($salt_chars, mt_rand(0, 63), 1);
+			}
+			return crypt($password, $salt);
+		}
+
+		function password_needs_rehash() {
+			return false;
+		}
+
+		function password_verify($password, $hash) {
+			return crypt($password, $hash) === $hash;
+		}
+
+		define('PASSWORD_DEFAULT', 1);
+	}
+}
+
 // PHP5.3 may be using magic-quotes :-(
 if (version_compare(PHP_VERSION, '5.4', '<') && get_magic_quotes_gpc()) {
 	// http://php.net/manual/en/security.magicquotes.disabling.php
@@ -144,7 +176,7 @@ if (version_compare(PHP_VERSION, '5.4', '<') && get_magic_quotes_gpc()) {
 	unset($process);
 }
 
-require 'library/autoload.php';
+require WT_ROOT.'library/autoload.php';
 
 // PHP requires a time zone to be set in php.ini
 if (!ini_get('date.timezone')) {
@@ -239,9 +271,7 @@ set_error_handler(function ($errno, $errstr, $errfile, $errline) {
 			}
 		}
 		echo $fmt_msg;
-		if (function_exists('AddToLog')) {
-			AddToLog($log_msg, 'error');
-		}
+		\WT\Log::addErrorLog($log_msg);
 		if ($errno == 1) {
 			die();
 		}
@@ -367,7 +397,7 @@ session_set_save_handler(
 			" ip_address   = VALUES(ip_address)," .
 			" session_data = VALUES(session_data)," .
 			" session_time = CURRENT_TIMESTAMP - SECOND(CURRENT_TIMESTAMP)"
-		)->execute(array($id, (int)WT_User::currentUser()->getUserId(), $WT_REQUEST->getClientIp(), $data));
+		)->execute(array($id, (int)\WT\Auth::id(), $WT_REQUEST->getClientIp(), $data));
 		return true;
 	},
 	// destroy
@@ -395,12 +425,6 @@ $cfg=array(
 	'cookie_httponly' => true,
 );
 
-// Search engines don’t send cookies, and so create a new session with every visit.
-// Make sure they always use the same one
-if ($SEARCH_SPIDER) {
-	Zend_Session::setId('search-engine-'.str_replace('.', '-', $WT_REQUEST->getClientIp()));
-}
-
 Zend_Session::start($cfg);
 
 // Register a session “namespace” to store session data.  This is better than
@@ -417,9 +441,8 @@ if (!$SEARCH_SPIDER && !$WT_SESSION->initiated) {
 }
 
 // Who are we?
-define('WT_USER_ID',       WT_User::currentUser()->getUserId());
-define('WT_USER_NAME',     WT_User::currentUser()->getUserName());
-define('WT_USER_IS_ADMIN', WT_User::currentUser()->isAdmin());
+define('WT_USER_ID',       \WT\Auth::id());
+define('WT_USER_NAME',     \WT\Auth::id() ? \WT\Auth::user()->getUserName() : '');
 
 // Set the active GEDCOM
 if (isset($_REQUEST['ged'])) {
@@ -437,7 +460,7 @@ if (isset($_REQUEST['ged'])) {
 $WT_TREE=null;
 foreach (WT_Tree::getAll() as $tree) {
 	$WT_TREE=$tree;
-	if ($WT_TREE->tree_name == $GEDCOM && ($WT_TREE->imported || WT_USER_IS_ADMIN)) {
+	if ($WT_TREE->tree_name == $GEDCOM && ($WT_TREE->imported || \WT\Auth::isAdmin())) {
 		break;
 	}
 }
@@ -449,10 +472,10 @@ if ($WT_TREE) {
 	define('WT_GEDURL',            $WT_TREE->tree_name_url);
 	define('WT_TREE_TITLE',        $WT_TREE->tree_title_html);
 	define('WT_IMPORTED',          $WT_TREE->imported);
-	define('WT_USER_GEDCOM_ADMIN', WT_User::currentUser()->isManager($WT_TREE));
-	define('WT_USER_CAN_ACCEPT',   WT_User::currentUser()->isModerator($WT_TREE));
-	define('WT_USER_CAN_EDIT',     WT_User::currentUser()->isEditor($WT_TREE));
-	define('WT_USER_CAN_ACCESS',   WT_User::currentUser()->isMember($WT_TREE));
+	define('WT_USER_GEDCOM_ADMIN', \WT\Auth::isManager($WT_TREE));
+	define('WT_USER_CAN_ACCEPT',   \WT\Auth::isModerator($WT_TREE));
+	define('WT_USER_CAN_EDIT',     \WT\Auth::isEditor($WT_TREE));
+	define('WT_USER_CAN_ACCESS',   \WT\Auth::isMember($WT_TREE));
 	define('WT_USER_GEDCOM_ID',    $WT_TREE->userPreference(WT_USER_ID, 'gedcomid'));
 	define('WT_USER_ROOT_ID',      $WT_TREE->userPreference(WT_USER_ID, 'rootid') ? $WT_TREE->userPreference(WT_USER_ID, 'rootid') : WT_USER_GEDCOM_ID);
 	define('WT_USER_PATH_LENGTH',  $WT_TREE->userPreference(WT_USER_ID, 'RELATIONSHIP_PATH_LENGTH'));
@@ -508,15 +531,6 @@ define('WT_CLIENT_JD', 2440588 + (int)(WT_CLIENT_TIMESTAMP/86400));
 // Application configuration data - things that aren’t (yet?) user-editable
 require WT_ROOT . 'includes/config_data.php';
 
-// If we are logged in, and logout=1 has been added to the URL, log out
-// If we were logged in, but our account has been deleted, log out.
-if (WT_Filter::getBool('logout')) {
-	AddToLog('Logout ' . WT_User::currentUser()->getUserName(), 'auth');
-	WT_User::logout();
-	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH);
-	exit;
-}
-
 // The login URL must be an absolute URL, and can be user-defined
 if (WT_Site::preference('LOGIN_URL')) {
 	define('WT_LOGIN_URL', WT_Site::preference('LOGIN_URL'));
@@ -525,9 +539,9 @@ if (WT_Site::preference('LOGIN_URL')) {
 }
 
 // If there is no current tree and we need one, then redirect somewhere
-if (WT_SCRIPT_NAME!='admin_trees_manage.php' && WT_SCRIPT_NAME!='admin_pgv_to_wt.php' && WT_SCRIPT_NAME!='login.php' && WT_SCRIPT_NAME!='import.php' && WT_SCRIPT_NAME!='help_text.php' && WT_SCRIPT_NAME!='message.php') {
+if (WT_SCRIPT_NAME!='admin_trees_manage.php' && WT_SCRIPT_NAME!='admin_pgv_to_wt.php' && WT_SCRIPT_NAME!='login.php' && WT_SCRIPT_NAME!='logout.php' && WT_SCRIPT_NAME!='import.php' && WT_SCRIPT_NAME!='help_text.php' && WT_SCRIPT_NAME!='message.php') {
 	if (!$WT_TREE || !WT_IMPORTED) {
-		if (WT_USER_IS_ADMIN) {
+		if (\WT\Auth::isAdmin()) {
 			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'admin_trees_manage.php');
 		} else {
 			header('Location: '.WT_LOGIN_URL.'?url='.rawurlencode(WT_SCRIPT_NAME.'?'.$QUERY_STRING));
@@ -536,10 +550,10 @@ if (WT_SCRIPT_NAME!='admin_trees_manage.php' && WT_SCRIPT_NAME!='admin_pgv_to_wt
 	}
 }
 
-if (WT_USER_ID) {
+if (\WT\Auth::id()) {
 	//-- update the login time every 5 minutes
-	if (WT_TIMESTAMP-$WT_SESSION->activity_time > 300) {
-		set_user_setting(WT_USER_ID, 'sessiontime', WT_TIMESTAMP);
+	if (WT_TIMESTAMP - $WT_SESSION->activity_time > 300) {
+		\WT\Auth::user()->setSetting('sessiontime', WT_TIMESTAMP);
 		$WT_SESSION->activity_time = WT_TIMESTAMP;
 	}
 }

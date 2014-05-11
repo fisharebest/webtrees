@@ -32,8 +32,8 @@ require_once WT_ROOT.'includes/functions/functions_export.php';
 require_once WT_ROOT.'library/pclzip.lib.php';
 
 /**
-* Main controller class for the Clippings page.
-*/
+ * Main controller class for the Clippings page.
+ */
 class WT_Controller_Clippings {
 
 	var $download_data;
@@ -248,8 +248,8 @@ class WT_Controller_Clippings {
 			}
 			$filetext .= "0 @WEBTREES@ SOUR\n1 TITL ".WT_SERVER_NAME.WT_SCRIPT_PATH."\n";
 			if ($user_id = get_gedcom_setting(WT_GED_ID, 'CONTACT_EMAIL')) {
-				$user = new WT_User($user_id);
-				$filetext .= "1 AUTH " . $user->getRealName()) . "\n";
+				$user = \WT\User::find($user_id);
+				$filetext .= "1 AUTH " . $user->getRealName() . "\n";
 			}
 			$filetext .= "0 TRLR\n";
 			//-- make sure the preferred line endings are used

@@ -30,7 +30,7 @@ if (!defined('WT_WEBTREES')) {
 ?>
 
 
-	<table id="navenclose" class="optionbox">
+	<table id="navenclose">
 		<?php
 
 		//-- Search Function ------------------------------------------------------------
@@ -137,7 +137,7 @@ if (!defined('WT_WEBTREES')) {
 							}
 							$label = get_close_relationship_name($person, $gparent);
 							$menu = new WT_Menu($label);
-							$slabel  = print_pedigree_person_nav2($gparent->getXref(), 2, 0, $personcount++, $label, $censdate);
+							$slabel  = print_pedigree_person_nav2($gparent->getXref(), $label, $censdate);
 							$slabel .= $parentlinks;
 							$submenu = new WT_Menu($slabel);
 							$menu->addSubMenu($submenu);
@@ -259,7 +259,7 @@ if (!defined('WT_WEBTREES')) {
 							}
 							$label = get_close_relationship_name($person, $gparent);
 							$menu = new WT_Menu($label);
-							$slabel  = print_pedigree_person_nav2($gparent->getXref(), 2, 0, $personcount++, $label, $censyear);
+							$slabel  = print_pedigree_person_nav2($gparent->getXref(), $label, $censyear);
 							$slabel .= $parentlinks;
 							$submenu = new WT_Menu($slabel);
 							$menu->addSubMenu($submenu);
@@ -385,7 +385,7 @@ if (!defined('WT_WEBTREES')) {
 							}
 							$label = get_close_relationship_name($person, $child);
 							$menu = new WT_Menu($label);
-							$slabel  = print_pedigree_person_nav2($child->getXref(), 2, 0, $personcount++, $label, $censyear);
+							$slabel  = print_pedigree_person_nav2($child->getXref(), $label, $censyear);
 							$slabel .= $spouselinks;
 							$submenu = new WT_Menu($slabel);
 							$menu->addSubMenu($submenu);
@@ -524,7 +524,7 @@ if (!defined('WT_WEBTREES')) {
 							}
 							$label = get_close_relationship_name($person, $gparent);
 							$menu = new WT_Menu($label);
-							$slabel  = print_pedigree_person_nav2($gparent->getXref(), 2, 0, $personcount++, $label, $censyear);
+							$slabel  = print_pedigree_person_nav2($gparent->getXref(), $label, $censyear);
 							$slabel .= $parentlinks;
 							$submenu = new WT_Menu($slabel);
 							$menu->addSubMenu($submenu);
@@ -647,7 +647,7 @@ if (!defined('WT_WEBTREES')) {
 							}
 							$label = get_close_relationship_name($person, $gparent);
 							$menu = new WT_Menu($label);
-							$slabel  = print_pedigree_person_nav2($gparent->getXref(), 2, 0, $personcount++, $label, $censyear);
+							$slabel  = print_pedigree_person_nav2($gparent->getXref(), $label, $censyear);
 							$slabel .= $parentlinks;
 							$submenu = new WT_Menu($slabel);
 							$menu->addSubMenu($submenu);
@@ -766,7 +766,7 @@ if (!defined('WT_WEBTREES')) {
 							}
 							$label = get_close_relationship_name($person, $child);
 							$menu = new WT_Menu($label);
-							$slabel  = print_pedigree_person_nav2($child->getXref(), 2, 0, $personcount++, $label, $censyear);
+							$slabel  = print_pedigree_person_nav2($child->getXref(), $label, $censyear);
 							$slabel .= $spouselinks;
 							$submenu = new WT_Menu($slabel);
 							$menu->addSubMenu($submenu);
@@ -902,7 +902,7 @@ if (!defined('WT_WEBTREES')) {
 							}
 							$label = get_close_relationship_name($person, $gparent);
 							$menu = new WT_Menu($label);
-							$slabel  = print_pedigree_person_nav2($gparent->getXref(), 2, 0, $personcount++, $label, $censyear);
+							$slabel  = print_pedigree_person_nav2($gparent->getXref(), $label, $censyear);
 							$slabel .= $parentlinks;
 							$submenu = new WT_Menu($slabel);
 							$menu->addSubMenu($submenu);
@@ -1026,7 +1026,7 @@ if (!defined('WT_WEBTREES')) {
 							}
 							$label = get_close_relationship_name($person, $gparent);
 							$menu = new WT_Menu($label);
-							$slabel  = print_pedigree_person_nav2($gparent->getXref(), 2, 0, $personcount++, $label, $censyear);
+							$slabel  = print_pedigree_person_nav2($gparent->getXref(), $label, $censyear);
 							$slabel .= $parentlinks;
 							$submenu = new WT_Menu($slabel);
 							$menu->addSubMenu($submenu);
@@ -1153,7 +1153,7 @@ if (!defined('WT_WEBTREES')) {
 							}
 							$label = get_close_relationship_name($person, $child);
 							$menu = new WT_Menu($label);
-							$slabel = print_pedigree_person_nav2($child->getXref(), 2, 0, $personcount++, $label, $censyear);
+							$slabel = print_pedigree_person_nav2($child->getXref(), $label, $censyear);
 							$slabel .= $spouselinks;
 							$submenu = new WT_Menu($slabel);
 							$menu->addSubmenu($submenu);
@@ -1258,22 +1258,23 @@ if (!defined('WT_WEBTREES')) {
  * print the information for an individual chart box
  *
  * find and print a given individuals information for a pedigree chart
- * @param string $pid the Gedcom Xref ID of the   to print
- * @param int $style the style to print the box in, 1 for smaller boxes, 2 for larger boxes
- * @param boolean $show_famlink set to true to show the icons for the popup links and the zoomboxes
- * @param int $count on some charts it is important to keep a count of how many boxes were printed
- */
+ *
+ * @param string $pid   the Gedcom Xref ID of the   to print
+ * @param int    $style the style to print the box in, 1 for smaller boxes, 2 for larger boxes
+ * @param int    $count on some charts it is important to keep a count of how many boxes were printed
+ * @param string $personcount
+ * @param string $currpid
+ * @param string $censyear
+  */
 
-function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", $currpid, $censyear) {
-	global $SHOW_HIGHLIGHT_IMAGES, $bwidth, $bheight, $PEDIGREE_FULL_DETAILS, $SHOW_PEDIGREE_PLACES;
-	global $TEXT_DIRECTION, $DEFAULT_PEDIGREE_GENERATIONS, $OLD_PGENS, $talloffset, $PEDIGREE_LAYOUT, $MEDIA_DIRECTORY;
-	global $chart_style, $box_width, $generations, $show_spouse, $show_full;
-	global $CHART_BOX_TAGS, $SHOW_LDS_AT_GLANCE, $PEDIGREE_SHOW_GENDER;
+function print_pedigree_person_nav2($pid, $currpid, $censyear) {
+	global $PEDIGREE_FULL_DETAILS;
+	global $TEXT_DIRECTION, $DEFAULT_PEDIGREE_GENERATIONS, $OLD_PGENS, $talloffset, $PEDIGREE_LAYOUT;
+	global $show_full;
 	global $SEARCH_SPIDER;
-	global $spouselinks, $parentlinks, $step_parentlinks, $persons, $person_step, $person_parent, $tabno;
-	global $natdad, $natmom, $censyear, $censdate;
+	global $spouselinks, $parentlinks, $step_parentlinks, $persons, $person_step, $person_parent;
+	global $natdad, $natmom, $censyear;
 
-	if ($style != 2) $style=1;
 	if (empty($show_full)) $show_full = 0;
 	if (empty($PEDIGREE_FULL_DETAILS)) $PEDIGREE_FULL_DETAILS = 0;
 
@@ -1292,25 +1293,24 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 	$spouselinks = "";
 	$parentlinks = "";
 	$step_parentlinks   = "";
-	$disp=$person->canShow();
 
 	if ($person->canShowName() && !$SEARCH_SPIDER) {
 		//-- draw a box for the family popup
 
 		if ($TEXT_DIRECTION=="rtl") {
-		$spouselinks .= "<table class=\"rtlnav person_box$isF\"><tr><td align=\"right\" style=\"font-size:10px;font-weight:normal;\" class=\"name2 nowrap\">";
-		$spouselinks .= "<b>" . WT_I18N::translate('Family') . "</b> (" .$person->getFullName(). ")<br>";
-		$parentlinks .= "<table class=\"rtlnav person_box$isF\"><tr><td align=\"right\" style=\"font-size:10px;font-weight:normal;\" class=\"name2 nowrap\">";
-		$parentlinks .= "<b>" . WT_I18N::translate('Parents') . "</b> (" .$person->getFullName(). ")<br>";
-		$step_parentlinks .= "<table class=\"rtlnav person_box$isF\"><tr><td align=\"right\" style=\"font-size:10px;font-weight:normal;\" class=\"name2 nowrap\">";
-		$step_parentlinks .= "<b>" . WT_I18N::translate('Parents') . "</b> (" .$person->getFullName(). ")<br>";
+			$spouselinks .= "<table class=\"rtlnav person_box$isF\"><tr><td align=\"right\" style=\"font-size:10px;font-weight:normal;\" class=\"name2 nowrap\">";
+			$spouselinks .= "<b>" . WT_I18N::translate('Family') . "</b> (" .$person->getFullName(). ")<br>";
+			$parentlinks .= "<table class=\"rtlnav person_box$isF\"><tr><td align=\"right\" style=\"font-size:10px;font-weight:normal;\" class=\"name2 nowrap\">";
+			$parentlinks .= "<b>" . WT_I18N::translate('Parents') . "</b> (" .$person->getFullName(). ")<br>";
+			$step_parentlinks .= "<table class=\"rtlnav person_box$isF\"><tr><td align=\"right\" style=\"font-size:10px;font-weight:normal;\" class=\"name2 nowrap\">";
+			$step_parentlinks .= "<b>" . WT_I18N::translate('Parents') . "</b> (" .$person->getFullName(). ")<br>";
 		} else {
-		$spouselinks .= "<table class=\"ltrnav person_box$isF\"><tr><td align=\"left\" style=\"font-size:10px;font-weight:normal;\" class=\"name2 nowrap\">";
-		$spouselinks .= "<b>" . WT_I18N::translate('Family') . "</b> (" .$person->getFullName(). ")<br>";
-		$parentlinks .= "<table class=\"ltrnav person_box$isF\"><tr><td align=\"left\" style=\"font-size:10px;font-weight:normal;\" class=\"name2 nowrap\">";
-		$parentlinks .= "<b>" . WT_I18N::translate('Parents') . "</b> (" .$person->getFullName(). ")<br>";
-		$step_parentlinks .= "<table class=\"ltrnav person_box$isF\"><tr><td align=\"left\" style=\"font-size:10px;font-weight:normal;\" class=\"name2 nowrap\">";
-		$step_parentlinks .= "<b>" . WT_I18N::translate('Parents') . "</b> (" .$person->getFullName(). ")<br>";
+			$spouselinks .= "<table class=\"ltrnav person_box$isF\"><tr><td align=\"left\" style=\"font-size:10px;font-weight:normal;\" class=\"name2 nowrap\">";
+			$spouselinks .= "<b>" . WT_I18N::translate('Family') . "</b> (" .$person->getFullName(). ")<br>";
+			$parentlinks .= "<table class=\"ltrnav person_box$isF\"><tr><td align=\"left\" style=\"font-size:10px;font-weight:normal;\" class=\"name2 nowrap\">";
+			$parentlinks .= "<b>" . WT_I18N::translate('Parents') . "</b> (" .$person->getFullName(). ")<br>";
+			$step_parentlinks .= "<table class=\"ltrnav person_box$isF\"><tr><td align=\"left\" style=\"font-size:10px;font-weight:normal;\" class=\"name2 nowrap\">";
+			$step_parentlinks .= "<b>" . WT_I18N::translate('Parents') . "</b> (" .$person->getFullName(). ")<br>";
 		}
 
 		$persons       = "";
@@ -1319,9 +1319,6 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 
 		//-- Parent families --------------------------------------
 		foreach ($person->getChildFamilies() as $family) {
-			$marrdate = $family->getMarriageDate();
-			$married  = WT_Date::Compare($censdate, $marrdate);
-
 			$husb = $family->getHusband();
 			$wife = $family->getWife();
 			$children = $family->getChildren();
@@ -1358,14 +1355,11 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 					}
 					//-- Parent Husbands Details ----------------------
 					$person_parent="Yes";
-					$tmp=$husb->getXref();
 					if ($husb->canShowName()) {
 						$nam   = $husb->getAllNames();
 						$fulln = rtrim($nam[0]['givn'],'*')."&nbsp;".$nam[0]['surname'];
 						$fulln = str_replace("@N.N.", "(".WT_I18N::translate('unknown').")", $fulln);
 						$fulln = str_replace("@P.N.", "(".WT_I18N::translate('unknown').")", $fulln);
-						$givn  = rtrim($nam[0]['givn'],'*');
-						$surn  = $nam[0]['surn'];
 						for ($i=0; $i<count($nam); $i++) {
 							if ($nam[$i]['type']=='_MARNM') {
 								$fulmn = rtrim($nam[$i]['givn'],'*')."&nbsp;".$nam[$i]['surname'];
@@ -1438,26 +1432,13 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 					}
 					//-- Parent Wifes Details ----------------------
 					$person_parent="Yes";
-					$tmp=$wife->getXref();
 					if ($wife->canShowName()) {
-						$married = WT_Date::Compare($censdate, $marrdate);
 						$nam   = $wife->getAllNames();
 						$fulln = rtrim($nam[0]['givn'],'*')."&nbsp;".$nam[0]['surname'];
 						$fulln = str_replace("@N.N.", "(".WT_I18N::translate('unknown').")", $fulln);
 						$fulln = str_replace("@P.N.", "(".WT_I18N::translate('unknown').")", $fulln);
-						$givn  = rtrim($nam[0]['givn'],'*');
-						$surn  = $nam[0]['surname'];
 						$husbnam = null;
 
-						// Get wifes married name if available
-						if (isset($husb)) {
-							$husbnams = $husb->getAllNames();
-							if ($husbnams[0]['surname']=="@N.N." || $husbnams[0]['surname']=="") {
-								// Husband or his name is not known
-							} else {
-								$husbnam = $husb->getAllNames();
-							}
-						}
 						for ($i=0; $i<count($nam); $i++) {
 							if ($nam[$i]['type']=='_MARNM') {
 								$fulmn = rtrim($nam[$i]['givn'],'*')."&nbsp;".$nam[$i]['surname'];
@@ -1520,8 +1501,6 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 
 		//-- Step families -----------------------------------------
 		foreach ($person->getChildStepFamilies() as $family) {
-			$marrdate = $family->getMarriageDate();
-			$married  = WT_Date::Compare($censdate, $marrdate);
 			$husb = $family->getHusband();
 			$wife = $family->getWife();
 			$children = $family->getChildren();
@@ -1560,15 +1539,11 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 						}
 						//-- Step Husband Details ------------------------------
 						$person_step="Yes";
-						$tmp=$husb->getXref();
 						if ($husb->canShowName()) {
 							$nam   = $husb->getAllNames();
 							$fulln = rtrim($nam[0]['givn'],'*')."&nbsp;".$nam[0]['surname'];
 							$fulln = str_replace("@N.N.", "(".WT_I18N::translate('unknown').")", $fulln);
 							$fulln = str_replace("@P.N.", "(".WT_I18N::translate('unknown').")", $fulln);
-							//$fulln = strip_tags($husb->getFullName());
-							$givn  = rtrim($nam[0]['givn'],'*');
-							$surn  = $nam[0]['surname'];
 							for ($i=0; $i<count($nam); $i++) {
 								if ($nam[$i]['type']=='_MARNM') {
 									$fulmn = rtrim($nam[$i]['givn'],'*')."&nbsp;".$nam[$i]['surname'];
@@ -1643,27 +1618,13 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 						}
 						//-- Step Wife Details ------------------------------
 						$person_step="Yes";
-						$tmp=$wife->getXref();
 						if ($wife->canShowName()) {
-							$married = WT_Date::Compare($censdate, $marrdate);
 							$nam   = $wife->getAllNames();
 							$fulln = rtrim($nam[0]['givn'],'*')."&nbsp;".$nam[0]['surname'];
 							$fulln = str_replace("@N.N.", "(".WT_I18N::translate('unknown').")", $fulln);
 							$fulln = str_replace("@P.N.", "(".WT_I18N::translate('unknown').")", $fulln);
-							//$fulln = strip_tags($wife->getFullName());
-							$givn  = rtrim($nam[0]['givn'],'*');
-							$surn  = $nam[0]['surname'];
 							$husbnam = null;
 
-							// Get wifes married name if available
-							if (isset($husb)) {
-								$husbnams = $husb->getAllNames();
-								if ($husbnams[0]['surname']=="@N.N." || $husbnams[0]['surname']=="") {
-									// Husband or his name is not known
-								} else {
-									$husbnam = $husb->getAllNames();
-								}
-							}
 							for ($i=0; $i<count($nam); $i++) {
 								if ($nam[$i]['type']=='_MARNM') {
 									$fulmn = rtrim($nam[$i]['givn'],'*')."&nbsp;".$nam[$i]['surname'];
@@ -1730,7 +1691,6 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 			$children = $family->getChildren();
 			$num = count($children);
 			$marrdate = $family->getMarriageDate();
-			$married  = WT_Date::Compare($censdate, $marrdate);
 			$is_wife = $family->getWife();
 
 			//-- Get Spouse’s Children’s Name, DOB, DOD --------------------------
@@ -1764,15 +1724,11 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 					}
 
 					//-- Spouse Details -----------------------------
-					$tmp=$spouse->getXref();
 					if ($spouse->canShowName()) {
-						$married = WT_Date::Compare($censdate, $marrdate);
 						$nam   = $spouse->getAllNames();
 						$fulln = rtrim($nam[0]['givn'],'*')."&nbsp;".$nam[0]['surname'];
 						$fulln = str_replace("@N.N.", "(".WT_I18N::translate('unknown').")", $fulln);
 						$fulln = str_replace("@P.N.", "(".WT_I18N::translate('unknown').")", $fulln);
-						$givn  = rtrim($nam[0]['givn'],'*');
-						$surn  = $nam[0]['surname'];
 
 						// If spouse is a wife, then get her married name or default to her birth name
 						for ($i=0; $i<count($nam); $i++) {
@@ -1849,8 +1805,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 
 			// Children -------------------------------------
 			$spouselinks .= "<ul class=\"clist\">";
-			foreach ($children as $c=>$child) {
-				$cpid = $child->getXref();
+			foreach ($children as $child) {
 				if ($child) {
 					$persons="Yes";
 
@@ -1881,12 +1836,10 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 					}
 
 					// Get Childs marriage status ------------
-					$married="";
 					$marrdate="";
 					$chhusbnam=null;
 					foreach ($child->getSpouseFamilies() as $childfamily) {
 						$marrdate=$childfamily->getMarriageDate();
-						$married = WT_Date::Compare($censdate, $marrdate);
 						if ($childfamily->getHusband()) {
 							$chhusbnam = $childfamily->getHusband()->getAllNames();
 						}
@@ -1898,8 +1851,6 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 						$fulln = rtrim($nam[0]['givn'],'*')."&nbsp;".$nam[0]['surname'];
 						$fulln = str_replace("@N.N.", "(".WT_I18N::translate('unknown').")", $fulln);
 						$fulln = str_replace("@P.N.", "(".WT_I18N::translate('unknown').")", $fulln);
-						$givn  = rtrim($nam[0]['givn'],'*');
-						$surn  = $nam[0]['surname'];
 						$husbnam = null;
 
 						// Get childs married name if available

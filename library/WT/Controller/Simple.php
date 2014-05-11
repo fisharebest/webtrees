@@ -18,13 +18,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 class WT_Controller_Simple extends WT_Controller_Page {
-
 	// Popup windows don't always need a title
 	public function __construct() {
 		parent::__construct();
@@ -40,32 +34,8 @@ class WT_Controller_Simple extends WT_Controller_Page {
 	}
 
 	// Restrict access
-	public function requireAdminLogin() {
-		if (!WT_User::currentUser()->isAdmin()) {
-			$this->addInlineJavascript('opener.window.location.reload(); window.close();');
-			exit;
-		}
-
-		return $this;
-	}
-
-	// Restrict access
-	public function requireManagerLogin() {
-		global $WT_TREE;
-
-		if (!WT_User::currentUser()->isManager($WT_TREE)) {
-			$this->addInlineJavascript('opener.window.location.reload(); window.close();');
-			exit;
-		}
-
-		return $this;
-	}
-
-	// Restrict access
-	public function requireMemberLogin() {
-		global $WT_TREE;
-
-		if (!WT_User::currentUser()->isMember($WT_TREE)) {
+	public function restrictAccess($condition) {
+		if ($condition !== true) {
 			$this->addInlineJavascript('opener.window.location.reload(); window.close();');
 			exit;
 		}

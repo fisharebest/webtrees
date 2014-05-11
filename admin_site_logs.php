@@ -23,7 +23,7 @@ require './includes/session.php';
 
 $controller=new WT_Controller_Page();
 $controller
-	->requireManagerLogin()
+	->restrictAccess(\WT\Auth::isManager())
 	->setPageTitle(WT_I18N::translate('Logs'));
 
 require WT_ROOT.'includes/functions/functions_edit.php';
@@ -43,7 +43,7 @@ $user   = WT_Filter::get('user');
 $search = WT_Filter::get('search');
 $search = isset($search['value']) ? $search['value'] : null;
 
-if (WT_USER_IS_ADMIN) {
+if (\WT\Auth::isAdmin()) {
 	// Administrators can see all logs
 	$gedc = WT_Filter::get('gedc');
 } else {
@@ -130,7 +130,7 @@ case 'load_json':
 	Zend_Session::writeClose();
 	$start  = WT_Filter::getInteger('start');
 	$length = WT_Filter::getInteger('length');
-	set_user_setting(WT_USER_ID, 'admin_site_log_page_size', $length);
+	\WT\Auth::user()->setSetting('admin_site_log_page_size', $length);
 
 	if ($length>0) {
 		$LIMIT=" LIMIT " . $start . ',' . $length;
@@ -193,7 +193,7 @@ $controller
 			jQueryUI: true,
 			autoWidth: false,
 			sorting: [[ 0, "desc" ]],
-			pageLength: '.get_user_setting(WT_USER_ID, 'admin_site_log_page_size', 20).',
+			pageLength: ' . \WT\Auth::user()->getSetting('admin_site_log_page_size', 20) . ',
 			pagingType: "full_numbers"
 		});
 	');
@@ -207,8 +207,10 @@ $url=
 	'&amp;user='.rawurlencode($user).
 	'&amp;gedc='.rawurlencode($gedc);
 
-$users_array=array_combine(get_all_users(), get_all_users());
-uksort($users_array, 'strnatcasecmp');
+$users_array = array();
+foreach (\WT\User::all() as $tmp_user) {
+	$users_array[$tmp_user->getUserName()] = $tmp_user->getUserName();
+}
 
 echo
 	'<form name="logs" method="get" action="'.WT_SCRIPT_NAME.'">',
@@ -233,7 +235,7 @@ echo
 					WT_I18N::translate('User'), '<br>', select_edit_control('user', $users_array, '', $user, ''),
 				'</td>',
 				'<td>',
-					WT_I18N::translate('Family tree'), '<br>',  select_edit_control('gedc', WT_Tree::getNameList(), '', $gedc, WT_USER_IS_ADMIN ? '' : 'disabled'),
+					WT_I18N::translate('Family tree'), '<br>',  select_edit_control('gedc', WT_Tree::getNameList(), '', $gedc, \WT\Auth::isAdmin() ? '' : 'disabled'),
 				'</td>',
 			'</tr><tr>',
 				'<td colspan="6">',

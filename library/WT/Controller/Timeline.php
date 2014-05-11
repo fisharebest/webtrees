@@ -21,11 +21,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 class WT_Controller_Timeline extends WT_Controller_Page {
 	var $bheight = 30;
 	var $placements = array();
@@ -132,8 +127,8 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 	}
 
 	/**
-	* check the privacy of the incoming people to make sure they can be shown
-	*/
+	 * check the privacy of the incoming people to make sure they can be shown
+	 */
 	function checkPrivacy() {
 		$printed = false;
 		for ($i=0; $i<count($this->people); $i++) {
@@ -153,15 +148,9 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 	}
 
 	function print_time_fact(WT_Fact $event) {
-		global $basexoffset, $baseyoffset, $factcount, $TEXT_DIRECTION, $WT_IMAGES, $SHOW_PEDIGREE_PLACES, $placements;
+		global $basexoffset, $baseyoffset, $factcount, $TEXT_DIRECTION, $WT_IMAGES, $placements;
 
-		/* @var $event Event */
-		$factrec = $event->getGedcom();
-		$fact = $event->getTag();
 		$desc = $event->getValue();
-		if ($fact=="EVEN" || $fact=="FACT") {
-			$fact = $event->getAttribute('TYPE');
-			}
 		// check if this is a family fact
 		$gdate=$event->getDate();
 		$date=$gdate->MinDate();
@@ -241,7 +230,6 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 				if ($this->pids[$p]==$spouse->getXref()) break;
 			}
 			if ($p==count($this->pids)) $p = $event->temp;
-			$col = $p % 6;
 			if ($spouse->getXref()!=$this->pids[$p]) {
 				echo ' <a href="', $spouse->getHtmlUrl(), '">', $spouse->getFullName(), '</a>';
 			} else {

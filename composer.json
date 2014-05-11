@@ -2,6 +2,9 @@
 	"autoload": {
 		"psr-0": {
 			"WT_": "library/WT/"
+		},
+		"psr-4": {
+			"WT\\": "library/WT/"
 		}
 	},
 	"config": {

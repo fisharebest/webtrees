@@ -1,5 +1,5 @@
 <?php
-// UI for online updating of the config file.
+// Log out from the current session
 //
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
@@ -18,24 +18,12 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-define('WT_SCRIPT_NAME', 'admin_site_readme.php');
-
+define('WT_SCRIPT_NAME', 'logout.php');
 require './includes/session.php';
 
-$controller = new WT_Controller_Page();
-$controller
-	->restrictAccess(\WT\Auth::isAdmin())
-	->setPageTitle(WT_I18N::translate('README documentation'))
-	->pageHeader();
+if (\WT\Auth::id()) {
+	\WT\Log::addAuthenticationLog('Logout: ' . \WT\Auth::user()->getUserName() . '/' . \WT\Auth::user()->getRealName());
+	\WT\Auth::logout();
+}
 
-// This information is always LTR/English
-?>
-<div class="markdown" dir="ltr" lang="en">
-	<?php
-		use \Michelf\MarkdownExtra;
-
-		echo MarkdownExtra::defaultTransform(
-			file_get_contents('README.md')
-		);
-	?>
-</div>
+header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH);

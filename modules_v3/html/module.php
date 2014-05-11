@@ -48,8 +48,8 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 
 		/*
-		* Select GEDCOM
-		*/
+		 * Select GEDCOM
+		 */
 		$gedcom=get_block_setting($block_id, 'gedcom');
 		switch($gedcom) {
 		case '__current__':

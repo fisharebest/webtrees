@@ -25,7 +25,7 @@ require WT_ROOT.'includes/functions/functions_edit.php';
 
 $controller=new WT_Controller_Page();
 $controller
-	->requireManagerLogin()
+	->restrictAccess(\WT\Auth::isManager())
 	->addInlineJavascript('jQuery("#x").accordion({heightStyle: "content"});')
 	->addInlineJavascript('jQuery("#tree_stats").accordion();')
 	->addInlineJavascript('jQuery("#changes").accordion();')
@@ -55,9 +55,7 @@ foreach (old_paths() as $path) {
 }
 
 // Total number of users
-$total_users = WT_DB::prepare(
-	"SELECT COUNT(*) FROM `##user` WHERE user_id>0"
-)->fetchOne();
+$total_users = \WT\User::count();
 
 // Total number of administrators
 $total_administrators = WT_DB::prepare(
@@ -106,7 +104,7 @@ $stats = new WT_Stats(WT_GEDCOM);
 			<p>
 				<?php echo /* I18N: %s is a URL/link to the project website */ WT_I18N::translate('Support and documentation can be found at %s.', ' <a class="current" href="http://webtrees.net/">webtrees.net</a>'); ?>
 			</p>
-			<?php if (WT_USER_IS_ADMIN && $latest_version && version_compare(WT_VERSION, $latest_version)<0) { ?>
+			<?php if (\WT\Auth::isAdmin() && $latest_version && version_compare(WT_VERSION, $latest_version)<0) { ?>
 			<p>
 				<?php echo WT_I18N::translate('A new version of webtrees is available.'); ?>
 				<a href="admin_site_upgrade.php" class="error">
@@ -116,7 +114,7 @@ $stats = new WT_Stats(WT_GEDCOM);
 			<?php } ?>
 		</div>
 
-		<?php if (WT_USER_IS_ADMIN && $old_files) { ?>
+		<?php if (\WT\Auth::isAdmin() && $old_files) { ?>
 		<h2><span class="warning"><?php echo WT_I18N::translate('Old files found'); ?></span></h2>
 		<div>
 			<p>
@@ -125,7 +123,7 @@ $stats = new WT_Stats(WT_GEDCOM);
 			<ul>
 				<?php foreach ($old_files as $old_file) { ?>
 				<li dir="ltr"><?php echo $old_file; ?></li>
-				<?php } ?>	
+				<?php } ?>
 			</ul>
 		</div>
 		<?php } ?>

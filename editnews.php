@@ -29,7 +29,7 @@ require './includes/session.php';
 $controller=new WT_Controller_Simple();
 $controller
 	->setPageTitle(WT_I18N::translate('Add/edit journal/news entry'))
-	->requireMemberLogin()
+	->restrictAccess(\WT\Auth::isMember())
 	->pageHeader();
 
 $action    = WT_Filter::get('action', 'compose|save|delete', 'compose');
@@ -42,7 +42,6 @@ $text      = WT_Filter::post('text');
 
 switch ($action) {
 case 'compose':
-	
 	if (array_key_exists('ckeditor', WT_Module::getActiveModules())) {
 		ckeditor_WT_Module::enableEditor($controller);
 	}

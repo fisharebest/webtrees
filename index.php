@@ -81,7 +81,7 @@ if ($action == 'ajax') {
 
 $controller=new WT_Controller_Page();
 if ($ctype=='user') {
-	$controller->requireMemberLogin();
+	$controller->restrictAccess(\WT\Auth::isMember());
 }
 $controller
 	->setPageTitle($ctype=='user' ? WT_I18N::translate('My page') : WT_TREE_TITLE)

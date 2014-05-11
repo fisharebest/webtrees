@@ -18,11 +18,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 class WT_Mail {
 	const EOL = "<br>\r\n"; // End-of-line that works for both TEXT and HTML messages
 
@@ -51,15 +46,23 @@ class WT_Mail {
 				->setReplyTo ($replyto_email,                        $replyto_name)
 				->send       (WT_Mail::transport());
 		} catch (Exception $ex) {
-			AddToLog('Mail: ' . $ex->getMessage(), 'error');
+			\WT\Log::addErrorLog('Mail: ' . $ex->getMessage());
 			return false;
 		}
 		return true;
 	}
 
-	// Send an automated system message (such as a password reminder) from a tree to a user.
-	public static function system_message(WT_Tree $tree, $user_id, $subject, $message) {
-		$user = new WT_User($user_id);
+	/**
+	 * Send an automated system message (such as a password reminder) from a tree to a user.
+	 *
+	 * @param WT_Tree  $tree
+	 * @param \WT\User $user
+	 * @param string   $subject
+	 * @param string   $message
+	 *
+	 * @return bool
+	 */
+	public static function system_message(WT_Tree $tree, \WT\User $user, $subject, $message) {
 		return self::send(
 			$tree,
 			$user->getEmail(),                     $user->getRealName(),

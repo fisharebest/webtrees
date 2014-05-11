@@ -28,14 +28,14 @@ require './includes/session.php';
 
 $controller=new WT_Controller_Page;
 $controller
-	->requireManagerLogin()
+	->restrictAccess(\WT\Auth::isManager())
 	->setPageTitle(WT_I18N::translate('Merge records'))
 	->pageHeader();
 
 require_once WT_ROOT.'includes/functions/functions_edit.php';
 require_once WT_ROOT.'includes/functions/functions_import.php';
 
-$ged=$GEDCOM;
+$ged    = $GEDCOM;
 $gid1   = WT_Filter::post('gid1', WT_REGEX_XREF);
 $gid2   = WT_Filter::post('gid2', WT_REGEX_XREF);
 $action = WT_Filter::post('action', 'choose|select|merge', 'choose');
