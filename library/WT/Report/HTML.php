@@ -603,28 +603,6 @@ class WT_Report_HTML extends WT_Report_Base {
  */
 class CellHTML extends Cell {
 	/**
-	 * Create a class CELL for HTML
-	 *
-	 * @param int     $width   cell width (expressed in points)
-	 * @param int     $height  cell height (expressed in points)
-	 * @param mixed   $border  Border style
-	 * @param string  $align   Text alignement
-	 * @param string  $bgcolor Background color code
-	 * @param string  $style   The name of the text style
-	 * @param int     $ln      Indicates where the current position should go after the call
-	 * @param mixed   $top     Y-position
-	 * @param mixed   $left    X-position
-	 * @param int     $fill    Indicates if the cell background must be painted (1) or transparent (0). Default value: 0.
-	 * @param int     $stretch Stretch carachter mode
-	 * @param string  $bocolor Border color
-	 * @param string  $tcolor  Text color
-	 * @param boolean $reseth
-	 */
-	function CellHTML($width, $height, $border, $align, $bgcolor, $style, $ln, $top, $left, $fill, $stretch, $bocolor, $tcolor, $reseth) {
-		parent::Cell($width, $height, $border, $align, $bgcolor, $style, $ln, $top, $left, $fill, $stretch, $bocolor, $tcolor, $reseth);
-	}
-
-	/**
 	 * HTML Cell renderer
 	 *
 	 * @param WT_Report_HTML $html
@@ -815,11 +793,6 @@ class CellHTML extends Cell {
  * HTML element - HTML Report
  */
 class HtmlHTML extends Html {
-
-	function HtmlHTML($tag, $attrs) {
-		parent::Html($tag, $attrs);
-	}
-
 	function render($html, $sub = false, $inat=true) {
 
 		if (!empty($this->attrs["wt_style"])) $html->setCurrentStyle($this->attrs["wt_style"]);
@@ -861,10 +834,6 @@ class HtmlHTML extends Html {
  * TextBox element - HTML Report
  */
 class TextBoxHTML extends TextBox {
-
-	function TextBoxHTML($width, $height, $border, $bgcolor, $newline, $left, $top, $pagecheck, $style, $fill, $padding, $reseth) {
-		parent::TextBox($width, $height, $border, $bgcolor, $newline, $left, $top, $pagecheck, $style, $fill, $padding, $reseth);
-	}
 	function render($html) {
 		// checkFootnote
 		$newelements = array();
@@ -1127,11 +1096,6 @@ class TextBoxHTML extends TextBox {
  * Text element - HTML Report
  */
 class TextHTML extends Text {
-
-	function TextHTML($style, $color) {
-		parent::Text($style, $color);
-	}
-
 	/**
 	 * @param WT_Report_HTML $html
 	 * @param int            $curx
@@ -1291,11 +1255,6 @@ class TextHTML extends Text {
  * Footnote element
  */
 class FootnoteHTML extends Footnote {
-
-	function FootnoteHTML($style="") {
-		parent::Footnote($style);
-	}
-
 	/**
 	 * HTML Footnotes number renderer
 	 *
@@ -1455,10 +1414,6 @@ class FootnoteHTML extends Footnote {
  * PageHeader element
  */
 class PageHeaderHTML extends PageHeader {
-	function PageHeaderHTML() {
-		parent::PageHeader();
-	}
-
 	function render($html) {
 		$html->clearPageHeader();
 		foreach ($this->elements as $element) {
@@ -1471,11 +1426,6 @@ class PageHeaderHTML extends PageHeader {
  * Image element
  */
 class ImageHTML extends Image {
-
-	function ImageHTML($file, $x, $y, $w, $h, $align, $ln) {
-		parent::Image($file, $x, $y, $w, $h, $align, $ln);
-	}
-
 	/**
 	 * Image renderer
 	 *
@@ -1551,18 +1501,6 @@ class ImageHTML extends Image {
  * Line element - HTML Report
  */
 class LineHTML extends Line {
-	/**
-	 * Create a line class -HTML
-	 *
-	 * @param mixed $x1
-	 * @param mixed $y1
-	 * @param mixed $x2
-	 * @param mixed $y2
-	 */
-	function LineHTML($x1, $y1, $x2, $y2) {
-		parent::Line($x1, $y1, $x2, $y2);
-	}
-
 	/**
 	 * HTML line renderer
 	 *

@@ -678,45 +678,6 @@ class PDF extends TCPDF {
  */
 class CellPDF extends Cell {
 	/**
-	 * Create a class CELL for PDF
-	 *
-	 * @param int     $width   cell width (expressed in points)
-	 * @param int     $height  cell height (expressed in points)
-	 * @param mixed   $border  Border style
-	 * @param string  $align   Text alignement
-	 * @param string  $bgcolor Background color code
-	 * @param string  $style   The name of the text style
-	 * @param int     $ln      Indicates where the current position should go after the call
-	 * @param mixed   $top     Y-position
-	 * @param mixed   $left    X-position
-	 * @param int     $fill    Indicates if the cell background must be painted (1) or transparent (0). Default value: 1
-	 * @param int     $stretch Stretch carachter mode
-	 * @param string  $bocolor Border color
-	 * @param string  $tcolor  Text color
-	 * @param boolean $reseth
-	 */
-	function CellPDF(
-		$width, $height, $border, $align, $bgcolor, $style, $ln, $top, $left, $fill, $stretch, $bocolor, $tcolor, $reseth
-	) {
-		parent::Cell(
-			$width,
-			$height,
-			$border,
-			$align,
-			$bgcolor,
-			$style,
-			$ln,
-			$top,
-			$left,
-			$fill,
-			$stretch,
-			$bocolor,
-			$tcolor,
-			$reseth
-		);
-	}
-
-	/**
 	 * PDF Cell renderer
 	 *
 	 * @param PDF $pdf
@@ -851,11 +812,6 @@ class CellPDF extends Cell {
  * HTML element - PDF Report
  */
 class HtmlPDF extends Html {
-
-	function HtmlPDF($tag, $attrs) {
-		parent::Html($tag, $attrs);
-	}
-
 	function render($pdf, $sub = false) {
 		if (!empty($this->attrs['style'])) {
 			$pdf->setCurrentStyle($this->attrs['style']);
@@ -889,41 +845,6 @@ class HtmlPDF extends Html {
  * TextBox element
  */
 class TextBoxPDF extends TextBox {
-	/**
-	 * Create a class Text Box for PDF
-	 *
-	 * @param float   $width   Text box width
-	 * @param float   $height  Text box height
-	 * @param boolean $border
-	 * @param string  $bgcolor Background color code in HTML
-	 * @param boolean $newline
-	 * @param mixed   $left
-	 * @param mixed   $top
-	 * @param boolean $pagecheck
-	 * @param string  $style
-	 * @param boolean $fill
-	 * @param boolean $padding
-	 * @param boolean $reseth  Reset the last height after this bos is done
-	 */
-	function TextBoxPDF(
-		$width, $height, $border, $bgcolor, $newline, $left, $top, $pagecheck, $style, $fill, $padding, $reseth
-	) {
-		parent::TextBox(
-			$width,
-			$height,
-			$border,
-			$bgcolor,
-			$newline,
-			$left,
-			$top,
-			$pagecheck,
-			$style,
-			$fill,
-			$padding,
-			$reseth
-		);
-	}
-
 	/**
 	 * PDF Text Box renderer
 	 *
@@ -1250,16 +1171,6 @@ class TextBoxPDF extends TextBox {
  */
 class TextPDF extends Text {
 	/**
-	 * Create a Text class for PDF
-	 *
-	 * @param string $style The name of the text style
-	 * @param string $color HTML color code
-	 */
-	function TextPDF($style, $color) {
-		parent::Text($style, $color);
-	}
-
-	/**
 	 * PDF Text renderer
 	 *
 	 * @param PDF $pdf
@@ -1407,11 +1318,6 @@ class TextPDF extends Text {
  * Footnote element
  */
 class FootnotePDF extends Footnote {
-
-	function FootnotePDF($style = "") {
-		parent::Footnote($style);
-	}
-
 	/**
 	 * PDF Footnotes number renderer
 	 *
@@ -1565,11 +1471,6 @@ class FootnotePDF extends Footnote {
  * PageHeader element
  */
 class PageHeaderPDF extends PageHeader {
-
-	function PageHeaderPDF() {
-		parent::PageHeader();
-	}
-
 	/**
 	 * PageHeader element renderer
 	 *
@@ -1589,11 +1490,6 @@ class PageHeaderPDF extends PageHeader {
  * ImagePDF class element
  */
 class ImagePDF extends Image {
-
-	function ImagePDF($file, $x, $y, $w, $h, $align, $ln) {
-		parent::Image($file, $x, $y, $w, $h, $align, $ln);
-	}
-
 	/**
 	 * PDF image renderer
 	 *
@@ -1691,18 +1587,6 @@ class ImagePDF extends Image {
  * Line element
  */
 class LinePDF extends Line {
-	/**
-	 * Create a line class -PDF
-	 *
-	 * @param mixed $x1
-	 * @param mixed $y1
-	 * @param mixed $x2
-	 * @param mixed $y2
-	 */
-	function LinePDF($x1, $y1, $x2, $y2) {
-		parent::Line($x1, $y1, $x2, $y2);
-	}
-
 	/**
 	 * PDF line renderer
 	 *
