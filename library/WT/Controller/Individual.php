@@ -141,7 +141,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 		echo '<dd class="field">', $dummy->getFullName();
 		if ($this->name_count == 1) {
 			if (\WT\Auth::isAdmin()) {
-				$user = \WT\User::findByGenealogyRecord($WT_TREE, $this->record->getXref());
+				$user = \WT\User::findByGenealogyRecord($WT_TREE, $this->record);
 				if ($user) {
 					echo '<span> - <a class="warning" href="admin_users.php?filter=' . WT_Filter::escapeHtml($user->getUserName()) . '">' . WT_Filter::escapeHtml($user->getUserName()) . '</a></span>';
 				}
@@ -324,7 +324,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 	/**
 	 * get the person box stylesheet class for the given person
 	 *
-	 * @param Person $person
+	 * @param WT_Individual $person
 	 *
 	 * @return string returns 'person_box', 'person_boxF', or 'person_boxNN'
 	 */

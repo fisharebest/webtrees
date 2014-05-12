@@ -258,10 +258,8 @@ if ($show=='indi' || $show=='surn') {
 				echo '<p class="center alpha_index">', join(' | ', $list), '</p>';
 			}
 		}
-		if ($show=='indi') {
-			echo format_indi_table(
-				WT_Query_Name::individuals($surname, $alpha, $falpha, $show_marnm, false, WT_GED_ID)
-			);
+		if ($show == 'indi') {
+			echo format_indi_table(WT_Query_Name::individuals($surname, $alpha, $falpha, $show_marnm, false, WT_GED_ID));
 		}
 	}
 }

@@ -135,7 +135,7 @@ class WT_Menu {
 	}
 
 	function getMenu() {
-		global $menucount, $TEXT_DIRECTION, $WT_IMAGES;
+		global $menucount, $TEXT_DIRECTION;
 
 		if (!isset($menucount)) {
 			$menucount = 0;

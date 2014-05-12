@@ -284,7 +284,7 @@ function logout_link() {
 	if ($SEARCH_SPIDER) {
 		return '';
 	} else {
-		return '<a href="index.php?logout=1" class="link">' . WT_I18N::translate('Logout') . '</a>';
+		return '<a href="logout.php" class="link">' . WT_I18N::translate('Logout') . '</a>';
 	}
 }
 

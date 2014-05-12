@@ -272,7 +272,6 @@ class WT_Date_Calendar {
 		$dm=$m-max($this->m,1);
 		$dd=$d-max($this->d,1);
 		if ($dd<0) {
-			$dd+=$this->DaysInMonth();
 			$dm--;
 		}
 		if ($dm<0) {

@@ -17,7 +17,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-use Exception;
 use WT_Tree;
 use Zend_Session;
 
@@ -25,60 +24,13 @@ use Zend_Session;
  * Class Auth - authentication functions
  */
 class Auth {
-	// Reasons why a user’s authentication attempt failed
-	const ACCOUNT_NOT_APPROVED = 'ACCOUNT_NOT_APPROVED';
-	const ACCOUNT_NOT_VERIFIED = 'ACCOUNT_NOT_VERIFIED';
-	const INCORRECT_PASSWORD   = 'INCORRECT_PASSWORD';
-	const NO_SESSION_COOKIES   = 'NO_SESSION_COOKIES';
-	const NO_SUCH_USER         = 'NO_SUCH_USER';
-
-	/**
-	 * Attempt to authenticate a user’s credentials, and log them in if successful.
-	 *
-	 * @param array $credentials Array with keys "identifier" and "password"
-	 *
-	 * @throws Exception
-	 */
-	public static function attempt(array $credentials) {
-		global $WT_SESSION;
-
-		// The login form creates a cookie.  If it is not present in the form
-		// submission, then the browser does not support cookies.
-		if (empty($_COOKIE)) {
-			throw new Exception(self::NO_SESSION_COOKIES);
-		}
-
-		$user = User::findByIdentifier($credentials['identifier']);
-
-		if (!$user) {
-			throw new Exception(self::NO_SUCH_USER);
-		}
-
-		if (!$user->checkPassword($credentials['password'])) {
-			throw new Exception(self::INCORRECT_PASSWORD);
-		}
-
-		if (!$user->getSetting('verified') && !$user->getSetting('canadmin')) {
-			throw new Exception(self::ACCOUNT_NOT_VERIFIED);
-		}
-
-		if (!$user->getSetting('verified_by_admin') && !$user->getSetting('canadmin')) {
-			throw new Exception(self::ACCOUNT_NOT_APPROVED);
-		}
-
-		$WT_SESSION->wt_user = $user->getUserId();
-		Zend_Session::regenerateId();
-	}
-
 	/**
 	 * Are we currently logged in?
 	 *
 	 * @return bool
 	 */
 	public static function check() {
-		global $WT_SESSION;
-
-		return $WT_SESSION->wt_user !== null;
+		return Auth::id() !== null;
 	}
 
 	/**
@@ -188,12 +140,12 @@ class Auth {
 	/**
 	 * The ID of the authenticated user, from the current session.
 	 *
-	 * @return int|null
+	 * @return string|null
 	 */
 	public static function id() {
 		global $WT_SESSION;
 
-		return $WT_SESSION->wt_user;
+		return $WT_SESSION ? $WT_SESSION->wt_user : null;
 	}
 
 	/**
@@ -202,9 +154,7 @@ class Auth {
 	 * @return User|null
 	 */
 	public static function user() {
-		global $WT_SESSION;
-
-		return User::find($WT_SESSION->wt_user);
+		return User::find(Auth::id());
 	}
 
 	/**

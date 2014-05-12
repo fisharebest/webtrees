@@ -102,7 +102,7 @@ class WT_Stats {
 		isset($funcs) or $funcs = get_class_methods($this);
 
 		// Extract all tags from the provided text
-		$ct = preg_match_all("/#([^#]+)(?=#)/", (string)$text, $match);
+		preg_match_all("/#([^#]+)(?=#)/", (string)$text, $match);
 		$tags = $match[1];
 		$c = count($tags);
 		$new_tags = array(); // tag to replace
@@ -780,7 +780,6 @@ class WT_Stats {
 ///////////////////////////////////////////////////////////////////////////////
 
 	function _mortalityQuery($type='full', $life_dir='ASC', $birth_death='BIRT') {
-		global $listDir;
 		if ($birth_death == 'MARR') {
 			$query_field = "'MARR'";
 		} else if ($birth_death == 'DIV') {
@@ -788,14 +787,12 @@ class WT_Stats {
 		} else if ($birth_death == 'BIRT') {
 			$query_field = "'BIRT'";
 		} else {
-			$birth_death = 'DEAT';
 			$query_field = "'DEAT'";
 		}
 		if ($life_dir == 'ASC') {
 			$dmod = 'MIN';
 		} else {
 			$dmod = 'MAX';
-			$life_dir = 'DESC';
 		}
 		$rows=self::_runSQL(
 			"SELECT SQL_CACHE d_year, d_type, d_fact, d_gid".
@@ -1312,8 +1309,6 @@ class WT_Stats {
 ///////////////////////////////////////////////////////////////////////////////
 
 	function _longlifeQuery($type='full', $sex='F') {
-		global $listDir;
-
 		$sex_search = ' 1=1';
 		if ($sex == 'F') {
 			$sex_search = " i_sex='F'";
@@ -1711,7 +1706,6 @@ class WT_Stats {
 ///////////////////////////////////////////////////////////////////////////////
 
 	function _eventQuery($type, $direction, $facts) {
-		global $listDir;
 		$eventTypes = array(
 			'BIRT'=>WT_I18N::translate('birth'),
 			'DEAT'=>WT_I18N::translate('death'),
@@ -2662,10 +2656,9 @@ class WT_Stats {
 
 	function _monthFirstChildQuery($simple=true, $sex=false, $year1=-1, $year2=-1, $params=null) {
 		global $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y, $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2;
-		if ($params === null) {$params = array();}
-		if (isset($params[0])) {$total = $params[0];} else {$total = 10;}
-		if (isset($params[1])) {$one = $params[1];} else {$one = false;} // each family only once if true
-		$total=(int)$total;
+		if ($params === null) {
+			$params = array();
+		}
 		if ($year1>=0 && $year2>=0) {
 			$sql_years = " AND (d_year BETWEEN '{$year1}' AND '{$year2}')";
 		} else {
@@ -2705,12 +2698,26 @@ class WT_Stats {
 			" GROUP BY family".
 			") AS first_child ".
 			"GROUP BY d_month";
-		if ($sex) $sql .= ', i_sex';
+		if ($sex) {
+			$sql .= ', i_sex';
+		}
 		$rows=self::_runSQL($sql);
 		if ($simple) {
-			if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = $WT_STATS_S_CHART_X.'x'.$WT_STATS_S_CHART_Y;}
-			if (isset($params[1]) && $params[1] != '') {$color_from = strtolower($params[1]);} else {$color_from = $WT_STATS_CHART_COLOR1;}
-			if (isset($params[2]) && $params[2] != '') {$color_to = strtolower($params[2]);} else {$color_to = $WT_STATS_CHART_COLOR2;}
+			if (isset($params[0]) && $params[0] != '') {
+				$size = strtolower($params[0]);
+			} else {
+				$size = $WT_STATS_S_CHART_X.'x'.$WT_STATS_S_CHART_Y;
+			}
+			if (isset($params[1]) && $params[1] != '') {
+				$color_from = strtolower($params[1]);
+			} else {
+				$color_from = $WT_STATS_CHART_COLOR1;
+			}
+			if (isset($params[2]) && $params[2] != '') {
+				$color_to = strtolower($params[2]);
+			} else {
+				$color_to = $WT_STATS_CHART_COLOR2;
+			}
 			$sizes = explode('x', $size);
 			$tot = 0;
 			foreach ($rows as $values) {
@@ -3087,28 +3094,44 @@ class WT_Stats {
 ///////////////////////////////////////////////////////////////////////////////
 
 	static function _commonSurnamesQuery($type='list', $show_tot=false, $params=null) {
-		global $SURNAME_LIST_STYLE, $GEDCOM;
+		global $GEDCOM;
 
 		$ged_id=get_id_from_gedcom($GEDCOM);
-		if (is_array($params) && isset($params[0]) && $params[0] != '') {$threshold = strtolower($params[0]);} else {$threshold = get_gedcom_setting($ged_id, 'COMMON_NAMES_THRESHOLD');}
-		if (is_array($params) && isset($params[1]) && $params[1] != '' && $params[1] >= 0) {$maxtoshow = strtolower($params[1]);} else {$maxtoshow = false;}
-		if (is_array($params) && isset($params[2]) && $params[2] != '') {$sorting = strtolower($params[2]);} else {$sorting = 'alpha';}
+		if (is_array($params) && isset($params[0]) && $params[0] != '') {
+			$threshold = strtolower($params[0]);
+		} else {
+			$threshold = get_gedcom_setting($ged_id, 'COMMON_NAMES_THRESHOLD');
+		}
+		if (is_array($params) && isset($params[1]) && $params[1] != '' && $params[1] >= 0) {
+			$maxtoshow = strtolower($params[1]);
+		} else {
+			$maxtoshow = false;
+		}
+		if (is_array($params) && isset($params[2]) && $params[2] != '') {
+			$sorting = strtolower($params[2]);
+		} else {
+			$sorting = 'alpha';
+		}
 		$surname_list = get_common_surnames($threshold);
-		if (count($surname_list) == 0) return '';
+		if (count($surname_list) == 0) {
+			return '';
+		}
 		uasort($surname_list, array('WT_Stats', '_name_total_rsort'));
-		if ($maxtoshow>0) $surname_list = array_slice($surname_list, 0, $maxtoshow);
+		if ($maxtoshow>0) {
+			$surname_list = array_slice($surname_list, 0, $maxtoshow);
+		}
 
 		switch($sorting) {
-			default:
-			case 'alpha':
-				uksort($surname_list, 'utf8_strcasecmp');
-				break;
-			case 'count':
-				uasort($surname_list, array('WT_Stats', '_name_total_sort'));
-				break;
-			case 'rcount':
-				uasort($surname_list, array('WT_Stats', '_name_total_rsort'));
-				break;
+		default:
+		case 'alpha':
+			uksort($surname_list, 'utf8_strcasecmp');
+			break;
+		case 'count':
+			uasort($surname_list, array('WT_Stats', '_name_total_sort'));
+			break;
+		case 'rcount':
+			uasort($surname_list, array('WT_Stats', '_name_total_rsort'));
+			break;
 		}
 
 		// Note that we count/display SPFX SURN, but sort/group under just SURN
@@ -3152,11 +3175,12 @@ class WT_Stats {
 			$all_surnames = array_merge($all_surnames, WT_Query_Name::surnames(utf8_strtoupper($surname), '', false, false, WT_GED_ID));
 		}
 		$tot = 0;
-		$per = 0;
-		foreach ($surnames as $indexval=>$surname) {$tot += $surname['match'];}
+		foreach ($surnames as $surname) {
+			$tot += $surname['match'];
+		}
 		$chd = '';
 		$chl = array();
-		foreach ($all_surnames as $surn=>$surns) {
+		foreach ($all_surnames as $surns) {
 			$count_per = 0;
 			$max_name = 0;
 			foreach ($surns as $spfxsurn=>$indis) {
@@ -3179,9 +3203,9 @@ class WT_Stats {
 			$chl[] = $top_name.' - '.WT_I18N::number($count_per);
 
 		}
-		$per = round(100 * ($tot_indi-$tot) / $tot_indi, 0);
+		$per = round(100 * ($tot_indi - $tot) / $tot_indi, 0);
 		$chd .= self::_array_to_extended_encoding($per);
-		$chl[] = WT_I18N::translate('Other').' - '.WT_I18N::number($tot_indi-$tot);
+		$chl[] = WT_I18N::translate('Other') . ' - ' . WT_I18N::number($tot_indi - $tot);
 
 		$chart_title=implode(WT_I18N::$list_separator, $chl);
 		$chl=implode('|', $chl);
@@ -3197,13 +3221,18 @@ class WT_Stats {
 	 * Most Common Given Names Block
 	 */
 	static function _commonGivenQuery($sex='B', $type='list', $show_tot=false, $params=null) {
-		global $TEXT_DIRECTION, $GEDCOM;
-		static $sort_types = array('count'=>'asort', 'rcount'=>'arsort', 'alpha'=>'ksort', 'ralpha'=>'krsort');
-		static $sort_flags = array('count'=>SORT_NUMERIC, 'rcount'=>SORT_NUMERIC, 'alpha'=>SORT_STRING, 'ralpha'=>SORT_STRING);
+		global $GEDCOM;
 
-		if (is_array($params) && isset($params[0]) && $params[0] != '' && $params[0] >= 0) {$threshold = strtolower($params[0]);} else {$threshold = 1;}
-		if (is_array($params) && isset($params[1]) && $params[1] != '' && $params[1] >= 0) {$maxtoshow = strtolower($params[1]);} else {$maxtoshow = 10;}
-		if (is_array($params) && isset($params[2]) && $params[2] != '' && isset($sort_types[strtolower($params[2])])) {$sorting = strtolower($params[2]);} else {$sorting = 'rcount';}
+		if (is_array($params) && isset($params[0]) && $params[0] != '' && $params[0] >= 0) {
+			$threshold = strtolower($params[0]);
+		} else {
+			$threshold = 1;
+		}
+		if (is_array($params) && isset($params[1]) && $params[1] != '' && $params[1] >= 0) {
+			$maxtoshow = strtolower($params[1]);
+		} else {
+			$maxtoshow = 10;
+		}
 
 		switch ($sex) {
 		case 'M':
@@ -3330,7 +3359,6 @@ class WT_Stats {
 		if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = $WT_STATS_S_CHART_X."x".$WT_STATS_S_CHART_Y;}
 		if (isset($params[1]) && $params[1] != '') {$color_from = strtolower($params[1]);} else {$color_from = $WT_STATS_CHART_COLOR1;}
 		if (isset($params[2]) && $params[2] != '') {$color_to = strtolower($params[2]);} else {$color_to = $WT_STATS_CHART_COLOR2;}
-		if (isset($params[3]) && $params[3] != '') {$threshold = strtolower($params[3]);} else {$threshold = get_gedcom_setting($this->_ged_id, 'COMMON_NAMES_THRESHOLD');}
 		if (isset($params[4]) && $params[4] != '') {$maxtoshow = strtolower($params[4]);} else {$maxtoshow = 7;}
 		$sizes = explode('x', $size);
 		$tot_indi = $this->_totalIndividuals();
@@ -3339,7 +3367,9 @@ class WT_Stats {
 		$given = array_slice($given, 0, $maxtoshow);
 		if (count($given) <= 0) {return '';}
 		$tot = 0;
-		foreach ($given as $givn=>$count) {$tot += $count;}
+		foreach ($given as $count) {
+			$tot += $count;
+		}
 		$chd = '';
 		$chl = array();
 		foreach ($given as $givn=>$count) {

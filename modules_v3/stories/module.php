@@ -288,7 +288,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 	}
 
 	private function config() {
-		require_once 'includes/functions/functions_edit.php';
+		require_once WT_ROOT.'includes/functions/functions_edit.php';
 		if (WT_USER_GEDCOM_ADMIN) {
 
 			$controller=new WT_Controller_Page();

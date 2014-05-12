@@ -44,29 +44,31 @@ class TreeView {
 	 * @param WT_Individual $root_person  the id of the root person
 	 * @param int           $generations number of generations to draw
 	 *
-	 * @return string
+	 * @return array        HTML and Javascript
 	 */
 	public function drawViewport(WT_Individual $root_person, $generations) {
-		if (WT_SCRIPT_NAME == 'individual.php') {
-			$path = $root_person->getHtmlUrl();
-		} elseif (WT_SCRIPT_NAME == 'index.php') {
-			$path = WT_SCRIPT_NAME . '?ctype=user&amp;ged=' . WT_GEDURL;
-		} else {
-			$path = 'module.php?mod=tree&amp;mod_action=treeview&amp;rootid=' . $root_person->getXref();
-		}
-		$html = '<a name="tv_content"></a><div id="' . $this->name . '_out" class="tv_out">';
-
-		// Add the toolbar
-		$html .= '<div id="tv_tools" class="noprint"><ul>' .
-			'<li id="tvbCompact" class="tv_button"><img src="' . WT_STATIC_URL . WT_MODULES_DIR . 'tree/images/compact.png" alt="' . WT_I18N::translate('Use compact layout') . '" title="' . WT_I18N::translate('Use compact layout') . '"></li>' .
-			'<li id="tvbAllPartners" class="tv_button' . ($this->all_partners === 'true' ? ' tvPressed' : '') . '"><a class="icon-sfamily" href="' . $path . '" title="' . WT_I18N::translate('Show all spouses and ancestors') . '"></a></li>';
-		// Hidden loading image
-		$html .= '<li class="tv_button" id="' . $this->name . '_loading"><i class="icon-loading-small"></i></li></ul>';
-		$html .= '</div><h2 id="tree-title">' .
-			WT_I18N::translate('Interactive tree of %s', $root_person->getFullName()) .
-			'</h2><div id="' . $this->name . '_in" class="tv_in" dir="ltr">';
-		$html .= $this->drawPerson($root_person, $generations, 0, null, null, true);
-		$html .= '</div></div>'; // Close the tv_in and the tv_out div
+		$html = '
+			<a name="tv_content"></a>
+			<div id="' . $this->name . '_out" class="tv_out">
+				<div id="tv_tools" class="noprint">
+					<ul>
+						<li id="tvbCompact" class="tv_button">
+							<img src="' . WT_STATIC_URL . WT_MODULES_DIR . 'tree/images/compact.png" alt="' . WT_I18N::translate('Use compact layout') . '" title="' . WT_I18N::translate('Use compact layout') . '">
+						</li>
+						<li id="tvbAllPartners" class="tv_button' . ($this->all_partners === 'true' ? ' tvPressed' : '') . '">
+							<a class="icon-sfamily" href="#" title="' . WT_I18N::translate('Show all spouses and ancestors') . '"></a>
+						</li>
+						<li class="tv_button" id="' . $this->name . '_loading">
+							<i class="icon-loading-small"></i>
+						</li>
+					</ul>
+				</div>
+				<h2 id="tree-title">' . WT_I18N::translate('Interactive tree of %s', $root_person->getFullName()) . '</h2>
+				<div id="' . $this->name . '_in" class="tv_in" dir="ltr">
+					' . $this->drawPerson($root_person, $generations, 0, null, null, true) .'
+				</div>
+			</div>
+		';
 
 		return array($html, 'var ' . $this->name . 'Handler = new TreeViewHandler("' . $this->name . '");');
 	}
