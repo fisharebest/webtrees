@@ -363,7 +363,7 @@ class User {
 			WT_DB::prepare("DELETE FROM `##user_setting` WHERE user_id=? AND setting_name=?")
 				->execute(array($this->user_id, $setting_name));
 			unset($this->settings[$setting_name]);
-		} elseif ($this->settings[$setting_name] !== $setting_value) {
+		} elseif ($this->getsetting($setting_name) !== $setting_value) {
 			WT_DB::prepare("REPLACE INTO `##user_setting` (user_id, setting_name, setting_value) VALUES (?, ?, LEFT(?, 255))")
 				->execute(array($this->user_id, $setting_name, $setting_value));
 			$this->settings[$setting_name] = $setting_value;
