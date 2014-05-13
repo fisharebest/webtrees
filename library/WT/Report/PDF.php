@@ -151,20 +151,20 @@ class WT_Report_PDF extends WT_Report_Base {
 	/**
 	 * Create a new Cell object - WT_Report_PDF
 	 *
-	 * @param int    $width   cell width (expressed in points)
-	 * @param int    $height  cell height (expressed in points)
-	 * @param mixed  $border  Border style
-	 * @param string $align   Text alignement
-	 * @param string $bgcolor Background color code
-	 * @param string $style   The name of the text style
-	 * @param int    $ln      Indicates where the current position should go after the call
-	 * @param mixed  $top     Y-position
-	 * @param mixed  $left    X-position
-	 * @param int    $fill    Indicates if the cell background must be painted (1) or transparent (0). Default value: 1
-	 * @param int    $stretch Stretch carachter mode
-	 * @param string $bocolor Border color
-	 * @param string $tcolor  Text color
-	 * @param bolean $reseth
+	 * @param int     $width   cell width (expressed in points)
+	 * @param int     $height  cell height (expressed in points)
+	 * @param mixed   $border  Border style
+	 * @param string  $align   Text alignement
+	 * @param string  $bgcolor Background color code
+	 * @param string  $style   The name of the text style
+	 * @param int     $ln      Indicates where the current position should go after the call
+	 * @param mixed   $top     Y-position
+	 * @param mixed   $left    X-position
+	 * @param int     $fill    Indicates if the cell background must be painted (1) or transparent (0). Default value: 1
+	 * @param int     $stretch Stretch carachter mode
+	 * @param string  $bocolor Border color
+	 * @param string  $tcolor  Text color
+	 * @param boolean $reseth
 	 *
 	 * @return CellPDF
 	 */
@@ -188,7 +188,7 @@ class WT_Report_PDF extends WT_Report_Base {
 	 * @param string  $style
 	 * @param boolean $fill
 	 * @param boolean $padding
-	 * @param boolaen $reseth
+	 * @param boolean $reseth
 	 *
 	 * @return TextBoxPDF
 	 */
@@ -612,9 +612,9 @@ class PDF extends TCPDF {
 	 *
 	 * @param object $footnote
 	 *
-	 * @return boolen false if not numbered befor | object if already numbered
+	 * @return boolean false if not numbered befor | object if already numbered
 	 */
-	function checkFootnote(&$footnote) {
+	function checkFootnote($footnote) {
 		$ct  = count($this->printedfootnotes);
 		$val = $footnote->getValue();
 		$i   = 0;
@@ -678,52 +678,13 @@ class PDF extends TCPDF {
  */
 class CellPDF extends Cell {
 	/**
-	 * Create a class CELL for PDF
-	 *
-	 * @param int     $width   cell width (expressed in points)
-	 * @param int     $height  cell height (expressed in points)
-	 * @param mixed   $border  Border style
-	 * @param string  $align   Text alignement
-	 * @param string  $bgcolor Background color code
-	 * @param string  $style   The name of the text style
-	 * @param int     $ln      Indicates where the current position should go after the call
-	 * @param mixed   $top     Y-position
-	 * @param mixed   $left    X-position
-	 * @param int     $fill    Indicates if the cell background must be painted (1) or transparent (0). Default value: 1
-	 * @param int     $stretch Stretch carachter mode
-	 * @param string  $bocolor Border color
-	 * @param string  $tcolor  Text color
-	 * @param boolean $reseth
-	 */
-	function CellPDF(
-		$width, $height, $border, $align, $bgcolor, $style, $ln, $top, $left, $fill, $stretch, $bocolor, $tcolor, $reseth
-	) {
-		parent::Cell(
-			$width,
-			$height,
-			$border,
-			$align,
-			$bgcolor,
-			$style,
-			$ln,
-			$top,
-			$left,
-			$fill,
-			$stretch,
-			$bocolor,
-			$tcolor,
-			$reseth
-		);
-	}
-
-	/**
 	 * PDF Cell renderer
 	 *
 	 * @param PDF $pdf
 	 *
 	 * @return void
 	 */
-	function render(&$pdf) {
+	function render($pdf) {
 		/**
 		 * Use these variables to update/manipulate values
 		 * Repeted classes would reupdate all their class variables again, Header/Page Header/Footer
@@ -851,12 +812,7 @@ class CellPDF extends Cell {
  * HTML element - PDF Report
  */
 class HtmlPDF extends Html {
-
-	function HtmlPDF($tag, $attrs) {
-		parent::Html($tag, $attrs);
-	}
-
-	function render(&$pdf, $sub = false) {
+	function render($pdf, $sub = false) {
 		if (!empty($this->attrs['style'])) {
 			$pdf->setCurrentStyle($this->attrs['style']);
 		}
@@ -881,7 +837,6 @@ class HtmlPDF extends Html {
 			return $this->text;
 		}
 		$pdf->writeHTML($this->text); //prints 2 empty cells in the Expanded Relatives report
-		//@@	$pdf->writeHTML($this->text.'@1'); //@@
 		return 0;
 	}
 }
@@ -891,48 +846,13 @@ class HtmlPDF extends Html {
  */
 class TextBoxPDF extends TextBox {
 	/**
-	 * Create a class Text Box for PDF
-	 *
-	 * @param float   $width   Text box width
-	 * @param float   $height  Text box height
-	 * @param boolean $border
-	 * @param string  $bgcolor Background color code in HTML
-	 * @param boolean $newline
-	 * @param mixed   $left
-	 * @param mixed   $top
-	 * @param boolean $pagecheck
-	 * @param string  $style
-	 * @param boolean $fill
-	 * @param boolean $padding
-	 * @param boolean $reseth  Reset the last height after this bos is done
-	 */
-	function TextBoxPDF(
-		$width, $height, $border, $bgcolor, $newline, $left, $top, $pagecheck, $style, $fill, $padding, $reseth
-	) {
-		parent::TextBox(
-			$width,
-			$height,
-			$border,
-			$bgcolor,
-			$newline,
-			$left,
-			$top,
-			$pagecheck,
-			$style,
-			$fill,
-			$padding,
-			$reseth
-		);
-	}
-
-	/**
 	 * PDF Text Box renderer
 	 *
 	 * @param PDF $pdf
 	 *
 	 * @return bool|int
 	 */
-	function render(&$pdf) {
+	function render($pdf) {
 
 		$newelements      = array();
 		$lastelement      = "";
@@ -1251,23 +1171,13 @@ class TextBoxPDF extends TextBox {
  */
 class TextPDF extends Text {
 	/**
-	 * Create a Text class for PDF
-	 *
-	 * @param string $style The name of the text style
-	 * @param string $color HTML color code
-	 */
-	function TextPDF($style, $color) {
-		parent::Text($style, $color);
-	}
-
-	/**
 	 * PDF Text renderer
 	 *
 	 * @param PDF $pdf
 	 *
 	 * @return void
 	 */
-	function render(&$pdf) {
+	function render($pdf) {
 		// Set up the style
 		if ($pdf->getCurrentStyle() != $this->styleName) {
 			$pdf->setCurrentStyle($this->styleName);
@@ -1313,7 +1223,7 @@ class TextPDF extends Text {
 	 *
 	 * @return float 0
 	 */
-	function getHeight(&$pdf) {
+	function getHeight($pdf) {
 		return 0;
 	}
 
@@ -1324,7 +1234,7 @@ class TextPDF extends Text {
 	 *
 	 * @return array
 	 */
-	function getWidth(&$pdf) {
+	function getWidth($pdf) {
 		// Setup the style name, a font must be selected to calculate the width
 		if ($pdf->getCurrentStyle() != $this->styleName) {
 			$pdf->setCurrentStyle($this->styleName);
@@ -1408,11 +1318,6 @@ class TextPDF extends Text {
  * Footnote element
  */
 class FootnotePDF extends Footnote {
-
-	function FootnotePDF($style = "") {
-		parent::Footnote($style);
-	}
-
 	/**
 	 * PDF Footnotes number renderer
 	 *
@@ -1420,7 +1325,7 @@ class FootnotePDF extends Footnote {
 	 *
 	 * @return void
 	 */
-	function render(&$pdf) {
+	function render($pdf) {
 		$pdf->setCurrentStyle("footnotenum");
 		$pdf->Write($pdf->getCurrentStyleHeight(), $this->numText, $this->addlink); //source link numbers after name
 	}
@@ -1433,7 +1338,7 @@ class FootnotePDF extends Footnote {
 	 *
 	 * @return void
 	 */
-	function renderFootnote(&$pdf) {
+	function renderFootnote($pdf) {
 		if ($pdf->getCurrentStyle() != $this->styleName) {
 			$pdf->setCurrentStyle($this->styleName);
 		}
@@ -1459,7 +1364,7 @@ class FootnotePDF extends Footnote {
 	 *
 	 * @return float $h
 	 */
-	function getFootnoteHeight(&$pdf) {
+	function getFootnoteHeight($pdf) {
 		//$style = $pdf->getStyle($this->styleName);
 		//$ct = substr_count($this->numText, "\n");
 		//if ($ct > 0) {
@@ -1478,7 +1383,7 @@ class FootnotePDF extends Footnote {
 	 *
 	 * @return array
 	 */
-	function getWidth(&$pdf) {
+	function getWidth($pdf) {
 		// Setup the style name, a font must be selected to calculate the width
 		$pdf->setCurrentStyle("footnotenum");
 
@@ -1566,11 +1471,6 @@ class FootnotePDF extends Footnote {
  * PageHeader element
  */
 class PageHeaderPDF extends PageHeader {
-
-	function PageHeaderPDF() {
-		parent::PageHeader();
-	}
-
 	/**
 	 * PageHeader element renderer
 	 *
@@ -1578,7 +1478,7 @@ class PageHeaderPDF extends PageHeader {
 	 *
 	 * @return void
 	 */
-	function render(&$pdf) {
+	function render($pdf) {
 		$pdf->clearPageHeader();
 		foreach ($this->elements as $element) {
 			$pdf->addPageHeader($element);
@@ -1590,11 +1490,6 @@ class PageHeaderPDF extends PageHeader {
  * ImagePDF class element
  */
 class ImagePDF extends Image {
-
-	function ImagePDF($file, $x, $y, $w, $h, $align, $ln) {
-		parent::Image($file, $x, $y, $w, $h, $align, $ln);
-	}
-
 	/**
 	 * PDF image renderer
 	 *
@@ -1602,7 +1497,7 @@ class ImagePDF extends Image {
 	 *
 	 * @return void
 	 */
-	function render(&$pdf) {
+	function render($pdf) {
 		global $lastpicbottom, $lastpicpage, $lastpicleft, $lastpicright;
 
 		// Check for a pagebreak first
@@ -1679,11 +1574,11 @@ class ImagePDF extends Image {
 	 *
 	 * @return float
 	 */
-	function getHeight(&$pdf) {
+	function getHeight($pdf) {
 		return $this->height;
 	}
 
-	function getWidth(&$pdf) {
+	function getWidth($pdf) {
 		return $this->width;
 	}
 }
@@ -1693,25 +1588,13 @@ class ImagePDF extends Image {
  */
 class LinePDF extends Line {
 	/**
-	 * Create a line class -PDF
-	 *
-	 * @param mixed $x1
-	 * @param mixed $y1
-	 * @param mixed $x2
-	 * @param mixed $y2
-	 */
-	function LinePDF($x1, $y1, $x2, $y2) {
-		parent::Line($x1, $y1, $x2, $y2);
-	}
-
-	/**
 	 * PDF line renderer
 	 *
 	 * @param PDF $pdf
 	 *
 	 * @return void
 	 */
-	function render(&$pdf) {
+	function render($pdf) {
 		if ($this->x1 == ".") {
 			$this->x1 = $pdf->GetX();
 		}
