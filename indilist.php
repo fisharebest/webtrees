@@ -47,13 +47,13 @@ switch (WT_Filter::get('show_marnm', 'no|yes')) {
 case 'no':
 	$show_marnm = false;
 	if (\WT\Auth::id()) {
-		\WT\Auth::user()->setSetting(WT_USER_ID, WT_SCRIPT_NAME.'_show_marnm', $show_marnm);
+		\WT\Auth::user()->setSetting(WT_SCRIPT_NAME.'_show_marnm', $show_marnm);
 	}
 	break;
 case 'yes':
 	$show_marnm = true;
 	if (\WT\Auth::id()) {
-		\WT\Auth::user()->setSetting(WT_USER_ID, WT_SCRIPT_NAME.'_show_marnm', $show_marnm);
+		\WT\Auth::user()->setSetting(WT_SCRIPT_NAME.'_show_marnm', $show_marnm);
 	}
 	break;
 default:
