@@ -278,12 +278,15 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 				echo '</td>';
 			} else {
 				echo '<td>';
-				for ($i=$count; $i<$genoffset-1; $i++) {
+				if ($count<$genoffset-1) {
 					echo '<table>';
-					$this->printEmptyBox($bwidth, $bheight);
-					echo '</tr>';
-					$this->printEmptyBox($bwidth, $bheight);
-					echo '</tr></table>';
+						for ($i=$count; $i<(pow(2, ($genoffset-1)-$count)/2)+2; $i++) {
+						$this->printEmptyBox($bwidth, $bheight);
+						echo '</tr>';
+						$this->printEmptyBox($bwidth, $bheight);
+						echo '</tr>';
+					}
+				echo '</table>';
 				}
 			}
 			echo '</tr><tr>',
@@ -300,12 +303,15 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 				echo '</td>';
 			} else {
 				echo '<td>';
-				for ($i=$count; $i<$genoffset-1; $i++) {
+				if ($count<$genoffset-1) {
 					echo '<table>';
-					$this->printEmptyBox($bwidth, $bheight);
-					echo '</tr>';
-					$this->printEmptyBox($bwidth, $bheight);
-					echo '</tr></table>';
+						for ($i=$count; $i<(pow(2, ($genoffset-1)-$count)/2)+2; $i++) {
+						$this->printEmptyBox($bwidth, $bheight);
+						echo '</tr>';
+						$this->printEmptyBox($bwidth, $bheight);
+						echo '</tr>';
+					}
+				echo '</table>';
 				}
 			}
 			echo '</tr>',
