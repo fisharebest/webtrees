@@ -61,70 +61,69 @@ function AddToSearchLog($log_message, $geds) {
 function addMessage($message) {
 	global $WT_TREE, $WT_REQUEST;
 
+	$success = true;
+
 	$sender    = \WT\User::findByIdentifier($message['from']);
 	$recipient = \WT\User::findByIdentifier($message['to']);
 
-	// Switch to the "from" user’s language
-	WT_I18N::init($sender->getSetting('language'));
-
-	// Setup the message body for the "from" user
-	$copy_email = $message['body'];
-	if (!empty($message['url'])) {
-		$copy_email .=
-			WT_Mail::EOL . WT_Mail::EOL . '--------------------------------------' . WT_Mail::EOL .
-			WT_I18N::translate('This message was sent while viewing the following URL: ') . $message['url'] . WT_Mail::EOL;
-	}
-	$copy_email .= WT_Mail::auditFooter();
-	if (!$sender) {
-		// Message from a visitor
-		$from = $message['from'];
-		$fromFullName = $message['from_name'];
-		$copy_email = WT_I18N::translate('You sent the following message to a webtrees administrator:') . WT_Mail::EOL . WT_Mail::EOL . WT_Mail::EOL . $copy_email;
+	// Sender may not be a webtrees user
+	if ($sender) {
+		$sender_email = $sender->getEmail();
+		$sender_real_name = $sender->getRealName();
 	} else {
-		// Message from a logged-in user
-		$from = $sender->getEmail();
-		$fromFullName = $sender->getRealName();
-		$copy_email = WT_I18N::translate('You sent the following message to a webtrees user:') . ' ' . $recipient->getRealName() . WT_Mail::EOL . WT_Mail::EOL . $copy_email;
-	}
-	if ($message['method']!='messaging') {
-		if (!$sender) {
-			$original_email = WT_I18N::translate('The following message has been sent to your webtrees user account from ');
-			if (!empty($message['from_name'])) {
-				$original_email .= $message['from_name'] . WT_Mail::EOL . WT_Mail::EOL . $message['body'];
-			} else {
-				$original_email .= $from . WT_Mail::EOL . WT_Mail::EOL . $message['body'];
-			}
-		} else {
-			$original_email = WT_I18N::translate('The following message has been sent to your webtrees user account from ');
-			$original_email .= $fromFullName . WT_Mail::EOL . WT_Mail::EOL . $message['body'];
-		}
-		if (!isset($message['no_from'])) {
-			// send a copy of the copy message back to the sender
-			WT_Mail::send(
-				// From:
-				$WT_TREE,
-				// To:
-				$from,
-				$fromFullName,
-				// Reply-To:
-				WT_Site::preference('SMTP_FROM_NAME'),
-				$WT_TREE->preference('title'),
-				// Message
-				WT_I18N::translate('webtrees Message') . ' - ' . $message['subject'],
-				$copy_email
-			);
-		}
+		$sender_email = $message['from'];
+		$sender_real_name = $message['from_name'];
 	}
 
-	//-- Load the "to" users language
+	// Send a copy of the copy message back to the sender.
+	if ($message['method']!='messaging') {
+		// Switch to the sender’s language.
+		if ($sender) {
+			WT_I18N::init($sender->getSetting('language'));
+		}
+
+		$copy_email = $message['body'];
+		if (!empty($message['url'])) {
+			$copy_email .=
+				WT_Mail::EOL . WT_Mail::EOL . '--------------------------------------' . WT_Mail::EOL .
+				WT_I18N::translate('This message was sent while viewing the following URL: ') . $message['url'] . WT_Mail::EOL;
+		}
+		$copy_email .= WT_Mail::auditFooter();
+
+		if ($sender) {
+			// Message from a logged-in user
+			$copy_email = WT_I18N::translate('You sent the following message to a webtrees user:') . ' ' . $recipient->getRealName() . WT_Mail::EOL . WT_Mail::EOL . $copy_email;
+		} else {
+			// Message from a visitor
+			$copy_email = WT_I18N::translate('You sent the following message to a webtrees administrator:') . WT_Mail::EOL . WT_Mail::EOL . WT_Mail::EOL . $copy_email;
+		}
+
+		$success = $success && WT_Mail::send(
+			// From:
+			$WT_TREE,
+			// To:
+			$sender_email,
+			$sender_real_name,
+			// Reply-To:
+			WT_Site::preference('SMTP_FROM_NAME'),
+			$WT_TREE->preference('title'),
+			// Message
+			WT_I18N::translate('webtrees Message') . ' - ' . $message['subject'],
+			$copy_email
+		);
+	}
+
+	// Switch to the recipient’s language.
 	WT_I18N::init($recipient->getSetting('language'));
 	if (isset($message['from_name'])) {
 		$message['body'] =
 			WT_I18N::translate('Your Name:') . ' ' . $message['from_name'] . WT_Mail::EOL .
-			WT_I18N::translate('Email address:')." ".$message['from_email'] . WT_Mail::EOL . WT_Mail::EOL .
+			WT_I18N::translate('Email address:') . ' ' . $message['from_email'] . WT_Mail::EOL . WT_Mail::EOL .
 			$message['body'];
 	}
-	if (!$sender->isAdmin()) {
+
+	// Add another footer - unless we are an admin
+	if (!\WT\Auth::isAdmin()) {
 		if (!empty($message['url'])) {
 			$message['body'] .=
 				WT_Mail::EOL . WT_Mail::EOL .
@@ -133,9 +132,11 @@ function addMessage($message) {
 		}
 		$message['body'] .= WT_Mail::auditFooter();
 	}
+
 	if (empty($message['created'])) {
 		$message['created'] = gmdate ("D, d M Y H:i:s T");
 	}
+
 	if ($message['method']!='messaging3' && $message['method']!='mailto' && $message['method']!='none') {
 		WT_DB::prepare("INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)")
 			->execute(array(
@@ -147,27 +148,28 @@ function addMessage($message) {
 			));
 	}
 	if ($message['method']!='messaging') {
-		if (!$sender) {
+		if ($sender) {
+			$original_email = WT_I18N::translate('The following message has been sent to your webtrees user account from ');
+			$original_email .= $sender->getRealName();
+		} else {
 			$original_email = WT_I18N::translate('The following message has been sent to your webtrees user account from ');
 			if (!empty($message['from_name'])) {
 				$original_email .= $message['from_name'];
 			} else {
-				$original_email .= $from;
+				$original_email .= $message['from'];
 			}
-		} else {
-			$original_email = WT_I18N::translate('The following message has been sent to your webtrees user account from ');
-			$original_email .= $fromFullName;
 		}
 		$original_email .= WT_Mail::EOL . WT_Mail::EOL . $message['body'];
-		WT_Mail::send(
+
+		$success = $success && WT_Mail::send(
 			// From:
 			$WT_TREE,
 			// To:
 			$recipient->getEmail(),
 			$recipient->getRealName(),
 			// Reply-To:
-			$from,
-			$fromFullName,
+			$sender_email,
+			$sender_real_name,
 			// Message
 			WT_I18N::translate('webtrees Message') . ' - ' . $message['subject'],
 			$original_email
@@ -176,7 +178,7 @@ function addMessage($message) {
 
 	WT_I18N::init(WT_LOCALE); // restore language settings if needed
 
-	return true;
+	return $success;
 }
 
 //-- deletes a message in the database
