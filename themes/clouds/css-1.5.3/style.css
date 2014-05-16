@@ -3427,7 +3427,7 @@ dd .deletelink {
 }
 
 .ui-state-default a:link,
-.us-state-hover a,
+.ui-state-hover a,
 .ui-state-hover a:hover {
 	color: #000;
 }

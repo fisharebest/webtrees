@@ -63,7 +63,7 @@
 .makeMenu ul li a:hover, .ui-widget-header, #save-cancel,
 .optionbox, #indi_header .ui-state-active a:link,
 .list_value, .list_value_wrap, .list_value_wrap a,
-#login-form, #new_passwd_form, #register-form {
+#login-form, #new_passwd_form, #register-form, .facts_value  {
 	background: #eef9dc;
 }
 
