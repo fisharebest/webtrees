@@ -211,8 +211,8 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 					//-- shrink the box for the spouses
 					$tempw = $bwidth;
 					$temph = $bheight;
-					$bwidth -= 10;
-					$bheight -= 10;
+					$bwidth -= 5;
+					$bheight -= 5;
 					print_pedigree_person($spouse);
 					$bwidth = $tempw;
 					$bheight = $temph;
@@ -264,7 +264,8 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 			echo '<table>',
 				 '<tr>',
 				 '<td class="tdbot">';
-				//Determine line height for two spouces 
+				//Determine line height for two spouces
+
 				$sfamilies=$person->getSpouseFamilies();
 				$famcount = 0;
 				if ($this->show_spouse) {
@@ -276,7 +277,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 				if ($famcount>1) {
 					if ($genoffset==2) {
 						if ($this->show_full==1) {
-							$lh = $lh+40;
+							$lh = $lh+39*$this->box_width / 100;
 						} else {
 							$lh = $lh+25;
 						}
