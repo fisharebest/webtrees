@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2014-05-03 00:09+0100\n"
-"PO-Revision-Date: 2014-01-01 11:53+0100\n"
+"PO-Revision-Date: 2014-05-17 22:56+0100\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Launchpad-Export-Date: 2013-08-04 19:03+0000\n"
-"X-Generator: Poedit 1.6.3\n"
+"X-Generator: Poedit 1.6.5\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -15695,7 +15695,7 @@ msgstr "U heeft dezelfde ID's ingegeven. Samenvoegen van dezelfde records is nie
 
 #: login.php:554
 msgid "You have confirmed your request to become a registered user."
-msgstr "U heeft uw aanvraag, om een geregistreerde gebruikerte worden, bevestigd."
+msgstr "U heeft uw aanvraag, om een geregistreerde gebruiker te worden, bevestigd."
 
 #: modules_v3/user_messages/module.php:81
 msgid "You have no pending messages."
