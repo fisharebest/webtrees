@@ -211,8 +211,8 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 					//-- shrink the box for the spouses
 					$tempw = $bwidth;
 					$temph = $bheight;
-					$bwidth -= 10;
-					$bheight -= 10;
+					$bwidth -= 5;
+					$bheight -= 5;
 					print_pedigree_person($spouse);
 					$bwidth = $tempw;
 					$bheight = $temph;
@@ -263,11 +263,31 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 		foreach ($person->getChildFamilies() as $family) {
 			echo '<table>',
 				 '<tr>',
-				 '<td class="tdbot">',
-				 '<img class="line3 pvline"  src="',$WT_IMAGES["vline"],'" height="',$lh-1,'" alt=""></td>',
+				 '<td class="tdbot">';
+				//Determine line height for two spouces
+
+				$sfamilies=$person->getSpouseFamilies();
+				$famcount = 0;
+				if ($this->show_spouse) {
+					foreach ($sfamilies as $family) {
+					$famcount++;
+					}
+				}
+				$savlh=$lh;
+				if ($famcount>1) {
+					if ($genoffset==2) {
+						if ($this->show_full==1) {
+							$lh = $lh+39*$this->box_width / 100;
+						} else {
+							$lh = $lh+25;
+						}
+					}
+				}
+			echo '<img class="line3 pvline"  src="',$WT_IMAGES["vline"],'" height="',$lh-1,'" alt=""></td>',
 				 '<td>',
 				 '<img class="line4" src="',$WT_IMAGES["hline"],'" height="3" alt=""></td>',
 				 '<td>';
+			$lh=$savlh;
 			//-- print the father box
 			print_pedigree_person($family->getHusband());
 			echo '</td>';
