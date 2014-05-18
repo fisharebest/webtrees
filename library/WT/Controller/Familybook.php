@@ -269,7 +269,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 				$sfamilies=$person->getSpouseFamilies();
 				$famcount = 0;
 				if ($this->show_spouse) {
-					foreach ($sfamilies as $family) {
+					foreach ($sfamilies as $sfamily) {
 					$famcount++;
 					}
 				}
