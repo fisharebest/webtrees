@@ -762,18 +762,18 @@ class Element {
 	 *
 	 * @return int
 	 */
-	function render(&$renderer) {
+	function render($renderer) {
 		//print "Nothing rendered.  Something bad happened";
 		//debug_print_backtrace();
 		//-- to be implemented in inherited classes
 		return 0;
 	}
 
-	function getHeight(&$renderer) {
+	function getHeight($renderer) {
 		return 0;
 	}
 
-	function getWidth(&$renderer) {
+	function getWidth($renderer) {
 		return 0;
 	}
 
@@ -817,7 +817,7 @@ class Element {
 		return 0;
 	}
 
-	function renderFootnote(&$renderer) {
+	function renderFootnote($renderer) {
 		return false;
 		//-- to be implemented in inherited classes
 	}
@@ -1028,7 +1028,7 @@ class Cell extends Element {
 	 *
 	 * @return float
 	 */
-	function getHeight(&$renderer) {
+	function getHeight($renderer) {
 		return $this->height;
 	}
 
@@ -1052,7 +1052,7 @@ class Cell extends Element {
 	 *
 	 * @return float
 	 */
-	function getWidth(&$renderer) {
+	function getWidth($renderer) {
 		return $this->width;
 	}
 
@@ -1094,13 +1094,13 @@ class TextBox extends Element {
 	/**
 	 * Position the left corner of this box on the page(expressed in points). The default is the current position.
 	 *
-	 * @var mix
+	 * @var mixed
 	 */
 	public $left;
 	/**
 	 * Position the top corner of this box on the page(expressed in points). the default is the current position
 	 *
-	 * @var mix
+	 * @var mixed
 	 */
 	public $top;
 	/**
@@ -1518,11 +1518,11 @@ class Image extends Element {
 		return 0;
 	}
 
-	function getHeight(&$renderer) {
+	function getHeight($renderer) {
 		return $this->height;
 	}
 
-	function getWidth(&$renderer) {
+	function getWidth($renderer) {
 		return $this->width;
 	}
 
@@ -1584,11 +1584,11 @@ class Line extends Element {
 		return 0;
 	}
 
-	function getHeight(&$renderer) {
+	function getHeight($renderer) {
 		return abs($this->y2 - $this->y1);
 	}
 
-	function getWidth(&$renderer) {
+	function getWidth($renderer) {
 		return abs($this->x2 - $this->x1);
 	}
 

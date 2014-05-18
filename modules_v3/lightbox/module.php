@@ -87,7 +87,7 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Tab {
 		$media_found = false;
 
 		// Used when sorting media on album tab page
-		$html .= '<table><tr><td class="facts_value">'; // one-cell table - for presentation only
+		$html .= '<table class="facts_table"><tr><td class="facts_value">'; // one-cell table - for presentation only
 		$html .= '<ul class="album-list">';
 		foreach ($this->get_media() as $media) {
 			//View Edit Menu ----------------------------------

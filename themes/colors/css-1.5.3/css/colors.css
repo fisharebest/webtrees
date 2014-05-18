@@ -1704,7 +1704,7 @@ div.fact_SHARED_NOTE {
 }
 
 .facts_value {
-	border: 1pt solid #999;
+	border: 1px solid #999;
 	border-radius: 3px;
 	padding: 4px;
 }
@@ -3304,10 +3304,11 @@ span.link_text {
 	background-image: url(../../jquery-ui-1.10.3/images/ui-icons_222222_256x240.png);
 }
 
-.us-state-hover a,
+.ui-state-hover a,
 .ui-state-hover a:hover,
 .ui-state-default a:link {
 	color: #000;
+	border-radius: 3px;
 }
 
 .ui-menu .ui-menu-item a {

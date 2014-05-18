@@ -159,17 +159,29 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 				//-- recursively get the father’s family
 				$this->print_person_pedigree($family->getHusband(), $count+1);
 				echo "</td>";
+			} else {
+				echo '<td>';
+				if ($count<$genoffset-1) {
+					echo '<table>';
+						for ($i=$count; $i<(pow(2, ($genoffset-1)-$count)/2)+2; $i++) {
+						$this->printEmptyBox($bwidth, $bheight);
+						echo '</tr>';
+						$this->printEmptyBox($bwidth, $bheight);
+						echo '</tr>';
+					}
+				echo '</table>';
+				}
 			}
-			echo "</tr><tr>";
-			echo "<td valign=\"top\"><img name=\"pvline\" src=\"".$WT_IMAGES["vline"]."\" width=\"3\" height=\"$lh\" alt=\"\"></td>";
-			echo "<td><img class=\"line4\" src=\"".$WT_IMAGES["hline"]."\" width=\"7\" height=\"3\" alt=\"\"></td>";
-			echo "<td>";
+			echo '</tr><tr>',
+				 '<td valign="top"><img name="pvline" src="'.$WT_IMAGES["vline"].'" width="3" height="$lh" alt=""></td>',
+				 '<td><img class="line4" src="'.$WT_IMAGES["hline"].'" width="7" height="3" alt=""></td>',
+				 '<td>';
 			//-- print the mother box
 			print_pedigree_person($family->getWife());
-			echo "</td>";
+			echo '</td>';
 			if ($family->getWife()) {
 				$ARID = $family->getWife()->getXref();
-				echo "<td id=\"td_".$ARID."\">";
+				echo '<td id="td_'.$ARID.'">';
 
 				//-- print an ajax arrow on the last generation of the adult female
 				if ($count==$this->generations-1 && $family->getWife()->getChildFamilies()) {
@@ -178,14 +190,24 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 
 				//-- recursively print the mother’s family
 				$this->print_person_pedigree($family->getWife(), $count+1);
-				echo "</td>";
+				echo '</td>';
 			}
-			echo "</tr>";
-			echo "</table>";
+			echo '</tr>',
+				 '</table>';
 			break;
 		}
 	}
-
+	/**
+	 * Print empty box
+	 */
+	function printEmptyBox($bwidth, $bheight){
+	echo '<tr>',
+		 '<td>',
+		 '<div style="width:',$bwidth+16,'px; height:',$bheight+8,'px;"></div>',
+		 '</td>',
+		 '<td>';
+	}
+	
 	/**
 	 * Prints descendency of passed in person
 	 *
