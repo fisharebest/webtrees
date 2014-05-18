@@ -27,7 +27,22 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
-	// Extend WT_Module
+
+    CONST HTML = "<li class='sb_desc_indi_li'>
+                    <a class='sb_desc_indi' href='module.php?mod=%s&amp;mod_action=ajax&amp;sb_action=descendancy&amp;xref=%s'>
+                      <i class='plusminus %s'></i>
+                      %s
+                      %s
+                      %s
+                    </a>
+                    <a class='icon-button_indi' href='%s'></a>
+                    %s
+                    <div>
+                      %s
+                    </div>
+                  </li>";
+
+    // Extend WT_Module
 	public function getTitle() {
 		return /* I18N: Name of a module/sidebar */ WT_I18N::translate('Descendants');
 	}
@@ -65,31 +80,26 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	}
 
 	// Implement WT_Module_Sidebar
-	public function getSidebarAjaxContent() {
-		$search = WT_Filter::get('search');
-		$pid    = WT_Filter::get('pid', WT_REGEX_XREF);
-		$famid  = WT_Filter::get('famid', WT_REGEX_XREF);
+    public function getSidebarAjaxContent() {
+        $search    = WT_Filter::get('search');
+        $gedcomObj = WT_GedcomRecord::getInstance(WT_Filter::get('xref', WT_REGEX_XREF));
 
-		$individual = WT_Individual::getInstance($pid);
-		$family     = WT_Family::getInstance($famid);
-
-		if ($search) {
-			return $this->search($search);
-		} elseif ($individual) {
-			return $this->loadSpouses($individual, 1);
-		} elseif ($family) {
-			return $this->loadChildren($family, 1);
-		} else {
-			return '';
-		}
-	}
+        if ($search) {
+            return $this->search($search);
+        } elseif ($gedcomObj instanceof WT_Individual) {
+            return $this->loadSpouses($gedcomObj, 1);
+        } elseif ($gedcomObj instanceof WT_Family) {
+            return $this->loadChildren($gedcomObj, 1);
+        } else {
+            return '';
+        }
+    }
 
 	// Implement WT_Module_Sidebar
 	public function getSidebarContent() {
 		global $controller;
 
 		$controller->addInlineJavascript('
-			var dloadedNames = new Array();
 
 			function dsearchQ() {
 				var query = jQuery("#sb_desc_name").val();
@@ -107,21 +117,25 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			});
 
 			jQuery("#sb_desc_content").on("click", ".sb_desc_indi", function() {
-				var pid=this.title;
-				if (!dloadedNames[pid]) {
-					jQuery("#sb_desc_"+pid+" div").load(this.href);
-					jQuery("#sb_desc_"+pid+" div").show("fast");
-					jQuery("#sb_desc_"+pid+" .plusminus").removeClass("icon-plus").addClass("icon-minus");
-					dloadedNames[pid]=2;
-				} else if (dloadedNames[pid]==1) {
-					dloadedNames[pid]=2;
-					jQuery("#sb_desc_"+pid+" div").show("fast");
-					jQuery("#sb_desc_"+pid+" .plusminus").removeClass("icon-plus").addClass("icon-minus");
+				var self = jQuery(this),
+				    state = self.children(".plusminus"),
+				    target = self.siblings("div");
+				if(state.hasClass("icon-plus")) {
+				    if (jQuery.trim(target.html())) {
+                        target.show("fast"); // already got content so just show it
+					} else {
+                        target
+                            .hide()
+                            .load(self.attr("href"), function(response, status, xhr) {
+			    		        if(status == "success" && response !== "") {
+            	    		        target.show("fast");
+					            }
+					        })
+					}
 				} else {
-					dloadedNames[pid]=1;
-					jQuery("#sb_desc_"+pid+" div").hide("fast");
-					jQuery("#sb_desc_"+pid+" .plusminus").removeClass("icon-minus").addClass("icon-plus");
+                    target.hide("fast");
 				}
+				state.toggleClass("icon-minus icon-plus");
 				return false;
 			});
 		');
@@ -135,51 +149,20 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			'</div>';
 	}
 
-	public function getPersonLi(WT_Individual $person, $generations=0) {
-		$out = '<li id="sb_desc_'.$person->getXref().'" class="sb_desc_indi_li"><a href="module.php?mod='.$this->getName().'&amp;mod_action=ajax&amp;sb_action=descendancy&amp;pid='.$person->getXref().'" title="'.$person->getXref().'" class="sb_desc_indi">';
-		if ($generations>0) {
-			$out .= '<i class="icon-minus plusminus"></i>';
-		} else {
-			$out .= '<i class="icon-plus plusminus"></i>';
-		}
-		$out .= $person->getSexImage().' '.$person->getFullName().' ';
-		if ($person->canShow()) {
-			$out .= ' ('.$person->getLifeSpan().')';
-		}
-		$out .= '</a> <a href="'.$person->getHtmlUrl().'" class="icon-button_indi"></a>';
-		if ($generations>0) {
-			$out .= '<div class="desc_tree_div_visible">';
-			$out .= $this->loadSpouses($person, 0);
-			$out .= '</div>';
-			$base_controller = new WT_Controller_Base();
-			$base_controller->addInlineJavascript('dloadedNames["'.$person->getXref().'"]=2;');
-		} else {
-			$out .= '<div class="desc_tree_div">';
-			$out .= '</div>';
-		}
-		$out .= '</li>';
-		return $out;
-	}
+    public function getPersonLi(WT_Individual $person, $generations = 0) {
+        $icon     = $generations > 0 ? 'icon-minus' : 'icon-plus';
+        $lifespan = $person->canShow() ? '(' . $person->getLifeSpan() . ')' : '';
+        $spouses  = $generations > 0 ? $this->loadSpouses($person, 0) : '';
+        return sprintf(self::HTML, $this->getName(), $person->getXref(), $icon, $person->getSexImage(), $person->getFullName(), $lifespan, $person->getHtmlUrl(), '', $spouses);
+    }
 
-	public function getFamilyLi(WT_Family $family, WT_Individual $person, $generations=0) {
-		$out = '<li id="sb_desc_'.$family->getXref().'" class="sb_desc_indi_li"><a href="module.php?mod='.$this->getName().'&amp;mod_action=ajax&amp;sb_action=descendancy&amp;famid='.$family->getXref().'" title="'.$family->getXref().'" class="sb_desc_indi">';
-		$out .= '<i class="icon-minus plusminus"></i>';
-		$out .= $person->getSexImage().$person->getFullName();
-
-		$marryear = $family->getMarriageYear();
-		if ($marryear) {
-			$out .= ' ('.WT_Gedcom_Tag::getLabel('MARR').' '.$marryear.')';
-		}
-		$out .= '</a> <a href="'.$person->getHtmlUrl().'" class="icon-button_indi"></a>';
-		$out .= '<a href="'.$family->getHtmlUrl().'" class="icon-button_family"></a>';
-		$out .= '<div class="desc_tree_div_visible">';
-		$out .= $this->loadChildren($family, $generations);
-		$out .= '</div>';
-		$base_controller=new WT_Controller_Base();
-		$base_controller->addInlineJavascript('dloadedNames["'.$family->getXref().'"]=2;');
-		$out .= '</li>';
-		return $out;
-	}
+    public function getFamilyLi(WT_Family $family, WT_Individual $person, $generations = 0) {
+        $marryear = $family->getMarriageYear();
+        $marr     = $marryear ? '<i class="icon-rings"></i>' . $marryear : '';
+        $fam      = '<a href="' . $family->getHtmlUrl() . '" class="icon-button_family"></a>';
+        $kids     = $this->loadChildren($family, $generations);
+        return sprintf(self::HTML, $this->getName(), $family->getXref(), 'icon-minus', $person->getSexImage(), $person->getFullName(), $marr, $person->getHtmlUrl(), $fam, $kids);
+    }
 
 	public function search($query) {
 		if (strlen($query)<2) return '';
@@ -193,53 +176,56 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		->execute(array("%{$query}%", "%{$query}%", WT_GED_ID))
 		->fetchAll();
 
-		$out = '';
-		foreach ($rows as $row) {
-			$person = WT_Individual::getInstance($row->xref);
-			if ($person->canShowName()) {
-				$out .= $this->getPersonLi($person);
-			}
-		}
-		if ($out) {
-			return '<ul>' . $out . '</ul>';
-		} else {
-			return '';
-		}
+        $out = '';
+        foreach ($rows as $row) {
+            $person = WT_Individual::getInstance($row->xref);
+            if ($person->canShowName()) {
+                $out .= $this->getPersonLi($person);
+            }
+        }
+        if ($out) {
+            return '<ul>' . $out . '</ul>';
+        } else {
+            return '';
+        }
 	}
 
-	public function loadSpouses(WT_Individual $person, $generations) {
-		$out = '';
-		if ($person && $person->canShow()) {
-			foreach($person->getSpouseFamilies() as $family) {
-				$spouse = $family->getSpouse($person);
-				if ($spouse) {
-					$out .= $this->getFamilyLi($family, $spouse, $generations-1);
-				}
-			}
-		}
-		if ($out) {
-			return '<ul>' . $out . '</ul>';
-		} else {
-			return '';
-		}
-	}
+    public function loadSpouses(WT_Individual $person, $generations) {
+        $out = '';
+        if ($person && $person->canShow()) {
+            foreach ($person->getSpouseFamilies() as $family) {
+                $spouse = $family->getSpouse($person);
+                if ($spouse) {
+                    $out .= $this->getFamilyLi($family, $spouse, $generations - 1);
+                }
+            }
+            if (!$out) {
+                $out = '<li class="sb_desc_none">' . WT_I18N::translate('No children') . '</li>';
+            }
+        }
+        if ($out) {
+            return '<ul>' . $out . '</ul>';
+        } else {
+            return '';
+        }
+    }
 
-	public function loadChildren(WT_Family $family, $generations) {
-		$out = '';
-		if ($family->canShow()) {
-			$children = $family->getChildren();
-			if ($children) {
-				foreach ($children as $child) {
-					$out .= $this->getPersonLi($child, $generations-1);
-				}
-			} else {
-				$out .= '<li>'.WT_I18N::translate('No children').'</li>';
-			}
-		}
-		if ($out) {
-			return '<ul>' . $out . '</ul>';
-		} else {
-			return '';
-		}
-	}
+    public function loadChildren(WT_Family $family, $generations) {
+        $out = '';
+        if ($family->canShow()) {
+            $children = $family->getChildren();
+            if ($children) {
+                foreach ($children as $child) {
+                    $out .= $this->getPersonLi($child, $generations - 1);
+                }
+            } else {
+                $out .= '<li class="sb_desc_none">' . WT_I18N::translate('No children') . '</li>';
+            }
+        }
+        if ($out) {
+            return '<ul>' . $out . '</ul>';
+        } else {
+            return '';
+        }
+    }
 }
