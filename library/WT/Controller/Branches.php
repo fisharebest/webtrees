@@ -176,6 +176,8 @@ class WT_Controller_Branches extends WT_Controller_Page {
 
 		// spouses and children
 		$spouse_families = $individual->getSpouseFamilies();
+        // Sort by marriage date, oldest first
+        usort($spouse_families, array('WT_Family', 'CompareMarrDate'));
 		if ($spouse_families) {
 			usort($spouse_families, array('WT_Family', 'CompareMarrDate'));
 			$fam_html = '';
