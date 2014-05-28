@@ -957,6 +957,7 @@ function print_add_new_fact($id, $usedfacts, $type) {
 	echo '<td class="optionbox wrap">';
 	echo '<form method="get" name="newfactform" action="?" onsubmit="return false;">';
 	echo '<select id="newfact" name="newfact">';
+	echo '<option value="" disabled selected>' . WT_I18N::translate('&lt;select&gt;') . '</option>';
 	foreach ($translated_addfacts as $fact=>$fact_name) {
 		echo '<option value="', $fact, '">', $fact_name, '</option>';
 	}
