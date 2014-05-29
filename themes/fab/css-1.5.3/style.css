@@ -545,6 +545,12 @@ div.fact_SHARED_NOTE {
 	text-align: center;
 }
 
+#familybook_chart .person_box, 
+	#familybook_chart .person_boxF, 
+	#familybook_chart .person_boxNN {
+	padding: 3px;
+}
+
 #relationship-page h3 {
 	margin: 20px 0 0 20px;
 }

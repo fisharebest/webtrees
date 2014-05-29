@@ -35,7 +35,7 @@ $followspouse = WT_Filter::getBool('followspouse');
 $asc          = WT_Filter::getBool('asc');
 
 $asc = $asc ? -1 : 1;
-
+$Dbwidth=$bwidth;
 if (!$show_full) {
 	$bwidth  = $cbwidth;
 	$bheight = $cbheight;
