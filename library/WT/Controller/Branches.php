@@ -177,6 +177,7 @@ class WT_Controller_Branches extends WT_Controller_Page {
 		// spouses and children
 		$spouse_families = $individual->getSpouseFamilies();
 		if ($spouse_families) {
+			usort($spouse_families, array('WT_Family', 'CompareMarrDate'));
 			$fam_html = '';
 			foreach ($spouse_families as $family) {
 				$fam_html .= $indi_html; // Repeat the individual details for each spouse.
