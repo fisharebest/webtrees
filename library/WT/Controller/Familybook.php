@@ -211,7 +211,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 					$bwidth = $tempw;
 					$bheight = $temph;
 					$numkids += 0.95;
-					echo '</td><td></td>';
+					echo '</td><td>';
 				}
 			}
 		}
@@ -269,7 +269,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 					}
 				}
 				$savlh=$lh; // Save current line height
-				if ($genoffset<=$famcount) {
+				if ($count==1 && $genoffset<=$famcount) {
 					$linefactor=0;
 					$tblheight=$bheight+8;
 					if ($genoffset>2) { // genoffset of 2 needs no adjustment
@@ -316,11 +316,9 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 				echo '</td>';
 			} else {
 				echo '<td>';
-				if ($count<$genoffset-1) {
+				if ($genoffset>$count) {
 					echo '<table>';
-						for ($i=$count; $i<(pow(2, ($genoffset)-$count)/2)+2; $i++) {
-						$this->printEmptyBox($bwidth, $bheight);
-						echo '</tr>';
+					for ($i=1; $i<(pow(2, ($genoffset)-$count)/2); $i++) {
 						$this->printEmptyBox($bwidth, $bheight);
 						echo '</tr>';
 					}
