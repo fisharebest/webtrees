@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2014-05-03 00:09+0100\n"
-"PO-Revision-Date: 2014-05-05 22:47+0200\n"
+"PO-Revision-Date: 2014-06-07 21:34+0200\n"
 "Last-Translator: Vytautas Krivickas <vytautas.krivickas@gmail.com>\n"
 "Language-Team: \n"
 "Language: lt\n"
@@ -915,7 +915,7 @@ msgstr "Įrašų ataskaitą pagal duotą datą ar vietovę."
 
 #: help_text.php:1374
 msgid "A role is a set of access rights, which give permission to view data, change configuration settings, etc.  Access rights are assigned to roles, and roles are granted to users.  Each family tree can assign different access to each role, and users can have a different role in each family tree."
-msgstr ""
+msgstr "Vaidmuo yra prieigos teisių rinkinys, kuris suteiks leidimą peržiūrėti duomenis, pakeisti konfigūracijos nustatymus ir t.t. Prieigos teisės yra priskirtos vaidmenims ir vaidmenys yra paskirti vartotojams. Kiekvienas šeimos medis gali turėtiskirtingus priėjimus surištus prie kiekvieno vaidmens, o vartotojai gali turėti skirtingą vaidmenį kiekviename šeimos medyje."
 
 #. I18N: Description of the “Families” module
 #: modules_v3/families/module.php:37
@@ -969,7 +969,7 @@ msgstr "Kortelė parodo šaltinius, kurie susieti su asmeniu."
 
 #: help_text.php:1474
 msgid "A user will not be able to login until both the “email verified” and “approved by administrator” options are selected."
-msgstr ""
+msgstr "Vartotojas negalės prisijungti, kol abu „Patvirtinta administratoriaus“ ir „Elektroninio pašto adresas patvirtintas“ nėra pažimėti."
 
 #: help_text.php:1025
 msgid "A watermark is text that is added to an image, to discourage others from copying it without permission."
@@ -7306,31 +7306,31 @@ msgstr "Identifikacijos numeris"
 
 #: help_text.php:613
 msgid "If a visitor to the site has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines."
-msgstr ""
+msgstr "Jeigu svetainės lankytojas nėra pasirinkes pageidaujamos kalbos savo naršyklės konfigūracijoje arba ta kalba nėra palaikoma, tada ši kalba bus naudota. Dažniausiai ta kalba bus naudojama paieškos sistemoms."
 
 #: help_text.php:1470
 msgid "If an administrator creates a user account, the verification email is not sent, and the email must be verified manually."
-msgstr ""
+msgstr "Jeigu administratorius sukurė vartotojo sąskaitą, tada elektroninio pašto patvirtinimas nėra siustas ir adresas turi buti patvirtintas rankiniu būdu."
 
 #: help_text.php:285
 #, php-format
 msgid "If an individual does not have a surname, no slashes are needed: <%s>Jón Einarsson<%s>"
-msgstr ""
+msgstr "Jeigu asmuo neturi pavardės, tada nerijos yra nereikalingos: <%s>Vytautas Didysis<%s>"
 
 #: help_text.php:283
 #, php-format
 msgid "If an individual has two separate surnames, both should be enclosed by slashes: <%s>José Antonio /Gómez/ /Iglesias/<%s>"
-msgstr ""
+msgstr "Jeigu asmuo turi dvi skirtingas pavardes jos abi turėtu buti apsuptos nerijomis: <%s>José Antonio /Gómez/ /Iglesias/<%s>"
 
 #: help_text.php:289
 #, php-format
 msgid "If an individual was known by a nickname which is not part of their formal name, it should be enclosed by quotation marks.  For example, <%s>John &quot;Nobby&quot; /Clark/<%s>."
-msgstr ""
+msgstr "Jei asmuo buvo žinomas pravarde kuri nebuvo dalis oficialaus vardo, ji turėtu būti apsupta kabutėmis. Pavyzdžiui, <%s>Marija &quot;Raudonplaukė&quot; /Jankauskaitė/<%s>."
 
 #: help_text.php:287
 #, php-format
 msgid "If an individual was not known by their first given name, the preferred name should be indicated with an asterisk: <%s>John Paul* /Smith/<%s>"
-msgstr ""
+msgstr "Jeigu asmuo nebuvo žinomas pagal jo pirmajį vardą, tada pageidaujamasis vardas turėtu būti pažymėtas žvaigždute: <%s>Vytenis Paulius* /Jankauskas/<%s>"
 
 #: help_text.php:466
 msgid "If the number of times that a certain surname occurs is lower than the threshold, it will not appear in the list.  It can be added here manually.  If more than one surname is entered, they must be separated by a comma.  <b>Surnames are case-sensitive.</b>"
@@ -9881,7 +9881,7 @@ msgstr "Norfolko sala"
 
 #: help_text.php:1452
 msgid "Normally, any changes made to a family tree need to be approved by a moderator.  This option allows a user to make changes without needing a moderator’s approval."
-msgstr ""
+msgstr "Paprastai visi šeimos medžio pakeitimai turi būti patvirtinti moderatoriaus. Ši parinktis leidžia vartotojui padaryti pakeitimus be moderatoriaus patvirtinimo."
 
 #: library/WT/Stats.php:3935
 msgid "North Korea"
@@ -10528,7 +10528,7 @@ msgstr "Pataisymai laukiantys sprendimų"
 
 #: help_text.php:1335
 msgid "Pending changes are only shown when your account has permission to edit.  When you log out, you will no longer be able to see them.  Also, pending changes are only shown on certain pages.  For example, they are not shown in lists, reports, or search results."
-msgstr ""
+msgstr "Laukiami pakeitimai rodomi tik tuomet, kai jūsų sąskaita turi teisę redaguoti. Kai atsijungiate, jums nebebus galima pamatyti juos. Be to, pokyčiai rodomi tik tam tikruose puslapiuose. Pavyzdžiui, jie gali neatspindėti sąrašuose, ataskaitose, ar paieškos rezultatuose."
 
 #. I18N: gedcom tag _PRMN
 #: library/WT/Gedcom/Tag.php:803
@@ -11552,7 +11552,7 @@ msgstr "Būstinė"
 #. I18N: http://en.wikipedia.org/wiki/User_agent
 #: admin_site_access.php:269
 msgid "Restrict access to the site, using IP addresses and user-agent strings"
-msgstr ""
+msgstr "Apriboti prieigą prie svetainės, naudojant IP adresus ir naudotojo agento eilutes"
 
 #: admin_users.php:231 admin_users.php:435 help_text.php:718
 msgid "Restrict to immediate family"
@@ -11588,7 +11588,7 @@ msgstr "Dešinysis pasirinkimų blokas"
 #: admin_users.php:230 admin_users.php:434 help_text.php:1372
 #: library/WT/Gedcom/Tag.php:297
 msgid "Role"
-msgstr "Rolė"
+msgstr "Vaidmuo"
 
 #: library/WT/Stats.php:3942
 msgid "Romania"
@@ -11870,7 +11870,7 @@ msgstr "Pasirinkite byla iš sąrašo serveryje, kuriame yra vietovės ir ji yra
 
 #: help_text.php:335
 msgid "Select a relationship name from the list. Selecting <b>Godfather</b> means: <i>This associate is the godfather of the current individual</i>."
-msgstr ""
+msgstr "Pasirinkite santykių vardą iš sąrašo. Pasirinkus <b>Krikštatėvis</ b>, reiškia: <i>Šis bendradarbis yra šio asmens krikštatėvis</ i>."
 
 #: modules_v3/googlemap/help_text.php:63
 msgid "Select an icon"
@@ -11911,11 +11911,11 @@ msgstr "Pasirinkti kokius duomenis rodyti šiame lange"
 
 #: help_text.php:1499
 msgid "Select this option as to save your clippings in a ZIP file.  For more information about ZIP files, please visit <a href=\"http://www.winzip.com\" target=\"_blank\">http://www.winzip.com</a>."
-msgstr ""
+msgstr "Pasirinkite šią paranką jei norite išsaugoti savo pasirinktas iškarpas į ZIP bylą. Dėl daugiau informacijos apie ZIP bylas apsilankykite <a href=\"http://www.winzip.com\" target=\"_blank\">http://www.winzip.com</a>."
 
 #: help_text.php:1269
 msgid "Select this option to include the media files associated with the records in your clippings cart.  Choosing this option will automatically zip the files during download."
-msgstr ""
+msgstr "Pasirinkite šią paranką jeigu norite prisegti medijos bylas prijungtas prie informacijos jūsų iškarpų krepšelyje. Pasirinkus šią paranką bylos bus automatiškai sudėtos į ZIP bylą per atsiuntimą."
 
 #: admin_site_merge.php:245
 msgid "Select two GEDCOM records to merge.  The records must be of the same type."
@@ -12081,15 +12081,15 @@ msgstr "Nustatyti įprastus blokus naujiems vartotojams"
 
 #: help_text.php:486
 msgid "Set the default number of generations to display on descendancy and pedigree charts."
-msgstr ""
+msgstr "Nustatyti numatytajį kartų rodymo skaičių palikuonių ir kilmės diagramose."
 
 #: help_text.php:628
 msgid "Set the maximum number of generations to display on descendancy charts."
-msgstr ""
+msgstr "Nustatyti maksimalų kartų rodymo skaičių palikuonių diagramoje."
 
 #: help_text.php:650
 msgid "Set the maximum number of generations to display on pedigree charts."
-msgstr ""
+msgstr "Nustatyti maksimalų kartų rodymo skaičių kilmės diagramoje."
 
 #: help_text.php:839
 msgid "Set the privacy access level for all dead individuals."
@@ -13320,7 +13320,7 @@ msgstr "Tailandas"
 
 #: help_text.php:276
 msgid "The <b>name</b> field contains the individual’s full name, as they would have spelled it or as it was recorded.  This is how it will be displayed on screen.  It uses standard genealogical annotations to identify different parts of the name."
-msgstr ""
+msgstr "<b>Varda</b> yra asmens pilnas vardas kaip jie patys rašytu ar kaip jis buvo įrašytas. Tai kaip jis bus rodomas ekrane. Yra naudojamos standartinis genealogijos anotavimas atskirti įvairias vardo dalis."
 
 #: help_text.php:296
 msgid "The <b>surname</b> field contains a name that is used for sorting and grouping.  It can be different to the individual’s actual surname which is always taken from the <b>name</b> field.  This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska).  If an individual needs to be listed under more than one surname, each name should be separated by a comma."
@@ -13373,7 +13373,7 @@ msgstr "Iškarpų krepšelis Jums leidžia paimti ištraukas („iškarpas“) i
 
 #: help_text.php:1314
 msgid "The current <b>webtrees</b> admin username must be the same as an existing PGV admin username"
-msgstr ""
+msgstr "Dabartinis <b>webtrees</b> administratoriaus vartotojo vardas turi būti toks pat kaip senasis PGV administratoriaus vartotojo vardas"
 
 #: login.php:521
 #, php-format
@@ -13473,7 +13473,7 @@ msgstr "Duomenų aplanka %s ištrinta."
 
 #: help_text.php:587
 msgid "The folder can be specified in full (e.g. /home/user_name/webtrees_data/) or relative to the installation folder (e.g. ../../webtrees_data/)."
-msgstr ""
+msgstr "Duomenų aplanka gali būti įrašyta pilnai (pvz.  /home/user_name/webtrees_data/) arba lyginant su diegimo aplanka (pvz. ../../webtrees_data/)."
 
 #: help_text.php:439
 msgid "The following calendars are supported:"
@@ -13522,7 +13522,7 @@ msgstr ""
 
 #: help_text.php:1035
 msgid "The individual to be contacted about technical questions or errors encountered on your site."
-msgstr ""
+msgstr "Asmuo su kuriuo susisiekti dėl techninių klausimų ar klaidų šioje svetainėje."
 
 #: help_text.php:481
 msgid "The individual to contact about the genealogical data on this site."
@@ -13736,7 +13736,7 @@ msgstr "Šie puslapiai suteikia prieigą prie visų šio <b>webtrees</b> tinklap
 #. I18N: do not translate the #keywords#
 #: modules_v3/html/module.php:159
 msgid "This GEDCOM (family tree) was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#."
-msgstr ""
+msgstr "Šis GEDCOM (šeimos medis) buvo paskutinį kartą pakeistas #gedcomUpdated#. Šiame šimos medyje yra #totalSurnames# pavardės. Seniausias įrašytas įvykis yra #firstEventName# #firstEventType# #firstEventYear# metais. Naujausias įrašytas įvykis yra #lastEventName# #lastEventType# #lastEventYear# metais.<br><br>Jei turite kokių nors komentarų ar atsiliepimų kreipkitės į #contactWebmaster#."
 
 #. I18N: %1$s and %2$s are the names of character encodings, such as ISO-8859-1 or ASCII
 #: import.php:148
@@ -13835,7 +13835,7 @@ msgstr "Šis failas yra susijęs su kita genealoginių duomenų baze šiame serv
 #. I18N: Help text for the "Data folder" site configuration setting
 #: help_text.php:581
 msgid "This folder will be used by webtrees to store media files, GEDCOM files, temporary files, etc.  These files may contain private data, and should not be made available over the internet."
-msgstr ""
+msgstr "Ši aplanka bus naudojama webtrees programos laikyti medijos bylas, GEDCOM bylas, laikinas bylas ir t.t. Tos bylos gali turėti privačios informacijos ir neturėtų būti atvirai skleidžiamos per internetą."
 
 #: help_text.php:657
 msgid "This folder will be used to store the media files for this family tree."
@@ -13871,7 +13871,7 @@ msgstr "Šis asmuo buvo pakeistas. Jūs turėtumėte peržiūrėti pakeitimus ir
 
 #: help_text.php:1119
 msgid "This individual will be selected by default when viewing charts and reports."
-msgstr ""
+msgstr "Šis asmuo bus pasirinktas pagal numatytąją reikšmę žiūrint diagramas ir ataskaitas."
 
 #: includes/functions/functions_print.php:491 library/WT/Stats.php:823
 #: library/WT/Stats.php:1360 library/WT/Stats.php:1446
@@ -13969,7 +13969,7 @@ msgstr ""
 #. I18N: Help text for the “Server name” site configuration setting
 #: help_text.php:764
 msgid "This is the name of the SMTP server. “localhost” means that the mail service is running on the same computer as your web server."
-msgstr "Tai yra SMTP serverio vardas. „Localhost“ reiškia, kad pašto paslaugos teikėjas veikia tame pačiame kompiuteryje kaip ir jūsų interneto serveris."
+msgstr "Tai yra SMTP serverio vardas. „localhost“ reiškia, kad pašto paslaugos teikėjas veikia tame pačiame kompiuteryje kaip ir jūsų interneto serveris."
 
 #: help_text.php:476
 msgid "This is the number of times that a surname must occur before it shows up in the Common Surname list on the Home Page."
@@ -14318,7 +14318,7 @@ msgstr "Nurodo skirtingų lygmenų tikslumą įvedant naujas geografines vietove
 
 #: help_text.php:694
 msgid "This text will be appended to each page title.  It will be shown in the browser’s title bar, bookmarks, etc."
-msgstr ""
+msgstr "Šis tekstas bus pridėtas prie kiekvieno puslapio vardo. Jis bus rodomas naršyklės pavadinimo juostoje, žymėse ir t.t."
 
 #: admin_trees_check.php:168 admin_trees_check.php:173
 msgid "This type of link is not allowed here."
@@ -14376,11 +14376,11 @@ msgstr "Nuotraukų miniatiūros"
 
 #: addmedia.php:450 admin_media_upload.php:190 help_text.php:1446
 msgid "Thumbnail to upload"
-msgstr "Mažas paveikslėlis įkėlimui"
+msgstr "Miniatiūra įkėlimui"
 
 #: addmedia.php:129 admin_media_upload.php:98
 msgid "Thumbnails must be images."
-msgstr ""
+msgstr "Miniatiūros turi būti paveikslėliai."
 
 #: library/WT/Date/Calendar.php:211
 msgid "Thursday"
@@ -14486,7 +14486,7 @@ msgstr "Kad sukurtumėte naujas tyrimo užduotis, Jūs pirmiausia turite pridėt
 
 #: help_text.php:528
 msgid "To ensure compatibility with other genealogy applications, notes, text, and transcripts should be recorded in simple, unformatted text.  However, formatting is often desirable to aid presentation, comprehension, etc."
-msgstr ""
+msgstr "Siekiant užtikrinti suderinamumą su kitomis genealoginėmis programomis, užrašai, tekstai ir nuorašai turi būti registruojami paprastu, neformuotu tekstu. Tačiau, formatavimas dažnai pageidautinas geresniam pristatymui, supratimui ir t.t."
 
 #: admin_media.php:463 library/WT/Controller/Media.php:69
 #: library/WT/Controller/Media.php:151 modules_v3/lightbox/module.php:161
@@ -15683,7 +15683,7 @@ msgstr "Jūs galite atsisiųsti kopiją apie GEDCOM specifikaciją iš %s."
 
 #: help_text.php:1243
 msgid "You can limit the number of News articles displayed, thereby reducing the height of the GEDCOM News block.<br><br>This option determines whether any limits should be applied or whether the limit should be according to the age of the article or according to the number of articles."
-msgstr ""
+msgstr "Jūs galite apriboti rodomų naujienų skaičių, taip sumažinti Naujienos bloko aukštį.<br><br>Ši parinktis nustato, ar bet kokie apribojimai turėtų būti taikomi ir ar reikėtų apriboti atsižvelgiant į įdėjimo data arba į straipsnių skaičių."
 
 #: modules_v3/batch_update/plugins/married_names.php:37
 msgid "You can make it easier to search for married women by recording their married name.<br>However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
