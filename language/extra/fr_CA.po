@@ -2577,7 +2577,7 @@ msgstr "Objet binaire"
 
 #: includes/functions/functions_print.php:829
 msgid "Bing Maps™"
-msgstr ""
+msgstr "Bing Maps™"
 
 #: library/WT/Gedcom/Code/Temp.php:74
 msgid "Birmingham, Alabama"
@@ -10175,7 +10175,7 @@ msgstr "Oups !  webtrees a été incapable de créer des fichiers dans ce dossie
 
 #: includes/functions/functions_print.php:830
 msgid "OpenStreetMap™"
-msgstr ""
+msgstr "OpenStreetMap™"
 
 #: modules_v3/googlemap/help_text.php:41 modules_v3/googlemap/module.php:406
 msgid "Optional prefixes and suffixes"
@@ -13617,7 +13617,7 @@ msgstr "La version de %s est trop vieille"
 
 #: help_text.php:997
 msgid "The website www.geonames.org provides a large database of place names.  This can be searched when entering new places.  To use this feature, you must register for a free account at www.geonames.org and provide the username."
-msgstr ""
+msgstr "Ce site Internet www.geonames.org contient une importante base de données de noms de lieux. Celle-ci peut être recherchée lors de l’ajout de nouveaux lieux. Afin d’utiliser cette fonctionnalité, vous devez ouvrir un compte gratuit sur www.geonames.org et fournir le nom d’utilisateur."
 
 #: setup.php:934
 msgid "The webtrees developers would be very interested to learn about this error.  If you contact them, they will help you resolve the problem."
