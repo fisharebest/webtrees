@@ -27,7 +27,7 @@ if (!defined('WT_WEBTREES')) {
 }
 
 // Theme name - this needs double quotes, as file is scanned/parsed by script
-$theme_name = "minimal";
+$theme_name = "minimal"; /* I18N: Name of a theme. */ WT_I18N::translate('minimal');
 
 // A version number in the path prevents browser-cache problems during upgrade
 define('WT_CSS_URL', WT_THEME_URL . 'css-1.5.3/');
