@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2014-06-12 21:41+0100\n"
-"PO-Revision-Date: 2014-06-07 21:34+0200\n"
+"PO-Revision-Date: 2014-06-13 09:07+1000\n"
 "Last-Translator: Vytautas Krivickas <vytautas.krivickas@gmail.com>\n"
 "Language-Team: \n"
 "Language: lt\n"
@@ -3528,7 +3528,7 @@ msgstr "Vaikai "
 #. I18N: In the Icelandic surname tradition, ...
 #: help_text.php:964
 msgid "Children take a patronym instead of a surname."
-msgstr ""
+msgstr "Vaikai gauna tėvavardi vietoj pavardės."
 
 #. I18N: In the Spanish surname tradition, ...
 #: help_text.php:954
@@ -3722,7 +3722,7 @@ msgstr "Išvalyti diagramą"
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: library/WT/Gedcom/Code/Stat.php:59
 msgid "Cleared but not yet completed"
-msgstr ""
+msgstr "Priimtas, bet dar nebaigtas"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:84
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:97
@@ -4336,15 +4336,15 @@ msgstr "Mormonų krikšto data"
 
 #: library/WT/Gedcom/Tag.php:298
 msgid "Date of LDS child sealing"
-msgstr ""
+msgstr "Mormonų vaikų sandaros data"
 
 #: library/WT/Gedcom/Tag.php:184
 msgid "Date of LDS endowment"
-msgstr ""
+msgstr "Mormonų šventyklos apdovanojimo data"
 
 #: library/WT/Gedcom/Tag.php:203
 msgid "Date of LDS spouse sealing"
-msgstr ""
+msgstr "Mormonų sutuoktinių sandaros data"
 
 #: library/WT/Gedcom/Tag.php:98
 msgid "Date of adoption"
@@ -4358,12 +4358,12 @@ msgstr "Krikšto data"
 #: library/WT/Gedcom/Tag.php:116
 #: modules_v3/missing_facts_report/report.xml:208
 msgid "Date of bar mitzvah"
-msgstr ""
+msgstr "Bar mitzvah data"
 
 #: library/WT/Gedcom/Tag.php:119
 #: modules_v3/missing_facts_report/report.xml:249
 msgid "Date of bat mitzvah"
-msgstr ""
+msgstr "Bat mitzvah data"
 
 #: library/WT/Gedcom/Tag.php:122 modules_v3/fact_sources/report.xml:65
 #: modules_v3/fact_sources/report.xml:269
@@ -5128,12 +5128,12 @@ msgstr "Dhu al-Qi’dah"
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: library/WT/Gedcom/Code/Stat.php:55
 msgid "Died as a child: exempt"
-msgstr ""
+msgstr "Mirė kaip vaikas: atleistas"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: library/WT/Gedcom/Code/Stat.php:74
 msgid "Died as an infant: exempt"
-msgstr ""
+msgstr "Mirė kaip kūdikis: atleistas"
 
 #: modules_v3/change_report/report.xml:57
 msgid "Differences"
@@ -5220,12 +5220,12 @@ msgstr "Nekurti naujų vietų, tik įkelti koordinatės esamom vietom."
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: library/WT/Gedcom/Code/Stat.php:68
 msgid "Do not seal, previous sealing cancelled"
-msgstr ""
+msgstr "Nėra sandaros, ankstesnė sandara atšaukta"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: library/WT/Gedcom/Code/Stat.php:65
 msgid "Do not seal: unauthorized"
-msgstr ""
+msgstr "Nėra sandaros: neįgaliotas"
 
 #: addmedia.php:705 admin_trees_config.php:1285 edit_interface.php:2273
 #: help_text.php:1283
@@ -5775,7 +5775,7 @@ msgstr "Išskirti poaplankius"
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: library/WT/Gedcom/Code/Stat.php:71
 msgid "Excluded from this submission"
-msgstr ""
+msgstr "Nepatenka į šį pateikimą"
 
 #: admin_trees_config.php:1082 help_text.php:899
 msgid "Execution statistics"
@@ -5832,7 +5832,7 @@ msgstr "Akių spalva"
 #. I18N: Name of a theme.
 #: themes/fab/theme.php:29
 msgid "F.A.B."
-msgstr ""
+msgstr "F.A.B."
 
 #. I18N: Name of a module.  Abbreviation for “Frequently Asked Questions”
 #: modules_v3/faq/module.php:32 modules_v3/faq/module.php:431
@@ -6116,12 +6116,12 @@ msgstr "Šeima su tėvais"
 #. I18N: “rada” is an Arabic word, pronounced “ra DAH”.  It is child-to-parent pedigree, established by wet-nursing.
 #: library/WT/Gedcom/Code/Pedi.php:85
 msgid "Family with rada parents"
-msgstr "Šeima so rados tėvais"
+msgstr "Šeima su rados tėvais"
 
 #. I18N: “sealing” is a Mormon ceremony.
 #: library/WT/Gedcom/Code/Pedi.php:84
 msgid "Family with sealing parents"
-msgstr ""
+msgstr "Šeima su sandaros tėvais"
 
 #: includes/functions/functions_print.php:109
 msgid "Family with spouse"
@@ -7981,30 +7981,30 @@ msgstr "Mormonų krikštas"
 #. I18N: gedcom tag SLGC
 #: library/WT/Gedcom/Tag.php:297
 msgid "LDS child sealing"
-msgstr ""
+msgstr "Mormonų vaikų sandara"
 
 #. I18N: gedcom tag CONL
 #: library/WT/Gedcom/Tag.php:155
 msgid "LDS confirmation"
-msgstr ""
+msgstr "Mormonų patvirtinimas"
 
 #. I18N: gedcom tag ENDL
 #: library/WT/Gedcom/Tag.php:183
 msgid "LDS endowment"
-msgstr ""
+msgstr "Mormonų šventyklos apdovanojimas"
 
 #: admin_trees_config.php:992 help_text.php:858
 msgid "LDS ordinance codes in chart boxes"
-msgstr ""
+msgstr "Mormonų apeigų kodai diagramų dėžėms"
 
 #. I18N: gedcom tag SLGS
 #: library/WT/Gedcom/Tag.php:300
 msgid "LDS spouse sealing"
-msgstr ""
+msgstr "Mormonų sutuoktinių sandara"
 
 #: includes/functions/functions_print.php:833
 msgid "LDS temple"
-msgstr "Mormonų šventovė"
+msgstr "Mormonų šventykla"
 
 #: library/WT/Gedcom/Code/Temp.php:101
 msgid "Laie, Hawaii"
@@ -9832,7 +9832,7 @@ msgstr "Nieko nerasta."
 
 #: includes/functions/functions_edit.php:526
 msgid "No temple - living ordinance"
-msgstr ""
+msgstr "Ne šventykloje - gyvenamoji apeiga"
 
 #: admin_site_upgrade.php:67
 msgid "No upgrade information is available."
@@ -10651,15 +10651,15 @@ msgstr "Mormonų krikšto vieta"
 
 #: library/WT/Gedcom/Tag.php:299
 msgid "Place of LDS child sealing"
-msgstr ""
+msgstr "Mormonų vaikų sandaros vieta"
 
 #: library/WT/Gedcom/Tag.php:185
 msgid "Place of LDS endowment"
-msgstr ""
+msgstr "Mormonų šventyklos apdovanojimo vieta"
 
 #: library/WT/Gedcom/Tag.php:204
 msgid "Place of LDS spouse sealing"
-msgstr ""
+msgstr "Mormonų sutuoktinių sandaros vieta"
 
 #: library/WT/Gedcom/Tag.php:99
 msgid "Place of adoption"
@@ -10673,12 +10673,12 @@ msgstr "Krikšto vieta"
 #: library/WT/Gedcom/Tag.php:117
 #: modules_v3/missing_facts_report/report.xml:219
 msgid "Place of bar mitzvah"
-msgstr ""
+msgstr "Bar mitzvah vieta"
 
 #: library/WT/Gedcom/Tag.php:120
 #: modules_v3/missing_facts_report/report.xml:260
 msgid "Place of bat mitzvah"
-msgstr ""
+msgstr "Bat mitzvah vieta"
 
 #: library/WT/Gedcom/Tag.php:123 modules_v3/fact_sources/report.xml:270
 #: modules_v3/missing_facts_report/report.xml:89
@@ -10951,7 +10951,7 @@ msgstr "Prezentacijos stilius"
 #. I18N: http://en.wikipedia.org/wiki/President_of_the_Church
 #: library/WT/Gedcom/Code/Temp.php:147
 msgid "President’s Office"
-msgstr ""
+msgstr "Prezidento biuras"
 
 #: library/WT/Gedcom/Code/Temp.php:149
 msgid "Preston, England"
@@ -11776,7 +11776,7 @@ msgstr ""
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: library/WT/Gedcom/Code/Stat.php:52
 msgid "Sealing cancelled (divorce)"
-msgstr ""
+msgstr "Mormonų skirybos"
 
 #: library/WT/MenuBar.php:410 lifespan.php:191 medialist.php:151
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:59
@@ -13047,7 +13047,7 @@ msgstr "Gimė negyvas"
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: library/WT/Gedcom/Code/Stat.php:80
 msgid "Stillborn: exempt"
-msgstr ""
+msgstr "Gimė negyvas: atleistas"
 
 #: library/WT/Gedcom/Code/Temp.php:172
 msgid "Stockholm, Sweden"
@@ -13099,7 +13099,7 @@ msgstr "Pateikimas"
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: library/WT/Gedcom/Code/Stat.php:83
 msgid "Submitted but not yet cleared"
-msgstr ""
+msgstr "Pateikta, bet dar nepriimta"
 
 #. I18N: gedcom tag SUBM
 #: library/WT/Gedcom/Tag.php:307
@@ -13309,7 +13309,7 @@ msgstr "Tailandas"
 
 #: help_text.php:276
 msgid "The <b>name</b> field contains the individual’s full name, as they would have spelled it or as it was recorded.  This is how it will be displayed on screen.  It uses standard genealogical annotations to identify different parts of the name."
-msgstr "<b>Varda</b> yra asmens pilnas vardas kaip jie patys rašytu ar kaip jis buvo įrašytas. Tai kaip jis bus rodomas ekrane. Yra naudojamos standartinis genealogijos anotavimas atskirti įvairias vardo dalis."
+msgstr "<b>Vardas</b> yra asmens pilnas vardas kaip jie patys rašytu ar kaip jis buvo įrašytas. Tai kaip jis bus rodomas ekrane. Yra naudojamos standartinis genealogijos anotavimas atskirti įvairias vardo dalis."
 
 #: help_text.php:296
 msgid "The <b>surname</b> field contains a name that is used for sorting and grouping.  It can be different to the individual’s actual surname which is always taken from the <b>name</b> field.  This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska).  If an individual needs to be listed under more than one surname, each name should be separated by a comma."
@@ -14822,7 +14822,7 @@ msgstr "Nerandu įrašo su ID"
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: library/WT/Gedcom/Code/Stat.php:86
 msgid "Uncleared: insufficient data"
-msgstr ""
+msgstr "Nepatvirtintas: neužteko duomenų"
 
 #: edit_changes.php:183 edit_changes.php:203
 msgid "Undo"
@@ -15594,7 +15594,7 @@ msgstr ""
 
 #: help_text.php:1196
 msgid "With this option, you will not receive any messages.  Even the administrator will not be able to reach you."
-msgstr ""
+msgstr "Su šiuo pasirinkimu, jūs negausite jokių pranešimų. Net administratorius negalės su jumis susisiekti."
 
 #: help_text.php:1192
 msgid "With this option, you will only receive email messages at the address you configured on your Account page.  The messaging system internal to <b>webtrees</b> will not be used at all, and there will never be any messages in the Message block on your personal My Page."
@@ -16313,12 +16313,12 @@ msgstr "uždaryti"
 #. I18N: Name of a theme.
 #: themes/clouds/theme.php:48
 msgid "clouds"
-msgstr ""
+msgstr "debesys"
 
 #. I18N: Name of a theme.
 #: themes/colors/theme.php:127
 msgid "colors"
-msgstr ""
+msgstr "spalvos"
 
 #: modules_v3/top10_surnames/module.php:162
 msgid "compact list"
@@ -18618,7 +18618,7 @@ msgstr "vidurnaktis"
 #. I18N: Name of a theme.
 #: themes/minimal/theme.php:30
 msgid "minimal"
-msgstr ""
+msgstr "minimalus"
 
 #: modules_v3/googlemap/module.php:330
 msgid "minimum"
@@ -19808,7 +19808,7 @@ msgstr "žmona"
 #. I18N: Name of a theme.
 #: themes/xenea/theme.php:30
 msgid "xenea"
-msgstr ""
+msgstr "xenea"
 
 #: timeline.php:130
 msgid "years"
