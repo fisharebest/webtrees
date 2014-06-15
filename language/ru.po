@@ -1440,7 +1440,7 @@ msgstr "Добавить в корзину"
 #: library/WT/Controller/Family.php:124
 #: library/WT/Controller/Individual.php:322
 #: library/WT/Controller/Media.php:98
- library/WT/Controller/Note.php:78
+#: library/WT/Controller/Note.php:78
 #: library/WT/Controller/Repository.php:83
 #: library/WT/Controller/Source.php:83 library/WT/MenuBar.php:526
 msgid "Add to favorites"
@@ -1499,7 +1499,7 @@ msgstr "Комментарий администратора"
 
 #: admin.php:33 library/WT/MenuBar.php:81
 #: themes/_administration/header.php:62
- themes/_administration/header.php:93
+#: themes/_administration/header.php:93
 msgid "Administration"
 msgstr "Администрирование"
 
@@ -2124,7 +2124,7 @@ msgstr "Вы действительно хотите удалить эту ис�
 #: includes/functions/functions_print_lists.php:1209
 #: library/WT/Controller/Individual.php:308
 #: library/WT/Controller/Media.php:84
- library/WT/Controller/Note.php:71
+#: library/WT/Controller/Note.php:71
 #: library/WT/Controller/Repository.php:69
 #: library/WT/Controller/Source.php:69
 #, php-format
@@ -3879,7 +3879,7 @@ msgstr "Коморы"
 #: includes/functions/functions_print.php:95
 #: library/WT/Controller/Compact.php:48
 #: library/WT/Controller/Fanchart.php:312
- library/WT/MenuBar.php:103
+#: library/WT/MenuBar.php:103
 msgid "Compact tree"
 msgstr "График бабочка"
 
@@ -4935,7 +4935,7 @@ msgstr "DejaVu"
 #: admin_site_access.php:283 admin_site_change.php:273
 #: admin_site_clean.php:124 admin_site_logs.php:240
 #: admin_trees_config.php:612
- admin_trees_manage.php:230
+#: admin_trees_manage.php:230
 #: includes/functions/functions_print_facts.php:179
 #: includes/functions/functions_print_facts.php:182
 #: includes/functions/functions_print_facts.php:694
@@ -4947,7 +4947,7 @@ msgstr "DejaVu"
 #: library/WT/Controller/Family.php:109
 #: library/WT/Controller/Individual.php:307
 #: library/WT/Controller/Media.php:83
- library/WT/Controller/Note.php:70
+#: library/WT/Controller/Note.php:70
 #: library/WT/Controller/Repository.php:68
 #: library/WT/Controller/Source.php:68 modules_v3/faq/module.php:396
 #: modules_v3/gedcom_news/module.php:119 modules_v3/googlemap/module.php:4378
@@ -5387,7 +5387,7 @@ msgstr "Эквадор"
 #: library/WT/Controller/Individual.php:247
 #: library/WT/Controller/Individual.php:266
 #: library/WT/Controller/Media.php:52
- library/WT/Controller/Note.php:51
+#: library/WT/Controller/Note.php:51
 #: library/WT/Controller/Repository.php:51
 #: library/WT/Controller/Source.php:51 modules_v3/faq/module.php:393
 #: modules_v3/gedcom_news/module.php:118 modules_v3/googlemap/module.php:4378
@@ -5438,7 +5438,7 @@ msgstr "Опции редактирования"
 #: help_text.php:1161 library/WT/Controller/Family.php:116
 #: library/WT/Controller/Individual.php:314
 #: library/WT/Controller/Media.php:90
- library/WT/Controller/Repository.php:75
+#: library/WT/Controller/Repository.php:75
 #: library/WT/Controller/Source.php:75
 msgid "Edit raw GEDCOM"
 msgstr "Редактировать запись в GEDCOM формате"
@@ -6003,11 +6003,11 @@ msgstr "Фолклендские острова"
 #: modules_v3/gedcom_stats/module.php:99
 #: modules_v3/gedcom_stats/module.php:314
 #: modules_v3/googlemap/module.php:2642
- modules_v3/html/module.php:186
+#: modules_v3/html/module.php:186
 #: modules_v3/relatives/module.php:32
- note.php:121 placelist.php:228
+#: note.php:121 placelist.php:228
 #: search.php:98 source.php:98
- statistics.php:65 statisticsplot.php:778
+#: statistics.php:65 statisticsplot.php:778
 msgid "Families"
 msgstr "Семьи"
 
@@ -6091,11 +6091,11 @@ msgstr "Семья %s"
 
 #: admin_site_change.php:267 admin_site_change.php:291
 #: admin_site_logs.php:234
- admin_site_logs.php:257
+#: admin_site_logs.php:257
 #: admin_trees_manage.php:181
- admin_trees_places.php:94 admin_users.php:227
+#: admin_trees_places.php:94 admin_users.php:227
 #: admin_users.php:431
- edit_changes.php:182
+#: edit_changes.php:182
 #: modules_v3/batch_update/admin_batch_update.php:58
 #: modules_v3/faq/module.php:352 modules_v3/googlemap/module.php:1504
 #: modules_v3/html/module.php:294 modules_v3/stories/module.php:330
@@ -6363,9 +6363,9 @@ msgstr "Файлы маркированные знаком %s необходим
 
 #: admin_site_change.php:271 admin_site_logs.php:238 find.php:186
 #: find.php:201
- find.php:219 find.php:236 find.php:253 find.php:271
+#: find.php:219 find.php:236 find.php:253 find.php:271
 #: find.php:288
- find.php:468 library/WT/I18N.php:685
+#: find.php:468 library/WT/I18N.php:685
 #: modules_v3/random_media/module.php:298
 msgid "Filter"
 msgstr "Фильтр"
@@ -7602,7 +7602,7 @@ msgstr "Страницы персон"
 
 #: admin_users.php:229 admin_users.php:433 edituser.php:135
 #: help_text.php:1201
- help_text.php:1362 help_text.php:1462
+#: help_text.php:1362 help_text.php:1462
 msgid "Individual record"
 msgstr "Персональная запись"
 
@@ -7623,11 +7623,11 @@ msgstr "Долгожитель"
 #: modules_v3/gedcom_stats/module.php:91
 #: modules_v3/gedcom_stats/module.php:298
 #: modules_v3/googlemap/module.php:2642
- modules_v3/html/module.php:170
+#: modules_v3/html/module.php:170
 #: modules_v3/random_media/module.php:262
- note.php:114 placelist.php:225
+#: note.php:114 placelist.php:225
 #: search.php:93 search.php:145 source.php:95
- statistics.php:63
+#: statistics.php:63
 #: statisticsplot.php:782
 msgid "Individuals"
 msgstr "Персоны"
@@ -9494,7 +9494,7 @@ msgstr "Бирма"
 #: modules_v3/change_report/report.xml:53
 #: modules_v3/change_report/report.xml:93
 #: modules_v3/death_report/report.xml:5
- modules_v3/death_report/report.xml:35
+#: modules_v3/death_report/report.xml:35
 #: modules_v3/fact_sources/report.xml:59
 #: modules_v3/fact_sources/report.xml:152
 #: modules_v3/fact_sources/report.xml:263
@@ -9921,9 +9921,9 @@ msgstr "Ночной"
 #: famlist.php:143 indilist.php:113 indilist.php:143 library/WT/Stats.php:733
 #: modules_v3/cemetery_report/report.xml:7
 #: modules_v3/clippings/module.php:196
- modules_v3/clippings/module.php:573
+#: modules_v3/clippings/module.php:573
 #: modules_v3/death_report/report.xml:10
- modules_v3/families/module.php:149
+#: modules_v3/families/module.php:149
 #: modules_v3/individual_ext_report/report.xml:11
 #: modules_v3/individual_report/report.xml:8
 #: modules_v3/individuals/module.php:148
@@ -10867,11 +10867,11 @@ msgstr "Места должны быть введены в соответств�
 
 #: modules_v3/random_media/module.php:130
 #: themes/_administration/header.php:31
- themes/clouds/header.php:34
+#: themes/clouds/header.php:34
 #: themes/colors/header.php:37
- themes/fab/header.php:34
+#: themes/fab/header.php:34
 #: themes/minimal/header.php:34
- themes/webtrees/header.php:35
+#: themes/webtrees/header.php:35
 #: themes/xenea/header.php:34
 msgid "Play"
 msgstr "Пуск"
@@ -11306,7 +11306,7 @@ msgstr "Пересортировать медиаобъекты"
 
 #: admin_users.php:366 admin_users.php:572 edituser.php:131
 #: help_text.php:1352
- login.php:303 login.php:402
+#: login.php:303 login.php:402
 msgid "Real name"
 msgstr "Настоящее имя"
 
@@ -11451,9 +11451,9 @@ msgstr "Связь: %s"
 
 #: includes/functions/functions_print_lists.php:290
 #: library/WT/MenuBar.php:108
- library/WT/MenuBar.php:226
+#: library/WT/MenuBar.php:226
 #: library/WT/MenuBar.php:251 relationship.php:70
- relationship.php:85
+#: relationship.php:85
 msgid "Relationships"
 msgstr "Родственные связи"
 
@@ -11867,19 +11867,19 @@ msgstr "Запечатывание отменено - разведены (мор
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:79
 #: modules_v3/descendancy/module.php:102
 #: modules_v3/descendancy/module.php:131
- modules_v3/families/module.php:141
+#: modules_v3/families/module.php:141
 #: modules_v3/individuals/module.php:141
- search.php:138 search.php:241
+#: search.php:138 search.php:241
 #: search.php:243 search.php:245
- search_advanced.php:293
+#: search_advanced.php:293
 #: themes/clouds/header.php:74
- themes/clouds/header.php:75
+#: themes/clouds/header.php:75
 #: themes/colors/header.php:115
- themes/colors/header.php:116
+#: themes/colors/header.php:116
 #: themes/fab/header.php:90
- themes/minimal/header.php:93
+#: themes/minimal/header.php:93
 #: themes/webtrees/header.php:79
- themes/webtrees/header.php:80
+#: themes/webtrees/header.php:80
 #: themes/xenea/header.php:72
 msgid "Search"
 msgstr "Поиск"
@@ -12247,7 +12247,7 @@ msgstr "Общее примечание содержит:"
 
 #: includes/functions/functions_print_lists.php:932
 #: library/WT/MenuBar.php:310
- notelist.php:29 notelist.php:33 search.php:108
+#: notelist.php:29 notelist.php:33 search.php:108
 msgid "Shared notes"
 msgstr "Общие примечания"
 
@@ -13006,7 +13006,7 @@ msgstr "Тип источника"
 #: modules_v3/lightbox/module.php:126 modules_v3/sources_tab/module.php:34
 #: note.php:135 repo.php:92 search.php:103 sourcelist.php:29
 #: sourcelist.php:33
- statistics.php:347 statistics.php:384
+#: statistics.php:347 statistics.php:384
 msgid "Sources"
 msgstr "Источники"
 
@@ -13152,11 +13152,11 @@ msgstr "Стокгольм, Швеция"
 
 #: modules_v3/random_media/module.php:130
 #: themes/_administration/header.php:31
- themes/clouds/header.php:34
+#: themes/clouds/header.php:34
 #: themes/colors/header.php:37
- themes/fab/header.php:34
+#: themes/fab/header.php:34
 #: themes/minimal/header.php:34
- themes/webtrees/header.php:35
+#: themes/webtrees/header.php:35
 #: themes/xenea/header.php:34
 msgid "Stop"
 msgstr "Стоп"
@@ -15170,7 +15170,7 @@ msgstr "Использовать эти координаты"
 
 #: admin_site_change.php:264 admin_site_change.php:290
 #: admin_site_logs.php:231
- admin_site_logs.php:256 edit_changes.php:180
+#: admin_site_logs.php:256 edit_changes.php:180
 msgid "User"
 msgstr "Пользователь"
 
@@ -16964,7 +16964,7 @@ msgstr "от"
 #. I18N: from 1700 interval 50 years
 #: statistics.php:663 statistics.php:665 statistics.php:667
 #: statistics.php:669
- statistics.php:671 statistics.php:673
+#: statistics.php:671 statistics.php:673
 #, php-format
 msgid "from %1$s interval %2$s year"
 msgid_plural "from %1$s interval %2$s years"
@@ -18567,7 +18567,7 @@ msgstr "распознано как %s (%s)"
 
 #: statistics.php:589 statistics.php:591 statistics.php:593
 #: statistics.php:600
- statistics.php:602
+#: statistics.php:602
 #, php-format
 msgid "interval %s year"
 msgid_plural "interval %s years"

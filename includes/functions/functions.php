@@ -1740,14 +1740,20 @@ function get_relationship_name_from_path($path, WT_Individual $person1=null, WT_
  */
 function get_theme_names() {
 	static $themes;
-	if ($themes===null) {
+
+	if ($themes === null) {
 		$themes = array();
 		$d = dir(WT_ROOT.WT_THEMES_DIR);
-		while (false !== ($entry = $d->read())) {
-			if ($entry[0]!='.' && $entry[0]!='_' && is_dir(WT_ROOT.WT_THEMES_DIR.$entry) && file_exists(WT_ROOT.WT_THEMES_DIR.$entry.'/theme.php')) {
-				$themefile = implode('', file(WT_ROOT.WT_THEMES_DIR.$entry.'/theme.php'));
+		while (false !== ($folder = $d->read())) {
+			if ($folder[0] != '.' && $folder[0] != '_' && is_dir(WT_ROOT.WT_THEMES_DIR.$folder) && file_exists(WT_ROOT.WT_THEMES_DIR.$folder.'/theme.php')) {
+				$themefile = implode('', file(WT_ROOT.WT_THEMES_DIR.$folder.'/theme.php'));
 				if (preg_match('/theme_name\s*=\s*"(.*)";/', $themefile, $match)) {
-					$themes[WT_I18N::translate('%s', $match[1])] = $entry;
+					$theme_name = WT_I18N::translate($match[1]);
+					if (array_key_exists($theme_name, $themes)) {
+						throw new Exception('More than one theme with the same name: ' . $theme_name);
+					} else {
+						$themes[$theme_name] = $folder;
+					}
 				}
 			}
 		}
