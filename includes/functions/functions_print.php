@@ -415,13 +415,8 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false) {
 			list($ttl, $html) = explode("\n", $html, 2);
 		} else {
 			$html = WT_Filter::formatText($note->getNote(), $WT_TREE);
-			// strip out anything other than whitespace, letters & numbers
-			$tmp = preg_replace("/[^\s|\p{L}|\p{N}]+/u", '', strip_tags($html));
 			// truncate at end of 1st line or TITLE_CUTOFF whichever is the shortest
-			$ttl = current(explode("\n", wordwrap($tmp, TITLE_CUTOFF, "...\n")));
-			// Note the title text, hasn't been removed from $html,
-			// therefore the full markdown result will be displayed
-			// when the the link is expanded
+			$ttl = current(explode("\n", wordwrap(strip_tags($html), TITLE_CUTOFF, "...\n")));
 		}
 		$title = sprintf("<a title='%s' onclick=\"return edit_note('%s');return false;\" href='#'>%s</a>", WT_I18N::translate('Edit'), $note->getXref(), $ttl);
 	} else {
