@@ -3729,7 +3729,7 @@ msgstr "Riješen ali neuspoređen"
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:97
 #, php-format
 msgid "Click %s to choose individual as head of family."
-msgstr ""
+msgstr "Klik %s za izbor osobe kao glavu obitelji."
 
 #: edit_interface.php:1700
 msgid "Click a row, then drag-and-drop to re-order media "
@@ -3741,7 +3741,7 @@ msgstr ""
 
 #: modules_v3/faq/module.php:282
 msgid "Click here to Add, Edit, or Delete"
-msgstr ""
+msgstr "Klikni ovdje za dodavanje, izmjenu ili brisanje"
 
 #: individual.php:267
 msgid "Click here to open or close the sidebar"
@@ -3792,7 +3792,7 @@ msgstr ""
 
 #: library/WT/Stats.php:3844
 msgid "Cocos (Keeling) Islands"
-msgstr "איי קוקוס"
+msgstr ""
 
 #. I18N: The name of a colour-scheme
 #: themes/colors/theme.php:81
@@ -3806,7 +3806,7 @@ msgstr "Cold Day"
 
 #: library/WT/Stats.php:3854
 msgid "Colombia"
-msgstr "קולומביה"
+msgstr ""
 
 #: library/WT/Gedcom/Code/Temp.php:81
 msgid "Colonia Juarez, Mexico"
@@ -3850,7 +3850,7 @@ msgstr ""
 
 #: library/WT/Stats.php:3855
 msgid "Comoros"
-msgstr "קומורו"
+msgstr ""
 
 #: includes/functions/functions_print.php:97
 #: library/WT/Controller/Compact.php:43 library/WT/Controller/Fanchart.php:309
@@ -3924,14 +3924,14 @@ msgstr "Sadrži"
 
 #: modules_v3/html/help_text.php:31 modules_v3/html/module.php:308
 msgid "Content"
-msgstr ""
+msgstr "Sadržaj"
 
 #: modules_v3/clippings/module.php:92 modules_v3/clippings/module.php:115
 #: modules_v3/clippings/module.php:129 modules_v3/clippings/module.php:501
 #: modules_v3/clippings/module.php:524 modules_v3/clippings/module.php:537
 #: modules_v3/googlemap/module.php:4142
 msgid "Continue Adding"
-msgstr ""
+msgstr "Nastavi dodavati"
 
 #. I18N: gedcom tag CONT
 #: library/WT/Gedcom/Tag.php:151
@@ -3940,7 +3940,7 @@ msgstr "Nastavljeno"
 
 #: help_text.php:1493
 msgid "Convert from UTF-8 to ANSI"
-msgstr ""
+msgstr "Prevedi sa UTF-8 u ANSI"
 
 #: admin_trees_download.php:123 modules_v3/clippings/module.php:209
 #: modules_v3/clippings/module.php:588
@@ -3961,12 +3961,12 @@ msgstr ""
 #: includes/functions/functions_print_facts.php:900
 #: includes/functions/functions_print_facts.php:1037
 msgid "Copy"
-msgstr ""
+msgstr "Kopiraj"
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:421
 msgid "Copy files…"
-msgstr ""
+msgstr "Kopiraj datoteke"
 
 #: admin_site_upgrade.php:392
 #, php-format
@@ -4005,7 +4005,7 @@ msgstr "Broj"
 
 #: modules_v3/googlemap/module.php:602
 msgid "Countries"
-msgstr ""
+msgstr "Države"
 
 #. I18N: gedcom tag CTRY
 #: library/WT/Gedcom/Tag.php:161
@@ -4026,16 +4026,16 @@ msgstr ""
 
 #: admin_media.php:298
 msgid "Create"
-msgstr ""
+msgstr "Kreiraj"
 
 #: admin_trees_manage.php:246 help_text.php:1067
 msgid "Create a new family tree"
-msgstr ""
+msgstr "Kreiraj novo obiteljsko stablo"
 
 #. I18N: An individual that is not linked to any other record
 #: admin_site_other.php:48 edit_interface.php:718
 msgid "Create a new individual"
-msgstr ""
+msgstr "Kreiraj novu osobu"
 
 #. I18N: A media object that is not linked to any other record
 #: addmedia.php:70 addmedia.php:387 admin_site_other.php:69
@@ -4045,11 +4045,11 @@ msgstr ""
 #. I18N: A note that is not linked to any other record
 #: admin_site_other.php:55
 msgid "Create a new note"
-msgstr ""
+msgstr "Kreiraj novu bilješku"
 
 #: admin_site_access.php:300
 msgid "Create a new rule"
-msgstr ""
+msgstr "Kreiraj novo pravilo"
 
 #: edit_interface.php:1314 edit_interface.php:1350
 #: includes/functions/functions_edit.php:324
@@ -4074,7 +4074,7 @@ msgstr "Kreiraj mjesto čuvanja"
 
 #: admin_users.php:480
 msgid "Create user"
-msgstr ""
+msgstr "Kreiraj korisnika"
 
 #: statistics.php:426
 msgid "Create your own chart"
