@@ -129,13 +129,13 @@ msgstr ""
 #: admin_trees_check.php:159
 #, php-format
 msgid "%1$s does not exist."
-msgstr ""
+msgstr "%1$s ne postoji"
 
 #. I18N: placeholders are GEDCOM IDs, such as R123
 #: admin_trees_check.php:153
 #, php-format
 msgid "%1$s does not exist.  Did you mean %2$s?"
-msgstr ""
+msgstr "%1$s ne postoji. Da li ste mislili %2$s?"
 
 #. I18N: %1$s and %2$s are internal ID numbers such as R123
 #: admin_trees_check.php:190
@@ -673,7 +673,7 @@ msgstr "<center><b>Dobrodošli na genološku web stranicu</b></center><br>Pristu
 
 #: login.php:153
 msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved."
-msgstr "<center><b>Dobrodošli na gednolšku web stranicu</b></center><br>Pristup stranici je dopušten  <u>samo članovima obitelji</u>.<br><br>Ako imate korisnički račun možete se prijaviti na ovoj stranici. Ako nemate račun možete ga zatražiti pomoću linka ispod<br><br>Nakon provjere vaše prijave administrator će odobriti ili odbiti vašu prijavu. Primiti ćete obavijest e-mailom nakon pregleda prijave."
+msgstr "<center><b>Dobrodošli na genolšku web stranicu</b></center><br>Pristup stranici je dopušten  <u>samo članovima obitelji</u>.<br><br>Ako imate korisnički račun možete se prijaviti na ovoj stranici. Ako nemate račun možete ga zatražiti pomoću linka ispod<br><br>Nakon provjere vaše prijave administrator će odobriti ili odbiti vašu prijavu. Primiti ćete obavijest e-mailom nakon pregleda prijave."
 
 #: login.php:147
 msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved."
@@ -753,32 +753,32 @@ msgstr ""
 #. I18N: Description of the “On This Day” module
 #: modules_v3/todays_events/module.php:37
 msgid "A list of the anniversaries that occur today."
-msgstr ""
+msgstr "Lista godišnjica na današnji dan"
 
 #. I18N: Description of the “Upcoming events” module
 #: modules_v3/upcoming_events/module.php:37
 msgid "A list of the anniversaries that will occur in the near future."
-msgstr ""
+msgstr "Lista godišnjca koja će biti uskoro"
 
 #. I18N: Description of the “Top given names” module
 #: modules_v3/top10_givnnames/module.php:37
 msgid "A list of the most popular given names."
-msgstr ""
+msgstr "Lista najpopularnijih imena."
 
 #. I18N: Description of the “Top surnames” module
 #: modules_v3/top10_surnames/module.php:37
 msgid "A list of the most popular surnames."
-msgstr ""
+msgstr "Lista najpopularnijih prezimena."
 
 #. I18N: Description of the “Most visited pages” module
 #: modules_v3/top10_pageviews/module.php:37
 msgid "A list of the pages that have been viewed the most number of times."
-msgstr ""
+msgstr "Lista načešće viđenih stranica"
 
 #. I18N: Description of the “Who is online” module
 #: modules_v3/logged_in/module.php:37
 msgid "A list of users and visitors who are currently online."
-msgstr ""
+msgstr "Lista korisnika i posjetitelja koji su trenutno online"
 
 #: help_text.php:309
 msgid "A media object is a record in the family tree which contains information about a media file.  This information may include a title, a copyright notice, a transcript, privacy restrictions, etc.  The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
@@ -1173,7 +1173,7 @@ msgstr ""
 
 #: modules_v3/clippings/module.php:150 modules_v3/clippings/module.php:233
 msgid "Add Individual By ID"
-msgstr ""
+msgstr "Dodaj osobu ID-om"
 
 #: search_advanced.php:290
 msgid "Add More Fields"
@@ -1181,7 +1181,7 @@ msgstr "Dodaj još polja"
 
 #: modules_v3/gedcom_news/module.php:125
 msgid "Add a News article"
-msgstr ""
+msgstr "Dodaj članak u novosti"
 
 #: edit_interface.php:563 modules_v3/relatives/module.php:373
 msgid "Add a child to create a one-parent family"
@@ -1194,16 +1194,16 @@ msgstr "Dodaj dijete ovoj porodici"
 
 #: edit_interface.php:77 help_text.php:1058
 msgid "Add a fact"
-msgstr ""
+msgstr "Dodaj činjenicu"
 
 #: modules_v3/relatives/module.php:127
 msgid "Add a husband to this family"
-msgstr ""
+msgstr "Dodaj muža ovoj obitelji"
 
 #: edit_interface.php:1050 edit_interface.php:1122
 #: modules_v3/relatives/module.php:367
 msgid "Add a husband using an existing individual"
-msgstr "Dodaj muza koristeci postojecu osobu"
+msgstr "Dodaj muža koristeći postojeću osobu"
 
 #: modules_v3/user_blog/module.php:95
 msgid "Add a new Journal entry"
@@ -1220,11 +1220,11 @@ msgstr ""
 
 #: modules_v3/relatives/module.php:250
 msgid "Add a new brother or sister"
-msgstr ""
+msgstr "Dodaj brata ili sestru"
 
 #: edit_interface.php:484
 msgid "Add a new child"
-msgstr ""
+msgstr "Dodaj dijete"
 
 #: edit_interface.php:643 family.php:117 modules_v3/relatives/module.php:297
 msgid "Add a new father"
@@ -1263,7 +1263,7 @@ msgstr "Dodaj novu bilješku"
 
 #: includes/functions/functions_edit.php:892
 msgid "Add a new restriction"
-msgstr ""
+msgstr "Dodaj ograničenje"
 
 #: help_text.php:1082 help_text.php:1148
 #: includes/functions/functions_edit.php:869
@@ -1273,7 +1273,7 @@ msgstr "Dodaj novu zajedničku bilješku"
 
 #: modules_v3/relatives/module.php:246
 msgid "Add a new son or daughter"
-msgstr ""
+msgstr "Dodaj sina ili kćer"
 
 #: help_text.php:1088 help_text.php:1156
 #: includes/functions/functions_edit.php:805
@@ -1314,7 +1314,7 @@ msgstr "Dodaj suprugu ovoj porodici"
 #: edit_interface.php:1053 edit_interface.php:1124
 #: modules_v3/relatives/module.php:355
 msgid "Add a wife using an existing individual"
-msgstr "Dodaj suprugu koristeci postojecu osobu"
+msgstr "Dodaj suprugu koristeći postojeću osobu"
 
 #: lifespan.php:145 timeline.php:312
 msgid "Add another individual to the chart"
@@ -1322,7 +1322,7 @@ msgstr "Dodaj novu osobu"
 
 #: modules_v3/clippings/help_text.php:31
 msgid "Add by ID"
-msgstr ""
+msgstr "Dodaj pomoću ID-a"
 
 #: help_text.php:1061 includes/functions/functions_print.php:892
 msgid "Add from clipboard"
@@ -1334,19 +1334,19 @@ msgstr "Dodaj supruga"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:39
 msgid "Add individuals"
-msgstr ""
+msgstr "Dodaj osobu"
 
 #: modules_v3/clippings/module.php:88 modules_v3/clippings/module.php:497
 msgid "Add just this family record."
-msgstr ""
+msgstr "Dodaj samo ovaj obiteljski zapis"
 
 #: modules_v3/clippings/module.php:106 modules_v3/clippings/module.php:514
 msgid "Add just this individual."
-msgstr ""
+msgstr "Dodaj samo ovu osobu"
 
 #: modules_v3/clippings/module.php:127 modules_v3/clippings/module.php:535
 msgid "Add just this source."
-msgstr ""
+msgstr "Dodaj samo ovaj izvor"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:156
 msgid "Add links"
@@ -1388,7 +1388,7 @@ msgstr ""
 #: modules_v3/stories/module.php:127 modules_v3/stories/module.php:214
 #: modules_v3/stories/module.php:337
 msgid "Add story"
-msgstr ""
+msgstr "Dodaj priću"
 
 #: admin_trees_download.php:129 modules_v3/clippings/module.php:212
 #: modules_v3/clippings/module.php:592
@@ -1463,12 +1463,12 @@ msgstr "Dodaj/uredi vijesti"
 
 #: admin_site_merge.php:196 admin_site_merge.php:202
 msgid "Adding"
-msgstr ""
+msgstr "Dodavanje"
 
 #. I18N: gedcom tag ADDR
 #: library/WT/Gedcom/Tag.php:94
 msgid "Address"
-msgstr "כתובת"
+msgstr "Adresa"
 
 #: library/WT/Gedcom/Tag.php:95
 msgid "Address line 1"
@@ -1501,11 +1501,11 @@ msgstr "Administrator"
 
 #: setup.php:398 setup.php:400
 msgid "Administrator account"
-msgstr ""
+msgstr "Administratski račun"
 
 #: admin.php:140
 msgid "Administrators"
-msgstr ""
+msgstr "Administratori"
 
 #: help_text.php:1284
 msgid "Administrators sometimes need to clean up and correct the data submitted by users.  For example, they might need to correct the PLAC location to include the country.  When Administrators make such corrections, information about the original change is normally replaced.  This may not be desirable.<br><br>When this option is selected, <b>webtrees</b> will retain the original Change information instead of replacing it with that of the current session.  With this option selected, Administrators also have the ability to modify or delete the information associated with the original CHAN tag."
@@ -1655,11 +1655,11 @@ msgstr ""
 
 #: modules_v3/googlemap/module.php:298
 msgid "Advanced"
-msgstr ""
+msgstr "Napredno"
 
 #: admin_trees_config.php:1227
 msgid "Advanced fact settings"
-msgstr ""
+msgstr "Napredne postavke činjenica"
 
 #: admin_trees_config.php:1232 help_text.php:406
 msgid "Advanced name facts"
@@ -1676,7 +1676,7 @@ msgstr "Napredna pretraga"
 
 #: library/WT/Stats.php:3802
 msgid "Afghanistan"
-msgstr "אפגניסטן"
+msgstr ""
 
 #: statistics.php:642
 msgid "Africa"
@@ -1754,7 +1754,7 @@ msgstr "Dob u odnosu na smrt"
 #. I18N: gedcom tag AGNC
 #: library/WT/Gedcom/Tag.php:102
 msgid "Agency"
-msgstr "סוכנות"
+msgstr ""
 
 #: library/WT/Stats.php:3805
 msgid "Aland Islands"
@@ -1762,7 +1762,7 @@ msgstr "Alandski otoci"
 
 #: library/WT/Stats.php:3806
 msgid "Albania"
-msgstr "אלבניה"
+msgstr ""
 
 #. I18N: Name of a module
 #: modules_v3/lightbox/module.php:34
@@ -1775,7 +1775,7 @@ msgstr ""
 
 #: library/WT/Stats.php:3869
 msgid "Algeria"
-msgstr "אלג'יריה"
+msgstr "Alžir"
 
 #. I18N: gedcom tag ALIA
 #: library/WT/Gedcom/Tag.php:103
@@ -1784,7 +1784,7 @@ msgstr "Nadimak"
 
 #: includes/functions/functions_print_lists.php:88
 msgid "Alive"
-msgstr ""
+msgstr "Živ"
 
 #. I18N: listbox option, e.g. “10,25,50,100,all”
 #: calendar.php:230 famlist.php:69 famlist.php:75 famlist.php:81
@@ -1817,11 +1817,11 @@ msgstr ""
 
 #: admin_trees_config.php:1137 help_text.php:505
 msgid "All family facts"
-msgstr ""
+msgstr "Sve obiteljske činjenice"
 
 #: login.php:405
 msgid "All fields must be completed."
-msgstr ""
+msgstr "Sva polja moraju biti popunjena"
 
 #: admin_site_upgrade.php:398
 msgid "All files have read and write permission."
@@ -1829,12 +1829,12 @@ msgstr ""
 
 #: admin_trees_config.php:1100 help_text.php:592
 msgid "All individual facts"
-msgstr ""
+msgstr "Sve činjenice osobe"
 
 #: calendar.php:189 calendar.php:203 calendar.php:204 calendar.php:207
 #: calendar.php:208 calendar.php:441
 msgid "All individuals"
-msgstr ""
+msgstr "Sve osobe"
 
 #: admin_trees_config.php:1203 help_text.php:798
 msgid "All repository facts"
@@ -1842,7 +1842,7 @@ msgstr ""
 
 #: admin_trees_config.php:1174 help_text.php:909
 msgid "All source facts"
-msgstr ""
+msgstr "Svi izvori činjenica"
 
 #. I18N: Description of the “CKEditor” module.  WYSIWYG = “what you see is what you get”
 #: modules_v3/ckeditor/module.php:39
@@ -1884,7 +1884,7 @@ msgstr "Znan kao"
 
 #: library/WT/Stats.php:3812
 msgid "American Samoa"
-msgstr "סמואה האמריקאית"
+msgstr ""
 
 #. I18N: Description of the “Album” module
 #: modules_v3/lightbox/module.php:39
@@ -1950,11 +1950,11 @@ msgstr "Preci"
 #. I18N: gedcom tag ANCI
 #: library/WT/Gedcom/Tag.php:105
 msgid "Ancestors interest"
-msgstr ""
+msgstr "Interes predaka"
 
 #: modules_v3/ahnentafel_report/report.xml:52
 msgid "Ancestors of "
-msgstr ""
+msgstr "Predak od "
 
 #. I18N: %s is an individual’s name
 #: library/WT/Controller/Ancestry.php:73 library/WT/Controller/Ancestry.php:95
@@ -1973,15 +1973,15 @@ msgstr ""
 
 #: library/WT/Stats.php:3807
 msgid "Andorra"
-msgstr "אנדורה"
+msgstr ""
 
 #: library/WT/Stats.php:3803
 msgid "Angola"
-msgstr "אנגולה"
+msgstr ""
 
 #: library/WT/Stats.php:3804
 msgid "Anguilla"
-msgstr "אנגווילה"
+msgstr ""
 
 #: includes/functions/functions_print_lists.php:210
 #: includes/functions/functions_print_lists.php:216
@@ -1993,7 +1993,7 @@ msgstr "Godišnjica"
 
 #: calendar.php:31
 msgid "Anniversary calendar"
-msgstr ""
+msgstr "Kalendar godišnjica"
 
 #. I18N: gedcom tag ANUL
 #: library/WT/Gedcom/Tag.php:106
@@ -2006,11 +2006,11 @@ msgstr "Odgovor"
 
 #: library/WT/Stats.php:3813
 msgid "Antarctica"
-msgstr "אנטארקטיקה"
+msgstr ""
 
 #: library/WT/Stats.php:3815
 msgid "Antigua and Barbuda"
-msgstr "אנטיגואה וברבודה"
+msgstr ""
 
 #: library/WT/Gedcom/Code/Temp.php:157
 msgid "Apia, Samoa"
@@ -2025,7 +2025,7 @@ msgstr ""
 #: modules_v3/clippings/module.php:194 modules_v3/clippings/module.php:202
 #: modules_v3/clippings/module.php:571 modules_v3/clippings/module.php:580
 msgid "Apply privacy settings?"
-msgstr "Postavi postavke privatnosti"
+msgstr "Postavi postavke privatnosti?"
 
 #: save.php:255
 #, php-format
@@ -2038,7 +2038,7 @@ msgstr "Odobri sve promjene"
 
 #: admin_users.php:578
 msgid "Approved"
-msgstr ""
+msgstr "Odobreno"
 
 #: admin_users.php:374
 msgid "Approved by administrator"
@@ -2129,7 +2129,7 @@ msgstr ""
 
 #: library/WT/Stats.php:3810
 msgid "Argentina"
-msgstr "ארגנטינה"
+msgstr ""
 
 #: modules_v3/ahnentafel_report/report.xml:14
 #: modules_v3/bdm_report/report.xml:13 modules_v3/birth_report/report.xml:11
@@ -2152,11 +2152,11 @@ msgstr ""
 
 #: library/WT/Stats.php:3811
 msgid "Armenia"
-msgstr "ארמניה"
+msgstr ""
 
 #: library/WT/Stats.php:3800
 msgid "Aruba"
-msgstr "ארובה"
+msgstr ""
 
 #: modules_v3/html/help_text.php:32
 msgid "As well as using the toolbar to apply HTML formatting, you can insert database fields which are updated automatically.  These special fields are marked with <b>#</b> characters.  For example <b>#totalFamilies#</b> will be replaced with the actual number of families in the database.  Advanced users may wish to apply CSS classes to their text, so that the formatting matches the currently selected theme."
@@ -2175,7 +2175,7 @@ msgstr "Azija"
 #. I18N: gedcom tag _ASSO
 #: library/WT/Gedcom/Tag.php:107 library/WT/Gedcom/Tag.php:379
 msgid "Associate"
-msgstr "שותפים"
+msgstr ""
 
 #: edit_interface.php:1207 help_text.php:1174
 msgid "Associate events with this source"
@@ -2191,7 +2191,7 @@ msgstr ""
 
 #: library/WT/Stats.php:4003
 msgid "At Sea"
-msgstr "בים"
+msgstr ""
 
 #: library/WT/Gedcom/Code/Temp.php:65
 msgid "Atlanta, Georgia"
@@ -2204,7 +2204,7 @@ msgstr "Staratelj"
 #: library/WT/Gedcom/Code/Rela.php:45
 msgctxt "FEMALE"
 msgid "Attendant"
-msgstr "Staratelj"
+msgstr "Starateljica"
 
 #: library/WT/Gedcom/Code/Rela.php:44
 msgctxt "MALE"
@@ -2213,17 +2213,17 @@ msgstr "Staratelj"
 
 #: library/WT/Gedcom/Code/Rela.php:52
 msgid "Attending"
-msgstr "Staratelj"
+msgstr "Sudjelovanje"
 
 #: library/WT/Gedcom/Code/Rela.php:51
 msgctxt "FEMALE"
 msgid "Attending"
-msgstr "Staratelj"
+msgstr "Sudionica"
 
 #: library/WT/Gedcom/Code/Rela.php:50
 msgctxt "MALE"
 msgid "Attending"
-msgstr ""
+msgstr "Sudionik"
 
 #: library/WT/Gedcom/Tag.php:878
 msgid "Audio"
@@ -2256,11 +2256,11 @@ msgstr "Kolovoz"
 
 #: library/WT/Stats.php:3816
 msgid "Australia"
-msgstr "אוסטרליה"
+msgstr ""
 
 #: library/WT/Stats.php:3817
 msgid "Austria"
-msgstr "אוסטריה"
+msgstr ""
 
 #. I18N: gedcom tag AUTH
 #: library/WT/Gedcom/Tag.php:108
@@ -2270,7 +2270,7 @@ msgstr "Autor"
 #. I18N: gedcom tag CHAN:_WT_USER
 #: library/WT/Gedcom/Tag.php:140
 msgid "Author of last change"
-msgstr ""
+msgstr "Autor zadnje pomjene"
 
 #: admin_users.php:200 admin_users.php:386 help_text.php:1451
 msgid "Automatically approve changes made by this user"
@@ -2373,11 +2373,11 @@ msgstr ""
 
 #: library/WT/Stats.php:3818
 msgid "Azerbaijan"
-msgstr "אזרבייג'אן"
+msgstr ""
 
 #: library/WT/Stats.php:3819
 msgid "Azores"
-msgstr "אזוריים"
+msgstr ""
 
 #: library/WT/Date/Jalali.php:122
 msgctxt "Abbreviation for Persian month: Bahman"
@@ -2386,7 +2386,7 @@ msgstr ""
 
 #: library/WT/Stats.php:3827
 msgid "Bahamas"
-msgstr "בהאמה"
+msgstr ""
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:68
@@ -2414,61 +2414,61 @@ msgstr ""
 
 #: library/WT/Stats.php:3826
 msgid "Bahrain"
-msgstr "בחריין"
+msgstr ""
 
 #: library/WT/Stats.php:3824
 msgid "Bangladesh"
-msgstr "בנגלדש"
+msgstr ""
 
 #. I18N: gedcom tag BAPM
 #: library/WT/Gedcom/Tag.php:112 modules_v3/missing_facts_report/report.xml:13
 msgid "Baptism"
-msgstr ""
+msgstr "Krštenje"
 
 #: library/WT/Gedcom/Tag.php:412
 msgid "Baptism of a brother"
-msgstr ""
+msgstr "Krštenje brata"
 
 #: library/WT/Gedcom/Tag.php:384
 msgid "Baptism of a child"
-msgstr ""
+msgstr "Krštenje djeteta"
 
 #: library/WT/Gedcom/Tag.php:383
 msgid "Baptism of a daughter"
-msgstr ""
+msgstr "Krštenje kćeri"
 
 #: library/WT/Gedcom/Tag.php:390 library/WT/Gedcom/Tag.php:396
 #: library/WT/Gedcom/Tag.php:402
 msgid "Baptism of a grandchild"
-msgstr ""
+msgstr "Krštenje unuka"
 
 #: library/WT/Gedcom/Tag.php:389
 msgid "Baptism of a granddaughter"
-msgstr ""
+msgstr "Krštenje unuke"
 
 #: library/WT/Gedcom/Tag.php:395
 msgctxt "daughter’s daughter"
 msgid "Baptism of a granddaughter"
-msgstr ""
+msgstr "Krštenje unuke"
 
 #: library/WT/Gedcom/Tag.php:401
 msgctxt "son’s daughter"
 msgid "Baptism of a granddaughter"
-msgstr ""
+msgstr "Krštenje unuke"
 
 #: library/WT/Gedcom/Tag.php:388
 msgid "Baptism of a grandson"
-msgstr ""
+msgstr "Krštenje unuka"
 
 #: library/WT/Gedcom/Tag.php:394
 msgctxt "daughter’s son"
 msgid "Baptism of a grandson"
-msgstr ""
+msgstr "Krštenje unuka"
 
 #: library/WT/Gedcom/Tag.php:400
 msgctxt "son’s son"
 msgid "Baptism of a grandson"
-msgstr ""
+msgstr "Krštenje unuka"
 
 #: library/WT/Gedcom/Tag.php:406
 msgid "Baptism of a half-brother"
@@ -2488,11 +2488,11 @@ msgstr ""
 
 #: library/WT/Gedcom/Tag.php:413
 msgid "Baptism of a sister"
-msgstr ""
+msgstr "Krštenje sestre"
 
 #: library/WT/Gedcom/Tag.php:382
 msgid "Baptism of a son"
-msgstr ""
+msgstr "Krštenje sina"
 
 #. I18N: gedcom tag BARM
 #: library/WT/Gedcom/Tag.php:115 modules_v3/missing_facts_report/report.xml:14
@@ -2543,7 +2543,7 @@ msgstr "Počinje sa"
 
 #: library/WT/Stats.php:3829
 msgid "Belarus"
-msgstr "בלארוס"
+msgstr ""
 
 #. I18N: The name of a colour-scheme
 #: themes/colors/theme.php:78
@@ -2552,19 +2552,19 @@ msgstr "Belgian Chocolate"
 
 #: library/WT/Stats.php:3821
 msgid "Belgium"
-msgstr "בלגיה"
+msgstr ""
 
 #: library/WT/Stats.php:3830
 msgid "Belize"
-msgstr "בליז"
+msgstr ""
 
 #: library/WT/Stats.php:3822
 msgid "Benin"
-msgstr "בנין"
+msgstr ""
 
 #: library/WT/Stats.php:3831
 msgid "Bermuda"
-msgstr "ברמודה"
+msgstr ""
 
 #: library/WT/Gedcom/Code/Temp.php:174
 msgid "Bern, Switzerland"
@@ -2576,7 +2576,7 @@ msgstr "Kum"
 
 #: library/WT/Stats.php:3836
 msgid "Bhutan"
-msgstr "בהוטן"
+msgstr ""
 
 #. I18N: gedcom tag _BIBL
 #: library/WT/Gedcom/Tag.php:416
@@ -2726,7 +2726,7 @@ msgstr "Rođenje"
 #: library/WT/Gedcom/Code/Pedi.php:37
 msgctxt "Female pedigree"
 msgid "Birth"
-msgstr "rođena kao"
+msgstr "Rođena kao"
 
 #: library/WT/Gedcom/Code/Pedi.php:36
 msgctxt "Male pedigree"
@@ -2829,7 +2829,7 @@ msgstr "Mjesta rođenja"
 
 #: modules_v3/googlemap/module.php:1296
 msgid "Birth:"
-msgstr "Rođenje"
+msgstr "Rođenje:"
 
 #. I18N: Name of a module/report
 #: modules_v3/birth_report/module.php:33 modules_v3/birth_report/report.xml:3
@@ -2848,7 +2848,7 @@ msgstr ""
 #. I18N: gedcom tag BLES
 #: library/WT/Gedcom/Tag.php:124
 msgid "Blessing"
-msgstr ""
+msgstr "Blagosov"
 
 #: admin_module_blocks.php:54 admin_modules.php:127
 msgid "Block"
@@ -2870,7 +2870,7 @@ msgstr "Blue Marine"
 
 #: message.php:138
 msgid "Body:"
-msgstr "Sadržaj"
+msgstr "Sadržaj:"
 
 #: library/WT/Gedcom/Code/Temp.php:70
 msgid "Bogota, Colombia"
@@ -2882,7 +2882,7 @@ msgstr ""
 
 #: library/WT/Stats.php:3832
 msgid "Bolivia"
-msgstr "בוליביה"
+msgstr ""
 
 #: library/WT/Gedcom/Tag.php:879
 msgid "Book"
@@ -2899,7 +2899,7 @@ msgstr ""
 
 #: library/WT/Stats.php:3828
 msgid "Bosnia and Herzegovina"
-msgstr "בוסניה הרצגובינה"
+msgstr ""
 
 #: library/WT/Gedcom/Code/Temp.php:72
 msgid "Boston, Massachusetts"
@@ -2907,15 +2907,15 @@ msgstr ""
 
 #: includes/functions/functions_print_lists.php:491
 msgid "Both alive"
-msgstr ""
+msgstr "Oboje živi"
 
 #: includes/functions/functions_print_lists.php:494
 msgid "Both dead"
-msgstr ""
+msgstr "Oboje mrtvi"
 
 #: library/WT/Stats.php:3838
 msgid "Botswana"
-msgstr "בוטסואנה"
+msgstr ""
 
 #: library/WT/Gedcom/Code/Temp.php:73
 msgid "Bountiful, Utah"
@@ -2923,7 +2923,7 @@ msgstr ""
 
 #: library/WT/Stats.php:3837
 msgid "Bouvet Island"
-msgstr "אי בווה"
+msgstr ""
 
 #: ancestry.php:52 descendancy.php:49 familybook.php:87 hourglass.php:80
 msgid "Box width"
@@ -2938,11 +2938,11 @@ msgstr "Grane"
 #: library/WT/Controller/Branches.php:36
 #, php-format
 msgid "Branches of the %s family"
-msgstr ""
+msgstr "Grane %s obitelji"
 
 #: library/WT/Stats.php:3833
 msgid "Brazil"
-msgstr "ברזיל"
+msgstr ""
 
 #: library/WT/Gedcom/Code/Rela.php:59
 msgid "Bridesmaid"
@@ -2985,15 +2985,15 @@ msgstr ""
 
 #: library/WT/Stats.php:3913
 msgid "British Indian Ocean Territory"
-msgstr "הטריטוריות הבריטיות באוקיאנוס ההודי"
+msgstr ""
 
 #: library/WT/Stats.php:4052
 msgid "British Virgin Islands"
-msgstr "איי הבתולה הבריטיים"
+msgstr ""
 
 #: library/WT/Stats.php:3839
 msgid "British West Indies"
-msgstr "הודו המערבית הבריטית"
+msgstr ""
 
 #: modules_v3/individual_ext_report/report.xml:310
 #: modules_v3/individual_report/report.xml:312
@@ -3022,7 +3022,7 @@ msgstr ""
 
 #: library/WT/Stats.php:3835
 msgid "Brunei Darussalam"
-msgstr "ברוניי"
+msgstr ""
 
 #: library/WT/Gedcom/Code/Temp.php:66
 msgid "Buenos Aires, Argentina"
@@ -3030,7 +3030,7 @@ msgstr ""
 
 #: library/WT/Stats.php:3825
 msgid "Bulgaria"
-msgstr "בולגריה"
+msgstr "Bugarska"
 
 #. I18N: gedcom tag BURI
 #: library/WT/Gedcom/Tag.php:128 modules_v3/family_group_report/report.xml:345
@@ -3042,7 +3042,7 @@ msgstr "Pokop"
 
 #: library/WT/Gedcom/Tag.php:512
 msgid "Burial of a brother"
-msgstr ""
+msgstr "Pokop brata"
 
 #: library/WT/Gedcom/Tag.php:460
 msgid "Burial of a child"
@@ -3050,11 +3050,11 @@ msgstr "Pokop djeteta"
 
 #: library/WT/Gedcom/Tag.php:459
 msgid "Burial of a daughter"
-msgstr ""
+msgstr "Pokop kćeri"
 
 #: library/WT/Gedcom/Tag.php:506
 msgid "Burial of a father"
-msgstr ""
+msgstr "Pokop oca"
 
 #: library/WT/Gedcom/Tag.php:466 library/WT/Gedcom/Tag.php:472
 #: library/WT/Gedcom/Tag.php:478
@@ -3175,11 +3175,11 @@ msgstr ""
 
 #: library/WT/Stats.php:3823
 msgid "Burkina Faso"
-msgstr "בורקינה פסו"
+msgstr ""
 
 #: library/WT/Stats.php:3820
 msgid "Burundi"
-msgstr "בורונדי"
+msgstr ""
 
 #: library/WT/Gedcom/Code/Rela.php:64
 msgid "Buyer"
@@ -3242,11 +3242,11 @@ msgstr "Kontakt broj"
 
 #: library/WT/Stats.php:3926
 msgid "Cambodia"
-msgstr "קמבודיה"
+msgstr ""
 
 #: library/WT/Stats.php:3850
 msgid "Cameroon"
-msgstr "קמרון"
+msgstr ""
 
 #: library/WT/Gedcom/Code/Temp.php:76
 msgid "Campinas, Brazil"
@@ -3254,7 +3254,7 @@ msgstr ""
 
 #: library/WT/Stats.php:3841
 msgid "Canada"
-msgstr "קנדה"
+msgstr ""
 
 #: modules_v3/clippings/module.php:603
 msgid "Cancel"
@@ -3266,11 +3266,11 @@ msgstr ""
 
 #: library/WT/Stats.php:3842
 msgid "Cape Colony"
-msgstr "מושבת הכף"
+msgstr ""
 
 #: library/WT/Stats.php:3856
 msgid "Cape Verde"
-msgstr "קייפ ורדה"
+msgstr ""
 
 #: library/WT/Gedcom/Code/Temp.php:77
 msgid "Caracas, Venezuela"
@@ -3295,7 +3295,7 @@ msgstr ""
 
 #: library/WT/Stats.php:3843
 msgid "Catalonia"
-msgstr "קטלוניה"
+msgstr ""
 
 #: statistics.php:646
 msgid "Categories:"
@@ -3320,7 +3320,7 @@ msgstr ""
 
 #: library/WT/Stats.php:3861
 msgid "Cayman Islands"
-msgstr "איי קיימן"
+msgstr ""
 
 #. I18N: Name of a module/report
 #: modules_v3/cemetery_report/module.php:33
@@ -3332,7 +3332,7 @@ msgstr "Groblja"
 #. I18N: gedcom tag CEME
 #: library/WT/Gedcom/Tag.php:134 modules_v3/cemetery_report/report.xml:51
 msgid "Cemetery"
-msgstr "בית קברות"
+msgstr ""
 
 #. I18N: gedcom tag CENS
 #: library/WT/Gedcom/Tag.php:135
@@ -3408,7 +3408,7 @@ msgstr ""
 #: modules_v3/change_report/report.xml:3
 #: modules_v3/change_report/report.xml:41
 msgid "Changes"
-msgstr ""
+msgstr "Promjene"
 
 #. I18N: title for list of recent changes
 #: modules_v3/recent_changes/module.php:75
@@ -3425,7 +3425,7 @@ msgstr ""
 
 #: library/WT/Stats.php:3846
 msgid "Channel Islands"
-msgstr "איי התעלה"
+msgstr ""
 
 #. I18N: gedcom tag CHAR
 #: library/WT/Gedcom/Tag.php:141
