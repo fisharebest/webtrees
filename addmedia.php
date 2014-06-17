@@ -41,7 +41,8 @@ $update_CHAN = !WT_Filter::postBool('preserve_last_changed');
 
 $controller = new WT_Controller_Simple();
 $controller
-	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
+	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+	->addInlineJavascript('autocomplete();')
 	->restrictAccess(\WT\Auth::isMember());
 
 $disp = true;
@@ -412,7 +413,7 @@ echo '</td></tr>';
 if (!$linktoid && $action == 'create') {
 	echo '<tr><td class="descriptionbox wrap width25">';
 	echo WT_I18N::translate('Enter an individual, family, or source ID');
-	echo '</td><td class="optionbox wrap"><input type="text" name="linktoid" id="linktoid" size="6" value="">';
+	echo '</td><td class="optionbox wrap"><input type="text" data-autocomplete-type="IFS" name="linktoid" id="linktoid" size="6" value="">';
 	echo ' ', print_findindi_link('linktoid');
 	echo ' ', print_findfamily_link('linktoid');
 	echo ' ', print_findsource_link('linktoid');

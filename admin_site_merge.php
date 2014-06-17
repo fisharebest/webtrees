@@ -30,6 +30,8 @@ $controller=new WT_Controller_Page;
 $controller
 	->restrictAccess(\WT\Auth::isManager())
 	->setPageTitle(WT_I18N::translate('Merge records'))
+	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+	->addInlineJavascript('autocomplete();')
 	->pageHeader();
 
 require_once WT_ROOT.'includes/functions/functions_edit.php';
@@ -43,10 +45,6 @@ $ged1   = WT_Filter::post('ged1', null, $ged);
 $ged2   = WT_Filter::post('ged2', null, $ged);
 $keep1  = WT_Filter::postArray('keep1');
 $keep2  = WT_Filter::postArray('keep2');
-
-if (count(WT_Tree::getAll())==1) { //Removed becasue it doesn't work here for multiple GEDCOMs. Can be reinstated when fixed (https://bugs.launchpad.net/webtrees/+bug/613235)
-	$controller->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');
-}
 
 if ($action!='choose') {
 	if ($gid1==$gid2 && $ged1==$ged2) {
@@ -247,8 +245,7 @@ if ($action=='choose') {
 		<td>',
 		WT_I18N::translate('Merge to ID:'),
 		'</td><td>
-		<input type="text" name="gid1" id="gid1" value="', $gid1, '" size="10" tabindex="1" autofocus="autofocus">
-		<select name="ged" tabindex="4"';
+		<select name="ged" tabindex="4" onchange="jQuery(\'#gid1\').data(\'autocomplete-ged\', jQuery(this).val());"';
 	if (count(WT_Tree::getAll())==1) {
 		echo 'style="width:1px;visibility:hidden;"';
 	}
@@ -262,14 +259,14 @@ if ($action=='choose') {
 	}
 	echo
 		'</select>
+		<input data-autocomplete-type="INDI" type="text" name="gid1" id="gid1" value="', $gid1, '" size="10" tabindex="1" autofocus="autofocus">
 		<a href="#" onclick="iopen_find(document.merge.gid1, document.merge.ged);" tabindex="6" class="icon-button_indi" title="'.WT_I18N::translate('Find an individual').'"></a>
 		<a href="#" onclick="fopen_find(document.merge.gid1, document.merge.ged);" tabindex="8" class="icon-button_family" title="'.WT_I18N::translate('Find a family').'"></a>
 		<a href="#" onclick="sopen_find(document.merge.gid1, document.merge.ged);" tabindex="10" class="icon-button_source" title="'.WT_I18N::translate('Find a source').'"></a>
 		</td></tr><tr><td>',
 		WT_I18N::translate('Merge from ID:'),
 		'</td><td>
-		<input type="text" name="gid2" id="gid2" value="', $gid2, '" size="10" tabindex="2">&nbsp;',
-		'<select name="ged2" tabindex="5"';
+		<select name="ged2" tabindex="5" onchange="jQuery(\'#gid2\').data(\'autocomplete-ged\', jQuery(this).val());"';
 	if (count(WT_Tree::getAll())==1) {
 		echo 'style="width:1px;visibility:hidden;"';
 	}
@@ -283,6 +280,7 @@ if ($action=='choose') {
 	}
 	echo
 		'</select>
+		<input data-autocomplete-type="INDI" type="text" name="gid2" id="gid2" value="', $gid2, '" size="10" tabindex="2">
 		<a href="#" onclick="iopen_find(document.merge.gid2, document.merge.ged2);" tabindex="7" class="icon-button_indi" title="'.WT_I18N::translate('Find an individual').'"></a>
 		<a href="#" onclick="fopen_find(document.merge.gid2, document.merge.ged2);" tabindex="9" class="icon-button_family" title="'.WT_I18N::translate('Find a family').'"></a>
 		<a href="#" onclick="sopen_find(document.merge.gid2, document.merge.ged2);" tabindex="11" class="icon-button_source" title="'.WT_I18N::translate('Find a source').'"></a>

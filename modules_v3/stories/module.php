@@ -219,7 +219,8 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				}
 				$controller
 					->pageHeader()
-					->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');
+					->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+					->addInlineJavascript('autocomplete();');
 				if (array_key_exists('ckeditor', WT_Module::getActiveModules())) {
 					ckeditor_WT_Module::enableEditor($controller);
 				}
@@ -245,7 +246,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td class="optionbox">';
-				echo '<input type="text" name="xref" id="pid" size="4" value="'.$xref.'">';
+				echo '<input data-autocomplete-type="INDI" type="text" name="xref" id="pid" size="4" value="'.$xref.'">';
 				echo print_findindi_link('pid');
 				if ($xref) {
 					$person=WT_Individual::getInstance($xref);
