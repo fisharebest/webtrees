@@ -26,7 +26,7 @@ msgstr ""
 #: modules_v3/ahnentafel_report/report.xml:333
 #: modules_v3/ahnentafel_report/report.xml:364
 msgid " but the details are unknown"
-msgstr ""
+msgstr " ali detalji su nepoznati"
 
 #: modules_v3/ahnentafel_report/report.xml:156
 #: modules_v3/ahnentafel_report/report.xml:184
@@ -43,7 +43,7 @@ msgstr ""
 #: modules_v3/descendancy_report/report.xml:421
 #: modules_v3/descendancy_report/report.xml:452
 msgid " in "
-msgstr ""
+msgstr " u "
 
 #: statisticsplot.php:797
 msgid " per gender"
@@ -129,19 +129,19 @@ msgstr ""
 #: admin_trees_check.php:159
 #, php-format
 msgid "%1$s does not exist."
-msgstr ""
+msgstr "%1$s ne postoji"
 
 #. I18N: placeholders are GEDCOM IDs, such as R123
 #: admin_trees_check.php:153
 #, php-format
 msgid "%1$s does not exist.  Did you mean %2$s?"
-msgstr ""
+msgstr "%1$s ne postoji. Da li ste mislili %2$s?"
 
 #. I18N: %1$s and %2$s are internal ID numbers such as R123
 #: admin_trees_check.php:190
 #, php-format
 msgid "%1$s does not have a link back to %2$s."
-msgstr ""
+msgstr "%1$s nema vezu natrag na %2$s."
 
 #. I18N: [...] from the .ZIP file, %2$s is a (fractional) number of seconds
 #: admin_site_upgrade.php:367 admin_site_upgrade.php:444
@@ -156,7 +156,7 @@ msgstr[2] ""
 #: admin_trees_check.php:179
 #, php-format
 msgid "%1$s is a %2$s but a %3$s is expected."
-msgstr ""
+msgstr "%1$s je %2$s a %3$s je očekivano."
 
 #. I18N: image dimensions, width × height
 #: admin_media.php:420 library/WT/Media.php:293
@@ -168,7 +168,7 @@ msgstr ""
 #: admin_site_upgrade.php:312
 #, php-format
 msgid "%1$sKB were downloaded in %2$s seconds."
-msgstr ""
+msgstr "%1$sKB je skinuto u %2$s sekundi."
 
 #. I18N: A range of years, e.g. “1870–”, “1870–1920”, “–1920”
 #: library/WT/Individual.php:418
@@ -192,17 +192,17 @@ msgstr ""
 #, php-format
 msgid "%d Child"
 msgid_plural "%d Children"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Dijete"
+msgstr[1] "Djeca"
+msgstr[2] "Djeca"
 
 #: lifespan.php:198
 #, php-format
 msgid "%d Individual"
 msgid_plural "%d Individuals"
 msgstr[0] "%d Osoba"
-msgstr[1] "Osoba"
-msgstr[2] "Osoba"
+msgstr[1] "%d Osoba"
+msgstr[2] "%d Osoba"
 
 #: includes/functions/functions_print.php:306 library/WT/Stats.php:3415
 #, php-format
@@ -232,20 +232,20 @@ msgstr[2] "%d mjeseci"
 #, php-format
 msgctxt "FEMALE"
 msgid "%d x cousin"
-msgstr "%d x rod"
+msgstr "%d x rođakinja"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: includes/functions/functions.php:618
 #, php-format
 msgctxt "MALE"
 msgid "%d x cousin"
-msgstr "%d x rod"
+msgstr "%d x rođak"
 
 #: includes/functions/functions.php:656
 #, php-format
 msgctxt "MALE/FEMALE"
 msgid "%d x cousin"
-msgstr "%d x rod"
+msgstr "%d x rođak"
 
 #: modules_v3/relatives/module.php:60
 #, php-format
@@ -276,34 +276,34 @@ msgstr ""
 #, php-format
 msgid "%s child"
 msgid_plural "%s children"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s dijete"
+msgstr[1] "%s djece"
+msgstr[2] "%s djece"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: includes/functions/functions_date.php:59 library/WT/I18N.php:380
 #, php-format
 msgid "%s day"
 msgid_plural "%s days"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s dan"
+msgstr[1] "%s dana"
+msgstr[2] "%s dana"
 
 #: library/WT/I18N.php:423
 #, php-format
 msgid "%s day ago"
 msgid_plural "%s days ago"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s dan"
+msgstr[1] "%s dana"
+msgstr[2] "%s dana"
 
 #: library/WT/Stats.php:3067 library/WT/Stats.php:3071
 #, php-format
 msgid "%s grandchild"
 msgid_plural "%s grandchildren"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s unuk"
+msgstr[1] "%s unuka"
+msgstr[2] "%s unuka"
 
 #: library/WT/I18N.php:426
 #, php-format
@@ -348,9 +348,9 @@ msgstr[2] ""
 #, php-format
 msgid "%s month"
 msgid_plural "%s months"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s mjesec"
+msgstr[1] "%s mjeseca"
+msgstr[2] "%s mjeseci"
 
 #: library/WT/I18N.php:420
 #, php-format
@@ -414,17 +414,17 @@ msgstr ""
 #, php-format
 msgid "%s week"
 msgid_plural "%s weeks"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s tjedan"
+msgstr[1] "%s tjedna"
+msgstr[2] "%s tjedana"
 
 #: includes/functions/functions_date.php:50 library/WT/I18N.php:366
 #, php-format
 msgid "%s year"
 msgid_plural "%s years"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s godina"
+msgstr[1] "%s godine"
+msgstr[2] "%s godina"
 
 #: library/WT/I18N.php:417
 #, php-format
@@ -478,25 +478,25 @@ msgstr[2] "&plusmn;%d godina"
 #: library/WT/I18N.php:395 library/WT/I18N.php:399
 #, php-format
 msgid "(aged %s)"
-msgstr "Star %s"
+msgstr "(star %s)"
 
 #. I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan 1900 (aged less than 21 years)
 #: library/WT/I18N.php:389
 #, php-format
 msgid "(aged less than %s)"
-msgstr "star manje od %s"
+msgstr "(star manje od %s)"
 
 #. I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan 1900 (aged more than 21 years)
 #: library/WT/I18N.php:392
 #, php-format
 msgid "(aged more than %s)"
-msgstr "star više od %s"
+msgstr "(star više od %s)"
 
 #. I18N: %s is a placeholder for a number
 #: library/WT/I18N.php:699
 #, php-format
 msgid "(filtered from %s total entries)"
-msgstr ""
+msgstr "(filtrirano od ukupno %s unosa)"
 
 #. I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan 1900 (in childhood)
 #: library/WT/I18N.php:360
@@ -718,17 +718,17 @@ msgstr ""
 #. I18N: Description of the “My page” module
 #: modules_v3/user_welcome/module.php:37
 msgid "A greeting message and useful links for a user."
-msgstr ""
+msgstr "Pozdravna poruka i korisni linkovi za korisnika"
 
 #. I18N: Description of the “Home page” module
 #: modules_v3/gedcom_block/module.php:37
 msgid "A greeting message for site visitors."
-msgstr ""
+msgstr "Pozdravna poruka za posjetitelja"
 
 #. I18N: Description of the “Pending changes” module
 #: modules_v3/review_changes/module.php:37
 msgid "A list of changes that need moderator approval, and email notifications."
-msgstr ""
+msgstr "Lista promjena koje trebaju odobrenje moderatora, i e-mail obavijesti."
 
 #. I18N: Description of the “FAQ” module
 #: modules_v3/faq/module.php:37
@@ -738,12 +738,12 @@ msgstr "Popis najčešćih pitanja i odgovora"
 #. I18N: Description of the “Recent changes” module
 #: modules_v3/recent_changes/module.php:41
 msgid "A list of records that have been updated recently."
-msgstr ""
+msgstr "Lista zapisa koji su ažurirani nedavno."
 
 #. I18N: Description of “Research tasks” module
 #: modules_v3/todo/module.php:37
 msgid "A list of tasks and activities that are linked to the family tree."
-msgstr ""
+msgstr "Lista zadataka i aktivnosti koja su vezana na obiteljsko stablo."
 
 #. I18N: Description of the “Yahrzeiten” module.  A “Hebrew death” is a death where the date is recorded in the Hebrew calendar.
 #: modules_v3/yahrzeit/module.php:37
@@ -753,32 +753,32 @@ msgstr ""
 #. I18N: Description of the “On This Day” module
 #: modules_v3/todays_events/module.php:37
 msgid "A list of the anniversaries that occur today."
-msgstr ""
+msgstr "Lista godišnjica na današnji dan."
 
 #. I18N: Description of the “Upcoming events” module
 #: modules_v3/upcoming_events/module.php:37
 msgid "A list of the anniversaries that will occur in the near future."
-msgstr ""
+msgstr "Lista godišnjica koja će biti uskoro."
 
 #. I18N: Description of the “Top given names” module
 #: modules_v3/top10_givnnames/module.php:37
 msgid "A list of the most popular given names."
-msgstr ""
+msgstr "Lista najpopularnijih imena."
 
 #. I18N: Description of the “Top surnames” module
 #: modules_v3/top10_surnames/module.php:37
 msgid "A list of the most popular surnames."
-msgstr ""
+msgstr "Lista najpopularnijih prezimena."
 
 #. I18N: Description of the “Most visited pages” module
 #: modules_v3/top10_pageviews/module.php:37
 msgid "A list of the pages that have been viewed the most number of times."
-msgstr ""
+msgstr "Lista stranica koje su najčešće pogledane."
 
 #. I18N: Description of the “Who is online” module
 #: modules_v3/logged_in/module.php:37
 msgid "A list of users and visitors who are currently online."
-msgstr ""
+msgstr "Lista korisnika i posjetitelja koji su trenutno online."
 
 #: help_text.php:309
 msgid "A media object is a record in the family tree which contains information about a media file.  This information may include a title, a copyright notice, a transcript, privacy restrictions, etc.  The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
@@ -788,11 +788,11 @@ msgstr ""
 #: login.php:252
 #, php-format
 msgid "A new password has been created and emailed to %s.  You can change this password after you login."
-msgstr ""
+msgstr "Nova lozinka je kreirana i poslana e-malom %s. Možete promijeniti svoju lozinku nakon prijave."
 
 #: login.php:239
 msgid "A new password was requested for your user name."
-msgstr ""
+msgstr "Nova lozinka je zatražena za vaše korisničko ime."
 
 #: login.php:499
 #, php-format
@@ -801,7 +801,7 @@ msgstr ""
 
 #: admin.php:109 admin_site_upgrade.php:83
 msgid "A new version of webtrees is available."
-msgstr ""
+msgstr "Nova verzija webtrees je dostupna."
 
 #. I18N: Description of the “Journal” module
 #: modules_v3/user_blog/module.php:45
@@ -836,33 +836,33 @@ msgstr ""
 #: modules_v3/individual_report/module.php:39
 #: modules_v3/individual_report/report.xml:4
 msgid "A report of an individual’s details."
-msgstr ""
+msgstr "Izvještaj o osobnim detaljima."
 
 #: modules_v3/fact_sources/report.xml:4
 msgid "A report of facts which are supported by a given source."
-msgstr ""
+msgstr "Izvještaj o činjenicama koje su podržane danim izvorom."
 
 #. I18N: Description of the “Family” module
 #: modules_v3/family_group_report/module.php:39
 #: modules_v3/family_group_report/report.xml:4
 msgid "A report of family members and their details."
-msgstr ""
+msgstr "Izvještaj o obiteljskom članu i njegovi detalji."
 
 #. I18N: Description of the “Deaths” module
 #: modules_v3/death_report/module.php:39 modules_v3/death_report/report.xml:4
 msgid "A report of individuals who died in a given time or place."
-msgstr ""
+msgstr "Izvještaj o osobama koje su umrle u danom vremenu ili mjestu."
 
 #. I18N: Description of the “Occupations” module
 #: modules_v3/occupation_report/module.php:39
 #: modules_v3/occupation_report/report.xml:4
 msgid "A report of individuals who had a given occupation."
-msgstr ""
+msgstr "Izvještaj o osobama koje su imale dano zanimanje."
 
 #. I18N: Description of the “Births” module
 #: modules_v3/birth_report/module.php:39 modules_v3/birth_report/report.xml:4
 msgid "A report of individuals who were born in a given time or place."
-msgstr ""
+msgstr "Izvješće o osobama koje su rođene u danom vremenu ili mjestu."
 
 #. I18N: Description of the “Cemeteries” module
 #: modules_v3/cemetery_report/module.php:39
@@ -874,41 +874,41 @@ msgstr "Izvješće o osobama koje su pokopane na danom mjestu"
 #: modules_v3/marriage_report/module.php:39
 #: modules_v3/marriage_report/report.xml:4
 msgid "A report of individuals who were married in a given time or place."
-msgstr ""
+msgstr "Izvještaj o osobama koje su vjenčane u danom vremenu ili mjestu."
 
 #. I18N: Description of the “Changes” module
 #: modules_v3/change_report/module.php:39
 #: modules_v3/change_report/report.xml:4
 msgid "A report of recent and pending changes."
-msgstr ""
+msgstr "Izvještaj o nedavnim promjenama i promjenama na čekanju."
 
 #. I18N: Description of the “Related families”
 #: modules_v3/individual_ext_report/module.php:39
 #: modules_v3/individual_ext_report/report.xml:4
 msgid "A report of the families that are closely related to an individual."
-msgstr ""
+msgstr "Izvještaj o obiteljma koje su usko povezane sa pojedincem."
 
 #. I18N: Description of the “Related individuals” module
 #: modules_v3/relative_ext_report/module.php:39
 #: modules_v3/relative_ext_report/report.xml:4
 msgid "A report of the individuals that are closely related to an individual."
-msgstr ""
+msgstr "Izvještaj o osobama koje su usko povezane sa pojedincem."
 
 #. I18N: Description of the “Source” module
 #: modules_v3/fact_sources/module.php:39
 msgid "A report of the information provided by a source."
-msgstr ""
+msgstr "Izvještaj o informacijama koje osigurava izvor."
 
 #. I18N: Description of the “Missing data”
 #: modules_v3/missing_facts_report/module.php:39
 #: modules_v3/missing_facts_report/report.xml:4
 msgid "A report of the information that is missing for an individual and their relatives."
-msgstr ""
+msgstr "Izvještaj o informacijama koje nedostaju za pojedinca i njegove rođake."
 
 #. I18N: Description of the “Vital records” module. “Vital records” are life events - birth/marriage/death
 #: modules_v3/bdm_report/module.php:39 modules_v3/bdm_report/report.xml:4
 msgid "A report of vital records for a given date or place."
-msgstr ""
+msgstr "Izvještaj za vitalne zapise po datumu ili mjestu."
 
 #: help_text.php:1374
 msgid "A role is a set of access rights, which give permission to view data, change configuration settings, etc.  Access rights are assigned to roles, and roles are granted to users.  Each family tree can assign different access to each role, and users can have a different role in each family tree."
@@ -917,52 +917,52 @@ msgstr ""
 #. I18N: Description of the “Families” module
 #: modules_v3/families/module.php:37
 msgid "A sidebar showing an alphabetic list of all the families in the family tree."
-msgstr ""
+msgstr "Bočni stupac prikazuje abecednu listu svih obitelji u obiteljskom stablu."
 
 #. I18N: Description of “Individuals” module
 #: modules_v3/individuals/module.php:37
 msgid "A sidebar showing an alphabetic list of all the individuals in the family tree."
-msgstr ""
+msgstr "Bočni stupac prikazuje abecednu listu svih pojedinaca u obiteljskom stablu."
 
 #. I18N: Description of the “Family navigator” module
 #: modules_v3/family_nav/module.php:42
 msgid "A sidebar showing an individual’s close families and relatives."
-msgstr ""
+msgstr "Bočni stupac prikazuje obitelji i rođake bliske pojedincu."
 
 #. I18N: Description of the “Extra information” module
 #: modules_v3/extra_info/module.php:34
 msgid "A sidebar showing non-genealogical information about an individual."
-msgstr ""
+msgstr "Bočni stupac prikazuje ne-genološke informacije o pojedincu."
 
 #. I18N: Description of the “Descendants” module
 #: modules_v3/descendancy/module.php:39
 msgid "A sidebar showing the descendants of an individual."
-msgstr ""
+msgstr "Bočni stupac prikazuje potomke pojedinca."
 
 #. I18N: Description of the “Families” module
 #: modules_v3/relatives/module.php:37
 msgid "A tab showing the close relatives of an individual."
-msgstr ""
+msgstr "Tab prikazuje bliske rođake pojedinca."
 
 #. I18N: Description of the “Facts and events” module
 #: modules_v3/personal_facts/module.php:37
 msgid "A tab showing the facts and events of an individual."
-msgstr ""
+msgstr "Tab prikazuje činjnice i događaje pojedinca."
 
 #. I18N: Description of the “Media” module
 #: modules_v3/media/module.php:39
 msgid "A tab showing the media objects linked to an individual."
-msgstr ""
+msgstr "Tab prikazuje medijske objekte vezane za pojedinca."
 
 #. I18N: Description of the “Notes” module
 #: modules_v3/notes/module.php:39
 msgid "A tab showing the notes attached to an individual."
-msgstr ""
+msgstr "Tab prikazuje bilješke vezane za pojedinca."
 
 #. I18N: Description of the “Sources” module
 #: modules_v3/sources_tab/module.php:39
 msgid "A tab showing the sources linked to an individual."
-msgstr ""
+msgstr "Tab prikazuje izvore vezane za pojedinca."
 
 #: help_text.php:1474
 msgid "A user will not be able to login until both the “email verified” and “approved by administrator” options are selected."
@@ -970,7 +970,7 @@ msgstr ""
 
 #: help_text.php:1025
 msgid "A watermark is text that is added to an image, to discourage others from copying it without permission."
-msgstr ""
+msgstr "Vodeni žig je tekst dodan na sliku, da obeshrabri druge od kopiranja bez dozvole."
 
 #. I18N: time format “%A” - between 00:00:01 and 11:59:59
 #: includes/functions/functions_date.php:119
@@ -1061,11 +1061,11 @@ msgstr ""
 #. I18N: gedcom tag ABBR
 #: library/WT/Gedcom/Tag.php:93
 msgid "Abbreviation"
-msgstr "קיצור"
+msgstr "Skraćenica"
 
 #: library/WT/Stats.php:3801
 msgid "Acadia"
-msgstr "אקדיה"
+msgstr ""
 
 #: edit_changes.php:178 edit_changes.php:186
 msgid "Accept"
@@ -1079,7 +1079,7 @@ msgstr "Razina pristupa"
 
 #: help_text.php:1467
 msgid "Account approval and email verification"
-msgstr ""
+msgstr "Odobrenje računa i e-mail potvrda"
 
 #: library/WT/Gedcom/Code/Temp.php:58
 msgid "Accra, Ghana"
@@ -1159,17 +1159,17 @@ msgid "Add"
 msgstr "Dodaj"
 
 #: modules_v3/googlemap/module.php:4422
-msgid "Add  a new geographic location"
-msgstr ""
+msgid "Add a new geographic location"
+msgstr "Dodaj novu geografsku lokaciju"
 
 #: modules_v3/clippings/module.php:472
 #, php-format
 msgid "Add %s to cart"
-msgstr ""
+msgstr "Dodaj %s u košaricu"
 
 #: modules_v3/faq/module.php:145 modules_v3/faq/module.php:359
 msgid "Add FAQ item"
-msgstr ""
+msgstr "Dodaj ČPP (FAQ) stavku"
 
 #: modules_v3/clippings/module.php:150 modules_v3/clippings/module.php:233
 msgid "Add Individual By ID"
@@ -1181,7 +1181,7 @@ msgstr "Dodaj još polja"
 
 #: modules_v3/gedcom_news/module.php:125
 msgid "Add a News article"
-msgstr ""
+msgstr "Dodaj članak u novosti"
 
 #: edit_interface.php:563 modules_v3/relatives/module.php:373
 msgid "Add a child to create a one-parent family"
@@ -1220,11 +1220,11 @@ msgstr ""
 
 #: modules_v3/relatives/module.php:250
 msgid "Add a new brother or sister"
-msgstr ""
+msgstr "Dodaj brata ili sestru"
 
 #: edit_interface.php:484
 msgid "Add a new child"
-msgstr ""
+msgstr "Dodaj dijete"
 
 #: edit_interface.php:643 family.php:117 modules_v3/relatives/module.php:297
 msgid "Add a new father"
@@ -1232,7 +1232,7 @@ msgstr "Dodaj oca"
 
 #: modules_v3/gedcom_favorites/module.php:168
 msgid "Add a new favorite"
-msgstr ""
+msgstr "Dodaj novi favorit"
 
 #: edit_interface.php:778 edit_interface.php:868
 #: modules_v3/relatives/module.php:362
@@ -1318,15 +1318,15 @@ msgstr "Dodaj suprugu koristeci postojecu osobu"
 
 #: lifespan.php:145 timeline.php:312
 msgid "Add another individual to the chart"
-msgstr "Dodaj novu osobu"
+msgstr "Dodaj novu osobu na grafikon"
 
 #: modules_v3/clippings/help_text.php:31
 msgid "Add by ID"
-msgstr ""
+msgstr "Dodaj sa ID-om"
 
 #: help_text.php:1061 includes/functions/functions_print.php:892
 msgid "Add from clipboard"
-msgstr "Add from Clipboard:"
+msgstr "Dodaj iz clipboard-a"
 
 #: modules_v3/relatives/module.php:126
 msgid "Add husband"
@@ -1334,23 +1334,23 @@ msgstr "Dodaj supruga"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:39
 msgid "Add individuals"
-msgstr ""
+msgstr "Dodaj osobe"
 
 #: modules_v3/clippings/module.php:88 modules_v3/clippings/module.php:497
 msgid "Add just this family record."
-msgstr ""
+msgstr "Dodaj samo ovaj zapis obitelji."
 
 #: modules_v3/clippings/module.php:106 modules_v3/clippings/module.php:514
 msgid "Add just this individual."
-msgstr ""
+msgstr "Dodaj samo ovu osobu."
 
 #: modules_v3/clippings/module.php:127 modules_v3/clippings/module.php:535
 msgid "Add just this source."
-msgstr ""
+msgstr "Dodaj samo ovaj izvor."
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:156
 msgid "Add links"
-msgstr ""
+msgstr "Dodaj poveznice"
 
 #: modules_v3/relatives/module.php:201
 msgid "Add marriage details"
@@ -1358,11 +1358,11 @@ msgstr "Dodaj detalje sklapanja braka"
 
 #: modules_v3/batch_update/plugins/death_y.php:28
 msgid "Add missing death records"
-msgstr ""
+msgstr "Dodaj zapise o smrti koji nedostaju"
 
 #: modules_v3/batch_update/plugins/married_names.php:33
 msgid "Add missing married names"
-msgstr ""
+msgstr "Dodaj vjenćana imenima koja nedostaju"
 
 #. I18N: Description of the “Stories” module
 #: modules_v3/stories/module.php:37
@@ -3242,11 +3242,11 @@ msgstr "Kontakt broj"
 
 #: library/WT/Stats.php:3926
 msgid "Cambodia"
-msgstr "קמבודיה"
+msgstr ""
 
 #: library/WT/Stats.php:3850
 msgid "Cameroon"
-msgstr "קמרון"
+msgstr ""
 
 #: library/WT/Gedcom/Code/Temp.php:76
 msgid "Campinas, Brazil"
@@ -3254,7 +3254,7 @@ msgstr ""
 
 #: library/WT/Stats.php:3841
 msgid "Canada"
-msgstr "קנדה"
+msgstr "Kanada"
 
 #: modules_v3/clippings/module.php:603
 msgid "Cancel"
@@ -3266,11 +3266,11 @@ msgstr ""
 
 #: library/WT/Stats.php:3842
 msgid "Cape Colony"
-msgstr "מושבת הכף"
+msgstr ""
 
 #: library/WT/Stats.php:3856
 msgid "Cape Verde"
-msgstr "קייפ ורדה"
+msgstr ""
 
 #: library/WT/Gedcom/Code/Temp.php:77
 msgid "Caracas, Venezuela"
@@ -3295,7 +3295,7 @@ msgstr ""
 
 #: library/WT/Stats.php:3843
 msgid "Catalonia"
-msgstr "קטלוניה"
+msgstr ""
 
 #: statistics.php:646
 msgid "Categories:"
@@ -3320,7 +3320,7 @@ msgstr ""
 
 #: library/WT/Stats.php:3861
 msgid "Cayman Islands"
-msgstr "איי קיימן"
+msgstr ""
 
 #. I18N: Name of a module/report
 #: modules_v3/cemetery_report/module.php:33
@@ -3332,7 +3332,7 @@ msgstr "Groblja"
 #. I18N: gedcom tag CEME
 #: library/WT/Gedcom/Tag.php:134 modules_v3/cemetery_report/report.xml:51
 msgid "Cemetery"
-msgstr "בית קברות"
+msgstr "Groblje"
 
 #. I18N: gedcom tag CENS
 #: library/WT/Gedcom/Tag.php:135
@@ -3362,7 +3362,7 @@ msgstr ""
 
 #: library/WT/Stats.php:3840
 msgid "Central African Republic"
-msgstr "הרפובליקה המרכז אפריקאית"
+msgstr ""
 
 #: library/WT/Gedcom/Tag.php:881
 msgid "Certificate"
@@ -3370,37 +3370,37 @@ msgstr "Potvrda"
 
 #: library/WT/Stats.php:4028
 msgid "Chad"
-msgstr "צ'אד"
+msgstr ""
 
 #: edit_interface.php:1945 edit_interface.php:1981 edit_interface.php:2008
 msgid "Change"
-msgstr "Promijeni"
+msgstr "Promjeni"
 
 #: edit_interface.php:1895 edit_interface.php:2067
 #: library/WT/Controller/Family.php:85
 msgid "Change family members"
-msgstr "Promijeni članove porodice"
+msgstr "Promjeni članove porodice"
 
 #: modules_v3/googlemap/module.php:531 modules_v3/googlemap/module.php:534
 #: modules_v3/googlemap/module.php:537 modules_v3/googlemap/module.php:592
 #: modules_v3/googlemap/module.php:3742 modules_v3/googlemap/module.php:3903
 #: modules_v3/googlemap/module.php:3907
 msgid "Change flag"
-msgstr "Promijeni zastavicu"
+msgstr "Promjeni zastavicu"
 
 #: find.php:301 setup.php:105
 msgid "Change language"
-msgstr "Promijeni jezik"
+msgstr "Promjeni jezik"
 
 #: admin_users.php:213 index.php:147 index.php:148
 msgid "Change the blocks on this page"
-msgstr ""
+msgstr "Promjeni blok na ovoj stranici"
 
 #. I18N: [a record was] Changed on <date/time> by <user>
 #: includes/functions/functions_print_lists.php:1550
 #, php-format
 msgid "Changed on %1$s by %2$s"
-msgstr ""
+msgstr "Promjenjeno %1$s od %2$s"
 
 #. I18N: Name of a module/report
 #: admin_site_change.php:27 edit_changes.php:179
@@ -3421,7 +3421,7 @@ msgstr[2] "Promjena u zadnjih %s dana"
 
 #: themes/_administration/header.php:123
 msgid "Changes log"
-msgstr ""
+msgstr "Dnevnik promjena"
 
 #: library/WT/Stats.php:3846
 msgid "Channel Islands"
@@ -3497,18 +3497,18 @@ msgstr ""
 #. I18N: gedcom tag CHIL
 #: includes/functions/functions_date.php:32 library/WT/Gedcom/Tag.php:142
 msgid "Child"
-msgstr "ילד/ה"
+msgstr ""
 
 #: modules_v3/ahnentafel_report/report.xml:393
 #: modules_v3/descendancy_report/report.xml:478
 msgid "Child of "
-msgstr ""
+msgstr "Dijete od "
 
 #. I18N: e.g. “Child of [father name & mother name]”
 #: modules_v3/tree/class_treeview.php:340
 #, php-format
 msgid "Child of %s"
-msgstr ""
+msgstr "Dijete od %s"
 
 #: includes/functions/functions_print_lists.php:212
 #: includes/functions/functions_print_lists.php:632
@@ -3524,7 +3524,7 @@ msgstr "Djeca u obitelji"
 #: modules_v3/ahnentafel_report/report.xml:396
 #: modules_v3/descendancy_report/report.xml:481
 msgid "Children of "
-msgstr ""
+msgstr "Djeca od "
 
 #. I18N: In the Icelandic surname tradition, ...
 #: help_text.php:964
@@ -3553,11 +3553,11 @@ msgstr ""
 
 #: library/WT/Stats.php:3847
 msgid "Chile"
-msgstr "צ'ילה"
+msgstr ""
 
 #: library/WT/Stats.php:3848
 msgid "China"
-msgstr "סין"
+msgstr "Kina"
 
 #: reportengine.php:125 reportengine.php:133
 msgid "Choose a report to run"
