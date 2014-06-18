@@ -148,9 +148,9 @@ msgstr "%1$s nema vezu natrag na %2$s."
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Datoteka %1$s je raspakirana u %2$s sekundi."
+msgstr[1] "Datoteka %1$s je raspakirana u %2$s sekunde."
+msgstr[2] "Datoteka %1$s je raspakirana u %2$s sekundi."
 
 #. I18N: %1$s is an internal ID number such as R123.  %2$s and %3$s are record types, such as INDI or SOUR
 #: admin_trees_check.php:179
@@ -309,9 +309,9 @@ msgstr[2] "%s unuka"
 #, php-format
 msgid "%s hour ago"
 msgid_plural "%s hours ago"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s sat prije"
+msgstr[1] "%s sata prije"
+msgstr[2] "%s sati prije"
 
 #: modules_v3/googlemap/module.php:861
 #, php-format
@@ -331,17 +331,17 @@ msgstr ""
 #, php-format
 msgid "%s message"
 msgid_plural "%s messages"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s poruka"
+msgstr[1] "%s poruke"
+msgstr[2] "%s poruka"
 
 #: library/WT/I18N.php:429
 #, php-format
 msgid "%s minute ago"
 msgid_plural "%s minutes ago"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Prije %s minute"
+msgstr[1] "Prije %s minute"
+msgstr[2] "Prije %s minuta"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: includes/functions/functions_date.php:55 library/WT/I18N.php:372
@@ -356,9 +356,9 @@ msgstr[2] "%s mjeseci"
 #, php-format
 msgid "%s month ago"
 msgid_plural "%s months ago"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Prije %s mjesec"
+msgstr[1] "Prije %s mjeseca"
+msgstr[2] "Prije %s mjeseci"
 
 #: statisticsplot.php:740
 #, php-format
@@ -381,9 +381,9 @@ msgstr ""
 #, php-format
 msgid "%s second ago"
 msgid_plural "%s seconds ago"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Prije %s sekunde"
+msgstr[1] "Prije %s sekunde"
+msgstr[2] "Prije %s sekundi"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: includes/functions/functions.php:1694
@@ -430,9 +430,9 @@ msgstr[2] "%s godina"
 #, php-format
 msgid "%s year ago"
 msgid_plural "%s years ago"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Prije %s godine"
+msgstr[1] "Prije %s godine"
+msgstr[2] "Prije %s godina"
 
 #: calendar.php:560 includes/functions/functions_print_lists.php:1867
 #: modules_v3/yahrzeit/module.php:116
@@ -669,11 +669,23 @@ msgstr ""
 
 #: login.php:150
 msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved."
-msgstr "<center><b>Dobrodošli na genološku web stranicu</b></center><br>Pristup ovomj stranici je dozvoljen <u>registriranim</u> korisnicima.<br><br>Ako imate korisnički račun možete se prijaviti na ovoj stranici. Ako nemate račun možete ga zatražiti pomoću linka ispod<br><br>Nakon provjere vaše prijave administrator će odobriti ili odbiti vašu prijavu. Primiti ćete obavijest e-mailom nakon pregleda prijave."
+msgstr ""
+"<center><b>Dobrodošli na genološku web stranicu</b></center><br>Pristup ovomj "
+"stranici je dozvoljen <u>registriranim</u> korisnicima.<br><br>Ako imate "
+"korisnički račun možete se prijaviti na ovoj stranici. Ako nemate račun "
+"možete ga zatražiti pomoću linka ispod.<br><br>Nakon provjere vaše prijave "
+"administrator će odobriti ili odbiti vašu prijavu. Primiti ćete obavijest "
+"e-mailom nakon pregleda prijave."
 
 #: login.php:153
 msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved."
-msgstr "<center><b>Dobrodošli na gednolšku web stranicu</b></center><br>Pristup stranici je dopušten  <u>samo članovima obitelji</u>.<br><br>Ako imate korisnički račun možete se prijaviti na ovoj stranici. Ako nemate račun možete ga zatražiti pomoću linka ispod<br><br>Nakon provjere vaše prijave administrator će odobriti ili odbiti vašu prijavu. Primiti ćete obavijest e-mailom nakon pregleda prijave."
+msgstr ""
+"<center><b>Dobrodošli na gednolšku web stranicu</b></center><br>Pristup "
+"stranici je dopušten <u>samo članovima obitelji</u>.<br><br>Ako imate "
+"korisnički račun možete se prijaviti na ovoj stranici. Ako nemate račun "
+"možete ga zatražiti pomoću linka ispod<br><br>Nakon provjere vaše prijave "
+"administrator će odobriti ili odbiti vašu prijavu. Primiti ćete obavijest "
+"e-mailom nakon pregleda prijave."
 
 #: login.php:147
 msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved."
@@ -706,6 +718,8 @@ msgstr ""
 #: modules_v3/batch_update/plugins/duplicate_links.php:32
 msgid "A common error is to have multiple links to the same record, for example listing the same child more than once in a family record."
 msgstr ""
+"Uobičajena greška je da imate višestruke veze prema istom zapisu. Primjer: "
+"Dijete se prikazuje više puta u isto obitelji."
 
 #: setup.php:356
 msgid "A database server can store many separate databases.  You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
@@ -783,6 +797,11 @@ msgstr "Lista korisnika i posjetitelja koji su trenutno online."
 #: help_text.php:309
 msgid "A media object is a record in the family tree which contains information about a media file.  This information may include a title, a copyright notice, a transcript, privacy restrictions, etc.  The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
 msgstr ""
+"Medijski objekt je zapis u obiteljskom stablu koji sadrži informacije o "
+"medijskoj datoteci. Te informacije mogu uključivato naslov, bilješku o pravu "
+"kopiranja, prepis, privatna ograničenja, itd. Medijska datoteka, kao što su "
+"fotografije, video, mogu biti spremljene lokalno (na ovom webserveru) ili "
+"udaljeno na nekon drugom webserveru."
 
 #. I18N: %s is a username
 #: login.php:252
@@ -798,6 +817,7 @@ msgstr "Nova lozinka je zatražena za vaše korisničko ime."
 #, php-format
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
 msgstr ""
+"Novi korisnik (%1$s) je zatražio račun (%2$s) i potvrdio e.mail adresu (%3$s)."
 
 #: admin.php:109 admin_site_upgrade.php:83
 msgid "A new version of webtrees is available."
@@ -806,31 +826,31 @@ msgstr "Nova verzija webtrees je dostupna."
 #. I18N: Description of the “Journal” module
 #: modules_v3/user_blog/module.php:45
 msgid "A private area to record notes or keep a journal."
-msgstr ""
+msgstr "Privatna zona za pisanje bilježaka ili držanje dnevnika."
 
 #. I18N: %s is a server name/URL
 #: login.php:306
 #, php-format
 msgid "A prospective user has registered with webtrees at %s."
-msgstr ""
+msgstr "Potencijalni korisnik je registriran preko webtrees na %s."
 
 #. I18N: Description of the “Pedigree” module
 #: modules_v3/pedigree_report/module.php:39
 #: modules_v3/pedigree_report/report.xml:4
 msgid "A report of an individual’s ancestors, formatted as a tree."
-msgstr ""
+msgstr "Izvještaj predaka pojedinaca, formatirano kao stablo."
 
 #. I18N: Description of the “Ancestors” module
 #: modules_v3/ahnentafel_report/module.php:39
 #: modules_v3/ahnentafel_report/report.xml:5
 msgid "A report of an individual’s ancestors, in a narrative style."
-msgstr ""
+msgstr "Izveštaj predaka pojedinaca, u narativnom stilu."
 
 #. I18N: Description of the “Descendants” module
 #: modules_v3/descendancy_report/module.php:39
 #: modules_v3/descendancy_report/report.xml:4
 msgid "A report of an individual’s descendants, in a narrative style."
-msgstr ""
+msgstr "Izvještaj potomaka pojedinaca, u narativnom stilu."
 
 #. I18N: Description of the “Individual” module
 #: modules_v3/individual_report/module.php:39
@@ -967,6 +987,8 @@ msgstr "Tab prikazuje izvore vezane za pojedinca."
 #: help_text.php:1474
 msgid "A user will not be able to login until both the “email verified” and “approved by administrator” options are selected."
 msgstr ""
+"Korisnik se neće moći prijaviti dok su obje “e-mail provjeren” i “odobreno od "
+"administratora” opcije označene."
 
 #: help_text.php:1025
 msgid "A watermark is text that is added to an image, to discourage others from copying it without permission."
@@ -1056,7 +1078,7 @@ msgstr ""
 
 #: admin_trees_config.php:901 help_text.php:884
 msgid "Abbreviate place names"
-msgstr ""
+msgstr "Skraćena imena mjesta"
 
 #. I18N: gedcom tag ABBR
 #: library/WT/Gedcom/Tag.php:93
@@ -1207,7 +1229,7 @@ msgstr "Dodaj muza koristeci postojecu osobu"
 
 #: modules_v3/user_blog/module.php:95
 msgid "Add a new Journal entry"
-msgstr ""
+msgstr "Dodaj novi unos u dnevnik"
 
 #: help_text.php:1133 includes/functions/functions_edit.php:834
 #: includes/functions/functions_edit.php:839
@@ -1388,7 +1410,7 @@ msgstr ""
 #: modules_v3/stories/module.php:127 modules_v3/stories/module.php:214
 #: modules_v3/stories/module.php:337
 msgid "Add story"
-msgstr ""
+msgstr "Dodaj priću"
 
 #: admin_trees_download.php:129 modules_v3/clippings/module.php:212
 #: modules_v3/clippings/module.php:592
@@ -1425,7 +1447,7 @@ msgstr ""
 
 #: modules_v3/clippings/module.php:321
 msgid "Add to clippings cart"
-msgstr ""
+msgstr "Dodaj u isječke"
 
 #. I18N: Menu option.  Add [the current page] to the list of favorites
 #: library/WT/Controller/Family.php:119
@@ -1433,12 +1455,12 @@ msgstr ""
 #: library/WT/Controller/Note.php:73 library/WT/Controller/Repository.php:78
 #: library/WT/Controller/Source.php:78 library/WT/MenuBar.php:524
 msgid "Add to favorites"
-msgstr ""
+msgstr "Dodaj u favirite"
 
 #: admin_site_other.php:31 admin_site_other.php:37
 #: themes/_administration/header.php:120
 msgid "Add unlinked records"
-msgstr ""
+msgstr "Dodaj nepovezane zapise"
 
 #: admin_trees_config.php:696
 msgid "Add watermarks to thumbnails?"
@@ -1451,11 +1473,11 @@ msgstr "Dodaj suprugu"
 #. I18N: Description of the “HTML” module
 #: modules_v3/html/module.php:37
 msgid "Add your own text and graphics."
-msgstr ""
+msgstr "Dodaj svoj tekst i grafiku."
 
 #: modules_v3/GEDFact_assistant/_CENS/census_1_ctrl.php:91
 msgid "Add/Insert Blank Row"
-msgstr ""
+msgstr "Dodaj/Umetni Prazan Red"
 
 #: editnews.php:31 editnews.php:49
 msgid "Add/edit journal/news entry"
@@ -1468,7 +1490,7 @@ msgstr ""
 #. I18N: gedcom tag ADDR
 #: library/WT/Gedcom/Tag.php:94
 msgid "Address"
-msgstr "כתובת"
+msgstr "Adresa"
 
 #: library/WT/Gedcom/Tag.php:95
 msgid "Address line 1"
@@ -1651,23 +1673,23 @@ msgstr "Posvojenje sina"
 #. I18N: gedcom tag CHRA
 #: library/WT/Gedcom/Tag.php:146
 msgid "Adult christening"
-msgstr ""
+msgstr "Krštenje u odrasloj dobi"
 
 #: modules_v3/googlemap/module.php:298
 msgid "Advanced"
-msgstr ""
+msgstr "Napredno"
 
 #: admin_trees_config.php:1227
 msgid "Advanced fact settings"
-msgstr ""
+msgstr "Napredne postavke činjenica"
 
 #: admin_trees_config.php:1232 help_text.php:406
 msgid "Advanced name facts"
-msgstr ""
+msgstr "Napredna činjenica imena"
 
 #: admin_trees_config.php:1240 help_text.php:411
 msgid "Advanced place name facts"
-msgstr ""
+msgstr "Napredna činjenica imena mjesta"
 
 #: library/WT/Controller/AdvancedSearch.php:33 library/WT/MenuBar.php:418
 #: search.php:220 search.php:227 search.php:230
@@ -1685,10 +1707,14 @@ msgstr "Afrika"
 #: help_text.php:1071
 msgid "After creating the family tree, you will be able to upload or import data from a GEDCOM file."
 msgstr ""
+"Nakon kreiranja obiteljskog stabla, imati ćete mogučnost učitati ili unijeti "
+"podatke iz GEDCOM datoteke."
 
 #: login.php:242
 msgid "After you have logged in, select the “My Account” link under the “My Page” menu and fill in the password fields to change your password."
 msgstr ""
+"Nakon prijave, označite link “Moj Račun” unutar izbornika “Moja stranica” i "
+"popunite lozinka polje za promjenu lozinke."
 
 #. I18N: gedcom tag AGE
 #: autocomplete.php:114 includes/functions/functions_print.php:709
@@ -1707,7 +1733,7 @@ msgstr "Dob kod rođenja djeteta"
 
 #: admin_trees_config.php:535 help_text.php:622
 msgid "Age at which to assume an individual is dead"
-msgstr ""
+msgstr "Starost kod koje pretpostavljamo da je osoba mrtva"
 
 #: statistics.php:332
 msgid "Age between husband and wife"
@@ -1736,7 +1762,7 @@ msgstr "Dob u godini stupanja u brak"
 
 #: modules_v3/gedcom_news/module.php:174
 msgid "Age of item"
-msgstr ""
+msgstr "Starost stavke"
 
 #: admin_trees_config.php:984
 msgid "Age of parents next to child’s birthdate"
@@ -1784,7 +1810,7 @@ msgstr "Nadimak"
 
 #: includes/functions/functions_print_lists.php:88
 msgid "Alive"
-msgstr ""
+msgstr "Živ"
 
 #. I18N: listbox option, e.g. “10,25,50,100,all”
 #: calendar.php:230 famlist.php:69 famlist.php:75 famlist.php:81
@@ -1817,7 +1843,7 @@ msgstr ""
 
 #: admin_trees_config.php:1137 help_text.php:505
 msgid "All family facts"
-msgstr ""
+msgstr "Sve obiteljske činjenice"
 
 #: login.php:405
 msgid "All fields must be completed."
@@ -1829,20 +1855,20 @@ msgstr ""
 
 #: admin_trees_config.php:1100 help_text.php:592
 msgid "All individual facts"
-msgstr ""
+msgstr "Sve osobne činjenice"
 
 #: calendar.php:189 calendar.php:203 calendar.php:204 calendar.php:207
 #: calendar.php:208 calendar.php:441
 msgid "All individuals"
-msgstr ""
+msgstr "Sve osobe"
 
 #: admin_trees_config.php:1203 help_text.php:798
 msgid "All repository facts"
-msgstr ""
+msgstr "Sva spremišta činjenica"
 
 #: admin_trees_config.php:1174 help_text.php:909
 msgid "All source facts"
-msgstr ""
+msgstr "Svi izvori činjenica"
 
 #. I18N: Description of the “CKEditor” module.  WYSIWYG = “what you see is what you get”
 #: modules_v3/ckeditor/module.php:39
@@ -1914,10 +1940,14 @@ msgstr ""
 #: help_text.php:65
 msgid "An associate is another individual who was involved with this fact or event, such as a witness or a priest."
 msgstr ""
+"Sudionik je druga osoba koja je umješana u ovu činjenicu ili događaj, kao "
+"svjedok ili svečenik."
 
 #: help_text.php:60
 msgid "An associate is another individual who was involved with this individual, such as a friend or an employer."
 msgstr ""
+"Sudionik je druga osoba koja je umješana sa ovom osobom, kao prijatelj ili "
+"poslodavac."
 
 #. I18N: Description of the “Edit” module
 #: modules_v3/page_menu/module.php:37
@@ -1954,13 +1984,13 @@ msgstr ""
 
 #: modules_v3/ahnentafel_report/report.xml:52
 msgid "Ancestors of "
-msgstr ""
+msgstr "Preci od "
 
 #. I18N: %s is an individual’s name
 #: library/WT/Controller/Ancestry.php:73 library/WT/Controller/Ancestry.php:95
 #, php-format
 msgid "Ancestors of %s"
-msgstr ""
+msgstr "Preci od %s"
 
 #. I18N: gedcom tag AFN
 #: library/WT/Gedcom/Tag.php:100
@@ -2038,7 +2068,7 @@ msgstr "Odobri sve promjene"
 
 #: admin_users.php:578
 msgid "Approved"
-msgstr ""
+msgstr "Odobreno"
 
 #: admin_users.php:374
 msgid "Approved by administrator"
@@ -2076,15 +2106,15 @@ msgstr "Aqua Marine"
 
 #: modules_v3/faq/module.php:396
 msgid "Are you sure you want to delete this FAQ entry?"
-msgstr ""
+msgstr "Jeste sigurni da želite obrisati ovaj ČPP (FAQ) unos?"
 
 #: modules_v3/user_blog/module.php:91
 msgid "Are you sure you want to delete this Journal entry?"
-msgstr ""
+msgstr "Jeste sigurni da želite obrisati ovaj unos u dnevnik?"
 
 #: modules_v3/gedcom_news/module.php:119
 msgid "Are you sure you want to delete this News entry?"
-msgstr ""
+msgstr "Jeste sigurni da želite obrisati ovaj unos vijedti?"
 
 #: includes/functions/functions_print_facts.php:181
 #: includes/functions/functions_print_facts.php:694
@@ -2097,11 +2127,11 @@ msgstr "Jeste li sigurni da želite izbrisati ovu činjenicu?"
 #: modules_v3/user_messages/module.php:67
 #: modules_v3/user_messages/module.php:113
 msgid "Are you sure you want to delete this message?  It cannot be retrieved later."
-msgstr ""
+msgstr "Jeste sigurni da želite obrisati poruku? Neće se moći vratiti kasnije."
 
 #: modules_v3/stories/module.php:358
 msgid "Are you sure you want to delete this story?"
-msgstr ""
+msgstr "Jeste sigurni da želite obrisati ovu priću?"
 
 #: admin_media.php:302 admin_media.php:448 admin_site_access.php:114
 #: admin_trees_manage.php:230 admin_users.php:160
@@ -2113,19 +2143,20 @@ msgstr ""
 #: library/WT/Controller/Source.php:64
 #, php-format
 msgid "Are you sure you want to delete “%s”?"
-msgstr ""
+msgstr "Jeste sigurni da želite obrisati “%s”?"
 
 #: modules_v3/lightbox/module.php:175
 msgid "Are you sure you want to remove links to this media object?"
-msgstr ""
+msgstr "Jeste sigurni da želite uloniti vezu na ovaj medijski objekt?"
 
 #: modules_v3/gedcom_favorites/module.php:123
 msgid "Are you sure you want to remove this item from your list of Favorites?"
-msgstr ""
+msgstr "Jeste sigurni da želite ukloniti ovu stavku sa vaše liste favorita?"
 
 #: edit_changes.php:231
 msgid "Are you sure you want to undo all the changes to this family tree?"
 msgstr ""
+"Jeste sigurni da želite poništiti sve promjene na ovom obiteljskom stablu?"
 
 #: library/WT/Stats.php:3810
 msgid "Argentina"
@@ -2175,7 +2206,7 @@ msgstr "Azija"
 #. I18N: gedcom tag _ASSO
 #: library/WT/Gedcom/Tag.php:107 library/WT/Gedcom/Tag.php:379
 msgid "Associate"
-msgstr "שותפים"
+msgstr "Sudionik"
 
 #: edit_interface.php:1207 help_text.php:1174
 msgid "Associate events with this source"
@@ -2270,7 +2301,7 @@ msgstr "Autor"
 #. I18N: gedcom tag CHAN:_WT_USER
 #: library/WT/Gedcom/Tag.php:140
 msgid "Author of last change"
-msgstr ""
+msgstr "Autorova zadnja promjena"
 
 #: admin_users.php:200 admin_users.php:386 help_text.php:1451
 msgid "Automatically approve changes made by this user"
@@ -2740,7 +2771,7 @@ msgstr "Rođen kao"
 
 #: modules_v3/birth_report/report.xml:6
 msgid "Birth Place contains"
-msgstr ""
+msgstr "Mjesto rođenja sadrži"
 
 #: library/WT/Stats.php:978 statistics.php:576
 msgid "Birth by country"
@@ -2748,11 +2779,11 @@ msgstr "Rođenja po državi"
 
 #: modules_v3/bdm_report/report.xml:8 modules_v3/birth_report/report.xml:8
 msgid "Birth date range end"
-msgstr ""
+msgstr "Kraj raspona datuma rođenja"
 
 #: modules_v3/bdm_report/report.xml:7 modules_v3/birth_report/report.xml:7
 msgid "Birth date range start"
-msgstr ""
+msgstr "Početak raspona datuma rođenja"
 
 #: library/WT/Gedcom/Tag.php:449
 msgid "Birth of a brother"
@@ -2848,7 +2879,7 @@ msgstr ""
 #. I18N: gedcom tag BLES
 #: library/WT/Gedcom/Tag.php:124
 msgid "Blessing"
-msgstr ""
+msgstr "Blagoslov"
 
 #: admin_module_blocks.php:54 admin_modules.php:127
 msgid "Block"
@@ -3042,7 +3073,7 @@ msgstr "Pokop"
 
 #: library/WT/Gedcom/Tag.php:512
 msgid "Burial of a brother"
-msgstr ""
+msgstr "Pokop brata"
 
 #: library/WT/Gedcom/Tag.php:460
 msgid "Burial of a child"
@@ -3050,11 +3081,11 @@ msgstr "Pokop djeteta"
 
 #: library/WT/Gedcom/Tag.php:459
 msgid "Burial of a daughter"
-msgstr ""
+msgstr "Pokop kčeri"
 
 #: library/WT/Gedcom/Tag.php:506
 msgid "Burial of a father"
-msgstr ""
+msgstr "Pokop oca"
 
 #: library/WT/Gedcom/Tag.php:466 library/WT/Gedcom/Tag.php:472
 #: library/WT/Gedcom/Tag.php:478
@@ -3063,25 +3094,25 @@ msgstr "Pokop unuka"
 
 #: library/WT/Gedcom/Tag.php:465
 msgid "Burial of a granddaughter"
-msgstr ""
+msgstr "Pokop unuke"
 
 #: library/WT/Gedcom/Tag.php:471
 msgctxt "daughter’s daughter"
 msgid "Burial of a granddaughter"
-msgstr ""
+msgstr "Pokop unuke"
 
 #: library/WT/Gedcom/Tag.php:477
 msgctxt "son’s daughter"
 msgid "Burial of a granddaughter"
-msgstr ""
+msgstr "Pokop unuke"
 
 #: library/WT/Gedcom/Tag.php:482
 msgid "Burial of a grandfather"
-msgstr ""
+msgstr "Pokop djeda"
 
 #: library/WT/Gedcom/Tag.php:483
 msgid "Burial of a grandmother"
-msgstr ""
+msgstr "Pokop bake"
 
 #: library/WT/Gedcom/Tag.php:484
 msgid "Burial of a grandparent"
@@ -3089,17 +3120,17 @@ msgstr ""
 
 #: library/WT/Gedcom/Tag.php:464
 msgid "Burial of a grandson"
-msgstr ""
+msgstr "Pokop unuka"
 
 #: library/WT/Gedcom/Tag.php:470
 msgctxt "daughter’s son"
 msgid "Burial of a grandson"
-msgstr ""
+msgstr "Pokop unuka"
 
 #: library/WT/Gedcom/Tag.php:476
 msgctxt "son’s son"
 msgid "Burial of a grandson"
-msgstr ""
+msgstr "Pokop unuka"
 
 #: library/WT/Gedcom/Tag.php:500
 msgid "Burial of a half-brother"
@@ -3115,7 +3146,7 @@ msgstr ""
 
 #: library/WT/Gedcom/Tag.php:518
 msgid "Burial of a husband"
-msgstr ""
+msgstr "Pokop muža"
 
 #: library/WT/Gedcom/Tag.php:494
 msgid "Burial of a maternal grandfather"
@@ -3131,11 +3162,11 @@ msgstr ""
 
 #: library/WT/Gedcom/Tag.php:507
 msgid "Burial of a mother"
-msgstr ""
+msgstr "Pokop majke"
 
 #: library/WT/Gedcom/Tag.php:508
 msgid "Burial of a parent"
-msgstr ""
+msgstr "Pokop roditelja"
 
 #: library/WT/Gedcom/Tag.php:488
 msgid "Burial of a paternal grandfather"
@@ -3155,23 +3186,23 @@ msgstr "Pokop brata/sestre"
 
 #: library/WT/Gedcom/Tag.php:513
 msgid "Burial of a sister"
-msgstr ""
+msgstr "Pokop sestre"
 
 #: library/WT/Gedcom/Tag.php:458
 msgid "Burial of a son"
-msgstr ""
+msgstr "Pokop sina"
 
 #: library/WT/Gedcom/Tag.php:520
 msgid "Burial of a spouse"
-msgstr ""
+msgstr "Pokop supružnika"
 
 #: library/WT/Gedcom/Tag.php:519
 msgid "Burial of a wife"
-msgstr ""
+msgstr "Pokop supruge"
 
 #: modules_v3/cemetery_report/report.xml:5
 msgid "Burial place contains"
-msgstr ""
+msgstr "Mjesto pokopa sadrži"
 
 #: library/WT/Stats.php:3823
 msgid "Burkina Faso"
@@ -3233,7 +3264,7 @@ msgstr "Kalendar"
 
 #: admin_trees_config.php:257 help_text.php:434
 msgid "Calendar conversion"
-msgstr ""
+msgstr "Konverzija kalendara"
 
 #. I18N: gedcom tag CALN
 #: library/WT/Gedcom/Tag.php:131
@@ -3337,12 +3368,12 @@ msgstr "Groblje"
 #. I18N: gedcom tag CENS
 #: library/WT/Gedcom/Tag.php:135
 msgid "Census"
-msgstr ""
+msgstr "Popis"
 
 #. I18N: Name of a module
 #: modules_v3/GEDFact_assistant/module.php:32
 msgid "Census assistant"
-msgstr ""
+msgstr "Popis sudionika"
 
 #: library/WT/Gedcom/Tag.php:136 modules_v3/GEDFact_assistant/module.php:361
 msgid "Census date"
@@ -3350,7 +3381,7 @@ msgstr ""
 
 #: library/WT/Gedcom/Tag.php:137
 msgid "Census place"
-msgstr ""
+msgstr "Popis mjesta"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:493
 msgid "Census transcript"
@@ -3497,7 +3528,7 @@ msgstr ""
 #. I18N: gedcom tag CHIL
 #: includes/functions/functions_date.php:32 library/WT/Gedcom/Tag.php:142
 msgid "Child"
-msgstr ""
+msgstr "Djete"
 
 #: modules_v3/ahnentafel_report/report.xml:393
 #: modules_v3/descendancy_report/report.xml:478
@@ -3544,12 +3575,12 @@ msgstr ""
 #. I18N: In the patrilineal surname tradition, ...
 #: help_text.php:937 help_text.php:947 help_text.php:968 help_text.php:975
 msgid "Children take their father’s surname."
-msgstr ""
+msgstr "Djeca preuzela očevo prezime."
 
 #. I18N: In the matrilineal surname tradition, ...
 #: help_text.php:943
 msgid "Children take their mother’s surname."
-msgstr ""
+msgstr "Djeca preuzela majčino prezime."
 
 #: library/WT/Stats.php:3847
 msgid "Chile"
@@ -3591,76 +3622,76 @@ msgstr "Izaberi: "
 #: modules_v3/family_group_report/report.xml:892
 #: modules_v3/missing_facts_report/report.xml:13
 msgid "Christening"
-msgstr ""
+msgstr "Krštenje"
 
 #: library/WT/Gedcom/Tag.php:554
 msgid "Christening of a brother"
-msgstr ""
+msgstr "Krštenje brata"
 
 #: library/WT/Gedcom/Tag.php:526
 msgid "Christening of a child"
-msgstr ""
+msgstr "Krštenje djeteta"
 
 #: library/WT/Gedcom/Tag.php:525
 msgid "Christening of a daughter"
-msgstr ""
+msgstr "Krštenje kčeri"
 
 #: library/WT/Gedcom/Tag.php:532 library/WT/Gedcom/Tag.php:538
 #: library/WT/Gedcom/Tag.php:544
 msgid "Christening of a grandchild"
-msgstr ""
+msgstr "Krštenje unuka"
 
 #: library/WT/Gedcom/Tag.php:531
 msgid "Christening of a granddaughter"
-msgstr ""
+msgstr "Krštenje unuke"
 
 #: library/WT/Gedcom/Tag.php:537
 msgctxt "daughter’s daughter"
 msgid "Christening of a granddaughter"
-msgstr ""
+msgstr "Krštenje unuke"
 
 #: library/WT/Gedcom/Tag.php:543
 msgctxt "son’s daughter"
 msgid "Christening of a granddaughter"
-msgstr ""
+msgstr "Krštenje unuke"
 
 #: library/WT/Gedcom/Tag.php:530
 msgid "Christening of a grandson"
-msgstr ""
+msgstr "Krštenje unuka"
 
 #: library/WT/Gedcom/Tag.php:536
 msgctxt "daughter’s son"
 msgid "Christening of a grandson"
-msgstr ""
+msgstr "Krštenje unuka"
 
 #: library/WT/Gedcom/Tag.php:542
 msgctxt "son’s son"
 msgid "Christening of a grandson"
-msgstr ""
+msgstr "Krštenje unuka"
 
 #: library/WT/Gedcom/Tag.php:548
 msgid "Christening of a half-brother"
-msgstr ""
+msgstr "Krštenje polubrata"
 
 #: library/WT/Gedcom/Tag.php:550
 msgid "Christening of a half-sibling"
-msgstr ""
+msgstr "Krštenje polubrata ili polusestre"
 
 #: library/WT/Gedcom/Tag.php:549
 msgid "Christening of a half-sister"
-msgstr ""
+msgstr "Krštenje polusestre"
 
 #: library/WT/Gedcom/Tag.php:556
 msgid "Christening of a sibling"
-msgstr ""
+msgstr "Krštenje brata ili sestre"
 
 #: library/WT/Gedcom/Tag.php:555
 msgid "Christening of a sister"
-msgstr ""
+msgstr "Krštenje sestre"
 
 #: library/WT/Gedcom/Tag.php:524
 msgid "Christening of a son"
-msgstr ""
+msgstr "Krštenje sina"
 
 #: library/WT/Stats.php:3860
 msgid "Christmas Island"
@@ -3676,7 +3707,7 @@ msgstr ""
 #: modules_v3/fact_sources/report.xml:274
 #: modules_v3/fact_sources/report.xml:320
 msgid "Citation details"
-msgstr ""
+msgstr "Detalj citata"
 
 #. I18N: gedcom tag CITN
 #: library/WT/Gedcom/Tag.php:147
@@ -3695,7 +3726,7 @@ msgstr ""
 
 #: library/WT/Gedcom/Tag.php:236 modules_v3/fact_sources/report.xml:199
 msgid "Civil marriage"
-msgstr ""
+msgstr "Građanski brak"
 
 #: library/WT/Gedcom/Code/Rela.php:73
 msgid "Civil registrar"
@@ -3780,7 +3811,7 @@ msgstr ""
 #. I18N: Name of a module
 #: modules_v3/clippings/module.php:32
 msgid "Clippings cart"
-msgstr ""
+msgstr "Isječci"
 
 #: library/WT/Gedcom/Tag.php:882
 msgid "Coat of arms"
@@ -3826,7 +3857,7 @@ msgstr ""
 
 #: medialist.php:133
 msgid "Columns per page"
-msgstr ""
+msgstr "Kolona po stranici"
 
 #. I18N: gedcom tag COMM
 #: admin_site_access.php:285 library/WT/Gedcom/Tag.php:149
@@ -3841,12 +3872,13 @@ msgstr "Komentari"
 #. I18N: gedcom tag _COML
 #: library/WT/Gedcom/Tag.php:558
 msgid "Common law marriage"
-msgstr ""
+msgstr "Izvanbračna zajednica"
 
 #. I18N: Description of the “Messages” module
 #: modules_v3/user_messages/module.php:37
 msgid "Communicate directly with other users, using private messages."
 msgstr ""
+"Komunicirajte direktno sa drugim korisnicima, koristeći privatne poruke."
 
 #: library/WT/Stats.php:3855
 msgid "Comoros"
@@ -3856,13 +3888,13 @@ msgstr ""
 #: library/WT/Controller/Compact.php:43 library/WT/Controller/Fanchart.php:309
 #: library/WT/MenuBar.php:98
 msgid "Compact tree"
-msgstr ""
+msgstr "Kompaktno stablo"
 
 #. I18N: %s is an individual’s name
 #: library/WT/Controller/Compact.php:40 library/WT/Controller/Compact.php:112
 #, php-format
 msgid "Compact tree of %s"
-msgstr ""
+msgstr "Kompaktno stablo od %s"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: library/WT/Gedcom/Code/Stat.php:77
@@ -3877,7 +3909,7 @@ msgstr "Završeno; nepoznat datum"
 #. I18N: gedcom tag CONC
 #: library/WT/Gedcom/Tag.php:150
 msgid "Concatenation"
-msgstr ""
+msgstr "Ulančavanje"
 
 #: modules_v3/charts/module.php:88 modules_v3/gedcom_news/module.php:85
 #: modules_v3/gedcom_stats/module.php:75 modules_v3/html/module.php:96
@@ -3971,7 +4003,7 @@ msgstr "Kopiraj datoteke"
 #: admin_site_upgrade.php:392
 #, php-format
 msgid "Copy these files to the folder %s, replacing any that have the same name."
-msgstr ""
+msgstr "Kopiraj te datoteke u direktori %s, prepiši one koji imaju isto ime."
 
 #. I18N: gedcom tag COPR
 #: library/WT/Gedcom/Tag.php:156
@@ -3981,7 +4013,7 @@ msgstr "Autorsko pravo"
 #. I18N: gedcom tag CORP
 #: library/WT/Gedcom/Tag.php:157
 msgid "Corporation"
-msgstr ""
+msgstr "Korporacija"
 
 #: modules_v3/batch_update/plugins/name_format.php:32
 msgid "Correct NAME records of the form “John/DOE/” or “John /DOE”, as produced by older genealogy programs."
@@ -4018,7 +4050,7 @@ msgstr "Država"
 
 #: statisticsplot.php:809 statisticsplot.php:811 statisticsplot.php:813
 msgid "Counts "
-msgstr ""
+msgstr "Brojać"
 
 #: modules_v3/googlemap/module.php:3947
 msgid "County"
@@ -4325,11 +4357,11 @@ msgstr "Datum"
 
 #: modules_v3/user_messages/module.php:87
 msgid "Date Sent:"
-msgstr ""
+msgstr "Datum slanja:"
 
 #: admin_trees_config.php:1045 help_text.php:1403
 msgid "Date differences"
-msgstr ""
+msgstr "Razlika datuma"
 
 #: library/WT/Gedcom/Tag.php:110
 msgid "Date of LDS baptism"
@@ -4375,7 +4407,7 @@ msgstr "Datum rođenja"
 
 #: library/WT/Gedcom/Tag.php:125
 msgid "Date of blessing"
-msgstr ""
+msgstr "Datum blagoslova"
 
 #: library/WT/Gedcom/Tag.php:454
 msgid "Date of brit milah"
@@ -4389,7 +4421,7 @@ msgstr "Datum pokopa"
 #: library/WT/Gedcom/Tag.php:144
 #: modules_v3/missing_facts_report/report.xml:166
 msgid "Date of christening"
-msgstr ""
+msgstr "Datum krštenja"
 
 #: library/WT/Gedcom/Tag.php:153
 #: modules_v3/missing_facts_report/report.xml:290
@@ -4408,7 +4440,7 @@ msgstr "Datum smrti"
 
 #: library/WT/Gedcom/Tag.php:199
 msgid "Date of divorce"
-msgstr ""
+msgstr "Datum razvoda"
 
 #: library/WT/Gedcom/Tag.php:181
 msgid "Date of emigration"
@@ -4417,7 +4449,7 @@ msgstr "datum emigracije"
 #: library/WT/Gedcom/Tag.php:187
 #: modules_v3/missing_facts_report/report.xml:332
 msgid "Date of engagement"
-msgstr ""
+msgstr "Datum angažiranja"
 
 #: library/WT/Gedcom/Tag.php:163
 msgid "Date of entry in original source"
@@ -4430,7 +4462,7 @@ msgstr "Datum događaja"
 #: library/WT/Gedcom/Tag.php:207
 #: modules_v3/missing_facts_report/report.xml:374
 msgid "Date of first communion"
-msgstr ""
+msgstr "Datum prve pričesti"
 
 #: library/WT/Gedcom/Tag.php:219
 msgid "Date of immigration"
@@ -4439,7 +4471,7 @@ msgstr "Datum imigracije"
 #. I18N: gedcom tag CHAN:DATE
 #: library/WT/Gedcom/Tag.php:139
 msgid "Date of last change"
-msgstr ""
+msgstr "Datum zadnje promjene"
 
 #: library/WT/Gedcom/Tag.php:200 library/WT/Gedcom/Tag.php:234
 #: modules_v3/fact_sources/report.xml:316
@@ -4450,7 +4482,7 @@ msgstr "Datum braka"
 #: library/WT/Gedcom/Tag.php:229
 #: modules_v3/missing_facts_report/report.xml:416
 msgid "Date of marriage banns"
-msgstr ""
+msgstr "Datum objave braka"
 
 #: library/WT/Gedcom/Tag.php:252
 msgid "Date of naturalization"
@@ -4462,7 +4494,7 @@ msgstr ""
 
 #: library/WT/Gedcom/Tag.php:285
 msgid "Date of residence"
-msgstr ""
+msgstr "Datum prebivališta"
 
 #: help_text.php:198
 msgid "Date period"
@@ -4482,7 +4514,7 @@ msgstr ""
 
 #: admin_users.php:574
 msgid "Date registered"
-msgstr ""
+msgstr "Datum registracije"
 
 #. I18N: The three place holders are all dates.
 #: help_text.php:448
@@ -4504,15 +4536,15 @@ msgstr "Kćer"
 #: modules_v3/tree/class_treeview.php:334
 #, php-format
 msgid "Daughter of %s"
-msgstr ""
+msgstr "Kčer od %s"
 
 #: admin.php:232 calendar.php:138 library/WT/MenuBar.php:365
 msgid "Day"
-msgstr ""
+msgstr "Dan"
 
 #: calendar.php:476
 msgid "Day not set"
-msgstr ""
+msgstr "Dan nije postavljen"
 
 #: timeline.php:128 timeline.php:130 timeline.php:132
 msgid "Day:"
@@ -4648,7 +4680,7 @@ msgstr "Smrt"
 
 #: modules_v3/death_report/report.xml:6
 msgid "Death Place contains"
-msgstr ""
+msgstr "Mjesto smrti sadrži"
 
 #: library/WT/Stats.php:995 statistics.php:584
 msgid "Death by country"
@@ -4656,11 +4688,11 @@ msgstr "Smrti po državi"
 
 #: modules_v3/bdm_report/report.xml:10 modules_v3/death_report/report.xml:8
 msgid "Death date range end"
-msgstr ""
+msgstr "Kraj raspona datuma smrti"
 
 #: modules_v3/bdm_report/report.xml:9 modules_v3/death_report/report.xml:7
 msgid "Death date range start"
-msgstr ""
+msgstr "Početak raspona datuma smrti"
 
 #: library/WT/Gedcom/Tag.php:682
 msgid "Death of a brother"
@@ -4778,7 +4810,7 @@ msgstr "Smrt sina"
 
 #: library/WT/Gedcom/Tag.php:690
 msgid "Death of a spouse"
-msgstr ""
+msgstr "Smrt supružnika"
 
 #: library/WT/Gedcom/Tag.php:689
 msgid "Death of a wife"
@@ -4787,7 +4819,7 @@ msgstr "Smrt žene"
 #. I18N: gedcom tag _DETS
 #: library/WT/Gedcom/Tag.php:693
 msgid "Death of one spouse"
-msgstr ""
+msgstr "Smrt jednog bračnog partnera"
 
 #: statistics.php:405
 msgid "Death places"
@@ -4847,11 +4879,11 @@ msgstr ""
 
 #: modules_v3/html/module.php:298
 msgid "Default"
-msgstr ""
+msgstr "Zadano"
 
 #: modules_v3/gedcom_block/module.php:49
 msgid "Default chart"
-msgstr ""
+msgstr "Zadani grafikon"
 
 #: admin_trees_manage.php:244 help_text.php:1113
 msgid "Default family tree"
@@ -4860,7 +4892,7 @@ msgstr "Osnovno obiteljsko stablo"
 #: admin_trees_config.php:240 admin_users.php:230 admin_users.php:432
 #: edituser.php:141 help_text.php:1118 modules_v3/gedcom_block/module.php:50
 msgid "Default individual"
-msgstr ""
+msgstr "Zadana osoba"
 
 #: modules_v3/googlemap/module.php:304
 msgid "Default map type"
@@ -4929,7 +4961,7 @@ msgstr ""
 
 #: modules_v3/user_messages/module.php:116
 msgid "Delete Selected Messages"
-msgstr ""
+msgstr "Obriši označene poruke"
 
 #: modules_v3/googlemap/module.php:4130
 msgid "Delete all existing geographic data before importing the file."
@@ -4937,28 +4969,28 @@ msgstr ""
 
 #: themes/_administration/header.php:135
 msgid "Delete inactive users"
-msgstr ""
+msgstr "Obriši neaktivne korisnike"
 
 #: library/WT/Controller/Individual.php:151
 msgid "Delete name"
-msgstr ""
+msgstr "Obriši ime"
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:471
 msgid "Delete temporary files…"
-msgstr ""
+msgstr "Obriši privremene datoteke…"
 
 #: admin_site_clean.php:88
 msgid "Deleted files:"
-msgstr ""
+msgstr "Obrisane datoteke:"
 
 #: admin_users.php:555
 msgid "Deleted user: "
-msgstr ""
+msgstr "Obrisani korisnik: "
 
 #: admin_trees_manage.php:196
 msgid "Deleting old genealogy data…"
-msgstr ""
+msgstr "Brisanje starih genealoških podataka…"
 
 #: library/WT/Controller/Family.php:105
 msgid "Deleting the family will unlink all of the individuals from each other but will leave the individuals in place.  Are you sure you want to delete this family?"
@@ -4975,10 +5007,12 @@ msgstr ""
 #: admin_site_upgrade.php:84
 msgid "Depending on your server configuration, you may be able to upgrade automatically."
 msgstr ""
+"Ovisno o konfiguraciji poslužitelja, možda ćete biti u mogućnosti da "
+"nadogradite automatski."
 
 #: help_text.php:1222
 msgid "Descendant generations"
-msgstr ""
+msgstr "Potomak generacija"
 
 #. I18N: gedcom tag DESC
 #. I18N: Name of a module/sidebar
@@ -5003,7 +5037,7 @@ msgstr ""
 
 #: modules_v3/descendancy_report/report.xml:39
 msgid "Descendants of "
-msgstr ""
+msgstr "Potomak od"
 
 #. I18N: %s is an individual’s name
 #: library/WT/Controller/Descendancy.php:90 modules_v3/charts/module.php:99
@@ -5138,7 +5172,7 @@ msgstr "Smrt nakon poroda: izuzeto"
 
 #: modules_v3/change_report/report.xml:57
 msgid "Differences"
-msgstr ""
+msgstr "Razlike"
 
 #: help_text.php:437
 msgid "Different calendar systems are used in different parts of the world, and many other calendar systems have been used in the past.  Where possible, you should enter dates using the calendar in which the event was originally recorded.  You can then specify a conversion, to show these dates in a more familiar calendar.  If you regularly use two calendars, you can specify two conversions and dates will be converted to both the selected calendars."
@@ -5190,7 +5224,7 @@ msgstr ""
 
 #: modules_v3/googlemap/help_text.php:90 modules_v3/googlemap/module.php:455
 msgid "Display short placenames"
-msgstr ""
+msgstr "Prikaži kratka imena mjesta"
 
 #. I18N: gedcom tag DIV
 #: library/WT/Gedcom/Tag.php:172
@@ -5216,7 +5250,7 @@ msgstr "Ne mijenjaj da bi zadržao originalno ime datoteke"
 
 #: modules_v3/googlemap/module.php:4134
 msgid "Do not create new locations, just import coordinates for existing locations."
-msgstr ""
+msgstr "Ne kreiraj nove lokacije, samo preuzmi kordinate za postojeće lokacije."
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: library/WT/Gedcom/Code/Stat.php:68
@@ -5272,15 +5306,15 @@ msgstr "Skini"
 
 #: help_text.php:1128
 msgid "Download ZIP file"
-msgstr ""
+msgstr "Preuzmi ZIP datoteku"
 
 #: help_text.php:1123
 msgid "Download family tree"
-msgstr ""
+msgstr "Preuzmi obiteljsko stablo"
 
 #: modules_v3/googlemap/module.php:4460
 msgid "Download geographic data"
-msgstr ""
+msgstr "Preuzmi geografske podatke"
 
 #: library/WT/Date/French.php:117
 msgid "Duodi"
@@ -5322,7 +5356,7 @@ msgstr "Najranija smrt"
 #: modules_v3/gedcom_stats/module.php:140
 #: modules_v3/gedcom_stats/module.php:317 modules_v3/html/module.php:225
 msgid "Earliest death year"
-msgstr ""
+msgstr "Najranija godina smrti"
 
 #: statistics.php:226
 msgid "Earliest divorce"
@@ -5382,7 +5416,7 @@ msgstr "Uredi mediju"
 
 #: addmedia.php:232 addmedia.php:391 library/WT/Controller/Media.php:50
 msgid "Edit media object"
-msgstr ""
+msgstr "Uredi medija objekt"
 
 #: edit_interface.php:1622 includes/functions/functions_edit.php:578
 #: library/WT/Controller/Individual.php:152
@@ -5407,7 +5441,7 @@ msgstr "Uredi sirovi GEDCOM"
 
 #: library/WT/Controller/Repository.php:50
 msgid "Edit repository"
-msgstr ""
+msgstr "Uredi spremište"
 
 #: edit_interface.php:1425 edit_interface.php:1471
 #: includes/functions/functions_edit.php:328
@@ -5603,11 +5637,11 @@ msgstr "Unesite Osobu, Obitelj, ili oznaku izvora"
 
 #: modules_v3/gedcom_favorites/module.php:190
 msgid "Enter an optional note about this favorite"
-msgstr ""
+msgstr "Unesite opcoinalno bilješku o ovom favoritu"
 
 #: modules_v3/googlemap/help_text.php:73
 msgid "Enter filename"
-msgstr ""
+msgstr "Unesi ime datoteke"
 
 #: addmedia.php:419
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:178
@@ -5616,7 +5650,7 @@ msgstr "Unesite ili nađite oznaku osobe, obitelji ili izvora sa kojim bi ova me
 
 #: modules_v3/googlemap/help_text.php:53
 msgid "Enter precision"
-msgstr ""
+msgstr "Unesi točnost"
 
 #: reportengine.php:180
 msgid "Enter report values"
@@ -5633,6 +5667,8 @@ msgstr ""
 #: help_text.php:50
 msgid "Enter the address into the field just as you would write it on an envelope.<br><br>Leave this field blank if you do not want to include an address."
 msgstr ""
+"Unesite adresu u polje kao što bi ju pisali na kovertu.<br><br>Ostavite ovo "
+"polje prazno ako ne želite uključiti adresu."
 
 #: help_text.php:258
 msgid "Enter the email address.<br><br>An example email address looks like this: <b>name@hotmail.com</b>  Leave this field blank if you do not want to include an email address."
@@ -5648,7 +5684,9 @@ msgstr ""
 
 #: help_text.php:383
 msgid "Enter the time for this event in 24-hour format with leading zeroes. Midnight is 00:00. Examples: 04:50 13:00 20:30."
-msgstr "~#factarray[TIME]#~<br><br>Enter the time for this event in 24-hour format with leading zeroes. Midnight is 00:00. Examples: 04:50 13:00 20:30.<br><br>"
+msgstr ""
+"Unesite vrijeme za ovaj događaj u 24-satnom formatu sa vodećim nulama. Ponoć "
+"je 00:00. Primjer: 04:50 13:00 20:30."
 
 #: modules_v3/googlemap/help_text.php:58
 msgid "Enter zoom level"
@@ -5672,7 +5710,7 @@ msgstr "אריתריאה"
 
 #: downloadbackup.php:32
 msgid "Error"
-msgstr ""
+msgstr "Greška"
 
 #: import.php:191
 #, php-format
@@ -5741,7 +5779,7 @@ msgstr "Događaji u zemljama"
 
 #: modules_v3/personal_facts/module.php:129
 msgid "Events of close relatives"
-msgstr ""
+msgstr "Događaji uže rodbine"
 
 #: help_text.php:1363
 msgid "Every individual in the database has a unique ID number on this site.  If you know the ID number for your own record, please enter it here.  If you don’t know your ID number or could not find it because of privacy settings, please provide enough information in the Comments field to help the site administrator identify who you are on this site so that he can set the ID for you."
@@ -5762,7 +5800,7 @@ msgstr "Točan datum"
 
 #: modules_v3/batch_update/plugins/search_replace.php:109
 msgid "Exact text"
-msgstr ""
+msgstr "Točan tekst"
 
 #: famlist.php:177 indilist.php:177
 #, php-format
@@ -5814,7 +5852,7 @@ msgstr ""
 #. I18N: “External files” are stored on other computers
 #: admin_media.php:556
 msgid "External files"
-msgstr ""
+msgstr "Vanjske datoteke"
 
 #: admin_media.php:593
 msgid "External media files have a URL instead of a filename."
@@ -5915,7 +5953,7 @@ msgstr ""
 
 #: includes/functions/functions_print.php:955
 msgid "Fact or event"
-msgstr ""
+msgstr "Činjenica ili događaj"
 
 #. I18N: Name of a module/tab on the individual page.
 #: modules_v3/individual_ext_report/report.xml:150
@@ -5923,23 +5961,23 @@ msgstr ""
 #: modules_v3/personal_facts/module.php:32
 #: modules_v3/random_media/module.php:262
 msgid "Facts and events"
-msgstr ""
+msgstr "Činjenice i događaji"
 
 #: admin_trees_config.php:1132
 msgid "Facts for family records"
-msgstr ""
+msgstr "Činjenica za obiteljski zapis"
 
 #: admin_trees_config.php:1095
 msgid "Facts for individual records"
-msgstr ""
+msgstr "Činjenica za zapis pojedinca"
 
 #: admin_trees_config.php:1153 help_text.php:793
 msgid "Facts for new families"
-msgstr ""
+msgstr "Činjenica za nove obitelji"
 
 #: admin_trees_config.php:1116 help_text.php:788
 msgid "Facts for new individuals"
-msgstr ""
+msgstr "Činjenica za novog pojedinca"
 
 #: admin_trees_config.php:1198
 msgid "Facts for repository records"
@@ -6039,12 +6077,12 @@ msgstr "Lista obitelji"
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:45
 #: modules_v3/family_nav/module.php:37
 msgid "Family navigator"
-msgstr ""
+msgstr "Obiteljski navigator"
 
 #. I18N: Description of the “GEDCOM News” module
 #: modules_v3/gedcom_news/module.php:45
 msgid "Family news and site announcements."
-msgstr ""
+msgstr "Obiteljske vijesti i najave"
 
 #. I18N: A title/heading. %s is an individual’s name
 #: library/WT/Controller/Familybook.php:398
@@ -6063,11 +6101,11 @@ msgstr "Obiteljsko stablo"
 
 #: admin_users.php:227 admin_users.php:425
 msgid "Family tree access and settings"
-msgstr ""
+msgstr "Pristup i postavke obiteljskog stabla"
 
 #: modules_v3/clippings/module.php:73 modules_v3/clippings/module.php:257
 msgid "Family tree clippings cart"
-msgstr ""
+msgstr "Isječci obiteljskog stabla"
 
 #: admin_trees_config.php:31
 msgid "Family tree configuration"
@@ -6081,7 +6119,7 @@ msgstr "Obiteljsko stablo izvezeno u %s"
 
 #: admin_trees_config.php:228
 msgid "Family tree title"
-msgstr ""
+msgstr "Naslov obiteljskog stabla"
 
 #: admin.php:179 admin_trees_manage.php:28 search.php:200
 #: themes/_administration/header.php:104 themes/_administration/header.php:106
@@ -6335,15 +6373,15 @@ msgstr "Nađi Obitelj"
 
 #: find.php:77 includes/functions/functions_print.php:1049
 msgid "Find a media object"
-msgstr ""
+msgstr "Pronađi media objekt"
 
 #: find.php:86 includes/functions/functions_print.php:1041
 msgid "Find a note"
-msgstr ""
+msgstr "Pronađi bilješku"
 
 #: find.php:80 includes/functions/functions_print.php:1015
 msgid "Find a place"
-msgstr ""
+msgstr "Pronađi mjesto"
 
 #: find.php:83 includes/functions/functions_print.php:1045
 msgid "Find a repository"
@@ -6353,11 +6391,11 @@ msgstr ""
 #: includes/functions/functions_print.php:1037
 #: modules_v3/fact_sources/report.xml:5
 msgid "Find a source"
-msgstr ""
+msgstr "Pronađi izvor"
 
 #: find.php:92 includes/functions/functions_print.php:1023
 msgid "Find a special character"
-msgstr ""
+msgstr "Pronađi specijalni znak"
 
 #: admin_site_merge.php:265 admin_site_merge.php:286 find.php:71
 #: includes/functions/functions_print.php:1011
@@ -6696,7 +6734,7 @@ msgstr "Općenito"
 #: library/WT/Controller/Search.php:211 library/WT/MenuBar.php:412
 #: search.php:225 search.php:229
 msgid "General search"
-msgstr ""
+msgstr "Generalno pretraživanje"
 
 #. I18N: Description of the “Sitemaps” module
 #: modules_v3/sitemap/module.php:37
@@ -6716,7 +6754,7 @@ msgstr "Generacija"
 #: modules_v3/ahnentafel_report/report.xml:75
 #: modules_v3/descendancy_report/report.xml:52
 msgid "Generation "
-msgstr ""
+msgstr "Generacija"
 
 #: ancestry.php:109 descendancy.php:77 familybook.php:59 fanchart.php:66
 #: hourglass.php:66 modules_v3/ahnentafel_report/report.xml:7
@@ -6738,7 +6776,7 @@ msgstr "Generacije predaka"
 #: modules_v3/googlemap/module.php:2703 modules_v3/googlemap/module.php:3109
 #: modules_v3/googlemap/module.php:3974
 msgid "Geographic data"
-msgstr ""
+msgstr "Geografski podaci"
 
 #: statistics.php:635
 msgid "Geographical area"
@@ -6973,37 +7011,37 @@ msgstr ""
 
 #: modules_v3/descendancy_report/report.xml:426
 msgid "He "
-msgstr ""
+msgstr "On"
 
 #: modules_v3/ahnentafel_report/report.xml:288
 msgid "He died"
-msgstr ""
+msgstr "On je umro"
 
 #: modules_v3/ahnentafel_report/report.xml:257
 #: modules_v3/descendancy_report/report.xml:171
 msgid "He married"
-msgstr ""
+msgstr "On je oženjen"
 
 #: modules_v3/ahnentafel_report/report.xml:219
 msgid "He resided at"
-msgstr ""
+msgstr "On stanuje u"
 
 #: modules_v3/descendancy_report/report.xml:399
 msgid "He was born"
-msgstr ""
+msgstr "On je rođen"
 
 #: modules_v3/ahnentafel_report/report.xml:344
 msgid "He was buried"
-msgstr ""
+msgstr "On je pokopan"
 
 #: modules_v3/ahnentafel_report/report.xml:163
 msgid "He was christened"
-msgstr ""
+msgstr "On je kršten"
 
 #: modules_v3/ahnentafel_report/report.xml:313
 #: modules_v3/ahnentafel_report/report.xml:340
 msgid "He was cremated"
-msgstr ""
+msgstr "On je kremiran"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_1_ctrl.php:62
 msgid "Head of Household:"
@@ -7037,16 +7075,16 @@ msgstr "Visina"
 #: login.php:238 login.php:326
 #, php-format
 msgid "Hello %s…"
-msgstr ""
+msgstr "Pozdrav %s…"
 
 #: login.php:377
 #, php-format
 msgid "Hello %s…<br>Thank you for your registration."
-msgstr ""
+msgstr "Pozdrav %s…<br>Hvala za vašu registraciju."
 
 #: login.php:304 login.php:496
 msgid "Hello administrator…"
-msgstr ""
+msgstr "Pozdrav administrator…"
 
 #: help_text.php:1503
 msgid "Help"
@@ -7077,7 +7115,7 @@ msgstr ""
 
 #: modules_v3/ahnentafel_report/report.xml:193
 msgid "Her occupation was"
-msgstr ""
+msgstr "Nezino zanimanje je"
 
 #: modules_v3/googlemap/help_text.php:64
 msgid "Here an icon can be set or removed. Using this link a flag can be selected. When this geographic location is shown, this flag will be displayed."
@@ -7137,11 +7175,11 @@ msgstr ""
 
 #: admin_trees_config.php:220
 msgid "Hide &amp; show"
-msgstr ""
+msgstr "Sakri &amp; prikaži"
 
 #: modules_v3/googlemap/help_text.php:102 modules_v3/googlemap/module.php:717
 msgid "Hide flags"
-msgstr ""
+msgstr "Sakri zastavice"
 
 #: admin_trees_config.php:39 admin_trees_config.php:651
 #: includes/functions/functions_edit.php:199
@@ -7150,7 +7188,7 @@ msgstr "Sakrij od svih"
 
 #: modules_v3/googlemap/help_text.php:97 modules_v3/googlemap/module.php:720
 msgid "Hide lines"
-msgstr ""
+msgstr "Sakri linije"
 
 #: modules_v3/googlemap/help_text.php:103
 msgid "Hide the flags that are configured in the googlemap module.  Usually these are for countries and states. This serves as a visual cue that the markers around the flag are from the general area, and not the specific spot."
@@ -7182,11 +7220,11 @@ msgstr "Hijri"
 
 #: modules_v3/ahnentafel_report/report.xml:192
 msgid "His occupation was"
-msgstr ""
+msgstr "Njegovo zanimanje je"
 
 #: modules_v3/personal_facts/module.php:135
 msgid "Historical facts"
-msgstr ""
+msgstr "Povijesne činjenice"
 
 #: index.php:149 modules_v3/extra_info/module.php:71
 msgid "Hit count:"
@@ -7229,11 +7267,11 @@ msgstr ""
 
 #: modules_v3/googlemap/module.php:386 modules_v3/googlemap/module.php:3867
 msgid "House"
-msgstr ""
+msgstr "Kuća"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:493
 msgid "Household"
-msgstr ""
+msgstr "Kućanstvo"
 
 #: library/WT/Gedcom/Code/Temp.php:105
 msgid "Houston, Texas"
@@ -7269,7 +7307,7 @@ msgstr ""
 
 #: admin_trees_config.php:331
 msgid "ID settings"
-msgstr ""
+msgstr "ID postavke"
 
 #. I18N: http://en.wikipedia.org/wiki/IP_address
 #: admin_site_access.php:296 admin_site_logs.php:232 admin_site_logs.php:259
@@ -7422,11 +7460,11 @@ msgstr ""
 
 #: library/WT/Gedcom/Tag.php:821
 msgid "Image dimensions"
-msgstr ""
+msgstr "Dimenzija slike"
 
 #: admin_trees_config.php:720
 msgid "Images without watermarks"
-msgstr ""
+msgstr "Slike bez vodenog žiga"
 
 #. I18N: gedcom tag IMMI
 #: library/WT/Gedcom/Tag.php:218
@@ -7439,11 +7477,11 @@ msgstr "Uvoz"
 
 #: modules_v3/googlemap/module.php:4433
 msgid "Import all places from a family tree"
-msgstr ""
+msgstr "Učitaj sva mjesta iz obiteljskog stabla"
 
 #: help_text.php:1257
 msgid "Import family tree"
-msgstr ""
+msgstr "Učitaj obiteljsko stablo"
 
 #: help_text.php:348
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet.  This might be of use with Japanese names, where three different alphabets may occur."
@@ -7463,7 +7501,9 @@ msgstr ""
 
 #: help_text.php:315
 msgid "In the Citation Details field you would enter the page number or other information that might help someone find the information in the source."
-msgstr "~#factarray[PAGE]#~<br><br>In the Citation Details field you would enter the page number or other information that might help someone find the information in the source.<br><br>"
+msgstr ""
+"U polju detalj citata možete unjeti broj stranice ili druge informacije koje "
+"mogu nekom drugom pomoći da pronađe informacije na izvoru."
 
 #: help_text.php:378
 msgid "In this field you would enter the citation text for this source.  Examples of data may be a transcription of the text from the source, or a description of what was in the citation."
@@ -7471,11 +7511,11 @@ msgstr "~#factarray[TEXT]#~<br><br>In this field you would enter the citation te
 
 #: calendar.php:128
 msgid "In this month…"
-msgstr ""
+msgstr "U ovom mjesecu…"
 
 #: calendar.php:131
 msgid "In this year…"
-msgstr ""
+msgstr "U ovoj godini…"
 
 #: modules_v3/googlemap/module.php:1534
 msgid "Include fully matched places: "
@@ -7555,7 +7595,7 @@ msgstr "Osobni zapis"
 #: modules_v3/gedcom_stats/module.php:155
 #: modules_v3/gedcom_stats/module.php:333 modules_v3/html/module.php:235
 msgid "Individual who lived the longest"
-msgstr ""
+msgstr "Osoba koja je živjela najduže"
 
 #: admin.php:195 admin.php:239 ancestry.php:94 calendar.php:409
 #: descendancy.php:66 includes/functions/functions_print_lists.php:915
@@ -7629,7 +7669,7 @@ msgstr ""
 
 #: help_text.php:1182
 msgid "Internal messaging"
-msgstr ""
+msgstr "Interno slanje poruka"
 
 #: help_text.php:1186 includes/functions/functions_edit.php:221
 #: includes/functions/functions_edit.php:232
@@ -7776,7 +7816,7 @@ msgstr ""
 #. I18N: Name of a module
 #: modules_v3/user_blog/module.php:40
 msgid "Journal"
-msgstr ""
+msgstr "Dnevnik"
 
 #: library/WT/Date/Calendar.php:192
 msgctxt "Abbreviation for July"
@@ -8059,7 +8099,7 @@ msgstr "Zadnji događaj"
 
 #: admin_users.php:576
 msgid "Last logged in"
-msgstr ""
+msgstr "Zadnja prijava"
 
 #: search.php:159
 msgid "Last name"
@@ -8081,7 +8121,7 @@ msgstr "Zadnja smrt"
 #: modules_v3/gedcom_stats/module.php:147
 #: modules_v3/gedcom_stats/module.php:325 modules_v3/html/module.php:230
 msgid "Latest death year"
-msgstr ""
+msgstr "Zadnja godina smrti"
 
 #: statistics.php:234
 msgid "Latest divorce"
@@ -8860,7 +8900,7 @@ msgstr ""
 
 #: find.php:214
 msgid "Media contains:"
-msgstr "Zapis sadrži:"
+msgstr "Medij sadrži:"
 
 #: admin_media.php:608 admin_media_upload.php:181
 msgid "Media file"
@@ -8911,7 +8951,7 @@ msgstr ""
 #: note.php:128 source.php:101 statistics.php:346 statistics.php:373
 #: statistics.php:376
 msgid "Media objects"
-msgstr "Zapisi na.."
+msgstr "Medijski objekti"
 
 #: medialist.php:111
 msgid "Media objects per page"
@@ -9027,7 +9067,7 @@ msgstr ""
 
 #: admin_site_logs.php:229 admin_site_logs.php:258
 msgid "Message"
-msgstr ""
+msgstr "Poruka"
 
 #: message.php:200
 #, php-format
@@ -9036,7 +9076,7 @@ msgstr "Poruka uspječno poslana za %s"
 
 #: message.php:47 message.php:202
 msgid "Message was not sent"
-msgstr ""
+msgstr "Poruka nije poslana"
 
 #. I18N: A site configuration setting
 #. I18N: Name of a module
@@ -9092,7 +9132,7 @@ msgstr "Srednji istok"
 #. I18N: time format “%A” - exactly 00:00:00
 #: includes/functions/functions_date.php:117
 msgid "Midnight"
-msgstr ""
+msgstr "Ponoć"
 
 #. I18N: gedcom tag _MILI
 #: library/WT/Gedcom/Tag.php:778
@@ -9285,7 +9325,7 @@ msgstr ""
 #. I18N: Name of a module
 #: modules_v3/top10_pageviews/module.php:32
 msgid "Most viewed pages"
-msgstr ""
+msgstr "Najčešće viđene stranice"
 
 #: modules_v3/bdm_report/report.xml:117
 #: modules_v3/family_group_report/report.xml:468
@@ -9300,7 +9340,7 @@ msgstr "Majka"
 #: library/WT/Individual.php:807
 #, php-format
 msgid "Mother: %s"
-msgstr ""
+msgstr "Majka: %s"
 
 #: includes/functions/functions_print.php:612
 msgid "Mother’s age"
@@ -9379,7 +9419,7 @@ msgstr ""
 
 #: includes/functions/functions_print_lists.php:501
 msgid "Multiple marriages"
-msgstr ""
+msgstr "Višestruki brakovi"
 
 #: edituser.php:126 library/WT/MenuBar.php:59
 #: modules_v3/user_welcome/module.php:47
@@ -9389,7 +9429,7 @@ msgstr "Moj račun"
 #. I18N: Default title for new family trees
 #: library/WT/Tree.php:307
 msgid "My family tree"
-msgstr ""
+msgstr "Moje obiteljsko stablo"
 
 #: library/WT/MenuBar.php:71 modules_v3/user_welcome/module.php:51
 msgid "My individual record"
@@ -9404,7 +9444,7 @@ msgstr "Moja stranica"
 
 #: library/WT/MenuBar.php:65 modules_v3/user_welcome/module.php:50
 msgid "My pedigree"
-msgstr ""
+msgstr "Moj pedigre"
 
 #. I18N: %s is an error message
 #: admin_pgv_to_wt.php:82
@@ -9693,7 +9733,7 @@ msgstr ""
 
 #: modules_v3/gedcom_news/module.php:93
 msgid "No News articles have been submitted."
-msgstr ""
+msgstr "Nema članaka u novostima."
 
 #: modules_v3/googlemap/module.php:865
 msgid "No ancestors in the database."
@@ -9809,11 +9849,11 @@ msgstr "Nijedna druga poveznica između osoba nije pronađena"
 
 #: modules_v3/googlemap/module.php:3748 modules_v3/googlemap/module.php:4380
 msgid "No places found"
-msgstr ""
+msgstr "Mjesto nije nađeno"
 
 #: admin_trees_places.php:121
 msgid "No places were found."
-msgstr ""
+msgstr "Mjesto nije nađeno"
 
 #: admin_site_config.php:44
 msgid "No predefined text"
@@ -9960,7 +10000,9 @@ msgstr "Bilješke"
 
 #: help_text.php:302
 msgid "Notes are free-form text and will appear in the Fact Details section of the page."
-msgstr "~#factarray[NOTE]#~<br><br>Notes are free-form text and will appear in the Fact Details section of the page.<br><br>"
+msgstr ""
+"Bilješka je slobodan tekst i prikazati će se na stranici u sekciji Detalji "
+"Činjenica."
 
 #: admin_users.php:540
 msgid "Nothing found to cleanup"
@@ -10460,6 +10502,8 @@ msgstr "Lozinke se ne podudaraju."
 #: help_text.php:1294
 msgid "Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different to “SECRET”."
 msgstr ""
+"Lozinka mora biti najmanje 6 znakova dugačka i osjetljiva je na melika/mala "
+"slova, pa je tako “pero” različito od “PERO”."
 
 #: admin_users.php:338 edituser.php:115
 msgid "Passwords must contain at least 6 characters."
@@ -10483,7 +10527,7 @@ msgstr "Grafikon krvne linije"
 #: library/WT/Controller/Fanchart.php:302 library/WT/MenuBar.php:114
 #: modules_v3/googlemap/module.php:1343
 msgid "Pedigree map"
-msgstr ""
+msgstr "Karta pedigrea"
 
 #. I18N: %s is an individual’s name
 #: modules_v3/googlemap/module.php:694
@@ -11451,7 +11495,7 @@ msgstr "Zamjenski tekst"
 
 #: modules_v3/user_messages/module.php:111
 msgid "Reply"
-msgstr ""
+msgstr "Odgovor"
 
 #: admin_module_reports.php:54 admin_modules.php:129 admin_modules.php:147
 msgid "Report"
@@ -11509,16 +11553,20 @@ msgstr ""
 #. I18N: gedcom tag _TODO
 #: library/WT/Gedcom/Tag.php:804
 msgid "Research task"
-msgstr ""
+msgstr "Zadatak istraživanja"
 
 #. I18N: Name of a module.  Tasks that need further research.
 #: modules_v3/todo/help_text.php:31 modules_v3/todo/module.php:32
 msgid "Research tasks"
-msgstr ""
+msgstr "Zadaci istraživanja"
 
 #: modules_v3/todo/help_text.php:32
 msgid "Research tasks are special events, added to individuals in your family tree, which identify the need for further research.  You can use them as a reminder to check facts against more reliable sources, to obtain documents or photographs, to resolve conflicting information, etc."
 msgstr ""
+"Zadatatci istraživanja su specijalni događaji, dodani na osobu u vašem "
+"obiteljskom stablu, koji određuju potrebu za daljnjim istraživanjem. Možete "
+"ih koristiti kao podsjetnik za provjeru činjenica prema pouzdanom izvoru, da "
+"pribavite dokumente ili fotografije, da riješite proturječne informacije, itd."
 
 #: modules_v3/todo/help_text.php:36
 msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”.  Other genealogy applications may not recognize this tag."
@@ -11557,6 +11605,8 @@ msgstr "Ograničenje"
 #: help_text.php:341
 msgid "Restrictions can be added to records and/or facts.  They restrict who can view the data and who can edit it."
 msgstr ""
+"Ograničenja mogu biti dodana zapisu i/ili činjenici. Ona ograničavaju tko "
+"može vidjeti podatke i tko ih može uređivati."
 
 #: library/WT/Stats.php:72
 msgid "Resulting value"
@@ -11861,7 +11911,9 @@ msgstr ""
 
 #: help_text.php:335
 msgid "Select a relationship name from the list. Selecting <b>Godfather</b> means: <i>This associate is the godfather of the current individual</i>."
-msgstr "~#factarray[RELA]#~<br><br>Select a relationship name from the list. Selecting <b>Godfather</b> means: <i>This associate is the godfather of the current individual</i>.<br><br>"
+msgstr ""
+"Odaberi Odnos/Vezu sa liste. Odabirom <b>Kum</b> znaći: <i>Ovaj sudionik je "
+"kum osobi koju uređujemo</i>."
 
 #: modules_v3/googlemap/help_text.php:63
 msgid "Select an icon"
@@ -11903,6 +11955,9 @@ msgstr ""
 #: help_text.php:1499
 msgid "Select this option as to save your clippings in a ZIP file.  For more information about ZIP files, please visit <a href=\"http://www.winzip.com\" target=\"_blank\">http://www.winzip.com</a>."
 msgstr ""
+"Označite ovu opciju da snimite svoje isječke u ZIP datoteku. Za više "
+"informacija o ZIP datoteci, pogledajte <a href=\"http://www.winzip.com\" "
+"target=\"_blank\">http://www.winzip.com</a>."
 
 #: help_text.php:1269
 msgid "Select this option to include the media files associated with the records in your clippings cart.  Choosing this option will automatically zip the files during download."
@@ -12219,37 +12274,37 @@ msgstr ""
 
 #: modules_v3/descendancy_report/report.xml:356
 msgid "She "
-msgstr ""
+msgstr "Ona"
 
 #: modules_v3/ahnentafel_report/report.xml:289
 msgid "She died"
-msgstr ""
+msgstr "Ona je umrla"
 
 #: modules_v3/ahnentafel_report/report.xml:258
 #: modules_v3/descendancy_report/report.xml:240
 msgid "She married"
-msgstr ""
+msgstr "Ona je udana"
 
 #: modules_v3/ahnentafel_report/report.xml:220
 msgid "She resided at"
-msgstr ""
+msgstr "Ona stanuje u "
 
 #: modules_v3/descendancy_report/report.xml:329
 msgid "She was born"
-msgstr ""
+msgstr "Ona je rođena"
 
 #: modules_v3/ahnentafel_report/report.xml:345
 msgid "She was buried"
-msgstr ""
+msgstr "Ona je pokopana"
 
 #: modules_v3/ahnentafel_report/report.xml:164
 msgid "She was christened"
-msgstr ""
+msgstr "Ona je krštena"
 
 #: modules_v3/ahnentafel_report/report.xml:314
 #: modules_v3/ahnentafel_report/report.xml:341
 msgid "She was cremated"
-msgstr ""
+msgstr "Ona je kremirana"
 
 #: library/WT/Date/Jewish.php:99
 msgctxt "GENITIVE"
@@ -12549,15 +12604,16 @@ msgstr "Prikaži povezane osobe/obitelji"
 
 #: modules_v3/todo/module.php:170
 msgid "Show research tasks that are assigned to other users"
-msgstr ""
+msgstr "Prikaži zadatke za istraživanje koji su dodjeljeni drugim korisnicima"
 
 #: modules_v3/todo/module.php:177
 msgid "Show research tasks that are not assigned to any user"
 msgstr ""
+"Prikaži zadatke za istraživanje koji nisu dodjeljeni ni jednom korisniku"
 
 #: modules_v3/todo/module.php:184
 msgid "Show research tasks that have a date in the future"
-msgstr ""
+msgstr "Prikaži zadatke za istraživanje koji imaju datum u budućnosti"
 
 #: modules_v3/ahnentafel_report/report.xml:11
 msgid "Show residences?"
@@ -12839,7 +12895,7 @@ msgstr "Sin od %s"
 #: modules_v3/todays_events/module.php:146
 #: modules_v3/upcoming_events/module.php:158
 msgid "Sort order"
-msgstr ""
+msgstr "Sortiranje"
 
 #. I18N: Abbreviation for “Sosa-Stradonitz number”.  This is an individual’s surname, so may need transliterating into non-latin alphabets.
 #: includes/functions/functions_print_lists.php:206
@@ -12957,15 +13013,15 @@ msgstr "Supružnik"
 
 #: library/WT/Gedcom/Tag.php:197
 msgid "Spouse census date"
-msgstr ""
+msgstr "Datum upisa supružnika"
 
 #: library/WT/Gedcom/Tag.php:198
 msgid "Spouse census place"
-msgstr ""
+msgstr "Datum upisa mjesta"
 
 #: library/WT/Gedcom/Tag.php:202
 msgid "Spouse note"
-msgstr ""
+msgstr "Bilješka supružnika"
 
 #: includes/functions/functions_print_lists.php:1341
 msgid "Spouses"
@@ -13059,7 +13115,7 @@ msgstr ""
 #: themes/fab/header.php:34 themes/minimal/header.php:34
 #: themes/webtrees/header.php:35 themes/xenea/header.php:34
 msgid "Stop"
-msgstr ""
+msgstr "Zaustavi"
 
 #: admin_trees_config.php:704
 msgid "Store watermarked full size images on server?"
@@ -13076,17 +13132,17 @@ msgstr ""
 
 #: modules_v3/stories/module.php:237
 msgid "Story"
-msgstr ""
+msgstr "Prića"
 
 #: modules_v3/stories/module.php:234 modules_v3/stories/module.php:341
 #: modules_v3/stories/module.php:407
 msgid "Story title"
-msgstr ""
+msgstr "Naslov priće"
 
 #. I18N: Part of a country, state/region/county
 #: modules_v3/googlemap/module.php:645 modules_v3/googlemap/module.php:1522
 msgid "Subdivision"
-msgstr ""
+msgstr "Regija/županija"
 
 #: message.php:130 modules_v3/user_messages/module.php:86
 msgid "Subject:"
@@ -13360,6 +13416,15 @@ msgstr ""
 #: modules_v3/clippings/module.php:142
 msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the <b>Download Now</b> link.  Follow the instructions and links.</li></ul>"
 msgstr ""
+"Isječci vam omogučavaju da izvatke iz ovog obiteljskog stabla i gruprate ih u "
+"jednu datoteku za preuzimanje u drugi genealoški program. Kreirana datoteka "
+"se sprema u GEDCOM formatu. <br><ul><li>Kako preuzeti isječak?<br>To je vrlo "
+"jednostavno. Kada god vidite ime, osobu, obitelj ili izvor na koji možete "
+"kliknuti, tada možete otići na detalje tog imena. Tao ćete vidjeti opciju "
+"<b>Dodaj isječak</b>. Kada kliknete na taj link biti će vam ponuđeno nekoliko "
+"opcija za preuzimanje.</li><li>Kako preuzeti?<br>Jednom kada imate stavku u "
+"isječcima, možete ju preuzeti klikom na link <b>Preuzmi sada</b>. Slijedite "
+"instrukcije i linkove.</li></ul>"
 
 #: help_text.php:1314
 msgid "The current <b>webtrees</b> admin username must be the same as an existing PGV admin username"
@@ -13580,6 +13645,8 @@ msgstr ""
 #: site-offline.php:77
 msgid "The site is down for maintenance.  You should <a href=\"index.php\">try again</a> in a few minutes."
 msgstr ""
+"Stranica je privremeno nedostupna zbog održavanja. Možete <a "
+"href=\"index.php\">pokušati ponovno</a> za par minuta."
 
 #. I18N: Description of “Statistics” module
 #: modules_v3/gedcom_stats/module.php:37
@@ -13680,7 +13747,7 @@ msgstr ""
 
 #: modules_v3/todo/module.php:127
 msgid "There are no research tasks in this family tree."
-msgstr ""
+msgstr "Nema zadataka za istraživanje u ovom obiteljskom stablu."
 
 #: modules_v3/review_changes/module.php:74
 #: modules_v3/review_changes/module.php:96 themes/clouds/footer.php:43
@@ -13765,6 +13832,8 @@ msgstr ""
 #: help_text.php:1207 setup.php:420
 msgid "This email address will be used to send you password reminders, site notifications, and messages from other family members who are registered on the site."
 msgstr ""
+"Ova e-mail adresa će biti korištena za slanje podsjetnika, obavjesti i poruka "
+"drugih obiteljskih članova koji su registrirani na ovoj stranici."
 
 #: addmedia.php:526
 msgid "This entry is ignored if you have entered a URL into the file name field."
@@ -13801,13 +13870,13 @@ msgstr "Ova obitelj nije imala djece"
 
 #: modules_v3/random_media/module.php:194
 msgid "This family tree has no images to display."
-msgstr ""
+msgstr "Ovo obiteljsko stablo nema sliku za prikazati."
 
 #. I18N: %s is a date
 #: modules_v3/gedcom_stats/module.php:86 modules_v3/html/module.php:164
 #, php-format
 msgid "This family tree was last updated on %s."
-msgstr ""
+msgstr "Obiteljsko stablo je zadnji puta ažurirano %s."
 
 #: help_text.php:363
 msgid "This field allows you to change the source record that this fact’s source citation links to.  This field takes a Source ID.  Beside the field will be listed the title of the current source ID.  Use the <b>Find ID</b> link to look up the source’s ID number.  To remove the entire citation, make this field blank."
@@ -13829,6 +13898,8 @@ msgstr ""
 #: help_text.php:657
 msgid "This folder will be used to store the media files for this family tree."
 msgstr ""
+"Ovaj direktori će biti korišten za spremanje medijskig datoteka za ovo "
+"obiteljsko stablo."
 
 #: library/WT/Filter.php:295
 msgid "This form has expired.  Try again."
@@ -13861,6 +13932,7 @@ msgstr ""
 #: help_text.php:1119
 msgid "This individual will be selected by default when viewing charts and reports."
 msgstr ""
+"Ova osoba će biti odabrana kao zadana kada gledate grafikone i izvještaje."
 
 #: gedrecord.php:42 library/WT/Controller/Timeline.php:139
 #: library/WT/Controller/Timeline.php:143 library/WT/Stats.php:815
@@ -13988,7 +14060,7 @@ msgstr ""
 
 #: help_text.php:1353 setup.php:404
 msgid "This is your real name, as you would like it displayed on screen."
-msgstr ""
+msgstr "Ovo je vaše pravo ime, ono koje želite da se prikazuje na ekranu."
 
 #: admin_trees_check.php:130
 msgid "This may be a mistake in your data."
@@ -14252,10 +14324,19 @@ msgstr ""
 #: help_text.php:1144
 msgid "This section allows you to add a new Note to the fact that you are currently editing.  Notes are free-form text and will appear in the Fact Details section of the page."
 msgstr ""
+"Ova sekcija vam omogućava dodavanje nove bilješke u činjenicu koju trenutno "
+"uređujete. Bilješka je slobodni tekst i biti će prkazan na stranici u sekciji "
+"Detalji Činjenica."
 
 #: help_text.php:1157
 msgid "This section allows you to add a new source citation to the fact that you are currently editing.<br><br>In the Source field you enter the ID for the source.  Click the <b>Create a new source</b> link if you need to enter a new source.  In the Citation Details field you would enter the page number or other information that might help someone find the information in the source.  In the Text field you would enter the text transcription from the source."
 msgstr ""
+"Ova sekcija vam omogućava da dodate novi citat izvora na činjenicu koju "
+"trenutno uređujete.<br><br>U polje Izvor unosite ID izvora. Kliknite na link "
+"<b>Kreiraj novi izvor<b> ako trebate dodati novi izvor. U polje Detalji "
+"Citata možete unijeti broj stranice ili druge informacije koje mogu nekome "
+"pomoći da pronađe informacije na izvoru. U tekst polje možete unijeti prepis "
+"dokumenta sa izvora."
 
 #. I18N: http://en.wikipedia.org/wiki/Https
 #: admin_site_upgrade.php:319
@@ -14384,7 +14465,7 @@ msgstr ""
 #. I18N: gedcom tag TIME
 #: library/WT/Gedcom/Tag.php:312
 msgid "Time"
-msgstr "זמן"
+msgstr "Vrijeme"
 
 #: library/WT/Controller/Timeline.php:44 library/WT/MenuBar.php:101
 #: timeline.php:248
@@ -14474,6 +14555,8 @@ msgstr ""
 #: modules_v3/todo/help_text.php:34
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
 msgstr ""
+"Da bi kreirali novi zadatak istraživanja, morate prvo dodati “zadatak "
+"istraživanja” na listu činjenica i događaja u postavkama obiteljskog stabla."
 
 #: help_text.php:528
 msgid "To ensure compatibility with other genealogy applications, notes, text, and transcripts should be recorded in simple, unformatted text.  However, formatting is often desirable to aid presentation, comprehension, etc."
@@ -14566,7 +14649,7 @@ msgstr "Najveći nivo"
 #. I18N: i.e. most popular given name.
 #: modules_v3/top10_givnnames/module.php:66
 msgid "Top given name"
-msgstr ""
+msgstr "Najpopularnije ime"
 
 #. I18N: Name of a module.  Top=Most common
 #: modules_v3/top10_givnnames/module.php:32 statistics.php:195
@@ -14576,7 +14659,7 @@ msgstr "Najčešća imena"
 #. I18N: i.e. most popular surname.
 #: modules_v3/top10_surnames/module.php:88
 msgid "Top surname"
-msgstr ""
+msgstr "Najpopularnije prezime"
 
 #. I18N: Name of a module.  Top=Most common
 #: modules_v3/top10_surnames/module.php:32 statistics.php:194
@@ -14589,7 +14672,7 @@ msgstr ""
 
 #: modules_v3/change_report/report.xml:124
 msgid "Total accepted changes: "
-msgstr ""
+msgstr "Ukupno prihvačenih promjena"
 
 #: statistics.php:107
 msgid "Total births"
@@ -14667,17 +14750,17 @@ msgstr "Ukupno brakova"
 
 #: admin.php:136
 msgid "Total number of users"
-msgstr ""
+msgstr "Ukupan broj korisnika"
 
 #: modules_v3/change_report/report.xml:84
 msgid "Total pending changes: "
-msgstr ""
+msgstr "Ukupno promjena na čekanju"
 
 #. I18N: A count of places
 #: modules_v3/googlemap/module.php:1737
 #, php-format
 msgid "Total places: %s"
-msgstr ""
+msgstr "Ukupno mjesta: %s"
 
 #: find.php:673
 #, php-format
@@ -14693,7 +14776,7 @@ msgstr "Ukupno prezimena"
 #: modules_v3/gedcom_stats/module.php:114
 #: modules_v3/gedcom_stats/module.php:362 modules_v3/html/module.php:206
 msgid "Total users"
-msgstr ""
+msgstr "Ukupno korisnika"
 
 #. I18N: gedcom tag TRLR
 #: library/WT/Gedcom/Tag.php:317
@@ -14750,7 +14833,7 @@ msgstr ""
 #: includes/functions/functions_print_facts.php:593
 #: library/WT/Gedcom/Tag.php:318
 msgid "Type"
-msgstr "סוג"
+msgstr "Tip"
 
 #: modules_v3/googlemap/module.php:446
 msgid "Type of place markers in Place Hierarchy"
@@ -14759,15 +14842,15 @@ msgstr ""
 #. I18N: placeholder text for repeat-password field
 #: admin_users.php:390 login.php:428
 msgid "Type the password again."
-msgstr ""
+msgstr "Upiši lozinku ponovo."
 
 #: help_text.php:1299 setup.php:416
 msgid "Type your password again, to make sure you have typed it correctly."
-msgstr ""
+msgstr "Upišite lozinku ponovo, da budete sigurni da ste ju napisali ispravno."
 
 #: admin_trees_check.php:127
 msgid "Types of error"
-msgstr ""
+msgstr "Vrsta greške"
 
 #. I18N: gedcom tag URL (A web address / URL)
 #. I18N: gedcom tag WWW (A web address / URL)
@@ -14893,7 +14976,7 @@ msgstr "Neprepoznati GEDCOM kod"
 
 #: admin_media.php:559
 msgid "Unused files"
-msgstr ""
+msgstr "Neupotrebljene datoteke"
 
 #: admin.php:157
 msgid "Unverified by Administrator"
@@ -14901,7 +14984,7 @@ msgstr ""
 
 #: admin.php:153
 msgid "Unverified by User"
-msgstr ""
+msgstr "Nepotvrđeno od korisnika"
 
 #. I18N: The system is about to [...]; %s is a .ZIP file.
 #: admin_site_upgrade.php:330
@@ -14912,43 +14995,43 @@ msgstr ""
 #. I18N: Name of a module
 #: modules_v3/upcoming_events/module.php:32
 msgid "Upcoming events"
-msgstr ""
+msgstr "Nadolazeći događaji"
 
 #: modules_v3/batch_update/admin_batch_update.php:350
 #: modules_v3/batch_update/admin_batch_update.php:355
 msgid "Update"
-msgstr ""
+msgstr "Ažuriraj"
 
 #: modules_v3/batch_update/admin_batch_update.php:351
 msgid "Update all"
-msgstr ""
+msgstr "Ažuriraj sve"
 
 #: admin_trees_places.php:85
 msgid "Update all the place names in a family tree"
-msgstr ""
+msgstr "Ažuriraj sva imena mjesta u obiteljskom stablu"
 
 #: themes/_administration/header.php:121
 msgid "Update place names"
-msgstr ""
+msgstr "Ažuriraj imena mjesta"
 
 #: admin_site_merge.php:157
 msgid "Updating linked record"
-msgstr ""
+msgstr "Ažuriraj povezane zapise"
 
 #. I18N: Ignore the warnings, and [...]
 #: admin_site_upgrade.php:202 admin_site_upgrade.php:265
 msgid "Upgrade anyway"
-msgstr ""
+msgstr "Svejedno nadogradi"
 
 #. I18N: %s is a version number, such as 1.2.3
 #: admin.php:111 admin_site_upgrade.php:86
 #, php-format
 msgid "Upgrade to webtrees %s"
-msgstr ""
+msgstr "Webtrees nadogradnja %s"
 
 #: admin_site_upgrade.php:55
 msgid "Upgrade wizard"
-msgstr ""
+msgstr "Čarobnjak nadogradnje"
 
 #: admin_media_upload.php:233 admin_trees_manage.php:225
 #: modules_v3/googlemap/module.php:4454
@@ -14957,7 +15040,7 @@ msgstr "Učitaj"
 
 #: help_text.php:1423
 msgid "Upload family tree"
-msgstr ""
+msgstr "Učitaj obiteljsko stablo"
 
 #: modules_v3/googlemap/module.php:4447
 msgid "Upload geographic data"
@@ -15066,7 +15149,7 @@ msgstr "Koristite ovu stranicu kako bi ste promijenili ili uklonili članove obi
 
 #: modules_v3/googlemap/module.php:3754
 msgid "Use this value"
-msgstr ""
+msgstr "Uporijebi ovu vrijednost"
 
 #: admin_site_change.php:277 admin_site_change.php:303 admin_site_logs.php:235
 #: admin_site_logs.php:260 edit_changes.php:180
@@ -15079,19 +15162,19 @@ msgstr "Postavke korisnika"
 
 #: admin_users.php:524
 msgid "User didn’t verify within 7 days."
-msgstr ""
+msgstr "Korisnik nije potvrđen unutar 7 dana."
 
 #: admin_users.php:533
 msgid "User not verified by administrator."
-msgstr ""
+msgstr "Korisnik nije potvrđen od administratora"
 
 #: admin_trees_config.php:443
 msgid "User options"
-msgstr ""
+msgstr "Korisničke postavke"
 
 #: login.php:458 login.php:464 login.php:521 login.php:525
 msgid "User verification"
-msgstr ""
+msgstr "Korisnička provjera"
 
 #. I18N: http://en.wikipedia.org/wiki/User_agent_string
 #: admin_site_access.php:283 admin_site_access.php:298
@@ -15107,11 +15190,13 @@ msgstr "Korisničko ime"
 
 #: login.php:202 modules_v3/login_block/module.php:96
 msgid "Username or email address"
-msgstr ""
+msgstr "Korisničko ime ili e-mail adresa"
 
 #: help_text.php:1486
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
 msgstr ""
+"Korisničko ime ne razlikuje velika/mala i akcentirana slova, pa se tako "
+"“mico”, “mićo” i “Mićo” smatraju istim imenima."
 
 #: help_text.php:1488
 #, php-format
@@ -15128,7 +15213,7 @@ msgstr "Prijavljenih korisnika"
 
 #: admin.php:161
 msgid "Users’ languages"
-msgstr ""
+msgstr "Jezik korisnika"
 
 #: admin_users.php:514
 msgid "User’s account has been inactive too long: "
@@ -15200,11 +15285,11 @@ msgstr ""
 
 #: login.php:335 login.php:474
 msgid "Verification code:"
-msgstr ""
+msgstr "Potvrdni kod:"
 
 #: admin_users.php:577
 msgid "Verified"
-msgstr ""
+msgstr "Potvrđeno"
 
 #: library/WT/Gedcom/Code/Temp.php:182
 msgid "Vernal, Utah"
@@ -15232,7 +15317,7 @@ msgstr "Prikaz"
 
 #: help_text.php:1347
 msgid "View all records"
-msgstr ""
+msgstr "Pogledaj sve zapise"
 
 #: placelist.php:178
 msgid "View all records found in this place"
@@ -15248,7 +15333,7 @@ msgstr "Prikaži dan"
 
 #: library/WT/Controller/Media.php:156 modules_v3/lightbox/module.php:115
 msgid "View details"
-msgstr ""
+msgstr "Pogledaj detalje"
 
 #: includes/functions/functions_print_facts.php:211
 #: includes/functions/functions_print_facts.php:612
@@ -15266,7 +15351,7 @@ msgstr "Prikaži mjesec"
 
 #: modules_v3/lightbox/module.php:108 modules_v3/lightbox/module.php:110
 msgid "View notes"
-msgstr ""
+msgstr "Pogledaj bilješke"
 
 #: medialist.php:290 modules_v3/googlemap/module.php:1295
 #: modules_v3/random_media/module.php:179
@@ -15279,11 +15364,11 @@ msgstr "Prikaži izvor"
 
 #: modules_v3/gedcom_stats/module.php:186
 msgid "View statistics as graphs"
-msgstr ""
+msgstr "Pogledaj statistike i grafikone"
 
 #: modules_v3/review_changes/module.php:114
 msgid "View the changes"
-msgstr ""
+msgstr "Pogledaj promjene"
 
 #: calendar.php:290 calendar.php:292
 msgid "View year"
@@ -15295,7 +15380,7 @@ msgstr ""
 
 #: help_text.php:1478
 msgid "Visible online"
-msgstr ""
+msgstr "Vidljivo online"
 
 #: admin_users.php:206 admin_users.php:398 edituser.php:171
 msgid "Visible to other users when online"
@@ -15312,12 +15397,12 @@ msgstr "Posjetitelj"
 #: calendar.php:227 modules_v3/bdm_report/module.php:33
 #: modules_v3/bdm_report/report.xml:3 modules_v3/bdm_report/report.xml:31
 msgid "Vital records"
-msgstr ""
+msgstr "Vitalni zapisi"
 
 #. I18N: This is the first day of the week on calendars. 0=Sunday, 1=Monday...
 #: library/WT/I18N.php:185
 msgid "WEEK_START=0"
-msgstr ""
+msgstr "WEEK_START=1"
 
 #: library/WT/Stats.php:4058
 msgid "Wales"
@@ -15387,7 +15472,7 @@ msgstr "Srijeda"
 
 #: admin.php:233
 msgid "Week"
-msgstr ""
+msgstr "Tjedan"
 
 #. I18N: gedcom tag _WEIG
 #: library/WT/Gedcom/Tag.php:808
@@ -15487,6 +15572,11 @@ msgstr ""
 #: modules_v3/clippings/help_text.php:37
 msgid "When you click this link your clippings cart will be totally emptied.<br><br>If you don’t want to remove all individuals, families, etc. from the clippings cart, you can remove items individually by clicking the <b>Remove</b> link in the name boxes.  There is <u>no</u> confirmation dialog when you click either of these links;  the requested deletion takes place immediately."
 msgstr ""
+"Kada kliknete na ovaj link vaši isječci će biti potpuno "
+"ispražnjeni.<br><br>Ako ne želite ukloniti sve osobe, obitelji, itd. iz "
+"isječaka, možete ukloniti individulane stavke klikom na link <b>Ukloni</b> u "
+"imenu okvira. Tamo se nalazi <u>ne</u> potvrdni dialog. Kada kliknete bilo "
+"koji od tih linkova zahtjev za brisanje će se izvršiti odmah."
 
 #: message.php:143
 msgid "When you send this message you will receive a copy sent via email to the address you provided."
@@ -15523,7 +15613,7 @@ msgstr ""
 #. I18N: Name of a module. (A list of users who are online now)
 #: modules_v3/logged_in/module.php:32
 msgid "Who is online"
-msgstr ""
+msgstr "Tko je online"
 
 #: modules_v3/batch_update/plugins/search_replace.php:110 search.php:151
 msgid "Whole words only"
@@ -15637,7 +15727,7 @@ msgstr "Godina"
 
 #: help_text.php:1093
 msgid "Year input box"
-msgstr ""
+msgstr "Polje za unos godine"
 
 #: timeline.php:132 timeline.php:388
 msgid "Year:"
@@ -15652,10 +15742,12 @@ msgstr "תימן"
 #, php-format
 msgid "You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s."
 msgstr ""
+"Vi, ili netko tko se predstavlja da ste vi, je zatražio račun na %1$s "
+"koristeći e-mail adresu %2$s."
 
 #: login.php:275 message.php:68
 msgid "You are not allowed to send messages that contain external links."
-msgstr ""
+msgstr "Nije vam dopušteno slati poruke koje sadrže vanske linkove."
 
 #. I18N: Help text for the "Default Theme" site configuration setting
 #: help_text.php:985
@@ -15682,7 +15774,7 @@ msgstr ""
 
 #: login.php:563
 msgid "You can now login with your user name and password."
-msgstr ""
+msgstr "Sada se možete prijaviti sa vašim korisničkim imenom i zaporkom."
 
 #: admin_site_upgrade.php:201
 msgid "You can re-enable these modules after the upgrade."
@@ -15703,10 +15795,11 @@ msgstr ""
 #: login.php:65
 msgid "You cannot login because your browser does not accept cookies."
 msgstr ""
+"Nemožete se prijaviti jer vaš preglednik ne prihvaća kolačiće (cookies)."
 
 #: downloadbackup.php:34 includes/session.php:638
 msgid "You do not have permission to view this page."
-msgstr ""
+msgstr "Nemate odobrenje za gledanje ove stranice."
 
 #: login.php:507
 msgid "You do not have to take any action; the user can now login."
@@ -15722,11 +15815,11 @@ msgstr ""
 
 #: modules_v3/user_messages/module.php:81
 msgid "You have no pending messages."
-msgstr ""
+msgstr "Nemate poruka na čekanju."
 
 #: modules_v3/user_blog/module.php:76
 msgid "You have not created any Journal items."
-msgstr ""
+msgstr "Niste kreirali ni jedau stavku u dnevniku."
 
 #: admin_trees_manage.php:131
 msgid "You have selected a GEDCOM with a different name.  Is this correct?"
@@ -15742,7 +15835,7 @@ msgstr ""
 
 #: setup.php:213
 msgid "You must change this before you can continue."
-msgstr ""
+msgstr "Morate promjeniti to prije nego što nastavite."
 
 #: admin_users.php:333
 msgid "You must confirm the password."
@@ -15878,17 +15971,17 @@ msgstr "Vaše ime:"
 
 #: modules_v3/clippings/module.php:172 modules_v3/clippings/module.php:430
 msgid "Your clippings cart is empty."
-msgstr ""
+msgstr "Vaši isječci su prazni."
 
 #: setup.php:402
 msgid "Your name"
-msgstr ""
+msgstr "Vaše ime"
 
 #. I18N: %s is a server name/URL
 #: login.php:338
 #, php-format
 msgid "Your registration at %s"
-msgstr ""
+msgstr "Vaša registracija na %s"
 
 #: setup.php:262
 msgid "Your server’s administrator will provide you with the connection details."
@@ -15897,6 +15990,8 @@ msgstr ""
 #: modules_v3/batch_update/admin_batch_update.php:75
 msgid "Your user account does not have “automatically approve changes” enabled.  You will only be able to change one record at a time."
 msgstr ""
+"Vaš korisnički račun nema “automatsko odobrenje promjena”. Vi možete mjenjati "
+"zapise samo jedan po jedan."
 
 #: library/WT/Stats.php:4061
 msgid "Yugoslavia"
@@ -15916,7 +16011,7 @@ msgstr ""
 
 #: help_text.php:1498
 msgid "Zip clippings"
-msgstr ""
+msgstr "Zip isječci"
 
 #: admin_trees_download.php:105 modules_v3/clippings/module.php:187
 #: modules_v3/clippings/module.php:562
@@ -15986,7 +16081,7 @@ msgstr "Prihvati"
 #. I18N: the status of an edit accepted/rejected/pending
 #: admin_site_change.php:33
 msgid "accepted"
-msgstr ""
+msgstr "prihvačeno"
 
 #. I18N: The name given to a child by its adoptive parents
 #: library/WT/Gedcom/Code/Name.php:43
@@ -16026,29 +16121,29 @@ msgstr "nakon smrti"
 #: statisticsplot.php:911 statisticsplot.php:914 statisticsplot.php:917
 #: statisticsplot.php:920
 msgid "age"
-msgstr ""
+msgstr "star"
 
 #. I18N: An access rule - allow access to the site
 #: admin_site_access.php:109 admin_site_access.php:303
 msgid "allow"
-msgstr ""
+msgstr "omogućen"
 
 #. I18N: The name by which an individual is also known.  e.g. a professional name or a stage name
 #: library/WT/Gedcom/Code/Name.php:55
 msgid "also known as"
-msgstr ""
+msgstr "znan kao"
 
 #. I18N: The name by which an individual is also known.  e.g. a professional name or a stage name
 #: library/WT/Gedcom/Code/Name.php:52
 msgctxt "FEMALE"
 msgid "also known as"
-msgstr ""
+msgstr "znana kao"
 
 #. I18N: The name by which an individual is also known.  e.g. a professional name or a stage name
 #: library/WT/Gedcom/Code/Name.php:49
 msgctxt "MALE"
 msgid "also known as"
-msgstr ""
+msgstr "znan kao"
 
 #: library/WT/Controller/Ancestry.php:137 library/WT/Stats.php:2590
 #: library/WT/Stats.php:2615 library/WT/Stats.php:2626
@@ -16115,7 +16210,7 @@ msgstr "rođ."
 
 #: modules_v3/faq/module.php:313
 msgid "back to top"
-msgstr ""
+msgstr "natrag na vrh"
 
 #: modules_v3/top10_pageviews/module.php:142 statisticsplot.php:668
 msgid "before"
@@ -16140,19 +16235,19 @@ msgstr "rođenje"
 #. I18N: The name given to an individual at their birth
 #: library/WT/Gedcom/Code/Name.php:67
 msgid "birth name"
-msgstr ""
+msgstr "rođeno ime"
 
 #. I18N: The name given to an individual at their birth
 #: library/WT/Gedcom/Code/Name.php:64
 msgctxt "FEMALE"
 msgid "birth name"
-msgstr ""
+msgstr "rođeno ime"
 
 #. I18N: The name given to an individual at their birth
 #: library/WT/Gedcom/Code/Name.php:61
 msgctxt "MALE"
 msgid "birth name"
-msgstr ""
+msgstr "rođeno ime"
 
 #. I18N: Extend privacy to dead people [who were] ...
 #: admin_trees_config.php:511
@@ -16265,19 +16360,19 @@ msgstr "stoljeće"
 #. I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise)
 #: library/WT/Gedcom/Code/Name.php:79
 msgid "change of name"
-msgstr ""
+msgstr "promjena imena"
 
 #. I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise)
 #: library/WT/Gedcom/Code/Name.php:76
 msgctxt "FEMALE"
 msgid "change of name"
-msgstr ""
+msgstr "promijenila ime"
 
 #. I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise)
 #: library/WT/Gedcom/Code/Name.php:73
 msgctxt "MALE"
 msgid "change of name"
-msgstr ""
+msgstr "promijenio ime"
 
 #: edit_interface.php:1993 edit_interface.php:2015
 #: includes/functions/functions.php:769 modules_v3/googlemap/module.php:1937
@@ -16293,7 +16388,7 @@ msgstr "djeca"
 #: includes/functions/functions_edit.php:48
 #: includes/functions/functions_edit.php:107
 msgid "click to edit"
-msgstr ""
+msgstr "klikni za uređivanje"
 
 #. I18N: button label
 #: addmedia.php:228 addmedia.php:381 addmedia.php:716 edit_changes.php:240
@@ -16309,7 +16404,7 @@ msgstr ""
 #: modules_v3/googlemap/module.php:672 modules_v3/googlemap/module.php:3131
 #: modules_v3/googlemap/module.php:3149 modules_v3/googlemap/module.php:3915
 msgid "close"
-msgstr ""
+msgstr "zatvori"
 
 #. I18N: Name of a theme.
 #: themes/clouds/theme.php:48
@@ -16319,11 +16414,11 @@ msgstr ""
 #. I18N: Name of a theme.
 #: themes/colors/theme.php:127
 msgid "colors"
-msgstr ""
+msgstr "boje"
 
 #: modules_v3/top10_surnames/module.php:162
 msgid "compact list"
-msgstr ""
+msgstr "kompaktan popis"
 
 #. I18N: button label
 #: admin_pgv_to_wt.php:1057 admin_trees_download.php:138
@@ -16332,7 +16427,7 @@ msgstr ""
 #: reportengine.php:281 setup.php:190 setup.php:214 setup.php:283
 #: setup.php:368 setup.php:424
 msgid "continue"
-msgstr ""
+msgstr "nastavi"
 
 #. I18N: a program feature
 #: setup.php:130
@@ -16357,7 +16452,7 @@ msgstr "kći"
 
 #: modules_v3/descendancy_report/report.xml:224
 msgid "daughter of"
-msgstr ""
+msgstr "kčer od"
 
 #: includes/functions/functions.php:826
 msgctxt "child’s wife"
@@ -16391,30 +16486,30 @@ msgstr "smrt"
 #. I18N: Measure of latitude/longitude
 #: modules_v3/googlemap/module.php:3875 modules_v3/googlemap/module.php:3885
 msgid "degrees"
-msgstr ""
+msgstr "stupnjeva"
 
 #. I18N: An access rule - deny access to the site
 #: admin_site_access.php:110 admin_site_access.php:304
 msgid "deny"
-msgstr ""
+msgstr "nedopušten"
 
 #: modules_v3/descendancy_report/report.xml:136
 #: modules_v3/descendancy_report/report.xml:363
 msgctxt "FEMALE"
 msgid "died"
-msgstr ""
+msgstr "umrla"
 
 #: modules_v3/descendancy_report/report.xml:133
 #: modules_v3/descendancy_report/report.xml:433
 msgctxt "MALE"
 msgid "died"
-msgstr ""
+msgstr "umro"
 
 #: modules_v3/googlemap/module.php:357 modules_v3/googlemap/module.php:366
 #: modules_v3/googlemap/module.php:375 modules_v3/googlemap/module.php:383
 #: modules_v3/googlemap/module.php:391 modules_v3/googlemap/module.php:399
 msgid "digits"
-msgstr ""
+msgstr "brojevi"
 
 #: admin_trees_config.php:492
 msgid "disable"
@@ -16422,7 +16517,7 @@ msgstr "Onemogući"
 
 #: modules_v3/googlemap/module.php:3887
 msgid "east"
-msgstr ""
+msgstr "istok"
 
 #: includes/functions/functions.php:629
 msgctxt "FEMALE"
@@ -16497,15 +16592,15 @@ msgstr "procjenjeno %s"
 
 #: includes/functions/functions.php:735
 msgid "ex-husband"
-msgstr ""
+msgstr "bivši muž"
 
 #: includes/functions/functions.php:761
 msgid "ex-spouse"
-msgstr ""
+msgstr "bivši supružnici"
 
 #: includes/functions/functions.php:748
 msgid "ex-wife"
-msgstr ""
+msgstr "bivša žena"
 
 #: admin_trees_config.php:1272 modules_v3/fact_sources/report.xml:6
 msgid "facts"
@@ -16597,7 +16692,7 @@ msgstr "prvi"
 #: admin_trees_config.php:909
 msgctxt "Show the [first/last] [N] parts of a place name."
 msgid "first"
-msgstr ""
+msgstr "prvi"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:679
@@ -16868,7 +16963,7 @@ msgstr "Rod u četvrtom koljenu"
 
 #: admin_site_merge.php:196 admin_site_merge.php:202
 msgid "from"
-msgstr ""
+msgstr "od"
 
 #. I18N: from 1700 interval 50 years
 #: statistics.php:663 statistics.php:665 statistics.php:667 statistics.php:669
@@ -16895,7 +16990,7 @@ msgstr "od %s do %s"
 #. I18N: layout option for the fan chart
 #: library/WT/Controller/Fanchart.php:56
 msgid "full circle"
-msgstr ""
+msgstr "puni krug"
 
 #: statistics.php:655
 msgid "gender"
@@ -16904,7 +16999,7 @@ msgstr "Spol"
 #. I18N: button label
 #: edit_interface.php:2738
 msgid "go to new individual"
-msgstr ""
+msgstr "odi na novu osobu"
 
 #: includes/functions/functions.php:821
 msgctxt "child’s child"
@@ -16919,7 +17014,7 @@ msgstr "Unuk/Unuka"
 #: includes/functions/functions.php:877
 msgctxt "son’s child"
 msgid "grandchild"
-msgstr ""
+msgstr "unuk"
 
 #: includes/functions/functions.php:822
 msgctxt "child’s daughter"
@@ -16934,7 +17029,7 @@ msgstr "Unuka"
 #: includes/functions/functions.php:878
 msgctxt "son’s daughter"
 msgid "granddaughter"
-msgstr ""
+msgstr "unuka"
 
 #: includes/functions/functions.php:930
 msgctxt "child’s daughter’s husband"
@@ -18370,7 +18465,7 @@ msgstr ""
 #. I18N: layout option for the fan chart
 #: library/WT/Controller/Fanchart.php:54
 msgid "half circle"
-msgstr ""
+msgstr "polukrug"
 
 #: includes/functions/functions.php:839
 msgctxt "father’s son"
@@ -18380,12 +18475,12 @@ msgstr "Polubrat po ocu"
 #: includes/functions/functions.php:858
 msgctxt "mother’s son"
 msgid "half-brother"
-msgstr ""
+msgstr "polu-brat"
 
 #: includes/functions/functions.php:867
 msgctxt "parent’s son"
 msgid "half-brother"
-msgstr ""
+msgstr "polu-brat"
 
 #: includes/functions/functions.php:832
 msgctxt "father’s child"
@@ -18410,12 +18505,12 @@ msgstr "Polusestra po ocu"
 #: includes/functions/functions.php:851
 msgctxt "mother’s daughter"
 msgid "half-sister"
-msgstr ""
+msgstr "polu-sestra"
 
 #: includes/functions/functions.php:861
 msgctxt "parent’s daughter"
 msgid "half-sister"
-msgstr ""
+msgstr "polu-sestra"
 
 #: statistics.php:611
 msgid "half-year after marriage"
@@ -18512,11 +18607,11 @@ msgstr "posljednji"
 #: admin_trees_config.php:910
 msgctxt "Show the [first/last] [N] parts of a place name."
 msgid "last"
-msgstr ""
+msgstr "zadnje"
 
 #: statisticsplot.php:672
 msgid "less than"
-msgstr ""
+msgstr "manje od"
 
 #: admin_trees_config.php:771 modules_v3/recent_changes/module.php:146
 #: modules_v3/todays_events/module.php:141
@@ -18534,7 +18629,7 @@ msgstr "vjenč."
 #. I18N: A woman’s name, before she marries (in cultures where women take their new husband’s name on marriage)
 #: library/WT/Gedcom/Code/Name.php:109
 msgid "maiden name"
-msgstr ""
+msgstr "djevojačko prezime"
 
 #. I18N: https://en.wikipedia.org/wiki/Markdown
 #: admin_trees_config.php:948
@@ -18548,29 +18643,29 @@ msgstr "brak"
 #: modules_v3/descendancy_report/report.xml:243
 msgctxt "FEMALE"
 msgid "married"
-msgstr ""
+msgstr "udana"
 
 #: modules_v3/descendancy_report/report.xml:174
 msgctxt "MALE"
 msgid "married"
-msgstr ""
+msgstr "oženjen"
 
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: library/WT/Gedcom/Code/Name.php:120
 msgid "married name"
-msgstr ""
+msgstr "vjenćano prezime"
 
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: library/WT/Gedcom/Code/Name.php:117
 msgctxt "FEMALE"
 msgid "married name"
-msgstr ""
+msgstr "vjenćano prezime"
 
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: library/WT/Gedcom/Code/Name.php:114
 msgctxt "MALE"
 msgid "married name"
-msgstr ""
+msgstr "vjenćano prezime"
 
 #. I18N: verb: pretend to be someone else
 #: admin_users.php:218
@@ -18599,7 +18694,7 @@ msgstr ""
 
 #: modules_v3/googlemap/module.php:335
 msgid "maximum"
-msgstr ""
+msgstr "maximalno"
 
 #: modules_v3/recent_changes/module.php:139
 #: modules_v3/upcoming_events/module.php:132
@@ -18607,9 +18702,9 @@ msgstr ""
 #, php-format
 msgid "maximum %d day"
 msgid_plural "maximum %d days"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "maximalno %d dan"
+msgstr[1] "maximalno %d dana"
+msgstr[2] "maximalno %d dana"
 
 #. I18N: time format “%a” - exactly 00:00:00
 #: includes/functions/functions_date.php:105
