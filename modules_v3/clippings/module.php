@@ -63,7 +63,8 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 			$controller
 				->setPageTitle($this->getTitle())
 				->PageHeader()
-				->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');
+				->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+				->addInlineJavascript('autocomplete();');
 
 			echo '<script>';
 			echo 'function radAncestors(elementid) {var radFamilies=document.getElementById(elementid);radFamilies.checked=true;}';
@@ -147,18 +148,18 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 					<table>
 					<tr>
 						<td colspan="2" class="topbottombar" style="text-align:center; ">
-							<?php echo WT_I18N::translate('Add Individual By ID'), help_link('add_by_id', $this->getName()); ?>
+							<?php echo WT_I18N::translate('Enter an individual, family, or source ID'), help_link('add_by_id', $this->getName()); ?>
 						</td>
 					</tr>
 					<tr>
 						<td class="optionbox">
 							<input type="hidden" name="action" value="add">
-							<input type="text" name="id" id="cart_item_id" size="5">
+							<input type="text" data-autocomplete-type="IFSRO" name="id" id="cart_item_id" size="5">
 						</td>
 						<td class="optionbox">
 							<?php echo print_findindi_link('cart_item_id'); ?>
-							<?php print_findfamily_link('cart_item_id', ''); ?>
-							<?php print_findsource_link('cart_item_id', ''); ?>
+							<?php echo print_findfamily_link('cart_item_id', ''); ?>
+							<?php echo print_findsource_link('cart_item_id', ''); ?>
 							<input type="submit" value="<?php echo WT_I18N::translate('Add'); ?>">
 
 						</td>
@@ -230,13 +231,13 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 					<table>
 					<tr>
 						<td colspan="2" class="topbottombar" style="text-align:center; ">
-							<?php echo WT_I18N::translate('Add Individual By ID'), help_link('add_by_id', $this->getName()); ?>
+							<?php echo WT_I18N::translate('Enter an individual, family, or source ID'), help_link('add_by_id', $this->getName()); ?>
 						</td>
 					</tr>
 					<tr>
 						<td class="optionbox">
 							<input type="hidden" name="action" value="add">
-							<input type="text" name="id" id="cart_item_id" size="8">
+							<input type="text" data-autocomplete-type="IFSRO" name="id" id="cart_item_id" size="8">
 						</td>
 						<td class="optionbox">
 							<?php echo print_findindi_link('cart_item_id'); ?>

@@ -30,7 +30,8 @@ $action = WT_Filter::post('action', null, WT_Filter::get('action'));
 $controller=new WT_Controller_Simple();
 $controller
 	->restrictAccess(\WT\Auth::isEditor())
-	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
+	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+	->addInlineJavascript('autocomplete();')
 	->addInlineJavascript('
 	var locale_date_format="' . preg_replace('/[^DMY]/', '', str_replace(array('J', 'F'), array('D', 'M'), strtoupper($DATE_FORMAT))). '";
 ');
@@ -965,7 +966,7 @@ case 'addfamlink':
 						<?php echo WT_I18N::translate('Family'); ?>
 					</td>
 					<td class="facts_value">
-						<input type="text" id="famid" name="famid" size="8">
+						<input data-autocomplete-type="FAM" type="text" id="famid" name="famid" size="8">
 						<?php echo print_findfamily_link('famid'); ?>
 					</td>
 				</tr>
@@ -1072,7 +1073,7 @@ case 'linkspouse':
 						<?php echo $label; ?>
 					</td>
 					<td class="facts_value">
-						<input id="spouseid" type="text" name="spid" size="8">
+						<input data-autocomplete-type="INDI" id="spouseid" type="text" name="spid" size="8">
 						<?php echo print_findindi_link('spouseid');?>
 					</td>
 				</tr>
@@ -1182,7 +1183,7 @@ case 'addnewsource':
 			<?php echo WT_Filter::getCsrf(); ?>
 			<table class="facts_table">
 				<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('TITL'); ?></td>
-				<td class="optionbox wrap"><input type="text" name="TITL" id="TITL" value="" size="60"> <?php echo print_specialchar_link('TITL'); ?></td></tr>
+				<td class="optionbox wrap"><input type="text" data-autocomplete-type="SOUR_TITL" name="TITL" id="TITL" value="" size="60"> <?php echo print_specialchar_link('TITL'); ?></td></tr>
 				<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('ABBR'); ?></td>
 				<td class="optionbox wrap"><input type="text" name="ABBR" id="ABBR" value="" size="40" maxlength="255"> <?php echo print_specialchar_link('ABBR'); ?></td></tr>
 				<?php if (strstr($ADVANCED_NAME_FACTS, "_HEB")!==false) { ?>
@@ -1198,7 +1199,7 @@ case 'addnewsource':
 				<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('PUBL'); ?></td>
 				<td class="optionbox wrap"><textarea name="PUBL" id="PUBL" rows="5" cols="60"></textarea><br><?php echo print_specialchar_link('PUBL'); ?></td></tr>
 				<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('REPO'); ?></td>
-				<td class="optionbox wrap"><input type="text" name="REPO" id="REPO" value="" size="10"> <?php echo print_findrepository_link('REPO'), ' ', print_addnewrepository_link('REPO'); ?></td></tr>
+				<td class="optionbox wrap"><input type="text" data-autocomplete-type="REPO" name="REPO" id="REPO" value="" size="10"> <?php echo print_findrepository_link('REPO'), ' ', print_addnewrepository_link('REPO'); ?></td></tr>
 				<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('CALN'); ?></td>
 				<td class="optionbox wrap"><input type="text" name="CALN" id="CALN" value=""></td></tr>
 				<?php echo keep_chan(); ?>

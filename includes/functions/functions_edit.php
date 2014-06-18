@@ -592,17 +592,41 @@ function add_simple_tag(
 			if (in_array($fact, $subnamefacts)) {
 				echo " onblur=\"updatewholename();\" onkeyup=\"updatewholename();\"";
 			}
-			if ($fact=='GIVN') {
-				echo ' autofocus';
-			}
-			if ($fact=="DATE") {
+
+			// Extra markup for specific fact types
+			switch ($fact) {
+			case 'DATE':
 				echo " onblur=\"valid_date(this);\" onmouseout=\"valid_date(this);\"";
-			}
-			if ($fact=="LATI") {
+				break;
+			case 'GIVN':
+				echo ' autofocus data-autocomplete-type="GIVN"';
+				break;
+			case 'LATI':
 				echo " onblur=\"valid_lati_long(this, 'N', 'S');\" onmouseout=\"valid_lati_long(this, 'N', 'S');\"";
-			}
-			if ($fact=="LONG") {
+				break;
+			case 'LONG':
 				echo " onblur=\"valid_lati_long(this, 'E', 'W');\" onmouseout=\"valid_lati_long(this, 'E', 'W');\"";
+				break;
+			case 'NOTE':
+				// Shared notes.  Inline notes are handled elsewhere.
+				echo ' data-autocomplete-type="NOTE"';
+				break;
+			case 'OBJE':
+				echo ' data-autocomplete-type="OBJE"';
+				break;
+			case 'PLAC':
+				echo ' data-autocomplete-type="PLAC"';
+				break;
+			case 'REPO':
+				echo ' data-autocomplete-type="REPO"';
+				break;
+			case 'SOUR':
+				echo ' data-autocomplete-type="SOUR"';
+				break;
+			case 'SURN':
+			case '_MARNM_SURN':
+				echo ' data-autocomplete-type="SURN"';
+				break;
 			}
 			echo '>';
 		}

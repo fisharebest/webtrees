@@ -199,11 +199,10 @@ case 'update':
 
 $controller
 	->pageHeader()
-	->addInlineJavascript('jQuery("#tabs").tabs(); jQuery("#tabs").css("display", "inline");');
+	->addInlineJavascript('jQuery("#tabs").tabs(); jQuery("#tabs").css("display", "inline");')
+	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+	->addInlineJavascript('autocomplete();');
 
-if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for multiple GEDCOMs. Can be reinstated when fixed (https://bugs.launchpad.net/webtrees/+bug/613235)
-	$controller->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');
-}
 
 ?>
 <form enctype="multipart/form-data" method="post" id="configform" name="configform" action="<?php echo WT_SCRIPT_NAME; ?>">
@@ -240,7 +239,7 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 						<?php echo WT_I18N::translate('Default individual'), help_link('default_individual'); ?>
 					</td>
 					<td class="wrap">
-						<input type="text" name="NEW_PEDIGREE_ROOT_ID" id="NEW_PEDIGREE_ROOT_ID" value="<?php echo get_gedcom_setting(WT_GED_ID, 'PEDIGREE_ROOT_ID'); ?>" size="5" maxlength="20">
+						<input data-autocomplete-type="INDI" type="text" name="NEW_PEDIGREE_ROOT_ID" id="NEW_PEDIGREE_ROOT_ID" value="<?php echo get_gedcom_setting(WT_GED_ID, 'PEDIGREE_ROOT_ID'); ?>" size="5" maxlength="20">
 						<?php
 							echo print_findindi_link('NEW_PEDIGREE_ROOT_ID');
 							$person=WT_Individual::getInstance(get_gedcom_setting(WT_GED_ID, 'PEDIGREE_ROOT_ID'));
