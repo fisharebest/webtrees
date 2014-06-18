@@ -192,9 +192,9 @@ msgstr ""
 #, php-format
 msgid "%d Child"
 msgid_plural "%d Children"
-msgstr[0] "Dijete"
-msgstr[1] "Djeca"
-msgstr[2] "Djeca"
+msgstr[0] "%d Dijete"
+msgstr[1] "%d Djeteta"
+msgstr[2] "%d Djece"
 
 #: lifespan.php:198
 #, php-format
@@ -209,7 +209,7 @@ msgstr[2] "%d Osoba"
 msgid "%d anonymous logged-in user"
 msgid_plural "%d anonymous logged-in users"
 msgstr[0] "%d anonimni prijavljeni korisnik"
-msgstr[1] "%d anonimni prijavljeni korisnici"
+msgstr[1] "%d anonimna prijavljena korisnika"
 msgstr[2] "%d anonimnih prijavljenih korisnika"
 
 #: includes/functions/functions_print.php:312 library/WT/Stats.php:3425
@@ -217,7 +217,7 @@ msgstr[2] "%d anonimnih prijavljenih korisnika"
 msgid "%d logged-in user"
 msgid_plural "%d logged-in users"
 msgstr[0] "%d prijavljeni korisnik"
-msgstr[1] "%d prijavljeni korisnici"
+msgstr[1] "%d prijavljena korisnika"
 msgstr[2] "%d prijavljenih korisnika"
 
 #: modules_v3/relatives/module.php:62
@@ -225,7 +225,7 @@ msgstr[2] "%d prijavljenih korisnika"
 msgid "%d month"
 msgid_plural "%d months"
 msgstr[0] "%d mjesec"
-msgstr[1] "%d mjeseci"
+msgstr[1] "%d mjeseca"
 msgstr[2] "%d mjeseci"
 
 #: includes/functions/functions.php:637
@@ -245,7 +245,7 @@ msgstr "%d x rođak"
 #, php-format
 msgctxt "MALE/FEMALE"
 msgid "%d x cousin"
-msgstr "%d x rođak"
+msgstr "%d x rođaci"
 
 #: modules_v3/relatives/module.php:60
 #, php-format
@@ -14800,11 +14800,11 @@ msgstr ""
 
 #: library/WT/Stats.php:4043
 msgid "Uganda"
-msgstr "אוגנדה"
+msgstr ""
 
 #: library/WT/Stats.php:4044
 msgid "Ukraine"
-msgstr "אוקראינה"
+msgstr ""
 
 #: setup.php:252 setup.php:323
 msgid "Unable to connect using these settings.  Your server gave the following error."
@@ -14818,7 +14818,7 @@ msgstr ""
 
 #: admin_site_merge.php:60 admin_site_merge.php:63 admin_trees_config.php:250
 msgid "Unable to find record with ID"
-msgstr "Nemogu pronaći zapis sa Identifikacijskom brojem"
+msgstr "Ne mogu pronaći zapis sa Identifikacijskim brojem"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: library/WT/Gedcom/Code/Stat.php:86
@@ -14979,7 +14979,7 @@ msgstr "Učitana datoteka prelazi maksimalnu veličinu"
 
 #: library/WT/Stats.php:4046
 msgid "Uruguay"
-msgstr "אורוגוואי"
+msgstr ""
 
 #. I18N: GeoNames is the www.geonames.org website
 #: admin_trees_config.php:1277 help_text.php:996
