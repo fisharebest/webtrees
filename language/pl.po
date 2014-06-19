@@ -980,7 +980,8 @@ msgstr "po północy"
 #: modules_v3/ahnentafel_report/report.xml:13
 #: modules_v3/bdm_report/report.xml:12 modules_v3/birth_report/report.xml:10
 #: modules_v3/cemetery_report/report.xml:8
-#: modules_v3/change_report/report.xml:9 modules_v3/death_report/report.xml:11
+#: modules_v3/change_report/report.xml:9
+#: modules_v3/death_report/report.xml:11
 #: modules_v3/descendancy_report/report.xml:8
 #: modules_v3/fact_sources/report.xml:8
 #: modules_v3/family_group_report/report.xml:11
@@ -998,7 +999,8 @@ msgstr "A3"
 #: modules_v3/ahnentafel_report/report.xml:13
 #: modules_v3/bdm_report/report.xml:12 modules_v3/birth_report/report.xml:10
 #: modules_v3/cemetery_report/report.xml:8
-#: modules_v3/change_report/report.xml:9 modules_v3/death_report/report.xml:11
+#: modules_v3/change_report/report.xml:9
+#: modules_v3/death_report/report.xml:11
 #: modules_v3/descendancy_report/report.xml:8
 #: modules_v3/fact_sources/report.xml:8
 #: modules_v3/family_group_report/report.xml:11
@@ -1295,7 +1297,8 @@ msgid "Add a new wife"
 msgstr "Dodaj nową żonę"
 
 #. I18N: label for a yes/no option
-#: modules_v3/charts/module.php:237 modules_v3/gedcom_favorites/module.php:238
+#: modules_v3/charts/module.php:237
+#: modules_v3/gedcom_favorites/module.php:238
 #: modules_v3/recent_changes/module.php:162
 #: modules_v3/review_changes/module.php:170
 #: modules_v3/todays_events/module.php:156 modules_v3/todo/module.php:191
@@ -1429,8 +1432,9 @@ msgstr "Dodaj do koszyka wycinków"
 
 #. I18N: Menu option.  Add [the current page] to the list of favorites
 #: library/WT/Controller/Family.php:119
-#: library/WT/Controller/Individual.php:313 library/WT/Controller/Media.php:93
-#: library/WT/Controller/Note.php:73 library/WT/Controller/Repository.php:78
+#: library/WT/Controller/Individual.php:313
+#: library/WT/Controller/Media.php:93 library/WT/Controller/Note.php:73
+#: library/WT/Controller/Repository.php:78
 #: library/WT/Controller/Source.php:78 library/WT/MenuBar.php:524
 msgid "Add to favorites"
 msgstr "Dodaj do ulubionych"
@@ -1486,8 +1490,8 @@ msgstr "Adelaide, Australia"
 msgid "Admin comments on user"
 msgstr "Komentarz administratora do użytkownika"
 
-#: admin.php:33 library/WT/MenuBar.php:76 themes/_administration/header.php:62
-#: themes/_administration/header.php:93
+#: admin.php:33 library/WT/MenuBar.php:76
+#: themes/_administration/header.php:62 themes/_administration/header.php:93
 msgid "Administration"
 msgstr "Administracja"
 
@@ -1957,7 +1961,8 @@ msgid "Ancestors of "
 msgstr "Przodkowie - "
 
 #. I18N: %s is an individual’s name
-#: library/WT/Controller/Ancestry.php:73 library/WT/Controller/Ancestry.php:95
+#: library/WT/Controller/Ancestry.php:73
+#: library/WT/Controller/Ancestry.php:95
 #, php-format
 msgid "Ancestors of %s"
 msgstr "Przodkowie - %s"
@@ -2064,7 +2069,8 @@ msgctxt "LOCATIVE"
 msgid "April"
 msgstr "kwietniu"
 
-#: includes/functions/functions_print.php:987 library/WT/Date/Calendar.php:121
+#: includes/functions/functions_print.php:987
+#: library/WT/Date/Calendar.php:121
 msgctxt "NOMINATIVE"
 msgid "April"
 msgstr "kwiecień"
@@ -2108,8 +2114,9 @@ msgstr "Usunąć tę historię?"
 #: includes/functions/functions_print_lists.php:991
 #: includes/functions/functions_print_lists.php:1099
 #: includes/functions/functions_print_lists.php:1199
-#: library/WT/Controller/Individual.php:299 library/WT/Controller/Media.php:79
-#: library/WT/Controller/Note.php:66 library/WT/Controller/Repository.php:64
+#: library/WT/Controller/Individual.php:299
+#: library/WT/Controller/Media.php:79 library/WT/Controller/Note.php:66
+#: library/WT/Controller/Repository.php:64
 #: library/WT/Controller/Source.php:64
 #, php-format
 msgid "Are you sure you want to delete “%s”?"
@@ -2249,7 +2256,8 @@ msgctxt "LOCATIVE"
 msgid "August"
 msgstr "sierpniu"
 
-#: includes/functions/functions_print.php:991 library/WT/Date/Calendar.php:125
+#: includes/functions/functions_print.php:991
+#: library/WT/Date/Calendar.php:125
 msgctxt "NOMINATIVE"
 msgid "August"
 msgstr "sierpień"
@@ -2316,7 +2324,8 @@ msgstr "aw"
 msgid "Available blocks"
 msgstr "Dostępne bloki"
 
-#: includes/functions/functions_print_lists.php:1933 library/WT/Stats.php:2356
+#: includes/functions/functions_print_lists.php:1933
+#: library/WT/Stats.php:2356
 msgid "Average age"
 msgstr "Średni wiek"
 
@@ -2421,7 +2430,8 @@ msgid "Bangladesh"
 msgstr "Bangladesz"
 
 #. I18N: gedcom tag BAPM
-#: library/WT/Gedcom/Tag.php:112 modules_v3/missing_facts_report/report.xml:13
+#: library/WT/Gedcom/Tag.php:112
+#: modules_v3/missing_facts_report/report.xml:13
 msgid "Baptism"
 msgstr "Chrzest"
 
@@ -2495,7 +2505,8 @@ msgid "Baptism of a son"
 msgstr "Chrzest syna"
 
 #. I18N: gedcom tag BARM
-#: library/WT/Gedcom/Tag.php:115 modules_v3/missing_facts_report/report.xml:14
+#: library/WT/Gedcom/Tag.php:115
+#: modules_v3/missing_facts_report/report.xml:14
 msgid "Bar mitzvah"
 msgstr "Bar micwa"
 
@@ -2508,13 +2519,15 @@ msgid "Basic"
 msgstr "Podstawowe"
 
 #. I18N: gedcom tag BASM
-#: library/WT/Gedcom/Tag.php:118 modules_v3/missing_facts_report/report.xml:15
+#: library/WT/Gedcom/Tag.php:118
+#: modules_v3/missing_facts_report/report.xml:15
 msgid "Bat mitzvah"
 msgstr "Bat micwa"
 
 #. I18N: Name of a module
 #: modules_v3/batch_update/admin_batch_update.php:60
-#: modules_v3/batch_update/module.php:29 modules_v3/batch_update/module.php:43
+#: modules_v3/batch_update/module.php:29
+#: modules_v3/batch_update/module.php:43
 #: modules_v3/googlemap/module.php:2528
 msgid "Batch update"
 msgstr "Aktualizacja wsadowa"
@@ -2594,7 +2607,7 @@ msgstr "Obiekt binarny"
 
 #: includes/functions/functions_print.php:823
 msgid "Bing Maps™"
-msgstr ""
+msgstr "Bing Maps™"
 
 #: library/WT/Gedcom/Code/Temp.php:68
 msgid "Birmingham, Alabama"
@@ -3033,7 +3046,8 @@ msgid "Bulgaria"
 msgstr "Bułgaria"
 
 #. I18N: gedcom tag BURI
-#: library/WT/Gedcom/Tag.php:128 modules_v3/family_group_report/report.xml:345
+#: library/WT/Gedcom/Tag.php:128
+#: modules_v3/family_group_report/report.xml:345
 #: modules_v3/family_group_report/report.xml:696
 #: modules_v3/family_group_report/report.xml:1037
 #: modules_v3/missing_facts_report/report.xml:22
@@ -3050,7 +3064,7 @@ msgstr "Pogrzeb dziecka"
 
 #: library/WT/Gedcom/Tag.php:459
 msgid "Burial of a daughter"
-msgstr "Urodziny córki"
+msgstr "Pogrzeb córki"
 
 #: library/WT/Gedcom/Tag.php:506
 msgid "Burial of a father"
@@ -3586,7 +3600,8 @@ msgid "Choose: "
 msgstr "Wybierz: "
 
 #. I18N: gedcom tag CHR
-#: library/WT/Gedcom/Tag.php:143 modules_v3/family_group_report/report.xml:200
+#: library/WT/Gedcom/Tag.php:143
+#: modules_v3/family_group_report/report.xml:200
 #: modules_v3/family_group_report/report.xml:551
 #: modules_v3/family_group_report/report.xml:892
 #: modules_v3/missing_facts_report/report.xml:13
@@ -3853,8 +3868,8 @@ msgid "Comoros"
 msgstr "Komory"
 
 #: includes/functions/functions_print.php:97
-#: library/WT/Controller/Compact.php:43 library/WT/Controller/Fanchart.php:309
-#: library/WT/MenuBar.php:98
+#: library/WT/Controller/Compact.php:43
+#: library/WT/Controller/Fanchart.php:309 library/WT/MenuBar.php:98
 msgid "Compact tree"
 msgstr "Drzewo kompaktowe"
 
@@ -3897,7 +3912,8 @@ msgid "Confirm password"
 msgstr "Potwierdzenie hasła"
 
 #. I18N: gedcom tag CONF
-#: library/WT/Gedcom/Tag.php:152 modules_v3/missing_facts_report/report.xml:16
+#: library/WT/Gedcom/Tag.php:152
+#: modules_v3/missing_facts_report/report.xml:16
 msgid "Confirmation"
 msgstr "Bierzmowanie"
 
@@ -4081,7 +4097,8 @@ msgid "Create your own chart"
 msgstr "Pokaż własne wykresy statystyk"
 
 #. I18N: gedcom tag CREM
-#: library/WT/Gedcom/Tag.php:158 modules_v3/family_group_report/report.xml:309
+#: library/WT/Gedcom/Tag.php:158
+#: modules_v3/family_group_report/report.xml:309
 #: modules_v3/family_group_report/report.xml:336
 #: modules_v3/family_group_report/report.xml:660
 #: modules_v3/family_group_report/report.xml:687
@@ -4316,7 +4333,8 @@ msgstr "Użytkownik bazy danych"
 #: help_text.php:205 library/WT/Gedcom/Tag.php:164
 #: modules_v3/bdm_report/report.xml:129 modules_v3/bdm_report/report.xml:155
 #: modules_v3/bdm_report/report.xml:189 modules_v3/birth_report/report.xml:37
-#: modules_v3/death_report/report.xml:43 modules_v3/fact_sources/report.xml:69
+#: modules_v3/death_report/report.xml:43
+#: modules_v3/fact_sources/report.xml:69
 #: modules_v3/fact_sources/report.xml:156
 #: modules_v3/marriage_report/report.xml:43
 #: modules_v3/occupation_report/report.xml:54
@@ -4836,7 +4854,8 @@ msgctxt "LOCATIVE"
 msgid "December"
 msgstr "grudniu"
 
-#: includes/functions/functions_print.php:995 library/WT/Date/Calendar.php:129
+#: includes/functions/functions_print.php:995
+#: library/WT/Date/Calendar.php:129
 msgctxt "NOMINATIVE"
 msgid "December"
 msgstr "grudzień"
@@ -4904,8 +4923,9 @@ msgid "DejaVu"
 msgstr "DejaVu"
 
 #: admin_site_access.php:286 admin_site_change.php:286
-#: admin_site_clean.php:124 admin_site_logs.php:244 admin_trees_config.php:614
-#: admin_trees_manage.php:230 includes/functions/functions_print_facts.php:179
+#: admin_site_clean.php:124 admin_site_logs.php:244
+#: admin_trees_config.php:614 admin_trees_manage.php:230
+#: includes/functions/functions_print_facts.php:179
 #: includes/functions/functions_print_facts.php:182
 #: includes/functions/functions_print_facts.php:694
 #: includes/functions/functions_print_facts.php:901
@@ -4914,8 +4934,9 @@ msgstr "DejaVu"
 #: includes/functions/functions_print_lists.php:1099
 #: includes/functions/functions_print_lists.php:1199
 #: library/WT/Controller/Family.php:104
-#: library/WT/Controller/Individual.php:298 library/WT/Controller/Media.php:78
-#: library/WT/Controller/Note.php:65 library/WT/Controller/Repository.php:63
+#: library/WT/Controller/Individual.php:298
+#: library/WT/Controller/Media.php:78 library/WT/Controller/Note.php:65
+#: library/WT/Controller/Repository.php:63
 #: library/WT/Controller/Source.php:63 modules_v3/faq/module.php:396
 #: modules_v3/gedcom_news/module.php:119 modules_v3/googlemap/module.php:4378
 #: modules_v3/user_blog/module.php:91 modules_v3/user_messages/module.php:85
@@ -5351,8 +5372,9 @@ msgstr "Ekwador"
 #: library/WT/Controller/Individual.php:220
 #: library/WT/Controller/Individual.php:229
 #: library/WT/Controller/Individual.php:238
-#: library/WT/Controller/Individual.php:257 library/WT/Controller/Media.php:47
-#: library/WT/Controller/Note.php:46 library/WT/Controller/Repository.php:46
+#: library/WT/Controller/Individual.php:257
+#: library/WT/Controller/Media.php:47 library/WT/Controller/Note.php:46
+#: library/WT/Controller/Repository.php:46
 #: library/WT/Controller/Source.php:46 modules_v3/faq/module.php:393
 #: modules_v3/gedcom_news/module.php:118 modules_v3/googlemap/module.php:4378
 #: modules_v3/googlemap/module.php:4402 modules_v3/page_menu/module.php:32
@@ -5400,8 +5422,9 @@ msgstr "Opcje edycji"
 #: edit_interface.php:47 edit_interface.php:108 edit_interface.php:157
 #: edit_interface.php:218 edit_interface.php:317 edit_interface.php:2731
 #: help_text.php:1161 library/WT/Controller/Family.php:111
-#: library/WT/Controller/Individual.php:305 library/WT/Controller/Media.php:85
-#: library/WT/Controller/Repository.php:70 library/WT/Controller/Source.php:70
+#: library/WT/Controller/Individual.php:305
+#: library/WT/Controller/Media.php:85 library/WT/Controller/Repository.php:70
+#: library/WT/Controller/Source.php:70
 msgid "Edit raw GEDCOM"
 msgstr "Edytuj plik GEDCOM"
 
@@ -5575,7 +5598,8 @@ msgid "Endowment House"
 msgstr "Dom obdarowania mormońskiego"
 
 #. I18N: gedcom tag ENGA
-#: library/WT/Gedcom/Tag.php:186 modules_v3/missing_facts_report/report.xml:17
+#: library/WT/Gedcom/Tag.php:186
+#: modules_v3/missing_facts_report/report.xml:17
 msgid "Engagement"
 msgstr "Zaręczyny"
 
@@ -5833,7 +5857,7 @@ msgstr "Kolor oczu"
 #. I18N: Name of a theme.
 #: themes/fab/theme.php:29
 msgid "F.A.B."
-msgstr ""
+msgstr "F.A.B."
 
 #. I18N: Name of a module.  Abbreviation for “Frequently Asked Questions”
 #: modules_v3/faq/module.php:32 modules_v3/faq/module.php:431
@@ -5967,10 +5991,10 @@ msgstr "Falklandy (Malwiny)"
 #: mediaviewer.php:133 modules_v3/fact_sources/report.xml:149
 #: modules_v3/fact_sources/report.xml:311
 #: modules_v3/gedcom_stats/module.php:99
-#: modules_v3/gedcom_stats/module.php:314 modules_v3/googlemap/module.php:2642
-#: modules_v3/html/module.php:186 modules_v3/relatives/module.php:32
-#: note.php:121 placelist.php:228 search.php:98 source.php:98
-#: statistics.php:65 statisticsplot.php:775
+#: modules_v3/gedcom_stats/module.php:314
+#: modules_v3/googlemap/module.php:2642 modules_v3/html/module.php:186
+#: modules_v3/relatives/module.php:32 note.php:121 placelist.php:228
+#: search.php:98 source.php:98 statistics.php:65 statisticsplot.php:775
 msgid "Families"
 msgstr "Rodziny"
 
@@ -6052,10 +6076,11 @@ msgstr "Wiadomości rodzinne i ogłoszenia witryny."
 msgid "Family of %s"
 msgstr "Rodzina - %s"
 
-#: admin_site_change.php:280 admin_site_change.php:304 admin_site_logs.php:238
-#: admin_site_logs.php:261 admin_trees_manage.php:181
-#: admin_trees_places.php:94 admin_users.php:229 admin_users.php:431
-#: edit_changes.php:182 modules_v3/batch_update/admin_batch_update.php:58
+#: admin_site_change.php:280 admin_site_change.php:304
+#: admin_site_logs.php:238 admin_site_logs.php:261
+#: admin_trees_manage.php:181 admin_trees_places.php:94 admin_users.php:229
+#: admin_users.php:431 edit_changes.php:182
+#: modules_v3/batch_update/admin_batch_update.php:58
 #: modules_v3/faq/module.php:352 modules_v3/googlemap/module.php:1504
 #: modules_v3/html/module.php:294 modules_v3/stories/module.php:330
 msgid "Family tree"
@@ -6084,7 +6109,8 @@ msgid "Family tree title"
 msgstr "Nazwa drzewa genealogicznego"
 
 #: admin.php:179 admin_trees_manage.php:28 search.php:200
-#: themes/_administration/header.php:104 themes/_administration/header.php:106
+#: themes/_administration/header.php:104
+#: themes/_administration/header.php:106
 msgid "Family trees"
 msgstr "Drzewa genealogiczne"
 
@@ -6241,7 +6267,8 @@ msgctxt "LOCATIVE"
 msgid "February"
 msgstr "lutym"
 
-#: includes/functions/functions_print.php:985 library/WT/Date/Calendar.php:119
+#: includes/functions/functions_print.php:985
+#: library/WT/Date/Calendar.php:119
 msgctxt "NOMINATIVE"
 msgid "February"
 msgstr "luty"
@@ -6318,9 +6345,10 @@ msgstr "Zostały znalezione pliki z poprzedniej wersji webtrees. Stare pliki cza
 msgid "Files marked with %s are required for proper operation and cannot be removed."
 msgstr "Pliki zaznaczone %s są wymaganymi do prawidłowego działania i nie mogą być usunięte."
 
-#: admin_site_change.php:284 admin_site_logs.php:242 find.php:186 find.php:201
-#: find.php:219 find.php:236 find.php:253 find.php:271 find.php:288
-#: find.php:468 library/WT/I18N.php:705 modules_v3/random_media/module.php:298
+#: admin_site_change.php:284 admin_site_logs.php:242 find.php:186
+#: find.php:201 find.php:219 find.php:236 find.php:253 find.php:271
+#: find.php:288 find.php:468 library/WT/I18N.php:705
+#: modules_v3/random_media/module.php:298
 msgid "Filter"
 msgstr "Szukaj"
 
@@ -6380,7 +6408,8 @@ msgid "Finland"
 msgstr "Finlandia"
 
 #. I18N: gedcom tag FCOM
-#: library/WT/Gedcom/Tag.php:206 modules_v3/missing_facts_report/report.xml:18
+#: library/WT/Gedcom/Tag.php:206
+#: modules_v3/missing_facts_report/report.xml:18
 msgid "First communion"
 msgstr "Pierwsza Komunia Św."
 
@@ -6673,7 +6702,8 @@ msgid "Gambia"
 msgstr "Gambia"
 
 #. I18N: gedcom tag SEX
-#: library/WT/Gedcom/Tag.php:295 modules_v3/family_group_report/report.xml:832
+#: library/WT/Gedcom/Tag.php:295
+#: modules_v3/family_group_report/report.xml:832
 #: modules_v3/individual_ext_report/report.xml:382
 #: modules_v3/individual_ext_report/report.xml:589
 #: modules_v3/individual_report/report.xml:384
@@ -7319,7 +7349,7 @@ msgstr "Jeżeli osoba ma dwa osobne nazwiska, oba powinny być ujęte w ukośnik
 #: help_text.php:289
 #, php-format
 msgid "If an individual was known by a nickname which is not part of their formal name, it should be enclosed by quotation marks.  For example, <%s>John &quot;Nobby&quot; /Clark/<%s>."
-msgstr "Jeśli osoba była znana pod pseudonimem lub przezwiskiem, który nie jest częścią imienia lub nazwiska, powinien on być ujęty w cudzysłów. Na przykład: <%s>Jan &quot;Meszko&quot; /Kowalski/<%s>."
+msgstr "Jeśli osoba była znana pod pseudonimem lub przezwiskiem, który nie jest częścią imienia lub nazwiska, powinien on być ujęty w cudzysłów. Na przykład: <%s>Jan „Meszko” /Kowalski/<%s>."
 
 #: help_text.php:287
 #, php-format
@@ -7547,8 +7577,8 @@ msgstr "Lista osób"
 msgid "Individual pages"
 msgstr "Strony osób"
 
-#: admin_users.php:231 admin_users.php:433 edituser.php:137 help_text.php:1201
-#: help_text.php:1362 help_text.php:1462
+#: admin_users.php:231 admin_users.php:433 edituser.php:137
+#: help_text.php:1201 help_text.php:1362 help_text.php:1462
 msgid "Individual record"
 msgstr "Wpis osoby"
 
@@ -7567,10 +7597,11 @@ msgstr "Osoba żyjąca najdłużej"
 #: modules_v3/fact_sources/report.xml:51
 #: modules_v3/fact_sources/report.xml:255
 #: modules_v3/gedcom_stats/module.php:91
-#: modules_v3/gedcom_stats/module.php:298 modules_v3/googlemap/module.php:2642
-#: modules_v3/html/module.php:170 modules_v3/random_media/module.php:262
-#: note.php:114 placelist.php:225 search.php:93 search.php:145 source.php:95
-#: statistics.php:63 statisticsplot.php:779
+#: modules_v3/gedcom_stats/module.php:298
+#: modules_v3/googlemap/module.php:2642 modules_v3/html/module.php:170
+#: modules_v3/random_media/module.php:262 note.php:114 placelist.php:225
+#: search.php:93 search.php:145 source.php:95 statistics.php:63
+#: statisticsplot.php:779
 msgid "Individuals"
 msgstr "Osoby"
 
@@ -7742,7 +7773,8 @@ msgctxt "LOCATIVE"
 msgid "January"
 msgstr "styczniu"
 
-#: includes/functions/functions_print.php:984 library/WT/Date/Calendar.php:118
+#: includes/functions/functions_print.php:984
+#: library/WT/Date/Calendar.php:118
 msgctxt "NOMINATIVE"
 msgid "January"
 msgstr "styczeń"
@@ -7803,7 +7835,8 @@ msgctxt "LOCATIVE"
 msgid "July"
 msgstr "lipcu"
 
-#: includes/functions/functions_print.php:990 library/WT/Date/Calendar.php:124
+#: includes/functions/functions_print.php:990
+#: library/WT/Date/Calendar.php:124
 msgctxt "NOMINATIVE"
 msgid "July"
 msgstr "lipiec"
@@ -7876,7 +7909,8 @@ msgctxt "LOCATIVE"
 msgid "June"
 msgstr "czerwcu"
 
-#: includes/functions/functions_print.php:989 library/WT/Date/Calendar.php:123
+#: includes/functions/functions_print.php:989
+#: library/WT/Date/Calendar.php:123
 msgctxt "NOMINATIVE"
 msgid "June"
 msgstr "czerwiec"
@@ -8126,7 +8160,8 @@ msgstr "Liban"
 #: modules_v3/ahnentafel_report/report.xml:13
 #: modules_v3/bdm_report/report.xml:12 modules_v3/birth_report/report.xml:10
 #: modules_v3/cemetery_report/report.xml:8
-#: modules_v3/change_report/report.xml:9 modules_v3/death_report/report.xml:11
+#: modules_v3/change_report/report.xml:9
+#: modules_v3/death_report/report.xml:11
 #: modules_v3/descendancy_report/report.xml:8
 #: modules_v3/fact_sources/report.xml:8
 #: modules_v3/family_group_report/report.xml:11
@@ -8157,7 +8192,8 @@ msgstr "Lesotho"
 #: modules_v3/ahnentafel_report/report.xml:13
 #: modules_v3/bdm_report/report.xml:12 modules_v3/birth_report/report.xml:10
 #: modules_v3/cemetery_report/report.xml:8
-#: modules_v3/change_report/report.xml:9 modules_v3/death_report/report.xml:11
+#: modules_v3/change_report/report.xml:9
+#: modules_v3/death_report/report.xml:11
 #: modules_v3/descendancy_report/report.xml:8
 #: modules_v3/fact_sources/report.xml:8
 #: modules_v3/family_group_report/report.xml:11
@@ -8286,7 +8322,7 @@ msgstr "Pliki lokalne"
 #. I18N: gedcom tag _LOC
 #: library/WT/Gedcom/Tag.php:725
 msgid "Location"
-msgstr ""
+msgstr "Miejsce"
 
 #: modules_v3/googlemap/module.php:4314
 msgid "Location not removed: this location contains sub-locations"
@@ -8519,7 +8555,8 @@ msgctxt "LOCATIVE"
 msgid "March"
 msgstr "marcu"
 
-#: includes/functions/functions_print.php:986 library/WT/Date/Calendar.php:120
+#: includes/functions/functions_print.php:986
+#: library/WT/Date/Calendar.php:120
 msgctxt "NOMINATIVE"
 msgid "March"
 msgstr "marzec"
@@ -8594,7 +8631,8 @@ msgid "Marriage Place contains"
 msgstr "Miejsce ślubu zawiera"
 
 #. I18N: gedcom tag MARB
-#: library/WT/Gedcom/Tag.php:228 modules_v3/missing_facts_report/report.xml:19
+#: library/WT/Gedcom/Tag.php:228
+#: modules_v3/missing_facts_report/report.xml:19
 msgid "Marriage banns"
 msgstr "Zapowiedzi przedmałżeńskie"
 
@@ -8829,7 +8867,8 @@ msgctxt "LOCATIVE"
 msgid "May"
 msgstr "maju"
 
-#: includes/functions/functions_print.php:988 library/WT/Date/Calendar.php:122
+#: includes/functions/functions_print.php:988
+#: library/WT/Date/Calendar.php:122
 msgctxt "NOMINATIVE"
 msgid "May"
 msgstr "maj"
@@ -9151,7 +9190,8 @@ msgstr "Moduły"
 msgid "Moldova"
 msgstr "Mołdawia"
 
-#: includes/functions/functions_print.php:999 library/WT/Date/Calendar.php:214
+#: includes/functions/functions_print.php:999
+#: library/WT/Date/Calendar.php:214
 msgid "Mon"
 msgstr "Pn"
 
@@ -9425,8 +9465,9 @@ msgstr "Birma"
 #: modules_v3/birth_report/report.xml:5 modules_v3/birth_report/report.xml:33
 #: modules_v3/cemetery_report/report.xml:38
 #: modules_v3/change_report/report.xml:53
-#: modules_v3/change_report/report.xml:93 modules_v3/death_report/report.xml:5
-#: modules_v3/death_report/report.xml:35 modules_v3/fact_sources/report.xml:59
+#: modules_v3/change_report/report.xml:93
+#: modules_v3/death_report/report.xml:5 modules_v3/death_report/report.xml:35
+#: modules_v3/fact_sources/report.xml:59
 #: modules_v3/fact_sources/report.xml:152
 #: modules_v3/fact_sources/report.xml:263
 #: modules_v3/fact_sources/report.xml:314
@@ -9705,7 +9746,8 @@ msgstr "Brak konwersji kalendarza"
 
 #: includes/functions/functions_charts.php:265
 #: library/WT/Controller/Descendancy.php:240
-#: modules_v3/descendancy/module.php:198 modules_v3/descendancy/module.php:217
+#: modules_v3/descendancy/module.php:198
+#: modules_v3/descendancy/module.php:217
 msgid "No children"
 msgstr "Brak dzieci"
 
@@ -9850,9 +9892,9 @@ msgstr "Nocturnal"
 
 #: admin_trees_download.php:114 admin_users.php:455 famlist.php:114
 #: famlist.php:144 indilist.php:114 indilist.php:144 library/WT/Stats.php:728
-#: modules_v3/cemetery_report/report.xml:7 modules_v3/clippings/module.php:196
-#: modules_v3/clippings/module.php:573 modules_v3/death_report/report.xml:10
-#: modules_v3/families/module.php:149
+#: modules_v3/cemetery_report/report.xml:7
+#: modules_v3/clippings/module.php:196 modules_v3/clippings/module.php:573
+#: modules_v3/death_report/report.xml:10 modules_v3/families/module.php:149
 #: modules_v3/individual_ext_report/report.xml:11
 #: modules_v3/individual_report/report.xml:8
 #: modules_v3/individuals/module.php:148
@@ -9990,7 +10032,8 @@ msgctxt "LOCATIVE"
 msgid "November"
 msgstr "listopadzie"
 
-#: includes/functions/functions_print.php:994 library/WT/Date/Calendar.php:128
+#: includes/functions/functions_print.php:994
+#: library/WT/Date/Calendar.php:128
 msgctxt "NOMINATIVE"
 msgid "November"
 msgstr "listopad"
@@ -10103,7 +10146,8 @@ msgctxt "LOCATIVE"
 msgid "October"
 msgstr "październiku"
 
-#: includes/functions/functions_print.php:993 library/WT/Date/Calendar.php:127
+#: includes/functions/functions_print.php:993
+#: library/WT/Date/Calendar.php:127
 msgctxt "NOMINATIVE"
 msgid "October"
 msgstr "październik"
@@ -10192,7 +10236,7 @@ msgstr "Ups! webtrees nie jest w stanie utworzyć plików w tym katalogu."
 
 #: includes/functions/functions_print.php:824
 msgid "OpenStreetMap™"
-msgstr ""
+msgstr "OpenStreetMap™"
 
 #: modules_v3/googlemap/help_text.php:41 modules_v3/googlemap/module.php:406
 msgid "Optional prefixes and suffixes"
@@ -10374,7 +10418,8 @@ msgstr "Strona %s z %s"
 #: modules_v3/ahnentafel_report/report.xml:13
 #: modules_v3/bdm_report/report.xml:12 modules_v3/birth_report/report.xml:10
 #: modules_v3/cemetery_report/report.xml:8
-#: modules_v3/change_report/report.xml:9 modules_v3/death_report/report.xml:11
+#: modules_v3/change_report/report.xml:9
+#: modules_v3/death_report/report.xml:11
 #: modules_v3/descendancy_report/report.xml:8
 #: modules_v3/fact_sources/report.xml:8
 #: modules_v3/family_group_report/report.xml:11
@@ -10791,10 +10836,11 @@ msgstr "Miejsca w: %s"
 msgid "Places should be entered according to the standards for genealogy.  In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels.  The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place.  The first part, “Salt Lake City,” is the city or township where the event occurred.  In some countries, there may be municipalities or districts inside a city which are important to note.  In that case, they should come before the city.  The next part, “Salt Lake,” is the county.  “Utah” is the state, and “USA” is the country.  It is important to note each place because genealogical records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas.  Suppose, in the example above, you didn’t know the county for Salt Lake City.  You should then record it like this: “Salt Lake City, , Utah, USA”.  Suppose you only know that an individual was born in Utah.  You would enter the information like this: “, , Utah, USA”.  <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
 msgstr "Miejsca należy wprowadzać zgodnie ze standardami przyjętymi w genealogii. W genealogii miejsca zapisuje się umieszczając najbardziej szczegółową informację na początku, a następnie podając dane coraz bardziej ogólne, rozdzielając przy tym poziomy przecinkami. Poziomy informacji o miejscu powinny odzwierciedlać poziomy hierarchii administracyjnej lub kościelnej, która przechowuje akta.<br><br>Na przykład informację o wsi Krzyżanowice pod Wrocławiem należy wprowadzić następująco: „Krzyżanowice, Trzebnicki, Dolnośląskie, Polska”.<br><br>Przeanalizujmy poszczególne elementy. Pierwsza część, „Krzyżanowice”, to nazwa miejscowości, w którym miało miejsce dane wydarzenie. Czasem może zajść potrzeba wyróżnienia dzielnicy lub innego mniejszego obszaru administracyjnego - w takim przypadku należy go umieścić przed nazwą miasta. Następnym elementem jest nazwa powiatu („Trzebnicki”), województwa („Dolnośląskie”) oraz kraju („Polska”). Podanie tak szczegółowej informacji jest ważne, ponieważ dane genealogiczne są przechowywane przez jednostki administracyjne na każdym poziomie.<br><br>Jeśli brak informacji na którymś poziomie, można pozostawić wolne miejsce pomiędzy przecinkami. Jeśli na przykład nie wiadomo, w którym powiecie znajduje się wieś Krzyżanowice, można wpisać: „Krzyżanowice, , Dolnośląskie, Polska”. Jeśli wiadomo tylko, że osoba urodziła się w województwie dolnośląskim, można wpisać: „, , Dolnośląskie, Polska”. Uwaga: poziomy administracyjne i ich liczba zależy od kraju. Najbardziej optymalną metodą jest stosowanie czteropoziomowej hierarchii miejsc (w Polsce: miejscowość, powiat, województwo, kraj).<br><br>Odnośnik <b>Znajdź miejsce</b> pomoże odnaleźć miejsca wprowadzone wcześniej do bazy danych."
 
-#: modules_v3/random_media/module.php:130 themes/_administration/header.php:31
-#: themes/clouds/header.php:34 themes/colors/header.php:37
-#: themes/fab/header.php:34 themes/minimal/header.php:34
-#: themes/webtrees/header.php:35 themes/xenea/header.php:34
+#: modules_v3/random_media/module.php:130
+#: themes/_administration/header.php:31 themes/clouds/header.php:34
+#: themes/colors/header.php:37 themes/fab/header.php:34
+#: themes/minimal/header.php:34 themes/webtrees/header.php:35
+#: themes/xenea/header.php:34
 msgid "Play"
 msgstr "Odtwórz"
 
@@ -10932,7 +10978,8 @@ msgstr "Zdefiniowana treść mówiąca, że każdy może otrzymać konto użytko
 msgid "Predefined text that states only family members can request a user account"
 msgstr "Zdefiniowana treść mówiąca, że tylko członkowie rodziny mogą otrzymać konto użytkownika"
 
-#: admin_users.php:194 admin_users.php:394 edituser.php:169 help_text.php:1179
+#: admin_users.php:194 admin_users.php:394 edituser.php:169
+#: help_text.php:1179
 msgid "Preferred contact method"
 msgstr "Preferowana metoda kontaktu"
 
@@ -11225,8 +11272,8 @@ msgstr "Uporządkuj rodziny"
 msgid "Re-order media"
 msgstr "Uporządkuj multimedia"
 
-#: admin_users.php:366 admin_users.php:569 edituser.php:133 help_text.php:1352
-#: login.php:308 login.php:407
+#: admin_users.php:366 admin_users.php:569 edituser.php:133
+#: help_text.php:1352 login.php:308 login.php:407
 msgid "Real name"
 msgstr "Imię i nazwisko"
 
@@ -11369,9 +11416,9 @@ msgstr "Relacja z rodzicami"
 msgid "Relationship: %s"
 msgstr "Pokrewieństwo: %s"
 
-#: includes/functions/functions_print_lists.php:284 library/WT/MenuBar.php:103
-#: library/WT/MenuBar.php:219 library/WT/MenuBar.php:244 relationship.php:70
-#: relationship.php:85
+#: includes/functions/functions_print_lists.php:284
+#: library/WT/MenuBar.php:103 library/WT/MenuBar.php:219
+#: library/WT/MenuBar.php:244 relationship.php:70 relationship.php:85
 msgid "Relationships"
 msgstr "Pokrewieństwo"
 
@@ -11382,7 +11429,8 @@ msgid "Relationships between %1$s and %2$s"
 msgstr "Pokrewieństwo - %1$s i %2$s"
 
 #. I18N: gedcom tag RELI
-#: library/WT/Gedcom/Tag.php:282 modules_v3/missing_facts_report/report.xml:23
+#: library/WT/Gedcom/Tag.php:282
+#: modules_v3/missing_facts_report/report.xml:23
 #: modules_v3/missing_facts_report/report.xml:583
 msgid "Religion"
 msgstr "Wyznanie"
@@ -12003,7 +12051,8 @@ msgctxt "LOCATIVE"
 msgid "September"
 msgstr "wrześniu"
 
-#: includes/functions/functions_print.php:992 library/WT/Date/Calendar.php:126
+#: includes/functions/functions_print.php:992
+#: library/WT/Date/Calendar.php:126
 msgctxt "NOMINATIVE"
 msgid "September"
 msgstr "wrzesień"
@@ -12058,7 +12107,8 @@ msgstr "Wygaśnięcie sesji"
 msgid "Set link"
 msgstr "Ustaw powiązanie"
 
-#: themes/_administration/header.php:124 themes/_administration/header.php:136
+#: themes/_administration/header.php:124
+#: themes/_administration/header.php:136
 msgid "Set the default blocks"
 msgstr "Ustaw domyślne bloki"
 
@@ -12152,8 +12202,8 @@ msgstr "Wspólna notatka"
 msgid "Shared note contains:"
 msgstr "Wspólna notatka zawiera:"
 
-#: includes/functions/functions_print_lists.php:921 library/WT/MenuBar.php:303
-#: notelist.php:29 notelist.php:33 search.php:108
+#: includes/functions/functions_print_lists.php:921
+#: library/WT/MenuBar.php:303 notelist.php:29 notelist.php:33 search.php:108
 msgid "Shared notes"
 msgstr "Wspólne notatki"
 
@@ -12859,7 +12909,8 @@ msgstr "Brzmi jak"
 #: includes/functions/functions_print_facts.php:525 inverselink.php:113
 #: library/WT/Gedcom/Tag.php:301 modules_v3/bdm_report/report.xml:133
 #: modules_v3/bdm_report/report.xml:159 modules_v3/bdm_report/report.xml:193
-#: modules_v3/birth_report/report.xml:40 modules_v3/death_report/report.xml:51
+#: modules_v3/birth_report/report.xml:40
+#: modules_v3/death_report/report.xml:51
 #: modules_v3/fact_sources/module.php:33 modules_v3/fact_sources/report.xml:3
 #: modules_v3/fact_sources/report.xml:40
 #: modules_v3/marriage_report/report.xml:51
@@ -12909,8 +12960,8 @@ msgstr "Typ źródła"
 #: modules_v3/individual_ext_report/report.xml:635
 #: modules_v3/individual_report/report.xml:635
 #: modules_v3/lightbox/module.php:126 modules_v3/sources_tab/module.php:34
-#: note.php:135 repo.php:92 search.php:103 sourcelist.php:29 sourcelist.php:33
-#: statistics.php:347 statistics.php:384
+#: note.php:135 repo.php:92 search.php:103 sourcelist.php:29
+#: sourcelist.php:33 statistics.php:347 statistics.php:384
 msgid "Sources"
 msgstr "Źródła"
 
@@ -13054,10 +13105,11 @@ msgstr "Nieżywo urodzony: zwolnione"
 msgid "Stockholm, Sweden"
 msgstr "Stockholm, Szwecja"
 
-#: modules_v3/random_media/module.php:130 themes/_administration/header.php:31
-#: themes/clouds/header.php:34 themes/colors/header.php:37
-#: themes/fab/header.php:34 themes/minimal/header.php:34
-#: themes/webtrees/header.php:35 themes/xenea/header.php:34
+#: modules_v3/random_media/module.php:130
+#: themes/_administration/header.php:31 themes/clouds/header.php:34
+#: themes/colors/header.php:37 themes/fab/header.php:34
+#: themes/minimal/header.php:34 themes/webtrees/header.php:35
+#: themes/xenea/header.php:34
 msgid "Stop"
 msgstr "Zatrzymaj"
 
@@ -13115,7 +13167,8 @@ msgstr "Sudan"
 msgid "Suffixes"
 msgstr "Przyrostki"
 
-#: includes/functions/functions_print.php:998 library/WT/Date/Calendar.php:220
+#: includes/functions/functions_print.php:998
+#: library/WT/Date/Calendar.php:220
 msgid "Sun"
 msgstr "Nd"
 
@@ -13632,7 +13685,7 @@ msgstr "Wersja %s jest za stara"
 
 #: help_text.php:997
 msgid "The website www.geonames.org provides a large database of place names.  This can be searched when entering new places.  To use this feature, you must register for a free account at www.geonames.org and provide the username."
-msgstr ""
+msgstr "Strona www.geonames.org zapewnia dużą bazę danych nazw miejscowości. Te nazy miejscowoeści mogą być wyszukiwane podczas wprowadzania nowych miejsc. Aby korzystać z tej funkcji, należy zarejestrować darmowe konto w www.geonames.org i podać nazwę użytkownika."
 
 #: setup.php:934
 msgid "The webtrees developers would be very interested to learn about this error.  If you contact them, they will help you resolve the problem."
@@ -15068,8 +15121,8 @@ msgstr "Na tej stronie można zmieniać lub usuwać członków rodziny.<br><br>M
 msgid "Use this value"
 msgstr "Użyj tej wartości"
 
-#: admin_site_change.php:277 admin_site_change.php:303 admin_site_logs.php:235
-#: admin_site_logs.php:260 edit_changes.php:180
+#: admin_site_change.php:277 admin_site_change.php:303
+#: admin_site_logs.php:235 admin_site_logs.php:260 edit_changes.php:180
 msgid "User"
 msgstr "Użytkownik"
 
@@ -15613,7 +15666,7 @@ msgstr "Świadek"
 #. I18N: In the paternal surname tradition, ...
 #: help_text.php:949 help_text.php:969 help_text.php:976
 msgid "Wives take their husband’s surname."
-msgstr "Dzieci otrzymują nazwisko męża."
+msgstr "Żony otrzymują nazwisko męża."
 
 #: statistics.php:637
 msgid "World"
@@ -16314,12 +16367,12 @@ msgstr "Zamknij"
 #. I18N: Name of a theme.
 #: themes/clouds/theme.php:48
 msgid "clouds"
-msgstr ""
+msgstr "clouds"
 
 #. I18N: Name of a theme.
 #: themes/colors/theme.php:127
 msgid "colors"
-msgstr ""
+msgstr "colors"
 
 #: modules_v3/top10_surnames/module.php:162
 msgid "compact list"
@@ -16871,8 +16924,8 @@ msgid "from"
 msgstr "z"
 
 #. I18N: from 1700 interval 50 years
-#: statistics.php:663 statistics.php:665 statistics.php:667 statistics.php:669
-#: statistics.php:671 statistics.php:673
+#: statistics.php:663 statistics.php:665 statistics.php:667
+#: statistics.php:669 statistics.php:671 statistics.php:673
 #, php-format
 msgid "from %1$s interval %2$s year"
 msgid_plural "from %1$s interval %2$s years"
@@ -16996,58 +17049,70 @@ msgctxt "son’s son’s wife"
 msgid "grandson’s wife"
 msgstr "żona wnuka"
 
-#: includes/functions/functions.php:1275 includes/functions/functions.php:1284
+#: includes/functions/functions.php:1275
+#: includes/functions/functions.php:1284
 #: includes/functions/functions.php:1295
 #, php-format
 msgid "great x%d aunt"
 msgstr "%dx prababcia cioteczna"
 
-#: includes/functions/functions.php:1276 includes/functions/functions.php:1285
+#: includes/functions/functions.php:1276
+#: includes/functions/functions.php:1285
 #: includes/functions/functions.php:1296
 #, php-format
 msgid "great x%d aunt/uncle"
 msgstr "rodzeństwo %dx pradziadka/prababci"
 
-#: includes/functions/functions.php:1617 includes/functions/functions.php:1630
+#: includes/functions/functions.php:1617
+#: includes/functions/functions.php:1630
 #, php-format
 msgid "great x%d grandchild"
 msgstr "%dx prawnuczka/prawnuk"
 
-#: includes/functions/functions.php:1616 includes/functions/functions.php:1629
+#: includes/functions/functions.php:1616
+#: includes/functions/functions.php:1629
 #, php-format
 msgid "great x%d granddaughter"
 msgstr "%dx prawnuczka"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
-#: includes/functions/functions.php:1520 includes/functions/functions.php:1527
-#: includes/functions/functions.php:1534 includes/functions/functions.php:1542
+#: includes/functions/functions.php:1520
+#: includes/functions/functions.php:1527
+#: includes/functions/functions.php:1534
+#: includes/functions/functions.php:1542
 #: includes/functions/functions.php:1552
 #, php-format
 msgid "great x%d grandfather"
 msgstr "%dx pradziadek"
 
-#: includes/functions/functions.php:1521 includes/functions/functions.php:1528
-#: includes/functions/functions.php:1535 includes/functions/functions.php:1543
+#: includes/functions/functions.php:1521
+#: includes/functions/functions.php:1528
+#: includes/functions/functions.php:1535
+#: includes/functions/functions.php:1543
 #: includes/functions/functions.php:1553
 #, php-format
 msgid "great x%d grandmother"
 msgstr "%dx prababcia"
 
-#: includes/functions/functions.php:1522 includes/functions/functions.php:1529
-#: includes/functions/functions.php:1536 includes/functions/functions.php:1544
+#: includes/functions/functions.php:1522
+#: includes/functions/functions.php:1529
+#: includes/functions/functions.php:1536
+#: includes/functions/functions.php:1544
 #: includes/functions/functions.php:1554
 #, php-format
 msgid "great x%d grandparent"
 msgstr "%dx prababcia/pradziadek"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
-#: includes/functions/functions.php:1615 includes/functions/functions.php:1628
+#: includes/functions/functions.php:1615
+#: includes/functions/functions.php:1628
 #, php-format
 msgid "great x%d grandson"
 msgstr "%dx prawnuk"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
-#: includes/functions/functions.php:1448 includes/functions/functions.php:1459
+#: includes/functions/functions.php:1448
+#: includes/functions/functions.php:1459
 #, php-format
 msgid "great x%d nephew"
 msgstr "%dx prawnuk stryjeczny/wujeczny/cioteczny"
@@ -17070,7 +17135,8 @@ msgctxt "(a woman’s) great x%d nephew"
 msgid "great x%d nephew"
 msgstr "%dx prawnuk cioteczny"
 
-#: includes/functions/functions.php:1450 includes/functions/functions.php:1461
+#: includes/functions/functions.php:1450
+#: includes/functions/functions.php:1461
 #, php-format
 msgid "great x%d nephew/niece"
 msgstr "%dx pradziecko stryjeczne/wujeczne/cioteczne"
@@ -17093,7 +17159,8 @@ msgctxt "(a woman’s) great x%d nephew/niece"
 msgid "great x%d nephew/niece"
 msgstr "%dx pradziecko cioteczne"
 
-#: includes/functions/functions.php:1449 includes/functions/functions.php:1460
+#: includes/functions/functions.php:1449
+#: includes/functions/functions.php:1460
 #, php-format
 msgid "great x%d niece"
 msgstr "%dx prawnuczka stryjeczna/wujeczna/cioteczna"
@@ -17117,7 +17184,8 @@ msgid "great x%d niece"
 msgstr "%dx prawnuczka cioteczna"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
-#: includes/functions/functions.php:1274 includes/functions/functions.php:1294
+#: includes/functions/functions.php:1274
+#: includes/functions/functions.php:1294
 #, php-format
 msgid "great x%d uncle"
 msgstr "%dx pradziadek stryjeczny/wujeczny"
@@ -18458,8 +18526,8 @@ msgstr "immigracyjne"
 msgid "interpreted %s (%s)"
 msgstr "zinterpretowane jako %s (%s)"
 
-#: statistics.php:589 statistics.php:591 statistics.php:593 statistics.php:600
-#: statistics.php:602
+#: statistics.php:589 statistics.php:591 statistics.php:593
+#: statistics.php:600 statistics.php:602
 #, php-format
 msgid "interval %s year"
 msgid_plural "interval %s years"
@@ -18619,7 +18687,7 @@ msgstr "północ"
 #. I18N: Name of a theme.
 #: themes/minimal/theme.php:30
 msgid "minimal"
-msgstr ""
+msgstr "minimal"
 
 #: modules_v3/googlemap/module.php:330
 msgid "minimum"
@@ -19331,7 +19399,8 @@ msgid "sort by date of birth"
 msgstr "sortuj według daty urodzenia"
 
 #. I18N: An option in a list-box
-#: modules_v3/bdm_report/report.xml:11 modules_v3/cemetery_report/report.xml:6
+#: modules_v3/bdm_report/report.xml:11
+#: modules_v3/cemetery_report/report.xml:6
 #: modules_v3/death_report/report.xml:9
 #: modules_v3/relative_ext_report/report.xml:7 reportengine.php:512
 msgid "sort by date of death"
@@ -19809,7 +19878,7 @@ msgstr "żona"
 #. I18N: Name of a theme.
 #: themes/xenea/theme.php:30
 msgid "xenea"
-msgstr ""
+msgstr "xenea"
 
 #: timeline.php:130
 msgid "years"
