@@ -302,9 +302,9 @@ $controller->pageHeader();
 
 switch ($action) {
 case 'createform':
-	if (count(WT_Tree::getAll())==1) { //Removed becasue it doesn't work here for multiple GEDCOMs. Can be reinstated when fixed (https://bugs.launchpad.net/webtrees/+bug/613235)
-		$controller->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');
-	}
+	$controller
+		->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+		->addInlineJavascript('autocomplete();');
 
 	init_calendar_popup();
 	$controller->addInlineJavascript('
@@ -440,12 +440,12 @@ case 'createform':
 									//Pedigree root person
 									'<td>';
 										$varname='rootid'.$tree->tree_id;
-										echo '<input type="text" size="12" name="', $varname, '" id="', $varname, '" value="', WT_Filter::escapeHtml(WT_Filter::post('rootid'.$tree->tree_id, WT_REGEX_XREF)), '"> ', print_findindi_link($varname),
+										echo '<input data-autocomplete-type="INDI" data-autocomplete-ged="' . $tree->tree_name_html . '" type="text" size="12" name="', $varname, '" id="', $varname, '" value="', WT_Filter::escapeHtml(WT_Filter::post('rootid'.$tree->tree_id, WT_REGEX_XREF)), '"> ', print_findindi_link($varname, '', $tree->tree_name),
 									'</td>',
 									// GEDCOM INDI Record ID
 									'<td>';
 										$varname='gedcomid'.$tree->tree_id;
-										echo '<input type="text" size="12" name="',$varname, '" id="',$varname, '" value="', WT_Filter::escapeHtml(WT_Filter::post('gedcomid'.$tree->tree_id, WT_REGEX_XREF)), '"> ', print_findindi_link($varname),
+										echo '<input data-autocomplete-type="INDI" data-autocomplete-ged="' . $tree->tree_name_html . '" type="text" size="12" name="',$varname, '" id="',$varname, '" value="', WT_Filter::escapeHtml(WT_Filter::post('gedcomid'.$tree->tree_id, WT_REGEX_XREF)), '"> ', print_findindi_link($varname, '', $tree->tree_name),
 									'</td>',
 									'<td>';
 										$varname='canedit'.$tree->tree_id;
