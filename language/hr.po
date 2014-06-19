@@ -129,7 +129,7 @@ msgstr ""
 #: admin_trees_check.php:159
 #, php-format
 msgid "%1$s does not exist."
-msgstr "%1$s ne postoji"
+msgstr "%1$s ne postoji."
 
 #. I18N: placeholders are GEDCOM IDs, such as R123
 #: admin_trees_check.php:153
