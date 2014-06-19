@@ -474,6 +474,43 @@ case 'IFSRO':
 	}
 	echo json_encode($data);
 	exit;
+
+case 'IFS':
+	$data=array();
+	// Fetch all data, regardless of privacy
+	$rows=get_INDI_rows($term);
+	// Filter for privacy
+	foreach ($rows as $row) {
+		$person=WT_Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+		if ($person->canShowName()) {
+			$data[]=array('value'=>$person->getXref(), 'label'=>str_replace(array('@N.N.', '@P.N.'), array($UNKNOWN_NN, $UNKNOWN_PN), $row->n_full).', <i>'.$person->getLifeSpan().'</i>');
+		}
+	}
+	// Fetch all data, regardless of privacy
+	$rows=get_SOUR_rows($term);
+	// Filter for privacy
+	foreach ($rows as $row) {
+		$source=WT_Source::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+		if ($source->canShowName()) {
+			$data[]=array('value'=>$source->getXref(), 'label'=>$source->getFullName());
+		}
+	}
+	// Fetch all data, regardless of privacy
+	$rows=get_FAM_rows($term);
+	// Filter for privacy
+	foreach ($rows as $row) {
+		$family=WT_Family::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+		if ($family->canShowName()) {
+			$marriage_year=$family->getMarriageYear();
+			if ($marriage_year) {
+				$data[]=array('value'=>$family->getXref(), 'label'=>$family->getFullName().', <i>'.$marriage_year.'</i>');
+			} else {
+				$data[]=array('value'=>$family->getXref(), 'label'=>$family->getFullName());
+			}
+		}
+	}
+	echo json_encode($data);
+	exit;
 }
 
 function get_FAM_rows($term) {

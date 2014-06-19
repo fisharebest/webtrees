@@ -90,7 +90,8 @@ $controller=new WT_Controller_Page();
 $controller
 	->setPageTitle(WT_I18N::translate('User administration'))
 	->pageHeader()
-	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');
+	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+	->addInlineJavascript('autocomplete();');
 
 // Form validation
 ?>
@@ -139,7 +140,7 @@ echo '<div id="edituser-page">
 		}
 		$person = WT_Individual::getInstance(WT_USER_ROOT_ID);
 		echo '<div class="label">', WT_I18N::translate('Default individual'), help_link('default_individual'), '</div>
-			<div class="value"><input type="text" name="form_rootid" id="rootid" value="', WT_USER_ROOT_ID, '">';
+			<div class="value"><input data-autocomplete-type="INDI" type="text" name="form_rootid" id="rootid" value="', WT_USER_ROOT_ID, '">';
 				echo print_findindi_link('rootid'), '<br>';
 				if ($person) {
 					echo $person->format_list('span');

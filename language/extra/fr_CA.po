@@ -5809,7 +5809,7 @@ msgstr "Couleur des yeux"
 #. I18N: Name of a theme.
 #: themes/fab/theme.php:29
 msgid "F.A.B."
-msgstr ""
+msgstr "F.A.B."
 
 #. I18N: Name of a module.  Abbreviation for “Frequently Asked Questions”
 #: modules_v3/faq/module.php:32 modules_v3/faq/module.php:431
@@ -16284,12 +16284,12 @@ msgstr "Fermer"
 #. I18N: Name of a theme.
 #: themes/clouds/theme.php:48
 msgid "clouds"
-msgstr ""
+msgstr "clouds"
 
 #. I18N: Name of a theme.
 #: themes/colors/theme.php:127
 msgid "colors"
-msgstr ""
+msgstr "colors"
 
 #: modules_v3/top10_surnames/module.php:162
 msgid "compact list"
@@ -18586,7 +18586,7 @@ msgstr "minuit"
 #. I18N: Name of a theme.
 #: themes/minimal/theme.php:30
 msgid "minimal"
-msgstr ""
+msgstr "minimal"
 
 #: modules_v3/googlemap/module.php:330
 msgid "minimum"
@@ -19776,7 +19776,7 @@ msgstr "épouse"
 #. I18N: Name of a theme.
 #: themes/xenea/theme.php:30
 msgid "xenea"
-msgstr ""
+msgstr "xenea"
 
 #: timeline.php:130
 msgid "years"
