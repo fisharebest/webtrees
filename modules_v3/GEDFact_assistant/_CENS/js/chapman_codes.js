@@ -795,7 +795,7 @@ function getChapmanCode(place_name) {
 		return "ALL";
 	case "Anywhere":
 		return "ANY";
-	case "At Sea":
+	case "At sea":
 		return "SEA";
 	case "Unknown":
 	case "UNK":

@@ -2,7 +2,7 @@
 <Report>
 	<Title><var var="WT_I18N::translate('Related individuals')" /></Title>
 	<Description><var var="WT_I18N::translate('A report of the individuals that are closely related to an individual.')" /></Description>
-	<Input name="pid" lookup="INDI" type="text"><var var="WT_I18N::translate('Enter Individual ID')" /></Input>
+	<Input name="pid" lookup="INDI" type="text"><var var="WT_I18N::translate('Individual')" /></Input>
 	<Input name="relatives" type="select" options="child-family=>WT_I18N::translate('Parents and siblings')|spouse-family=>WT_I18N::translate('Spouses and children')|direct-ancestors=>WT_I18N::translate('Direct line ancestors')|ancestors=>WT_I18N::translate('Direct line ancestors and their families')|descendants=>WT_I18N::translate('Descendants')|all=>WT_I18N::translate('All')"><var var="WT_I18N::translate('Choose relatives')" /></Input>
 	<Input name="sortby" type="select" default="BIRT:DATE" options="NAME=>WT_I18N::translate('sort by name')|BIRT:DATE=>WT_I18N::translate('sort by date of birth')|DEAT:DATE=>WT_I18N::translate('sort by date of death')"><var var="WT_I18N::translate('Sort order')" /></Input>
 	<Input name="pageSize" type="select" default="A4" options="letter=>WT_I18N::translate_c('paper size','Letter')|A3=>WT_I18N::translate_c('paper size', 'A3')|A4=>WT_I18N::translate_c('paper size','A4')|legal=>WT_I18N::translate_c('paper size','Legal')"><var var="WT_I18N::translate('Page size')" /></Input>

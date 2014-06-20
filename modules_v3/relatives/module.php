@@ -123,7 +123,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		if (!$found && $family->canEdit()) {
 			?>
 			<tr>
-				<td class="facts_label"><?php echo WT_I18N::translate('Add husband'); ?></td>
+				<td class="facts_label">&nbsp;</td>
 				<td class="facts_value"><a href="#" onclick="return add_spouse_to_family('<?php echo $family->getXref(); ?>', 'HUSB');"><?php echo WT_I18N::translate('Add a husband to this family'); ?></a></td>
 			</tr>
 			<?php
@@ -157,7 +157,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		if (!$found && $family->canEdit()) {
 			?>
 			<tr>
-				<td class="facts_label"><?php echo WT_I18N::translate('Add wife'); ?></td>
+				<td class="facts_label">&nbsp;</td>
 				<td class="facts_value"><a href="#" onclick="return add_spouse_to_family('<?php echo $family->getXref(); ?>', 'WIFE');"><?php echo WT_I18N::translate('Add a wife to this family'); ?></a></td>
 			</tr>
 			<?php

@@ -77,7 +77,7 @@ class sources_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 			}
 		}
 		if (!$this->get_facts()) {
-			echo '<tr><td id="no_tab4" colspan="2" class="facts_value">', WT_I18N::translate('There are no Source citations for this individual.'), '</td></tr>';
+			echo '<tr><td id="no_tab4" colspan="2" class="facts_value">', WT_I18N::translate('There are no source citations for this individual.'), '</td></tr>';
 		}
 
 		// New Source Link

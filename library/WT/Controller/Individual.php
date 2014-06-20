@@ -148,7 +148,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 			}
 		}
 		if ($this->record->canEdit() && !$event->isOld()) {
-			echo "<div class=\"deletelink\"><a class=\"deleteicon\" href=\"#\" onclick=\"return delete_fact('".WT_I18N::translate('Are you sure you want to delete this fact?')."', '".$this->record->getXref()."', '".$event->getFactId()."');\" title=\"".WT_I18N::translate('Delete name')."\"><span class=\"link_text\">".WT_I18N::translate('Delete name')."</span></a></div>";
+			echo "<div class=\"deletelink\"><a class=\"deleteicon\" href=\"#\" onclick=\"return delete_fact('".WT_I18N::translate('Are you sure you want to delete this fact?')."', '".$this->record->getXref()."', '".$event->getFactId()."');\" title=\"".WT_I18N::translate('Delete this name')."\"><span class=\"link_text\">".WT_I18N::translate('Delete this name')."</span></a></div>";
 			echo "<div class=\"editlink\"><a href=\"#\" class=\"editicon\" onclick=\"edit_name('".$this->record->getXref()."', '".$event->getFactId()."'); return false;\" title=\"".WT_I18N::translate('Edit name')."\"><span class=\"link_text\">".WT_I18N::translate('Edit name')."</span></a></div>";
 		}
 		echo '</dd>';

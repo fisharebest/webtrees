@@ -150,11 +150,11 @@ $stats = new WT_Stats(WT_GEDCOM);
 					</tr>
 					<?php } ?>
 					<tr>
-						<td><?php echo WT_I18N::translate('Unverified by User'); ?></td>
+						<td><?php echo WT_I18N::translate('Not verified by the user'); ?></td>
 						<td><?php echo $unverified; ?></td>
 					</tr>
 					<tr>
-						<td><?php echo WT_I18N::translate('Unverified by Administrator'); ?></td>
+						<td><?php echo WT_I18N::translate('Not approved by an administrator'); ?></td>
 						<td><?php echo $unapproved; ?></td>
 					</tr>
 					<tr>

@@ -4000,7 +4000,7 @@ class WT_Stats {
 			'SCG'=>WT_I18N::translate('Serbia and Montenegro'),
 			'SCT'=>WT_I18N::translate('Scotland'),
 			'SDN'=>WT_I18N::translate('Sudan'),
-			'SEA'=>WT_I18N::translate('At Sea'),
+			'SEA'=>WT_I18N::translate('At sea'),
 			'SEN'=>WT_I18N::translate('Senegal'),
 			'SER'=>WT_I18N::translate('Serbia'),
 			'SGP'=>WT_I18N::translate('Singapore'),
