@@ -26,7 +26,7 @@ msgstr ""
 #: modules_v3/ahnentafel_report/report.xml:333
 #: modules_v3/ahnentafel_report/report.xml:364
 msgid " but the details are unknown"
-msgstr " , ale podrobnosti nejsou známy"
+msgstr ", ale podrobnosti nejsou známy"
 
 #: modules_v3/ahnentafel_report/report.xml:156
 #: modules_v3/ahnentafel_report/report.xml:184
@@ -80,22 +80,22 @@ msgstr[2] "%1$d osobám chybí místo narození, souřadnice: %2$s."
 #: includes/functions/functions.php:685
 #, php-format
 msgctxt "FEMALE"
-msgid "%1$d x %2$s"
-msgstr "%1$d x %2$s"
+msgid "%1$d × %2$s"
+msgstr "%1$d × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:674
 #, php-format
 msgctxt "MALE"
-msgid "%1$d x %2$s"
-msgstr "%1$d x %2$s"
+msgid "%1$d × %2$s"
+msgstr "%1$d × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:696
 #, php-format
 msgctxt "MALE/FEMALE"
-msgid "%1$d x %2$s"
-msgstr "%1$d x %2$s"
+msgid "%1$d × %2$s"
+msgstr "%1$d × %2$s"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$d>=4
 #: includes/functions/functions.php:1702
@@ -231,20 +231,20 @@ msgstr[2] "%d měsíců"
 #: includes/functions/functions.php:637
 #, php-format
 msgctxt "FEMALE"
-msgid "%d x cousin"
+msgid "%d × cousin"
 msgstr "sestřenice (z %d. kolena)"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: includes/functions/functions.php:618
 #, php-format
 msgctxt "MALE"
-msgid "%d x cousin"
+msgid "%d × cousin"
 msgstr "bratranec (z %d. kolena)"
 
 #: includes/functions/functions.php:656
 #, php-format
 msgctxt "MALE/FEMALE"
-msgid "%d x cousin"
+msgid "%d × cousin"
 msgstr "bratranec/sestřenice (z %d. kolena)"
 
 #: modules_v3/relatives/module.php:60
@@ -468,11 +468,11 @@ msgstr "&lt;vyberte&gt;"
 #: search_advanced.php:112 search_advanced.php:116 search_advanced.php:120
 #: search_advanced.php:168 search_advanced.php:169 search_advanced.php:170
 #, php-format
-msgid "&plusmn;%d year"
-msgid_plural "&plusmn;%d years"
-msgstr[0] "&plusmn;%d rok"
-msgstr[1] "&plusmn;%d roky"
-msgstr[2] "&plusmn;%d let"
+msgid "±%d year"
+msgid_plural "±%d years"
+msgstr[0] "±%d rok"
+msgstr[1] "±%d roky"
+msgstr[2] "±%d let"
 
 #. I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan 1900 (aged 43 years)
 #: library/WT/I18N.php:395 library/WT/I18N.php:399
@@ -16999,424 +16999,424 @@ msgstr "vnukova manželka"
 #: includes/functions/functions.php:1275 includes/functions/functions.php:1284
 #: includes/functions/functions.php:1295
 #, php-format
-msgid "great x%d aunt"
-msgstr "%dx prateta"
+msgid "great ×%d aunt"
+msgstr "%d× prateta"
 
 #: includes/functions/functions.php:1276 includes/functions/functions.php:1285
 #: includes/functions/functions.php:1296
 #, php-format
-msgid "great x%d aunt/uncle"
-msgstr "%dx prateta/prastrýc"
+msgid "great ×%d aunt/uncle"
+msgstr "%d× prateta/prastrýc"
 
 #: includes/functions/functions.php:1617 includes/functions/functions.php:1630
 #, php-format
-msgid "great x%d grandchild"
-msgstr "%dx pravnouče"
+msgid "great ×%d grandchild"
+msgstr "%d× pravnouče"
 
 #: includes/functions/functions.php:1616 includes/functions/functions.php:1629
 #, php-format
-msgid "great x%d granddaughter"
-msgstr "%dx pravnučka"
+msgid "great ×%d granddaughter"
+msgstr "%d× pravnučka"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1520 includes/functions/functions.php:1527
 #: includes/functions/functions.php:1534 includes/functions/functions.php:1542
 #: includes/functions/functions.php:1552
 #, php-format
-msgid "great x%d grandfather"
-msgstr "%dx praděda"
+msgid "great ×%d grandfather"
+msgstr "%d× praděda"
 
 #: includes/functions/functions.php:1521 includes/functions/functions.php:1528
 #: includes/functions/functions.php:1535 includes/functions/functions.php:1543
 #: includes/functions/functions.php:1553
 #, php-format
-msgid "great x%d grandmother"
-msgstr "%dx prabába"
+msgid "great ×%d grandmother"
+msgstr "%d× prabába"
 
 #: includes/functions/functions.php:1522 includes/functions/functions.php:1529
 #: includes/functions/functions.php:1536 includes/functions/functions.php:1544
 #: includes/functions/functions.php:1554
 #, php-format
-msgid "great x%d grandparent"
-msgstr "%dx prabába/praděd"
+msgid "great ×%d grandparent"
+msgstr "%d× prabába/praděd"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1615 includes/functions/functions.php:1628
 #, php-format
-msgid "great x%d grandson"
-msgstr "%dx pravnuk"
+msgid "great ×%d grandson"
+msgstr "%d× pravnuk"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1448 includes/functions/functions.php:1459
 #, php-format
-msgid "great x%d nephew"
-msgstr "%dx prasynovec"
+msgid "great ×%d nephew"
+msgstr "%d× prasynovec"
 
 #: includes/functions/functions.php:1424
 #, php-format
-msgctxt "(a man’s) brother’s great x(%d-1) grandson"
-msgid "great x%d nephew"
-msgstr "%dx prasynovec"
+msgctxt "(a man’s) brother’s great ×(%d-1) grandson"
+msgid "great ×%d nephew"
+msgstr "%d× prasynovec"
 
 #: includes/functions/functions.php:1426
 #, php-format
-msgctxt "(a man’s) sister’s great x(%d-1) grandson"
-msgid "great x%d nephew"
-msgstr "%dx prasynovec"
+msgctxt "(a man’s) sister’s great ×(%d-1) grandson"
+msgid "great ×%d nephew"
+msgstr "%d× prasynovec"
 
 #: includes/functions/functions.php:1428
 #, php-format
-msgctxt "(a woman’s) great x%d nephew"
-msgid "great x%d nephew"
-msgstr "%dx prasynovec"
+msgctxt "(a woman’s) great ×%d nephew"
+msgid "great ×%d nephew"
+msgstr "%d× prasynovec"
 
 #: includes/functions/functions.php:1450 includes/functions/functions.php:1461
 #, php-format
-msgid "great x%d nephew/niece"
-msgstr "%dx pra-synovec/neteř"
+msgid "great ×%d nephew/niece"
+msgstr "%d× pra-synovec/neteř"
 
 #: includes/functions/functions.php:1439
 #, php-format
-msgctxt "(a man’s) brother’s great x(%d-1) grandchild"
-msgid "great x%d nephew/niece"
-msgstr "%dx pra-synovec/neteř"
+msgctxt "(a man’s) brother’s great ×(%d-1) grandchild"
+msgid "great ×%d nephew/niece"
+msgstr "%d× pra-synovec/neteř"
 
 #: includes/functions/functions.php:1441
 #, php-format
-msgctxt "(a man’s) sister’s great x(%d-1) grandchild"
-msgid "great x%d nephew/niece"
-msgstr "%dx pra-synovec/neteř"
+msgctxt "(a man’s) sister’s great ×(%d-1) grandchild"
+msgid "great ×%d nephew/niece"
+msgstr "%d× pra-synovec/neteř"
 
 #: includes/functions/functions.php:1443
 #, php-format
-msgctxt "(a woman’s) great x%d nephew/niece"
-msgid "great x%d nephew/niece"
-msgstr "%dx pra-synovec/neteř"
+msgctxt "(a woman’s) great ×%d nephew/niece"
+msgid "great ×%d nephew/niece"
+msgstr "%d× pra-synovec/neteř"
 
 #: includes/functions/functions.php:1449 includes/functions/functions.php:1460
 #, php-format
-msgid "great x%d niece"
-msgstr "%dx praneteř"
+msgid "great ×%d niece"
+msgstr "%d× praneteř"
 
 #: includes/functions/functions.php:1431
 #, php-format
-msgctxt "(a man’s) brother’s great x(%d-1) granddaughter"
-msgid "great x%d niece"
-msgstr "%dx praneteř"
+msgctxt "(a man’s) brother’s great ×(%d-1) granddaughter"
+msgid "great ×%d niece"
+msgstr "%d× praneteř"
 
 #: includes/functions/functions.php:1433
 #, php-format
-msgctxt "(a man’s) sister’s great x(%d-1) granddaughter"
-msgid "great x%d niece"
-msgstr "%dx praneteř"
+msgctxt "(a man’s) sister’s great ×(%d-1) granddaughter"
+msgid "great ×%d niece"
+msgstr "%d× praneteř"
 
 #: includes/functions/functions.php:1435
 #, php-format
-msgctxt "(a woman’s) great x%d niece"
-msgid "great x%d niece"
-msgstr "%dx praneteř"
+msgctxt "(a woman’s) great ×%d niece"
+msgid "great ×%d niece"
+msgstr "%d× praneteř"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1274 includes/functions/functions.php:1294
 #, php-format
-msgid "great x%d uncle"
-msgstr "%dx prastrýc"
+msgid "great ×%d uncle"
+msgstr "%d× prastrýc"
 
 #: includes/functions/functions.php:1281
 #, php-format
-msgctxt "great x(%d-1) grandfather’s brother"
-msgid "great x%d uncle"
-msgstr "%dx prastrýc"
+msgctxt "great ×(%d-1) grandfather’s brother"
+msgid "great ×%d uncle"
+msgstr "%d× prastrýc"
 
 #: includes/functions/functions.php:1282
 #, php-format
-msgctxt "great x(%d-1) grandmother’s brother"
-msgid "great x%d uncle"
-msgstr "%dx prastrýc"
+msgctxt "great ×(%d-1) grandmother’s brother"
+msgid "great ×%d uncle"
+msgstr "%d× prastrýc"
 
 #: includes/functions/functions.php:1283
 #, php-format
-msgctxt "great x(%d-1) grandparent’s brother"
-msgid "great x%d uncle"
-msgstr "%dx prastrýc"
+msgctxt "great ×(%d-1) grandparent’s brother"
+msgid "great ×%d uncle"
+msgstr "%d× prastrýc"
 
 #: includes/functions/functions.php:1232
-msgid "great x4 aunt"
-msgstr "4x prateta"
+msgid "great ×4 aunt"
+msgstr "4× prateta"
 
 #: includes/functions/functions.php:1233
-msgid "great x4 aunt/uncle"
-msgstr "4x prateta/prastrýc"
+msgid "great ×4 aunt/uncle"
+msgstr "4× prateta/prastrýc"
 
 #: includes/functions/functions.php:1581
-msgid "great x4 grandchild"
-msgstr "4x pravnouče"
+msgid "great ×4 grandchild"
+msgstr "4× pravnouče"
 
 #: includes/functions/functions.php:1580
-msgid "great x4 granddaughter"
-msgstr "4x pravnučka"
+msgid "great ×4 granddaughter"
+msgstr "4× pravnučka"
 
 #: includes/functions/functions.php:1486
-msgid "great x4 grandfather"
-msgstr "4x praděda"
+msgid "great ×4 grandfather"
+msgstr "4× praděda"
 
 #: includes/functions/functions.php:1487
-msgid "great x4 grandmother"
-msgstr "4x prabába"
+msgid "great ×4 grandmother"
+msgstr "4× prabába"
 
 #: includes/functions/functions.php:1488
-msgid "great x4 grandparent"
-msgstr "5x prarodič"
+msgid "great ×4 grandparent"
+msgstr "4× prarodič"
 
 #: includes/functions/functions.php:1579
-msgid "great x4 grandson"
-msgstr "4x pravnuk"
+msgid "great ×4 grandson"
+msgstr "4× pravnuk"
 
 #: includes/functions/functions.php:1364
 msgctxt "(a man’s) brother’s great-great-great-grandson"
-msgid "great x4 nephew"
+msgid "great ×4 nephew"
 msgstr "synovec (z 5. kolene)"
 
 #: includes/functions/functions.php:1366
 msgctxt "(a man’s) sister’s great-great-great-grandson"
-msgid "great x4 nephew"
+msgid "great ×4 nephew"
 msgstr "synovec (z 5. kolene)"
 
 #: includes/functions/functions.php:1368
-msgctxt "(a woman’s) great x4 nephew"
-msgid "great x4 nephew"
+msgctxt "(a woman’s) great ×4 nephew"
+msgid "great ×4 nephew"
 msgstr "synovec (z 5. kolene)"
 
 #: includes/functions/functions.php:1380
 msgctxt "(a man’s) brother’s great-great-great-grandchild"
-msgid "great x4 nephew/niece"
+msgid "great ×4 nephew/niece"
 msgstr "synovec/neteř (z 5. kolene)"
 
 #: includes/functions/functions.php:1382
 msgctxt "(a man’s) sister’s great-great-great-grandchild"
-msgid "great x4 nephew/niece"
+msgid "great ×4 nephew/niece"
 msgstr "synovec/neteř (z 5. kolene)"
 
 #: includes/functions/functions.php:1384
-msgctxt "(a woman’s) great x4 nephew/niece"
-msgid "great x4 nephew/niece"
+msgctxt "(a woman’s) great ×4 nephew/niece"
+msgid "great ×4 nephew/niece"
 msgstr "synovec/neteř (z 5. kolene)"
 
 #: includes/functions/functions.php:1372
 msgctxt "(a man’s) brother’s great-great-great-granddaughter"
-msgid "great x4 niece"
+msgid "great ×4 niece"
 msgstr "neteř (z 5. kolene)"
 
 #: includes/functions/functions.php:1374
 msgctxt "(a man’s) sister’s great-great-great-granddaughter"
-msgid "great x4 niece"
+msgid "great ×4 niece"
 msgstr "neteř (z 5. kolene)"
 
 #: includes/functions/functions.php:1376
-msgctxt "(a woman’s) great x4 niece"
-msgid "great x4 niece"
+msgctxt "(a woman’s) great ×4 niece"
+msgid "great ×4 niece"
 msgstr "neteř (z 5. kolene)"
 
 #: includes/functions/functions.php:1229
 msgctxt "great-great-great-grandfather’s brother"
-msgid "great x4 uncle"
-msgstr "4x prastrýc"
+msgid "great ×4 uncle"
+msgstr "4× prastrýc"
 
 #: includes/functions/functions.php:1230
 msgctxt "great-great-great-grandmother’s brother"
-msgid "great x4 uncle"
-msgstr "4x prastrýc"
+msgid "great ×4 uncle"
+msgstr "4× prastrýc"
 
 #: includes/functions/functions.php:1231
 msgctxt "great-great-great-grandparent’s brother"
-msgid "great x4 uncle"
-msgstr "4x prastrýc"
+msgid "great ×4 uncle"
+msgstr "4× prastrýc"
 
 #: includes/functions/functions.php:1242
-msgid "great x5 aunt"
-msgstr "5x prateta"
+msgid "great ×5 aunt"
+msgstr "5× prateta"
 
 #: includes/functions/functions.php:1243
-msgid "great x5 aunt/uncle"
-msgstr "5x prateta/prastrýc"
+msgid "great ×5 aunt/uncle"
+msgstr "5× prateta/prastrýc"
 
 #: includes/functions/functions.php:1588
-msgid "great x5 grandchild"
-msgstr "5x pravnouče"
+msgid "great ×5 grandchild"
+msgstr "5× pravnouče"
 
 #: includes/functions/functions.php:1587
-msgid "great x5 granddaughter"
-msgstr "5x pravnučka"
+msgid "great ×5 granddaughter"
+msgstr "5× pravnučka"
 
 #: includes/functions/functions.php:1493
-msgid "great x5 grandfather"
-msgstr "5x praděda"
+msgid "great ×5 grandfather"
+msgstr "5× praděda"
 
 #: includes/functions/functions.php:1494
-msgid "great x5 grandmother"
-msgstr "5x prabába"
+msgid "great ×5 grandmother"
+msgstr "5× prabába"
 
 #: includes/functions/functions.php:1495
-msgid "great x5 grandparent"
-msgstr "6x prarodič"
+msgid "great ×5 grandparent"
+msgstr "6× prarodič"
 
 #: includes/functions/functions.php:1586
-msgid "great x5 grandson"
-msgstr "5x pravnuk"
+msgid "great ×5 grandson"
+msgstr "5× pravnuk"
 
 #: includes/functions/functions.php:1391
-msgctxt "(a man’s) brother’s great x4 grandson"
-msgid "great x5 nephew"
+msgctxt "(a man’s) brother’s great ×4 grandson"
+msgid "great ×5 nephew"
 msgstr "synovec (z 6. kolene)"
 
 #: includes/functions/functions.php:1393
-msgctxt "(a man’s) sister’s great x4 grandson"
-msgid "great x5 nephew"
+msgctxt "(a man’s) sister’s great ×4 grandson"
+msgid "great ×5 nephew"
 msgstr "synovec (z 6. kolene)"
 
 #: includes/functions/functions.php:1395
-msgctxt "(a woman’s) great x5 nephew"
-msgid "great x5 nephew"
+msgctxt "(a woman’s) great ×5 nephew"
+msgid "great ×5 nephew"
 msgstr "synovec (z 6. kolene)"
 
 #: includes/functions/functions.php:1407
-msgctxt "(a man’s) brother’s great x4 grandchild"
-msgid "great x5 nephew/niece"
+msgctxt "(a man’s) brother’s great ×4 grandchild"
+msgid "great ×5 nephew/niece"
 msgstr "synovec/neteř (z 6. kolene)"
 
 #: includes/functions/functions.php:1409
-msgctxt "(a man’s) sister’s great x4 grandchild"
-msgid "great x5 nephew/niece"
+msgctxt "(a man’s) sister’s great ×4 grandchild"
+msgid "great ×5 nephew/niece"
 msgstr "synovec/neteř (z 6. kolene)"
 
 #: includes/functions/functions.php:1411
-msgctxt "(a woman’s) great x5 nephew/niece"
-msgid "great x5 nephew/niece"
+msgctxt "(a woman’s) great ×5 nephew/niece"
+msgid "great ×5 nephew/niece"
 msgstr "synovec/neteř (z 6. kolene)"
 
 #: includes/functions/functions.php:1399
-msgctxt "(a man’s) brother’s great x4 granddaughter"
-msgid "great x5 niece"
+msgctxt "(a man’s) brother’s great ×4 granddaughter"
+msgid "great ×5 niece"
 msgstr "synovec (z 6. kolene)"
 
 #: includes/functions/functions.php:1401
-msgctxt "(a man’s) sister’s great x4 granddaughter"
-msgid "great x5 niece"
+msgctxt "(a man’s) sister’s great ×4 granddaughter"
+msgid "great ×5 niece"
 msgstr "neteř (z 6. kolene)"
 
 #: includes/functions/functions.php:1403
-msgctxt "(a woman’s) great x5 niece"
-msgid "great x5 niece"
+msgctxt "(a woman’s) great ×5 niece"
+msgid "great ×5 niece"
 msgstr "neteř (z 6. kolene)"
 
 #: includes/functions/functions.php:1239
-msgctxt "great x4 grandfather’s brother"
-msgid "great x5 uncle"
-msgstr "5x prastrýc"
+msgctxt "great ×4 grandfather’s brother"
+msgid "great ×5 uncle"
+msgstr "5× prastrýc"
 
 #: includes/functions/functions.php:1240
-msgctxt "great x4 grandmother’s brother"
-msgid "great x5 uncle"
-msgstr "5x prastrýc"
+msgctxt "great ×4 grandmother’s brother"
+msgid "great ×5 uncle"
+msgstr "5× prastrýc"
 
 #: includes/functions/functions.php:1241
-msgctxt "great x4 grandparent’s brother"
-msgid "great x5 uncle"
-msgstr "5x prastrýc"
+msgctxt "great ×4 grandparent’s brother"
+msgid "great ×5 uncle"
+msgstr "5× prastrýc"
 
 #: includes/functions/functions.php:1252
-msgid "great x6 aunt"
-msgstr "6x prateta"
+msgid "great ×6 aunt"
+msgstr "6× prateta"
 
 #: includes/functions/functions.php:1253
-msgid "great x6 aunt/uncle"
-msgstr "6x prateta/prastrýc"
+msgid "great ×6 aunt/uncle"
+msgstr "6× prateta/prastrýc"
 
 #: includes/functions/functions.php:1595
-msgid "great x6 grandchild"
-msgstr "6x pravnouče"
+msgid "great ×6 grandchild"
+msgstr "6× pravnouče"
 
 #: includes/functions/functions.php:1594
-msgid "great x6 granddaughter"
-msgstr "6x pravnučka"
+msgid "great ×6 granddaughter"
+msgstr "6× pravnučka"
 
 #: includes/functions/functions.php:1500
-msgid "great x6 grandfather"
-msgstr "6x praděda"
+msgid "great ×6 grandfather"
+msgstr "6× praděda"
 
 #: includes/functions/functions.php:1501
-msgid "great x6 grandmother"
-msgstr "6x prabába"
+msgid "great ×6 grandmother"
+msgstr "6× prabába"
 
 #: includes/functions/functions.php:1502
-msgid "great x6 grandparent"
-msgstr "7x prarodič"
+msgid "great ×6 grandparent"
+msgstr "7× prarodič"
 
 #: includes/functions/functions.php:1593
-msgid "great x6 grandson"
-msgstr "6x pravnuk"
+msgid "great ×6 grandson"
+msgstr "6× pravnuk"
 
 #: includes/functions/functions.php:1249
-msgctxt "great x5 grandfather’s brother"
-msgid "great x6 uncle"
-msgstr "6x prastrýc"
+msgctxt "great ×5 grandfather’s brother"
+msgid "great ×6 uncle"
+msgstr "6× prastrýc"
 
 #: includes/functions/functions.php:1250
-msgctxt "great x5 grandmother’s brother"
-msgid "great x6 uncle"
-msgstr "6x prastrýc"
+msgctxt "great ×5 grandmother’s brother"
+msgid "great ×6 uncle"
+msgstr "6× prastrýc"
 
 #: includes/functions/functions.php:1251
-msgctxt "great x5 grandparent’s brother"
-msgid "great x6 uncle"
-msgstr "6x prastrýc"
+msgctxt "great ×5 grandparent’s brother"
+msgid "great ×6 uncle"
+msgstr "6× prastrýc"
 
 #: includes/functions/functions.php:1262
-msgid "great x7 aunt"
-msgstr "7x prateta"
+msgid "great ×7 aunt"
+msgstr "7× prateta"
 
 #: includes/functions/functions.php:1263
-msgid "great x7 aunt/uncle"
-msgstr "7x prateta/prastrýc"
+msgid "great ×7 aunt/uncle"
+msgstr "7× prateta/prastrýc"
 
 #: includes/functions/functions.php:1602
-msgid "great x7 grandchild"
-msgstr "7x pravnouče"
+msgid "great ×7 grandchild"
+msgstr "7× pravnouče"
 
 #: includes/functions/functions.php:1601
-msgid "great x7 granddaughter"
-msgstr "7x pravnučka"
+msgid "great ×7 granddaughter"
+msgstr "7× pravnučka"
 
 #: includes/functions/functions.php:1507
-msgid "great x7 grandfather"
-msgstr "7x praděda"
+msgid "great ×7 grandfather"
+msgstr "7× praděda"
 
 #: includes/functions/functions.php:1508
-msgid "great x7 grandmother"
-msgstr "7x prabába"
+msgid "great ×7 grandmother"
+msgstr "7× prabába"
 
 #: includes/functions/functions.php:1509
-msgid "great x7 grandparent"
-msgstr "8x prarodič"
+msgid "great ×7 grandparent"
+msgstr "8× prarodič"
 
 #: includes/functions/functions.php:1600
-msgid "great x7 grandson"
-msgstr "7x pravnuk"
+msgid "great ×7 grandson"
+msgstr "7× pravnuk"
 
 #: includes/functions/functions.php:1259
-msgctxt "great x6 grandfather’s brother"
-msgid "great x7 uncle"
-msgstr "7x prastrýc"
+msgctxt "great ×6 grandfather’s brother"
+msgid "great ×7 uncle"
+msgstr "7× prastrýc"
 
 #: includes/functions/functions.php:1260
-msgctxt "great x6 grandmother’s brother"
-msgid "great x7 uncle"
-msgstr "7x prastrýc"
+msgctxt "great ×6 grandmother’s brother"
+msgid "great ×7 uncle"
+msgstr "7× prastrýc"
 
 #: includes/functions/functions.php:1261
-msgctxt "great x6 grandparent’s brother"
-msgid "great x7 uncle"
-msgstr "7x prastrýc"
+msgctxt "great ×6 grandparent’s brother"
+msgid "great ×7 uncle"
+msgstr "7× prastrýc"
 
 #: includes/functions/functions.php:1085
 msgctxt "father’s father’s brother’s wife"
