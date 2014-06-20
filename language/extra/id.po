@@ -56,7 +56,7 @@ msgstr " / tiap periodewaktu"
 #: includes/functions/functions_print_facts.php:192
 #: includes/functions/functions_print_facts.php:197
 #, php-format
-msgid "#%d"
+msgid "#%s"
 msgstr ""
 
 #: modules_v3/googlemap/module.php:851

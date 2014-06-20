@@ -189,12 +189,12 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 
 	switch ($fact->getTag()) {
 	case '_BIRT_CHIL':
-		echo '<br>', WT_I18N::translate('#%d', ++$n_chil);
+		echo '<br>', /* I18N: Abbreviation for "number %s" */WT_I18N::translate('#%s', ++$n_chil);
 		break;
 	case '_BIRT_GCHI':
 	case '_BIRT_GCH1':
 	case '_BIRT_GCH2':
-		echo '<br>', WT_I18N::translate('#%d', ++$n_gchi);
+		echo '<br>', WT_I18N::translate('#%s', ++$n_gchi);
 		break;
 	}
 

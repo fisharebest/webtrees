@@ -57,8 +57,8 @@ msgstr " per periodo di tempo"
 #: includes/functions/functions_print_facts.php:192
 #: includes/functions/functions_print_facts.php:197
 #, php-format
-msgid "#%d"
-msgstr "n° %d"
+msgid "#%s"
+msgstr "n° %s"
 
 #: modules_v3/googlemap/module.php:851
 #, php-format
