@@ -82,22 +82,22 @@ msgstr[2] "У %1$d персон отсутствует информация о �
 #: includes/functions/functions.php:689
 #, php-format
 msgctxt "FEMALE"
-msgid "%1$d x %2$s"
-msgstr "%1$d x %2$s"
+msgid "%1$d × %2$s"
+msgstr "%1$d × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:678
 #, php-format
 msgctxt "MALE"
-msgid "%1$d x %2$s"
-msgstr "%1$d x %2$s"
+msgid "%1$d × %2$s"
+msgstr "%1$d × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:700
 #, php-format
 msgctxt "MALE/FEMALE"
-msgid "%1$d x %2$s"
-msgstr "%1$d x %2$s"
+msgid "%1$d × %2$s"
+msgstr "%1$d × %2$s"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$d>=4
 #: includes/functions/functions.php:1706
@@ -233,20 +233,20 @@ msgstr[2] "%d месяцев"
 #: includes/functions/functions.php:641
 #, php-format
 msgctxt "FEMALE"
-msgid "%d x cousin"
+msgid "%d × cousin"
 msgstr "(%d+1)-тиюродная сестра"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: includes/functions/functions.php:622
 #, php-format
 msgctxt "MALE"
-msgid "%d x cousin"
+msgid "%d × cousin"
 msgstr "(%d+1)-тиюродный брат"
 
 #: includes/functions/functions.php:660
 #, php-format
 msgctxt "MALE/FEMALE"
-msgid "%d x cousin"
+msgid "%d × cousin"
 msgstr "(%d+1)-тиюродный брат/сестра"
 
 #: modules_v3/relatives/module.php:60
@@ -474,11 +474,11 @@ msgstr "&lt;выберите&gt;"
 #: search_advanced.php:112 search_advanced.php:116 search_advanced.php:120
 #: search_advanced.php:168 search_advanced.php:169 search_advanced.php:170
 #, php-format
-msgid "&plusmn;%d year"
-msgid_plural "&plusmn;%d years"
-msgstr[0] "&plusmn;%d год"
-msgstr[1] "&plusmn;%d года"
-msgstr[2] "&plusmn;%d лет"
+msgid "±%d year"
+msgid_plural "±%d years"
+msgstr[0] "±%d год"
+msgstr[1] "±%d года"
+msgstr[2] "±%d лет"
 
 #. I18N: Description of an individual’s age at an event. e.g. Died 14 Jan 1900 (aged 43 years)
 #: library/WT/I18N.php:382 library/WT/I18N.php:386
@@ -17092,26 +17092,26 @@ msgstr "супруга внука"
 #: includes/functions/functions.php:1288
 #: includes/functions/functions.php:1299
 #, php-format
-msgid "great x%d aunt"
+msgid "great ×%d aunt"
 msgstr "двоюродная (%d-1)xпра-бабушка"
 
 #: includes/functions/functions.php:1280
 #: includes/functions/functions.php:1289
 #: includes/functions/functions.php:1300
 #, php-format
-msgid "great x%d aunt/uncle"
+msgid "great ×%d aunt/uncle"
 msgstr "двоюродный (%d-1)xпра-дед/babушка"
 
 #: includes/functions/functions.php:1621
 #: includes/functions/functions.php:1634
 #, php-format
-msgid "great x%d grandchild"
+msgid "great ×%d grandchild"
 msgstr "пра(х%d) внук/внучка"
 
 #: includes/functions/functions.php:1620
 #: includes/functions/functions.php:1633
 #, php-format
-msgid "great x%d granddaughter"
+msgid "great ×%d granddaughter"
 msgstr "пра(х%d) внучка"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
@@ -17121,7 +17121,7 @@ msgstr "пра(х%d) внучка"
 #: includes/functions/functions.php:1546
 #: includes/functions/functions.php:1556
 #, php-format
-msgid "great x%d grandfather"
+msgid "great ×%d grandfather"
 msgstr "%dх пра-дед"
 
 #: includes/functions/functions.php:1525
@@ -17130,7 +17130,7 @@ msgstr "%dх пра-дед"
 #: includes/functions/functions.php:1547
 #: includes/functions/functions.php:1557
 #, php-format
-msgid "great x%d grandmother"
+msgid "great ×%d grandmother"
 msgstr "%dх пра-бабушка"
 
 #: includes/functions/functions.php:1526
@@ -17139,390 +17139,390 @@ msgstr "%dх пра-бабушка"
 #: includes/functions/functions.php:1548
 #: includes/functions/functions.php:1558
 #, php-format
-msgid "great x%d grandparent"
+msgid "great ×%d grandparent"
 msgstr "пра(х%d)-дед/бабушка"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1619
 #: includes/functions/functions.php:1632
 #, php-format
-msgid "great x%d grandson"
+msgid "great ×%d grandson"
 msgstr "пра(х%d) внук"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1452
 #: includes/functions/functions.php:1463
 #, php-format
-msgid "great x%d nephew"
+msgid "great ×%d nephew"
 msgstr "пра(х(%d-1))-внучатый племянник"
 
 #: includes/functions/functions.php:1428
 #, php-format
-msgctxt "(a man’s) brother’s great x(%d-1) grandson"
-msgid "great x%d nephew"
+msgctxt "(a man’s) brother’s great ×(%d-1) grandson"
+msgid "great ×%d nephew"
 msgstr "пра(х(%d-1))-внучатый племянник"
 
 #: includes/functions/functions.php:1430
 #, php-format
-msgctxt "(a man’s) sister’s great x(%d-1) grandson"
-msgid "great x%d nephew"
+msgctxt "(a man’s) sister’s great ×(%d-1) grandson"
+msgid "great ×%d nephew"
 msgstr "пра(х(%d-1))-внучатый племянник"
 
 #: includes/functions/functions.php:1432
 #, php-format
-msgctxt "(a woman’s) great x%d nephew"
-msgid "great x%d nephew"
+msgctxt "(a woman’s) great ×%d nephew"
+msgid "great ×%d nephew"
 msgstr "пра(х(%d-1))-внучатый племянник"
 
 #: includes/functions/functions.php:1454
 #: includes/functions/functions.php:1465
 #, php-format
-msgid "great x%d nephew/niece"
+msgid "great ×%d nephew/niece"
 msgstr "пра(х(%d-1))-внучатый племянник/племянница"
 
 #: includes/functions/functions.php:1443
 #, php-format
-msgctxt "(a man’s) brother’s great x(%d-1) grandchild"
-msgid "great x%d nephew/niece"
+msgctxt "(a man’s) brother’s great ×(%d-1) grandchild"
+msgid "great ×%d nephew/niece"
 msgstr "пра(х(%d-1))-внучатый племянник/племянница"
 
 #: includes/functions/functions.php:1445
 #, php-format
-msgctxt "(a man’s) sister’s great x(%d-1) grandchild"
-msgid "great x%d nephew/niece"
+msgctxt "(a man’s) sister’s great ×(%d-1) grandchild"
+msgid "great ×%d nephew/niece"
 msgstr "пра(х(%d-1))-внучатый племянник/племянница"
 
 #: includes/functions/functions.php:1447
 #, php-format
-msgctxt "(a woman’s) great x%d nephew/niece"
-msgid "great x%d nephew/niece"
+msgctxt "(a woman’s) great ×%d nephew/niece"
+msgid "great ×%d nephew/niece"
 msgstr "пра(х(%d-1))-внучатый племянник/племянница"
 
 #: includes/functions/functions.php:1453
 #: includes/functions/functions.php:1464
 #, php-format
-msgid "great x%d niece"
+msgid "great ×%d niece"
 msgstr "пра(х(%d-1))-внучатая племянница"
 
 #: includes/functions/functions.php:1435
 #, php-format
-msgctxt "(a man’s) brother’s great x(%d-1) granddaughter"
-msgid "great x%d niece"
+msgctxt "(a man’s) brother’s great ×(%d-1) granddaughter"
+msgid "great ×%d niece"
 msgstr "пра(х(%d-1))-внучатая племянница"
 
 #: includes/functions/functions.php:1437
 #, php-format
-msgctxt "(a man’s) sister’s great x(%d-1) granddaughter"
-msgid "great x%d niece"
+msgctxt "(a man’s) sister’s great ×(%d-1) granddaughter"
+msgid "great ×%d niece"
 msgstr "пра(х(%d-1))-внучатая племянница"
 
 #: includes/functions/functions.php:1439
 #, php-format
-msgctxt "(a woman’s) great x%d niece"
-msgid "great x%d niece"
+msgctxt "(a woman’s) great ×%d niece"
+msgid "great ×%d niece"
 msgstr "пра(х(%d-1))-внучатая племянница"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1278
 #: includes/functions/functions.php:1298
 #, php-format
-msgid "great x%d uncle"
+msgid "great ×%d uncle"
 msgstr "двоюродный (%d-1)xпра-дедушка"
 
 #: includes/functions/functions.php:1285
 #, php-format
-msgctxt "great x(%d-1) grandfather’s brother"
-msgid "great x%d uncle"
+msgctxt "great ×(%d-1) grandfather’s brother"
+msgid "great ×%d uncle"
 msgstr "двоюродный (%d-1)xпра-дедушка"
 
 #: includes/functions/functions.php:1286
 #, php-format
-msgctxt "great x(%d-1) grandmother’s brother"
-msgid "great x%d uncle"
+msgctxt "great ×(%d-1) grandmother’s brother"
+msgid "great ×%d uncle"
 msgstr "двоюродный (%d-1)xпра-дедушка"
 
 #: includes/functions/functions.php:1287
 #, php-format
-msgctxt "great x(%d-1) grandparent’s brother"
-msgid "great x%d uncle"
+msgctxt "great ×(%d-1) grandparent’s brother"
+msgid "great ×%d uncle"
 msgstr "двоюродный (%d-1)xпра-дедушка"
 
 #: includes/functions/functions.php:1236
-msgid "great x4 aunt"
+msgid "great ×4 aunt"
 msgstr "двоюродная пра-пра-прабабушка"
 
 #: includes/functions/functions.php:1237
-msgid "great x4 aunt/uncle"
+msgid "great ×4 aunt/uncle"
 msgstr "двоюродный пра-пра-прадед/бабушка"
 
 #: includes/functions/functions.php:1585
-msgid "great x4 grandchild"
+msgid "great ×4 grandchild"
 msgstr "пра(х4) внук/внучка"
 
 #: includes/functions/functions.php:1584
-msgid "great x4 granddaughter"
+msgid "great ×4 granddaughter"
 msgstr "пра(х4) внучка"
 
 #: includes/functions/functions.php:1490
-msgid "great x4 grandfather"
+msgid "great ×4 grandfather"
 msgstr "4х пра-дед"
 
 #: includes/functions/functions.php:1491
-msgid "great x4 grandmother"
+msgid "great ×4 grandmother"
 msgstr "4х пра-бабушка"
 
 #: includes/functions/functions.php:1492
-msgid "great x4 grandparent"
+msgid "great ×4 grandparent"
 msgstr "пра(х4)-дед/бабушка"
 
 #: includes/functions/functions.php:1583
-msgid "great x4 grandson"
+msgid "great ×4 grandson"
 msgstr "пра(х4) внук"
 
 #: includes/functions/functions.php:1368
 msgctxt "(a man’s) brother’s great-great-great-grandson"
-msgid "great x4 nephew"
+msgid "great ×4 nephew"
 msgstr "пра(х3)-внучатый племянник"
 
 #: includes/functions/functions.php:1370
 msgctxt "(a man’s) sister’s great-great-great-grandson"
-msgid "great x4 nephew"
+msgid "great ×4 nephew"
 msgstr "пра(х3)-внучатый племянник"
 
 #: includes/functions/functions.php:1372
-msgctxt "(a woman’s) great x4 nephew"
-msgid "great x4 nephew"
+msgctxt "(a woman’s) great ×4 nephew"
+msgid "great ×4 nephew"
 msgstr "пра(х3)-внучатый племянник"
 
 #: includes/functions/functions.php:1384
 msgctxt "(a man’s) brother’s great-great-great-grandchild"
-msgid "great x4 nephew/niece"
+msgid "great ×4 nephew/niece"
 msgstr "пра(х3)-внучатый племянник/племянница"
 
 #: includes/functions/functions.php:1386
 msgctxt "(a man’s) sister’s great-great-great-grandchild"
-msgid "great x4 nephew/niece"
+msgid "great ×4 nephew/niece"
 msgstr "пра(х3)-внучатый племянник/племянница"
 
 #: includes/functions/functions.php:1388
-msgctxt "(a woman’s) great x4 nephew/niece"
-msgid "great x4 nephew/niece"
+msgctxt "(a woman’s) great ×4 nephew/niece"
+msgid "great ×4 nephew/niece"
 msgstr "пра(х3)-внучатый племянник/племянница"
 
 #: includes/functions/functions.php:1376
 msgctxt "(a man’s) brother’s great-great-great-granddaughter"
-msgid "great x4 niece"
+msgid "great ×4 niece"
 msgstr "пра(х3)-внучатая племянница"
 
 #: includes/functions/functions.php:1378
 msgctxt "(a man’s) sister’s great-great-great-granddaughter"
-msgid "great x4 niece"
+msgid "great ×4 niece"
 msgstr "пра(х3)-внучатая племянница"
 
 #: includes/functions/functions.php:1380
-msgctxt "(a woman’s) great x4 niece"
-msgid "great x4 niece"
+msgctxt "(a woman’s) great ×4 niece"
+msgid "great ×4 niece"
 msgstr "пра(х3)-внучатая племянница"
 
 #: includes/functions/functions.php:1233
 msgctxt "great-great-great-grandfather’s brother"
-msgid "great x4 uncle"
+msgid "great ×4 uncle"
 msgstr "двоюродный пра-пра-прадедушка"
 
 #: includes/functions/functions.php:1234
 msgctxt "great-great-great-grandmother’s brother"
-msgid "great x4 uncle"
+msgid "great ×4 uncle"
 msgstr "двоюродный пра-пра-прадедушка"
 
 #: includes/functions/functions.php:1235
 msgctxt "great-great-great-grandparent’s brother"
-msgid "great x4 uncle"
+msgid "great ×4 uncle"
 msgstr "двоюродный пра-пра-прадедушка"
 
 #: includes/functions/functions.php:1246
-msgid "great x5 aunt"
+msgid "great ×5 aunt"
 msgstr "двоюродная 4xпра-бабушка"
 
 #: includes/functions/functions.php:1247
-msgid "great x5 aunt/uncle"
+msgid "great ×5 aunt/uncle"
 msgstr "двоюродный 4xпра-дед/бабушка"
 
 #: includes/functions/functions.php:1592
-msgid "great x5 grandchild"
+msgid "great ×5 grandchild"
 msgstr "пра(х5) внук/внучка"
 
 #: includes/functions/functions.php:1591
-msgid "great x5 granddaughter"
+msgid "great ×5 granddaughter"
 msgstr "пра(х5) внучка"
 
 #: includes/functions/functions.php:1497
-msgid "great x5 grandfather"
+msgid "great ×5 grandfather"
 msgstr "5х пра-дед"
 
 #: includes/functions/functions.php:1498
-msgid "great x5 grandmother"
+msgid "great ×5 grandmother"
 msgstr "5х пра-бабушка"
 
 #: includes/functions/functions.php:1499
-msgid "great x5 grandparent"
+msgid "great ×5 grandparent"
 msgstr "пра(х5)-дед/бабушка"
 
 #: includes/functions/functions.php:1590
-msgid "great x5 grandson"
+msgid "great ×5 grandson"
 msgstr "пра(х5) внук"
 
 #: includes/functions/functions.php:1395
-msgctxt "(a man’s) brother’s great x4 grandson"
-msgid "great x5 nephew"
+msgctxt "(a man’s) brother’s great ×4 grandson"
+msgid "great ×5 nephew"
 msgstr "пра(х4)-внучатый племянник"
 
 #: includes/functions/functions.php:1397
-msgctxt "(a man’s) sister’s great x4 grandson"
-msgid "great x5 nephew"
+msgctxt "(a man’s) sister’s great ×4 grandson"
+msgid "great ×5 nephew"
 msgstr "пра(х4)-внучатый племянник"
 
 #: includes/functions/functions.php:1399
-msgctxt "(a woman’s) great x5 nephew"
-msgid "great x5 nephew"
+msgctxt "(a woman’s) great ×5 nephew"
+msgid "great ×5 nephew"
 msgstr "пра(х4)-внучатый племянник"
 
 #: includes/functions/functions.php:1411
-msgctxt "(a man’s) brother’s great x4 grandchild"
-msgid "great x5 nephew/niece"
+msgctxt "(a man’s) brother’s great ×4 grandchild"
+msgid "great ×5 nephew/niece"
 msgstr "пра(х4)-внучатый племянник/племянница"
 
 #: includes/functions/functions.php:1413
-msgctxt "(a man’s) sister’s great x4 grandchild"
-msgid "great x5 nephew/niece"
+msgctxt "(a man’s) sister’s great ×4 grandchild"
+msgid "great ×5 nephew/niece"
 msgstr "пра(х4)-внучатый племянник/племянница"
 
 #: includes/functions/functions.php:1415
-msgctxt "(a woman’s) great x5 nephew/niece"
-msgid "great x5 nephew/niece"
+msgctxt "(a woman’s) great ×5 nephew/niece"
+msgid "great ×5 nephew/niece"
 msgstr "пра(х4)-внучатый племянник/племянница"
 
 #: includes/functions/functions.php:1403
-msgctxt "(a man’s) brother’s great x4 granddaughter"
-msgid "great x5 niece"
+msgctxt "(a man’s) brother’s great ×4 granddaughter"
+msgid "great ×5 niece"
 msgstr "пра(х4)-внучатая племянница"
 
 #: includes/functions/functions.php:1405
-msgctxt "(a man’s) sister’s great x4 granddaughter"
-msgid "great x5 niece"
+msgctxt "(a man’s) sister’s great ×4 granddaughter"
+msgid "great ×5 niece"
 msgstr "пра(х4)-внучатая племянница"
 
 #: includes/functions/functions.php:1407
-msgctxt "(a woman’s) great x5 niece"
-msgid "great x5 niece"
+msgctxt "(a woman’s) great ×5 niece"
+msgid "great ×5 niece"
 msgstr "пра(х4)-внучатая племянница"
 
 #: includes/functions/functions.php:1243
-msgctxt "great x4 grandfather’s brother"
-msgid "great x5 uncle"
+msgctxt "great ×4 grandfather’s brother"
+msgid "great ×5 uncle"
 msgstr "двоюродный 4xпра-дедушка"
 
 #: includes/functions/functions.php:1244
-msgctxt "great x4 grandmother’s brother"
-msgid "great x5 uncle"
+msgctxt "great ×4 grandmother’s brother"
+msgid "great ×5 uncle"
 msgstr "двоюродный 4xпра-дедушка"
 
 #: includes/functions/functions.php:1245
-msgctxt "great x4 grandparent’s brother"
-msgid "great x5 uncle"
+msgctxt "great ×4 grandparent’s brother"
+msgid "great ×5 uncle"
 msgstr "двоюродный 4xпра-дедушка"
 
 #: includes/functions/functions.php:1256
-msgid "great x6 aunt"
+msgid "great ×6 aunt"
 msgstr "двоюродная 5xпра-бабушка"
 
 #: includes/functions/functions.php:1257
-msgid "great x6 aunt/uncle"
+msgid "great ×6 aunt/uncle"
 msgstr "двоюродный 5xпра-дед/бабушка"
 
 #: includes/functions/functions.php:1599
-msgid "great x6 grandchild"
+msgid "great ×6 grandchild"
 msgstr "пра(х6) внук"
 
 #: includes/functions/functions.php:1598
-msgid "great x6 granddaughter"
+msgid "great ×6 granddaughter"
 msgstr "пра(х6) внучка"
 
 #: includes/functions/functions.php:1504
-msgid "great x6 grandfather"
+msgid "great ×6 grandfather"
 msgstr "6х пра-дед"
 
 #: includes/functions/functions.php:1505
-msgid "great x6 grandmother"
+msgid "great ×6 grandmother"
 msgstr "6х пра-бабушка"
 
 #: includes/functions/functions.php:1506
-msgid "great x6 grandparent"
+msgid "great ×6 grandparent"
 msgstr "пра(х6)-дед/бабушка"
 
 #: includes/functions/functions.php:1597
-msgid "great x6 grandson"
+msgid "great ×6 grandson"
 msgstr "пра(х6) внук"
 
 #: includes/functions/functions.php:1253
-msgctxt "great x5 grandfather’s brother"
-msgid "great x6 uncle"
+msgctxt "great ×5 grandfather’s brother"
+msgid "great ×6 uncle"
 msgstr "двоюродный 5xпра-дедушка"
 
 #: includes/functions/functions.php:1254
-msgctxt "great x5 grandmother’s brother"
-msgid "great x6 uncle"
+msgctxt "great ×5 grandmother’s brother"
+msgid "great ×6 uncle"
 msgstr "двоюродный 5xпра-дедушка"
 
 #: includes/functions/functions.php:1255
-msgctxt "great x5 grandparent’s brother"
-msgid "great x6 uncle"
+msgctxt "great ×5 grandparent’s brother"
+msgid "great ×6 uncle"
 msgstr "двоюродный 5xпра-дедушка"
 
 #: includes/functions/functions.php:1266
-msgid "great x7 aunt"
+msgid "great ×7 aunt"
 msgstr "двоюродная 6xпра-бабушка"
 
 #: includes/functions/functions.php:1267
-msgid "great x7 aunt/uncle"
+msgid "great ×7 aunt/uncle"
 msgstr "двоюродный 6xпра-дед/бабушка"
 
 #: includes/functions/functions.php:1606
-msgid "great x7 grandchild"
+msgid "great ×7 grandchild"
 msgstr "пра(х7) внук/внучка"
 
 #: includes/functions/functions.php:1605
-msgid "great x7 granddaughter"
+msgid "great ×7 granddaughter"
 msgstr "пра(х7) внучка"
 
 #: includes/functions/functions.php:1511
-msgid "great x7 grandfather"
+msgid "great ×7 grandfather"
 msgstr "7х пра-дед"
 
 #: includes/functions/functions.php:1512
-msgid "great x7 grandmother"
+msgid "great ×7 grandmother"
 msgstr "7х пра-бабушка"
 
 #: includes/functions/functions.php:1513
-msgid "great x7 grandparent"
+msgid "great ×7 grandparent"
 msgstr "пра(х7)-дед/бабушка"
 
 #: includes/functions/functions.php:1604
-msgid "great x7 grandson"
+msgid "great ×7 grandson"
 msgstr "пра(х7) внук"
 
 #: includes/functions/functions.php:1263
-msgctxt "great x6 grandfather’s brother"
-msgid "great x7 uncle"
+msgctxt "great ×6 grandfather’s brother"
+msgid "great ×7 uncle"
 msgstr "двоюродный 6xпра-дедушка"
 
 #: includes/functions/functions.php:1264
-msgctxt "great x6 grandmother’s brother"
-msgid "great x7 uncle"
+msgctxt "great ×6 grandmother’s brother"
+msgid "great ×7 uncle"
 msgstr "двоюродный 6xпра-дедушка"
 
 #: includes/functions/functions.php:1265
-msgctxt "great x6 grandparent’s brother"
-msgid "great x7 uncle"
+msgctxt "great ×6 grandparent’s brother"
+msgid "great ×7 uncle"
 msgstr "двоюродный 6xпра-дедушка"
 
 #: includes/functions/functions.php:1089

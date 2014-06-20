@@ -79,21 +79,21 @@ msgstr[1] "Non sono definite le coordinate del luogo di nascita di %1$d persone:
 #: includes/functions/functions.php:685
 #, php-format
 msgctxt "FEMALE"
-msgid "%1$d x %2$s"
+msgid "%1$d × %2$s"
 msgstr "%2$s %1$dª"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:674
 #, php-format
 msgctxt "MALE"
-msgid "%1$d x %2$s"
+msgid "%1$d × %2$s"
 msgstr "%2$s %1$dº"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:696
 #, php-format
 msgctxt "MALE/FEMALE"
-msgid "%1$d x %2$s"
+msgid "%1$d × %2$s"
 msgstr "%2$s %1$dº"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$d>=4
@@ -224,20 +224,20 @@ msgstr[1] "%d mesi"
 #: includes/functions/functions.php:637
 #, php-format
 msgctxt "FEMALE"
-msgid "%d x cousin"
+msgid "%d × cousin"
 msgstr "cugina di %d° grado"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: includes/functions/functions.php:618
 #, php-format
 msgctxt "MALE"
-msgid "%d x cousin"
+msgid "%d × cousin"
 msgstr "cugino di %d° grado"
 
 #: includes/functions/functions.php:656
 #, php-format
 msgctxt "MALE/FEMALE"
-msgid "%d x cousin"
+msgid "%d × cousin"
 msgstr "cugino/a di %d° grado"
 
 #: modules_v3/relatives/module.php:60
@@ -446,10 +446,10 @@ msgstr "&lt;seleziona&gt;"
 #: search_advanced.php:112 search_advanced.php:116 search_advanced.php:120
 #: search_advanced.php:168 search_advanced.php:169 search_advanced.php:170
 #, php-format
-msgid "&plusmn;%d year"
-msgid_plural "&plusmn;%d years"
-msgstr[0] "&plusmn;%d anno"
-msgstr[1] "&plusmn;%d anni"
+msgid "±%d year"
+msgid_plural "±%d years"
+msgstr[0] "±%d anno"
+msgstr[1] "±%d anni"
 
 #. I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan 1900 (aged 43 years)
 #: library/WT/I18N.php:395 library/WT/I18N.php:399
@@ -16967,424 +16967,424 @@ msgstr "moglie del nipote (di nonni)"
 #: includes/functions/functions.php:1275 includes/functions/functions.php:1284
 #: includes/functions/functions.php:1295
 #, php-format
-msgid "great x%d aunt"
+msgid "great ×%d aunt"
 msgstr "zia di %d° grado"
 
 #: includes/functions/functions.php:1276 includes/functions/functions.php:1285
 #: includes/functions/functions.php:1296
 #, php-format
-msgid "great x%d aunt/uncle"
+msgid "great ×%d aunt/uncle"
 msgstr "zio/a di %d° grado"
 
 #: includes/functions/functions.php:1617 includes/functions/functions.php:1630
 #, php-format
-msgid "great x%d grandchild"
-msgstr "pro x %d nipote (di nonni)"
+msgid "great ×%d grandchild"
+msgstr "pro × %d nipote (di nonni)"
 
 #: includes/functions/functions.php:1616 includes/functions/functions.php:1629
 #, php-format
-msgid "great x%d granddaughter"
-msgstr "pro x %d nipote (di nonni)"
+msgid "great ×%d granddaughter"
+msgstr "pro × %d nipote (di nonni)"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1520 includes/functions/functions.php:1527
 #: includes/functions/functions.php:1534 includes/functions/functions.php:1542
 #: includes/functions/functions.php:1552
 #, php-format
-msgid "great x%d grandfather"
+msgid "great ×%d grandfather"
 msgstr "avo del %d° grado"
 
 #: includes/functions/functions.php:1521 includes/functions/functions.php:1528
 #: includes/functions/functions.php:1535 includes/functions/functions.php:1543
 #: includes/functions/functions.php:1553
 #, php-format
-msgid "great x%d grandmother"
+msgid "great ×%d grandmother"
 msgstr "ava del %d° grado"
 
 #: includes/functions/functions.php:1522 includes/functions/functions.php:1529
 #: includes/functions/functions.php:1536 includes/functions/functions.php:1544
 #: includes/functions/functions.php:1554
 #, php-format
-msgid "great x%d grandparent"
+msgid "great ×%d grandparent"
 msgstr "avo del %d° grado"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1615 includes/functions/functions.php:1628
 #, php-format
-msgid "great x%d grandson"
-msgstr "pro x %d nipote (di nonni)"
+msgid "great ×%d grandson"
+msgstr "pro × %d nipote (di nonni)"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1448 includes/functions/functions.php:1459
 #, php-format
-msgid "great x%d nephew"
-msgstr "pro x %d nipote"
+msgid "great ×%d nephew"
+msgstr "pro × %d nipote"
 
 #: includes/functions/functions.php:1424
 #, php-format
-msgctxt "(a man’s) brother’s great x(%d-1) grandson"
-msgid "great x%d nephew"
-msgstr "pro x%d pronipote (di zii)"
+msgctxt "(a man’s) brother’s great ×(%d-1) grandson"
+msgid "great ×%d nephew"
+msgstr "pro ×%d pronipote (di zii)"
 
 #: includes/functions/functions.php:1426
 #, php-format
-msgctxt "(a man’s) sister’s great x(%d-1) grandson"
-msgid "great x%d nephew"
-msgstr "pro x%d pronipote (di zii)"
+msgctxt "(a man’s) sister’s great ×(%d-1) grandson"
+msgid "great ×%d nephew"
+msgstr "pro ×%d pronipote (di zii)"
 
 #: includes/functions/functions.php:1428
 #, php-format
-msgctxt "(a woman’s) great x%d nephew"
-msgid "great x%d nephew"
-msgstr "pro x%d pronipote (di zii)"
+msgctxt "(a woman’s) great ×%d nephew"
+msgid "great ×%d nephew"
+msgstr "pro ×%d pronipote (di zii)"
 
 #: includes/functions/functions.php:1450 includes/functions/functions.php:1461
 #, php-format
-msgid "great x%d nephew/niece"
-msgstr "pro x %d nipote"
+msgid "great ×%d nephew/niece"
+msgstr "pro × %d nipote"
 
 #: includes/functions/functions.php:1439
 #, php-format
-msgctxt "(a man’s) brother’s great x(%d-1) grandchild"
-msgid "great x%d nephew/niece"
-msgstr "pro x%d pronipote (di zii)"
+msgctxt "(a man’s) brother’s great ×(%d-1) grandchild"
+msgid "great ×%d nephew/niece"
+msgstr "pro ×%d pronipote (di zii)"
 
 #: includes/functions/functions.php:1441
 #, php-format
-msgctxt "(a man’s) sister’s great x(%d-1) grandchild"
-msgid "great x%d nephew/niece"
-msgstr "pro x%d pronipote (di zii)"
+msgctxt "(a man’s) sister’s great ×(%d-1) grandchild"
+msgid "great ×%d nephew/niece"
+msgstr "pro ×%d pronipote (di zii)"
 
 #: includes/functions/functions.php:1443
 #, php-format
-msgctxt "(a woman’s) great x%d nephew/niece"
-msgid "great x%d nephew/niece"
-msgstr "pro x%d pronipote (di zii)"
+msgctxt "(a woman’s) great ×%d nephew/niece"
+msgid "great ×%d nephew/niece"
+msgstr "pro ×%d pronipote (di zii)"
 
 #: includes/functions/functions.php:1449 includes/functions/functions.php:1460
 #, php-format
-msgid "great x%d niece"
-msgstr "pro x %d nipote"
+msgid "great ×%d niece"
+msgstr "pro × %d nipote"
 
 #: includes/functions/functions.php:1431
 #, php-format
-msgctxt "(a man’s) brother’s great x(%d-1) granddaughter"
-msgid "great x%d niece"
-msgstr "pro x%d pronipote (di zii)"
+msgctxt "(a man’s) brother’s great ×(%d-1) granddaughter"
+msgid "great ×%d niece"
+msgstr "pro ×%d pronipote (di zii)"
 
 #: includes/functions/functions.php:1433
 #, php-format
-msgctxt "(a man’s) sister’s great x(%d-1) granddaughter"
-msgid "great x%d niece"
-msgstr "pro x%d pronipote (di zii)"
+msgctxt "(a man’s) sister’s great ×(%d-1) granddaughter"
+msgid "great ×%d niece"
+msgstr "pro ×%d pronipote (di zii)"
 
 #: includes/functions/functions.php:1435
 #, php-format
-msgctxt "(a woman’s) great x%d niece"
-msgid "great x%d niece"
-msgstr "pro x%d pronipote (di zii)"
+msgctxt "(a woman’s) great ×%d niece"
+msgid "great ×%d niece"
+msgstr "pro ×%d pronipote (di zii)"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1274 includes/functions/functions.php:1294
 #, php-format
-msgid "great x%d uncle"
+msgid "great ×%d uncle"
 msgstr "zio di %d° grado"
 
 #: includes/functions/functions.php:1281
 #, php-format
-msgctxt "great x(%d-1) grandfather’s brother"
-msgid "great x%d uncle"
-msgstr "pro x%d zio"
+msgctxt "great ×(%d-1) grandfather’s brother"
+msgid "great ×%d uncle"
+msgstr "pro ×%d zio"
 
 #: includes/functions/functions.php:1282
 #, php-format
-msgctxt "great x(%d-1) grandmother’s brother"
-msgid "great x%d uncle"
-msgstr "pro x%d zio"
+msgctxt "great ×(%d-1) grandmother’s brother"
+msgid "great ×%d uncle"
+msgstr "pro ×%d zio"
 
 #: includes/functions/functions.php:1283
 #, php-format
-msgctxt "great x(%d-1) grandparent’s brother"
-msgid "great x%d uncle"
-msgstr "pro x%d zio"
+msgctxt "great ×(%d-1) grandparent’s brother"
+msgid "great ×%d uncle"
+msgstr "pro ×%d zio"
 
 #: includes/functions/functions.php:1232
-msgid "great x4 aunt"
+msgid "great ×4 aunt"
 msgstr "pro-pro-prozia"
 
 #: includes/functions/functions.php:1233
-msgid "great x4 aunt/uncle"
+msgid "great ×4 aunt/uncle"
 msgstr "pro-pro-prozio/a"
 
 #: includes/functions/functions.php:1581
-msgid "great x4 grandchild"
-msgstr "pro x 4 nipote (di nonni)"
+msgid "great ×4 grandchild"
+msgstr "pro × 4 nipote (di nonni)"
 
 #: includes/functions/functions.php:1580
-msgid "great x4 granddaughter"
-msgstr "pro x 4 nipote (di nonni)"
+msgid "great ×4 granddaughter"
+msgstr "pro × 4 nipote (di nonni)"
 
 #: includes/functions/functions.php:1486
-msgid "great x4 grandfather"
+msgid "great ×4 grandfather"
 msgstr "avo del 6° grado"
 
 #: includes/functions/functions.php:1487
-msgid "great x4 grandmother"
+msgid "great ×4 grandmother"
 msgstr "ava del 6° grado"
 
 #: includes/functions/functions.php:1488
-msgid "great x4 grandparent"
+msgid "great ×4 grandparent"
 msgstr "avo del 6° grado"
 
 #: includes/functions/functions.php:1579
-msgid "great x4 grandson"
-msgstr "pro x 4 nipote (di nonni)"
+msgid "great ×4 grandson"
+msgstr "pro × 4 nipote (di nonni)"
 
 #: includes/functions/functions.php:1364
 msgctxt "(a man’s) brother’s great-great-great-grandson"
-msgid "great x4 nephew"
-msgstr "pro x4 pronipote (di zii)"
+msgid "great ×4 nephew"
+msgstr "pro ×4 pronipote (di zii)"
 
 #: includes/functions/functions.php:1366
 msgctxt "(a man’s) sister’s great-great-great-grandson"
-msgid "great x4 nephew"
-msgstr "pro x4 pronipote (di zii)"
+msgid "great ×4 nephew"
+msgstr "pro ×4 pronipote (di zii)"
 
 #: includes/functions/functions.php:1368
-msgctxt "(a woman’s) great x4 nephew"
-msgid "great x4 nephew"
-msgstr "pro x4 pronipote (di zii)"
+msgctxt "(a woman’s) great ×4 nephew"
+msgid "great ×4 nephew"
+msgstr "pro ×4 pronipote (di zii)"
 
 #: includes/functions/functions.php:1380
 msgctxt "(a man’s) brother’s great-great-great-grandchild"
-msgid "great x4 nephew/niece"
-msgstr "pro x4 pronipote (di zii)"
+msgid "great ×4 nephew/niece"
+msgstr "pro ×4 pronipote (di zii)"
 
 #: includes/functions/functions.php:1382
 msgctxt "(a man’s) sister’s great-great-great-grandchild"
-msgid "great x4 nephew/niece"
-msgstr "pro x4 pronipote (di zii)"
+msgid "great ×4 nephew/niece"
+msgstr "pro ×4 pronipote (di zii)"
 
 #: includes/functions/functions.php:1384
-msgctxt "(a woman’s) great x4 nephew/niece"
-msgid "great x4 nephew/niece"
-msgstr "pro x4 pronipote (di zii)"
+msgctxt "(a woman’s) great ×4 nephew/niece"
+msgid "great ×4 nephew/niece"
+msgstr "pro ×4 pronipote (di zii)"
 
 #: includes/functions/functions.php:1372
 msgctxt "(a man’s) brother’s great-great-great-granddaughter"
-msgid "great x4 niece"
-msgstr "pro x4 pronipote (di zii)"
+msgid "great ×4 niece"
+msgstr "pro ×4 pronipote (di zii)"
 
 #: includes/functions/functions.php:1374
 msgctxt "(a man’s) sister’s great-great-great-granddaughter"
-msgid "great x4 niece"
-msgstr "pro x4 pronipote (di zii)"
+msgid "great ×4 niece"
+msgstr "pro ×4 pronipote (di zii)"
 
 #: includes/functions/functions.php:1376
-msgctxt "(a woman’s) great x4 niece"
-msgid "great x4 niece"
-msgstr "pro x4 pronipote (di zii)"
+msgctxt "(a woman’s) great ×4 niece"
+msgid "great ×4 niece"
+msgstr "pro ×4 pronipote (di zii)"
 
 #: includes/functions/functions.php:1229
 msgctxt "great-great-great-grandfather’s brother"
-msgid "great x4 uncle"
-msgstr "pro x 4 zio"
+msgid "great ×4 uncle"
+msgstr "pro × 4 zio"
 
 #: includes/functions/functions.php:1230
 msgctxt "great-great-great-grandmother’s brother"
-msgid "great x4 uncle"
-msgstr "pro x 4 zio"
+msgid "great ×4 uncle"
+msgstr "pro × 4 zio"
 
 #: includes/functions/functions.php:1231
 msgctxt "great-great-great-grandparent’s brother"
-msgid "great x4 uncle"
-msgstr "pro x4 zio"
+msgid "great ×4 uncle"
+msgstr "pro ×4 zio"
 
 #: includes/functions/functions.php:1242
-msgid "great x5 aunt"
+msgid "great ×5 aunt"
 msgstr "pro-pro-pro-prozia"
 
 #: includes/functions/functions.php:1243
-msgid "great x5 aunt/uncle"
+msgid "great ×5 aunt/uncle"
 msgstr "pro-pro-pro-prozio/a"
 
 #: includes/functions/functions.php:1588
-msgid "great x5 grandchild"
-msgstr "pro x 5 nipote (di nonni)"
+msgid "great ×5 grandchild"
+msgstr "pro × 5 nipote (di nonni)"
 
 #: includes/functions/functions.php:1587
-msgid "great x5 granddaughter"
-msgstr "pro x 5 nipote (di nonni)"
+msgid "great ×5 granddaughter"
+msgstr "pro × 5 nipote (di nonni)"
 
 #: includes/functions/functions.php:1493
-msgid "great x5 grandfather"
+msgid "great ×5 grandfather"
 msgstr "avo del 7° grado"
 
 #: includes/functions/functions.php:1494
-msgid "great x5 grandmother"
+msgid "great ×5 grandmother"
 msgstr "ava del 7° grado"
 
 #: includes/functions/functions.php:1495
-msgid "great x5 grandparent"
+msgid "great ×5 grandparent"
 msgstr "avo del 7° grado"
 
 #: includes/functions/functions.php:1586
-msgid "great x5 grandson"
-msgstr "pro x 5 nipote (di nonni)"
+msgid "great ×5 grandson"
+msgstr "pro × 5 nipote (di nonni)"
 
 #: includes/functions/functions.php:1391
-msgctxt "(a man’s) brother’s great x4 grandson"
-msgid "great x5 nephew"
-msgstr "pro x5 pronipote (di zii)"
+msgctxt "(a man’s) brother’s great ×4 grandson"
+msgid "great ×5 nephew"
+msgstr "pro ×5 pronipote (di zii)"
 
 #: includes/functions/functions.php:1393
-msgctxt "(a man’s) sister’s great x4 grandson"
-msgid "great x5 nephew"
-msgstr "pro x5 pronipote (di zii)"
+msgctxt "(a man’s) sister’s great ×4 grandson"
+msgid "great ×5 nephew"
+msgstr "pro ×5 pronipote (di zii)"
 
 #: includes/functions/functions.php:1395
-msgctxt "(a woman’s) great x5 nephew"
-msgid "great x5 nephew"
-msgstr "pro x5 pronipote (di zii)"
+msgctxt "(a woman’s) great ×5 nephew"
+msgid "great ×5 nephew"
+msgstr "pro ×5 pronipote (di zii)"
 
 #: includes/functions/functions.php:1407
-msgctxt "(a man’s) brother’s great x4 grandchild"
-msgid "great x5 nephew/niece"
-msgstr "pro x5 pronipote (di zii)"
+msgctxt "(a man’s) brother’s great ×4 grandchild"
+msgid "great ×5 nephew/niece"
+msgstr "pro ×5 pronipote (di zii)"
 
 #: includes/functions/functions.php:1409
-msgctxt "(a man’s) sister’s great x4 grandchild"
-msgid "great x5 nephew/niece"
-msgstr "pro x5 pronipote (di zii)"
+msgctxt "(a man’s) sister’s great ×4 grandchild"
+msgid "great ×5 nephew/niece"
+msgstr "pro ×5 pronipote (di zii)"
 
 #: includes/functions/functions.php:1411
-msgctxt "(a woman’s) great x5 nephew/niece"
-msgid "great x5 nephew/niece"
-msgstr "pro x5 pronipote (di zii)"
+msgctxt "(a woman’s) great ×5 nephew/niece"
+msgid "great ×5 nephew/niece"
+msgstr "pro ×5 pronipote (di zii)"
 
 #: includes/functions/functions.php:1399
-msgctxt "(a man’s) brother’s great x4 granddaughter"
-msgid "great x5 niece"
-msgstr "pro x5 pronipote (di zii)"
+msgctxt "(a man’s) brother’s great ×4 granddaughter"
+msgid "great ×5 niece"
+msgstr "pro ×5 pronipote (di zii)"
 
 #: includes/functions/functions.php:1401
-msgctxt "(a man’s) sister’s great x4 granddaughter"
-msgid "great x5 niece"
-msgstr "pro x5 pronipote (di zii)"
+msgctxt "(a man’s) sister’s great ×4 granddaughter"
+msgid "great ×5 niece"
+msgstr "pro ×5 pronipote (di zii)"
 
 #: includes/functions/functions.php:1403
-msgctxt "(a woman’s) great x5 niece"
-msgid "great x5 niece"
-msgstr "pro x5 pronipote (di zii)"
+msgctxt "(a woman’s) great ×5 niece"
+msgid "great ×5 niece"
+msgstr "pro ×5 pronipote (di zii)"
 
 #: includes/functions/functions.php:1239
-msgctxt "great x4 grandfather’s brother"
-msgid "great x5 uncle"
-msgstr "pro x 5 zio"
+msgctxt "great ×4 grandfather’s brother"
+msgid "great ×5 uncle"
+msgstr "pro × 5 zio"
 
 #: includes/functions/functions.php:1240
-msgctxt "great x4 grandmother’s brother"
-msgid "great x5 uncle"
-msgstr "pro x 5 zio"
+msgctxt "great ×4 grandmother’s brother"
+msgid "great ×5 uncle"
+msgstr "pro × 5 zio"
 
 #: includes/functions/functions.php:1241
-msgctxt "great x4 grandparent’s brother"
-msgid "great x5 uncle"
-msgstr "pro x5 zio"
+msgctxt "great ×4 grandparent’s brother"
+msgid "great ×5 uncle"
+msgstr "pro ×5 zio"
 
 #: includes/functions/functions.php:1252
-msgid "great x6 aunt"
+msgid "great ×6 aunt"
 msgstr "pro-pro-pro-pro-prozia"
 
 #: includes/functions/functions.php:1253
-msgid "great x6 aunt/uncle"
+msgid "great ×6 aunt/uncle"
 msgstr "pro-pro-pro-pro-prozio/a"
 
 #: includes/functions/functions.php:1595
-msgid "great x6 grandchild"
-msgstr "pro x 6 nipote (di nonni)"
+msgid "great ×6 grandchild"
+msgstr "pro × 6 nipote (di nonni)"
 
 #: includes/functions/functions.php:1594
-msgid "great x6 granddaughter"
-msgstr "pro x 6 nipote (di nonni)"
+msgid "great ×6 granddaughter"
+msgstr "pro × 6 nipote (di nonni)"
 
 #: includes/functions/functions.php:1500
-msgid "great x6 grandfather"
+msgid "great ×6 grandfather"
 msgstr "avo dell’8° grado"
 
 #: includes/functions/functions.php:1501
-msgid "great x6 grandmother"
+msgid "great ×6 grandmother"
 msgstr "ava dell’8° grado"
 
 #: includes/functions/functions.php:1502
-msgid "great x6 grandparent"
+msgid "great ×6 grandparent"
 msgstr "avo dell’8° grado"
 
 #: includes/functions/functions.php:1593
-msgid "great x6 grandson"
-msgstr "pro x 6 nipote (di nonni)"
+msgid "great ×6 grandson"
+msgstr "pro × 6 nipote (di nonni)"
 
 #: includes/functions/functions.php:1249
-msgctxt "great x5 grandfather’s brother"
-msgid "great x6 uncle"
-msgstr "pro x 6 zio"
+msgctxt "great ×5 grandfather’s brother"
+msgid "great ×6 uncle"
+msgstr "pro × 6 zio"
 
 #: includes/functions/functions.php:1250
-msgctxt "great x5 grandmother’s brother"
-msgid "great x6 uncle"
-msgstr "pro x 6 zio"
+msgctxt "great ×5 grandmother’s brother"
+msgid "great ×6 uncle"
+msgstr "pro × 6 zio"
 
 #: includes/functions/functions.php:1251
-msgctxt "great x5 grandparent’s brother"
-msgid "great x6 uncle"
-msgstr "pro x6 zio"
+msgctxt "great ×5 grandparent’s brother"
+msgid "great ×6 uncle"
+msgstr "pro ×6 zio"
 
 #: includes/functions/functions.php:1262
-msgid "great x7 aunt"
+msgid "great ×7 aunt"
 msgstr "pro-pro-pro-pro-pro-prozia"
 
 #: includes/functions/functions.php:1263
-msgid "great x7 aunt/uncle"
+msgid "great ×7 aunt/uncle"
 msgstr "pro-pro-pro-pro-pro-prozio/a"
 
 #: includes/functions/functions.php:1602
-msgid "great x7 grandchild"
-msgstr "pro x 7 nipote (di nonni)"
+msgid "great ×7 grandchild"
+msgstr "pro × 7 nipote (di nonni)"
 
 #: includes/functions/functions.php:1601
-msgid "great x7 granddaughter"
-msgstr "pro x 7 nipote (di nonni)"
+msgid "great ×7 granddaughter"
+msgstr "pro × 7 nipote (di nonni)"
 
 #: includes/functions/functions.php:1507
-msgid "great x7 grandfather"
+msgid "great ×7 grandfather"
 msgstr "avo del 9° grado"
 
 #: includes/functions/functions.php:1508
-msgid "great x7 grandmother"
+msgid "great ×7 grandmother"
 msgstr "ava del 9° grado"
 
 #: includes/functions/functions.php:1509
-msgid "great x7 grandparent"
+msgid "great ×7 grandparent"
 msgstr "avo del 9° grado"
 
 #: includes/functions/functions.php:1600
-msgid "great x7 grandson"
-msgstr "pro x 7 nipote (di nonni)"
+msgid "great ×7 grandson"
+msgstr "pro × 7 nipote (di nonni)"
 
 #: includes/functions/functions.php:1259
-msgctxt "great x6 grandfather’s brother"
-msgid "great x7 uncle"
-msgstr "pro x 7 zio"
+msgctxt "great ×6 grandfather’s brother"
+msgid "great ×7 uncle"
+msgstr "pro × 7 zio"
 
 #: includes/functions/functions.php:1260
-msgctxt "great x6 grandmother’s brother"
-msgid "great x7 uncle"
-msgstr "pro x 7 zio"
+msgctxt "great ×6 grandmother’s brother"
+msgid "great ×7 uncle"
+msgstr "pro × 7 zio"
 
 #: includes/functions/functions.php:1261
-msgctxt "great x6 grandparent’s brother"
-msgid "great x7 uncle"
-msgstr "pro x7 zio"
+msgctxt "great ×6 grandparent’s brother"
+msgid "great ×7 uncle"
+msgstr "pro ×7 zio"
 
 #: includes/functions/functions.php:1085
 msgctxt "father’s father’s brother’s wife"

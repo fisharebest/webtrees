@@ -73,22 +73,22 @@ msgstr[1] "Bei %1$d Personen fehlen die Koordinaten des Geburtsortes: %2$s."
 #: includes/functions/functions.php:685
 #, php-format
 msgctxt "FEMALE"
-msgid "%1$d x %2$s"
-msgstr "%1$d x %2$s"
+msgid "%1$d × %2$s"
+msgstr "%1$d × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:674
 #, php-format
 msgctxt "MALE"
-msgid "%1$d x %2$s"
-msgstr "%1$d x %2$s"
+msgid "%1$d × %2$s"
+msgstr "%1$d × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:696
 #, php-format
 msgctxt "MALE/FEMALE"
-msgid "%1$d x %2$s"
-msgstr "%1$d x %2$s"
+msgid "%1$d × %2$s"
+msgstr "%1$d × %2$s"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$d>=4
 #: includes/functions/functions.php:1702
@@ -218,20 +218,20 @@ msgstr[1] "%d Monate"
 #: includes/functions/functions.php:637
 #, php-format
 msgctxt "FEMALE"
-msgid "%d x cousin"
+msgid "%d × cousin"
 msgstr "Cousine %d. Grades"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: includes/functions/functions.php:618
 #, php-format
 msgctxt "MALE"
-msgid "%d x cousin"
+msgid "%d × cousin"
 msgstr "Cousin %d. Grades"
 
 #: includes/functions/functions.php:656
 #, php-format
 msgctxt "MALE/FEMALE"
-msgid "%d x cousin"
+msgid "%d × cousin"
 msgstr "Cousin/e %d. Grades"
 
 #: modules_v3/relatives/module.php:60
@@ -440,10 +440,10 @@ msgstr "&lt;auswählen&gt;"
 #: search_advanced.php:112 search_advanced.php:116 search_advanced.php:120
 #: search_advanced.php:168 search_advanced.php:169 search_advanced.php:170
 #, php-format
-msgid "&plusmn;%d year"
-msgid_plural "&plusmn;%d years"
-msgstr[0] "&plusmn;%d Jahr"
-msgstr[1] "&plusmn;%d Jahre"
+msgid "±%d year"
+msgid_plural "±%d years"
+msgstr[0] "±%d Jahr"
+msgstr[1] "±%d Jahre"
 
 #. I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan 1900 (aged 43 years)
 #: library/WT/I18N.php:395 library/WT/I18N.php:399
@@ -16961,423 +16961,423 @@ msgstr "Enkelsohns Frau"
 #: includes/functions/functions.php:1275 includes/functions/functions.php:1284
 #: includes/functions/functions.php:1295
 #, php-format
-msgid "great x%d aunt"
-msgstr "%dx Großtante"
+msgid "great ×%d aunt"
+msgstr "%d× Großtante"
 
 #: includes/functions/functions.php:1276 includes/functions/functions.php:1285
 #: includes/functions/functions.php:1296
 #, php-format
-msgid "great x%d aunt/uncle"
-msgstr "%dx Großtante/Großonkel"
+msgid "great ×%d aunt/uncle"
+msgstr "%d× Großtante/Großonkel"
 
 #: includes/functions/functions.php:1617 includes/functions/functions.php:1630
 #, php-format
-msgid "great x%d grandchild"
-msgstr "%dx Großenkelkind"
+msgid "great ×%d grandchild"
+msgstr "%d× Großenkelkind"
 
 #: includes/functions/functions.php:1616 includes/functions/functions.php:1629
 #, php-format
-msgid "great x%d granddaughter"
-msgstr "%dx Großenkelin"
+msgid "great ×%d granddaughter"
+msgstr "%d× Großenkelin"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1520 includes/functions/functions.php:1527
 #: includes/functions/functions.php:1534 includes/functions/functions.php:1542
 #: includes/functions/functions.php:1552
 #, php-format
-msgid "great x%d grandfather"
-msgstr "%dx Ur-Großvater"
+msgid "great ×%d grandfather"
+msgstr "%d× Ur-Großvater"
 
 #: includes/functions/functions.php:1521 includes/functions/functions.php:1528
 #: includes/functions/functions.php:1535 includes/functions/functions.php:1543
 #: includes/functions/functions.php:1553
 #, php-format
-msgid "great x%d grandmother"
-msgstr "%dx Ur-Großmutter"
+msgid "great ×%d grandmother"
+msgstr "%d× Ur-Großmutter"
 
 #: includes/functions/functions.php:1522 includes/functions/functions.php:1529
 #: includes/functions/functions.php:1536 includes/functions/functions.php:1544
 #: includes/functions/functions.php:1554
 #, php-format
-msgid "great x%d grandparent"
-msgstr "%dx Ur-Großelternteil"
+msgid "great ×%d grandparent"
+msgstr "%d× Ur-Großelternteil"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1615 includes/functions/functions.php:1628
 #, php-format
-msgid "great x%d grandson"
-msgstr "%dx Großenkel"
+msgid "great ×%d grandson"
+msgstr "%d× Großenkel"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1448 includes/functions/functions.php:1459
 #, php-format
-msgid "great x%d nephew"
+msgid "great ×%d nephew"
 msgstr "(%d-1)x Urgroßneffe"
 
 #: includes/functions/functions.php:1424
 #, php-format
-msgctxt "(a man’s) brother’s great x(%d-1) grandson"
-msgid "great x%d nephew"
+msgctxt "(a man’s) brother’s great ×(%d-1) grandson"
+msgid "great ×%d nephew"
 msgstr "(%d-1)x Urgroßneffe"
 
 #: includes/functions/functions.php:1426
 #, php-format
-msgctxt "(a man’s) sister’s great x(%d-1) grandson"
-msgid "great x%d nephew"
+msgctxt "(a man’s) sister’s great ×(%d-1) grandson"
+msgid "great ×%d nephew"
 msgstr "(%d-1)x Urgroßneffe"
 
 #: includes/functions/functions.php:1428
 #, php-format
-msgctxt "(a woman’s) great x%d nephew"
-msgid "great x%d nephew"
+msgctxt "(a woman’s) great ×%d nephew"
+msgid "great ×%d nephew"
 msgstr "(%d-1)x Urgroßneffe"
 
 #: includes/functions/functions.php:1450 includes/functions/functions.php:1461
 #, php-format
-msgid "great x%d nephew/niece"
+msgid "great ×%d nephew/niece"
 msgstr "(%d-1)x Urgroßneffe/-nichte"
 
 #: includes/functions/functions.php:1439
 #, php-format
-msgctxt "(a man’s) brother’s great x(%d-1) grandchild"
-msgid "great x%d nephew/niece"
+msgctxt "(a man’s) brother’s great ×(%d-1) grandchild"
+msgid "great ×%d nephew/niece"
 msgstr "(%d-1)x Urgroßneffe/-nichte"
 
 #: includes/functions/functions.php:1441
 #, php-format
-msgctxt "(a man’s) sister’s great x(%d-1) grandchild"
-msgid "great x%d nephew/niece"
+msgctxt "(a man’s) sister’s great ×(%d-1) grandchild"
+msgid "great ×%d nephew/niece"
 msgstr "(%d-1)x Urgroßneffe/-nichte"
 
 #: includes/functions/functions.php:1443
 #, php-format
-msgctxt "(a woman’s) great x%d nephew/niece"
-msgid "great x%d nephew/niece"
+msgctxt "(a woman’s) great ×%d nephew/niece"
+msgid "great ×%d nephew/niece"
 msgstr "(%d-1)x Urgroßneffe/-nichte"
 
 #: includes/functions/functions.php:1449 includes/functions/functions.php:1460
 #, php-format
-msgid "great x%d niece"
+msgid "great ×%d niece"
 msgstr "(%d-1)x Urgroßnichte"
 
 #: includes/functions/functions.php:1431
 #, php-format
-msgctxt "(a man’s) brother’s great x(%d-1) granddaughter"
-msgid "great x%d niece"
+msgctxt "(a man’s) brother’s great ×(%d-1) granddaughter"
+msgid "great ×%d niece"
 msgstr "(%d-1)x Urgroßnichte"
 
 #: includes/functions/functions.php:1433
 #, php-format
-msgctxt "(a man’s) sister’s great x(%d-1) granddaughter"
-msgid "great x%d niece"
+msgctxt "(a man’s) sister’s great ×(%d-1) granddaughter"
+msgid "great ×%d niece"
 msgstr "(%d-1)x Urgroßnichte"
 
 #: includes/functions/functions.php:1435
 #, php-format
-msgctxt "(a woman’s) great x%d niece"
-msgid "great x%d niece"
+msgctxt "(a woman’s) great ×%d niece"
+msgid "great ×%d niece"
 msgstr "(%d-1)x Urgroßnichte"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1274 includes/functions/functions.php:1294
 #, php-format
-msgid "great x%d uncle"
-msgstr "%dx Großonkel"
+msgid "great ×%d uncle"
+msgstr "%d× Großonkel"
 
 #: includes/functions/functions.php:1281
 #, php-format
-msgctxt "great x(%d-1) grandfather’s brother"
-msgid "great x%d uncle"
+msgctxt "great ×(%d-1) grandfather’s brother"
+msgid "great ×%d uncle"
 msgstr "(%d-1)x Urgroßonkel"
 
 #: includes/functions/functions.php:1282
 #, php-format
-msgctxt "great x(%d-1) grandmother’s brother"
-msgid "great x%d uncle"
+msgctxt "great ×(%d-1) grandmother’s brother"
+msgid "great ×%d uncle"
 msgstr "(%d-1)x Urgroßonkel"
 
 #: includes/functions/functions.php:1283
 #, php-format
-msgctxt "great x(%d-1) grandparent’s brother"
-msgid "great x%d uncle"
+msgctxt "great ×(%d-1) grandparent’s brother"
+msgid "great ×%d uncle"
 msgstr "(%d-1)x Urgroßonkel"
 
 #: includes/functions/functions.php:1232
-msgid "great x4 aunt"
-msgstr "3x Ur-Großtante"
+msgid "great ×4 aunt"
+msgstr "3× Ur-Großtante"
 
 #: includes/functions/functions.php:1233
-msgid "great x4 aunt/uncle"
-msgstr "3x Ur-Großtante/Onkel"
+msgid "great ×4 aunt/uncle"
+msgstr "3× Ur-Großtante/Onkel"
 
 #: includes/functions/functions.php:1581
-msgid "great x4 grandchild"
-msgstr "3x Ur Großenkelkind"
+msgid "great ×4 grandchild"
+msgstr "3× Ur Großenkelkind"
 
 #: includes/functions/functions.php:1580
-msgid "great x4 granddaughter"
-msgstr "3x Ur-Großenkelin"
+msgid "great ×4 granddaughter"
+msgstr "3× Ur-Großenkelin"
 
 #: includes/functions/functions.php:1486
-msgid "great x4 grandfather"
-msgstr "4x Ur-Großvater"
+msgid "great ×4 grandfather"
+msgstr "4× Ur-Großvater"
 
 #: includes/functions/functions.php:1487
-msgid "great x4 grandmother"
-msgstr "4x Ur-Großmutter"
+msgid "great ×4 grandmother"
+msgstr "4× Ur-Großmutter"
 
 #: includes/functions/functions.php:1488
-msgid "great x4 grandparent"
-msgstr "4x Ur-Großelternteil"
+msgid "great ×4 grandparent"
+msgstr "4× Ur-Großelternteil"
 
 #: includes/functions/functions.php:1579
-msgid "great x4 grandson"
-msgstr "3x Ur-Großenkel"
+msgid "great ×4 grandson"
+msgstr "3× Ur-Großenkel"
 
 #: includes/functions/functions.php:1364
 msgctxt "(a man’s) brother’s great-great-great-grandson"
-msgid "great x4 nephew"
+msgid "great ×4 nephew"
 msgstr "Urururgroßneffe"
 
 #: includes/functions/functions.php:1366
 msgctxt "(a man’s) sister’s great-great-great-grandson"
-msgid "great x4 nephew"
+msgid "great ×4 nephew"
 msgstr "Urururgroßneffe"
 
 #: includes/functions/functions.php:1368
-msgctxt "(a woman’s) great x4 nephew"
-msgid "great x4 nephew"
+msgctxt "(a woman’s) great ×4 nephew"
+msgid "great ×4 nephew"
 msgstr "Urururgroßneffe"
 
 #: includes/functions/functions.php:1380
 msgctxt "(a man’s) brother’s great-great-great-grandchild"
-msgid "great x4 nephew/niece"
+msgid "great ×4 nephew/niece"
 msgstr "Urururgroßneffe/-nichte"
 
 #: includes/functions/functions.php:1382
 msgctxt "(a man’s) sister’s great-great-great-grandchild"
-msgid "great x4 nephew/niece"
+msgid "great ×4 nephew/niece"
 msgstr "Urururgroßneffe/-nichte"
 
 #: includes/functions/functions.php:1384
-msgctxt "(a woman’s) great x4 nephew/niece"
-msgid "great x4 nephew/niece"
+msgctxt "(a woman’s) great ×4 nephew/niece"
+msgid "great ×4 nephew/niece"
 msgstr "Urururgroßneffe/-nichte"
 
 #: includes/functions/functions.php:1372
 msgctxt "(a man’s) brother’s great-great-great-granddaughter"
-msgid "great x4 niece"
+msgid "great ×4 niece"
 msgstr "Urururgroßnichte"
 
 #: includes/functions/functions.php:1374
 msgctxt "(a man’s) sister’s great-great-great-granddaughter"
-msgid "great x4 niece"
+msgid "great ×4 niece"
 msgstr "Urururgroßnichte"
 
 #: includes/functions/functions.php:1376
-msgctxt "(a woman’s) great x4 niece"
-msgid "great x4 niece"
+msgctxt "(a woman’s) great ×4 niece"
+msgid "great ×4 niece"
 msgstr "Urururgroßnichte"
 
 #: includes/functions/functions.php:1229
 msgctxt "great-great-great-grandfather’s brother"
-msgid "great x4 uncle"
+msgid "great ×4 uncle"
 msgstr "Ur-Ur-Urgroßonkel"
 
 #: includes/functions/functions.php:1230
 msgctxt "great-great-great-grandmother’s brother"
-msgid "great x4 uncle"
+msgid "great ×4 uncle"
 msgstr "Ur-Ur-Urgroßonkel"
 
 #: includes/functions/functions.php:1231
 msgctxt "great-great-great-grandparent’s brother"
-msgid "great x4 uncle"
+msgid "great ×4 uncle"
 msgstr "Ur-Ur-Urgroßonkel"
 
 #: includes/functions/functions.php:1242
-msgid "great x5 aunt"
-msgstr "4x Ur-Großtante"
+msgid "great ×5 aunt"
+msgstr "4× Ur-Großtante"
 
 #: includes/functions/functions.php:1243
-msgid "great x5 aunt/uncle"
-msgstr "4x Ur-Großtante/Onkel"
+msgid "great ×5 aunt/uncle"
+msgstr "4× Ur-Großtante/Onkel"
 
 #: includes/functions/functions.php:1588
-msgid "great x5 grandchild"
-msgstr "4x Ur Großenkelkind"
+msgid "great ×5 grandchild"
+msgstr "4× Ur Großenkelkind"
 
 #: includes/functions/functions.php:1587
-msgid "great x5 granddaughter"
+msgid "great ×5 granddaughter"
 msgstr "Ururururgroßenkelin"
 
 #: includes/functions/functions.php:1493
-msgid "great x5 grandfather"
-msgstr "5x Ur-Großvater"
+msgid "great ×5 grandfather"
+msgstr "5× Ur-Großvater"
 
 #: includes/functions/functions.php:1494
-msgid "great x5 grandmother"
-msgstr "5x Ur-Großmutter"
+msgid "great ×5 grandmother"
+msgstr "5× Ur-Großmutter"
 
 #: includes/functions/functions.php:1495
-msgid "great x5 grandparent"
-msgstr "5x Ur-Großelternteil"
+msgid "great ×5 grandparent"
+msgstr "5× Ur-Großelternteil"
 
 #: includes/functions/functions.php:1586
-msgid "great x5 grandson"
-msgstr "4x Ur-Großenkel"
+msgid "great ×5 grandson"
+msgstr "4× Ur-Großenkel"
 
 #: includes/functions/functions.php:1391
-msgctxt "(a man’s) brother’s great x4 grandson"
-msgid "great x5 nephew"
+msgctxt "(a man’s) brother’s great ×4 grandson"
+msgid "great ×5 nephew"
 msgstr "Ururururgroßneffe"
 
 #: includes/functions/functions.php:1393
-msgctxt "(a man’s) sister’s great x4 grandson"
-msgid "great x5 nephew"
+msgctxt "(a man’s) sister’s great ×4 grandson"
+msgid "great ×5 nephew"
 msgstr "Ururururgroßneffe"
 
 #: includes/functions/functions.php:1395
-msgctxt "(a woman’s) great x5 nephew"
-msgid "great x5 nephew"
+msgctxt "(a woman’s) great ×5 nephew"
+msgid "great ×5 nephew"
 msgstr "Ururururgroßneffe"
 
 #: includes/functions/functions.php:1407
-msgctxt "(a man’s) brother’s great x4 grandchild"
-msgid "great x5 nephew/niece"
+msgctxt "(a man’s) brother’s great ×4 grandchild"
+msgid "great ×5 nephew/niece"
 msgstr "Ururururgroßneffe/-nichte"
 
 #: includes/functions/functions.php:1409
-msgctxt "(a man’s) sister’s great x4 grandchild"
-msgid "great x5 nephew/niece"
+msgctxt "(a man’s) sister’s great ×4 grandchild"
+msgid "great ×5 nephew/niece"
 msgstr "Ururururgroßneffe/-nichte"
 
 #: includes/functions/functions.php:1411
-msgctxt "(a woman’s) great x5 nephew/niece"
-msgid "great x5 nephew/niece"
+msgctxt "(a woman’s) great ×5 nephew/niece"
+msgid "great ×5 nephew/niece"
 msgstr "Ururururgroßneffe/-nichte"
 
 #: includes/functions/functions.php:1399
-msgctxt "(a man’s) brother’s great x4 granddaughter"
-msgid "great x5 niece"
+msgctxt "(a man’s) brother’s great ×4 granddaughter"
+msgid "great ×5 niece"
 msgstr "Ururururgroßnichte"
 
 #: includes/functions/functions.php:1401
-msgctxt "(a man’s) sister’s great x4 granddaughter"
-msgid "great x5 niece"
+msgctxt "(a man’s) sister’s great ×4 granddaughter"
+msgid "great ×5 niece"
 msgstr "Ururururgroßnichte"
 
 #: includes/functions/functions.php:1403
-msgctxt "(a woman’s) great x5 niece"
-msgid "great x5 niece"
+msgctxt "(a woman’s) great ×5 niece"
+msgid "great ×5 niece"
 msgstr "Ururururgroßnichte"
 
 #: includes/functions/functions.php:1239
-msgctxt "great x4 grandfather’s brother"
-msgid "great x5 uncle"
+msgctxt "great ×4 grandfather’s brother"
+msgid "great ×5 uncle"
 msgstr "Ur-Ur-Ur-Urgroßonkel"
 
 #: includes/functions/functions.php:1240
-msgctxt "great x4 grandmother’s brother"
-msgid "great x5 uncle"
+msgctxt "great ×4 grandmother’s brother"
+msgid "great ×5 uncle"
 msgstr "Ur-Ur-Ur-Urgroßonkel"
 
 #: includes/functions/functions.php:1241
-msgctxt "great x4 grandparent’s brother"
-msgid "great x5 uncle"
+msgctxt "great ×4 grandparent’s brother"
+msgid "great ×5 uncle"
 msgstr "Ur-Ur-Ur-Urgroßonkel"
 
 #: includes/functions/functions.php:1252
-msgid "great x6 aunt"
-msgstr "5x Ur-Großtante"
+msgid "great ×6 aunt"
+msgstr "5× Ur-Großtante"
 
 #: includes/functions/functions.php:1253
-msgid "great x6 aunt/uncle"
+msgid "great ×6 aunt/uncle"
 msgstr "Urururururgroßtante/Urururururgroßonkel"
 
 #: includes/functions/functions.php:1595
-msgid "great x6 grandchild"
-msgstr "5x Ur-Großenkelkind"
+msgid "great ×6 grandchild"
+msgstr "5× Ur-Großenkelkind"
 
 #: includes/functions/functions.php:1594
-msgid "great x6 granddaughter"
-msgstr "5x Ur-Großenkelin"
+msgid "great ×6 granddaughter"
+msgstr "5× Ur-Großenkelin"
 
 #: includes/functions/functions.php:1500
-msgid "great x6 grandfather"
-msgstr "6x Ur-Großvater"
+msgid "great ×6 grandfather"
+msgstr "6× Ur-Großvater"
 
 #: includes/functions/functions.php:1501
-msgid "great x6 grandmother"
-msgstr "6x Ur-Großmutter"
+msgid "great ×6 grandmother"
+msgstr "6× Ur-Großmutter"
 
 #: includes/functions/functions.php:1502
-msgid "great x6 grandparent"
-msgstr "6x Ur-Großelternteil"
+msgid "great ×6 grandparent"
+msgstr "6× Ur-Großelternteil"
 
 #: includes/functions/functions.php:1593
-msgid "great x6 grandson"
-msgstr "5x Ur-Großenkel"
+msgid "great ×6 grandson"
+msgstr "5× Ur-Großenkel"
 
 #: includes/functions/functions.php:1249
-msgctxt "great x5 grandfather’s brother"
-msgid "great x6 uncle"
+msgctxt "great ×5 grandfather’s brother"
+msgid "great ×6 uncle"
 msgstr "Ur-Ur-Ur-Ur-Urgroßonkel"
 
 #: includes/functions/functions.php:1250
-msgctxt "great x5 grandmother’s brother"
-msgid "great x6 uncle"
+msgctxt "great ×5 grandmother’s brother"
+msgid "great ×6 uncle"
 msgstr "Ur-Ur-Ur-Ur-Urgroßonkel"
 
 #: includes/functions/functions.php:1251
-msgctxt "great x5 grandparent’s brother"
-msgid "great x6 uncle"
+msgctxt "great ×5 grandparent’s brother"
+msgid "great ×6 uncle"
 msgstr "Ur-Ur-Ur-Ur-Urgroßonkel"
 
 #: includes/functions/functions.php:1262
-msgid "great x7 aunt"
-msgstr "6x Ur-Großtante"
+msgid "great ×7 aunt"
+msgstr "6× Ur-Großtante"
 
 #: includes/functions/functions.php:1263
-msgid "great x7 aunt/uncle"
-msgstr "6x Ur-Großtante/Onkel"
+msgid "great ×7 aunt/uncle"
+msgstr "6× Ur-Großtante/Onkel"
 
 #: includes/functions/functions.php:1602
-msgid "great x7 grandchild"
-msgstr "6x Ur-Großenkelkind"
+msgid "great ×7 grandchild"
+msgstr "6× Ur-Großenkelkind"
 
 #: includes/functions/functions.php:1601
-msgid "great x7 granddaughter"
-msgstr "6x Ur-Großenkelin"
+msgid "great ×7 granddaughter"
+msgstr "6× Ur-Großenkelin"
 
 #: includes/functions/functions.php:1507
-msgid "great x7 grandfather"
-msgstr "7x Ur-Großvater"
+msgid "great ×7 grandfather"
+msgstr "7× Ur-Großvater"
 
 #: includes/functions/functions.php:1508
-msgid "great x7 grandmother"
-msgstr "7x Ur-Großmutter"
+msgid "great ×7 grandmother"
+msgstr "7× Ur-Großmutter"
 
 #: includes/functions/functions.php:1509
-msgid "great x7 grandparent"
-msgstr "7x Ur-Großelternteil"
+msgid "great ×7 grandparent"
+msgstr "7× Ur-Großelternteil"
 
 #: includes/functions/functions.php:1600
-msgid "great x7 grandson"
-msgstr "6x Ur-Großenkel"
+msgid "great ×7 grandson"
+msgstr "6× Ur-Großenkel"
 
 #: includes/functions/functions.php:1259
-msgctxt "great x6 grandfather’s brother"
-msgid "great x7 uncle"
+msgctxt "great ×6 grandfather’s brother"
+msgid "great ×7 uncle"
 msgstr "Ur-Ur-Ur-Ur-Ur-Urgroßonkel"
 
 #: includes/functions/functions.php:1260
-msgctxt "great x6 grandmother’s brother"
-msgid "great x7 uncle"
+msgctxt "great ×6 grandmother’s brother"
+msgid "great ×7 uncle"
 msgstr "Ur-Ur-Ur-Ur-Ur-Urgroßonkel"
 
 #: includes/functions/functions.php:1261
-msgctxt "great x6 grandparent’s brother"
-msgid "great x7 uncle"
+msgctxt "great ×6 grandparent’s brother"
+msgid "great ×7 uncle"
 msgstr "Ur-Ur-Ur-Ur-Ur-Urgroßonkel"
 
 #: includes/functions/functions.php:1085
