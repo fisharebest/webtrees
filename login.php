@@ -289,7 +289,7 @@ case 'register':
 				->setSetting('reg_timestamp',     date('U'))
 				->setSetting('reg_hashcode',      md5(uniqid(rand(), true)))
 				->setSetting('contactmethod',     'messaging2')
-				->setSetting('comment',           $user_comment)
+				->setSetting('comment',           $user_comments)
 				->setSetting('visibleonline',     1)
 				->setSetting('editaccount',       1)
 				->setSetting('auto_accept',       0)
