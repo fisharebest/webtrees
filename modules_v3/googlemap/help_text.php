@@ -43,8 +43,8 @@ case 'GM_NAME_PREFIX_SUFFIX':
 	break;
 
 case 'GM_COORD':
-	$title=WT_I18N::translate('Display Map Coordinates');
-	$text=WT_I18N::translate('This options sets whether Latitude and Longitude are displayed on the pop-up window attached to map markers.');
+	$title=WT_I18N::translate('Display map coordinates');
+	$text=WT_I18N::translate('This options sets whether latitude and longitude are displayed on the pop-up window attached to map markers.');
 	break;
 
 // Help texts for places_edit.php

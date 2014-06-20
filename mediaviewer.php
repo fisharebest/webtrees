@@ -101,7 +101,7 @@ echo '<div id="media-tabs">';
 					if (!$tmp->isExternal()) {
 						if ($tmp->fileExists('main')) {
 							if ($SHOW_MEDIA_DOWNLOAD) {
-								echo '<p><a href="' . $tmp->getHtmlUrlDirect('main', true).'">' . WT_I18N::translate('Download File') . '</a></p>';
+								echo '<p><a href="' . $tmp->getHtmlUrlDirect('main', true).'">' . WT_I18N::translate('Download file') . '</a></p>';
 							}
 						} else {
 							echo '<p class="ui-state-error">' . WT_I18N::translate('The file “%s” does not exist.', $tmp->getFilename()) . '</p>';

@@ -73,7 +73,7 @@ class user_blog_WT_Module extends WT_Module implements WT_Module_Block {
 		$title.=$this->getTitle();
 		$content = '';
 		if (count($usernews)==0) {
-			$content .= WT_I18N::translate('You have not created any Journal items.');
+			$content .= WT_I18N::translate('You have not created any journal items.');
 		}
 		foreach ($usernews as $key=>$news) {
 			$day = date('j', $news['date']);
@@ -88,11 +88,11 @@ class user_blog_WT_Module extends WT_Module implements WT_Module_Block {
 			}
 			$content .= $news["text"]."<br><br>";
 			$content .= "<a href=\"#\" onclick=\"window.open('editnews.php?news_id='+".$key.", '_blank', indx_window_specs); return false;\">".WT_I18N::translate('Edit')."</a> | ";
-			$content .= "<a href=\"index.php?action=deletenews&amp;news_id={$key}&amp;ctype={$ctype}\" onclick=\"return confirm('".WT_I18N::translate('Are you sure you want to delete this Journal entry?')."');\">".WT_I18N::translate('Delete')."</a><br>";
+			$content .= "<a href=\"index.php?action=deletenews&amp;news_id={$key}&amp;ctype={$ctype}\" onclick=\"return confirm('".WT_I18N::translate('Are you sure you want to delete this journal entry?')."');\">".WT_I18N::translate('Delete')."</a><br>";
 			$content .= "</div><br>";
 		}
 		if (WT_USER_ID) {
-			$content .= "<br><a href=\"#\" onclick=\"window.open('editnews.php?user_id='+WT_USER_ID, '_blank', indx_window_specs); return false;\">".WT_I18N::translate('Add a new Journal entry')."</a>";
+			$content .= "<br><a href=\"#\" onclick=\"window.open('editnews.php?user_id='+WT_USER_ID, '_blank', indx_window_specs); return false;\">".WT_I18N::translate('Add a new journal entry')."</a>";
 		}
 
 		if ($template) {

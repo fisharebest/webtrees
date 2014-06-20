@@ -434,7 +434,7 @@ $controller
 					<td>
 						<input type="text" dir="ltr" name="NEW_META_DESCRIPTION" value="<?php echo get_gedcom_setting(WT_GED_ID, 'META_DESCRIPTION'); ?>" size="40" maxlength="255">
 						<br>
-						<?php echo WT_I18N::translate('Leave this field empty to use the title of the currently active database.'); ?>
+						<?php echo WT_I18N::translate('Leave this field empty to use the name of the family tree.'); ?>
 					</td>
 				</tr>
 				<tr>

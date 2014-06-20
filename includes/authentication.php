@@ -108,7 +108,7 @@ function addMessage($message) {
 			WT_Site::preference('SMTP_FROM_NAME'),
 			$WT_TREE->preference('title'),
 			// Message
-			WT_I18N::translate('webtrees Message') . ' - ' . $message['subject'],
+			WT_I18N::translate('webtrees message') . ' - ' . $message['subject'],
 			$copy_email
 		);
 	}
@@ -171,7 +171,7 @@ function addMessage($message) {
 			$sender_email,
 			$sender_real_name,
 			// Message
-			WT_I18N::translate('webtrees Message') . ' - ' . $message['subject'],
+			WT_I18N::translate('webtrees message') . ' - ' . $message['subject'],
 			$original_email
 		);
 	}

@@ -3,7 +3,7 @@
 	<Title><var var="WT_I18N::translate('Family')" /></Title>
 	<Description><var var="WT_I18N::translate('A report of family members and their details.')" /></Description>
 	<!-- User inputs for the report -->
-	<Input name="famid" lookup="FAM" type="text" default=""><var var="WT_I18N::translate('Enter Family ID')" /></Input>
+	<Input name="famid" lookup="FAM" type="text" default=""><var var="WT_I18N::translate('Family')" /></Input>
 	<Input name="sources" type="checkbox" default="1"><var var="WT_I18N::translate('Show sources?')" /></Input>
 	<Input name="notes" type="checkbox" default="1"><var var="WT_I18N::translate('Show notes?')" /></Input>
 	<Input name="photos" type="checkbox" default="1"><var var="WT_I18N::translate('Show photos?')" /></Input>

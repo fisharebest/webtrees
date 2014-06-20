@@ -183,20 +183,12 @@ msgstr "%2$s de %1$s"
 msgid "%H:%i:%s"
 msgstr "%g:%i:%s %a"
 
-#. I18N: This is a title, so needs suitable capitalisation
-#: includes/functions/functions_charts.php:267
-#, php-format
-msgid "%d Child"
-msgid_plural "%d Children"
-msgstr[0] "%d Fill"
-msgstr[1] "%d Fills"
-
 #: lifespan.php:198
 #, php-format
-msgid "%d Individual"
-msgid_plural "%d Individuals"
-msgstr[0] "%d Persona"
-msgstr[1] "%d Persones"
+msgid "%s individual"
+msgid_plural "%s individuals"
+msgstr[0] "%s persona"
+msgstr[1] "%s persones"
 
 #: includes/functions/functions_print.php:306 library/WT/Stats.php:3415
 #, php-format
@@ -603,7 +595,7 @@ msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<b
 msgstr "<b>GUID</b>, en aquest context és l’acrònim de «Globally Unique ID» (identificador únic global).<br><br>El GUID  té per objecte ajudar a identificar a cada individu d’una manera que és irrepetible, de manera que les organitzacions centrals, com ara el Centre d’Història Familiar de l’Església mormona a Salt Lake City i fins i tot programes compatibles que s’executen al vostre propi servidor, puguin determinar si es tracta de la mateixa persona independentment d’on s’origina el GEDCOM. L’objectiu del Centre d’Història Familiar és tenir un arxiu central de dades genealògiques i exposar-lo a través de serveis web. Això permetrà a qualsevol programa accedir a les dades i actualitzar les seves.<br><br>Si no teneiu intenció de compartir aquest GEDCOM amb ningú més, no us cal permetre que <b>webtrees</b> crei aquests GUID, perquè això no faran altra cosa que augmentar la grandària del vostre fitxer GEDCOM."
 
 #: help_text.php:1318
-msgid "<b>Important Note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
+msgid "<b>Important note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
 msgstr "<b>Nota important:</b> L’assistent de transferència no és capaç d’ajudar a moure els elements multimèdia. Haurà de crear i moure o copiar la configuració dels vostres multimèdia i els objectes per separat després que l’assistent de transferència hagi acabat."
 
 #: help_text.php:1007
@@ -611,7 +603,7 @@ msgid "<b>No</b> means that authenticated users can see the details of all livin
 msgstr "<b>No</b> fa que els usuaris autenticats (que hagin efectuat l’accés) puguin veure els detalls de les persones vives. <b>Sí</b> fa que solament puguin veure la de persones amb les que hi estiguin emparentats.<br><br>Aquesta opció fixa el paràmetre per defecte per a tots els usuaris que tinguin accés a la base de dades genealògica. L’administrador pot saltar-se’l per a usuaris individualment, editant els detalls del seu compte."
 
 #: message.php:118
-msgid "<b>Please Note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogical data, please include the sources where you obtained the data."
+msgid "<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogical data, please include the sources where you obtained the data."
 msgstr "<b> Nota:</b> la informació privada de persones vives només pot lliurar-se a familiars i amics íntims. Abans de que podeu rebre dades privades us interrogarem per verificar quina relació hi teniu. De vegades la informació de difunts pot també ésser privada. Si aquest és el cas, és perquè no hi ha prou informació coneguda sobre la persona per determinar si és viu o no i probablement, no tenim més informació sobre aquesta persona.<br><br>Abans de fer una pregunta, si us plau, comproveu que demaneu informació sobre la persona correcta comprovant dates, indrets i familiars directes. Si proposeu canvis en les dades genealògiques, si us plau incloeu-hi les fonts de on les heu obtingut."
 
 #: help_text.php:1063
@@ -643,15 +635,15 @@ msgid "<b>webtrees</b> reply address"
 msgstr "Adreça de resposta <b>webtrees</b>"
 
 #: login.php:150
-msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved."
+msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved."
 msgstr "<center><b>Us donem la benvinguda a aquest llooc web de genealogia</b></center><br>L’accés és permès solament a usuaris <u>autoritzats</u>.<br><br>Si ja disposeu d’autorització podeu accedir per aquesta pàgina. Si no, podeu demanar-la polsant a l’enllaç apropiat d’aquí sota.<br><br>Un cop verificada la vostra informació l’administrador pot autoritzar-vos o no.  Rebreu un correu electrònic quan la comanda hagi estat aprovada."
 
 #: login.php:153
-msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved."
+msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved."
 msgstr "<center><b>Us donem la benvinguda a aquest lloc web de genealogia</b></center><br>L’accés és permès solament a <u>membres de la família</u>.<br><br>Si ja disposeu d’autorització podeu accedir per aquesta pàgina. Si no, podeu demanar-la polsant a l’enllaç apropiat d’aquí sota.<br><br>Un cop verificada la vostra informació l’administrador pot autoritzar-ho o no.  Rebreu un correu electrònic quan la comanda hagi estat aprovada."
 
 #: login.php:147
-msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved."
+msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved."
 msgstr "<center><b>Us donem la benvinguda a aquest lloc web de genealogia</b></center><br>L’accés és permès a qualsevol usuari enregistrat.<br><br>Si ja disposeu d’autorització, accediu per aquesta pàgina. Si no, podeu demanar-la polsant a l’enllaç apropiat de sota.<br><br>Un cop verificada la vostra comanda, l’administrador del lloc us activarà el registre.  Rebreu un correu electrònic quan la hagi estat aprovada."
 
 #. I18N: default option in list of themes
@@ -725,7 +717,7 @@ msgstr "Una llista de tasques i activitats relacionades amb l’arbre genealògi
 msgid "A list of the Hebrew death anniversaries that will occur in the near future."
 msgstr "Una llista dels aniversaris de defunció hebreus que es produiran en un futur pròxim."
 
-#. I18N: Description of the “On This Day” module
+#. I18N: Description of the “On this day” module
 #: modules_v3/todays_events/module.php:37
 msgid "A list of the anniversaries that occur today."
 msgstr "Una llista d’aniversaris que es commemoren avui."
@@ -1139,23 +1131,23 @@ msgstr "Afegeix una nova ubicació geogràfica"
 
 #: modules_v3/clippings/module.php:472
 #, php-format
-msgid "Add %s to cart"
+msgid "Add %s to the clippings cart"
 msgstr "Posa %s al cistell"
 
 #: modules_v3/faq/module.php:145 modules_v3/faq/module.php:359
-msgid "Add FAQ item"
+msgid "Add an FAQ item"
 msgstr "Afegiu entrades a PMF"
 
 #: modules_v3/clippings/module.php:150 modules_v3/clippings/module.php:233
-msgid "Add Individual By ID"
+msgid "Add individual by ID"
 msgstr "Afegiu una persona per llur ID"
 
 #: search_advanced.php:290
-msgid "Add More Fields"
+msgid "Add more fields"
 msgstr "Afegiu-hi més camps"
 
 #: modules_v3/gedcom_news/module.php:125
-msgid "Add a News article"
+msgid "Add a news article"
 msgstr "Afegiu una Notícia"
 
 #: edit_interface.php:563 modules_v3/relatives/module.php:373
@@ -1181,7 +1173,7 @@ msgid "Add a husband using an existing individual"
 msgstr "Afegiu-li un espòs emprant algú existent"
 
 #: modules_v3/user_blog/module.php:95
-msgid "Add a new Journal entry"
+msgid "Add a new journal entry"
 msgstr "Afegiu una nova entrada a l’Agenda"
 
 #: help_text.php:1133 includes/functions/functions_edit.php:834
@@ -1362,7 +1354,7 @@ msgstr "Afegeix espais on les notes s’han comprimit:"
 
 #: modules_v3/stories/module.php:127 modules_v3/stories/module.php:214
 #: modules_v3/stories/module.php:337
-msgid "Add story"
+msgid "Add a story"
 msgstr "Afegiu una història"
 
 #: admin_trees_download.php:129 modules_v3/clippings/module.php:212
@@ -1429,11 +1421,11 @@ msgid "Add your own text and graphics."
 msgstr "Afegiu els vostres propis textos i gràfics."
 
 #: modules_v3/GEDFact_assistant/_CENS/census_1_ctrl.php:91
-msgid "Add/Insert Blank Row"
+msgid "Add/insert a blank row"
 msgstr "Afegeix/Insereix files en blanc"
 
 #: editnews.php:31 editnews.php:49
-msgid "Add/edit journal/news entry"
+msgid "Add/edit a journal/news entry"
 msgstr "Afegiu/editeu entrades de l’Agenda"
 
 #: admin_site_merge.php:196 admin_site_merge.php:202
@@ -1483,7 +1475,7 @@ msgid "Administrators"
 msgstr "Administradors"
 
 #: help_text.php:1284
-msgid "Administrators sometimes need to clean up and correct the data submitted by users.  For example, they might need to correct the PLAC location to include the country.  When Administrators make such corrections, information about the original change is normally replaced.  This may not be desirable.<br><br>When this option is selected, <b>webtrees</b> will retain the original Change information instead of replacing it with that of the current session.  With this option selected, Administrators also have the ability to modify or delete the information associated with the original CHAN tag."
+msgid "Administrators sometimes need to clean up and correct the data submitted by users.  For example, they might need to correct the PLAC location to include the country.  When administrators make such corrections, information about the original change is normally replaced.  This may not be desirable.<br><br>When this option is selected, <b>webtrees</b> will retain the original change information instead of replacing it with that of the current session.  With this option selected, administrators also have the ability to modify or delete the information associated with the original CHAN tag."
 msgstr "Els administradors de vegades necessiten polir o corregir dades enviades pels usuaris. Per exemple, pot ésser que calgui a corregir la ubicació PLAC per incloure el país. Quan fan aquestes correccions, normalment es substitueix la informació sobre l’usuari que ha modificat o actualitzat originalment un determinat registre. Això pot resultar indesitjable.<br><br>Quan es selecciona aquesta opció, <b>webtrees</b> conserva la informació de l’usuari original en lloc de reemplaçar-lo amb el de la sessió actual. Amb aquesta opció seleccionada, els administradors també tenen la capacitat de modificar o eliminar la informació associada a l’etiqueta original CHAN."
 
 #: library/WT/Gedcom/Code/Pedi.php:43
@@ -1662,8 +1654,8 @@ msgid "After creating the family tree, you will be able to upload or import data
 msgstr "Després de crear l’arbre genealògic, podreu carregar o importar-hi dades des d’un fitxer GEDCOM."
 
 #: login.php:242
-msgid "After you have logged in, select the “My Account” link under the “My Page” menu and fill in the password fields to change your password."
-msgstr "Un cop dins, seleccioneu l’enllaç “Dades de registre” sota el menú “La Meva Pàgina” i escriviu al camp corresponent la vostra nova contrasenya."
+msgid "After you have logged in, select the “My account” link under the “My page” menu and fill in the password fields to change your password."
+msgstr "Un cop dins, seleccioneu l’enllaç “Dades de registre” sota el menú “La meva pàgina” i escriviu al camp corresponent la vostra nova contrasenya."
 
 #. I18N: gedcom tag AGE
 #: autocomplete.php:114 includes/functions/functions_print.php:709
@@ -2054,11 +2046,11 @@ msgid "Are you sure you want to delete this FAQ entry?"
 msgstr "Esteu segur que cal suprimir aquesta entrada de PMF?"
 
 #: modules_v3/user_blog/module.php:91
-msgid "Are you sure you want to delete this Journal entry?"
+msgid "Are you sure you want to delete this journal entry?"
 msgstr "Esteu segur que cal suprimir aquesta entrada de l’Agenda?"
 
 #: modules_v3/gedcom_news/module.php:119
-msgid "Are you sure you want to delete this News entry?"
+msgid "Are you sure you want to delete this news article?"
 msgstr "Segur que cal suprimir aquesta Notícia?"
 
 #: includes/functions/functions_print_facts.php:181
@@ -2095,7 +2087,7 @@ msgid "Are you sure you want to remove links to this media object?"
 msgstr "Esteu segur d’eliminar els enllaços a aquest objecte multimèdia?"
 
 #: modules_v3/gedcom_favorites/module.php:123
-msgid "Are you sure you want to remove this item from your list of Favorites?"
+msgid "Are you sure you want to remove this item from your list of favorites?"
 msgstr "Esteu segur que cal eliminar aquesta entrada dels vostres Favorits?"
 
 #: edit_changes.php:231
@@ -2165,7 +2157,7 @@ msgid "Asuncion, Paraguay"
 msgstr "Assumpció, Paraguai"
 
 #: library/WT/Stats.php:4003
-msgid "At Sea"
+msgid "At sea"
 msgstr "Al Mar"
 
 #: library/WT/Gedcom/Code/Temp.php:65
@@ -2714,7 +2706,7 @@ msgid "Birth"
 msgstr "Nat/Nada"
 
 #: modules_v3/birth_report/report.xml:6
-msgid "Birth Place contains"
+msgid "Birthplace contains"
 msgstr "L’indret de naixement conté"
 
 #: library/WT/Stats.php:978 statistics.php:576
@@ -3713,7 +3705,7 @@ msgid "Click here for PhpGedView to <b>webtrees</b> transfer wizard"
 msgstr "Polseu aquí per a l’assitent de transferència de PhpGedView a <b>webtrees</b>"
 
 #: modules_v3/faq/module.php:282
-msgid "Click here to Add, Edit, or Delete"
+msgid "Click here to add, edit, or delete"
 msgstr "Polseu aquí per Afegir, Editar o Esborrar"
 
 #: individual.php:267
@@ -3903,7 +3895,7 @@ msgstr "Contingut"
 #: modules_v3/clippings/module.php:129 modules_v3/clippings/module.php:501
 #: modules_v3/clippings/module.php:524 modules_v3/clippings/module.php:537
 #: modules_v3/googlemap/module.php:4142
-msgid "Continue Adding"
+msgid "Continue adding"
 msgstr "Continua afegint"
 
 #. I18N: gedcom tag CONT
@@ -4042,7 +4034,7 @@ msgstr "Creeu una nova font"
 
 #: edit_interface.php:1493 edit_interface.php:1558
 #: includes/functions/functions_edit.php:320
-msgid "Create repository"
+msgid "Create a new repository"
 msgstr "Creeu un arxiu"
 
 #: admin_users.php:480
@@ -4297,7 +4289,7 @@ msgid "Date"
 msgstr "Data"
 
 #: modules_v3/user_messages/module.php:87
-msgid "Date Sent:"
+msgid "Date sent:"
 msgstr "Data de tramesa:"
 
 #: admin_trees_config.php:1045 help_text.php:1403
@@ -4620,7 +4612,7 @@ msgid "Death"
 msgstr "Defunció"
 
 #: modules_v3/death_report/report.xml:6
-msgid "Death Place contains"
+msgid "Death place contains"
 msgstr "L’indret de defunció conté"
 
 #: library/WT/Stats.php:995 statistics.php:584
@@ -4901,7 +4893,7 @@ msgid "Delete FAQ item"
 msgstr "Elimina l’ítem"
 
 #: modules_v3/user_messages/module.php:116
-msgid "Delete Selected Messages"
+msgid "Delete selected messages"
 msgstr "Esborra els missatges seleccionats"
 
 #: modules_v3/googlemap/module.php:4130
@@ -4913,7 +4905,7 @@ msgid "Delete inactive users"
 msgstr "Elimina usuaris inactius"
 
 #: library/WT/Controller/Individual.php:151
-msgid "Delete name"
+msgid "Delete this name"
 msgstr "Elimineu el nom"
 
 #. I18N: The system is about to [...]
@@ -5144,7 +5136,7 @@ msgid "Display %s"
 msgstr "Mostra %s"
 
 #: modules_v3/googlemap/help_text.php:46 modules_v3/googlemap/module.php:459
-msgid "Display Map Coordinates"
+msgid "Display map coordinates"
 msgstr "Mostra coordenades del mapa"
 
 #: find.php:220 find.php:237 find.php:254 find.php:272 find.php:289
@@ -5231,7 +5223,7 @@ msgid "Download %s…"
 msgstr "S’està descarregant %s…"
 
 #: mediaviewer.php:104
-msgid "Download File"
+msgid "Download file"
 msgstr "Baixa el fitxer"
 
 #: admin_trees_download.php:30
@@ -5518,7 +5510,7 @@ msgstr "Patrò"
 
 #: modules_v3/clippings/help_text.php:36 modules_v3/clippings/module.php:254
 #: modules_v3/clippings/module.php:463
-msgid "Empty Cart"
+msgid "Empty the clippings cart"
 msgstr "Buida el cistell"
 
 #: admin_modules.php:121
@@ -5612,7 +5604,7 @@ msgid "Enter the email address.<br><br>An example email address looks like this:
 msgstr "Entreu l’adreça de correu electrònic.<br><br>Un exemple d’adreça és aquest: <b>nom@hotmail.com</b> Deixeu-ho en blanc si no la voleu incloure."
 
 #: help_text.php:1238
-msgid "Enter the limiting value here.<br><br>If you have opted to limit the News article display according to age, any article older than the number of days entered here will be hidden from view.  If you have opted to limit the News article display by number, only the specified number of recent articles, ordered by age, will be shown.  The remaining articles will be hidden from view.<br><br>Zeros entered here will disable the limit, causing all News articles to be shown."
+msgid "Enter the limiting value here.<br><br>If you have opted to limit the news article display according to age, any article older than the number of days entered here will be hidden from view.  If you have opted to limit the news article display by number, only the specified number of recent articles, ordered by age, will be shown.  The remaining articles will be hidden from view.<br><br>Zeros entered here will disable the limit, causing all news articles to be shown."
 msgstr "Entreu el límit aquí.<br><br>Si heu optat per limitar el nombre d’articles segons l’antiguitat no en mostrarà cap amb data anterior al nombre de dies fixats. Si heu optat per limitar el nombre, solament es veuran els més nous fins al nombre fixat, ordenats per antiguitat. La resta d’articles restaran ocults.<br><br>Si hi entreu zeros es desactiva el límit i es veuran tots."
 
 #: help_text.php:325
@@ -5717,7 +5709,7 @@ msgid "Events of close relatives"
 msgstr "Esdeveniments relatius a parents directes"
 
 #: help_text.php:1363
-msgid "Every individual in the database has a unique ID number on this site.  If you know the ID number for your own record, please enter it here.  If you don’t know your ID number or could not find it because of privacy settings, please provide enough information in the Comments field to help the site administrator identify who you are on this site so that he can set the ID for you."
+msgid "Every individual in the database has a unique ID number on this site.  If you know the ID number for your own record, please enter it here.  If you don’t know your ID number or could not find it because of privacy settings, please provide enough information in the comments field to help the site administrator identify who you are on this site so that he can set the ID for you."
 msgstr "Cada persona de la base de dades té un únic ID. Si sabeu quin és el vostre propi registre, entreu-lo aquí. Si el desconeixeu o no podeu trobar-lo degut a restriccions de privadesa, demaneu-ho a l’administrador al camp de Comentaris, a fi de que sigui ell qui li posi per compte vostre."
 
 #: help_text.php:1378
@@ -6311,7 +6303,7 @@ msgid "Find a media object"
 msgstr "Cerca un objecte multimèdia"
 
 #: find.php:86 includes/functions/functions_print.php:1041
-msgid "Find a note"
+msgid "Find a shared note"
 msgstr "Cerca una nota"
 
 #: find.php:80 includes/functions/functions_print.php:1015
@@ -6345,7 +6337,7 @@ msgid "Find next path"
 msgstr "Troba el següent vincle"
 
 #: help_text.php:1278
-msgid "Find next relationship path"
+msgid "Find the next relationship path"
 msgstr "Cerca la següent via de parentiu"
 
 #: library/WT/Stats.php:3879
@@ -6979,7 +6971,7 @@ msgid "He was cremated"
 msgstr "Fou incinerat a"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_1_ctrl.php:62
-msgid "Head of Household:"
+msgid "Head of household:"
 msgstr "Cap"
 
 #. I18N: gedcom tag HEAD
@@ -7065,7 +7057,7 @@ msgid "Here you can add a fact to the record being edited.<br><br>First choose a
 msgstr "Aquí us permet afegir un esdeveniment al registre que esteu editant.<br><br>Primer cal que escolliu l’esdeveniment a la llista desplegable i desprès polseu el botó <b>Afegeix</b>. Tots els esdeveniments possibles que podeu introduir son a la llista."
 
 #: help_text.php:1089
-msgid "Here you can add a source <b>Citation</b> to this record.<br><br>Just click the link, a window will open, and you can choose the source from the list (Find ID) or create a new source and then add the Citation.<br><br>Adding sources is an important part of genealogy because it allows other researchers to verify where you obtained your information."
+msgid "Here you can add a source <b>Citation</b> to this record.<br><br>Just click the link, a window will open, and you can choose the source from the list (Find ID) or create a new source and then add the citation.<br><br>Adding sources is an important part of genealogy because it allows other researchers to verify where you obtained your information."
 msgstr "Aquí podeu afegir una <b>Ressenya</b> de font a aquest registre.<br><br>Polsant l’enllaç s’obrirà una finestra i haureu de triar la font entre una llista (Cerqueu l’ID) o crear-ne una de nova i després afegir la ressenya.<br><br>L’addició de fonts és una part important en genealogia, ja que permet a altres investigadors verificar de on heu obtingut la vostra informació."
 
 #: help_text.php:1228
@@ -7077,7 +7069,7 @@ msgid "Here you can choose between two types of displaying places names in hiera
 msgstr "Aquí podeu escollir entre dues formes de mostrar els noms d’indret jeràrquicament. Si es posa a SÍ l’indret farà servir un nom abreujat o el nom del nivell. Si és a NO, el nom complet.<br><b>Exemples:<br>Nom complet:</b> Chicago, Illinois, USA<br><b>Abreujat:</b> Chicago<br><b>Complet:</b> Illinois, USA<br><b>Abreujat:</b> Illinois"
 
 #: help_text.php:1045
-msgid "Here you can choose text to appear on the login screen. You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the Help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.</div><br></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
+msgid "Here you can choose text to appear on the login screen. You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the Help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.</div><br></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
 msgstr "Aquí podeu escollir el text que apareix a la pantalla d’inici de sessió. Heu de determinar quin text predefinit és el més apropiat.<br><br>També podeu optar per introduir-ne un de personalitzat. Per a més informació consulteu l’ajuda associada al camp <b>Text de benvinguda</b><br><br>Els textos predefinits són:<ul><li><b>Text predefinit que estableix que tots els visitants poden demanar un compte d’usuari:</b><div class=\"list_value_wrap\"><center><b>Us donem la benvinguda a aquest lloc web de genealogia</b></center><br>L’accés és permès a qualsevol usuari enregistrat.<br><br>Si ja disposeu d’autorització, accediu per aquesta pàgina. Si no, podeu demanar-la polsant a l’enllaç apropiat de sota.<br><br>Un cop verificada la vostra comanda, l’administrador del lloc us activarà el registre. Rebreu un correu electrònic quan la hagi estat aprovada.</div><br></li><li><b> Text predefinit que estableix que l’administrador decidirà sobre cada petició de compte:</b><div class=\"list_value_wrap\"><center><b>Benvingut a aquest lloc web de genealogia</b></center><br>L’accés és permès solament a usuaris <u>autoritzats</u>.<br><br>Si ja disposeu d’autorització, accediu per aquesta pàgina. Si no, podeu demanar-la polsant a l’enllaç apropiat de sota.<br><br>Un cop verificada la vostra informació l’administrador pot autoritzar-vos o no.  Rebreu un correu electrònic quan la comanda hagi estat aprovada.</div><br></li><li><b>Text predefinit que estableix que solament poden demanar compte els membres de la família:</b><div class=\"list_value_wrap\"><center><b>Us donem la benvinguda a aquest lloc web de genealogia</b></center><br>L’accés és permès solament a <u>membres de la família</u>.<br><br>Si ja disposeu d’autorització podeu accedir per aquesta pàgina. Si no, podeu demanar-la polsant a l’enllaç apropiat d’aquí sota.<br><br>Un cop verificada la vostra informació l’administrador pot autoritzar-ho o no.  Rebreu un correu electrònic quan la comanda hagi estat aprovada."
 
 #: modules_v3/googlemap/help_text.php:54
@@ -7304,7 +7296,7 @@ msgid "If the number of times that a certain surname occurs is lower than the th
 msgstr "Si el nombre de vegades que un cognom es repeteix és inferior al prefixat, no sortirà a la llista. Però podeu afegir-n’hi manualment. Si hi entreu més d’un cognom, cal que els separeu entre si amb una coma. <b>Cal respectar les majúscules i minúscules.</b>"
 
 #: help_text.php:819
-msgid "If the option <b>Allow visitors to request account registration</b> is enabled this setting controls whether the admin must approve the registration.<br><br>Setting this to <b>Yes</b> will require that all new users first verify themselves and then be approved by an admin before they can login.  With this setting on <b>No</b>, the <b>User approved by Admin</b> checkbox will be checked automatically when users verify their account, thus allowing an immediate login afterwards without admin intervention."
+msgid "If the option <b>Allow visitors to request account registration</b> is enabled this setting controls whether the admin must approve the registration.<br><br>Setting this to <b>Yes</b> will require that all new users first verify themselves and then be approved by an admin before they can login.  With this setting on <b>No</b>, the “Approved by administrator” checkbox will be checked automatically when users verify their account, thus allowing an immediate login afterwards without admin intervention."
 msgstr "Si hi ha activada l’opció <b>Permet als visitants demanar enregistrar-se</b> aquest paràmetre controla  si l’administrador ha d’autoritzar el registre.<br><br>Posant-ho a <b>Sí</b> fa que qualsevol nou usuari, abans de disposar d’accés, primer s’hagi d’autoverificar i desprès ésser autoritzat per un administrador. Amb aquest paràmetre a <b>No</b>, la casella <b>Usuari autoritzat per l’administrador</b> queda marcada automàticament quan un usuari confirma o verifica el seu compte, permetent la connexió immediata sense la intervenció de l’administrador."
 
 #: help_text.php:281
@@ -7381,8 +7373,8 @@ msgid "If you try to exceed these limits, you may experience server time-outs an
 msgstr "Si intenteu superar aquests límits, és possible que us troveu amb excessos de temps al servidor i pàgines en blanc."
 
 #: help_text.php:471
-msgid "If you want to remove a surname from the Common Surname list without increasing the threshold value, you can do that by entering the surname here.  If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive.</b>  Surnames entered here will also be removed from the Top-10 list on the Home Page."
-msgstr "Si voleu treure cognoms de la llista del més habituals, sense que calgui per això augmentar el valor del tall per entra-els-hi, podeu fer-ho posant-los aquí. Si n’hi ha més d’un, heu de separar-los entre sí per comes. <b>Cal que respecteu les majúscules, minúscules i accents.</b> Els cognoms que entreu aquí també s’eliminaran de la llista Top-10 de la pàgina d’inici."
+msgid "If you want to remove a surname from the Common Surname list without increasing the threshold value, you can do that by entering the surname here.  If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive</b>.  Surnames entered here will also be removed from the “Top surnames” list on the “Home page”."
+msgstr "Si voleu treure cognoms de la llista del més habituals, sense que calgui per això augmentar el valor del tall per entra-els-hi, podeu fer-ho posant-los aquí. Si n’hi ha més d’un, heu de separar-los entre sí per comes. <b>Cal que respecteu les majúscules, minúscules i accents.</b> Els cognoms que entreu aquí també s’eliminaran de la llista “Top surnames” de la pàgina d’inici."
 
 #: setup.php:185
 msgid "If your server’s security policy permits it, you will be able to request increased memory or CPU time using the <b>webtrees</b> administration page.  Otherwise, you will need to contact your server’s administrator."
@@ -7435,7 +7427,7 @@ msgid "In some countries, privacy laws apply not only to living individuals, but
 msgstr "En alguns països, les lleis de privadesa són aplicables no només a les persones que viuen, sinó també a aquells que han mort recentment. Aquesta opció us permetrà ampliar les normes de privadesa de persones vives a les que han nascut o han mort dins d’un nombre determinat d’anys. Per desactivar aquesta funció, deixeu aquests valors buits."
 
 #: help_text.php:315
-msgid "In the Citation Details field you would enter the page number or other information that might help someone find the information in the source."
+msgid "In the citation details field you would enter the page number or other information that might help someone find the information in the source."
 msgstr "Al camp de detalls de la ressenya podeu entrar-hi el número de pàgina o altra informació que pugui ajudar a localitzar informació a la font."
 
 #: help_text.php:378
@@ -8084,7 +8076,7 @@ msgid "Leave password blank if you want to keep the current password."
 msgstr "Deixeu la contrasenya en blanc si voleu conservar l’actual."
 
 #: admin_trees_config.php:438
-msgid "Leave this field empty to use the title of the currently active database."
+msgid "Leave this field empty to use the name of the family tree."
 msgstr "Deixeu aquest camp en blanc si voleu que hi surti el títol de la base de dades activa."
 
 #: includes/functions/functions_print_lists.php:95
@@ -9665,7 +9657,7 @@ msgid "No GEDCOM files found.  You need to copy files to the <b>%s</b> directory
 msgstr "No s’han localitzat fitxers GEDCOM. Us cal copiar els fitxers al directori <b>%s</b> del servidor."
 
 #: modules_v3/gedcom_news/module.php:93
-msgid "No News articles have been submitted."
+msgid "No news articles have been submitted."
 msgstr "No s’ha entrat cap Notícia."
 
 #: modules_v3/googlemap/module.php:865
@@ -12458,7 +12450,7 @@ msgstr "Els més grans primer"
 
 #: modules_v3/todays_events/module.php:132
 #: modules_v3/upcoming_events/module.php:144
-msgid "Show only Births, Deaths, and Marriages?"
+msgid "Show only births, deaths, and marriages?"
 msgstr "Mostrar solament Naixements, Òbits i Casaments?"
 
 #: modules_v3/todays_events/module.php:125
@@ -12471,7 +12463,7 @@ msgid "Show only females."
 msgstr "Mostra solament dones."
 
 #: includes/functions/functions_print_lists.php:87
-msgid "Show only individuals of whom the gender is not known."
+msgid "Show only individuals for whom the gender is not known."
 msgstr "Mostra solament persones de les que es desconeix el sexe."
 
 #: modules_v3/random_media/module.php:260
@@ -13291,7 +13283,7 @@ msgid "The FAQ list is empty."
 msgstr "La llista de PMF és buida."
 
 #: help_text.php:1253
-msgid "The Favorites drop-down list shows the favorites that you have selected on your personalized My Page.  It also shows the favorites that the site administrator has selected for the currently active GEDCOM.  Clicking on one of the favorites entries will take you directly to the Individual Information page of that individual.<br><br>More help about adding Favorites is available in your personalized My Page."
+msgid "The Favorites drop-down list shows the favorites that you have selected on your “My page”.  It also shows the favorites that the site administrator has selected for the currently active GEDCOM.  Clicking on one of the favorites entries will take you directly to the Individual Information page of that individual.<br><br>More help about adding favorites is available in your “My page”."
 msgstr "És una finestra desplegable que us mostra els favorits que heu seleccionat a la vostra pàgina. També hi veureu els favorits del GEDCOM actiu, que l’administrador del lloc ha escollit. Polsant un dels favorits us menarà directament a la pàgina d’Informació Individual de la persona corresponent.<br><br>Disposeu d’ajuda per afegir favorits a la vostra pàgina."
 
 #: library/WT/Gedcom/Code/Temp.php:98
@@ -13328,7 +13320,7 @@ msgid "The changes to “%s” have been rejected."
 msgstr "S’han rebutjat els canvis a “%s”."
 
 #: modules_v3/clippings/module.php:142
-msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the <b>Download Now</b> link.  Follow the instructions and links.</li></ul>"
+msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the “Download” link.  Follow the instructions and links.</li></ul>"
 msgstr "El Cistell us permet prendre esqueixos (“retalls”) d’aquest arbre genealògic i unir-los en un sol fitxer per a baixar-lo i posteriorment importar-lo al vostre propi programa de genealogia. El fitxer descarregable es confecciona en format GEDCOM.<br><ul><li>Com prendre retalls?<br>És molt fàcil. Sempre que vegeu un nom que es pugui polsar (persona, família o font) podeu anar a la pàgina de detalls del nom. Allà podreu veure una opció d’<b>Posa-ho al cistell</b>. En polsar-la, disposareu de diverses opcions per descarregar.</li><li>Com descarregar-ho?<br>Un cop tingueu retalls al cistell, podeu descarregar-los només polsant a l’enllaç <b>Descarrega Ara</b>. Seguiu les instruccions i enllaços.</li></ul>"
 
 #: help_text.php:1314
@@ -13488,7 +13480,7 @@ msgid "The individual to contact about the genealogical data on this site."
 msgstr "La persona a contactar per a qüestions genealògiques relacionades amb aquest lloc."
 
 #: help_text.php:573
-msgid "The length of time after birth can be set on the Privacy configuration tab option “Age at which to assume an individual is dead”."
+msgid "The length of time after birth can be set on the “Privacy” tab option “Age at which to assume an individual is dead”."
 msgstr "La quantitat de temps després del naixement pot establir-se a la fitxa de Privadesa de la pàgina de configuració “Edat en que s’assumeix que una persona ha mort”."
 
 #. I18N: %s are names of records, such as sources, repositories or individuals
@@ -13587,7 +13579,7 @@ msgid "The username or password is incorrect."
 msgstr "El nom d’usuari o la contrasenya son incorrectes."
 
 #: help_text.php:689
-msgid "The value to place in the Description meta tag in the HTML page header.  Leave this field empty to use the title of the currently active database."
+msgid "The value to place in the “meta description” tag in the HTML page header.  Leave this field empty to use the name of the family tree."
 msgstr "El contingut a posar a la meta-etiqueta de descripció a la capçalera de la pàgina HTML. Deixant-ho en blanc agafa, per a aquest efecte, el títol de la base de dades activa."
 
 #: admin_pgv_to_wt.php:74
@@ -13629,15 +13621,15 @@ msgstr "Les presentacions es poden seleccionar en tres nivells: usuari, GEDCOM i
 
 #: modules_v3/extra_info/module.php:61
 #: modules_v3/personal_facts/module.php:122
-msgid "There are no Facts for this individual."
+msgid "There are no facts for this individual."
 msgstr "No hi ha Esdeveniments d’aquesta persona."
 
 #: modules_v3/notes/module.php:81
-msgid "There are no Notes for this individual."
+msgid "There are no notes for this individual."
 msgstr "No hi ha Notes d’aquesta persona."
 
 #: modules_v3/sources_tab/module.php:80
-msgid "There are no Source citations for this individual."
+msgid "There are no source citations for this individual."
 msgstr "No hi ha Fonts d’aquesta persona."
 
 #: modules_v3/media/module.php:73
@@ -13712,7 +13704,7 @@ msgid "This account has not been verified.  Please check your email for a verifi
 msgstr "Aquest compte no ha estat verificat. Si us plau, consulteu al vostre correu electrònic un missatge de verificació."
 
 #: modules_v3/charts/help_text.php:32
-msgid "This block allows a pedigree, descendancy, or hourglass chart to appear on My Page or the Home Page.  Because of space limitations, the charts should be placed only on the left side of the page.<br><br>When this block appears on the Home Page, the root individual and the type of chart to be displayed are determined by the administrator.  When this block appears on the user’s personalized My Page, these options are determined by the user.<br><br>The behavior of these charts is identical to their behavior when they are called up from the menus.  Click on the box of an individual to see more details about them."
+msgid "This block allows a pedigree, descendancy, or hourglass chart to appear on your “My page” or the “Home page”.  Because of space limitations, the charts should be placed only on the left side of the page.<br><br>When this block appears on the “Home page”, the root individual and the type of chart to be displayed are determined by the administrator.  When this block appears on the user’s “My page”, these options are determined by the user.<br><br>The behavior of these charts is identical to their behavior when they are called up from the menus.  Click on the box of an individual to see more details about them."
 msgstr "Aquest bloc permet que l’arbre genealògic, el diagrama de descendents o el de rellotge de sorra apareguin a La Meva Pàgina o a la d’inici. Per limitacions d’espai els gràfics sortiran solament a la banda esquerra de la pàgina.<br><br>A la Pàgina d’inici, el tipus de gràfic i la persona arrel els determina l’administrador. A la Meva Pàgina aquestes opcions les determina l’usuari.<br><br>El comportament d’aquests gràfics és idèntic al que tenen quan són cridats pels menús. Polseu la caixa d’una persona per veure més detalls sobre ella."
 
 #: modules_v3/review_changes/help_text.php:32
@@ -13847,7 +13839,7 @@ msgid "This input box lets you change that year of the calendar.  Type a year in
 msgstr "Aquest casella us permet canviar l’any del calendari. Entreu un any i polseu  <b>Entrar</b> per canviar el calendari a aquest any.<br><br><b>Característiques avançades</b> per a <b>D’un any</b><dl><dt><b>Més d’un any</b></dt><dd>Podeu cercar dates en un lapse d’anys.<br><br>Els lapses d’anys son <u>inclusius</u>. Fa que vagin de l’ 1 de gener del primer any fins al  31 de desembre del darrer any esmentat. Heus ací alguns exemples de lapses d’anys:<br><br><b>1992-5</b> per a tots els esdeveniments entre 1992 i 1995.<br><b>1972-89</b> per a tots els esdeveniments entre 1972 i 1989.<br><b>1610-759</b> per a tots els esdeveniments entre 1610 i 1759.<br><b>1880-1905</b> per a tots els esdeveniments entre 1880 i 1905.<br><b>880-1105</b> per a tots els esdeveniments entre 880 i 1105.<br><br>Per a veure tots els esdeveniments d’una dècada o centúria determinada, podeu fer servir <b>?</b> en lloc dels darrers dígits. Per exemple, <b>197?</b> per a tots els esdeveniments entre 1970 i 1979 o <b>16??</b> per a tos els esdeveniments entre 1600 i 1699.<br><br>Seleccionant un lapse d’anys el calendari canviarà a la vista anual.</dd></dl>"
 
 #: modules_v3/clippings/help_text.php:32
-msgid "This input box lets you enter an individual’s ID number so he can be added to the clippings cart.  Once added you’ll be offered options to link that individual’s relations to your clippings cart.<br><br>If you do not know an individual’s ID number, you can perform a search by name by pressing the individual icon next to the Add button."
+msgid "This input box lets you enter an individual’s ID number so he can be added to the clippings cart.  Once added you’ll be offered options to link that individual’s relations to your clippings cart.<br><br>If you do not know an individual’s ID number, you can perform a search by name by pressing the individual icon next to the “Add” button."
 msgstr "Aquesta casella us permet entrar números ID de persones o famílies per posar-les al cistell. Un cop fet, sortiran opcions per posar-hi més parents alhora.<br><br>Si desconeixeu el número d’ID, podeu fer una recerca pel nom, polsant la icona representativa d’una persona o família, al costat del botó d’afegir."
 
 #: help_text.php:407
@@ -13896,35 +13888,35 @@ msgid "This is the latest version of webtrees.  No upgrade is available."
 msgstr "Aquesta és l’última versió de webtrees. No hi ha actualitzacions disponibles."
 
 #: help_text.php:506
-msgid "This is the list of GEDCOM facts that your users can add to families.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique family facts</i> list."
+msgid "This is the list of GEDCOM facts that your users can add to families.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the “Unique family facts” list."
 msgstr "Aquesta és la llista dels esdeveniments GEDCOM que els vostres usuaris poden afegir a les famílies. Podeu modificar-la traient-ne o posant-ne i personalitzar-los si cal. Els noms que apareixen aquí no han de figurar a la llista  <i>Esdeveniments familiars únics</i>."
 
 #: help_text.php:593
-msgid "This is the list of GEDCOM facts that your users can add to individuals.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique Individual Facts</i> list."
+msgid "This is the list of GEDCOM facts that your users can add to individuals.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the “Unique individual facts” list."
 msgstr "Aquesta és la llista d’esdeveniments GEDCOM que els vostres usuaris poden afegir a les persones. Podeu modificar-la traient o afegint noms d’esdeveniments i fins i tot personalitzar-ne si cal. Els noms que surten aquí no han de figurar a la llista <i>Esdeveniments individuals únics</i>."
 
 #: help_text.php:799
-msgid "This is the list of GEDCOM facts that your users can add to repositories.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique Repository Facts</i> list."
+msgid "This is the list of GEDCOM facts that your users can add to repositories.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the “Unique repository facts” list."
 msgstr "Aquesta és la llista d’esdeveniments GEDCOM que els vostres usuaris poden afegir als arxius. Podeu modificar-la traient-ne o posant-ne i fins i tot personalitzant-ne, si cal. El noms que apareguin a aquesta llista no han de sortir a la  <i>Esdeveniments d’arxiu únics</i>."
 
 #: help_text.php:910
-msgid "This is the list of GEDCOM facts that your users can add to sources.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique Source Facts</i> list."
+msgid "This is the list of GEDCOM facts that your users can add to sources.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the “Unique source facts” list."
 msgstr "Aquesta és la llista d’esdeveniments GEDCOM que els usuaris poden afegir a les fonts. Podeu modificar-la afegint o traient noms d’esdeveniments, també personalitzar-ne, si cal. Els noms d’esdeveniments que surtin en aquesta llista no han de sortir a la <i>Esdeveniments de fonts únics</i>."
 
 #: help_text.php:516
-msgid "This is the list of GEDCOM facts that your users can only add <u>once</u> to families.  For example, if MARR is in this list, users will not be able to add more than one MARR record to a family.  Fact names that appear in this list must not also appear in the <i>Family Add Facts</i> list."
+msgid "This is the list of GEDCOM facts that your users can only add once to families.  For example, if MARR is in this list, users will not be able to add more than one MARR record to a family.  Fact names that appear in this list must not also appear in the “All family facts” list."
 msgstr "Aquesta és la llista d’esdeveniments  GEDCOM que els vostres usuaris poden afegir <u>un cop</u> a famílies. Per exemple, si MARR és a la llista, els usuaris no poden afegir més d’un registre MARR a la família. Els noms que apareixen en aquesta llista no han de figurar a la  <i>Addició d’esdeveniments familiars</i>."
 
 #: help_text.php:603
-msgid "This is the list of GEDCOM facts that your users can only add <u>once</u> to individuals.  For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual.  Fact names that appear in this list must not also appear in the <i>Individual Add Facts</i> list."
+msgid "This is the list of GEDCOM facts that your users can only add once to individuals.  For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual.  Fact names that appear in this list must not also appear in the “All individual facts” list."
 msgstr "Aquesta és la llista d’esdeveniments GEDCOM que els vostres usuaris poden afegir <u>un cop</u> a persones. Per exemple, si BIRT és en aquesta llista, els usuaris no poden afegir més d’un registre BIRT a una persona. Els noms d’esdeveniments que apareixen aquí no han de figurar a la llista <i>Addició d’esdeveniments individuals</i>."
 
 #: help_text.php:809
-msgid "This is the list of GEDCOM facts that your users can only add <u>once</u> to repositories.  For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository.  Fact names that appear in this list must not also appear in the <i>Repository Add Facts</i> list."
+msgid "This is the list of GEDCOM facts that your users can only add once to repositories.  For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository.  Fact names that appear in this list must not also appear in the “All repository facts” list."
 msgstr "Aquesta és la llista d’esdeveniments GEDCOM que els usuaris poden afegir <u>un sol cop</u> als arxius. Per exemple, si NAME és a la llista, els usuaris no podem afegir més d’un camp NAME al registre de l’arxiu. Els noms d’esdeveniments que apareguin en aquesta llista no han de sortir a la <i>Addició d’esdeveniments d’arxius</i>."
 
 #: help_text.php:920
-msgid "This is the list of GEDCOM facts that your users can only add <u>once</u> to sources.  For example, if TITL is in this list, users will not be able to add more than one TITL record to a source.  Fact names that appear in this list must not also appear in the <i>Source Add Facts</i> list."
+msgid "This is the list of GEDCOM facts that your users can only add once to sources.  For example, if TITL is in this list, users will not be able to add more than one TITL record to a source.  Fact names that appear in this list must not also appear in the “All source facts” list."
 msgstr "Aquesta és la llista d’esdeveniments GEDCOM que els vostres usuaris poden afegir <u>un sol cop</u> a les fonts. Per exemple, si TITL és a la llista, els usuaris no poden afegir més d’un camp TITL a la font. El noms d’esdeveniment d’aquesta llista no han de figurar a la <i>Addició d’esdeveniments de fonts</i>."
 
 #. I18N: Help text for the “Server name” site configuration setting
@@ -13933,7 +13925,7 @@ msgid "This is the name of the SMTP server. “localhost” means that the mail 
 msgstr "Aquest és el nom del servidor SMTP. “localhost” significa que el servei de correu s’està executant al mateix equip que el servidor web."
 
 #: help_text.php:476
-msgid "This is the number of times that a surname must occur before it shows up in the Common Surname list on the Home Page."
+msgid "This is the number of times that a surname must occur before it shows up in the Common Surname list on the “Home page”."
 msgstr "És el nombre de cops que un cognom ha de repetir-se per a incloure’l a la llista de cognoms més corrents de la pàgina d’inici."
 
 #: help_text.php:511
@@ -14152,7 +14144,7 @@ msgid "This option will show the names (but no other details) of private individ
 msgstr "Aquesta opció mostrarà els noms (però no altres detalls) dels individus. Les persones són privades si estan vives o si s’ha afegit una restricció de privacitat al seu expedient individual. Per amagar un nom específic, afegiu una restricció de privadesa al registre d’aquest nom."
 
 #: modules_v3/googlemap/help_text.php:47
-msgid "This options sets whether Latitude and Longitude are displayed on the pop-up window attached to map markers."
+msgid "This options sets whether latitude and longitude are displayed on the pop-up window attached to map markers."
 msgstr "Aquesta opció estableix si mostrar o no la Latitud i la Longitud a la finestra emergent adjunta als marcadors del mapa."
 
 #: help_text.php:1163
@@ -14224,7 +14216,7 @@ msgid "This section allows you to add a new Note to the fact that you are curren
 msgstr "Aquesta secció us permet afegir una nova nota a l’esdeveniment que esteu editant. Les notes són de text lliure i sortiran a la secció de detalls de la pàgina de l’esdeveniment."
 
 #: help_text.php:1157
-msgid "This section allows you to add a new source citation to the fact that you are currently editing.<br><br>In the Source field you enter the ID for the source.  Click the <b>Create a new source</b> link if you need to enter a new source.  In the Citation Details field you would enter the page number or other information that might help someone find the information in the source.  In the Text field you would enter the text transcription from the source."
+msgid "This section allows you to add a new source citation to the fact that you are currently editing.<br><br>In the Source field you enter the ID for the source.  Click the “Create a new source” link if you need to enter a new source.  In the citation details field you would enter the page number or other information that might help someone find the information in the source.  In the Text field you would enter the text transcription from the source."
 msgstr "Aquesta secció us permet afegir una nova ressenya de font a l’esdeveniment que esteu editant.<br><br>Al camp font heu d’entrar-hi l’ID de la font. Polseu l’enllaç <b>Creeu una nova font</b> si cal entrar una nova font. Al camp detalls de la ressenya podeu entrar-hi el número de pàgina o altra ressenya que permeti localitzar la informació a la font. El camp text és per a que hi entreu la transcripció del text de la font."
 
 #. I18N: http://en.wikipedia.org/wiki/Https
@@ -14242,7 +14234,7 @@ msgid "This setting is only used when you read or write GEDCOM files."
 msgstr "Aquesta funció només s’utilitza quan es llegeix o escriu fitxers GEDCOM."
 
 #: help_text.php:456
-msgid "This should be a comma or space separated list of facts, in addition to Birth and Death, that you want to appear in chart boxes such as the pedigree chart.  This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard.  For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
+msgid "This should be a comma or space separated list of facts, in addition to birth and death, that you want to appear in chart boxes such as the pedigree chart.  This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard.  For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
 msgstr "Aquesta és una llista d’esdeveniments separats per espais o una coma, a més a més del Naixement i la Defunció, que voleu que apareguin a les caixes de gràfics tals com l’arbre genealògic. Aquesta llista us obliga a utilitzar les etiquetes d’esdeveniments tal i com es defineixen a l’estàndard GEDCOM 5.5.1. Per exemple, si voleu que es mostri la professió a la caixa, heu d’afegir “OCCU” en aquest camp."
 
 #: admin_site_upgrade.php:41
@@ -14528,7 +14520,7 @@ msgstr[1] "%s cognoms més comuns"
 
 #: modules_v3/googlemap/module.php:4361 modules_v3/googlemap/module.php:4426
 #: placelist.php:111
-msgid "Top Level"
+msgid "Top level"
 msgstr "Nivell superior"
 
 #. I18N: i.e. most popular given name.
@@ -14852,7 +14844,7 @@ msgid "Unknown"
 msgstr "Desconegut"
 
 #: modules_v3/lightbox/module.php:174
-msgid "Unlink Media"
+msgid "Unlink media"
 msgstr "Multimèdia sense enllaç"
 
 #: library/WT/Gedcom/Tag.php:829
@@ -14864,11 +14856,11 @@ msgid "Unused files"
 msgstr "Fitxers no utilitzats"
 
 #: admin.php:157
-msgid "Unverified by Administrator"
+msgid "Not approved by an administrator"
 msgstr "No verificats per l’administrador"
 
 #: admin.php:153
-msgid "Unverified by User"
+msgid "Not verified by the user"
 msgstr "No verificats per l’usuari"
 
 #. I18N: The system is about to [...]; %s is a .ZIP file.
@@ -14971,8 +14963,8 @@ msgid "Use SMTP to send messages"
 msgstr "Fes servir SMTP per enviar missatges"
 
 #: modules_v3/batch_update/plugins/search_replace.php:92
-msgid "Use a &laquo;?&raquo; to match a single character, use &laquo;*&raquo; to match zero or more characters."
-msgstr "Empreu un &laquo;?&raquo; per a que coincideixi amb un sol caràcter, empreu &laquo;*&raquo; per a que coincideixi amb zero o més caràcters."
+msgid "Use a “?” to match a single character, use “*” to match zero or more characters."
+msgstr "Empreu un “?” per a que coincideixi amb un sol caràcter, empreu “*” per a que coincideixi amb zero o més caràcters."
 
 #. I18N: placeholder text for new-password field
 #: admin_users.php:385 login.php:423
@@ -15408,7 +15400,7 @@ msgid "When a user registers for an account, an email is sent to their email add
 msgstr "Quan un usuari es registra per a un compte, s’envia un correu electrònic a la seva adreça amb un enllaç de verificació. Quan polsa aquest enllaç, sabrem que l’adreça de correu electrònic és correcta, i el “correu electrònic verificat” queda seleccionat automàticament."
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:44
-msgid "When adding a Link, the ID field cannot be empty."
+msgid "When adding a link, the ID field cannot be empty."
 msgstr "En afegir un enllaç, el camp ID no pot estar buit."
 
 #: help_text.php:784
@@ -15557,7 +15549,7 @@ msgid "With sources"
 msgstr "Amb fonts"
 
 #: help_text.php:1184
-msgid "With this option, the <b>webtrees</b> internal messaging system will be used and no emails will be sent.  You will receive only <u>internal</u> messages from the other users.  When another site user sends you a message, that message will appear in the Message block on your personal My Page.  If you have removed this block from your My Page, you will not see any messages.  They will, however, show up as soon as you configure My Page to again have the Message block."
+msgid "With this option, the <b>webtrees</b> internal messaging system will be used and no emails will be sent.  You will receive only <u>internal</u> messages from the other users.  When another site user sends you a message, that message will appear in the Message block on your “My page”.  If you have removed this block from your “My page”, you will not see any messages.  They will, however, show up as soon as you configure your “My page” to again have the Message block."
 msgstr "Amb aquesta opció, s’utilitzarà el sistema <b>webtrees</b> de missatgeria interna i no s’enviaran missatges de correu electrònic.  Rebreu només missatges <u>interns</u> dels altres usuaris. Quan un altre usuari del lloc us envii un missatge, apareixerà al bloc de bústia de La Meva Pàgina. Si heu tret aquest bloc de La Meva Pàgina, no veureu cap missatge. Apareixen però tan aviat com configureu La Meva Pàgina per tenir-hi aquest bloc de nou."
 
 #: help_text.php:1196
@@ -15565,7 +15557,7 @@ msgid "With this option, you will not receive any messages.  Even the administra
 msgstr "Amb aquesta opció no es rebrà mai cap missatge. Fins i tot l’administrador no podrà posar-se en contacte."
 
 #: help_text.php:1192
-msgid "With this option, you will only receive email messages at the address you configured on your Account page.  The messaging system internal to <b>webtrees</b> will not be used at all, and there will never be any messages in the Message block on your personal My Page."
+msgid "With this option, you will only receive email messages at the address you configured on your Account page.  The messaging system internal to <b>webtrees</b> will not be used at all, and there will never be any messages in the Message block on your “My page”."
 msgstr "Amb aquesta opció, només rebreu missatges de correu electrònic a l’adreça que heu configurat a la pàgina del compte. No s’utilitzarà en absolut el sistema de missatgeria interna de <b>webtrees</b> i mai hi haurà cap missatge al bloc de correu de La Meva Pàgina."
 
 #: library/WT/Stats.php:302 library/WT/Stats.php:346
@@ -15640,7 +15632,7 @@ msgid "You can download a copy of the GEDCOM specification from %s."
 msgstr "Podeu descarregar una còpia de l’especificació GEDCOM des de %s."
 
 #: help_text.php:1243
-msgid "You can limit the number of News articles displayed, thereby reducing the height of the GEDCOM News block.<br><br>This option determines whether any limits should be applied or whether the limit should be according to the age of the article or according to the number of articles."
+msgid "You can limit the number of news articles displayed, thereby reducing the height of the GEDCOM News block.<br><br>This option determines whether any limits should be applied or whether the limit should be according to the age of the article or according to the number of articles."
 msgstr "És possible limitar el nombre de notícies a veure per reduir l’alçada del bloc.<br><br>Aquesta opció determina si hi haurà límits i si es posen d’acord amb l’antiguitat o el nombre de notícies."
 
 #: modules_v3/batch_update/plugins/married_names.php:37
@@ -15692,7 +15684,7 @@ msgid "You have no pending messages."
 msgstr "No hi ha correu pendent."
 
 #: modules_v3/user_blog/module.php:76
-msgid "You have not created any Journal items."
+msgid "You have not created any journal items."
 msgstr "A l’Agenda no hi ha cap entrada."
 
 #: admin_trees_manage.php:131
@@ -15700,8 +15692,8 @@ msgid "You have selected a GEDCOM with a different name.  Is this correct?"
 msgstr "Heu seleccionat un GEDCOM amb un nom diferent. És correcte?"
 
 #: addmedia.php:462
-msgid "You may enter a URL, beginning with &laquo;http://&raquo;."
-msgstr "També podeu entrar-hi un URL, començant amb &laquo;http://&raquo;."
+msgid "You may enter a URL, beginning with “http://”."
+msgstr "També podeu entrar-hi un URL, començant amb “http://”."
 
 #: modules_v3/faq/help_text.php:35
 msgid "You may use HTML to format the answer and to add links to other websites."
@@ -15790,8 +15782,8 @@ msgid "You should accept or reject all pending changes before upgrading."
 msgstr "Abans d’actualitzar, us cal acceptar o rebutjar tots els canvis pendents."
 
 #: help_text.php:1151
-msgid "You should avoid using the vertical line character &ldquo;|&rdquo; in your notes.  It is used internally by webtrees and may cause your note to display incorrectly."
-msgstr "A les vostres notes heu d’evitar l’ús del caràcter línea vertical &ldquo;|&rdquo;.  S’utilitza internament per webtrees i pot causar que la nota es mostri incorrectament."
+msgid "You should avoid using the vertical line character “|” in your notes.  It is used internally by webtrees and may cause your note to display incorrectly."
+msgstr "A les vostres notes heu d’evitar l’ús del caràcter línea vertical “|”.  S’utilitza internament per webtrees i pot causar que la nota es mostri incorrectament."
 
 #: admin_site_upgrade.php:200
 msgid "You should consult the module’s author to confirm compatibility with this version of webtrees."
@@ -19736,7 +19728,7 @@ msgstr "nat el"
 
 #: includes/authentication.php:111 includes/authentication.php:174
 #: message.php:40
-msgid "webtrees Message"
+msgid "webtrees message"
 msgstr "Missatge de webtrees"
 
 #: includes/functions/functions_edit.php:220
@@ -19844,7 +19836,7 @@ msgstr "…"
 #~ msgid "%s"
 #~ msgstr "%s"
 
-#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website."
+#~ msgid "<center><b>Welcome to this genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website."
 #~ msgstr "<center><b>Us donem la benvinguda a aquest lloc web de genealogia</b></center><br>L’accés és limitat a usuaris que disposin de compte i contrasenya per a aquest lloc."
 
 #~ msgid "Abbreviate chart labels"
@@ -19892,7 +19884,7 @@ msgstr "…"
 #~ msgid "Births, Deaths, Marriages"
 #~ msgstr "Natalicis, Òbits, Casaments"
 
-#~ msgid "Choose to display a standard header for your custom Welcome text.  When your users change language, this header will appear in the new language.<br><br>If set to <b>Yes</b>, the header will look like this:<div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website.<br></div>"
+#~ msgid "Choose to display a standard header for your custom Welcome text.  When your users change language, this header will appear in the new language.<br><br>If set to <b>Yes</b>, the header will look like this:<div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website.<br></div>"
 #~ msgstr "Seleccioneu-ho per mostrar una capçalera estàndard al vostre text de benvinguda. Quan els vostres usuaris canvien d’idioma, aquesta capçalera apareixerà en la nova llengua<br><br>Si s’estableix en <b>Sí</b>, la capçalera es veurà així: <div class=\"list_value_wrap\"><center><b>Us donem la benvinguda a aquest lloc web de genealogia</b></center><br>L’accés és permès a qualsevol usuari enregistrat.<br></div>"
 
 #~ msgid "Click here to continue"
