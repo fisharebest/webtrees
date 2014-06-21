@@ -2010,7 +2010,7 @@ msgstr ""
 #. I18N: Description of the “Batch update” module
 #: modules_v3/batch_update/module.php:34
 msgid "Apply automatic corrections to your genealogy data."
-msgstr ""
+msgstr "Primijeni automatsku korekciju na vaše genealoške podatke."
 
 #: admin_trees_download.php:111 help_text.php:1098
 #: modules_v3/clippings/module.php:194 modules_v3/clippings/module.php:202
@@ -2265,7 +2265,7 @@ msgstr "Autorova zadnja promjena"
 
 #: admin_users.php:200 admin_users.php:386 help_text.php:1451
 msgid "Automatically approve changes made by this user"
-msgstr ""
+msgstr "Automatski odobri promjene napravljene od ovog korisnika"
 
 #: admin_trees_config.php:314 help_text.php:558
 msgid "Automatically create globally unique IDs"
@@ -3337,7 +3337,7 @@ msgstr "Popis sudionika"
 
 #: library/WT/Gedcom/Tag.php:136 modules_v3/GEDFact_assistant/module.php:361
 msgid "Census date"
-msgstr ""
+msgstr "Datum popisa"
 
 #: library/WT/Gedcom/Tag.php:137
 msgid "Census place"
@@ -3345,7 +3345,7 @@ msgstr "Popis mjesta"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:493
 msgid "Census transcript"
-msgstr ""
+msgstr "Prijepis popisa"
 
 #: modules_v3/googlemap/module.php:1389
 msgid "Center map here"
@@ -3440,7 +3440,7 @@ msgstr "Grafički prikazi"
 
 #: modules_v3/clippings/clippings_ctrl.php:288
 msgid "Check access rights on this directory."
-msgstr ""
+msgstr "Provjeri prava pristupa na ovoj mapi."
 
 #: admin_site_upgrade.php:380
 msgid "Check file permissions…"
@@ -3672,7 +3672,7 @@ msgstr "Detalj citata"
 #. I18N: gedcom tag CITN
 #: library/WT/Gedcom/Tag.php:147
 msgid "Citizenship"
-msgstr ""
+msgstr "Državljanstvo"
 
 #. I18N: gedcom tag CITY
 #: library/WT/Gedcom/Tag.php:148 modules_v3/googlemap/module.php:370
@@ -4013,7 +4013,7 @@ msgstr "Brojać"
 
 #: modules_v3/googlemap/module.php:3947
 msgid "County"
-msgstr ""
+msgstr "Županija"
 
 #: admin_media.php:298
 msgid "Create"
@@ -4213,11 +4213,11 @@ msgstr "קובה"
 
 #: modules_v3/html/module.php:297
 msgid "Current"
-msgstr ""
+msgstr "Sadašnji"
 
 #: modules_v3/html/module.php:282
 msgid "Custom"
-msgstr ""
+msgstr "Prilagođeno"
 
 #: calendar.php:269 includes/functions/functions_print.php:966
 msgid "Custom event"
@@ -4276,7 +4276,7 @@ msgstr "Podatci"
 
 #: admin_site_config.php:70 help_text.php:578
 msgid "Data folder"
-msgstr ""
+msgstr "Mapa podataka"
 
 #: login.php:570
 msgid "Data was not correct, please try again"
@@ -4408,7 +4408,7 @@ msgstr "datum emigracije"
 #: library/WT/Gedcom/Tag.php:187
 #: modules_v3/missing_facts_report/report.xml:332
 msgid "Date of engagement"
-msgstr "Datum angažiranja"
+msgstr "Datum zaruka"
 
 #: library/WT/Gedcom/Tag.php:163
 msgid "Date of entry in original source"
@@ -4445,7 +4445,7 @@ msgstr "Datum objave braka"
 
 #: library/WT/Gedcom/Tag.php:252
 msgid "Date of naturalization"
-msgstr ""
+msgstr "Datum državljanstva"
 
 #: library/WT/Gedcom/Tag.php:266
 msgid "Date of ordination"
@@ -5145,7 +5145,7 @@ msgstr "Direktna linija predaka"
 #: modules_v3/missing_facts_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:6
 msgid "Direct line ancestors and their families"
-msgstr ""
+msgstr "Izravna linija predaka i njihovih obitelji"
 
 #: admin_site_upgrade.php:201
 msgid "Disable these modules"
@@ -5474,7 +5474,7 @@ msgstr ""
 
 #: admin_users.php:570
 msgid "Email"
-msgstr ""
+msgstr "E-pošta"
 
 #. I18N: gedcom tag EMAI
 #. I18N: gedcom tag EMAIL
@@ -5537,7 +5537,7 @@ msgstr "Poslodavac"
 #: modules_v3/clippings/help_text.php:36 modules_v3/clippings/module.php:254
 #: modules_v3/clippings/module.php:463
 msgid "Empty the clippings cart"
-msgstr ""
+msgstr "Isprazni isječke"
 
 #: admin_modules.php:121
 msgid "Enabled"
@@ -5568,7 +5568,7 @@ msgstr ""
 #. I18N: gedcom tag ENGA
 #: library/WT/Gedcom/Tag.php:186 modules_v3/missing_facts_report/report.xml:17
 msgid "Engagement"
-msgstr ""
+msgstr "Zaruke"
 
 #: library/WT/Stats.php:3873
 msgid "England"
@@ -5701,7 +5701,7 @@ msgstr ""
 
 #: admin_trees_config.php:787 help_text.php:843
 msgid "Estimated dates for birth and death"
-msgstr ""
+msgstr "Procijenjeni datumi rođenja i smrti"
 
 #: library/WT/Stats.php:3877
 msgid "Estonia"
@@ -5762,7 +5762,7 @@ msgstr ""
 
 #: admin_media.php:589
 msgid "Exclude subfolders"
-msgstr ""
+msgstr "Iskljući podmape"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: library/WT/Gedcom/Code/Stat.php:71
@@ -5934,11 +5934,11 @@ msgstr "Činjenica za novog pojedinca"
 
 #: admin_trees_config.php:1198
 msgid "Facts for repository records"
-msgstr ""
+msgstr "Činjenica za zapis spremišta"
 
 #: admin_trees_config.php:1169
 msgid "Facts for source records"
-msgstr ""
+msgstr "Činjenica za zapis izvora"
 
 #: library/WT/Stats.php:3884
 msgid "Faeroe Islands"
@@ -6293,12 +6293,12 @@ msgstr "Naziv datoteke"
 #: addmedia.php:151 addmedia.php:290 admin_media_upload.php:111
 #, php-format
 msgid "Filenames are not allowed to contain the character “%s”."
-msgstr ""
+msgstr "Ime datoteke ne smije sadržavati znakove “%s”."
 
 #: addmedia.php:156 addmedia.php:295 admin_media_upload.php:116
 #, php-format
 msgid "Filenames are not allowed to have the extension “%s”."
-msgstr ""
+msgstr "Ime datoteke ne smije imati nastavke “%s”."
 
 #: admin.php:121
 msgid "Files have been found from a previous version of webtrees.  Old files can sometimes be a security risk.  You should delete them."
@@ -6338,7 +6338,7 @@ msgstr "Pronađi mjesto"
 
 #: find.php:83 includes/functions/functions_print.php:1045
 msgid "Find a repository"
-msgstr ""
+msgstr "Pronađi spremište"
 
 #: admin_site_merge.php:267 admin_site_merge.php:288 find.php:89
 #: includes/functions/functions_print.php:1037
@@ -6387,7 +6387,7 @@ msgstr ""
 #: modules_v3/googlemap/module.php:450 modules_v3/googlemap/module.php:3898
 #: modules_v3/googlemap/module.php:3906
 msgid "Flag"
-msgstr ""
+msgstr "Zastavica"
 
 #: library/WT/Stats.php:3881
 msgid "Flanders"
@@ -6595,7 +6595,7 @@ msgstr ""
 #: admin_site_change.php:261 admin_site_logs.php:222
 #, php-format
 msgid "From %s to %s"
-msgstr ""
+msgstr "Od %s do %s"
 
 #: library/WT/Date/French.php:71
 msgctxt "GENITIVE"
@@ -6674,7 +6674,7 @@ msgstr "Spol"
 
 #: admin_trees_config.php:976 help_text.php:713
 msgid "Gender icon on charts"
-msgstr ""
+msgstr "Ikona spola na grafikonima"
 
 #: admin_trees_config.php:382 help_text.php:480
 msgid "Genealogy contact"
@@ -7185,7 +7185,7 @@ msgstr "Broj posjeta"
 
 #: admin_trees_config.php:1074 help_text.php:833
 msgid "Hit counters"
-msgstr ""
+msgstr "Brojaći pregleda"
 
 #. I18N: gedcom tag _HOL
 #: library/WT/Gedcom/Tag.php:718
@@ -7265,7 +7265,7 @@ msgstr "ID postavke"
 #. I18N: http://en.wikipedia.org/wiki/IP_address
 #: admin_site_access.php:296 admin_site_logs.php:232 admin_site_logs.php:259
 msgid "IP address"
-msgstr ""
+msgstr "IP adresa"
 
 #: library/WT/Stats.php:3917
 msgid "Iceland"
@@ -7485,11 +7485,11 @@ msgstr ""
 #. I18N: Label for check-box
 #: admin_media.php:586 medialist.php:105
 msgid "Include subfolders"
-msgstr ""
+msgstr "Uklući podmape"
 
 #: lifespan.php:151
 msgid "Include the individual’s immediate family?"
-msgstr ""
+msgstr "Ukljući za pojedinca užu obitelj?"
 
 #: library/WT/Stats.php:3911
 msgid "India"
@@ -7519,7 +7519,7 @@ msgstr "Osoba 2"
 
 #: admin_trees_config.php:335 help_text.php:539
 msgid "Individual ID prefix"
-msgstr ""
+msgstr "ID predznak pojedinca"
 
 #: statistics.php:572
 msgid "Individual distribution"
@@ -7536,7 +7536,7 @@ msgstr "Lista pojedinaca"
 
 #: admin_trees_config.php:843 admin_trees_config.php:1008
 msgid "Individual pages"
-msgstr ""
+msgstr "Stranice pojedinca"
 
 #: admin_users.php:231 admin_users.php:433 edituser.php:137 help_text.php:1201
 #: help_text.php:1362 help_text.php:1462
@@ -7599,7 +7599,7 @@ msgstr "Informator"
 
 #: login.php:329
 msgid "Information about the request is shown under the link below."
-msgstr ""
+msgstr "Informacije o zahtjevu se mogu vidjeti na linku ispod."
 
 #: admin_pgv_to_wt.php:135
 msgid "Installation directory"
@@ -7878,11 +7878,11 @@ msgstr "קזחסטן"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:103
 msgid "Keep"
-msgstr ""
+msgstr "Zadrži"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:124
 msgid "Keep Link in list"
-msgstr ""
+msgstr "Zadrži vezu u listi"
 
 #: library/WT/Stats.php:3924
 msgid "Kenya"
@@ -8130,12 +8130,12 @@ msgstr "לבנון"
 #: modules_v3/relative_ext_report/report.xml:8
 msgctxt "paper size"
 msgid "Legal"
-msgstr ""
+msgstr "Pravni"
 
 #. I18N: gedcom tag LEGA
 #: library/WT/Gedcom/Tag.php:225
 msgid "Legatee"
-msgstr ""
+msgstr "Nasljednik"
 
 #: statistics.php:242
 msgid "Length of marriage"
@@ -8843,7 +8843,7 @@ msgstr "Mediji"
 
 #: admin_trees_config.php:357 help_text.php:666
 msgid "Media ID prefix"
-msgstr ""
+msgstr "ID predznak medija"
 
 #: medialist.php:173
 msgid "Media Objects found"
@@ -8870,7 +8870,7 @@ msgstr ""
 #: addmedia.php:343
 #, php-format
 msgid "Media file %s does not exist."
-msgstr ""
+msgstr "Medijska datoteka %s ne postoji."
 
 #: addmedia.php:446 admin_media_upload.php:183
 msgid "Media file to upload"
@@ -9122,17 +9122,17 @@ msgstr "Uredi promjene na redu"
 #. I18N: Listbox entry; name of a role
 #: admin_users.php:43 help_text.php:1389
 msgid "Moderator"
-msgstr ""
+msgstr "Moderator"
 
 #: admin_modules.php:122
 msgid "Module"
-msgstr ""
+msgstr "Modul"
 
 #: admin_module_blocks.php:28 admin_module_menus.php:28
 #: admin_module_reports.php:28 admin_module_sidebar.php:28
 #: admin_module_tabs.php:28 admin_modules.php:28
 msgid "Module administration"
-msgstr ""
+msgstr "Administracija modula"
 
 #: themes/_administration/header.php:143
 msgid "Modules"
@@ -9180,7 +9180,7 @@ msgstr "Mjesec rođenja"
 
 #: library/WT/Stats.php:2774 statistics.php:544 statisticsplot.php:902
 msgid "Month of birth of first child in a relation"
-msgstr ""
+msgstr "Mjesec rođenja prvog djeteta u vezi"
 
 #: statistics.php:532 statisticsplot.php:896
 msgid "Month of death"
@@ -9301,12 +9301,12 @@ msgstr "Dob majke"
 #: library/WT/Individual.php:752
 #, php-format
 msgid "Mother’s family with %s"
-msgstr ""
+msgstr "Majčina obitelj sa %s"
 
 #. I18N: A step-family.
 #: library/WT/Individual.php:754
 msgid "Mother’s family with an unknown individual"
-msgstr ""
+msgstr "Majčina obitelj sa nepoznatom osobom"
 
 #: modules_v3/faq/help_text.php:59
 msgid "Move FAQ item down"
@@ -9477,7 +9477,7 @@ msgstr ""
 #. I18N: gedcom tag _NAMS
 #: library/WT/Gedcom/Tag.php:783
 msgid "Namesake"
-msgstr ""
+msgstr "Imenjak"
 
 #: library/WT/Stats.php:3965
 msgid "Namibia"
@@ -9503,7 +9503,7 @@ msgstr "Narodnost"
 #. I18N: gedcom tag NATU
 #: library/WT/Gedcom/Tag.php:251
 msgid "Naturalization"
-msgstr "Naturalizacija"
+msgstr "Državljanstvo"
 
 #: library/WT/Stats.php:3976
 msgid "Nauru"
@@ -9583,13 +9583,13 @@ msgstr "Novi podaci"
 #: login.php:319
 #, php-format
 msgid "New registration at %s"
-msgstr ""
+msgstr "Nova registracija na %s"
 
 #. I18N: %s is a server name/URL
 #: login.php:516
 #, php-format
 msgid "New user at %s"
-msgstr ""
+msgstr "Novi korisnik na %s"
 
 #: library/WT/Gedcom/Code/Temp.php:134
 msgid "Newport Beach, California"
@@ -9688,7 +9688,7 @@ msgstr "Nema članaka u novostima."
 
 #: modules_v3/googlemap/module.php:865
 msgid "No ancestors in the database."
-msgstr ""
+msgstr "Nema predaka u bazi podataka."
 
 #: admin_trees_config.php:267 admin_trees_config.php:287
 msgid "No calendar conversion"
@@ -9727,9 +9727,9 @@ msgstr "Nije pronađena greška"
 #, php-format
 msgid "No events exist for the next %s day."
 msgid_plural "No events exist for the next %s days."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Nema događaja za slijedeći %s dan."
+msgstr[1] "Nema događaja za slijedećih %s dana."
+msgstr[2] "Nema događaja za slijedećih %s dana."
 
 #: includes/functions/functions_print_lists.php:1774
 #: includes/functions/functions_print_lists.php:1881
@@ -10480,18 +10480,18 @@ msgstr "Karta pedigrea"
 #: modules_v3/googlemap/module.php:694
 #, php-format
 msgid "Pedigree map of %s"
-msgstr ""
+msgstr "Karta pedigrea od %s"
 
 #: modules_v3/charts/module.php:96
 #, php-format
 msgid "Pedigree of %s"
-msgstr ""
+msgstr "Pedigre od %s"
 
 #. I18N: %s is an individual’s name
 #: library/WT/Controller/Pedigree.php:84
 #, php-format
 msgid "Pedigree tree of %s"
-msgstr ""
+msgstr "Stablo pedigrea od %s"
 
 #: modules_v3/review_changes/help_text.php:31
 msgid "Pending Changes block"
@@ -10744,7 +10744,7 @@ msgstr "Mjesto objave vjenčanja"
 
 #: library/WT/Gedcom/Tag.php:253
 msgid "Place of naturalization"
-msgstr ""
+msgstr "Mjesto državljanstva"
 
 #: library/WT/Gedcom/Tag.php:267
 msgid "Place of ordination"
@@ -10905,7 +10905,7 @@ msgstr ""
 
 #: modules_v3/googlemap/module.php:3837
 msgid "Precision"
-msgstr ""
+msgstr "Točnost"
 
 #: modules_v3/googlemap/help_text.php:36 modules_v3/googlemap/module.php:348
 msgid "Precision of the latitude and longitude"
@@ -10929,7 +10929,7 @@ msgstr "Preferirana metoda komunikacije"
 
 #: modules_v3/googlemap/module.php:410
 msgid "Prefixes"
-msgstr ""
+msgstr "Predznaci"
 
 #: modules_v3/recent_changes/module.php:144
 #: modules_v3/todays_events/module.php:139
@@ -11470,7 +11470,7 @@ msgstr "Mjesto čuvanja"
 
 #: admin_trees_config.php:354 help_text.php:813
 msgid "Repository ID prefix"
-msgstr ""
+msgstr "ID predznak spremišta"
 
 #: find.php:249
 msgid "Repository contains:"
