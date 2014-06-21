@@ -460,7 +460,7 @@ if ($gedfile == 'FILE') {
 			"1 $gedfile",
 			'',
 			WT_I18N::translate('File name on server'),
-			WT_I18N::translate('Do not change to keep original file name.') . '<br>' .WT_I18N::translate('You may enter a URL, beginning with &laquo;http://&raquo;.')
+			WT_I18N::translate('Do not change to keep original file name.') . '<br>' .WT_I18N::translate('You may enter a URL, beginning with “http://”.')
 		);
 	}
 	$fileName = '';

@@ -196,7 +196,7 @@ $people = count($controller->people);
 							</td>
 						</tr>
 					</table>
-					<b><?php echo WT_I18N::plural('%d Individual', '%d Individuals', $people, $people); ?></b>
+					<b><?php echo WT_I18N::plural('%s individual', '%s individuals', $people, $people); ?></b>
 				</form>
 			</td>
 		</tr>

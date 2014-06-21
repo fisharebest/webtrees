@@ -170,8 +170,8 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Tab {
 
 						$menu->addSubMenu($submenu);
 					}
-					// Unlink Media
-					$submenu = new WT_Menu(WT_I18N::translate('Unlink Media'));
+					// Unlink media
+					$submenu = new WT_Menu(WT_I18N::translate('Unlink media'));
 					$submenu->addOnclick("return unlink_media('" . WT_I18N::translate('Are you sure you want to remove links to this media object?') . "', '" . $controller->record->getXref() . "', '" . $media->getXref() . "');");
 					$submenu->addClass("submenuitem");
 					$menu->addSubMenu($submenu);

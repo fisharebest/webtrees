@@ -83,7 +83,7 @@ case "repo":
 	$controller->setPageTitle(WT_I18N::translate('Find a repository'));
 	break;
 case "note":
-	$controller->setPageTitle(WT_I18N::translate('Find a note'));
+	$controller->setPageTitle(WT_I18N::translate('Find a shared note'));
 	break;
 case "source":
 	$controller->setPageTitle(WT_I18N::translate('Find a source'));

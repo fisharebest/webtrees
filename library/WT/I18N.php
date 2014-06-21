@@ -198,7 +198,12 @@ class WT_I18N {
 		self::$collation=WT_I18N::translate('utf8_unicode_ci');
 
 		// Non-latin numbers may require non-latin digits
-		self::$numbering_system = Zend_Locale_Data::getContent($locale, 'defaultnumberingsystem');
+		try {
+			self::$numbering_system = Zend_Locale_Data::getContent($locale, 'defaultnumberingsystem');
+		} catch (Zend_Locale_Exception $ex) {
+			// The latest CLDR database omits some languges such as Tatar (tt)
+			self::$numbering_system = 'latin';
+		}
 
 		return $locale;
 	}

@@ -1491,7 +1491,7 @@ case 'editnoteaction':
 ////////////////////////////////////////////////////////////////////////////////
 case 'addnewrepository':
 	$controller
-		->setPageTitle(WT_I18N::translate('Create repository'))
+		->setPageTitle(WT_I18N::translate('Create a new repository'))
 		->pageHeader();
 
 	echo '<div id="edit_interface-page">';
@@ -1556,7 +1556,7 @@ case 'addrepoaction':
 	}
 
 	$controller
-		->setPageTitle(WT_I18N::translate('Create repository'))
+		->setPageTitle(WT_I18N::translate('Create a new repository'))
 		->pageHeader();
 
 	$gedrec = "0 @XREF@ REPO";

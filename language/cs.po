@@ -26,7 +26,7 @@ msgstr ""
 #: modules_v3/ahnentafel_report/report.xml:333
 #: modules_v3/ahnentafel_report/report.xml:364
 msgid " but the details are unknown"
-msgstr " , ale podrobnosti nejsou známy"
+msgstr ", ale podrobnosti nejsou známy"
 
 #: modules_v3/ahnentafel_report/report.xml:156
 #: modules_v3/ahnentafel_report/report.xml:184
@@ -56,8 +56,8 @@ msgstr " za časové období"
 #: includes/functions/functions_print_facts.php:192
 #: includes/functions/functions_print_facts.php:197
 #, php-format
-msgid "#%d"
-msgstr "%d."
+msgid "#%s"
+msgstr "%s."
 
 #: modules_v3/googlemap/module.php:851
 #, php-format
@@ -80,22 +80,22 @@ msgstr[2] "%1$d osobám chybí místo narození, souřadnice: %2$s."
 #: includes/functions/functions.php:685
 #, php-format
 msgctxt "FEMALE"
-msgid "%1$d x %2$s"
-msgstr "%1$d x %2$s"
+msgid "%1$d × %2$s"
+msgstr "%1$d × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:674
 #, php-format
 msgctxt "MALE"
-msgid "%1$d x %2$s"
-msgstr "%1$d x %2$s"
+msgid "%1$d × %2$s"
+msgstr "%1$d × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:696
 #, php-format
 msgctxt "MALE/FEMALE"
-msgid "%1$d x %2$s"
-msgstr "%1$d x %2$s"
+msgid "%1$d × %2$s"
+msgstr "%1$d × %2$s"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$d>=4
 #: includes/functions/functions.php:1702
@@ -187,22 +187,13 @@ msgstr "%2$s od %1$s"
 msgid "%H:%i:%s"
 msgstr "%G:%i:%s"
 
-#. I18N: This is a title, so needs suitable capitalisation
-#: includes/functions/functions_charts.php:267
-#, php-format
-msgid "%d Child"
-msgid_plural "%d Children"
-msgstr[0] "%d dítě"
-msgstr[1] "%d děti"
-msgstr[2] "%d děti"
-
 #: lifespan.php:198
 #, php-format
-msgid "%d Individual"
-msgid_plural "%d Individuals"
-msgstr[0] "%d osoba"
-msgstr[1] "%d osoby"
-msgstr[2] "%d osob"
+msgid "%s individual"
+msgid_plural "%s individuals"
+msgstr[0] "%s osoba"
+msgstr[1] "%s osoby"
+msgstr[2] "%s osob"
 
 #: includes/functions/functions_print.php:306 library/WT/Stats.php:3415
 #, php-format
@@ -231,20 +222,20 @@ msgstr[2] "%d měsíců"
 #: includes/functions/functions.php:637
 #, php-format
 msgctxt "FEMALE"
-msgid "%d x cousin"
+msgid "%d × cousin"
 msgstr "sestřenice (z %d. kolena)"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: includes/functions/functions.php:618
 #, php-format
 msgctxt "MALE"
-msgid "%d x cousin"
+msgid "%d × cousin"
 msgstr "bratranec (z %d. kolena)"
 
 #: includes/functions/functions.php:656
 #, php-format
 msgctxt "MALE/FEMALE"
-msgid "%d x cousin"
+msgid "%d × cousin"
 msgstr "bratranec/sestřenice (z %d. kolena)"
 
 #: modules_v3/relatives/module.php:60
@@ -468,11 +459,11 @@ msgstr "&lt;vyberte&gt;"
 #: search_advanced.php:112 search_advanced.php:116 search_advanced.php:120
 #: search_advanced.php:168 search_advanced.php:169 search_advanced.php:170
 #, php-format
-msgid "&plusmn;%d year"
-msgid_plural "&plusmn;%d years"
-msgstr[0] "&plusmn;%d rok"
-msgstr[1] "&plusmn;%d roky"
-msgstr[2] "&plusmn;%d let"
+msgid "±%d year"
+msgid_plural "±%d years"
+msgstr[0] "±%d rok"
+msgstr[1] "±%d roky"
+msgstr[2] "±%d let"
 
 #. I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan 1900 (aged 43 years)
 #: library/WT/I18N.php:395 library/WT/I18N.php:399
@@ -628,7 +619,7 @@ msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<b
 msgstr "V tomto kontextu je <b>GUID</b> zkratka pro  «Globally Unique ID» (globální jedinečný identifikátor).<br><br>GUID pomáhají určit každou osobu, takže centrální organizace jako Rodinné historické centrum církve LDS v Salt Lake City nebo kompatibilní programy běžící na vašem serveru můžou určit, zda manipulují se stejnou osobou nezávisle na tom, kde se ten určitý GEDCOM vzal. Cíl Rodinného historického centra je mít centrální úložiště rodokmenových dat a mít je vystavené skrz webové služby. Ty umožní jakémukoliv programu přistupovat k datům a jejich aktualizaci.<br><br>Pokud nezamýšlíte sdílet váš GEDCOM komukoliv jinému, není nutné vytvářet tyto GUID, nicméně pokud tak budete dělat, nebude v tom žádný problém kromě zvýšení velikosti vašeho GEDCOMu."
 
 #: help_text.php:1318
-msgid "<b>Important Note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
+msgid "<b>Important note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
 msgstr "<b>Důležitá poznámka:</b> Průvodce pro přechod neumí pomoct s přesunem mediálních položek. Musíte nastavit a přesunout nebo zkopírovat vaši mediální konfiguraci a objekty zvlášť potom, co doběhne tento průvodce."
 
 #: help_text.php:1007
@@ -636,7 +627,7 @@ msgid "<b>No</b> means that authenticated users can see the details of all livin
 msgstr "Hodnota 'Ne' znamená, že přihlášení uživatelé uvidí data všech žijících osob. Hodnota 'Ano' znamená, že uživatelé si budou moci prohlížet soukromá data pouze svých příbuzných.<br><br>Tato volba nastavuje výchozí stav pro všechny uživatele, kteří mají přístup k rodokmenu. Správce může tuto volbu přenastavit pro každého jednotlivce úpravou uživatelského účtu."
 
 #: message.php:118
-msgid "<b>Please Note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogical data, please include the sources where you obtained the data."
+msgid "<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogical data, please include the sources where you obtained the data."
 msgstr "<b>Poznámka:</b> Soukromá data žijících osob budou poskytnuta příbuzným a blízkým přátelům. Budete požádáni o ověření vašeho vztahu než vám budou doručena soukromá data. Někdy jsou data soukromá i u nežijících osob. Pokud je to tento případ, je to, protože není dostatek údajů o tom, zda daná osoba žije nebo ne, nebo nemáme dostatek informací o dané osobě.<br><br>Než se začnete ptát, prosím ověřte zkontrolováním dat, míst a příbuzných, že vyžadujete informace o správně osobě. Pokud potvrzujete změny v rodokmenových datech, poskytněte prameny, ze kterých jste vycházeli."
 
 #: help_text.php:1063
@@ -668,15 +659,15 @@ msgid "<b>webtrees</b> reply address"
 msgstr "Adresa pro odpovědi"
 
 #: login.php:150
-msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved."
+msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved."
 msgstr "<center><b>VÍTEJTE NA TĚCHTO RODOPISNÝCH STRÁNKÁCH</b></center><br><br>Přístup na tyto stránky je umožněn pouze <b>přihlášeným</b> uživatelům.<br>Jestliže zde již máte svůj účet, můžete se na této stránce přihlásit.<br><br>Pokud ještě účet nemáte, můžete o něj požádat kliknutím na příslušný odkaz na této stránce.<br>Po ověření zadaných údajů administrátor vaši žádost buď přijme, nebo odmítne.<br>Oznámení o přijetí své žádosti obdržíte e-mailem."
 
 #: login.php:153
-msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved."
+msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved."
 msgstr "<center><b>VÍTEJTE NA TĚCHTO RODOPISNÝCH STRÁNKÁCH</b></center><br><br>Přístup na tyto stránky je povolen pouze <b>členům rodiny</b>.<br>Jestliže zde již máte svůj účet, můžete se na této stránce přihlásit.<br><br>Pokud ještě účet nemáte, můžete o něj požádat kliknutím na příslušný odkaz na této stránce.<br>Po ověření zadaných údajů administrátor vaši žádost buď přijme, nebo odmítne.<br>Oznámení o přijetí své žádosti obdržíte e-mailem."
 
 #: login.php:147
-msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved."
+msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved."
 msgstr "<center><b>VÍTEJTE NA TĚCHTO RODOPISNÝCH STRÁNKÁCH</b></center><br><br>Přístup na tyto stránky je povolen všem návštěvníkům, kteří zde mají zřízený účet.<br>Jestliže zde již máte svůj účet, můžete se na této stránce přihlásit.<br><br>Pokud ještě účet nemáte, můžete o něj požádat kliknutím na příslušný odkaz na této stránce.<br>Po ověření zadaných údajů vám administrátor účet zpřístupní.<br>Oznámení o zpřístupnění obdržíte e-mailem."
 
 #. I18N: default option in list of themes
@@ -750,7 +741,7 @@ msgstr "Seznam úkolů a činností, které jsou spojeny s rodokmenem."
 msgid "A list of the Hebrew death anniversaries that will occur in the near future."
 msgstr "Seznam židovských výročí úmrtí, která nastanou v blízké budoucnosti."
 
-#. I18N: Description of the “On This Day” module
+#. I18N: Description of the “On this day” module
 #: modules_v3/todays_events/module.php:37
 msgid "A list of the anniversaries that occur today."
 msgstr "Seznam výročí, která připadla na dnešek"
@@ -1164,23 +1155,23 @@ msgstr "Přidat nové geografické místo"
 
 #: modules_v3/clippings/module.php:472
 #, php-format
-msgid "Add %s to cart"
+msgid "Add %s to the clippings cart"
 msgstr "Přidat %s do schránky"
 
 #: modules_v3/faq/module.php:145 modules_v3/faq/module.php:359
-msgid "Add FAQ item"
+msgid "Add an FAQ item"
 msgstr "Přidat otázku do FAQ"
 
 #: modules_v3/clippings/module.php:150 modules_v3/clippings/module.php:233
-msgid "Add Individual By ID"
+msgid "Add individual by ID"
 msgstr "Přidat osobu podle ID"
 
 #: search_advanced.php:290
-msgid "Add More Fields"
+msgid "Add more fields"
 msgstr "Přidat více políček"
 
 #: modules_v3/gedcom_news/module.php:125
-msgid "Add a News article"
+msgid "Add a news article"
 msgstr "Přidat nový článek"
 
 #: edit_interface.php:563 modules_v3/relatives/module.php:373
@@ -1206,7 +1197,7 @@ msgid "Add a husband using an existing individual"
 msgstr "Přidat manžela použitím existující osoby"
 
 #: modules_v3/user_blog/module.php:95
-msgid "Add a new Journal entry"
+msgid "Add a new journal entry"
 msgstr "Přidat do deníku nový záznam"
 
 #: help_text.php:1133 includes/functions/functions_edit.php:834
@@ -1387,7 +1378,7 @@ msgstr "Na místa, kde byly poznámky, vložit mezery"
 
 #: modules_v3/stories/module.php:127 modules_v3/stories/module.php:214
 #: modules_v3/stories/module.php:337
-msgid "Add story"
+msgid "Add a story"
 msgstr "Přidat příběh"
 
 #: admin_trees_download.php:129 modules_v3/clippings/module.php:212
@@ -1454,11 +1445,11 @@ msgid "Add your own text and graphics."
 msgstr "Přidat vlastní text a grafiku."
 
 #: modules_v3/GEDFact_assistant/_CENS/census_1_ctrl.php:91
-msgid "Add/Insert Blank Row"
+msgid "Add/insert a blank row"
 msgstr "Přidat/vložit prázdný řádek"
 
 #: editnews.php:31 editnews.php:49
-msgid "Add/edit journal/news entry"
+msgid "Add/edit a journal/news entry"
 msgstr "Přidat/upravit deník/novinky"
 
 #: admin_site_merge.php:196 admin_site_merge.php:202
@@ -1508,7 +1499,7 @@ msgid "Administrators"
 msgstr "Správci"
 
 #: help_text.php:1284
-msgid "Administrators sometimes need to clean up and correct the data submitted by users.  For example, they might need to correct the PLAC location to include the country.  When Administrators make such corrections, information about the original change is normally replaced.  This may not be desirable.<br><br>When this option is selected, <b>webtrees</b> will retain the original Change information instead of replacing it with that of the current session.  With this option selected, Administrators also have the ability to modify or delete the information associated with the original CHAN tag."
+msgid "Administrators sometimes need to clean up and correct the data submitted by users.  For example, they might need to correct the PLAC location to include the country.  When administrators make such corrections, information about the original change is normally replaced.  This may not be desirable.<br><br>When this option is selected, <b>webtrees</b> will retain the original change information instead of replacing it with that of the current session.  With this option selected, administrators also have the ability to modify or delete the information associated with the original CHAN tag."
 msgstr "Správci někdy potřebujou pročistit a opravit data, která poskytli uživatelé. Například v místě PLAC přidat zemi. Pokud správce dělá takové opravy, informace o původní změně se normálně přepíše. Toto nemusí být žádoucí.<br><br>Pokud je vybrána tato volba, <b>webtrees</b> ponechá původní informaci o změně místo jejího přepisu. S touto volbou správce také má možnost upravovat nebo mazat informaci spojenou s původním tagem CHAN."
 
 #: library/WT/Gedcom/Code/Pedi.php:43
@@ -1687,7 +1678,7 @@ msgid "After creating the family tree, you will be able to upload or import data
 msgstr "Po vytvoření rodokmenu budete moci nahrávat nebo importovat data ze souboru GEDCOM."
 
 #: login.php:242
-msgid "After you have logged in, select the “My Account” link under the “My Page” menu and fill in the password fields to change your password."
+msgid "After you have logged in, select the “My account” link under the “My page” menu and fill in the password fields to change your password."
 msgstr "Poté, co se přihlásíte, vyberte odkaz «Můj účet» v menu «Moje stránka» a změňte si heslo."
 
 #. I18N: gedcom tag AGE
@@ -2079,11 +2070,11 @@ msgid "Are you sure you want to delete this FAQ entry?"
 msgstr "Opravdu chcete smazat tento záznam FAQ?"
 
 #: modules_v3/user_blog/module.php:91
-msgid "Are you sure you want to delete this Journal entry?"
+msgid "Are you sure you want to delete this journal entry?"
 msgstr "Opravdu chcete vymazat tuto položku z deníku?"
 
 #: modules_v3/gedcom_news/module.php:119
-msgid "Are you sure you want to delete this News entry?"
+msgid "Are you sure you want to delete this news article?"
 msgstr "Opravdu chcete z Novinek vymazat tuto položku?"
 
 #: includes/functions/functions_print_facts.php:181
@@ -2120,7 +2111,7 @@ msgid "Are you sure you want to remove links to this media object?"
 msgstr ""
 
 #: modules_v3/gedcom_favorites/module.php:123
-msgid "Are you sure you want to remove this item from your list of Favorites?"
+msgid "Are you sure you want to remove this item from your list of favorites?"
 msgstr "Jste si jisti, že chcete odstranit tuto položku z vašich oblíbených?"
 
 #: edit_changes.php:231
@@ -2190,7 +2181,7 @@ msgid "Asuncion, Paraguay"
 msgstr "Asuncion, Paraguay"
 
 #: library/WT/Stats.php:4003
-msgid "At Sea"
+msgid "At sea"
 msgstr "U moře"
 
 #: library/WT/Gedcom/Code/Temp.php:65
@@ -2739,7 +2730,7 @@ msgid "Birth"
 msgstr "Narozen"
 
 #: modules_v3/birth_report/report.xml:6
-msgid "Birth Place contains"
+msgid "Birthplace contains"
 msgstr "Místo narození obsahuje"
 
 #: library/WT/Stats.php:978 statistics.php:576
@@ -3740,7 +3731,7 @@ msgid "Click here for PhpGedView to <b>webtrees</b> transfer wizard"
 msgstr "Klikněte zde, pokud chcete použít Průvodce přechodu z PhpGedView na <b>webtrees</b>"
 
 #: modules_v3/faq/module.php:282
-msgid "Click here to Add, Edit, or Delete"
+msgid "Click here to add, edit, or delete"
 msgstr "Klikněte zde pro přidání, úpravu nebo smazání"
 
 #: individual.php:267
@@ -3930,7 +3921,7 @@ msgstr "Obsah"
 #: modules_v3/clippings/module.php:129 modules_v3/clippings/module.php:501
 #: modules_v3/clippings/module.php:524 modules_v3/clippings/module.php:537
 #: modules_v3/googlemap/module.php:4142
-msgid "Continue Adding"
+msgid "Continue adding"
 msgstr "Pokračovat v přidávání"
 
 #. I18N: gedcom tag CONT
@@ -4069,7 +4060,7 @@ msgstr "Vytvořit nový pramen"
 
 #: edit_interface.php:1493 edit_interface.php:1558
 #: includes/functions/functions_edit.php:320
-msgid "Create repository"
+msgid "Create a new repository"
 msgstr "Vytvořit repozitář"
 
 #: admin_users.php:480
@@ -4324,7 +4315,7 @@ msgid "Date"
 msgstr "Datum"
 
 #: modules_v3/user_messages/module.php:87
-msgid "Date Sent:"
+msgid "Date sent:"
 msgstr "Data byla zaslána:"
 
 #: admin_trees_config.php:1045 help_text.php:1403
@@ -4647,7 +4638,7 @@ msgid "Death"
 msgstr "Úmrtí"
 
 #: modules_v3/death_report/report.xml:6
-msgid "Death Place contains"
+msgid "Death place contains"
 msgstr "Místo úmrtí obsahuje"
 
 #: library/WT/Stats.php:995 statistics.php:584
@@ -4928,7 +4919,7 @@ msgid "Delete FAQ item"
 msgstr "Smazat položku FAQ"
 
 #: modules_v3/user_messages/module.php:116
-msgid "Delete Selected Messages"
+msgid "Delete selected messages"
 msgstr "Smazat vybrané zprávy"
 
 #: modules_v3/googlemap/module.php:4130
@@ -4940,7 +4931,7 @@ msgid "Delete inactive users"
 msgstr "Smazat neaktivní uživatele"
 
 #: library/WT/Controller/Individual.php:151
-msgid "Delete name"
+msgid "Delete this name"
 msgstr "Smazat jméno"
 
 #. I18N: The system is about to [...]
@@ -5171,7 +5162,7 @@ msgid "Display %s"
 msgstr "Zobrazit %s"
 
 #: modules_v3/googlemap/help_text.php:46 modules_v3/googlemap/module.php:459
-msgid "Display Map Coordinates"
+msgid "Display map coordinates"
 msgstr "Zobrazovat mapové souřadnice"
 
 #: find.php:220 find.php:237 find.php:254 find.php:272 find.php:289
@@ -5258,7 +5249,7 @@ msgid "Download %s…"
 msgstr ""
 
 #: mediaviewer.php:104
-msgid "Download File"
+msgid "Download file"
 msgstr "Stáhnout soubor"
 
 #: admin_trees_download.php:30
@@ -5545,7 +5536,7 @@ msgstr "Zaměstnavatel"
 
 #: modules_v3/clippings/help_text.php:36 modules_v3/clippings/module.php:254
 #: modules_v3/clippings/module.php:463
-msgid "Empty Cart"
+msgid "Empty the clippings cart"
 msgstr "Vyprázdnit schránku"
 
 #: admin_modules.php:121
@@ -5639,7 +5630,7 @@ msgid "Enter the email address.<br><br>An example email address looks like this:
 msgstr "Vložte emailovou adresu.<br><br>Může například vypadat takto: <b>jmeno@seznam.cz</b>. Nechejte toto pole volné, pokud ji nechcete zadávat."
 
 #: help_text.php:1238
-msgid "Enter the limiting value here.<br><br>If you have opted to limit the News article display according to age, any article older than the number of days entered here will be hidden from view.  If you have opted to limit the News article display by number, only the specified number of recent articles, ordered by age, will be shown.  The remaining articles will be hidden from view.<br><br>Zeros entered here will disable the limit, causing all News articles to be shown."
+msgid "Enter the limiting value here.<br><br>If you have opted to limit the news article display according to age, any article older than the number of days entered here will be hidden from view.  If you have opted to limit the news article display by number, only the specified number of recent articles, ordered by age, will be shown.  The remaining articles will be hidden from view.<br><br>Zeros entered here will disable the limit, causing all news articles to be shown."
 msgstr "Vložte zde hraniční hodnoty.<br><br>Pokud máte omezit zobrazení článku z Novinek podle stáří, každý, který bude starší než počet vložených dní, zůstane schován. Pokud máte omezit zobrazení článku z Novinek podle počtu, zobrazí se pouze daný počet posledních článků setříděných podle stáří. Zbývající zůstanou schovány.<br><br>Pokud vložíte nulu, omezení se zruší a zobrazí se všechny články."
 
 #: help_text.php:325
@@ -5744,7 +5735,7 @@ msgid "Events of close relatives"
 msgstr "Události pro nejbližší příbuzné"
 
 #: help_text.php:1363
-msgid "Every individual in the database has a unique ID number on this site.  If you know the ID number for your own record, please enter it here.  If you don’t know your ID number or could not find it because of privacy settings, please provide enough information in the Comments field to help the site administrator identify who you are on this site so that he can set the ID for you."
+msgid "Every individual in the database has a unique ID number on this site.  If you know the ID number for your own record, please enter it here.  If you don’t know your ID number or could not find it because of privacy settings, please provide enough information in the comments field to help the site administrator identify who you are on this site so that he can set the ID for you."
 msgstr "Každá osoba v databázi má jedinečné číslo ID. Pokud znáte vlastní ID, prosím zadejte ho. Pokud ho neznáte nebo ho nemůžete nalézt kvůli nastavení soukromí, prosím poskytněte dost informací v Komentářích, abyste pomohli správci identifikovat vaši osobu a mohl nastavit toto ID za vás."
 
 #: help_text.php:1378
@@ -6338,7 +6329,7 @@ msgid "Find a media object"
 msgstr "Hledat soubor médií"
 
 #: find.php:86 includes/functions/functions_print.php:1041
-msgid "Find a note"
+msgid "Find a shared note"
 msgstr "Hledat poznámku"
 
 #: find.php:80 includes/functions/functions_print.php:1015
@@ -6372,7 +6363,7 @@ msgid "Find next path"
 msgstr "Najít další vztah"
 
 #: help_text.php:1278
-msgid "Find next relationship path"
+msgid "Find the next relationship path"
 msgstr "Najdi další příbuzenský vztah"
 
 #: library/WT/Stats.php:3879
@@ -7006,7 +6997,7 @@ msgid "He was cremated"
 msgstr "Byl zpopelněn"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_1_ctrl.php:62
-msgid "Head of Household:"
+msgid "Head of household:"
 msgstr "Hlava domácnosti:"
 
 #. I18N: gedcom tag HEAD
@@ -7092,7 +7083,7 @@ msgid "Here you can add a fact to the record being edited.<br><br>First choose a
 msgstr "Tady můžete k osobě (nebo osobám) přidat nové údaje.<br><br>Nejprve z “rolovacího seznamu” vyberte typ údaje, pak klikněte na tlačítko <b>Přidat</b>.  V “rolovacím seznamu” jsou již všechny údaje, které je možné přidat do souboru GEDCOM."
 
 #: help_text.php:1089
-msgid "Here you can add a source <b>Citation</b> to this record.<br><br>Just click the link, a window will open, and you can choose the source from the list (Find ID) or create a new source and then add the Citation.<br><br>Adding sources is an important part of genealogy because it allows other researchers to verify where you obtained your information."
+msgid "Here you can add a source <b>Citation</b> to this record.<br><br>Just click the link, a window will open, and you can choose the source from the list (Find ID) or create a new source and then add the citation.<br><br>Adding sources is an important part of genealogy because it allows other researchers to verify where you obtained your information."
 msgstr "Zde můžete přidat k tomuto záznamu <b>Citaci</b> zdroje.<br><br>Klikněte na odkaz, otevře se okno a vy ze seznamu vyberete zdroj (Najít ID) nebo přidáte nový zdroj, a pak přidáte citaci.<br><br>Přidávání zdrojů je důležitou částí rodokmenu protože umožňuje bádatelům ověřovat, kde jste si našli vaše informace."
 
 #: help_text.php:1228
@@ -7104,7 +7095,7 @@ msgid "Here you can choose between two types of displaying places names in hiera
 msgstr "Zde si můžete vybrat mezi dvěma typy zobrazení jmen míst v hierarchii. Pokud je nastaveno Ano, místo má krátké jméno, pokud Ne, tak se vypíše plné jméno.<br><b>Například:<br>Plné jméno:</b> Chicago, Illinois, USA<br><b>Krátké jméno:</b> Chicago<br><b>Plné jméno:</b> Illinois, USA<br><b>Krátké jméno:</b> Illinois"
 
 #: help_text.php:1045
-msgid "Here you can choose text to appear on the login screen. You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the Help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.</div><br></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
+msgid "Here you can choose text to appear on the login screen. You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the Help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.</div><br></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
 msgstr "Zde můžete zvolit text, který se zobrazí na přihlašovací obrazovce. Musíte určit, který předdefinovaný text je nejvhodnější.<br><br>Také můžete vložit váš vlastní uvítací text. Pro získání více informací se podívejte do nápovědy pod heslem <b>Vlastní uvítací text</b>.<br><br>Předdefinované texty jsou:<ul><li><b>Přednastavený text, který říká, že si všichni uživatelé mohou zažádat o uživatelský účet:</b><div class=\"list_value_wrap\"><center><b>Vítejte na stránce tohoto rodokmenu</b></center><br>Přístup je povolen těm uživatelům, kteří mají na této stránce účet.<br><br>Pokud máte uživatelský účet, můžete se na této stránce přihlásit. Pokud účet nemáte, můžete o něj požádat kliknutím níže na příslušný odkaz.<br><br>Po ověření vám správce účet aktivuje a vy obdržíte email, že vaše žádost byla schválena.</div><br></li><li><b>Přednastavený text, který říká, že správce rozhodne o každé žádosti o zřízení účtu:</b><div class=\"list_value_wrap\"><center><b>Vítejte na stránce tohoto rodokmenu</b></center><br>Přístup je povolen pouze <u>přihlášeným</u> uživatelům.<br><br>Pokud máte uživatelský účet, můžete se na této stránce přihlásit. Pokud účet nemáte, můžete o něj požádat kliknutím níže na příslušný odkaz.<br><br>Po ověření informací vám správce účet zamítne nebo schválí. Bude vám zaslán email, že vaše žádost byla schválena.</div><br></li><li><b>Přednastavený text, který říká, že žádat o účet mohou pouze rodinní příslušníci.</b><div class=\"list_value_wrap\"><center><b>Vítejte na stránce tohoto rodokmenu</b></center><br>Přístup je povolen pouze <u>rodinným příslušníkům</u>.<br><br>Pokud máte uživatelský účet, můžete se na této stránce přihlásit. Pokud účet nemáte, můžete o něj požádat kliknutím níže na příslušný odkaz.<br><br>Po ověření informací vám správce účet zamítne nebo schválí. Bude vám zaslán email, že vaše žádost byla schválena.</div></li></ul>"
 
 #: modules_v3/googlemap/help_text.php:54
@@ -7331,7 +7322,7 @@ msgid "If the number of times that a certain surname occurs is lower than the th
 msgstr "Je-li četnost výskytu příjmení nižší než nastavený limit, neobjeví se mezi příjmeními s nejčastějším výskytem. Pak tady můžete takové příjmení přidat ručně. Zadáte-li více než jedno, musí být oddělena čárkou. <b>V příjmeních se rozlišují malá a velká písmena.</b>"
 
 #: help_text.php:819
-msgid "If the option <b>Allow visitors to request account registration</b> is enabled this setting controls whether the admin must approve the registration.<br><br>Setting this to <b>Yes</b> will require that all new users first verify themselves and then be approved by an admin before they can login.  With this setting on <b>No</b>, the <b>User approved by Admin</b> checkbox will be checked automatically when users verify their account, thus allowing an immediate login afterwards without admin intervention."
+msgid "If the option <b>Allow visitors to request account registration</b> is enabled this setting controls whether the admin must approve the registration.<br><br>Setting this to <b>Yes</b> will require that all new users first verify themselves and then be approved by an admin before they can login.  With this setting on <b>No</b>, the “Approved by administrator” checkbox will be checked automatically when users verify their account, thus allowing an immediate login afterwards without admin intervention."
 msgstr "Pokud volba <b>Umožnit návštěvníkům požadovat registraci</b> je povolena, toto nastavení kontroluje, zda správce musí schválit registraci.<br><br>Nastavením na <b>Ano</b> se uživatelé před přihlášením nejdřív ověří, a pak musí být schváleni správcem. Pokud je nastaveno <b>Ne</b>, políčko <b>Uživatel schválen správcem</b> se automaticky zaškrtne poté, co si uživatel ověří svůj účet, takže bude možné se rovnou přihlásit bez správcova zásahu."
 
 #: help_text.php:281
@@ -7408,7 +7399,7 @@ msgid "If you try to exceed these limits, you may experience server time-outs an
 msgstr "Pokud se pokusíte přesáhnout tyto limity, můžou se vám zobrazit prázdné stránky, případně time-outy."
 
 #: help_text.php:471
-msgid "If you want to remove a surname from the Common Surname list without increasing the threshold value, you can do that by entering the surname here.  If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive.</b>  Surnames entered here will also be removed from the Top-10 list on the Home Page."
+msgid "If you want to remove a surname from the Common Surname list without increasing the threshold value, you can do that by entering the surname here.  If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive</b>.  Surnames entered here will also be removed from the “Top surnames” list on the “Home page”."
 msgstr "Chcete-li nějaké příjmení odstranit ze seznamu nejčastějších příjmení, aniž byste měnili limit, můžete tak učinit tady. Zadáte-li více než jedno, musí být oddělena čárkou. <b>V příjmeních se rozlišují malá a velká písmena.</b>  Příjmení budou také odstraněna ze seznamu 10 nejčastějších na domovské stránce."
 
 #: setup.php:185
@@ -7462,7 +7453,7 @@ msgid "In some countries, privacy laws apply not only to living individuals, but
 msgstr "V některých zemích se zákony o soukromí nevztahují pouze na žijící osoby, ale také na nedávno zesnulé. Tato volba vám umožní rozšířit pravidla o soukromí na ty, kteří se narodili nebo zemřeli během určitých let. Nechejte tyto hodnoty prázdné, pokud nechcete používat tuto funkcionalitu."
 
 #: help_text.php:315
-msgid "In the Citation Details field you would enter the page number or other information that might help someone find the information in the source."
+msgid "In the citation details field you would enter the page number or other information that might help someone find the information in the source."
 msgstr "V Podrobnostech citací můžete vložit číslo stránky nebo jinou informaci, která vám pomůže najít tu konkrétní informaci ve zdroji."
 
 #: help_text.php:378
@@ -8111,7 +8102,7 @@ msgid "Leave password blank if you want to keep the current password."
 msgstr "Pokud chcete zachovat stávající heslo, nechte políčko pro heslo prázdné."
 
 #: admin_trees_config.php:438
-msgid "Leave this field empty to use the title of the currently active database."
+msgid "Leave this field empty to use the name of the family tree."
 msgstr "Ponechte toto políčko prázdné, chcete-li, aby byl použit nynější nadpis tohoto GEDCOMu."
 
 #: includes/functions/functions_print_lists.php:95
@@ -9692,7 +9683,7 @@ msgid "No GEDCOM files found.  You need to copy files to the <b>%s</b> directory
 msgstr "Nebyl nalezen žádný soubor GEDCOM. Je třeba zkopírovat soubory na server do adresáře <b>%s</b>."
 
 #: modules_v3/gedcom_news/module.php:93
-msgid "No News articles have been submitted."
+msgid "No news articles have been submitted."
 msgstr "Žádné články, novinky nebyly dodány."
 
 #: modules_v3/googlemap/module.php:865
@@ -12488,7 +12479,7 @@ msgstr "Zobrazit nejstarší nahoře"
 
 #: modules_v3/todays_events/module.php:132
 #: modules_v3/upcoming_events/module.php:144
-msgid "Show only Births, Deaths, and Marriages?"
+msgid "Show only births, deaths, and marriages?"
 msgstr "Zobrazit jen narození, úmrtí a svatby?"
 
 #: modules_v3/todays_events/module.php:125
@@ -12501,7 +12492,7 @@ msgid "Show only females."
 msgstr "Zobrazit jen ženy."
 
 #: includes/functions/functions_print_lists.php:87
-msgid "Show only individuals of whom the gender is not known."
+msgid "Show only individuals for whom the gender is not known."
 msgstr "Zobrazit jen osoby, jejichž pohlaví není známo."
 
 #: modules_v3/random_media/module.php:260
@@ -13321,7 +13312,7 @@ msgid "The FAQ list is empty."
 msgstr "Seznam FAQ je prázdný"
 
 #: help_text.php:1253
-msgid "The Favorites drop-down list shows the favorites that you have selected on your personalized My Page.  It also shows the favorites that the site administrator has selected for the currently active GEDCOM.  Clicking on one of the favorites entries will take you directly to the Individual Information page of that individual.<br><br>More help about adding Favorites is available in your personalized My Page."
+msgid "The Favorites drop-down list shows the favorites that you have selected on your “My page”.  It also shows the favorites that the site administrator has selected for the currently active GEDCOM.  Clicking on one of the favorites entries will take you directly to the Individual Information page of that individual.<br><br>More help about adding favorites is available in your “My page”."
 msgstr "V tomto rolovacím seznamu najdete své oblíbené, které jste si vybrali na své osobní vstupní bráně.<br>Kliknutím na jednu z těchto položek se dostanete přímo na stránku s údaji o této osobě.<br>Další nápověda o přidávání Oblíbených je k dispozici na vstupní bráně."
 
 #: library/WT/Gedcom/Code/Temp.php:98
@@ -13358,7 +13349,7 @@ msgid "The changes to “%s” have been rejected."
 msgstr "Změny pro “%s” byly odmítnuty."
 
 #: modules_v3/clippings/module.php:142
-msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the <b>Download Now</b> link.  Follow the instructions and links.</li></ul>"
+msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the “Download” link.  Follow the instructions and links.</li></ul>"
 msgstr "Schránka výstřižků vám umožňuje zkopírovat části (“výstřižky”) rodinného stromu a dát je dohromady do jednoho souboru, který můžete stáhnout a případně importovat do svého rodokmenového programu. Stáhnutelný soubor je ve formátu GEDCOM.<br><ul><li>Jak tvořit výstřižky?<br>Je to opravdu jednoduché. Kdykoliv uvidíte klikatelné jméno (osoba, rodina nebo zdroj), můžete jít na stránku Podrobnosti k tomuto jménu. Tam uvidíte volbu <b>Přidat do Schránky výstřižků</b>. Když kliknete na ten odkaz, v nabídce dostanete několik možnosti na stáhnutí.</li><li>Jak je stáhnout?<br>Poté, co máte všechny položky ve schránce, stáhnete je kliknutím na odkaz <b>Stáhnout nyní</b>. Následujte instrukce a další odkazy.</li></ul>"
 
 #: help_text.php:1314
@@ -13518,7 +13509,7 @@ msgid "The individual to contact about the genealogical data on this site."
 msgstr "Uživatel, kterého mohou návštěvníci kontaktovat v souvislosti s rodokmenem."
 
 #: help_text.php:573
-msgid "The length of time after birth can be set on the Privacy configuration tab option “Age at which to assume an individual is dead”."
+msgid "The length of time after birth can be set on the “Privacy” tab option “Age at which to assume an individual is dead”."
 msgstr "Čas po narození může být nastaven v konfiguračním panelu Soukromí volbou “Věk, ve kterém se předpokládá, že osoba zesnulá”."
 
 #. I18N: %s are names of records, such as sources, repositories or individuals
@@ -13617,7 +13608,7 @@ msgid "The username or password is incorrect."
 msgstr "Nesprávné uživatelské jméno nebo heslo."
 
 #: help_text.php:689
-msgid "The value to place in the Description meta tag in the HTML page header.  Leave this field empty to use the title of the currently active database."
+msgid "The value to place in the “meta description” tag in the HTML page header.  Leave this field empty to use the name of the family tree."
 msgstr "Hodnota, která se má v hlavičce HTML stránky zapsat do meta tagu s popisem. Ponechte políčko prázdné, chcete-li, aby byl použit název současné aktivní databáze."
 
 #: admin_pgv_to_wt.php:74
@@ -13659,15 +13650,15 @@ msgstr "Motivy můžeme vybírat na třech úrovních: uživatel, GEDCOM a celý
 
 #: modules_v3/extra_info/module.php:61
 #: modules_v3/personal_facts/module.php:122
-msgid "There are no Facts for this individual."
+msgid "There are no facts for this individual."
 msgstr "K této osobě nejsou dostupné žádné údaje."
 
 #: modules_v3/notes/module.php:81
-msgid "There are no Notes for this individual."
+msgid "There are no notes for this individual."
 msgstr "K této osobě nejsou žádné poznámky."
 
 #: modules_v3/sources_tab/module.php:80
-msgid "There are no Source citations for this individual."
+msgid "There are no source citations for this individual."
 msgstr "K této osobě nejsou žádné citace pramenů."
 
 #: modules_v3/media/module.php:73
@@ -13742,7 +13733,7 @@ msgid "This account has not been verified.  Please check your email for a verifi
 msgstr "Tento účet nebyl ověřen. Prosím zkontrolujte, zda vám nepřišel ověřovací email."
 
 #: modules_v3/charts/help_text.php:32
-msgid "This block allows a pedigree, descendancy, or hourglass chart to appear on My Page or the Home Page.  Because of space limitations, the charts should be placed only on the left side of the page.<br><br>When this block appears on the Home Page, the root individual and the type of chart to be displayed are determined by the administrator.  When this block appears on the user’s personalized My Page, these options are determined by the user.<br><br>The behavior of these charts is identical to their behavior when they are called up from the menus.  Click on the box of an individual to see more details about them."
+msgid "This block allows a pedigree, descendancy, or hourglass chart to appear on your “My page” or the “Home page”.  Because of space limitations, the charts should be placed only on the left side of the page.<br><br>When this block appears on the “Home page”, the root individual and the type of chart to be displayed are determined by the administrator.  When this block appears on the user’s “My page”, these options are determined by the user.<br><br>The behavior of these charts is identical to their behavior when they are called up from the menus.  Click on the box of an individual to see more details about them."
 msgstr "Díky tomuto bloku zobrazíte schéma vývodu, potomků nebo přesýpacích hodin na Mojí nebo Domovské stránce. Kvůli omezenému místu by schéma mělo být umístěno pouze na levé straně stránky.<br><br>Pokud se schéma zobrazí na Domovské stránce, kořenová osoba a typ grafu je určen správcem. Pokud se zobrazí na Mojí stránce, nastavení si určuje uživatel.<br><br>Jejich chování je stejné, jako když jsou spuštěny z menu. Klikněte na rámeček osoby pro více podrobností."
 
 #: modules_v3/review_changes/help_text.php:32
@@ -13877,7 +13868,7 @@ msgid "This input box lets you change that year of the calendar.  Type a year in
 msgstr "Toto políčko slouží pro přepínání roku v kalendáři v “režimu měsíců” nebo v seznamu v “režimu roků”.<br>V “režimu den” se změna roku nijak neprojeví, protože jsou zobrazeny události za celý rok.<dl><dt><b>Rozšířené možnosti</b> pro <b>Zobrazit rok:<br>Více roků najednou</b></dt><dd>Můžete hledat více než jeden rok zapsáním do políčka roku::<br>- Př. 1: <b>1992-5</b> pro všechny události od 1992 do 1995.<br>- Př. 2: <b>1972-89</b> pro všechny události od 1972 do 1989.<br>- Př. 3: <b>1610-759</b> pro všechny události od 1610 do 1759.<br>- Př. 4: <b>1880-1905</b> pro všechny události od 1880 do 1905.<br>- Př. 5: <b>880-1105</b> pro všechny události od 880 do 1105.<br><br>Také můžete vynechat poslední číslici roku pro zobrazení všech událostí za určité desetiletí.<br>- Př.: <b>197</b> pro všechny události od 1970 do 1979.</dd><dt><br><b>Zkratky</b></dt><dd>Někdy není úplně jasné, kdy přesně se daná událost stala. V těchto případech mohou být k datu přidána slova jako “po”, “před” a “kolem”. Data jsou v GEDCOMu uložena společně se zkratkou daného termínu. V režimu roku můžete zadávat i hledání těchto termínů s nebo bez přidruženého data. Zde je několik příkladů takových dotazů:<br><b>abt</b> 1800 (abt = about = KOLEM)<br><b>bet</b> 1950-1959 (bet = between = MEZI) zadejte: bet 1950 nepo jen: 1950-59<br><b>bef</b> 1950 (bef = before = PŘED)<br><b>aft</b> 1900 (aft = after = PO)<br><br><b>Poznámka:</b> PhpGedView bude hledat výraz přesně tak, jak jej zadáte. Hledáte-li “abt 1850”, datum z GEDCOMu jako např. “abt oct 1850” <b>nebude</b> zahrnuto ve výsledcích vyhledávání. - Můžete zadat jen zkratku bez roku a získáte seznam všech dat, která tuto zkratku obsahují.</dd></dl>Samotným vepsáním roku nespustíte vyhledávání.<br>Jelikož toto políčko není odkazem, budete po zapsání roku muset kliknout na tlačítko <b>Zobrazit měsíc</b> nebo tlačítko <b>Zobrazit rok</b>."
 
 #: modules_v3/clippings/help_text.php:32
-msgid "This input box lets you enter an individual’s ID number so he can be added to the clippings cart.  Once added you’ll be offered options to link that individual’s relations to your clippings cart.<br><br>If you do not know an individual’s ID number, you can perform a search by name by pressing the individual icon next to the Add button."
+msgid "This input box lets you enter an individual’s ID number so he can be added to the clippings cart.  Once added you’ll be offered options to link that individual’s relations to your clippings cart.<br><br>If you do not know an individual’s ID number, you can perform a search by name by pressing the individual icon next to the “Add” button."
 msgstr "Toto políčko vám umožňuje zadat ID osoby, kterým přidáte danou osobu do Schránky výstřižků. Po přidání dostanete možnost, jak propojit danou osobu se Schránkou výstřižků.<br><br>Pokud neznáte ID osoby, můžete ji vyhledat podle jména kliknutím na ikonu Panáčka vedle tlačítka pro přidání."
 
 #: help_text.php:407
@@ -13926,35 +13917,35 @@ msgid "This is the latest version of webtrees.  No upgrade is available."
 msgstr ""
 
 #: help_text.php:506
-msgid "This is the list of GEDCOM facts that your users can add to families.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique family facts</i> list."
+msgid "This is the list of GEDCOM facts that your users can add to families.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the “Unique family facts” list."
 msgstr "Toto je seznam údajů v GEDCOMu, které vaši uživatelé můžou přidávat k rodinám. Můžete ho upravit přidáním nebo odstraněním názvů údajů, případně dokonce vytvořením vlastních. Názvy údajů, které se objeví v seznamu, se nesmí objevit v seznamu <i>Jedinečných rodinných údajů</i>."
 
 #: help_text.php:593
-msgid "This is the list of GEDCOM facts that your users can add to individuals.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique Individual Facts</i> list."
+msgid "This is the list of GEDCOM facts that your users can add to individuals.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the “Unique individual facts” list."
 msgstr "Toto je seznam údajů v GEDCOMu, které vaši uživatelé můžou přidávat k osobám. Můžete ho upravit přidáním nebo odstraněním názvů údajů, případně dokonce vytvořením vlastních. Názvy údajů, které se objeví v seznamu se nesmí objevit v seznamu <i>Jedinečných osobních údajů</i>."
 
 #: help_text.php:799
-msgid "This is the list of GEDCOM facts that your users can add to repositories.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique Repository Facts</i> list."
+msgid "This is the list of GEDCOM facts that your users can add to repositories.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the “Unique repository facts” list."
 msgstr "Toto je seznam údajů v GEDCOMu, které vaši uživatelé můžou přidávat k repozitářům. Můžete ho upravit přidáním nebo odstraněním názvů údajů, případně dokonce vytvořením vlastních. Názvy údajů, které se objeví v seznamu se nesmí objevit v seznamu <i>Jedinečných údajích o repozitářích</i>."
 
 #: help_text.php:910
-msgid "This is the list of GEDCOM facts that your users can add to sources.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique Source Facts</i> list."
+msgid "This is the list of GEDCOM facts that your users can add to sources.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the “Unique source facts” list."
 msgstr "Toto je seznam údajů v GEDCOMu, které vaši uživatelé můžou přidávat ke zdrojům. Můžete ho upravit přidáním nebo odstraněním názvů údajů, případně dokonce vytvořením vlastních. Názvy údajů, které se objeví v seznamu, se nesmí objevit v seznamu <i>Jedinečných údajů o zdrojích</i>."
 
 #: help_text.php:516
-msgid "This is the list of GEDCOM facts that your users can only add <u>once</u> to families.  For example, if MARR is in this list, users will not be able to add more than one MARR record to a family.  Fact names that appear in this list must not also appear in the <i>Family Add Facts</i> list."
+msgid "This is the list of GEDCOM facts that your users can only add once to families.  For example, if MARR is in this list, users will not be able to add more than one MARR record to a family.  Fact names that appear in this list must not also appear in the “All family facts” list."
 msgstr "Toto je seznam údajů v GEDCOMu, které vaši uživatelé můžou přidat k rodinám <u>právě jednou</u>. Například pokud MARR je v tomto seznamu, uživatelé nebudou moct přidat tento záznam k rodině vícekrát než jednou. Názvy údajů, které se objeví v seznamu se nesmí objevit v seznamu <i>Údajů přidávaných k rodinám</i>."
 
 #: help_text.php:603
-msgid "This is the list of GEDCOM facts that your users can only add <u>once</u> to individuals.  For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual.  Fact names that appear in this list must not also appear in the <i>Individual Add Facts</i> list."
+msgid "This is the list of GEDCOM facts that your users can only add once to individuals.  For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual.  Fact names that appear in this list must not also appear in the “All individual facts” list."
 msgstr "Toto je seznam údajů v GEDCOMu, které vaši uživatelé můžou přidat k osobám <u>právě jednou</u>. Například pokud BIRT je v tomto seznamu, uživatelé nebudou moct přidat tento záznam k osobě vícekrát než jednou. Názvy údajů, které se objeví v seznamu se nesmí objevit v seznamu <i>Údajů přidávaných k osobám</i>."
 
 #: help_text.php:809
-msgid "This is the list of GEDCOM facts that your users can only add <u>once</u> to repositories.  For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository.  Fact names that appear in this list must not also appear in the <i>Repository Add Facts</i> list."
+msgid "This is the list of GEDCOM facts that your users can only add once to repositories.  For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository.  Fact names that appear in this list must not also appear in the “All repository facts” list."
 msgstr "Toto je seznam údajů v GEDCOMu, které vaši uživatelé můžou přidat k repozitářům <u>právě jednou</u>. Například pokud NAME je v tomto seznamu, uživatelé nebudou moct přidat tento záznam k osobě vícekrát než jednou. Názvy údajů, které se objeví v seznamu se nesmí objevit v seznamu <i>Údajů přidávaných k repozitářům</i>."
 
 #: help_text.php:920
-msgid "This is the list of GEDCOM facts that your users can only add <u>once</u> to sources.  For example, if TITL is in this list, users will not be able to add more than one TITL record to a source.  Fact names that appear in this list must not also appear in the <i>Source Add Facts</i> list."
+msgid "This is the list of GEDCOM facts that your users can only add once to sources.  For example, if TITL is in this list, users will not be able to add more than one TITL record to a source.  Fact names that appear in this list must not also appear in the “All source facts” list."
 msgstr "Toto je seznam údajů v GEDCOMu, které vaši uživatelé můžou přidat ke zdrojům <u>právě jednou</u>. Například pokud TITL je v tomto seznamu, uživatelé nebudou moct přidat tento záznam ke zdrojům vícekrát než jednou. Názvy údajů, které se objeví v seznamu se nesmí objevit v seznamu <i>Údajů přidávaných ke zdrojům</i>."
 
 #. I18N: Help text for the “Server name” site configuration setting
@@ -13963,7 +13954,7 @@ msgid "This is the name of the SMTP server. “localhost” means that the mail 
 msgstr "Toto je jméno SMTP serveru. 'localhost' znamená, že mailová služba běží na stejném počítači jako webový server."
 
 #: help_text.php:476
-msgid "This is the number of times that a surname must occur before it shows up in the Common Surname list on the Home Page."
+msgid "This is the number of times that a surname must occur before it shows up in the Common Surname list on the “Home page”."
 msgstr "Toto číslo udává, kolikrát se musí nějaké příjmení v GEDCOMu vyskytovat, aby bylo zobrazeno na úvodní stránce mezi nejčastějšími příjmeními."
 
 #: help_text.php:511
@@ -14182,7 +14173,7 @@ msgid "This option will show the names (but no other details) of private individ
 msgstr "Tato volba zobrazí jména (ale bez dalších podrobností) soukromých osob. Osoby jsou soukromé, pokud jsou stále naživu nebo pokud bylo nastaveno na jejich záznam omezení soukromí. Pro schování konkrétního jména přidejte omezení soukromí na daný záznam."
 
 #: modules_v3/googlemap/help_text.php:47
-msgid "This options sets whether Latitude and Longitude are displayed on the pop-up window attached to map markers."
+msgid "This options sets whether latitude and longitude are displayed on the pop-up window attached to map markers."
 msgstr "Tato volba nastavuje, zda se zeměpisná šířka a výška zobrazí na vyskakujících oknech připevněných k mapě."
 
 #: help_text.php:1163
@@ -14254,7 +14245,7 @@ msgid "This section allows you to add a new Note to the fact that you are curren
 msgstr "Tato sekce vám umožní přidat novou Poznámku k údaji, který právě upravujete. Poznámky formou volného textu se zobrazí v sekci stránky Podrobnosti o údaji."
 
 #: help_text.php:1157
-msgid "This section allows you to add a new source citation to the fact that you are currently editing.<br><br>In the Source field you enter the ID for the source.  Click the <b>Create a new source</b> link if you need to enter a new source.  In the Citation Details field you would enter the page number or other information that might help someone find the information in the source.  In the Text field you would enter the text transcription from the source."
+msgid "This section allows you to add a new source citation to the fact that you are currently editing.<br><br>In the Source field you enter the ID for the source.  Click the “Create a new source” link if you need to enter a new source.  In the citation details field you would enter the page number or other information that might help someone find the information in the source.  In the Text field you would enter the text transcription from the source."
 msgstr "Tento oddíl vám umožňuje přidat novou citaci zdroje k údaji, který právě upravujete.<br><br>Do pole Zdroj zadejte ID zdroje. Klikněte na odkaz <b>Vytvořit nový zdroj</b>, pokud chcete vytvořit nový. V poli Podrobnosti citace zadejte číslo strany nebo jinou informaci, která umožní někomu dohledat citovaná data. V poli Text zadejte přepis ze zdroje."
 
 #. I18N: http://en.wikipedia.org/wiki/Https
@@ -14272,7 +14263,7 @@ msgid "This setting is only used when you read or write GEDCOM files."
 msgstr "Toto nastavení se použije pouze při čtení nebo zápisu do souborů GEDCOM."
 
 #: help_text.php:456
-msgid "This should be a comma or space separated list of facts, in addition to Birth and Death, that you want to appear in chart boxes such as the pedigree chart.  This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard.  For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
+msgid "This should be a comma or space separated list of facts, in addition to birth and death, that you want to appear in chart boxes such as the pedigree chart.  This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard.  For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
 msgstr "Toto by měl být seznam čárkami nebo mezerami oddělených údajů, navíc k narození nebo úmrtí, které chcete, aby se objevily ve schématech jako je Vývod. Tento seznam vyžaduje použití popisků údajů definovaných ve standardu GEDCOM 5.5.1. Například pokud chcete, aby se povolání ukázalo v rámečku, přidejte “OCCU” do tohoto pole."
 
 #: admin_site_upgrade.php:41
@@ -14560,7 +14551,7 @@ msgstr[2] "Nejčastějších %s příjmení"
 
 #: modules_v3/googlemap/module.php:4361 modules_v3/googlemap/module.php:4426
 #: placelist.php:111
-msgid "Top Level"
+msgid "Top level"
 msgstr "Horní úroveň"
 
 #. I18N: i.e. most popular given name.
@@ -14884,7 +14875,7 @@ msgid "Unknown"
 msgstr "Neznámí"
 
 #: modules_v3/lightbox/module.php:174
-msgid "Unlink Media"
+msgid "Unlink media"
 msgstr "Odstranit odkaz na média"
 
 #: library/WT/Gedcom/Tag.php:829
@@ -14896,11 +14887,11 @@ msgid "Unused files"
 msgstr "Nepoužité soubory"
 
 #: admin.php:157
-msgid "Unverified by Administrator"
+msgid "Not approved by an administrator"
 msgstr "Neověřeno správcem"
 
 #: admin.php:153
-msgid "Unverified by User"
+msgid "Not verified by the user"
 msgstr "Neověřeno uživatelem"
 
 #. I18N: The system is about to [...]; %s is a .ZIP file.
@@ -15003,8 +14994,8 @@ msgid "Use SMTP to send messages"
 msgstr "Používat SMTP na odesílání zpráv"
 
 #: modules_v3/batch_update/plugins/search_replace.php:92
-msgid "Use a &laquo;?&raquo; to match a single character, use &laquo;*&raquo; to match zero or more characters."
-msgstr "Použijte &laquo;?&raquo; pro shodu jediného znaku, &laquo;*&raquo; pro žádný nebo více znaků."
+msgid "Use a “?” to match a single character, use “*” to match zero or more characters."
+msgstr "Použijte “?” pro shodu jediného znaku, “*” pro žádný nebo více znaků."
 
 #. I18N: placeholder text for new-password field
 #: admin_users.php:385 login.php:423
@@ -15441,7 +15432,7 @@ msgid "When a user registers for an account, an email is sent to their email add
 msgstr "Když se uživatel zaregistruje, je mu poslán email s ověřovacím odkazem. Když na něj klikne, my víme, že emailová adresa je správná a volba “email ověřen” je zaškrtnuta automaticky."
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:44
-msgid "When adding a Link, the ID field cannot be empty."
+msgid "When adding a link, the ID field cannot be empty."
 msgstr "Pokud přidáváte odkaz, nenechávejte políčko ID prázdné."
 
 #: help_text.php:784
@@ -15590,7 +15581,7 @@ msgid "With sources"
 msgstr "Se zdroji"
 
 #: help_text.php:1184
-msgid "With this option, the <b>webtrees</b> internal messaging system will be used and no emails will be sent.  You will receive only <u>internal</u> messages from the other users.  When another site user sends you a message, that message will appear in the Message block on your personal My Page.  If you have removed this block from your My Page, you will not see any messages.  They will, however, show up as soon as you configure My Page to again have the Message block."
+msgid "With this option, the <b>webtrees</b> internal messaging system will be used and no emails will be sent.  You will receive only <u>internal</u> messages from the other users.  When another site user sends you a message, that message will appear in the Message block on your “My page”.  If you have removed this block from your “My page”, you will not see any messages.  They will, however, show up as soon as you configure your “My page” to again have the Message block."
 msgstr "S touto volbou se použije interní zprávový systém <b>webtrees</b> a nebudou se posílat žádné emaily.  Pouze obdržíte <u>interní</u> zprávy od ostatních uživatelů. Pokud vám pošle zprávu uživatel z jiného webu, zpráva se zobrazí v bloku zpráv na osobní Mojí stránce. Pokud jste odstranili tento blok z vaší stránky, neuvidíte žádné zprávy. Nicméně se zobrazí hned, jak nastavíte znova Moji stránku, aby obsahovala blok zpráv."
 
 #: help_text.php:1196
@@ -15598,7 +15589,7 @@ msgid "With this option, you will not receive any messages.  Even the administra
 msgstr "Tato volba způsobí, že nebudete dostávat žádné zprávy. Dokonce správce nebude schopen vás kontaktovat."
 
 #: help_text.php:1192
-msgid "With this option, you will only receive email messages at the address you configured on your Account page.  The messaging system internal to <b>webtrees</b> will not be used at all, and there will never be any messages in the Message block on your personal My Page."
+msgid "With this option, you will only receive email messages at the address you configured on your Account page.  The messaging system internal to <b>webtrees</b> will not be used at all, and there will never be any messages in the Message block on your “My page”."
 msgstr "S tímto nastavením budete jen dostávat emaily na adresu, kterou jste si nastavili na stránce nastavení účtu. Vnitřní systém zpráv se vůbec nepoužije a nikdy se nezobrazí žádné zprávy v bloku zpráv na osobní Mojí stránce."
 
 #: library/WT/Stats.php:302 library/WT/Stats.php:346
@@ -15673,7 +15664,7 @@ msgid "You can download a copy of the GEDCOM specification from %s."
 msgstr "Specifikaci formátu GEDCOM můžete stáhnout z %s."
 
 #: help_text.php:1243
-msgid "You can limit the number of News articles displayed, thereby reducing the height of the GEDCOM News block.<br><br>This option determines whether any limits should be applied or whether the limit should be according to the age of the article or according to the number of articles."
+msgid "You can limit the number of news articles displayed, thereby reducing the height of the GEDCOM News block.<br><br>This option determines whether any limits should be applied or whether the limit should be according to the age of the article or according to the number of articles."
 msgstr "Můžete omezit počet zobrazovaných článků z Novinek, a tím zmenšit výšku bloku Novinky.<br><br>Tato volba určí, zda se vůbec použije omezení nebo zda se omezí zobrazení podle stáří nebo podle počtu článků."
 
 #: modules_v3/batch_update/plugins/married_names.php:37
@@ -15725,7 +15716,7 @@ msgid "You have no pending messages."
 msgstr "Nemáte žádné příchozí zprávy."
 
 #: modules_v3/user_blog/module.php:76
-msgid "You have not created any Journal items."
+msgid "You have not created any journal items."
 msgstr "Nevytvořili jste v deníku žádné položky."
 
 #: admin_trees_manage.php:131
@@ -15733,8 +15724,8 @@ msgid "You have selected a GEDCOM with a different name.  Is this correct?"
 msgstr "Označil jste GEDCOM s jiným jménem. Je to správně?"
 
 #: addmedia.php:462
-msgid "You may enter a URL, beginning with &laquo;http://&raquo;."
-msgstr "Můžete zadat URL začínající &laquo;http://&raquo;."
+msgid "You may enter a URL, beginning with “http://”."
+msgstr "Můžete zadat URL začínající “http://”."
 
 #: modules_v3/faq/help_text.php:35
 msgid "You may use HTML to format the answer and to add links to other websites."
@@ -15823,8 +15814,8 @@ msgid "You should accept or reject all pending changes before upgrading."
 msgstr ""
 
 #: help_text.php:1151
-msgid "You should avoid using the vertical line character &ldquo;|&rdquo; in your notes.  It is used internally by webtrees and may cause your note to display incorrectly."
-msgstr "Ve vašich poznámkách byste se měli vyhnout použití znaku svislé čáry &ldquo;|&rdquo;. Používá se interně ve webtrees a vaše poznámka by se nemusela zobrazit správně."
+msgid "You should avoid using the vertical line character “|” in your notes.  It is used internally by webtrees and may cause your note to display incorrectly."
+msgstr "Ve vašich poznámkách byste se měli vyhnout použití znaku svislé čáry “|”. Používá se interně ve webtrees a vaše poznámka by se nemusela zobrazit správně."
 
 #: admin_site_upgrade.php:200
 msgid "You should consult the module’s author to confirm compatibility with this version of webtrees."
@@ -16999,424 +16990,424 @@ msgstr "vnukova manželka"
 #: includes/functions/functions.php:1275 includes/functions/functions.php:1284
 #: includes/functions/functions.php:1295
 #, php-format
-msgid "great x%d aunt"
-msgstr "%dx prateta"
+msgid "great ×%d aunt"
+msgstr "%d× prateta"
 
 #: includes/functions/functions.php:1276 includes/functions/functions.php:1285
 #: includes/functions/functions.php:1296
 #, php-format
-msgid "great x%d aunt/uncle"
-msgstr "%dx prateta/prastrýc"
+msgid "great ×%d aunt/uncle"
+msgstr "%d× prateta/prastrýc"
 
 #: includes/functions/functions.php:1617 includes/functions/functions.php:1630
 #, php-format
-msgid "great x%d grandchild"
-msgstr "%dx pravnouče"
+msgid "great ×%d grandchild"
+msgstr "%d× pravnouče"
 
 #: includes/functions/functions.php:1616 includes/functions/functions.php:1629
 #, php-format
-msgid "great x%d granddaughter"
-msgstr "%dx pravnučka"
+msgid "great ×%d granddaughter"
+msgstr "%d× pravnučka"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1520 includes/functions/functions.php:1527
 #: includes/functions/functions.php:1534 includes/functions/functions.php:1542
 #: includes/functions/functions.php:1552
 #, php-format
-msgid "great x%d grandfather"
-msgstr "%dx praděda"
+msgid "great ×%d grandfather"
+msgstr "%d× praděda"
 
 #: includes/functions/functions.php:1521 includes/functions/functions.php:1528
 #: includes/functions/functions.php:1535 includes/functions/functions.php:1543
 #: includes/functions/functions.php:1553
 #, php-format
-msgid "great x%d grandmother"
-msgstr "%dx prabába"
+msgid "great ×%d grandmother"
+msgstr "%d× prabába"
 
 #: includes/functions/functions.php:1522 includes/functions/functions.php:1529
 #: includes/functions/functions.php:1536 includes/functions/functions.php:1544
 #: includes/functions/functions.php:1554
 #, php-format
-msgid "great x%d grandparent"
-msgstr "%dx prabába/praděd"
+msgid "great ×%d grandparent"
+msgstr "%d× prabába/praděd"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1615 includes/functions/functions.php:1628
 #, php-format
-msgid "great x%d grandson"
-msgstr "%dx pravnuk"
+msgid "great ×%d grandson"
+msgstr "%d× pravnuk"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1448 includes/functions/functions.php:1459
 #, php-format
-msgid "great x%d nephew"
-msgstr "%dx prasynovec"
+msgid "great ×%d nephew"
+msgstr "%d× prasynovec"
 
 #: includes/functions/functions.php:1424
 #, php-format
-msgctxt "(a man’s) brother’s great x(%d-1) grandson"
-msgid "great x%d nephew"
-msgstr "%dx prasynovec"
+msgctxt "(a man’s) brother’s great ×(%d-1) grandson"
+msgid "great ×%d nephew"
+msgstr "%d× prasynovec"
 
 #: includes/functions/functions.php:1426
 #, php-format
-msgctxt "(a man’s) sister’s great x(%d-1) grandson"
-msgid "great x%d nephew"
-msgstr "%dx prasynovec"
+msgctxt "(a man’s) sister’s great ×(%d-1) grandson"
+msgid "great ×%d nephew"
+msgstr "%d× prasynovec"
 
 #: includes/functions/functions.php:1428
 #, php-format
-msgctxt "(a woman’s) great x%d nephew"
-msgid "great x%d nephew"
-msgstr "%dx prasynovec"
+msgctxt "(a woman’s) great ×%d nephew"
+msgid "great ×%d nephew"
+msgstr "%d× prasynovec"
 
 #: includes/functions/functions.php:1450 includes/functions/functions.php:1461
 #, php-format
-msgid "great x%d nephew/niece"
-msgstr "%dx pra-synovec/neteř"
+msgid "great ×%d nephew/niece"
+msgstr "%d× pra-synovec/neteř"
 
 #: includes/functions/functions.php:1439
 #, php-format
-msgctxt "(a man’s) brother’s great x(%d-1) grandchild"
-msgid "great x%d nephew/niece"
-msgstr "%dx pra-synovec/neteř"
+msgctxt "(a man’s) brother’s great ×(%d-1) grandchild"
+msgid "great ×%d nephew/niece"
+msgstr "%d× pra-synovec/neteř"
 
 #: includes/functions/functions.php:1441
 #, php-format
-msgctxt "(a man’s) sister’s great x(%d-1) grandchild"
-msgid "great x%d nephew/niece"
-msgstr "%dx pra-synovec/neteř"
+msgctxt "(a man’s) sister’s great ×(%d-1) grandchild"
+msgid "great ×%d nephew/niece"
+msgstr "%d× pra-synovec/neteř"
 
 #: includes/functions/functions.php:1443
 #, php-format
-msgctxt "(a woman’s) great x%d nephew/niece"
-msgid "great x%d nephew/niece"
-msgstr "%dx pra-synovec/neteř"
+msgctxt "(a woman’s) great ×%d nephew/niece"
+msgid "great ×%d nephew/niece"
+msgstr "%d× pra-synovec/neteř"
 
 #: includes/functions/functions.php:1449 includes/functions/functions.php:1460
 #, php-format
-msgid "great x%d niece"
-msgstr "%dx praneteř"
+msgid "great ×%d niece"
+msgstr "%d× praneteř"
 
 #: includes/functions/functions.php:1431
 #, php-format
-msgctxt "(a man’s) brother’s great x(%d-1) granddaughter"
-msgid "great x%d niece"
-msgstr "%dx praneteř"
+msgctxt "(a man’s) brother’s great ×(%d-1) granddaughter"
+msgid "great ×%d niece"
+msgstr "%d× praneteř"
 
 #: includes/functions/functions.php:1433
 #, php-format
-msgctxt "(a man’s) sister’s great x(%d-1) granddaughter"
-msgid "great x%d niece"
-msgstr "%dx praneteř"
+msgctxt "(a man’s) sister’s great ×(%d-1) granddaughter"
+msgid "great ×%d niece"
+msgstr "%d× praneteř"
 
 #: includes/functions/functions.php:1435
 #, php-format
-msgctxt "(a woman’s) great x%d niece"
-msgid "great x%d niece"
-msgstr "%dx praneteř"
+msgctxt "(a woman’s) great ×%d niece"
+msgid "great ×%d niece"
+msgstr "%d× praneteř"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1274 includes/functions/functions.php:1294
 #, php-format
-msgid "great x%d uncle"
-msgstr "%dx prastrýc"
+msgid "great ×%d uncle"
+msgstr "%d× prastrýc"
 
 #: includes/functions/functions.php:1281
 #, php-format
-msgctxt "great x(%d-1) grandfather’s brother"
-msgid "great x%d uncle"
-msgstr "%dx prastrýc"
+msgctxt "great ×(%d-1) grandfather’s brother"
+msgid "great ×%d uncle"
+msgstr "%d× prastrýc"
 
 #: includes/functions/functions.php:1282
 #, php-format
-msgctxt "great x(%d-1) grandmother’s brother"
-msgid "great x%d uncle"
-msgstr "%dx prastrýc"
+msgctxt "great ×(%d-1) grandmother’s brother"
+msgid "great ×%d uncle"
+msgstr "%d× prastrýc"
 
 #: includes/functions/functions.php:1283
 #, php-format
-msgctxt "great x(%d-1) grandparent’s brother"
-msgid "great x%d uncle"
-msgstr "%dx prastrýc"
+msgctxt "great ×(%d-1) grandparent’s brother"
+msgid "great ×%d uncle"
+msgstr "%d× prastrýc"
 
 #: includes/functions/functions.php:1232
-msgid "great x4 aunt"
-msgstr "4x prateta"
+msgid "great ×4 aunt"
+msgstr "4× prateta"
 
 #: includes/functions/functions.php:1233
-msgid "great x4 aunt/uncle"
-msgstr "4x prateta/prastrýc"
+msgid "great ×4 aunt/uncle"
+msgstr "4× prateta/prastrýc"
 
 #: includes/functions/functions.php:1581
-msgid "great x4 grandchild"
-msgstr "4x pravnouče"
+msgid "great ×4 grandchild"
+msgstr "4× pravnouče"
 
 #: includes/functions/functions.php:1580
-msgid "great x4 granddaughter"
-msgstr "4x pravnučka"
+msgid "great ×4 granddaughter"
+msgstr "4× pravnučka"
 
 #: includes/functions/functions.php:1486
-msgid "great x4 grandfather"
-msgstr "4x praděda"
+msgid "great ×4 grandfather"
+msgstr "4× praděda"
 
 #: includes/functions/functions.php:1487
-msgid "great x4 grandmother"
-msgstr "4x prabába"
+msgid "great ×4 grandmother"
+msgstr "4× prabába"
 
 #: includes/functions/functions.php:1488
-msgid "great x4 grandparent"
-msgstr "5x prarodič"
+msgid "great ×4 grandparent"
+msgstr "4× prarodič"
 
 #: includes/functions/functions.php:1579
-msgid "great x4 grandson"
-msgstr "4x pravnuk"
+msgid "great ×4 grandson"
+msgstr "4× pravnuk"
 
 #: includes/functions/functions.php:1364
 msgctxt "(a man’s) brother’s great-great-great-grandson"
-msgid "great x4 nephew"
+msgid "great ×4 nephew"
 msgstr "synovec (z 5. kolene)"
 
 #: includes/functions/functions.php:1366
 msgctxt "(a man’s) sister’s great-great-great-grandson"
-msgid "great x4 nephew"
+msgid "great ×4 nephew"
 msgstr "synovec (z 5. kolene)"
 
 #: includes/functions/functions.php:1368
-msgctxt "(a woman’s) great x4 nephew"
-msgid "great x4 nephew"
+msgctxt "(a woman’s) great ×4 nephew"
+msgid "great ×4 nephew"
 msgstr "synovec (z 5. kolene)"
 
 #: includes/functions/functions.php:1380
 msgctxt "(a man’s) brother’s great-great-great-grandchild"
-msgid "great x4 nephew/niece"
+msgid "great ×4 nephew/niece"
 msgstr "synovec/neteř (z 5. kolene)"
 
 #: includes/functions/functions.php:1382
 msgctxt "(a man’s) sister’s great-great-great-grandchild"
-msgid "great x4 nephew/niece"
+msgid "great ×4 nephew/niece"
 msgstr "synovec/neteř (z 5. kolene)"
 
 #: includes/functions/functions.php:1384
-msgctxt "(a woman’s) great x4 nephew/niece"
-msgid "great x4 nephew/niece"
+msgctxt "(a woman’s) great ×4 nephew/niece"
+msgid "great ×4 nephew/niece"
 msgstr "synovec/neteř (z 5. kolene)"
 
 #: includes/functions/functions.php:1372
 msgctxt "(a man’s) brother’s great-great-great-granddaughter"
-msgid "great x4 niece"
+msgid "great ×4 niece"
 msgstr "neteř (z 5. kolene)"
 
 #: includes/functions/functions.php:1374
 msgctxt "(a man’s) sister’s great-great-great-granddaughter"
-msgid "great x4 niece"
+msgid "great ×4 niece"
 msgstr "neteř (z 5. kolene)"
 
 #: includes/functions/functions.php:1376
-msgctxt "(a woman’s) great x4 niece"
-msgid "great x4 niece"
+msgctxt "(a woman’s) great ×4 niece"
+msgid "great ×4 niece"
 msgstr "neteř (z 5. kolene)"
 
 #: includes/functions/functions.php:1229
 msgctxt "great-great-great-grandfather’s brother"
-msgid "great x4 uncle"
-msgstr "4x prastrýc"
+msgid "great ×4 uncle"
+msgstr "4× prastrýc"
 
 #: includes/functions/functions.php:1230
 msgctxt "great-great-great-grandmother’s brother"
-msgid "great x4 uncle"
-msgstr "4x prastrýc"
+msgid "great ×4 uncle"
+msgstr "4× prastrýc"
 
 #: includes/functions/functions.php:1231
 msgctxt "great-great-great-grandparent’s brother"
-msgid "great x4 uncle"
-msgstr "4x prastrýc"
+msgid "great ×4 uncle"
+msgstr "4× prastrýc"
 
 #: includes/functions/functions.php:1242
-msgid "great x5 aunt"
-msgstr "5x prateta"
+msgid "great ×5 aunt"
+msgstr "5× prateta"
 
 #: includes/functions/functions.php:1243
-msgid "great x5 aunt/uncle"
-msgstr "5x prateta/prastrýc"
+msgid "great ×5 aunt/uncle"
+msgstr "5× prateta/prastrýc"
 
 #: includes/functions/functions.php:1588
-msgid "great x5 grandchild"
-msgstr "5x pravnouče"
+msgid "great ×5 grandchild"
+msgstr "5× pravnouče"
 
 #: includes/functions/functions.php:1587
-msgid "great x5 granddaughter"
-msgstr "5x pravnučka"
+msgid "great ×5 granddaughter"
+msgstr "5× pravnučka"
 
 #: includes/functions/functions.php:1493
-msgid "great x5 grandfather"
-msgstr "5x praděda"
+msgid "great ×5 grandfather"
+msgstr "5× praděda"
 
 #: includes/functions/functions.php:1494
-msgid "great x5 grandmother"
-msgstr "5x prabába"
+msgid "great ×5 grandmother"
+msgstr "5× prabába"
 
 #: includes/functions/functions.php:1495
-msgid "great x5 grandparent"
-msgstr "6x prarodič"
+msgid "great ×5 grandparent"
+msgstr "6× prarodič"
 
 #: includes/functions/functions.php:1586
-msgid "great x5 grandson"
-msgstr "5x pravnuk"
+msgid "great ×5 grandson"
+msgstr "5× pravnuk"
 
 #: includes/functions/functions.php:1391
-msgctxt "(a man’s) brother’s great x4 grandson"
-msgid "great x5 nephew"
+msgctxt "(a man’s) brother’s great ×4 grandson"
+msgid "great ×5 nephew"
 msgstr "synovec (z 6. kolene)"
 
 #: includes/functions/functions.php:1393
-msgctxt "(a man’s) sister’s great x4 grandson"
-msgid "great x5 nephew"
+msgctxt "(a man’s) sister’s great ×4 grandson"
+msgid "great ×5 nephew"
 msgstr "synovec (z 6. kolene)"
 
 #: includes/functions/functions.php:1395
-msgctxt "(a woman’s) great x5 nephew"
-msgid "great x5 nephew"
+msgctxt "(a woman’s) great ×5 nephew"
+msgid "great ×5 nephew"
 msgstr "synovec (z 6. kolene)"
 
 #: includes/functions/functions.php:1407
-msgctxt "(a man’s) brother’s great x4 grandchild"
-msgid "great x5 nephew/niece"
+msgctxt "(a man’s) brother’s great ×4 grandchild"
+msgid "great ×5 nephew/niece"
 msgstr "synovec/neteř (z 6. kolene)"
 
 #: includes/functions/functions.php:1409
-msgctxt "(a man’s) sister’s great x4 grandchild"
-msgid "great x5 nephew/niece"
+msgctxt "(a man’s) sister’s great ×4 grandchild"
+msgid "great ×5 nephew/niece"
 msgstr "synovec/neteř (z 6. kolene)"
 
 #: includes/functions/functions.php:1411
-msgctxt "(a woman’s) great x5 nephew/niece"
-msgid "great x5 nephew/niece"
+msgctxt "(a woman’s) great ×5 nephew/niece"
+msgid "great ×5 nephew/niece"
 msgstr "synovec/neteř (z 6. kolene)"
 
 #: includes/functions/functions.php:1399
-msgctxt "(a man’s) brother’s great x4 granddaughter"
-msgid "great x5 niece"
+msgctxt "(a man’s) brother’s great ×4 granddaughter"
+msgid "great ×5 niece"
 msgstr "synovec (z 6. kolene)"
 
 #: includes/functions/functions.php:1401
-msgctxt "(a man’s) sister’s great x4 granddaughter"
-msgid "great x5 niece"
+msgctxt "(a man’s) sister’s great ×4 granddaughter"
+msgid "great ×5 niece"
 msgstr "neteř (z 6. kolene)"
 
 #: includes/functions/functions.php:1403
-msgctxt "(a woman’s) great x5 niece"
-msgid "great x5 niece"
+msgctxt "(a woman’s) great ×5 niece"
+msgid "great ×5 niece"
 msgstr "neteř (z 6. kolene)"
 
 #: includes/functions/functions.php:1239
-msgctxt "great x4 grandfather’s brother"
-msgid "great x5 uncle"
-msgstr "5x prastrýc"
+msgctxt "great ×4 grandfather’s brother"
+msgid "great ×5 uncle"
+msgstr "5× prastrýc"
 
 #: includes/functions/functions.php:1240
-msgctxt "great x4 grandmother’s brother"
-msgid "great x5 uncle"
-msgstr "5x prastrýc"
+msgctxt "great ×4 grandmother’s brother"
+msgid "great ×5 uncle"
+msgstr "5× prastrýc"
 
 #: includes/functions/functions.php:1241
-msgctxt "great x4 grandparent’s brother"
-msgid "great x5 uncle"
-msgstr "5x prastrýc"
+msgctxt "great ×4 grandparent’s brother"
+msgid "great ×5 uncle"
+msgstr "5× prastrýc"
 
 #: includes/functions/functions.php:1252
-msgid "great x6 aunt"
-msgstr "6x prateta"
+msgid "great ×6 aunt"
+msgstr "6× prateta"
 
 #: includes/functions/functions.php:1253
-msgid "great x6 aunt/uncle"
-msgstr "6x prateta/prastrýc"
+msgid "great ×6 aunt/uncle"
+msgstr "6× prateta/prastrýc"
 
 #: includes/functions/functions.php:1595
-msgid "great x6 grandchild"
-msgstr "6x pravnouče"
+msgid "great ×6 grandchild"
+msgstr "6× pravnouče"
 
 #: includes/functions/functions.php:1594
-msgid "great x6 granddaughter"
-msgstr "6x pravnučka"
+msgid "great ×6 granddaughter"
+msgstr "6× pravnučka"
 
 #: includes/functions/functions.php:1500
-msgid "great x6 grandfather"
-msgstr "6x praděda"
+msgid "great ×6 grandfather"
+msgstr "6× praděda"
 
 #: includes/functions/functions.php:1501
-msgid "great x6 grandmother"
-msgstr "6x prabába"
+msgid "great ×6 grandmother"
+msgstr "6× prabába"
 
 #: includes/functions/functions.php:1502
-msgid "great x6 grandparent"
-msgstr "7x prarodič"
+msgid "great ×6 grandparent"
+msgstr "7× prarodič"
 
 #: includes/functions/functions.php:1593
-msgid "great x6 grandson"
-msgstr "6x pravnuk"
+msgid "great ×6 grandson"
+msgstr "6× pravnuk"
 
 #: includes/functions/functions.php:1249
-msgctxt "great x5 grandfather’s brother"
-msgid "great x6 uncle"
-msgstr "6x prastrýc"
+msgctxt "great ×5 grandfather’s brother"
+msgid "great ×6 uncle"
+msgstr "6× prastrýc"
 
 #: includes/functions/functions.php:1250
-msgctxt "great x5 grandmother’s brother"
-msgid "great x6 uncle"
-msgstr "6x prastrýc"
+msgctxt "great ×5 grandmother’s brother"
+msgid "great ×6 uncle"
+msgstr "6× prastrýc"
 
 #: includes/functions/functions.php:1251
-msgctxt "great x5 grandparent’s brother"
-msgid "great x6 uncle"
-msgstr "6x prastrýc"
+msgctxt "great ×5 grandparent’s brother"
+msgid "great ×6 uncle"
+msgstr "6× prastrýc"
 
 #: includes/functions/functions.php:1262
-msgid "great x7 aunt"
-msgstr "7x prateta"
+msgid "great ×7 aunt"
+msgstr "7× prateta"
 
 #: includes/functions/functions.php:1263
-msgid "great x7 aunt/uncle"
-msgstr "7x prateta/prastrýc"
+msgid "great ×7 aunt/uncle"
+msgstr "7× prateta/prastrýc"
 
 #: includes/functions/functions.php:1602
-msgid "great x7 grandchild"
-msgstr "7x pravnouče"
+msgid "great ×7 grandchild"
+msgstr "7× pravnouče"
 
 #: includes/functions/functions.php:1601
-msgid "great x7 granddaughter"
-msgstr "7x pravnučka"
+msgid "great ×7 granddaughter"
+msgstr "7× pravnučka"
 
 #: includes/functions/functions.php:1507
-msgid "great x7 grandfather"
-msgstr "7x praděda"
+msgid "great ×7 grandfather"
+msgstr "7× praděda"
 
 #: includes/functions/functions.php:1508
-msgid "great x7 grandmother"
-msgstr "7x prabába"
+msgid "great ×7 grandmother"
+msgstr "7× prabába"
 
 #: includes/functions/functions.php:1509
-msgid "great x7 grandparent"
-msgstr "8x prarodič"
+msgid "great ×7 grandparent"
+msgstr "8× prarodič"
 
 #: includes/functions/functions.php:1600
-msgid "great x7 grandson"
-msgstr "7x pravnuk"
+msgid "great ×7 grandson"
+msgstr "7× pravnuk"
 
 #: includes/functions/functions.php:1259
-msgctxt "great x6 grandfather’s brother"
-msgid "great x7 uncle"
-msgstr "7x prastrýc"
+msgctxt "great ×6 grandfather’s brother"
+msgid "great ×7 uncle"
+msgstr "7× prastrýc"
 
 #: includes/functions/functions.php:1260
-msgctxt "great x6 grandmother’s brother"
-msgid "great x7 uncle"
-msgstr "7x prastrýc"
+msgctxt "great ×6 grandmother’s brother"
+msgid "great ×7 uncle"
+msgstr "7× prastrýc"
 
 #: includes/functions/functions.php:1261
-msgctxt "great x6 grandparent’s brother"
-msgid "great x7 uncle"
-msgstr "7x prastrýc"
+msgctxt "great ×6 grandparent’s brother"
+msgid "great ×7 uncle"
+msgstr "7× prastrýc"
 
 #: includes/functions/functions.php:1085
 msgctxt "father’s father’s brother’s wife"
@@ -19772,7 +19763,7 @@ msgstr "se narodil"
 
 #: includes/authentication.php:111 includes/authentication.php:174
 #: message.php:40
-msgid "webtrees Message"
+msgid "webtrees message"
 msgstr "Zpráva webtrees"
 
 #: includes/functions/functions_edit.php:220
@@ -19880,7 +19871,7 @@ msgstr "…"
 #~ msgid "%s"
 #~ msgstr "%s"
 
-#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website."
+#~ msgid "<center><b>Welcome to this genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website."
 #~ msgstr "<center><b>VÍTEJTE NA TĚCHTO RODOPISNÝCH STRÁNKÁCH</b></center><br>Access is permitted to users who have an account and a password for this website."
 
 #~ msgid "Abbreviate chart labels"
@@ -19928,7 +19919,7 @@ msgstr "…"
 #~ msgid "Births, Deaths, Marriages"
 #~ msgstr "Narození, úmrtí, svatby"
 
-#~ msgid "Choose to display a standard header for your custom Welcome text.  When your users change language, this header will appear in the new language.<br><br>If set to <b>Yes</b>, the header will look like this:<div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website.<br></div>"
+#~ msgid "Choose to display a standard header for your custom Welcome text.  When your users change language, this header will appear in the new language.<br><br>If set to <b>Yes</b>, the header will look like this:<div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website.<br></div>"
 #~ msgstr "Vyberte si standardní hlavičku na váš vlastní uvítací text. Pokud si uživatelé změní jazyk, tato hlavička se zobrazí v novém jazyce.<br><br>Pokud je nastaveno <b>Ano</b>, hlavička bude vypadat takto: <div class=\"list_value_wrap\"><center><b>Vítejte na stránce tohoto rodokmenu</b></center><br>Přístup je povolen těm uživatelům, kteří mají na této stránce účet a heslo.<br></div>"
 
 #~ msgid "Click here to continue"

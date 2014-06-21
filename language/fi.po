@@ -51,8 +51,8 @@ msgstr " aikajaksoa kohti"
 #: includes/functions/functions_print_facts.php:192
 #: includes/functions/functions_print_facts.php:197
 #, php-format
-msgid "#%d"
-msgstr "#%d"
+msgid "#%s"
+msgstr "#%s"
 
 #: modules_v3/googlemap/module.php:851
 #, php-format
@@ -73,22 +73,22 @@ msgstr[1] "%1$d henkilöiltä puuttuu syntymäpaikan koordinaatit: %2$s."
 #: includes/functions/functions.php:685
 #, php-format
 msgctxt "FEMALE"
-msgid "%1$d x %2$s"
-msgstr "%1$d x %2$s"
+msgid "%1$d × %2$s"
+msgstr "%1$d × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:674
 #, php-format
 msgctxt "MALE"
-msgid "%1$d x %2$s"
-msgstr "%1$d x %2$s"
+msgid "%1$d × %2$s"
+msgstr "%1$d × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:696
 #, php-format
 msgctxt "MALE/FEMALE"
-msgid "%1$d x %2$s"
-msgstr "%1$d x %2$s"
+msgid "%1$d × %2$s"
+msgstr "%1$d × %2$s"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$d>=4
 #: includes/functions/functions.php:1702
@@ -179,20 +179,12 @@ msgstr "%1$s &rarr; %2$s"
 msgid "%H:%i:%s"
 msgstr "%H:%i:%s"
 
-#. I18N: This is a title, so needs suitable capitalisation
-#: includes/functions/functions_charts.php:267
-#, php-format
-msgid "%d Child"
-msgid_plural "%d Children"
-msgstr[0] "%d Lapsi"
-msgstr[1] "%d Lasta"
-
 #: lifespan.php:198
 #, php-format
-msgid "%d Individual"
-msgid_plural "%d Individuals"
-msgstr[0] "%d Henkilö"
-msgstr[1] "%d Henkilöä"
+msgid "%s individual"
+msgid_plural "%s individuals"
+msgstr[0] "%s henkilö"
+msgstr[1] "%s henkilöä"
 
 #: includes/functions/functions_print.php:306 library/WT/Stats.php:3415
 #, php-format
@@ -218,20 +210,20 @@ msgstr[1] "%d kuukautta"
 #: includes/functions/functions.php:637
 #, php-format
 msgctxt "FEMALE"
-msgid "%d x cousin"
+msgid "%d × cousin"
 msgstr "serkku %d. polvessa"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: includes/functions/functions.php:618
 #, php-format
 msgctxt "MALE"
-msgid "%d x cousin"
+msgid "%d × cousin"
 msgstr "serkku %d. polvessa"
 
 #: includes/functions/functions.php:656
 #, php-format
 msgctxt "MALE/FEMALE"
-msgid "%d x cousin"
+msgid "%d × cousin"
 msgstr "serkku %d. polvessa"
 
 #: modules_v3/relatives/module.php:60
@@ -440,10 +432,10 @@ msgstr "&lt;valitse&gt;"
 #: search_advanced.php:112 search_advanced.php:116 search_advanced.php:120
 #: search_advanced.php:168 search_advanced.php:169 search_advanced.php:170
 #, php-format
-msgid "&plusmn;%d year"
-msgid_plural "&plusmn;%d years"
-msgstr[0] "&plusmn;%d vuosi"
-msgstr[1] "&plusmn;%d vuotta"
+msgid "±%d year"
+msgid_plural "±%d years"
+msgstr[0] "±%d vuosi"
+msgstr[1] "±%d vuotta"
 
 #. I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan 1900 (aged 43 years)
 #: library/WT/I18N.php:395 library/WT/I18N.php:399
@@ -599,7 +591,7 @@ msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<b
 msgstr "<b>GUID</b> on lyhenne termistä «Globally Unique ID».<br><br>GUID pyrkii henkilön tunnistamiseen sellaisella tavalla, että keskeiset järjestöt, kuten Salt Lake Cityn MAP-kirkon sukututkimuskeskus (Family History Center of the LDS church in Salt Lake City), tai yhteensopivat sukututkimusohjelmistot palvelimellasi, voisivat todeta käsittelevänsä samaa henkilöä, riippumatta siitä mistä GEDCOM aineisto on peräisin. Sukututkimuskeskuksen päämääränä on luoda yhteinen sukututkimuksen tietovarasto ja hyödyttää sitä verkkopalvelujen kautta. Tällä tavalla mikä tahansa sukututkimusohjelma voisi hakea tietoja ja täydentää omaa aineistoa saaduilla tiedoilla.<br><br>Jos sinulla ei ole tarkoitus jakaa GEDCOM aineistoasi muiden kanssa, sinulla ei ole tarvetta luoda näitä GUID tunnisteita <b>webtrees</b> ohjelmalla. Niiden luominen ei aiheuta muuta haittaa, kuin sen että GEDCOMin tilantarve lisääntyy."
 
 #: help_text.php:1318
-msgid "<b>Important Note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
+msgid "<b>Important note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
 msgstr "<b>Tärkeä huomautus:</b> siirtovelho ei voi auttaa mediakohteiden siirtämisessä. Sinun tulee määrittää ja siirtää tai kopioida media-asetukset erikseen siirtovelhon toiminnon jälkeen."
 
 #: help_text.php:1007
@@ -607,7 +599,7 @@ msgid "<b>No</b> means that authenticated users can see the details of all livin
 msgstr "Valitsemalla <b>Ei</b>, rekisteröidyt käyttäjät saavat nähdä elossa olevien henkilöiden tiedot. <b>Kyllä</b>, käyttäjät saavat nähdä elossa olevista ainoastaan lähisukulaisten tiedot.<br><br>Tämä valinta sovelletaan kaikille käyttäjille, joilla on pääsyoikeus sukututkimusaineistoon. Ylläpitäjä voi käyttäjäkohtaisesti päättää toisin, muuttamalla tämä valinta käyttäjän hallintaosassa."
 
 #: message.php:118
-msgid "<b>Please Note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogical data, please include the sources where you obtained the data."
+msgid "<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogical data, please include the sources where you obtained the data."
 msgstr "<b>Huomautus:</b> Elossa olevien yksityistiedot voidaan välittää ainoastaan sukulaisille ja läheisille ystäville. Tällainen suhde tarkistetaan sinulta ennen kuin voit vastaanottaa yksityistietoa. Toisinaan myös kuolleiden tiedot pidetään yksityisenä, joka voi johtua siitä, ettei ole tarpeeksi tietoja joilla voidaan päätellä onko henkilö vielä elossa vai kuollut.<br><br>Ennen kuin lähetät kyselyn henkilöstä, tarkista päivämäärien, sijaintien, paikkojen ja lähisukulaisten tietojen perusteella, että oikea henkilö on kysymyksessä. Jos olet lisäämässä uutta tietoa sukupuuhun, kerro myös mikä on tietolähteesi."
 
 #: help_text.php:1063
@@ -639,15 +631,15 @@ msgid "<b>webtrees</b> reply address"
 msgstr "<b>webtrees</b> vastausosoite"
 
 #: login.php:150
-msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved."
+msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved."
 msgstr "<center><b>Tervetuloa tähän sukututkimuksen verkkopalveluun.</b></center><br>Pääsy näille sivuille on sallittu vain niille käyttäjille, joille on annettu <b>käyttöoikeus</b>.<br><br>Jos sinulla jo on käyttäjätili, voit kirjautua järjestelmään tällä sivulla. Jos sinulla ei ole käyttäjätiliä, voit pyytää sellaista klikkaamalla asianomaista linkkiä tällä sivulla.<br><br>Todennettuaan antamasi tiedot, ylläpitäjä joko hyväksyy tai hylkää pyyntösi. Tulet saamaan sähköpostiviestin kun pyyntösi on hyväksytty."
 
 #: login.php:153
-msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved."
+msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved."
 msgstr "<center><b>Tervetuloa tähän sukututkimuksen verkkopalveluun</b></center><br>Pääsy tänne on sallittu ainoastaan <u>sukulaisille</u>.<br><br>Jos sinulla on käyttäjätili voit kirjautua sivustolle. Jos sinulla ei vielä ole käyttäjätiliä, voit pyytää sellaista klikkaamalla asianomaista linkkiä tällä sivulla.<br><br>Tarkistettuaan tietosi sivun ylläpitäjä joko hyväksyy tai hylkää pyyntösi. Saat sähköpostiviestin kun pyyntösi on hyväksytty."
 
 #: login.php:147
-msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved."
+msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved."
 msgstr "<center><b>Tervetuloa tähän sukututkimuksen verkkopalveluun</b></center><br>Jokaisella käyttäjällä, jolla on käyttäjätili, on pääsy tänne.<br><br>Jos sinulla on käyttäjätili, voit kirjautua tältä sivulta. Jos sinulla ei ole käyttäjätiliä, voit pyytää sellaisen klikkaamalla alla olevaa linkkiä.<br><br>Todennettuaan pyyntösi ylläpitäjä aktivoi käyttäjätilisi. Saat sähköpostiviestin kun pyyntösi on hyväksytty."
 
 #. I18N: default option in list of themes
@@ -721,7 +713,7 @@ msgstr "Luettelo sukupuuhun linkitetyistä tehtävistä ja toiminnoista."
 msgid "A list of the Hebrew death anniversaries that will occur in the near future."
 msgstr "Luettelo lähitulevaisuudessa tapahtuvista juutalaisista kuoleman vuosipäivistä."
 
-#. I18N: Description of the “On This Day” module
+#. I18N: Description of the “On this day” module
 #: modules_v3/todays_events/module.php:37
 msgid "A list of the anniversaries that occur today."
 msgstr "Tämän päivän merkkitapahtumat"
@@ -1135,23 +1127,23 @@ msgstr "Lisää maantieteellinen sijaintipaikka"
 
 #: modules_v3/clippings/module.php:472
 #, php-format
-msgid "Add %s to cart"
+msgid "Add %s to the clippings cart"
 msgstr "Lisää %s leikekoriin"
 
 #: modules_v3/faq/module.php:145 modules_v3/faq/module.php:359
-msgid "Add FAQ item"
+msgid "Add an FAQ item"
 msgstr "Lisää Usein kysytyt kysymykset aihe"
 
 #: modules_v3/clippings/module.php:150 modules_v3/clippings/module.php:233
-msgid "Add Individual By ID"
+msgid "Add individual by ID"
 msgstr "Lisää henkilötunnuksen avulla"
 
 #: search_advanced.php:290
-msgid "Add More Fields"
+msgid "Add more fields"
 msgstr "Lisää uusia kenttiä"
 
 #: modules_v3/gedcom_news/module.php:125
-msgid "Add a News article"
+msgid "Add a news article"
 msgstr "Lisää uutisartikkeli"
 
 #: edit_interface.php:563 modules_v3/relatives/module.php:373
@@ -1177,7 +1169,7 @@ msgid "Add a husband using an existing individual"
 msgstr "Liitä mies puolisoksi käyttäen tiedostossa olevaa henkilöä."
 
 #: modules_v3/user_blog/module.php:95
-msgid "Add a new Journal entry"
+msgid "Add a new journal entry"
 msgstr "Lisää päiväkirjamerkintä"
 
 #: help_text.php:1133 includes/functions/functions_edit.php:834
@@ -1358,7 +1350,7 @@ msgstr "Lisää välilyönnit kun teksti jatkuu seuraavalle riville"
 
 #: modules_v3/stories/module.php:127 modules_v3/stories/module.php:214
 #: modules_v3/stories/module.php:337
-msgid "Add story"
+msgid "Add a story"
 msgstr "Lisää tarina"
 
 #: admin_trees_download.php:129 modules_v3/clippings/module.php:212
@@ -1425,11 +1417,11 @@ msgid "Add your own text and graphics."
 msgstr "Lisää oma tekstisi ja grafiikkasi."
 
 #: modules_v3/GEDFact_assistant/_CENS/census_1_ctrl.php:91
-msgid "Add/Insert Blank Row"
+msgid "Add/insert a blank row"
 msgstr "Lisää tyhjä rivi"
 
 #: editnews.php:31 editnews.php:49
-msgid "Add/edit journal/news entry"
+msgid "Add/edit a journal/news entry"
 msgstr "Lisää/muokkaa päiväkirja/uutisartikkeli"
 
 #: admin_site_merge.php:196 admin_site_merge.php:202
@@ -1479,7 +1471,7 @@ msgid "Administrators"
 msgstr "Palvelimen ylläpitäjät"
 
 #: help_text.php:1284
-msgid "Administrators sometimes need to clean up and correct the data submitted by users.  For example, they might need to correct the PLAC location to include the country.  When Administrators make such corrections, information about the original change is normally replaced.  This may not be desirable.<br><br>When this option is selected, <b>webtrees</b> will retain the original Change information instead of replacing it with that of the current session.  With this option selected, Administrators also have the ability to modify or delete the information associated with the original CHAN tag."
+msgid "Administrators sometimes need to clean up and correct the data submitted by users.  For example, they might need to correct the PLAC location to include the country.  When administrators make such corrections, information about the original change is normally replaced.  This may not be desirable.<br><br>When this option is selected, <b>webtrees</b> will retain the original change information instead of replacing it with that of the current session.  With this option selected, administrators also have the ability to modify or delete the information associated with the original CHAN tag."
 msgstr "Toisinaan ylläpitäjän pitää puhdistaa ja korjata käyttäjien syöttämää tietoa, esimerkiksi PLAC sijaintia, lisäämällä maa. Kun ylläpitäjä suorittaa sellaisia oikaisuja, alkuperäinen muutostieto tavallisesti korvataan. Tämä ei ehkä ole toivottavaa.<br><br>Kun tämä valitaan, <b>webtrees</b> säilyttää alkuperäiset muutoksen tekijän ja -ajan tiedot. Tällä valinnalla ylläpitäjät voivat muuttaa tai poistaa alkuperäiset CHAN-tiedot, jotka liittyvät muutostietueeseen."
 
 #: library/WT/Gedcom/Code/Pedi.php:43
@@ -1658,7 +1650,7 @@ msgid "After creating the family tree, you will be able to upload or import data
 msgstr "Luotuasi sukupuun, voit ladata tai tuoda sille aineistoa GEDCOM-tiedostolta."
 
 #: login.php:242
-msgid "After you have logged in, select the “My Account” link under the “My Page” menu and fill in the password fields to change your password."
+msgid "After you have logged in, select the “My account” link under the “My page” menu and fill in the password fields to change your password."
 msgstr "Kirjauduttuasi, valitse ”Käyttäjätilini” joka löytyy ”Oma sivuni”-valikosta ja täytä salasanakentät vaihtaaksesi salasanasi."
 
 #. I18N: gedcom tag AGE
@@ -2050,11 +2042,11 @@ msgid "Are you sure you want to delete this FAQ entry?"
 msgstr "Haluatko varmasti poistaa kysymyksen?"
 
 #: modules_v3/user_blog/module.php:91
-msgid "Are you sure you want to delete this Journal entry?"
+msgid "Are you sure you want to delete this journal entry?"
 msgstr "Haluatko varmasti poistaa tämän päiväkirjamerkinnän?"
 
 #: modules_v3/gedcom_news/module.php:119
-msgid "Are you sure you want to delete this News entry?"
+msgid "Are you sure you want to delete this news article?"
 msgstr "Haluatko varmasti poistaa tämän uutisen?"
 
 #: includes/functions/functions_print_facts.php:181
@@ -2091,7 +2083,7 @@ msgid "Are you sure you want to remove links to this media object?"
 msgstr "Haluatko varmasti poistaa liitteet tähän mediakohteeseen?"
 
 #: modules_v3/gedcom_favorites/module.php:123
-msgid "Are you sure you want to remove this item from your list of Favorites?"
+msgid "Are you sure you want to remove this item from your list of favorites?"
 msgstr "Haluatko varmasti poistaa tämän tietueen suosikeistasi?"
 
 #: edit_changes.php:231
@@ -2161,7 +2153,7 @@ msgid "Asuncion, Paraguay"
 msgstr "Asuncion, Paraguay"
 
 #: library/WT/Stats.php:4003
-msgid "At Sea"
+msgid "At sea"
 msgstr "Merellä"
 
 #: library/WT/Gedcom/Code/Temp.php:65
@@ -2710,7 +2702,7 @@ msgid "Birth"
 msgstr "Syntymä"
 
 #: modules_v3/birth_report/report.xml:6
-msgid "Birth Place contains"
+msgid "Birthplace contains"
 msgstr "Syntymäpaikka sisältää"
 
 #: library/WT/Stats.php:978 statistics.php:576
@@ -3709,7 +3701,7 @@ msgid "Click here for PhpGedView to <b>webtrees</b> transfer wizard"
 msgstr "Valitsemalla tämän, käynnistyy siirtovelho jolla siirrät PhpGedView aineistosi <b>webtrees</b> muotoon"
 
 #: modules_v3/faq/module.php:282
-msgid "Click here to Add, Edit, or Delete"
+msgid "Click here to add, edit, or delete"
 msgstr "Lisää, muokkaa tai poista"
 
 #: individual.php:267
@@ -3899,7 +3891,7 @@ msgstr "Sisällys"
 #: modules_v3/clippings/module.php:129 modules_v3/clippings/module.php:501
 #: modules_v3/clippings/module.php:524 modules_v3/clippings/module.php:537
 #: modules_v3/googlemap/module.php:4142
-msgid "Continue Adding"
+msgid "Continue adding"
 msgstr "Jatka lisäämistä"
 
 #. I18N: gedcom tag CONT
@@ -4038,7 +4030,7 @@ msgstr "Luo lähde"
 
 #: edit_interface.php:1493 edit_interface.php:1558
 #: includes/functions/functions_edit.php:320
-msgid "Create repository"
+msgid "Create a new repository"
 msgstr "Luo tietovarasto"
 
 #: admin_users.php:480
@@ -4293,7 +4285,7 @@ msgid "Date"
 msgstr "Aika"
 
 #: modules_v3/user_messages/module.php:87
-msgid "Date Sent:"
+msgid "Date sent:"
 msgstr "Luontiaika:"
 
 #: admin_trees_config.php:1045 help_text.php:1403
@@ -4616,7 +4608,7 @@ msgid "Death"
 msgstr "Kuolema"
 
 #: modules_v3/death_report/report.xml:6
-msgid "Death Place contains"
+msgid "Death place contains"
 msgstr "Kuolinpaikan nimi sisältää"
 
 #: library/WT/Stats.php:995 statistics.php:584
@@ -4897,7 +4889,7 @@ msgid "Delete FAQ item"
 msgstr "Poista kysymys"
 
 #: modules_v3/user_messages/module.php:116
-msgid "Delete Selected Messages"
+msgid "Delete selected messages"
 msgstr "Poista merkityt viestit"
 
 #: modules_v3/googlemap/module.php:4130
@@ -4909,7 +4901,7 @@ msgid "Delete inactive users"
 msgstr "Poista passiiviset käyttäjät"
 
 #: library/WT/Controller/Individual.php:151
-msgid "Delete name"
+msgid "Delete this name"
 msgstr "Poista nimi"
 
 #. I18N: The system is about to [...]
@@ -5140,7 +5132,7 @@ msgid "Display %s"
 msgstr "Näytä %s"
 
 #: modules_v3/googlemap/help_text.php:46 modules_v3/googlemap/module.php:459
-msgid "Display Map Coordinates"
+msgid "Display map coordinates"
 msgstr "Näytä karttakoordinaatit"
 
 #: find.php:220 find.php:237 find.php:254 find.php:272 find.php:289
@@ -5227,7 +5219,7 @@ msgid "Download %s…"
 msgstr ""
 
 #: mediaviewer.php:104
-msgid "Download File"
+msgid "Download file"
 msgstr "Lataa tiedosto"
 
 #: admin_trees_download.php:30
@@ -5514,7 +5506,7 @@ msgstr "Työnantaja"
 
 #: modules_v3/clippings/help_text.php:36 modules_v3/clippings/module.php:254
 #: modules_v3/clippings/module.php:463
-msgid "Empty Cart"
+msgid "Empty the clippings cart"
 msgstr "Tyhjennä leikekori"
 
 #: admin_modules.php:121
@@ -5608,7 +5600,7 @@ msgid "Enter the email address.<br><br>An example email address looks like this:
 msgstr "Syötä sähköpostiosoite.<br><br>Esimerkki sähköpostiosoitteesta on <b>nimi@hotmail.com</b>. Jätä tämä kenttä tyhjäksi, jos et halua lisätä sähköpostiosoitetta."
 
 #: help_text.php:1238
-msgid "Enter the limiting value here.<br><br>If you have opted to limit the News article display according to age, any article older than the number of days entered here will be hidden from view.  If you have opted to limit the News article display by number, only the specified number of recent articles, ordered by age, will be shown.  The remaining articles will be hidden from view.<br><br>Zeros entered here will disable the limit, causing all News articles to be shown."
+msgid "Enter the limiting value here.<br><br>If you have opted to limit the news article display according to age, any article older than the number of days entered here will be hidden from view.  If you have opted to limit the news article display by number, only the specified number of recent articles, ordered by age, will be shown.  The remaining articles will be hidden from view.<br><br>Zeros entered here will disable the limit, causing all news articles to be shown."
 msgstr "Syötä raja-arvo tähän.<br><br>Jos rajoittavana tekijänä on ikä, kaikki tätä päivien lukumäärää vanhemmat artikkelit jäävät piiloon. Jos rajoittavana tekijänä on artikkelien lukumäärä, vain lukumäärän mukaiset uusimmat artikkelit näkyvät.<br><br>Jos arvoiksi valitaan nollat, näytetään kaikki artikkelit."
 
 #: help_text.php:325
@@ -5713,7 +5705,7 @@ msgid "Events of close relatives"
 msgstr "Lähisukulaisten tapahtumat"
 
 #: help_text.php:1363
-msgid "Every individual in the database has a unique ID number on this site.  If you know the ID number for your own record, please enter it here.  If you don’t know your ID number or could not find it because of privacy settings, please provide enough information in the Comments field to help the site administrator identify who you are on this site so that he can set the ID for you."
+msgid "Every individual in the database has a unique ID number on this site.  If you know the ID number for your own record, please enter it here.  If you don’t know your ID number or could not find it because of privacy settings, please provide enough information in the comments field to help the site administrator identify who you are on this site so that he can set the ID for you."
 msgstr "Jokaisella henkilöllä tietokannassa on oma yksilöllinen tunnus. Jos tiedät tunnuksesi, lisää se tähän. Jos et tiedä sitä tai et voinut löytää sitä yksityisyysasetusten vuoksi, toimita kommenttikenttään riittävästi tietoa itsestäsi, jotta ylläpitäjä voi tunnistaa sinut ja asettaa tunnuksen."
 
 #: help_text.php:1378
@@ -6307,7 +6299,7 @@ msgid "Find a media object"
 msgstr "Etsi mediakohde"
 
 #: find.php:86 includes/functions/functions_print.php:1041
-msgid "Find a note"
+msgid "Find a shared note"
 msgstr "Etsi lisätieto"
 
 #: find.php:80 includes/functions/functions_print.php:1015
@@ -6341,7 +6333,7 @@ msgid "Find next path"
 msgstr "Etsi seuraava reitti"
 
 #: help_text.php:1278
-msgid "Find next relationship path"
+msgid "Find the next relationship path"
 msgstr "Etsi seuraava sukulaisuuspolku"
 
 #: library/WT/Stats.php:3879
@@ -6975,7 +6967,7 @@ msgid "He was cremated"
 msgstr "Hänet polttohaudattiin"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_1_ctrl.php:62
-msgid "Head of Household:"
+msgid "Head of household:"
 msgstr "Pää:"
 
 #. I18N: gedcom tag HEAD
@@ -7061,7 +7053,7 @@ msgid "Here you can add a fact to the record being edited.<br><br>First choose a
 msgstr "Tässä voit lisätä tietoja henkilölle tai henkilöille.<br><br>Valitse ensin tietolaji pudotusvalikosta ja klikkaa sitten <b>Lisää</b> painiketta.<br>Pudotusvalikossa ovat kaikki GEDCOM-tiedostoon lisättävissä olevat tietolajit."
 
 #: help_text.php:1089
-msgid "Here you can add a source <b>Citation</b> to this record.<br><br>Just click the link, a window will open, and you can choose the source from the list (Find ID) or create a new source and then add the Citation.<br><br>Adding sources is an important part of genealogy because it allows other researchers to verify where you obtained your information."
+msgid "Here you can add a source <b>Citation</b> to this record.<br><br>Just click the link, a window will open, and you can choose the source from the list (Find ID) or create a new source and then add the citation.<br><br>Adding sources is an important part of genealogy because it allows other researchers to verify where you obtained your information."
 msgstr "Tässä voit lisätä tietueelle lähdeviitteen.<br><br>Klikkaamalla linkkiä, avautuu ikkuna, ja voit valita lähteen listasta (Etsi tunnus) tai luoda uuden lähteen ja sitten lisätä lainaus.<br><br>Lähteiden lisääminen on tärkeä osa sukututkimusta, koska muut tutkijat voivat tarkistaa mistä olet hankkinut tietosi."
 
 #: help_text.php:1228
@@ -7073,7 +7065,7 @@ msgid "Here you can choose between two types of displaying places names in hiera
 msgstr "Tässä voit valita kahdesta tavasta näyttää paikannimet hierarkiassa. Jos valitset Kyllä, näytetään lyhyt nimi tai käytössä olevan tason nimi. Jos valitset Ei, näytetään koko nimi.<br><b>Esimerkkejä:</b> Chicago, Illinois, USA<br><b>Lyhyt nimi:</b> Chicago<br><b>Koko nimi:</b> Illinois, USA<br><b>Lyhyt nimi:</b> Illinois"
 
 #: help_text.php:1045
-msgid "Here you can choose text to appear on the login screen. You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the Help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.</div><br></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
+msgid "Here you can choose text to appear on the login screen. You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the Help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.</div><br></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
 msgstr "Tässä valitset sisään kirjautumissivun tekstin. Sinun pitää valita valmiista teksteistä sopivin.<br><br>Voit myös valita ja kirjoittaa oman tervehdystekstisi. <b>Mukautetun tervehdystekstin</b> avusteesta saat lisäohjeita.<br><br>Valmiit tekstit ovat:<ul><li><b>Teksti joka kertoo, että kaikki voivat pyytää itselleen tunnuksen:</b><div class=\"list_value_wrap\"><center><b>Tervetuloa tähän sukututkimuksen verkkopalveluun</b></center><br>Jokaisella käyttäjällä, jolla on käyttäjätili, on pääsy tänne.<br><br>Jos sinulla on käyttäjätili, voit kirjautua tällä sivulla. Jos sinulla ei ole käyttäjätiliä, voit pyytää tilin klikkaamalla alla olevaa linkkiä.<br><br>Todennettuaan pyyntösi, ylläpitäjä aktivoi käyttäjätilisi. Saat sähköpostiviestin sen jälkeen kun pyyntösi on hyväksytty.</div><br></li><li><b>Valmis teksti, jossa kerrotaan, että ylläpitäjä päättää avataanko tunnus:</b><div class=\"list_value_wrap\"><center><b>Tervetuloa tähän sukututkimuksen verkkopalveluun.</b></center><br>Pääsy näille sivuille on sallittu vain niille käyttäjille, joille on annettu <b>käyttöoikeus</b>.<br><br>Jos sinulla on käyttäjätili, voit kirjautua järjestelmään tällä sivulla. Jos sinulla ei ole käyttäjätiliä, voit pyytää tilin klikkaamalla asianomaista linkkiä tällä sivulla.<br><br>Todennettuaan antamasi tiedot, ylläpitäjä joko hyväksyy tai hylkää pyyntösi. Tulet saamaan sähköpostiviestin kun pyyntösi on hyväksytty.</div><br></li><li><b>Valmis teksti, jossa kerrotaan, että ainoastaan sukujäsenille avataan tunnus:</b><div class=\"list_value_wrap\"><center><b>Tervetuloa tähän sukututkimuksen verkkopalveluun.</b></center><br>Pääsy näille sivuille on sallittu vain niille käyttäjille, joille on annettu <b>käyttöoikeus</b>.<br><br>Mikäli sinulla on käyttäjätili, voit kirjautua järjestelmään tällä sivulla. Mikäli sinulla ei ole käyttäjätiliä, voit pyytää tilin klikkaamalla asianomaista linkkiä tällä sivulla.<br><br>Todennettuaan antamasi tiedot, ylläpitäjä joko hyväksyy tai hylkää pyyntösi. Tulet saamaan sähköpostiviestin kun pyyntösi on hyväksytty.</div></li></ul>"
 
 #: modules_v3/googlemap/help_text.php:54
@@ -7300,7 +7292,7 @@ msgid "If the number of times that a certain surname occurs is lower than the th
 msgstr "Kun sukunimen esiintymislukumäärä alittaa asetetun arvon, niin sukunimi ei näy Yleinen sukunimi luettelossa. Se voidaan tässä manuaalisesti kirjata lisättäväksi luetteloon. Jos useampia sukunimiä halutaan mukaan, niin erottele ne pilkkumerkillä. <b>Isoilla ja pienillä kirjaimilla on suuri merkitys sukunimien käsittelyssä.</b>"
 
 #: help_text.php:819
-msgid "If the option <b>Allow visitors to request account registration</b> is enabled this setting controls whether the admin must approve the registration.<br><br>Setting this to <b>Yes</b> will require that all new users first verify themselves and then be approved by an admin before they can login.  With this setting on <b>No</b>, the <b>User approved by Admin</b> checkbox will be checked automatically when users verify their account, thus allowing an immediate login afterwards without admin intervention."
+msgid "If the option <b>Allow visitors to request account registration</b> is enabled this setting controls whether the admin must approve the registration.<br><br>Setting this to <b>Yes</b> will require that all new users first verify themselves and then be approved by an admin before they can login.  With this setting on <b>No</b>, the “Approved by administrator” checkbox will be checked automatically when users verify their account, thus allowing an immediate login afterwards without admin intervention."
 msgstr "Kun valinta <b>Salli vieraiden tehdä käyttäjätilihakemus</b> on käytössä, tällä asetuksella päätetään pitääkö ylläpitäjän myös hyväksyä uusi hakemus.<br><br>Valitsemalla <b>Kyllä</b>, pitää uuden käyttäjän ensin vahvistaa tili (he saavat erillisen sähköpostin siihen tarkoitukseen) ja sitten ylläpitäjä hyväksyy tilin. Vasta sen jälkeen voi käyttäjä kirjautua sisään. Valitsemalla <b>Ei</b>, <b>Ylläpitäjä on hyväksynyt käyttäjän</b> asetus kuitataan automaattisesti ylläpitäjän puolesta sen jälkeen kun käyttäjä on vahvistanut tilihakemuksensa. Käyttäjä pystyy heti kirjautumaan sisään ilman ylläpitäjän toimia."
 
 #: help_text.php:281
@@ -7377,7 +7369,7 @@ msgid "If you try to exceed these limits, you may experience server time-outs an
 msgstr "Jos ylität näitä rajoituksia, voi keskeytyä suoritettava työ tai saat tyhjiä sivuja."
 
 #: help_text.php:471
-msgid "If you want to remove a surname from the Common Surname list without increasing the threshold value, you can do that by entering the surname here.  If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive.</b>  Surnames entered here will also be removed from the Top-10 list on the Home Page."
+msgid "If you want to remove a surname from the Common Surname list without increasing the threshold value, you can do that by entering the surname here.  If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive</b>.  Surnames entered here will also be removed from the “Top surnames” list on the “Home page”."
 msgstr "Jos haluat poistaa sukunimen Yleisimpien sukunimien luettelosta, muuttamatta kynnysarvoa, voit lisät sukunimen tänne. Jos useampia sukunimiä halutaan mukaan, erota ne pilkkuilla. <b>Isoilla ja pienillä kirjaimilla on suuri merkitys sukunimien käsittelyssä.</b>"
 
 #: setup.php:185
@@ -7431,7 +7423,7 @@ msgid "In some countries, privacy laws apply not only to living individuals, but
 msgstr "Joissakin maissa yksityisyyssuojaa sovelletaan myös äskettäin kuolleiden henkilöiden tietoihin. Tällä valinnalla voit laajentaa yksityisyyssääntöjä koskemaan niitä, joiden syntymästä tai kuolemasta on kulunut tietty määrä vuosia. Tämä omaisuus ei ole käytössä kun jätät tämän kentän tyhjäksi."
 
 #: help_text.php:315
-msgid "In the Citation Details field you would enter the page number or other information that might help someone find the information in the source."
+msgid "In the citation details field you would enter the page number or other information that might help someone find the information in the source."
 msgstr "Viitekenttään lisäät sivunumeron tai muun tiedon, joka auttaa muita löytämään lähteessä olevan tiedon."
 
 #: help_text.php:378
@@ -8080,7 +8072,7 @@ msgid "Leave password blank if you want to keep the current password."
 msgstr "Jätä salasana tyhjäksi jos et halua muuttaa sitä."
 
 #: admin_trees_config.php:438
-msgid "Leave this field empty to use the title of the currently active database."
+msgid "Leave this field empty to use the name of the family tree."
 msgstr "Jättämällä tämä kenttä tyhjäksi, käytetään nyt käytössä olevan tietokannan otsikkotiedot"
 
 #: includes/functions/functions_print_lists.php:95
@@ -9661,7 +9653,7 @@ msgid "No GEDCOM files found.  You need to copy files to the <b>%s</b> directory
 msgstr "Ei löytynyt GEDCOM tiedostoja. Sinun pitää itse kopioida <b>%s</b> hakemiston palvelimellesi."
 
 #: modules_v3/gedcom_news/module.php:93
-msgid "No News articles have been submitted."
+msgid "No news articles have been submitted."
 msgstr "Uutisartikkeleita ei ole luotu."
 
 #: modules_v3/googlemap/module.php:865
@@ -12454,7 +12446,7 @@ msgstr "Näytä vanhin huipulla"
 
 #: modules_v3/todays_events/module.php:132
 #: modules_v3/upcoming_events/module.php:144
-msgid "Show only Births, Deaths, and Marriages?"
+msgid "Show only births, deaths, and marriages?"
 msgstr "Näytä vain syntymät, kuolemat ja avioliitot?"
 
 #: modules_v3/todays_events/module.php:125
@@ -12467,7 +12459,7 @@ msgid "Show only females."
 msgstr "Näytä vain naiset"
 
 #: includes/functions/functions_print_lists.php:87
-msgid "Show only individuals of whom the gender is not known."
+msgid "Show only individuals for whom the gender is not known."
 msgstr "Näytä vain tuntematonta sukupuolta olevat henkilöt."
 
 #: modules_v3/random_media/module.php:260
@@ -13287,7 +13279,7 @@ msgid "The FAQ list is empty."
 msgstr "Kysymysluettelo on tyhjä."
 
 #: help_text.php:1253
-msgid "The Favorites drop-down list shows the favorites that you have selected on your personalized My Page.  It also shows the favorites that the site administrator has selected for the currently active GEDCOM.  Clicking on one of the favorites entries will take you directly to the Individual Information page of that individual.<br><br>More help about adding Favorites is available in your personalized My Page."
+msgid "The Favorites drop-down list shows the favorites that you have selected on your “My page”.  It also shows the favorites that the site administrator has selected for the currently active GEDCOM.  Clicking on one of the favorites entries will take you directly to the Individual Information page of that individual.<br><br>More help about adding favorites is available in your “My page”."
 msgstr "Suosikit pudotusvalikko näyttää suosikit, jotka olet valinnut Omalla sivulla. Se näyttää myös ylläpitäjän valitsemat suosikit. Klikkaamalla suosikkia pääset suoraan kyseisen henkilön Henkilökohtaiselle tietosivulle.<br><br>Lisää ohjeita suosikin lisäämiseksi löytyy Omalla sivullani."
 
 #: library/WT/Gedcom/Code/Temp.php:98
@@ -13324,7 +13316,7 @@ msgid "The changes to “%s” have been rejected."
 msgstr "”%s” - muutokset on hylätty."
 
 #: modules_v3/clippings/module.php:142
-msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the <b>Download Now</b> link.  Follow the instructions and links.</li></ul>"
+msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the “Download” link.  Follow the instructions and links.</li></ul>"
 msgstr "Leikekori mahdollistaa tietojen ”leikkeiden” tallentamisen tästä sukupuusta leikekoriin ja liittämään ne yhdeksi GEDCOM-tiedostoksi omalle työasemallesi latausta varten, jonka jälkeen voit omalla sukututkimusohjelmalla jatkaa käsittelyä.<br><ul><li>Kuinka leike tehdään?<br>Tämä on helppoa. Aina kun näet klikattavissa olevan nimen (henkilön, perheen tai paikan) voit mennä kyseiselle sivulle. Siellä näet vaihtoehdon ”Lisää leikekoriin”. Klikkaamalla linkkiä avautuu sivu, jossa on monta vaihtoehtoa tiedoston siirtämiseen.</li><li>Miten ladataan?<br>Kun sinulla on haluamasi tiedot leikekorissa klikkaa <b>”Lataa nyt</b>”-linkkiä. Seuraa ohjeita ja linkkejä.</li></ul>"
 
 #: help_text.php:1314
@@ -13484,7 +13476,7 @@ msgid "The individual to contact about the genealogical data on this site."
 msgstr "Yhteyshenkilö sukututkimusaineistoon liittyvissä kysymyksissä."
 
 #: help_text.php:573
-msgid "The length of time after birth can be set on the Privacy configuration tab option “Age at which to assume an individual is dead”."
+msgid "The length of time after birth can be set on the “Privacy” tab option “Age at which to assume an individual is dead”."
 msgstr "Syntymästä laskettavia vuosia voi asettaa Yksityisyysasetuksessa ”Oletetaan kuolleeksi, kun saavuttaa tämän iän”"
 
 #. I18N: %s are names of records, such as sources, repositories or individuals
@@ -13583,7 +13575,7 @@ msgid "The username or password is incorrect."
 msgstr "Käyttäjätunnus tai salasana on väärä."
 
 #: help_text.php:689
-msgid "The value to place in the Description meta tag in the HTML page header.  Leave this field empty to use the title of the currently active database."
+msgid "The value to place in the “meta description” tag in the HTML page header.  Leave this field empty to use the name of the family tree."
 msgstr "Teksti joka lisätään kuvaustunnisteeksi (tag) kun rakennetaan HTML sivun otsikko-osa. Kun jätät tämän tyhjäksi, niin näytetään käytössä olevan tietokannan nimi."
 
 #: admin_pgv_to_wt.php:74
@@ -13625,15 +13617,15 @@ msgstr "Teeman voi valita kolmella tasolla: käyttäjä-, GEDCOM- tai sivustotas
 
 #: modules_v3/extra_info/module.php:61
 #: modules_v3/personal_facts/module.php:122
-msgid "There are no Facts for this individual."
+msgid "There are no facts for this individual."
 msgstr "Tällä henkilöllä ei ole tietoja."
 
 #: modules_v3/notes/module.php:81
-msgid "There are no Notes for this individual."
+msgid "There are no notes for this individual."
 msgstr "Tällä henkilöllä ei ole lisätietoja."
 
 #: modules_v3/sources_tab/module.php:80
-msgid "There are no Source citations for this individual."
+msgid "There are no source citations for this individual."
 msgstr "Tällä henkilöllä ei ole lähdetietoviitteitä"
 
 #: modules_v3/media/module.php:73
@@ -13708,7 +13700,7 @@ msgid "This account has not been verified.  Please check your email for a verifi
 msgstr "Tätä käyttäjätiliä ei ole vahvistettu. Tarkista sähköpostistasi saapunutta vahvistusviestiä."
 
 #: modules_v3/charts/help_text.php:32
-msgid "This block allows a pedigree, descendancy, or hourglass chart to appear on My Page or the Home Page.  Because of space limitations, the charts should be placed only on the left side of the page.<br><br>When this block appears on the Home Page, the root individual and the type of chart to be displayed are determined by the administrator.  When this block appears on the user’s personalized My Page, these options are determined by the user.<br><br>The behavior of these charts is identical to their behavior when they are called up from the menus.  Click on the box of an individual to see more details about them."
+msgid "This block allows a pedigree, descendancy, or hourglass chart to appear on your “My page” or the “Home page”.  Because of space limitations, the charts should be placed only on the left side of the page.<br><br>When this block appears on the “Home page”, the root individual and the type of chart to be displayed are determined by the administrator.  When this block appears on the user’s “My page”, these options are determined by the user.<br><br>The behavior of these charts is identical to their behavior when they are called up from the menus.  Click on the box of an individual to see more details about them."
 msgstr "Tämä lohko mahdollistaa esipolvet-, jälkeläiset- tai tiimalasi-kaavion esittämisen Omalla sivullani tai Etusivulla. Tilarajoituksista johtuen, kaaviot tulisi sijoittaa vain sivun vasemmalle puolelle.<br><br>Ylläpitäjä päättää esitettävän aloitushenkilön ja kaaviomallin, kun tämä lohko esiintyy Etusivulla. Käyttäjä päättää näistä, kun tämä lohko esiintyy Omalla sivullani.<br><br>Kaaviot toimivat samalla tavalla riippumatta siitä, käynnistetäänkö ne valikkoriviltä vai tästä. Klikkaamalla henkilölaatikkoa saat enemmän tietoa henkilöstä."
 
 #: modules_v3/review_changes/help_text.php:32
@@ -13843,7 +13835,7 @@ msgid "This input box lets you change that year of the calendar.  Type a year in
 msgstr "Tässä kentässä voit muuttaa kalenterivuoden.<br><br><b>Erityisominaisuuksia</b> <b>Näytä vuosi</b><dl><dt><b>Enemmän kuin yksi vuosi</b></dt><dd>Voit hakea päivämääriä vuosijakson sisällä.<br><br>Vuosijaksossa aikaalue ulottuu ensimmäisen vuoden 1. tammikuusta viimeisen vuoden 31. joulukuuta saakka. Tässä muutama esimerkki vuosijaksoista:<br><br><b>1992-5</b> Kaikki tapahtumat vuodesta 1992 vuoteen 1995.<br><b>1972-89</b> Kaikki tapahtumat vuodesta 1972 vuoteen 1989.<br><b>1610-759</b> Kaikki tapahtumat vuodesta 1610 vuoteen 1759.<br><b>1880-1905</b> Kaikki tapahtumat vuodesta 1880 vuoteen 1905.<br><b>880-1105</b> Kaikki tapahtumat vuodesta 880 vuoteen 1105.<br><br>Nähdäksesi kaikki tapahtumat tietyllä vuosikymmenellä tai vuosisadalla, voit kirjoittaa <b>?</b> viimeisten numeromerkkien asemesta. Esimerkiksi <b>197?</b> kaikki tapahtumat vuosina 1970-1979 tai <b>16??</b> kaikki tapahtumat vuosina 1600-1699.<br><br>Valitsemalla vuosijakson kalenterinäkymä muuttuu vuosinäkymäksi.</dd></dl>"
 
 #: modules_v3/clippings/help_text.php:32
-msgid "This input box lets you enter an individual’s ID number so he can be added to the clippings cart.  Once added you’ll be offered options to link that individual’s relations to your clippings cart.<br><br>If you do not know an individual’s ID number, you can perform a search by name by pressing the individual icon next to the Add button."
+msgid "This input box lets you enter an individual’s ID number so he can be added to the clippings cart.  Once added you’ll be offered options to link that individual’s relations to your clippings cart.<br><br>If you do not know an individual’s ID number, you can perform a search by name by pressing the individual icon next to the “Add” button."
 msgstr "Tähän kenttään voit kirjoittaa henkilön tunnuksen lisätäksesi hänet leikekoriin. Kun hänet on lisätty, sinulle annetaan mahdollisuus linkittää kyseisen henkilön sukulaisuussuhteet leikekoriisi<br><br>Jos et tiedä henkilön tunnusta, voit suorittaa haun klikkaamalla henkilön kuvaketta lisää-painikkeen vieressä."
 
 #: help_text.php:407
@@ -13892,35 +13884,35 @@ msgid "This is the latest version of webtrees.  No upgrade is available."
 msgstr ""
 
 #: help_text.php:506
-msgid "This is the list of GEDCOM facts that your users can add to families.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique family facts</i> list."
+msgid "This is the list of GEDCOM facts that your users can add to families.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the “Unique family facts” list."
 msgstr "Luettelo GEDCOM tietoaihetunnisteista, joita käyttäjäsi voivat käyttää perhetietojen kirjaamiseen. Luetteloon voi lisätä tai siitä voi poistaa tietoaiheita, jopa erikoistietoja. Tietoaiheet tässä luettelossa eivät saa toistua <i>Yksilölliset perhetiedot</i> luettelossa."
 
 #: help_text.php:593
-msgid "This is the list of GEDCOM facts that your users can add to individuals.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique Individual Facts</i> list."
+msgid "This is the list of GEDCOM facts that your users can add to individuals.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the “Unique individual facts” list."
 msgstr "Tämä on luettelo GEDCOM tietoaihetunnisteista, joita käyttäjäsi voi lisätä henkilötiedoiksi. Luetteloon voi lisätä tai siitä voi poistaa tietoaihetunnisteita, jopa erikoistietoja. Tietoaihetunnisteet tässä luettelossa eivät saa toistua <i>Yksilölliset henkilötiedot</i> luettelossa."
 
 #: help_text.php:799
-msgid "This is the list of GEDCOM facts that your users can add to repositories.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique Repository Facts</i> list."
+msgid "This is the list of GEDCOM facts that your users can add to repositories.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the “Unique repository facts” list."
 msgstr "Tämä on pilkkumerkein (,) erotettu luettelo GEDCOM tietotunnisteita, joita käyttäjäsi voivat lisätä tietovarastoon. Voit muokata luetteloa tarvittaessa lisäämällä tai poistamalla tiedon nimen, jopa erikoistietoja. Tietotunnisteet tässä listassa eivät saa toistua <i>Yksilölliset tietovaraston tietotunnisteet</i> luettelossa."
 
 #: help_text.php:910
-msgid "This is the list of GEDCOM facts that your users can add to sources.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique Source Facts</i> list."
+msgid "This is the list of GEDCOM facts that your users can add to sources.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the “Unique source facts” list."
 msgstr "Tämä on luettelo GEDCOM tietoaiheista, joita käyttäjät voivat lisätä lähdetiedoiksi. Voit muokata luetteloa tarvittaessa lisäämällä tai poistamalla tietojen nimet, jopa erikoistiedot. Luettelon tietoaiheet eivät saa toistua <i>Yksilöllisissä tiedoissa</i>"
 
 #: help_text.php:516
-msgid "This is the list of GEDCOM facts that your users can only add <u>once</u> to families.  For example, if MARR is in this list, users will not be able to add more than one MARR record to a family.  Fact names that appear in this list must not also appear in the <i>Family Add Facts</i> list."
+msgid "This is the list of GEDCOM facts that your users can only add once to families.  For example, if MARR is in this list, users will not be able to add more than one MARR record to a family.  Fact names that appear in this list must not also appear in the “All family facts” list."
 msgstr "Luettelo GEDCOM tietoaihetunnisteista, joita käyttäjä voi lisätä perhetiedoiksi ainoastaan kerran. Esimerkiksi, jos MARR on tässä luettelossa, niin käyttäjät voivat lisätä ainoastaan yhden MARR (avioliitto) tiedon perheelle.  Tietoaihetunnisteet tässä luettelossa eivät saa toistua <i>Perhe, lisää tietoja</i> listassa"
 
 #: help_text.php:603
-msgid "This is the list of GEDCOM facts that your users can only add <u>once</u> to individuals.  For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual.  Fact names that appear in this list must not also appear in the <i>Individual Add Facts</i> list."
+msgid "This is the list of GEDCOM facts that your users can only add once to individuals.  For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual.  Fact names that appear in this list must not also appear in the “All individual facts” list."
 msgstr "Luettelo GEDCOM tietoaiheista, joita käyttäjä voi lisätä ainoastaan kerran. Esimerkiksi, jos BIRT (syntymä) on tässä luettelossa, niin käyttäjät voivat lisätä ainoastaan yhden BIRT tiedon henkilölle. Tietoaihetunnisteet tässä luettelossa eivät saa toistua <i>Henkilö - lisää tietoja</i> luettelossa."
 
 #: help_text.php:809
-msgid "This is the list of GEDCOM facts that your users can only add <u>once</u> to repositories.  For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository.  Fact names that appear in this list must not also appear in the <i>Repository Add Facts</i> list."
+msgid "This is the list of GEDCOM facts that your users can only add once to repositories.  For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository.  Fact names that appear in this list must not also appear in the “All repository facts” list."
 msgstr "Tämä on luettelo GEDCOM tietoaihetunnisteita, joita käyttäjäsi voi käyttää vain kerran tietovarastossa. Esimerkiksi, jos NAME (nimi) on tässä luettelossa, niin vain yksi NAME tietue voidaan lisätä tietovarastoon. Tietotunnisteet tässä luettelossa ei saa toistua <i>Tietovarasto - lisää tietoaiheet</i> luettelossa"
 
 #: help_text.php:920
-msgid "This is the list of GEDCOM facts that your users can only add <u>once</u> to sources.  For example, if TITL is in this list, users will not be able to add more than one TITL record to a source.  Fact names that appear in this list must not also appear in the <i>Source Add Facts</i> list."
+msgid "This is the list of GEDCOM facts that your users can only add once to sources.  For example, if TITL is in this list, users will not be able to add more than one TITL record to a source.  Fact names that appear in this list must not also appear in the “All source facts” list."
 msgstr "Tämä on luettelo GEDCOM tietoja, joita käyttäjäsi voi lisätä vain <u>kerran</u> lähdetiedoksi. Esimerkiksi, jos TITL (otsikko) on luettelossa, niin se voi esiintyä vain kerran TITL tietueena lähdetiedoissa. Tieto tässä luettelossa ei saa toistua <i>Lähdetieto, lisää aiheita</i> luettelossa."
 
 #. I18N: Help text for the “Server name” site configuration setting
@@ -13929,7 +13921,7 @@ msgid "This is the name of the SMTP server. “localhost” means that the mail 
 msgstr "SMTP palvelimen nimi. ”localhost” on käytössä kun sähköpostipalvelu ja web palvelin ovat samassa tietokoneessa."
 
 #: help_text.php:476
-msgid "This is the number of times that a surname must occur before it shows up in the Common Surname list on the Home Page."
+msgid "This is the number of times that a surname must occur before it shows up in the Common Surname list on the “Home page”."
 msgstr "Sukunimen täytyy esiintyä henkilöillä näin monta kertaa (esiintymislukumäärä) ennen kuin se lisätään Yleisimmät sukunimet luetteloon etusivulla."
 
 #: help_text.php:511
@@ -14148,7 +14140,7 @@ msgid "This option will show the names (but no other details) of private individ
 msgstr "Tällä vaihtoehdolla näytetään yksityishenkilöiden nimet (mutta ei muita tietoja). Henkilöt ovat yksityisiä, jos he ovat vielä elossa tai henkilötietoihin on lisätty yksityisyyssuojarajoituksia. Voit piilottaa nimen, asettamalla yksityisyysrajoituksen sen nimitiedolle."
 
 #: modules_v3/googlemap/help_text.php:47
-msgid "This options sets whether Latitude and Longitude are displayed on the pop-up window attached to map markers."
+msgid "This options sets whether latitude and longitude are displayed on the pop-up window attached to map markers."
 msgstr "Näytetäänkö leveys- ja pituusasteet karttamerkkien ponnahdusikkunoissa."
 
 #: help_text.php:1163
@@ -14220,7 +14212,7 @@ msgid "This section allows you to add a new Note to the fact that you are curren
 msgstr "Voit lisätä tähän osioon uutta muokattavaa tietoa koskevan lisätiedon. Lisätiedot ovat tekstitietoja, jotka näkyvät sivulla tiedon yksityiskohdissa."
 
 #: help_text.php:1157
-msgid "This section allows you to add a new source citation to the fact that you are currently editing.<br><br>In the Source field you enter the ID for the source.  Click the <b>Create a new source</b> link if you need to enter a new source.  In the Citation Details field you would enter the page number or other information that might help someone find the information in the source.  In the Text field you would enter the text transcription from the source."
+msgid "This section allows you to add a new source citation to the fact that you are currently editing.<br><br>In the Source field you enter the ID for the source.  Click the “Create a new source” link if you need to enter a new source.  In the citation details field you would enter the page number or other information that might help someone find the information in the source.  In the Text field you would enter the text transcription from the source."
 msgstr "Tähän osioon voit lisätä uuden muokattavaa tietoa koskevan lähdeviittauksen.<br><br>Lähdekenttään täytät kyseisen lähteen tunnuksen. Klikkaa linkkiä <b>Luo uusi lähde</b> jos haluat lisätä uuden lähteen. Viittauskenttään lisäät sivunumeron tai muun tiedon, joka auttaa muita löytämään lähteessä olevan tiedon. Tekstikenttään kirjoitat lähteen tekstijäljennöksen."
 
 #. I18N: http://en.wikipedia.org/wiki/Https
@@ -14238,7 +14230,7 @@ msgid "This setting is only used when you read or write GEDCOM files."
 msgstr "Tätä asetusta käytetään ainoastaan silloin, kun luetaan tai kirjoitetaan GEDCOM-tiedostoja."
 
 #: help_text.php:456
-msgid "This should be a comma or space separated list of facts, in addition to Birth and Death, that you want to appear in chart boxes such as the pedigree chart.  This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard.  For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
+msgid "This should be a comma or space separated list of facts, in addition to birth and death, that you want to appear in chart boxes such as the pedigree chart.  This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard.  For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
 msgstr "Tietoluettelo tiedoista, jotka halutaan näkyviin kaaviolaatikoissa Syntymän ja Kuoleman lisäksi. Halutut tiedot erotetaan pilkulla tai välilyönnillä. Luettelossa saa olla GEDCOM 5.5.1 standardin mukaiset tietotunnisteet esim. ammattia varten ”OCCU”."
 
 #: admin_site_upgrade.php:41
@@ -14524,7 +14516,7 @@ msgstr[1] "%s yleisintä sukunimeä"
 
 #: modules_v3/googlemap/module.php:4361 modules_v3/googlemap/module.php:4426
 #: placelist.php:111
-msgid "Top Level"
+msgid "Top level"
 msgstr "Ylin taso"
 
 #. I18N: i.e. most popular given name.
@@ -14848,7 +14840,7 @@ msgid "Unknown"
 msgstr "Henkilö ei tiedossa"
 
 #: modules_v3/lightbox/module.php:174
-msgid "Unlink Media"
+msgid "Unlink media"
 msgstr "Poista yhteys mediaan"
 
 #: library/WT/Gedcom/Tag.php:829
@@ -14860,11 +14852,11 @@ msgid "Unused files"
 msgstr "Käyttämättömät tiedostot"
 
 #: admin.php:157
-msgid "Unverified by Administrator"
+msgid "Not approved by an administrator"
 msgstr "Ylläpidon vahvistamatta"
 
 #: admin.php:153
-msgid "Unverified by User"
+msgid "Not verified by the user"
 msgstr "Käyttäjä jättänyt vahvistamatta"
 
 #. I18N: The system is about to [...]; %s is a .ZIP file.
@@ -14967,8 +14959,8 @@ msgid "Use SMTP to send messages"
 msgstr "Käytä SMTP sähköpostin lähettämiseen"
 
 #: modules_v3/batch_update/plugins/search_replace.php:92
-msgid "Use a &laquo;?&raquo; to match a single character, use &laquo;*&raquo; to match zero or more characters."
-msgstr "Käytä &laquo;?&raquo; täsmätäksesi yhden erillisen merkin, käytä &laquo;*&raquo; täsmätäksesi nolla tai useampia merkkejä."
+msgid "Use a “?” to match a single character, use “*” to match zero or more characters."
+msgstr "Käytä “?” täsmätäksesi yhden erillisen merkin, käytä “*” täsmätäksesi nolla tai useampia merkkejä."
 
 #. I18N: placeholder text for new-password field
 #: admin_users.php:385 login.php:423
@@ -15404,7 +15396,7 @@ msgid "When a user registers for an account, an email is sent to their email add
 msgstr "Kun vierailija pyytää itselleen käyttäjätunnuksen, -tilin, lähetetään hänen ilmoittamaan sähköpostiosoitteeseen posti, jossa on vahvistamista varten linkki. Kun hän klikkaa linkkiä, tiedämme että ilmoitettu sähköpostiosoite on oikea ja ”sähköpostiosoite on vahvistus” kuitataan automaattisesti."
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:44
-msgid "When adding a Link, the ID field cannot be empty."
+msgid "When adding a link, the ID field cannot be empty."
 msgstr "Yhteyttä luotaessa, tunnus-kenttä ei voi olla tyhjä."
 
 #: help_text.php:784
@@ -15553,7 +15545,7 @@ msgid "With sources"
 msgstr "Lähteineen"
 
 #: help_text.php:1184
-msgid "With this option, the <b>webtrees</b> internal messaging system will be used and no emails will be sent.  You will receive only <u>internal</u> messages from the other users.  When another site user sends you a message, that message will appear in the Message block on your personal My Page.  If you have removed this block from your My Page, you will not see any messages.  They will, however, show up as soon as you configure My Page to again have the Message block."
+msgid "With this option, the <b>webtrees</b> internal messaging system will be used and no emails will be sent.  You will receive only <u>internal</u> messages from the other users.  When another site user sends you a message, that message will appear in the Message block on your “My page”.  If you have removed this block from your “My page”, you will not see any messages.  They will, however, show up as soon as you configure your “My page” to again have the Message block."
 msgstr "Tällä valinnalla <b>webtrees</b> ei käytä sähköpostia vaan järjestelmän omaa sisäistä viestintätapaa.  Saat viestejä ainoastaan muilta käyttäjiltä. Kun tämän sivuston muulta käyttäjältä tulee viesti, se näkyy Viestit-lohkossa, sinun \"Omalla sivullasi\". Jos olet poistanut tämän lohkon, niin et näe viestejä. Ne kuitenkin tulevat näkyviin heti kun otat Viestit-lohkon taas käyttöön \"Omalla sivullasi\""
 
 #: help_text.php:1196
@@ -15561,7 +15553,7 @@ msgid "With this option, you will not receive any messages.  Even the administra
 msgstr "Tällä vaihtoehdolla et saa viestejä lainkaan."
 
 #: help_text.php:1192
-msgid "With this option, you will only receive email messages at the address you configured on your Account page.  The messaging system internal to <b>webtrees</b> will not be used at all, and there will never be any messages in the Message block on your personal My Page."
+msgid "With this option, you will only receive email messages at the address you configured on your Account page.  The messaging system internal to <b>webtrees</b> will not be used at all, and there will never be any messages in the Message block on your “My page”."
 msgstr "Tällä vaihtoehdolla saat viestit vain sähköpostiosoitteeseesi, joka on määritelty sinun käyttäjätilisi-sivulla. <b>webtrees</b>in sisäinen viestien välitystapa ei ole ollenkaan käytössä, ja viestit eivät näy koskaan Oman sivusi Viestit-lohkossa."
 
 #: library/WT/Stats.php:302 library/WT/Stats.php:346
@@ -15636,7 +15628,7 @@ msgid "You can download a copy of the GEDCOM specification from %s."
 msgstr "Voit ladata itsellesi kopion GEDCOM erittelystä sivulla %s."
 
 #: help_text.php:1243
-msgid "You can limit the number of News articles displayed, thereby reducing the height of the GEDCOM News block.<br><br>This option determines whether any limits should be applied or whether the limit should be according to the age of the article or according to the number of articles."
+msgid "You can limit the number of news articles displayed, thereby reducing the height of the GEDCOM News block.<br><br>This option determines whether any limits should be applied or whether the limit should be according to the age of the article or according to the number of articles."
 msgstr "Voit rajoittaa näytettävien uutisartikkelien lukumäärän ja näin rajoittaa GEDCOM uutislohkon korkeuden.<br><br>Tämä valinta määrittää käytetäänkö mitään rajoituksia vai asetetaanko rajoitukset artikkelin iän tai artikkelien lukumäärän perusteella."
 
 #: modules_v3/batch_update/plugins/married_names.php:37
@@ -15688,7 +15680,7 @@ msgid "You have no pending messages."
 msgstr "Ei viestejä odottamassa."
 
 #: modules_v3/user_blog/module.php:76
-msgid "You have not created any Journal items."
+msgid "You have not created any journal items."
 msgstr "Et ole luonnut päiväkirjamerkintöjä."
 
 #: admin_trees_manage.php:131
@@ -15696,8 +15688,8 @@ msgid "You have selected a GEDCOM with a different name.  Is this correct?"
 msgstr "Olet valinnut erinimisen GEDCOMin. Onko tämä oikea?"
 
 #: addmedia.php:462
-msgid "You may enter a URL, beginning with &laquo;http://&raquo;."
-msgstr "Voit lisätä URL-osoitteen laittaen alkuun &laquo;http://&raquo;."
+msgid "You may enter a URL, beginning with “http://”."
+msgstr "Voit lisätä URL-osoitteen laittaen alkuun “http://”."
 
 #: modules_v3/faq/help_text.php:35
 msgid "You may use HTML to format the answer and to add links to other websites."
@@ -15786,8 +15778,8 @@ msgid "You should accept or reject all pending changes before upgrading."
 msgstr ""
 
 #: help_text.php:1151
-msgid "You should avoid using the vertical line character &ldquo;|&rdquo; in your notes.  It is used internally by webtrees and may cause your note to display incorrectly."
-msgstr "Sinun tulisi välttää pystyviivamerkin &ldquo;|&rdquo; käyttämistä lisätiedoissasi. Sitä käytetään sisäisesti webtrees ohjelmassa ja se voi aiheuttaa lisätiedon väärän näkymisen."
+msgid "You should avoid using the vertical line character “|” in your notes.  It is used internally by webtrees and may cause your note to display incorrectly."
+msgstr "Sinun tulisi välttää pystyviivamerkin “|” käyttämistä lisätiedoissasi. Sitä käytetään sisäisesti webtrees ohjelmassa ja se voi aiheuttaa lisätiedon väärän näkymisen."
 
 #: admin_site_upgrade.php:200
 msgid "You should consult the module’s author to confirm compatibility with this version of webtrees."
@@ -16961,423 +16953,423 @@ msgstr "pojanpojanvaimo"
 #: includes/functions/functions.php:1275 includes/functions/functions.php:1284
 #: includes/functions/functions.php:1295
 #, php-format
-msgid "great x%d aunt"
-msgstr "täti x%d polven takaa"
+msgid "great ×%d aunt"
+msgstr "täti ×%d polven takaa"
 
 #: includes/functions/functions.php:1276 includes/functions/functions.php:1285
 #: includes/functions/functions.php:1296
 #, php-format
-msgid "great x%d aunt/uncle"
-msgstr "täti/setä x%d polven takaa"
+msgid "great ×%d aunt/uncle"
+msgstr "täti/setä ×%d polven takaa"
 
 #: includes/functions/functions.php:1617 includes/functions/functions.php:1630
 #, php-format
-msgid "great x%d grandchild"
-msgstr "lapsenlapsi x%d+3:nnessä sukupolvessa"
+msgid "great ×%d grandchild"
+msgstr "lapsenlapsi ×%d+3:nnessä sukupolvessa"
 
 #: includes/functions/functions.php:1616 includes/functions/functions.php:1629
 #, php-format
-msgid "great x%d granddaughter"
-msgstr "lapsentytär x%d+3:nnessä sukupolvessa"
+msgid "great ×%d granddaughter"
+msgstr "lapsentytär ×%d+3:nnessä sukupolvessa"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1520 includes/functions/functions.php:1527
 #: includes/functions/functions.php:1534 includes/functions/functions.php:1542
 #: includes/functions/functions.php:1552
 #, php-format
-msgid "great x%d grandfather"
-msgstr "isoisä x%d polven takaa"
+msgid "great ×%d grandfather"
+msgstr "isoisä ×%d polven takaa"
 
 #: includes/functions/functions.php:1521 includes/functions/functions.php:1528
 #: includes/functions/functions.php:1535 includes/functions/functions.php:1543
 #: includes/functions/functions.php:1553
 #, php-format
-msgid "great x%d grandmother"
-msgstr "isoäiti x%d polven takaa"
+msgid "great ×%d grandmother"
+msgstr "isoäiti ×%d polven takaa"
 
 #: includes/functions/functions.php:1522 includes/functions/functions.php:1529
 #: includes/functions/functions.php:1536 includes/functions/functions.php:1544
 #: includes/functions/functions.php:1554
 #, php-format
-msgid "great x%d grandparent"
-msgstr "isovanhemmat x%d polven takaa"
+msgid "great ×%d grandparent"
+msgstr "isovanhemmat ×%d polven takaa"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1615 includes/functions/functions.php:1628
 #, php-format
-msgid "great x%d grandson"
-msgstr "lapsenpoika x%d+3:nnessä sukupolvessa"
+msgid "great ×%d grandson"
+msgstr "lapsenpoika ×%d+3:nnessä sukupolvessa"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1448 includes/functions/functions.php:1459
 #, php-format
-msgid "great x%d nephew"
+msgid "great ×%d nephew"
 msgstr "poika %d:ssa alenevassa polvessa"
 
 #: includes/functions/functions.php:1424
 #, php-format
-msgctxt "(a man’s) brother’s great x(%d-1) grandson"
-msgid "great x%d nephew"
+msgctxt "(a man’s) brother’s great ×(%d-1) grandson"
+msgid "great ×%d nephew"
 msgstr "sisarenpoika %d:nnessa alenevassa polvessa"
 
 #: includes/functions/functions.php:1426
 #, php-format
-msgctxt "(a man’s) sister’s great x(%d-1) grandson"
-msgid "great x%d nephew"
+msgctxt "(a man’s) sister’s great ×(%d-1) grandson"
+msgid "great ×%d nephew"
 msgstr "sisarenpoika %d:nnessa alenevassa polvessa"
 
 #: includes/functions/functions.php:1428
 #, php-format
-msgctxt "(a woman’s) great x%d nephew"
-msgid "great x%d nephew"
+msgctxt "(a woman’s) great ×%d nephew"
+msgid "great ×%d nephew"
 msgstr "sisarenpoika %d:nnessa alenevassa polvessa"
 
 #: includes/functions/functions.php:1450 includes/functions/functions.php:1461
 #, php-format
-msgid "great x%d nephew/niece"
+msgid "great ×%d nephew/niece"
 msgstr "lapsi %d:ssa alenevassa polvessa"
 
 #: includes/functions/functions.php:1439
 #, php-format
-msgctxt "(a man’s) brother’s great x(%d-1) grandchild"
-msgid "great x%d nephew/niece"
+msgctxt "(a man’s) brother’s great ×(%d-1) grandchild"
+msgid "great ×%d nephew/niece"
 msgstr "sisarentytär/-poika %d:nnessa alenevassa polvessa"
 
 #: includes/functions/functions.php:1441
 #, php-format
-msgctxt "(a man’s) sister’s great x(%d-1) grandchild"
-msgid "great x%d nephew/niece"
+msgctxt "(a man’s) sister’s great ×(%d-1) grandchild"
+msgid "great ×%d nephew/niece"
 msgstr "sisarentytär/-poika %d:nnessa alenevassa polvessa"
 
 #: includes/functions/functions.php:1443
 #, php-format
-msgctxt "(a woman’s) great x%d nephew/niece"
-msgid "great x%d nephew/niece"
+msgctxt "(a woman’s) great ×%d nephew/niece"
+msgid "great ×%d nephew/niece"
 msgstr "sisarentytär/-poika %d:nnessa alenevassa polvessa"
 
 #: includes/functions/functions.php:1449 includes/functions/functions.php:1460
 #, php-format
-msgid "great x%d niece"
+msgid "great ×%d niece"
 msgstr "tytär %d:ssa alenevassa polvessa"
 
 #: includes/functions/functions.php:1431
 #, php-format
-msgctxt "(a man’s) brother’s great x(%d-1) granddaughter"
-msgid "great x%d niece"
+msgctxt "(a man’s) brother’s great ×(%d-1) granddaughter"
+msgid "great ×%d niece"
 msgstr "sisarentytär %d:nnessa alenevassa polvessa"
 
 #: includes/functions/functions.php:1433
 #, php-format
-msgctxt "(a man’s) sister’s great x(%d-1) granddaughter"
-msgid "great x%d niece"
+msgctxt "(a man’s) sister’s great ×(%d-1) granddaughter"
+msgid "great ×%d niece"
 msgstr "sisarentytär %d:nnessa alenevassa polvessa"
 
 #: includes/functions/functions.php:1435
 #, php-format
-msgctxt "(a woman’s) great x%d niece"
-msgid "great x%d niece"
+msgctxt "(a woman’s) great ×%d niece"
+msgid "great ×%d niece"
 msgstr "sisarentytär %d:nnessa alenevassa polvessa"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1274 includes/functions/functions.php:1294
 #, php-format
-msgid "great x%d uncle"
-msgstr "setä x%d polven takaa"
+msgid "great ×%d uncle"
+msgstr "setä ×%d polven takaa"
 
 #: includes/functions/functions.php:1281
 #, php-format
-msgctxt "great x(%d-1) grandfather’s brother"
-msgid "great x%d uncle"
-msgstr "setä x%d polven takaa"
+msgctxt "great ×(%d-1) grandfather’s brother"
+msgid "great ×%d uncle"
+msgstr "setä ×%d polven takaa"
 
 #: includes/functions/functions.php:1282
 #, php-format
-msgctxt "great x(%d-1) grandmother’s brother"
-msgid "great x%d uncle"
-msgstr "setä x%d polven takaa"
+msgctxt "great ×(%d-1) grandmother’s brother"
+msgid "great ×%d uncle"
+msgstr "setä ×%d polven takaa"
 
 #: includes/functions/functions.php:1283
 #, php-format
-msgctxt "great x(%d-1) grandparent’s brother"
-msgid "great x%d uncle"
-msgstr "setä x%d polven takaa"
+msgctxt "great ×(%d-1) grandparent’s brother"
+msgid "great ×%d uncle"
+msgstr "setä ×%d polven takaa"
 
 #: includes/functions/functions.php:1232
-msgid "great x4 aunt"
+msgid "great ×4 aunt"
 msgstr "täti 4 polven takaa"
 
 #: includes/functions/functions.php:1233
-msgid "great x4 aunt/uncle"
+msgid "great ×4 aunt/uncle"
 msgstr "täti/setä 4 polven takaa"
 
 #: includes/functions/functions.php:1581
-msgid "great x4 grandchild"
+msgid "great ×4 grandchild"
 msgstr "lapsenlapsi 7:nnessä sukupolvessa"
 
 #: includes/functions/functions.php:1580
-msgid "great x4 granddaughter"
+msgid "great ×4 granddaughter"
 msgstr "lapsentytär 7:nnessä sukupolvessa"
 
 #: includes/functions/functions.php:1486
-msgid "great x4 grandfather"
+msgid "great ×4 grandfather"
 msgstr "isoisä 4 polven takaa"
 
 #: includes/functions/functions.php:1487
-msgid "great x4 grandmother"
+msgid "great ×4 grandmother"
 msgstr "isoäiti 4 polven takaa"
 
 #: includes/functions/functions.php:1488
-msgid "great x4 grandparent"
+msgid "great ×4 grandparent"
 msgstr "isovanhemmat 4 polven takaa"
 
 #: includes/functions/functions.php:1579
-msgid "great x4 grandson"
+msgid "great ×4 grandson"
 msgstr "lapsenlapsi 7:nnessä sukupolvessa"
 
 #: includes/functions/functions.php:1364
 msgctxt "(a man’s) brother’s great-great-great-grandson"
-msgid "great x4 nephew"
+msgid "great ×4 nephew"
 msgstr "sisarenpoika 4:nnessä alenevassa polvessa"
 
 #: includes/functions/functions.php:1366
 msgctxt "(a man’s) sister’s great-great-great-grandson"
-msgid "great x4 nephew"
+msgid "great ×4 nephew"
 msgstr "sisarenpoika 4:nnessä alenevassa polvessa"
 
 #: includes/functions/functions.php:1368
-msgctxt "(a woman’s) great x4 nephew"
-msgid "great x4 nephew"
+msgctxt "(a woman’s) great ×4 nephew"
+msgid "great ×4 nephew"
 msgstr "sisarenpoika 4:nnessä alenevassa polvessa"
 
 #: includes/functions/functions.php:1380
 msgctxt "(a man’s) brother’s great-great-great-grandchild"
-msgid "great x4 nephew/niece"
+msgid "great ×4 nephew/niece"
 msgstr "sisarentytär/-poika 4:nnessä alenevassa polvessa"
 
 #: includes/functions/functions.php:1382
 msgctxt "(a man’s) sister’s great-great-great-grandchild"
-msgid "great x4 nephew/niece"
+msgid "great ×4 nephew/niece"
 msgstr "sisarentytär/-poika 4:nnessä alenevassa polvessa"
 
 #: includes/functions/functions.php:1384
-msgctxt "(a woman’s) great x4 nephew/niece"
-msgid "great x4 nephew/niece"
+msgctxt "(a woman’s) great ×4 nephew/niece"
+msgid "great ×4 nephew/niece"
 msgstr "sisarentytär/-poika 4:nnessä alenevassa polvessa"
 
 #: includes/functions/functions.php:1372
 msgctxt "(a man’s) brother’s great-great-great-granddaughter"
-msgid "great x4 niece"
+msgid "great ×4 niece"
 msgstr "sisarentytär 4:nnessä alenevassa polvessa"
 
 #: includes/functions/functions.php:1374
 msgctxt "(a man’s) sister’s great-great-great-granddaughter"
-msgid "great x4 niece"
+msgid "great ×4 niece"
 msgstr "sisarentytär 4:nnessä alenevassa polvessa"
 
 #: includes/functions/functions.php:1376
-msgctxt "(a woman’s) great x4 niece"
-msgid "great x4 niece"
+msgctxt "(a woman’s) great ×4 niece"
+msgid "great ×4 niece"
 msgstr "sisarentytär 4:nnessä alenevassa polvessa"
 
 #: includes/functions/functions.php:1229
 msgctxt "great-great-great-grandfather’s brother"
-msgid "great x4 uncle"
+msgid "great ×4 uncle"
 msgstr "setä 4 polven takaa"
 
 #: includes/functions/functions.php:1230
 msgctxt "great-great-great-grandmother’s brother"
-msgid "great x4 uncle"
+msgid "great ×4 uncle"
 msgstr "setä 4 polven takaa"
 
 #: includes/functions/functions.php:1231
 msgctxt "great-great-great-grandparent’s brother"
-msgid "great x4 uncle"
+msgid "great ×4 uncle"
 msgstr "setä 4 polven takaa"
 
 #: includes/functions/functions.php:1242
-msgid "great x5 aunt"
+msgid "great ×5 aunt"
 msgstr "täti 5 polven takaa"
 
 #: includes/functions/functions.php:1243
-msgid "great x5 aunt/uncle"
+msgid "great ×5 aunt/uncle"
 msgstr "täti/setä 5 polven takaa"
 
 #: includes/functions/functions.php:1588
-msgid "great x5 grandchild"
+msgid "great ×5 grandchild"
 msgstr "lapsenlapsi 8:nnessä sukupolvessa"
 
 #: includes/functions/functions.php:1587
-msgid "great x5 granddaughter"
+msgid "great ×5 granddaughter"
 msgstr "lapsentytär 8:nnessä sukupolvessa"
 
 #: includes/functions/functions.php:1493
-msgid "great x5 grandfather"
+msgid "great ×5 grandfather"
 msgstr "isoisä 5 polven takaa"
 
 #: includes/functions/functions.php:1494
-msgid "great x5 grandmother"
+msgid "great ×5 grandmother"
 msgstr "isoäiti 5 polven takaa"
 
 #: includes/functions/functions.php:1495
-msgid "great x5 grandparent"
+msgid "great ×5 grandparent"
 msgstr "isovanhemmat 5 polven takaa"
 
 #: includes/functions/functions.php:1586
-msgid "great x5 grandson"
+msgid "great ×5 grandson"
 msgstr "lapsenpoika 8:nnessä sukupolvessa"
 
 #: includes/functions/functions.php:1391
-msgctxt "(a man’s) brother’s great x4 grandson"
-msgid "great x5 nephew"
+msgctxt "(a man’s) brother’s great ×4 grandson"
+msgid "great ×5 nephew"
 msgstr "sisarenpoika 5:nnessä alenevassa polvessa"
 
 #: includes/functions/functions.php:1393
-msgctxt "(a man’s) sister’s great x4 grandson"
-msgid "great x5 nephew"
+msgctxt "(a man’s) sister’s great ×4 grandson"
+msgid "great ×5 nephew"
 msgstr "sisarenpoika 5:nnessä alenevassa polvessa"
 
 #: includes/functions/functions.php:1395
-msgctxt "(a woman’s) great x5 nephew"
-msgid "great x5 nephew"
+msgctxt "(a woman’s) great ×5 nephew"
+msgid "great ×5 nephew"
 msgstr "sisarenpoika 5:nnessä alenevassa polvessa"
 
 #: includes/functions/functions.php:1407
-msgctxt "(a man’s) brother’s great x4 grandchild"
-msgid "great x5 nephew/niece"
+msgctxt "(a man’s) brother’s great ×4 grandchild"
+msgid "great ×5 nephew/niece"
 msgstr "sisarentytär/-poika 5:nnessä alenevassa polvessa"
 
 #: includes/functions/functions.php:1409
-msgctxt "(a man’s) sister’s great x4 grandchild"
-msgid "great x5 nephew/niece"
+msgctxt "(a man’s) sister’s great ×4 grandchild"
+msgid "great ×5 nephew/niece"
 msgstr "sisarentytär/-poika 5:nnessä alenevassa polvessa"
 
 #: includes/functions/functions.php:1411
-msgctxt "(a woman’s) great x5 nephew/niece"
-msgid "great x5 nephew/niece"
+msgctxt "(a woman’s) great ×5 nephew/niece"
+msgid "great ×5 nephew/niece"
 msgstr "sisarentytär/-poika 5:nnessä alenevassa polvessa"
 
 #: includes/functions/functions.php:1399
-msgctxt "(a man’s) brother’s great x4 granddaughter"
-msgid "great x5 niece"
+msgctxt "(a man’s) brother’s great ×4 granddaughter"
+msgid "great ×5 niece"
 msgstr "sisarentytär 5:nnessä alenevassa polvessa"
 
 #: includes/functions/functions.php:1401
-msgctxt "(a man’s) sister’s great x4 granddaughter"
-msgid "great x5 niece"
+msgctxt "(a man’s) sister’s great ×4 granddaughter"
+msgid "great ×5 niece"
 msgstr "sisarentytär 5:nnessä alenevassa polvessa"
 
 #: includes/functions/functions.php:1403
-msgctxt "(a woman’s) great x5 niece"
-msgid "great x5 niece"
+msgctxt "(a woman’s) great ×5 niece"
+msgid "great ×5 niece"
 msgstr "sisarentytär 5:nnessä alenevassa polvessa"
 
 #: includes/functions/functions.php:1239
-msgctxt "great x4 grandfather’s brother"
-msgid "great x5 uncle"
+msgctxt "great ×4 grandfather’s brother"
+msgid "great ×5 uncle"
 msgstr "setä 5 polven takaa"
 
 #: includes/functions/functions.php:1240
-msgctxt "great x4 grandmother’s brother"
-msgid "great x5 uncle"
+msgctxt "great ×4 grandmother’s brother"
+msgid "great ×5 uncle"
 msgstr "setä 5 polven takaa"
 
 #: includes/functions/functions.php:1241
-msgctxt "great x4 grandparent’s brother"
-msgid "great x5 uncle"
+msgctxt "great ×4 grandparent’s brother"
+msgid "great ×5 uncle"
 msgstr "setä 5 polven takaa"
 
 #: includes/functions/functions.php:1252
-msgid "great x6 aunt"
+msgid "great ×6 aunt"
 msgstr "täti 6 polven takaa"
 
 #: includes/functions/functions.php:1253
-msgid "great x6 aunt/uncle"
+msgid "great ×6 aunt/uncle"
 msgstr "täti/setä 6 polven takaa"
 
 #: includes/functions/functions.php:1595
-msgid "great x6 grandchild"
+msgid "great ×6 grandchild"
 msgstr "lapsenlapsi 9:nnessä sukupolvessa"
 
 #: includes/functions/functions.php:1594
-msgid "great x6 granddaughter"
+msgid "great ×6 granddaughter"
 msgstr "lapsentytär 9:nnessä sukupolvessa"
 
 #: includes/functions/functions.php:1500
-msgid "great x6 grandfather"
+msgid "great ×6 grandfather"
 msgstr "isoisä 6 polven takaa"
 
 #: includes/functions/functions.php:1501
-msgid "great x6 grandmother"
+msgid "great ×6 grandmother"
 msgstr "isoäiti 6 polven takaa"
 
 #: includes/functions/functions.php:1502
-msgid "great x6 grandparent"
+msgid "great ×6 grandparent"
 msgstr "isovanhemmat 6 polven takaa"
 
 #: includes/functions/functions.php:1593
-msgid "great x6 grandson"
+msgid "great ×6 grandson"
 msgstr "lapsenpoika 9:nnessä sukupolvessa"
 
 #: includes/functions/functions.php:1249
-msgctxt "great x5 grandfather’s brother"
-msgid "great x6 uncle"
+msgctxt "great ×5 grandfather’s brother"
+msgid "great ×6 uncle"
 msgstr "setä 6 polven takaa"
 
 #: includes/functions/functions.php:1250
-msgctxt "great x5 grandmother’s brother"
-msgid "great x6 uncle"
+msgctxt "great ×5 grandmother’s brother"
+msgid "great ×6 uncle"
 msgstr "setä 6 polven takaa"
 
 #: includes/functions/functions.php:1251
-msgctxt "great x5 grandparent’s brother"
-msgid "great x6 uncle"
+msgctxt "great ×5 grandparent’s brother"
+msgid "great ×6 uncle"
 msgstr "setä 6 polven takaa"
 
 #: includes/functions/functions.php:1262
-msgid "great x7 aunt"
+msgid "great ×7 aunt"
 msgstr "täti 7 polven takaa"
 
 #: includes/functions/functions.php:1263
-msgid "great x7 aunt/uncle"
+msgid "great ×7 aunt/uncle"
 msgstr "täti/setä 7 polven takaa"
 
 #: includes/functions/functions.php:1602
-msgid "great x7 grandchild"
+msgid "great ×7 grandchild"
 msgstr "lapsenlapsi 10:nnessä sukupolvessa"
 
 #: includes/functions/functions.php:1601
-msgid "great x7 granddaughter"
+msgid "great ×7 granddaughter"
 msgstr "lapsentytär 10:nnessä sukupolvessa"
 
 #: includes/functions/functions.php:1507
-msgid "great x7 grandfather"
+msgid "great ×7 grandfather"
 msgstr "isoisä 7 polven takaa"
 
 #: includes/functions/functions.php:1508
-msgid "great x7 grandmother"
+msgid "great ×7 grandmother"
 msgstr "isoäiti 7 polven takaa"
 
 #: includes/functions/functions.php:1509
-msgid "great x7 grandparent"
+msgid "great ×7 grandparent"
 msgstr "isovanhemmat 7 polven takaa"
 
 #: includes/functions/functions.php:1600
-msgid "great x7 grandson"
+msgid "great ×7 grandson"
 msgstr "lapsenpoika 10:nnessä sukupolvessa"
 
 #: includes/functions/functions.php:1259
-msgctxt "great x6 grandfather’s brother"
-msgid "great x7 uncle"
+msgctxt "great ×6 grandfather’s brother"
+msgid "great ×7 uncle"
 msgstr "setä 7 polven takaa"
 
 #: includes/functions/functions.php:1260
-msgctxt "great x6 grandmother’s brother"
-msgid "great x7 uncle"
+msgctxt "great ×6 grandmother’s brother"
+msgid "great ×7 uncle"
 msgstr "setä 7 polven takaa"
 
 #: includes/functions/functions.php:1261
-msgctxt "great x6 grandparent’s brother"
-msgid "great x7 uncle"
+msgctxt "great ×6 grandparent’s brother"
+msgid "great ×7 uncle"
 msgstr "setä 7 polven takaa"
 
 #: includes/functions/functions.php:1085
@@ -19732,7 +19724,7 @@ msgstr "syntyi"
 
 #: includes/authentication.php:111 includes/authentication.php:174
 #: message.php:40
-msgid "webtrees Message"
+msgid "webtrees message"
 msgstr "webtrees viesti"
 
 #: includes/functions/functions_edit.php:220
@@ -19840,7 +19832,7 @@ msgstr "…"
 #~ msgid "%s"
 #~ msgstr "%s"
 
-#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website."
+#~ msgid "<center><b>Welcome to this genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website."
 #~ msgstr "<center><b>Tervetuloa tähän sukututkimuksen verkkopalveluun</b></center><br>Pääsy on sallittu käyttäjille, joilla on käyttäjätunnus ja salasana tähän verkkopalveluun."
 
 #~ msgid "Abbreviate chart labels"
@@ -19888,8 +19880,8 @@ msgstr "…"
 #~ msgid "Births, Deaths, Marriages"
 #~ msgstr "Syntymät, kuolemat, avioliitot"
 
-#~ msgid "Choose to display a standard header for your custom Welcome text.  When your users change language, this header will appear in the new language.<br><br>If set to <b>Yes</b>, the header will look like this:<div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website.<br></div>"
-#~ msgstr "Valitse vakioteksti mukautuneelle tervehdystekstille. Kun käyttäjä vaihtaa kieltä, tämä teksti esitetään uudella kielellä.<br><br>Valitsemalla <b>Kyllä</b>, otsikko näyttää seuraavalta englanninkielisenä:<div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website.<br></div>"
+#~ msgid "Choose to display a standard header for your custom Welcome text.  When your users change language, this header will appear in the new language.<br><br>If set to <b>Yes</b>, the header will look like this:<div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website.<br></div>"
+#~ msgstr "Valitse vakioteksti mukautuneelle tervehdystekstille. Kun käyttäjä vaihtaa kieltä, tämä teksti esitetään uudella kielellä.<br><br>Valitsemalla <b>Kyllä</b>, otsikko näyttää seuraavalta englanninkielisenä:<div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website.<br></div>"
 
 #~ msgid "Click here to continue"
 #~ msgstr "Klikkaa tästä jatkaaksesi"

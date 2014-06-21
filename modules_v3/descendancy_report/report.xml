@@ -2,7 +2,7 @@
 <Report>
 	<Title><var var="WT_I18N::translate('Descendants')" /></Title>
 	<Description><var var="WT_I18N::translate('A report of an individual’s descendants, in a narrative style.')" /></Description>
-	<Input name="pid" lookup="INDI" type="text" default=""><var var="WT_I18N::translate('Enter Individual ID')" /></Input>
+	<Input name="pid" lookup="INDI" type="text" default=""><var var="WT_I18N::translate('Individual')" /></Input>
 	<Input name="maxgen" type="select" options="3=>WT_I18N::number(3)|4=>WT_I18N::number(4)|5=>WT_I18N::number(5)|6=>WT_I18N::number(6)|7=>WT_I18N::number(7)|8=>WT_I18N::number(8)|9=>WT_I18N::number(9)|10=>WT_I18N::number(10)|*=>WT_I18N::translate('All')"><var var="WT_I18N::translate('Generations')" /></Input>
 	<Input name="sources" type="checkbox" default="1"><var var="WT_I18N::translate('Show sources?')" /></Input>
 	<Input name="pageSize" type="select" default="A4" options="letter=>WT_I18N::translate_c('paper size','Letter')|A3=>WT_I18N::translate_c('paper size', 'A3')|A4=>WT_I18N::translate_c('paper size','A4')|legal=>WT_I18N::translate_c('paper size','Legal')"><var var="WT_I18N::translate('Page size')" /></Input>

@@ -57,8 +57,8 @@ msgstr " /cho mỗi giai đoạn thời gian"
 #: includes/functions/functions_print_facts.php:192
 #: includes/functions/functions_print_facts.php:197
 #, php-format
-msgid "#%d"
-msgstr "#%d"
+msgid "#%s"
+msgstr "#%s"
 
 #: modules_v3/googlemap/module.php:851
 #, php-format
@@ -77,22 +77,22 @@ msgstr[0] "%1$d người không có tọa độ bản đồ nơi sinh: %2$s."
 #: includes/functions/functions.php:685
 #, php-format
 msgctxt "FEMALE"
-msgid "%1$d x %2$s"
-msgstr "%1$d x %2$s"
+msgid "%1$d × %2$s"
+msgstr "%1$d × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:674
 #, php-format
 msgctxt "MALE"
-msgid "%1$d x %2$s"
-msgstr "%1$d x %2$s"
+msgid "%1$d × %2$s"
+msgstr "%1$d × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:696
 #, php-format
 msgctxt "MALE/FEMALE"
-msgid "%1$d x %2$s"
-msgstr "%1$d x %2$s"
+msgid "%1$d × %2$s"
+msgstr "%1$d × %2$s"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$d>=4
 #: includes/functions/functions.php:1702
@@ -182,18 +182,11 @@ msgstr "%1$s’s %2$s"
 msgid "%H:%i:%s"
 msgstr "%g:%i:%s %a"
 
-#. I18N: This is a title, so needs suitable capitalisation
-#: includes/functions/functions_charts.php:267
-#, php-format
-msgid "%d Child"
-msgid_plural "%d Children"
-msgstr[0] "%d trẻ con"
-
 #: lifespan.php:198
 #, php-format
-msgid "%d Individual"
-msgid_plural "%d Individuals"
-msgstr[0] "%d người"
+msgid "%s individual"
+msgid_plural "%s individuals"
+msgstr[0] "%s người"
 
 #: includes/functions/functions_print.php:306 library/WT/Stats.php:3415
 #, php-format
@@ -216,21 +209,21 @@ msgstr[0] "%d tháng"
 #: includes/functions/functions.php:637
 #, php-format
 msgctxt "FEMALE"
-msgid "%d x cousin"
-msgstr "bà con họ %d x đời"
+msgid "%d × cousin"
+msgstr "bà con họ %d × đời"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: includes/functions/functions.php:618
 #, php-format
 msgctxt "MALE"
-msgid "%d x cousin"
-msgstr "bà con họ %d x đời"
+msgid "%d × cousin"
+msgstr "bà con họ %d × đời"
 
 #: includes/functions/functions.php:656
 #, php-format
 msgctxt "MALE/FEMALE"
-msgid "%d x cousin"
-msgstr "%d x anh chị em họ"
+msgid "%d × cousin"
+msgstr "%d × anh chị em họ"
 
 #: modules_v3/relatives/module.php:60
 #, php-format
@@ -423,8 +416,8 @@ msgstr "&lt;chọn&gt;"
 #: search_advanced.php:112 search_advanced.php:116 search_advanced.php:120
 #: search_advanced.php:168 search_advanced.php:169 search_advanced.php:170
 #, php-format
-msgid "&plusmn;%d year"
-msgid_plural "&plusmn;%d years"
+msgid "±%d year"
+msgid_plural "&plusmn±s"
 msgstr[0] "&plusmn;%d năm"
 
 #. I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan 1900 (aged 43 years)
@@ -581,7 +574,7 @@ msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<b
 msgstr "<b>GUID</b> trong bối cảnh này là một từ viết tắt cho \"ID duy nhất toàn cục\"<br><br>GUID dùng nhằm mục đích giúp nhận ra từng cá nhân bằng lập lại nhiều lần, để tổ chức trung tâm như Trung tâm Lịch sử Gia đình của Giáo Hội LDS ở Salt Lake City, hoặc ngay các chương trình tương thích chạy trên máy chủ của riêng bạn, có thể xác định liệu chúng có đang làm việc với cùng một người cho dù file GEDCOM đó từ đâu ra. Mục tiêu của Trung tâm Lịch sử gia đình là để có một kho trung tâm các dữ liệu phả hệ và trình bày nó qua các dịch vụ web. Điều này sẽ cho phép bất kỳ chương trình nào tiếp cận với số lliệu và cập nhật số liệu ngay trong nó.<br><br>Nếu bạn không có ý định chia sẻ GEDCOM với bất cứ ai khác, bạn không cần để cho <b>webtrees</b> tạo ra GUID này, tuy nhiên làm như thế không có hại gì ngoài chuyện làm tăng thêm kích cỡ của file GEDCOM."
 
 #: help_text.php:1318
-msgid "<b>Important Note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
+msgid "<b>Important note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
 msgstr "<b>Ghi chú quan trọng</b>: Wizard chuyển không thể hỗ trợ chuyển các tập tin hình. Bạn cần cài đặt và chuyển hay sao chép cấu hình file hình và các đối tượng sau khi đã chạy wizard xong."
 
 #: help_text.php:1007
@@ -589,7 +582,7 @@ msgid "<b>No</b> means that authenticated users can see the details of all livin
 msgstr "<b>Không</b> có nghĩa là người dùng đã xác minh có thể thấy chi tiêt mọi người còn sống. <b>Yes</b> có nghĩa là người dùng có thể thấy thông tin riêng của người sống mà họ có quan hệ.<br><br>Đây là tùy chọn được đặt mặc định cho mọi người dùng có quyền truy cập CSDL này. Quản trị có thể bỏ qua tùy chọn này cho người dùng bằng cách chỉnh chi tiết tài khoản người dùng."
 
 #: message.php:118
-msgid "<b>Please Note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogical data, please include the sources where you obtained the data."
+msgid "<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogical data, please include the sources where you obtained the data."
 msgstr "<b>Xin lưu ý</b>Thông tin riêng về các cá nhân đang còn sống chỉ cung cấp cho bà con trong gia đình và bạn bè thân thích. Bạn sẽ được hỏi nhằm xác minh quan hệ trước khi nhận được thông tin riêng. Đôi khi thông tin người đã mất cũng là thông tin riêng. Nếu thế là do không có đầy đủ thông tin được biết về người đó để xác định là họ còn sống hay không và có thể chúng tôi không có đủ thông tin về người này.<br><br>Trước khi hỏi một câu hỏi, vui lòng xác minh là bạn đang yêu cầu đúng cá nhân nào đó bằng cách kiểm tra ngày tháng, nơi chốn và bà con gần. Nếu bạn đề xuất lên các thay đổi là dữ liệu về gia phả, xin kèm cả nguồn tài liệu bạn có được về số liệu đó."
 
 #: help_text.php:1063
@@ -621,15 +614,15 @@ msgid "<b>webtrees</b> reply address"
 msgstr "địa chỉ trả lời <b>webtrees</b>"
 
 #: login.php:150
-msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved."
+msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved."
 msgstr "<center><b>Kính chào vào cái website Gia Phả này</b></center><br>Chỉ có hội viên <u>đã thừa nhận</u> mới được vào đây.<br><br>Nếu bạn có tài khoản, xin truy nhập. Nếu bạn không có tài khoản, bạn có thể xin mở một cái bằng cái mối thu nhập thích hợp bên dưới.<br><br>Sau khi kiểm tra sự xin đăng ký của bạn, quản lý sẽ kích hoạt tài khoản của bạn. Bạn sẽ nhận một bức thư điện tử cho biết sự xin đăng ký của bạn đã được chấp thuận."
 
 #: login.php:153
-msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved."
+msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved."
 msgstr "<center><b>Kính chào vào cái website Gia Phả này</b></center><br>Chỉ có <u>gia quyến</u> mới được vào đây.<br><br>Nếu bạn không có tài khoản, bạn có thể xin mở một cái bằng cái mối thu nhập thích hợp bên dưới.<br><br>Sau khi kiểm tra sự xin đăng ký của bạn, quản lý sẽ kích hoạt tài khoản của bạn. Bạn sẽ nhận một bức thư điện tử cho biết sự xin đăng ký của bạn đã được chấp thuận."
 
 #: login.php:147
-msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved."
+msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved."
 msgstr "<center><b>Chào bạn đã viếng site gia phả này</b></center><br>Chỉ những thành viên có tài khoản mới được vào.<br><br>Nếu bạn không có tài khoản, bạn có thể xin mở bằng cách chọn liên kết thích hợp bên dưới.<br><br>Sau khi kiểm tra đăng ký của bạn, quản trị sẽ kích hoạt tài khoản của bạn. Bạn sẽ nhận một bức thư điện tử cho biết sự xin đăng ký của bạn đã được chấp thuận."
 
 #. I18N: default option in list of themes
@@ -703,7 +696,7 @@ msgstr "Danh sách các công việc và hoạt động liên kết đến cây 
 msgid "A list of the Hebrew death anniversaries that will occur in the near future."
 msgstr "Danh sách các ngày kỷ niệm ngày mất Do Thái sẽ xảy ra trong thời gian sắp tới."
 
-#. I18N: Description of the “On This Day” module
+#. I18N: Description of the “On this day” module
 #: modules_v3/todays_events/module.php:37
 msgid "A list of the anniversaries that occur today."
 msgstr "Danh sách ngày kỷ niệm xảy ra hôm nay."
@@ -1117,23 +1110,23 @@ msgstr "Thêm vào vị trí địa lý mới"
 
 #: modules_v3/clippings/module.php:472
 #, php-format
-msgid "Add %s to cart"
+msgid "Add %s to the clippings cart"
 msgstr "Thêm %s vào giỏ"
 
 #: modules_v3/faq/module.php:145 modules_v3/faq/module.php:359
-msgid "Add FAQ item"
+msgid "Add an FAQ item"
 msgstr "Thêm mục FAQ"
 
 #: modules_v3/clippings/module.php:150 modules_v3/clippings/module.php:233
-msgid "Add Individual By ID"
+msgid "Add individual by ID"
 msgstr "Thêm cá nhân bằng số ID"
 
 #: search_advanced.php:290
-msgid "Add More Fields"
+msgid "Add more fields"
 msgstr "Thêm trường nữa"
 
 #: modules_v3/gedcom_news/module.php:125
-msgid "Add a News article"
+msgid "Add a news article"
 msgstr "Thêm một tin tức mới"
 
 #: edit_interface.php:563 modules_v3/relatives/module.php:373
@@ -1159,7 +1152,7 @@ msgid "Add a husband using an existing individual"
 msgstr "Thêm chồng bằng cách sử dụng người đang có"
 
 #: modules_v3/user_blog/module.php:95
-msgid "Add a new Journal entry"
+msgid "Add a new journal entry"
 msgstr "Cho vào mục Nhật ký mới"
 
 #: help_text.php:1133 includes/functions/functions_edit.php:834
@@ -1340,7 +1333,7 @@ msgstr "Thêm khỏang cách nơi các ghi chú được gói"
 
 #: modules_v3/stories/module.php:127 modules_v3/stories/module.php:214
 #: modules_v3/stories/module.php:337
-msgid "Add story"
+msgid "Add a story"
 msgstr "Thêm chuyện"
 
 #: admin_trees_download.php:129 modules_v3/clippings/module.php:212
@@ -1407,11 +1400,11 @@ msgid "Add your own text and graphics."
 msgstr "Thêm hình ảnh và ghi chú của riêng bạn."
 
 #: modules_v3/GEDFact_assistant/_CENS/census_1_ctrl.php:91
-msgid "Add/Insert Blank Row"
+msgid "Add/insert a blank row"
 msgstr "Thêm/ chèn dòng trống"
 
 #: editnews.php:31 editnews.php:49
-msgid "Add/edit journal/news entry"
+msgid "Add/edit a journal/news entry"
 msgstr "Thêm/Sửa  Tin Tức/Nhật Ký"
 
 #: admin_site_merge.php:196 admin_site_merge.php:202
@@ -1461,7 +1454,7 @@ msgid "Administrators"
 msgstr "Các nhà quản trị"
 
 #: help_text.php:1284
-msgid "Administrators sometimes need to clean up and correct the data submitted by users.  For example, they might need to correct the PLAC location to include the country.  When Administrators make such corrections, information about the original change is normally replaced.  This may not be desirable.<br><br>When this option is selected, <b>webtrees</b> will retain the original Change information instead of replacing it with that of the current session.  With this option selected, Administrators also have the ability to modify or delete the information associated with the original CHAN tag."
+msgid "Administrators sometimes need to clean up and correct the data submitted by users.  For example, they might need to correct the PLAC location to include the country.  When administrators make such corrections, information about the original change is normally replaced.  This may not be desirable.<br><br>When this option is selected, <b>webtrees</b> will retain the original change information instead of replacing it with that of the current session.  With this option selected, administrators also have the ability to modify or delete the information associated with the original CHAN tag."
 msgstr "Quản trị viên đôi khi cần để dọn dẹp và sửa các dữ liệu được gửi bởi người sử dụng. Ví dụ, họ có thể cần phải sửa lại vị trí PLAC để đưa vào quốc gia. Khi quản trị viên sửa chữa như vậy, thông tin về việc thay đổi ban đầu thường được thay thế. Điều này có thể không được mong muốn<br><br>Khi tùy chọn này được lựa chọn, <b>webtrees</b> sẽ giữ lại các thông tin thay đổi ban đầu thay vì thay thế nó với các phiên bản mới. Với tùy chọn này được lựa chọn, quản trị cũng có khả năng sửa đổi hoặc xóa các thông tin liên kết với các tag CHAN gốc."
 
 #: library/WT/Gedcom/Code/Pedi.php:43
@@ -1640,8 +1633,8 @@ msgid "After creating the family tree, you will be able to upload or import data
 msgstr "Sau khi tạo ra cây gia đình, bạn có thể tải hay nhập dữ liệu từ file GEDCOM."
 
 #: login.php:242
-msgid "After you have logged in, select the “My Account” link under the “My Page” menu and fill in the password fields to change your password."
-msgstr "Sau khi bạn đăng nhập, chọn liên kết \"Tài khoản của tôi\" bên dưới menu \"Trang của tôi\" và điền vào trường mật khẩu để thay đổi mật khẩu."
+msgid "After you have logged in, select the “My account” link under the “My page” menu and fill in the password fields to change your password."
+msgstr "Sau khi bạn đăng nhập, chọn liên kết “Tài khoản của tôi” bên dưới menu “Trang của tôi” và điền vào trường mật khẩu để thay đổi mật khẩu."
 
 #. I18N: gedcom tag AGE
 #: autocomplete.php:114 includes/functions/functions_print.php:709
@@ -2032,11 +2025,11 @@ msgid "Are you sure you want to delete this FAQ entry?"
 msgstr "Bạn có chắc muốn xóa mục FAQ này không?"
 
 #: modules_v3/user_blog/module.php:91
-msgid "Are you sure you want to delete this Journal entry?"
+msgid "Are you sure you want to delete this journal entry?"
 msgstr "Bạn có chắc là muốn xóa mục Nhật ký này?"
 
 #: modules_v3/gedcom_news/module.php:119
-msgid "Are you sure you want to delete this News entry?"
+msgid "Are you sure you want to delete this news article?"
 msgstr "Bạn có chắc là muốn xóa cái tin tức mới cho vào không?"
 
 #: includes/functions/functions_print_facts.php:181
@@ -2073,7 +2066,7 @@ msgid "Are you sure you want to remove links to this media object?"
 msgstr ""
 
 #: modules_v3/gedcom_favorites/module.php:123
-msgid "Are you sure you want to remove this item from your list of Favorites?"
+msgid "Are you sure you want to remove this item from your list of favorites?"
 msgstr "Có chắc là muốn lấy món này ra khỏi sổ Ưa Chuộng?"
 
 #: edit_changes.php:231
@@ -2143,8 +2136,8 @@ msgid "Asuncion, Paraguay"
 msgstr "Asuncion, Paraguay"
 
 #: library/WT/Stats.php:4003
-msgid "At Sea"
-msgstr "At Sea"
+msgid "At sea"
+msgstr "At sea"
 
 #: library/WT/Gedcom/Code/Temp.php:65
 msgid "Atlanta, Georgia"
@@ -2692,7 +2685,7 @@ msgid "Birth"
 msgstr "Sinh"
 
 #: modules_v3/birth_report/report.xml:6
-msgid "Birth Place contains"
+msgid "Birthplace contains"
 msgstr "Nơi sinh chứa"
 
 #: library/WT/Stats.php:978 statistics.php:576
@@ -3689,7 +3682,7 @@ msgid "Click here for PhpGedView to <b>webtrees</b> transfer wizard"
 msgstr "Nhấp vào đây để khởi động wizard chuyển đổi PhpGedView sang <b>webtrees<b/>"
 
 #: modules_v3/faq/module.php:282
-msgid "Click here to Add, Edit, or Delete"
+msgid "Click here to add, edit, or delete"
 msgstr "Nhấp vào đây để thêm, sửa hay xóa"
 
 #: individual.php:267
@@ -3879,7 +3872,7 @@ msgstr "Nội dung"
 #: modules_v3/clippings/module.php:129 modules_v3/clippings/module.php:501
 #: modules_v3/clippings/module.php:524 modules_v3/clippings/module.php:537
 #: modules_v3/googlemap/module.php:4142
-msgid "Continue Adding"
+msgid "Continue adding"
 msgstr "Tiếp tục thêm"
 
 #. I18N: gedcom tag CONT
@@ -4018,7 +4011,7 @@ msgstr "Tạo nguồn mới"
 
 #: edit_interface.php:1493 edit_interface.php:1558
 #: includes/functions/functions_edit.php:320
-msgid "Create repository"
+msgid "Create a new repository"
 msgstr "Tạo kho dữ liệu"
 
 #: admin_users.php:480
@@ -4273,7 +4266,7 @@ msgid "Date"
 msgstr "Ngày Tháng"
 
 #: modules_v3/user_messages/module.php:87
-msgid "Date Sent:"
+msgid "Date sent:"
 msgstr "Ngày gửi:"
 
 #: admin_trees_config.php:1045 help_text.php:1403
@@ -4596,7 +4589,7 @@ msgid "Death"
 msgstr "Chết"
 
 #: modules_v3/death_report/report.xml:6
-msgid "Death Place contains"
+msgid "Death place contains"
 msgstr "Nơi mất chứa"
 
 #: library/WT/Stats.php:995 statistics.php:584
@@ -4877,7 +4870,7 @@ msgid "Delete FAQ item"
 msgstr "Xóa mục FAQ này"
 
 #: modules_v3/user_messages/module.php:116
-msgid "Delete Selected Messages"
+msgid "Delete selected messages"
 msgstr "Bỏ những thư đã chọn"
 
 #: modules_v3/googlemap/module.php:4130
@@ -4889,7 +4882,7 @@ msgid "Delete inactive users"
 msgstr "Xóa người không hoạt động"
 
 #: library/WT/Controller/Individual.php:151
-msgid "Delete name"
+msgid "Delete this name"
 msgstr "Xóa tên"
 
 #. I18N: The system is about to [...]
@@ -5120,7 +5113,7 @@ msgid "Display %s"
 msgstr "Hiển thị %s"
 
 #: modules_v3/googlemap/help_text.php:46 modules_v3/googlemap/module.php:459
-msgid "Display Map Coordinates"
+msgid "Display map coordinates"
 msgstr "Hiện tọa độ bản đồ"
 
 #: find.php:220 find.php:237 find.php:254 find.php:272 find.php:289
@@ -5207,7 +5200,7 @@ msgid "Download %s…"
 msgstr ""
 
 #: mediaviewer.php:104
-msgid "Download File"
+msgid "Download file"
 msgstr "File tải về"
 
 #: admin_trees_download.php:30
@@ -5494,7 +5487,7 @@ msgstr "Người chủ"
 
 #: modules_v3/clippings/help_text.php:36 modules_v3/clippings/module.php:254
 #: modules_v3/clippings/module.php:463
-msgid "Empty Cart"
+msgid "Empty the clippings cart"
 msgstr "Giỏ không"
 
 #: admin_modules.php:121
@@ -5588,7 +5581,7 @@ msgid "Enter the email address.<br><br>An example email address looks like this:
 msgstr "Nhập địa chỉ email.<br><br>Một địa chỉ email ví dụ như sau: <b>tên@hotmail.com</b> Để trường này trống nếu bạn không muốn đưa địa chỉ vào."
 
 #: help_text.php:1238
-msgid "Enter the limiting value here.<br><br>If you have opted to limit the News article display according to age, any article older than the number of days entered here will be hidden from view.  If you have opted to limit the News article display by number, only the specified number of recent articles, ordered by age, will be shown.  The remaining articles will be hidden from view.<br><br>Zeros entered here will disable the limit, causing all News articles to be shown."
+msgid "Enter the limiting value here.<br><br>If you have opted to limit the news article display according to age, any article older than the number of days entered here will be hidden from view.  If you have opted to limit the news article display by number, only the specified number of recent articles, ordered by age, will be shown.  The remaining articles will be hidden from view.<br><br>Zeros entered here will disable the limit, causing all news articles to be shown."
 msgstr "Nhập giá trị giới hạn ở đây /><br>Nếu bạn đã chọn để giới hạn bài Tin tức hiển thị theo thời gian, bất kỳ bài viết nào cũ hơn số ngày nhập ở đây sẽ được giấu. Nếu bạn đã chọn để hạn chế hiển thị Tin tức theo số lượng, chỉ số lượng cụ thể nhập ở đây cho tin gần đây, sắp xếp theo thời gian sẽ được hiển thị. Các bài còn lại sẽ không thấy được.<br><br>Nếu nhập là 0 ở đây sẽ vô hiệu hóa giới hạn, nghĩa là tất cả các Tin tức đều được hiển thị."
 
 #: help_text.php:325
@@ -5693,7 +5686,7 @@ msgid "Events of close relatives"
 msgstr "Sự Kiện về Gia Quyến"
 
 #: help_text.php:1363
-msgid "Every individual in the database has a unique ID number on this site.  If you know the ID number for your own record, please enter it here.  If you don’t know your ID number or could not find it because of privacy settings, please provide enough information in the Comments field to help the site administrator identify who you are on this site so that he can set the ID for you."
+msgid "Every individual in the database has a unique ID number on this site.  If you know the ID number for your own record, please enter it here.  If you don’t know your ID number or could not find it because of privacy settings, please provide enough information in the comments field to help the site administrator identify who you are on this site so that he can set the ID for you."
 msgstr "Mỗi người trong cơ sở dữ liệu có một số ID duy nhất trên trang web này. Nếu bạn biết số ID cho các bản ghi của riêng bạn, hãy nhập nó ở đây. Nếu bạn không biết số ID của bạn hoặc không thể tìm thấy nó, vì các cài đặt bảo mật, vui lòng cung cấp đầy đủ thông tin trong trường ý kiến để giúp người quản trị trang web xác định bạn là ai trên trang web này để ông có thể thiết lập ID cho bạn."
 
 #: help_text.php:1378
@@ -6287,7 +6280,7 @@ msgid "Find a media object"
 msgstr "Tìm một tài liệu đa phương tiện"
 
 #: find.php:86 includes/functions/functions_print.php:1041
-msgid "Find a note"
+msgid "Find a shared note"
 msgstr "Tìm một ghi chú"
 
 #: find.php:80 includes/functions/functions_print.php:1015
@@ -6321,7 +6314,7 @@ msgid "Find next path"
 msgstr "Tìm ở đường dẫn kế tiếp"
 
 #: help_text.php:1278
-msgid "Find next relationship path"
+msgid "Find the next relationship path"
 msgstr "Tìm đường dẫn quan hệ tiếp theo"
 
 #: library/WT/Stats.php:3879
@@ -6955,7 +6948,7 @@ msgid "He was cremated"
 msgstr "Ông được hỏa táng"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_1_ctrl.php:62
-msgid "Head of Household:"
+msgid "Head of household:"
 msgstr "Trưởng hộ:"
 
 #. I18N: gedcom tag HEAD
@@ -7041,7 +7034,7 @@ msgid "Here you can add a fact to the record being edited.<br><br>First choose a
 msgstr "Tại đây bạn có thể thêm sự kiện vào bản ghi đang sửa.<br><br>Trước tiên chọn một sự kiện từ danh sách sổ xuống, rồi nhấp vào nút <b>Thêm</b>. Mọi sự kiện có thể thêm vào CSDL trong danh sách sổ xuống đó."
 
 #: help_text.php:1089
-msgid "Here you can add a source <b>Citation</b> to this record.<br><br>Just click the link, a window will open, and you can choose the source from the list (Find ID) or create a new source and then add the Citation.<br><br>Adding sources is an important part of genealogy because it allows other researchers to verify where you obtained your information."
+msgid "Here you can add a source <b>Citation</b> to this record.<br><br>Just click the link, a window will open, and you can choose the source from the list (Find ID) or create a new source and then add the citation.<br><br>Adding sources is an important part of genealogy because it allows other researchers to verify where you obtained your information."
 msgstr "Tại đây bạn có thể thêm một nguồn <b>trích dẫn</b> cho bản ghi này<br><br>Chỉ cần nhấp vào liên kết, một cửa sổ sẽ mở ra, và bạn có thể chọn nguồn từ danh sách (Tìm ID) hoặc tạo ra một nguồn mới và sau đó thêm trích dẫn.<br><br>Thêm nguồn là một phần quan trọng của phả hệ vì nó cho phép các nhà nghiên cứu khác xác minh nơi mà bạn thu được thông tin của bạn."
 
 #: help_text.php:1228
@@ -7053,7 +7046,7 @@ msgid "Here you can choose between two types of displaying places names in hiera
 msgstr "Tại đây bạn có thể chọn giữa hai loại trình bày tên địa điểm trong thứ cấp. Nếu thiết đặt là Có, tên địa điểm sẽ ngắn hay mức tên thật. Nếu ghi Không, thì tên đầy đù<br><b> Ví dụ:.<br>Tên đầy đủ:</b> Chicago, Illinois, USA<br><b>Tên viết tắt:</b> Chicago<br><b> Tên đầy đủ:</b> Illinois, USA<br><b> Tên vắn tắt:</b> Illinois"
 
 #: help_text.php:1045
-msgid "Here you can choose text to appear on the login screen. You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the Help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.</div><br></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
+msgid "Here you can choose text to appear on the login screen. You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the Help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.</div><br></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
 msgstr "Ở đây bạn có thể chọn văn bản xuất hiện trên màn hình đăng nhập. Bạn phải quyết định văn bản định trước nào thích hợp nhất.<br><br>Bạn cũng có thể chọn văn bản chào mừng riêng. Xin vui lòng tham khảo văn bản trợ giúp liên quan đến  <b> Văn bản chào mừng riêng</b> để biết thêm thông tin<br><br>Các văn bản được xác định trước là:<ul><li><b>Văn bản xác định trước báo rằng mọi người dùng có quyền yêu cầu xin tài khoản người dùng:</b><div class=\"list_value_wrap\"><center><b>Chào mừng bạn đến với trang web gia phả này</b></center><br>Việc truy cập vào trang web này chỉ cho phép người dùng nào có tài khoản người dùng<br><br>Nếu bạn đã có một tài khoản người dùng, bạn có thể đăng nhập. Nếu bạn không có một tài khoản người dùng, bạn có thể xin một tài khoản bằng cách nhấp vào liên kết thích hợp dưới đây.<br><br>Sau khi xác minh việc xin mở tài khoản của bạn, quản trị viên trang web sẽ kích hoạt tài khoản của bạn. Bạn sẽ nhận được một email khi việc xin mở tài khoản của bạn đã được chấp thuận</div><br></li><li><b>Văn bản xác định trước báo rằng quản trị viên sẽ quyết định tùy từng trường hợp xin mở tài khoản người dùng.</b> < div class = \"list_value_wrap\"> <center> <b> Chào mừng bạn đến trang web gia phả này</b></center><br>Việc truy cập vào trang web này chỉ cho phép người dùng <u>được cho phép</u> mà thôi.<br><br>Nếu bạn đã có tài khoản tài khoản người dùng, bạn có thể bạn đăng nhập vào trang này. Nếu bạn không có một tài khoản người dùng, bạn có thể xin mở một tài khoản bằng cách nhấp vào liên kết thích hợp dưới đây<br><br>Sau khi xác minh thông tin của bạn,  người quản trị sẽ chấp thuận hoặc từ chối việc xin mở tài khoản người dùng của bạn. Bạn sẽ nhận được một tin nhắn email khi việc xin được chấp thuận</div><br></li><li></b>Văn bản xác định trước nói rằng chỉ thành viên gia đình có thể yêu cầu một tài khoản người dùng:</b> <div class = \"list_value_wrap\"> <center> <b> Chào mừng bạn đến trang web gia phả này</b></br><br><center>. Việc truy cập vào trang web này chỉ được phép <u> cho thành viên gia đình</u>.<br><br>Nếu bạn đã một tài khoản người dùng, bạn có thể đăng nhập vào site. Nếu bạn không có một tài khoản người dùng, bạn có thể xin một bằng cách nhấp vào liên kết thích hợp dưới đây.<br><br>Sau khi xác minh thông tin bạn cung cấp,  nhà quản trị site sẽ chấp thuận hoặc từ chối yêu cầu của bạn. Bạn sẽ nhận được một email khi yêu cầu được chấp thuận.</div></li></ul>"
 
 #: modules_v3/googlemap/help_text.php:54
@@ -7280,7 +7273,7 @@ msgid "If the number of times that a certain surname occurs is lower than the th
 msgstr "Nếu số lần mà một họ nào đó xảy ra thấp hơn ngưỡng này, nó sẽ không xuất hiện trong danh sách. Nó có thể được thêm thủ công vào đây. Nếu có nhiều hơn một họ nhập vào, chúng phải được phân cách bằng dấu phẩy. <b> họ là những trường hợp phân biệt hoa thường.</b>"
 
 #: help_text.php:819
-msgid "If the option <b>Allow visitors to request account registration</b> is enabled this setting controls whether the admin must approve the registration.<br><br>Setting this to <b>Yes</b> will require that all new users first verify themselves and then be approved by an admin before they can login.  With this setting on <b>No</b>, the <b>User approved by Admin</b> checkbox will be checked automatically when users verify their account, thus allowing an immediate login afterwards without admin intervention."
+msgid "If the option <b>Allow visitors to request account registration</b> is enabled this setting controls whether the admin must approve the registration.<br><br>Setting this to <b>Yes</b> will require that all new users first verify themselves and then be approved by an admin before they can login.  With this setting on <b>No</b>, the “Approved by administrator” checkbox will be checked automatically when users verify their account, thus allowing an immediate login afterwards without admin intervention."
 msgstr "Nếu tùy chọn <b>Cho phép khách truy cập yêu cầu đăng ký tài khoản</b> được kích hoạt thiết lập này điều khiển việc quản trị viên phải chấp thuận đăng ký.<br><br>Đặt nó ở <b>Có</b> sẽ yêu cầu tất cả người dùng mới trước tiên tiên xác minh bản thân họ bởi quản trị trước khi họ có thể đăng nhập. Với thiết đặt này đặt ở <b>Không</b> hộp  kiểm <b>Người dùng đã được châp thuận bởi quản trị</b> sẽ được tự động đánh dấu kiểm khi người dùng xác mình tài khoản của họ, và cho phép đăng nhập ngay sau đó không cần can thiệp của quản trị."
 
 #: help_text.php:281
@@ -7357,7 +7350,7 @@ msgid "If you try to exceed these limits, you may experience server time-outs an
 msgstr "Nếu bạn cố làm quá giới hạn này, bạn có thể làm máy chủ quá tải thời gian hay trang bị xóa trắng."
 
 #: help_text.php:471
-msgid "If you want to remove a surname from the Common Surname list without increasing the threshold value, you can do that by entering the surname here.  If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive.</b>  Surnames entered here will also be removed from the Top-10 list on the Home Page."
+msgid "If you want to remove a surname from the Common Surname list without increasing the threshold value, you can do that by entering the surname here.  If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive</b>.  Surnames entered here will also be removed from the “Top surnames” list on the “Home page”."
 msgstr "Nếu bạn muốn loại bỏ một họ khỏi danh sách Họ thường mà không cần tăng giá trị ngưỡng, bạn có thể làm điều đó bằng cách nhập vào tên họ ở đây. Nếu có nhiều hơn một họ được nhập vào, chúng phải được phân cách bằng dấu phẩy. <b> họ là những trường hợp phân biệt hoa thường.</b>Họ nhập ở đây cũng sẽ được loại bỏ khỏi danh sách-Top 10 trên Trang chủ."
 
 #: setup.php:185
@@ -7411,7 +7404,7 @@ msgid "In some countries, privacy laws apply not only to living individuals, but
 msgstr "Ở một số nước, luật riêng tư áp dụng không chỉ cho những người sống, mà còn cho những người đã qua đời gần đây. Tuỳ chọn này sẽ cho phép bạn mở rộng các quy tắc bảo mật người còn sống đối với những người được sinh hay chết trong một số năm. Bỏ trống giá trị trường này để vô hiệu hóa tính năng này."
 
 #: help_text.php:315
-msgid "In the Citation Details field you would enter the page number or other information that might help someone find the information in the source."
+msgid "In the citation details field you would enter the page number or other information that might help someone find the information in the source."
 msgstr "Trong trường Chi tiết trích dẫn bạn phải nhập số trang hay các thông tin khác có thể giúp người khác tìm thông tin nguồn."
 
 #: help_text.php:378
@@ -8060,7 +8053,7 @@ msgid "Leave password blank if you want to keep the current password."
 msgstr "Để trống ô mật khẩu nếu bạn giữ nguyên mật khẩu hiện tại."
 
 #: admin_trees_config.php:438
-msgid "Leave this field empty to use the title of the currently active database."
+msgid "Leave this field empty to use the name of the family tree."
 msgstr "Để trống trường này để dùng cho tiêu đề của CSDL hiện hoạt động"
 
 #: includes/functions/functions_print_lists.php:95
@@ -9641,7 +9634,7 @@ msgid "No GEDCOM files found.  You need to copy files to the <b>%s</b> directory
 msgstr "Không tìm thấy GEDCOM. Bạn cần chép file đó vào thư mục <b>%s</b> ở máy chủ của bạn."
 
 #: modules_v3/gedcom_news/module.php:93
-msgid "No News articles have been submitted."
+msgid "No news articles have been submitted."
 msgstr "Không có ai gửi bài mới cho mục Tin tức."
 
 #: modules_v3/googlemap/module.php:865
@@ -12431,7 +12424,7 @@ msgstr "Sắp đặt già nhất phía trên"
 
 #: modules_v3/todays_events/module.php:132
 #: modules_v3/upcoming_events/module.php:144
-msgid "Show only Births, Deaths, and Marriages?"
+msgid "Show only births, deaths, and marriages?"
 msgstr "Hiện ngày sinh, chết và kết hôn?"
 
 #: modules_v3/todays_events/module.php:125
@@ -12444,7 +12437,7 @@ msgid "Show only females."
 msgstr "Chỉ hiện nữ."
 
 #: includes/functions/functions_print_lists.php:87
-msgid "Show only individuals of whom the gender is not known."
+msgid "Show only individuals for whom the gender is not known."
 msgstr "Chỉ hiện người không rõ giới tính."
 
 #: modules_v3/random_media/module.php:260
@@ -13264,7 +13257,7 @@ msgid "The FAQ list is empty."
 msgstr "Danh sách FAQ trống."
 
 #: help_text.php:1253
-msgid "The Favorites drop-down list shows the favorites that you have selected on your personalized My Page.  It also shows the favorites that the site administrator has selected for the currently active GEDCOM.  Clicking on one of the favorites entries will take you directly to the Individual Information page of that individual.<br><br>More help about adding Favorites is available in your personalized My Page."
+msgid "The Favorites drop-down list shows the favorites that you have selected on your “My page”.  It also shows the favorites that the site administrator has selected for the currently active GEDCOM.  Clicking on one of the favorites entries will take you directly to the Individual Information page of that individual.<br><br>More help about adding favorites is available in your “My page”."
 msgstr "Danh sách thả xuống Người yêu thích cho thấy những người yêu thích mà bạn đã chọn trên Trang Của Tôi của bạn. Nó cũng cho thấy người ưa thích mà người quản trị trang web đã lựa chọn cho các GEDCOM hiện đang hoạt động. Nhấp chuột vào một trong những mục yêu thích sẽ đưa bạn trực tiếp đến trang thông tin cá nhân của người đó.<br><br>Những hỗ trợ nhiều hơn thêm vào Người ưa thích có sẵn trong Trang Của Tôi của bạn."
 
 #: library/WT/Gedcom/Code/Temp.php:98
@@ -13301,7 +13294,7 @@ msgid "The changes to “%s” have been rejected."
 msgstr "Thay đổi sang \"%s\" đã bị từ chối."
 
 #: modules_v3/clippings/module.php:142
-msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the <b>Download Now</b> link.  Follow the instructions and links.</li></ul>"
+msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the “Download” link.  Follow the instructions and links.</li></ul>"
 msgstr "Xe chứa đoạn chép cho phép bạn rút ra  (\"các đoạn chép\") từ cây gia đình này và kết hợp chúng lại thành một file để tải về cũng như nhập chúng vào chương trình gia phả của bạn. File tải về được ở dạng fiel GEDCOM.<br><ul><li>Làm cách nào chép đoạn cần?<br>Điều này thật đơn giản. Khi nào bạn thấy tên nhấp được (cá nhân, gia đình hay nguồn) bạn có thể chuyển đến mục xem trang chi tiết của tên đó. Tại đây có mục <b>Cho vào xe đoạn chép</b>. Khi bạn nhấp vào liên kết này bạn sẽ có được vài tùy chọn về tải về.</li><li>Làm thế nào tải về?<br>Khi bạn đã có mục chép trong xe, bạn có thể tải về bằng cách nhấp vào liên kết <b>Tải về</b>.  Theo hướng dẫn và liên kết.</li></ul>"
 
 #: help_text.php:1314
@@ -13461,7 +13454,7 @@ msgid "The individual to contact about the genealogical data on this site."
 msgstr "Người liên hệ về các số liệu gia phả của site này."
 
 #: help_text.php:573
-msgid "The length of time after birth can be set on the Privacy configuration tab option “Age at which to assume an individual is dead”."
+msgid "The length of time after birth can be set on the “Privacy” tab option “Age at which to assume an individual is dead”."
 msgstr "Chiều dài của thời gian sau khi sinh có thể đặt ở thẻ tùy chọn cấu hình Tính riêng tư \"Tuổi dùng xem như một người đã chết\"."
 
 #. I18N: %s are names of records, such as sources, repositories or individuals
@@ -13560,7 +13553,7 @@ msgid "The username or password is incorrect."
 msgstr "Tên người dùng hay mật khẩu không đúng."
 
 #: help_text.php:689
-msgid "The value to place in the Description meta tag in the HTML page header.  Leave this field empty to use the title of the currently active database."
+msgid "The value to place in the “meta description” tag in the HTML page header.  Leave this field empty to use the title of the currently active database."
 msgstr "Giá tri được đặt ở thẻ Meta mô tả trong đầu trang HTML. Để trống trường này sẽ dùng tiêu đề của CSDL hiện tại."
 
 #: admin_pgv_to_wt.php:74
@@ -13602,15 +13595,15 @@ msgstr "Kiểu trình bày có thể chọn ở 3 mức: người dùng, GEDCOM 
 
 #: modules_v3/extra_info/module.php:61
 #: modules_v3/personal_facts/module.php:122
-msgid "There are no Facts for this individual."
+msgid "There are no facts for this individual."
 msgstr "Không có sự kiện nào cho người này"
 
 #: modules_v3/notes/module.php:81
-msgid "There are no Notes for this individual."
+msgid "There are no notes for this individual."
 msgstr "Không có Lời Ghi nào cho người này"
 
 #: modules_v3/sources_tab/module.php:80
-msgid "There are no Source citations for this individual."
+msgid "There are no source citations for this individual."
 msgstr "Không có Nguồn nào cho người này"
 
 #: modules_v3/media/module.php:73
@@ -13685,7 +13678,7 @@ msgid "This account has not been verified.  Please check your email for a verifi
 msgstr "Tài khoản này đã chưa được xác minh. Xin kiểm tra email xem thông báo xác minh."
 
 #: modules_v3/charts/help_text.php:32
-msgid "This block allows a pedigree, descendancy, or hourglass chart to appear on My Page or the Home Page.  Because of space limitations, the charts should be placed only on the left side of the page.<br><br>When this block appears on the Home Page, the root individual and the type of chart to be displayed are determined by the administrator.  When this block appears on the user’s personalized My Page, these options are determined by the user.<br><br>The behavior of these charts is identical to their behavior when they are called up from the menus.  Click on the box of an individual to see more details about them."
+msgid "This block allows a pedigree, descendancy, or hourglass chart to appear on your “My page” or the “Home page”.  Because of space limitations, the charts should be placed only on the left side of the page.<br><br>When this block appears on the “Home page”, the root individual and the type of chart to be displayed are determined by the administrator.  When this block appears on the user’s “My page”, these options are determined by the user.<br><br>The behavior of these charts is identical to their behavior when they are called up from the menus.  Click on the box of an individual to see more details about them."
 msgstr "Khối này cho phép một biểu đồ gia phả, con cháu, biểu đồ thời gian hiện ở Trang Của Tôi hay Trang chủ. Vì giới hạn không gian, biểu đồ phải đặt phía trái của trang.<br><br>Khi khối này xuất hiện ở Trang chủ, người gốc và kiểu biểu đồ hiển thị được quyết định bởi nhà quản trị. Khi khối này hiện ở trang riêng của người dùng Trang Của Tôi, các tùy chọn quyết định bởi người dùng.<br><br>Đặc tính các biểu đồ này tương tự với đặc tính khi chúng được gọi từ menu. Nhấp vào hộp của một người sẽ thấy thêm nhiều chi tiết về họ."
 
 #: modules_v3/review_changes/help_text.php:32
@@ -13820,7 +13813,7 @@ msgid "This input box lets you change that year of the calendar.  Type a year in
 msgstr "Hộp nhập này cho phép ạn thay đổi năm của lịch. Đánh một năm vào hộp và ấn <b>Enter</b> để thay đổi lịch cho năm đó.<br><br><b> Tính năng nâng cao</b> cho<b> Xem Năm</b><dl><dt><b>Nhiều hơn một năm</b></dt><dd> Bạn có thể tìm kiếm ngày trong 1 chuỗi năm.<br><br>Chuỗi năm là <u> bao gồm</u> . Điều này có nghĩa là phạm vi ngày kéo dài từ 1 tháng Giêng của năm đầu tiên của dãy đến ngày 31 tháng 12 của năm cuối cùng đề cập. Dưới đây là một vài ví dụ về dãy năm:<br><br><b> 1992-5</b> cho tất cả các sự kiện 1992-1995<br><b> 1972-1989</b> cho tất cả các sự kiện từ 1972-1989<br><b> 1610-759</b> cho tất cả các sự kiện 1610-1759<br><b> 1880-1905</b> cho tất cả các sự kiện 1880-1905<br><b> 880-1105</b> cho tất cả các sự kiện 880-1105.<br><br>Để xem tất cả các sự kiện trong một thập kỷ cho hay thế kỷ, bạn có thể sử dụng <b>?</b> thay cho chữ số cuối cùng. Ví dụ, <b> 197?</b> cho tất cả các sự kiện 1970-1979 hoặc <b> 16??</b> cho tất cả các sự kiện 1600-1699<br><br>Chọn một dãy năm sẽ thay đổi lịch để xem các năm xem.</dd></dl>"
 
 #: modules_v3/clippings/help_text.php:32
-msgid "This input box lets you enter an individual’s ID number so he can be added to the clippings cart.  Once added you’ll be offered options to link that individual’s relations to your clippings cart.<br><br>If you do not know an individual’s ID number, you can perform a search by name by pressing the individual icon next to the Add button."
+msgid "This input box lets you enter an individual’s ID number so he can be added to the clippings cart.  Once added you’ll be offered options to link that individual’s relations to your clippings cart.<br><br>If you do not know an individual’s ID number, you can perform a search by name by pressing the individual icon next to the “Add” button."
 msgstr "Hộp nhập này cho phép bạn thêm số ID cá nhân vào để có thể đưa người đó vào giỏ chứa bản trích. Khi đã thêm vào bạn sẽ có các tùy chọn để liên kết mối quan hệ của người đó với giỏ chứa các đoạn trích.<br><br>Nếu bạn không biết số ID của người đó, bạn có thể tìm theo tên bằng cách nhấp vào nút Cá nhân kế bên nút Thêm."
 
 #: help_text.php:407
@@ -13869,35 +13862,35 @@ msgid "This is the latest version of webtrees.  No upgrade is available."
 msgstr ""
 
 #: help_text.php:506
-msgid "This is the list of GEDCOM facts that your users can add to families.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique family facts</i> list."
+msgid "This is the list of GEDCOM facts that your users can add to families.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the “Unique family facts” list."
 msgstr "Sự kiện gia đình mà người dùng của bạn có thể thêm vào gia đình. Bạn có thể sửa danh sách bằng cách xóa bớt hay thêm vào tên sự kiện, ngay cả theo ý riêng nếu cần. Tên sự kiện  hiện tại đây không được hiện ở danh sách <i> Sự kiện gia đình không trùng lắp</i>"
 
 #: help_text.php:593
-msgid "This is the list of GEDCOM facts that your users can add to individuals.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique Individual Facts</i> list."
+msgid "This is the list of GEDCOM facts that your users can add to individuals.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the “Unique individual facts” list."
 msgstr "Đây là danh sách các sự kiện GEDCOM mà người dùng của bạn có thể thêm vào cho các cá nhân. Bạn có thể sửa đổi danh sách này bằng cách thêm vào tên sự kiện, ngay cả theo ý riêng theo mong muốn. Tên sự kiện hiện trên danh sách này không được hiện ở danh sách <i>Sự kiện cá nhân không trùng lắp</i>."
 
 #: help_text.php:799
-msgid "This is the list of GEDCOM facts that your users can add to repositories.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique Repository Facts</i> list."
+msgid "This is the list of GEDCOM facts that your users can add to repositories.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the “Unique repository facts” list."
 msgstr "Đây là danh sáhc các sự kiện GEDCOM mà người dùng của bạn có thể thêm vào kho dữ liệu. Bạn có thể chỉnh danh sách này bằng các bỏ ra hay thêm tên sự kiện vào, ngay cả sự kiện tùy ý mình khi cần. Tên sự kiện hiện ở danh sách này không được hiện ở danh sách <i>Kho sự kiện không trùng lắp</i>"
 
 #: help_text.php:910
-msgid "This is the list of GEDCOM facts that your users can add to sources.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique Source Facts</i> list."
+msgid "This is the list of GEDCOM facts that your users can add to sources.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the “Unique source facts” list."
 msgstr "Đây là sự kiện GEDCOM mà người dùng của bạn có thể thêm vào nguồn. Bạn có thể chỉnh sửa danh sách này bằng cách loại bỏ hay thêm tên sự kiện, ngay cả mang tính tùy thích. Tên sự kiện xuất hiện ở danh sách này cũng hiện ở danh sach <i>Sự kiện nguồn không trùng lắp</i>."
 
 #: help_text.php:516
-msgid "This is the list of GEDCOM facts that your users can only add <u>once</u> to families.  For example, if MARR is in this list, users will not be able to add more than one MARR record to a family.  Fact names that appear in this list must not also appear in the <i>Family Add Facts</i> list."
+msgid "This is the list of GEDCOM facts that your users can only add once to families.  For example, if MARR is in this list, users will not be able to add more than one MARR record to a family.  Fact names that appear in this list must not also appear in the “All family facts” list."
 msgstr "Đây là danh sách các sự kiện GEDCOM mà người dùng có thể thêm vào <u>một lần</u> cho gia đình. Thí dụ, nếu MARR có trong danh sách, người dùng sẽ không thêm thể một bản ghi MARR nữa cho gia đình. Tên sự kiện hiện ở danh sách này không được hiện ở danh sách <i>sự kiện thêm cho gia đình</i>."
 
 #: help_text.php:603
-msgid "This is the list of GEDCOM facts that your users can only add <u>once</u> to individuals.  For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual.  Fact names that appear in this list must not also appear in the <i>Individual Add Facts</i> list."
+msgid "This is the list of GEDCOM facts that your users can only add once to individuals.  For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual.  Fact names that appear in this list must not also appear in the “All individual facts” list."
 msgstr "Đây là danh sách các sự kiện GEDCOM mà người dùng của bạn chỉ có thể thêm <u> một lần</u> cho cá nhân. Ví dụ, nếu BIRT có trong danh sách này, người dùng sẽ không thể thêm nhiều hơn một bản ghi BIRT cho một cá nhân. Tên sự kiện có trong danh sách này không được dùng trong danh sách <i>Thêm sự kiện cá nhân</i>."
 
 #: help_text.php:809
-msgid "This is the list of GEDCOM facts that your users can only add <u>once</u> to repositories.  For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository.  Fact names that appear in this list must not also appear in the <i>Repository Add Facts</i> list."
+msgid "This is the list of GEDCOM facts that your users can only add once to repositories.  For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository.  Fact names that appear in this list must not also appear in the “All repository facts” list."
 msgstr "Đây là một danh sách các sự kiện GEDCOM mà người dùng của bạn chỉ có thể thêm vào <u> một lần</u> cho kho. Thí dụ nếu NAME có trên danh sách, người dùng sẽ không thể thêm nhiều hơn 1 biểu ghi NAME vào kho. Tên sự kiện hiện ở danh sách này không được hiện ở danh sách <i>Thêm sự kiện vào kho</i>."
 
 #: help_text.php:920
-msgid "This is the list of GEDCOM facts that your users can only add <u>once</u> to sources.  For example, if TITL is in this list, users will not be able to add more than one TITL record to a source.  Fact names that appear in this list must not also appear in the <i>Source Add Facts</i> list."
+msgid "This is the list of GEDCOM facts that your users can only add once to sources.  For example, if TITL is in this list, users will not be able to add more than one TITL record to a source.  Fact names that appear in this list must not also appear in the “All source facts” list."
 msgstr "Đây là danh sách sự kiện GEDCOM mà người dùng của bạn chỉ có thể thêm vào <u>một lần</u> vào nguồn. Thí dụ, nếu TITL có trong danh sách này, người dùng không thể thêm một bản ghi TITL nữa vào nguồn. Tên sự kiện hiện ở danh sách này không được hiện ở danh sách <i>Sự kiện thêm nguồn</i>."
 
 #. I18N: Help text for the “Server name” site configuration setting
@@ -13906,7 +13899,7 @@ msgid "This is the name of the SMTP server. “localhost” means that the mail 
 msgstr "Đây là tên của máy chủ SMTP. 'localhost' có nghĩa là dịch vụ mail chạy trên cùng máy phục vụ web."
 
 #: help_text.php:476
-msgid "This is the number of times that a surname must occur before it shows up in the Common Surname list on the Home Page."
+msgid "This is the number of times that a surname must occur before it shows up in the Common Surname list on the “Home page”."
 msgstr "Đây là số lần mà họ phải xuất hiện trước khi được đưa hiện trong danh sách Họ phổ biến ở trang chủ."
 
 #: help_text.php:511
@@ -14125,7 +14118,7 @@ msgid "This option will show the names (but no other details) of private individ
 msgstr "Tùy chọn này sẽ hiện tên (nhưng không có chi tiết khác) của những người cần giữ riêng tư. Cá nhân riêng tư nếu họ còn sống, hay nếu có sự giới hạn mang tính riêng tư được thêm vào trong hồ sơ cá nhân. Để dấu một tên cụ thể nào đó, bạn thêm vào giớ i hạn riêng tư cho bản ghi người đó."
 
 #: modules_v3/googlemap/help_text.php:47
-msgid "This options sets whether Latitude and Longitude are displayed on the pop-up window attached to map markers."
+msgid "This options sets whether latitude and longitude are displayed on the pop-up window attached to map markers."
 msgstr "Tùy chọn này định vĩ tuyến và kinh tuyến hiển thị trên màn hình nổi lên liên hệ đến các dấu đánh dấu bản đồ."
 
 #: help_text.php:1163
@@ -14197,7 +14190,7 @@ msgid "This section allows you to add a new Note to the fact that you are curren
 msgstr "Phần này cho phép bạn thêm một ghi chú mới vào sự kiện mà bạn đang sửa. Các ghi chú này là dạng văn bản tùy thích sẽ hiện ở mục Chi tiết sự kiện của trang."
 
 #: help_text.php:1157
-msgid "This section allows you to add a new source citation to the fact that you are currently editing.<br><br>In the Source field you enter the ID for the source.  Click the <b>Create a new source</b> link if you need to enter a new source.  In the Citation Details field you would enter the page number or other information that might help someone find the information in the source.  In the Text field you would enter the text transcription from the source."
+msgid "This section allows you to add a new source citation to the fact that you are currently editing.<br><br>In the Source field you enter the ID for the source.  Click the “Create a new source” link if you need to enter a new source.  In the citation details field you would enter the page number or other information that might help someone find the information in the source.  In the Text field you would enter the text transcription from the source."
 msgstr "Phần này cho phép bạn thêm một trích dẫn nguồn mới vào sự kiện mà bạn đang chỉnh sửa.<br><br>Trong trường Nguồn bạn nhập ID cho nguồn. Nhấp vào <b>Tạo một nguồn mới</b> nếu bạn cần phải nhập một mã nguồn mới. Trong truờng trích dẫn chi tiết bạn sẽ nhập số trang hoặc các thông tin khác có thể giúp người khác tìm thấy những thông tin trong nguồn. Trong trường văn bản bạn sẽ nhập các mã văn bản từ nguồn."
 
 #. I18N: http://en.wikipedia.org/wiki/Https
@@ -14215,7 +14208,7 @@ msgid "This setting is only used when you read or write GEDCOM files."
 msgstr "Thiết đặt này chỉ dùng khi bạn đọc hay viết tập tin GEDCOM."
 
 #: help_text.php:456
-msgid "This should be a comma or space separated list of facts, in addition to Birth and Death, that you want to appear in chart boxes such as the pedigree chart.  This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard.  For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
+msgid "This should be a comma or space separated list of facts, in addition to birth and death, that you want to appear in chart boxes such as the pedigree chart.  This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard.  For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
 msgstr "Đây phải là một dấu phẩy hay dấu cách tách danh sách các sự kiện, ngoài ngày sinh và ngày mất, mà bạn muốn xuất hiện trong hộp biểu đồ như biểu đồ phả hệ. Danh sách này đòi hỏi bạn phải sử dụng các thẻ sự kiện theo định nghĩa trong chuẩn GEDCOM 5.5.1. Ví dụ, nếu bạn muốn nghề nghiệp hiện ở hộp, bạn có thể thêm \"OCCU\" vào trường này."
 
 #: admin_site_upgrade.php:41
@@ -14499,7 +14492,7 @@ msgstr[0] "%s họ dùng nhiều nhất"
 
 #: modules_v3/googlemap/module.php:4361 modules_v3/googlemap/module.php:4426
 #: placelist.php:111
-msgid "Top Level"
+msgid "Top level"
 msgstr "Cấp cao nhất"
 
 #. I18N: i.e. most popular given name.
@@ -14823,7 +14816,7 @@ msgid "Unknown"
 msgstr "Không biết"
 
 #: modules_v3/lightbox/module.php:174
-msgid "Unlink Media"
+msgid "Unlink media"
 msgstr "Hủy liên kết với File nghe nhìn"
 
 #: library/WT/Gedcom/Tag.php:829
@@ -14835,11 +14828,11 @@ msgid "Unused files"
 msgstr "Tập tin không dùng"
 
 #: admin.php:157
-msgid "Unverified by Administrator"
+msgid "Not approved by an administrator"
 msgstr "Không xác minh bởi quản trị"
 
 #: admin.php:153
-msgid "Unverified by User"
+msgid "Not verified by the user"
 msgstr "Không xác minh bởi người dùng"
 
 #. I18N: The system is about to [...]; %s is a .ZIP file.
@@ -14942,7 +14935,7 @@ msgid "Use SMTP to send messages"
 msgstr "Dùng SMTP để gửi email"
 
 #: modules_v3/batch_update/plugins/search_replace.php:92
-msgid "Use a &laquo;?&raquo; to match a single character, use &laquo;*&raquo; to match zero or more characters."
+msgid "Use a “?” to match a single character, use “*” to match zero or more characters."
 msgstr "Dùng &laquo;?&raquo; để đọ từng chữ, sử dụng &laquo;*&raquo; để đọ zero hay nhiều ký tự hơn."
 
 #. I18N: placeholder text for new-password field
@@ -15378,7 +15371,7 @@ msgid "When a user registers for an account, an email is sent to their email add
 msgstr "Khi người dùng đăng ký mở tài khoản, sẽ có một email gửi đến địa chỉ của họ với liên kết xác minh. Khi họ kích vào liên kết này, chúng tôi biết là địa chỉ email của họ là đúng, và tùy chọn \"xác minh băng email\" được chọn tự động."
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:44
-msgid "When adding a Link, the ID field cannot be empty."
+msgid "When adding a link, the ID field cannot be empty."
 msgstr "Khi thêm vào liên kết, trường ID không thể bỏ trống"
 
 #: help_text.php:784
@@ -15527,7 +15520,7 @@ msgid "With sources"
 msgstr "Với các nguồn"
 
 #: help_text.php:1184
-msgid "With this option, the <b>webtrees</b> internal messaging system will be used and no emails will be sent.  You will receive only <u>internal</u> messages from the other users.  When another site user sends you a message, that message will appear in the Message block on your personal My Page.  If you have removed this block from your My Page, you will not see any messages.  They will, however, show up as soon as you configure My Page to again have the Message block."
+msgid "With this option, the <b>webtrees</b> internal messaging system will be used and no emails will be sent.  You will receive only <u>internal</u> messages from the other users.  When another site user sends you a message, that message will appear in the Message block on your “My page”.  If you have removed this block from your “My page”, you will not see any messages.  They will, however, show up as soon as you configure your “My page” to again have the Message block."
 msgstr "Với tùy chọn này, hệ thống email nội bộ của <b>webtrees</b> sẽ được sử dụng và không có email sẽ được gửi đi.  Bạn sẽ nhận được thư <u>nội bộ</u> từ người dùng khác. Khi một người sử dụng trang web gửi cho bạn một tin nhắn, thông điệp sẽ xuất hiện trong khối thông điệp trên của Trang cá nhân của tôi. Nếu bạn đã loại bỏ khối này ra khỏi Trang Của Tôi, bạn sẽ không thấy bất kỳ tin nhắn. Tuy nhiên, chúng sẽ hiện ngay sau khi bạn cấu hình Trang của tôi để lại có khối tin nhắn."
 
 #: help_text.php:1196
@@ -15535,7 +15528,7 @@ msgid "With this option, you will not receive any messages.  Even the administra
 msgstr "Với tùy chọn này, bạn sẽ không nhận được email. Ngay cả quản trị cũng sẽ không thể liên lạc với bạn."
 
 #: help_text.php:1192
-msgid "With this option, you will only receive email messages at the address you configured on your Account page.  The messaging system internal to <b>webtrees</b> will not be used at all, and there will never be any messages in the Message block on your personal My Page."
+msgid "With this option, you will only receive email messages at the address you configured on your Account page.  The messaging system internal to <b>webtrees</b> will not be used at all, and there will never be any messages in the Message block on your “My page”."
 msgstr "Với tùy chọn này, bạn sẽ chỉ nhận các tin nhắn email theo địa chỉ bạn cấu hình trên trang Tài khoản của bạn. Hệ thống nhắn tin nội bộ <b>webtrees</b> sẽ không được sử dụng, và sẽ không bao giờ có được bất kỳ tin nhắn trong khối thông điệp trên Trang Cá nhân của của tôi."
 
 #: library/WT/Stats.php:302 library/WT/Stats.php:346
@@ -15610,7 +15603,7 @@ msgid "You can download a copy of the GEDCOM specification from %s."
 msgstr "Bạn có thể tải một bản qui cách GEDCOM về từ %s."
 
 #: help_text.php:1243
-msgid "You can limit the number of News articles displayed, thereby reducing the height of the GEDCOM News block.<br><br>This option determines whether any limits should be applied or whether the limit should be according to the age of the article or according to the number of articles."
+msgid "You can limit the number of news articles displayed, thereby reducing the height of the GEDCOM News block.<br><br>This option determines whether any limits should be applied or whether the limit should be according to the age of the article or according to the number of articles."
 msgstr "Bạn có thể giới hạn số lượng các Tin tức hiển thị, nhờ vậy làm giảm chiều cao của khối tin của GEDCOM.<br><br>Tùy chọn này xác có giới hạn nào được áp dụng hoặc giới hạn nên được tính theo thời gian hay số lượng bài."
 
 #: modules_v3/batch_update/plugins/married_names.php:37
@@ -15662,7 +15655,7 @@ msgid "You have no pending messages."
 msgstr "Bạn không có thư nào đang chờ."
 
 #: modules_v3/user_blog/module.php:76
-msgid "You have not created any Journal items."
+msgid "You have not created any journal items."
 msgstr "Bạn đã không tạo ra mục Nhật ký nào."
 
 #: admin_trees_manage.php:131
@@ -15670,10 +15663,8 @@ msgid "You have selected a GEDCOM with a different name.  Is this correct?"
 msgstr "Bạn đã chọn file GEDCOM có tên khác. Đúng không?"
 
 #: addmedia.php:462
-msgid "You may enter a URL, beginning with &laquo;http://&raquo;."
-msgstr "Bạn có thể nhập URL, bắt đầu bằng &laquo;http://&raquo;."
-
-#: modules_v3/faq/help_text.php:35
+msgid "You may enter a URL, beginning with “http://”."
+msgstr "Bạn có thể nhập URL, bắt đầu bằng &laquo;http:“http://”es_v3/faq/help_text.php:35
 msgid "You may use HTML to format the answer and to add links to other websites."
 msgstr "Bạn có thể dùng HTML để định dạng câu trả lời và thêm lin kết đến các site khác."
 
@@ -15760,7 +15751,7 @@ msgid "You should accept or reject all pending changes before upgrading."
 msgstr ""
 
 #: help_text.php:1151
-msgid "You should avoid using the vertical line character &ldquo;|&rdquo; in your notes.  It is used internally by webtrees and may cause your note to display incorrectly."
+msgid "You should avoid using the vertical line character “|” in your notes.  It is used internally by webtrees and may cause your note to display incorrectly."
 msgstr "Bạn phải tránh dùng ký tự gạch đứng &ldquo;|&rdquo; trong ghi chú của bạn. Ký tự này được dùng bên trong chương trình webtrees và có thể gây ra việc ghi chú của bạn trình bày sai."
 
 #: admin_site_upgrade.php:200
@@ -15771,7 +15762,7 @@ msgstr ""
 msgid "You should consult the theme’s author to confirm compatibility with this version of webtrees."
 msgstr ""
 
-#. I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’
+#. I18N: e.g. ‘You should delete the &laquo;http://&raquo; from “http://www.example.com” and try again.’
 #: login.php:276 message.php:69
 #, php-format
 msgid "You should delete the “%1$s” from “%2$s” and try again."
@@ -16934,423 +16925,423 @@ msgstr "vợ cháu trai"
 #: includes/functions/functions.php:1275 includes/functions/functions.php:1284
 #: includes/functions/functions.php:1295
 #, php-format
-msgid "great x%d aunt"
-msgstr "bà cô/dì/thím/ mợ/ bác x%d đời"
+msgid "great ×%d aunt"
+msgstr "bà cô/dì/thím/ mợ/ bác ×%d đời"
 
 #: includes/functions/functions.php:1276 includes/functions/functions.php:1285
 #: includes/functions/functions.php:1296
 #, php-format
-msgid "great x%d aunt/uncle"
-msgstr "ông chú/bác/cậu/dượng- bà cô/dì/thím/bác/mợ x%d đời"
+msgid "great ×%d aunt/uncle"
+msgstr "ông chú/bác/cậu/dượng- bà cô/dì/thím/bác/mợ ×%d đời"
 
 #: includes/functions/functions.php:1617 includes/functions/functions.php:1630
 #, php-format
-msgid "great x%d grandchild"
-msgstr "cháu x%d đời"
+msgid "great ×%d grandchild"
+msgstr "cháu ×%d đời"
 
 #: includes/functions/functions.php:1616 includes/functions/functions.php:1629
 #, php-format
-msgid "great x%d granddaughter"
-msgstr "cháu gái x%d đời"
+msgid "great ×%d granddaughter"
+msgstr "cháu gái ×%d đời"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1520 includes/functions/functions.php:1527
 #: includes/functions/functions.php:1534 includes/functions/functions.php:1542
 #: includes/functions/functions.php:1552
 #, php-format
-msgid "great x%d grandfather"
-msgstr "ông x%d đời"
+msgid "great ×%d grandfather"
+msgstr "ông ×%d đời"
 
 #: includes/functions/functions.php:1521 includes/functions/functions.php:1528
 #: includes/functions/functions.php:1535 includes/functions/functions.php:1543
 #: includes/functions/functions.php:1553
 #, php-format
-msgid "great x%d grandmother"
-msgstr "bả x%d đời"
+msgid "great ×%d grandmother"
+msgstr "bả ×%d đời"
 
 #: includes/functions/functions.php:1522 includes/functions/functions.php:1529
 #: includes/functions/functions.php:1536 includes/functions/functions.php:1544
 #: includes/functions/functions.php:1554
 #, php-format
-msgid "great x%d grandparent"
-msgstr "ông bà x%d đời"
+msgid "great ×%d grandparent"
+msgstr "ông bà ×%d đời"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1615 includes/functions/functions.php:1628
 #, php-format
-msgid "great x%d grandson"
-msgstr "cháu trai x%d đời"
+msgid "great ×%d grandson"
+msgstr "cháu trai ×%d đời"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1448 includes/functions/functions.php:1459
 #, php-format
-msgid "great x%d nephew"
-msgstr "cháu trai x%d đời"
+msgid "great ×%d nephew"
+msgstr "cháu trai ×%d đời"
 
 #: includes/functions/functions.php:1424
 #, php-format
-msgctxt "(a man’s) brother’s great x(%d-1) grandson"
-msgid "great x%d nephew"
-msgstr "cháu trai x%d đời"
+msgctxt "(a man’s) brother’s great ×(%d-1) grandson"
+msgid "great ×%d nephew"
+msgstr "cháu trai ×%d đời"
 
 #: includes/functions/functions.php:1426
 #, php-format
-msgctxt "(a man’s) sister’s great x(%d-1) grandson"
-msgid "great x%d nephew"
-msgstr "cháu trai x%d đời"
+msgctxt "(a man’s) sister’s great ×(%d-1) grandson"
+msgid "great ×%d nephew"
+msgstr "cháu trai ×%d đời"
 
 #: includes/functions/functions.php:1428
 #, php-format
-msgctxt "(a woman’s) great x%d nephew"
-msgid "great x%d nephew"
-msgstr "cháu trai x%d đời"
+msgctxt "(a woman’s) great ×%d nephew"
+msgid "great ×%d nephew"
+msgstr "cháu trai ×%d đời"
 
 #: includes/functions/functions.php:1450 includes/functions/functions.php:1461
 #, php-format
-msgid "great x%d nephew/niece"
-msgstr "cháu trai/ gái x%d đời"
+msgid "great ×%d nephew/niece"
+msgstr "cháu trai/ gái ×%d đời"
 
 #: includes/functions/functions.php:1439
 #, php-format
-msgctxt "(a man’s) brother’s great x(%d-1) grandchild"
-msgid "great x%d nephew/niece"
-msgstr "cháu trai/ gái x%d đời"
+msgctxt "(a man’s) brother’s great ×(%d-1) grandchild"
+msgid "great ×%d nephew/niece"
+msgstr "cháu trai/ gái ×%d đời"
 
 #: includes/functions/functions.php:1441
 #, php-format
-msgctxt "(a man’s) sister’s great x(%d-1) grandchild"
-msgid "great x%d nephew/niece"
-msgstr "cháu trai/ gái x%d đời"
+msgctxt "(a man’s) sister’s great ×(%d-1) grandchild"
+msgid "great ×%d nephew/niece"
+msgstr "cháu trai/ gái ×%d đời"
 
 #: includes/functions/functions.php:1443
 #, php-format
-msgctxt "(a woman’s) great x%d nephew/niece"
-msgid "great x%d nephew/niece"
-msgstr "cháu trai/ gái x%d đời"
+msgctxt "(a woman’s) great ×%d nephew/niece"
+msgid "great ×%d nephew/niece"
+msgstr "cháu trai/ gái ×%d đời"
 
 #: includes/functions/functions.php:1449 includes/functions/functions.php:1460
 #, php-format
-msgid "great x%d niece"
-msgstr "cháu gái x%d đời"
+msgid "great ×%d niece"
+msgstr "cháu gái ×%d đời"
 
 #: includes/functions/functions.php:1431
 #, php-format
-msgctxt "(a man’s) brother’s great x(%d-1) granddaughter"
-msgid "great x%d niece"
-msgstr "cháu gái x%d đời"
+msgctxt "(a man’s) brother’s great ×(%d-1) granddaughter"
+msgid "great ×%d niece"
+msgstr "cháu gái ×%d đời"
 
 #: includes/functions/functions.php:1433
 #, php-format
-msgctxt "(a man’s) sister’s great x(%d-1) granddaughter"
-msgid "great x%d niece"
-msgstr "cháu gái x%d đời"
+msgctxt "(a man’s) sister’s great ×(%d-1) granddaughter"
+msgid "great ×%d niece"
+msgstr "cháu gái ×%d đời"
 
 #: includes/functions/functions.php:1435
 #, php-format
-msgctxt "(a woman’s) great x%d niece"
-msgid "great x%d niece"
-msgstr "cháu gái x%d đời"
+msgctxt "(a woman’s) great ×%d niece"
+msgid "great ×%d niece"
+msgstr "cháu gái ×%d đời"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1274 includes/functions/functions.php:1294
 #, php-format
-msgid "great x%d uncle"
-msgstr "ông chú/bác/cậu/dượng x%d đời"
+msgid "great ×%d uncle"
+msgstr "ông chú/bác/cậu/dượng ×%d đời"
 
 #: includes/functions/functions.php:1281
 #, php-format
-msgctxt "great x(%d-1) grandfather’s brother"
-msgid "great x%d uncle"
-msgstr "ông chú/bác/cậu/dượng x%d đời"
+msgctxt "great ×(%d-1) grandfather’s brother"
+msgid "great ×%d uncle"
+msgstr "ông chú/bác/cậu/dượng ×%d đời"
 
 #: includes/functions/functions.php:1282
 #, php-format
-msgctxt "great x(%d-1) grandmother’s brother"
-msgid "great x%d uncle"
-msgstr "ông chú/bác/cậu/dượng x%d đời"
+msgctxt "great ×(%d-1) grandmother’s brother"
+msgid "great ×%d uncle"
+msgstr "ông chú/bác/cậu/dượng ×%d đời"
 
 #: includes/functions/functions.php:1283
 #, php-format
-msgctxt "great x(%d-1) grandparent’s brother"
-msgid "great x%d uncle"
-msgstr "ông chú/bác/cậu/dượng x%d đời"
+msgctxt "great ×(%d-1) grandparent’s brother"
+msgid "great ×%d uncle"
+msgstr "ông chú/bác/cậu/dượng ×%d đời"
 
 #: includes/functions/functions.php:1232
-msgid "great x4 aunt"
+msgid "great ×4 aunt"
 msgstr "ông chú/bác/cậu/dượng 4 đời"
 
 #: includes/functions/functions.php:1233
-msgid "great x4 aunt/uncle"
+msgid "great ×4 aunt/uncle"
 msgstr "bà thím/bác/mợ/dì/ ông chú/bác/cậu/dượng 4 đời"
 
 #: includes/functions/functions.php:1581
-msgid "great x4 grandchild"
+msgid "great ×4 grandchild"
 msgstr "cháu 4 đời"
 
 #: includes/functions/functions.php:1580
-msgid "great x4 granddaughter"
+msgid "great ×4 granddaughter"
 msgstr "cháu gái 4 đời"
 
 #: includes/functions/functions.php:1486
-msgid "great x4 grandfather"
+msgid "great ×4 grandfather"
 msgstr "ông bốn đời"
 
 #: includes/functions/functions.php:1487
-msgid "great x4 grandmother"
+msgid "great ×4 grandmother"
 msgstr "bà 4 đời"
 
 #: includes/functions/functions.php:1488
-msgid "great x4 grandparent"
+msgid "great ×4 grandparent"
 msgstr "ông bà 4 đời"
 
 #: includes/functions/functions.php:1579
-msgid "great x4 grandson"
+msgid "great ×4 grandson"
 msgstr "cháu  trai 4 đời"
 
 #: includes/functions/functions.php:1364
 msgctxt "(a man’s) brother’s great-great-great-grandson"
-msgid "great x4 nephew"
+msgid "great ×4 nephew"
 msgstr "cháu trai 4 đời"
 
 #: includes/functions/functions.php:1366
 msgctxt "(a man’s) sister’s great-great-great-grandson"
-msgid "great x4 nephew"
+msgid "great ×4 nephew"
 msgstr "cháu trai 4 đời"
 
 #: includes/functions/functions.php:1368
-msgctxt "(a woman’s) great x4 nephew"
-msgid "great x4 nephew"
+msgctxt "(a woman’s) great ×4 nephew"
+msgid "great ×4 nephew"
 msgstr "cháu trai 4 đời"
 
 #: includes/functions/functions.php:1380
 msgctxt "(a man’s) brother’s great-great-great-grandchild"
-msgid "great x4 nephew/niece"
+msgid "great ×4 nephew/niece"
 msgstr "cháu trai/ cháu gái 4 đời"
 
 #: includes/functions/functions.php:1382
 msgctxt "(a man’s) sister’s great-great-great-grandchild"
-msgid "great x4 nephew/niece"
+msgid "great ×4 nephew/niece"
 msgstr "cháu trai/ cháu gái 4 đời"
 
 #: includes/functions/functions.php:1384
-msgctxt "(a woman’s) great x4 nephew/niece"
-msgid "great x4 nephew/niece"
+msgctxt "(a woman’s) great ×4 nephew/niece"
+msgid "great ×4 nephew/niece"
 msgstr "cháu trai/ cháu gái 4 đời"
 
 #: includes/functions/functions.php:1372
 msgctxt "(a man’s) brother’s great-great-great-granddaughter"
-msgid "great x4 niece"
+msgid "great ×4 niece"
 msgstr "cháu trai 4 đời"
 
 #: includes/functions/functions.php:1374
 msgctxt "(a man’s) sister’s great-great-great-granddaughter"
-msgid "great x4 niece"
+msgid "great ×4 niece"
 msgstr "cháu trai 4 đời"
 
 #: includes/functions/functions.php:1376
-msgctxt "(a woman’s) great x4 niece"
-msgid "great x4 niece"
+msgctxt "(a woman’s) great ×4 niece"
+msgid "great ×4 niece"
 msgstr "cháu trai 4 đời"
 
 #: includes/functions/functions.php:1229
 msgctxt "great-great-great-grandfather’s brother"
-msgid "great x4 uncle"
+msgid "great ×4 uncle"
 msgstr "ông chú/bác/cậu/dượng 4 đời"
 
 #: includes/functions/functions.php:1230
 msgctxt "great-great-great-grandmother’s brother"
-msgid "great x4 uncle"
+msgid "great ×4 uncle"
 msgstr "ông chú/bác/cậu/dượng 4 đời"
 
 #: includes/functions/functions.php:1231
 msgctxt "great-great-great-grandparent’s brother"
-msgid "great x4 uncle"
+msgid "great ×4 uncle"
 msgstr "ông chú/bác/cậu/dượng 4 đời"
 
 #: includes/functions/functions.php:1242
-msgid "great x5 aunt"
+msgid "great ×5 aunt"
 msgstr "bà cô/ dì/ mợ/ bác 5 đời"
 
 #: includes/functions/functions.php:1243
-msgid "great x5 aunt/uncle"
+msgid "great ×5 aunt/uncle"
 msgstr "ông chú/bác/cậu/dượng bà cô/dì/mợ/bác/thím 5 đời"
 
 #: includes/functions/functions.php:1588
-msgid "great x5 grandchild"
+msgid "great ×5 grandchild"
 msgstr "cháu 5 đời"
 
 #: includes/functions/functions.php:1587
-msgid "great x5 granddaughter"
+msgid "great ×5 granddaughter"
 msgstr "cháu gái 5 đời"
 
 #: includes/functions/functions.php:1493
-msgid "great x5 grandfather"
+msgid "great ×5 grandfather"
 msgstr "ông 5 đời"
 
 #: includes/functions/functions.php:1494
-msgid "great x5 grandmother"
+msgid "great ×5 grandmother"
 msgstr "bà 5 đời"
 
 #: includes/functions/functions.php:1495
-msgid "great x5 grandparent"
+msgid "great ×5 grandparent"
 msgstr "ông bà 5 đời"
 
 #: includes/functions/functions.php:1586
-msgid "great x5 grandson"
+msgid "great ×5 grandson"
 msgstr "cháu trai 5 đời"
 
 #: includes/functions/functions.php:1391
-msgctxt "(a man’s) brother’s great x4 grandson"
-msgid "great x5 nephew"
+msgctxt "(a man’s) brother’s great ×4 grandson"
+msgid "great ×5 nephew"
 msgstr "cháu trai 5 đời"
 
 #: includes/functions/functions.php:1393
-msgctxt "(a man’s) sister’s great x4 grandson"
-msgid "great x5 nephew"
+msgctxt "(a man’s) sister’s great ×4 grandson"
+msgid "great ×5 nephew"
 msgstr "cháu trai 5 đời"
 
 #: includes/functions/functions.php:1395
-msgctxt "(a woman’s) great x5 nephew"
-msgid "great x5 nephew"
+msgctxt "(a woman’s) great ×5 nephew"
+msgid "great ×5 nephew"
 msgstr "cháu trai 5 đời"
 
 #: includes/functions/functions.php:1407
-msgctxt "(a man’s) brother’s great x4 grandchild"
-msgid "great x5 nephew/niece"
+msgctxt "(a man’s) brother’s great ×4 grandchild"
+msgid "great ×5 nephew/niece"
 msgstr "cháu trai/ cháu gái 5 đời"
 
 #: includes/functions/functions.php:1409
-msgctxt "(a man’s) sister’s great x4 grandchild"
-msgid "great x5 nephew/niece"
+msgctxt "(a man’s) sister’s great ×4 grandchild"
+msgid "great ×5 nephew/niece"
 msgstr "cháu trai/ cháu gái 5 đời"
 
 #: includes/functions/functions.php:1411
-msgctxt "(a woman’s) great x5 nephew/niece"
-msgid "great x5 nephew/niece"
+msgctxt "(a woman’s) great ×5 nephew/niece"
+msgid "great ×5 nephew/niece"
 msgstr "cháu trai/ cháu gái 5 đời"
 
 #: includes/functions/functions.php:1399
-msgctxt "(a man’s) brother’s great x4 granddaughter"
-msgid "great x5 niece"
+msgctxt "(a man’s) brother’s great ×4 granddaughter"
+msgid "great ×5 niece"
 msgstr "cháu trai 5 đời"
 
 #: includes/functions/functions.php:1401
-msgctxt "(a man’s) sister’s great x4 granddaughter"
-msgid "great x5 niece"
+msgctxt "(a man’s) sister’s great ×4 granddaughter"
+msgid "great ×5 niece"
 msgstr "cháu trai 5 đời"
 
 #: includes/functions/functions.php:1403
-msgctxt "(a woman’s) great x5 niece"
-msgid "great x5 niece"
+msgctxt "(a woman’s) great ×5 niece"
+msgid "great ×5 niece"
 msgstr "cháu trai 5 đời"
 
 #: includes/functions/functions.php:1239
-msgctxt "great x4 grandfather’s brother"
-msgid "great x5 uncle"
+msgctxt "great ×4 grandfather’s brother"
+msgid "great ×5 uncle"
 msgstr "ông chú/bác/cậu/dượng 5 đời"
 
 #: includes/functions/functions.php:1240
-msgctxt "great x4 grandmother’s brother"
-msgid "great x5 uncle"
+msgctxt "great ×4 grandmother’s brother"
+msgid "great ×5 uncle"
 msgstr "ông chú/bác/cậu/dượng 5 đời"
 
 #: includes/functions/functions.php:1241
-msgctxt "great x4 grandparent’s brother"
-msgid "great x5 uncle"
+msgctxt "great ×4 grandparent’s brother"
+msgid "great ×5 uncle"
 msgstr "ông chú/bác/cậu/dượng 5 đời"
 
 #: includes/functions/functions.php:1252
-msgid "great x6 aunt"
+msgid "great ×6 aunt"
 msgstr "bà cô/ dì/ mợ/thím 6 đời"
 
 #: includes/functions/functions.php:1253
-msgid "great x6 aunt/uncle"
+msgid "great ×6 aunt/uncle"
 msgstr "ông chú/bác/cậu/dượng, bà cô/dì/thím/mợ/ bác 6 đời"
 
 #: includes/functions/functions.php:1595
-msgid "great x6 grandchild"
+msgid "great ×6 grandchild"
 msgstr "cháu 6 đời"
 
 #: includes/functions/functions.php:1594
-msgid "great x6 granddaughter"
+msgid "great ×6 granddaughter"
 msgstr "cháu gái 7 đời"
 
 #: includes/functions/functions.php:1500
-msgid "great x6 grandfather"
+msgid "great ×6 grandfather"
 msgstr "ông 6 đời"
 
 #: includes/functions/functions.php:1501
-msgid "great x6 grandmother"
+msgid "great ×6 grandmother"
 msgstr "bà 6 đời"
 
 #: includes/functions/functions.php:1502
-msgid "great x6 grandparent"
+msgid "great ×6 grandparent"
 msgstr "ông bà 6 đời"
 
 #: includes/functions/functions.php:1593
-msgid "great x6 grandson"
+msgid "great ×6 grandson"
 msgstr "cháu trai 6 đời"
 
 #: includes/functions/functions.php:1249
-msgctxt "great x5 grandfather’s brother"
-msgid "great x6 uncle"
+msgctxt "great ×5 grandfather’s brother"
+msgid "great ×6 uncle"
 msgstr "ông chú/bác/cậu/dượng 6 đời"
 
 #: includes/functions/functions.php:1250
-msgctxt "great x5 grandmother’s brother"
-msgid "great x6 uncle"
+msgctxt "great ×5 grandmother’s brother"
+msgid "great ×6 uncle"
 msgstr "ông chú/bác/cậu/dượng 6 đời"
 
 #: includes/functions/functions.php:1251
-msgctxt "great x5 grandparent’s brother"
-msgid "great x6 uncle"
+msgctxt "great ×5 grandparent’s brother"
+msgid "great ×6 uncle"
 msgstr "ông chú/bác/cậu/dượng 6 đời"
 
 #: includes/functions/functions.php:1262
-msgid "great x7 aunt"
+msgid "great ×7 aunt"
 msgstr "bà cô/ dì/ thím/ mợ 7 đời"
 
 #: includes/functions/functions.php:1263
-msgid "great x7 aunt/uncle"
+msgid "great ×7 aunt/uncle"
 msgstr "bà cô/ dì/ thím/ mợ - ông chú, bác, cậu, dượng 7 đời"
 
 #: includes/functions/functions.php:1602
-msgid "great x7 grandchild"
+msgid "great ×7 grandchild"
 msgstr "cháu trai 7 đời"
 
 #: includes/functions/functions.php:1601
-msgid "great x7 granddaughter"
+msgid "great ×7 granddaughter"
 msgstr "cháu gái 7 đời"
 
 #: includes/functions/functions.php:1507
-msgid "great x7 grandfather"
+msgid "great ×7 grandfather"
 msgstr "ông 7 đời"
 
 #: includes/functions/functions.php:1508
-msgid "great x7 grandmother"
+msgid "great ×7 grandmother"
 msgstr "bà 7 đời"
 
 #: includes/functions/functions.php:1509
-msgid "great x7 grandparent"
+msgid "great ×7 grandparent"
 msgstr "ông bà 7 đời"
 
 #: includes/functions/functions.php:1600
-msgid "great x7 grandson"
+msgid "great ×7 grandson"
 msgstr "cháu trai 7 đời"
 
 #: includes/functions/functions.php:1259
-msgctxt "great x6 grandfather’s brother"
-msgid "great x7 uncle"
+msgctxt "great ×6 grandfather’s brother"
+msgid "great ×7 uncle"
 msgstr "ông chú/bác/cậu/dượng 7 đời"
 
 #: includes/functions/functions.php:1260
-msgctxt "great x6 grandmother’s brother"
-msgid "great x7 uncle"
+msgctxt "great ×6 grandmother’s brother"
+msgid "great ×7 uncle"
 msgstr "ông chú/bác/cậu/dượng 7 đời"
 
 #: includes/functions/functions.php:1261
-msgctxt "great x6 grandparent’s brother"
-msgid "great x7 uncle"
+msgctxt "great ×6 grandparent’s brother"
+msgid "great ×7 uncle"
 msgstr "ông chú/bác/cậu/dượng 7 đời"
 
 #: includes/functions/functions.php:1085
@@ -19703,7 +19694,7 @@ msgstr "sinh"
 
 #: includes/authentication.php:111 includes/authentication.php:174
 #: message.php:40
-msgid "webtrees Message"
+msgid "webtrees message"
 msgstr "Thông báo webtrees"
 
 #: includes/functions/functions_edit.php:220
@@ -19811,7 +19802,7 @@ msgstr "…"
 #~ msgid "%s"
 #~ msgstr "%s"
 
-#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website."
+#~ msgid "<center><b>Welcome to this genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website."
 #~ msgstr "<center><b>Kính chào vào cái website Gia Phả này</b></center><br>Chỉ có những thành viên cầm tên truy nhập cùng với mật khẩu mới được vào."
 
 #~ msgid "Abbreviate chart labels"
@@ -19859,7 +19850,7 @@ msgstr "…"
 #~ msgid "Births, Deaths, Marriages"
 #~ msgstr "Sinh, Tử, Kết Hôn"
 
-#~ msgid "Choose to display a standard header for your custom Welcome text.  When your users change language, this header will appear in the new language.<br><br>If set to <b>Yes</b>, the header will look like this:<div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website.<br></div>"
+#~ msgid "Choose to display a standard header for your custom Welcome text.  When your users change language, this header will appear in the new language.<br><br>If set to <b>Yes</b>, the header will look like this:<div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website.<br></div>"
 #~ msgstr "Chọn để hiển thị phần đầu tiêu chuẩn của trang chào mừng tùy biến của bạn. Khi người dùng của bạn đổi ngôn ngữ,  thì đầu này sẽ hiện ở ngôn ngữ mới.<br><br>Nếu đặt là <b>Có</b>, thì phần đầu sẽ như thế này: <div class=\"list_value_wrap\"><center><b>Chào Mừng bạn đến website gia phản này.</b></center><br>Truy cập vào đây chỉ cho người dùng có tài khoản và mật khẩu dùng cho site này.<br></div>"
 
 #~ msgid "Click here to continue"
