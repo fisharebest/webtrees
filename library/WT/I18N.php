@@ -95,27 +95,26 @@ class WT_I18N {
 		$installed_languages=self::installed_languages();
 		if (is_null($locale) || !array_key_exists($locale, $installed_languages)) {
 			// Automatic locale selection.
-			if (isset($_GET['lang']) && array_key_exists($_GET['lang'], $installed_languages)) {
+			$locale = WT_Filter::get('lang');
+			if ($locale && array_key_exists($locale, $installed_languages)) {
 				// Requested in the URL?
-				$locale=$_GET['lang'];
-				unset($_GET['lang']);
 				if (\WT\Auth::id()) {
 					\WT\Auth::user()->setSetting('language', $locale);
 				}
 			} elseif (array_key_exists($WT_SESSION->locale, $installed_languages)) {
 				// Rembered from a previous visit?
-				$locale=$WT_SESSION->locale;
+				$locale = $WT_SESSION->locale;
 			} else {
 				// Browser preference takes priority over gedcom default
 				if (!empty($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
-					$prefs=explode(',', str_replace(' ', '', $_SERVER['HTTP_ACCEPT_LANGUAGE']));
+					$prefs = explode(',', str_replace(' ', '', $_SERVER['HTTP_ACCEPT_LANGUAGE']));
 				} else {
-					$prefs=array();
+					$prefs = array();
 				}
 				if (WT_GED_ID) {
 					// Add the tree’s default language as a low-priority
-					$locale=get_gedcom_setting(WT_GED_ID, 'LANGUAGE');
-					$prefs[]=$locale.';q=0.2';
+					$locale = get_gedcom_setting(WT_GED_ID, 'LANGUAGE');
+					$prefs[] = $locale.';q=0.2';
 				}
 				$prefs2=array();
 				foreach ($prefs as $pref) {

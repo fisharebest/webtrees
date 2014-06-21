@@ -430,9 +430,14 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false) {
 		// A multi-line note, with an expand/collapse option
 		$element_id = uniqid('n-');
 		// NOTE: class "note-details" is (currently) used only by some third-party themes
+		if ($note) {
+			$first_line = '<a href="' . $note->getHtmlUrl() . '">' . $note->getFullName() . '</a>';
+		} else {
+			list($first_line) = explode("\n", $text);
+		}
 		return
 			'<div class="fact_NOTE"><span class="label">' .
-			'<a href="#" onclick="expand_layer(\'' . $element_id . '\'); return false;"><i id="' . $element_id . '_img" class="icon-plus"></i></a> ' . WT_Gedcom_Tag::getLabel($label) . ': ' .
+			'<a href="#" onclick="expand_layer(\'' . $element_id . '\'); return false;"><i id="' . $element_id . '_img" class="icon-plus"></i></a> ' . WT_Gedcom_Tag::getLabel($label) . ':</span> ' . '<span id="' . $element_id . '-alt">' . $first_line . '</span>' .
 			'</div>' .
 			'<div class="note-details" id="' . $element_id . '" style="display:none">' . $html . '</div>';
 	}
