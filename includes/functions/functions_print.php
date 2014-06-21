@@ -398,21 +398,31 @@ function contact_links($ged_id=WT_GED_ID) {
 function print_note_record($text, $nlevel, $nrec, $textOnly=false) {
 	global $WT_TREE;
 
+	if(!defined('TITLE_CUTOFF'))  {
+		define('TITLE_CUTOFF', 70);
+	}
+
 	$text .= get_cont($nlevel, $nrec);
 
 	// Check if shared note (we have already checked that it exists)
 	if (preg_match('/^0 @('.WT_REGEX_XREF.')@ NOTE/', $nrec, $match)) {
 		$note  = WT_Note::getInstance($match[1]);
 		$label = 'SHARED_NOTE';
+		$formattedByCA = strpos($note->getNote(), '.start_formatted_area.') !== false;
 		// If Census assistant installed, allow it to format the note
-		if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
+		if ($formattedByCA && array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
 			$html = GEDFact_assistant_WT_Module::formatCensusNote($note);
+			list($ttl, $html) = explode("\n", $html, 2);
 		} else {
 			$html = WT_Filter::formatText($note->getNote(), $WT_TREE);
+			// truncate at end of 1st line or TITLE_CUTOFF whichever is the shortest
+			$ttl = current(explode("\n", wordwrap(strip_tags($html), TITLE_CUTOFF, "...\n")));
 		}
+		$title = sprintf("<a title='%s' onclick=\"return edit_note('%s');return false;\" href='#'>%s</a>", WT_I18N::translate('Edit'), $note->getXref(), $ttl);
 	} else {
 		$note  = null;
 		$label = 'NOTE';
+		$title = '';
 		$html  = WT_Filter::formatText($text, $WT_TREE);
 	}
 
@@ -428,11 +438,12 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false) {
 		return WT_Gedcom_Tag::getLabelValue($label, $html);
 	} else {
 		// A multi-line note, with an expand/collapse option
-		$element_id = uniqid('n-');
+		$element_id = str_replace('.', '', uniqid('n-',true));
 		// NOTE: class "note-details" is (currently) used only by some third-party themes
 		return
 			'<div class="fact_NOTE"><span class="label">' .
 			'<a href="#" onclick="expand_layer(\'' . $element_id . '\'); return false;"><i id="' . $element_id . '_img" class="icon-plus"></i></a> ' . WT_Gedcom_Tag::getLabel($label) . ': ' .
+			$title .
 			'</div>' .
 			'<div class="note-details" id="' . $element_id . '" style="display:none">' . $html . '</div>';
 	}
