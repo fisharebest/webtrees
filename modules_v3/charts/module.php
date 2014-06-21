@@ -55,9 +55,6 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 			}
 		}
 
-		// Override the request
-		$_GET['rootid']=$pid;
-
 		// Override GEDCOM configuration temporarily
 		if (isset($show_full)) $saveShowFull = $show_full;
 		$savePedigreeFullDetails = $PEDIGREE_FULL_DETAILS;
@@ -78,7 +75,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 
 		if ($type!='treenav' && $person) {
-			$controller=new WT_Controller_Hourglass($person->getXref(),0,3);
+			$controller=new WT_Controller_Hourglass($person->getXref(), 0, 3);
 			$controller->setupJavascript();
 		}
 

@@ -159,20 +159,16 @@ $medialist = WT_Query_Media::mediaList(
 
 <?php
 if ($search) {
-	if (!empty($medialist)) {
-		// Count the number of items in the medialist
-		$ct=count($medialist);
-		$start = 0;
-		if (isset($_GET['start'])) $start = $_GET['start'];
-		$count = $max;
-		if ($start+$count > $ct) $count = $ct-$start;
-	} else {
-		$ct = '0';
+	$ct = count($medialist);
+	$count = $max;
+	if ($start + $count > $ct) {
+		$count = $ct - $start;
 	}
+}
 
 	echo '<div><p style="text-align: center;">', WT_I18N::translate('Media Objects found'), ' ', $ct, '</p>';
 
-  if ($ct>0) {
+	if ($ct>0) {
 		$currentPage = ((int) ($start / $max)) + 1;
 		$lastPage = (int) (($ct + $max - 1) / $max);
 
