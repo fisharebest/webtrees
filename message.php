@@ -24,8 +24,8 @@
 define('WT_SCRIPT_NAME', 'message.php');
 require './includes/session.php';
 
-// Some variables are initialised from $_GET (so we can set initial values in URLs),
-// but are submitted in $_POST so we can have long body text.
+// Some variables are initialised from GET (so we can set initial values in URLs),
+// but are submitted in POST so we can have long body text.
 
 $subject    = WT_Filter::post('subject', null, WT_Filter::get('subject'));
 $body       = WT_Filter::post('body');
