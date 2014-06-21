@@ -257,13 +257,13 @@ function clear_family_box_timeout(boxid) {
 }
 
 function expand_layer(sid) {
-	if (jQuery("#"+sid+"_img").hasClass("icon-plus")) {
-		jQuery('#'+sid+"_img").removeClass("icon-plus").addClass("icon-minus");
-		jQuery('#'+sid).slideDown("fast");
+	if (jQuery("#" + sid + "_img").hasClass("icon-plus")) {
+		jQuery('#' + sid + "_img").removeClass("icon-plus").addClass("icon-minus");
 	} else {
-		jQuery('#'+sid+"_img").removeClass("icon-minus").addClass("icon-plus");
-		jQuery('#'+sid).slideUp("fast");
+		jQuery('#' + sid + "_img").removeClass("icon-minus").addClass("icon-plus");
 	}
+	jQuery('#' + sid).slideToggle("fast");
+	jQuery('#' + sid + '-alt').toggle(); // hide something when we show the layer - and vice-versa
 	return false;
 }
 
