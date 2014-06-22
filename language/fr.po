@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2014-06-12 21:41+0100\n"
-"PO-Revision-Date: 2014-04-08 13:56+0100\n"
+"PO-Revision-Date: 2014-06-22 19:36+0100\n"
 "Last-Translator: fisharebest <fisharebest@gmail.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -2561,7 +2561,7 @@ msgstr "Objet binaire"
 
 #: includes/functions/functions_print.php:823
 msgid "Bing Maps™"
-msgstr ""
+msgstr "Bing Maps™"
 
 #: library/WT/Gedcom/Code/Temp.php:68
 msgid "Birmingham, Alabama"
@@ -5798,7 +5798,7 @@ msgstr "Couleur des yeux"
 #. I18N: Name of a theme.
 #: themes/fab/theme.php:29
 msgid "F.A.B."
-msgstr ""
+msgstr "F.A.B."
 
 #. I18N: Name of a module.  Abbreviation for “Frequently Asked Questions”
 #: modules_v3/faq/module.php:32 modules_v3/faq/module.php:431
@@ -8901,7 +8901,7 @@ msgstr "État de santé"
 #. I18N: The name of a colour-scheme
 #: themes/colors/theme.php:84
 msgid "Mediterranio"
-msgstr "Bleu méditerranée"
+msgstr "Méditerranée"
 
 #: setup.php:176
 msgid "Medium systems (5000 individuals): 32-64MB, 20-40 seconds"
@@ -10154,7 +10154,7 @@ msgstr "Oups ! webtrees a été incapable de créer des fichiers dans ce dossier
 
 #: includes/functions/functions_print.php:824
 msgid "OpenStreetMap™"
-msgstr ""
+msgstr "OpenStreetMap™"
 
 #: modules_v3/googlemap/help_text.php:41 modules_v3/googlemap/module.php:406
 msgid "Optional prefixes and suffixes"
@@ -13594,7 +13594,7 @@ msgstr "La version de %s est trop vieille"
 
 #: help_text.php:997
 msgid "The website www.geonames.org provides a large database of place names.  This can be searched when entering new places.  To use this feature, you must register for a free account at www.geonames.org and provide the username."
-msgstr ""
+msgstr "Ce site Internet www.geonames.org contient une importante base de données de noms de lieux. Celle-ci peut être interrogée lors de l’ajout de nouveaux lieux. Afin d’utiliser cette fonctionnalité, vous devez ouvrir un compte gratuit sur www.geonames.org et fournir le nom d’utilisateur."
 
 #: setup.php:934
 msgid "The webtrees developers would be very interested to learn about this error.  If you contact them, they will help you resolve the problem."
@@ -16273,12 +16273,12 @@ msgstr "Fermer"
 #. I18N: Name of a theme.
 #: themes/clouds/theme.php:48
 msgid "clouds"
-msgstr ""
+msgstr "clouds"
 
 #. I18N: Name of a theme.
 #: themes/colors/theme.php:127
 msgid "colors"
-msgstr ""
+msgstr "colors"
 
 #: modules_v3/top10_surnames/module.php:162
 msgid "compact list"
@@ -18575,7 +18575,7 @@ msgstr "minuit"
 #. I18N: Name of a theme.
 #: themes/minimal/theme.php:30
 msgid "minimal"
-msgstr ""
+msgstr "minimal"
 
 #: modules_v3/googlemap/module.php:330
 msgid "minimum"
@@ -19765,7 +19765,7 @@ msgstr "épouse"
 #. I18N: Name of a theme.
 #: themes/xenea/theme.php:30
 msgid "xenea"
-msgstr ""
+msgstr "xenea"
 
 #: timeline.php:130
 msgid "years"
