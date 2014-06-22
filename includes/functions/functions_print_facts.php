@@ -889,7 +889,7 @@ function print_main_notes(WT_Fact $fact, $level) {
 				if ($SHOW_FACT_ICONS) {
 					echo '<i class="icon-note"></i> ';
 				}
-				if (strstr($factrec, "1 NOTE @" )) {
+				if ($note) {
 					echo WT_Gedcom_Tag::getLabel('SHARED_NOTE');
 				} else {
 					echo WT_Gedcom_Tag::getLabel('NOTE');
@@ -899,6 +899,9 @@ function print_main_notes(WT_Fact $fact, $level) {
 				echo "<div class=\"editlink\"><a class=\"editicon\" onclick=\"return edit_record('$pid', '$fact_id');\" href=\"#\" title=\"".WT_I18N::translate('Edit')."\"><span class=\"link_text\">".WT_I18N::translate('Edit')."</span></a></div>";
 				echo '<div class="copylink"><a class="copyicon" href="#" onclick="return copy_fact(\'', $pid, '\', \'', $fact_id, '\');" title="'.WT_I18N::translate('Copy').'"><span class="link_text">'.WT_I18N::translate('Copy').'</span></a></div>';
 				echo "<div class=\"deletelink\"><a class=\"deleteicon\" onclick=\"return delete_fact('".WT_I18N::translate('Are you sure you want to delete this fact?')."', '$pid', '$fact_id');\" href=\"#\" title=\"".WT_I18N::translate('Delete')."\"><span class=\"link_text\">".WT_I18N::translate('Delete')."</span></a></div>";
+				if ($note) {
+					echo '<a class="icon-note" href="', $note->getHtmlUrl() ,'" title="' . WT_I18N::translate('View') . '"><span class="link_text">' . WT_I18N::translate('View') . '</span></a>';
+				}
 				echo '</div>';
 			}
 		} else {
@@ -906,7 +909,7 @@ function print_main_notes(WT_Fact $fact, $level) {
 				if ($SHOW_FACT_ICONS) {
 					echo '<i class="icon-note"></i> ';
 				}
-				if (strstr($factrec, "1 NOTE @" )) {
+				if ($note) {
 					echo WT_Gedcom_Tag::getLabel('SHARED_NOTE');
 				} else {
 					echo WT_Gedcom_Tag::getLabel('NOTE');
@@ -928,6 +931,10 @@ function print_main_notes(WT_Fact $fact, $level) {
 			} else if ($factname != 'NOTE') {
 				// Note is already printed
 				echo WT_Gedcom_Tag::getLabel($factname, $parent);
+				if ($note) {
+					echo '<div class="editfacts"><a class="icon-note" href="', $note->getHtmlUrl() ,'" title="' . WT_I18N::translate('View') . '"><span class="link_text">' . WT_I18N::translate('View') . '</span></a></div>';
+
+				}
 			}
 		}
 		echo '</td>';

@@ -74,7 +74,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 	function __construct() {
 		parent::__construct();
 
-		// $action comes from $_GET (menus) or $_POST (form submission)
+		// $action comes from GET (menus) or POST (form submission)
 		$this->action = WT_Filter::post('action', 'advanced|general|soundex|replace');
 		if (!$this->action) {
 			$this->action = WT_Filter::get('action', 'advanced|general|soundex|replace', 'general');
