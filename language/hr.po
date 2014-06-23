@@ -2820,7 +2820,7 @@ msgstr "Mjesta rođenja"
 
 #: modules_v3/googlemap/module.php:1296
 msgid "Birth:"
-msgstr "Rođen:"
+msgstr "Rođen/a:"
 
 #. I18N: Name of a module/report
 #: modules_v3/birth_report/module.php:33 modules_v3/birth_report/report.xml:3
@@ -4512,7 +4512,7 @@ msgstr "Dan"
 #: includes/functions/functions_print_lists.php:89 library/WT/Stats.php:650
 #: library/WT/Stats.php:652
 msgid "Dead"
-msgstr "Umro"
+msgstr "Umro/la"
 
 #. I18N: gedcom tag DEAT
 #: library/WT/Gedcom/Tag.php:165 modules_v3/ahnentafel_report/report.xml:461
@@ -6455,7 +6455,7 @@ msgstr ""
 
 #: includes/functions/functions_print.php:381
 msgid "For help with genealogy questions contact"
-msgstr "Za pomoć sa genološkim pitanjima kontaktirajte"
+msgstr "Za pomoć sa genealoškim pitanjima kontaktirajte"
 
 #: help_text.php:1494
 msgid "For optimal display on the Internet, <b>webtrees</b> uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ANSI (ISO-8859-1)</b>.<br><br>The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren’t sure, consult the documentation of that program.<br><br>Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program’s method for handling these special characters by some other means.  Consult your program’s manufacturer or author.<br><br>This <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8."
@@ -14192,7 +14192,7 @@ msgstr ""
 
 #: modules_v3/googlemap/module.php:2701
 msgid "This place has no coordinates"
-msgstr ""
+msgstr "Ovo mjesto nema kordinate"
 
 #: help_text.php:1333
 msgid "This process allows the site’s owner to ensure that the new information follows the site’s standards and conventions, has proper source attributions, etc."
@@ -14356,7 +14356,7 @@ msgstr ""
 #. I18N: Small versions of images
 #: admin_trees_config.php:663
 msgid "Thumbnail images"
-msgstr ""
+msgstr "Sličice"
 
 #: addmedia.php:450 admin_media_upload.php:189 help_text.php:1446
 msgid "Thumbnail to upload"
@@ -14364,7 +14364,7 @@ msgstr "Sličica za učitavanje"
 
 #: addmedia.php:129 admin_media_upload.php:97
 msgid "Thumbnails must be images."
-msgstr ""
+msgstr "Sličice moraju biti slike."
 
 #: library/WT/Date/Calendar.php:206
 msgid "Thursday"
@@ -14811,7 +14811,7 @@ msgstr ""
 
 #: admin_site_merge.php:60 admin_site_merge.php:63 admin_trees_config.php:250
 msgid "Unable to find record with ID"
-msgstr "Ne mogu pronaći zapis sa Identifikacijskim brojem"
+msgstr "Ne mogu pronaći zapis sa ID-om"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: library/WT/Gedcom/Code/Stat.php:86
@@ -14890,7 +14890,7 @@ msgstr "Neupotrebljene datoteke"
 
 #: admin.php:157
 msgid "Not approved by an administrator"
-msgstr ""
+msgstr "Nije odobreno od administratora"
 
 #: admin.php:153
 msgid "Not verified by the user"
@@ -14968,7 +14968,7 @@ msgstr ""
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:61
 msgid "Uploaded file exceeds the allowed size"
-msgstr "Učitana datoteka prelazi maksimalnu veličinu"
+msgstr "Učitana datoteka prelazi dozvoljenu veličinu"
 
 #: library/WT/Stats.php:4046
 msgid "Uruguay"
@@ -15109,7 +15109,7 @@ msgstr "Korisničko ime ne razlikuje velika/mala i akcentirana slova, pa se tako
 #: help_text.php:1488
 #, php-format
 msgid "Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;"
-msgstr ""
+msgstr "Korisničko ime nesmije sadržavati slijedeće znakove: &lt; &gt; &quot; %% { } ;"
 
 #: admin.php:131 themes/_administration/header.php:130
 msgid "Users"
@@ -15341,7 +15341,7 @@ msgstr ""
 #. I18N: Copyright messages, added to images
 #: admin_trees_config.php:691 help_text.php:1022
 msgid "Watermarks"
-msgstr ""
+msgstr "Vodeni žigovi"
 
 #: help_text.php:1027
 msgid "Watermarks are optional and normally shown just to visitors."
@@ -15537,7 +15537,7 @@ msgstr "Širina"
 
 #: admin_trees_config.php:667 help_text.php:991
 msgid "Width of generated thumbnails"
-msgstr ""
+msgstr "Širina generirane sličice"
 
 #. I18N: gedcom tag WIFE
 #: edit_interface.php:1054 library/WT/Gedcom/Tag.php:321
@@ -16151,7 +16151,7 @@ msgstr "rođeno ime"
 #: admin_trees_config.php:511
 #, php-format
 msgid "born in the last %1$s years or died in the last %2$s years"
-msgstr "rođen u zadnih %1$s godina ili umro u zadnjih %2$s godina"
+msgstr "rođeni u zadnih %1$s godina ili umrli u zadnjih %2$s godina"
 
 #: includes/functions/functions.php:784 modules_v3/relatives/module.php:251
 msgid "brother"
@@ -16360,7 +16360,7 @@ msgstr "Nevjesta"
 #: includes/functions/functions.php:880
 msgctxt "son’s wife"
 msgid "daughter-in-law"
-msgstr ""
+msgstr "snaha"
 
 #: includes/functions/functions.php:1078
 msgctxt "son’s wife’s father"
@@ -16401,7 +16401,7 @@ msgstr "umrla"
 #: modules_v3/descendancy_report/report.xml:433
 msgctxt "MALE"
 msgid "died"
-msgstr "umro"
+msgstr "umro/la"
 
 #: modules_v3/googlemap/module.php:357 modules_v3/googlemap/module.php:366
 #: modules_v3/googlemap/module.php:375 modules_v3/googlemap/module.php:383
@@ -16547,19 +16547,19 @@ msgstr "Rod u petnaestom koljenu"
 #, php-format
 msgctxt "FEMALE"
 msgid "fifth %s"
-msgstr ""
+msgstr "peta %s"
 
 #: includes/functions/functions.php:672
 #, php-format
 msgctxt "MALE"
 msgid "fifth %s"
-msgstr ""
+msgstr "peti %s"
 
 #: includes/functions/functions.php:694
 #, php-format
 msgctxt "MALE/FEMALE"
 msgid "fifth %s"
-msgstr ""
+msgstr "peto %s"
 
 #: includes/functions/functions.php:626
 msgctxt "FEMALE"
@@ -16570,7 +16570,7 @@ msgstr "Rod u petom koljenu"
 #: includes/functions/functions.php:585
 msgctxt "MALE"
 msgid "fifth cousin"
-msgstr ""
+msgstr "Rod u petom koljenu"
 
 #: includes/functions/functions.php:645
 msgctxt "MALE/FEMALE"
@@ -16597,21 +16597,21 @@ msgstr "prvi"
 #, php-format
 msgctxt "FEMALE"
 msgid "first %s"
-msgstr ""
+msgstr "prva %s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:668
 #, php-format
 msgctxt "MALE"
 msgid "first %s"
-msgstr ""
+msgstr "prvi %s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:690
 #, php-format
 msgctxt "MALE/FEMALE"
 msgid "first %s"
-msgstr ""
+msgstr "prvo %s"
 
 #: includes/functions/functions.php:622
 msgctxt "FEMALE"
@@ -16622,7 +16622,7 @@ msgstr "Rod u prvom koljenu"
 #: includes/functions/functions.php:573
 msgctxt "MALE"
 msgid "first cousin"
-msgstr ""
+msgstr "Rod u prvom koljenu"
 
 #: includes/functions/functions.php:641
 msgctxt "MALE/FEMALE"
@@ -16829,19 +16829,19 @@ msgstr "Rod u četrnaestom koljenu"
 #, php-format
 msgctxt "FEMALE"
 msgid "fourth %s"
-msgstr ""
+msgstr "četvrta %s"
 
 #: includes/functions/functions.php:671
 #, php-format
 msgctxt "MALE"
 msgid "fourth %s"
-msgstr ""
+msgstr "četvrti %s"
 
 #: includes/functions/functions.php:693
 #, php-format
 msgctxt "MALE/FEMALE"
 msgid "fourth %s"
-msgstr ""
+msgstr "četvrto %s"
 
 #: includes/functions/functions.php:625
 msgctxt "FEMALE"
@@ -16852,7 +16852,7 @@ msgstr "Rod u četvrtom koljenu"
 #: includes/functions/functions.php:582
 msgctxt "MALE"
 msgid "fourth cousin"
-msgstr ""
+msgstr "Rod u četvrtom koljenu"
 
 #: includes/functions/functions.php:644
 msgctxt "MALE/FEMALE"
@@ -16869,9 +16869,9 @@ msgstr "od"
 #, php-format
 msgid "from %1$s interval %2$s year"
 msgid_plural "from %1$s interval %2$s years"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "od %1$s razdoblje %2$s godina"
+msgstr[1] "od %1$s razdoblje %2$s godine"
+msgstr[2] "od %1$s razdoblje %2$s godina"
 
 #. I18N: Gedcom FROM dates
 #: library/WT/Date.php:234
@@ -18621,15 +18621,15 @@ msgstr ""
 #: statisticsplot.php:893 statisticsplot.php:896 statisticsplot.php:899
 #: statisticsplot.php:902 statisticsplot.php:905
 msgid "month"
-msgstr ""
+msgstr "mjesec"
 
 #: statistics.php:608
 msgid "months after marriage"
-msgstr "Mjeseci nakon stupanja u brak"
+msgstr "mjeseci nakon stupanja u brak"
 
 #: statistics.php:609
 msgid "months before and after marriage"
-msgstr "Mjeseci prije i poslije braka"
+msgstr "mjeseci prije i poslije braka"
 
 #: includes/functions/functions.php:725
 msgid "mother"
@@ -18714,7 +18714,7 @@ msgstr "nećakinja"
 #: includes/functions/functions.php:870
 msgctxt "sibling’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "nećakinja"
 
 #: includes/functions/functions.php:874
 msgctxt "sister’s daughter"
@@ -18766,7 +18766,7 @@ msgstr "Rod u prvom koljenu"
 #: modules_v3/individual_ext_report/report.xml:179
 #: modules_v3/individual_report/report.xml:174
 msgid "no"
-msgstr "Ne"
+msgstr "ne"
 
 #: admin_site_config.php:35 admin_trees_config.php:947
 #: admin_trees_config.php:1272
@@ -18774,7 +18774,7 @@ msgstr "Ne"
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:764
 #: modules_v3/family_nav/module.php:242
 msgid "none"
-msgstr "Nijedan"
+msgstr "nijedan"
 
 #: admin_trees_config.php:1256
 msgctxt "Surname tradition"
@@ -18792,7 +18792,7 @@ msgstr "sjever"
 
 #: statistics.php:679 statisticsplot.php:759
 msgid "numbers"
-msgstr "Brojevi"
+msgstr "brojevi"
 
 #: modules_v3/ahnentafel_report/report.xml:53
 #: modules_v3/bdm_report/report.xml:39 modules_v3/birth_report/report.xml:29
@@ -18820,7 +18820,7 @@ msgstr "preko"
 
 #: statistics.php:651
 msgid "overall"
-msgstr "Sveukupno"
+msgstr "sveukupno"
 
 #. I18N: time format “%a” - between 12:00:01 and 23:59:59
 #: includes/functions/functions_date.php:111
@@ -18945,7 +18945,7 @@ msgstr "vjersko ime"
 #. I18N: a program feature
 #: setup.php:131 setup.php:132
 msgid "reporting"
-msgstr ""
+msgstr "izvješćivalje"
 
 #: statistics.php:690
 msgid "reset"
@@ -18986,19 +18986,19 @@ msgstr "spremi"
 #, php-format
 msgctxt "FEMALE"
 msgid "second %s"
-msgstr ""
+msgstr "druga %s"
 
 #: includes/functions/functions.php:669
 #, php-format
 msgctxt "MALE"
 msgid "second %s"
-msgstr ""
+msgstr "drugi %s"
 
 #: includes/functions/functions.php:691
 #, php-format
 msgctxt "MALE/FEMALE"
 msgid "second %s"
-msgstr ""
+msgstr "drugo %s"
 
 #: includes/functions/functions.php:623
 msgctxt "FEMALE"
@@ -19009,7 +19009,7 @@ msgstr "Rod u drugom koljenu"
 #: includes/functions/functions.php:576
 msgctxt "MALE"
 msgid "second cousin"
-msgstr ""
+msgstr "Rod u drugom koljenu"
 
 #: includes/functions/functions.php:642
 msgctxt "MALE/FEMALE"
@@ -19154,7 +19154,7 @@ msgstr ""
 #. I18N: Quality of source information - GEDCOM tag “QUAY 2”
 #: library/WT/Gedcom/Code/Quay.php:30
 msgid "secondary evidence"
-msgstr ""
+msgstr "sekundarni dokaz"
 
 #. I18N: select all (of the family trees)
 #: search.php:192
@@ -19252,18 +19252,18 @@ msgstr "svastika"
 #: includes/functions/functions.php:627
 msgctxt "FEMALE"
 msgid "sixth cousin"
-msgstr "Rod u šetom koljenu"
+msgstr "Rod u šestom koljenu"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: includes/functions/functions.php:588
 msgctxt "MALE"
 msgid "sixth cousin"
-msgstr ""
+msgstr "Rod u šestom koljenu"
 
 #: includes/functions/functions.php:646
 msgctxt "MALE/FEMALE"
 msgid "sixth cousin"
-msgstr "Rod u šetom koljenu"
+msgstr "Rod u šestom koljenu"
 
 #: edit_interface.php:1991 includes/functions/functions.php:767
 #: includes/functions/functions_charts.php:274
@@ -19311,7 +19311,7 @@ msgstr "nevjesta/zet"
 #: modules_v3/todays_events/module.php:150
 #: modules_v3/upcoming_events/module.php:162
 msgid "sort by date"
-msgstr "Posloži po datumu"
+msgstr "posloži po datumu"
 
 #. I18N: An option in a list-box
 #: edit_interface.php:1835 modules_v3/bdm_report/report.xml:11
@@ -19321,35 +19321,35 @@ msgstr "Posloži po datumu"
 #: modules_v3/occupation_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:7 reportengine.php:510
 msgid "sort by date of birth"
-msgstr "Poslozi po datumu rođenja"
+msgstr "poslozi po datumu rođenja"
 
 #. I18N: An option in a list-box
 #: modules_v3/bdm_report/report.xml:11 modules_v3/cemetery_report/report.xml:6
 #: modules_v3/death_report/report.xml:9
 #: modules_v3/relative_ext_report/report.xml:7 reportengine.php:512
 msgid "sort by date of death"
-msgstr "Posloži po datumu smrti"
+msgstr "posloži po datumu smrti"
 
 #. I18N: An option in a list-box
 #: edit_interface.php:2202 modules_v3/marriage_report/report.xml:9
 #: reportengine.php:511
 msgid "sort by date of marriage"
-msgstr "Posloži po datumu vjenčanja"
+msgstr "posloži po datumu vjenčanja"
 
 #. I18N: An option in a list-box
 #: modules_v3/recent_changes/module.php:156
 msgid "sort by date, newest first"
-msgstr ""
+msgstr "posloži po datumu, noviji prvi"
 
 #. I18N: An option in a list-box
 #: modules_v3/recent_changes/module.php:155
 msgid "sort by date, oldest first"
-msgstr ""
+msgstr "posloži po datumu, stariji prvi"
 
 #. I18N: An option in a list-box
 #: medialist.php:93
 msgid "sort by filename"
-msgstr ""
+msgstr "posloži po imenu datoteke"
 
 #. I18N: An option in a list-box
 #: modules_v3/bdm_report/report.xml:11 modules_v3/birth_report/report.xml:9
@@ -19364,12 +19364,12 @@ msgstr ""
 #: modules_v3/todays_events/module.php:149
 #: modules_v3/upcoming_events/module.php:161
 msgid "sort by name"
-msgstr "sortirano po imenu"
+msgstr "posloženo po imenu"
 
 #. I18N: An option in a list-box
 #: medialist.php:90
 msgid "sort by title"
-msgstr "sortirano po naslovu"
+msgstr "posloženo po naslovu"
 
 #: modules_v3/googlemap/module.php:3878
 msgid "south"
@@ -19556,7 +19556,7 @@ msgstr "Rod u trećem koljenu"
 #: includes/functions/functions.php:579
 msgctxt "MALE"
 msgid "third cousin"
-msgstr ""
+msgstr "Rod u trećem koljenu"
 
 #: includes/functions/functions.php:643
 msgctxt "MALE/FEMALE"
@@ -19744,7 +19744,7 @@ msgstr "nepouzdan dokaz"
 #. I18N: button label
 #: admin_trees_places.php:102
 msgid "update"
-msgstr ""
+msgstr "ažuriraj"
 
 #. I18N: This is the name of the MySQL collation that applies to your language.  A list is available at http://dev.mysql.com/doc/refman/5.0/en/charset-unicode-sets.html
 #: library/WT/I18N.php:198
@@ -19848,7 +19848,7 @@ msgstr "mlađa sestra"
 #: library/WT/Individual.php:944
 #, php-format
 msgid "“%s”"
-msgstr ""
+msgstr "“%s”"
 
 #. I18N: %s is the name of an individual, source or other record
 #: modules_v3/user_favorites/module.php:78
