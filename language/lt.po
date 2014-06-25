@@ -740,7 +740,7 @@ msgstr "Sąrašas užduočių ir veiklų, kurios yra susietos su šeimos medžiu
 msgid "A list of the Hebrew death anniversaries that will occur in the near future."
 msgstr "Sąrašas Hebrajiškų mirties sukakčių kurios įvyks artimiausioje ateityje."
 
-#. I18N: Description of the “On This Day” module
+#. I18N: Description of the “On this day” module
 #: modules_v3/todays_events/module.php:37
 msgid "A list of the anniversaries that occur today."
 msgstr "Šios dienos sukaktys."
@@ -17399,9 +17399,9 @@ msgid "great ×7 uncle"
 msgstr "pro ×7 dėdė"
 
 #: includes/functions/functions.php:1260
-msgctxt "great x6 grandmother’s brother"
-msgid "great x7 uncle"
-msgstr "pro x7 dėdė"
+msgctxt "great ×6 grandmother’s brother"
+msgid "great ×7 uncle"
+msgstr "pro ×7 dėdė"
 
 #: includes/functions/functions.php:1261
 msgctxt "great ×6 grandparent’s brother"
