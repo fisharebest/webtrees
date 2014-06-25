@@ -164,7 +164,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_places">', WT_I18N::translate('Geographic data'), '</a>';
 				echo '</td>';
 				echo '<td width="25%" align="right">';
-				echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_placecheck">', WT_I18N::translate('Place Check'),'</a>';
+				echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_placecheck">', WT_I18N::translate('Place check'),'</a>';
 				echo '</td>';
 				echo '</tr></table>';
 			}
@@ -284,7 +284,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				</th>
 				<th>
 					<a href="module.php?mod=googlemap&amp;mod_action=admin_placecheck">
-						<?php echo WT_I18N::translate('Place Check'); ?>
+						<?php echo WT_I18N::translate('Place check'); ?>
 					</a>
 				</th>
 			</tr>
@@ -830,7 +830,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			echo '<a href="module.php?mod=googlemap&amp;mod_action=admin_places">', WT_I18N::translate('Geographic data'), '</a>';
 			echo '</td>';
 			echo '<td align="right">';
-			echo '<a href="module.php?mod=googlemap&amp;mod_action=admin_placecheck">', WT_I18N::translate('Place Check'), '</a>';
+			echo '<a href="module.php?mod=googlemap&amp;mod_action=admin_placecheck">', WT_I18N::translate('Place check'), '</a>';
 			echo '</td></tr>';
 			echo '</table>';
 		}
@@ -1490,7 +1490,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					</th>
 					<th>
 						<a class="current" href="module.php?mod=googlemap&amp;mod_action=admin_placecheck">
-							', WT_I18N::translate('Place Check'),'
+							', WT_I18N::translate('Place check'),'
 						</a>
 					</th>
 				</tr>
@@ -2519,7 +2519,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			echo '&nbsp;|&nbsp;';
 			echo '<a href="'.$adminplaces_url.'">', WT_I18N::translate('Geographic data'), '</a>';
 			echo '&nbsp;|&nbsp;';
-			echo '<a href="'.$placecheck_url.'">', WT_I18N::translate('Place Check'), '</a>';
+			echo '<a href="'.$placecheck_url.'">', WT_I18N::translate('Place check'), '</a>';
 			if (array_key_exists('batch_update', WT_Module::getActiveModules())) {
 				$placelevels=preg_replace('/, '.WT_I18N::translate('unknown').'/', ', ', $placelevels); // replace ", unknown" with ", "
 				$placelevels=substr($placelevels, 2); // remove the leading ", "
@@ -3977,7 +3977,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				</th>
 				<th>
 					<a href="module.php?mod=googlemap&amp;mod_action=admin_placecheck">
-						<?php echo WT_I18N::translate('Place Check'); ?>
+						<?php echo WT_I18N::translate('Place check'); ?>
 					</a>
 				</th>
 			</tr>

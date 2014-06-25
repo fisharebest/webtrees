@@ -5568,7 +5568,7 @@ msgid "Enter the FAX number including the country and area code.<br><br>Leave th
 msgstr "输入传真号码包括括国家和地区代码。<br><br>如果你不想有一个传真号码,留空白。例如,在德国可能+ 49 25859 56 76和一个在美国或加拿大的数量可能会+ 1 888 555 - 1212。"
 
 #: help_text.php:388
-msgid "Enter the URL address including the http://.<br><br>An example URL looks like this: <b>http://www.webtrees.net/</b> Leave this field blank if you do not want to include a URL."
+msgid "Enter the URL address including the http://.<br><br>An example URL looks like this: <b>http://www.webtrees.net/</b>.  Leave this field blank if you do not want to include a URL."
 msgstr "输入URL地址包括http://。<br><br>一个示例URL看起来像这样: <b>http://www.webtrees.net/</b> 如果你不想有一个URL，留空白。"
 
 #: help_text.php:50
@@ -6408,7 +6408,7 @@ msgid "For help with genealogy questions contact"
 msgstr "家谱问题联系"
 
 #: help_text.php:1494
-msgid "For optimal display on the Internet, <b>webtrees</b> uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ANSI (ISO-8859-1)</b>.<br><br>The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren’t sure, consult the documentation of that program.<br><br>Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program’s method for handling these special characters by some other means.  Consult your program’s manufacturer or author.<br><br>This <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8."
+msgid "For optimal display on the internet, <b>webtrees</b> uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ANSI (ISO-8859-1)</b>.<br><br>The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren’t sure, consult the documentation of that program.<br><br>Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program’s method for handling these special characters by some other means.  Consult your program’s manufacturer or author.<br><br>This <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8."
 msgstr "为获得在互联网上最佳显示,<b>webtrees</b> 使用utf - 8字符集。一些程序,例如,家谱制造商不支持导入GEDCOM文件编码在UTF-8。检查这个箱子将会把文件从<b>UTF-8</b>到<b> ANSI(iso - 8859 - 1)</b>。<br><br>格式需要取决于你使用的程序处理你的下载文件GEDCOM。如果你不确定,请参考相关文档的程序。<br><br>注意特殊字符保持不变,你需要把文件用UTF-8编码,转换程序的方法来处理这些特殊字符被一些其他手段。咨询你的程序的制造商或作者。<br><br><a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b></b>维基百科的文章</>包含全面的信息和链接关于utf - 8。"
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
@@ -6739,7 +6739,7 @@ msgid "Gives users the option of selecting their own theme."
 msgstr "允许用户选择自己想要的主题。"
 
 #: help_text.php:1002
-msgid "Gives visitors the option of registering themselves for an account on the site.<br><br>The visitor will receive an email message with a code to verify his application for an account.  After verification, the Administrator will have to approve the registration before it becomes active."
+msgid "Gives visitors the option of registering themselves for an account on the site.<br><br>The visitor will receive an email message with a code to verify his application for an account.  After verification, an administrator will have to approve the registration before it becomes active."
 msgstr "允许游客选择在网站上注册自己的账户。<br><br>游客将收到一个电子邮件消息,该消息带有一个代码来验证他申请的帐户。必须管理员核实后批准使他的账户它变得活跃。"
 
 #. I18N: gedcom tag _UID
@@ -7045,7 +7045,7 @@ msgid "Here you can choose between two types of displaying places names in hiera
 msgstr "在这里你可以选择显示地方列表的两种类型。如果设置是的这个地方有短的名称或实际水平的名字,如果没有-姓名。<br><b><br>示例:全名:</b>芝加哥,伊利诺斯州,美国<br><b>短名称:</b>芝加哥<br><b>全名:</b>美国伊利诺州<br><b>短名称:</b>伊利诺斯州"
 
 #: help_text.php:1045
-msgid "Here you can choose text to appear on the login screen. You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the Help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.</div><br></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
+msgid "Here you can choose text to appear on the login screen. You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.</div><br></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
 msgstr "在这里，你可以选择出现在登录屏幕上的文本。您必须确定预先定义的文字是最合适的。<br><br>您也可以选择进入自己的自定义欢迎文字。请参考相关的帮助文本的<b>自定义欢迎文字</b>栏的详细信息。<br><br>预定义的文本有：<ul><li><b>预先定义的文本：所有用户申请用户账户的预定义的文本：</b><div class=\"list_value_wrap\"><center><b>欢迎访问这个家谱网站</b></center><br>访问这个网站是允许每一位游客有一个用户帐户。<br><br>如果你有一个用户帐户，您可以登录此页面上。如果您没有用户帐户，您可以通过点击下面相应的链接申请一个。<br><br>确认您的申请后，网站管理员将激活您的帐户。您将收到一封电子邮件时，您的申请已被批准。</div><br></li><li><b>预定义的文本：管理员审核请求用户帐户的预定义的文本：</b><div class= \"list_value_wrap\"><center><b>欢迎访问这个家谱网站</b></center><br>只允许 <u>授权</u>用户访问此网站。<br><br>如果你有一个用户帐户，您可以登录此页面上。如果您没有用户帐户，您可以通过点击下面相应的链接申请一个。<br><br>验证您的信息后，管理员将可以批准或拒绝您的开户申请。您将收到一封电子邮件时，您的申请已被批准。</div><br></li><li><b>预先定义的文本：家庭成员可以申请用户帐户：</b><div class = \"list_value_wrap\"><center><b>欢迎访问这个家谱网站</b></center><br>这个网站只允许的<u>家庭成员</u>访问。<br><br>如果你有一个用户帐户，您可以登录此页面上。如果您没有用户帐户，您可以通过点击下面相应的链接申请一个。<br><br>验证您提供的信息后，管理员将可以批准或拒绝您的请求的帐户。当您的申请被批准时，您将收到一封电子邮件。</div></li></ul>"
 
 #: modules_v3/googlemap/help_text.php:54
@@ -7337,7 +7337,7 @@ msgid "If you leave this setting empty, the default value will be used."
 msgstr "如果这里留空,将使用缺省值。"
 
 #: help_text.php:585
-msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php and .htaccess) from the existing folder to the new folder."
+msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
 msgstr "如果你选择一个不同的文件夹，你还必须将所有文件（除了config.ini.php，index.php和。htaccess文件），从现有的文件夹到新的文件夹。"
 
 #: help_text.php:659
@@ -7831,7 +7831,7 @@ msgid "Keep"
 msgstr "保持"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:124
-msgid "Keep Link in list"
+msgid "Keep link in list"
 msgstr "保持链接列表"
 
 #: library/WT/Stats.php:3924
@@ -8796,7 +8796,7 @@ msgid "Media ID prefix"
 msgstr "媒体ID前缀"
 
 #: medialist.php:173
-msgid "Media Objects found"
+msgid "Media objects found"
 msgstr "媒体对象找到了"
 
 #: find.php:214
@@ -9202,7 +9202,7 @@ msgid "Morocco"
 msgstr "摩洛哥"
 
 #: modules_v3/gedcom_stats/module.php:192 modules_v3/html/module.php:258
-msgid "Most Common Surnames"
+msgid "Most common surnames"
 msgstr "最常见的姓氏"
 
 #. I18N: Help text for the “Use password” site configuration setting
@@ -9830,7 +9830,7 @@ msgid "Norway"
 msgstr "挪威"
 
 #: modules_v3/GEDFact_assistant/module.php:196
-msgid "Not a valid Individual, Family or Source ID"
+msgid "Not a valid individual, family, or source ID"
 msgstr "不是一个有效的个人、家庭或资源ID"
 
 #. I18N: gedcom tag _NLIV
@@ -10196,7 +10196,7 @@ msgid "Other"
 msgstr "其他"
 
 #: search.php:217
-msgid "Other Searches"
+msgid "Other searches"
 msgstr "其他搜索"
 
 #: admin_trees_config.php:1000 help_text.php:455
@@ -10553,11 +10553,11 @@ msgstr "地点"
 #: modules_v3/googlemap/module.php:167 modules_v3/googlemap/module.php:287
 #: modules_v3/googlemap/module.php:832 modules_v3/googlemap/module.php:1492
 #: modules_v3/googlemap/module.php:2521 modules_v3/googlemap/module.php:3979
-msgid "Place Check"
+msgid "Place check"
 msgstr "地方检查"
 
 #: placelist.php:43 placelist.php:62
-msgid "Place List"
+msgid "Place list"
 msgstr "地方列表"
 
 #: find.php:232
@@ -10738,7 +10738,7 @@ msgid "Please click on the following link and fill in the requested data to conf
 msgstr "请点击下面的链接并填写请求的数据来确认你的申请和电子邮件地址。"
 
 #: search.php:63
-msgid "Please enter a Given name, Last name, or Place in addition to Year"
+msgid "Please enter a given name, surname, or place in addition to the year"
 msgstr "请加入到这个年份新的名字，姓名或者是地方"
 
 #: message.php:102
@@ -10965,7 +10965,7 @@ msgid "Property"
 msgstr "属性"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_4_text.php:36
-msgid "Proposed Census Text&nbsp;&nbsp;"
+msgid "Proposed census text&nbsp;&nbsp;"
 msgstr "拟议Text 普查"
 
 #: library/WT/Gedcom/Code/Temp.php:150
@@ -11352,7 +11352,7 @@ msgid "Remove"
 msgstr "删除"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:125
-msgid "Remove Link from list"
+msgid "Remove link from list"
 msgstr "从列表中删除链接"
 
 #: modules_v3/batch_update/plugins/duplicate_links.php:28
@@ -11752,7 +11752,7 @@ msgid "Search for"
 msgstr "搜索"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:57
-msgid "Search for individuals to add to Add Links list."
+msgid "Search for individuals to add to add Links list."
 msgstr "搜索的人加入到列表中添加链接。"
 
 #: modules_v3/googlemap/module.php:3831
@@ -12026,7 +12026,7 @@ msgid "Set this to <b>Yes</b> to display icons near Fact names on the Personal F
 msgstr "这儿设置<b>显示</b>在个人的事件和细节页面显示事实图标名字。事实图标显示仅当它们存在于当前主题目录的<i>images/facts</i>事实。"
 
 #: help_text.php:1012
-msgid "Set to <b>Yes</b> to use the RIN number instead of the GEDCOM ID when asked for Individual IDs in configuration files, user settings, and charts.  This is useful for genealogy programs that do not consistently export GEDCOMs with the same ID assigned to each individual but always use the same RIN."
+msgid "Set to <b>Yes</b> to use the RIN number instead of the GEDCOM ID when asked for individual IDs in configuration files, user settings, and charts.  This is useful for genealogy programs that do not consistently export GEDCOMs with the same ID assigned to each individual but always use the same RIN."
 msgstr "设置<b>是</b>用RIN数代替GEDCOM ID当要求配置文件，用户设置和图表中的个人ID当。这对于导出不一致和分配给每一个人都使用相同的RIN相同ID的gedcoms家谱程序非常有用。"
 
 #: help_text.php:859
@@ -13745,7 +13745,7 @@ msgid "This family tree was last updated on %s."
 msgstr "这个家谱 %s 被最近更新 。"
 
 #: help_text.php:363
-msgid "This field allows you to change the source record that this fact’s source citation links to.  This field takes a Source ID.  Beside the field will be listed the title of the current source ID.  Use the <b>Find ID</b> link to look up the source’s ID number.  To remove the entire citation, make this field blank."
+msgid "This field allows you to change the source record that this fact’s source citation links to.  This field takes a source ID.  Beside the field will be listed the title of the current source ID.  Use the <b>Find ID</b> link to look up the source’s ID number.  To remove the entire citation, make this field blank."
 msgstr "此字段允许您改变这个事实的引文链接到资源记录。这框以资源ID。旁边的框将列标题的当前资源ID。使用<b>找到ID</b> 链接查找源ID。留空白删除整个引文。"
 
 #: modules_v3/faq/help_text.php:40
@@ -13816,7 +13816,7 @@ msgid "This input box lets you enter an individual’s ID number so he can be ad
 msgstr "此输入框可以让你输入个人ID，并添加到收集箱。一旦添加，将建立一个关链到您的收集箱。<br><br>如果你不知道一个人的ID，您可以按个人图标旁边的添加按钮用名字搜索。"
 
 #: help_text.php:407
-msgid "This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets."
+msgid "This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets."
 msgstr "这是一个逗号分隔的显示GEDCOM添加/编辑名称内容的标签.如果你使用非拉丁字母如希伯来语，希腊语，斯拉夫语或阿拉伯语，你可能要添加标签，如_heb，ROMN, FONE，等。允许你用几个不同名名字风格存放事件。"
 
 #: help_text.php:794
@@ -13828,7 +13828,7 @@ msgid "This is a comma separated list of GEDCOM fact tags that will be shown whe
 msgstr "这是一个逗号分隔的GEDCOM事件标签，将添加一个新的人时显示。例如，如果 BIRT是在列表中，出生日期和出生地将显示在窗体。"
 
 #: help_text.php:412
-msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
+msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names.  If you use non-Latin alphabets such asHebrew, Greek, Cyrillic, or Arabicc, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
 msgstr "这是一个逗号分隔的显示GEDCOM添加/编辑名称内容的标签.如果你使用非拉丁字母如希伯来语，希腊语，斯拉夫语或阿拉伯语，你可能要添加标签，如_heb，ROMN, FONE，等。允许你用几个不同地名风格存放事件。"
 
 #: help_text.php:1202
@@ -14093,11 +14093,11 @@ msgid "This option will let you edit an item on the FAQ page."
 msgstr "这个选项会让你在常见问题页面编辑条目"
 
 #: modules_v3/faq/help_text.php:60
-msgid "This option will let you move an item downwards on the FAQ page.<br><br>Each time you use this option, the FAQ Position number of this item is increased by one.  You can achieve the same effect by editing the item in question and changing the FAQ Position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
+msgid "This option will let you move an item downwards on the FAQ page.<br><br>Each time you use this option, the FAQ position number of this item is increased by one.  You can achieve the same effect by editing the item in question and changing the FAQ position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
 msgstr "这个选项会让你在常见问题页面向下移动一个项目。<br><br>你每次使用此选项，常见问题位置的数量这一项目增加了一。您可以通过编辑项目中的问题与改变的FAQ位置字段实现相同的效果。当一个以上的常见问题项具有相同的位置数，只有这一个项目将是可见的。"
 
 #: modules_v3/faq/help_text.php:65
-msgid "This option will let you move an item upwards on the FAQ page.<br><br>Each time you use this option, the FAQ Position number of this item is reduced by one.  You can achieve the same effect by editing the item in question and changing the FAQ Position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
+msgid "This option will let you move an item upwards on the FAQ page.<br><br>Each time you use this option, the FAQ position number of this item is reduced by one.  You can achieve the same effect by editing the item in question and changing the FAQ position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
 msgstr "这个选项会让你在常见问题页面向上移动一个项目。<br><br>你每次使用此选项，常见问题位置的数量这一项目减少了一个。您可以通过编辑项目中的问题与改变的常见问题位置字段实现相同的效果。当一个以上的常见问题项具有相同的位置数，只有这一个项目将是可见的。"
 
 #: help_text.php:1099
@@ -14169,7 +14169,7 @@ msgid "This role has all the permissions of the editor role, plus permission to 
 msgstr "编辑的角色,许可批准/拒绝由其他用户更改。"
 
 #: help_text.php:1398
-msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the site, users and modules."
+msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the site, users, and modules."
 msgstr "管理者角色,加上允许更改设置/配置的站点,用户和模块。"
 
 #: help_text.php:1386
@@ -14185,7 +14185,7 @@ msgid "This role has all the permissions of the visitor role, plus any additiona
 msgstr "这个角色有游客的权限,加上任何额外的访问授权的家谱的配置。"
 
 #: help_text.php:1144
-msgid "This section allows you to add a new Note to the fact that you are currently editing.  Notes are free-form text and will appear in the Fact Details section of the page."
+msgid "This section allows you to add a new note to the fact that you are currently editing.  Notes are free-form text and will appear in the Fact Details section of the page."
 msgstr "这部分允许您添加一个新的说明到你当前正在编辑的事实。说明是自由格式的文本,也会出现在事实细节部分的页面。"
 
 #: help_text.php:1157
@@ -14255,7 +14255,7 @@ msgid "This usually means that you need to change the folder permissions to 777.
 msgstr "这意味着你要将这个目录的权限改成777。"
 
 #: help_text.php:1223
-msgid "This value determines the number of descendant generations of the root individual that will be printed in Hourglass format."
+msgid "This value determines the number of descendant generations of the root individual that will be printed in hourglass format."
 msgstr "这个值决定了在沙漏格式中开始人后面的显示的代数。"
 
 #: site-offline.php:71 site-unavailable.php:63
@@ -14982,7 +14982,7 @@ msgid "Use these buttons to re-arrange the order of the entries within the list.
 msgstr "使用这些按钮来重新排列列表中的条目顺序。模块将按所列出顺序显示。<br><br>选中要移动的条目，然后单击上面按钮，向上或向下移动条目。"
 
 #: help_text.php:398
-msgid "Use this field to signal that this media item is the highlighted or primary item for the individual it is attached to.  The highlighted image is the one that will be used on charts and on the Individual page."
+msgid "Use this field to signal that this media item is the highlighted or primary item for the individual it is attached to.  The highlighted image is the one that will be used on charts and on the individual’s page."
 msgstr "使用此框的确定该媒体项目是突出为主要项目。突出显示的图像是一个将被用在图表上的个人网页。"
 
 #: help_text.php:1358
@@ -15801,7 +15801,7 @@ msgid "Youngest mother"
 msgstr "最年轻母亲"
 
 #: includes/authentication.php:120 message.php:127
-msgid "Your Name:"
+msgid "Your name:"
 msgstr "您的姓名："
 
 #: modules_v3/clippings/module.php:172 modules_v3/clippings/module.php:430

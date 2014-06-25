@@ -260,7 +260,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 				<tr><td valign="top">
 				<table id="mycart" class="sortable list_table width100">
 					<tr>
-						<th class="list_label"><?php echo WT_I18N::translate('Name / Description'); ?></th>
+						<th class="list_label"><?php echo WT_I18N::translate('Record'); ?></th>
 						<th class="list_label"><?php echo WT_I18N::translate('Remove'); ?></th>
 					</tr>
 			<?php
