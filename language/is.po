@@ -5593,7 +5593,7 @@ msgid "Enter the FAX number including the country and area code.<br><br>Leave th
 msgstr "Sláið inn fax númer ásamt land- og svæðiskóða.<br><br>Skiljið þennan reit eftir auðan ef þú vilt ekki láta fax númer fylgja með. Sem dæmi númer í Þýskalandi gæti verið +49 25859 56 76 89 og númer í Bandaríkjunum eða Kanada gæti verið +1 888 555-1212."
 
 #: help_text.php:388
-msgid "Enter the URL address including the http://.<br><br>An example URL looks like this: <b>http://www.webtrees.net/</b> Leave this field blank if you do not want to include a URL."
+msgid "Enter the URL address including the http://.<br><br>An example URL looks like this: <b>http://www.webtrees.net/</b>.  Leave this field blank if you do not want to include a URL."
 msgstr "Sláðu inn veffangið ásamt http://.<br><br>Dæmi um veffang lítur svona út:<b>http://www.webtrees.net/</b> Skiljið þennan reit eftir auðan ef þú vilt ekki láta veffangið fylgja með."
 
 #: help_text.php:50
@@ -6433,7 +6433,7 @@ msgid "For help with genealogy questions contact"
 msgstr "Varðandi hjálp með ættfræðispurningar hafið þá samband við"
 
 #: help_text.php:1494
-msgid "For optimal display on the Internet, <b>webtrees</b> uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ANSI (ISO-8859-1)</b>.<br><br>The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren’t sure, consult the documentation of that program.<br><br>Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program’s method for handling these special characters by some other means.  Consult your program’s manufacturer or author.<br><br>This <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8."
+msgid "For optimal display on the internet, <b>webtrees</b> uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ANSI (ISO-8859-1)</b>.<br><br>The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren’t sure, consult the documentation of that program.<br><br>Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program’s method for handling these special characters by some other means.  Consult your program’s manufacturer or author.<br><br>This <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8."
 msgstr ""
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
@@ -6764,7 +6764,7 @@ msgid "Gives users the option of selecting their own theme."
 msgstr "Gefa notendum kost á valmöguleikanum að velja þeirra eigin þema."
 
 #: help_text.php:1002
-msgid "Gives visitors the option of registering themselves for an account on the site.<br><br>The visitor will receive an email message with a code to verify his application for an account.  After verification, the Administrator will have to approve the registration before it becomes active."
+msgid "Gives visitors the option of registering themselves for an account on the site.<br><br>The visitor will receive an email message with a code to verify his application for an account.  After verification, an administrator will have to approve the registration before it becomes active."
 msgstr "Gefa gestum kost á að skrá sig sjálfir fyrir reikning á vefsíðunni.<br><br>Gesturinn mun fá skilaboð í tölvupósti með kóða til að staðfesta umsókn hans fyrir reikningi. Eftir staðfestingu mun vefstjórin þurfa að samþykkja skráninguna áður en hún verður virk."
 
 #. I18N: gedcom tag _UID
@@ -7070,7 +7070,7 @@ msgid "Here you can choose between two types of displaying places names in hiera
 msgstr "Hér getur þú valið á milli tveggja gerða á birtingu staðarheita í stigveldinu. Ef Já er valið þá hefur staðurinn stutt heiti eða raunverulegt stigheiti, ef Nei - Fullt heiti.<br><b>Dæmi:<br>Fullt heiti:</b>Chicago, Illinois, USA<br><b>Stutt heiti:</b>Chicago<br><b>Fullt heiti:</b>Illinois, USA<br><b>Stutt heiti:</b>Illinois"
 
 #: help_text.php:1045
-msgid "Here you can choose text to appear on the login screen. You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the Help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.</div><br></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
+msgid "Here you can choose text to appear on the login screen. You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.</div><br></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
 msgstr ""
 
 #: modules_v3/googlemap/help_text.php:54
@@ -7362,7 +7362,7 @@ msgid "If you leave this setting empty, the default value will be used."
 msgstr "Ef þú skilur þessa stillingu eftir auða, þá mun sjálfgefið gildi vera notað."
 
 #: help_text.php:585
-msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php and .htaccess) from the existing folder to the new folder."
+msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
 msgstr ""
 
 #: help_text.php:659
@@ -7856,7 +7856,7 @@ msgid "Keep"
 msgstr "Halda"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:124
-msgid "Keep Link in list"
+msgid "Keep link in list"
 msgstr "Halda krækju í lista"
 
 #: library/WT/Stats.php:3924
@@ -8821,7 +8821,7 @@ msgid "Media ID prefix"
 msgstr "Forskeyti miðils auðkennis"
 
 #: medialist.php:173
-msgid "Media Objects found"
+msgid "Media objects found"
 msgstr "Miðilshlutir fundnir"
 
 #: find.php:214
@@ -9227,7 +9227,7 @@ msgid "Morocco"
 msgstr "Marokkó"
 
 #: modules_v3/gedcom_stats/module.php:192 modules_v3/html/module.php:258
-msgid "Most Common Surnames"
+msgid "Most common surnames"
 msgstr "Algengustu eftirnöfnin"
 
 #. I18N: Help text for the “Use password” site configuration setting
@@ -9857,7 +9857,7 @@ msgid "Norway"
 msgstr "Noregur"
 
 #: modules_v3/GEDFact_assistant/module.php:196
-msgid "Not a valid Individual, Family or Source ID"
+msgid "Not a valid individual, family, or source ID"
 msgstr "Ekki gildur einstaklingur, fjölskylda eða uppruna auðkenni"
 
 #. I18N: gedcom tag _NLIV
@@ -10224,7 +10224,7 @@ msgid "Other"
 msgstr "Annað"
 
 #: search.php:217
-msgid "Other Searches"
+msgid "Other searches"
 msgstr "Aðrar leitir"
 
 #: admin_trees_config.php:1000 help_text.php:455
@@ -10581,11 +10581,11 @@ msgstr "Staður"
 #: modules_v3/googlemap/module.php:167 modules_v3/googlemap/module.php:287
 #: modules_v3/googlemap/module.php:832 modules_v3/googlemap/module.php:1492
 #: modules_v3/googlemap/module.php:2521 modules_v3/googlemap/module.php:3979
-msgid "Place Check"
+msgid "Place check"
 msgstr "Staðsetja merkingu"
 
 #: placelist.php:43 placelist.php:62
-msgid "Place List"
+msgid "Place list"
 msgstr "Staðarlisti"
 
 #: find.php:232
@@ -10766,7 +10766,7 @@ msgid "Please click on the following link and fill in the requested data to conf
 msgstr "Vinsamlega smellið á eftirfarandi krækju og fyllið inn umbeðin gögn til að staðfesta beiðni þína og netfang."
 
 #: search.php:63
-msgid "Please enter a Given name, Last name, or Place in addition to Year"
+msgid "Please enter a given name, surname, or place in addition to the year"
 msgstr "Vinsamlega sláið inn Skírnarnafn, Eftirnafn eða Stað í viðbót við Ár"
 
 #: message.php:102
@@ -10993,7 +10993,7 @@ msgid "Property"
 msgstr "Fasteign"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_4_text.php:36
-msgid "Proposed Census Text&nbsp;&nbsp;"
+msgid "Proposed census text&nbsp;&nbsp;"
 msgstr "Tillaga að manntalstexta&nbsp;&nbsp;"
 
 #: library/WT/Gedcom/Code/Temp.php:150
@@ -11380,7 +11380,7 @@ msgid "Remove"
 msgstr "Fjarlægja"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:125
-msgid "Remove Link from list"
+msgid "Remove link from list"
 msgstr "Fjarlægja krækju úr lista"
 
 #: modules_v3/batch_update/plugins/duplicate_links.php:28
@@ -11780,7 +11780,7 @@ msgid "Search for"
 msgstr "Leita að"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:57
-msgid "Search for individuals to add to Add Links list."
+msgid "Search for individuals to add to add Links list."
 msgstr "Leita að fólki til að bæta við á krækjulista."
 
 #: modules_v3/googlemap/module.php:3831
@@ -12054,7 +12054,7 @@ msgid "Set this to <b>Yes</b> to display icons near Fact names on the Personal F
 msgstr "Stilla þetta á <b>Já</b> til að sýna tákn nálægt staðreyndaheitum á persónu staðreynda- og upplýsingasíðu. Staðreyndatákn verða aðeins sýnd ef þau eru til staðar í <i>images/facts</i> möppunni í núverandi þema."
 
 #: help_text.php:1012
-msgid "Set to <b>Yes</b> to use the RIN number instead of the GEDCOM ID when asked for Individual IDs in configuration files, user settings, and charts.  This is useful for genealogy programs that do not consistently export GEDCOMs with the same ID assigned to each individual but always use the same RIN."
+msgid "Set to <b>Yes</b> to use the RIN number instead of the GEDCOM ID when asked for individual IDs in configuration files, user settings, and charts.  This is useful for genealogy programs that do not consistently export GEDCOMs with the same ID assigned to each individual but always use the same RIN."
 msgstr "Stillið á <b>Já</b> til að nota RIN númerið í staðinn fyrir GEDCOM auðkennið þegar beðið er um einstaklings auðkenni í uppsetningaskrám, notendastillingum og gröfum. Þetta er gagnlegt fyrir ættfræði forrit sem ekki flytja stöðugt út GEDCOM með sama úthlutaða auðkenninu fyrir hvern einstakling en nota alltaf sama RIN."
 
 #: help_text.php:859
@@ -13773,7 +13773,7 @@ msgid "This family tree was last updated on %s."
 msgstr "Þetta fjölskyldutré var síðast uppfært þann %s."
 
 #: help_text.php:363
-msgid "This field allows you to change the source record that this fact’s source citation links to.  This field takes a Source ID.  Beside the field will be listed the title of the current source ID.  Use the <b>Find ID</b> link to look up the source’s ID number.  To remove the entire citation, make this field blank."
+msgid "This field allows you to change the source record that this fact’s source citation links to.  This field takes a source ID.  Beside the field will be listed the title of the current source ID.  Use the <b>Find ID</b> link to look up the source’s ID number.  To remove the entire citation, make this field blank."
 msgstr "Þessi reitur heimilar þér að breyta heimildarfærslunni sem þessi staðreynda heimildatilvísun er tengd við. Þessi reitur tekur heimilda auðkenni. Til hliðar við reitinn verður heiti núverandi heimildar auðkenni. Notið <b>Finna auðkenni</b> krækjuna til að fletta upp á heimildar auðkennisnúmeri. Til að fjarlægja alla tilvísunina, gerið þá þennan reit auðan."
 
 #: modules_v3/faq/help_text.php:40
@@ -13844,7 +13844,7 @@ msgid "This input box lets you enter an individual’s ID number so he can be ad
 msgstr "Þessi innsláttarkassi gerir þér kleift að slá inn auðkennisnúmer einstaklings svo hægt sé að bæta honum í klippikörfuna. Þegar honum hefur verið bætt við þá færð þú möguleika á að tengja skyldleika hans við klippikörfuna þína.<br><br>Ef þú þekkir ekki auðkennisnúmer einstaklings, á getur þú framkvæmt leit eftir nafni með því að smella á persónutáknið við hliðina á Bæta við hnappinum."
 
 #: help_text.php:407
-msgid "This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets."
+msgid "This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets."
 msgstr "Þetta er kommu aðgreindur listi af GEDCOM staðreynda merkimiðum sem verður sýndur á bæta við/breyta nafnaeyðublaðinu. Ef þú notar stafróf sem ekki er Latín eins og Hebresku, Grísku, Cyrillic eða Arabísku þá gætir viljað að bæta merkimiðum einsog _HEB, ROMN, FONE o.s.frv. til að gera þér kleift að vista nöfn í mörgum mismunandi stafrófum."
 
 #: help_text.php:794
@@ -13856,7 +13856,7 @@ msgid "This is a comma separated list of GEDCOM fact tags that will be shown whe
 msgstr "Þetta er kommu aðgreindur listi yfir GEDCOM staðreynda merkimiða sem birtast þegar nýrri persónu er bætt við. Sem dæmi, ef BIRT er í listanum, þá munu reitir fyrir fæðingardag og fæðingarstað vera birtir á eyðublaðinu."
 
 #: help_text.php:412
-msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
+msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
 msgstr "Þetta er kommu aðgreindur listi af GEDCOM staðreynda merkimiðum sem verður sýndur þegar þú bætir við eða breytir staðarheitum. Ef þú notar stafróf sem ekki er Latín einsog Hebreska, Gríska, Cyrillic eða Arabíska, þá gætir verið að þú vildir bæta við merkimiðum einsog _HEB, ROMN, FONE o.s.frv. til að gera þér kleift að vista staðarheiti í mörgum mismunandi stafrófum."
 
 #: help_text.php:1202
@@ -14121,11 +14121,11 @@ msgid "This option will let you edit an item on the FAQ page."
 msgstr "Þessi valkostur gerir þér kleift að breyta atriði á S&S síðunni."
 
 #: modules_v3/faq/help_text.php:60
-msgid "This option will let you move an item downwards on the FAQ page.<br><br>Each time you use this option, the FAQ Position number of this item is increased by one.  You can achieve the same effect by editing the item in question and changing the FAQ Position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
+msgid "This option will let you move an item downwards on the FAQ page.<br><br>Each time you use this option, the FAQ position number of this item is increased by one.  You can achieve the same effect by editing the item in question and changing the FAQ position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
 msgstr "Þessi valkostur gerir þér kleift að færa atriði niður á S&S síðunni.<br><br>Í hvert sinn sem þú notar þennan valkost, þá er einum bætt við staðartöluna. Þú getur náð því sama fram með því að breyta umræddu atriði  og breytt S&S staðarreitinn. Þegar meira en eitt S&S atriði er með sömu staðartölu, þá verður aðeins eitt af þessum atriðum sýnilegt."
 
 #: modules_v3/faq/help_text.php:65
-msgid "This option will let you move an item upwards on the FAQ page.<br><br>Each time you use this option, the FAQ Position number of this item is reduced by one.  You can achieve the same effect by editing the item in question and changing the FAQ Position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
+msgid "This option will let you move an item upwards on the FAQ page.<br><br>Each time you use this option, the FAQ position number of this item is reduced by one.  You can achieve the same effect by editing the item in question and changing the FAQ position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
 msgstr "Þessi valkostur gerir þér kleift að færa atriði upp á S&S síðunni.<br><br>Í hvert sinn sem þú notar þennan möguleika, þá er S&S staðsetningarnúmer þessa atriðis minnkað um einn. Þú getur náð sömu áhrifum með því breyta umræddu atriði og breyta S&S staðsetningarreitnum. Þegar meira en eitt S&S atriði er með sama staðsetningarnúmerið, þá verður aðeins annað atriðið sýnilegt."
 
 #: help_text.php:1099
@@ -14197,7 +14197,7 @@ msgid "This role has all the permissions of the editor role, plus permission to 
 msgstr "Þetta hlutverk hefur öll réttindi ritstjórnarhlutverksins, ásamt réttindum til að samþykkja/hafna breytingum sem gerðar eru af öðrum notendum."
 
 #: help_text.php:1398
-msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the site, users and modules."
+msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the site, users, and modules."
 msgstr "Þetta hlutverk hefur öll réttindi stjórnendahlutverks í öllum fjölskyldutré, ásamt réttindum til að breyta stillingum/uppsetningum á vefsíðu, notendum og einingum."
 
 #: help_text.php:1386
@@ -14213,7 +14213,7 @@ msgid "This role has all the permissions of the visitor role, plus any additiona
 msgstr "Þetta hlutverk hefur öll réttindi gestahlutverks, ásamt hvaða viðbótar réttindum sem veitt eru af uppsetningu fjölskyldutrésins."
 
 #: help_text.php:1144
-msgid "This section allows you to add a new Note to the fact that you are currently editing.  Notes are free-form text and will appear in the Fact Details section of the page."
+msgid "This section allows you to add a new note to the fact that you are currently editing.  Notes are free-form text and will appear in the Fact Details section of the page."
 msgstr "Þessi hluti gerir þér kleift að bæta við nýrri Glósu við staðreyndina um að þú sért núna að ritstýra. Glósur er texti á frjálsu sniði og munu birtast í Staðreynda Upplýsinga hlutanum á síðunni."
 
 #: help_text.php:1157
@@ -14283,7 +14283,7 @@ msgid "This usually means that you need to change the folder permissions to 777.
 msgstr "Þetta þýðir venjulega að þú þarft að breyta möppu réttindum í 777."
 
 #: help_text.php:1223
-msgid "This value determines the number of descendant generations of the root individual that will be printed in Hourglass format."
+msgid "This value determines the number of descendant generations of the root individual that will be printed in hourglass format."
 msgstr "Þetta gildi ákveður fjölda afkomenda kynslóða á rótar persónunni sem verður prentað í tímaglasa sniðinu."
 
 #: site-offline.php:71 site-unavailable.php:63
@@ -15013,7 +15013,7 @@ msgid "Use these buttons to re-arrange the order of the entries within the list.
 msgstr "Notið þessa hnappa til að endurraða færslum á listanum. Kassarnir verða prentaðir í þeirri röð sem þeir koma fyrir á listanum.<br><br>Áherslumerkið færsluna sem á að færa og smellið á hnapp til að færa þá færslu upp eða niður."
 
 #: help_text.php:398
-msgid "Use this field to signal that this media item is the highlighted or primary item for the individual it is attached to.  The highlighted image is the one that will be used on charts and on the Individual page."
+msgid "Use this field to signal that this media item is the highlighted or primary item for the individual it is attached to.  The highlighted image is the one that will be used on charts and on the individual’s page."
 msgstr "Notið þennan reit til að gefa til kynna að þetta miðilsatriði er áherslumerkt eða forgangsatriði fyrir persónuna sem það er tengt við. Áherslumerkta myndin er sú sem verður notuð í gröfum og á einstaklingssíðum."
 
 #: help_text.php:1358
@@ -15833,7 +15833,7 @@ msgid "Youngest mother"
 msgstr "Yngsta móðir"
 
 #: includes/authentication.php:120 message.php:127
-msgid "Your Name:"
+msgid "Your name:"
 msgstr "Þitt nafn:"
 
 #: modules_v3/clippings/module.php:172 modules_v3/clippings/module.php:430

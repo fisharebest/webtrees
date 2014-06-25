@@ -117,7 +117,7 @@ function addMessage($message) {
 	WT_I18N::init($recipient->getSetting('language'));
 	if (isset($message['from_name'])) {
 		$message['body'] =
-			WT_I18N::translate('Your Name:') . ' ' . $message['from_name'] . WT_Mail::EOL .
+			WT_I18N::translate('Your name:') . ' ' . $message['from_name'] . WT_Mail::EOL .
 			WT_I18N::translate('Email address:') . ' ' . $message['from_email'] . WT_Mail::EOL . WT_Mail::EOL .
 			$message['body'];
 	}

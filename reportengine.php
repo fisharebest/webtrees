@@ -131,7 +131,7 @@ if ($action=='choose') {
 		<input type="hidden" name="output" value="', WT_Filter::escapeHtml($output), '">
 		<table class="facts_table width40">
 		<tr><td class="topbottombar" colspan="2">', WT_I18N::translate('Choose a report to run'), '</td></tr>
-		<tr><td class="descriptionbox wrap width33 vmiddle">', WT_I18N::translate('Select report'), '</td>
+		<tr><td class="descriptionbox wrap width33 vmiddle">', WT_I18N::translate('Report'), '</td>
 		<td class="optionbox"><select name="report">';
 	foreach ($reports as $file=>$report) {
 			echo '<option value="', WT_Filter::escapeHtml($file), '">', WT_Filter::escapeHtml($report), '</option>';
@@ -179,7 +179,7 @@ elseif ($action=='setup') {
 		<input type="hidden" name="report" value="', WT_Filter::escapeHtml($report), '">
 		<table class="facts_table width50">
 		<tr><td class="topbottombar" colspan="2">', WT_I18N::translate('Enter report values'), '</td></tr>
-		<tr><td class="descriptionbox width30 wrap">', WT_I18N::translate('Selected Report'), '</td><td class="optionbox">', $report_array['title'], '<br>', $report_array['description'], '</td></tr>';
+		<tr><td class="descriptionbox width30 wrap">', WT_I18N::translate('Report'), '</td><td class="optionbox">', $report_array['title'], '<br>', $report_array['description'], '</td></tr>';
 
 	if (!isset($report_array['inputs'])) {
 		$report_array['inputs'] = array();

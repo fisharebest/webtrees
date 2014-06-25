@@ -5593,7 +5593,7 @@ msgid "Enter the FAX number including the country and area code.<br><br>Leave th
 msgstr "Introduzca el número de fax incluyendo los prefijos de país y de área.<br><br>Deje en blanco este campo si no desea incluir un número de fax.  Por ejemplo, un número en España podría ser +34 926 123 457 y un número en Estados Unidos o Canadá podría ser +1 888 555-1212."
 
 #: help_text.php:388
-msgid "Enter the URL address including the http://.<br><br>An example URL looks like this: <b>http://www.webtrees.net/</b> Leave this field blank if you do not want to include a URL."
+msgid "Enter the URL address including the http://.<br><br>An example URL looks like this: <b>http://www.webtrees.net/</b>.  Leave this field blank if you do not want to include a URL."
 msgstr "Introduzca la dirección URL incluyendo el http://.<br><br>Un ejemplo sería: <b>http://www.webtrees.net/</b> Deje este campo en blanco si no quiere incluir una URL."
 
 #: help_text.php:50
@@ -6433,7 +6433,7 @@ msgid "For help with genealogy questions contact"
 msgstr "Para ayuda por cuestiones de genealogía contacte con"
 
 #: help_text.php:1494
-msgid "For optimal display on the Internet, <b>webtrees</b> uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ANSI (ISO-8859-1)</b>.<br><br>The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren’t sure, consult the documentation of that program.<br><br>Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program’s method for handling these special characters by some other means.  Consult your program’s manufacturer or author.<br><br>This <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8."
+msgid "For optimal display on the internet, <b>webtrees</b> uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ANSI (ISO-8859-1)</b>.<br><br>The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren’t sure, consult the documentation of that program.<br><br>Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program’s method for handling these special characters by some other means.  Consult your program’s manufacturer or author.<br><br>This <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8."
 msgstr "Para una visualización óptima en Internet, <b>webtrees</b> usa la codificación UTF-8 de caracteres.  Algunos programas, Family Tree Maker, por ejemplo, no se admite la importación de archivos GEDCOM codificados en UTF-8.  Al marcar esta casilla convertirá el archivo de <b>UTF-8</b> para <b>ANSI (ISO-8859-1)</b>.<br><br>El formato que necesita depende del programa que se utiliza para trabajar con su archivo GEDCOM descargado.  Si no está seguro, consulte la documentación de dicho programa.<br><br>Nota que para los caracteres especiales que no han cambiado, tendrá que mantener el archivo en UTF-8 y convertirlo en método de su programa para el manejo de estos caracteres especiales por algún otro medio.  Consulte al fabricante de su programa o autor.<br><br>Este <a target=\"_blank\" href=\"http://en.wikipedia.org/wiki/UTF-8\" title=\"artículo de Wikipedia\"><b>artículo de Wikipedia</b></a> contiene información completa y enlaces sobre UTF-8."
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
@@ -6764,7 +6764,7 @@ msgid "Gives users the option of selecting their own theme."
 msgstr "Da a los usuarios la opción de seleccionar su propio tema."
 
 #: help_text.php:1002
-msgid "Gives visitors the option of registering themselves for an account on the site.<br><br>The visitor will receive an email message with a code to verify his application for an account.  After verification, the Administrator will have to approve the registration before it becomes active."
+msgid "Gives visitors the option of registering themselves for an account on the site.<br><br>The visitor will receive an email message with a code to verify his application for an account.  After verification, an administrator will have to approve the registration before it becomes active."
 msgstr "Da a los visitantes la posibilidad de registrarse por sí mismos en el sitio.<br /<br>El visitante recibirá un mensaje de correo electrónico para verificar su solicitud de cuenta.  Tras la verificación, el administrador tendrá que aprobar el registro para que la cuenta se active."
 
 #. I18N: gedcom tag _UID
@@ -7070,7 +7070,7 @@ msgid "Here you can choose between two types of displaying places names in hiera
 msgstr "Aquí puede elegir entre dos formas de mostrar los nombres de los lugares en la jerarquía. Si pone Sí el lugar usará un nombre corto o el nombre del nivel.  Si no, se utilizará el nombre completo.<br><b>Ejemplos:<br>Nombre completo:</b> Chicago, Illinois, USA<br><b>Nombre corto:</b> Chicago<br><b>Nombre completo:</b> Illinois, USA<br><b>Nombre corto:</b> Illinois"
 
 #: help_text.php:1045
-msgid "Here you can choose text to appear on the login screen. You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the Help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.</div><br></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
+msgid "Here you can choose text to appear on the login screen. You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.</div><br></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
 msgstr "Puede elegir el texto que aparece en la pantalla de inicio de sesión.  Puede determinar qué texto predefinido es más adecuado, o bien introducir su propio texto de bienvenida. Para más información, lea la ayuda asociada al campo <b>Texto de bienvenida personalizado</b>.<br><br>Los textos predefinidos son:<ul><li><b>Texto predefinido que establece que todos los usuarios pueden solicitar una cuenta de usuario:</b><div class=\"list_value_wrap\"><center><b>Bienvenido a este sitio de Genealogía</b></center><br>Se permite el acceso a cualquier visitante que tenga una cuenta de usuario.<br><br>Si tiene una cuenta de usuario, puede identificarse en esta página. Si no tiene cuenta de usuario, puede solicitarla haciendo clic en el vínculo apropiado más abajo.<br><br>Después de verificar su solicitud, el administrador del sitio activará su cuenta. Recibirá un correo electrónico cuando se apruebe su solicitud.</div><br></li><li><b>Texto predefinido que establece que el administrador decidirá sobre cada solicitud de cuenta de usuario:</b><div class=\"list_value_wrap\"><center><b>Bienvenido a este sitio de Genealogía</b></center><br>Se permite el acceso solamente a usuarios <u>autorizados</u>.<br><br>Si ya tiene una cuenta de usuario, puede identificarse en esta página. Si no tiene cuenta de usuario, puede solicitarla haciendo clic en el vínculo apropiado más abajo.<br><br>Después de verificar su solicitud, el administrador del sitio aprobará o rechazará su solicitud. Recibirá un correo electrónico cuando se apruebe su solicitud.</div><br></li><li><b>Texto predefinido que establece que sólo los familiares pueden solicitar una cuenta de usuario:</b><div class=\"list_value_wrap\"><center><b>Bienvenido a este sitio de Genealogía</b></center><br>Se permite el acceso <u>solamente a parientes</u>.<br><br>Si ya tiene una cuenta de usuario, puede identificarse en esta página. Si no tiene cuenta de usuario, puede solicitarla haciendo clic en el vínculo apropiado más abajo.<br><br>Después de verificar la información proporcionada, el administrador del sitio aprobará o rechazará su solicitud. Recibirá un correo electrónico cuando se apruebe su solicitud.</div></li></ul>"
 
 #: modules_v3/googlemap/help_text.php:54
@@ -7362,7 +7362,7 @@ msgid "If you leave this setting empty, the default value will be used."
 msgstr "Si deja esta opción en blanco, el valor por defecto será usada."
 
 #: help_text.php:585
-msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php and .htaccess) from the existing folder to the new folder."
+msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
 msgstr "Si selecciona una carpeta, también debe mover todos los archivos (excepto config.ini.php, index.php y .htaccess) de la carpeta actual a la nueva carpeta."
 
 #: help_text.php:659
@@ -7856,7 +7856,7 @@ msgid "Keep"
 msgstr "Mantener"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:124
-msgid "Keep Link in list"
+msgid "Keep link in list"
 msgstr "Mantener el vínculo en la lista"
 
 #: library/WT/Stats.php:3924
@@ -8821,7 +8821,7 @@ msgid "Media ID prefix"
 msgstr "Prefijo del ID de los objetos audiovisuales"
 
 #: medialist.php:173
-msgid "Media Objects found"
+msgid "Media objects found"
 msgstr "Objetos audiovisuales encontrados"
 
 #: find.php:214
@@ -9227,7 +9227,7 @@ msgid "Morocco"
 msgstr "Marruecos"
 
 #: modules_v3/gedcom_stats/module.php:192 modules_v3/html/module.php:258
-msgid "Most Common Surnames"
+msgid "Most common surnames"
 msgstr "Apellidos más comunes"
 
 #. I18N: Help text for the “Use password” site configuration setting
@@ -9857,7 +9857,7 @@ msgid "Norway"
 msgstr "Noruega"
 
 #: modules_v3/GEDFact_assistant/module.php:196
-msgid "Not a valid Individual, Family or Source ID"
+msgid "Not a valid individual, family, or source ID"
 msgstr "No es un ID válido de persona, familia o fuente"
 
 #. I18N: gedcom tag _NLIV
@@ -10224,7 +10224,7 @@ msgid "Other"
 msgstr "Otro"
 
 #: search.php:217
-msgid "Other Searches"
+msgid "Other searches"
 msgstr "Otras búsquedas"
 
 #: admin_trees_config.php:1000 help_text.php:455
@@ -10581,11 +10581,11 @@ msgstr "Lugar"
 #: modules_v3/googlemap/module.php:167 modules_v3/googlemap/module.php:287
 #: modules_v3/googlemap/module.php:832 modules_v3/googlemap/module.php:1492
 #: modules_v3/googlemap/module.php:2521 modules_v3/googlemap/module.php:3979
-msgid "Place Check"
+msgid "Place check"
 msgstr "Comprobación de lugares"
 
 #: placelist.php:43 placelist.php:62
-msgid "Place List"
+msgid "Place list"
 msgstr "Lista de lugares"
 
 #: find.php:232
@@ -10766,7 +10766,7 @@ msgid "Please click on the following link and fill in the requested data to conf
 msgstr "Haga clic en el vínculo siguiente y rellene los datos requeridos para verificar su petición y su dirección de correo electrónico."
 
 #: search.php:63
-msgid "Please enter a Given name, Last name, or Place in addition to Year"
+msgid "Please enter a given name, surname, or place in addition to the year"
 msgstr "Por favor, introduzca un Nombre, Apellido o Lugar además del Año"
 
 #: message.php:102
@@ -10993,7 +10993,7 @@ msgid "Property"
 msgstr "Propiedad"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_4_text.php:36
-msgid "Proposed Census Text&nbsp;&nbsp;"
+msgid "Proposed census text&nbsp;&nbsp;"
 msgstr "Censo propuesto  Text&nbsp;&nbsp;"
 
 #: library/WT/Gedcom/Code/Temp.php:150
@@ -11380,7 +11380,7 @@ msgid "Remove"
 msgstr "Borrar"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:125
-msgid "Remove Link from list"
+msgid "Remove link from list"
 msgstr "Borrar el vínculo de la lista"
 
 #: modules_v3/batch_update/plugins/duplicate_links.php:28
@@ -11780,7 +11780,7 @@ msgid "Search for"
 msgstr "Buscar"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:57
-msgid "Search for individuals to add to Add Links list."
+msgid "Search for individuals to add to add Links list."
 msgstr "Buscar personas para agregar a la lista de Agregar Vínculos."
 
 #: modules_v3/googlemap/module.php:3831
@@ -12054,7 +12054,7 @@ msgid "Set this to <b>Yes</b> to display icons near Fact names on the Personal F
 msgstr "Fije esto a <b>Sí</b> para mostrar iconos junto a los nombres de los hechos en la página Detalles Personales.  Los iconos de hechos se mostrará sólo si existen en el directorio <i>images/facts</i> del tema actual."
 
 #: help_text.php:1012
-msgid "Set to <b>Yes</b> to use the RIN number instead of the GEDCOM ID when asked for Individual IDs in configuration files, user settings, and charts.  This is useful for genealogy programs that do not consistently export GEDCOMs with the same ID assigned to each individual but always use the same RIN."
+msgid "Set to <b>Yes</b> to use the RIN number instead of the GEDCOM ID when asked for individual IDs in configuration files, user settings, and charts.  This is useful for genealogy programs that do not consistently export GEDCOMs with the same ID assigned to each individual but always use the same RIN."
 msgstr "Fíjelo a <b>Sí</b> para utilizar el número RIN en vez del ID del GEDCOM se necesite un ID para la persona en archivos de configuración, preferencias de usuario y diagramas.  Esto es útil para usar datos de programas de genealogía que no exportan GEDCOMs con IDs de personas fijo, pero siempre utilizan el mismo RIN."
 
 #: help_text.php:859
@@ -13773,7 +13773,7 @@ msgid "This family tree was last updated on %s."
 msgstr "Este árbol genealógico fué actualizado por última vez el %s."
 
 #: help_text.php:363
-msgid "This field allows you to change the source record that this fact’s source citation links to.  This field takes a Source ID.  Beside the field will be listed the title of the current source ID.  Use the <b>Find ID</b> link to look up the source’s ID number.  To remove the entire citation, make this field blank."
+msgid "This field allows you to change the source record that this fact’s source citation links to.  This field takes a source ID.  Beside the field will be listed the title of the current source ID.  Use the <b>Find ID</b> link to look up the source’s ID number.  To remove the entire citation, make this field blank."
 msgstr "Este campo le permite hacer que esta cita esté vinculada con un registro de fuente diferente.  Este campo requiere un ID de fuente  Junto a este campo se mostrará en título correspondiente al ID de fuente actual.  Utilice el vínculo <b>Buscar ID</b> para buscar el número ID de la fuente..  Para eliminar completamente la cita, deje este campo en blanco."
 
 #: modules_v3/faq/help_text.php:40
@@ -13844,7 +13844,7 @@ msgid "This input box lets you enter an individual’s ID number so he can be ad
 msgstr "Este campo le permite introducir el número ID de una persona para agregarla al Carrito Genealógico.  Una vez agregado, se le ofrecerán opciones para incluir los parientes de esa persona al carrito.<br><br>Si no conoce el número ID de una persona, puede buscarla por su nombre haciendo clic en el icono de Persona que se encuentra junto al botón Agregar."
 
 #: help_text.php:407
-msgid "This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets."
+msgid "This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets."
 msgstr "Es una lista separada por comas de etiquetas de hechos GEDCOM que se mostrarán en el formulario de agregar/modificar nombre.  Si utiliza alfabetos no latinos como el hebreo, griego, cirílico o árabe, puede desea agregar etiquetas como _HEB, ROMN, FONE, etc. para permitirle almacenar nombres en diferentes alfabetos."
 
 #: help_text.php:794
@@ -13856,7 +13856,7 @@ msgid "This is a comma separated list of GEDCOM fact tags that will be shown whe
 msgstr "Es una lista de etiquetas de hechos GEDCOM separadas por comas que siempre se mostrarán en agregar una nueva persona.  Por ejemplo, si BIRT aparece en la lista, los campos para fecha y lugar de nacimiento se mostrarán siempre en el formulario.Hec"
 
 #: help_text.php:412
-msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
+msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
 msgstr "Es una lista separada por comas de etiquetas de hechos GEDCOM que se mostrarán cuando agregue o modifique nombres de lugares.  Si usa alfabetos no latinos como hebreo, griego, cirílico o árabe, puede desear agregar etiquetas como _HEB, ROMN, FONE, etc. para permitirle introducir los nombres de lugares en varios alfabetos diferentes."
 
 #: help_text.php:1202
@@ -14121,11 +14121,11 @@ msgid "This option will let you edit an item on the FAQ page."
 msgstr "Esta opción le permite modificar una entrada de la página de Preguntas Frecuentes."
 
 #: modules_v3/faq/help_text.php:60
-msgid "This option will let you move an item downwards on the FAQ page.<br><br>Each time you use this option, the FAQ Position number of this item is increased by one.  You can achieve the same effect by editing the item in question and changing the FAQ Position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
+msgid "This option will let you move an item downwards on the FAQ page.<br><br>Each time you use this option, the FAQ position number of this item is increased by one.  You can achieve the same effect by editing the item in question and changing the FAQ position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
 msgstr "Esta opción le permite mover hacia abajo una entrada en la página de Preguntas Frecuentes.<br><br>Cada vez que usa esta opción, el número de posición de esta entrada se incrementa en una unidad.  Puede obtener el mismo efecto modificando el elemento y cambiando su campo Posición de la Pregunta Frecuente.  Si más de una entrada tiene el mismo número de posición, sólo uno de ellos será visible."
 
 #: modules_v3/faq/help_text.php:65
-msgid "This option will let you move an item upwards on the FAQ page.<br><br>Each time you use this option, the FAQ Position number of this item is reduced by one.  You can achieve the same effect by editing the item in question and changing the FAQ Position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
+msgid "This option will let you move an item upwards on the FAQ page.<br><br>Each time you use this option, the FAQ position number of this item is reduced by one.  You can achieve the same effect by editing the item in question and changing the FAQ position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
 msgstr "Esta opción le permite mover hacia arriba una entrada en la página de Preguntas Frecuentes.<br><br>Cada vez que usa esta opción, el número de posición de esta entrada se reduce en una unidad.  Puede obtener el mismo efecto modificando el elemento y cambiando su campo Posición de la Pregunta Frecuente.  Si más de una entrada tiene el mismo número de posición, sólo uno de ellos será visible."
 
 #: help_text.php:1099
@@ -14197,7 +14197,7 @@ msgid "This role has all the permissions of the editor role, plus permission to 
 msgstr "El moderador tiene todos los permisos de un editor, además de permiso para aprobar / rechazar los cambios realizados por otros usuarios."
 
 #: help_text.php:1398
-msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the site, users and modules."
+msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the site, users, and modules."
 msgstr "El administrador del sitio tiene todos los permisos del administrador en todos los árboles genealógicos, además de permisos para cambiar las configuraciones del sitio, los usuarios y los módulos."
 
 #: help_text.php:1386
@@ -14213,7 +14213,7 @@ msgid "This role has all the permissions of the visitor role, plus any additiona
 msgstr "Un miembro tiene todos los permisos de una visitante, además de cualquier permisos adicionales dado por la configuración del árbol genealógico."
 
 #: help_text.php:1144
-msgid "This section allows you to add a new Note to the fact that you are currently editing.  Notes are free-form text and will appear in the Fact Details section of the page."
+msgid "This section allows you to add a new note to the fact that you are currently editing.  Notes are free-form text and will appear in the Fact Details section of the page."
 msgstr "Esta sección le permite agregar una nueva nota al hecho que está modificando ahora.  Las notas son textos de formato libre y aparecerán entre los detalles del hecho en la página."
 
 #: help_text.php:1157
@@ -14283,7 +14283,7 @@ msgid "This usually means that you need to change the folder permissions to 777.
 msgstr "Generalmente significa que debe cambiar los permisos de la carpeta a 777."
 
 #: help_text.php:1223
-msgid "This value determines the number of descendant generations of the root individual that will be printed in Hourglass format."
+msgid "This value determines the number of descendant generations of the root individual that will be printed in hourglass format."
 msgstr "Este valor determina el número de generaciones de descendientes que se muestran en el formato de Reloj de Arena."
 
 #: site-offline.php:71 site-unavailable.php:63
@@ -15013,7 +15013,7 @@ msgid "Use these buttons to re-arrange the order of the entries within the list.
 msgstr "Utilice estos botones para reordenar las entradas en la lista.  Los bloques se mostrarán en el orden en que se listan aquí.<br><br>Resalte la entrada que desea mover y haga clic en un botón para mover la entrada hacia arriba o hacia abajo."
 
 #: help_text.php:398
-msgid "Use this field to signal that this media item is the highlighted or primary item for the individual it is attached to.  The highlighted image is the one that will be used on charts and on the Individual page."
+msgid "Use this field to signal that this media item is the highlighted or primary item for the individual it is attached to.  The highlighted image is the one that will be used on charts and on the individual’s page."
 msgstr "Utilice este campo para indicar que este objeto audiovisual es el resaltado o primario para la persona a la que está adjunto.  La imagen resaltada es la que se utilizará en los diagramas y en la página de la persona."
 
 #: help_text.php:1358
@@ -15833,7 +15833,7 @@ msgid "Youngest mother"
 msgstr "Madre más joven"
 
 #: includes/authentication.php:120 message.php:127
-msgid "Your Name:"
+msgid "Your name:"
 msgstr "Tu nombre:"
 
 #: modules_v3/clippings/module.php:172 modules_v3/clippings/module.php:430
