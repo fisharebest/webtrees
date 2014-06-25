@@ -659,15 +659,15 @@ msgstr "<b>webtrees</b> atsakymo adresas"
 
 #: login.php:150
 msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved."
-msgstr "<center><b>Sveiki atvykę į šį Genealogijos tinklapį</b></center><br>Priėjimas prie šio tinklapio yra galimas tik <u>patvirtintiems</u> naudotojams.<br><br>Jei turite naudotojo paskyrą, tuomet galite jungtis prie šio tinklapio. Jei ne, galite užsakyti naudotojo paskyrą nuspaudę atitinkamą nuorodą žemiau.<br><br>Patikrinęs Jūsų duomenis puslapio administratorius patvirtins naują naudotoją arba atmes šį prašymą. Jūs sulauksite elektroninio laiško, kuomet Jūsų paraiška bus patvirtinta."
+msgstr "<center><b>Sveiki atvykę į šį genealogijos tinklapį</b></center><br>Priėjimas prie šio tinklapio yra galimas tik <u>patvirtintiems</u> naudotojams.<br><br>Jei turite naudotojo paskyrą, tuomet galite jungtis prie šio tinklapio. Jei ne, galite užsakyti naudotojo paskyrą nuspaudę atitinkamą nuorodą žemiau.<br><br>Patikrinęs Jūsų duomenis puslapio administratorius patvirtins naują naudotoją arba atmes šį prašymą. Jūs sulauksite elektroninio laiško, kuomet Jūsų paraiška bus patvirtinta."
 
 #: login.php:153
 msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved."
-msgstr "<center><b>Sveiki atvykę į šį Genealogijos tinklapį</b></center><br>Priėjimas prie šio tinklapio yra galimas tik <u>šeimos nariams</u>.<br><br>Jei turite paskyrą, galite prisijungti prie šio tinklapio. Jei ne, tuomet galite užsakyti naudotojo paskyrą nuspaudę atitinkamą nuorodą žemiau.<br><br>Patikrinęs Jūsų duomenis puslapio administratorius patvirtins naują naudotoją arba atmes šį prašymą. Jūs sulauksite elektroninio laiško, kuomet Jūsų paraiška bus patvirtinta."
+msgstr "<center><b>Sveiki atvykę į šį genealogijos tinklapį</b></center><br>Priėjimas prie šio tinklapio yra galimas tik <u>šeimos nariams</u>.<br><br>Jei turite paskyrą, galite prisijungti prie šio tinklapio. Jei ne, tuomet galite užsakyti naudotojo paskyrą nuspaudę atitinkamą nuorodą žemiau.<br><br>Patikrinęs Jūsų duomenis puslapio administratorius patvirtins naują naudotoją arba atmes šį prašymą. Jūs sulauksite elektroninio laiško, kuomet Jūsų paraiška bus patvirtinta."
 
 #: login.php:147
 msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved."
-msgstr "<center><b>Sveiki atvykę į šį Genealogijos tinklapį</b></center><br>Priėjimas prie šio tinklapio yra galimas visiems, kas turi naudotojo paskyrą.<br><br>Jei turite naudotojo paskyrą, tuomet galite jungtis prie šio tinklapio. Jei neturite, galite užsakyti naudotojo paskyrą nuspaudę atitinkamą nuorodą žemiau.<br><br>Patikrinęs Jūsų pateiktus duomenis puslapio administratorius aktyvuos Jūsų paskyrą. Jūs sulauksite elektroninio laiško, kuomet Jūsų paraiška bus patvirtinta."
+msgstr "<center><b>Sveiki atvykę į šį genealogijos tinklapį</b></center><br>Priėjimas prie šio tinklapio yra galimas visiems, kas turi naudotojo paskyrą.<br><br>Jei turite naudotojo paskyrą, tuomet galite jungtis prie šio tinklapio. Jei neturite, galite užsakyti naudotojo paskyrą nuspaudę atitinkamą nuorodą žemiau.<br><br>Patikrinęs Jūsų pateiktus duomenis puslapio administratorius aktyvuos Jūsų paskyrą. Jūs sulauksite elektroninio laiško, kuomet Jūsų paraiška bus patvirtinta."
 
 #. I18N: default option in list of themes
 #: admin_trees_config.php:461 admin_users.php:204 admin_users.php:410
@@ -740,7 +740,7 @@ msgstr "Sąrašas užduočių ir veiklų, kurios yra susietos su šeimos medžiu
 msgid "A list of the Hebrew death anniversaries that will occur in the near future."
 msgstr "Sąrašas Hebrajiškų mirties sukakčių kurios įvyks artimiausioje ateityje."
 
-#. I18N: Description of the “On this day” module
+#. I18N: Description of the “On This Day” module
 #: modules_v3/todays_events/module.php:37
 msgid "A list of the anniversaries that occur today."
 msgstr "Šios dienos sukaktys."
@@ -1155,7 +1155,7 @@ msgstr "Pridėti naują geografinę vietovę"
 #: modules_v3/clippings/module.php:472
 #, php-format
 msgid "Add %s to the clippings cart"
-msgstr "Pridėti %s į krepšelį"
+msgstr "Pridėti %s į iškarpų krepšelį"
 
 #: modules_v3/faq/module.php:145 modules_v3/faq/module.php:359
 msgid "Add an FAQ item"
@@ -1445,7 +1445,7 @@ msgstr "Pridėti Jūsų turimą tekstą ir grafikus."
 
 #: modules_v3/GEDFact_assistant/_CENS/census_1_ctrl.php:91
 msgid "Add/insert a blank row"
-msgstr "Pridėti / Įterpti tuščią eilutę"
+msgstr "Pridėti/įterpti tuščią eilutę"
 
 #: editnews.php:31 editnews.php:49
 msgid "Add/edit a journal/news entry"
@@ -2111,7 +2111,7 @@ msgstr "Ar jus tikrai norite ištrinti nuorodas į šį medijos elementą?"
 
 #: modules_v3/gedcom_favorites/module.php:123
 msgid "Are you sure you want to remove this item from your list of favorites?"
-msgstr "Ar tikrai norite pašalinti šį elementą iš sąrašo Mėgstamiausi?"
+msgstr "Ar tikrai norite pašalinti šį elementą iš mėgstamiausių sąrašo?"
 
 #: edit_changes.php:231
 msgid "Are you sure you want to undo all the changes to this family tree?"
@@ -3731,7 +3731,7 @@ msgstr "Spauskite čia kad patekti PhpGedView vertimo į <b>webtrees</b> vedlį"
 
 #: modules_v3/faq/module.php:282
 msgid "Click here to add, edit, or delete"
-msgstr "Spauskite čia kad Įtraukti, Redaguoti ar Ištrinti"
+msgstr "Spauskite čia įtraukti, redaguoti ar ištrinti"
 
 #: individual.php:267
 msgid "Click here to open or close the sidebar"
@@ -4060,7 +4060,7 @@ msgstr "Sukurti naują šaltinį"
 #: edit_interface.php:1493 edit_interface.php:1558
 #: includes/functions/functions_edit.php:320
 msgid "Create a new repository"
-msgstr "Sukurti saugyklą"
+msgstr "Sukurti naują saugyklą"
 
 #: admin_users.php:480
 msgid "Create user"
@@ -4931,7 +4931,7 @@ msgstr "Ištrinti neaktyvius naudotojus"
 
 #: library/WT/Controller/Individual.php:151
 msgid "Delete this name"
-msgstr "Ištrinti vardą"
+msgstr "Ištrinti šį vardą"
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:471
@@ -5536,7 +5536,7 @@ msgstr "Darbdavys"
 #: modules_v3/clippings/help_text.php:36 modules_v3/clippings/module.php:254
 #: modules_v3/clippings/module.php:463
 msgid "Empty the clippings cart"
-msgstr "Tuščias krepšys"
+msgstr "Išvalyti iškarpų krepšį"
 
 #: admin_modules.php:121
 msgid "Enabled"
@@ -6329,7 +6329,7 @@ msgstr "Rasti media objektą"
 
 #: find.php:86 includes/functions/functions_print.php:1041
 msgid "Find a shared note"
-msgstr "Rasti pastabą"
+msgstr "Rasti bendrą pastabą"
 
 #: find.php:80 includes/functions/functions_print.php:1015
 msgid "Find a place"
@@ -8102,7 +8102,7 @@ msgstr "Palikite slaptažodžio langelį tuščią, jei norite palikti esamą sl
 
 #: admin_trees_config.php:438
 msgid "Leave this field empty to use the name of the family tree."
-msgstr "Norėdami naudoti šiuo metu veikiančios duomenų bazės pavadinimą, palikite šį lauką tuščią."
+msgstr "Norėdami naudoti šiuo metu veikiančios šeimos medžio pavadinimą, palikite šį lauką tuščią."
 
 #: includes/functions/functions_print_lists.php:95
 #: includes/functions/functions_print_lists.php:496
@@ -13349,7 +13349,7 @@ msgstr "Pakeitimai nuo „%s“ buvo atmesti."
 
 #: modules_v3/clippings/module.php:142
 msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the “Download” link.  Follow the instructions and links.</li></ul>"
-msgstr "Iškarpų krepšelis Jums leidžia paimti ištraukas („iškarpas“) iš šio šeimos medžio ir sudėti jas į vieną failą atsisiuntimui bei vėliau importuoti į savo nuosavą genealogijos programą.  Atsisiunčiamasis failas yra įrašytas GEDCOM formatu.<br><ul><li>Kaip iškirpinėti?<br>Tai tikrai yra paprasta. Kuomet tik pamatote paspaudžiamą vardą (asmenį, šeimą, ar šaltinį), Jūs galite nueiti į šio vardo Duomenų puslapį. Ten Jūs pamatysite <b>Pridėti į iškarpų krepšelį</b> parinktį.  Kuomet tik Jūs spragtelėsite šią nuorodą, Jums bus pasiūlytos kelios parinktys atsisiuntimui.</li><li>Kaip atsisiųsti?<br>Kai turėsite elementus savo krepšelyje, Jūs galėsite atsisiųsti juos paprasčiausiai paspausdami <b>Atsisiųsti dabar</b> nuorodą.  Sekite instrukcijas ir nuorodas.</li></ul>"
+msgstr "Iškarpų krepšelis Jums leidžia paimti ištraukas („iškarpas“) iš šio šeimos medžio ir sudėti jas į vieną failą atsisiuntimui bei vėliau importuoti į savo nuosavą genealogijos programą.  Atsisiunčiamasis failas yra įrašytas GEDCOM formatu.<br><ul><li>Kaip iškirpinėti?<br>Tai tikrai yra paprasta. Kuomet tik pamatote paspaudžiamą vardą (asmenį, šeimą, ar šaltinį), Jūs galite nueiti į šio vardo Duomenų puslapį. Ten Jūs pamatysite <b>Pridėti į iškarpų krepšelį</b> parinktį.  Kuomet tik Jūs spragtelėsite šią nuorodą, Jums bus pasiūlytos kelios parinktys atsisiuntimui.</li><li>Kaip atsisiųsti?<br>Kai turėsite elementus savo krepšelyje, Jūs galėsite atsisiųsti juos paprasčiausiai paspausdami „Atsisiųsti“ nuorodą.  Sekite instrukcijas ir nuorodas.</li></ul>"
 
 #: help_text.php:1314
 msgid "The current <b>webtrees</b> admin username must be the same as an existing PGV admin username"
@@ -14994,7 +14994,7 @@ msgstr "Naudoti SMTP žinučių siuntimui"
 
 #: modules_v3/batch_update/plugins/search_replace.php:92
 msgid "Use a “?” to match a single character, use “*” to match zero or more characters."
-msgstr "Naudokite “?” vienam rašmens atitikimui, naudokite &laquo;*&raquo; nei vienam ar daugiau rašmenų atitikimui."
+msgstr "Naudokite „?“ vienam rašmens atitikimui, naudokite „*“ nei vienam ar daugiau rašmenų atitikimui."
 
 #. I18N: placeholder text for new-password field
 #: admin_users.php:385 login.php:423
@@ -15724,7 +15724,7 @@ msgstr "Jūs pasirinkote GEDCOM skirtingu vardu. Ar taip palikti?"
 
 #: addmedia.php:462
 msgid "You may enter a URL, beginning with “http://”."
-msgstr "Jūs galite suvesti internetinį adresą, prasidedantį “http://”."
+msgstr "Jūs galite suvesti internetinį adresą, prasidedantį „http://“."
 
 #: modules_v3/faq/help_text.php:35
 msgid "You may use HTML to format the answer and to add links to other websites."
@@ -15814,7 +15814,7 @@ msgstr "Jūs turite priimpti ar atmesti visus laukiančius pakeitimus prieš ide
 
 #: help_text.php:1151
 msgid "You should avoid using the vertical line character “|” in your notes.  It is used internally by webtrees and may cause your note to display incorrectly."
-msgstr "Turėtumėte vengti naudoti vertikalios linijos simbolį &ldquo;|&rdquo; savo pastabose. Jis yra naudojamas webtrees viduje ir del to jūsų pastabos gali rodytis neteisingai."
+msgstr "Turėtumėte vengti naudoti vertikalios linijos simbolį „|“ savo pastabose. Jis yra naudojamas webtrees viduje ir del to jūsų pastabos gali rodytis neteisingai."
 
 #: admin_site_upgrade.php:200
 msgid "You should consult the module’s author to confirm compatibility with this version of webtrees."
@@ -17399,9 +17399,9 @@ msgid "great ×7 uncle"
 msgstr "pro ×7 dėdė"
 
 #: includes/functions/functions.php:1260
-msgctxt "great ×6 grandmother’s brother"
-msgid "great ×7 uncle"
-msgstr "pro ×7 dėdė"
+msgctxt "great x6 grandmother’s brother"
+msgid "great x7 uncle"
+msgstr "pro x7 dėdė"
 
 #: includes/functions/functions.php:1261
 msgctxt "great ×6 grandparent’s brother"
@@ -19870,7 +19870,7 @@ msgstr "…"
 #~ msgid "%s"
 #~ msgstr "%s"
 
-#~ msgid "<center><b>Welcome to this genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website."
+#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website."
 #~ msgstr "<center><b>Sveiki atvykę į šį Genealogijos tinklapį</b></center><br>Priėjimas prie šio tinklapio yra galimas visiems, kas turi naudotojo paskyrą ir slaptažodį."
 
 #~ msgid "Abbreviate chart labels"
