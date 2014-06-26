@@ -5569,7 +5569,7 @@ msgid "Enter the FAX number including the country and area code.<br><br>Leave th
 msgstr "Nhập số FAX gồm cả mã nước và mã vùng.<br><br>Để trường này trống nếu bạn không muốn đưa số FAX vào. Thí dụ, một số fax ở Đức có thể là +49 25859 56 76 89 và một số của Mỹ và Candada có thể là +1 888 555-1212."
 
 #: help_text.php:388
-msgid "Enter the URL address including the http://.<br><br>An example URL looks like this: <b>http://www.webtrees.net/</b> Leave this field blank if you do not want to include a URL."
+msgid "Enter the URL address including the http://.<br><br>An example URL looks like this: <b>http://www.webtrees.net/</b>.  Leave this field blank if you do not want to include a URL."
 msgstr "Nhập địa chỉ URL gồm cả http://.<br><br>Thí dụ về URL như sau: <b>http://www.webtrees.net/</b> Để trống trường này nếu bạn không muốn đưa URL vào."
 
 #: help_text.php:50
@@ -6409,7 +6409,7 @@ msgid "For help with genealogy questions contact"
 msgstr "Để được hỗ trợ các câu hỏi về gia phả, xin liên lạc với"
 
 #: help_text.php:1494
-msgid "For optimal display on the Internet, <b>webtrees</b> uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ANSI (ISO-8859-1)</b>.<br><br>The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren’t sure, consult the documentation of that program.<br><br>Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program’s method for handling these special characters by some other means.  Consult your program’s manufacturer or author.<br><br>This <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8."
+msgid "For optimal display on the internet, <b>webtrees</b> uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ANSI (ISO-8859-1)</b>.<br><br>The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren’t sure, consult the documentation of that program.<br><br>Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program’s method for handling these special characters by some other means.  Consult your program’s manufacturer or author.<br><br>This <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8."
 msgstr "Để hiển thị tối ưu trên internet, <b>webtrees</b> sử dụng bộ ký tự UTF-8. Vài chương trình, như Family Tree Maker chẳng hạn, không hỗ trợ nhập file GEDCOM dùng bộ mã UTF-8.  Đánh dấu kiểm vào hộp này sẽ chuyển đổi file từ <b>UTF-8</b> sang <b>ANSI (ISO-8859-1)</b>.<br><br>Bộ mã bạn cần tùy vào chương trình bạn sử dụng chạy được với file GEDCOM bại tải về. Nếu bạn không biết chắc, tham khảo tài liệu của chương trình đó,<br><br>Lưu ý là để các ký tự đặc biệt vẫn không đổi, bạn cần giữ file ở bộ mã UTF-8 và chuyển chúng theo phương pháp của chương trình xử lý các ký tự đặc biệt này bằng các phương pháp khác. Tham khảo tác giả hay công ty soạn chương trình.<br><br>Bài <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b>Wikipedia</b></a> đề cập các thông tin tổng quát và liên kết về UTF-8."
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
@@ -6740,7 +6740,7 @@ msgid "Gives users the option of selecting their own theme."
 msgstr "Cho người dùng tùy chọn chọn kiểu trình bày riêng."
 
 #: help_text.php:1002
-msgid "Gives visitors the option of registering themselves for an account on the site.<br><br>The visitor will receive an email message with a code to verify his application for an account.  After verification, the Administrator will have to approve the registration before it becomes active."
+msgid "Gives visitors the option of registering themselves for an account on the site.<br><br>The visitor will receive an email message with a code to verify his application for an account.  After verification, an administrator will have to approve the registration before it becomes active."
 msgstr "Cho khách thăm tùy chọn đăng ký tài khoản tại site.<br><br>Khách sẽ nhận được một email cùng mã để xác minh việc xin cấp tài khoản. Sau khi thẩm tra, quản trị viên có thể chấp thuận đăng ký trước khi tài khoản được kích hoạt."
 
 #. I18N: gedcom tag _UID
@@ -7046,7 +7046,7 @@ msgid "Here you can choose between two types of displaying places names in hiera
 msgstr "Tại đây bạn có thể chọn giữa hai loại trình bày tên địa điểm trong thứ cấp. Nếu thiết đặt là Có, tên địa điểm sẽ ngắn hay mức tên thật. Nếu ghi Không, thì tên đầy đù<br><b> Ví dụ:.<br>Tên đầy đủ:</b> Chicago, Illinois, USA<br><b>Tên viết tắt:</b> Chicago<br><b> Tên đầy đủ:</b> Illinois, USA<br><b> Tên vắn tắt:</b> Illinois"
 
 #: help_text.php:1045
-msgid "Here you can choose text to appear on the login screen. You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the Help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.</div><br></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
+msgid "Here you can choose text to appear on the login screen. You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.</div><br></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
 msgstr "Ở đây bạn có thể chọn văn bản xuất hiện trên màn hình đăng nhập. Bạn phải quyết định văn bản định trước nào thích hợp nhất.<br><br>Bạn cũng có thể chọn văn bản chào mừng riêng. Xin vui lòng tham khảo văn bản trợ giúp liên quan đến  <b> Văn bản chào mừng riêng</b> để biết thêm thông tin<br><br>Các văn bản được xác định trước là:<ul><li><b>Văn bản xác định trước báo rằng mọi người dùng có quyền yêu cầu xin tài khoản người dùng:</b><div class=\"list_value_wrap\"><center><b>Chào mừng bạn đến với trang web gia phả này</b></center><br>Việc truy cập vào trang web này chỉ cho phép người dùng nào có tài khoản người dùng<br><br>Nếu bạn đã có một tài khoản người dùng, bạn có thể đăng nhập. Nếu bạn không có một tài khoản người dùng, bạn có thể xin một tài khoản bằng cách nhấp vào liên kết thích hợp dưới đây.<br><br>Sau khi xác minh việc xin mở tài khoản của bạn, quản trị viên trang web sẽ kích hoạt tài khoản của bạn. Bạn sẽ nhận được một email khi việc xin mở tài khoản của bạn đã được chấp thuận</div><br></li><li><b>Văn bản xác định trước báo rằng quản trị viên sẽ quyết định tùy từng trường hợp xin mở tài khoản người dùng.</b> < div class = \"list_value_wrap\"> <center> <b> Chào mừng bạn đến trang web gia phả này</b></center><br>Việc truy cập vào trang web này chỉ cho phép người dùng <u>được cho phép</u> mà thôi.<br><br>Nếu bạn đã có tài khoản tài khoản người dùng, bạn có thể bạn đăng nhập vào trang này. Nếu bạn không có một tài khoản người dùng, bạn có thể xin mở một tài khoản bằng cách nhấp vào liên kết thích hợp dưới đây<br><br>Sau khi xác minh thông tin của bạn,  người quản trị sẽ chấp thuận hoặc từ chối việc xin mở tài khoản người dùng của bạn. Bạn sẽ nhận được một tin nhắn email khi việc xin được chấp thuận</div><br></li><li></b>Văn bản xác định trước nói rằng chỉ thành viên gia đình có thể yêu cầu một tài khoản người dùng:</b> <div class = \"list_value_wrap\"> <center> <b> Chào mừng bạn đến trang web gia phả này</b></br><br><center>. Việc truy cập vào trang web này chỉ được phép <u> cho thành viên gia đình</u>.<br><br>Nếu bạn đã một tài khoản người dùng, bạn có thể đăng nhập vào site. Nếu bạn không có một tài khoản người dùng, bạn có thể xin một bằng cách nhấp vào liên kết thích hợp dưới đây.<br><br>Sau khi xác minh thông tin bạn cung cấp,  nhà quản trị site sẽ chấp thuận hoặc từ chối yêu cầu của bạn. Bạn sẽ nhận được một email khi yêu cầu được chấp thuận.</div></li></ul>"
 
 #: modules_v3/googlemap/help_text.php:54
@@ -7338,7 +7338,7 @@ msgid "If you leave this setting empty, the default value will be used."
 msgstr "Nếu bạn để mục này trống, thì gía trị mặc định được dùng."
 
 #: help_text.php:585
-msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php and .htaccess) from the existing folder to the new folder."
+msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
 msgstr "Nếu bạn chọn một thư mục khác, bạn cũng phải di chuyển tất cả các tập tin (trừ config.ini.php, index.php và .htaccess) ra khỏi thư mục hiện tại sang thư mục mới."
 
 #: help_text.php:659
@@ -7832,7 +7832,7 @@ msgid "Keep"
 msgstr "Giữ"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:124
-msgid "Keep Link in list"
+msgid "Keep link in list"
 msgstr "Giữ liên kết trong danh sách"
 
 #: library/WT/Stats.php:3924
@@ -8797,7 +8797,7 @@ msgid "Media ID prefix"
 msgstr "Tiếp đầu ngữ ID file nghe nhìn"
 
 #: medialist.php:173
-msgid "Media Objects found"
+msgid "Media objects found"
 msgstr "Tìm thấy tin đa phương tiện"
 
 #: find.php:214
@@ -9203,7 +9203,7 @@ msgid "Morocco"
 msgstr "Fas"
 
 #: modules_v3/gedcom_stats/module.php:192 modules_v3/html/module.php:258
-msgid "Most Common Surnames"
+msgid "Most common surnames"
 msgstr "Tên họ thông thường nhất"
 
 #. I18N: Help text for the “Use password” site configuration setting
@@ -9831,7 +9831,7 @@ msgid "Norway"
 msgstr "Na Uy"
 
 #: modules_v3/GEDFact_assistant/module.php:196
-msgid "Not a valid Individual, Family or Source ID"
+msgid "Not a valid individual, family, or source ID"
 msgstr "Cá nhân, gia đình hay ID không hợp lệ"
 
 #. I18N: gedcom tag _NLIV
@@ -10197,7 +10197,7 @@ msgid "Other"
 msgstr "Khác"
 
 #: search.php:217
-msgid "Other Searches"
+msgid "Other searches"
 msgstr "Các tìm kiếm khác"
 
 #: admin_trees_config.php:1000 help_text.php:455
@@ -10554,11 +10554,11 @@ msgstr "Nơi"
 #: modules_v3/googlemap/module.php:167 modules_v3/googlemap/module.php:287
 #: modules_v3/googlemap/module.php:832 modules_v3/googlemap/module.php:1492
 #: modules_v3/googlemap/module.php:2521 modules_v3/googlemap/module.php:3979
-msgid "Place Check"
+msgid "Place check"
 msgstr "Kiểm tra địa điểm"
 
 #: placelist.php:43 placelist.php:62
-msgid "Place List"
+msgid "Place list"
 msgstr "Danh sách các địa điểm"
 
 #: find.php:232
@@ -10739,7 +10739,7 @@ msgid "Please click on the following link and fill in the requested data to conf
 msgstr "Vui lòng nhấp vào liên kết sau đây và điền vào số liệu yêu cầu để xác nhận yêu cầu của bạn và địa chỉ email của bạn."
 
 #: search.php:63
-msgid "Please enter a Given name, Last name, or Place in addition to Year"
+msgid "Please enter a given name, surname, or place in addition to the year"
 msgstr "Ngoài Năm, nhập vào Tên, Họ, hoặc Nơi"
 
 #: message.php:102
@@ -10966,7 +10966,7 @@ msgid "Property"
 msgstr "Tài sản"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_4_text.php:36
-msgid "Proposed Census Text&nbsp;&nbsp;"
+msgid "Proposed census text&nbsp;&nbsp;"
 msgstr "Văn bản Thống kê đề nghị&nbsp;&nbsp;"
 
 #: library/WT/Gedcom/Code/Temp.php:150
@@ -11353,7 +11353,7 @@ msgid "Remove"
 msgstr "Xóa bỏ"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:125
-msgid "Remove Link from list"
+msgid "Remove link from list"
 msgstr "Bỏ liên kết khỏi danh sách"
 
 #: modules_v3/batch_update/plugins/duplicate_links.php:28
@@ -11753,7 +11753,7 @@ msgid "Search for"
 msgstr "Tìm"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:57
-msgid "Search for individuals to add to Add Links list."
+msgid "Search for individuals to add to add Links list."
 msgstr "Tìm người để đưa vào danh sách Thêm Liên kết."
 
 #: modules_v3/googlemap/module.php:3831
@@ -12027,7 +12027,7 @@ msgid "Set this to <b>Yes</b> to display icons near Fact names on the Personal F
 msgstr "Đặt mục này ở <b>Có</b> sẽ hiện iểu tượng gần tên Sự kiện ở Trang chi tiết và Sự kiện cá nhân. Biểu tượng sự kiện sẽ hiện chỉ khi chúng tồn tại ở thư mục <i>hình/ sự kiện</i> của cách trình bày trang hiện tại."
 
 #: help_text.php:1012
-msgid "Set to <b>Yes</b> to use the RIN number instead of the GEDCOM ID when asked for Individual IDs in configuration files, user settings, and charts.  This is useful for genealogy programs that do not consistently export GEDCOMs with the same ID assigned to each individual but always use the same RIN."
+msgid "Set to <b>Yes</b> to use the RIN number instead of the GEDCOM ID when asked for individual IDs in configuration files, user settings, and charts.  This is useful for genealogy programs that do not consistently export GEDCOMs with the same ID assigned to each individual but always use the same RIN."
 msgstr "Đặt ở <b>Có</b> để dùng số RIN thay vì ID GEGCOM khi hỏi về ID cá nhân trong file cấu hình, thiêt đặt cho người dùng và biểu đồ. Điều này hữu ích cho chương trình gia phả không xuất file GEDCOM thống nhất với cùng ID gán cho từng người nhưng lại luôn dùng cùng số RIN."
 
 #: help_text.php:859
@@ -13746,7 +13746,7 @@ msgid "This family tree was last updated on %s."
 msgstr "Cây gia đình này cập nhật lần cuối %s."
 
 #: help_text.php:363
-msgid "This field allows you to change the source record that this fact’s source citation links to.  This field takes a Source ID.  Beside the field will be listed the title of the current source ID.  Use the <b>Find ID</b> link to look up the source’s ID number.  To remove the entire citation, make this field blank."
+msgid "This field allows you to change the source record that this fact’s source citation links to.  This field takes a source ID.  Beside the field will be listed the title of the current source ID.  Use the <b>Find ID</b> link to look up the source’s ID number.  To remove the entire citation, make this field blank."
 msgstr "Trường này cho phép bạn thay đổi bản ghi nguồn là sự kiện mà trích dẫn nguồn sự kiện này liên kết đến. Đây là trường cân ID nguồn. Ngoài ra trường còn được liệt kê  tiêu để của ID nguồn hiện tại. Dùng liên kết  <b>Tìm ID</b> để tìm số ID của nguồn. Để loại bỏ hoàn toàn trích dẫn này, để trường trắng."
 
 #: modules_v3/faq/help_text.php:40
@@ -13817,7 +13817,7 @@ msgid "This input box lets you enter an individual’s ID number so he can be ad
 msgstr "Hộp nhập này cho phép bạn thêm số ID cá nhân vào để có thể đưa người đó vào giỏ chứa bản trích. Khi đã thêm vào bạn sẽ có các tùy chọn để liên kết mối quan hệ của người đó với giỏ chứa các đoạn trích.<br><br>Nếu bạn không biết số ID của người đó, bạn có thể tìm theo tên bằng cách nhấp vào nút Cá nhân kế bên nút Thêm."
 
 #: help_text.php:407
-msgid "This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets."
+msgid "This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets."
 msgstr "Đây là danh sách các thẻ sự kiện GEDCOM phân cách bằng dấu phẩy sẽ hiện ở mẫu sửa/thêm tên. Nếu bạn sử dụng bảng chữ cái phi Latin như tiếng Do Thái, Hy Lạp, tiếng Nga hay tiếng Ả Rập, bạn có thể muốn thêm thẻ như _HEB, ROMN, FONE, v.v để cho phép bạn lưu trữ tên trong bảng chữ cái khác nhau."
 
 #: help_text.php:794
@@ -13829,7 +13829,7 @@ msgid "This is a comma separated list of GEDCOM fact tags that will be shown whe
 msgstr "Dấu phẩy phân cách danh sách thẻ sự kiện GEDCOM để hiện khi thêm một người mới. Thí dụ, nếu BIRT có trong danh sách, trường ngày sinh và nơi sinh sẽ hiện ở mẫu."
 
 #: help_text.php:412
-msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
+msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names.  If you use non-Latin alphabets such asHebrew, Greek, Cyrillic, or Arabicc, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
 msgstr "Đây là danh sách các thẻ sự kiện GEDCOM dùng dấu phẩy phân cách sẽ được hiển thị khi bạn thêm hoặc chỉnh sửa tên địa điểm. Nếu bạn sử dụng bảng chữ cái phi Latin như tiếng Do Thái, Hy Lạp, tiếng Nga hay tiếng Ả Rập, bạn có thể muốn thêm thẻ như _HEB, ROMN, FONE v.v… để cho phép bạn lưu trữ địa danh trong bảng chữ cái khác nhau."
 
 #: help_text.php:1202
@@ -14094,11 +14094,11 @@ msgid "This option will let you edit an item on the FAQ page."
 msgstr "Tùy chọn này cho phép bạn sửa một mục trong FAQ"
 
 #: modules_v3/faq/help_text.php:60
-msgid "This option will let you move an item downwards on the FAQ page.<br><br>Each time you use this option, the FAQ Position number of this item is increased by one.  You can achieve the same effect by editing the item in question and changing the FAQ Position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
+msgid "This option will let you move an item downwards on the FAQ page.<br><br>Each time you use this option, the FAQ position number of this item is increased by one.  You can achieve the same effect by editing the item in question and changing the FAQ position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
 msgstr "Tùy chọn này cho phép bạn chuyển một mục xuống trong trang FAQ.<br><br>Mỗi khi bạn dùng tùy chọn này, số vị trí bảng FAQ của mục này tăng lên 1. Bạn có thể làm điều này bằng cách sửa mục liên qua và thay đổi trường vị trí FAQ. Khi có nhiều hơn 1 mục FAQ có cùng vị trí, chỉ 1 mục là thấy được."
 
 #: modules_v3/faq/help_text.php:65
-msgid "This option will let you move an item upwards on the FAQ page.<br><br>Each time you use this option, the FAQ Position number of this item is reduced by one.  You can achieve the same effect by editing the item in question and changing the FAQ Position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
+msgid "This option will let you move an item upwards on the FAQ page.<br><br>Each time you use this option, the FAQ position number of this item is reduced by one.  You can achieve the same effect by editing the item in question and changing the FAQ position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
 msgstr "Tùy chọn này sẽ cho phép bạn chuyển một mục lên trong trang FAQ.<br><br>Mỗi lần bạn dùng tùy chọn này, số vị trí FAQ của mục được trừ bớt 1. Bạn cũng thực hiện được việc này tương tự như thế bằng cách chỉnh mục liên quan và thay đổi trường vị trí của FAQ. Khi có nhiều hơn 1 mục FAQ có cùng số vị trí chỉ có một mục là thấy được."
 
 #: help_text.php:1099
@@ -14170,7 +14170,7 @@ msgid "This role has all the permissions of the editor role, plus permission to 
 msgstr "Vai trò này có đủ các phép cho vai trò người biên tập, cộng thêm quyền chấp thuận/ từ chối thay đổi thực hiện bởi các người dùng khác."
 
 #: help_text.php:1398
-msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the site, users and modules."
+msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the site, users, and modules."
 msgstr "Vai trò này có tất cả các quyền của quản trị ở cây gia phả, cộng thêm quyền thay đổi thiết đặt/cấu hình của site, người dùng và mô đun."
 
 #: help_text.php:1386
@@ -14186,7 +14186,7 @@ msgid "This role has all the permissions of the visitor role, plus any additiona
 msgstr "Vai trò này có đủ các quyền của khách thăm, cộng các quyền truy cập thêm cấp bởi cấu hình cây gia phả."
 
 #: help_text.php:1144
-msgid "This section allows you to add a new Note to the fact that you are currently editing.  Notes are free-form text and will appear in the Fact Details section of the page."
+msgid "This section allows you to add a new note to the fact that you are currently editing.  Notes are free-form text and will appear in the Fact Details section of the page."
 msgstr "Phần này cho phép bạn thêm một ghi chú mới vào sự kiện mà bạn đang sửa. Các ghi chú này là dạng văn bản tùy thích sẽ hiện ở mục Chi tiết sự kiện của trang."
 
 #: help_text.php:1157
@@ -14256,7 +14256,7 @@ msgid "This usually means that you need to change the folder permissions to 777.
 msgstr "Điều này thường có nghĩa là bạn cần đổi phép của thư mục sang 777."
 
 #: help_text.php:1223
-msgid "This value determines the number of descendant generations of the root individual that will be printed in Hourglass format."
+msgid "This value determines the number of descendant generations of the root individual that will be printed in hourglass format."
 msgstr "Giá trị này quyết định số con cháu người gốc được in ra ở dạng Hourglass."
 
 #: site-offline.php:71 site-unavailable.php:63
@@ -14983,7 +14983,7 @@ msgid "Use these buttons to re-arrange the order of the entries within the list.
 msgstr "Dùng các nút này để sắp xếp lại thứ tự các mục trong danh sách. Khối sẽ in theo thứ tự nó kê.<br><br>Chiếu sáng mục cần di chuyển, rồi nhấp nút chuột lôi mục này vào vị trí mới."
 
 #: help_text.php:398
-msgid "Use this field to signal that this media item is the highlighted or primary item for the individual it is attached to.  The highlighted image is the one that will be used on charts and on the Individual page."
+msgid "Use this field to signal that this media item is the highlighted or primary item for the individual it is attached to.  The highlighted image is the one that will be used on charts and on the individual’s page."
 msgstr "Dùng trường này để cho biết có file hình đang chọn hay mục chính cho người nó liên kết. Hình gốc là hình được dùng trên biểu đồ và trên trang cá nhân."
 
 #: help_text.php:1358
@@ -15801,7 +15801,7 @@ msgid "Youngest mother"
 msgstr "Mẹ trẻ nhất"
 
 #: includes/authentication.php:120 message.php:127
-msgid "Your Name:"
+msgid "Your name:"
 msgstr "Tên bạn:"
 
 #: modules_v3/clippings/module.php:172 modules_v3/clippings/module.php:430

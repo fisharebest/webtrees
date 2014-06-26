@@ -189,7 +189,7 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 		if ($show_common_surnames) {
 			$surnames = get_common_surnames(get_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_THRESHOLD'));
 			if (count($surnames)>0) {
-				$content .= '<p><b>'.WT_I18N::translate('Most Common Surnames').'</b></p>';
+				$content .= '<p><b>'.WT_I18N::translate('Most common surnames').'</b></p>';
 				$content .= '<div class="common_surnames">';
 				$i=0;
 				foreach ($surnames as $indexval => $surname) {

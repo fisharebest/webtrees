@@ -27,8 +27,9 @@ require_once WT_ROOT.'includes/functions/functions_edit.php';
 require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 
 $controller = new WT_Controller_Page();
-$controller->setPageTitle(WT_I18N::translate('Media objects'))
-			->pageHeader();
+$controller
+	->setPageTitle(WT_I18N::translate('Media objects'))
+	->pageHeader();
 
 $search = WT_Filter::get('search');
 $sortby = WT_Filter::get('sortby', 'file|title', 'title');
@@ -164,9 +165,8 @@ if ($search) {
 	if ($start + $count > $ct) {
 		$count = $ct - $start;
 	}
-}
 
-	echo '<div><p style="text-align: center;">', WT_I18N::translate('Media Objects found'), ' ', $ct, '</p>';
+	echo '<div><p style="text-align: center;">', WT_I18N::translate('Media objects found'), ' ', $ct, '</p>';
 
 	if ($ct>0) {
 		$currentPage = ((int) ($start / $max)) + 1;

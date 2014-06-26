@@ -5588,7 +5588,7 @@ msgid "Enter the FAX number including the country and area code.<br><br>Leave th
 msgstr "Syötä telefaxnumero maa- ja suuntanumeroineen.<br><br>Jätä tämä kenttä tyhjäksi, jos et halua lisätä telefaxnumeroa. Esimerkiksi numero Saksassa voi olla +49 25859 56 76 89 ja Yhdysvalloissa tai Kanadassa +1 888 555-1212."
 
 #: help_text.php:388
-msgid "Enter the URL address including the http://.<br><br>An example URL looks like this: <b>http://www.webtrees.net/</b> Leave this field blank if you do not want to include a URL."
+msgid "Enter the URL address including the http://.<br><br>An example URL looks like this: <b>http://www.webtrees.net/</b>.  Leave this field blank if you do not want to include a URL."
 msgstr "Syötä URL osoite alkaen http://:llä.<br><br>Esimerkiksi <b>http://www.webtrees.net/</b> Jätä tyhjäksi, jos et halua URL osoitetta."
 
 #: help_text.php:50
@@ -6428,7 +6428,7 @@ msgid "For help with genealogy questions contact"
 msgstr "Sukuasioissa ota yhteys:"
 
 #: help_text.php:1494
-msgid "For optimal display on the Internet, <b>webtrees</b> uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ANSI (ISO-8859-1)</b>.<br><br>The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren’t sure, consult the documentation of that program.<br><br>Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program’s method for handling these special characters by some other means.  Consult your program’s manufacturer or author.<br><br>This <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8."
+msgid "For optimal display on the internet, <b>webtrees</b> uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ANSI (ISO-8859-1)</b>.<br><br>The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren’t sure, consult the documentation of that program.<br><br>Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program’s method for handling these special characters by some other means.  Consult your program’s manufacturer or author.<br><br>This <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8."
 msgstr "<b>webtrees</b> käyttää UTF-8 merkistöä esittääkseen sivustot parhaalla mahdollisella tavalle internetissä. Jotkut ohjelmat, esim. Family Tree Maker, eivät tue GEDCOM tiedostojen tuontia UTF-8 muodossa. Tämä valintaruutu muuntaa tiedoston muodosta <b>UTF-8</b> muotoon <b>ANSI (ISO-8859-1)</b>.<br><br>Merkkikoodisto jonka tarvitset, riippuu ohjelmasta jota käytät ladatun GEDCOM-tiedoston kanssa. Jos et ole varma, tutki ohjelmasi käyttöohjeet.<br><br>Huomaa, että jos haluat pitää erikoismerkit muuttumattomina, sinun tulee säilyttää tiedosto UTF-8 muotoisena ja muuntaa se käyttäen jotain sopivaa muuntotapaa. Kysy ohjelmasi valmistajalta tai kirjoittajalta.<br><a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b>Wikipedia article</b></a> sisältää kattavat tiedot ja linkit UTF-8:sta."
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
@@ -6759,7 +6759,7 @@ msgid "Gives users the option of selecting their own theme."
 msgstr "Sallii käyttäjäkohtaisen teeman valinnan"
 
 #: help_text.php:1002
-msgid "Gives visitors the option of registering themselves for an account on the site.<br><br>The visitor will receive an email message with a code to verify his application for an account.  After verification, the Administrator will have to approve the registration before it becomes active."
+msgid "Gives visitors the option of registering themselves for an account on the site.<br><br>The visitor will receive an email message with a code to verify his application for an account.  After verification, an administrator will have to approve the registration before it becomes active."
 msgstr "Vierailija voi pyytää itselleen käyttäjätilin tälle sivustolle.<br><br>Vierailija saa sähköpostiviestin, jossa on tarvittava avain käyttäjätilipyytäjän tunnistamiseen. Vierailijan kuitattua lähetetty viesti, käyttäen avainta, ylläpitäjän on hyväksyttävä uusi käyttäjätili ennen kuin se astuu voimaan."
 
 #. I18N: gedcom tag _UID
@@ -7065,7 +7065,7 @@ msgid "Here you can choose between two types of displaying places names in hiera
 msgstr "Tässä voit valita kahdesta tavasta näyttää paikannimet hierarkiassa. Jos valitset Kyllä, näytetään lyhyt nimi tai käytössä olevan tason nimi. Jos valitset Ei, näytetään koko nimi.<br><b>Esimerkkejä:</b> Chicago, Illinois, USA<br><b>Lyhyt nimi:</b> Chicago<br><b>Koko nimi:</b> Illinois, USA<br><b>Lyhyt nimi:</b> Illinois"
 
 #: help_text.php:1045
-msgid "Here you can choose text to appear on the login screen. You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the Help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.</div><br></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
+msgid "Here you can choose text to appear on the login screen. You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.</div><br></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
 msgstr "Tässä valitset sisään kirjautumissivun tekstin. Sinun pitää valita valmiista teksteistä sopivin.<br><br>Voit myös valita ja kirjoittaa oman tervehdystekstisi. <b>Mukautetun tervehdystekstin</b> avusteesta saat lisäohjeita.<br><br>Valmiit tekstit ovat:<ul><li><b>Teksti joka kertoo, että kaikki voivat pyytää itselleen tunnuksen:</b><div class=\"list_value_wrap\"><center><b>Tervetuloa tähän sukututkimuksen verkkopalveluun</b></center><br>Jokaisella käyttäjällä, jolla on käyttäjätili, on pääsy tänne.<br><br>Jos sinulla on käyttäjätili, voit kirjautua tällä sivulla. Jos sinulla ei ole käyttäjätiliä, voit pyytää tilin klikkaamalla alla olevaa linkkiä.<br><br>Todennettuaan pyyntösi, ylläpitäjä aktivoi käyttäjätilisi. Saat sähköpostiviestin sen jälkeen kun pyyntösi on hyväksytty.</div><br></li><li><b>Valmis teksti, jossa kerrotaan, että ylläpitäjä päättää avataanko tunnus:</b><div class=\"list_value_wrap\"><center><b>Tervetuloa tähän sukututkimuksen verkkopalveluun.</b></center><br>Pääsy näille sivuille on sallittu vain niille käyttäjille, joille on annettu <b>käyttöoikeus</b>.<br><br>Jos sinulla on käyttäjätili, voit kirjautua järjestelmään tällä sivulla. Jos sinulla ei ole käyttäjätiliä, voit pyytää tilin klikkaamalla asianomaista linkkiä tällä sivulla.<br><br>Todennettuaan antamasi tiedot, ylläpitäjä joko hyväksyy tai hylkää pyyntösi. Tulet saamaan sähköpostiviestin kun pyyntösi on hyväksytty.</div><br></li><li><b>Valmis teksti, jossa kerrotaan, että ainoastaan sukujäsenille avataan tunnus:</b><div class=\"list_value_wrap\"><center><b>Tervetuloa tähän sukututkimuksen verkkopalveluun.</b></center><br>Pääsy näille sivuille on sallittu vain niille käyttäjille, joille on annettu <b>käyttöoikeus</b>.<br><br>Mikäli sinulla on käyttäjätili, voit kirjautua järjestelmään tällä sivulla. Mikäli sinulla ei ole käyttäjätiliä, voit pyytää tilin klikkaamalla asianomaista linkkiä tällä sivulla.<br><br>Todennettuaan antamasi tiedot, ylläpitäjä joko hyväksyy tai hylkää pyyntösi. Tulet saamaan sähköpostiviestin kun pyyntösi on hyväksytty.</div></li></ul>"
 
 #: modules_v3/googlemap/help_text.php:54
@@ -7357,7 +7357,7 @@ msgid "If you leave this setting empty, the default value will be used."
 msgstr "Oletusarvo on käytössä, kun et täytä mitään tähän kenttään."
 
 #: help_text.php:585
-msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php and .htaccess) from the existing folder to the new folder."
+msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
 msgstr "Jos valitset eri kansion, sinun täytyy myös siirtää kaikki tiedostot (paitsi config.ini.php, index.php ja .htaccess) nykyisestä kansiosta uuteen kansioon."
 
 #: help_text.php:659
@@ -7851,7 +7851,7 @@ msgid "Keep"
 msgstr "Pidä"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:124
-msgid "Keep Link in list"
+msgid "Keep link in list"
 msgstr "Pidä liitos listalla"
 
 #: library/WT/Stats.php:3924
@@ -8816,7 +8816,7 @@ msgid "Media ID prefix"
 msgstr "Mediatunnuksen etuliite"
 
 #: medialist.php:173
-msgid "Media Objects found"
+msgid "Media objects found"
 msgstr "Mediakohteita löytynyt"
 
 #: find.php:214
@@ -9222,7 +9222,7 @@ msgid "Morocco"
 msgstr "Marokko"
 
 #: modules_v3/gedcom_stats/module.php:192 modules_v3/html/module.php:258
-msgid "Most Common Surnames"
+msgid "Most common surnames"
 msgstr "Yleisimmät sukunimet"
 
 #. I18N: Help text for the “Use password” site configuration setting
@@ -9852,7 +9852,7 @@ msgid "Norway"
 msgstr "Norja"
 
 #: modules_v3/GEDFact_assistant/module.php:196
-msgid "Not a valid Individual, Family or Source ID"
+msgid "Not a valid individual, family, or source ID"
 msgstr "Ei kelvollinen henkilö-, perhe- tai lähde-tunnus"
 
 #. I18N: gedcom tag _NLIV
@@ -10219,7 +10219,7 @@ msgid "Other"
 msgstr "Muu"
 
 #: search.php:217
-msgid "Other Searches"
+msgid "Other searches"
 msgstr "Muita hakuja"
 
 #: admin_trees_config.php:1000 help_text.php:455
@@ -10576,11 +10576,11 @@ msgstr "Paikka"
 #: modules_v3/googlemap/module.php:167 modules_v3/googlemap/module.php:287
 #: modules_v3/googlemap/module.php:832 modules_v3/googlemap/module.php:1492
 #: modules_v3/googlemap/module.php:2521 modules_v3/googlemap/module.php:3979
-msgid "Place Check"
+msgid "Place check"
 msgstr "Paikkojen tarkistus"
 
 #: placelist.php:43 placelist.php:62
-msgid "Place List"
+msgid "Place list"
 msgstr "Paikkaluettelo"
 
 #: find.php:232
@@ -10761,7 +10761,7 @@ msgid "Please click on the following link and fill in the requested data to conf
 msgstr "Klikkaa alla olevaa linkkiä, täytä tiedot ja varmista tilisi ja sähköpostiosoitteesi."
 
 #: search.php:63
-msgid "Please enter a Given name, Last name, or Place in addition to Year"
+msgid "Please enter a given name, surname, or place in addition to the year"
 msgstr "Anna vuosiluvun lisäksi etunimi, sukunimi tai paikka."
 
 #: message.php:102
@@ -10988,7 +10988,7 @@ msgid "Property"
 msgstr "Omaisuus"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_4_text.php:36
-msgid "Proposed Census Text&nbsp;&nbsp;"
+msgid "Proposed census text&nbsp;&nbsp;"
 msgstr "Ehdotettu väestönlaskenta teksti&nbsp;&nbsp;"
 
 #: library/WT/Gedcom/Code/Temp.php:150
@@ -11375,7 +11375,7 @@ msgid "Remove"
 msgstr "Poista"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:125
-msgid "Remove Link from list"
+msgid "Remove link from list"
 msgstr "Poista liitos listalta"
 
 #: modules_v3/batch_update/plugins/duplicate_links.php:28
@@ -11775,7 +11775,7 @@ msgid "Search for"
 msgstr "Etsi"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:57
-msgid "Search for individuals to add to Add Links list."
+msgid "Search for individuals to add to add Links list."
 msgstr "Etsi henkilöitä yhteyksien luontilistaan."
 
 #: modules_v3/googlemap/module.php:3831
@@ -12049,7 +12049,7 @@ msgid "Set this to <b>Yes</b> to display icons near Fact names on the Personal F
 msgstr "Valinnalla <b>Kyllä</b> henkilötiedot-sivuilla näytetään kuvake tiedon viereen, jos sellainen kuvake on tarjolla käytössä olevan teeman <i>images/facts</i> hakemistossa."
 
 #: help_text.php:1012
-msgid "Set to <b>Yes</b> to use the RIN number instead of the GEDCOM ID when asked for Individual IDs in configuration files, user settings, and charts.  This is useful for genealogy programs that do not consistently export GEDCOMs with the same ID assigned to each individual but always use the same RIN."
+msgid "Set to <b>Yes</b> to use the RIN number instead of the GEDCOM ID when asked for individual IDs in configuration files, user settings, and charts.  This is useful for genealogy programs that do not consistently export GEDCOMs with the same ID assigned to each individual but always use the same RIN."
 msgstr "Asetus <b>Kyllä</b> käyttää RIN-numeroa GEDCOM tunnuksen (ID) sijasta, kun pyydetään henkilötunnuksia asetustiedostoissa, käyttäjän asetuksissa, ja kaavioissa. Tämä on hyödyllistä sukututkimusohjelmille, jotka eivät aina siirrä GEDCOMeja samalla henkilötunnuksella, mutta siirtävät aina samalla RIN-numerolla."
 
 #: help_text.php:859
@@ -13768,7 +13768,7 @@ msgid "This family tree was last updated on %s."
 msgstr "Tätä sukupuuta on viimeksi päivitetty %s."
 
 #: help_text.php:363
-msgid "This field allows you to change the source record that this fact’s source citation links to.  This field takes a Source ID.  Beside the field will be listed the title of the current source ID.  Use the <b>Find ID</b> link to look up the source’s ID number.  To remove the entire citation, make this field blank."
+msgid "This field allows you to change the source record that this fact’s source citation links to.  This field takes a source ID.  Beside the field will be listed the title of the current source ID.  Use the <b>Find ID</b> link to look up the source’s ID number.  To remove the entire citation, make this field blank."
 msgstr "Tässä kentässä voit vaihtaa lähdetietuetta, johon tämä lähdeviittaus on yhdistetty. Tähän tulee lähteen tunnus. Kentän viereen tulee nykyisen lähteen tunnuksen otsikko. Käytä linkkiä <b>Etsi tunnus</b> hakeaksesi lähteen tunnuksen. Poista koko viittaus tyhjentämällä tunnus."
 
 #: modules_v3/faq/help_text.php:40
@@ -13839,7 +13839,7 @@ msgid "This input box lets you enter an individual’s ID number so he can be ad
 msgstr "Tähän kenttään voit kirjoittaa henkilön tunnuksen lisätäksesi hänet leikekoriin. Kun hänet on lisätty, sinulle annetaan mahdollisuus linkittää kyseisen henkilön sukulaisuussuhteet leikekoriisi<br><br>Jos et tiedä henkilön tunnusta, voit suorittaa haun klikkaamalla henkilön kuvaketta lisää-painikkeen vieressä."
 
 #: help_text.php:407
-msgid "This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets."
+msgid "This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets."
 msgstr "Pilkuilla \",\" eroteltu luettelo GEDCOM tietoaihetunnisteista, joita esitettään nimen lisäämis-/muokkausikkunassa. Jos käytät muita kuin länsimaalaisia aakkosia kuten heprealaisia, kreikkalaisia, kyrillisiä tai arabialaisia aakkosia, voit lisätä tunnistemerkintöjä (tag) kuten _HEB, ROMN, FONE jne., jotta voit tallentaa nimiä useissa eri aakkosissa."
 
 #: help_text.php:794
@@ -13851,7 +13851,7 @@ msgid "This is a comma separated list of GEDCOM fact tags that will be shown whe
 msgstr "Tämä on pilkkumerkein \",\" eroteltu lista GEDCOM tietotunnisteita (tag) joita esitetään kun uusi henkilö lisätään. Esimerkiksi, jos BIRT (syntymä) on listassa, esitetään syntymäaika ja -paikka lomakkeessa."
 
 #: help_text.php:412
-msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
+msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
 msgstr "Pilkulla \",\" eroteltu luettelo GEDCOM tietoaihetunnisteista, joita haluat myös esitettäväksi paikkojen lisäämis- tai muokkausikkunassa.  Jos käytät muita kuin länsimaalaisia aakkosia kuten heprealaisia, kreikkalaisia, kyrillisiä tai arabialaisia aakkosia, voit lisätä tunnistemerkinnöt (tag) kuten _HEB, ROMN, FONE jne., jotta voit tallentaa paikkojen nimiä useissa eri aakkosissa."
 
 #: help_text.php:1202
@@ -14116,11 +14116,11 @@ msgid "This option will let you edit an item on the FAQ page."
 msgstr "Tämä valinta sallii sinun muokata kysymystä tai sen vastausta."
 
 #: modules_v3/faq/help_text.php:60
-msgid "This option will let you move an item downwards on the FAQ page.<br><br>Each time you use this option, the FAQ Position number of this item is increased by one.  You can achieve the same effect by editing the item in question and changing the FAQ Position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
+msgid "This option will let you move an item downwards on the FAQ page.<br><br>Each time you use this option, the FAQ position number of this item is increased by one.  You can achieve the same effect by editing the item in question and changing the FAQ position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
 msgstr "Tällä valinnalla siirretään aihe alemmaksi Usein kysyttyjen kysymysten sivulla.<br><br>Aina kun valitset tämän, aiheen järjestysnumero kasvaa yhdellä. Saman lopputuloksen saat muokkaamalla aihetta ja muuttamalla aiheen järjestysnumeron. Kun useammalla aiheella on sama järjestysnumero, vain yksi niistä esitetään."
 
 #: modules_v3/faq/help_text.php:65
-msgid "This option will let you move an item upwards on the FAQ page.<br><br>Each time you use this option, the FAQ Position number of this item is reduced by one.  You can achieve the same effect by editing the item in question and changing the FAQ Position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
+msgid "This option will let you move an item upwards on the FAQ page.<br><br>Each time you use this option, the FAQ position number of this item is reduced by one.  You can achieve the same effect by editing the item in question and changing the FAQ position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
 msgstr "Tällä valinnalla siirretään aihe ylemmäksi Usein kysyttyjen kysymysten sivulla.<br><br>Aina kun valitset tämän, aiheen järjestysnumero pienenee yhdellä. Saman lopputuloksen saat muokkaamalla aihetta ja muuttamalla aiheen järjestysnumeron. Kun useammalla aiheella on sama järjestysnumero, vain yksi niistä esitetään."
 
 #: help_text.php:1099
@@ -14192,7 +14192,7 @@ msgid "This role has all the permissions of the editor role, plus permission to 
 msgstr "Tällä roolilla on samat käyttöoikeudet kuin muokkaajalla, sekä lisäksi oikeus hyväksyä/hylätä muiden sivuston käyttäjien tekemiä muutoksia."
 
 #: help_text.php:1398
-msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the site, users and modules."
+msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the site, users, and modules."
 msgstr "Tällä roolilla on samat oikeudet kuin sukupuun ylläpitäjällä, sekä lisäksi oikeus muuttaa koko palvelun eli palvelimen asetuksia / määrityksiä, käyttäjätilejä ja sallittuja lisäominaisuuksia eli moduuleja."
 
 #: help_text.php:1386
@@ -14208,7 +14208,7 @@ msgid "This role has all the permissions of the visitor role, plus any additiona
 msgstr "Tällä roolilla on kaikki vierailija-roolin käyttöoikeudet, sekä muita käyttöoikeuksia, joita on sukupuukohtaisesti myönnetty."
 
 #: help_text.php:1144
-msgid "This section allows you to add a new Note to the fact that you are currently editing.  Notes are free-form text and will appear in the Fact Details section of the page."
+msgid "This section allows you to add a new note to the fact that you are currently editing.  Notes are free-form text and will appear in the Fact Details section of the page."
 msgstr "Voit lisätä tähän osioon uutta muokattavaa tietoa koskevan lisätiedon. Lisätiedot ovat tekstitietoja, jotka näkyvät sivulla tiedon yksityiskohdissa."
 
 #: help_text.php:1157
@@ -14278,7 +14278,7 @@ msgid "This usually means that you need to change the folder permissions to 777.
 msgstr "Tämä tarkoittaa yleensä, että sinun täytyy muuttaa kansion oikeudeksi 777."
 
 #: help_text.php:1223
-msgid "This value determines the number of descendant generations of the root individual that will be printed in Hourglass format."
+msgid "This value determines the number of descendant generations of the root individual that will be printed in hourglass format."
 msgstr "Tämä lukuarvo määrittää tiimalasimuodossa tulostetun aloitushenkilön jälkipolvien lukumäärän."
 
 #: site-offline.php:71 site-unavailable.php:63
@@ -15008,7 +15008,7 @@ msgid "Use these buttons to re-arrange the order of the entries within the list.
 msgstr "Käytä näitä painikkeita muuttaaksesi luettelon järjestystä. Lohkot tulostetaan luettelon osoittamassa järjestyksessä.<br><br>Korosta siirrettävää kohdetta ja klikkaa sitten painiketta siirtääksesi kohdetta ylös- tai alaspäin."
 
 #: help_text.php:398
-msgid "Use this field to signal that this media item is the highlighted or primary item for the individual it is attached to.  The highlighted image is the one that will be used on charts and on the Individual page."
+msgid "Use this field to signal that this media item is the highlighted or primary item for the individual it is attached to.  The highlighted image is the one that will be used on charts and on the individual’s page."
 msgstr "Käytä tätä kenttää viestittämään että tämä mediakohde on liitetyn henkilön korostettu tai ensisijainen kohde. Korostettu kuva on kuva, jota käytetään kaavioissa ja henkilösivulla."
 
 #: help_text.php:1358
@@ -15828,7 +15828,7 @@ msgid "Youngest mother"
 msgstr "Nuorin äiti"
 
 #: includes/authentication.php:120 message.php:127
-msgid "Your Name:"
+msgid "Your name:"
 msgstr "Lähettäjän nimi:"
 
 #: modules_v3/clippings/module.php:172 modules_v3/clippings/module.php:430
