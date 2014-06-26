@@ -5981,7 +5981,7 @@ msgstr "Familienbuch von %s"
 #. I18N: gedcom tag FAMF
 #: library/WT/Gedcom/Tag.php:195
 msgid "Family file"
-msgstr "Familien Akte"
+msgstr "Familienakte"
 
 #: family.php:129
 msgid "Family group information"
@@ -6158,13 +6158,13 @@ msgstr "Vater: %s"
 
 #: includes/functions/functions_print.php:620
 msgid "Father’s age"
-msgstr "Vaters Alter"
+msgstr "Alter des Vaters"
 
 #. I18N: A step-family.  %s is an individual’s name
 #: library/WT/Individual.php:745
 #, php-format
 msgid "Father’s family with %s"
-msgstr "Die Familie väterlicherseits %s"
+msgstr "Die Familie väterlicherseits von %s"
 
 #. I18N: A step-family.
 #: library/WT/Individual.php:747
@@ -6231,11 +6231,11 @@ msgstr "Fidschi"
 
 #: modules_v3/clippings/module.php:186 modules_v3/clippings/module.php:561
 msgid "File Information"
-msgstr "Datei-Informationen"
+msgstr "Dateiinformationen"
 
 #: modules_v3/googlemap/module.php:4111
 msgid "File containing places (CSV)"
-msgstr "Lokale-Datei mit den Orten (CSV)"
+msgstr "Datei mit Orten (CSV)"
 
 #: addmedia.php:461 addmedia.php:482 admin_media_upload.php:197
 #: help_text.php:1433
@@ -6334,7 +6334,7 @@ msgstr "Nächsten Pfad suchen"
 
 #: help_text.php:1278
 msgid "Find the next relationship path"
-msgstr "Finde den nächsten Verwandtschafts-Pfad"
+msgstr "Finde den nächsten Verwandtschaftspfad"
 
 #: library/WT/Stats.php:3879
 msgid "Finland"
@@ -6411,17 +6411,17 @@ msgstr "Schriftart"
 
 #: help_text.php:373
 msgid "For LDS ordinances, this field records the temple where it was performed."
-msgstr "Dieses Feld dokumentiert den Tempel wo HLT-Verfügungen vorgenommen wurden."
+msgstr "Dieses Feld dokumentiert den Tempel, wo HLT-Verfügungen vorgenommen wurden."
 
 #. I18N: %s are all folder names; “GEDCOM media path” is a configuration setting
 #: help_text.php:551
 #, php-format
 msgid "For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then the GEDCOM media path would be %3$s."
-msgstr "Zum Beispiel, wenn die GEDCOM-Datei %1$s enthält und webtrees %2$s im Medienordner erwartet, dann wäre der GEDCOM-Medienpfad %3$s."
+msgstr "Wenn zum Beispiel die GEDCOM-Datei %1$s enthält und webtrees %2$s im Medienordner erwartet, dann wäre der GEDCOM-Medienpfad %3$s."
 
 #: help_text.php:722
 msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
-msgstr "Zum Beispiel: Wenn Sie eine Stufenweite von 2 angeben, wird diese Person in der Lage sein, ihre Enkel (Kind, Kind), ihre Tante (Eltern, Geschwister), ihre Stieftochter (Ehegatte, Kind), nicht aber ihre Cousine sehen (Eltern, Geschwister, Kinder) einzusehen."
+msgstr "Wenn Sie zum Beispiel eine Stufenweite von 2 angeben, wird diese Person in der Lage sein, ihre Enkel (Kind, Kind), ihre Tante (Eltern, Geschwister), ihre Stieftochter (Ehegatte, Kind), nicht aber ihre Cousine (Eltern, Geschwister, Kinder) sehen."
 
 #: includes/functions/functions_print.php:381
 msgid "For help with genealogy questions contact"
@@ -6429,7 +6429,7 @@ msgstr "Bei genealogischen Fragen wenden Sie sich an folgende Kontaktadresse:"
 
 #: help_text.php:1494
 msgid "For optimal display on the internet, <b>webtrees</b> uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ANSI (ISO-8859-1)</b>.<br><br>The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren’t sure, consult the documentation of that program.<br><br>Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program’s method for handling these special characters by some other means.  Consult your program’s manufacturer or author.<br><br>This <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8."
-msgstr "<b>webtrees</b> benutzt intern den UTF-8 Zeichensatz, der das Bearbeiten von Texten in fast allen Sprachen der Welt ermöglicht.  Einige Programme, wie zum Beispiel Family Tree Maker, haben überhaupt keine Unterstützung für den UTF-8 Zeichensatz.  Wenn Sie diese Option ankreuzen, wandelt <b>webtrees</b> die Ausgabe-Datei in den <b>ANSI (ISO-8859-1)</b> Zeichensatz um.<br><br>Ob die Ausgabe-Datei so konvertiert werden muss kommt darauf an, ob das Ziel-Programm den UTF-8 Zeichensatz unterstützt.  Im Fragefall müssen Sie sich an die Dokumentation des Programms wenden.<br><br>Bitte beachten Sie dass manche besondere Zeichen nicht im ANSI (ISO-8859-1) Zeichensatz vorhanden sind und Sie deshalb den UTF-8 Ausgangszeichensatz behalten sollten.  In diesem Fall müssen Sie auch eine andere Methode finden, die besonderen Zeichen in das andere Programm einzugeben.  Sie müssen sich wahrscheinlich auch an den Hersteller Ihres Programms wenden.<br><br>Ausführliche Informationen über UTF-8 können Sie in diesem <a href=\"http://de.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia Eintrag\"><b>Wikipedia Eintrag</b></a> finden."
+msgstr "<b>webtrees</b> benutzt intern den UTF-8 Zeichensatz, der das Bearbeiten von Texten in fast allen Sprachen der Welt ermöglicht.  Einige Programme, wie zum Beispiel Family Tree Maker, haben überhaupt keine Unterstützung für den UTF-8 Zeichensatz.  Wenn Sie diese Option ankreuzen, wandelt <b>webtrees</b> die Ausgabe-Datei in den <b>ANSI (ISO-8859-1)</b> Zeichensatz um.<br><br>Ob die Ausgabe-Datei so konvertiert werden muss, kommt darauf an, ob das Ziel-Programm den UTF-8 Zeichensatz unterstützt.  Im Fragefall müssen Sie sich an die Dokumentation des Programms wenden.<br><br>Bitte beachten Sie, dass manche besondere Zeichen nicht im ANSI (ISO-8859-1) Zeichensatz vorhanden sind und Sie deshalb den UTF-8 Ausgangszeichensatz behalten sollten.  In diesem Fall müssen Sie auch eine andere Methode finden, die besonderen Zeichen in das andere Programm einzugeben.  Sie müssen sich wahrscheinlich auch an den Hersteller Ihres Programms wenden.<br><br>Ausführliche Informationen über UTF-8 können Sie in diesem <a href=\"http://de.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia Eintrag\"><b>Wikipedia Eintrag</b></a> finden."
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: help_text.php:417
@@ -6438,11 +6438,11 @@ msgstr "Diese Einstellung zeigt bei Seiten mit mehr als einem Stammbaum eine Auf
 
 #: includes/functions/functions_print.php:375
 msgid "For technical support and information contact"
-msgstr "Für Support wenden Sie sich an folgende Kontaktadresse:"
+msgstr "Für technischen Support wenden Sie sich an folgende Kontaktadresse:"
 
 #: includes/functions/functions_print.php:371
 msgid "For technical support or genealogy questions, please contact"
-msgstr "Für Support sowie bei genealogischen Fragen wenden Sie sich an folgende Kontaktadresse:"
+msgstr "Für technischen Support sowie bei genealogischen Fragen wenden Sie sich an folgende Kontaktadresse:"
 
 #. I18N: gedcom tag FORM
 #: admin_trees_config.php:936 help_text.php:175 help_text.php:187
@@ -6619,7 +6619,7 @@ msgstr "GEDCOM Medienpfad"
 
 #: admin_site_merge.php:208
 msgid "GEDCOM record successfully deleted."
-msgstr "Datensatz erfolgreich gelöscht."
+msgstr "GEDCOM Datensatz erfolgreich gelöscht."
 
 #: help_text.php:1138
 msgid "GEDFact shared note assistant"
@@ -6699,7 +6699,7 @@ msgstr "Generationen der Vorfahren"
 #: modules_v3/googlemap/module.php:2703 modules_v3/googlemap/module.php:3109
 #: modules_v3/googlemap/module.php:3974
 msgid "Geographic data"
-msgstr "geografische Daten"
+msgstr "Geografische Daten"
 
 #: statistics.php:635
 msgid "Geographical area"
@@ -6752,7 +6752,7 @@ msgstr "Vornamen"
 
 #: help_text.php:422
 msgid "Gives users the option of selecting their own theme from a menu.<br><br>Even with this option set, the theme currently in effect may not provide for such a menu.  To be effective, this option requires the <b>Allow users to select their own theme</b> option to be set as well."
-msgstr "Gibt Benutzern die Möglichkeit, ihr eigenes Theme zu wählen, vorausgesetzt dass auch die Option <b>Besuchern die Auswahl eines Themas erlauben</b> auf <b>Ja</b> gesetzt ist."
+msgstr "Gibt Benutzern die Möglichkeit, ihr eigenes Theme zu wählen. Voraussetzung ist, dass auch die Option <b>Besuchern die Auswahl eines Themas erlauben</b> auf <b>Ja</b> gesetzt ist."
 
 #: help_text.php:427
 msgid "Gives users the option of selecting their own theme."
@@ -6760,12 +6760,12 @@ msgstr "Erlaubt den Benutzern eigene Themes auszuwählen."
 
 #: help_text.php:1002
 msgid "Gives visitors the option of registering themselves for an account on the site.<br><br>The visitor will receive an email message with a code to verify his application for an account.  After verification, an administrator will have to approve the registration before it becomes active."
-msgstr "Erlaubt den Benutzern, einen Benutzerzugang zu diesen Seiten anzutragen.<br><br>Der Benutzer wird eine E-Mail erhalten mit einem Code zur Bestätigung des Antrages.<br><br>Danach muss der Verwalter diesen Antrag noch bestätigen, bevor der neue Benutzer sich anmelden darf."
+msgstr "Erlaubt den Besuchern, einen Benutzerzugang zu diesen Seiten anzufragen.<br><br>Der Benutzer wird eine E-Mail mit einem Code zur Bestätigung der Anfrage erhalten.<br><br>Danach muss der Verwalter diesen Antrag noch bestätigen, bevor der neue Benutzer sich anmelden darf."
 
 #. I18N: gedcom tag _UID
 #: library/WT/Gedcom/Tag.php:806
 msgid "Globally unique identifier"
-msgstr "Universelle ID-Nummer"
+msgstr "Global einmalig ID-Nummer"
 
 #: library/WT/Gedcom/Code/Rela.php:119
 msgid "Godchild"
@@ -7003,11 +7003,11 @@ msgstr "Hallo %s…"
 #: login.php:377
 #, php-format
 msgid "Hello %s…<br>Thank you for your registration."
-msgstr "Hallo %s …<br>Danke für Ihren Antrag."
+msgstr "Hallo %s …<br>Danke für Ihre Anfrage."
 
 #: login.php:304 login.php:496
 msgid "Hello administrator…"
-msgstr "Hallo Verwalter …"
+msgstr "Hallo Verwalter…"
 
 #: help_text.php:1503
 msgid "Help"
@@ -7050,11 +7050,11 @@ msgstr "Hier wird die Vergrößerungsstufe eingetragen. Der Wert stellt die klei
 
 #: help_text.php:1059
 msgid "Here you can add a fact to the record being edited.<br><br>First choose a fact from the drop-down list, then click the <b>Add</b> button.  All possible facts that you can add to the database are in that drop-down list."
-msgstr "Hier können Sie ein Ereignis zu einer Person hinzufügen.<br><br>Wählen Sie zunächst das Ereignis aus der Liste, klicken Sie dann die Schaltfläche «Hinzufügen» . In der Liste befinden sich schon alle möglichen Ereignisse, die zum Hinzufügen in Frage kommen."
+msgstr "Hier können Sie ein Ereignis zu einer Person hinzufügen.<br><br>Wählen Sie zunächst das Ereignis aus der Liste und klicken Sie dann auf die Schaltfläche «Hinzufügen» . In der Liste befinden sich schon alle möglichen Ereignisse, die zum Hinzufügen in Frage kommen."
 
 #: help_text.php:1089
 msgid "Here you can add a source <b>Citation</b> to this record.<br><br>Just click the link, a window will open, and you can choose the source from the list (Find ID) or create a new source and then add the citation.<br><br>Adding sources is an important part of genealogy because it allows other researchers to verify where you obtained your information."
-msgstr "Hier können Sie eine Quelle <b>Zitat</b>, zu diesen Datensatz hinzufügen.<br><br>Klicken Sie einfach auf den Link, so dann öffnet sich ein Fenster, und Sie können die Quelle aus der Liste auswählen (Find ID) oder eine neue Quelle erstellen und Sie können dann das Zitat hinzufügen.<br><br>Das Hinzufügen von Quellen ist ein wichtiger Teil der Genealogie, weil es anderen Forschern Hinweise gibt, um Ihre Angaben verifizieren zu können und woher Sie Ihre Informationen erhalten haben."
+msgstr "Hier können Sie ein <b>Zitat</b> aus der Quelle zu diesen Datensatz hinzufügen.<br><br>Klicken Sie einfach auf den Link, damit sich ein Fenster öffnet, aus dem Sie die Quelle aus der Liste auswählen (Find ID) oder eine neue Quelle erstellen können und dann das Zitat hinzufügen können.<br><br>Das Hinzufügen von Quellen ist ein wichtiger Teil der Genealogie, weil andere Forscher dadurch nachvollziehen können, woher Sie Ihre Informationen erhalten haben."
 
 #: help_text.php:1228
 msgid "Here you can change the diagram width from 50 percent to 300 percent.  At 100 percent the output image is about 640 pixels wide."
@@ -7062,11 +7062,11 @@ msgstr "Hier können Sie die Diagrammbreite von 50 &#37; bis 300&#37; einstellen
 
 #: modules_v3/googlemap/help_text.php:91
 msgid "Here you can choose between two types of displaying places names in hierarchy. If set Yes the place has short name or actual level name, if No - full name.<br><b>Examples:<br>Full name: </b>Chicago, Illinois, USA<br><b>Short name: </b>Chicago<br><b>Full name: </b>Illinois, USA<br><b>Short name: </b>Illinois"
-msgstr "Hier bestimmen Sie, wie die Orte angezeigt werden sollen. Bei Ja werden nur die Namen der aktuellen Stufe angezeigt, bei Nein werden alle Stufennamen angezeigt."
+msgstr "Hier bestimmen Sie, wie die Orte angezeigt werden sollen. Bei Ja werden nur die Namen der aktuellen Stufe angezeigt, bei Nein werden alle Stufennamen angezeigt.<br><b>Beispiele:<br>Vollständiger Ort: </b>Chicago, Illinois, USA<br><b>Kurzer Ort: </b>Chicago<br><b>Vollständiger Ort: </b>Illinois, USA<br><b>Kurzer Ort: </b>Illinois"
 
 #: help_text.php:1045
 msgid "Here you can choose text to appear on the login screen. You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.</div><br></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
-msgstr "Hier können Sie den Text auf dem Login-Bildschirm wählen. Sie müssen festlegen, welcher vordefinierte Text am besten passt.<br><br>Sie können aber auch Ihren eigenen, individualisierten Begrüßungstext eingeben. Bitte beachten Sie für weitere Informationen die Hilfetexte, die mit dem Feld <b>individualisierter Begrüßungstext</b> verbunden sind.<br><br>Die vordefinierten Standardtexte sind:<ul><li><b>Textbausteine die mitteilen, dass alle Benutzer ein Benutzerkonto beantragen können:</b><div class=\"list_value_wrap\"><center><b> Willkommen auf dieser Genealogie Webseite</b></center><br>Der Zugang zu dieser Webseite ist jedem Besucher mit einem Benutzerkonto möglich.<br><br>Wenn Sie bereits ein Benutzerkonto haben, können Sie sich auf dieser Seite anmelden. Wenn Sie noch kein Benutzerkonto haben, können Sie es beantragen, indem Sie auf den entsprechenden Link klicken.<br><br>Sobald Ihre Angaben überprüft sind, wird der Webseitenadministrator Ihr Konto zu aktivieren. Sie erhalten eine E-Mail, sobald Ihr Antrag genehmigt wurde</div><br></li><li><b>Standardtext, der besagt, dass bei jeder Anfrage für ein Benutzerkonto der Administrator entscheidet:</b><div class=\"list_value_wrap\"><center><b>Willkommen auf dieser Genealogie-Webseite</b></center><br>Der Zugang zu dieser Webseite ist nur <u>autorisierten</u> Benutzern gestattet.<br><br>Wenn Sie bereits ein Benutzerkonto haben, können Sie sich auf dieser Seite anmelden. Wenn Sie noch kein Benutzerkonto haben, können Sie es beantragen, indem Sie auf den entsprechenden Link klicken.<br><br>Sobald Ihre Angaben überprüft sind, wird der Administrator Ihren Antrag entweder genehmigen oder ablehnen. Sie erhalten eine E-Mail, wenn Ihr Antrag genehmigt wurde</div><br></li><li><b>Standardtext, dass nur Familienmitglieder ein Benutzerkonto beantragen können:</b><div class = \"list_value_wrap\"><center><b>Willkommen auf dieser Genealogie-Webseite</b></center><br>Der Zugang zu dieser Webseite ist <u>nur Familienmitgliedern</u> möglich.<br><br>Wenn Sie bereits ein Benutzerkonto besitzen, können Sie sich auf dieser Seite anmelden. Wenn Sie noch kein Benutzerkonto haben, können Sie es beantragen, indem Sie auf den entsprechenden Link klicken.<br><br>Nach Überprüfung Ihrer Informationen, wird der Administrator Ihren Antrag entweder genehmigen oder ablehnen. Sie erhalten eine E-Mail, sobald Ihr Antrag genehmigt wurde.</div></li></ul>"
+msgstr "Hier können Sie einen Text wählen, der auf dem Login-Bildschirm ngezeigt wrid. Sie müssen festlegen, welcher vordefinierte Text am besten passt.<br><br>Sie können aber auch Ihren eigenen, individualisierten Begrüßungstext eingeben. Bitte beachten Sie für weitere Informationen die Hilfetexte, die mit dem Feld <b>individualisierter Begrüßungstext</b> verbunden sind.<br><br>Die vordefinierten Standardtexte sind:<ul><li><b>Standardtext, der mitteilt, dass alle Benutzer ein Benutzerkonto beantragen können:</b><div class=\"list_value_wrap\"><center><b> Willkommen auf dieser Genealogie Webseite</b></center><br>Der Zugang zu dieser Webseite ist jedem Besucher mit einem Benutzerkonto möglich.<br><br>Wenn Sie bereits ein Benutzerkonto haben, können Sie sich auf dieser Seite anmelden. Wenn Sie noch kein Benutzerkonto haben, können Sie eins erstellen, indem Sie auf den entsprechenden Link klicken.<br><br>Sobald Ihre Angaben überprüft sind, wird der Webseitenadministrator Ihr Konto aktivieren. Sie erhalten eine E-Mail, sobald Ihr Anfrage genehmigt wurde</div><br></li><li><b>Standardtext, der besagt, dass bei jeder Anfrage für ein Benutzerkonto der Administrator entscheidet:</b><div class=\"list_value_wrap\"><center><b>Willkommen auf dieser Genealogie-Webseite</b></center><br>Der Zugang zu dieser Webseite ist nur <u>autorisierten</u> Benutzern gestattet.<br><br>Wenn Sie bereits ein Benutzerkonto haben, können Sie sich auf dieser Seite anmelden. Wenn Sie noch kein Benutzerkonto haben, können Sie eins erstellen, indem Sie auf den entsprechenden Link klicken.<br><br>Sobald Ihre Angaben überprüft sind, wird der Administrator Ihre Anfrage entweder genehmigen oder ablehnen. Sie erhalten eine E-Mail, wenn Ihre Anfrage genehmigt wurde</div><br></li><li><b>Standardtext, dass nur Familienmitglieder ein Benutzerkonto beantragen können:</b><div class = \"list_value_wrap\"><center><b>Willkommen auf dieser Genealogie-Webseite</b></center><br>Der Zugang zu dieser Webseite ist <u>nur Familienmitgliedern</u> möglich.<br><br>Wenn Sie bereits ein Benutzerkonto besitzen, können Sie sich auf dieser Seite anmelden. Wenn Sie noch kein Benutzerkonto haben, können Sie eins erstellen, indem Sie auf den entsprechenden Link klicken.<br><br>Nach Überprüfung Ihrer Informationen, wird der Administrator Ihre Anfrage entweder genehmigen oder ablehnen. Sie erhalten eine E-Mail, sobald Ihre Anfrage genehmigt wurde.</div></li></ul>"
 
 #: modules_v3/googlemap/help_text.php:54
 msgid "Here you can enter the precision. Based on this setting the number of digits that will be used in the latitude and longitude is determined."
@@ -7119,7 +7119,7 @@ msgstr "Verberge die Flaggen, die im Googlemap Modul für Länder und Staaten ko
 
 #: modules_v3/googlemap/help_text.php:98
 msgid "Hide the lines connecting the child to each parent if they exist on the map."
-msgstr "Verstecke die Linien die das Kind mit den Eltern verbinden, wenn sie auf der Karte existieren."
+msgstr "Verstecke die Linien, die das Kind mit den Eltern verbinden, wenn sie auf der Karte existieren."
 
 #: library/WT/Stats.php:1059
 msgid "Highest population"
@@ -7222,7 +7222,7 @@ msgstr "Ehemann"
 
 #: library/WT/Controller/Timeline.php:211
 msgid "Husband’s age"
-msgstr "Alter, Gatte"
+msgstr "Alter des Ehegattens"
 
 #: modules_v3/googlemap/module.php:309
 msgid "Hybrid"
