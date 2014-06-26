@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2014-06-12 21:41+0100\n"
-"PO-Revision-Date: 2014-06-22 03:03+0100\n"
+"PO-Revision-Date: 2014-06-26 21:43+0100\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -5585,7 +5585,7 @@ msgstr "Voer het faxnummer in, inclusief de land- en regiocode.<br><br>Een voorb
 
 #: help_text.php:388
 msgid "Enter the URL address including the http://.<br><br>An example URL looks like this: <b>http://www.webtrees.net/</b>.  Leave this field blank if you do not want to include a URL."
-msgstr "Voer een URL adres in MET http://.<br><br>Een voorbeeld van een URL ziet er zo uit: <b>http://www.webtrees.net/<b> Vul hier niets in als u geen URL wilt toevoegen."
+msgstr "Voer het URL adres in dat begint met http://.<br><br>Een voorbeeld van een URL ziet er zo uit: <b>http://www.webtrees.net/<b>. Vul hier niets in als u geen URL wilt toevoegen."
 
 #: help_text.php:50
 msgid "Enter the address into the field just as you would write it on an envelope.<br><br>Leave this field blank if you do not want to include an address."
@@ -6756,7 +6756,7 @@ msgstr "Geeft gebruikers de mogelijkheid hun eigen thema te kiezen."
 
 #: help_text.php:1002
 msgid "Gives visitors the option of registering themselves for an account on the site.<br><br>The visitor will receive an email message with a code to verify his application for an account.  After verification, an administrator will have to approve the registration before it becomes active."
-msgstr "Geeft bezoekers de mogelijkheid zich op de site te registreren.<br>De bezoeker ontvangt daarna een e-mail met verificatiegegevens.<br>Na verificatie moet de beheerder de registratie goedkeuren voordat die actief wordt."
+msgstr "Geeft bezoekers de mogelijkheid zich op de site te registreren.<br>De bezoeker ontvangt daarna een e-mail met verificatiegegevens.<br>Na verificatie moet een beheerder de registratie goedkeuren voordat deze actief wordt."
 
 #. I18N: gedcom tag _UID
 #: library/WT/Gedcom/Tag.php:806
@@ -7848,7 +7848,7 @@ msgstr "Behoud"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:124
 msgid "Keep link in list"
-msgstr "Bewaar de Link in de lijst"
+msgstr "Bewaar de link in de lijst"
 
 #: library/WT/Stats.php:3924
 msgid "Kenya"
@@ -8811,10 +8811,6 @@ msgstr "Media"
 msgid "Media ID prefix"
 msgstr "Voorvoegsel media-ID"
 
-#: medialist.php:173
-msgid "Media objects found"
-msgstr "Mediaobjecten gevonden"
-
 #: find.php:214
 msgid "Media contains:"
 msgstr "Media bevat:"
@@ -8869,6 +8865,10 @@ msgstr "Media object"
 #: statistics.php:376
 msgid "Media objects"
 msgstr "Mediaobjecten"
+
+#: medialist.php:173
+msgid "Media objects found"
+msgstr "Mediaobjecten gevonden"
 
 #: medialist.php:111
 msgid "Media objects per page"
@@ -9217,14 +9217,14 @@ msgstr "Mordad"
 msgid "Morocco"
 msgstr "Marokko"
 
-#: modules_v3/gedcom_stats/module.php:192 modules_v3/html/module.php:258
-msgid "Most common surnames"
-msgstr "Meest voorkomende achternamen"
-
 #. I18N: Help text for the “Use password” site configuration setting
 #: help_text.php:749
 msgid "Most SMTP servers require a password."
 msgstr "De meeste SMTP servers hebben een wachtwoord nodig."
+
+#: modules_v3/gedcom_stats/module.php:192 modules_v3/html/module.php:258
+msgid "Most common surnames"
+msgstr "Meest voorkomende achternamen"
 
 #. I18N: Help text for the "Secure connection" site configuration setting
 #: help_text.php:774
@@ -9849,7 +9849,7 @@ msgstr "Noorwegen"
 
 #: modules_v3/GEDFact_assistant/module.php:196
 msgid "Not a valid individual, family, or source ID"
-msgstr "Geen geldig Persoon-, Familie- of Bron-ID"
+msgstr "Geen geldig persoon-, familie- of bron-ID"
 
 #: admin.php:157
 msgid "Not approved by an administrator"
@@ -10222,10 +10222,6 @@ msgstr "Orlando, Florida"
 msgid "Other"
 msgstr "Andere"
 
-#: search.php:217
-msgid "Other searches"
-msgstr "Andere zoekacties"
-
 #: admin_trees_config.php:1000 help_text.php:455
 msgid "Other facts to show in charts"
 msgstr "Andere te tonen feiten in diagrammen"
@@ -10237,6 +10233,10 @@ msgstr "Andere map… voer in"
 #: modules_v3/gedcom_stats/module.php:346
 msgid "Other records"
 msgstr "Andere records"
+
+#: search.php:217
+msgid "Other searches"
+msgstr "Andere zoekacties"
 
 #: admin_trees_config.php:1248
 msgid "Other settings"
@@ -10583,10 +10583,6 @@ msgstr "Plaats"
 msgid "Place check"
 msgstr "Plaats controleren"
 
-#: placelist.php:43 placelist.php:62
-msgid "Place list"
-msgstr "Lijst van plaatsen"
-
 #: find.php:232
 msgid "Place contains:"
 msgstr "Plaats bevat"
@@ -10603,6 +10599,10 @@ msgstr "Hiërarchie van plaatsen"
 #: library/WT/Gedcom/Tag.php:274
 msgid "Place in Hebrew"
 msgstr "Plaatsnaam in Hebreeuws"
+
+#: placelist.php:43 placelist.php:62
+msgid "Place list"
+msgstr "Lijst van plaatsen"
 
 #: help_text.php:885
 msgid "Place names are frequently too long to fit on charts, lists, etc.  They can be abbreviated by showing just the first few parts of the name, such as <i>village, county</i>, or the last few part of it, such as <i>region, country</i>."
@@ -10766,7 +10766,7 @@ msgstr "Klik op onderstaande link en vul de gegevens in om uw gebruikersnaam en 
 
 #: search.php:63
 msgid "Please enter a given name, surname, or place in addition to the year"
-msgstr "Vul a.u.b. een Voornaam, Achternaam, of Plaats in bij het Jaar"
+msgstr "Vul, behalve het jaartal, ook een voornaam, achternaam of plaatsnaam in"
 
 #: message.php:102
 msgid "Please enter a message subject."
@@ -10993,7 +10993,7 @@ msgstr "Eigendom"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_4_text.php:36
 msgid "Proposed census text&nbsp;&nbsp;"
-msgstr "Voorgestelde text over de volkstelling&nbsp;&nbsp;"
+msgstr "Voorgestelde tekst over de volkstelling&nbsp;&nbsp;"
 
 #: library/WT/Gedcom/Code/Temp.php:150
 msgid "Provo, Utah"
@@ -11378,10 +11378,6 @@ msgstr "Server op afstand"
 msgid "Remove"
 msgstr "Verwijder"
 
-#: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:125
-msgid "Remove link from list"
-msgstr "Verwijder de Link uit de lijst"
-
 #: modules_v3/batch_update/plugins/duplicate_links.php:28
 msgid "Remove duplicate links"
 msgstr "Verwijder dubbele koppelingen"
@@ -11390,6 +11386,10 @@ msgstr "Verwijder dubbele koppelingen"
 #: modules_v3/googlemap/module.php:537 modules_v3/googlemap/module.php:3908
 msgid "Remove flag"
 msgstr "Verwijder vlag"
+
+#: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:125
+msgid "Remove link from list"
+msgstr "Verwijder de link uit de lijst"
 
 #: help_text.php:1367 timeline.php:288 timeline.php:304
 msgid "Remove person"
@@ -11780,7 +11780,7 @@ msgstr "Zoek naar:"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:57
 msgid "Search for individuals to add to add Links list."
-msgstr "Zoek personen om toe te voegen aan de \"Voeg koppelingen toe\"-lijst."
+msgstr "Zoek personen om toe te voegen aan de lijst “Voeg koppelingen toe”."
 
 #: modules_v3/googlemap/module.php:3831
 msgid "Search globally"
@@ -12054,7 +12054,7 @@ msgstr "Kies <b>Ja</b> indien u pictogrammen naast namen van feiten wilt weergev
 
 #: help_text.php:1012
 msgid "Set to <b>Yes</b> to use the RIN number instead of the GEDCOM ID when asked for individual IDs in configuration files, user settings, and charts.  This is useful for genealogy programs that do not consistently export GEDCOMs with the same ID assigned to each individual but always use the same RIN."
-msgstr "Kies \"Ja\" om RIN-nrs. te gebruiken in plaats van GEDCOM-ID's. Deze worden gebruikt in configuratiebestanden, gebruikersinstellingen en overzichten. Dit is nuttig voor genealogieprogramma's, die geen bijbehorende ID's exporteren maar altijd dezelfde RIN gebruiken."
+msgstr "Kies <b>Ja</b> om het RIN-nummer te gebruiken in plaats van het GEDCOM-ID. Dit nummer wordt gebruikt in configuratiebestanden, gebruikersinstellingen en overzichten. Dit is nuttig voor genealogieprogramma's, die niet altijd dezelfde ID's exporteren maar wel altijd hetzelfde RIN-nummer gebruiken."
 
 #: help_text.php:859
 msgid "Setting this option to <b>Yes</b> will show status codes for LDS ordinances in chart boxes.<ul><li><b>B</b> - Baptism</li><li><b>E</b> - Endowed</li><li><b>S</b> - Sealed to spouse</li><li><b>P</b> - Sealed to parents</li></ul>An individual who has all of the ordinances done will have <b>BESP</b> printed after their name.  Missing ordinances are indicated by <b>_</b> in place of the corresponding letter code.  For example, <b>BE__</b> indicates missing <b>S</b> and <b>P</b> ordinances."
@@ -13773,7 +13773,7 @@ msgstr "Deze stamboom werd het laatst gewijzigd op %s."
 
 #: help_text.php:363
 msgid "This field allows you to change the source record that this fact’s source citation links to.  This field takes a source ID.  Beside the field will be listed the title of the current source ID.  Use the <b>Find ID</b> link to look up the source’s ID number.  To remove the entire citation, make this field blank."
-msgstr "Hier kunt u de bron aanpassen waar de bronvermelding van dit feit naar verwijst. Ingevuld wordt een bron-ID. Daarnaast wordt de titel van de bron weergegeven. Klik op de \"Zoek ID\"-link om een bestaand bron-ID te zoeken. Om de bronvermelding te verwijderen moet u het veld met de Bron-ID leeg maken."
+msgstr "Hier kunt u de bronverwijzing aanpassen door een bron ID-nummer in te vullen. Onder het veld wordt de titel van de huidige bron weergegeven. Klik op de link <b>Vind een bron</b> om het nummer van een bestaande bron op te zoeken. Maak het veld met het bron-nummer leeg om de bronverwijzing te verwijderen."
 
 #: modules_v3/faq/help_text.php:40
 msgid "This field controls the order in which the FAQ items are displayed.<br><br>You do not have to enter the numbers sequentially.  If you leave holes in the numbering scheme, you can insert other items later.  For example, if you use the numbers 1, 6, 11, 16, you can later insert items with the missing sequence numbers.  Negative numbers and zero are allowed, and can be used to insert items in front of the first one.<br><br>When more than one FAQ item has the same position number, only one of these items will be visible."
@@ -14121,11 +14121,11 @@ msgstr "Met deze optie kan een FAQ gewijzigd worden op de FAQ-pagina."
 
 #: modules_v3/faq/help_text.php:60
 msgid "This option will let you move an item downwards on the FAQ page.<br><br>Each time you use this option, the FAQ position number of this item is increased by one.  You can achieve the same effect by editing the item in question and changing the FAQ position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
-msgstr "Hiermee kan een FAQ naar beneden geschoven worden in de FAQ-lijst.<br><br>Iedere keer dat op de pijl geklikt wordt, wordt de positie van de FAQ met één verhoogd. Dit zelfde effect kan worden bereikt door de FAQ te wijzigen en het positienummer te veranderen. Als meerdere  FAQ's hetzelfde positienummer hebben, wordt slechts één van die FAQ's getoond."
+msgstr "Gebruik deze optie om een item naar beneden te verplaatsen in de FAQ-lijst.<br><br>Iedere keer dat u deze optie gebruikt, wordt het positienummer van het item met één verhoogd. Dit zelfde effect kunt u bereiken door het bewuste item te wijzigen en het positienummer te veranderen. Als meerdere  items hetzelfde positienummer hebben, wordt slechts één van de items getoond."
 
 #: modules_v3/faq/help_text.php:65
 msgid "This option will let you move an item upwards on the FAQ page.<br><br>Each time you use this option, the FAQ position number of this item is reduced by one.  You can achieve the same effect by editing the item in question and changing the FAQ position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
-msgstr "Hiermee kan een FAQ omhoog geschoven worden in de FAQ-lijst.<br><br>Iedere keer dat op de pijl geklikt wordt, wordt de positie van deze FAQ met één verlaagd. Dit zelfde effect kan worden bereikt door de FAQ te wijzigen en het positienummer te veranderen. Als meerdere FAQ's hetzelfde positienummer hebben, wordt slechts één van die FAQ's getoond."
+msgstr "Gebruik deze optie om een item naar boven te verplaatsen in de FAQ-lijst.<br><br>Iedere keer dat u deze optie gebruikt, wordt het positienummer van het item met één verlaagd. Dit zelfde effect kunt u bereiken door het bewuste item te wijzigen en het positienummer te veranderen. Als meerdere  items hetzelfde positienummer hebben, wordt slechts één van de items getoond."
 
 #: help_text.php:1099
 msgid "This option will remove private data from the downloaded GEDCOM file.  The file will be filtered according to the privacy settings that apply to each access level.  Privacy settings are specified on the GEDCOM configuration page."
@@ -14197,7 +14197,7 @@ msgstr "Deze rol heeft alle rechten van een \"bewerker\", plus het recht wijzigi
 
 #: help_text.php:1398
 msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the site, users, and modules."
-msgstr "Deze rol heeft alle rechten van de rol van manager in alle stambomen, daarnaast het recht om instellingen/configuratie van de site, gebruikers en modules te veranderen."
+msgstr "Deze rol heeft alle rechten van de rol van manager in alle stambomen. Daarnaast heeft deze rol het recht om instellingen/configuratie van de site, gebruikers en modules aan te passen."
 
 #: help_text.php:1386
 msgid "This role has all the permissions of the member role, plus permission to add/change/delete data.  Any changes will need to be approved by a moderator, unless the user has the “automatically accept changes” option enabled."
@@ -14213,7 +14213,7 @@ msgstr "Deze rol heeft alle rechten van de rol van bezoeker, en daarnaast alle e
 
 #: help_text.php:1144
 msgid "This section allows you to add a new note to the fact that you are currently editing.  Notes are free-form text and will appear in the Fact Details section of the page."
-msgstr "Hier kunt u een Notitie toevoegen aan het feit dat u op dit moment aan het wijzigen bent. In notities kunt u een willekeurige tekst plaatsen. De notitie verschijnt bij de detailgegevens van het feit op de pagina."
+msgstr "Hier kunt u een notitie toevoegen aan het feit dat u op dit moment aan het wijzigen bent. In notities kunt u een willekeurige tekst plaatsen. De notitie verschijnt bij de detailgegevens van het feit op de pagina."
 
 #: help_text.php:1157
 msgid "This section allows you to add a new source citation to the fact that you are currently editing.<br><br>In the Source field you enter the ID for the source.  Click the “Create a new source” link if you need to enter a new source.  In the citation details field you would enter the page number or other information that might help someone find the information in the source.  In the Text field you would enter the text transcription from the source."
@@ -14283,7 +14283,7 @@ msgstr "Dit betekent normalerwijze dat u de permissies voor de map moet verander
 
 #: help_text.php:1223
 msgid "This value determines the number of descendant generations of the root individual that will be printed in hourglass format."
-msgstr "Deze waarde bepaalt het aantal afstammingsgeneraties van de begin persoon, die afgedrukt zullen worden in het Zandloper diagram."
+msgstr "Deze waarde bepaalt het aantal generaties afstammelingen van de begin persoon, die afgedrukt zullen worden in het zandloper diagram."
 
 #: site-offline.php:71 site-unavailable.php:63
 msgid "This website is temporarily unavailable"
@@ -15005,7 +15005,7 @@ msgstr "Gebruik deze knoppen om de volgorde van de blokken in de lijst aan te pa
 
 #: help_text.php:398
 msgid "Use this field to signal that this media item is the highlighted or primary item for the individual it is attached to.  The highlighted image is the one that will be used on charts and on the individual’s page."
-msgstr "Gebruik dit keuzeveld om aan te geven of de afbeelding de gemarkeerde of primaire is, die aan deze persoon is gekoppeld.<br>De gemarkeerde afbeelding wordt gebruikt op diagrammen en op de persoonspagina."
+msgstr "Gebruik dit keuzeveld om aan te geven of de afbeelding als gemarkeerde (primaire) afbeelding moet worden gebruikt.<br>De gemarkeerde afbeelding wordt gebruikt in diagrammen en op de persoonspagina."
 
 #: help_text.php:1358
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site.  You can also use this to enter any other comments you may have for the site administrator."
@@ -15823,10 +15823,6 @@ msgstr "Jongste man"
 msgid "Youngest mother"
 msgstr "Jongste moeder"
 
-#: includes/authentication.php:120 message.php:127
-msgid "Your name:"
-msgstr "Uw naam:"
-
 #: modules_v3/clippings/module.php:172 modules_v3/clippings/module.php:430
 msgid "Your clippings cart is empty."
 msgstr "U heeft nog geen stamboomknipsels verzameld."
@@ -15834,6 +15830,10 @@ msgstr "U heeft nog geen stamboomknipsels verzameld."
 #: setup.php:402
 msgid "Your name"
 msgstr "Uw naam"
+
+#: includes/authentication.php:120 message.php:127
+msgid "Your name:"
+msgstr "Uw naam:"
 
 #. I18N: %s is a server name/URL
 #: login.php:338
