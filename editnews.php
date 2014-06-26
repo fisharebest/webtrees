@@ -28,8 +28,8 @@ require './includes/session.php';
 
 $controller=new WT_Controller_Simple();
 $controller
-	->setPageTitle(WT_I18N::translate('Add/edit journal/news entry'))
-	->requireMemberLogin()
+	->setPageTitle(WT_I18N::translate('Add/edit a journal/news entry'))
+	->restrictAccess(\WT\Auth::isMember())
 	->pageHeader();
 
 $action    = WT_Filter::get('action', 'compose|save|delete', 'compose');
@@ -42,12 +42,11 @@ $text      = WT_Filter::post('text');
 
 switch ($action) {
 case 'compose':
-	
 	if (array_key_exists('ckeditor', WT_Module::getActiveModules())) {
 		ckeditor_WT_Module::enableEditor($controller);
 	}
 
-	echo '<h3>'.WT_I18N::translate('Add/edit journal/news entry').'</h3>';
+	echo '<h3>'.WT_I18N::translate('Add/edit a journal/news entry').'</h3>';
 	echo '<form style="overflow: hidden;" name="messageform" method="post" action="editnews.php?action=save&news_id='.$news_id.'">';
 	if ($news_id) {
 		$news = getNewsItem($news_id);

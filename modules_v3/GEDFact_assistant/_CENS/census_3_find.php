@@ -49,22 +49,11 @@ $controller
 				window.opener.insertRowToTable(id, name);
 			}
 			window.opener.<?php echo $callback; ?>(id);
-			if (window.opener.pastename) window.opener.pastename(name);
+			if (window.opener.pastename) {
+				window.opener.pastename(name);
+			}
 			<?php if (!$multiple) echo "window.close();"; ?>
 		}
-	}
-	function checknames(frm) {
-		if (document.forms[0].subclick) button = document.forms[0].subclick.value;
-		else button = "";
-		if (frm.filter.value.length<2&button!="all") {
-			alert("<?php echo WT_I18N::translate('Please enter more than one character'); ?>");
-			frm.filter.focus();
-			return false;
-		}
-		if (button=="all") {
-			frm.filter.value = "";
-		}
-		return true;
 	}
 </script>
 <?php

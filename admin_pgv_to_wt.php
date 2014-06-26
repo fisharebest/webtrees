@@ -23,14 +23,14 @@ require './includes/session.php';
 //require WT_ROOT.'includes/functions/functions_edit.php';
 
 // We can only import into an empty system, so deny access if we have already created a gedcom or added users.
-if (WT_GED_ID || get_user_count()>1) {
+if (WT_GED_ID || count(\WT\User::all()) > 1) {
 	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
 	exit;
 }
 
 $controller=new WT_Controller_Page();
 $controller
-	->requireAdminLogin()
+	->restrictAccess(\WT\Auth::isAdmin())
 	->setPageTitle(WT_I18N::translate('PhpGedView to webtrees transfer wizard'));
 
 $error    = '';
@@ -98,12 +98,12 @@ echo
 		#container dl {margin:0 0 40px 25px;}
 		#container dt {display:inline; width: 320px; font-weight:normal; margin: 0 0 15px 0;}
 		#container dd {color: #81A9CB; margin-bottom:20px;font-weight:bold;}
-		#container p {color: #81A9CB; font-size: 14px; font-style: italic; font-weight:bold; padding: 0 5px 5px; align: top;}
+		#container p {color: #81A9CB; font-size: 14px; font-style: italic; font-weight:bold; padding: 0 5px 5px;}
 		h2 {color: #81A9CB;}
 		.good {color: green;}
 		.bad {color: red !important;}
 		.indifferent {color: blue;}
-		#container p.pgv  {color: black; font-size: 12px; font-style: normal; font-weight:normal; padding:0; margin:10px 0 0 320px}
+		#container p.pgv  {color: black; font-size: 12px; font-style: normal; font-weight:normal; padding:0; margin:10px 0 0 320px;}
 	</style>';
 
 if ($error || !$PGV_PATH) {
@@ -458,11 +458,6 @@ if ($PGV_SCHEMA_VERSION>=12) {
 			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".
 			" JOIN `##user` ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)".
 			" UNION ALL".
-			" SELECT user_id, 'pwrequested', ".
-			" CASE WHEN u_pwrequested IN ('Y', 'yes') THEN 1 WHEN u_pwrequested IN ('N', 'no') THEN 0 ELSE u_pwrequested END".
-			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".
-			" JOIN `##user` ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)".
-			" UNION ALL".
 			" SELECT user_id, 'reg_timestamp', u_reg_timestamp".
 			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".
 			" JOIN `##user` ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)".
@@ -621,6 +616,10 @@ foreach ($GEDCOMS as $GEDCOM=>$GED_DATA) {
 	if (substr($config, 0, 1)=='.') {
 		$config=$PGV_PATH.'/'.$config;
 	}
+	// Some settings were added in later versions of PGV, and may not be set if the
+	// user has not used the PGV admin pages since upgrading.
+	$NOTE_FACTS_ADD = '';
+	$FULL_SOURCES = '';
 	if (is_readable($config)) {
 		echo '<p>Reading configuration file ', $config, '</p>';
 		require $config;
@@ -654,7 +653,7 @@ foreach ($GEDCOMS as $GEDCOM=>$GED_DATA) {
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'COMMON_NAMES_ADD',             $COMMON_NAMES_ADD));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'COMMON_NAMES_REMOVE',          $COMMON_NAMES_REMOVE));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'COMMON_NAMES_THRESHOLD',       $COMMON_NAMES_THRESHOLD));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'CONTACT_USER_ID',              get_user_id($CONTACT_EMAIL)));
+	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'CONTACT_USER_ID',              \WT\User::findByIdentifier($CONTACT_EMAIL)->getUserId()));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'DEFAULT_PEDIGREE_GENERATIONS', $DEFAULT_PEDIGREE_GENERATIONS));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'EXPAND_NOTES',                 $EXPAND_NOTES));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'EXPAND_RELATIVES_EVENTS',      $EXPAND_RELATIVES_EVENTS));
@@ -777,11 +776,10 @@ foreach ($GEDCOMS as $GEDCOM=>$GED_DATA) {
 		break;
 	}
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'THUMBNAIL_WIDTH',              $THUMBNAIL_WIDTH));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'USE_GEONAMES',                 $USE_GEONAMES));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'USE_RELATIONSHIP_PRIVACY',     $USE_RELATIONSHIP_PRIVACY));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'USE_RIN',                      $USE_RIN));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'WATERMARK_THUMB',              $WATERMARK_THUMB));
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'WEBMASTER_USER_ID',            get_user_id($WEBMASTER_EMAIL)));
+	@$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'WEBMASTER_USER_ID',           \WT\User::findByIdentifier($WEBMASTER_EMAIL)->getUserId()));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'WORD_WRAPPED_NOTES',           $WORD_WRAPPED_NOTES));
 }
 WT_DB::prepare("DELETE FROM `##gedcom_setting` WHERE setting_name in ('config', 'privacy', 'path', 'pgv_ver', 'imported')")->execute();

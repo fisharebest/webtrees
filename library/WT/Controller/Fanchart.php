@@ -21,11 +21,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 class WT_Controller_Fanchart extends WT_Controller_Chart {
 	// Variables for the view
 	public $fan_style      =null;
@@ -75,23 +70,25 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 		$lines = explode("\n", $data);
 		// more than 1 line : recursive calls
 		if (count($lines)>1) {
-			$text = "";
-			foreach ($lines as $indexval => $line) $text .= $this->split_align_text($line, $maxlen)."\n";
+			$text = '';
+			foreach ($lines as $line) {
+				$text .= $this->split_align_text($line, $maxlen)."\n";
+			}
 			return $text;
 		}
 		// process current line word by word
-		$split = explode(" ", $data);
-		$text = "";
-		$line = "";
+		$split = explode(' ', $data);
+		$text = '';
+		$line = '';
 		// do not split hebrew line
 
 		$found = false;
-		foreach ($RTLOrd as $indexval => $ord) {
+		foreach ($RTLOrd as $ord) {
 			if (strpos($data, chr($ord)) !== false) $found=true;
 		}
 		if ($found) $line=$data;
 		else
-		foreach ($split as $indexval => $word) {
+		foreach ($split as $word) {
 			$len = strlen($line);
 			//if (!empty($line) and ord($line{0})==215) $len/=2; // hebrew text
 			$wlen = strlen($word);
@@ -360,6 +357,7 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 			$image_title=WT_I18N::translate('Fan chart of %s', strip_tags($name));
 			return $html.$imagemap.'<p align="center"><img src="'.WT_SCRIPT_NAME.'?rootid='.$this->rootid.'&amp;fan_style='.$this->fan_style.'&amp;generations='.$this->generations.'&amp;fan_width='.$this->fan_width.'&amp;img=1" width="'.$fanw.'" height="'.$fanh.'" alt="'.$image_title.'" title="'.$image_title.'" usemap="#fanmap"></p>';
 		case 'png':
+			header('Content-Type: image/png');
 			ImageStringUp($image, 1, $fanw-10, $fanh/3, WT_SERVER_NAME.WT_SCRIPT_PATH, $color);
 			ImagePng($image);
 			ImageDestroy($image);

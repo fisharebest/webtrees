@@ -29,9 +29,9 @@ require './includes/session.php';
 $controller=new WT_Controller_Lifespan();
 $controller
 	->pageHeader()
-	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
+	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+	->addInlineJavascript('autocomplete();')
 	->addInlineJavascript('
-		var pastefield; function paste_id(value) { pastefield.value=value; }  // For the "find indi" link
 		var timer;
 		var offSetNum = 20; // amount timeline moves with each mouse click
 		var speed;
@@ -98,10 +98,11 @@ $controller
 		}
 		// Main function to retrieve mouse x-y pos.s
 		function getMouseXY(e) {
-			if (IE) { // grab the x-y pos.s if browser is IE
+			var event = e || window.event;
+			if (typeof event.pageX === "undefined" || typeof event.pageY === "undefined") {
 				msX = event.clientX + document.documentElement.scrollLeft;
 				msY = event.clientY + document.documentElement.scrollTop;
-			} else {  // grab the x-y pos.s if browser is NS
+			} else {
 				msX = e.pageX;
 				msY = e.pageY;
 			}
@@ -124,8 +125,6 @@ $controller
 			}
 		}
 
-		var IE = document.all?true:false;
-		if (!IE) document.captureEvents(Event.MOUSEMOVE | Event.MOUSEUP)
 		document.onmousemove = getMouseXY;
 		document.onmouseup = releaseimage;
 ');
@@ -143,17 +142,17 @@ $people = count($controller->people);
 					<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>">
 					<table>
 						<tr>
-							<td class="person0" style="padding: 5px" valign="top">
+							<td class="person0" style="padding: 5px;" valign="top">
 								<?php echo WT_I18N::translate('Add another individual to the chart'); ?>
 								<br>
-								<input class="pedigree_form" type="text" size="5" id="newpid" name="newpid">
+								<input class="pedigree_form" data-autocomplete-type="INDI" type="text" size="5" id="newpid" name="newpid">
 								<?php print_findindi_link('newpid'); ?>
 								<br>
-								<div style="text-align: center">
+								<div style="text-align: center;">
 									<?php echo WT_I18N::translate('Include the individual’s immediate family?'); ?>
 									<input type="checkbox" checked="checked" value="yes" name="addFamily">
 								</div>
-								<div style="text-align: center">
+								<div style="text-align: center;">
 									<input type="submit" value="<?php echo WT_I18N::translate('Add'); ?>">
 								</div>
 							</td>
@@ -181,13 +180,13 @@ $people = count($controller->people);
 								</select>
 							</td>
 							<td>
-								<input type="text" name="beginYear" size="5" value="<?php echo $controller->beginYear==0?'':$controller->beginYear; ?>">
+								<input type="text" name="beginYear" size="5" value="<?php echo $controller->beginYear==0 ? '' : $controller->beginYear; ?>">
 							</td>
 							<td>
-								<input type="text" name="endYear" size="5" value="<?php echo $controller->endYear==0?'':$controller->endYear; ?>">
+								<input type="text" name="endYear" size="5" value="<?php echo $controller->endYear==0 ? '' : $controller->endYear; ?>">
 							</td>
 							<td>
-								<input type="text" name="place" size="15" value="<?php echo $controller->place; ?>">
+								<input data-autocomplete-type="PLAC" type="text" name="place" size="15" value="<?php echo WT_Filter::escapeHtml($controller->place); ?>">
 							</td>
 							<td>
 								<input type="submit" name="search" value="<?php echo WT_I18N::translate('Search'); ?>">
@@ -197,7 +196,7 @@ $people = count($controller->people);
 							</td>
 						</tr>
 					</table>
-					<b><?php echo WT_I18N::plural('%d Individual', '%d Individuals', $people, $people); ?></b>
+					<b><?php echo WT_I18N::plural('%s individual', '%s individuals', $people, $people); ?></b>
 				</form>
 			</td>
 		</tr>
@@ -211,7 +210,7 @@ $people = count($controller->people);
 		</div>
 		<!--  Floating div controls START -->
 		<div dir="ltr" style="position:relative; z-index: 100; filter: alpha(opacity=67); -moz-opacity: 0.67;  opacity: 0.67; width:180px; top: 80px;">
-			<table style="margin-left: 20px" dir="ltr" border="0" cellpadding="0">
+			<table style="margin-left: 20px;" dir="ltr" border="0" cellpadding="0">
 				<tr>
 					<td></td>
 					<td align="center"><a href="#" onclick="return false;" onmousedown="startScroll('down')" onmouseup="stopScroll()" class="icon-lsuparrow"></a></td>

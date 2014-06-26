@@ -35,7 +35,7 @@ $followspouse = WT_Filter::getBool('followspouse');
 $asc          = WT_Filter::getBool('asc');
 
 $asc = $asc ? -1 : 1;
-
+$Dbwidth=$bwidth;
 if (!$show_full) {
 	$bwidth  = $cbwidth;
 	$bheight = $cbheight;
@@ -52,8 +52,8 @@ $person1=WT_Individual::getInstance($pid1);
 $person2=WT_Individual::getInstance($pid2);
 
 $controller
-	->addInlineJavascript('var pastefield; function paste_id(value) { pastefield.value=value; }') // For the 'find indi' link
-	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');
+	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+	->addInlineJavascript('autocomplete();');
 
 if ($person1 && $person1->canShowName() && $person2 && $person2->canShowName()) {
 	$controller
@@ -94,7 +94,7 @@ if ($person1 && $person1->canShowName() && $person2 && $person2->canShowName()) 
 					<?php echo WT_I18N::translate('Individual 1'); ?>
 				</td>
 				<td class="optionbox vmiddle">
-					<input tabindex="1" class="pedigree_form" type="text" name="pid1" id="pid1" size="3" value="<?php echo $pid1; ?>">
+					<input tabindex="1" class="pedigree_form" data-autocomplete-type="INDI" type="text" name="pid1" id="pid1" size="3" value="<?php echo $pid1; ?>">
 					<?php echo print_findindi_link('pid1'); ?>
 				</td>
 				<td class="descriptionbox">
@@ -109,7 +109,7 @@ if ($person1 && $person1->canShowName() && $person2 && $person2->canShowName()) 
 					<?php echo WT_I18N::translate('Individual 2'); ?>
 				</td>
 				<td class="optionbox vmiddle">
-					<input tabindex="2" class="pedigree_form" type="text" name="pid2" id="pid2" size="3" value="<?php echo $pid2; ?>">
+					<input tabindex="2" class="pedigree_form" data-autocomplete-type="INDI" type="text" name="pid2" id="pid2" size="3" value="<?php echo $pid2; ?>">
 					<?php echo print_findindi_link('pid2'); ?>
 				</td>
 				<td class="descriptionbox">
@@ -161,7 +161,7 @@ if ($person1 && $person1->canShowName() && $person2 && $person2->canShowName()) 
 $maxyoffset = $Dbaseyoffset;
 if ($person1 && $person2) {
 	if (!$disp) {
-		print_privacy_error();
+		echo '<div class="error">', WT_I18N::translate('This information is private and cannot be shown.'), '</div>';
 	} elseif (!$node) {
 		if ($path_to_find==0) {
 			echo '<p class="error">', WT_I18N::translate('No link between the two individuals could be found.'), '</p>';
@@ -282,6 +282,7 @@ if ($person1 && $person2) {
 						$joiny = $joiny+$asc*$lh;
 						echo "<div id=\"joinb", $index, "\" style=\"position:absolute; ", $TEXT_DIRECTION=='ltr'?'left':'right', ':', $joinx + $Dbxspacing, 'px; top:', $joiny + $Dbyspacing, "px;\" align=\"center\"><img src=\"", $WT_IMAGES["hline"], "\" align=\"left\" width=\"", $joinw, "\" height=\"", $joinh, "\" alt=\"\"></div>";
 					}
+					else $change_count='';
 					$previous='parent';
 					break;
 				case 'brother':
@@ -344,6 +345,7 @@ if ($person1 && $person2) {
 						$joiny = $joiny-$asc*$lh;
 						echo '<div id="joinb', $index, '" style="position:absolute; ', $TEXT_DIRECTION=='ltr'?'left':'right', ':', $joinx+$Dbxspacing, 'px; top:', $joiny+$Dbyspacing, 'px;" align="center"><img src="', $WT_IMAGES['hline'], '" align="left" width="', $joinw, '" height="', $joinh, '" alt=""></div>';
 					}
+					else $change_count='';
 					$previous='child';
 					break;
 				}

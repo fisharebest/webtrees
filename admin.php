@@ -25,10 +25,10 @@ require WT_ROOT.'includes/functions/functions_edit.php';
 
 $controller=new WT_Controller_Page();
 $controller
-	->requireManagerLogin()
-	->addInlineJavascript('jQuery("#x").accordion({active:0, icons:{ "header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" }, heightStyle: "content"});')
-	->addInlineJavascript('jQuery("#tree_stats").accordion({icons:{ "header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" }});')
-	->addInlineJavascript('jQuery("#changes").accordion({icons:{ "header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" }});')
+	->restrictAccess(\WT\Auth::isManager())
+	->addInlineJavascript('jQuery("#x").accordion({heightStyle: "content"});')
+	->addInlineJavascript('jQuery("#tree_stats").accordion();')
+	->addInlineJavascript('jQuery("#changes").accordion();')
 	->addInlineJavascript('jQuery("#content_container").css("visibility", "visible");')
 	->setPageTitle(WT_I18N::translate('Administration'))
 	->pageHeader();
@@ -55,9 +55,7 @@ foreach (old_paths() as $path) {
 }
 
 // Total number of users
-$total_users = WT_DB::prepare(
-	"SELECT COUNT(*) FROM `##user` WHERE user_id>0"
-)->fetchOne();
+$total_users = \WT\User::count();
 
 // Total number of administrators
 $total_administrators = WT_DB::prepare(
@@ -96,7 +94,7 @@ $user_languages = WT_DB::prepare(
 $stats = new WT_Stats(WT_GEDCOM);
 
 ?>
-<div id="content_container" style="visibility:hidden">
+<div id="content_container" style="visibility: hidden;">
 	<div id="x">
 		<h2><?php echo WT_WEBTREES, ' ', WT_VERSION; ?></h2>
 		<div id="about">
@@ -106,7 +104,7 @@ $stats = new WT_Stats(WT_GEDCOM);
 			<p>
 				<?php echo /* I18N: %s is a URL/link to the project website */ WT_I18N::translate('Support and documentation can be found at %s.', ' <a class="current" href="http://webtrees.net/">webtrees.net</a>'); ?>
 			</p>
-			<?php if (WT_USER_IS_ADMIN && $latest_version && version_compare(WT_VERSION, $latest_version)<0) { ?>
+			<?php if (\WT\Auth::isAdmin() && $latest_version && version_compare(WT_VERSION, $latest_version)<0) { ?>
 			<p>
 				<?php echo WT_I18N::translate('A new version of webtrees is available.'); ?>
 				<a href="admin_site_upgrade.php" class="error">
@@ -116,7 +114,7 @@ $stats = new WT_Stats(WT_GEDCOM);
 			<?php } ?>
 		</div>
 
-		<?php if (WT_USER_IS_ADMIN && $old_files) { ?>
+		<?php if (\WT\Auth::isAdmin() && $old_files) { ?>
 		<h2><span class="warning"><?php echo WT_I18N::translate('Old files found'); ?></span></h2>
 		<div>
 			<p>
@@ -125,7 +123,7 @@ $stats = new WT_Stats(WT_GEDCOM);
 			<ul>
 				<?php foreach ($old_files as $old_file) { ?>
 				<li dir="ltr"><?php echo $old_file; ?></li>
-				<?php } ?>	
+				<?php } ?>
 			</ul>
 		</div>
 		<?php } ?>
@@ -152,11 +150,11 @@ $stats = new WT_Stats(WT_GEDCOM);
 					</tr>
 					<?php } ?>
 					<tr>
-						<td><?php echo WT_I18N::translate('Unverified by User'); ?></td>
+						<td><?php echo WT_I18N::translate('Not verified by the user'); ?></td>
 						<td><?php echo $unverified; ?></td>
 					</tr>
 					<tr>
-						<td><?php echo WT_I18N::translate('Unverified by Administrator'); ?></td>
+						<td><?php echo WT_I18N::translate('Not approved by an administrator'); ?></td>
 						<td><?php echo $unapproved; ?></td>
 					</tr>
 					<tr>
@@ -595,6 +593,37 @@ function old_paths() {
 		// Removed in 1.5.3
 		WT_ROOT.'js/jquery-1.10.2.js',
 		WT_ROOT.'js/jquery-ui-1.10.3.js',
+		WT_ROOT.'js/webtrees-1.5.2.js',
+		WT_ROOT.'library/htmlpurifier-4.6.0',
+		//WT_ROOT.'library/Michelf', On windows, this would delete library/michelf
+		WT_ROOT.'library/tcpdf',
+		WT_ROOT.'library/Zend',
+		WT_ROOT.'modules_v3/GEDFact_assistant/_CENS/census_asst_help.php',
+		WT_ROOT.'modules_v3/googlemap/admin_places.php',
+		WT_ROOT.'modules_v3/googlemap/defaultconfig.php',
+		WT_ROOT.'modules_v3/googlemap/googlemap.php',
+		WT_ROOT.'modules_v3/googlemap/placehierarchy.php',
+		WT_ROOT.'modules_v3/googlemap/places_edit.php',
+		WT_ROOT.'modules_v3/googlemap/util.js',
+		WT_ROOT.'modules_v3/googlemap/wt_v3_places_edit.js.php',
+		WT_ROOT.'modules_v3/googlemap/wt_v3_places_edit_overlays.js.php',
+		WT_ROOT.'modules_v3/googlemap/wt_v3_street_view.php',
+		WT_ROOT.'readme.html',
+		WT_ROOT.'themes/_administration/css-1.5.2',
+		WT_ROOT.'themes/clouds/css-1.5.2',
+		WT_ROOT.'themes/colors/css-1.5.2',
+		WT_ROOT.'themes/fab/css-1.5.2',
+		WT_ROOT.'themes/minimal/css-1.5.2',
+		WT_ROOT.'themes/webtrees/css-1.5.2',
+		WT_ROOT.'themes/xenea/css-1.5.2',
+		// Removed in 1.5.4
+		WT_ROOT.'js/jquery.colorbox-1.4.15.js',
+		WT_ROOT.'js/jquery.cookie-1.4.0.js',
+		WT_ROOT.'js/jquery.datatables-1.9.4.js',
+		WT_ROOT.'js/jquery.jeditable-1.7.1.js',
+		WT_ROOT.'js/jquery.wheelzoom-1.1.2.js',
+		WT_ROOT.'js/jquery-1.11.0.js',
+		WT_ROOT.'js/webtrees-1.5.3.js',
 	);
 }
 

@@ -21,11 +21,6 @@
 // along with this program; if not, write to the Free Software
 // // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 class WT_MenuBar {
 	public static function getGedcomMenu() {
 		$menu = new WT_Menu(WT_I18N::translate('Home page'), 'index.php?ctype=gedcom&amp;ged='.WT_GEDURL, 'menu-tree');
@@ -49,7 +44,7 @@ class WT_MenuBar {
 		$showFull = ($PEDIGREE_FULL_DETAILS) ? 1 : 0;
 		$showLayout = ($PEDIGREE_LAYOUT) ? 1 : 0;
 
-		if (!WT_USER_ID) {
+		if (!\WT\Auth::id()) {
 			return null;
 		}
 
@@ -60,7 +55,7 @@ class WT_MenuBar {
 		$submenu = new WT_Menu(WT_I18N::translate('My page'), 'index.php?ctype=user&amp;ged='.WT_GEDURL, 'menu-mypage');
 		$menu->addSubmenu($submenu);
 		//-- editaccount submenu
-		if (get_user_setting(WT_USER_ID, 'editaccount')) {
+		if (\WT\Auth::user()->getSetting('editaccount')) {
 			$submenu = new WT_Menu(WT_I18N::translate('My account'), 'edituser.php', 'menu-myaccount');
 			$menu->addSubmenu($submenu);
 		}
@@ -159,8 +154,6 @@ class WT_MenuBar {
 				break;
 
 			case 'timeline':
-				//-- timeline
-				$link = 'timeline.php?ged='.WT_GEDURL;
 				$submenu = new WT_Menu($menuName, 'timeline.php?pids%5B%5D='.$indi_xref.'&amp;ged='.WT_GEDURL, 'menu-chart-timeline');
 				if ($controller instanceof WT_Controller_Family && $controller->record) {
 					// Build a sortable list of submenu items and then sort it in localized name order
@@ -171,12 +164,12 @@ class WT_MenuBar {
 					asort($menuList);
 
 					// Produce the submenus in localized name order
-					foreach ($menuList as $menuType => $menuName) {
-						switch ($menuType) {
+					foreach ($menuList as $submenuType => $submenuName) {
+						switch ($submenuType) {
 						case 'parentTimeLine':
 							// charts / parents_timeline
 							$subsubmenu = new WT_Menu(
-								WT_I18N::translate('Show couple on timeline chart'),
+								$submenuName,
 								'timeline.php?'.$controller->getTimelineIndis(array('HUSB','WIFE')).'&amp;ged='.WT_GEDURL,
 								'menu-chart-timeline-parents'
 							);
@@ -186,7 +179,7 @@ class WT_MenuBar {
 						case 'childTimeLine':
 							// charts / children_timeline
 							$subsubmenu = new WT_Menu(
-								WT_I18N::translate('Show children on timeline chart'),
+								$submenuName,
 								'timeline.php?'.$controller->getTimelineIndis(array('CHIL')).'&amp;ged='.WT_GEDURL,
 								'menu-chart-timeline-children'
 							);
@@ -196,7 +189,7 @@ class WT_MenuBar {
 						case 'familyTimeLine':
 							// charts / family_timeline
 							$subsubmenu = new WT_Menu(
-								WT_I18N::translate('Show family on timeline chart'),
+								$submenuName,
 								'timeline.php?'.$controller->getTimelineIndis(array('HUSB','WIFE','CHIL')).'&amp;ged='.WT_GEDURL,
 								'menu-chart-timeline-family'
 							);
@@ -381,9 +374,13 @@ class WT_MenuBar {
 	}
 
 	/**
-	* get the reports menu
-	* @return WT_Menu the menu item
-	*/
+	 * get the reports menu
+	 *
+	 * @param string $pid
+	 * @param string $famid
+	 *
+	 * @return WT_Menu the menu item
+	 */
 	public static function getReportsMenu($pid='', $famid='') {
 		global $SEARCH_SPIDER;
 
@@ -399,6 +396,7 @@ class WT_MenuBar {
 				$menu->addSubmenu($submenu);
 			}
 		}
+
 		return $menu;
 	}
 

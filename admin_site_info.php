@@ -28,7 +28,7 @@ require './includes/session.php';
 
 $controller=new WT_Controller_Page();
 $controller
-	->requireAdminLogin()
+	->restrictAccess(\WT\Auth::isAdmin())
 	->setPageTitle(WT_I18N::translate('PHP information'))
 	->pageHeader();
 

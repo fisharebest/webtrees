@@ -21,11 +21,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 class WT_GedcomRecord {
 	const RECORD_TYPE = 'UNKNOWN';
 	const SQL_FETCH   = "SELECT o_gedcom FROM `##other` WHERE o_id=? AND o_file=?";
@@ -370,8 +365,6 @@ class WT_GedcomRecord {
 	// Remove private data from the raw gedcom record.
 	// Return both the visible and invisible data.  We need the invisible data when editing.
 	public function privatizeGedcom($access_level) {
-		global $global_facts, $person_facts;
-
 		if ($access_level==WT_PRIV_HIDE) {
 			// We may need the original record, for example when downloading a GEDCOM or clippings cart
 			return $this->gedcom;
@@ -888,7 +881,7 @@ class WT_GedcomRecord {
 
 		// First line of record may contain data - e.g. NOTE records.
 		list($new_gedcom) = explode("\n", $old_gedcom, 2);
-		$old_chan = $this->getFirstFact('CHAN');
+
 		// Replacing (or deleting) an existing fact
 		foreach ($this->getFacts(null, false, WT_PRIV_HIDE) as $fact) {
 			if (!$fact->isOld()) {
@@ -925,7 +918,7 @@ class WT_GedcomRecord {
 
 			$this->pending = $new_gedcom;
 
-			if (get_user_setting(WT_USER_ID, 'auto_accept')) {
+			if (\WT\Auth::user()->getSetting('auto_accept')) {
 				accept_all_changes($this->xref, $this->gedcom_id);
 				$this->gedcom  = $new_gedcom;
 				$this->pending = null;
@@ -968,14 +961,14 @@ class WT_GedcomRecord {
 		));
 
 		// Accept this pending change
-		if (get_user_setting(WT_USER_ID, 'auto_accept')) {
+		if (\WT\Auth::user()->getSetting('auto_accept')) {
 			accept_all_changes($xref, $gedcom_id);
 		}
 
 		// Clear this record from the cache
 		self::$pending_record_cache = null;
 
-		AddToLog('Create: ' . $type . ' ' . $xref, 'edit');
+		\WT\Log::addEditLog('Create: ' . $type . ' ' . $xref);
 
 		// Return the newly created record
 		return WT_GedcomRecord::getInstance($xref);
@@ -1011,7 +1004,7 @@ class WT_GedcomRecord {
 		$this->pending = $gedcom;
 
 		// Accept this pending change
-		if (get_user_setting(WT_USER_ID, 'auto_accept')) {
+		if (\WT\Auth::user()->getSetting('auto_accept')) {
 			accept_all_changes($this->xref, $this->gedcom_id);
 			$this->gedcom  = $gedcom;
 			$this->pending = null;
@@ -1019,7 +1012,7 @@ class WT_GedcomRecord {
 
 		$this->parseFacts();
 
-		AddToLog('Update: ' . static::RECORD_TYPE . ' ' . $this->xref, 'edit');
+		\WT\Log::addEditLog('Update: ' . static::RECORD_TYPE . ' ' . $this->xref);
 	}
 
 	public function deleteRecord() {
@@ -1030,11 +1023,11 @@ class WT_GedcomRecord {
 			$this->gedcom_id,
 			$this->xref,
 			$this->getGedcom(),
-			WT_USER_ID
+			\WT\Auth::id(),
 		));
 
 		// Accept this pending change
-		if (get_user_setting(WT_USER_ID, 'auto_accept')) {
+		if (\WT\Auth::user()->getSetting('auto_accept')) {
 			accept_all_changes($this->xref, $this->gedcom_id);
 		}
 
@@ -1042,7 +1035,7 @@ class WT_GedcomRecord {
 		self::$gedcom_record_cache = null;
 		self::$pending_record_cache = null;
 
-		AddToLog('Delete: ' . static::RECORD_TYPE . ' ' . $this->xref, 'edit');
+		\WT\Log::addEditLog('Delete: ' . static::RECORD_TYPE . ' ' . $this->xref);
 	}
 
 	// Remove all links from this record to $xref

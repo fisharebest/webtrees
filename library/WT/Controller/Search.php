@@ -21,11 +21,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 class WT_Controller_Search extends WT_Controller_Page {
 	public $action;
 	// TODO: decide if these variables are public/private/protected (or unused)
@@ -79,7 +74,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 	function __construct() {
 		parent::__construct();
 
-		// $action comes from $_GET (menus) or $_POST (form submission)
+		// $action comes from GET (menus) or POST (form submission)
 		$this->action = WT_Filter::post('action', 'advanced|general|soundex|replace');
 		if (!$this->action) {
 			$this->action = WT_Filter::get('action', 'advanced|general|soundex|replace', 'general');
@@ -386,7 +381,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 			return;
 		}
 
-		AddToLog("Search And Replace old:".$oldquery." new:".$this->replace, 'edit');
+		\WT\Log::addEditLog("Search And Replace old:".$oldquery." new:".$this->replace);
 		$manual_save = true;
 		// Include edit functions.
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
@@ -597,7 +592,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 					}
 				}
 				echo '</div>';//#searchAccordion-indi
-				$this->addInlineJavascript('jQuery("#searchAccordion-indi").accordion({active:0, heightStyle: "content", collapsible: true, icons:{ "header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" }});');
+				$this->addInlineJavascript('jQuery("#searchAccordion-indi").accordion({heightStyle: "content", collapsible: true});');
 
 				// family results
 				echo '<div id="searchAccordion-fam">';
@@ -621,7 +616,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 					}
 				}
 				echo '</div>';//#searchAccordion-fam
-				$this->addInlineJavascript('jQuery("#searchAccordion-fam").accordion({active:0, heightStyle: "content", collapsible: true, icons:{ "header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" }});');
+				$this->addInlineJavascript('jQuery("#searchAccordion-fam").accordion({heightStyle: "content", collapsible: true});');
 
 				// source results
 				echo '<div id="searchAccordion-source">';
@@ -645,7 +640,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 					}
 				}
 				echo '</div>';//#searchAccordion-source
-				$this->addInlineJavascript('jQuery("#searchAccordion-source").accordion({active:0, heightStyle: "content", collapsible: true, icons:{ "header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" }});');
+				$this->addInlineJavascript('jQuery("#searchAccordion-source").accordion({heightStyle: "content", collapsible: true});');
 
 				// note results
 				echo '<div id="searchAccordion-note">';
@@ -669,7 +664,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 					}
 				}
 				echo '</div>';//#searchAccordion-note
-				$this->addInlineJavascript('jQuery("#searchAccordion-note").accordion({active:0, heightStyle: "content", collapsible: true, icons:{ "header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" }});');
+				$this->addInlineJavascript('jQuery("#searchAccordion-note").accordion({heightStyle: "content", collapsible: true});');
 
 				$GEDCOM=WT_GEDCOM;
 				load_gedcom_settings(WT_GED_ID);

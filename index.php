@@ -81,11 +81,12 @@ if ($action == 'ajax') {
 
 $controller=new WT_Controller_Page();
 if ($ctype=='user') {
-	$controller->requireMemberLogin();
+	$controller->restrictAccess(\WT\Auth::isMember());
 }
 $controller
 	->setPageTitle($ctype=='user' ? WT_I18N::translate('My page') : WT_TREE_TITLE)
 	->setMetaRobots('index,follow')
+	->setCanonicalUrl(WT_SCRIPT_NAME . '?ctype=' . $ctype . '&amp;ged=' . WT_GEDCOM)
 	->pageHeader()
 	// By default jQuery modifies AJAX URLs to disable caching, causing JS libraries to be loaded many times.
 	->addInlineJavascript('jQuery.ajaxSetup({cache:true});');

@@ -30,7 +30,8 @@ require_once WT_ROOT.'includes/functions/functions_edit.php';
 $controller=new WT_Controller_Hourglass();
 $controller
 	->pageHeader()
-	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
+	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+	->addInlineJavascript('autocomplete();')
 	->setupJavascript()
 	->addInlineJavascript('sizeLines();');
 
@@ -48,7 +49,7 @@ $gencount=0;
 					<?php echo WT_I18N::translate('Individual'); ?>
 				</td>
 				<td class="optionbox">
-					<input class="pedigree_form" type="text" name="rootid" id="rootid" size="3" value="<?php echo $controller->pid; ?>">
+					<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="rootid" id="rootid" size="3" value="<?php echo $controller->pid; ?>">
 					<?php echo print_findindi_link('pid'); ?>
 				</td>
 				<td class="descriptionbox">

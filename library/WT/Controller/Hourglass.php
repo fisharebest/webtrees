@@ -21,11 +21,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 class WT_Controller_Hourglass extends WT_Controller_Chart {
 	var $pid = "";
 
@@ -46,7 +41,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 	var $ARID;
 
 	function __construct($rootid='', $show_full=1, $generations=3) {
-		global $USE_RIN, $MAX_ALIVE_AGE, $GEDCOM, $bheight, $bwidth, $cbwidth, $cbheight, $bhalfheight, $PEDIGREE_FULL_DETAILS, $MAX_DESCENDANCY_GENERATIONS;
+		global $bheight, $bwidth, $cbwidth, $cbheight, $bhalfheight, $PEDIGREE_FULL_DETAILS, $MAX_DESCENDANCY_GENERATIONS;
 		global $TEXT_DIRECTION, $show_full;
 
 		parent::__construct();
@@ -105,10 +100,8 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 	/**
 	 * Prints pedigree of the person passed in. Which is the descendancy
 	 *
-	 * @param mixed $pid ID of person to print the pedigree for
-	 * @param mixed $count generation count, so it recursively calls itself
-	 * @access public
-	 * @return void
+	 * @param string $person ID of person to print the pedigree for
+	 * @param int    $count  generation count, so it recursively calls itself
 	 */
 	function print_person_pedigree($person, $count) {
 		global $WT_IMAGES, $bheight, $bwidth, $bhalfheight;
@@ -161,50 +154,73 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 
 				//-- print an Ajax arrow on the last generation of the adult male
 				if ($count==$this->generations-1 && $family->getHusband()->getChildFamilies()) {
-					echo "<a href=\"#\" onclick=\"return ChangeDiv('td_".$ARID."','".$ARID."','".$this->show_full."','".$this->show_spouse."','".$this->box_width."')\" class=\"".$this->right_arrow."\"></a> ";
+					echo "<a href=\"#\" onclick=\"return changeDiv('td_".$ARID."','".$ARID."','".$this->show_full."','".$this->show_spouse."','".$this->box_width."')\" class=\"".$this->right_arrow."\"></a> ";
 				}
 				//-- recursively get the father’s family
 				$this->print_person_pedigree($family->getHusband(), $count+1);
 				echo "</td>";
+			} else {
+				echo '<td>';
+				if ($count<$genoffset-1) {
+					echo '<table>';
+						for ($i=$count; $i<(pow(2, ($genoffset-1)-$count)/2)+2; $i++) {
+						$this->printEmptyBox($bwidth, $bheight);
+						echo '</tr>';
+						$this->printEmptyBox($bwidth, $bheight);
+						echo '</tr>';
+					}
+				echo '</table>';
+				}
 			}
-			echo "</tr><tr>";
-			echo "<td valign=\"top\"><img name=\"pvline\" src=\"".$WT_IMAGES["vline"]."\" width=\"3\" height=\"$lh\" alt=\"\"></td>";
-			echo "<td><img class=\"line4\" src=\"".$WT_IMAGES["hline"]."\" width=\"7\" height=\"3\" alt=\"\"></td>";
-			echo "<td>";
+			echo '</tr><tr>',
+				 '<td valign="top"><img name="pvline" src="'.$WT_IMAGES["vline"].'" width="3" height="$lh" alt=""></td>',
+				 '<td><img class="line4" src="'.$WT_IMAGES["hline"].'" width="7" height="3" alt=""></td>',
+				 '<td>';
 			//-- print the mother box
 			print_pedigree_person($family->getWife());
-			echo "</td>";
+			echo '</td>';
 			if ($family->getWife()) {
 				$ARID = $family->getWife()->getXref();
-				echo "<td id=\"td_".$ARID."\">";
+				echo '<td id="td_'.$ARID.'">';
 
 				//-- print an ajax arrow on the last generation of the adult female
 				if ($count==$this->generations-1 && $family->getWife()->getChildFamilies()) {
-					echo "<a href=\"#\" onclick=\"ChangeDiv('td_".$ARID."','".$ARID."','".$this->show_full."','".$this->show_spouse."','".$this->box_width."'); return false;\" class=\"".$this->right_arrow."\"></a> ";
+					echo "<a href=\"#\" onclick=\"changeDiv('td_".$ARID."','".$ARID."','".$this->show_full."','".$this->show_spouse."','".$this->box_width."'); return false;\" class=\"".$this->right_arrow."\"></a> ";
 				}
 
 				//-- recursively print the mother’s family
 				$this->print_person_pedigree($family->getWife(), $count+1);
-				echo "</td>";
+				echo '</td>';
 			}
-			echo "</tr>";
-			echo "</table>";
+			echo '</tr>',
+				 '</table>';
 			break;
 		}
 	}
-
+	/**
+	 * Print empty box
+	 */
+	function printEmptyBox($bwidth, $bheight){
+	echo '<tr>',
+		 '<td>',
+		 '<div style="width:',$bwidth+16,'px; height:',$bheight+8,'px;"></div>',
+		 '</td>',
+		 '<td>';
+	}
+	
 	/**
 	 * Prints descendency of passed in person
 	 *
-	 * @param mixed $pid ID of person to print descendency for
-	 * @param mixed $count count of generations to print
-	 * @access public
-	 * @return void
+	 * @param WT_Individual $person person to print descendency for
+	 * @param mixed         $count  count of generations to print
+	 * @param bool          $showNav
+	 *
+	 * @return int
 	 */
 	function print_descendency($person, $count, $showNav=true) {
 		global $TEXT_DIRECTION, $WT_IMAGES, $bheight, $bwidth, $bhalfheight, $lastGenSecondFam;
 
-		if ($count>$this->dgenerations) return 0;
+		if ($count>$this->dgenerations) return;
 		if (!$person) return;
 		$pid=$person->getXref();
 		$tablealign = "right";
@@ -213,7 +229,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 			$tablealign = "left";
 			$otablealign = "right";
 		}
-		
+
 		//-- put a space between families on the last generation
 		if ($count==$this->dgenerations-1) {
 			if (isset($lastGenSecondFam)) echo "<br>";
@@ -294,7 +310,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 			if ($kcount==0) {
 				echo "&nbsp;</td><td width=\"$bwidth\">";
 			} else {
-				echo "<a href=\"$pid\" onclick=\"return ChangeDis('td_".$pid."','".$pid."','".$this->show_full."','".$this->show_spouse."','".$this->box_width."')\" class=\"".$this->left_arrow."\"></a>";
+				echo "<a href=\"$pid\" onclick=\"return changeDis('td_".$pid."','".$pid."','".$this->show_full."','".$this->show_spouse."','".$this->box_width."')\" class=\"".$this->left_arrow."\"></a>";
 				//-- move the arrow up to line up with the correct box
 				if ($this->show_spouse) {
 					foreach ($families as $family) {
@@ -466,13 +482,8 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 			vlines[i].style.height=(vlines[i].parentNode.offsetHeight/2)+'px';
 		}
 
-	var pastefield;
-	function paste_id(value) {
-		pastefield.value=value;
-	}
-
 	// Hourglass control..... Ajax arrows at the end of chart
-	function ChangeDiv(div_id, ARID, full, spouse, width) {
+	function changeDiv(div_id, ARID, full, spouse, width) {
 		var divelement = document.getElementById(div_id);
 		var oXmlHttp = createXMLHttp();
 		oXmlHttp.open("get", "hourglass_ajax.php?show_full="+full+"&rootid="+ ARID + "&generations=1&box_width="+width+"&show_spouse="+spouse, true);
@@ -489,14 +500,12 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 	}
 
 	// Hourglass control..... Ajax arrows at the end of descendants chart
-	function ChangeDis(div_id, ARID, full, spouse, width) {
+	function changeDis(div_id, ARID, full, spouse, width) {
 		var divelement = document.getElementById(div_id);
 		var oXmlHttp = createXMLHttp();
 		oXmlHttp.open("get", "hourglass_ajax.php?type=desc&show_full="+full+"&rootid="+ ARID + "&generations=1&box_width="+width+"&show_spouse="+spouse, true);
-		oXmlHttp.onreadystatechange=function()
-		{
-			if (oXmlHttp.readyState==4)
-			{
+		oXmlHttp.onreadystatechange=function() {
+			if (oXmlHttp.readyState === 4) {
 				divelement.innerHTML = oXmlHttp.responseText;
 				sizeLines();
 			}

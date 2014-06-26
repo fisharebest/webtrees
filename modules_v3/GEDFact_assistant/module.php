@@ -57,22 +57,9 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 	}
 
 	private static function media_3_find() {
-		global $MEDIA_DIRECTORY;
-
-		$controller=new WT_Controller_Simple();
-
-		$type           ='indi';
-		$filter         =WT_Filter::get('filter');
-		$action         =WT_Filter::get('action');
-		$callback       ='paste_id';
-		$media          =WT_Filter::get('media');
-		$external_links =WT_Filter::get('external_links');
-		$directory      =WT_Filter::get('directory');
-		$multiple       =WT_Filter::getBool('multiple');
-		$showthumb      =WT_Filter::getBool('showthumb');
-		$all            =WT_Filter::getBool('all');
-		$subclick       =WT_Filter::get('subclick');
-		$choose         =WT_Filter::get('choose');
+		$controller = new WT_Controller_Simple();
+		$filter     = WT_Filter::get('filter');
+		$multiple   = WT_Filter::getBool('multiple');
 
 		$controller
 			->setPageTitle(WT_I18N::translate('Find an individual'))
@@ -87,7 +74,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 
 			function pasteid(id, name, thumb) {
 				if (thumb) {
-					window.opener.<?php echo $callback; ?>(id, name, thumb);
+					window.opener.paste_id(id, name, thumb);
 					<?php if (!$multiple) echo "window.close();"; ?>
 				} else {
 					// GEDFact_assistant ========================
@@ -103,14 +90,19 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 						}
 						*/
 					}
-					window.opener.<?php echo $callback; ?>(id);
-					if (window.opener.pastename) window.opener.pastename(name);
+					window.opener.paste_id(id);
+					if (window.opener.pastename) {
+						window.opener.pastename(name);
+					}
 					<?php if (!$multiple) echo "window.close();"; ?>
 				}
 			}
 			function checknames(frm) {
-				if (document.forms[0].subclick) button = document.forms[0].subclick.value;
-				else button = "";
+				if (document.forms[0].subclick) {
+					button = document.forms[0].subclick.value;
+				} else {
+					button = "";
+				}
 				if (frm.filter.value.length<2&button!="all") {
 					alert("<?php echo WT_I18N::translate('Please enter more than one character'); ?>");
 					frm.filter.focus();
@@ -201,7 +193,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 			?>
 			<script>
 			function insertId() {
-				window.opener.alert('<?php echo strtoupper($iid2); ?> - <?php echo WT_I18N::translate('Not a valid Individual, Family or Source ID'); ?>');
+				window.opener.alert('<?php echo strtoupper($iid2); ?> - <?php echo WT_I18N::translate('Not a valid individual, family, or source ID'); ?>');
 				window.close();
 			}
 			</script>
@@ -214,7 +206,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 
 	// Convert custom markup into HTML
 	public static function formatCensusNote(WT_Note $note) {
-		global $controller, $WT_TREE;
+		global $WT_TREE;
 
 		$headers = array(
 			'AgM'        => 'Age at first marriage',

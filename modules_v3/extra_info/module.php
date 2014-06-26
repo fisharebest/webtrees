@@ -58,7 +58,7 @@ class extra_info_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 		ob_start();
 		if (!$indifacts) {
-			echo WT_I18N::translate('There are no Facts for this individual.');
+			echo WT_I18N::translate('There are no facts for this individual.');
 		} else {
 			foreach ($indifacts as $fact) {
 				print_fact($fact, $controller->record);

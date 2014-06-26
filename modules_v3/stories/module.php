@@ -124,7 +124,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 		if (WT_USER_GEDCOM_ADMIN && !$html) {
 			$html.='<div class="news_title center">'.$this->getTitle().'</div>';
 			$html.='<div><a href="module.php?mod='.$this->getName().'&amp;mod_action=admin_edit&amp;xref='.$controller->record->getXref().'">';
-			$html.=WT_I18N::translate('Add story').'</a></div><br>';
+			$html.=WT_I18N::translate('Add a story').'</a></div><br>';
 		}
 		return $html;
 	}
@@ -211,7 +211,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 						"SELECT xref FROM `##block` WHERE block_id=?"
 					)->execute(array($block_id))->fetchOne();
 				} else {
-					$controller->setPageTitle(WT_I18N::translate('Add story'));
+					$controller->setPageTitle(WT_I18N::translate('Add a story'));
 					$title='';
 					$story_body='';
 					$gedcom_id=WT_GED_ID;
@@ -219,9 +219,8 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				}
 				$controller
 					->pageHeader()
-					->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
-					// for the findindi link
-					->addInlineJavascript('var pastefield;function paste_id(value){pastefield.value=value;}');
+					->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+					->addInlineJavascript('autocomplete();');
 				if (array_key_exists('ckeditor', WT_Module::getActiveModules())) {
 					ckeditor_WT_Module::enableEditor($controller);
 				}
@@ -247,7 +246,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td class="optionbox">';
-				echo '<input type="text" name="xref" id="pid" size="4" value="'.$xref.'">';
+				echo '<input data-autocomplete-type="INDI" type="text" name="xref" id="pid" size="4" value="'.$xref.'">';
 				echo print_findindi_link('pid');
 				if ($xref) {
 					$person=WT_Individual::getInstance($xref);
@@ -290,7 +289,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 	}
 
 	private function config() {
-		require_once 'includes/functions/functions_edit.php';
+		require_once WT_ROOT.'includes/functions/functions_edit.php';
 		if (WT_USER_GEDCOM_ADMIN) {
 
 			$controller=new WT_Controller_Page();
@@ -300,21 +299,21 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 				->addInlineJavascript('
 					jQuery("#story_table").dataTable({
-						"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
+						dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 						'.WT_I18N::datatablesI18N().',
-						"bAutoWidth":false,
-						"bPaginate": true,
-						"sPaginationType": "full_numbers",
-						"bLengthChange": true,
-						"bFilter": true,
-						"bInfo": true,
-						"bJQueryUI": true,
-						"aaSorting": [[0,"asc"]],
-						"aoColumns": [
+						autoWidth: false,
+						paging: true,
+						pagingType: "full_numbers",
+						lengthChange: true,
+						filter: true,
+						info: true,
+						jQueryUI: true,
+						sorting: [[0,"asc"]],
+						columns: [
 							/* 0-name */ null,
 							/* 1-NAME */ null,
-							/* 2-NAME */ { bSortable:false },
-							/* 3-NAME */ { bSortable:false }
+							/* 2-NAME */ { sortable:false },
+							/* 3-NAME */ { sortable:false }
 						]
 					});
 				');
@@ -336,7 +335,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				'<input type="submit" value="', WT_I18N::translate('show'), '">',
 				'</form>';
 
-			echo '<h3><a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit">', WT_I18N::translate('Add story'), '</a></h3>';
+			echo '<h3><a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit">', WT_I18N::translate('Add a story'), '</a></h3>';
 			if (count($stories)>0) {
 			echo '<table id="story_table">';
 				echo '<thead><tr>
@@ -377,17 +376,17 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 			->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 			->addInlineJavascript('
 				jQuery("#story_table").dataTable({
-					"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
+					dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 					'.WT_I18N::datatablesI18N().',
-					"bAutoWidth":false,
-					"bPaginate": true,
-					"sPaginationType": "full_numbers",
-					"bLengthChange": true,
-					"bFilter": true,
-					"bInfo": true,
-					"bJQueryUI": true,
-					"aaSorting": [[0,"asc"]],
-					"aoColumns": [
+					autoWidth: false,
+					paging: true,
+					pagingType: "full_numbers",
+					lengthChange: true,
+					filter: true,
+					info: true,
+					jQueryUI: true,
+					sorting: [[0,"asc"]],
+					columns: [
 						/* 0-name */ null,
 						/* 1-NAME */ null
 					]

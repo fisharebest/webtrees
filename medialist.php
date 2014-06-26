@@ -27,8 +27,9 @@ require_once WT_ROOT.'includes/functions/functions_edit.php';
 require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 
 $controller = new WT_Controller_Page();
-$controller->setPageTitle(WT_I18N::translate('Media objects'))
-			->pageHeader();
+$controller
+	->setPageTitle(WT_I18N::translate('Media objects'))
+	->pageHeader();
 
 $search = WT_Filter::get('search');
 $sortby = WT_Filter::get('sortby', 'file|title', 'title');
@@ -159,20 +160,15 @@ $medialist = WT_Query_Media::mediaList(
 
 <?php
 if ($search) {
-	if (!empty($medialist)) {
-		// Count the number of items in the medialist
-		$ct=count($medialist);
-		$start = 0;
-		if (isset($_GET['start'])) $start = $_GET['start'];
-		$count = $max;
-		if ($start+$count > $ct) $count = $ct-$start;
-	} else {
-		$ct = '0';
+	$ct = count($medialist);
+	$count = $max;
+	if ($start + $count > $ct) {
+		$count = $ct - $start;
 	}
 
-	echo '<div><p style="text-align:center">', WT_I18N::translate('Media Objects found'), ' ', $ct, '</p>';
+	echo '<div><p style="text-align: center;">', WT_I18N::translate('Media objects found'), ' ', $ct, '</p>';
 
-  if ($ct>0) {
+	if ($ct>0) {
 		$currentPage = ((int) ($start / $max)) + 1;
 		$lastPage = (int) (($ct + $max - 1) / $max);
 
@@ -248,7 +244,7 @@ if ($search) {
 
 			echo '<table><tr><td style="vertical-align:top; white-space:normal;">';
 			echo $mediaobject->displayImage();
-			echo '</td><td class="list_value_wrap width100" style="border:none; padding-left:5px">';
+			echo '</td><td class="list_value_wrap width100" style="border: none; padding-left: 5px;">';
 			if (WT_USER_CAN_EDIT) {
 				echo WT_Controller_Media::getMediaListMenu($mediaobject);
 			}

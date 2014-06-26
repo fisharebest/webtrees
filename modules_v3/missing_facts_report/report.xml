@@ -2,7 +2,7 @@
 <Report>
 	<Title><var var="WT_I18N::translate('Missing data')" /></Title>
 	<Description><var var="WT_I18N::translate('A report of the information that is missing for an individual and their relatives.')" /></Description>
-	<Input name="pid" type="text" default="" lookup="INDI"><var var="WT_I18N::translate('Enter Individual ID')"/></Input>
+	<Input name="pid" type="text" default="" lookup="INDI"><var var="WT_I18N::translate('Individual')"/></Input>
 	<Input name="relatives" type="select" default="direct-ancestors" options="child-family=>WT_I18N::translate('Parents and siblings')|spouse-family=>WT_I18N::translate('Spouses and children')|direct-ancestors=>WT_I18N::translate('Direct line ancestors')|ancestors=>WT_I18N::translate('Direct line ancestors and their families')|descendants=>WT_I18N::translate('Descendants')|all=>WT_I18N::translate('All')"><var var="WT_I18N::translate('Choose relatives')"/></Input>
 	<Input name="maxgen" type="select" default="*" options="1=>WT_I18N::number(1)|2=>WT_I18N::number(2)|3=>WT_I18N::number(3)|4=>WT_I18N::number(4)|5=>WT_I18N::number(5)|6=>WT_I18N::number(6)|7=>WT_I18N::number(7)|8=>WT_I18N::number(8)|9=>WT_I18N::number(9)|10=>WT_I18N::number(10)|*=>WT_I18N::translate('All')"><var var="WT_I18N::translate('Generations')"/></Input>
 	<Input name="pageSize" type="select" default="A4" options="letter=>WT_I18N::translate_c('paper size','Letter')|A3=>WT_I18N::translate_c('paper size', 'A3')|A4=>WT_I18N::translate_c('paper size','A4')|legal=>WT_I18N::translate_c('paper size','Legal')"><var var="WT_I18N::translate('Page size')" /></Input>

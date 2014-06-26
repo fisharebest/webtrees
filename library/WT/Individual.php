@@ -21,11 +21,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 class WT_Individual extends WT_GedcomRecord {
 	const RECORD_TYPE = 'INDI';
 	const SQL_FETCH   = "SELECT i_gedcom FROM `##individuals` WHERE i_id=? AND i_file=?";
@@ -376,9 +371,10 @@ class WT_Individual extends WT_GedcomRecord {
 	}
 
 	/**
-	* get the birth year
-	* @return string the year of birth
-	*/
+	 * get the birth year
+	 *
+	 * @return string the year of birth
+	 */
 	function getBirthYear() {
 		return $this->getBirthDate()->MinDate()->Format('%Y');
 	}
@@ -404,9 +400,10 @@ class WT_Individual extends WT_GedcomRecord {
 	}
 
 	/**
-	* get the death year
-	* @return string the year of death
-	*/
+	 * get the death year
+	 *
+	 * @return string the year of death
+	 */
 	function getDeathYear() {
 		return $this->getDeathDate()->MinDate()->Format('%Y');
 	}
@@ -734,45 +731,37 @@ class WT_Individual extends WT_GedcomRecord {
 	}
 
 	// Create a label for a step family
-	function getStepFamilyLabel(WT_Family $family) {
-		foreach ($this->getChildFamilies() as $fam) {
-			if ($fam !== $family) {
-				if ((is_null($fam->getHusband()) || $fam->getHusband() !== $family->getHusband()) && (is_null($fam->getWife()) || $fam->getWife() === $family->getWife())) {
-					if ($family->getHusband()) {
-						if ($family->getWife()->getSex()=='F') {
-							return /* I18N: A step-family.  %s is an individual’s name */ WT_I18N::translate('Mother’s family with %s', $family->getHusband()->getFullName());
-						} else {
-							return /* I18N: A step-family.  %s is an individual’s name */ WT_I18N::translate('Father’s family with %s', $family->getHusband()->getFullName());
-						}
-					} else {
-						if ($family->getWife()->getSex()=='F') {
-							return /* I18N: A step-family. */ WT_I18N::translate('Mother’s family with an unknown individual');
-						} else {
-							return /* I18N: A step-family. */ WT_I18N::translate('Father’s family with an unknown individual');
-						}
-					}
-				} elseif ((is_null($fam->getWife()) || $fam->getWife() !== $family->getWife()) && (is_null($fam->getHusband()) || $fam->getHusband() === $family->getHusband())) {
-					if ($family->getWife()) {
-						if ($family->getHusband()->getSex()=='F') {
-							return /* I18N: A step-family.  %s is an individual’s name */ WT_I18N::translate('Mother’s family with %s', $family->getWife()->getFullName());
-						} else {
-							return /* I18N: A step-family.  %s is an individual’s name */ WT_I18N::translate('Father’s family with %s', $family->getWife()->getFullName());
-						}
-					} else {
-						if ($family->getHusband()->getSex()=='F') {
-							return /* I18N: A step-family. */ WT_I18N::translate('Mother’s family with an unknown individual');
-						} else {
-							return /* I18N: A step-family. */ WT_I18N::translate('Father’s family with an unknown individual');
+	function getStepFamilyLabel(WT_Family $step_family) {
+		foreach ($this->getChildFamilies() as $family) {
+			if ($family !== $step_family) {
+				// Must be a step-family
+				foreach ($family->getSpouses() as $parent) {
+					foreach ($step_family->getSpouses() as $step_parent) {
+						if ($parent === $step_parent) {
+							// One common parent - must be a step family
+							if ($parent->getSex() == 'M') {
+								// Father’s family with someone else
+								if ($step_family->getSpouse($step_parent)) {
+									return /* I18N: A step-family.  %s is an individual’s name */ WT_I18N::translate('Father’s family with %s', $step_family->getSpouse($step_parent)->getFullName());
+								} else {
+									return /* I18N: A step-family. */ WT_I18N::translate('Father’s family with an unknown individual');
+								}
+							} else {
+								// Mother’s family with someone else
+								if ($step_family->getSpouse($step_parent)) {
+									return /* I18N: A step-family.  %s is an individual’s name */ WT_I18N::translate('Mother’s family with %s', $step_family->getSpouse($step_parent)->getFullName());
+								} else {
+									return /* I18N: A step-family. */ WT_I18N::translate('Mother’s family with an unknown individual');
+								}
+							}
 						}
 					}
-				} elseif ($family->getWife()===$fam->getWife() && $family->getHusband()===$fam->getHusband() || $family->getWife()===$fam->getHusband() && $family->getHusband()===$fam->getWife()) {
-					// Same parents - but a different family record.
-					return WT_I18N::translate('Family with parents');
 				}
 			}
 		}
-		// It should not be possible to get here
-		throw new Exception('Invalid family in WT_Individual::getStepFamilyLabel(' . $family . ')');
+
+		// Perahps same parents - but a different family record?
+		return WT_I18N::translate('Family with parents');
 	}
 
 	// TODO - this function doesn’t belong in this class
@@ -786,11 +775,13 @@ class WT_Individual extends WT_GedcomRecord {
 	}
 
 	/**
-	* get primary parents names for this individual
-	* @param string $classname optional css class
-	* @param string $display optional css style display
-	* @return string a div block with father & mother names
-	*/
+	 * get primary parents names for this individual
+	 *
+	 * @param string $classname optional css class
+	 * @param string $display   optional css style display
+	 *
+	 * @return string a div block with father & mother names
+	 */
 	function getPrimaryParentsNames($classname='', $display='') {
 		$fam = $this->getPrimaryChildFamily();
 		if (!$fam) return '';
@@ -875,21 +866,19 @@ class WT_Individual extends WT_GedcomRecord {
 		////////////////////////////////////////////////////////////////////////////
 
 		// Fix bad slashes.  e.g. 'John/Smith' => 'John/Smith/'
-		if (substr_count($full, '/')%2==1) {
-			$full=$full.'/';
-		} else {
-			$full=$full;
+		if (substr_count($full, '/') % 2 == 1) {
+			$full = $full.'/';
 		}
 
 		// GEDCOM uses "//" to indicate an unknown surname
-		$full=preg_replace('/\/\//', '/@N.N./', $full);
+		$full = preg_replace('/\/\//', '/@N.N./', $full);
 
 		// Extract the surname.
 		// Note, there may be multiple surnames, e.g. Jean /Vasquez/ y /Cortes/
 		if (preg_match('/\/.*\//', $full, $match)) {
-			$surname=str_replace('/', '', $match[0]);
+			$surname = str_replace('/', '', $match[0]);
 		} else {
-			$surname='';
+			$surname = '';
 		}
 
 		// If we don’t have a SURN record, extract it from the NAME
@@ -1058,7 +1047,6 @@ class WT_Individual extends WT_GedcomRecord {
 			$max_surn = $char-$i*2;
 			if ($len_surn > $max_surn) {
 				$surn = substr($surn, 0, $max_surn).'…';
-				$len_surn = utf8_strlen($surn);
 			}
 			$shortname =  str_replace(
 				array('@P.N.', '@N.N.'),

@@ -43,14 +43,28 @@ function fetch_all_links($xref, $gedcom_id) {
 }
 
 // Find out if there are any pending changes that a given user may accept
-function exists_pending_change($user_id=WT_USER_ID, $ged_id=WT_GED_ID) {
+function exists_pending_change(\WT\User $user = null, WT_Tree $tree = null) {
+	global $WT_TREE;
+
+	if ($user === null) {
+		$user = \WT\Auth::user();
+	}
+
+	if ($tree === null) {
+		$tree = $WT_TREE;
+	}
+
+	if ($user === null || $tree === null) {
+		return false;
+	}
+
 	return
-		WT_Tree::get($ged_id)->canAcceptChanges($user_id) &&
+		$tree->canAcceptChanges($user) &&
 		WT_DB::prepare(
 			"SELECT 1".
 			" FROM `##change`".
 			" WHERE status='pending' AND gedcom_id=?"
-		)->execute(array($ged_id))->fetchOne();
+		)->execute(array($tree->tree_id))->fetchOne();
 }
 
 // get a list of all the sources
@@ -358,10 +372,13 @@ function search_indis_soundex($soundex, $lastname, $firstname, $place, $geds) {
 }
 
 /**
-* get recent changes since the given julian day inclusive
-* @author yalnifj
-* @param int $jd, leave empty to include all
-*/
+ * get recent changes since the given julian day inclusive
+ *
+ * @param int  $jd , leave empty to include all
+ * @param bool $allgeds
+ *
+ * @return array List of XREFs of records with changes
+ */
 function get_recent_changes($jd=0, $allgeds=false) {
 	$sql="SELECT d_gid FROM `##dates` WHERE d_fact='CHAN' AND d_julianday1>=?";
 	$vars=array($jd);
@@ -369,7 +386,7 @@ function get_recent_changes($jd=0, $allgeds=false) {
 		$sql.=" AND d_file=?";
 		$vars[]=WT_GED_ID;
 	}
-	$sql.=" ORDER BY d_julianday1 DESC";
+	$sql .= " ORDER BY d_julianday1 DESC";
 
 	return WT_DB::prepare($sql)->execute($vars)->fetchOneColumn();
 }
@@ -722,7 +739,10 @@ function find_rin_id($rin) {
  *
  * This function returns a simple array of the most common surnames
  * found in the individuals list.
+ *
  * @param int $min the number of times a surname must occur before it is added to the array
+ *
+ * @return array
  */
 function get_common_surnames($min) {
 	$COMMON_NAMES_ADD   =get_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_ADD');
@@ -751,12 +771,14 @@ function get_common_surnames($min) {
 }
 
 /**
-* get the top surnames
-* @param int $ged_id fetch surnames from this gedcom
-* @param int $min only fetch surnames occuring this many times
-* @param int $max only fetch this number of surnames (0=all)
-* @return array
-*/
+ * get the top surnames
+ *
+ * @param int $ged_id fetch surnames from this gedcom
+ * @param int $min    only fetch surnames occuring this many times
+ * @param int $max    only fetch this number of surnames (0=all)
+ *
+ * @return array
+ */
 function get_top_surnames($ged_id, $min, $max) {
 	// Use n_surn, rather than n_surname, as it is used to generate URLs for
 	// the indi-list, etc.
@@ -1052,206 +1074,6 @@ function get_gedcom_setting($gedcom_id, $setting_name) {
 
 function set_gedcom_setting($gedcom_id, $setting_name, $setting_value) {
 	WT_Tree::get($gedcom_id)->preference($setting_name, $setting_value);
-}
-
-////////////////////////////////////////////////////////////////////////////////
-// Functions to access the WT_USER table
-////////////////////////////////////////////////////////////////////////////////
-
-function create_user($username, $realname, $email, $password) {
-	try {
-		WT_DB::prepare("INSERT INTO `##user` (user_name, real_name, email, password) VALUES (?, ?, ?, ?)")
-			->execute(array($username, $realname, $email, crypt($password)));
-		$user_id=WT_DB::getInstance()->lastInsertId();
-		// Set the initial block layout
-		WT_DB::prepare(
-			"INSERT INTO `##block` (user_id, location, block_order, module_name)".
-			" SELECT ?, location, block_order, module_name".
-			" FROM `##block`".
-			" WHERE user_id=-1"
-		)->execute(array($user_id));
-	} catch (PDOException $ex) {
-		// User already exists?
-	}
-	$user_id=
-		WT_DB::prepare("SELECT SQL_CACHE user_id FROM `##user` WHERE user_name=?")
-		->execute(array($username))->fetchOne();
-	return $user_id;
-}
-
-function rename_user($user_id, $new_username) {
-	WT_DB::prepare("UPDATE `##user` SET user_name=?   WHERE user_id  =?")->execute(array($new_username, $user_id));
-}
-
-function delete_user($user_id) {
-	// Don't delete the logs.
-	WT_DB::prepare("UPDATE `##log` SET user_id=NULL   WHERE user_id =?")->execute(array($user_id));
-	// Take over the user’s pending changes.
-	// TODO: perhaps we should prevent deletion of users with pending changes?
-	WT_DB::prepare("DELETE FROM `##change` WHERE user_id=? AND status='accepted'")->execute(array($user_id));
-	WT_DB::prepare("UPDATE `##change` SET user_id=? WHERE user_id=?")->execute(array(WT_USER_ID, $user_id));
-
-	WT_DB::prepare("DELETE `##block_setting` FROM `##block_setting` JOIN `##block` USING (block_id) WHERE user_id=?")->execute(array($user_id));
-	WT_DB::prepare("DELETE FROM `##block`               WHERE user_id=?"    )->execute(array($user_id));
-	WT_DB::prepare("DELETE FROM `##user_gedcom_setting` WHERE user_id=?"    )->execute(array($user_id));
-	WT_DB::prepare("DELETE FROM `##user_setting`        WHERE user_id=?"    )->execute(array($user_id));
-	WT_DB::prepare("DELETE FROM `##message`             WHERE user_id=?"    )->execute(array($user_id));
-	WT_DB::prepare("DELETE FROM `##user`                WHERE user_id=?"    )->execute(array($user_id));
-}
-
-function get_all_users($order='ASC', $key='realname') {
-	if ($key=='username') {
-		return
-			WT_DB::prepare("SELECT SQL_CACHE user_id, user_name FROM `##user` WHERE user_id>0 ORDER BY user_name")
-			->fetchAssoc();
-	} elseif ($key=='realname') {
-		return
-			WT_DB::prepare("SELECT SQL_CACHE user_id, user_name FROM `##user` WHERE user_id>0 ORDER BY real_name")
-			->fetchAssoc();
-	} else {
-		return
-			WT_DB::prepare(
-				"SELECT SQL_CACHE u.user_id, user_name".
-				" FROM `##user` u".
-				" LEFT JOIN `##user_setting` us1 ON (u.user_id=us1.user_id AND us1.setting_name=?)".
-				" WHERE u.user_id>0".
-				" ORDER BY us1.setting_value {$order}"
-			)->execute(array($key))
-			->fetchAssoc();
-	}
-}
-
-function get_user_count() {
-	return
-			WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##user` WHERE user_id>0")
-			->fetchOne();
-}
-
-function get_user_by_email($email) {
-	return
-		WT_DB::prepare("SELECT SQL_CACHE user_id FROM `##user` WHERE email=?")
-		->execute(array($email))
-		->fetchOne();
-}
-
-function get_admin_user_count() {
-	return
-		WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##user_setting` WHERE setting_name=? AND setting_value=? AND user_id>0")
-		->execute(array('canadmin', '1'))
-		->fetchOne();
-}
-
-function get_non_admin_user_count() {
-	return
-		WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##user_setting` WHERE  setting_name=? AND setting_value<>? AND user_id>0")
-		->execute(array('canadmin', '1'))
-		->fetchOne();
-}
-
-// Get a list of logged-in users
-function get_logged_in_users() {
-	// If the user is logged in on multiple times, this query would fetch
-	// multiple rows.  fetchAssoc() will eliminate the duplicates
-	return
-		WT_DB::prepare(
-			"SELECT SQL_NO_CACHE user_id, user_name".
-			" FROM `##user` u".
-			" JOIN `##session` USING (user_id)"
-		)
-		->fetchAssoc();
-}
-
-// Get the ID for a username
-function get_user_id($username) {
-	return WT_DB::prepare("SELECT SQL_CACHE user_id FROM `##user` WHERE user_name=?")
-		->execute(array($username))
-		->fetchOne();
-}
-
-// Get the username for a user ID
-function get_user_name($user_id) {
-	return WT_DB::prepare("SELECT SQL_CACHE user_name FROM `##user` WHERE user_id=?")
-		->execute(array($user_id))
-		->fetchOne();
-}
-
-function get_newest_registered_user() {
-	return WT_DB::prepare(
-		"SELECT SQL_CACHE u.user_id".
-		" FROM `##user` u".
-		" LEFT JOIN `##user_setting` us ON (u.user_id=us.user_id AND us.setting_name=?) ".
-		" ORDER BY us.setting_value DESC LIMIT 1"
-	)->execute(array('reg_timestamp'))
-		->fetchOne();
-}
-
-function set_user_password($user_id, $password) {
-	$salt='$2a$12$';
-	$salt_chars='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789./';
-	for ($i=0;$i<22;++$i) {
-		$salt.=substr($salt_chars, mt_rand(0,63), 1);
-	}
-	$password_hash=crypt($password, $salt);
-	WT_DB::prepare("UPDATE `##user` SET password=? WHERE user_id=?")
-		->execute(array($password_hash, $user_id));
-	AddToLog('User ID: '.$user_id. ' ('.get_user_name($user_id).') changed password', 'auth');
-}
-
-function check_user_password($user_id, $password) {
-	// crypt() needs the password-hash to use as a salt
-	$password_hash=
-		WT_DB::prepare("SELECT SQL_CACHE password FROM `##user` WHERE user_id=?")
-		->execute(array($user_id))
-		->fetchOne();
-	if (crypt($password, $password_hash)==$password_hash) {
-		// Update older passwords to use BLOWFISH with 2^12 rounds
-		if (substr($password_hash, 0, 7)!='$2a$12$') {
-			set_user_password($user_id, $password);
-		}
-		return true;
-	} else {
-		return false;
-	}
-}
-////////////////////////////////////////////////////////////////////////////////
-// Functions to access the WT_USER_SETTING table
-////////////////////////////////////////////////////////////////////////////////
-
-function get_user_setting($user_id, $setting_name, $default_value=null) {
-	static $statement=null;
-	if ($statement===null) {
-		$statement=WT_DB::prepare(
-			"SELECT SQL_CACHE setting_value FROM `##user_setting` WHERE user_id=? AND setting_name=?"
-		);
-	}
-	$setting_value=$statement->execute(array($user_id, $setting_name))->fetchOne();
-	return $setting_value===null ? $default_value : $setting_value;
-}
-
-function set_user_setting($user_id, $setting_name, $setting_value) {
-	if ($setting_value===null) {
-		WT_DB::prepare("DELETE FROM `##user_setting` WHERE user_id=? AND setting_name=?")
-			->execute(array($user_id, $setting_name));
-	} else {
-		WT_DB::prepare("REPLACE INTO `##user_setting` (user_id, setting_name, setting_value) VALUES (?, ?, LEFT(?, 255))")
-			->execute(array($user_id, $setting_name, $setting_value));
-	}
-}
-
-function admin_user_exists() {
-	return get_admin_user_count()>0;
-}
-
-////////////////////////////////////////////////////////////////////////////////
-// Functions to access the WT_USER_GEDCOM_SETTING table
-////////////////////////////////////////////////////////////////////////////////
-
-function get_user_from_gedcom_xref($ged_id, $xref) {
-	return
-		WT_DB::prepare(
-			"SELECT SQL_CACHE user_id FROM `##user_gedcom_setting`".
-			" WHERE gedcom_id=? AND setting_name=? AND setting_value=?"
-		)->execute(array($ged_id, 'gedcomid', $xref))->fetchOne();
 }
 
 ////////////////////////////////////////////////////////////////////////////////

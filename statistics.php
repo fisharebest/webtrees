@@ -34,7 +34,7 @@ $ajax = WT_Filter::getBool('ajax');
 if (!$ajax) {
 	$controller=new WT_Controller_Page();
 	$controller->setPageTitle(WT_I18N::translate('Statistics'))
-		->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
+		->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
 		->addInlineJavascript('
 			jQuery("#statistics_chart").css("visibility", "visible");
 			jQuery("#statistics_chart").tabs({
@@ -73,10 +73,10 @@ if (!$ajax) {
 		'</div>', // statistics-page
 	'<br><br>';
 } else {
-	$controller=new WT_Controller_Ajax();
+	$controller = new WT_Controller_Ajax();
 	$controller
 		->pageHeader()
-		->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
+		->addInlineJavascript('autocomplete();')
 		->addInlineJavascript('jQuery("#loading-indicator").removeClass("loading-image");');
 	$stats = new WT_Stats($GEDCOM);
 	if ($tab==0) {
@@ -430,24 +430,36 @@ if (!$ajax) {
 				var box = document.getElementById(sel);
 				box.style.display = 'none';
 				var box_m = document.getElementById(sel+'_m');
-				if (box_m) box_m.style.display = 'none';
+				if (box_m) {
+					box_m.style.display = 'none';
+				}
 				if (sel=='map_opt') {
 					var box_axes = document.getElementById('axes');
-					if (box_axes) box_axes.style.display = '';
+					if (box_axes) {
+						box_axes.style.display = '';
+					}
 					var box_zyaxes = document.getElementById('zyaxes');
-					if (box_zyaxes) box_zyaxes.style.display = '';
+					if (box_zyaxes) {
+						box_zyaxes.style.display = '';
+					}
 				}
 			}
 			function statusShow(sel) {
 				var box = document.getElementById(sel);
 				box.style.display = '';
 				var box_m = document.getElementById(sel+'_m');
-				if (box_m) box_m.style.display = 'none';
+				if (box_m) {
+					box_m.style.display = 'none';
+				}
 				if (sel=='map_opt') {
 					var box_axes = document.getElementById('axes');
-					if (box_axes) box_axes.style.display = 'none';
+					if (box_axes) {
+						box_axes.style.display = 'none';
+					}
 					var box_zyaxes = document.getElementById('zyaxes');
-					if (box_zyaxes) box_zyaxes.style.display = 'none';
+					if (box_zyaxes) {
+						box_zyaxes.style.display = 'none';
+					}
 				}
 			}
 			function statusShowSurname(x) {
@@ -466,11 +478,13 @@ if (!$ajax) {
 					jQuery(response).dialog({
 						modal: true,
 						width: 964,
-						closeText: ""
-					});
-					// Close the window when we click outside it.
-					jQuery(".ui-widget-overlay").on("click", function () {
-						jQuery("div:ui-dialog:visible").dialog("close");
+						open: function() {
+							var self = this;
+							// Close the window when we click outside it.
+							jQuery(".ui-widget-overlay").on("click", function () {
+								$(self).dialog('close');
+							});
+						}
 					});
 				});
 				return false;
@@ -615,7 +629,7 @@ if (!$ajax) {
 			<br>
 			</div>
 			<div id="surname_opt" style="display:none;">';
-			echo WT_Gedcom_Tag::getLabel('SURN'), help_link('google_chart_surname'), '<br><input type="text" name="SURN" size="20">';
+			echo WT_Gedcom_Tag::getLabel('SURN'), help_link('google_chart_surname'), '<br><input data-autocomplete-type="SURN" type="text" name="SURN" size="20">';
 			echo '<br>
 			</div>';
 			echo WT_I18N::translate('Geographical area');

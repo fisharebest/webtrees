@@ -30,8 +30,8 @@ require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 $controller=new WT_Controller_Ancestry();
 $controller
 	->pageHeader()
-	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
-	->addInlineJavascript('var pastefield; function paste_id(value) { pastefield.value=value; }'); // For the 'find indi' link
+	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+	->addInlineJavascript('autocomplete();');
 
 ?>
 <div id="ancestry-page">
@@ -46,7 +46,7 @@ $controller
 					<?php echo WT_I18N::translate('Individual'); ?>
 				</td>
 				<td class="optionbox">
-					<input class="pedigree_form" type="text" name="rootid" id="rootid" size="3" value="<?php echo $controller->rootid; ?>">
+					<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="rootid" id="rootid" size="3" value="<?php echo $controller->rootid; ?>">
 					<?php echo print_findindi_link('rootid'); ?>
 				</td>
 				<td class="descriptionbox">
@@ -171,26 +171,22 @@ case 1:
 case 2:
 	// Individual list
 	$treeid=ancestry_array($controller->root->getXref(), $PEDIGREE_GENERATIONS);
-	echo '<div id="ancestry-list">';
-	echo format_indi_table($treeid, 'sosa');
-	echo '</div>';
+	echo '<div id="ancestry-list">', format_indi_table($treeid, 'sosa'), '</div>';
 	break;
 case 3:
 	// Family list
 	$treeid=ancestry_array($controller->root->getXref(), $PEDIGREE_GENERATIONS-1);
 	$famlist=array();
 	foreach ($treeid as $pid) {
-		$person=WT_Individual::getInstance($pid);
-		if (is_null($person)) {
+		$person = WT_Individual::getInstance($pid);
+		if (!$person) {
 			continue;
 		}
 		foreach ($person->getChildFamilies() as $famc) {
 			$famlist[$famc->getXref()]=$famc;
 		}
 	}
-	echo '<div id="ancestry-list">';
-	echo format_fam_table($famlist, $controller->getPageTitle());
-	echo '</div>';
+	echo '<div id="ancestry-list">', format_fam_table($famlist), '</div>';
 	break;
 }
 echo '</div>'; // close #ancestry-page

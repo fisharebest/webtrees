@@ -1,0 +1,67 @@
+[dir=rtl] #links {
+	*left: 0;
+}
+
+#admin_menu ul {
+	*margin: 0 0 0 10px;
+}
+
+[dir=rtl] #admin_menu ul {
+	*margin: 0 10px 0 0;
+}
+
+#admin_menu li ul {
+	*margin: 0 0 0 20px;
+}
+
+[dir=rtl] #admin_menu li ul {
+	*margin: 0 20px 0 0;
+}
+
+#admin_menu ul li ul,
+[dir=rtl] #admin_menu li ul {
+	*margin-top: -20px;
+}
+
+#admin_menu {
+	*position: relative;
+}
+
+#admin_menu ul {
+	*margin: 0 0 0 10px;
+}
+
+[dir=rtl] #admin_menu ul {
+	*margin: 0 10px 0 0;
+}
+
+#admin_menu li ul {
+	*margin: 0 0 0 20px;
+}
+
+[dir=rtl] #admin_menu li ul {
+	*margin: 0 20px 0 0;
+}
+
+#admin_menu ul li ul, html[dir='rtl'] #admin_menu li ul {
+	*margin-top: -20px;
+}
+
+/* IE <= 8 does not support text-align:start */
+#file-options th,
+#privacy th,
+#config-media th,
+#layout-options th,
+#hide-show th,
+#edit-options th {
+	text-align: left;
+}
+
+[dir=rtl] #file-options th,
+[dir=rtl] #privacy th,
+[dir=rtl] #config-media th,
+[dir=rtl] #layout-options th,
+[dir=rtl] #hide-show th,
+[dir=rtl] #edit-options th {
+	text-align: right;
+}

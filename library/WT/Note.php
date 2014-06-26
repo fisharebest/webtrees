@@ -21,11 +21,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 class WT_Note extends WT_GedcomRecord {
 	const RECORD_TYPE = 'NOTE';
 	const SQL_FETCH   = "SELECT o_gedcom FROM `##other` WHERE o_id=? AND o_file=?";
@@ -73,17 +68,23 @@ class WT_Note extends WT_GedcomRecord {
 		return $statement->execute(array($xref, $gedcom_id))->fetchOne();
 	}
 
-	// Get an array of structures containing all the names in the record
+	/**
+	 * Create a name for this note - apply (and remove) markup, then take
+	 * a maximum of 100 characters from the first line.
+	 */
 	public function extractNames() {
-		// Uniquely, the NOTE objects have data in their level 0 record.
-		if (preg_match('/^0 @' . WT_REGEX_XREF . '@ NOTE (.+)/', $this->getGedcom(), $match)) {
-			// The 'name' of a note record is the first line.  This can be
-			// somewhat unwieldy if lots of CONC records are used.  Limit to 100 chars
-			if (utf8_strlen($match[1])<100) {
-				$this->_addName('NOTE', $match[1], $this->getGedcom());
-			} else {
-				$this->_addName('NOTE', utf8_substr($match[1], 0, 100).WT_I18N::translate('…'), $this->getGedcom());
-			}
+		global $WT_TREE;
+
+		$text = $this->getNote();
+
+		switch($WT_TREE->preference('FORMAT_TEXT')) {
+		case 'markdown':
+			$text = WT_Filter::markdown($text);
+			$text = strip_tags($text);
+			break;
 		}
+
+		list($text) = explode("\n", $text);
+		$this->_addName('NOTE', strlen($text) > 100 ? utf8_substr($text, 0, 100) . WT_I18N::translate('…') : $text, $this->getGedcom());
 	}
 }

@@ -86,7 +86,7 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		global $WT_IMAGES, $UNKNOWN_NN, $controller;
 
 		// Fetch a list of the initial letters of all surnames in the database
-		$initials=WT_Query_Name::surnameAlpha(true, false, WT_GED_ID);
+		$initials=WT_Query_Name::surnameAlpha(true, false, WT_GED_ID, false);
 
 		$controller->addInlineJavascript('
 			var loadedNames = new Array();
@@ -165,10 +165,10 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	}
 
 	public function getAlphaSurnames($alpha, $surname1='') {
-		$surns=WT_Query_Name::surnames('', $alpha, true, false, WT_GED_ID);
+		$surnames = WT_Query_Name::surnames('', $alpha, true, false, WT_GED_ID);
 		$out = '<ul>';
-		foreach ($surns as $surname=>$surns) {
-			$out .= '<li id="sb_indi_'.$surname.'" class="sb_indi_surname_li"><a href="'.$surname.'" title="'.$surname.'" alt="'.$alpha.'" class="sb_indi_surname">'.$surname.'</a>';
+		foreach (array_keys($surnames) as $surname) {
+			$out .= '<li id="sb_indi_' . $surname . '" class="sb_indi_surname_li"><a href="' . $surname . '" title="' . $surname . '" alt="' . $alpha . '" class="sb_indi_surname">' . $surname . '</a>';
 			if (!empty($surname1) && $surname1==$surname) {
 				$out .= '<div class="name_tree_div_visible">';
 				$out .= $this->getSurnameIndis($alpha, $surname1);

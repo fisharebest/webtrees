@@ -119,7 +119,7 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 		echo '<table class="facts_table">';
 		echo '<tbody>';
 		if (!$indifacts) {
-			echo '<tr><td colspan="2" class="facts_value">', WT_I18N::translate('There are no Facts for this individual.'), '</td></tr>';
+			echo '<tr><td colspan="2" class="facts_value">', WT_I18N::translate('There are no facts for this individual.'), '</td></tr>';
 		}
 
 		echo '<tr><td colspan="2" class="descriptionbox rela"><form action="?"><input id="checkbox_rela_facts" type="checkbox"';
@@ -431,7 +431,7 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 					// Earlier versions of the WIKI encouraged people to use HTML entities,
 					// rather than UTF8 encoding.
 					$hist = html_entity_decode($hist, ENT_QUOTES, 'UTF-8');
-					
+
 					$fact = new WT_Fact($hist, $person, 'histo');
 					$sdate = $fact->getDate();
 					if ($sdate->isOK() && WT_Date::Compare($birt_date, $sdate)<=0 && WT_Date::Compare($sdate, $deat_date)<=0) {

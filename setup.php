@@ -21,11 +21,15 @@
 define('WT_SCRIPT_NAME', 'setup.php');
 define('WT_CONFIG_FILE', 'config.ini.php');
 
+require 'library/autoload.php';
+
 // This script (uniquely) does not load session.php.
 // session.php won’t run until a configuration file exists…
 // This next block of code is a minimal version of session.php
 define('WT_WEBTREES',    'webtrees');
-require 'includes/authentication.php'; // for AddToLog()
+define('WT_SERVER_NAME', '');
+define('WT_SCRIPT_PATH', '');
+require 'includes/authentication.php';
 require 'includes/functions/functions_db.php'; // for get/setSiteSetting()
 define('WT_DATA_DIR',    'data/');
 define('WT_DEBUG_LANG',  false);
@@ -55,10 +59,6 @@ if (version_compare(PHP_VERSION, WT_REQUIRED_PHP_VERSION)<0) {
 	exit;
 }
 
-// Invoke the Zend Framework Autoloader, so we can use Zend_XXXXX and WT_XXXXX classes
-set_include_path(WT_ROOT.'library'.PATH_SEPARATOR.get_include_path());
-require_once 'Zend/Loader/Autoloader.php';
-Zend_Loader_Autoloader::getInstance()->registerNamespace('WT_');
 require 'includes/functions/functions.php';
 require 'includes/functions/functions_utf-8.php';
 require 'includes/functions/functions_edit.php';
@@ -81,7 +81,7 @@ header('Content-Type: text/html; charset=UTF-8');
 		a {color: black; font-weight: normal; text-decoration: none;}
 		a:hover {color: #81A9CB;}
 		h1 {color: #81A9CB; font-weight:normal;}
-		legend {color:#81A9CB; font-style: italic; font-weight:bold; padding: 0 5px 5px; align: top;}
+		legend {color:#81A9CB; font-style: italic; font-weight:bold; padding: 0 5px 5px;}
 		.good {color: green;}
 		.bad {color: red; font-weight: bold;}
 		.info {color: blue;}
@@ -153,7 +153,17 @@ if (!isset($_POST['lang'])) {
 	// However, this is unreliable, especially on servers with custom restrictions.
 	// Now, we just show the default values.  These can (hopefully!) be changed using the
 	// site settings page.
-	$maxmem=to_mb(ini_get('memory_limit'));
+	$memory_limit = ini_get('memory_limit');
+	switch (strtoupper(substr($memory_limit, -1))) {
+	case 'K':
+		$maxmem = (int)(substr($memory_limit, 0, strlen($memory_limit)-1)/1024);
+	case 'M':
+		$maxmem = (int)(substr($memory_limit, 0, strlen($memory_limit)-1));
+	case 'G':
+		$maxmem = (int)(1024*substr($memory_limit, 0, strlen($memory_limit)-1));
+	default:
+		$maxmem = $memory_limit;
+	}
 	$maxcpu=ini_get('max_execution_time');
 	echo
 		'<p>',
@@ -926,15 +936,3 @@ try {
 echo '</form>';
 echo '</body>';
 echo '</html>';
-
-function to_mb($str) {
-	if (substr($str, -1, 1)=='K') {
-		return floor(substr($str, 0, strlen($str)-1)/1024);
-	}
-	if (substr($str, -1, 1)=='M') {
-		return floor(substr($str, 0, strlen($str)-1));
-	}
-	if (substr($str, -1, 1)=='G') {
-		return floor(1024*substr($str, 0, strlen($str)-1));
-	}
-}

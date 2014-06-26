@@ -62,59 +62,35 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Tab {
 		$html='<div id="'.$this->getName().'_content">';
 		//Show Lightbox-Album header Links
 		if (WT_USER_CAN_EDIT) {
-			$html.='<table class="facts_table"><tr>';
-			$html.='<td class="descriptionbox rela">';
+			$html.='<table class="facts_table"><tr><td class="descriptionbox rela">';
 			// Add a new media object
 			if (get_gedcom_setting(WT_GED_ID, 'MEDIA_UPLOAD') >= WT_USER_ACCESS_LEVEL) {
 				$html.='<span><a href="#" onclick="window.open(\'addmedia.php?action=showmediaform&linktoid='.$controller->record->getXref().'\', \'_blank\', \'resizable=1,scrollbars=1,top=50,height=780,width=600\');return false;">';
-				$html.='<img src="'.WT_STATIC_URL.WT_MODULES_DIR.'lightbox/images/image_add.png" id="head_icon" class="icon" title="'.WT_I18N::translate('Add a new media object').'" alt="'.WT_I18N::translate('Add a new media object').'">';
+				$html.='<img src="'.WT_CSS_URL.'images/image_add.png" id="head_icon" class="icon" title="'.WT_I18N::translate('Add a new media object').'" alt="'.WT_I18N::translate('Add a new media object').'">';
 				$html.=WT_I18N::translate('Add a new media object');
 				$html.='</a></span>';
 				// Link to an existing item
 				$html.='<span><a href="#" onclick="window.open(\'inverselink.php?linktoid='.$controller->record->getXref().'&linkto=person\', \'_blank\', \'resizable=1,scrollbars=1,top=50,height=300,width=450\');">';
-				$html.= '<img src="'.WT_STATIC_URL.WT_MODULES_DIR.'lightbox/images/image_link.png" id="head_icon" class="icon" title="'.WT_I18N::translate('Link to an existing media object').'" alt="'.WT_I18N::translate('Link to an existing media object').'">';
+				$html.= '<img src="'.WT_CSS_URL.'images/image_link.png" id="head_icon" class="icon" title="'.WT_I18N::translate('Link to an existing media object').'" alt="'.WT_I18N::translate('Link to an existing media object').'">';
 				$html.=WT_I18N::translate('Link to an existing media object');
 				$html.='</a></span>';
 			}
 			if (WT_USER_GEDCOM_ADMIN && $this->get_media()) {
 				// Popup Reorder Media
 				$html.='<span><a href="#" onclick="reorder_media(\''.$controller->record->getXref().'\')">';
-				$html.='<img src="'.WT_STATIC_URL.WT_MODULES_DIR.'lightbox/images/images.png" id="head_icon" class="icon" title="'.WT_I18N::translate('Re-order media').'" alt="'.WT_I18N::translate('Re-order media').'">';
+				$html.='<img src="'.WT_CSS_URL.'images/images.png" id="head_icon" class="icon" title="'.WT_I18N::translate('Re-order media').'" alt="'.WT_I18N::translate('Re-order media').'">';
 				$html.=WT_I18N::translate('Re-order media');
 				$html.='</a></span>';
-				$html.='</td>';
 			}
-			$html.='</tr></table>';
+			$html.='</td></tr></table>';
 		}
 		$media_found = false;
 
 		// Used when sorting media on album tab page
-		$html .= '<table width="100%" cellpadding="0" border="0">';
-		$html .= '<tr>';
-		$html .= '<td class="facts_value">';
-		$html .= '<div class="thumbcontainer">';
-		$html .= '<ul class="thumblist">';
+		$html .= '<table class="facts_table"><tr><td class="facts_value">'; // one-cell table - for presentation only
+		$html .= '<ul class="album-list">';
 		foreach ($this->get_media() as $media) {
-			$html .= '<li class="li_norm">';
-			// ...and now the actual image
-			if (strpos($media->getFilename(), 'http://maps.google.')===0) {
-				$html .= '<table width="10px" style="margin-top:-90px;" class="pic" border="0"><tr>';
-			} else {
-				$html .= '<table width="10px" class="pic" border="0"><tr>';
-			}
-			$html .= '<td align="center" rowspan="2">';
-			$html .= '<div style="width:1px; height:100px;"></div>';
-			$html .= '</td>';
-			$html .= '<td colspan="3" valign="middle" align="center">';
-			$html .= $media->displayImage();
-			$html .= '</td></tr>';
-
 			//View Edit Menu ----------------------------------
-			$html .= '<tr>';
-			$html .= '<td width="5px"></td>';
-			$html .= '<td valign="bottom" align="center" class="nowrap">';
-
-
 
 			//Get media item Notes
 			$haystack = $media->getGedcom();
@@ -124,23 +100,19 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Tab {
 			$notes    = print_fact_notes($before . $needle . $after, 1, true, true);
 
 			// Prepare Below Thumbnail  menu ----------------------------------------------------
-			$mtitle = '<div style="max-width:120px;overflow:hidden;text-overflow:ellipsis;">' . $media->getFullName() . '</div>';
-			$menu = new WT_Menu();
-			$menu->addLabel($mtitle, 'right');
-
-			// Continue printing menu
+			$menu = new WT_Menu('<div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap">' . $media->getFullName() . '</div>');
 			$menu->addClass('', 'submenu');
 
 			// View Notes
 			if (strpos($media->getGedcom(), "\n1 NOTE")) {
-				$submenu = new WT_Menu(WT_I18N::translate('View notes'), '#');
+				$submenu = new WT_Menu(WT_I18N::translate('View notes'));
 				// Notes Tooltip ----------------------------------------------------
-				$submenu->addOnclick("modalNotes('". WT_Filter::escapeJs($notes) ."','". WT_I18N::translate('View notes') ."'); return false;");
+				$submenu->addOnclick("modalNotes('". WT_Filter::escapeJs($notes) . "','". WT_I18N::translate('View notes') . "'); return false;");
 				$submenu->addClass("submenuitem");
 				$menu->addSubMenu($submenu);
 			}
 			//View Details
-			$submenu = new WT_Menu(WT_I18N::translate('View details'), WT_SERVER_NAME.WT_SCRIPT_PATH . "mediaviewer.php?mid=".$media->getXref().'&amp;ged='.WT_GEDURL, 'right');
+			$submenu = new WT_Menu(WT_I18N::translate('View details'), $media->getHtmlUrl());
 			$submenu->addClass("submenuitem");
 			$menu->addSubMenu($submenu);
 
@@ -155,7 +127,7 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Tab {
 						$source_menu->addClass('submenuitem', 'submenu');
 					}
 					//now add a link to the actual source as a submenu
-					$submenu = new WT_Menu(new WT_Menu(strip_tags($source->getFullName()), $source->getHtmlUrl()));
+					$submenu = new WT_Menu($source->getFullName(), $source->getHtmlUrl());
 					$submenu->addClass('submenuitem', 'submenu');
 					$source_menu->addSubMenu($submenu);
 				}
@@ -170,7 +142,7 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Tab {
 				$submenu->addOnclick("return window.open('addmedia.php?action=editmedia&amp;pid=".$media->getXref()."', '_blank', edit_window_specs);");
 				$submenu->addClass("submenuitem");
 				$menu->addSubMenu($submenu);
-				if (WT_USER_IS_ADMIN) {
+				if (\WT\Auth::isAdmin()) {
 					// Manage Links
 					if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
 						$submenu = new WT_Menu(WT_I18N::translate('Manage links'));
@@ -198,27 +170,20 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Tab {
 
 						$menu->addSubMenu($submenu);
 					}
-					// Unlink Media
-					$submenu = new WT_Menu(WT_I18N::translate('Unlink Media'));
+					// Unlink media
+					$submenu = new WT_Menu(WT_I18N::translate('Unlink media'));
 					$submenu->addOnclick("return unlink_media('" . WT_I18N::translate('Are you sure you want to remove links to this media object?') . "', '" . $controller->record->getXref() . "', '" . $media->getXref() . "');");
 					$submenu->addClass("submenuitem");
 					$menu->addSubMenu($submenu);
 				}
 			}
-			$html .= $menu->getMenu();
-			$html .= '</td>';
-			$html .= '<td width="5px"></td>';
-			$html .= '</tr>';
-			$html .= '</table>';
-			$html .= '<input type="hidden" name="order1[' . $media->getXref() . ']" value="' . $sort_i . '">';
-			$sort_i++;
+			$html .= '<li class="album-list-item">';
+			$html .= '<div class="album-image">' . $media->displayImage() . '</div>';
+			$html .= '<div class="album-title">' . $menu->getMenu() . '</div>';
 			$html .= '</li>';
 		}
 		$html .= '</ul>';
-		$html .= '<div class="clearlist"></div>';
-		$html .= '</td>';
-		$html .= '</tr>';
-		$html .= '</table></div>';
+		$html .= '</td></tr></table>';
 		return $html;
 	}
 

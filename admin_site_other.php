@@ -27,7 +27,7 @@ require WT_ROOT.'includes/functions/functions_edit.php';
 
 $controller=new WT_Controller_Page();
 $controller
-	->requireManagerLogin()
+	->restrictAccess(\WT\Auth::isManager())
 	->setPageTitle(WT_I18N::translate('Add unlinked records'))
 	->pageHeader();
 

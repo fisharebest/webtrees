@@ -25,18 +25,31 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 class WT_I18N {
-	// All characters for a given script - for identifying text and text-direction.
-	const WT_UTF8_ARABIC_CHARACTERS = '؆؇؈؉؊؋؍؎؏ؘؙؚؐؑؒؓؔؕؖؗ؞ءآأؤإئابةتثجحخدذرزسشصضطظعغػؼؽؾؿفقكلمنهوىيٖٜٗ٘ٙٚٛٝٞ٪٫٬٭ٮٯٱٲٳٴٵٶٷٸٹٺٻټٽپٿڀځڂڃڄڅچڇڈډڊڋڌڍڎڏڐڑڒړڔڕږڗژڙښڛڜڝڞڟڠڡڢڣڤڥڦڧڨکڪګڬڭڮگڰڱڲڳڴڵڶڷڸڹںڻڼڽھڿۀہۂۃۄۅۆۇۈۉۊۋیۍێۏېۑےۓ۔ەۖۗۘۙۚۛۜ۞ۣ۟۠ۡۢۤۥۦۧۨ۩۪ۭ۫۬ۮۯ۰۱۲۳۴۵۶۷۸۹ۺۻۼ۽۾ۿݐݑݒݓݔݕݖݗݘݙݚݛݜݝݞݟݠݡݢݣݤݥݦݧݨݩݪݫݬݭݮݯݰݱݲݳݴݵݶݷݸݹݺݻݼݽݾݿﭐﭑﭒﭓﭔﭕﭖﭗﭘﭙﭚﭛﭜﭝﭞﭟﭠﭡﭢﭣﭤﭥﭦﭧﭨﭩﭪﭫﭬﭭﭮﭯﭰﭱﭲﭳﭴﭵﭶﭷﭸﭹﭺﭻﭼﭽﭾﭿﮀﮁﮂﮃﮄﮅﮆﮇﮈﮉﮊﮋﮌﮍﮎﮏﮐﮑﮒﮓﮔﮕﮖﮗﮘﮙﮚﮛﮜﮝﮞﮟﮠﮡﮢﮣﮤﮥﮦﮧﮨﮩﮪﮫﮬﮭﮮﮯﮰﮱﯓﯔﯕﯖﯗﯘﯙﯚﯛﯜﯝﯞﯟﯠﯡﯢﯣﯤﯥﯦﯧﯨﯩﯪﯫﯬﯭﯮﯯﯰﯱﯲﯳﯴﯵﯶﯷﯸﯹﯺﯻﯼﯽﯾﯿﰀﰁﰂﰃﰄﰅﰆﰇﰈﰉﰊﰋﰌﰍﰎﰏﰐﰑﰒﰓﰔﰕﰖﰗﰘﰙﰚﰛﰜﰝﰞﰟﰠﰡﰢﰣﰤﰥﰦﰧﰨﰩﰪﰫﰬﰭﰮﰯﰰﰱﰲﰳﰴﰵﰶﰷﰸﰹﰺﰻﰼﰽﰾﰿﱀﱁﱂﱃﱄﱅﱆﱇﱈﱉﱊﱋﱌﱍﱎﱏﱐﱑﱒﱓﱔﱕﱖﱗﱘﱙﱚﱛﱜﱝﱞﱟﱠﱡﱢﱣﱤﱥﱦﱧﱨﱩﱪﱫﱬﱭﱮﱯﱰﱱﱲﱳﱴﱵﱶﱷﱸﱹﱺﱻﱼﱽﱾﱿﲀﲁﲂﲃﲄﲅﲆﲇﲈﲉﲊﲋﲌﲍﲎﲏﲐﲑﲒﲓﲔﲕﲖﲗﲘﲙﲚﲛﲜﲝﲞﲟﲠﲡﲢﲣﲤﲥﲦﲧﲨﲩﲪﲫﲬﲭﲮﲯﲰﲱﲲﲳﲴﲵﲶﲷﲸﲹﲺﲻﲼﲽﲾﲿﳀﳁﳂﳃﳄﳅﳆﳇﳈﳉﳊﳋﳌﳍﳎﳏﳐﳑﳒﳓﳔﳕﳖﳗﳘﳙﳚﳛﳜﳝﳞﳟﳠﳡﳢﳣﳤﳥﳦﳧﳨﳩﳪﳫﳬﳭﳮﳯﳰﳱﳲﳳﳴﳵﳶﳷﳸﳹﳺﳻﳼﳽﳾﳿﴀﴁﴂﴃﴄﴅﴆﴇﴈﴉﴊﴋﴌﴍﴎﴏﴐﴑﴒﴓﴔﴕﴖﴗﴘﴙﴚﴛﴜﴝﴞﴟﴠﴡﴢﴣﴤﴥﴦﴧﴨﴩﴪﴫﴬﴭﴮﴯﴰﴱﴲﴳﴴﴵﴶﴷﴸﴹﴺﴻﴼﴽﵐﵑﵒﵓﵔﵕﵖﵗﵘﵙﵚﵛﵜﵝﵞﵟﵠﵡﵢﵣﵤﵥﵦﵧﵨﵩﵪﵫﵬﵭﵮﵯﵰﵱﵲﵳﵴﵵﵶﵷﵸﵹﵺﵻﵼﵽﵾﵿﶀﶁﶂﶃﶄﶅﶆﶇﶈﶉﶊﶋﶌﶍﶎﶏﶒﶓﶔﶕﶖﶗﶘﶙﶚﶛﶜﶝﶞﶟﶠﶡﶢﶣﶤﶥﶦﶧﶨﶩﶪﶫﶬﶭﶮﶯﶰﶱﶲﶳﶴﶵﶶﶷﶸﶹﶺﶻﶼﶽﶾﶿﷀﷁﷂﷃﷄﷅﷆﷇﷰﷱﷲﷳﷴﷵﷶﷷﷸﷹﷺﷻ﷼ﹰﹱﹲﹳﹴﹶﹷﹸﹹﹺﹻﹼﹽﹾﹿﺀﺁﺂﺃﺄﺅﺆﺇﺈﺉﺊﺋﺌﺍﺎﺏﺐﺑﺒﺓﺔﺕﺖﺗﺘﺙﺚﺛﺜﺝﺞﺟﺠﺡﺢﺣﺤﺥﺦﺧﺨﺩﺪﺫﺬﺭﺮﺯﺰﺱﺲﺳﺴﺵﺶﺷﺸﺹﺺﺻﺼﺽﺾﺿﻀﻁﻂﻃﻄﻅﻆﻇﻈﻉﻊﻋﻌﻍﻎﻏﻐﻑﻒﻓﻔﻕﻖﻗﻘﻙﻚﻛﻜﻝﻞﻟﻠﻡﻢﻣﻤﻥﻦﻧﻨﻩﻪﻫﻬﻭﻮﻯﻰﻱﻲﻳﻴﻵﻶﻷﻸﻹﻺﻻﻼ';
-	const WT_UTF8_CYRILLIC_CHARACTERS = 'ЀЁЂЃЄЅІЇЈЉЊЋЌЍЎЏАБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдежзийклмнопрстуфхцчшщъыьэюяѐёђѓєѕіїјљњћќѝўџѠѡѢѣѤѥѦѧѨѩѪѫѬѭѮѯѰѱѲѳѴѵѶѷѸѹѺѻѼѽѾѿҀҁ҂҃҄҇҈҉ҊҋҌҍҎҏҐґҒғҔҕҖҗҘҙҚқҜҝҞҟҠҡҢңҤҥҦҧҨҩҪҫҬҭҮүҰұҲҳҴҵҶҷҸҹҺһҼҽҾҿӀӁӂӃӄӅӆӇӈӉӊӋӌӍӎӏӐӑӒӓӔӕӖӗӘәӚӛӜӝӞӟӠӡӢӣӤӥӦӧӨөӪӫӬӭӮӯӰӱӲӳӴӵӶӷӸӹӺӻӼӽӾӿԀԁԂԃԄԅԆԇԈԉԊԋԌԍԎԏԐԑԒԓԔԕԖԗԘԙԚԛԜԝԞԟԠԡԢԣԤԥᴫᵸⷠⷡⷢⷣⷤⷥⷦⷧⷨⷩⷪⷫⷬⷭⷮⷯⷰⷱⷲⷳⷴⷵⷶⷷⷸⷹⷺⷻⷼⷽⷾⷿꙀꙁꙂꙃꙄꙅꙆꙇꙈꙉꙊꙋꙌꙍꙎꙏꙐꙑꙒꙓꙔꙕꙖꙗꙘꙙꙚꙛꙜꙝꙞꙟꙢꙣꙤꙥꙦꙧꙨꙩꙪꙫꙬꙭꙮ꙯꙰꙱꙲꙳꙼꙽꙾ꙿꚀꚁꚂꚃꚄꚅꚆꚇꚈꚉꚊꚋꚌꚍꚎꚏꚐꚑꚒꚓꚔꚕꚖꚗ';
-	const WT_UTF8_GREEK_CHARACTERS = 'ͰͱͲͳ͵Ͷͷͺͻͼͽ΄ΆΈΉΊΌΎΏΐΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩΪΫάέήίΰαβγδεζηθικλμνξοπρςστυφχψωϊϋόύώϏϐϑϒϓϔϕϖϗϘϙϚϛϜϝϞϟϠϡϰϱϲϳϴϵ϶ϷϸϹϺϻϼϽϾϿᴦᴧᴨᴩᴪᵝᵞᵟᵠᵡᵦᵧᵨᵩᵪᶿἀἁἂἃἄἅἆἇἈἉἊἋἌἍἎἏἐἑἒἓἔἕἘἙἚἛἜἝἠἡἢἣἤἥἦἧἨἩἪἫἬἭἮἯἰἱἲἳἴἵἶἷἸἹἺἻἼἽἾἿὀὁὂὃὄὅὈὉὊὋὌὍὐὑὒὓὔὕὖὗὙὛὝὟὠὡὢὣὤὥὦὧὨὩὪὫὬὭὮὯὰάὲέὴήὶίὸόὺύὼώᾀᾁᾂᾃᾄᾅᾆᾇᾈᾉᾊᾋᾌᾍᾎᾏᾐᾑᾒᾓᾔᾕᾖᾗᾘᾙᾚᾛᾜᾝᾞᾟᾠᾡᾢᾣᾤᾥᾦᾧᾨᾩᾪᾫᾬᾭᾮᾯᾰᾱᾲᾳᾴᾶᾷᾸᾹᾺΆᾼ᾽ι᾿῀῁ῂῃῄῆῇῈΈῊΉῌ῍῎῏ῐῑῒΐῖῗῘῙῚΊ῝῞῟ῠῡῢΰῤῥῦῧῨῩῪΎῬ῭΅`ῲῳῴῶῷῸΌῺΏῼ´῾Ω';
-	const WT_UTF8_HEBREW_CHARACTERS = '־ֿ׀ׁׂ׃ׅׄ׆ׇאבגדהוזחטיךכלםמןנסעףפץצקרשתװױײ׳״יִﬞײַﬠﬡﬢﬣﬤﬥﬦﬧﬨ﬩שׁשׂשּׁשּׂאַאָאּבּגּדּהּוּזּטּיּךּכּלּמּנּסּףּפּצּקּרּשּתּוֹבֿכֿפֿﭏ';
-	const WT_UTF8_LATIN_CHARACTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+	// Lookup table to convert unicode code-points into scripts.
+	// See https://en.wikipedia.org/wiki/Unicode_block
+	// Note: we only need details for scripts of languages into which webtrees is translated.
+	private static $scripts = array(
+		array('Latn', 0x0041, 0x005A), // a-z
+		array('Latn', 0x0061, 0x007A), // A-Z
+		array('Latn', 0x0100, 0x02AF),
+		array('Grek', 0x0370, 0x03FF),
+		array('Cyrl', 0x0400, 0x052F),
+		array('Hebr', 0x0590, 0x05FF),
+		array('Arab', 0x0600, 0x06FF),
+		array('Arab', 0x0750, 0x077F),
+		array('Arab', 0x08A0, 0x08FF),
+		array('Deva', 0x0900, 0x097F),
+		array('Taml', 0x0B80, 0x0BFF),
+		array('Sinh', 0x0D80, 0x0DFF),
+		array('Thai', 0x0E00, 0x0E7F),
+		array('Geor', 0x10A0, 0x10FF),
+		array('Grek', 0x1F00, 0x1FFF),
+		array('Deva', 0xA8E0, 0xA8FF),
+		array('Hans', 0x3000, 0x303F), // Mixed CJK, not just Hans
+		array('Hans', 0x3400, 0xFAFF), // Mixed CJK, not just Hans
+		array('Hans', 0x20000, 0x2FA1F), // Mixed CJK, not just Hans
+	);
 
 	public  static $locale;
 	public  static $collation;
@@ -52,7 +65,10 @@ class WT_I18N {
 		global $WT_SESSION;
 
 		// The translation libraries only work with a cache.
-		$cache_options=array('automatic_serialization'=>true);
+		$cache_options = array(
+			'automatic_serialization' => true,
+			'cache_id_prefix'         => md5(WT_SERVER_NAME . WT_SCRIPT_PATH),
+		);
 
 		if (ini_get('apc.enabled')) {
 			self::$cache=Zend_Cache::factory('Core', 'Apc', $cache_options, array());
@@ -79,27 +95,26 @@ class WT_I18N {
 		$installed_languages=self::installed_languages();
 		if (is_null($locale) || !array_key_exists($locale, $installed_languages)) {
 			// Automatic locale selection.
-			if (isset($_GET['lang']) && array_key_exists($_GET['lang'], $installed_languages)) {
+			$locale = WT_Filter::get('lang');
+			if ($locale && array_key_exists($locale, $installed_languages)) {
 				// Requested in the URL?
-				$locale=$_GET['lang'];
-				unset($_GET['lang']);
-				if (WT_USER_ID) {
-					set_user_setting(WT_USER_ID, 'language', $locale);
+				if (\WT\Auth::id()) {
+					\WT\Auth::user()->setSetting('language', $locale);
 				}
 			} elseif (array_key_exists($WT_SESSION->locale, $installed_languages)) {
 				// Rembered from a previous visit?
-				$locale=$WT_SESSION->locale;
+				$locale = $WT_SESSION->locale;
 			} else {
 				// Browser preference takes priority over gedcom default
 				if (!empty($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
-					$prefs=explode(',', str_replace(' ', '', $_SERVER['HTTP_ACCEPT_LANGUAGE']));
+					$prefs = explode(',', str_replace(' ', '', $_SERVER['HTTP_ACCEPT_LANGUAGE']));
 				} else {
-					$prefs=array();
+					$prefs = array();
 				}
 				if (WT_GED_ID) {
 					// Add the tree’s default language as a low-priority
-					$locale=get_gedcom_setting(WT_GED_ID, 'LANGUAGE');
-					$prefs[]=$locale.';q=0.2';
+					$locale = get_gedcom_setting(WT_GED_ID, 'LANGUAGE');
+					$prefs[] = $locale.';q=0.2';
 				}
 				$prefs2=array();
 				foreach ($prefs as $pref) {
@@ -128,7 +143,7 @@ class WT_I18N {
 				}
 			}
 		}
-		
+
 		// Load the translation file
 		self::$translation_adapter = new Zend_Translate('gettext', WT_ROOT.'language/'.$locale.'.mo', $locale);
 
@@ -182,7 +197,12 @@ class WT_I18N {
 		self::$collation=WT_I18N::translate('utf8_unicode_ci');
 
 		// Non-latin numbers may require non-latin digits
-		self::$numbering_system = Zend_Locale_Data::getContent($locale, 'defaultnumberingsystem');
+		try {
+			self::$numbering_system = Zend_Locale_Data::getContent($locale, 'defaultnumberingsystem');
+		} catch (Zend_Locale_Exception $ex) {
+			// The latest CLDR database omits some languges such as Tatar (tt)
+			self::$numbering_system = 'latin';
+		}
 
 		return $locale;
 	}
@@ -235,7 +255,7 @@ class WT_I18N {
 	// Generate i18n markup for the <html> tag, e.g. lang="ar" dir="rtl"
 	public static function html_markup() {
 		$localeData=Zend_Locale_Data::getList(self::$locale, 'layout');
-		$dir=$localeData['characters']=='right-to-left' ? 'rtl' : 'ltr';
+		$dir=$localeData['characterOrder']=='right-to-left' ? 'rtl' : 'ltr';
 		list($lang) = preg_split('/[-_@]/', self::$locale);
 		return 'lang="'.$lang.'" dir="'.$dir.'"';
 	}
@@ -567,30 +587,37 @@ class WT_I18N {
 		$pos = 0;
 		$strlen = strlen($string);
 		while ($pos < $strlen) {
-			$byte = ord($string[$pos]);
-			if (($byte & 0xE0) == 0xC0) {
-				$chrlen = 2;
-				$chr = $string[$pos] . $string[$pos + 1];
-			} elseif (($byte & 0xF0) == 0xE0) {
-				$chrlen = 3;
-				$chr = $string[$pos] . $string[$pos + 1] . $string[$pos + 2];
-			} else {
+			// get the Unicode Code Point for the character at position $pos
+			$byte1 = ord($string[$pos]);
+			if ($byte1 < 0x80) {
+				$code_point = $byte1;
 				$chrlen = 1;
-				$chr = $string[$pos];
-			}
-			if (strpos(WT_I18N::WT_UTF8_LATIN_CHARACTERS, $chr) !== false) {
+			} elseif ($byte1 < 0xC0) {
+				// Invalid continuation character
 				return 'Latn';
-			} elseif (strpos(WT_I18N::WT_UTF8_CYRILLIC_CHARACTERS, $chr) !== false) {
-				return 'Cyrl';
-			} elseif (strpos(WT_I18N::WT_UTF8_HEBREW_CHARACTERS, $chr) !== false) {
-				return 'Hebr';
-			} elseif (strpos(WT_I18N::WT_UTF8_GREEK_CHARACTERS, $chr) !== false) {
-				return 'Grek';
-			} elseif (strpos(WT_I18N::WT_UTF8_ARABIC_CHARACTERS, $chr) !== false) {
-				return 'Arab';
+			} elseif ($byte1 < 0xE0) {
+				$code_point = (($byte1 & 0x1F) << 6) + (ord($string[$pos + 1]) & 0x3F);
+				$chrlen = 2;
+			} elseif ($byte1 < 0xF0) {
+				$code_point = (($byte1 & 0x0F) << 12) + ((ord($string[$pos + 1]) & 0x3F) << 6) + (ord($string[$pos + 2]) & 0x3F);
+				$chrlen = 3;
+			} elseif ($byte1 < 0xF8) {
+				$code_point = (($byte1 & 0x07) << 24) + ((ord($string[$pos + 1]) & 0x3F) << 12) + ((ord($string[$pos + 2]) & 0x3F) << 6) + (ord($string[$pos + 3]) & 0x3F);
+				$chrlen = 3;
+ 			} else {
+				// Invalid UTF
+				return 'Latn';
 			}
+
+			foreach (self::$scripts as $script => $range) {
+				if ($code_point >= $range[1] && $code_point <= $range[2]) {
+					return $range[0];
+				}
+			}
+			// Not a recognised script.  Maybe punctuation, spacing, etc.  Keep looking.
 			$pos += $chrlen;
 		}
+
 		return 'Latn';
 	}
 
@@ -633,7 +660,7 @@ class WT_I18N {
 			$callback='';
 		} else {
 			$callback=',
-				"fnInfoCallback": function(oSettings, iStart, iEnd, iMax, iTotal, sPre) {
+				"infoCallback": function(oSettings, iStart, iEnd, iMax, iTotal, sPre) {
 					return sPre
 						.replace(/0/g, "'.utf8_substr($digits, 0, 1).'")
 						.replace(/1/g, "'.utf8_substr($digits, 1, 1).'")
@@ -645,8 +672,8 @@ class WT_I18N {
 						.replace(/7/g, "'.utf8_substr($digits, 7, 1).'")
 						.replace(/8/g, "'.utf8_substr($digits, 8, 1).'")
 						.replace(/9/g, "'.utf8_substr($digits, 9, 1).'");
-    			},
-				"fnFormatNumber": function(iIn) {
+				},
+				"formatNumber": function(iIn) {
 					return String(iIn)
 						.replace(/0/g, "'.utf8_substr($digits, 0, 1).'")
 						.replace(/1/g, "'.utf8_substr($digits, 1, 1).'")
@@ -658,30 +685,30 @@ class WT_I18N {
 						.replace(/7/g, "'.utf8_substr($digits, 7, 1).'")
 						.replace(/8/g, "'.utf8_substr($digits, 8, 1).'")
 						.replace(/9/g, "'.utf8_substr($digits, 9, 1).'");
-    			}
+				}
 			';
 		}
 
 		return
-			'"oLanguage": {'.
-			' "oPaginate": {'.
-			'  "sFirst":    "'./* I18N: button label, first page    */ WT_I18N::translate('first').'",'.
-			'  "sLast":     "'./* I18N: button label, last page     */ WT_I18N::translate('last').'",'.
-			'  "sNext":     "'./* I18N: button label, next page     */ WT_I18N::translate('next').'",'.
-			'  "sPrevious": "'./* I18N: button label, previous page */ WT_I18N::translate('previous').'"'.
+			'"language": {'.
+			' "paginate": {'.
+			'  "first":    "'./* I18N: button label, first page    */ WT_I18N::translate('first').'",'.
+			'  "last":     "'./* I18N: button label, last page     */ WT_I18N::translate('last').'",'.
+			'  "next":     "'./* I18N: button label, next page     */ WT_I18N::translate('next').'",'.
+			'  "previous": "'./* I18N: button label, previous page */ WT_I18N::translate('previous').'"'.
 			' },'.
-			' "sEmptyTable":     "'.WT_I18N::translate('No records to display').'",'.
-			' "sInfo":           "'./* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '_START_', '_END_', '_TOTAL_').'",'.
-			' "sInfoEmpty":      "'.WT_I18N::translate('Showing %1$s to %2$s of %3$s', 0, 0, 0).'",'.
-			' "sInfoFiltered":   "'./* I18N: %s is a placeholder for a number */ WT_I18N::translate('(filtered from %s total entries)', '_MAX_').'",'.
-			' "sInfoPostfix":    "",'.
-			' "sInfoThousands":  "'.$symbols['group'].'",'.
-			' "sLengthMenu":     "'.WT_Filter::escapeJs($length_menu).'",'.
-			' "sLoadingRecords": "'.WT_I18N::translate('Loading…').'",'.
-			' "sProcessing":     "'.WT_I18N::translate('Loading…').'",'.
-			' "sSearch":         "'.WT_I18N::translate('Filter').'",'.
-			' "sUrl":            "",'.
-			' "sZeroRecords":    "'.WT_I18N::translate('No records to display').'"'.
+			' "emptyTable":     "'.WT_I18N::translate('No records to display').'",'.
+			' "info":           "'./* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '_START_', '_END_', '_TOTAL_').'",'.
+			' "infoEmpty":      "'.WT_I18N::translate('Showing %1$s to %2$s of %3$s', 0, 0, 0).'",'.
+			' "infoFiltered":   "'./* I18N: %s is a placeholder for a number */ WT_I18N::translate('(filtered from %s total entries)', '_MAX_').'",'.
+			' "infoPostfix":    "",'.
+			' "infoThousands":  "'.$symbols['group'].'",'.
+			' "lengthMenu":     "'.WT_Filter::escapeJs($length_menu).'",'.
+			' "loadingRecords": "'.WT_I18N::translate('Loading…').'",'.
+			' "processing":     "'.WT_I18N::translate('Loading…').'",'.
+			' "search":         "'.WT_I18N::translate('Filter').'",'.
+			' "url":            "",'.
+			' "zeroRecords":    "'.WT_I18N::translate('No records to display').'"'.
 			'}'.
 			$callback;
 	}

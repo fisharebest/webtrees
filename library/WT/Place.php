@@ -18,11 +18,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 class WT_Place {
 	const GEDCOM_SEPARATOR = ', ';
 	private $gedcom_place;  // e.g. array("Westminster", "London", "England")
@@ -32,7 +27,7 @@ class WT_Place {
 		if ($gedcom_place) {
 			$this->gedcom_place=explode(self::GEDCOM_SEPARATOR, $gedcom_place);
 		} else {
-			// Empty => "Top Level"
+			// Empty => "Top level"
 			$this->gedcom_place=array();
 			$this->place_id=0;
 		}

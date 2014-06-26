@@ -29,8 +29,8 @@ require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 $controller=new WT_Controller_Descendancy();
 $controller
 	->pageHeader()
-	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
-	->addInlineJavascript('var pastefield; function paste_id(value) { pastefield.value=value; }'); // For the "find indi" link
+	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+	->addInlineJavascript('autocomplete();');
 
 ?>
 <div id="descendancy-page"><h2><?php echo $controller->getPageTitle(); ?></h2>
@@ -43,7 +43,7 @@ $controller
 					<?php	echo WT_I18N::translate('Individual'); ?>
 				</td>
 				<td class="optionbox">
-					<input class="pedigree_form" type="text" id="rootid" name="rootid" size="3" value="<?php echo $controller->rootid; ?>">
+					<input class="pedigree_form" data-autocomplete-type="INDI" type="text" id="rootid" name="rootid" size="3" value="<?php echo $controller->rootid; ?>">
 					<?php echo print_findindi_link('rootid'); ?>
 				</td>
 				<td class="descriptionbox">
@@ -101,22 +101,18 @@ if ($controller->error_message) {
 		echo '</ul>';
 		break;
 	case 1: // Booklet
-		echo '<div id="descendancy_chart">';
 		$show_cousins = true;
+		echo '<div id="descendancy_chart">';
 		$controller->print_child_family($controller->root, $controller->generations);
 		echo '</div>';
 		break;
 	case 2: // Individual list
 		$descendants = $controller->indi_desc($controller->root, $controller->generations, array());
-		echo '<div id="descendancy-list">';
-		echo format_indi_table($descendants, WT_I18N::translate('Descendants of %s', $controller->name));
-		echo '</div>';
+		echo '<div id="descendancy-list">', format_indi_table($descendants), '</div>';
 		break;
 	case 3: // Family list
 		$descendants = $controller->fam_desc($controller->root, $controller->generations, array());
-		echo '<div id="descendancy-list">';
-		echo format_fam_table($descendants, WT_I18N::translate('Descendants of %s', $controller->name));
-		echo '</div>';
+		echo '<div id="descendancy-list">', format_fam_table($descendants), '</div>';
 		break;
 	}
 }

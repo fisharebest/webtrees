@@ -47,7 +47,7 @@ third-party tools, design techniques and open standards.
 
 **webtrees** allows you to view and edit your genealogy on your website. It has
 full editing capabilities, full privacy functions, and supports multimedia like
-photos and document images. As an on line program, it fosters extended family
+photos and document images. As an online program, it fosters extended family
 participation and good ancestral recording habits, as it simplifies the process
 of collaborating with others working on your family lines. Your latest information
 is always on your web site and available for others to see, defined by viewing
@@ -95,14 +95,13 @@ To install **webtrees**, you need:
   We will do our best to support others such as Opera and Internet Explorer,
   though not their earlier versions. Currently many things do not work well in
   IE7, and some not in IE8 either. We strongly recommend anyone using these
-  obsolete browsers upgrade as soon as possible. We are also aware that IE and
-  Opera browsers provide poor RTL language support generally, so cannot recommend
-  those for sites requiring RTL languages.
+  obsolete browsers upgrade as soon as possible. We are also aware that IE
+  provides poor RTL language support generally, so cannot recommend it for
+  sites requiring RTL languages.
 * To view sites that contain both left-to-right and right-to-left text (e.g.
   English data on Hebrew pages), you will need to use a browser that provides
-  support for the HTML5 **dir="auto"** attribute. At present, only browsers based on
-  the WebKit engine (Chrome and Safari) have this. The Gecko (Firefox) and
-  Presto (Opera) engines promise to provide this soon.
+  support for the HTML5 **dir="auto"** attribute. At present, Internet Explorer
+  (11 and lower) do not support this.
 * HTML Frames. Note that **webtrees** uses cookies to track login sessions. Sites
   that make **webtrees** pages available inside an HTML Frames will encounter
   problems with login for versions 7, 8, and 9 of Internet Explorer. IE users
@@ -142,7 +141,7 @@ administration page, where you'll need to select one of the following options:
    * CREATE a new, empty GEDCOM file
    * TRANSFER your existing PGV data straight into **webtrees**, using the
      PGV-to-**webtrees** wizard described in section 9 below:
-     [Converting form phpgedview](#phpgedview)
+     [Converting from phpgedview](#converting-from-phpgedview)
 
 There are *lots* of configuration options. You'll probably want to review the
 privacy settings first. Don't worry too much about all the other options - the

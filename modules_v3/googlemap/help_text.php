@@ -27,12 +27,12 @@ if (!defined('WT_WEBTREES') || !defined('WT_SCRIPT_NAME') || WT_SCRIPT_NAME!='he
 }
 
 switch ($help) {
-case 'GOOGLEMAP_MAP_ZOOM':
+case 'GM_MAP_ZOOM':
 	$title=WT_I18N::translate('Zoom level of map');
 	$text=WT_I18N::translate('Minimum and maximum zoom level for the Google map. 1 is the full map, 15 is single house. Note that 15 is only available in certain areas.');
 	break;
 
-case 'GOOGLEMAP_PRECISION':
+case 'GM_PRECISION':
 	$title=WT_I18N::translate('Precision of the latitude and longitude');
 	$text=WT_I18N::translate('This specifies the precision of the different levels when entering new geographic locations. For example a country will be specified with precision 0 (=0 digits after the decimal point), while a town needs 3 or 4 digits.');
 	break;
@@ -42,9 +42,9 @@ case 'GM_NAME_PREFIX_SUFFIX':
 	$text=WT_I18N::translate('Some place names may be written with optional prefixes and suffixes.  For example “Orange” versus “Orange County”.  If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded.  Multiple options should be separated with semicolons.  For example “County;County of” or “Township;Twp;Twp.”.');
 	break;
 
-case 'GOOGLEMAP_COORD':
-	$title=WT_I18N::translate('Display Map Coordinates');
-	$text=WT_I18N::translate('This options sets whether Latitude and Longitude are displayed on the pop-up window attached to map markers.');
+case 'GM_COORD':
+	$title=WT_I18N::translate('Display map coordinates');
+	$text=WT_I18N::translate('This options sets whether latitude and longitude are displayed on the pop-up window attached to map markers.');
 	break;
 
 // Help texts for places_edit.php

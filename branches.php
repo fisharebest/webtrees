@@ -28,7 +28,8 @@ require './includes/session.php';
 $controller=new WT_Controller_Branches();
 $controller
 	->pageHeader()
-	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');
+	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+	->addInlineJavascript('autocomplete();');
 
 ?>
 <div id="branches-page">
@@ -40,7 +41,7 @@ $controller
 					<?php echo WT_Gedcom_Tag::getLabel('SURN'); ?>
 				</td>
 				<td class="optionbox">
-					<input type="text" name="surname" id="SURN" value="<?php echo WT_Filter::escapeHtml($controller->getSurname()); ?>" dir="auto">
+					<input data-autocomplete-type="SURN" type="text" name="surname" id="SURN" value="<?php echo WT_Filter::escapeHtml($controller->getSurname()); ?>" dir="auto">
 					<input type="hidden" name="ged" id="ged" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>">
 					<input type="submit" value="<?php echo WT_I18N::translate('View'); ?>">
 					<p>

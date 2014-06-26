@@ -234,14 +234,15 @@ case 'PLAC': // Place names (with hierarchy), that include the search term
 	foreach (WT_Place::findPlaces($term, WT_GED_ID) as $place) {
 		$data[]=$place->getGedcomName();
 	}
-	if (!$data && get_gedcom_setting(WT_GED_ID, 'USE_GEONAMES')) {
+	if (!$data && get_gedcom_setting(WT_GED_ID, 'GEONAMES_ACCOUNT')) {
 		// No place found?  Use an external gazetteer
 		$url=
-			"http://ws.geonames.org/searchJSON".
+			"http://api.geonames.org/searchJSON".
 			"?name_startsWith=".urlencode($term).
 			"&lang=".WT_LOCALE.
 			"&fcode=CMTY&fcode=ADM4&fcode=PPL&fcode=PPLA&fcode=PPLC".
-			"&style=full";
+			"&style=full".
+			"&username=" . get_gedcom_setting(WT_GED_ID, 'GEONAMES_ACCOUNT');
 		// try to use curl when file_get_contents not allowed
 		if (ini_get('allow_url_fopen')) {
 			$json = file_get_contents($url);
@@ -469,6 +470,43 @@ case 'IFSRO':
 		$note=WT_Note::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 		if ($note->canShowName()) {
 			$data[]=array('value'=>$note->getXref(), 'label'=>$note->getFullName());
+		}
+	}
+	echo json_encode($data);
+	exit;
+
+case 'IFS':
+	$data=array();
+	// Fetch all data, regardless of privacy
+	$rows=get_INDI_rows($term);
+	// Filter for privacy
+	foreach ($rows as $row) {
+		$person=WT_Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+		if ($person->canShowName()) {
+			$data[]=array('value'=>$person->getXref(), 'label'=>str_replace(array('@N.N.', '@P.N.'), array($UNKNOWN_NN, $UNKNOWN_PN), $row->n_full).', <i>'.$person->getLifeSpan().'</i>');
+		}
+	}
+	// Fetch all data, regardless of privacy
+	$rows=get_SOUR_rows($term);
+	// Filter for privacy
+	foreach ($rows as $row) {
+		$source=WT_Source::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+		if ($source->canShowName()) {
+			$data[]=array('value'=>$source->getXref(), 'label'=>$source->getFullName());
+		}
+	}
+	// Fetch all data, regardless of privacy
+	$rows=get_FAM_rows($term);
+	// Filter for privacy
+	foreach ($rows as $row) {
+		$family=WT_Family::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+		if ($family->canShowName()) {
+			$marriage_year=$family->getMarriageYear();
+			if ($marriage_year) {
+				$data[]=array('value'=>$family->getXref(), 'label'=>$family->getFullName().', <i>'.$marriage_year.'</i>');
+			} else {
+				$data[]=array('value'=>$family->getXref(), 'label'=>$family->getFullName());
+			}
 		}
 	}
 	echo json_encode($data);

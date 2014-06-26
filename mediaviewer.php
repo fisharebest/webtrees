@@ -101,7 +101,7 @@ echo '<div id="media-tabs">';
 					if (!$tmp->isExternal()) {
 						if ($tmp->fileExists('main')) {
 							if ($SHOW_MEDIA_DOWNLOAD) {
-								echo '<p><a href="' . $tmp->getHtmlUrlDirect('main', true).'">' . WT_I18N::translate('Download File') . '</a></p>';
+								echo '<p><a href="' . $tmp->getHtmlUrlDirect('main', true).'">' . WT_I18N::translate('Download file') . '</a></p>';
 							}
 						} else {
 							echo '<p class="ui-state-error">' . WT_I18N::translate('The file “%s” does not exist.', $tmp->getFilename()) . '</p>';
@@ -145,37 +145,27 @@ echo '<div id="media-tabs">';
 
 	// Individuals linked to this media object
 	if ($linked_indi) {
-		echo '<div id="indi-media">';
-		echo format_indi_table($linked_indi, $controller->record->getFullName());
-		echo '</div>';
+		echo '<div id="indi-media">', format_indi_table($linked_indi), '</div>';
 	}
 
 	// Families linked to this media object
 	if ($linked_fam) {
-		echo '<div id="fam-media">';
-		echo format_fam_table($linked_fam, $controller->record->getFullName());
-		echo '</div>';
+		echo '<div id="fam-media">', format_fam_table($linked_fam), '</div>';
 	}
 
 	// Sources linked to this media object
 	if ($linked_sour) {
-		echo '<div id="sources-media">';
-		echo format_sour_table($linked_sour, $controller->record->getFullName());
-		echo '</div>';
+		echo '<div id="sources-media">', format_sour_table($linked_sour), '</div>';
 	}
 
 	// Repositories linked to this media object
 	if ($linked_repo) {
-		echo '<div id="repo-media">';
-		echo format_repo_table($linked_repo, $controller->record->getFullName());
-		echo '</div>';
+		echo '<div id="repo-media">', format_repo_table($linked_repo), '</div>';
 	}
 
 	// medias linked to this media object
 	if ($linked_note) {
-		echo '<div id="notes-media">';
-		echo format_note_table($linked_note, $controller->record->getFullName());
-		echo '</div>';
+		echo '<div id="notes-media">', format_note_table($linked_note), '</div>';
 	}
 echo '</div>';
 echo '</div>';

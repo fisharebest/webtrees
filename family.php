@@ -110,7 +110,7 @@ echo '</script>';
 				<tr>
 					<td colspan="2">
 						<?php
-						echo print_family_parents($controller->record);
+						print_family_parents($controller->record);
 						if (WT_USER_CAN_EDIT) {
 							$husb=$controller->record->getHusband();
 							if (!$husb) {

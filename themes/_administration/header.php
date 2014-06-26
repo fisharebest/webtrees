@@ -91,7 +91,7 @@ echo
 	'<div id="admin_menu" class="ui-widget-content">',
 	'<ul>',
 	'<li><a ', (WT_SCRIPT_NAME=='admin.php' ? 'class="current" ' : ''), 'href="admin.php">', WT_I18N::translate('Administration'), '</a></li>';
-if (WT_USER_IS_ADMIN) {
+if (\WT\Auth::isAdmin()) {
 	echo
 		'<li><ul>',
 		'<li><a ', (WT_SCRIPT_NAME=='admin_site_config.php'  ? 'class="current" ' : ''), 'href="admin_site_config.php">',  WT_I18N::translate('Site configuration'    ), '</a></li>',
@@ -108,7 +108,7 @@ if (WT_USER_IS_ADMIN) {
 echo '<li><ul>';
 //-- gedcom list
 foreach (WT_Tree::getAll() as $tree) {
-	if (userGedcomAdmin(WT_USER_ID, $tree->tree_id)) {
+	if (\WT\Auth::isManager($tree)) {
 		// Add a title="" element, since long tree titles are cropped
 		echo
 			'<li><span><a ', (WT_SCRIPT_NAME=='admin_trees_config.php' && WT_GED_ID==$tree->tree_id ? 'class="current" ' : ''), 'href="admin_trees_config.php?ged='.$tree->tree_name_url.'" title="', WT_Filter::escapeHtml($tree->tree_title), '" dir="auto">', $tree->tree_title_html,
@@ -124,7 +124,7 @@ echo
 	'<li><a href="index_edit.php?gedcom_id=-1" onclick="return modalDialog(\'index_edit.php?gedcom_id=-1'.'\', \'',    WT_I18N::translate('Set the default blocks for new family trees'), '\');">', WT_I18N::translate('Set the default blocks'), '</a></li>',
 	'</ul></li>';
 
-if (WT_USER_IS_ADMIN) {
+if (\WT\Auth::isAdmin()) {
 	echo
 		'<li><a ', (WT_SCRIPT_NAME=='admin_users.php' && WT_Filter::get('action')!="cleanup"&& WT_Filter::get('action')!="createform" ? 'class="current" ' : ''), 'href="admin_users.php">',
 		WT_I18N::translate('Users'),

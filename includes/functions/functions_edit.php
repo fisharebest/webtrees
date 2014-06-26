@@ -309,15 +309,15 @@ function remove_links($gedrec, $xref) {
 function print_calendar_popup($id) {
 	return
 		' <a href="#" onclick="cal_toggleDate(\'caldiv'.$id.'\', \''.$id.'\'); return false;" class="icon-button_calendar" title="'.WT_I18N::translate('Select a date').'"></a>'.
-		'<div id="caldiv'.$id.'" style="position:absolute;visibility:hidden;background-color:white;layer-background-color:white; z-index: 1000;"></div>';
+		'<div id="caldiv'.$id.'" style="position:absolute;visibility:hidden;background-color:white;z-index:1000;"></div>';
 }
 
 function print_addnewmedia_link($element_id) {
-	return '<a href="#" onclick="pastefield=document.getElementById(\''.$element_id.'\'); window.open(\'addmedia.php?action=showmediaform\', \'_blank\', edit_window_specs); return false;" class="icon-button_addmedia" title="'.WT_I18N::translate('Add a new media object').'"></a>';
+	return '<a href="#" onclick="pastefield=document.getElementById(\''.$element_id.'\'); window.open(\'addmedia.php?action=showmediaform\', \'_blank\', edit_window_specs); return false;" class="icon-button_addmedia" title="'.WT_I18N::translate('Create a new media object').'"></a>';
 }
 
 function print_addnewrepository_link($element_id) {
-	return '<a href="#" onclick="addnewrepository(document.getElementById(\''.$element_id.'\')); return false;" class="icon-button_addrepository" title="'.WT_I18N::translate('Create repository').'"></a>';
+	return '<a href="#" onclick="addnewrepository(document.getElementById(\''.$element_id.'\')); return false;" class="icon-button_addrepository" title="'.WT_I18N::translate('Create a new repository').'"></a>';
 }
 
 function print_addnewnote_link($element_id) {
@@ -325,7 +325,7 @@ function print_addnewnote_link($element_id) {
 }
 
 function print_editnote_link($note_id) {
-	return '<a href="#" onclick="var win02=window.open(\'edit_interface.php?action=editnote&amp;xref='.$note_id.'\', \'win02\', edit_window_specs);" class="icon-button_note" title="'.WT_I18N::translate('Edit shared note').'"></a>';
+	return '<a href="#" onclick="edit_note(\''.$note_id.'\'); return false;" class="icon-button_note" title="'.WT_I18N::translate('Edit shared note').'"></a>';
 }
 
 function print_addnewsource_link($element_id) {
@@ -333,25 +333,29 @@ function print_addnewsource_link($element_id) {
 }
 
 /**
-* add a new tag input field
-*
-* called for each fact to be edited on a form.
-* Fact level=0 means a new empty form : data are POSTed by name
-* else data are POSTed using arrays :
-* glevels[] : tag level
-*  islink[] : tag is a link
-*     tag[] : tag name
-*    text[] : tag value
-*
-* @param string $tag fact record to edit (eg 2 DATE xxxxx)
-* @param string $upperlevel optional upper level tag (eg BIRT)
-* @param string $label An optional label to echo instead of the default
-* @param string $extra optional text to display after the input field
-*/
-function add_simple_tag($tag, $upperlevel='', $label='', $extra=null) {
-	global $MEDIA_DIRECTORY, $tags, $emptyfacts, $main_fact, $TEXT_DIRECTION;
-	global $NPFX_accept, $SPFX_accept, $NSFX_accept, $FILE_FORM_accept, $upload_count;
-	global $xref, $bdm, $action, $CensDate;
+ * add a new tag input field
+ *
+ * called for each fact to be edited on a form.
+ * Fact level=0 means a new empty form : data are POSTed by name
+ * else data are POSTed using arrays :
+ * glevels[] : tag level
+ *  islink[] : tag is a link
+ *     tag[] : tag name
+ *    text[] : tag value
+ *
+ * @param string        $tag        fact record to edit (eg 2 DATE xxxxx)
+ * @param string        $upperlevel optional upper level tag (eg BIRT)
+ * @param string        $label      An optional label to echo instead of the default
+ * @param string        $extra      optional text to display after the input field
+ * @param WT_Individual $person     For male/female translations
+ *
+ * @return string
+ */
+function add_simple_tag(
+	$tag, $upperlevel = '', $label = '', $extra = null,
+	WT_Individual $person = null
+) {
+	global $tags, $emptyfacts, $main_fact, $FILE_FORM_accept, $xref, $bdm, $action;
 	global $QUICK_REQUIRED_FACTS, $QUICK_REQUIRED_FAMFACTS, $PREFER_LEVEL2_SOURCES;
 
 	$subnamefacts = array("NPFX", "GIVN", "SPFX", "SURN", "NSFX", "_MARNM_SURN");
@@ -366,9 +370,12 @@ function add_simple_tag($tag, $upperlevel='', $label='', $extra=null) {
 	if ($level==1) $main_fact=$fact;
 
 	// element id : used by javascript functions
-	if ($level==0) $element_id=$fact; // ex: NPFX | GIVN ...
-	else $element_id=$fact.(int)(microtime()*1000000); // ex: SOUR56402
-	if ($upperlevel) $element_id=$upperlevel."_".$fact; // ex: BIRT_DATE | DEAT_DATE ...
+	if ($level==0)
+		$element_id = $fact; // ex: NPFX | GIVN ...
+	else
+		$element_id = $fact . (int)(microtime()*1000000); // ex: SOUR56402
+	if ($upperlevel)
+		$element_id = $upperlevel . "_" . $fact . (int)(microtime()*1000000); // ex: BIRT_DATE56402 | DEAT_DATE56402 ...
 
 	// field value
 	$islink = (substr($value, 0, 1)=="@" and substr($value, 0, 2)!="@#");
@@ -518,9 +525,9 @@ function add_simple_tag($tag, $upperlevel='', $label='', $extra=null) {
 	} else if ($fact=="TEMP") {
 		echo select_edit_control($element_name, WT_Gedcom_Code_Temp::templeNames(), WT_I18N::translate('No temple - living ordinance'), $value);
 	} else if ($fact=="ADOP") {
-		echo edit_field_adop($element_name, $value);
+		echo edit_field_adop($element_name, $value, '', $person);
 	} else if ($fact=="PEDI") {
-		echo edit_field_pedi($element_name, $value);
+		echo edit_field_pedi($element_name, $value, '', $person);
 	} else if ($fact=='STAT') {
 		echo select_edit_control($element_name, WT_Gedcom_Code_Stat::statusNames($upperlevel), '', $value);
 	} else if ($fact=='RELA') {
@@ -585,17 +592,41 @@ function add_simple_tag($tag, $upperlevel='', $label='', $extra=null) {
 			if (in_array($fact, $subnamefacts)) {
 				echo " onblur=\"updatewholename();\" onkeyup=\"updatewholename();\"";
 			}
-			if ($fact=='GIVN') {
-				echo ' autofocus';
-			}
-			if ($fact=="DATE") {
+
+			// Extra markup for specific fact types
+			switch ($fact) {
+			case 'DATE':
 				echo " onblur=\"valid_date(this);\" onmouseout=\"valid_date(this);\"";
-			}
-			if ($fact=="LATI") {
+				break;
+			case 'GIVN':
+				echo ' autofocus data-autocomplete-type="GIVN"';
+				break;
+			case 'LATI':
 				echo " onblur=\"valid_lati_long(this, 'N', 'S');\" onmouseout=\"valid_lati_long(this, 'N', 'S');\"";
-			}
-			if ($fact=="LONG") {
+				break;
+			case 'LONG':
 				echo " onblur=\"valid_lati_long(this, 'E', 'W');\" onmouseout=\"valid_lati_long(this, 'E', 'W');\"";
+				break;
+			case 'NOTE':
+				// Shared notes.  Inline notes are handled elsewhere.
+				echo ' data-autocomplete-type="NOTE"';
+				break;
+			case 'OBJE':
+				echo ' data-autocomplete-type="OBJE"';
+				break;
+			case 'PLAC':
+				echo ' data-autocomplete-type="PLAC"';
+				break;
+			case 'REPO':
+				echo ' data-autocomplete-type="REPO"';
+				break;
+			case 'SOUR':
+				echo ' data-autocomplete-type="SOUR"';
+				break;
+			case 'SURN':
+			case '_MARNM_SURN':
+				echo ' data-autocomplete-type="SURN"';
+				break;
 			}
 			echo '>';
 		}
@@ -606,7 +637,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $extra=null) {
 		if ($fact=='PLAC') {
 			echo "<div id=\"", $element_id, "_pop\" style=\"display: inline;\">";
 			echo print_specialchar_link($element_id), ' ', print_findplace_link($element_id);
-			echo '<span  onclick="jQuery(\'#', $upperlevel, '_LATI_tr,#', $upperlevel, '_LONG_tr,#INDI_LATI_tr,#INDI_LONG_tr,tr[id^=LATI],tr[id^=LONG]\').toggle(\'fast\'); return false;" class="icon-target" title="', WT_Gedcom_Tag::getLabel('LATI'), ' / ', WT_Gedcom_Tag::getLabel('LONG'), '"></span>';
+			echo '<span  onclick="jQuery(\'tr[id^=', $upperlevel,'_LATI],tr[id^=', $upperlevel,'_LONG],tr[id^=LATI],tr[id^=LONG]\').toggle(\'fast\'); return false;" class="icon-target" title="', WT_Gedcom_Tag::getLabel('LATI'), ' / ', WT_Gedcom_Tag::getLabel('LONG'), '"></span>';
 			echo '</div>';
 			if (array_key_exists('places_assistant', WT_Module::getActiveModules())) {
 				places_assistant_WT_Module::setup_place_subfields($element_id);
@@ -622,7 +653,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $extra=null) {
 		echo "document.getElementById('", $element_id, "').style.display='none'";
 		echo '</script>';
 		echo "<select id=\"", $element_id, "_sel\" onchange=\"document.getElementById('", $element_id, "').value=this.value;\" >";
-		foreach (array("Unknown", "Civil", "Religious", "Partners") as $indexval => $key) {
+		foreach (array("Unknown", "Civil", "Religious", "Partners") as $key) {
 			if ($key=="Unknown") echo "<option value=\"\"";
 			else echo "<option value=\"", $key, "\"";
 			$a=strtolower($key);
@@ -636,7 +667,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $extra=null) {
 	// NAME TYPE : hide text field and show a selection list
 	else if ($fact=='TYPE' && $level==0) {
 		$onchange = 'onchange="document.getElementById(\''.$element_id.'\').value=this.value;"';
-		echo edit_field_name_type($element_name, $value, $onchange);
+		echo edit_field_name_type($element_name, $value, $onchange, $person);
 		echo '<script>';
 		echo "document.getElementById('", $element_id, "').style.display='none';";
 		echo '</script>';
@@ -658,13 +689,13 @@ function add_simple_tag($tag, $upperlevel='', $label='', $extra=null) {
 		break;
 	case 'ASSO':
 	case '_ASSO':
-		echo print_findindi_link($element_id);
+		echo print_findindi_link($element_id, $element_id . '_description');
 		break;
 	case 'FILE':
 		print_findmedia_link($element_id, "0file");
 		break;
 	case 'SOUR':
-		echo print_findsource_link($element_id), ' ', print_addnewsource_link($element_id);
+		echo print_findsource_link($element_id, $element_id . '_description'), ' ', print_addnewsource_link($element_id);
 		//-- checkboxes to apply '1 SOUR' to BIRT/MARR/DEAT as '2 SOUR'
 		if ($level==1) {
 			echo '<br>';
@@ -719,7 +750,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $extra=null) {
 		// Shared Notes Icons ========================================
 		if ($islink) {
 			// Print regular Shared Note icons ---------------------------
-			echo ' ', print_findnote_link($element_id), ' ', print_addnewnote_link($element_id);
+			echo ' ', print_findnote_link($element_id, $element_id . '_description'), ' ', print_addnewnote_link($element_id);
 			if ($value) {
 				echo ' ', print_editnote_link($value);
 			}
@@ -739,7 +770,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $extra=null) {
 		break;
 	}
 
-	echo '<br>';
+	echo '<div id="' . $element_id . '_description">';
 
 	// current value
 	if ($fact=='DATE') {
@@ -749,7 +780,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $extra=null) {
 	if ($value && $value!='new' && $islink) {
 		switch ($fact) {
 		case 'ASSO':
-		case 'ASSO':
+		case '_ASSO':
 			$tmp = WT_Individual::getInstance($value);
 			if ($tmp) {
 				echo ' ', $tmp->getFullname();
@@ -784,8 +815,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $extra=null) {
 
 	// pastable values
 	if ($fact=='FORM' && $upperlevel=='OBJE') print_autopaste_link($element_id, $FILE_FORM_accept);
-
-	echo $extra, '</td></tr>';
+	echo '</div>', $extra, '</td></tr>';
 
 	return $element_id;
 }
@@ -961,7 +991,7 @@ function addNewSex() {
 	}
 }
 function addNewFact($fact) {
-	global $tagSOUR, $ADVANCED_PLAC_FACTS;
+	global $ADVANCED_PLAC_FACTS;
 
 	$FACT = WT_Filter::post($fact);
 	$DATE = WT_Filter::post("{$fact}_DATE");
@@ -1009,28 +1039,28 @@ function addNewFact($fact) {
 }
 
 /**
-* This function splits the $glevels, $tag, $islink, and $text arrays so that the
-* entries associated with a SOUR record are separate from everything else.
-*
-* Input arrays:
-* - $glevels[] - an array of the gedcom level for each line that was edited
-* - $tag[] - an array of the tags for each gedcom line that was edited
-* - $islink[] - an array of 1 or 0 values to indicate when the text is a link element
-* - $text[] - an array of the text data for each line
-*
-* Output arrays:
-* ** For the SOUR record:
-* - $glevelsSOUR[] - an array of the gedcom level for each line that was edited
-* - $tagSOUR[] - an array of the tags for each gedcom line that was edited
-* - $islinkSOUR[] - an array of 1 or 0 values to indicate when the text is a link element
-* - $textSOUR[] - an array of the text data for each line
-* ** For the remaining records:
-* - $glevelsRest[] - an array of the gedcom level for each line that was edited
-* - $tagRest[] - an array of the tags for each gedcom line that was edited
-* - $islinkRest[] - an array of 1 or 0 values to indicate when the text is a link element
-* - $textRest[] - an array of the text data for each line
-*
-*/
+ * This function splits the $glevels, $tag, $islink, and $text arrays so that the
+ * entries associated with a SOUR record are separate from everything else.
+ *
+ * Input arrays:
+ * - $glevels[] - an array of the gedcom level for each line that was edited
+ * - $tag[] - an array of the tags for each gedcom line that was edited
+ * - $islink[] - an array of 1 or 0 values to indicate when the text is a link element
+ * - $text[] - an array of the text data for each line
+ *
+ * Output arrays:
+ * ** For the SOUR record:
+ * - $glevelsSOUR[] - an array of the gedcom level for each line that was edited
+ * - $tagSOUR[] - an array of the tags for each gedcom line that was edited
+ * - $islinkSOUR[] - an array of 1 or 0 values to indicate when the text is a link element
+ * - $textSOUR[] - an array of the text data for each line
+ * ** For the remaining records:
+ * - $glevelsRest[] - an array of the gedcom level for each line that was edited
+ * - $tagRest[] - an array of the tags for each gedcom line that was edited
+ * - $islinkRest[] - an array of 1 or 0 values to indicate when the text is a link element
+ * - $textRest[] - an array of the text data for each line
+ *
+ */
 function splitSOUR() {
 	global $glevels, $tag, $islink, $text;
 	global $glevelsSOUR, $tagSOUR, $islinkSOUR, $textSOUR;
@@ -1080,18 +1110,19 @@ function splitSOUR() {
 }
 
 /**
-* Add new GEDCOM lines from the $xxxSOUR interface update arrays, which
-* were produced by the splitSOUR() function.
-*
-* See the handle_updates() function for details.
-*
-*/
-function updateSOUR($inputRec, $levelOverride="no") {
+ * Add new GEDCOM lines from the $xxxSOUR interface update arrays, which
+ * were produced by the splitSOUR() function.
+ *
+ * See the handle_updates() function for details.
+ *
+ */
+function updateSOUR($inputRec, $levelOverride = 'no') {
 	global $glevels, $tag, $islink, $text;
 	global $glevelsSOUR, $tagSOUR, $islinkSOUR, $textSOUR;
-	global $glevelsRest, $tagRest, $islinkRest, $textRest;
 
-	if (count($tagSOUR)==0) return $inputRec; // No update required
+	if (count($tagSOUR)==0) {
+		return $inputRec; // No update required
+	}
 
 	// Save original interface update arrays before replacing them with the xxxSOUR ones
 	$glevelsSave = $glevels;
@@ -1116,18 +1147,19 @@ function updateSOUR($inputRec, $levelOverride="no") {
 }
 
 /**
-* Add new GEDCOM lines from the $xxxRest interface update arrays, which
-* were produced by the splitSOUR() function.
-*
-* See the handle_updates() function for details.
-*
-*/
-function updateRest($inputRec, $levelOverride="no") {
+ * Add new GEDCOM lines from the $xxxRest interface update arrays, which
+ * were produced by the splitSOUR() function.
+ *
+ * See the handle_updates() function for details.
+ *
+ */
+function updateRest($inputRec, $levelOverride = 'no') {
 	global $glevels, $tag, $islink, $text;
-	global $glevelsSOUR, $tagSOUR, $islinkSOUR, $textSOUR;
 	global $glevelsRest, $tagRest, $islinkRest, $textRest;
 
-	if (count($tagRest)==0) return $inputRec; // No update required
+	if (count($tagRest)==0) {
+		return $inputRec; // No update required
+	}
 
 	// Save original interface update arrays before replacing them with the xxxRest ones
 	$glevelsSave = $glevels;
@@ -1152,30 +1184,32 @@ function updateRest($inputRec, $levelOverride="no") {
 }
 
 /**
-* Add new gedcom lines from interface update arrays
-* The edit_interface and add_simple_tag function produce the following
-* arrays incoming from the $_POST form
-* - $glevels[] - an array of the gedcom level for each line that was edited
-* - $tag[] - an array of the tags for each gedcom line that was edited
-* - $islink[] - an array of 1 or 0 values to tell whether the text is a link element and should be surrounded by @@
-* - $text[] - an array of the text data for each line
-* With these arrays you can recreate the gedcom lines like this
-* <code>$glevel[0].' '.$tag[0].' '.$text[0]</code>
-* There will be an index in each of these arrays for each line of the gedcom
-* fact that is being edited.
-* If the $text[] array is empty for the given line, then it means that the
-* user removed that line during editing or that the line is supposed to be
-* empty (1 DEAT, 1 BIRT) for example.  To know if the line should be removed
-* there is a section of code that looks ahead to the next lines to see if there
-* are sub lines.  For example we don't want to remove the 1 DEAT line if it has
-* a 2 PLAC or 2 DATE line following it.  If there are no sub lines, then the line
-* can be safely removed.
-* @param string $newged the new gedcom record to add the lines to
-* @param int $levelOverride Override GEDCOM level specified in $glevels[0]
-* @return string The updated gedcom record
-*/
+ * Add new gedcom lines from interface update arrays
+ * The edit_interface and add_simple_tag function produce the following
+ * arrays incoming from the $_POST form
+ * - $glevels[] - an array of the gedcom level for each line that was edited
+ * - $tag[] - an array of the tags for each gedcom line that was edited
+ * - $islink[] - an array of 1 or 0 values to tell whether the text is a link element and should be surrounded by @@
+ * - $text[] - an array of the text data for each line
+ * With these arrays you can recreate the gedcom lines like this
+ * <code>$glevel[0].' '.$tag[0].' '.$text[0]</code>
+ * There will be an index in each of these arrays for each line of the gedcom
+ * fact that is being edited.
+ * If the $text[] array is empty for the given line, then it means that the
+ * user removed that line during editing or that the line is supposed to be
+ * empty (1 DEAT, 1 BIRT) for example.  To know if the line should be removed
+ * there is a section of code that looks ahead to the next lines to see if there
+ * are sub lines.  For example we don't want to remove the 1 DEAT line if it has
+ * a 2 PLAC or 2 DATE line following it.  If there are no sub lines, then the line
+ * can be safely removed.
+ *
+ * @param string     $newged        the new gedcom record to add the lines to
+ * @param int|string $levelOverride Override GEDCOM level specified in $glevels[0]
+ *
+ * @return string The updated gedcom record
+ */
 function handle_updates($newged, $levelOverride="no") {
-	global $glevels, $islink, $tag, $uploaded_files, $text, $NOTE, $WORD_WRAPPED_NOTES;
+	global $glevels, $islink, $tag, $uploaded_files, $text;
 
 	if ($levelOverride=="no" || count($glevels)==0) $levelAdjust = 0;
 	else $levelAdjust = $levelOverride - $glevels[0];
@@ -1244,9 +1278,10 @@ function handle_updates($newged, $levelOverride="no") {
 }
 
 /**
-* builds the form for adding new facts
-* @param string $fact the new fact we are adding
-*/
+ * builds the form for adding new facts
+ *
+ * @param string $fact the new fact we are adding
+ */
 function create_add_form($fact) {
 	global $tags, $FULL_SOURCES, $emptyfacts;
 
@@ -1286,8 +1321,7 @@ function create_add_form($fact) {
 
 // Create a form to edit a WT_Fact object
 function create_edit_form(WT_GedcomRecord $record, WT_Fact $fact) {
-	global $WORD_WRAPPED_NOTES, $ADVANCED_PLAC_FACTS, $date_and_time, $FULL_SOURCES;
-	global $tags;
+	global $ADVANCED_PLAC_FACTS, $date_and_time, $FULL_SOURCES, $tags;
 
 	$pid = $record->getXref();
 
@@ -1304,12 +1338,6 @@ function create_edit_form(WT_GedcomRecord $record, WT_Fact $fact) {
 	$level0type = $parent::RECORD_TYPE;
 	$level1type = $type;
 
-	if (count($fields)>2) {
-		$ct = preg_match("/@.*@/", $fields[2]);
-		$levellink = $ct > 0;
-	} else {
-		$levellink = false;
-	}
 	$i = $linenum;
 	$inSource = false;
 	$levelSource = 0;
@@ -1369,7 +1397,7 @@ function create_edit_form(WT_GedcomRecord $record, WT_Fact $fact) {
 				$add_date = false;
 			} elseif ($type=='STAT') {
 				add_simple_tag($subrecord, $level1type, WT_Gedcom_Tag::getLabel($label, $person));
-		 	} elseif ($level0type=='REPO') {
+			} elseif ($level0type=='REPO') {
 				$repo = WT_Repository::getInstance($pid);
 				add_simple_tag($subrecord, $level0type, WT_Gedcom_Tag::getLabel($label, $repo));
 			} else {
@@ -1429,9 +1457,11 @@ function create_edit_form(WT_GedcomRecord $record, WT_Fact $fact) {
 }
 
 /**
-* Populates the global $tags array with any missing sub-tags.
-* @param string $level1tag the type of the level 1 gedcom record
-*/
+ * Populates the global $tags array with any missing sub-tags.
+ *
+ * @param string $level1tag the type of the level 1 gedcom record
+ * @param bool   $add_date
+ */
 function insert_missing_subtags($level1tag, $add_date=false) {
 	global $tags, $date_and_time, $level2_tags, $ADVANCED_PLAC_FACTS, $ADVANCED_NAME_FACTS;
 	global $nondatefacts, $nonplacfacts;
@@ -1508,8 +1538,8 @@ function insert_missing_subtags($level1tag, $add_date=false) {
 				add_simple_tag("2 {$tag}");
 				if ($tag=='PLAC') {
 					if (preg_match_all('/('.WT_REGEX_TAG.')/', $ADVANCED_PLAC_FACTS, $match)) {
-						foreach ($match[1] as $tag) {
-							add_simple_tag("3 $tag", '', WT_Gedcom_Tag::getLabel("{$level1tag}:PLAC:{$tag}"));
+						foreach ($match[1] as $ptag) {
+							add_simple_tag("3 $ptag", '', WT_Gedcom_Tag::getLabel("{$level1tag}:PLAC:{$ptag}"));
 						}
 					}
 					add_simple_tag('3 MAP');

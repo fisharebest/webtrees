@@ -22,59 +22,265 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
  
-.cens_header {text-align:left; margin:5px; height:40px;}
-.cens_container {float:left; width:575px; margin:5px 0; padding:0;}
-.cens_container span {margin:0 3px;}
-.cens_search {position:relative; float:right; margin:5px 0; width:275px; height:410px; overflow:auto;}
-.cens_sour {font-weight:bold; font-size:10px; text-align:left; margin-bottom :5px; overflow: hidden;}
-.cens_sour_country {float:left; width:60px;}
-.cens_sour_year {float: left; width:20px;}
-.cens_sour_scs {	float:right; width:430px;}
-.cens_text {font-size:11px; text-align:left;}
-.cens_text_header {text-align: center;line-height: 40px;vertical-align: middle;}
-.cens_text_header span:nth-of-type(1) {float:left;}
-.cens_text_header span:nth-of-type(3) {float:right;}
-.cens_text_header input[type="button"], .cens_text_header input[type="submit"]  {padding: 1px 5px;}
-textarea#NOTE {font-size: 12px;height:250px; width:98.5%; overflow:auto;}
-.cens_header_left {float:left; font-weight:bold;}
-.cens_header_right {float: right; width:50%;}
-.cens_sour_1 {width:100%; margin:0; padding:0;}
-.cens_sour_2 {clear:left;width:20%; float:left; margin-top:0.25em;}
-.cens_container input {padding:0;}
-.cens_sour input {font-weight:normal; font-size:10px; margin-top:1px; width:78%;}
-.cens_textinput {clear:both; float:left; margin:5px; width:860px;}
-.cens_textinput_left  {float:left; width:90%; text-align:center;}
-.cens_textinput_right  {float:right; font-size:12px; margin:5px;}
-.cens_addrows {clear:both; float:left; width:860px;}
-.cens_data {	height:170px; overflow-y:scroll;width:850px;}
-.cens_data table {width:100%;}
-.cens_data .descriptionbox {min-width:0; padding:3px;}
-#navenclose {margin:-4px; width:270px;}
-.ltrnav {position:absolute; top:-15px; left:40px;}
-.rtlnav {position:absolute; top:-15px; right:40px;}
-.headimg {margin-top:-4px; border:0;}
-.headimg2 {height:17px;	border-style:none;margin:-3px;margin-left:0px;}
-#edit_interface-page input#personid {width:160px;}
+.cens_header {
+	text-align: left;
+	margin: 5px;
+	height: 40px;
+}
 
-html[dir='rtl'] .cens_header {text-align:right;}
-html[dir='rtl'] .cens_container {float:right;}
-html[dir='rtl'] .cens_search {float:left;}
-html[dir='rtl'] .cens_sour {text-align:right;}
-html[dir='rtl'] .cens_sour_country {float:right;}
-html[dir='rtl'] .cens_sour_year {float: right;}
-html[dir='rtl'] .cens_sour_scs {	float:left;}
-html[dir='rtl'] .cens_text {text-align:right;}
-html[dir='rtl'] .cens_header_left {float:right;}
-html[dir='rtl'] .cens_header_right {float: left;}
-html[dir='rtl'] .cens_sour_2 {clear:right; float:right;}
-html[dir='rtl'] .cens_textinput {clear:both; float:right;}
-html[dir='rtl'] .cens_textinput_left  {float:right;}
-html[dir='rtl'] .cens_textinput_right  {float:left;}
-html[dir='rtl'] .cens_addrows {clear:both; float:right;}
-html[dir='rtl'] .headimg2 {margin-right:0px;}
-html[dir='rtl'] .cens_text_header span:nth-of-type(1) {float:right;}
-html[dir='rtl'] .cens_text_header span:nth-of-type(3) {float:left;}
+[dir=rtl] .cens_header {
+	text-align: right;
+}
+
+.cens_container {
+	float: left;
+	width: 575px;
+	margin: 5px 0;
+	padding: 0;
+}
+
+[dir=rtl] .cens_container {
+	float: right;
+}
+
+.cens_container span {
+	margin: 0 3px;
+}
+
+.cens_search {
+	position: relative;
+	float: right;
+	margin: 5px 0;
+	width: 275px;
+	height: 410px;
+	overflow: auto;
+}
+
+[dir=rtl] .cens_search {
+	float: left;
+}
+
+.cens_sour {
+	font-weight: bold;
+	font-size: 10px;
+	text-align: left;
+	margin-bottom: 5px;
+	overflow: hidden;
+}
+
+[dir=rtl] .cens_sour {
+	text-align: right;
+}
+
+.cens_sour_country {
+	float: left;
+	width: 60px;
+}
+
+[dir=rtl] .cens_sour_country {
+	float: right;
+}
+
+.cens_sour_year {
+	float: left;
+	width: 20px;
+}
+
+[dir=rtl] .cens_sour_year {
+	float: right;
+}
+
+.cens_sour_scs {
+	float: right;
+	width: 430px;
+}
+
+[dir=rtl] .cens_sour_scs {
+	float: left;
+}
+
+.cens_text {
+	font-size: 11px;
+	text-align: left;
+}
+
+[dir=rtl] .cens_text {
+	text-align: right;
+}
+
+.cens_text_header {
+	text-align: center;
+	line-height: 40px;
+	vertical-align: middle;
+}
+
+.cens_text_header span:nth-of-type(1) {
+	float: left;
+}
+
+[dir=rtl] .cens_text_header span:nth-of-type(1) {
+	float: right;
+}
+
+.cens_text_header span:nth-of-type(3) {
+	float: right;
+}
+
+[dir=rtl] .cens_text_header span:nth-of-type(3) {
+	float: left;
+}
+
+.cens_text_header input[type="button"],
+.cens_text_header input[type="submit"] {
+	padding: 1px 5px;
+}
+
+textarea#NOTE {
+	font-size: 12px;
+	height: 250px;
+	width: 98.5%;
+	overflow: auto;
+}
+
+.cens_header_left {
+	float: left;
+	font-weight: bold;
+}
+
+[dir=rtl] .cens_header_left {
+	float: right;
+}
+
+.cens_header_right {
+	float: right;
+	width: 50%;
+}
+
+[dir=rtl] .cens_header_right {
+	float: left;
+}
+
+.cens_sour_1 {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.cens_sour_2 {
+	clear: left;
+	width: 20%;
+	float: left;
+	margin-top: 0.25em;
+}
+
+[dir=rtl] .cens_sour_2 {
+	clear: right;
+	float: right;
+}
+
+.cens_container input {
+	padding: 0;
+}
+
+.cens_sour input {
+	font-weight: normal;
+	font-size: 10px;
+	margin-top: 1px;
+	width: 78%;
+}
+
+.cens_textinput {
+	clear: both;
+	float: left;
+	margin: 5px;
+	width: 860px;
+}
+
+[dir=rtl] .cens_textinput {
+	float: right;
+}
+
+.cens_textinput_left {
+	float: left;
+	width: 90%;
+	text-align: center;
+}
+
+[dir=rtl] .cens_textinput_left {
+	float: right;
+}
+
+.cens_textinput_right {
+	float: right;
+	font-size: 12px;
+	margin: 5px;
+}
+
+[dir=rtl] .cens_textinput_right {
+	float: left;
+}
+
+.cens_addrows {
+	clear: both;
+	float: left;
+	width: 860px;
+}
+
+[dir=rtl] .cens_addrows {
+	float: right;
+}
+
+.cens_data {
+	height: 170px;
+	overflow-y: scroll;
+	width: 850px;
+}
+
+.cens_data table {
+	width: 100%;
+}
+
+.cens_data .descriptionbox {
+	min-width: 0;
+	padding: 3px;
+}
+
+#navenclose {
+	margin: -4px;
+	width: 270px;
+}
+
+.ltrnav {
+	position: absolute;
+	top: -15px;
+	left: 40px;
+}
+
+.rtlnav {
+	position: absolute;
+	top: -15px;
+	right: 40px;
+}
+
+.headimg {
+	margin-top: -4px;
+	border: 0;
+}
+
+.headimg2 {
+	height: 17px;
+	border-style: none;
+	margin: -3px;
+	margin-left: 0;
+}
+
+[dir=rtl] .headimg2 {
+	margin-left: auto;
+	margin-right: 0;
+}
 
 
-
+#edit_interface-page input#personid {
+	width: 160px;
+}
 
