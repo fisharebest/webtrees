@@ -166,7 +166,7 @@ if ($search) {
 		$count = $ct - $start;
 	}
 
-	echo '<div><p style="text-align: center;">', WT_I18N::translate('Media Objects found'), ' ', $ct, '</p>';
+	echo '<div><p style="text-align: center;">', WT_I18N::translate('Media objects found'), ' ', $ct, '</p>';
 
 	if ($ct>0) {
 		$currentPage = ((int) ($start / $max)) + 1;
