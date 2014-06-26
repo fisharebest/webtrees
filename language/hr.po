@@ -1775,7 +1775,7 @@ msgstr "Nadimak"
 
 #: includes/functions/functions_print_lists.php:88
 msgid "Alive"
-msgstr "Živ"
+msgstr "Živi"
 
 #. I18N: listbox option, e.g. “10,25,50,100,all”
 #: calendar.php:230 famlist.php:69 famlist.php:75 famlist.php:81
@@ -2712,7 +2712,7 @@ msgstr ""
 #: modules_v3/pedigree_report/report.xml:1365
 #: modules_v3/relative_ext_report/report.xml:53
 msgid "Birth"
-msgstr "Rođen/a"
+msgstr "Rođenje"
 
 #: library/WT/Gedcom/Code/Pedi.php:37
 msgctxt "Female pedigree"
@@ -2727,7 +2727,7 @@ msgstr "Rođen kao"
 #: library/WT/Gedcom/Code/Pedi.php:35
 msgctxt "Pedigree"
 msgid "Birth"
-msgstr "Rođen kao"
+msgstr "Rođeni kao"
 
 #: modules_v3/birth_report/report.xml:6
 msgid "Birthplace contains"
@@ -2820,7 +2820,7 @@ msgstr "Mjesta rođenja"
 
 #: modules_v3/googlemap/module.php:1296
 msgid "Birth:"
-msgstr "Rođen/a:"
+msgstr "Rođenje:"
 
 #. I18N: Name of a module/report
 #: modules_v3/birth_report/module.php:33 modules_v3/birth_report/report.xml:3
@@ -4512,7 +4512,7 @@ msgstr "Dan:"
 #: includes/functions/functions_print_lists.php:89 library/WT/Stats.php:650
 #: library/WT/Stats.php:652
 msgid "Dead"
-msgstr "Umro/la"
+msgstr "Umrli"
 
 #. I18N: gedcom tag DEAT
 #: library/WT/Gedcom/Tag.php:165 modules_v3/ahnentafel_report/report.xml:461
@@ -4802,7 +4802,7 @@ msgstr "Pro"
 #: includes/functions/functions_print_lists.php:430
 #: includes/functions/functions_print_lists.php:856
 msgid "Decade of birth"
-msgstr "Dekada rođenja"
+msgstr "Desetljeće rođenja"
 
 #: includes/functions/functions_print_lists.php:432
 msgid "Decade of death"
@@ -5618,8 +5618,9 @@ msgid "Enter the FAX number including the country and area code.<br><br>Leave th
 msgstr ""
 
 #: help_text.php:388
+#, fuzzy
 msgid "Enter the URL address including the http://.<br><br>An example URL looks like this: <b>http://www.webtrees.net/</b>.  Leave this field blank if you do not want to include a URL."
-msgstr ""
+msgstr "Unesite adresu u polje kao što bi ju pisali na kovertu.<br><br>Ostavite ovo polje prazno ako ne želite uključiti adresu."
 
 #: help_text.php:50
 msgid "Enter the address into the field just as you would write it on an envelope.<br><br>Leave this field blank if you do not want to include an address."
@@ -7881,6 +7882,7 @@ msgid "Keep"
 msgstr "Zadrži"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:124
+#, fuzzy
 msgid "Keep link in list"
 msgstr "Zadrži vezu u listi"
 
@@ -8846,6 +8848,7 @@ msgid "Media ID prefix"
 msgstr "ID predznak medija"
 
 #: medialist.php:173
+#, fuzzy
 msgid "Media objects found"
 msgstr "Medijski objekt pronađen"
 
@@ -9252,6 +9255,7 @@ msgid "Morocco"
 msgstr ""
 
 #: modules_v3/gedcom_stats/module.php:192 modules_v3/html/module.php:258
+#, fuzzy
 msgid "Most common surnames"
 msgstr "Načešće prezime"
 
@@ -9884,8 +9888,9 @@ msgid "Norway"
 msgstr "Norveška"
 
 #: modules_v3/GEDFact_assistant/module.php:196
+#, fuzzy
 msgid "Not a valid individual, family, or source ID"
-msgstr ""
+msgstr "Unesite Osobu, Obitelj, ili ID dokumenta"
 
 #. I18N: gedcom tag _NLIV
 #: library/WT/Gedcom/Tag.php:784
@@ -10252,6 +10257,7 @@ msgid "Other"
 msgstr "Ostalo"
 
 #: search.php:217
+#, fuzzy
 msgid "Other searches"
 msgstr "Druge potrage"
 
@@ -10609,10 +10615,12 @@ msgstr "Mjesto"
 #: modules_v3/googlemap/module.php:167 modules_v3/googlemap/module.php:287
 #: modules_v3/googlemap/module.php:832 modules_v3/googlemap/module.php:1492
 #: modules_v3/googlemap/module.php:2521 modules_v3/googlemap/module.php:3979
+#, fuzzy
 msgid "Place check"
 msgstr "Provjera mjesta"
 
 #: placelist.php:43 placelist.php:62
+#, fuzzy
 msgid "Place list"
 msgstr "Popis mjesta"
 
@@ -10794,6 +10802,7 @@ msgid "Please click on the following link and fill in the requested data to conf
 msgstr ""
 
 #: search.php:63
+#, fuzzy
 msgid "Please enter a given name, surname, or place in addition to the year"
 msgstr "Molimo unesite ime, prezime ili mjesto uz godinu"
 
@@ -11408,6 +11417,7 @@ msgid "Remove"
 msgstr "Ukloni"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:125
+#, fuzzy
 msgid "Remove link from list"
 msgstr "Ukloni vezu sa liste"
 
@@ -14243,6 +14253,7 @@ msgid "This role has all the permissions of the visitor role, plus any additiona
 msgstr ""
 
 #: help_text.php:1144
+#, fuzzy
 msgid "This section allows you to add a new note to the fact that you are currently editing.  Notes are free-form text and will appear in the Fact Details section of the page."
 msgstr "Ova sekcija vam omogućava dodavanje nove bilješke u činjenicu koju trenutno uređujete. Bilješka je slobodni tekst i biti će prikazan na stranici u sekciji Detalji Činjenica."
 
@@ -14586,7 +14597,7 @@ msgstr "Ukupno prihvačenih promjena"
 
 #: statistics.php:107
 msgid "Total births"
-msgstr "Ukupno rođenja"
+msgstr "Ukupno rođenih"
 
 #: statistics.php:90
 msgid "Total dead"
@@ -15046,6 +15057,7 @@ msgid "Use these buttons to re-arrange the order of the entries within the list.
 msgstr "~Move list entries~<br><br>Use these buttons to re-arrange the order of the entries within the list.  The blocks will be printed in the order in which they are listed.<br><br>Highlight the entry to be moved, and then click a button to move that entry up or down.<br><br>"
 
 #: help_text.php:398
+#, fuzzy
 msgid "Use this field to signal that this media item is the highlighted or primary item for the individual it is attached to.  The highlighted image is the one that will be used on charts and on the individual’s page."
 msgstr "Uporijebite ovo polje da biste oznaćili da je ova medijska stavka istaknuta ili primarna za osobu na koju je vezana. Istaknute fotografije su one koje će biti korištene na grafikonima i stranicama pojedinaca."
 
@@ -15866,8 +15878,9 @@ msgid "Youngest mother"
 msgstr "Najmlađa majka"
 
 #: includes/authentication.php:120 message.php:127
+#, fuzzy
 msgid "Your name:"
-msgstr "Vaše ime:"
+msgstr "Vaše ime"
 
 #: modules_v3/clippings/module.php:172 modules_v3/clippings/module.php:430
 msgid "Your clippings cart is empty."
@@ -16401,7 +16414,7 @@ msgstr "umrla"
 #: modules_v3/descendancy_report/report.xml:433
 msgctxt "MALE"
 msgid "died"
-msgstr "umro/la"
+msgstr "umro"
 
 #: modules_v3/googlemap/module.php:357 modules_v3/googlemap/module.php:366
 #: modules_v3/googlemap/module.php:375 modules_v3/googlemap/module.php:383
@@ -19995,3 +20008,6 @@ msgstr "…"
 
 #~ msgid "unknown person"
 #~ msgstr "nepoznata osoba"
+
+#~ msgid "Your Name:"
+#~ msgstr "Vaše ime:"
