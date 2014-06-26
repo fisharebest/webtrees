@@ -24,8 +24,8 @@
 define('WT_SCRIPT_NAME', 'message.php');
 require './includes/session.php';
 
-// Some variables are initialised from $_GET (so we can set initial values in URLs),
-// but are submitted in $_POST so we can have long body text.
+// Some variables are initialised from GET (so we can set initial values in URLs),
+// but are submitted in POST so we can have long body text.
 
 $subject    = WT_Filter::post('subject', null, WT_Filter::get('subject'));
 $body       = WT_Filter::post('body');
@@ -37,7 +37,7 @@ $method     = WT_Filter::post('method', 'messaging|messaging2|messaging3|mailto|
 $url        = WT_Filter::postUrl('url', WT_Filter::getUrl('url'));
 
 $controller=new WT_Controller_Simple();
-$controller->setPageTitle(WT_I18N::translate('webtrees Message'));
+$controller->setPageTitle(WT_I18N::translate('webtrees message'));
 
 $to_user = \WT\User::findByIdentifier($to);
 
@@ -115,7 +115,7 @@ case 'compose':
 	echo $errors;
 
 	if (!WT_USER_ID) {
-		echo '<br><br>', WT_I18N::translate('<b>Please Note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogical data, please include the sources where you obtained the data.');
+		echo '<br><br>', WT_I18N::translate('<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogical data, please include the sources where you obtained the data.');
 	}
 	echo '<br><form name="messageform" method="post" action="message.php" onsubmit="t = new Date(); document.messageform.time.value=t.toUTCString(); return checkForm(this);">';
 	echo WT_Filter::getCsrf();
@@ -124,7 +124,7 @@ case 'compose':
 		echo '<tr><td></td><td>', WT_I18N::translate('This message will be sent to %s', '<b>' . WT_Filter::escapeHtml($to_user->getRealName()) . '</b>'), '</td></tr>';
 	}
 	if (!WT_USER_ID) {
-		echo '<tr><td valign="top" width="15%" align="right">', WT_I18N::translate('Your Name:'), '</td>';
+		echo '<tr><td valign="top" width="15%" align="right">', WT_I18N::translate('Your name:'), '</td>';
 		echo '<td><input type="text" name="from_name" size="40" value="', WT_Filter::escapeHtml($from_name), '"></td></tr><tr><td valign="top" align="right">', WT_I18N::translate('Email address:'), '</td><td><input type="email" name="from_email" size="40" value="', WT_Filter::escapeHtml($from_email), '"><br>', WT_I18N::translate('Please provide your email address so that we may contact you in response to this message.  If you do not provide your email address we will not be able to respond to your inquiry.  Your email address will not be used in any other way besides responding to this inquiry.'), '<br><br></td></tr>';
 	}
 	echo '<tr><td align="right">', WT_I18N::translate('Subject:'), '</td>';

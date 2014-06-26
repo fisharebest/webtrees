@@ -90,7 +90,7 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$content = '';
 		if (count($usernews)==0) {
-			$content .= WT_I18N::translate('No News articles have been submitted.').'<br>';
+			$content .= WT_I18N::translate('No news articles have been submitted.').'<br>';
 		}
 		$c = 0;
 		foreach ($usernews as $news) {
@@ -116,13 +116,13 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 			if (WT_USER_GEDCOM_ADMIN) {
 				$content .= '<hr>'
 				."<a href=\"#\" onclick=\"window.open('editnews.php?news_id='+".$news['id'].", '_blank', news_window_specs); return false;\">".WT_I18N::translate('Edit')."</a> | "
-				."<a href=\"index.php?action=deletenews&amp;news_id=".$news['id']."&amp;ctype={$ctype}\" onclick=\"return confirm('".WT_I18N::translate('Are you sure you want to delete this News entry?')."');\">".WT_I18N::translate('Delete')."</a><br>";
+				."<a href=\"index.php?action=deletenews&amp;news_id=".$news['id']."&amp;ctype={$ctype}\" onclick=\"return confirm('".WT_I18N::translate('Are you sure you want to delete this news article?')."');\">".WT_I18N::translate('Delete')."</a><br>";
 			}
 			$content .= "</div>";
 		}
 		$printedAddLink = false;
 		if (WT_USER_GEDCOM_ADMIN) {
-			$content .= "<a href=\"#\" onclick=\"window.open('editnews.php?gedcom_id='+WT_GED_ID, '_blank', news_window_specs); return false;\">".WT_I18N::translate('Add a News article')."</a>";
+			$content .= "<a href=\"#\" onclick=\"window.open('editnews.php?gedcom_id='+WT_GED_ID, '_blank', news_window_specs); return false;\">".WT_I18N::translate('Add a news article')."</a>";
 			$printedAddLink = true;
 		}
 		if ($limit=='date' || $limit=='count') {

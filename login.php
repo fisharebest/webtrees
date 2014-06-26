@@ -25,7 +25,7 @@ define('WT_SCRIPT_NAME', 'login.php');
 require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
-// If we are already logged in, then go to the home page
+// If we are already logged in, then go to the “Home page”
 if (WT_USER_ID && WT_GED_ID) {
 	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
 	exit;
@@ -144,13 +144,13 @@ default:
 
 	switch (WT_Site::preference('WELCOME_TEXT_AUTH_MODE')) {
 	case 1:
-		echo WT_I18N::translate('<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.');
+		echo WT_I18N::translate('<center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.');
 		break;
 	case 2:
-		echo WT_I18N::translate('<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.');
+		echo WT_I18N::translate('<center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.');
 		break;
 	case 3:
-		echo WT_I18N::translate('<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.');
+		echo WT_I18N::translate('<center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.');
 		break;
 	case 4:
 		echo '<p>', WT_Site::preference('WELCOME_TEXT_AUTH_MODE_'.WT_LOCALE), '</p>';
@@ -239,7 +239,7 @@ case 'requestpw':
 			WT_I18N::translate('A new password was requested for your user name.') . WT_Mail::EOL . WT_Mail::EOL .
 			WT_I18N::translate('Username') . ": " . $user->getUserName() . WT_Mail::EOL .
 			WT_I18N::translate('Password') . ": " . $user_new_pw  . WT_Mail::EOL . WT_Mail::EOL .
-			WT_I18N::translate('After you have logged in, select the “My Account” link under the “My Page” menu and fill in the password fields to change your password.') . WT_Mail::EOL . WT_Mail::EOL .
+			WT_I18N::translate('After you have logged in, select the “My account” link under the “My page” menu and fill in the password fields to change your password.') . WT_Mail::EOL . WT_Mail::EOL .
 			'<a href="' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'login.php?ged=' . WT_GEDURL . '">' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'login.php?ged=' . WT_GEDURL . '</a>'
 		);
 	}

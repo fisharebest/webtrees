@@ -108,7 +108,7 @@ function addMessage($message) {
 			WT_Site::preference('SMTP_FROM_NAME'),
 			$WT_TREE->preference('title'),
 			// Message
-			WT_I18N::translate('webtrees Message') . ' - ' . $message['subject'],
+			WT_I18N::translate('webtrees message') . ' - ' . $message['subject'],
 			$copy_email
 		);
 	}
@@ -117,7 +117,7 @@ function addMessage($message) {
 	WT_I18N::init($recipient->getSetting('language'));
 	if (isset($message['from_name'])) {
 		$message['body'] =
-			WT_I18N::translate('Your Name:') . ' ' . $message['from_name'] . WT_Mail::EOL .
+			WT_I18N::translate('Your name:') . ' ' . $message['from_name'] . WT_Mail::EOL .
 			WT_I18N::translate('Email address:') . ' ' . $message['from_email'] . WT_Mail::EOL . WT_Mail::EOL .
 			$message['body'];
 	}
@@ -171,7 +171,7 @@ function addMessage($message) {
 			$sender_email,
 			$sender_real_name,
 			// Message
-			WT_I18N::translate('webtrees Message') . ' - ' . $message['subject'],
+			WT_I18N::translate('webtrees message') . ' - ' . $message['subject'],
 			$original_email
 		);
 	}

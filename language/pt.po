@@ -56,8 +56,8 @@ msgstr " por período de tempo"
 #: includes/functions/functions_print_facts.php:192
 #: includes/functions/functions_print_facts.php:197
 #, php-format
-msgid "#%d"
-msgstr "nº%d"
+msgid "#%s"
+msgstr "nº%s"
 
 #: modules_v3/googlemap/module.php:851
 #, php-format
@@ -78,21 +78,21 @@ msgstr[1] "%1$d pessoas estão faltando as coordenadas do local de nascimento: %
 #: includes/functions/functions.php:685
 #, php-format
 msgctxt "FEMALE"
-msgid "%1$d x %2$s"
+msgid "%1$d × %2$s"
 msgstr ""
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:674
 #, php-format
 msgctxt "MALE"
-msgid "%1$d x %2$s"
+msgid "%1$d × %2$s"
 msgstr ""
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:696
 #, php-format
 msgctxt "MALE/FEMALE"
-msgid "%1$d x %2$s"
+msgid "%1$d × %2$s"
 msgstr ""
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$d>=4
@@ -184,20 +184,12 @@ msgstr "%2$s de %1$s"
 msgid "%H:%i:%s"
 msgstr "%G:%i:%s"
 
-#. I18N: This is a title, so needs suitable capitalisation
-#: includes/functions/functions_charts.php:267
-#, php-format
-msgid "%d Child"
-msgid_plural "%d Children"
-msgstr[0] "%d Filho"
-msgstr[1] "%d Filhos"
-
 #: lifespan.php:198
 #, php-format
-msgid "%d Individual"
-msgid_plural "%d Individuals"
-msgstr[0] "%d Pessoa"
-msgstr[1] "%d Pessoas"
+msgid "%s individual"
+msgid_plural "%s individuals"
+msgstr[0] "%s pessoa"
+msgstr[1] "%s pessoas"
 
 #: includes/functions/functions_print.php:306 library/WT/Stats.php:3415
 #, php-format
@@ -223,20 +215,20 @@ msgstr[1] "%d meses"
 #: includes/functions/functions.php:637
 #, php-format
 msgctxt "FEMALE"
-msgid "%d x cousin"
+msgid "%d × cousin"
 msgstr "prima de %dº grau"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: includes/functions/functions.php:618
 #, php-format
 msgctxt "MALE"
-msgid "%d x cousin"
+msgid "%d × cousin"
 msgstr "primo de %dº grau"
 
 #: includes/functions/functions.php:656
 #, php-format
 msgctxt "MALE/FEMALE"
-msgid "%d x cousin"
+msgid "%d × cousin"
 msgstr "primo de %dº grau"
 
 #: modules_v3/relatives/module.php:60
@@ -445,10 +437,10 @@ msgstr "&lt;selecionar&gt;"
 #: search_advanced.php:112 search_advanced.php:116 search_advanced.php:120
 #: search_advanced.php:168 search_advanced.php:169 search_advanced.php:170
 #, php-format
-msgid "&plusmn;%d year"
-msgid_plural "&plusmn;%d years"
-msgstr[0] "&plusmn;%d ano"
-msgstr[1] "&plusmn;%d anos"
+msgid "±%d year"
+msgid_plural "±%d years"
+msgstr[0] "±%d ano"
+msgstr[1] "±%d anos"
 
 #. I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan 1900 (aged 43 years)
 #: library/WT/I18N.php:395 library/WT/I18N.php:399
@@ -604,7 +596,7 @@ msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<b
 msgstr "<b>GUID</b> neste contexto é um acrônimo para “Globally Unique ID” (do inglês, Identificador Único Global).<br><br>Os GUIDs são destinados a ajudar na identificação de cada indivíduo de uma maneira que é repetível, de modo que as organizações centrais, como Centro de História da Família da Igreja Mórmon na cidade de Salt Lake, ou mesmo programas compatíveis em execução no seu próprio servidor, possam determinar se eles estão lidando com a mesma pessoa, não importa de onde o GEDCOM origina. O objetivo do Centro de História da Família é ter um repositório central de dados genealógicos e expô-lo através de serviços web. Isto irá permitir que qualquer programa acesse os dados e atualize seus dados dentro dele.<br><br>Se você não pretende compartilhar esse GEDCOM com mais ninguém, você não precisa deixar <b>webtrees</b> criar esses GUIDs, no entanto, isso não trará nenhum dano que não o de aumentar o tamanho do seu GEDCOM."
 
 #: help_text.php:1318
-msgid "<b>Important Note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
+msgid "<b>Important note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
 msgstr ""
 
 #: help_text.php:1007
@@ -612,7 +604,7 @@ msgid "<b>No</b> means that authenticated users can see the details of all livin
 msgstr ""
 
 #: message.php:118
-msgid "<b>Please Note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogical data, please include the sources where you obtained the data."
+msgid "<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogical data, please include the sources where you obtained the data."
 msgstr "<b>Por favor Leia:</b> As informações confidenciais das pessoas vivas só serão fornecidas aos parentes da família e a amigos íntimos. Você será solicitado a verificar o seu relacionamento antes de receber todos os dados privados. Às vezes, informações de pessoas mortas também pode ser privadas. Se este for o caso, é porque não existe informação suficiente sobre a pessoa conhecida para determinar se ela está viva ou não, e que nós provavelmente não temos mais informações sobre esta pessoa.<br><br>Antes de fazer uma pergunta, verifique se você está perguntando sobre a pessoa correta, marcando datas, lugares e parentes próximos. Se você estiver enviando alterações nos dados genealógicos, por favor inclua as fontes de onde você obteve os dados."
 
 #: help_text.php:1063
@@ -644,15 +636,15 @@ msgid "<b>webtrees</b> reply address"
 msgstr ""
 
 #: login.php:150
-msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved."
+msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved."
 msgstr "<center><b>Bem-vindo a este site de Genealogia</b></center><br>O acesso a este site é permitido apenas para usuários <u>autorizados</u>.<br><br>Se você tem uma conta de usuário você pode entrar nesta página. Se você não tiver uma conta de usuário, você pode solicitar uma clicando no link apropriado abaixo.<br><br>Depois de verificar as suas informações, o administrador aprovar ou recusar o pedido. Você receberá uma mensagem de e-mail quando seu pedido foi aprovado."
 
 #: login.php:153
-msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved."
+msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved."
 msgstr "<center><b>Bem-vindo a este site de Genealogia</b></center><br>O acesso a este site é permitido somente para <u>membros da família< u>.<br><br>Se você tem uma conta de usuário você pode entrar nesta página. Se você não tiver uma conta de usuário, você pode solicitar uma clicando no link apropriado abaixo.<br><br>Depois de verificar as informações fornecidas, o administrador aprovar ou recusar o seu pedido para uma conta . Você receberá um e-mail quando o pedido for aprovado."
 
 #: login.php:147
-msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved."
+msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved."
 msgstr "<center><b>Bem-vindo a este site de Genealogia</b></center><br>O acesso este site é permitido para cada visitante que tiver uma conta de usuário.<br><br>Se você tem um conta de usuário, você pode entrar nesta página. Se você não tiver uma conta de usuário, você pode solicitar uma clicando no link apropriado abaixo.<br><br>Depois de verificar a sua solicitação, o administrador do site irá ativar sua conta. Você receberá um e-mail, quando seu pedido foi aprovado."
 
 #. I18N: default option in list of themes
@@ -726,7 +718,7 @@ msgstr "Uma lista de tarefas e atividades que estão ligadas à árvore genealó
 msgid "A list of the Hebrew death anniversaries that will occur in the near future."
 msgstr "Uma lista de aniversários de falecimento hebráica que ocorrerão em um futuro próximo"
 
-#. I18N: Description of the “On This Day” module
+#. I18N: Description of the “On this day” module
 #: modules_v3/todays_events/module.php:37
 msgid "A list of the anniversaries that occur today."
 msgstr "Uma lista de aniversários que acontecem hoje."
@@ -1140,23 +1132,23 @@ msgstr "Adiciona um novo local geográfico"
 
 #: modules_v3/clippings/module.php:472
 #, php-format
-msgid "Add %s to cart"
+msgid "Add %s to the clippings cart"
 msgstr "Adicionar %s ao carrinho"
 
 #: modules_v3/faq/module.php:145 modules_v3/faq/module.php:359
-msgid "Add FAQ item"
+msgid "Add an FAQ item"
 msgstr "Adicionar item nas Perguntas Mais Freqüentes"
 
 #: modules_v3/clippings/module.php:150 modules_v3/clippings/module.php:233
-msgid "Add Individual By ID"
+msgid "Add individual by ID"
 msgstr "Adicionar pessoa pelo identificador"
 
 #: search_advanced.php:290
-msgid "Add More Fields"
+msgid "Add more fields"
 msgstr "Adicionar Mais Campos"
 
 #: modules_v3/gedcom_news/module.php:125
-msgid "Add a News article"
+msgid "Add a news article"
 msgstr "Adicionar Notícia"
 
 #: edit_interface.php:563 modules_v3/relatives/module.php:373
@@ -1182,7 +1174,7 @@ msgid "Add a husband using an existing individual"
 msgstr "Adicionar um marido a partir de uma pessoa da árvore"
 
 #: modules_v3/user_blog/module.php:95
-msgid "Add a new Journal entry"
+msgid "Add a new journal entry"
 msgstr "Adicionar informação ao Diário"
 
 #: help_text.php:1133 includes/functions/functions_edit.php:834
@@ -1363,7 +1355,7 @@ msgstr "Adicionar espaços para notas excluídas"
 
 #: modules_v3/stories/module.php:127 modules_v3/stories/module.php:214
 #: modules_v3/stories/module.php:337
-msgid "Add story"
+msgid "Add a story"
 msgstr "Adicionar estória"
 
 #: admin_trees_download.php:129 modules_v3/clippings/module.php:212
@@ -1430,11 +1422,11 @@ msgid "Add your own text and graphics."
 msgstr "Adicionar seu próprio texto e gráficos"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_1_ctrl.php:91
-msgid "Add/Insert Blank Row"
+msgid "Add/insert a blank row"
 msgstr "Adicionar/Inserir linha em branco"
 
 #: editnews.php:31 editnews.php:49
-msgid "Add/edit journal/news entry"
+msgid "Add/edit a journal/news entry"
 msgstr "Adicionar/Editar Notícias ou Diário"
 
 #: admin_site_merge.php:196 admin_site_merge.php:202
@@ -1484,7 +1476,7 @@ msgid "Administrators"
 msgstr "Administradores"
 
 #: help_text.php:1284
-msgid "Administrators sometimes need to clean up and correct the data submitted by users.  For example, they might need to correct the PLAC location to include the country.  When Administrators make such corrections, information about the original change is normally replaced.  This may not be desirable.<br><br>When this option is selected, <b>webtrees</b> will retain the original Change information instead of replacing it with that of the current session.  With this option selected, Administrators also have the ability to modify or delete the information associated with the original CHAN tag."
+msgid "Administrators sometimes need to clean up and correct the data submitted by users.  For example, they might need to correct the PLAC location to include the country.  When administrators make such corrections, information about the original change is normally replaced.  This may not be desirable.<br><br>When this option is selected, <b>webtrees</b> will retain the original change information instead of replacing it with that of the current session.  With this option selected, administrators also have the ability to modify or delete the information associated with the original CHAN tag."
 msgstr ""
 
 #: library/WT/Gedcom/Code/Pedi.php:43
@@ -1663,8 +1655,8 @@ msgid "After creating the family tree, you will be able to upload or import data
 msgstr ""
 
 #: login.php:242
-msgid "After you have logged in, select the “My Account” link under the “My Page” menu and fill in the password fields to change your password."
-msgstr "Após identificar-se, clique em 'Minha Conta' da opção de menu 'Meu Portal' e altere sua senha."
+msgid "After you have logged in, select the “My account” link under the “My page” menu and fill in the password fields to change your password."
+msgstr "Após identificar-se, clique em 'Minha conta' da opção de menu 'Meu portal' e altere sua senha."
 
 #. I18N: gedcom tag AGE
 #: autocomplete.php:114 includes/functions/functions_print.php:709
@@ -2055,11 +2047,11 @@ msgid "Are you sure you want to delete this FAQ entry?"
 msgstr "Você tem certeza que deseja excluir esta entrada das Perguntas Mais Freqüentes?"
 
 #: modules_v3/user_blog/module.php:91
-msgid "Are you sure you want to delete this Journal entry?"
+msgid "Are you sure you want to delete this journal entry?"
 msgstr "Confirma a exclusão desta informação do Diário?"
 
 #: modules_v3/gedcom_news/module.php:119
-msgid "Are you sure you want to delete this News entry?"
+msgid "Are you sure you want to delete this news article?"
 msgstr "Conforma exclusão desta Notícia?"
 
 #: includes/functions/functions_print_facts.php:181
@@ -2096,7 +2088,7 @@ msgid "Are you sure you want to remove links to this media object?"
 msgstr ""
 
 #: modules_v3/gedcom_favorites/module.php:123
-msgid "Are you sure you want to remove this item from your list of Favorites?"
+msgid "Are you sure you want to remove this item from your list of favorites?"
 msgstr "Tem certeza que deseja remover este item da sua lista de Favoritos?"
 
 #: edit_changes.php:231
@@ -2166,7 +2158,7 @@ msgid "Asuncion, Paraguay"
 msgstr "Assunção, Paraguai"
 
 #: library/WT/Stats.php:4003
-msgid "At Sea"
+msgid "At sea"
 msgstr "No Mar"
 
 #: library/WT/Gedcom/Code/Temp.php:65
@@ -2715,7 +2707,7 @@ msgid "Birth"
 msgstr "Nascido"
 
 #: modules_v3/birth_report/report.xml:6
-msgid "Birth Place contains"
+msgid "Birthplace contains"
 msgstr "Local de Nascimento contém"
 
 #: library/WT/Stats.php:978 statistics.php:576
@@ -3714,7 +3706,7 @@ msgid "Click here for PhpGedView to <b>webtrees</b> transfer wizard"
 msgstr "Clique aqui para a tranferência passo-a-passo do PhpGedView para o <b>webtrees</b>"
 
 #: modules_v3/faq/module.php:282
-msgid "Click here to Add, Edit, or Delete"
+msgid "Click here to add, edit, or delete"
 msgstr "Clique aqui para Adicionar, Alterar ou Excluir"
 
 #: individual.php:267
@@ -3904,7 +3896,7 @@ msgstr "Conteúdo"
 #: modules_v3/clippings/module.php:129 modules_v3/clippings/module.php:501
 #: modules_v3/clippings/module.php:524 modules_v3/clippings/module.php:537
 #: modules_v3/googlemap/module.php:4142
-msgid "Continue Adding"
+msgid "Continue adding"
 msgstr "Continuar Adicionando"
 
 #. I18N: gedcom tag CONT
@@ -4043,7 +4035,7 @@ msgstr "Criar uma nova fonte"
 
 #: edit_interface.php:1493 edit_interface.php:1558
 #: includes/functions/functions_edit.php:320
-msgid "Create repository"
+msgid "Create a new repository"
 msgstr "Criar Repositório"
 
 #: admin_users.php:480
@@ -4298,7 +4290,7 @@ msgid "Date"
 msgstr "Data"
 
 #: modules_v3/user_messages/module.php:87
-msgid "Date Sent:"
+msgid "Date sent:"
 msgstr "Data de envio:"
 
 #: admin_trees_config.php:1045 help_text.php:1403
@@ -4621,7 +4613,7 @@ msgid "Death"
 msgstr "Falecimento"
 
 #: modules_v3/death_report/report.xml:6
-msgid "Death Place contains"
+msgid "Death place contains"
 msgstr "Local da morte contêm"
 
 #: library/WT/Stats.php:995 statistics.php:584
@@ -4902,7 +4894,7 @@ msgid "Delete FAQ item"
 msgstr "Excluir ítem das PMF"
 
 #: modules_v3/user_messages/module.php:116
-msgid "Delete Selected Messages"
+msgid "Delete selected messages"
 msgstr "Excluir Mensagens Selecionadas"
 
 #: modules_v3/googlemap/module.php:4130
@@ -4914,7 +4906,7 @@ msgid "Delete inactive users"
 msgstr "Excluir usuários inativos"
 
 #: library/WT/Controller/Individual.php:151
-msgid "Delete name"
+msgid "Delete this name"
 msgstr ""
 
 #. I18N: The system is about to [...]
@@ -5145,7 +5137,7 @@ msgid "Display %s"
 msgstr "Exibir %s"
 
 #: modules_v3/googlemap/help_text.php:46 modules_v3/googlemap/module.php:459
-msgid "Display Map Coordinates"
+msgid "Display map coordinates"
 msgstr "Mostrar Coordenadas no Mapa"
 
 #: find.php:220 find.php:237 find.php:254 find.php:272 find.php:289
@@ -5232,7 +5224,7 @@ msgid "Download %s…"
 msgstr ""
 
 #: mediaviewer.php:104
-msgid "Download File"
+msgid "Download file"
 msgstr "Baixar arquivo"
 
 #: admin_trees_download.php:30
@@ -5519,7 +5511,7 @@ msgstr "Empregador"
 
 #: modules_v3/clippings/help_text.php:36 modules_v3/clippings/module.php:254
 #: modules_v3/clippings/module.php:463
-msgid "Empty Cart"
+msgid "Empty the clippings cart"
 msgstr "Esvaziar carrinho"
 
 #: admin_modules.php:121
@@ -5601,7 +5593,7 @@ msgid "Enter the FAX number including the country and area code.<br><br>Leave th
 msgstr "Informe o FAX incluindo o DDI e DDD, mas não inclua a operadora.<br><br>Este campo é ocpional e pode ser deixado em branco. Exemplo: Um fax na cidade do Rio de Janeiro-Brasil seria +55 21 2233-4455 na Alemanha +49 25859 56 76 89 e nos EUA ou Canadá +1 888 555-1212."
 
 #: help_text.php:388
-msgid "Enter the URL address including the http://.<br><br>An example URL looks like this: <b>http://www.webtrees.net/</b> Leave this field blank if you do not want to include a URL."
+msgid "Enter the URL address including the http://.<br><br>An example URL looks like this: <b>http://www.webtrees.net/</b>.  Leave this field blank if you do not want to include a URL."
 msgstr "Insira o endereço Web incluindo o http://.<br><br>Um exemplo de endereço Web se parece com este: <b>http://www.webtrees.net/</b> Leixe este campo em branco se você não quer incluir um endereço Web."
 
 #: help_text.php:50
@@ -5613,7 +5605,7 @@ msgid "Enter the email address.<br><br>An example email address looks like this:
 msgstr "Informe o endereço de email.<br><br>Exemplo: <b>name@hotmail.com</b> Este campo é opcional e pode ser deixado em branco."
 
 #: help_text.php:1238
-msgid "Enter the limiting value here.<br><br>If you have opted to limit the News article display according to age, any article older than the number of days entered here will be hidden from view.  If you have opted to limit the News article display by number, only the specified number of recent articles, ordered by age, will be shown.  The remaining articles will be hidden from view.<br><br>Zeros entered here will disable the limit, causing all News articles to be shown."
+msgid "Enter the limiting value here.<br><br>If you have opted to limit the news article display according to age, any article older than the number of days entered here will be hidden from view.  If you have opted to limit the news article display by number, only the specified number of recent articles, ordered by age, will be shown.  The remaining articles will be hidden from view.<br><br>Zeros entered here will disable the limit, causing all news articles to be shown."
 msgstr ""
 
 #: help_text.php:325
@@ -5718,7 +5710,7 @@ msgid "Events of close relatives"
 msgstr "Eventos de parentes próximos"
 
 #: help_text.php:1363
-msgid "Every individual in the database has a unique ID number on this site.  If you know the ID number for your own record, please enter it here.  If you don’t know your ID number or could not find it because of privacy settings, please provide enough information in the Comments field to help the site administrator identify who you are on this site so that he can set the ID for you."
+msgid "Every individual in the database has a unique ID number on this site.  If you know the ID number for your own record, please enter it here.  If you don’t know your ID number or could not find it because of privacy settings, please provide enough information in the comments field to help the site administrator identify who you are on this site so that he can set the ID for you."
 msgstr "Cada pessoa no banco de dados possui uma ID única. Neste campo, informe sua ID e caso não saiba, preencha o campo Comentários para que o Administrador possa descobrir sua ID e informar-lhe posteriormente."
 
 #: help_text.php:1378
@@ -6312,7 +6304,7 @@ msgid "Find a media object"
 msgstr "Encontrar um objecto mídia"
 
 #: find.php:86 includes/functions/functions_print.php:1041
-msgid "Find a note"
+msgid "Find a shared note"
 msgstr "Encontrar uma nota"
 
 #: find.php:80 includes/functions/functions_print.php:1015
@@ -6346,7 +6338,7 @@ msgid "Find next path"
 msgstr "Localizar novo caminho"
 
 #: help_text.php:1278
-msgid "Find next relationship path"
+msgid "Find the next relationship path"
 msgstr ""
 
 #: library/WT/Stats.php:3879
@@ -6441,7 +6433,7 @@ msgid "For help with genealogy questions contact"
 msgstr "Para ajuda sobre questões genealógicas entre em contato com"
 
 #: help_text.php:1494
-msgid "For optimal display on the Internet, <b>webtrees</b> uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ANSI (ISO-8859-1)</b>.<br><br>The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren’t sure, consult the documentation of that program.<br><br>Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program’s method for handling these special characters by some other means.  Consult your program’s manufacturer or author.<br><br>This <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8."
+msgid "For optimal display on the internet, <b>webtrees</b> uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ANSI (ISO-8859-1)</b>.<br><br>The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren’t sure, consult the documentation of that program.<br><br>Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program’s method for handling these special characters by some other means.  Consult your program’s manufacturer or author.<br><br>This <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8."
 msgstr ""
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
@@ -6772,7 +6764,7 @@ msgid "Gives users the option of selecting their own theme."
 msgstr "Dá aos usuários a opção de selecionar seus próprios temas"
 
 #: help_text.php:1002
-msgid "Gives visitors the option of registering themselves for an account on the site.<br><br>The visitor will receive an email message with a code to verify his application for an account.  After verification, the Administrator will have to approve the registration before it becomes active."
+msgid "Gives visitors the option of registering themselves for an account on the site.<br><br>The visitor will receive an email message with a code to verify his application for an account.  After verification, an administrator will have to approve the registration before it becomes active."
 msgstr ""
 
 #. I18N: gedcom tag _UID
@@ -6980,7 +6972,7 @@ msgid "He was cremated"
 msgstr "Ele foi cremado"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_1_ctrl.php:62
-msgid "Head of Household:"
+msgid "Head of household:"
 msgstr "Chefe de Família:"
 
 #. I18N: gedcom tag HEAD
@@ -7066,7 +7058,7 @@ msgid "Here you can add a fact to the record being edited.<br><br>First choose a
 msgstr ""
 
 #: help_text.php:1089
-msgid "Here you can add a source <b>Citation</b> to this record.<br><br>Just click the link, a window will open, and you can choose the source from the list (Find ID) or create a new source and then add the Citation.<br><br>Adding sources is an important part of genealogy because it allows other researchers to verify where you obtained your information."
+msgid "Here you can add a source <b>Citation</b> to this record.<br><br>Just click the link, a window will open, and you can choose the source from the list (Find ID) or create a new source and then add the citation.<br><br>Adding sources is an important part of genealogy because it allows other researchers to verify where you obtained your information."
 msgstr ""
 
 #: help_text.php:1228
@@ -7078,7 +7070,7 @@ msgid "Here you can choose between two types of displaying places names in hiera
 msgstr "Você pode escolher entre dois tipos de apresentação dos nomes de locais na hierarquia. Se definir Sim o local tem nome curto ou nome de nível atual, se Não - nome completo.<br><b>Exemplo:<br>Nome completo:</b> São Paulo, São Paulo, Brasil<br><b>Nome curto:</b> São Paulo<br><b>Nome completo:</b> São Paulo, Brasil<br><b>Nome curto:</b> São Paulo"
 
 #: help_text.php:1045
-msgid "Here you can choose text to appear on the login screen. You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the Help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.</div><br></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
+msgid "Here you can choose text to appear on the login screen. You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.</div><br></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
 msgstr ""
 
 #: modules_v3/googlemap/help_text.php:54
@@ -7305,7 +7297,7 @@ msgid "If the number of times that a certain surname occurs is lower than the th
 msgstr "Se o número de vezes que um certo sobrenome ocorre é mais baixo que o limite, ele não aparecerá na lista. Ele pode ser adicionado aqui manualmente. Se mais que um sobrenome é inserido, eles devem ser separados por vírgula. <b>Sobrenomes são sensíveis à capitalização<b/>"
 
 #: help_text.php:819
-msgid "If the option <b>Allow visitors to request account registration</b> is enabled this setting controls whether the admin must approve the registration.<br><br>Setting this to <b>Yes</b> will require that all new users first verify themselves and then be approved by an admin before they can login.  With this setting on <b>No</b>, the <b>User approved by Admin</b> checkbox will be checked automatically when users verify their account, thus allowing an immediate login afterwards without admin intervention."
+msgid "If the option <b>Allow visitors to request account registration</b> is enabled this setting controls whether the admin must approve the registration.<br><br>Setting this to <b>Yes</b> will require that all new users first verify themselves and then be approved by an admin before they can login.  With this setting on <b>No</b>, the “Approved by administrator” checkbox will be checked automatically when users verify their account, thus allowing an immediate login afterwards without admin intervention."
 msgstr ""
 
 #: help_text.php:281
@@ -7370,7 +7362,7 @@ msgid "If you leave this setting empty, the default value will be used."
 msgstr "Se você deixar esta configuração vazia, o valor padrão será usado."
 
 #: help_text.php:585
-msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php and .htaccess) from the existing folder to the new folder."
+msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
 msgstr ""
 
 #: help_text.php:659
@@ -7382,7 +7374,7 @@ msgid "If you try to exceed these limits, you may experience server time-outs an
 msgstr "Se você tentar exceder estes limites, você pode ter erros no servidor e páginas em branco."
 
 #: help_text.php:471
-msgid "If you want to remove a surname from the Common Surname list without increasing the threshold value, you can do that by entering the surname here.  If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive.</b>  Surnames entered here will also be removed from the Top-10 list on the Home Page."
+msgid "If you want to remove a surname from the Common Surname list without increasing the threshold value, you can do that by entering the surname here.  If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive</b>.  Surnames entered here will also be removed from the “Top surnames” list on the “Home page”."
 msgstr "Se você quiser remover um sobrenome da lista de Sobrenomes Mais Populares sem aumentar o valor limite, você pode fazer inserindo o sobrenome aqui. Se mais que um sobrenome for inserido, eles devem ser separados por vírgula. <b>Sobrenomes são sensíveis à capitalização.</b> Sobrenomes inseridos aqui também serão removidos da lista dos 10 mais populares na Página Inicial."
 
 #: setup.php:185
@@ -7436,7 +7428,7 @@ msgid "In some countries, privacy laws apply not only to living individuals, but
 msgstr "Em alguns países, leis de privacidade se aplicam não somente a pessoas vivas, mas também a aqueles que faleceram recentemente. Esta opção permitirá que você estenda as regras de privacidade para pessoas vivas que nasceram ou faleceram dentro de um específico número de anos. Deixe estes valores vazios para desabilitar esta funcionalidade."
 
 #: help_text.php:315
-msgid "In the Citation Details field you would enter the page number or other information that might help someone find the information in the source."
+msgid "In the citation details field you would enter the page number or other information that might help someone find the information in the source."
 msgstr "No Detalhe da Citação informe qualquer coisa que facilite a achar a informação na Fonte."
 
 #: help_text.php:378
@@ -7864,7 +7856,7 @@ msgid "Keep"
 msgstr "Manter"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:124
-msgid "Keep Link in list"
+msgid "Keep link in list"
 msgstr "Manter Link na lista"
 
 #: library/WT/Stats.php:3924
@@ -8085,7 +8077,7 @@ msgid "Leave password blank if you want to keep the current password."
 msgstr "Deixe a senha em branco para manter a senha atual."
 
 #: admin_trees_config.php:438
-msgid "Leave this field empty to use the title of the currently active database."
+msgid "Leave this field empty to use the name of the family tree."
 msgstr "Deixe este campo vazio para usar o título do banco de dados atualmente ativo"
 
 #: includes/functions/functions_print_lists.php:95
@@ -8829,7 +8821,7 @@ msgid "Media ID prefix"
 msgstr "Prefixo identificador de Mídia"
 
 #: medialist.php:173
-msgid "Media Objects found"
+msgid "Media objects found"
 msgstr "Mídias encontradas"
 
 #: find.php:214
@@ -9235,7 +9227,7 @@ msgid "Morocco"
 msgstr "Marrocos"
 
 #: modules_v3/gedcom_stats/module.php:192 modules_v3/html/module.php:258
-msgid "Most Common Surnames"
+msgid "Most common surnames"
 msgstr "Sobrenomes Mais Comuns"
 
 #. I18N: Help text for the “Use password” site configuration setting
@@ -9666,7 +9658,7 @@ msgid "No GEDCOM files found.  You need to copy files to the <b>%s</b> directory
 msgstr "Nenhum arquivo GEDCOM encontrado. Você precisa copiar arquivos para o diretório <b>%s</b> em seu servidor."
 
 #: modules_v3/gedcom_news/module.php:93
-msgid "No News articles have been submitted."
+msgid "No news articles have been submitted."
 msgstr "Não há novos artigos."
 
 #: modules_v3/googlemap/module.php:865
@@ -9865,7 +9857,7 @@ msgid "Norway"
 msgstr "Noruega"
 
 #: modules_v3/GEDFact_assistant/module.php:196
-msgid "Not a valid Individual, Family or Source ID"
+msgid "Not a valid individual, family, or source ID"
 msgstr "Não é um identificador válido de Pessoa, Família ou Fonte"
 
 #. I18N: gedcom tag _NLIV
@@ -10232,7 +10224,7 @@ msgid "Other"
 msgstr "Outro"
 
 #: search.php:217
-msgid "Other Searches"
+msgid "Other searches"
 msgstr "Outras Pesquisas"
 
 #: admin_trees_config.php:1000 help_text.php:455
@@ -10589,11 +10581,11 @@ msgstr "Local"
 #: modules_v3/googlemap/module.php:167 modules_v3/googlemap/module.php:287
 #: modules_v3/googlemap/module.php:832 modules_v3/googlemap/module.php:1492
 #: modules_v3/googlemap/module.php:2521 modules_v3/googlemap/module.php:3979
-msgid "Place Check"
+msgid "Place check"
 msgstr "Seleção de Local"
 
 #: placelist.php:43 placelist.php:62
-msgid "Place List"
+msgid "Place list"
 msgstr "Lista de Local"
 
 #: find.php:232
@@ -10774,7 +10766,7 @@ msgid "Please click on the following link and fill in the requested data to conf
 msgstr "Por favor clique no link abaixo e preencha o formulário para validar sua Conta e endereço de E-mail."
 
 #: search.php:63
-msgid "Please enter a Given name, Last name, or Place in addition to Year"
+msgid "Please enter a given name, surname, or place in addition to the year"
 msgstr "Por favor indique Nome, Apelido ou Local, além do Ano"
 
 #: message.php:102
@@ -11001,7 +10993,7 @@ msgid "Property"
 msgstr "Propriedade"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_4_text.php:36
-msgid "Proposed Census Text&nbsp;&nbsp;"
+msgid "Proposed census text&nbsp;&nbsp;"
 msgstr "Texto Sugerido no Censo&nbsp;&nbsp;"
 
 #: library/WT/Gedcom/Code/Temp.php:150
@@ -11388,7 +11380,7 @@ msgid "Remove"
 msgstr "Remover"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:125
-msgid "Remove Link from list"
+msgid "Remove link from list"
 msgstr "Remover Link da lista"
 
 #: modules_v3/batch_update/plugins/duplicate_links.php:28
@@ -11788,7 +11780,7 @@ msgid "Search for"
 msgstr "Pesquisar por"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:57
-msgid "Search for individuals to add to Add Links list."
+msgid "Search for individuals to add to add Links list."
 msgstr "Pesquise por Pessoa para adicionar pela lista de Adicionar Links"
 
 #: modules_v3/googlemap/module.php:3831
@@ -12062,7 +12054,7 @@ msgid "Set this to <b>Yes</b> to display icons near Fact names on the Personal F
 msgstr ""
 
 #: help_text.php:1012
-msgid "Set to <b>Yes</b> to use the RIN number instead of the GEDCOM ID when asked for Individual IDs in configuration files, user settings, and charts.  This is useful for genealogy programs that do not consistently export GEDCOMs with the same ID assigned to each individual but always use the same RIN."
+msgid "Set to <b>Yes</b> to use the RIN number instead of the GEDCOM ID when asked for individual IDs in configuration files, user settings, and charts.  This is useful for genealogy programs that do not consistently export GEDCOMs with the same ID assigned to each individual but always use the same RIN."
 msgstr ""
 
 #: help_text.php:859
@@ -12459,7 +12451,7 @@ msgstr "Exibir mais velho no topo"
 
 #: modules_v3/todays_events/module.php:132
 #: modules_v3/upcoming_events/module.php:144
-msgid "Show only Births, Deaths, and Marriages?"
+msgid "Show only births, deaths, and marriages?"
 msgstr "Exibir apenas Nascimentos, Falecimentos e Casamentos?"
 
 #: modules_v3/todays_events/module.php:125
@@ -12472,7 +12464,7 @@ msgid "Show only females."
 msgstr "Exibir somente mulheres."
 
 #: includes/functions/functions_print_lists.php:87
-msgid "Show only individuals of whom the gender is not known."
+msgid "Show only individuals for whom the gender is not known."
 msgstr "Exibir somente pessoas em que o gênero não é conhecido."
 
 #: modules_v3/random_media/module.php:260
@@ -13292,7 +13284,7 @@ msgid "The FAQ list is empty."
 msgstr "A lista de Perguntas Mais Freqüentes está vazia."
 
 #: help_text.php:1253
-msgid "The Favorites drop-down list shows the favorites that you have selected on your personalized My Page.  It also shows the favorites that the site administrator has selected for the currently active GEDCOM.  Clicking on one of the favorites entries will take you directly to the Individual Information page of that individual.<br><br>More help about adding Favorites is available in your personalized My Page."
+msgid "The Favorites drop-down list shows the favorites that you have selected on your “My page”.  It also shows the favorites that the site administrator has selected for the currently active GEDCOM.  Clicking on one of the favorites entries will take you directly to the Individual Information page of that individual.<br><br>More help about adding favorites is available in your “My page”."
 msgstr ""
 
 #: library/WT/Gedcom/Code/Temp.php:98
@@ -13329,7 +13321,7 @@ msgid "The changes to “%s” have been rejected."
 msgstr ""
 
 #: modules_v3/clippings/module.php:142
-msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the <b>Download Now</b> link.  Follow the instructions and links.</li></ul>"
+msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the “Download” link.  Follow the instructions and links.</li></ul>"
 msgstr "O Carrinho de Recortes permite tirar extratos (\"recortes\") a partir desta árvore genealógica e empacotá-los em um único arquivo para baixar e posterior importação para o seu programa de genealogia. O arquivo é gravado em formato GEDCOM.<br><ul><li>Como fazer recortes?<br>Isto é realmente simples. Sempre que você vir um nome \"clicável\" (pessoa, família ou fonte), você pode ir para a página Detalhes do mesmo nome. Lá você vai ver o <b>Adicionar ao Carrinho de Recortes</b>. Quando você clica nesse link, você terá várias opções para download.</li><li>Como fazer o download?<br>Depois de ter colocado itens no seu carrinho, você pode baixá-los apenas clicando no link <b>Baixar Agora</b>. Siga as instruções e links.</li></ul>"
 
 #: help_text.php:1314
@@ -13489,7 +13481,7 @@ msgid "The individual to contact about the genealogical data on this site."
 msgstr "A pessoa para contatar sobre dados genealógicos deste site."
 
 #: help_text.php:573
-msgid "The length of time after birth can be set on the Privacy configuration tab option “Age at which to assume an individual is dead”."
+msgid "The length of time after birth can be set on the “Privacy” tab option “Age at which to assume an individual is dead”."
 msgstr "O tamanho do tempo após o nascimento pode ser definido na aba de configuração Privacidade opção \"Idade qual assumir que uma pessoa é falecida\"."
 
 #. I18N: %s are names of records, such as sources, repositories or individuals
@@ -13588,7 +13580,7 @@ msgid "The username or password is incorrect."
 msgstr ""
 
 #: help_text.php:689
-msgid "The value to place in the Description meta tag in the HTML page header.  Leave this field empty to use the title of the currently active database."
+msgid "The value to place in the “meta description” tag in the HTML page header.  Leave this field empty to use the name of the family tree."
 msgstr ""
 
 #: admin_pgv_to_wt.php:74
@@ -13630,15 +13622,15 @@ msgstr ""
 
 #: modules_v3/extra_info/module.php:61
 #: modules_v3/personal_facts/module.php:122
-msgid "There are no Facts for this individual."
+msgid "There are no facts for this individual."
 msgstr "Não existem Fatos para essa pessoa."
 
 #: modules_v3/notes/module.php:81
-msgid "There are no Notes for this individual."
+msgid "There are no notes for this individual."
 msgstr "Não existem Notas para essa pessoa."
 
 #: modules_v3/sources_tab/module.php:80
-msgid "There are no Source citations for this individual."
+msgid "There are no source citations for this individual."
 msgstr "Não há nenhuma Fonte para essa pessoa."
 
 #: modules_v3/media/module.php:73
@@ -13713,7 +13705,7 @@ msgid "This account has not been verified.  Please check your email for a verifi
 msgstr ""
 
 #: modules_v3/charts/help_text.php:32
-msgid "This block allows a pedigree, descendancy, or hourglass chart to appear on My Page or the Home Page.  Because of space limitations, the charts should be placed only on the left side of the page.<br><br>When this block appears on the Home Page, the root individual and the type of chart to be displayed are determined by the administrator.  When this block appears on the user’s personalized My Page, these options are determined by the user.<br><br>The behavior of these charts is identical to their behavior when they are called up from the menus.  Click on the box of an individual to see more details about them."
+msgid "This block allows a pedigree, descendancy, or hourglass chart to appear on your “My page” or the “Home page”.  Because of space limitations, the charts should be placed only on the left side of the page.<br><br>When this block appears on the “Home page”, the root individual and the type of chart to be displayed are determined by the administrator.  When this block appears on the user’s “My page”, these options are determined by the user.<br><br>The behavior of these charts is identical to their behavior when they are called up from the menus.  Click on the box of an individual to see more details about them."
 msgstr "Este bloco permite uma gráfico de genealogia, descendência, ou ampulheta apareça no Meu Portal ou na Página Inicial. Devido a limitações de espaço, os gráficos devem ser colocadas apenas no lado esquerdo da página.<br><br>Quando este bloco aparece na Página Inicial, a pessoa raíz e o tipo de gráfico a ser exibido são determinados pelo administrador. Quando este bloco aparece na página personalizada do usuário Meu Portal, estas opções são determinadas pelo usuário.<br><br>O comportamento desses gráficos é idêntico ao seu comportamento quando são chamados a partir do menu. Clique na caixa de uma pessoa para ver mais detalhes sobre eles."
 
 #: modules_v3/review_changes/help_text.php:32
@@ -13781,7 +13773,7 @@ msgid "This family tree was last updated on %s."
 msgstr "Esta árvore genealógica foi atualizada pela última vez em %s"
 
 #: help_text.php:363
-msgid "This field allows you to change the source record that this fact’s source citation links to.  This field takes a Source ID.  Beside the field will be listed the title of the current source ID.  Use the <b>Find ID</b> link to look up the source’s ID number.  To remove the entire citation, make this field blank."
+msgid "This field allows you to change the source record that this fact’s source citation links to.  This field takes a source ID.  Beside the field will be listed the title of the current source ID.  Use the <b>Find ID</b> link to look up the source’s ID number.  To remove the entire citation, make this field blank."
 msgstr "Este campo permite excluir ou alterar a qual fonte este fato esta relacionado. Ao lado da ID da Fonte, aparece o título correspondente a esta ID. Use <b>Procurar ID</b> para saber a ID de outra Fonte. Para excluir a referência a Fonte, basta deixar este campo em branco."
 
 #: modules_v3/faq/help_text.php:40
@@ -13848,11 +13840,11 @@ msgid "This input box lets you change that year of the calendar.  Type a year in
 msgstr ""
 
 #: modules_v3/clippings/help_text.php:32
-msgid "This input box lets you enter an individual’s ID number so he can be added to the clippings cart.  Once added you’ll be offered options to link that individual’s relations to your clippings cart.<br><br>If you do not know an individual’s ID number, you can perform a search by name by pressing the individual icon next to the Add button."
+msgid "This input box lets you enter an individual’s ID number so he can be added to the clippings cart.  Once added you’ll be offered options to link that individual’s relations to your clippings cart.<br><br>If you do not know an individual’s ID number, you can perform a search by name by pressing the individual icon next to the “Add” button."
 msgstr "Esta caixa de entrada deixa você inserir um número de identificação de uma pessoa para que ele possa ser adicionado ao Carrinho de Recortes. Uma vez adicionado serão oferecidas opções para ligar as relações destas pessoas a seu Carrinho de Recortes.<br><br>Se você não sabe o número de identificação de uma pessoa, você pode realizar uma pesquisa por nome pressionando o ícone Pessoa próximo do botão Adicionar."
 
 #: help_text.php:407
-msgid "This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets."
+msgid "This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets."
 msgstr "Esta é uma lista separada por vírgulas de marcas de fatos GEDCOM que será exibida no formulário de adição/edição. Se você usa alfabetos não-latinos como Hebraico, Greco, Círilico ou Árabe, você pode querer adicionar marcas como _HEB, ROMN, FONE, etc para permitir que você armazene nomes em diferentes alfabetos."
 
 #: help_text.php:794
@@ -13864,7 +13856,7 @@ msgid "This is a comma separated list of GEDCOM fact tags that will be shown whe
 msgstr ""
 
 #: help_text.php:412
-msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
+msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
 msgstr "Esta é uma lista separada por vírgulas de marcas de fatos GEDCOM que será exibida quando você adicionar ou editar nomes de locais. Se você usa alfabetos não-latinos como Hebraico, Greco, Círilico ou Árabe, você pode querer adicionar marcas como _HEB, ROMN, FONE, etc para permitir que você armazene nomes em diferentes alfabetos."
 
 #: help_text.php:1202
@@ -13897,35 +13889,35 @@ msgid "This is the latest version of webtrees.  No upgrade is available."
 msgstr ""
 
 #: help_text.php:506
-msgid "This is the list of GEDCOM facts that your users can add to families.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique family facts</i> list."
+msgid "This is the list of GEDCOM facts that your users can add to families.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the “Unique family facts” list."
 msgstr "Estes são os fatos e eventos que podem ser adicionados às famílias. É permitido adicionar ou remover fatos a lista, mesmo os customizados. Entretanto fatos que estejam nesta lista, não podem aparecer na lista <i>Fatos Singulares da Família</i>."
 
 #: help_text.php:593
-msgid "This is the list of GEDCOM facts that your users can add to individuals.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique Individual Facts</i> list."
+msgid "This is the list of GEDCOM facts that your users can add to individuals.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the “Unique individual facts” list."
 msgstr "Esta é a lista de fatos que os usuários podem adicionar às pessoas da árvore. Você pode criar novos tipos ou remover alguns deles conforme sua necessidade. Tipos de fatos que aperecem nesta lista não devem aparecer na lista <i>Fatos Singulares da Pessoa</i>."
 
 #: help_text.php:799
-msgid "This is the list of GEDCOM facts that your users can add to repositories.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique Repository Facts</i> list."
+msgid "This is the list of GEDCOM facts that your users can add to repositories.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the “Unique repository facts” list."
 msgstr ""
 
 #: help_text.php:910
-msgid "This is the list of GEDCOM facts that your users can add to sources.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique Source Facts</i> list."
+msgid "This is the list of GEDCOM facts that your users can add to sources.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the “Unique source facts” list."
 msgstr "Esta é a lista de fatos e eventos que os usuários podem adicionar a uma fonte. A lista pode ser alterada, inclusive com a adição de eventos e fatos customisados, porém fatos e eventos desta lista não podem estar na lista <i>Fatos/Eventos Singulares de Fonte</i>."
 
 #: help_text.php:516
-msgid "This is the list of GEDCOM facts that your users can only add <u>once</u> to families.  For example, if MARR is in this list, users will not be able to add more than one MARR record to a family.  Fact names that appear in this list must not also appear in the <i>Family Add Facts</i> list."
+msgid "This is the list of GEDCOM facts that your users can only add once to families.  For example, if MARR is in this list, users will not be able to add more than one MARR record to a family.  Fact names that appear in this list must not also appear in the “All family facts” list."
 msgstr "Esta é a lista de fatos/eventos da família, que os usuários podem adicionar uma <u>única</u> vez. Por exemplo, se MARR esta na lista, usuários não poderão adicionar mais de um MARR à família. Fatos e eventos que estejam nesta lista não podem estar na lista <i>Fatos/Eventos da Família</i>."
 
 #: help_text.php:603
-msgid "This is the list of GEDCOM facts that your users can only add <u>once</u> to individuals.  For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual.  Fact names that appear in this list must not also appear in the <i>Individual Add Facts</i> list."
+msgid "This is the list of GEDCOM facts that your users can only add once to individuals.  For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual.  Fact names that appear in this list must not also appear in the “All individual facts” list."
 msgstr "Esta é a lista de fatos que podem ser adicionados <u>uma única vez</u> a uma pessoa. Fatos que estejam nesta lista não podem estar na lista <i>Fatos/Eventos da Pessoa</i>."
 
 #: help_text.php:809
-msgid "This is the list of GEDCOM facts that your users can only add <u>once</u> to repositories.  For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository.  Fact names that appear in this list must not also appear in the <i>Repository Add Facts</i> list."
+msgid "This is the list of GEDCOM facts that your users can only add once to repositories.  For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository.  Fact names that appear in this list must not also appear in the “All repository facts” list."
 msgstr ""
 
 #: help_text.php:920
-msgid "This is the list of GEDCOM facts that your users can only add <u>once</u> to sources.  For example, if TITL is in this list, users will not be able to add more than one TITL record to a source.  Fact names that appear in this list must not also appear in the <i>Source Add Facts</i> list."
+msgid "This is the list of GEDCOM facts that your users can only add once to sources.  For example, if TITL is in this list, users will not be able to add more than one TITL record to a source.  Fact names that appear in this list must not also appear in the “All source facts” list."
 msgstr "Esta é a lista de fatos e eventos de fontes, que os usuário podem adicionar uma <u>única</u> vez. Por exemplo, se TITL esta na lista, usuários poderão adicionar apenas uma vez TITL a uma fonte. Fatos e eventos desta lista não podem estar na lista <i>Fatos/Eventos de Fonte</i>."
 
 #. I18N: Help text for the “Server name” site configuration setting
@@ -13934,7 +13926,7 @@ msgid "This is the name of the SMTP server. “localhost” means that the mail 
 msgstr "Este é o nome do servidor de SMTP. 'localhost' significa que o serviço de correio está funcionando no mesmo computador como seu servidor web."
 
 #: help_text.php:476
-msgid "This is the number of times that a surname must occur before it shows up in the Common Surname list on the Home Page."
+msgid "This is the number of times that a surname must occur before it shows up in the Common Surname list on the “Home page”."
 msgstr "Este é o número de vezes que um sobrenome deve ocorrer antes que apareça na lista de Sobrenomes Mais Comuns na Página Inicial."
 
 #: help_text.php:511
@@ -14129,11 +14121,11 @@ msgid "This option will let you edit an item on the FAQ page."
 msgstr "Esta opção deixará você alterar um ítem da página das PMF"
 
 #: modules_v3/faq/help_text.php:60
-msgid "This option will let you move an item downwards on the FAQ page.<br><br>Each time you use this option, the FAQ Position number of this item is increased by one.  You can achieve the same effect by editing the item in question and changing the FAQ Position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
+msgid "This option will let you move an item downwards on the FAQ page.<br><br>Each time you use this option, the FAQ position number of this item is increased by one.  You can achieve the same effect by editing the item in question and changing the FAQ position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
 msgstr "Esta opção permite-lhe mover um item para baixo na página de PMF.<br><br>Cada vez que você usar essa opção, o número de posição deste item das PMF é aumentado por um. Você pode conseguir o mesmo efeito através da edição do item em questão e mudar o campo posição das PMF. Quando mais de um item das PMF tem o número mesma posição, apenas um desses itens será visível."
 
 #: modules_v3/faq/help_text.php:65
-msgid "This option will let you move an item upwards on the FAQ page.<br><br>Each time you use this option, the FAQ Position number of this item is reduced by one.  You can achieve the same effect by editing the item in question and changing the FAQ Position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
+msgid "This option will let you move an item upwards on the FAQ page.<br><br>Each time you use this option, the FAQ position number of this item is reduced by one.  You can achieve the same effect by editing the item in question and changing the FAQ position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
 msgstr "Esta opção permite-lhe mover um item para cima na página de PMF.<br><br>Cada vez que você usar essa opção, o número de posição deste item das PMF é reduzido em um. Você pode conseguir o mesmo efeito através da edição do item em questão e mudar o campo posição das PMF. Quando mais de um item das PMF tem o número mesma posição, apenas um desses itens será visível."
 
 #: help_text.php:1099
@@ -14153,7 +14145,7 @@ msgid "This option will show the names (but no other details) of private individ
 msgstr ""
 
 #: modules_v3/googlemap/help_text.php:47
-msgid "This options sets whether Latitude and Longitude are displayed on the pop-up window attached to map markers."
+msgid "This options sets whether latitude and longitude are displayed on the pop-up window attached to map markers."
 msgstr "Estas opções definem como Latitude e Longitude são exibidas na janela pop-up ligado aos marcadores no mapa."
 
 #: help_text.php:1163
@@ -14205,7 +14197,7 @@ msgid "This role has all the permissions of the editor role, plus permission to 
 msgstr ""
 
 #: help_text.php:1398
-msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the site, users and modules."
+msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the site, users, and modules."
 msgstr ""
 
 #: help_text.php:1386
@@ -14221,11 +14213,11 @@ msgid "This role has all the permissions of the visitor role, plus any additiona
 msgstr ""
 
 #: help_text.php:1144
-msgid "This section allows you to add a new Note to the fact that you are currently editing.  Notes are free-form text and will appear in the Fact Details section of the page."
+msgid "This section allows you to add a new note to the fact that you are currently editing.  Notes are free-form text and will appear in the Fact Details section of the page."
 msgstr "Esta seção permite a adição de uma nova nota ao fato que está sendo editado. O campo Notas permite texto livre e é exibido na seção Detalhes do Fato."
 
 #: help_text.php:1157
-msgid "This section allows you to add a new source citation to the fact that you are currently editing.<br><br>In the Source field you enter the ID for the source.  Click the <b>Create a new source</b> link if you need to enter a new source.  In the Citation Details field you would enter the page number or other information that might help someone find the information in the source.  In the Text field you would enter the text transcription from the source."
+msgid "This section allows you to add a new source citation to the fact that you are currently editing.<br><br>In the Source field you enter the ID for the source.  Click the “Create a new source” link if you need to enter a new source.  In the citation details field you would enter the page number or other information that might help someone find the information in the source.  In the Text field you would enter the text transcription from the source."
 msgstr "Esta seção permite adicionar ao fato que está sendo editado, uma citação a uma fonte.<br><br>No campo Fonte, informe a ID da Fonte. Clique em <b>Nova Fonte</b> para criar uma nova fonte se necessário. No Detalhe da Citação, você pode por exemplo informar a página da Fonte, ou qualquer outra informação que facilite encontra-la na Fonte. O campo Texto é reservado à transcrição parcial da Fonte."
 
 #. I18N: http://en.wikipedia.org/wiki/Https
@@ -14243,7 +14235,7 @@ msgid "This setting is only used when you read or write GEDCOM files."
 msgstr ""
 
 #: help_text.php:456
-msgid "This should be a comma or space separated list of facts, in addition to Birth and Death, that you want to appear in chart boxes such as the pedigree chart.  This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard.  For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
+msgid "This should be a comma or space separated list of facts, in addition to birth and death, that you want to appear in chart boxes such as the pedigree chart.  This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard.  For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
 msgstr "Isto deve ser uma lista de fatos separados por vírgula ou espaço, em adição ao Nascimento e Falecimento, que você quer que apareça nas caixas dos gráficos como os gráficos de Árvore Genealógica. Esta lista requer que você use marcas de fatos como definida no padrão GEDCOM 5.5.1. Por exemplo, se você quiser que a ocupação apareça na caixa, você deve adicionar \"OCCU\" neste campo."
 
 #: admin_site_upgrade.php:41
@@ -14291,7 +14283,7 @@ msgid "This usually means that you need to change the folder permissions to 777.
 msgstr ""
 
 #: help_text.php:1223
-msgid "This value determines the number of descendant generations of the root individual that will be printed in Hourglass format."
+msgid "This value determines the number of descendant generations of the root individual that will be printed in hourglass format."
 msgstr ""
 
 #: site-offline.php:71 site-unavailable.php:63
@@ -14529,7 +14521,7 @@ msgstr[1] "% sobrenomes mais frequentes"
 
 #: modules_v3/googlemap/module.php:4361 modules_v3/googlemap/module.php:4426
 #: placelist.php:111
-msgid "Top Level"
+msgid "Top level"
 msgstr "Países"
 
 #. I18N: i.e. most popular given name.
@@ -14853,7 +14845,7 @@ msgid "Unknown"
 msgstr "Desconhecido(a)"
 
 #: modules_v3/lightbox/module.php:174
-msgid "Unlink Media"
+msgid "Unlink media"
 msgstr "Remover ligação da Mídia"
 
 #: library/WT/Gedcom/Tag.php:829
@@ -14865,11 +14857,11 @@ msgid "Unused files"
 msgstr ""
 
 #: admin.php:157
-msgid "Unverified by Administrator"
+msgid "Not approved by an administrator"
 msgstr "Não verificado pelo administrador"
 
 #: admin.php:153
-msgid "Unverified by User"
+msgid "Not verified by the user"
 msgstr "Não verificado pelo usuário"
 
 #. I18N: The system is about to [...]; %s is a .ZIP file.
@@ -14972,8 +14964,8 @@ msgid "Use SMTP to send messages"
 msgstr "Usar SMTP para enviar mensagens"
 
 #: modules_v3/batch_update/plugins/search_replace.php:92
-msgid "Use a &laquo;?&raquo; to match a single character, use &laquo;*&raquo; to match zero or more characters."
-msgstr "Use &laquo;?&raquo; para coincidir um único caracter e &laquo;*&raquo; par coincidir zero um mais caracteres."
+msgid "Use a “?” to match a single character, use “*” to match zero or more characters."
+msgstr "Use “?” para coincidir um único caracter e &laquo;*&raquo; par coincidir zero um mais caracteres."
 
 #. I18N: placeholder text for new-password field
 #: admin_users.php:385 login.php:423
@@ -15021,7 +15013,7 @@ msgid "Use these buttons to re-arrange the order of the entries within the list.
 msgstr ""
 
 #: help_text.php:398
-msgid "Use this field to signal that this media item is the highlighted or primary item for the individual it is attached to.  The highlighted image is the one that will be used on charts and on the Individual page."
+msgid "Use this field to signal that this media item is the highlighted or primary item for the individual it is attached to.  The highlighted image is the one that will be used on charts and on the individual’s page."
 msgstr "Use este campo para informar que esta mídia é a de destaque para esta pessoa. A imagem de destaque é a que é usada nos gráficos en na página da Pessoa."
 
 #: help_text.php:1358
@@ -15409,7 +15401,7 @@ msgid "When a user registers for an account, an email is sent to their email add
 msgstr ""
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:44
-msgid "When adding a Link, the ID field cannot be empty."
+msgid "When adding a link, the ID field cannot be empty."
 msgstr "Quando adicionar um link, o campo identificador não pode estar vazio."
 
 #: help_text.php:784
@@ -15558,7 +15550,7 @@ msgid "With sources"
 msgstr "Com fontes"
 
 #: help_text.php:1184
-msgid "With this option, the <b>webtrees</b> internal messaging system will be used and no emails will be sent.  You will receive only <u>internal</u> messages from the other users.  When another site user sends you a message, that message will appear in the Message block on your personal My Page.  If you have removed this block from your My Page, you will not see any messages.  They will, however, show up as soon as you configure My Page to again have the Message block."
+msgid "With this option, the <b>webtrees</b> internal messaging system will be used and no emails will be sent.  You will receive only <u>internal</u> messages from the other users.  When another site user sends you a message, that message will appear in the Message block on your “My page”.  If you have removed this block from your “My page”, you will not see any messages.  They will, however, show up as soon as you configure your “My page” to again have the Message block."
 msgstr ""
 
 #: help_text.php:1196
@@ -15566,7 +15558,7 @@ msgid "With this option, you will not receive any messages.  Even the administra
 msgstr ""
 
 #: help_text.php:1192
-msgid "With this option, you will only receive email messages at the address you configured on your Account page.  The messaging system internal to <b>webtrees</b> will not be used at all, and there will never be any messages in the Message block on your personal My Page."
+msgid "With this option, you will only receive email messages at the address you configured on your Account page.  The messaging system internal to <b>webtrees</b> will not be used at all, and there will never be any messages in the Message block on your “My page”."
 msgstr ""
 
 #: library/WT/Stats.php:302 library/WT/Stats.php:346
@@ -15641,7 +15633,7 @@ msgid "You can download a copy of the GEDCOM specification from %s."
 msgstr ""
 
 #: help_text.php:1243
-msgid "You can limit the number of News articles displayed, thereby reducing the height of the GEDCOM News block.<br><br>This option determines whether any limits should be applied or whether the limit should be according to the age of the article or according to the number of articles."
+msgid "You can limit the number of news articles displayed, thereby reducing the height of the GEDCOM News block.<br><br>This option determines whether any limits should be applied or whether the limit should be according to the age of the article or according to the number of articles."
 msgstr "Você pode definir o número máximo de notícias exibidas no bloco de Notícias e com isso reduzir o tamanho do bloco.<br><br>Esta opção determina se há limite, se o limite é pela idade da notícia ou se é pela qtde de notícias."
 
 #: modules_v3/batch_update/plugins/married_names.php:37
@@ -15693,7 +15685,7 @@ msgid "You have no pending messages."
 msgstr "Você não tem novas mensagens."
 
 #: modules_v3/user_blog/module.php:76
-msgid "You have not created any Journal items."
+msgid "You have not created any journal items."
 msgstr "Diário vazio."
 
 #: admin_trees_manage.php:131
@@ -15701,8 +15693,8 @@ msgid "You have selected a GEDCOM with a different name.  Is this correct?"
 msgstr "Você selecionou um GEDCOM com o nome diferente. Está correto?"
 
 #: addmedia.php:462
-msgid "You may enter a URL, beginning with &laquo;http://&raquo;."
-msgstr "Você pode inserir uma URL inciando por &laquo;http://&raquo;."
+msgid "You may enter a URL, beginning with “http://”."
+msgstr "Você pode inserir uma URL inciando por “http://”."
 
 #: modules_v3/faq/help_text.php:35
 msgid "You may use HTML to format the answer and to add links to other websites."
@@ -15791,7 +15783,7 @@ msgid "You should accept or reject all pending changes before upgrading."
 msgstr ""
 
 #: help_text.php:1151
-msgid "You should avoid using the vertical line character &ldquo;|&rdquo; in your notes.  It is used internally by webtrees and may cause your note to display incorrectly."
+msgid "You should avoid using the vertical line character “|” in your notes.  It is used internally by webtrees and may cause your note to display incorrectly."
 msgstr ""
 
 #: admin_site_upgrade.php:200
@@ -15841,7 +15833,7 @@ msgid "Youngest mother"
 msgstr "Mãe mais jovem"
 
 #: includes/authentication.php:120 message.php:127
-msgid "Your Name:"
+msgid "Your name:"
 msgstr "Seu Nome:"
 
 #: modules_v3/clippings/module.php:172 modules_v3/clippings/module.php:430
@@ -16966,23 +16958,23 @@ msgstr "esposa do neto"
 #: includes/functions/functions.php:1275 includes/functions/functions.php:1284
 #: includes/functions/functions.php:1295
 #, php-format
-msgid "great x%d aunt"
+msgid "great ×%d aunt"
 msgstr "tia %d°-avó"
 
 #: includes/functions/functions.php:1276 includes/functions/functions.php:1285
 #: includes/functions/functions.php:1296
 #, php-format
-msgid "great x%d aunt/uncle"
-msgstr "tio(a) x%d avô(ó)"
+msgid "great ×%d aunt/uncle"
+msgstr "tio(a) ×%d avô(ó)"
 
 #: includes/functions/functions.php:1617 includes/functions/functions.php:1630
 #, php-format
-msgid "great x%d grandchild"
+msgid "great ×%d grandchild"
 msgstr "%d° neto"
 
 #: includes/functions/functions.php:1616 includes/functions/functions.php:1629
 #, php-format
-msgid "great x%d granddaughter"
+msgid "great ×%d granddaughter"
 msgstr "%d° neta"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
@@ -16990,399 +16982,399 @@ msgstr "%d° neta"
 #: includes/functions/functions.php:1534 includes/functions/functions.php:1542
 #: includes/functions/functions.php:1552
 #, php-format
-msgid "great x%d grandfather"
+msgid "great ×%d grandfather"
 msgstr "%d° avô"
 
 #: includes/functions/functions.php:1521 includes/functions/functions.php:1528
 #: includes/functions/functions.php:1535 includes/functions/functions.php:1543
 #: includes/functions/functions.php:1553
 #, php-format
-msgid "great x%d grandmother"
+msgid "great ×%d grandmother"
 msgstr "%d° avó"
 
 #: includes/functions/functions.php:1522 includes/functions/functions.php:1529
 #: includes/functions/functions.php:1536 includes/functions/functions.php:1544
 #: includes/functions/functions.php:1554
 #, php-format
-msgid "great x%d grandparent"
+msgid "great ×%d grandparent"
 msgstr "%d° avô"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1615 includes/functions/functions.php:1628
 #, php-format
-msgid "great x%d grandson"
-msgstr "x%d neto"
+msgid "great ×%d grandson"
+msgstr "×%d neto"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1448 includes/functions/functions.php:1459
 #, php-format
-msgid "great x%d nephew"
+msgid "great ×%d nephew"
 msgstr "sobrinho %d°-neto"
 
 #: includes/functions/functions.php:1424
 #, php-format
-msgctxt "(a man’s) brother’s great x(%d-1) grandson"
-msgid "great x%d nephew"
+msgctxt "(a man’s) brother’s great ×(%d-1) grandson"
+msgid "great ×%d nephew"
 msgstr "sobrinho %d° neto"
 
 #: includes/functions/functions.php:1426
 #, php-format
-msgctxt "(a man’s) sister’s great x(%d-1) grandson"
-msgid "great x%d nephew"
+msgctxt "(a man’s) sister’s great ×(%d-1) grandson"
+msgid "great ×%d nephew"
 msgstr "sobrinho %d° neto"
 
 #: includes/functions/functions.php:1428
 #, php-format
-msgctxt "(a woman’s) great x%d nephew"
-msgid "great x%d nephew"
+msgctxt "(a woman’s) great ×%d nephew"
+msgid "great ×%d nephew"
 msgstr "sobrinho %d° neto"
 
 #: includes/functions/functions.php:1450 includes/functions/functions.php:1461
 #, php-format
-msgid "great x%d nephew/niece"
+msgid "great ×%d nephew/niece"
 msgstr "sobrinho(a) %d° neto(a)"
 
 #: includes/functions/functions.php:1439
 #, php-format
-msgctxt "(a man’s) brother’s great x(%d-1) grandchild"
-msgid "great x%d nephew/niece"
+msgctxt "(a man’s) brother’s great ×(%d-1) grandchild"
+msgid "great ×%d nephew/niece"
 msgstr "sobrinho(a) %d° neto(a)"
 
 #: includes/functions/functions.php:1441
 #, php-format
-msgctxt "(a man’s) sister’s great x(%d-1) grandchild"
-msgid "great x%d nephew/niece"
+msgctxt "(a man’s) sister’s great ×(%d-1) grandchild"
+msgid "great ×%d nephew/niece"
 msgstr "sobrinho(a) %d° neto(a)"
 
 #: includes/functions/functions.php:1443
 #, php-format
-msgctxt "(a woman’s) great x%d nephew/niece"
-msgid "great x%d nephew/niece"
+msgctxt "(a woman’s) great ×%d nephew/niece"
+msgid "great ×%d nephew/niece"
 msgstr "sobrinho(a) %d° neto(a)"
 
 #: includes/functions/functions.php:1449 includes/functions/functions.php:1460
 #, php-format
-msgid "great x%d niece"
+msgid "great ×%d niece"
 msgstr "sobrinha %d°-neta"
 
 #: includes/functions/functions.php:1431
 #, php-format
-msgctxt "(a man’s) brother’s great x(%d-1) granddaughter"
-msgid "great x%d niece"
+msgctxt "(a man’s) brother’s great ×(%d-1) granddaughter"
+msgid "great ×%d niece"
 msgstr "sobrinha %d° neta"
 
 #: includes/functions/functions.php:1433
 #, php-format
-msgctxt "(a man’s) sister’s great x(%d-1) granddaughter"
-msgid "great x%d niece"
+msgctxt "(a man’s) sister’s great ×(%d-1) granddaughter"
+msgid "great ×%d niece"
 msgstr "sobrinha %d° neta"
 
 #: includes/functions/functions.php:1435
 #, php-format
-msgctxt "(a woman’s) great x%d niece"
-msgid "great x%d niece"
+msgctxt "(a woman’s) great ×%d niece"
+msgid "great ×%d niece"
 msgstr "sobrinha %d° neta"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1274 includes/functions/functions.php:1294
 #, php-format
-msgid "great x%d uncle"
+msgid "great ×%d uncle"
 msgstr "tio %d°-avô"
 
 #: includes/functions/functions.php:1281
 #, php-format
-msgctxt "great x(%d-1) grandfather’s brother"
-msgid "great x%d uncle"
-msgstr "tio x%d avô"
+msgctxt "great ×(%d-1) grandfather’s brother"
+msgid "great ×%d uncle"
+msgstr "tio ×%d avô"
 
 #: includes/functions/functions.php:1282
 #, php-format
-msgctxt "great x(%d-1) grandmother’s brother"
-msgid "great x%d uncle"
-msgstr "tia x%d avó"
+msgctxt "great ×(%d-1) grandmother’s brother"
+msgid "great ×%d uncle"
+msgstr "tia ×%d avó"
 
 #: includes/functions/functions.php:1283
 #, php-format
-msgctxt "great x(%d-1) grandparent’s brother"
-msgid "great x%d uncle"
-msgstr "tio x%d avô"
+msgctxt "great ×(%d-1) grandparent’s brother"
+msgid "great ×%d uncle"
+msgstr "tio ×%d avô"
 
 #: includes/functions/functions.php:1232
-msgid "great x4 aunt"
+msgid "great ×4 aunt"
 msgstr "tia-tataravó"
 
 #: includes/functions/functions.php:1233
-msgid "great x4 aunt/uncle"
+msgid "great ×4 aunt/uncle"
 msgstr "tia-tataravó/tio-tataravô"
 
 #: includes/functions/functions.php:1581
-msgid "great x4 grandchild"
+msgid "great ×4 grandchild"
 msgstr "pentaneto"
 
 #: includes/functions/functions.php:1580
-msgid "great x4 granddaughter"
+msgid "great ×4 granddaughter"
 msgstr "pentaneta"
 
 #: includes/functions/functions.php:1486
-msgid "great x4 grandfather"
+msgid "great ×4 grandfather"
 msgstr "pentavô"
 
 #: includes/functions/functions.php:1487
-msgid "great x4 grandmother"
+msgid "great ×4 grandmother"
 msgstr "pentavó"
 
 #: includes/functions/functions.php:1488
-msgid "great x4 grandparent"
+msgid "great ×4 grandparent"
 msgstr "pentavô"
 
 #: includes/functions/functions.php:1579
-msgid "great x4 grandson"
+msgid "great ×4 grandson"
 msgstr "pentaneto"
 
 #: includes/functions/functions.php:1364
 msgctxt "(a man’s) brother’s great-great-great-grandson"
-msgid "great x4 nephew"
+msgid "great ×4 nephew"
 msgstr "sobrinho tataraneto"
 
 #: includes/functions/functions.php:1366
 msgctxt "(a man’s) sister’s great-great-great-grandson"
-msgid "great x4 nephew"
+msgid "great ×4 nephew"
 msgstr "sobrinho tataraneto"
 
 #: includes/functions/functions.php:1368
-msgctxt "(a woman’s) great x4 nephew"
-msgid "great x4 nephew"
+msgctxt "(a woman’s) great ×4 nephew"
+msgid "great ×4 nephew"
 msgstr "sobrinho tataraneto"
 
 #: includes/functions/functions.php:1380
 msgctxt "(a man’s) brother’s great-great-great-grandchild"
-msgid "great x4 nephew/niece"
+msgid "great ×4 nephew/niece"
 msgstr "sobrinho(a) tataraneto(a)"
 
 #: includes/functions/functions.php:1382
 msgctxt "(a man’s) sister’s great-great-great-grandchild"
-msgid "great x4 nephew/niece"
+msgid "great ×4 nephew/niece"
 msgstr "sobrinho(a) tataraneto(a)"
 
 #: includes/functions/functions.php:1384
-msgctxt "(a woman’s) great x4 nephew/niece"
-msgid "great x4 nephew/niece"
+msgctxt "(a woman’s) great ×4 nephew/niece"
+msgid "great ×4 nephew/niece"
 msgstr "sobrinho(a) tataraneto(a)"
 
 #: includes/functions/functions.php:1372
 msgctxt "(a man’s) brother’s great-great-great-granddaughter"
-msgid "great x4 niece"
+msgid "great ×4 niece"
 msgstr "sobrinha tataraneta"
 
 #: includes/functions/functions.php:1374
 msgctxt "(a man’s) sister’s great-great-great-granddaughter"
-msgid "great x4 niece"
+msgid "great ×4 niece"
 msgstr "sobrinha tataraneta"
 
 #: includes/functions/functions.php:1376
-msgctxt "(a woman’s) great x4 niece"
-msgid "great x4 niece"
+msgctxt "(a woman’s) great ×4 niece"
+msgid "great ×4 niece"
 msgstr "sobrinha tataraneta"
 
 #: includes/functions/functions.php:1229
 msgctxt "great-great-great-grandfather’s brother"
-msgid "great x4 uncle"
+msgid "great ×4 uncle"
 msgstr "tio-tataravô"
 
 #: includes/functions/functions.php:1230
 msgctxt "great-great-great-grandmother’s brother"
-msgid "great x4 uncle"
+msgid "great ×4 uncle"
 msgstr "tio-tataravô"
 
 #: includes/functions/functions.php:1231
 msgctxt "great-great-great-grandparent’s brother"
-msgid "great x4 uncle"
+msgid "great ×4 uncle"
 msgstr "tio-tataravô"
 
 #: includes/functions/functions.php:1242
-msgid "great x5 aunt"
+msgid "great ×5 aunt"
 msgstr "tia-pentavó"
 
 #: includes/functions/functions.php:1243
-msgid "great x5 aunt/uncle"
+msgid "great ×5 aunt/uncle"
 msgstr "tia-pentavó/tio-pentavô"
 
 #: includes/functions/functions.php:1588
-msgid "great x5 grandchild"
+msgid "great ×5 grandchild"
 msgstr "hexaneto"
 
 #: includes/functions/functions.php:1587
-msgid "great x5 granddaughter"
+msgid "great ×5 granddaughter"
 msgstr "hexaneta"
 
 #: includes/functions/functions.php:1493
-msgid "great x5 grandfather"
+msgid "great ×5 grandfather"
 msgstr "hexavô"
 
 #: includes/functions/functions.php:1494
-msgid "great x5 grandmother"
+msgid "great ×5 grandmother"
 msgstr "hexavó"
 
 #: includes/functions/functions.php:1495
-msgid "great x5 grandparent"
+msgid "great ×5 grandparent"
 msgstr "hexavô"
 
 #: includes/functions/functions.php:1586
-msgid "great x5 grandson"
+msgid "great ×5 grandson"
 msgstr "hexaneto"
 
 #: includes/functions/functions.php:1391
-msgctxt "(a man’s) brother’s great x4 grandson"
-msgid "great x5 nephew"
+msgctxt "(a man’s) brother’s great ×4 grandson"
+msgid "great ×5 nephew"
 msgstr "sobrinho pentaneto"
 
 #: includes/functions/functions.php:1393
-msgctxt "(a man’s) sister’s great x4 grandson"
-msgid "great x5 nephew"
+msgctxt "(a man’s) sister’s great ×4 grandson"
+msgid "great ×5 nephew"
 msgstr "sobrinho pentaneto"
 
 #: includes/functions/functions.php:1395
-msgctxt "(a woman’s) great x5 nephew"
-msgid "great x5 nephew"
+msgctxt "(a woman’s) great ×5 nephew"
+msgid "great ×5 nephew"
 msgstr "sobrinho pentaneto"
 
 #: includes/functions/functions.php:1407
-msgctxt "(a man’s) brother’s great x4 grandchild"
-msgid "great x5 nephew/niece"
+msgctxt "(a man’s) brother’s great ×4 grandchild"
+msgid "great ×5 nephew/niece"
 msgstr "sobrinho(a) pentaneto(a)"
 
 #: includes/functions/functions.php:1409
-msgctxt "(a man’s) sister’s great x4 grandchild"
-msgid "great x5 nephew/niece"
+msgctxt "(a man’s) sister’s great ×4 grandchild"
+msgid "great ×5 nephew/niece"
 msgstr "sobrinho(a) pentaneto(a)"
 
 #: includes/functions/functions.php:1411
-msgctxt "(a woman’s) great x5 nephew/niece"
-msgid "great x5 nephew/niece"
+msgctxt "(a woman’s) great ×5 nephew/niece"
+msgid "great ×5 nephew/niece"
 msgstr "sobrinho(a) pentaneto(a)"
 
 #: includes/functions/functions.php:1399
-msgctxt "(a man’s) brother’s great x4 granddaughter"
-msgid "great x5 niece"
+msgctxt "(a man’s) brother’s great ×4 granddaughter"
+msgid "great ×5 niece"
 msgstr "sobrinha pentaneta"
 
 #: includes/functions/functions.php:1401
-msgctxt "(a man’s) sister’s great x4 granddaughter"
-msgid "great x5 niece"
+msgctxt "(a man’s) sister’s great ×4 granddaughter"
+msgid "great ×5 niece"
 msgstr "sobrinha pentaneta"
 
 #: includes/functions/functions.php:1403
-msgctxt "(a woman’s) great x5 niece"
-msgid "great x5 niece"
+msgctxt "(a woman’s) great ×5 niece"
+msgid "great ×5 niece"
 msgstr "sobrinha pentaneta"
 
 #: includes/functions/functions.php:1239
-msgctxt "great x4 grandfather’s brother"
-msgid "great x5 uncle"
+msgctxt "great ×4 grandfather’s brother"
+msgid "great ×5 uncle"
 msgstr "tio-pentavô"
 
 #: includes/functions/functions.php:1240
-msgctxt "great x4 grandmother’s brother"
-msgid "great x5 uncle"
+msgctxt "great ×4 grandmother’s brother"
+msgid "great ×5 uncle"
 msgstr "tio-pentavô"
 
 #: includes/functions/functions.php:1241
-msgctxt "great x4 grandparent’s brother"
-msgid "great x5 uncle"
+msgctxt "great ×4 grandparent’s brother"
+msgid "great ×5 uncle"
 msgstr "tio-pentavô"
 
 #: includes/functions/functions.php:1252
-msgid "great x6 aunt"
+msgid "great ×6 aunt"
 msgstr "tia-hexavó"
 
 #: includes/functions/functions.php:1253
-msgid "great x6 aunt/uncle"
+msgid "great ×6 aunt/uncle"
 msgstr "tia-hexavó/tio-hexavô"
 
 #: includes/functions/functions.php:1595
-msgid "great x6 grandchild"
+msgid "great ×6 grandchild"
 msgstr "heptaneto"
 
 #: includes/functions/functions.php:1594
-msgid "great x6 granddaughter"
+msgid "great ×6 granddaughter"
 msgstr "heptaneta"
 
 #: includes/functions/functions.php:1500
-msgid "great x6 grandfather"
+msgid "great ×6 grandfather"
 msgstr "heptavô"
 
 #: includes/functions/functions.php:1501
-msgid "great x6 grandmother"
+msgid "great ×6 grandmother"
 msgstr "heptavó"
 
 #: includes/functions/functions.php:1502
-msgid "great x6 grandparent"
+msgid "great ×6 grandparent"
 msgstr "heptavô"
 
 #: includes/functions/functions.php:1593
-msgid "great x6 grandson"
+msgid "great ×6 grandson"
 msgstr "heptaneto"
 
 #: includes/functions/functions.php:1249
-msgctxt "great x5 grandfather’s brother"
-msgid "great x6 uncle"
+msgctxt "great ×5 grandfather’s brother"
+msgid "great ×6 uncle"
 msgstr "tio-hexavô"
 
 #: includes/functions/functions.php:1250
-msgctxt "great x5 grandmother’s brother"
-msgid "great x6 uncle"
+msgctxt "great ×5 grandmother’s brother"
+msgid "great ×6 uncle"
 msgstr "tio-hexavô"
 
 #: includes/functions/functions.php:1251
-msgctxt "great x5 grandparent’s brother"
-msgid "great x6 uncle"
+msgctxt "great ×5 grandparent’s brother"
+msgid "great ×6 uncle"
 msgstr "tio-hexavô"
 
 #: includes/functions/functions.php:1262
-msgid "great x7 aunt"
+msgid "great ×7 aunt"
 msgstr "tia-heptavó"
 
 #: includes/functions/functions.php:1263
-msgid "great x7 aunt/uncle"
+msgid "great ×7 aunt/uncle"
 msgstr "tia-heptavó/tio-heptavô"
 
 #: includes/functions/functions.php:1602
-msgid "great x7 grandchild"
+msgid "great ×7 grandchild"
 msgstr "octaneto"
 
 #: includes/functions/functions.php:1601
-msgid "great x7 granddaughter"
+msgid "great ×7 granddaughter"
 msgstr "octaneta"
 
 #: includes/functions/functions.php:1507
-msgid "great x7 grandfather"
+msgid "great ×7 grandfather"
 msgstr "octavô"
 
 #: includes/functions/functions.php:1508
-msgid "great x7 grandmother"
+msgid "great ×7 grandmother"
 msgstr "octavó"
 
 #: includes/functions/functions.php:1509
-msgid "great x7 grandparent"
+msgid "great ×7 grandparent"
 msgstr "octavô"
 
 #: includes/functions/functions.php:1600
-msgid "great x7 grandson"
+msgid "great ×7 grandson"
 msgstr "octaneto"
 
 #: includes/functions/functions.php:1259
-msgctxt "great x6 grandfather’s brother"
-msgid "great x7 uncle"
+msgctxt "great ×6 grandfather’s brother"
+msgid "great ×7 uncle"
 msgstr "tio-heptavô"
 
 #: includes/functions/functions.php:1260
-msgctxt "great x6 grandmother’s brother"
-msgid "great x7 uncle"
+msgctxt "great ×6 grandmother’s brother"
+msgid "great ×7 uncle"
 msgstr "tio-heptavô"
 
 #: includes/functions/functions.php:1261
-msgctxt "great x6 grandparent’s brother"
-msgid "great x7 uncle"
+msgctxt "great ×6 grandparent’s brother"
+msgid "great ×7 uncle"
 msgstr "tio-heptavô"
 
 #: includes/functions/functions.php:1085
@@ -19737,7 +19729,7 @@ msgstr "nasceu"
 
 #: includes/authentication.php:111 includes/authentication.php:174
 #: message.php:40
-msgid "webtrees Message"
+msgid "webtrees message"
 msgstr "Mensagem do webtrees"
 
 #: includes/functions/functions_edit.php:220
@@ -19845,7 +19837,7 @@ msgstr "…"
 #~ msgid "%s"
 #~ msgstr "%s"
 
-#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website."
+#~ msgid "<center><b>Welcome to this genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website."
 #~ msgstr "<center><b>Bem-vindo a este site de Genealogia</b></center><br>O acesso é permitido aos usuários que têm uma conta e uma senha para este site."
 
 #~ msgid "Abbreviate chart labels"

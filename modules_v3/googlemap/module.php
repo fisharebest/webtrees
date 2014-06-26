@@ -164,7 +164,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_places">', WT_I18N::translate('Geographic data'), '</a>';
 				echo '</td>';
 				echo '<td width="25%" align="right">';
-				echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_placecheck">', WT_I18N::translate('Place Check'),'</a>';
+				echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_placecheck">', WT_I18N::translate('Place check'),'</a>';
 				echo '</td>';
 				echo '</tr></table>';
 			}
@@ -284,7 +284,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				</th>
 				<th>
 					<a href="module.php?mod=googlemap&amp;mod_action=admin_placecheck">
-						<?php echo WT_I18N::translate('Place Check'); ?>
+						<?php echo WT_I18N::translate('Place check'); ?>
 					</a>
 				</th>
 			</tr>
@@ -456,7 +456,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 							<td><?php echo edit_field_yes_no('NEW_GM_DISP_SHORT_PLACE', $this->getSetting('GM_DISP_SHORT_PLACE')); ?></td>
 						</tr>
 						<tr>
-							<th><?php echo WT_I18N::translate('Display Map Coordinates'), help_link('GM_COORD','googlemap'); ?></th>
+							<th><?php echo WT_I18N::translate('Display map coordinates'), help_link('GM_COORD','googlemap'); ?></th>
 							<td><?php echo edit_field_yes_no('NEW_GM_COORD', $this->getSetting('GM_COORD')); ?></td>
 						</tr>
 					</table>
@@ -830,7 +830,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			echo '<a href="module.php?mod=googlemap&amp;mod_action=admin_places">', WT_I18N::translate('Geographic data'), '</a>';
 			echo '</td>';
 			echo '<td align="right">';
-			echo '<a href="module.php?mod=googlemap&amp;mod_action=admin_placecheck">', WT_I18N::translate('Place Check'), '</a>';
+			echo '<a href="module.php?mod=googlemap&amp;mod_action=admin_placecheck">', WT_I18N::translate('Place check'), '</a>';
 			echo '</td></tr>';
 			echo '</table>';
 		}
@@ -1490,7 +1490,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					</th>
 					<th>
 						<a class="current" href="module.php?mod=googlemap&amp;mod_action=admin_placecheck">
-							', WT_I18N::translate('Place Check'),'
+							', WT_I18N::translate('Place check'),'
 						</a>
 					</th>
 				</tr>
@@ -2519,7 +2519,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			echo '&nbsp;|&nbsp;';
 			echo '<a href="'.$adminplaces_url.'">', WT_I18N::translate('Geographic data'), '</a>';
 			echo '&nbsp;|&nbsp;';
-			echo '<a href="'.$placecheck_url.'">', WT_I18N::translate('Place Check'), '</a>';
+			echo '<a href="'.$placecheck_url.'">', WT_I18N::translate('Place check'), '</a>';
 			if (array_key_exists('batch_update', WT_Module::getActiveModules())) {
 				$placelevels=preg_replace('/, '.WT_I18N::translate('unknown').'/', ', ', $placelevels); // replace ", unknown" with ", "
 				$placelevels=substr($placelevels, 2); // remove the leading ", "
@@ -2999,8 +2999,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 	// Take a place id and find its place in the hierarchy
 	// Input: place ID
-	// Output: ordered array of id=>name values, starting with the Top Level
-	// e.g. array(0=>"Top Level", 16=>"England", 19=>"London", 217=>"Westminster");
+	// Output: ordered array of id=>name values, starting with the Top level
+	// e.g. array(0=>"Top level", 16=>"England", 19=>"London", 217=>"Westminster");
 	// NB This function exists in both places.php and places_edit.php
 	private function place_id_to_hierarchy($id) {
 		$statement=
@@ -3977,7 +3977,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				</th>
 				<th>
 					<a href="module.php?mod=googlemap&amp;mod_action=admin_placecheck">
-						<?php echo WT_I18N::translate('Place Check'); ?>
+						<?php echo WT_I18N::translate('Place check'); ?>
 					</a>
 				</th>
 			</tr>
@@ -4140,7 +4140,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					<td><input type="checkbox" name="overwritedata"></td>
 				</tr>
 			</table>
-			<input id="savebutton" type="submit" value="<?php echo WT_I18N::translate('Continue Adding'); ?>"><br>
+			<input id="savebutton" type="submit" value="<?php echo WT_I18N::translate('Continue adding'); ?>"><br>
 		</form>
 		<?php
 			exit;
@@ -4359,7 +4359,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			}
 			echo ' - ';
 		}
-		echo '<a href="module.php?mod=googlemap&mod_action=admin_places&parent=0&inactive=', $inactive, '">', WT_I18N::translate('Top Level'), '</a></div>';
+		echo '<a href="module.php?mod=googlemap&mod_action=admin_places&parent=0&inactive=', $inactive, '">', WT_I18N::translate('Top level'), '</a></div>';
 		echo '<form name="active" method="post" action="module.php?mod=googlemap&mod_action=admin_places&parent=', $parent, '&inactive=', $inactive, '"><div id="gm_active">';
 		echo '<label for="inactive">', WT_I18N::translate('Show inactive places'), '</label>';
 		echo '<input type="checkbox" name="inactive" id="inactive"';
@@ -4424,7 +4424,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				</td>
 				<td>
 					<form action="?" onsubmit="add_place_location(this.parent_id.options[this.parent_id.selectedIndex].value); return false;">
-						<?php echo select_edit_control('parent_id', $where_am_i, WT_I18N::translate('Top Level'), $parent); ?>
+						<?php echo select_edit_control('parent_id', $where_am_i, WT_I18N::translate('Top level'), $parent); ?>
 						<input type="submit" value="<?php echo WT_I18N::translate('Add'); ?>">
 					</form>
 				</td>

@@ -56,8 +56,8 @@ msgstr " 每个时间段"
 #: includes/functions/functions_print_facts.php:192
 #: includes/functions/functions_print_facts.php:197
 #, php-format
-msgid "#%d"
-msgstr "#%d"
+msgid "#%s"
+msgstr "#%s"
 
 #: modules_v3/googlemap/module.php:851
 #, php-format
@@ -76,21 +76,21 @@ msgstr[0] "%1$d 个人没有出生地的地图坐标: %2$s."
 #: includes/functions/functions.php:685
 #, php-format
 msgctxt "FEMALE"
-msgid "%1$d x %2$s"
+msgid "%1$d × %2$s"
 msgstr "%1$d 代 %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:674
 #, php-format
 msgctxt "MALE"
-msgid "%1$d x %2$s"
+msgid "%1$d × %2$s"
 msgstr "%1$d 代 %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:696
 #, php-format
 msgctxt "MALE/FEMALE"
-msgid "%1$d x %2$s"
+msgid "%1$d × %2$s"
 msgstr "%1$d 代 %2$s"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$d>=4
@@ -181,18 +181,11 @@ msgstr "%1$s's %2$s"
 msgid "%H:%i:%s"
 msgstr "%H:%i:%s"
 
-#. I18N: This is a title, so needs suitable capitalisation
-#: includes/functions/functions_charts.php:267
-#, php-format
-msgid "%d Child"
-msgid_plural "%d Children"
-msgstr[0] "%d 孩子"
-
 #: lifespan.php:198
 #, php-format
-msgid "%d Individual"
-msgid_plural "%d Individuals"
-msgstr[0] "%d 个人"
+msgid "%s individual"
+msgid_plural "%s individuals"
+msgstr[0] "%s 个人"
 
 #: includes/functions/functions_print.php:306 library/WT/Stats.php:3415
 #, php-format
@@ -215,20 +208,20 @@ msgstr[0] "%d 月"
 #: includes/functions/functions.php:637
 #, php-format
 msgctxt "FEMALE"
-msgid "%d x cousin"
+msgid "%d × cousin"
 msgstr "隔 %d 代的表兄（妹）"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: includes/functions/functions.php:618
 #, php-format
 msgctxt "MALE"
-msgid "%d x cousin"
+msgid "%d × cousin"
 msgstr "隔 %d 代的堂（表）兄妹"
 
 #: includes/functions/functions.php:656
 #, php-format
 msgctxt "MALE/FEMALE"
-msgid "%d x cousin"
+msgid "%d × cousin"
 msgstr "隔 %d 代的堂（表）兄(妹)"
 
 #: modules_v3/relatives/module.php:60
@@ -422,9 +415,9 @@ msgstr "&lt; 选择 &gt;"
 #: search_advanced.php:112 search_advanced.php:116 search_advanced.php:120
 #: search_advanced.php:168 search_advanced.php:169 search_advanced.php:170
 #, php-format
-msgid "&plusmn;%d year"
-msgid_plural "&plusmn;%d years"
-msgstr[0] "&plusmn;%d 年"
+msgid "±%d year"
+msgid_plural "±%d years"
+msgstr[0] "±%d 年"
 
 #. I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan 1900 (aged 43 years)
 #: library/WT/I18N.php:395 library/WT/I18N.php:399
@@ -580,7 +573,7 @@ msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<b
 msgstr "<b>GUID</b>«在全球范围内唯一的ID»的缩写。<br><br>GUID用于定义每个可能是重复的个体，使中央机构，如家族历史中心，或是自己的服务器上运行的兼容的GEDCOM处理程序，确定它们是否是同一人无论身在何处的。家庭历史中心的目标是有家谱数据的中央存储库，并通过Web服务公开。这将使任何程序访问数据，并更新他们的数据在它<br><br>如果你不打算与其他人分享这个GEDCOM，你不需要让<b> webtrees</b>创建这些GUID，但是，这样做不用担心GEDCOM的规模越来越大。"
 
 #: help_text.php:1318
-msgid "<b>Important Note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
+msgid "<b>Important note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
 msgstr "<b>重要提示：</b>迁移向导不能帮助移动媒体项目。你需要设置向导完成后再移动或复制您的媒体结构和对象。"
 
 #: help_text.php:1007
@@ -588,7 +581,7 @@ msgid "<b>No</b> means that authenticated users can see the details of all livin
 msgstr "<b>没有</b>意味着经过身份验证的用户可以看到所有人的生活细节。<b>是</b>意味着用户只能看到活的人，和他们相关的私人信息。<br><br>这个选项设置为所有访问这个家谱数据库用户的默认值。管理员可以通过编辑用户的账户信息覆盖个人用户的这个选项。"
 
 #: message.php:118
-msgid "<b>Please Note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogical data, please include the sources where you obtained the data."
+msgid "<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogical data, please include the sources where you obtained the data."
 msgstr "<b>请注意：</b>在世的个体的私人信息只会显示给家人和亲密的朋友。您将收到数据验证你的私人关系。有时死亡人的信息也可能是私人的。如果是这样的话，那是因为没有人确定他们是否是死的还是活的，我们可能不会知道关于这个人足够多的信息。<br><br>在问问题之前，请确认您通过检查日期，地方，和亲人查询的人是正确。如果你对家谱资料提交更改，请包括你在哪里得到数据资源信息。"
 
 #: help_text.php:1063
@@ -620,15 +613,15 @@ msgid "<b>webtrees</b> reply address"
 msgstr "<b>webtrees</b>回复地址"
 
 #: login.php:150
-msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved."
+msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved."
 msgstr "<center><b>欢迎访问这个家谱网站</b></center><br>这个站点只被允许 <u>授权</u> 用户的访问。<br><br>如果你有帐户，你可以登录该页面。如果你没有一个用户帐户，你可以点击下面的链接申请。<br><br>管理员验证您提供的信息决定批准或拒绝你的请求的帐户。当你的请求被批准你将收到一封电子邮件。"
 
 #: login.php:153
-msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved."
+msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved."
 msgstr "<center><b>欢迎到这个家谱网站</b></center><br>只有<u>家庭成员</u>才可以看。<br><br>你可以登陆或申请一个账号<br><br>注册后要通过网站管理的批准才可以看。"
 
 #: login.php:147
-msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved."
+msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved."
 msgstr "<center><b>欢迎访问这个家谱网站</b></center><br>允许每个有帐户的游客访问此网站。<br><br>如果你有帐户，你可以登录该页面。如果你没有一个用户帐户，你可以点击下面的链接申请。<br><br>管理员验证您提供的信息决定批准或拒绝你的请求的帐户。当你的请求被批准你将收到一封电子邮件。"
 
 #. I18N: default option in list of themes
@@ -702,7 +695,7 @@ msgstr "有联系的家谱的任务和活动的清单。"
 msgid "A list of the Hebrew death anniversaries that will occur in the near future."
 msgstr "将到来的来纪念日列表"
 
-#. I18N: Description of the “On This Day” module
+#. I18N: Description of the “On this day” module
 #: modules_v3/todays_events/module.php:37
 msgid "A list of the anniversaries that occur today."
 msgstr "每年的今天发生事情的清单"
@@ -1116,23 +1109,23 @@ msgstr "添加一个新的地理位置"
 
 #: modules_v3/clippings/module.php:472
 #, php-format
-msgid "Add %s to cart"
+msgid "Add %s to the clippings cart"
 msgstr "添加 %s 到收集箱"
 
 #: modules_v3/faq/module.php:145 modules_v3/faq/module.php:359
-msgid "Add FAQ item"
+msgid "Add an FAQ item"
 msgstr "添加常见问题项"
 
 #: modules_v3/clippings/module.php:150 modules_v3/clippings/module.php:233
-msgid "Add Individual By ID"
+msgid "Add individual by ID"
 msgstr "通过ID添加个人"
 
 #: search_advanced.php:290
-msgid "Add More Fields"
+msgid "Add more fields"
 msgstr "添加更多的字段"
 
 #: modules_v3/gedcom_news/module.php:125
-msgid "Add a News article"
+msgid "Add a news article"
 msgstr "添加一个新闻文章"
 
 #: edit_interface.php:563 modules_v3/relatives/module.php:373
@@ -1158,7 +1151,7 @@ msgid "Add a husband using an existing individual"
 msgstr "用已有的个人添加丈夫"
 
 #: modules_v3/user_blog/module.php:95
-msgid "Add a new Journal entry"
+msgid "Add a new journal entry"
 msgstr "添加日记项目"
 
 #: help_text.php:1133 includes/functions/functions_edit.php:834
@@ -1339,7 +1332,7 @@ msgstr "添加空格在记事的位置"
 
 #: modules_v3/stories/module.php:127 modules_v3/stories/module.php:214
 #: modules_v3/stories/module.php:337
-msgid "Add story"
+msgid "Add a story"
 msgstr "添加故事"
 
 #: admin_trees_download.php:129 modules_v3/clippings/module.php:212
@@ -1406,11 +1399,11 @@ msgid "Add your own text and graphics."
 msgstr "添加您自己的文字和图形。"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_1_ctrl.php:91
-msgid "Add/Insert Blank Row"
+msgid "Add/insert a blank row"
 msgstr "添加/插入空白行"
 
 #: editnews.php:31 editnews.php:49
-msgid "Add/edit journal/news entry"
+msgid "Add/edit a journal/news entry"
 msgstr "添加日记或新闻"
 
 #: admin_site_merge.php:196 admin_site_merge.php:202
@@ -1460,7 +1453,7 @@ msgid "Administrators"
 msgstr "管理员"
 
 #: help_text.php:1284
-msgid "Administrators sometimes need to clean up and correct the data submitted by users.  For example, they might need to correct the PLAC location to include the country.  When Administrators make such corrections, information about the original change is normally replaced.  This may not be desirable.<br><br>When this option is selected, <b>webtrees</b> will retain the original Change information instead of replacing it with that of the current session.  With this option selected, Administrators also have the ability to modify or delete the information associated with the original CHAN tag."
+msgid "Administrators sometimes need to clean up and correct the data submitted by users.  For example, they might need to correct the PLAC location to include the country.  When administrators make such corrections, information about the original change is normally replaced.  This may not be desirable.<br><br>When this option is selected, <b>webtrees</b> will retain the original change information instead of replacing it with that of the current session.  With this option selected, administrators also have the ability to modify or delete the information associated with the original CHAN tag."
 msgstr "管理员有时需要清理和纠正用户提交的数据。例如，他们可能需要纠正的地方的位置，包括国家。当管理员进行纠正，对原来的变化信息，通常是替换。这可能是不可取的。<br><br>选取这个选项时，<b>webtrees</b> 将保留原有的变化信息，而不是取代它的当前会话的值。如果选择此选项，管理员也需要修改或删除与原CHAN标签相关信息。"
 
 #: library/WT/Gedcom/Code/Pedi.php:43
@@ -1639,7 +1632,7 @@ msgid "After creating the family tree, you will be able to upload or import data
 msgstr "在创建家谱，你将能够上传或从GEDCOM文件导入数据。"
 
 #: login.php:242
-msgid "After you have logged in, select the “My Account” link under the “My Page” menu and fill in the password fields to change your password."
+msgid "After you have logged in, select the “My account” link under the “My page” menu and fill in the password fields to change your password."
 msgstr "登录后，选择«我的网页»菜单下的«我的帐户»链接，在密码框更改你的密码。"
 
 #. I18N: gedcom tag AGE
@@ -2031,11 +2024,11 @@ msgid "Are you sure you want to delete this FAQ entry?"
 msgstr "您确定要删除此常见问题条目？"
 
 #: modules_v3/user_blog/module.php:91
-msgid "Are you sure you want to delete this Journal entry?"
+msgid "Are you sure you want to delete this journal entry?"
 msgstr "您确定要删除此日记？"
 
 #: modules_v3/gedcom_news/module.php:119
-msgid "Are you sure you want to delete this News entry?"
+msgid "Are you sure you want to delete this news article?"
 msgstr "您确定要删除此新闻项目吗？"
 
 #: includes/functions/functions_print_facts.php:181
@@ -2072,7 +2065,7 @@ msgid "Are you sure you want to remove links to this media object?"
 msgstr ""
 
 #: modules_v3/gedcom_favorites/module.php:123
-msgid "Are you sure you want to remove this item from your list of Favorites?"
+msgid "Are you sure you want to remove this item from your list of favorites?"
 msgstr "你确定你想从你的名单的收藏删除该项目吗？"
 
 #: edit_changes.php:231
@@ -2142,7 +2135,7 @@ msgid "Asuncion, Paraguay"
 msgstr "Asunción, 巴拉圭"
 
 #: library/WT/Stats.php:4003
-msgid "At Sea"
+msgid "At sea"
 msgstr "在海上"
 
 #: library/WT/Gedcom/Code/Temp.php:65
@@ -2691,7 +2684,7 @@ msgid "Birth"
 msgstr "出生"
 
 #: modules_v3/birth_report/report.xml:6
-msgid "Birth Place contains"
+msgid "Birthplace contains"
 msgstr "出生地包含"
 
 #: library/WT/Stats.php:978 statistics.php:576
@@ -3688,7 +3681,7 @@ msgid "Click here for PhpGedView to <b>webtrees</b> transfer wizard"
 msgstr "将PhpGedView转换到<b> webtrees</b> 点击这里使用向导"
 
 #: modules_v3/faq/module.php:282
-msgid "Click here to Add, Edit, or Delete"
+msgid "Click here to add, edit, or delete"
 msgstr "点击这里添加、编辑或删除"
 
 #: individual.php:267
@@ -3878,7 +3871,7 @@ msgstr "内容"
 #: modules_v3/clippings/module.php:129 modules_v3/clippings/module.php:501
 #: modules_v3/clippings/module.php:524 modules_v3/clippings/module.php:537
 #: modules_v3/googlemap/module.php:4142
-msgid "Continue Adding"
+msgid "Continue adding"
 msgstr "继续添加"
 
 #. I18N: gedcom tag CONT
@@ -4017,7 +4010,7 @@ msgstr "创建新的资源记录"
 
 #: edit_interface.php:1493 edit_interface.php:1558
 #: includes/functions/functions_edit.php:320
-msgid "Create repository"
+msgid "Create a new repository"
 msgstr "创建存储库"
 
 #: admin_users.php:480
@@ -4272,7 +4265,7 @@ msgid "Date"
 msgstr "日期"
 
 #: modules_v3/user_messages/module.php:87
-msgid "Date Sent:"
+msgid "Date sent:"
 msgstr "发送日期:"
 
 #: admin_trees_config.php:1045 help_text.php:1403
@@ -4595,7 +4588,7 @@ msgid "Death"
 msgstr "去世"
 
 #: modules_v3/death_report/report.xml:6
-msgid "Death Place contains"
+msgid "Death place contains"
 msgstr "死亡地包含"
 
 #: library/WT/Stats.php:995 statistics.php:584
@@ -4876,7 +4869,7 @@ msgid "Delete FAQ item"
 msgstr "删除常见问题项"
 
 #: modules_v3/user_messages/module.php:116
-msgid "Delete Selected Messages"
+msgid "Delete selected messages"
 msgstr "删除选定的消息"
 
 #: modules_v3/googlemap/module.php:4130
@@ -4888,7 +4881,7 @@ msgid "Delete inactive users"
 msgstr "删除无效用户"
 
 #: library/WT/Controller/Individual.php:151
-msgid "Delete name"
+msgid "Delete this name"
 msgstr "删除名称"
 
 #. I18N: The system is about to [...]
@@ -5119,7 +5112,7 @@ msgid "Display %s"
 msgstr "展示 %s"
 
 #: modules_v3/googlemap/help_text.php:46 modules_v3/googlemap/module.php:459
-msgid "Display Map Coordinates"
+msgid "Display map coordinates"
 msgstr "显示地图坐标"
 
 #: find.php:220 find.php:237 find.php:254 find.php:272 find.php:289
@@ -5206,7 +5199,7 @@ msgid "Download %s…"
 msgstr ""
 
 #: mediaviewer.php:104
-msgid "Download File"
+msgid "Download file"
 msgstr "下载文件"
 
 #: admin_trees_download.php:30
@@ -5493,7 +5486,7 @@ msgstr "男雇主"
 
 #: modules_v3/clippings/help_text.php:36 modules_v3/clippings/module.php:254
 #: modules_v3/clippings/module.php:463
-msgid "Empty Cart"
+msgid "Empty the clippings cart"
 msgstr "清空收集箱"
 
 #: admin_modules.php:121
@@ -5575,7 +5568,7 @@ msgid "Enter the FAX number including the country and area code.<br><br>Leave th
 msgstr "输入传真号码包括括国家和地区代码。<br><br>如果你不想有一个传真号码,留空白。例如,在德国可能+ 49 25859 56 76和一个在美国或加拿大的数量可能会+ 1 888 555 - 1212。"
 
 #: help_text.php:388
-msgid "Enter the URL address including the http://.<br><br>An example URL looks like this: <b>http://www.webtrees.net/</b> Leave this field blank if you do not want to include a URL."
+msgid "Enter the URL address including the http://.<br><br>An example URL looks like this: <b>http://www.webtrees.net/</b>.  Leave this field blank if you do not want to include a URL."
 msgstr "输入URL地址包括http://。<br><br>一个示例URL看起来像这样: <b>http://www.webtrees.net/</b> 如果你不想有一个URL，留空白。"
 
 #: help_text.php:50
@@ -5587,7 +5580,7 @@ msgid "Enter the email address.<br><br>An example email address looks like this:
 msgstr "输入电子邮件地址。<br><br>一个示例邮件地址如下:<b>name@hotmail.co.uk</b>  如果你不想有一个电子邮件地址,留空白。"
 
 #: help_text.php:1238
-msgid "Enter the limiting value here.<br><br>If you have opted to limit the News article display according to age, any article older than the number of days entered here will be hidden from view.  If you have opted to limit the News article display by number, only the specified number of recent articles, ordered by age, will be shown.  The remaining articles will be hidden from view.<br><br>Zeros entered here will disable the limit, causing all News articles to be shown."
+msgid "Enter the limiting value here.<br><br>If you have opted to limit the news article display according to age, any article older than the number of days entered here will be hidden from view.  If you have opted to limit the news article display by number, only the specified number of recent articles, ordered by age, will be shown.  The remaining articles will be hidden from view.<br><br>Zeros entered here will disable the limit, causing all news articles to be shown."
 msgstr "在这里输入限制值。<br><br>如果你根据年龄有选择限制新闻文章显示,任何文章的日期比输入时期早的将被隐藏。如果你有选择限制新闻文章显示的数目,只有指定的数量的最近的文章,根据先后显示。其余的文章将被隐藏。<br><br>输入0这个将禁用限制,导致所有的新闻文章展示。"
 
 #: help_text.php:325
@@ -5692,7 +5685,7 @@ msgid "Events of close relatives"
 msgstr "近亲的事件"
 
 #: help_text.php:1363
-msgid "Every individual in the database has a unique ID number on this site.  If you know the ID number for your own record, please enter it here.  If you don’t know your ID number or could not find it because of privacy settings, please provide enough information in the Comments field to help the site administrator identify who you are on this site so that he can set the ID for you."
+msgid "Every individual in the database has a unique ID number on this site.  If you know the ID number for your own record, please enter it here.  If you don’t know your ID number or could not find it because of privacy settings, please provide enough information in the comments field to help the site administrator identify who you are on this site so that he can set the ID for you."
 msgstr "在这个网站每个人在数据库中都有一个独特的ID号码。如果你知道你的ID,请在这里输入它。如果你不知道你的ID或找不到它,因为隐私设置,请在评论中提供足够的信息字段来帮助站点管理员确认在这个网站上你是谁,这样他可以设置为你的ID。"
 
 #: help_text.php:1378
@@ -6286,7 +6279,7 @@ msgid "Find a media object"
 msgstr "找一个媒体对象"
 
 #: find.php:86 includes/functions/functions_print.php:1041
-msgid "Find a note"
+msgid "Find a shared note"
 msgstr "找一个记事"
 
 #: find.php:80 includes/functions/functions_print.php:1015
@@ -6320,7 +6313,7 @@ msgid "Find next path"
 msgstr "查找下一条路径"
 
 #: help_text.php:1278
-msgid "Find next relationship path"
+msgid "Find the next relationship path"
 msgstr "查找下一个关系路径"
 
 #: library/WT/Stats.php:3879
@@ -6415,7 +6408,7 @@ msgid "For help with genealogy questions contact"
 msgstr "家谱问题联系"
 
 #: help_text.php:1494
-msgid "For optimal display on the Internet, <b>webtrees</b> uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ANSI (ISO-8859-1)</b>.<br><br>The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren’t sure, consult the documentation of that program.<br><br>Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program’s method for handling these special characters by some other means.  Consult your program’s manufacturer or author.<br><br>This <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8."
+msgid "For optimal display on the internet, <b>webtrees</b> uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ANSI (ISO-8859-1)</b>.<br><br>The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren’t sure, consult the documentation of that program.<br><br>Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program’s method for handling these special characters by some other means.  Consult your program’s manufacturer or author.<br><br>This <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8."
 msgstr "为获得在互联网上最佳显示,<b>webtrees</b> 使用utf - 8字符集。一些程序,例如,家谱制造商不支持导入GEDCOM文件编码在UTF-8。检查这个箱子将会把文件从<b>UTF-8</b>到<b> ANSI(iso - 8859 - 1)</b>。<br><br>格式需要取决于你使用的程序处理你的下载文件GEDCOM。如果你不确定,请参考相关文档的程序。<br><br>注意特殊字符保持不变,你需要把文件用UTF-8编码,转换程序的方法来处理这些特殊字符被一些其他手段。咨询你的程序的制造商或作者。<br><br><a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b></b>维基百科的文章</>包含全面的信息和链接关于utf - 8。"
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
@@ -6746,7 +6739,7 @@ msgid "Gives users the option of selecting their own theme."
 msgstr "允许用户选择自己想要的主题。"
 
 #: help_text.php:1002
-msgid "Gives visitors the option of registering themselves for an account on the site.<br><br>The visitor will receive an email message with a code to verify his application for an account.  After verification, the Administrator will have to approve the registration before it becomes active."
+msgid "Gives visitors the option of registering themselves for an account on the site.<br><br>The visitor will receive an email message with a code to verify his application for an account.  After verification, an administrator will have to approve the registration before it becomes active."
 msgstr "允许游客选择在网站上注册自己的账户。<br><br>游客将收到一个电子邮件消息,该消息带有一个代码来验证他申请的帐户。必须管理员核实后批准使他的账户它变得活跃。"
 
 #. I18N: gedcom tag _UID
@@ -6954,7 +6947,7 @@ msgid "He was cremated"
 msgstr "他被火化"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_1_ctrl.php:62
-msgid "Head of Household:"
+msgid "Head of household:"
 msgstr "户主:"
 
 #. I18N: gedcom tag HEAD
@@ -7040,7 +7033,7 @@ msgid "Here you can add a fact to the record being edited.<br><br>First choose a
 msgstr "在这里你可以添加一个事实正在编辑的记录。<br><br>首先选择一个事实从下拉列表,然后单击<b>添加</b>按钮。所有你可以添加到数据库可能的事实在那个下拉列表。"
 
 #: help_text.php:1089
-msgid "Here you can add a source <b>Citation</b> to this record.<br><br>Just click the link, a window will open, and you can choose the source from the list (Find ID) or create a new source and then add the Citation.<br><br>Adding sources is an important part of genealogy because it allows other researchers to verify where you obtained your information."
+msgid "Here you can add a source <b>Citation</b> to this record.<br><br>Just click the link, a window will open, and you can choose the source from the list (Find ID) or create a new source and then add the citation.<br><br>Adding sources is an important part of genealogy because it allows other researchers to verify where you obtained your information."
 msgstr "在这里你可以添加一个资源<b>引用</b>这个记录。<br><br>点击这个链接时,将打开一个新窗口,你可以从列表中选择资源(找到ID)或创建一个新的资源,然后添加引用。<br><br>添加资源的一个重要组成部分,因为它让其他研究者家谱确认你在哪里得到你的信息。"
 
 #: help_text.php:1228
@@ -7052,7 +7045,7 @@ msgid "Here you can choose between two types of displaying places names in hiera
 msgstr "在这里你可以选择显示地方列表的两种类型。如果设置是的这个地方有短的名称或实际水平的名字,如果没有-姓名。<br><b><br>示例:全名:</b>芝加哥,伊利诺斯州,美国<br><b>短名称:</b>芝加哥<br><b>全名:</b>美国伊利诺州<br><b>短名称:</b>伊利诺斯州"
 
 #: help_text.php:1045
-msgid "Here you can choose text to appear on the login screen. You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the Help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.</div><br></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
+msgid "Here you can choose text to appear on the login screen. You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.</div><br></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
 msgstr "在这里，你可以选择出现在登录屏幕上的文本。您必须确定预先定义的文字是最合适的。<br><br>您也可以选择进入自己的自定义欢迎文字。请参考相关的帮助文本的<b>自定义欢迎文字</b>栏的详细信息。<br><br>预定义的文本有：<ul><li><b>预先定义的文本：所有用户申请用户账户的预定义的文本：</b><div class=\"list_value_wrap\"><center><b>欢迎访问这个家谱网站</b></center><br>访问这个网站是允许每一位游客有一个用户帐户。<br><br>如果你有一个用户帐户，您可以登录此页面上。如果您没有用户帐户，您可以通过点击下面相应的链接申请一个。<br><br>确认您的申请后，网站管理员将激活您的帐户。您将收到一封电子邮件时，您的申请已被批准。</div><br></li><li><b>预定义的文本：管理员审核请求用户帐户的预定义的文本：</b><div class= \"list_value_wrap\"><center><b>欢迎访问这个家谱网站</b></center><br>只允许 <u>授权</u>用户访问此网站。<br><br>如果你有一个用户帐户，您可以登录此页面上。如果您没有用户帐户，您可以通过点击下面相应的链接申请一个。<br><br>验证您的信息后，管理员将可以批准或拒绝您的开户申请。您将收到一封电子邮件时，您的申请已被批准。</div><br></li><li><b>预先定义的文本：家庭成员可以申请用户帐户：</b><div class = \"list_value_wrap\"><center><b>欢迎访问这个家谱网站</b></center><br>这个网站只允许的<u>家庭成员</u>访问。<br><br>如果你有一个用户帐户，您可以登录此页面上。如果您没有用户帐户，您可以通过点击下面相应的链接申请一个。<br><br>验证您提供的信息后，管理员将可以批准或拒绝您的请求的帐户。当您的申请被批准时，您将收到一封电子邮件。</div></li></ul>"
 
 #: modules_v3/googlemap/help_text.php:54
@@ -7279,7 +7272,7 @@ msgid "If the number of times that a certain surname occurs is lower than the th
 msgstr "一个姓出现次数低于阈值,它不会出现在列表中。它可以在这里添加手动。如果多个姓列入,他们必须由一个逗号分开。<b>姓氏是区分大小写的。</b>"
 
 #: help_text.php:819
-msgid "If the option <b>Allow visitors to request account registration</b> is enabled this setting controls whether the admin must approve the registration.<br><br>Setting this to <b>Yes</b> will require that all new users first verify themselves and then be approved by an admin before they can login.  With this setting on <b>No</b>, the <b>User approved by Admin</b> checkbox will be checked automatically when users verify their account, thus allowing an immediate login afterwards without admin intervention."
+msgid "If the option <b>Allow visitors to request account registration</b> is enabled this setting controls whether the admin must approve the registration.<br><br>Setting this to <b>Yes</b> will require that all new users first verify themselves and then be approved by an admin before they can login.  With this setting on <b>No</b>, the “Approved by administrator” checkbox will be checked automatically when users verify their account, thus allowing an immediate login afterwards without admin intervention."
 msgstr "<b>允许访问者注册帐户</b>此设置控制是否管理必须批准注册。<br><br>设置这个为<b>是</b>将要求所有新用户先验证,然后由管理员批准才能登录。这个设置为<b>不</b>,<b>用户通过管理</b> 选框将选中，并自动用户验证他们的帐户,因此允许注册后立即登录，不用管理员干预。"
 
 #: help_text.php:281
@@ -7344,7 +7337,7 @@ msgid "If you leave this setting empty, the default value will be used."
 msgstr "如果这里留空,将使用缺省值。"
 
 #: help_text.php:585
-msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php and .htaccess) from the existing folder to the new folder."
+msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
 msgstr "如果你选择一个不同的文件夹，你还必须将所有文件（除了config.ini.php，index.php和。htaccess文件），从现有的文件夹到新的文件夹。"
 
 #: help_text.php:659
@@ -7356,7 +7349,7 @@ msgid "If you try to exceed these limits, you may experience server time-outs an
 msgstr "如果超过这些限制,你可能会遇到服务器访问超时或空白页。"
 
 #: help_text.php:471
-msgid "If you want to remove a surname from the Common Surname list without increasing the threshold value, you can do that by entering the surname here.  If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive.</b>  Surnames entered here will also be removed from the Top-10 list on the Home Page."
+msgid "If you want to remove a surname from the Common Surname list without increasing the threshold value, you can do that by entering the surname here.  If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive</b>.  Surnames entered here will also be removed from the “Top surnames” list on the “Home page”."
 msgstr "如果你想从常见的姓氏列表删除一个姓但不增加阈值,你可以通过这里进入姓。如果多姓列入,他们必须由一个逗号分开。<b>姓氏是区分大小写的。</b>姓氏列入这里也将从主页上十大名单被删除。"
 
 #: setup.php:185
@@ -7410,7 +7403,7 @@ msgid "In some countries, privacy laws apply not only to living individuals, but
 msgstr "在一些国家,隐私法不仅适用于活着的人,而且用于那些最近死去的人。这个选项将允许你扩展活人隐私规则到那些在指定年数出生或死亡的人。这个值空表示禁用这个特性。"
 
 #: help_text.php:315
-msgid "In the Citation Details field you would enter the page number or other information that might help someone find the information in the source."
+msgid "In the citation details field you would enter the page number or other information that might help someone find the information in the source."
 msgstr "在引用字段,输入细节页码或其他信息,可能帮助别人找到的信息资源。"
 
 #: help_text.php:378
@@ -7838,7 +7831,7 @@ msgid "Keep"
 msgstr "保持"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:124
-msgid "Keep Link in list"
+msgid "Keep link in list"
 msgstr "保持链接列表"
 
 #: library/WT/Stats.php:3924
@@ -8059,7 +8052,7 @@ msgid "Leave password blank if you want to keep the current password."
 msgstr "如果你想要保持当前的密码保留空白。"
 
 #: admin_trees_config.php:438
-msgid "Leave this field empty to use the title of the currently active database."
+msgid "Leave this field empty to use the name of the family tree."
 msgstr "使用当前活动的标题数据库这个字段空留空。"
 
 #: includes/functions/functions_print_lists.php:95
@@ -8803,7 +8796,7 @@ msgid "Media ID prefix"
 msgstr "媒体ID前缀"
 
 #: medialist.php:173
-msgid "Media Objects found"
+msgid "Media objects found"
 msgstr "媒体对象找到了"
 
 #: find.php:214
@@ -9209,7 +9202,7 @@ msgid "Morocco"
 msgstr "摩洛哥"
 
 #: modules_v3/gedcom_stats/module.php:192 modules_v3/html/module.php:258
-msgid "Most Common Surnames"
+msgid "Most common surnames"
 msgstr "最常见的姓氏"
 
 #. I18N: Help text for the “Use password” site configuration setting
@@ -9640,7 +9633,7 @@ msgid "No GEDCOM files found.  You need to copy files to the <b>%s</b> directory
 msgstr "没有发现GEDCOM文件。你需要复制文件到<b>%s</b>您的服务器上的目录。"
 
 #: modules_v3/gedcom_news/module.php:93
-msgid "No News articles have been submitted."
+msgid "No news articles have been submitted."
 msgstr "没有提交新闻文章。"
 
 #: modules_v3/googlemap/module.php:865
@@ -9837,7 +9830,7 @@ msgid "Norway"
 msgstr "挪威"
 
 #: modules_v3/GEDFact_assistant/module.php:196
-msgid "Not a valid Individual, Family or Source ID"
+msgid "Not a valid individual, family, or source ID"
 msgstr "不是一个有效的个人、家庭或资源ID"
 
 #. I18N: gedcom tag _NLIV
@@ -10203,7 +10196,7 @@ msgid "Other"
 msgstr "其他"
 
 #: search.php:217
-msgid "Other Searches"
+msgid "Other searches"
 msgstr "其他搜索"
 
 #: admin_trees_config.php:1000 help_text.php:455
@@ -10560,11 +10553,11 @@ msgstr "地点"
 #: modules_v3/googlemap/module.php:167 modules_v3/googlemap/module.php:287
 #: modules_v3/googlemap/module.php:832 modules_v3/googlemap/module.php:1492
 #: modules_v3/googlemap/module.php:2521 modules_v3/googlemap/module.php:3979
-msgid "Place Check"
+msgid "Place check"
 msgstr "地方检查"
 
 #: placelist.php:43 placelist.php:62
-msgid "Place List"
+msgid "Place list"
 msgstr "地方列表"
 
 #: find.php:232
@@ -10745,7 +10738,7 @@ msgid "Please click on the following link and fill in the requested data to conf
 msgstr "请点击下面的链接并填写请求的数据来确认你的申请和电子邮件地址。"
 
 #: search.php:63
-msgid "Please enter a Given name, Last name, or Place in addition to Year"
+msgid "Please enter a given name, surname, or place in addition to the year"
 msgstr "请加入到这个年份新的名字，姓名或者是地方"
 
 #: message.php:102
@@ -10972,7 +10965,7 @@ msgid "Property"
 msgstr "属性"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_4_text.php:36
-msgid "Proposed Census Text&nbsp;&nbsp;"
+msgid "Proposed census text&nbsp;&nbsp;"
 msgstr "拟议Text 普查"
 
 #: library/WT/Gedcom/Code/Temp.php:150
@@ -11359,7 +11352,7 @@ msgid "Remove"
 msgstr "删除"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:125
-msgid "Remove Link from list"
+msgid "Remove link from list"
 msgstr "从列表中删除链接"
 
 #: modules_v3/batch_update/plugins/duplicate_links.php:28
@@ -11759,7 +11752,7 @@ msgid "Search for"
 msgstr "搜索"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:57
-msgid "Search for individuals to add to Add Links list."
+msgid "Search for individuals to add to add Links list."
 msgstr "搜索的人加入到列表中添加链接。"
 
 #: modules_v3/googlemap/module.php:3831
@@ -12033,7 +12026,7 @@ msgid "Set this to <b>Yes</b> to display icons near Fact names on the Personal F
 msgstr "这儿设置<b>显示</b>在个人的事件和细节页面显示事实图标名字。事实图标显示仅当它们存在于当前主题目录的<i>images/facts</i>事实。"
 
 #: help_text.php:1012
-msgid "Set to <b>Yes</b> to use the RIN number instead of the GEDCOM ID when asked for Individual IDs in configuration files, user settings, and charts.  This is useful for genealogy programs that do not consistently export GEDCOMs with the same ID assigned to each individual but always use the same RIN."
+msgid "Set to <b>Yes</b> to use the RIN number instead of the GEDCOM ID when asked for individual IDs in configuration files, user settings, and charts.  This is useful for genealogy programs that do not consistently export GEDCOMs with the same ID assigned to each individual but always use the same RIN."
 msgstr "设置<b>是</b>用RIN数代替GEDCOM ID当要求配置文件，用户设置和图表中的个人ID当。这对于导出不一致和分配给每一个人都使用相同的RIN相同ID的gedcoms家谱程序非常有用。"
 
 #: help_text.php:859
@@ -12430,7 +12423,7 @@ msgstr "最老的在顶部显示"
 
 #: modules_v3/todays_events/module.php:132
 #: modules_v3/upcoming_events/module.php:144
-msgid "Show only Births, Deaths, and Marriages?"
+msgid "Show only births, deaths, and marriages?"
 msgstr "只显示出生，去世和婚姻？"
 
 #: modules_v3/todays_events/module.php:125
@@ -12443,7 +12436,7 @@ msgid "Show only females."
 msgstr "仅显示女性。"
 
 #: includes/functions/functions_print_lists.php:87
-msgid "Show only individuals of whom the gender is not known."
+msgid "Show only individuals for whom the gender is not known."
 msgstr "仅显示性别不知道的人。"
 
 #: modules_v3/random_media/module.php:260
@@ -13263,7 +13256,7 @@ msgid "The FAQ list is empty."
 msgstr "常见问题列表是空的。"
 
 #: help_text.php:1253
-msgid "The Favorites drop-down list shows the favorites that you have selected on your personalized My Page.  It also shows the favorites that the site administrator has selected for the currently active GEDCOM.  Clicking on one of the favorites entries will take you directly to the Individual Information page of that individual.<br><br>More help about adding Favorites is available in your personalized My Page."
+msgid "The Favorites drop-down list shows the favorites that you have selected on your “My page”.  It also shows the favorites that the site administrator has selected for the currently active GEDCOM.  Clicking on one of the favorites entries will take you directly to the Individual Information page of that individual.<br><br>More help about adding favorites is available in your “My page”."
 msgstr "收藏下拉列表显示你已经在你的个性化网页选择收藏。它也表明，网站管理员已选定为当前活动的GEDCOM的热门。点击其中一个热门条目会直接将您带到那人的个人信息页面。<br><br>更多帮助关于收藏夹在您的个性化主页。"
 
 #: library/WT/Gedcom/Code/Temp.php:98
@@ -13300,7 +13293,7 @@ msgid "The changes to “%s” have been rejected."
 msgstr "更改“%s”被拒绝。"
 
 #: modules_v3/clippings/module.php:142
-msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the <b>Download Now</b> link.  Follow the instructions and links.</li></ul>"
+msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the “Download” link.  Follow the instructions and links.</li></ul>"
 msgstr "收集箱，您可以从这个家谱的提取物（“收集箱”），并将其捆绑成一个文件，下载并随后导入到自己的家谱程序。可下载的文件记录在GEDCOM格式。的<br><ul><li>如何使用收集箱？<br>这是很简单的。每当你看到一个可点击的名称（个人，家庭，或源），你可以去该名称的详细信息“页面”。在那里，你会的看到<b>添加到收集箱</b>选项。当您单击该链接，你将有几个选项进行下载。</li><li>如何下载？<br>一旦您有您的购物车中的项目，你可以将它们下载只要通过点击<b>立即下载</b>链接。按照说明和链接操作就可以。</li></ul>"
 
 #: help_text.php:1314
@@ -13460,7 +13453,7 @@ msgid "The individual to contact about the genealogical data on this site."
 msgstr "这个网站家谱资料联系人"
 
 #: help_text.php:573
-msgid "The length of time after birth can be set on the Privacy configuration tab option “Age at which to assume an individual is dead”."
+msgid "The length of time after birth can be set on the “Privacy” tab option “Age at which to assume an individual is dead”."
 msgstr "出生后的时间长度可以在隐私配置选项中的“年龄在假设一个人已经死了”设置。"
 
 #. I18N: %s are names of records, such as sources, repositories or individuals
@@ -13559,7 +13552,7 @@ msgid "The username or password is incorrect."
 msgstr "用户名或密码不正确。"
 
 #: help_text.php:689
-msgid "The value to place in the Description meta tag in the HTML page header.  Leave this field empty to use the title of the currently active database."
+msgid "The value to place in the “meta description” tag in the HTML page header.  Leave this field empty to use the title of the currently active database."
 msgstr "放置在HTML页面标题描述元标签的内容。使用的当前数据库的名称就保持空。"
 
 #: admin_pgv_to_wt.php:74
@@ -13601,15 +13594,15 @@ msgstr "主题可以在三个层次：用户选择，GEDCOM和网站。用户设
 
 #: modules_v3/extra_info/module.php:61
 #: modules_v3/personal_facts/module.php:122
-msgid "There are no Facts for this individual."
+msgid "There are no facts for this individual."
 msgstr "这有个人没有事件。"
 
 #: modules_v3/notes/module.php:81
-msgid "There are no Notes for this individual."
+msgid "There are no notes for this individual."
 msgstr "这有个人没有记事。"
 
 #: modules_v3/sources_tab/module.php:80
-msgid "There are no Source citations for this individual."
+msgid "There are no source citations for this individual."
 msgstr "这个人没有资源引用。"
 
 #: modules_v3/media/module.php:73
@@ -13684,7 +13677,7 @@ msgid "This account has not been verified.  Please check your email for a verifi
 msgstr "这个账户没有得到确认。请检查您的电子邮件以一个确认消息。"
 
 #: modules_v3/charts/help_text.php:32
-msgid "This block allows a pedigree, descendancy, or hourglass chart to appear on My Page or the Home Page.  Because of space limitations, the charts should be placed only on the left side of the page.<br><br>When this block appears on the Home Page, the root individual and the type of chart to be displayed are determined by the administrator.  When this block appears on the user’s personalized My Page, these options are determined by the user.<br><br>The behavior of these charts is identical to their behavior when they are called up from the menus.  Click on the box of an individual to see more details about them."
+msgid "This block allows a pedigree, descendancy, or hourglass chart to appear on your “My page” or the “Home page”.  Because of space limitations, the charts should be placed only on the left side of the page.<br><br>When this block appears on the “Home page”, the root individual and the type of chart to be displayed are determined by the administrator.  When this block appears on the user’s “My page”, these options are determined by the user.<br><br>The behavior of these charts is identical to their behavior when they are called up from the menus.  Click on the box of an individual to see more details about them."
 msgstr "此块允许家谱系，后代表，或沙漏图出现在我的页面或者主页。由于空间的限制，该图应放置在页面的左边。<br><br>当这块出现在首页，超始人和要显示的图表类型是由管理员确定。当这一块出现在用户的个性化网页，这些选项是由用户确定。<br><br>这些图表的行为是他们的行为相同的时候，他们被称为从菜单。对一个人看到更多的细节点击个人。"
 
 #: modules_v3/review_changes/help_text.php:32
@@ -13752,7 +13745,7 @@ msgid "This family tree was last updated on %s."
 msgstr "这个家谱 %s 被最近更新 。"
 
 #: help_text.php:363
-msgid "This field allows you to change the source record that this fact’s source citation links to.  This field takes a Source ID.  Beside the field will be listed the title of the current source ID.  Use the <b>Find ID</b> link to look up the source’s ID number.  To remove the entire citation, make this field blank."
+msgid "This field allows you to change the source record that this fact’s source citation links to.  This field takes a source ID.  Beside the field will be listed the title of the current source ID.  Use the <b>Find ID</b> link to look up the source’s ID number.  To remove the entire citation, make this field blank."
 msgstr "此字段允许您改变这个事实的引文链接到资源记录。这框以资源ID。旁边的框将列标题的当前资源ID。使用<b>找到ID</b> 链接查找源ID。留空白删除整个引文。"
 
 #: modules_v3/faq/help_text.php:40
@@ -13819,11 +13812,11 @@ msgid "This input box lets you change that year of the calendar.  Type a year in
 msgstr "该输入框让你改变日历的年份。在框里输入年份，按下<b>输入</b>更改日历年份。<br><br><b>高级功能</b>按年显示<b></b><dl><dt><b>一年以上</b></dt><dd>你可以查询日期范围为一年内。<br><br>年范围<u>包含</u>。表示日期范围包含去年年一月至去年十二月三十一号。下面是一年范围的几个例子：<br><br><b>1992-5</b>所有事件从1992到1995。<br><b>1972-89</b>所有事件从1972到1989。<br><b>1610-759</b>所有事件从1610到1759。<br><b>1880-1905</b>所有事件从1880到1905。<br><b>880-1105</b>所有事件从880到1105。<br><br>看到所有的事件在十年或一个世纪了，你可以使用<b>？</b>在最后一位的地方。例如，<b> 197？</b>所有事件从1970到1979或<b> 16？？</b>所有事件从1600到1699。<br><br>选择范围的年会改变日历年份。</dd></dl>"
 
 #: modules_v3/clippings/help_text.php:32
-msgid "This input box lets you enter an individual’s ID number so he can be added to the clippings cart.  Once added you’ll be offered options to link that individual’s relations to your clippings cart.<br><br>If you do not know an individual’s ID number, you can perform a search by name by pressing the individual icon next to the Add button."
+msgid "This input box lets you enter an individual’s ID number so he can be added to the clippings cart.  Once added you’ll be offered options to link that individual’s relations to your clippings cart.<br><br>If you do not know an individual’s ID number, you can perform a search by name by pressing the individual icon next to the “Add” button."
 msgstr "此输入框可以让你输入个人ID，并添加到收集箱。一旦添加，将建立一个关链到您的收集箱。<br><br>如果你不知道一个人的ID，您可以按个人图标旁边的添加按钮用名字搜索。"
 
 #: help_text.php:407
-msgid "This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets."
+msgid "This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets."
 msgstr "这是一个逗号分隔的显示GEDCOM添加/编辑名称内容的标签.如果你使用非拉丁字母如希伯来语，希腊语，斯拉夫语或阿拉伯语，你可能要添加标签，如_heb，ROMN, FONE，等。允许你用几个不同名名字风格存放事件。"
 
 #: help_text.php:794
@@ -13835,7 +13828,7 @@ msgid "This is a comma separated list of GEDCOM fact tags that will be shown whe
 msgstr "这是一个逗号分隔的GEDCOM事件标签，将添加一个新的人时显示。例如，如果 BIRT是在列表中，出生日期和出生地将显示在窗体。"
 
 #: help_text.php:412
-msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
+msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names.  If you use non-Latin alphabets such asHebrew, Greek, Cyrillic, or Arabicc, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
 msgstr "这是一个逗号分隔的显示GEDCOM添加/编辑名称内容的标签.如果你使用非拉丁字母如希伯来语，希腊语，斯拉夫语或阿拉伯语，你可能要添加标签，如_heb，ROMN, FONE，等。允许你用几个不同地名风格存放事件。"
 
 #: help_text.php:1202
@@ -13868,35 +13861,35 @@ msgid "This is the latest version of webtrees.  No upgrade is available."
 msgstr ""
 
 #: help_text.php:506
-msgid "This is the list of GEDCOM facts that your users can add to families.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique family facts</i> list."
+msgid "This is the list of GEDCOM facts that your users can add to families.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the “Unique family facts” list."
 msgstr "用户可以添加到家庭GEDCOM事件的名单。你可以通过删除或添加修改此列表上的名字，甚至是定制的。事件的名字在这个列表，就不能同时出现在家庭事件<i>独特事件</i> 列表。"
 
 #: help_text.php:593
-msgid "This is the list of GEDCOM facts that your users can add to individuals.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique Individual Facts</i> list."
+msgid "This is the list of GEDCOM facts that your users can add to individuals.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the “Unique individual facts” list."
 msgstr "这是你用户可以添加到个人GEDCOM事件列表。你可以通过删除或添加修改此列表上的事件名字，甚至必要的定制。在这个列表事件名字，就不能同时出现在个人事件<i>独特事件</i> 列表。"
 
 #: help_text.php:799
-msgid "This is the list of GEDCOM facts that your users can add to repositories.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique Repository Facts</i> list."
+msgid "This is the list of GEDCOM facts that your users can add to repositories.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the “Unique repository facts” list."
 msgstr "用户可以添加到库的GEDCOM事件列表。你可以通过删除或添加修改此列表上的名字，甚至是必要的定制。在这个列表事实的名字，就不能同时出现在库事件<i>独特事件</i> 列表。"
 
 #: help_text.php:910
-msgid "This is the list of GEDCOM facts that your users can add to sources.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique Source Facts</i> list."
+msgid "This is the list of GEDCOM facts that your users can add to sources.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the “Unique source facts” list."
 msgstr "用户可以添加到资源的GEDCOM事件列表。你可以通过删除或添加修改此列表上的名字，甚至是必要的定制。在这个列表事实的名字，不能同时出现在资源事件<i>独特事件</i> 列表。"
 
 #: help_text.php:516
-msgid "This is the list of GEDCOM facts that your users can only add <u>once</u> to families.  For example, if MARR is in this list, users will not be able to add more than one MARR record to a family.  Fact names that appear in this list must not also appear in the <i>Family Add Facts</i> list."
+msgid "This is the list of GEDCOM facts that your users can only add once to families.  For example, if MARR is in this list, users will not be able to add more than one MARR record to a family.  Fact names that appear in this list must not also appear in the “All family facts” list."
 msgstr "用户只能在家庭添加<u>一次</u>的GEDCOM事件清单。例如，如果MARR是在此列表中，用户将不能够添加一个以上的的MARR记录到一个家庭。事件的名字出现在这个列表就不能出现在家庭事件<i>添加事件</i> 列表。"
 
 #: help_text.php:603
-msgid "This is the list of GEDCOM facts that your users can only add <u>once</u> to individuals.  For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual.  Fact names that appear in this list must not also appear in the <i>Individual Add Facts</i> list."
+msgid "This is the list of GEDCOM facts that your users can only add once to individuals.  For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual.  Fact names that appear in this list must not also appear in the “All individual facts” list."
 msgstr "这是用户只能为个人添加<u>一次</u>的GEDCOM事件列表。例如，如果数据是在这个列表中，用户将无法为一个人添加多个报表记录。事件的名字在这个列表，就不能同时出现在个人事件<i>添加事件</i> 列表。"
 
 #: help_text.php:809
-msgid "This is the list of GEDCOM facts that your users can only add <u>once</u> to repositories.  For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository.  Fact names that appear in this list must not also appear in the <i>Repository Add Facts</i> list."
+msgid "This is the list of GEDCOM facts that your users can only add once to repositories.  For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository.  Fact names that appear in this list must not also appear in the “All repository facts” list."
 msgstr "用户只能为库添加<u>一次</u>的GEDCOM事件列表。例如，如果是在这个列表中，用户将无法添加多个名称记录到一个库。事件的名字在这个列表，就不能同时出现在库事件<i>添加事件</i> 列表。"
 
 #: help_text.php:920
-msgid "This is the list of GEDCOM facts that your users can only add <u>once</u> to sources.  For example, if TITL is in this list, users will not be able to add more than one TITL record to a source.  Fact names that appear in this list must not also appear in the <i>Source Add Facts</i> list."
+msgid "This is the list of GEDCOM facts that your users can only add once to sources.  For example, if TITL is in this list, users will not be able to add more than one TITL record to a source.  Fact names that appear in this list must not also appear in the “All source facts” list."
 msgstr "用户只能为资源添加<u>一次</u>的GEDCOM事件列表。例如，如果TITL在这个列表中，用户将无法添加多个TITL记录到一个资源。在这个列表事实的名字，就不能同时出现在资源事件<i>添加事件</i> 列表。"
 
 #. I18N: Help text for the “Server name” site configuration setting
@@ -13905,7 +13898,7 @@ msgid "This is the name of the SMTP server. “localhost” means that the mail 
 msgstr "这是SMTP服务器的名称。\"localhost\"指邮件服务的同一台计算机上运行您的Web服务器。"
 
 #: help_text.php:476
-msgid "This is the number of times that a surname must occur before it shows up in the Common Surname list on the Home Page."
+msgid "This is the number of times that a surname must occur before it shows up in the Common Surname list on the “Home page”."
 msgstr "在主页上显示常见姓氏列表之前姓氏的个数。"
 
 #: help_text.php:511
@@ -14100,11 +14093,11 @@ msgid "This option will let you edit an item on the FAQ page."
 msgstr "这个选项会让你在常见问题页面编辑条目"
 
 #: modules_v3/faq/help_text.php:60
-msgid "This option will let you move an item downwards on the FAQ page.<br><br>Each time you use this option, the FAQ Position number of this item is increased by one.  You can achieve the same effect by editing the item in question and changing the FAQ Position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
+msgid "This option will let you move an item downwards on the FAQ page.<br><br>Each time you use this option, the FAQ position number of this item is increased by one.  You can achieve the same effect by editing the item in question and changing the FAQ position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
 msgstr "这个选项会让你在常见问题页面向下移动一个项目。<br><br>你每次使用此选项，常见问题位置的数量这一项目增加了一。您可以通过编辑项目中的问题与改变的FAQ位置字段实现相同的效果。当一个以上的常见问题项具有相同的位置数，只有这一个项目将是可见的。"
 
 #: modules_v3/faq/help_text.php:65
-msgid "This option will let you move an item upwards on the FAQ page.<br><br>Each time you use this option, the FAQ Position number of this item is reduced by one.  You can achieve the same effect by editing the item in question and changing the FAQ Position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
+msgid "This option will let you move an item upwards on the FAQ page.<br><br>Each time you use this option, the FAQ position number of this item is reduced by one.  You can achieve the same effect by editing the item in question and changing the FAQ position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
 msgstr "这个选项会让你在常见问题页面向上移动一个项目。<br><br>你每次使用此选项，常见问题位置的数量这一项目减少了一个。您可以通过编辑项目中的问题与改变的常见问题位置字段实现相同的效果。当一个以上的常见问题项具有相同的位置数，只有这一个项目将是可见的。"
 
 #: help_text.php:1099
@@ -14124,7 +14117,7 @@ msgid "This option will show the names (but no other details) of private individ
 msgstr "此选项将显示名称（但没有其他私人细节）。如果他们还活着，或者如果一个隐私的限制已被添加到他们的个人私有记录。隐藏一个特定的名称，添加一个隐私限制到这个记录名称。"
 
 #: modules_v3/googlemap/help_text.php:47
-msgid "This options sets whether Latitude and Longitude are displayed on the pop-up window attached to map markers."
+msgid "This options sets whether latitude and longitude are displayed on the pop-up window attached to map markers."
 msgstr "这个选项设置是否弹出窗口显示经纬度与地图标记"
 
 #: help_text.php:1163
@@ -14176,7 +14169,7 @@ msgid "This role has all the permissions of the editor role, plus permission to 
 msgstr "编辑的角色,许可批准/拒绝由其他用户更改。"
 
 #: help_text.php:1398
-msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the site, users and modules."
+msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the site, users, and modules."
 msgstr "管理者角色,加上允许更改设置/配置的站点,用户和模块。"
 
 #: help_text.php:1386
@@ -14192,11 +14185,11 @@ msgid "This role has all the permissions of the visitor role, plus any additiona
 msgstr "这个角色有游客的权限,加上任何额外的访问授权的家谱的配置。"
 
 #: help_text.php:1144
-msgid "This section allows you to add a new Note to the fact that you are currently editing.  Notes are free-form text and will appear in the Fact Details section of the page."
+msgid "This section allows you to add a new note to the fact that you are currently editing.  Notes are free-form text and will appear in the Fact Details section of the page."
 msgstr "这部分允许您添加一个新的说明到你当前正在编辑的事实。说明是自由格式的文本,也会出现在事实细节部分的页面。"
 
 #: help_text.php:1157
-msgid "This section allows you to add a new source citation to the fact that you are currently editing.<br><br>In the Source field you enter the ID for the source.  Click the <b>Create a new source</b> link if you need to enter a new source.  In the Citation Details field you would enter the page number or other information that might help someone find the information in the source.  In the Text field you would enter the text transcription from the source."
+msgid "This section allows you to add a new source citation to the fact that you are currently editing.<br><br>In the Source field you enter the ID for the source.  Click the “Create a new source” link if you need to enter a new source.  In the citation details field you would enter the page number or other information that might help someone find the information in the source.  In the Text field you would enter the text transcription from the source."
 msgstr "这部分允许您添加一个新的资源引用到你当前正在编辑的事实。<br><br>在资源框字段输入资源ID。如果你需要输入一个新的资资源单击<b>创建一个新的资源</b>链接。在引用字段,输入细节页码或其他信息,可能帮助别人找到的信息资源。在文本字段中,输入文本转录从源。"
 
 #. I18N: http://en.wikipedia.org/wiki/Https
@@ -14214,7 +14207,7 @@ msgid "This setting is only used when you read or write GEDCOM files."
 msgstr "此设置仅用于读取或写入GEDCOM文件时。"
 
 #: help_text.php:456
-msgid "This should be a comma or space separated list of facts, in addition to Birth and Death, that you want to appear in chart boxes such as the pedigree chart.  This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard.  For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
+msgid "This should be a comma or space separated list of facts, in addition to birth and death, that you want to appear in chart boxes such as the pedigree chart.  This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard.  For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
 msgstr "这应该是一个逗号或空格分隔的事实列表,你想要生和死出现在系谱图。这个列表需要你用事实标签中定义的GEDCOM 5.5.1标准。例如,如果你想要显示职业，需要添加“职业”这个字段。"
 
 #: admin_site_upgrade.php:41
@@ -14262,7 +14255,7 @@ msgid "This usually means that you need to change the folder permissions to 777.
 msgstr "这意味着你要将这个目录的权限改成777。"
 
 #: help_text.php:1223
-msgid "This value determines the number of descendant generations of the root individual that will be printed in Hourglass format."
+msgid "This value determines the number of descendant generations of the root individual that will be printed in hourglass format."
 msgstr "这个值决定了在沙漏格式中开始人后面的显示的代数。"
 
 #: site-offline.php:71 site-unavailable.php:63
@@ -14498,7 +14491,7 @@ msgstr[0] "前 %s 的姓氏"
 
 #: modules_v3/googlemap/module.php:4361 modules_v3/googlemap/module.php:4426
 #: placelist.php:111
-msgid "Top Level"
+msgid "Top level"
 msgstr "最高级别"
 
 #. I18N: i.e. most popular given name.
@@ -14822,7 +14815,7 @@ msgid "Unknown"
 msgstr "未知个体"
 
 #: modules_v3/lightbox/module.php:174
-msgid "Unlink Media"
+msgid "Unlink media"
 msgstr "断开媒体"
 
 #: library/WT/Gedcom/Tag.php:829
@@ -14834,11 +14827,11 @@ msgid "Unused files"
 msgstr "未使用的文件"
 
 #: admin.php:157
-msgid "Unverified by Administrator"
+msgid "Not approved by an administrator"
 msgstr "管理员没有确认"
 
 #: admin.php:153
-msgid "Unverified by User"
+msgid "Not verified by the user"
 msgstr "用户没有确认"
 
 #. I18N: The system is about to [...]; %s is a .ZIP file.
@@ -14941,7 +14934,7 @@ msgid "Use SMTP to send messages"
 msgstr "使用SMTP发送消息"
 
 #: modules_v3/batch_update/plugins/search_replace.php:92
-msgid "Use a &laquo;?&raquo; to match a single character, use &laquo;*&raquo; to match zero or more characters."
+msgid "Use a “?” to match a single character, use “*” to match zero or more characters."
 msgstr "使用'？'匹配一个字符，使用“*”匹配零个或多个字符。"
 
 #. I18N: placeholder text for new-password field
@@ -14989,7 +14982,7 @@ msgid "Use these buttons to re-arrange the order of the entries within the list.
 msgstr "使用这些按钮来重新排列列表中的条目顺序。模块将按所列出顺序显示。<br><br>选中要移动的条目，然后单击上面按钮，向上或向下移动条目。"
 
 #: help_text.php:398
-msgid "Use this field to signal that this media item is the highlighted or primary item for the individual it is attached to.  The highlighted image is the one that will be used on charts and on the Individual page."
+msgid "Use this field to signal that this media item is the highlighted or primary item for the individual it is attached to.  The highlighted image is the one that will be used on charts and on the individual’s page."
 msgstr "使用此框的确定该媒体项目是突出为主要项目。突出显示的图像是一个将被用在图表上的个人网页。"
 
 #: help_text.php:1358
@@ -15377,7 +15370,7 @@ msgid "When a user registers for an account, an email is sent to their email add
 msgstr "当一个用户注册一个帐号，发送他们的电子邮件包含地址验证连接。当他们点击这个链接，我们知道的电子邮件地址是正确的，“电子邮件验证”选项是自动选择。"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:44
-msgid "When adding a Link, the ID field cannot be empty."
+msgid "When adding a link, the ID field cannot be empty."
 msgstr "添加一个链接的时候，ID字段不能为空。"
 
 #: help_text.php:784
@@ -15526,7 +15519,7 @@ msgid "With sources"
 msgstr "随着资源"
 
 #: help_text.php:1184
-msgid "With this option, the <b>webtrees</b> internal messaging system will be used and no emails will be sent.  You will receive only <u>internal</u> messages from the other users.  When another site user sends you a message, that message will appear in the Message block on your personal My Page.  If you have removed this block from your My Page, you will not see any messages.  They will, however, show up as soon as you configure My Page to again have the Message block."
+msgid "With this option, the <b>webtrees</b> internal messaging system will be used and no emails will be sent.  You will receive only <u>internal</u> messages from the other users.  When another site user sends you a message, that message will appear in the Message block on your “My page”.  If you have removed this block from your “My page”, you will not see any messages.  They will, however, show up as soon as you configure your “My page” to again have the Message block."
 msgstr "使用此选项，<b> webtrees</b>内部消息系统将被使用，没有电子邮件将被发送  您将只收到其他用户的<u>内部的消息</u>。当另一个用户向您发送一条消息，该消息将出现在您的个人我的主页上的消息块。如果您已删除了该块从我的页面中，你将不会看到任何消息。 ，但是他们会出现，只要你在我的网页配置再现消息块。"
 
 #: help_text.php:1196
@@ -15534,7 +15527,7 @@ msgid "With this option, you will not receive any messages.  Even the administra
 msgstr "使用此选项，您将不会收到任何消息。即使管理员将无法发送消息给你。"
 
 #: help_text.php:1192
-msgid "With this option, you will only receive email messages at the address you configured on your Account page.  The messaging system internal to <b>webtrees</b> will not be used at all, and there will never be any messages in the Message block on your personal My Page."
+msgid "With this option, you will only receive email messages at the address you configured on your Account page.  The messaging system internal to <b>webtrees</b> will not be used at all, and there will never be any messages in the Message block on your “My page”."
 msgstr "使用此选项，您只会在您的帐户页上配置的电子邮件地收到消息址。<b> webtrees</b>内部消息传递系统将不会被使用，您的个人首页绝不会有任何消息在消息块。"
 
 #: library/WT/Stats.php:302 library/WT/Stats.php:346
@@ -15609,7 +15602,7 @@ msgid "You can download a copy of the GEDCOM specification from %s."
 msgstr "您可以下载从 %s 的GEDCOM规格的副本。"
 
 #: help_text.php:1243
-msgid "You can limit the number of News articles displayed, thereby reducing the height of the GEDCOM News block.<br><br>This option determines whether any limits should be applied or whether the limit should be according to the age of the article or according to the number of articles."
+msgid "You can limit the number of news articles displayed, thereby reducing the height of the GEDCOM News block.<br><br>This option determines whether any limits should be applied or whether the limit should be according to the age of the article or according to the number of articles."
 msgstr "你可以限制显示的新闻文章的数量,从而减少GEDCOM的新闻块高度。<br><br>这个选项决定是否任何限制应适用或是否应该根据文章的时间或根据文章的数量限制。"
 
 #: modules_v3/batch_update/plugins/married_names.php:37
@@ -15661,7 +15654,7 @@ msgid "You have no pending messages."
 msgstr "您沒有待定消息。"
 
 #: modules_v3/user_blog/module.php:76
-msgid "You have not created any Journal items."
+msgid "You have not created any journal items."
 msgstr "您还没有创建任何日记项目"
 
 #: admin_trees_manage.php:131
@@ -15669,9 +15662,8 @@ msgid "You have selected a GEDCOM with a different name.  Is this correct?"
 msgstr "您选择了一个不同名称的GEDCOM。对吗？"
 
 #: addmedia.php:462
-msgid "You may enter a URL, beginning with &laquo;http://&raquo;."
-msgstr "您可以输入一个以“http://”开头的URL，地址。"
-
+msgid "You may enter a URL, beginning with “http://”."
+msgstr "您可以输入一个以&laquo;http:“http://”
 #: modules_v3/faq/help_text.php:35
 msgid "You may use HTML to format the answer and to add links to other websites."
 msgstr "您可以使用HTML格式回复，并添加其他网站的链接。"
@@ -15759,7 +15751,7 @@ msgid "You should accept or reject all pending changes before upgrading."
 msgstr ""
 
 #: help_text.php:1151
-msgid "You should avoid using the vertical line character &ldquo;|&rdquo; in your notes.  It is used internally by webtrees and may cause your note to display incorrectly."
+msgid "You should avoid using the vertical line character “|” in your notes.  It is used internally by webtrees and may cause your note to display incorrectly."
 msgstr "您应该避免在你的记事中使用竖线字符“|”。它在webtrees内部使用，可能会引起你的记事显示不正确。"
 
 #: admin_site_upgrade.php:200
@@ -15770,7 +15762,7 @@ msgstr ""
 msgid "You should consult the theme’s author to confirm compatibility with this version of webtrees."
 msgstr ""
 
-#. I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’
+#. I18N: e.g. ‘You should&laquo;http://&raquo;he “http://” from “http://www.example.com” and try again.’
 #: login.php:276 message.php:69
 #, php-format
 msgid "You should delete the “%1$s” from “%2$s” and try again."
@@ -15809,7 +15801,7 @@ msgid "Youngest mother"
 msgstr "最年轻母亲"
 
 #: includes/authentication.php:120 message.php:127
-msgid "Your Name:"
+msgid "Your name:"
 msgstr "您的姓名："
 
 #: modules_v3/clippings/module.php:172 modules_v3/clippings/module.php:430
@@ -16933,23 +16925,23 @@ msgstr "孙媳"
 #: includes/functions/functions.php:1275 includes/functions/functions.php:1284
 #: includes/functions/functions.php:1295
 #, php-format
-msgid "great x%d aunt"
+msgid "great ×%d aunt"
 msgstr "距 %d 代的阿姨"
 
 #: includes/functions/functions.php:1276 includes/functions/functions.php:1285
 #: includes/functions/functions.php:1296
 #, php-format
-msgid "great x%d aunt/uncle"
+msgid "great ×%d aunt/uncle"
 msgstr "距 %d 代的阿姨/叔叔"
 
 #: includes/functions/functions.php:1617 includes/functions/functions.php:1630
 #, php-format
-msgid "great x%d grandchild"
+msgid "great ×%d grandchild"
 msgstr "距 %d 代的孙子"
 
 #: includes/functions/functions.php:1616 includes/functions/functions.php:1629
 #, php-format
-msgid "great x%d granddaughter"
+msgid "great ×%d granddaughter"
 msgstr "距 %d 代的孙女"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
@@ -16957,399 +16949,399 @@ msgstr "距 %d 代的孙女"
 #: includes/functions/functions.php:1534 includes/functions/functions.php:1542
 #: includes/functions/functions.php:1552
 #, php-format
-msgid "great x%d grandfather"
+msgid "great ×%d grandfather"
 msgstr "距 %d 代的祖父"
 
 #: includes/functions/functions.php:1521 includes/functions/functions.php:1528
 #: includes/functions/functions.php:1535 includes/functions/functions.php:1543
 #: includes/functions/functions.php:1553
 #, php-format
-msgid "great x%d grandmother"
+msgid "great ×%d grandmother"
 msgstr "距 %d 代的祖母"
 
 #: includes/functions/functions.php:1522 includes/functions/functions.php:1529
 #: includes/functions/functions.php:1536 includes/functions/functions.php:1544
 #: includes/functions/functions.php:1554
 #, php-format
-msgid "great x%d grandparent"
+msgid "great ×%d grandparent"
 msgstr "距 %d 代的祖父母"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1615 includes/functions/functions.php:1628
 #, php-format
-msgid "great x%d grandson"
+msgid "great ×%d grandson"
 msgstr "距 %d 代的孙子"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1448 includes/functions/functions.php:1459
 #, php-format
-msgid "great x%d nephew"
+msgid "great ×%d nephew"
 msgstr "%d 代侄子"
 
 #: includes/functions/functions.php:1424
 #, php-format
-msgctxt "(a man’s) brother’s great x(%d-1) grandson"
-msgid "great x%d nephew"
+msgctxt "(a man’s) brother’s great ×(%d-1) grandson"
+msgid "great ×%d nephew"
 msgstr "%d 代侄子"
 
 #: includes/functions/functions.php:1426
 #, php-format
-msgctxt "(a man’s) sister’s great x(%d-1) grandson"
-msgid "great x%d nephew"
+msgctxt "(a man’s) sister’s great ×(%d-1) grandson"
+msgid "great ×%d nephew"
 msgstr "距 %d 代的外甥子"
 
 #: includes/functions/functions.php:1428
 #, php-format
-msgctxt "(a woman’s) great x%d nephew"
-msgid "great x%d nephew"
+msgctxt "(a woman’s) great ×%d nephew"
+msgid "great ×%d nephew"
 msgstr "距 %d 代的侄子"
 
 #: includes/functions/functions.php:1450 includes/functions/functions.php:1461
 #, php-format
-msgid "great x%d nephew/niece"
+msgid "great ×%d nephew/niece"
 msgstr "距 %d 代的侄子/侄女"
 
 #: includes/functions/functions.php:1439
 #, php-format
-msgctxt "(a man’s) brother’s great x(%d-1) grandchild"
-msgid "great x%d nephew/niece"
+msgctxt "(a man’s) brother’s great ×(%d-1) grandchild"
+msgid "great ×%d nephew/niece"
 msgstr "%d 代侄子/侄女"
 
 #: includes/functions/functions.php:1441
 #, php-format
-msgctxt "(a man’s) sister’s great x(%d-1) grandchild"
-msgid "great x%d nephew/niece"
+msgctxt "(a man’s) sister’s great ×(%d-1) grandchild"
+msgid "great ×%d nephew/niece"
 msgstr "距 %d 代的外甥子/外甥女"
 
 #: includes/functions/functions.php:1443
 #, php-format
-msgctxt "(a woman’s) great x%d nephew/niece"
-msgid "great x%d nephew/niece"
+msgctxt "(a woman’s) great ×%d nephew/niece"
+msgid "great ×%d nephew/niece"
 msgstr "距 %d 代的侄子/侄女"
 
 #: includes/functions/functions.php:1449 includes/functions/functions.php:1460
 #, php-format
-msgid "great x%d niece"
+msgid "great ×%d niece"
 msgstr "距 %d 代的外甥女"
 
 #: includes/functions/functions.php:1431
 #, php-format
-msgctxt "(a man’s) brother’s great x(%d-1) granddaughter"
-msgid "great x%d niece"
+msgctxt "(a man’s) brother’s great ×(%d-1) granddaughter"
+msgid "great ×%d niece"
 msgstr "%d 代侄女"
 
 #: includes/functions/functions.php:1433
 #, php-format
-msgctxt "(a man’s) sister’s great x(%d-1) granddaughter"
-msgid "great x%d niece"
+msgctxt "(a man’s) sister’s great ×(%d-1) granddaughter"
+msgid "great ×%d niece"
 msgstr "距 %d 代的外甥女"
 
 #: includes/functions/functions.php:1435
 #, php-format
-msgctxt "(a woman’s) great x%d niece"
-msgid "great x%d niece"
+msgctxt "(a woman’s) great ×%d niece"
+msgid "great ×%d niece"
 msgstr "距 %d 代的侄女"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1274 includes/functions/functions.php:1294
 #, php-format
-msgid "great x%d uncle"
+msgid "great ×%d uncle"
 msgstr "距 %d 代的叔叔"
 
 #: includes/functions/functions.php:1281
 #, php-format
-msgctxt "great x(%d-1) grandfather’s brother"
-msgid "great x%d uncle"
+msgctxt "great ×(%d-1) grandfather’s brother"
+msgid "great ×%d uncle"
 msgstr "距 %d 代的叔叔"
 
 #: includes/functions/functions.php:1282
 #, php-format
-msgctxt "great x(%d-1) grandmother’s brother"
-msgid "great x%d uncle"
+msgctxt "great ×(%d-1) grandmother’s brother"
+msgid "great ×%d uncle"
 msgstr "距 %d 代的叔叔"
 
 #: includes/functions/functions.php:1283
 #, php-format
-msgctxt "great x(%d-1) grandparent’s brother"
-msgid "great x%d uncle"
+msgctxt "great ×(%d-1) grandparent’s brother"
+msgid "great ×%d uncle"
 msgstr "距 %d 代的叔叔"
 
 #: includes/functions/functions.php:1232
-msgid "great x4 aunt"
+msgid "great ×4 aunt"
 msgstr "再高祖叔婆"
 
 #: includes/functions/functions.php:1233
-msgid "great x4 aunt/uncle"
+msgid "great ×4 aunt/uncle"
 msgstr "再高祖叔公/叔婆"
 
 #: includes/functions/functions.php:1581
-msgid "great x4 grandchild"
+msgid "great ×4 grandchild"
 msgstr "末孙"
 
 #: includes/functions/functions.php:1580
-msgid "great x4 granddaughter"
+msgid "great ×4 granddaughter"
 msgstr "末孙女"
 
 #: includes/functions/functions.php:1486
-msgid "great x4 grandfather"
+msgid "great ×4 grandfather"
 msgstr "距4代的祖父"
 
 #: includes/functions/functions.php:1487
-msgid "great x4 grandmother"
+msgid "great ×4 grandmother"
 msgstr "距4代的祖母"
 
 #: includes/functions/functions.php:1488
-msgid "great x4 grandparent"
+msgid "great ×4 grandparent"
 msgstr "距4代的祖父母"
 
 #: includes/functions/functions.php:1579
-msgid "great x4 grandson"
+msgid "great ×4 grandson"
 msgstr "末孙儿"
 
 #: includes/functions/functions.php:1364
 msgctxt "(a man’s) brother’s great-great-great-grandson"
-msgid "great x4 nephew"
+msgid "great ×4 nephew"
 msgstr "侄末孙子"
 
 #: includes/functions/functions.php:1366
 msgctxt "(a man’s) sister’s great-great-great-grandson"
-msgid "great x4 nephew"
+msgid "great ×4 nephew"
 msgstr "外甥末孙子"
 
 #: includes/functions/functions.php:1368
-msgctxt "(a woman’s) great x4 nephew"
-msgid "great x4 nephew"
+msgctxt "(a woman’s) great ×4 nephew"
+msgid "great ×4 nephew"
 msgstr "侄末孙子"
 
 #: includes/functions/functions.php:1380
 msgctxt "(a man’s) brother’s great-great-great-grandchild"
-msgid "great x4 nephew/niece"
+msgid "great ×4 nephew/niece"
 msgstr "侄末孙子/孙女"
 
 #: includes/functions/functions.php:1382
 msgctxt "(a man’s) sister’s great-great-great-grandchild"
-msgid "great x4 nephew/niece"
+msgid "great ×4 nephew/niece"
 msgstr "外甥末孙子/孙女"
 
 #: includes/functions/functions.php:1384
-msgctxt "(a woman’s) great x4 nephew/niece"
-msgid "great x4 nephew/niece"
+msgctxt "(a woman’s) great ×4 nephew/niece"
+msgid "great ×4 nephew/niece"
 msgstr "侄末孙子/孙女"
 
 #: includes/functions/functions.php:1372
 msgctxt "(a man’s) brother’s great-great-great-granddaughter"
-msgid "great x4 niece"
+msgid "great ×4 niece"
 msgstr "侄末孙女"
 
 #: includes/functions/functions.php:1374
 msgctxt "(a man’s) sister’s great-great-great-granddaughter"
-msgid "great x4 niece"
+msgid "great ×4 niece"
 msgstr "外甥末孙女"
 
 #: includes/functions/functions.php:1376
-msgctxt "(a woman’s) great x4 niece"
-msgid "great x4 niece"
+msgctxt "(a woman’s) great ×4 niece"
+msgid "great ×4 niece"
 msgstr "侄末孙女"
 
 #: includes/functions/functions.php:1229
 msgctxt "great-great-great-grandfather’s brother"
-msgid "great x4 uncle"
+msgid "great ×4 uncle"
 msgstr "再高祖叔公"
 
 #: includes/functions/functions.php:1230
 msgctxt "great-great-great-grandmother’s brother"
-msgid "great x4 uncle"
+msgid "great ×4 uncle"
 msgstr "再高祖舅公"
 
 #: includes/functions/functions.php:1231
 msgctxt "great-great-great-grandparent’s brother"
-msgid "great x4 uncle"
+msgid "great ×4 uncle"
 msgstr "再高祖叔公"
 
 #: includes/functions/functions.php:1242
-msgid "great x5 aunt"
+msgid "great ×5 aunt"
 msgstr "曾高祖叔婆"
 
 #: includes/functions/functions.php:1243
-msgid "great x5 aunt/uncle"
+msgid "great ×5 aunt/uncle"
 msgstr "曾高祖叔公/叔婆"
 
 #: includes/functions/functions.php:1588
-msgid "great x5 grandchild"
+msgid "great ×5 grandchild"
 msgstr "曾末孙"
 
 #: includes/functions/functions.php:1587
-msgid "great x5 granddaughter"
+msgid "great ×5 granddaughter"
 msgstr "曾末孙女"
 
 #: includes/functions/functions.php:1493
-msgid "great x5 grandfather"
+msgid "great ×5 grandfather"
 msgstr "距5代的祖父"
 
 #: includes/functions/functions.php:1494
-msgid "great x5 grandmother"
+msgid "great ×5 grandmother"
 msgstr "曾曾祖父母"
 
 #: includes/functions/functions.php:1495
-msgid "great x5 grandparent"
+msgid "great ×5 grandparent"
 msgstr "曾高祖父"
 
 #: includes/functions/functions.php:1586
-msgid "great x5 grandson"
+msgid "great ×5 grandson"
 msgstr "曾末孙儿"
 
 #: includes/functions/functions.php:1391
-msgctxt "(a man’s) brother’s great x4 grandson"
-msgid "great x5 nephew"
+msgctxt "(a man’s) brother’s great ×4 grandson"
+msgid "great ×5 nephew"
 msgstr "5 代侄子"
 
 #: includes/functions/functions.php:1393
-msgctxt "(a man’s) sister’s great x4 grandson"
-msgid "great x5 nephew"
+msgctxt "(a man’s) sister’s great ×4 grandson"
+msgid "great ×5 nephew"
 msgstr "距5代的外甥子"
 
 #: includes/functions/functions.php:1395
-msgctxt "(a woman’s) great x5 nephew"
-msgid "great x5 nephew"
+msgctxt "(a woman’s) great ×5 nephew"
+msgid "great ×5 nephew"
 msgstr "距5代的外甥子"
 
 #: includes/functions/functions.php:1407
-msgctxt "(a man’s) brother’s great x4 grandchild"
-msgid "great x5 nephew/niece"
+msgctxt "(a man’s) brother’s great ×4 grandchild"
+msgid "great ×5 nephew/niece"
 msgstr "5 代侄子/侄女"
 
 #: includes/functions/functions.php:1409
-msgctxt "(a man’s) sister’s great x4 grandchild"
-msgid "great x5 nephew/niece"
+msgctxt "(a man’s) sister’s great ×4 grandchild"
+msgid "great ×5 nephew/niece"
 msgstr "距5代的 外甥子/外甥女"
 
 #: includes/functions/functions.php:1411
-msgctxt "(a woman’s) great x5 nephew/niece"
-msgid "great x5 nephew/niece"
+msgctxt "(a woman’s) great ×5 nephew/niece"
+msgid "great ×5 nephew/niece"
 msgstr "距 4 代的侄子/侄女"
 
 #: includes/functions/functions.php:1399
-msgctxt "(a man’s) brother’s great x4 granddaughter"
-msgid "great x5 niece"
+msgctxt "(a man’s) brother’s great ×4 granddaughter"
+msgid "great ×5 niece"
 msgstr "5 代侄女"
 
 #: includes/functions/functions.php:1401
-msgctxt "(a man’s) sister’s great x4 granddaughter"
-msgid "great x5 niece"
+msgctxt "(a man’s) sister’s great ×4 granddaughter"
+msgid "great ×5 niece"
 msgstr "距5代的外甥女"
 
 #: includes/functions/functions.php:1403
-msgctxt "(a woman’s) great x5 niece"
-msgid "great x5 niece"
+msgctxt "(a woman’s) great ×5 niece"
+msgid "great ×5 niece"
 msgstr "距 4 代的侄女"
 
 #: includes/functions/functions.php:1239
-msgctxt "great x4 grandfather’s brother"
-msgid "great x5 uncle"
+msgctxt "great ×4 grandfather’s brother"
+msgid "great ×5 uncle"
 msgstr "曾高祖叔公"
 
 #: includes/functions/functions.php:1240
-msgctxt "great x4 grandmother’s brother"
-msgid "great x5 uncle"
+msgctxt "great ×4 grandmother’s brother"
+msgid "great ×5 uncle"
 msgstr "曾高祖叔公"
 
 #: includes/functions/functions.php:1241
-msgctxt "great x4 grandparent’s brother"
-msgid "great x5 uncle"
+msgctxt "great ×4 grandparent’s brother"
+msgid "great ×5 uncle"
 msgstr "曾高祖叔公"
 
 #: includes/functions/functions.php:1252
-msgid "great x6 aunt"
+msgid "great ×6 aunt"
 msgstr "曾曾叔婆"
 
 #: includes/functions/functions.php:1253
-msgid "great x6 aunt/uncle"
+msgid "great ×6 aunt/uncle"
 msgstr "曾曾叔公/叔婆"
 
 #: includes/functions/functions.php:1595
-msgid "great x6 grandchild"
+msgid "great ×6 grandchild"
 msgstr "玄末孙"
 
 #: includes/functions/functions.php:1594
-msgid "great x6 granddaughter"
+msgid "great ×6 granddaughter"
 msgstr "玄末孙女"
 
 #: includes/functions/functions.php:1500
-msgid "great x6 grandfather"
+msgid "great ×6 grandfather"
 msgstr "曾曾祖父"
 
 #: includes/functions/functions.php:1501
-msgid "great x6 grandmother"
+msgid "great ×6 grandmother"
 msgstr "曾曾祖婆"
 
 #: includes/functions/functions.php:1502
-msgid "great x6 grandparent"
+msgid "great ×6 grandparent"
 msgstr "曾曾祖父母"
 
 #: includes/functions/functions.php:1593
-msgid "great x6 grandson"
+msgid "great ×6 grandson"
 msgstr "玄末孙儿"
 
 #: includes/functions/functions.php:1249
-msgctxt "great x5 grandfather’s brother"
-msgid "great x6 uncle"
+msgctxt "great ×5 grandfather’s brother"
+msgid "great ×6 uncle"
 msgstr "曾曾叔公"
 
 #: includes/functions/functions.php:1250
-msgctxt "great x5 grandmother’s brother"
-msgid "great x6 uncle"
+msgctxt "great ×5 grandmother’s brother"
+msgid "great ×6 uncle"
 msgstr "曾曾叔公"
 
 #: includes/functions/functions.php:1251
-msgctxt "great x5 grandparent’s brother"
-msgid "great x6 uncle"
+msgctxt "great ×5 grandparent’s brother"
+msgid "great ×6 uncle"
 msgstr "曾曾叔公"
 
 #: includes/functions/functions.php:1262
-msgid "great x7 aunt"
+msgid "great ×7 aunt"
 msgstr "曾高叔婆"
 
 #: includes/functions/functions.php:1263
-msgid "great x7 aunt/uncle"
+msgid "great ×7 aunt/uncle"
 msgstr "曾高叔公/叔婆"
 
 #: includes/functions/functions.php:1602
-msgid "great x7 grandchild"
+msgid "great ×7 grandchild"
 msgstr "末末孙"
 
 #: includes/functions/functions.php:1601
-msgid "great x7 granddaughter"
+msgid "great ×7 granddaughter"
 msgstr "末末孙女"
 
 #: includes/functions/functions.php:1507
-msgid "great x7 grandfather"
+msgid "great ×7 grandfather"
 msgstr "曾高祖父"
 
 #: includes/functions/functions.php:1508
-msgid "great x7 grandmother"
+msgid "great ×7 grandmother"
 msgstr "曾高祖母"
 
 #: includes/functions/functions.php:1509
-msgid "great x7 grandparent"
+msgid "great ×7 grandparent"
 msgstr "曾高祖父母"
 
 #: includes/functions/functions.php:1600
-msgid "great x7 grandson"
+msgid "great ×7 grandson"
 msgstr "末末孙儿"
 
 #: includes/functions/functions.php:1259
-msgctxt "great x6 grandfather’s brother"
-msgid "great x7 uncle"
+msgctxt "great ×6 grandfather’s brother"
+msgid "great ×7 uncle"
 msgstr "曾高叔公"
 
 #: includes/functions/functions.php:1260
-msgctxt "great x6 grandmother’s brother"
-msgid "great x7 uncle"
+msgctxt "great ×6 grandmother’s brother"
+msgid "great ×7 uncle"
 msgstr "曾高舅公"
 
 #: includes/functions/functions.php:1261
-msgctxt "great x6 grandparent’s brother"
-msgid "great x7 uncle"
+msgctxt "great ×6 grandparent’s brother"
+msgid "great ×7 uncle"
 msgstr "曾高叔公"
 
 #: includes/functions/functions.php:1085
@@ -19702,7 +19694,7 @@ msgstr "诞生"
 
 #: includes/authentication.php:111 includes/authentication.php:174
 #: message.php:40
-msgid "webtrees Message"
+msgid "webtrees message"
 msgstr "webtrees信息"
 
 #: includes/functions/functions_edit.php:220
@@ -19810,7 +19802,7 @@ msgstr "缺少姓氏"
 #~ msgid "%s"
 #~ msgstr "%s"
 
-#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website."
+#~ msgid "<center><b>Welcome to this genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website."
 #~ msgstr "<center><b>欢迎来到这个家谱网站</b></center><br>只有注册过的可以观看网站。"
 
 #~ msgid "Abbreviate chart labels"
@@ -19858,7 +19850,7 @@ msgstr "缺少姓氏"
 #~ msgid "Births, Deaths, Marriages"
 #~ msgstr "出生，去世，婚姻"
 
-#~ msgid "Choose to display a standard header for your custom Welcome text.  When your users change language, this header will appear in the new language.<br><br>If set to <b>Yes</b>, the header will look like this:<div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website.<br></div>"
+#~ msgid "Choose to display a standard header for your custom Welcome text.  When your users change language, this header will appear in the new language.<br><br>If set to <b>Yes</b>, the header will look like this:<div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website.<br></div>"
 #~ msgstr "为您定制的欢迎文本选择显示一个标准的标题。当用户改变语言,这个标题将出现在新的语言。<br><br>如果设置为<b>是</b>,标题将如下:<div class =\"list_value_wrap\"><center><b>欢迎光临这个宗谱网站</b></center><br>这个网站访问要用户帐户和密码。<br></div>"
 
 #~ msgid "Click here to continue"

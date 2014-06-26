@@ -84,7 +84,7 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 			$content.='<table class="list_table"><tr>';
 			$content.='<td class="list_label">'.WT_I18N::translate('Delete').'<br><a href="#" onclick="jQuery(\'#' . $this->getName() . $block_id . ' :checkbox\').prop(\'checked\', true); return false;">'.WT_I18N::translate('All').'</a></td>';
 			$content.='<td class="list_label">'.WT_I18N::translate('Subject:').'</td>';
-			$content.='<td class="list_label">'.WT_I18N::translate('Date Sent:').'</td>';
+			$content.='<td class="list_label">'.WT_I18N::translate('Date sent:').'</td>';
 			$content.='<td class="list_label">'.WT_I18N::translate('Email address:').'</td>';
 			$content.='</tr>';
 			foreach ($messages as $message) {
@@ -113,7 +113,7 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 				$content.='<a href="index.php?action=deletemessage&amp;message_id[]='.$message->message_id.'" onclick="return confirm(\''.WT_I18N::translate('Are you sure you want to delete this message?  It cannot be retrieved later.').'\');">'.WT_I18N::translate('Delete').'</a></div></td></tr>';
 			}
 			$content.='</table>';
-			$content.='<input type="submit" value="'.WT_I18N::translate('Delete Selected Messages').'"><br>';
+			$content.='<input type="submit" value="'.WT_I18N::translate('Delete selected messages').'"><br>';
 		}
 		$content.='</form>';
 

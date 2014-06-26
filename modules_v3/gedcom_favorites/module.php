@@ -52,7 +52,6 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 			if ($favorite_id) {
 				self::deleteFavorite($favorite_id);
 			}
-			unset($_GET['action']);
 			break;
 		case 'addfav':
 			$gid      = WT_Filter::get('gid', WT_REGEX_XREF);
@@ -84,7 +83,6 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 					'title'     => $favtitle ? $favtitle : $url,
 				));
 			}
-			unset($_GET['action']);
 			break;
 		}
 
@@ -121,7 +119,7 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 		if ($userfavs) {
 			foreach ($userfavs as $key=>$favorite) {
 				if (isset($favorite['id'])) $key=$favorite['id'];
-				$removeFavourite = '<a class="font9" href="index.php?ctype='.$ctype.'&amp;action=deletefav&amp;favorite_id='.$key.'" onclick="return confirm(\''.WT_I18N::translate('Are you sure you want to remove this item from your list of Favorites?').'\');">'.WT_I18N::translate('Remove').'</a> ';
+				$removeFavourite = '<a class="font9" href="index.php?ctype='.$ctype.'&amp;action=deletefav&amp;favorite_id='.$key.'" onclick="return confirm(\''.WT_I18N::translate('Are you sure you want to remove this item from your list of favorites?').'\');">'.WT_I18N::translate('Remove').'</a> ';
 				if ($favorite['type']=='URL') {
 					$content .= '<div id="boxurl'.$key.'.0" class="person_box">';
 					if ($ctype=='user' || WT_USER_GEDCOM_ADMIN) $content .= $removeFavourite;

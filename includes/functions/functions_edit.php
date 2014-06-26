@@ -313,11 +313,11 @@ function print_calendar_popup($id) {
 }
 
 function print_addnewmedia_link($element_id) {
-	return '<a href="#" onclick="pastefield=document.getElementById(\''.$element_id.'\'); window.open(\'addmedia.php?action=showmediaform\', \'_blank\', edit_window_specs); return false;" class="icon-button_addmedia" title="'.WT_I18N::translate('Add a new media object').'"></a>';
+	return '<a href="#" onclick="pastefield=document.getElementById(\''.$element_id.'\'); window.open(\'addmedia.php?action=showmediaform\', \'_blank\', edit_window_specs); return false;" class="icon-button_addmedia" title="'.WT_I18N::translate('Create a new media object').'"></a>';
 }
 
 function print_addnewrepository_link($element_id) {
-	return '<a href="#" onclick="addnewrepository(document.getElementById(\''.$element_id.'\')); return false;" class="icon-button_addrepository" title="'.WT_I18N::translate('Create repository').'"></a>';
+	return '<a href="#" onclick="addnewrepository(document.getElementById(\''.$element_id.'\')); return false;" class="icon-button_addrepository" title="'.WT_I18N::translate('Create a new repository').'"></a>';
 }
 
 function print_addnewnote_link($element_id) {
@@ -637,7 +637,7 @@ function add_simple_tag(
 		if ($fact=='PLAC') {
 			echo "<div id=\"", $element_id, "_pop\" style=\"display: inline;\">";
 			echo print_specialchar_link($element_id), ' ', print_findplace_link($element_id);
-			echo '<span  onclick="jQuery(\'#', $upperlevel, '_LATI_tr,#', $upperlevel, '_LONG_tr,#INDI_LATI_tr,#INDI_LONG_tr,tr[id^=LATI],tr[id^=LONG]\').toggle(\'fast\'); return false;" class="icon-target" title="', WT_Gedcom_Tag::getLabel('LATI'), ' / ', WT_Gedcom_Tag::getLabel('LONG'), '"></span>';
+			echo '<span  onclick="jQuery(\'tr[id^=', $upperlevel,'_LATI],tr[id^=', $upperlevel,'_LONG],tr[id^=LATI],tr[id^=LONG]\').toggle(\'fast\'); return false;" class="icon-target" title="', WT_Gedcom_Tag::getLabel('LATI'), ' / ', WT_Gedcom_Tag::getLabel('LONG'), '"></span>';
 			echo '</div>';
 			if (array_key_exists('places_assistant', WT_Module::getActiveModules())) {
 				places_assistant_WT_Module::setup_place_subfields($element_id);

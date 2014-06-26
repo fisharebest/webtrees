@@ -59,7 +59,7 @@ echo '</script>';
 // Header of assistant window =====================================================
 echo '<div class="cens_header">';
 echo '<div class="cens_header_left">';
-echo WT_I18N::translate('Head of Household:');
+echo WT_I18N::translate('Head of household:');
 echo ' ', $wholename;
 echo '</div>';
 if ($summary) {
@@ -88,7 +88,7 @@ echo '</div>';
 ?>
 <div class="optionbox cens_textinput">
 	<div class="cens_textinput_left">
-		<input type="button" value="<?php echo WT_I18N::translate('Add/Insert Blank Row'); ?>" onclick="insertRowToTable('', '', '', '', '', '', '', '', 'Age', '', '', '', '', '', '');">
+		<input type="button" value="<?php echo WT_I18N::translate('Add/insert a blank row'); ?>" onclick="insertRowToTable('', '', '', '', '', '', '', '', 'Age', '', '', '', '', '', '');">
 	</div>
 	<div class="cens_textinput_right">
 		<?php echo WT_I18N::translate('Add'); ?>

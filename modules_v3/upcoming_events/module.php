@@ -141,7 +141,7 @@ class upcoming_events_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$onlyBDM=get_block_setting($block_id, 'onlyBDM',    false);
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo WT_I18N::translate('Show only Births, Deaths, and Marriages?');
+		echo WT_I18N::translate('Show only births, deaths, and marriages?');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('onlyBDM', $onlyBDM);
 		echo '</td></tr>';

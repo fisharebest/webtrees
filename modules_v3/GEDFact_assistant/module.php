@@ -193,7 +193,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 			?>
 			<script>
 			function insertId() {
-				window.opener.alert('<?php echo strtoupper($iid2); ?> - <?php echo WT_I18N::translate('Not a valid Individual, Family or Source ID'); ?>');
+				window.opener.alert('<?php echo strtoupper($iid2); ?> - <?php echo WT_I18N::translate('Not a valid individual, family, or source ID'); ?>');
 				window.close();
 			}
 			</script>

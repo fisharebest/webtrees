@@ -142,7 +142,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 					"SELECT gedcom_id FROM `##block` WHERE block_id=?"
 				)->execute(array($block_id))->fetchOne();
 			} else {
-				$controller->setPageTitle(WT_I18N::translate('Add FAQ item'));
+				$controller->setPageTitle(WT_I18N::translate('Add an FAQ item'));
 				$header='';
 				$faqbody='';
 				$block_order=WT_DB::prepare(
@@ -279,7 +279,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 		echo '<div class="faq_italic">', WT_I18N::translate('Click on a title to go straight to it, or scroll down to read them all');
 			if (WT_USER_GEDCOM_ADMIN) {
 				echo '<div class="faq_edit">',
-						'<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_config">', WT_I18N::translate('Click here to Add, Edit, or Delete'), '</a>',
+						'<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_config">', WT_I18N::translate('Click here to add, edit, or delete'), '</a>',
 				'</div>';
 			}
 		echo '</div>';
@@ -356,7 +356,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 			'<input type="submit" value="', WT_I18N::translate('show'), '">',
 			'</form></p>';
 
-		echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit">', WT_I18N::translate('Add FAQ item'), '</a>';
+		echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit">', WT_I18N::translate('Add an FAQ item'), '</a>';
 		echo help_link('add_faq_item', $this->getName());
 
 		echo '<table id="faq_edit">';

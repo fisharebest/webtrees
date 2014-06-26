@@ -55,8 +55,8 @@ msgstr " בתקופת זמן"
 #: includes/functions/functions_print_facts.php:192
 #: includes/functions/functions_print_facts.php:197
 #, php-format
-msgid "#%d"
-msgstr "#%d"
+msgid "#%s"
+msgstr "#%s"
 
 #: modules_v3/googlemap/module.php:851
 #, php-format
@@ -77,21 +77,21 @@ msgstr[1] "ל-%1$d אנשים חסרות קואורדינטות של מקום ה
 #: includes/functions/functions.php:685
 #, php-format
 msgctxt "FEMALE"
-msgid "%1$d x %2$s"
+msgid "%1$d × %2$s"
 msgstr "%2$s מדרגה %1$d"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:674
 #, php-format
 msgctxt "MALE"
-msgid "%1$d x %2$s"
+msgid "%1$d × %2$s"
 msgstr "%2$s מדרגה %1$d"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:696
 #, php-format
 msgctxt "MALE/FEMALE"
-msgid "%1$d x %2$s"
+msgid "%1$d × %2$s"
 msgstr "%2$s מדרגה %1$d"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$d>=4
@@ -183,20 +183,12 @@ msgstr "%2$s של %1$s"
 msgid "%H:%i:%s"
 msgstr "%G:%i:%s"
 
-#. I18N: This is a title, so needs suitable capitalisation
-#: includes/functions/functions_charts.php:267
-#, php-format
-msgid "%d Child"
-msgid_plural "%d Children"
-msgstr[0] "ילד אחד"
-msgstr[1] "%d ילדים"
-
 #: lifespan.php:198
 #, php-format
-msgid "%d Individual"
-msgid_plural "%d Individuals"
-msgstr[0] "אדם %d"
-msgstr[1] "%d אנשים"
+msgid "%s individual"
+msgid_plural "%s individuals"
+msgstr[0] "אדם %s"
+msgstr[1] "%s אנשים"
 
 #: includes/functions/functions_print.php:306 library/WT/Stats.php:3415
 #, php-format
@@ -222,20 +214,20 @@ msgstr[1] "%d חודשים"
 #: includes/functions/functions.php:637
 #, php-format
 msgctxt "FEMALE"
-msgid "%d x cousin"
+msgid "%d × cousin"
 msgstr "דודנית מדרגה %d"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: includes/functions/functions.php:618
 #, php-format
 msgctxt "MALE"
-msgid "%d x cousin"
+msgid "%d × cousin"
 msgstr "דודן מדרגה %d"
 
 #: includes/functions/functions.php:656
 #, php-format
 msgctxt "MALE/FEMALE"
-msgid "%d x cousin"
+msgid "%d × cousin"
 msgstr "דודן/דודנית מדרגה %d"
 
 #: modules_v3/relatives/module.php:60
@@ -444,10 +436,10 @@ msgstr "&lt;בחר&gt;"
 #: search_advanced.php:112 search_advanced.php:116 search_advanced.php:120
 #: search_advanced.php:168 search_advanced.php:169 search_advanced.php:170
 #, php-format
-msgid "&plusmn;%d year"
-msgid_plural "&plusmn;%d years"
-msgstr[0] "&plusmn; שנה"
-msgstr[1] "&plusmn; %d שנים"
+msgid "±%d year"
+msgid_plural "±%d years"
+msgstr[0] "± שנה"
+msgstr[1] "± %d שנים"
 
 #. I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan 1900 (aged 43 years)
 #: library/WT/I18N.php:395 library/WT/I18N.php:399
@@ -603,7 +595,7 @@ msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<b
 msgstr "<b>GUID</b> בהקשר זה הוא ראשי תיבות של ”קוד זיהוי גלובלי ייחודי -  Globally Unique ID”.<br><br>GUID-ים נועדים לעזור לזהות כל אדם באופן הדיר, כך שארגונים מרכזיים כמו מרכז ההיסטוריה המשפחתית של כנסיית המורמונים בסולט לייק סיטי, או אפילו תוכניות תואמות הפועלות על השרת שלך, יוכלו לקבוע האם הם מטפלים באותו האדם, לא משנה מהיכן מקור ה-GEDCOM. מטרת המרכז ההיסטוריה המשפחתית הוא להוות מאגר מרכזי של נתונים גנאלוגיים ולחשוף אותו באמצעות שירותי אינטרנט. זה יאפשר לכל תכנית  לגשת לנתונים ולעדכן את הנתונים שלהם בתוכו.<br><br>אם אינך מתכוון לשתף GEDCOM זה עם מישהו אחר, אתה לא צריך לתת, ל-<b>webtrees</b> ליצור GUID-ים אבל, אם תיצור אותם לא תגרום כל נזק פרט להגדלת גודל ה-GEDCOM שלך."
 
 #: help_text.php:1318
-msgid "<b>Important Note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
+msgid "<b>Important note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
 msgstr "<b>הודעה חשובה:</b> אשף העברה אינו מסוגל לסייע בהעברת פרטי מדיה. עלך להקים ולהעביר או להעתיק בנפרד את הגדרות ואת ישויות המדיה שלך לאחר שאשף ההעברה סיים."
 
 #: help_text.php:1007
@@ -611,7 +603,7 @@ msgid "<b>No</b> means that authenticated users can see the details of all livin
 msgstr "<b>לא</b> הפירוש שמשתמשים מורשים יוכלו לראות את הפרטים של כל האנשים החיים. <b>כן</b> הפירוש שמשתמשים יכולים לראות את המידע הפרטי רק של אנשים חיים אליהם הם קשורים.<br><br>אפשרות זו מגדירה ברירת המחדל עבור כל המשתמשים בעלי גישה למסד הנתונים הגנאלוגי הזה. המנהל יכול לעקוף אפשרות זו למשתמשים בודדים על ידי עריכת פרטי החשבון של המשתמש."
 
 #: message.php:118
-msgid "<b>Please Note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogical data, please include the sources where you obtained the data."
+msgid "<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogical data, please include the sources where you obtained the data."
 msgstr "<b>שים לב:</b> מידע פרטי על אנשים חיים יינתן רק לקרובי משפחה וחברים קרובים. אתה תתבקש לאמת את היחסים שלך לפני שתקבל את כל הנתונים הפרטיים. לפעמים גם המידע של אנשים מתים עשוי להיות פרטי. במקרה הזה, הדבר קורה משום שאין מספיק מידע ידוע על האדם כדי לקבוע אם הוא בחיים או לא, ואין לנו כנראה מידע נוסף על אדם זה.<br><br>לפני שתשאל שאלה , ודא שאתה חוקר את האדם הנכון ע״י בדיקת תאריכים, מקומות, וקרובי משפחה. אם אתה שולח שינויים לנתוני אילן היוחסין, בבקשה כלול את המקורות שמהם השגת את הנתונים."
 
 #: help_text.php:1063
@@ -643,15 +635,15 @@ msgid "<b>webtrees</b> reply address"
 msgstr "כתובת מענה עבור <b>webtrees</b>"
 
 #: login.php:150
-msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved."
+msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved."
 msgstr "<center><b>ברוכים הבאים לאתר הזה של חקר שושלת היוחסין</b></center><br>גישה לאתר זה מותרת רק למשתמשים <u>מורשים.</u><br><br>אם יש לך חשבון משתמש תוכל להתחבר למערכת באמצעות הדף הזה. אם אין לך חשבון משתמש, תוכל לבקש חשבון משתמש ע״י לחיצה על הקישור מלמטה.<br><br>מנהל האתר יבדוק את נתוניך ויאשר או ידחה את בקשתך. תקבל דואר אלקטרוני לאחר שבקשתך תאושר."
 
 #: login.php:153
-msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved."
+msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved."
 msgstr "<center><b>ברוכים הבאים לאתר הזה של חקר שושלת היוחסין</b></center><br>גישה לאתר זה מותרת <u>רק לבני משפחה</u>.<br><br>אם יש לך חשבון משתמש תוכל להתחבר למערכת באמצעות הדף הזה. אם אין לך חשבון משתמש, תוכל לבקש חשבון משתמש ע״י לחיצה על הקישור המתאים מלמטה.<br><br>מנהל האתר יבדוק את נתוניך ויאשר או ידחה את בקשתך. תקבל דואר אלקטרוני לאחר שבקשתך תאושר."
 
 #: login.php:147
-msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved."
+msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved."
 msgstr "<center><b>ברוכים הבאים לאתר הזה של חקר שושלת היוחסין</b></center><br>גישה לאתר זה מותרת לכל המשתמשים בעלי חשבון משתמש באתר.<br><br>אם יש לך חשבון משתמש, תוכל להתחבר למערכת באמצעות הדף הזה. אם אין לך חשבון משתמש, תוכל לבקש חשבון משתמש ע״י לחיצה על הקישור המתאים מלמטה.<br><br>מנהל האתר יבדוק את נתוניך ויפעיל את חשבון המשתמש שלך. תקבל דואר אלקטרוני לאחר שחשבון המשתמש שלך יאושר."
 
 #. I18N: default option in list of themes
@@ -725,7 +717,7 @@ msgstr "רשימת משימות ופעילויות הקשורות לאילן ה�
 msgid "A list of the Hebrew death anniversaries that will occur in the near future."
 msgstr "רשימת ימי שנה עבריים של פטירות שיחולו בעתיד הקרוב."
 
-#. I18N: Description of the “On This Day” module
+#. I18N: Description of the “On this day” module
 #: modules_v3/todays_events/module.php:37
 msgid "A list of the anniversaries that occur today."
 msgstr "רשימת ימי שנה אשר מתרחשים היום."
@@ -1139,23 +1131,23 @@ msgstr "הוספת מיקום גיאוגרפי חדש"
 
 #: modules_v3/clippings/module.php:472
 #, php-format
-msgid "Add %s to cart"
+msgid "Add %s to the clippings cart"
 msgstr "הוסף %s לעגלה"
 
 #: modules_v3/faq/module.php:145 modules_v3/faq/module.php:359
-msgid "Add FAQ item"
+msgid "Add an FAQ item"
 msgstr "הוסף ישות שאלות ותשובות"
 
 #: modules_v3/clippings/module.php:150 modules_v3/clippings/module.php:233
-msgid "Add Individual By ID"
+msgid "Add individual by ID"
 msgstr "הוסף אדם לפי קוד זיהוי"
 
 #: search_advanced.php:290
-msgid "Add More Fields"
+msgid "Add more fields"
 msgstr "הוסף עוד שדות"
 
 #: modules_v3/gedcom_news/module.php:125
-msgid "Add a News article"
+msgid "Add a news article"
 msgstr "הוסף מאמר חדשות"
 
 #: edit_interface.php:563 modules_v3/relatives/module.php:373
@@ -1181,7 +1173,7 @@ msgid "Add a husband using an existing individual"
 msgstr "הוסף בעל ע״י שימוש באדם קיים"
 
 #: modules_v3/user_blog/module.php:95
-msgid "Add a new Journal entry"
+msgid "Add a new journal entry"
 msgstr "הוסף כניסת יומן חדשה"
 
 #: help_text.php:1133 includes/functions/functions_edit.php:834
@@ -1362,7 +1354,7 @@ msgstr "הוסף רווח במקום שההערות גלשו"
 
 #: modules_v3/stories/module.php:127 modules_v3/stories/module.php:214
 #: modules_v3/stories/module.php:337
-msgid "Add story"
+msgid "Add a story"
 msgstr "הוסף סיפור"
 
 #: admin_trees_download.php:129 modules_v3/clippings/module.php:212
@@ -1429,11 +1421,11 @@ msgid "Add your own text and graphics."
 msgstr "הוסף טקסט וגרפיקה משלך."
 
 #: modules_v3/GEDFact_assistant/_CENS/census_1_ctrl.php:91
-msgid "Add/Insert Blank Row"
+msgid "Add/insert a blank row"
 msgstr "הוסף שורה ריקה"
 
 #: editnews.php:31 editnews.php:49
-msgid "Add/edit journal/news entry"
+msgid "Add/edit a journal/news entry"
 msgstr "הוסף/ערוך כניסת יומן/חדשות"
 
 #: admin_site_merge.php:196 admin_site_merge.php:202
@@ -1483,7 +1475,7 @@ msgid "Administrators"
 msgstr "מנהלנים"
 
 #: help_text.php:1284
-msgid "Administrators sometimes need to clean up and correct the data submitted by users.  For example, they might need to correct the PLAC location to include the country.  When Administrators make such corrections, information about the original change is normally replaced.  This may not be desirable.<br><br>When this option is selected, <b>webtrees</b> will retain the original Change information instead of replacing it with that of the current session.  With this option selected, Administrators also have the ability to modify or delete the information associated with the original CHAN tag."
+msgid "Administrators sometimes need to clean up and correct the data submitted by users.  For example, they might need to correct the PLAC location to include the country.  When administrators make such corrections, information about the original change is normally replaced.  This may not be desirable.<br><br>When this option is selected, <b>webtrees</b> will retain the original change information instead of replacing it with that of the current session.  With this option selected, administrators also have the ability to modify or delete the information associated with the original CHAN tag."
 msgstr "מנהלי האתר צריכים לפעמים לנקות ולתקן נתונים שנמסרו ע״י משתמשים. לדוגמא, יתכן שהם צריכים להוסיף ארץ למקום PLAC. כאשר מנהלי האתר מבצעים שינויים כאלה, המידע על השינוי המקורי מוחלף בדרך כלל. יתכן שדבר הזה אינו רצוי.<br><br>כאשר האופציה נבחרת, <b>webtrees</b> תשמור את נתוני השינוי המקוריים מבלי להחליף אותה עם הנתון של העיבוד הנוכחי. כאשר האופציה הזו נבחרת, מנהלי האתר יכולים לשנות או למחוק גם מידע הקשור לתג ה-CHAN המקורי."
 
 #: library/WT/Gedcom/Code/Pedi.php:43
@@ -1662,7 +1654,7 @@ msgid "After creating the family tree, you will be able to upload or import data
 msgstr "לאחר יצירת עץ המשפחה, תוכל להעלות או לייבא נתונים מקובץ GEDCOM."
 
 #: login.php:242
-msgid "After you have logged in, select the “My Account” link under the “My Page” menu and fill in the password fields to change your password."
+msgid "After you have logged in, select the “My account” link under the “My page” menu and fill in the password fields to change your password."
 msgstr "אחרי שהתחברת, בחר בקישור ”המשתמש שלי” מתחת לתפריט ”הדף שלי” ומלא את שדות הסיסמה כדי לשנות את הסיסמה שלך."
 
 #. I18N: gedcom tag AGE
@@ -2054,11 +2046,11 @@ msgid "Are you sure you want to delete this FAQ entry?"
 msgstr "האם הנך בטוח שברצונך למחוק כניסת השאלות והתשובות הזו?"
 
 #: modules_v3/user_blog/module.php:91
-msgid "Are you sure you want to delete this Journal entry?"
+msgid "Are you sure you want to delete this journal entry?"
 msgstr "האם באמת למחוק את כניסת היומן הזו?"
 
 #: modules_v3/gedcom_news/module.php:119
-msgid "Are you sure you want to delete this News entry?"
+msgid "Are you sure you want to delete this news article?"
 msgstr "האם באמת למחוק את כניסת החדשות הזו?"
 
 #: includes/functions/functions_print_facts.php:181
@@ -2095,7 +2087,7 @@ msgid "Are you sure you want to remove links to this media object?"
 msgstr "האם באמת למחוק קישור זה לישות מדיה?"
 
 #: modules_v3/gedcom_favorites/module.php:123
-msgid "Are you sure you want to remove this item from your list of Favorites?"
+msgid "Are you sure you want to remove this item from your list of favorites?"
 msgstr "?האם באמת למחוק אדם זה מרשימת המועדפים שלך"
 
 #: edit_changes.php:231
@@ -2165,7 +2157,7 @@ msgid "Asuncion, Paraguay"
 msgstr "אסונסיון, פרגוואי"
 
 #: library/WT/Stats.php:4003
-msgid "At Sea"
+msgid "At sea"
 msgstr "בים"
 
 #: library/WT/Gedcom/Code/Temp.php:65
@@ -2714,7 +2706,7 @@ msgid "Birth"
 msgstr "לידה"
 
 #: modules_v3/birth_report/report.xml:6
-msgid "Birth Place contains"
+msgid "Birthplace contains"
 msgstr "מקום הלידה כולל"
 
 #: library/WT/Stats.php:978 statistics.php:576
@@ -3713,7 +3705,7 @@ msgid "Click here for PhpGedView to <b>webtrees</b> transfer wizard"
 msgstr "לחץ כאן עבור אשף העברת PhpGedView ל- <b>webtrees</b>"
 
 #: modules_v3/faq/module.php:282
-msgid "Click here to Add, Edit, or Delete"
+msgid "Click here to add, edit, or delete"
 msgstr "לחץ כאן כדי להוסיף, לערוך או למחוק"
 
 #: individual.php:267
@@ -3903,7 +3895,7 @@ msgstr "תוכן"
 #: modules_v3/clippings/module.php:129 modules_v3/clippings/module.php:501
 #: modules_v3/clippings/module.php:524 modules_v3/clippings/module.php:537
 #: modules_v3/googlemap/module.php:4142
-msgid "Continue Adding"
+msgid "Continue adding"
 msgstr "המשך להוסיף"
 
 #. I18N: gedcom tag CONT
@@ -4042,7 +4034,7 @@ msgstr "צור מקור חדש"
 
 #: edit_interface.php:1493 edit_interface.php:1558
 #: includes/functions/functions_edit.php:320
-msgid "Create repository"
+msgid "Create a new repository"
 msgstr "צור מאגר"
 
 #: admin_users.php:480
@@ -4297,7 +4289,7 @@ msgid "Date"
 msgstr "תאריך"
 
 #: modules_v3/user_messages/module.php:87
-msgid "Date Sent:"
+msgid "Date sent:"
 msgstr "תאריך שליחה:"
 
 #: admin_trees_config.php:1045 help_text.php:1403
@@ -4620,7 +4612,7 @@ msgid "Death"
 msgstr "פטירה"
 
 #: modules_v3/death_report/report.xml:6
-msgid "Death Place contains"
+msgid "Death place contains"
 msgstr "מקום הפטירה כולל"
 
 #: library/WT/Stats.php:995 statistics.php:584
@@ -4901,7 +4893,7 @@ msgid "Delete FAQ item"
 msgstr "מחק ישות שאלות ותשובות"
 
 #: modules_v3/user_messages/module.php:116
-msgid "Delete Selected Messages"
+msgid "Delete selected messages"
 msgstr "בטל את ההודעות הנבחרות"
 
 #: modules_v3/googlemap/module.php:4130
@@ -4913,7 +4905,7 @@ msgid "Delete inactive users"
 msgstr "מחק משתמשים לא פעילים"
 
 #: library/WT/Controller/Individual.php:151
-msgid "Delete name"
+msgid "Delete this name"
 msgstr "מחק שם"
 
 #. I18N: The system is about to [...]
@@ -5144,7 +5136,7 @@ msgid "Display %s"
 msgstr "הצג %s"
 
 #: modules_v3/googlemap/help_text.php:46 modules_v3/googlemap/module.php:459
-msgid "Display Map Coordinates"
+msgid "Display map coordinates"
 msgstr "הצג קואורדינטות של המפה"
 
 #: find.php:220 find.php:237 find.php:254 find.php:272 find.php:289
@@ -5231,7 +5223,7 @@ msgid "Download %s…"
 msgstr ""
 
 #: mediaviewer.php:104
-msgid "Download File"
+msgid "Download file"
 msgstr "הורד קובץ"
 
 #: admin_trees_download.php:30
@@ -5518,7 +5510,7 @@ msgstr "מעסיק"
 
 #: modules_v3/clippings/help_text.php:36 modules_v3/clippings/module.php:254
 #: modules_v3/clippings/module.php:463
-msgid "Empty Cart"
+msgid "Empty the clippings cart"
 msgstr "רוקן עגלה"
 
 #: admin_modules.php:121
@@ -5600,7 +5592,7 @@ msgid "Enter the FAX number including the country and area code.<br><br>Leave th
 msgstr "הכנס את מספר הטלפון כולל קוד ארץ וקוד אזור.<br><br>השאר את השדה ריק אם אתה לא רוצה לכלול מספר טלפון.  לדוגמה, מספר בגרמניה יכול להיות <span dir=\"ltr\">+49 25859 56 76 89</span> ומספר בארה״ב או בקנדה יכול להיות <span dir=\"ltr\">+1 888 555-1212</span>."
 
 #: help_text.php:388
-msgid "Enter the URL address including the http://.<br><br>An example URL looks like this: <b>http://www.webtrees.net/</b> Leave this field blank if you do not want to include a URL."
+msgid "Enter the URL address including the http://.<br><br>An example URL looks like this: <b>http://www.webtrees.net/</b>.  Leave this field blank if you do not want to include a URL."
 msgstr "הכנס את הכתובת של ה-URL כולל ה-<span dir=\"ltr\">http://</span>.<br><br>דוגמת URL נראית כך: <b><span dir=\"ltr\">http://www.webtrees.net/</span></b> השאר את השדה ריק אם אתה לא רוצה לכלול URL."
 
 #: help_text.php:50
@@ -5612,7 +5604,7 @@ msgid "Enter the email address.<br><br>An example email address looks like this:
 msgstr "הכנס את כתובת הדואר האלקטרוני.<br><br>דוגמה לכתובת דוא״ל נראית כך: <b>name@hotmail.com</b> השאר את השדה ריק אם אתה לא רוצה לכלול כתובת דוא״ל."
 
 #: help_text.php:1238
-msgid "Enter the limiting value here.<br><br>If you have opted to limit the News article display according to age, any article older than the number of days entered here will be hidden from view.  If you have opted to limit the News article display by number, only the specified number of recent articles, ordered by age, will be shown.  The remaining articles will be hidden from view.<br><br>Zeros entered here will disable the limit, causing all News articles to be shown."
+msgid "Enter the limiting value here.<br><br>If you have opted to limit the news article display according to age, any article older than the number of days entered here will be hidden from view.  If you have opted to limit the news article display by number, only the specified number of recent articles, ordered by age, will be shown.  The remaining articles will be hidden from view.<br><br>Zeros entered here will disable the limit, causing all news articles to be shown."
 msgstr "הכנס כאן את ערך הגבול.<br><br>אם בחרת להגביל את תצוגת כתבות החדשות לפי גיל, כתבות ישנות יותר ממספר הימים שהוכנס כאן יוסתרו מהתצוגה. אם בחרת להגביל את תצוגת כתבות החדשות לפי מספר, רק המספר הנבחר של הכתבות האחרונות יוצג בסדר הגילים. יתר הכתבות יוסתרו מהתצוגה.<br><br>אפסים שימולאו כאן יפסיקו את ההגבלה ויגרמו לכל כתבות החדשות להיות מוצגות."
 
 #: help_text.php:325
@@ -5717,7 +5709,7 @@ msgid "Events of close relatives"
 msgstr "אירועים של קרובי משפחה"
 
 #: help_text.php:1363
-msgid "Every individual in the database has a unique ID number on this site.  If you know the ID number for your own record, please enter it here.  If you don’t know your ID number or could not find it because of privacy settings, please provide enough information in the Comments field to help the site administrator identify who you are on this site so that he can set the ID for you."
+msgid "Every individual in the database has a unique ID number on this site.  If you know the ID number for your own record, please enter it here.  If you don’t know your ID number or could not find it because of privacy settings, please provide enough information in the comments field to help the site administrator identify who you are on this site so that he can set the ID for you."
 msgstr "לכל אדם בבסיס הנתונים יש מספר מזהה יחיד באתר. אם אתה יודע את המספר המזהה של הרשומה האישית שלך, אנא הכנס אותה כאן. אם אינך יודע את המספר המזהה שלך, או אינך יכול למצוא אותו בגלל הגבלות פרטיות, אז עליך לספק נתונים במידה מספקת בשדה ההערה כדי שמנהל האתר יוכל לזהותך באתר ולהגדיר את הקוד הזיהוי עבורך."
 
 #: help_text.php:1378
@@ -6311,7 +6303,7 @@ msgid "Find a media object"
 msgstr "מצא ישות מדיה"
 
 #: find.php:86 includes/functions/functions_print.php:1041
-msgid "Find a note"
+msgid "Find a shared note"
 msgstr "מצא הערה"
 
 #: find.php:80 includes/functions/functions_print.php:1015
@@ -6345,7 +6337,7 @@ msgid "Find next path"
 msgstr "מצא הנתיב הבא"
 
 #: help_text.php:1278
-msgid "Find next relationship path"
+msgid "Find the next relationship path"
 msgstr "מצא הנתיב הבא"
 
 #: library/WT/Stats.php:3879
@@ -6440,7 +6432,7 @@ msgid "For help with genealogy questions contact"
 msgstr "לשאלות בקשר לאילן יוחסין נא להתקשר אל"
 
 #: help_text.php:1494
-msgid "For optimal display on the Internet, <b>webtrees</b> uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ANSI (ISO-8859-1)</b>.<br><br>The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren’t sure, consult the documentation of that program.<br><br>Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program’s method for handling these special characters by some other means.  Consult your program’s manufacturer or author.<br><br>This <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8."
+msgid "For optimal display on the internet, <b>webtrees</b> uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ANSI (ISO-8859-1)</b>.<br><br>The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren’t sure, consult the documentation of that program.<br><br>Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program’s method for handling these special characters by some other means.  Consult your program’s manufacturer or author.<br><br>This <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8."
 msgstr "לתצוגה אופטימאלית באינטרנט <b>webtrees</b> משתמש במערך אותיות UTF-8. תוכניות כמו למשל Family Tree Maker, אינן תומכות בייבוא קבצי GEDCOM מוצפנים ב-UTF-8. בחירת התיבה תתרגם את הקובץ מ-<b>UTF-8</b> ל-<b><span dir=\"ltr\">ANSI (ISO-8859-1)</span></b>.<br><br>המבנה הדרוש תלוי בתוכנה שבה תרצה להשתמש בקובץ ה-GEDCOM שהורד. בדוק את התיעוד של התוכנה הזאת, אם אינך בטוח.<br><br>שים לב שכדי שסימנים מיוחדים ישמרו ללא שינוי, עליך להוריד את הקובץ ב-UTF-8 ולהסב לשיטת טיפול של התוכנית שלך בסימנים המיוחדים הללו בדרך אחרת. התייעץ עם יצרן או עורך התוכנה שלך.<br><br>הכתבה הבאה <a href=\"http://he.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"כתבה של ויקיפדיה\"><b>של ויקיפדיה</b></a> כוללת מידע וקישורים מקיפים על UTF-8."
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
@@ -6771,7 +6763,7 @@ msgid "Gives users the option of selecting their own theme."
 msgstr "מאפשר למשתמשים לבחור עיצוב משלהם."
 
 #: help_text.php:1002
-msgid "Gives visitors the option of registering themselves for an account on the site.<br><br>The visitor will receive an email message with a code to verify his application for an account.  After verification, the Administrator will have to approve the registration before it becomes active."
+msgid "Gives visitors the option of registering themselves for an account on the site.<br><br>The visitor will receive an email message with a code to verify his application for an account.  After verification, an administrator will have to approve the registration before it becomes active."
 msgstr "נותן למבקרים אפשרות להרשם בעצמם לחשבון באתר.<br><br>המבקר יקבל הודעת דוא״ל עם קוד לאימות בקשתו לחשבון. לאחר אימות, המנהל יצטרך לאשר את הרישום לפני שהוא הופך לפעיל."
 
 #. I18N: gedcom tag _UID
@@ -6979,7 +6971,7 @@ msgid "He was cremated"
 msgstr "גופתו נשרפה"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_1_ctrl.php:62
-msgid "Head of Household:"
+msgid "Head of household:"
 msgstr "ראש"
 
 #. I18N: gedcom tag HEAD
@@ -7065,7 +7057,7 @@ msgid "Here you can add a fact to the record being edited.<br><br>First choose a
 msgstr "כאן תוכל להוסיף עובדה לרשומה שאותה אתה עורך.<br><br>בחר קודם כל עובדה מהרשימה הנגללת, לחץ אח״כ על הכפתור <b>הוסף</b>. הרשימה הנגללת כוללת כבר את כל העובדות שניתן להוסיף למאגר הנתונים."
 
 #: help_text.php:1089
-msgid "Here you can add a source <b>Citation</b> to this record.<br><br>Just click the link, a window will open, and you can choose the source from the list (Find ID) or create a new source and then add the Citation.<br><br>Adding sources is an important part of genealogy because it allows other researchers to verify where you obtained your information."
+msgid "Here you can add a source <b>Citation</b> to this record.<br><br>Just click the link, a window will open, and you can choose the source from the list (Find ID) or create a new source and then add the citation.<br><br>Adding sources is an important part of genealogy because it allows other researchers to verify where you obtained your information."
 msgstr "כאן ניתן להוסיף <b>ציטוט</b> מקור לרשומה זו.<br><br>לחץ על הקישור, יפתח חלון ותוכל לבחור את המקור מתוך רשימה (מצא קוד זיהוי) או צור מקור חדש והוסף לאחר מכן את הציטוט.<br><br>הוספת מקורות היא חלק חשוב של חקר המשפחה משום שזה מאפשר לחוקרים אחרים לוודא מהיכן השגת את נתוניך."
 
 #: help_text.php:1228
@@ -7077,7 +7069,7 @@ msgid "Here you can choose between two types of displaying places names in hiera
 msgstr "כאן תוכל לבחור בין שני סוגים של הצגת שמות של מקומות בהיררכיה. אם נקבע כן, למקום יש שם קצר או שם הרמה בפועל, אם לא - שם מלא.<br><b>דוגמאות:<br>שם מלא:</b> Chicago, Illinois, USA<br><b>שם קצר:</b> Chicago<br><b>שם מלא:</b> Illinois, USA<br><b>שם קצר:</b> Illinois"
 
 #: help_text.php:1045
-msgid "Here you can choose text to appear on the login screen. You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the Help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.</div><br></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
+msgid "Here you can choose text to appear on the login screen. You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.</div><br></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
 msgstr "כאן תוכל לבחור טקסט שיופיע על מסך הכניסה. עליך לקבוע איזה טקסט המוגדר מראש הוא המתאים ביותר.<br><br>אתה יכול גם לבחור להזין טקסט ברוכים הבאים המותאם אישית עבורך. אנא עיין בטקסט העזרה המשויך לשדה <b>טקסט ברוכים הבאים מותאם אישית</b> לקבלת מידע נוסף.<br><br>הטקסטים המוגדרים מראש הם:<ul><li><b>מלל המציין שכל המשתמשים יכולים לבקש חשבון משתמש:</b><div class=\"list_value_wrap\"><center><b>ברוכים הבאים לאתר הזה של חקר שושלת היוחסין</b></center><br>גישה לאתר זה מותרת לכל המשתמשים בעלי חשבון משתמש באתר.<br><br>אם יש לך חשבון משתמש, תוכל להתחבר למערכת באמצעות הדף הזה. אם אין לך חשבון משתמש, תוכל לבקש חשבון משתמש ע״י לחיצה על הקישור המתאים למטה.<br><br>מנהל האתר יבדוק את נתוניך ויפעיל את חשבון המשתמש שלך. תקבל דואר אלקטרוני לאחר שחשבון המשתמש שלך יאושר.</div><br></li><li><b>מלל המציין שהמנהלן הוא שיחליט אם לאשר את הבקשה לחשבון משתמש:</b><div class=\"list_value_wrap\"><center><b>ברוכים הבאים לאתר הזה של חקר שושלת היוחסין</b></center><br>גישה לאתר זה מותרת רק למשתמשים <u>מורשים.</u><br><br>אם יש לך חשבון משתמש תוכל להתחבר למערכת באמצעות הדף הזה. אם אין לך חשבון משתמש, תוכל לבקש חשבון משתמש ע״י לחיצה על הקישור למטה.<br><br>מנהל האתר יבדוק את נתוניך ויאשר או ידחה את בקשתך. תקבל דואר אלקטרוני לאחר שבקשתך תאושר.</div><br></li><li><b>מלל המציין שרק בני משפחה יכולים לבקש חשבון משתמש:</b><div class=\"list_value_wrap\"><center><b>ברוכים הבאים לאתר הזה של חקר שושלת היוחסין</b></center><br>גישה לאתר זה מותרת <u>רק לבני משפחה</u>.<br><br>אם יש לך חשבון משתמש תוכל להתחבר למערכת באמצעות הדף הזה. אם אין לך חשבון משתמש, תוכל לבקש חשבון משתמש ע״י לחיצה על הקישור המתאים למטה.<br><br>מנהל האתר יבדוק את נתוניך ויאשר או ידחה את בקשתך. תקבל דואר אלקטרוני לאחר שבקשתך תאושר.</div></li></ul>"
 
 #: modules_v3/googlemap/help_text.php:54
@@ -7304,7 +7296,7 @@ msgid "If the number of times that a certain surname occurs is lower than the th
 msgstr "אם מספר הפעמים ששם משפחה קיים קטן מסף, הוא לא יופיע ברשימה. ניתן להוסיף אותו כאן ידנית. אם מוסיפים יותר משם משפחה אחד, יש להפריד ביניהם ע״י פסיק. <b>אותיות לועזיות גדולות וקטנות בשמות המשפחה הן משמעותיות.</b>"
 
 #: help_text.php:819
-msgid "If the option <b>Allow visitors to request account registration</b> is enabled this setting controls whether the admin must approve the registration.<br><br>Setting this to <b>Yes</b> will require that all new users first verify themselves and then be approved by an admin before they can login.  With this setting on <b>No</b>, the <b>User approved by Admin</b> checkbox will be checked automatically when users verify their account, thus allowing an immediate login afterwards without admin intervention."
+msgid "If the option <b>Allow visitors to request account registration</b> is enabled this setting controls whether the admin must approve the registration.<br><br>Setting this to <b>Yes</b> will require that all new users first verify themselves and then be approved by an admin before they can login.  With this setting on <b>No</b>, the “Approved by administrator” checkbox will be checked automatically when users verify their account, thus allowing an immediate login afterwards without admin intervention."
 msgstr "אם <b>אפשר למשתמשים לבקש רישום באתר</b> מופעלת, הערך הזה קובע האם המנהל חייב לאשר את הרישום.<br><br>ההגדרה  <b>כן</b> תדרוש שכל המשתמשים החדשים חייבים לאמת תחילה את עצמם ולאחר מכן יאושרו על ידי מנהל לפני שהם יכולים להתחבר לאתר. הגדרה <b>לא</b>, תיבת הסימון <b>המשתמש אושר על ידי המנהלן</b> תסומן באופן אוטומטי כאשר המשתמש מאמת את החשבון שלו, ובכך מתאפשרת כניסה מיידית לאתר לאחר מכן ללא התערבות מנהל."
 
 #: help_text.php:281
@@ -7369,7 +7361,7 @@ msgid "If you leave this setting empty, the default value will be used."
 msgstr "אם תשאיר הגדרה זו ריקה, ערך ברירת המחדל יהיה בשימוש."
 
 #: help_text.php:585
-msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php and .htaccess) from the existing folder to the new folder."
+msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
 msgstr "אם תבחר תיקייה אחרת, עליך גם להעביר את כל הקבצים (למעט config.ini.php, index.php ו-htaccess.) מהתיקייה הקיימת לתיקייה החדשה."
 
 #: help_text.php:659
@@ -7381,7 +7373,7 @@ msgid "If you try to exceed these limits, you may experience server time-outs an
 msgstr "אם תנסה לחרוג מגבולות אלו, ייתכן שתתקל בפסק הזמן של השרת ובדפים ריקים."
 
 #: help_text.php:471
-msgid "If you want to remove a surname from the Common Surname list without increasing the threshold value, you can do that by entering the surname here.  If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive.</b>  Surnames entered here will also be removed from the Top-10 list on the Home Page."
+msgid "If you want to remove a surname from the Common Surname list without increasing the threshold value, you can do that by entering the surname here.  If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive</b>.  Surnames entered here will also be removed from the “Top surnames” list on the “Home page”."
 msgstr "אם ברצונך להסיר שם משפחה מרשימת שמות המשפחה השכיחים, מבלי להגדיל את ערך הסף, אתה יכול לעשות זאת על ידי הזנת שם המשפחה כאן. אם מזינים יותר משם משפחה אחד, הם חייבים להיות מופרדים באמצעות פסיק. <b>אותיות לועזיות גדולות וקטנות בשמות המשפחה הן משמעותיות.</b> שמות משפחה שהוכנסו לכאן יוסרו גם מרשימת 10 שמות המשפחה הנפוצים על דף הבית."
 
 #: setup.php:185
@@ -7435,7 +7427,7 @@ msgid "In some countries, privacy laws apply not only to living individuals, but
 msgstr "בחלק מהמדינות, חוקי הפרטיות חלים לא רק על אנשים חיים, אלא גם על אלה שמתו לאחרונה. אפשרות זו תאפשר להאריך את כללי הפרטיות של אנשים חיים לאלה שנולדו או מתו בתוך מספר מסוים של שנים. השאר ערכים אלה ריקים כדי לבטל תכונה זו."
 
 #: help_text.php:315
-msgid "In the Citation Details field you would enter the page number or other information that might help someone find the information in the source."
+msgid "In the citation details field you would enter the page number or other information that might help someone find the information in the source."
 msgstr "בשדה פירוט הציטוט מכניסים את מספר הדף או מידע אחר שיעזור לאחרים למצוא את הנתונים מתוך המקור."
 
 #: help_text.php:378
@@ -7863,7 +7855,7 @@ msgid "Keep"
 msgstr "שמור"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:124
-msgid "Keep Link in list"
+msgid "Keep link in list"
 msgstr "שמור קישור ברשימה"
 
 #: library/WT/Stats.php:3924
@@ -8084,7 +8076,7 @@ msgid "Leave password blank if you want to keep the current password."
 msgstr "השאר את תיבת הסיסמה ריקה, אם ברצונך לשמור על הסיסמה הקיימת."
 
 #: admin_trees_config.php:438
-msgid "Leave this field empty to use the title of the currently active database."
+msgid "Leave this field empty to use the name of the family tree."
 msgstr "השאר שדה זה ריק כדי להשתמש בכותרת של ה-GEDCOM הפעיל עבור הערך זה."
 
 #: includes/functions/functions_print_lists.php:95
@@ -8828,7 +8820,7 @@ msgid "Media ID prefix"
 msgstr "קידומת קוד זיהוי של מדיה"
 
 #: medialist.php:173
-msgid "Media Objects found"
+msgid "Media objects found"
 msgstr "ישויות מדיה נמצאו"
 
 #: find.php:214
@@ -9234,7 +9226,7 @@ msgid "Morocco"
 msgstr "מרוקו"
 
 #: modules_v3/gedcom_stats/module.php:192 modules_v3/html/module.php:258
-msgid "Most Common Surnames"
+msgid "Most common surnames"
 msgstr "שמות משפחה שכיחים"
 
 #. I18N: Help text for the “Use password” site configuration setting
@@ -9665,7 +9657,7 @@ msgid "No GEDCOM files found.  You need to copy files to the <b>%s</b> directory
 msgstr "לא נמצאו קבצי GEDCOM. אתה צריך להעתיק את הקבצים לתיקייה <b>%s</b> על השרת."
 
 #: modules_v3/gedcom_news/module.php:93
-msgid "No News articles have been submitted."
+msgid "No news articles have been submitted."
 msgstr "לא הגשת מאמרי חדשות."
 
 #: modules_v3/googlemap/module.php:865
@@ -9864,7 +9856,7 @@ msgid "Norway"
 msgstr "נורבגיה"
 
 #: modules_v3/GEDFact_assistant/module.php:196
-msgid "Not a valid Individual, Family or Source ID"
+msgid "Not a valid individual, family, or source ID"
 msgstr "קוד הזיהוי של האדם, המשפחה או המקור אינו תקין"
 
 #. I18N: gedcom tag _NLIV
@@ -10231,7 +10223,7 @@ msgid "Other"
 msgstr "אחר"
 
 #: search.php:217
-msgid "Other Searches"
+msgid "Other searches"
 msgstr "חיפושים אחרים"
 
 #: admin_trees_config.php:1000 help_text.php:455
@@ -10588,11 +10580,11 @@ msgstr "מקום"
 #: modules_v3/googlemap/module.php:167 modules_v3/googlemap/module.php:287
 #: modules_v3/googlemap/module.php:832 modules_v3/googlemap/module.php:1492
 #: modules_v3/googlemap/module.php:2521 modules_v3/googlemap/module.php:3979
-msgid "Place Check"
+msgid "Place check"
 msgstr "בדיקת מקום"
 
 #: placelist.php:43 placelist.php:62
-msgid "Place List"
+msgid "Place list"
 msgstr "רשימת מקומות"
 
 #: find.php:232
@@ -10773,7 +10765,7 @@ msgid "Please click on the following link and fill in the requested data to conf
 msgstr "לחץ על הקישור הבאה ומלא את הנתונים הדרושים כדי לאשר את קוד המשתמש וכתובת הדואר האלקטרוני שלך."
 
 #: search.php:63
-msgid "Please enter a Given name, Last name, or Place in addition to Year"
+msgid "Please enter a given name, surname, or place in addition to the year"
 msgstr "הכנס בבקשה שם פרטי, שם משפחה או מקום בנוסף לשנה"
 
 #: message.php:102
@@ -11000,7 +10992,7 @@ msgid "Property"
 msgstr "נכס"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_4_text.php:36
-msgid "Proposed Census Text&nbsp;&nbsp;"
+msgid "Proposed census text&nbsp;&nbsp;"
 msgstr "הצעת טקסט מפקד&nbsp;&nbsp;"
 
 #: library/WT/Gedcom/Code/Temp.php:150
@@ -11387,7 +11379,7 @@ msgid "Remove"
 msgstr "הסר"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:125
-msgid "Remove Link from list"
+msgid "Remove link from list"
 msgstr "הסר קישור מרשימה"
 
 #: modules_v3/batch_update/plugins/duplicate_links.php:28
@@ -11787,7 +11779,7 @@ msgid "Search for"
 msgstr "חפש את"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:57
-msgid "Search for individuals to add to Add Links list."
+msgid "Search for individuals to add to add Links list."
 msgstr "חפש אנשים כדי להוסיפם לרשימת הוסף קישורים."
 
 #: modules_v3/googlemap/module.php:3831
@@ -12061,7 +12053,7 @@ msgid "Set this to <b>Yes</b> to display icons near Fact names on the Personal F
 msgstr "קבע את זה כ<b>כן</b> כדי להציג סמלים ליד שמות עובדה בדף העובדות והאירועים של אדם. סמלי עובדות יוצגו רק אם הם קיימים בתיקיית <i>images/facts</i> של העיצוב הנוכחי."
 
 #: help_text.php:1012
-msgid "Set to <b>Yes</b> to use the RIN number instead of the GEDCOM ID when asked for Individual IDs in configuration files, user settings, and charts.  This is useful for genealogy programs that do not consistently export GEDCOMs with the same ID assigned to each individual but always use the same RIN."
+msgid "Set to <b>Yes</b> to use the RIN number instead of the GEDCOM ID when asked for individual IDs in configuration files, user settings, and charts.  This is useful for genealogy programs that do not consistently export GEDCOMs with the same ID assigned to each individual but always use the same RIN."
 msgstr "הגדר <b>כן</b> כדי להשתמש במספר רין RIN במקום קוד זיהוי של GEDCOM כאשר מבקשים קוד זיהוי אישי בקבצי תצורה, הגדרות משתמשים, ותרשימים. זה שימושי עבור תוכניות שושלת יוחסין שיצוא ה-GEDCOM שלהם לא נעשה כל פעם עם אותו קוד זיהוי שהוקצה לאנשים, אבל תמיד משתמשים באותו רין."
 
 #: help_text.php:859
@@ -12458,7 +12450,7 @@ msgstr "הראה את הישן למעלה"
 
 #: modules_v3/todays_events/module.php:132
 #: modules_v3/upcoming_events/module.php:144
-msgid "Show only Births, Deaths, and Marriages?"
+msgid "Show only births, deaths, and marriages?"
 msgstr "הראה רק לידות, פטירות וחתונות?"
 
 #: modules_v3/todays_events/module.php:125
@@ -12471,7 +12463,7 @@ msgid "Show only females."
 msgstr "הראה רק נקבות."
 
 #: includes/functions/functions_print_lists.php:87
-msgid "Show only individuals of whom the gender is not known."
+msgid "Show only individuals for whom the gender is not known."
 msgstr "הראה רק אנשים שמינם בלתי ידוע."
 
 #: modules_v3/random_media/module.php:260
@@ -13291,7 +13283,7 @@ msgid "The FAQ list is empty."
 msgstr "רשימת השאלות והתשובות ריקה."
 
 #: help_text.php:1253
-msgid "The Favorites drop-down list shows the favorites that you have selected on your personalized My Page.  It also shows the favorites that the site administrator has selected for the currently active GEDCOM.  Clicking on one of the favorites entries will take you directly to the Individual Information page of that individual.<br><br>More help about adding Favorites is available in your personalized My Page."
+msgid "The Favorites drop-down list shows the favorites that you have selected on your “My page”.  It also shows the favorites that the site administrator has selected for the currently active GEDCOM.  Clicking on one of the favorites entries will take you directly to the Individual Information page of that individual.<br><br>More help about adding favorites is available in your “My page”."
 msgstr "הרשימה הנגללת של המועדפים מראה את המועדפים שבחרת בדף שלך האישי. היא מראה גם את המועדפים שמנהל  האתר בחר עבור ה-GEDCOM הפעיל. לחיצה על אחד המועדפים מביאה אותך ישירות לדף מידע אישי של האדם הזה.<br><br>עזרה נוספת על הוספת מועדפים נמצאת בדף שלך האישי."
 
 #: library/WT/Gedcom/Code/Temp.php:98
@@ -13328,7 +13320,7 @@ msgid "The changes to “%s” have been rejected."
 msgstr "השינויים ל-”%s” נדחו."
 
 #: modules_v3/clippings/module.php:142
-msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the <b>Download Now</b> link.  Follow the instructions and links.</li></ul>"
+msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the “Download” link.  Follow the instructions and links.</li></ul>"
 msgstr "עגלת גזירי העץ מאפשרת לקיחת קטעים (”גזירות”) מעץ משפחה זה וקשירתם ביחד בקובץ אחד להורדה ולאחר מכן לייבא לתוכנת עץ המשפחה שלך. הקובץ שיורד הוא במבנה GEDCOM.<br><ul><li>איך גוזרים?<br>הפעולה קלה. בכל מקום שתראה שם שניתן ללחוץ עליו (אדם, משפחה או מקור) תוכל לעבור לדף מפורט של השם הזה. משם תיראה אפשרות  <b>הוסף לעגלת גזירים</b>. לחיצה על קישור זה תעביר אותך לדף עם מספר אפשרויות הורדה.</li><li>איך מורידים?<br>אחרי שיש לך פריטים בעגלה, תוכל להוריד אותם ע״י לחיצה על הקישור <b>הורד עכשיו</b>. יש לעקוב אחר ההנחיות והקישורים.</li></ul>"
 
 #: help_text.php:1314
@@ -13488,7 +13480,7 @@ msgid "The individual to contact about the genealogical data on this site."
 msgstr "איש קשר של נתוני שושלת יוחסין באתר זה."
 
 #: help_text.php:573
-msgid "The length of time after birth can be set on the Privacy configuration tab option “Age at which to assume an individual is dead”."
+msgid "The length of time after birth can be set on the “Privacy” tab option “Age at which to assume an individual is dead”."
 msgstr "אורך זמן לאחר הלידה שניתן להגדירו באופצית  התצורה ”גיל שממנו מניחים שאדם ניפטר” של פרטיות."
 
 #. I18N: %s are names of records, such as sources, repositories or individuals
@@ -13587,7 +13579,7 @@ msgid "The username or password is incorrect."
 msgstr "שם המשתמש או הסיסמא שגוי."
 
 #: help_text.php:689
-msgid "The value to place in the Description meta tag in the HTML page header.  Leave this field empty to use the title of the currently active database."
+msgid "The value to place in the “meta description” tag in the HTML page header.  Leave this field empty to use the name of the family tree."
 msgstr "הערך בתג מטה של התיאור בכותרת הדף ה-HTML. השאר שדה זה ריק כדי להשתמש בכותרת של האתר הפעיל."
 
 #: admin_pgv_to_wt.php:74
@@ -13629,15 +13621,15 @@ msgstr "ניתן לבחור עיצובים בשלוש רמות: משתמש, GEDC
 
 #: modules_v3/extra_info/module.php:61
 #: modules_v3/personal_facts/module.php:122
-msgid "There are no Facts for this individual."
+msgid "There are no facts for this individual."
 msgstr "לאדם זה אין עובדות."
 
 #: modules_v3/notes/module.php:81
-msgid "There are no Notes for this individual."
+msgid "There are no notes for this individual."
 msgstr "לאדם זה אין הערות."
 
 #: modules_v3/sources_tab/module.php:80
-msgid "There are no Source citations for this individual."
+msgid "There are no source citations for this individual."
 msgstr "לאדם זה אין ציטוטים של מקורות."
 
 #: modules_v3/media/module.php:73
@@ -13712,7 +13704,7 @@ msgid "This account has not been verified.  Please check your email for a verifi
 msgstr "חשבון זה לא אומת. בדוק את הדוא״ל שלך להודעת אימות."
 
 #: modules_v3/charts/help_text.php:32
-msgid "This block allows a pedigree, descendancy, or hourglass chart to appear on My Page or the Home Page.  Because of space limitations, the charts should be placed only on the left side of the page.<br><br>When this block appears on the Home Page, the root individual and the type of chart to be displayed are determined by the administrator.  When this block appears on the user’s personalized My Page, these options are determined by the user.<br><br>The behavior of these charts is identical to their behavior when they are called up from the menus.  Click on the box of an individual to see more details about them."
+msgid "This block allows a pedigree, descendancy, or hourglass chart to appear on your “My page” or the “Home page”.  Because of space limitations, the charts should be placed only on the left side of the page.<br><br>When this block appears on the “Home page”, the root individual and the type of chart to be displayed are determined by the administrator.  When this block appears on the user’s “My page”, these options are determined by the user.<br><br>The behavior of these charts is identical to their behavior when they are called up from the menus.  Click on the box of an individual to see more details about them."
 msgstr "הבלוק כולל בתוכו תרשים אילן יוחסין או צאצאים או שעון חול שמופיע בדף שלי או בדף הבית. בשל מגבלות מקום, יש למקם את התרשים רק בצד שמאל של הדף.<br><br>כאשר הבלוק מופיע על דף הבית,  מנהל המערכת יכול לבחור את אדם המוצא ואת סוג התרשים שיוצג. כאשר הבלוק מופיע על הדף שלי המתואם אישית, המשתמש קובע את האופציות הללו.<br><br>התרשימים מתנהגים בדיוק כפי שהם היו מתנהגים  אם הם היו נקראים מהתפריטים. לחץ על תיבה של אדם כדי לראות עליו נתונים נוספים."
 
 #: modules_v3/review_changes/help_text.php:32
@@ -13780,7 +13772,7 @@ msgid "This family tree was last updated on %s."
 msgstr "עץ המשפחה הזה עודכן לאחרונה ב-%s."
 
 #: help_text.php:363
-msgid "This field allows you to change the source record that this fact’s source citation links to.  This field takes a Source ID.  Beside the field will be listed the title of the current source ID.  Use the <b>Find ID</b> link to look up the source’s ID number.  To remove the entire citation, make this field blank."
+msgid "This field allows you to change the source record that this fact’s source citation links to.  This field takes a source ID.  Beside the field will be listed the title of the current source ID.  Use the <b>Find ID</b> link to look up the source’s ID number.  To remove the entire citation, make this field blank."
 msgstr "שדה זה מאפשר לך לשנות את רשומת המקור אליה מקושר מקור הציטוט. בשדה זה מכניסים קוד זיהוי של הציטוט של המקור. ליד השדה רשומה הכותרת של קוד הזיהוי הנוכחי של המקור. השתמש בקישור <b>מצא קוד זיהוי</b> כדי לחפש את קוד הזיהוי של המקור. כדי להסיר את הציטוט של המקור במלואו, הכנס ערך ריק לשדה."
 
 #: modules_v3/faq/help_text.php:40
@@ -13847,11 +13839,11 @@ msgid "This input box lets you change that year of the calendar.  Type a year in
 msgstr "תיבת הכניסה הזו מאפשרת לשנות את השנה של לוח השנה. הקלד שנה בתיבה ולחץ <b>הכנס</b> כדי לשנות את לוח השנה לשנה הזו.<br><br><b>מאפיינים מתקדמים</b> עבור <b>הצג שנה</b><dl><dt><b>יותר משנה אחת</b></dt><dd>תוכל לחפש תאריכים בתחום של שנים.<br><br>תחומי השנה הם <u>כוללים</u>. משמעות הדבר שתחום התאריך הוא מ-1 בינואר של השנה הראשונה עד ל-31 בדצמבר בשנה האחרונה המוזכרת. מובאות כאן מספר דוגמאות לתחום השנים:<br><br><b>1992-5</b> עבור כל האירועים מ-1992 עד 1995.<br><b>1972-89</b> עבור כל האירועים מ-1972 עד 1989.<br><b>1610-759</b> עבור כל האירועים מ-1610 עד 1759.<br><b>1880-1905</b> עבור כל האירועים מ-1880 עד 1905.<br><b>880-1105</b> עבור כל האירועים מ-880 עד 1105.<br><br>כדי לראות את כל האירועים של העשור או מאה, ניתן להשתמש ב-<b>?</b> במקום הספרות האחרונות. לדוגמא,<b><span dir=\"ltr\">197?</span></b> לכל האירועים מ-1970 עד 1979 או <b><span dir=\"ltr\">16??</span></b> לכל האירועים מ-1600 עד 1699.<br><br>בחירת תחום שנים ישנה את לוח השנה למצגת של שנה.</dd></dl>"
 
 #: modules_v3/clippings/help_text.php:32
-msgid "This input box lets you enter an individual’s ID number so he can be added to the clippings cart.  Once added you’ll be offered options to link that individual’s relations to your clippings cart.<br><br>If you do not know an individual’s ID number, you can perform a search by name by pressing the individual icon next to the Add button."
+msgid "This input box lets you enter an individual’s ID number so he can be added to the clippings cart.  Once added you’ll be offered options to link that individual’s relations to your clippings cart.<br><br>If you do not know an individual’s ID number, you can perform a search by name by pressing the individual icon next to the “Add” button."
 msgstr "תיבת הקלט הזו מאפשרת הכנסת קודי זיהוי של אנשים כך שהם מתווספים לעגלת הגזירים. לאחר שהם התווספו תוצע אפשרות לקשר את קרובי האנשים הללו לעגלת הגזירים שלך.<br><br>אם אינך יודע את קוד הזיהוי של אדם, תוכל לבצע חיפוש לפי שם ע״י לחיצת הצלמית האישית שליד כפתור הוסף."
 
 #: help_text.php:407
-msgid "This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets."
+msgid "This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets."
 msgstr "זוהי רשימה מופרדת בפסיקים של תגי עובדת GEDCOM שיוצגו על טופס הוספה/עריכה של שם. אם אתה משתמש באותיות שאינן לטיניות, כגון עברית, יוונית, קירילית או ערבית, ייתכן שתרצה להוסיף תגים כגון FONE, _HEB, ROMN, וכו', כדי לאפשר אחסון שמות בכמה סוגי אותיות שונות."
 
 #: help_text.php:794
@@ -13863,7 +13855,7 @@ msgid "This is a comma separated list of GEDCOM fact tags that will be shown whe
 msgstr "זוהי רשימה מופרדת בפסיקים של תגי עובדה של קובץ GEDCOM שיוצגו בעת הוספת אדם חדש. לדוגמה, אם BIRT הוא ברשימה, שדות לתאריך לידה ומקום לידה יוצגו בטופס."
 
 #: help_text.php:412
-msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
+msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
 msgstr "זוהי רשימה מופרדת בפסיקים של תגי עובדת GEDCOM שיוצגו על טופס הוספה/עריכה של שמות מקומות. אם אתה משתמש באותיות שאינן לטיניות, כגון עברית, יוונית, קירילית או ערבית, ייתכן שתרצה להוסיף תגים כגון HEB, ROMN, FONE_, וכו', כדי לאפשר אחסון שמות של מקומות בכמה סוגי אותיות שונות."
 
 #: help_text.php:1202
@@ -13896,35 +13888,35 @@ msgid "This is the latest version of webtrees.  No upgrade is available."
 msgstr ""
 
 #: help_text.php:506
-msgid "This is the list of GEDCOM facts that your users can add to families.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique family facts</i> list."
+msgid "This is the list of GEDCOM facts that your users can add to families.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the “Unique family facts” list."
 msgstr "זוהי הרשימה של עובדות קובץ GEDCOM שהמשתמשים יכולים להוסיף למשפחות. אתה יכול לשנות רשימה זו על ידי הסרת או הוספת שמות עובדות לפי הצורך. שם עובדה שמופיע ברשימה זו לא יכול להופיע גם ברשימת <i>עובדות משפחתיות ייחודיות</i>."
 
 #: help_text.php:593
-msgid "This is the list of GEDCOM facts that your users can add to individuals.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique Individual Facts</i> list."
+msgid "This is the list of GEDCOM facts that your users can add to individuals.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the “Unique individual facts” list."
 msgstr "זוהי הרשימה של עובדות קובץ GEDCOM שהמשתמשים יכולים להוסיף לאנשים. אתה יכול לשנות רשימה זו על ידי הסרת או הוספת שמות עובדות לפי הצורך. שם עובדה שמופיע ברשימה זו לא יכול להופיע גם ברשימת <i>עובדות אישיות ייחודיות</i>."
 
 #: help_text.php:799
-msgid "This is the list of GEDCOM facts that your users can add to repositories.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique Repository Facts</i> list."
+msgid "This is the list of GEDCOM facts that your users can add to repositories.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the “Unique repository facts” list."
 msgstr "זוהי הרשימה של עובדות של קובץ GEDCOM שהמשתמשים שלך יכולים להוסיף למאגרים. אתה יכול לשנות רשימה זו על ידי הסרה או הוספת שמות של עובדות, אפילו תגים מותאמים , לפי הצורך. עובדה ששמה מופיעה ברשימה זו לא יכולה להופיע גם ברשימת <i>עובדות הייחודיות של המאגר</i>"
 
 #: help_text.php:910
-msgid "This is the list of GEDCOM facts that your users can add to sources.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique Source Facts</i> list."
+msgid "This is the list of GEDCOM facts that your users can add to sources.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the “Unique source facts” list."
 msgstr "זוהי הרשימה של עובדות קובץ GEDCOM שהמשתמשים יכולים להוסיף למקורות. אתה יכול לשנות רשימה זו על ידי הסרת או הוספת שמות עובדות לפי הצורך. שם עובדה שמופיע ברשימה זו לא יכול להופיע גם ברשימת <i>עובדות ייחודיות של מקורות</i>"
 
 #: help_text.php:516
-msgid "This is the list of GEDCOM facts that your users can only add <u>once</u> to families.  For example, if MARR is in this list, users will not be able to add more than one MARR record to a family.  Fact names that appear in this list must not also appear in the <i>Family Add Facts</i> list."
+msgid "This is the list of GEDCOM facts that your users can only add once to families.  For example, if MARR is in this list, users will not be able to add more than one MARR record to a family.  Fact names that appear in this list must not also appear in the “All family facts” list."
 msgstr "זוהי הרשימה של עובדות בקובץ GEDCOM שהמשתמשים יכולים להוסיף <u>פעם אחת</u> למשפחות. לדוגמה, אם MARR הוא ברשימה זו, המשתמשים לא יוכלו להוסיף יותר מרשומת MARR אחת למשפחה. שמות עובדה שמופיעים ברשימה זו לא יכולים להופיע גם ברשימה <i>הוסף עובדות למשפחה</i>."
 
 #: help_text.php:603
-msgid "This is the list of GEDCOM facts that your users can only add <u>once</u> to individuals.  For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual.  Fact names that appear in this list must not also appear in the <i>Individual Add Facts</i> list."
+msgid "This is the list of GEDCOM facts that your users can only add once to individuals.  For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual.  Fact names that appear in this list must not also appear in the “All individual facts” list."
 msgstr "זוהי הרשימה של עובדות בקובץ GEDCOM שהמשתמשים יכולים להוסיף <u>פעם אחת</u> לאדם. לדוגמה, אם BIRT הוא ברשימה זו, המשתמשים לא יוכלו להוסיף יותר מרשומת BIRT אחת לאדם. שמות עובדות שמופיעים ברשימה זו לא יכולים להופיע גם ברשימה  <i>הוסף עובדות לאדם</i>."
 
 #: help_text.php:809
-msgid "This is the list of GEDCOM facts that your users can only add <u>once</u> to repositories.  For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository.  Fact names that appear in this list must not also appear in the <i>Repository Add Facts</i> list."
+msgid "This is the list of GEDCOM facts that your users can only add once to repositories.  For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository.  Fact names that appear in this list must not also appear in the “All repository facts” list."
 msgstr "זוהי הרשימה של עובדות בקובץ GEDCOM שהמשתמשים יכולים להוסיף <u>פעם אחת</u> למאגר. לדוגמה, אם NAME הוא ברשימה זו, המשתמשים לא יוכלו להוסיף יותר מרשומת NAME אחת למאגר. שמות עובדה שמופיעים ברשימה זו לא יכולים להופיע גם ברשימה <i>הוסף עובדות למאגר</i>."
 
 #: help_text.php:920
-msgid "This is the list of GEDCOM facts that your users can only add <u>once</u> to sources.  For example, if TITL is in this list, users will not be able to add more than one TITL record to a source.  Fact names that appear in this list must not also appear in the <i>Source Add Facts</i> list."
+msgid "This is the list of GEDCOM facts that your users can only add once to sources.  For example, if TITL is in this list, users will not be able to add more than one TITL record to a source.  Fact names that appear in this list must not also appear in the “All source facts” list."
 msgstr "זוהי הרשימה של עובדות בקובץ GEDCOM שהמשתמשים יכולים להוסיף <u>פעם אחת</u> למקורות. לדוגמה, אם TITL הוא ברשימה זו, המשתמשים לא יוכלו להוסיף יותר מרשומת TITL אחת למקור. שמות עובדה שמופיעים ברשימה זו לא יכולים להופיע גם ברשימה <i>הוסף עובדות למקור</i>."
 
 #. I18N: Help text for the “Server name” site configuration setting
@@ -13933,7 +13925,7 @@ msgid "This is the name of the SMTP server. “localhost” means that the mail 
 msgstr "זהו השם של שרת ה- SMTP.   משמעות ”localhost” היא שהדואר פועל על אותו מחשב כמו שרת האינטרנט שלך."
 
 #: help_text.php:476
-msgid "This is the number of times that a surname must occur before it shows up in the Common Surname list on the Home Page."
+msgid "This is the number of times that a surname must occur before it shows up in the Common Surname list on the “Home page”."
 msgstr "זהו מספר הפעמים המינימלי ששם משפחה חייב להופיע כדי שהוא יופיע ברשימת שמות המשפחה השכיחים על דף הבית."
 
 #: help_text.php:511
@@ -14128,11 +14120,11 @@ msgid "This option will let you edit an item on the FAQ page."
 msgstr "אפשרות זו מאפשרת לערוך פריט בדף שאלות ותשובות"
 
 #: modules_v3/faq/help_text.php:60
-msgid "This option will let you move an item downwards on the FAQ page.<br><br>Each time you use this option, the FAQ Position number of this item is increased by one.  You can achieve the same effect by editing the item in question and changing the FAQ Position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
+msgid "This option will let you move an item downwards on the FAQ page.<br><br>Each time you use this option, the FAQ position number of this item is increased by one.  You can achieve the same effect by editing the item in question and changing the FAQ position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
 msgstr "אפשרות זו תעביר פריט בעמוד שאלות ותשובות כלפי מטה.<br><br>בכל פעם שתשתמש באפשרות זו, המספר הסידורי של פריט זה  של שאלות ותשובות גדל באחד. אתה יכול לקבל אותה תוצאה על ידי עריכת הפריט בשאלות ותשובות ושינוי המספר הסידורי של  השאלה והתשובה. כאשר ליותר מפריט אחד של שאלות ותשובות יש את אותו המספר הסידורי, יוצג רק אחד מהפריטים האלה."
 
 #: modules_v3/faq/help_text.php:65
-msgid "This option will let you move an item upwards on the FAQ page.<br><br>Each time you use this option, the FAQ Position number of this item is reduced by one.  You can achieve the same effect by editing the item in question and changing the FAQ Position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
+msgid "This option will let you move an item upwards on the FAQ page.<br><br>Each time you use this option, the FAQ position number of this item is reduced by one.  You can achieve the same effect by editing the item in question and changing the FAQ position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
 msgstr "אפשרות זו תעביר פריט בעמוד שאלות ותשובות כלפי מעלה.<br><br>בכל פעם שתשתמש באפשרות זו, המספר הסידורי של פריט זה  של שאלות ותשובות יקטן באחד. אתה יכול לקבל אותה תוצאה על ידי עריכת הפריט בשאלות ותשובות ושינוי המספר הסידורי של  השאלה והתשובה. כאשר ליותר מפריט אחד של שאלות ותשובות יש את אותו מספר הסידורי, יוצג רק אחד מהפריטים האלה."
 
 #: help_text.php:1099
@@ -14152,7 +14144,7 @@ msgid "This option will show the names (but no other details) of private individ
 msgstr "אפשרות זו תציג את השמות (אבל לא פרטים אחרים) של אנשים פרטיים. אנשים הם פרטיים, אם הם עדיין בחיים, או אם מגבלה לפרטיות נוספה לרשומה האישית שלהם. כדי להסתיר שם ספציפי, הוסף הגבלת פרטיות לרשומה של השם."
 
 #: modules_v3/googlemap/help_text.php:47
-msgid "This options sets whether Latitude and Longitude are displayed on the pop-up window attached to map markers."
+msgid "This options sets whether latitude and longitude are displayed on the pop-up window attached to map markers."
 msgstr "אפשרות זו קובעת אם קוי רוחב ואורך מוצגים בחלון המוקפץ המצורף למראי ממפות."
 
 #: help_text.php:1163
@@ -14204,7 +14196,7 @@ msgid "This role has all the permissions of the editor role, plus permission to 
 msgstr "תפקיד זה כולל את כל ההרשאות של תפקיד העורך, בתוספת אפשרות לאשר/לדחות שינויים שבוצעו על ידי משתמשים אחרים."
 
 #: help_text.php:1398
-msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the site, users and modules."
+msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the site, users, and modules."
 msgstr "תפקיד זה כולל את כל ההרשאות של תפקיד מנהלן בכל עצי המשפחה, בתוספת הרשאה לשנות את ההגדרות/התצורה של האתר, משתמשים ומודולים."
 
 #: help_text.php:1386
@@ -14220,11 +14212,11 @@ msgid "This role has all the permissions of the visitor role, plus any additiona
 msgstr "תפקיד זה כולל את כל ההרשאות של תפקיד המבקר, בתוספת גישה נוספת שניתנת  ע״י תצורת עץ המשפחה."
 
 #: help_text.php:1144
-msgid "This section allows you to add a new Note to the fact that you are currently editing.  Notes are free-form text and will appear in the Fact Details section of the page."
+msgid "This section allows you to add a new note to the fact that you are currently editing.  Notes are free-form text and will appear in the Fact Details section of the page."
 msgstr "הקטע הזה מאפשר הוספת הערה לעובדה שנמצאת כעת בעריכה. הערות הן מלל חופשי והן תופענה בקטע הפירוט של עובדות על הדף."
 
 #: help_text.php:1157
-msgid "This section allows you to add a new source citation to the fact that you are currently editing.<br><br>In the Source field you enter the ID for the source.  Click the <b>Create a new source</b> link if you need to enter a new source.  In the Citation Details field you would enter the page number or other information that might help someone find the information in the source.  In the Text field you would enter the text transcription from the source."
+msgid "This section allows you to add a new source citation to the fact that you are currently editing.<br><br>In the Source field you enter the ID for the source.  Click the “Create a new source” link if you need to enter a new source.  In the citation details field you would enter the page number or other information that might help someone find the information in the source.  In the Text field you would enter the text transcription from the source."
 msgstr "הקטע הזה מאפשר להוסיף ציטוט של מקור חדש לעובדה שכעת בעריכה.<br><br>בשדה המקור עליך להכניס את הזיהוי של המקור. לחץ על קישור <b>צור מקור חדש</b> אם אתה זקוק למקור חדש. בשדה הפירוט של הציטוט הכנס את מספר הדף או נתון אחר שיכול לעזור לאחרים למצוא את מקום הנתון במקור. בשדה המלל הכנס תעתיק מתוך המקור."
 
 #. I18N: http://en.wikipedia.org/wiki/Https
@@ -14242,7 +14234,7 @@ msgid "This setting is only used when you read or write GEDCOM files."
 msgstr "ההגדרה הזו בשימוש רק בעת קריאה או כתיבה של קבצי GEDCOM."
 
 #: help_text.php:456
-msgid "This should be a comma or space separated list of facts, in addition to Birth and Death, that you want to appear in chart boxes such as the pedigree chart.  This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard.  For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
+msgid "This should be a comma or space separated list of facts, in addition to birth and death, that you want to appear in chart boxes such as the pedigree chart.  This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard.  For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
 msgstr "זו צריכה להיות רשימה עובדות המופרדת ברווח או בפסיק, בנוסף ללידה ולמוות, שאתה רוצה שתופיע בתיבות תרשים כגון תרשים אילן היוחסין. רשימה זו מחייבת אותך להשתמש בתגי עובדה כהגדרתו בתקן GEDCOM 5.5.1. לדוגמה, אם אתה רוצה שהמקצוע יופיע בתיבה, עליך להוסיף ”OCCU” בשדה זה."
 
 #: admin_site_upgrade.php:41
@@ -14290,7 +14282,7 @@ msgid "This usually means that you need to change the folder permissions to 777.
 msgstr "בדרך כלל זה אומר שאתה צריך לשנות את הרשאות התיקייה ל-777."
 
 #: help_text.php:1223
-msgid "This value determines the number of descendant generations of the root individual that will be printed in Hourglass format."
+msgid "This value determines the number of descendant generations of the root individual that will be printed in hourglass format."
 msgstr "ערך זה קובע את מספר הדורות של צאצאי אדם המוצא שעבורם מדפיסים תרשים במבנה שעון חול."
 
 #: site-offline.php:71 site-unavailable.php:63
@@ -14528,7 +14520,7 @@ msgstr[1] "%s שמות המשפחה הנפוצים"
 
 #: modules_v3/googlemap/module.php:4361 modules_v3/googlemap/module.php:4426
 #: placelist.php:111
-msgid "Top Level"
+msgid "Top level"
 msgstr "רמה עליונה"
 
 #. I18N: i.e. most popular given name.
@@ -14852,7 +14844,7 @@ msgid "Unknown"
 msgstr "לא ידוע"
 
 #: modules_v3/lightbox/module.php:174
-msgid "Unlink Media"
+msgid "Unlink media"
 msgstr "התר קישור מדיה"
 
 #: library/WT/Gedcom/Tag.php:829
@@ -14864,11 +14856,11 @@ msgid "Unused files"
 msgstr "קבצים שאינם בשימוש"
 
 #: admin.php:157
-msgid "Unverified by Administrator"
+msgid "Not approved by an administrator"
 msgstr "לא אומת ע״י מנהל מערכת"
 
 #: admin.php:153
-msgid "Unverified by User"
+msgid "Not verified by the user"
 msgstr "לא אומת ע״י משתמש"
 
 #. I18N: The system is about to [...]; %s is a .ZIP file.
@@ -14971,8 +14963,8 @@ msgid "Use SMTP to send messages"
 msgstr "השתמש ב- SMTP לשלוח הודעות"
 
 #: modules_v3/batch_update/plugins/search_replace.php:92
-msgid "Use a &laquo;?&raquo; to match a single character, use &laquo;*&raquo; to match zero or more characters."
-msgstr "השתמש ב-&laquo;?&raquo; כדי להתאים תו בודד, השתמש ב-&laquo;*&raquo; כדי להתאים אפס או יותר תוים."
+msgid "Use a “?” to match a single character, use “*” to match zero or more characters."
+msgstr "השתמש ב-“?” כדי להתאים תו בודד, השתמש ב-&laquo;*&raquo; כדי להתאים אפס או יותר תוים."
 
 #. I18N: placeholder text for new-password field
 #: admin_users.php:385 login.php:423
@@ -15020,7 +15012,7 @@ msgid "Use these buttons to re-arrange the order of the entries within the list.
 msgstr "השתמש בכפתורים הללו כדי לשנות את הסדר של הכניסות ברשימה. הבלוקים יודפסו בסדר כפי שהם רשומים.<br><br>הדגש את הכניסה שברצונך להעביר, לחץ אחר כך בכפתור כדי להעביר את הכניסה למעלה או למטה."
 
 #: help_text.php:398
-msgid "Use this field to signal that this media item is the highlighted or primary item for the individual it is attached to.  The highlighted image is the one that will be used on charts and on the Individual page."
+msgid "Use this field to signal that this media item is the highlighted or primary item for the individual it is attached to.  The highlighted image is the one that will be used on charts and on the individual’s page."
 msgstr "השתמש בשדה זה כדי לסמן שפריט המדיה הזה הינו המודגש או העיקרי עבור האדם אליו הוא מחובר. התמונה העיקרית היא התמונה שמשתמשים בה בתרשימים ובדף האישי."
 
 #: help_text.php:1358
@@ -15408,7 +15400,7 @@ msgid "When a user registers for an account, an email is sent to their email add
 msgstr "כאשר משתמש נרשם לחשבון, הודעת דוא״ל תישלח אל כתובת הדוא״ל שלו עם קישור לאימות. כאשר הוא לוחץ על קישור זה, אנחנו יודעים שכתובת הדוא״ל נכונה, ואופציית ”דוא״ל אומת” נבחרה באופן אוטומטי."
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:44
-msgid "When adding a Link, the ID field cannot be empty."
+msgid "When adding a link, the ID field cannot be empty."
 msgstr "כאשר מוסיפים קישור, שדה קוד הזיהוי לא יכול להיות ריק."
 
 #: help_text.php:784
@@ -15557,7 +15549,7 @@ msgid "With sources"
 msgstr "עם מקורות"
 
 #: help_text.php:1184
-msgid "With this option, the <b>webtrees</b> internal messaging system will be used and no emails will be sent.  You will receive only <u>internal</u> messages from the other users.  When another site user sends you a message, that message will appear in the Message block on your personal My Page.  If you have removed this block from your My Page, you will not see any messages.  They will, however, show up as soon as you configure My Page to again have the Message block."
+msgid "With this option, the <b>webtrees</b> internal messaging system will be used and no emails will be sent.  You will receive only <u>internal</u> messages from the other users.  When another site user sends you a message, that message will appear in the Message block on your “My page”.  If you have removed this block from your “My page”, you will not see any messages.  They will, however, show up as soon as you configure your “My page” to again have the Message block."
 msgstr "בבחירה זו משתמשים במערכת הדיווח הפנימית של <b>webtrees</b> ושום דואר אלקטרוני לא נשלח.  בדרך זו תקבל רק <u>הודעות פנימיות</u> ממשתמשים אחרים.  כאשר משתמש אחר שולח לך הודעה מאתר זה, ההודעה תופיע בבלוק ההודעות שעל הדף שלך האישי. אם הורדת את הבלוק מהדף שלך, לא תראה הודעות. הן תופענה מיד לאחר שתגדיר את בלוק ההודעות על הדף שלך."
 
 #: help_text.php:1196
@@ -15565,7 +15557,7 @@ msgid "With this option, you will not receive any messages.  Even the administra
 msgstr "בבחירה הזו לא תקבל שום הודעות. אפילו מנהל המערכת אינו יכול להגיע אליך."
 
 #: help_text.php:1192
-msgid "With this option, you will only receive email messages at the address you configured on your Account page.  The messaging system internal to <b>webtrees</b> will not be used at all, and there will never be any messages in the Message block on your personal My Page."
+msgid "With this option, you will only receive email messages at the address you configured on your Account page.  The messaging system internal to <b>webtrees</b> will not be used at all, and there will never be any messages in the Message block on your “My page”."
 msgstr "בבחירה הזו תקבל רק הודעות לכתובת הדואר האלקטרוני שלך שמוגדרת על דף המשתמש שלך. מערכת ההודעות הפנימית של-<b>webtrees</b> לא תהיה כלל בשימוש, ובבלוק ההודעות על הדף שלי האישי שלך לא תהיינה שום הודעות."
 
 #: library/WT/Stats.php:302 library/WT/Stats.php:346
@@ -15640,7 +15632,7 @@ msgid "You can download a copy of the GEDCOM specification from %s."
 msgstr "תוכל להוריד עותק של המפרט ה-GEDCOM מ%s."
 
 #: help_text.php:1243
-msgid "You can limit the number of News articles displayed, thereby reducing the height of the GEDCOM News block.<br><br>This option determines whether any limits should be applied or whether the limit should be according to the age of the article or according to the number of articles."
+msgid "You can limit the number of news articles displayed, thereby reducing the height of the GEDCOM News block.<br><br>This option determines whether any limits should be applied or whether the limit should be according to the age of the article or according to the number of articles."
 msgstr "ניתן להגביל את מספר כתבות החדשות אשר מוצגות ובכך להקטין את הגובה של בלוק החדשות של ה-GEDCOM.<br><br>האופציה קובעת אם יש להפעיל הגבלות או אם ההגבלה תהייה לפי גיל הכתבה או לפי מספר הכתבות."
 
 #: modules_v3/batch_update/plugins/married_names.php:37
@@ -15692,7 +15684,7 @@ msgid "You have no pending messages."
 msgstr "אין הודעות תלויות ועומדות"
 
 #: modules_v3/user_blog/module.php:76
-msgid "You have not created any Journal items."
+msgid "You have not created any journal items."
 msgstr "לא יצרת שום פריט יומן."
 
 #: admin_trees_manage.php:131
@@ -15700,8 +15692,8 @@ msgid "You have selected a GEDCOM with a different name.  Is this correct?"
 msgstr "בחרת GEDCOM עם שם אחר. האם זה נכון?"
 
 #: addmedia.php:462
-msgid "You may enter a URL, beginning with &laquo;http://&raquo;."
-msgstr "ניתן להכניס URL שמתחיל ב-<span dir=\"ltr\">&laquo;http://&raquo;</span>."
+msgid "You may enter a URL, beginning with “http://”."
+msgstr "ניתן להכניס URL שמתחיל ב-<span dir=\"ltr\">“http://”</span>."
 
 #: modules_v3/faq/help_text.php:35
 msgid "You may use HTML to format the answer and to add links to other websites."
@@ -15790,7 +15782,7 @@ msgid "You should accept or reject all pending changes before upgrading."
 msgstr ""
 
 #: help_text.php:1151
-msgid "You should avoid using the vertical line character &ldquo;|&rdquo; in your notes.  It is used internally by webtrees and may cause your note to display incorrectly."
+msgid "You should avoid using the vertical line character “|” in your notes.  It is used internally by webtrees and may cause your note to display incorrectly."
 msgstr "עליך להימנע משימוש בתו קו אנכי &ldquo;|&rdquo; בהערותיך. הוא בשימוש פנימי על ידי webtrees ועלול לגרום לכך שההערה שלך תוצג באופן שגוי."
 
 #: admin_site_upgrade.php:200
@@ -15840,7 +15832,7 @@ msgid "Youngest mother"
 msgstr "האם הצעירה"
 
 #: includes/authentication.php:120 message.php:127
-msgid "Your Name:"
+msgid "Your name:"
 msgstr "שמך:"
 
 #: modules_v3/clippings/module.php:172 modules_v3/clippings/module.php:430
@@ -16965,23 +16957,23 @@ msgstr "אישה של נכד"
 #: includes/functions/functions.php:1275 includes/functions/functions.php:1284
 #: includes/functions/functions.php:1295
 #, php-format
-msgid "great x%d aunt"
+msgid "great ×%d aunt"
 msgstr "דודה מדרגה %d"
 
 #: includes/functions/functions.php:1276 includes/functions/functions.php:1285
 #: includes/functions/functions.php:1296
 #, php-format
-msgid "great x%d aunt/uncle"
+msgid "great ×%d aunt/uncle"
 msgstr "דוד/דודה מדרגה %d"
 
 #: includes/functions/functions.php:1617 includes/functions/functions.php:1630
 #, php-format
-msgid "great x%d grandchild"
+msgid "great ×%d grandchild"
 msgstr "נכד/נכדה מדרגה %d"
 
 #: includes/functions/functions.php:1616 includes/functions/functions.php:1629
 #, php-format
-msgid "great x%d granddaughter"
+msgid "great ×%d granddaughter"
 msgstr "נכדה מדרגה %d"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
@@ -16989,399 +16981,399 @@ msgstr "נכדה מדרגה %d"
 #: includes/functions/functions.php:1534 includes/functions/functions.php:1542
 #: includes/functions/functions.php:1552
 #, php-format
-msgid "great x%d grandfather"
+msgid "great ×%d grandfather"
 msgstr "סבא מדרגה %d"
 
 #: includes/functions/functions.php:1521 includes/functions/functions.php:1528
 #: includes/functions/functions.php:1535 includes/functions/functions.php:1543
 #: includes/functions/functions.php:1553
 #, php-format
-msgid "great x%d grandmother"
+msgid "great ×%d grandmother"
 msgstr "סבתא מדרגה %d"
 
 #: includes/functions/functions.php:1522 includes/functions/functions.php:1529
 #: includes/functions/functions.php:1536 includes/functions/functions.php:1544
 #: includes/functions/functions.php:1554
 #, php-format
-msgid "great x%d grandparent"
+msgid "great ×%d grandparent"
 msgstr "סבא/סבתא מדרגה %d"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1615 includes/functions/functions.php:1628
 #, php-format
-msgid "great x%d grandson"
+msgid "great ×%d grandson"
 msgstr "נכד מדרגה %d"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1448 includes/functions/functions.php:1459
 #, php-format
-msgid "great x%d nephew"
+msgid "great ×%d nephew"
 msgstr "אחיין מדרגה %d"
 
 #: includes/functions/functions.php:1424
 #, php-format
-msgctxt "(a man’s) brother’s great x(%d-1) grandson"
-msgid "great x%d nephew"
+msgctxt "(a man’s) brother’s great ×(%d-1) grandson"
+msgid "great ×%d nephew"
 msgstr "אחיין מדרגה %d"
 
 #: includes/functions/functions.php:1426
 #, php-format
-msgctxt "(a man’s) sister’s great x(%d-1) grandson"
-msgid "great x%d nephew"
+msgctxt "(a man’s) sister’s great ×(%d-1) grandson"
+msgid "great ×%d nephew"
 msgstr "אחיין מדרגה %d"
 
 #: includes/functions/functions.php:1428
 #, php-format
-msgctxt "(a woman’s) great x%d nephew"
-msgid "great x%d nephew"
+msgctxt "(a woman’s) great ×%d nephew"
+msgid "great ×%d nephew"
 msgstr "אחיין מדרגה %d"
 
 #: includes/functions/functions.php:1450 includes/functions/functions.php:1461
 #, php-format
-msgid "great x%d nephew/niece"
+msgid "great ×%d nephew/niece"
 msgstr "אחיין/ית מדרגה %d"
 
 #: includes/functions/functions.php:1439
 #, php-format
-msgctxt "(a man’s) brother’s great x(%d-1) grandchild"
-msgid "great x%d nephew/niece"
+msgctxt "(a man’s) brother’s great ×(%d-1) grandchild"
+msgid "great ×%d nephew/niece"
 msgstr "אחיין/ית מדרגה %d"
 
 #: includes/functions/functions.php:1441
 #, php-format
-msgctxt "(a man’s) sister’s great x(%d-1) grandchild"
-msgid "great x%d nephew/niece"
+msgctxt "(a man’s) sister’s great ×(%d-1) grandchild"
+msgid "great ×%d nephew/niece"
 msgstr "אחיין/ית מדרגה %d"
 
 #: includes/functions/functions.php:1443
 #, php-format
-msgctxt "(a woman’s) great x%d nephew/niece"
-msgid "great x%d nephew/niece"
+msgctxt "(a woman’s) great ×%d nephew/niece"
+msgid "great ×%d nephew/niece"
 msgstr "אחיין/ית מדרגה %d"
 
 #: includes/functions/functions.php:1449 includes/functions/functions.php:1460
 #, php-format
-msgid "great x%d niece"
+msgid "great ×%d niece"
 msgstr "אחיינית מדרגה %d"
 
 #: includes/functions/functions.php:1431
 #, php-format
-msgctxt "(a man’s) brother’s great x(%d-1) granddaughter"
-msgid "great x%d niece"
+msgctxt "(a man’s) brother’s great ×(%d-1) granddaughter"
+msgid "great ×%d niece"
 msgstr "אחיינית מדרגה %d"
 
 #: includes/functions/functions.php:1433
 #, php-format
-msgctxt "(a man’s) sister’s great x(%d-1) granddaughter"
-msgid "great x%d niece"
+msgctxt "(a man’s) sister’s great ×(%d-1) granddaughter"
+msgid "great ×%d niece"
 msgstr "אחיינית מדרגה %d"
 
 #: includes/functions/functions.php:1435
 #, php-format
-msgctxt "(a woman’s) great x%d niece"
-msgid "great x%d niece"
+msgctxt "(a woman’s) great ×%d niece"
+msgid "great ×%d niece"
 msgstr "אחיינית מדרגה %d"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1274 includes/functions/functions.php:1294
 #, php-format
-msgid "great x%d uncle"
+msgid "great ×%d uncle"
 msgstr "דוד מדרגה %d"
 
 #: includes/functions/functions.php:1281
 #, php-format
-msgctxt "great x(%d-1) grandfather’s brother"
-msgid "great x%d uncle"
+msgctxt "great ×(%d-1) grandfather’s brother"
+msgid "great ×%d uncle"
 msgstr "דוד מדרגה %d"
 
 #: includes/functions/functions.php:1282
 #, php-format
-msgctxt "great x(%d-1) grandmother’s brother"
-msgid "great x%d uncle"
+msgctxt "great ×(%d-1) grandmother’s brother"
+msgid "great ×%d uncle"
 msgstr "דוד מדרגה %d"
 
 #: includes/functions/functions.php:1283
 #, php-format
-msgctxt "great x(%d-1) grandparent’s brother"
-msgid "great x%d uncle"
+msgctxt "great ×(%d-1) grandparent’s brother"
+msgid "great ×%d uncle"
 msgstr "דוד מדרגה %d"
 
 #: includes/functions/functions.php:1232
-msgid "great x4 aunt"
+msgid "great ×4 aunt"
 msgstr "דודה מדרגה 4"
 
 #: includes/functions/functions.php:1233
-msgid "great x4 aunt/uncle"
+msgid "great ×4 aunt/uncle"
 msgstr "דוד/דודה מדרגה 4"
 
 #: includes/functions/functions.php:1581
-msgid "great x4 grandchild"
+msgid "great ×4 grandchild"
 msgstr "נכד/ה מדרגה 4"
 
 #: includes/functions/functions.php:1580
-msgid "great x4 granddaughter"
+msgid "great ×4 granddaughter"
 msgstr "נכדה מדרגה 4"
 
 #: includes/functions/functions.php:1486
-msgid "great x4 grandfather"
+msgid "great ×4 grandfather"
 msgstr "סבא מדרגה 4"
 
 #: includes/functions/functions.php:1487
-msgid "great x4 grandmother"
+msgid "great ×4 grandmother"
 msgstr "סבתא מדרגה 4"
 
 #: includes/functions/functions.php:1488
-msgid "great x4 grandparent"
+msgid "great ×4 grandparent"
 msgstr "סבא/סבתא מדרגה 4"
 
 #: includes/functions/functions.php:1579
-msgid "great x4 grandson"
+msgid "great ×4 grandson"
 msgstr "נכד מדרגה 4"
 
 #: includes/functions/functions.php:1364
 msgctxt "(a man’s) brother’s great-great-great-grandson"
-msgid "great x4 nephew"
+msgid "great ×4 nephew"
 msgstr "אחיין מדרגה 4"
 
 #: includes/functions/functions.php:1366
 msgctxt "(a man’s) sister’s great-great-great-grandson"
-msgid "great x4 nephew"
+msgid "great ×4 nephew"
 msgstr "אחיין מדרגה 4"
 
 #: includes/functions/functions.php:1368
-msgctxt "(a woman’s) great x4 nephew"
-msgid "great x4 nephew"
+msgctxt "(a woman’s) great ×4 nephew"
+msgid "great ×4 nephew"
 msgstr "אחיין מדרגה 4"
 
 #: includes/functions/functions.php:1380
 msgctxt "(a man’s) brother’s great-great-great-grandchild"
-msgid "great x4 nephew/niece"
+msgid "great ×4 nephew/niece"
 msgstr "אחיין/אחיינית מדרגה 4"
 
 #: includes/functions/functions.php:1382
 msgctxt "(a man’s) sister’s great-great-great-grandchild"
-msgid "great x4 nephew/niece"
+msgid "great ×4 nephew/niece"
 msgstr "אחיין/אחיינית מדרגה 4"
 
 #: includes/functions/functions.php:1384
-msgctxt "(a woman’s) great x4 nephew/niece"
-msgid "great x4 nephew/niece"
+msgctxt "(a woman’s) great ×4 nephew/niece"
+msgid "great ×4 nephew/niece"
 msgstr "אחיין/אחיינית מדרגה 4"
 
 #: includes/functions/functions.php:1372
 msgctxt "(a man’s) brother’s great-great-great-granddaughter"
-msgid "great x4 niece"
+msgid "great ×4 niece"
 msgstr "אחיינית מדרגה 4"
 
 #: includes/functions/functions.php:1374
 msgctxt "(a man’s) sister’s great-great-great-granddaughter"
-msgid "great x4 niece"
+msgid "great ×4 niece"
 msgstr "אחיינית מדרגה 4"
 
 #: includes/functions/functions.php:1376
-msgctxt "(a woman’s) great x4 niece"
-msgid "great x4 niece"
+msgctxt "(a woman’s) great ×4 niece"
+msgid "great ×4 niece"
 msgstr "אחיינית מדרגה 4"
 
 #: includes/functions/functions.php:1229
 msgctxt "great-great-great-grandfather’s brother"
-msgid "great x4 uncle"
+msgid "great ×4 uncle"
 msgstr "דוד מדרגה 4"
 
 #: includes/functions/functions.php:1230
 msgctxt "great-great-great-grandmother’s brother"
-msgid "great x4 uncle"
+msgid "great ×4 uncle"
 msgstr "דוד מדרגה 4"
 
 #: includes/functions/functions.php:1231
 msgctxt "great-great-great-grandparent’s brother"
-msgid "great x4 uncle"
+msgid "great ×4 uncle"
 msgstr "דוד מדרגה 4"
 
 #: includes/functions/functions.php:1242
-msgid "great x5 aunt"
+msgid "great ×5 aunt"
 msgstr "דודה מדרגה 5"
 
 #: includes/functions/functions.php:1243
-msgid "great x5 aunt/uncle"
+msgid "great ×5 aunt/uncle"
 msgstr "דוד/דודה מדרגה 5"
 
 #: includes/functions/functions.php:1588
-msgid "great x5 grandchild"
+msgid "great ×5 grandchild"
 msgstr "נכד/ה מדרגה 5"
 
 #: includes/functions/functions.php:1587
-msgid "great x5 granddaughter"
+msgid "great ×5 granddaughter"
 msgstr "נכדה מדרגה 5"
 
 #: includes/functions/functions.php:1493
-msgid "great x5 grandfather"
+msgid "great ×5 grandfather"
 msgstr "סבא מדרגה 5"
 
 #: includes/functions/functions.php:1494
-msgid "great x5 grandmother"
+msgid "great ×5 grandmother"
 msgstr "סבתא מדרגה 5"
 
 #: includes/functions/functions.php:1495
-msgid "great x5 grandparent"
+msgid "great ×5 grandparent"
 msgstr "סבא/סבתא מדרגה 5"
 
 #: includes/functions/functions.php:1586
-msgid "great x5 grandson"
+msgid "great ×5 grandson"
 msgstr "נכד מדרגה 5"
 
 #: includes/functions/functions.php:1391
-msgctxt "(a man’s) brother’s great x4 grandson"
-msgid "great x5 nephew"
+msgctxt "(a man’s) brother’s great ×4 grandson"
+msgid "great ×5 nephew"
 msgstr "אחיין מדרגה 5"
 
 #: includes/functions/functions.php:1393
-msgctxt "(a man’s) sister’s great x4 grandson"
-msgid "great x5 nephew"
+msgctxt "(a man’s) sister’s great ×4 grandson"
+msgid "great ×5 nephew"
 msgstr "אחיין מדרגה 5"
 
 #: includes/functions/functions.php:1395
-msgctxt "(a woman’s) great x5 nephew"
-msgid "great x5 nephew"
+msgctxt "(a woman’s) great ×5 nephew"
+msgid "great ×5 nephew"
 msgstr "אחיין מדרגה 5"
 
 #: includes/functions/functions.php:1407
-msgctxt "(a man’s) brother’s great x4 grandchild"
-msgid "great x5 nephew/niece"
+msgctxt "(a man’s) brother’s great ×4 grandchild"
+msgid "great ×5 nephew/niece"
 msgstr "אחיין/אחיינית מדרגה 5"
 
 #: includes/functions/functions.php:1409
-msgctxt "(a man’s) sister’s great x4 grandchild"
-msgid "great x5 nephew/niece"
+msgctxt "(a man’s) sister’s great ×4 grandchild"
+msgid "great ×5 nephew/niece"
 msgstr "אחיין/אחיינית מדרגה 5"
 
 #: includes/functions/functions.php:1411
-msgctxt "(a woman’s) great x5 nephew/niece"
-msgid "great x5 nephew/niece"
+msgctxt "(a woman’s) great ×5 nephew/niece"
+msgid "great ×5 nephew/niece"
 msgstr "אחיין/אחיינית מדרגה 5"
 
 #: includes/functions/functions.php:1399
-msgctxt "(a man’s) brother’s great x4 granddaughter"
-msgid "great x5 niece"
+msgctxt "(a man’s) brother’s great ×4 granddaughter"
+msgid "great ×5 niece"
 msgstr "אחיינית מדרגה 5"
 
 #: includes/functions/functions.php:1401
-msgctxt "(a man’s) sister’s great x4 granddaughter"
-msgid "great x5 niece"
+msgctxt "(a man’s) sister’s great ×4 granddaughter"
+msgid "great ×5 niece"
 msgstr "אחיינית מדרגה 5"
 
 #: includes/functions/functions.php:1403
-msgctxt "(a woman’s) great x5 niece"
-msgid "great x5 niece"
+msgctxt "(a woman’s) great ×5 niece"
+msgid "great ×5 niece"
 msgstr "אחיינית מדרגה 5"
 
 #: includes/functions/functions.php:1239
-msgctxt "great x4 grandfather’s brother"
-msgid "great x5 uncle"
+msgctxt "great ×4 grandfather’s brother"
+msgid "great ×5 uncle"
 msgstr "דוד מדרגה 5"
 
 #: includes/functions/functions.php:1240
-msgctxt "great x4 grandmother’s brother"
-msgid "great x5 uncle"
+msgctxt "great ×4 grandmother’s brother"
+msgid "great ×5 uncle"
 msgstr "דוד מדרגה 5"
 
 #: includes/functions/functions.php:1241
-msgctxt "great x4 grandparent’s brother"
-msgid "great x5 uncle"
+msgctxt "great ×4 grandparent’s brother"
+msgid "great ×5 uncle"
 msgstr "דוד מדרגה 5"
 
 #: includes/functions/functions.php:1252
-msgid "great x6 aunt"
+msgid "great ×6 aunt"
 msgstr "דודה מדרגה 6"
 
 #: includes/functions/functions.php:1253
-msgid "great x6 aunt/uncle"
+msgid "great ×6 aunt/uncle"
 msgstr "דוד/דודה מדרגה 6"
 
 #: includes/functions/functions.php:1595
-msgid "great x6 grandchild"
+msgid "great ×6 grandchild"
 msgstr "נכד/ה מדרגה 6"
 
 #: includes/functions/functions.php:1594
-msgid "great x6 granddaughter"
+msgid "great ×6 granddaughter"
 msgstr "נכדה מדרגה 6"
 
 #: includes/functions/functions.php:1500
-msgid "great x6 grandfather"
+msgid "great ×6 grandfather"
 msgstr "סבא מדרגה 6"
 
 #: includes/functions/functions.php:1501
-msgid "great x6 grandmother"
+msgid "great ×6 grandmother"
 msgstr "סבתא מדרגה 6"
 
 #: includes/functions/functions.php:1502
-msgid "great x6 grandparent"
+msgid "great ×6 grandparent"
 msgstr "סבא/סבתא מדרגה 6"
 
 #: includes/functions/functions.php:1593
-msgid "great x6 grandson"
+msgid "great ×6 grandson"
 msgstr "נכד מדרגה 6"
 
 #: includes/functions/functions.php:1249
-msgctxt "great x5 grandfather’s brother"
-msgid "great x6 uncle"
+msgctxt "great ×5 grandfather’s brother"
+msgid "great ×6 uncle"
 msgstr "דוד מדרגה 6"
 
 #: includes/functions/functions.php:1250
-msgctxt "great x5 grandmother’s brother"
-msgid "great x6 uncle"
+msgctxt "great ×5 grandmother’s brother"
+msgid "great ×6 uncle"
 msgstr "דוד מדרגה 6"
 
 #: includes/functions/functions.php:1251
-msgctxt "great x5 grandparent’s brother"
-msgid "great x6 uncle"
+msgctxt "great ×5 grandparent’s brother"
+msgid "great ×6 uncle"
 msgstr "דוד מדרגה 6"
 
 #: includes/functions/functions.php:1262
-msgid "great x7 aunt"
+msgid "great ×7 aunt"
 msgstr "דודה מדרגה 7"
 
 #: includes/functions/functions.php:1263
-msgid "great x7 aunt/uncle"
+msgid "great ×7 aunt/uncle"
 msgstr "דוד/דודה מדרגה 7"
 
 #: includes/functions/functions.php:1602
-msgid "great x7 grandchild"
+msgid "great ×7 grandchild"
 msgstr "נכד/ה מדרגה 7"
 
 #: includes/functions/functions.php:1601
-msgid "great x7 granddaughter"
+msgid "great ×7 granddaughter"
 msgstr "נכדה מדרגה 7"
 
 #: includes/functions/functions.php:1507
-msgid "great x7 grandfather"
+msgid "great ×7 grandfather"
 msgstr "סבא מדרגה 7"
 
 #: includes/functions/functions.php:1508
-msgid "great x7 grandmother"
+msgid "great ×7 grandmother"
 msgstr "סבתא מדרגה 7"
 
 #: includes/functions/functions.php:1509
-msgid "great x7 grandparent"
+msgid "great ×7 grandparent"
 msgstr "סבא/סבתא מדרגה 7"
 
 #: includes/functions/functions.php:1600
-msgid "great x7 grandson"
+msgid "great ×7 grandson"
 msgstr "נכד מדרגה 7"
 
 #: includes/functions/functions.php:1259
-msgctxt "great x6 grandfather’s brother"
-msgid "great x7 uncle"
+msgctxt "great ×6 grandfather’s brother"
+msgid "great ×7 uncle"
 msgstr "דוד מדרגה 7"
 
 #: includes/functions/functions.php:1260
-msgctxt "great x6 grandmother’s brother"
-msgid "great x7 uncle"
+msgctxt "great ×6 grandmother’s brother"
+msgid "great ×7 uncle"
 msgstr "דוד מדרגה 7"
 
 #: includes/functions/functions.php:1261
-msgctxt "great x6 grandparent’s brother"
-msgid "great x7 uncle"
+msgctxt "great ×6 grandparent’s brother"
+msgid "great ×7 uncle"
 msgstr "דוד מדרגה 7"
 
 #: includes/functions/functions.php:1085
@@ -19736,7 +19728,7 @@ msgstr "נולד"
 
 #: includes/authentication.php:111 includes/authentication.php:174
 #: message.php:40
-msgid "webtrees Message"
+msgid "webtrees message"
 msgstr "webtrees הודעת"
 
 #: includes/functions/functions_edit.php:220
@@ -19844,7 +19836,7 @@ msgstr "…"
 #~ msgid "%s"
 #~ msgstr "%s"
 
-#~ msgid "<center><b>Welcome to this Genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website."
+#~ msgid "<center><b>Welcome to this genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website."
 #~ msgstr "<center><b>ברוכים הבאים לאתר הזה של חקר שושלת היוחסין</b></center><br>גישה לאתר זה מותרת למשתמשים בעלי חשבון וסיסמה."
 
 #~ msgid "Abbreviate chart labels"
@@ -19892,7 +19884,7 @@ msgstr "…"
 #~ msgid "Births, Deaths, Marriages"
 #~ msgstr "לידות, פטירות, נישואין"
 
-#~ msgid "Choose to display a standard header for your custom Welcome text.  When your users change language, this header will appear in the new language.<br><br>If set to <b>Yes</b>, the header will look like this:<div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website.<br></div>"
+#~ msgid "Choose to display a standard header for your custom Welcome text.  When your users change language, this header will appear in the new language.<br><br>If set to <b>Yes</b>, the header will look like this:<div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website.<br></div>"
 #~ msgstr "בחר להציג כותרת סטנדרטית לטקסט ברוכים הבאים המותאם אישית לך. כאשר משתמשים שלך משנים את השפה, הכותרת תופיע בשפה החדשה.<br><br>ערך <b>כן</b>, הכותרת תיראה כך:<div class=\"list_value_wrap\"><center><b>ברוכים הבאים לאתר גנאלוגי זה</b></center><br>הגישה מותרת למשתמשים בעלי חשבון וסיסמא לאתר זה<br></div>"
 
 #~ msgid "Click here to continue"
