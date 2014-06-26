@@ -1775,7 +1775,7 @@ msgstr "Nadimak"
 
 #: includes/functions/functions_print_lists.php:88
 msgid "Alive"
-msgstr "Živ"
+msgstr "Živi"
 
 #. I18N: listbox option, e.g. “10,25,50,100,all”
 #: calendar.php:230 famlist.php:69 famlist.php:75 famlist.php:81
@@ -2712,7 +2712,7 @@ msgstr ""
 #: modules_v3/pedigree_report/report.xml:1365
 #: modules_v3/relative_ext_report/report.xml:53
 msgid "Birth"
-msgstr "Rođen/a"
+msgstr "Rođenje"
 
 #: library/WT/Gedcom/Code/Pedi.php:37
 msgctxt "Female pedigree"
@@ -2727,7 +2727,7 @@ msgstr "Rođen kao"
 #: library/WT/Gedcom/Code/Pedi.php:35
 msgctxt "Pedigree"
 msgid "Birth"
-msgstr "Rođen kao"
+msgstr "Rođeni kao"
 
 #: modules_v3/birth_report/report.xml:6
 msgid "Birthplace contains"
@@ -2820,7 +2820,7 @@ msgstr "Mjesta rođenja"
 
 #: modules_v3/googlemap/module.php:1296
 msgid "Birth:"
-msgstr "Rođen/a:"
+msgstr "Rođenje:"
 
 #. I18N: Name of a module/report
 #: modules_v3/birth_report/module.php:33 modules_v3/birth_report/report.xml:3
@@ -4512,7 +4512,7 @@ msgstr "Dan:"
 #: includes/functions/functions_print_lists.php:89 library/WT/Stats.php:650
 #: library/WT/Stats.php:652
 msgid "Dead"
-msgstr "Umro/la"
+msgstr "Umrli"
 
 #. I18N: gedcom tag DEAT
 #: library/WT/Gedcom/Tag.php:165 modules_v3/ahnentafel_report/report.xml:461
@@ -4802,7 +4802,7 @@ msgstr "Pro"
 #: includes/functions/functions_print_lists.php:430
 #: includes/functions/functions_print_lists.php:856
 msgid "Decade of birth"
-msgstr "Dekada rođenja"
+msgstr "Desetljeće rođenja"
 
 #: includes/functions/functions_print_lists.php:432
 msgid "Decade of death"
@@ -5619,7 +5619,7 @@ msgstr ""
 
 #: help_text.php:388
 msgid "Enter the URL address including the http://.<br><br>An example URL looks like this: <b>http://www.webtrees.net/</b>.  Leave this field blank if you do not want to include a URL."
-msgstr ""
+msgstr "Unesite adresu u polje kao što bi ju pisali na kovertu.<br><br>Ostavite ovo polje prazno ako ne želite uključiti adresu."
 
 #: help_text.php:50
 msgid "Enter the address into the field just as you would write it on an envelope.<br><br>Leave this field blank if you do not want to include an address."
@@ -9885,7 +9885,7 @@ msgstr "Norveška"
 
 #: modules_v3/GEDFact_assistant/module.php:196
 msgid "Not a valid individual, family, or source ID"
-msgstr ""
+msgstr "Unesite Osobu, Obitelj, ili ID dokumenta"
 
 #. I18N: gedcom tag _NLIV
 #: library/WT/Gedcom/Tag.php:784
@@ -14586,7 +14586,7 @@ msgstr "Ukupno prihvačenih promjena"
 
 #: statistics.php:107
 msgid "Total births"
-msgstr "Ukupno rođenja"
+msgstr "Ukupno rođenih"
 
 #: statistics.php:90
 msgid "Total dead"
@@ -15867,7 +15867,7 @@ msgstr "Najmlađa majka"
 
 #: includes/authentication.php:120 message.php:127
 msgid "Your name:"
-msgstr "Vaše ime:"
+msgstr "Vaše ime"
 
 #: modules_v3/clippings/module.php:172 modules_v3/clippings/module.php:430
 msgid "Your clippings cart is empty."
@@ -16401,7 +16401,7 @@ msgstr "umrla"
 #: modules_v3/descendancy_report/report.xml:433
 msgctxt "MALE"
 msgid "died"
-msgstr "umro/la"
+msgstr "umro"
 
 #: modules_v3/googlemap/module.php:357 modules_v3/googlemap/module.php:366
 #: modules_v3/googlemap/module.php:375 modules_v3/googlemap/module.php:383
@@ -19995,3 +19995,6 @@ msgstr "…"
 
 #~ msgid "unknown person"
 #~ msgstr "nepoznata osoba"
+
+#~ msgid "Your Name:"
+#~ msgstr "Vaše ime:"
