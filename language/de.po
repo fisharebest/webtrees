@@ -3278,7 +3278,7 @@ msgstr "Achtung: Alte Module funktionieren möglicherweise nicht korrekt oder ab
 
 #: admin_site_upgrade.php:265
 msgid "Caution: old themes may not work, or they may prevent webtrees from working."
-msgstr "Achtung: Alte Themen funktionierenm öglicherweise nicht korrekt oder aber sie behindern die Funktionalität von webtrees."
+msgstr "Achtung: Alte Themen funktionieren möglicherweise nicht korrekt oder aber sie behindern die Funktionalität von webtrees."
 
 #: library/WT/Stats.php:3861
 msgid "Cayman Islands"
@@ -3532,7 +3532,7 @@ msgstr "Anzuzeigende Verwandschaften"
 
 #: help_text.php:353
 msgid "Choose the appropriate gender from the drop-down list.  The <b>unknown</b> option indicates that the gender is unknown."
-msgstr "Bitte wählen Sie das Geschlecht.  Die Option <b>Unbekannt</b> bedeutet dass das Geschlecht dieser Person unbekannt ist."
+msgstr "Bitte wählen Sie das Geschlecht. Die Option <b>Unbekannt</b> bedeutet, dass das Geschlecht dieser Person unbekannt ist."
 
 #: help_text.php:1447
 msgid "Choose the thumbnail image that you want to upload.  Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types.  For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording."
@@ -3560,7 +3560,7 @@ msgstr "Taufe eines Bruders"
 
 #: library/WT/Gedcom/Tag.php:526
 msgid "Christening of a child"
-msgstr "Kind: Taufe"
+msgstr "Taufe eines Kindes"
 
 #: library/WT/Gedcom/Tag.php:525
 msgid "Christening of a daughter"
@@ -3569,7 +3569,7 @@ msgstr "Taufe einer Tochter"
 #: library/WT/Gedcom/Tag.php:532 library/WT/Gedcom/Tag.php:538
 #: library/WT/Gedcom/Tag.php:544
 msgid "Christening of a grandchild"
-msgstr "Enkel: Taufe"
+msgstr "Taufe eines Enkelkinds"
 
 #: library/WT/Gedcom/Tag.php:531
 msgid "Christening of a granddaughter"
@@ -3578,12 +3578,12 @@ msgstr "Taufe einer Enkeltochter"
 #: library/WT/Gedcom/Tag.php:537
 msgctxt "daughter’s daughter"
 msgid "Christening of a granddaughter"
-msgstr "Taufe einer Enkelin"
+msgstr "Taufe einer Enkeltochter"
 
 #: library/WT/Gedcom/Tag.php:543
 msgctxt "son’s daughter"
 msgid "Christening of a granddaughter"
-msgstr "Taufe einer Enkelin"
+msgstr "Taufe einer Enkeltochter"
 
 #: library/WT/Gedcom/Tag.php:530
 msgid "Christening of a grandson"
@@ -3592,12 +3592,12 @@ msgstr "Taufe eines Enkelsohns"
 #: library/WT/Gedcom/Tag.php:536
 msgctxt "daughter’s son"
 msgid "Christening of a grandson"
-msgstr "Taufe eines Enkels"
+msgstr "Taufe eines Enkelsohns"
 
 #: library/WT/Gedcom/Tag.php:542
 msgctxt "son’s son"
 msgid "Christening of a grandson"
-msgstr "Taufe eines Enkels"
+msgstr "Taufe eines Enkelsohns"
 
 #: library/WT/Gedcom/Tag.php:548
 msgid "Christening of a half-brother"
@@ -3605,7 +3605,7 @@ msgstr "Taufe eines Halb-Bruders"
 
 #: library/WT/Gedcom/Tag.php:550
 msgid "Christening of a half-sibling"
-msgstr "Halbgeschwister: Taufe"
+msgstr "Taufe eines Halbgeschwisterkinds"
 
 #: library/WT/Gedcom/Tag.php:549
 msgid "Christening of a half-sister"
@@ -3613,7 +3613,7 @@ msgstr "Taufe einer Halb-Schwester"
 
 #: library/WT/Gedcom/Tag.php:556
 msgid "Christening of a sibling"
-msgstr "Geschwister: Taufe"
+msgstr "Taufe eines Geschwisterkinds"
 
 #: library/WT/Gedcom/Tag.php:555
 msgid "Christening of a sister"
@@ -3684,17 +3684,17 @@ msgstr "Diagramm löschen"
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: library/WT/Gedcom/Code/Stat.php:59
 msgid "Cleared but not yet completed"
-msgstr "Erledigt aber noch nicht fertig"
+msgstr "Erledigt, aber noch nicht fertig"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:84
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:97
 #, php-format
 msgid "Click %s to choose individual as head of family."
-msgstr "Klicken Sie auf %s um diese Person als Familienoberhaupt auszuwählen."
+msgstr "Klicken Sie auf %s, um diese Person als Familienoberhaupt auszuwählen."
 
 #: edit_interface.php:1700
 msgid "Click a row, then drag-and-drop to re-order media "
-msgstr "Zeile klicken und verschieben um Medienobjekte neu zu ordnen "
+msgstr "Zeile klicken und verschieben, um Medienobjekte neu zu ordnen "
 
 #: admin_trees_manage.php:271
 msgid "Click here for PhpGedView to <b>webtrees</b> transfer wizard"
@@ -3706,7 +3706,7 @@ msgstr "Hier klicken zum Ändern, Hinzufügen oder Löschen"
 
 #: individual.php:267
 msgid "Click here to open or close the sidebar"
-msgstr "Klicken Sie hier um die Seitenleiste zu öffnen und zu schließen."
+msgstr "Klicken Sie hier, um die Seitenleiste zu öffnen und zu schließen."
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:100
 msgid "Click name to add individual to add links list."
@@ -3714,7 +3714,7 @@ msgstr "Namen klicken, um diese Person der Liste neuer Verbindungen hinzuzufüge
 
 #: modules_v3/faq/module.php:279
 msgid "Click on a title to go straight to it, or scroll down to read them all"
-msgstr "auf den Titel klicken um direkt dorthin zu kommen, oder Runterblättern um alles zu lesen"
+msgstr "Klicken Sie auf den Titel, um direkt dorthin zu kommen oder scrollen Sie runter, um alles zu lesen"
 
 #: help_text.php:1368
 msgid "Click this link to remove the individual from the timeline."
@@ -3723,15 +3723,15 @@ msgstr "Klicken Sie dieses Link, um die Person von der Zeitleiste zu entfernen."
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:83
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:96
 msgid "Click to choose individual as head of family."
-msgstr "Klicken um diese Person als Familienhaupt zu wählen."
+msgstr "Klicken, um diese Person als Familienhaupt zu wählen."
 
 #: help_text.php:1348
 msgid "Clicking on this link will show you a list of all of the individuals and families that have events occurring in this place.  When you get to the end of a place hierarchy, which is normally a town or city, the name list will be shown automatically."
-msgstr "Wenn Sie dieses Link klicken, erhalten Sie eine Liste mit allen Personen und Familien, bei denen Ereignisse am zuvor ausgewählten Ort stattgefunden haben. Wenn Sie in der untersten Ebene der Ortsangabe angelangt sind (z.B. ein Dorf oder eine Stadt), wird diese Namensliste automatisch gezeigt."
+msgstr "Wenn Sie auf diesen Link klicken, erhalten Sie eine Liste mit allen Personen und Familien, bei denen Ereignisse am zuvor ausgewählten Ort stattgefunden haben. Wenn Sie in der untersten Ebene der Ortsangabe angelangt sind (z.B. ein Dorf oder eine Stadt), wird diese Namensliste automatisch gezeigt."
 
 #: help_text.php:1139
 msgid "Clicking the “+” icon will open the GEDFact shared note assistant window.<br>Specific help will be found there.<br><br>When you click the “save” button, the ID of the shared note will be pasted here."
-msgstr "Dieses Thema muss noch ausführlich beschrieben werden.<br><br>Vorübergehend … Die neue ID-Nummer wird automatisch eingetragen wenn Sie auf den Link klicken."
+msgstr "Ein Klick auf das “+” Icon öffnet das Fenster mit dem GEDFact Assistenten für gemeinsame Bemerkungen.<br>Dort finden Sie auch weitere Hilfen.<br><br>Wenn Sie auf “Speichern” klicken, wird die ID der gemeinsamen Bemerkung hier eingefügt."
 
 #. I18N: The local time on the client/browser
 #: themes/_administration/header.php:84
@@ -3958,7 +3958,7 @@ msgstr "Elfenbeinküste"
 
 #: login.php:576
 msgid "Could not verify the information you entered.  Please try again or contact the site administrator for more information."
-msgstr "Die eingegebenen Informationen waren falsch.  Bitte versuchen Sie es erneut."
+msgstr "Die eingegebenen Informationen waren falsch. Bitte versuchen Sie es erneut oder kontaktieren Sie den Administrator für weitere Informationen."
 
 #: admin.php:190 library/WT/Stats.php:3321
 msgid "Count"
@@ -4057,61 +4057,61 @@ msgstr "Einäscherung eines Bruders"
 
 #: library/WT/Gedcom/Tag.php:563
 msgid "Cremation of a child"
-msgstr "Kind: Einäscherung"
+msgstr "Einäscherung eines Kindes"
 
 #: library/WT/Gedcom/Tag.php:562
 msgid "Cremation of a daughter"
-msgstr "Feuerbestattung einer Tochter"
+msgstr "Einäscherung einer Tochter"
 
 #: library/WT/Gedcom/Tag.php:609
 msgid "Cremation of a father"
-msgstr "Vater: Einäscherung"
+msgstr "Einäscherung eines Vaters"
 
 #: library/WT/Gedcom/Tag.php:587 library/WT/Gedcom/Tag.php:593
 #: library/WT/Gedcom/Tag.php:599
 msgid "Cremation of a grand-parent"
-msgstr "Großeltern: Einäscherung"
+msgstr "Einäscherung eines Großelternteils"
 
 #: library/WT/Gedcom/Tag.php:569 library/WT/Gedcom/Tag.php:575
 #: library/WT/Gedcom/Tag.php:581
 msgid "Cremation of a grandchild"
-msgstr "Enkel: Einäscherung"
+msgstr "Einäscherung eines Enkels"
 
 #: library/WT/Gedcom/Tag.php:568
 msgid "Cremation of a granddaughter"
-msgstr "Feuerbestattung einer Enkeltochter"
+msgstr "Einäscherung einer Enkeltochter"
 
 #: library/WT/Gedcom/Tag.php:574
 msgctxt "daughter’s daughter"
 msgid "Cremation of a granddaughter"
-msgstr "Feuerbestattung einer Enkelin"
+msgstr "Einäscherung einer Enkeltochter"
 
 #: library/WT/Gedcom/Tag.php:580
 msgctxt "son’s daughter"
 msgid "Cremation of a granddaughter"
-msgstr "Feuerbestattung einer Enkelin"
+msgstr "Einäscherung einer Enkeltochter"
 
 #: library/WT/Gedcom/Tag.php:585
 msgid "Cremation of a grandfather"
-msgstr "Feuerbestattung eines Großvaters"
+msgstr "Einäscherung eines Großvaters"
 
 #: library/WT/Gedcom/Tag.php:586
 msgid "Cremation of a grandmother"
-msgstr "Feuerbestattung einer Großmutter"
+msgstr "Einäscherung einer Großmutter"
 
 #: library/WT/Gedcom/Tag.php:567
 msgid "Cremation of a grandson"
-msgstr "Feuerbestattung eines Enkelsohns"
+msgstr "Einäscherung eines Enkelsohns"
 
 #: library/WT/Gedcom/Tag.php:573
 msgctxt "daughter’s son"
 msgid "Cremation of a grandson"
-msgstr "Feuerbestattung eines Enkels"
+msgstr "Einäscherung eines Enkelsohns"
 
 #: library/WT/Gedcom/Tag.php:579
 msgctxt "son’s son"
 msgid "Cremation of a grandson"
-msgstr "Feuerbestattung eines Enkels"
+msgstr "Einäscherung eines Enkelsohns"
 
 #: library/WT/Gedcom/Tag.php:603
 msgid "Cremation of a half-brother"
@@ -4119,27 +4119,27 @@ msgstr "Einäscherung eines Halb-Bruders"
 
 #: library/WT/Gedcom/Tag.php:605
 msgid "Cremation of a half-sibling"
-msgstr "Halbgeschwister: Einäscherung"
+msgstr "Einäscherung eines Halbgeschwisterkinds"
 
 #: library/WT/Gedcom/Tag.php:604
 msgid "Cremation of a half-sister"
-msgstr "Einsäscherung einer Halb-Schwester"
+msgstr "Einäscherung einer Halb-Schwester"
 
 #: library/WT/Gedcom/Tag.php:621
 msgid "Cremation of a husband"
-msgstr "Einäscherung des Ehemanns"
+msgstr "Einäscherung eines Ehemanns"
 
 #: library/WT/Gedcom/Tag.php:597
 msgid "Cremation of a maternal grandfather"
-msgstr "Einäscherung eines Großvaters"
+msgstr "Einäscherung eines mütterlichen Großvaters"
 
 #: library/WT/Gedcom/Tag.php:598
 msgid "Cremation of a maternal grandmother"
-msgstr "Einäscherung einer Großmutter"
+msgstr "Einäscherung einer mütterlichen Großmutter"
 
 #: library/WT/Gedcom/Tag.php:610
 msgid "Cremation of a mother"
-msgstr "Mutter: Einäscherung"
+msgstr "Einäscherung einer Mutter"
 
 #: library/WT/Gedcom/Tag.php:611
 msgid "Cremation of a parent"
@@ -4147,15 +4147,15 @@ msgstr "Einäscherung eines Elternteils"
 
 #: library/WT/Gedcom/Tag.php:591
 msgid "Cremation of a paternal grandfather"
-msgstr "Einäscherung eines Großvaters"
+msgstr "Einäscherung eines väterlichen Großvaters"
 
 #: library/WT/Gedcom/Tag.php:592
 msgid "Cremation of a paternal grandmother"
-msgstr "Einäscherung einer Großmutter"
+msgstr "Einäscherung einer väterlichen Großmutter"
 
 #: library/WT/Gedcom/Tag.php:617
 msgid "Cremation of a sibling"
-msgstr "Geschwister: Einäscherung"
+msgstr "Einäscherung eines Geschwisterkinds"
 
 #: library/WT/Gedcom/Tag.php:616
 msgid "Cremation of a sister"
@@ -4163,11 +4163,11 @@ msgstr "Einäscherung einer Schwester"
 
 #: library/WT/Gedcom/Tag.php:561
 msgid "Cremation of a son"
-msgstr "Feuerbestattung eines Sohnes"
+msgstr "Einäscherung eines Sohnes"
 
 #: library/WT/Gedcom/Tag.php:623
 msgid "Cremation of a spouse"
-msgstr "Ehegatte: Einäscherung"
+msgstr "Einäscherung eines Ehegattens"
 
 #: library/WT/Gedcom/Tag.php:622
 msgid "Cremation of a wife"
@@ -4211,7 +4211,7 @@ msgstr "Benutzerdefiniertes Thema"
 
 #: admin_site_config.php:157 help_text.php:1039
 msgid "Custom welcome text"
-msgstr " individualisierter Begrüßungstext"
+msgstr "Individualisierter Begrüßungstext"
 
 #: library/WT/Stats.php:3862
 msgid "Cyprus"
@@ -4431,7 +4431,7 @@ msgstr "Zeitraum"
 
 #: help_text.php:196
 msgid "Date periods are used to indicate that a fact, such as an occupation, continued for a period of time."
-msgstr "Eine Zeitdauer wird benutzt, um anzuzeigen, dass ein Ereignis, wie eine Beschäftigung, über einen Zeitraum hin andauerten."
+msgstr "Eine Zeitdauer wird benutzt, um anzuzeigen, dass ein Ereignis, wie eine Beschäftigung, über einen Zeitraum hin andauerte."
 
 #: help_text.php:187 statistics.php:660
 msgid "Date range"
@@ -4439,7 +4439,7 @@ msgstr "Datumsbereich"
 
 #: help_text.php:185
 msgid "Date ranges are used to indicate that an event, such as a birth, happened on an unknown date within a possible range."
-msgstr "Zeitspannen werden benutzt, um anzuzeigen, dass ein Ereignis, wie eine Geburt, an einem nicht bekannten Datum innerhalb eines Bereichs stattfand."
+msgstr "Zeitspannen werden benutzt, um anzuzeigen, dass ein Ereignis, wie eine Geburt, an einem nicht bekannten Datum innerhalb eines Zeitraums stattfand."
 
 #: admin_users.php:574
 msgid "Date registered"
@@ -4453,7 +4453,7 @@ msgstr "Es werden nur die für den jeweiligen Kalender gültigen Datumsangaben k
 
 #: help_text.php:173
 msgid "Dates are stored using English abbreviations and keywords.  Shortcuts are available as alternatives to these abbreviations and keywords."
-msgstr "Datumsangaben werden mit englischen Abkürzungen und Schlagworten gespeichert. Als Alternative zu den  Abkürzungen und Schlagworten können Tastenkürzel zur Eingabe genutzt werden."
+msgstr "Datumsangaben werden mit englischen Abkürzungen und Schlagworten gespeichert. Als Alternative zu den Abkürzungen und Schlagworten können Tastenkürzel zur Eingabe genutzt werden."
 
 #: modules_v3/family_group_report/report.xml:797
 #: modules_v3/individual_ext_report/report.xml:553
@@ -4629,7 +4629,7 @@ msgstr "Tod eines Bruders"
 
 #: library/WT/Gedcom/Tag.php:630
 msgid "Death of a child"
-msgstr "Tod: Kind"
+msgstr "Tod eines Kindes"
 
 #: library/WT/Gedcom/Tag.php:629
 msgid "Death of a daughter"
@@ -4637,17 +4637,17 @@ msgstr "Tod einer Tochter"
 
 #: library/WT/Gedcom/Tag.php:676
 msgid "Death of a father"
-msgstr "Tod: Vater"
+msgstr "Tod eines Vater"
 
 #: library/WT/Gedcom/Tag.php:654 library/WT/Gedcom/Tag.php:660
 #: library/WT/Gedcom/Tag.php:666
 msgid "Death of a grand-parent"
-msgstr "Tod: Großeltern"
+msgstr "Tod eines Großelternteils"
 
 #: library/WT/Gedcom/Tag.php:636 library/WT/Gedcom/Tag.php:642
 #: library/WT/Gedcom/Tag.php:648
 msgid "Death of a grandchild"
-msgstr "Tod: Enkel"
+msgstr "Tod eines Enkels"
 
 #: library/WT/Gedcom/Tag.php:635
 msgid "Death of a granddaughter"
@@ -4656,12 +4656,12 @@ msgstr "Tod einer Enkeltochter"
 #: library/WT/Gedcom/Tag.php:641
 msgctxt "daughter’s daughter"
 msgid "Death of a granddaughter"
-msgstr "Tod einer Enkelin"
+msgstr "Tod einer Enkeltochter"
 
 #: library/WT/Gedcom/Tag.php:647
 msgctxt "son’s daughter"
 msgid "Death of a granddaughter"
-msgstr "Tod einer Enkelin"
+msgstr "Tod einer Enkeltochter"
 
 #: library/WT/Gedcom/Tag.php:652
 msgid "Death of a grandfather"
@@ -4678,12 +4678,12 @@ msgstr "Tod eines Enkelsohns"
 #: library/WT/Gedcom/Tag.php:640
 msgctxt "daughter’s son"
 msgid "Death of a grandson"
-msgstr "Tod eines Enkels"
+msgstr "Tod eines Enkelsohns"
 
 #: library/WT/Gedcom/Tag.php:646
 msgctxt "son’s son"
 msgid "Death of a grandson"
-msgstr "Tod eines Enkels"
+msgstr "Tod eines Enkelsohns"
 
 #: library/WT/Gedcom/Tag.php:670
 msgid "Death of a half-brother"
@@ -4691,7 +4691,7 @@ msgstr "Tod eines Halb-Bruders"
 
 #: library/WT/Gedcom/Tag.php:672
 msgid "Death of a half-sibling"
-msgstr "Tod: Halbgeschwister"
+msgstr "Tod eines Halbgeschwisterkinds"
 
 #: library/WT/Gedcom/Tag.php:671
 msgid "Death of a half-sister"
@@ -4703,15 +4703,15 @@ msgstr "Tod eines Ehemanns"
 
 #: library/WT/Gedcom/Tag.php:664
 msgid "Death of a maternal grandfather"
-msgstr "Tod eines Großvaters"
+msgstr "Tod eines mütterlichen Großvaters"
 
 #: library/WT/Gedcom/Tag.php:665
 msgid "Death of a maternal grandmother"
-msgstr "Tod einer Großmutter"
+msgstr "Tod einer mütterlichen Großmutter"
 
 #: library/WT/Gedcom/Tag.php:677
 msgid "Death of a mother"
-msgstr "Tod: Mutter"
+msgstr "Tod einer Mutter"
 
 #: library/WT/Gedcom/Tag.php:678
 msgid "Death of a parent"
@@ -4719,15 +4719,15 @@ msgstr "Tod eines Elternteils"
 
 #: library/WT/Gedcom/Tag.php:658
 msgid "Death of a paternal grandfather"
-msgstr "Tod eines Großvaters"
+msgstr "Tod eines väterlichen Großvaters"
 
 #: library/WT/Gedcom/Tag.php:659
 msgid "Death of a paternal grandmother"
-msgstr "Tod einer Großmutter"
+msgstr "Tod einer väterlichen Großmutter"
 
 #: library/WT/Gedcom/Tag.php:684
 msgid "Death of a sibling"
-msgstr "Tod: Geschwister"
+msgstr "Tod eines Geschwisterkinds"
 
 #: library/WT/Gedcom/Tag.php:683
 msgid "Death of a sister"
@@ -4739,11 +4739,11 @@ msgstr "Tod eines Sohnes"
 
 #: library/WT/Gedcom/Tag.php:690
 msgid "Death of a spouse"
-msgstr "Tod: Ehegatte"
+msgstr "Tod eines Ehegattens"
 
 #: library/WT/Gedcom/Tag.php:689
 msgid "Death of a wife"
-msgstr "Tod einer Frau"
+msgstr "Tod einer Ehefrau"
 
 #. I18N: gedcom tag _DETS
 #: library/WT/Gedcom/Tag.php:693
@@ -4821,7 +4821,7 @@ msgstr "Standard Familienbaum"
 #: admin_trees_config.php:240 admin_users.php:230 admin_users.php:432
 #: edituser.php:141 help_text.php:1118 modules_v3/gedcom_block/module.php:50
 msgid "Default individual"
-msgstr "voreingestellte Startperson"
+msgstr "Voreingestellte Startperson"
 
 #: modules_v3/googlemap/module.php:304
 msgid "Default map type"
@@ -4898,7 +4898,7 @@ msgstr "Lösche alle vorhandenen geographischen Daten vor dem Import der Datei."
 
 #: themes/_administration/header.php:135
 msgid "Delete inactive users"
-msgstr "inaktive Benutzer löschen"
+msgstr "Inaktive Benutzer löschen"
 
 #: library/WT/Controller/Individual.php:151
 msgid "Delete this name"
@@ -4923,7 +4923,7 @@ msgstr "Lösche alte Genealogie-Daten…"
 
 #: library/WT/Controller/Family.php:105
 msgid "Deleting the family will unlink all of the individuals from each other but will leave the individuals in place.  Are you sure you want to delete this family?"
-msgstr "Das Löschen der Familie wird jede Verbindung von allen anderen lösen. Alle ehemalige Familienmitglieder bleiben als freistehende Personen ohne Familienverbund. Möchten Sie diese Familie wirklich löschen?"
+msgstr "Das Löschen der Familie wird jede Verbindung der Personen zueinander lösen. Alle ehemalige Familienmitglieder bleiben als freistehende Personen ohne Familienverbund erhalten. Möchten Sie diese Familie wirklich löschen?"
 
 #: library/WT/Stats.php:3867
 msgid "Denmark"
@@ -5103,7 +5103,7 @@ msgstr "Unterschiede"
 
 #: help_text.php:437
 msgid "Different calendar systems are used in different parts of the world, and many other calendar systems have been used in the past.  Where possible, you should enter dates using the calendar in which the event was originally recorded.  You can then specify a conversion, to show these dates in a more familiar calendar.  If you regularly use two calendars, you can specify two conversions and dates will be converted to both the selected calendars."
-msgstr "An verschiedenen Orten der Welt werden verschiedene Kalendersysteme genutzt und viele weitere wurden in der Vergangenheit genutzt.  Nach Möglichkeit sollten Sie Daten in dem System eingeben in dem diese ursprünglich angegeben wurden. Danach können Sie eine Umwandlung vorgeben, um das Datum in einem allgemein üblichen Kalender darzustellen. Falls Sie regelmäßig zwei Kalender nutzen, können zwei Vorgaben für die Umwandlung gemacht werden und die Daten werden in beide gewählte Kalender konvertiert."
+msgstr "An verschiedenen Orten der Welt werden verschiedene Kalendersysteme genutzt und viele weitere wurden in der Vergangenheit genutzt. Nach Möglichkeit sollten Sie Daten in dem System eingeben, in dem diese ursprünglich angegeben wurden. Danach können Sie eine Umwandlung vorgeben, um das Datum in einem allgemein üblichen Kalender darzustellen. Falls Sie regelmäßig zwei Kalender nutzen, können zwei Vorgaben für die Umwandlung gemacht werden und die Daten werden in beide gewählte Kalender konvertiert."
 
 #: modules_v3/individual_ext_report/report.xml:6
 #: modules_v3/missing_facts_report/report.xml:6
@@ -5257,11 +5257,11 @@ msgstr "Doppelter Benutzername. Ein Benutzer mit dem gewählten Namen existiert 
 
 #: help_text.php:779
 msgid "E-mail address to be used in the “From:” field of e-mails that <b>webtrees</b> creates automatically.<br><br><b>webtrees</b> can automatically create e-mails to notify administrators of changes that need to be reviewed.  <b>webtrees</b> also sends notification e-mails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created e-mails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the e-mail is required.  To guard against spam or other e-mail abuse, some e-mail systems require each message’s “From:” field to reflect a valid e-mail account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
-msgstr "Die Mail-Adresse, die für das «Absender:» Feld von automatisch erstellten Mails benutzt werden soll.<br><br><b>webtrees</b> erstellt automatische Mails, die den Verwalter darauf aufmerksam machen, dass Änderungen gemacht wurden, und dass diese noch kontrolliert werden müssen. Automatische Mails werden auch erstellt, wenn neue Benutzer einen Zugriffsantrag gemacht haben.<br><br>Das «Absender:» Feld dieser automatischen Mails ähnelt gewöhnlich <i>Abs: webtrees-noreply@yoursite</i> und das bedeutet dass keine Antwort erwartet ist. Um gültige Mails zu erkennen, erfordern manche Mail-Systeme dass jede Mail-Nachricht eine gültige Absender-Adresse hat. Diese Mail-Systeme erkennen also keine Mails vom Absender <i>webtrees-noreply</i> als gültig."
+msgstr "Die Mail-Adresse, die für das «Absender:» Feld von automatisch erstellten Mails benutzt werden soll.<br><br><b>webtrees</b> erstellt automatische Mails, die den Verwalter darauf aufmerksam machen, dass Änderungen gemacht wurden, und dass diese noch kontrolliert werden müssen. Automatische Mails werden auch erstellt, wenn neue Benutzer einen Zugriffsantrag gestellt haben.<br><br>Das «Absender:» Feld dieser automatischen Mails ähnelt gewöhnlich <i>Abs: webtrees-noreply@yoursite</i> und das bedeutet, dass keine Antwort an diese Adresse erwartet wird. Um gültige Mails zu erkennen, erfordern manche Mail-Systeme, dass jede Mail-Nachricht eine gültige Absender-Adresse hat. Diese Mail-Systeme erkennen also keine Mails vom Absender <i>webtrees-noreply</i> als gültig."
 
 #: help_text.php:1175
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
-msgstr "Jede Quelle enthält Einträge über bestimmte Ereignisse, im Großen und Ganzen für bestimmte Daten- und Zuständigkeitsbereiche. Zum Beispiel, jede Volkszählung die als Quelle zitiert werden kann enthält Einträge die man als «Volkszählung» Ereignisse in die Datenbank eintragen kann. In kirchlichen Registern sind gewöhnlich Ereignisse wie Geburten, Ehen, und Tode aufgezeichnet.<br><br>Aus der Liste wählen Sie Ereignisse die in dieser Quelle aufgezeichnet sind. Als Datum gibt man gewöhnlich einen Bereich wie zum Beispiel <i>FROM 1900 TO 1910</i> (bedeutet VON Anfang 1900 BIS Ende 1910). Bitte beachten Sie dass alle Daten in der englischen Sprache eingetragen werden müssen. Als Zuständigkeitsbereich gibt man gewöhnlich eine Ortschaft. Zum Beispiel, die Eingabe «Oneida, Idaho, USA» bedeutet dass diese Quelle für Ereignisse in allen Orten in Oneida County (Idaho, USA) zuständig ist, aber nicht für Ereignisse anderer Orte. Die Eingabe «Idaho, USA» bedeutet dass diese Quelle für Ereignisse in allen Orten im Staat Idaho (USA) zuständig ist, aber nicht für Ereignisse anderswo."
+msgstr "Jede Quelle enthält Einträge über bestimmte Ereignisse, im Großen und Ganzen für bestimmte Daten- und Zuständigkeitsbereiche. Zum Beispiel enthält jede Volkszählung, die als Quelle zitiert werden kann, Einträge, die man als «Volkszählung» Ereignisse in die Datenbank eintragen kann. In kirchlichen Registern sind gewöhnlich Ereignisse wie Geburten, Ehen, und Tode aufgezeichnet.<br><br>Aus der Liste wählen Sie Ereignisse, die in dieser Quelle aufgezeichnet sind. Als Datum gibt man gewöhnlich einen Bereich wie zum Beispiel <i>FROM 1900 TO 1910</i> (bedeutet VON Anfang 1900 BIS Ende 1910). Bitte beachten Sie, dass alle Daten in der englischen Sprache eingetragen werden müssen. Als Zuständigkeitsbereich gibt man gewöhnlich eine Ortschaft an. Zum Beispiel bedeutet die Eingabe «Oneida, Idaho, USA», dass diese Quelle für Ereignisse in allen Orten in Oneida County (Idaho, USA) zuständig ist, aber nicht für Ereignisse anderer Orte. Die Eingabe «Idaho, USA» bedeutet, dass diese Quelle für Ereignisse in allen Orten im Staat Idaho (USA) zuständig ist, aber nicht für Ereignisse anderswo."
 
 #: help_text.php:1340
 msgid "Each user account has an option to “automatically accept changes”.  When this is enabled, any changes made by that user are saved immediately.  Many administrators enable this for their own user account."
@@ -5274,16 +5274,16 @@ msgstr "Frühestes Geburtsdatum"
 #: modules_v3/gedcom_stats/module.php:126
 #: modules_v3/gedcom_stats/module.php:301 modules_v3/html/module.php:215
 msgid "Earliest birth year"
-msgstr "Frühestes Geburtsdatum"
+msgstr "Frühestes Geburtsjahr"
 
 #: statistics.php:124
 msgid "Earliest death"
-msgstr "Frühestes Todesdatum"
+msgstr "Frühestes Sterbedatum"
 
 #: modules_v3/gedcom_stats/module.php:140
 #: modules_v3/gedcom_stats/module.php:317 modules_v3/html/module.php:225
 msgid "Earliest death year"
-msgstr "Frühestes Sterbedatum"
+msgstr "Frühestes Sterbejahr"
 
 #: statistics.php:226
 msgid "Earliest divorce"
@@ -5497,7 +5497,7 @@ msgstr "Arbeitgeber"
 #: library/WT/Gedcom/Code/Rela.php:84
 msgctxt "FEMALE"
 msgid "Employer"
-msgstr "Angestellter"
+msgstr "Arbeitgeberin"
 
 #: library/WT/Gedcom/Code/Rela.php:83
 msgctxt "MALE"
@@ -5546,7 +5546,7 @@ msgstr "England"
 
 #: modules_v3/family_group_report/report.xml:6
 msgid "Enter Family ID"
-msgstr "Familien ID eingeben"
+msgstr "Familien-ID eingeben"
 
 #: modules_v3/ahnentafel_report/report.xml:6
 #: modules_v3/descendancy_report/report.xml:5
@@ -5560,7 +5560,7 @@ msgstr "Personen-ID eingeben"
 
 #: addmedia.php:414 modules_v3/gedcom_favorites/module.php:177
 msgid "Enter an individual, family, or source ID"
-msgstr "Personen-, Familien- oder Quellen-Id eingeben"
+msgstr "Personen-, Familien- oder Quellen-ID eingeben"
 
 #: modules_v3/gedcom_favorites/module.php:190
 msgid "Enter an optional note about this favorite"
@@ -5585,31 +5585,31 @@ msgstr "Bericht Daten eingeben"
 
 #: help_text.php:263
 msgid "Enter the FAX number including the country and area code.<br><br>Leave this field blank if you do not want to include a FAX number.  For example, a number in Germany might be +49 25859 56 76 89 and a number in USA or Canada might be +1 888 555-1212."
-msgstr "Die FAX Nummer einschließlich der internationalen und lokalen Vorwahlnummer eingeben. Bei lokalen Vorwahlnummern die erste Null nicht eingegeben.<br><br>Das leere Feld bedeutet, dass keine FAX Nummer vorhanden ist.<br><br>Beispiele wären <b>+49&nbsp;561&nbsp;56&nbsp;76&nbsp;89</b> für Nummern in Deutschland oder <b>+1&nbsp;888&nbsp;555-1212</b> für Nummern in USA oder Kanada."
+msgstr "Die FAX Nummer einschließlich der internationalen und lokalen Vorwahlnummer eingeben. Bei lokalen Vorwahlnummern die erste Null nicht eingegeben.<br><br>Lassen Sie das Feld leer, wenn Sie keine FAX Nummer angeben möchten.<br><br>Beispiele wären <b>+49&nbsp;561&nbsp;56&nbsp;76&nbsp;89</b> für Nummern in Deutschland oder <b>+1&nbsp;888&nbsp;555-1212</b> für Nummern in USA oder Kanada."
 
 #: help_text.php:388
 msgid "Enter the URL address including the http://.<br><br>An example URL looks like this: <b>http://www.webtrees.net/</b> Leave this field blank if you do not want to include a URL."
-msgstr "Geben Sie die URL Adresse mit http://. ein.<br><br>Zum Beispiel, eine gültige URL Adresse wäre: <b>http://www.webtrees.net/</b> Das leere Feld bedeutet dass keine URL Adresse bekannt ist."
+msgstr "Geben Sie die URL Adresse mit http://. ein.<br><br>Zum Beispiel wäre eine gültige URL Adresse: <b>http://www.webtrees.net/</b> Lassen Sie das Feld leer, wenn Sie keine URL Adresse angeben möchten."
 
 #: help_text.php:50
 msgid "Enter the address into the field just as you would write it on an envelope.<br><br>Leave this field blank if you do not want to include an address."
-msgstr "Geben Sie die Adresse, genau wie sie auf einem Briefumschlag geschrieben wird.<br><br>Das leere Feld bedeutet, dass die Adresse nicht bekannt ist."
+msgstr "Geben Sie die Adresse so an, wie Sie sie auf einen Briefumschlag schreiben würden.<br><br>Lassen Sie das Feld leer, wenn Sie keine Adresse angeben möchten."
 
 #: help_text.php:258
 msgid "Enter the email address.<br><br>An example email address looks like this: <b>name@hotmail.com</b>  Leave this field blank if you do not want to include an email address."
-msgstr "Geben Sie die E-Mail-Adresse ein.<br><br>Zum Beispiel, eine gültige Mail-Adresse wäre: <b>name@hotmail.com</b> Das leere Feld bedeutet, dass keine Mail-Adresse bekannt ist."
+msgstr "Geben Sie die E-Mail-Adresse ein.<br><br>Zum Beispiel wäre eine gültige Mail-Adresse: <b>name@hotmail.com</b> Lassen Sie das Feld leer, wenn Sie keine E-Mail-Adresse angeben möchten."
 
 #: help_text.php:1238
 msgid "Enter the limiting value here.<br><br>If you have opted to limit the news article display according to age, any article older than the number of days entered here will be hidden from view.  If you have opted to limit the news article display by number, only the specified number of recent articles, ordered by age, will be shown.  The remaining articles will be hidden from view.<br><br>Zeros entered here will disable the limit, causing all news articles to be shown."
-msgstr "Geben Sie den Beschränkungswert ein.<br><br>Wenn Sie die Altersbeschränkung gewählt haben, verbirgt das Programm alle Notizen die älter als die eingegebenen Tage sind.  Wenn Sie die Anzahlbeschränkung gewählt haben, wird nur die eingegebene Anzahl von Notizen, jüngste Notizen zuerst, gezeigt.  Die restlichen Notizen sind verborgen.  Falls Sie hier <b>0</b> (null) eingeben, entfällt jede Beschränkung der Notizenanzeige."
+msgstr "Geben Sie den Beschränkungswert ein.<br><br>Wenn Sie die Altersbeschränkung gewählt haben, verbirgt das Programm alle Notizen, die älter als die eingegebenen Tage sind. Wenn Sie die Anzahlbeschränkung gewählt haben, wird nur die eingegebene Anzahl von Notizen, jüngste Notizen zuerst, gezeigt. Die restlichen Notizen werden nicht angezeigt. alls Sie hier <b>0</b> (null) eingeben, entfällt jede Beschränkung der Notizenanzeige."
 
 #: help_text.php:325
 msgid "Enter the phone number including the country and area code.<br><br>Leave this field blank if you do not want to include a phone number.  For example, a number in Germany might be +49 25859 56 76 89 and a number in USA or Canada might be +1 888 555-1212."
-msgstr "Geben Sie die Telefon Nummer, inklusiv den internationalen und lokalen Vorwahlnummern.  Bei den lokalen Vorwahlnummern soll die erste Null nicht eingegeben werden.<br><br>Das leere Feld bedeutet dass keine Telefon Nummer vorhanden ist.<br><br>Beispiele wären <b>+49&nbsp;561&nbsp;56&nbsp;76&nbsp;89</b> für Nummern in Deutschland oder <b>+1&nbsp;888&nbsp;555-1212</b> für Nummern in USA oder Kanada."
+msgstr "Geben Sie die Telefon Nummer an, inklusiv den internationalen und lokalen Vorwahlnummern. Bei den lokalen Vorwahlnummern soll die erste Null nicht eingegeben werden.<br><br>Lassen Sie das Feld leer, wenn Sie keine Telefon Nummer angeben möchten.<br><br>Beispiele wären <b>+49&nbsp;561&nbsp;56&nbsp;76&nbsp;89</b> für Nummern in Deutschland oder <b>+1&nbsp;888&nbsp;555-1212</b> für Nummern in USA oder Kanada."
 
 #: help_text.php:383
 msgid "Enter the time for this event in 24-hour format with leading zeroes. Midnight is 00:00. Examples: 04:50 13:00 20:30."
-msgstr "Geben Sie hier die Tageszeit, im 24-Std. Format, des Ereignisses ein.  Beispiele:  04:50 13:00 20:30."
+msgstr "Geben Sie hier die Uhrzeit des Ereignisses im 24-Std. Format ein. Beispiele: 04:50 13:00 20:30."
 
 #: modules_v3/googlemap/help_text.php:58
 msgid "Enter zoom level"
@@ -5706,7 +5706,7 @@ msgstr "Verwandtenereignisse"
 
 #: help_text.php:1363
 msgid "Every individual in the database has a unique ID number on this site.  If you know the ID number for your own record, please enter it here.  If you don’t know your ID number or could not find it because of privacy settings, please provide enough information in the comments field to help the site administrator identify who you are on this site so that he can set the ID for you."
-msgstr "Jede Person in dieser Datenbank hat seine eigene Identifikations-Nummer (ID-Nummer).  Falls Ihre ID-Nummer Ihnen schon bekannt ist, können Sie sie hier eintragen.  Wenn Sie sie nicht wissen und eine Suche nach ihr erfolglos ist, geben Sie bitte im Kommentarfeld genügend Informationen dass der Verwalter diese ID-Nummer für Sie hier eingeben kann."
+msgstr "Jede Person in dieser Datenbank hat seine eigene Identifikations-Nummer (ID-Nummer). Falls Ihnen Ihre ID-Nummer schon bekannt ist, können Sie sie hier eintragen. Wenn Sie sie nicht wissen und eine Suche nach ihr erfolglos ist, geben Sie bitte im Kommentarfeld genügend Informationen an, damit der Verwalter diese ID-Nummer für Sie suchen und hier eingeben kann."
 
 #: help_text.php:1378
 msgid "Everybody has this role, including visitors to the site and search engines."
@@ -5794,7 +5794,7 @@ msgstr "Augenfarbe"
 #. I18N: Name of a theme.
 #: themes/fab/theme.php:29
 msgid "F.A.B."
-msgstr ""
+msgstr "F.A.B."
 
 #. I18N: Name of a module.  Abbreviation for “Frequently Asked Questions”
 #: modules_v3/faq/module.php:32 modules_v3/faq/module.php:431
@@ -5816,63 +5816,63 @@ msgstr "FAQ sind Listen von Antworten auf oft gestellte Fragen, welche dazu dien
 #. I18N: gedcom tag FACT
 #: library/WT/Gedcom/Tag.php:192
 msgid "Fact"
-msgstr "Fakt"
+msgstr "Tatsache"
 
 #: library/WT/Gedcom/Tag.php:697
 msgid "Fact 1"
-msgstr "Ereignis 1"
+msgstr "Tatsache 1"
 
 #: library/WT/Gedcom/Tag.php:706
 msgid "Fact 10"
-msgstr "Ereignis 10"
+msgstr "Tatsache 10"
 
 #: library/WT/Gedcom/Tag.php:707
 msgid "Fact 11"
-msgstr "Ereignis 11"
+msgstr "Tatsache 11"
 
 #: library/WT/Gedcom/Tag.php:708
 msgid "Fact 12"
-msgstr "Ereignis 12"
+msgstr "Tatsache 12"
 
 #: library/WT/Gedcom/Tag.php:709
 msgid "Fact 13"
-msgstr "Ereignis 13"
+msgstr "Tatsache 13"
 
 #: library/WT/Gedcom/Tag.php:698
 msgid "Fact 2"
-msgstr "Ereignis 2"
+msgstr "Tatsache 2"
 
 #: library/WT/Gedcom/Tag.php:699
 msgid "Fact 3"
-msgstr "Ereignis 3"
+msgstr "Tatsache 3"
 
 #: library/WT/Gedcom/Tag.php:700
 msgid "Fact 4"
-msgstr "Ereignis 4"
+msgstr "Tatsache 4"
 
 #: library/WT/Gedcom/Tag.php:701
 msgid "Fact 5"
-msgstr "Ereignis 5"
+msgstr "Tatsache 5"
 
 #: library/WT/Gedcom/Tag.php:702
 msgid "Fact 6"
-msgstr "Ereignis 6"
+msgstr "Tatsache 6"
 
 #: library/WT/Gedcom/Tag.php:703
 msgid "Fact 7"
-msgstr "Ereignis 7"
+msgstr "Tatsache 7"
 
 #: library/WT/Gedcom/Tag.php:704
 msgid "Fact 8"
-msgstr "Ereignis 8"
+msgstr "Tatsache 8"
 
 #: library/WT/Gedcom/Tag.php:705
 msgid "Fact 9"
-msgstr "Ereignis 9"
+msgstr "Tatsache 9"
 
 #: admin_trees_config.php:1013
 msgid "Fact icons"
-msgstr "Ereignissymbole"
+msgstr "Tatsachensymbole"
 
 #: includes/functions/functions_print.php:955
 msgid "Fact or event"
@@ -5884,7 +5884,7 @@ msgstr "Tatsache oder Ereignis"
 #: modules_v3/personal_facts/module.php:32
 #: modules_v3/random_media/module.php:262
 msgid "Facts and events"
-msgstr "Fakten und Ereignisse"
+msgstr "Tatsachen und Ereignisse"
 
 #: admin_trees_config.php:1132
 msgid "Facts for family records"
@@ -5966,7 +5966,7 @@ msgstr "Familie (als Kind)"
 #. I18N: gedcom tag FAMS
 #: library/WT/Gedcom/Tag.php:196
 msgid "Family as a spouse"
-msgstr "Familie des Ehepartners"
+msgstr "Familie als Ehepartner"
 
 #: library/WT/Controller/Familybook.php:73 library/WT/MenuBar.php:100
 msgid "Family book"
