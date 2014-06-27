@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2014-06-12 21:41+0100\n"
-"PO-Revision-Date: 2014-06-25 22:43+0100\n"
+"PO-Revision-Date: 2014-06-27 11:04+0100\n"
 "Last-Translator: Mic <mic@ergraf.eu>\n"
 "Language-Team: \n"
 "Language: Croatian\n"
@@ -632,7 +632,7 @@ msgstr "<b>Molim pažnju:</b> Privatne informacije o živim osobama će biti dan
 
 #: help_text.php:1063
 msgid "<b>webtrees</b> allows you to copy up to 10 facts, with all their details, to a clipboard.  This clipboard is different from the clippings cart that you can use to export portions of your database.<br><br>You can select any of the facts from the clipboard and copy the selected fact to the individual, family, media, source, or repository record currently being edited.  However, you cannot copy facts of dissimilar record types.  For example, you cannot copy a marriage fact to a source or an individual record since the marriage fact is associated only with family records.<br><br>This is very helpful when entering similar facts, such as census facts, for many individuals or families."
-msgstr "<b>webtrees</b> vam omogućava kopiranje do 10 činjenica, sa svim nihovim detaljima, u clipboard. Clipbord je drugačiji od isječaka koje koristimo za izvoz djelova podataka.<b>webtrees</b>Možete odabrati molo koju činjenicu iz clipbord-a i kopirati označene činjenice u pojedince, obitelji, medije, dokumente ili ustanove koje trenutno uređujete."
+msgstr "<b>webtrees</b> vam omogućava kopiranje do 10 činjenica, sa svim nihovim detaljima, u clipboard. Clipbord je drugačiji od isječaka koje koristimo za izvoz djelova podataka.<b>webtrees</b>Možete odabrati bilo koju činjenicu iz clipbord-a i kopirati označene činjenice u pojedince, obitelji, medije, izvore ili mjesta čuvanja koje trenutno uređujete."
 
 #. I18N: %s is a database name/identifier
 #: admin_pgv_to_wt.php:79
@@ -888,7 +888,7 @@ msgstr "Izvještaj o osobama koje su usko povezane sa pojedincem."
 #. I18N: Description of the “Source” module
 #: modules_v3/fact_sources/module.php:39
 msgid "A report of the information provided by a source."
-msgstr "Izvještaj o informacijama koje osigurava dokument."
+msgstr "Izvještaj o informacijama koje osigurava izvor."
 
 #. I18N: Description of the “Missing data”
 #: modules_v3/missing_facts_report/module.php:39
@@ -953,7 +953,7 @@ msgstr "Tab prikazuje bilješke vezane za pojedinca."
 #. I18N: Description of the “Sources” module
 #: modules_v3/sources_tab/module.php:39
 msgid "A tab showing the sources linked to an individual."
-msgstr "Tab prikazuje dokumente vezane za pojedinca."
+msgstr "Tab prikazuje izvore vezane za pojedinca."
 
 #: help_text.php:1474
 msgid "A user will not be able to login until both the “email verified” and “approved by administrator” options are selected."
@@ -1270,7 +1270,7 @@ msgstr "Dodaj sina ili kćer"
 #: includes/functions/functions_edit.php:805
 #: library/WT/Controller/Family.php:193 modules_v3/sources_tab/module.php:92
 msgid "Add a new source citation"
-msgstr "Dodaj novi citat dokumenta"
+msgstr "Dodaj novi citat izvora"
 
 #: edit_interface.php:805
 msgid "Add a new spouse"
@@ -1337,7 +1337,7 @@ msgstr "Dodaj samo ovu osobu."
 
 #: modules_v3/clippings/module.php:127 modules_v3/clippings/module.php:535
 msgid "Add just this source."
-msgstr "Dodaj samo ovaj dokument."
+msgstr "Dodaj samo ovaj izvor."
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:156
 msgid "Add links"
@@ -1358,7 +1358,7 @@ msgstr "Dodaj vjenćana imenima koja nedostaju"
 #. I18N: Description of the “Stories” module
 #: modules_v3/stories/module.php:37
 msgid "Add narrative stories to individuals in the family tree."
-msgstr "Dodaj priće usmene predaje pojedincima u obiteljskom stablu."
+msgstr "Dodaj priče usmene predaje pojedincima u obiteljskom stablu."
 
 #: modules_v3/clippings/module.php:91 modules_v3/clippings/module.php:500
 msgid "Add parents’ and all descendants’ records together with this family record."
@@ -1408,7 +1408,7 @@ msgstr "Dodaj ovog pojedinca, supružnika i djecu."
 
 #: modules_v3/clippings/module.php:128 modules_v3/clippings/module.php:536
 msgid "Add this source and families/individuals linked to it."
-msgstr "Dodaj ovaj dokument i obitelji/pojedince vezane za njega."
+msgstr "Dodaj ovaj izvor i obitelji/pojedince vezane za njega."
 
 #: admin_trees_config.php:425 help_text.php:693
 msgid "Add to TITLE header tag"
@@ -1500,7 +1500,7 @@ msgstr "Administratori"
 
 #: help_text.php:1284
 msgid "Administrators sometimes need to clean up and correct the data submitted by users.  For example, they might need to correct the PLAC location to include the country.  When administrators make such corrections, information about the original change is normally replaced.  This may not be desirable.<br><br>When this option is selected, <b>webtrees</b> will retain the original change information instead of replacing it with that of the current session.  With this option selected, administrators also have the ability to modify or delete the information associated with the original CHAN tag."
-msgstr ""
+msgstr "Administratori ponekad imaju porebu očistiti i ispraviti podatke koje korisnik unese. Na primjer, oni možda trebaju ispraviti mjesto da dodaju državu. Kada administrator radi takvu ispravku, informacija o originalnoj promjeni je normalno prepisana, To možda nije poželjno.<br><br>Kada je ova opcija uključena, program će zadržati originalnu informaciju o promjeni umjesto da ju prepiše. Sa uključenom ovom opcijom, administratori također imaju mogućnost mijenjati ili brisati informacije vezane sa originalnim podacima o promijeni (CHAN tag)."
 
 #: library/WT/Gedcom/Code/Pedi.php:43
 msgctxt "Female pedigree"
@@ -1829,11 +1829,11 @@ msgstr "Sve osobe"
 
 #: admin_trees_config.php:1203 help_text.php:798
 msgid "All repository facts"
-msgstr "Sve ustanove činjenica"
+msgstr "Sve činjenice mjesta čuvanja"
 
 #: admin_trees_config.php:1174 help_text.php:909
 msgid "All source facts"
-msgstr "Svi dokumenti činjenica"
+msgstr "Svi izvori činjenica"
 
 #. I18N: Description of the “CKEditor” module.  WYSIWYG = “what you see is what you get”
 #: modules_v3/ckeditor/module.php:39
@@ -1913,7 +1913,7 @@ msgstr "Sudionik je druga osoba koja je umješana sa ovom osobom, kao prijatelj 
 #. I18N: Description of the “Edit” module
 #: modules_v3/page_menu/module.php:37
 msgid "An edit menu for individuals, families, sources, etc."
-msgstr "Izbornik uređivanja za pojedince, obitelji, dokumente, itd."
+msgstr "Izbornik uređivanja za pojedince, obitelji, izvore, itd."
 
 #: admin_site_upgrade.php:339 admin_site_upgrade.php:359
 #: admin_site_upgrade.php:369 admin_site_upgrade.php:446
@@ -2265,7 +2265,7 @@ msgstr "Autorova zadnja promjena"
 
 #: admin_users.php:200 admin_users.php:386 help_text.php:1451
 msgid "Automatically approve changes made by this user"
-msgstr "Automatski odobri promjene napravljene od ovog korisnika"
+msgstr "Automatski odobri promjene ovom korisniku"
 
 #: admin_trees_config.php:314 help_text.php:558
 msgid "Automatically create globally unique IDs"
@@ -2281,7 +2281,7 @@ msgstr "Automatski proširi bilješke"
 
 #: admin_trees_config.php:1029 help_text.php:500
 msgid "Automatically expand sources"
-msgstr "Automatski proširi dokumente"
+msgstr "Automatski proširi izvore"
 
 #: library/WT/Date/Jewish.php:106
 msgctxt "GENITIVE"
@@ -2508,7 +2508,7 @@ msgstr ""
 #: modules_v3/batch_update/module.php:29 modules_v3/batch_update/module.php:43
 #: modules_v3/googlemap/module.php:2528
 msgid "Batch update"
-msgstr ""
+msgstr "Grupno ažuriranje"
 
 #: library/WT/Gedcom/Code/Temp.php:75
 msgid "Baton Rouge, Louisiana"
@@ -4056,12 +4056,12 @@ msgstr "Kreiraj novi zajedničku bilješku koristeći asistenta"
 #: admin_site_other.php:62 edit_interface.php:1162 edit_interface.php:1245
 #: includes/functions/functions_edit.php:332
 msgid "Create a new source"
-msgstr "Kreiraj novi dokument"
+msgstr "Kreiraj novi izvor"
 
 #: edit_interface.php:1493 edit_interface.php:1558
 #: includes/functions/functions_edit.php:320
 msgid "Create a new repository"
-msgstr "Kreiraj mjesto čuvanja"
+msgstr "Kreiraj novo mjesto čuvanja"
 
 #: admin_users.php:480
 msgid "Create user"
@@ -4412,7 +4412,7 @@ msgstr "Datum zaruka"
 
 #: library/WT/Gedcom/Tag.php:163
 msgid "Date of entry in original source"
-msgstr "Datum upisa u originalnom dokumentu"
+msgstr "Datum upisa u originalnom izvoru"
 
 #: library/WT/Gedcom/Tag.php:190
 msgid "Date of event"
@@ -4635,7 +4635,7 @@ msgstr "Umrli"
 #: modules_v3/pedigree_report/report.xml:1367
 #: modules_v3/relative_ext_report/report.xml:59
 msgid "Death"
-msgstr "Umro/la"
+msgstr "Smrt"
 
 #: modules_v3/death_report/report.xml:6
 msgid "Death place contains"
@@ -4806,11 +4806,11 @@ msgstr "Desetljeće rođenja"
 
 #: includes/functions/functions_print_lists.php:432
 msgid "Decade of death"
-msgstr "Dekada smrti"
+msgstr "Desetljeće smrti"
 
 #: includes/functions/functions_print_lists.php:858
 msgid "Decade of marriage"
-msgstr "Dekada vjenčanja"
+msgstr "Desetljeće vjenčanja"
 
 #: library/WT/Date/Calendar.php:146
 msgctxt "GENITIVE"
@@ -5224,7 +5224,7 @@ msgstr "Ne pečati: neautorizirano"
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:581
 #: modules_v3/batch_update/admin_batch_update.php:339
 msgid "Do not update the “last change” record"
-msgstr "Ne obnavljaj datum zapisa “zadnja promjena”"
+msgstr "Ne obnavljaj zapisa “zadnja promjena”"
 
 #: library/WT/Gedcom/Tag.php:883
 msgid "Document"
@@ -5398,7 +5398,7 @@ msgstr "Uredi sirovi GEDCOM"
 
 #: library/WT/Controller/Repository.php:50
 msgid "Edit repository"
-msgstr "Uredi ustanovu"
+msgstr "Uredi mjesto čuvanja"
 
 #: edit_interface.php:1425 edit_interface.php:1471
 #: includes/functions/functions_edit.php:328
@@ -5407,7 +5407,7 @@ msgstr "Uredi zajedničku bilješku"
 
 #: library/WT/Controller/Source.php:50
 msgid "Edit source"
-msgstr "Uredi dokument"
+msgstr "Uredi izvor"
 
 #: modules_v3/stories/module.php:120 modules_v3/stories/module.php:204
 msgid "Edit story"
@@ -5590,7 +5590,7 @@ msgstr "Unesi broj osobe"
 
 #: addmedia.php:414 modules_v3/gedcom_favorites/module.php:177
 msgid "Enter an individual, family, or source ID"
-msgstr "Unesite Osobu, Obitelj, ili ID dokumenta"
+msgstr "Unesite Osobu, Obitelj, ili ID izvora"
 
 #: modules_v3/gedcom_favorites/module.php:190
 msgid "Enter an optional note about this favorite"
@@ -5603,7 +5603,7 @@ msgstr "Unesi ime datoteke"
 #: addmedia.php:419
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:178
 msgid "Enter or search for the ID of the individual, family, or source to which this media item should be linked."
-msgstr "Unesite ili nađite ID osobe, obitelji ili dokumenta sa kojim bi ovaj medij trebao biti povezan."
+msgstr "Unesite ili nađite ID pojedinca, obitelji ili izvora sa kojim bi ovaj medij trebao biti povezan."
 
 #: modules_v3/googlemap/help_text.php:53
 msgid "Enter precision"
@@ -5841,7 +5841,7 @@ msgstr "ČPP vidljivost"
 
 #: modules_v3/faq/help_text.php:33
 msgid "FAQs are lists of questions and answers, which allow you to explain the site’s rules, policies, and procedures to your visitors.  Questions are typically concerned with privacy, copyright, user-accounts, unsuitable content, requirement for source-citations, etc."
-msgstr "ČPP su lista pitanja i odgovora, koja vam omogućavaju da svojim posjetiocima objasnite pravila i procedure. Pitanja su obično vezana za prava kopiranja, korisnićki račun, neprimjeran sadržaj, potrebe za citiranje izvornog dokumenta, itd."
+msgstr "ČPP su lista pitanja i odgovora, koja vam omogućavaju da svojim posjetiocima objasnite pravila i procedure. Pitanja su obično vezana za prava kopiranja, korisnićki račun, neprimjeren sadržaj, potrebe za citiranje izvora, itd."
 
 #. I18N: gedcom tag FACT
 #: library/WT/Gedcom/Tag.php:192
@@ -5934,19 +5934,19 @@ msgstr "Činjenica za novog pojedinca"
 
 #: admin_trees_config.php:1198
 msgid "Facts for repository records"
-msgstr "Činjenica za zapis ustanova"
+msgstr "Činjenica za zapis mjesta čuvanja"
 
 #: admin_trees_config.php:1169
 msgid "Facts for source records"
-msgstr "Činjenica za zapis dokumenta"
+msgstr "Činjenica za zapis izvora"
 
 #: library/WT/Stats.php:3884
 msgid "Faeroe Islands"
-msgstr "איי פארו"
+msgstr ""
 
 #: library/WT/Stats.php:3882
 msgid "Falkland Islands"
-msgstr "איי פוקלנד"
+msgstr ""
 
 #. I18N: Name of a module
 #: admin.php:199 admin.php:245 ancestry.php:100 calendar.php:410
@@ -6338,13 +6338,13 @@ msgstr "Pronađi mjesto"
 
 #: find.php:83 includes/functions/functions_print.php:1045
 msgid "Find a repository"
-msgstr "Pronađi ustanovu"
+msgstr "Pronađi mjesto čuvanja"
 
 #: admin_site_merge.php:267 admin_site_merge.php:288 find.php:89
 #: includes/functions/functions_print.php:1037
 #: modules_v3/fact_sources/report.xml:5
 msgid "Find a source"
-msgstr "Pronađi dokument"
+msgstr "Pronađi izvor"
 
 #: find.php:92 includes/functions/functions_print.php:1023
 msgid "Find a special character"
@@ -7084,7 +7084,7 @@ msgstr "Ovdje možete dodati činjenicu u zapis koji uređujete.<br><br>Prvo iza
 
 #: help_text.php:1089
 msgid "Here you can add a source <b>Citation</b> to this record.<br><br>Just click the link, a window will open, and you can choose the source from the list (Find ID) or create a new source and then add the citation.<br><br>Adding sources is an important part of genealogy because it allows other researchers to verify where you obtained your information."
-msgstr "Ovdje možete dodati <b>Citat</b> dokumenta u ovaj zapis.<br><br>Samo kliknite na link, otvoriti će se prozor, i tamo ćete moći izabrati dokument sa liste (Traži ID) ili kreirati novi dokument i onda dodati citat.<br><br>Dodavanje dokumenta je važan dio genealogije zato što omogućava drugim istraživačima da vide odakle ste vi došli do vaših informacija."
+msgstr "Ovdje možete dodati <b>Citat</b> izvora u ovaj zapis.<br><br>Samo kliknite na link, otvoriti će se prozor, i tamo ćete moći izabrati izvor sa liste (Traži ID) ili kreirati novi izvor i onda dodati citat.<br><br>Dodavanje izvora je važan dio genealogije zato što omogućava drugim istraživačima da vide odakle ste vi došli do vaših informacija."
 
 #: help_text.php:1228
 msgid "Here you can change the diagram width from 50 percent to 300 percent.  At 100 percent the output image is about 640 pixels wide."
@@ -7454,11 +7454,11 @@ msgstr ""
 
 #: help_text.php:315
 msgid "In the citation details field you would enter the page number or other information that might help someone find the information in the source."
-msgstr "U polju detalj citata možete unjeti broj stranice ili druge informacije koje mogu nekom drugom pomoći da pronađe informacije na izvoru."
+msgstr "U polju detalj citata možete unijeti broj stranice ili druge informacije koje mogu nekom drugom pomoći da pronađe informacije na izvoru."
 
 #: help_text.php:378
 msgid "In this field you would enter the citation text for this source.  Examples of data may be a transcription of the text from the source, or a description of what was in the citation."
-msgstr "~#factarray[TEXT]#~<br><br>In this field you would enter the citation text for this source.  Examples of data may be a transcription of the text from the source, or a description of what was in the citation.<br><br>"
+msgstr "U ovo polje možete upisati citat teksta za ovaj izvor. Prijepis teksta iz izvora ili opis što se nalazi u citatu."
 
 #: calendar.php:128
 msgid "In this month…"
@@ -9885,7 +9885,7 @@ msgstr "Norveška"
 
 #: modules_v3/GEDFact_assistant/module.php:196
 msgid "Not a valid individual, family, or source ID"
-msgstr "Unesite Osobu, Obitelj, ili ID dokumenta"
+msgstr "Unesite Osobu, Obitelj, ili ID izvora"
 
 #. I18N: gedcom tag _NLIV
 #: library/WT/Gedcom/Tag.php:784
@@ -11064,11 +11064,11 @@ msgstr ""
 
 #: admin_trees_config.php:1219 help_text.php:803
 msgid "Quick repository facts"
-msgstr ""
+msgstr "Brze činjenice mjesta čuvanja"
 
 #: admin_trees_config.php:1190 help_text.php:914
 msgid "Quick source facts"
-msgstr ""
+msgstr "Brze činjenice izvora"
 
 #: library/WT/Date/French.php:120
 msgid "Quintidi"
@@ -11470,7 +11470,7 @@ msgstr "Mjesto čuvanja"
 
 #: admin_trees_config.php:354 help_text.php:813
 msgid "Repository ID prefix"
-msgstr "ID predznak ustanove"
+msgstr "ID predznak mjesta čuvanja"
 
 #: find.php:249
 msgid "Repository contains:"
@@ -12312,7 +12312,7 @@ msgstr "prikaži sva mjesta u popisu"
 
 #: help_text.php:1408 modules_v3/sources_tab/module.php:66
 msgid "Show all sources"
-msgstr "Prikaži sve dokumente"
+msgstr "Prikaži sve izvore"
 
 #: modules_v3/tree/class_treeview.php:59
 msgid "Show all spouses and ancestors"
@@ -12570,7 +12570,7 @@ msgstr ""
 #: modules_v3/individual_ext_report/report.xml:9
 #: modules_v3/individual_report/report.xml:6
 msgid "Show sources?"
-msgstr "Prikaži dokumente?"
+msgstr "Prikaži izvore?"
 
 #: familybook.php:73 help_text.php:1413 hourglass.php:72
 msgid "Show spouses"
@@ -12869,11 +12869,11 @@ msgstr "Zvuči kao"
 #: modules_v3/missing_facts_report/report.xml:525
 #: modules_v3/missing_facts_report/report.xml:566
 msgid "Source"
-msgstr "Dokument"
+msgstr "Izvor"
 
 #: admin_trees_config.php:347 help_text.php:904
 msgid "Source ID prefix"
-msgstr "Predznak ID-a dokumenta"
+msgstr "Predznak ID-a izvora"
 
 #: help_text.php:535
 msgid "Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source.  If you don’t use these fields, you can disable them when creating new source citations."
@@ -12881,12 +12881,12 @@ msgstr ""
 
 #: find.php:284
 msgid "Source contains:"
-msgstr "Dokument sadrži:"
+msgstr "Izvor sadrži:"
 
 #: admin_trees_config.php:1269 help_text.php:783
 #: modules_v3/fact_sources/report.xml:6
 msgid "Source type"
-msgstr "Izvorna vrsta"
+msgstr "Vrsta izvora"
 
 #. I18N: Name of a module
 #: admin.php:203 admin.php:251
@@ -12905,11 +12905,11 @@ msgstr "Izvorna vrsta"
 #: note.php:135 repo.php:92 search.php:103 sourcelist.php:29 sourcelist.php:33
 #: statistics.php:347 statistics.php:384
 msgid "Sources"
-msgstr "Dokumenti"
+msgstr "Izvori"
 
 #: modules_v3/missing_facts_report/report.xml:11
 msgid "Sources to the events"
-msgstr "Dokumenti na događaje"
+msgstr "Izvori na događaje"
 
 #: library/WT/Stats.php:4062
 msgid "South Africa"
@@ -13065,7 +13065,7 @@ msgstr "Spremi sličicu sa vodenim žigom na server?"
 #. I18N: Name of a module
 #: modules_v3/stories/module.php:32 modules_v3/stories/module.php:403
 msgid "Stories"
-msgstr "Priće"
+msgstr "Priče"
 
 #: modules_v3/stories/module.php:237
 msgid "Story"
@@ -13352,7 +13352,7 @@ msgstr "Promjena na “%s” su odbijene."
 
 #: modules_v3/clippings/module.php:142
 msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the “Download” link.  Follow the instructions and links.</li></ul>"
-msgstr "Isječci vam omogučavaju da izvatke iz ovog obiteljskog stabla grupirate u jednu datoteku za preuzimanje u drugi genealoški program. Kreirana datoteka se sprema u GEDCOM formatu. <br><ul><li>Kako preuzeti isječak?<br>To je vrlo jednostavno. Kada god vidite ime, osobu, obitelj ili dokument na koji možete kliknuti, tada možete otići na detalje tog imena. Tamo ćete vidjeti opciju <b>Dodaj isječak</b>. Kada kliknete na taj link biti će vam ponuđeno nekoliko opcija za preuzimanje.</li><li>Kako preuzeti?<br>Jednom kada imate stavku u isječcima, možete ju preuzeti klikom na link <b>Preuzmi sada</b>. Slijedite instrukcije i linkove.</li></ul>"
+msgstr "Isječci vam omogućavaju da izvatke iz ovog obiteljskog stabla grupirate u jednu datoteku za preuzimanje u drugi genealoški program. Kreirana datoteka se sprema u GEDCOM formatu. <br><ul><li>Kako preuzeti isječak?<br>To je vrlo jednostavno. Kada god vidite ime, osobu, obitelj ili izvor na koji možete kliknuti, tada možete otići na detalje tog imena. Tamo ćete vidjeti opciju <b>Dodaj isječak</b>. Kada kliknete na taj link biti će vam ponuđeno nekoliko opcija za preuzimanje.</li><li>Kako preuzeti?<br>Jednom kada imate stavku u isječcima, možete ju preuzeti klikom na link <b>Preuzmi sada</b>. Slijedite instrukcije i linkove.</li></ul>"
 
 #: help_text.php:1314
 msgid "The current <b>webtrees</b> admin username must be the same as an existing PGV admin username"
@@ -13661,7 +13661,7 @@ msgstr "Nema bilježaka za ovu osobu."
 
 #: modules_v3/sources_tab/module.php:80
 msgid "There are no source citations for this individual."
-msgstr "Nema izvornih citata za ovu osobu."
+msgstr "Nema citata izvora za ovu osobu."
 
 #: modules_v3/media/module.php:73
 msgid "There are no media objects for this individual."
@@ -13804,7 +13804,7 @@ msgstr "Obiteljsko stablo je zadnji puta ažurirano %s."
 
 #: help_text.php:363
 msgid "This field allows you to change the source record that this fact’s source citation links to.  This field takes a source ID.  Beside the field will be listed the title of the current source ID.  Use the <b>Find ID</b> link to look up the source’s ID number.  To remove the entire citation, make this field blank."
-msgstr ""
+msgstr "Ovo polje vam omogućava promjenu zapisa izvora tako da bude vezan na citat izvora činjenica. Ovo polje prihvaća izvor ID. Osim polja biti će prikazan naslov trenutnog ID-a izvora. Koristite <b>Pronađi izvor</b> link otkrijete ID broj izvora. Za brisanje cijelog citata, ostavite polje prazno."
 
 #: modules_v3/faq/help_text.php:40
 msgid "This field controls the order in which the FAQ items are displayed.<br><br>You do not have to enter the numbers sequentially.  If you leave holes in the numbering scheme, you can insert other items later.  For example, if you use the numbers 1, 6, 11, 16, you can later insert items with the missing sequence numbers.  Negative numbers and zero are allowed, and can be used to insert items in front of the first one.<br><br>When more than one FAQ item has the same position number, only one of these items will be visible."
@@ -14248,7 +14248,7 @@ msgstr "Ova sekcija vam omogućava dodavanje nove bilješke u činjenicu koju tr
 
 #: help_text.php:1157
 msgid "This section allows you to add a new source citation to the fact that you are currently editing.<br><br>In the Source field you enter the ID for the source.  Click the “Create a new source” link if you need to enter a new source.  In the citation details field you would enter the page number or other information that might help someone find the information in the source.  In the Text field you would enter the text transcription from the source."
-msgstr "Ova sekcija vam omogućava da dodate novi citat dokumenta na činjenicu koju trenutno uređujete.<br><br>U polje dokument unosite ID dokumenta. Kliknite na link <b>Kreiraj novi dokument</b> ako trebate dodati novi dokument. U polje Detalji Citata možete unijeti broj stranice ili druge informacije koje mogu nekome pomoći da pronađe informacije na izvoru. U tekst polje možete unijeti prepis dokumenta."
+msgstr "Ova sekcija vam omogućava da dodate novi citat izvora na činjenicu koju trenutno uređujete.<br><br>U polje izvor unosite ID izvora. Kliknite na link <b>Kreiraj novi izvor</b> ako trebate dodati novi izvor. U polje Detalji Citata možete unijeti broj stranice ili druge informacije koje mogu nekome pomoći da pronađe informacije na izvoru. U tekst polje možete unijeti prepis izvora."
 
 #. I18N: http://en.wikipedia.org/wiki/Https
 #: admin_site_upgrade.php:319
@@ -14274,27 +14274,27 @@ msgstr "Ove stranice će biti nadograđene. Pokušajte ponovo za par minuta."
 
 #: source.php:73
 msgid "This source does not exist or you do not have permission to view it."
-msgstr "Dokument ne postoji ili vi nemate dopuštenje vidjeti ga."
+msgstr "Izvor ne postoji ili vi nemate dopuštenje vidjeti ga."
 
 #: source.php:47
 msgid "This source has been deleted.  The deletion will need to be reviewed by a moderator."
-msgstr "Ovaj dokument je obrisan. Brisanje treba biti pregledano od moderatora."
+msgstr "Ovaj izvor je obrisan. Brisanje treba biti pregledano od moderatora."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: source.php:38
 #, php-format
 msgid "This source has been deleted.  You should review the deletion and then %1$s or %2$s it."
-msgstr "Ovaj dokument je obrisan. Trebate pregledati što je obrisano i tada %1$s ili %2$s brisanje."
+msgstr "Ovaj izvor je obrisan. Trebate pregledati što je obrisano i tada %1$s ili %2$s brisanje."
 
 #: source.php:65
 msgid "This source has been edited.  The changes need to be reviewed by a moderator."
-msgstr "Ovaj dokument je promijenjen. Promjene trebaju biti pregledane od moderatora."
+msgstr "Ovaj izvor je promijenjen. Promjene trebaju biti pregledane od moderatora."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: source.php:56
 #, php-format
 msgid "This source has been edited.  You should review the changes and then %1$s or %2$s them."
-msgstr "Ovaj dokument je promijenjen. Trebate pregledati promjene i tada ih %1$s ili %2$s."
+msgstr "Ovaj izvor je promijenjen. Trebate pregledati promjene i tada ih %1$s ili %2$s."
 
 #: modules_v3/googlemap/help_text.php:37
 msgid "This specifies the precision of the different levels when entering new geographic locations. For example a country will be specified with precision 0 (=0 digits after the decimal point), while a town needs 3 or 4 digits."
@@ -14499,7 +14499,7 @@ msgstr ""
 #: admin_media.php:470 library/WT/Controller/Media.php:68
 #: library/WT/Controller/Media.php:152 modules_v3/lightbox/module.php:166
 msgid "To source"
-msgstr "Za dokument"
+msgstr "Za izvor"
 
 #: modules_v3/sitemap/module.php:265
 msgid "To tell search engines that sitemaps are available, you can use the following links."
@@ -14675,7 +14675,7 @@ msgstr "Ukupno mjesta: %s"
 #: find.php:673
 #, php-format
 msgid "Total sources: %s"
-msgstr "Ukupno dokumenata: %s"
+msgstr "Ukupno izvora: %s"
 
 #: modules_v3/gedcom_stats/module.php:96
 #: modules_v3/gedcom_stats/module.php:306 modules_v3/html/module.php:182
@@ -14836,11 +14836,11 @@ msgstr "Unikatne činjenice pojedinaca"
 
 #: admin_trees_config.php:1211 help_text.php:808
 msgid "Unique repository facts"
-msgstr "Unikatna ustanova činjenica"
+msgstr "Jedinstvene činjenice mjesta čuvanja"
 
 #: admin_trees_config.php:1182 help_text.php:919
 msgid "Unique source facts"
-msgstr "Unikatni dokument činjenica"
+msgstr "Jedinstveni izvor činjenica"
 
 #: library/WT/Stats.php:3809
 msgid "United Arab Emirates"
@@ -15019,7 +15019,7 @@ msgstr "Kompaktan izgled"
 
 #: admin_trees_config.php:1261 help_text.php:534
 msgid "Use full source citations"
-msgstr "Koristi pune citate dokumenata"
+msgstr "Koristi pune citate izvora"
 
 #: admin_site_config.php:124 help_text.php:748
 msgid "Use password"
@@ -15133,15 +15133,15 @@ msgstr "Korištenjem padajućeg izbornika možete izabrati državu, čija zastav
 
 #: library/WT/Stats.php:4048
 msgid "Uzbekistan"
-msgstr "אוזבקיסטן"
+msgstr ""
 
 #: library/WT/Stats.php:4055
 msgid "Vanuatu"
-msgstr "ונואטו"
+msgstr ""
 
 #: library/WT/Stats.php:4049
 msgid "Vatican City"
-msgstr "קריית הוותיקן"
+msgstr ""
 
 #: library/WT/Date/French.php:60
 msgctxt "GENITIVE"
@@ -15165,7 +15165,7 @@ msgstr ""
 
 #: library/WT/Stats.php:4051
 msgid "Venezuela"
-msgstr "ונצואלה"
+msgstr ""
 
 #: library/WT/Date/French.php:65
 msgctxt "GENITIVE"
@@ -15268,7 +15268,7 @@ msgstr "Prikaži osobu"
 
 #: medialist.php:296 modules_v3/random_media/module.php:185
 msgid "View source"
-msgstr "Prikaži dokument"
+msgstr "Prikaži izvor"
 
 #: modules_v3/gedcom_stats/module.php:186
 msgid "View statistics as graphs"
@@ -15423,11 +15423,11 @@ msgstr "Kada je nova bilješka dodana, automatski se generira ID za tu bilješku
 
 #: help_text.php:814
 msgid "When a new repository record is added online in <b>webtrees</b>, a new ID for that repository will be generated automatically. The repository ID will have this prefix."
-msgstr "Kada je nova ustanova dodana, automatski se generira ID za tu ustanovu. ID ustanove ima ovaj predznak."
+msgstr "Kada je novo mjesto čuvanja dodano, automatski se generira ID za to mjesto čuvanja. ID mjesta čuvanja ima ovaj predznak."
 
 #: help_text.php:905
 msgid "When a new source record is added online in <b>webtrees</b>, a new ID for that source will be generated automatically.  The source ID will have this prefix."
-msgstr "Kada je novi dokument dodan, automatski se generira ID za taj dokument. ID dokumenta ima ovaj predznak."
+msgstr "Kada je novi izvor dodan, automatski se generira ID za taj izvor. ID izvora ima ovaj predznak."
 
 #: help_text.php:1468
 msgid "When a user registers for an account, an email is sent to their email address with a verification link.  When they click this link, we know the email address is correct, and the “email verified” option is selected automatically."
@@ -15439,7 +15439,7 @@ msgstr "Kod dodavanja veze, ID polje ne smije biti prazno."
 
 #: help_text.php:784
 msgid "When adding new close relatives, you can add source citations to the records (e.g. INDI, FAM) or the facts (BIRT, MARR, DEAT).  This option controls which checkboxes are ticked by default."
-msgstr "Kada dodajete novog bližeg rođaka, možete dodati citat dokumenta u zapis (INDI, FAM) ili činjenicu (BIRT, MARR, DEAT). Ova opcija kontrolira koje će opcije biti dostupne prema zadanom."
+msgstr "Kada dodajete novog bližeg rođaka, možete dodati citat izvora u zapis (INDI, FAM) ili činjenicu (BIRT, MARR, DEAT). Ova opcija kontrolira koje će opcije biti dostupne prema zadanom."
 
 #: help_text.php:461
 msgid "When calculating relationships, this option controls whether <b>webtrees</b> will include spouses/partners as well as blood relatives."
@@ -15455,7 +15455,7 @@ msgstr "Kada je ova opcija uključena, grafikon će biti ispisan sa najstarijim 
 
 #: help_text.php:1409
 msgid "When this option is checked, you can see all source or note records for this individual.  When this option is unchecked, source or note records that are associated with other facts for this individual will not be shown."
-msgstr "Kada je ova opcija uključena, možete vidjeti sve dokumente ili bilješke za ovu osobu. Kada je opcija isključena, dokumenti i bilješke koji asociraju sa drugim činjenicama neće biti vidljive."
+msgstr "Kada je ova opcija uključena, možete vidjeti sve izvore ili bilješke za ovu osobu. Kada je opcija isključena, izvori i bilješke koji asociraju sa drugim činjenicama neće biti vidljive."
 
 #: help_text.php:1404
 msgid "When this option is selected, webtrees will calculate the age differences between siblings, children, spouses, etc."
@@ -15507,7 +15507,7 @@ msgstr "Koje druge veze od ove obitelji želite dodati?"
 
 #: modules_v3/clippings/module.php:123 modules_v3/clippings/module.php:531
 msgid "Which records linked to this source should be added?"
-msgstr "Koji zapis vezan za ovaj dokument treba biti dodan?"
+msgstr "Koji zapis vezan za ovaj izvor treba biti dodan?"
 
 #: admin_trees_config.php:647 help_text.php:671
 msgid "Who can upload new media files?"
@@ -15596,7 +15596,7 @@ msgstr ""
 
 #: library/WT/Stats.php:302 library/WT/Stats.php:346
 msgid "Without sources"
-msgstr "Bez dokumenata"
+msgstr "Bez izvora"
 
 #. I18N: gedcom tag _WITN
 #: library/WT/Gedcom/Code/Rela.php:191 library/WT/Gedcom/Tag.php:809
@@ -15772,11 +15772,11 @@ msgstr "Morate izvesti vaše zadnje GEDCOM podatke"
 
 #: edit_interface.php:1503
 msgid "You must provide a repository name"
-msgstr "Morate priložiti ime ustanove"
+msgstr "Morate priložiti ime mjesta čuvanja"
 
 #: edit_interface.php:1169
 msgid "You must provide a source title"
-msgstr "Morate priložiti naziv dokumenta"
+msgstr "Morate priložiti naziv izvora"
 
 #: modules_v3/charts/module.php:147
 msgid "You must select an individual and chart type in the block configuration settings."
