@@ -700,10 +700,7 @@ msgstr "Uobičajena greška je da imate višestruke veze prema istom zapisu. Pri
 
 #: setup.php:356
 msgid "A database server can store many separate databases.  You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
-msgstr ""
-"Server baze podataka može spremiti više odvojenih baza podataka. Vi trebate "
-"odabrati postojeću bazu (kreiranu od vašeg server administratora) ili "
-"kreirati novu (ako vaš korisnički račun to dopušta)."
+msgstr "Server baze podataka može spremiti više odvojenih baza podataka. Vi trebate odabrati postojeću bazu (kreiranu od vašeg server administratora) ili kreirati novu (ako vaš korisnički račun to dopušta)."
 
 #: help_text.php:70
 msgid "A description of the cause of the associated event or fact, such as the cause of death."
@@ -906,12 +903,7 @@ msgstr "Izvještaj za vitalne zapise po datumu ili mjestu."
 
 #: help_text.php:1374
 msgid "A role is a set of access rights, which give permission to view data, change configuration settings, etc.  Access rights are assigned to roles, and roles are granted to users.  Each family tree can assign different access to each role, and users can have a different role in each family tree."
-msgstr ""
-"Dužnost je skup pristupnih prava, koja vam daju dopuštenje da vidite podatke, "
-"mijenjate postavke, itd. Pristupna prava su dodijeljena dužnosti, a dužnosti "
-"dodijeljena korisnicima. Svako obiteljsko stablo ima dodijeljen drugačiji "
-"pristup za svaku dužnost, i korisnik može imati drugačiju dužnost u svakom "
-"obiteljskom stablu."
+msgstr "Dužnost je skup pristupnih prava, koja vam daju dopuštenje da vidite podatke, mijenjate postavke, itd. Pristupna prava su dodijeljena dužnosti, a dužnosti dodijeljena korisnicima. Svako obiteljsko stablo ima dodijeljen drugačiji pristup za svaku dužnost, i korisnik može imati drugačiju dužnost u svakom obiteljskom stablu."
 
 #. I18N: Description of the “Families” module
 #: modules_v3/families/module.php:37
@@ -1846,9 +1838,7 @@ msgstr "Svi izvori činjenica"
 #. I18N: Description of the “CKEditor” module.  WYSIWYG = “what you see is what you get”
 #: modules_v3/ckeditor/module.php:39
 msgid "Allow other modules to edit text using a “WYSIWYG” editor, instead of using HTML codes."
-msgstr ""
-"Omogući drugim modulima da uređuju tekst koristeći “WYSIWYG” uređivaća, "
-"umjesto korištenja HTML kodova."
+msgstr "Omogući drugim modulima da uređuju tekst koristeći “WYSIWYG” uređivaća, umjesto korištenja HTML kodova."
 
 #: admin_users.php:197 admin_users.php:391
 msgid "Allow this user to edit his account information"
@@ -1900,8 +1890,7 @@ msgstr "Alternativni način za prikaz dijagrama."
 #. I18N: Description of the “Census assistant” module
 #: modules_v3/GEDFact_assistant/module.php:37
 msgid "An alternative way to enter census transcripts and link them to individuals."
-msgstr ""
-"Alternativni način da unesete popis prijepisa i povežete ga sa pojedincem."
+msgstr "Alternativni način da unesete popis prijepisa i povežete ga sa pojedincem."
 
 #. I18N: Description of the “Login” module
 #: modules_v3/login_block/module.php:37
@@ -2162,13 +2151,7 @@ msgstr ""
 
 #: modules_v3/html/help_text.php:32
 msgid "As well as using the toolbar to apply HTML formatting, you can insert database fields which are updated automatically.  These special fields are marked with <b>#</b> characters.  For example <b>#totalFamilies#</b> will be replaced with the actual number of families in the database.  Advanced users may wish to apply CSS classes to their text, so that the formatting matches the currently selected theme."
-msgstr ""
-"Kada koristite alatnu traku za HTML formatiranje, možete umetnuti polje iz "
-"baze podataka koje će se ažurirati automatski. To specijalno polje je "
-"označeno sa <b>#</b> znakom. Na primjer <b>#totalFamilies#</b> će biti "
-"prepisano sa aktualnim brojem obitelji u bazi podataka. Napredni korisnici "
-"mogu poželjeti primijeniti CCS klase na svoj tekst, tako da formatiranje "
-"odgovara trenutno odabranoj temi."
+msgstr "Kada koristite alatnu traku za HTML formatiranje, možete umetnuti polje iz baze podataka koje će se ažurirati automatski. To specijalno polje je označeno sa <b>#</b> znakom. Na primjer <b>#totalFamilies#</b> će biti prepisano sa aktualnim brojem obitelji u bazi podataka. Napredni korisnici mogu poželjeti primijeniti CCS klase na svoj tekst, tako da formatiranje odgovara trenutno odabranoj temi."
 
 #. I18N: The name of a colour-scheme
 #: themes/colors/theme.php:77
@@ -6324,8 +6307,7 @@ msgstr ""
 #: admin_site_clean.php:83
 #, php-format
 msgid "Files marked with %s are required for proper operation and cannot be removed."
-msgstr ""
-"Datoteke označene sa %s su potrebne za ispravan rad i ne mogu biti uklonjene."
+msgstr "Datoteke označene sa %s su potrebne za ispravan rad i ne mogu biti uklonjene."
 
 #: admin_site_change.php:284 admin_site_logs.php:242 find.php:186 find.php:201
 #: find.php:219 find.php:236 find.php:253 find.php:271 find.php:288
@@ -7094,9 +7076,7 @@ msgstr ""
 
 #: modules_v3/googlemap/help_text.php:59
 msgid "Here the zoom level can be entered. This value will be used as the minimal value when displaying this geographic location on a map."
-msgstr ""
-"Ovdje treba biti unesen zum livo. Ta vrijednost će biti korištena kao "
-"minimalna vrijednost kada se prikazuje ova zemljopisna lokacija na karti."
+msgstr "Ovdje treba biti unesen zum livo. Ta vrijednost će biti korištena kao minimalna vrijednost kada se prikazuje ova zemljopisna lokacija na karti."
 
 #: help_text.php:1059
 msgid "Here you can add a fact to the record being edited.<br><br>First choose a fact from the drop-down list, then click the <b>Add</b> button.  All possible facts that you can add to the database are in that drop-down list."
@@ -7177,9 +7157,7 @@ msgstr "Najveća populacija"
 
 #: index_edit.php:252 index_edit.php:337
 msgid "Highlight a  block name and then click on one of the arrow icons to move that highlighted block in the indicated direction."
-msgstr ""
-"Označite blok i onda kliknite na neku od strelica kako bi ga pomicali u tom "
-"smjeru."
+msgstr "Označite blok i onda kliknite na neku od strelica kako bi ga pomicali u tom smjeru."
 
 #. I18N: gedcom tag _PRIM
 #: library/WT/Gedcom/Tag.php:728
@@ -9123,9 +9101,7 @@ msgstr ""
 
 #: modules_v3/googlemap/help_text.php:32
 msgid "Minimum and maximum zoom level for the Google map. 1 is the full map, 15 is single house. Note that 15 is only available in certain areas."
-msgstr ""
-"Minimalni i maksimalni zum nivo za Google kartu. 1 je cijela karta, 15 je "
-"jedna kuća. Imajte na umu da je samo 15 omogućeno na nekim područjima."
+msgstr "Minimalni i maksimalni zum nivo za Google kartu. 1 je cijela karta, 15 je jedna kuća. Imajte na umu da je samo 15 omogućeno na nekim područjima."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:70
@@ -10999,9 +10975,7 @@ msgstr "Opcije privatnosti"
 
 #: admin_trees_config.php:546
 msgid "Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag"
-msgstr ""
-"Ogranićenja privatnosti - primjenjuju se na zapise i činjenice koje ne sadrže "
-"GEDCOM RESN tag"
+msgstr "Ogranićenja privatnosti - primjenjuju se na zapise i činjenice koje ne sadrže GEDCOM RESN tag"
 
 #: expand_view.php:32 library/WT/Controller/GedcomRecord.php:67
 #: library/WT/GedcomRecord.php:391 library/WT/GedcomRecord.php:452
@@ -12095,15 +12069,11 @@ msgstr ""
 
 #: help_text.php:628
 msgid "Set the maximum number of generations to display on descendancy charts."
-msgstr ""
-"Postavite maksimalan broj generacija koje se može prikazati na grfikonu "
-"potomaka."
+msgstr "Postavite maksimalan broj generacija koje se može prikazati na grfikonu potomaka."
 
 #: help_text.php:650
 msgid "Set the maximum number of generations to display on pedigree charts."
-msgstr ""
-"Postavite maksimalan broj generacija koji se može prikazati na grafikonu "
-"rodoslovlja."
+msgstr "Postavite maksimalan broj generacija koji se može prikazati na grafikonu rodoslovlja."
 
 #: help_text.php:839
 msgid "Set the privacy access level for all dead individuals."
@@ -12588,8 +12558,7 @@ msgstr "Prikaži prebivališta?"
 
 #: help_text.php:900
 msgid "Show runtime statistics and database queries at the bottom of every page."
-msgstr ""
-"Prikaži statistiku izvršavanja programa i beze podataka na dnu svake stranice."
+msgstr "Prikaži statistiku izvršavanja programa i beze podataka na dnu svake stranice."
 
 #: modules_v3/random_media/module.php:375
 msgid "Show slide show controls?"
@@ -13744,8 +13713,7 @@ msgstr ""
 
 #: admin.php:102
 msgid "These pages provide access to all the configuration settings and management tools for this <b>webtrees</b> site."
-msgstr ""
-"Ove stranice pružaju pristup svim postavkama i alatima za ove web stranice."
+msgstr "Ove stranice pružaju pristup svim postavkama i alatima za ove web stranice."
 
 #. I18N: do not translate the #keywords#
 #: modules_v3/html/module.php:159
@@ -13853,9 +13821,7 @@ msgstr ""
 
 #: help_text.php:657
 msgid "This folder will be used to store the media files for this family tree."
-msgstr ""
-"Ova mapa će biti korišten za spremanje medijskih datoteka ovog obiteljskog "
-"stabla."
+msgstr "Ova mapa će biti korišten za spremanje medijskih datoteka ovog obiteljskog stabla."
 
 #: library/WT/Filter.php:295
 msgid "This form has expired.  Try again."
@@ -15465,10 +15431,7 @@ msgstr "Kada je novi izvor dodan, automatski se generira ID za taj izvor. ID izv
 
 #: help_text.php:1468
 msgid "When a user registers for an account, an email is sent to their email address with a verification link.  When they click this link, we know the email address is correct, and the “email verified” option is selected automatically."
-msgstr ""
-"Kada korisnik registrira račun, pošalje mu se e-poštom poruka sa potvrdnim "
-"linkom. Kada on klikne na taj link, mi znamo da je adresa e-pošte ispravna. "
-"Opcija “e-pošta provjerena” se automatski uključi."
+msgstr "Kada korisnik registrira račun, pošalje mu se e-poštom poruka sa potvrdnim linkom. Kada on klikne na taj link, mi znamo da je adresa e-pošte ispravna. Opcija “e-pošta provjerena” se automatski uključi."
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:44
 msgid "When adding a link, the ID field cannot be empty."
@@ -19564,9 +19527,7 @@ msgstr "postavke konekcije na bazu podataka u datoteci <b>/data/config.ini.php</
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:80
 msgid "the directory <b>/data</b> and the file <b>/data/config.ini.php</b> have access permissions that allow the webserver to read them"
-msgstr ""
-"Mapa <b>/data</b> i datoteka <b>/data/config.ini.php</b> ima pristupno "
-"dopuštenje koje web serveru omogućava čitanje"
+msgstr "Mapa <b>/data</b> i datoteka <b>/data/config.ini.php</b> ima pristupno dopuštenje koje web serveru omogućava čitanje"
 
 #: includes/functions/functions.php:681
 #, php-format
