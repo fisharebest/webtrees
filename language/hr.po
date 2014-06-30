@@ -7319,11 +7319,11 @@ msgstr "Ako pojedinac nije poznat po prvom imenu, preferirano ime treba biti naz
 
 #: help_text.php:466
 msgid "If the number of times that a certain surname occurs is lower than the threshold, it will not appear in the list.  It can be added here manually.  If more than one surname is entered, they must be separated by a comma.  <b>Surnames are case-sensitive.</b>"
-msgstr ""
+msgstr "Ako je broj ponavljanja određenog prezimena manji od praga, ono se neće pojaviti na popisu. Ovdje može biti dodano ručno. Ako želite upisati više od jednog prezimena, moraju biti odvojena zarezom. <b>Prezimena su osjetljiva na velika/mala slova.</b>"
 
 #: help_text.php:819
 msgid "If the option <b>Allow visitors to request account registration</b> is enabled this setting controls whether the admin must approve the registration.<br><br>Setting this to <b>Yes</b> will require that all new users first verify themselves and then be approved by an admin before they can login.  With this setting on <b>No</b>, the “Approved by administrator” checkbox will be checked automatically when users verify their account, thus allowing an immediate login afterwards without admin intervention."
-msgstr ""
+msgstr "Ako je opcija <b>Dopusti posjetitelju da pošalje zahtjev za registraciju računa</b> uključena, ova postavka kontrolira da li administrator mora odobriti registraciju.<br><br>Postavljanjem na <b>Da</b> zahtijevati će od svih novih korisnika da prvo potvrde sami sebe i da budu odobreni od administratora prije nego će se moći prijaviti. Sa postavkom <b>Ne</b>, “Odobreno od Administratora” će biti uključeno automatski kada korisnik potvrdi svoj račun, omogućujući mu da se odmah prijavi bez intervencije administratora."
 
 #: help_text.php:281
 #, php-format
@@ -7332,19 +7332,19 @@ msgstr "Ako prezime nije poznato, koristite prazne kose crte: <%s>Mary //<%s>"
 
 #: help_text.php:1458
 msgid "If this box is checked, this user will be able to edit his account information.  Although this is not generally recommended, you can create a single user name and password for multiple users.  When this box is unchecked for all users with the shared account, they are prevented from editing the account information and only an administrator can alter that account."
-msgstr ""
+msgstr "Ako je ovo uključeno, taj korisnik će imati mogućnost uređivati informacije svog računa. Iako to nije generalno preporučljivo, možete kreirati jedno korisničko ime i jednu lozinku za više korisnika. Kada je isključeno za sve korisnike sa dijeljenim računom, oni su spriječeni mijenjati postavke računa i samo administrator može vršiti promjene."
 
 #: help_text.php:623
 msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, he is considered to be “alive”.  Children’s birth dates are considered to be such events for this purpose."
-msgstr ""
+msgstr "Ako ovaj pojedinac ima bilo koji događaj drugačiji od smrt, pokop ili kremiranje mlađi od njegovih godina, tada se on smatra “živ”. Dječji datumi rođenja se smatraju događajima za takvu svrhu."
 
 #: help_text.php:661
 msgid "If two family trees use the same media folder, then they will be able to share media files.  If they use different media folders, then their media files will be kept separate."
-msgstr ""
+msgstr "Ako dva obiteljska stabla koriste istu medijsku mapu, onda oni imaju mogućnost dijeliti medijske datoteke. Ako koriste različite medijske mape, onda su njihove medijske datoteke odvojene."
 
 #: help_text.php:672
 msgid "If you are concerned that users might upload inappropriate images, you can restrict media uploads to managers only."
-msgstr ""
+msgstr "Ako ste zabrinuti da bi korisnici mogli učitati neprilične slike, možete ograničiti učitavanje medija samo na managere."
 
 #: site-unavailable.php:77
 msgid "If you are the website administrator, you should check that:"
@@ -7376,23 +7376,23 @@ msgstr ""
 
 #: help_text.php:1040
 msgid "If you have opted for custom welcome text, you can type that text here.  To set this text for other languages, you must switch to that language, and visit this page again."
-msgstr ""
+msgstr "Ako imate potrebu za prilagođenim tekstom dobrodošlice, možete ga upisati ovdje. Da bi postavili taj tekst za druge jezike, morate uključiti taj jezik, i pogledati ovu stranicu ponovo."
 
 #: modules_v3/recent_changes/module.php:174
 msgid "If you hide an empty block, you will not be able to change its configuration until it becomes visible by no longer being empty."
-msgstr ""
+msgstr "Ako sakrijete prazan blok, nećete biti u mogućnosti mijenjati njegove postavke dok ne postane vidljiv kada više ne bude prazan."
 
 #: help_text.php:645 help_text.php:684
 msgid "If you leave this setting empty, the default value will be used."
-msgstr ""
+msgstr "Ako ostavite ovu postavku praznu, biti će korištena zadana vrijednost."
 
 #: help_text.php:585
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
-msgstr ""
+msgstr "Ako odaberete drugu mapu, morate također premjestiti sve datoteke (osim: config.ini.php, index.php i .htaccess) iz postojeće mape u novu mapu."
 
 #: help_text.php:659
 msgid "If you select a different folder, you must also move any media files from the existing folder to the new one."
-msgstr ""
+msgstr "Ako odaberete drugu mapu, morate također premjestiti sve medijske datoteke iz postojeće mape u novu mapu."
 
 #: setup.php:183
 msgid "If you try to exceed these limits, you may experience server time-outs and blank pages."
@@ -7400,16 +7400,16 @@ msgstr ""
 
 #: help_text.php:471
 msgid "If you want to remove a surname from the Common Surname list without increasing the threshold value, you can do that by entering the surname here.  If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive</b>.  Surnames entered here will also be removed from the “Top surnames” list on the “Home page”."
-msgstr ""
+msgstr "Ako želite ukloniti prezime iz popisa “Najčešća prezimena” bez povećanja vrijednosti praga, možete to učiniti tako da upišete prezime ovdje. Ako upisujete više od jednog prezimena, ona moraju biti odvojena zarezom. <b>Prezimena su osjetljiva na velika/mala slova</b>. Prezimena upisana ovdje će također biti uklonjena iz liste “Najčešća prezimena” na početnoj stranici."
 
 #: setup.php:185
 msgid "If your server’s security policy permits it, you will be able to request increased memory or CPU time using the <b>webtrees</b> administration page.  Otherwise, you will need to contact your server’s administrator."
-msgstr ""
+msgstr "Ako sigurnosna pravila na vašem serveru dopuštaju, moči ćete povećati memoriju ili CPU vrijeme koristeći stranice administracije. Inače ćete trebati kontaktirati vašeg administratora servera."
 
 #. I18N: Help text for the "Website URL" site configuration setting
 #: help_text.php:829
 msgid "If your site can be reached using more than one URL, such as <b>http://www.example.com/webtrees/</b> and <b>http://webtrees.example.com/</b>, you can specify the preferred URL.  Requests for the other URLs will be redirected to the preferred one."
-msgstr ""
+msgstr "Ako se do vaših stranica može doći preko više od jedne URL adrese, kao na primjer <b>http://www.example.com/webtrees/</b> i <b>http://webtrees.example.com/</b>, možete odrediti poželjnu URL adresu. Zahtjev prema drugim URL adresama će biti preusmjeren na poželjnu URL adresu."
 
 #: library/WT/Gedcom/Tag.php:821
 msgid "Image dimensions"
@@ -7470,7 +7470,7 @@ msgstr "U ovoj godini…"
 
 #: modules_v3/googlemap/module.php:1534
 msgid "Include fully matched places: "
-msgstr ""
+msgstr "Uključi puno poklapanje mjesta: "
 
 #: famlist.php:179 indilist.php:179
 #, php-format
@@ -7480,7 +7480,7 @@ msgstr "Uključi osobe sa vjenčanim prezimenom “%s”"
 #: help_text.php:1268 modules_v3/clippings/module.php:190
 #: modules_v3/clippings/module.php:565
 msgid "Include media (automatically zips files)"
-msgstr ""
+msgstr "Uključi medije (automatski komprimiraj (zip) datoteke)"
 
 #. I18N: Label for check-box
 #: admin_media.php:586 medialist.php:105
@@ -7511,11 +7511,11 @@ msgstr "Pojedinac"
 
 #: relationship.php:93
 msgid "Individual 1"
-msgstr "Osoba 1"
+msgstr "Pojedinac 1"
 
 #: relationship.php:108
 msgid "Individual 2"
-msgstr "Osoba 2"
+msgstr "Pojedinac 2"
 
 #: admin_trees_config.php:335 help_text.php:539
 msgid "Individual ID prefix"
@@ -7523,11 +7523,11 @@ msgstr "ID predznak pojedinca"
 
 #: statistics.php:572
 msgid "Individual distribution"
-msgstr "Individualna podjela"
+msgstr "Osobna podjela"
 
 #: library/WT/Stats.php:1030 statistics.php:626
 msgid "Individual distribution chart"
-msgstr "Osobna podjela (grafički)"
+msgstr "Osobna podjela (grafikon)"
 
 #. I18N: Name of a module
 #: modules_v3/individuals/module.php:32
@@ -7541,7 +7541,7 @@ msgstr "Stranice pojedinca"
 #: admin_users.php:231 admin_users.php:433 edituser.php:137 help_text.php:1201
 #: help_text.php:1362 help_text.php:1462
 msgid "Individual record"
-msgstr "Osobni zapis"
+msgstr "Zapis pojedinca"
 
 #: modules_v3/gedcom_stats/module.php:155
 #: modules_v3/gedcom_stats/module.php:333 modules_v3/html/module.php:235
@@ -7572,11 +7572,11 @@ msgstr "Osobe sa izvorima"
 #: famlist.php:256 indilist.php:256
 #, php-format
 msgid "Individuals with surname %s"
-msgstr "Osobe za prezimenom %s"
+msgstr "Osobe sa prezimenom %s"
 
 #: library/WT/Stats.php:3910
 msgid "Indonesia"
-msgstr "אינדונזיה"
+msgstr ""
 
 #. I18N: gedcom tag INFL
 #: includes/functions/functions_date.php:34 library/WT/Gedcom/Tag.php:222
@@ -7603,7 +7603,7 @@ msgstr "Informacije o zahtjevu se mogu vidjeti na linku ispod."
 
 #: admin_pgv_to_wt.php:135
 msgid "Installation directory"
-msgstr ""
+msgstr "Instalacijska mapa"
 
 #. I18N: Name of a module
 #: includes/functions/functions_print.php:103
@@ -7630,27 +7630,27 @@ msgstr "Interno dopisivanje sa e-poštom"
 #. I18N: gedcom tag _INTE
 #: library/WT/Gedcom/Tag.php:723
 msgid "Interred"
-msgstr ""
+msgstr "Sahrana"
 
 #. I18N: gedcom tag _INTE
 #: library/WT/Gedcom/Tag.php:722
 msgctxt "FEMALE"
 msgid "Interred"
-msgstr ""
+msgstr "Sahranjena"
 
 #. I18N: gedcom tag _INTE
 #: library/WT/Gedcom/Tag.php:721
 msgctxt "MALE"
 msgid "Interred"
-msgstr ""
+msgstr "Sahranjen"
 
 #: import.php:114
 msgid "Invalid GEDCOM file - no header record found."
-msgstr ""
+msgstr "Neispravna GECOM datoteka - nije pronađeno zaglavlje."
 
 #: includes/functions/functions_import.php:640
 msgid "Invalid GEDCOM format"
-msgstr "Nevrijeeći GEDCOM format"
+msgstr "Neispravan GEDCOM format"
 
 #: library/WT/Date.php:238
 msgid "Invalid date"
@@ -7662,7 +7662,7 @@ msgstr ""
 
 #: library/WT/Stats.php:3916
 msgid "Iraq"
-msgstr ""
+msgstr "Irak"
 
 #: library/WT/Stats.php:3914
 msgid "Ireland"
@@ -7674,7 +7674,7 @@ msgstr ""
 
 #: library/WT/Stats.php:3918
 msgid "Israel"
-msgstr ""
+msgstr "Izrael"
 
 #: admin_site_upgrade.php:81 admin_site_upgrade.php:85
 msgid "It can take several minutes to download and install the upgrade.  Be patient."
@@ -7682,7 +7682,7 @@ msgstr ""
 
 #: library/WT/Stats.php:3919
 msgid "Italy"
-msgstr ""
+msgstr "Italia"
 
 #: library/WT/Date/Jewish.php:103
 msgctxt "GENITIVE"
@@ -7758,7 +7758,7 @@ msgstr "Netko /NEPOZNAT/"
 
 #: library/WT/Stats.php:3921
 msgid "Jordan"
-msgstr "ירדן"
+msgstr ""
 
 #: library/WT/Gedcom/Code/Temp.php:108
 msgid "Jordan River, Utah"
@@ -7874,7 +7874,7 @@ msgstr "Lipanj"
 
 #: library/WT/Stats.php:3923
 msgid "Kazakhstan"
-msgstr "קזחסטן"
+msgstr ""
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:103
 msgid "Keep"
@@ -7882,15 +7882,15 @@ msgstr "Zadrži"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:124
 msgid "Keep link in list"
-msgstr "Zadrži vezu u u popisu"
+msgstr "Zadrži vezu na popisu"
 
 #: library/WT/Stats.php:3924
 msgid "Kenya"
-msgstr "קניה"
+msgstr "Kenija"
 
 #: modules_v3/html/module.php:155
 msgid "Keyword examples"
-msgstr ""
+msgstr "Primjer riječi"
 
 #: library/WT/Date/Jalali.php:114
 msgctxt "Abbreviation for Persian month: Khordad"
@@ -7927,7 +7927,7 @@ msgstr ""
 
 #: library/WT/Stats.php:3927
 msgid "Kiribati"
-msgstr "קיריבאטי"
+msgstr ""
 
 #: library/WT/Date/Jewish.php:97
 msgctxt "GENITIVE"
@@ -7955,15 +7955,15 @@ msgstr ""
 
 #: library/WT/Stats.php:3929
 msgid "Korea"
-msgstr "דרום קוריאה"
+msgstr ""
 
 #: library/WT/Stats.php:3930
 msgid "Kuwait"
-msgstr "כווית"
+msgstr ""
 
 #: library/WT/Stats.php:3925
 msgid "Kyrgyzstan"
-msgstr "קירגיסטן"
+msgstr ""
 
 #. I18N: gedcom tag BAPL
 #: library/WT/Gedcom/Tag.php:109
@@ -8020,7 +8020,7 @@ msgstr ""
 
 #: setup.php:178
 msgid "Large systems (50000 individuals): 64-128MB, 40-80 seconds"
-msgstr ""
+msgstr "Veliki sitem (50000 pojedinaca): 64-128MB, 40-80 sekundi"
 
 #: library/WT/Stats.php:2822 statistics.php:312
 msgid "Largest families"
@@ -8063,7 +8063,7 @@ msgstr "Zadnje rođenje"
 #: modules_v3/gedcom_stats/module.php:133
 #: modules_v3/gedcom_stats/module.php:309 modules_v3/html/module.php:220
 msgid "Latest birth year"
-msgstr "Posljednja godina rođenja"
+msgstr "Zadnja godina rođenja"
 
 #: statistics.php:132
 msgid "Latest death"
@@ -8076,11 +8076,11 @@ msgstr "Zadnja godina smrti"
 
 #: statistics.php:234
 msgid "Latest divorce"
-msgstr "Najnoviji razvod"
+msgstr "Zadnji razvod"
 
 #: statistics.php:233
 msgid "Latest marriage"
-msgstr "Najnoviji brak"
+msgstr "Zadnji brak"
 
 #. I18N: gedcom tag LATI
 #: library/WT/Gedcom/Tag.php:224 modules_v3/googlemap/module.php:1633
@@ -8099,16 +8099,16 @@ msgstr "Smjer prikaza"
 
 #: edituser.php:149
 msgid "Leave password blank if you want to keep the current password."
-msgstr "Ostavite lozinku praznom ako želite saćuvati staru lozinku."
+msgstr "Ostavite lozinku praznom ako želite sačuvati staru lozinku."
 
 #: admin_trees_config.php:438
 msgid "Leave this field empty to use the name of the family tree."
-msgstr "Ako ostavite ovo polje prazo, korititi će se ime obiteljskog stabla."
+msgstr "Ako ostavite ovo polje prazno, koristiti će se ime obiteljskog stabla."
 
 #: includes/functions/functions_print_lists.php:95
 #: includes/functions/functions_print_lists.php:496
 msgid "Leaves"
-msgstr "Osobe bez djece"
+msgstr "Napušteni"
 
 #: library/WT/Stats.php:3932
 msgid "Lebanon"
@@ -8143,7 +8143,7 @@ msgstr "Ukupno trajanje braka"
 
 #: library/WT/Stats.php:3938
 msgid "Lesotho"
-msgstr "לסוטו"
+msgstr ""
 
 #: modules_v3/ahnentafel_report/report.xml:13
 #: modules_v3/bdm_report/report.xml:12 modules_v3/birth_report/report.xml:10
@@ -8170,15 +8170,15 @@ msgstr "Nivo"
 
 #: library/WT/Stats.php:3933
 msgid "Liberia"
-msgstr "ליבריה"
+msgstr ""
 
 #: library/WT/Stats.php:3934
 msgid "Libya"
-msgstr "לוב"
+msgstr ""
 
 #: library/WT/Stats.php:3936
 msgid "Liechtenstein"
-msgstr "ליכטנשטיין"
+msgstr ""
 
 #: statistics.php:140
 msgid "Lifespan"
@@ -8195,7 +8195,7 @@ msgstr ""
 
 #: help_text.php:1242 modules_v3/gedcom_news/module.php:170
 msgid "Limit display by:"
-msgstr "Ogranicen prikaz :"
+msgstr "Ograniči prikaz po:"
 
 #: help_text.php:1237 modules_v3/gedcom_news/module.php:181
 msgid "Limit:"
@@ -8314,12 +8314,12 @@ msgstr "Prijava"
 
 #: setup.php:406
 msgid "Login ID"
-msgstr ""
+msgstr "ID prijave"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:151 help_text.php:617
 msgid "Login URL"
-msgstr ""
+msgstr "URL za prijavu"
 
 #: includes/functions/functions_print.php:287
 #: modules_v3/login_block/module.php:55 modules_v3/login_block/module.php:59
@@ -8336,7 +8336,7 @@ msgstr ""
 
 #: help_text.php:925
 msgid "Long lists of individuals with the same surname can be broken into smaller sub-lists according to the first letter of the individual’s given name.<br><br>This option determines when sub-listing of surnames will occur.  To disable sub-listing completely, set this option to zero."
-msgstr ""
+msgstr "Dugački popis pojedinaca sa istim prezimenom može biti podijeljeno na manje popise prema prvom slovu imena pojedinca.<br><br>Ova opcija određuje nakon koliko slova imena će se popis dijeliti. Za isključivanje dijeljenja popisa, postavite na nula."
 
 #: statistics.php:245
 msgid "Longest marriage"
@@ -8405,7 +8405,7 @@ msgstr "Ime za poštu"
 #: help_text.php:1190 includes/functions/functions_edit.php:223
 #: includes/functions/functions_edit.php:234
 msgid "Mailto link"
-msgstr "Pošalji mail na: link"
+msgstr ""
 
 #: index_edit.php:264
 msgid "Main section blocks"
@@ -8477,12 +8477,12 @@ msgstr "Rukopis"
 
 #: help_text.php:564
 msgid "Many genealogy programs create GEDCOM files with custom tags, and <b>webtrees</b> understands most of them.  When unrecognized tags are found, this option lets you choose whether to ignore them or display a warning message."
-msgstr ""
+msgstr "Mnogi genealoški programi kreiraju GEDCOM datoteka sa prilagođenim tagovima, i <b>webtrees</b> razumije većinu njih. Kada se pronađe nepoznati tag, ova opcija daje vam izbor da li će se taj tag ignorirati ili prikazati poruka upozorenja."
 
 #. I18N: Help text for the “Sending server name” site configuration setting
 #: help_text.php:759
 msgid "Many mail servers require that the sending server identifies itself correctly, using a valid domain name."
-msgstr ""
+msgstr "Mnogi serveri e-pošte zahtijevaju da se server koji šalje poštu ispravno predstavi, koristeći ime domene."
 
 #. I18N: gedcom tag MAP
 #: library/WT/Gedcom/Tag.php:227 library/WT/Gedcom/Tag.php:889
@@ -8517,7 +8517,7 @@ msgstr "Ožujak"
 
 #: help_text.php:530
 msgid "Markdown is a simple system of formatting, used on websites such as Wikipedia.  It uses unobtrusive punctuation characters to create headings and sub-headings, bold and italic text, lists, tables, etc."
-msgstr ""
+msgstr "Markdown je jednostavan sistem za formatiranje teksta, koristi se na web stranicama kao što su Wikipedia. Koristi nenametljive interpunkcijske znakove za kreiranje naslova, podnaslova, podebljan i ukošen tekst, lista, tablica, itd."
 
 #. I18N: gedcom tag MARR
 #: library/WT/Gedcom/Tag.php:233 modules_v3/ahnentafel_report/report.xml:453
@@ -8762,15 +8762,15 @@ msgstr ""
 #. I18N: Pretend to be another user, by logging in as them
 #: admin_users.php:217
 msgid "Masquerade as this user"
-msgstr ""
+msgstr "Maskiraj se u ovog korisnika"
 
 #: modules_v3/batch_update/plugins/search_replace.php:90
 msgid "Match the exact text, even if it occurs in the middle of a word."
-msgstr ""
+msgstr "Uskladi točan tekst, čak i ako se pojavi u sredini riječi."
 
 #: modules_v3/batch_update/plugins/search_replace.php:91
 msgid "Match the exact text, unless it occurs in the middle of a word."
-msgstr ""
+msgstr "Uskladi točan tekst, osim ako se pojavi u sredini riječi."
 
 #: library/WT/Stats.php:3958
 msgid "Mauritania"
@@ -8808,7 +8808,7 @@ msgstr "Svi"
 #: library/WT/Date/Calendar.php:139
 msgctxt "GENITIVE"
 msgid "May"
-msgstr "Svibnja"
+msgstr "svibnja"
 
 #: library/WT/Date/Calendar.php:173
 msgctxt "INSTRUMENTAL"
@@ -8827,7 +8827,7 @@ msgstr "Svibanj"
 
 #: library/WT/Stats.php:3964
 msgid "Mayotte"
-msgstr "מאיוט"
+msgstr ""
 
 #: library/WT/Gedcom/Code/Temp.php:121
 msgid "Medford, Oregon"
@@ -8860,12 +8860,12 @@ msgstr "Medijska datoteka"
 #: addmedia.php:318 addmedia.php:338
 #, php-format
 msgid "Media file %1$s could not be renamed to %2$s."
-msgstr ""
+msgstr "Medijska datoteka %1$s ne može biti preimenovana u %2$s."
 
 #: addmedia.php:336
 #, php-format
 msgid "Media file %1$s successfully renamed to %2$s."
-msgstr ""
+msgstr "Medijska datoteka %1$s je uspješno preimenovana u %2$s."
 
 #: addmedia.php:343
 #, php-format
@@ -8912,7 +8912,7 @@ msgstr "Medijskih objekata po stranici"
 #. I18N: gedcom tag _TYPE
 #: library/WT/Gedcom/Tag.php:241 library/WT/Gedcom/Tag.php:805
 msgid "Media type"
-msgstr "Tip medije"
+msgstr "Tip medija"
 
 #. I18N: gedcom tag _MDCL
 #: library/WT/Gedcom/Tag.php:775
@@ -8931,7 +8931,7 @@ msgstr "Mediterranio"
 
 #: setup.php:176
 msgid "Medium systems (5000 individuals): 32-64MB, 20-40 seconds"
-msgstr ""
+msgstr "Srednji sistem (5000 pojedinaca): 32-64MB, 20-40 sekundi"
 
 #: library/WT/Date/Jalali.php:118
 msgctxt "Abbreviation for Persian month: Mehr"
@@ -9023,7 +9023,7 @@ msgstr "Poruka"
 #: message.php:200
 #, php-format
 msgid "Message successfully sent to %s"
-msgstr "Poruka uspječno poslana za %s"
+msgstr "Poruka uspješno poslana za %s"
 
 #: message.php:47 message.php:202
 msgid "Message was not sent"
@@ -9058,7 +9058,7 @@ msgstr ""
 
 #: library/WT/Stats.php:3948
 msgid "Mexico"
-msgstr "מכסיקו"
+msgstr ""
 
 #: library/WT/Gedcom/Code/Temp.php:125
 msgid "Mexico City, Mexico"
@@ -9066,15 +9066,15 @@ msgstr ""
 
 #: library/WT/Gedcom/Tag.php:885
 msgid "Microfiche"
-msgstr ""
+msgstr "Mikrofiš"
 
 #: library/WT/Gedcom/Tag.php:886
 msgid "Microfilm"
-msgstr ""
+msgstr "Mikrofilm"
 
 #: library/WT/Stats.php:3885
 msgid "Micronesia"
-msgstr "מיקרונזיה"
+msgstr ""
 
 #: statistics.php:641
 msgid "Middle East"
@@ -9097,11 +9097,11 @@ msgstr "Vojna služba"
 
 #: admin_trees_config.php:738 help_text.php:475
 msgid "Min. no. of occurrences to be a “common surname”"
-msgstr ""
+msgstr "Min. broj pojavljivanja za “Najčešće prezime”"
 
 #: modules_v3/googlemap/help_text.php:32
 msgid "Minimum and maximum zoom level for the Google map. 1 is the full map, 15 is single house. Note that 15 is only available in certain areas."
-msgstr "Minimalni i maksimalni zum nivo za Google kartu. 1 je cijela karta, 15 je jedna kuća. Imajte na umu da je samo 15 omogućeno na nekim područjima."
+msgstr "Minimalni i maksimalni zum nivo za Google kartu. 1 je cijela karta, 15 je jedna kuća. Imajte na umu da je 15 omogućeno samo na nekim područjima."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:70
@@ -9140,7 +9140,7 @@ msgstr "Moduli"
 
 #: library/WT/Stats.php:3945
 msgid "Moldova"
-msgstr "מולדביה"
+msgstr ""
 
 #: includes/functions/functions_print.php:999 library/WT/Date/Calendar.php:214
 msgid "Mon"
@@ -9253,25 +9253,25 @@ msgstr ""
 
 #: modules_v3/gedcom_stats/module.php:192 modules_v3/html/module.php:258
 msgid "Most common surnames"
-msgstr "Načešće prezime"
+msgstr "Najčešće prezime"
 
 #. I18N: Help text for the “Use password” site configuration setting
 #: help_text.php:749
 msgid "Most SMTP servers require a password."
-msgstr ""
+msgstr "Većina SMTP servera zahtjeva lozinku."
 
 #. I18N: Help text for the "Secure connection" site configuration setting
 #: help_text.php:774
 msgid "Most servers do not use secure connections."
-msgstr ""
+msgstr "Većina servera ne koristi sigurno povezivanje."
 
 #: setup.php:267
 msgid "Most sites are configured to use localhost.  This means that your database runs on the same computer as your web server."
-msgstr ""
+msgstr "Večina web stranica je podešeno da koristi localhost. To znači da je vaša baza podataka na istom računalu kao i vaš web server."
 
 #: setup.php:271
 msgid "Most sites are configured to use the default value of 3306."
-msgstr ""
+msgstr "Većina web stranica je podešeno da koriti zadanu vrijednost 3306."
 
 #. I18N: Name of a module
 #: modules_v3/top10_pageviews/module.php:32
@@ -9322,7 +9322,7 @@ msgstr "Pomakni dolje"
 
 #: index_edit.php:310
 msgid "Move left"
-msgstr "Pomakni ulijevo"
+msgstr "Pomakni lijevo"
 
 #: help_text.php:1103 help_text.php:1108
 msgid "Move list entries"
@@ -9330,15 +9330,15 @@ msgstr "Premjesti popis unosa"
 
 #: index_edit.php:292
 msgid "Move right"
-msgstr "Pomakni udesno"
+msgstr "Pomakni desno"
 
 #: index_edit.php:276 index_edit.php:328
 msgid "Move up"
-msgstr "Premjesti gore"
+msgstr "Pomakni gore"
 
 #: library/WT/Stats.php:3957
 msgid "Mozambique"
-msgstr "מוזמביק"
+msgstr ""
 
 #: library/WT/Gedcom/Code/Temp.php:130
 msgid "Mt. Timpanogos, Utah"
@@ -9401,11 +9401,11 @@ msgstr "Moje rodoslovlje"
 #: admin_pgv_to_wt.php:82
 #, php-format
 msgid "MySQL gave the error: %s"
-msgstr ""
+msgstr "MySQL daje grešku: %s"
 
 #: library/WT/Stats.php:3953
 msgid "Myanmar"
-msgstr "מינמר (בורמה)"
+msgstr ""
 
 #. I18N: gedcom tag NAME
 #: library/WT/Controller/Individual.php:139 library/WT/Gedcom/Tag.php:246
@@ -9489,7 +9489,7 @@ msgstr "Dadilja"
 
 #: modules_v3/html/module.php:158
 msgid "Narrative description"
-msgstr ""
+msgstr "Usmena predaja"
 
 #: library/WT/Gedcom/Code/Temp.php:131
 msgid "Nashville, Tennessee"
@@ -9555,7 +9555,7 @@ msgstr "Nikad vjenčani"
 #: library/WT/Gedcom/Tag.php:788
 msgctxt "FEMALE"
 msgid "Never married"
-msgstr "Nikada udata"
+msgstr "Nikad udana"
 
 #. I18N: gedcom tag _NMAR
 #: library/WT/Gedcom/Tag.php:787
@@ -9573,7 +9573,7 @@ msgstr ""
 
 #: library/WT/Stats.php:3978
 msgid "New Zealand"
-msgstr ""
+msgstr "Novi Zeland"
 
 #: admin_site_change.php:274 admin_site_change.php:302
 msgid "New data"
@@ -9606,7 +9606,7 @@ msgstr "Novine"
 
 #: modules_v3/review_changes/module.php:100
 msgid "Next email reminder will be sent after "
-msgstr ""
+msgstr "Slijedeći podsjetnik e-poštom će biti poslan poslije "
 
 #: modules_v3/random_media/module.php:131
 msgid "Next image"
@@ -9680,7 +9680,7 @@ msgstr "Ne"
 #: admin_trees_manage.php:163
 #, php-format
 msgid "No GEDCOM files found.  You need to copy files to the <b>%s</b> directory on your server."
-msgstr ""
+msgstr "Nije pronađena GEDCOM datoteka. Trebate kopirati datoteke u <b>%s</b> mapu vašeg servera."
 
 #: modules_v3/gedcom_news/module.php:93
 msgid "No news articles have been submitted."
@@ -9692,7 +9692,7 @@ msgstr "Nema predaka u bazi podataka."
 
 #: admin_trees_config.php:267 admin_trees_config.php:287
 msgid "No calendar conversion"
-msgstr ""
+msgstr "Nema konverzije kalendara"
 
 #: includes/functions/functions_charts.php:265
 #: library/WT/Controller/Descendancy.php:240
@@ -9711,15 +9711,15 @@ msgstr "Nema kontakt metode"
 
 #: admin_site_upgrade.php:207
 msgid "No custom modules are enabled."
-msgstr ""
+msgstr "Nisu omogućeni prilagođeni moduli."
 
 #: admin_site_upgrade.php:270
 msgid "No custom themes are enabled."
-msgstr ""
+msgstr "Nisu omogućene prilagođene teme."
 
 #: admin_trees_check.php:227
 msgid "No errors were found."
-msgstr "Nije pronađena greška"
+msgstr "Nije pronađena greška."
 
 #. I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
 #: includes/functions/functions_print_lists.php:1787
@@ -9744,12 +9744,12 @@ msgstr "Ne postoje događaji za sutra."
 #: includes/functions/functions_print_lists.php:1776
 #: includes/functions/functions_print_lists.php:1883
 msgid "No events for living individuals exist for today."
-msgstr "Ne postoje događaji za žive ljude danas"
+msgstr "Ne postoje događaji za žive osobe danas."
 
 #: includes/functions/functions_print_lists.php:1791
 #: includes/functions/functions_print_lists.php:1898
 msgid "No events for living individuals exist for tomorrow."
-msgstr "Ne postoje događaji sa žive osobe za sutra."
+msgstr "Ne postoje događaji za žive osobe sutra."
 
 #. I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
 #: includes/functions/functions_print_lists.php:1794
@@ -9757,9 +9757,9 @@ msgstr "Ne postoje događaji sa žive osobe za sutra."
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
-msgstr[0] "Nema događaja za žive ljude u slijedeći %s dan."
-msgstr[1] "Nema događaja za žive ljude u slijedeća %s dana."
-msgstr[2] "Nema događaja za žive ljude u slijedećih %s dana."
+msgstr[0] "Nema događaja za žive osobe u slijedeći %s dan."
+msgstr[1] "Nema događaja za žive osobe u slijedeća %s dana."
+msgstr[2] "Nema događaja za žive osobe u slijedećih %s dana."
 
 #: library/WT/Controller/Family.php:159
 msgid "No facts for this family."
@@ -9768,7 +9768,7 @@ msgstr "Nema činjenica za ovu obitelj"
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:67
 msgid "No file was received. Please upload again."
-msgstr "Nijedna datoteka nije primljena. Molimo pokušajte ponovno."
+msgstr "Nijedna datoteka nije primljena. Molimo učitajte ponovno."
 
 #: modules_v3/gedcom_news/module.php:173
 msgid "No limit"
@@ -9796,7 +9796,7 @@ msgstr "Medijska datoteka nije ponuđena."
 
 #: relationship.php:168
 msgid "No other link between the two individuals could be found."
-msgstr "Nijedna druga poveznica između osoba nije pronađena"
+msgstr "Nijedna druga poveznica između dva pojedinca nije pronađena."
 
 #: modules_v3/googlemap/module.php:3748 modules_v3/googlemap/module.php:4380
 msgid "No places found"
@@ -9804,7 +9804,7 @@ msgstr "Mjesto nije nađeno"
 
 #: admin_trees_places.php:121
 msgid "No places were found."
-msgstr "Mjesto nije nađeno"
+msgstr "Mjesta nisu nađena."
 
 #: admin_site_config.php:44
 msgid "No predefined text"
@@ -9828,7 +9828,7 @@ msgstr ""
 
 #: admin_site_upgrade.php:67
 msgid "No upgrade information is available."
-msgstr ""
+msgstr "Nema informacija za nadogradnju."
 
 #: library/WT/Stats.php:1061
 msgid "Nobody at all"
@@ -9885,7 +9885,7 @@ msgstr "Norveška"
 
 #: modules_v3/GEDFact_assistant/module.php:196
 msgid "Not a valid individual, family, or source ID"
-msgstr "Unesite Osobu, Obitelj, ili ID izvora"
+msgstr "Nevažeći ID pojedinca, obitelji ili izvora"
 
 #. I18N: gedcom tag _NLIV
 #: library/WT/Gedcom/Tag.php:784
@@ -9925,11 +9925,11 @@ msgstr "ID predznak bilješke"
 
 #: help_text.php:343
 msgid "Note that if a user account is linked to a record, then that user will always be able to view that record."
-msgstr "Uzmite u obzir da ako je registrirani korisnik ove stranice vezan za zapis, onda tak korisnik vidjeti ovaj zapis."
+msgstr "Uzmite u obzir da ako je korisnikov račun vezan za zapis, onda taj korisnik uvijek može vidjeti taj zapis."
 
 #: help_text.php:724
 msgid "Note: longer path lengths require a lot of calculation, which can make your site run slowly for these users."
-msgstr ""
+msgstr "Napomena: veća dužina putanje zahtjeva puno računanja, što može usporiti web stranice za te korisnike."
 
 #: help_text.php:571
 #, php-format
@@ -9951,7 +9951,7 @@ msgstr "Bilješke"
 
 #: help_text.php:302
 msgid "Notes are free-form text and will appear in the Fact Details section of the page."
-msgstr "Bilješka je slobodan tekst i prikazati će se na stranici u sekciji Detalji Činjenica."
+msgstr "Bilješka je slobodan tekst i prikazati će se na stranici u odjeljku Detalji Činjenica."
 
 #: admin_users.php:540
 msgid "Nothing found to cleanup"
@@ -9959,7 +9959,7 @@ msgstr "Ništa nije pronađeno za čišćenje"
 
 #: modules_v3/batch_update/admin_batch_update.php:101
 msgid "Nothing found."
-msgstr "Ništa nije nađeno"
+msgstr "Ništa nije pronađeno"
 
 #: library/WT/Date/Calendar.php:196
 msgctxt "Abbreviation for November"
@@ -9969,7 +9969,7 @@ msgstr "Stu"
 #: library/WT/Date/Calendar.php:145
 msgctxt "GENITIVE"
 msgid "November"
-msgstr "Studenog"
+msgstr "studenog"
 
 #: library/WT/Date/Calendar.php:179
 msgctxt "INSTRUMENTAL"
