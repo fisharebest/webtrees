@@ -929,7 +929,7 @@ msgstr "Ein Reiter zur Anzeige von Quellen, die mit einzelnen Personen verbunden
 
 #: help_text.php:1474
 msgid "A user will not be able to login until both the “email verified” and “approved by administrator” options are selected."
-msgstr "Ein Benutzer kann sich nicht anmelden, solange nicht beide Optionen \"E-Mail überprüft\" und \"Genehmigt durch Verwalter\" erfüllt sind."
+msgstr "Ein Benutzer kann sich nicht anmelden, solange nicht beide Optionen \"E-Mail überprüft\" und \"Vom Administrator zugelassen\" erfüllt sind."
 
 #: help_text.php:1025
 msgid "A watermark is text that is added to an image, to discourage others from copying it without permission."
@@ -7054,11 +7054,11 @@ msgstr "Hier können Sie ein Ereignis zu einer Person hinzufügen.<br><br>Wähle
 
 #: help_text.php:1089
 msgid "Here you can add a source <b>Citation</b> to this record.<br><br>Just click the link, a window will open, and you can choose the source from the list (Find ID) or create a new source and then add the citation.<br><br>Adding sources is an important part of genealogy because it allows other researchers to verify where you obtained your information."
-msgstr "Hier können Sie ein <b>Zitat</b> aus der Quelle zu diesen Datensatz hinzufügen.<br><br>Klicken Sie einfach auf den Link, damit sich ein Fenster öffnet, aus dem Sie die Quelle aus der Liste auswählen (Find ID) oder eine neue Quelle erstellen können und dann das Zitat hinzufügen können.<br><br>Das Hinzufügen von Quellen ist ein wichtiger Teil der Genealogie, weil andere Forscher dadurch nachvollziehen können, woher Sie Ihre Informationen erhalten haben."
+msgstr "Hier können Sie ein <b>Zitat</b> aus der Quelle zu diesem Datensatz hinzufügen.<br><br>Klicken Sie einfach auf den Link, damit sich ein Fenster öffnet, aus dem Sie die Quelle aus der Liste auswählen (Find ID) oder eine neue Quelle erstellen können und dann das Zitat hinzufügen können.<br><br>Das Hinzufügen von Quellen ist ein wichtiger Teil der Genealogie, weil andere Forscher dadurch nachvollziehen können, woher Sie Ihre Informationen erhalten haben."
 
 #: help_text.php:1228
 msgid "Here you can change the diagram width from 50 percent to 300 percent.  At 100 percent the output image is about 640 pixels wide."
-msgstr "Hier können Sie die Diagrammbreite von 50 &#37; bis 300&#37; einstellen. Bei 100 &#37; ist das Diagramm etwa 640 Pixel breit."
+msgstr "Hier können Sie die Diagrammbreite von 50 &#37; bis 300 &#37; einstellen. Bei 100 &#37; ist das Diagramm etwa 640 Pixel breit."
 
 #: modules_v3/googlemap/help_text.php:91
 msgid "Here you can choose between two types of displaying places names in hierarchy. If set Yes the place has short name or actual level name, if No - full name.<br><b>Examples:<br>Full name: </b>Chicago, Illinois, USA<br><b>Short name: </b>Chicago<br><b>Full name: </b>Illinois, USA<br><b>Short name: </b>Illinois"
@@ -7261,7 +7261,7 @@ msgstr "Identitätsnummer"
 
 #: help_text.php:613
 msgid "If a visitor to the site has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines."
-msgstr "Diese Sprache wird genutzt, wenn im Browser des Besuchers keine oder eine nicht unterstützte Vorzuggssprache eingetragen ist. Typischerweise dient diese Einstellung für Suchmaschinen."
+msgstr "Diese Sprache wird genutzt, wenn im Browser des Besuchers keine oder eine nicht unterstützte Standardsprache eingetragen ist. Typischerweise dient diese Einstellung für Suchmaschinen."
 
 #: help_text.php:1470
 msgid "If an administrator creates a user account, the verification email is not sent, and the email must be verified manually."
@@ -7280,7 +7280,7 @@ msgstr "Falls die Person zwei separate Nachnamen besitzt, sollten beide von Schr
 #: help_text.php:289
 #, php-format
 msgid "If an individual was known by a nickname which is not part of their formal name, it should be enclosed by quotation marks.  For example, <%s>John &quot;Nobby&quot; /Clark/<%s>."
-msgstr "Falls eine Person durch einen Spitznamen bekannt ist, der nicht Teil des formalen Namens ist, sollte dieser in Anführungszeichen gesetzt werden.  z.B.: <%s>John &quot;Nobby&quot; /Clark/<%s>."
+msgstr "Falls eine Person durch einen Spitznamen bekannt ist, der nicht Teil des formalen Namens ist, sollte dieser in Anführungszeichen gesetzt werden. z.B.: <%s>John &quot;Nobby&quot; /Clark/<%s>."
 
 #: help_text.php:287
 #, php-format
@@ -7293,7 +7293,7 @@ msgstr "Wenn ein Name nicht genügend oft vorkommt, erscheint er nicht in der Li
 
 #: help_text.php:819
 msgid "If the option <b>Allow visitors to request account registration</b> is enabled this setting controls whether the admin must approve the registration.<br><br>Setting this to <b>Yes</b> will require that all new users first verify themselves and then be approved by an admin before they can login.  With this setting on <b>No</b>, the “Approved by administrator” checkbox will be checked automatically when users verify their account, thus allowing an immediate login afterwards without admin intervention."
-msgstr "Wenn die Option <b>Besuchern erlauben, einen Zugang anzufordern</b> auf <b>Ja</b> gestellt ist, bestimmt diese weitere Option ob der Verwalter jeden Benutzerantrag genehmigen muss oder nicht.<br><br>Die Wahl <b>Ja</b> bestimmt, dass neue Benutzer ihren Antrag erst bestätigen müssen.  Nach dieser Bestätigung muss der Antrag noch vom Verwalter genehmigt werden.  Erst nach der dieser Genehmigung kann der neue Benutzer sich anmelden.<br><br>Die Wahl <b>Nein</b> bestimmt, dass das Kästchen <b>Benutzer wurde vom Verwalter freigegeben</b> automatisch angekreuzt ist, und dass sofort nach der Bestätigung des Anwärters dieser sich anmelden kann.  Die Genehmigung des Verwalters ist also automatisch."
+msgstr "Wenn die Option <b>Besuchern erlauben, einen Zugang anzufordern</b> auf <b>Ja</b> gestellt ist, bestimmt diese weitere Option, ob der Verwalter jeden Benutzerantrag genehmigen muss oder nicht.<br><br>Die Wahl <b>Ja</b> bestimmt, dass neue Benutzer ihren Antrag erst bestätigen müssen. Nach dieser Bestätigung muss der Antrag noch vom Verwalter genehmigt werden. Erst nach der dieser Genehmigung kann sich der neue Benutzer anmelden.<br><br>Die Wahl <b>Nein</b> bestimmt, dass das Kästchen <b>Vom Administrator zugelassen</b> automatisch angekreuzt ist und dass sich der neue Benutzer sofort nach der Bestätigung anmelden kann. Die Genehmigung des Verwalters ist also automatisch."
 
 #: help_text.php:281
 #, php-format
@@ -7330,7 +7330,7 @@ msgstr "Falls Sie keinen Zugang beantragt haben, können Sie diese Mail einfach 
 
 #: modules_v3/googlemap/help_text.php:83
 msgid "If you have a large number of inactive places, it can be slow to generate the list."
-msgstr "Bei einer großen Anzahl von aktuell nicht genutzten Orten, kann dies die Listanzeige verlangsamen."
+msgstr "Bei einer großen Anzahl von aktuell nicht genutzten Orten kann dies die Listanzeige verlangsamen."
 
 #: help_text.php:1441
 msgid "If you have a large number of media files, you can organize them into folders and subfolders."
@@ -7338,11 +7338,11 @@ msgstr "Wenn Sie eine große Menge an Mediendateien haben, können Sie sie in Un
 
 #: help_text.php:1077
 msgid "If you have a note to add to this record, this is the place to do so.<br><br>Just click the link, a window will open, and you can type your note.  When you are finished typing, just click the button below the box, close the window, and that’s all."
-msgstr "Wenn Sie diesem Datensatz um eine Notiz ergänzen möchten, ist dies der richtige Ort, es zu tun.<br><br>Klicken Sie einfach auf den Link, dann öffnet sich ein Fenster, und Sie können Ihre Notiz eingeben. Wenn Sie die Eingabe beendet haben, klicken Sie einfach auf die Schaltfläche unter dem Feld um das Fenster zu schließen. Das ist alles."
+msgstr "Wenn Sie eine Notiz zu diesem Datensatz ergänzen möchten, ist dies der richtige Ort, es zu tun.<br><br>Klicken Sie einfach auf den Link, dann öffnet sich ein Fenster, in dem Sie Ihre Notiz eingeben können. Wenn Sie die Eingabe beendet haben, klicken Sie einfach auf die Schaltfläche unter dem Feld, um das Fenster zu schließen. Das ist alles."
 
 #: admin_trees_manage.php:169
 msgid "If you have created media objects in webtrees, and have edited your gedcom off-line using a program that deletes media objects, then check this box to merge the current media objects with the new GEDCOM."
-msgstr "Wenn Sie die Medienobjekte in webtrees erstellt haben und Ihre GEDCOM-Datei, die Sie mit Hilfe einer anderen Software auf Ihrem Computer erstellt oder bearbeitet haben, Medienobjekte löscht, dann aktivieren Sie dieses Feld, damit die aktuellen Medienobjekte mit der neuen GEDCOM verschmelzt werden."
+msgstr "Wenn Sie die Medienobjekte in webtrees erstellt haben und Sie Ihre GEDCOM-Datei mit Hilfe einer anderen Software auf Ihrem Computer erstellt oder bearbeitet haben, die Medienobjekte löscht, dann aktivieren Sie dieses Feld, damit die aktuellen Medienobjekte mit der neuen GEDCOM verknüpft werden."
 
 #: help_text.php:1040
 msgid "If you have opted for custom welcome text, you can type that text here.  To set this text for other languages, you must switch to that language, and visit this page again."
@@ -7358,7 +7358,7 @@ msgstr "Wenn diese Einstellung leer bleibt, wird der Wert der Voreinstellung ben
 
 #: help_text.php:585
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
-msgstr "Wenn Sie ein anderes Verzeichnis wählen, müssen sie auch alle Dateien (außer config.init.php, index.php und .htaccess) in den neuen Ordner verschieben."
+msgstr "Wenn Sie ein anderes Verzeichnis wählen, müssen sie auch alle Dateien (außer die config.init.php, index.php und .htaccess) in den neuen Ordner verschieben."
 
 #: help_text.php:659
 msgid "If you select a different folder, you must also move any media files from the existing folder to the new one."
@@ -7408,15 +7408,15 @@ msgstr "Import des Familenstammbaumes"
 
 #: help_text.php:348
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet.  This might be of use with Japanese names, where three different alphabets may occur."
-msgstr "In vielen Kulturkreisen ist es üblich, den traditionellen Namen in landesüblicher Schreibweise festzuhalten und zusätzlich einen romanisierten Namen, der die Aussprache des Namens im lateinischen Alphabet wiedergibt.<br><br>Falls Sie es vorziehen ein nicht lateinisches Alphabet, wie Hebräisch, Griechisch, Russisch, Chinesisch oder Arabisch zur Namenseingabe in den Standardfeldern zu nutzen, dann steht dieses Feld zur Eingabe eines Namens im lateinischen Alphabet bereit.  Beide Namensversionen erscheinen in Listen und Diagrammen.<br><br>Wenngleich das Feld als \"Romanized\" gekennzeichnet ist, ist es nicht auf die Eingabe von Buchstaben des lateinischen Alphabets beschränkt. Dies ist bei japanischen Namen von Interesse, wo drei verschiedene Alphabete vorkommen können."
+msgstr "In vielen Kulturkreisen ist es üblich, den traditionellen Namen in landesüblicher Schreibweise festzuhalten und zusätzlich einen romanisierten Namen, der die Aussprache des Namens im lateinischen Alphabet wiedergibt.<br><br>Falls Sie es vorziehen ein nicht lateinisches Alphabet, wie Hebräisch, Griechisch, Russisch, Chinesisch oder Arabisch zur Namenseingabe in den Standardfeldern zu nutzen, dann steht dieses Feld zur Eingabe eines Namens im lateinischen Alphabet bereit. Beide Namensversionen erscheinen in Listen und Diagrammen.<br><br>Wenngleich das Feld als \"Romanized\" gekennzeichnet ist, ist es nicht auf die Eingabe von Buchstaben des lateinischen Alphabets beschränkt. Dies ist bei japanischen Namen von Interesse, wo drei verschiedene Alphabete vorkommen können."
 
 #: help_text.php:393
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Hebrew”, it is not restricted to containing only Hebrew characters."
-msgstr "In vielen Kulturkreisen ist es üblich, neben dem in Landessprache geschrieben Namen einen romanisiert geschriebenen oder ausgesprochenen Namen in lateinischem Alphabet zu führen.<br><br>Falls Sie es vorziehen, das lateinische Alphabet für Namen in den Standard Feldern zu nutzen, dann kann dieses Feld zum Eintrag der Nicht-lateinischen Version, wie griechisch, hebräisch, russisch, arabisch  oder chinesisch genutzt werden.  Beide Versionen des Namens werden in Listen und Diagrammen dargestellt.<br><br>Wenngleich dies Feld auch als \"hebräisch\" bezeichnet ist, muß es nicht nur hebräische Zeichen beinhalten."
+msgstr "In vielen Kulturkreisen ist es üblich, neben dem in Landessprache geschrieben Namen einen romanisiert geschriebenen oder ausgesprochenen Namen in lateinischem Alphabet zu führen.<br><br>Falls Sie es vorziehen, das lateinische Alphabet für Namen in den Standard Feldern zu nutzen, dann kann dieses Feld zum Eintrag der Nicht-lateinischen Version, wie griechisch, hebräisch, russisch, arabisch oder chinesisch genutzt werden. Beide Versionen des Namens werden in Listen und Diagrammen dargestellt.<br><br>Auch wenn dieses Feld auch als \"hebräisch\" bezeichnet ist, muß es nicht nur hebräische Zeichen beinhalten."
 
 #: help_text.php:450
 msgid "In some calendars, days start at midnight.  In other calendars, days start at sunset.  The conversion process does not take account of the time, so for any event that occurs between sunset and midnight, the conversion between these types of calendar will be one day out."
-msgstr "In einigen Kalendern beginnen die Tage um Mitternacht.  In anderen beginnen sie mit Sonnenuntergang.  Da bei der Umsetzung die Uhrzeit nicht berücksichtigt wird, weicht bei allen zwischen Sonnenuntergang und Mitternacht erfolgten Ereignissen das Ergebnisdatum um einen Tag ab."
+msgstr "In einigen Kalendern beginnen die Tage um Mitternacht. In anderen beginnen sie mit Sonnenuntergang. Da bei der Umsetzung die Uhrzeit nicht berücksichtigt wird, weicht bei allen zwischen Sonnenuntergang und Mitternacht erfolgten Ereignissen das Ergebnisdatum um einen Tag ab."
 
 #: help_text.php:608
 msgid "In some countries, privacy laws apply not only to living individuals, but also to those who have died recently.  This option will allow you to extend the privacy rules for living individuals to those who were born or died within a specified number of years.  Leave these values empty to disable this feature."
@@ -7424,19 +7424,19 @@ msgstr "In manchen Ländern bezieht sich der Datenschutz nicht nur auf lebende P
 
 #: help_text.php:315
 msgid "In the citation details field you would enter the page number or other information that might help someone find the information in the source."
-msgstr "Im Zitat Einzelheiten Feld geben Sie die Seite oder Details die Anderen das Finden dieses Zitates in der erwähnten Quelle erleichtert."
+msgstr "Im Zitat Einzelheiten Feld geben Sie die Seite oder Details an, die Anderen das Finden dieses Zitates in der erwähnten Quelle erleichtert."
 
 #: help_text.php:378
 msgid "In this field you would enter the citation text for this source.  Examples of data may be a transcription of the text from the source, or a description of what was in the citation."
-msgstr "Im Text Feld können Sie, wenn notwending, das eigentliche Zitat oder eine Beschreibung des Zitates als Text eingeben."
+msgstr "Im diesem Feld können Sie das eigentliche Zitat oder eine Beschreibung des Zitates als Text eingeben."
 
 #: calendar.php:128
 msgid "In this month…"
-msgstr "In diesem Monat"
+msgstr "In diesem Monat…"
 
 #: calendar.php:131
 msgid "In this year…"
-msgstr "In diesem Jahr"
+msgstr "In diesem Jahr…"
 
 #: modules_v3/googlemap/module.php:1534
 msgid "Include fully matched places: "
@@ -7560,7 +7560,7 @@ msgstr "Informant"
 #: library/WT/Gedcom/Code/Rela.php:129
 msgctxt "FEMALE"
 msgid "Informant"
-msgstr "Informant"
+msgstr "Informantin"
 
 #: library/WT/Gedcom/Code/Rela.php:128
 msgctxt "MALE"
@@ -7586,7 +7586,7 @@ msgstr "Interaktives Baumdiagramm"
 #: modules_v3/tree/class_treeview.php:136 modules_v3/tree/module.php:109
 #, php-format
 msgid "Interactive tree of %s"
-msgstr "Interaktiver Baum von %s"
+msgstr "Interaktives Baumdiagramm von %s"
 
 #: help_text.php:1182
 msgid "Internal messaging"
