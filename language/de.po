@@ -843,7 +843,7 @@ msgstr "Ein Bericht über Personen, die zu einem bestimmten Zeitpunkt oder an ei
 #: modules_v3/change_report/module.php:39
 #: modules_v3/change_report/report.xml:4
 msgid "A report of recent and pending changes."
-msgstr "Bericht über neueste und anstehende Änderungen."
+msgstr "Bericht über neueste und ausstehende Änderungen."
 
 #. I18N: Description of the “Related families”
 #: modules_v3/individual_ext_report/module.php:39
@@ -6164,7 +6164,7 @@ msgstr "Alter des Vaters"
 #: library/WT/Individual.php:745
 #, php-format
 msgid "Father’s family with %s"
-msgstr "Die Familie väterlicherseits von %s"
+msgstr "Familie des Vaters mit %s"
 
 #. I18N: A step-family.
 #: library/WT/Individual.php:747
@@ -8251,7 +8251,7 @@ msgstr "Standort"
 
 #: modules_v3/googlemap/module.php:4314
 msgid "Location not removed: this location contains sub-locations"
-msgstr "Ortsdaten wurden nicht entfernt! Es sind noch weitere, abhängige Ortsdaten vorhanden."
+msgstr "Ortsdaten wurden nicht entfernt, da noch weitere, abhängige Ortsdaten vorhanden sind."
 
 #: library/WT/Gedcom/Code/Rela.php:136
 msgid "Lodger"
@@ -8306,7 +8306,7 @@ msgstr "London, England"
 
 #: help_text.php:925
 msgid "Long lists of individuals with the same surname can be broken into smaller sub-lists according to the first letter of the individual’s given name.<br><br>This option determines when sub-listing of surnames will occur.  To disable sub-listing completely, set this option to zero."
-msgstr "Lange Listen von Personen mit gleichem Nachnamen können nach dem Anfangsbuchstaben dessen Vornamen in kleinere Listen aufgeteilt werden.<br><br>Mit dieser Option geben Sie die maximale Nachnamens-Listenlänge ein.  Wenn Sie diese Länge auf Null stellen, werden Nachnamenslisten nie in kleinere Listen aufgeteilt."
+msgstr "Lange Listen von Personen mit gleichem Nachnamen können nach dem Anfangsbuchstaben dessen Vornamen in kleinere Listen aufgeteilt werden.<br><br>Mit dieser Option geben Sie die maximale Listenlänge der Nachnamen ein. Wenn Sie diese Länge auf 0 stellen, werden Nachnamenslisten nie in kleinere Listen aufgeteilt."
 
 #: statistics.php:245
 msgid "Longest marriage"
@@ -8325,7 +8325,7 @@ msgstr "Los Angeles, Kalifornien"
 #: login.php:200 login.php:216 login.php:237
 #: modules_v3/login_block/module.php:94
 msgid "Lost password request"
-msgstr "Kennwort neu anfordern"
+msgstr "Neues Kennwort anfordern"
 
 #: library/WT/Gedcom/Code/Temp.php:115
 msgid "Louisville, Kentucky"
@@ -8487,7 +8487,7 @@ msgstr "März"
 
 #: help_text.php:530
 msgid "Markdown is a simple system of formatting, used on websites such as Wikipedia.  It uses unobtrusive punctuation characters to create headings and sub-headings, bold and italic text, lists, tables, etc."
-msgstr "Markdown ist ein einfaches System für Formatierungen wie es z.B. auf Webseiten wie Wikipedia Verwendung findet. Es nutzt unaufdringliche Satzzeichen um Überschriften und Unterüberschriften, fette und kursive Texte, Listen, Tabellen usw. zu erstellen."
+msgstr "Markdown ist ein einfaches System für Formatierungen wie es z.B. auf Webseiten wie Wikipedia Verwendung findet. Es nutzt unaufdringliche Satzzeichen, um Überschriften und Unterüberschriften, fette und kursive Texte, Listen, Tabellen usw. zu erstellen."
 
 #. I18N: gedcom tag MARR
 #: library/WT/Gedcom/Tag.php:233 modules_v3/ahnentafel_report/report.xml:453
@@ -8599,7 +8599,7 @@ msgstr "Heirat eines Bruders"
 
 #: library/WT/Gedcom/Tag.php:734
 msgid "Marriage of a child"
-msgstr "Heirat: Kind"
+msgstr "Heirat eines Kinds"
 
 #: library/WT/Gedcom/Tag.php:733
 msgid "Marriage of a daughter"
@@ -8608,12 +8608,12 @@ msgstr "Heirat einer Tochter"
 #. I18N: ...to another spouse
 #: library/WT/Gedcom/Tag.php:764
 msgid "Marriage of a father"
-msgstr "Heirat: Vater"
+msgstr "Heirat eines Vaters"
 
 #: library/WT/Gedcom/Tag.php:742 library/WT/Gedcom/Tag.php:748
 #: library/WT/Gedcom/Tag.php:754
 msgid "Marriage of a grandchild"
-msgstr "Heirat: Enkel"
+msgstr "Heirat eines Enkelkinds"
 
 #: library/WT/Gedcom/Tag.php:741
 msgid "Marriage of a granddaughter"
@@ -8622,12 +8622,12 @@ msgstr "Heirat einer Enkeltochter"
 #: library/WT/Gedcom/Tag.php:747
 msgctxt "daughter’s daughter"
 msgid "Marriage of a granddaughter"
-msgstr "Heirat einer Enkelin"
+msgstr "Heirat einer Enkeltochter"
 
 #: library/WT/Gedcom/Tag.php:753
 msgctxt "son’s daughter"
 msgid "Marriage of a granddaughter"
-msgstr "Heirat einer Enkelin"
+msgstr "Heirat einer Enkeltochter"
 
 #: library/WT/Gedcom/Tag.php:740
 msgid "Marriage of a grandson"
@@ -8636,12 +8636,12 @@ msgstr "Heirat eines Enkelsohns"
 #: library/WT/Gedcom/Tag.php:746
 msgctxt "daughter’s son"
 msgid "Marriage of a grandson"
-msgstr "Heirat eines Enkels"
+msgstr "Heirat eines Enkelsohns"
 
 #: library/WT/Gedcom/Tag.php:752
 msgctxt "son’s son"
 msgid "Marriage of a grandson"
-msgstr "Heirat eines Enkels"
+msgstr "Heirat eines Enkelsohns"
 
 #: library/WT/Gedcom/Tag.php:758
 msgid "Marriage of a half-brother"
@@ -8649,16 +8649,16 @@ msgstr "Heirat eines Halb-Bruders"
 
 #: library/WT/Gedcom/Tag.php:760
 msgid "Marriage of a half-sibling"
-msgstr "Heirat: Halbgeschwister"
+msgstr "Heirat eines Halbgeschwisterkinds"
 
 #: library/WT/Gedcom/Tag.php:759
 msgid "Marriage of a half-sister"
-msgstr "Heirat einer Halb-Schwester"
+msgstr "Heirat einer Halbschwester"
 
 #. I18N: ...to another spouse
 #: library/WT/Gedcom/Tag.php:765
 msgid "Marriage of a mother"
-msgstr "Heirat: Mutter"
+msgstr "Heirat einer Mutter"
 
 #. I18N: ...to another spouse
 #: library/WT/Gedcom/Tag.php:766
@@ -8667,7 +8667,7 @@ msgstr "Heirat eines Elternteils"
 
 #: library/WT/Gedcom/Tag.php:772
 msgid "Marriage of a sibling"
-msgstr "Heirat: Geschwister"
+msgstr "Heirat eines Geschwisterkinds"
 
 #: library/WT/Gedcom/Tag.php:771
 msgid "Marriage of a sister"
@@ -8680,7 +8680,7 @@ msgstr "Heirat eines Sohns"
 #. I18N: ...to each other
 #: library/WT/Gedcom/Tag.php:737
 msgid "Marriage of parents"
-msgstr "Heirat: Eltern"
+msgstr "Heirat der Eltern"
 
 #: statistics.php:412
 msgid "Marriage places"
@@ -8709,7 +8709,7 @@ msgstr "Eheschließungen"
 
 #: library/WT/Stats.php:2162 statistics.php:217
 msgid "Marriages by century"
-msgstr "Ehen pro Jahrhundert"
+msgstr "Eheschließungen pro Jahrhundert"
 
 #. I18N: gedcom tag _MARNM
 #: library/WT/Gedcom/Tag.php:727 modules_v3/cemetery_report/report.xml:7
@@ -8756,7 +8756,7 @@ msgstr "Max"
 
 #: admin_trees_config.php:835 help_text.php:627
 msgid "Maximum descendancy generations"
-msgstr "Maximale Anzahl Generationen im Nachfahrenbaum"
+msgstr "Maximale Anzahl an Generationen im Nachfahrenbaum"
 
 #: admin_trees_config.php:779 help_text.php:924
 msgid "Maximum number of surnames on individual list"
@@ -8764,7 +8764,7 @@ msgstr "Maximale Anzahl von Nachnamen auf der Personenliste"
 
 #: admin_trees_config.php:827 help_text.php:649
 msgid "Maximum pedigree generations"
-msgstr "Maximale Anzahl Generationen im Stammbaum"
+msgstr "Maximale Anzahl an Generationen im Stammbaum"
 
 #: admin_media_upload.php:176
 msgid "Maximum upload size: "
@@ -8821,7 +8821,7 @@ msgstr "Medienobjekte gefunden"
 
 #: find.php:214
 msgid "Media contains:"
-msgstr "Inhalt der Medien:"
+msgstr "Medien enthalten:"
 
 #: admin_media.php:608 admin_media_upload.php:181
 msgid "Media file"
@@ -8861,7 +8861,7 @@ msgstr "Medienordner"
 #. I18N: gedcom tag OBJE
 #: admin_media.php:610 library/WT/Gedcom/Tag.php:260
 msgid "Media object"
-msgstr "Medien Objekt"
+msgstr "Medienobjekt"
 
 #: admin.php:209 admin.php:263
 #: includes/functions/functions_print_lists.php:919
@@ -8941,7 +8941,7 @@ msgstr "Melbourne, Australien"
 #: modules_v3/clippings/module.php:198 modules_v3/clippings/module.php:204
 #: modules_v3/clippings/module.php:575 modules_v3/clippings/module.php:582
 msgid "Member"
-msgstr "Mitglieder"
+msgstr "Mitglied"
 
 #: admin_site_config.php:73 help_text.php:679
 msgid "Memory limit"
@@ -8966,7 +8966,7 @@ msgstr "Quecksilber"
 
 #: admin_site_merge.php:269
 msgid "Merge from ID:"
-msgstr "Zusammenfügen mit ID:"
+msgstr "Zusammenfügen von ID:"
 
 #: admin_site_merge.php:32 admin_site_merge.php:82 admin_site_merge.php:150
 #: admin_site_merge.php:242 help_text.php:1169
@@ -8976,7 +8976,7 @@ msgstr "Datensätze zusammenfügen"
 
 #: admin_site_merge.php:248
 msgid "Merge to ID:"
-msgstr "Ausgangs-ID:"
+msgstr "Zusammenfügen zu ID:"
 
 #: library/WT/Gedcom/Code/Temp.php:124
 msgid "Merida, Mexico"
@@ -8988,7 +8988,7 @@ msgstr "Mesa, Arizona"
 
 #: admin_site_logs.php:229 admin_site_logs.php:258
 msgid "Message"
-msgstr "Meldung"
+msgstr "Nachricht"
 
 #: message.php:200
 #, php-format
@@ -9067,7 +9067,7 @@ msgstr "Militärdienst"
 
 #: admin_trees_config.php:738 help_text.php:475
 msgid "Min. no. of occurrences to be a “common surname”"
-msgstr "Minimale Anzahl von Vorkommen um ein »Häufiger Nachname« zu sein"
+msgstr "Minimale Anzahl von Vorkommen, um ein »Häufiger Nachname« zu sein"
 
 #: modules_v3/googlemap/help_text.php:32
 msgid "Minimum and maximum zoom level for the Google map. 1 is the full map, 15 is single house. Note that 15 is only available in certain areas."
@@ -9087,7 +9087,7 @@ msgstr "Fehlende Daten"
 
 #: edit_changes.php:198
 msgid "Moderate pending changes"
-msgstr "Moderiere wartende Änderungen"
+msgstr "Moderiere ausstehende Änderungen"
 
 #. I18N: Listbox entry; name of a role
 #: admin_users.php:43 help_text.php:1389
@@ -9237,11 +9237,11 @@ msgstr "Die meisten Server benutzen keine geschützte Verbindung."
 
 #: setup.php:267
 msgid "Most sites are configured to use localhost.  This means that your database runs on the same computer as your web server."
-msgstr "Die meisten Webseites sind als <b>localhost</b> konfiguriert. Das bedeutet das sich die Datenbank auf dem gleichen Computer befindet wie Ihr Webserver."
+msgstr "Die meisten Webseites sind als <b>localhost</b> konfiguriert. Das bedeutet, dass sich die Datenbank auf dem gleichen Computer befindet wie Ihr Webserver."
 
 #: setup.php:271
 msgid "Most sites are configured to use the default value of 3306."
-msgstr "Die meisten Webseites sind so konfiguriert das sie den Standardwert 3306 nutzen."
+msgstr "Die meisten Webseites sind so konfiguriert, dass sie den Standardwert 3306 nutzen."
 
 #. I18N: Name of a module
 #: modules_v3/top10_pageviews/module.php:32
@@ -9265,13 +9265,13 @@ msgstr "Mutter: %s"
 
 #: includes/functions/functions_print.php:612
 msgid "Mother’s age"
-msgstr "Mutters Alter"
+msgstr "Alter der Mutter"
 
 #. I18N: A step-family.  %s is an individual’s name
 #: library/WT/Individual.php:752
 #, php-format
 msgid "Mother’s family with %s"
-msgstr "Die Familie mütterlicherseits %s"
+msgstr "Familie der Mutter mit %s"
 
 #. I18N: A step-family.
 #: library/WT/Individual.php:754
@@ -9296,11 +9296,11 @@ msgstr "nach links"
 
 #: help_text.php:1103 help_text.php:1108
 msgid "Move list entries"
-msgstr "Reihenfolge ändern"
+msgstr "Listeneintrag verschieben"
 
 #: index_edit.php:292
 msgid "Move right"
-msgstr "nach rechts"
+msgstr "Nach rechts verschieben"
 
 #: index_edit.php:276 index_edit.php:328
 msgid "Move up"
@@ -10462,7 +10462,7 @@ msgstr "Stammbaum von %s"
 
 #: modules_v3/review_changes/help_text.php:31
 msgid "Pending Changes block"
-msgstr "Box für anstehende Änderungen"
+msgstr "Box für ausstehende Änderungen"
 
 #. I18N: Name of a module
 #: admin_site_upgrade.php:103 edit_changes.php:31 edit_changes.php:51
@@ -10473,11 +10473,11 @@ msgstr "Box für anstehende Änderungen"
 #: themes/colors/header.php:85 themes/fab/header.php:68
 #: themes/minimal/header.php:71 themes/xenea/header.php:102
 msgid "Pending changes"
-msgstr "Offene Änderungen"
+msgstr "Ausstehende Änderungen"
 
 #: help_text.php:1335
 msgid "Pending changes are only shown when your account has permission to edit.  When you log out, you will no longer be able to see them.  Also, pending changes are only shown on certain pages.  For example, they are not shown in lists, reports, or search results."
-msgstr "Wartende Änderungen werden  nur angezeigt, wenn Ihr Konto über die Berechtigung zum Bearbeiten verfügt. Wenn Sie sich abmelden, werden Sie bis zur Freigabe durch den Administrator nicht mehr in der Lage sein, die vorgenommenen Änderungen zu sehen. Außerdem werden die ausstehenden Änderungen nur auf bestimmten Seiten angezeigt. Zum Beispiel werden sie nicht in Listen, Berichten oder Suchergebnissen angezeigt."
+msgstr "Ausstehende Änderungen werden nur angezeigt, wenn Ihr Konto über die Berechtigung zum Bearbeiten verfügt. Wenn Sie sich abmelden, werden Sie bis zur Freigabe durch den Administrator nicht mehr in der Lage sein, die vorgenommenen Änderungen zu sehen. Außerdem werden die ausstehenden Änderungen nur auf bestimmten Seiten angezeigt. Zum Beispiel werden sie nicht in Listen, Berichten oder Suchergebnissen angezeigt."
 
 #. I18N: gedcom tag _PRMN
 #: library/WT/Gedcom/Tag.php:798
@@ -12485,7 +12485,7 @@ msgstr "Pfad zeigen"
 
 #: modules_v3/change_report/report.xml:8
 msgid "Show pending changes"
-msgstr "Anstehende Änderungen zeigen"
+msgstr "Ausstehende Änderungen zeigen"
 
 #: modules_v3/family_group_report/report.xml:9
 #: modules_v3/individual_ext_report/report.xml:11
@@ -13634,7 +13634,7 @@ msgstr "Zu dieser Person gibt es keine Multimedia Objekte."
 
 #: admin_site_upgrade.php:107
 msgid "There are no pending changes."
-msgstr "Es gibt keine unerledigten Änderungen."
+msgstr "Es gibt keine ausstehende Änderungen."
 
 #: modules_v3/todo/module.php:127
 msgid "There are no research tasks in this family tree."
@@ -13645,7 +13645,7 @@ msgstr "Es gibt keine Forschungsaufgaben zum Familienbaum"
 #: themes/colors/footer.php:43 themes/webtrees/footer.php:42
 #: themes/xenea/footer.php:41
 msgid "There are pending changes for you to moderate."
-msgstr "hier sind ausstehende Änderungen für die Moderation"
+msgstr "Es warten ausstehende Änderungen auf deine Moderation"
 
 #: modules_v3/recent_changes/module.php:80
 #, php-format
@@ -14627,7 +14627,7 @@ msgstr "Gesamtanzahl der Benutzer"
 
 #: modules_v3/change_report/report.xml:84
 msgid "Total pending changes: "
-msgstr "Anzahl der anstehenden Änderungen: "
+msgstr "Anzahl der ausstehenden Änderungen: "
 
 #. I18N: A count of places
 #: modules_v3/googlemap/module.php:1737
@@ -15429,7 +15429,7 @@ msgstr "Beim Hinzufügen eines neuen Familienmitgliedes kann ein voreingestellte
 
 #: help_text.php:1331
 msgid "When you add, edit, or delete information, the changes are not saved immediately.  Instead, they are kept in a “pending” area.  These pending changes need to be reviewed by a moderator before they are accepted."
-msgstr "Wenn Sie Informationen hinzufügen, bearbeiten oder löschen, werden zur Sicherheit die Änderungen nicht unmittelbar wirksam. Stattdessen werden sie in einer \"Warteschlange\" zur Überprüfung und Freigabe bereitgehalten. Die von Ihnen vorgenommenen Ergänzungen oder Änderungen müssen zunächst von einem Administrator überprüft werden, bevor sie akzeptiert und damit allgemein sichtbar werden. Auf diese Weise sollen Bedienungsfehler und versehentliche Änderungen abgefangen werden."
+msgstr "Wenn Sie Informationen hinzufügen, bearbeiten oder löschen, werden zur Sicherheit die Änderungen nicht unmittelbar wirksam. Stattdessen werden sie in einer \"Warteschlange\" zur Überprüfung und Freigabe bereitgehalten. Die von Ihnen vorgenommenen Ergänzungen oder Änderungen müssen zunächst von einem Administrator überprüft und akzeptiert werden, bevor sie allgemein sichtbar werden. Auf diese Weise sollen Bedienungsfehler und versehentliche Änderungen vermieden werden."
 
 #: help_text.php:1129
 msgid "When you check this option, a copy of the GEDCOM file will be compressed into ZIP format before the download begins. This will reduce its size considerably, but you will need to use a compatible Unzip program (WinZIP, for example) to decompress the transmitted GEDCOM file before you can use it.<br><br>This is a useful option for downloading large GEDCOM files.  There is a risk that the download time for the uncompressed file may exceed the maximum allowed execution time, resulting in incompletely downloaded files.  The ZIP option should reduce the download time by 75 percent."
@@ -19839,7 +19839,7 @@ msgstr "…"
 #~ msgstr "Bezeichnungen in Diagrammen abkürzen"
 
 #~ msgid "Accept or reject any pending changes."
-#~ msgstr "Nehmen Sie die offenen Änderungen an oder verwerfen Sie sie."
+#~ msgstr "Nehmen Sie die ausstehenden Änderungen an oder verwerfen Sie sie."
 
 #~ msgid "Access"
 #~ msgstr "Zugriff"
