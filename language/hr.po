@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2014-06-12 21:41+0100\n"
-"PO-Revision-Date: 2014-07-02 17:00+0100\n"
+"PO-Revision-Date: 2014-07-05 17:00+0100\n"
 "Last-Translator: Mic <mic@ergraf.eu>\n"
 "Language-Team: \n"
 "Language: Croatian\n"
@@ -26,7 +26,7 @@ msgstr ""
 #: modules_v3/ahnentafel_report/report.xml:333
 #: modules_v3/ahnentafel_report/report.xml:364
 msgid " but the details are unknown"
-msgstr " ali detalji su nepoznati"
+msgstr " ali detalji nisu poznati"
 
 #: modules_v3/ahnentafel_report/report.xml:156
 #: modules_v3/ahnentafel_report/report.xml:184
@@ -1176,7 +1176,7 @@ msgstr "Dodaj članak u novosti"
 
 #: edit_interface.php:563 modules_v3/relatives/module.php:373
 msgid "Add a child to create a one-parent family"
-msgstr "Dodaj dijete i započni porodicu sa samo jednim roditeljem"
+msgstr "Dodaj dijete i započni obitelj sa samo jednim roditeljem"
 
 #: includes/functions/functions_charts.php:273
 #: library/WT/Controller/Family.php:90
@@ -1236,7 +1236,7 @@ msgstr "Dodaj supruga"
 #: modules_v3/lightbox/module.php:70 modules_v3/media/module.php:84
 #: repo.php:135 source.php:152
 msgid "Add a new media object"
-msgstr "Dodaj novi media objekt"
+msgstr "Dodaj novi medijski objekt"
 
 #: edit_interface.php:640 family.php:121 modules_v3/relatives/module.php:300
 msgid "Add a new mother"
@@ -1260,7 +1260,7 @@ msgstr "Dodaj ograničenje"
 #: includes/functions/functions_edit.php:869
 #: library/WT/Controller/Family.php:175 modules_v3/notes/module.php:104
 msgid "Add a new shared note"
-msgstr "Dodaj novu zajedničku bilješku"
+msgstr "Dodaj novu dijeljenu bilješku"
 
 #: modules_v3/relatives/module.php:246
 msgid "Add a new son or daughter"
@@ -1384,7 +1384,7 @@ msgstr "Dodaj priču"
 #: admin_trees_download.php:129 modules_v3/clippings/module.php:212
 #: modules_v3/clippings/module.php:592
 msgid "Add the GEDCOM media path to filenames"
-msgstr "Dodaj GEDCOM medija putanju do imena datoteka."
+msgstr "Dodaj GEDCOM medijsku putanju do imena datoteka."
 
 #: modules_v3/clippings/module.php:108 modules_v3/clippings/module.php:516
 msgid "Add this individual and his direct line ancestors."
@@ -1663,7 +1663,7 @@ msgstr "Napredna činjenica imena mjesta"
 #: library/WT/Controller/AdvancedSearch.php:33 library/WT/MenuBar.php:418
 #: search.php:220 search.php:227 search.php:230
 msgid "Advanced search"
-msgstr "Napredna pretraga"
+msgstr "Napredno pretraživanje"
 
 #: library/WT/Stats.php:3802
 msgid "Afghanistan"
@@ -2067,15 +2067,15 @@ msgstr "Aqua Marine"
 
 #: modules_v3/faq/module.php:396
 msgid "Are you sure you want to delete this FAQ entry?"
-msgstr "Jeste sigurni da želite obrisati ovaj ČPP unos?"
+msgstr "Jeste sigurni da želite obrisati ovu stavku iz ČPP?"
 
 #: modules_v3/user_blog/module.php:91
 msgid "Are you sure you want to delete this journal entry?"
-msgstr "Jeste sigurni da želite obrisati ovaj unos u dnevnik?"
+msgstr "Jeste sigurni da želite obrisati ovaj zapis iz dnevnika?"
 
 #: modules_v3/gedcom_news/module.php:119
 msgid "Are you sure you want to delete this news article?"
-msgstr "Jeste sigurni da želite obrisati ovaj unos vijedti?"
+msgstr "Jeste sigurni da želite obrisati ovaj članak novosti?"
 
 #: includes/functions/functions_print_facts.php:181
 #: includes/functions/functions_print_facts.php:694
@@ -2083,12 +2083,12 @@ msgstr "Jeste sigurni da želite obrisati ovaj unos vijedti?"
 #: includes/functions/functions_print_facts.php:1038
 #: library/WT/Controller/Individual.php:151
 msgid "Are you sure you want to delete this fact?"
-msgstr "Jeste li sigurni da želite izbrisati ovu činjenicu?"
+msgstr "Jeste li sigurni da želite obrisati ovu činjenicu?"
 
 #: modules_v3/user_messages/module.php:67
 #: modules_v3/user_messages/module.php:113
 msgid "Are you sure you want to delete this message?  It cannot be retrieved later."
-msgstr "Jeste sigurni da želite obrisati poruku? Neće se moći vratiti kasnije."
+msgstr "Jeste sigurni da želite obrisati tu poruku? Nećete ju moći vratiti kasnije."
 
 #: modules_v3/stories/module.php:358
 msgid "Are you sure you want to delete this story?"
@@ -2108,7 +2108,7 @@ msgstr "Jeste sigurni da želite obrisati “%s”?"
 
 #: modules_v3/lightbox/module.php:175
 msgid "Are you sure you want to remove links to this media object?"
-msgstr "Jeste sigurni da želite uloniti vezu na ovaj medijski objekt?"
+msgstr "Jeste sigurni da želite ukloniti vezu na ovaj medijski objekt?"
 
 #: modules_v3/gedcom_favorites/module.php:123
 msgid "Are you sure you want to remove this item from your list of favorites?"
@@ -2861,7 +2861,7 @@ msgstr "Blue Marine"
 
 #: message.php:138
 msgid "Body:"
-msgstr "Tijelo:"
+msgstr "Tekst:"
 
 #: library/WT/Gedcom/Code/Temp.php:70
 msgid "Bogota, Colombia"
@@ -4045,12 +4045,12 @@ msgstr "Kreiraj novo pravilo"
 #: edit_interface.php:1314 edit_interface.php:1350
 #: includes/functions/functions_edit.php:324
 msgid "Create a new shared note"
-msgstr "Napravi novu zajedničku bilješku"
+msgstr "Kreiraj novu dijeljenu bilješku"
 
 #: edit_interface.php:1373 modules_v3/GEDFact_assistant/CENS_ctrl.php:32
 #: modules_v3/GEDFact_assistant/module.php:334
 msgid "Create a new shared note using assistant"
-msgstr "Kreiraj novi zajedničku bilješku koristeći asistenta"
+msgstr "Kreiraj novi dijeljenu bilješku koristeći pomoć"
 
 #. I18N: A source that is not linked to any other record
 #: admin_site_other.php:62 edit_interface.php:1162 edit_interface.php:1245
@@ -4221,7 +4221,7 @@ msgstr "Prilagođeno"
 
 #: calendar.php:269 includes/functions/functions_print.php:966
 msgid "Custom event"
-msgstr "Prilagođeni Događaj"
+msgstr "Prilagođeni događaj"
 
 #: includes/functions/functions_print.php:965
 msgid "Custom fact"
@@ -5361,7 +5361,7 @@ msgstr "Uredite informacije računa"
 
 #: library/WT/Controller/Media.php:139
 msgid "Edit details"
-msgstr "Uredite detalje"
+msgstr "Uredi detalje"
 
 #: library/WT/Controller/Individual.php:276
 msgid "Edit gender"
@@ -5373,7 +5373,7 @@ msgstr "Uredite medij"
 
 #: addmedia.php:232 addmedia.php:391 library/WT/Controller/Media.php:50
 msgid "Edit media object"
-msgstr "Uredite medija objekt"
+msgstr "Uredite medijski objekt"
 
 #: edit_interface.php:1622 includes/functions/functions_edit.php:578
 #: library/WT/Controller/Individual.php:152
@@ -5382,7 +5382,7 @@ msgstr "Uredite ime"
 
 #: library/WT/Controller/Note.php:49
 msgid "Edit note"
-msgstr "Uredite zapis"
+msgstr "Uredite bilješku"
 
 #: admin_trees_config.php:221
 msgid "Edit options"
@@ -5403,7 +5403,7 @@ msgstr "Uredite mjesto čuvanja"
 #: edit_interface.php:1425 edit_interface.php:1471
 #: includes/functions/functions_edit.php:328
 msgid "Edit shared note"
-msgstr "Uredite zajedničku bilješku"
+msgstr "Uredite dijeljenu bilješku"
 
 #: library/WT/Controller/Source.php:50
 msgid "Edit source"
@@ -5841,7 +5841,7 @@ msgstr "ČPP vidljivost"
 
 #: modules_v3/faq/help_text.php:33
 msgid "FAQs are lists of questions and answers, which allow you to explain the site’s rules, policies, and procedures to your visitors.  Questions are typically concerned with privacy, copyright, user-accounts, unsuitable content, requirement for source-citations, etc."
-msgstr "ČPP je popis često postavljanih pitanja i odgovora, koja vam omogućavaju da svojim posjetiocima objasnite pravila i procedure. Pitanja su obično vezana za prava kopiranja, korisnički račun, neprimjeren sadržaj, potrebe za citiranje izvora, itd."
+msgstr "ČPP je popis često postavljanih pitanja i odgovora, koja vam omogućuju da svojim posjetiteljima objasnite pravila i procedure. Pitanja su obično vezana za prava kopiranja, korisnički račun, neprimjeren sadržaj, potrebe za citiranje izvora, itd."
 
 #. I18N: gedcom tag FACT
 #: library/WT/Gedcom/Tag.php:192
@@ -6322,7 +6322,7 @@ msgstr "Pronađi činjenicu ili događaj"
 #: admin_site_merge.php:266 admin_site_merge.php:287 find.php:74
 #: includes/functions/functions_print.php:1019
 msgid "Find a family"
-msgstr "Nađi Obitelj"
+msgstr "Pronađi Obitelj"
 
 #: find.php:77 includes/functions/functions_print.php:1049
 msgid "Find a media object"
@@ -6451,7 +6451,7 @@ msgstr "Kao primjer, ako GEDCOM datoteka sadrži %1$s i webtrees očekuje %2$s u
 
 #: help_text.php:722
 msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
-msgstr "Kao primjer, ako postavite na 2, pojedinac će moći vidjeti svoju unučad (djeteta, dijete), svoju tetu (roditelja, braću/sestre), svoju pokćerku (supružnikovo dijete), ali neće svoje rođake iz prvog koljena (roditelje, braću/sestre, djecu)."
+msgstr "Kao primjer, ako postavite na 2, pojedinac će moći vidjeti svoju unučad (djeteta, dijete), svoju tetu (roditelja, braću/sestre), svoju pokćerku (supružnikovo dijete), ali neće njihove rođake iz prvog koljena (roditelje, braću/sestre, djecu)."
 
 #: includes/functions/functions_print.php:381
 msgid "For help with genealogy questions contact"
@@ -7372,7 +7372,7 @@ msgstr "Ako imate bilješku koju želite dodati ovom zapisu.<br><br>Samo kliknit
 
 #: admin_trees_manage.php:169
 msgid "If you have created media objects in webtrees, and have edited your gedcom off-line using a program that deletes media objects, then check this box to merge the current media objects with the new GEDCOM."
-msgstr "Ako ste kreirali medija objekt u webrees, i uređivali svoj GEDCOM koristeći program koji briše medija objekte, uključite ovu opciju da spojite trenutne objekte sa novim GEDCOM-om."
+msgstr "Ako ste kreirali medijski objekt u webrees, i uređivali svoj GEDCOM koristeći program koji briše medija objekte, uključite ovu opciju da spojite trenutne objekte sa novim GEDCOM-om."
 
 #: help_text.php:1040
 msgid "If you have opted for custom welcome text, you can type that text here.  To set this text for other languages, you must switch to that language, and visit this page again."
@@ -8108,7 +8108,7 @@ msgstr "Ako ostavite ovo polje prazno, koristiti će se ime obiteljskog stabla."
 #: includes/functions/functions_print_lists.php:95
 #: includes/functions/functions_print_lists.php:496
 msgid "Leaves"
-msgstr "Napušteni"
+msgstr "Bez djece"
 
 #: library/WT/Stats.php:3932
 msgid "Lebanon"
@@ -8130,7 +8130,7 @@ msgstr ""
 #: modules_v3/relative_ext_report/report.xml:8
 msgctxt "paper size"
 msgid "Legal"
-msgstr "Pravni"
+msgstr ""
 
 #. I18N: gedcom tag LEGA
 #: library/WT/Gedcom/Tag.php:225
@@ -8882,7 +8882,7 @@ msgstr "Medijske datoteke"
 
 #: admin_trees_config.php:628 help_text.php:654
 msgid "Media folder"
-msgstr "Medijski mapa"
+msgstr "Medijska mapa"
 
 #: admin_media.php:548 admin_trees_config.php:624
 msgid "Media folders"
@@ -10253,7 +10253,7 @@ msgstr "Ostalo"
 
 #: search.php:217
 msgid "Other searches"
-msgstr "Druge potrage"
+msgstr "Druga pretraživanja"
 
 #: admin_trees_config.php:1000 help_text.php:455
 msgid "Other facts to show in charts"
@@ -10559,7 +10559,7 @@ msgstr "Fonetsko mjesto"
 #: branches.php:47 library/WT/Controller/Search.php:215
 #: library/WT/MenuBar.php:415 search.php:220 search.php:226
 msgid "Phonetic search"
-msgstr "Fonetsko traženje"
+msgstr "Fonetsko pretraživanje"
 
 #: library/WT/Gedcom/Tag.php:314
 msgid "Phonetic title"
@@ -11551,7 +11551,7 @@ msgstr "Ograničenja mogu biti dodana zapisu i/ili činjenici. Ona ograničavaju
 
 #: library/WT/Stats.php:72
 msgid "Resulting value"
-msgstr "Rezultirajuća vrijednost"
+msgstr "Dobivena vrijednost"
 
 #. I18N: gedcom tag RETI
 #: library/WT/Gedcom/Tag.php:288
@@ -11574,7 +11574,7 @@ msgstr "Dužnost"
 
 #: library/WT/Stats.php:3996
 msgid "Romania"
-msgstr ""
+msgstr "Rumunjska"
 
 #. I18N: gedcom tag ROMN
 #: library/WT/Gedcom/Tag.php:293
@@ -11587,7 +11587,7 @@ msgstr ""
 
 #: library/WT/Gedcom/Tag.php:315
 msgid "Romanized title"
-msgstr "Romanizirani naziv"
+msgstr ""
 
 #: modules_v3/googlemap/module.php:1266
 msgid "Root"
@@ -11596,7 +11596,7 @@ msgstr "Korjen"
 #: includes/functions/functions_print_lists.php:94
 #: includes/functions/functions_print_lists.php:495
 msgid "Roots"
-msgstr "Korjeni"
+msgstr "Korijeni"
 
 #. I18N: noun
 #: admin_site_access.php:284
@@ -11782,7 +11782,7 @@ msgstr ""
 #: themes/minimal/header.php:93 themes/webtrees/header.php:79
 #: themes/webtrees/header.php:80 themes/xenea/header.php:72
 msgid "Search"
-msgstr "Pretraga"
+msgstr "Pretraži"
 
 #: library/WT/Controller/Search.php:219 library/WT/MenuBar.php:422
 #: modules_v3/batch_update/plugins/search_replace.php:35 search.php:222
@@ -11805,7 +11805,7 @@ msgstr "Filteri pretraživanja"
 
 #: admin_trees_places.php:96 search.php:84 search.php:118
 msgid "Search for"
-msgstr "Pretraga za"
+msgstr "Traži"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:57
 msgid "Search for individuals to add to add Links list."
@@ -11860,7 +11860,7 @@ msgstr "Odaberi ikonu"
 
 #: statistics.php:523
 msgid "Select chart type:"
-msgstr "Odaberite vrstu grafičkog prikaza"
+msgstr "Odaberite tip grafikona:"
 
 #: edit_interface.php:1211
 msgid "Select events"
@@ -11897,7 +11897,7 @@ msgstr "Označite ovu opciju da snimite svoje isječke u ZIP datoteku. Za više 
 
 #: help_text.php:1269
 msgid "Select this option to include the media files associated with the records in your clippings cart.  Choosing this option will automatically zip the files during download."
-msgstr "Odaberite ovu opciju da uključite medijske datoteke vezane sa zapisima u vašeim isječcima. Odabirom ove opcije automatski će se datoteke komprimirati (zip) tijekom preuzimanja."
+msgstr "Odaberite ovu opciju da uključite medijske datoteke vezane sa zapisima u vašim isječcima. Odabirom ove opcije automatski će se datoteke komprimirati (zip) tijekom preuzimanja."
 
 #: admin_site_merge.php:245
 msgid "Select two GEDCOM records to merge.  The records must be of the same type."
@@ -12079,7 +12079,7 @@ msgstr "Ovdje postavite nivo privatnosti za sve umrle pojedince."
 
 #: help_text.php:849
 msgid "Set this to <b>Yes</b> to display icons near Fact names on the Personal Facts and Details page.  Fact icons will be displayed only if they exist in the <i>images/facts</i> directory of the current theme."
-msgstr "Postavite <b>Da</b> za prikaz ikone blizu imena činjenice na osobnim čunjenicama i stranici sa detaljima. Ikona činjenica će biti prikazana samo ako postoji u mapi <i>images/facts</i> trenutno aktivne teme."
+msgstr "Postavite <b>Da</b> za prikaz ikone blizu imena činjenice na osobnim činjenicama i stranici sa detaljima. Ikona činjenica će biti prikazana samo ako postoji u mapi <i>images/facts</i> trenutno aktivne teme."
 
 #: help_text.php:1012
 msgid "Set to <b>Yes</b> to use the RIN number instead of the GEDCOM ID when asked for individual IDs in configuration files, user settings, and charts.  This is useful for genealogy programs that do not consistently export GEDCOMs with the same ID assigned to each individual but always use the same RIN."
@@ -12091,11 +12091,11 @@ msgstr ""
 
 #: help_text.php:854
 msgid "Setting this to <b>Yes</b> will place links on individuals, sources, and families to let users bring up another window containing the raw data taken right out of the GEDCOM file."
-msgstr "Postavljanjem na <b>Da</b> biti će stavljen link na pojedince, izvore i obitelji da omoguće korisniku pozivanje drugog prozora u kojem će biti sirovi podaci iz GEDCOM datoteke."
+msgstr "Postavljanjem na <b>Da</b> biti će stavljen link na pojedince, izvore i obitelji koji će omogućiti korisniku otvaranje drugog prozora koji će sadržavati sirove podatke iz GEDCOM datoteke."
 
 #: setup.php:92
 msgid "Setup wizard for <b>webtrees</b>"
-msgstr "Čarobnjak za instaliranje <b>webtrees</b>"
+msgstr "Čarobnjak za instalaciju <b>webtrees</b>"
 
 #: library/WT/Date/French.php:121
 msgid "Sextidi"
@@ -12137,16 +12137,16 @@ msgstr ""
 #: edit_interface.php:1330 edit_interface.php:1438 inverselink.php:135
 #: library/WT/Gedcom/Tag.php:296 note.php:146 note.php:156
 msgid "Shared note"
-msgstr "Zajednička bilješka"
+msgstr "Dijeljena bilješka"
 
 #: find.php:267
 msgid "Shared note contains:"
-msgstr "Zajednička bilješka sadrži:"
+msgstr "Dijeljena bilješka sadrži:"
 
 #: includes/functions/functions_print_lists.php:921 library/WT/MenuBar.php:303
 #: notelist.php:29 notelist.php:33 search.php:108
 msgid "Shared notes"
-msgstr "Dijeljeni zapisi"
+msgstr "Dijeljene bilješke"
 
 #: help_text.php:358
 msgid "Shared notes are free-form text and will appear in the Fact Details section of the page.<br><br>Each shared note can be linked to more than one individual, family, source, or event."
@@ -12154,7 +12154,7 @@ msgstr "Dijeljene bilješke su slobodni tekst i prikazivati će se u sekciji Det
 
 #: find.php:648
 msgid "Shared notes found"
-msgstr "Pronađene zajedničke bilješke"
+msgstr "Pronađene dijeljene bilješke"
 
 #: help_text.php:1149
 msgid "Shared notes, like regular notes, are free-form text.  Unlike regular notes, each shared note can be linked to more than one individual, family, source, or fact.<br><br>By clicking the appropriate icon, you can establish a link to an existing shared note or create a new shared note and at the same time link to it.  If a link to an existing shared note has already been established, you can also edit that note’s contents.<br><ul><li><b>Link to an existing shared note</b><div style=\"padding-left:20px;\">If you already know the ID number of the desired shared note, you can enter that number directly into the field.<br><br>When you click the <b>Find shared note</b> icon, you will be able to search the text of all existing shared notes and then choose one of them.  The ID number of the chosen note will be entered into the field automatically.<br><br>You must click the <b>Add</b> button to update the original record.</div><br></li><li><b>Create a new shared note</b><div style=\"padding-left:20px;\">When you click the <b>Create a new shared note</b> icon, a new window will open.  You can enter the text of the new note as you wish.  As with regular notes, you can enter URLs.<br><br>When you click the <b>Save</b> button, you will see a message with the ID number of the newly created shared note.  You should click on this message to close the editing window and also copy that new ID number directly into the ID number field.  If you just close the window, the newly created ID number will not be copied automatically.<br><br>You must click the <b>Add</b> button to update the original record.</div><br></li><li><b>Edit an existing shared note</b><div style=\"padding-left:20px;\">When you click the <b>Edit shared note</b> icon, a new window will open.  You can change the text of the existing shared note as you wish.  As with regular notes, you can enter URLs.<br><br>When you click the <b>Save</b> button, the text of the shared note will be updated.  You can close the window and then click the <b>Save</b> button again.<br><br>When you change the text of a shared note, your change will be reflected in all places to which that shared note is currently linked.  New links that you establish after having made your change will also use the updated text.</div></li></ul>"
@@ -12514,7 +12514,7 @@ msgstr "Prikaži roditelje"
 
 #: relationship.php:125
 msgid "Show path"
-msgstr "Prikaži spojnicu"
+msgstr "Prikaži putanju"
 
 #: modules_v3/change_report/report.xml:8
 msgid "Show pending changes"
@@ -12605,7 +12605,7 @@ msgstr "Prikaži lokaciju mjesta i događaja koristeći Google Maps™ servis."
 #: modules_v3/faq/module.php:175 modules_v3/html/module.php:325
 #: modules_v3/stories/module.php:244
 msgid "Show this block for which languages?"
-msgstr "Prikaži ovaj blok za koji jezik?"
+msgstr "Za koje jezike želite prikazati ovaj blok?"
 
 #: admin_trees_config.php:38 admin_trees_config.php:651
 #: includes/functions/functions_edit.php:198
@@ -12634,7 +12634,7 @@ msgstr "Prikaži članovima"
 #: includes/functions/functions_print_facts.php:716
 #: includes/functions/functions_print_facts.php:964
 msgid "Show to visitors"
-msgstr "Prikaži posjetiocima"
+msgstr "Prikaži posjetiteljima"
 
 #: includes/functions/functions_print_lists.php:95
 #: includes/functions/functions_print_lists.php:496
@@ -13321,7 +13321,7 @@ msgstr ""
 
 #: help_text.php:875
 msgid "The Media Viewer can show a link which, when clicked, will download the media file to the local PC.<br><br>You may want to hide the download link for security reasons."
-msgstr "Preglednik medija može prikazati link, na koji kada kliknemo, će skinuti medijsku datoteku na vaše lokalno računalo.<br><br>Vi možete sakriti link za skidanje iz sigurnosnih razloga."
+msgstr "Preglednik medija može prikazati link, na koji kada kliknemo, možete skinuti medijsku datoteku na vaše lokalno računalo.<br><br>Vi možete sakriti link za skidanje iz sigurnosnih razloga."
 
 #: help_text.php:1304
 msgid "The PGV to <b>webtrees</b> wizard is an automated process to assist administrators make the move from a PGV installation to a new <b>webtrees</b> one. It will transfer all PGV GEDCOM and other database information directly to your new <b>webtrees</b> database. The following requirements are necessary:"
@@ -13350,7 +13350,7 @@ msgstr "Promjena na “%s” su odbijene."
 
 #: modules_v3/clippings/module.php:142
 msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the “Download” link.  Follow the instructions and links.</li></ul>"
-msgstr "Isječci vam omogućavaju da izvatke iz ovog obiteljskog stabla grupirate u jednu datoteku za preuzimanje u drugi genealoški program. Kreirana datoteka se sprema u GEDCOM formatu. <br><ul><li>Kako preuzeti isječak?<br>To je vrlo jednostavno. Kada god vidite ime, osobu, obitelj ili izvor na koji možete kliknuti, tada možete otići na detalje tog imena. Tamo ćete vidjeti opciju <b>Dodaj isječak</b>. Kada kliknete na taj link biti će vam ponuđeno nekoliko opcija za preuzimanje.</li><li>Kako preuzeti?<br>Jednom kada imate stavku u isječcima, možete ju preuzeti klikom na link <b>Preuzmi sada</b>. Slijedite instrukcije i linkove.</li></ul>"
+msgstr "Isječci vam omogućuju da izvatke iz ovog obiteljskog stabla grupirate u jednu datoteku za preuzimanje u drugi genealoški program. Kreirana datoteka se sprema u GEDCOM formatu. <br><ul><li>Kako preuzeti isječak?<br>To je vrlo jednostavno. Kada god vidite ime, osobu, obitelj ili izvor na koji možete kliknuti, tada možete otići na detalje tog imena. Tamo ćete vidjeti opciju <b>Dodaj isječak</b>. Kada kliknete na taj link biti će vam ponuđeno nekoliko opcija za preuzimanje.</li><li>Kako preuzeti?<br>Jednom kada imate stavku u isječcima, možete ju preuzeti klikom na link <b>Preuzmi sada</b>. Slijedite instrukcije i linkove.</li></ul>"
 
 #: help_text.php:1314
 msgid "The current <b>webtrees</b> admin username must be the same as an existing PGV admin username"
@@ -13798,7 +13798,7 @@ msgstr "Ovo obiteljsko stablo nema sliku za prikazati."
 #: modules_v3/gedcom_stats/module.php:86 modules_v3/html/module.php:164
 #, php-format
 msgid "This family tree was last updated on %s."
-msgstr "Obiteljsko stablo je zadnji puta ažurirano %s."
+msgstr "Obiteljsko stablo je zadnji puta ažurirano %s"
 
 #: help_text.php:363
 msgid "This field allows you to change the source record that this fact’s source citation links to.  This field takes a source ID.  Beside the field will be listed the title of the current source ID.  Use the <b>Find ID</b> link to look up the source’s ID number.  To remove the entire citation, make this field blank."
@@ -15017,11 +15017,11 @@ msgstr "Kompaktan izgled"
 
 #: admin_trees_config.php:1261 help_text.php:534
 msgid "Use full source citations"
-msgstr "Koristi pune citate izvora"
+msgstr "Koristi dopune citata izvora"
 
 #: admin_site_config.php:124 help_text.php:748
 msgid "Use password"
-msgstr "Koristi zaporku"
+msgstr "Koristi lozinku"
 
 #: help_text.php:1006
 msgid "Use relationship privacy"
@@ -15477,7 +15477,7 @@ msgstr "Kada kliknete na link <b>Dodaj novu dijeljenu bilješku</b>, otvoriti ć
 
 #: modules_v3/clippings/help_text.php:37
 msgid "When you click this link your clippings cart will be totally emptied.<br><br>If you don’t want to remove all individuals, families, etc. from the clippings cart, you can remove items individually by clicking the <b>Remove</b> link in the name boxes.  There is <u>no</u> confirmation dialog when you click either of these links;  the requested deletion takes place immediately."
-msgstr "Kada kliknete na ovaj link vaši isječci će biti potpuno ispražnjeni.<br><br>Ako ne želite ukloniti sve osobe, obitelji, itd. iz isječaka, možete ukloniti individualne stavke klikom na link <b>Ukloni</b> u imenu okvira. Tamo se nalazi <u>ne</u> potvrdni dijalog. Kada kliknete bilo koji od tih linkova zahtjev za brisanje će se izvršiti odmah."
+msgstr "Kada kliknete na ovaj link vaši isječci će biti potpuno ispražnjeni.<br><br>Ako ne želite ukloniti sve osobe, obitelji, itd. iz isječaka, možete ukloniti individualne stavke klikom na link <b>Ukloni</b> u okviru imena. Tamo <u>nema</u> potvrdnog dijaloga. Kada kliknete bilo koji od tih linkova zahtjev za brisanje će se izvršiti odmah."
 
 #: message.php:143
 msgid "When you send this message you will receive a copy sent via email to the address you provided."
@@ -15912,7 +15912,7 @@ msgstr "Komprimiraj (zip) isječke"
 #: admin_trees_download.php:105 modules_v3/clippings/module.php:187
 #: modules_v3/clippings/module.php:562
 msgid "Zip file(s)"
-msgstr "Zip datoteka-e"
+msgstr "Komprimiraj (zip) datoteku(e)"
 
 #: modules_v3/googlemap/module.php:2590
 msgid "Zoom"
@@ -15960,7 +15960,7 @@ msgstr ""
 #: library/WT/Date.php:228
 #, php-format
 msgid "about %s"
-msgstr "o %s"
+msgstr "približno %s"
 
 #: family.php:57 individual.php:68 mediaviewer.php:58 note.php:57 repo.php:57
 #: source.php:57
@@ -16027,7 +16027,7 @@ msgstr "omogućen"
 #. I18N: The name by which an individual is also known.  e.g. a professional name or a stage name
 #: library/WT/Gedcom/Code/Name.php:55
 msgid "also known as"
-msgstr "znan-a kao"
+msgstr "znan/a kao"
 
 #. I18N: The name by which an individual is also known.  e.g. a professional name or a stage name
 #: library/WT/Gedcom/Code/Name.php:52
@@ -16062,7 +16062,7 @@ msgstr "strina"
 #: includes/functions/functions.php:838
 msgctxt "father’s sister"
 msgid "aunt"
-msgstr "tetka (po ocu)"
+msgstr "teta"
 
 #: includes/functions/functions.php:984
 msgctxt "mother’s brother’s wife"
@@ -16072,32 +16072,32 @@ msgstr "ujna"
 #: includes/functions/functions.php:857
 msgctxt "mother’s sister"
 msgid "aunt"
-msgstr "tetka (po majci)"
+msgstr "teta"
 
 #: includes/functions/functions.php:1010
 msgctxt "parent’s brother’s wife"
 msgid "aunt"
-msgstr "tetka"
+msgstr "ujna/strina"
 
 #: includes/functions/functions.php:866
 msgctxt "parent’s sister"
 msgid "aunt"
-msgstr "tetka"
+msgstr "teta"
 
 #: includes/functions/functions.php:837
 msgctxt "father’s sibling"
 msgid "aunt/uncle"
-msgstr "stric/tetka (po ocu)"
+msgstr "stric/teta"
 
 #: includes/functions/functions.php:856
 msgctxt "mother’s sibling"
 msgid "aunt/uncle"
-msgstr "ujak/tetka (po majci)"
+msgstr "ujak/teta"
 
 #: includes/functions/functions.php:865
 msgctxt "parent’s sibling"
 msgid "aunt/uncle"
-msgstr "stric/ujak/tetka"
+msgstr "stric/teta"
 
 #: library/WT/Controller/Lifespan.php:549
 msgctxt "Abbreviation for birth"
@@ -16158,22 +16158,22 @@ msgstr "brat"
 #: includes/functions/functions.php:922
 msgctxt "brother’s wife’s brother"
 msgid "brother-in-law"
-msgstr ""
+msgstr "šogor"
 
 #: includes/functions/functions.php:841
 msgctxt "husband’s brother"
 msgid "brother-in-law"
-msgstr ""
+msgstr "šogor"
 
 #: includes/functions/functions.php:980
 msgctxt "husband’s sister’s husband"
 msgid "brother-in-law"
-msgstr "Zet"
+msgstr "šogor"
 
 #: includes/functions/functions.php:875
 msgctxt "sister’s husband"
 msgid "brother-in-law"
-msgstr ""
+msgstr "šogor"
 
 #: includes/functions/functions.php:1057
 msgctxt "sister’s husband’s brother"
@@ -16183,17 +16183,17 @@ msgstr ""
 #: includes/functions/functions.php:881
 msgctxt "spouse’s brother"
 msgid "brother-in-law"
-msgstr ""
+msgstr "šogor"
 
 #: includes/functions/functions.php:890
 msgctxt "wife’s brother"
 msgid "brother-in-law"
-msgstr ""
+msgstr "šogor"
 
 #: includes/functions/functions.php:1082
 msgctxt "wife’s sister’s husband"
 msgid "brother-in-law"
-msgstr ""
+msgstr "šogor"
 
 #: includes/functions/functions.php:923
 msgctxt "brother’s wife’s sibling"
@@ -16203,12 +16203,12 @@ msgstr ""
 #: includes/functions/functions.php:846
 msgctxt "husband’s sibling"
 msgid "brother/sister-in-law"
-msgstr ""
+msgstr "šogor/šogorica"
 
 #: includes/functions/functions.php:872
 msgctxt "sibling’s spouse"
 msgid "brother/sister-in-law"
-msgstr ""
+msgstr "šogor/šogorica"
 
 #: includes/functions/functions.php:1058
 msgctxt "sister’s husband’s sibling"
@@ -16344,7 +16344,7 @@ msgstr "datumski periodi"
 #: modules_v3/googlemap/module.php:1929 modules_v3/googlemap/module.php:1967
 #: modules_v3/relatives/module.php:248
 msgid "daughter"
-msgstr "kći"
+msgstr "kćerPauley Perrette "
 
 #: modules_v3/descendancy_report/report.xml:224
 msgid "daughter of"
@@ -16353,7 +16353,7 @@ msgstr "kćer od"
 #: includes/functions/functions.php:826
 msgctxt "child’s wife"
 msgid "daughter-in-law"
-msgstr "nevjesta"
+msgstr "snaha"
 
 #: includes/functions/functions.php:880
 msgctxt "son’s wife"
@@ -16519,7 +16519,7 @@ msgstr "svekar/tast"
 #: includes/functions/functions.php:893
 msgctxt "wife’s father"
 msgid "father-in-law"
-msgstr "tast"
+msgstr "punac"
 
 #: admin_site_merge.php:218
 msgid "favorites updated."
@@ -16583,7 +16583,7 @@ msgstr "sposobnost učitavanja datoteke"
 #. I18N: button label, first page
 #: library/WT/I18N.php:691
 msgid "first"
-msgstr "prvi"
+msgstr "prva"
 
 #: admin_trees_config.php:909
 msgctxt "Show the [first/last] [N] parts of a place name."
@@ -16910,7 +16910,7 @@ msgstr "unuk/unuka"
 #: includes/functions/functions.php:877
 msgctxt "son’s child"
 msgid "grandchild"
-msgstr "unuk"
+msgstr "unuk/unuka"
 
 #: includes/functions/functions.php:822
 msgctxt "child’s daughter"
@@ -16945,7 +16945,7 @@ msgstr ""
 #: includes/functions/functions.php:862
 msgctxt "parent’s father"
 msgid "grandfather"
-msgstr "djeda"
+msgstr "djed"
 
 #: includes/functions/functions.php:863
 msgctxt "parent’s mother"
@@ -17417,7 +17417,7 @@ msgstr ""
 #: includes/functions/functions.php:959
 msgctxt "father’s father’s sister"
 msgid "great-aunt"
-msgstr "Praujna"
+msgstr ""
 
 #: includes/functions/functions.php:1088
 msgctxt "father’s mother’s brother’s wife"
@@ -17437,7 +17437,7 @@ msgstr ""
 #: includes/functions/functions.php:971
 msgctxt "father’s parent’s sister"
 msgid "great-aunt"
-msgstr "Praujna"
+msgstr ""
 
 #: includes/functions/functions.php:1094
 msgctxt "mother’s father’s brother’s wife"
@@ -17447,7 +17447,7 @@ msgstr ""
 #: includes/functions/functions.php:990
 msgctxt "mother’s father’s sister"
 msgid "great-aunt"
-msgstr "Praujna"
+msgstr ""
 
 #: includes/functions/functions.php:1097
 msgctxt "mother’s mother’s brother’s wife"
@@ -17457,7 +17457,7 @@ msgstr ""
 #: includes/functions/functions.php:999
 msgctxt "mother’s mother’s sister"
 msgid "great-aunt"
-msgstr "praujna"
+msgstr ""
 
 #: includes/functions/functions.php:1100
 msgctxt "mother’s parent’s brother’s wife"
@@ -17467,7 +17467,7 @@ msgstr ""
 #: includes/functions/functions.php:1005
 msgctxt "mother’s parent’s sister"
 msgid "great-aunt"
-msgstr "praujna"
+msgstr ""
 
 #: includes/functions/functions.php:1103
 msgctxt "parent’s father’s brother’s wife"
@@ -17477,7 +17477,7 @@ msgstr ""
 #: includes/functions/functions.php:1016
 msgctxt "parent’s father’s sister"
 msgid "great-aunt"
-msgstr "praujna"
+msgstr ""
 
 #: includes/functions/functions.php:1106
 msgctxt "parent’s mother’s brother’s wife"
@@ -17487,7 +17487,7 @@ msgstr ""
 #: includes/functions/functions.php:1022
 msgctxt "parent’s mother’s sister"
 msgid "great-aunt"
-msgstr "praujna"
+msgstr ""
 
 #: includes/functions/functions.php:1109
 msgctxt "parent’s parent’s brother’s wife"
@@ -17497,12 +17497,12 @@ msgstr ""
 #: includes/functions/functions.php:1028
 msgctxt "parent’s parent’s sister"
 msgid "great-aunt"
-msgstr "praujna"
+msgstr ""
 
 #: includes/functions/functions.php:958
 msgctxt "father’s father’s sibling"
 msgid "great-aunt/uncle"
-msgstr "praujna/praujak"
+msgstr ""
 
 #: includes/functions/functions.php:1086
 msgctxt "father’s father’s sibling’s spouse"
@@ -17512,7 +17512,7 @@ msgstr ""
 #: includes/functions/functions.php:964
 msgctxt "father’s mother’s sibling"
 msgid "great-aunt/uncle"
-msgstr "praujna/praujak"
+msgstr ""
 
 #: includes/functions/functions.php:1089
 msgctxt "father’s mother’s sibling’s spouse"
@@ -17522,7 +17522,7 @@ msgstr ""
 #: includes/functions/functions.php:970
 msgctxt "father’s parent’s sibling"
 msgid "great-aunt/uncle"
-msgstr "praujna/praujak"
+msgstr ""
 
 #: includes/functions/functions.php:1092
 msgctxt "father’s parent’s sibling’s spouse"
@@ -17532,7 +17532,7 @@ msgstr ""
 #: includes/functions/functions.php:989
 msgctxt "mother’s father’s sibling"
 msgid "great-aunt/uncle"
-msgstr "praujna/praujak"
+msgstr ""
 
 #: includes/functions/functions.php:1095
 msgctxt "mother’s father’s sibling’s spouse"
@@ -17542,7 +17542,7 @@ msgstr ""
 #: includes/functions/functions.php:998
 msgctxt "mother’s mother’s sibling"
 msgid "great-aunt/uncle"
-msgstr "praujna/praujak"
+msgstr ""
 
 #: includes/functions/functions.php:1098
 msgctxt "mother’s mother’s sibling’s spouse"
@@ -17552,7 +17552,7 @@ msgstr ""
 #: includes/functions/functions.php:1004
 msgctxt "mother’s parent’s sibling"
 msgid "great-aunt/uncle"
-msgstr "praujna/praujak"
+msgstr ""
 
 #: includes/functions/functions.php:1101
 msgctxt "mother’s parent’s sibling’s spouse"
@@ -17562,7 +17562,7 @@ msgstr ""
 #: includes/functions/functions.php:1015
 msgctxt "parent’s father’s sibling"
 msgid "great-aunt/uncle"
-msgstr "praujna/praujak"
+msgstr ""
 
 #: includes/functions/functions.php:1104
 msgctxt "parent’s father’s sibling’s spouse"
@@ -17572,7 +17572,7 @@ msgstr ""
 #: includes/functions/functions.php:1021
 msgctxt "parent’s mother’s sibling"
 msgid "great-aunt/uncle"
-msgstr "praujna/praujak"
+msgstr ""
 
 #: includes/functions/functions.php:1107
 msgctxt "parent’s mother’s sibling’s spouse"
@@ -17582,7 +17582,7 @@ msgstr ""
 #: includes/functions/functions.php:1027
 msgctxt "parent’s parent’s sibling"
 msgid "great-aunt/uncle"
-msgstr "praujna/praujak"
+msgstr ""
 
 #: includes/functions/functions.php:1110
 msgctxt "parent’s parent’s sibling’s spouse"
@@ -17592,12 +17592,12 @@ msgstr ""
 #: includes/functions/functions.php:925
 msgctxt "child’s child’s child"
 msgid "great-grandchild"
-msgstr "praunuk/praunuka"
+msgstr ""
 
 #: includes/functions/functions.php:928
 msgctxt "child’s daughter’s child"
 msgid "great-grandchild"
-msgstr "praunuk/praunuka"
+msgstr ""
 
 #: includes/functions/functions.php:932
 msgctxt "child’s son’s child"
@@ -17647,17 +17647,17 @@ msgstr "praunuka"
 #: includes/functions/functions.php:933
 msgctxt "child’s son’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "praunuka"
 
 #: includes/functions/functions.php:937
 msgctxt "daughter’s child’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "praunuka"
 
 #: includes/functions/functions.php:940
 msgctxt "daughter’s daughter’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "praunuka"
 
 #: includes/functions/functions.php:947
 msgctxt "daughter’s son’s daughter"
@@ -17667,17 +17667,17 @@ msgstr "praunuka"
 #: includes/functions/functions.php:1068
 msgctxt "son’s child’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "praunuka"
 
 #: includes/functions/functions.php:1071
 msgctxt "son’s daughter’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "praunuka"
 
 #: includes/functions/functions.php:1075
 msgctxt "son’s son’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "praunuka"
 
 #: includes/functions/functions.php:955
 msgctxt "father’s father’s father"
@@ -17822,22 +17822,22 @@ msgstr "praunuk"
 #: includes/functions/functions.php:931
 msgctxt "child’s daughter’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "praunuk"
 
 #: includes/functions/functions.php:934
 msgctxt "child’s son’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "praunuk"
 
 #: includes/functions/functions.php:938
 msgctxt "daughter’s child’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "praunuk"
 
 #: includes/functions/functions.php:942
 msgctxt "daughter’s daughter’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "praunuk"
 
 #: includes/functions/functions.php:948
 msgctxt "daughter’s son’s son"
@@ -17847,17 +17847,17 @@ msgstr "praunuk"
 #: includes/functions/functions.php:1069
 msgctxt "son’s child’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "praunuk"
 
 #: includes/functions/functions.php:1073
 msgctxt "son’s daughter’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "praunuk"
 
 #: includes/functions/functions.php:1076
 msgctxt "son’s son’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "praunuk"
 
 #: includes/functions/functions.php:1212
 msgid "great-great-aunt"
@@ -19183,7 +19183,7 @@ msgstr "Rod u sedmom koljenu"
 #: includes/functions/functions.php:647
 msgctxt "MALE/FEMALE"
 msgid "seventh cousin"
-msgstr "Rod u sedmom koljenu"
+msgstr "rod u sedmom koljenu"
 
 #: admin_trees_config.php:451 admin_trees_config.php:790
 #: admin_trees_config.php:798 admin_trees_config.php:979
@@ -19210,7 +19210,7 @@ msgstr "sestra"
 #: includes/functions/functions.php:820
 msgctxt "brother’s wife"
 msgid "sister-in-law"
-msgstr "šurjakinja"
+msgstr "šogorica"
 
 #: includes/functions/functions.php:924
 msgctxt "brother’s wife’s sister"
@@ -19220,12 +19220,12 @@ msgstr ""
 #: includes/functions/functions.php:979
 msgctxt "husband’s brother’s wife"
 msgid "sister-in-law"
-msgstr "jetrva"
+msgstr ""
 
 #: includes/functions/functions.php:847
 msgctxt "husband’s sister"
 msgid "sister-in-law"
-msgstr "zaova"
+msgstr "šogorica"
 
 #: includes/functions/functions.php:1059
 msgctxt "sister’s husband’s sister"
@@ -19245,7 +19245,7 @@ msgstr ""
 #: includes/functions/functions.php:896
 msgctxt "wife’s sister"
 msgid "sister-in-law"
-msgstr "svastika"
+msgstr "šogorica"
 
 #: includes/functions/functions.php:627
 msgctxt "FEMALE"
@@ -19302,7 +19302,7 @@ msgstr ""
 #: includes/functions/functions.php:825
 msgctxt "child’s spouse"
 msgid "son/daughter-in-law"
-msgstr "nevjesta/zet"
+msgstr "snaha/zet"
 
 #. I18N: An option in a list-box
 #: modules_v3/change_report/report.xml:7
@@ -19416,17 +19416,17 @@ msgstr ""
 #: includes/functions/functions.php:843
 msgctxt "husband’s daughter"
 msgid "step-daughter"
-msgstr ""
+msgstr "pokćerka"
 
 #: includes/functions/functions.php:883
 msgctxt "spouse’s daughter"
 msgid "step-daughter"
-msgstr ""
+msgstr "pokćerka"
 
 #: includes/functions/functions.php:892
 msgctxt "wife’s daughter"
 msgid "step-daughter"
-msgstr ""
+msgstr "pokćerka"
 
 #: includes/functions/functions.php:853 modules_v3/family_nav/module.php:212
 msgctxt "mother’s husband"
@@ -19476,17 +19476,17 @@ msgstr "polusestra"
 #: includes/functions/functions.php:848
 msgctxt "husband’s son"
 msgid "step-son"
-msgstr ""
+msgstr "posinak"
 
 #: includes/functions/functions.php:887
 msgctxt "spouse’s son"
 msgid "step-son"
-msgstr ""
+msgstr "posinak"
 
 #: includes/functions/functions.php:897
 msgctxt "wife’s son"
 msgid "step-son"
-msgstr ""
+msgstr "posinak"
 
 #: admin_trees_config.php:772 modules_v3/recent_changes/module.php:146
 #: modules_v3/todays_events/module.php:141
@@ -19653,7 +19653,7 @@ msgstr "stric/ujak"
 #: includes/functions/functions.php:1029
 msgctxt "parent’s sister’s husband"
 msgid "uncle"
-msgstr "tetak"
+msgstr "ujak/tetak"
 
 #: library/WT/Controller/Pedigree.php:235 library/WT/Place.php:86
 #: modules_v3/GEDFact_assistant/_CENS/census_1_ctrl.php:47
