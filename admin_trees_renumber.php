@@ -1,5 +1,5 @@
 <?php
-// Check a family tree for structural errors.
+// Renumber the XREFs in a tree, so they are unique across the site.
 //
 // webtrees: Web based Family History software
 // Copyright (C) 2014 Greg Roach
@@ -24,7 +24,7 @@ require './includes/session.php';
 $controller=new WT_Controller_Page();
 $controller
 	->restrictAccess(\WT\Auth::isManager())
-	->setPageTitle(WT_I18N::translate('Renumber'))
+	->setPageTitle(WT_I18N::translate('Renumber family tree'))
 	->pageHeader();
 
 // Every XREF used by this tree and also used by some other tree
@@ -57,7 +57,7 @@ $xrefs = WT_DB::prepare(
 		WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID
 	))->fetchAssoc();
 
-echo '<h2>', $WT_TREE->tree_title_html, '</h2>';
+echo '<h2>', $controller->getPageTitle(), ' — ', $WT_TREE->tree_title_html, '</h2>';
 if (WT_Filter::get('go')) {
 	foreach ($xrefs as $old_xref=>$type) {
 		WT_DB::exec("START TRANSACTION");
