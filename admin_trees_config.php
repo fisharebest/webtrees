@@ -173,7 +173,6 @@ case 'update':
 	if (WT_Filter::post('gedcom_title')) {
 		set_gedcom_setting(WT_GED_ID, 'title',                        WT_Filter::post('gedcom_title'));
 	}
-
 	// Only accept valid folders for NEW_MEDIA_DIRECTORY
 	$NEW_MEDIA_DIRECTORY = preg_replace('/[\/\\\\]+/', '/', WT_Filter::post('NEW_MEDIA_DIRECTORY') . '/');
 	if (substr($NEW_MEDIA_DIRECTORY, 0, 1) == '/') {
@@ -191,9 +190,20 @@ case 'update':
 		}
 	}
 
+	$gedcom = WT_Filter::post('gedcom');
+	if ($gedcom && $gedcom != WT_GEDCOM) {
+		try {
+			WT_DB::prepare("UPDATE `##gedcom` SET gedcom_name = ? WHERE gedcom_id = ?")->execute(array($gedcom, WT_GED_ID));
+			WT_DB::prepare("UPDATE `##site_setting` SET setting_value = ? WHERE setting_name='DEFAULT_GEDCOM' AND setting_value = ?")->execute(array($gedcom, WT_GEDCOM));
+		} catch (Exception $ex) {
+			// Probably a duplicate name.
+			$gedcom = WT_GEDCOM;
+		}
+	}
+
 	// Reload the page, so that the settings take effect immediately.
 	Zend_Session::writeClose();
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME);
+	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?ged=' . $gedcom);
 	exit;
 }
 
@@ -227,7 +237,15 @@ $controller
 						<?php echo WT_I18N::translate('Family tree title'); ?>
 					</td>
 					<td>
-						<input type="text" name="gedcom_title" dir="ltr" value="<?php echo WT_Filter::escapeHtml(get_gedcom_setting(WT_GED_ID, 'title')); ?>" size="40" maxlength="255">
+						<input type="text" name="gedcom_title" dir="ltr" value="<?php echo WT_Filter::escapeHtml(get_gedcom_setting(WT_GED_ID, 'title')); ?>" size="50" maxlength="255">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<?php echo WT_I18N::translate('URL'); ?>
+					</td>
+					<td>
+						<?php echo WT_SERVER_NAME, WT_SCRIPT_PATH ?>index.php?ged=<input type="text" name="gedcom" dir="ltr" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>" size="20" maxlength="255">
 					</td>
 				</tr>
 				<tr>
