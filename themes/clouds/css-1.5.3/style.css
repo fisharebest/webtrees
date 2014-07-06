@@ -3079,7 +3079,6 @@ span.link_text {
 	float: right;
 }
 
-#header_accordion1,
 #sex,
 dd .editlink,
 dd .deletelink {
@@ -3088,10 +3087,9 @@ dd .deletelink {
 
 #indi_header {
 	border-radius: 3px;
-	float: left;
-	margin: 5px 0;
-	padding: 10px;
-	width: 98%;
+	overflow: hidden;
+	margin: 0 0 5px 0;
+	width: 100%;
 }
 
 #indi_header a {
@@ -3110,6 +3108,8 @@ dd .deletelink {
 	margin: 0;
 	padding: 0 10px 0 30px;
 	text-align: left;
+	overflow: hidden;
+	position: relative;
 }
 
 #indi_header h3 .details1 {
@@ -3127,10 +3127,8 @@ dd .deletelink {
 	display: inline;
 }
 
-#indi_header h3.name_one {
+#indi_header .name_one {
 	font-size: 1.5em;
-	overflow: hidden;
-	position: relative;
 }
 
 #indi_header h3.person_box,
@@ -3142,11 +3140,12 @@ dd .deletelink {
 
 #indi_mainimage {
 	float: left;
+	width: 120px;
 }
 
-#indi_mainimage a img {
-	float: left;
-	padding: 0;
+#indi_mainimage img {
+	display: block;
+	margin: auto;
 }
 
 .indi_name_details {
@@ -3241,10 +3240,6 @@ dd .deletelink {
 
 [dir=rtl] dd .editlink,
 [dir=rtl] dd .deletelink {
-	float: left;
-}
-
-[dir=rtl] #header_accordion1 {
 	float: left;
 }
 
@@ -3797,81 +3792,67 @@ span.link_text {
 #main {
 	min-width: 600px;
 	width: 100%;
-}
-
-#separator {
-	background: #acf url(images/general_sprite.png) no-repeat -26px 100px;
-	border: 1px solid #8fbcff;
-	border-top-left-radius: 3px;
-	border-top-right-radius: 3px;
-	display: block;
-	float: right;
-	margin-top: 5px;
-	max-width: 10px;
-	min-width: 6px;
-	width: 0.75%;
-}
-
-#sidebar {
-	border-color: #8fbcff;
-	display: none;
-	height: auto;
-	margin: 5px 2px 0 0;
+	overflow: hidden;
+	padding: 5px 2px 0 2px;
 }
 
 #tabs {
 	background-color: #fff;
 	border-color: #8fbcff;
-	float: left;
 	overflow: visible;
 	width: 100%;
-}
-
-.sidebar-at-right #sidebar {
-	width: 20%;
-}
-
-.use-sidebar #indi_left {
-	width: 77%;
-}
-
-.use-sidebar #separator {
-	background: #acf url(images/general_sprite.png) no-repeat -1px 100px;
-}
-
-.use-sidebar #sidebar {
-	display: block;
-}
-
-.use-sidebar.sidebar-at-right #sidebar,
-.sidebar-at-right #separator {
-	float: right;
 }
 
 [dir=rtl] #indi_left {
 	float: right;
 }
 
-[dir=rtl] #sidebar {
-	margin: 5px 0 0 2px;
-}
-
 [dir=rtl] #tabs {
 	float: right;
 }
 
-[dir=rtl] #separator {
-	float: left;
+.use-sidebar #indi_left {
+	width: 77%;
+}
+
+#sidebar {
+	float:right;
+	border: 1px solid #8fbcff;
+	display: none;
+	width: 20%;
+}
+
+#separator {
+	float: right;
+	background: #acf url(images/general_sprite.png) no-repeat -26px 100px;
+	border: 1px solid #8fbcff;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+	width: 2%;
+	max-width: 10px;
+	margin: 0 auto -99999px auto;
+	padding-bottom: 99999px;
+}
+
+.use-sidebar #sidebar {
+	display: block;
+}
+
+.use-sidebar #separator {
 	background: #acf url(images/general_sprite.png) no-repeat -1px 100px;
+}
+
+[dir=rtl] .use-sidebar #sidebar {
+	float: left;
+}
+
+[dir=rtl] #separator {
+	background: #acf url(images/general_sprite.png) no-repeat -1px 100px;
+	float: left;
 }
 
 [dir=rtl] .use-sidebar #separator {
 	background: #acf url(images/general_sprite.png) no-repeat -26px 100px;
-}
-
-[dir=rtl] .use-sidebar.sidebar-at-right #sidebar,
-[dir=rtl] .sidebar-at-right #separator {
-	float: left;
 }
 
 /* ==== Sidebar content items ==== */
