@@ -3001,13 +3001,21 @@ span.link_text {
 
 /* =========== Indi header ================== */
 #indi_header {
-	float: left;
+	overflow: hidden;
 	width: 98%;
 	border-radius: 3px;
-	background: url(../jquery-ui-1.10.3/images/ui-bg_highlight-soft_100_e7eef3_1x100.png) repeat-x scroll 50% 50% #fff;
+/*	background: url(../jquery-ui-1.10.3/images/ui-bg_highlight-soft_100_e7eef3_1x100.png) repeat-x scroll 50% 50% #fff;*/
 	border: 1px solid #b2c7d7;
-	margin: 5px 0;
+	margin: 0 0 5px;
 	padding: 10px;
+	background: #e8f5f8; /* Old browsers */
+	background: -moz-linear-gradient(top,  #e8f5f8 0%, #f5fafb 60%, #fefefe 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e8f5f8), color-stop(60%,#f5fafb), color-stop(100%,#fefefe)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #e8f5f8 0%,#f5fafb 60%,#fefefe 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #e8f5f8 0%,#f5fafb 60%,#fefefe 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #e8f5f8 0%,#f5fafb 60%,#fefefe 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #e8f5f8 0%,#f5fafb 60%,#fefefe 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e8f5f8', endColorstr='#fefefe',GradientType=0 ); /* IE6-9 */
 }
 
 #indi_header h3 {
@@ -3016,11 +3024,11 @@ span.link_text {
 	margin: 0;
 	padding: 0 10px 0 30px;
 	text-align: left;
-}
-
-#indi_header h3.name_one {
 	overflow: hidden;
 	position: relative;
+}
+
+#indi_header .name_one {
 	font-size: 1.5em;
 }
 
@@ -3070,15 +3078,6 @@ span.link_text {
 	font-size: 2em;
 	margin: 10px;
 	font-weight: bold;
-}
-
-#indi_mainimage {
-	float: left;
-}
-
-#indi_mainimage a img {
-	float: left;
-	padding: 0;
 }
 
 .indi_name_details {
@@ -3140,10 +3139,6 @@ span.link_text {
 	padding: 3px;
 }
 
-#header_accordion1 {
-	float: right;
-}
-
 .indi_table {
 	clear: left;
 }
@@ -3184,17 +3179,9 @@ dd .deletelink {
 	float: right;
 }
 
-[dir=rtl] #indi_mainimage a img {
-	float: right;
-}
-
 [dir=rtl] #indi_note .fact_NOTE {
 	float: right;
 	margin: 0 0 0 10px;
-}
-
-[dir=rtl] #header_accordion1 {
-	float: left;
 }
 
 [dir=rtl] .indi_table {
@@ -3781,6 +3768,7 @@ dd .deletelink {
 #main {
 	min-width: 600px;
 	width: 100%;
+	overflow: hidden;
 }
 
 #indi_left {
@@ -3791,16 +3779,16 @@ dd .deletelink {
 #tabs {
 	background-color: #fff;
 	border-color: #ddd;
-	float: left;
 	width: 100%;
 	overflow: visible;
 }
 
-#sidebar {
-	border-color: #ddd;
-	display: none;
-	margin: 5px 2px 0 0;
-	height: auto;
+[dir=rtl] #indi_left {
+	float: right;
+}
+
+[dir=rtl] #tabs {
+	float: right;
 }
 
 #sidebarAccordion,
@@ -3819,54 +3807,40 @@ dd .deletelink {
 	width: 77%;
 }
 
-.use-sidebar #sidebar {
-	display: block;
-}
-
-.sidebar-at-right #sidebar {
+#sidebar {
+	float:right;
+	border-color: #ddd;
+	display: none;
 	width: 20%;
 }
 
-.use-sidebar.sidebar-at-right #sidebar,
-.sidebar-at-right #separator {
-	float: right;
-}
-
 #separator {
-	display: block;
+	float: right;
 	background: #c3dfff url(images/indi_sprite.png) no-repeat -26px 100px;
-	min-width: 6px;
-	max-width: 10px;
-	width: 0.75%;
-	border: 1px solid #999;
+	border: 1px solid #81a9cb;
 	border-top-left-radius: 3px;
 	border-top-right-radius: 3px;
-	margin-top: 5px;
+	width: 2%;
+	max-width: 10px;
+	margin: 0 auto -99999px auto;
+	padding-bottom: 99999px;
+}
+
+.use-sidebar #sidebar {
+	display: block;
 }
 
 .use-sidebar #separator {
 	background: #c3dfff url(images/indi_sprite.png) no-repeat -1px 100px;
 }
 
-[dir=rtl] #indi_left {
-	float: right;
-}
-
-[dir=rtl] #tabs {
-	float: right;
-}
-
-[dir=rtl] #sidebar {
-	margin: 5px 0 0 2px;
-}
-
-[dir=rtl] .use-sidebar.sidebar-at-right #sidebar,
-[dir=rtl] .sidebar-at-right #separator {
+[dir=rtl] .use-sidebar #sidebar {
 	float: left;
 }
 
 [dir=rtl] #separator {
 	background: #c3dfff url(images/indi_sprite.png) no-repeat -1px 100px;
+	float: left;
 }
 
 [dir=rtl] .use-sidebar #separator {
@@ -5026,7 +5000,13 @@ a.icon-uarrow:hover {
 
 /* Silhouettes on individual pages */
 #indi_mainimage {
-	min-width: 100px;
+	float: left;
+	width: 120px;
+}
+
+#indi_mainimage img {
+	display: block;
+	margin: auto;
 }
 
 #indi_mainimage .icon-silhouette-F {

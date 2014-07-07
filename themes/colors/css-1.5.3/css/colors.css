@@ -2914,10 +2914,9 @@ span.link_text {
 
 #indi_header {
 	border-radius: 3px;
-	float: left;
-	margin: 5px 0;
-	padding: 10px;
-	width: 98%;
+	overflow: hidden;
+	margin: 0 0 5px;
+	width: 100%;
 }
 
 #indi_header a {
@@ -2948,16 +2947,16 @@ span.link_text {
 	margin: 0;
 	padding: 0 10px 0 30px;
 	text-align: left;
+	overflow: hidden;
+	position: relative;
 }
 
 #indi_header h3 a {
 	display: inline;
 }
 
-#indi_header h3.name_one {
+#indi_header .name_one {
 	font-size: 1.5em;
-	overflow: hidden;
-	position: relative;
 }
 
 #indi_header h3.person_box,
@@ -3041,7 +3040,6 @@ span.link_text {
 	margin: 12px 0;
 }
 
-#header_accordion1,
 #sex,
 dd .editlink,
 dd .deletelink {
@@ -3075,10 +3073,6 @@ dd .deletelink {
 
 [dir=rtl] dd .editlink,
 [dir=rtl] dd .deletelink {
-	float: left;
-}
-
-[dir=rtl] #header_accordion1 {
 	float: left;
 }
 
@@ -3662,41 +3656,51 @@ span.link_text {
 #main {
 	min-width: 600px;
 	width: 100%;
+	overflow: hidden;
+	padding: 5px 2px 0 2px;
+}
+
+#tabs {
+	background-color: #fff;
+	overflow: visible;
+	width: 100%;
+	border-color: #ddd;
+}
+
+[dir=rtl] #indi_left,
+[dir=rtl] #tabs {
+	float: right;
+}
+
+.use-sidebar #indi_left {
+	width: 77%;
+}
+
+#sidebar {
+	float:right;
+	border-color: #ddd;
+	display: none;
+	width: 20%;
+	margin: 0 0 -99999px 0;
+	padding-bottom: 99999px;
 }
 
 #separator {
+	float: right;
 	background-image: url(../images/general_sprite.png);
 	background-position: -26px 100px;
 	background-repeat: no-repeat;
 	border: 1px solid #999;
 	border-top-left-radius: 3px;
 	border-top-right-radius: 3px;
-	display: block;
-	float: right;
-	margin-top: 5px;
+	width: 2%;
 	max-width: 10px;
-	min-width: 6px;
-	width: 0.75%;
+	margin: 0 auto -99999px auto;
+	padding-bottom: 99999px;
 }
 
-#sidebar {
-	display: none;
-	height: auto;
-	border-radius: 3px;
-	border-color: #ddd;
-	margin: 5px 2px 0 0;
-}
-
-#tabs {
-	background-color: #fff;
-	float: left;
-	overflow: visible;
-	width: 100%;
-	border-color: #ddd;
-}
-
-.sidebar-at-right #sidebar {
-	width: 20%;
+.use-sidebar #sidebar {
+	display: block;
 }
 
 .use-sidebar #separator {
@@ -3705,43 +3709,21 @@ span.link_text {
 	background-repeat: no-repeat;
 }
 
-.use-sidebar #indi_left {
-	width: 77%;
-}
-
-.use-sidebar #sidebar {
-	display: block;
-}
-
-.use-sidebar.sidebar-at-right #sidebar,
-.sidebar-at-right #separator {
-	float: right;
-}
-
-[dir=rtl] #indi_left,
-[dir=rtl] #tabs {
-	float: right;
-}
-
-[dir=rtl] #sidebar {
-	margin: 5px 0 0 2px;
+[dir=rtl] .use-sidebar #sidebar {
+	float: left;
 }
 
 [dir=rtl] #separator {
 	background-image: url(../images/general_sprite.png);
-	background-repeat: no-repeat;
 	background-position: -1px 100px;
+	background-repeat: no-repeat;
+	float: left;
 }
 
 [dir=rtl] .use-sidebar #separator {
 	background-image: url(../images/general_sprite.png);
-	background-repeat: no-repeat;
 	background-position: -26px 100px;
-}
-
-[dir=rtl] .use-sidebar.sidebar-at-right #sidebar,
-[dir=rtl] .sidebar-at-right #separator {
-	float: left;
+	background-repeat: no-repeat;
 }
 
 /* Sidebar content items */
@@ -4845,7 +4827,13 @@ a.icon-uarrow:hover {
 
 /* Silhouettes on individual pages */
 #indi_mainimage {
-	min-width: 100px;
+	float: left;
+	width: 120px;
+}
+
+#indi_mainimage img {
+	display: block;
+	margin: auto;
 }
 
 #indi_mainimage .icon-silhouette-F {

@@ -1578,19 +1578,19 @@ case 'addrepoaction':
 	}
 	$PHON = WT_Filter::post('PHON');
 	if ($PHON) {
-		$newgedrec .= "\n1 PHON " . $PHON;
+		$gedrec .= "\n1 PHON " . $PHON;
 	}
 	$FAX = WT_Filter::post('FAX');
 	if ($FAX) {
-		$newgedrec .= "\n1 FAX " . $FAX;
+		$gedrec .= "\n1 FAX " . $FAX;
 	}
 	$EMAIL = WT_Filter::post('EMAIL');
 	if ($EMAIL) {
-		$newgedrec .= "\n1 EMAIL " . $EMAIL;
+		$gedrec .= "\n1 EMAIL " . $EMAIL;
 	}
 	$WWW = WT_Filter::post('WWW');
 	if ($WWW) {
-		$newgedrec .= "\n1 WWW " . $WWW;
+		$gedrec .= "\n1 WWW " . $WWW;
 	}
 
 	$record = WT_GedcomRecord::createRecord($gedrec, WT_GED_ID);
