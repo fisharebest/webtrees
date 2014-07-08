@@ -764,7 +764,7 @@ msgstr "Uusi käyttäjä (%1$s) on pyytänyt käyttäjätilin (%2$s) ja on vahvi
 
 #: admin.php:109 admin_site_upgrade.php:83
 msgid "A new version of webtrees is available."
-msgstr ""
+msgstr "Uusi webtrees versio on käytettävissä."
 
 #. I18N: Description of the “Journal” module
 #: modules_v3/user_blog/module.php:45
@@ -2557,7 +2557,7 @@ msgstr "Binääridatakohde"
 
 #: includes/functions/functions_print.php:823
 msgid "Bing Maps™"
-msgstr ""
+msgstr "Bing Maps™"
 
 #: library/WT/Gedcom/Code/Temp.php:68
 msgid "Birmingham, Alabama"
@@ -6452,7 +6452,7 @@ msgstr "Tiedostomuoto"
 
 #: admin_trees_config.php:941 help_text.php:525
 msgid "Format text and notes"
-msgstr ""
+msgstr "Muotoile tekstit ja huomautukset"
 
 #: library/WT/Gedcom/Code/Pedi.php:49
 msgctxt "Female pedigree"
@@ -8247,7 +8247,7 @@ msgstr "Paikalliset tiedostot"
 #. I18N: gedcom tag _LOC
 #: library/WT/Gedcom/Tag.php:725
 msgid "Location"
-msgstr ""
+msgstr "Sijaintipaikka"
 
 #: modules_v3/googlemap/module.php:4314
 msgid "Location not removed: this location contains sub-locations"
@@ -8487,7 +8487,7 @@ msgstr "maaliskuu"
 
 #: help_text.php:530
 msgid "Markdown is a simple system of formatting, used on websites such as Wikipedia.  It uses unobtrusive punctuation characters to create headings and sub-headings, bold and italic text, lists, tables, etc."
-msgstr ""
+msgstr "Markdown on yksinkertainen muotoilujärjestelmä, jota käytettään esim. Wikipedia sivustoilla. Se käyttää vaatimattomia välimerkkejä luodessaan otsikoita, alaotsikoita, lihavoituja ja kursivoituja tekstejä, luetteloita, taulukoita, jne."
 
 #. I18N: gedcom tag MARR
 #: library/WT/Gedcom/Tag.php:233 modules_v3/ahnentafel_report/report.xml:453
@@ -10150,7 +10150,7 @@ msgstr "Oho! webtrees ei voinut luoda tiedostoja tähän kansioon."
 
 #: includes/functions/functions_print.php:824
 msgid "OpenStreetMap™"
-msgstr ""
+msgstr "OpenStreetMap™"
 
 #: modules_v3/googlemap/help_text.php:41 modules_v3/googlemap/module.php:406
 msgid "Optional prefixes and suffixes"
@@ -13576,7 +13576,7 @@ msgstr "Käyttäjätunnus tai salasana on väärä."
 
 #: help_text.php:689
 msgid "The value to place in the “meta description” tag in the HTML page header.  Leave this field empty to use the name of the family tree."
-msgstr "Teksti joka lisätään kuvaustunnisteeksi (tag) kun rakennetaan HTML sivun otsikko-osa. Kun jätät tämän tyhjäksi, niin näytetään käytössä olevan tietokannan nimi."
+msgstr "Teksti joka lisätään meta-kuvaustunnisteeksi (tag) kun rakennetaan HTML sivun otsikko-osa. Kun tämä jätetään tyhjäksi, niin näytetään käytössä olevan tietokannan nimi."
 
 #: admin_pgv_to_wt.php:74
 #, php-format
@@ -14435,7 +14435,7 @@ msgstr "Voidaksesi luoda uusia tutkimustehtäviä, sinun täytyy ensin lisätä 
 
 #: help_text.php:528
 msgid "To ensure compatibility with other genealogy applications, notes, text, and transcripts should be recorded in simple, unformatted text.  However, formatting is often desirable to aid presentation, comprehension, etc."
-msgstr ""
+msgstr "Muiden sukututkimussovellusten yhteensopivuuden varmistamiseksi, muistiinpanot, tekstit ja selostukset olisi kirjattava yksinkertaisena, muotoilemattomana tekstinä. Muotoilu on kuitenkin usein suotavaa jotta voidaan tukea esittelyä, ymmärtämistä, jne."
 
 #: admin_media.php:465 library/WT/Controller/Media.php:64
 #: library/WT/Controller/Media.php:149 modules_v3/lightbox/module.php:161
@@ -15546,7 +15546,7 @@ msgstr "Lähteineen"
 
 #: help_text.php:1184
 msgid "With this option, the <b>webtrees</b> internal messaging system will be used and no emails will be sent.  You will receive only <u>internal</u> messages from the other users.  When another site user sends you a message, that message will appear in the Message block on your “My page”.  If you have removed this block from your “My page”, you will not see any messages.  They will, however, show up as soon as you configure your “My page” to again have the Message block."
-msgstr "Tällä valinnalla <b>webtrees</b> ei käytä sähköpostia vaan järjestelmän omaa sisäistä viestintätapaa.  Saat viestejä ainoastaan muilta käyttäjiltä. Kun tämän sivuston muulta käyttäjältä tulee viesti, se näkyy Viestit-lohkossa, sinun \"Omalla sivullasi\". Jos olet poistanut tämän lohkon, niin et näe viestejä. Ne kuitenkin tulevat näkyviin heti kun otat Viestit-lohkon taas käyttöön \"Omalla sivullasi\""
+msgstr "Tällä valinnalla <b>webtrees</b> ei käytä sähköpostia vaan järjestelmän omaa sisäistä viestintätapaa.  Saat viestejä ainoastaan muilta käyttäjiltä. Kun tämän sivuston muulta käyttäjältä tulee viesti, se näkyy Viestit-lohkossa, sinun ”Omalla sivullasi”. Jos olet poistanut tämän lohkon, niin et näe viestejä. Ne kuitenkin tulevat näkyviin heti kun otat Viestit-lohkon taas käyttöön ”Omalla sivullasi”"
 
 #: help_text.php:1196
 msgid "With this option, you will not receive any messages.  Even the administrator will not be able to reach you."
@@ -15689,7 +15689,7 @@ msgstr "Olet valinnut erinimisen GEDCOMin. Onko tämä oikea?"
 
 #: addmedia.php:462
 msgid "You may enter a URL, beginning with “http://”."
-msgstr "Voit lisätä URL-osoitteen laittaen alkuun “http://”."
+msgstr "Voit lisätä URL-osoitteen laittaen alkuun ”http://”."
 
 #: modules_v3/faq/help_text.php:35
 msgid "You may use HTML to format the answer and to add links to other websites."
@@ -18492,7 +18492,7 @@ msgstr "tyttönimi"
 #. I18N: https://en.wikipedia.org/wiki/Markdown
 #: admin_trees_config.php:948
 msgid "markdown"
-msgstr ""
+msgstr "markdown"
 
 #: library/WT/Stats.php:1712 library/WT/Stats.php:3633
 msgid "marriage"
@@ -19845,7 +19845,7 @@ msgstr "…"
 #~ msgstr "Pääsy"
 
 #~ msgid "Add a new parent"
-#~ msgstr "Lisää isän/äidin"
+#~ msgstr "Lisää isä/äiti"
 
 #~ msgid "Add an unlinked person"
 #~ msgstr "Lisää henkilö, jolla ei ole linkkejä muihin henkilöihin"
