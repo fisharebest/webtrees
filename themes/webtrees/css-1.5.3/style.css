@@ -3098,7 +3098,6 @@ delete links ==================== */
 /* =========== Indi header ================== */
 #indi_header {
 	overflow: hidden;
-	width: 98%;
 	border-radius: 3px;
 	border: 1px solid #b2c7d7;
 	margin: 0 0 5px;
@@ -3159,16 +3158,18 @@ delete links ==================== */
 
 #indi_mainimage {
 	float: left;
-	width: 120px;
+	min-width: 120px;
 }
 
 #indi_mainimage img {
 	display: block;
 	margin: auto;
+	padding: 0 5px 0 0;
 }
-.indi_name_details {
+
+#header_accordion1 .indi_name_details {
 	margin: 0;
-	overflow: hidden !important;
+	overflow: hidden;
 	padding: 5px;
 }
 
@@ -3265,6 +3266,10 @@ dd .deletelink {
 
 [dir=rtl] #indi_mainimage {
 	float: right;
+}
+
+[dir=rtl] #indi_mainimage img{
+	padding: 0 0 0 5px;
 }
 
 [dir=rtl] #indi_note .fact_NOTE {
@@ -3634,7 +3639,7 @@ dd .deletelink {
 
 /* sidebar */
 .use-sidebar #indi_left {
-	width: 77%;
+	width: 77.5%;
 }
 
 #sidebar {
@@ -3642,8 +3647,7 @@ dd .deletelink {
 	border-color: #ddd;
 	display: none;
 	width: 20%;
-	margin: 0 0 -99999px 0;
-	padding-bottom: 99999px;
+	margin: 0 1px;
 }
 
 #separator {

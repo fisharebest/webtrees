@@ -1750,7 +1750,6 @@ span.link_text {
 
 #indi_header {
 	overflow: hidden;
-	width: 98%;
 	border-radius: 4px;
 	margin: 0 0 5px;
 	padding: 0 10px;
@@ -1779,17 +1778,18 @@ span.link_text {
 
 #indi_mainimage {
 	float: right;
-	width: 120px;
+	min-width: 120px;
 }
 
 #indi_mainimage img {
 	display: block;
 	margin: auto;
+	padding: 0 0 0 5px;
 }
 
-.indi_name_details {
+#header_accordion1 .indi_name_details {
 	margin: 0;
-	overflow: hidden !important;
+	overflow: hidden;
 	padding: 5px;
 }
 
@@ -1870,11 +1870,10 @@ dd .deletelink {
 	float: left;
 }
 
-/*
-[dir=rtl] #indi_mainimage a img {
-	float: left;
+[dir=rtl] #indi_mainimage img{
+	padding: 0 5px 0 0;
 }
-*/
+
 [dir=rtl] #indi_note .fact_NOTE {
 	float: right;
 	margin: 0 0 0 10px;
@@ -2397,13 +2396,14 @@ dd .deletelink {
 }
 
 .use-sidebar #indi_left {
-	width: 77%;
+	width: 77.5%;
 }
 
 #sidebar {
 	float:right;
 	display: none;
 	width: 20%;
+	margin: 0 1px;
 }
 
 #separator {
@@ -3611,10 +3611,6 @@ a.icon-uarrow:hover {
 }
 
 /* Silhouettes on individual pages */
-#indi_mainimage {
-	min-width: 100px;
-}
-
 #indi_mainimage .icon-silhouette-F {
 	width: 99px;
 	height: 106px;
