@@ -187,13 +187,10 @@ if (!ini_get('date.timezone')) {
 // WT_SERVER_NAME  = protocol://host:port
 // WT_SCRIPT_PATH  = /path/to/   (begins and ends with /)
 // WT_SCRIPT_NAME  = script.php  (already defined in the calling script)
-// WT_QUERY_STRING = ?var=value  (generate as needed from $_GET.  lang=xx and theme=yy are removed as used.)
-// TODO: we ought to generate this dynamically, but lots of code currently relies on this global
-$QUERY_STRING=isset($_SERVER['QUERY_STRING']) ? $_SERVER['QUERY_STRING'] : '';
 
 $https = !empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off';
 define('WT_SERVER_NAME',
-	($https ?  'https://' : 'http://').
+	($https ? 'https://' : 'http://').
 	(empty($_SERVER['SERVER_NAME']) ? '' : $_SERVER['SERVER_NAME']).
 	(empty($_SERVER['SERVER_PORT']) || (!$https && $_SERVER['SERVER_PORT']==80) || ($https && $_SERVER['SERVER_PORT']==443) ? '' : ':'.$_SERVER['SERVER_PORT'])
 );
@@ -214,9 +211,9 @@ if (!empty($_SERVER['REDIRECT_URL'])) {
 
 // Microsoft IIS servers don’t set REQUEST_URI, so generate it for them.
 if (!isset($_SERVER['REQUEST_URI']))  {
-	$_SERVER['REQUEST_URI']=substr($_SERVER['PHP_SELF'], 1);
+	$_SERVER['REQUEST_URI'] = substr($_SERVER['PHP_SELF'], 1);
 	if (isset($_SERVER['QUERY_STRING'])) {
-		$_SERVER['REQUEST_URI'].='?'.$_SERVER['QUERY_STRING'];
+		$_SERVER['REQUEST_URI'] .= '?' . $_SERVER['QUERY_STRING'];
 	}
 }
 
@@ -236,13 +233,13 @@ require WT_ROOT.'includes/functions/functions_charts.php';
 require WT_ROOT.'includes/functions/functions_utf-8.php';
 
 // Set a custom error handler
-set_error_handler(function ($errno, $errstr, $errfile, $errline) {
-	if ((error_reporting() > 0)&&($errno<2048)) {
-		if (WT_ERROR_LEVEL==0) {
-			return;
+set_error_handler(function ($errno, $errstr) {
+	if (error_reporting() > 0 && $errno<2048) {
+		if (WT_ERROR_LEVEL == 0) {
+			return false;
 		}
-		$fmt_msg="<br>ERROR {$errno}: {$errstr}<br>";
-		$log_msg="ERROR {$errno}: {$errstr};";
+		$fmt_msg = "<br>ERROR {$errno}: {$errstr}<br>";
+		$log_msg = "ERROR {$errno}: {$errstr};";
 		// Although debug_backtrace should always exist in PHP5, without this check, PHP sometimes crashes.
 		// Possibly calling it generates an error, which causes infinite recursion??
 		if ($errno < 16 && function_exists("debug_backtrace") && strstr($errstr, "headers already sent by") === false) {
@@ -327,7 +324,7 @@ define('WT_DATA_DIR', realpath(WT_Site::preference('INDEX_DIRECTORY') ? WT_Site:
 // If we have a preferred URL (e.g. www.example.com instead of www.isp.com/~example), then redirect to it.
 $SERVER_URL=WT_Site::preference('SERVER_URL');
 if ($SERVER_URL && $SERVER_URL != WT_SERVER_NAME.WT_SCRIPT_PATH) {
-	header('Location: '.$SERVER_URL.WT_SCRIPT_NAME.($QUERY_STRING ? '?'.$QUERY_STRING : ''), true, 301);
+	header('Location: ' . $SERVER_URL . WT_SCRIPT_NAME . (isset($_SERVER['QUERY_STRING']) ? '?' . $_SERVER['QUERY_STRING'] : ''), true, 301);
 	exit;
 }
 
@@ -544,14 +541,15 @@ if (WT_SCRIPT_NAME!='admin_trees_manage.php' && WT_SCRIPT_NAME!='admin_pgv_to_wt
 		if (\WT\Auth::isAdmin()) {
 			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'admin_trees_manage.php');
 		} else {
-			header('Location: '.WT_LOGIN_URL.'?url='.rawurlencode(WT_SCRIPT_NAME.'?'.$QUERY_STRING));
+			header('Location: ' . WT_LOGIN_URL . '?url=' . rawurlencode(WT_SCRIPT_NAME . (isset($_SERVER['QUERY_STRING']) ? '?' . $_SERVER['QUERY_STRING'] : '')), true, 301);
+
 		}
 		exit;
 	}
 }
 
 if (\WT\Auth::id()) {
-	//-- update the login time every 5 minutes
+	// Update the login time every 5 minutes
 	if (WT_TIMESTAMP - $WT_SESSION->activity_time > 300) {
 		\WT\Auth::user()->setSetting('sessiontime', WT_TIMESTAMP);
 		$WT_SESSION->activity_time = WT_TIMESTAMP;
@@ -566,7 +564,6 @@ if (substr(WT_SCRIPT_NAME, 0, 5)=='admin' || WT_SCRIPT_NAME=='module.php' && sub
 	if (WT_Site::preference('ALLOW_USER_THEMES')) {
 		// Requested change of theme?
 		$THEME_DIR = WT_Filter::get('theme');
-		unset($_GET['theme']);
 		if (!in_array($THEME_DIR, get_theme_names())) {
 			$THEME_DIR = '';
 		}

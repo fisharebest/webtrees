@@ -124,7 +124,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 		if (WT_USER_GEDCOM_ADMIN && !$html) {
 			$html.='<div class="news_title center">'.$this->getTitle().'</div>';
 			$html.='<div><a href="module.php?mod='.$this->getName().'&amp;mod_action=admin_edit&amp;xref='.$controller->record->getXref().'">';
-			$html.=WT_I18N::translate('Add story').'</a></div><br>';
+			$html.=WT_I18N::translate('Add a story').'</a></div><br>';
 		}
 		return $html;
 	}
@@ -211,7 +211,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 						"SELECT xref FROM `##block` WHERE block_id=?"
 					)->execute(array($block_id))->fetchOne();
 				} else {
-					$controller->setPageTitle(WT_I18N::translate('Add story'));
+					$controller->setPageTitle(WT_I18N::translate('Add a story'));
 					$title='';
 					$story_body='';
 					$gedcom_id=WT_GED_ID;
@@ -219,7 +219,8 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				}
 				$controller
 					->pageHeader()
-					->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');
+					->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+					->addInlineJavascript('autocomplete();');
 				if (array_key_exists('ckeditor', WT_Module::getActiveModules())) {
 					ckeditor_WT_Module::enableEditor($controller);
 				}
@@ -245,7 +246,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td class="optionbox">';
-				echo '<input type="text" name="xref" id="pid" size="4" value="'.$xref.'">';
+				echo '<input data-autocomplete-type="INDI" type="text" name="xref" id="pid" size="4" value="'.$xref.'">';
 				echo print_findindi_link('pid');
 				if ($xref) {
 					$person=WT_Individual::getInstance($xref);
@@ -334,7 +335,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				'<input type="submit" value="', WT_I18N::translate('show'), '">',
 				'</form>';
 
-			echo '<h3><a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit">', WT_I18N::translate('Add story'), '</a></h3>';
+			echo '<h3><a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit">', WT_I18N::translate('Add a story'), '</a></h3>';
 			if (count($stories)>0) {
 			echo '<table id="story_table">';
 				echo '<thead><tr>

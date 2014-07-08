@@ -55,9 +55,6 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 			}
 		}
 
-		// Override the request
-		$_GET['rootid']=$pid;
-
 		// Override GEDCOM configuration temporarily
 		if (isset($show_full)) $saveShowFull = $show_full;
 		$savePedigreeFullDetails = $PEDIGREE_FULL_DETAILS;
@@ -78,7 +75,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 
 		if ($type!='treenav' && $person) {
-			$controller=new WT_Controller_Hourglass($person->getXref(),0,3);
+			$controller=new WT_Controller_Hourglass($person->getXref(), 0, 3);
 			$controller->setupJavascript();
 		}
 
@@ -195,7 +192,9 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 		$type   =get_block_setting($block_id, 'type',    'pedigree');
 		$pid    =get_block_setting($block_id, 'pid', WT_USER_ID ? (WT_USER_GEDCOM_ID ? WT_USER_GEDCOM_ID : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
 
-		$controller->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');
+		$controller
+			->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+			->addInlineJavascript('autocomplete();');
 	?>
 		<tr><td class="descriptionbox wrap width33"><?php echo WT_I18N::translate('Chart type'); ?></td>
 		<td class="optionbox">
@@ -218,7 +217,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 		<tr>
 			<td class="descriptionbox wrap width33"><?php echo WT_I18N::translate('Individual'); ?></td>
 			<td class="optionbox">
-				<input type="text" name="pid" id="pid" value="<?php echo $pid; ?>" size="5">
+				<input data-autocomplete-type="INDI" type="text" name="pid" id="pid" value="<?php echo $pid; ?>" size="5">
 				<?php
 				echo print_findindi_link('pid');
 				$root=WT_Individual::getInstance($pid);

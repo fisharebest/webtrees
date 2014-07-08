@@ -54,7 +54,7 @@ if ($pid=="") {
 		//-- Search Function ------------------------------------------------------------
 		?>
 		<tr>
-			<td class="descriptionbox center"><?php echo WT_I18N::translate('Search for individuals to add to Add Links list.'); ?></td>
+			<td class="descriptionbox center"><?php echo WT_I18N::translate('Search for individuals to add to add Links list.'); ?></td>
 		</tr>
 		<tr>
 			<td id="srch" class="optionbox center">

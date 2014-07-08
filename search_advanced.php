@@ -27,7 +27,8 @@ require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
 $controller=new WT_Controller_AdvancedSearch();
 $controller
-	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
+	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+	->addInlineJavascript('autocomplete();')
 	->pageHeader();
 
 echo '<script>';
@@ -109,15 +110,15 @@ echo '<script>';
 		opt = document.createElement('option');
 		opt.value='';
 		/* The translation strings use HTML entities, but javascript does not.  See bug 687980 */
-		opt.text='<?php echo html_entity_decode(WT_I18N::plural('&plusmn;%d year','&plusmn;%d years', 2, 2), ENT_COMPAT, 'UTF-8'); ?>';
+		opt.text='<?php echo html_entity_decode(WT_I18N::plural('±%d year','±%d years', 2, 2), ENT_COMPAT, 'UTF-8'); ?>';
 		sel.appendChild(opt);
 		opt = document.createElement('option');
 		opt.value='5';
-		opt.text='<?php echo html_entity_decode(WT_I18N::plural('&plusmn;%d year','&plusmn;%d years', 5, 5), ENT_COMPAT, 'UTF-8'); ?>';
+		opt.text='<?php echo html_entity_decode(WT_I18N::plural('±%d year','±%d years', 5, 5), ENT_COMPAT, 'UTF-8'); ?>';
 		sel.appendChild(opt);
 		opt = document.createElement('option');
 		opt.value='10';
-		opt.text='<?php echo html_entity_decode(WT_I18N::plural('&plusmn;%d year','&plusmn;%d years', 10, 10), ENT_COMPAT, 'UTF-8'); ?>';
+		opt.text='<?php echo html_entity_decode(WT_I18N::plural('±%d year','±%d years', 10, 10), ENT_COMPAT, 'UTF-8'); ?>';
 		sel.appendChild(opt);
 		var spc = document.createTextNode(' ');
 		elm.appendChild(spc);
@@ -150,7 +151,7 @@ echo '</script>';
 			$currentFieldSearch = $controller->getField($i); // Get this field’s name and the search criterion
 			$currentField = substr($currentFieldSearch, 0, strrpos($currentFieldSearch, ':')); // Get the actual field name
 			?>
-				<input tabindex="<?php echo $i+1; ?>" type="text" id="value<?php echo $i; ?>" name="values[<?php echo $i; ?>]" value="<?php echo WT_Filter::escapeHtml($controller->getValue($i)); ?>"<?php echo (substr($controller->getField($i),-4)=='PLAC') ? 'class="PLAC"' : ''; ?>>
+				<input tabindex="<?php echo $i+1; ?>" type="text" id="value<?php echo $i; ?>" name="values[<?php echo $i; ?>]" value="<?php echo WT_Filter::escapeHtml($controller->getValue($i)); ?>"<?php echo (substr($controller->getField($i),-4)=='PLAC') ? 'data-autocomplete-type="PLAC"' : ''; ?>>
 			<?php if (preg_match("/^NAME:/", $currentFieldSearch)>0) { ?>
 				<select name="fields[<?php echo $i; ?>]">
 					<option value="<?php echo $currentField; ?>:EXACT"<?php if (preg_match("/:EXACT$/", $currentFieldSearch)>0) echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('Exact'); ?></option>
@@ -165,9 +166,9 @@ echo '</script>';
 				?>
 				<select name="plusminus[<?php echo $i; ?>]">
 					<option value=""><?php echo WT_I18N::translate('Exact date'); ?></option>
-					<option value="2" <?php if (!empty($controller->plusminus[$i]) && $controller->plusminus[$i]==2) echo " selected=\"selected\""; ?>><?php echo WT_I18N::plural('&plusmn;%d year','&plusmn;%d years', 2, 2); ?></option>
-					<option value="5" <?php if (!empty($controller->plusminus[$i]) && $controller->plusminus[$i]==5) echo "selected=\"selected\""; ?>><?php echo WT_I18N::plural('&plusmn;%d year','&plusmn;%d years', 5, 5); ?></option>
-					<option value="10" <?php if (!empty($controller->plusminus[$i]) && $controller->plusminus[$i]==10) echo "selected=\"selected\""; ?>><?php echo WT_I18N::plural('&plusmn;%d year','&plusmn;%d years', 10, 10); ?></option>
+					<option value="2" <?php if (!empty($controller->plusminus[$i]) && $controller->plusminus[$i]==2) echo " selected=\"selected\""; ?>><?php echo WT_I18N::plural('±%d year','±%d years', 2, 2); ?></option>
+					<option value="5" <?php if (!empty($controller->plusminus[$i]) && $controller->plusminus[$i]==5) echo "selected=\"selected\""; ?>><?php echo WT_I18N::plural('±%d year','±%d years', 5, 5); ?></option>
+					<option value="10" <?php if (!empty($controller->plusminus[$i]) && $controller->plusminus[$i]==10) echo "selected=\"selected\""; ?>><?php echo WT_I18N::plural('±%d year','±%d years', 10, 10); ?></option>
 				</select>
 			<?php } ?>
 		</td>
@@ -287,7 +288,7 @@ echo '</script>';
 	<?php } ?>
 	</table>
 		<div class="center" style="margin-top:10px;">
-			<a href="#" onclick="addFields();"><?php echo WT_I18N::translate('Add More Fields'); ?></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="#" onclick="addFields();"><?php echo WT_I18N::translate('Add more fields'); ?></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		</div>
 		<div id="search_submit">
 		<input tabindex="<?php echo $i+1; ?>" type="submit" value="<?php echo WT_I18N::translate('Search'); ?>">

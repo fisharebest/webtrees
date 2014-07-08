@@ -430,9 +430,14 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false) {
 		// A multi-line note, with an expand/collapse option
 		$element_id = uniqid('n-');
 		// NOTE: class "note-details" is (currently) used only by some third-party themes
+		if ($note) {
+			$first_line = '<a href="' . $note->getHtmlUrl() . '">' . $note->getFullName() . '</a>';
+		} else {
+			list($first_line) = explode("\n", $text);
+		}
 		return
 			'<div class="fact_NOTE"><span class="label">' .
-			'<a href="#" onclick="expand_layer(\'' . $element_id . '\'); return false;"><i id="' . $element_id . '_img" class="icon-plus"></i></a> ' . WT_Gedcom_Tag::getLabel($label) . ': ' .
+			'<a href="#" onclick="expand_layer(\'' . $element_id . '\'); return false;"><i id="' . $element_id . '_img" class="icon-plus"></i></a> ' . WT_Gedcom_Tag::getLabel($label) . ':</span> ' . '<span id="' . $element_id . '-alt">' . $first_line . '</span>' .
 			'</div>' .
 			'<div class="note-details" id="' . $element_id . '" style="display:none">' . $html . '</div>';
 	}
@@ -1007,8 +1012,8 @@ function init_calendar_popup() {
 	');
 }
 
-function print_findindi_link($element_id, $indiname='') {
-	return '<a href="#" onclick="findIndi(document.getElementById(\''.$element_id.'\'), document.getElementById(\''.$indiname.'\'), \''.WT_GEDURL.'\'); return false;" class="icon-button_indi" title="'.WT_I18N::translate('Find an individual').'"></a>';
+function print_findindi_link($element_id, $indiname='', $ged=WT_GEDCOM) {
+	return '<a href="#" onclick="findIndi(document.getElementById(\''.$element_id.'\'), document.getElementById(\''.$indiname.'\'), \'' . WT_Filter::escapeHtml($ged) . '\'); return false;" class="icon-button_indi" title="'.WT_I18N::translate('Find an individual').'"></a>';
 }
 
 function print_findplace_link($element_id) {
@@ -1038,7 +1043,7 @@ function print_findsource_link($element_id, $sourcename='') {
 }
 
 function print_findnote_link($element_id, $notename='') {
-	return '<a href="#" onclick="findnote(document.getElementById(\''.$element_id.'\'), document.getElementById(\''.$notename.'\'), \''.WT_GEDURL.'\'); return false;" class="icon-button_note" title="'.WT_I18N::translate('Find a note').'"></a>';
+	return '<a href="#" onclick="findnote(document.getElementById(\''.$element_id.'\'), document.getElementById(\''.$notename.'\'), \''.WT_GEDURL.'\'); return false;" class="icon-button_note" title="'.WT_I18N::translate('Find a shared note').'"></a>';
 }
 
 function print_findrepository_link($element_id) {

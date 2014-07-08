@@ -124,7 +124,7 @@ if (!array_key_exists($subColor, $COLOR_THEME_LIST)) {
 }
 
 // Theme name - this needs double quotes, as file is scanned/parsed by script
-$theme_name = "colors";
+$theme_name = "colors"; /* I18N: Name of a theme. */ WT_I18N::translate('colors');
 
 // A version number in the path prevents browser-cache problems during upgrade
 define('WT_CSS_URL', WT_THEME_URL . 'css-1.5.3/');

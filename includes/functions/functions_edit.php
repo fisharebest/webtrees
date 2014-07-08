@@ -313,11 +313,11 @@ function print_calendar_popup($id) {
 }
 
 function print_addnewmedia_link($element_id) {
-	return '<a href="#" onclick="pastefield=document.getElementById(\''.$element_id.'\'); window.open(\'addmedia.php?action=showmediaform\', \'_blank\', edit_window_specs); return false;" class="icon-button_addmedia" title="'.WT_I18N::translate('Add a new media object').'"></a>';
+	return '<a href="#" onclick="pastefield=document.getElementById(\''.$element_id.'\'); window.open(\'addmedia.php?action=showmediaform\', \'_blank\', edit_window_specs); return false;" class="icon-button_addmedia" title="'.WT_I18N::translate('Create a new media object').'"></a>';
 }
 
 function print_addnewrepository_link($element_id) {
-	return '<a href="#" onclick="addnewrepository(document.getElementById(\''.$element_id.'\')); return false;" class="icon-button_addrepository" title="'.WT_I18N::translate('Create repository').'"></a>';
+	return '<a href="#" onclick="addnewrepository(document.getElementById(\''.$element_id.'\')); return false;" class="icon-button_addrepository" title="'.WT_I18N::translate('Create a new repository').'"></a>';
 }
 
 function print_addnewnote_link($element_id) {
@@ -592,17 +592,41 @@ function add_simple_tag(
 			if (in_array($fact, $subnamefacts)) {
 				echo " onblur=\"updatewholename();\" onkeyup=\"updatewholename();\"";
 			}
-			if ($fact=='GIVN') {
-				echo ' autofocus';
-			}
-			if ($fact=="DATE") {
+
+			// Extra markup for specific fact types
+			switch ($fact) {
+			case 'DATE':
 				echo " onblur=\"valid_date(this);\" onmouseout=\"valid_date(this);\"";
-			}
-			if ($fact=="LATI") {
+				break;
+			case 'GIVN':
+				echo ' autofocus data-autocomplete-type="GIVN"';
+				break;
+			case 'LATI':
 				echo " onblur=\"valid_lati_long(this, 'N', 'S');\" onmouseout=\"valid_lati_long(this, 'N', 'S');\"";
-			}
-			if ($fact=="LONG") {
+				break;
+			case 'LONG':
 				echo " onblur=\"valid_lati_long(this, 'E', 'W');\" onmouseout=\"valid_lati_long(this, 'E', 'W');\"";
+				break;
+			case 'NOTE':
+				// Shared notes.  Inline notes are handled elsewhere.
+				echo ' data-autocomplete-type="NOTE"';
+				break;
+			case 'OBJE':
+				echo ' data-autocomplete-type="OBJE"';
+				break;
+			case 'PLAC':
+				echo ' data-autocomplete-type="PLAC"';
+				break;
+			case 'REPO':
+				echo ' data-autocomplete-type="REPO"';
+				break;
+			case 'SOUR':
+				echo ' data-autocomplete-type="SOUR"';
+				break;
+			case 'SURN':
+			case '_MARNM_SURN':
+				echo ' data-autocomplete-type="SURN"';
+				break;
 			}
 			echo '>';
 		}
@@ -613,7 +637,7 @@ function add_simple_tag(
 		if ($fact=='PLAC') {
 			echo "<div id=\"", $element_id, "_pop\" style=\"display: inline;\">";
 			echo print_specialchar_link($element_id), ' ', print_findplace_link($element_id);
-			echo '<span  onclick="jQuery(\'#', $upperlevel, '_LATI_tr,#', $upperlevel, '_LONG_tr,#INDI_LATI_tr,#INDI_LONG_tr,tr[id^=LATI],tr[id^=LONG]\').toggle(\'fast\'); return false;" class="icon-target" title="', WT_Gedcom_Tag::getLabel('LATI'), ' / ', WT_Gedcom_Tag::getLabel('LONG'), '"></span>';
+			echo '<span  onclick="jQuery(\'tr[id^=', $upperlevel,'_LATI],tr[id^=', $upperlevel,'_LONG],tr[id^=LATI],tr[id^=LONG]\').toggle(\'fast\'); return false;" class="icon-target" title="', WT_Gedcom_Tag::getLabel('LATI'), ' / ', WT_Gedcom_Tag::getLabel('LONG'), '"></span>';
 			echo '</div>';
 			if (array_key_exists('places_assistant', WT_Module::getActiveModules())) {
 				places_assistant_WT_Module::setup_place_subfields($element_id);

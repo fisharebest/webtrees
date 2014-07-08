@@ -131,7 +131,7 @@ if ($action=='choose') {
 		<input type="hidden" name="output" value="', WT_Filter::escapeHtml($output), '">
 		<table class="facts_table width40">
 		<tr><td class="topbottombar" colspan="2">', WT_I18N::translate('Choose a report to run'), '</td></tr>
-		<tr><td class="descriptionbox wrap width33 vmiddle">', WT_I18N::translate('Select report'), '</td>
+		<tr><td class="descriptionbox wrap width33 vmiddle">', WT_I18N::translate('Report'), '</td>
 		<td class="optionbox"><select name="report">';
 	foreach ($reports as $file=>$report) {
 			echo '<option value="', WT_Filter::escapeHtml($file), '">', WT_Filter::escapeHtml($report), '</option>';
@@ -169,7 +169,8 @@ elseif ($action=='setup') {
 	$controller
 		->setPageTitle($report_array['title'])
 		->pageHeader()
-		->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');
+		->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+		->addInlineJavascript('autocomplete();');
 
 	init_calendar_popup();
 	echo '<div id="reportengine-page">
@@ -178,7 +179,7 @@ elseif ($action=='setup') {
 		<input type="hidden" name="report" value="', WT_Filter::escapeHtml($report), '">
 		<table class="facts_table width50">
 		<tr><td class="topbottombar" colspan="2">', WT_I18N::translate('Enter report values'), '</td></tr>
-		<tr><td class="descriptionbox width30 wrap">', WT_I18N::translate('Selected Report'), '</td><td class="optionbox">', $report_array['title'], '<br>', $report_array['description'], '</td></tr>';
+		<tr><td class="descriptionbox width30 wrap">', WT_I18N::translate('Report'), '</td><td class="optionbox">', $report_array['title'], '<br>', $report_array['description'], '</td></tr>';
 
 	if (!isset($report_array['inputs'])) {
 		$report_array['inputs'] = array();
@@ -193,34 +194,44 @@ elseif ($action=='setup') {
 		if (!isset($input['default'])) {
 			$input['default'] = '';
 		}
-		if (isset($input['lookup'])) {
-			if ($input['lookup']=='INDI') {
+		if (!isset($input['lookup'])) {
+			$input['lookup'] = '';
+		}
+
+		if ($input['type']=='text') {
+			echo '<input';
+
+			switch ($input['lookup']) {
+			case 'INDI':
+				echo ' data-autocomplete-type="INDI"';
 				if (!empty($pid)) {
 					$input['default'] = $pid;
 				} else {
 					$input['default'] = $controller->getSignificantIndividual()->getXref();
 				}
-			}
-			if ($input['lookup']=='FAM') {
+				break;
+			case 'FAM':
+				echo ' data-autocomplete-type="FAM"';
 				if (!empty($famid)) {
 					$input['default'] = $famid;
 				} else {
 					$input['default'] = $controller->getSignificantFamily()->getXref();
 				}
-			}
-			if ($input['lookup']=='SOUR') {
+				break;
+			case 'SOUR':
+				echo ' data-autocomplete-type="SOUR"';
 				if (!empty($sid)) {
 					$input['default'] = $sid;
 				}
-			}
-			if ($input['lookup']=='DATE') {
+				break;
+			case 'DATE':
 				if (isset($input['default'])) {
 					$input['default'] = strtoupper($input['default']);
 				}
+				break;
 			}
-		}
-		if ($input['type']=='text') {
-			echo '<input type="text" name="vars[', WT_Filter::escapeHtml($input['name']), ']" id="', WT_Filter::escapeHtml($input['name']), '" value="', WT_Filter::escapeHtml($input['default']), '" style="direction: ltr;">';
+
+			echo ' type="text" name="vars[', WT_Filter::escapeHtml($input['name']), ']" id="', WT_Filter::escapeHtml($input['name']), '" value="', WT_Filter::escapeHtml($input['default']), '" style="direction: ltr;">';
 		}
 		if ($input['type']=='checkbox') {
 			echo '<input type="checkbox" name="vars[', WT_Filter::escapeHtml($input['name']), ']" id="', WT_Filter::escapeHtml($input['name']), '" value="1"';

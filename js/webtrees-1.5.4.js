@@ -257,13 +257,13 @@ function clear_family_box_timeout(boxid) {
 }
 
 function expand_layer(sid) {
-	if (jQuery("#"+sid+"_img").hasClass("icon-plus")) {
-		jQuery('#'+sid+"_img").removeClass("icon-plus").addClass("icon-minus");
-		jQuery('#'+sid).slideDown("fast");
+	if (jQuery("#" + sid + "_img").hasClass("icon-plus")) {
+		jQuery('#' + sid + "_img").removeClass("icon-plus").addClass("icon-minus");
 	} else {
-		jQuery('#'+sid+"_img").removeClass("icon-minus").addClass("icon-plus");
-		jQuery('#'+sid).slideUp("fast");
+		jQuery('#' + sid + "_img").removeClass("icon-minus").addClass("icon-plus");
 	}
+	jQuery('#' + sid).slideToggle("fast");
+	jQuery('#' + sid + '-alt').toggle(); // hide something when we show the layer - and vice-versa
 	return false;
 }
 
@@ -1531,7 +1531,6 @@ function valid_lati_long(field, pos, neg) {
 	field.value = txt;
 }
 
-
 // This is the default way for webtrees to show image galleries.
 // Custom themes may use a different viewer.
 function activate_colorbox(config) {
@@ -1585,6 +1584,41 @@ function activate_colorbox(config) {
 		//});
 
 		// Allow all other media types remain as download links
+	});
+}
+
+
+// Initialize autocomplete elements.
+function autocomplete(selector) {
+	if (typeof(selector) === "undefined") {
+		selector = "input[data-autocomplete-type]";
+	}
+
+	jQuery(selector).each(function() {
+		var type = $(this).data("autocomplete-type"); // What type of field
+		var ged  = $(this).data("autocomplete-ged");  // Which family tree
+
+		if (typeof(type) === "undefined") {
+			alert("Missing data-autocomplete-type attribute");
+		}
+
+		// Default to the current tree
+		if (typeof(ged) === "undefined") {
+			jQuery(this).data("autocomplete-ged", WT_GEDCOM);
+		}
+
+		var self=jQuery(this);
+		self.autocomplete({
+			// Cannot use a simple URL, as the data-autocomplete-xxxx parameters may change.
+			source: function(request, response) {
+				jQuery.getJSON("autocomplete.php", {
+					field: self.data("autocomplete-type"),
+					ged:   self.data("autocomplete-ged"),
+					term:  request.term
+				}, response);
+			},
+			html: true
+		});
 	});
 }
 

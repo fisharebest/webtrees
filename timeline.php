@@ -29,7 +29,8 @@ require './includes/session.php';
 $controller=new WT_Controller_Timeline();
 $controller
 	->pageHeader()
-	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');
+	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+	->addInlineJavascript('autocomplete();');
 
 ?>
 <script>
@@ -310,7 +311,7 @@ $controller->checkPrivacy();
 		?>
 		<td class="person<?php echo $col; ?>" style="padding: 5px;" valign="top">
 			<?php echo WT_I18N::translate('Add another individual to the chart'), '<br>'; ?>
-			<input class="pedigree_form" type="text" size="5" id="newpid" name="newpid">
+			<input class="pedigree_form" data-autocomplete-type="INDI" type="text" size="5" id="newpid" name="newpid">
 			<?php echo print_findindi_link('newpid'); ?>
 			<br>
 			<br>

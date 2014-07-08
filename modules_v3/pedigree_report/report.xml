@@ -2,7 +2,7 @@
 <Report>
 	<Title><var var="WT_I18N::translate('Pedigree')" /></Title>
 	<Description><var var="WT_I18N::translate('A report of an individual’s ancestors, formatted as a tree.')" /></Description>
-	<Input name="pid" lookup="INDI" type="text" default=""><var var="WT_I18N::translate('Enter Individual ID')" /></Input>
+	<Input name="pid" lookup="INDI" type="text" default=""><var var="WT_I18N::translate('Individual')" /></Input>
 	<Input name="orientation" type="select" default="portrait" options="portrait=>WT_I18N::translate('Portrait')|landscape=>WT_I18N::translate('Landscape')"><var var="WT_I18N::translate('Orientation')"/></Input>
 	<Input name="pageSize" type="select" default="A4" options="letter=>WT_I18N::translate_c('paper size','Letter')|A3=>WT_I18N::translate_c('paper size', 'A3')|A4=>WT_I18N::translate_c('paper size','A4')|legal=>WT_I18N::translate_c('paper size','Legal')"><var var="WT_I18N::translate('Page size')" /></Input>
 	<Input name="fonts" type="select" default="dejavusans" options="arialunicid0=>WT_I18N::translate_c('font name', 'Arial')|dejavusans=>WT_I18N::translate_c('font name', 'DejaVu')|helvetica=>WT_I18N::translate_c('font name', 'Helvetica')"><var var="WT_I18N::translate('Font')"/></Input>

@@ -33,7 +33,7 @@ class todays_events_WT_Module extends WT_Module implements WT_Module_Block {
 	}
 
 	// Extend class WT_Module
-	public /* I18N: Description of the “On This Day” module */ function getDescription() {
+	public /* I18N: Description of the “On this day” module */ function getDescription() {
 		return WT_I18N::translate('A list of the anniversaries that occur today.');
 	}
 
@@ -129,7 +129,7 @@ class todays_events_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$onlyBDM=get_block_setting($block_id, 'onlyBDM', true);
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo WT_I18N::translate('Show only Births, Deaths, and Marriages?');
+		echo WT_I18N::translate('Show only births, deaths, and marriages?');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('onlyBDM', $onlyBDM);
 		echo '</td></tr>';

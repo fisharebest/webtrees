@@ -29,7 +29,8 @@ require './includes/session.php';
 $controller=new WT_Controller_Lifespan();
 $controller
 	->pageHeader()
-	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
+	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+	->addInlineJavascript('autocomplete();')
 	->addInlineJavascript('
 		var timer;
 		var offSetNum = 20; // amount timeline moves with each mouse click
@@ -144,7 +145,7 @@ $people = count($controller->people);
 							<td class="person0" style="padding: 5px;" valign="top">
 								<?php echo WT_I18N::translate('Add another individual to the chart'); ?>
 								<br>
-								<input class="pedigree_form" type="text" size="5" id="newpid" name="newpid">
+								<input class="pedigree_form" data-autocomplete-type="INDI" type="text" size="5" id="newpid" name="newpid">
 								<?php print_findindi_link('newpid'); ?>
 								<br>
 								<div style="text-align: center;">
@@ -185,7 +186,7 @@ $people = count($controller->people);
 								<input type="text" name="endYear" size="5" value="<?php echo $controller->endYear==0 ? '' : $controller->endYear; ?>">
 							</td>
 							<td>
-								<input type="text" name="place" size="15" value="<?php echo WT_Filter::escapeHtml($controller->place); ?>">
+								<input data-autocomplete-type="PLAC" type="text" name="place" size="15" value="<?php echo WT_Filter::escapeHtml($controller->place); ?>">
 							</td>
 							<td>
 								<input type="submit" name="search" value="<?php echo WT_I18N::translate('Search'); ?>">
@@ -195,7 +196,7 @@ $people = count($controller->people);
 							</td>
 						</tr>
 					</table>
-					<b><?php echo WT_I18N::plural('%d Individual', '%d Individuals', $people, $people); ?></b>
+					<b><?php echo WT_I18N::plural('%s individual', '%s individuals', $people, $people); ?></b>
 				</form>
 			</td>
 		</tr>

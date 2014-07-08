@@ -173,7 +173,6 @@ case 'update':
 	if (WT_Filter::post('gedcom_title')) {
 		set_gedcom_setting(WT_GED_ID, 'title',                        WT_Filter::post('gedcom_title'));
 	}
-
 	// Only accept valid folders for NEW_MEDIA_DIRECTORY
 	$NEW_MEDIA_DIRECTORY = preg_replace('/[\/\\\\]+/', '/', WT_Filter::post('NEW_MEDIA_DIRECTORY') . '/');
 	if (substr($NEW_MEDIA_DIRECTORY, 0, 1) == '/') {
@@ -191,19 +190,29 @@ case 'update':
 		}
 	}
 
+	$gedcom = WT_Filter::post('gedcom');
+	if ($gedcom && $gedcom != WT_GEDCOM) {
+		try {
+			WT_DB::prepare("UPDATE `##gedcom` SET gedcom_name = ? WHERE gedcom_id = ?")->execute(array($gedcom, WT_GED_ID));
+			WT_DB::prepare("UPDATE `##site_setting` SET setting_value = ? WHERE setting_name='DEFAULT_GEDCOM' AND setting_value = ?")->execute(array($gedcom, WT_GEDCOM));
+		} catch (Exception $ex) {
+			// Probably a duplicate name.
+			$gedcom = WT_GEDCOM;
+		}
+	}
+
 	// Reload the page, so that the settings take effect immediately.
 	Zend_Session::writeClose();
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME);
+	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?ged=' . $gedcom);
 	exit;
 }
 
 $controller
 	->pageHeader()
-	->addInlineJavascript('jQuery("#tabs").tabs(); jQuery("#tabs").css("display", "inline");');
+	->addInlineJavascript('jQuery("#tabs").tabs(); jQuery("#tabs").css("display", "inline");')
+	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+	->addInlineJavascript('autocomplete();');
 
-if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for multiple GEDCOMs. Can be reinstated when fixed (https://bugs.launchpad.net/webtrees/+bug/613235)
-	$controller->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');
-}
 
 ?>
 <form enctype="multipart/form-data" method="post" id="configform" name="configform" action="<?php echo WT_SCRIPT_NAME; ?>">
@@ -228,7 +237,15 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 						<?php echo WT_I18N::translate('Family tree title'); ?>
 					</td>
 					<td>
-						<input type="text" name="gedcom_title" dir="ltr" value="<?php echo WT_Filter::escapeHtml(get_gedcom_setting(WT_GED_ID, 'title')); ?>" size="40" maxlength="255">
+						<input type="text" name="gedcom_title" dir="ltr" value="<?php echo WT_Filter::escapeHtml(get_gedcom_setting(WT_GED_ID, 'title')); ?>" size="50" maxlength="255">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<?php echo WT_I18N::translate('URL'); ?>
+					</td>
+					<td>
+						<?php echo WT_SERVER_NAME, WT_SCRIPT_PATH ?>index.php?ged=<input type="text" name="gedcom" dir="ltr" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>" size="20" maxlength="255">
 					</td>
 				</tr>
 				<tr>
@@ -240,7 +257,7 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 						<?php echo WT_I18N::translate('Default individual'), help_link('default_individual'); ?>
 					</td>
 					<td class="wrap">
-						<input type="text" name="NEW_PEDIGREE_ROOT_ID" id="NEW_PEDIGREE_ROOT_ID" value="<?php echo get_gedcom_setting(WT_GED_ID, 'PEDIGREE_ROOT_ID'); ?>" size="5" maxlength="20">
+						<input data-autocomplete-type="INDI" type="text" name="NEW_PEDIGREE_ROOT_ID" id="NEW_PEDIGREE_ROOT_ID" value="<?php echo get_gedcom_setting(WT_GED_ID, 'PEDIGREE_ROOT_ID'); ?>" size="5" maxlength="20">
 						<?php
 							echo print_findindi_link('NEW_PEDIGREE_ROOT_ID');
 							$person=WT_Individual::getInstance(get_gedcom_setting(WT_GED_ID, 'PEDIGREE_ROOT_ID'));
@@ -435,7 +452,7 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 					<td>
 						<input type="text" dir="ltr" name="NEW_META_DESCRIPTION" value="<?php echo get_gedcom_setting(WT_GED_ID, 'META_DESCRIPTION'); ?>" size="40" maxlength="255">
 						<br>
-						<?php echo WT_I18N::translate('Leave this field empty to use the title of the currently active database.'); ?>
+						<?php echo WT_I18N::translate('Leave this field empty to use the name of the family tree.'); ?>
 					</td>
 				</tr>
 				<tr>

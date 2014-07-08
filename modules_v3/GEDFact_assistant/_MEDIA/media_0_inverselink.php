@@ -31,7 +31,9 @@ $exist_links = WT_Filter::get('exist_links');
 $gid         = WT_Filter::get('gid', WT_REGEX_XREF);
 $update_CHAN = WT_Filter::get('preserve_last_changed');
 
-$controller->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');
+$controller
+	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+	->addInlineJavascript('autocomplete();');
 
 $paramok =  true;
 if (!empty($linktoid)) $paramok = WT_GedcomRecord::getInstance($linktoid)->canShow();
@@ -41,7 +43,7 @@ if ($action == 'choose' && $paramok) {
 	?>
 	<script>
 	// Javascript variables
-	var id_empty = "<?php echo WT_I18N::translate('When adding a Link, the ID field cannot be empty.'); ?>";
+	var id_empty = "<?php echo WT_I18N::translate('When adding a link, the ID field cannot be empty.'); ?>";
 
 	function blankwin() {
 		if (document.getElementById('gid').value == "" || document.getElementById('gid').value.length<=1) {
@@ -121,8 +123,8 @@ if ($action == 'choose' && $paramok) {
 			echo "</td><td>";
 			echo $record->getFullName();
 			echo "</td>";
-			echo "<td align='center'><input alt='", WT_I18N::translate('Keep Link in list'), "', title='", WT_I18N::translate('Keep Link in list'), "' type='radio' id='", $record->getXref(), "_off' name='", $record->getXref(), "' checked></td>";
-			echo "<td align='center'><input alt='", WT_I18N::translate('Remove Link from list'), "', title='", WT_I18N::translate('Remove Link from list'), "' type='radio' id='", $record->getXref(), "_on'  name='", $record->getXref(), "'></td>";
+			echo "<td align='center'><input alt='", WT_I18N::translate('Keep link in list'), "', title='", WT_I18N::translate('Keep link in list'), "' type='radio' id='", $record->getXref(), "_off' name='", $record->getXref(), "' checked></td>";
+			echo "<td align='center'><input alt='", WT_I18N::translate('Remove link from list'), "', title='", WT_I18N::translate('Remove link from list'), "' type='radio' id='", $record->getXref(), "_on'  name='", $record->getXref(), "'></td>";
 
 			if ($record instanceof WT_Individual) {
 				?>
@@ -162,7 +164,7 @@ if ($action == 'choose' && $paramok) {
 		echo '<b>', $record->getFullName(), '</b>';
 	}
 	echo '<table><tr><td>';
-		echo "<input type=\"text\" name=\"gid\" id=\"gid\" size=\"6\" value=\"\">";
+		echo '<input type="text" data-autocomplete-type="IFS" name="gid" id="gid" size="6" value="">';
 		// echo ' Enter Name or ID &nbsp; &nbsp; &nbsp; <b>OR</b> &nbsp; &nbsp; &nbsp;Search for ID ';
 	echo '</td><td style="padding-bottom: 2px; vertical-align: middle;">';
 		echo '&nbsp;';

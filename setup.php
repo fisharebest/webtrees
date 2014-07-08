@@ -853,7 +853,7 @@ try {
 		"INSERT IGNORE INTO `##user` (user_id, user_name, real_name, email, password) VALUES ".
 		" (-1, 'DEFAULT_USER', 'DEFAULT_USER', 'DEFAULT_USER', 'DEFAULT_USER'), (1, ?, ?, ?, ?)"
 	)->execute(array(
-		$_POST['wtuser'], $_POST['wtname'], $_POST['wtemail'], crypt($_POST['wtpass'])
+		$_POST['wtuser'], $_POST['wtname'], $_POST['wtemail'], password_hash($_POST['wtpass'], PASSWORD_DEFAULT)
 	));
 
 	WT_DB::prepare(
