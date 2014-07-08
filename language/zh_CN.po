@@ -15663,7 +15663,8 @@ msgstr "您选择了一个不同名称的GEDCOM。对吗？"
 
 #: addmedia.php:462
 msgid "You may enter a URL, beginning with “http://”."
-msgstr "您可以输入一个以&laquo;http:“http://”
+msgstr "您可以输入一个以“http://”。"
+
 #: modules_v3/faq/help_text.php:35
 msgid "You may use HTML to format the answer and to add links to other websites."
 msgstr "您可以使用HTML格式回复，并添加其他网站的链接。"

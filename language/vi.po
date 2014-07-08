@@ -15664,7 +15664,8 @@ msgstr "Bạn đã chọn file GEDCOM có tên khác. Đúng không?"
 
 #: addmedia.php:462
 msgid "You may enter a URL, beginning with “http://”."
-msgstr "Bạn có thể nhập URL, bắt đầu bằng &laquo;http:“http://”es_v3/faq/help_text.php:35
+msgstr "Bạn có thể nhập URL, bắt đầu bằng “http://”."
+
 msgid "You may use HTML to format the answer and to add links to other websites."
 msgstr "Bạn có thể dùng HTML để định dạng câu trả lời và thêm lin kết đến các site khác."
 
