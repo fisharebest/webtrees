@@ -13596,11 +13596,7 @@ msgstr "La versione di %s è troppo datata"
 
 #: help_text.php:997
 msgid "The website www.geonames.org provides a large database of place names.  This can be searched when entering new places.  To use this feature, you must register for a free account at www.geonames.org and provide the username."
-msgstr ""
-"Il sito web www.geonames.org fornisce un ampio database di nomi di luoghi.  "
-"Quando vengono inseriti nuovi luoghi è possibile ricercare all’interno di "
-"tale database.  Per utilizzare questa funzionalità è necessario registrarsi "
-"con un account gratuito su www.geonames.org e inserire il nome utente."
+msgstr "Il sito web www.geonames.org fornisce un ampio database di nomi di luoghi.  Quando vengono inseriti nuovi luoghi è possibile ricercare all’interno di tale database.  Per utilizzare questa funzionalità è necessario registrarsi con un account gratuito su www.geonames.org e inserire il nome utente."
 
 #: setup.php:934
 msgid "The webtrees developers would be very interested to learn about this error.  If you contact them, they will help you resolve the problem."
