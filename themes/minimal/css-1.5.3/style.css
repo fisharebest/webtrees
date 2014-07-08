@@ -2045,7 +2045,6 @@ span.link_text:hover {
 
 #indi_header {
 	overflow:hidden;
-	width: 98%;
 	margin: 0 0 5px;
 	padding: 0 10px 0 0;
 }
@@ -2102,13 +2101,13 @@ span.link_text:hover {
 	font-weight: bold;
 }
 
-.indi_name_details {
+#header_accordion1 .indi_name_details {
+	margin: 0;
+	overflow: hidden;
+	padding: 5px;
 	background: none #fff;
 	border: none;
 	font-size: 10px;
-	margin: 0;
-	overflow: hidden !important;
-	padding: 5px;
 }
 
 .indi_name_details .warning {
@@ -2221,6 +2220,10 @@ dd .deletelink {
 
 [dir=rtl] #indi_mainimage {
 	float: left;
+}
+
+[dir=rtl] #indi_mainimage img{
+	padding: 0 5px 0 0;
 }
 
 [dir=rtl] #indi_note .fact_NOTE {
@@ -2817,7 +2820,7 @@ dd .deletelink {
 }
 
 .use-sidebar #indi_left {
-	width: 77%;
+	width: 77.5%;
 }
 
 #sidebar {
@@ -2825,6 +2828,7 @@ dd .deletelink {
 	border-color: #ddd;
 	display: none;
 	width: 20%;
+	margin: 0 1px;
 }
 
 #separator {
@@ -3968,12 +3972,13 @@ a.icon-udarrow {
 /* Silhouettes on individual pages */
 #indi_mainimage {
 	float: right;
-	width: 120px;
+	min-width: 120px;
 }
 
 #indi_mainimage img {
 	display: block;
 	margin: auto;
+	padding: 0 0 0 5px;
 }
 
 #indi_mainimage .icon-silhouette-F {
