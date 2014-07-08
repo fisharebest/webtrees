@@ -3097,11 +3097,10 @@ delete links ==================== */
 
 /* =========== Indi header ================== */
 #indi_header {
-	float: left;
-	width: 98%;
+	overflow: hidden;
 	border-radius: 3px;
 	border: 1px solid #b2c7d7;
-	margin: 5px 0;
+	margin: 0 0 5px;
 	padding: 10px;
 }
 
@@ -3111,11 +3110,11 @@ delete links ==================== */
 	margin: 0;
 	padding: 0 10px 0 30px;
 	text-align: left;
-}
-
-#indi_header h3.name_one {
 	overflow: hidden;
 	position: relative;
+}
+
+#indi_header .name_one {
 	font-size: 1.5em;
 }
 
@@ -3159,16 +3158,18 @@ delete links ==================== */
 
 #indi_mainimage {
 	float: left;
+	min-width: 120px;
 }
 
-#indi_mainimage a img {
-	float: left;
-	padding: 0;
+#indi_mainimage img {
+	display: block;
+	margin: auto;
+	padding: 0 5px 0 0;
 }
 
-.indi_name_details {
+#header_accordion1 .indi_name_details {
 	margin: 0;
-	overflow: hidden !important;
+	overflow: hidden;
 	padding: 5px;
 }
 
@@ -3189,10 +3190,6 @@ delete links ==================== */
 
 #indi_note {
 	margin: 0 0 5px 0;
-}
-
-#header_accordion1 {
-	float: right;
 }
 
 .indi_table {
@@ -3271,17 +3268,13 @@ dd .deletelink {
 	float: right;
 }
 
-[dir=rtl] #indi_mainimage a img {
-	float: right;
+[dir=rtl] #indi_mainimage img{
+	padding: 0 0 0 5px;
 }
 
 [dir=rtl] #indi_note .fact_NOTE {
 	float: right;
 	margin: 0 0 0 10px;
-}
-
-[dir=rtl] #header_accordion1 {
-	float: left;
 }
 
 [dir=rtl] .indi_table {
@@ -3620,6 +3613,8 @@ dd .deletelink {
 #main {
 	min-width: 600px;
 	width: 100%;
+	overflow: hidden;
+	padding: 5px 0 0 0;
 }
 
 #indi_left {
@@ -3627,75 +3622,61 @@ dd .deletelink {
 	width: 98%;
 }
 
+[dir=rtl] #indi_left {
+	float: right;
+}
+
 #tabs {
 	background-color: #fff;
 	border-color: #ddd;
-	float: left;
 	width: 100%;
 	overflow: visible;
-}
-
-#sidebar {
-	border-color: #ddd;
-	display: none;
-	margin: 5px 2px 0 0;
-	height: auto;
-}
-
-.use-sidebar #indi_left {
-	width: 77%;
-}
-
-.use-sidebar #sidebar {
-	display: block;
-}
-
-.sidebar-at-right #sidebar {
-	width: 20%;
-}
-
-.use-sidebar.sidebar-at-right #sidebar,
-.sidebar-at-right #separator {
-	float: right;
-}
-
-#separator {
-	float: right;
-	display: block;
-	background: #99c2ff url(images/general_sprite.png) no-repeat -26px 100px;
-	width: 0.75%;
-	min-width: 6px;
-	max-width: 10px;
-	border: 1px solid #81a9cb;
-	border-top-left-radius: 3px;
-	border-top-right-radius: 3px;
-	margin-top: 5px;
-}
-
-.use-sidebar #separator {
-	background: #99c2ff url(images/general_sprite.png) no-repeat -1px 100px;
-}
-
-[dir=rtl] #indi_left {
-	float: right;
 }
 
 [dir=rtl] #tabs {
 	float: right;
 }
 
-[dir=rtl] #sidebar {
-	margin: 5px 0 0 2px;
+/* sidebar */
+.use-sidebar #indi_left {
+	width: 77.5%;
 }
 
-[dir=rtl] .use-sidebar.sidebar-at-right #sidebar,
-[dir=rtl] .sidebar-at-right #separator {
+#sidebar {
+	float:right;
+	border-color: #ddd;
+	display: none;
+	width: 20%;
+	margin: 0 1px;
+}
+
+#separator {
+	float: right;
+	background: #99c2ff url(images/general_sprite.png) no-repeat -26px 100px;
+	border: 1px solid #81a9cb;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+	width: 2%;
+	max-width: 10px;
+	margin: 0 auto -99999px auto;
+	padding-bottom: 99999px;
+}
+
+.use-sidebar #sidebar {
+	display: block;
+}
+
+.use-sidebar #separator {
+	background: #99c2ff url(images/general_sprite.png) no-repeat -1px 100px;
+}
+
+[dir=rtl] .use-sidebar #sidebar {
 	float: left;
 }
 
 [dir=rtl] #separator {
-	float: left;
 	background: #99c2ff url(images/general_sprite.png) no-repeat -1px 100px;
+	float: left;
 }
 
 [dir=rtl] .use-sidebar #separator {
@@ -4748,10 +4729,6 @@ a.icon-udarrow:hover {
 }
 
 /* Silhouettes on individual pages */
-#indi_mainimage {
-	min-width: 100px;
-}
-
 #indi_mainimage .icon-silhouette-F {
 	width: 99px;
 	height: 106px;

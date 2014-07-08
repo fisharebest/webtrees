@@ -2044,9 +2044,8 @@ span.link_text:hover {
 /* =========== Indi header ================== */
 
 #indi_header {
-	float: left;
-	width: 98%;
-	margin: 5px 0;
+	overflow:hidden;
+	margin: 0 0 5px;
 	padding: 0 10px 0 0;
 }
 
@@ -2055,11 +2054,11 @@ span.link_text:hover {
 	margin: 0;
 	padding: 0 10px 0 30px;
 	text-align: left;
-}
-
-#indi_header h3.name_one {
 	overflow: hidden;
 	position: relative;
+}
+
+#indi_header .name_one {
 	font-size: 1.5em;
 }
 
@@ -2102,22 +2101,13 @@ span.link_text:hover {
 	font-weight: bold;
 }
 
-#indi_mainimage {
-	float: right;
-}
-
-#indi_mainimage a img {
-	float: right;
-	padding: 0;
-}
-
-.indi_name_details {
+#header_accordion1 .indi_name_details {
+	margin: 0;
+	overflow: hidden;
+	padding: 5px;
 	background: none #fff;
 	border: none;
 	font-size: 10px;
-	margin: 0;
-	overflow: hidden !important;
-	padding: 5px;
 }
 
 .indi_name_details .warning {
@@ -2188,12 +2178,6 @@ span.link_text:hover {
 	padding: 3px;
 }
 
-#header_accordion1 {
-	border: 1px solid #ddd;
-	border-radius: 3px 3px 3px 3px;
-	float: left;
-}
-
 .indi_table {
 	clear: left;
 }
@@ -2238,17 +2222,13 @@ dd .deletelink {
 	float: left;
 }
 
-[dir=rtl] #indi_mainimage a img {
-	float: left;
+[dir=rtl] #indi_mainimage img{
+	padding: 0 5px 0 0;
 }
 
 [dir=rtl] #indi_note .fact_NOTE {
 	float: right;
 	margin: 0 0 0 10px;
-}
-
-[dir=rtl] #header_accordion1 {
-	float: right;
 }
 
 [dir=rtl] .indi_table {
@@ -2806,11 +2786,17 @@ dd .deletelink {
 #main {
 	min-width: 600px;
 	width: 100%;
+	overflow: hidden;
+	padding-top: 5px;
 }
 
 #indi_left {
 	float: left;
 	width: 98%;
+}
+
+[dir=rtl] #indi_left {
+	float: right;
 }
 
 #tabs {
@@ -2833,6 +2819,51 @@ dd .deletelink {
 	border: 1px solid #888;
 }
 
+.use-sidebar #indi_left {
+	width: 77.5%;
+}
+
+#sidebar {
+	float:right;
+	border-color: #ddd;
+	display: none;
+	width: 20%;
+	margin: 0 1px;
+}
+
+#separator {
+	float: right;
+	background: #ddd url(images/indi_sprite.png) no-repeat -26px 100px;
+	border: 1px solid #81a9cb;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+	width: 2%;
+	max-width: 10px;
+	margin: 0 auto -99999px auto;
+	padding-bottom: 99999px;
+}
+
+.use-sidebar #sidebar {
+	display: block;
+}
+
+.use-sidebar #separator {
+	background: #ddd url(images/indi_sprite.png) no-repeat -1px 100px;
+}
+
+[dir=rtl] .use-sidebar #sidebar {
+	float: left;
+}
+
+[dir=rtl] #separator {
+	background: #ddd url(images/indi_sprite.png) no-repeat -1px 100px;
+	float: left;
+}
+
+[dir=rtl] .use-sidebar #separator {
+	background: #ddd url(images/indi_sprite.png) no-repeat -26px 100px;
+}
+/*
 #sidebar {
 	border-color: #ddd;
 	display: none;
@@ -2873,9 +2904,7 @@ dd .deletelink {
 	background: #ddd url(images/indi_sprite.png) no-repeat -1px 100px;
 }
 
-[dir=rtl] #indi_left {
-	float: right;
-}
+
 
 [dir=rtl] #sidebar {
 	margin: 5px 0 0 2px;
@@ -2893,7 +2922,7 @@ dd .deletelink {
 [dir=rtl] .use-sidebar #separator {
 	background: #ddd url(images/indi_sprite.png) no-repeat -26px 100px;
 }
-
+*/
 /* ============== Sidebar content items ============== */
 /* Family navigator */
 #sb_content_family_nav {
@@ -3942,7 +3971,14 @@ a.icon-udarrow {
 
 /* Silhouettes on individual pages */
 #indi_mainimage {
-	min-width: 100px;
+	float: right;
+	min-width: 120px;
+}
+
+#indi_mainimage img {
+	display: block;
+	margin: auto;
+	padding: 0 0 0 5px;
 }
 
 #indi_mainimage .icon-silhouette-F {

@@ -5593,7 +5593,7 @@ msgstr "Skriv in faxnumret inkludera lands och riktnummer.<br><br>Lämna detta f
 
 #: help_text.php:388
 msgid "Enter the URL address including the http://.<br><br>An example URL looks like this: <b>http://www.webtrees.net/</b>.  Leave this field blank if you do not want to include a URL."
-msgstr "Skriv in URL-adress inkluderande http://.<br><br>Ett exempel URL ser ut så här: <b>http://www.webtrees.net/</b> Lämna detta fält tomt om du inte vill inkludera ett URL."
+msgstr "Skriv in URL-adress inkluderande http://.<br><br>Ett exempel URL ser ut så här: <b>http://www.webtrees.net/</b>. Lämna detta fält tomt om du inte vill inkludera ett URL."
 
 #: help_text.php:50
 msgid "Enter the address into the field just as you would write it on an envelope.<br><br>Leave this field blank if you do not want to include an address."
@@ -6764,7 +6764,7 @@ msgstr "Ger användaren möjligheten att välja sitt eget tema."
 
 #: help_text.php:1002
 msgid "Gives visitors the option of registering themselves for an account on the site.<br><br>The visitor will receive an email message with a code to verify his application for an account.  After verification, an administrator will have to approve the registration before it becomes active."
-msgstr "Ger användare möjligheten att registrera sig själva för ett konto på sajten.<br><br>Användaren kommer att få ett e-postmeddelande med en kod för att verifiera sin ansökan.<br>Efter verifiering, kommer administratören behöva godkänna registreringen innan den blir aktiv.<br><br>Detta sätter variabeln $USE_REGISTRATION_MODULE i filen <i>config.php</i>."
+msgstr "Ger användare möjligheten att registrera sig själva för ett konto på sajten.<br><br>Användaren kommer att få ett e-postmeddelande med en kod för att verifiera sin ansökan.<br>Efter verifiering, behöver en administratör godkänna registreringen innan den blir aktiv.<br><br>Detta sätter variabeln $USE_REGISTRATION_MODULE i filen <i>config.php</i>."
 
 #. I18N: gedcom tag _UID
 #: library/WT/Gedcom/Tag.php:806
@@ -13580,7 +13580,7 @@ msgstr "Användarnamnet eller lösenordet är felaktigt."
 
 #: help_text.php:689
 msgid "The value to place in the “meta description” tag in the HTML page header.  Leave this field empty to use the title of the currently active database."
-msgstr "Värdet som ska användas i beskrivningsmetataggen i HTML sidans rubrik. Om detta fält lämnas tomt användas den nuvarande aktiva GEDCOM-titeln.<br><br>Detta sätter $META_DESCRIPTION variabeln i <i><u>xxx</u>.GED_conf.php</i>."
+msgstr "Värdet som ska användas i meta-beskrivningstaggen i HTML sidans rubrik. Om detta fält lämnas tomt används den nuvarande aktiva GEDCOM-titeln.<br><br>Detta sätter $META_DESCRIPTION variabeln i <i><u>xxx</u>.GED_conf.php</i>."
 
 #: admin_pgv_to_wt.php:74
 #, php-format
@@ -14235,7 +14235,7 @@ msgstr "Denna inställning används endast när du läser eller skriver GEDCOM-f
 
 #: help_text.php:456
 msgid "This should be a comma or space separated list of facts, in addition to birth and death, that you want to appear in chart boxes such as the pedigree chart.  This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard.  For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
-msgstr "Detta skall vara en med komma eller mellanrum separerad faktalista, som utöver Födelse och Död, skall synas i rutor så som på Antavlan. Denna lista kräver att du använder faktataggar som definierats i GEDCOM 5.5.1. Om du t.ex. vill att yrket skall visas i rutan skall du lägga till ”OCCU” i detta fält."
+msgstr "Detta skall vara en med komma eller mellanrum separerad faktalista, som utöver födelse och död, skall synas i rutor så som på antavlan. Denna lista kräver att du använder faktataggar som definierats i GEDCOM 5.5.1. Om du t.ex. vill att yrket skall visas i rutan skall du lägga till ”OCCU” i detta fält."
 
 #: admin_site_upgrade.php:41
 msgid "This site is being upgraded.  Try again in a few minutes."
@@ -15693,7 +15693,7 @@ msgstr "Du har valt en GEDCOM med annat namn. Är det korrekt?"
 
 #: addmedia.php:462
 msgid "You may enter a URL, beginning with “http://”."
-msgstr "Du kan skriva in en URL som börjar med “http://”."
+msgstr "Du kan skriva in en URL som börjar med ”http://”."
 
 #: modules_v3/faq/help_text.php:35
 msgid "You may use HTML to format the answer and to add links to other websites."
@@ -15783,7 +15783,7 @@ msgstr ""
 
 #: help_text.php:1151
 msgid "You should avoid using the vertical line character “|” in your notes.  It is used internally by webtrees and may cause your note to display incorrectly."
-msgstr "Du bör undvika användandet av vertikal-linje-tecknet &ldquo;|&rdquo; i dina anteckningar.  Det används internt av webtrees och kan förorsaka att dina anteckningar visas felaktigt."
+msgstr "Du bör undvika användandet av vertikal-linje-tecknet ”|” i dina anteckningar.  Det används internt av webtrees och kan förorsaka att dina anteckningar visas felaktigt."
 
 #: admin_site_upgrade.php:200
 msgid "You should consult the module’s author to confirm compatibility with this version of webtrees."
