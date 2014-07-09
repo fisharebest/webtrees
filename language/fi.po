@@ -14992,8 +14992,8 @@ msgid "Use relationship privacy"
 msgstr "Yksityisyysrajoitus, vain oma ja lähisukulainen näkee"
 
 #: help_text.php:1017
-msgid "Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the gender of the individual in question.<br><br><table><tr><td wrap valign=\"middle\">This image might be used when the gender of the individual is unknown:"
-msgstr "Käytä varjokuvaa kun henkilöllä ei ole korostettua kuvaa. Varjokuva on erilainen sukupuolen mukaan.<br><br><table><tr><td wrap valign=\"middle\">Tätä kuvaa voidaan käyttää kun henkilön sukupuoli ei ole tiedossa:"
+msgid "Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the gender of the individual in question.<br><br><table><tr><td style=\"vertical-align:middle\">This image might be used when the gender of the individual is unknown:"
+msgstr "Käytä varjokuvaa kun henkilöllä ei ole korostettua kuvaa. Varjokuva on erilainen sukupuolen mukaan.<br><br><table><tr><td style=\"vertical-align:middle\">Tätä kuvaa voidaan käyttää kun henkilön sukupuoli ei ole tiedossa:"
 
 #: admin_trees_config.php:675 help_text.php:1016
 msgid "Use silhouettes"
