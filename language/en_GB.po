@@ -14976,8 +14976,8 @@ msgid "Use relationship privacy"
 msgstr ""
 
 #: help_text.php:1017
-msgid "Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the gender of the individual in question.<br><br><table><tr><td wrap valign=\"middle\">This image might be used when the gender of the individual is unknown:"
-msgstr "Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the sex of the individual in question.<br><br><table><tr><td wrap valign=\"middle\">This image might be used when the sex of the individual is unknown:"
+msgid "Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the gender of the individual in question.<br><br><table><tr><td style=\"vertical-align:middle\">This image might be used when the gender of the individual is unknown:"
+msgstr "Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the sex of the individual in question.<br><br><table><tr><td style=\"vertical-align:middle\">This image might be used when the sex of the individual is unknown:"
 
 #: admin_trees_config.php:674 help_text.php:1016
 msgid "Use silhouettes"

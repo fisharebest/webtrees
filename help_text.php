@@ -29,8 +29,6 @@
 define('WT_SCRIPT_NAME', 'help_text.php');
 require './includes/session.php';
 
-$controller=new WT_Controller_Ajax();
-
 $help = WT_Filter::get('help');
 switch ($help) {
 	//////////////////////////////////////////////////////////////////////////////
@@ -1014,7 +1012,7 @@ case 'USE_RIN':
 
 case 'USE_SILHOUETTE':
 	$title=WT_I18N::translate('Use silhouettes');
-	$text=WT_I18N::translate('Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the gender of the individual in question.<br><br><table><tr><td wrap valign="middle">This image might be used when the gender of the individual is unknown:')
+	$text=WT_I18N::translate('Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the gender of the individual in question.<br><br><table><tr><td style="vertical-align:middle">This image might be used when the gender of the individual is unknown:')
 	." </td><td><img src=\"".$WT_IMAGES["default_image_U"]."\" width=\"40\" alt=\"\" title=\"\" /></td></tr></table>";
 	break;
 
@@ -1509,8 +1507,7 @@ default:
 	}
 	break;
 }
-
-$controller->pageHeader();
-
-echo '<span class="helpheader">', $title, '</span>';
-echo '<div class="helpcontent">', $text,'</div>';
+// This file is called by a getJSON call so return the data
+// in correct format
+header('Content-Type: application/json');
+echo json_encode(array('title'=>$title,'content'=>$text));

@@ -2495,3 +2495,5 @@ a.icon-uarrow:hover {
 	right: 57px;
 	left: auto;
 }
+
+.ui-dialog { z-index: 1000 !important ;}
