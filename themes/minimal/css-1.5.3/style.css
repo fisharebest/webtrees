@@ -2046,7 +2046,8 @@ span.link_text:hover {
 #indi_header {
 	overflow:hidden;
 	margin: 0 0 5px;
-	padding: 0 10px 0 0;
+	padding: 0 0.2em;
+	width: 98%;
 }
 
 #indi_header h3 {
@@ -2099,6 +2100,10 @@ span.link_text:hover {
 	font-size: 2em;
 	margin: 10px;
 	font-weight: bold;
+}
+
+#header_accordion1 {
+	padding: 0 10px;
 }
 
 #header_accordion1 .indi_name_details {

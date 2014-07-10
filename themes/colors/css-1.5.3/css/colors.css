@@ -2916,6 +2916,7 @@ span.link_text {
 	border-radius: 3px;
 	overflow: hidden;
 	margin: 0 0 5px;
+	width: 100%;
 }
 
 #indi_header a {

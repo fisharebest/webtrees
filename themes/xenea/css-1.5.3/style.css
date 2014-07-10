@@ -3001,12 +3001,13 @@ span.link_text {
 
 /* =========== Indi header ================== */
 #indi_header {
+	width: 100%;
 	overflow: hidden;
 	border-radius: 3px;
 /*	background: url(../jquery-ui-1.10.3/images/ui-bg_highlight-soft_100_e7eef3_1x100.png) repeat-x scroll 50% 50% #fff;*/
 	border: 1px solid #b2c7d7;
 	margin: 0 0 5px;
-	padding: 10px;
+	padding: 10px 0;
 	background: #e8f5f8; /* Old browsers */
 	background: -moz-linear-gradient(top,  #e8f5f8 0%, #f5fafb 60%, #fefefe 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e8f5f8), color-stop(60%,#f5fafb), color-stop(100%,#fefefe)); /* Chrome,Safari4+ */
@@ -3077,6 +3078,10 @@ span.link_text {
 	font-size: 2em;
 	margin: 10px;
 	font-weight: bold;
+}
+
+#header_accordion1 {
+	padding: 0 10px;
 }
 
 #header_accordion1 .indi_name_details {
