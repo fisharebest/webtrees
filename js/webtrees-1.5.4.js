@@ -57,17 +57,14 @@ function modalDialog(url, title, width) {
 	return false;
 }
 
-// Create a modal dialog for a help message.
+// Get a help message.
 function helpDialog(topic, module) {
-	var url = 'help_text.php?help=' + topic + '&mod=' + module;
-
-	modalDialog(url + ' .helpcontent', '', 500);
-	jQuery('.ui-dialog-title').load(url + ' .helpheader');
-
-	return false;
+	jQuery.getJSON('help_text.php?help=' + topic + '&mod=' + module, function (json) {
+		modalNotes(json.content, json.title);
+	});
 }
 
-// Create a modal dialog to display notes
+// Create a modal dialog to display notes & help
 function modalNotes(content, title) {
 	jQuery('<div title="' + title + '"></div>')
 		.html(content)

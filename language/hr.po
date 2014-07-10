@@ -652,7 +652,7 @@ msgstr "<b>webtrees</b> treba MySQL bazu podataka, verziju %s ili veću."
 #. I18N: Help text for the “Messages” site configuration setting
 #: help_text.php:734
 msgid "<b>webtrees</b> needs to send emails, such as password reminders and site notifications.  To do this, it can use this server’s built in PHP mail facility (which is not always available) or an external SMTP (mail-relay) service, for which you will need to provide the connection details."
-msgstr "<b>webtrees</b> treba slati e-poštu, kao što su podsjetnici za lozinku i obavijesti. Da bi to mogao, može koristiti ugrađene PHP funkcije za slanje e-pošte (koje nisu uvijek dostupne) ili vanjski SMTP (nail-relay) servis, za koji trebate upisati detalje za spajanje."
+msgstr "<b>webtrees</b> treba slati e-poštu, kao što su podsjetnici za lozinku i obavijesti. Da bi to mogao, može koristiti ugrađene PHP funkcije za slanje e-pošte (koje nisu uvijek dostupne) ili vanjski SMTP (mail-relay) servis, za koji trebate upisati detalje za spajanje."
 
 #: help_text.php:778
 msgid "<b>webtrees</b> reply address"
@@ -678,7 +678,7 @@ msgstr "<zadana tema>"
 
 #: login.php:399
 msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div>"
-msgstr "<div class=\"largeError\">Obavijest:</div><div class=\"error\">Ispunjavanjem i slanjem ovog formulara, slažete se:<ul><li>da ćete zaštititi privatnost živih osoba prikazanih na ovim stranicama;</li><li>i u tekst polje ispod, opisati sa kime ste u rodu ili nam dati informacije o nekome tko bi trebao biti prikazan na ovim stranicama.</li></ul></div>"
+msgstr "<div class=\"largeError\">Obavijest:</div><div class=\"error\">Ispunjavanjem i slanjem ovog obrasca, slažete se:<ul><li>da ćete zaštititi privatnost živih osoba prikazanih na ovim stranicama;</li><li>i u tekst polje ispod, opisati sa kime ste u rodu ili nam dati informacije o nekome tko bi trebao biti prikazan na ovim stranicama.</li></ul></div>"
 
 #. I18N: a label/value pair, such as “Occupation: Farmer”.  Some languages may need to change the punctuation.
 #: includes/functions/functions_print.php:578 library/WT/Gedcom/Tag.php:838
@@ -4436,7 +4436,7 @@ msgstr "Datum zadnje promjene"
 #: modules_v3/fact_sources/report.xml:316
 #: modules_v3/missing_facts_report/report.xml:459
 msgid "Date of marriage"
-msgstr "Datum braka"
+msgstr "Datum vjenčanja"
 
 #: library/WT/Gedcom/Tag.php:229
 #: modules_v3/missing_facts_report/report.xml:416
@@ -5349,15 +5349,15 @@ msgstr ""
 #: modules_v3/googlemap/module.php:4402 modules_v3/page_menu/module.php:32
 #: modules_v3/user_blog/module.php:90 note.php:145 note.php:150 note.php:151
 msgid "Edit"
-msgstr "Uredite"
+msgstr "Uredi"
 
 #: modules_v3/faq/help_text.php:54 modules_v3/faq/module.php:135
 msgid "Edit FAQ item"
-msgstr "Uredite ČPP stavku"
+msgstr "Uredi ČPP stavku"
 
 #: help_text.php:1457
 msgid "Edit account information"
-msgstr "Uredite informacije računa"
+msgstr "Uredi informacije računa"
 
 #: library/WT/Controller/Media.php:139
 msgid "Edit details"
@@ -5365,24 +5365,24 @@ msgstr "Uredi detalje"
 
 #: library/WT/Controller/Individual.php:276
 msgid "Edit gender"
-msgstr "Uredite spol"
+msgstr "Uredi spol"
 
 #: modules_v3/lightbox/module.php:141
 msgid "Edit media"
-msgstr "Uredite medij"
+msgstr "Uredi medij"
 
 #: addmedia.php:232 addmedia.php:391 library/WT/Controller/Media.php:50
 msgid "Edit media object"
-msgstr "Uredite medijski objekt"
+msgstr "Uredi medijski objekt"
 
 #: edit_interface.php:1622 includes/functions/functions_edit.php:578
 #: library/WT/Controller/Individual.php:152
 msgid "Edit name"
-msgstr "Uredite ime"
+msgstr "Uredi ime"
 
 #: library/WT/Controller/Note.php:49
 msgid "Edit note"
-msgstr "Uredite bilješku"
+msgstr "Uredi bilješku"
 
 #: admin_trees_config.php:221
 msgid "Edit options"
@@ -13016,7 +13016,7 @@ msgstr "Država"
 #: library/WT/MenuBar.php:104 modules_v3/gedcom_stats/module.php:32
 #: modules_v3/html/module.php:161 statistics.php:36 statistics.php:59
 msgid "Statistics"
-msgstr "Statistike"
+msgstr "Statistika"
 
 #: statistics.php:494 statisticsplot.php:885
 msgid "Statistics plot"
@@ -13794,6 +13794,7 @@ msgstr "Ova obitelj nije imala djece"
 msgid "This family tree has no images to display."
 msgstr "Ovo obiteljsko stablo nema sliku za prikazati."
 
+# Ne treba točka na kraju jer format datuma ima točku iza godine
 #. I18N: %s is a date
 #: modules_v3/gedcom_stats/module.php:86 modules_v3/html/module.php:164
 #, php-format
@@ -13823,7 +13824,7 @@ msgstr "Ova mapa će biti korišten za spremanje medijskih datoteka ovog obitelj
 
 #: library/WT/Filter.php:295
 msgid "This form has expired.  Try again."
-msgstr "Ovaj formular je istekao. Pokušajte ponovo."
+msgstr "Ovaj obrazac je istekao. Pokušajte ponovo."
 
 #: individual.php:90 library/WT/Controller/Chart.php:40
 msgid "This individual does not exist or you do not have permission to view it."
@@ -13873,15 +13874,15 @@ msgstr "U ovo polje unosite ID broj pojedinca koji će biti dodan u isječke. Na
 
 #: help_text.php:407
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets."
-msgstr "Ovo su zarezom odvojeni popis GEDCOM tagova činjenica koje će biti prikazane na dodaj/uredi formularima. Ako koristite pismo drugačije od latinskog kao što su Hebrejsko, Grčko, Ćirilicu ili Arapsko, možda želite dodati tagove kao što su _HEB, ROMN, FONE, itd. da omogućite upis imena različitim pismima."
+msgstr "Ovo su zarezom odvojeni popis GEDCOM tagova činjenica koje će biti prikazane na dodaj/uredi obrascima. Ako koristite pismo drugačije od latinskog kao što su Hebrejsko, Grčko, Ćirilicu ili Arapsko, možda želite dodati tagove kao što su _HEB, ROMN, FONE, itd. da omogućite upis imena različitim pismima."
 
 #: help_text.php:794
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new family.  For example, if MARR is in the list, then fields for marriage date and marriage place will be shown on the form."
-msgstr "Ovo su zarezom odvojeni popis GEDCOM tagova činjenica koje će biti prikazane kada dodajemo novu obitelj. Na primjer, ako je MARR na popisu, tada će na formularu biti prikazana polja za datum vjenčanja i mjesto vjenčanja."
+msgstr "Ovo su zarezom odvojeni popis GEDCOM tagova činjenica koje će biti prikazane kada dodajemo novu obitelj. Na primjer, ako je MARR na popisu, tada će na obrascu biti prikazana polja za datum vjenčanja i mjesto vjenčanja."
 
 #: help_text.php:789
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new individual.  For example, if BIRT is in the list, fields for birth date and birth place will be shown on the form."
-msgstr "Ovo su zarezom odvojeni popis GEDCOM tagova činjenica koje će biti prikazane kada dodajemo novog pojedinca. Na primjer, ako je BIRT na popisu, tada će na formularu biti prikazana polja za datum rođenja i mjesto rođenja."
+msgstr "Ovo su zarezom odvojeni popis GEDCOM tagova činjenica koje će biti prikazane kada dodajemo novog pojedinca. Na primjer, ako je BIRT na popisu, tada će na obrascu biti prikazana polja za datum rođenja i mjesto rođenja."
 
 #: help_text.php:412
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
@@ -15028,8 +15029,8 @@ msgid "Use relationship privacy"
 msgstr "Koristi privatnost odnosa"
 
 #: help_text.php:1017
-msgid "Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the gender of the individual in question.<br><br><table><tr><td wrap valign=\"middle\">This image might be used when the gender of the individual is unknown:"
-msgstr "Koristi siluete kada nema označene slike za pojedinca. Slike će biti korištene prema spolu.<br><br><table><tr><td wrap valign=\"middle\">Ova slika će biti korištena kada je spol pojedinca nepoznat:"
+msgid "Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the gender of the individual in question.<br><br><table><tr><td style=\"vertical-align:middle\">This image might be used when the gender of the individual is unknown:"
+msgstr "Koristi siluete kada nema označene slike za pojedinca. Slike će biti korištene prema spolu.<br><br><table><tr><td style=\"vertical-align:middle\">Ova slika će biti korištena kada je spol pojedinca nepoznat:"
 
 #: admin_trees_config.php:675 help_text.php:1016
 msgid "Use silhouettes"
@@ -15445,7 +15446,7 @@ msgstr "Kada se izračunavaju odnosi, ova opcija kontrolira kada će program ukl
 
 #: help_text.php:895
 msgid "When set to <b>Yes</b>, the following message will appear above the input fields on the “Request new user account” page:<div class=\"list_value_wrap\"><div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div></div>"
-msgstr "Kada je postavljeno <b>Da</b>, slijedeća poruka će se prikazati iznad polja unosa na stranici: “Zahtjev za novi korisniči račun” page:<div class=\"list_value_wrap\"><div class=\"largeError\">Napomena:</div><div class=\"error\">Popunjavanjem i slanjem ovog formulara, vi se slažete:<ul><li>da ćete štititi privatnost živih pojedinaca prikazanih na ovim stranicama;</li><li>i u tekst polje ispod, objasniti sa kime ste u rodu, ili nam ponuditi informacije o nekome tko bi trebao biti upisan na ovim stranicama.</li></ul></div></div>"
+msgstr "Kada je postavljeno <b>Da</b>, slijedeća poruka će se prikazati iznad polja unosa na stranici: “Zahtjev za novi korisniči račun” page:<div class=\"list_value_wrap\"><div class=\"largeError\">Napomena:</div><div class=\"error\">Popunjavanjem i slanjem ovog obrasca, vi se slažete:<ul><li>da ćete štititi privatnost živih pojedinaca prikazanih na ovim stranicama;</li><li>i u tekst polje ispod, objasniti sa kime ste u rodu, ili nam ponuditi informacije o nekome tko bi trebao biti upisan na ovim stranicama.</li></ul></div></div>"
 
 #: help_text.php:1289
 msgid "When this check box is checked, the chart will be printed with oldest individuals at the top.  When it is unchecked, youngest individuals will appear at the top."
@@ -16310,7 +16311,7 @@ msgstr ""
 #. I18N: Name of a theme.
 #: themes/colors/theme.php:127
 msgid "colors"
-msgstr "boje"
+msgstr "colors"
 
 #: modules_v3/top10_surnames/module.php:162
 msgid "compact list"
@@ -16344,7 +16345,7 @@ msgstr "datumski periodi"
 #: modules_v3/googlemap/module.php:1929 modules_v3/googlemap/module.php:1967
 #: modules_v3/relatives/module.php:248
 msgid "daughter"
-msgstr "kćerPauley Perrette "
+msgstr "kćer"
 
 #: modules_v3/descendancy_report/report.xml:224
 msgid "daughter of"
@@ -16690,122 +16691,122 @@ msgstr "Rod u prvom koljenu"
 #: includes/functions/functions.php:1114
 msgctxt "father’s father’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "dedinog brata dijete"
 
 #: includes/functions/functions.php:1112
 msgctxt "father’s father’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "dedinog brata kćer"
 
 #: includes/functions/functions.php:1113
 msgctxt "father’s father’s brother’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "dedinog brata sin"
 
 #: includes/functions/functions.php:1117
 msgctxt "father’s father’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "dedine sestre dijete"
 
 #: includes/functions/functions.php:1115
 msgctxt "father’s father’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "dedine sestre kćer"
 
 #: includes/functions/functions.php:1116
 msgctxt "father’s father’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "dedine sestre sin"
 
 #: includes/functions/functions.php:1120
 msgctxt "father’s mother’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "bakinog brata dijete"
 
 #: includes/functions/functions.php:1118
 msgctxt "father’s mother’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "bakinog brata kćer"
 
 #: includes/functions/functions.php:1119
 msgctxt "father’s mother’s brother’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "bakinog brata sin"
 
 #: includes/functions/functions.php:1123
 msgctxt "father’s mother’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "bakine sestre dijete"
 
 #: includes/functions/functions.php:1121
 msgctxt "father’s mother’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "bakine sestre kćer"
 
 #: includes/functions/functions.php:1122
 msgctxt "father’s mother’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "bakine sestre sin"
 
 #: includes/functions/functions.php:1126
 msgctxt "mother’s father’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "dedinog brata dijete"
 
 #: includes/functions/functions.php:1124
 msgctxt "mother’s father’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "dedinog brata kćer"
 
 #: includes/functions/functions.php:1125
 msgctxt "mother’s father’s brother’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "dedinog brata sin"
 
 #: includes/functions/functions.php:1129
 msgctxt "mother’s father’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "dedine sestre dijete"
 
 #: includes/functions/functions.php:1127
 msgctxt "mother’s father’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "dedine sestre kćer"
 
 #: includes/functions/functions.php:1128
 msgctxt "mother’s father’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "dedine sestre sin"
 
 #: includes/functions/functions.php:1132
 msgctxt "mother’s mother’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "bakinog brata dijete"
 
 #: includes/functions/functions.php:1130
 msgctxt "mother’s mother’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "bakinog brata kćer"
 
 #: includes/functions/functions.php:1131
 msgctxt "mother’s mother’s brother’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "bakinog brata sin"
 
 #: includes/functions/functions.php:1135
 msgctxt "mother’s mother’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "bakine sestre dijete"
 
 #: includes/functions/functions.php:1133
 msgctxt "mother’s mother’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "bakine sestre kćer"
 
 #: includes/functions/functions.php:1134
 msgctxt "mother’s mother’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "bakine sestre sin"
 
 #: includes/functions/functions.php:635
 msgctxt "FEMALE"
@@ -19884,10 +19885,10 @@ msgstr "…"
 #~ msgstr "Dodaj dijete"
 
 #~ msgid "An error occurred while creating the Edit form.  Another user may have changed this record since you previously viewed it."
-#~ msgstr "Pograška se pojavila dok se kreirao Uredi obrazac. Neki drugi korisnik je možda promjenio ovaj zapis otkad ste ga zadnji put učitali."
+#~ msgstr "Pogreška se pojavila dok se kreirao obrazac. Neki drugi korisnik je možda promijenio ovaj zapis otkad ste ga zadnji put učitali."
 
 #~ msgid "Append record"
-#~ msgstr "Prikvači zapis"
+#~ msgstr "Priloži zapis"
 
 #~ msgid "Are you sure you want to undo all of the changes for this GEDCOM?"
 #~ msgstr "Jeste li sigurni da želite ukloniti sve promjene na GEDCOM-u"
