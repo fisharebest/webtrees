@@ -369,8 +369,8 @@ span.title {
 	width: 100%;
 }
 
-[dir=rtl] #main-menu {
-	padding-right: 16px;
+[dir=rtl] #main-menu > li {
+	margin: 4px 16px 0 0;
 }
 
 [dir=rtl] #main-menu li {

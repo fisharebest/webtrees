@@ -579,7 +579,7 @@ div.fact_SHARED_NOTE {
 /*-- pedigree chart rtl specific stylesheets --*/
 [dir=rtl] #pedigree_chart {
 	left: auto;
-	right: 10px;
+	right: 0;
 }
 
 /* Printer friendliness */
