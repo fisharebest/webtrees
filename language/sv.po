@@ -14997,7 +14997,7 @@ msgstr "Privatbegränsning, enbart du och när släkten ser"
 
 #: help_text.php:1017
 msgid "Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the gender of the individual in question.<br><br><table><tr><td style=\"vertical-align:middle\">This image might be used when the gender of the individual is unknown:"
-msgstr "Använd silhuettbild då ingen bild för personen har angetts. Silhuettsbilden beror på kön.<br><br><t<td style=\"vertical-align:middle\">middle\">Denna bild kan användas, då personens kön är obekant:"
+msgstr "Använd silhuettbild då ingen bild för personen har angetts. Silhuettsbilden beror på kön.<br><br><table><tr><td style=\"vertical-align:middle\">middle\">Denna bild kan användas, då personens kön är obekant:"
 
 #: admin_trees_config.php:675 help_text.php:1016
 msgid "Use silhouettes"
