@@ -14967,7 +14967,7 @@ msgstr "使用私人关系"
 
 #: help_text.php:1017
 msgid "Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the gender of the individual in question.<br><br><table><tr><td style=\"vertical-align:middle\">This image might be used when the gender of the individual is unknown:"
-msgstr "使用轮廓图像时没有突出那个已被指定人能代表人性别的图像。<br><br><t<td style=\"vertical-align:middle\">middle\">当性别不详这个图像可能被用："
+msgstr "使用轮廓图像时没有突出那个已被指定人能代表人性别的图像。<br><br><table><tr><td style=\"vertical-align:middle\">middle\">当性别不详这个图像可能被用："
 
 #: admin_trees_config.php:675 help_text.php:1016
 msgid "Use silhouettes"
