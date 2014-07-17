@@ -3,10 +3,9 @@ msgstr ""
 "Project-Id-Version: Webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2014-06-12 21:41+0100\n"
-"PO-Revision-Date: 2014-01-02 14:19+0200\n"
+"PO-Revision-Date: 2014-07-14 09:21+0200\n"
 "Last-Translator: Meliza <meliza@amitys.com>\n"
 "Language-Team: \n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -141,8 +140,8 @@ msgstr "%1$s:lta puuttuu linkki takaisin %2$s:een."
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1$s tiedosto poimittiin %2$s sekunnissa."
+msgstr[1] "%1$s tiedostoa poimittiin %2$s sekunnissa."
 
 #. I18N: %1$s is an internal ID number such as R123.  %2$s and %3$s are record types, such as INDI or SOUR
 #: admin_trees_check.php:179
@@ -160,7 +159,7 @@ msgstr "%1$s × %2$s kuvapistettä"
 #: admin_site_upgrade.php:312
 #, php-format
 msgid "%1$sKB were downloaded in %2$s seconds."
-msgstr ""
+msgstr "%1$sKB ladattiin %2$s sekunnissa."
 
 #. I18N: A range of years, e.g. “1870–”, “1870–1920”, “–1920”
 #: library/WT/Individual.php:418
@@ -764,7 +763,7 @@ msgstr "Uusi käyttäjä (%1$s) on pyytänyt käyttäjätilin (%2$s) ja on vahvi
 
 #: admin.php:109 admin_site_upgrade.php:83
 msgid "A new version of webtrees is available."
-msgstr ""
+msgstr "Uusi webtrees versio on käytettävissä."
 
 #. I18N: Description of the “Journal” module
 #: modules_v3/user_blog/module.php:45
@@ -1788,7 +1787,7 @@ msgstr "Kaikki kentät on täytettävä."
 
 #: admin_site_upgrade.php:398
 msgid "All files have read and write permission."
-msgstr ""
+msgstr "Kaikkilla tiedostoilla on luku- ja kirjoitusoikeudet."
 
 #: admin_trees_config.php:1100 help_text.php:592
 msgid "All individual facts"
@@ -1890,7 +1889,7 @@ msgstr "Muokkausvalikko henkilöille, perheille, lähteille jne."
 #: admin_site_upgrade.php:339 admin_site_upgrade.php:359
 #: admin_site_upgrade.php:369 admin_site_upgrade.php:446
 msgid "An error occurred when unzipping the file."
-msgstr ""
+msgstr "Virhe kun tiedosto purettiin."
 
 #. I18N: Description of the “Interactive tree” module
 #: modules_v3/tree/module.php:38
@@ -2557,7 +2556,7 @@ msgstr "Binääridatakohde"
 
 #: includes/functions/functions_print.php:823
 msgid "Bing Maps™"
-msgstr ""
+msgstr "Bing Maps™"
 
 #: library/WT/Gedcom/Code/Temp.php:68
 msgid "Birmingham, Alabama"
@@ -3274,11 +3273,11 @@ msgstr "Kuolinsyy"
 
 #: admin_site_upgrade.php:202
 msgid "Caution: old modules may not work, or they may prevent webtrees from working."
-msgstr ""
+msgstr "Varoitus: vanhat moduulit eivät välttämättä toimi tai ne voivat estää webtrees:in toiminnan."
 
 #: admin_site_upgrade.php:265
 msgid "Caution: old themes may not work, or they may prevent webtrees from working."
-msgstr ""
+msgstr "Varoitus: vanhat teemat eivät välttämättä toimi tai ne voivat estää webtrees:in toiminnan."
 
 #: library/WT/Stats.php:3861
 msgid "Cayman Islands"
@@ -3414,17 +3413,17 @@ msgstr "Tarkista tämän kansion käyttöoikeudet."
 
 #: admin_site_upgrade.php:380
 msgid "Check file permissions…"
-msgstr ""
+msgstr "Tarkista tiedostojen oikeudet..."
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:116
 msgid "Check for custom modules…"
-msgstr ""
+msgstr "Tarkista omat moduulit..."
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:218
 msgid "Check for custom themes…"
-msgstr ""
+msgstr "Tarkista omat teemat..."
 
 #: admin_trees_check.php:28 themes/_administration/header.php:122
 msgid "Check for errors"
@@ -3433,7 +3432,7 @@ msgstr "Tarkista onko virheitä"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:97
 msgid "Check for pending changes…"
-msgstr ""
+msgstr "Tarkista vireillä olevat muutokset…"
 
 #: help_text.php:460 relationship.php:137
 msgid "Check relationships by marriage"
@@ -3927,12 +3926,12 @@ msgstr "Kopioi"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:421
 msgid "Copy files…"
-msgstr ""
+msgstr "Kopioi tiedostot…"
 
 #: admin_site_upgrade.php:392
 #, php-format
 msgid "Copy these files to the folder %s, replacing any that have the same name."
-msgstr ""
+msgstr "Kopioi nämä tiedostot kansioon %s, korvaamalla tiedostot, joilla on sama nimi."
 
 #. I18N: gedcom tag COPR
 #: library/WT/Gedcom/Tag.php:156
@@ -4199,7 +4198,7 @@ msgstr "Erikoistieto"
 
 #: admin_site_upgrade.php:190 admin_site_upgrade.php:193
 msgid "Custom module"
-msgstr ""
+msgstr "Oma moduuli"
 
 #: find.php:469
 msgid "Custom tags"
@@ -4207,7 +4206,7 @@ msgstr "Erikoistunnisteet (tag)"
 
 #: admin_site_upgrade.php:250 admin_site_upgrade.php:253
 msgid "Custom theme"
-msgstr ""
+msgstr "Oma teema"
 
 #: admin_site_config.php:157 help_text.php:1039
 msgid "Custom welcome text"
@@ -4907,7 +4906,7 @@ msgstr "Poista nimi"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:471
 msgid "Delete temporary files…"
-msgstr ""
+msgstr "Poista väliaikaiset tiedostot..."
 
 #: admin_site_clean.php:88
 msgid "Deleted files:"
@@ -4935,7 +4934,7 @@ msgstr "Denver, Colorado"
 
 #: admin_site_upgrade.php:84
 msgid "Depending on your server configuration, you may be able to upgrade automatically."
-msgstr ""
+msgstr "Riippuen palvelimesi asetuksista, voit ehkä päivittää automaattisesti."
 
 #: help_text.php:1222
 msgid "Descendant generations"
@@ -5119,11 +5118,11 @@ msgstr "Esivanhemmat ja heidän perheensä"
 
 #: admin_site_upgrade.php:201
 msgid "Disable these modules"
-msgstr ""
+msgstr "Poista nämä moduulit"
 
 #: admin_site_upgrade.php:264
 msgid "Disable these themes"
-msgstr ""
+msgstr "Poista nämä teemat"
 
 #. I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options
 #: library/WT/I18N.php:648
@@ -5216,7 +5215,7 @@ msgstr "Lataa"
 #: admin_site_upgrade.php:300
 #, php-format
 msgid "Download %s…"
-msgstr ""
+msgstr "Lataa %s…"
 
 #: mediaviewer.php:104
 msgid "Download file"
@@ -5761,7 +5760,7 @@ msgstr "Siirrä"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:281
 msgid "Export all family trees to GEDCOM files…"
-msgstr ""
+msgstr "Siirrä kaikki sukupuut GEDCOM-tiedostoihin..."
 
 #: help_text.php:1211
 msgid "Export family tree"
@@ -5794,7 +5793,7 @@ msgstr "Silmien väri"
 #. I18N: Name of a theme.
 #: themes/fab/theme.php:29
 msgid "F.A.B."
-msgstr ""
+msgstr "F.A.B."
 
 #. I18N: Name of a module.  Abbreviation for “Frequently Asked Questions”
 #: modules_v3/faq/module.php:32 modules_v3/faq/module.php:431
@@ -6452,7 +6451,7 @@ msgstr "Tiedostomuoto"
 
 #: admin_trees_config.php:941 help_text.php:525
 msgid "Format text and notes"
-msgstr ""
+msgstr "Muotoile tekstit ja huomautukset"
 
 #: library/WT/Gedcom/Code/Pedi.php:49
 msgctxt "Female pedigree"
@@ -7648,7 +7647,7 @@ msgstr "Israel"
 
 #: admin_site_upgrade.php:81 admin_site_upgrade.php:85
 msgid "It can take several minutes to download and install the upgrade.  Be patient."
-msgstr ""
+msgstr "Päivityksen lataaminen ja asentaminen voi kestää useita minuutteja.  Ole kärsivällinen."
 
 #: library/WT/Stats.php:3919
 msgid "Italy"
@@ -8247,7 +8246,7 @@ msgstr "Paikalliset tiedostot"
 #. I18N: gedcom tag _LOC
 #: library/WT/Gedcom/Tag.php:725
 msgid "Location"
-msgstr ""
+msgstr "Sijaintipaikka"
 
 #: modules_v3/googlemap/module.php:4314
 msgid "Location not removed: this location contains sub-locations"
@@ -8487,7 +8486,7 @@ msgstr "maaliskuu"
 
 #: help_text.php:530
 msgid "Markdown is a simple system of formatting, used on websites such as Wikipedia.  It uses unobtrusive punctuation characters to create headings and sub-headings, bold and italic text, lists, tables, etc."
-msgstr ""
+msgstr "Markdown on yksinkertainen muotoilujärjestelmä, jota käytettään esim. Wikipedia sivustoilla. Se käyttää vaatimattomia välimerkkejä luodessaan otsikoita, alaotsikoita, lihavoituja ja kursivoituja tekstejä, luetteloita, taulukoita, jne."
 
 #. I18N: gedcom tag MARR
 #: library/WT/Gedcom/Tag.php:233 modules_v3/ahnentafel_report/report.xml:453
@@ -9681,11 +9680,11 @@ msgstr "Ei mitään yhteystapaa"
 
 #: admin_site_upgrade.php:207
 msgid "No custom modules are enabled."
-msgstr ""
+msgstr "Omia moduuleja ei ole käytössä."
 
 #: admin_site_upgrade.php:270
 msgid "No custom themes are enabled."
-msgstr ""
+msgstr "Omia teemoja ei ole käytössä."
 
 #: admin_trees_check.php:227
 msgid "No errors were found."
@@ -9796,7 +9795,7 @@ msgstr "Ei temppeliä - Elävän uskonnollinen toimitus"
 
 #: admin_site_upgrade.php:67
 msgid "No upgrade information is available."
-msgstr ""
+msgstr "Päivitystietoja ei ole saatavilla."
 
 #: library/WT/Stats.php:1061
 msgid "Nobody at all"
@@ -10150,7 +10149,7 @@ msgstr "Oho! webtrees ei voinut luoda tiedostoja tähän kansioon."
 
 #: includes/functions/functions_print.php:824
 msgid "OpenStreetMap™"
-msgstr ""
+msgstr "OpenStreetMap™"
 
 #: modules_v3/googlemap/help_text.php:41 modules_v3/googlemap/module.php:406
 msgid "Optional prefixes and suffixes"
@@ -10724,12 +10723,12 @@ msgstr "Asuinpaikan paikkakunta"
 #: admin_site_upgrade.php:406
 #, php-format
 msgid "Place the site offline, by creating the file %s…"
-msgstr ""
+msgstr "Aseta sivusto offline-tilaan luomalla tiedosto %s..."
 
 #: admin_site_upgrade.php:457
 #, php-format
 msgid "Place the site online, by deleting the file %s…"
-msgstr ""
+msgstr "Aseta sivusto online-tilaan poistamalla tiedosto %s..."
 
 #: admin_trees_config.php:896 statistics.php:401
 msgid "Places"
@@ -13358,7 +13357,7 @@ msgstr "Tiedosto %s on jo olemassa. Käytä muuta tiedostonimeä."
 #: admin_site_upgrade.php:410 admin_site_upgrade.php:441
 #, php-format
 msgid "The file %s could not be created."
-msgstr ""
+msgstr "Tiedostoa %s ei voitu luoda."
 
 #: admin_media.php:60 admin_media.php:67 admin_site_upgrade.php:462
 #: admin_site_upgrade.php:483
@@ -13369,12 +13368,12 @@ msgstr "Tiedostoa %s ei voitu poistaa."
 #: admin_site_upgrade.php:388
 #, php-format
 msgid "The file %s could not be updated."
-msgstr ""
+msgstr "Tiedostoa %s ei voitu päivittää."
 
 #: admin_site_upgrade.php:412
 #, php-format
 msgid "The file %s was created."
-msgstr ""
+msgstr "Tiedosto %s luotiin."
 
 #: admin_media.php:58 admin_media.php:65 admin_site_upgrade.php:460
 #: admin_site_upgrade.php:481
@@ -13397,7 +13396,7 @@ msgstr "Tiedosto ”%s” ei ole olemassa."
 #: admin_site_upgrade.php:477
 #, php-format
 msgid "The folder %s could not be deleted."
-msgstr ""
+msgstr "Kansiota %s ei voitu poistaa."
 
 #: addmedia.php:92 addmedia.php:103 addmedia.php:115 addmedia.php:254
 #: addmedia.php:265 addmedia.php:277 admin_media_upload.php:60
@@ -13417,7 +13416,7 @@ msgstr "Kansio %s on luotu."
 #: admin_site_upgrade.php:475
 #, php-format
 msgid "The folder %s was deleted."
-msgstr ""
+msgstr "Kansio %s poistettiin."
 
 #: help_text.php:587
 msgid "The folder can be specified in full (e.g. /home/user_name/webtrees_data/) or relative to the installation folder (e.g. ../../webtrees_data/)."
@@ -13501,7 +13500,7 @@ msgstr "Muistin ja CPU vaatimukset riippuvat siitä, miten paljon henkilöitä s
 #: admin_site_upgrade.php:391
 #, php-format
 msgid "The new files are currently located in the folder %s."
-msgstr ""
+msgstr "Uudet tiedostot sijaitsevat tällä hetkellä kansiossa %s."
 
 #: help_text.php:1248
 msgid "The number of occurrences of the specified name will be shown on the map. If you leave this field empty, the most common surname will be used."
@@ -13560,7 +13559,7 @@ msgstr "Aika sekunneissa, miten kauan <b>webtrees</b> sessio / käyttäjän istu
 
 #: admin_site_upgrade.php:489
 msgid "The upgrade is complete."
-msgstr ""
+msgstr "Päivitys on valmis."
 
 #: login.php:311
 msgid "The user has been sent an e-mail with the information necessary to confirm the access request"
@@ -13576,7 +13575,7 @@ msgstr "Käyttäjätunnus tai salasana on väärä."
 
 #: help_text.php:689
 msgid "The value to place in the “meta description” tag in the HTML page header.  Leave this field empty to use the name of the family tree."
-msgstr "Teksti joka lisätään kuvaustunnisteeksi (tag) kun rakennetaan HTML sivun otsikko-osa. Kun jätät tämän tyhjäksi, niin näytetään käytössä olevan tietokannan nimi."
+msgstr "Teksti joka lisätään meta-kuvaustunnisteeksi (tag) kun rakennetaan HTML sivun otsikko-osa. Kun tämä jätetään tyhjäksi, niin näytetään käytössä olevan tietokannan nimi."
 
 #: admin_pgv_to_wt.php:74
 #, php-format
@@ -13590,7 +13589,7 @@ msgstr "%s versio on liian vanha"
 
 #: help_text.php:997
 msgid "The website www.geonames.org provides a large database of place names.  This can be searched when entering new places.  To use this feature, you must register for a free account at www.geonames.org and provide the username."
-msgstr ""
+msgstr "Sivusto www.geonames.org tarjoaa laajan paikannimien tietokannan.  Sitä voi käyttää kun lisätään uusia paikkoja.  Tätä toimintoa voi käyttää sen jälkeen kun rekisteröidytään ilmaiseen tiliin www.geonames.org:ssa ja annetaan käyttäjätunnus."
 
 #: setup.php:934
 msgid "The webtrees developers would be very interested to learn about this error.  If you contact them, they will help you resolve the problem."
@@ -13634,7 +13633,7 @@ msgstr "Tällä henkilöllä ei ole multimediakohteita."
 
 #: admin_site_upgrade.php:107
 msgid "There are no pending changes."
-msgstr ""
+msgstr "Ei ole vireillä olevia muutoksia."
 
 #: modules_v3/todo/module.php:127
 msgid "There are no research tasks in this family tree."
@@ -13881,7 +13880,7 @@ msgstr "Tämä on alustava asetus kaavioiden vaihtoehdolle ”näytä yksityisko
 
 #: admin_site_upgrade.php:72
 msgid "This is the latest version of webtrees.  No upgrade is available."
-msgstr ""
+msgstr "Tämä on uusin webtrees versio. Päivitystä ei ole saatavana."
 
 #: help_text.php:506
 msgid "This is the list of GEDCOM facts that your users can add to families.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the “Unique family facts” list."
@@ -14218,7 +14217,7 @@ msgstr "Tähän osioon voit lisätä uuden muokattavaa tietoa koskevan lähdevii
 #. I18N: http://en.wikipedia.org/wiki/Https
 #: admin_site_upgrade.php:319
 msgid "This server does not support secure downloads using HTTPS."
-msgstr ""
+msgstr "Tämä palvelin ei tue turvallista latausta käyttämällä HTTPS:ää."
 
 #: setup.php:181
 #, php-format
@@ -14235,7 +14234,7 @@ msgstr "Tietoluettelo tiedoista, jotka halutaan näkyviin kaaviolaatikoissa Synt
 
 #: admin_site_upgrade.php:41
 msgid "This site is being upgraded.  Try again in a few minutes."
-msgstr ""
+msgstr "Tämä sivusto on päivitetty.  Yritä uudelleen muutaman minuutin kuluttua."
 
 #: source.php:73
 msgid "This source does not exist or you do not have permission to view it."
@@ -14427,7 +14426,7 @@ msgstr "Auttaaksemme sinua alkamaan tämän lohkon määrittelyn, olemme luoneet
 
 #: admin_site_upgrade.php:390
 msgid "To complete the upgrade, you should install the files manually."
-msgstr ""
+msgstr "Viimeistele päivitys asentamalla tiedostot käsin."
 
 #: modules_v3/todo/help_text.php:34
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
@@ -14435,7 +14434,7 @@ msgstr "Voidaksesi luoda uusia tutkimustehtäviä, sinun täytyy ensin lisätä 
 
 #: help_text.php:528
 msgid "To ensure compatibility with other genealogy applications, notes, text, and transcripts should be recorded in simple, unformatted text.  However, formatting is often desirable to aid presentation, comprehension, etc."
-msgstr ""
+msgstr "Muiden sukututkimussovellusten yhteensopivuuden varmistamiseksi, muistiinpanot, tekstit ja selostukset olisi kirjattava yksinkertaisena, muotoilemattomana tekstinä. Muotoilu on kuitenkin usein suotavaa jotta voidaan tukea esittelyä, ymmärtämistä, jne."
 
 #: admin_media.php:465 library/WT/Controller/Media.php:64
 #: library/WT/Controller/Media.php:149 modules_v3/lightbox/module.php:161
@@ -14450,7 +14449,7 @@ msgstr "henkilöön"
 #: admin_site_upgrade.php:393
 #, php-format
 msgid "To prevent visitors from accessing the site while you are in the middle of copying files, you can temporarily create a file %s on the server.  If it contains a message, it will be displayed to visitors."
-msgstr ""
+msgstr "Jos haluat estää vierailijoita pääsemästä sivustolle, kun olet keskellä tiedostojen kopioimista, voit luoda tilapäistiedoston %s palvelimelle.  Jos se sisältää viestin, se näkyy vierailijoille."
 
 #. I18N: “Apache” is a software program.
 #: help_text.php:583
@@ -14863,7 +14862,7 @@ msgstr "Käyttäjä jättänyt vahvistamatta"
 #: admin_site_upgrade.php:330
 #, php-format
 msgid "Unzip %s to a temporary folder…"
-msgstr ""
+msgstr "Pure %s väliaikaiseen kansioon…"
 
 #. I18N: Name of a module
 #: modules_v3/upcoming_events/module.php:32
@@ -14894,7 +14893,7 @@ msgstr "Päivitetään yhdistettyä tietuetta"
 #. I18N: Ignore the warnings, and [...]
 #: admin_site_upgrade.php:202 admin_site_upgrade.php:265
 msgid "Upgrade anyway"
-msgstr ""
+msgstr "Päivitä joka tapauksessa"
 
 #. I18N: %s is a version number, such as 1.2.3
 #: admin.php:111 admin_site_upgrade.php:86
@@ -14904,7 +14903,7 @@ msgstr "Päivitä versioon webtrees %s"
 
 #: admin_site_upgrade.php:55
 msgid "Upgrade wizard"
-msgstr ""
+msgstr "Päivitysvelho"
 
 #: admin_media_upload.php:233 admin_trees_manage.php:225
 #: modules_v3/googlemap/module.php:4454
@@ -14992,8 +14991,8 @@ msgid "Use relationship privacy"
 msgstr "Yksityisyysrajoitus, vain oma ja lähisukulainen näkee"
 
 #: help_text.php:1017
-msgid "Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the gender of the individual in question.<br><br><table><tr><td wrap valign=\"middle\">This image might be used when the gender of the individual is unknown:"
-msgstr "Käytä varjokuvaa kun henkilöllä ei ole korostettua kuvaa. Varjokuva on erilainen sukupuolen mukaan.<br><br><table><tr><td wrap valign=\"middle\">Tätä kuvaa voidaan käyttää kun henkilön sukupuoli ei ole tiedossa:"
+msgid "Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the gender of the individual in question.<br><br><table><tr><td style=\"vertical-align:middle\">This image might be used when the gender of the individual is unknown:"
+msgstr "Käytä varjokuvaa kun henkilöllä ei ole korostettua kuvaa. Varjokuva on erilainen sukupuolen mukaan.<br><br><table><tr><td style=\"vertical-align:middle\">Tätä kuvaa voidaan käyttää kun henkilön sukupuoli ei ole tiedossa:"
 
 #: admin_trees_config.php:675 help_text.php:1016
 msgid "Use silhouettes"
@@ -15546,7 +15545,7 @@ msgstr "Lähteineen"
 
 #: help_text.php:1184
 msgid "With this option, the <b>webtrees</b> internal messaging system will be used and no emails will be sent.  You will receive only <u>internal</u> messages from the other users.  When another site user sends you a message, that message will appear in the Message block on your “My page”.  If you have removed this block from your “My page”, you will not see any messages.  They will, however, show up as soon as you configure your “My page” to again have the Message block."
-msgstr "Tällä valinnalla <b>webtrees</b> ei käytä sähköpostia vaan järjestelmän omaa sisäistä viestintätapaa.  Saat viestejä ainoastaan muilta käyttäjiltä. Kun tämän sivuston muulta käyttäjältä tulee viesti, se näkyy Viestit-lohkossa, sinun \"Omalla sivullasi\". Jos olet poistanut tämän lohkon, niin et näe viestejä. Ne kuitenkin tulevat näkyviin heti kun otat Viestit-lohkon taas käyttöön \"Omalla sivullasi\""
+msgstr "Tällä valinnalla <b>webtrees</b> ei käytä sähköpostia vaan järjestelmän omaa sisäistä viestintätapaa.  Saat viestejä ainoastaan muilta käyttäjiltä. Kun tämän sivuston muulta käyttäjältä tulee viesti, se näkyy Viestit-lohkossa, sinun ”Omalla sivullasi”. Jos olet poistanut tämän lohkon, niin et näe viestejä. Ne kuitenkin tulevat näkyviin heti kun otat Viestit-lohkon taas käyttöön ”Omalla sivullasi”"
 
 #: help_text.php:1196
 msgid "With this option, you will not receive any messages.  Even the administrator will not be able to reach you."
@@ -15641,11 +15640,11 @@ msgstr "Voit nyt kirjautua järjestelmään käyttäjätunnuksellasi ja salasana
 
 #: admin_site_upgrade.php:201
 msgid "You can re-enable these modules after the upgrade."
-msgstr ""
+msgstr "Voit ottaa uudelleen käyttöön nämä moduulit päivityksen jälkeen."
 
 #: admin_site_upgrade.php:264
 msgid "You can re-enable these themes after the upgrade."
-msgstr ""
+msgstr "Voit ottaa uudelleen käyttöön nämä teemat päivityksen jälkeen."
 
 #: help_text.php:643 help_text.php:682
 msgid "You can request a higher or lower limit, although the server may ignore this request."
@@ -15689,7 +15688,7 @@ msgstr "Olet valinnut erinimisen GEDCOMin. Onko tämä oikea?"
 
 #: addmedia.php:462
 msgid "You may enter a URL, beginning with “http://”."
-msgstr "Voit lisätä URL-osoitteen laittaen alkuun “http://”."
+msgstr "Voit lisätä URL-osoitteen laittaen alkuun ”http://”."
 
 #: modules_v3/faq/help_text.php:35
 msgid "You may use HTML to format the answer and to add links to other websites."
@@ -15775,7 +15774,7 @@ msgstr "Olet lähettänyt seuraavan viestin webtrees käyttäjätilille:"
 
 #: admin_site_upgrade.php:102
 msgid "You should accept or reject all pending changes before upgrading."
-msgstr ""
+msgstr "Hyväksy tai hylkää odottavat muutokset ennen päivitystä."
 
 #: help_text.php:1151
 msgid "You should avoid using the vertical line character “|” in your notes.  It is used internally by webtrees and may cause your note to display incorrectly."
@@ -15783,11 +15782,11 @@ msgstr "Sinun tulisi välttää pystyviivamerkin “|” käyttämistä lisätie
 
 #: admin_site_upgrade.php:200
 msgid "You should consult the module’s author to confirm compatibility with this version of webtrees."
-msgstr ""
+msgstr "Pyydä moduulin tekijää vahvistamaan yhteensopivuus webtrees versioon."
 
 #: admin_site_upgrade.php:263
 msgid "You should consult the theme’s author to confirm compatibility with this version of webtrees."
-msgstr ""
+msgstr "Pyydä teeman tekijää vahvistamaan yhteensopivuus webtrees versioon."
 
 #. I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’
 #: login.php:276 message.php:69
@@ -16269,12 +16268,12 @@ msgstr "sulje"
 #. I18N: Name of a theme.
 #: themes/clouds/theme.php:48
 msgid "clouds"
-msgstr ""
+msgstr "pilvet"
 
 #. I18N: Name of a theme.
 #: themes/colors/theme.php:127
 msgid "colors"
-msgstr ""
+msgstr "värit"
 
 #: modules_v3/top10_surnames/module.php:162
 msgid "compact list"
@@ -18492,7 +18491,7 @@ msgstr "tyttönimi"
 #. I18N: https://en.wikipedia.org/wiki/Markdown
 #: admin_trees_config.php:948
 msgid "markdown"
-msgstr ""
+msgstr "markdown"
 
 #: library/WT/Stats.php:1712 library/WT/Stats.php:3633
 msgid "marriage"
@@ -18571,7 +18570,7 @@ msgstr "tasan keskiyö"
 #. I18N: Name of a theme.
 #: themes/minimal/theme.php:30
 msgid "minimal"
-msgstr ""
+msgstr "minimaali"
 
 #: modules_v3/googlemap/module.php:330
 msgid "minimum"
@@ -19761,7 +19760,7 @@ msgstr "vaimo"
 #. I18N: Name of a theme.
 #: themes/xenea/theme.php:30
 msgid "xenea"
-msgstr ""
+msgstr "xenea"
 
 #: timeline.php:130
 msgid "years"
@@ -19845,7 +19844,7 @@ msgstr "…"
 #~ msgstr "Pääsy"
 
 #~ msgid "Add a new parent"
-#~ msgstr "Lisää isän/äidin"
+#~ msgstr "Lisää isä/äiti"
 
 #~ msgid "Add an unlinked person"
 #~ msgstr "Lisää henkilö, jolla ei ole linkkejä muihin henkilöihin"

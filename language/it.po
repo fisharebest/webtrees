@@ -2563,7 +2563,7 @@ msgstr "Dati binari di un oggetto"
 
 #: includes/functions/functions_print.php:823
 msgid "Bing Maps™"
-msgstr ""
+msgstr "Bing Mappe™"
 
 #: library/WT/Gedcom/Code/Temp.php:68
 msgid "Birmingham, Alabama"
@@ -5800,7 +5800,7 @@ msgstr "Colore degli occhi"
 #. I18N: Name of a theme.
 #: themes/fab/theme.php:29
 msgid "F.A.B."
-msgstr ""
+msgstr "F.A.B."
 
 #. I18N: Name of a module.  Abbreviation for “Frequently Asked Questions”
 #: modules_v3/faq/module.php:32 modules_v3/faq/module.php:431
@@ -10156,7 +10156,7 @@ msgstr "Ops! webrees non è riuscito a creare file in questa cartella."
 
 #: includes/functions/functions_print.php:824
 msgid "OpenStreetMap™"
-msgstr ""
+msgstr "OpenStreetMap™"
 
 #: modules_v3/googlemap/help_text.php:41 modules_v3/googlemap/module.php:406
 msgid "Optional prefixes and suffixes"
@@ -13596,7 +13596,7 @@ msgstr "La versione di %s è troppo datata"
 
 #: help_text.php:997
 msgid "The website www.geonames.org provides a large database of place names.  This can be searched when entering new places.  To use this feature, you must register for a free account at www.geonames.org and provide the username."
-msgstr ""
+msgstr "Il sito web www.geonames.org fornisce un ampio database di nomi di luoghi.  Quando vengono inseriti nuovi luoghi è possibile ricercare all’interno di tale database.  Per utilizzare questa funzionalità è necessario registrarsi con un account gratuito su www.geonames.org e inserire il nome utente."
 
 #: setup.php:934
 msgid "The webtrees developers would be very interested to learn about this error.  If you contact them, they will help you resolve the problem."
@@ -14998,8 +14998,8 @@ msgid "Use relationship privacy"
 msgstr "Usa la privacy del rapporto di parentela"
 
 #: help_text.php:1017
-msgid "Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the gender of the individual in question.<br><br><table><tr><td wrap valign=\"middle\">This image might be used when the gender of the individual is unknown:"
-msgstr "Usare le immagini silhouette quando non è stata specificata nessuna immagine in evidenza per una persona è stato specificato.  Le immagini utilizzate sono specifiche per il sesso della persona in esame.<br><br><table><tr><td wrap valign=\"middle\">Questa immagine potrebbe essere usata quando il sesso della persona non è noto:"
+msgid "Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the gender of the individual in question.<br><br><table><tr><td style=\"vertical-align:middle\">This image might be used when the gender of the individual is unknown:"
+msgstr "Usare le immagini silhouette quando non è stata specificata nessuna immagine in evidenza per una persona è stato specificato.  Le immagini utilizzate sono specifiche per il sesso della persona in esame.<br><br><table><tr><td style=\"vertical-align:middle\">middle\">Questa immagine potrebbe essere usata quando il sesso della persona non è noto:"
 
 #: admin_trees_config.php:675 help_text.php:1016
 msgid "Use silhouettes"
@@ -16275,12 +16275,12 @@ msgstr "chiudi"
 #. I18N: Name of a theme.
 #: themes/clouds/theme.php:48
 msgid "clouds"
-msgstr ""
+msgstr "nuvole"
 
 #. I18N: Name of a theme.
 #: themes/colors/theme.php:127
 msgid "colors"
-msgstr ""
+msgstr "colori"
 
 #: modules_v3/top10_surnames/module.php:162
 msgid "compact list"
@@ -18577,7 +18577,7 @@ msgstr "mezzanotte"
 #. I18N: Name of a theme.
 #: themes/minimal/theme.php:30
 msgid "minimal"
-msgstr ""
+msgstr "minimale"
 
 #: modules_v3/googlemap/module.php:330
 msgid "minimum"
@@ -19767,7 +19767,7 @@ msgstr "moglie"
 #. I18N: Name of a theme.
 #: themes/xenea/theme.php:30
 msgid "xenea"
-msgstr ""
+msgstr "xenea"
 
 #: timeline.php:130
 msgid "years"

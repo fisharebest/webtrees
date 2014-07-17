@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2014-06-12 21:41+0100\n"
-"PO-Revision-Date: 2014-06-22 03:03+0100\n"
+"PO-Revision-Date: 2014-07-10 16:36+0100\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Launchpad-Export-Date: 2013-08-04 19:03+0000\n"
-"X-Generator: Poedit 1.6.5\n"
+"X-Generator: Poedit 1.6.6\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -98,13 +98,13 @@ msgstr "%1$d × %2$s"
 #: includes/functions/functions.php:1702
 #, php-format
 msgid "%1$s %2$d times removed ascending"
-msgstr ""
+msgstr "%1$s (%2$d generaties hoger)"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$d>=4
 #: includes/functions/functions.php:1705
 #, php-format
 msgid "%1$s %2$d times removed descending"
-msgstr ""
+msgstr "%1$s (%2$d generaties lager)"
 
 #. I18N: The placeholders are GEDCOM identifiers and tags.  e.g. “INDI I123 contains a FAMC link to F234.”
 #: admin_trees_check.php:199
@@ -176,7 +176,7 @@ msgstr "%1$s–%2$s"
 #: includes/functions/functions.php:1720
 #, php-format
 msgid "%1$s’s %2$s"
-msgstr ""
+msgstr "%1$s’s %2$s"
 
 #. I18N: This is the format string for the time-of-day.  See http://php.net/date for codes
 #: library/WT/I18N.php:177
@@ -341,13 +341,13 @@ msgstr "%s niet geïmplementeerd"
 #: includes/functions/functions.php:1678
 #, php-format
 msgid "%s once removed ascending"
-msgstr ""
+msgstr "%s (één generatie hoger)"
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: includes/functions/functions.php:1681
 #, php-format
 msgid "%s once removed descending"
-msgstr ""
+msgstr "%s (één generatie lager)"
 
 #: library/WT/I18N.php:431
 #, php-format
@@ -360,25 +360,25 @@ msgstr[1] "%s seconden geleden"
 #: includes/functions/functions.php:1694
 #, php-format
 msgid "%s three times removed ascending"
-msgstr ""
+msgstr "%s (drie generaties hoger)"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: includes/functions/functions.php:1697
 #, php-format
 msgid "%s three times removed descending"
-msgstr ""
+msgstr "%s (drie generaties lager)"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: includes/functions/functions.php:1686
 #, php-format
 msgid "%s twice removed ascending"
-msgstr ""
+msgstr "%s (twee generaties hoger)"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: includes/functions/functions.php:1689
 #, php-format
 msgid "%s twice removed descending"
-msgstr ""
+msgstr "%s (twee generaties lager)"
 
 #. I18N: Part of an age string. e.g. 7 weeks and 3 days
 #: includes/functions/functions_date.php:57 library/WT/I18N.php:376
@@ -1502,36 +1502,36 @@ msgstr "Geadopteerd door beide ouders"
 #. I18N: gedcom tag _ADPF
 #: library/WT/Gedcom/Code/Adop.php:43 library/WT/Gedcom/Tag.php:364
 msgid "Adopted by father"
-msgstr "Geadopteerd door de vader"
+msgstr "Geadopteerd door vader"
 
 #. I18N: gedcom tag _ADPF
 #: library/WT/Gedcom/Code/Adop.php:42 library/WT/Gedcom/Tag.php:363
 msgctxt "FEMALE"
 msgid "Adopted by father"
-msgstr "Geadopteerd door de vader"
+msgstr "Geadopteerd door vader"
 
 #. I18N: gedcom tag _ADPF
 #: library/WT/Gedcom/Code/Adop.php:41 library/WT/Gedcom/Tag.php:362
 msgctxt "MALE"
 msgid "Adopted by father"
-msgstr "Geadopteerd door de vader"
+msgstr "Geadopteerd door vader"
 
 #. I18N: gedcom tag _ADPM
 #: library/WT/Gedcom/Code/Adop.php:49 library/WT/Gedcom/Tag.php:370
 msgid "Adopted by mother"
-msgstr "Geadopteerd door de moeder"
+msgstr "Geadopteerd door moeder"
 
 #. I18N: gedcom tag _ADPM
 #: library/WT/Gedcom/Code/Adop.php:48 library/WT/Gedcom/Tag.php:369
 msgctxt "FEMALE"
 msgid "Adopted by mother"
-msgstr "Geadopteerd door de moeder"
+msgstr "Geadopteerd door moeder"
 
 #. I18N: gedcom tag _ADPM
 #: library/WT/Gedcom/Code/Adop.php:47 library/WT/Gedcom/Tag.php:368
 msgctxt "MALE"
 msgid "Adopted by mother"
-msgstr "Geadopteerd door de moeder"
+msgstr "Geadopteerd door moeder"
 
 #. I18N: gedcom tag ADOP
 #: library/WT/Gedcom/Tag.php:97
@@ -2764,7 +2764,7 @@ msgstr "Geboorte van een halfbroer/zus"
 
 #: library/WT/Gedcom/Tag.php:444
 msgid "Birth of a half-sister"
-msgstr "Geboorte van een halfzuster"
+msgstr "Geboorte van een halfzus"
 
 #: library/WT/Gedcom/Tag.php:451
 msgid "Birth of a sibling"
@@ -2772,7 +2772,7 @@ msgstr "Geboorte van een broer/zus"
 
 #: library/WT/Gedcom/Tag.php:450
 msgid "Birth of a sister"
-msgstr "Geboorte van een zuster"
+msgstr "Geboorte van een zus"
 
 #: library/WT/Gedcom/Tag.php:419
 msgid "Birth of a son"
@@ -3013,7 +3013,7 @@ msgstr "Begrafenis van een dochter"
 
 #: library/WT/Gedcom/Tag.php:506
 msgid "Burial of a father"
-msgstr "Begrafenis van een vader"
+msgstr "Begrafenis van vader"
 
 #: library/WT/Gedcom/Tag.php:466 library/WT/Gedcom/Tag.php:472
 #: library/WT/Gedcom/Tag.php:478
@@ -3066,11 +3066,11 @@ msgstr "Begrafenis van een halfbroer"
 
 #: library/WT/Gedcom/Tag.php:502
 msgid "Burial of a half-sibling"
-msgstr "Begrafenis van halfbroer/zus"
+msgstr "Begrafenis van halfbroer/halfzus"
 
 #: library/WT/Gedcom/Tag.php:501
 msgid "Burial of a half-sister"
-msgstr "Begrafenis van een halfzuster"
+msgstr "Begrafenis van een halfzus"
 
 #: library/WT/Gedcom/Tag.php:518
 msgid "Burial of a husband"
@@ -3078,11 +3078,11 @@ msgstr "Begrafenis van een echtgenoot"
 
 #: library/WT/Gedcom/Tag.php:494
 msgid "Burial of a maternal grandfather"
-msgstr "Begrafenis grootvader van moeder's kant"
+msgstr "Begrafenis van grootvader van moeders kant"
 
 #: library/WT/Gedcom/Tag.php:495
 msgid "Burial of a maternal grandmother"
-msgstr "Begrafenis grootmoeder van moeders kant"
+msgstr "Begrafenis van grootmoeder van moeders kant"
 
 #: library/WT/Gedcom/Tag.php:496
 msgid "Burial of a maternal grandparent"
@@ -3090,7 +3090,7 @@ msgstr "Begrafenis van een grootouder van moeders kant"
 
 #: library/WT/Gedcom/Tag.php:507
 msgid "Burial of a mother"
-msgstr "Begrafenis van een moeder"
+msgstr "Begrafenis van moeder"
 
 #: library/WT/Gedcom/Tag.php:508
 msgid "Burial of a parent"
@@ -3098,23 +3098,23 @@ msgstr "Begrafenis van een ouder"
 
 #: library/WT/Gedcom/Tag.php:488
 msgid "Burial of a paternal grandfather"
-msgstr "Begrafenis van grootvader van vader's kant"
+msgstr "Begrafenis van grootvader van vaders kant"
 
 #: library/WT/Gedcom/Tag.php:489
 msgid "Burial of a paternal grandmother"
-msgstr "Begrafenis van grootmoeder van vader's kant"
+msgstr "Begrafenis van grootmoeder van vaders kant"
 
 #: library/WT/Gedcom/Tag.php:490
 msgid "Burial of a paternal grandparent"
-msgstr "Begrafenis van een grootouder van vader's kant"
+msgstr "Begrafenis van grootouder van vaders kant"
 
 #: library/WT/Gedcom/Tag.php:514
 msgid "Burial of a sibling"
-msgstr "Begrafenis van broer/zus"
+msgstr "Begrafenis van een broer/zus"
 
 #: library/WT/Gedcom/Tag.php:513
 msgid "Burial of a sister"
-msgstr "Begrafenis van een zuster"
+msgstr "Begrafenis van een zus"
 
 #: library/WT/Gedcom/Tag.php:458
 msgid "Burial of a son"
@@ -4061,7 +4061,7 @@ msgstr "Crematie van een dochter"
 
 #: library/WT/Gedcom/Tag.php:609
 msgid "Cremation of a father"
-msgstr "Crematie van een vader"
+msgstr "Crematie van vader"
 
 #: library/WT/Gedcom/Tag.php:587 library/WT/Gedcom/Tag.php:593
 #: library/WT/Gedcom/Tag.php:599
@@ -4115,11 +4115,11 @@ msgstr "Crematie van een halfbroer"
 
 #: library/WT/Gedcom/Tag.php:605
 msgid "Cremation of a half-sibling"
-msgstr "Crematie van een halfbroer/zus"
+msgstr "Crematie van een halfbroer/halfzus"
 
 #: library/WT/Gedcom/Tag.php:604
 msgid "Cremation of a half-sister"
-msgstr "Crematie van een halfzuster"
+msgstr "Crematie van een halfzus"
 
 #: library/WT/Gedcom/Tag.php:621
 msgid "Cremation of a husband"
@@ -4127,15 +4127,15 @@ msgstr "Crematie van een echtgenoot"
 
 #: library/WT/Gedcom/Tag.php:597
 msgid "Cremation of a maternal grandfather"
-msgstr "Crematie van grootvader van moeder's kant"
+msgstr "Crematie van grootvader van moeders kant"
 
 #: library/WT/Gedcom/Tag.php:598
 msgid "Cremation of a maternal grandmother"
-msgstr "Crematie van grootmoeder van moeder's kant"
+msgstr "Crematie van grootmoeder van moeders kant"
 
 #: library/WT/Gedcom/Tag.php:610
 msgid "Cremation of a mother"
-msgstr "Crematie van een moeder"
+msgstr "Crematie van moeder"
 
 #: library/WT/Gedcom/Tag.php:611
 msgid "Cremation of a parent"
@@ -4143,11 +4143,11 @@ msgstr "Crematie van een ouder"
 
 #: library/WT/Gedcom/Tag.php:591
 msgid "Cremation of a paternal grandfather"
-msgstr "Crematie van grootvader van vader's kant"
+msgstr "Crematie van grootvader van vaders kant"
 
 #: library/WT/Gedcom/Tag.php:592
 msgid "Cremation of a paternal grandmother"
-msgstr "Crematie van grootmoeder van vader's kant"
+msgstr "Crematie van grootmoeder van vaders kant"
 
 #: library/WT/Gedcom/Tag.php:617
 msgid "Cremation of a sibling"
@@ -4155,7 +4155,7 @@ msgstr "Crematie van een broer/zus"
 
 #: library/WT/Gedcom/Tag.php:616
 msgid "Cremation of a sister"
-msgstr "Crematie van een zuster"
+msgstr "Crematie van een zus"
 
 #: library/WT/Gedcom/Tag.php:561
 msgid "Cremation of a son"
@@ -4629,7 +4629,7 @@ msgstr "Overlijden van een dochter"
 
 #: library/WT/Gedcom/Tag.php:676
 msgid "Death of a father"
-msgstr "Overlijden van een vader"
+msgstr "Overlijden van vader"
 
 #: library/WT/Gedcom/Tag.php:654 library/WT/Gedcom/Tag.php:660
 #: library/WT/Gedcom/Tag.php:666
@@ -4683,11 +4683,11 @@ msgstr "Overlijden van een halfbroer"
 
 #: library/WT/Gedcom/Tag.php:672
 msgid "Death of a half-sibling"
-msgstr "Overlijden van een halfbroer/-zus"
+msgstr "Overlijden van een halfbroer/halfzus"
 
 #: library/WT/Gedcom/Tag.php:671
 msgid "Death of a half-sister"
-msgstr "Overlijden van een halfzuster"
+msgstr "Overlijden van een halfzus"
 
 #: library/WT/Gedcom/Tag.php:688
 msgid "Death of a husband"
@@ -4695,15 +4695,15 @@ msgstr "Overlijden van een echtgenoot"
 
 #: library/WT/Gedcom/Tag.php:664
 msgid "Death of a maternal grandfather"
-msgstr "Overlijden van grootvader van moeder's kant"
+msgstr "Overlijden van grootvader van moeders kant"
 
 #: library/WT/Gedcom/Tag.php:665
 msgid "Death of a maternal grandmother"
-msgstr "Overlijden van grootmoeder van moeder's kant"
+msgstr "Overlijden van grootmoeder van moeders kant"
 
 #: library/WT/Gedcom/Tag.php:677
 msgid "Death of a mother"
-msgstr "Overlijden van een moeder"
+msgstr "Overlijden van moeder"
 
 #: library/WT/Gedcom/Tag.php:678
 msgid "Death of a parent"
@@ -4711,11 +4711,11 @@ msgstr "Overlijden van een ouder"
 
 #: library/WT/Gedcom/Tag.php:658
 msgid "Death of a paternal grandfather"
-msgstr "Overlijden van grootvader van vader's kant"
+msgstr "Overlijden van grootvader van vaders kant"
 
 #: library/WT/Gedcom/Tag.php:659
 msgid "Death of a paternal grandmother"
-msgstr "Overlijden van grootmoeder van vader's kant"
+msgstr "Overlijden van grootmoeder van vaders kant"
 
 #: library/WT/Gedcom/Tag.php:684
 msgid "Death of a sibling"
@@ -5585,7 +5585,7 @@ msgstr "Voer het faxnummer in, inclusief de land- en regiocode.<br><br>Een voorb
 
 #: help_text.php:388
 msgid "Enter the URL address including the http://.<br><br>An example URL looks like this: <b>http://www.webtrees.net/</b>.  Leave this field blank if you do not want to include a URL."
-msgstr "Voer een URL adres in MET http://.<br><br>Een voorbeeld van een URL ziet er zo uit: <b>http://www.webtrees.net/<b> Vul hier niets in als u geen URL wilt toevoegen."
+msgstr "Voer het URL adres in dat begint met http://.<br><br>Een voorbeeld van een URL ziet er zo uit: <b>http://www.webtrees.net/<b>. Vul hier niets in als u geen URL wilt toevoegen."
 
 #: help_text.php:50
 msgid "Enter the address into the field just as you would write it on an envelope.<br><br>Leave this field blank if you do not want to include an address."
@@ -6154,18 +6154,18 @@ msgstr "Vader: %s"
 
 #: includes/functions/functions_print.php:620
 msgid "Father’s age"
-msgstr "Vader's leeftijd"
+msgstr "Leeftijd vader"
 
 #. I18N: A step-family.  %s is an individual’s name
 #: library/WT/Individual.php:745
 #, php-format
 msgid "Father’s family with %s"
-msgstr "Vader's gezin met %s"
+msgstr "Gezin van vader met %s"
 
 #. I18N: A step-family.
 #: library/WT/Individual.php:747
 msgid "Father’s family with an unknown individual"
-msgstr "Vader's gezin met een onbekend persoon"
+msgstr "Gezin van vader met een onbekend persoon"
 
 #. I18N: Name of a module
 #: help_text.php:1252 library/WT/MenuBar.php:500
@@ -6756,7 +6756,7 @@ msgstr "Geeft gebruikers de mogelijkheid hun eigen thema te kiezen."
 
 #: help_text.php:1002
 msgid "Gives visitors the option of registering themselves for an account on the site.<br><br>The visitor will receive an email message with a code to verify his application for an account.  After verification, an administrator will have to approve the registration before it becomes active."
-msgstr "Geeft bezoekers de mogelijkheid zich op de site te registreren.<br>De bezoeker ontvangt daarna een e-mail met verificatiegegevens.<br>Na verificatie moet de beheerder de registratie goedkeuren voordat die actief wordt."
+msgstr "Geeft bezoekers de mogelijkheid zich op de site te registreren.<br>De bezoeker ontvangt daarna een e-mail met verificatiegegevens.<br>Na verificatie moet een beheerder de registratie goedkeuren voordat deze actief wordt."
 
 #. I18N: gedcom tag _UID
 #: library/WT/Gedcom/Tag.php:806
@@ -7848,7 +7848,7 @@ msgstr "Behoud"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:124
 msgid "Keep link in list"
-msgstr "Bewaar de Link in de lijst"
+msgstr "Bewaar de link in de lijst"
 
 #: library/WT/Stats.php:3924
 msgid "Kenya"
@@ -8604,7 +8604,7 @@ msgstr "Huwelijk van een dochter"
 #. I18N: ...to another spouse
 #: library/WT/Gedcom/Tag.php:764
 msgid "Marriage of a father"
-msgstr "Huwelijk van een vader"
+msgstr "Huwelijk van vader"
 
 #: library/WT/Gedcom/Tag.php:742 library/WT/Gedcom/Tag.php:748
 #: library/WT/Gedcom/Tag.php:754
@@ -8645,7 +8645,7 @@ msgstr "Huwelijk van een halfbroer"
 
 #: library/WT/Gedcom/Tag.php:760
 msgid "Marriage of a half-sibling"
-msgstr "Huwelijk van een halfbroer/-zus"
+msgstr "Huwelijk van een halfbroer/halfzus"
 
 #: library/WT/Gedcom/Tag.php:759
 msgid "Marriage of a half-sister"
@@ -8654,7 +8654,7 @@ msgstr "Huwelijk van een halfzus"
 #. I18N: ...to another spouse
 #: library/WT/Gedcom/Tag.php:765
 msgid "Marriage of a mother"
-msgstr "Huwelijk van een moeder"
+msgstr "Huwelijk van moeder"
 
 #. I18N: ...to another spouse
 #: library/WT/Gedcom/Tag.php:766
@@ -8667,7 +8667,7 @@ msgstr "Huwelijk van een broer/zus"
 
 #: library/WT/Gedcom/Tag.php:771
 msgid "Marriage of a sister"
-msgstr "Huwelijk van een zuster"
+msgstr "Huwelijk van een zus"
 
 #: library/WT/Gedcom/Tag.php:732
 msgid "Marriage of a son"
@@ -8811,10 +8811,6 @@ msgstr "Media"
 msgid "Media ID prefix"
 msgstr "Voorvoegsel media-ID"
 
-#: medialist.php:173
-msgid "Media objects found"
-msgstr "Mediaobjecten gevonden"
-
 #: find.php:214
 msgid "Media contains:"
 msgstr "Media bevat:"
@@ -8869,6 +8865,10 @@ msgstr "Media object"
 #: statistics.php:376
 msgid "Media objects"
 msgstr "Mediaobjecten"
+
+#: medialist.php:173
+msgid "Media objects found"
+msgstr "Mediaobjecten gevonden"
 
 #: medialist.php:111
 msgid "Media objects per page"
@@ -9217,14 +9217,14 @@ msgstr "Mordad"
 msgid "Morocco"
 msgstr "Marokko"
 
-#: modules_v3/gedcom_stats/module.php:192 modules_v3/html/module.php:258
-msgid "Most common surnames"
-msgstr "Meest voorkomende achternamen"
-
 #. I18N: Help text for the “Use password” site configuration setting
 #: help_text.php:749
 msgid "Most SMTP servers require a password."
 msgstr "De meeste SMTP servers hebben een wachtwoord nodig."
+
+#: modules_v3/gedcom_stats/module.php:192 modules_v3/html/module.php:258
+msgid "Most common surnames"
+msgstr "Meest voorkomende achternamen"
 
 #. I18N: Help text for the "Secure connection" site configuration setting
 #: help_text.php:774
@@ -9261,18 +9261,18 @@ msgstr "Moeder: %s"
 
 #: includes/functions/functions_print.php:612
 msgid "Mother’s age"
-msgstr "Moeder's leeftijd"
+msgstr "Leeftijd moeder"
 
 #. I18N: A step-family.  %s is an individual’s name
 #: library/WT/Individual.php:752
 #, php-format
 msgid "Mother’s family with %s"
-msgstr "Moeder's gezin met %s"
+msgstr "Gezin van moeder met %s"
 
 #. I18N: A step-family.
 #: library/WT/Individual.php:754
 msgid "Mother’s family with an unknown individual"
-msgstr "Moeder's gezin met een onbekend persoon"
+msgstr "Gezin van moeder met een onbekend persoon"
 
 #: modules_v3/faq/help_text.php:59
 msgid "Move FAQ item down"
@@ -9849,7 +9849,7 @@ msgstr "Noorwegen"
 
 #: modules_v3/GEDFact_assistant/module.php:196
 msgid "Not a valid individual, family, or source ID"
-msgstr "Geen geldig Persoon-, Familie- of Bron-ID"
+msgstr "Geen geldig persoon-, familie- of bron-ID"
 
 #: admin.php:157
 msgid "Not approved by an administrator"
@@ -10222,10 +10222,6 @@ msgstr "Orlando, Florida"
 msgid "Other"
 msgstr "Andere"
 
-#: search.php:217
-msgid "Other searches"
-msgstr "Andere zoekacties"
-
 #: admin_trees_config.php:1000 help_text.php:455
 msgid "Other facts to show in charts"
 msgstr "Andere te tonen feiten in diagrammen"
@@ -10237,6 +10233,10 @@ msgstr "Andere map… voer in"
 #: modules_v3/gedcom_stats/module.php:346
 msgid "Other records"
 msgstr "Andere records"
+
+#: search.php:217
+msgid "Other searches"
+msgstr "Andere zoekacties"
 
 #: admin_trees_config.php:1248
 msgid "Other settings"
@@ -10583,10 +10583,6 @@ msgstr "Plaats"
 msgid "Place check"
 msgstr "Plaats controleren"
 
-#: placelist.php:43 placelist.php:62
-msgid "Place list"
-msgstr "Lijst van plaatsen"
-
 #: find.php:232
 msgid "Place contains:"
 msgstr "Plaats bevat"
@@ -10603,6 +10599,10 @@ msgstr "Hiërarchie van plaatsen"
 #: library/WT/Gedcom/Tag.php:274
 msgid "Place in Hebrew"
 msgstr "Plaatsnaam in Hebreeuws"
+
+#: placelist.php:43 placelist.php:62
+msgid "Place list"
+msgstr "Lijst van plaatsen"
 
 #: help_text.php:885
 msgid "Place names are frequently too long to fit on charts, lists, etc.  They can be abbreviated by showing just the first few parts of the name, such as <i>village, county</i>, or the last few part of it, such as <i>region, country</i>."
@@ -10766,7 +10766,7 @@ msgstr "Klik op onderstaande link en vul de gegevens in om uw gebruikersnaam en 
 
 #: search.php:63
 msgid "Please enter a given name, surname, or place in addition to the year"
-msgstr "Vul a.u.b. een Voornaam, Achternaam, of Plaats in bij het Jaar"
+msgstr "Vul, behalve het jaartal, ook een voornaam, achternaam of plaatsnaam in"
 
 #: message.php:102
 msgid "Please enter a message subject."
@@ -10993,7 +10993,7 @@ msgstr "Eigendom"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_4_text.php:36
 msgid "Proposed census text&nbsp;&nbsp;"
-msgstr "Voorgestelde text over de volkstelling&nbsp;&nbsp;"
+msgstr "Voorgestelde tekst over de volkstelling&nbsp;&nbsp;"
 
 #: library/WT/Gedcom/Code/Temp.php:150
 msgid "Provo, Utah"
@@ -11378,10 +11378,6 @@ msgstr "Server op afstand"
 msgid "Remove"
 msgstr "Verwijder"
 
-#: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:125
-msgid "Remove link from list"
-msgstr "Verwijder de Link uit de lijst"
-
 #: modules_v3/batch_update/plugins/duplicate_links.php:28
 msgid "Remove duplicate links"
 msgstr "Verwijder dubbele koppelingen"
@@ -11390,6 +11386,10 @@ msgstr "Verwijder dubbele koppelingen"
 #: modules_v3/googlemap/module.php:537 modules_v3/googlemap/module.php:3908
 msgid "Remove flag"
 msgstr "Verwijder vlag"
+
+#: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:125
+msgid "Remove link from list"
+msgstr "Verwijder de link uit de lijst"
 
 #: help_text.php:1367 timeline.php:288 timeline.php:304
 msgid "Remove person"
@@ -11780,7 +11780,7 @@ msgstr "Zoek naar:"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:57
 msgid "Search for individuals to add to add Links list."
-msgstr "Zoek personen om toe te voegen aan de \"Voeg koppelingen toe\"-lijst."
+msgstr "Zoek personen om toe te voegen aan de lijst “Voeg koppelingen toe”."
 
 #: modules_v3/googlemap/module.php:3831
 msgid "Search globally"
@@ -12054,7 +12054,7 @@ msgstr "Kies <b>Ja</b> indien u pictogrammen naast namen van feiten wilt weergev
 
 #: help_text.php:1012
 msgid "Set to <b>Yes</b> to use the RIN number instead of the GEDCOM ID when asked for individual IDs in configuration files, user settings, and charts.  This is useful for genealogy programs that do not consistently export GEDCOMs with the same ID assigned to each individual but always use the same RIN."
-msgstr "Kies \"Ja\" om RIN-nrs. te gebruiken in plaats van GEDCOM-ID's. Deze worden gebruikt in configuratiebestanden, gebruikersinstellingen en overzichten. Dit is nuttig voor genealogieprogramma's, die geen bijbehorende ID's exporteren maar altijd dezelfde RIN gebruiken."
+msgstr "Kies <b>Ja</b> om het RIN-nummer te gebruiken in plaats van het GEDCOM-ID. Dit nummer wordt gebruikt in configuratiebestanden, gebruikersinstellingen en overzichten. Dit is nuttig voor genealogieprogramma's, die niet altijd dezelfde ID's exporteren maar wel altijd hetzelfde RIN-nummer gebruiken."
 
 #: help_text.php:859
 msgid "Setting this option to <b>Yes</b> will show status codes for LDS ordinances in chart boxes.<ul><li><b>B</b> - Baptism</li><li><b>E</b> - Endowed</li><li><b>S</b> - Sealed to spouse</li><li><b>P</b> - Sealed to parents</li></ul>An individual who has all of the ordinances done will have <b>BESP</b> printed after their name.  Missing ordinances are indicated by <b>_</b> in place of the corresponding letter code.  For example, <b>BE__</b> indicates missing <b>S</b> and <b>P</b> ordinances."
@@ -12665,7 +12665,7 @@ msgstr "Singapore"
 #: modules_v3/individual_ext_report/report.xml:346
 #: modules_v3/individual_report/report.xml:348
 msgid "Sister"
-msgstr "Zuster"
+msgstr "Zus"
 
 #: admin_site_access.php:30 themes/_administration/header.php:101
 msgid "Site access rules"
@@ -13773,7 +13773,7 @@ msgstr "Deze stamboom werd het laatst gewijzigd op %s."
 
 #: help_text.php:363
 msgid "This field allows you to change the source record that this fact’s source citation links to.  This field takes a source ID.  Beside the field will be listed the title of the current source ID.  Use the <b>Find ID</b> link to look up the source’s ID number.  To remove the entire citation, make this field blank."
-msgstr "Hier kunt u de bron aanpassen waar de bronvermelding van dit feit naar verwijst. Ingevuld wordt een bron-ID. Daarnaast wordt de titel van de bron weergegeven. Klik op de \"Zoek ID\"-link om een bestaand bron-ID te zoeken. Om de bronvermelding te verwijderen moet u het veld met de Bron-ID leeg maken."
+msgstr "Hier kunt u de bronverwijzing aanpassen door een bron ID-nummer in te vullen. Onder het veld wordt de titel van de huidige bron weergegeven. Klik op de link <b>Vind een bron</b> om het nummer van een bestaande bron op te zoeken. Maak het veld met het bron-nummer leeg om de bronverwijzing te verwijderen."
 
 #: modules_v3/faq/help_text.php:40
 msgid "This field controls the order in which the FAQ items are displayed.<br><br>You do not have to enter the numbers sequentially.  If you leave holes in the numbering scheme, you can insert other items later.  For example, if you use the numbers 1, 6, 11, 16, you can later insert items with the missing sequence numbers.  Negative numbers and zero are allowed, and can be used to insert items in front of the first one.<br><br>When more than one FAQ item has the same position number, only one of these items will be visible."
@@ -14121,11 +14121,11 @@ msgstr "Met deze optie kan een FAQ gewijzigd worden op de FAQ-pagina."
 
 #: modules_v3/faq/help_text.php:60
 msgid "This option will let you move an item downwards on the FAQ page.<br><br>Each time you use this option, the FAQ position number of this item is increased by one.  You can achieve the same effect by editing the item in question and changing the FAQ position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
-msgstr "Hiermee kan een FAQ naar beneden geschoven worden in de FAQ-lijst.<br><br>Iedere keer dat op de pijl geklikt wordt, wordt de positie van de FAQ met één verhoogd. Dit zelfde effect kan worden bereikt door de FAQ te wijzigen en het positienummer te veranderen. Als meerdere  FAQ's hetzelfde positienummer hebben, wordt slechts één van die FAQ's getoond."
+msgstr "Gebruik deze optie om een item naar beneden te verplaatsen in de FAQ-lijst.<br><br>Iedere keer dat u deze optie gebruikt, wordt het positienummer van het item met één verhoogd. Dit zelfde effect kunt u bereiken door het bewuste item te wijzigen en het positienummer te veranderen. Als meerdere  items hetzelfde positienummer hebben, wordt slechts één van de items getoond."
 
 #: modules_v3/faq/help_text.php:65
 msgid "This option will let you move an item upwards on the FAQ page.<br><br>Each time you use this option, the FAQ position number of this item is reduced by one.  You can achieve the same effect by editing the item in question and changing the FAQ position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
-msgstr "Hiermee kan een FAQ omhoog geschoven worden in de FAQ-lijst.<br><br>Iedere keer dat op de pijl geklikt wordt, wordt de positie van deze FAQ met één verlaagd. Dit zelfde effect kan worden bereikt door de FAQ te wijzigen en het positienummer te veranderen. Als meerdere FAQ's hetzelfde positienummer hebben, wordt slechts één van die FAQ's getoond."
+msgstr "Gebruik deze optie om een item naar boven te verplaatsen in de FAQ-lijst.<br><br>Iedere keer dat u deze optie gebruikt, wordt het positienummer van het item met één verlaagd. Dit zelfde effect kunt u bereiken door het bewuste item te wijzigen en het positienummer te veranderen. Als meerdere  items hetzelfde positienummer hebben, wordt slechts één van de items getoond."
 
 #: help_text.php:1099
 msgid "This option will remove private data from the downloaded GEDCOM file.  The file will be filtered according to the privacy settings that apply to each access level.  Privacy settings are specified on the GEDCOM configuration page."
@@ -14197,7 +14197,7 @@ msgstr "Deze rol heeft alle rechten van een \"bewerker\", plus het recht wijzigi
 
 #: help_text.php:1398
 msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the site, users, and modules."
-msgstr "Deze rol heeft alle rechten van de rol van manager in alle stambomen, daarnaast het recht om instellingen/configuratie van de site, gebruikers en modules te veranderen."
+msgstr "Deze rol heeft alle rechten van de rol van manager in alle stambomen. Daarnaast heeft deze rol het recht om instellingen/configuratie van de site, gebruikers en modules aan te passen."
 
 #: help_text.php:1386
 msgid "This role has all the permissions of the member role, plus permission to add/change/delete data.  Any changes will need to be approved by a moderator, unless the user has the “automatically accept changes” option enabled."
@@ -14213,7 +14213,7 @@ msgstr "Deze rol heeft alle rechten van de rol van bezoeker, en daarnaast alle e
 
 #: help_text.php:1144
 msgid "This section allows you to add a new note to the fact that you are currently editing.  Notes are free-form text and will appear in the Fact Details section of the page."
-msgstr "Hier kunt u een Notitie toevoegen aan het feit dat u op dit moment aan het wijzigen bent. In notities kunt u een willekeurige tekst plaatsen. De notitie verschijnt bij de detailgegevens van het feit op de pagina."
+msgstr "Hier kunt u een notitie toevoegen aan het feit dat u op dit moment aan het wijzigen bent. In notities kunt u een willekeurige tekst plaatsen. De notitie verschijnt bij de detailgegevens van het feit op de pagina."
 
 #: help_text.php:1157
 msgid "This section allows you to add a new source citation to the fact that you are currently editing.<br><br>In the Source field you enter the ID for the source.  Click the “Create a new source” link if you need to enter a new source.  In the citation details field you would enter the page number or other information that might help someone find the information in the source.  In the Text field you would enter the text transcription from the source."
@@ -14283,7 +14283,7 @@ msgstr "Dit betekent normalerwijze dat u de permissies voor de map moet verander
 
 #: help_text.php:1223
 msgid "This value determines the number of descendant generations of the root individual that will be printed in hourglass format."
-msgstr "Deze waarde bepaalt het aantal afstammingsgeneraties van de begin persoon, die afgedrukt zullen worden in het Zandloper diagram."
+msgstr "Deze waarde bepaalt het aantal generaties afstammelingen van de begin persoon, die afgedrukt zullen worden in het zandloper diagram."
 
 #: site-offline.php:71 site-unavailable.php:63
 msgid "This website is temporarily unavailable"
@@ -14988,8 +14988,8 @@ msgid "Use relationship privacy"
 msgstr "Gebruik relatie privacy"
 
 #: help_text.php:1017
-msgid "Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the gender of the individual in question.<br><br><table><tr><td wrap valign=\"middle\">This image might be used when the gender of the individual is unknown:"
-msgstr "Gebruik een silhouet plaatje als er geen gemarkeerde afbeelding bestaat voor die persoon. Het silhouet plaatje welke wordt gebruikt is specifiek voor het geslacht van de persoon in kwestie<br><br><table><tr><td wrap valign=\"middle\">Dit silhouet plaatje kan worden gebruikt als het geslacht van de persoon onbekend is:"
+msgid "Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the gender of the individual in question.<br><br><table><tr><td style=\"vertical-align:middle\">This image might be used when the gender of the individual is unknown:"
+msgstr "Gebruik een silhouet plaatje als er geen gemarkeerde afbeelding bestaat voor die persoon. Het silhouet plaatje welke wordt gebruikt is specifiek voor het geslacht van de persoon in kwestie<br><br><table><tr><td style=\"vertical-align:middle\">middle\">Dit silhouet plaatje kan worden gebruikt als het geslacht van de persoon onbekend is:"
 
 #: admin_trees_config.php:675 help_text.php:1016
 msgid "Use silhouettes"
@@ -15005,7 +15005,7 @@ msgstr "Gebruik deze knoppen om de volgorde van de blokken in de lijst aan te pa
 
 #: help_text.php:398
 msgid "Use this field to signal that this media item is the highlighted or primary item for the individual it is attached to.  The highlighted image is the one that will be used on charts and on the individual’s page."
-msgstr "Gebruik dit keuzeveld om aan te geven of de afbeelding de gemarkeerde of primaire is, die aan deze persoon is gekoppeld.<br>De gemarkeerde afbeelding wordt gebruikt op diagrammen en op de persoonspagina."
+msgstr "Gebruik dit keuzeveld om aan te geven of de afbeelding als gemarkeerde (primaire) afbeelding moet worden gebruikt.<br>De gemarkeerde afbeelding wordt gebruikt in diagrammen en op de persoonspagina."
 
 #: help_text.php:1358
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site.  You can also use this to enter any other comments you may have for the site administrator."
@@ -15823,10 +15823,6 @@ msgstr "Jongste man"
 msgid "Youngest mother"
 msgstr "Jongste moeder"
 
-#: includes/authentication.php:120 message.php:127
-msgid "Your name:"
-msgstr "Uw naam:"
-
 #: modules_v3/clippings/module.php:172 modules_v3/clippings/module.php:430
 msgid "Your clippings cart is empty."
 msgstr "U heeft nog geen stamboomknipsels verzameld."
@@ -15834,6 +15830,10 @@ msgstr "U heeft nog geen stamboomknipsels verzameld."
 #: setup.php:402
 msgid "Your name"
 msgstr "Uw naam"
+
+#: includes/authentication.php:120 message.php:127
+msgid "Your name:"
+msgstr "Uw naam:"
 
 #. I18N: %s is a server name/URL
 #: login.php:338
@@ -16158,32 +16158,32 @@ msgstr "zwager"
 #: includes/functions/functions.php:923
 msgctxt "brother’s wife’s sibling"
 msgid "brother/sister-in-law"
-msgstr "zwager/schoonzuster"
+msgstr "zwager/schoonzus"
 
 #: includes/functions/functions.php:846
 msgctxt "husband’s sibling"
 msgid "brother/sister-in-law"
-msgstr "zwager/schoonzuster"
+msgstr "zwager/schoonzus"
 
 #: includes/functions/functions.php:872
 msgctxt "sibling’s spouse"
 msgid "brother/sister-in-law"
-msgstr "zwager/schoonzuster"
+msgstr "zwager/schoonzus"
 
 #: includes/functions/functions.php:1058
 msgctxt "sister’s husband’s sibling"
 msgid "brother/sister-in-law"
-msgstr "zwager/schoonzuster"
+msgstr "zwager/schoonzus"
 
 #: includes/functions/functions.php:889
 msgctxt "spouse’s sibling"
 msgid "brother/sister-in-law"
-msgstr "zwager/schoonzuster"
+msgstr "zwager/schoonzus"
 
 #: includes/functions/functions.php:895
 msgctxt "wife’s sibling"
 msgid "brother/sister-in-law"
-msgstr "zwager/schoonzuster"
+msgstr "zwager/schoonzus"
 
 #: modules_v3/top10_surnames/module.php:162
 msgid "bullet list"
@@ -16401,7 +16401,7 @@ msgstr "oudere broer of zus"
 
 #: includes/functions/functions.php:795
 msgid "elder sister"
-msgstr "oudere zuster"
+msgstr "oudere zus"
 
 #: includes/functions/functions.php:632
 msgctxt "FEMALE"
@@ -16650,122 +16650,122 @@ msgstr "neef"
 #: includes/functions/functions.php:1114
 msgctxt "father’s father’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr "Oudoom's kind"
+msgstr "oudoom's kind"
 
 #: includes/functions/functions.php:1112
 msgctxt "father’s father’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr "Oudoom's dochter"
+msgstr "oudoom's dochter"
 
 #: includes/functions/functions.php:1113
 msgctxt "father’s father’s brother’s son"
 msgid "first cousin once removed ascending"
-msgstr "Oudoom's zoon"
+msgstr "oudoom's zoon"
 
 #: includes/functions/functions.php:1117
 msgctxt "father’s father’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr "Oudtante's kind"
+msgstr "oudtante's kind"
 
 #: includes/functions/functions.php:1115
 msgctxt "father’s father’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr "Oudtante's dochter"
+msgstr "oudtante's dochter"
 
 #: includes/functions/functions.php:1116
 msgctxt "father’s father’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr "Oudtante's zoon"
+msgstr "oudtante's zoon"
 
 #: includes/functions/functions.php:1120
 msgctxt "father’s mother’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr "Oudoom's kind"
+msgstr "oudoom's kind"
 
 #: includes/functions/functions.php:1118
 msgctxt "father’s mother’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr "Oudoom's dochter"
+msgstr "oudoom's dochter"
 
 #: includes/functions/functions.php:1119
 msgctxt "father’s mother’s brother’s son"
 msgid "first cousin once removed ascending"
-msgstr "Oudoom's zoon"
+msgstr "oudoom's zoon"
 
 #: includes/functions/functions.php:1123
 msgctxt "father’s mother’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr "Oudtante's kind"
+msgstr "oudtante's kind"
 
 #: includes/functions/functions.php:1121
 msgctxt "father’s mother’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr "Oudtante's dochter"
+msgstr "oudtante's dochter"
 
 #: includes/functions/functions.php:1122
 msgctxt "father’s mother’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr "Oudtante's zoon"
+msgstr "oudtante's zoon"
 
 #: includes/functions/functions.php:1126
 msgctxt "mother’s father’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr "Oudoom's kind"
+msgstr "oudoom's kind"
 
 #: includes/functions/functions.php:1124
 msgctxt "mother’s father’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr "Oudoom's dochter"
+msgstr "oudoom's dochter"
 
 #: includes/functions/functions.php:1125
 msgctxt "mother’s father’s brother’s son"
 msgid "first cousin once removed ascending"
-msgstr "Oudoom's zoon"
+msgstr "oudoom's zoon"
 
 #: includes/functions/functions.php:1129
 msgctxt "mother’s father’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr "Oudtante's kind"
+msgstr "oudtante's kind"
 
 #: includes/functions/functions.php:1127
 msgctxt "mother’s father’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr "Oudtante's dochter"
+msgstr "oudtante's dochter"
 
 #: includes/functions/functions.php:1128
 msgctxt "mother’s father’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr "Oudtante's zoon"
+msgstr "oudtante's zoon"
 
 #: includes/functions/functions.php:1132
 msgctxt "mother’s mother’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr "Oudoom's kind"
+msgstr "oudoom's kind"
 
 #: includes/functions/functions.php:1130
 msgctxt "mother’s mother’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr "Oudtante's dochter"
+msgstr "oudtante's dochter"
 
 #: includes/functions/functions.php:1131
 msgctxt "mother’s mother’s brother’s son"
 msgid "first cousin once removed ascending"
-msgstr "Oudoom's zoon"
+msgstr "oudoom's zoon"
 
 #: includes/functions/functions.php:1135
 msgctxt "mother’s mother’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr "Oudtante's kind"
+msgstr "oudtante's kind"
 
 #: includes/functions/functions.php:1133
 msgctxt "mother’s mother’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr "Oudtante's dochter"
+msgstr "oudtante's dochter"
 
 #: includes/functions/functions.php:1134
 msgctxt "mother’s mother’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr "Oudtante's zoon"
+msgstr "oudtante's zoon"
 
 #: includes/functions/functions.php:635
 msgctxt "FEMALE"
@@ -16810,7 +16810,7 @@ msgstr "achterneef/achternicht 10e graad"
 #: includes/functions/functions.php:582
 msgctxt "MALE"
 msgid "fourth cousin"
-msgstr "achterneef/Achternicht 10e graad"
+msgstr "achterneef/achternicht 10e graad"
 
 #: includes/functions/functions.php:644
 msgctxt "MALE/FEMALE"
@@ -16950,23 +16950,23 @@ msgstr "aangetrouwde kleindochter"
 #: includes/functions/functions.php:1295
 #, php-format
 msgid "great ×%d aunt"
-msgstr "oud ×%d tante"
+msgstr "%dx oudtante"
 
 #: includes/functions/functions.php:1276 includes/functions/functions.php:1285
 #: includes/functions/functions.php:1296
 #, php-format
 msgid "great ×%d aunt/uncle"
-msgstr "oud ×%d oom/tante"
+msgstr "%dx oudoom/oudtante"
 
 #: includes/functions/functions.php:1617 includes/functions/functions.php:1630
 #, php-format
 msgid "great ×%d grandchild"
-msgstr "(×%dachter)kleinkind"
+msgstr "%dx achterkleinkind"
 
 #: includes/functions/functions.php:1616 includes/functions/functions.php:1629
 #, php-format
 msgid "great ×%d granddaughter"
-msgstr "(×%d)kleindochter"
+msgstr "%dx achterkleindochter"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1520 includes/functions/functions.php:1527
@@ -16974,121 +16974,121 @@ msgstr "(×%d)kleindochter"
 #: includes/functions/functions.php:1552
 #, php-format
 msgid "great ×%d grandfather"
-msgstr ""
+msgstr "%dx overgrootvader"
 
 #: includes/functions/functions.php:1521 includes/functions/functions.php:1528
 #: includes/functions/functions.php:1535 includes/functions/functions.php:1543
 #: includes/functions/functions.php:1553
 #, php-format
 msgid "great ×%d grandmother"
-msgstr ""
+msgstr "%dx overgrootmoeder"
 
 #: includes/functions/functions.php:1522 includes/functions/functions.php:1529
 #: includes/functions/functions.php:1536 includes/functions/functions.php:1544
 #: includes/functions/functions.php:1554
 #, php-format
 msgid "great ×%d grandparent"
-msgstr ""
+msgstr "%dx overgrootouder"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1615 includes/functions/functions.php:1628
 #, php-format
 msgid "great ×%d grandson"
-msgstr "(×%d)kleinzoon"
+msgstr "%dx achterkleinzoon"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1448 includes/functions/functions.php:1459
 #, php-format
 msgid "great ×%d nephew"
-msgstr ""
+msgstr "%dx achterneef"
 
 #: includes/functions/functions.php:1424
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%d-1) grandson"
 msgid "great ×%d nephew"
-msgstr ""
+msgstr "%dx achterneef"
 
 #: includes/functions/functions.php:1426
 #, php-format
 msgctxt "(a man’s) sister’s great ×(%d-1) grandson"
 msgid "great ×%d nephew"
-msgstr ""
+msgstr "%dx achterneef"
 
 #: includes/functions/functions.php:1428
 #, php-format
 msgctxt "(a woman’s) great ×%d nephew"
 msgid "great ×%d nephew"
-msgstr ""
+msgstr "%dx achterneef"
 
 #: includes/functions/functions.php:1450 includes/functions/functions.php:1461
 #, php-format
 msgid "great ×%d nephew/niece"
-msgstr ""
+msgstr "%dx achterneef/achternicht"
 
 #: includes/functions/functions.php:1439
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%d-1) grandchild"
 msgid "great ×%d nephew/niece"
-msgstr ""
+msgstr "%dx achterneef/achternicht"
 
 #: includes/functions/functions.php:1441
 #, php-format
 msgctxt "(a man’s) sister’s great ×(%d-1) grandchild"
 msgid "great ×%d nephew/niece"
-msgstr ""
+msgstr "%dx achterneef/achternicht"
 
 #: includes/functions/functions.php:1443
 #, php-format
 msgctxt "(a woman’s) great ×%d nephew/niece"
 msgid "great ×%d nephew/niece"
-msgstr ""
+msgstr "%dx achterneef/achternicht"
 
 #: includes/functions/functions.php:1449 includes/functions/functions.php:1460
 #, php-format
 msgid "great ×%d niece"
-msgstr ""
+msgstr "%dx achternicht"
 
 #: includes/functions/functions.php:1431
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%d-1) granddaughter"
 msgid "great ×%d niece"
-msgstr ""
+msgstr "%dx achternicht"
 
 #: includes/functions/functions.php:1433
 #, php-format
 msgctxt "(a man’s) sister’s great ×(%d-1) granddaughter"
 msgid "great ×%d niece"
-msgstr ""
+msgstr "%dx achternicht"
 
 #: includes/functions/functions.php:1435
 #, php-format
 msgctxt "(a woman’s) great ×%d niece"
 msgid "great ×%d niece"
-msgstr ""
+msgstr "%dx achternicht"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1274 includes/functions/functions.php:1294
 #, php-format
 msgid "great ×%d uncle"
-msgstr "oud ×%d oom"
+msgstr "%dx oudoom"
 
 #: includes/functions/functions.php:1281
 #, php-format
 msgctxt "great ×(%d-1) grandfather’s brother"
 msgid "great ×%d uncle"
-msgstr ""
+msgstr "%dx oudoom"
 
 #: includes/functions/functions.php:1282
 #, php-format
 msgctxt "great ×(%d-1) grandmother’s brother"
 msgid "great ×%d uncle"
-msgstr ""
+msgstr "%dx oudoom"
 
 #: includes/functions/functions.php:1283
 #, php-format
 msgctxt "great ×(%d-1) grandparent’s brother"
 msgid "great ×%d uncle"
-msgstr ""
+msgstr "%dx oudoom"
 
 #: includes/functions/functions.php:1232
 msgid "great ×4 aunt"
@@ -17100,11 +17100,11 @@ msgstr "betovergroottante/oom"
 
 #: includes/functions/functions.php:1581
 msgid "great ×4 grandchild"
-msgstr ""
+msgstr "achterkleinkind 6e graad"
 
 #: includes/functions/functions.php:1580
 msgid "great ×4 granddaughter"
-msgstr ""
+msgstr "achterkleindochter 6e graad"
 
 #: includes/functions/functions.php:1486
 msgid "great ×4 grandfather"
@@ -17120,52 +17120,52 @@ msgstr "oudgrootouder"
 
 #: includes/functions/functions.php:1579
 msgid "great ×4 grandson"
-msgstr ""
+msgstr "achterkleinzoon 6e graad"
 
 #: includes/functions/functions.php:1364
 msgctxt "(a man’s) brother’s great-great-great-grandson"
 msgid "great ×4 nephew"
-msgstr ""
+msgstr "achterneef 7e graad"
 
 #: includes/functions/functions.php:1366
 msgctxt "(a man’s) sister’s great-great-great-grandson"
 msgid "great ×4 nephew"
-msgstr ""
+msgstr "achterneef 7e graad"
 
 #: includes/functions/functions.php:1368
 msgctxt "(a woman’s) great ×4 nephew"
 msgid "great ×4 nephew"
-msgstr ""
+msgstr "achterneef 7e graad"
 
 #: includes/functions/functions.php:1380
 msgctxt "(a man’s) brother’s great-great-great-grandchild"
 msgid "great ×4 nephew/niece"
-msgstr ""
+msgstr "achterneef/achternicht 7e graad"
 
 #: includes/functions/functions.php:1382
 msgctxt "(a man’s) sister’s great-great-great-grandchild"
 msgid "great ×4 nephew/niece"
-msgstr ""
+msgstr "achterneef/achternicht 7e graad"
 
 #: includes/functions/functions.php:1384
 msgctxt "(a woman’s) great ×4 nephew/niece"
 msgid "great ×4 nephew/niece"
-msgstr ""
+msgstr "achterneef/achternicht 7e graad"
 
 #: includes/functions/functions.php:1372
 msgctxt "(a man’s) brother’s great-great-great-granddaughter"
 msgid "great ×4 niece"
-msgstr ""
+msgstr "achternicht 7e graad"
 
 #: includes/functions/functions.php:1374
 msgctxt "(a man’s) sister’s great-great-great-granddaughter"
 msgid "great ×4 niece"
-msgstr ""
+msgstr "achternicht 7e graad"
 
 #: includes/functions/functions.php:1376
 msgctxt "(a woman’s) great ×4 niece"
 msgid "great ×4 niece"
-msgstr ""
+msgstr "achternicht 7e graad"
 
 #: includes/functions/functions.php:1229
 msgctxt "great-great-great-grandfather’s brother"
@@ -17188,15 +17188,15 @@ msgstr "oudoudtante"
 
 #: includes/functions/functions.php:1243
 msgid "great ×5 aunt/uncle"
-msgstr "oudoudtante/oom"
+msgstr "oudoudtante/oudoudoom"
 
 #: includes/functions/functions.php:1588
 msgid "great ×5 grandchild"
-msgstr ""
+msgstr "achterkleinkind 7e graad"
 
 #: includes/functions/functions.php:1587
 msgid "great ×5 granddaughter"
-msgstr ""
+msgstr "achterkleindochter 7e graad"
 
 #: includes/functions/functions.php:1493
 msgid "great ×5 grandfather"
@@ -17212,52 +17212,52 @@ msgstr "oudovergrootouder"
 
 #: includes/functions/functions.php:1586
 msgid "great ×5 grandson"
-msgstr ""
+msgstr "achterkleinzoon 8e graad"
 
 #: includes/functions/functions.php:1391
 msgctxt "(a man’s) brother’s great ×4 grandson"
 msgid "great ×5 nephew"
-msgstr ""
+msgstr "achterneef 8e graad"
 
 #: includes/functions/functions.php:1393
 msgctxt "(a man’s) sister’s great ×4 grandson"
 msgid "great ×5 nephew"
-msgstr ""
+msgstr "achterneef 8e graad"
 
 #: includes/functions/functions.php:1395
 msgctxt "(a woman’s) great ×5 nephew"
 msgid "great ×5 nephew"
-msgstr ""
+msgstr "achterneef 8e graad"
 
 #: includes/functions/functions.php:1407
 msgctxt "(a man’s) brother’s great ×4 grandchild"
 msgid "great ×5 nephew/niece"
-msgstr ""
+msgstr "achterneef/achternicht 8e graad"
 
 #: includes/functions/functions.php:1409
 msgctxt "(a man’s) sister’s great ×4 grandchild"
 msgid "great ×5 nephew/niece"
-msgstr ""
+msgstr "achterneef/achternicht 8e graad"
 
 #: includes/functions/functions.php:1411
 msgctxt "(a woman’s) great ×5 nephew/niece"
 msgid "great ×5 nephew/niece"
-msgstr ""
+msgstr "achterneef/achternicht 8e graad"
 
 #: includes/functions/functions.php:1399
 msgctxt "(a man’s) brother’s great ×4 granddaughter"
 msgid "great ×5 niece"
-msgstr ""
+msgstr "achternicht 8e graad"
 
 #: includes/functions/functions.php:1401
 msgctxt "(a man’s) sister’s great ×4 granddaughter"
 msgid "great ×5 niece"
-msgstr ""
+msgstr "achternicht 8e graad"
 
 #: includes/functions/functions.php:1403
 msgctxt "(a woman’s) great ×5 niece"
 msgid "great ×5 niece"
-msgstr ""
+msgstr "achternicht 8e graad"
 
 #: includes/functions/functions.php:1239
 msgctxt "great ×4 grandfather’s brother"
@@ -17280,15 +17280,15 @@ msgstr "oudgroottante"
 
 #: includes/functions/functions.php:1253
 msgid "great ×6 aunt/uncle"
-msgstr "oudgroottante/oom"
+msgstr "oudgroottante/oudgrootoom"
 
 #: includes/functions/functions.php:1595
 msgid "great ×6 grandchild"
-msgstr ""
+msgstr "achterkleinkind 8e graad"
 
 #: includes/functions/functions.php:1594
 msgid "great ×6 granddaughter"
-msgstr ""
+msgstr "achterkleindochter 8e graad"
 
 #: includes/functions/functions.php:1500
 msgid "great ×6 grandfather"
@@ -17304,7 +17304,7 @@ msgstr "oudbetovergrootouder"
 
 #: includes/functions/functions.php:1593
 msgid "great ×6 grandson"
-msgstr "(6× achter)kleinzoon"
+msgstr "achterkleinzoon 8e graad"
 
 #: includes/functions/functions.php:1249
 msgctxt "great ×5 grandfather’s brother"
@@ -17331,11 +17331,11 @@ msgstr "oudovergroottante/oom"
 
 #: includes/functions/functions.php:1602
 msgid "great ×7 grandchild"
-msgstr ""
+msgstr "achterkleinkind 9e graad"
 
 #: includes/functions/functions.php:1601
 msgid "great ×7 granddaughter"
-msgstr ""
+msgstr "achterkleindochter 9e graad"
 
 #: includes/functions/functions.php:1507
 msgid "great ×7 grandfather"
@@ -17351,7 +17351,7 @@ msgstr "stamouder"
 
 #: includes/functions/functions.php:1600
 msgid "great ×7 grandson"
-msgstr ""
+msgstr "achterkleinzoon 9e graad"
 
 #: includes/functions/functions.php:1259
 msgctxt "great ×6 grandfather’s brother"
@@ -17466,87 +17466,87 @@ msgstr "oud-tante/oom"
 #: includes/functions/functions.php:1086
 msgctxt "father’s father’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "aangetrouwde oud-tante/oom"
+msgstr "aangetrouwde oudtante/oudoom"
 
 #: includes/functions/functions.php:964
 msgctxt "father’s mother’s sibling"
 msgid "great-aunt/uncle"
-msgstr "oud-tante/oom"
+msgstr "oudtante/oudoom"
 
 #: includes/functions/functions.php:1089
 msgctxt "father’s mother’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "aangetrouwde oud-tante/oom"
+msgstr "aangetrouwde oudtante/oudoom"
 
 #: includes/functions/functions.php:970
 msgctxt "father’s parent’s sibling"
 msgid "great-aunt/uncle"
-msgstr "oud-tante/oom"
+msgstr "oudtante/oudoom"
 
 #: includes/functions/functions.php:1092
 msgctxt "father’s parent’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "aangetrouwde oud-tante/oom"
+msgstr "aangetrouwde oudtante/oudoom"
 
 #: includes/functions/functions.php:989
 msgctxt "mother’s father’s sibling"
 msgid "great-aunt/uncle"
-msgstr "oud-tante/oom"
+msgstr "oudtante/oudoom"
 
 #: includes/functions/functions.php:1095
 msgctxt "mother’s father’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "aangetrouwde oud-tante/oom"
+msgstr "aangetrouwde oudtante/oudoom"
 
 #: includes/functions/functions.php:998
 msgctxt "mother’s mother’s sibling"
 msgid "great-aunt/uncle"
-msgstr "oud-tante/oom"
+msgstr "oudtante/oudoom"
 
 #: includes/functions/functions.php:1098
 msgctxt "mother’s mother’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "aangetrouwde oud-tante/oom"
+msgstr "aangetrouwde oudtante/oudoom"
 
 #: includes/functions/functions.php:1004
 msgctxt "mother’s parent’s sibling"
 msgid "great-aunt/uncle"
-msgstr "oud-tante/oom"
+msgstr "oudtante/oudoom"
 
 #: includes/functions/functions.php:1101
 msgctxt "mother’s parent’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "aangetrouwde oud-tante/oom"
+msgstr "aangetrouwde oudtante/oudoom"
 
 #: includes/functions/functions.php:1015
 msgctxt "parent’s father’s sibling"
 msgid "great-aunt/uncle"
-msgstr "oud-tante/oom"
+msgstr "oudtante/oudoom"
 
 #: includes/functions/functions.php:1104
 msgctxt "parent’s father’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "aangetrouwde oud-tante/oom"
+msgstr "aangetrouwde oudtante/oudoom"
 
 #: includes/functions/functions.php:1021
 msgctxt "parent’s mother’s sibling"
 msgid "great-aunt/uncle"
-msgstr "oud-tante/oom"
+msgstr "oudtante/oudoom"
 
 #: includes/functions/functions.php:1107
 msgctxt "parent’s mother’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "aangetrouwde oud-tante/oom"
+msgstr "aangetrouwde oudtante/oudoom"
 
 #: includes/functions/functions.php:1027
 msgctxt "parent’s parent’s sibling"
 msgid "great-aunt/uncle"
-msgstr "oud-tante/oom"
+msgstr "oudtante/oudoom"
 
 #: includes/functions/functions.php:1110
 msgctxt "parent’s parent’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "aangetrouwde oud-tante/oom"
+msgstr "aangetrouwde oudtante/oudoom"
 
 #: includes/functions/functions.php:925
 msgctxt "child’s child’s child"
@@ -17824,7 +17824,7 @@ msgstr "overgroottante"
 
 #: includes/functions/functions.php:1213
 msgid "great-great-aunt/uncle"
-msgstr "overgroot-tante/oom"
+msgstr "overgroottante/overgrootoom"
 
 #: includes/functions/functions.php:1567
 msgid "great-great-grandchild"
@@ -17844,7 +17844,7 @@ msgstr "betovergrootmoeder"
 
 #: includes/functions/functions.php:1474
 msgid "great-great-grandparent"
-msgstr "Betovergrootouder"
+msgstr "betovergrootouder"
 
 #: includes/functions/functions.php:1565
 msgid "great-great-grandson"
@@ -17856,7 +17856,7 @@ msgstr "betovergroottante"
 
 #: includes/functions/functions.php:1223
 msgid "great-great-great-aunt/uncle"
-msgstr "betovergroot-tante/oom"
+msgstr "betovergroottante/betovergrootoom"
 
 #: includes/functions/functions.php:1574
 msgid "great-great-great-grandchild"
@@ -17885,47 +17885,47 @@ msgstr "achterkleinzoon 5e graad"
 #: includes/functions/functions.php:1337
 msgctxt "(a man’s) brother’s great-great-grandson"
 msgid "great-great-great-nephew"
-msgstr ""
+msgstr "achterneef 6e graad"
 
 #: includes/functions/functions.php:1339
 msgctxt "(a man’s) sister’s great-great-grandson"
 msgid "great-great-great-nephew"
-msgstr ""
+msgstr "achterneef 6e graad"
 
 #: includes/functions/functions.php:1341
 msgctxt "(a woman’s) great-great-great-nephew"
 msgid "great-great-great-nephew"
-msgstr ""
+msgstr "achterneef 6e graad"
 
 #: includes/functions/functions.php:1353
 msgctxt "(a man’s) brother’s great-great-grandchild"
 msgid "great-great-great-nephew/niece"
-msgstr "achter-neef/nicht 6e graad , achterkleinkind (4eG) van broer of zus"
+msgstr "achterneef/achternicht 6e graad"
 
 #: includes/functions/functions.php:1355
 msgctxt "(a man’s) sister’s great-great-grandchild"
 msgid "great-great-great-nephew/niece"
-msgstr ""
+msgstr "achterneef/achternicht 6e graad"
 
 #: includes/functions/functions.php:1357
 msgctxt "(a woman’s) great-great-great-nephew/niece"
 msgid "great-great-great-nephew/niece"
-msgstr ""
+msgstr "achterneef/achternicht 6e graad"
 
 #: includes/functions/functions.php:1345
 msgctxt "(a man’s) brother’s great-great-granddaughter"
 msgid "great-great-great-niece"
-msgstr ""
+msgstr "achternicht 6e graad"
 
 #: includes/functions/functions.php:1347
 msgctxt "(a man’s) sister’s great-great-granddaughter"
 msgid "great-great-great-niece"
-msgstr ""
+msgstr "achternicht 6e graad"
 
 #: includes/functions/functions.php:1349
 msgctxt "(a woman’s) great-great-great-niece"
 msgid "great-great-great-niece"
-msgstr ""
+msgstr "achternicht 6e graad"
 
 #: includes/functions/functions.php:1219
 msgctxt "great-great-grandfather’s brother"
@@ -17945,47 +17945,47 @@ msgstr "betovergrootoom"
 #: includes/functions/functions.php:1310
 msgctxt "(a man’s) brother’s great-grandson"
 msgid "great-great-nephew"
-msgstr ""
+msgstr "achterneef 5e graad"
 
 #: includes/functions/functions.php:1312
 msgctxt "(a man’s) sister’s great-grandson"
 msgid "great-great-nephew"
-msgstr ""
+msgstr "achterneef 5e graad"
 
 #: includes/functions/functions.php:1314
 msgctxt "(a woman’s) great-great-nephew"
 msgid "great-great-nephew"
-msgstr "achterneef 5e graad  , achterkleinzoon (3eG) van broer of zus"
+msgstr "achterneef 5e graad"
 
 #: includes/functions/functions.php:1326
 msgctxt "(a man’s) brother’s great-grandchild"
 msgid "great-great-nephew/niece"
-msgstr ""
+msgstr "achterneef/achternicht 5e graad"
 
 #: includes/functions/functions.php:1328
 msgctxt "(a man’s) sister’s great-grandchild"
 msgid "great-great-nephew/niece"
-msgstr ""
+msgstr "achterneef/achternicht 5e graad"
 
 #: includes/functions/functions.php:1330
 msgctxt "(a woman’s) great-great-nephew/niece"
 msgid "great-great-nephew/niece"
-msgstr ""
+msgstr "achterneef/achternicht 5e graad"
 
 #: includes/functions/functions.php:1318
 msgctxt "(a man’s) brother’s great-granddaughter"
 msgid "great-great-niece"
-msgstr ""
+msgstr "achternicht 5e graad"
 
 #: includes/functions/functions.php:1320
 msgctxt "(a man’s) sister’s great-granddaughter"
 msgid "great-great-niece"
-msgstr ""
+msgstr "achternicht 5e graad"
 
 #: includes/functions/functions.php:1322
 msgctxt "(a woman’s) great-great-niece"
 msgid "great-great-niece"
-msgstr ""
+msgstr "achternicht 5e graad"
 
 #: includes/functions/functions.php:1209
 msgctxt "great-grandfather’s brother"
@@ -18030,7 +18030,7 @@ msgstr "achterneef"
 #: includes/functions/functions.php:1064
 msgctxt "(a man’s) sister’s son’s son"
 msgid "great-nephew"
-msgstr "achterneef (kleinkind van broer/zus)"
+msgstr "achterneef"
 
 #: includes/functions/functions.php:907
 msgctxt "(a woman’s) brother’s child’s son"
@@ -18060,7 +18060,7 @@ msgstr "achterneef"
 #: includes/functions/functions.php:1065
 msgctxt "(a woman’s) sister’s son’s son"
 msgid "great-nephew"
-msgstr "achterneef (kleinkind van broer/zus)"
+msgstr "achterneef"
 
 #: includes/functions/functions.php:1035
 msgctxt "sibling’s child’s son"
@@ -18080,77 +18080,77 @@ msgstr "achterneef"
 #: includes/functions/functions.php:902
 msgctxt "(a man’s) brother’s child’s child"
 msgid "great-nephew/niece"
-msgstr "achterneef/nicht"
+msgstr "achterneef/achternicht"
 
 #: includes/functions/functions.php:908
 msgctxt "(a man’s) brother’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr "achterneef/nicht"
+msgstr "achterneef/achternicht"
 
 #: includes/functions/functions.php:915
 msgctxt "(a man’s) brother’s son’s child"
 msgid "great-nephew/niece"
-msgstr "achterneef/nicht"
+msgstr "achterneef/achternicht"
 
 #: includes/functions/functions.php:1044
 msgctxt "(a man’s) sister’s child’s child"
 msgid "great-nephew/niece"
-msgstr "achterneef/nicht"
+msgstr "achterneef/achternicht"
 
 #: includes/functions/functions.php:1050
 msgctxt "(a man’s) sister’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr "achterneef/nicht"
+msgstr "achterneef/achternicht"
 
 #: includes/functions/functions.php:1060
 msgctxt "(a man’s) sister’s son’s child"
 msgid "great-nephew/niece"
-msgstr "achterneef/nicht"
+msgstr "achterneef/achternicht"
 
 #: includes/functions/functions.php:903
 msgctxt "(a woman’s) brother’s child’s child"
 msgid "great-nephew/niece"
-msgstr "achterneef/nicht"
+msgstr "achterneef/achternicht"
 
 #: includes/functions/functions.php:909
 msgctxt "(a woman’s) brother’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr "achterneef/nicht"
+msgstr "achterneef/achternicht"
 
 #: includes/functions/functions.php:916
 msgctxt "(a woman’s) brother’s son’s child"
 msgid "great-nephew/niece"
-msgstr "achterneef/nicht"
+msgstr "achterneef/achternicht"
 
 #: includes/functions/functions.php:1045
 msgctxt "(a woman’s) sister’s child’s child"
 msgid "great-nephew/niece"
-msgstr "achterneef/nicht"
+msgstr "achterneef/achternicht"
 
 #: includes/functions/functions.php:1051
 msgctxt "(a woman’s) sister’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr "achterneef/nicht"
+msgstr "achterneef/achternicht"
 
 #: includes/functions/functions.php:1061
 msgctxt "(a woman’s) sister’s son’s child"
 msgid "great-nephew/niece"
-msgstr "achterneef/nicht"
+msgstr "achterneef/achternicht"
 
 #: includes/functions/functions.php:1033
 msgctxt "sibling’s child’s child"
 msgid "great-nephew/niece"
-msgstr "achterneef/nicht"
+msgstr "achterneef/achternicht"
 
 #: includes/functions/functions.php:1036
 msgctxt "sibling’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr "achterneef/nicht"
+msgstr "achterneef/achternicht"
 
 #: includes/functions/functions.php:1040
 msgctxt "sibling’s son’s child"
 msgid "great-nephew/niece"
-msgstr "achterneef/nicht"
+msgstr "achterneef/achternicht"
 
 #: includes/functions/functions.php:904
 msgctxt "(a man’s) brother’s child’s daughter"
@@ -18315,7 +18315,7 @@ msgstr "oudoom"
 #: includes/functions/functions.php:1111
 msgctxt "parent’s parent’s sister’s husband"
 msgid "great-uncle"
-msgstr "aangetrouwde oud-tante/oom"
+msgstr "aangetrouwde oudoom"
 
 #. I18N: layout option for the fan chart
 #: library/WT/Controller/Fanchart.php:54
@@ -18340,32 +18340,32 @@ msgstr "halfbroer"
 #: includes/functions/functions.php:832
 msgctxt "father’s child"
 msgid "half-sibling"
-msgstr "halfbroer of -zus"
+msgstr "halfbroer/halfzus"
 
 #: includes/functions/functions.php:850
 msgctxt "mother’s child"
 msgid "half-sibling"
-msgstr "halfbroer/zus"
+msgstr "halfbroer/halfzus"
 
 #: includes/functions/functions.php:860
 msgctxt "parent’s child"
 msgid "half-sibling"
-msgstr "halfbroer/zus"
+msgstr "halfbroer/halfzus"
 
 #: includes/functions/functions.php:833
 msgctxt "father’s daughter"
 msgid "half-sister"
-msgstr "halfzuster"
+msgstr "halfzus"
 
 #: includes/functions/functions.php:851
 msgctxt "mother’s daughter"
 msgid "half-sister"
-msgstr "halfzuster"
+msgstr "halfzus"
 
 #: includes/functions/functions.php:861
 msgctxt "parent’s daughter"
 msgid "half-sister"
-msgstr "halfzuster"
+msgstr "halfzus"
 
 #: statistics.php:611
 msgid "half-year after marriage"
@@ -18529,17 +18529,17 @@ msgstr "vermomming"
 #: includes/functions/functions.php:852
 msgctxt "mother’s father"
 msgid "maternal grandfather"
-msgstr "grootvader aan moeder's kant"
+msgstr "grootvader van moeders kant"
 
 #: includes/functions/functions.php:854
 msgctxt "mother’s mother"
 msgid "maternal grandmother"
-msgstr "grootmoeder aan moeder's kant"
+msgstr "grootmoeder van moeders kant"
 
 #: includes/functions/functions.php:855
 msgctxt "mother’s parent"
 msgid "maternal grandparent"
-msgstr "grootouder aan moeder's kant"
+msgstr "grootouder van moeders kant"
 
 #. I18N: https://en.wikipedia.org/wiki/Matrilineal (a system where children take their mother’s surname
 #: admin_trees_config.php:1256 help_text.php:940
@@ -18809,17 +18809,17 @@ msgstr "vaderlijk"
 #: includes/functions/functions.php:834
 msgctxt "father’s father"
 msgid "paternal grandfather"
-msgstr "grootvader aan vader's kant"
+msgstr "grootvader van vaders kant"
 
 #: includes/functions/functions.php:835
 msgctxt "father’s mother"
 msgid "paternal grandmother"
-msgstr "grootmoeder aan vader's kant"
+msgstr "grootmoeder van vaders kant"
 
 #: includes/functions/functions.php:836
 msgctxt "father’s parent"
 msgid "paternal grandparent"
-msgstr "grootouder aan vader's kant"
+msgstr "grootouder van vaders kant"
 
 #. I18N: https://en.wikipedia.org/wiki/Patrilineal (a system where children take their father’s surname
 #: admin_trees_config.php:1256 help_text.php:934
@@ -18974,137 +18974,137 @@ msgstr "achterneef/achternicht 6e graad"
 #: includes/functions/functions.php:1144
 msgctxt "grandfather’s brother’s grandchild"
 msgid "second cousin"
-msgstr "Oudoom's kleinkind"
+msgstr "oudoom's kleinkind"
 
 #: includes/functions/functions.php:1140
 msgctxt "grandfather’s brother’s granddaughter"
 msgid "second cousin"
-msgstr "Oudoom's kleindochter"
+msgstr "oudoom's kleindochter"
 
 #: includes/functions/functions.php:1142
 msgctxt "grandfather’s brother’s grandson"
 msgid "second cousin"
-msgstr "Oudoom's kleinzoon"
+msgstr "oudoom's kleinzoon"
 
 #: includes/functions/functions.php:1156
 msgctxt "grandfather’s sibling’s grandchild"
 msgid "second cousin"
-msgstr "Oudtante/oom's kleinkind"
+msgstr "oudtante/oudoom's kleinkind"
 
 #: includes/functions/functions.php:1152
 msgctxt "grandfather’s sibling’s granddaughter"
 msgid "second cousin"
-msgstr "Oudtante/oom's kleindochter"
+msgstr "oudtante/oudoom's kleindochter"
 
 #: includes/functions/functions.php:1154
 msgctxt "grandfather’s sibling’s grandson"
 msgid "second cousin"
-msgstr "Oudtante/oom's kleinzoon"
+msgstr "oudtante/oudoom's kleinzoon"
 
 #: includes/functions/functions.php:1150
 msgctxt "grandfather’s sister’s grandchild"
 msgid "second cousin"
-msgstr "Oudtante's kleinkind"
+msgstr "oudtante's kleinkind"
 
 #: includes/functions/functions.php:1146
 msgctxt "grandfather’s sister’s granddaughter"
 msgid "second cousin"
-msgstr "Oudtante's kleindochter"
+msgstr "oudtante's kleindochter"
 
 #: includes/functions/functions.php:1148
 msgctxt "grandfather’s sister’s grandson"
 msgid "second cousin"
-msgstr "Oudtante's kleinzoon"
+msgstr "oudtante's kleinzoon"
 
 #: includes/functions/functions.php:1162
 msgctxt "grandmother’s brother’s grandchild"
 msgid "second cousin"
-msgstr "Oudoom's kleinkind"
+msgstr "oudoom's kleinkind"
 
 #: includes/functions/functions.php:1158
 msgctxt "grandmother’s brother’s granddaughter"
 msgid "second cousin"
-msgstr "Oudoom's kleindochter"
+msgstr "oudoom's kleindochter"
 
 #: includes/functions/functions.php:1160
 msgctxt "grandmother’s brother’s grandson"
 msgid "second cousin"
-msgstr "Oudoom's kleinzoon"
+msgstr "oudoom's kleinzoon"
 
 #: includes/functions/functions.php:1174
 msgctxt "grandmother’s sibling’s grandchild"
 msgid "second cousin"
-msgstr "Oudtante/oom's kleinkind"
+msgstr "oudtante/oudoom's kleinkind"
 
 #: includes/functions/functions.php:1170
 msgctxt "grandmother’s sibling’s granddaughter"
 msgid "second cousin"
-msgstr "Oudtante/oom's kleindochter"
+msgstr "oudtante/oudoom's kleindochter"
 
 #: includes/functions/functions.php:1172
 msgctxt "grandmother’s sibling’s grandson"
 msgid "second cousin"
-msgstr "Oudtante/oom's kleinzoon"
+msgstr "oudtante/oudoom's kleinzoon"
 
 #: includes/functions/functions.php:1168
 msgctxt "grandmother’s sister’s grandchild"
 msgid "second cousin"
-msgstr "Oudtante's kleinkind"
+msgstr "oudtante's kleinkind"
 
 #: includes/functions/functions.php:1164
 msgctxt "grandmother’s sister’s granddaughter"
 msgid "second cousin"
-msgstr "Oudtante's kleindochter"
+msgstr "oudtante's kleindochter"
 
 #: includes/functions/functions.php:1166
 msgctxt "grandmother’s sister’s grandson"
 msgid "second cousin"
-msgstr "Oudtante's kleinzoon"
+msgstr "oudtante's kleinzoon"
 
 #: includes/functions/functions.php:1180
 msgctxt "grandparent’s brother’s grandchild"
 msgid "second cousin"
-msgstr "Oudoom's kleinkind"
+msgstr "oudoom's kleinkind"
 
 #: includes/functions/functions.php:1176
 msgctxt "grandparent’s brother’s granddaughter"
 msgid "second cousin"
-msgstr "Oudoom's kleindochter"
+msgstr "oudoom's kleindochter"
 
 #: includes/functions/functions.php:1178
 msgctxt "grandparent’s brother’s grandson"
 msgid "second cousin"
-msgstr "Oudoom's kleinzoon"
+msgstr "oudoom's kleinzoon"
 
 #: includes/functions/functions.php:1192
 msgctxt "grandparent’s sibling’s grandchild"
 msgid "second cousin"
-msgstr "Oudoom's/tante's kleinkind"
+msgstr "oudoom's/tante's kleinkind"
 
 #: includes/functions/functions.php:1188
 msgctxt "grandparent’s sibling’s granddaughter"
 msgid "second cousin"
-msgstr "Oudoom's/tante's kleindochter"
+msgstr "oudoom's/tante's kleindochter"
 
 #: includes/functions/functions.php:1190
 msgctxt "grandparent’s sibling’s grandson"
 msgid "second cousin"
-msgstr "Oudoom's/tante's kleinzoon"
+msgstr "oudoom's/tante's kleinzoon"
 
 #: includes/functions/functions.php:1186
 msgctxt "grandparent’s sister’s grandchild"
 msgid "second cousin"
-msgstr "Oudtante's kleinkind"
+msgstr "oudtante's kleinkind"
 
 #: includes/functions/functions.php:1182
 msgctxt "grandparent’s sister’s granddaughter"
 msgid "second cousin"
-msgstr "Oudtante's kleindochter"
+msgstr "oudtante's kleindochter"
 
 #: includes/functions/functions.php:1184
 msgctxt "grandparent’s sister’s grandson"
 msgid "second cousin"
-msgstr "Oudtante's kleinzoon"
+msgstr "oudtante's kleinzoon"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 2”
 #: library/WT/Gedcom/Code/Quay.php:30
@@ -19167,42 +19167,42 @@ msgstr "zus"
 #: includes/functions/functions.php:820
 msgctxt "brother’s wife"
 msgid "sister-in-law"
-msgstr "schoonzuster"
+msgstr "schoonzus"
 
 #: includes/functions/functions.php:924
 msgctxt "brother’s wife’s sister"
 msgid "sister-in-law"
-msgstr "schoonzuster"
+msgstr "schoonzus"
 
 #: includes/functions/functions.php:979
 msgctxt "husband’s brother’s wife"
 msgid "sister-in-law"
-msgstr "schoonzuster"
+msgstr "schoonzus"
 
 #: includes/functions/functions.php:847
 msgctxt "husband’s sister"
 msgid "sister-in-law"
-msgstr "schoonzuster"
+msgstr "schoonzus"
 
 #: includes/functions/functions.php:1059
 msgctxt "sister’s husband’s sister"
 msgid "sister-in-law"
-msgstr "schoonzuster"
+msgstr "schoonzus"
 
 #: includes/functions/functions.php:886
 msgctxt "spouse’s sister"
 msgid "sister-in-law"
-msgstr "schoonzuster"
+msgstr "schoonzus"
 
 #: includes/functions/functions.php:1081
 msgctxt "wife’s brother’s wife"
 msgid "sister-in-law"
-msgstr "schoonzuster"
+msgstr "schoonzus"
 
 #: includes/functions/functions.php:896
 msgctxt "wife’s sister"
 msgid "sister-in-law"
-msgstr "schoonzuster"
+msgstr "schoonzus"
 
 #: includes/functions/functions.php:627
 msgctxt "FEMALE"
@@ -19403,32 +19403,32 @@ msgstr "stiefouder"
 #: includes/functions/functions.php:976
 msgctxt "father’s wife’s child"
 msgid "step-sibling"
-msgstr "stiefbroer of -zus"
+msgstr "stiefbroer/stiefzus"
 
 #: includes/functions/functions.php:991
 msgctxt "mother’s husband’s child"
 msgid "step-sibling"
-msgstr "stiefbroer of -zus"
+msgstr "stiefbroer/stiefzus"
 
 #: includes/functions/functions.php:1030
 msgctxt "parent’s spouse’s child"
 msgid "step-sibling"
-msgstr "stiefbroer of -zus"
+msgstr "stiefbroer/stiefzus"
 
 #: includes/functions/functions.php:977
 msgctxt "father’s wife’s daughter"
 msgid "step-sister"
-msgstr "stiefzuster"
+msgstr "stiefzus"
 
 #: includes/functions/functions.php:992
 msgctxt "mother’s husband’s daughter"
 msgid "step-sister"
-msgstr "stiefzuster"
+msgstr "stiefzus"
 
 #: includes/functions/functions.php:1031
 msgctxt "parent’s spouse’s daughter"
 msgid "step-sister"
-msgstr "stiefzuster"
+msgstr "stiefzus"
 
 #: includes/functions/functions.php:848
 msgctxt "husband’s son"
@@ -19572,7 +19572,7 @@ msgstr "achterneef/achternicht 26e graad"
 
 #: includes/functions/functions.php:776
 msgid "twin brother"
-msgstr "Tweelingbroer"
+msgstr "tweelingbroer"
 
 #: includes/functions/functions.php:806
 msgid "twin sibling"
@@ -19580,7 +19580,7 @@ msgstr "tweeling"
 
 #: includes/functions/functions.php:791
 msgid "twin sister"
-msgstr "tweelingzuster"
+msgstr "tweelingzus"
 
 #: includes/functions/functions.php:831
 msgctxt "father’s brother"
@@ -19797,7 +19797,7 @@ msgstr "jongere broer of zus"
 
 #: includes/functions/functions.php:793
 msgid "younger sister"
-msgstr "jongere zuster"
+msgstr "jongere zus"
 
 #: search_advanced.php:112 search_advanced.php:116 search_advanced.php:120
 #: search_advanced.php:168 search_advanced.php:169 search_advanced.php:170
