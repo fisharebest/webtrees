@@ -251,11 +251,13 @@ textarea:required:invalid {
 
 /* Pending edits - TODO perhaps show differently in different contexts? */
 .new {
-	outline: solid #00f 1px;
+	border: solid #00f 1px;
+	overflow: hidden;
 }
 
 .old {
-	outline: solid #f00 1px;
+	border: solid #f00 1px;
+	overflow: hidden;
 }
 
 /* Set stack level for top two header menu rows */

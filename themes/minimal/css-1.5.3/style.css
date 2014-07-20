@@ -1269,11 +1269,13 @@ img.block {
 
 /* Pending edits - TODO perhaps show differently in different contexts? */
 .new {
-	outline: solid blue 1px;
+	border: solid blue 1px;
+	overflow: hidden;
 }
 
 .old {
-	outline: solid red 1px;
+	border: solid red 1px;
+	overflow: hidden;
 }
 
 a.showit {
