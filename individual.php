@@ -91,8 +91,6 @@ if ($controller->record && $controller->record->canShow()) {
 	exit;
 }
 
-$linkToID=$controller->record->getXref(); // -- Tell addmedia.php what to link to
-
 $controller->addInlineJavascript('
 	jQuery("#tabs").tabs({
 		active:   jQuery.cookie("indi-tab"),
@@ -140,10 +138,6 @@ $controller->addInlineJavascript('
 		hideSidebar();
 	} else {
 		showSidebar();
-	}
-
-	function show_gedcom_record() {
-		var recwin=window.open("gedrecord.php?pid='. $controller->record->getXref(). '", "_blank", edit_window_specs);
 	}
 
 	jQuery("#header_accordion1").accordion({

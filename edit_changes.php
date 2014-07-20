@@ -29,25 +29,19 @@ $controller=new WT_Controller_Simple();
 $controller
 	->restrictAccess(\WT\Auth::isModerator())
 	->setPageTitle(WT_I18N::translate('Pending changes'))
-	->pageHeader();
+	->pageHeader()
+	->addInlineJavascript("
+		function show_diff(diffurl) {
+			window.opener.location = diffurl;
+			return false;
+		}
+	");
 
 $action   =WT_Filter::get('action');
 $change_id=WT_Filter::getInteger('change_id');
 $index    =WT_Filter::get('index');
 $ged      =WT_Filter::getInteger('ged');
 
-echo '<script>';
-?>
-	function show_gedcom_record(xref) {
-		var recwin = window.open("gedrecord.php?fromfile=1&pid="+xref, "_blank", edit_window_specs);
-	}
-
-	function show_diff(diffurl) {
-		window.opener.location = diffurl;
-		return false;
-	}
-<?php
-echo '</script>';
 echo '<div id="pending"><h2>', WT_I18N::translate('Pending changes'), '</h2>';
 
 switch ($action) {
