@@ -307,19 +307,17 @@ textarea:required:invalid {
 #topMenu {
 	border-bottom: 2px solid #0073cf;
 	float: left;
-	height: 45px;
-	margin-bottom: 10px;
-	padding: 5px 0 10px 0;
+	height: 40px;
+	margin-bottom: 14px;
+	padding: 10px 0;
 	position: relative;
 	width: 100%;
+	clear: both;
 }
 
 #main-menu {
-	clear: both;
-	position: relative;
-	float: right;
-	right: 50%;
-	margin-top: 5px;
+	margin: 0 auto;
+	display: table;
 }
 
 #main-menu,
@@ -331,7 +329,6 @@ textarea:required:invalid {
 #main-menu li {
 	float: left;
 	position: relative;
-	left: 50%;
 }
 
 #main-menu li li {
@@ -405,10 +402,6 @@ textarea:required:invalid {
 }
 
 /* Reverse left and right on RTL pages */
-[dir=rtl] #topMenu {
-	float: right;
-}
-
 [dir=rtl] #main-menu li {
 	float: right;
 }
@@ -955,6 +948,14 @@ textarea:required:invalid {
 
 [dir=rtl] #menu-indi-del {
 	background-position: right -713px;
+}
+
+#menu-indi-orderfam {
+	background-position: left 0;
+}
+
+[dir=rtl] #menu-indi-orderfam {
+	background-position: right 0;
 }
 
 #menu-indi-addfav {

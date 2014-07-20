@@ -665,12 +665,16 @@ a:hover .nameZoom {
 	text-align: center;
 }
 
+#my-page h1 {
+	margin: 0.25em auto 0.6em;
+}
+
 #relationship-page h3 {
 	margin: 20px 0 0 20px;
 }
 
 #relationship_chart {
-	margin: 0 20px 0;
+	margin: 0 6px;
 }
 
 .tdtop {
@@ -711,7 +715,7 @@ a:hover .nameZoom {
 
 [dir=rtl] #pedigree_chart {
 	left: auto;
-	right: 10px;
+	right: 0;
 }
 
 #pedigree_canvas {
@@ -895,6 +899,7 @@ a:hover .nameZoom {
 	font-size: 20px;
 	float: left;
 	padding-left: 10px;
+	margin-bottom: 5px;
 }
 
 [dir=rtl] .title {
@@ -2135,31 +2140,29 @@ div.faq_body {
 #topMenu {
 	border-top: 2px solid #81a9cb;
 	border-bottom: 2px solid #81a9cb;
-	float: left;
 	margin: 5px auto;
 	padding: 5px 0;
 	position: relative;
-	width: 100%;
-}
-
-#main-menu {
 	clear: both;
-	position: relative;
-	float: right;
-	right: 50%;
 }
 
 #main-menu,
 #main-menu ul {
-	padding: 0;
 	margin: 0;
 	list-style-type: none;
 }
 
+
+
+#main-menu {
+	margin: 0 auto;
+	display: table;
+}
+
+
 #main-menu li {
 	float: left;
 	position: relative;
-	left: 50%;
 }
 
 #main-menu li li {
@@ -2230,9 +2233,6 @@ div.faq_body {
 }
 
 /* Reverse left and right on RTL pages */
-[dir=rtl] #topMenu {
-	float: right;
-}
 
 [dir=rtl] #main-menu li {
 	float: right;
@@ -2627,6 +2627,14 @@ div.faq_body {
 
 [dir=rtl] #menu-indi-del {
 	background-position: right -840px;
+}
+
+#menu-indi-orderfam {
+	background-position: left 0;
+}
+
+[dir=rtl] #menu-indi-orderfam {
+	background-position: right 0;
 }
 
 #menu-indi-editraw {
