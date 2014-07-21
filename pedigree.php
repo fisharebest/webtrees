@@ -252,6 +252,7 @@ echo '</div>'; //close #pedigree-page
 
 // Expand <div id="content"> to include the absolutely-positioned elements.
 $controller->addInlineJavascript('
+	jQuery("html").css("overflow","visible"); // workaround for chrome v37 canvas bugs
 	content_div = document.getElementById("content");
 	if (content_div) {
 		content_div.style.height="'.($maxyoffset+30).'px";

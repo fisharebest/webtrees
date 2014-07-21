@@ -307,19 +307,17 @@ textarea:required:invalid {
 #topMenu {
 	border-bottom: 2px solid #0073cf;
 	float: left;
-	height: 45px;
-	margin-bottom: 10px;
-	padding: 5px 0 10px 0;
+	height: 40px;
+	margin-bottom: 14px;
+	padding: 10px 0;
 	position: relative;
 	width: 100%;
+	clear: both;
 }
 
 #main-menu {
-	clear: both;
-	position: relative;
-	float: right;
-	right: 50%;
-	margin-top: 5px;
+	margin: 0 auto;
+	display: table;
 }
 
 #main-menu,
@@ -331,7 +329,6 @@ textarea:required:invalid {
 #main-menu li {
 	float: left;
 	position: relative;
-	left: 50%;
 }
 
 #main-menu li li {
@@ -405,10 +402,6 @@ textarea:required:invalid {
 }
 
 /* Reverse left and right on RTL pages */
-[dir=rtl] #topMenu {
-	float: right;
-}
-
 [dir=rtl] #main-menu li {
 	float: right;
 }
@@ -955,6 +948,14 @@ textarea:required:invalid {
 
 [dir=rtl] #menu-indi-del {
 	background-position: right -713px;
+}
+
+#menu-indi-orderfam {
+	background-position: left 0;
+}
+
+[dir=rtl] #menu-indi-orderfam {
+	background-position: right 0;
 }
 
 #menu-indi-addfav {
@@ -3001,12 +3002,13 @@ span.link_text {
 
 /* =========== Indi header ================== */
 #indi_header {
+	width: 100%;
 	overflow: hidden;
 	border-radius: 3px;
 /*	background: url(../jquery-ui-1.10.3/images/ui-bg_highlight-soft_100_e7eef3_1x100.png) repeat-x scroll 50% 50% #fff;*/
 	border: 1px solid #b2c7d7;
 	margin: 0 0 5px;
-	padding: 10px;
+	padding: 10px 0;
 	background: #e8f5f8; /* Old browsers */
 	background: -moz-linear-gradient(top,  #e8f5f8 0%, #f5fafb 60%, #fefefe 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e8f5f8), color-stop(60%,#f5fafb), color-stop(100%,#fefefe)); /* Chrome,Safari4+ */
@@ -3077,6 +3079,10 @@ span.link_text {
 	font-size: 2em;
 	margin: 10px;
 	font-weight: bold;
+}
+
+#header_accordion1 {
+	padding: 0 10px;
 }
 
 #header_accordion1 .indi_name_details {

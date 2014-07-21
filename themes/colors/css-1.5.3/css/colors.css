@@ -369,8 +369,8 @@ span.title {
 	width: 100%;
 }
 
-[dir=rtl] #main-menu {
-	padding-right: 16px;
+[dir=rtl] #main-menu > li {
+	margin: 4px 16px 0 0;
 }
 
 [dir=rtl] #main-menu li {
@@ -2916,6 +2916,7 @@ span.link_text {
 	border-radius: 3px;
 	overflow: hidden;
 	margin: 0 0 5px;
+	width: 100%;
 }
 
 #indi_header a {
