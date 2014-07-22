@@ -1832,7 +1832,7 @@ msgstr "Sve činjenice mjesta čuvanja"
 
 #: admin_trees_config.php:1174 help_text.php:909
 msgid "All source facts"
-msgstr "Svi izvori činjenica"
+msgstr "Sve činjenice izvora"
 
 #. I18N: Description of the “CKEditor” module.  WYSIWYG = “what you see is what you get”
 #: modules_v3/ckeditor/module.php:39
@@ -14838,7 +14838,7 @@ msgstr "Jedinstvene činjenice mjesta čuvanja"
 
 #: admin_trees_config.php:1182 help_text.php:919
 msgid "Unique source facts"
-msgstr "Jedinstveni izvor činjenica"
+msgstr "Jedinstvene činjenice izvora"
 
 #: library/WT/Stats.php:3809
 msgid "United Arab Emirates"
