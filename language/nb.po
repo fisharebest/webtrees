@@ -4994,7 +4994,7 @@ msgstr "Ønsket passord"
 
 #: login.php:417
 msgid "Desired user name"
-msgstr "Ønsket brukernavn"
+msgstr "Ønsket brukeravn"
 
 #. I18N: gedcom tag DEST
 #: library/WT/Gedcom/Tag.php:171
@@ -14715,7 +14715,7 @@ msgstr "Type stedmarkør i stedhierarki"
 #. I18N: placeholder text for repeat-password field
 #: admin_users.php:390 login.php:428
 msgid "Type the password again."
-msgstr "Skriv pasordet en gang til."
+msgstr "Skriv passordet en gang til."
 
 #: help_text.php:1299 setup.php:416
 msgid "Type your password again, to make sure you have typed it correctly."
