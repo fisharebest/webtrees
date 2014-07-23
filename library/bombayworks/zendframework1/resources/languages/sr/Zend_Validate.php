@@ -68,7 +68,7 @@ return array(
 
     // Zend_Validate_Db_Abstract
     "No record matching %value% was found" => "Zapis koji se poklapa sa %value% nije pronađen",
-    "A record matching %value% was found" => "Zapis koji se poklapa sa %value% je pronađen",
+    "A record matching '%value%' was found" => "Zapis koji se poklapa sa %value% je pronađen",
 
     // Zend_Validate_Digits
     "Invalid type given, value should be string, integer or float" => "Nevalidan tip, vrednost treba da bude tekst ili broj",

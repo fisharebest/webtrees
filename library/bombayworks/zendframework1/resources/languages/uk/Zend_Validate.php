@@ -68,7 +68,7 @@ return array(
 
     // Zend_Validate_Db_Abstract
     "No record matching %value% was found" => "Не знайдено записів, що відповідають '%value%'",
-    "A record matching %value% was found" => "Знайдено запис, що відповідає '%value%'",
+    "A record matching '%value%' was found" => "Знайдено запис, що відповідає '%value%'",
 
     // Zend_Validate_Digits
     "Invalid type given, value should be string, integer or float" => "Неприпустимий тип даних, значення повинно бути числом з плаваючою крапкою, рядком чи цілим числом",
