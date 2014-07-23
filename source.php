@@ -74,12 +74,15 @@ if ($controller->record && $controller->record->canShow()) {
 	exit;
 }
 
-$linkToID=$controller->record->getXref(); // Tell addmedia.php what to link to
-
 $controller
-	->addInlineJavascript('function show_gedcom_record() {window.open("gedrecord.php?pid=' . $controller->record->getXref() . '", "_blank", edit_window_specs);}')
-	->addInlineJavascript('jQuery("#source-tabs").tabs();')
-	->addInlineJavascript('jQuery("#source-tabs").css("visibility", "visible");');
+	->addInlineJavascript('
+		jQuery("#source-tabs")
+			.tabs({
+				create: function(e, ui){
+					jQuery(e.target).css("visibility", "visible");  // prevent FOUC
+				}
+			});
+	');
 
 $linked_indi = $controller->record->linkedIndividuals('SOUR');
 $linked_fam  = $controller->record->linkedFamilies('SOUR');
