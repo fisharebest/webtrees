@@ -1,22 +1,23 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
     ],
-    "hash": "e45b6fb68c9db8d3398bd31d828eed57",
+    "hash": "dc05a87663164f083267cb2a2bc5c75b",
     "packages": [
         {
             "name": "bombayworks/zendframework1",
-            "version": "v1.12.6",
+            "version": "v1.12.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bombayworks/zendframework1.git",
-                "reference": "f83796e2fcaf18bea1480988ab61de02a8168535"
+                "reference": "e3e6459bf317f12919d305cb8d16a61b4bf68f75"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bombayworks/zendframework1/zipball/f83796e2fcaf18bea1480988ab61de02a8168535",
-                "reference": "f83796e2fcaf18bea1480988ab61de02a8168535",
+                "url": "https://api.github.com/repos/bombayworks/zendframework1/zipball/e3e6459bf317f12919d305cb8d16a61b4bf68f75",
+                "reference": "e3e6459bf317f12919d305cb8d16a61b4bf68f75",
                 "shasum": ""
             },
             "require": {
@@ -38,14 +39,12 @@
             },
             "autoload": {
                 "psr-0": {
-                    "Zend_": "library/",
-                    "ZendX_": "extras/library/"
+                    "Zend_": "library/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
             "include-path": [
-                "library/",
-                "extras/library/"
+                "library/"
             ],
             "license": [
                 "BSD-3-Clause"
@@ -56,7 +55,7 @@
                 "ZF1",
                 "framework"
             ],
-            "time": "2014-04-15 17:01:21"
+            "time": "2014-06-30 12:10:54"
         },
         {
             "name": "ezyang/htmlpurifier",
@@ -144,16 +143,16 @@
         },
         {
             "name": "michelf/php-markdown",
-            "version": "1.4.0",
+            "version": "1.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/michelf/php-markdown.git",
-                "reference": "96d8150406f67e683ef4acc09fef91785fef1266"
+                "reference": "de9a19c7bf352d41cc99ed86c3c0ef17e87394b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/michelf/php-markdown/zipball/96d8150406f67e683ef4acc09fef91785fef1266",
-                "reference": "96d8150406f67e683ef4acc09fef91785fef1266",
+                "url": "https://api.github.com/repos/michelf/php-markdown/zipball/de9a19c7bf352d41cc99ed86c3c0ef17e87394b6",
+                "reference": "de9a19c7bf352d41cc99ed86c3c0ef17e87394b6",
                 "shasum": ""
             },
             "require": {
@@ -191,20 +190,20 @@
             "keywords": [
                 "markdown"
             ],
-            "time": "2013-11-29 17:09:24"
+            "time": "2014-05-05 02:43:50"
         },
         {
             "name": "patchwork/utf8",
-            "version": "v1.1.21",
+            "version": "v1.1.24",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nicolas-grekas/Patchwork-UTF8.git",
-                "reference": "f45ba8bc7962b7356847724989a6949b68d975a2"
+                "reference": "40f552c019956f446553b19f7de2da2f9c74d730"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nicolas-grekas/Patchwork-UTF8/zipball/f45ba8bc7962b7356847724989a6949b68d975a2",
-                "reference": "f45ba8bc7962b7356847724989a6949b68d975a2",
+                "url": "https://api.github.com/repos/nicolas-grekas/Patchwork-UTF8/zipball/40f552c019956f446553b19f7de2da2f9c74d730",
+                "reference": "40f552c019956f446553b19f7de2da2f9c74d730",
                 "shasum": ""
             },
             "require": {
@@ -242,15 +241,15 @@
                 "utf-8",
                 "utf8"
             ],
-            "time": "2014-03-26 10:52:02"
+            "time": "2014-06-17 08:23:06"
         },
         {
             "name": "tecnick.com/tcpdf",
-            "version": "6.0.073",
+            "version": "6.0.089",
             "source": {
                 "type": "git",
                 "url": "git://git.code.sf.net/p/tcpdf/code",
-                "reference": "214e1ea511d9c251f33412884b5360f8de1a4df9"
+                "reference": "979432f754965bc13960776df51cb28eabfc0938"
             },
             "require": {
                 "php": ">=5.3.0"
@@ -299,7 +298,7 @@
                 "pdf417",
                 "qrcode"
             ],
-            "time": "2014-04-29 20:58:11"
+            "time": "2014-07-16 17:59:23"
         }
     ],
     "packages-dev": [
@@ -312,6 +311,7 @@
     "stability-flags": [
 
     ],
+    "prefer-stable": false,
     "platform": [
 
     ],

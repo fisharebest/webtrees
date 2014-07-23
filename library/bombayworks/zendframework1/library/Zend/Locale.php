@@ -1639,6 +1639,11 @@ class Zend_Locale
             return true;
         }
 
+        // Is it an alias?
+        if (is_string($locale) && array_key_exists($locale, self::$_localeAliases)) {
+            return true;
+        }
+
         if (($locale === null) || (!is_string($locale) and !is_array($locale))) {
             return false;
         }
