@@ -1662,3 +1662,31 @@ jQuery.widget( "ui.dialog", jQuery.ui.dialog, {
 		}
 	}
 });
+
+/*
+Extend dataTable with a reset filters function
+Taken from http://www.datatables.net/forums/discussion/997/fnfilter-how-to-reset-all-filters-without-multiple-requests
+ case 1
+ clean all filter and redraw
+ oDataTable.fnResetAllFilters();
+
+ case 2
+ clean all filter and set new filter and redraw
+ oDataTable.fnResetAllFilters(false);     //reset all filter , do not redraw
+ oDataTable.fnFilter("newkeyword", 4); //new filter and draw
+
+ */
+jQuery (function () {
+	"use strict";
+	if (typeof jQuery.fn.dataTable !== 'undefined') {
+		jQuery.fn.dataTableExt.oApi.fnResetAllFilters = function (oSettings, bDraw  /*default true*/) {
+			for (var iCol = 0; iCol < oSettings.aoPreSearchCols.length; iCol++) {
+				oSettings.aoPreSearchCols[ iCol ].sSearch = '';
+			}
+			oSettings.oPreviousSearch.sSearch = '';
+
+			if (typeof bDraw === 'undefined') bDraw = true;
+			if (bDraw) this.fnDraw ();
+		};
+	}
+});

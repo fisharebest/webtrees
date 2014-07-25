@@ -29,11 +29,13 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
+use Rhumsaa\Uuid\Uuid;
+
 // print a table of individuals
 function format_indi_table($datalist, $option='') {
 	global $GEDCOM, $SHOW_LAST_CHANGE, $SEARCH_SPIDER, $MAX_ALIVE_AGE, $controller;
 
-	$table_id = 'ID'.(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
+	$table_id = Uuid::uuid4();  // lists requires a unique ID in case there are multiple lists per page
 	$SHOW_EST_LIST_DATES=get_gedcom_setting(WT_GED_ID, 'SHOW_EST_LIST_DATES');
 	$html = '';
 	$controller
@@ -43,7 +45,7 @@ function format_indi_table($datalist, $option='') {
 			jQuery.fn.dataTableExt.oSort["unicode-desc" ]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
 			jQuery.fn.dataTableExt.oSort["num-html-asc" ]=function(a,b) {a=parseFloat(a.replace(/<[^<]*>/, "")); b=parseFloat(b.replace(/<[^<]*>/, "")); return (a<b) ? -1 : (a>b ? 1 : 0);};
 			jQuery.fn.dataTableExt.oSort["num-html-desc"]=function(a,b) {a=parseFloat(a.replace(/<[^<]*>/, "")); b=parseFloat(b.replace(/<[^<]*>/, "")); return (a>b) ? -1 : (a<b ? 1 : 0);};
-			var oTable'.$table_id.' = jQuery("#'.$table_id.'").dataTable( {
+			jQuery("#'.$table_id.'").dataTable( {
 				dom: \'<"H"<"filtersH_'.$table_id.'">T<"dt-clear">pf<"dt-clear">irl>t<"F"pl<"dt-clear"><"filtersF_'.$table_id.'">>\',
 				'.WT_I18N::datatablesI18N().',
 				jQueryUI: true,
@@ -82,104 +84,59 @@ function format_indi_table($datalist, $option='') {
 			});
 
 			jQuery("div.filtersH_'.$table_id.'").html("'.WT_Filter::escapeJs(
-				'<button type="button" id="SEX_M_'.    $table_id.'" class="ui-state-default SEX_M" title="'.    WT_I18N::translate('Show only males.').'">&nbsp;'.WT_Individual::sexImage('M', 'small').'&nbsp;</button>'.
-				'<button type="button" id="SEX_F_'.    $table_id.'" class="ui-state-default SEX_F" title="'.    WT_I18N::translate('Show only females.').'">&nbsp;'.WT_Individual::sexImage('F', 'small').'&nbsp;</button>'.
-				'<button type="button" id="SEX_U_'.    $table_id.'" class="ui-state-default SEX_U" title="'.    WT_I18N::translate('Show only individuals for whom the gender is not known.').'">&nbsp;'.WT_Individual::sexImage('U', 'small').'&nbsp;</button>'.
-				'<button type="button" id="DEAT_N_'.   $table_id.'" class="ui-state-default DEAT_N" title="'.   WT_I18N::translate('Show individuals who are alive or couples where both partners are alive.').'">'.WT_I18N::translate('Alive').'</button>'.
-				'<button type="button" id="DEAT_Y_'.   $table_id.'" class="ui-state-default DEAT_Y" title="'.   WT_I18N::translate('Show individuals who are dead or couples where both partners are deceased.').'">'.WT_I18N::translate('Dead').'</button>'.
-				'<button type="button" id="DEAT_YES_'. $table_id.'" class="ui-state-default DEAT_YES" title="'. WT_I18N::translate('Show individuals who died more than 100 years ago.').'">'.WT_Gedcom_Tag::getLabel('DEAT').'&gt;100</button>'.
-				'<button type="button" id="DEAT_Y100_'.$table_id.'" class="ui-state-default DEAT_Y100" title="'.WT_I18N::translate('Show individuals who died within the last 100 years.').'">'.WT_Gedcom_Tag::getLabel('DEAT').'&lt;=100</button>'.
-				'<button type="button" id="BIRT_YES_'. $table_id.'" class="ui-state-default BIRT_YES" title="'. WT_I18N::translate('Show individuals born more than 100 years ago.').'">'.WT_Gedcom_Tag::getLabel('BIRT').'&gt;100</button>'.
-				'<button type="button" id="BIRT_Y100_'.$table_id.'" class="ui-state-default BIRT_Y100" title="'.WT_I18N::translate('Show individuals born within the last 100 years.').'">'.WT_Gedcom_Tag::getLabel('BIRT').'&lt;=100</button>'.
-				'<button type="button" id="TREE_R_'   .$table_id.'" class="ui-state-default TREE_R" title="'.   WT_I18N::translate('Show “roots” couples or individuals.  These individuals may also be called “patriarchs”.  They are individuals who have no parents recorded in the database.').'">'.WT_I18N::translate('Roots').'</button>'.
-				'<button type="button" id="TREE_L_'.   $table_id.'" class="ui-state-default TREE_L" title="'.   WT_I18N::translate('Show “leaves” couples or individuals.  These are individuals who are alive but have no children recorded in the database.').'">'.WT_I18N::translate('Leaves').'</button>'.
-				'<button type="button" id="RESET_'.    $table_id.'" class="ui-state-default RESET" title="'.    WT_I18N::translate('Reset to the list defaults.').'">'.WT_I18N::translate('Reset').'</button>'
+				'<button type="button" class="SEX_M ui-state-default"       title="'. WT_I18N::translate('Show only males.').'">'.WT_Individual::sexImage('M', 'small'). '</button>'.
+				'<button type="button" class="SEX_F ui-state-default"       title="'. WT_I18N::translate('Show only females.').'">'.WT_Individual::sexImage('F', 'small').'</button>'.
+				'<button type="button" class="SEX_U ui-state-default"       title="'. WT_I18N::translate('Show only individuals for whom the gender is not known.').'">'.WT_Individual::sexImage('U', 'small').'</button>'.
+				'<button type="button" class="DEAT_N ui-state-default"      title="'. WT_I18N::translate('Show individuals who are alive or couples where both partners are alive.').'">'.WT_I18N::translate('Alive').'</button>'.
+				'<button type="button" class="DEAT_Y ui-state-default"      title="'. WT_I18N::translate('Show individuals who are dead or couples where both partners are deceased.').'">'.WT_I18N::translate('Dead').'</button>'.
+				'<button type="button" class="DEAT_YES ui-state-default"    title="'. WT_I18N::translate('Show individuals who died more than 100 years ago.').'">'.WT_Gedcom_Tag::getLabel('DEAT').'&gt;100</button>'.
+				'<button type="button" class="DEAT_Y100 ui-state-default"   title="'. WT_I18N::translate('Show individuals who died within the last 100 years.').'">'.WT_Gedcom_Tag::getLabel('DEAT').'&lt;=100</button>'.
+				'<button type="button" class="BIRT_YES ui-state-default"    title="'. WT_I18N::translate('Show individuals born more than 100 years ago.').'">'.WT_Gedcom_Tag::getLabel('BIRT').'&gt;100</button>'.
+				'<button type="button" class="BIRT_Y100 ui-state-default"   title="'. WT_I18N::translate('Show individuals born within the last 100 years.').'">'.WT_Gedcom_Tag::getLabel('BIRT').'&lt;=100</button>'.
+				'<button type="button" class="TREE_R ui-state-default"      title="'. WT_I18N::translate('Show “roots” couples or individuals.  These individuals may also be called “patriarchs”.  They are individuals who have no parents recorded in the database.').'">'.WT_I18N::translate('Roots').'</button>'.
+				'<button type="button" class="TREE_L ui-state-default"      title="'. WT_I18N::translate('Show “leaves” couples or individuals.  These are individuals who are alive but have no children recorded in the database.').'">'.WT_I18N::translate('Leaves').'</button>'.
+				'<button type="button" class="RESET ui-state-default"       title="'. WT_I18N::translate('Reset to the list defaults.').'">'.WT_I18N::translate('Reset').'</button>'
 			).'");
 
 			jQuery("div.filtersF_'.$table_id.'").html("'.WT_Filter::escapeJs(
-				'<button type="button" class="ui-state-default" id="cb_parents_indi_list_table" onclick="jQuery(\'div.parents_indi_list_table_'.$table_id.'\').toggle(); jQuery(this).toggleClass(\'ui-state-active\');">'.WT_I18N::translate('Show parents').'</button>'.
-				'<button type="button" class="ui-state-default" id="charts_indi_list_table" onclick="jQuery(\'div.indi_list_table-charts_'.$table_id.'\').toggle(); jQuery(this).toggleClass(\'ui-state-active\');">'.WT_I18N::translate('Show statistics charts').'</button>'
+				'<button type="button" class="cb_parents_indi_list_table ui-state-default" onclick="jQuery(\'#' . $table_id . ' .parents_indi_list_table\').toggle(); jQuery(this).toggleClass(\'ui-state-active\');">'.WT_I18N::translate('Show parents').'</button>'.
+				'<button type="button" class="ui-state-default" onclick="jQuery(\'.indi_list_table-charts_'.$table_id.'\').toggle(); jQuery(this).toggleClass(\'ui-state-active\');">'.WT_I18N::translate('Show statistics charts').'</button>'
 			).'");
 
-			/* Add event listeners for filtering inputs */
-			jQuery("#SEX_M_'.    $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("M", 20 );
-				jQuery("#SEX_M_'.$table_id.'").addClass("ui-state-active");
-				jQuery("#SEX_F_'.$table_id.'").removeClass("ui-state-active");
-				jQuery("#SEX_U_'.$table_id.'").removeClass("ui-state-active");
-			});
-			jQuery("#SEX_F_'.    $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("F", 20 );
-				jQuery("#SEX_M_'.$table_id.'").removeClass("ui-state-active");
-				jQuery("#SEX_F_'.$table_id.'").addClass("ui-state-active");
-				jQuery("#SEX_U_'.$table_id.'").removeClass("ui-state-active");
-			});
-			jQuery("#SEX_U_'.    $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("U", 20 );
-				jQuery("#SEX_M_'.$table_id.'").removeClass("ui-state-active");
-				jQuery("#SEX_F_'.$table_id.'").removeClass("ui-state-active");
-				jQuery("#SEX_U_'.$table_id.'").addClass("ui-state-active");
-			});
-			jQuery("#BIRT_YES_'. $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("YES", 21 );
-				jQuery("#BIRT_YES_'.$table_id.'").addClass("ui-state-active");
-				jQuery("#BIRT_Y100_'.$table_id.'").removeClass("ui-state-active");
-			});
-			jQuery("#BIRT_Y100_'.$table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("Y100", 21 );
-				jQuery("#BIRT_YES_'.$table_id.'").removeClass("ui-state-active");
-				jQuery("#BIRT_Y100_'.$table_id.'").addClass("ui-state-active");
-			});
-			jQuery("#DEAT_N_'.   $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("N", 22 );
-				jQuery("#DEAT_N_'.$table_id.'").addClass("ui-state-active");
-				jQuery("#DEAT_Y_'.$table_id.'").removeClass("ui-state-active");
-				jQuery("#DEAT_YES_'.$table_id.'").removeClass("ui-state-active");
-				jQuery("#DEAT_Y100_'.$table_id.'").removeClass("ui-state-active");
-			});
-			jQuery("#DEAT_Y_'.   $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("^Y", 22, true, false );
-				jQuery("#DEAT_N_'.$table_id.'").removeClass("ui-state-active");
-				jQuery("#DEAT_Y_'.$table_id.'").addClass("ui-state-active");
-				jQuery("#DEAT_YES_'.$table_id.'").removeClass("ui-state-active");
-				jQuery("#DEAT_Y100_'.$table_id.'").removeClass("ui-state-active");
-			});
-			jQuery("#DEAT_YES_'. $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("YES", 22 );
-				jQuery("#DEAT_N_'.$table_id.'").removeClass("ui-state-active");
-				jQuery("#DEAT_Y_'.$table_id.'").removeClass("ui-state-active");
-				jQuery("#DEAT_YES_'.$table_id.'").addClass("ui-state-active");
-				jQuery("#DEAT_Y100_'.$table_id.'").removeClass("ui-state-active");
-			});
-			jQuery("#DEAT_Y100_'.$table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("Y100", 22 );
-				jQuery("#DEAT_N_'.$table_id.'").removeClass("ui-state-active");
-				jQuery("#DEAT_Y_'.$table_id.'").removeClass("ui-state-active");
-				jQuery("#DEAT_YES_'.$table_id.'").removeClass("ui-state-active");
-				jQuery("#DEAT_Y100_'.$table_id.'").addClass("ui-state-active");
-			});
-			jQuery("#TREE_R_'.   $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("R", 23 );
-				jQuery("#TREE_R_'.$table_id.'").addClass("ui-state-active");
-				jQuery("#TREE_L_'.$table_id.'").removeClass("ui-state-active");
-			});
-			jQuery("#TREE_L_'.   $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("L", 23 );
-				jQuery("#TREE_R_'.$table_id.'").removeClass("ui-state-active");
-				jQuery("#TREE_L_'.$table_id.'").addClass("ui-state-active");
-			});
-			jQuery("#RESET_'.    $table_id.'").click( function() {
-				for (i=20; i<=23; i++){
-					oTable'.$table_id.'.fnFilter("", i );
-				};
-				jQuery("div.filtersH_'.$table_id.' button").removeClass("ui-state-active");
+			/* Add event listeners for filtering input */
+			jQuery("#' . $table_id . '_wrapper").on("click", "[class^=\'filtersH_\'] button", function(e) {
+				var container = jQuery(e.delegateTarget),
+					self = jQuery(this),
+					oTable = container.children(".dataTable").dataTable(),
+					grp_action = self.attr("class").split(" ")[0].split("_"),
+					group = grp_action[0], // SEX, BIRT etc
+					action = self.hasClass("ui-state-active") ? "" : grp_action[1], // M, F etc
+					column = ["SEX", "BIRT", "DEAT", "TREE"].indexOf(group);
+
+				if (column === -1) { // remove all filters
+					oTable.fnResetAllFilters();
+					container.find("[class^=\'filtersH_\'] button").removeClass("ui-state-active");
+				} else {  // apply the relevant filter
+					oTable.fnFilter(action, column + 20) // filtered column start at 20
+					container.find("button[class^=\'" + group +"\']").removeClass("ui-state-active");
+					if (action) {
+						self.addClass("ui-state-active");
+					}
+				}
+				// check if need to show parents
+				if (container.find(".cb_parents_indi_list_table").hasClass("ui-state-active")) {
+					container.find(".parents_indi_list_table").show();
+				} else {
+					container.find(".parents_indi_list_table").hide();
+				}
 			});
 
-			/* This code is a temporary fix for Datatables bug http://www.datatables.net/forums/discussion/4730/datatables_sort_wrapper-being-added-to-columns-with-bsortable-false/p1*/
-			jQuery("th div span:eq(3)").css("display", "none");
-			jQuery("th div:eq(3)").css("margin", "auto").css("text-align", "center");
-			jQuery("th span:eq(8)").css("display", "none");
-			jQuery("th div:eq(8)").css("margin", "auto").css("text-align", "center");
+			/*
+			* This code is a temporary fix for a dataTables bug, which  still seems to be present in dataTables v 1.10, see
+			* http://www.datatables.net/forums/discussion/4730/datatables_sort_wrapper-being-added-to-columns-with-bsortable-false/p1
+			*/
+
+			jQuery(".dataTable .sorting_disabled div").css("margin", "auto").css("text-align", "center");
 
 			jQuery(".indi-list").css("visibility", "visible");
 			jQuery(".loading-image").css("display", "none");
@@ -269,7 +226,7 @@ function format_indi_table($datalist, $option='') {
 			$html .= '<a '. $title. ' href="'. $person->getHtmlUrl(). '"'. $class. '>'. highlight_search_hits($name['full']). '</a>'. $sex_image. '<br>';
 		}
 		// Indi parents
-		$html .= $person->getPrimaryParentsNames('parents_indi_list_table_'.$table_id.' details1', 'none');
+		$html .= $person->getPrimaryParentsNames('parents_indi_list_table details1', 'none');
 		$html .= '</td>';
 		// Dummy column to match colspan in header
 		$html .= '<td style="display:none;"></td>';
@@ -442,7 +399,7 @@ function format_indi_table($datalist, $option='') {
 // print a table of families
 function format_fam_table($datalist) {
 	global $GEDCOM, $SHOW_LAST_CHANGE, $SEARCH_SPIDER, $controller;
-	$table_id = 'ID'.(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
+	$table_id = Uuid::uuid4(); // lists requires a unique ID in case there are multiple lists per page
 	$html = '';
 
 	$controller
@@ -450,7 +407,7 @@ function format_fam_table($datalist) {
 		->addInlineJavascript('
 			jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
 			jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
-			var oTable'.$table_id.'=jQuery("#'.$table_id.'").dataTable( {
+			jQuery("#'.$table_id.'").dataTable( {
 				dom: \'<"H"<"filtersH_'.$table_id.'"><"dt-clear">pf<"dt-clear">irl>t<"F"pl<"dt-clear"><"filtersF_'.$table_id.'">>\',
 				'.WT_I18N::datatablesI18N().',
 				jQueryUI: true,
@@ -488,114 +445,58 @@ function format_fam_table($datalist) {
 		   });
 
 			jQuery("div.filtersH_'.$table_id.'").html("'.WT_Filter::escapeJs(
-				'<button type="button" id="DEAT_N_'.    $table_id.'" class="ui-state-default DEAT_N" title="'.    WT_I18N::translate('Show individuals who are alive or couples where both partners are alive.').'">'.WT_I18N::translate('Both alive').'</button>'.
-				'<button type="button" id="DEAT_W_'.    $table_id.'" class="ui-state-default DEAT_W" title="'.    WT_I18N::translate('Show couples where only the female partner is deceased.').'">'.WT_I18N::translate('Widower').'</button>'.
-				'<button type="button" id="DEAT_H_'.    $table_id.'" class="ui-state-default DEAT_H" title="'.    WT_I18N::translate('Show couples where only the male partner is deceased.').'">'.WT_I18N::translate('Widow').'</button>'.
-				'<button type="button" id="DEAT_Y_'.    $table_id.'" class="ui-state-default DEAT_Y" title="'.    WT_I18N::translate('Show individuals who are dead or couples where both partners are deceased.').'">'.WT_I18N::translate('Both dead').'</button>'.
-				'<button type="button" id="TREE_R_'.    $table_id.'" class="ui-state-default TREE_R" title="'.    WT_I18N::translate('Show “roots” couples or individuals.  These individuals may also be called “patriarchs”.  They are individuals who have no parents recorded in the database.').'">'.WT_I18N::translate('Roots').'</button>'.
-				'<button type="button" id="TREE_L_'.    $table_id.'" class="ui-state-default TREE_L" title="'.    WT_I18N::translate('Show “leaves” couples or individuals.  These are individuals who are alive but have no children recorded in the database.').'">'.WT_I18N::translate('Leaves').'</button>'.
-				'<button type="button" id="MARR_U_'.    $table_id.'" class="ui-state-default MARR_U" title="'.    WT_I18N::translate('Show couples with an unknown marriage date.').'">'.WT_Gedcom_Tag::getLabel('MARR').'</button>'.
-				'<button type="button" id="MARR_YES_'.  $table_id.'" class="ui-state-default MARR_YES" title="'.  WT_I18N::translate('Show couples who married more than 100 years ago.').'">'.WT_Gedcom_Tag::getLabel('MARR').'&gt;100</button>'.
-				'<button type="button" id="MARR_Y100_'. $table_id.'" class="ui-state-default MARR_Y100" title="'. WT_I18N::translate('Show couples who married within the last 100 years.').'">'.WT_Gedcom_Tag::getLabel('MARR').'&lt;=100</button>'.
-				'<button type="button" id="MARR_DIV_'.  $table_id.'" class="ui-state-default MARR_DIV" title="'.  WT_I18N::translate('Show divorced couples.').'">'.WT_Gedcom_Tag::getLabel('DIV').'</button>'.
-				'<button type="button" id="MULTI_MARR_'.$table_id.'" class="ui-state-default MULTI_MARR" title="'.WT_I18N::translate('Show couples where either partner married more than once.').'">'.WT_I18N::translate('Multiple marriages').'</button>'.
-				'<button type="button" id="RESET_'.$table_id.'" class="ui-state-default RESET" title="'.WT_I18N::translate('Reset to the list defaults.').'">'.WT_I18N::translate('Reset').'</button>'
+				'<button type="button" class="DEAT_N ui-state-default"      title="'. WT_I18N::translate('Show individuals who are alive or couples where both partners are alive.').'">'.WT_I18N::translate('Both alive').'</button>'.
+				'<button type="button" class="DEAT_W ui-state-default"      title="'. WT_I18N::translate('Show couples where only the female partner is deceased.').'">'.WT_I18N::translate('Widower').'</button>'.
+				'<button type="button" class="DEAT_H ui-state-default"      title="'. WT_I18N::translate('Show couples where only the male partner is deceased.').'">'.WT_I18N::translate('Widow').'</button>'.
+				'<button type="button" class="DEAT_Y ui-state-default"      title="'. WT_I18N::translate('Show individuals who are dead or couples where both partners are deceased.').'">'.WT_I18N::translate('Both dead').'</button>'.
+				'<button type="button" class="TREE_R ui-state-default"      title="'. WT_I18N::translate('Show “roots” couples or individuals.  These individuals may also be called “patriarchs”.  They are individuals who have no parents recorded in the database.').'">'.WT_I18N::translate('Roots').'</button>'.
+				'<button type="button" class="TREE_L ui-state-default"      title="'. WT_I18N::translate('Show “leaves” couples or individuals.  These are individuals who are alive but have no children recorded in the database.').'">'.WT_I18N::translate('Leaves').'</button>'.
+				'<button type="button" class="MARR_U ui-state-default"      title="'. WT_I18N::translate('Show couples with an unknown marriage date.').'">'.WT_Gedcom_Tag::getLabel('MARR').'</button>'.
+				'<button type="button" class="MARR_YES ui-state-default"    title="'. WT_I18N::translate('Show couples who married more than 100 years ago.').'">'.WT_Gedcom_Tag::getLabel('MARR').'&gt;100</button>'.
+				'<button type="button" class="MARR_Y100 ui-state-default"   title="'. WT_I18N::translate('Show couples who married within the last 100 years.').'">'.WT_Gedcom_Tag::getLabel('MARR').'&lt;=100</button>'.
+				'<button type="button" class="MARR_D ui-state-default"    title="'. WT_I18N::translate('Show divorced couples.').'">'.WT_Gedcom_Tag::getLabel('DIV').'</button>'.
+				'<button type="button" class="MARR_M ui-state-default"  title="'. WT_I18N::translate('Show couples where either partner married more than once.').'">'.WT_I18N::translate('Multiple marriages').'</button>'.
+				'<button type="button" class="RESET ui-state-default"       title="'. WT_I18N::translate('Reset to the list defaults.').'">'.WT_I18N::translate('Reset').'</button>'
 			).'");
 
 			jQuery("div.filtersF_'.$table_id.'").html("'.WT_Filter::escapeJs(
-				'<button type="button" class="ui-state-default" id="cb_parents_'.$table_id.'" onclick="jQuery(\'div.parents_'.$table_id.'\').toggle(); jQuery(this).toggleClass(\'ui-state-active\');">'.WT_I18N::translate('Show parents').'</button>'.
-				'<button type="button" class="ui-state-default" id="charts_fam_list_table" onclick="jQuery(\'div.fam_list_table-charts_'.$table_id.'\').toggle(); jQuery(this).toggleClass(\'ui-state-active\');">'. WT_I18N::translate('Show statistics charts').'</button>'
+				'<button type="button" class="cb_parents ui-state-default" onclick="jQuery(\'#' . $table_id . ' .parents\').toggle(); jQuery(this).toggleClass(\'ui-state-active\');">'.WT_I18N::translate('Show parents').'</button>'.
+				'<button type="button" class="ui-state-default" onclick="jQuery(\'div.fam_list_table-charts_'.$table_id.'\').toggle(); jQuery(this).toggleClass(\'ui-state-active\');">'. WT_I18N::translate('Show statistics charts').'</button>'
 			).'");
 
 			/* Add event listeners for filtering inputs */
-			jQuery("#MARR_U_'.    $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("U", 20);
-				jQuery("#MARR_U_'.$table_id.'").addClass("ui-state-active");
-				jQuery("#MARR_YES_'.$table_id.'").removeClass("ui-state-active");
-				jQuery("#MARR_Y100_'.$table_id.'").removeClass("ui-state-active");
-				jQuery("#MARR_DIV_'.$table_id.'").removeClass("ui-state-active");
-				jQuery("#MULTI_MARR_'.$table_id.'").removeClass("ui-state-active");
-			});
-			jQuery("#MARR_YES_'.  $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("YES", 20);
-				jQuery("#MARR_U_'.$table_id.'").removeClass("ui-state-active");
-				jQuery("#MARR_YES_'.$table_id.'").addClass("ui-state-active");
-				jQuery("#MARR_Y100_'.$table_id.'").removeClass("ui-state-active");
-				jQuery("#MARR_DIV_'.$table_id.'").removeClass("ui-state-active");
-				jQuery("#MULTI_MARR_'.$table_id.'").removeClass("ui-state-active");
-			});
-			jQuery("#MARR_Y100_'. $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("Y100", 20);
-				jQuery("#MARR_U_'.$table_id.'").removeClass("ui-state-active");
-				jQuery("#MARR_YES_'.$table_id.'").removeClass("ui-state-active");
-				jQuery("#MARR_Y100_'.$table_id.'").addClass("ui-state-active");
-				jQuery("#MARR_DIV_'.$table_id.'").removeClass("ui-state-active");
-				jQuery("#MULTI_MARR_'.$table_id.'").removeClass("ui-state-active");
-			});
-			jQuery("#MARR_DIV_'.  $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("D", 20);
-				jQuery("#MARR_U_'.$table_id.'").removeClass("ui-state-active");
-				jQuery("#MARR_YES_'.$table_id.'").removeClass("ui-state-active");
-				jQuery("#MARR_Y100_'.$table_id.'").removeClass("ui-state-active");
-				jQuery("#MARR_DIV_'.$table_id.'").addClass("ui-state-active");
-				jQuery("#MULTI_MARR_'.$table_id.'").removeClass("ui-state-active");
-			});
-			jQuery("#MULTI_MARR_'.$table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("M", 20);
-				jQuery("#MARR_U_'.$table_id.'").removeClass("ui-state-active");
-				jQuery("#MARR_YES_'.$table_id.'").removeClass("ui-state-active");
-				jQuery("#MARR_Y100_'.$table_id.'").removeClass("ui-state-active");
-				jQuery("#MARR_DIV_'.$table_id.'").removeClass("ui-state-active");
-				jQuery("#MULTI_MARR_'.$table_id.'").addClass("ui-state-active");
-			});
-			jQuery("#DEAT_N_'.    $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("N", 21);
-				jQuery("#DEAT_N_'.$table_id.'").addClass("ui-state-active");
-				jQuery("#DEAT_W_'.$table_id.'").removeClass("ui-state-active");
-				jQuery("#DEAT_H_'.$table_id.'").removeClass("ui-state-active");
-				jQuery("#DEAT_Y_'.$table_id.'").removeClass("ui-state-active");
-			});
-			jQuery("#DEAT_W_'.    $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("W", 21);
-				jQuery("#DEAT_N_'.$table_id.'").removeClass("ui-state-active");
-				jQuery("#DEAT_W_'.$table_id.'").addClass("ui-state-active");
-				jQuery("#DEAT_H_'.$table_id.'").removeClass("ui-state-active");
-				jQuery("#DEAT_Y_'.$table_id.'").removeClass("ui-state-active");
-			});
-			jQuery("#DEAT_H_'.    $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("H", 21);
-				jQuery("#DEAT_N_'.$table_id.'").removeClass("ui-state-active");
-				jQuery("#DEAT_W_'.$table_id.'").removeClass("ui-state-active");
-				jQuery("#DEAT_H_'.$table_id.'").addClass("ui-state-active");
-				jQuery("#DEAT_Y_'.$table_id.'").removeClass("ui-state-active");
-			});
-			jQuery("#DEAT_Y_'.    $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("Y", 21);
-				jQuery("#DEAT_N_'.$table_id.'").removeClass("ui-state-active");
-				jQuery("#DEAT_W_'.$table_id.'").removeClass("ui-state-active");
-				jQuery("#DEAT_H_'.$table_id.'").removeClass("ui-state-active");
-				jQuery("#DEAT_Y_'.$table_id.'").addClass("ui-state-active");
-			});
-			jQuery("#TREE_R_'.    $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("R", 22);
-				jQuery("#TREE_R_'.$table_id.'").addClass("ui-state-active");
-				jQuery("#TREE_L_'.$table_id.'").removeClass("ui-state-active");
-			});
-			jQuery("#TREE_L_'.    $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("L", 22);
-				jQuery("#TREE_R_'.$table_id.'").removeClass("ui-state-active");
-				jQuery("#TREE_L_'.$table_id.'").addClass("ui-state-active");
-			});
-			jQuery("#RESET_'.     $table_id.'").click( function() {
-				for (i=20; i<=22; i++) {
-					oTable'.$table_id.'.fnFilter("", i );
-				};
-				jQuery("div.filtersH_'.$table_id.' button").removeClass("ui-state-active");
+			jQuery("#' . $table_id . '_wrapper").on("click", "[class^=\'filtersH_\'] button", function(e) {
+				var container = jQuery(e.delegateTarget),
+					self = jQuery(this),
+					oTable = container.children(".dataTable").dataTable(),
+					grp_action = self.attr("class").split(" ")[0].split("_"),
+					group = grp_action[0], // MARR, DEAT etc
+					action = self.hasClass("ui-state-active") ? "" : grp_action[1], // Y, N etc
+					column = ["MARR", "DEAT", "TREE"].indexOf(group);
+
+				if (column === -1) { // remove all filters
+					oTable.fnResetAllFilters();
+					container.find("[class^=\'filtersH_\'] button").removeClass("ui-state-active");
+				} else {  // apply the relevant filter
+					oTable.fnFilter(action, column + 20) // filtered column start at 20
+					container.find("button[class^=\'" + group +"\']").removeClass("ui-state-active");
+					if (action) {
+						self.addClass("ui-state-active");
+					}
+				}
+				// check if need to show parents
+				if (container.find(".cb_parents").hasClass("ui-state-active")) {
+					container.find(".parents").show();
+				} else {
+					container.find(".parents").hide();
+				}
 			});
 
-			/* This code is a temporary fix for Datatables bug http://www.datatables.net/forums/discussion/4730/datatables_sort_wrapper-being-added-to-columns-with-bsortable-false/p1*/
-			jQuery("th span:eq(9)").css("display", "none");
-			jQuery("th div:eq(9)").css("margin", "auto").css("text-align", "center");
+			/*
+			* This code is a temporary fix for a dataTables bug, which  still seems to be present in dataTables v 1.10, see
+			* http://www.datatables.net/forums/discussion/4730/datatables_sort_wrapper-being-added-to-columns-with-bsortable-false/p1
+			*/
+			jQuery(".dataTable .sorting_disabled div").css("margin", "auto").css("text-align", "center");
 
 			jQuery(".fam-list").css("visibility", "visible");
 			jQuery(".loading-image").css("display", "none");
@@ -680,7 +581,7 @@ function format_fam_table($datalist) {
 			}
 		}
 		// Husband parents
-		$html .= $husb->getPrimaryParentsNames('parents_'.$table_id.' details1', 'none');
+		$html .= $husb->getPrimaryParentsNames('parents details1', 'none');
 		$html .= '</td>';
 		// Dummy column to match colspan in header
 		$html .= '<td style="display:none;"></td>';
@@ -869,7 +770,7 @@ function format_fam_table($datalist) {
 function format_sour_table($datalist) {
 	global $SHOW_LAST_CHANGE, $controller;
 	$html = '';
-	$table_id = "ID".(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
+	$table_id = Uuid::uuid4(); // lists requires a unique ID in case there are multiple lists per page
 	$controller
 		->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 		->addInlineJavascript('
@@ -1003,7 +904,7 @@ function format_sour_table($datalist) {
 function format_note_table($datalist) {
 	global $SHOW_LAST_CHANGE, $controller;
 	$html = '';
-	$table_id = 'ID'.(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
+	$table_id = Uuid::uuid4(); // lists requires a unique ID in case there are multiple lists per page
 	$controller
 		->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 		->addInlineJavascript('
@@ -1112,7 +1013,7 @@ function format_repo_table($repos) {
 	global $SHOW_LAST_CHANGE, $controller;
 
 	$html = '';
-	$table_id = 'ID'.(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
+	$table_id = Uuid::uuid4(); // lists requires a unique ID in case there are multiple lists per page
 	$controller
 		->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 		->addInlineJavascript('
@@ -1211,7 +1112,7 @@ function format_repo_table($repos) {
 function format_media_table($datalist) {
 	global $SHOW_LAST_CHANGE, $controller;
 	$html = '';
-	$table_id = 'ID'.(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
+	$table_id = Uuid::uuid4(); // lists requires a unique ID in case there are multiple lists per page
 	$controller
 		->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 		->addInlineJavascript('
@@ -1558,7 +1459,7 @@ function print_changes_table($change_ids, $sort) {
 	global $controller;
 
 	$n = 0;
-	$table_id = "ID" . (int)(microtime() * 1000000); // create a unique ID
+	$table_id = Uuid::uuid4(); // create a unique ID
 	switch ($sort) {
 	case 'name':        //name
 		$aaSorting = "[5,'asc'], [4,'desc']";
@@ -1670,7 +1571,7 @@ function print_changes_table($change_ids, $sort) {
 function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_living=false, $sort_by='anniv') {
 	global $controller;
 	$html = '';
-	$table_id = "ID".(int)(microtime()*1000000); // each table requires a unique ID
+	$table_id = Uuid::uuid4(); // each table requires a unique ID
 	$controller
 		->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 		->addInlineJavascript('
