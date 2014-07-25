@@ -1,9 +1,9 @@
 <?php
 //============================================================+
 // File name   : datamatrix.php
-// Version     : 1.0.006
+// Version     : 1.0.008
 // Begin       : 2010-06-07
-// Last Update : 2014-04-24
+// Last Update : 2014-05-06
 // Author      : Nicola Asuni - Tecnick.com LTD - www.tecnick.com - info@tecnick.com
 // License     : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
 // -------------------------------------------------------------------
@@ -40,7 +40,7 @@
 *
 * @package com.tecnick.tcpdf
 * @author Nicola Asuni
-* @version 1.0.006
+* @version 1.0.008
 */
 
 // custom definitions
@@ -832,6 +832,8 @@ class Datamatrix {
 							$cw[] = ($chr + 1);
 							++$cw_num;
 							$pos = $epos;
+							$enc = ENC_ASCII;
+							$this->last_enc = $enc;
 						} elseif (($cwr == 2) AND ($p == 1)) {
 							// c. If two symbol characters remain and only one C40 value (data character) remains to be encoded
 							$c1 = array_shift($temp_cw);
@@ -840,6 +842,8 @@ class Datamatrix {
 							$cw[] = ($chr + 1);
 							$cw_num += 2;
 							$pos = $epos;
+							$enc = ENC_ASCII;
+							$this->last_enc = $enc;
 						} elseif (($cwr == 2) AND ($p == 2)) {
 							// b. If two symbol characters remain and two C40 values remain to be encoded
 							$c1 = array_shift($temp_cw);
@@ -850,10 +854,13 @@ class Datamatrix {
 							$cw[] = ($tmp % 256);
 							$cw_num += 2;
 							$pos = $epos;
+							$enc = ENC_ASCII;
+							$this->last_enc = $enc;
 						} else {
 							// switch to ASCII encoding
 							if ($enc != ENC_ASCII) {
 								$enc = ENC_ASCII;
+								$this->last_enc = $enc;
 								$cw[] = $this->getSwitchEncodingCodeword($enc);
 								++$cw_num;
 								$pos = ($epos - $p);
@@ -929,8 +936,6 @@ class Datamatrix {
 						if ($newenc != $enc) {
 							// 1. If the look-ahead test (starting at step J) indicates another mode, switch to that mode.
 							$enc = $newenc;
-							$cw[] = $this->getSwitchEncodingCodeword($enc);
-							++$cw_num;
 							break; // exit from B256 mode
 						} else {
 							// 2. Otherwise, process the next character in Base 256 encodation.

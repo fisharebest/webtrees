@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2014-06-12 21:41+0100\n"
-"PO-Revision-Date: 2014-06-22 19:36+0100\n"
+"PO-Revision-Date: 2014-07-23 17:14+0100\n"
 "Last-Translator: fisharebest <fisharebest@gmail.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -164,7 +164,7 @@ msgstr "%1$s × %2$s pixels"
 #: admin_site_upgrade.php:312
 #, php-format
 msgid "%1$sKB were downloaded in %2$s seconds."
-msgstr "%1$s fichiers ont été extraits %2$s secondes."
+msgstr "%1$sKB ont été téléchargés en %2$s secondes."
 
 #. I18N: A range of years, e.g. “1870–”, “1870–1920”, “–1920”
 #: library/WT/Individual.php:418
@@ -246,7 +246,7 @@ msgstr "%j %F %Y"
 #: library/WT/Stats.php:4072
 #, php-format
 msgid "%s BCE"
-msgstr "%s BCE"
+msgstr "%s avant notre ère"
 
 #. I18N: size of file in KB
 #: admin_media.php:416 library/WT/Media.php:203
@@ -668,7 +668,7 @@ msgstr "Un élément FAQ peut être affiché sur un arbre seulement ou sur tous 
 
 #: help_text.php:320
 msgid "A child may have more than one set of parents.  The relationship between the child and the parents can be biological, legal, or based on local culture and tradition.  If no pedigree is specified, then a biological relationship will be assumed."
-msgstr "Un enfant peut avoir plus qu’un couple de parents.  La relation entre l’enfant et ses parents peut-être biologique, légale ou  basée sur la culture locale et la tradition.  Si la relation n’est pas spécifiée, il est supposé qu’elle soit biologique."
+msgstr "Un enfant peut avoir plus d’un couple de parents.  La relation entre l’enfant et ses parents peut-être biologique, légale ou  basée sur la culture locale et la tradition.  Si la relation n’est pas spécifiée, il est supposé qu’elle soit biologique."
 
 #: modules_v3/batch_update/plugins/duplicate_links.php:32
 msgid "A common error is to have multiple links to the same record, for example listing the same child more than once in a family record."
@@ -3169,7 +3169,7 @@ msgstr "Par défaut, ce diagramme ne présente pas les conjoints pour les descen
 #. I18N: Help text for the "Port number" site configuration setting
 #: help_text.php:769
 msgid "By default, SMTP works on port 25."
-msgstr "Par défaut, la protocole SMTP utilise le port 25."
+msgstr "Par défaut, le protocole SMTP utilise le port 25."
 
 #: modules_v3/googlemap/help_text.php:81
 msgid "By default, the list shows only those places which can be found in your family trees.  You may have details for other places, such as those imported in bulk from an external file.  Selecting this option will show all places, including ones that are not currently used."
@@ -5589,7 +5589,7 @@ msgstr "Saisir les paramètres du rapport"
 
 #: help_text.php:263
 msgid "Enter the FAX number including the country and area code.<br><br>Leave this field blank if you do not want to include a FAX number.  For example, a number in Germany might be +49 25859 56 76 89 and a number in USA or Canada might be +1 888 555-1212."
-msgstr "Entrez le numero de FAX y compris le numéro du pays, et de la zone si il y a lieu.<br><br>Laissez ce champ à blanc si vous ne voulez pas inclure de numéro FAX. Par exemple, un numéro de FAX en France doit être du type (sans le zero du début) :  +33 491422679 et un numéro aux USA ou au Canada doit être du type : +1 888 555-1212."
+msgstr "Entrez le numéro de FAX y compris le numéro du pays, et de la zone s’il y a lieu.<br><br>Laissez ce champ en blanc si vous ne voulez pas inclure de numéro FAX. Par exemple, un numéro de FAX en France doit être du type (sans le zéro du début) :  +33 491422679 et un numéro aux USA ou au Canada doit être du type : +1 888 555-1212."
 
 #: help_text.php:388
 msgid "Enter the URL address including the http://.<br><br>An example URL looks like this: <b>http://www.webtrees.net/</b>.  Leave this field blank if you do not want to include a URL."
@@ -5710,7 +5710,7 @@ msgstr "Évènements de la famille proche"
 
 #: help_text.php:1363
 msgid "Every individual in the database has a unique ID number on this site.  If you know the ID number for your own record, please enter it here.  If you don’t know your ID number or could not find it because of privacy settings, please provide enough information in the comments field to help the site administrator identify who you are on this site so that he can set the ID for you."
-msgstr "Chaque personne figurant dans la base est identifiée par un numéro d’ID unique sur ce site. Si vous connaissez le numéro d’ID de votre enregistrement, entrez le ici. Si vous ne le connaissez pas ou ne pouvez pas le trouver à cause des règles de protections sur la vie privée, veuillez laisser assez de renseignements dans le champ Commentaires pour aider l’administrateur du site à vous identifier, afin de mettre à jour ce champ avec votre numéro d’ID."
+msgstr "Chaque personne figurant dans la base est identifiée par un numéro d’ID unique sur ce site. Si vous connaissez le numéro d’ID de votre enregistrement, entrez-le ici. Si vous ne le connaissez pas ou ne pouvez pas le trouver à cause des règles de protections sur la vie privée, veuillez laisser assez de renseignements dans le champ Commentaires pour aider l’administrateur du site à vous identifier, afin de mettre à jour ce champ avec votre numéro d’ID."
 
 #: help_text.php:1378
 msgid "Everybody has this role, including visitors to the site and search engines."
@@ -6977,7 +6977,7 @@ msgstr "Chef de famille:"
 #. I18N: gedcom tag HEAD
 #: library/WT/Gedcom/Tag.php:215
 msgid "Header"
-msgstr "Entête"
+msgstr "En-tête"
 
 #: library/WT/Stats.php:3905
 msgid "Heard Island and McDonald Islands"
@@ -7178,7 +7178,7 @@ msgstr "Honduras"
 
 #: library/WT/Gedcom/Code/Temp.php:104 library/WT/Stats.php:3904
 msgid "Hong Kong"
-msgstr "Hong Kong région administrative spéciale de Chine"
+msgstr "Hong Kong région administrative spéciale de Chine"
 
 #: includes/functions/functions_print.php:101
 #: library/WT/Controller/Fanchart.php:311 library/WT/MenuBar.php:99
@@ -12406,12 +12406,12 @@ msgstr "Affichage des personnes nées depuis moins de 100 ans"
 #: includes/functions/functions_print_lists.php:88
 #: includes/functions/functions_print_lists.php:491
 msgid "Show individuals who are alive or couples where both partners are alive."
-msgstr "Affichage des personnes vivantes ou des couples dont les deux époux sont vivants à la date d’aujourd’hui."
+msgstr "Affichage des personnes vivantes ou des couples dont les deux époux sont vivants aujourd’hui."
 
 #: includes/functions/functions_print_lists.php:89
 #: includes/functions/functions_print_lists.php:494
 msgid "Show individuals who are dead or couples where both partners are deceased."
-msgstr "Affichage des personnes décédées ou des couples dont les deux époux sont décédés à la date d’aujourd’hui."
+msgstr "Affichage des personnes décédées ou des couples dont les deux époux sont décédés aujourd’hui."
 
 #: includes/functions/functions_print_lists.php:90
 msgid "Show individuals who died more than 100 years ago."
@@ -12515,7 +12515,7 @@ msgstr "Afficher les tâches attribuées à d’autres utilisateurs"
 
 #: modules_v3/todo/module.php:177
 msgid "Show research tasks that are not assigned to any user"
-msgstr "Affichier les tâches à faire non-assignées à un utilisateur"
+msgstr "Afficher les tâches à faire non-assignées à un utilisateur"
 
 #: modules_v3/todo/module.php:184
 msgid "Show research tasks that have a date in the future"
@@ -13437,7 +13437,7 @@ msgstr "Les champs suivants sont différents. Sélectionner la valeur à conserv
 
 #: admin_site_merge.php:84
 msgid "The following facts were exactly the same in both records and will be merged automatically."
-msgstr "Les champs suivants sont identiques dans les 2 enregistrements et seront fusionnés automatiquement"
+msgstr "Les champs suivants sont identiques dans les deux enregistrements et seront fusionnés automatiquement"
 
 #: setup.php:172
 msgid "The following list shows typical requirements."
@@ -13457,7 +13457,7 @@ msgstr "Les lieux ci-dessous devraient être changés :"
 
 #: admin_site_access.php:274
 msgid "The following rules are used to decide whether a visitor is a human being (allow full access), a search-engine robot (allow restricted access) or an unwanted crawler (deny all access)."
-msgstr "Les règles suivantes sont utilisées pour décider si un visiteur est un être humain (autoriser l’accès complet), un robot de moteur de recherche (autoriser un accès restreint) ou un robot indésirable (refuser tout accès)."
+msgstr "Les règles suivantes sont utilisées pour décider si un visiteur est un être humain (autoriser l’accès complet), un robot de recherche (autoriser un accès restreint) ou un robot indésirable (refuser tout accès)."
 
 #: admin_site_access.php:291
 msgid "The following visitors were not recognized, and were assumed to be search engines."
@@ -13722,7 +13722,7 @@ msgstr "La base de données et le préfixe de table semblent être utilisés par
 #: setup.php:243
 #, php-format
 msgid "This database is only running MySQL version %s.  You cannot install webtrees here."
-msgstr "La base de données nécessite au moins la version MySQL %s. Vous ne pouvez pas installer webtrees sur le serveur présent."
+msgstr "La base de données nécessite au moins la version MySQL %s. Vous ne pouvez pas installer webtrees sur ce serveur."
 
 #: help_text.php:1207 setup.php:420
 msgid "This email address will be used to send you password reminders, site notifications, and messages from other family members who are registered on the site."
@@ -13966,7 +13966,7 @@ msgstr "Cela peut provoquer un problème pour webtrees."
 
 #: admin_media.php:428
 msgid "This media file does not exist."
-msgstr "The fichier média n’existe pas."
+msgstr "Ce fichier média n’existe pas."
 
 #: admin_media.php:425
 msgid "This media file exists, but cannot be accessed."
@@ -14815,7 +14815,7 @@ msgstr "Émirats Arabes Unis"
 
 #: library/WT/Stats.php:3887
 msgid "United Kingdom"
-msgstr "Royaume-Uni de Grande-Bretagne et d’Irlande du Nord"
+msgstr "Royaume-Uni de Grande-Bretagne et d’Irlande du Nord"
 
 #: library/WT/Stats.php:3799
 msgid "Unknown"
@@ -15637,7 +15637,7 @@ msgstr "Vous pouvez limiter le nombre de nouveaux articles affichés, réduisant
 
 #: modules_v3/batch_update/plugins/married_names.php:37
 msgid "You can make it easier to search for married women by recording their married name.<br>However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
-msgstr "Vous pouvez faciliter la recherche de femmes mariées en enregistrant leur nom de femme mariée.<br>Cependant toutes les femmes ne prennent le nom de leur mari, alors méfiez-vous de l’introduction des informations incorrectes dans votre base de données."
+msgstr "Vous pouvez faciliter la recherche de femmes mariées en enregistrant leur nom de femme mariée.<br>Cependant toutes les femmes ne prennent pas le nom de leur mari, alors méfiez-vous de l’introduction des informations incorrectes dans votre base de données."
 
 #: login.php:563
 msgid "You can now login with your user name and password."
@@ -16551,7 +16551,7 @@ msgstr "possibilité de téléverser des fichiers"
 #. I18N: button label, first page
 #: library/WT/I18N.php:691
 msgid "first"
-msgstr "premier"
+msgstr "début"
 
 #: admin_trees_config.php:909
 msgctxt "Show the [first/last] [N] parts of a place name."
@@ -16897,17 +16897,17 @@ msgstr "petite-fille"
 #: includes/functions/functions.php:930
 msgctxt "child’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr "petite-fille"
+msgstr "mari de la petite-fille"
 
 #: includes/functions/functions.php:941
 msgctxt "daughter’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr "petite-fille"
+msgstr "mari de la petite-fille"
 
 #: includes/functions/functions.php:1072
 msgctxt "son’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr "petite-fille"
+msgstr "mari de la petite-fille"
 
 #: includes/functions/functions.php:862
 msgctxt "parent’s father"
@@ -16942,17 +16942,17 @@ msgstr "petit-fils"
 #: includes/functions/functions.php:935
 msgctxt "child’s son’s wife"
 msgid "grandson’s wife"
-msgstr "petit-fils"
+msgstr "femme du petit-fils"
 
 #: includes/functions/functions.php:949
 msgctxt "daughter’s son’s wife"
 msgid "grandson’s wife"
-msgstr "petit-fils"
+msgstr "femme du petit-fils"
 
 #: includes/functions/functions.php:1077
 msgctxt "son’s son’s wife"
 msgid "grandson’s wife"
-msgstr "petit-fils"
+msgstr "femme du petit-fils"
 
 #: includes/functions/functions.php:1275 includes/functions/functions.php:1284
 #: includes/functions/functions.php:1295
@@ -17100,11 +17100,11 @@ msgstr "grand-oncle au (%d-1)<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1232
 msgid "great ×4 aunt"
-msgstr "grande-tante au 5<sup>e</sup> degré"
+msgstr "grand-tante au 5<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1233
 msgid "great ×4 aunt/uncle"
-msgstr "grand(e)-oncle/tante au 5<sup>e</sup> degré"
+msgstr "grand-oncle/grand-tante au 5<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1581
 msgid "great ×4 grandchild"
@@ -17379,182 +17379,182 @@ msgstr "grand-oncle au 7<sup>e</sup> degré"
 #: includes/functions/functions.php:1085
 msgctxt "father’s father’s brother’s wife"
 msgid "great-aunt"
-msgstr "grande-tante"
+msgstr "grand-tante"
 
 #: includes/functions/functions.php:959
 msgctxt "father’s father’s sister"
 msgid "great-aunt"
-msgstr "grande-tante"
+msgstr "grand-tante"
 
 #: includes/functions/functions.php:1088
 msgctxt "father’s mother’s brother’s wife"
 msgid "great-aunt"
-msgstr "grande-tante"
+msgstr "grand-tante"
 
 #: includes/functions/functions.php:965
 msgctxt "father’s mother’s sister"
 msgid "great-aunt"
-msgstr "grande-tante"
+msgstr "grand-tante"
 
 #: includes/functions/functions.php:1091
 msgctxt "father’s parent’s brother’s wife"
 msgid "great-aunt"
-msgstr "grande-tante"
+msgstr "grand-tante"
 
 #: includes/functions/functions.php:971
 msgctxt "father’s parent’s sister"
 msgid "great-aunt"
-msgstr "grande-tante"
+msgstr "grand-tante"
 
 #: includes/functions/functions.php:1094
 msgctxt "mother’s father’s brother’s wife"
 msgid "great-aunt"
-msgstr "grande-tante"
+msgstr "grand-tante"
 
 #: includes/functions/functions.php:990
 msgctxt "mother’s father’s sister"
 msgid "great-aunt"
-msgstr "grande-tante"
+msgstr "grand-tante"
 
 #: includes/functions/functions.php:1097
 msgctxt "mother’s mother’s brother’s wife"
 msgid "great-aunt"
-msgstr "grande-tante"
+msgstr "grand-tante"
 
 #: includes/functions/functions.php:999
 msgctxt "mother’s mother’s sister"
 msgid "great-aunt"
-msgstr "grande-tante"
+msgstr "grand-tante"
 
 #: includes/functions/functions.php:1100
 msgctxt "mother’s parent’s brother’s wife"
 msgid "great-aunt"
-msgstr "grande-tante"
+msgstr "grand-tante"
 
 #: includes/functions/functions.php:1005
 msgctxt "mother’s parent’s sister"
 msgid "great-aunt"
-msgstr "grande-tante"
+msgstr "grand-tante"
 
 #: includes/functions/functions.php:1103
 msgctxt "parent’s father’s brother’s wife"
 msgid "great-aunt"
-msgstr "grande-tante"
+msgstr "grand-tante"
 
 #: includes/functions/functions.php:1016
 msgctxt "parent’s father’s sister"
 msgid "great-aunt"
-msgstr "grande-tante"
+msgstr "grand-tante"
 
 #: includes/functions/functions.php:1106
 msgctxt "parent’s mother’s brother’s wife"
 msgid "great-aunt"
-msgstr "grande-tante"
+msgstr "grand-tante"
 
 #: includes/functions/functions.php:1022
 msgctxt "parent’s mother’s sister"
 msgid "great-aunt"
-msgstr "grande-tante"
+msgstr "grand-tante"
 
 #: includes/functions/functions.php:1109
 msgctxt "parent’s parent’s brother’s wife"
 msgid "great-aunt"
-msgstr "grande-tante"
+msgstr "grand-tante"
 
 #: includes/functions/functions.php:1028
 msgctxt "parent’s parent’s sister"
 msgid "great-aunt"
-msgstr "grande-tante"
+msgstr "grand-tante"
 
 #: includes/functions/functions.php:958
 msgctxt "father’s father’s sibling"
 msgid "great-aunt/uncle"
-msgstr "grande-tante/grand-oncle"
+msgstr "grand-tante/grand-oncle"
 
 #: includes/functions/functions.php:1086
 msgctxt "father’s father’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "grande-tante/grand-oncle"
+msgstr "grand-tante/grand-oncle"
 
 #: includes/functions/functions.php:964
 msgctxt "father’s mother’s sibling"
 msgid "great-aunt/uncle"
-msgstr "grande-tante/grand-oncle"
+msgstr "grand-tante/grand-oncle"
 
 #: includes/functions/functions.php:1089
 msgctxt "father’s mother’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "grande-tante/grand-oncle"
+msgstr "grand-tante/grand-oncle"
 
 #: includes/functions/functions.php:970
 msgctxt "father’s parent’s sibling"
 msgid "great-aunt/uncle"
-msgstr "grande-tante/grand-oncle"
+msgstr "grand-tante/grand-oncle"
 
 #: includes/functions/functions.php:1092
 msgctxt "father’s parent’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "grande-tante/grand-oncle"
+msgstr "grand-tante/grand-oncle"
 
 #: includes/functions/functions.php:989
 msgctxt "mother’s father’s sibling"
 msgid "great-aunt/uncle"
-msgstr "grande-tante/grand-oncle"
+msgstr "grand-tante/grand-oncle"
 
 #: includes/functions/functions.php:1095
 msgctxt "mother’s father’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "grande-tante/grand-oncle"
+msgstr "grand-tante/grand-oncle"
 
 #: includes/functions/functions.php:998
 msgctxt "mother’s mother’s sibling"
 msgid "great-aunt/uncle"
-msgstr "grand-oncle/grande-tante"
+msgstr "grand-oncle/grand-tante"
 
 #: includes/functions/functions.php:1098
 msgctxt "mother’s mother’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "grande-tante/grand-oncle"
+msgstr "grand-tante/grand-oncle"
 
 #: includes/functions/functions.php:1004
 msgctxt "mother’s parent’s sibling"
 msgid "great-aunt/uncle"
-msgstr "grande-tante/grand-oncle"
+msgstr "grand-tante/grand-oncle"
 
 #: includes/functions/functions.php:1101
 msgctxt "mother’s parent’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "grande-tante/grand-oncle"
+msgstr "grand-tante/grand-oncle"
 
 #: includes/functions/functions.php:1015
 msgctxt "parent’s father’s sibling"
 msgid "great-aunt/uncle"
-msgstr "grande-tante/grand-oncle"
+msgstr "grand-tante/grand-oncle"
 
 #: includes/functions/functions.php:1104
 msgctxt "parent’s father’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "grande-tante/grand-oncle"
+msgstr "grand-tante/grand-oncle"
 
 #: includes/functions/functions.php:1021
 msgctxt "parent’s mother’s sibling"
 msgid "great-aunt/uncle"
-msgstr "grande-tante/grand-oncle"
+msgstr "grand-tante/grand-oncle"
 
 #: includes/functions/functions.php:1107
 msgctxt "parent’s mother’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "grande-tante/grand-oncle"
+msgstr "grand-tante/grand-oncle"
 
 #: includes/functions/functions.php:1027
 msgctxt "parent’s parent’s sibling"
 msgid "great-aunt/uncle"
-msgstr "grande-tante/grand-oncle"
+msgstr "grand-tante/grand-oncle"
 
 #: includes/functions/functions.php:1110
 msgctxt "parent’s parent’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "grande-tante/grand-oncle"
+msgstr "grand-tante/grand-oncle"
 
 #: includes/functions/functions.php:925
 msgctxt "child’s child’s child"
@@ -17828,11 +17828,11 @@ msgstr "arrière-petit-fils"
 
 #: includes/functions/functions.php:1212
 msgid "great-great-aunt"
-msgstr "arrière-grande-tante"
+msgstr "arrière-grand-tante"
 
 #: includes/functions/functions.php:1213
 msgid "great-great-aunt/uncle"
-msgstr "grand(e)-oncle/tante au 4<sup>e</sup> degré"
+msgstr "grand-oncle/grand-tante au 4<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1567
 msgid "great-great-grandchild"
@@ -18258,7 +18258,7 @@ msgstr "grand-oncle"
 #: includes/functions/functions.php:966
 msgctxt "father’s parent’s brother"
 msgid "great-uncle"
-msgstr "grand-oncle"
+msgstr "grand-oncle paternel"
 
 #: includes/functions/functions.php:1093
 msgctxt "father’s parent’s sister’s husband"
@@ -18268,7 +18268,7 @@ msgstr "grand-oncle"
 #: includes/functions/functions.php:985
 msgctxt "mother’s father’s brother"
 msgid "great-uncle"
-msgstr "grand-oncle"
+msgstr "grand-oncle maternel"
 
 #: includes/functions/functions.php:1096
 msgctxt "mother’s father’s sister’s husband"
@@ -18616,7 +18616,7 @@ msgstr "belle-mère"
 #: includes/functions/functions.php:888
 msgctxt "spouse’s parent"
 msgid "mother/father-in-law"
-msgstr "mère/beau-père"
+msgstr "belle-mère/beau-père"
 
 #: includes/functions/functions.php:819
 msgctxt "brother’s son"

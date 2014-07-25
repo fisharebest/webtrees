@@ -1288,32 +1288,32 @@ function create_add_form($fact) {
 	$tags = array();
 
 	// handle  MARRiage TYPE
-	if (substr($fact, 0, 5)=="MARR_") {
-		$tags[0] = "MARR";
-		add_simple_tag("1 MARR");
+	if (substr($fact, 0, 5) == 'MARR_') {
+		$tags[0] = 'MARR';
+		add_simple_tag('1 MARR');
 		insert_missing_subtags($fact);
 	} else {
 		$tags[0] = $fact;
-		if ($fact=='_UID') {
-			$fact.=' '.uuid();
+		if ($fact == '_UID') {
+			$fact .= ' ' . WT_Gedcom_Tag::createUid();
 		}
 		// These new level 1 tags need to be turned into links
 		if (in_array($fact, array('ASSO'))) {
-			$fact.=' @';
+			$fact .= ' @';
 		}
 		if (in_array($fact, $emptyfacts)) {
-			add_simple_tag('1 '.$fact.' Y');
+			add_simple_tag('1 ' . $fact . ' Y');
 		} else {
-			add_simple_tag('1 '.$fact);
+			add_simple_tag('1 ' . $fact);
 		}
 		insert_missing_subtags($tags[0]);
 		//-- handle the special SOURce case for level 1 sources [ 1759246 ]
-		if ($fact=="SOUR") {
-			add_simple_tag("2 PAGE");
-			add_simple_tag("3 TEXT");
+		if ($fact == 'SOUR') {
+			add_simple_tag('2 PAGE');
+			add_simple_tag('3 TEXT');
 			if ($FULL_SOURCES) {
-				add_simple_tag("3 DATE", '', WT_Gedcom_Tag::getLabel('DATA:DATE'));
-				add_simple_tag("2 QUAY");
+				add_simple_tag('3 DATE', '', WT_Gedcom_Tag::getLabel('DATA:DATE'));
+				add_simple_tag('2 QUAY');
 			}
 		}
 	}

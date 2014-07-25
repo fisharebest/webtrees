@@ -68,7 +68,7 @@ return array(
 
     // Zend_Validate_Db_Abstract
     "No record matching %value% was found" => "Не найдено записей, совпадающих с '%value%'",
-    "A record matching %value% was found" => "Найдена запись, совпадающая со значением '%value%'",
+    "A record matching '%value%' was found" => "Найдена запись, совпадающая со значением '%value%'",
 
     // Zend_Validate_Digits
     "Invalid type given, value should be string, integer or float" => "Недопустимый тип данных, значение должно быть числом с плавающей точкой, строкой, или целым числом",
