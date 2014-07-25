@@ -81,12 +81,6 @@ if ($controller->record && $controller->record->canShow()) {
 $PEDIGREE_FULL_DETAILS = '1'; // Override GEDCOM configuration
 $show_full = '1';
 
-echo '<script>';
-echo 'function show_gedcom_record() {';
-echo ' var recwin=window.open("gedrecord.php?pid=', $controller->record->getXref(), '", "_blank", edit_window_specs);';
-echo '}';
-echo '</script>';
-
 ?>
 <div id="family-page">
 <table align="center" width="95%">

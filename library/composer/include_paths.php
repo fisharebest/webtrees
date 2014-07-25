@@ -7,5 +7,4 @@ $baseDir = dirname($vendorDir);
 
 return array(
     $vendorDir . '/bombayworks/zendframework1/library',
-    $vendorDir . '/bombayworks/zendframework1/extras/library',
 );

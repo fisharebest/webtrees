@@ -19,7 +19,7 @@ review.
 
    ```sh
    % git clone git@github.com:<username>/zf1.git
-   % cd zf2
+   % cd zf1
    ```
 
 4. Add a remote to the canonical ZF repository, so you can keep your fork

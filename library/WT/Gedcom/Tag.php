@@ -18,6 +18,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use Rhumsaa\Uuid\Uuid;
+
 class WT_Gedcom_Tag {
 	// All tags that webtrees knows how to translate - including special/internal tags
 	private static $ALL_TAGS=array(
@@ -904,5 +906,24 @@ class WT_Gedcom_Tag {
 		}
 		uasort($values, 'utf8_strcasecmp');
 		return $values;
+	}
+
+	// Generate a value for a new _UID field.
+	// Instead of RFC4122-compatible UUIDs, generate ones that
+	// are compatible with PAF, Legacy, RootsMagic, etc.
+	// In these, the string is upper-cased, dashes are removed,
+	// and a two-byte checksum is added.
+	public static function createUid() {
+		$uid = str_replace('-', '', Uuid::uuid4());
+
+		$checksum_a = 0; // a sum of the bytes
+		$checksum_b = 0; // a sum of the incremental values of $checksum_a
+
+		// Compute checksums
+		for ($i = 0; $i < 32; $i += 2) {
+			$checksum_a += hexdec(substr($uid, $i, 2));
+			$checksum_b += $checksum_a & 0xff;
+		}
+		return strtoupper($uid . substr(dechex($checksum_a), -2) . substr(dechex($checksum_b), -2));
 	}
 }

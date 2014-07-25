@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2014-06-12 21:41+0100\n"
-"PO-Revision-Date: 2014-07-11 22:17+0100\n"
+"PO-Revision-Date: 2014-07-20 16:11+0100\n"
 "Last-Translator: Mic <mic@ergraf.eu>\n"
 "Language-Team: \n"
 "Language: hr\n"
@@ -1832,7 +1832,7 @@ msgstr "Sve činjenice mjesta čuvanja"
 
 #: admin_trees_config.php:1174 help_text.php:909
 msgid "All source facts"
-msgstr "Svi izvori činjenica"
+msgstr "Sve činjenice izvora"
 
 #. I18N: Description of the “CKEditor” module.  WYSIWYG = “what you see is what you get”
 #: modules_v3/ckeditor/module.php:39
@@ -3405,9 +3405,9 @@ msgstr "Promjene"
 #, php-format
 msgid "Changes in the last day"
 msgid_plural "Changes in the last %s days"
-msgstr[0] "Promjena u zadnjih %s dana"
-msgstr[1] "Promjene u zadnjih %s dana"
-msgstr[2] "Promjena u zadnjih %s dana"
+msgstr[0] "Današnje promjene"
+msgstr[1] "Promjene u zadnja %s dana"
+msgstr[2] "Promjene u zadnjih %s dana"
 
 #: themes/_administration/header.php:123
 msgid "Changes log"
@@ -6325,11 +6325,11 @@ msgstr "Pronađi obitelj"
 
 #: find.php:77 includes/functions/functions_print.php:1049
 msgid "Find a media object"
-msgstr "Pronađi media objekt"
+msgstr "Pronađi postojeći medijski objekt"
 
 #: find.php:86 includes/functions/functions_print.php:1041
 msgid "Find a shared note"
-msgstr "Pronađi bilješku"
+msgstr "Pronađi dijeljenu bilješku"
 
 #: find.php:80 includes/functions/functions_print.php:1015
 msgid "Find a place"
@@ -12339,7 +12339,7 @@ msgstr "Prikaži djecu na grafikonu životnog vijeka"
 
 #: modules_v3/gedcom_stats/module.php:267
 msgid "Show common surnames?"
-msgstr "Prikaži najčešće prezime"
+msgstr "Prikaži najčešća prezimena?"
 
 #: library/WT/MenuBar.php:161
 msgid "Show couple on timeline chart"
@@ -12375,7 +12375,7 @@ msgstr "Prikaži rođake"
 
 #: modules_v3/relatives/module.php:288
 msgid "Show date differences"
-msgstr "Prikaži razlike datuma"
+msgstr "Prikaži vremenske razlike"
 
 #. I18N: label for yes/no option
 #: modules_v3/gedcom_stats/module.php:260
@@ -12393,7 +12393,7 @@ msgstr "Prikaži detalje"
 
 #: includes/functions/functions_print_lists.php:500
 msgid "Show divorced couples."
-msgstr "Prikaži razvedene parove"
+msgstr "Prikaži razvedene parove."
 
 #: admin_trees_config.php:656 help_text.php:874
 msgid "Show download link in media viewer"
@@ -12405,7 +12405,7 @@ msgstr "Prikaži događaje uže rodbine na stranici pojedinca"
 
 #: help_text.php:848
 msgid "Show fact icons"
-msgstr "Prikaži ikonue činjenica"
+msgstr "Prikaži ikone činjenica"
 
 #: library/WT/MenuBar.php:163
 msgid "Show family on timeline chart"
@@ -12413,11 +12413,11 @@ msgstr "Prikaži obitelj na grafikonu životnog vijeka"
 
 #: admin_trees_config.php:683 compact.php:53
 msgid "Show highlight images in individual boxes"
-msgstr "Prikaži istaknute slike u odjeljcima osoba"
+msgstr "Prikaži istaknute slike u kućicama pojedinaca"
 
 #: help_text.php:834
 msgid "Show hit counters on Portal and Individual pages."
-msgstr "Prikaži brojač posjeta na portalu i stranicama pojedinaca."
+msgstr "Prikaži brojač posjeta na glavnoj stranici i stranicama pojedinaca."
 
 #: modules_v3/googlemap/help_text.php:78 modules_v3/googlemap/module.php:4363
 msgid "Show inactive places"
@@ -12455,7 +12455,7 @@ msgstr "Prikaži životni vijek"
 
 #: modules_v3/gedcom_stats/module.php:371
 msgid "Show link to Statistics charts?"
-msgstr "Prikaži vezu na grafikone statistike?"
+msgstr "Prikaži link na grafikone statistike?"
 
 #: admin_site_config.php:85 help_text.php:416
 msgid "Show list of family trees"
@@ -12492,11 +12492,11 @@ msgstr "Prikaži samo žene."
 
 #: includes/functions/functions_print_lists.php:87
 msgid "Show only individuals for whom the gender is not known."
-msgstr "Prikaži samo osobe kojima spol nije znan."
+msgstr "Prikaži samo osobe kojima spol nije poznat."
 
 #: modules_v3/random_media/module.php:260
 msgid "Show only individuals, events, or all?"
-msgstr "Prikaži samo pojedince, događaje ili sve?"
+msgstr "Prikaži samo osobe, događaje ili sve?"
 
 #: includes/functions/functions_print_lists.php:85
 msgid "Show only males."
@@ -14580,7 +14580,7 @@ msgstr ""
 
 #: modules_v3/change_report/report.xml:124
 msgid "Total accepted changes: "
-msgstr "Ukupno prihvaćenih promjena"
+msgstr "Ukupno prihvaćenih promjena: "
 
 #: statistics.php:107
 msgid "Total births"
@@ -14662,7 +14662,7 @@ msgstr "Ukupno korisnika"
 
 #: modules_v3/change_report/report.xml:84
 msgid "Total pending changes: "
-msgstr "Ukupno promjena na čekanju"
+msgstr "Ukupno promjena na čekanju: "
 
 #. I18N: A count of places
 #: modules_v3/googlemap/module.php:1737
@@ -14838,7 +14838,7 @@ msgstr "Jedinstvene činjenice mjesta čuvanja"
 
 #: admin_trees_config.php:1182 help_text.php:919
 msgid "Unique source facts"
-msgstr "Jedinstveni izvor činjenica"
+msgstr "Jedinstvene činjenice izvora"
 
 #: library/WT/Stats.php:3809
 msgid "United Arab Emirates"
@@ -15800,7 +15800,7 @@ msgstr "Sada trebate pregledati detalje računa i postaviti status “odobreno�
 #. I18N: Help text for the “Login URL” site configuration setting
 #: help_text.php:618
 msgid "You only need to enter a Login URL if you want to redirect to a different site or location when your users login.  This is very useful if you need to switch from http to https when your users login.  Include the full URL to <i>login.php</i>.  For example, https://www.yourserver.com/webtrees/login.php ."
-msgstr "Trebate samo upisati URL adresu za prijavu ako želite preusmjeriti na drugu web stranicu ili lokaciju gdje sa vaši korisnici prijavljuju. Ovo je vrlo korisno ako se trebate prebaciti sa http na https kada se vaši korisnici prijavljuju. Uključite kompletan URL na <i>login.php</i>. Na primjer, https://www.yourserver.com/webtrees/login.php ."
+msgstr "Trebate samo upisati URL adresu za prijavu ako želite preusmjeriti na drugu web stranicu ili lokaciju gdje se vaši korisnici prijavljuju. Ovo je vrlo korisno ako se trebate prebaciti sa http na https kada se vaši korisnici prijavljuju. Uključite kompletan URL na <i>login.php</i>. Na primjer, https://www.yourserver.com/webtrees/login.php ."
 
 #: includes/authentication.php:98
 msgid "You sent the following message to a webtrees administrator:"
@@ -15830,7 +15830,7 @@ msgstr "Trebali bi konzultirati autora teme da potvrdite kompatibilnost sa ovom 
 #: login.php:276 message.php:69
 #, php-format
 msgid "You should delete the “%1$s” from “%2$s” and try again."
-msgstr "Trebali bi obrisati “%1$s” od “%2$s” i pokušati ponovno."
+msgstr "Trebali bi obrisati “%1$s” iz “%2$s” i pokušati ponovno."
 
 #: help_text.php:1472
 msgid "You should not approve an account unless you know that the email address is correct."
@@ -18773,7 +18773,7 @@ msgstr "ne"
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:764
 #: modules_v3/family_nav/module.php:242
 msgid "none"
-msgstr "nijedan"
+msgstr "nema"
 
 #: admin_trees_config.php:1256
 msgctxt "Surname tradition"
@@ -19733,7 +19733,7 @@ msgstr "nepoznato"
 #: modules_v3/family_nav/module.php:218
 msgctxt "unknown family"
 msgid "unknown"
-msgstr "nepoznata"
+msgstr "nepoznato"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 0”
 #: library/WT/Gedcom/Code/Quay.php:34

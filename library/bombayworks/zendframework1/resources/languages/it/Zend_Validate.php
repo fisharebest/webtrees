@@ -68,7 +68,7 @@ return array(
 
     // Zend_Validate_Db_Abstract
     "No record matching %value% was found" => "Non è stato trovato una riga con valore %value%",
-    "A record matching %value% was found" => "E' già stata trovata una riga con valore %value%",
+    "A record matching '%value%' was found" => "E' già stata trovata una riga con valore %value%",
 
     // Zend_Validate_Digits
     "Invalid type given, value should be float, string, or integer" => "Tipo di dato non valido: il dato dev'essere di tipo float, stringa o intero.",
