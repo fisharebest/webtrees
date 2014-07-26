@@ -433,7 +433,14 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false) {
 		if ($note) {
 			$first_line = '<a href="' . $note->getHtmlUrl() . '">' . $note->getFullName() . '</a>';
 		} else {
-			list($first_line) = explode("\n", $text);
+			switch ($WT_TREE->preference('FORMAT_TEXT')) {
+				case 'markdown':
+					$text = WT_Filter::markdown($text);
+					$text = html_entity_decode(strip_tags($text), ENT_QUOTES | ENT_HTML5, 'UTF-8');
+					break;
+			}
+			list($text) = explode("\n", $text);
+			$first_line = strlen($text) > 100 ? utf8_substr($text, 0, 100) . WT_I18N::translate('…') : $text;
 		}
 		return
 			'<div class="fact_NOTE"><span class="label">' .
