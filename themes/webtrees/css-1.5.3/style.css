@@ -3113,9 +3113,6 @@ delete links ==================== */
 	width: 100%;
 }
 
-#header_accordion1 {
-	padding: 0 10px;
-}
 #indi_header h3 {
 	font-size: 90%;
 	font-weight: bold;
@@ -3170,13 +3167,16 @@ delete links ==================== */
 
 #indi_mainimage {
 	float: left;
-	min-width: 120px;
+	padding: 0 10px;
 }
 
-#indi_mainimage img {
-	display: block;
-	margin: auto;
-	padding: 0 5px 0 0;
+#header_accordion1 {
+	padding: 0 10px 0 0;
+    overflow: hidden;
+}
+
+[dir='rtl'] #header_accordion1 {
+	padding: 0 0 0 10px;
 }
 
 #header_accordion1 .indi_name_details {
@@ -3278,10 +3278,6 @@ dd .deletelink {
 
 [dir=rtl] #indi_mainimage {
 	float: right;
-}
-
-[dir=rtl] #indi_mainimage img{
-	padding: 0 0 0 5px;
 }
 
 [dir=rtl] #indi_note .fact_NOTE {
