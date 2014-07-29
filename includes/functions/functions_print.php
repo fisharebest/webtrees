@@ -27,6 +27,7 @@ if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
+use Rhumsaa\Uuid\Uuid;
 
 /**
  * print the information for an individual chart box
@@ -54,7 +55,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 	if (!isset($talloffset)) $talloffset = $PEDIGREE_LAYOUT;
 	// NOTE: Start div out-rand()
 	if (!$person) {
-		echo "<div id=\"out-", rand(), "\" class=\"person_boxNN\" style=\"width: ", $bwidth, "px; height: ", $bheight, "px; overflow: hidden;\">";
+		echo "<div id=\"out-", Uuid::uuid4(), "\" class=\"person_boxNN\" style=\"width: ", $bwidth, "px; height: ", $bheight, "px; overflow: hidden;\">";
 		echo '<br>';
 		echo '</div>';
 		return;
@@ -77,9 +78,9 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 	$iconsStyleAdd = 'float:right;';
 	if ($TEXT_DIRECTION=='rtl') $iconsStyleAdd='float:left;';
 
-	$uniqueID = (int)(microtime() * 1000000);
-	$boxID = $pid.'.'.$personcount.'.'.$count.'.'.$uniqueID;
-	$mouseAction4 = " onclick=\"expandbox('".$boxID."', $style); return false;\"";
+	$boxID        = $pid . '.' . $personcount . '.' . $count . '.' . Uuid::uuid4();
+	$mouseAction4 = " onclick=\"expandbox('" . $boxID . "', $style); return false;\"";
+
 	if ($person->canShowName()) {
 		if (empty($SEARCH_SPIDER)) {
 			//-- draw a box for the family popup
@@ -428,7 +429,7 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false) {
 		return WT_Gedcom_Tag::getLabelValue($label, $html);
 	} else {
 		// A multi-line note, with an expand/collapse option
-		$element_id = uniqid('n-');
+		$element_id = Uuid::uuid4();
 		// NOTE: class "note-details" is (currently) used only by some third-party themes
 		if ($note) {
 			$first_line = '<a href="' . $note->getHtmlUrl() . '">' . $note->getFullName() . '</a>';
