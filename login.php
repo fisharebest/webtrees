@@ -24,6 +24,7 @@
 define('WT_SCRIPT_NAME', 'login.php');
 require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
+use Rhumsaa\Uuid\Uuid;
 
 // If we are already logged in, then go to the “Home page”
 if (WT_USER_ID && WT_GED_ID) {
@@ -287,7 +288,7 @@ case 'register':
 				->setSetting('verified',          0)
 				->setSetting('verified_by_admin', !$REQUIRE_ADMIN_AUTH_REGISTRATION)
 				->setSetting('reg_timestamp',     date('U'))
-				->setSetting('reg_hashcode',      md5(uniqid(rand(), true)))
+				->setSetting('reg_hashcode',      md5(Uuid::uuid4()))
 				->setSetting('contactmethod',     'messaging2')
 				->setSetting('comment',           $user_comments)
 				->setSetting('visibleonline',     1)

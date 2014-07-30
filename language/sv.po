@@ -164,7 +164,7 @@ msgstr "%1$s × %2$s pixlar"
 #: admin_site_upgrade.php:312
 #, php-format
 msgid "%1$sKB were downloaded in %2$s seconds."
-msgstr "%1$sKB hämtades i %2$s sekunder."
+msgstr "%1$sKB nedladdades i %2$s sekunder."
 
 #. I18N: A range of years, e.g. “1870–”, “1870–1920”, “–1920”
 #: library/WT/Individual.php:418
@@ -592,11 +592,11 @@ msgstr "9:e"
 
 #: help_text.php:559
 msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM originates.  The goal of the Family History Center is to have a central repository of genealogical data and expose it through web services. This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM with anyone else, you do not need to let <b>webtrees</b> create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM."
-msgstr "<b>GUID</b> i detta sammanhang är en akronym för \"Globalt unikt ID\".<br><br>GUID är avsedda för att identifiera varje individ på ett sätt som är upprepningsbart, så att centrala organisationer som Family History Center i LDS kyrkan i Salt Lake City, eller även kompatibla program som körs på din egna server, kan avgöra om de hanterar samma enskilda individ oavsett var GEDCOM härrör.  Family History Centers mål är att ha en central lagringsplats för genealogisk data och utsätta det via webbtjänster. Detta gör att vilket som helst program kan få tillgång till datan och kan uppdatera uppgifterna inom den.<br><br>Om du inte avser att dela denna GEDCOM med någon annan, behöver du inte låta <b>webtrees</b> skapa dessa GUID; dock detta kommer inte att göra någon skada utom att öka storleken på din GEDCOM."
+msgstr "<b>GUID</b> i detta sammanhang är en akronym för ”Globalt unikt ID”.<br><br>GUID är avsedda för att identifiera varje individ på ett sätt som är upprepningsbart, så att centrala organisationer som Family History Center i LDS kyrkan i Salt Lake City, eller även kompatibla program som körs på din egna server, kan avgöra om de hanterar samma enskilda individ oavsett var GEDCOM härrör.  Family History Centers mål är att ha en central lagringsplats för genealogisk data och utsätta det via webbtjänster. Detta gör att vilket som helst program kan få tillgång till datan och kan uppdatera uppgifterna inom den.<br><br>Om du inte avser att dela denna GEDCOM med någon annan, behöver du inte låta <b>webtrees</b> skapa dessa GUID. Att göra detta kommer dock inte att göra någon skada, utan endast öka storleken på din GEDCOM."
 
 #: help_text.php:1318
 msgid "<b>Important note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
-msgstr "<b>Viktig anmärkning:</b> Överförings guiden kan inte hjälpa till med att flytta medieobjekt. Du kommer att behöva ställa in och flytta eller kopiera din media "
+msgstr "<b>Viktig anmärkning:</b> Överföringsguiden kan inte hjälpa till med att flytta medieobjekt. Du kommer att behöva ställa in och flytta eller kopiera din media konfiguration och dina mediaobjekt separat efter överföringsguiden är klar."
 
 #: help_text.php:1007
 msgid "<b>No</b> means that authenticated users can see the details of all living individuals.  <b>Yes</b> means that users can only see the private information of living individuals they are related to.<br><br>This option sets the default for all users who have access to this genealogical database.  The administrator can override this option for individual users by editing the user’s account details."
@@ -1792,7 +1792,7 @@ msgstr "Alla fält måste fyllas i."
 
 #: admin_site_upgrade.php:398
 msgid "All files have read and write permission."
-msgstr "Alla filer har läs- och skrivbehörigheter."
+msgstr "Alla filer har läs- och skrivrättigheter."
 
 #: admin_trees_config.php:1100 help_text.php:592
 msgid "All individual facts"
@@ -3278,11 +3278,11 @@ msgstr "Dödsorsak"
 
 #: admin_site_upgrade.php:202
 msgid "Caution: old modules may not work, or they may prevent webtrees from working."
-msgstr "Varning: gamla moduler kanske inte fungerar, eller de kan hindra webtrees från att arbeta."
+msgstr "Varning: gamla moduler kanske inte fungerar, eller de kan hindra webtrees från att fungera."
 
 #: admin_site_upgrade.php:265
 msgid "Caution: old themes may not work, or they may prevent webtrees from working."
-msgstr "Varning: gamla temor kanske inte fungerar, eller de kan hindra webtrees från att arbeta."
+msgstr "Varning: gamla teman kanske inte fungerar, eller de kan hindra webtrees från att fungera."
 
 #: library/WT/Stats.php:3861
 msgid "Cayman Islands"
@@ -3418,7 +3418,7 @@ msgstr "Kontrollera åtkomsträttigheter för mappen."
 
 #: admin_site_upgrade.php:380
 msgid "Check file permissions…"
-msgstr "Kontrollera fil behörigheterna..."
+msgstr "Kontrollera filrättigheterna..."
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:116
@@ -3428,7 +3428,7 @@ msgstr "Kolla för anpassade moduler..."
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:218
 msgid "Check for custom themes…"
-msgstr "Kolla för anpassade temor..."
+msgstr "Kolla för anpassade teman..."
 
 #: admin_trees_check.php:28 themes/_administration/header.php:122
 msgid "Check for errors"
@@ -4211,7 +4211,7 @@ msgstr "Egna taggar"
 
 #: admin_site_upgrade.php:250 admin_site_upgrade.php:253
 msgid "Custom theme"
-msgstr "Anpassad tema"
+msgstr "Anpassat tema"
 
 #: admin_site_config.php:157 help_text.php:1039
 msgid "Custom welcome text"
@@ -5127,7 +5127,7 @@ msgstr "Inaktivera dessa moduler"
 
 #: admin_site_upgrade.php:264
 msgid "Disable these themes"
-msgstr "Inaktivera dessa temor"
+msgstr "Inaktivera dessa teman"
 
 #. I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options
 #: library/WT/I18N.php:648
@@ -5214,38 +5214,38 @@ msgstr "Dominikanska republiken"
 
 #: admin_trees_manage.php:221 modules_v3/googlemap/module.php:4468
 msgid "Download"
-msgstr "Ladda ner"
+msgstr "Nedladda"
 
 #. I18N: The system is about to [...]; %s is a URL.
 #: admin_site_upgrade.php:300
 #, php-format
 msgid "Download %s…"
-msgstr "Ladda ner %s..."
+msgstr "Nedladda %s..."
 
 #: mediaviewer.php:104
 msgid "Download file"
-msgstr "Ladda ner fil"
+msgstr "Nedladda fil"
 
 #: admin_trees_download.php:30
 msgid "Download GEDCOM"
-msgstr "Ladda ner GEDCOM-fil"
+msgstr "Nedladda GEDCOM-fil"
 
 #: modules_v3/clippings/module.php:219 modules_v3/clippings/module.php:467
 #: modules_v3/clippings/module.php:604
 msgid "Download Now"
-msgstr "Ladda ner nu"
+msgstr "Nedladda nu"
 
 #: help_text.php:1128
 msgid "Download ZIP file"
-msgstr "Ladda ned ZIP-fil"
+msgstr "Nedladda ZIP-fil"
 
 #: help_text.php:1123
 msgid "Download family tree"
-msgstr "Ladda ner släktträd"
+msgstr "Nedladda släktträd"
 
 #: modules_v3/googlemap/module.php:4460
 msgid "Download geographic data"
-msgstr "Ladda ner geografisk data"
+msgstr "Nedladda geografisk data"
 
 #: library/WT/Date/French.php:117
 msgid "Duodi"
@@ -5261,7 +5261,7 @@ msgstr "En avändare med detta användarnamn finns redan. Välj ett annat använ
 
 #: help_text.php:779
 msgid "E-mail address to be used in the “From:” field of e-mails that <b>webtrees</b> creates automatically.<br><br><b>webtrees</b> can automatically create e-mails to notify administrators of changes that need to be reviewed.  <b>webtrees</b> also sends notification e-mails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created e-mails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the e-mail is required.  To guard against spam or other e-mail abuse, some e-mail systems require each message’s “From:” field to reflect a valid e-mail account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
-msgstr "E-postadress som skall användas i \"från:\"-fältet för e-post som <b>webtrees</b> skapar automatiskt.<br><br><b>webtrees</b> kan automatiskt skapa e-post för att meddela administratörer av förändringar som behöver granskas.  <b>webtrees</b> skickar också e-postmeddelanden till användare som har ansökt om ett konto.<br><br>Vanligtvis är \"från:\" fältet av dessa automatiskt skapade e-post något som <i>från: webtrees-noreply@yoursite</i> för att visa att inget svar på e-post krävs.  För att skydda mot skräppost eller andra e-missbruk, kräver vissa e-system varje meddelandes \"från:\" fältet att återspegla ett giltigt e-postkonto och kommer inte att acceptera meddelanden som är tydligen från kontot <i>webtrees-noreply</i>."
+msgstr "E-postadress som skall användas i ”från:”-fältet för e-post som <b>webtrees</b> skapar automatiskt.<br><br><b>webtrees</b> kan automatiskt skapa e-post för att meddela administratörer av förändringar som behöver granskas.  <b>webtrees</b> skickar också e-postmeddelanden till användare som har ansökt om ett konto.<br><br>Vanligtvis är ʺfrån:ʺ fältet i dessa automatiskt skapade e-postmeddelanden t ex <i>från: webtrees-noreply@yoursite</i> för att visa att inget svar på e-post krävs.  För att skydda mot skräppost eller andra e-missbruk, kräver vissa system en giltig adress i ʺfrån:ʺ fältet och kommer inte att acceptera meddelanden som är från kontot <i>webtrees-noreply</i>.Vanligtvis är ʺfrån:ʺ fältet i dessa automatiskt skapade e-postmeddelanden t ex <i>från: webtrees-noreply@yoursite</i> för att visa att inget svar på e-post krävs.  För att skydda mot skräppost eller andra e-missbruk, kräver vissa system en giltig adress i ʺfrån:ʺ fältet och kommer inte att acceptera meddelanden som är från kontot <i>webtrees-noreply</i>."
 
 #: help_text.php:1175
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
@@ -5642,7 +5642,7 @@ msgstr "Fel"
 #: import.php:191
 #, php-format
 msgid "Error: converting GEDCOM files from %s encoding to UTF-8 encoding not currently supported."
-msgstr "Fel: konvertering av GEDCOM-filer från %s-form till UTF-8-form är ännu inte möjligt."
+msgstr "Fel: konvertering av GEDCOM-filer från %s-form till UTF-8-form stödjes ännu inte."
 
 #: library/WT/Date/Jalali.php:123
 msgctxt "Abbreviation for Persian month: Esfand"
@@ -5741,7 +5741,7 @@ msgstr "Exkludera undermappar"
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: library/WT/Gedcom/Code/Stat.php:71
 msgid "Excluded from this submission"
-msgstr "Undantagen från denna inlämning"
+msgstr "Utesluten från denna skickning"
 
 #: admin_trees_config.php:1082 help_text.php:899
 msgid "Execution statistics"
@@ -6433,7 +6433,7 @@ msgstr "För hjälp med släktfrågor kontakta"
 
 #: help_text.php:1494
 msgid "For optimal display on the internet, <b>webtrees</b> uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ANSI (ISO-8859-1)</b>.<br><br>The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren’t sure, consult the documentation of that program.<br><br>Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program’s method for handling these special characters by some other means.  Consult your program’s manufacturer or author.<br><br>This <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8."
-msgstr "För att bättre optimera visandet av tecken på internet använder <b>webtrees</b> UTF-8 teckentabell. Vissa program t.ex. Family Tree Maker, stöder inte import av GEDCOM-filer kodade i UTF-8. Bocka denna ruta, så konverteras filen från <b>UTF-8</b> till <b>ANSI (ISO-8859-1)</b>.<br><br>Formatet du behöver beror på programmet du använder när du nedladdar GEDCOM-filer, om du inte är säker, konsultera programmets dokumentation.<br><br>För att special tecken skall lämnas oförändrade, behöver du hålla filen i UTF-8 och konvertera den till programmets metod för hantering av dessa specialtecken på annat sätt. Konsultera ditt programs tillverkare eller upphovsman.<br><br>Denna <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia artikel\"><b>Wikipedia artikel</b></a> innehåller omfattande information och länkar om UTF-8."
+msgstr "För att bättre optimera visandet av tecken på internet använder <b>webtrees</b> UTF-8 teckentabell. Vissa program t.ex. Family Tree Maker, stödjer inte import av GEDCOM-filer kodade i UTF-8. Bocka denna ruta, så konverteras filen från <b>UTF-8</b> till <b>ANSI (ISO-8859-1)</b>.<br><br>Formatet du behöver beror på programmet du använder när du nedladdar GEDCOM-filer, om du inte är säker, konsultera programmets dokumentation.<br><br>För att special tecken skall lämnas oförändrade, behöver du hålla filen i UTF-8 och konvertera den till programmets metod för hantering av dessa specialtecken på annat sätt. Konsultera ditt programs tillverkare eller upphovsman.<br><br>Denna <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia artikel\"><b>Wikipedia artikel</b></a> innehåller omfattande information och länkar om UTF-8."
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: help_text.php:417
@@ -6442,11 +6442,11 @@ msgstr "För sajter med mer än ett släktträd visar detta alternativ en lista 
 
 #: includes/functions/functions_print.php:375
 msgid "For technical support and information contact"
-msgstr "För teknisk support och information kontakta"
+msgstr "För teknisk stöd och information kontakta"
 
 #: includes/functions/functions_print.php:371
 msgid "For technical support or genealogy questions, please contact"
-msgstr "För teknisk support eller släktfrågor kontakta"
+msgstr "För teknisk stöd eller släktfrågor kontakta"
 
 #. I18N: gedcom tag FORM
 #: admin_trees_config.php:936 help_text.php:175 help_text.php:187
@@ -7652,7 +7652,7 @@ msgstr "Israel"
 
 #: admin_site_upgrade.php:81 admin_site_upgrade.php:85
 msgid "It can take several minutes to download and install the upgrade.  Be patient."
-msgstr "Det kan ta flera minuter att hämta och installera uppgraderingen.  Ha tålamod."
+msgstr "Det kan ta flera minuter att nedladda och installera uppgraderingen.  Ha tålamod."
 
 #: library/WT/Stats.php:3919
 msgid "Italy"
@@ -9237,7 +9237,7 @@ msgstr "De flesta SMTP-servrar fodrar lösenord."
 #. I18N: Help text for the "Secure connection" site configuration setting
 #: help_text.php:774
 msgid "Most servers do not use secure connections."
-msgstr "De flesta server använder inte säkrade anslutningar"
+msgstr "De flesta servrar använder inte säkrade anslutningar"
 
 #: setup.php:267
 msgid "Most sites are configured to use localhost.  This means that your database runs on the same computer as your web server."
@@ -9689,7 +9689,7 @@ msgstr "Inga anpassade moduler är aktiverade."
 
 #: admin_site_upgrade.php:270
 msgid "No custom themes are enabled."
-msgstr "Inga anpassade temor är aktiverade."
+msgstr "Inga anpassade teman är aktiverade."
 
 #: admin_trees_check.php:227
 msgid "No errors were found."
@@ -9800,7 +9800,7 @@ msgstr "Inget tempel - Living Ordinance"
 
 #: admin_site_upgrade.php:67
 msgid "No upgrade information is available."
-msgstr "Ingen uppgradering information finns tillgänglig."
+msgstr "Ingen information om uppgradering finns tillgänglig."
 
 #: library/WT/Stats.php:1061
 msgid "Nobody at all"
@@ -9901,7 +9901,7 @@ msgstr "Märk att en registrerad person kan se uppgifter som berör dem själv."
 
 #: help_text.php:724
 msgid "Note: longer path lengths require a lot of calculation, which can make your site run slowly for these users."
-msgstr "Obs: längre sökväg längder kräver mycket beräkning, som kan göra din webbplats långsam för dessa användare."
+msgstr "Obs: längre sökvägar kräver mycket beräkning, som kan göra din webbplats långsam för dessa användare."
 
 #: help_text.php:571
 #, php-format
@@ -10481,7 +10481,7 @@ msgstr "Väntande ändringar"
 
 #: help_text.php:1335
 msgid "Pending changes are only shown when your account has permission to edit.  When you log out, you will no longer be able to see them.  Also, pending changes are only shown on certain pages.  For example, they are not shown in lists, reports, or search results."
-msgstr "Väntande ändringar visas endast när ditt användarkonto har behörighet att redigera. När du loggar ut kommer du inte längre att kunna se dem. Väntande ändringar visas endast på vissa sidor. Till exempel, de visas inte i listor, rapporter, eller sökresultat."
+msgstr "Väntande ändringar visas endast när ditt användarkonto har en rättighet att redigera. När du loggar ut kommer du inte längre att kunna se dem. Väntande ändringar visas endast på vissa sidor. Till exempel, de visas inte i listor, rapporter, eller sökresultat."
 
 #. I18N: gedcom tag _PRMN
 #: library/WT/Gedcom/Tag.php:798
@@ -11185,7 +11185,7 @@ msgstr "Ändra ordning på familjer"
 #: library/WT/Gedcom/Tag.php:810 modules_v3/lightbox/module.php:81
 #: modules_v3/lightbox/module.php:82
 msgid "Re-order media"
-msgstr "Ordna om media"
+msgstr "Ändra ordningen på media"
 
 #: admin_users.php:366 admin_users.php:569 edituser.php:133 help_text.php:1352
 #: login.php:308 login.php:407
@@ -11285,7 +11285,7 @@ msgstr "Reguljärt uttryck"
 #. I18N: http://en.wikipedia.org/wiki/Regular_expression
 #: modules_v3/batch_update/plugins/search_replace.php:93
 msgid "Regular expressions are an advanced pattern matching technique."
-msgstr "Reguljära uttryck är en avancerad mönstermatchning teknik."
+msgstr "Reguljära uttryck är en avancerad mönstermatchningsteknik."
 
 #. I18N: Name of a module/report
 #: modules_v3/individual_ext_report/module.php:33
@@ -11484,7 +11484,7 @@ msgstr "Forskningsuppgifter är speciella händelser som läggs till personer i 
 
 #: modules_v3/todo/help_text.php:36
 msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”.  Other genealogy applications may not recognize this tag."
-msgstr "Forskningsuppgifter lagras med den anpassade GEDCOM-taggen ”_TODO”. Andra genealogiprogram kanske inte känner igen den här taggen."
+msgstr "Forskningsuppgifter lagras med den anpassade GEDCOM-taggen ”_TODO”. Andra släktforskringsprogram kanske inte känner igen den här taggen."
 
 #: includes/functions/functions_print_lists.php:96
 #: includes/functions/functions_print_lists.php:502 medialist.php:152
@@ -12008,7 +12008,7 @@ msgstr "Servernamn"
 #. I18N: The local time on the server
 #: themes/_administration/header.php:81
 msgid "Server time"
-msgstr "Server tid"
+msgstr "Servertid"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:88 help_text.php:728
@@ -12299,7 +12299,7 @@ msgstr "Visa en ålder markör?"
 #. I18N: A site configuration setting
 #: admin_trees_config.php:968 help_text.php:703
 msgid "Show chart details by default"
-msgstr "Visa tavla detaljer som standard"
+msgstr "Visa detaljerad tavla som standard"
 
 #: modules_v3/ahnentafel_report/report.xml:12
 msgid "Show children of ancestors?"
@@ -12684,7 +12684,7 @@ msgstr "Sajtkarta"
 #. I18N: The www.sitemaps.org site is translated into many languages (e.g. http://www.sitemaps.org/fr/) - choose an appropriate URL.
 #: modules_v3/sitemap/module.php:240
 msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling.  All major search engines support sitemaps.  For more information, see <a href=\"http://www.sitemaps.org/\">www.sitemaps.org</a>."
-msgstr "Sajtkartor är ett sätt för webbansvariga att berätta sökmotorer om sidor på en webbplats som är tillgängliga för genomsökning. Alla större sökmotorer stödjer webbplatskartor. För mer information se <a href=\"http://www.sitemaps.org/\">www.sitemaps.org</a>."
+msgstr "Sajtkartor är ett sätt för webbansvariga att lämna information till sökmotorer om sökbara sidor på en webbplats. Alla större sökmotorer stödjer webbplatskartor. För mer information se <a href=\"http://www.sitemaps.org/\">www.sitemaps.org</a>."
 
 #: library/WT/Date/Jewish.php:104
 msgctxt "GENITIVE"
@@ -12766,7 +12766,7 @@ msgstr "Vissa släktforskningsprogram skapar GEDCOM-filer som innehåller media-
 
 #: help_text.php:1050
 msgid "Some genealogy programs wrap notes at word boundaries while others wrap notes anywhere.  This can cause <b>webtrees</b> to run words together.  Setting this to <b>Yes</b> will add a space between words where they are wrapped in the original GEDCOM during the import process. If you have already imported the file you will need to re-import it."
-msgstr "Vissa släktforskningsprogram börjar med en ny rad i slutet av ett ord, andra kan börja med en ny rad var som helst. Detta kan få <b>webtrees</b> att förena ord. Om du här väljer <b>Ja</b>, så läggs ett tomrum in mellan orden, då filen importeras. Om du redan har importerat, bör du importera igen."
+msgstr "Vissa släktforskningsprogram börjar med en ny rad i slutet av ett ord, andra kan börja med en ny rad var som helst. Detta kan få <b>webtrees</b> att förena ord. Om du här väljer <b>Ja</b>, så läggs ett tomrum in mellan orden, då filen importeras. Om du redan har importerat, bör du åter importera."
 
 #: modules_v3/clippings/module.php:136
 msgid "Some items could not be added due to privacy restrictions"
@@ -13292,7 +13292,7 @@ msgstr "Haag, Nederländerna"
 
 #: help_text.php:875
 msgid "The Media Viewer can show a link which, when clicked, will download the media file to the local PC.<br><br>You may want to hide the download link for security reasons."
-msgstr "Mediavisaren kan visa en länk, som när klickad, laddar ner media fil till lokaldatorn.<br><br>För ökad säkerhet kan du dölja denna länk."
+msgstr "Mediavisaren kan visa en länk, som när klickad, nedladdar media filen till lokaldatorn.<br><br>För ökad säkerhet kan du dölja denna länk."
 
 #: help_text.php:1304
 msgid "The PGV to <b>webtrees</b> wizard is an automated process to assist administrators make the move from a PGV installation to a new <b>webtrees</b> one. It will transfer all PGV GEDCOM and other database information directly to your new <b>webtrees</b> database. The following requirements are necessary:"
@@ -13469,7 +13469,7 @@ msgstr "För detta objekt ännu ingen hjälptext"
 
 #: help_text.php:1463
 msgid "The individual record identifies the user in each family tree.  Since a user can view the details of their individual record, this can only be set by an administrator.  If the user does not have a record in a family tree, leave it empty."
-msgstr "Person posten identifierar användaren i varje släktträd.  Eftersom en användare kan se informationen om sitt individuella rekord, kan detta endast anges av en administratör.  Om användaren inte har en post i ett släktträd, lämna det tomt."
+msgstr "Person posten identifierar användaren i varje släktträd.  Eftersom en användare kan se informationen om sin individuella post, kan detta endast anges av en administratör.  Om användaren inte har någon post i släktträdet, lämnas fältet tomt."
 
 #: help_text.php:1035
 msgid "The individual to be contacted about technical questions or errors encountered on your site."
@@ -13594,7 +13594,7 @@ msgstr "Versionen av %s är för gammal"
 
 #: help_text.php:997
 msgid "The website www.geonames.org provides a large database of place names.  This can be searched when entering new places.  To use this feature, you must register for a free account at www.geonames.org and provide the username."
-msgstr "Webbplatsen www.geonames.org ger en stor databas av ortnamn.  Den kan sökas när du anger nya platser.  Om du vill använda den här funktionen måste du registrera dig för ett gratis konto på www.geonames.org och ange användarnamnet."
+msgstr "Webbplatsen www.geonames.org erbjuder en stor databas för ortnamn.  Den kan sökas när du anger nya platser.  Om du vill använda den här funktionen måste du registrera dig för ett gratis konto på www.geonames.org och ange användarnamnet."
 
 #: setup.php:934
 msgid "The webtrees developers would be very interested to learn about this error.  If you contact them, they will help you resolve the problem."
@@ -13734,7 +13734,7 @@ msgstr "Posten kommer att ignoreras om du skriver in en URL i Filnamnsfältet."
 
 #: family.php:77
 msgid "This family does not exist or you do not have permission to view it."
-msgstr "Denna familj existerar inte eller så saknar du behörighet att se den."
+msgstr "Denna familj existerar inte eller så saknar du rättigheter att se den."
 
 #: family.php:47
 msgid "This family has been deleted.  The deletion will need to be reviewed by a moderator."
@@ -13798,7 +13798,7 @@ msgstr "Detta formulär har gått ut. Försök igen."
 
 #: individual.php:90 library/WT/Controller/Chart.php:40
 msgid "This individual does not exist or you do not have permission to view it."
-msgstr "Denna person existerar inte eller så saknar du behörighet att se den."
+msgstr "Denna person existerar inte eller så saknar du rättigheter att se den."
 
 #: individual.php:58
 msgid "This individual has been deleted.  The deletion will need to be reviewed by a moderator."
@@ -13978,7 +13978,7 @@ msgstr "Media filen är trasig och kan inte vattenstämplas"
 
 #: mediaviewer.php:74
 msgid "This media object does not exist or you do not have permission to view it."
-msgstr "Denna media objekt existerar inte eller så saknar du behörighet att se det."
+msgstr "Denna media objekt existerar inte eller så saknar du rättigheter att se det."
 
 #: mediaviewer.php:48
 msgid "This media object has been deleted.  The deletion will need to be reviewed by a moderator."
@@ -14028,7 +14028,7 @@ msgstr "Detta namn används i ”Från”-fältet när automatiska mejl skickas 
 
 #: note.php:73
 msgid "This note does not exist or you do not have permission to view it."
-msgstr "Denna anmärkning existerar inte eller så saknar du behörighet att se den."
+msgstr "Denna anmärkning existerar inte eller så saknar du rättigheter att se den."
 
 #: note.php:47
 msgid "This note has been deleted.  The deletion will need to be reviewed by a moderator."
@@ -14105,7 +14105,7 @@ msgstr "Här väljs vilket släktträd som först visas åt besökare, när de k
 
 #: help_text.php:1124
 msgid "This option will download the family tree to a GEDCOM file on your computer."
-msgstr "Med detta val laddas ditt släktträd ner till en GEDCOM-fil i din dator."
+msgstr "Med detta val nedladdas ditt släktträd till en GEDCOM-fil i din dator."
 
 #: help_text.php:569
 msgid "This option will enable all privacy settings and hide the details of living individuals, as defined or modified on the Privacy tab of each GEDCOM’s configuration page."
@@ -14169,7 +14169,7 @@ msgstr "Denna process gör det möjligt för webbplatsens ägare att säkerstäl
 
 #: repo.php:73
 msgid "This repository does not exist or you do not have permission to view it."
-msgstr "Detta arkiv existerar inte eller så saknar du behörighet att se det."
+msgstr "Detta arkiv existerar inte eller så saknar du rättigheter att se det."
 
 #: repo.php:47
 msgid "This repository has been deleted.  The deletion will need to be reviewed by a moderator."
@@ -14193,23 +14193,23 @@ msgstr "Detta arkiv har ändrats. Du bör granska ändringarna och %1$s eller %2
 
 #: help_text.php:1390
 msgid "This role has all the permissions of the editor role, plus permission to approve/reject changes made by other users."
-msgstr "Denna roll har alla redigerare rollens tillstånd, plus tillstånden att godkänna/avvisa ändringar som andra användare har gjort."
+msgstr "Denna roll har alla redigerare rollens rättigheter, plus rättigheter att godkänna/avvisa ändringar som andra användare har gjort."
 
 #: help_text.php:1398
 msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the site, users, and modules."
-msgstr "Denna roll har alla tillstånd för manager rollen i alla släktträd, plus tillståndet att ändra webplatsens inställningar/konfigurationer, användare och moduler."
+msgstr "Denna roll har alla rättigheter för manager rollen i alla släktträd, plus rättigheter att ändra webplatsens inställningar/konfigurationer, användare och moduler."
 
 #: help_text.php:1386
 msgid "This role has all the permissions of the member role, plus permission to add/change/delete data.  Any changes will need to be approved by a moderator, unless the user has the “automatically accept changes” option enabled."
-msgstr "Denna roll har alla medlem rollens tillstånd, plus tillstånd att lägga till/ändra/radera data.  Alla ändringar måste godkännas av en moderator, såvida användaren inte har alternativet \"automatiskt accepterar förändringar\"."
+msgstr "Denna roll har alla medlem rollens rättigheter, plus rättigheter att lägga till/ändra/radera data.  Alla ändringar måste godkännas av en moderator, såvida användaren inte har alternativet ”automatiskt accepterar förändringar”."
 
 #: help_text.php:1394
 msgid "This role has all the permissions of the moderator role, plus any additional access granted by the family tree configuration, plus permission to change the settings/configuration of a family tree."
-msgstr "Denna roll har alla moderator rollens tillstånd, plus eventuella ytterligare tillgång som beviljas av släktträd konfigurationen, plus tillstånd att ändra familjeträdets inställningar/konfigurationer."
+msgstr "Denna roll har alla moderator rollens rättigheter, plus eventuella ytterligare tillgång som beviljas av släktträd konfigurationen, plus rättigheter att ändra släktträdets inställningar/konfigurationer."
 
 #: help_text.php:1382
 msgid "This role has all the permissions of the visitor role, plus any additional access granted by the family tree configuration."
-msgstr "Denna roll har alla besökare rollens tillstånd, plus eventuella ytterligare tillgång som beviljas av släktträd konfigurationen."
+msgstr "Denna roll har alla besökare rollens rättigheter, plus eventuella ytterligare tillgång som beviljas av släktträd konfigurationen."
 
 #: help_text.php:1144
 msgid "This section allows you to add a new note to the fact that you are currently editing.  Notes are free-form text and will appear in the Fact Details section of the page."
@@ -14222,7 +14222,7 @@ msgstr "Denna sektion tillåter dig lägga till nya källcitat till faktumet som
 #. I18N: http://en.wikipedia.org/wiki/Https
 #: admin_site_upgrade.php:319
 msgid "This server does not support secure downloads using HTTPS."
-msgstr "Den här servern stöder inte säkra downloads med HTTPS."
+msgstr "Den här servern stödjer inte säkra nedladdningar med HTTPS."
 
 #: setup.php:181
 #, php-format
@@ -14243,7 +14243,7 @@ msgstr "Denna webbplats uppgraderas.  Försök igen om några minuter."
 
 #: source.php:73
 msgid "This source does not exist or you do not have permission to view it."
-msgstr "Denna källa existerar inte eller så saknar du behörighet att se den."
+msgstr "Denna källa existerar inte eller så saknar du rättigheter att se den."
 
 #: source.php:47
 msgid "This source has been deleted.  The deletion will need to be reviewed by a moderator."
@@ -14439,7 +14439,7 @@ msgstr "För att skapa nya forskningsuppgifter, måste du först lägga ”forsk
 
 #: help_text.php:528
 msgid "To ensure compatibility with other genealogy applications, notes, text, and transcripts should be recorded in simple, unformatted text.  However, formatting is often desirable to aid presentation, comprehension, etc."
-msgstr "För att säkerställa kompatibilitet med andra släktforsknings program, bör anteckningar, text och avskrifter registreras i enkel, oformaterad text.  Formatering är dock ofta önskvärt för att stöda presentation, förståelse, osv."
+msgstr "För att säkerställa kompatibilitet med andra släktforskningsprogram, bör anteckningar, text och avskrifter registreras i enkel, oformaterad text.  Formatering är dock ofta önskvärt för att stöda presentation, förståelse, osv."
 
 #: admin_media.php:465 library/WT/Controller/Media.php:64
 #: library/WT/Controller/Media.php:149 modules_v3/lightbox/module.php:161
@@ -14459,7 +14459,7 @@ msgstr "För att förhindra besökare från att komma åt webbplatsen medan du �
 #. I18N: “Apache” is a software program.
 #: help_text.php:583
 msgid "To protect this private data, webtrees uses an Apache configuration file (.htaccess) which blocks all access to this folder.  If your web-server does not support .htaccess files, and you cannot restrict access to this folder, then you can select another folder, away from your web documents."
-msgstr "För att skydda denna privata data, använder webtrees en Apache konfigurationen arkivera (.htaccess) som blockerar alla tillgång till mappen.  Om din webbserver stöder inte .htaccess-filer, och du kan inte begränsa åtkomsten till den här mappen, kan du välja en annan mapp från din webbdokument."
+msgstr "För att skydda privat data, använder webtrees en Apache konfigurationen arkivera (.htaccess) som blockerar alla tillgång till mappen.  Om din webbserver inte stödjer .htaccess-filer, och du inte kan begränsa åtkomsten till den här mappen, kan du välja en annan mapp från din webbdokument."
 
 #: help_text.php:1233
 msgid "To reduce the height of the News block, the administrator has hidden some articles.  You can reveal these hidden articles by clicking the <b>View archive</b> link."
@@ -14774,7 +14774,7 @@ msgstr "Kan inte ansluta med dessa inställningar. Servern gav följande felmedd
 #: admin_site_upgrade.php:289 admin_trees_export.php:38
 #, php-format
 msgid "Unable to create %s.  Check the permissions."
-msgstr "Kan inte skapa %s. Kontrollera behörigheterna."
+msgstr "Kan inte skapa %s. Kontrollera rättigheterna."
 
 #: admin_site_merge.php:60 admin_site_merge.php:63 admin_trees_config.php:250
 msgid "Unable to find record with ID"
@@ -15437,7 +15437,7 @@ msgstr "När du lägger till, redigera eller tar bort uppgifter, kommer ändring
 
 #: help_text.php:1129
 msgid "When you check this option, a copy of the GEDCOM file will be compressed into ZIP format before the download begins. This will reduce its size considerably, but you will need to use a compatible Unzip program (WinZIP, for example) to decompress the transmitted GEDCOM file before you can use it.<br><br>This is a useful option for downloading large GEDCOM files.  There is a risk that the download time for the uncompressed file may exceed the maximum allowed execution time, resulting in incompletely downloaded files.  The ZIP option should reduce the download time by 75 percent."
-msgstr "När du bockar detta alternativ, blir en kopia av GEDCOM-filen packad i ZIP-format före den laddas ner. Detta reducerar märkbart dess storlek, men du behöver använda ett motsvarande uppackningsprogram (t.ex. WinZIP) den sända GEDCOM-filen förrän du kan använda den.<br><br>Detta är en användbart alternativ för att ladda ner stora GEDCOM-filer. Det är en risk att nerladdningstiden för opackade filer kan överstiga maximum tillåten körtid, som kan resultera i okomplett nerladdade filer. ZIP-alternativet torde minska nerladdningstiden med 75 procent."
+msgstr "När du bockar detta alternativ, blir en kopia av GEDCOM-filen packad i ZIP-format före nedladdningen. Detta reducerar märkbart dess storlek, men du behöver använda ett motsvarande uppackningsprogram (t.ex. WinZIP) den sända GEDCOM-filen förrän du kan använda den.<br><br>Detta är en användbart alternativ för att nedladda stora GEDCOM-filer. Det är en risk att nedladdningstiden för opackade filer kan överstiga maximum tillåten körtid, som kan resultera i okomplett nedladdade filer. ZIP-alternativet torde minska nedladdningstiden med 75 procent."
 
 #: help_text.php:1083
 msgid "When you click the <b>Add a new shared note</b> link, a new window will open.  You can choose to link to an existing shared note, or you can create a new shared note and at the same time create a link to it."
@@ -15453,7 +15453,7 @@ msgstr "När du skickar detta meddelande så kommer du att få en kopia via e-po
 
 #: help_text.php:720
 msgid "Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations.  You specify the number of relationship steps that the user is allowed to see."
-msgstr "Där användaren är kopplad till en enskild post i ett släktträd och har en roll av medlem, redaktör eller moderator, kan du honom från att komma åt detaljer i avlägsna, levande relationer.  Du anger antalet relation steg som användaren får se."
+msgstr "Där användaren är kopplad till en enskild post i ett släktträd och har en roll av medlem, redaktör eller moderator, kan du hindra honom från att komma åt detaljer för avlägsna, levande relationer.  Du anger antalet relation steg som användaren får se."
 
 #: admin_pgv_to_wt.php:133
 msgid "Where is your PhpGedView installation?"
@@ -15619,7 +15619,7 @@ msgstr "Du har inte tillåtelse att skicka meddelanden som innehåller externa l
 #. I18N: Help text for the "Default Theme" site configuration setting
 #: help_text.php:985
 msgid "You can change the appearance of <b>webtrees</b> using “themes”.  Each theme has a different style, layout, color scheme, etc."
-msgstr "Du kan ändra utseende på <b>webtrees</b> med användandet av ”tema”. Varje tema har sin egen stil, layout, färgschema osv."
+msgstr "Du kan ändra utseende på <b>webtrees</b> med användandet av ”teman”. Varje tema har sin egen stil, layout, färgschema osv."
 
 #: help_text.php:1279
 msgid "You can click this button to see whether there is another relationship path between the two individuals.  Previously found paths can be displayed again by clicking the link with the path number."
@@ -15629,7 +15629,7 @@ msgstr "Du kan klicka på denna knapp för att se om det finns ett annat förhå
 #: help_text.php:1165
 #, php-format
 msgid "You can download a copy of the GEDCOM specification from %s."
-msgstr "Du kan ladda ner en kopia av GEDCOM-specifikationen från %s."
+msgstr "Du kan nedladda en kopia av GEDCOM-specifikationen från %s."
 
 #: help_text.php:1243
 msgid "You can limit the number of news articles displayed, thereby reducing the height of the GEDCOM News block.<br><br>This option determines whether any limits should be applied or whether the limit should be according to the age of the article or according to the number of articles."
@@ -15645,11 +15645,11 @@ msgstr "Du kan nu logga in med ditt användarnamn och lösenord."
 
 #: admin_site_upgrade.php:201
 msgid "You can re-enable these modules after the upgrade."
-msgstr "Du kan igen aktivera dessa moduler efter uppgraderingen."
+msgstr "Du kan återaktivera dessa moduler efter uppgraderingen."
 
 #: admin_site_upgrade.php:264
 msgid "You can re-enable these themes after the upgrade."
-msgstr "Du kan igen aktivera dessa teman efter uppgraderingen."
+msgstr "Du kan återaktivera dessa teman efter uppgraderingen."
 
 #: help_text.php:643 help_text.php:682
 msgid "You can request a higher or lower limit, although the server may ignore this request."
@@ -15665,7 +15665,7 @@ msgstr "Du kan inte logga in på grund av att din webbläsare inte accepterar co
 
 #: downloadbackup.php:34 includes/session.php:638
 msgid "You do not have permission to view this page."
-msgstr "Du har inte tillstånd att se denna sida."
+msgstr "Du har inte rättigheter att se denna sida."
 
 #: login.php:507
 msgid "You do not have to take any action; the user can now login."
