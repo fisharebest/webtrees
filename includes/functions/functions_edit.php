@@ -374,7 +374,7 @@ function add_simple_tag(
 	if ($level==0)
 		$element_id = $fact;
 	else
-		$element_id = $fact . Uuid::uuid4();.
+		$element_id = $fact . Uuid::uuid4();
 	if ($upperlevel)
 		$element_id = $upperlevel . '_' . $fact . Uuid::uuid4();
 
