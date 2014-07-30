@@ -5280,3 +5280,24 @@ table.table-census-assistant th {
 .story_edit {
 	padding: 12px;
 }
+
+.btn-group {
+	display: inline-block;
+	margin: 0 4px;
+}
+
+.btn-group button:first-child {
+	border-radius: 3px 0 0 3px;
+}
+
+[dir=rtl] .btn-group button:first-child {
+	border-radius: 0 3px 3px 0;
+}
+
+.btn-group button:last-child {
+	border-radius: 0 3px 3px 0;
+}
+
+[dir=rtl] .btn-group button:first-child {
+	border-radius: 3px 0 0 3px;
+}

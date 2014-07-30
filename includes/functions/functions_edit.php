@@ -365,21 +365,21 @@ function add_simple_tag(
 
 	// element name : used to POST data
 	if ($level==0) {
-		if ($upperlevel) $element_name=$upperlevel."_".$fact; // ex: BIRT_DATE | DEAT_DATE | ...
+		if ($upperlevel) $element_name=$upperlevel . '_' . $fact;
 		else $element_name=$fact; // ex: OCCU
 	} else $element_name="text[]";
 	if ($level==1) $main_fact=$fact;
 
 	// element id : used by javascript functions
 	if ($level==0)
-		$element_id = $fact; // ex: NPFX | GIVN ...
+		$element_id = $fact;
 	else
-		$element_id = $fact . Uuid::uuid4(); // ex: SOUR56402 ...
+		$element_id = $fact . Uuid::uuid4();.
 	if ($upperlevel)
-		$element_id = $upperlevel . "_" . $fact . Uuid::uuid4(); // ex: BIRT_DATE56402 | DEAT_DATE56402 ...
+		$element_id = $upperlevel . '_' . $fact . Uuid::uuid4();
 
 	// field value
-	$islink = (substr($value, 0, 1)=="@" and substr($value, 0, 2)!="@#");
+	$islink = (substr($value, 0, 1) === '@' && substr($value, 0, 2) != '@#');
 	if ($islink) {
 		$value=trim(trim(substr($tag, strlen($fact)+3)), " @\r");
 	} else {
