@@ -27,6 +27,7 @@ if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
+use Rhumsaa\Uuid\Uuid;
 
 // Print a fact record, for the individual/family/source/repository/etc. pages.
 //
@@ -513,7 +514,7 @@ function print_fact_sources($factrec, $level) {
 				$lt = preg_match_all("/$nlevel \w+/", $srec, $matches);
 				$data .= '<div class="fact_SOUR">';
 				$data .= '<span class="label">';
-				$elementID = $sid."-".(int)(microtime()*1000000);
+				$elementID = Uuid::uuid4();
 				if ($EXPAND_SOURCES) {
 					$plusminus='icon-minus';
 				} else {

@@ -26,6 +26,7 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
+use Rhumsaa\Uuid\Uuid;
 class todo_WT_Module extends WT_Module implements WT_Module_Block {
 	// Extend class WT_Module
 	public function getTitle() {
@@ -62,7 +63,7 @@ class todo_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 		$title.=$this->getTitle().help_link('todo', $this->getName());
 
-		$table_id = 'ID'.(int)(microtime()*1000000); // create a unique ID
+		$table_id = Uuid::uuid4(); // create a unique ID
 		$controller
 			->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 			->addInlineJavascript('

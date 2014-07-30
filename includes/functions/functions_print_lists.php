@@ -29,6 +29,8 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
+use Rhumsaa\Uuid\Uuid;
+
 // print a table of individuals
 function format_indi_table($datalist, $option='') {
 	global $GEDCOM, $SHOW_LAST_CHANGE, $SEARCH_SPIDER, $MAX_ALIVE_AGE, $controller;
@@ -869,7 +871,7 @@ function format_fam_table($datalist) {
 function format_sour_table($datalist) {
 	global $SHOW_LAST_CHANGE, $controller;
 	$html = '';
-	$table_id = "ID".(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
+	$table_id = Uuid::uuid4(); // lists requires a unique ID in case there are multiple lists per page
 	$controller
 		->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 		->addInlineJavascript('
@@ -1003,7 +1005,7 @@ function format_sour_table($datalist) {
 function format_note_table($datalist) {
 	global $SHOW_LAST_CHANGE, $controller;
 	$html = '';
-	$table_id = 'ID'.(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
+	$table_id = Uuid::uuid4(); // lists requires a unique ID in case there are multiple lists per page
 	$controller
 		->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 		->addInlineJavascript('
@@ -1112,7 +1114,7 @@ function format_repo_table($repos) {
 	global $SHOW_LAST_CHANGE, $controller;
 
 	$html = '';
-	$table_id = 'ID'.(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
+	$table_id = Uuid::uuid4(); // lists requires a unique ID in case there are multiple lists per page
 	$controller
 		->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 		->addInlineJavascript('
@@ -1211,7 +1213,7 @@ function format_repo_table($repos) {
 function format_media_table($datalist) {
 	global $SHOW_LAST_CHANGE, $controller;
 	$html = '';
-	$table_id = 'ID'.(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
+	$table_id = Uuid::uuid4(); // lists requires a unique ID in case there are multiple lists per page
 	$controller
 		->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 		->addInlineJavascript('
@@ -1558,7 +1560,7 @@ function print_changes_table($change_ids, $sort) {
 	global $controller;
 
 	$n = 0;
-	$table_id = "ID" . (int)(microtime() * 1000000); // create a unique ID
+	$table_id = Uuid::uuid4(); // create a unique ID
 	switch ($sort) {
 	case 'name':        //name
 		$aaSorting = "[5,'asc'], [4,'desc']";
@@ -1670,7 +1672,7 @@ function print_changes_table($change_ids, $sort) {
 function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_living=false, $sort_by='anniv') {
 	global $controller;
 	$html = '';
-	$table_id = "ID".(int)(microtime()*1000000); // each table requires a unique ID
+	$table_id = Uuid::uuid4(); // each table requires a unique ID
 	$controller
 		->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 		->addInlineJavascript('
