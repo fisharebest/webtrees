@@ -119,15 +119,15 @@ function format_indi_table($datalist, $option='') {
 				// De-activate the other buttons in this button group
 				btn.siblings().removeClass("ui-state-active");
 				// Apply (or clear) this filter
+				var col = jQuery("#'.$table_id.'").DataTable().column(btn.data("filter-column"));
 				if (btn.hasClass("ui-state-active")) {
 					btn.removeClass("ui-state-active");
-					jQuery("#'.$table_id.'").dataTable().fnFilter("", btn.data("filter-column"))
+					col.search("").draw();
 				} else {
 					btn.addClass("ui-state-active");
-					jQuery("#'.$table_id.'").dataTable().fnFilter(btn.data("filter-value"), btn.data("filter-column"))
+					col.search(btn.data("filter-value")).draw();
 				}
 			});
-
 
 			jQuery(".indi-list").css("visibility", "visible");
 			jQuery(".loading-image").css("display", "none");
@@ -469,12 +469,13 @@ function format_fam_table($datalist) {
 				// De-activate the other buttons in this button group
 				btn.siblings().removeClass("ui-state-active");
 				// Apply (or clear) this filter
+				var col = jQuery("#'.$table_id.'").DataTable().column(btn.data("filter-column"));
 				if (btn.hasClass("ui-state-active")) {
 					btn.removeClass("ui-state-active");
-					jQuery("#'.$table_id.'").dataTable().fnFilter("", btn.data("filter-column"))
+					col.search("").draw();
 				} else {
 					btn.addClass("ui-state-active");
-					jQuery("#'.$table_id.'").dataTable().fnFilter(btn.data("filter-value"), btn.data("filter-column"))
+					col.search(btn.data("filter-value")).draw();
 				}
 			});
 
