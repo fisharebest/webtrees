@@ -29,7 +29,7 @@ if (!defined('WT_WEBTREES')) {
 $theme_name="F.A.B."; /* I18N: Name of a theme. */ WT_I18N::translate('F.A.B.');
 
 // A version number in the path prevents browser-cache problems during upgrade
-define('WT_CSS_URL', WT_THEME_URL . 'css-1.5.3/');
+define('WT_CSS_URL', WT_THEME_URL . 'css-1.5.4/');
 
 $headerfile = WT_THEME_DIR.'header.php';
 $footerfile = WT_THEME_DIR.'footer.php';

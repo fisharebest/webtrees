@@ -5238,3 +5238,8 @@ table.table-census-assistant th {
 #stories p {
 	padding-top: 8px;
 }
+
+.btn-group {
+	display: inline-block;
+	margin: 0 4px;
+}

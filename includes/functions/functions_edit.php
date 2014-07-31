@@ -27,6 +27,7 @@ if (!defined('WT_WEBTREES')) {
 }
 
 require_once WT_ROOT.'includes/functions/functions_import.php';
+use Rhumsaa\Uuid\Uuid;
 
 // Create an edit control for inline editing using jeditable
 function edit_field_inline($name, $value, $controller=null) {
@@ -123,7 +124,7 @@ function select_edit_control_inline($name, $values, $empty, $selected, $controll
 function radio_buttons($name, $values, $selected, $extra='') {
 	$html='';
 	foreach ($values as $key=>$value) {
-		$uniqueID = $name.(int)(microtime() * 1000000);
+		$uniqueID = Uuid::uuid4();
 		$html.='<input type="radio" name="'.$name.'" id="'.$uniqueID.'" value="'.WT_Filter::escapeHtml($key).'"';
 		if ((string)$key===(string)$selected) { // Beware PHP array keys are cast to integers!  Cast them back
 			$html.=' checked';
@@ -364,21 +365,21 @@ function add_simple_tag(
 
 	// element name : used to POST data
 	if ($level==0) {
-		if ($upperlevel) $element_name=$upperlevel."_".$fact; // ex: BIRT_DATE | DEAT_DATE | ...
+		if ($upperlevel) $element_name=$upperlevel . '_' . $fact;
 		else $element_name=$fact; // ex: OCCU
 	} else $element_name="text[]";
 	if ($level==1) $main_fact=$fact;
 
 	// element id : used by javascript functions
 	if ($level==0)
-		$element_id = $fact; // ex: NPFX | GIVN ...
+		$element_id = $fact;
 	else
-		$element_id = $fact . (int)(microtime()*1000000); // ex: SOUR56402
+		$element_id = $fact . Uuid::uuid4();
 	if ($upperlevel)
-		$element_id = $upperlevel . "_" . $fact . (int)(microtime()*1000000); // ex: BIRT_DATE56402 | DEAT_DATE56402 ...
+		$element_id = $upperlevel . '_' . $fact . Uuid::uuid4();
 
 	// field value
-	$islink = (substr($value, 0, 1)=="@" and substr($value, 0, 2)!="@#");
+	$islink = (substr($value, 0, 1) === '@' && substr($value, 0, 2) != '@#');
 	if ($islink) {
 		$value=trim(trim(substr($tag, strlen($fact)+3)), " @\r");
 	} else {
