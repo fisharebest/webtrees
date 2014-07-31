@@ -58,18 +58,18 @@ function format_indi_table($datalist, $option='') {
 					/*  2 GIVN,SURN */ { type: "unicode", visible: false },
 					/*  3 SURN,GIVN */ { type: "unicode", visible: false },
 					/*  4 sosa      */ { dataSort: 5, class: "center", visible: '.($option=='sosa'?'true':'false').' },
-					/*  5 SOSA      */ { type: "numeric", visible: false },
+					/*  5 SOSA      */ { type: "num", visible: false },
 					/*  6 birt date */ { dataSort: 7 },
 					/*  7 BIRT:DATE */ { visible: false },
 					/*  8 anniv     */ { sortable: false, class: "center" },
 					/*  9 birt plac */ { type: "unicode" },
 					/* 10 children  */ { dataSort: 11, class: "center" },
-					/* 11 children  */ { type: "numeric", visible: false },
+					/* 11 children  */ { type: "num", visible: false },
 					/* 12 deat date */ { dataSort: 13 },
 					/* 13 DEAT:DATE */ { visible: false },
 					/* 14 anniv     */ { sortable: false, class: "center" },
 					/* 15 age       */ { dataSort: 16, class: "center" },
-					/* 16 AGE       */ { type: "numeric", visible: false },
+					/* 16 AGE       */ { type: "num", visible: false },
 					/* 17 deat plac */ { type: "unicode" },
 					/* 18 CHAN      */ { dataSort: 19, visible: '.($SHOW_LAST_CHANGE?'true':'false').' },
 					/* 19 CHAN_sort */ { visible: false },
@@ -107,32 +107,38 @@ function format_indi_table($datalist, $option='') {
 				'</div>'
 			).'");
 
-			/* Hide/show buttons in table footer */
 			jQuery("div.filtersF_'.$table_id.'").html("'.WT_Filter::escapeJs(
-				'<button type="button" class="ui-state-default" onclick="jQuery(\'#'.$table_id.' .individual-parents\').toggle(); jQuery(this).toggleClass(\'ui-state-active\');">'.WT_I18N::translate('Show parents').'</button>'.
-				'<button type="button" class="ui-state-default" onclick="jQuery(\'div.indi_list_table-charts_'.$table_id.'\').toggle(); jQuery(this).toggleClass(\'ui-state-active\');">'.WT_I18N::translate('Show statistics charts').'</button>'
+				'<button type="button" class="ui-state-default" id="'.$table_id.'-parents">'.WT_I18N::translate('Show parents').'</button>'.
+				'<button type="button" class="ui-state-default" id="'.$table_id.'-statistics">'.WT_I18N::translate('Show statistics charts').'</button>'
 			).'");
+
+			/* Hide/show parents */
+			jQuery("#'.$table_id.'-parents").on("click", function() {
+				jQuery(this).toggleClass("ui-state-active");
+				jQuery(".individual-parents", jQuery("#'.$table_id.'").DataTable().rows().nodes()).slideToggle();
+			});
+
+			/* Hide/show statistics */
+			jQuery("#'.$table_id.'-statistics").on("click", function() {
+				jQuery(this).toggleClass("ui-state-active");
+				jQuery(".indi_list_table-charts_'.$table_id.'").slideToggle();
+			});
 
 			/* Filter buttons in table header */
 			jQuery("#'.$table_id.'_wrapper").on("click", "button[data-filter-column]", function() {
-				var btn = $(this);
+				var btn = jQuery(this);
 				// De-activate the other buttons in this button group
 				btn.siblings().removeClass("ui-state-active");
 				// Apply (or clear) this filter
+				var col = jQuery("#'.$table_id.'").DataTable().column(btn.data("filter-column"));
 				if (btn.hasClass("ui-state-active")) {
 					btn.removeClass("ui-state-active");
-					jQuery("#'.$table_id.'").dataTable().fnFilter("", btn.data("filter-column"))
+					col.search("").draw();
 				} else {
 					btn.addClass("ui-state-active");
-					jQuery("#'.$table_id.'").dataTable().fnFilter(btn.data("filter-value"), btn.data("filter-column"))
+					col.search(btn.data("filter-value")).draw();
 				}
 			});
-
-			/* This code is a temporary fix for Datatables bug http://www.datatables.net/forums/discussion/4730/datatables_sort_wrapper-being-added-to-columns-with-bsortable-false/p1*/
-			jQuery("th div span:eq(3)").css("display", "none");
-			jQuery("th div:eq(3)").css("margin", "auto").css("text-align", "center");
-			jQuery("th span:eq(8)").css("display", "none");
-			jQuery("th div:eq(8)").css("margin", "auto").css("text-align", "center");
 
 			jQuery(".indi-list").css("visibility", "visible");
 			jQuery(".loading-image").css("display", "none");
@@ -416,19 +422,19 @@ function format_fam_table($datalist) {
 					/*  2 GIVN,SURN */ {type: "unicode", visible: false},
 					/*  3 SURN,GIVN */ {type: "unicode", visible: false},
 					/*  4 age       */ {dataSort: 5, class: "center"},
-					/*  5 AGE       */ {type: "numeric", visible: false},
+					/*  5 AGE       */ {type: "num", visible: false},
 					/*  6 wife givn */ {dataSort: 8},
 					/*  7 wife surn */ {dataSort: 9},
 					/*  8 GIVN,SURN */ {type: "unicode", visible: false},
 					/*  9 SURN,GIVN */ {type: "unicode", visible: false},
 					/* 10 age       */ {dataSort: 11, class: "center"},
-					/* 11 AGE       */ {type: "numeric", visible: false},
+					/* 11 AGE       */ {type: "num", visible: false},
 					/* 12 marr date */ {dataSort: 13},
 					/* 13 MARR:DATE */ {visible: false},
 					/* 14 anniv     */ {sortable: false, class: "center"},
 					/* 15 marr plac */ {type: "unicode"},
 					/* 16 children  */ {dataSort: 17, class: "center"},
-					/* 17 NCHI      */ {type: "numeric", visible: false},
+					/* 17 NCHI      */ {type: "num", visible: false},
 					/* 18 CHAN      */ {dataSort: 19, visible: '.($SHOW_LAST_CHANGE?'true':'false').'},
 					/* 19 CHAN_sort */ {visible: false},
 					/* 20 MARR      */ {visible: false},
@@ -462,11 +468,22 @@ function format_fam_table($datalist) {
 				'</div>'
 			).'");
 
-			/* Hide/show buttons in table footer */
 			jQuery("div.filtersF_'.$table_id.'").html("'.WT_Filter::escapeJs(
-				'<button type="button" class="ui-state-default" onclick="jQuery(\'div.parents_'.$table_id.'\').toggle(); jQuery(this).toggleClass(\'ui-state-active\');">'.WT_I18N::translate('Show parents').'</button>'.
-				'<button type="button" class="ui-state-default" onclick="jQuery(\'div.fam_list_table-charts_'.$table_id.'\').toggle(); jQuery(this).toggleClass(\'ui-state-active\');">'. WT_I18N::translate('Show statistics charts').'</button>'
+				'<button type="button" class="ui-state-default" id="'.$table_id.'-parents">'.WT_I18N::translate('Show parents').'</button>'.
+				'<button type="button" class="ui-state-default" id="'.$table_id.'-statistics">'.WT_I18N::translate('Show statistics charts').'</button>'
 			).'");
+
+			/* Hide/show parents */
+			jQuery("#'.$table_id.'-parents").on("click", function() {
+				jQuery(this).toggleClass("ui-state-active");
+				jQuery(".family-parents", jQuery("#'.$table_id.'").DataTable().rows().nodes()).slideToggle();
+			});
+
+			/* Hide/show statistics */
+			jQuery("#'.$table_id.'-statistics").on("click", function() {
+				jQuery(this).toggleClass("ui-state-active");
+				jQuery(".indi_list_table-charts_'.$table_id.'").slideToggle();
+			});
 
 			/* Filter buttons in table header */
 			jQuery("#'.$table_id.'_wrapper").on("click", "button[data-filter-column]", function() {
@@ -474,12 +491,13 @@ function format_fam_table($datalist) {
 				// De-activate the other buttons in this button group
 				btn.siblings().removeClass("ui-state-active");
 				// Apply (or clear) this filter
+				var col = jQuery("#'.$table_id.'").DataTable().column(btn.data("filter-column"));
 				if (btn.hasClass("ui-state-active")) {
 					btn.removeClass("ui-state-active");
-					jQuery("#'.$table_id.'").dataTable().fnFilter("", btn.data("filter-column"))
+					col.search("").draw();
 				} else {
 					btn.addClass("ui-state-active");
-					jQuery("#'.$table_id.'").dataTable().fnFilter(btn.data("filter-value"), btn.data("filter-column"))
+					col.search(btn.data("filter-value")).draw();
 				}
 			});
 
@@ -570,7 +588,7 @@ function format_fam_table($datalist) {
 			}
 		}
 		// Husband parents
-		$html .= $husb->getPrimaryParentsNames('parents_'.$table_id.' details1', 'none');
+		$html .= $husb->getPrimaryParentsNames('family-parents details1', 'none');
 		$html .= '</td>';
 		// Dummy column to match colspan in header
 		$html .= '<td style="display:none;"></td>';
@@ -615,7 +633,7 @@ function format_fam_table($datalist) {
 			}
 		}
 		// Wife parents
-		$html .= $wife->getPrimaryParentsNames("parents_".$table_id." details1", 'none');
+		$html .= $wife->getPrimaryParentsNames('family-parents details1', 'none');
 		$html .= '</td>';
 		// Dummy column to match colspan in header
 		$html .= '<td style="display:none;"></td>';
@@ -776,13 +794,13 @@ function format_sour_table($datalist) {
 					/*  1 TITL      */ { visible: false, type: "unicode" },
 					/*  2 author    */ { type: "unicode" },
 					/*  3 #indi     */ { dataSort: 4, class: "center" },
-					/*  4 #INDI     */ { type: "numeric", visible: false },
+					/*  4 #INDI     */ { type: "num", visible: false },
 					/*  5 #fam      */ { dataSort: 6, class: "center" },
-					/*  6 #FAM      */ { type: "numeric", visible: false },
+					/*  6 #FAM      */ { type: "num", visible: false },
 					/*  7 #obje     */ { dataSort: 8, class: "center" },
-					/*  8 #OBJE     */ { type: "numeric", visible: false },
+					/*  8 #OBJE     */ { type: "num", visible: false },
 					/*  9 #note     */ { dataSort: 10, class: "center" },
-					/* 10 #NOTE     */ { type: "numeric", visible: false },
+					/* 10 #NOTE     */ { type: "num", visible: false },
 					/* 11 CHAN      */ { dataSort: 12, visible: '.($SHOW_LAST_CHANGE?'true':'false').' },
 					/* 12 CHAN_sort */ { visible: false },
 					/* 13 DELETE    */ { visible: '.(WT_USER_GEDCOM_ADMIN?'true':'false').', sortable: false }
@@ -908,13 +926,13 @@ function format_note_table($datalist) {
 				columns: [
 					/*  0 title     */ { type: "unicode" },
 					/*  1 #indi     */ { dataSort: 2, class: "center" },
-					/*  2 #INDI     */ { type: "numeric", visible: false },
+					/*  2 #INDI     */ { type: "num", visible: false },
 					/*  3 #fam      */ { dataSort: 4, class: "center" },
-					/*  4 #FAM      */ { type: "numeric", visible: false },
+					/*  4 #FAM      */ { type: "num", visible: false },
 					/*  5 #obje     */ { dataSort: 6, class: "center" },
-					/*  6 #OBJE     */ { type: "numeric", visible: false },
+					/*  6 #OBJE     */ { type: "num", visible: false },
 					/*  7 #sour     */ { dataSort: 8, class: "center" },
-					/*  8 #SOUR     */ { type: "numeric", visible: false },
+					/*  8 #SOUR     */ { type: "num", visible: false },
 					/*  9 CHAN      */ { dataSort: 10, visible: '.($SHOW_LAST_CHANGE?'true':'false').' },
 					/* 10 CHAN_sort */ { visible: false },
 					/* 11 DELETE    */ { visible: '.(WT_USER_GEDCOM_ADMIN?'true':'false').', sortable: false }
@@ -1017,7 +1035,7 @@ function format_repo_table($repos) {
 				columns: [
 					/* 0 name      */ { type: "unicode" },
 					/* 1 #sour     */ { dataSort: 2, class: "center" },
-					/* 2 #SOUR     */ { type: "numeric", visible: false },
+					/* 2 #SOUR     */ { type: "num", visible: false },
 					/* 3 CHAN      */ { dataSort: 4, visible: '.($SHOW_LAST_CHANGE?'true':'false').' },
 					/* 4 CHAN_sort */ { visible: false },
 					/* 5 DELETE    */ { visible: '.(WT_USER_GEDCOM_ADMIN?'true':'false').', sortable: false }
@@ -1117,11 +1135,11 @@ function format_media_table($datalist) {
 					/* 0 media     */ { sortable: false },
 					/* 1 title     */ { type: "unicode" },
 					/* 2 #indi     */ { dataSort: 3, class: "center" },
-					/* 3 #INDI     */ { type: "numeric", visible: false },
+					/* 3 #INDI     */ { type: "num", visible: false },
 					/* 4 #fam      */ { dataSort: 5, class: "center" },
-					/* 5 #FAM      */ { type: "numeric", visible: false },
+					/* 5 #FAM      */ { type: "num", visible: false },
 					/* 6 #sour     */ { dataSort: 7, class: "center" },
-					/* 7 #SOUR     */ { type: "numeric", visible: false },
+					/* 7 #SOUR     */ { type: "num", visible: false },
 					/* 8 CHAN      */ { dataSort: 9, visible: '.($SHOW_LAST_CHANGE?'true':'false').' },
 					/* 9 CHAN_sort */ { visible: false },
 				],
@@ -1580,7 +1598,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 					/* 2-Date */   { dataSort: 3 },
 					/* 3-DATE */   { visible: false },
 					/* 4-Anniv. */ { dataSort: 5, class: "center" },
-					/* 5-ANNIV  */ { type: "numeric", visible: false },
+					/* 5-ANNIV  */ { type: "num", visible: false },
 					/* 6-Event */  { class: "center" }
 				]
 			});
