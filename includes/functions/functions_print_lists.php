@@ -107,15 +107,26 @@ function format_indi_table($datalist, $option='') {
 				'</div>'
 			).'");
 
-			/* Hide/show buttons in table footer */
 			jQuery("div.filtersF_'.$table_id.'").html("'.WT_Filter::escapeJs(
-				'<button type="button" class="ui-state-default" onclick="jQuery(\'#'.$table_id.' .individual-parents\').slideToggle(); jQuery(this).toggleClass(\'ui-state-active\');">'.WT_I18N::translate('Show parents').'</button>'.
-				'<button type="button" class="ui-state-default" onclick="jQuery(\'div.indi_list_table-charts_'.$table_id.'\').slideToggle(); jQuery(this).toggleClass(\'ui-state-active\');">'.WT_I18N::translate('Show statistics charts').'</button>'
+				'<button type="button" class="ui-state-default" id="'.$table_id.'-parents">'.WT_I18N::translate('Show parents').'</button>'.
+				'<button type="button" class="ui-state-default" id="'.$table_id.'-statistics">'.WT_I18N::translate('Show statistics charts').'</button>'
 			).'");
+
+			/* Hide/show parents */
+			jQuery("#'.$table_id.'-parents").on("click", function() {
+				jQuery(this).toggleClass("ui-state-active");
+				jQuery(".individual-parents", jQuery("#'.$table_id.'").DataTable().rows().nodes()).slideToggle();
+			});
+
+			/* Hide/show statistics */
+			jQuery("#'.$table_id.'-statistics").on("click", function() {
+				jQuery(this).toggleClass("ui-state-active");
+				jQuery(".indi_list_table-charts_'.$table_id.'").slideToggle();
+			});
 
 			/* Filter buttons in table header */
 			jQuery("#'.$table_id.'_wrapper").on("click", "button[data-filter-column]", function() {
-				var btn = $(this);
+				var btn = jQuery(this);
 				// De-activate the other buttons in this button group
 				btn.siblings().removeClass("ui-state-active");
 				// Apply (or clear) this filter
@@ -457,11 +468,22 @@ function format_fam_table($datalist) {
 				'</div>'
 			).'");
 
-			/* Hide/show buttons in table footer */
 			jQuery("div.filtersF_'.$table_id.'").html("'.WT_Filter::escapeJs(
-				'<button type="button" class="ui-state-default" onclick="jQuery(\'#'.$table_id.' .family-parents\').slideToggle(); jQuery(this).toggleClass(\'ui-state-active\');">'.WT_I18N::translate('Show parents').'</button>'.
-				'<button type="button" class="ui-state-default" onclick="jQuery(\'div.fam_list_table-charts_'.$table_id.'\').slideToggle(); jQuery(this).toggleClass(\'ui-state-active\');">'. WT_I18N::translate('Show statistics charts').'</button>'
+				'<button type="button" class="ui-state-default" id="'.$table_id.'-parents">'.WT_I18N::translate('Show parents').'</button>'.
+				'<button type="button" class="ui-state-default" id="'.$table_id.'-statistics">'.WT_I18N::translate('Show statistics charts').'</button>'
 			).'");
+
+			/* Hide/show parents */
+			jQuery("#'.$table_id.'-parents").on("click", function() {
+				jQuery(this).toggleClass("ui-state-active");
+				jQuery(".family-parents", jQuery("#'.$table_id.'").DataTable().rows().nodes()).slideToggle();
+			});
+
+			/* Hide/show statistics */
+			jQuery("#'.$table_id.'-statistics").on("click", function() {
+				jQuery(this).toggleClass("ui-state-active");
+				jQuery(".indi_list_table-charts_'.$table_id.'").slideToggle();
+			});
 
 			/* Filter buttons in table header */
 			jQuery("#'.$table_id.'_wrapper").on("click", "button[data-filter-column]", function() {
