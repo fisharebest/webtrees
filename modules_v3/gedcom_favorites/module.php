@@ -26,6 +26,7 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
+use Rhumsaa\Uuid\Uuid;
 // Note that the user favorites module simply extends this module, so ensure that the
 // logic works for both.
 class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
@@ -162,7 +163,7 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 			}
 		}
 		if ($ctype=='user' || WT_USER_GEDCOM_ADMIN) {
-			$uniqueID = (int)(microtime() * 1000000); // This block can theoretically appear multiple times, so use a unique ID.
+			$uniqueID = Uuid::uuid4(); // This block can theoretically appear multiple times, so use a unique ID.
 			$content .= '<div class="add_fav_head">';
 			$content .= '<a href="#" onclick="return expand_layer(\'add_fav'.$uniqueID.'\');">'.WT_I18N::translate('Add a new favorite').'<i id="add_fav'.$uniqueID.'_img" class="icon-plus"></i></a>';
 			$content .= '</div>';

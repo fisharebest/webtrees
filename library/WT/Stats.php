@@ -25,6 +25,7 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
+use Rhumsaa\Uuid\Uuid;
 
 class WT_Stats {
 	private $_gedcom;
@@ -3296,7 +3297,7 @@ class WT_Stats {
 			switch ($type) {
 			case 'table':
 			global $controller;
-				$table_id = 'ID'.(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
+				$table_id = Uuid::uuid4(); // lists requires a unique ID in case there are multiple lists per page
 				$controller
 				->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 				->addInlineJavascript('
