@@ -109,8 +109,8 @@ function format_indi_table($datalist, $option='') {
 
 			/* Hide/show buttons in table footer */
 			jQuery("div.filtersF_'.$table_id.'").html("'.WT_Filter::escapeJs(
-				'<button type="button" class="ui-state-default" onclick="jQuery(\'#'.$table_id.' .individual-parents\').toggle(); jQuery(this).toggleClass(\'ui-state-active\');">'.WT_I18N::translate('Show parents').'</button>'.
-				'<button type="button" class="ui-state-default" onclick="jQuery(\'div.indi_list_table-charts_'.$table_id.'\').toggle(); jQuery(this).toggleClass(\'ui-state-active\');">'.WT_I18N::translate('Show statistics charts').'</button>'
+				'<button type="button" class="ui-state-default" onclick="jQuery(\'#'.$table_id.' .individual-parents\').slideToggle(); jQuery(this).toggleClass(\'ui-state-active\');">'.WT_I18N::translate('Show parents').'</button>'.
+				'<button type="button" class="ui-state-default" onclick="jQuery(\'div.indi_list_table-charts_'.$table_id.'\').slideToggle(); jQuery(this).toggleClass(\'ui-state-active\');">'.WT_I18N::translate('Show statistics charts').'</button>'
 			).'");
 
 			/* Filter buttons in table header */
@@ -128,11 +128,6 @@ function format_indi_table($datalist, $option='') {
 				}
 			});
 
-			/* This code is a temporary fix for Datatables bug http://www.datatables.net/forums/discussion/4730/datatables_sort_wrapper-being-added-to-columns-with-bsortable-false/p1*/
-			jQuery("th div span:eq(3)").css("display", "none");
-			jQuery("th div:eq(3)").css("margin", "auto").css("text-align", "center");
-			jQuery("th span:eq(8)").css("display", "none");
-			jQuery("th div:eq(8)").css("margin", "auto").css("text-align", "center");
 
 			jQuery(".indi-list").css("visibility", "visible");
 			jQuery(".loading-image").css("display", "none");
@@ -464,8 +459,8 @@ function format_fam_table($datalist) {
 
 			/* Hide/show buttons in table footer */
 			jQuery("div.filtersF_'.$table_id.'").html("'.WT_Filter::escapeJs(
-				'<button type="button" class="ui-state-default" onclick="jQuery(\'div.parents_'.$table_id.'\').toggle(); jQuery(this).toggleClass(\'ui-state-active\');">'.WT_I18N::translate('Show parents').'</button>'.
-				'<button type="button" class="ui-state-default" onclick="jQuery(\'div.fam_list_table-charts_'.$table_id.'\').toggle(); jQuery(this).toggleClass(\'ui-state-active\');">'. WT_I18N::translate('Show statistics charts').'</button>'
+				'<button type="button" class="ui-state-default" onclick="jQuery(\'#'.$table_id.' .family-parents\').slideToggle(); jQuery(this).toggleClass(\'ui-state-active\');">'.WT_I18N::translate('Show parents').'</button>'.
+				'<button type="button" class="ui-state-default" onclick="jQuery(\'div.fam_list_table-charts_'.$table_id.'\').slideToggle(); jQuery(this).toggleClass(\'ui-state-active\');">'. WT_I18N::translate('Show statistics charts').'</button>'
 			).'");
 
 			/* Filter buttons in table header */
@@ -570,7 +565,7 @@ function format_fam_table($datalist) {
 			}
 		}
 		// Husband parents
-		$html .= $husb->getPrimaryParentsNames('parents_'.$table_id.' details1', 'none');
+		$html .= $husb->getPrimaryParentsNames('family-parents details1', 'none');
 		$html .= '</td>';
 		// Dummy column to match colspan in header
 		$html .= '<td style="display:none;"></td>';
@@ -615,7 +610,7 @@ function format_fam_table($datalist) {
 			}
 		}
 		// Wife parents
-		$html .= $wife->getPrimaryParentsNames("parents_".$table_id." details1", 'none');
+		$html .= $wife->getPrimaryParentsNames('family-parents details1', 'none');
 		$html .= '</td>';
 		// Dummy column to match colspan in header
 		$html .= '<td style="display:none;"></td>';
