@@ -541,7 +541,7 @@ try {
 		" body       TEXT                   NOT NULL,".
 		" created    TIMESTAMP              NOT NULL DEFAULT CURRENT_TIMESTAMP,".
 		" PRIMARY KEY     (message_id),".
-		" FOREIGN KEY ##mesage_fk1 (user_id)   REFERENCES `##user` (user_id) /* ON DELETE RESTRICT */".
+		" FOREIGN KEY ##message_fk1 (user_id)   REFERENCES `##user` (user_id) /* ON DELETE RESTRICT */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	WT_DB::exec(
