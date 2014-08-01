@@ -149,10 +149,14 @@ function format_indi_table($datalist, $option='') {
 	// Bad data can cause "longest life" to be huge, blowing memory limits
 	$max_age = min($MAX_ALIVE_AGE, $stats->LongestLifeAge())+1;
 
-	//-- init chart data
-	for ($age=0; $age<=$max_age; $age++) $deat_by_age[$age]="";
-	for ($year=1550; $year<2030; $year+=10) $birt_by_decade[$year]="";
-	for ($year=1550; $year<2030; $year+=10) $deat_by_decade[$year]="";
+	// Inititialise chart data
+	for ($age=0; $age<=$max_age; $age++) {
+		$deat_by_age[$age] = '';
+	}
+	for ($year=1550; $year<2030; $year+=10) {
+		$birt_by_decade[$year] = '';
+		$deat_by_decade[$year] = '';
+	}
 	//--table wrapper
 	$html .= '<div class="loading-image">&nbsp;</div>';
 	$html .= '<div class="indi-list">';
@@ -501,10 +505,6 @@ function format_fam_table($datalist) {
 				}
 			});
 
-			/* This code is a temporary fix for Datatables bug http://www.datatables.net/forums/discussion/4730/datatables_sort_wrapper-being-added-to-columns-with-bsortable-false/p1*/
-			jQuery("th span:eq(9)").css("display", "none");
-			jQuery("th div:eq(9)").css("margin", "auto").css("text-align", "center");
-
 			jQuery(".fam-list").css("visibility", "visible");
 			jQuery(".loading-image").css("display", "none");
 	');
@@ -513,9 +513,13 @@ function format_fam_table($datalist) {
 	$max_age = max($stats->oldestMarriageMaleAge(), $stats->oldestMarriageFemaleAge())+1;
 
 	//-- init chart data
-	for ($age=0; $age<=$max_age; $age++) $marr_by_age[$age]='';
-	for ($year=1550; $year<2030; $year+=10) $birt_by_decade[$year]='';
-	for ($year=1550; $year<2030; $year+=10) $marr_by_decade[$year]='';
+	for ($age=0; $age<=$max_age; $age++) {
+		$marr_by_age[$age] = '';
+	}
+	for ($year=1550; $year<2030; $year+=10) {
+		$birt_by_decade[$year] = '';
+		$marr_by_decade[$year] = '';
+	}
 	//--table wrapper
 	$html .= '<div class="loading-image">&nbsp;</div>';
 	$html .= '<div class="fam-list">';
