@@ -1192,12 +1192,6 @@ th {
 	width: 60px;
 }
 
-.gedcom_table {
-	border: 1px solid #84beff;
-	margin: 0;
-	width: 99%;
-}
-
 .person_box {
 	background-color: #f0f9ff;
 	border: 1px solid #84beff;
@@ -1378,10 +1372,6 @@ a:hover .nameZoom {
 	color: #006;
 	font-weight: bold;
 	font-size: 16px;
-	letter-spacing: .2px;
-}
-
-.field {
 }
 
 .label {
@@ -1610,9 +1600,6 @@ a:hover .nameZoom {
 	float: right;
 	color: #00f;
 	font-weight: bold;
-}
-
-.helpheader {
 }
 
 .helpcontent {
@@ -1959,9 +1946,6 @@ img.block {
 #timeline_chart {
 	position: relative;
 	top: 0;
-}
-
-.timeline_table {
 }
 
 .person0 {
@@ -2350,9 +2334,6 @@ ul.clist {
 
 .statistics-page {
 	text-align: center;
-}
-
-.gchart {
 }
 
 .execution_stats {

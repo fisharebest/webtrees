@@ -376,12 +376,6 @@ textarea {
 	font-family: inherit;
 }
 
-.gedcom_table {
-	border: 1px solid #555;
-	margin: 0;
-	width: 99%;
-}
-
 .person_box {
 	background-color: #fff;
 	border: solid #555 1px;
@@ -469,7 +463,7 @@ table.center {
 }
 
 div.fact_SHARED_NOTE {
-	clear:both
+	clear: both;
 }
 
 .facts_label {
@@ -565,15 +559,11 @@ div.fact_SHARED_NOTE {
 	color: #555;
 	font-weight: bold;
 	font-size: 16px;
-	letter-spacing: .2px;
 }
 
 .date {
 	color: #666;
 	font-weight: bold;
-}
-
-.field {
 }
 
 .label {
@@ -719,9 +709,6 @@ div.fact_SHARED_NOTE {
 	float: right;
 	color: #00f;
 	font-weight: bold;
-}
-
-.helpheader {
 }
 
 .helpcontent {
@@ -1077,9 +1064,6 @@ img.block {
 #timeline_chart {
 	position: relative;
 	top: 0;
-}
-
-.timeline_table {
 }
 
 .person0 {
@@ -2020,9 +2004,6 @@ td.descriptionbox a {
 	padding: 0 0 0 5px;
 }
 
-span.link_text {
-}
-
 span.link_text:hover {
 	text-decoration: underline;
 }
@@ -2394,10 +2375,6 @@ dd .deletelink {
 
 .ui-tabs .ui-tabs-nav li a:hover {
 	color: #555;
-}
-
-.ui-tabs,
-.ui-tabs .ui-tabs-nav li a {
 }
 
 .ui-tabs-nav li.ui-tabs-active {

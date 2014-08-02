@@ -83,13 +83,8 @@ $show_full = '1';
 
 ?>
 <div id="family-page">
-<table align="center" width="95%">
-	<tr>
-		<td>
-			<p class="name_head"><?php echo $controller->record->getFullName(); ?></p>
-		</td>
-	</tr>
-</table>
+<h2><?php echo $controller->record->getFullName(); ?></h2>
+
 <table id="family-table" align="center" width="95%">
 	<tr valign="top">
 		<td valign="top" style="width: <?php echo $pbwidth+30; ?>px;"><!--//List of children//-->

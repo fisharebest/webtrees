@@ -803,9 +803,6 @@ div.fact_SHARED_NOTE {
 	font-weight: bold;
 }
 
-.helpheader {
-}
-
 .helpcontent {
 	margin-left: 10px;
 	margin-right: 10px;
@@ -1687,8 +1684,6 @@ div.faq_body {
 	float: left;
 }
 
-td.descriptionbox a {
-}
 
 ul.clist {
 	list-style-image: none;
