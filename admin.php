@@ -624,6 +624,14 @@ function old_paths() {
 		WT_ROOT.'js/jquery.wheelzoom-1.1.2.js',
 		WT_ROOT.'js/jquery-1.11.0.js',
 		WT_ROOT.'js/webtrees-1.5.3.js',
+		WT_ROOT.'modules_v3/ckeditor/ckeditor-4.3.2-custom',
+		WT_ROOT.'themes/_administration/css-1.5.3',
+		WT_ROOT.'themes/clouds/css-1.5.3',
+		WT_ROOT.'themes/colors/css-1.5.3',
+		WT_ROOT.'themes/fab/css-1.5.3',
+		WT_ROOT.'themes/minimal/css-1.5.3',
+		WT_ROOT.'themes/webtrees/css-1.5.3',
+		WT_ROOT.'themes/xenea/css-1.5.3',
 	);
 }
 
