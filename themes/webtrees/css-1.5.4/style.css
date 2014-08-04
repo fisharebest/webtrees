@@ -33,8 +33,8 @@ body {
 	color: #555;
 	background-color: #fff;
 	font: 12px tahoma, arial, helvetica, sans-serif;
-	margin: 1px;
-	padding: 0 5px;
+	margin: 0;
+	padding: 0 8px;
 }
 
 fieldset {
@@ -85,9 +85,6 @@ legend img {
 }
 
 img.block,
-#calendar_img_indi,
-#calendar_img_fam,
-#biglink img,
 #mycart img {
 	border: none;
 	height: 25px;
@@ -195,17 +192,8 @@ textarea:required:invalid {
 	text-align: center;
 }
 
-.optionbox a img {
-}
-
 .button {
 	width: 60px;
-}
-
-.gedcom_table {
-	border: 1px solid #81a9cb;
-	margin: 0;
-	width: 99%;
 }
 
 .alpha_index {
@@ -297,7 +285,7 @@ table.center {
 }
 
 div.fact_SHARED_NOTE {
-	clear:both
+	clear: both;
 }
 
 .facts_label {
@@ -405,16 +393,12 @@ a:hover .nameZoom {
 	color: #555;
 	font-weight: bold;
 	font-size: 16px;
-	letter-spacing: .2px;
 	line-height: 2;
 	padding: 0 5px;
 }
 
 .date {
 	color: #337;
-}
-
-.field {
 }
 
 .label {
@@ -612,9 +596,6 @@ a:hover .nameZoom {
 	float: right;
 	color: #00f;
 	font-weight: bold;
-}
-
-.helpheader {
 }
 
 .helpcontent {
@@ -816,9 +797,6 @@ a:hover .nameZoom {
 	position: relative;
 	top: 0;
 	left: 0;
-}
-
-.timeline_table {
 }
 
 .person0 {
@@ -1100,9 +1078,6 @@ a.showit:hover > span {
 	height: 600px;
 	overflow: hidden;
 	border: solid #00f 1px;
-}
-
-.lifespan_outer a {
 }
 
 .lifespan_outer a:hover {
@@ -1706,8 +1681,6 @@ td.descriptionbox a {
 .media-list,
 .indi-list,
 .fam-list {
-	margin: 5px auto;
-	width: 98%;
 	visibility: hidden;
 }
 
@@ -1743,10 +1716,6 @@ td.descriptionbox a {
 .surname-list td,
 .givn-list td {
 	padding: 2px 5px;
-}
-
-.indi-list td,
-.fam-list td {
 }
 
 .surname-list td {
@@ -2062,24 +2031,16 @@ td.descriptionbox a {
 /* ============= Theme select block ============ */
 .theme_form ul {
 	margin: -10px auto;
-	-webkit-padding-start: 0;
-	width: 90%;
-	overflow: hidden;
 }
 
 .theme_form li {
-	list-style: none;
 	visibility: hidden;
 }
 
 .theme_form li ul li {
-	float: left;
+	display: inline-block;
 	padding: 10px;
 	visibility: visible;
-}
-
-[dir=rtl] .theme_form li ul li {
-	float: right;
 }
 
 /* ======= FAQ table styles ========== */
@@ -3113,9 +3074,6 @@ delete links ==================== */
 	width: 100%;
 }
 
-#header_accordion1 {
-	padding: 0 10px;
-}
 #indi_header h3 {
 	font-size: 90%;
 	font-weight: bold;
@@ -3170,13 +3128,16 @@ delete links ==================== */
 
 #indi_mainimage {
 	float: left;
-	min-width: 120px;
+	padding: 0 10px;
 }
 
-#indi_mainimage img {
-	display: block;
-	margin: auto;
-	padding: 0 5px 0 0;
+#header_accordion1 {
+	padding: 0 10px 0 0;
+    overflow: hidden;
+}
+
+[dir='rtl'] #header_accordion1 {
+	padding: 0 0 0 10px;
 }
 
 #header_accordion1 .indi_name_details {
@@ -3278,10 +3239,6 @@ dd .deletelink {
 
 [dir=rtl] #indi_mainimage {
 	float: right;
-}
-
-[dir=rtl] #indi_mainimage img{
-	padding: 0 0 0 5px;
 }
 
 [dir=rtl] #indi_note .fact_NOTE {
@@ -3980,7 +3937,7 @@ Families */
 
 #find-output .find-media-details ul {
 	padding: 0;
-	margin: 0px 20px 10px 20px;
+	margin: 0 20px 10px 20px;
 	list-style-type: none;
 }
 
@@ -4830,7 +4787,7 @@ a.icon-udarrow:hover {
 }
 
 .icon-mime-application-x-shockwave-flash {
-	background-position: -148px 0px;
+	background-position: -148px 0;
 }
 
 .icon-mime-audio-mp3 {
@@ -4838,7 +4795,7 @@ a.icon-udarrow:hover {
 }
 
 .icon-mime-audio-mpeg {
-	background-position: -50px 0px;
+	background-position: -50px 0;
 }
 
 .icon-mime-audio-x-ms-wma {
@@ -4858,7 +4815,7 @@ a.icon-udarrow:hover {
 }
 
 .icon-mime-image-bmp {
-	background-position: 197px 0px;
+	background-position: 197px 0;
 }
 
 .icon-mime-image-gif {
@@ -4886,7 +4843,7 @@ a.icon-udarrow:hover {
 }
 
 .icon-mime-video-avi {
-	background-position: -99px 0px;
+	background-position: -99px 0;
 }
 
 .icon-mime-video-x-ms-wmv {

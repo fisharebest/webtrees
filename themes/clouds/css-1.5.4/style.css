@@ -1626,12 +1626,6 @@ th {
 	width: 60px;
 }
 
-.gedcom_table {
-	border: 1px solid #999;
-	margin: 0;
-	width: 99%;
-}
-
 /* person boxes are used in various charts */
 
 .person_box,
@@ -1816,12 +1810,6 @@ a:hover .nameZoom {
 .detailsZoom {
 	font-size: 13px;
 	text-decoration: none;
-}
-
-.name_head {
-	font-weight: bold;
-	font-size: 11px;
-	letter-spacing: .2px;
 }
 
 .date {
@@ -3140,13 +3128,11 @@ dd .deletelink {
 
 #indi_mainimage {
 	float: left;
-	min-width: 120px;
+	padding: 0 10px 0 0;
 }
 
-#indi_mainimage img {
-	display: block;
-	margin: auto;
-	padding: 0 5px 0 0;
+#header_accordion1 {
+	overflow: hidden;
 }
 
 #header_accordion1 .indi_name_details {
@@ -3255,10 +3241,7 @@ dd .deletelink {
 
 [dir=rtl] #indi_mainimage {
 	float: right;
-}
-
-[dir=rtl] #indi_mainimage img{
-	padding: 0 0 0 5px;
+	padding: 0 0 0 10px;
 }
 
 [dir=rtl] #indi_note .fact_NOTE {

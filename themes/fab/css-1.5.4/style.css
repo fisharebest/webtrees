@@ -803,9 +803,6 @@ div.fact_SHARED_NOTE {
 	font-weight: bold;
 }
 
-.helpheader {
-}
-
 .helpcontent {
 	margin-left: 10px;
 	margin-right: 10px;
@@ -1687,8 +1684,6 @@ div.faq_body {
 	float: left;
 }
 
-td.descriptionbox a {
-}
 
 ul.clist {
 	list-style-image: none;
@@ -1778,17 +1773,11 @@ span.link_text {
 
 #indi_mainimage {
 	float: right;
-	min-width: 120px;
-}
-
-#indi_mainimage img {
-	display: block;
-	margin: auto;
-	padding: 0 0 0 5px;
 }
 
 #header_accordion1 {
-	padding: 0 10px
+	padding: 0 10px;
+	overflow: hidden;
 }
 
 #header_accordion1 .indi_name_details {
@@ -1872,10 +1861,6 @@ dd .deletelink {
 
 [dir=rtl] #indi_mainimage {
 	float: left;
-}
-
-[dir=rtl] #indi_mainimage img{
-	padding: 0 5px 0 0;
 }
 
 [dir=rtl] #indi_note .fact_NOTE {

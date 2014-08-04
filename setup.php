@@ -62,8 +62,10 @@ if (version_compare(PHP_VERSION, WT_REQUIRED_PHP_VERSION)<0) {
 require 'includes/functions/functions.php';
 require 'includes/functions/functions_utf-8.php';
 require 'includes/functions/functions_edit.php';
-$WT_REQUEST=new Zend_Controller_Request_Http();
-$WT_SESSION=new stdClass; $WT_SESSION->locale=null; // Can't use Zend_Session until we've checked ini_set
+$WT_REQUEST = new Zend_Controller_Request_Http();
+$WT_SESSION = new stdClass;
+$WT_SESSION->locale  = null; // Needed for WT_I18N
+$WT_SESSION->wt_user = null; // Needed for WT_Auth
 define('WT_LOCALE', WT_I18N::init(WT_Filter::post('lang', '[@a-zA-Z_]+')));
 
 header('Content-Type: text/html; charset=UTF-8');
@@ -445,9 +447,9 @@ try {
 		" gedcom_id     INTEGER AUTO_INCREMENT NOT NULL,".
 		" gedcom_name   VARCHAR(255)           NOT NULL,".
 		" sort_order    INTEGER                NOT NULL DEFAULT 0,".
-		" PRIMARY KEY     (gedcom_id),".
-		" UNIQUE  KEY ux1 (gedcom_name),".
-		"         KEY ix1 (sort_order)".
+		" PRIMARY KEY                (gedcom_id),".
+		" UNIQUE  KEY `##gedcom_ix1` (gedcom_name),".
+		"         KEY `##gedcom_ix2` (sort_order)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	WT_DB::exec(
@@ -462,8 +464,8 @@ try {
 		" gedcom_id     INTEGER      NOT NULL,".
 		" setting_name  VARCHAR(32)  NOT NULL,".
 		" setting_value VARCHAR(255) NOT NULL,".
-		" PRIMARY KEY     (gedcom_id, setting_name),".
-		" FOREIGN KEY fk1 (gedcom_id) REFERENCES `##gedcom` (gedcom_id) /* ON DELETE CASCADE */".
+		" PRIMARY KEY                        (gedcom_id, setting_name),".
+		" FOREIGN KEY `##gedcom_setting_fk1` (gedcom_id) REFERENCES `##gedcom` (gedcom_id) /* ON DELETE CASCADE */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	WT_DB::exec(
@@ -473,9 +475,9 @@ try {
 		" real_name VARCHAR(64)            NOT NULL,".
 		" email     VARCHAR(64)            NOT NULL,".
 		" password  VARCHAR(128)           NOT NULL,".
-		" PRIMARY KEY     (user_id),".
-		" UNIQUE  KEY ux1 (user_name),".
-		" UNIQUE  KEY ux2 (email)".
+		" PRIMARY KEY              (user_id),".
+		" UNIQUE  KEY `##user_ix1` (user_name),".
+		" UNIQUE  KEY `##user_ix2` (email)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	WT_DB::exec(
@@ -483,8 +485,8 @@ try {
 		" user_id       INTEGER      NOT NULL,".
 		" setting_name  VARCHAR(32)  NOT NULL,".
 		" setting_value VARCHAR(255) NOT NULL,".
-		" PRIMARY KEY     (user_id, setting_name),".
-		" FOREIGN KEY fk1 (user_id) REFERENCES `##user` (user_id) /* ON DELETE CASCADE */".
+		" PRIMARY KEY                      (user_id, setting_name),".
+		" FOREIGN KEY `##user_setting_fk1` (user_id) REFERENCES `##user` (user_id) /* ON DELETE CASCADE */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	WT_DB::exec(
@@ -493,9 +495,9 @@ try {
 		" gedcom_id     INTEGER      NOT NULL,".
 		" setting_name  VARCHAR(32)  NOT NULL,".
 		" setting_value VARCHAR(255) NOT NULL,".
-		" PRIMARY KEY     (user_id, gedcom_id, setting_name),".
-		" FOREIGN KEY fk1 (user_id)   REFERENCES `##user`   (user_id)   /* ON DELETE CASCADE */,".
-		" FOREIGN KEY fk2 (gedcom_id) REFERENCES `##gedcom` (gedcom_id) /* ON DELETE CASCADE */".
+		" PRIMARY KEY                             (user_id, gedcom_id, setting_name),".
+		" FOREIGN KEY `##user_gedcom_setting_fk1` (user_id)   REFERENCES `##user` (user_id) /* ON DELETE CASCADE */,".
+		" FOREIGN KEY `##user_gedcom_setting_fk2` (gedcom_id) REFERENCES `##gedcom` (gedcom_id) /* ON DELETE CASCADE */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	WT_DB::exec(
@@ -507,12 +509,12 @@ try {
 		" ip_address  VARCHAR(40)  NOT NULL,".
 		" user_id     INTEGER          NULL,".
 		" gedcom_id   INTEGER          NULL,".
-		" PRIMARY KEY     (log_id),".
-		"         KEY ix1 (log_time),".
-		"         KEY ix2 (log_type),".
-		"         KEY ix3 (ip_address),".
-		" FOREIGN KEY fk1 (user_id)   REFERENCES `##user`   (user_id)   /* ON DELETE SET NULL */,".
-		" FOREIGN KEY fk2 (gedcom_id) REFERENCES `##gedcom` (gedcom_id) /* ON DELETE SET NULL */".
+		" PRIMARY KEY             (log_id),".
+		"         KEY `##log_ix1` (log_time),".
+		"         KEY `##log_ix2` (log_type),".
+		"         KEY `##log_ix3` (ip_address),".
+		" FOREIGN KEY `##log_fk1` (user_id)   REFERENCES `##user`(user_id) /* ON DELETE SET NULL */,".
+		" FOREIGN KEY `##log_fk2` (gedcom_id) REFERENCES `##gedcom` (gedcom_id) /* ON DELETE SET NULL */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	WT_DB::exec(
@@ -525,10 +527,10 @@ try {
 		" old_gedcom     MEDIUMTEXT                              NOT NULL,".
 		" new_gedcom     MEDIUMTEXT                              NOT NULL,".
 		" user_id        INTEGER                                 NOT NULL,".
-		" PRIMARY KEY     (change_id),".
-		"         KEY ix1 (gedcom_id, status, xref),".
-		" FOREIGN KEY fk1 (user_id)   REFERENCES `##user`   (user_id)   /* ON DELETE RESTRICT */,".
-		" FOREIGN KEY fk2 (gedcom_id) REFERENCES `##gedcom` (gedcom_id) /* ON DELETE CASCADE */".
+		" PRIMARY KEY                (change_id),".
+		"         KEY `##change_ix1` (gedcom_id, status, xref),".
+		" FOREIGN KEY `##change_fk1` (user_id)   REFERENCES `##user` (user_id) /* ON DELETE RESTRICT */,".
+		" FOREIGN KEY `##change_fk2` (gedcom_id) REFERENCES `##gedcom` (gedcom_id) /* ON DELETE CASCADE */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	WT_DB::exec(
@@ -540,8 +542,8 @@ try {
 		" subject    VARCHAR(255)           NOT NULL,".
 		" body       TEXT                   NOT NULL,".
 		" created    TIMESTAMP              NOT NULL DEFAULT CURRENT_TIMESTAMP,".
-		" PRIMARY KEY     (message_id),".
-		" FOREIGN KEY fk1 (user_id)   REFERENCES `##user` (user_id) /* ON DELETE RESTRICT */".
+		" PRIMARY KEY                 (message_id),".
+		" FOREIGN KEY `##message_fk1` (user_id)   REFERENCES `##user` (user_id) /* ON DELETE RESTRICT */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	WT_DB::exec(
@@ -553,9 +555,9 @@ try {
 		" resn            ENUM ('none', 'privacy', 'confidential', 'hidden') NOT NULL,".
 		" comment         VARCHAR(255)                                           NULL,".
 		" updated         TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,".
-		" PRIMARY KEY     (default_resn_id),".
-		" UNIQUE  KEY ux1 (gedcom_id, xref, tag_type),".
-		" FOREIGN KEY fk1 (gedcom_id)  REFERENCES `##gedcom` (gedcom_id)".
+		" PRIMARY KEY                      (default_resn_id),".
+		" UNIQUE  KEY `##default_resn_ix1` (gedcom_id, xref, tag_type),".
+		" FOREIGN KEY `##default_resn_fk1` (gedcom_id)  REFERENCES `##gedcom` (gedcom_id)".
 		") ENGINE=InnoDB COLLATE=utf8_unicode_ci"
 	);
 	WT_DB::exec(
@@ -565,8 +567,8 @@ try {
 		" i_rin    VARCHAR(20)         NOT NULL,".
 		" i_sex    ENUM('U', 'M', 'F') NOT NULL,".
 		" i_gedcom MEDIUMTEXT          NOT NULL,".
-		" PRIMARY KEY     (i_id, i_file),".
-		" UNIQUE  KEY ux1 (i_file, i_id)".
+		" PRIMARY KEY                     (i_id, i_file),".
+		" UNIQUE  KEY `##individuals_ix1` (i_file, i_id)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	WT_DB::exec(
@@ -577,10 +579,10 @@ try {
 		" f_wife    VARCHAR(20)      NULL,".
 		" f_gedcom  MEDIUMTEXT   NOT NULL,".
 		" f_numchil INTEGER      NOT NULL,".
-		" PRIMARY KEY     (f_id, f_file),".
-		" UNIQUE  KEY ux1 (f_file, f_id),".
-		"         KEY ix1 (f_husb),".
-		"         KEY ix2 (f_wife)".
+		" PRIMARY KEY                  (f_id, f_file),".
+		" UNIQUE  KEY `##families_ix1` (f_file, f_id),".
+		"         KEY `##families_ix2` (f_husb),".
+		"         KEY `##families_ix3` (f_wife)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	WT_DB::exec(
@@ -591,9 +593,9 @@ try {
 		" p_file        INTEGER               NOT  NULL,".
 		" p_std_soundex TEXT                       NULL,".
 		" p_dm_soundex  TEXT                       NULL,".
-		" PRIMARY KEY     (p_id),".
-		"         KEY ix1 (p_file, p_place),".
-		" UNIQUE  KEY ux1 (p_parent_id, p_file, p_place)".
+		" PRIMARY KEY                (p_id),".
+		"         KEY `##places_ix1` (p_file, p_place),".
+		" UNIQUE  KEY `##places_ix2` (p_parent_id, p_file, p_place)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	WT_DB::exec(
@@ -601,10 +603,10 @@ try {
 		" pl_p_id INTEGER NOT NULL,".
 		" pl_gid  VARCHAR(20)  NOT NULL,".
 		" pl_file INTEGER  NOT NULL,".
-		" PRIMARY KEY (pl_p_id, pl_gid, pl_file),".
-		"         KEY ix1 (pl_p_id),".
-		"         KEY ix2 (pl_gid),".
-		"         KEY ix3 (pl_file)".
+		" PRIMARY KEY                    (pl_p_id, pl_gid, pl_file),".
+		"         KEY `##placelinks_ix1` (pl_p_id),".
+		"         KEY `##placelinks_ix2` (pl_gid),".
+		"         KEY `##placelinks_ix3` (pl_file)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	WT_DB::exec(
@@ -619,16 +621,16 @@ try {
 		" d_gid        VARCHAR(20) NOT NULL,".
 		" d_file       INTEGER     NOT NULL,".
 		" d_type       ENUM ('@#DGREGORIAN@', '@#DJULIAN@', '@#DHEBREW@', '@#DFRENCH R@', '@#DHIJRI@', '@#DROMAN@', '@#DJALALI@') NOT NULL,".
-		" KEY ix1 (d_day),".
-		" KEY ix2 (d_month),".
-		" KEY ix3 (d_mon),".
-		" KEY ix4 (d_year),".
-		" KEY ix5 (d_julianday1),".
-		" KEY ix6 (d_julianday2),".
-		" KEY ix7 (d_gid),".
-		" KEY ix8 (d_file),".
-		" KEY ix9 (d_type),".
-		" KEY ix10 (d_fact, d_gid)".
+		" KEY `##dates_ix1` (d_day),".
+		" KEY `##dates_ix2` (d_month),".
+		" KEY `##dates_ix3` (d_mon),".
+		" KEY `##dates_ix4` (d_year),".
+		" KEY `##dates_ix5` (d_julianday1),".
+		" KEY `##dates_ix6` (d_julianday2),".
+		" KEY `##dates_ix7` (d_gid),".
+		" KEY `##dates_ix8` (d_file),".
+		" KEY `##dates_ix9` (d_type),".
+		" KEY `##dates_ix10` (d_fact, d_gid)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	WT_DB::exec(
@@ -640,10 +642,10 @@ try {
 		" m_filename VARCHAR(512)               NULL,".
 		" m_file     INTEGER                NOT NULL,".
 		" m_gedcom   MEDIUMTEXT                 NULL,".
-		" PRIMARY KEY     (m_file, m_id),".
-		" UNIQUE  KEY ix1 (m_id, m_file),".
-		"         KEY ix2 (m_ext, m_type),".
-		"         KEY ix3 (m_titl)".
+		" PRIMARY KEY               (m_file, m_id),".
+		" UNIQUE  KEY `##media_ix1` (m_id, m_file),".
+		"         KEY `##media_ix2` (m_ext, m_type),".
+		"         KEY `##media_ix3` (m_titl)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	WT_DB::exec(
@@ -651,8 +653,8 @@ try {
 		" gedcom_id   INTEGER     NOT NULL,".
 		" record_type VARCHAR(15) NOT NULL,".
 		" next_id     DECIMAL(20) NOT NULL,".
-		" PRIMARY KEY     (gedcom_id, record_type),".
-		" FOREIGN KEY fk1 (gedcom_id) REFERENCES `##gedcom` (gedcom_id) /* ON DELETE CASCADE */".
+		" PRIMARY KEY                 (gedcom_id, record_type),".
+		" FOREIGN KEY `##next_id_fk1` (gedcom_id) REFERENCES `##gedcom` (gedcom_id) /* ON DELETE CASCADE */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	WT_DB::exec(
@@ -661,8 +663,8 @@ try {
 		" o_file   INTEGER     NOT NULL,".
 		" o_type   VARCHAR(15) NOT NULL,".
 		" o_gedcom MEDIUMTEXT      NULL,".
-		" PRIMARY KEY     (o_id, o_file),".
-		" UNIQUE  KEY ux1 (o_file, o_id)".
+		" PRIMARY KEY               (o_id, o_file),".
+		" UNIQUE  KEY `##other_ix1` (o_file, o_id)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	WT_DB::exec(
@@ -671,9 +673,9 @@ try {
 		" s_file   INTEGER        NOT NULL,".
 		" s_name   VARCHAR(255)   NOT NULL,".
 		" s_gedcom MEDIUMTEXT     NOT NULL,".
-		" PRIMARY KEY     (s_id, s_file),".
-		" UNIQUE  KEY ux1 (s_file, s_id),".
-		"         KEY ix1 (s_name)".
+		" PRIMARY KEY                 (s_id, s_file),".
+		" UNIQUE  KEY `##sources_ix1` (s_file, s_id),".
+		"         KEY `##sources_ix2` (s_name)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	WT_DB::exec(
@@ -682,8 +684,8 @@ try {
 		" l_from    VARCHAR(20) NOT NULL,".
 		" l_type    VARCHAR(15) NOT NULL,".
 		" l_to      VARCHAR(20) NOT NULL,".
-		" PRIMARY KEY      (l_from, l_file, l_type, l_to),".
-		" UNIQUE INDEX ux1 (l_to, l_file, l_type, l_from)".
+		" PRIMARY KEY              (l_from, l_file, l_type, l_to),".
+		" UNIQUE  KEY `##link_ix1` (l_to, l_file, l_type, l_from)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	WT_DB::exec(
@@ -702,10 +704,10 @@ try {
 		" n_soundex_surn_std VARCHAR(255)     NULL,".
 		" n_soundex_givn_dm  VARCHAR(255)     NULL,".
 		" n_soundex_surn_dm  VARCHAR(255)     NULL,".
-		" PRIMARY KEY (n_id, n_file, n_num),".
-		"         KEY ix1 (n_full, n_id, n_file),".
-		"         KEY ix2 (n_surn, n_file, n_type, n_id),".
-		"         KEY ix3 (n_givn, n_file, n_type, n_id)".
+		" PRIMARY KEY              (n_id, n_file, n_num),".
+		"         KEY `##name_ix1` (n_full, n_id, n_file),".
+		"         KEY `##name_ix2` (n_surn, n_file, n_type, n_id),".
+		"         KEY `##name_ix3` (n_givn, n_file, n_type, n_id)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	WT_DB::exec(
@@ -723,8 +725,8 @@ try {
 		" module_name   VARCHAR(32) NOT NULL,".
 		" setting_name  VARCHAR(32) NOT NULL,".
 		" setting_value MEDIUMTEXT  NOT NULL,".
-		" PRIMARY KEY     (module_name, setting_name),".
-		" FOREIGN KEY fk1 (module_name) REFERENCES `##module` (module_name) /* ON DELETE CASCADE */".
+		" PRIMARY KEY                        (module_name, setting_name),".
+		" FOREIGN KEY `##module_setting_fk1` (module_name) REFERENCES `##module` (module_name) /* ON DELETE CASCADE */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	WT_DB::exec(
@@ -733,9 +735,9 @@ try {
 		" gedcom_id     INTEGER     NOT NULL,".
 		" component     ENUM('block', 'chart', 'menu', 'report', 'sidebar', 'tab', 'theme') NOT NULL,".
 		" access_level  TINYINT     NOT NULL,".
-		" PRIMARY KEY     (module_name, gedcom_id, component),".
-		" FOREIGN KEY fk1 (module_name) REFERENCES `##module` (module_name) /* ON DELETE CASCADE */,".
-		" FOREIGN KEY fk2 (gedcom_id  ) REFERENCES `##gedcom` (gedcom_id)   /* ON DELETE CASCADE */".
+		" PRIMARY KEY                        (module_name, gedcom_id, component),".
+		" FOREIGN KEY `##module_privacy_fk1` (module_name) REFERENCES `##module` (module_name) /* ON DELETE CASCADE */,".
+		" FOREIGN KEY `##module_privacy_fk2` (gedcom_id)   REFERENCES `##gedcom` (gedcom_id)   /* ON DELETE CASCADE */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	WT_DB::exec(
@@ -747,10 +749,10 @@ try {
 		" location    ENUM('main', 'side')       NULL,".
 		" block_order INTEGER                NOT NULL,".
 		" module_name VARCHAR(32)            NOT NULL,".
-		" PRIMARY KEY     (block_id),".
-		" FOREIGN KEY fk1 (gedcom_id  ) REFERENCES `##gedcom` (gedcom_id  ), /* ON DELETE CASCADE */".
-		" FOREIGN KEY fk2 (user_id    ) REFERENCES `##user`   (user_id    ), /* ON DELETE CASCADE */".
-		" FOREIGN KEY fk3 (module_name) REFERENCES `##module` (module_name)  /* ON DELETE CASCADE */".
+		" PRIMARY KEY               (block_id),".
+		" FOREIGN KEY `##block_fk1` (gedcom_id)   REFERENCES `##gedcom` (gedcom_id),  /* ON DELETE CASCADE */".
+		" FOREIGN KEY `##block_fk2` (user_id)     REFERENCES `##user`   (user_id),    /* ON DELETE CASCADE */".
+		" FOREIGN KEY `##block_fk3` (module_name) REFERENCES `##module` (module_name) /* ON DELETE CASCADE */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	WT_DB::exec(
@@ -758,8 +760,8 @@ try {
 		" block_id      INTEGER     NOT NULL,".
 		" setting_name  VARCHAR(32) NOT NULL,".
 		" setting_value TEXT        NOT NULL,".
-		" PRIMARY KEY     (block_id, setting_name),".
-		" FOREIGN KEY fk1 (block_id) REFERENCES `##block` (block_id) /* ON DELETE CASCADE */".
+		" PRIMARY KEY                       (block_id, setting_name),".
+		" FOREIGN KEY `##block_setting_fk1` (block_id) REFERENCES `##block` (block_id) /* ON DELETE CASCADE */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	WT_DB::exec(
@@ -768,8 +770,8 @@ try {
 		" page_name      VARCHAR(32) NOT NULL,".
 		" page_parameter VARCHAR(32) NOT NULL,".
 		" page_count     INTEGER     NOT NULL,".
-		" PRIMARY KEY     (gedcom_id, page_name, page_parameter),".
-		" FOREIGN KEY fk1 (gedcom_id) REFERENCES `##gedcom` (gedcom_id) /* ON DELETE CASCADE */".
+		" PRIMARY KEY                     (gedcom_id, page_name, page_parameter),".
+		" FOREIGN KEY `##hit_counter_fk1` (gedcom_id) REFERENCES `##gedcom` (gedcom_id) /* ON DELETE CASCADE */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	WT_DB::exec(
@@ -787,9 +789,9 @@ try {
 		" user_id      INTEGER     NOT NULL,".
 		" ip_address   VARCHAR(32) NOT NULL,".
 		" session_data MEDIUMBLOB  NOT NULL,".
-		" PRIMARY KEY     (session_id),".
-		"         KEY ix1 (session_time),".
-		"         KEY ix2 (user_id, ip_address)".
+		" PRIMARY KEY                 (session_id),".
+		"         KEY `##session_ix1` (session_time),".
+		"         KEY `##session_ix2` (user_id, ip_address)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	WT_DB::exec(
@@ -798,9 +800,9 @@ try {
 		" gedcom_id       INTEGER                NOT NULL,".
 		" chunk_data      MEDIUMBLOB             NOT NULL,".
 		" imported        BOOLEAN                NOT NULL DEFAULT FALSE,".
-		" PRIMARY KEY     (gedcom_chunk_id),".
-		"         KEY ix1 (gedcom_id, imported),".
-		" FOREIGN KEY fk1 (gedcom_id) REFERENCES `##gedcom` (gedcom_id) /* ON DELETE CASCADE */".
+		" PRIMARY KEY                      (gedcom_chunk_id),".
+		"         KEY `##gedcom_chunk_ix1` (gedcom_id, imported),".
+		" FOREIGN KEY `##gedcom_chunk_fk1` (gedcom_id) REFERENCES `##gedcom` (gedcom_id) /* ON DELETE CASCADE */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	//WT_DB::exec(
@@ -827,10 +829,10 @@ try {
 		" rule                 ENUM('allow', 'deny', 'robot', 'unknown') NOT NULL DEFAULT 'unknown',".
 		" comment              VARCHAR(255)     NOT NULL,".
 		" updated              TIMESTAMP        NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,".
-		" PRIMARY KEY     (site_access_rule_id),".
-		"         KEY ix1 (rule),".
-		"         KEY ix2 (user_agent_pattern, ip_address_start, ip_address_end, rule),".
-		"         KEY ix3 (updated)".
+		" PRIMARY KEY                          (site_access_rule_id),".
+		"         KEY `##site_access_rule_ix1` (rule),".
+		"         KEY `##site_access_rule_ix2` (user_agent_pattern, ip_address_start, ip_address_end, rule),".
+		"         KEY `##site_access_rule_ix3` (updated)".
 		") ENGINE=InnoDB COLLATE=utf8_unicode_ci"
 	);
 
