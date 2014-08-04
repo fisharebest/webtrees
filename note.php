@@ -75,9 +75,14 @@ if ($controller->record && $controller->record->canShow()) {
 }
 
 $controller
-	->addInlineJavascript('function show_gedcom_record() {var recwin=window.open("gedrecord.php?pid=' . $controller->record->getXref() . '", "_blank", edit_window_specs);}')
-	->addInlineJavascript('jQuery("#note-tabs").tabs();')
-	->addInlineJavascript('jQuery("#note-tabs").css("visibility", "visible");');
+	->addInlineJavascript('
+		jQuery("#note-tabs")
+			.tabs({
+				create: function(e, ui){
+					jQuery(e.target).css("visibility", "visible");  // prevent FOUC
+				}
+			});
+	');
 
 $linked_indi = $controller->record->linkedIndividuals('NOTE');
 $linked_fam  = $controller->record->linkedFamilies('NOTE');

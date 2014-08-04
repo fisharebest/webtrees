@@ -145,8 +145,8 @@ msgstr "ל-%1$s אין קישור בחזרה אל %2$s."
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "קובץ %1$s חולץ ב-%2$s שניות."
+msgstr[1] "%1$s קבצים חולצו ב-%2$s שניות."
 
 #. I18N: %1$s is an internal ID number such as R123.  %2$s and %3$s are record types, such as INDI or SOUR
 #: admin_trees_check.php:179
@@ -164,7 +164,7 @@ msgstr "%1$s × %2$s פיקסלים"
 #: admin_site_upgrade.php:312
 #, php-format
 msgid "%1$sKB were downloaded in %2$s seconds."
-msgstr ""
+msgstr "%1$s KB  הורדו ב- %2$s שניות."
 
 #. I18N: A range of years, e.g. “1870–”, “1870–1920”, “–1920”
 #: library/WT/Individual.php:418
@@ -1792,7 +1792,7 @@ msgstr "יש להשלים את כל השדות."
 
 #: admin_site_upgrade.php:398
 msgid "All files have read and write permission."
-msgstr ""
+msgstr "לכל הקבצים יש הרשאות קריאה וכתיבה."
 
 #: admin_trees_config.php:1100 help_text.php:592
 msgid "All individual facts"
@@ -1894,7 +1894,7 @@ msgstr "תפריט עריכה של אנשים, משפחות, מקורות, וכ�
 #: admin_site_upgrade.php:339 admin_site_upgrade.php:359
 #: admin_site_upgrade.php:369 admin_site_upgrade.php:446
 msgid "An error occurred when unzipping the file."
-msgstr ""
+msgstr "אירעה שגיאה בעת שחרור דחיסת הקובץ."
 
 #. I18N: Description of the “Interactive tree” module
 #: modules_v3/tree/module.php:38
@@ -3278,11 +3278,11 @@ msgstr "גורם המוות"
 
 #: admin_site_upgrade.php:202
 msgid "Caution: old modules may not work, or they may prevent webtrees from working."
-msgstr ""
+msgstr "התראה: מודולים ישנים עשויים שלא לפעול, או שהם עשויים למנוע את עבודת ה-webtrees."
 
 #: admin_site_upgrade.php:265
 msgid "Caution: old themes may not work, or they may prevent webtrees from working."
-msgstr ""
+msgstr "התראה: עיצובים ישנים עשויים שלא לפעול, או שהם עשויים למנוע את עבודת ה-webtrees."
 
 #: library/WT/Stats.php:3861
 msgid "Cayman Islands"
@@ -3418,17 +3418,17 @@ msgstr "בדוק הרשאות גישה לתיקיה הזו."
 
 #: admin_site_upgrade.php:380
 msgid "Check file permissions…"
-msgstr ""
+msgstr "בדוק ההרשאות של קבצים..."
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:116
 msgid "Check for custom modules…"
-msgstr ""
+msgstr "בדוק קיום מודולים מותאמים אישית..."
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:218
 msgid "Check for custom themes…"
-msgstr ""
+msgstr "בדוק קיום עיצובים מותאמים אישית..."
 
 #: admin_trees_check.php:28 themes/_administration/header.php:122
 msgid "Check for errors"
@@ -3437,7 +3437,7 @@ msgstr "בדוק שגיאות"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:97
 msgid "Check for pending changes…"
-msgstr ""
+msgstr "בדוק קיום שינויים ממתינים..."
 
 #: help_text.php:460 relationship.php:137
 msgid "Check relationships by marriage"
@@ -3931,12 +3931,12 @@ msgstr "העתק"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:421
 msgid "Copy files…"
-msgstr ""
+msgstr "העתק קבצים..."
 
 #: admin_site_upgrade.php:392
 #, php-format
 msgid "Copy these files to the folder %s, replacing any that have the same name."
-msgstr ""
+msgstr "העתק קבצים אלה אל התיקייה %s, ע\"י החלפת קבצים ביעלי אותו שם."
 
 #. I18N: gedcom tag COPR
 #: library/WT/Gedcom/Tag.php:156
@@ -4203,7 +4203,7 @@ msgstr "עובדה מותאמת"
 
 #: admin_site_upgrade.php:190 admin_site_upgrade.php:193
 msgid "Custom module"
-msgstr ""
+msgstr "מודול מותאם אישית"
 
 #: find.php:469
 msgid "Custom tags"
@@ -4211,7 +4211,7 @@ msgstr "תגים מותאמים"
 
 #: admin_site_upgrade.php:250 admin_site_upgrade.php:253
 msgid "Custom theme"
-msgstr ""
+msgstr "עיצוב מותאם אישית"
 
 #: admin_site_config.php:157 help_text.php:1039
 msgid "Custom welcome text"
@@ -4911,7 +4911,7 @@ msgstr "מחק שם"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:471
 msgid "Delete temporary files…"
-msgstr ""
+msgstr "מחק קבצים זמניים..."
 
 #: admin_site_clean.php:88
 msgid "Deleted files:"
@@ -4939,7 +4939,7 @@ msgstr "דנוור, קולורדו"
 
 #: admin_site_upgrade.php:84
 msgid "Depending on your server configuration, you may be able to upgrade automatically."
-msgstr ""
+msgstr "בהתאם לתצורת השרת שלך, ייתכן שתוכל לשדרג באופן אוטומטי."
 
 #: help_text.php:1222
 msgid "Descendant generations"
@@ -5123,11 +5123,11 @@ msgstr "אב-אבות בקו ישיר ומשפחותיהם"
 
 #: admin_site_upgrade.php:201
 msgid "Disable these modules"
-msgstr ""
+msgstr "נטרל את המודולים הללו"
 
 #: admin_site_upgrade.php:264
 msgid "Disable these themes"
-msgstr ""
+msgstr "נטרל את העצובים הללו"
 
 #. I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options
 #: library/WT/I18N.php:648
@@ -5220,7 +5220,7 @@ msgstr "הורד"
 #: admin_site_upgrade.php:300
 #, php-format
 msgid "Download %s…"
-msgstr ""
+msgstr "הורד %s…"
 
 #: mediaviewer.php:104
 msgid "Download file"
@@ -5765,7 +5765,7 @@ msgstr "ייצא"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:281
 msgid "Export all family trees to GEDCOM files…"
-msgstr ""
+msgstr "ייצא את כל עצי המשפחה לקבצי GEDCOM..."
 
 #: help_text.php:1211
 msgid "Export family tree"
@@ -7652,7 +7652,7 @@ msgstr "ישראל"
 
 #: admin_site_upgrade.php:81 admin_site_upgrade.php:85
 msgid "It can take several minutes to download and install the upgrade.  Be patient."
-msgstr ""
+msgstr "הורדת והתקנת השדרוג יכולה לקחת מספר דקות.  תהיה סבלני."
 
 #: library/WT/Stats.php:3919
 msgid "Italy"
@@ -9685,11 +9685,11 @@ msgstr "אין שיטת קשר"
 
 #: admin_site_upgrade.php:207
 msgid "No custom modules are enabled."
-msgstr ""
+msgstr "שום מודול מותאם אישית אינו אופשר."
 
 #: admin_site_upgrade.php:270
 msgid "No custom themes are enabled."
-msgstr ""
+msgstr "שום עיצוב אישי אינו אופשר."
 
 #: admin_trees_check.php:227
 msgid "No errors were found."
@@ -9800,7 +9800,7 @@ msgstr "אין הסמכה חיה של המקדש"
 
 #: admin_site_upgrade.php:67
 msgid "No upgrade information is available."
-msgstr ""
+msgstr "אין מידע על שידרוג."
 
 #: library/WT/Stats.php:1061
 msgid "Nobody at all"
@@ -10728,12 +10728,12 @@ msgstr "מקום מגורים"
 #: admin_site_upgrade.php:406
 #, php-format
 msgid "Place the site offline, by creating the file %s…"
-msgstr ""
+msgstr "העבר את האתר למצב לא מקוון, על-ידי יצירת הקובץ %s..."
 
 #: admin_site_upgrade.php:457
 #, php-format
 msgid "Place the site online, by deleting the file %s…"
-msgstr ""
+msgstr "העבר את האתר למצב מקוון, על-ידי מחיקת הקובץ %s..."
 
 #: admin_trees_config.php:896 statistics.php:401
 msgid "Places"
@@ -13362,7 +13362,7 @@ msgstr "קובץ %s כבר קיים. השתמש בשם קובץ אחר."
 #: admin_site_upgrade.php:410 admin_site_upgrade.php:441
 #, php-format
 msgid "The file %s could not be created."
-msgstr ""
+msgstr "לא היתה אפשרות ליצור את הקובץ %s."
 
 #: admin_media.php:60 admin_media.php:67 admin_site_upgrade.php:462
 #: admin_site_upgrade.php:483
@@ -13373,12 +13373,12 @@ msgstr "לא ניתן למחוק את הקובץ %s."
 #: admin_site_upgrade.php:388
 #, php-format
 msgid "The file %s could not be updated."
-msgstr ""
+msgstr "לא היתה אפשרות לעדכן את הקובץ %s."
 
 #: admin_site_upgrade.php:412
 #, php-format
 msgid "The file %s was created."
-msgstr ""
+msgstr "קובץ %s נוצר."
 
 #: admin_media.php:58 admin_media.php:65 admin_site_upgrade.php:460
 #: admin_site_upgrade.php:481
@@ -13401,7 +13401,7 @@ msgstr "הקובץ ”%s” אינו קיים."
 #: admin_site_upgrade.php:477
 #, php-format
 msgid "The folder %s could not be deleted."
-msgstr ""
+msgstr "לא ניתן למחוק את התיקייה %s."
 
 #: addmedia.php:92 addmedia.php:103 addmedia.php:115 addmedia.php:254
 #: addmedia.php:265 addmedia.php:277 admin_media_upload.php:60
@@ -13421,7 +13421,7 @@ msgstr "תיקייה %s נוצרה"
 #: admin_site_upgrade.php:475
 #, php-format
 msgid "The folder %s was deleted."
-msgstr ""
+msgstr "התיקייה %s נמחקה."
 
 #: help_text.php:587
 msgid "The folder can be specified in full (e.g. /home/user_name/webtrees_data/) or relative to the installation folder (e.g. ../../webtrees_data/)."
@@ -13505,7 +13505,7 @@ msgstr "דרישות ה-CPU והזיכרון תלויות במספר האנשי�
 #: admin_site_upgrade.php:391
 #, php-format
 msgid "The new files are currently located in the folder %s."
-msgstr ""
+msgstr "הקבצים החדשים ממוקמים כיום התיקייה %s."
 
 #: help_text.php:1248
 msgid "The number of occurrences of the specified name will be shown on the map. If you leave this field empty, the most common surname will be used."
@@ -13564,7 +13564,7 @@ msgstr "הזמן בשניות שמושב <b>webtrees</b> נשאר פעיל לפ�
 
 #: admin_site_upgrade.php:489
 msgid "The upgrade is complete."
-msgstr ""
+msgstr "השדרוג הושלם."
 
 #: login.php:311
 msgid "The user has been sent an e-mail with the information necessary to confirm the access request"
@@ -13594,7 +13594,7 @@ msgstr "הגירסה של %s היא ישנה מידי"
 
 #: help_text.php:997
 msgid "The website www.geonames.org provides a large database of place names.  This can be searched when entering new places.  To use this feature, you must register for a free account at www.geonames.org and provide the username."
-msgstr ""
+msgstr "האתר www.geonames.org מספק מאגר גדול של שמות מקומות. ניתן לחפש אותו כאשר מכניסים מקומות חדשים. כדי להשתמש בתכונה זו, עליך להירשם בחינם לקבלת חשבון ב-www.geonames.org ולספק את שם המשתמש."
 
 #: setup.php:934
 msgid "The webtrees developers would be very interested to learn about this error.  If you contact them, they will help you resolve the problem."
@@ -13638,7 +13638,7 @@ msgstr "לאדם זה אין מדיה."
 
 #: admin_site_upgrade.php:107
 msgid "There are no pending changes."
-msgstr ""
+msgstr "אין שינויים ממתינים."
 
 #: modules_v3/todo/module.php:127
 msgid "There are no research tasks in this family tree."
@@ -13885,7 +13885,7 @@ msgstr "זוהי ההגדרה הראשונית לאפשרות ”הצג פרטי
 
 #: admin_site_upgrade.php:72
 msgid "This is the latest version of webtrees.  No upgrade is available."
-msgstr ""
+msgstr "זו הגירסה העדכנית ביותר של webtrees. אין שדרוג זמין."
 
 #: help_text.php:506
 msgid "This is the list of GEDCOM facts that your users can add to families.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the “Unique family facts” list."
@@ -14222,7 +14222,7 @@ msgstr "הקטע הזה מאפשר להוסיף ציטוט של מקור חדש 
 #. I18N: http://en.wikipedia.org/wiki/Https
 #: admin_site_upgrade.php:319
 msgid "This server does not support secure downloads using HTTPS."
-msgstr ""
+msgstr "שרת זה אינו תומך בהורדה מאובטחת באמצעות HTTPS."
 
 #: setup.php:181
 #, php-format
@@ -14239,7 +14239,7 @@ msgstr "זו צריכה להיות רשימה עובדות המופרדת ברו
 
 #: admin_site_upgrade.php:41
 msgid "This site is being upgraded.  Try again in a few minutes."
-msgstr ""
+msgstr "אתר זה בתהליך שדרוג.  נסה שוב בעוד כמה דקות."
 
 #: source.php:73
 msgid "This source does not exist or you do not have permission to view it."
@@ -14431,7 +14431,7 @@ msgstr "כדי לסייע לך להתחיל עם המסגרת הזו, יצרנו
 
 #: admin_site_upgrade.php:390
 msgid "To complete the upgrade, you should install the files manually."
-msgstr ""
+msgstr "כדי להשלים את השדרוג, עליך להתקין באופן ידני את הקבצים."
 
 #: modules_v3/todo/help_text.php:34
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
@@ -14454,7 +14454,7 @@ msgstr "לאדם"
 #: admin_site_upgrade.php:393
 #, php-format
 msgid "To prevent visitors from accessing the site while you are in the middle of copying files, you can temporarily create a file %s on the server.  If it contains a message, it will be displayed to visitors."
-msgstr ""
+msgstr "כדי למנוע ממבקרים כניסה לאתר בזמן שאתה באמצע העתקת קבצים, באפשרותך ליצור קובץ %s באופן זמני בשרת.  אם הוא מכיל מסר, הוא יוצג למבקרים."
 
 #. I18N: “Apache” is a software program.
 #: help_text.php:583
@@ -14867,7 +14867,7 @@ msgstr "לא אומת ע״י משתמש"
 #: admin_site_upgrade.php:330
 #, php-format
 msgid "Unzip %s to a temporary folder…"
-msgstr ""
+msgstr "פתח %s לתיקייה זמנית..."
 
 #. I18N: Name of a module
 #: modules_v3/upcoming_events/module.php:32
@@ -14898,7 +14898,7 @@ msgstr "מעדכן רשומה קשורה"
 #. I18N: Ignore the warnings, and [...]
 #: admin_site_upgrade.php:202 admin_site_upgrade.php:265
 msgid "Upgrade anyway"
-msgstr ""
+msgstr "שדרג בכל מקרה"
 
 #. I18N: %s is a version number, such as 1.2.3
 #: admin.php:111 admin_site_upgrade.php:86
@@ -14908,7 +14908,7 @@ msgstr "שדרוג ל-webtrees %s"
 
 #: admin_site_upgrade.php:55
 msgid "Upgrade wizard"
-msgstr ""
+msgstr "אשף שידרוג"
 
 #: admin_media_upload.php:233 admin_trees_manage.php:225
 #: modules_v3/googlemap/module.php:4454
@@ -14996,8 +14996,8 @@ msgid "Use relationship privacy"
 msgstr "השתמש בפרטיות בקשרי משפחה"
 
 #: help_text.php:1017
-msgid "Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the gender of the individual in question.<br><br><table><tr><td wrap valign=\"middle\">This image might be used when the gender of the individual is unknown:"
-msgstr "השתמש בתמונות צללית כאשר תמונה מודגשת עבור אותו אדם לא צוינה. התמונות הן ספציפיות למגדרו של האדם המדובר.<br><br><table><tr><td wrap valign=\"middle\">תמונה זו עשויה לשמש כאשר מינו של האדם אינו ידוע:"
+msgid "Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the gender of the individual in question.<br><br><table><tr><td style=\"vertical-align:middle\">This image might be used when the gender of the individual is unknown:"
+msgstr "השתמש בתמונות צללית כאשר תמונה מודגשת עבור אותו אדם לא צוינה. התמונות הן ספציפיות למגדרו של האדם המדובר.<br><br><table><tr><td style=\"vertical-align:middle\">תמונה זו עשויה לשמש כאשר מינו של האדם אינו ידוע:"
 
 #: admin_trees_config.php:675 help_text.php:1016
 msgid "Use silhouettes"
@@ -15645,11 +15645,11 @@ msgstr "תוכל עכשיו להתחבר עם קוד המשתמש והסיסמה
 
 #: admin_site_upgrade.php:201
 msgid "You can re-enable these modules after the upgrade."
-msgstr ""
+msgstr "תוכל להפעיל מודולים אלה מחדש לאחר השדרוג."
 
 #: admin_site_upgrade.php:264
 msgid "You can re-enable these themes after the upgrade."
-msgstr ""
+msgstr "תוכל להפעיל עיצובים אלה מחדש לאחר השדרוג."
 
 #: help_text.php:643 help_text.php:682
 msgid "You can request a higher or lower limit, although the server may ignore this request."
@@ -15779,7 +15779,7 @@ msgstr "שלחת את ההודעה הבאה למשתמש webtrees:"
 
 #: admin_site_upgrade.php:102
 msgid "You should accept or reject all pending changes before upgrading."
-msgstr ""
+msgstr "אתה צריך לקבל או לדחות את כל השינויים הממתינים לפני השדרוג."
 
 #: help_text.php:1151
 msgid "You should avoid using the vertical line character “|” in your notes.  It is used internally by webtrees and may cause your note to display incorrectly."
@@ -15787,11 +15787,11 @@ msgstr "עליך להימנע משימוש בתו קו אנכי &ldquo;|&rdquo; 
 
 #: admin_site_upgrade.php:200
 msgid "You should consult the module’s author to confirm compatibility with this version of webtrees."
-msgstr ""
+msgstr "עליך להתיעץ עם מחבר המודול כדי לוודא את תאימותו עם גירסה זו של webtrees."
 
 #: admin_site_upgrade.php:263
 msgid "You should consult the theme’s author to confirm compatibility with this version of webtrees."
-msgstr ""
+msgstr "עליך להתייעץ עם מחבר ערכת הנושא כדי לאשר את תאימותה עם גירסה זו של webtrees."
 
 #. I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’
 #: login.php:276 message.php:69

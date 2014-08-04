@@ -631,7 +631,7 @@ function import_record($gedrec, $ged_id, $update) {
 		list(,$xref, $type) = $match;
 		// check for a _UID, if the record doesn't have one, add one
 		if ($GENERATE_UIDS && !strpos($gedrec, "\n1 _UID ")) {
-			$gedrec .= "\n1 _UID " . uuid();
+			$gedrec .= "\n1 _UID " . WT_Gedcom_Tag::createUid();
 		}
 	} elseif (preg_match('/0 (HEAD|TRLR)/', $gedrec, $match)) {
 		$type = $match[1];
@@ -1111,55 +1111,4 @@ function update_record($gedrec, $ged_id, $delete) {
 	if (!$delete) {
 		import_record($gedrec, $ged_id, true);
 	}
-}
-
-// Create a pseudo-random UUID
-function uuid() {
-	// Official Format with dashes ('%04x%04x-%04x-%04x-%04x-%04x%04x%04x')
-	// Most users want this format (for compatibility with PAF)
-	$fmt='%04X%04X%04X%04X%04X%04X%04X%04X';
-
-	$uid = sprintf(
-		$fmt,
-    // 32 bits for "time_low"
-    mt_rand(0, 0xffff), mt_rand(0, 0xffff),
-
-    // 16 bits for "time_mid"
-    mt_rand(0, 0xffff),
-
-    // 16 bits for "time_hi_and_version",
-    // four most significant bits holds version number 4
-    mt_rand(0, 0x0fff) | 0x4000,
-
-    // 16 bits, 8 bits for "clk_seq_hi_res",
-    // 8 bits for "clk_seq_low",
-    // two most significant bits holds zero and one for variant RFC4122
-    mt_rand(0, 0x3fff) | 0x8000,
-
-    // 48 bits for "node"
-    mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0xffff)
-    );
-	return sprintf('%s%s', $uid, getCheckSums($uid));
-}
-
-/**
- * Produces checksums compliant with a Family Search guideline from 2007
- *
- * These checksums are compatible with PAF, Legacy, RootsMagic and other applications
- * following these guidelines. This prevents dropping and recreation of UID's
- *
- * @param string $uid the 32 hexadecimal character long uid
- *
- * @return string containing the checksum string for the uid
- */
-function getCheckSums($uid) {
-	$checkA=0; // a sum of the bytes
-	$checkB=0; // a sum of the incremental values of checkA
-
-	// Compute both checksums
-	for ($i = 0; $i < 32; $i+=2) {
-		$checkA += hexdec(substr($uid, $i, 2));
-		$checkB += $checkA & 0xFF;
-	}
-	return strtoupper(sprintf('%s%s', substr(dechex($checkA), -2), substr(dechex($checkB), -2)));
 }

@@ -27,6 +27,7 @@ if (!defined('WT_WEBTREES')) {
 }
 
 require_once WT_ROOT.'includes/functions/functions_import.php';
+use Rhumsaa\Uuid\Uuid;
 
 // Create an edit control for inline editing using jeditable
 function edit_field_inline($name, $value, $controller=null) {
@@ -123,7 +124,7 @@ function select_edit_control_inline($name, $values, $empty, $selected, $controll
 function radio_buttons($name, $values, $selected, $extra='') {
 	$html='';
 	foreach ($values as $key=>$value) {
-		$uniqueID = $name.(int)(microtime() * 1000000);
+		$uniqueID = Uuid::uuid4();
 		$html.='<input type="radio" name="'.$name.'" id="'.$uniqueID.'" value="'.WT_Filter::escapeHtml($key).'"';
 		if ((string)$key===(string)$selected) { // Beware PHP array keys are cast to integers!  Cast them back
 			$html.=' checked';
@@ -364,21 +365,21 @@ function add_simple_tag(
 
 	// element name : used to POST data
 	if ($level==0) {
-		if ($upperlevel) $element_name=$upperlevel."_".$fact; // ex: BIRT_DATE | DEAT_DATE | ...
+		if ($upperlevel) $element_name=$upperlevel . '_' . $fact;
 		else $element_name=$fact; // ex: OCCU
 	} else $element_name="text[]";
 	if ($level==1) $main_fact=$fact;
 
 	// element id : used by javascript functions
 	if ($level==0)
-		$element_id = $fact; // ex: NPFX | GIVN ...
+		$element_id = $fact;
 	else
-		$element_id = $fact . (int)(microtime()*1000000); // ex: SOUR56402
+		$element_id = $fact . Uuid::uuid4();
 	if ($upperlevel)
-		$element_id = $upperlevel . "_" . $fact . (int)(microtime()*1000000); // ex: BIRT_DATE56402 | DEAT_DATE56402 ...
+		$element_id = $upperlevel . '_' . $fact . Uuid::uuid4();
 
 	// field value
-	$islink = (substr($value, 0, 1)=="@" and substr($value, 0, 2)!="@#");
+	$islink = (substr($value, 0, 1) === '@' && substr($value, 0, 2) != '@#');
 	if ($islink) {
 		$value=trim(trim(substr($tag, strlen($fact)+3)), " @\r");
 	} else {
@@ -1288,32 +1289,32 @@ function create_add_form($fact) {
 	$tags = array();
 
 	// handle  MARRiage TYPE
-	if (substr($fact, 0, 5)=="MARR_") {
-		$tags[0] = "MARR";
-		add_simple_tag("1 MARR");
+	if (substr($fact, 0, 5) == 'MARR_') {
+		$tags[0] = 'MARR';
+		add_simple_tag('1 MARR');
 		insert_missing_subtags($fact);
 	} else {
 		$tags[0] = $fact;
-		if ($fact=='_UID') {
-			$fact.=' '.uuid();
+		if ($fact == '_UID') {
+			$fact .= ' ' . WT_Gedcom_Tag::createUid();
 		}
 		// These new level 1 tags need to be turned into links
 		if (in_array($fact, array('ASSO'))) {
-			$fact.=' @';
+			$fact .= ' @';
 		}
 		if (in_array($fact, $emptyfacts)) {
-			add_simple_tag('1 '.$fact.' Y');
+			add_simple_tag('1 ' . $fact . ' Y');
 		} else {
-			add_simple_tag('1 '.$fact);
+			add_simple_tag('1 ' . $fact);
 		}
 		insert_missing_subtags($tags[0]);
 		//-- handle the special SOURce case for level 1 sources [ 1759246 ]
-		if ($fact=="SOUR") {
-			add_simple_tag("2 PAGE");
-			add_simple_tag("3 TEXT");
+		if ($fact == 'SOUR') {
+			add_simple_tag('2 PAGE');
+			add_simple_tag('3 TEXT');
 			if ($FULL_SOURCES) {
-				add_simple_tag("3 DATE", '', WT_Gedcom_Tag::getLabel('DATA:DATE'));
-				add_simple_tag("2 QUAY");
+				add_simple_tag('3 DATE', '', WT_Gedcom_Tag::getLabel('DATA:DATE'));
+				add_simple_tag('2 QUAY');
 			}
 		}
 	}

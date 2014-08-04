@@ -14996,8 +14996,8 @@ msgid "Use relationship privacy"
 msgstr "Activa la privadesa de parentiu"
 
 #: help_text.php:1017
-msgid "Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the gender of the individual in question.<br><br><table><tr><td wrap valign=\"middle\">This image might be used when the gender of the individual is unknown:"
-msgstr "Utilitza una silueta com a imatge quan no s’ha especificat cap imatge com a principal per aquesta persona. Les imatges utilitzades són específiques per al gènere de la persona en qüestió.<br><br><table><tr><td wrap valign=\"middle\"> Quan es desconeix el sexe de la persona, s’utilitzarà aquesta imatge:"
+msgid "Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the gender of the individual in question.<br><br><table><tr><td style=\"vertical-align:middle\">This image might be used when the gender of the individual is unknown:"
+msgstr "Utilitza una silueta com a imatge quan no s’ha especificat cap imatge com a principal per aquesta persona. Les imatges utilitzades són específiques per al gènere de la persona en qüestió.<br><br><table><tr><td style=\"vertical-align:middle\"> Quan es desconeix el sexe de la persona, s’utilitzarà aquesta imatge:"
 
 #: admin_trees_config.php:675 help_text.php:1016
 msgid "Use silhouettes"

@@ -22,6 +22,7 @@
 		"ircmaxell/password-compat": "*",
 		"michelf/php-markdown": "*",
 		"patchwork/utf8": "*",
-		"tecnick.com/tcpdf": "*"
+		"tecnick.com/tcpdf": "*",
+		"rhumsaa/uuid": "*"
 	}
 }

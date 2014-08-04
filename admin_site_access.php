@@ -218,9 +218,9 @@ $controller
 			stateDuration: 180,
 			columns: [
 				/* 0 ip_address_start        */ { dataSort: 1, class: "ip_address" },
-				/* 1 ip_address_start (sort) */ { type: "numeric", visible: false },
+				/* 1 ip_address_start (sort) */ { type: "num", visible: false },
 				/* 2 ip_address_end          */ { dataSort: 3, class: "ip_address" },
-				/* 3 ip_address_end (sort)   */ { type: "numeric", visible: false },
+				/* 3 ip_address_end (sort)   */ { type: "num", visible: false },
 				/* 4 user_agent_pattern      */ { class: "ua_string" },
 				/* 5 comment                 */ { },
 				/* 6 rule                    */ { },
@@ -247,7 +247,7 @@ $controller
 			pagingType: "full_numbers",
 			columns: [
 				/* 0 ip_address         */ { dataSort: 1, class: "ip_address" },
-				/* 0 ip_address (sort)  */ { type: "numeric", visible: false },
+				/* 0 ip_address (sort)  */ { type: "num", visible: false },
 				/* 1 user_agent_pattern */ { class: "ua_string" },
 				/* 2 updated            */ { class: "ua_string" },
 				/* 3 <allowed>          */ { sortable: false, class: "center" },
