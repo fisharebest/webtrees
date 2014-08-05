@@ -1547,12 +1547,6 @@ ul {
 	margin: 0;
 }
 
-.gedcom_table {
-	border: 1px solid #999;
-	margin: 0;
-	width: 99%;
-}
-
 /* person boxes for charts */
 .person_box {
 	background: #ddf;
@@ -1795,9 +1789,6 @@ a:hover .nameZoom {
 	padding-left: 3px;
 	padding-right: 3px;
 	vertical-align: middle;
-}
-
-.helpheader {
 }
 
 .helpcontent {
@@ -2967,13 +2958,11 @@ span.link_text {
 
 #indi_mainimage {
 	float: left;
-	min-width: 120px;
+	padding: 0 10px 0 0;
 }
 
-#indi_mainimage img {
-	display: block;
-	margin: auto;
-	padding: 0 5px 0 0;
+#header_accordion1 {
+	overflow: hidden;
 }
 
 #header_accordion1 .indi_name_details {
@@ -3089,10 +3078,7 @@ dd .deletelink {
 
 [dir=rtl] #indi_mainimage {
 	float: right;
-}
-
-[dir=rtl] #indi_mainimage img{
-	padding: 0 0 0 5px;
+	padding: 0 0 0 10px;
 }
 
 [dir=rtl] #indi_note .fact_NOTE {

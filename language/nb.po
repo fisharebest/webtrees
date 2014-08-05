@@ -4994,7 +4994,7 @@ msgstr "Ønsket passord"
 
 #: login.php:417
 msgid "Desired user name"
-msgstr "Ønsket brukeravn"
+msgstr "Ønsket brukernavn"
 
 #. I18N: gedcom tag DEST
 #: library/WT/Gedcom/Tag.php:171
