@@ -47,7 +47,6 @@ fieldset,
 .block,
 .descriptionbox,
 .facts_label,
-.facts_label02,
 .facts_label03,
 .facts_value,
 .lifespan_outer,
@@ -451,7 +450,7 @@ textarea:required:invalid {
 }
 
 div.fact_SHARED_NOTE {
-	clear:both
+	clear: both;
 }
 
 /*-- pedigree chart specific stylesheets --*/
@@ -637,7 +636,6 @@ div.fact_SHARED_NOTE {
 }
 
 .facts_label,
-.facts_label02,
 .facts_label03 {
 	background-color: #ccc;
 	width: 20%;
@@ -1466,24 +1464,16 @@ dt {
 /* ============= Theme select block ============ */
 .theme_form ul {
 	margin: -10px auto;
-	-webkit-padding-start: 0;
-	width: 90%;
-	overflow: hidden;
 }
 
 .theme_form li {
-	list-style: none;
 	visibility: hidden;
 }
 
 .theme_form li ul li {
-	float: left;
+	display: inline-block;
 	padding: 10px;
 	visibility: visible;
-}
-
-[dir=rtl] .theme_form li ul li {
-	float: right;
 }
 
 /* ======= Favourites block ========== */

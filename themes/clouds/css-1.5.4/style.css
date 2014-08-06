@@ -1184,7 +1184,6 @@ td.descriptionbox div div div a {
 .block,
 .descriptionbox,
 .facts_label,
-.facts_label02,
 .facts_label03,
 .facts_value,
 .lifespan_outer,
@@ -1731,7 +1730,7 @@ table.width66 {
 }
 
 div.fact_SHARED_NOTE {
-	clear:both
+	clear: both;
 }
 
 .tabs_table {
@@ -1745,7 +1744,6 @@ div.fact_SHARED_NOTE {
 	text-align: center;
 }
 
-.facts_label02,
 .facts_label03 {
 	font-weight: bold;
 	padding: 4px;
@@ -1757,12 +1755,6 @@ div.fact_SHARED_NOTE {
 	border: 1pt solid #999;
 	padding: 4px;
 	color: #039;
-}
-
-.facts_value02 {
-	background: #fff;
-	border: 1pt solid #ddd;
-	padding: 5px;
 }
 
 .quickfacts a {
@@ -2559,24 +2551,16 @@ dt {
 /* ============= Theme select block ============ */
 .theme_form ul {
 	margin: -10px auto;
-	-webkit-padding-start: 0;
-	width: 90%;
-	overflow: hidden;
 }
 
 .theme_form li {
-	list-style: none;
 	visibility: hidden;
 }
 
 .theme_form li ul li {
-	float: left;
+	display: inline-block;
 	padding: 10px;
 	visibility: visible;
-}
-
-[dir=rtl] .theme_form li ul li {
-	float: right;
 }
 
 /* ======= Favourites block ========== */

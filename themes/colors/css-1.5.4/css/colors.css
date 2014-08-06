@@ -1673,7 +1673,7 @@ ul {
 }
 
 div.fact_SHARED_NOTE {
-	clear:both
+	clear: both;
 }
 
 .facts_label .submenu a {
@@ -1689,7 +1689,6 @@ div.fact_SHARED_NOTE {
 	width: 20%;
 }
 
-.facts_label02,
 .facts_label03 {
 	border-radius: 3px;
 	font-weight: 700;
@@ -1701,12 +1700,6 @@ div.fact_SHARED_NOTE {
 	border: 1px solid #999;
 	border-radius: 3px;
 	padding: 4px;
-}
-
-.facts_value02 {
-	background: #fff;
-	border: 1pt solid #ddd;
-	padding: 5px;
 }
 
 .quickfacts a {
@@ -2404,24 +2397,16 @@ a.showit > span {
 /* ============= Theme select block ============ */
 .theme_form ul {
 	margin: -10px auto;
-	-webkit-padding-start: 0;
-	width: 90%;
-	overflow: hidden;
 }
 
 .theme_form li {
-	list-style: none;
 	visibility: hidden;
 }
 
 .theme_form li ul li {
-	float: left;
+	display: inline-block;
 	padding: 10px;
 	visibility: visible;
-}
-
-[dir=rtl] .theme_form li ul li {
-	float: right;
 }
 
 /* ======= Favourites block ========== */
