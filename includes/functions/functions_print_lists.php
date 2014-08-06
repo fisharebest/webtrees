@@ -1330,7 +1330,7 @@ function format_repo_table($repos) {
 		}
 		//-- Delete
 		if (WT_USER_GEDCOM_ADMIN) {
-			$html .= '<td><div title="'. WT_I18N::translate('Delete'). '" class="deleteicon" onclick="return delete_repository(\'' . WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($repo->getFullName())) . "', '" . $repo->getXref() . '\');"><span class="link_text">'. WT_I18N::translate('Delete'). '</span></div></td>';
+			$html .= '<td><div title="'. WT_I18N::translate('Delete'). '" class="deleteicon" onclick="return delete_repository(\'' . WT_I18N::translate('Are you sure you want to delete “%s”?', WT_Filter::escapeJs(WT_Filter::unescapeHtml($repo->getFullName()))) . "', '" . $repo->getXref() . '\');"><span class="link_text">'. WT_I18N::translate('Delete'). '</span></div></td>';
 		} else {
 			$html .= '<td>&nbsp;</td>';
 		}
