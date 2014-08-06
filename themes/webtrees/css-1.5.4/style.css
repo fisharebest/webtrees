@@ -3321,6 +3321,16 @@ dd .deletelink {
 	clear: both;
 }
 
+.facts_table .field em {
+	margin-top: 0;
+	font-weight: 600;
+	padding-left: 5px;
+}
+
+.facts_table .field img {
+	vertical-align: middle;
+}
+
 .media-display-image {
 	float: left;
 }
@@ -3337,6 +3347,10 @@ dd .deletelink {
 
 [dir=rtl] .media-display-title {
 	float: right;
+}
+
+[dir=rtl] .facts_table .field em {
+	padding-right: 5px;
 }
 
 /* Album tab */
