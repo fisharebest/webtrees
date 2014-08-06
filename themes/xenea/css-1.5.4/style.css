@@ -34,11 +34,6 @@ body {
 	margin: 1px;
 }
 
-[dir=rtl] body {
-	direction: rtl;
-	text-align: right;
-}
-
 a {
 	color: #00f;
 	text-decoration: none;
