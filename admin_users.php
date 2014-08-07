@@ -143,7 +143,7 @@ case 'loadrows':
 		}
 		$datum[6]=edit_field_language_inline('user_setting-'.$user_id.'-language', $datum[6]);
 		// $aData[7] is the sortable registration timestamp
-		$datum[8]=format_timestamp($datum[8]);
+		$datum[8]=$datum[8] ? format_timestamp($datum[8]) : '';
 		if (date("U") - $datum[7] > 604800 && !$datum[11]) {
 			$datum[8]='<span class="red">'.$datum[8].'</span>';
 		}
