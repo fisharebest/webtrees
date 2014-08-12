@@ -703,7 +703,7 @@ function format_fam_table($datalist) {
 									<button
 										type="button"
 										data-filter-column="20"
-										data-filter-value="DIV"
+										data-filter-value="D"
 										class="ui-state-default"
 										title="' . WT_I18N::translate('Show divorced couples.').'"
 									>
@@ -949,7 +949,7 @@ function format_fam_table($datalist) {
 		if ($family->getFacts(WT_EVENTS_DIV)) {
 			$html .= 'D';
 		}
-		if (count($husb->getSpouseFamilies())>1 || count($wife->getSpouseFamilies())>1) {
+		if (count($husb->getSpouseFamilies()) > 1 || count($wife->getSpouseFamilies()) > 1) {
 			$html .= 'M';
 		}
 		$html .= '</td>';
