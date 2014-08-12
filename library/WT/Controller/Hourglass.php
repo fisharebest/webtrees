@@ -459,9 +459,8 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 
 <script>
 		// code to fix chart lines in block
-		var vlines;
-		vlines = document.getElementsByName("tvertline");
-		for (i=0; i < vlines.length; i++) {
+		var vlines = document.getElementsByName("tvertline");
+		for (var i=0; i < vlines.length; i++) {
 			var pid = vlines[i].id.substr(vlines[i].id.indexOf("_")+1);
 			var hline = document.getElementById("table_"+pid);
 			var hline2 = document.getElementById("table2_"+pid);
@@ -470,7 +469,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 		}
 
 		vlines = document.getElementsByName("bvertline");
-		for (i=0; i < vlines.length; i++) {
+		for (var i=0; i < vlines.length; i++) {
 			var pid = vlines[i].id.substr(vlines[i].id.indexOf("_")+1);
 			var hline = document.getElementById("table_"+pid);
 			var hline2 = document.getElementById("table2_"+pid);
@@ -478,7 +477,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 		}
 
 		vlines = document.getElementsByName("pvline");
-		for (i=0; i < vlines.length; i++) {
+		for (var i=0; i < vlines.length; i++) {
 			vlines[i].style.height=(vlines[i].parentNode.offsetHeight/2)+'px';
 		}
 
@@ -515,18 +514,17 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 	}
 
 	function sizeLines() {
-		var vlines;
-		vlines = document.getElementsByName("tvertline");
-		for (i=0; i < vlines.length; i++) {
+		var vlines = document.getElementsByName("tvertline");
+		for (var i=0; i < vlines.length; i++) {
 			var pid = vlines[i].id.substr(vlines[i].id.indexOf("_")+1);
 			var hline = document.getElementById("table_"+pid);
 			var hline2 = document.getElementById("table2_"+pid);
 			var newHeight = Math.abs(hline.offsetHeight - (hline2.offsetTop + <?php echo $bhalfheight+5; ?>));
-			vlines[i].style.height=newHeight+'px';
+			vlines[i].style.height = newHeight + 'px';
 		}
 
 		vlines = document.getElementsByName("bvertline");
-		for (i=0; i < vlines.length; i++) {
+		for (var i=0; i < vlines.length; i++) {
 			var pid = vlines[i].id.substr(vlines[i].id.indexOf("_")+1);
 			var hline = document.getElementById("table_"+pid);
 			var hline2 = document.getElementById("table2_"+pid);
@@ -534,10 +532,8 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 		}
 
 		vlines = document.getElementsByName("pvline");
-		//alert(vlines[0].parentNode.parentNode.parentNode);
-		for (i=0; i < vlines.length; i++) {
-			//vlines[i].parentNode.style.height="50%";
-			vlines[i].style.height=(vlines[i].parentNode.offsetHeight/2)+'px';
+		for (var i=0; i < vlines.length; i++) {
+			vlines[i].style.height = (vlines[i].parentNode.offsetHeight/2) + 'px';
 		}
 	}
 </script>
