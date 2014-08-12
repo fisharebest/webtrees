@@ -179,7 +179,7 @@ function format_indi_table($datalist, $option='') {
 									<button
 										class="ui-state-default"
 										data-filter-column="22"
-										data-filter-value="^Y"
+										data-filter-value="Y"
 										title="' . WT_I18N::translate('Show individuals who are dead or couples where both partners are deceased.').'"
 										type="button"
 									>
