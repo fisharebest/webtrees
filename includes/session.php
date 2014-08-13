@@ -64,7 +64,6 @@ define('WT_THEMES_DIR',  'themes/' );
 // Enable debugging output?
 define('WT_DEBUG',      false);
 define('WT_DEBUG_SQL',  false);
-define('WT_DEBUG_LANG', false);
 
 // Error reporting
 define('WT_ERROR_LEVEL', 2); // 0=none, 1=minimal, 2=full
