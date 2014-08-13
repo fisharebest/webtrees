@@ -55,10 +55,10 @@ if ($action!='choose') {
 		$rec2 = WT_GedcomRecord::getInstance($gid2, WT_Tree::getIdFromName($ged2));
 
 		if (!$rec1) {
-			echo '<span class="error">', WT_I18N::translate('Unable to find record with ID'), ':</span> ', $rec1->getXref(), ', ', $ged;
+			echo '<span class="error">', WT_I18N::translate('Unable to find record with ID'), ':</span> ', $gid1, ', ', $ged;
 			$action='choose';
 		} elseif (!$rec2) {
-			echo '<span class="error">', WT_I18N::translate('Unable to find record with ID'), ':</span> ', $rec2->getXref(), ', ', $ged2;
+			echo '<span class="error">', WT_I18N::translate('Unable to find record with ID'), ':</span> ', $gid2, ', ', $ged2;
 			$action='choose';
 		} elseif ($rec1::RECORD_TYPE != $rec2::RECORD_TYPE) {
 				echo '<span class="error">', WT_I18N::translate('Records are not the same type.  Cannot merge records that are not the same type.'), '</span>';
