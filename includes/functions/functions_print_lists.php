@@ -83,20 +83,19 @@ function format_indi_table($datalist, $option='') {
 				pagingType: "full_numbers"
 			});
 
+			jQuery("#' . $table_id . '")
 			/* Hide/show parents */
-			jQuery(".btn-toggle-parents").on("click", function() {
+			.on("click", ".btn-toggle-parents", function() {
 				jQuery(this).toggleClass("ui-state-active");
 				jQuery(".parents", jQuery(this).closest("table").DataTable().rows().nodes()).slideToggle();
-			});
-
+			})
 			/* Hide/show statistics */
-			jQuery("#' . $table_id . '-statistics").on("click", function() {
+			.on("click", ".btn-toggle-statistics", function() {
 				jQuery(this).toggleClass("ui-state-active");
 				jQuery("#indi_list_table-charts_' . $table_id . '").slideToggle();
-			});
-
+			})
 			/* Filter buttons in table header */
-			jQuery("#' . $table_id . '_wrapper").on("click", "button[data-filter-column]", function() {
+			.on("click", "button[data-filter-column]", function() {
 				var btn = jQuery(this);
 				// De-activate the other buttons in this button group
 				btn.siblings().removeClass("ui-state-active");
@@ -179,7 +178,7 @@ function format_indi_table($datalist, $option='') {
 									<button
 										class="ui-state-default"
 										data-filter-column="22"
-										data-filter-value="^Y"
+										data-filter-value="Y"
 										title="' . WT_I18N::translate('Show individuals who are dead or couples where both partners are deceased.').'"
 										type="button"
 									>
@@ -282,7 +281,7 @@ function format_indi_table($datalist, $option='') {
 									<button type="button" class="ui-state-default btn-toggle-parents">
 										' . WT_I18N::translate('Show parents') . '
 									</button>
-									<button type="button" class="ui-state-default" id="' . $table_id . '-statistics">
+									<button type="button" class="ui-state-default btn-toggle-statistics">
 										' . WT_I18N::translate('Show statistics charts') . '
 									</button>
 								</div>
@@ -562,20 +561,19 @@ function format_fam_table($datalist) {
 				pagingType: "full_numbers"
 		   });
 
+			jQuery("#' . $table_id . '")
 			/* Hide/show parents */
-			jQuery(".btn-toggle-parents").on("click", function() {
+			.on("click", ".btn-toggle-parents", function() {
 				jQuery(this).toggleClass("ui-state-active");
 				jQuery(".parents", jQuery(this).closest("table").DataTable().rows().nodes()).slideToggle();
-			});
-
+			})
 			/* Hide/show statistics */
-			jQuery("#' . $table_id . '-statistics").on("click", function() {
+			.on("click",  ".btn-toggle-statistics", function() {
 				jQuery(this).toggleClass("ui-state-active");
 				jQuery("#fam_list_table-charts_' . $table_id . '").slideToggle();
-			});
-
+			})
 			/* Filter buttons in table header */
-			jQuery("#' . $table_id . '_wrapper").on("click", "button[data-filter-column]", function() {
+			.on("click", "button[data-filter-column]", function() {
 				var btn = $(this);
 				// De-activate the other buttons in this button group
 				btn.siblings().removeClass("ui-state-active");
@@ -703,7 +701,7 @@ function format_fam_table($datalist) {
 									<button
 										type="button"
 										data-filter-column="20"
-										data-filter-value="DIV"
+										data-filter-value="D"
 										class="ui-state-default"
 										title="' . WT_I18N::translate('Show divorced couples.').'"
 									>
@@ -756,7 +754,7 @@ function format_fam_table($datalist) {
 								<button type="button" class="ui-state-default btn-toggle-parents">
 									' . WT_I18N::translate('Show parents') . '
 								</button>
-								<button type="button" class="ui-state-default" id="' . $table_id . '-statistics">
+								<button type="button" class="ui-state-default btn-toggle-statistics">
 									' . WT_I18N::translate('Show statistics charts') . '
 								</button>
 							</div>
@@ -949,7 +947,7 @@ function format_fam_table($datalist) {
 		if ($family->getFacts(WT_EVENTS_DIV)) {
 			$html .= 'D';
 		}
-		if (count($husb->getSpouseFamilies())>1 || count($wife->getSpouseFamilies())>1) {
+		if (count($husb->getSpouseFamilies()) > 1 || count($wife->getSpouseFamilies()) > 1) {
 			$html .= 'M';
 		}
 		$html .= '</td>';
@@ -1122,7 +1120,7 @@ function format_sour_table($datalist) {
 		}
 		//-- Delete
 		if (WT_USER_GEDCOM_ADMIN) {
-			$html .= '<td><div title="'. WT_I18N::translate('Delete'). '" class="deleteicon" onclick="return delete_source(\'' . WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($source->getFullName())) . "', '" . $source->getXref() . '\');"><span class="link_text">'. WT_I18N::translate('Delete'). '</span></div></td>';
+			$html .= '<td><div title="'. WT_I18N::translate('Delete'). '" class="deleteicon" onclick="return delete_source(\'' . WT_I18N::translate('Are you sure you want to delete “%s”?', WT_Filter::escapeJs(WT_Filter::unescapeHtml($source->getFullName()))) . "', '" . $source->getXref() . '\');"><span class="link_text">'. WT_I18N::translate('Delete'). '</span></div></td>';
 		} else {
 			$html .= '<td>&nbsp;</td>';
 		}
@@ -1230,7 +1228,7 @@ function format_note_table($datalist) {
 		}
 		//-- Delete
 		if (WT_USER_GEDCOM_ADMIN) {
-			$html .= '<td><div title="'. WT_I18N::translate('Delete'). '" class="deleteicon" onclick="return delete_note(\'' . WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($note->getFullName())) . "', '" . $note->getXref() . '\');"><span class="link_text">'. WT_I18N::translate('Delete'). '</span></div></td>';
+			$html .= '<td><div title="'. WT_I18N::translate('Delete'). '" class="deleteicon" onclick="return delete_note(\'' . WT_I18N::translate('Are you sure you want to delete “%s”?', WT_Filter::escapeJs(WT_Filter::unescapeHtml($note->getFullName()))) . "', '" . $note->getXref() . '\');"><span class="link_text">'. WT_I18N::translate('Delete'). '</span></div></td>';
 		} else {
 			$html .= '<td></td>';
 		}
@@ -1330,7 +1328,7 @@ function format_repo_table($repos) {
 		}
 		//-- Delete
 		if (WT_USER_GEDCOM_ADMIN) {
-			$html .= '<td><div title="'. WT_I18N::translate('Delete'). '" class="deleteicon" onclick="return delete_repository(\'' . WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($repo->getFullName())) . "', '" . $repo->getXref() . '\');"><span class="link_text">'. WT_I18N::translate('Delete'). '</span></div></td>';
+			$html .= '<td><div title="'. WT_I18N::translate('Delete'). '" class="deleteicon" onclick="return delete_repository(\'' . WT_I18N::translate('Are you sure you want to delete “%s”?', WT_Filter::escapeJs(WT_Filter::unescapeHtml($repo->getFullName()))) . "', '" . $repo->getXref() . '\');"><span class="link_text">'. WT_I18N::translate('Delete'). '</span></div></td>';
 		} else {
 			$html .= '<td>&nbsp;</td>';
 		}

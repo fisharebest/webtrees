@@ -18,6 +18,9 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+use WT\User;
+
 define('WT_SCRIPT_NAME', 'save.php');
 require './includes/session.php';
 
@@ -61,7 +64,7 @@ case 'site_setting':
 	//////////////////////////////////////////////////////////////////////////////
 
 	// Authorisation
-	if (!\WT\Auth::isAdmin()) {
+	if (!Auth::isAdmin()) {
 		fail();
 	}
 
@@ -144,7 +147,7 @@ case 'site_access_rule':
 	// ID format:  site_access_rule-{column_name}-{user_id}
 	//////////////////////////////////////////////////////////////////////////////
 
-	if (!\WT\Auth::isAdmin()) {
+	if (!Auth::isAdmin()) {
 		fail();
 	}
 	switch ($id1) {
@@ -172,10 +175,10 @@ case 'user':
 	// ID format:  user-{column_name}-{user_id}
 	//////////////////////////////////////////////////////////////////////////////
 
-	$user = \WT\User::find($id2);
+	$user = User::find($id2);
 
 	// Authorisation
-	if (!\WT\Auth::isAdmin() && WT::currentUser() != $user) {
+	if (!Auth::isAdmin() && WT::currentUser() != $user) {
 		fail();
 	}
 
@@ -216,7 +219,7 @@ case 'user_gedcom_setting':
 	case 'canedit':
 	case 'RELATIONSHIP_PATH_LENGTH':
 		$tree = WT_Tree::get($id2);
-		if (\WT\Auth::isManager($tree)) {
+		if (Auth::isManager($tree)) {
 			$tree->userPreference($id1, $id3, $value);
 			ok();
 			break;
@@ -231,9 +234,9 @@ case 'user_setting':
 	// ID format:  user_setting-{user_id}-{setting_name}
 	//////////////////////////////////////////////////////////////////////////////
 
-	$user = \WT\User::find($id1);
+	$user = User::find($id1);
 	// Authorisation
-	if (!(\WT\Auth::isAdmin() || $user && $user->getSetting('editaccount') && in_array($id2, array('language','visible_online','contact_method')))) {
+	if (!(Auth::isAdmin() || $user && $user->getSetting('editaccount') && in_array($id2, array('language','visible_online','contact_method')))) {
 		fail();
 	}
 
@@ -241,7 +244,7 @@ case 'user_setting':
 	switch ($id2) {
 	case 'canadmin':
 		// Cannot change our own admin status - either to add it or remove it
-		if (\WT\Auth::user() == $user) {
+		if (Auth::user() == $user) {
 			fail();
 		}
 		break;
@@ -285,7 +288,7 @@ case 'module':
 	//////////////////////////////////////////////////////////////////////////////
 
 	// Authorisation
-	if (!\WT\Auth::isAdmin()) {
+	if (!Auth::isAdmin()) {
 		fail();
 	}
 

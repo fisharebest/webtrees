@@ -21,12 +21,16 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+use WT\Log;
+use WT\User;
+
 define('WT_SCRIPT_NAME', 'admin_users.php');
 require './includes/session.php';
 
 $controller=new WT_Controller_Page();
 $controller
-	->restrictAccess(\WT\Auth::isAdmin())
+	->restrictAccess(Auth::isAdmin())
 	->setPageTitle(WT_I18N::translate('User administration'));
 
 require_once WT_ROOT.'includes/functions/functions_edit.php';
@@ -85,7 +89,7 @@ case 'loadrows':
 			" email     LIKE CONCAT('%', ?, '%'))";
 		$ARGS=array($search, $search, $search);
 	}
-	\WT\Auth::user()->setSetting('admin_users_page_size', $length);
+	Auth::user()->setSetting('admin_users_page_size', $length);
 	if ($length > 0) {
 		$LIMIT = " LIMIT " . $start . ',' . $length;
 	} else {
@@ -143,7 +147,7 @@ case 'loadrows':
 		}
 		$datum[6]=edit_field_language_inline('user_setting-'.$user_id.'-language', $datum[6]);
 		// $aData[7] is the sortable registration timestamp
-		$datum[8]=format_timestamp($datum[8]);
+		$datum[8]=$datum[8] ? format_timestamp($datum[8]) : '';
 		if (date("U") - $datum[7] > 604800 && !$datum[11]) {
 			$datum[8]='<span class="red">'.$datum[8].'</span>';
 		}
@@ -166,7 +170,7 @@ case 'loadrows':
 
 	// Total filtered/unfiltered rows
 	$recordsFiltered = WT_DB::prepare("SELECT FOUND_ROWS()")->fetchOne();
-	$recordsTotal = \WT\User::count();
+	$recordsTotal = User::count();
 
 	Zend_Session::writeClose();
 	header('Content-type: application/json');
@@ -180,7 +184,7 @@ case 'loadrows':
 case 'load1row':
 	// Generate an AJAX response for datatables to load expanded row
 	$user_id = WT_Filter::getInteger('user_id');
-	$user = \WT\User::find($user_id);
+	$user = User::find($user_id);
 	Zend_Session::writeClose();
 	header('Content-type: text/html; charset=UTF-8');
 	echo '<h2>', WT_I18N::translate('Details'), '</h2>';
@@ -213,7 +217,7 @@ case 'load1row':
 	echo '<dd><a href="#" onclick="modalDialog(\'index_edit.php?user_id='.$user_id.'\', \'', WT_I18N::translate('Change the blocks on this page'), '\');">', WT_I18N::translate('Change the blocks on this page'), '</a></dd>';
 
 	// Masquerade as others users - but not other administrators
-	if (!\WT\Auth::isAdmin($user)) {
+	if (!Auth::isAdmin($user)) {
 		echo '<dt>', /* I18N: Pretend to be another user, by logging in as them */ WT_I18N::translate('Masquerade as this user'), '</dt>';
 		echo '<dd><a href="#" onclick="return masquerade(', $user_id, ')">', /* I18N: verb: pretend to be someone else */ WT_I18N::translate('masquerade'), '</a></dd>';
 	}
@@ -256,17 +260,17 @@ case 'load1row':
 case 'createuser':
 	if (!WT_Filter::checkCsrf()) {
 		$action='createform';
-	} elseif (\WT\User::findByIdentifier($username)) {
+	} elseif (User::findByIdentifier($username)) {
 		WT_FlashMessages::addMessage(WT_I18N::translate('Duplicate user name.  A user with that user name already exists.  Please choose another user name.'));
 		$action='createform';
-	} elseif (\WT\User::findByIdentifier($emailaddress)) {
+	} elseif (User::findByIdentifier($emailaddress)) {
 		WT_FlashMessages::addMessage(WT_I18N::translate('Duplicate email address.  A user with that email already exists.'));
 		$action='createform';
 	} elseif ($pass1!=$pass2) {
 		WT_FlashMessages::addMessage(WT_I18N::translate('Passwords do not match.'));
 		$action='createform';
 	} else {
-		$user = \WT\User::create($username, $realname, $emailaddress, $pass1);
+		$user = User::create($username, $realname, $emailaddress, $pass1);
 		$user
 			->setSetting('reg_timestamp', date('U'))
 			->setSetting('sessiontime', '0')
@@ -291,7 +295,7 @@ case 'createuser':
 				$tree->userPreference($user->getUserId(), 'RELATIONSHIP_PATH_LENGTH', null);
 			}
 		}
-		\WT\Log::addAuthenticationLog("User ->{$username}<- created");
+		Log::addAuthenticationLog("User ->{$username}<- created");
 		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME);
 		WT_Session::writeClose();
 		exit;
@@ -415,7 +419,7 @@ case 'createform':
 					</td>';
 				}
 			echo '</tr>';
-			if (\WT\Auth::isAdmin()) {
+			if (Auth::isAdmin()) {
 			echo '<tr>
 				<td>', WT_I18N::translate('Admin comments on user'), '</td>
 				<td colspan="3"><textarea style="width:95%;" rows="5" name="new_comment" value="', WT_Filter::escapeHtml($new_comment), '"></textarea></td>
@@ -504,7 +508,7 @@ case 'cleanup':
 	<?php
 	// Check users not logged in too long
 	$ucnt = 0;
-	foreach (\WT\User::all() as $user) {
+	foreach (User::all() as $user) {
 		if ($user->getSetting('sessiontime') == "0") {
 			$datelogin = (int)$user->getSetting('reg_timestamp');
 		} else {
@@ -519,7 +523,7 @@ case 'cleanup':
 	}
 
 	// Check unverified users
-	foreach (\WT\User::all() as $user) {
+	foreach (User::all() as $user) {
 		if (((date("U") - (int)$user->getSetting('reg_timestamp')) > 604800) && !$user->getSetting('verified')) {
 			?><tr><td><?php echo WT_Filter::escapeHtml($user->getUserName()), " - ", WT_Filter::escapeHtml($user->getRealName()), ":&nbsp;&nbsp;", WT_I18N::translate('User didn’t verify within 7 days.');
 			$ucnt++;
@@ -528,7 +532,7 @@ case 'cleanup':
 	}
 
 	// Check users not verified by admin
-	foreach (\WT\User::all() as $user) {
+	foreach (User::all() as $user) {
 		if (!$user->getSetting('verified_by_admin') && $user->getSetting('verified')) {
 			?><tr><td><?php echo WT_Filter::escapeHtml($user->getUserName()), " - ", WT_Filter::escapeHtml($user->getRealName()), ":&nbsp;&nbsp;", WT_I18N::translate('User not verified by administrator.');
 			?></td><td><input type="checkbox" name="del_<?php echo $user->getUserId(); ?>" value="1"></td></tr><?php
@@ -549,9 +553,9 @@ case 'cleanup':
 	</form><?php
 	break;
 case 'cleanup2':
-	foreach (\WT\User::all() as $user) {
+	foreach (User::all() as $user) {
 		if (WT_Filter::post('del_' . $user->getUserId()) == '1') {
-			\WT\Log::addAuthenticationLog('Deleted user: ' . $user->getUserName());
+			Log::addAuthenticationLog('Deleted user: ' . $user->getUserName());
 			echo WT_I18N::translate('Deleted user: '), $user->getUserName(), '<br>';
 			$user->delete();
 		}
@@ -595,7 +599,7 @@ default:
 				ajax: "'.WT_SCRIPT_NAME.'?action=loadrows",
 				jQueryUI: true,
 				autoWidth: false,
-				pageLength: ' . \WT\Auth::user()->getSetting('admin_users_page_size', 10).',
+				pageLength: ' . Auth::user()->getSetting('admin_users_page_size', 10).',
 				pagingType: "full_numbers",
 				sorting: [[2,"asc"]],
 				columns: [

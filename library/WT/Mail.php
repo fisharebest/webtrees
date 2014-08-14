@@ -18,6 +18,9 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Log;
+use WT\User;
+
 class WT_Mail {
 	const EOL = "<br>\r\n"; // End-of-line that works for both TEXT and HTML messages
 
@@ -46,7 +49,7 @@ class WT_Mail {
 				->setReplyTo ($replyto_email,                        $replyto_name)
 				->send       (WT_Mail::transport());
 		} catch (Exception $ex) {
-			\WT\Log::addErrorLog('Mail: ' . $ex->getMessage());
+			Log::addErrorLog('Mail: ' . $ex->getMessage());
 			return false;
 		}
 		return true;
@@ -55,14 +58,14 @@ class WT_Mail {
 	/**
 	 * Send an automated system message (such as a password reminder) from a tree to a user.
 	 *
-	 * @param WT_Tree  $tree
-	 * @param \WT\User $user
-	 * @param string   $subject
-	 * @param string   $message
+	 * @param WT_Tree $tree
+	 * @param User    $user
+	 * @param string  $subject
+	 * @param string  $message
 	 *
 	 * @return bool
 	 */
-	public static function system_message(WT_Tree $tree, \WT\User $user, $subject, $message) {
+	public static function system_message(WT_Tree $tree, User $user, $subject, $message) {
 		return self::send(
 			$tree,
 			$user->getEmail(),                     $user->getRealName(),

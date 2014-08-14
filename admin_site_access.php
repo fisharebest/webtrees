@@ -18,13 +18,15 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+
 define('WT_SCRIPT_NAME', 'admin_site_access.php');
 require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
 $controller=new WT_Controller_Page();
 $controller
-	->restrictAccess(\WT\Auth::isAdmin())
+	->restrictAccess(Auth::isAdmin())
 	->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 	->addExternalJavascript(WT_JQUERY_JEDITABLE_URL)
 	->setPageTitle(WT_I18N::translate('Site access rules'));

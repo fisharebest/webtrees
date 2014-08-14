@@ -21,6 +21,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+
 define('WT_SCRIPT_NAME', 'find.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
@@ -91,12 +93,12 @@ case "source":
 case "specialchar":
 	$controller->setPageTitle(WT_I18N::translate('Find a special character'));
 	$language_filter = WT_Filter::get('language_filter');
-	if (\WT\Auth::id()) {
+	if (Auth::id()) {
 		// Users will probably always want the same language, so remember their setting
 		if (!$language_filter) {
-			$language_filter = \WT\Auth::user()->getSetting('default_language_filter');
+			$language_filter = Auth::user()->getSetting('default_language_filter');
 		} else {
-			\WT\Auth::user()->setSetting('default_language_filter', $language_filter);
+			Auth::user()->setSetting('default_language_filter', $language_filter);
 		}
 	}
 	require WT_ROOT.'includes/specialchars.php';

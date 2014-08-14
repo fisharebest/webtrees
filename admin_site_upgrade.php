@@ -18,6 +18,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+
 define('WT_SCRIPT_NAME', 'admin_site_upgrade.php');
 
 require './includes/session.php';
@@ -51,7 +53,7 @@ $themes_action       = WT_Filter::post('themes',   'ignore|disable');
 
 $controller = new WT_Controller_Page();
 $controller
-	->restrictAccess(\WT\Auth::isAdmin())
+	->restrictAccess(Auth::isAdmin())
 	->setPageTitle(WT_I18N::translate('Upgrade wizard'))
 	->pageHeader();
 

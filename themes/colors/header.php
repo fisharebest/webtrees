@@ -21,6 +21,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
@@ -80,7 +82,7 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 	'<ul class="makeMenu">';
 
 	if (WT_USER_ID) {
-		echo '<li><a href="edituser.php" class="link">', WT_Filter::escapeHtml(\WT\Auth::user()->getRealName()), '</a></li><li>', logout_link(), '</li>';
+		echo '<li><a href="edituser.php" class="link">', WT_Filter::escapeHtml(Auth::user()->getRealName()), '</a></li><li>', logout_link(), '</li>';
 		if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
 			echo ' <li><a href="#" onclick="window.open(\'edit_changes.php\', \'_blank\', chan_window_specs); return false;" style="color:red;">', WT_I18N::translate('Pending changes'), '</a></li>';
 		}

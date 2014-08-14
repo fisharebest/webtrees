@@ -25,6 +25,9 @@ define('WT_SCRIPT_NAME', 'login.php');
 require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 use Rhumsaa\Uuid\Uuid;
+use WT\Auth;
+use WT\Log;
+use WT\User;
 
 // If we are already logged in, then go to the “Home page”
 if (WT_USER_ID && WT_GED_ID) {
@@ -62,38 +65,38 @@ switch ($action) {
 case 'login':
 	try {
 		if (!$_COOKIE) {
-			\WT\Log::addAuthenticationLog('Login failed (no session cookies): ' . $username);
+			Log::addAuthenticationLog('Login failed (no session cookies): ' . $username);
 			throw new Exception(WT_I18N::translate('You cannot login because your browser does not accept cookies.'));
 		}
 
-		$user = \WT\User::findByIdentifier($username);
+		$user = User::findByIdentifier($username);
 
 		if (!$user) {
-			\WT\Log::addAuthenticationLog('Login failed (no such user/email): ' . $username);
+			Log::addAuthenticationLog('Login failed (no such user/email): ' . $username);
 			throw new Exception(WT_I18N::translate('The username or password is incorrect.'));
 		}
 
 		if (!$user->checkPassword($password)) {
-			\WT\Log::addAuthenticationLog('Login failed (incorrect password): ' . $username);
+			Log::addAuthenticationLog('Login failed (incorrect password): ' . $username);
 			throw new Exception(WT_I18N::translate('The username or password is incorrect.'));
 		}
 
 		if (!$user->getSetting('verified')) {
-			\WT\Log::addAuthenticationLog('Login failed (not verified by user): ' . $username);
+			Log::addAuthenticationLog('Login failed (not verified by user): ' . $username);
 			throw new Exception(WT_I18N::translate('This account has not been verified.  Please check your email for a verification message.'));
 		}
 
 		if (!$user->getSetting('verified_by_admin')) {
-			\WT\Log::addAuthenticationLog('Login failed (not approved by admin): ' . $username);
+			Log::addAuthenticationLog('Login failed (not approved by admin): ' . $username);
 			throw new Exception(WT_I18N::translate('This account has not been approved.  Please wait for an administrator to approve it.'));
 		}
 
-		\WT\Auth::login($user);
-		\WT\Log::addAuthenticationLog('Login: ' . \WT\Auth::user()->getUserName() . '/' . \WT\Auth::user()->getRealName());
+		Auth::login($user);
+		Log::addAuthenticationLog('Login: ' . Auth::user()->getUserName() . '/' . Auth::user()->getRealName());
 
 		$WT_SESSION->timediff  = $timediff;
-		$WT_SESSION->locale    = \WT\Auth::user()->getSetting('language');
-		$WT_SESSION->theme_dir = \WT\Auth::user()->getSetting('theme');
+		$WT_SESSION->locale    = Auth::user()->getSetting('language');
+		$WT_SESSION->theme_dir = Auth::user()->getSetting('theme');
 
 		// If we’ve clicked login from the login page, we don’t want to go back there.
 		if (strpos($url, WT_SCRIPT_NAME) === 0) {
@@ -101,7 +104,7 @@ case 'login':
 		}
 
 		// We're logging in as an administrator
-		if (\WT\Auth::isAdmin()) {
+		if (Auth::isAdmin()) {
 			// Check for updates
 			$latest_version_txt = fetch_latest_version();
 			if (preg_match('/^[0-9.]+\|[0-9.]+\|/', $latest_version_txt)) {
@@ -219,7 +222,7 @@ case 'requestpw':
 	echo '<div id="login-page">';
 	$user_name = WT_Filter::post('new_passwd_username', WT_REGEX_USERNAME);
 
-	$user = \WT\User::findByIdentifier($user_name);
+	$user = User::findByIdentifier($user_name);
 	if ($user) {
 		$passchars = 'abcdefghijklmnopqrstuvqxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 		$user_new_pw = '';
@@ -230,7 +233,7 @@ case 'requestpw':
 		}
 
 		$user->setPassword($user_new_pw);
-		\WT\Log::addAuthenticationLog('Password request was sent to user: ' . $user->getUserName());
+		Log::addAuthenticationLog('Password request was sent to user: ' . $user->getUserName());
 
 		WT_Mail::system_message(
 			$WT_TREE,
@@ -267,22 +270,22 @@ case 'register':
 	if ($WT_SESSION->good_to_send && $user_name && $user_password01 && $user_password01==$user_password02 && $user_realname && $user_email && $user_comments) {
 
 		// These validation errors cannot be shown in the client.
-		if (\WT\User::findByIdentifier($user_name)) {
+		if (User::findByIdentifier($user_name)) {
 			WT_FlashMessages::addMessage(WT_I18N::translate('Duplicate user name.  A user with that user name already exists.  Please choose another user name.'));
-		} elseif (\WT\User::findByIdentifier($user_email)) {
+		} elseif (User::findByIdentifier($user_email)) {
 			WT_FlashMessages::addMessage(WT_I18N::translate('Duplicate email address.  A user with that email already exists.'));
 		} elseif (preg_match('/(?!'.preg_quote(WT_SERVER_NAME, '/').')(((?:ftp|http|https):\/\/)[a-zA-Z0-9.-]+)/', $user_comments, $match)) {
 			WT_FlashMessages::addMessage(
 				WT_I18N::translate('You are not allowed to send messages that contain external links.') . ' ' .
 				WT_I18N::translate('You should delete the “%1$s” from “%2$s” and try again.', $match[2], $match[1])
 			);
-			\WT\Log::addAuthenticationLog('Possible spam registration from "' . $user_name . '"/"' . $user_email . '" comments="' . $user_comments . '"');
+			Log::addAuthenticationLog('Possible spam registration from "' . $user_name . '"/"' . $user_email . '" comments="' . $user_comments . '"');
 		} else {
 			// Everything looks good - create the user
 			$controller->pageHeader();
-			\WT\Log::addAuthenticationLog('User registration requested for: ' . $user_name);
+			Log::addAuthenticationLog('User registration requested for: ' . $user_name);
 
-			$user = \WT\User::create($user_name, $user_realname, $user_email, $user_password01);
+			$user = User::create($user_name, $user_realname, $user_email, $user_password01);
 			$user
 				->setSetting('language',          WT_LOCALE)
 				->setSetting('verified',          0)
@@ -298,7 +301,7 @@ case 'register':
 				->setSetting('sessiontime',       0);
 
 			// Generate an email in the admin’s language
-			$webmaster = \WT\User::find(get_gedcom_setting(WT_GED_ID, 'WEBMASTER_USER_ID'));
+			$webmaster = User::find(get_gedcom_setting(WT_GED_ID, 'WEBMASTER_USER_ID'));
 			WT_I18N::init($webmaster->getSetting('language'));
 
 			$mail1_body =
@@ -452,7 +455,7 @@ case 'userverify':
 	}
 
 	// Change to the new user’s language
-	$user = \WT\User::findByIdentifier($user_name);
+	$user = User::findByIdentifier($user_name);
 
 	WT_I18N::init($user->getSetting('language'));
 
@@ -489,10 +492,10 @@ case 'verify_hash':
 	}
 
 	// switch language to webmaster settings
-	$webmaster = \WT\User::find(get_gedcom_setting(WT_GED_ID, 'WEBMASTER_USER_ID'));
+	$webmaster = User::find(get_gedcom_setting(WT_GED_ID, 'WEBMASTER_USER_ID'));
 	WT_I18N::init($webmaster->getSetting('language'));
 
-	$user = \WT\User::findByIdentifier($user_name);
+	$user = User::findByIdentifier($user_name);
 	$mail1_body =
 		WT_I18N::translate('Hello administrator…') . WT_Mail::EOL . WT_Mail::EOL .
 		/* I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address */
@@ -555,7 +558,7 @@ case 'verify_hash':
 			if (!$REQUIRE_ADMIN_AUTH_REGISTRATION) {
 				set_user_setting($user_id, 'verified_by_admin', 1);
 			}
-			\WT\Log::addAuthenticationLog('User ' . $user_name . ' verified their email address');
+			Log::addAuthenticationLog('User ' . $user_name . ' verified their email address');
 
 			echo '<br><br>'.WT_I18N::translate('You have confirmed your request to become a registered user.').'<br><br>';
 			if ($REQUIRE_ADMIN_AUTH_REGISTRATION && !$user->getSetting('verified_by_admin')) {
@@ -565,7 +568,7 @@ case 'verify_hash':
 			}
 			echo '<br><br>';
 		} else {
-			\WT\Log::addAuthenticationLog('User ' . $user_name . ' failed to verify their email address');
+			Log::addAuthenticationLog('User ' . $user_name . ' failed to verify their email address');
 			echo '<br><br>';
 			echo '<span class="warning">';
 			echo WT_I18N::translate('Data was not correct, please try again');

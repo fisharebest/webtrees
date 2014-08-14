@@ -21,13 +21,16 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+use WT\User;
+
 define('WT_SCRIPT_NAME', 'admin_trees_config.php');
 
 require './includes/session.php';
 
 $controller=new WT_Controller_Page();
 $controller
-	->restrictAccess(\WT\Auth::isManager())
+	->restrictAccess(Auth::isManager())
 	->setPageTitle(WT_I18N::translate('Family tree configuration'));
 
 require WT_ROOT.'includes/functions/functions_edit.php';
@@ -401,7 +404,7 @@ $controller
 					<td><select name="NEW_CONTACT_USER_ID">
 					<?php
 						$CONTACT_USER_ID = get_gedcom_setting(WT_GED_ID, 'CONTACT_USER_ID');
-						foreach (\WT\User::all() as $user) {
+						foreach (User::all() as $user) {
 							if ($user->getSetting('verified_by_admin')) {
 								echo "<option value=\"" . $user->getUserId() . "\"";
 								if ($CONTACT_USER_ID == $user->getUserId()) {
@@ -421,7 +424,7 @@ $controller
 					<td><select name="NEW_WEBMASTER_USER_ID">
 					<?php
 						$WEBMASTER_USER_ID = get_gedcom_setting(WT_GED_ID, 'WEBMASTER_USER_ID');
-						foreach (\WT\User::allAdmins() as $user) {
+						foreach (User::allAdmins() as $user) {
 							echo '<option value="' . $user->getUserId() . '"';
 							if ($WEBMASTER_USER_ID == $user->getUserId()) {
 								echo ' selected="selected"';

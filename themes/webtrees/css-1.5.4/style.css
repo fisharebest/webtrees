@@ -296,17 +296,12 @@ div.fact_SHARED_NOTE {
 	text-align: center;
 }
 
-.facts_label02,
 .facts_label03 {
 	color: #fff;
 	font-size: 12px;
 	padding: 4px;
 	text-align: center;
 	font-weight: bold;
-}
-
-.facts_label02 {
-	background-color: #c4c9e6;
 }
 
 .facts_label03 {
@@ -318,13 +313,6 @@ div.fact_SHARED_NOTE {
 	border: solid #81a9cb 1px;
 	font-size: 12px;
 	padding: 4px;
-}
-
-.facts_value02 {
-	background-color: #edf7fd;
-	border: solid #81a9cb 1px;
-	font-size: 12px;
-	padding: 5px;
 }
 
 .quickfacts a {
@@ -1023,11 +1011,13 @@ a:hover .nameZoom {
 
 /* Pending edits - TODO perhaps show differently in different contexts? */
 .new {
-	outline: solid blue 1px;
+	border: solid blue 1px;
+	overflow: hidden;
 }
 
 .old {
-	outline: solid red 1px;
+	border: solid red 1px;
+	overflow: hidden;
 }
 
 a.showit {
@@ -3333,6 +3323,15 @@ dd .deletelink {
 	clear: both;
 }
 
+.facts_table .field em {
+	margin-top: 0;
+	padding-left: 5px;
+}
+
+.facts_table .field img {
+	vertical-align: middle;
+}
+
 .media-display-image {
 	float: left;
 }
@@ -3349,6 +3348,10 @@ dd .deletelink {
 
 [dir=rtl] .media-display-title {
 	float: right;
+}
+
+[dir=rtl] .facts_table .field em {
+	padding-right: 5px;
 }
 
 /* Album tab */

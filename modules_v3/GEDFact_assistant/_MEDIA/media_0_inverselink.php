@@ -26,6 +26,8 @@
 // GEDFact Media assistant replacement code for inverselink.php: ===========================
 
 //-- extra page parameters and checking
+use WT\Auth;
+
 $more_links  = WT_Filter::get('more_links');
 $exist_links = WT_Filter::get('exist_links');
 $gid         = WT_Filter::get('gid', WT_REGEX_XREF);
@@ -572,7 +574,7 @@ function shiftlinks() {
 		</tr>
 		<?php
 		// Admin Option CHAN log update override =======================
-		if (\WT\Auth::isAdmin()) {
+		if (Auth::isAdmin()) {
 			echo "<tr><td class=\"descriptionbox wrap width25\">";
 			echo WT_Gedcom_Tag::getLabel('CHAN'), "</td><td class=\"optionbox wrap\">";
 			if ($NO_UPDATE_CHAN) {

@@ -1673,7 +1673,7 @@ ul {
 }
 
 div.fact_SHARED_NOTE {
-	clear:both
+	clear: both;
 }
 
 .facts_label .submenu a {
@@ -1689,7 +1689,6 @@ div.fact_SHARED_NOTE {
 	width: 20%;
 }
 
-.facts_label02,
 .facts_label03 {
 	border-radius: 3px;
 	font-weight: 700;
@@ -1701,12 +1700,6 @@ div.fact_SHARED_NOTE {
 	border: 1px solid #999;
 	border-radius: 3px;
 	padding: 4px;
-}
-
-.facts_value02 {
-	background: #fff;
-	border: 1pt solid #ddd;
-	padding: 5px;
 }
 
 .quickfacts a {
@@ -2094,11 +2087,13 @@ textarea {
 
 /* Pending edits - TODO perhaps show differently in different contexts? */
 .new {
-	outline: solid blue 1px;
+	border: solid blue 1px;
+	overflow: hidden;
 }
 
 .old {
-	outline: solid red 1px;
+	border: solid red 1px;
+	overflow: hidden;
 }
 
 a.showit {
@@ -2404,24 +2399,16 @@ a.showit > span {
 /* ============= Theme select block ============ */
 .theme_form ul {
 	margin: -10px auto;
-	-webkit-padding-start: 0;
-	width: 90%;
-	overflow: hidden;
 }
 
 .theme_form li {
-	list-style: none;
 	visibility: hidden;
 }
 
 .theme_form li ul li {
-	float: left;
+	display: inline-block;
 	padding: 10px;
 	visibility: visible;
-}
-
-[dir=rtl] .theme_form li ul li {
-	float: right;
 }
 
 /* ======= Favourites block ========== */
@@ -3158,8 +3145,7 @@ dd .deletelink {
 
 .facts_table .field em {
 	margin-top: 0;
-	font-weight: 600;
-	padding-left: 3px;
+	padding-left: 5px;
 }
 
 .facts_table .field img {
@@ -3189,7 +3175,7 @@ dd .deletelink {
 }
 
 [dir=rtl] .facts_table .field em {
-	padding-right: 3px;
+	padding-right: 5px;
 }
 
 /* Album tab */

@@ -18,6 +18,10 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+use WT\Log;
+use WT\User;
+
 class WT_Tree {
 	// Tree attributes
 	public $tree_id         =null; // The "gedcom ID" number
@@ -73,7 +77,7 @@ class WT_Tree {
 			if ($this->preference($setting_name)!=$setting_value) {
 				$this->preference[$setting_name]=$setting_value;
 				// Audit log of changes
-				\WT\Log::addConfigurationLog('Gedcom setting "' . $setting_name . '" set to "' . $setting_value . '"');
+				Log::addConfigurationLog('Gedcom setting "' . $setting_name . '" set to "' . $setting_value . '"');
 			}
 			WT_DB::prepare(
 				"REPLACE INTO `##gedcom_setting` (gedcom_id, setting_name, setting_value) VALUES (?, ?, LEFT(?, 255))"
@@ -103,7 +107,7 @@ class WT_Tree {
 			// If parameter two is specified, then SET the setting.
 			if ($this->preference($setting_name)!=$setting_value) {
 				// Audit log of changes
-				\WT\Log::addConfigurationLog('Gedcom setting "'.$setting_name.'" set to "'.$setting_value.'"');
+				Log::addConfigurationLog('Gedcom setting "'.$setting_name.'" set to "'.$setting_value.'"');
 			}
 			WT_DB::prepare(
 				"REPLACE INTO `##user_gedcom_setting` (user_id, gedcom_id, setting_name, setting_value) VALUES (?, ?, ?, LEFT(?, 255))"
@@ -113,8 +117,8 @@ class WT_Tree {
 	}
 
 	// Can a user accept changes for this tree?
-	public function canAcceptChanges(\WT\User $user) {
-		return \WT\Auth::isModerator($this, $user);
+	public function canAcceptChanges(User $user) {
+		return Auth::isModerator($this, $user);
 	}
 
 	// Fetch all the trees that we have permission to access.

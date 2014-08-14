@@ -21,6 +21,9 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+use WT\User;
+
 require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 require_once WT_ROOT.'includes/functions/functions_import.php';
 
@@ -140,8 +143,8 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 		$dummy->setPrimaryName(0);
 		echo '<dd class="field">', $dummy->getFullName();
 		if ($this->name_count == 1) {
-			if (\WT\Auth::isAdmin()) {
-				$user = \WT\User::findByGenealogyRecord($WT_TREE, $this->record);
+			if (Auth::isAdmin()) {
+				$user = User::findByGenealogyRecord($WT_TREE, $this->record);
 				if ($user) {
 					echo '<span> - <a class="warning" href="admin_users.php?filter=' . WT_Filter::escapeHtml($user->getUserName()) . '">' . WT_Filter::escapeHtml($user->getUserName()) . '</a></span>';
 				}
@@ -301,7 +304,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 		}
 
 		// edit raw
-		if (\WT\Auth::isAdmin() || WT_USER_CAN_EDIT && $SHOW_GEDCOM_RECORD) {
+		if (Auth::isAdmin() || WT_USER_CAN_EDIT && $SHOW_GEDCOM_RECORD) {
 			$submenu = new WT_Menu(WT_I18N::translate('Edit raw GEDCOM'), '#', 'menu-indi-editraw');
 			$submenu->addOnclick("return edit_raw('" . $this->record->getXref() . "');");
 			$menu->addSubmenu($submenu);
