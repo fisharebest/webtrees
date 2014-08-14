@@ -24,11 +24,6 @@
 use WT\Auth;
 use WT\Log;
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 // http://www.google.com/permissions/guidelines.html
 //
 // "... an unregistered Google Brand Feature should be followed by
