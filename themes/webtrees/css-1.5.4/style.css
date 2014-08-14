@@ -2103,13 +2103,15 @@ div.faq_body {
 	list-style-type: none;
 }
 
-
-
-#main-menu {
-	margin: 0 auto;
+.no-flexbox #main-menu {
 	display: table;
+	margin: 0 auto;
 }
 
+.flexbox #main-menu {
+	display: flex;
+	justify-content: space-around;
+}
 
 #main-menu li {
 	float: left;
@@ -2132,6 +2134,14 @@ div.faq_body {
 	left: 0;
 	right: auto;
 	top: 66px;
+}
+
+/* Stop last menu item from overshooting the browser window
+** ie8 & below don't support the :last-child selector
+*/
+#main-menu > li:last-child:hover > ul {
+	right: 0;
+	left:  auto;
 }
 
 #main-menu a {
@@ -2167,9 +2177,20 @@ div.faq_body {
 #main-menu > li {
 	background-image: url(images/large_menu_sprite.png);
 	background-repeat: no-repeat;
-	width: 110px;
-	height: 64px;
+	width: 90px;
 	text-align: center;
+	vertical-align: top;
+	float: none;
+}
+
+.no-flexbox #main-menu > li {
+	display: inline-block;
+	width: 80px;
+}
+
+#main-menu > li> a {
+	white-space: normal;
+	overflow: visible;
 }
 
 #main-menu li li {
@@ -2199,6 +2220,11 @@ div.faq_body {
 	right: 0;
 }
 
+[dir=rtl] #main-menu > li:last-child:hover > ul {
+	left:  0;
+	right: auto;
+}
+
 [dir=rtl] #main-menu li li {
 	text-align: right;
 }
@@ -2210,67 +2236,67 @@ div.faq_body {
 
 /* Main menu icons */
 #menu-calendar {
-	background-position: center -350px;
+	background-position: -450px 0;
 }
 
 #menu-chart {
-	background-position: center -140px;
+	background-position: -180px 0;
 }
 
 #menu-clippings {
-	background-position: center -560px;
+	background-position: -730px 0;
 }
 
 #menu-fam {
-	background-position: center -770px;
+	background-position: -990px 0;
 }
 
 #menu-help {
-	background-position: center -490px;
+	background-position: -630px 0;
 }
 
 #menu-indi {
-	background-position: center -630px;
+	background-position: -810px 0;
 }
 
 #menu-list {
-	background-position: center -210px;
+	background-position: -270px 0;
 }
 
 #menu-mymenu {
-	background-position: center -70px;
+	background-position: -90px 0;
 }
 
 #menu-note {
-	background-position: center -910px;
+	background-position: -1170px 0;
 }
 
 #menu-obje {
-	background-position: center -840px;
+	background-position: -1080px 0;
 }
 
 #menu-repo {
-	background-position: center -980px;
+	background-position: -1260px 0;
 }
 
 #menu-report {
-	background-position: center -280px;
+	background-position: -360px 0;
 }
 
 #menu-search {
-	background-position: center -420px;
+	background-position: -540px 0;
 }
 
 #menu-sour {
-	background-position: center -700px;
+	background-position: -900px 0;
 }
 
 #menu-tree {
-	background-position: center 0;
+	background-position: 0 0;
 }
 
 #menu-story {
-	background-position: center -1045px;
+	background-position: -1350px 0;
 }
 
 /* Sub-menu icons */
