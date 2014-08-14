@@ -21,6 +21,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Log;
+
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
@@ -65,7 +67,7 @@ function hasMemoryForImage($serverFilename) {
 		} else {
 			// not enough memory to load this file
 			$image_info =  sprintf('%.2fKB, %d × %d %d bits %d channels', filesize($serverFilename)/1024, $imgsize[0], $imgsize[1], $imgsize['bits'], $imgsize['channels']);
-			\WT\Log::addMediaLog('Cannot create thumbnail '.$serverFilename.' ('.$image_info.') memory avail: '.$memoryAvailable.' used: '.$memoryUsed.' needed: '.$memoryNeeded.' spare: '.$memorySpare);
+			Log::addMediaLog('Cannot create thumbnail '.$serverFilename.' ('.$image_info.') memory avail: '.$memoryAvailable.' used: '.$memoryUsed.' needed: '.$memoryNeeded.' spare: '.$memorySpare);
 			return false;
 		}
 	} else {

@@ -21,6 +21,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\User;
+
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
@@ -65,10 +67,10 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 		$class=$this->getName().'_block';
 		$title=WT_I18N::plural('%s message', '%s messages',count($messages), WT_I18N::number(count($messages)));
 		$content='<form name="messageform" action="index.php?ctype='.$ctype.'" method="get" onsubmit="return confirm(\''.WT_I18N::translate('Are you sure you want to delete this message?  It cannot be retrieved later.').'\');">';
-		if (count(\WT\User::all()) > 1) {
+		if (count(User::all()) > 1) {
 			$content.='<br>'.WT_I18N::translate('Send message')." <select name=\"touser\">";
 			$content.='<option value="">' . WT_I18N::translate('&lt;select&gt;') . '</option>';
-			foreach (\WT\User::all() as $user) {
+			foreach (User::all() as $user) {
 				if ($user->getUserId() != WT_USER_ID && $user->getSetting('verified_by_admin') && $user->getSetting('contactmethod') != 'none') {
 					$content.='<option value="' . WT_Filter::escapeHtml($user->getUserName()) . '">';
 					$content.='<span dir="auto">'.WT_Filter::escapeHtml($user->getRealName()).'</span> - <span dir="auto">' . WT_Filter::escapeHtml($user->getUserName()) . '</span>';
@@ -93,7 +95,7 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 				$content.='<td class="list_value_wrap"><a href="#" onclick="return expand_layer(\'message'.$message->message_id.'\');"><i id="message'.$message->message_id.'_img" class="icon-plus"></i> <b dir="auto">'.WT_Filter::escapeHtml($message->subject).'</b></a></td>';
 				$content.='<td class="list_value_wrap">'.format_timestamp($message->created).'</td>';
 				$content.='<td class="list_value_wrap">';
-				$user = \WT\User::findByIdentifier($message->sender);
+				$user = User::findByIdentifier($message->sender);
 				if ($user) {
 					$content.='<span dir="auto">' . $user->getRealName() . '</span>';
 					$content.='  - <span dir="auto">' . $user->getEmail() . '</span>';

@@ -23,6 +23,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\User;
+
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
@@ -248,7 +250,7 @@ class WT_Controller_Clippings {
 			}
 			$filetext .= "0 @WEBTREES@ SOUR\n1 TITL ".WT_SERVER_NAME.WT_SCRIPT_PATH."\n";
 			if ($user_id = get_gedcom_setting(WT_GED_ID, 'CONTACT_EMAIL')) {
-				$user = \WT\User::find($user_id);
+				$user = User::find($user_id);
 				$filetext .= "1 AUTH " . $user->getRealName() . "\n";
 			}
 			$filetext .= "0 TRLR\n";

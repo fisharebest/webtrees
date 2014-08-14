@@ -21,6 +21,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
@@ -41,9 +43,9 @@ class user_welcome_WT_Module extends WT_Module implements WT_Module_Block {
 	public function getBlock($block_id, $template=true, $cfg=null) {
 		$id=$this->getName().$block_id;
 		$class=$this->getName().'_block';
-		$title = '<span dir="auto">' . /* I18N: A greeting; %s is the user’s name */ WT_I18N::translate('Welcome %s', \WT\Auth::user()->getRealName()) . '</span>';
+		$title = '<span dir="auto">' . /* I18N: A greeting; %s is the user’s name */ WT_I18N::translate('Welcome %s', Auth::user()->getRealName()) . '</span>';
 		$content = '<table><tr>';
-		if (\WT\Auth::user()->getSetting('editaccount')) {
+		if (Auth::user()->getSetting('editaccount')) {
 			$content .= '<td><a href="edituser.php"><i class="icon-mypage"></i><br>'.WT_I18N::translate('My account').'</a></td>';
 		}
 		if (WT_USER_GEDCOM_ID) {

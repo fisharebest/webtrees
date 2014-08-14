@@ -28,6 +28,8 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 use Rhumsaa\Uuid\Uuid;
+use WT\Auth;
+use WT\User;
 
 /**
  * print the information for an individual chart box
@@ -294,8 +296,8 @@ function whoisonline() {
 	$NumAnonymous = 0;
 	$loggedusers = array ();
 	$content='';
-	foreach (\WT\User::allLoggedIn() as $user) {
-		if (\WT\Auth::isAdmin() || $user->getSetting('visibleonline')) {
+	foreach (User::allLoggedIn() as $user) {
+		if (Auth::isAdmin() || $user->getSetting('visibleonline')) {
 			$loggedusers[] = $user;
 		} else {
 			$NumAnonymous++;
@@ -332,7 +334,7 @@ function whoisonline() {
 // Print a link to allow email/messaging contact with a user
 // Optionally specify a method (used for webmaster/genealogy contacts)
 function user_contact_link($user_id) {
-	$user = \WT\User::find($user_id);
+	$user = User::find($user_id);
 
 	if ($user) {
 		$method = $user->getSetting('contactmethod');

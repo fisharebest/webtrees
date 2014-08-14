@@ -21,6 +21,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Log;
+
 class WT_Media extends WT_GedcomRecord {
 	const RECORD_TYPE = 'OBJE';
 	const SQL_FETCH   = "SELECT m_gedcom FROM `##media` WHERE m_id=? AND m_file=?";
@@ -121,13 +123,13 @@ class WT_Media extends WT_GedcomRecord {
 			}
 			// Does the folder exist for this thumbnail?
 			if (!is_dir(dirname($file)) && !@mkdir(dirname($file), WT_PERM_EXE, true)) {
-				\WT\Log::addMediaLog('The folder ' . dirname($file) . ' could not be created for ' . $this->getXref());
+				Log::addMediaLog('The folder ' . dirname($file) . ' could not be created for ' . $this->getXref());
 				return $file;
 			}
 			// Is there a corresponding main image?
 			$main_file = WT_DATA_DIR . $MEDIA_DIRECTORY . $this->file;
 			if (!file_exists($main_file)) {
-				\WT\Log::addMediaLog('The file ' . $main_file . ' does not exist for ' . $this->getXref());
+				Log::addMediaLog('The file ' . $main_file . ' does not exist for ' . $this->getXref());
 				return $file;
 			}
 			// Try to create a thumbnail automatically
@@ -135,7 +137,7 @@ class WT_Media extends WT_GedcomRecord {
 			if ($imgsize[0] && $imgsize[1]) {
 				// Image small enough to be its own thumbnail?
 				if ($imgsize[0] < $THUMBNAIL_WIDTH) {
-					\WT\Log::addMediaLog('Thumbnail created for ' . $main_file . ' (copy of main image)');
+					Log::addMediaLog('Thumbnail created for ' . $main_file . ' (copy of main image)');
 					@copy($main_file, $file);
 				} else {
 					if (hasMemoryForImage($main_file)) {
@@ -162,12 +164,12 @@ class WT_Media extends WT_GedcomRecord {
 							}
 							@imagedestroy($main_image);
 							@imagedestroy($thumb_image);
-							\WT\Log::addMediaLog('Thumbnail created for ' . $main_file);
+							Log::addMediaLog('Thumbnail created for ' . $main_file);
 						} else {
-							\WT\Log::addMediaLog('Failed to create thumbnail for ' . $main_file);
+							Log::addMediaLog('Failed to create thumbnail for ' . $main_file);
 						}
 					} else {
-						\WT\Log::addMediaLog('Not enough memory to create thumbnail for ' . $main_file);
+						Log::addMediaLog('Not enough memory to create thumbnail for ' . $main_file);
 					}
 				}
 			}
@@ -331,7 +333,7 @@ class WT_Media extends WT_GedcomRecord {
 				if ($this->fileExists($which)) {
 					// alert the admin if we cannot determine the mime type of an existing file
 					// as the media firewall will be unable to serve this file properly
-					\WT\Log::addMediaLog('Media Firewall error: >Unknown Mimetype< for file >' . $this->file . '<');
+					Log::addMediaLog('Media Firewall error: >Unknown Mimetype< for file >' . $this->file . '<');
 				}
 			} else {
 				$imgsize['mime']=$mime[$imgsize['ext']];

@@ -21,6 +21,9 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+use WT\Log;
+
 // WT_SCRIPT_NAME is defined in each script that the user is permitted to load.
 if (!defined('WT_SCRIPT_NAME')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -267,7 +270,7 @@ set_error_handler(function ($errno, $errstr) {
 			}
 		}
 		echo $fmt_msg;
-		\WT\Log::addErrorLog($log_msg);
+		Log::addErrorLog($log_msg);
 		if ($errno == 1) {
 			die();
 		}
@@ -393,7 +396,7 @@ session_set_save_handler(
 			" ip_address   = VALUES(ip_address)," .
 			" session_data = VALUES(session_data)," .
 			" session_time = CURRENT_TIMESTAMP - SECOND(CURRENT_TIMESTAMP)"
-		)->execute(array($id, (int)\WT\Auth::id(), $WT_REQUEST->getClientIp(), $data));
+		)->execute(array($id, (int)Auth::id(), $WT_REQUEST->getClientIp(), $data));
 		return true;
 	},
 	// destroy
@@ -437,8 +440,8 @@ if (!$SEARCH_SPIDER && !$WT_SESSION->initiated) {
 }
 
 // Who are we?
-define('WT_USER_ID',       \WT\Auth::id());
-define('WT_USER_NAME',     \WT\Auth::id() ? \WT\Auth::user()->getUserName() : '');
+define('WT_USER_ID',       Auth::id());
+define('WT_USER_NAME',     Auth::id() ? Auth::user()->getUserName() : '');
 
 // Set the active GEDCOM
 if (isset($_REQUEST['ged'])) {
@@ -456,7 +459,7 @@ if (isset($_REQUEST['ged'])) {
 $WT_TREE=null;
 foreach (WT_Tree::getAll() as $tree) {
 	$WT_TREE=$tree;
-	if ($WT_TREE->tree_name == $GEDCOM && ($WT_TREE->imported || \WT\Auth::isAdmin())) {
+	if ($WT_TREE->tree_name == $GEDCOM && ($WT_TREE->imported || Auth::isAdmin())) {
 		break;
 	}
 }
@@ -468,10 +471,10 @@ if ($WT_TREE) {
 	define('WT_GEDURL',            $WT_TREE->tree_name_url);
 	define('WT_TREE_TITLE',        $WT_TREE->tree_title_html);
 	define('WT_IMPORTED',          $WT_TREE->imported);
-	define('WT_USER_GEDCOM_ADMIN', \WT\Auth::isManager($WT_TREE));
-	define('WT_USER_CAN_ACCEPT',   \WT\Auth::isModerator($WT_TREE));
-	define('WT_USER_CAN_EDIT',     \WT\Auth::isEditor($WT_TREE));
-	define('WT_USER_CAN_ACCESS',   \WT\Auth::isMember($WT_TREE));
+	define('WT_USER_GEDCOM_ADMIN', Auth::isManager($WT_TREE));
+	define('WT_USER_CAN_ACCEPT',   Auth::isModerator($WT_TREE));
+	define('WT_USER_CAN_EDIT',     Auth::isEditor($WT_TREE));
+	define('WT_USER_CAN_ACCESS',   Auth::isMember($WT_TREE));
 	define('WT_USER_GEDCOM_ID',    $WT_TREE->userPreference(WT_USER_ID, 'gedcomid'));
 	define('WT_USER_ROOT_ID',      $WT_TREE->userPreference(WT_USER_ID, 'rootid') ? $WT_TREE->userPreference(WT_USER_ID, 'rootid') : WT_USER_GEDCOM_ID);
 	define('WT_USER_PATH_LENGTH',  $WT_TREE->userPreference(WT_USER_ID, 'RELATIONSHIP_PATH_LENGTH'));
@@ -537,7 +540,7 @@ if (WT_Site::preference('LOGIN_URL')) {
 // If there is no current tree and we need one, then redirect somewhere
 if (WT_SCRIPT_NAME!='admin_trees_manage.php' && WT_SCRIPT_NAME!='admin_pgv_to_wt.php' && WT_SCRIPT_NAME!='login.php' && WT_SCRIPT_NAME!='logout.php' && WT_SCRIPT_NAME!='import.php' && WT_SCRIPT_NAME!='help_text.php' && WT_SCRIPT_NAME!='message.php') {
 	if (!$WT_TREE || !WT_IMPORTED) {
-		if (\WT\Auth::isAdmin()) {
+		if (Auth::isAdmin()) {
 			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'admin_trees_manage.php');
 		} else {
 			header('Location: ' . WT_LOGIN_URL . '?url=' . rawurlencode(WT_SCRIPT_NAME . (isset($_SERVER['QUERY_STRING']) ? '?' . $_SERVER['QUERY_STRING'] : '')), true, 301);
@@ -547,10 +550,10 @@ if (WT_SCRIPT_NAME!='admin_trees_manage.php' && WT_SCRIPT_NAME!='admin_pgv_to_wt
 	}
 }
 
-if (\WT\Auth::id()) {
+if (Auth::id()) {
 	// Update the login time every 5 minutes
 	if (WT_TIMESTAMP - $WT_SESSION->activity_time > 300) {
-		\WT\Auth::user()->setSetting('sessiontime', WT_TIMESTAMP);
+		Auth::user()->setSetting('sessiontime', WT_TIMESTAMP);
 		$WT_SESSION->activity_time = WT_TIMESTAMP;
 	}
 }

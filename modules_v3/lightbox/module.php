@@ -21,6 +21,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
@@ -142,7 +144,7 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Tab {
 				$submenu->addOnclick("return window.open('addmedia.php?action=editmedia&amp;pid=".$media->getXref()."', '_blank', edit_window_specs);");
 				$submenu->addClass("submenuitem");
 				$menu->addSubMenu($submenu);
-				if (\WT\Auth::isAdmin()) {
+				if (Auth::isAdmin()) {
 					// Manage Links
 					if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
 						$submenu = new WT_Menu(WT_I18N::translate('Manage links'));

@@ -18,6 +18,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+
 define('WT_SCRIPT_NAME', 'block_edit.php');
 require './includes/session.php';
 
@@ -30,8 +32,8 @@ $block = WT_DB::prepare(
 // managers, (3) user blocks require the user or an admin
 if (
 	!$block ||
-	$block->gedcom_id && !\WT\Auth::isManager(WT_Tree::get($block->gedcom_id)) ||
-	$block->user_id && $block->user_id != \WT\Auth::id() && !\WT\Auth::isAdmin()
+	$block->gedcom_id && !Auth::isManager(WT_Tree::get($block->gedcom_id)) ||
+	$block->user_id && $block->user_id != Auth::id() && !Auth::isAdmin()
 ) {
 	exit;
 }

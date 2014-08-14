@@ -26,6 +26,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+
 define('WT_SCRIPT_NAME', 'help_text.php');
 require './includes/session.php';
 
@@ -1332,7 +1334,7 @@ case 'pending_changes':
 		'</p><p>'.
 		WT_I18N::translate('Pending changes are only shown when your account has permission to edit.  When you log out, you will no longer be able to see them.  Also, pending changes are only shown on certain pages.  For example, they are not shown in lists, reports, or search results.').
 		'</p>';
-	if (\WT\Auth::isAdmin()) {
+	if (Auth::isAdmin()) {
 		$text.=
 			'<p>'.
 			WT_I18N::translate('Each user account has an option to “automatically accept changes”.  When this is enabled, any changes made by that user are saved immediately.  Many administrators enable this for their own user account.').
