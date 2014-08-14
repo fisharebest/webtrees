@@ -67,6 +67,7 @@ class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 					if ($user->getSetting('contactmethod') !== 'none') {
 						foreach (WT_Tree::getAll() as $tree) {
 							if (exists_pending_change($user, $tree)) {
+								WT_I18N::init($user->getSetting('language'));
 								WT_Mail::system_message(
 									$tree,
 									$user,
@@ -75,6 +76,7 @@ class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 									WT_Mail::EOL . WT_MAIL::EOL .
 									'<a href="' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'index.php?ged=' . WT_GEDURL . '">' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'index.php?ged=' . WT_GEDURL . '</a>'
 								);
+								WT_I18N::init(WT_LOCALE);
 							}
 						}
 					}
