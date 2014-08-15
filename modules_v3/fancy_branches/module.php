@@ -21,6 +21,9 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
+use WT\Auth;
+use WT\Log;
+
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
@@ -47,7 +50,7 @@ class fancy_branches_WT_Module extends WT_Module implements WT_Module_Config, WT
 
 			$controller=new WT_Controller_Page;
 			$controller
-				->restrictAccess(\WT\Auth::isAdmin())
+				->restrictAccess(Auth::isAdmin())
 				->setPageTitle(WT_I18N::translate('Configuration page for the Simpl Branches Module'))
 				->pageHeader()
 				->addInlineJavaScript ('
@@ -59,7 +62,7 @@ class fancy_branches_WT_Module extends WT_Module implements WT_Module_Config, WT
 			$save = WT_Filter::postBool('save');
 			if (isset($save)) {
 				set_module_setting($this->getName(), 'SB',  WT_Filter::postInteger('NEW_SB'));
-				\WT\Log::addConfigurationLog($this->getTitle().' config updated');
+				Log::addConfigurationLog($this->getTitle().' config updated');
 			}
 
 			$SB = get_module_setting($this->getName(), 'SB');
