@@ -18,13 +18,15 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+
 define('WT_SCRIPT_NAME', 'admin_trees_export.php');
 require './includes/session.php';
 
 $controller=new WT_Controller_Ajax();
 $controller
 	->pageHeader()
-	->restrictAccess(\WT\Auth::isManager());
+	->restrictAccess(Auth::isManager());
 
 $filename = WT_DATA_DIR . $WT_TREE->tree_name;
 // Force a ".ged" suffix

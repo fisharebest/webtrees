@@ -18,6 +18,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Log;
+
 class WT_Site {
 	static $setting=null;
 
@@ -42,7 +44,7 @@ class WT_Site {
 			// If parameter two is specified, then SET the setting
 			if (self::preference($setting_name)!=$setting_value) {
 				// Audit log of changes
-				\WT\Log::addConfigurationLog('Site setting "' . $setting_name . '" set to "' . $setting_value . '"');
+				Log::addConfigurationLog('Site setting "' . $setting_name . '" set to "' . $setting_value . '"');
 			}
 			WT_DB::prepare(
 				"REPLACE INTO `##site_setting` (setting_name, setting_value) VALUES (?, LEFT(?, 255))"

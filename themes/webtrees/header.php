@@ -21,6 +21,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
@@ -58,7 +60,7 @@ $this
 			<li>
 				<?php
 				if (WT_USER_ID) {
-					echo '<a href="edituser.php">', WT_I18N::translate('Logged in as '), ' ', WT_Filter::escapeHtml(\WT\Auth::user()->getRealName()), '</a></li> <li>', logout_link();
+					echo '<a href="edituser.php">', WT_I18N::translate('Logged in as '), ' ', WT_Filter::escapeHtml(Auth::user()->getRealName()), '</a></li> <li>', logout_link();
 				} else {
 					echo login_link();
 				}

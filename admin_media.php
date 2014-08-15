@@ -16,6 +16,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+
 define('WT_SCRIPT_NAME', 'admin_media.php');
 require './includes/session.php';
 require WT_ROOT . 'includes/functions/functions_edit.php';
@@ -515,7 +517,7 @@ $table_id=md5($files.$media_folder.$media_path.$subfolders);
 
 $controller=new WT_Controller_Page();
 $controller
-	->restrictAccess(\WT\Auth::isAdmin())
+	->restrictAccess(Auth::isAdmin())
 	->setPageTitle(WT_I18N::translate('Media'))
 	->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 	->pageHeader()

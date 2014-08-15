@@ -99,18 +99,18 @@ class WT_File {
 	}
 
 	//////////////////////////////////////////////////////////////////////////////
-	// Create a folder, and subfolders, if it does not already exist
+	// Create a folder, and sub-folders, if it does not already exist
 	//////////////////////////////////////////////////////////////////////////////
 
 	public static function mkdir($path) {
-		if (!is_dir($path)) {
+		if (is_dir($path)) {
+			return true;
+		} else {
 			if (!is_dir(dirname($path))) {
 				WT_File::mkdir(dirname($path));
 			}
 			@mkdir($path);
 			return is_dir($path);
-		} else {
-			return true;
 		}
 	}
 }

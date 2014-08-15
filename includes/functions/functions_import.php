@@ -21,6 +21,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Log;
+
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
@@ -1039,7 +1041,7 @@ function accept_all_changes($xref, $ged_id) {
 			" SET status='accepted'".
 			" WHERE status='pending' AND xref=? AND gedcom_id=?"
 		)->execute(array($xref, $ged_id));
-		\WT\Log::addEditLog("Accepted change {$change->change_id} for {$xref} / {$change->gedcom_name} into database");
+		Log::addEditLog("Accepted change {$change->change_id} for {$xref} / {$change->gedcom_name} into database");
 	}
 }
 

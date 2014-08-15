@@ -24,6 +24,8 @@
 
 // webtrees requires a modern version of PHP
 // Note - maintaining this check requires that this file can be parsed by PHP5.2
+use WT\Auth;
+
 if (version_compare(PHP_VERSION, '5.3.2', '<')) {
 	// RFC2616 requires an absolute URL, but we don’t have it here.
 	header('Location: site-php-version.php');
@@ -81,7 +83,7 @@ if ($action == 'ajax') {
 
 $controller=new WT_Controller_Page();
 if ($ctype=='user') {
-	$controller->restrictAccess(\WT\Auth::isMember());
+	$controller->restrictAccess(Auth::isMember());
 }
 $controller
 	->setPageTitle($ctype=='user' ? WT_I18N::translate('My page') : WT_TREE_TITLE)

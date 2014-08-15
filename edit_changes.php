@@ -21,13 +21,16 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+use WT\Log;
+
 define('WT_SCRIPT_NAME', 'edit_changes.php');
 require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
 $controller=new WT_Controller_Simple();
 $controller
-	->restrictAccess(\WT\Auth::isModerator())
+	->restrictAccess(Auth::isModerator())
 	->setPageTitle(WT_I18N::translate('Pending changes'))
 	->pageHeader()
 	->addInlineJavascript("
@@ -81,7 +84,7 @@ case 'accept':
 			update_record($change->new_gedcom, $gedcom_id, false);
 		}
 		WT_DB::prepare("UPDATE `##change` SET status='accepted' WHERE change_id=?")->execute(array($change->change_id));
-		\WT\Log::addEditLog("Accepted change {$change->change_id} for {$change->xref} / {$change->gedcom_name} into database");
+		Log::addEditLog("Accepted change {$change->change_id} for {$change->xref} / {$change->gedcom_name} into database");
 	}
 	break;
 case 'undoall':
@@ -108,7 +111,7 @@ case 'acceptall':
 			update_record($change->new_gedcom, $change->gedcom_id, false);
 		}
 		WT_DB::prepare("UPDATE `##change` SET status='accepted' WHERE change_id=?")->execute(array($change->change_id));
-		\WT\Log::addEditLog("Accepted change {$change->change_id} for {$change->xref} / {$change->gedcom_name} into database");
+		Log::addEditLog("Accepted change {$change->change_id} for {$change->xref} / {$change->gedcom_name} into database");
 	}
 	break;
 }

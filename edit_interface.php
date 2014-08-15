@@ -21,6 +21,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+
 define('WT_SCRIPT_NAME', 'edit_interface.php');
 require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
@@ -29,7 +31,7 @@ $action = WT_Filter::post('action', null, WT_Filter::get('action'));
 
 $controller=new WT_Controller_Simple();
 $controller
-	->restrictAccess(\WT\Auth::isEditor())
+	->restrictAccess(Auth::isEditor())
 	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
 	->addInlineJavascript('autocomplete();')
 	->addInlineJavascript('
@@ -312,7 +314,7 @@ case 'edit':
 		}
 		break;
 	}
-	if (\WT\Auth::isAdmin() || $SHOW_GEDCOM_RECORD) {
+	if (Auth::isAdmin() || $SHOW_GEDCOM_RECORD) {
 		echo
 			'<br><br><a href="edit_interface.php?action=editrawfact&amp;xref=', $xref, '&amp;fact_id=', $fact_id, '&amp;ged=', WT_GEDURL, '">',
 			WT_I18N::translate('Edit raw GEDCOM'),
@@ -715,7 +717,7 @@ case 'add_parent_to_individual_action':
 ////////////////////////////////////////////////////////////////////////////////
 case 'add_unlinked_indi':
 	$controller
-		->restrictAccess(\WT\Auth::isManager())
+		->restrictAccess(Auth::isManager())
 		->setPageTitle(WT_I18N::translate('Create a new individual'))
 		->pageHeader();
 
@@ -735,7 +737,7 @@ case 'add_unlinked_indi_action':
 	}
 
 	$controller
-		->restrictAccess(\WT\Auth::isManager())
+		->restrictAccess(Auth::isManager())
 		->pageHeader();
 
 	splitSOUR();
@@ -2255,7 +2257,7 @@ case 'reorder_fams_update':
 function keep_chan(WT_GedcomRecord $record=null) {
 	global $NO_UPDATE_CHAN;
 
-	if (\WT\Auth::isAdmin()) {
+	if (Auth::isAdmin()) {
 		$checked = $NO_UPDATE_CHAN ? ' checked="checked"' : '';
 
 		if ($record) {
@@ -2726,7 +2728,7 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 	}
 
 	// If we are editing an existing name, allow raw GEDCOM editing
-	if ($name_fact && (\WT\Auth::isAdmin() || $SHOW_GEDCOM_RECORD)) {
+	if ($name_fact && (Auth::isAdmin() || $SHOW_GEDCOM_RECORD)) {
 		echo
 			'<br><br><a href="edit_interface.php?action=editrawfact&amp;xref=', $xref, '&amp;fact_id=', $name_fact->getFactId(), '&amp;ged=', WT_GEDURL, '">',
 			WT_I18N::translate('Edit raw GEDCOM'),

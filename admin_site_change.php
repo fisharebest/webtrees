@@ -18,12 +18,15 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+use WT\User;
+
 define('WT_SCRIPT_NAME', 'admin_site_change.php');
 require './includes/session.php';
 
 $controller=new WT_Controller_Page();
 $controller
-	->restrictAccess(\WT\Auth::isManager())
+	->restrictAccess(Auth::isManager())
 	->setPageTitle(WT_I18N::translate('Changes'));
 
 require WT_ROOT.'includes/functions/functions_edit.php';
@@ -51,7 +54,7 @@ $user   = WT_Filter::get('user');
 $search = WT_Filter::get('search');
 $search = isset($search['value']) ? $search['value'] : null;
 
-if (\WT\Auth::isAdmin()) {
+if (Auth::isAdmin()) {
 	// Administrators can see all logs
 	$gedc = WT_Filter::get('gedc');
 } else {
@@ -150,7 +153,7 @@ case 'load_json':
 	$length = WT_Filter::getInteger('length');
 	$search = WT_Filter::get('search');
 	$search = $search['value'];
-	\WT\Auth::user()->setSetting('admin_site_change_page_size', $length);
+	Auth::user()->setSetting('admin_site_change_page_size', $length);
 	if ($length>0) {
 		$LIMIT = " LIMIT " . $start . ',' . $length;
 	} else {
@@ -222,7 +225,7 @@ $controller
 			jQueryUI: true,
 			autoWidth: false,
 			sorting: [[ 0, "desc" ]],
-			pageLength: ' . \WT\Auth::user()->getSetting('admin_site_change_page_size', 10) . ',
+			pageLength: ' . Auth::user()->getSetting('admin_site_change_page_size', 10) . ',
 			pagingType: "full_numbers",
 			columns: [
 			/* Timestamp   */ { },
@@ -247,7 +250,7 @@ $url=
 	'&amp;gedc='.rawurlencode($gedc);
 
 $users_array = array();
-foreach (\WT\User::all() as $tmp_user) {
+foreach (User::all() as $tmp_user) {
 	$users_array[$tmp_user->getUserName()] = $tmp_user->getUserName();
 }
 
@@ -277,7 +280,7 @@ echo
 					WT_I18N::translate('User'), '<br>', select_edit_control('user', $users_array, '', $user, ''),
 				'</td>',
 				'<td>',
-					WT_I18N::translate('Family tree'), '<br>',  select_edit_control('gedc', WT_Tree::getNameList(), '', $gedc, \WT\Auth::isAdmin() ? '' : 'disabled'),
+					WT_I18N::translate('Family tree'), '<br>',  select_edit_control('gedc', WT_Tree::getNameList(), '', $gedc, Auth::isAdmin() ? '' : 'disabled'),
 				'</td>',
 			'</tr><tr>',
 				'<td colspan="6">',

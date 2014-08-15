@@ -22,6 +22,9 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+use WT\Log;
+
 define('WT_SCRIPT_NAME', 'addmedia.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
@@ -43,7 +46,7 @@ $controller = new WT_Controller_Simple();
 $controller
 	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
 	->addInlineJavascript('autocomplete();')
-	->restrictAccess(\WT\Auth::isMember());
+	->restrictAccess(Auth::isMember());
 
 $disp = true;
 $media = WT_Media::getInstance($pid);
@@ -174,7 +177,7 @@ case 'create': // Save the information from the “showcreateform” action
 		}
 		if (move_uploaded_file($_FILES['mediafile']['tmp_name'], $serverFileName)) {
 			chmod($serverFileName, WT_PERM_FILE);
-			\WT\Log::addMediaLog('Media file ' . $serverFileName . ' uploaded');
+			Log::addMediaLog('Media file ' . $serverFileName . ' uploaded');
 		} else {
 			WT_FlashMessages::addMessage(
 				WT_I18N::translate('There was an error uploading your file.') .
@@ -198,7 +201,7 @@ case 'create': // Save the information from the “showcreateform” action
 			$serverFileName = WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName .  $thumbFile;
 			if (move_uploaded_file($_FILES['thumbnail']['tmp_name'], $serverFileName)) {
 				chmod($serverFileName, WT_PERM_FILE);
-				\WT\Log::addMediaLog('Thumbnail file ' . $serverFileName . ' uploaded');
+				Log::addMediaLog('Thumbnail file ' . $serverFileName . ' uploaded');
 			}
 		}
 	}
@@ -220,10 +223,10 @@ case 'create': // Save the information from the “showcreateform” action
 	if ($linktoid) {
 		$record = WT_GedcomRecord::getInstance($linktoid);
 		$record->createFact('1 OBJE @' . $media->getXref() . '@', true);
-		\WT\Log::addEditLog('Media ID '.$media->getXref()." successfully added to $linktoid.");
+		Log::addEditLog('Media ID '.$media->getXref()." successfully added to $linktoid.");
 		$controller->addInlineJavascript('closePopupAndReloadParent();');
 	} else {
-		\WT\Log::addEditLog('Media ID '.$media->getXref().' successfully added.');
+		Log::addEditLog('Media ID '.$media->getXref().' successfully added.');
 		$controller->addInlineJavascript('openerpasteid("' . $media->getXref() . '");');
 	}
 	echo '<button onclick="closePopupAndReloadParent();">', WT_I18N::translate('close'), '</button>';
@@ -375,7 +378,7 @@ case 'update': // Save the information from the “editmedia” action
 	if ($pid && $linktoid) {
 		$record = WT_GedcomRecord::getInstance($linktoid);
 		$record->createFact('1 OBJE @' . $pid . '@', true);
-		\WT\Log::addEditLog('Media ID '.$pid." successfully added to $linktoid.");
+		Log::addEditLog('Media ID '.$pid." successfully added to $linktoid.");
 	}
 	$controller->pageHeader();
 	if ($messages) {
@@ -508,7 +511,7 @@ if (!$isExternal) {
 		echo '<option';
 		if ($folder == '') echo ' selected="selected"';
 		echo ' value=""> ', WT_I18N::translate('Choose: '), ' </option>';
-		if (\WT\Auth::isAdmin()) {
+		if (Auth::isAdmin()) {
 			echo '<option value="other" disabled>', WT_I18N::translate('Other folder… please type in'), "</option>";
 		}
 		foreach ($mediaFolders as $f) {
@@ -521,7 +524,7 @@ if (!$isExternal) {
 	} else {
 		echo $folder;
 	}
-	if (\WT\Auth::isAdmin()) {
+	if (Auth::isAdmin()) {
 		echo '<br><span dir="ltr"><input type="text" name="folder" size="40" value="', $folder, '"></span>';
 		if ($gedfile == 'FILE') {
 			echo '<p class="sub">', WT_I18N::translate('This entry is ignored if you have entered a URL into the file name field.'), '</p>';
@@ -695,7 +698,7 @@ if (!empty($gedrec)) {
 		add_simple_tag(($sourceLevel+1) .' QUAY '. $sourceQUAY);
 	}
 }
-if (\WT\Auth::isAdmin()) {
+if (Auth::isAdmin()) {
 	echo "<tr><td class=\"descriptionbox wrap width25\">";
 	echo WT_Gedcom_Tag::getLabel('CHAN'), "</td><td class=\"optionbox wrap\">";
 	if ($NO_UPDATE_CHAN) {

@@ -18,6 +18,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Log;
+
 abstract class WT_Module {
 	private $_title = null;
 
@@ -117,7 +119,7 @@ abstract class WT_Module {
 					$modules[$module_name]=new $class();
 				} else {
 					// Module has been deleted from disk?  Disable it.
-					\WT\Log::addConfigurationLog("Module {$module_name} has been deleted from disk - disabling it");
+					Log::addConfigurationLog("Module {$module_name} has been deleted from disk - disabling it");
 					WT_DB::prepare(
 						"UPDATE `##module` SET status='disabled' WHERE module_name=?"
 					)->execute(array($module_name));
@@ -147,7 +149,7 @@ abstract class WT_Module {
 				$array[$module_name]=new $class();
 			} else {
 				// Module has been deleted from disk?  Disable it.
-				\WT\Log::addConfigurationLog("Module {$module_name} has been deleted from disk - disabling it");
+				Log::addConfigurationLog("Module {$module_name} has been deleted from disk - disabling it");
 				WT_DB::prepare(
 					"UPDATE `##module` SET status='disabled' WHERE module_name=?"
 				)->execute(array($module_name));
