@@ -92,65 +92,76 @@ if ($controller->record && $controller->record->canShow()) {
 }
 
 $controller->addInlineJavascript('
-	jQuery("#tabs").tabs({
-		active:   jQuery.cookie("indi-tab"),
-		activate: function(event, ui) {
-			jQuery.cookie("indi-tab", jQuery("#tabs").tabs("option", "active"));
-		},
-		// Only load each tab once
-		beforeLoad: function(event, ui) {
-			if (ui.tab.data("loaded")) {
-				event.preventDefault();
-				return;
+var WT_INDIVIDUAL = (function () {
+
+	var instance,
+		jQseparator = jQuery("#separator"),
+		jQsidebar = jQuery ("#sidebar");
+
+	function init() {
+		jQuery ("#header_accordion1").accordion ({
+			active: 0,
+			heightStyle: "content",
+			collapsible: true
+		});
+
+		jQuery ("#tabs").tabs ({
+			// If url has a hash (e.g #stories) then don\'t set an active tab - it overrides the hash
+			// otherwise use cookie
+			active: document.location.hash ? null : jQuery.cookie ("indi-tab"),
+			activate: function (event, ui) {
+				jQuery.cookie ("indi-tab", jQuery ("#tabs").tabs ("option", "active"));
+			},
+			// Only load each tab once
+			beforeLoad: function (event, ui) {
+				if (ui.tab.data ("loaded")) {
+					event.preventDefault ();
+					return;
+				}
+				jQuery (ui.panel.selector).append (\'<div class="loading-image"></div>\');
+				ui.jqXHR.success (function () {
+					ui.tab.data ("loaded", true);
+				});
 			}
-			jQuery(ui.panel.selector).append(\'<div class="loading-image"></div>\');
-			ui.jqXHR.success(function() {
-				ui.tab.data("loaded", true);
+		});
+
+		// toggle sidebar visibility
+		jQuery ("#main").on ("click", "#separator", function (e) {
+			e.preventDefault ();
+			jQsidebar.animate ({width: "toggle"}, {
+				duration: 300,
+				done: function () {
+					jQuery.cookie ("hide-sb", jQsidebar.is (":hidden"));
+					jQseparator.toggleClass("separator-hidden separator-visible");
+				}
 			});
-		}
-	});
+		});
 
-	// sidebar settings
-	// Variables
-	var objMain	= jQuery("#main");
-
-	// Show sidebar
-	function showSidebar(){
-		objMain.addClass("use-sidebar");
-		jQuery.cookie("hide-sb", null);
-	}
-	// Hide sidebar
-	function hideSidebar(){
-		objMain.removeClass("use-sidebar");
-		jQuery.cookie("hide-sb", "1");
-	}
-	// Sidebar separator
-	jQuery("#separator").click(function(e){
-		e.preventDefault();
-		if ( objMain.hasClass("use-sidebar") ){
-			hideSidebar();
+		// Set initial sidebar state
+		if (jQuery.cookie ("hide-sb") === "true") {
+			jQsidebar.hide ();
+			jQseparator.addClass("separator-hidden");
 		} else {
-			showSidebar();
+			jQsidebar.show ();
+			jQseparator.addClass("separator-visible");
 		}
-	});
-	// Load preference
-	if (jQuery.cookie("hide-sb")=="1"){
-		hideSidebar();
-	} else {
-		showSidebar();
 	}
 
-	jQuery("#header_accordion1").accordion({
-		active: 0,
-		heightStyle: "content",
-		collapsible: true
-	});
-
+	return {
+		getInstance: function () {
+			if (!instance) {
+				instance = init ();
+			}
+			return instance;
+		}
+	};
+}) ();
+WT_INDIVIDUAL.getInstance ();
 ');
 
 // ===================================== header area
 echo
-	'<div id="main" class="use-sidebar">', //overall page container
+	'<div id="main">', //overall page container
 	'<div id="indi_left">',
 	'<div id="indi_header">';
 if ($controller->record->canShow()) {
@@ -235,6 +246,6 @@ foreach ($controller->tabs as $tab) {
 echo
 	'</div>', // close #tabs
 	'</div>', //close indi_left
+	'<div id="separator" title="', WT_I18N::translate('Click here to open or close the sidebar'), '"></div>',//clickable element to open/close sidebar
 	$sidebar_html,
-	'<a href="#" id="separator" title="', WT_I18N::translate('Click here to open or close the sidebar'), '"></a>',//clickable element to open/close sidebar
 	'</div>'; // close #main

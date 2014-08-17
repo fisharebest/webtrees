@@ -2368,11 +2368,12 @@ dd .deletelink {
 	width: 100%;
 	padding: 3px 0 0 0;
 	overflow: hidden;
+	display: table;
+	table-layout: fixed;
 }
 
 #indi_left {
-	float: left;
-	width: 98%;
+	display: table-cell;
 }
 
 #tabs {
@@ -2382,117 +2383,50 @@ dd .deletelink {
 	margin-bottom: 0;
 }
 
-[dir=rtl] #indi_left {
-	float: right;
-}
-
 [dir=rtl] #tabs {
 	float: right;
 }
 
-.use-sidebar #indi_left {
-	width: 77.5%;
-}
-
 #sidebar {
-	float:right;
-	display: none;
-	width: 20%;
-	margin: 0 1px;
-}
-
-#separator {
-	float: right;
-	background: #ccc url(images/indi_sprite.png) no-repeat -26px 100px;
-	border: 1px solid #aaa;
-	border-top-left-radius: 4px;
-	border-top-right-radius: 4px;
-	width: 2%;
-	max-width: 10px;
-	margin: 0 auto -99999px auto;
-	padding-bottom: 99999px;
-}
-
-.use-sidebar #sidebar {
-	display: block;
-}
-
-.use-sidebar #separator {
-	background: #ccc url(images/indi_sprite.png) no-repeat -1px 100px;
-}
-
-[dir=rtl] .use-sidebar #sidebar {
-	float: left;
-}
-
-[dir=rtl] #separator {
-	background: #ccc url(images/indi_sprite.png) no-repeat -1px 100px;
-	float: left;
-}
-
-[dir=rtl] .use-sidebar #separator {
-	background: #ccc url(images/indi_sprite.png) no-repeat -26px 100px;
-}
-
-/*
-#sidebar {
-	display: none;
-	margin: 5px 2px 0 0;
-	height: auto;
-}
-
-.use-sidebar #indi_left {
-	width: 77%;
-}
-
-.use-sidebar #sidebar {
-	display: block;
-}
-
-.sidebar-at-right #sidebar {
+	display: table-cell;
+	vertical-align: top;
 	width: 20%;
 }
 
-.use-sidebar.sidebar-at-right #sidebar,
-.sidebar-at-right #separator {
-	float: right;
+#separator {
+	display:          table-cell;
+	width:            2.5em;
+	position:         relative;
+	background-color: transparent;
 }
 
-#separator {
-	float: right;
-	display: block;
-	background: #ccc url(images/indi_sprite.png) no-repeat -26px 100px;
-	min-width: 6px;
-	max-width: 10px;
-	width: 0.75%;
+#separator:after {
+	position:                absolute;
+	top:                     0;
+	left:                    auto;
+	right:                   0;
+	width:                   10px;
+	height:                  99999px;
+	content:                 "";
 	border: 1px solid #aaa;
 	border-top-left-radius: 4px;
 	border-top-right-radius: 4px;
-	margin-top: 5px;
 }
 
-.use-sidebar #separator {
-	background: #ccc url(images/indi_sprite.png) no-repeat -1px 100px;
+[dir=rtl] #separator:after {
+	left:  0;
+	right: auto;
 }
 
-[dir=rtl] #sidebar {
-	margin: 5px 0 0 2px;
-}
-
-[dir=rtl] .use-sidebar.sidebar-at-right #sidebar,
-[dir=rtl] .sidebar-at-right #separator {
-	float: left;
-}
-
-[dir=rtl] #separator {
-	float: left;
-	background: #ccc url(images/indi_sprite.png) no-repeat -1px 100px;
-}
-
-[dir=rtl] .use-sidebar #separator {
+.separator-hidden:after,
+[dir=rtl] .separator-visible:after {
 	background: #ccc url(images/indi_sprite.png) no-repeat -26px 100px;
 }
-*/
+
+.separator-visible:after,
+[dir=rtl] .separator-hidden:after {
+	background: #ccc url(images/indi_sprite.png) no-repeat -1px 100px;
+}
 
 #sidebarAccordion,
 #sidebarAccordion2 {
