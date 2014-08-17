@@ -28,6 +28,9 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+use WT\User;
+
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
@@ -39,7 +42,7 @@ if (!defined('WT_WEBTREES')) {
  * @deprecated
  */
 function getUserFullName($user_id) {
-	return \WT\User::find($user_id)->getRealName();
+	return User::find($user_id)->getRealName();
 }
 
 //-- requires a string to add into the searchlog-file
@@ -63,8 +66,8 @@ function addMessage($message) {
 
 	$success = true;
 
-	$sender    = \WT\User::findByIdentifier($message['from']);
-	$recipient = \WT\User::findByIdentifier($message['to']);
+	$sender    = User::findByIdentifier($message['from']);
+	$recipient = User::findByIdentifier($message['to']);
 
 	// Sender may not be a webtrees user
 	if ($sender) {
@@ -123,7 +126,7 @@ function addMessage($message) {
 	}
 
 	// Add another footer - unless we are an admin
-	if (!\WT\Auth::isAdmin()) {
+	if (!Auth::isAdmin()) {
 		if (!empty($message['url'])) {
 			$message['body'] .=
 				WT_Mail::EOL . WT_Mail::EOL .

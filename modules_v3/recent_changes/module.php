@@ -22,11 +22,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 class recent_changes_WT_Module extends WT_Module implements WT_Module_Block {
 	const DEFAULT_DAYS = 7;
 	const MAX_DAYS = 90;

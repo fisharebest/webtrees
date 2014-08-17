@@ -19,6 +19,7 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 use Michelf\MarkdownExtra;
+use WT\Log;
 
 class WT_Filter {
 	// REGEX to match a URL
@@ -291,7 +292,7 @@ class WT_Filter {
 	public static function checkCsrf() {
 		if (WT_Filter::post('csrf') !== WT_Filter::getCsrfToken()) {
 			// Oops.  Something is not quite right
-			\WT\Log::addAuthenticationLog('CSRF mismatch - session expired or malicious attack');
+			Log::addAuthenticationLog('CSRF mismatch - session expired or malicious attack');
 			WT_FlashMessages::addMessage(WT_I18N::translate('This form has expired.  Try again.'));
 			return false;
 		}

@@ -26,6 +26,8 @@
 
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 use Rhumsaa\Uuid\Uuid;
+use WT\Auth;
+use WT\User;
 
 class WT_Stats {
 	private $_gedcom;
@@ -657,19 +659,19 @@ class WT_Stats {
 
 	static function totalUsers($params=null) {
 		if (!empty($params[0])) {
-			$total = count(\WT\User::all()) + (int)$params[0];
+			$total = count(User::all()) + (int)$params[0];
 		} else {
-			$total = count(\WT\User::all());
+			$total = count(User::all());
 		}
 		return WT_I18N::number($total);
 	}
 
 	static function totalAdmins() {
-		return WT_I18N::number(count(\WT\User::allAdmins()));
+		return WT_I18N::number(count(User::allAdmins()));
 	}
 
 	static function totalNonAdmins() {
-		return WT_I18N::number(count(\WT\User::all()) - count(\WT\User::allAdmins()));
+		return WT_I18N::number(count(User::all()) - count(User::allAdmins()));
 	}
 
 	function _totalMediaType($type='all') {
@@ -3401,8 +3403,8 @@ class WT_Stats {
 		// List active users
 		$NumAnonymous = 0;
 		$loggedusers = array ();
-		foreach (\WT\User::allLoggedIn() as $user) {
-			if (\WT\Auth::isAdmin() || $user->getSetting('visibleonline')) {
+		foreach (User::allLoggedIn() as $user) {
+			if (Auth::isAdmin() || $user->getSetting('visibleonline')) {
 				$loggedusers[] = $user;
 			} else {
 				$NumAnonymous++;
@@ -3430,7 +3432,7 @@ class WT_Stats {
 				$content .= ': ';
 			}
 		}
-		if (\WT\Auth::check()) {
+		if (Auth::check()) {
 			foreach ($loggedusers as $user) {
 				if ($type == 'list') {
 					$content .= "<li>" . WT_Filter::escapeHtml($user->getRealName()) . ' - ' . WT_Filter::escapeHtml($user->getUserName());
@@ -3458,8 +3460,8 @@ class WT_Stats {
 	static function _usersLoggedInTotal($type='all') {
 		$anon = 0;
 		$visible = 0;
-		foreach (\WT\User::allLoggedIn() as $user) {
-			if (\WT\Auth::isAdmin() || $user->getSetting('visibleonline')) {
+		foreach (User::allLoggedIn() as $user) {
+			if (Auth::isAdmin() || $user->getSetting('visibleonline')) {
 				$visible++;
 			} else {
 				$anon++;
@@ -3482,13 +3484,13 @@ class WT_Stats {
 	static function usersLoggedInTotalVisible() { return self::_usersLoggedInTotal('visible'); }
 
 	static function userID() {
-		return \WT\Auth::id();
+		return Auth::id();
 	}
 
 
 	static function userName($params = null) {
-		if (\WT\Auth::check()) {
-			return \WT\Auth::user()->getUserName();
+		if (Auth::check()) {
+			return Auth::user()->getUserName();
 		} elseif (is_array($params) && isset($params[0]) && $params[0] != '') {
 			# if #username:visitor# was specified, then "visitor" will be returned when the user is not logged in
 			return $params[0];
@@ -3497,7 +3499,7 @@ class WT_Stats {
 		}
 	}
 	static function userFullName() {
-		return \WT\Auth::check() ? \WT\Auth::user()->getRealName() : '';
+		return Auth::check() ? Auth::user()->getRealName() : '';
 	}
 
 	static function _getLatestUserData($type = 'userid', $params = null) {
@@ -3505,9 +3507,9 @@ class WT_Stats {
 		static $user_id = null;
 
 		if ($user_id === null) {
-			$user = \WT\User::findLatestToRegister();
+			$user = User::findLatestToRegister();
 		} else {
-			$user = \WT\User::find($user_id);
+			$user = User::find($user_id);
 		}
 
 		switch($type) {
@@ -3602,8 +3604,8 @@ class WT_Stats {
 			$page_parameter='gedcom:'.get_id_from_gedcom($page_parameter ? $page_parameter : WT_GEDCOM);
 		} elseif ($page_name=='index.php') {
 			// index.php?ctype=user
-			$user = \WT\User::findByIdentifier($page_parameter);
-			$page_parameter='user:'.($user ? $user->getUserId() : \WT\Auth::id());
+			$user = User::findByIdentifier($page_parameter);
+			$page_parameter='user:'.($user ? $user->getUserId() : Auth::id());
 		} else {
 			// indi/fam/sour/etc.
 		}

@@ -25,6 +25,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+
 class WT_I18N {
 	// Lookup table to convert unicode code-points into scripts.
 	// See https://en.wikipedia.org/wiki/Unicode_block
@@ -87,8 +89,8 @@ class WT_I18N {
 			$locale = WT_Filter::get('lang');
 			if ($locale && array_key_exists($locale, $installed_languages)) {
 				// Requested in the URL?
-				if (\WT\Auth::id()) {
-					\WT\Auth::user()->setSetting('language', $locale);
+				if (Auth::id()) {
+					Auth::user()->setSetting('language', $locale);
 				}
 			} elseif (array_key_exists($WT_SESSION->locale, $installed_languages)) {
 				// Rembered from a previous visit?

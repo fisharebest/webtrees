@@ -23,13 +23,15 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+
 define('WT_SCRIPT_NAME', 'editnews.php');
 require './includes/session.php';
 
 $controller=new WT_Controller_Simple();
 $controller
 	->setPageTitle(WT_I18N::translate('Add/edit a journal/news entry'))
-	->restrictAccess(\WT\Auth::isMember())
+	->restrictAccess(Auth::isMember())
 	->pageHeader();
 
 $action    = WT_Filter::get('action', 'compose|save|delete', 'compose');
