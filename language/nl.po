@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2014-06-12 21:41+0100\n"
-"PO-Revision-Date: 2014-07-10 16:36+0100\n"
+"PO-Revision-Date: 2014-08-18 06:57+0100\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Launchpad-Export-Date: 2013-08-04 19:03+0000\n"
-"X-Generator: Poedit 1.6.6\n"
+"X-Generator: Poedit 1.6.7\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -646,7 +646,7 @@ msgstr "<standaard thema>"
 
 #: login.php:399
 msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div>"
-msgstr "<div class=\"largeError\">Belangrijk bericht:</div><div class=\"error\">Door dit formulier in te vullen en te verzenden, gaat u akkoord met:<ul><li>het respecteren van de privacy van nog levende personen, die op onze site voorkomen;</li><li>in het onderstaande tekstvak uit te leggen aan wie u verwant bent, of ons van informatie te voorzien over iemand, die op onze site vermeld zou moeten staan.</li></ul></div>"
+msgstr "<div class=\"largeError\">Belangrijk bericht:</div><div class=\"error\">Door dit formulier in te vullen en te verzenden, gaat u akkoord met:<ul><li>het respecteren van de privacy van nog levende personen op onze site en,</li><li>in het onderstaande tekstvak, uit te leggen aan wie u verwant bent of ons van informatie te voorzien over iemand die op onze site vermeld zou moeten staan.</li></ul></div>"
 
 #. I18N: a label/value pair, such as “Occupation: Farmer”.  Some languages may need to change the punctuation.
 #: includes/functions/functions_print.php:578 library/WT/Gedcom/Tag.php:838
@@ -5245,11 +5245,11 @@ msgstr "Duodi"
 
 #: admin_users.php:263 edituser.php:59 login.php:272
 msgid "Duplicate email address.  A user with that email already exists."
-msgstr "Een gebruiker met dat e-mailadres bestaat al."
+msgstr "Een gebruiker met dit e-mailadres bestaat al."
 
 #: admin_users.php:260 edituser.php:57 login.php:270
 msgid "Duplicate user name.  A user with that user name already exists.  Please choose another user name."
-msgstr "Een gebruiker met die naam is reeds aanwezig. Kies a.u.b. een andere naam."
+msgstr "Er bestaat al een gebruiker met deze naam. Kies a.u.b. een andere naam."
 
 #: help_text.php:779
 msgid "E-mail address to be used in the “From:” field of e-mails that <b>webtrees</b> creates automatically.<br><br><b>webtrees</b> can automatically create e-mails to notify administrators of changes that need to be reviewed.  <b>webtrees</b> also sends notification e-mails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created e-mails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the e-mail is required.  To guard against spam or other e-mail abuse, some e-mail systems require each message’s “From:” field to reflect a valid e-mail account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
@@ -13576,7 +13576,7 @@ msgstr "De gebruikersnaam vereist voor authenticatie bij de SMTP server."
 
 #: login.php:72 login.php:77
 msgid "The username or password is incorrect."
-msgstr "De gebruikersnaam of wachtwoord is niet juist."
+msgstr "De gebruikersnaam of het wachtwoord is niet juist."
 
 #: help_text.php:689
 msgid "The value to place in the “meta description” tag in the HTML page header.  Leave this field empty to use the name of the family tree."
@@ -15312,7 +15312,7 @@ msgstr "Het genereren van watermerken voor grote afbeeldingen kan traag zijn. Vo
 #: login.php:379
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To login to this site, you will need to know your user name and password."
-msgstr "We zullen nu een e-mailbevestiging sturen naar het adres <b>%s</b>. U moet uw account aanvraag verifiëren door de  instructies op te volgen in de email. Als dit niet binnen zeven dagen gebeurt, wordt uw aanvraag automatisch verwijderd. U moet dan opnieuw een aanvraag indienen.<br><br>Nadat u de instructies in de  e-mailbevestiging hebt opgevolgd moet de beheerder nog uw aanvraag goedkeuren voordat u gebruik kunt maken van uw account.<br><br>Om aan te melden op deze site moet u weten wat uw gebruikersnaam en wachtwoord zijn."
+msgstr "We zullen nu een e-mailbevestiging sturen naar het adres <b>%s</b>. Volg de instructies in de e-mail op om uw account aanvraag te verifiëren. Doe dit binnen zeven dagen, anders wordt uw aanvraag automatisch verwijderd. U moet dan opnieuw een aanvraag indienen.<br><br>Nadat u de instructies in de  e-mailbevestiging hebt opgevolgd zal de beheerder uw aanvraag nog moeten goedkeuren voordat u gebruik kunt maken van uw account.<br><br>Om u aan te melden op deze site heeft u uw gebruikersnaam en wachtwoord nodig."
 
 #: login.php:381
 #, php-format
@@ -15405,7 +15405,7 @@ msgstr "Bij het berekenen van relaties, bepaalt deze optie of door <b>webtrees</
 
 #: help_text.php:895
 msgid "When set to <b>Yes</b>, the following message will appear above the input fields on the “Request new user account” page:<div class=\"list_value_wrap\"><div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div></div>"
-msgstr "Staat dit ingesteld op <b>Ja</b>, dan wordt de volgende boodschap getoond boven de invoervelden op de pagina voor het aanvragen van een nieuw gebruikersaccount: <div class=\"list_value_wrap\"><div class=\"largeError\">Belangrijk bericht:</div><div class=\"error\">Door dit formulier in te vullen en te verzenden, gaat u akkoord met:<ul><li>het respecteren van de privacy van nog levende personen, die op onze site voorkomen;</li><li>en dat u in het onderstaande vak uitlegt aan wie u verwant bent, of dat u ons van informatie voorziet over iemand die op onze site vermeld zou moeten staan.</li></ul></div></div>"
+msgstr "Staat dit ingesteld op <b>Ja</b>, dan wordt de volgende boodschap getoond boven de invoervelden op de pagina voor het aanvragen van een nieuw gebruikersaccount: <div class=\"list_value_wrap\"><div class=\"largeError\">Belangrijk bericht:</div><div class=\"error\">Door dit formulier in te vullen en te verzenden, gaat u akkoord met:<ul><li>het respecteren van de privacy van nog levende personen op onze site en,</li><li>in het onderstaande tekstvak, uit te leggen aan wie u verwant bent of ons van informatie te voorzien over iemand die op onze site vermeld zou moeten staan.</li></ul></div></div>"
 
 #: help_text.php:1289
 msgid "When this check box is checked, the chart will be printed with oldest individuals at the top.  When it is unchecked, youngest individuals will appear at the top."
