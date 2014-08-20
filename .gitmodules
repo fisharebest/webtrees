@@ -19,3 +19,6 @@
 [submodule "modules_v3/fancy_imagebar"]
 	path = modules_v3/fancy_imagebar
 	url = https://github.com/JustCarmen/fancy_imagebar.git
+[submodule "themes/justlight"]
+	path = themes/justlight
+	url = https://github.com/JustCarmen/justlight.git
