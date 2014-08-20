@@ -22,3 +22,6 @@
 [submodule "themes/justlight"]
 	path = themes/justlight
 	url = https://github.com/JustCarmen/justlight.git
+[submodule "modules_v3/justlight_theme_options"]
+	path = modules_v3/justlight_theme_options
+	url = https://github.com/JustCarmen/justlight_theme_options.git
