@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2014-06-12 21:41+0100\n"
-"PO-Revision-Date: 2014-08-18 06:57+0100\n"
+"PO-Revision-Date: 2014-08-20 22:25+0100\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -15312,7 +15312,7 @@ msgstr "Het genereren van watermerken voor grote afbeeldingen kan traag zijn. Vo
 #: login.php:379
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To login to this site, you will need to know your user name and password."
-msgstr "We zullen nu een e-mailbevestiging sturen naar het adres <b>%s</b>. Volg de instructies in de e-mail op om uw account aanvraag te verifiëren. Doe dit binnen zeven dagen, anders wordt uw aanvraag automatisch verwijderd. U moet dan opnieuw een aanvraag indienen.<br><br>Nadat u de instructies in de  e-mailbevestiging hebt opgevolgd zal de beheerder uw aanvraag nog moeten goedkeuren voordat u gebruik kunt maken van uw account.<br><br>Om u aan te melden op deze site heeft u uw gebruikersnaam en wachtwoord nodig."
+msgstr "We zullen nu een e-mailbevestiging sturen naar het adres <b>%s</b>. Volg de instructies in de e-mail op om uw account aanvraag te verifiëren. Doet u dit niet binnen zeven dagen, dan wordt uw aanvraag automatisch verwijderd. U moet dan opnieuw een aanvraag indienen.<br><br>Nadat u de instructies in de  e-mailbevestiging hebt opgevolgd zal de beheerder uw aanvraag nog moeten goedkeuren voordat u gebruik kunt maken van uw account.<br><br>Om u aan te melden op deze site heeft u uw gebruikersnaam en wachtwoord nodig."
 
 #: login.php:381
 #, php-format
