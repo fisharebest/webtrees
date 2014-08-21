@@ -3623,8 +3623,7 @@ span.link_text {
 
 /* Sidebar */
 #indi_left {
-	float: left;
-	width: 98%;
+	display: table-cell;
 }
 
 #main {
@@ -3632,6 +3631,8 @@ span.link_text {
 	width: 100%;
 	overflow: hidden;
 	padding: 5px 2px 0 2px;
+	display: table;
+	table-layout: fixed;
 }
 
 #tabs {
@@ -3641,61 +3642,53 @@ span.link_text {
 	border-color: #ddd;
 }
 
-[dir=rtl] #indi_left,
 [dir=rtl] #tabs {
 	float: right;
 }
 
-.use-sidebar #indi_left {
-	width: 77.5%;
-}
-
 #sidebar {
-	float:right;
 	border-color: #ddd;
-	display: none;
 	width: 20%;
-	margin: 0 1px;
+	display: table-cell;
+	vertical-align: top;
 }
 
 #separator {
-	float: right;
-	background-image: url(../images/general_sprite.png);
-	background-position: -26px 100px;
-	background-repeat: no-repeat;
+	display:          table-cell;
+	width:            2.5em;
+	position:         relative;
+	background-color: transparent;
+}
+
+#separator:after {
+	position:                absolute;
+	top:                     0;
+	left:                    auto;
+	right:                   0;
+	width:                   10px;
+	height:                  99999px;
+	content:                 "";
 	border: 1px solid #999;
 	border-top-left-radius: 3px;
 	border-top-right-radius: 3px;
-	width: 2%;
-	max-width: 10px;
-	margin: 0 auto -99999px auto;
-	padding-bottom: 99999px;
 }
 
-.use-sidebar #sidebar {
-	display: block;
+[dir=rtl] #separator:after {
+	left:  0;
+	right: auto;
 }
 
-.use-sidebar #separator {
-	background-image: url(../images/general_sprite.png);
-	background-position: -1px 100px;
-	background-repeat: no-repeat;
-}
-
-[dir=rtl] .use-sidebar #sidebar {
-	float: left;
-}
-
-[dir=rtl] #separator {
-	background-image: url(../images/general_sprite.png);
-	background-position: -1px 100px;
-	background-repeat: no-repeat;
-	float: left;
-}
-
-[dir=rtl] .use-sidebar #separator {
+.separator-hidden:after,
+[dir=rtl] .separator-visible:after {
 	background-image: url(../images/general_sprite.png);
 	background-position: -26px 100px;
+	background-repeat: no-repeat;
+}
+
+.separator-visible:after,
+[dir=rtl] .separator-hidden:after {
+	background-image: url(../images/general_sprite.png);
+	background-position: -1px 100px;
 	background-repeat: no-repeat;
 }
 
