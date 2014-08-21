@@ -160,8 +160,8 @@ if (WT_Filter::get('go')) {
 			break;
 		case 'NOTE':
 			WT_DB::prepare(
-				"UPDATE `##other` SET o_id = ?, o_gedcom = REPLACE(o_gedcom, ?, ?) WHERE o_id = ? AND o_file = ?"
-			)->execute(array($new_xref, "0 @$old_xref@ NOTE\n", "0 @$new_xref@ NOTE\n", $old_xref, WT_GED_ID));
+				"UPDATE `##other` SET o_id = ?, o_gedcom = REPLACE(REPLACE(o_gedcom, ?, ?), ?, ?) WHERE o_id = ? AND o_file = ?"
+			)->execute(array($new_xref, "0 @$old_xref@ NOTE\n", "0 @$new_xref@ NOTE\n", "0 @$old_xref@ NOTE ", "0 @$new_xref@ NOTE ", $old_xref, WT_GED_ID));
 			WT_DB::prepare(
 				"UPDATE `##individuals` JOIN `##link` ON (l_file = i_file AND l_to = ? AND l_type = 'NOTE') SET i_gedcom = REPLACE(i_gedcom, ?, ?) WHERE i_file = ?"
 			)->execute(array($old_xref, " NOTE @$old_xref@", " NOTE @$new_xref@", WT_GED_ID));
