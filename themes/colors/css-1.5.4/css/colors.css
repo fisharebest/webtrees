@@ -3629,7 +3629,6 @@ span.link_text {
 #main {
 	min-width: 600px;
 	width: 100%;
-	overflow: hidden;
 	padding: 5px 2px 0 2px;
 	display: table;
 	table-layout: fixed;
@@ -3647,7 +3646,6 @@ span.link_text {
 }
 
 #sidebar {
-	border-color: #ddd;
 	width: 20%;
 	display: table-cell;
 	vertical-align: top;
@@ -3658,6 +3656,7 @@ span.link_text {
 	width:            2.5em;
 	position:         relative;
 	background-color: transparent;
+	overflow: hidden;
 }
 
 #separator:after {
