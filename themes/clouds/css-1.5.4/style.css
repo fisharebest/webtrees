@@ -3062,7 +3062,7 @@ dd .deletelink {
 #indi_header {
 	border-radius: 3px;
 	overflow: hidden;
-	margin: 0 0 5px 0;
+	margin: 0 2px 5px;
 	width: 100%;
 }
 

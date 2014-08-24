@@ -205,6 +205,7 @@ textarea:required:invalid {
 	width: 100%;
 	margin-top: 18px;
 	border-bottom: 1px solid;
+	margin-bottom: 10px;
 }
 
 #topMenu ul {
@@ -2768,7 +2769,7 @@ dd .deletelink {
 	min-width: 600px;
 	width: 100%;
 	overflow: hidden;
-	padding-top: 5px;
+	padding-top: 0px;
 	display: table;
 	table-layout: fixed;
 }
