@@ -1736,7 +1736,10 @@ function get_relationship_name_from_path($path, WT_Individual $person1=null, WT_
  * function to get the names of all of the themes as an array
  * it searches the themes folder and reads the name from the theme_name variable
  * in the theme.php file.
- * @return array and array of theme names and their corresponding folder
+ *
+ * @throws Exception
+ *
+ * @return array An array of theme names and their corresponding folder
  */
 function get_theme_names() {
 	static $themes;
