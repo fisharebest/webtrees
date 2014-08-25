@@ -23,11 +23,6 @@
 
 use WT\Log;
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 // converts raw values from php.ini file into bytes
 // from http://www.php.net/manual/en/function.ini-get.php
 function return_bytes($val) {

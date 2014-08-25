@@ -24,11 +24,6 @@
 use WT\Auth;
 use WT\User;
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 ////////////////////////////////////////////////////////////////////////////////
 // Fetch all records linked to a record - when deleting an object, we must
 // also delete all links to it.

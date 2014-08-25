@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/fisharebest/webtrees.svg?branch=travis)](https://travis-ci.org/fisharebest/webtrees)
+
 # webtrees
 
 The project’s website is [webtrees.net](http://webtrees.net).

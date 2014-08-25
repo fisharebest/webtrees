@@ -1,4 +1,5 @@
-<?php namespace WT;
+<?php
+namespace WT;
 
 // Provide an interface to the wt_user table
 //
