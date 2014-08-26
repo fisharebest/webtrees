@@ -205,6 +205,7 @@ textarea:required:invalid {
 	width: 100%;
 	margin-top: 18px;
 	border-bottom: 1px solid;
+	margin-bottom: 10px;
 }
 
 #topMenu ul {
@@ -1244,11 +1245,13 @@ img.block {
 
 /* Pending edits - TODO perhaps show differently in different contexts? */
 .new {
-	outline: solid blue 1px;
+	border: solid blue 1px;
+	overflow: hidden;
 }
 
 .old {
-	outline: solid red 1px;
+	border: solid red 1px;
+	overflow: hidden;
 }
 
 a.showit {
@@ -2766,16 +2769,13 @@ dd .deletelink {
 	min-width: 600px;
 	width: 100%;
 	overflow: hidden;
-	padding-top: 5px;
+	padding-top: 0px;
+	display: table;
+	table-layout: fixed;
 }
 
 #indi_left {
-	float: left;
-	width: 98%;
-}
-
-[dir=rtl] #indi_left {
-	float: right;
+	display: table-cell;
 }
 
 #tabs {
@@ -2798,110 +2798,48 @@ dd .deletelink {
 	border: 1px solid #888;
 }
 
-.use-sidebar #indi_left {
-	width: 77.5%;
-}
-
 #sidebar {
-	float:right;
 	border-color: #ddd;
-	display: none;
 	width: 20%;
-	margin: 0 1px;
+	display: table-cell;
+	vertical-align: top;
 }
 
 #separator {
-	float: right;
-	background: #ddd url(images/indi_sprite.png) no-repeat -26px 100px;
+	display:          table-cell;
+	width:            2.5em;
+	position:         relative;
+	background-color: transparent;
+}
+
+#separator:after {
+	position:                absolute;
+	top:                     0;
+	left:                    auto;
+	right:                   0;
+	width:                   10px;
+	height:                  99999px;
+	content:                 "";
 	border: 1px solid #81a9cb;
 	border-top-left-radius: 3px;
 	border-top-right-radius: 3px;
-	width: 2%;
-	max-width: 10px;
-	margin: 0 auto -99999px auto;
-	padding-bottom: 99999px;
 }
 
-.use-sidebar #sidebar {
-	display: block;
+[dir=rtl] #separator:after {
+	left:  0;
+	right: auto;
 }
 
-.use-sidebar #separator {
-	background: #ddd url(images/indi_sprite.png) no-repeat -1px 100px;
-}
-
-[dir=rtl] .use-sidebar #sidebar {
-	float: left;
-}
-
-[dir=rtl] #separator {
-	background: #ddd url(images/indi_sprite.png) no-repeat -1px 100px;
-	float: left;
-}
-
-[dir=rtl] .use-sidebar #separator {
+.separator-hidden:after,
+[dir=rtl] .separator-visible:after {
 	background: #ddd url(images/indi_sprite.png) no-repeat -26px 100px;
 }
-/*
-#sidebar {
-	border-color: #ddd;
-	display: none;
-	margin: 5px 2px 0 0;
-	height: auto;
-}
 
-.use-sidebar #indi_left {
-	width: 77%;
-}
-
-.use-sidebar #sidebar {
-	display: block;
-}
-
-.sidebar-at-right #sidebar {
-	width: 20%;
-}
-
-.use-sidebar.sidebar-at-right #sidebar,
-.sidebar-at-right #separator {
-	float: right;
-}
-
-#separator {
-	display: block;
-	background: #ddd url(images/indi_sprite.png) no-repeat -26px 100px;
-	min-width: 6px;
-	max-width: 10px;
-	width: 0.75%;
-	border: 1px solid #888;
-	border-top-left-radius: 3px;
-	border-top-right-radius: 3px;
-	margin-top: 5px;
-}
-
-.use-sidebar #separator {
+.separator-visible:after,
+[dir=rtl] .separator-hidden:after {
 	background: #ddd url(images/indi_sprite.png) no-repeat -1px 100px;
 }
 
-
-
-[dir=rtl] #sidebar {
-	margin: 5px 0 0 2px;
-}
-
-[dir=rtl] .use-sidebar.sidebar-at-right #sidebar,
-[dir=rtl] .sidebar-at-right #separator {
-	float: left;
-}
-
-[dir=rtl] #separator {
-	background: #ddd url(images/indi_sprite.png) no-repeat -1px 100px;
-}
-
-[dir=rtl] .use-sidebar #separator {
-	background: #ddd url(images/indi_sprite.png) no-repeat -26px 100px;
-}
-*/
 /* ============== Sidebar content items ============== */
 /* Family navigator */
 #sb_content_family_nav {

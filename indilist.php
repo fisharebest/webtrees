@@ -24,6 +24,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+
 define('WT_SCRIPT_NAME', 'indilist.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
@@ -46,18 +48,18 @@ if ($show_all_firstnames=='yes') {
 switch (WT_Filter::get('show_marnm', 'no|yes')) {
 case 'no':
 	$show_marnm = false;
-	if (\WT\Auth::id()) {
-		\WT\Auth::user()->setSetting(WT_SCRIPT_NAME.'_show_marnm', $show_marnm);
+	if (Auth::id()) {
+		Auth::user()->setSetting(WT_SCRIPT_NAME.'_show_marnm', $show_marnm);
 	}
 	break;
 case 'yes':
 	$show_marnm = true;
-	if (\WT\Auth::id()) {
-		\WT\Auth::user()->setSetting(WT_SCRIPT_NAME.'_show_marnm', $show_marnm);
+	if (Auth::id()) {
+		Auth::user()->setSetting(WT_SCRIPT_NAME.'_show_marnm', $show_marnm);
 	}
 	break;
 default:
-	$show_marnm = \WT\Auth::id() && \WT\Auth::user()->getSetting(WT_SCRIPT_NAME.'_show_marnm');
+	$show_marnm = Auth::id() && Auth::user()->getSetting(WT_SCRIPT_NAME.'_show_marnm');
 }
 
 // Make sure selections are consistent.

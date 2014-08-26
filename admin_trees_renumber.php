@@ -18,12 +18,14 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+
 define('WT_SCRIPT_NAME', 'admin_trees_renumber.php');
 require './includes/session.php';
 
 $controller=new WT_Controller_Page();
 $controller
-	->restrictAccess(\WT\Auth::isManager())
+	->restrictAccess(Auth::isManager())
 	->setPageTitle(WT_I18N::translate('Renumber family tree'))
 	->pageHeader();
 
@@ -158,8 +160,8 @@ if (WT_Filter::get('go')) {
 			break;
 		case 'NOTE':
 			WT_DB::prepare(
-				"UPDATE `##other` SET o_id = ?, o_gedcom = REPLACE(o_gedcom, ?, ?) WHERE o_id = ? AND o_file = ?"
-			)->execute(array($new_xref, "0 @$old_xref@ NOTE\n", "0 @$new_xref@ NOTE\n", $old_xref, WT_GED_ID));
+				"UPDATE `##other` SET o_id = ?, o_gedcom = REPLACE(REPLACE(o_gedcom, ?, ?), ?, ?) WHERE o_id = ? AND o_file = ?"
+			)->execute(array($new_xref, "0 @$old_xref@ NOTE\n", "0 @$new_xref@ NOTE\n", "0 @$old_xref@ NOTE ", "0 @$new_xref@ NOTE ", $old_xref, WT_GED_ID));
 			WT_DB::prepare(
 				"UPDATE `##individuals` JOIN `##link` ON (l_file = i_file AND l_to = ? AND l_type = 'NOTE') SET i_gedcom = REPLACE(i_gedcom, ?, ?) WHERE i_file = ?"
 			)->execute(array($old_xref, " NOTE @$old_xref@", " NOTE @$new_xref@", WT_GED_ID));

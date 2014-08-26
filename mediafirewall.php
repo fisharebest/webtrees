@@ -21,6 +21,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Log;
+
 define('WT_SCRIPT_NAME', 'mediafirewall.php');
 require './includes/session.php';
 
@@ -201,7 +203,7 @@ function textlength($t, $mxl, $text) {
 function imagettftextErrorHandler($errno, $errstr, $errfile, $errline) {
 	global $useTTF, $serverFilename;
 	// log the error
-	\WT\Log::addErrorLog("Media Firewall error: >" . $errstr . "< in file >" . $serverFilename . "<");
+	Log::addErrorLog("Media Firewall error: >" . $errstr . "< in file >" . $serverFilename . "<");
 
 	// change value of useTTF to false so the fallback watermarking can be used.
 	$useTTF = false;
@@ -361,7 +363,7 @@ if ($generatewatermark) {
 
 	} else {
 		// this image is defective.  log it
-		\WT\Log::addMediaLog("Media Firewall error: >" . WT_I18N::translate('This media file is broken and cannot be watermarked') . "< in file >" . $serverFilename . "< memory used: " . memory_get_usage());
+		Log::addMediaLog("Media Firewall error: >" . WT_I18N::translate('This media file is broken and cannot be watermarked') . "< in file >" . $serverFilename . "< memory used: " . memory_get_usage());
 
 		// set usewatermark to false so image will simply be passed through below
 		$usewatermark = false;

@@ -18,12 +18,15 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+use WT\Log;
+
 define('WT_SCRIPT_NAME', 'logout.php');
 require './includes/session.php';
 
-if (\WT\Auth::id()) {
-	\WT\Log::addAuthenticationLog('Logout: ' . \WT\Auth::user()->getUserName() . '/' . \WT\Auth::user()->getRealName());
-	\WT\Auth::logout();
+if (Auth::id()) {
+	Log::addAuthenticationLog('Logout: ' . Auth::user()->getUserName() . '/' . Auth::user()->getRealName());
+	Auth::logout();
 }
 
 header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH);

@@ -23,11 +23,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
 use Rhumsaa\Uuid\Uuid;
+use WT\User;
 
 // Print a fact record, for the individual/family/source/repository/etc. pages.
 //
@@ -389,7 +386,7 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 			}
 			break;
 		case '_WT_USER':
-			$user = \WT\User::findByIdentifier($match[2]); // may not exist
+			$user = User::findByIdentifier($match[2]); // may not exist
 			if ($user) {
 				echo WT_Gedcom_Tag::getLabelValue('_WT_USER', WT_Filter::escapeHtml($user->getRealName()));
 			} else {

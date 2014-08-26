@@ -21,6 +21,8 @@
 // along with this program; if not, write to the Free Software
 // // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+
 class WT_MenuBar {
 	public static function getGedcomMenu() {
 		$menu = new WT_Menu(WT_I18N::translate('Home page'), 'index.php?ctype=gedcom&amp;ged='.WT_GEDURL, 'menu-tree');
@@ -44,7 +46,7 @@ class WT_MenuBar {
 		$showFull = ($PEDIGREE_FULL_DETAILS) ? 1 : 0;
 		$showLayout = ($PEDIGREE_LAYOUT) ? 1 : 0;
 
-		if (!\WT\Auth::id()) {
+		if (!Auth::id()) {
 			return null;
 		}
 
@@ -55,7 +57,7 @@ class WT_MenuBar {
 		$submenu = new WT_Menu(WT_I18N::translate('My page'), 'index.php?ctype=user&amp;ged='.WT_GEDURL, 'menu-mypage');
 		$menu->addSubmenu($submenu);
 		//-- editaccount submenu
-		if (\WT\Auth::user()->getSetting('editaccount')) {
+		if (Auth::user()->getSetting('editaccount')) {
 			$submenu = new WT_Menu(WT_I18N::translate('My account'), 'edituser.php', 'menu-myaccount');
 			$menu->addSubmenu($submenu);
 		}

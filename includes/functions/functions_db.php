@@ -21,10 +21,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
+use WT\Auth;
+use WT\User;
 
 ////////////////////////////////////////////////////////////////////////////////
 // Fetch all records linked to a record - when deleting an object, we must
@@ -43,11 +41,11 @@ function fetch_all_links($xref, $gedcom_id) {
 }
 
 // Find out if there are any pending changes that a given user may accept
-function exists_pending_change(\WT\User $user = null, WT_Tree $tree = null) {
+function exists_pending_change(User $user = null, WT_Tree $tree = null) {
 	global $WT_TREE;
 
 	if ($user === null) {
-		$user = \WT\Auth::user();
+		$user = Auth::user();
 	}
 
 	if ($tree === null) {

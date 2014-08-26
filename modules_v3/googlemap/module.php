@@ -21,10 +21,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
+use WT\Auth;
+use WT\Log;
 
 // http://www.google.com/permissions/guidelines.html
 //
@@ -155,7 +153,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			echo '<table width="100%" border="0" class="facts_table">';
 			echo '<tr><td valign="top">';
 			echo '<div id="map_pane" style="border: 1px solid gray; color: black; width: 100%; height: ', $this->getSetting('GM_YSIZE'), 'px"></div>';
-			if (\WT\Auth::isAdmin()) {
+			if (Auth::isAdmin()) {
 				echo '<table width="100%"><tr>';
 				echo '<td width="40%" align="left">';
 				echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_config">', WT_I18N::translate('Google Maps™ preferences'), '</a>';
@@ -201,7 +199,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			$html='<table class="facts_table">';
 			$html.='<tr><td colspan="2" class="facts_value">'.WT_I18N::translate('No map data for this person');
 			$html.='</td></tr>';
-			if (\WT\Auth::isAdmin()) {
+			if (Auth::isAdmin()) {
 				$html.='<tr><td class="center" colspan="2">';
 				$html.='<a href="module.php?mod=googlemap&amp;mod_action=admin_config">'.WT_I18N::translate('Google Maps™ preferences'). '</a>';
 				$html.='</td></tr>';
@@ -214,7 +212,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 	public function hasTabContent() {
 		global $SEARCH_SPIDER;
 
-		return !$SEARCH_SPIDER && (array_key_exists('googlemap', WT_Module::getActiveModules()) || \WT\Auth::isAdmin());
+		return !$SEARCH_SPIDER && (array_key_exists('googlemap', WT_Module::getActiveModules()) || Auth::isAdmin());
 	}
 
 	// Implement WT_Module_Tab
@@ -229,7 +227,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 		$controller=new WT_Controller_Page();
 		$controller
-			->restrictAccess(\WT\Auth::isAdmin())
+			->restrictAccess(Auth::isAdmin())
 			->setPageTitle(WT_I18N::translate('Google Maps™'))
 			->pageHeader()
 			->addInlineJavascript('jQuery("#tabs").tabs();');
@@ -259,7 +257,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				$this->setSetting('GM_POSTFIX_' . $i, WT_Filter::post('NEW_GM_POSTFIX_' . $i));
 			}
 
-			\WT\Log::addConfigurationLog('Googlemap config updated');
+			Log::addConfigurationLog('Googlemap config updated');
 		}
 
 		// TODO There are functions in functions_edit.php to edit these...
@@ -821,7 +819,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		echo '<td valign="top">';
 		echo '<div id="pm_map" style="border: 1px solid gray; height: ', $this->getSetting('GM_YSIZE'), 'px; font-size: 0.9em;';
 		echo '"><i class="icon-loading-large"></i></div>';
-		if (\WT\Auth::isAdmin()) {
+		if (Auth::isAdmin()) {
 			echo '<table width="100%">';
 			echo '<tr><td align="left">';
 			echo '<a href="module.php?mod=googlemap&amp;mod_action=admin_config">', WT_I18N::translate('Google Maps™ preferences'), '</a>';
@@ -1473,7 +1471,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 		$controller=new WT_Controller_Page();
 		$controller
-			->restrictAccess(\WT\Auth::isAdmin())
+			->restrictAccess(Auth::isAdmin())
 			->setPageTitle(WT_I18N::translate('Google Maps™'))
 			->pageHeader();
 
@@ -2502,7 +2500,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 		$plzoom	= $latlng['pl_zoom'];		// Map zoom level
 
-		if (\WT\Auth::isAdmin()) {
+		if (Auth::isAdmin()) {
 			$placecheck_url = 'module.php?mod=googlemap&amp;mod_action=admin_placecheck';
 			if ($parent && isset($parent[0]) ) {
 				$placecheck_url .= '&amp;country='.$parent[0];
@@ -2590,7 +2588,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					/* I18N: Angle of elevation (in degrees), for street-view mapping */ WT_I18N::translate('Elevation')."<input name='sv_elevText' id='sv_elevText' type='text' style='width:30px; background:none; border:none;' value='".$sv_pitch."'>".
 					WT_I18N::translate('Zoom')."<input name='sv_zoomText' id='sv_zoomText' type='text' style='width:30px; background:none; border:none;' value='".$sv_zoom."'>
 				");
-				if (\WT\Auth::isAdmin()) {
+				if (Auth::isAdmin()) {
 					echo "<table align=\"center\" style=\"margin-left:6px; border:solid 1px black; width:522px; margin-top:-28px; background:#cccccc; \">";
 				} else {
 					echo "<table align=\"center\" style=\"display:none; \">";
@@ -2700,7 +2698,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				$this->print_how_many_people($level+1, $parent);
 			}
 			echo '<br>', WT_I18N::translate('This place has no coordinates');
-			if (\WT\Auth::isAdmin())
+			if (Auth::isAdmin())
 				echo "<br><a href='module.php?mod=googlemap&amp;mod_action=admin_places&amp;parent=", $levelm, "&amp;display=inactive'>", WT_I18N::translate('Geographic data'), "</a>";
 			echo "</div>\", icon_type, \"", str_replace(array('&lrm;', '&rlm;'), array(WT_UTF8_LRM, WT_UTF8_RLM), addslashes($place2['place'])), "\");\n";
 		} else {
@@ -3106,7 +3104,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 		$controller=new WT_Controller_Simple();
 		$controller
-				->restrictAccess(\WT\Auth::isAdmin())
+				->restrictAccess(Auth::isAdmin())
 				->setPageTitle(WT_I18N::translate('Geographic data'))
 				->addInlineJavascript('$("<link>", {rel: "stylesheet", type: "text/css", href: "' . WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/css/wt_v3_googlemap.css"}).appendTo("head");')
 				->pageHeader();
@@ -3115,7 +3113,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		$level=count($where_am_i);
 		$link = 'module.php?mod=googlemap&amp;mod_action=admin_places&amp;parent='.$placeid;
 
-		if ($action=='addrecord' && \WT\Auth::isAdmin()) {
+		if ($action=='addrecord' && Auth::isAdmin()) {
 			$statement=
 				WT_DB::prepare("INSERT INTO `##placelocation` (pl_id, pl_parent_id, pl_level, pl_place, pl_long, pl_lati, pl_zoom, pl_icon) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 
@@ -3133,7 +3131,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			exit;
 		}
 
-		if ($action=='updaterecord' && \WT\Auth::isAdmin()) {
+		if ($action=='updaterecord' && Auth::isAdmin()) {
 			$statement=
 				WT_DB::prepare("UPDATE `##placelocation` SET pl_place=?, pl_lati=?, pl_long=?, pl_zoom=?, pl_icon=? WHERE pl_id=?");
 
@@ -3153,7 +3151,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 		// Update placelocation STREETVIEW fields
 		// TODO: This ought to be a POST request, rather than a GET request
-		if ($action == 'update_sv_params' && \WT\Auth::isAdmin()) {
+		if ($action == 'update_sv_params' && Auth::isAdmin()) {
 			WT_DB::prepare(
 				"UPDATE `##placelocation` SET sv_lati=?, sv_long=?, sv_bearing=?, sv_elevation=?, sv_zoom=? WHERE pl_id=?"
 			)->execute(array(
@@ -3932,9 +3930,9 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		if (!isset($inactive)) $inactive=false;
 
 		$controller=new WT_Controller_Page();
-		$controller->restrictAccess(\WT\Auth::isAdmin());
+		$controller->restrictAccess(Auth::isAdmin());
 
-		if ($action=='ExportFile' && \WT\Auth::isAdmin()) {
+		if ($action=='ExportFile' && Auth::isAdmin()) {
 			Zend_Session::writeClose();
 			$tmp = $this->place_id_to_hierarchy($parent);
 			$maxLevel = $this->getHighestLevel();

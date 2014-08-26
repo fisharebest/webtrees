@@ -22,6 +22,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+use WT\Auth;
 
 /**
  * Main WT Report Class for PDF
@@ -86,7 +87,7 @@ class WT_Report_PDF extends WT_Report_Base {
 		// Set the document information
 		// Only admin should see the version number
 		$appversion = WT_WEBTREES;
-		if (\WT\Auth::isAdmin()) {
+		if (Auth::isAdmin()) {
 			$appversion .= " ".WT_VERSION;
 		}
 		$this->pdf->SetCreator($appversion . " (" . parent::wt_url . ")");

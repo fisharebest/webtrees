@@ -22,6 +22,8 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 // PNG Icons By: Alessandro Rei; License:  GPL; www.deviantdark.com
 
+use WT\Auth;
+
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
@@ -95,9 +97,9 @@ $COLOR_THEME_LIST=array(
 if (isset($_GET['themecolor']) && array_key_exists($_GET['themecolor'], $COLOR_THEME_LIST)) {
 	// Request to change color
 	$subColor = $_GET['themecolor'];
-	if (\WT\Auth::id()) {
-		\WT\Auth::user()->setSetting('themecolor', $subColor);
-		if (\WT\Auth::isAdmin()) {
+	if (Auth::id()) {
+		Auth::user()->setSetting('themecolor', $subColor);
+		if (Auth::isAdmin()) {
 			WT_Site::preference('DEFAULT_COLOR_PALETTE', $subColor);
 		}
 	}
@@ -107,8 +109,8 @@ if (isset($_GET['themecolor']) && array_key_exists($_GET['themecolor'], $COLOR_T
 }
 // If we are logged in, use our preference
 $subColor = null;
-if (\WT\Auth::id()) {
-	$subColor = \WT\Auth::user()->getSetting('themecolor');
+if (Auth::id()) {
+	$subColor = Auth::user()->getSetting('themecolor');
 }
 // If not logged in or no preference, use one we selected earlier in the session?
 if (!$subColor) {

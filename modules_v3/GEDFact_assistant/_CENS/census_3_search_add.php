@@ -1259,13 +1259,11 @@ if (!defined('WT_WEBTREES')) {
  *
  * find and print a given individuals information for a pedigree chart
  *
- * @param string $pid   the Gedcom Xref ID of the   to print
- * @param int    $style the style to print the box in, 1 for smaller boxes, 2 for larger boxes
- * @param int    $count on some charts it is important to keep a count of how many boxes were printed
- * @param string $personcount
+ * @param string $pid The Gedcom Xref ID of the individual  to print
  * @param string $currpid
  * @param string $censyear
-  */
+ *
+ */
 
 function print_pedigree_person_nav2($pid, $currpid, $censyear) {
 	global $PEDIGREE_FULL_DETAILS;

@@ -21,13 +21,16 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+use WT\Log;
+
 define('WT_SCRIPT_NAME', 'admin_media_upload.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_mediadb.php';
 
 $controller=new WT_Controller_Page();
 $controller
-	->restrictAccess(\WT\Auth::isManager())
+	->restrictAccess(Auth::isManager())
 	->setPageTitle(WT_I18N::translate('Upload media files'));
 
 $action = WT_Filter::post('action');
@@ -134,7 +137,7 @@ if ($action == "upload") {
 				if (move_uploaded_file($_FILES['mediafile' . $i]['tmp_name'], $serverFileName)) {
 					WT_FlashMessages::addMessage(WT_I18N::translate('The file %s was uploaded.', '<span class="filename">' . $serverFileName . '</span>'));
 					chmod($serverFileName, WT_PERM_FILE);
-					\WT\Log::addMediaLog('Media file ' . $serverFileName . ' uploaded');
+					Log::addMediaLog('Media file ' . $serverFileName . ' uploaded');
 				} else {
 					WT_FlashMessages::addMessage(
 						WT_I18N::translate('There was an error uploading your file.') .
@@ -153,7 +156,7 @@ if ($action == "upload") {
 					if (move_uploaded_file($_FILES['thumbnail' . $i]['tmp_name'], $serverFileName)) {
 					WT_FlashMessages::addMessage(WT_I18N::translate('The file %s was uploaded.', '<span class="filename">' . $serverFileName . '</span>'));
 						chmod($serverFileName, WT_PERM_FILE);
-						\WT\Log::addMediaLog('Thumbnail file ' . $serverFileName . ' uploaded');
+						Log::addMediaLog('Thumbnail file ' . $serverFileName . ' uploaded');
 					}
 				}
 			}
@@ -213,12 +216,12 @@ for ($i=1; $i<6; $i++) {
 		echo '<span dir="ltr"><select name="folder_list', $i, '" onchange="document.uploadmedia.folder', $i, '.value=this.options[this.selectedIndex].value;">';
 		echo '<option';
 		echo ' value="/"> ', WT_I18N::translate('Choose: '), ' </option>';
-		if (\WT\Auth::isAdmin()) echo '<option value="other" disabled>', WT_I18N::translate('Other folder… please type in'), "</option>";
+		if (Auth::isAdmin()) echo '<option value="other" disabled>', WT_I18N::translate('Other folder… please type in'), "</option>";
 		foreach ($mediaFolders as $f) {
 			echo '<option value="', WT_Filter::escapeHtml($f), '">', WT_Filter::escapeHtml($f), "</option>";
 		}
 		echo "</select></span>";
-		if (\WT\Auth::isAdmin()) {
+		if (Auth::isAdmin()) {
 			echo '<br><span dir="ltr"><input name="folder', $i, '" type="text" size="40" value=""></span>';
 		} else {
 			echo '<input name="folder', $i, '" type="hidden" value="">';

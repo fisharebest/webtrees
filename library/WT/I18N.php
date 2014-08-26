@@ -25,6 +25,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+
 class WT_I18N {
 	// Lookup table to convert unicode code-points into scripts.
 	// See https://en.wikipedia.org/wiki/Unicode_block
@@ -71,26 +73,15 @@ class WT_I18N {
 		);
 
 		if (ini_get('apc.enabled')) {
-			self::$cache=Zend_Cache::factory('Core', 'Apc', $cache_options, array());
+			self::$cache = Zend_Cache::factory('Core', 'Apc', $cache_options, array());
+		} elseif (WT_File::mkdir(WT_DATA_DIR . 'cache')) {
+			self::$cache = Zend_Cache::factory('Core', 'File', $cache_options, array('cache_dir'=>WT_DATA_DIR . 'cache'));
 		} else {
-			if (!is_dir(WT_DATA_DIR.'cache')) {
-				// We may not have permission - especially during setup, before we instruct
-				// the user to "chmod 777 /data"
-				@mkdir(WT_DATA_DIR.'cache');
-			}
-			if (is_dir(WT_DATA_DIR.DIRECTORY_SEPARATOR.'cache')) {
-				self::$cache=Zend_Cache::factory('Core', 'File', $cache_options, array('cache_dir'=>WT_DATA_DIR.'cache'));
-			} else {
-				// No cache available :-(
-				self::$cache=Zend_Cache::factory('Core', 'Zend_Cache_Backend_BlackHole', $cache_options, array(), false, true);
-			}
+			self::$cache = Zend_Cache::factory('Core', 'Zend_Cache_Backend_BlackHole', $cache_options, array(), false, true);
 		}
 
-		// If we created a cache, use it.
-		if (self::$cache) {
-			Zend_Locale::setCache(self::$cache);
-			Zend_Translate::setCache(self::$cache);
-		}
+		Zend_Locale::setCache(self::$cache);
+		Zend_Translate::setCache(self::$cache);
 
 		$installed_languages=self::installed_languages();
 		if (is_null($locale) || !array_key_exists($locale, $installed_languages)) {
@@ -98,8 +89,8 @@ class WT_I18N {
 			$locale = WT_Filter::get('lang');
 			if ($locale && array_key_exists($locale, $installed_languages)) {
 				// Requested in the URL?
-				if (\WT\Auth::id()) {
-					\WT\Auth::user()->setSetting('language', $locale);
+				if (Auth::id()) {
+					Auth::user()->setSetting('language', $locale);
 				}
 			} elseif (array_key_exists($WT_SESSION->locale, $installed_languages)) {
 				// Rembered from a previous visit?
@@ -294,12 +285,9 @@ class WT_I18N {
 	// echo WT_I18N::translate('Hello World!');
 	// echo WT_I18N::translate('The %s sat on the mat', 'cat');
 	public static function translate(/* var_args */) {
-		$args=func_get_args();
-		if (WT_DEBUG_LANG) {
-			$args[0]=WT_Debug::pseudoTranslate($args[0]);
-		} else {
-			$args[0]=self::$translation_adapter->_($args[0]);
-		}
+		$args = func_get_args();
+		$args[0] = self::$translation_adapter->_($args[0]);
+
 		return call_user_func_array('sprintf', $args);
 	}
 
@@ -307,18 +295,15 @@ class WT_I18N {
 	// echo WT_I18N::translate_c('NOMINATIVE', 'January');
 	// echo WT_I18N::translate_c('GENITIVE',   'January');
 	public static function translate_c(/* var_args */) {
-		$args=func_get_args();
-		if (WT_DEBUG_LANG) {
-			$msgtxt=WT_Debug::pseudoTranslate($args[1]);
-		} else {
-			$msgid=$args[0]."\x04".$args[1];
-			$msgtxt=self::$translation_adapter->_($msgid);
-			if ($msgtxt==$msgid) {
-				$msgtxt=$args[1];
-			}
+		$args = func_get_args();
+		$msgid = $args[0] . "\x04" . $args[1];
+		$msgtxt = self::$translation_adapter->_($msgid);
+		if ($msgtxt == $msgid) {
+			$msgtxt = $args[1];
 		}
-		$args[0]=$msgtxt;
+		$args[0] = $msgtxt;
 		unset ($args[1]);
+
 		return call_user_func_array('sprintf', $args);
 	}
 
@@ -333,17 +318,10 @@ class WT_I18N {
 	// echo self::plural('There is one error', 'There are %s errors', $num_errors);
 	// echo self::plural('There is %1$d %2$s cat', 'There are %1$d %2$s cats', $num, $num, $colour);
 	public static function plural(/* var_args */) {
-		$args=func_get_args();
-		if (WT_DEBUG_LANG) {
-			if ($args[2]==1) {
-				$string=WT_Debug::pseudoTranslate($args[0]);
-			} else {
-				$string=WT_Debug::pseudoTranslate($args[1]);
-			}
-		} else {
-			$string=self::$translation_adapter->plural($args[0], $args[1], $args[2]);
-		}
+		$args = func_get_args();
+		$string = self::$translation_adapter->plural($args[0], $args[1], $args[2]);
 		array_splice($args, 0, 3, array($string));
+
 		return call_user_func_array('sprintf', $args);
 	}
 
@@ -609,7 +587,7 @@ class WT_I18N {
 				return 'Latn';
 			}
 
-			foreach (self::$scripts as $script => $range) {
+			foreach (self::$scripts as $range) {
 				if ($code_point >= $range[1] && $code_point <= $range[2]) {
 					return $range[0];
 				}

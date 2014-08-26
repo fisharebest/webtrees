@@ -21,10 +21,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
+use WT\User;
 
 class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 	// Extend class WT_Module
@@ -63,10 +60,11 @@ class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 			// There are pending changes - tell moderators/managers/administrators about them.
 			if (WT_TIMESTAMP - WT_Site::preference('LAST_CHANGE_EMAIL') > (60*60*24*$days)) {
 				// Which users have pending changes?
-				foreach (\WT\User::all() as $user) {
+				foreach (User::all() as $user) {
 					if ($user->getSetting('contactmethod') !== 'none') {
 						foreach (WT_Tree::getAll() as $tree) {
 							if (exists_pending_change($user, $tree)) {
+								WT_I18N::init($user->getSetting('language'));
 								WT_Mail::system_message(
 									$tree,
 									$user,
@@ -75,6 +73,7 @@ class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 									WT_Mail::EOL . WT_MAIL::EOL .
 									'<a href="' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'index.php?ged=' . WT_GEDURL . '">' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'index.php?ged=' . WT_GEDURL . '</a>'
 								);
+								WT_I18N::init(WT_LOCALE);
 							}
 						}
 					}
