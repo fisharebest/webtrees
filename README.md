@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/fisharebest/webtrees.svg?branch=travis)](https://travis-ci.org/fisharebest/webtrees)
+[![Build Status](https://travis-ci.org/fisharebest/webtrees.svg?branch=master)](https://travis-ci.org/fisharebest/webtrees)
 
 # webtrees
 
