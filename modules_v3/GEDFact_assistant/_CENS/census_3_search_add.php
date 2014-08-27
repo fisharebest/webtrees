@@ -29,12 +29,7 @@ if (!defined('WT_WEBTREES')) {
 }
 ?>
 
-
 	<table id="navenclose">
-		<?php
-
-		//-- Search Function ------------------------------------------------------------
-		?>
 		<tr>
 			<td class="descriptionbox"><?php echo WT_I18N::translate('Add individuals'); ?></td>
 		</tr>
