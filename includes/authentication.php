@@ -31,11 +31,6 @@
 use WT\Auth;
 use WT\User;
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 /**
  * Used in custom theme headers...
  *

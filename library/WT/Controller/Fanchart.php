@@ -242,16 +242,25 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 					if ($gen==0) $tangle=0;
 
 					// calculate text position
-					$bbox=ImageTtfBbox((double)$fanChart['size'], 0, $fanChart['font'], $text);
-					$textwidth = $bbox[4];
+					$bbox = ImageTtfBbox((double)$fanChart['size'], 0, $fanChart['font'], $text);
 					$deg = $deg1+.44;
-					if ($deg2-$deg1>40) $deg = $deg1+($deg2-$deg1)/11;
-					if ($deg2-$deg1>80) $deg = $deg1+($deg2-$deg1)/7;
-					if ($deg2-$deg1>140) $deg = $deg1+($deg2-$deg1)/4;
-					if ($gen==0) $deg=180;
+					if ($deg2 - $deg1 > 40) {
+						$deg = $deg1 + ($deg2 - $deg1) / 11;
+					}
+					if ($deg2 - $deg1 > 80) {
+						$deg = $deg1 + ($deg2 - $deg1) / 7;
+					}
+					if ($deg2 - $deg1 > 140) {
+						$deg = $deg1 + ($deg2 - $deg1) / 4;
+					}
+					if ($gen == 0) {
+						$deg=180;
+					}
 					$rad=deg2rad($deg);
 					$mr=($rx-$rw/4)/2;
-					if ($gen>0 and $deg2-$deg1>80) $mr=$rx/2;
+					if ($gen>0 && $deg2-$deg1>80) {
+						$mr=$rx/2;
+					}
 					$tx=$cx + ($mr) * cos($rad);
 					$ty=$cy - $mr * -sin($rad);
 					if ($sosa==1) $ty-=$mr/2;

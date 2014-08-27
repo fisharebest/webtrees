@@ -715,7 +715,7 @@ class CellHTML extends Cell {
 			}
 		}
 		// Check the width if set to page wide OR set by xml to larger then page wide
-		if (($this->width == 0) or $this->width > $html->getRemainingWidth()) {
+		if ($this->width == 0 || $this->width > $html->getRemainingWidth()) {
 			$this->width = $html->getRemainingWidth();
 		}
 		// We have to calculate a different width for the padding, counting on both side
@@ -947,7 +947,7 @@ class TextBoxHTML extends TextBox {
 		}
 
 		// Check the width if set to page wide OR set by xml to larger then page wide
-		if (($this->width == 0) or ($this->width > $html->getRemainingWidth())) {
+		if ($this->width == 0 || $this->width > $html->getRemainingWidth()) {
 			$this->width = $html->getRemainingWidth();
 		}
 		// Setup the CellPadding

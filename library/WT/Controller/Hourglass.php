@@ -223,11 +223,11 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 		if ($count>$this->dgenerations) return;
 		if (!$person) return;
 		$pid=$person->getXref();
-		$tablealign = "right";
-		$otablealign = "left";
-		if ($TEXT_DIRECTION=="rtl") {
-			$tablealign = "left";
-			$otablealign = "right";
+		$tablealign = 'right';
+		$otablealign = 'left';
+		if ($TEXT_DIRECTION == 'rtl') {
+			$tablealign = 'left';
+			$otablealign = 'right';
 		}
 
 		//-- put a space between families on the last generation
@@ -245,55 +245,47 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 		$kidNum = 0;
 		$children = array();
 		if ($count < $this->dgenerations) {
-			//-- put all of the children in a common array
+			// Put all of the children in a common array
 			foreach ($families as $family) {
 				$famNum ++;
-				$chs = $family->getChildren();
-				foreach ($chs as $c=>$child) $children[] = $child;
+				foreach ($family->getChildren() as $child) {
+					$children[] = $child;
+				}
 			}
 
 			$ct = count($children);
 			if ($ct>0) {
 				echo "<table style=\"position: relative; top: auto; text-align: $tablealign;\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\">";
 				for ($i=0; $i<$ct; $i++) {
-					if (($i>0)&&($i<$ct-1)) $rowspan=1;
-					/* @var $person2 Person */
 					$person2 = $children[$i];
 					$chil = $person2->getXref();
-					echo "<tr>";
+					echo '<tr>';
 					echo "<td id=\"td_$chil\" class=\"$TEXT_DIRECTION\" align=\"$otablealign\">";
 					$kids = $this->print_descendency($person2, $count+1);
 					$numkids += $kids;
-					echo "</td>";
+					echo '</td>';
 
-					//-- print the lines
-					$twidth = 7;
-					if ($ct==1) $twidth+=3;
-
+					// Print the lines
 					if ($ct>1) {
 						if ($i==0) {
-							//-- adjust for the number of kids
-							$h = ($bhalfheight+3)*$numkids;
-							echo "<td valign=\"bottom\"><img class=\"line1\" name=\"tvertline\" id=\"vline_$chil\" src=\"".$WT_IMAGES["vline"]."\" width=\"3\"  alt=\"\"></td>";
-						} else if ($i==$ct-1) {
-							$h = ($bhalfheight+3)*$kids;
-							if ($count<$this->dgenerations-1) {
-								if ($this->show_spouse) $h-=15;
-								else $h += 15;
-							}
-							echo "<td valign=\"top\"><img name=\"bvertline\" id=\"vline_$chil\" src=\"".$WT_IMAGES["vline"]."\" width=\"3\" alt=\"\"></td>";
+							// First child
+							echo "<td valign=\"bottom\"><img class=\"line1\" name=\"tvertline\" id=\"vline_$chil\" src=\"".$WT_IMAGES["vline"]."\" width=\"3\"></td>";
+						} elseif ($i==$ct-1) {
+							// Last child
+							echo "<td valign=\"top\"><img name=\"bvertline\" id=\"vline_$chil\" src=\"".$WT_IMAGES["vline"]."\" width=\"3\"></td>";
 						} else {
-							echo "<td style=\"background: url('".$WT_IMAGES["vline"]."');\"><img src=\"".$WT_IMAGES["spacer"]."\" width=\"3\" alt=\"\"></td>";
+							// Middle child
+							echo "<td style=\"background: url('".$WT_IMAGES["vline"]."');\"><img src=\"".$WT_IMAGES["spacer"]."\" width=\"3\"></td>";
 						}
 					}
-					echo "</tr>";
+					echo '</tr>';
 
 				}
-				echo "</table>";
+				echo '</table>';
 
 			}
-			echo "</td>";
-			echo "<td width=\"$bwidth\">";
+			echo '</td>';
+			echo '<td width="', $bwidth, '">';
 		}
 
 		// Print the descendency expansion arrow

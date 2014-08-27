@@ -1,4 +1,5 @@
-<?php namespace WT;
+<?php
+namespace WT;
 
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team
