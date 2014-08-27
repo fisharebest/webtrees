@@ -365,13 +365,13 @@ class WT_Controller_Search extends WT_Controller_Page {
 	 */
 	function SearchAndReplace()
 	{
-		global $GEDCOM, $manual_save, $STANDARD_NAME_FACTS, $ADVANCED_NAME_FACTS;
+		global $STANDARD_NAME_FACTS, $ADVANCED_NAME_FACTS;
 
 		$this->sgeds = array(WT_GED_ID=>WT_GEDCOM);
-		$this->srindi = "yes";
-		$this->srfams = "yes";
-		$this->srsour = "yes";
-		$this->srnote = "yes";
+		$this->srindi = 'yes';
+		$this->srfams = 'yes';
+		$this->srsour = 'yes';
+		$this->srnote = 'yes';
 		$oldquery = $this->query;
 		$this->GeneralSearch();
 
@@ -381,7 +381,6 @@ class WT_Controller_Search extends WT_Controller_Page {
 		}
 
 		Log::addEditLog("Search And Replace old:".$oldquery." new:".$this->replace);
-		$manual_save = true;
 		// Include edit functions.
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
 
@@ -418,8 +417,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 
 			if ($this->replaceAll) {
 				$newRecord = preg_replace("~".$oldquery."~i", $this->replace, $newRecord);
-			}
-			else {
+			} else {
 				if ($this->replacePlaces) {
 					if ($this->replacePlacesWord) $newRecord = preg_replace('~(\d) PLAC (.*)([,\W\s])'.$oldquery.'([,\W\s])~i', "$1 PLAC $2$3".$this->replace."$4",$newRecord);
 					else $newRecord = preg_replace("~(\d) PLAC (.*)".$oldquery."(.*)~i", "$1 PLAC $2".$this->replace."$3",$newRecord);
