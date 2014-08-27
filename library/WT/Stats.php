@@ -3411,7 +3411,7 @@ class WT_Stats {
 			}
 		}
 		$LoginUsers = count($loggedusers);
-		if (($LoginUsers == 0) and ($NumAnonymous == 0)) {
+		if ($LoginUsers == 0 && $NumAnonymous == 0) {
 			return WT_I18N::translate('No logged-in and no anonymous users');
 		}
 		if ($NumAnonymous > 0) {

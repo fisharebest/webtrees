@@ -478,7 +478,7 @@ function add_simple_tag(
 	}
 	// tag level
 	if ($level>0) {
-		if ($fact=="TEXT" and $level>1) {
+		if ($fact=='TEXT' && $level>1) {
 			echo "<input type=\"hidden\" name=\"glevels[]\" value=\"", $level-1, "\">";
 			echo "<input type=\"hidden\" name=\"islink[]\" value=\"0\">";
 			echo "<input type=\"hidden\" name=\"tag[]\" value=\"DATA\">";
@@ -655,7 +655,9 @@ function add_simple_tag(
 			else echo "<option value=\"", $key, "\"";
 			$a=strtolower($key);
 			$b=strtolower($value);
-			if (@strpos($a, $b)!==false or @strpos($b, $a)!==false) echo " selected=\"selected\"";
+			if (@strpos($a, $b) !== false || @strpos($b, $a) !== false) {
+				echo ' selected="selected"';
+			}
 			$tmp="MARR_".strtoupper($key);
 			echo ">", WT_Gedcom_Tag::getLabel($tmp), "</option>";
 		}
