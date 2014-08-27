@@ -346,7 +346,7 @@ $rule=WT_DB::prepare(
 	"SELECT SQL_CACHE rule FROM `##site_access_rule`" .
 	" WHERE IFNULL(INET_ATON(?), 0) BETWEEN ip_address_start AND ip_address_end" .
 	" AND ? LIKE user_agent_pattern" .
-	" ORDER BY ip_address_end-ip_address_start"
+	" ORDER BY ip_address_end LIMIT 1"
 )->execute(array($WT_REQUEST->getClientIp(), $_SERVER['HTTP_USER_AGENT']))->fetchOne();
 
 switch ($rule) {

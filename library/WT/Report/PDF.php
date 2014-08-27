@@ -745,7 +745,7 @@ class CellPDF extends Cell {
 		}
 
 		// Check the width if set to page wide OR set by xml to larger then page wide
-		if (($this->width == 0) or ($this->width > $pdf->getRemainingWidthPDF())) {
+		if ($this->width == 0 || $this->width > $pdf->getRemainingWidthPDF()) {
 			$this->width = $pdf->getRemainingWidthPDF();
 		}
 		// For current position
@@ -965,7 +965,7 @@ class TextBoxPDF extends TextBox {
 		}
 
 		// Check the width if set to page wide OR set by xml to larger then page width (margin)
-		if (($this->width == 0) or ($this->width > $pdf->getRemainingWidthPDF())) {
+		if ($this->width == 0 || $this->width > $pdf->getRemainingWidthPDF()) {
 			$cW = $pdf->getRemainingWidthPDF();
 		} else {
 			$cW = $this->width;
@@ -1134,9 +1134,9 @@ class TextBoxPDF extends TextBox {
 		foreach ($this->elements as $element) {
 			if (is_object($element)) {
 				$element->render($pdf);
-			} elseif (is_string($element) and $element == "footnotetexts") {
+			} elseif (is_string($element) && $element == 'footnotetexts') {
 				$pdf->Footnotes();
-			} elseif (is_string($element) and $element == "addpage") {
+			} elseif (is_string($element) && $element == 'addpage') {
 				$pdf->newPage();
 			}
 		}

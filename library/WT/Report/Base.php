@@ -2848,7 +2848,7 @@ function FactsEHandler() {
 
 		//-- read the xml from the file
 		$lines = file($report);
-		while (($lineoffset + $repeatBytes > 0) and (strpos($lines[$lineoffset + $repeatBytes], "<Facts ")) === false) {
+		while ($lineoffset + $repeatBytes > 0 && strpos($lines[$lineoffset + $repeatBytes], '<Facts ') === false) {
 			$lineoffset--;
 		}
 		$lineoffset++;
@@ -3295,7 +3295,7 @@ function HighlightedImageSHandler($attrs) {
 			if (($width > 0) and ($height == 0)) {
 				$perc   = $width / $attributes['adjW'];
 				$height = round($attributes['adjH'] * $perc);
-			} elseif (($height > 0) and ($width == 0)) {
+			} elseif ($height > 0 && $width == 0) {
 				$perc  = $height / $attributes['adjH'];
 				$width = round($attributes['adjW'] * $perc);
 			} else {
@@ -3393,7 +3393,7 @@ function ImageSHandler($attrs) {
 				if (($width > 0) and ($height == 0)) {
 					$perc   = $width / $attributes['adjW'];
 					$height = round($attributes['adjH'] * $perc);
-				} elseif (($height > 0) and ($width == 0)) {
+				} elseif ($height > 0 && $width == 0) {
 					$perc  = $height / $attributes['adjH'];
 					$width = round($attributes['adjW'] * $perc);
 				} else {
@@ -3410,7 +3410,7 @@ function ImageSHandler($attrs) {
 			if (($width > 0) and ($height == 0)) {
 				$perc   = $width / $size[0];
 				$height = round($size[1] * $perc);
-			} elseif (($height > 0) and ($width == 0)) {
+			} elseif ($height > 0 && $width == 0) {
 				$perc  = $height / $size[1];
 				$width = round($size[0] * $perc);
 			} else {

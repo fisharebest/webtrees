@@ -199,7 +199,6 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 		$bind=array();
 
 		// Join the following tables
-		$anything_to_find=false;
 		$father_name     =false;
 		$mother_name     =false;
 		$spouse_family   =false;
@@ -210,7 +209,6 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 		$fam_plac        =false;
 		foreach ($this->fields as $n=>$field) {
 			if ($this->values[$n]) {
-				$anything_to_find=true;
 				if (substr($field, 0, 14)=='FAMC:HUSB:NAME') {
 					$father_name=true;
 				} elseif (substr($field, 0, 14)=='FAMC:WIFE:NAME') {

@@ -146,7 +146,6 @@ if ($action!='choose') {
 				echo '<input type="submit" value="', WT_I18N::translate('save'), '">';
 				echo '</form></div>';
 			} elseif ($action=='merge') {
-				$manual_save = true;
 				echo '<div id="merge3"><h3>', WT_I18N::translate('Merge records'), '</h3>';
 				if ($GEDCOM==$ged2) {
 					//-- replace all the records that linked to gid2

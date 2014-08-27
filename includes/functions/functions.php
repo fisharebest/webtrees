@@ -21,11 +21,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 // Check with the webtrees.net server for the latest version of webtrees.
 // Fetching the remote file can be slow, so check infrequently, and cache the result.
 // Pass the current versions of webtrees, PHP and MySQL, as the response
@@ -1736,7 +1731,10 @@ function get_relationship_name_from_path($path, WT_Individual $person1=null, WT_
  * function to get the names of all of the themes as an array
  * it searches the themes folder and reads the name from the theme_name variable
  * in the theme.php file.
- * @return array and array of theme names and their corresponding folder
+ *
+ * @throws Exception
+ *
+ * @return array An array of theme names and their corresponding folder
  */
 function get_theme_names() {
 	static $themes;
