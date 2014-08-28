@@ -18,10 +18,19 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class WT_Query_Name
+ */
 class WT_Query_Name {
-	// Get a list of initial letters, for lists of names
-	private static function _getAlphabet() {
-		switch (WT_LOCALE) {
+	/**
+	 * Get a list of initial letters, for lists of names.
+	 *
+	 * @param string $locale Return the alphabet for this locale
+	 *
+	 * @return string[]
+	 */
+	private static function _getAlphabet($locale) {
+		switch ($locale) {
 		case 'ar':
 			return array(
 				'ا','ب','ت','ث','ج','ح','خ','د','ذ','ر','ز','س','ش','ص','ض','ط','ظ','ع','غ','ف','ق','ك','ل','م','ن','ه','و','ي','آ','ة','ى','ی'
@@ -157,15 +166,26 @@ class WT_Query_Name {
 		return utf8_substr($name, 0, 1);
 	}
 
-	// Generate SQL to match a given letter, taking care of cases that
-	// are not covered by the collation setting.  We must consider:
-	// potential substrings, such as Czech "CH" and "C"
-	// equivalent letters, such as Danish "AA" and "Å"
-	// We COULD write something that handles all languages generically,
-	// but its performance would most likely be poor.
-	// For languages that don't appear in this list, we could write
-	// simpler versions of the surnameAlpha() and givenAlpha() functions,
-	// but it gives no noticable improvement in performance.
+	/**
+	 * Generate SQL to match a given letter, taking care of cases that
+	 * are not covered by the collation setting.
+	 *
+	 * We must consider:
+	 * potential substrings, such as Czech "CH" and "C"
+	 * equivalent letters, such as Danish "AA" and "Å"
+	 *
+	 * We COULD write something that handles all languages generically,
+	 * but its performance would most likely be poor.
+	 *
+	 * For languages that don't appear in this list, we could write
+	 * simpler versions of the surnameAlpha() and givenAlpha() functions,
+	 * but it gives no noticable improvement in performance.
+	 *
+	 * @param string $field
+	 * @param string $letter
+	 *
+	 * @return string
+	 */
 	static private function _getInitialSql($field, $letter) {
 		switch (WT_LOCALE) {
 		case 'cs':
@@ -228,7 +248,7 @@ class WT_Query_Name {
 		// Fetch all the letters in our alphabet, whether or not there
 		// are any names beginning with that letter.  It looks better to
 		// show the full alphabet, rather than omitting rare letters such as X
-		foreach (self::_getAlphabet() as $letter) {
+		foreach (self::_getAlphabet(WT_LOCALE) as $letter) {
 			$count = 1;
 			if ($totals) {
 				$count = WT_DB::prepare($sql . " AND " . self::_getInitialSql('n_surn', $letter))->fetchOne();
@@ -245,7 +265,7 @@ class WT_Query_Name {
 			" WHERE n_file={$ged_id} AND n_surn<>''" .
 			($marnm ? "" : " AND n_type!='_MARNM'");
 
-		foreach (self::_getAlphabet() as $letter) {
+		foreach (self::_getAlphabet(WT_LOCALE) as $letter) {
 			$sql .= " AND n_surn NOT LIKE '" . $letter . "%' COLLATE " . WT_I18N::$collation;
 		}
 		$sql .= " GROUP BY LEFT(n_surn, 1) ORDER BY LEFT(n_surn, 1)='', LEFT(n_surn, 1)='@', LEFT(n_surn, 1)";
@@ -274,9 +294,9 @@ class WT_Query_Name {
 	 *
 	 * @param string $surn   if set, only consider people with this surname
 	 * @param string $salpha if set, only consider surnames starting with this letter
-	 * @param bool  $marnm   if set, include married names
-	 * @param bool  $fams    if set, only consider individuals with FAMS records
-	 * @param int   $ged_id  only consider individuals from this tree
+	 * @param bool   $marnm  if set, include married names
+	 * @param bool   $fams   if set, only consider individuals with FAMS records
+	 * @param int    $ged_id only consider individuals from this tree
 	 *
 	 * @return int[]
 	 */
@@ -306,7 +326,7 @@ class WT_Query_Name {
 		// Fetch all the letters in our alphabet, whether or not there
 		// are any names beginning with that letter.  It looks better to
 		// show the full alphabet, rather than omitting rare letters such as X
-		foreach (self::_getAlphabet() as $letter) {
+		foreach (self::_getAlphabet(WT_LOCALE) as $letter) {
 			$count=WT_DB::prepare($sql . " AND " . self::_getInitialSql('n_givn', $letter))->fetchOne();
 			$alphas[$letter] = $count;
 		}
@@ -333,7 +353,7 @@ class WT_Query_Name {
 			$sql .= " AND n_surn NOT IN ('', '@N.N.')";
 		}
 
-		foreach (self::_getAlphabet() as $letter) {
+		foreach (self::_getAlphabet(WT_LOCALE) as $letter) {
 			$sql .= " AND n_givn NOT LIKE '" . $letter . "%' COLLATE " . WT_I18N::$collation;
 		}
 		$sql .= " GROUP BY LEFT(n_givn, 1) ORDER BY LEFT(n_givn, 1)='@', LEFT(n_givn, 1)='', LEFT(n_givn, 1)";
@@ -344,14 +364,17 @@ class WT_Query_Name {
 		return $alphas;
 	}
 
-	////////////////////////////////////////////////////////////////////////////////
-	// Get a list of actual surnames and variants, based on a "root" surname.
-	// $surn - if set, only fetch people with this surname
-	// $salpha - if set, only consider surnames starting with this letter
-	// $marnm - if set, include married names
-	// $fams - if set, only consider individuals with FAMS records
-	// $ged_id - only consider individuals from this gedcom
-	////////////////////////////////////////////////////////////////////////////////
+	/**
+	 * Get a list of actual surnames and variants, based on a "root" surname.
+	 *
+	 * @param string $surn   if set, only fetch people with this surname
+	 * @param string $salpha if set, only consider surnames starting with this letter
+	 * @param bool   $marnm  if set, include married names
+	 * @param bool   $fams   if set, only consider individuals with FAMS records
+	 * @param int    $ged_id only consider individuals from this gedcom
+	 *
+	 * @return array
+	 */
 	public static function surnames($surn, $salpha, $marnm, $fams, $ged_id) {
 		$sql=
 			"SELECT SQL_CACHE n2.n_surn, n1.n_surname, n1.n_id".
@@ -385,58 +408,60 @@ class WT_Query_Name {
 		return $list;
 	}
 
-	// $surn - if set, only fetch people with this surname
-	// $salpha - if set, only fetch surnames starting with this letter
-	// $galpha - if set, only fetch given names starting with this letter
-	// $marnm - if set, include married names
-	// $fams - if set, only fetch individuals with FAMS records
-	// $ged_id - if set, only fetch individuals from this gedcom
-	//
-	// All parameters must be in upper case.  We search against a database column
-	// that contains uppercase values. This will allow non utf8-aware database
-	// to match diacritics.
-	//
-	// To search for unknown names, use $surn="@N.N.", $salpha="@" or $galpha="@"
-	// To search for names with no surnames, use $salpha=","
+	/**
+	 * Fetch a list of individuals with specified names
+	 *
+	 * To search for unknown names, use $surn="@N.N.", $salpha="@" or $galpha="@"
+	 * To search for names with no surnames, use $salpha=","
+	 *
+	 * @param string $surn   if set, only fetch people with this surname
+	 * @param string $salpha if set, only fetch surnames starting with this letter
+	 * @param string $galpha if set, only fetch given names starting with this letter
+	 * @param bool   $marnm  if set, include married names
+	 * @param bool   $fams   if set, only fetch individuals with FAMS records
+	 * @param int    $ged_id if set, only fetch individuals from this gedcom
+	 *
+	 * @return WT_Individual[]
+	 */
 	public static function individuals($surn, $salpha, $galpha, $marnm, $fams, $ged_id) {
 		$sql=
-			"SELECT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom, n_full ".
-			"FROM `##individuals` ".
-			"JOIN `##name` ON (n_id=i_id AND n_file=i_file) ".
-			($fams ? "JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS') " : "").
-			"WHERE n_file={$ged_id} ".
+			"SELECT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom, n_full " .
+			"FROM `##individuals` " .
+			"JOIN `##name` ON (n_id=i_id AND n_file=i_file) " .
+			($fams ? "JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS') " : "") .
+			"WHERE n_file={$ged_id} " .
 			($marnm ? "" : "AND n_type!='_MARNM'");
 
 		if ($surn) {
-			$sql.=" AND n_surn COLLATE '".WT_I18N::$collation."'=".WT_DB::quote($surn);
+			$sql .= " AND n_surn COLLATE '" . WT_I18N::$collation . "'=" . WT_DB::quote($surn);
 		} elseif ($salpha==',') {
-			$sql.=" AND n_surn=''";
+			$sql .= " AND n_surn=''";
 		} elseif ($salpha=='@') {
-			$sql.=" AND n_surn='@N.N.'";
+			$sql .= " AND n_surn='@N.N.'";
 		} elseif ($salpha) {
-			$sql.=" AND ".self::_getInitialSql('n_surn', $salpha);
+			$sql .= " AND ".self::_getInitialSql('n_surn', $salpha);
 		} else {
 			// All surnames
-			$sql.=" AND n_surn NOT IN ('', '@N.N.')";
+			$sql .= " AND n_surn NOT IN ('', '@N.N.')";
 		}
 		if ($galpha) {
-			$sql.=" AND ".self::_getInitialSql('n_givn', $galpha);
+			$sql .= " AND " . self::_getInitialSql('n_givn', $galpha);
 		}
 
-		$sql.=" ORDER BY CASE n_surn WHEN '@N.N.' THEN 1 ELSE 0 END, n_surn COLLATE '".WT_I18N::$collation."', CASE n_givn WHEN '@P.N.' THEN 1 ELSE 0 END, n_givn COLLATE '".WT_I18N::$collation."'";
+		$sql .= " ORDER BY CASE n_surn WHEN '@N.N.' THEN 1 ELSE 0 END, n_surn COLLATE '" . WT_I18N::$collation . "', CASE n_givn WHEN '@P.N.' THEN 1 ELSE 0 END, n_givn COLLATE '" . WT_I18N::$collation . "'";
 
-		$list=array();
-		$rows=WT_DB::prepare($sql)->fetchAll();
+		$list = array();
+		$rows = WT_DB::prepare($sql)->fetchAll();
 		foreach ($rows as $row) {
-			$person=WT_Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+			$person = WT_Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 			// The name from the database may be private - check the filtered list...
 			foreach ($person->getAllNames() as $n=>$name) {
-				if ($name['fullNN']==$row->n_full) {
+				if ($name['fullNN'] == $row->n_full) {
 					$person->setPrimaryName($n);
 					// We need to clone $person, as we may have multiple references to the
 					// same person in this list, and the "primary name" would otherwise
 					// be shared amongst all of them.
-					$list[]=clone $person;
+					$list[] = clone $person;
 					break;
 				}
 			}
@@ -444,19 +469,20 @@ class WT_Query_Name {
 		return $list;
 	}
 
-	// Get a list of families for famlist.php
-	// $surn - if set, only fetch people with this surname
-	// $salpha - if set, only fetch surnames starting with this letter
-	// $galpha - if set, only fetch given names starting with this letter
-	// $marnm - if set, include married names
-	// $ged_id - if set, only fetch individuals from this gedcom
-	//
-	// All parameters must be in upper case.  We search against a database column
-	// that contains uppercase values. This will allow non utf8-aware database
-	// to match diacritics.
-	//
-	// To search for unknown names, use $surn="@N.N.", $salpha="@" or $galpha="@"
-	// To search for names with no surnames, use $salpha=","
+	/**
+	 * Fetch a list of families with specified names
+	 *
+	 * To search for unknown names, use $surn="@N.N.", $salpha="@" or $galpha="@"
+	 * To search for names with no surnames, use $salpha=","
+	 *
+	 * @param string $surn   if set, only fetch people with this surname
+	 * @param string $salpha if set, only fetch surnames starting with this letter
+	 * @param string $galpha if set, only fetch given names starting with this letter
+	 * @param bool   $marnm  if set, include married names
+	 * @param int    $ged_id if set, only fetch individuals from this gedcom
+	 *
+	 * @return WT_Family[]
+	 */
 	public static function families($surn, $salpha, $galpha, $marnm, $ged_id) {
 		$list=array();
 		foreach (self::individuals($surn, $salpha, $galpha, $marnm, true, $ged_id) as $indi) {
