@@ -238,9 +238,9 @@ if ($show=='indi' || $show=='surn') {
 					}
 					if ($count) {
 						if ($show=='indi' && $givn_initial==$falpha && $show_all_firstnames=='no') {
-							$list[]='<a class="warning" href="'.$url.'&amp;falpha='.rawurlencode($givn_initial).'" title="'.$count.'">'.$html.'</a>';
+							$list[]='<a class="warning" href="'.$url.'&amp;falpha='.rawurlencode($givn_initial).'" title="'.WT_I18N::number($count).'">'.$html.'</a>';
 						} else {
-							$list[]='<a href="'.$url.'&amp;falpha='.rawurlencode($givn_initial).'" title="'.$count.'">'.$html.'</a>';
+							$list[]='<a href="'.$url.'&amp;falpha='.rawurlencode($givn_initial).'" title="'.WT_I18N::number($count).'">'.$html.'</a>';
 						}
 					} else {
 						$list[]=$html;
