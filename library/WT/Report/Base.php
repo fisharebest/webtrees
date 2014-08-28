@@ -3827,7 +3827,7 @@ function ListSHandler($attrs) {
 		uasort($list, array("WT_Individual", "CompareDeatDate"));
 		break;
 	case "MARR:DATE":
-		uasort($list, array("WT_Family", "CompareMarrDate"));
+		uasort($list, array("WT_Family", "compareMarrDate"));
 		break;
 	default:
 		// unsorted or already sorted by SQL

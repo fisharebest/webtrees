@@ -175,7 +175,7 @@ class WT_Family extends WT_GedcomRecord {
 	 *
 	 * @return int
 	 */
-	static function CompareMarrDate(WT_Family $x, WT_Family $y) {
+	public static function compareMarrDate(WT_Family $x, WT_Family $y) {
 		return WT_Date::Compare($x->getMarriageDate(), $y->getMarriageDate());
 	}
 

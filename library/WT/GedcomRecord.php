@@ -100,7 +100,7 @@ class WT_GedcomRecord {
 	// Get an instance of a GedcomRecord object.  For single records,
 	// we just receive the XREF.  For bulk records (such as lists
 	// and search results) we can receive the GEDCOM data as well.
-	static public function getInstance($xref, $gedcom_id=WT_GED_ID, $gedcom=null) {
+	public static function getInstance($xref, $gedcom_id=WT_GED_ID, $gedcom=null) {
 		// Is this record already in the cache?
 		if (isset(self::$gedcom_record_cache[$xref][$gedcom_id])) {
 			return self::$gedcom_record_cache[$xref][$gedcom_id];
@@ -550,7 +550,7 @@ class WT_GedcomRecord {
 
 	// Static helper function to sort an array of objects by name
 	// Records whose names cannot be displayed are sorted at the end.
-	static function Compare($x, $y) {
+	public static function Compare($x, $y) {
 		if ($x->canShowName()) {
 			if ($y->canShowName()) {
 				return utf8_strcasecmp($x->getSortName(), $y->getSortName());

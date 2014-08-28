@@ -2179,7 +2179,7 @@ case 'reorder_fams':
 
 	$fams = $person->getSpouseFamilies();
 	if ($option=='bymarriage') {
-		usort($fams, array('WT_Family', 'CompareMarrDate'));
+		usort($fams, array('WT_Family', 'compareMarrDate'));
 	}
 
 	?>
