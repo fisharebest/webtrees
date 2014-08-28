@@ -296,7 +296,7 @@ class WT_Controller_Clippings {
 	function download_clipping() {
 		Zend_Session::writeClose();
 
-		if ($this->IncludeMedia == "yes" || $this->Zip == "yes") {
+		if ($this->IncludeMedia == 'yes' || $this->Zip == 'yes') {
 			header('Content-Type: application/zip');
 			header('Content-Disposition: attachment; filename="clipping.zip"');
 			$this->zip_cart();
@@ -305,8 +305,8 @@ class WT_Controller_Clippings {
 			header('Content-Disposition: attachment; filename="clipping.ged"');
 		}
 
-		header("Content-length: ".strlen($this->download_data));
-		print_r ($this->download_data);
+		header('Content-length: ' . strlen($this->download_data));
+		echo $this->download_data;
 		exit;
 	}
 

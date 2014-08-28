@@ -122,6 +122,13 @@ class WT_Family extends WT_GedcomRecord {
 		}
 	}
 
+	/**
+	 * Get the (zero, one or two) spouses from this family.
+	 *
+	 * @param int $access_level
+	 *
+	 * @return WT_Individual[]
+	 */
 	function getSpouses($access_level=WT_USER_ACCESS_LEVEL) {
 		$spouses=array();
 		if ($this->husb && $this->husb->canShowName($access_level)) {
@@ -133,7 +140,13 @@ class WT_Family extends WT_GedcomRecord {
 		return $spouses;
 	}
 
-	// Get a list of this family’s children
+	/**
+	 * Get a list of this family’s children.
+	 *
+	 * @param int $access_level
+	 *
+	 * @return WT_Individual[]
+	 */
 	function getChildren($access_level=WT_USER_ACCESS_LEVEL) {
 		global $SHOW_PRIVATE_RELATIONSHIPS;
 

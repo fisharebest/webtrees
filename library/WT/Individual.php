@@ -588,7 +588,13 @@ class WT_Individual extends WT_GedcomRecord {
 		return 'person_box'.$tmp[$this->getSex()];
 	}
 
-	// Get a list of this individual’s spouse families
+	/**
+	 * Get a list of this individual’s spouse families
+	 *
+	 * @param int $access_level
+	 *
+	 * @return WT_Family[]
+	 */
 	function getSpouseFamilies($access_level=WT_USER_ACCESS_LEVEL) {
 		global $SHOW_PRIVATE_RELATIONSHIPS;
 
@@ -630,7 +636,13 @@ class WT_Individual extends WT_GedcomRecord {
 		}
 	}
 
-	// Get a list of this individual’s child families (i.e. their parents)
+	/**
+	 * Get a list of this individual’s child families (i.e. their parents)
+	 *
+	 * @param int $access_level
+	 *
+	 * @return WT_Family[]
+	 */
 	function getChildFamilies($access_level=WT_USER_ACCESS_LEVEL) {
 		global $SHOW_PRIVATE_RELATIONSHIPS;
 
