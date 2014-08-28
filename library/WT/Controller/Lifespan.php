@@ -135,8 +135,6 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 					// list of linked records includes families as well as individuals.
 					if ($person) {
 						$bdate = $person->getEstimatedBirthDate();
-						$ddate = $person->getEstimatedDeathDate();
-						//--Checks to see if the details of that person can be viewed
 						if ($bdate->isOK() && $person->canShow()) {
 							$this->people[] = $person;
 						}
@@ -160,8 +158,6 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 			foreach ($indis as $person) {
 				if (empty($searchplace) || in_array($person->getXref(), $this->pids)) {
 					$bdate = $person->getEstimatedBirthDate();
-					$ddate = $person->getEstimatedDeathDate();
-					//--Checks to see if the details of that person can be viewed
 					if ($bdate->isOK() && $person->canShow()) {
 						$this->people[] = $person;
 					}
@@ -179,7 +175,7 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 			$ddate = $this->people[0]->getEstimatedDeathDate();
 			$this->timelineMinYear=$bdate->gregorianYear();
 			$this->timelineMaxYear=$ddate->gregorianYear() ? $ddate->gregorianYear() : date('Y');
-			foreach ($this->people as $key => $value) {
+			foreach ($this->people as $value) {
 				$bdate = $value->getEstimatedBirthDate();
 				$ddate = $value->getEstimatedDeathDate();
 				$this->timelineMinYear=min($this->timelineMinYear, $bdate->gregorianYear());
@@ -252,6 +248,7 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 		}
 		return $year;
 	}
+
 	//Prints the time line
 	function PrintTimeline($startYear, $endYear) {
 		$leftPosition = 14; //start point

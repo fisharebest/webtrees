@@ -30,22 +30,27 @@
 
 global $summary, $censyear, $censdate;
 
-$censdate  = new WT_Date('31 MAR 1901');
-$censyear   = $censdate->date1->y;
-
-$ctry       = 'UK';
-// $married    = WT_Date::Compare($censdate, $marrdate);
+$censdate = new WT_Date('31 MAR 1901');
+$censyear = $censdate->date1->y;
+$ctry     = 'UK';
 
 // === Set $married to "Not married as we only want the Birth name here" ===
 $married=-1;
 
-// var_dump($person->getAllNames());
 $nam = $person->getAllNames();
-if ($person->getDeathYear() == 0) { $DeathYr = ""; } else { $DeathYr = $person->getDeathYear(); }
-if ($person->getBirthYear() == 0) { $BirthYr = ""; } else { $BirthYr = $person->getBirthYear(); }
-$fulln   = rtrim($nam[0]['givn'],'*')." ".$nam[0]['surname'];
-$fulln   = str_replace("@N.N.", "(".WT_I18N::translate('unknown').")", $fulln);
-$fulln   = str_replace("@P.N.", "(".WT_I18N::translate('unknown').")", $fulln);
+if ($person->getDeathYear() == 0) {
+	$DeathYr = '';
+} else {
+	$DeathYr = $person->getDeathYear();
+}
+if ($person->getBirthYear() == 0) {
+	$BirthYr = '';
+} else {
+	$BirthYr = $person->getBirthYear();
+}
+$fulln = rtrim($nam[0]['givn'],'*')." ".$nam[0]['surname'];
+$fulln = str_replace("@N.N.", "(".WT_I18N::translate('unknown').")", $fulln);
+$fulln = str_replace("@P.N.", "(".WT_I18N::translate('unknown').")", $fulln);
 $wholename = $fulln;
 
 echo '<script src="', WT_STATIC_URL, WT_MODULES_DIR, 'GEDFact_assistant/_CENS/js/dynamicoptionlist.js"></script>';

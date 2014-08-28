@@ -232,7 +232,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 	 * @param array $varNames - Array of variable names(strings).
 	 */
 	function setRequestValues($varNames) {
-		foreach ($varNames as $key => $varName) {
+		foreach ($varNames as $varName) {
 			if (isset ($_REQUEST[$varName])) {
 				if ($varName=='action' && $_REQUEST[$varName]=='replace' && !WT_USER_CAN_EDIT) {
 					$this->action='general';
@@ -269,9 +269,6 @@ class WT_Controller_Search extends WT_Controller_Page {
 	 * Gathers results for a general search
 	 */
 	function GeneralSearch() {
-		global $GEDCOM;
-		$oldged = $GEDCOM;
-
 		// Split search terms into an array
 		$query_terms=array();
 		$query=$this->query;
@@ -368,13 +365,13 @@ class WT_Controller_Search extends WT_Controller_Page {
 	 */
 	function SearchAndReplace()
 	{
-		global $GEDCOM, $manual_save, $STANDARD_NAME_FACTS, $ADVANCED_NAME_FACTS;
+		global $STANDARD_NAME_FACTS, $ADVANCED_NAME_FACTS;
 
 		$this->sgeds = array(WT_GED_ID=>WT_GEDCOM);
-		$this->srindi = "yes";
-		$this->srfams = "yes";
-		$this->srsour = "yes";
-		$this->srnote = "yes";
+		$this->srindi = 'yes';
+		$this->srfams = 'yes';
+		$this->srsour = 'yes';
+		$this->srnote = 'yes';
 		$oldquery = $this->query;
 		$this->GeneralSearch();
 
@@ -384,19 +381,12 @@ class WT_Controller_Search extends WT_Controller_Page {
 		}
 
 		Log::addEditLog("Search And Replace old:".$oldquery." new:".$this->replace);
-		$manual_save = true;
 		// Include edit functions.
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
-		// These contain the search query and the replace string
-		// $this->replace;
-		// $this->query;
 
-		// These contain the search results
-		// We need to iterate through them and do the replaces
-		//$this->myindilist;
 		$adv_name_tags = preg_split("/[\s,;: ]+/", $ADVANCED_NAME_FACTS);
 		$name_tags = array_unique(array_merge($STANDARD_NAME_FACTS, $adv_name_tags));
-		$name_tags[] = "_MARNM";
+		$name_tags[] = '_MARNM';
 		foreach ($this->myindilist as $id=>$record) {
 			$oldRecord = $record->getGedcom();
 			$newRecord = $oldRecord;
@@ -404,7 +394,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 				$newRecord = preg_replace("~".$oldquery."~i", $this->replace, $newRecord);
 			} else {
 				if ($this->replaceNames) {
-					foreach ($name_tags as $f=>$tag) {
+					foreach ($name_tags as $tag) {
 						$newRecord = preg_replace("~(\d) ".$tag." (.*)".$oldquery."(.*)~i", "$1 ".$tag." $2".$this->replace."$3", $newRecord);
 					}
 				}
@@ -427,8 +417,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 
 			if ($this->replaceAll) {
 				$newRecord = preg_replace("~".$oldquery."~i", $this->replace, $newRecord);
-			}
-			else {
+			} else {
 				if ($this->replacePlaces) {
 					if ($this->replacePlacesWord) $newRecord = preg_replace('~(\d) PLAC (.*)([,\W\s])'.$oldquery.'([,\W\s])~i', "$1 PLAC $2$3".$this->replace."$4",$newRecord);
 					else $newRecord = preg_replace("~(\d) PLAC (.*)".$oldquery."(.*)~i", "$1 PLAC $2".$this->replace."$3",$newRecord);

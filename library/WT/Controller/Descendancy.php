@@ -185,7 +185,7 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 	 * @param int $depth the descendancy depth to show
 	 */
 	function print_family_descendancy($person, $family, $depth) {
-		global $GEDCOM, $WT_IMAGES, $Dindent, $personcount;
+		global $WT_IMAGES, $Dindent, $personcount;
 
 		if (is_null($family)) return;
 		if (is_null($person)) return;
