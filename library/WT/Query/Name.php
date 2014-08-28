@@ -29,7 +29,7 @@ class WT_Query_Name {
 	 *
 	 * @return string[]
 	 */
-	private static function _getAlphabet($locale) {
+	private static function getAlphabetForLocale($locale) {
 		switch ($locale) {
 		case 'ar':
 			return array(
@@ -248,7 +248,7 @@ class WT_Query_Name {
 		// Fetch all the letters in our alphabet, whether or not there
 		// are any names beginning with that letter.  It looks better to
 		// show the full alphabet, rather than omitting rare letters such as X
-		foreach (self::_getAlphabet(WT_LOCALE) as $letter) {
+		foreach (self::getAlphabetForLocale(WT_LOCALE) as $letter) {
 			$count = 1;
 			if ($totals) {
 				$count = WT_DB::prepare($sql . " AND " . self::_getInitialSql('n_surn', $letter))->fetchOne();
@@ -265,7 +265,7 @@ class WT_Query_Name {
 			" WHERE n_file={$ged_id} AND n_surn<>''" .
 			($marnm ? "" : " AND n_type!='_MARNM'");
 
-		foreach (self::_getAlphabet(WT_LOCALE) as $letter) {
+		foreach (self::getAlphabetForLocale(WT_LOCALE) as $letter) {
 			$sql .= " AND n_surn NOT LIKE '" . $letter . "%' COLLATE " . WT_I18N::$collation;
 		}
 		$sql .= " GROUP BY LEFT(n_surn, 1) ORDER BY LEFT(n_surn, 1)='', LEFT(n_surn, 1)='@', LEFT(n_surn, 1)";
@@ -326,7 +326,7 @@ class WT_Query_Name {
 		// Fetch all the letters in our alphabet, whether or not there
 		// are any names beginning with that letter.  It looks better to
 		// show the full alphabet, rather than omitting rare letters such as X
-		foreach (self::_getAlphabet(WT_LOCALE) as $letter) {
+		foreach (self::getAlphabetForLocale(WT_LOCALE) as $letter) {
 			$count=WT_DB::prepare($sql . " AND " . self::_getInitialSql('n_givn', $letter))->fetchOne();
 			$alphas[$letter] = $count;
 		}
@@ -353,7 +353,7 @@ class WT_Query_Name {
 			$sql .= " AND n_surn NOT IN ('', '@N.N.')";
 		}
 
-		foreach (self::_getAlphabet(WT_LOCALE) as $letter) {
+		foreach (self::getAlphabetForLocale(WT_LOCALE) as $letter) {
 			$sql .= " AND n_givn NOT LIKE '" . $letter . "%' COLLATE " . WT_I18N::$collation;
 		}
 		$sql .= " GROUP BY LEFT(n_givn, 1) ORDER BY LEFT(n_givn, 1)='@', LEFT(n_givn, 1)='', LEFT(n_givn, 1)";
