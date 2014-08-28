@@ -104,46 +104,51 @@ class WT_Query_Name {
 		}
 	}
 
-	// Get the initial letter of a name, taking care of multi-letter sequences and equivalences.
+	/**
+	 * Get the initial letter of a name, taking care of multi-letter sequences and equivalences.
+	 *
+	 * @param string $name
+	 *
+	 * @return string
+	 */
 	static public function initialLetter($name) {
-		$name=utf8_strtoupper($name);
-		// For some languages, it is not simply the first character.
+		$name = utf8_strtoupper($name);
 		switch (WT_LOCALE) {
 		case 'cs':
-			if (substr($name, 0, 2)=='CH') {
+			if (substr($name, 0, 2) == 'CH') {
 				return 'CH';
 			}
 			break;
 		case 'da':
 		case 'nb':
 		case 'nn':
-			if (substr($name, 0, 2)=='AA') {
+			if (substr($name, 0, 2) == 'AA') {
 				return 'Å';
 			}
 			break;
 		case 'hu':
-			if (substr($name, 0, 2)=='CS') {
+			if (substr($name, 0, 2) == 'CS') {
 				return 'CS';
-			} elseif (substr($name, 0, 2)=='DZS') {
+			} elseif (substr($name, 0, 3) == 'DZS') {
 				return 'DZS';
-			} elseif (substr($name, 0, 2)=='DZ') {
+			} elseif (substr($name, 0, 2) == 'DZ') {
 				return 'DZ';
-			} elseif (substr($name, 0, 2)=='GY') {
+			} elseif (substr($name, 0, 2) == 'GY') {
 				return 'GY';
-			} elseif (substr($name, 0, 2)=='LY') {
+			} elseif (substr($name, 0, 2) == 'LY') {
 				return 'LY';
-			} elseif (substr($name, 0, 2)=='NY') {
+			} elseif (substr($name, 0, 2) == 'NY') {
 				return 'NY';
-			} elseif (substr($name, 0, 2)=='SZ') {
+			} elseif (substr($name, 0, 2) == 'SZ') {
 				return 'SZ';
-			} elseif (substr($name, 0, 2)=='TY') {
+			} elseif (substr($name, 0, 2) == 'TY') {
 				return 'TY';
-			} elseif (substr($name, 0, 2)=='ZS') {
+			} elseif (substr($name, 0, 2) == 'ZS') {
 				return 'ZS';
 			}
 			break;
 		case 'nl':
-			if (substr($name, 0, 2)=='IJ') {
+			if (substr($name, 0, 2) == 'IJ') {
 				return 'IJ';
 			}
 			break;
@@ -200,17 +205,24 @@ class WT_Query_Name {
 		return "$field LIKE CONCAT('@',".WT_DB::quote($letter).",'%') COLLATE ".WT_I18N::$collation." ESCAPE '@'";
 	}
 
-	// Get a list of initial surname letters for indilist.php and famlist.php
-	// $marnm - if set, include married names
-	// $fams - if set, only consider individuals with FAMS records
-	static public function surnameAlpha($marnm, $fams, $ged_id, $countRecords = true) {
-		$alphas=array();
+	/**
+	 * Get a list of initial surname letters for indilist.php and famlist.php
+	 *
+	 * @param bool $marnm   if set, include married names
+	 * @param bool $fams    if set, only consider individuals with FAMS records
+	 * @param int  $ged_id
+	 * @param bool $countRecords
+	 *
+	 * @return int[]
+	 */
+	public static function surnameAlpha($marnm, $fams, $ged_id, $countRecords = true) {
+		$alphas = array();
 
-		$sql=
-			"SELECT SQL_CACHE COUNT(n_id)".
-			" FROM `##name` ".
-			($fams ? " JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS') " : "").
-			" WHERE n_file={$ged_id}".
+		$sql =
+			"SELECT SQL_CACHE COUNT(n_id)" .
+			" FROM `##name` " .
+			($fams ? " JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS') " : "") .
+			" WHERE n_file={$ged_id}" .
 			($marnm ? "" : " AND n_type!='_MARNM'");
 
 		// Fetch all the letters in our alphabet, whether or not there
@@ -219,39 +231,39 @@ class WT_Query_Name {
 		foreach (self::_getAlphabet() as $letter) {
 			$count = 1;
 			if ($countRecords) {
-				$count=WT_DB::prepare($sql." AND ".self::_getInitialSql('n_surn', $letter))->fetchOne();
+				$count = WT_DB::prepare($sql . " AND " . self::_getInitialSql('n_surn', $letter))->fetchOne();
 			}
-			$alphas[$letter]=WT_I18N::number($count);
+			$alphas[$letter] = $count;
 		}
 
 		// Now fetch initial letters that are not in our alphabet,
 		// including "@" (for "@N.N.") and "" for no surname.
-		$sql=
-			"SELECT SQL_CACHE UPPER(LEFT(n_surn, 1)), COUNT(n_id)".
-			" FROM `##name` ".
-			($fams ? " JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS') " : "").
-			" WHERE n_file={$ged_id} AND n_surn<>''".
+		$sql =
+			"SELECT SQL_CACHE UPPER(LEFT(n_surn, 1)), COUNT(n_id)" .
+			" FROM `##name` " .
+			($fams ? " JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS') " : "") .
+			" WHERE n_file={$ged_id} AND n_surn<>''" .
 			($marnm ? "" : " AND n_type!='_MARNM'");
 
 		foreach (self::_getAlphabet() as $letter) {
-			$sql.=" AND n_surn NOT LIKE '".$letter."%' COLLATE ".WT_I18N::$collation;
+			$sql .= " AND n_surn NOT LIKE '" . $letter . "%' COLLATE " . WT_I18N::$collation;
 		}
-		$sql.=" GROUP BY LEFT(n_surn, 1) ORDER BY LEFT(n_surn, 1)='', LEFT(n_surn, 1)='@', LEFT(n_surn, 1)";
+		$sql .= " GROUP BY LEFT(n_surn, 1) ORDER BY LEFT(n_surn, 1)='', LEFT(n_surn, 1)='@', LEFT(n_surn, 1)";
 		foreach (WT_DB::prepare($sql)->fetchAssoc() as $alpha=>$count) {
-			$alphas[$alpha]=WT_I18N::number($count);
+			$alphas[$alpha] = $count;
 		}
 
 		// Names with no surname
-		$sql=
-			"SELECT SQL_CACHE COUNT(n_id)".
-			" FROM `##name` ".
-			($fams ? " JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS') " : "").
-			" WHERE n_file={$ged_id} AND n_surn=''".
+		$sql =
+			"SELECT SQL_CACHE COUNT(n_id)" .
+			" FROM `##name` " .
+			($fams ? " JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS') " : "") .
+			" WHERE n_file={$ged_id} AND n_surn=''" .
 			($marnm ? "" : " AND n_type!='_MARNM'");
-		$num_none=WT_DB::prepare($sql)->fetchOne();
+		$num_none = WT_DB::prepare($sql)->fetchOne();
 		if ($num_none) {
 			// Special code to indicate "no surname"
-			$alphas[',']=$num_none;
+			$alphas[','] = $num_none;
 		}
 
 		return $alphas;

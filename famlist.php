@@ -151,9 +151,9 @@ foreach (WT_Query_Name::surnameAlpha($show_marnm, true, WT_GED_ID) as $letter=>$
 	}
 	if ($count) {
 		if ($letter==$alpha) {
-			$list[]='<a href="'.WT_SCRIPT_NAME.'?alpha='.rawurlencode($letter).'&amp;ged='.WT_GEDURL.'" class="warning" title="'.$count.'">'.$html.'</a>';
+			$list[]='<a href="'.WT_SCRIPT_NAME.'?alpha='.rawurlencode($letter).'&amp;ged='.WT_GEDURL.'" class="warning" title="'.WT_I18N::number($count).'">'.$html.'</a>';
 		} else {
-			$list[]='<a href="'.WT_SCRIPT_NAME.'?alpha='.rawurlencode($letter).'&amp;ged='.WT_GEDURL.'" title="'.$count.'">'.$html.'</a>';
+			$list[]='<a href="'.WT_SCRIPT_NAME.'?alpha='.rawurlencode($letter).'&amp;ged='.WT_GEDURL.'" title="'.WT_I18N::number($count).'">'.$html.'</a>';
 		}
 	} else {
 		$list[]=$html;
