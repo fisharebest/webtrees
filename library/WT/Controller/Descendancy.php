@@ -95,17 +95,18 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 	}
 
 	/**
-	 * print a child family
+	 * Print a child family
 	 *
-	 * @param        $person
-	 * @param int    $depth the descendancy depth to show
-	 * @param string $label
-	 * @param string $gpid
+	 * @param WT_Individual $person
+	 * @param int           $depth the descendancy depth to show
+	 * @param string        $label
+	 * @param string        $gpid
+	 *
+	 * @return void
 	 */
-	function print_child_family($person, $depth, $label='1.', $gpid='') {
+	function print_child_family(WT_Individual $person, $depth, $label='1.', $gpid='') {
 		global $personcount;
 
-		if (is_null($person)) return;
 		if ($depth<2) return;
 		foreach ($person->getSpouseFamilies() as $family) {
 			print_sosa_family($family->getXref(), '', -1, $label, $person->getXref(), $gpid, $personcount);
@@ -120,14 +121,14 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 	/**
 	 * print a child descendancy
 	 *
-	 * @param     $person
-	 * @param int $depth the descendancy depth to show
+	 * @param WT_Individual $person
+	 * @param int           $depth the descendancy depth to show
+	 *
+	 * @return void
 	 */
-	function print_child_descendancy($person, $depth) {
+	function print_child_descendancy(WT_Individual $person, $depth) {
 		global $WT_IMAGES, $Dindent, $personcount;
 
-		if (is_null($person)) return;
-		//print_r($person);
 		echo "<li>";
 		echo "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td>";
 		if ($depth==$this->generations) echo "<img src=\"".$WT_IMAGES["spacer"]."\" height=\"3\" width=\"$Dindent\" alt=\"\"></td><td>";
@@ -180,15 +181,14 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 	/**
 	 * print a family descendancy
 	 *
-	 * @param     $person
-	 * @param     $family
-	 * @param int $depth the descendancy depth to show
+	 * @param WT_Individual $person
+	 * @param WT_Family     $family
+	 * @param int           $depth the descendancy depth to show
+	 *
+	 * @return void
 	 */
-	function print_family_descendancy($person, $family, $depth) {
+	function print_family_descendancy(WT_Individual $person, WT_Family $family, $depth) {
 		global $WT_IMAGES, $Dindent, $personcount;
-
-		if (is_null($family)) return;
-		if (is_null($person)) return;
 
 		// print marriage info
 		echo '<li>';
@@ -250,7 +250,16 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 		echo '</li>';
 	}
 
-	public function indi_desc($person, $n, $array) {
+	/**
+	 * Find all the individuals that are descended from an individual.
+	 *
+	 * @param WT_Individual   $person
+	 * @param int             $n
+	 * @param WT_Individual[] $array
+	 *
+	 * @return WT_Individual[]
+	 */
+	public function indi_desc(WT_Individual $person, $n, $array) {
 		if ($n < 1) {
 			return $array;
 		}
@@ -267,6 +276,15 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 		return $array;
 	}
 
+	/**
+	 * Find all the families that are descended from an individual.
+	 *
+	 * @param WT_Individual $person
+	 * @param int           $n
+	 * @param WT_Family[]   $array
+	 *
+	 * @return WT_Family[]
+	 */
 	public function fam_desc($person, $n, $array) {
 		if ($n < 1) {
 			return $array;

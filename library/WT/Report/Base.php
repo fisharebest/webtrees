@@ -2700,8 +2700,6 @@ function RepeatTagEHandler() {
 					xml_error_string(xml_get_error_code($repeat_parser)),
 					xml_get_current_line_number($repeat_parser)
 				);
-				print_r($repeatsStack);
-				debug_print_backtrace();
 				exit;
 			}
 			xml_parser_free($repeat_parser);
@@ -3829,7 +3827,7 @@ function ListSHandler($attrs) {
 		uasort($list, array("WT_Individual", "CompareDeatDate"));
 		break;
 	case "MARR:DATE":
-		uasort($list, array("WT_Family", "CompareMarrDate"));
+		uasort($list, array("WT_Family", "compareMarrDate"));
 		break;
 	default:
 		// unsorted or already sorted by SQL
@@ -3909,8 +3907,6 @@ function ListEHandler() {
 						xml_error_string(xml_get_error_code($repeat_parser)),
 						xml_get_current_line_number($repeat_parser)
 					);
-					print_r($repeatsStack);
-					debug_print_backtrace();
 					exit;
 				}
 				xml_parser_free($repeat_parser);
@@ -4164,8 +4160,6 @@ function RelativesEHandler() {
 					xml_error_string(xml_get_error_code($repeat_parser)),
 					xml_get_current_line_number($repeat_parser)
 				);
-				print_r($repeatsStack);
-				debug_print_backtrace();
 				exit;
 			}
 			xml_parser_free($repeat_parser);

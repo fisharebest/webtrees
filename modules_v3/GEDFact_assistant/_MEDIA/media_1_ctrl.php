@@ -49,10 +49,6 @@ if ($pid=="") {
 	//-- Search  and Add Family Members Area =========================================
 	?>
 	<table class="outer_nav center">
-		<?php
-
-		//-- Search Function ------------------------------------------------------------
-		?>
 		<tr>
 			<td class="descriptionbox center"><?php echo WT_I18N::translate('Search for individuals to add to add Links list.'); ?></td>
 		</tr>
@@ -529,23 +525,11 @@ if ($pid=="") {
  * print the information for an individual chart box
  *
  * find and print a given individuals information for a pedigree chart
- * @param string $pid the Gedcom Xref ID of the   to print
+ * @param string $pid the Gedcom Xref ID of the individual to print
  */
 function print_pedigree_person_nav2($pid) {
-	global $SHOW_HIGHLIGHT_IMAGES, $bwidth, $bheight, $PEDIGREE_FULL_DETAILS, $SHOW_PEDIGREE_PLACES;
-	global $TEXT_DIRECTION, $DEFAULT_PEDIGREE_GENERATIONS, $OLD_PGENS, $talloffset, $PEDIGREE_LAYOUT, $MEDIA_DIRECTORY;
-	global $chart_style, $box_width, $generations, $show_spouse, $show_full;
-	global $CHART_BOX_TAGS, $SHOW_LDS_AT_GLANCE, $PEDIGREE_SHOW_GENDER;
-	global $SEARCH_SPIDER;
-
 	global $spouselinks, $parentlinks, $step_parentlinks, $persons, $person_step, $person_parent;
-	global $natdad, $natmom, $censyear, $censdate;
-
-	if (empty($show_full)) $show_full = 0;
-	if (empty($PEDIGREE_FULL_DETAILS)) $PEDIGREE_FULL_DETAILS = 0;
-
-	if (!isset($OLD_PGENS)) $OLD_PGENS = $DEFAULT_PEDIGREE_GENERATIONS;
-	if (!isset($talloffset)) $talloffset = $PEDIGREE_LAYOUT;
+	global $natdad, $natmom;
 
 	$person=WT_Individual::getInstance($pid);
 	if ($pid==false || empty($person)) {
@@ -559,9 +543,8 @@ function print_pedigree_person_nav2($pid) {
 	$spouselinks = "";
 	$parentlinks = "";
 	$step_parentlinks   = "";
-	$disp=$person->canShow();
 
-	if ($person->canShowName() && !$SEARCH_SPIDER) {
+	if ($person->canShowName()) {
 		//-- draw a box for the family popup
 		$spouselinks .= "<table id=\"flyoutFam\" class=\"person_box$isF\"><tr><td class=\"name2 ltr\">";
 		$spouselinks .= "<b>" . WT_I18N::translate('Family') . "</b> (" .$person->getFullName(). ")<br>";
@@ -575,68 +558,61 @@ function print_pedigree_person_nav2($pid) {
 
 		//-- parent families --------------------------------------
 		foreach ($person->getChildFamilies() as $family) {
+			$husb = $family->getHusband($person);
+			$wife = $family->getWife($person);
+			$children = $family->getChildren();
 
-			if (!is_null($family)) {
-				$husb = $family->getHusband($person);
-				$wife = $family->getWife($person);
-				$children = $family->getChildren();
-				$num = count($children);
-				$marrdate = $family->getMarriageDate();
+			if ($husb || $children) {
+				if ($husb) {
+					$person_parent="Yes";
+					if ($husb->canShowName()) {
+						$fulln =strip_tags($husb->getFullName());
+						$parentlinks .= "<a href=\"#\" onclick=\"opener.insertRowToTable(";
+						$parentlinks .= "'".$husb->getXref()."', "; // pid = PID
+						$parentlinks .= "'".htmlentities($fulln)."', "; // nam = Name
+						$parentlinks .= "'',";
+						$parentlinks .= "'',";
+						$parentlinks .= "'',";
+						$parentlinks .= "'',";
+						$parentlinks .= "'',";
+						$parentlinks .= "'',";
+						$parentlinks .= "'',";
+						$parentlinks .= "''";
+						$parentlinks .= ");\">";
+						$parentlinks .= $husb->getFullName();
+						$parentlinks .= "</a>";
 
-				// Husband ------------------------------
-				if ($husb || $num>0) {
-					if ($husb) {
-						$person_parent="Yes";
-						if ($husb->canShowName()) {
-							$fulln =strip_tags($husb->getFullName());
-							$parentlinks .= "<a href=\"#\" onclick=\"opener.insertRowToTable(";
-							$parentlinks .= "'".$husb->getXref()."', "; // pid = PID
-							$parentlinks .= "'".htmlentities($fulln)."', "; // nam = Name
-							$parentlinks .= "'',";
-							$parentlinks .= "'',";
-							$parentlinks .= "'',";
-							$parentlinks .= "'',";
-							$parentlinks .= "'',";
-							$parentlinks .= "'',";
-							$parentlinks .= "'',";
-							$parentlinks .= "''";
-							$parentlinks .= ");\">";
-							$parentlinks .= $husb->getFullName();
-							$parentlinks .= "</a>";
-
-						} else {
-							$parentlinks .= WT_I18N::translate('Private');
-						}
-						$natdad = "yes";
+					} else {
+						$parentlinks .= WT_I18N::translate('Private');
 					}
+					$natdad = "yes";
 				}
+			}
 
-				// Wife ------------------------------
-				if ($wife || $num>0) {
-					if ($wife) {
-						$person_parent="Yes";
-						if ($wife->canShowName()) {
-							$fulln =strip_tags($wife->getFullName());
-							$parentlinks .= "<a href=\"#\" onclick=\"opener.insertRowToTable(";
-							$parentlinks .= "'".$wife->getXref()."',"; // pid = PID
-							$parentlinks .= "'".htmlentities($fulln)."',"; // nam = Full Name
-							$parentlinks .= "'',";
-							$parentlinks .= "'',";
-							$parentlinks .= "'',";
-							$parentlinks .= "'',";
-							$parentlinks .= "'',";
-							$parentlinks .= "'',";
-							$parentlinks .= "'',";
-							$parentlinks .= "''";
-							$parentlinks .= ");\">";
-							$parentlinks .= $wife->getFullName();
-							$parentlinks .= "</a>";
-						} else {
-							$parentlinks .= WT_I18N::translate('Private');
-						}
-						$parentlinks .= "<br>";
-						$natmom = "yes";
+			if ($wife || $children) {
+				if ($wife) {
+					$person_parent="Yes";
+					if ($wife->canShowName()) {
+						$fulln =strip_tags($wife->getFullName());
+						$parentlinks .= "<a href=\"#\" onclick=\"opener.insertRowToTable(";
+						$parentlinks .= "'".$wife->getXref()."',"; // pid = PID
+						$parentlinks .= "'".htmlentities($fulln)."',"; // nam = Full Name
+						$parentlinks .= "'',";
+						$parentlinks .= "'',";
+						$parentlinks .= "'',";
+						$parentlinks .= "'',";
+						$parentlinks .= "'',";
+						$parentlinks .= "'',";
+						$parentlinks .= "'',";
+						$parentlinks .= "''";
+						$parentlinks .= ");\">";
+						$parentlinks .= $wife->getFullName();
+						$parentlinks .= "</a>";
+					} else {
+						$parentlinks .= WT_I18N::translate('Private');
 					}
+					$parentlinks .= "<br>";
+					$natmom = "yes";
 				}
 			}
 		}
@@ -648,18 +624,15 @@ function print_pedigree_person_nav2($pid) {
 				$husb = $family->getHusband($person);
 				$wife = $family->getWife($person);
 				$children = $family->getChildren();
-				$num = count($children);
-				$marrdate = $family->getMarriageDate();
 
 				if ($natdad == "yes") {
 				} else {
 					// Husband -----------------------
-					if (($husb || $num>0) && $husb->getLabel() != ".") {
+					if (($husb || $children) && $husb->getLabel() != ".") {
 						if ($husb) {
 							$person_step="Yes";
 							$tmp=$husb->getXref();
 							if ($husb->canShowName()) {
-								$fulln =strip_tags($husb->getFullName());
 								$parentlinks .= "<a href=\"individual.php?pid={$tmp}&amp;&amp;gedcom=".WT_GEDURL."\">";
 								$parentlinks .= $husb->getFullName();
 								$parentlinks .= "</a>";
@@ -674,12 +647,11 @@ function print_pedigree_person_nav2($pid) {
 				if ($natmom == "yes") {
 				} else {
 					// Wife ----------------------------
-					if ($wife || $num>0) {
+					if ($wife || $children) {
 						if ($wife) {
 							$person_step="Yes";
 							$tmp=$wife->getXref();
 							if ($wife->canShowName()) {
-								$fulln =addslashes($wife->getFullName());
 								$parentlinks .= "<a href=\"individual.php?pid={$tmp}&amp;gedcom=".WT_GEDURL."\">";
 								$parentlinks .= $wife->getFullName();
 								$parentlinks .= "</a>";
@@ -695,18 +667,44 @@ function print_pedigree_person_nav2($pid) {
 
 		// Spouse Families -------------------------------------- @var $family Family
 		foreach ($person->getSpouseFamilies() as $family) {
-			if (!is_null($family)) {
-				$spouse = $family->getSpouse($person);
-				$children = $family->getChildren();
-				$num = count($children);
-				$marrdate = $family->getMarriageDate();
+			$spouse = $family->getSpouse($person);
+			$children = $family->getChildren();
 
-				// Spouse ------------------------------
-				if ($spouse && $spouse->canShowName()) {
-					$fulln =strip_tags($spouse->getFullName());
+			// Spouse ------------------------------
+			if ($spouse && $spouse->canShowName()) {
+				$spouselinks .= "<a href=\"#\" onclick=\"opener.insertRowToTable(";
+				$spouselinks .= "'".$spouse->getXref()."',"; // pid = PID
+				$spouselinks .= "'".strip_tags($spouse->getFullName())."',"; // Full Name
+				$spouselinks .= "'',";
+				$spouselinks .= "'',";
+				$spouselinks .= "'',";
+				$spouselinks .= "'',";
+				$spouselinks .= "'',";
+				$spouselinks .= "'',";
+				$spouselinks .= "'',";
+				$spouselinks .= "''";
+				$spouselinks .= ");\">";
+				$spouselinks .= $spouse->getFullName(); // Full Name
+				$spouselinks .= "</a>";
+			} else {
+				$spouselinks .= WT_I18N::translate('Private');
+			}
+			$spouselinks .= "</a>";
+			if ($spouse->getFullName() != "") {
+				$persons = "Yes";
+			}
+
+			// Children ------------------------------   @var $child Person
+			$spouselinks .= "<div id='spouseFam'>";
+			$spouselinks .= "<ul class=\"clist\">";
+			foreach ($children as $child) {
+				$persons="Yes";
+				if ($child->canShowName()) {
+					$fulln =strip_tags($child->getFullName());
+					$spouselinks .= "<li>";
 					$spouselinks .= "<a href=\"#\" onclick=\"opener.insertRowToTable(";
-					$spouselinks .= "'".$spouse->getXref()."',"; // pid = PID
-					$spouselinks .= "'".strip_tags($spouse->getFullName())."',"; // Full Name
+					$spouselinks .= "'".$child->getXref()."',"; // pid = PID
+					$spouselinks .= "'".htmlentities($fulln)."',"; // nam = Name
 					$spouselinks .= "'',";
 					$spouselinks .= "'',";
 					$spouselinks .= "'',";
@@ -716,48 +714,15 @@ function print_pedigree_person_nav2($pid) {
 					$spouselinks .= "'',";
 					$spouselinks .= "''";
 					$spouselinks .= ");\">";
-					$spouselinks .= $spouse->getFullName(); // Full Name
+					$spouselinks .= $child->getFullName(); // Full Name
 					$spouselinks .= "</a>";
 				} else {
 					$spouselinks .= WT_I18N::translate('Private');
 				}
-				$spouselinks .= "</a>";
-				if ($spouse->getFullName() != "") {
-					$persons = "Yes";
-				}
-
-				// Children ------------------------------   @var $child Person
-				$spouselinks .= "<div id='spouseFam'>";
-				$spouselinks .= "<ul class=\"clist\">";
-				foreach ($children as $c=>$child) {
-					if ($child) {
-						$persons="Yes";
-						if ($child->canShowName()) {
-							$fulln =strip_tags($child->getFullName());
-							$spouselinks .= "<li>";
-							$spouselinks .= "<a href=\"#\" onclick=\"opener.insertRowToTable(";
-							$spouselinks .= "'".$child->getXref()."',"; // pid = PID
-							$spouselinks .= "'".htmlentities($fulln)."',"; // nam = Name
-							$spouselinks .= "'',";
-							$spouselinks .= "'',";
-							$spouselinks .= "'',";
-							$spouselinks .= "'',";
-							$spouselinks .= "'',";
-							$spouselinks .= "'',";
-							$spouselinks .= "'',";
-							$spouselinks .= "''";
-							$spouselinks .= ");\">";
-							$spouselinks .= $child->getFullName(); // Full Name
-							$spouselinks .= "</a>";
-							} else {
-								$spouselinks .= WT_I18N::translate('Private');
-							}
-							$spouselinks .= "</li>";
-					}
-				}
-				$spouselinks .= "</ul>";
-				$spouselinks .= "</div>";
+				$spouselinks .= "</li>";
 			}
+			$spouselinks .= "</ul>";
+			$spouselinks .= "</div>";
 		}
 
 		if ($persons != "Yes") {
