@@ -25,15 +25,6 @@ class FunctionsUtf8Test extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * Test that function utf8_strtoupper() exists in the global namespace.
-	 *
-	 * @return void
-	 */
-	public function testFunctionUtf8StrtoupperExists() {
-		$this->assertEquals(function_exists('\\utf8_strtoupper'), true);
-	}
-
-	/**
 	 * Test that function utf8_substr() exists in the global namespace.
 	 *
 	 * @return void
@@ -49,14 +40,5 @@ class FunctionsUtf8Test extends PHPUnit_Framework_TestCase {
 	 */
 	public function testFunctionUtf8StrlenExists() {
 		$this->assertEquals(function_exists('\\utf8_strlen'), true);
-	}
-
-	/**
-	 * Test that function utf8_strcasecmp() exists in the global namespace.
-	 *
-	 * @return void
-	 */
-	public function testFunctionUtf8StrcasecmpExists() {
-		$this->assertEquals(function_exists('\\utf8_strcasecmp'), true);
 	}
 }

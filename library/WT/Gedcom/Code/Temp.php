@@ -193,7 +193,7 @@ class WT_Gedcom_Code_Temp {
 		foreach (self::templeCodes() as $temple_code) {
 			$temple_names[$temple_code]=self::templeName($temple_code);
 		}
-		uasort($temple_names, 'utf8_strcasecmp');
+		uasort($temple_names, array('WT_I18N', 'strcasecmp'));
 		return $temple_names;
 	}
 }

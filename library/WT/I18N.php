@@ -29,7 +29,17 @@ use WT\Auth;
 
 class WT_I18N {
 	// Digits are always rendered LTR, even in RTL text.
-	CONST DIGITS = '0123456789٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹';
+	const DIGITS = '0123456789٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹';
+
+	// Reversable character conversions from the UNICODE 5.1 database.
+	// It excludes ambiguous (turkish dotless i) and mixed-case (Dz) characters.
+	// The characters should be arranged in default unicode-collation order.
+	const ALPHABET_LOWER = 'aàáâãäåāăąǎǟǡǻȁȃȧḁạảấầẩẫậắằẳẵặⓐａæǣǽbḃḅḇⓑｂƀɓƃcçćĉċčḉⅽⓒｃƈdďḋḍḏḑḓⅾⓓｄǆǳđɖɗƌðeèéêëēĕėęěȅȇȩḕḗḙḛḝẹẻẽếềểễệⓔｅǝəɛfḟⓕｆƒgĝğġģǧǵḡⓖｇǥɠɣƣhĥȟḣḥḧḩḫⓗｈƕħiìíîïĩīĭįǐȉȋḭḯỉịⅰⓘｉⅱⅲĳⅳⅸɨɩjĵⓙｊkķǩḱḳḵⓚｋƙlĺļľḷḹḻḽⅼⓛｌŀǉłƚmḿṁṃⅿⓜｍnñńņňǹṅṇṉṋⓝｎǌɲƞŋoòóôõöōŏőơǒǫǭȍȏȫȭȯȱṍṏṑṓọỏốồổỗộớờởỡợⓞｏœøǿɔɵȣpṕṗⓟｐƥqⓠｑrŕŗřȑȓṙṛṝṟⓡｒʀsśŝşšșṡṣṥṧṩⓢｓʃtţťțṫṭṯṱⓣｔŧƭʈuùúûüũūŭůűųưǔǖǘǚǜȕȗṳṵṷṹṻụủứừửữựⓤｕʉɯʊvṽṿⅴⓥｖⅵⅶⅷʋʌwŵẁẃẅẇẉⓦｗxẋẍⅹⓧｘⅺⅻyýÿŷȳẏỳỵỷỹⓨｙƴzźżžẑẓẕⓩｚƶȥǯʒƹȝþƿƨƽƅάαἀἁἂἃἄἅἆἇὰάᾀᾁᾂᾃᾄᾅᾆᾇᾰᾱᾳβγδέεἐἑἒἓἔἕὲέϝϛζήηἠἡἢἣἤἥἦἧὴήᾐᾑᾒᾓᾔᾕᾖᾗῃθϊἰἱἲἳἴἵἶἷὶίῐῑκϗλμνξοόὀὁὂὃὄὅὸόπϟϙρῥσϲτυϋύὑὓὕὗὺύῠῡφχψωώὠὡὢὣὤὥὦὧὼώᾠᾡᾢᾣᾤᾥᾦᾧῳϡϸϻϣϥϧϩϫϭϯаӑӓәӛӕбвгґғҕдԁђԃѓҙеѐёӗєжӂӝҗзԅӟѕӡԇиѝӣҋӥіїйјкқӄҡҟҝлӆљԉмӎнӊңӈҥњԋоӧөӫпҧҁрҏсԍҫтԏҭћќуӯўӱӳүұѹфхҳһѡѿѽѻцҵчӵҷӌҹҽҿџшщъыӹьҍѣэӭюяѥѧѫѩѭѯѱѳѵѷҩաբգդեզէըթժիլխծկհձղճմյնշոչպջռսվտրցւփքօֆȼɂɇɉɋɍɏͱͳͷͻͼͽӏӷӻӽӿԑԓԕԗԙԛԝԟԡԣԥᵹᵽỻỽỿⅎↄⰰⰱⰲⰳⰴⰵⰶⰷⰸⰹⰺⰻⰼⰽⰾⰿⱀⱁⱂⱃⱄⱅⱆⱇⱈⱉⱊⱋⱌⱍⱎⱏⱐⱑⱒⱓⱔⱕⱖⱗⱘⱙⱚⱛⱜⱝⱞⱡⱨⱪⱬⱳⱶⲁⲃⲅⲇⲉⲋⲍⲏⲑⲓⲕⲗⲙⲛⲝⲟⲡⲣⲥⲧⲩⲫⲭⲯⲱⲳⲵⲷⲹⲻⲽⲿⳁⳃⳅⳇⳉⳋⳍⳏⳑⳓⳕⳗⳙⳛⳝⳟⳡⳣⳬⳮⴀⴁⴂⴃⴄⴅⴆⴇⴈⴉⴊⴋⴌⴍⴎⴏⴐⴑⴒⴓⴔⴕⴖⴗⴘⴙⴚⴛⴜⴝⴞⴟⴠⴡⴢⴣⴤⴥꙁꙃꙅꙇꙉꙋꙍꙏꙑꙓꙕꙗꙙꙛꙝꙟꙣꙥꙧꙩꙫꙭꚁꚃꚅꚇꚉꚋꚍꚏꚑꚓꚕꚗꜣꜥꜧꜩꜫꜭꜯꜳꜵꜷꜹꜻꜽꜿꝁꝃꝅꝇꝉꝋꝍꝏꝑꝓꝕꝗꝙꝛꝝꝟꝡꝣꝥꝧꝩꝫꝭꝯꝺꝼꝿꞁꞃꞅꞇꞌ';
+	const ALPHABET_UPPER = 'AÀÁÂÃÄÅĀĂĄǍǞǠǺȀȂȦḀẠẢẤẦẨẪẬẮẰẲẴẶⒶＡÆǢǼBḂḄḆⒷＢɃƁƂCÇĆĈĊČḈⅭⒸＣƇDĎḊḌḎḐḒⅮⒹＤǄǱĐƉƊƋÐEÈÉÊËĒĔĖĘĚȄȆȨḔḖḘḚḜẸẺẼẾỀỂỄỆⒺＥƎƏƐFḞⒻＦƑGĜĞĠĢǦǴḠⒼＧǤƓƔƢHĤȞḢḤḦḨḪⒽＨǶĦIÌÍÎÏĨĪĬĮǏȈȊḬḮỈỊⅠⒾＩⅡⅢĲⅣⅨƗƖJĴⒿＪKĶǨḰḲḴⓀＫƘLĹĻĽḶḸḺḼⅬⓁＬĿǇŁȽMḾṀṂⅯⓂＭNÑŃŅŇǸṄṆṈṊⓃＮǊƝȠŊOÒÓÔÕÖŌŎŐƠǑǪǬȌȎȪȬȮȰṌṎṐṒỌỎỐỒỔỖỘỚỜỞỠỢⓄＯŒØǾƆƟȢPṔṖⓅＰƤQⓆＱRŔŖŘȐȒṘṚṜṞⓇＲƦSŚŜŞŠȘṠṢṤṦṨⓈＳƩTŢŤȚṪṬṮṰⓉＴŦƬƮUÙÚÛÜŨŪŬŮŰŲƯǓǕǗǙǛȔȖṲṴṶṸṺỤỦỨỪỬỮỰⓊＵɄƜƱVṼṾⅤⓋＶⅥⅦⅧƲɅWŴẀẂẄẆẈⓌＷXẊẌⅩⓍＸⅪⅫYÝŸŶȲẎỲỴỶỸⓎＹƳZŹŻŽẐẒẔⓏＺƵȤǮƷƸȜÞǷƧƼƄΆΑἈἉἊἋἌἍἎἏᾺΆᾈᾉᾊᾋᾌᾍᾎᾏᾸᾹᾼΒΓΔΈΕἘἙἚἛἜἝῈΈϜϚΖΉΗἨἩἪἫἬἭἮἯῊΉᾘᾙᾚᾛᾜᾝᾞᾟῌΘΪἸἹἺἻἼἽἾἿῚΊῘῙΚϏΛΜΝΞΟΌὈὉὊὋὌὍῸΌΠϞϘΡῬΣϹΤΥΫΎὙὛὝὟῪΎῨῩΦΧΨΩΏὨὩὪὫὬὭὮὯῺΏᾨᾩᾪᾫᾬᾭᾮᾯῼϠϷϺϢϤϦϨϪϬϮАӐӒӘӚӔБВГҐҒҔДԀЂԂЃҘЕЀЁӖЄЖӁӜҖЗԄӞЅӠԆИЍӢҊӤІЇЙЈКҚӃҠҞҜЛӅЉԈМӍНӉҢӇҤЊԊОӦӨӪПҦҀРҎСԌҪТԎҬЋЌУӮЎӰӲҮҰѸФХҲҺѠѾѼѺЦҴЧӴҶӋҸҼҾЏШЩЪЫӸЬҌѢЭӬЮЯѤѦѪѨѬѮѰѲѴѶҨԱԲԳԴԵԶԷԸԹԺԻԼԽԾԿՀՁՂՃՄՅՆՇՈՉՊՋՌՍՎՏՐՑՒՓՔՕՖȻɁɆɈɊɌɎͰͲͶϽϾϿӀӶӺӼӾԐԒԔԖԘԚԜԞԠԢԤꝽⱣỺỼỾℲↃⰀⰁⰂⰃⰄⰅⰆⰇⰈⰉⰊⰋⰌⰍⰎⰏⰐⰑⰒⰓⰔⰕⰖⰗⰘⰙⰚⰛⰜⰝⰞⰟⰠⰡⰢⰣⰤⰥⰦⰧⰨⰩⰪⰫⰬⰭⰮⱠⱧⱩⱫⱲⱵⲀⲂⲄⲆⲈⲊⲌⲎⲐⲒⲔⲖⲘⲚⲜⲞⲠⲢⲤⲦⲨⲪⲬⲮⲰⲲⲴⲶⲸⲺⲼⲾⳀⳂⳄⳆⳈⳊⳌⳎⳐⳒⳔⳖⳘⳚⳜⳞⳠⳢⳫⳭႠႡႢႣႤႥႦႧႨႩႪႫႬႭႮႯႰႱႲႳႴႵႶႷႸႹႺႻႼႽႾႿჀჁჂჃჄჅꙀꙂꙄꙆꙈꙊꙌꙎꙐꙒꙔꙖꙘꙚꙜꙞꙢꙤꙦꙨꙪꙬꚀꚂꚄꚆꚈꚊꚌꚎꚐꚒꚔꚖꜢꜤꜦꜨꜪꜬꜮꜲꜴꜶꜸꜺꜼꜾꝀꝂꝄꝆꝈꝊꝌꝎꝐꝒꝔꝖꝘꝚꝜꝞꝠꝢꝤꝦꝨꝪꝬꝮꝹꝻꝾꞀꞂꞄꞆꞋ';
+	
+	// Alphabet for the currently selected locale
+	private static $alphabet_lower = 'abcdefghijklmnopqrstuvwxyz';
+	private static $alphabet_upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
 	// Lookup table to convert unicode code-points into scripts.
 	// See https://en.wikipedia.org/wiki/Unicode_block
@@ -188,17 +198,17 @@ class WT_I18N {
 		// Extract language settings from the translation file
 		global $DATE_FORMAT; // I18N: This is the format string for full dates.  See http://php.net/date for codes
 		$DATE_FORMAT=self::noop('%j %F %Y');
+
 		global $TIME_FORMAT; // I18N: This is the format string for the time-of-day.  See http://php.net/date for codes
 		$TIME_FORMAT=self::noop('%H:%i:%s');
-		global $ALPHABET_upper; // Alphabetic sorting sequence (upper-case letters), used by webtrees to sort strings
-		$ALPHABET_upper=self::noop('ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ');
-		list(, $ALPHABET_upper)=explode('=', $ALPHABET_upper);
-		global $ALPHABET_lower; // Alphabetic sorting sequence (lower-case letters), used by webtrees to sort strings
-		$ALPHABET_lower=self::noop('ALPHABET_lower=abcdefghijklmnopqrstuvwxyz');
-		list(, $ALPHABET_lower)=explode('=', $ALPHABET_lower);
+
+		// Alphabetic sorting sequence (upper-case letters), used by webtrees to sort strings
+		list(, self::$alphabet_upper) = explode('=', self::noop('ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ'));
+		// Alphabetic sorting sequence (lower-case letters), used by webtrees to sort strings
+		list(, self::$alphabet_lower) = explode('=', self::noop('ALPHABET_lower=abcdefghijklmnopqrstuvwxyz'));
+
 		global $WEEK_START; // I18N: This is the first day of the week on calendars. 0=Sunday, 1=Monday...
-		$WEEK_START=self::noop('WEEK_START=0');
-		list(, $WEEK_START)=explode('=', $WEEK_START);
+		$WEEK_START = explode('=', self::noop('WEEK_START=0'));
 
 		global $TEXT_DIRECTION;
 		$TEXT_DIRECTION = self::scriptDirection(self::languageScript($locale));
@@ -253,7 +263,7 @@ class WT_I18N {
 				die('There are no languages installed.  You must include at least one xx.mo file in /language/');
 			}
 			// Sort by the combined language/language name...
-			uasort($installed_languages, 'utf8_strcasecmp');
+			uasort($installed_languages, array('WT_I18N', 'strcasecmp'));
 			foreach ($installed_languages as &$value) {
 				// The locale database doesn't have translations for certain
 				// "default" languages, such as zn_CH.
@@ -636,6 +646,146 @@ class WT_I18N {
 		default:
 			return 'ltr';
 		}
+	}
+
+	/**
+	 * Convert a string to upper case, using the rules from the current locale
+	 * 
+	 * @param string $string
+	 * 
+	 * @return string
+	 */
+	public static function strtoupper($string) {
+		$upper = $string;
+		$pos = 0;
+		$strlen = strlen($string);
+		while ($pos < $strlen) {
+			$byte = ord($string[$pos]);
+			if (($byte & 0xE0) == 0xC0) {
+				$chrlen = 2;
+				$chr = $string[$pos].$string[$pos+1];
+			} elseif (($byte & 0xF0) == 0xE0) {
+				$chrlen = 3;
+				$chr = $string[$pos].$string[$pos+1].$string[$pos+2];
+			} else {
+				$chrlen = 1;
+				$chr = $string[$pos];
+			}
+			// Try language-specific conversion before generic conversion
+			if (($chrpos = strpos(self::$alphabet_lower, $chr)) !== false) {
+				$upper = substr_replace($upper, substr(self::$alphabet_upper, $chrpos, $chrlen), $pos, $chrlen);
+			} elseif (($chrpos=strpos(self::ALPHABET_LOWER, $chr))!==false) {
+				$upper = substr_replace($upper, substr(self::ALPHABET_UPPER, $chrpos, $chrlen), $pos, $chrlen);
+			}
+			$pos += $chrlen;
+		}
+		return $upper;
+	}
+
+	/**
+	 * Convert a string to lower case, using the rules from the current locale
+	 *
+	 * @param string $string
+	 *
+	 * @return string
+	 */
+	public static function strtolower($string) {
+		$lower = $string;
+		$pos = 0;
+		$strlen = strlen($string);
+		while ($pos < $strlen) {
+			$byte=ord($string[$pos]);
+			if (($byte & 0xE0) == 0xC0) {
+				$chrlen = 2;
+				$chr = $string[$pos].$string[$pos+1];
+			} elseif (($byte & 0xF0) == 0xE0) {
+				$chrlen = 3;
+				$chr = $string[$pos].$string[$pos+1].$string[$pos+2];
+			} else {
+				$chrlen = 1;
+				$chr = $string[$pos];
+			}
+			// Try language-specific conversion before generic conversion
+			if (($chrpos = strpos(self::$alphabet_upper, $chr)) !== false) {
+				$lower = substr_replace($lower, substr(self::$alphabet_lower, $chrpos, $chrlen), $pos, $chrlen);
+			} elseif (($chrpos=strpos(self::ALPHABET_UPPER, $chr)) !== false) {
+				$lower = substr_replace($lower, substr(self::ALPHABET_LOWER, $chrpos, $chrlen), $pos, $chrlen);
+			}
+			$pos += $chrlen;
+		}
+		return $lower;
+	}
+
+	/**
+	 * Perform a case-insensitive comparison of two strings, using rules from the current locale
+	 * 
+	 * @param string $string1
+	 * @param string $string2
+	 * 
+	 * @return int
+	 */
+	public static function strcasecmp($string1, $string2) {
+		$strpos1 = 0;
+		$strpos2 = 0;
+		$strlen1 = strlen($string1);
+		$strlen2 = strlen($string2);
+		while ($strpos1 < $strlen1 && $strpos2 < $strlen2) {
+			$byte1 = ord($string1[$strpos1]);
+			$byte2 = ord($string2[$strpos2]);
+			if (($byte1 & 0xE0) == 0xC0) {
+				$chr1 = $string1[$strpos1++].$string1[$strpos1++];
+			} elseif (($byte1 & 0xF0) == 0xE0) {
+				$chr1 = $string1[$strpos1++].$string1[$strpos1++].$string1[$strpos1++];
+			} else {
+				$chr1 = $string1[$strpos1++];
+			}
+			if (($byte2 & 0xE0)==0xC0) {
+				$chr2 = $string2[$strpos2++].$string2[$strpos2++];
+			} elseif (($byte2 & 0xF0)==0xE0) {
+				$chr2 = $string2[$strpos2++].$string2[$strpos2++].$string2[$strpos2++];
+			} else {
+				$chr2 = $string2[$strpos2++];
+			}
+			if ($chr1 == $chr2) {
+				continue;
+			}
+			// Try the local alphabet first
+			$offset1 = strpos(self::$alphabet_lower, $chr1);
+			if ($offset1 === false) {
+				$offset1 = strpos(self::$alphabet_upper, $chr1);
+			}
+			$offset2 = strpos(self::$alphabet_lower, $chr2);
+			if ($offset2 === false) {
+				$offset2 = strpos(self::$alphabet_upper, $chr2);
+			}
+			if ($offset1 !== false && $offset2 !== false) {
+				if ($offset1 == $offset2) {
+					continue;
+				} else {
+					return $offset1 - $offset2;
+				}
+			}
+			// Try the global alphabet next
+			$offset1 = strpos(self::ALPHABET_LOWER, $chr1);
+			if ($offset1 === false) {
+				$offset1 = strpos(self::ALPHABET_UPPER, $chr1);
+			}
+			$offset2 = strpos(self::ALPHABET_LOWER, $chr2);
+			if ($offset2 === false) {
+				$offset2 = strpos(self::ALPHABET_UPPER, $chr2);
+			}
+			if ($offset1 !== false && $offset2 !== false) {
+				if ($offset1 == $offset2) {
+					continue;
+				} else {
+					return $offset1 - $offset2;
+				}
+			}
+			// Just compare by unicode order
+			return strcmp($chr1, $chr2);
+		}
+		// Shortest string comes first.
+		return ($strlen1 - $strpos1) - ($strlen2 - $strpos2);
 	}
 
 	/**

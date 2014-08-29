@@ -49,7 +49,7 @@ function getMenuAsCustomList($menu) {
 function color_theme_dropdown() {
 	global $COLOR_THEME_LIST, $WT_SESSION, $subColor;
 	$menu=new WT_Menu(/* I18N: A colour scheme */ WT_I18N::translate('Palette'), '#', 'menu-color');
-	uasort($COLOR_THEME_LIST, 'utf8_strcasecmp');
+	uasort($COLOR_THEME_LIST, array('WT_I18N', 'strcasecmp'));
 	foreach ($COLOR_THEME_LIST as $colorChoice=>$colorName) {
 		$submenu=new WT_Menu($colorName, get_query_url(array('themecolor'=>$colorChoice), '&amp;'), 'menu-color-'.$colorChoice);
 		if (isset($WT_SESSION->subColor)) {

@@ -961,7 +961,7 @@ class WT_Stats {
 			$chart_title=WT_I18N::translate('Surname distribution chart').': '.$surname;
 			// Count how many people are events in each country
 			$surn_countries=array();
-			$indis = WT_Query_Name::individuals(utf8_strtoupper($surname), '', '', false, false, WT_GED_ID);
+			$indis = WT_Query_Name::individuals(WT_I18N::strtoupper($surname), '', '', false, false, WT_GED_ID);
 			foreach ($indis as $person) {
 				if (preg_match_all('/^2 PLAC (?:.*, *)*(.*)/m', $person->getGedcom(), $matches)) {
 					// webtrees uses 3 letter country codes and localised country names, but google uses 2 letter codes.
@@ -3127,7 +3127,7 @@ class WT_Stats {
 		switch($sorting) {
 		default:
 		case 'alpha':
-			uksort($surname_list, 'utf8_strcasecmp');
+			uksort($surname_list, array('WT_I18N', 'strcasecmp'));
 			break;
 		case 'count':
 			uasort($surname_list, array('WT_Stats', '_name_total_sort'));
@@ -3175,7 +3175,7 @@ class WT_Stats {
 			if ($n>=$maxtoshow) {
 				break;
 			}
-			$all_surnames = array_merge($all_surnames, WT_Query_Name::surnames(utf8_strtoupper($surname), '', false, false, WT_GED_ID));
+			$all_surnames = array_merge($all_surnames, WT_Query_Name::surnames(WT_I18N::strtoupper($surname), '', false, false, WT_GED_ID));
 		}
 		$tot = 0;
 		foreach ($surnames as $surname) {

@@ -23,6 +23,46 @@ class I18NTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
+	 * Test WT_I18N::strtoupper()
+	 *
+	 * @todo test all locales
+	 *
+	 * @return void
+	 */
+	public function testStrtoupper() {
+		$this->assertEquals(WT_I18N::strtoupper(''), '');
+		$this->assertEquals(WT_I18N::strtoupper('Abc'), 'ABC');
+	}
+
+	/**
+	 * Test WT_I18N::strtolower()
+	 *
+	 * @todo test all locales
+	 *
+	 * @return void
+	 */
+	public function testStrtolower() {
+		$this->assertEquals(WT_I18N::strtolower(''), '');
+		$this->assertEquals(WT_I18N::strtolower('Abc'), 'abc');
+	}
+
+	/**
+	 * Test WT_I18N::strcasecmp()
+	 *
+	 * @todo test all locales
+	 *
+	 * @return void
+	 */
+	public function testStrcasecmp() {
+		$this->assertEquals(WT_I18N::strcasecmp('', ''), 0);
+		$this->assertEquals(WT_I18N::strcasecmp('Abc', 'abc'), 0);
+		$this->assertTrue(WT_I18N::strcasecmp('Abc', 'bcd') < 0);
+		$this->assertTrue(WT_I18N::strcasecmp('bcd', 'ABC') > 0);
+		$this->assertTrue(WT_I18N::strcasecmp('Abc', 'abcd') < 0);
+		$this->assertTrue(WT_I18N::strcasecmp('Abcd', 'abc') > 0);
+	}
+
+	/**
 	 * Test WT_I18N::reverseText()
 	 *
 	 * @return void
