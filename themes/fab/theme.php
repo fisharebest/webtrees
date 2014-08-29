@@ -58,8 +58,8 @@ $WT_IMAGES = array(
 
 // Fan chart
 $fanChart = array(
-	'font'     => WT_ROOT.'includes/fonts/DejaVuSans.ttf',
-	'size'     => '7px',
+	'font'     => WT_ROOT . 'includes/fonts/DejaVuSans.ttf',
+	'size'     => 7,
 	'color'    => '#000000',
 	'bgColor'  => '#eeeeee',
 	'bgMColor' => '#b1cff0',
