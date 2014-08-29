@@ -778,13 +778,8 @@ class Element {
 	}
 
 	function addText($t) {
-		global $embed_fonts, $SpecialOrds, $wt_report, $reportTitle, $reportDescription;
+		global $wt_report, $reportTitle, $reportDescription;
 
-		foreach ($SpecialOrds as $ord) {
-			if (strpos($t, chr($ord)) !== false) {
-				$embed_fonts = true;
-			}
-		}
 		$t = trim($t, "\r\n\t");
 		$t = str_replace(array("<br>", "&nbsp;"), array("\n", " "), $t);
 		if (!WT_RNEW) {
@@ -1353,13 +1348,6 @@ class Footnote extends Element {
 	}
 
 	function addText($t) {
-		global $embed_fonts, $SpecialOrds;
-
-		foreach ($SpecialOrds as $ord) {
-			if (strpos($t, chr($ord)) !== false) {
-				$embed_fonts = true;
-			}
-		}
 		$t = trim($t, "\r\n\t");
 		$t = str_replace(array("<br>", "&nbsp;"), array("\n", " "), $t);
 		if (!WT_RNEW) {
