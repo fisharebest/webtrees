@@ -3560,7 +3560,7 @@ function ListSHandler($attrs) {
 						if ($match[1] != "") {
 							$names = explode(" ", $match[1]);
 							foreach ($names as $name) {
-								$sql_where[] = "{$attr}.n_full LIKE " . WT_DB::quote(utf8_strtoupper("%{$name}%"));
+								$sql_where[] = "{$attr}.n_full LIKE " . WT_DB::quote("%{$name}%");
 							}
 						}
 						// Let the DB do the name sorting even when no name was entered
@@ -3581,7 +3581,7 @@ function ListSHandler($attrs) {
 					$sql_join[]  = "JOIN `##link` AS {$attr}a ON ({$attr}a.l_file={$sql_col_prefix}file AND {$attr}a.l_from={$sql_col_prefix}id)";
 					$sql_join[]  = "JOIN `##name` AS {$attr}b ON ({$attr}b.n_file={$sql_col_prefix}file AND n_id={$sql_col_prefix}id)";
 					$sql_where[] = "{$attr}a.l_type=IN ('HUSB, 'WIFE')";
-					$sql_where[] = "{$attr}.n_full LIKE " . WT_DB::quote(utf8_strtoupper("%{$match[1]}%"));
+					$sql_where[] = "{$attr}.n_full LIKE " . WT_DB::quote("%{$match[1]}%");
 					if ($sortby == "NAME") {
 						$sortby         = "";
 						$sql_order_by[] = "{$attr}.n_sort";
@@ -3590,7 +3590,7 @@ function ListSHandler($attrs) {
 				} elseif (preg_match('/^(?:\w+):PLAC CONTAINS (.+)$/', $value, $match)) {
 					$sql_join[]  = "JOIN `##places` AS {$attr}a ON ({$attr}a.p_file={$sql_col_prefix}file)";
 					$sql_join[]  = "JOIN `##placelinks` AS {$attr}b ON ({$attr}a.p_file={$attr}b.pl_file AND {$attr}b.pl_p_id={$attr}a.p_id AND {$attr}b.pl_gid={$sql_col_prefix}id)";
-					$sql_where[] = "{$attr}a.p_place LIKE " . WT_DB::quote(utf8_strtoupper("%{$match[1]}%"));
+					$sql_where[] = "{$attr}a.p_place LIKE " . WT_DB::quote("%{$match[1]}%");
 					// Don't unset this filter. This is just the first primary PLAC filter to reduce the returned list from the DB
 				} /**
 				 * General Purpose DB Filter for Individual and Family Lists
@@ -3610,7 +3610,7 @@ function ListSHandler($attrs) {
 					if ($match[3] != "") {
 						$query .= "%{$match[3]}%";
 					}
-					$sql_where[] = "i_gedcom LIKE " . WT_DB::quote(utf8_strtoupper($query));
+					$sql_where[] = "i_gedcom LIKE " . WT_DB::quote($query);
 				} elseif ($listname == "family" && preg_match('/^(\w*):*(\w*) CONTAINS (.+)$/', $value, $match)) {
 					$query = "";
 					// Level 1 tag
@@ -3625,7 +3625,7 @@ function ListSHandler($attrs) {
 					if ($match[3] != "") {
 						$query .= "%{$match[3]}%";
 					}
-					$sql_where[] = "f_gedcom LIKE " . WT_DB::quote(utf8_strtoupper($query));
+					$sql_where[] = "f_gedcom LIKE " . WT_DB::quote($query);
 				} else {
 					// TODO: what other filters can we apply in SQL?
 				}
