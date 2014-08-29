@@ -4,7 +4,7 @@ namespace WT;
 use PHPUnit_Framework_TestCase;
 
 /**
- *FunctionsUtf8Test
+ * FunctionsUtf8Test
  *
  * Test harness for the global functions in the file includes/functions/functions_utf-8.php
  *
@@ -58,14 +58,5 @@ class FunctionsUtf8Test extends PHPUnit_Framework_TestCase {
 	 */
 	public function testFunctionUtf8StrcasecmpExists() {
 		$this->assertEquals(function_exists('\\utf8_strcasecmp'), true);
-	}
-
-	/**
-	 * Test that function reverseText() exists in the global namespace.
-	 *
-	 * @return void
-	 */
-	public function testFunctionReverseTextExists() {
-		$this->assertEquals(function_exists('\\reverseText'), true);
 	}
 }
