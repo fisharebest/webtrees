@@ -28,6 +28,9 @@
 use WT\Auth;
 
 class WT_I18N {
+	// Digits are always rendered LTR, even in RTL text.
+	CONST DIGITS = '0123456789٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹';
+
 	// Lookup table to convert unicode code-points into scripts.
 	// See https://en.wikipedia.org/wiki/Unicode_block
 	// Note: we only need details for scripts of languages into which webtrees is translated.
@@ -51,6 +54,28 @@ class WT_I18N {
 		array('Hans', 0x3000, 0x303F), // Mixed CJK, not just Hans
 		array('Hans', 0x3400, 0xFAFF), // Mixed CJK, not just Hans
 		array('Hans', 0x20000, 0x2FA1F), // Mixed CJK, not just Hans
+	);
+
+	// Characters that are displayed in mirror form in RTL text.
+	private static $mirror_characters = array(
+		'(' => ')',
+		')' => '(',
+		'[' => ']',
+		']' => '[',
+		'{' => '}',
+		'}' => '{',
+		'<' => '>',
+		'>' => '<',
+		'‹' => '›',
+		'›' => '‹',
+		'«' => '»',
+		'»' => '«',
+		'﴾' => '﴿',
+		'﴿' => '﴾',
+		'“' => '”',
+		'”' => '“',
+		'‘' => '’',
+		'’' => '‘',
 	);
 
 	public  static $locale;
@@ -139,22 +164,22 @@ class WT_I18N {
 		self::$translation_adapter = new Zend_Translate('gettext', WT_ROOT.'language/'.$locale.'.mo', $locale);
 
 		// Deprecated - some custom modules use this to add translations
-		Zend_Registry::set('Zend_Translate', WT_I18N::$translation_adapter);
+		Zend_Registry::set('Zend_Translate', self::$translation_adapter);
 
 		// Load any local user translations
 		if (is_dir(WT_DATA_DIR.'language')) {
 			if (file_exists(WT_DATA_DIR.'language/'.$locale.'.mo')) {
-				WT_I18N::addTranslation(
+				self::addTranslation(
 					new Zend_Translate('gettext', WT_DATA_DIR.'language/'.$locale.'.mo', $locale)
 				);
 			}
 			if (file_exists(WT_DATA_DIR.'language/'.$locale.'.php')) {
-				WT_I18N::addTranslation(
+				self::addTranslation(
 					new Zend_Translate('array', WT_DATA_DIR.'language/'.$locale.'.php', $locale)
 				);
 			}
 			if (file_exists(WT_DATA_DIR.'language/'.$locale.'.csv')) {
-				WT_I18N::addTranslation(
+				self::addTranslation(
 					new Zend_Translate('csv', WT_DATA_DIR.'language/'.$locale.'.csv', $locale)
 				);
 			}
@@ -176,16 +201,16 @@ class WT_I18N {
 		list(, $WEEK_START)=explode('=', $WEEK_START);
 
 		global $TEXT_DIRECTION;
-		$TEXT_DIRECTION = WT_I18N::scriptDirection(WT_I18N::languageScript($locale));
+		$TEXT_DIRECTION = self::scriptDirection(self::languageScript($locale));
 
 		self::$locale=$locale;
 		self::$dir=$TEXT_DIRECTION;
 
 		// I18N: This punctuation is used to separate lists of items.
-		self::$list_separator=WT_I18N::translate(', ');
+		self::$list_separator=self::translate(', ');
 
 		// I18N: This is the name of the MySQL collation that applies to your language.  A list is available at http://dev.mysql.com/doc/refman/5.0/en/charset-unicode-sets.html
-		self::$collation=WT_I18N::translate('utf8_unicode_ci');
+		self::$collation=self::translate('utf8_unicode_ci');
 
 		// Non-latin numbers may require non-latin digits
 		try {
@@ -200,7 +225,7 @@ class WT_I18N {
 
 	// Add a translation file
 	public static function addTranslation(Zend_Translate $translation) {
-		WT_I18N::$translation_adapter->addTranslation($translation);
+		self::$translation_adapter->addTranslation($translation);
 	}
 
 	// Check which languages are installed
@@ -214,11 +239,11 @@ class WT_I18N {
 				if (preg_match('/^(([a-z][a-z][a-z]?)([-_][A-Z][A-Z])?([-_][A-Za-z]+)*)\.mo$/', basename($mo_file), $match)) {
 					// Sort by the transation of the base language, then the variant.
 					// e.g. English|British English, Portuguese|Brazilian Portuguese
-					$tmp1 = WT_I18N::languageName($match[1]);
+					$tmp1 = self::languageName($match[1]);
 					if ($match[1]==$match[2]) {
 						$tmp2=$tmp1;
 					} else {
-						$tmp2 = WT_I18N::languageName($match[2]);
+						$tmp2 = self::languageName($match[2]);
 					}
 					$installed_languages[$match[1]]=$tmp2.'|'.$tmp1;
 				}
@@ -279,7 +304,7 @@ class WT_I18N {
 	public static function percentage($n, $precision=0) {
 		return
 			/* I18N: This is a percentage, such as “32.5%”. “%s” is the number, “%%” is the percent symbol.  Some languages require a (non-breaking) space between the two, or a different symbol. */
-			WT_I18N::translate('%s%%', self::number($n*100.0, $precision));
+			self::translate('%s%%', self::number($n*100.0, $precision));
 	}
 
 	// echo WT_I18N::translate('Hello World!');
@@ -333,13 +358,13 @@ class WT_I18N {
 		switch ($string) {
 		case 'STILLBORN':
 			// I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan 1900 (stillborn)
-			return WT_I18N::translate('(stillborn)');
+			return self::translate('(stillborn)');
 		case 'INFANT':
 			// I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan 1900 (in infancy)
-			return WT_I18N::translate('(in infancy)');
+			return self::translate('(in infancy)');
 		case 'CHILD':
 			// I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan 1900 (in childhood)
-			return WT_I18N::translate('(in childhood)');
+			return self::translate('(in childhood)');
 		}
 		$age=array();
 		if (preg_match('/(\d+)y/', $string, $match)) {
@@ -368,17 +393,17 @@ class WT_I18N {
 		if ($age) {
 			if (!substr_compare($string, '<', 0, 1)) {
 				// I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan 1900 (aged less than 21 years)
-				return WT_I18N::translate('(aged less than %s)', $age);
+				return self::translate('(aged less than %s)', $age);
 			} elseif (!substr_compare($string, '>', 0, 1)) {
 				// I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan 1900 (aged more than 21 years)
-				return WT_I18N::translate('(aged more than %s)', $age);
+				return self::translate('(aged more than %s)', $age);
 			} else {
 				// I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan 1900 (aged 43 years)
-				return WT_I18N::translate('(aged %s)', $age);
+				return self::translate('(aged %s)', $age);
 			}
 		} else {
 			// Not a valid string?
-			return WT_I18N::translate('(aged %s)', $string);
+			return self::translate('(aged %s)', $string);
 		}
 	}
 
@@ -613,6 +638,46 @@ class WT_I18N {
 		}
 	}
 
+	/**
+	 * Reverse RTL text for third-party libraries such as GD2 and googlechart.
+	 *
+	 * These do not support UTF8 text direction, so we must mimic it for them.
+	 *
+	 * Numbers are always rendered LTR, even in RTL text.
+	 * The visual direction of characters such as parentheses should be reversed.
+	 *
+	 * @param string $text Text to be reversed
+	 *
+	 * @return string
+	 */
+	public static function reverseText($text) {
+		// Remove HTML markup - we can't display it and it is LTR.
+		$text = WT_Filter::unescapeHtml($text);
+
+		// LTR text doesn't need reversing
+		if (self::scriptDirection(self::textScript($text)) == 'ltr') {
+			return $text;
+		}
+
+		// Mirrored characters
+		$text = strtr($text, self::$mirror_characters);
+
+		$reversed = '';
+		$digits = '';
+		while ($text != '') {
+			$letter = utf8_substr($text, 0, 1);
+			$text = utf8_substr($text, 1);
+			if (strpos(self::DIGITS, $letter) !== false) {
+				$digits .= $letter;
+			} else {
+				$reversed = $letter . $digits . $reversed;
+				$digits = '';
+			}
+		}
+
+		return $digits . $reversed;
+	}
+
 	// Generate consistent I18N for datatables.js
 	public static function datatablesI18N(array $lengths=null) {
 		if ($lengths===null) {
@@ -623,11 +688,11 @@ class WT_I18N {
 		foreach ($lengths as $length) {
 			$length_menu.=
 				'<option value="'.$length.'">'.
-				($length==-1 ? /* I18N: listbox option, e.g. “10,25,50,100,all” */ WT_I18N::translate('All') : self::number($length)).
+				($length==-1 ? /* I18N: listbox option, e.g. “10,25,50,100,all” */ self::translate('All') : self::number($length)).
 				'</option>';
 		}
 		$length_menu='<select>'.$length_menu.'</select>';
-		$length_menu=/* I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options */ WT_I18N::translate('Display %s', $length_menu);
+		$length_menu=/* I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options */ self::translate('Display %s', $length_menu);
 
 		// Which symbol is used for separating numbers into groups
 		$symbols = Zend_Locale_Data::getList(self::$locale, 'symbols');
@@ -670,23 +735,23 @@ class WT_I18N {
 		return
 			'"language": {'.
 			' "paginate": {'.
-			'  "first":    "'./* I18N: button label, first page    */ WT_I18N::translate('first').'",'.
-			'  "last":     "'./* I18N: button label, last page     */ WT_I18N::translate('last').'",'.
-			'  "next":     "'./* I18N: button label, next page     */ WT_I18N::translate('next').'",'.
-			'  "previous": "'./* I18N: button label, previous page */ WT_I18N::translate('previous').'"'.
+			'  "first":    "'./* I18N: button label, first page    */ self::translate('first').'",'.
+			'  "last":     "'./* I18N: button label, last page     */ self::translate('last').'",'.
+			'  "next":     "'./* I18N: button label, next page     */ self::translate('next').'",'.
+			'  "previous": "'./* I18N: button label, previous page */ self::translate('previous').'"'.
 			' },'.
-			' "emptyTable":     "'.WT_I18N::translate('No records to display').'",'.
-			' "info":           "'./* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '_START_', '_END_', '_TOTAL_').'",'.
-			' "infoEmpty":      "'.WT_I18N::translate('Showing %1$s to %2$s of %3$s', 0, 0, 0).'",'.
-			' "infoFiltered":   "'./* I18N: %s is a placeholder for a number */ WT_I18N::translate('(filtered from %s total entries)', '_MAX_').'",'.
+			' "emptyTable":     "'.self::translate('No records to display').'",'.
+			' "info":           "'./* I18N: %s are placeholders for numbers */ self::translate('Showing %1$s to %2$s of %3$s', '_START_', '_END_', '_TOTAL_').'",'.
+			' "infoEmpty":      "'.self::translate('Showing %1$s to %2$s of %3$s', 0, 0, 0).'",'.
+			' "infoFiltered":   "'./* I18N: %s is a placeholder for a number */ self::translate('(filtered from %s total entries)', '_MAX_').'",'.
 			' "infoPostfix":    "",'.
 			' "infoThousands":  "'.$symbols['group'].'",'.
 			' "lengthMenu":     "'.WT_Filter::escapeJs($length_menu).'",'.
-			' "loadingRecords": "'.WT_I18N::translate('Loading…').'",'.
-			' "processing":     "'.WT_I18N::translate('Loading…').'",'.
-			' "search":         "'.WT_I18N::translate('Filter').'",'.
+			' "loadingRecords": "'.self::translate('Loading…').'",'.
+			' "processing":     "'.self::translate('Loading…').'",'.
+			' "search":         "'.self::translate('Filter').'",'.
 			' "url":            "",'.
-			' "zeroRecords":    "'.WT_I18N::translate('No records to display').'"'.
+			' "zeroRecords":    "'.self::translate('No records to display').'"'.
 			'}'.
 			$callback;
 	}

@@ -113,7 +113,7 @@ function embedText($im, $text, $maxsize, $color, $font, $vpos, $hpos) {
 		if ($hpos=="top2bottom") $hpos = "bottom2top";
 	}
 
-	$text = reverseText($text);
+	$text = WT_I18N::reverseText($text);
 	$height = imagesy($im);
 	$width  = imagesx($im);
 	$calc_angle=rad2deg(atan($height/$width));

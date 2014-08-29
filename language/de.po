@@ -9547,7 +9547,7 @@ msgstr "Neuseeland"
 
 #: admin_site_change.php:274 admin_site_change.php:302
 msgid "New data"
-msgstr "Deue Daten"
+msgstr "Neue Daten"
 
 #. I18N: %s is a server name/URL
 #: login.php:319
@@ -10076,7 +10076,7 @@ msgstr "Oklahoma City, Oklahoma"
 
 #: admin_site_change.php:271 admin_site_change.php:301
 msgid "Old data"
-msgstr "Alte daten"
+msgstr "Alte Daten"
 
 #: admin.php:118
 msgid "Old files found"

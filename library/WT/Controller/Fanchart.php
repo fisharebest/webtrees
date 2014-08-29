@@ -194,9 +194,9 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 					$name    = WT_Filter::unescapeHtml($person->getFullName());
 					$addname = WT_Filter::unescapeHtml($person->getAddName());
 
-					$text = reverseText($name);
+					$text = WT_I18N::reverseText($name);
 					if ($addname) {
-						$text .= "\n" . reverseText($addname);
+						$text .= "\n" . WT_I18N::reverseText($addname);
 					}
 
 					$text .= "\n" . WT_Filter::unescapeHtml($person->getLifeSpan());

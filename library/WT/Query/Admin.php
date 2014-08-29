@@ -1,24 +1,20 @@
 <?php
-// MySQL queries for the admin page
-//
-// webtrees: Web based Family History software
-// Copyright (C) 2014 Greg Roach
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class WT_Query_Admin - generate statistics for admin.php
+ *
+ * @package   webtrees
+ * @copyright (c) 2014 webtrees development team
+ * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2
+ */
 class WT_Query_Admin {
+	/**
+	 * Count the number of individuals that have been edited today
+	 *
+	 * @param int $ged_id
+	 *
+	 * @return int
+	 */
 	public static function countIndiChangesToday($ged_id) {
 		return
 			WT_DB::prepare(
@@ -30,6 +26,13 @@ class WT_Query_Admin {
 			->fetchOne();
 	}
 
+	/**
+	 * Count the number of individuals that have been edited this week
+	 *
+	 * @param int $ged_id
+	 *
+	 * @return int
+	 */
 	public static function countIndiChangesWeek($ged_id) {
 		return
 			WT_DB::prepare(
@@ -41,6 +44,13 @@ class WT_Query_Admin {
 			->fetchOne();
 	}
 
+	/**
+	 * Count the number of individuals that have been edited this month
+	 *
+	 * @param int $ged_id
+	 *
+	 * @return int
+	 */
 	public static function countIndiChangesMonth($ged_id) {
 		return
 			WT_DB::prepare(
@@ -52,6 +62,13 @@ class WT_Query_Admin {
 			->fetchOne();
 	}
 
+	/**
+	 * Count the number of families that have been edited today
+	 *
+	 * @param int $ged_id
+	 *
+	 * @return int
+	 */
 	public static function countFamChangesToday($ged_id) {
 		return
 			WT_DB::prepare(
@@ -63,6 +80,13 @@ class WT_Query_Admin {
 			->fetchOne();
 	}
 
+	/**
+	 * Count the number of families that have been edited this week
+	 *
+	 * @param int $ged_id
+	 *
+	 * @return int
+	 */
 	public static function countFamChangesWeek($ged_id) {
 		return
 			WT_DB::prepare(
@@ -74,6 +98,13 @@ class WT_Query_Admin {
 			->fetchOne();
 	}
 
+	/**
+	 * Count the number of families that have been edited this month
+	 *
+	 * @param int $ged_id
+	 *
+	 * @return int
+	 */
 	public static function countFamChangesMonth($ged_id) {
 		return
 			WT_DB::prepare(
@@ -85,6 +116,13 @@ class WT_Query_Admin {
 			->fetchOne();
 	}
 
+	/**
+	 * Count the number of sources that have been edited today
+	 *
+	 * @param int $ged_id
+	 *
+	 * @return int
+	 */
 	public static function countSourChangesToday($ged_id) {
 		return
 			WT_DB::prepare(
@@ -96,6 +134,13 @@ class WT_Query_Admin {
 			->fetchOne();
 	}
 
+	/**
+	 * Count the number of sources that have been edited this week
+	 *
+	 * @param int $ged_id
+	 *
+	 * @return int
+	 */
 	public static function countSourChangesWeek($ged_id) {
 		return
 			WT_DB::prepare(
@@ -107,6 +152,13 @@ class WT_Query_Admin {
 			->fetchOne();
 	}
 
+	/**
+	 * Count the number of sources that have been edited this month
+	 *
+	 * @param int $ged_id
+	 *
+	 * @return int
+	 */
 	public static function countSourChangesMonth($ged_id) {
 		return
 			WT_DB::prepare(
@@ -118,6 +170,13 @@ class WT_Query_Admin {
 			->fetchOne();
 	}
 
+	/**
+	 * Count the number of repositories that have been edited today
+	 *
+	 * @param int $ged_id
+	 *
+	 * @return int
+	 */
 	public static function countRepoChangesToday($ged_id) {
 		return
 			WT_DB::prepare(
@@ -129,6 +188,13 @@ class WT_Query_Admin {
 			->fetchOne();
 	}
 
+	/**
+	 * Count the number of repositories that have been edited this week
+	 *
+	 * @param int $ged_id
+	 *
+	 * @return int
+	 */
 	public static function countRepoChangesWeek($ged_id) {
 		return
 			WT_DB::prepare(
@@ -140,6 +206,13 @@ class WT_Query_Admin {
 			->fetchOne();
 	}
 
+	/**
+	 * Count the number of repositories that have been edited this month
+	 *
+	 * @param int $ged_id
+	 *
+	 * @return int
+	 */
 	public static function countRepoChangesMonth($ged_id) {
 		return
 			WT_DB::prepare(
@@ -151,6 +224,13 @@ class WT_Query_Admin {
 			->fetchOne();
 	}
 
+	/**
+	 * Count the number of note objects that have been edited today
+	 *
+	 * @param int $ged_id
+	 *
+	 * @return int
+	 */
 	public static function countNoteChangesToday($ged_id) {
 		return
 			WT_DB::prepare(
@@ -162,6 +242,13 @@ class WT_Query_Admin {
 			->fetchOne();
 	}
 
+	/**
+	 * Count the number of note objects that have been edited this week
+	 *
+	 * @param int $ged_id
+	 *
+	 * @return int
+	 */
 	public static function countNoteChangesWeek($ged_id) {
 		return
 			WT_DB::prepare(
@@ -173,6 +260,13 @@ class WT_Query_Admin {
 			->fetchOne();
 	}
 
+	/**
+	 * Count the number of note objects that have been edited this month
+	 *
+	 * @param int $ged_id
+	 *
+	 * @return int
+	 */
 	public static function countNoteChangesMonth($ged_id) {
 		return
 			WT_DB::prepare(
@@ -184,6 +278,13 @@ class WT_Query_Admin {
 			->fetchOne();
 	}
 
+	/**
+	 * Count the number of media objects that have been edited today
+	 *
+	 * @param int $ged_id
+	 *
+	 * @return int
+	 */
 	public static function countObjeChangesToday($ged_id) {
 		return
 			WT_DB::prepare(
@@ -195,6 +296,13 @@ class WT_Query_Admin {
 			->fetchOne();
 	}
 
+	/**
+	 * Count the number of media objects that have been edited this week
+	 *
+	 * @param int $ged_id
+	 *
+	 * @return int
+	 */
 	public static function countObjeChangesWeek($ged_id) {
 		return
 			WT_DB::prepare(
@@ -206,6 +314,13 @@ class WT_Query_Admin {
 			->fetchOne();
 	}
 
+	/**
+	 * Count the number of media objects that have been edited this month
+	 *
+	 * @param int $ged_id
+	 *
+	 * @return int
+	 */
 	public static function countObjeChangesMonth($ged_id) {
 		return
 			WT_DB::prepare(
