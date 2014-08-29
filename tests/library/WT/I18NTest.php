@@ -30,8 +30,8 @@ class I18NTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testStrtoupper() {
-		$this->assertEquals(WT_I18N::strtoupper(''), '');
-		$this->assertEquals(WT_I18N::strtoupper('Abc'), 'ABC');
+		$this->assertSame(WT_I18N::strtoupper(''), '');
+		$this->assertSame(WT_I18N::strtoupper('Abc'), 'ABC');
 	}
 
 	/**
@@ -42,8 +42,8 @@ class I18NTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testStrtolower() {
-		$this->assertEquals(WT_I18N::strtolower(''), '');
-		$this->assertEquals(WT_I18N::strtolower('Abc'), 'abc');
+		$this->assertSame(WT_I18N::strtolower(''), '');
+		$this->assertSame(WT_I18N::strtolower('Abc'), 'abc');
 	}
 
 	/**
@@ -54,12 +54,40 @@ class I18NTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testStrcasecmp() {
-		$this->assertEquals(WT_I18N::strcasecmp('', ''), 0);
-		$this->assertEquals(WT_I18N::strcasecmp('Abc', 'abc'), 0);
+		$this->assertSame(WT_I18N::strcasecmp('', ''), 0);
+		$this->assertSame(WT_I18N::strcasecmp('Abc', 'abc'), 0);
 		$this->assertTrue(WT_I18N::strcasecmp('Abc', 'bcd') < 0);
 		$this->assertTrue(WT_I18N::strcasecmp('bcd', 'ABC') > 0);
 		$this->assertTrue(WT_I18N::strcasecmp('Abc', 'abcd') < 0);
 		$this->assertTrue(WT_I18N::strcasecmp('Abcd', 'abc') > 0);
+	}
+
+	/**
+	 * Test WT_I18N::substr()
+	 *
+	 * @return void
+	 */
+	public function testSubstr() {
+		$this->assertSame(WT_I18N::substr('', 4, 2), false);
+		$this->assertSame(WT_I18N::substr('abcd', 4, 2), false);
+		$this->assertSame(WT_I18N::substr('abcde', 4, 2), 'e');
+		$this->assertSame(WT_I18N::substr('abcdef', 4, 2), 'ef');
+		$this->assertSame(WT_I18N::substr('abcdefg', 4, 2), 'ef');
+		$this->assertSame(WT_I18N::substr('ΑΒΓΔ', 4, 2), false);
+		$this->assertSame(WT_I18N::substr('ΑΒΓΔΕ', 4, 2), 'Ε');
+		$this->assertSame(WT_I18N::substr('ΑΒΓΔΕΖ', 4, 2), 'ΕΖ');
+		$this->assertSame(WT_I18N::substr('ΑΒΓΔΕΖΗ', 4, 2), 'ΕΖ');
+	}
+
+	/**
+	 * Test WT_I18N::strlen()
+	 *
+	 * @return void
+	 */
+	public function testStrlen() {
+		$this->assertSame(WT_I18N::strlen(''), 0);
+		$this->assertSame(WT_I18N::strlen('Abc'), 3);
+		$this->assertSame(WT_I18N::strlen('АБВ'), 3);
 	}
 
 	/**
@@ -73,16 +101,16 @@ class I18NTest extends PHPUnit_Framework_TestCase {
 		$rtl_cba = 'ג' . 'ב' . 'א';
 		$rtl_123 = '١' . '٢' . '٣';
 
-		$this->assertEquals(WT_I18N::reverseText(''), '');
-		$this->assertEquals(WT_I18N::reverseText('abc123'), 'abc123');
-		$this->assertEquals(WT_I18N::reverseText('<b>abc</b>123'), 'abc123');
-		$this->assertEquals(WT_I18N::reverseText('&lt;abc&gt;'), '<abc>');
-		$this->assertEquals(WT_I18N::reverseText('abc[123]'), 'abc[123]');
-		$this->assertEquals(WT_I18N::reverseText($rtl_123), $rtl_123);
-		$this->assertEquals(WT_I18N::reverseText($rtl_abc), $rtl_cba);
-		$this->assertEquals(WT_I18N::reverseText($rtl_abc . '123'), '123' . $rtl_cba);
-		$this->assertEquals(WT_I18N::reverseText($rtl_abc . '[123]'), '[123]' . $rtl_cba);
-		$this->assertEquals(WT_I18N::reverseText('123' . $rtl_abc . '456'), '456' . $rtl_cba . '123');
-		$this->assertEquals(WT_I18N::reverseText($rtl_abc . '&lt;'), '>' . $rtl_cba);
+		$this->assertSame(WT_I18N::reverseText(''), '');
+		$this->assertSame(WT_I18N::reverseText('abc123'), 'abc123');
+		$this->assertSame(WT_I18N::reverseText('<b>abc</b>123'), 'abc123');
+		$this->assertSame(WT_I18N::reverseText('&lt;abc&gt;'), '<abc>');
+		$this->assertSame(WT_I18N::reverseText('abc[123]'), 'abc[123]');
+		$this->assertSame(WT_I18N::reverseText($rtl_123), $rtl_123);
+		$this->assertSame(WT_I18N::reverseText($rtl_abc), $rtl_cba);
+		$this->assertSame(WT_I18N::reverseText($rtl_abc . '123'), '123' . $rtl_cba);
+		$this->assertSame(WT_I18N::reverseText($rtl_abc . '[123]'), '[123]' . $rtl_cba);
+		$this->assertSame(WT_I18N::reverseText('123' . $rtl_abc . '456'), '456' . $rtl_cba . '123');
+		$this->assertSame(WT_I18N::reverseText($rtl_abc . '&lt;'), '>' . $rtl_cba);
 	}
 }

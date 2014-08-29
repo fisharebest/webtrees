@@ -1606,7 +1606,7 @@ class WT_Stats {
 			}
 			$chxl .= '1:||'.WT_I18N::translate('century').'|2:'.$decades.'|3:||'.WT_I18N::translate('Age').'|';
 			$title = WT_I18N::translate('Average age related to death century');
-			if (count($rows)>6 || utf8_strlen($title)<30) {
+			if (count($rows)>6 || WT_I18N::strlen($title)<30) {
 				$chtt = $title;
 			} else {
 				$offset = 0;
@@ -2345,7 +2345,7 @@ class WT_Stats {
 			$chd = 't2:'.$countsm.'|'.$countsf.'|'.$countsa;
 			if ($max<=50) $chxl .= '1:||'.WT_I18N::translate('century').'|2:|0|10|20|30|40|50|3:||'.WT_I18N::translate('Age').'|';
 			else $chxl .= '1:||'.WT_I18N::translate('century').'|2:|0|10|20|30|40|50|60|70|80|90|100|3:||'.WT_I18N::translate('Age').'|';
-			if (count($rows)>4 || utf8_strlen(WT_I18N::translate('Average age in century of marriage'))<30) {
+			if (count($rows)>4 || WT_I18N::strlen(WT_I18N::translate('Average age in century of marriage'))<30) {
 				$chtt = WT_I18N::translate('Average age in century of marriage');
 			} else {
 				$offset = 0;

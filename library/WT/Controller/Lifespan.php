@@ -332,7 +332,7 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 				$height = 2 * $this->zoomfactor;
 
 				$startPos = (($birthYear - $this->timelineMinYear) * $this->zoomfactor) + 14 + $modFix;
-				$minlength = utf8_strlen(strip_tags($value->getFullName())) * $this->zoomfactor;
+				$minlength = WT_I18N::strlen(strip_tags($value->getFullName())) * $this->zoomfactor;
 
 				if ($startPos > 15) {
 					$startPos = (($birthYear - $this->timelineMinYear) * $this->zoomfactor) + 15 + $modFix;
@@ -546,7 +546,7 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 		case 'BIRT':  return WT_I18N::translate_c('Abbreviation for birth',            'b.');
 		case 'MARR':  return WT_I18N::translate_c('Abbreviation for marriage',         'm.');
 		case 'DEAT':  return WT_I18N::translate_c('Abbreviation for death',            'd.');
-		default:      return utf8_substr(WT_Gedcom_Tag::getLabel($tag), 0, 1); // Just use the first letter of the full fact
+		default:      return WT_I18N::substr(WT_Gedcom_Tag::getLabel($tag), 0, 1); // Just use the first letter of the full fact
 		}
 	}
 }

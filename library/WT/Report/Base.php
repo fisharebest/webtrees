@@ -2443,20 +2443,20 @@ function GetPersonNameSHandler($attrs) {
 			}
 			if (!empty($attrs['truncate'])) {
 				//short-circuit with the faster strlen
-				if (strlen($name) > $attrs['truncate'] && utf8_strlen($name) > $attrs['truncate']) {
+				if (strlen($name) > $attrs['truncate'] && WT_I18N::strlen($name) > $attrs['truncate']) {
 					$name  = preg_replace("/\(.*\) ?/", "", $name); //removes () and text inbetween - what about ", [ and { etc?
 					$words = preg_split('/[, -]+/', $name); // names separated with space, comma or hyphen - any others?
 					$name  = $words[count($words) - 1];
 					for ($i = count($words) - 2; $i >= 0; $i--) {
-						$len = utf8_strlen($name);
+						$len = WT_I18N::strlen($name);
 						for ($j = count($words) - 3; $j >= 0; $j--) {
-							$len += utf8_strlen($words[$j]);
+							$len += WT_I18N::strlen($words[$j]);
 						}
 						if ($len > $attrs['truncate']) {
-							$first_letter = utf8_substr($words[$i], 0, 1);
+							$first_letter = WT_I18N::substr($words[$i], 0, 1);
 							//do not show " of nick-names
 							if ($first_letter != "\"") {
-								$name = utf8_substr($words[$i], 0, 1) . ". " . $name;
+								$name = WT_I18N::substr($words[$i], 0, 1) . ". " . $name;
 							}
 						} else {
 							$name = $words[$i] . " " . $name;

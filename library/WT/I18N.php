@@ -649,6 +649,8 @@ class WT_I18N {
 	}
 
 	/**
+	 * UTF8 version of PHP::strtoupper()
+	 *
 	 * Convert a string to upper case, using the rules from the current locale
 	 * 
 	 * @param string $string
@@ -683,6 +685,8 @@ class WT_I18N {
 	}
 
 	/**
+	 * UTF8 version of PHP::strtolower()
+	 *
 	 * Convert a string to lower case, using the rules from the current locale
 	 *
 	 * @param string $string
@@ -717,6 +721,8 @@ class WT_I18N {
 	}
 
 	/**
+	 * UTF8 version of PHP::strcasecmp()
+	 *
 	 * Perform a case-insensitive comparison of two strings, using rules from the current locale
 	 * 
 	 * @param string $string1
@@ -789,6 +795,82 @@ class WT_I18N {
 	}
 
 	/**
+	 * UTF8 version of PHP::substr()
+	 *
+	 * @param string $string
+	 * @param int    $pos
+	 * @param int    $len
+	 *
+	 * @return string
+	 *
+	 * @todo use Patchwork\Utf8
+	 */
+	public static function substr($string, $pos, $len=PHP_INT_MAX) {
+		if ($len < 0) {
+			return '';
+		}
+		$strlen = strlen($string);
+		if ($pos == 0) {
+			$start = 0;
+		} elseif ($pos > 0) {
+			$start = 0;
+			while ($pos > 0 && $start < $strlen) {
+				++$start;
+				while ($start < $strlen && (ord($string[$start]) & 0xC0) == 0x80) {
+					++$start;
+				}
+				--$pos;
+			}
+		} else {
+			$start = $strlen - 1;
+			do {
+				--$start;
+				while ($start && (ord($string[$start]) & 0xC0) == 0x80) {
+					--$start;
+				}
+				++$pos;
+			} while ($start && $pos<0);
+		}
+		if ($len==PHP_INT_MAX || $len<0) {
+			return substr($string, $start);
+		}
+		$end=$start;
+		while ($len>0) {
+			++$end;
+			while ($end<$strlen && (ord($string[$end]) & 0xC0) == 0x80) {
+				++$end;
+			}
+			--$len;
+		}
+		return substr($string, $start, $end-$start);
+	}
+
+	/**
+	 * UTF8 version of PHP::strlen()
+	 *
+	 * @param string $string
+	 *
+	 * @return int
+	 *
+	 * @todo use Patchwork\Utf8
+	 */
+	public static function strlen($string) {
+		$pos=0;
+		$len=strlen($string);
+		$utf8_len=0;
+		while ($pos<$len) {
+			if ((ord($string[$pos]) & 0xC0) != 0x80) {
+				++$utf8_len;
+			}
+			++$pos;
+		}
+		return $utf8_len;
+	}
+
+
+	/**
+	 * UTF8 version of PHP::strrev()
+	 *
 	 * Reverse RTL text for third-party libraries such as GD2 and googlechart.
 	 *
 	 * These do not support UTF8 text direction, so we must mimic it for them.
@@ -815,8 +897,8 @@ class WT_I18N {
 		$reversed = '';
 		$digits = '';
 		while ($text != '') {
-			$letter = utf8_substr($text, 0, 1);
-			$text = utf8_substr($text, 1);
+			$letter = WT_I18N::substr($text, 0, 1);
+			$text = WT_I18N::substr($text, 1);
 			if (strpos(self::DIGITS, $letter) !== false) {
 				$digits .= $letter;
 			} else {
@@ -855,29 +937,29 @@ class WT_I18N {
 			$callback=',
 				"infoCallback": function(oSettings, iStart, iEnd, iMax, iTotal, sPre) {
 					return sPre
-						.replace(/0/g, "'.utf8_substr($digits, 0, 1).'")
-						.replace(/1/g, "'.utf8_substr($digits, 1, 1).'")
-						.replace(/2/g, "'.utf8_substr($digits, 2, 1).'")
-						.replace(/3/g, "'.utf8_substr($digits, 3, 1).'")
-						.replace(/4/g, "'.utf8_substr($digits, 4, 1).'")
-						.replace(/5/g, "'.utf8_substr($digits, 5, 1).'")
-						.replace(/6/g, "'.utf8_substr($digits, 6, 1).'")
-						.replace(/7/g, "'.utf8_substr($digits, 7, 1).'")
-						.replace(/8/g, "'.utf8_substr($digits, 8, 1).'")
-						.replace(/9/g, "'.utf8_substr($digits, 9, 1).'");
+						.replace(/0/g, "'.WT_I18N::substr($digits, 0, 1).'")
+						.replace(/1/g, "'.WT_I18N::substr($digits, 1, 1).'")
+						.replace(/2/g, "'.WT_I18N::substr($digits, 2, 1).'")
+						.replace(/3/g, "'.WT_I18N::substr($digits, 3, 1).'")
+						.replace(/4/g, "'.WT_I18N::substr($digits, 4, 1).'")
+						.replace(/5/g, "'.WT_I18N::substr($digits, 5, 1).'")
+						.replace(/6/g, "'.WT_I18N::substr($digits, 6, 1).'")
+						.replace(/7/g, "'.WT_I18N::substr($digits, 7, 1).'")
+						.replace(/8/g, "'.WT_I18N::substr($digits, 8, 1).'")
+						.replace(/9/g, "'.WT_I18N::substr($digits, 9, 1).'");
 				},
 				"formatNumber": function(iIn) {
 					return String(iIn)
-						.replace(/0/g, "'.utf8_substr($digits, 0, 1).'")
-						.replace(/1/g, "'.utf8_substr($digits, 1, 1).'")
-						.replace(/2/g, "'.utf8_substr($digits, 2, 1).'")
-						.replace(/3/g, "'.utf8_substr($digits, 3, 1).'")
-						.replace(/4/g, "'.utf8_substr($digits, 4, 1).'")
-						.replace(/5/g, "'.utf8_substr($digits, 5, 1).'")
-						.replace(/6/g, "'.utf8_substr($digits, 6, 1).'")
-						.replace(/7/g, "'.utf8_substr($digits, 7, 1).'")
-						.replace(/8/g, "'.utf8_substr($digits, 8, 1).'")
-						.replace(/9/g, "'.utf8_substr($digits, 9, 1).'");
+						.replace(/0/g, "'.WT_I18N::substr($digits, 0, 1).'")
+						.replace(/1/g, "'.WT_I18N::substr($digits, 1, 1).'")
+						.replace(/2/g, "'.WT_I18N::substr($digits, 2, 1).'")
+						.replace(/3/g, "'.WT_I18N::substr($digits, 3, 1).'")
+						.replace(/4/g, "'.WT_I18N::substr($digits, 4, 1).'")
+						.replace(/5/g, "'.WT_I18N::substr($digits, 5, 1).'")
+						.replace(/6/g, "'.WT_I18N::substr($digits, 6, 1).'")
+						.replace(/7/g, "'.WT_I18N::substr($digits, 7, 1).'")
+						.replace(/8/g, "'.WT_I18N::substr($digits, 8, 1).'")
+						.replace(/9/g, "'.WT_I18N::substr($digits, 9, 1).'");
 				}
 			';
 		}
