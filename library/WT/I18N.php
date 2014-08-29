@@ -208,7 +208,7 @@ class WT_I18N {
 		list(, self::$alphabet_lower) = explode('=', self::noop('ALPHABET_lower=abcdefghijklmnopqrstuvwxyz'));
 
 		global $WEEK_START; // I18N: This is the first day of the week on calendars. 0=Sunday, 1=Monday...
-		$WEEK_START = explode('=', self::noop('WEEK_START=0'));
+		list(, $WEEK_START) = explode('=', self::noop('WEEK_START=0'));
 
 		global $TEXT_DIRECTION;
 		$TEXT_DIRECTION = self::scriptDirection(self::languageScript($locale));
