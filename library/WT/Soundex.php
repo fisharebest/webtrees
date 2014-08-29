@@ -653,7 +653,7 @@ class WT_Soundex {
 
 	private static function DMSoundex($name) {
 		// Apply special transformation rules to the input string
-		$name = utf8_strtoupper($name);
+		$name = WT_I18N::strtoupper($name);
 		foreach (self::$transformNameTable as $transformRule) {
 			$name = str_replace($transformRule[0], $transformRule[1], $name);
 		}

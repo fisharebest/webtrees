@@ -25,7 +25,6 @@
 $SpecialChar = array(' ','.',',','"','\'','/','\\','|',':',';','+','&','#','@','-','=','*','%','!','?','$','<','>',"\n");
 $SpecialPar = array('(',')','[',']','{','}');
 $SpecialNum  = array('0','1','2','3','4','5','6','7','8','9');
-$RTLOrd = array(215,216,217,218,219);
 
 $openPar  = '([{';
 $closePar = ')]}';
@@ -1039,21 +1038,21 @@ function finishCurrentSpan(&$result, $theEnd=false) {
 function utf8_wordwrap($string, $width=75, $sep="\n", $cut=false) {
 	$out='';
 	while ($string) {
-		if (utf8_strlen($string) <= $width){ //Do not wrap any text that is less than the output area.
+		if (WT_I18N::strlen($string) <= $width){ //Do not wrap any text that is less than the output area.
 			$out.=$string;
 			$string='';
 		} else {
-			$sub1=utf8_substr($string, 0, $width+1);
-			if (utf8_substr($string,utf8_strlen($sub1)-1,1)==' ') //include words that end by a space immediately after the area.
+			$sub1=WT_I18N::substr($string, 0, $width+1);
+			if (WT_I18N::substr($string,WT_I18N::strlen($sub1)-1,1)==' ') //include words that end by a space immediately after the area.
 				$sub=$sub1;
 			else
-				$sub=utf8_substr($string, 0, $width);
+				$sub=WT_I18N::substr($string, 0, $width);
 			$spacepos=strrpos($sub, ' ');
 			if ($spacepos==false) {
 				// No space on line?
 				if ($cut) {
 					$out.=$sub.$sep;
-					$string=utf8_substr($string, utf8_strlen($sub));
+					$string=WT_I18N::substr($string, WT_I18N::strlen($sub));
 				} else {
 					$spacepos=strpos($string, ' ');
 					if ($spacepos==false) {

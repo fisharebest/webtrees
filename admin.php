@@ -620,6 +620,7 @@ function old_paths() {
 		WT_ROOT.'themes/webtrees/css-1.5.2',
 		WT_ROOT.'themes/xenea/css-1.5.2',
 		// Removed in 1.5.4
+		WT_ROOT.'includes/functions/functions_utf-8.php',
 		WT_ROOT.'js/jquery.colorbox-1.4.15.js',
 		WT_ROOT.'js/jquery.cookie-1.4.0.js',
 		WT_ROOT.'js/jquery.datatables-1.9.4.js',

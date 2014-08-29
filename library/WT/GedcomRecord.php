@@ -553,7 +553,7 @@ class WT_GedcomRecord {
 	public static function Compare($x, $y) {
 		if ($x->canShowName()) {
 			if ($y->canShowName()) {
-				return utf8_strcasecmp($x->getSortName(), $y->getSortName());
+				return WT_I18N::strcasecmp($x->getSortName(), $y->getSortName());
 			} else {
 				return -1; // only $y is private
 			}

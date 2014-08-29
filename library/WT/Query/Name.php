@@ -106,7 +106,7 @@ class WT_Query_Name {
 	 * @return string
 	 */
 	static public function initialLetter($name) {
-		$name = utf8_strtoupper($name);
+		$name = WT_I18N::strtoupper($name);
 		switch (WT_LOCALE) {
 		case 'cs':
 			if (substr($name, 0, 2) == 'CH') {
@@ -148,7 +148,7 @@ class WT_Query_Name {
 			break;
 		}
 		// No special rules - just take the first character
-		return utf8_substr($name, 0, 1);
+		return WT_I18N::substr($name, 0, 1);
 	}
 
 	/**
@@ -388,7 +388,7 @@ class WT_Query_Name {
 
 		$list=array();
 		foreach (WT_DB::prepare($sql)->fetchAll() as $row) {
-			$list[utf8_strtoupper($row->n_surn)][$row->n_surname][$row->n_id]=true;
+			$list[WT_I18N::strtoupper($row->n_surn)][$row->n_surname][$row->n_id]=true;
 		}
 		return $list;
 	}

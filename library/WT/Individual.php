@@ -1073,14 +1073,14 @@ class WT_Individual extends WT_GedcomRecord {
 			$surn = $tmp[$this->getPrimaryName()]['surname'];
 			$new_givn = explode(' ', $givn);
 			$count_givn = count($new_givn);
-			$len_givn = utf8_strlen($givn);
-			$len_surn = utf8_strlen($surn);
+			$len_givn = WT_I18N::strlen($givn);
+			$len_surn = WT_I18N::strlen($surn);
 			$len = $len_givn + $len_surn;
 			$i = 1;
 			while ($len > $char && $i<=$count_givn) {
-				$new_givn[$count_givn-$i] = utf8_substr($new_givn[$count_givn-$i],0,1);
+				$new_givn[$count_givn-$i] = WT_I18N::substr($new_givn[$count_givn-$i],0,1);
 				$givn = implode(' ', $new_givn);
-				$len_givn = utf8_strlen($givn);
+				$len_givn = WT_I18N::strlen($givn);
 				$len = $len_givn + $len_surn;
 				$i++;
 			}

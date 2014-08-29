@@ -455,7 +455,7 @@ class WT_Report_HTML extends WT_Report_Base {
 
 	function getStringWidth($text) {
 		$style = $this->getStyle($this->currentStyle);
-		return utf8_strlen($text) * ($style["size"]/2);
+		return WT_I18N::strlen($text) * ($style["size"]/2);
 	}
 
 	/**

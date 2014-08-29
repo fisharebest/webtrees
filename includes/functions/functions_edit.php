@@ -23,8 +23,6 @@
 
 use Rhumsaa\Uuid\Uuid;
 
-require_once WT_ROOT . 'includes/functions/functions_import.php';
-
 // Create an edit control for inline editing using jeditable
 function edit_field_inline($name, $value, $controller=null) {
 	$html='<span class="editable" id="' . $name . '">' . WT_Filter::escapeHtml($value) . '</span>';
@@ -1207,7 +1205,7 @@ function updateRest($inputRec, $levelOverride = 'no') {
  *
  * @return string The updated gedcom record
  */
-function handle_updates($newged, $levelOverride="no") {
+function handle_updates($newged, $levelOverride = 'no') {
 	global $glevels, $islink, $tag, $uploaded_files, $text;
 
 	if ($levelOverride=="no" || count($glevels)==0) $levelAdjust = 0;
