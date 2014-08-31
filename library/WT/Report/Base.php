@@ -778,13 +778,8 @@ class Element {
 	}
 
 	function addText($t) {
-		global $embed_fonts, $SpecialOrds, $wt_report, $reportTitle, $reportDescription;
+		global $wt_report, $reportTitle, $reportDescription;
 
-		foreach ($SpecialOrds as $ord) {
-			if (strpos($t, chr($ord)) !== false) {
-				$embed_fonts = true;
-			}
-		}
 		$t = trim($t, "\r\n\t");
 		$t = str_replace(array("<br>", "&nbsp;"), array("\n", " "), $t);
 		if (!WT_RNEW) {
@@ -1353,13 +1348,6 @@ class Footnote extends Element {
 	}
 
 	function addText($t) {
-		global $embed_fonts, $SpecialOrds;
-
-		foreach ($SpecialOrds as $ord) {
-			if (strpos($t, chr($ord)) !== false) {
-				$embed_fonts = true;
-			}
-		}
 		$t = trim($t, "\r\n\t");
 		$t = str_replace(array("<br>", "&nbsp;"), array("\n", " "), $t);
 		if (!WT_RNEW) {
@@ -2443,20 +2431,20 @@ function GetPersonNameSHandler($attrs) {
 			}
 			if (!empty($attrs['truncate'])) {
 				//short-circuit with the faster strlen
-				if (strlen($name) > $attrs['truncate'] && utf8_strlen($name) > $attrs['truncate']) {
+				if (strlen($name) > $attrs['truncate'] && WT_I18N::strlen($name) > $attrs['truncate']) {
 					$name  = preg_replace("/\(.*\) ?/", "", $name); //removes () and text inbetween - what about ", [ and { etc?
 					$words = preg_split('/[, -]+/', $name); // names separated with space, comma or hyphen - any others?
 					$name  = $words[count($words) - 1];
 					for ($i = count($words) - 2; $i >= 0; $i--) {
-						$len = utf8_strlen($name);
+						$len = WT_I18N::strlen($name);
 						for ($j = count($words) - 3; $j >= 0; $j--) {
-							$len += utf8_strlen($words[$j]);
+							$len += WT_I18N::strlen($words[$j]);
 						}
 						if ($len > $attrs['truncate']) {
-							$first_letter = utf8_substr($words[$i], 0, 1);
+							$first_letter = WT_I18N::substr($words[$i], 0, 1);
 							//do not show " of nick-names
 							if ($first_letter != "\"") {
-								$name = utf8_substr($words[$i], 0, 1) . ". " . $name;
+								$name = WT_I18N::substr($words[$i], 0, 1) . ". " . $name;
 							}
 						} else {
 							$name = $words[$i] . " " . $name;
@@ -2700,8 +2688,6 @@ function RepeatTagEHandler() {
 					xml_error_string(xml_get_error_code($repeat_parser)),
 					xml_get_current_line_number($repeat_parser)
 				);
-				print_r($repeatsStack);
-				debug_print_backtrace();
 				exit;
 			}
 			xml_parser_free($repeat_parser);
@@ -2848,7 +2834,7 @@ function FactsEHandler() {
 
 		//-- read the xml from the file
 		$lines = file($report);
-		while (($lineoffset + $repeatBytes > 0) and (strpos($lines[$lineoffset + $repeatBytes], "<Facts ")) === false) {
+		while ($lineoffset + $repeatBytes > 0 && strpos($lines[$lineoffset + $repeatBytes], '<Facts ') === false) {
 			$lineoffset--;
 		}
 		$lineoffset++;
@@ -3295,7 +3281,7 @@ function HighlightedImageSHandler($attrs) {
 			if (($width > 0) and ($height == 0)) {
 				$perc   = $width / $attributes['adjW'];
 				$height = round($attributes['adjH'] * $perc);
-			} elseif (($height > 0) and ($width == 0)) {
+			} elseif ($height > 0 && $width == 0) {
 				$perc  = $height / $attributes['adjH'];
 				$width = round($attributes['adjW'] * $perc);
 			} else {
@@ -3393,7 +3379,7 @@ function ImageSHandler($attrs) {
 				if (($width > 0) and ($height == 0)) {
 					$perc   = $width / $attributes['adjW'];
 					$height = round($attributes['adjH'] * $perc);
-				} elseif (($height > 0) and ($width == 0)) {
+				} elseif ($height > 0 && $width == 0) {
 					$perc  = $height / $attributes['adjH'];
 					$width = round($attributes['adjW'] * $perc);
 				} else {
@@ -3410,7 +3396,7 @@ function ImageSHandler($attrs) {
 			if (($width > 0) and ($height == 0)) {
 				$perc   = $width / $size[0];
 				$height = round($size[1] * $perc);
-			} elseif (($height > 0) and ($width == 0)) {
+			} elseif ($height > 0 && $width == 0) {
 				$perc  = $height / $size[1];
 				$width = round($size[0] * $perc);
 			} else {
@@ -3562,7 +3548,7 @@ function ListSHandler($attrs) {
 						if ($match[1] != "") {
 							$names = explode(" ", $match[1]);
 							foreach ($names as $name) {
-								$sql_where[] = "{$attr}.n_full LIKE " . WT_DB::quote(utf8_strtoupper("%{$name}%"));
+								$sql_where[] = "{$attr}.n_full LIKE " . WT_DB::quote("%{$name}%");
 							}
 						}
 						// Let the DB do the name sorting even when no name was entered
@@ -3583,7 +3569,7 @@ function ListSHandler($attrs) {
 					$sql_join[]  = "JOIN `##link` AS {$attr}a ON ({$attr}a.l_file={$sql_col_prefix}file AND {$attr}a.l_from={$sql_col_prefix}id)";
 					$sql_join[]  = "JOIN `##name` AS {$attr}b ON ({$attr}b.n_file={$sql_col_prefix}file AND n_id={$sql_col_prefix}id)";
 					$sql_where[] = "{$attr}a.l_type=IN ('HUSB, 'WIFE')";
-					$sql_where[] = "{$attr}.n_full LIKE " . WT_DB::quote(utf8_strtoupper("%{$match[1]}%"));
+					$sql_where[] = "{$attr}.n_full LIKE " . WT_DB::quote("%{$match[1]}%");
 					if ($sortby == "NAME") {
 						$sortby         = "";
 						$sql_order_by[] = "{$attr}.n_sort";
@@ -3592,7 +3578,7 @@ function ListSHandler($attrs) {
 				} elseif (preg_match('/^(?:\w+):PLAC CONTAINS (.+)$/', $value, $match)) {
 					$sql_join[]  = "JOIN `##places` AS {$attr}a ON ({$attr}a.p_file={$sql_col_prefix}file)";
 					$sql_join[]  = "JOIN `##placelinks` AS {$attr}b ON ({$attr}a.p_file={$attr}b.pl_file AND {$attr}b.pl_p_id={$attr}a.p_id AND {$attr}b.pl_gid={$sql_col_prefix}id)";
-					$sql_where[] = "{$attr}a.p_place LIKE " . WT_DB::quote(utf8_strtoupper("%{$match[1]}%"));
+					$sql_where[] = "{$attr}a.p_place LIKE " . WT_DB::quote("%{$match[1]}%");
 					// Don't unset this filter. This is just the first primary PLAC filter to reduce the returned list from the DB
 				} /**
 				 * General Purpose DB Filter for Individual and Family Lists
@@ -3612,7 +3598,7 @@ function ListSHandler($attrs) {
 					if ($match[3] != "") {
 						$query .= "%{$match[3]}%";
 					}
-					$sql_where[] = "i_gedcom LIKE " . WT_DB::quote(utf8_strtoupper($query));
+					$sql_where[] = "i_gedcom LIKE " . WT_DB::quote($query);
 				} elseif ($listname == "family" && preg_match('/^(\w*):*(\w*) CONTAINS (.+)$/', $value, $match)) {
 					$query = "";
 					// Level 1 tag
@@ -3627,7 +3613,7 @@ function ListSHandler($attrs) {
 					if ($match[3] != "") {
 						$query .= "%{$match[3]}%";
 					}
-					$sql_where[] = "f_gedcom LIKE " . WT_DB::quote(utf8_strtoupper($query));
+					$sql_where[] = "f_gedcom LIKE " . WT_DB::quote($query);
 				} else {
 					// TODO: what other filters can we apply in SQL?
 				}
@@ -3829,7 +3815,7 @@ function ListSHandler($attrs) {
 		uasort($list, array("WT_Individual", "CompareDeatDate"));
 		break;
 	case "MARR:DATE":
-		uasort($list, array("WT_Family", "CompareMarrDate"));
+		uasort($list, array("WT_Family", "compareMarrDate"));
 		break;
 	default:
 		// unsorted or already sorted by SQL
@@ -3909,8 +3895,6 @@ function ListEHandler() {
 						xml_error_string(xml_get_error_code($repeat_parser)),
 						xml_get_current_line_number($repeat_parser)
 					);
-					print_r($repeatsStack);
-					debug_print_backtrace();
 					exit;
 				}
 				xml_parser_free($repeat_parser);
@@ -4164,8 +4148,6 @@ function RelativesEHandler() {
 					xml_error_string(xml_get_error_code($repeat_parser)),
 					xml_get_current_line_number($repeat_parser)
 				);
-				print_r($repeatsStack);
-				debug_print_backtrace();
 				exit;
 			}
 			xml_parser_free($repeat_parser);

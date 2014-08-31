@@ -860,7 +860,7 @@ class WT_Gedcom_Tag {
 		foreach ($tags as $tag) {
 			$facts[$tag]=self::getLabel($tag, null);
 		}
-		uasort($facts, 'utf8_strcasecmp');
+		uasort($facts, array('WT_I18N', 'strcasecmp'));
 		return $facts;
 	}
 
@@ -904,7 +904,7 @@ class WT_Gedcom_Tag {
 		foreach (self::$OBJE_FILE_FORM_TYPE as $type) {
 			$values[$type]=self::getFileFormTypeValue($type);
 		}
-		uasort($values, 'utf8_strcasecmp');
+		uasort($values, array('WT_I18N', 'strcasecmp'));
 		return $values;
 	}
 

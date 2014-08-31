@@ -24,11 +24,6 @@
 use WT\Auth;
 use WT\User;
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 ////////////////////////////////////////////////////////////////////////////////
 // Fetch all records linked to a record - when deleting an object, we must
 // also delete all links to it.
@@ -189,7 +184,7 @@ function search_indis($query, $geds, $match) {
 	$queryregex=array();
 
 	foreach ($query as $q) {
-		$queryregex[]=preg_quote(utf8_strtoupper($q), '/');
+		$queryregex[]=preg_quote(WT_I18N::strtoupper($q), '/');
 		$querysql[]="i_gedcom LIKE ".WT_DB::quote("%{$q}%")." COLLATE '".WT_I18N::$collation."'";
 	}
 
@@ -215,7 +210,7 @@ function search_indis($query, $geds, $match) {
 		// Ignore links and tags
 		$gedrec=preg_replace('/\n\d '.WT_REGEX_TAG.'( @'.WT_REGEX_XREF.'@)?/', '', $gedrec);
 		// Re-apply the filtering
-		$gedrec=utf8_strtoupper($gedrec);
+		$gedrec=WT_I18N::strtoupper($gedrec);
 		foreach ($queryregex as $regex) {
 			if (!preg_match('/'.$regex.'/', $gedrec)) {
 				continue 2;
@@ -450,7 +445,7 @@ function search_fams($query, $geds, $match) {
 	$queryregex=array();
 
 	foreach ($query as $q) {
-		$queryregex[]=preg_quote(utf8_strtoupper($q), '/');
+		$queryregex[]=preg_quote(WT_I18N::strtoupper($q), '/');
 		$querysql[]="f_gedcom LIKE ".WT_DB::quote("%{$q}%")." COLLATE '".WT_I18N::$collation."'";
 	}
 
@@ -478,7 +473,7 @@ function search_fams($query, $geds, $match) {
 		// Ignore tags
 		$gedrec=preg_replace('/\n\d '.WT_REGEX_TAG.' ?/', '', $gedrec);
 		// Re-apply the filtering
-		$gedrec=utf8_strtoupper($gedrec);
+		$gedrec=WT_I18N::strtoupper($gedrec);
 		foreach ($queryregex as $regex) {
 			if (!preg_match('/'.$regex.'/', $gedrec)) {
 				continue 2;
@@ -558,7 +553,7 @@ function search_sources($query, $geds, $match) {
 	$queryregex=array();
 
 	foreach ($query as $q) {
-		$queryregex[]=preg_quote(utf8_strtoupper($q), '/');
+		$queryregex[]=preg_quote(WT_I18N::strtoupper($q), '/');
 		$querysql[]="s_gedcom LIKE ".WT_DB::quote("%{$q}%")." COLLATE '".WT_I18N::$collation."'";
 	}
 
@@ -586,7 +581,7 @@ function search_sources($query, $geds, $match) {
 		// Ignore tags
 		$gedrec=preg_replace('/\n\d '.WT_REGEX_TAG.' ?/', '', $gedrec);
 		// Re-apply the filtering
-		$gedrec=utf8_strtoupper($gedrec);
+		$gedrec=WT_I18N::strtoupper($gedrec);
 		foreach ($queryregex as $regex) {
 			if (!preg_match('/'.$regex.'/', $gedrec)) {
 				continue 2;
@@ -620,7 +615,7 @@ function search_notes($query, $geds, $match) {
 	$queryregex=array();
 
 	foreach ($query as $q) {
-		$queryregex[]=preg_quote(utf8_strtoupper($q), '/');
+		$queryregex[]=preg_quote(WT_I18N::strtoupper($q), '/');
 		$querysql[]="o_gedcom LIKE ".WT_DB::quote("%{$q}%")." COLLATE '".WT_I18N::$collation."'";
 	}
 
@@ -648,7 +643,7 @@ function search_notes($query, $geds, $match) {
 		// Ignore tags
 		$gedrec=preg_replace('/\n\d '.WT_REGEX_TAG.' ?/', '', $gedrec);
 		// Re-apply the filtering
-		$gedrec=utf8_strtoupper($gedrec);
+		$gedrec=WT_I18N::strtoupper($gedrec);
 		foreach ($queryregex as $regex) {
 			if (!preg_match('/'.$regex.'/', $gedrec)) {
 				continue 2;
@@ -683,7 +678,7 @@ function search_repos($query, $geds, $match) {
 	$queryregex=array();
 
 	foreach ($query as $q) {
-		$queryregex[]=preg_quote(utf8_strtoupper($q), '/');
+		$queryregex[]=preg_quote(WT_I18N::strtoupper($q), '/');
 		$querysql[]="o_gedcom LIKE ".WT_DB::quote("%{$q}%")." COLLATE '".WT_I18N::$collation."'";
 	}
 
@@ -711,7 +706,7 @@ function search_repos($query, $geds, $match) {
 		// Ignore tags
 		$gedrec=preg_replace('/\n\d '.WT_REGEX_TAG.' ?/', '', $gedrec);
 		// Re-apply the filtering
-		$gedrec=utf8_strtoupper($gedrec);
+		$gedrec=WT_I18N::strtoupper($gedrec);
 		foreach ($queryregex as $regex) {
 			if (!preg_match('/'.$regex.'/', $gedrec)) {
 				continue 2;
@@ -758,14 +753,14 @@ function get_common_surnames($min) {
 		}
 	}
 	foreach (explode(',', $COMMON_NAMES_REMOVE) as $surname) {
-		unset($topsurns[utf8_strtoupper($surname)]);
+		unset($topsurns[WT_I18N::strtoupper($surname)]);
 	}
 
 	//-- check if we found some, else recurse
 	if (empty($topsurns) && $min>2) {
 		return get_common_surnames($min/2);
 	} else {
-		uksort($topsurns, 'utf8_strcasecmp');
+		uksort($topsurns, array('WT_I18N', 'strcasecmp'));
 		foreach ($topsurns as $key=>$value) {
 			$topsurns[$key]=array('name'=>$key, 'match'=>$value);
 		}

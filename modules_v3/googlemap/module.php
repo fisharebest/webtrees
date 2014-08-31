@@ -1582,7 +1582,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 			//sort the array, limit to unique values, and count them
 			$place_parts=array();
-			usort($place_list, "utf8_strcasecmp");
+			usort($place_list, array('WT_I18N', 'strcasecmp'));
 			$i=count($place_list);
 
 			//calculate maximum no. of levels to display

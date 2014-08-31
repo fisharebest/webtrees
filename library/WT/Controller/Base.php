@@ -72,53 +72,42 @@ class WT_Controller_Base {
 	}
 
 	// We've collected up Javascript fragments while rendering the page.
-	// Now display them.
+	// Now display them in order.
 	public function getJavascript() {
-		// Modernizr.load() doesn't seem to work well with AJAX responses.
-		// Temporarily disable this while we investigate
-		$TMP_HTML='';
-		$TMP_JS='';
+		$javascript1 = '';
+		$javascript2 = '';
+		$javascript3 = '';
 
-		$html='';
-		// Insert the high priority scripts before external resources
-		if ($this->inline_javascript[self::JS_PRIORITY_HIGH]) {
-			$html.=PHP_EOL.'<script>';
-			foreach ($this->inline_javascript[self::JS_PRIORITY_HIGH] as $script) {
-				$html.=$script;
-				$TMP_JS.=$script;
-			}
-			$html.='</script>';
-			$this->inline_javascript[self::JS_PRIORITY_HIGH] = array();
+		// Inline (high priority) javascript
+		foreach ($this->inline_javascript[self::JS_PRIORITY_HIGH] as $script) {
+			$javascript1 .= $script;
 		}
 
-		// Load external libraries asynchronously
-		$load_js=array();
+		// External javascript
 		foreach (array_keys($this->external_javascript) as $script_name) {
-			$load_js[]='"'.$script_name.'"';
-			$TMP_HTML.='<script src="' . $script_name . '"></script>';
+			$javascript2 .= '<script src="' . $script_name . '"></script>';
 		}
-		$load_js='[' . implode(',', $load_js) . ']';
 
-		// Process the scripts, in priority order, after the libraries have loaded
-		$complete_js='';
+		// Inline (lower priority) javascript
 		if ($this->inline_javascript) {
-			foreach ($this->inline_javascript as $scripts) {
-				foreach ($scripts as $script) {
-					$complete_js.=$script;
+			foreach ($this->inline_javascript as $priority => $scripts) {
+				if ($priority !== self::JS_PRIORITY_HIGH) {
+					foreach ($scripts as $script) {
+						$javascript3 .= $script;
+					}
 				}
 			}
 		}
 
 		// We could, in theory, inject JS at any point in the page (not just the bottom) - prepare for next time
-		$this->inline_javascript=array(
+		$this->inline_javascript = array(
 			self::JS_PRIORITY_HIGH  =>array(),
 			self::JS_PRIORITY_NORMAL=>array(),
 			self::JS_PRIORITY_LOW   =>array(),
 		);
 		$this->external_javascript=array();
 
-		return '<script>' . $TMP_JS . '</script>' . $TMP_HTML . '<script>' . $complete_js . '</script>';
-		return $html . '<script>Modernizr.load({load:' . $load_js . ',complete:function(){' . $complete_js . '}});</script>';
+		return '<script>' . $javascript1 . '</script>' . $javascript2 . '<script>' . $javascript3 . '</script>';
 	}
 
 	// Print the page header, using the theme

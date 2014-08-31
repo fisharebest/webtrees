@@ -21,12 +21,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
-require_once WT_ROOT.'includes/functions/functions_import.php';
 use Rhumsaa\Uuid\Uuid;
 
 // Create an edit control for inline editing using jeditable
@@ -482,7 +476,7 @@ function add_simple_tag(
 	}
 	// tag level
 	if ($level>0) {
-		if ($fact=="TEXT" and $level>1) {
+		if ($fact=='TEXT' && $level>1) {
 			echo "<input type=\"hidden\" name=\"glevels[]\" value=\"", $level-1, "\">";
 			echo "<input type=\"hidden\" name=\"islink[]\" value=\"0\">";
 			echo "<input type=\"hidden\" name=\"tag[]\" value=\"DATA\">";
@@ -659,7 +653,9 @@ function add_simple_tag(
 			else echo "<option value=\"", $key, "\"";
 			$a=strtolower($key);
 			$b=strtolower($value);
-			if (@strpos($a, $b)!==false or @strpos($b, $a)!==false) echo " selected=\"selected\"";
+			if (@strpos($a, $b) !== false || @strpos($b, $a) !== false) {
+				echo ' selected="selected"';
+			}
 			$tmp="MARR_".strtoupper($key);
 			echo ">", WT_Gedcom_Tag::getLabel($tmp), "</option>";
 		}
@@ -1209,7 +1205,7 @@ function updateRest($inputRec, $levelOverride = 'no') {
  *
  * @return string The updated gedcom record
  */
-function handle_updates($newged, $levelOverride="no") {
+function handle_updates($newged, $levelOverride = 'no') {
 	global $glevels, $islink, $tag, $uploaded_files, $text;
 
 	if ($levelOverride=="no" || count($glevels)==0) $levelAdjust = 0;

@@ -23,13 +23,6 @@
 
 use WT\Log;
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
-require_once WT_ROOT.'includes/functions/functions_export.php';
-
 // Tidy up a gedcom record on import, so that we can access it consistently/efficiently.
 function reformat_record_import($rec) {
 	global $WORD_WRAPPED_NOTES, $GEDCOM_MEDIA_PATH;
@@ -801,7 +794,7 @@ function update_places($gid, $ged_id, $gedrec) {
 	$pt = preg_match_all("/^[2-9] PLAC (.+)/m", $gedrec, $match, PREG_SET_ORDER);
 	for ($i = 0; $i < $pt; $i++) {
 		$place = trim($match[$i][1]);
-		$lowplace = utf8_strtolower($place);
+		$lowplace = WT_I18N::strtolower($place);
 		//-- if we have already visited this place for this person then we don't need to again
 		if (isset($personplace[$lowplace])) {
 			continue;

@@ -588,8 +588,14 @@ class WT_Individual extends WT_GedcomRecord {
 		return 'person_box'.$tmp[$this->getSex()];
 	}
 
-	// Get a list of this individual’s spouse families
-	function getSpouseFamilies($access_level=WT_USER_ACCESS_LEVEL) {
+	/**
+	 * Get a list of this individual’s spouse families
+	 *
+	 * @param int $access_level
+	 *
+	 * @return WT_Family[]
+	 */
+	public function getSpouseFamilies($access_level=WT_USER_ACCESS_LEVEL) {
 		global $SHOW_PRIVATE_RELATIONSHIPS;
 
 		$families = array();
@@ -602,10 +608,15 @@ class WT_Individual extends WT_GedcomRecord {
 		return $families;
 	}
 
-	// get the current spouse of this individual
-	// The current spouse is defined as the spouse from the latest family.
-	// The latest family is defined as the last family in the GEDCOM record
-	function getCurrentSpouse() {
+	/**
+	 * Get the current spouse of this individual.
+	 *
+	 * Where an individual has multiple spouses, assume they are stored
+	 * in chronological order, and take the last one found.
+	 *
+	 * @return WT_Individual|null
+	 */
+	public function getCurrentSpouse() {
 		$tmp=$this->getSpouseFamilies();
 		$family = end($tmp);
 		if ($family) {
@@ -615,8 +626,12 @@ class WT_Individual extends WT_GedcomRecord {
 		}
 	}
 
-	// Get a count of the children for this individual
-	function getNumberOfChildren() {
+	/**
+	 * Count the children belonging to this individual.
+	 *
+	 * @return int
+	 */
+	public function getNumberOfChildren() {
 		if (preg_match('/\n1 NCHI (\d+)(?:\n|$)/', $this->getGedcom(), $match)) {
 			return $match[1];
 		} else {
@@ -630,8 +645,14 @@ class WT_Individual extends WT_GedcomRecord {
 		}
 	}
 
-	// Get a list of this individual’s child families (i.e. their parents)
-	function getChildFamilies($access_level=WT_USER_ACCESS_LEVEL) {
+	/**
+	 * Get a list of this individual’s child families (i.e. their parents).
+	 *
+	 * @param int $access_level
+	 *
+	 * @return WT_Family[]
+	 */
+	public function getChildFamilies($access_level=WT_USER_ACCESS_LEVEL) {
 		global $SHOW_PRIVATE_RELATIONSHIPS;
 
 		$families = array();
@@ -644,8 +665,19 @@ class WT_Individual extends WT_GedcomRecord {
 		return $families;
 	}
 
-	// Get primary family with parents
-	function getPrimaryChildFamily() {
+	/**
+	 * Get the preferred parents for this individual.
+	 *
+	 * An individual may multiple parents (e.g. birth, adopted, disputed).
+	 * The preferred family record is:
+	 * (a) the first one with an explicit tag "_PRIMARY Y"
+	 * (b) the first one with a pedigree of "birth"
+	 * (c) the first one with no pedigree (default is "birth")
+	 * (d) the first one found
+	 *
+	 * @return WT_Family|null
+	 */
+	public function getPrimaryChildFamily() {
 		$families=$this->getChildFamilies();
 		switch (count($families)) {
 		case 0:
@@ -677,7 +709,11 @@ class WT_Individual extends WT_GedcomRecord {
 		}
 	}
 
-	// Get a list of step-parent families
+	/**
+	 * Get a list of step-parent families.
+	 *
+	 * @return WT_Family[]
+	 */
 	function getChildStepFamilies() {
 		$step_families=array();
 		$families=$this->getChildFamilies();
@@ -702,7 +738,11 @@ class WT_Individual extends WT_GedcomRecord {
 		return $step_families;
 	}
 
-	// Get a list of step-child families
+	/**
+	 * Get a list of step-parent families.
+	 *
+	 * @return WT_Family[]
+	 */
 	function getSpouseStepFamilies() {
 		$step_families=array();
 		$families=$this->getSpouseFamilies();
@@ -1033,14 +1073,14 @@ class WT_Individual extends WT_GedcomRecord {
 			$surn = $tmp[$this->getPrimaryName()]['surname'];
 			$new_givn = explode(' ', $givn);
 			$count_givn = count($new_givn);
-			$len_givn = utf8_strlen($givn);
-			$len_surn = utf8_strlen($surn);
+			$len_givn = WT_I18N::strlen($givn);
+			$len_surn = WT_I18N::strlen($surn);
 			$len = $len_givn + $len_surn;
 			$i = 1;
 			while ($len > $char && $i<=$count_givn) {
-				$new_givn[$count_givn-$i] = utf8_substr($new_givn[$count_givn-$i],0,1);
+				$new_givn[$count_givn-$i] = WT_I18N::substr($new_givn[$count_givn-$i],0,1);
 				$givn = implode(' ', $new_givn);
-				$len_givn = utf8_strlen($givn);
+				$len_givn = WT_I18N::strlen($givn);
 				$len = $len_givn + $len_surn;
 				$i++;
 			}

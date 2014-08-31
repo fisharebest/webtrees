@@ -52,7 +52,7 @@ case 'load_rules':
 	$length = WT_Filter::getInteger('length');
 
 	$sql=
-		"SELECT SQL_CALC_FOUND_ROWS".
+		"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS".
 		" INET_NTOA(ip_address_start), ip_address_start, INET_NTOA(ip_address_end), ip_address_end, user_agent_pattern, rule, comment, site_access_rule_id".
 		" FROM `##site_access_rule`".
 		" WHERE rule<>'unknown'";
@@ -118,7 +118,7 @@ case 'load_rules':
 
 	// Total filtered/unfiltered rows
 	$recordsFiltered = WT_DB::prepare("SELECT FOUND_ROWS()")->fetchColumn();
-	$recordsTotal = WT_DB::prepare("SELECT COUNT(*) FROM `##site_access_rule` WHERE rule<>'unknown'")->fetchColumn();
+	$recordsTotal = WT_DB::prepare("SELECT COUNT(*) FROM `##site_access_rule` WHERE rule <> 'unknown'")->fetchColumn();
 
 	header('Content-type: application/json');
 	echo json_encode(array( // See http://www.datatables.net/usage/server-side
@@ -137,7 +137,7 @@ case 'load_unknown':
 	$length = WT_Filter::getInteger('length');
 
 	$sql=
-		"SELECT SQL_CALC_FOUND_ROWS".
+		"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS".
 		" INET_NTOA(ip_address_start), ip_address_start, user_agent_pattern, DATE(updated) AS updated, site_access_rule_id".
 		" FROM `##site_access_rule`".
 		" WHERE rule='unknown'";
@@ -190,7 +190,7 @@ case 'load_unknown':
 
 	// Total filtered/unfiltered rows
 	$recordsFiltered = WT_DB::prepare("SELECT FOUND_ROWS()")->fetchColumn();
-	$recordsTotal    = WT_DB::prepare("SELECT COUNT(*) FROM `##site_access_rule` WHERE rule<>'unknown'")->fetchColumn();
+	$recordsTotal    = WT_DB::prepare("SELECT COUNT(*) FROM `##site_access_rule` WHERE rule = 'unknown'")->fetchColumn();
 
 	header('Content-type: application/json');
 	echo json_encode(array( // See http://www.datatables.net/usage/server-side

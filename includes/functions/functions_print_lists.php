@@ -26,11 +26,6 @@
 
 use Rhumsaa\Uuid\Uuid;
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 // print a table of individuals
 function format_indi_table($datalist, $option='') {
 	global $GEDCOM, $SHOW_LAST_CHANGE, $SEARCH_SPIDER, $MAX_ALIVE_AGE, $controller;
@@ -1592,7 +1587,7 @@ function format_surname_list($surnames, $style, $totals, $script) {
 		$first_spfxsurn=null;
 		foreach ($surns as $spfxsurn=>$indis) {
 			if ($first_spfxsurn) {
-				if (utf8_strtoupper($spfxsurn)==utf8_strtoupper($first_spfxsurn)) {
+				if (WT_I18N::strtoupper($spfxsurn)==WT_I18N::strtoupper($first_spfxsurn)) {
 					$surns[$first_spfxsurn]=array_merge($surns[$first_spfxsurn], $surns[$spfxsurn]);
 					unset ($surns[$spfxsurn]);
 				}

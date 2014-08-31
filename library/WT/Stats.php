@@ -961,7 +961,7 @@ class WT_Stats {
 			$chart_title=WT_I18N::translate('Surname distribution chart').': '.$surname;
 			// Count how many people are events in each country
 			$surn_countries=array();
-			$indis = WT_Query_Name::individuals(utf8_strtoupper($surname), '', '', false, false, WT_GED_ID);
+			$indis = WT_Query_Name::individuals(WT_I18N::strtoupper($surname), '', '', false, false, WT_GED_ID);
 			foreach ($indis as $person) {
 				if (preg_match_all('/^2 PLAC (?:.*, *)*(.*)/m', $person->getGedcom(), $matches)) {
 					// webtrees uses 3 letter country codes and localised country names, but google uses 2 letter codes.
@@ -1606,7 +1606,7 @@ class WT_Stats {
 			}
 			$chxl .= '1:||'.WT_I18N::translate('century').'|2:'.$decades.'|3:||'.WT_I18N::translate('Age').'|';
 			$title = WT_I18N::translate('Average age related to death century');
-			if (count($rows)>6 || utf8_strlen($title)<30) {
+			if (count($rows)>6 || WT_I18N::strlen($title)<30) {
 				$chtt = $title;
 			} else {
 				$offset = 0;
@@ -2345,7 +2345,7 @@ class WT_Stats {
 			$chd = 't2:'.$countsm.'|'.$countsf.'|'.$countsa;
 			if ($max<=50) $chxl .= '1:||'.WT_I18N::translate('century').'|2:|0|10|20|30|40|50|3:||'.WT_I18N::translate('Age').'|';
 			else $chxl .= '1:||'.WT_I18N::translate('century').'|2:|0|10|20|30|40|50|60|70|80|90|100|3:||'.WT_I18N::translate('Age').'|';
-			if (count($rows)>4 || utf8_strlen(WT_I18N::translate('Average age in century of marriage'))<30) {
+			if (count($rows)>4 || WT_I18N::strlen(WT_I18N::translate('Average age in century of marriage'))<30) {
 				$chtt = WT_I18N::translate('Average age in century of marriage');
 			} else {
 				$offset = 0;
@@ -3127,7 +3127,7 @@ class WT_Stats {
 		switch($sorting) {
 		default:
 		case 'alpha':
-			uksort($surname_list, 'utf8_strcasecmp');
+			uksort($surname_list, array('WT_I18N', 'strcasecmp'));
 			break;
 		case 'count':
 			uasort($surname_list, array('WT_Stats', '_name_total_sort'));
@@ -3175,7 +3175,7 @@ class WT_Stats {
 			if ($n>=$maxtoshow) {
 				break;
 			}
-			$all_surnames = array_merge($all_surnames, WT_Query_Name::surnames(utf8_strtoupper($surname), '', false, false, WT_GED_ID));
+			$all_surnames = array_merge($all_surnames, WT_Query_Name::surnames(WT_I18N::strtoupper($surname), '', false, false, WT_GED_ID));
 		}
 		$tot = 0;
 		foreach ($surnames as $surname) {
@@ -3411,7 +3411,7 @@ class WT_Stats {
 			}
 		}
 		$LoginUsers = count($loggedusers);
-		if (($LoginUsers == 0) and ($NumAnonymous == 0)) {
+		if ($LoginUsers == 0 && $NumAnonymous == 0) {
 			return WT_I18N::translate('No logged-in and no anonymous users');
 		}
 		if ($NumAnonymous > 0) {

@@ -359,9 +359,8 @@ if (is_array($res)) {
 		// Note that we're stripping the initial "webtrees/", so the top folder will fail.
 		if ($result['status'] != 'ok' && $result['filename'] != 'webtrees/') {
 			echo '<br>', WT_I18N::translate('An error occurred when unzipping the file.'), $icon_failure;
-			echo '<pre>';
-			var_dump($result);
-			echo '</pre>';
+			echo '<pre>', $result['status'], '</pre>';
+			echo '<pre>', $result['filename'], '</pre>';
 			echo '</li></ul></form>';
 			exit;
 		}
@@ -369,6 +368,7 @@ if (is_array($res)) {
 	echo '<br>', /* I18N: [...] from the .ZIP file, %2$s is a (fractional) number of seconds */ WT_I18N::plural('%1$s file was extracted in %2$s seconds.', '%1$s files were extracted in %2$s seconds.', count($res), count($res), WT_I18N::number($end_time - $start_time, 2)), $icon_success;
 } else {
 	echo '<br>', WT_I18N::translate('An error occurred when unzipping the file.'), $icon_failure;
+	echo '<pre>', $archive->errorInfo(true), '</pre>';
 	echo '</li></ul></form>';
 	exit;
 }
