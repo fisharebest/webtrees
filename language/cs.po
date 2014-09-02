@@ -151,12 +151,12 @@ msgstr "%1$s nemá odkaz zpět na %2$s."
 
 #. I18N: [...] from the .ZIP file, %2$s is a (fractional) number of seconds
 #: admin_site_upgrade.php:367 admin_site_upgrade.php:444
-#, fuzzy, php-format
+#, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] "Soubor %1$s byl rozbalen za %2$s vteřin."
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Soubor byl rozbalen za %2$s vteřin."
+msgstr[1] "%1$s soubory byly rozbaleny za %2$s vteřin."
+msgstr[2] "%1$s souborů bylo rozbaleno za %2$s vteřin."
 
 #. I18N: %1$s is an internal ID number such as R123.  %2$s and %3$s are record types, such as INDI or SOUR
 #: admin_trees_check.php:179
@@ -174,7 +174,7 @@ msgstr "%1$s × %2$s pixelů"
 #: admin_site_upgrade.php:312
 #, php-format
 msgid "%1$sKB were downloaded in %2$s seconds."
-msgstr ""
+msgstr "Bylo staženo %1$sKB za %2$s vteřin."
 
 #. I18N: A range of years, e.g. “1870–”, “1870–1920”, “–1920”
 #: library/WT/Individual.php:418
@@ -261,7 +261,7 @@ msgstr "%j. %F %Y"
 #: library/WT/Stats.php:4072
 #, php-format
 msgid "%s BCE"
-msgstr ""
+msgstr "%s př.n.l."
 
 #. I18N: size of file in KB
 #: admin_media.php:416 library/WT/Media.php:203
@@ -992,7 +992,7 @@ msgstr ""
 
 #: admin.php:109 admin_site_upgrade.php:83
 msgid "A new version of webtrees is available."
-msgstr ""
+msgstr "Je dostupná nová verze webtrees."
 
 #. I18N: Description of the “Journal” module
 #: modules_v3/user_blog/module.php:45
@@ -1182,6 +1182,8 @@ msgid ""
 "A watermark is text that is added to an image, to discourage others from "
 "copying it without permission."
 msgstr ""
+"Vodoznak je text, který se přidá do obrázku, aby odradil ostatní od "
+"kopírování bez souhlasu vlastníka."
 
 #. I18N: time format “%A” - between 00:00:01 and 11:59:59
 #: includes/functions/functions_date.php:119
@@ -1611,7 +1613,7 @@ msgstr "Přidat příběh"
 #: admin_trees_download.php:129 modules_v3/clippings/module.php:212
 #: modules_v3/clippings/module.php:592
 msgid "Add the GEDCOM media path to filenames"
-msgstr ""
+msgstr "Přidat GEDCOM media cestu ke jménům souborů"
 
 #: modules_v3/clippings/module.php:108 modules_v3/clippings/module.php:516
 msgid "Add this individual and his direct line ancestors."
@@ -1711,7 +1713,7 @@ msgstr "Administrace"
 
 #: admin_trees_places.php:80
 msgid "Administration - place edit"
-msgstr ""
+msgstr "Administrace - úprava místa"
 
 #: admin_users.php:188 admin_users.php:368 help_text.php:1397
 msgid "Administrator"
@@ -2058,7 +2060,7 @@ msgstr "Všichni uživatelé PGV musí být vlastní emailovou adresu"
 
 #: admin_trees_config.php:1137 help_text.php:505
 msgid "All family facts"
-msgstr ""
+msgstr "Údaje o celé rodině"
 
 #: login.php:405
 msgid "All fields must be completed."
@@ -2066,11 +2068,11 @@ msgstr "Musí být vyplněna všechna pole."
 
 #: admin_site_upgrade.php:398
 msgid "All files have read and write permission."
-msgstr ""
+msgstr "Všechny soubory jsou přístupné pro čtení a zápis."
 
 #: admin_trees_config.php:1100 help_text.php:592
 msgid "All individual facts"
-msgstr ""
+msgstr "Údaje o všech osobách"
 
 #: calendar.php:189 calendar.php:203 calendar.php:204 calendar.php:207
 #: calendar.php:208 calendar.php:441
@@ -2079,11 +2081,11 @@ msgstr "Všichni lidé"
 
 #: admin_trees_config.php:1203 help_text.php:798
 msgid "All repository facts"
-msgstr ""
+msgstr "Údaje o všech repozitářích"
 
 #: admin_trees_config.php:1174 help_text.php:909
 msgid "All source facts"
-msgstr ""
+msgstr "Údaje o všech zdrojích"
 
 #. I18N: Description of the “CKEditor” module.  WYSIWYG = “what you see is what you get”
 #: modules_v3/ckeditor/module.php:39
@@ -2182,7 +2184,7 @@ msgstr "Menu pro upravování dat o osobách, rodinách, zdrojích atd."
 #: admin_site_upgrade.php:339 admin_site_upgrade.php:359
 #: admin_site_upgrade.php:369 admin_site_upgrade.php:446
 msgid "An error occurred when unzipping the file."
-msgstr ""
+msgstr "Nastala chyba při rozbalování souboru."
 
 #. I18N: Description of the “Interactive tree” module
 #: modules_v3/tree/module.php:38
@@ -2376,7 +2378,7 @@ msgstr "Opravdu chcete vymazat “%s”?"
 
 #: modules_v3/lightbox/module.php:175
 msgid "Are you sure you want to remove links to this media object?"
-msgstr ""
+msgstr "Opravdu chcete odstranit odkazy na tento mediální objekt?"
 
 #: modules_v3/gedcom_favorites/module.php:123
 msgid "Are you sure you want to remove this item from your list of favorites?"
@@ -2384,7 +2386,7 @@ msgstr "Jste si jisti, že chcete odstranit tuto položku z vašich oblíbených
 
 #: edit_changes.php:231
 msgid "Are you sure you want to undo all the changes to this family tree?"
-msgstr ""
+msgstr "Opravdu chcete zrušit všechny změny provedené v tomto rodinném stromě?"
 
 #: library/WT/Stats.php:3810
 msgid "Argentina"
@@ -2862,7 +2864,7 @@ msgstr "Binární datový objekt"
 
 #: includes/functions/functions_print.php:823
 msgid "Bing Maps™"
-msgstr ""
+msgstr "Bing Mapy™"
 
 #: library/WT/Gedcom/Code/Temp.php:68
 msgid "Birmingham, Alabama"
@@ -3596,11 +3598,15 @@ msgstr "Příčina smrti"
 msgid ""
 "Caution: old modules may not work, or they may prevent webtrees from working."
 msgstr ""
+"Varování: staré moduly nemusí fungovat nebo můžou způsobit nefunkčnost "
+"webtrees"
 
 #: admin_site_upgrade.php:265
 msgid ""
 "Caution: old themes may not work, or they may prevent webtrees from working."
 msgstr ""
+"Varování: stará témata nemusí fungovat nebo můžou způsobit nefunkčnost "
+"webtrees"
 
 #: library/WT/Stats.php:3861
 msgid "Cayman Islands"
@@ -3736,17 +3742,17 @@ msgstr "Zkontrolujte přístupová práva k této složce."
 
 #: admin_site_upgrade.php:380
 msgid "Check file permissions…"
-msgstr ""
+msgstr "Kontroluji přístupová práva..."
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:116
 msgid "Check for custom modules…"
-msgstr ""
+msgstr "Kontroluji vlastní moduly..."
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:218
 msgid "Check for custom themes…"
-msgstr ""
+msgstr "Kontroluji vlastní témata..."
 
 #: admin_trees_check.php:28 themes/_administration/header.php:122
 msgid "Check for errors"
@@ -3755,7 +3761,7 @@ msgstr "Vyhledat chyby"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:97
 msgid "Check for pending changes…"
-msgstr ""
+msgstr "Kontroluji změny ke schválení..."
 
 #: help_text.php:460 relationship.php:137
 msgid "Check relationships by marriage"
@@ -4087,7 +4093,7 @@ msgstr ""
 #. I18N: The local time on the client/browser
 #: themes/_administration/header.php:84
 msgid "Client time"
-msgstr ""
+msgstr "Uživatelský čas"
 
 #. I18N: Name of a module
 #: modules_v3/clippings/module.php:32
@@ -4279,13 +4285,14 @@ msgstr "Kopírovat"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:421
 msgid "Copy files…"
-msgstr ""
+msgstr "Kopíruji soubory..."
 
 #: admin_site_upgrade.php:392
 #, php-format
 msgid ""
 "Copy these files to the folder %s, replacing any that have the same name."
 msgstr ""
+"Zkopírujte tyto soubory do složky %s, nahraďte všechny se stejným jménem."
 
 #. I18N: gedcom tag COPR
 #: library/WT/Gedcom/Tag.php:156
@@ -4556,11 +4563,11 @@ msgstr "Vlastní událost"
 
 #: includes/functions/functions_print.php:965
 msgid "Custom fact"
-msgstr ""
+msgstr "Vlastní údaj"
 
 #: admin_site_upgrade.php:190 admin_site_upgrade.php:193
 msgid "Custom module"
-msgstr ""
+msgstr "Vlastní modul"
 
 #: find.php:469
 msgid "Custom tags"
@@ -4568,7 +4575,7 @@ msgstr "Vlastní tagy"
 
 #: admin_site_upgrade.php:250 admin_site_upgrade.php:253
 msgid "Custom theme"
-msgstr ""
+msgstr "Vlastní téma"
 
 #: admin_site_config.php:157 help_text.php:1039
 msgid "Custom welcome text"
@@ -5277,7 +5284,7 @@ msgstr "Smazat jméno"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:471
 msgid "Delete temporary files…"
-msgstr ""
+msgstr "Mažu dočasné soubory..."
 
 #: admin_site_clean.php:88
 msgid "Deleted files:"
@@ -5313,6 +5320,7 @@ msgid ""
 "Depending on your server configuration, you may be able to upgrade "
 "automatically."
 msgstr ""
+"V závislosti na konfiguraci serveru bude možné aktualizovat automaticky."
 
 #: help_text.php:1222
 msgid "Descendant generations"
@@ -5508,11 +5516,11 @@ msgstr "Přímá linie předků a jejich rodin"
 
 #: admin_site_upgrade.php:201
 msgid "Disable these modules"
-msgstr ""
+msgstr "Zakázat tyto moduly"
 
 #: admin_site_upgrade.php:264
 msgid "Disable these themes"
-msgstr ""
+msgstr "Zakázat tato témata"
 
 #. I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options
 #: library/WT/I18N.php:648
@@ -5606,7 +5614,7 @@ msgstr "Stáhnout"
 #: admin_site_upgrade.php:300
 #, php-format
 msgid "Download %s…"
-msgstr ""
+msgstr "Stahuji %s..."
 
 #: mediaviewer.php:104
 msgid "Download file"
@@ -6259,6 +6267,7 @@ msgstr "Statistiky vykonávání"
 msgid ""
 "Execution time: %1$s seconds. Database queries: %2$s. Memory usage: %3$s KB."
 msgstr ""
+"Doba spuštění: %1$s vteřin. Databázové dotazy: %2$s. Využití paměti: %3$s KB."
 
 #. I18N: placeholder text for registration-comments field
 #: login.php:433
@@ -6272,7 +6281,7 @@ msgstr "Export"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:281
 msgid "Export all family trees to GEDCOM files…"
-msgstr ""
+msgstr "Exportuji celý rodokmen do souborů GEDCOM..."
 
 #: help_text.php:1211
 msgid "Export family tree"
@@ -6305,7 +6314,7 @@ msgstr "Barva očí"
 #. I18N: Name of a theme.
 #: themes/fab/theme.php:29
 msgid "F.A.B."
-msgstr ""
+msgstr "F.A.B."
 
 #. I18N: Name of a module.  Abbreviation for “Frequently Asked Questions”
 #: modules_v3/faq/module.php:32 modules_v3/faq/module.php:431
@@ -6994,6 +7003,8 @@ msgid ""
 "For sites with more than one family tree, this option will show the list of "
 "family trees in the main menu, the search pages, etc."
 msgstr ""
+"Pro weby s více rodokmeny tato volba zobrazí jejich seznam v hlavním menu, "
+"na vyhledávacích stránkách apod."
 
 #: includes/functions/functions_print.php:375
 msgid "For technical support and information contact"
@@ -7011,7 +7022,7 @@ msgstr "Formát"
 
 #: admin_trees_config.php:941 help_text.php:525
 msgid "Format text and notes"
-msgstr ""
+msgstr "Naformátovat text a poznámky"
 
 #: library/WT/Gedcom/Code/Pedi.php:49
 msgctxt "Female pedigree"
@@ -8219,7 +8230,7 @@ msgstr "Rozměry obrázku"
 
 #: admin_trees_config.php:720
 msgid "Images without watermarks"
-msgstr ""
+msgstr "Obrázky bez vodoznaku"
 
 #. I18N: gedcom tag IMMI
 #: library/WT/Gedcom/Tag.php:218
@@ -8542,6 +8553,8 @@ msgstr "Izrael"
 msgid ""
 "It can take several minutes to download and install the upgrade.  Be patient."
 msgstr ""
+"Stáhnutí aktualizace a její provedení může trvat několik minut. Buďte "
+"trpěliví."
 
 #: library/WT/Stats.php:3919
 msgid "Italy"
@@ -9143,7 +9156,7 @@ msgstr "Lokální soubory"
 #. I18N: gedcom tag _LOC
 #: library/WT/Gedcom/Tag.php:725
 msgid "Location"
-msgstr ""
+msgstr "Umístění"
 
 #: modules_v3/googlemap/module.php:4314
 msgid "Location not removed: this location contains sub-locations"
@@ -9406,6 +9419,9 @@ msgid ""
 "Wikipedia.  It uses unobtrusive punctuation characters to create headings "
 "and sub-headings, bold and italic text, lists, tables, etc."
 msgstr ""
+"Markdown je jednoduchý system formátování textu používaný na webech, např. "
+"na Wikipedii. Používá nenápadné znaky na vytváření nadpisů, tučného písma, "
+"kurzívy, seznamů, tabulek atd."
 
 #. I18N: gedcom tag MARR
 #: library/WT/Gedcom/Tag.php:233 modules_v3/ahnentafel_report/report.xml:453
@@ -9650,7 +9666,7 @@ msgstr "Martinik"
 #. I18N: Pretend to be another user, by logging in as them
 #: admin_users.php:217
 msgid "Masquerade as this user"
-msgstr ""
+msgstr "Maskovat jako tento uživatel"
 
 #: modules_v3/batch_update/plugins/search_replace.php:90
 msgid "Match the exact text, even if it occurs in the middle of a word."
@@ -10609,11 +10625,11 @@ msgstr "Není možné kontaktovat"
 
 #: admin_site_upgrade.php:207
 msgid "No custom modules are enabled."
-msgstr ""
+msgstr "Nejsou povoleny žádné vlastní moduly."
 
 #: admin_site_upgrade.php:270
 msgid "No custom themes are enabled."
-msgstr ""
+msgstr "Nejsou povoleny žádná vlastní témata."
 
 #: admin_trees_check.php:227
 msgid "No errors were found."
@@ -10655,7 +10671,9 @@ msgstr "Zítra žádné události pro žijící."
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
-msgstr[0] ""
+msgstr[0] "Neexistují žádné události pro žijící lidi v následujícím %s dnu."
+msgstr[1] "Neexistují žádné události pro žijící lidi v následujících %s dnech."
+msgstr[2] "Neexistují žádné události pro žijící lidi v následujících %s dnech."
 
 #: library/WT/Controller/Family.php:159
 msgid "No facts for this family."
@@ -10700,7 +10718,7 @@ msgstr "Nebyla nalezena žádná místa"
 
 #: admin_trees_places.php:121
 msgid "No places were found."
-msgstr ""
+msgstr "Nebyla nalezena žádná místa."
 
 #: admin_site_config.php:44
 msgid "No predefined text"
@@ -10724,7 +10742,7 @@ msgstr "Bez chrámu - obřad naživo"
 
 #: admin_site_upgrade.php:67
 msgid "No upgrade information is available."
-msgstr ""
+msgstr "Není dostupná žádná aktualizace."
 
 #: library/WT/Stats.php:1061
 msgid "Nobody at all"
@@ -11130,7 +11148,7 @@ msgstr "Ups! webtrees nemohl vytvořit soubory v této složce."
 
 #: includes/functions/functions_print.php:824
 msgid "OpenStreetMap™"
-msgstr ""
+msgstr "OpenStreetMap™"
 
 #: modules_v3/googlemap/help_text.php:41 modules_v3/googlemap/module.php:406
 msgid "Optional prefixes and suffixes"
@@ -11728,12 +11746,12 @@ msgstr "Místo bydliště"
 #: admin_site_upgrade.php:406
 #, php-format
 msgid "Place the site offline, by creating the file %s…"
-msgstr ""
+msgstr "Shazuji web vytvořením souboru %s..."
 
 #: admin_site_upgrade.php:457
 #, php-format
 msgid "Place the site online, by deleting the file %s…"
-msgstr ""
+msgstr "Nahazuji web smazáním souboru %s..."
 
 #: admin_trees_config.php:896 statistics.php:401
 msgid "Places"
@@ -12341,7 +12359,7 @@ msgstr "Regulární výraz"
 #. I18N: http://en.wikipedia.org/wiki/Regular_expression
 #: modules_v3/batch_update/plugins/search_replace.php:93
 msgid "Regular expressions are an advanced pattern matching technique."
-msgstr ""
+msgstr "Regulární výrazy jsou pokročilá technika pro vyhledávání textu."
 
 #. I18N: Name of a module/report
 #: modules_v3/individual_ext_report/module.php:33
@@ -12837,6 +12855,8 @@ msgstr "Hledat a nahradit"
 msgid ""
 "Search and replace text, using simple searches or advanced pattern matching."
 msgstr ""
+"Vyhledat a nahradit text použitím jednoduchého řetězce nebo regulárním "
+"výrazem"
 
 #: includes/session.php:636
 msgid "Search engine"
@@ -12883,7 +12903,7 @@ msgstr "Zabezpečené připojení"
 #: modules_v3/batch_update/plugins/search_replace.php:93
 #, php-format
 msgid "See %s for more information."
-msgstr ""
+msgstr "Klikněte %s pro více podrobností."
 
 #: includes/functions/functions_edit.php:311 reportengine.php:260
 msgid "Select a date"
@@ -13104,7 +13124,7 @@ msgstr "Jméno serveru"
 #. I18N: The local time on the server
 #: themes/_administration/header.php:81
 msgid "Server time"
-msgstr ""
+msgstr "Serverový čas"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:88 help_text.php:728
@@ -13502,7 +13522,7 @@ msgstr "Zobrazit ukazatel věku?"
 #. I18N: A site configuration setting
 #: admin_trees_config.php:968 help_text.php:703
 msgid "Show chart details by default"
-msgstr ""
+msgstr "Standardně zobrazit podrobnosti grafu"
 
 #: modules_v3/ahnentafel_report/report.xml:12
 msgid "Show children of ancestors?"
@@ -13637,7 +13657,7 @@ msgstr "Zobrazil odkaz na grafy statistik?"
 
 #: admin_site_config.php:85 help_text.php:416
 msgid "Show list of family trees"
-msgstr ""
+msgstr "Zobrazit seznam rodinných stromů"
 
 #: modules_v3/ahnentafel_report/report.xml:9
 #: modules_v3/family_group_report/report.xml:8
@@ -14712,7 +14732,7 @@ msgstr "Soubor %s už existuje. Použijte jiné jméno."
 #: admin_site_upgrade.php:410 admin_site_upgrade.php:441
 #, php-format
 msgid "The file %s could not be created."
-msgstr ""
+msgstr "Soubor %s nebyl vytvořen."
 
 #: admin_media.php:60 admin_media.php:67 admin_site_upgrade.php:462
 #: admin_site_upgrade.php:483
@@ -14723,12 +14743,12 @@ msgstr "Soubor %s nelze smazat."
 #: admin_site_upgrade.php:388
 #, php-format
 msgid "The file %s could not be updated."
-msgstr ""
+msgstr "Soubor %s nebyl aktualizován."
 
 #: admin_site_upgrade.php:412
 #, php-format
 msgid "The file %s was created."
-msgstr ""
+msgstr "Soubor %s byl vytvořen."
 
 #: admin_media.php:58 admin_media.php:65 admin_site_upgrade.php:460
 #: admin_site_upgrade.php:481
@@ -14750,7 +14770,7 @@ msgstr "Soubor “%s” neexistuje."
 #: admin_site_upgrade.php:477
 #, php-format
 msgid "The folder %s could not be deleted."
-msgstr ""
+msgstr "Složka %s nemohla být smazána."
 
 #: addmedia.php:92 addmedia.php:103 addmedia.php:115 addmedia.php:254
 #: addmedia.php:265 addmedia.php:277 admin_media_upload.php:60
@@ -14770,7 +14790,7 @@ msgstr "Byla vytvořena složka: %s"
 #: admin_site_upgrade.php:475
 #, php-format
 msgid "The folder %s was deleted."
-msgstr ""
+msgstr "Složka %s byla smazána."
 
 #: help_text.php:587
 msgid ""
@@ -14810,11 +14830,11 @@ msgstr "Tato zpráva byla zaslána na váš webtrees uživatelský účet z "
 
 #: admin_trees_places.php:108
 msgid "The following places were changed:"
-msgstr ""
+msgstr "Následující místa byla změněna:"
 
 #: admin_trees_places.php:108
 msgid "The following places would be changed:"
-msgstr ""
+msgstr "Následující místa by byla změněna:"
 
 #: admin_site_access.php:274
 msgid ""
@@ -14916,7 +14936,7 @@ msgstr ""
 #: admin_site_upgrade.php:391
 #, php-format
 msgid "The new files are currently located in the folder %s."
-msgstr ""
+msgstr "Nové soubory jsou umístěny ve složce %s."
 
 #: help_text.php:1248
 msgid ""
@@ -15002,7 +15022,7 @@ msgstr ""
 
 #: admin_site_upgrade.php:489
 msgid "The upgrade is complete."
-msgstr ""
+msgstr "Aktualizace byla dokončena."
 
 #: login.php:311
 msgid ""
@@ -15045,6 +15065,10 @@ msgid ""
 "can be searched when entering new places.  To use this feature, you must "
 "register for a free account at www.geonames.org and provide the username."
 msgstr ""
+"Web www.geonames.org poskytuje velkou databázi jmen míst. Při vytváření "
+"nových míst se tato databáze může prohledat. Abyste mohli tuto funkcionalitu "
+"použít, je třeba se zdarma registrovat na www.geonames.org a poskytnout "
+"uživatelské jméno."
 
 #: setup.php:934
 msgid ""
@@ -15101,7 +15125,7 @@ msgstr "K této osobě nejsou k dispozici žádné obrázky."
 
 #: admin_site_upgrade.php:107
 msgid "There are no pending changes."
-msgstr ""
+msgstr "Neexistují žádné neschválené změny."
 
 #: modules_v3/todo/module.php:127
 msgid "There are no research tasks in this family tree."
@@ -15377,7 +15401,7 @@ msgstr ""
 
 #: library/WT/Filter.php:295
 msgid "This form has expired.  Try again."
-msgstr ""
+msgstr "Tento formulář vypršel. Prosím zkuste to znovu."
 
 #: individual.php:90 library/WT/Controller/Chart.php:40
 msgid ""
@@ -15579,10 +15603,11 @@ msgstr ""
 msgid ""
 "This is the initial setting for the “show details” option on the charts."
 msgstr ""
+"Toto je výchozí nastavení pro volbu \"zobrazit podrobnosti\" v grafech."
 
 #: admin_site_upgrade.php:72
 msgid "This is the latest version of webtrees.  No upgrade is available."
-msgstr ""
+msgstr "Toto je poslední verze webtrees. Neni dostupná žádná aktualizace."
 
 #: help_text.php:506
 msgid ""
@@ -16276,7 +16301,7 @@ msgstr ""
 #. I18N: http://en.wikipedia.org/wiki/Https
 #: admin_site_upgrade.php:319
 msgid "This server does not support secure downloads using HTTPS."
-msgstr ""
+msgstr "Tento server nepodporuje bezpečné stahování použitím HTTPS protokolu."
 
 #: setup.php:181
 #, php-format
@@ -16307,7 +16332,7 @@ msgstr ""
 
 #: admin_site_upgrade.php:41
 msgid "This site is being upgraded.  Try again in a few minutes."
-msgstr ""
+msgstr "Tento web se právě aktualizuje. Prosím zkuste to za pár minut znova."
 
 #: source.php:73
 msgid "This source does not exist or you do not have permission to view it."
@@ -16408,6 +16433,8 @@ msgid ""
 "example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New "
 "Mexico”."
 msgstr ""
+"Toto aktualizuje nejvyšší úroveň části jména místa. Například \"Mexico\" "
+"bude odpovídat \"Quintana Roo, Mexico\", ale ne \"Santa Fe, New Mexico\"."
 
 #: includes/functions/functions_print.php:1002 library/WT/Date/Calendar.php:217
 msgid "Thu"
@@ -16543,7 +16570,7 @@ msgstr ""
 
 #: admin_site_upgrade.php:390
 msgid "To complete the upgrade, you should install the files manually."
-msgstr ""
+msgstr "K dokončení aktualizace je třeba nainstalovat soubory ručně."
 
 #: modules_v3/todo/help_text.php:34
 msgid ""
@@ -16559,6 +16586,10 @@ msgid ""
 "transcripts should be recorded in simple, unformatted text.  However, "
 "formatting is often desirable to aid presentation, comprehension, etc."
 msgstr ""
+"Aby byla zaručena kompatibilita s ostatními rodokmenovými aplikacemi, "
+"poznámky, texty a transkripty by měly být uloženy jako jednoduché, "
+"neformátované texty. Nicméně formátování je často žádoucí, pomáhá "
+"prezentaci, porozumění apod."
 
 #: admin_media.php:465 library/WT/Controller/Media.php:64
 #: library/WT/Controller/Media.php:149 modules_v3/lightbox/module.php:161
@@ -16577,6 +16608,9 @@ msgid ""
 "copying files, you can temporarily create a file %s on the server.  If it "
 "contains a message, it will be displayed to visitors."
 msgstr ""
+"Abyste zakázali návštěvníkům webu přístup uprostřed kopírování souborů, "
+"můžete na serveru vytvořit dočasný soubor %s. Jeho obsah bude zobrazen "
+"návštěvníkům."
 
 #. I18N: “Apache” is a software program.
 #: help_text.php:583
@@ -16905,7 +16939,7 @@ msgstr "SSSR"
 #. I18N: Timezone - http://en.wikipedia.org/wiki/UTC
 #: admin_site_upgrade.php:41 themes/_administration/header.php:87
 msgid "UTC"
-msgstr ""
+msgstr "UTC"
 
 #: library/WT/Stats.php:4043
 msgid "Uganda"
@@ -17020,7 +17054,7 @@ msgstr "Neověřeno uživatelem"
 #: admin_site_upgrade.php:330
 #, php-format
 msgid "Unzip %s to a temporary folder…"
-msgstr ""
+msgstr "Rozbaluji %s do dočasné složky..."
 
 #. I18N: Name of a module
 #: modules_v3/upcoming_events/module.php:32
@@ -17038,11 +17072,11 @@ msgstr "Aktualizovat všechno"
 
 #: admin_trees_places.php:85
 msgid "Update all the place names in a family tree"
-msgstr ""
+msgstr "Aktualizovat všechna místa v rodinném stromě"
 
 #: themes/_administration/header.php:121
 msgid "Update place names"
-msgstr ""
+msgstr "Aktualizovat jména míst"
 
 #: admin_site_merge.php:157
 msgid "Updating linked record"
@@ -17051,7 +17085,7 @@ msgstr "Aktualizování připojené zprávy"
 #. I18N: Ignore the warnings, and [...]
 #: admin_site_upgrade.php:202 admin_site_upgrade.php:265
 msgid "Upgrade anyway"
-msgstr ""
+msgstr "Přesto aktualizovat"
 
 #. I18N: %s is a version number, such as 1.2.3
 #: admin.php:111 admin_site_upgrade.php:86
@@ -17061,7 +17095,7 @@ msgstr "Upgradujte webtrees na verzi %s"
 
 #: admin_site_upgrade.php:55
 msgid "Upgrade wizard"
-msgstr ""
+msgstr "Průvodce aktualizací"
 
 #: admin_media_upload.php:233 admin_trees_manage.php:225
 #: modules_v3/googlemap/module.php:4454
@@ -17542,13 +17576,15 @@ msgstr "Vodoznaky"
 
 #: help_text.php:1027
 msgid "Watermarks are optional and normally shown just to visitors."
-msgstr ""
+msgstr "Vodoznaky jsou volitelné a normálně se zobrazují pouze návštěvníkům."
 
 #: help_text.php:1029
 msgid ""
 "Watermarks can be slow to generate for large images.  Busy sites may prefer "
 "to generate them once and store the watermarked image on the server."
 msgstr ""
+"Vodoznaky můžou zpomalit generování větších obrázků. Vytížené weby můžou "
+"upřednostnit vygenerování jednou a uložení obrázku s vodoznakem na server."
 
 #: login.php:379
 #, php-format
@@ -17758,6 +17794,8 @@ msgid ""
 "When this option is selected, webtrees will calculate the age differences "
 "between siblings, children, spouses, etc."
 msgstr ""
+"Pokud je tato volba vybrána, webtrees spočítají rozdíly věků mezi "
+"sourozenci, dětmi, partnery, atd."
 
 #: help_text.php:931
 msgid ""
@@ -18079,11 +18117,11 @@ msgstr "Nyní se můžete přihlásit vaším uživatelským jménem a heslem."
 
 #: admin_site_upgrade.php:201
 msgid "You can re-enable these modules after the upgrade."
-msgstr ""
+msgstr "Tyto moduly můžete znovu povolit po aktualizaci."
 
 #: admin_site_upgrade.php:264
 msgid "You can re-enable these themes after the upgrade."
-msgstr ""
+msgstr "Tato témata můžete znovu povolit po aktualizaci."
 
 #: help_text.php:643 help_text.php:682
 msgid ""
@@ -18246,6 +18284,8 @@ msgstr "Tuto zprávu jste poslali na webtrees uživatelský účet:"
 #: admin_site_upgrade.php:102
 msgid "You should accept or reject all pending changes before upgrading."
 msgstr ""
+"Před aktualizací byste měli přijmout nebo odmítnout všechny dosud "
+"neschválené změny."
 
 #: help_text.php:1151
 msgid ""
@@ -18261,12 +18301,16 @@ msgid ""
 "You should consult the module’s author to confirm compatibility with this "
 "version of webtrees."
 msgstr ""
+"Měli byste zkonzultovat s autorem modulu, zda je kompatibilní z touto verzí "
+"webtrees."
 
 #: admin_site_upgrade.php:263
 msgid ""
 "You should consult the theme’s author to confirm compatibility with this "
 "version of webtrees."
 msgstr ""
+"Měli byste zkonzultovat s autorem tématu, zda je kompatibilní z touto verzí "
+"webtrees."
 
 #. I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’
 #: login.php:276 message.php:69
@@ -18768,12 +18812,12 @@ msgstr "zavřít"
 #. I18N: Name of a theme.
 #: themes/clouds/theme.php:48
 msgid "clouds"
-msgstr ""
+msgstr "mraky"
 
 #. I18N: Name of a theme.
 #: themes/colors/theme.php:127
 msgid "colors"
-msgstr ""
+msgstr "barvy"
 
 #: modules_v3/top10_surnames/module.php:162
 msgid "compact list"
@@ -18929,19 +18973,19 @@ msgstr "povolit"
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: library/WT/Gedcom/Code/Name.php:91
 msgid "estate name"
-msgstr ""
+msgstr "jméno podle místa"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: library/WT/Gedcom/Code/Name.php:88
 msgctxt "FEMALE"
 msgid "estate name"
-msgstr ""
+msgstr "jméno podle místa"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: library/WT/Gedcom/Code/Name.php:85
 msgctxt "MALE"
 msgid "estate name"
-msgstr ""
+msgstr "jméno podle místa"
 
 #. I18N: Gedcom EST dates
 #: library/WT/Date.php:230
@@ -20992,7 +21036,7 @@ msgstr "jméno za svobodna"
 #. I18N: https://en.wikipedia.org/wiki/Markdown
 #: admin_trees_config.php:948
 msgid "markdown"
-msgstr ""
+msgstr "markdown"
 
 #: library/WT/Stats.php:1712 library/WT/Stats.php:3633
 msgid "marriage"
@@ -21028,7 +21072,7 @@ msgstr "manželské jméno"
 #. I18N: verb: pretend to be someone else
 #: admin_users.php:218
 msgid "masquerade"
-msgstr ""
+msgstr "zamaskovat"
 
 #: includes/functions/functions.php:852
 msgctxt "mother’s father"
@@ -21071,7 +21115,7 @@ msgstr "Půlnoc"
 #. I18N: Name of a theme.
 #: themes/minimal/theme.php:30
 msgid "minimal"
-msgstr ""
+msgstr "minimalistické"
 
 #: modules_v3/googlemap/module.php:330
 msgid "minimum"
@@ -22267,7 +22311,7 @@ msgstr "manželka"
 #. I18N: Name of a theme.
 #: themes/xenea/theme.php:30
 msgid "xenea"
-msgstr ""
+msgstr "xenea"
 
 #: timeline.php:130
 msgid "years"
