@@ -27,6 +27,9 @@
 
 use WT\Auth;
 
+/**
+ * Class WT_I18N - library of useful functions for locales and translation
+ */
 class WT_I18N {
 	// Digits are always rendered LTR, even in RTL text.
 	const DIGITS = '0123456789٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹';
@@ -36,7 +39,7 @@ class WT_I18N {
 	// The characters should be arranged in default unicode-collation order.
 	const ALPHABET_LOWER = 'aàáâãäåāăąǎǟǡǻȁȃȧḁạảấầẩẫậắằẳẵặⓐａæǣǽbḃḅḇⓑｂƀɓƃcçćĉċčḉⅽⓒｃƈdďḋḍḏḑḓⅾⓓｄǆǳđɖɗƌðeèéêëēĕėęěȅȇȩḕḗḙḛḝẹẻẽếềểễệⓔｅǝəɛfḟⓕｆƒgĝğġģǧǵḡⓖｇǥɠɣƣhĥȟḣḥḧḩḫⓗｈƕħiìíîïĩīĭįǐȉȋḭḯỉịⅰⓘｉⅱⅲĳⅳⅸɨɩjĵⓙｊkķǩḱḳḵⓚｋƙlĺļľḷḹḻḽⅼⓛｌŀǉłƚmḿṁṃⅿⓜｍnñńņňǹṅṇṉṋⓝｎǌɲƞŋoòóôõöōŏőơǒǫǭȍȏȫȭȯȱṍṏṑṓọỏốồổỗộớờởỡợⓞｏœøǿɔɵȣpṕṗⓟｐƥqⓠｑrŕŗřȑȓṙṛṝṟⓡｒʀsśŝşšșṡṣṥṧṩⓢｓʃtţťțṫṭṯṱⓣｔŧƭʈuùúûüũūŭůűųưǔǖǘǚǜȕȗṳṵṷṹṻụủứừửữựⓤｕʉɯʊvṽṿⅴⓥｖⅵⅶⅷʋʌwŵẁẃẅẇẉⓦｗxẋẍⅹⓧｘⅺⅻyýÿŷȳẏỳỵỷỹⓨｙƴzźżžẑẓẕⓩｚƶȥǯʒƹȝþƿƨƽƅάαἀἁἂἃἄἅἆἇὰάᾀᾁᾂᾃᾄᾅᾆᾇᾰᾱᾳβγδέεἐἑἒἓἔἕὲέϝϛζήηἠἡἢἣἤἥἦἧὴήᾐᾑᾒᾓᾔᾕᾖᾗῃθϊἰἱἲἳἴἵἶἷὶίῐῑκϗλμνξοόὀὁὂὃὄὅὸόπϟϙρῥσϲτυϋύὑὓὕὗὺύῠῡφχψωώὠὡὢὣὤὥὦὧὼώᾠᾡᾢᾣᾤᾥᾦᾧῳϡϸϻϣϥϧϩϫϭϯаӑӓәӛӕбвгґғҕдԁђԃѓҙеѐёӗєжӂӝҗзԅӟѕӡԇиѝӣҋӥіїйјкқӄҡҟҝлӆљԉмӎнӊңӈҥњԋоӧөӫпҧҁрҏсԍҫтԏҭћќуӯўӱӳүұѹфхҳһѡѿѽѻцҵчӵҷӌҹҽҿџшщъыӹьҍѣэӭюяѥѧѫѩѭѯѱѳѵѷҩաբգդեզէըթժիլխծկհձղճմյնշոչպջռսվտրցւփքօֆȼɂɇɉɋɍɏͱͳͷͻͼͽӏӷӻӽӿԑԓԕԗԙԛԝԟԡԣԥᵹᵽỻỽỿⅎↄⰰⰱⰲⰳⰴⰵⰶⰷⰸⰹⰺⰻⰼⰽⰾⰿⱀⱁⱂⱃⱄⱅⱆⱇⱈⱉⱊⱋⱌⱍⱎⱏⱐⱑⱒⱓⱔⱕⱖⱗⱘⱙⱚⱛⱜⱝⱞⱡⱨⱪⱬⱳⱶⲁⲃⲅⲇⲉⲋⲍⲏⲑⲓⲕⲗⲙⲛⲝⲟⲡⲣⲥⲧⲩⲫⲭⲯⲱⲳⲵⲷⲹⲻⲽⲿⳁⳃⳅⳇⳉⳋⳍⳏⳑⳓⳕⳗⳙⳛⳝⳟⳡⳣⳬⳮⴀⴁⴂⴃⴄⴅⴆⴇⴈⴉⴊⴋⴌⴍⴎⴏⴐⴑⴒⴓⴔⴕⴖⴗⴘⴙⴚⴛⴜⴝⴞⴟⴠⴡⴢⴣⴤⴥꙁꙃꙅꙇꙉꙋꙍꙏꙑꙓꙕꙗꙙꙛꙝꙟꙣꙥꙧꙩꙫꙭꚁꚃꚅꚇꚉꚋꚍꚏꚑꚓꚕꚗꜣꜥꜧꜩꜫꜭꜯꜳꜵꜷꜹꜻꜽꜿꝁꝃꝅꝇꝉꝋꝍꝏꝑꝓꝕꝗꝙꝛꝝꝟꝡꝣꝥꝧꝩꝫꝭꝯꝺꝼꝿꞁꞃꞅꞇꞌ';
 	const ALPHABET_UPPER = 'AÀÁÂÃÄÅĀĂĄǍǞǠǺȀȂȦḀẠẢẤẦẨẪẬẮẰẲẴẶⒶＡÆǢǼBḂḄḆⒷＢɃƁƂCÇĆĈĊČḈⅭⒸＣƇDĎḊḌḎḐḒⅮⒹＤǄǱĐƉƊƋÐEÈÉÊËĒĔĖĘĚȄȆȨḔḖḘḚḜẸẺẼẾỀỂỄỆⒺＥƎƏƐFḞⒻＦƑGĜĞĠĢǦǴḠⒼＧǤƓƔƢHĤȞḢḤḦḨḪⒽＨǶĦIÌÍÎÏĨĪĬĮǏȈȊḬḮỈỊⅠⒾＩⅡⅢĲⅣⅨƗƖJĴⒿＪKĶǨḰḲḴⓀＫƘLĹĻĽḶḸḺḼⅬⓁＬĿǇŁȽMḾṀṂⅯⓂＭNÑŃŅŇǸṄṆṈṊⓃＮǊƝȠŊOÒÓÔÕÖŌŎŐƠǑǪǬȌȎȪȬȮȰṌṎṐṒỌỎỐỒỔỖỘỚỜỞỠỢⓄＯŒØǾƆƟȢPṔṖⓅＰƤQⓆＱRŔŖŘȐȒṘṚṜṞⓇＲƦSŚŜŞŠȘṠṢṤṦṨⓈＳƩTŢŤȚṪṬṮṰⓉＴŦƬƮUÙÚÛÜŨŪŬŮŰŲƯǓǕǗǙǛȔȖṲṴṶṸṺỤỦỨỪỬỮỰⓊＵɄƜƱVṼṾⅤⓋＶⅥⅦⅧƲɅWŴẀẂẄẆẈⓌＷXẊẌⅩⓍＸⅪⅫYÝŸŶȲẎỲỴỶỸⓎＹƳZŹŻŽẐẒẔⓏＺƵȤǮƷƸȜÞǷƧƼƄΆΑἈἉἊἋἌἍἎἏᾺΆᾈᾉᾊᾋᾌᾍᾎᾏᾸᾹᾼΒΓΔΈΕἘἙἚἛἜἝῈΈϜϚΖΉΗἨἩἪἫἬἭἮἯῊΉᾘᾙᾚᾛᾜᾝᾞᾟῌΘΪἸἹἺἻἼἽἾἿῚΊῘῙΚϏΛΜΝΞΟΌὈὉὊὋὌὍῸΌΠϞϘΡῬΣϹΤΥΫΎὙὛὝὟῪΎῨῩΦΧΨΩΏὨὩὪὫὬὭὮὯῺΏᾨᾩᾪᾫᾬᾭᾮᾯῼϠϷϺϢϤϦϨϪϬϮАӐӒӘӚӔБВГҐҒҔДԀЂԂЃҘЕЀЁӖЄЖӁӜҖЗԄӞЅӠԆИЍӢҊӤІЇЙЈКҚӃҠҞҜЛӅЉԈМӍНӉҢӇҤЊԊОӦӨӪПҦҀРҎСԌҪТԎҬЋЌУӮЎӰӲҮҰѸФХҲҺѠѾѼѺЦҴЧӴҶӋҸҼҾЏШЩЪЫӸЬҌѢЭӬЮЯѤѦѪѨѬѮѰѲѴѶҨԱԲԳԴԵԶԷԸԹԺԻԼԽԾԿՀՁՂՃՄՅՆՇՈՉՊՋՌՍՎՏՐՑՒՓՔՕՖȻɁɆɈɊɌɎͰͲͶϽϾϿӀӶӺӼӾԐԒԔԖԘԚԜԞԠԢԤꝽⱣỺỼỾℲↃⰀⰁⰂⰃⰄⰅⰆⰇⰈⰉⰊⰋⰌⰍⰎⰏⰐⰑⰒⰓⰔⰕⰖⰗⰘⰙⰚⰛⰜⰝⰞⰟⰠⰡⰢⰣⰤⰥⰦⰧⰨⰩⰪⰫⰬⰭⰮⱠⱧⱩⱫⱲⱵⲀⲂⲄⲆⲈⲊⲌⲎⲐⲒⲔⲖⲘⲚⲜⲞⲠⲢⲤⲦⲨⲪⲬⲮⲰⲲⲴⲶⲸⲺⲼⲾⳀⳂⳄⳆⳈⳊⳌⳎⳐⳒⳔⳖⳘⳚⳜⳞⳠⳢⳫⳭႠႡႢႣႤႥႦႧႨႩႪႫႬႭႮႯႰႱႲႳႴႵႶႷႸႹႺႻႼႽႾႿჀჁჂჃჄჅꙀꙂꙄꙆꙈꙊꙌꙎꙐꙒꙔꙖꙘꙚꙜꙞꙢꙤꙦꙨꙪꙬꚀꚂꚄꚆꚈꚊꚌꚎꚐꚒꚔꚖꜢꜤꜦꜨꜪꜬꜮꜲꜴꜶꜸꜺꜼꜾꝀꝂꝄꝆꝈꝊꝌꝎꝐꝒꝔꝖꝘꝚꝜꝞꝠꝢꝤꝦꝨꝪꝬꝮꝹꝻꝾꞀꞂꞄꞆꞋ';
-	
+
 	// Alphabet for the currently selected locale
 	private static $alphabet_lower = 'abcdefghijklmnopqrstuvwxyz';
 	private static $alphabet_upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -96,8 +99,13 @@ class WT_I18N {
 	private static $numbering_system;
 	private static $translation_adapter;
 
-	// Initialise the translation adapter with a locale setting.
-	// If null is passed, work out which language is needed from the environment.
+	/**
+	 * Initialise the translation adapter with a locale setting.
+	 *
+	 * @param string|null $locale If no locale specified, choose one automatically
+	 *
+	 * @return string $string
+	 */
 	public static function init($locale=null) {
 		global $WT_SESSION;
 
@@ -233,29 +241,37 @@ class WT_I18N {
 		return $locale;
 	}
 
-	// Add a translation file
+	/**
+	 * Add a translation file
+	 *
+	 * @param Zend_Translate $translation
+	 */
 	public static function addTranslation(Zend_Translate $translation) {
 		self::$translation_adapter->addTranslation($translation);
 	}
 
-	// Check which languages are installed
+	/**
+	 * Check which languages are installed
+	 *
+	 * @return array
+	 */
 	public static function installed_languages() {
-		$mo_files=glob(WT_ROOT.'language'.DIRECTORY_SEPARATOR.'*.mo');
-		$cache_key=md5(serialize($mo_files));
+		$mo_files = glob(WT_ROOT.'language'.DIRECTORY_SEPARATOR.'*.mo');
+		$cache_key = md5(serialize($mo_files));
 
-		if (!($installed_languages=self::$cache->load($cache_key))) {
-			$installed_languages=array();
+		if (!($installed_languages = self::$cache->load($cache_key))) {
+			$installed_languages = array();
 			foreach ($mo_files as $mo_file) {
 				if (preg_match('/^(([a-z][a-z][a-z]?)([-_][A-Z][A-Z])?([-_][A-Za-z]+)*)\.mo$/', basename($mo_file), $match)) {
 					// Sort by the transation of the base language, then the variant.
 					// e.g. English|British English, Portuguese|Brazilian Portuguese
 					$tmp1 = self::languageName($match[1]);
-					if ($match[1]==$match[2]) {
-						$tmp2=$tmp1;
+					if ($match[1] == $match[2]) {
+						$tmp2 = $tmp1;
 					} else {
 						$tmp2 = self::languageName($match[2]);
 					}
-					$installed_languages[$match[1]]=$tmp2.'|'.$tmp1;
+					$installed_languages[$match[1]] = $tmp2 . '|' . $tmp1;
 				}
 			}
 			if (empty($installed_languages)) {
@@ -267,10 +283,10 @@ class WT_I18N {
 			foreach ($installed_languages as &$value) {
 				// The locale database doesn't have translations for certain
 				// "default" languages, such as zn_CH.
-				if (substr($value, -1)=='|') {
-					list($value,)=explode('|', $value);
+				if (substr($value, -1) == '|') {
+					list($value,) = explode('|', $value);
 				} else {
-					list(,$value)=explode('|', $value);
+					list(,$value) = explode('|', $value);
 				}
 			}
 			self::$cache->save($installed_languages, $cache_key);
@@ -278,7 +294,11 @@ class WT_I18N {
 		return $installed_languages;
 	}
 
-	// Generate i18n markup for the <html> tag, e.g. lang="ar" dir="rtl"
+	/**
+	 * Generate i18n markup for the <html> tag, e.g. lang="ar" dir="rtl"
+	 *
+	 * @return string
+	 */
 	public static function html_markup() {
 		$localeData=Zend_Locale_Data::getList(self::$locale, 'layout');
 		$dir=$localeData['characterOrder']=='right-to-left' ? 'rtl' : 'ltr';
@@ -286,10 +306,19 @@ class WT_I18N {
 		return 'lang="'.$lang.'" dir="'.$dir.'"';
 	}
 
-	// Translate a number into the local representation.  e.g. 12345.67 becomes
-	// en: 12,345.67
-	// fr: 12 345,67
-	// de: 12.345,67
+	/**
+	 * Translate a number into the local representation.
+	 *
+	 * e.g. 12345.67 becomes
+	 * en: 12,345.67
+	 * fr: 12 345,67
+	 * de: 12.345,67
+	 *
+	 * @param int $n
+	 * @param int $precision
+	 *
+	 * @return string
+	 */
 	public static function number($n, $precision=0) {
 		// Add "punctuation" and convert digits
 		$n=Zend_Locale_Format::toNumber($n, array('locale'=>WT_LOCALE, 'precision'=>$precision));
@@ -297,8 +326,15 @@ class WT_I18N {
 		return $n;
 	}
 
-	// Convert the digits 0-9 into the local script
-	// Used for years, etc., where we do not want thousands-separators, decimals, etc.
+	/**
+	 * Convert the digits 0-9 into the local script
+	 *
+	 * Used for years, etc., where we do not want thousands-separators, decimals, etc.
+	 *
+	 * @param int $n
+	 *
+	 * @return string
+	 */
 	public static function digits($n) {
 		if (self::$numbering_system != 'latn') {
 			return Zend_Locale_Format::convertNumerals($n, 'latn', self::$numbering_system);
@@ -307,18 +343,33 @@ class WT_I18N {
 		}
 	}
 
-	// Translate a fraction into a percentage.  e.g. 0.123 becomes
-	// en: 12.3%
-	// fr: 12,3 %
-	// de: 12,3%
+	/**
+	 * Translate a fraction into a percentage.
+	 *
+	 * e.g. 0.123 becomes
+	 * en: 12.3%
+	 * fr: 12,3 %
+	 * de: 12,3%
+	 *
+	 * @param     $n
+	 * @param int $precision
+	 *
+	 * @return mixed
+	 */
 	public static function percentage($n, $precision=0) {
 		return
 			/* I18N: This is a percentage, such as “32.5%”. “%s” is the number, “%%” is the percent symbol.  Some languages require a (non-breaking) space between the two, or a different symbol. */
 			self::translate('%s%%', self::number($n*100.0, $precision));
 	}
 
-	// echo WT_I18N::translate('Hello World!');
-	// echo WT_I18N::translate('The %s sat on the mat', 'cat');
+	/**
+	 * Translate a string, and then substitute placeholders
+	 *
+	 * echo WT_I18N::translate('Hello World!');
+	 * echo WT_I18N::translate('The %s sat on the mat', 'cat');
+	 *
+	 * @return string
+	 */
 	public static function translate(/* var_args */) {
 		$args = func_get_args();
 		$args[0] = self::$translation_adapter->_($args[0]);
@@ -326,9 +377,14 @@ class WT_I18N {
 		return call_user_func_array('sprintf', $args);
 	}
 
-	// Context sensitive version of translate.
-	// echo WT_I18N::translate_c('NOMINATIVE', 'January');
-	// echo WT_I18N::translate_c('GENITIVE',   'January');
+	/**
+	 * Context sensitive version of translate.
+	 *
+	 * echo WT_I18N::translate_c('NOMINATIVE', 'January');
+	 * echo WT_I18N::translate_c('GENITIVE',   'January');
+	 *
+	 * @return string
+	 */
 	public static function translate_c(/* var_args */) {
 		$args = func_get_args();
 		$msgid = $args[0] . "\x04" . $args[1];
@@ -337,21 +393,34 @@ class WT_I18N {
 			$msgtxt = $args[1];
 		}
 		$args[0] = $msgtxt;
-		unset ($args[1]);
+		unset($args[1]);
 
 		return call_user_func_array('sprintf', $args);
 	}
 
-	// Similar to translate, but do perform "no operation" on it.
-	// This is necessary to fetch a format string (containing % characters) without
-	// performing sustitution of arguments.
+	/**
+	 * Similar to translate, but do perform "no operation" on it.
+	 *
+	 * This is necessary to fetch a format string (containing % characters) without
+	 * performing sustitution of arguments.
+	 *
+	 * @param string,... $string, $args...
+	 *
+	 * @return string
+	 */
 	public static function noop($string) {
 		return self::$translation_adapter->_($string);
 	}
 
-	// echo self::plural('There is an error', 'There are errors', $num_errors);
-	// echo self::plural('There is one error', 'There are %s errors', $num_errors);
-	// echo self::plural('There is %1$d %2$s cat', 'There are %1$d %2$s cats', $num, $num, $colour);
+	/**
+	 * Translate a plural string
+	 *
+	 * echo self::plural('There is an error', 'There are errors', $num_errors);
+	 * echo self::plural('There is one error', 'There are %s errors', $num_errors);
+	 * echo self::plural('There is %1$d %2$s cat', 'There are %1$d %2$s cats', $num, $num, $colour);
+	 *
+	 * @return string
+	 */
 	public static function plural(/* var_args */) {
 		$args = func_get_args();
 		$string = self::$translation_adapter->plural($args[0], $args[1], $args[2]);
@@ -360,10 +429,17 @@ class WT_I18N {
 		return call_user_func_array('sprintf', $args);
 	}
 
-	// Convert a GEDCOM age string into translated_text
-	// NB: The import function will have normalised this, so we don't need
-	// to worry about badly formatted strings
-	// NOTE: this function is not yet complete - eventually it will replace get_age_at_event()
+	/**
+	 * Convert a GEDCOM age string into translated_text
+	 *
+	 * NB: The import function will have normalised this, so we don't need
+	 * to worry about badly formatted strings
+	 * NOTE: this function is not yet complete - eventually it will replace get_age_at_event()
+	 *
+	 * @param $string
+	 *
+	 * @return string
+	 */
 	public static function gedcom_age($string) {
 		switch ($string) {
 		case 'STILLBORN':
@@ -417,13 +493,21 @@ class WT_I18N {
 		}
 	}
 
-	// Convert a number of seconds into a relative time.  e.g. 630 => "10 hours, 30 minutes ago"
+	/**
+	 * Convert a number of seconds into a relative time.  e.g. 630 => "10 hours, 30 minutes ago"
+	 *
+	 * @param int $seconds
+	 *
+	 * @return string
+	 *
+	 * @todo Does Nesbot\Carbon do this for us?
+	 */
 	public static function time_ago($seconds) {
-		$year=365*24*60*60;
-		$month=30*24*60*60;
-		$day=24*60*60;
-		$hour=60*60;
-		$minute=60;
+		$year   = 365*24*60*60;
+		$month  = 30*24*60*60;
+		$day    = 24*60*60;
+		$hour   = 60*60;
+		$minute = 60;
 
 		// TODO: Display two units (years+months), (months+days), etc.
 		// This requires "contexts".  i.e. "%s months" has a different translation
@@ -449,7 +533,13 @@ class WT_I18N {
 		}
 	}
 
-	// Return the endonym for a given language - as per http://cldr.unicode.org/
+	/**
+	 * Return the endonym for a given language - as per http://cldr.unicode.org/
+	 *
+	 * @param $language
+	 *
+	 * @return string
+	 */
 	public static function languageName($language) {
 		switch (str_replace(array('_', '@'), '-', $language)) {
 		case 'af':      return 'Afrikaans';
@@ -522,8 +612,13 @@ class WT_I18N {
 		}
 	}
 
-	// Return the script used by a given language
-	// The PHP/intl library does not provde this information.
+	/**
+	 * Return the script used by a given language
+	 *
+	 * @param string $language
+	 *
+	 * @return string
+	 */
 	public static function languageScript($language) {
 		switch (str_replace(array('_', '@'), '-', $language)) {
 		case 'af':      return 'Latn';
@@ -592,7 +687,13 @@ class WT_I18N {
 		}
 	}
 
-	// Identify the script used for a piece of text
+	/**
+	 * Identify the script used for a piece of text
+	 *
+	 * @param $string
+	 *
+	 * @return string
+	 */
 	public static function textScript($string) {
 		$string = strip_tags($string);                               // otherwise HTML tags show up as latin
 		$string = html_entity_decode($string, ENT_QUOTES, 'UTF-8');  // otherwise HTML entities show up as latin
@@ -634,8 +735,16 @@ class WT_I18N {
 		return 'Latn';
 	}
 
-	// Return the direction (ltr or rtl) for a given script
-	// The PHP/intl library does not provde this information.
+	/**
+	 * Return the direction (ltr or rtl) for a given script
+	 *
+	 * The PHP/intl library does not provde this information, so we need
+	 * our own lookup table.
+	 *
+	 * @param string $script
+	 *
+	 * @return string
+	 */
 	public static function scriptDirection($script) {
 		switch ($script) {
 		case 'Arab':
@@ -652,9 +761,9 @@ class WT_I18N {
 	 * UTF8 version of PHP::strtoupper()
 	 *
 	 * Convert a string to upper case, using the rules from the current locale
-	 * 
+	 *
 	 * @param string $string
-	 * 
+	 *
 	 * @return string
 	 */
 	public static function strtoupper($string) {
@@ -724,10 +833,10 @@ class WT_I18N {
 	 * UTF8 version of PHP::strcasecmp()
 	 *
 	 * Perform a case-insensitive comparison of two strings, using rules from the current locale
-	 * 
+	 *
 	 * @param string $string1
 	 * @param string $string2
-	 * 
+	 *
 	 * @return int
 	 */
 	public static function strcasecmp($string1, $string2) {
@@ -910,7 +1019,13 @@ class WT_I18N {
 		return $digits . $reversed;
 	}
 
-	// Generate consistent I18N for datatables.js
+	/**
+	 * Generate consistent I18N for datatables.js
+	 *
+	 * @param array|null $lengths An optional array of page lengths
+	 *
+	 * @return string
+	 */
 	public static function datatablesI18N(array $lengths=null) {
 		if ($lengths===null) {
 			$lengths=array(10, 20, 30, 50, 100, -1);
