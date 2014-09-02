@@ -32,8 +32,9 @@ define('WT_USER_ID', 0);
 define('WT_DATA_DIR', realpath('data').DIRECTORY_SEPARATOR);
 $WT_SESSION=new stdClass();
 $WT_SESSION->locale='';
+
 require 'includes/functions/functions.php';
-require WT_ROOT.'includes/functions/functions_utf-8.php';
+
 define('WT_LOCALE', 'en');
 
 if (version_compare(PHP_VERSION, '5.3.2', '>=')) {
