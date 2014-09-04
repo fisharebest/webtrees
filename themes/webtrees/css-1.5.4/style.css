@@ -705,7 +705,7 @@ a:hover .nameZoom {
 	background-color: #fff;
 	padding: 5px;
 	position: absolute;
-	visibility: hidden;
+	display: none;
 }
 
 /*-- descendancy chart specific stylesheets --*/
@@ -829,6 +829,26 @@ a:hover .nameZoom {
 #familybook_chart,
 #hourglass_chart {
 	margin: 20px;
+}
+
+.fan_chart_menu {
+	position: absolute;
+	display:  none;
+	z-index:  100;
+}
+
+#fan_chart ul {
+	list-style-type: none;
+	margin: 0;
+}
+
+#fan_chart ul.children li:before {
+	content: "< ";
+	font-weight: bold;
+}
+
+#fan_chart_img {
+	text-align: center;
 }
 
 .compact_view {
