@@ -186,7 +186,7 @@ class WT_Filter {
 					),
 				)
 			);
-			return isset($tmp[$variable]) ? $tmp[$variable] : array();
+			return $tmp[$variable] ?: array();
 		} else {
 			// PHP5.3 requires the $tmp variable
 			$tmp = filter_input_array(
@@ -201,7 +201,7 @@ class WT_Filter {
 					),
 				)
 			);
-			return isset($tmp[$variable]) ? $tmp[$variable] : array();
+			return $tmp[$variable] ?: array();
 		}
 	}
 
