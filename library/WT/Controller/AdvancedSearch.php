@@ -197,7 +197,6 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 		// Dynamic SQL query, plus bind variables
 		$sql="SELECT DISTINCT ind.i_id AS xref, ind.i_file AS gedcom_id, ind.i_gedcom AS gedcom FROM `##individuals` ind";
 		$bind=array();
-
 		// Join the following tables
 		$father_name     =false;
 		$mother_name     =false;
@@ -209,7 +208,9 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 		$fam_plac        =false;
 		foreach ($this->fields as $n=>$field) {
 			if ($this->values[$n]) {
-				if (substr($field, 0, 14)=='FAMC:HUSB:NAME') {
+				if ($field == 'FAMS:NOTE') {
+					$spouse_family = true;
+				} elseif (substr($field, 0, 14)=='FAMC:HUSB:NAME') {
 					$father_name=true;
 				} elseif (substr($field, 0, 14)=='FAMC:WIFE:NAME') {
 					$mother_name=true;
@@ -295,6 +296,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 			$value = $this->values[$i];
 			if ($value==='') continue;
 			$parts = preg_split("/:/", $field.'::::');
+
 			if ($parts[0]=='NAME') {
 				// NAME:*
 				switch ($parts[1]) {
@@ -548,13 +550,21 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 					break;
 				}
 			} elseif ($parts[0]=='FAMS') {
-				$sql.=" AND fam.f_gedcom LIKE CONCAT('%', ?, '%')";
+				if ($parts[1] == 'NOTE') {
+					$sql.=" AND fam.f_gedcom LIKE CONCAT('%NOTE ', ?, '%')";
+				} else {
+					$sql.=" AND fam.f_gedcom LIKE CONCAT('%', ?, '%')";
+				}
+				$bind[]=$value;
+			} elseif ($parts[0] == 'NOTE') {
+				$sql.=" AND ind.i_gedcom LIKE CONCAT('%NOTE ', ?, '%')";
 				$bind[]=$value;
 			} else {
 				$sql.=" AND ind.i_gedcom LIKE CONCAT('%', ?, '%')";
 				$bind[]=$value;
 			}
 		}
+
 		$rows=WT_DB::prepare($sql)->execute($bind)->fetchAll();
 		foreach ($rows as $row) {
 			$person=WT_Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
@@ -563,7 +573,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 				if ($this->values[$n] && preg_match('/^('.WT_REGEX_TAG.'):PLAC$/', $field, $match)) {
 					if (!preg_match('/\n1 '.$match[1].'(\n[2-9].*)*\n2 PLAC .*'.preg_quote($this->values[$n], '/').'/i', $person->getGedcom())) {
 						continue 2;
-				 }
+					}
 				}
 			}
 			$this->myindilist[]=$person;
