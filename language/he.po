@@ -1075,42 +1075,42 @@ msgstr "אדר"
 #: library/WT/Date/Jewish.php:100
 msgctxt "GENITIVE"
 msgid "Adar I"
-msgstr "באדר א'"
+msgstr "באדר א׳"
 
 #: library/WT/Date/Jewish.php:136
 msgctxt "INSTRUMENTAL"
 msgid "Adar I"
-msgstr "אדר א'"
+msgstr "אדר א׳"
 
 #: library/WT/Date/Jewish.php:118
 msgctxt "LOCATIVE"
 msgid "Adar I"
-msgstr "אדר א'"
+msgstr "אדר א׳"
 
 #: library/WT/Date/Jewish.php:82
 msgctxt "NOMINATIVE"
 msgid "Adar I"
-msgstr "אדר א'"
+msgstr "אדר א׳"
 
 #: library/WT/Date/Jewish.php:101
 msgctxt "GENITIVE"
 msgid "Adar II"
-msgstr "באדר ב'"
+msgstr "באדר ב׳"
 
 #: library/WT/Date/Jewish.php:137
 msgctxt "INSTRUMENTAL"
 msgid "Adar II"
-msgstr "אדר ב'"
+msgstr "אדר ב׳"
 
 #: library/WT/Date/Jewish.php:119
 msgctxt "LOCATIVE"
 msgid "Adar II"
-msgstr "אדר ב'"
+msgstr "אדר ב׳"
 
 #: library/WT/Date/Jewish.php:83
 msgctxt "NOMINATIVE"
 msgid "Adar II"
-msgstr "אדר ב'"
+msgstr "אדר ב׳"
 
 #: admin_trees_config.php:582 edit_interface.php:2025
 #: includes/functions/functions_print.php:910
