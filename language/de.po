@@ -755,7 +755,7 @@ msgstr "Ein neues Passwort wurde erzeugt und an %s gesandt. Sie können es ände
 
 #: login.php:239
 msgid "A new password was requested for your user name."
-msgstr "Für Ihren Benutzernamen wurde ein neues Kennwort angefordert."
+msgstr "Für Ihren Benutzernamen wurde ein neues Passwort angefordert."
 
 #: login.php:499
 #, php-format
@@ -1651,7 +1651,7 @@ msgstr "Nach dem Anlegen des Familienstammbaums haben Sie die Möglichkeit, eine
 
 #: login.php:242
 msgid "After you have logged in, select the “My account” link under the “My page” menu and fill in the password fields to change your password."
-msgstr "Nachdem Sie sich angemeldet haben, ändern Sie bitte Ihr Passwort. Dazu klicken Sie im «Mein webtrees» Menü auf «Eigene Benutzerdaten bearbeiten» und tragen dort in beiden Kennwortfeldern Ihr gewünschtes Kennwort ein."
+msgstr "Nachdem Sie sich angemeldet haben, ändern Sie bitte Ihr Passwort. Dazu klicken Sie im «Mein webtrees» Menü auf «Eigene Benutzerdaten bearbeiten» und tragen dort in beiden Passwortfeldern Ihr gewünschtes Passwort ein."
 
 #. I18N: gedcom tag AGE
 #: autocomplete.php:114 includes/functions/functions_print.php:709
@@ -3855,7 +3855,7 @@ msgstr "Konfigurieren"
 
 #: admin_users.php:389 edituser.php:150 help_text.php:1298 login.php:427
 msgid "Confirm password"
-msgstr "Kennwort bestätigen"
+msgstr "Passwort bestätigen"
 
 #. I18N: gedcom tag CONF
 #: library/WT/Gedcom/Tag.php:152 modules_v3/missing_facts_report/report.xml:16
@@ -4990,7 +4990,7 @@ msgstr "META Tag Description"
 
 #: login.php:422
 msgid "Desired password"
-msgstr "Gewünschtes Kennwort"
+msgstr "Gewünschtes Passwort"
 
 #: login.php:417
 msgid "Desired user name"
@@ -8069,7 +8069,7 @@ msgstr "Ansicht"
 
 #: edituser.php:149
 msgid "Leave password blank if you want to keep the current password."
-msgstr "Kennwort leer lassen, um das aktuelle Kennwort beizubehalten."
+msgstr "Passwort leer lassen, um das aktuelle Passwort beizubehalten."
 
 #: admin_trees_config.php:438
 msgid "Leave this field empty to use the name of the family tree."
@@ -8325,7 +8325,7 @@ msgstr "Los Angeles, Kalifornien"
 #: login.php:200 login.php:216 login.php:237
 #: modules_v3/login_block/module.php:94
 msgid "Lost password request"
-msgstr "Neues Kennwort anfordern"
+msgstr "Neues Passwort anfordern"
 
 #: library/WT/Gedcom/Code/Temp.php:115
 msgid "Louisville, Kentucky"
@@ -10276,7 +10276,7 @@ msgstr "PGV muss Version 4.2.3 oder eine SVN-Version bis zu Build #6973 sein."
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:76
 msgid "PHP blocked file by extension"
-msgstr "PHP blockierte die Datei wegen der Erweiterung"
+msgstr "Eine PHP Erweiterung blockierte das Hochladen der Datei"
 
 #: setup.php:135
 #, php-format
@@ -10402,14 +10402,14 @@ msgstr "Eltern und Geschwister"
 
 #: includes/functions/functions_print.php:624
 msgid "Parent’s age"
-msgstr "Elternteiles Alter"
+msgstr "Alter des Elternteils"
 
 #: admin_site_config.php:130 admin_users.php:191 admin_users.php:384
 #: edituser.php:148 help_text.php:738 help_text.php:1293 login.php:175
 #: login.php:241 login.php:470 modules_v3/login_block/module.php:74
 #: setup.php:410
 msgid "Password"
-msgstr "Kennwort"
+msgstr "Passwort"
 
 #: admin_users.php:266 edituser.php:110
 msgid "Passwords do not match."
@@ -10417,11 +10417,11 @@ msgstr "Passwörter stimmen nicht überein."
 
 #: help_text.php:1294
 msgid "Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different to “SECRET”."
-msgstr "Passwörter müssen mindestens 6 Zeichen lang sein. Sie berücksichtigen Groß-/Kleinschreibung, so dass “geheim” von “GEHEIM” abweicht."
+msgstr "Passwörter müssen mindestens 6 Zeichen lang sein. Groß-/Kleinschreibung werden berücksichtigt, so dass “geheim” von “GEHEIM” abweicht."
 
 #: admin_users.php:338 edituser.php:115
 msgid "Passwords must contain at least 6 characters."
-msgstr "Das Kennwort muss mindestens 6 Zeichen lang sein."
+msgstr "Das Passwort muss mindestens 6 Zeichen lang sein."
 
 #. I18N: Name of a report
 #: includes/functions/functions_print.php:88
@@ -10542,11 +10542,11 @@ msgstr "PhpGedView muss die gleiche Datenbank benutzen wie <b>webtrees</b>"
 
 #: admin_pgv_to_wt.php:114 help_text.php:1303
 msgid "PhpGedView to <b>webtrees</b> transfer wizard"
-msgstr "Übertragungs-Assistent PhpGedView--><b>webtrees</b>"
+msgstr "Übertragungs-Assistent PhpGedView zu <b>webtrees</b>"
 
 #: admin_pgv_to_wt.php:34
 msgid "PhpGedView to webtrees transfer wizard"
-msgstr "Übertragungs-Assistent PhpGedView--><b>webtrees</b>"
+msgstr "Übertragungs-Assistent PhpGedView zu <b>webtrees</b>"
 
 #. I18N: The name of a colour-scheme
 #: themes/colors/theme.php:88
@@ -10602,7 +10602,7 @@ msgstr "Ort (hebräisch)"
 
 #: help_text.php:885
 msgid "Place names are frequently too long to fit on charts, lists, etc.  They can be abbreviated by showing just the first few parts of the name, such as <i>village, county</i>, or the last few part of it, such as <i>region, country</i>."
-msgstr "Ortsbezeichnungen sind häufig zu lang, um in Listen, Tafeln oder ähnliches zu passen.  Sie können abgekürzt werden, indem nur die ersten, wie <i>Stadt, Kreis</i> oder die letzten Teile, wie <i>Region, Land</i> gezeigt werden."
+msgstr "Ortsbezeichnungen sind häufig zu lang, um in Listen, Tafeln oder ähnliches zu passen. Sie können abgekürzt werden, indem nur die ersten Teile, wie <i>Stadt, Kreis</i> oder die letzten Teile, wie <i>Region, Land</i> gezeigt werden."
 
 #: library/WT/Gedcom/Tag.php:111
 msgid "Place of LDS baptism"
@@ -10692,7 +10692,7 @@ msgstr "Ort des Ereignisses"
 #: library/WT/Gedcom/Tag.php:208
 #: modules_v3/missing_facts_report/report.xml:385
 msgid "Place of first communion"
-msgstr "Ort Erstkommunion"
+msgstr "Ort der Erstkommunion"
 
 #: library/WT/Gedcom/Tag.php:220
 msgid "Place of immigration"
@@ -10724,12 +10724,12 @@ msgstr "Wohnort"
 #: admin_site_upgrade.php:406
 #, php-format
 msgid "Place the site offline, by creating the file %s…"
-msgstr "Nehmen Sie die Seite offline in dem Sie die Datei %s erzeugen."
+msgstr "Nehmen Sie die Seite offline, indem Sie die Datei %s erzeugen."
 
 #: admin_site_upgrade.php:457
 #, php-format
 msgid "Place the site online, by deleting the file %s…"
-msgstr "Nehmen Sie die Seite online in dem Sie die Datei %s löschen."
+msgstr "Nehmen Sie die Seite online, indem Sie die Datei %s löschen."
 
 #: admin_trees_config.php:896 statistics.php:401
 msgid "Places"
@@ -10747,7 +10747,7 @@ msgstr "Orte in %s"
 
 #: help_text.php:330
 msgid "Places should be entered according to the standards for genealogy.  In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels.  The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place.  The first part, “Salt Lake City,” is the city or township where the event occurred.  In some countries, there may be municipalities or districts inside a city which are important to note.  In that case, they should come before the city.  The next part, “Salt Lake,” is the county.  “Utah” is the state, and “USA” is the country.  It is important to note each place because genealogical records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas.  Suppose, in the example above, you didn’t know the county for Salt Lake City.  You should then record it like this: “Salt Lake City, , Utah, USA”.  Suppose you only know that an individual was born in Utah.  You would enter the information like this: “, , Utah, USA”.  <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
-msgstr "Orte sollten gemäß den Genealogie-Standards eingegeben werden. In der Genealogie werden Orte mit den spezifischsten Orts-Informationen am Anfang und bis hin zu den allgemeinsten Informationen am Ende aufgezeichnet, wobei Kommas die verschiedenen Ebenen voneinander trennen. Die Ebene, auf der Sie Orts-Informationen erfassen, sollten staatliche oder kirchliche Einheiten widerspiegeln, wo die Personenstandsbücher für diesen Ort aufbewahrt werden.<br><br>Zum Beispiel würde ein Ort wie Salt Lake City als “Salt Lake City, Salt Lake , Utah , USA” eingegeben werden. <br><br>Betrachten wir jeden Teil dieses Ortes. Der erste Teil, “Salt Lake City”, ist die Stadt oder Gemeinde, wo das Ereignis stattfand. In einigen Ländern kann es Gemeinden oder Bezirke in einer Stadt geben, die ebenfalls zu beachten sind. In diesem Fall sollten sie vor der Stadt stehen. Der nächste Teil , “Salt Lake”, ist dre Kreis. “Utah” ist das Bundesland und “USA” das Land. Es ist wichtig jeden Teil des Ortes aufzuzeichnen, da genealogische Aufzeichnungen von den Regierungsbehörden auf jeder Ebene geführt werden.<br><br>Wenn ein Teil der Ortsbeschreibung unbekannt ist, sollten Sie Leerzeichen zwischen den Kommas lassen. Nehmen wir im obigen Beispiel an, Sie wüssten den Landkreis für Salt Lake City nicht, dann sollten Sie es so aufzeichnen: “Salt Lake City, , Utah, USA”. Angenommen, Sie wissen nur, dass ein Individuum in Utah geboren wurde. Sie würden die Informationen wie folgt eingeben “ , , Utah , USA”.<br><br>Sie können den Link <b>Orte suchen</ b> verwenden, um Orte, die bereits in der Datenbank sind, aufzufinden."
+msgstr "Orte sollten gemäß den Genealogie-Standards eingegeben werden. In der Genealogie werden Orte mit den spezifischsten Ortsinformationen am Anfang und bis hin zu den allgemeinsten Informationen am Ende aufgezeichnet, wobei Kommas die verschiedenen Ebenen voneinander trennen. Die Ebene, auf der Sie Ortsinformationen erfassen, sollten staatliche oder kirchliche Einheiten widerspiegeln, wo die Personenstandsbücher für diesen Ort aufbewahrt werden.<br><br>Zum Beispiel würde ein Ort wie Salt Lake City als “Salt Lake City, Salt Lake, Utah, USA” eingegeben werden.<br><br>Betrachten wir jeden Teil dieses Ortes. Der erste Teil, “Salt Lake City”, ist die Stadt oder Gemeinde, wo das Ereignis stattfand. In einigen Ländern kann es Gemeinden oder Bezirke in einer Stadt geben, die ebenfalls zu beachten sind. In diesem Fall sollten diese vor der Stadt stehen. Der nächste Teil, “Salt Lake”, ist der Kreis. “Utah” ist das Bundesland und “USA” das Land. Es ist wichtig, dass Sie jeden Teil des Ortes zu benennen, da genealogische Aufzeichnungen von den Regierungsbehörden auf jeder Ebene geführt werden.<br><br>Wenn ein Teil der Ortsbeschreibung unbekannt ist, sollten Sie Leerzeichen zwischen den Kommas lassen. Nehmen wir im obigen Beispiel an, Sie wüssten den Landkreis für Salt Lake City nicht, dann sollten Sie es so aufzeichnen: “Salt Lake City, , Utah, USA”. Angenommen, Sie wissen nur, dass ein Individuum in Utah geboren wurde. Sie würden die Informationen wie folgt eingeben “ , , Utah, USA”.<br><br>Sie können den Link <b>Orte suchen</ b> verwenden, um Orte, die bereits in der Datenbank sind, aufzufinden."
 
 #: modules_v3/random_media/module.php:130 themes/_administration/header.php:31
 #: themes/clouds/header.php:34 themes/colors/header.php:37
@@ -10892,7 +10892,7 @@ msgstr "Vordefinierter Text, der erklärt, dass nur Familienmitglieder einen Zug
 
 #: admin_users.php:194 admin_users.php:394 edituser.php:169 help_text.php:1179
 msgid "Preferred contact method"
-msgstr "Bevorzugte Kontaktaufnahme"
+msgstr "Bevorzugte Methode zur Kontaktaufnahme"
 
 #: modules_v3/googlemap/module.php:410
 msgid "Prefixes"
@@ -10938,7 +10938,7 @@ msgstr "Datenschutz"
 
 #: admin_trees_config.php:489 help_text.php:568
 msgid "Privacy options"
-msgstr "Privatsphäreneinstellungen"
+msgstr "Datenschutzeinstellungen"
 
 #: admin_trees_config.php:546
 msgid "Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag"
@@ -11059,49 +11059,49 @@ msgstr "Rabbiner"
 #: library/WT/Date/Hijri.php:60
 msgctxt "GENITIVE"
 msgid "Rabi’ al-awwal"
-msgstr "Rabi' al-awwal"
+msgstr "Rabi’ al-awwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: library/WT/Date/Hijri.php:94
 msgctxt "INSTRUMENTAL"
 msgid "Rabi’ al-awwal"
-msgstr "Rabi' al-awwal"
+msgstr "Rabi’ al-awwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: library/WT/Date/Hijri.php:77
 msgctxt "LOCATIVE"
 msgid "Rabi’ al-awwal"
-msgstr "Rabi' al-awwal"
+msgstr "Rabi’ al-awwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: library/WT/Date/Hijri.php:43
 msgctxt "NOMINATIVE"
 msgid "Rabi’ al-awwal"
-msgstr "Rabi' al-awwal"
+msgstr "Rabi’ al-awwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: library/WT/Date/Hijri.php:61
 msgctxt "GENITIVE"
 msgid "Rabi’ al-thani"
-msgstr "Rabi' al-thani"
+msgstr "Rabi’ al-thani"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: library/WT/Date/Hijri.php:95
 msgctxt "INSTRUMENTAL"
 msgid "Rabi’ al-thani"
-msgstr "Rabi' al-thani"
+msgstr "Rabi’ al-thani"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: library/WT/Date/Hijri.php:78
 msgctxt "LOCATIVE"
 msgid "Rabi’ al-thani"
-msgstr "Rabi' al-thani"
+msgstr "Rabi’ al-thani"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: library/WT/Date/Hijri.php:44
 msgctxt "NOMINATIVE"
 msgid "Rabi’ al-thani"
-msgstr "Rabi' al-thani"
+msgstr "Rabi’ al-thani"
 
 #. I18N: This is an Arabic word, pronounced “ra DAH”.  It is child-to-parent pedigree, established by wet-nursing.
 #: library/WT/Gedcom/Code/Pedi.php:61
@@ -11240,7 +11240,7 @@ msgstr "Die Datensätze sind nicht vom gleichen Typ und können daher nicht zusa
 
 #: library/WT/Gedcom/Code/Temp.php:153
 msgid "Redlands, California"
-msgstr "Redlands,, Kalifornien"
+msgstr "Redlands, Kalifornien"
 
 #: modules_v3/googlemap/module.php:914 modules_v3/googlemap/module.php:2208
 #: modules_v3/googlemap/module.php:3533
@@ -11258,7 +11258,7 @@ msgstr "Regina, Saskatchewan, Kanada"
 
 #: library/WT/Gedcom/Tag.php:237 modules_v3/fact_sources/report.xml:202
 msgid "Registered partnership"
-msgstr "eingetragene Lebensgemeinschaft"
+msgstr "eingetragene Lebenspartnerschaft"
 
 #: library/WT/Gedcom/Code/Rela.php:163
 msgid "Registry officer"
@@ -11355,7 +11355,7 @@ msgstr "kirchliche Ehe"
 
 #: modules_v3/review_changes/module.php:165
 msgid "Reminder email frequency (days)"
-msgstr "Erinnerungs E-Mail Häufigkeit (Tage)"
+msgstr "Häufigkeit der Erinnerungs E-Mail (Tage)"
 
 #. I18N: gedcom tag SERV
 #: library/WT/Gedcom/Tag.php:294
@@ -11401,11 +11401,11 @@ msgstr "Reno, Nevada"
 
 #: admin_trees_places.php:98 search.php:120
 msgid "Replace with"
-msgstr "Ersetzen mit …"
+msgstr "Ersetzen mit"
 
 #: modules_v3/batch_update/plugins/search_replace.php:102
 msgid "Replacement text"
-msgstr "Ersatz-Text"
+msgstr "Ersatztext"
 
 #: modules_v3/user_messages/module.php:111
 msgid "Reply"
@@ -11449,7 +11449,7 @@ msgstr "Name des Aufbewahrungsortes"
 
 #: login.php:188 modules_v3/login_block/module.php:82
 msgid "Request new password"
-msgstr "Neues Kennwort anfragen"
+msgstr "Neues Passwort anfragen"
 
 #: login.php:191 login.php:263 modules_v3/gedcom_block/module.php:52
 #: modules_v3/login_block/module.php:85
@@ -11480,7 +11480,7 @@ msgstr "Forschungsaufgaben sind besondere Ereignisse, die zu Personen in Ihrem S
 
 #: modules_v3/todo/help_text.php:36
 msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”.  Other genealogy applications may not recognize this tag."
-msgstr "Forschungsaufgaben werden mithilfe des benutzerdefinierten GEDCOM Tags “_TODO” gespeichert . Andere Genealogie-Anwendungen können dieses Tag möglicherweise nicht korrekt interpretieren, ."
+msgstr "Forschungsaufgaben werden mithilfe des benutzerdefinierten GEDCOM Tags “_TODO” gespeichert. Andere Genealogie-Anwendungen können dieses Tag möglicherweise nicht korrekt interpretieren."
 
 #: includes/functions/functions_print_lists.php:96
 #: includes/functions/functions_print_lists.php:502 medialist.php:152
@@ -11501,7 +11501,7 @@ msgstr "Wohnort"
 #. I18N: http://en.wikipedia.org/wiki/User_agent
 #: admin_site_access.php:272
 msgid "Restrict access to the site, using IP addresses and user-agent strings"
-msgstr "Zugangsbeschränkung mittels Verwendung der IP Addresse und Benutzer-Zeichenkette"
+msgstr "Zugang mithilfe der IP Addresse und des User Agent beschränken"
 
 #: admin_users.php:233 admin_users.php:435 help_text.php:718
 msgid "Restrict to immediate family"
@@ -11760,7 +11760,7 @@ msgstr "Suchen und Ersetzen"
 #. I18N: Description of the “Search and replace” option of the batch update module
 #: modules_v3/batch_update/plugins/search_replace.php:39
 msgid "Search and replace text, using simple searches or advanced pattern matching."
-msgstr "Suchen und Ersetzen von Text unter Verwendung einer einfachen Suche oder fortgeschrittenem Pattern-Matching."
+msgstr "Suchen und Ersetzen von Text unter Verwendung einer einfachen Suche oder fortgeschrittenen Regulären Ausdrücken."
 
 #: includes/session.php:636
 msgid "Search engine"
@@ -11768,7 +11768,7 @@ msgstr "Suchmaschine"
 
 #: medialist.php:127
 msgid "Search filters"
-msgstr "Such-Filter"
+msgstr "Suchfilter"
 
 #: admin_trees_places.php:96 search.php:84 search.php:118
 msgid "Search for"
@@ -11788,11 +11788,11 @@ msgstr "Lokale Suche"
 
 #: modules_v3/batch_update/plugins/search_replace.php:107
 msgid "Search method"
-msgstr "Such-Methode"
+msgstr "Suchmethode"
 
 #: modules_v3/batch_update/plugins/search_replace.php:97
 msgid "Search text/pattern"
-msgstr "Such-Regel oder -Text"
+msgstr "Suchregel oder -text"
 
 #: library/WT/Gedcom/Code/Temp.php:162
 msgid "Seattle, Washington"
@@ -11815,15 +11815,15 @@ msgstr "Datum auswählen"
 
 #: modules_v3/googlemap/help_text.php:74
 msgid "Select a file from the list of files already on the server which contains the place locations in CSV format."
-msgstr "Wählen Sie aus der Liste der bereits auf dem Server bestehenden Dateien die Datei die Ortsdaten im CSV-Format enthält."
+msgstr "Wählen Sie aus der Liste der bereits auf dem Server bestehenden Dateien die Datei, die Ortsdaten im CSV-Format enthält."
 
 #: help_text.php:335
 msgid "Select a relationship name from the list. Selecting <b>Godfather</b> means: <i>This associate is the godfather of the current individual</i>."
-msgstr "Wählen Sie eine Beziehung aus der Liste.  Zum Beispiel, die <b>Patenonkel</b> Wahl bedeutet: <i>Die beziehende Person ist Patenonkel dieser Person</i>."
+msgstr "Wählen Sie eine Beziehung aus der Liste. Zum Beispiel bedeutet die Wahl <b>Patenonkel</b>: <i>Die beziehende Person ist Patenonkel dieser Person</i>."
 
 #: modules_v3/googlemap/help_text.php:63
 msgid "Select an icon"
-msgstr "Icon"
+msgstr "Wähle ein Icon"
 
 #: statistics.php:523
 msgid "Select chart type:"
@@ -11840,7 +11840,7 @@ msgstr "Flagge auswählen"
 #. I18N: Description of the “Clippings cart” module
 #: modules_v3/clippings/module.php:37
 msgid "Select records from your family tree and save them as a GEDCOM file."
-msgstr "Auswahl von Datensätzen aus dem Stammbaum und Speicherung als GEDCOM-Datei"
+msgstr "Datensätzen aus dem Stammbaum auswählen und als GEDCOM-Datei speichern"
 
 #: reportengine.php:134
 msgid "Select report"
@@ -11860,7 +11860,7 @@ msgstr "Bitte wählen Sie Statistiken für diesen Block, die Sie sehen möchten"
 
 #: help_text.php:1499
 msgid "Select this option as to save your clippings in a ZIP file.  For more information about ZIP files, please visit <a href=\"http://www.winzip.com\" target=\"_blank\">http://www.winzip.com</a>."
-msgstr "Wählen diese Option um ihre Ausschnitte in einer ZIP-Datei zu speichern. Für Informationen über ZIP-Dateien besuchen sie bitte folgende Seite: <a href=\"http://www.winzip.com\" target=\"_blank\">http://www.winzip.com</a>."
+msgstr "Wählen diese Option, um ihre Auswahl in einer ZIP-Datei zu speichern. Für Informationen über ZIP-Dateien besuchen sie bitte folgende Seite: <a href=\"http://www.winzip.com\" target=\"_blank\">http://www.winzip.com</a>."
 
 #: help_text.php:1269
 msgid "Select this option to include the media files associated with the records in your clippings cart.  Choosing this option will automatically zip the files during download."
@@ -11908,11 +11908,11 @@ msgstr "Allen Benutzern eine Nachricht senden"
 
 #: admin_users_bulk.php:44
 msgid "Send message to users who have never logged in"
-msgstr "Nachrichten an Benutzer senden, die sich noch nie angemeldet haben."
+msgstr "Nachricht an Benutzer senden, die sich noch nie angemeldet haben."
 
 #: admin_users_bulk.php:49
 msgid "Send message to users who have not logged in for 6 months"
-msgstr "Nachrichten an Benutzer senden, die sich innerhalb der letzten 6 Monate nicht angemeldet haben"
+msgstr "Nachricht an Benutzer senden, die sich innerhalb der letzten 6 Monate nicht angemeldet haben"
 
 #: modules_v3/review_changes/module.php:161
 msgid "Send out reminder emails?"
@@ -12042,7 +12042,7 @@ msgstr "Ändert die Anzahl der Generationen, die maximal in der Stammbaum Ansich
 
 #: help_text.php:839
 msgid "Set the privacy access level for all dead individuals."
-msgstr "Setzt die Datenschutz-Einstellungen für alle verstorbenen Personen."
+msgstr "Setzt die Datenschutzeinstellungen für alle verstorbenen Personen."
 
 #: help_text.php:849
 msgid "Set this to <b>Yes</b> to display icons near Fact names on the Personal Facts and Details page.  Fact icons will be displayed only if they exist in the <i>images/facts</i> directory of the current theme."
@@ -12050,11 +12050,11 @@ msgstr "Die Wahl <b>Ja</b> bedeutet, dass webtrees Ereignis-Symbole auf der «Pe
 
 #: help_text.php:1012
 msgid "Set to <b>Yes</b> to use the RIN number instead of the GEDCOM ID when asked for individual IDs in configuration files, user settings, and charts.  This is useful for genealogy programs that do not consistently export GEDCOMs with the same ID assigned to each individual but always use the same RIN."
-msgstr "Bei <b>Ja</b> wird die RIN Nummer anstelle der GEDCOM ID verwendet, wenn in Konfigurationen, Benutzer-Einstellungen und Diagrammen nach Personen gefragt wird. Dies ist hilfreich für Genealogie Software die GEDCOM-Dateien nicht mit einheitlichen IDs aber immer mit der gleichen RIN für Personen exportiert."
+msgstr "Bei <b>Ja</b> wird die RIN Nummer anstelle der GEDCOM ID verwendet, wenn in Konfigurationen, Benutzer-Einstellungen und Diagrammen nach Personen gefragt wird. Dies ist hilfreich für Genealogie Software, die GEDCOM-Dateien nicht mit einheitlichen IDs, sondern immer mit der gleichen RIN für Personen exportiert."
 
 #: help_text.php:859
 msgid "Setting this option to <b>Yes</b> will show status codes for LDS ordinances in chart boxes.<ul><li><b>B</b> - Baptism</li><li><b>E</b> - Endowed</li><li><b>S</b> - Sealed to spouse</li><li><b>P</b> - Sealed to parents</li></ul>An individual who has all of the ordinances done will have <b>BESP</b> printed after their name.  Missing ordinances are indicated by <b>_</b> in place of the corresponding letter code.  For example, <b>BE__</b> indicates missing <b>S</b> and <b>P</b> ordinances."
-msgstr "Wenn diese Option auf <b>Ja</b> gestellt ist, wird der Stand der HLT-Ordinanzen als Codes gezeigt.<ul><li><b>B</b> - Taufe</li><li><b>E</b> - Stiftung</li><li><b>S</b> - Ehepartner-Siegelung</li><li><b>P</b> - Kindes-Siegelung</li></ul>Das Code <b>BESP</b> bedeutet, dass diese Person alle vier HLT Ordinanzen durchgeführt hat.  Fehlende Ordinanzen werden durch <b>_</b> angedeutet.  Zm Beispiel, das Code <b>BE__</b> deutet an, dass die <b>S</b> und <b>P</b> Ordinanzen noch nicht durchgeführt sind."
+msgstr "Wenn diese Option auf <b>Ja</b> gestellt ist, wird der Stand der HLT-Ordinanzen als Codes gezeigt.<ul><li><b>B</b> - Taufe</li><li><b>E</b> - Stiftung</li><li><b>S</b> - Ehepartner-Siegelung</li><li><b>P</b> - Kindes-Siegelung</li></ul>Das Code <b>BESP</b> bedeutet, dass diese Person alle vier HLT Ordinanzen durchgeführt hat. Fehlende Ordinanzen werden durch <b>_</b> angedeutet. Zm Beispiel deutet der Code <b>BE__</b> darauf hin, dass die <b>S</b> und <b>P</b> Ordinanzen noch nicht durchgeführt sind."
 
 #: help_text.php:854
 msgid "Setting this to <b>Yes</b> will place links on individuals, sources, and families to let users bring up another window containing the raw data taken right out of the GEDCOM file."
@@ -12062,7 +12062,7 @@ msgstr "Bei der Auswahl <b>Ja</b> wird ein Link auf den Seiten von Personen, Que
 
 #: setup.php:92
 msgid "Setup wizard for <b>webtrees</b>"
-msgstr "Einrichtungs Assistent von <b>webtrees</b>"
+msgstr "Einrichtungsassistent von <b>webtrees</b>"
 
 #: library/WT/Date/French.php:121
 msgid "Sextidi"
@@ -12117,7 +12117,7 @@ msgstr "Gemeinsame Bemerkungen"
 
 #: help_text.php:358
 msgid "Shared notes are free-form text and will appear in the Fact Details section of the page.<br><br>Each shared note can be linked to more than one individual, family, source, or event."
-msgstr "Genau wie gewöhnliche Bemerkungen, haben gemeinsame Berkungen kein bestimmtes Format.  Jede gemeinsame Bemerkung kann mit mehreren Personen, Familien, Quellen, und Fakten verbunden werden."
+msgstr "Genau wie gewöhnliche Bemerkungen haben gemeinsame Berkungen kein bestimmtes Format.Jede gemeinsame Bemerkung kann mit mehreren Personen, Familien, Quellen, und Fakten verbunden werden."
 
 #: find.php:648
 msgid "Shared notes found"
@@ -12125,7 +12125,7 @@ msgstr "Gemeinsame Bemerkungen gefunden"
 
 #: help_text.php:1149
 msgid "Shared notes, like regular notes, are free-form text.  Unlike regular notes, each shared note can be linked to more than one individual, family, source, or fact.<br><br>By clicking the appropriate icon, you can establish a link to an existing shared note or create a new shared note and at the same time link to it.  If a link to an existing shared note has already been established, you can also edit that note’s contents.<br><ul><li><b>Link to an existing shared note</b><div style=\"padding-left:20px;\">If you already know the ID number of the desired shared note, you can enter that number directly into the field.<br><br>When you click the <b>Find shared note</b> icon, you will be able to search the text of all existing shared notes and then choose one of them.  The ID number of the chosen note will be entered into the field automatically.<br><br>You must click the <b>Add</b> button to update the original record.</div><br></li><li><b>Create a new shared note</b><div style=\"padding-left:20px;\">When you click the <b>Create a new shared note</b> icon, a new window will open.  You can enter the text of the new note as you wish.  As with regular notes, you can enter URLs.<br><br>When you click the <b>Save</b> button, you will see a message with the ID number of the newly created shared note.  You should click on this message to close the editing window and also copy that new ID number directly into the ID number field.  If you just close the window, the newly created ID number will not be copied automatically.<br><br>You must click the <b>Add</b> button to update the original record.</div><br></li><li><b>Edit an existing shared note</b><div style=\"padding-left:20px;\">When you click the <b>Edit shared note</b> icon, a new window will open.  You can change the text of the existing shared note as you wish.  As with regular notes, you can enter URLs.<br><br>When you click the <b>Save</b> button, the text of the shared note will be updated.  You can close the window and then click the <b>Save</b> button again.<br><br>When you change the text of a shared note, your change will be reflected in all places to which that shared note is currently linked.  New links that you establish after having made your change will also use the updated text.</div></li></ul>"
-msgstr "Wie gewöhnliche Bemerkungen, sind gemeinsame Bemerkungen einfacher Text ohne besonderes Format. Im Gegenteil zu gewöhnlichen Bemerkungen, kann jede gemeinsame Bemerkung mit mehr als einer Person, Familie, Quelle, usw. verbunden sein.<br><br>Wenn Sie das richtige Symbol klicken, können Sie eine Verbindung zu einer bereits bestehenden gemeinsamen Bemerkung herstellen oder eine neue gemeinsame Bemerkung erstellen und auch gleichzeitig die Verbindung dazu herstellen. Falls solche Verbindung bereits vorhanden ist, können Sie den Text der gemeinsamen Bemerkung bearbeiten und ändern.<br><ul><li><b>Verbindung herstellen</b><div style=\"padding-left:20px;\">Wenn das ID der gewünschten gemeinsamen Bemerkung Ihnen bekannt ist, können Sie diese Nummer direkt in das Feld eingeben.<br><br>Wenn Sie den <b>Suche gemeinsame Bemerkung</b> Ikon klicken, können Sie den Text aller gemeinsamen Bemerkungen durchsuchen und dann eine davon wählen. Die ID Nummer der gewählten Bemerkung wird dann automatisch in das Feld eingegeben.<br><br>Sie müssen die Schaltfläche <b>hinzufügen</b> klicken, dass der ursprüngliche Datensatz aktualisiert wird.</div><br></li><li><b>Neue Bemerkung erstellen</b><div style=\"padding-left:20px;\">Wenn Sie das <b>Neue gemeinsame Bemerkung</b> erstellen Symbol klicken, öffnet sich ein Formular. Sie können darin den Text der neuen gemeinsamen Bemerkung eingeben wie Sie möchten. Wie bei gewöhnlichen Bemerkungen, können Sie auch URL-Adressen eingeben.<br><br>Wenn Sie die Schaltfläche <b>Speichern</b> klicken, erhalten Sie eine Notiz mit der ID-Nummer der neuen Bemerkung. Um das Fenster zu schließen und die ID-Nummer in das Eingabefeld zu kopieren, sollten Sie auf dieser Notiz klicken. Wenn Sie nur das Fenster schließen, wird die neue ID-Nummer nicht automatisch in das Eingabefeld kopiert.<br><br>Sie müssen danach noch die Schaltfläche <b>hinzufügen</b> klicken, um den ursprünglichen Datensatz zu aktualisieren.</div><br></li><li><b>Bemerkung bearbeiten</b><div style=\"padding-left:20px;\">Wenn Sie das <b>Gemeinsame Bemerkung bearbeiten</b> Symbol klicken, öffnet sich ein Formular. Sie können den Text der bestehenden Bemerkung ändern wie Sie möchten. Wie bei gewöhnlichen Bemerkungen, können Sie auch URL-Adressen eingeben.<br><br>Nachdem Sie die Schaltfläche <b>Speichern</b> klicken, wird der Text der gemeinsamen Bemerkung aktualisiert. Sie können dann das Fenster schließen und danach die Schaltfläche <b>Speichern</b> noch einmal klicken.<br><br>Wenn Sie den Text einer gemeinsamen Bemerkung ändern, wird Ihre Änderung sofort in allen damit verbundenen Datensätzen sichtbar. Der selbe geänderte Text wird auch in neu verbundenen Datensätzen sichtbar.</div></li></ul>"
+msgstr "Wie gewöhnliche Bemerkungen sind gemeinsame Bemerkungen einfacher Text ohne besonderes Format. Im Gegenteil zu gewöhnlichen Bemerkungen kann jede gemeinsame Bemerkung mit mehr als einer Person, Familie, Quelle, usw. verbunden sein.<br><br>Wenn Sie auf das entsprechende Symbol klicken, können Sie eine Verbindung zu einer bereits bestehenden gemeinsamen Bemerkung herstellen oder eine neue gemeinsame Bemerkung erstellen und auch gleichzeitig die Verbindung dazu herstellen. Falls solch eine Verbindung bereits vorhanden ist, können Sie den Text der gemeinsamen Bemerkung bearbeiten und ändern.<br><ul><li><b>Verbindung herstellen</b><div style=\"padding-left:20px;\">Wenn Ihnen die ID der gewünschten gemeinsamen Bemerkung bekannt ist, können Sie diese Nummer direkt in das Feld eingeben.<br><br>Wenn Sie auf das <b>Suche gemeinsame Bemerkung</b> Icon klicken, können Sie den Text aller gemeinsamen Bemerkungen durchsuchen und dann eine davon wählen. Die ID Nummer der gewählten Bemerkung wird dann automatisch in das Feld eingegeben.<br><br>Sie müssen auf die Schaltfläche <b>hinzufügen</b> klicken, damit der ursprüngliche Datensatz aktualisiert wird.</div><br></li><li><b>Neue Bemerkung erstellen</b><div style=\"padding-left:20px;\">Wenn Sie auf das <b>Neue gemeinsame Bemerkung erstellen</b> Icon klicken, öffnet sich ein Formular. Sie können darin den Text der neuen gemeinsamen Bemerkung eingeben. Wie bei gewöhnlichen Bemerkungen können Sie auch URL-Adressen eingeben.<br><br>Wenn Sie die Schaltfläche <b>Speichern</b> klicken, erhalten Sie eine Notiz mit der ID-Nummer der neuen Bemerkung. Um das Fenster zu schließen und die ID-Nummer in das Eingabefeld zu kopieren, sollten Sie auf diese Notiz klicken. Wenn Sie nur das Fenster schließen, wird die neue ID-Nummer nicht automatisch in das Eingabefeld kopiert.<br><br>Sie müssen danach noch die Schaltfläche <b>hinzufügen</b> klicken, um den ursprünglichen Datensatz zu aktualisieren.</div><br></li><li><b>Bemerkung bearbeiten</b><div style=\"padding-left:20px;\">Wenn Sie auf das <b>Gemeinsame Bemerkung bearbeiten</b> Icon klicken, öffnet sich ein Formular und Sie können den Text der bestehenden Bemerkung ändern. Wie bei gewöhnlichen Bemerkungen können Sie auch URL-Adressen eingeben.<br><br>Nachdem Sie auf die Schaltfläche <b>Speichern</b> geklickt haben, wird der Text der gemeinsamen Bemerkung aktualisiert. Sie können dann das Fenster schließen und danach die Schaltfläche <b>Speichern</b> noch einmal klicken.<br><br>Wenn Sie den Text einer gemeinsamen Bemerkung ändern, wird Ihre Änderung sofort in allen damit verbundenen Datensätzen sichtbar. Der selbe geänderte Text wird auch in neu verbundenen Datensätzen sichtbar.</div></li></ul>"
 
 #. I18N: http://en.wikipedia.org/wiki/Shawwal
 #: library/WT/Date/Hijri.php:67
@@ -12155,25 +12155,25 @@ msgstr "Shawwal"
 #: library/WT/Date/Hijri.php:65
 msgctxt "GENITIVE"
 msgid "Sha’aban"
-msgstr "Sha'aban"
+msgstr "Sha’aban"
 
 #. I18N: http://en.wikipedia.org/wiki/Sha%27aban
 #: library/WT/Date/Hijri.php:99
 msgctxt "INSTRUMENTAL"
 msgid "Sha’aban"
-msgstr "Sha'aban"
+msgstr "Sha’aban"
 
 #. I18N: http://en.wikipedia.org/wiki/Sha%27aban
 #: library/WT/Date/Hijri.php:82
 msgctxt "LOCATIVE"
 msgid "Sha’aban"
-msgstr "Sha'aban"
+msgstr "Sha’aban"
 
 #. I18N: http://en.wikipedia.org/wiki/Sha%27aban
 #: library/WT/Date/Hijri.php:48
 msgctxt "NOMINATIVE"
 msgid "Sha’aban"
-msgstr "Sha'aban"
+msgstr "Sha’aban"
 
 #: modules_v3/descendancy_report/report.xml:356
 msgid "She "
@@ -12257,7 +12257,7 @@ msgstr "Zeigen"
 
 #: admin_site_config.php:166 help_text.php:894
 msgid "Show acceptable use agreement on “Request new user account” page"
-msgstr "Bedingungen auf der «Neues Benutzerkonto anfragen» Seite zeigen"
+msgstr "Bedingungen auf der “Neues Benutzerkonto anfragen” Seite zeigen"
 
 #: help_text.php:879
 msgid "Show age of parents next to child’s birthdate"
@@ -12315,7 +12315,7 @@ msgstr "Ehepaar in Lebensspannenansicht zeigen"
 
 #: includes/functions/functions_print_lists.php:501
 msgid "Show couples where either partner married more than once."
-msgstr "Zeige Paare, von denen ein Partner mehr als einmal heiratete"
+msgstr "Zeige Paare, von denen ein Partner mehr als einmal heiratete."
 
 #: includes/functions/functions_print_lists.php:492
 msgid "Show couples where only the female partner is deceased."
@@ -12348,7 +12348,7 @@ msgstr "Datendifferenzen zeigen"
 #. I18N: label for yes/no option
 #: modules_v3/gedcom_stats/module.php:260
 msgid "Show date of last update?"
-msgstr "Zeige das datum der letzen Aktualisierung?"
+msgstr "Das Datum der letzen Aktualisierung zeigen?"
 
 #: admin_trees_config.php:497 help_text.php:838
 msgid "Show dead individuals"
@@ -12365,11 +12365,11 @@ msgstr "Zeige geschiedene Paare."
 
 #: admin_trees_config.php:656 help_text.php:874
 msgid "Show download link in media viewer"
-msgstr "Diabetrachter erlauben, Download-Links zu zeigen"
+msgstr "Zeige Download-Links im Medienbetrachter"
 
 #: admin_trees_config.php:856
 msgid "Show events of close relatives on individual page"
-msgstr "Ereignisse naher Verwandter, die auf der Personen-Seite angezeigt werden:"
+msgstr "Ereignisse naher Verwandter, die auf der Personen-Seite angezeigt werden"
 
 #: help_text.php:848
 msgid "Show fact icons"
@@ -12385,7 +12385,7 @@ msgstr "Definierte Fotos in den Personenboxen zeigen"
 
 #: help_text.php:834
 msgid "Show hit counters on Portal and Individual pages."
-msgstr "Den Besucher-Zähler auf der Portalseite und auf anderen Seiten zeigen."
+msgstr "Den Besucherzähler auf der Portalseite und auf anderen Seiten zeigen."
 
 #: modules_v3/googlemap/help_text.php:78 modules_v3/googlemap/module.php:4363
 msgid "Show inactive places"
@@ -12402,12 +12402,12 @@ msgstr "Zeige Personen, die in den letzten 100 Jahren geboren wurden."
 #: includes/functions/functions_print_lists.php:88
 #: includes/functions/functions_print_lists.php:491
 msgid "Show individuals who are alive or couples where both partners are alive."
-msgstr "Zeige Lebende oder Paare deren beide Partner lebend sind."
+msgstr "Zeige Personen oder Paare, bei denen beide Partner noch leben."
 
 #: includes/functions/functions_print_lists.php:89
 #: includes/functions/functions_print_lists.php:494
 msgid "Show individuals who are dead or couples where both partners are deceased."
-msgstr "Zeige Verstorbene oder Paare deren beide Partner verstorben sind."
+msgstr "Zeige Verstorbene oder Paare, bei denen beide Partner verstorben sind."
 
 #: includes/functions/functions_print_lists.php:90
 msgid "Show individuals who died more than 100 years ago."
@@ -12442,7 +12442,7 @@ msgstr "Berufe zeigen?"
 
 #: help_text.php:1288 relationship.php:115
 msgid "Show oldest top"
-msgstr "Älteste zuoberst"
+msgstr "Älteste zuerst zeigen?"
 
 #: modules_v3/todays_events/module.php:132
 #: modules_v3/upcoming_events/module.php:144
@@ -12456,7 +12456,7 @@ msgstr "Nur Ereignisse lebender Personen zeigen?"
 
 #: includes/functions/functions_print_lists.php:86
 msgid "Show only females."
-msgstr "Nur Weibliche zeigen."
+msgstr "Nur weibliche Personen zeigen."
 
 #: includes/functions/functions_print_lists.php:87
 msgid "Show only individuals for whom the gender is not known."
@@ -12468,7 +12468,7 @@ msgstr "Personen, Ereignisse oder alle Medien zeigen?"
 
 #: includes/functions/functions_print_lists.php:85
 msgid "Show only males."
-msgstr "Nur Männliche zeigen."
+msgstr "Nur männliche Personen zeigen."
 
 #: find.php:463
 msgid "Show only selected tags"
@@ -12495,7 +12495,7 @@ msgstr "Fotos anzeigen?"
 
 #: placelist.php:80
 msgid "Show places in hierarchy"
-msgstr "Orts-Hierarchie zeigen"
+msgstr "Ortshierarchie zeigen"
 
 #: admin_trees_config.php:527 help_text.php:889
 msgid "Show private relationships"
@@ -12507,15 +12507,15 @@ msgstr "Verwandte Personen/Familien zeigen"
 
 #: modules_v3/todo/module.php:170
 msgid "Show research tasks that are assigned to other users"
-msgstr "Zeige Forschungsaufgaben, die anderen Benutzern zugeordnet wurden."
+msgstr "Zeige Forschungsaufgaben, die anderen Benutzern zugeordnet sind."
 
 #: modules_v3/todo/module.php:177
 msgid "Show research tasks that are not assigned to any user"
-msgstr "Zeige Forschungsaufgaben, die nicht anderen Benutzern zugeordnet wurden."
+msgstr "Zeige Forschungsaufgaben, die nicht anderen Benutzern zugeordnet sind."
 
 #: modules_v3/todo/module.php:184
 msgid "Show research tasks that have a date in the future"
-msgstr "Zeige Suchergebnisse mit einem Datum in der Zukunft"
+msgstr "Zeige Forschungsaufgaben mit einem Datum in der Zukunft"
 
 #: modules_v3/ahnentafel_report/report.xml:11
 msgid "Show residences?"
@@ -12523,7 +12523,7 @@ msgstr "Wohnorte zeigen?"
 
 #: help_text.php:900
 msgid "Show runtime statistics and database queries at the bottom of every page."
-msgstr "Ablauf-Statistiken und Datenbank-Abfragen am unteren Seitenrand aller Seiten einblenden."
+msgstr "Ladezeiten und Datenbank-Abfragen am unteren Seitenrand auf allen Seiten einblenden."
 
 #: modules_v3/random_media/module.php:375
 msgid "Show slide show controls?"
@@ -12567,7 +12567,7 @@ msgstr "Zeige Liste der Nachnamen"
 #. I18N: Description of the “Google Maps™” module
 #: modules_v3/googlemap/module.php:85
 msgid "Show the location of places and events using the Google Maps™ mapping service."
-msgstr "Anzeige der Lage von Orten und Ereignissen mittels der Google Maps ™."
+msgstr "Anzeige der Lage von Orten und Ereignissen mithilfe von Google Maps ™."
 
 #: modules_v3/faq/module.php:175 modules_v3/html/module.php:325
 #: modules_v3/stories/module.php:244
@@ -12611,7 +12611,7 @@ msgstr "«Blätter» zeigen.  «Blätter» sind lebend aber nachfolgerlos."
 #: includes/functions/functions_print_lists.php:94
 #: includes/functions/functions_print_lists.php:495
 msgid "Show “roots” couples or individuals.  These individuals may also be called “patriarchs”.  They are individuals who have no parents recorded in the database."
-msgstr "«Wurzeln» zeigen.  «Wurzeln» können auch «Patriarch» gennant werden.  Sie sind elternlos in der Datenbank eingetragen."
+msgstr "“Wurzeln” zeigen. “Wurzeln” können auch “Patriarch” gennant werden. Sie sind elternlos in der Datenbank eingetragen."
 
 #. I18N: %s are placeholders for numbers
 #: library/WT/I18N.php:697 library/WT/I18N.php:698
@@ -13301,7 +13301,7 @@ msgstr "Der Verwalter von webtrees bei %s hat Ihren Zugang erlaubt. Sie können 
 
 #: login.php:561
 msgid "The administrator has been informed.  As soon as he gives you permission to login, you can login with your user name and password."
-msgstr "Der Verwalter wurde benachrichtigt.  Sobald dieser Ihren Zugang freigegeben hat, können Sie sich mit Ihrem Benutzernamen und Kennwort anmelden."
+msgstr "Der Verwalter wurde benachrichtigt.  Sobald dieser Ihren Zugang freigegeben hat, können Sie sich mit Ihrem Benutzernamen und Passwort anmelden."
 
 #. I18N: %s is the name of an individual, source or other record
 #: action.php:57
@@ -13517,7 +13517,7 @@ msgstr "Das Passwort muss mindestens sechs Zeichen lang sein."
 
 #: help_text.php:739
 msgid "The password required for authentication with the SMTP server."
-msgstr "Das zum obigen Nutzernamen passende Kennwort."
+msgstr "Das zum obigen Nutzernamen passende Passwort."
 
 #: setup.php:392
 msgid "The passwords do not match."
@@ -14985,7 +14985,7 @@ msgstr "Vollständige Quellenzitate benutzen"
 
 #: admin_site_config.php:124 help_text.php:748
 msgid "Use password"
-msgstr "Kennwort verwenden"
+msgstr "Passwort verwenden"
 
 #: help_text.php:1006
 msgid "Use relationship privacy"
@@ -15316,12 +15316,12 @@ msgstr "Das Erzeugen von Wasserzeichen kann für große Bilder sehr langsam sein
 #: login.php:379
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To login to this site, you will need to know your user name and password."
-msgstr "Ihnen wird nun eine Bestätigungsmail an die Adresse <b>%s</b> geschickt.  Sie müssen den in der Mail enthaltenen Anweisungen folgen, um Ihren Benutzernamen zu aktivieren. Falls Sie innerhalb von 7 Tagen nicht reagieren, wird Ihr Registrierungswunsch automatisch abgewiesen. Sie müssen dann erneut anfragen.<br><br>Wenn Sie den Anweisungen in der Bestätigungsmail gefolgt sind, muss der Verwalter Ihren Benutzernamen noch freischalten, bevor Sie ihn benutzen können.<br><br>Um sich auf dieser Webseite anzumelden, benötigen Sie Ihren Benutzernamen und Ihr Kennwort."
+msgstr "Ihnen wird nun eine Bestätigungsmail an die Adresse <b>%s</b> geschickt.  Sie müssen den in der Mail enthaltenen Anweisungen folgen, um Ihren Benutzernamen zu aktivieren. Falls Sie innerhalb von 7 Tagen nicht reagieren, wird Ihr Registrierungswunsch automatisch abgewiesen. Sie müssen dann erneut anfragen.<br><br>Wenn Sie den Anweisungen in der Bestätigungsmail gefolgt sind, muss der Verwalter Ihren Benutzernamen noch freischalten, bevor Sie ihn benutzen können.<br><br>Um sich auf dieser Webseite anzumelden, benötigen Sie Ihren Benutzernamen und Ihr Passwort."
 
 #: login.php:381
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, you can login.  To login to this site, you will need to know your user name and password."
-msgstr "Ihnen wird nun eine Bestätigungsmail an die Adresse <b>%s</b> geschickt. Sie müssen den in der Mail enthaltenen Anweisungen folgen, um Ihren Benutzernamen zu aktivieren. Falls Sie innerhalb von 7 Tagen nicht reagieren, wird Ihr Registrierungswunsch automatisch abgewiesen. Sie müssen dann erneut anfragen.<br><br>Wenn Sie den Anweisungen in der Bestätigungs Mail gefolgt sind, können Sie sich sofort auf dieser Webseite anmelden. Dazu benötigen Sie Ihren Benutzernamen und Ihr Kennwort."
+msgstr "Ihnen wird nun eine Bestätigungsmail an die Adresse <b>%s</b> geschickt. Sie müssen den in der Mail enthaltenen Anweisungen folgen, um Ihren Benutzernamen zu aktivieren. Falls Sie innerhalb von 7 Tagen nicht reagieren, wird Ihr Registrierungswunsch automatisch abgewiesen. Sie müssen dann erneut anfragen.<br><br>Wenn Sie den Anweisungen in der Bestätigungs Mail gefolgt sind, können Sie sich sofort auf dieser Webseite anmelden. Dazu benötigen Sie Ihren Benutzernamen und Ihr Passwort."
 
 #: admin_trees_config.php:421
 msgid "Web site and META tag settings"
@@ -15637,7 +15637,7 @@ msgstr "Das Suchen nach verheirateten Frauen kann erleichtert werden, wenn die D
 
 #: login.php:563
 msgid "You can now login with your user name and password."
-msgstr "Sie können sich jetzt mit Ihrem Benutzernamen und Kennwort anmelden."
+msgstr "Sie können sich jetzt mit Ihrem Benutzernamen und Passwort anmelden."
 
 #: admin_site_upgrade.php:201
 msgid "You can re-enable these modules after the upgrade."
@@ -15701,7 +15701,7 @@ msgstr "Um fortzufahren, muß dies erst geändert werden."
 
 #: admin_users.php:333
 msgid "You must confirm the password."
-msgstr "Sie müssen das Kennwort bestätigen."
+msgstr "Sie müssen das Passwort bestätigen."
 
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:48
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:62
@@ -15710,7 +15710,7 @@ msgstr "Bitte den Namen eingeben"
 
 #: admin_users.php:323
 msgid "You must enter a password."
-msgstr "Sie müssen ein Kennwort eingeben."
+msgstr "Sie müssen ein Passwort eingeben."
 
 #: admin_users.php:318 edituser.php:105
 msgid "You must enter a real name."
@@ -19833,7 +19833,7 @@ msgstr "…"
 #~ msgstr "%s"
 
 #~ msgid "<center><b>Welcome to this genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website."
-#~ msgstr "<center><b>Willkommen auf dieser Genealogie Webseite</b></center><br>Der Zugriff ist Benutzern vorbehalten, die einen Benutzernamen und ein Kennwort für diese Webseite haben."
+#~ msgstr "<center><b>Willkommen auf dieser Genealogie Webseite</b></center><br>Der Zugriff ist Benutzern vorbehalten, die einen Benutzernamen und ein Passwort für diese Webseite haben."
 
 #~ msgid "Abbreviate chart labels"
 #~ msgstr "Bezeichnungen in Diagrammen abkürzen"
@@ -20048,7 +20048,7 @@ msgstr "…"
 #~ msgstr "Orte sollten dem üblichen Ahnenforschungs-Standard entsprechend eingegeben werden. Das heißt, man gibt von links nach rechts immer größere Ortschaften ein, mit einem Komma zwischen jedem Ort. Jeder so angegebene Ort sollte einem Archiv oder Standesamt entsprechen, wo Geburts-, Ehe-, und Todes-Fälle registriert werden.<br><br>Zum Beispiel, Salt Lake City sollte als «Salt Lake City, Salt Lake, Utah, USA» eingegeben werden.<br><br>Der erste Teil, «Salt Lake City», ist die Stadt oder Gemeinde wo das Ereignis statt fand. Für manche Städte, London, Paris, und Berlin, zum Beispiel, ist der Stadtteil auch wichtig und wird deshalb vor dem Stadtnamen mit folgendem Komma eingegeben. In Berlin nennt man den Stadtteil gewöhnlich hinter «Berlin» (z.B. «Berlin-Tempelhof»), aber Ahnenforscher nennen den Stadtteil zuerst (z.B. «Dahlem, Berlin».<br><br>Der zweite Teil des obigen Beispiels «Salt Lake» entspricht dem Kreis (englisch: county).<br><br>Der dritte Teil «Utah» ist das Bundesland oder Provinz.<br><br>Der vierte Teil «USA» ist das Land.<br><br>Teile der Ortsangabe die entfallen oder unbekannt sind, sollten durch leere entsprechende Eingaben angedeutet werden. Zum Beispiel, die Eingabe «Salt Lake City,,Utah,USA» bedeutet dass Sie den Kreis worin sich Salt Lake City befindet nicht wissen. Die Eingabe «Vaduz,,,Liechtenstein» bedeutet dass in Liechtenstein keine Kreise oder Bundesländer vorkommen.<br><br>Mit dem Ort suchen Link können Sie leicht Orte ermitteln, die schon in der Datenbank vorhanden sind."
 
 #~ msgid "Please click on the link below or paste it into your browser, login with the new password, and change it immediately to keep the integrity of your data secure."
-#~ msgstr "Bitte klicken Sie jetzt auf den unten stehenden Link oder kopieren Sie ihn in die Adresszeile Ihres Browsers, melden sich mit dem neuen Kennwort an und ändern Sie es sofort aus Datenschutzgründen."
+#~ msgstr "Bitte klicken Sie jetzt auf den unten stehenden Link oder kopieren Sie ihn in die Adresszeile Ihres Browsers, melden sich mit dem neuen Passwort an und ändern Sie es sofort aus Datenschutzgründen."
 
 #~ msgid "Please reload the previous page to make sure you are working with the most recent record."
 #~ msgstr "Bitte rufen Sie die vorige Seite erneut auf.  So können Sie sicher sein, dass Sie den neuesten Datensatz bearbeiten."
@@ -20189,7 +20189,7 @@ msgstr "…"
 #~ msgstr "Mails durch SMTP senden"
 
 #~ msgid "Use name and password authentication to connect to the SMTP server.<br><br>Some SMTP servers require all connections to be authenticated before they will accept outbound e-mails."
-#~ msgstr "Erfordert der SMTP Server die Eingabe eines Nutzernamens und dessen Kennwort?<br><br>Manche SMTP Server erfordern dass Verbindungen authentifiziert sind, bevor sie das Senden von Mails erlauben."
+#~ msgstr "Erfordert der SMTP Server die Eingabe eines Nutzernamens und dessen Passwort?<br><br>Manche SMTP Server erfordern dass Verbindungen authentifiziert sind, bevor sie das Senden von Mails erlauben."
 
 #~ msgid "Use this field for storing an abbreviated version of a title.  This field is used in conjunction with the title field on sources.  By default <b>webtrees</b> will first use the title and then the abbreviated title.<br><br>According to the GEDCOM 5.5 specification, \"this entry is to provide a short title used for sorting, filing, and retrieving source records (pg 62).\"<br><br>In <b>webtrees</b> the abbreviated title is optional, but in other genealogical programs it is required."
 #~ msgstr "Dieses Feld enthält die Abkürzung des Quellentitels. Es wird zusammen mit dem vollen Quellentitel benutzt. Gewöhnlich benutzt <b>webtrees</b> zuerst den vollen Titel und danach die hier eingegebene Abkürzung.<br><br>Seite 62 des GEDCOM 5.5 Standards beschreibt dieses Feld so: «This entry is to provide a short title used for sorting, filing, and retrieving source records.» (Dieser Eintrag sorgt für einen kurzen Titel der dem Sortieren, Speichern, und Abfragen von Quellen dient.)<br><br>Bei <b>webtrees</b> ist der Gebrauch von Titelabkürzungen nicht notwendig; bei anderen Programmen können diese Abkürzungen notwendig sein."
