@@ -9076,7 +9076,7 @@ msgstr "Zoomfaktor der Karte<br><br>Kleinster und größter Zoomfaktor der Karte
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:70
 msgid "Missing PHP temporary directory"
-msgstr "Das vom PHP-System benötigte <i>tmp</i> Zwischenverzeichnis existiert nicht"
+msgstr "Das von PHP benötigte <i>tmp</i> Zwischenverzeichnis existiert nicht"
 
 #. I18N: Name of a module/report
 #: modules_v3/missing_facts_report/module.php:33
@@ -9547,19 +9547,19 @@ msgstr "Neuseeland"
 
 #: admin_site_change.php:274 admin_site_change.php:302
 msgid "New data"
-msgstr "Deue Daten"
+msgstr "Neue Daten"
 
 #. I18N: %s is a server name/URL
 #: login.php:319
 #, php-format
 msgid "New registration at %s"
-msgstr "Neue Anmeldung bei %s"
+msgstr "Neue Benutzeranfrage bei %s"
 
 #. I18N: %s is a server name/URL
 #: login.php:516
 #, php-format
 msgid "New user at %s"
-msgstr "Neue Verifizierung bei %s"
+msgstr "Neuer Benutzer bei %s"
 
 #: library/WT/Gedcom/Code/Temp.php:134
 msgid "Newport Beach, California"
@@ -9576,7 +9576,7 @@ msgstr "Zeitung"
 
 #: modules_v3/review_changes/module.php:100
 msgid "Next email reminder will be sent after "
-msgstr "Danach wird eine E-Mail als Erinnerung gesendet "
+msgstr "Nächste E-Mail als Erinnerung wird gesendet nach "
 
 #: modules_v3/random_media/module.php:131
 msgid "Next image"
@@ -9703,22 +9703,22 @@ msgstr[1] "Für die nächsten %s Tage steht kein Ereignis an."
 #: includes/functions/functions_print_lists.php:1774
 #: includes/functions/functions_print_lists.php:1881
 msgid "No events exist for today."
-msgstr "Heute gibt es keine Ereignisse."
+msgstr "Für heute stehen keine Ereignisse an."
 
 #: includes/functions/functions_print_lists.php:1784
 #: includes/functions/functions_print_lists.php:1891
 msgid "No events exist for tomorrow."
-msgstr "Für morgen stehen keine Ereignisse bevor."
+msgstr "Für morgen stehen keine Ereignisse an."
 
 #: includes/functions/functions_print_lists.php:1776
 #: includes/functions/functions_print_lists.php:1883
 msgid "No events for living individuals exist for today."
-msgstr "Heute gibt es keine Ereignisse für lebende Personen."
+msgstr "Für heute stehen keine Ereignisse für lebende Personen an."
 
 #: includes/functions/functions_print_lists.php:1791
 #: includes/functions/functions_print_lists.php:1898
 msgid "No events for living individuals exist for tomorrow."
-msgstr "Für morgen stehen keine Ereignisse für lebende Personen bevor."
+msgstr "Für morgen stehen keine Ereignisse für lebende Personen an."
 
 #. I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
 #: includes/functions/functions_print_lists.php:1794
@@ -9726,8 +9726,8 @@ msgstr "Für morgen stehen keine Ereignisse für lebende Personen bevor."
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
-msgstr[0] "Es gibt keine Ereignisse für lebende Personen für den nächsten Tag."
-msgstr[1] "Es gibt keine Ereignisse für lebende Personen in den nächsten %s Tagen."
+msgstr[0] "Es stehen keine Ereignisse für lebende Personen für den nächsten Tag an."
+msgstr[1] "Es stehen keine Ereignisse für lebende Personen in den nächsten %s Tagen an."
 
 #: library/WT/Controller/Family.php:159
 msgid "No facts for this family."
@@ -9736,7 +9736,7 @@ msgstr "Keine Ereignisse für diese Familie."
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:67
 msgid "No file was received. Please upload again."
-msgstr "Es kam keine Datei auf Ihrem Server an. Bitte erneut hochladen."
+msgstr "Es kam keine Datei auf dem Server an. Bitte erneut hochladen."
 
 #: modules_v3/gedcom_news/module.php:173
 msgid "No limit"
@@ -9833,7 +9833,7 @@ msgstr "Norfolkinsel"
 
 #: help_text.php:1452
 msgid "Normally, any changes made to a family tree need to be approved by a moderator.  This option allows a user to make changes without needing a moderator’s approval."
-msgstr "Normalerweise müssen alle Änderungen am Stammbaum von einem Moderator bestätigt werden. Diese Option erlaubt es einem Nutzer Änderungen ohne die Bestätigung eines Moderators vorzunehmen."
+msgstr "Normalerweise müssen alle Änderungen am Stammbaum von einem Moderator bestätigt werden. Diese Option erlaubt es einem Benutzer Änderungen ohne die Bestätigung eines Moderators vorzunehmen."
 
 #: library/WT/Stats.php:3989
 msgid "North Korea"
@@ -9903,7 +9903,7 @@ msgstr "Anmerkung: längere Pfade benötigen viel Rechenleistung, was die Antwor
 #, php-format
 msgid "Note: “living” is defined (if no death or burial is known) as ending %d year after birth or estimated birth."
 msgid_plural "Note: “living” is defined (if no death or burial is known) as ending %d years after birth or estimated birth."
-msgstr[0] "Bemerkung: “lebend” ist definiert (sofern weder Tod noch Bestattung genannt ist) solange nicht %d komplettes Jahr nach Geburtsdatum oder geschätztem Geburtsdatum vergangen ist."
+msgstr[0] "Bemerkung: “lebend” ist definiert (sofern weder Tod noch Bestattung genannt ist) solange nicht ein komplettes Jahr nach dem Geburtsdatum oder geschätztem Geburtsdatum vergangen ist."
 msgstr[1] "Bemerkung: “lebend” ist definiert (sofern weder Tod noch Bestattung genannt ist) solange nicht %d komplette Jahre nach dem Geburtsdatum oder geschätztem Geburtsdatum vergangen sind."
 
 #. I18N: Name of a module
@@ -9918,7 +9918,7 @@ msgstr "Anmerkungen"
 
 #: help_text.php:302
 msgid "Notes are free-form text and will appear in the Fact Details section of the page."
-msgstr "Notizen haben kein bestimmtes Format.  Sie werden als Einzelheiten der jeweiligen Rubrik gezeigt."
+msgstr "Notizen haben kein bestimmtes Format. Sie werden als Einzelheiten der jeweiligen Rubrik gezeigt."
 
 #: admin_users.php:540
 msgid "Nothing found to cleanup"
@@ -9996,7 +9996,7 @@ msgstr "Anzahl der Heiraten"
 
 #: admin_users.php:494
 msgid "Number of months since the last login for a user’s account to be considered inactive: "
-msgstr "Anzahl der Monate nach letztem Zugriff, nach denen der Benutzerstatus auf inaktiv gesetzt wird: "
+msgstr "Anzahl der Monate nach der letzten Anmeldung, nach denen der Benutzerstatus auf inaktiv gesetzt wird: "
 
 #: library/WT/Gedcom/Code/Rela.php:145
 msgid "Nurse"
@@ -10044,7 +10044,7 @@ msgstr "Okt"
 
 #: library/WT/Date/French.php:123
 msgid "Octidi"
-msgstr "Septidi"
+msgstr "Octidi"
 
 #: library/WT/Date/Calendar.php:144
 msgctxt "GENITIVE"
@@ -10076,7 +10076,7 @@ msgstr "Oklahoma City, Oklahoma"
 
 #: admin_site_change.php:271 admin_site_change.php:301
 msgid "Old data"
-msgstr "Alte daten"
+msgstr "Alte Daten"
 
 #: admin.php:118
 msgid "Old files found"
@@ -10121,7 +10121,7 @@ msgstr "Oman"
 
 #: help_text.php:1274
 msgid "On this chart you can display one or more individuals along a horizontal timeline.  This chart allows you to see how the lives of different individuals overlapped.<br><br>You can add individuals to the chart individually or by family groups by their IDs.  The previous list will be remembered as you add more individuals to the chart.  You can clear the chart at any time with the <b>Clear chart</b> button.<br><br>You can also add individuals to the chart by searching for them by date range or locality."
-msgstr "Auf diesem Diagramm können die Lebensspannen mehrerer Personen gezeigt werden. Anhand einer Skala können Sie leicht erkennen, wie die Geburts- und Todesjahre verschiedener Personen sich überschneiden.<br><br>Sie können einzelne Personen oder ganze Familien dem bereits bestehendem Diagramm hinzufügen. Das Diagramm kann jederzeit durch das Klicken der Schaltfläche <b>Diagramm löschen</b> gelöscht werden.<br><br>Sie können auch Personen dem Diagramm hinzufügen indem Sie die Datenbank nach bestimmten Daten oder Orten durchsuchen."
+msgstr "Auf diesem Diagramm können die Lebensspannen mehrerer Personen gezeigt werden. Anhand einer Skala können Sie leicht erkennen, wie sich die Geburts- und Todesjahre verschiedener Personen überschneiden.<br><br>Sie können einzelne Personen oder ganze Familien dem bereits bestehendem Diagramm hinzufügen. Das Diagramm kann jederzeit durch das Klicken der Schaltfläche <b>Diagramm löschen</b> gelöscht werden.<br><br>Sie können dem Diagramm auch Personen hinzufügen, indem Sie die Datenbank nach bestimmten Daten oder Orten durchsuchen."
 
 #. I18N: Name of a module
 #: modules_v3/todays_events/module.php:32
@@ -10130,7 +10130,7 @@ msgstr "An diesem Tag"
 
 #: calendar.php:125
 msgid "On this day…"
-msgstr "An diesem Tag"
+msgstr "An diesem Tag…"
 
 #: includes/functions/functions_edit.php:211
 #: includes/functions/functions_print_facts.php:253
@@ -10142,7 +10142,7 @@ msgstr "Nur Verwalter können bearbeiten"
 
 #: site-unavailable.php:65
 msgid "Oops!  The webserver is unable to connect to the database server.  It could be busy, undergoing maintenance, or simply broken.  You should <a href=\"index.php\">try again</a> in a few minutes or contact the website administrator."
-msgstr "Hoppla! Der Server kann sich nicht mit der Datenbank verbinden. Sie könnte überlastet sein, gerade gewartet werden oder abgestürzt. Sie sollten es in ein paar Minuten <a href=\"index.php\">erneut versuchen</a> oder den Administrator verständigen."
+msgstr "Hoppla! Der Server kann sich nicht mit der Datenbank verbinden. Sie könnte überlastet oder abgestürzt sein oder wird gerade gewartet. Sie sollten es in ein paar Minuten <a href=\"index.php\">erneut versuchen</a> oder den Administrator verständigen."
 
 #: setup.php:211
 msgid "Oops!  webtrees was unable to create files in this folder."
@@ -10228,7 +10228,7 @@ msgstr "Andere auf Diagrammen zu zeigende Ereignisse"
 
 #: addmedia.php:511 admin_media_upload.php:216
 msgid "Other folder… please type in"
-msgstr "Anderes Verzeichnis … bitte eingeben"
+msgstr "Anderes Verzeichnis… bitte eingeben"
 
 #: modules_v3/gedcom_stats/module.php:346
 msgid "Other records"
@@ -10262,7 +10262,7 @@ msgstr "Besitzerin"
 #: library/WT/Gedcom/Code/Rela.php:149
 msgctxt "MALE"
 msgid "Owner"
-msgstr "Eigentümer"
+msgstr "Besitzer"
 
 #. I18N: time format “%A” - between 12:00:01 and 23:59:59
 #: includes/functions/functions_date.php:123
@@ -10271,27 +10271,27 @@ msgstr "Nachmittag"
 
 #: help_text.php:1308
 msgid "PGV must be version 4.2.3, or any SVN up to #6973"
-msgstr "PGV muss Version 4.2.3, oder eine SVN-Version bis zu Build #6973 sein."
+msgstr "PGV muss Version 4.2.3 oder eine SVN-Version bis zu Build #6973 sein."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:76
 msgid "PHP blocked file by extension"
-msgstr "Das PHP-System erteilte keine Erlaubnis, Ihre Datei mit diesem Namen zu schreiben"
+msgstr "PHP blockierte die Datei wegen der Erweiterung"
 
 #: setup.php:135
 #, php-format
 msgid "PHP extension “%1$s” is disabled.  Without it, the following features will not work: %2$s.  Please ask your server’s administrator to enable it."
-msgstr "Die PHP Erweiterung “%1$s” ist deaktiviert. Ohne diese werden die folgenden Funktionen nicht funktionieren: %2$s. Bitten Sie Ihren Host diese zu aktivieren."
+msgstr "Die PHP Erweiterung “%1$s” ist deaktiviert. Ohne diese werden die folgenden Funktionen nicht funktionieren: %2$s. Bitten Sie Ihren Serveradministrator diese zu aktivieren."
 
 #: setup.php:123
 #, php-format
 msgid "PHP extension “%s” is disabled.  You cannot install webtrees until this is enabled.  Please ask your server’s administrator to enable it."
-msgstr "Die PHP Erweiterung “%s” ist deaktiviert. Sie können webtrees nicht installieren solange diese deaktiviert ist. Bitten Sie Ihren Provider diese zu aktivieren."
+msgstr "Die PHP Erweiterung “%s” ist deaktiviert. Sie können webtrees nicht installieren, solange diese deaktiviert ist. Bitten Sie Ihren Serveradministrator diese zu aktivieren."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:73
 msgid "PHP failed to write to disk"
-msgstr "Das PHP-System konnte nicht auf der Festplatte schreiben"
+msgstr "PHP konnte nicht auf der Festplatte schreiben"
 
 #: admin_site_info.php:32 help_text.php:1323
 #: themes/_administration/header.php:100
@@ -10301,7 +10301,7 @@ msgstr "PHP Informationen"
 #: setup.php:144
 #, php-format
 msgid "PHP setting “%1$s” is disabled. Without it, the following features will not work: %2$s.  Please ask your server’s administrator to enable it."
-msgstr "Die PHP Einstellung “%1$s” ist deaktiviert. Ohne diese werden die folgenden Funktionen nicht funktionieren: %2$s. Bitten Sie Ihren Host diese zu aktivieren."
+msgstr "Die PHP Einstellung “%1$s” ist deaktiviert. Ohne diese werden die folgenden Funktionen nicht funktionieren: %2$s. Bitten Sie Ihren Serveradministrator diese zu aktivieren."
 
 #: admin_site_config.php:76 help_text.php:635
 msgid "PHP time limit"
