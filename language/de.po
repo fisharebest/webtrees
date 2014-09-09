@@ -12644,7 +12644,7 @@ msgstr "Sierra Leone"
 
 #: help_text.php:203
 msgid "Simple dates are assumed to be in the gregorian calendar.  To specify a date in another calendar, add a keyword before the date.  This keyword is optional if the month or year format make the date unambiguous."
-msgstr "Eine Dateneigabe eines einfachen Datums wird grundsätzlich als gregorianisches Datum interpretiert. Um ein spezifisches Datum in einem anderen Kalender einzugeben, ist das entsprechende Schlüsselwort vor dem Dartum einzugeben.  Dies kann entfallen wenn das Format von Monat und Jahr das Datum eindeutig macht."
+msgstr "Eine Dateneigabe eines einfachen Datums wird grundsätzlich als gregorianisches Datum interpretiert. Um ein spezifisches Datum in einem anderen Kalender einzugeben, ist das entsprechende Schlüsselwort vor dem Datum einzugeben. Dies kann entfallen, wenn das Datum durch das Format von Monat und Jahr eindeutig ist."
 
 #: help_text.php:1418
 msgid "Simple search filter"
@@ -12652,7 +12652,7 @@ msgstr "Einfacher Suchfilter"
 
 #: help_text.php:1419
 msgid "Simple search filter based on the characters entered, no wildcards are accepted."
-msgstr "Ein einfacher Filter. Die Medienliste wird nach Ihrer genauen Eingabe durchsucht. Die <b>?</b> und <b>*</b> Zeichen haben keine besondere Bedeutung."
+msgstr "Ein einfacher Filter. Die Medienliste wird nach Ihrer genauen Eingabe durchsucht. Die Zeichen <b>?</b> und <b>*</b> haben keine besondere Bedeutung."
 
 #: library/WT/Stats.php:4006
 msgid "Singapore"
@@ -12680,7 +12680,7 @@ msgstr "Sitemaps"
 #. I18N: The www.sitemaps.org site is translated into many languages (e.g. http://www.sitemaps.org/fr/) - choose an appropriate URL.
 #: modules_v3/sitemap/module.php:240
 msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling.  All major search engines support sitemaps.  For more information, see <a href=\"http://www.sitemaps.org/\">www.sitemaps.org</a>."
-msgstr "Sitemaps dienen dem Webmaster dazu, Suchmaschinen die Seiten zu nennen, die zur Suche freigegeben sind.  Alle wichtigen Suchmaschinen unterstützen Sitemaps.  Für weiterführende Informationen siehe <a href=\"http://www.sitemaps.org/de/\">www.sitemaps.org</a>."
+msgstr "Sitemaps dienen dem Webmaster dazu, Suchmaschinen die Seiten zu nennen, die zur Suche freigegeben sind. Alle wichtigen Suchmaschinen unterstützen Sitemaps. Für weiterführende Informationen siehe <a href=\"http://www.sitemaps.org/de/\">www.sitemaps.org</a>."
 
 #: library/WT/Date/Jewish.php:104
 msgctxt "GENITIVE"
@@ -12745,7 +12745,7 @@ msgstr "Snowflake, Arizona"
 #. I18N: gedcom tag SSN
 #: library/WT/Gedcom/Tag.php:303
 msgid "Social security number"
-msgstr "Sozialversicherungs-Nummer"
+msgstr "Sozialversicherungsnummer"
 
 #: library/WT/Stats.php:4011
 msgid "Solomon Islands"
@@ -12758,19 +12758,19 @@ msgstr "Somalia"
 #. I18N: A “path” is something like “C:\Documents\My_User\Genealogy\Photos\Gravestones\John_Smith.jpeg”
 #: help_text.php:548
 msgid "Some genealogy applications create GEDCOM files that contain media filenames with full paths.  These paths will not exist on the web-server.  To allow webtrees to find the file, the first part of the path must be removed."
-msgstr "Einige genealogische Anwendungen erzeugen GEDCOM-Dateien, die Medien Dateinamen mit komplettem Pfad enthalten. Diese Pfade werden auf dem Web-Server nicht existieren. Um webtrees zu ermöglichen, die Datei zu finden, muss der erste Teil vom Pfad entfernt werden."
+msgstr "Einige genealogische Anwendungen erzeugen GEDCOM-Dateien, die Medien Dateinamen mit komplettem Pfad enthalten. Diese Pfade werden auf dem Webserver nicht existieren. Um webtrees zu ermöglichen, die Datei zu finden, muss der erste Teil vom Pfad entfernt werden."
 
 #: help_text.php:1050
 msgid "Some genealogy programs wrap notes at word boundaries while others wrap notes anywhere.  This can cause <b>webtrees</b> to run words together.  Setting this to <b>Yes</b> will add a space between words where they are wrapped in the original GEDCOM during the import process. If you have already imported the file you will need to re-import it."
-msgstr "Manche Genealogie-Programme brechen Bemerkungen nur an Wortgrenzen um, während andere diese Einträge an beliebiger Stelle umbrechen. Dies kann dazu führen, dass <b>webtrees</b>, Wörter ineinander fließen läßt. Wird diese Option auf <b>Ja</b> gesetzt, wird ein Leerzeichen an der Stelle zwischen den Wörtern eingefügt, wo sie während des Imports in der ursprünglichen GEDCOM umgbrochen wurden. Falls Sie die Datei bereits importiert hatten, müssen Sie nach dem Aktivieren dieser Option die betroffene GEDCOM-Datei erneut importieren."
+msgstr "Manche Genealogie-Programme brechen Bemerkungen nur an Wortgrenzen um, während andere diese Einträge an beliebiger Stelle umbrechen. Dies kann dazu führen, dass <b>webtrees</b> Wörter ineinander fließen läßt. Wird diese Option auf <b>Ja</b> gesetzt, wird ein Leerzeichen an der Stelle zwischen den Wörtern eingefügt, wo sie während des Imports in der ursprünglichen GEDCOM umgbrochen wurden. Falls Sie die Datei bereits importiert hatten, müssen Sie nach dem Aktivieren dieser Option die betroffene GEDCOM-Datei erneut importieren."
 
 #: modules_v3/clippings/module.php:136
 msgid "Some items could not be added due to privacy restrictions"
-msgstr "Einige Daten konnten wegen Datenschutz nicht hinzugefügt werden"
+msgstr "Einige Daten konnten aus Datenschutzgründen nicht hinzugefügt werden"
 
 #: modules_v3/googlemap/help_text.php:42
 msgid "Some place names may be written with optional prefixes and suffixes.  For example “Orange” versus “Orange County”.  If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded.  Multiple options should be separated with semicolons.  For example “County;County of” or “Township;Twp;Twp.”."
-msgstr "Einige Ortsnamen können mit optionalen Zusatzbezeichnungen versehen sein. zB.:  “Orange” oder “Orange County”.  Falls der Stammbaum die vollständige Ortsbezeichnung enthält, die geographische Datenbank jedoch die Kurzform, dann sollte eine Auswahl an zu entfernenden Bezeichnungen erstellt werden.  Mehrere Möglichkeiten sollten mit Semikolon getrennt aufgeführt werden.  z.B.: “County;County of”, “Township;Twp;Twp.” oder “Kreis;Kr.”."
+msgstr "Einige Ortsnamen können mit optionalen Zusatzbezeichnungen versehen sein. zB. “Orange” oder “Orange County”. Falls der Stammbaum die vollständige Ortsbezeichnung enthält, die geographische Datenbank jedoch die Kurzform, dann sollte eine Auswahl an zu entfernenden Bezeichnungen erstellt werden. Mehrere Möglichkeiten sollten mit Semikolon getrennt aufgeführt werden, z.B. “County;County of”, “Township;Twp;Twp.” oder “Kreis;Kr;Kr.”."
 
 #: modules_v3/family_group_report/report.xml:762
 #: modules_v3/individual_ext_report/report.xml:517
@@ -12923,7 +12923,7 @@ msgstr "Volkszählung-Ehepartner Ort"
 
 #: library/WT/Gedcom/Tag.php:202
 msgid "Spouse note"
-msgstr "Ehepartner Anmerkung"
+msgstr "Anmerkung zum Ehepartner"
 
 #: includes/functions/functions_print_lists.php:1341
 msgid "Spouses"
@@ -12967,7 +12967,7 @@ msgstr "Bei den Eltern beginnen"
 
 #: modules_v3/random_media/module.php:382
 msgid "Start slide show on page load?"
-msgstr "sofortiges Starten der Diaschau beim Seitenaufbau?"
+msgstr "Sofortiges Starten der Diaschau beim Seitenaufruf?"
 
 #: modules_v3/change_report/report.xml:5
 msgid "Starting range of change dates"
@@ -13021,11 +13021,11 @@ msgstr "Stop"
 
 #: admin_trees_config.php:704
 msgid "Store watermarked full size images on server?"
-msgstr "Mit Wasserzeichen versehene Bilder auf dem Server bewahren"
+msgstr "Mit Wasserzeichen versehene Bilder auf dem Server speichern?"
 
 #: admin_trees_config.php:712
 msgid "Store watermarked thumbnails on server?"
-msgstr "Mit Wasserzeichen versehene Miniaturbilder auf dem Server bewahren"
+msgstr "Mit Wasserzeichen versehene Vorschaubilder auf dem Server speichern?"
 
 #. I18N: Name of a module
 #: modules_v3/stories/module.php:32 modules_v3/stories/module.php:403
@@ -13085,7 +13085,7 @@ msgstr "Sonntag"
 #: admin.php:105
 #, php-format
 msgid "Support and documentation can be found at %s."
-msgstr "Unterstützung und Dokumentation ist zu finden unter %s."
+msgstr "Unterstützung und Dokumentation sind zu finden unter %s."
 
 #: library/WT/Stats.php:4020
 msgid "Suriname"
@@ -13268,11 +13268,11 @@ msgstr "Thailand"
 
 #: help_text.php:276
 msgid "The <b>name</b> field contains the individual’s full name, as they would have spelled it or as it was recorded.  This is how it will be displayed on screen.  It uses standard genealogical annotations to identify different parts of the name."
-msgstr "Das <b>name</b> Feld enthält den vollen Namen der Person, wie er geschrieben bzw. niedergeschrieben wurde.  Genau so wird er am Bildschirm dargestellt  Es werden in der Ahnenforschung übliche Standard Trenner benutzt, um die unterschiedlichen Namensbestandteile zu trennen."
+msgstr "Das Feld <b>Name</b> enthält den vollen Namen der Person, so wie er geschrieben bzw. niedergeschrieben wurde. Genau so wird er am Bildschirm dargestellt. Üblicherweise werden in der Ahnenforschung Standard Trennzeichen benutzt, um die unterschiedlichen Namensbestandteile zu trennen."
 
 #: help_text.php:296
 msgid "The <b>surname</b> field contains a name that is used for sorting and grouping.  It can be different to the individual’s actual surname which is always taken from the <b>name</b> field.  This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska).  If an individual needs to be listed under more than one surname, each name should be separated by a comma."
-msgstr "Das <b>Familiennamen</b> Feld enthält einen Gruppier- und Sortiernamen.  Dieser kann vom Nachnamen der aktuellen Person abweichen, welcher immer dem <b>Nachnamen</b> Feld entnommen wird.  Dieses Feld kann benutzt werden, um Nachnamen mit oder ohne Prefix (Gogh / van Gogh), Schreibvarianten oder Beugungen (Kowalski / Kowalska) zu gruppieren und zu sortieren.  Soll eine Person unter mehr als einem Nachnamen aufgelistet werden, so sind die Namen durch Kommas abzutrennen."
+msgstr "Das Feld <b>Nachname</b> enthält einen Namen, der zum Gruppieren und Sortieren verwendet wird. Dieser kann vom aktuellen Nachnamen der Person abweichen, welcher immer dem Feld <b>Name</b> entnommen wird. Dieses Feld kann benutzt werden, um Nachnamen mit oder ohne Prefix (Gogh / van Gogh), Schreibvarianten oder Beugungen (Kowalski / Kowalska) zu gruppieren und zu sortieren. Soll eine Person unter mehr als einem Nachnamen aufgelistet werden, so sind die Namen durch Kommas zu trennen."
 
 #: modules_v3/faq/module.php:364
 msgid "The FAQ list is empty."
@@ -13280,7 +13280,7 @@ msgstr "Die FAQ Liste ist leer."
 
 #: help_text.php:1253
 msgid "The Favorites drop-down list shows the favorites that you have selected on your “My page”.  It also shows the favorites that the site administrator has selected for the currently active GEDCOM.  Clicking on one of the favorites entries will take you directly to the Individual Information page of that individual.<br><br>More help about adding favorites is available in your “My page”."
-msgstr "Diese Liste zeigt Ihnen Ihre Favoriten, sofern Sie welche erstellt haben. Sie zeigt auch die Favoriten, die der Verwalter für die GEDCOM-Datei erstellt hat.<br><br>Wenn Sie auf einen Ihrer Favoriten klicken, gelangen Sie zur Seite mit persönlichen Informationen zur jeweiligen Person. Weitere Hilfe zum Erstellen von Favoriten finden Sie unter Ihrem persönlichen Portal."
+msgstr "Diese Liste zeigt Ihnen Ihre Favoriten, sofern Sie welche erstellt haben. Sie zeigt auch die Favoriten, die der Verwalter für die GEDCOM-Datei erstellt hat.<br><br>Wenn Sie auf einen Ihrer Favoriten klicken, gelangen Sie zur Seite mit persönlichen Informationen zur jeweiligen Person. Weitere Hilfe zum Erstellen von Favoriten finden Sie unter “Mein webtrees”."
 
 #: library/WT/Gedcom/Code/Temp.php:98
 msgid "The Hague, Netherlands"
@@ -13288,20 +13288,20 @@ msgstr "Den Haag, Niederlande"
 
 #: help_text.php:875
 msgid "The Media Viewer can show a link which, when clicked, will download the media file to the local PC.<br><br>You may want to hide the download link for security reasons."
-msgstr "Der Medienbetrachter kann einen Link anzeigen, der eine Übertragung der aktuellen Mediendatei ermöglicht.<br><br>Diese Option bestimmt, ob der Medienbetrachter den Link zeigen darf oder nicht."
+msgstr "Der Medienbetrachter kann einen Link anzeigen, der den Download der aktuellen Mediendatei ermöglicht.<br><br>Diese Option bestimmt, ob der Medienbetrachter den Link zeigen darf oder nicht."
 
 #: help_text.php:1304
 msgid "The PGV to <b>webtrees</b> wizard is an automated process to assist administrators make the move from a PGV installation to a new <b>webtrees</b> one. It will transfer all PGV GEDCOM and other database information directly to your new <b>webtrees</b> database. The following requirements are necessary:"
-msgstr "Der PGV-<b>webtrees</b>-Migrationsassistent unterstützt Administratoren mit einem automatisierten Prozess zur Überführung einer bestehenden PGV-Installation in eine neue <b>webtrees</b>-Installation. Alle PGV-, GEDCOM- und andere Datenbank-Informationen werden unmittelbar und ausschließlich in Ihrer neuen <b>webtrees</b> Datenbank abgelegt. Folgende Voraussetzungen müssen erfüllt sein:"
+msgstr "Der PGV zu <b>webtrees</b>-Migrationsassistent unterstützt Administratoren mit einem automatisierten Prozess zur Überführung einer bestehenden PGV-Installation in eine neue <b>webtrees</b>-Installation. Alle PGV-, GEDCOM- und andere Datenbank-Informationen werden unmittelbar und ausschließlich in Ihrer neuen <b>webtrees</b> Datenbank abgelegt. Folgende Voraussetzungen müssen erfüllt sein:"
 
 #: save.php:256
 #, php-format
 msgid "The administrator at the webtrees site %s has approved your application for an account.  You may now login by accessing the following link: %s"
-msgstr "Der Verwalter von webtrees bei %s hat Ihren Zugang erlaubt. Sie können sich jetzt unter dem folgenden Link anmelden: %s"
+msgstr "Der Verwalter von webtrees bei %s hat Ihren Zugang genehmigt. Sie können sich jetzt unter dem folgenden Link anmelden: %s"
 
 #: login.php:561
 msgid "The administrator has been informed.  As soon as he gives you permission to login, you can login with your user name and password."
-msgstr "Der Verwalter wurde benachrichtigt.  Sobald dieser Ihren Zugang freigegeben hat, können Sie sich mit Ihrem Benutzernamen und Passwort anmelden."
+msgstr "Der Verwalter wurde benachrichtigt. Sobald dieser Ihr Benutzerkonto freigegeben hat, können Sie sich mit Ihrem Benutzernamen und Passwort anmelden."
 
 #. I18N: %s is the name of an individual, source or other record
 #: action.php:57
@@ -13317,7 +13317,7 @@ msgstr "Die Änderungen an “%s” wurden nicht angenommen."
 
 #: modules_v3/clippings/module.php:142
 msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the “Download” link.  Follow the instructions and links.</li></ul>"
-msgstr "Der Sammelbehälter erlaubt es Ausschnitte aus diesem Stammbaum zu sammeln und in eine separate GEDCOM-Datei zu speichern, die man anschließend herunterladen kann.<br><ul><li>Wie wählt man Abschnitte?<br>Jeder klick bare Name führt zur Detail-Seite der betreffenden Person (Familie, Quelle). Dort gibt es die Option <b>Zum Sammelcontainer hinzufügen</b>. Klicken Sie diesen Link und Sie gelangen zu einer Liste von Optionen.</li><li><b>Wie herunterladen?</b>Sobald Sie Elemente in Ihrem Sammelbehälter haben, können Sie diese durch Klick auf <b>Jetzt herunterladen</b> herunterladen.</li></ul>"
+msgstr "Der Sammelbehälter erlaubt es Ausschnitte aus diesem Stammbaum zu sammeln und in eine separate GEDCOM-Datei zu speichern, die man anschließend herunterladen kann.<br><ul><li>Wie wählt man Abschnitte?<br>Jeder anklickbare Name führt zur Detailseite der betreffenden Person (Familie, Quelle). Dort gibt es die Option <b>Zum Sammelcontainer hinzufügen</b>. Klicken Sie auf diesen Link und Sie gelangen zu einer Liste von Optionen.</li><li><b>Wie herunterladen?</b>Sobald Sie die gewünschten Elemente in Ihrem Sammelbehälter haben, können Sie diese durch einen Klick auf <b>Jetzt herunterladen</b> herunterladen.</li></ul>"
 
 #: help_text.php:1314
 msgid "The current <b>webtrees</b> admin username must be the same as an existing PGV admin username"
@@ -13342,18 +13342,18 @@ msgstr "Die Einzelheiten zu dieser Familie sind nicht öffentlich."
 
 #: individual.php:85
 msgid "The details of this individual are private."
-msgstr "Die Details dieser Person sind vertraulich."
+msgstr "Die Details dieser Person sind nicht öffentlich."
 
 #. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
 #: action.php:157
 #, php-format
 msgid "The family “%s” has been deleted, as it only has one member."
-msgstr "Die Familie “%s”" wurde gelöscht, da sie nur aus einem Mitglied besteht."
+msgstr "Die Familie “%s”" wurde gelöscht, da sie nur aus einem Mitglied bestand."
 
 #: addmedia.php:170 admin_media_upload.php:130
 #, php-format
 msgid "The file %s already exists.  Use another filename."
-msgstr "Die Datei %s existiert schon. Bitte einen anderen Dateinamen verwenden."
+msgstr "Die Datei %s existiert bereits. Bitte einen anderen Dateinamen verwenden."
 
 #: admin_site_upgrade.php:410 admin_site_upgrade.php:441
 #, php-format
@@ -13374,7 +13374,7 @@ msgstr "Die Datei %s konnte nicht aktualisiert werden."
 #: admin_site_upgrade.php:412
 #, php-format
 msgid "The file %s was created."
-msgstr "Die Datei %s wurde erzeugt."
+msgstr "Die Datei %s wurde erstellt."
 
 #: admin_media.php:58 admin_media.php:65 admin_site_upgrade.php:460
 #: admin_site_upgrade.php:481
@@ -13461,23 +13461,23 @@ msgstr "Die folgenden Besucher wurden nicht erkannt und als Suchmaschinen einges
 
 #: help_text.php:1504
 msgid "The help text has not been written for this item."
-msgstr "Für dieses Leistungsmerkmal wurde bisher leider kein Hilfetext geschrieben."
+msgstr "Für diesen Punkt wurde bisher leider kein Hilfetext geschrieben."
 
 #: help_text.php:1463
 msgid "The individual record identifies the user in each family tree.  Since a user can view the details of their individual record, this can only be set by an administrator.  If the user does not have a record in a family tree, leave it empty."
-msgstr "Der persönliche Datensatz kennzeichnet den Benutzer in jedem Familienstammbaum.  Ob ein Benutzer Einzelheiten des persönlichen Datensatzes einsehen darf, kann nur durch einen Verwalter festgelegt werden. Falls der Benutzer über keinen Datensatz im Stammbaum verfügt, lassen Sie das Feld bitte frei."
+msgstr "Der persönliche Datensatz kennzeichnet den Benutzer in jedem Familienstammbaum. Ob ein Benutzer Einzelheiten des persönlichen Datensatzes einsehen darf, kann nur durch einen Verwalter festgelegt werden. Falls der Benutzer über keinen Datensatz im Stammbaum verfügt, lassen Sie das Feld bitte frei."
 
 #: help_text.php:1035
 msgid "The individual to be contacted about technical questions or errors encountered on your site."
-msgstr "Die Mail-Adresse die Ihre Besucher kontaktieren sollen, falls sie technische Fragen haben oder Fehler auf Ihrer Webseite finden und diese Ihnen mitteilen möchten."
+msgstr "Die Mail-Adresse, die kontaktiert werden soll, falls jemand technische Fragen hat oder Fehler auf Ihrer Webseite findet und sie Ihnen mitteilen möchten."
 
 #: help_text.php:481
 msgid "The individual to contact about the genealogical data on this site."
-msgstr "Die Mail-Adresse die Ihre Besucher kontaktieren sollen, falls sie Fragen zu den genealogischen Daten auf Ihrer Webseite haben."
+msgstr "Die Mail-Adresse, die kontaktiert werden soll, falls jemand Fragen zu den genealogischen Daten auf Ihrer Webseite habt."
 
 #: help_text.php:573
 msgid "The length of time after birth can be set on the “Privacy” tab option “Age at which to assume an individual is dead”."
-msgstr "Die Zeitspanne nach dem Geburtsdatum kann im Datenschutzreiter unter Punkt  “Alter, ab dem angenommen wird, dass eine Person verstorben ist” eingestellt werden."
+msgstr "Die Zeitspanne nach dem Geburtsdatum kann im Datenschutzreiter unter dem Punkt“Alter, ab dem angenommen wird, dass eine Person verstorben ist” eingestellt werden."
 
 #. I18N: %s are names of records, such as sources, repositories or individuals
 #: action.php:165 action.php:169 library/WT/Controller/GedcomRecord.php:31
@@ -13492,7 +13492,7 @@ msgstr "Die Mediendatei wurde in diesem Familienbaum nicht gefunden"
 
 #: help_text.php:1434
 msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer.  This is so because often the local file name has meaning to you but is much less meaningful to others visiting this site.  Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading.  The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically.  You do not need to enter the file name extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
-msgstr "Die Mediendatei, die Sie auf den Server übertragen möchten, sollte dort anders benannt sein als auf Ihrem lokalen Computer.  Bedenken Sie, dass Dateinamen, die für Sie sinnvoll sind, für andere weniger Sinn haben können.  Es ist auch durchaus möglich, dass Sie und andere zur gleichen Zeit verschiedene Bilder mit dem gleichen Namen (z.B., <b>oma.jpg</b>) hochladen möchten.<br><br>In diesem Feld geben Sie den Namen, mit dem die übertragene Datei und auch deren automatisch erstelltes Miniaturbild auf dem Server benannt werden soll, ein.  Ihre Eingabe des Namenszusatzes (jpg, gif, pdf, doc, usw.) wird nicht beachtet.  Das Programm benutzt immer den ursprünglichen Namenszusatz der hochgeladenen Datei.<br><br>Wenn Sie dieses Feld leer lassen, behält die hochgeladene Datei ihren ursprünglichen Namen."
+msgstr "Die Mediendatei, die Sie hochladen möchten, sollte auf dem Webserver anders benannt sein als auf Ihrem lokalen Computer.Bedenken Sie, dass Dateinamen, die für Sie sinnvoll sind, für andere weniger Sinn haben können. Es ist auch durchaus möglich, dass Sie und andere zur gleichen Zeit verschiedene Bilder mit dem gleichen Namen (z.B., <b>oma.jpg</b>) hochladen möchten.<br><br>In diesem Feld geben Sie den Namen, mit dem die übertragene Datei und auch deren automatisch erstelltes Miniaturbild auf dem Server benannt werden soll, ein. Ihre Eingabe des Namenszusatzes (jpg, gif, pdf, doc, usw.) wird nicht beachtet. Es wird immer der ursprünglichen Namenszusatz der hochgeladenen Datei benutzt.<br><br>Wenn Sie dieses Feld leer lassen, behält die hochgeladene Datei ihren ursprünglichen Namen."
 
 #: setup.php:170
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
