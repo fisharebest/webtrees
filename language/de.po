@@ -681,7 +681,7 @@ msgstr "Eine Beschreibung für den Grund oder die Ursache des verknüpften Ereig
 #. I18N: Description of the “My page” module
 #: modules_v3/user_welcome/module.php:37
 msgid "A greeting message and useful links for a user."
-msgstr "Willkommensgruß und nützliche Adressen für den Besucher"
+msgstr "Willkommensgruß und nützliche Verlinkungen für den Benutzer"
 
 #. I18N: Description of the “Home page” module
 #: modules_v3/gedcom_block/module.php:37
@@ -1405,7 +1405,7 @@ msgstr "Nicht verknüpfte Datensätze hinzufügen"
 
 #: admin_trees_config.php:696
 msgid "Add watermarks to thumbnails?"
-msgstr "Miniaturbilder mit Wasserzeichen versehen"
+msgstr "Vorschaubilder mit Wasserzeichen versehen"
 
 #: modules_v3/relatives/module.php:160
 msgid "Add wife"
@@ -3536,7 +3536,7 @@ msgstr "Bitte wählen Sie das Geschlecht. Die Option <b>Unbekannt</b> bedeutet, 
 
 #: help_text.php:1447
 msgid "Choose the thumbnail image that you want to upload.  Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types.  For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording."
-msgstr "Wählen Sie das Miniaturbild, welches Sie hochladen möchten. Obwohl Miniaturbilder automatisiert erzeugt werden können, möchten Sie vielleicht eigene Bilder, besonders für andere Medientypen erzeugen. So können Sie z.B. ein Standbild eines Videos oder das Foto der Person hinzufügen, die eine Sprachaufnahme gemacht hat."
+msgstr "Wählen Sie das Vorschaubild, das Sie hochladen möchten. Obwohl Vorschaubilder automatisiert erzeugt werden können, möchten Sie vielleicht eigene Bilder, besonders für andere Medientypen erzeugen. So können Sie z.B. ein Standbild eines Videos oder das Foto der Person hinzufügen, die eine Sprachaufnahme gemacht hat."
 
 #: admin_site_config.php:48
 msgid "Choose user defined welcome text typed below"
@@ -13492,7 +13492,7 @@ msgstr "Die Mediendatei wurde in diesem Familienbaum nicht gefunden"
 
 #: help_text.php:1434
 msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer.  This is so because often the local file name has meaning to you but is much less meaningful to others visiting this site.  Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading.  The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically.  You do not need to enter the file name extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
-msgstr "Die Mediendatei, die Sie hochladen möchten, sollte auf dem Webserver anders benannt sein als auf Ihrem lokalen Computer.Bedenken Sie, dass Dateinamen, die für Sie sinnvoll sind, für andere weniger Sinn haben können. Es ist auch durchaus möglich, dass Sie und andere zur gleichen Zeit verschiedene Bilder mit dem gleichen Namen (z.B., <b>oma.jpg</b>) hochladen möchten.<br><br>In diesem Feld geben Sie den Namen, mit dem die übertragene Datei und auch deren automatisch erstelltes Miniaturbild auf dem Server benannt werden soll, ein. Ihre Eingabe des Namenszusatzes (jpg, gif, pdf, doc, usw.) wird nicht beachtet. Es wird immer der ursprünglichen Namenszusatz der hochgeladenen Datei benutzt.<br><br>Wenn Sie dieses Feld leer lassen, behält die hochgeladene Datei ihren ursprünglichen Namen."
+msgstr "Die Mediendatei, die Sie hochladen möchten, sollte auf dem Webserver anders benannt sein als auf Ihrem lokalen Computer. Bedenken Sie, dass Dateinamen, die für Sie sinnvoll klingen, für andere weniger Sinn haben können. Es ist auch durchaus möglich, dass Sie und andere zur gleichen Zeit verschiedene Bilder mit dem gleichen Namen (z.B., <b>oma.jpg</b>) hochladen möchten.<br><br>In diesem Feld geben Sie den Namen, mit dem die übertragene Datei und auch deren automatisch erstelltes Vorschaubild auf dem Server benannt werden soll, ein. Ihre Eingabe des Namenszusatzes (jpg, gif, pdf, doc, usw.) wird nicht beachtet. Es wird immer der ursprünglichen Namenszusatz der hochgeladenen Datei benutzt.<br><br>Wenn Sie dieses Feld leer lassen, behält die hochgeladene Datei ihren ursprünglichen Namen."
 
 #: setup.php:170
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
@@ -13701,7 +13701,7 @@ msgstr "Das Benutzerkonto wurde noch nicht verifiziert. Bitte den E-Mail Postein
 
 #: modules_v3/charts/help_text.php:32
 msgid "This block allows a pedigree, descendancy, or hourglass chart to appear on your “My page” or the “Home page”.  Because of space limitations, the charts should be placed only on the left side of the page.<br><br>When this block appears on the “Home page”, the root individual and the type of chart to be displayed are determined by the administrator.  When this block appears on the user’s “My page”, these options are determined by the user.<br><br>The behavior of these charts is identical to their behavior when they are called up from the menus.  Click on the box of an individual to see more details about them."
-msgstr "Der Diagrammblock ermöglicht Ihnen, Diagramme auf der Begrüßungsseite oder auf der «Mein GedView Portal» Seite zu zeigen. Dieser Block ist für den linken Teil der Seite gedacht, da der rechte Teil sehr schmal ist.<br><br>Verwalter bestimmen die ID-Nummer der Startperson und das Diagramm das auf der Begrüßungsseite dargestellt wird. Für die «Mein webtrees» Seite bestimmt der Benutzer diese Optionen.<br><br>Die Diagramme verhalten sich hier genau wie sie sich auf anderen Seiten verhalten. Wenn Sie den Kasten einer Person klicken, erhalten Sie Details."
+msgstr "Der Diagrammblock ermöglicht Ihnen, Diagramme auf der Begrüßungsseite oder auf der «Mein webtrees» Seite zu zeigen. Dieser Block ist für den linken Teil der Seite gedacht, da der rechte Teil sehr schmal ist.<br><br>Verwalter bestimmen die ID-Nummer der Startperson und das Diagramm das auf der Begrüßungsseite dargestellt wird. Für die «Mein webtrees» Seite bestimmt der Benutzer diese Optionen.<br><br>Die Diagramme verhalten sich hier genau wie sie sich auf anderen Seiten verhalten. Wenn Sie den Kasten einer Person klicken, erhalten Sie Details."
 
 #: modules_v3/review_changes/help_text.php:32
 msgid "This block will show editors a list of records with pending changes that need to be approved by a moderator.  It also generates daily emails to moderators whenever pending changes exist."
@@ -13942,7 +13942,7 @@ msgstr "Diese Kurzliste, die neben der kompletten Liste für Tatsachen und Ereig
 
 #: help_text.php:992
 msgid "This is the width (in pixels) that the program will use when automatically generating thumbnails.  The default setting is 100."
-msgstr "Automatisch erstellte Miniaturbilder werden in dieser Breite erstellt.  Die standardmäßige Breite ist 100px."
+msgstr "Automatisch erstellte Vorschaubilder werden in dieser Breite erstellt. Die standardmäßige Breite ist 100px."
 
 #: help_text.php:1353 setup.php:404
 msgid "This is your real name, as you would like it displayed on screen."
@@ -14306,17 +14306,17 @@ msgstr "Do"
 #: addmedia.php:352
 #, php-format
 msgid "Thumbnail file %1$s could not be renamed to %2$s."
-msgstr "Die Miniaturansicht %1$s konnte nicht in %2$s umbenannt werden."
+msgstr "Das Vorschaubild %1$s konnte nicht in %2$s umbenannt werden."
 
 #: addmedia.php:350
 #, php-format
 msgid "Thumbnail file %1$s successfully renamed to %2$s."
-msgstr "Die Miniaturansicht %1$s wurde in %2$s umbenannt."
+msgstr "Das Vorschaubild %1$s wurde in %2$s umbenannt."
 
 #: addmedia.php:357
 #, php-format
 msgid "Thumbnail file %s does not exist."
-msgstr "Die Miniaturansicht %s ist nicht vorhanden."
+msgstr "Das Vorschaubild %s ist nicht vorhanden."
 
 #. I18N: Small versions of images
 #: admin_trees_config.php:663
@@ -14325,7 +14325,7 @@ msgstr "Vorschaubilder"
 
 #: addmedia.php:450 admin_media_upload.php:189 help_text.php:1446
 msgid "Thumbnail to upload"
-msgstr "Miniaturbild zum Hochladen"
+msgstr "Vorschaubild zum Hochladen"
 
 #: addmedia.php:129 admin_media_upload.php:97
 msgid "Thumbnails must be images."
@@ -15499,7 +15499,7 @@ msgstr "Breite"
 
 #: admin_trees_config.php:667 help_text.php:991
 msgid "Width of generated thumbnails"
-msgstr "Breite des erstellten Miniaturbildes (in Pixel)"
+msgstr "Breite des erstellten Vorschaubildes (in Pixel)"
 
 #. I18N: gedcom tag WIFE
 #: edit_interface.php:1054 library/WT/Gedcom/Tag.php:321
@@ -16292,7 +16292,7 @@ msgstr "Weiter"
 #. I18N: a program feature
 #: setup.php:130
 msgid "creating thumbnails of images"
-msgstr "Erstelle Thumbnails der Bilder"
+msgstr "Erstelle Vorschaubilder der Bilder"
 
 #: library/WT/Controller/Lifespan.php:551
 msgctxt "Abbreviation for death"
@@ -19893,7 +19893,7 @@ msgstr "…"
 #~ msgstr "Kopiert neue Dateien auf den Server, und überschreibt Dateien gleichen Namens."
 
 #~ msgid "Create missing thumbnails"
-#~ msgstr "Fehlende Miniaturbilder erzeugen"
+#~ msgstr "Fehlende Vorschaubilder erzeugen"
 
 #~ msgid "Current Server Time:"
 #~ msgstr "Aktuelle Zeit des Systems:"
@@ -19962,10 +19962,10 @@ msgstr "…"
 #~ msgstr "Wenn die Medienfirewall benutzt wird und hier <b>Ja</b> gewählt ist, sind alle mit Wasserzeichen versehene Bilder auf dem Server bewahrt.<br><br>Der Vorteil dieser Option ist ein schnelleres Zeigen der Bilder;  der Nachteil ist ein erhöhter Festplattenspeicherbedarf, da dann jedes Bild zweimal gespeichert werden muss."
 
 #~ msgid "If the Media Firewall is enabled, should copies of watermarked thumbnails be stored on the server in addition to the same thumbnails without watermarks?<br><br>When set to <b>Yes</b>, media lists containing watermarked thumbnails will be produced more quickly at the expense of higher server disk space requirements."
-#~ msgstr "Wenn die Medienfirewall benutzt wird und hier <b>Ja</b> gewählt ist, werden alle mit Wasserzeichen versehene Miniaturbilder auf dem Server bewahrt.<br><br>Der Vorteil dieser Option ist ein schnelleres Zeigen der Medienlisten;  der Nachteil ist ein erhöhter Festplattenspeicherbedarf, da dann jedes Miniaturbild zweimal gespeichert werden muss."
+#~ msgstr "Wenn die Medienfirewall benutzt wird und hier <b>Ja</b> gewählt ist, werden alle mit Wasserzeichen versehene Vorschaubilder auf dem Server bewahrt.<br><br>Der Vorteil dieser Option ist ein schnelleres Zeigen der Medienlisten; der Nachteil ist ein erhöhter Festplattenspeicherbedarf, da dann jedes Vorschaubild zweimal gespeichert werden muss."
 
 #~ msgid "If the Media Firewall is enabled, should thumbnails be watermarked? Your media lists will load faster if you don't watermark the thumbnails."
-#~ msgstr "Wenn die Medienfirewall benutzt wird, sollen Miniaturbilder auch mit Wasserzeichen versehen werden?  Medienlisten laden langsamer wenn diese Option auf <b>Ja</b> gestellt ist."
+#~ msgstr "Wenn die Medienfirewall benutzt wird, sollen Vorschaubilder auch mit Wasserzeichen versehen werden? Medienlisten laden langsamer, wenn diese Option auf <b>Ja</b> gestellt ist."
 
 #~ msgid "If the Media Firewall is enabled, users will see watermarks if they do not have the privilege level specified here."
 #~ msgstr "Wenn die Medienfirewall benutzt wird, werden Bilder mit Wasserzeichen versehen, wenn der Benutzer nicht genügende Rechte hat."
@@ -19974,7 +19974,7 @@ msgstr "…"
 #~ msgstr "Wenn Sie die genauen Einstellungen nicht wissen, lassen Sie die Defaultwerte. Sie können die Einstellungen später ändern."
 
 #~ msgid "If you don't want to send mail, for example when running webtrees with a single user or on a standalone computer, you can disable this feature."
-#~ msgstr "Wenn Sie keine Nachrichten senden wollen, weil z.B. nur sie alleine <b>webtrees</b> nutzen, können Sie diese Funktion deaktivieren."
+#~ msgstr "Wenn Sie keine Nachrichten senden wollen, weil z.B. nur Sie alleine <b>webtrees</b> nutzen, können Sie diese Funktion deaktivieren."
 
 #~ msgid "If you have an environment with multiple GEDCOMs, setting this value to <b>Yes</b> allows your site visitors <u>and</u> users to have the option of changing GEDCOMs.  Setting it to <b>No</b> disables GEDCOM switching for both visitors <u>and</u> logged in users."
 #~ msgstr "Die Einstellung <b>Ja</b> erlaubt den Besuchern <b>und</b> angemeldeten Benutzern die verwendete GEDCOM-Datei selbst zu wählen, sofern Ihre Konfiguration mehrere GEDCOM-Dateien enthält.<br><br>Bei Einstellung <b>Nein</b>, können <b>weder</b> Besucher, <b>noch</b> angemeldete Benutzer die GEDCOM-Datei wählen."
@@ -20156,7 +20156,7 @@ msgstr "…"
 #~ msgstr "Ermöglicht das Online Editieren für diese GEDCOM-Datei, mittels dessen Besucher mit Edit-Rechten die GEDCOM-Datei online verändern können."
 
 #~ msgid "This option will generate thumbnails for all files in the current directory which don't already have a thumbnail.  This is much more convenient than clicking the <b>Create thumbnail</b> link for each such file.<br><br>If you wish to retain control over which files should have corresponding thumbnails, you should not use this option.  Instead, click the appropriate <b>Create thumbnail</b> links."
-#~ msgstr "Diese Option erzeugt fehlende Miniaturbilder für alle Bilder in diesem Verzeichnis.  Das ist leichter und schneller als das Benutzen der einzelnen <b>Miniaturbild erzeugen</b> Optionen.<br><br>Sie müssen die einzelnen <b>Miniaturbild erzeugen</b> Optionen benutzen, wenn nicht alle fehlende Miniaturbilder erzeugt werden sollen."
+#~ msgstr "Diese Option erzeugt fehlende Vorschaubilder für alle Bilder in diesem Verzeichnis. Das ist leichter und schneller als das Benutzen der einzelnen <b>Vorschaubild erzeugen</b> Optionen.<br><br>Sie müssen die einzelnen <b>Vorschaubild erzeugen</b> Optionen benutzen, wenn nicht alle fehlende Vorschaubilder erzeugt werden sollen."
 
 #~ msgid "This record was last changed by <i>%s</i> at %s"
 #~ msgstr "Dieser Datensatz wurde zuletzt von <i>%s</i> um %s geändert."
