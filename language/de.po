@@ -4001,7 +4001,7 @@ msgstr "Erstelle eine neue Person"
 #. I18N: A media object that is not linked to any other record
 #: addmedia.php:70 addmedia.php:387 admin_site_other.php:69
 msgid "Create a new media object"
-msgstr "Erstelle ein neues Medien Objekt"
+msgstr "Erstelle ein neues Medienobjekt"
 
 #. I18N: A note that is not linked to any other record
 #: admin_site_other.php:55
@@ -5573,7 +5573,7 @@ msgstr "Dateiname"
 #: addmedia.php:419
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:178
 msgid "Enter or search for the ID of the individual, family, or source to which this media item should be linked."
-msgstr "Die ID Nummer einer Person, Familie, oder Quelle eingeben oder suchen, um eine Verbindung zu diesem Medien Objekt herzustellen."
+msgstr "Die ID Nummer einer Person, Familie, oder Quelle eingeben oder suchen, um eine Verbindung zu diesem Medienobjekt herzustellen."
 
 #: modules_v3/googlemap/help_text.php:53
 msgid "Enter precision"
@@ -13974,27 +13974,27 @@ msgstr "Diese Mediendatei ist defekt und kann deshalb nicht mit Wasserzeichen ve
 
 #: mediaviewer.php:74
 msgid "This media object does not exist or you do not have permission to view it."
-msgstr "Dieses Medien Objekt existiert entweder nicht oder Sie haben nicht die Berechtigung, um es zu betrachten."
+msgstr "Dieses Medienobjekt existiert entweder nicht oder Sie haben nicht die Berechtigung, um es zu betrachten."
 
 #: mediaviewer.php:48
 msgid "This media object has been deleted.  The deletion will need to be reviewed by a moderator."
-msgstr "Das Medien Objekt wurde gelöscht. Die Löschung benötigt eine Prüfung durch einen Moderator."
+msgstr "Das Medienobjekt wurde gelöscht. Die Löschung benötigt eine Prüfung durch einen Moderator."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: mediaviewer.php:39
 #, php-format
 msgid "This media object has been deleted.  You should review the deletion and then %1$s or %2$s it."
-msgstr "Dieses Medien Objekt wurde gelöscht. Sie sollten die Löschung prüfen und sie entweder %1$s oder %2$s."
+msgstr "Dieses Medienobjekt wurde gelöscht. Sie sollten die Löschung prüfen und sie entweder %1$s oder %2$s."
 
 #: mediaviewer.php:66
 msgid "This media object has been edited.  The changes need to be reviewed by a moderator."
-msgstr "Dieses Medien Objekt wurde geändert. Die Änderung muss von einem Moderator gerprüft werden."
+msgstr "Dieses Medienobjekt wurde geändert. Die Änderung muss von einem Moderator gerprüft werden."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: mediaviewer.php:57
 #, php-format
 msgid "This media object has been edited.  You should review the changes and then %1$s or %2$s them."
-msgstr "Dieses Medien Objekt wurde geändert. Sie sollten die Änderung prüfen und sie entweder %1$s oder %2$s."
+msgstr "Dieses Medienobjekt wurde geändert. Sie sollten die Änderung prüfen und sie entweder %1$s oder %2$s."
 
 #: admin_media.php:501 find.php:571
 msgid "This media object is not linked to any other record."
@@ -20114,7 +20114,7 @@ msgstr "…"
 #~ msgstr "Standard Einleitung für selbsterstellten Text"
 
 #~ msgid "Take your site offline while copying the new files.  Do this by temporarily creating a file %s on the web server."
-#~ msgstr "Nehmen Sie Ihre Web-Seite vom Netz während Sie die neuen Dateien kopieren. Dies geschieht, indem Sie temporär eine Datei namens  %s auf dem Server erstellen."
+#~ msgstr "Nehmen Sie Ihre Webseite vom Netz während Sie die neuen Dateien kopieren. Dies geschieht, indem Sie temporär eine Datei namens  %s auf dem Server erstellen."
 
 #~ msgid "The Type field is used to enter additional information about the item.  In most cases, the field is completely free-form, and you can enter anything you want."
 #~ msgstr "In diesem Feld können Sie zusätzliche Informationen eingeben.  Meistens ist dieses Feld ohne vorgesetzes Format; Sie können eingeben was und wie Sie wollen."
