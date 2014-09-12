@@ -93,7 +93,7 @@ final class Uuid
     /**
      * Version of the Rhumsaa\Uuid package
      */
-    const VERSION = '2.7.1';
+    const VERSION = '2.7.3';
 
     /**
      * For testing, 64-bit system override; if true, treat the system as 32-bit
@@ -1107,8 +1107,6 @@ final class Uuid
      */
     protected static function getIfconfig()
     {
-        $ifconfig = '';
-
         switch (strtoupper(substr(php_uname('a'), 0, 3))) {
             case 'WIN':
                 $ifconfig = `ipconfig /all 2>&1`;
@@ -1228,7 +1226,7 @@ final class Uuid
 
         $bytes = '';
         foreach (range(1, $length) as $i) {
-            $bytes = chr(mt_rand(0, 256)) . $bytes;
+            $bytes = chr(mt_rand(0, 255)) . $bytes;
         }
 
         return $bytes;
