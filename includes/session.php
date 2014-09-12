@@ -185,6 +185,14 @@ if (!ini_get('date.timezone')) {
 	date_default_timezone_set(@date_default_timezone_get());
 }
 
+// Use the patchwork/utf8 library to:
+// set all PHP defaults to UTF-8
+// create shims for missing mb_string functions such as mb_strlen()
+// check that requests are valid UTF-8
+\Patchwork\Utf8\Bootup::initAll();             // Enables the portablity layer and configures PHP for UTF-8
+\Patchwork\Utf8\Bootup::filterRequestUri();    // Redirects to an UTF-8 encoded URL if it's not already the case
+\Patchwork\Utf8\Bootup::filterRequestInputs(); // Normalizes HTTP inputs to UTF-8 NFC
+
 // Split the request protocol://host:port/path/to/script.php?var=value into parts
 // WT_SERVER_NAME  = protocol://host:port
 // WT_SCRIPT_PATH  = /path/to/   (begins and ends with /)
@@ -227,7 +235,6 @@ if (!isset($_SERVER['HTTP_USER_AGENT'])) {
 // Common functions
 require WT_ROOT.'includes/functions/functions.php';
 require WT_ROOT.'includes/functions/functions_db.php';
-// TODO: Not all pages require all of these.  Only load them in scripts that need them?
 require WT_ROOT.'includes/functions/functions_print.php';
 require WT_ROOT.'includes/functions/functions_mediadb.php';
 require WT_ROOT.'includes/functions/functions_date.php';

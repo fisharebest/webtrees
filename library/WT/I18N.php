@@ -26,6 +26,7 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 use WT\Auth;
+use Patchwork\TurkishUtf8;
 
 /**
  * Class WT_I18N - library of useful functions for locales and translation
@@ -767,30 +768,11 @@ class WT_I18N {
 	 * @return string
 	 */
 	public static function strtoupper($string) {
-		$upper = $string;
-		$pos = 0;
-		$strlen = strlen($string);
-		while ($pos < $strlen) {
-			$byte = ord($string[$pos]);
-			if (($byte & 0xE0) == 0xC0) {
-				$chrlen = 2;
-				$chr = $string[$pos].$string[$pos+1];
-			} elseif (($byte & 0xF0) == 0xE0) {
-				$chrlen = 3;
-				$chr = $string[$pos].$string[$pos+1].$string[$pos+2];
-			} else {
-				$chrlen = 1;
-				$chr = $string[$pos];
-			}
-			// Try language-specific conversion before generic conversion
-			if (($chrpos = strpos(self::$alphabet_lower, $chr)) !== false) {
-				$upper = substr_replace($upper, substr(self::$alphabet_upper, $chrpos, $chrlen), $pos, $chrlen);
-			} elseif (($chrpos=strpos(self::ALPHABET_LOWER, $chr))!==false) {
-				$upper = substr_replace($upper, substr(self::ALPHABET_UPPER, $chrpos, $chrlen), $pos, $chrlen);
-			}
-			$pos += $chrlen;
+		if (self::$locale == 'tr' || self::$locale == 'az') {
+			return Utf8Turkish::strtoupper($string);
+		} else {
+			return mb_strtoupper($string);
 		}
-		return $upper;
 	}
 
 	/**
@@ -803,30 +785,11 @@ class WT_I18N {
 	 * @return string
 	 */
 	public static function strtolower($string) {
-		$lower = $string;
-		$pos = 0;
-		$strlen = strlen($string);
-		while ($pos < $strlen) {
-			$byte=ord($string[$pos]);
-			if (($byte & 0xE0) == 0xC0) {
-				$chrlen = 2;
-				$chr = $string[$pos].$string[$pos+1];
-			} elseif (($byte & 0xF0) == 0xE0) {
-				$chrlen = 3;
-				$chr = $string[$pos].$string[$pos+1].$string[$pos+2];
-			} else {
-				$chrlen = 1;
-				$chr = $string[$pos];
-			}
-			// Try language-specific conversion before generic conversion
-			if (($chrpos = strpos(self::$alphabet_upper, $chr)) !== false) {
-				$lower = substr_replace($lower, substr(self::$alphabet_lower, $chrpos, $chrlen), $pos, $chrlen);
-			} elseif (($chrpos=strpos(self::ALPHABET_UPPER, $chr)) !== false) {
-				$lower = substr_replace($lower, substr(self::ALPHABET_LOWER, $chrpos, $chrlen), $pos, $chrlen);
-			}
-			$pos += $chrlen;
+		if (self::$locale == 'tr' || self::$locale == 'az') {
+			return Utf8Turkish::strtolower($string);
+		} else {
+			return mb_strtolower($string);
 		}
-		return $lower;
 	}
 
 	/**
@@ -904,80 +867,6 @@ class WT_I18N {
 	}
 
 	/**
-	 * UTF8 version of PHP::substr()
-	 *
-	 * @param string $string
-	 * @param int    $pos
-	 * @param int    $len
-	 *
-	 * @return string
-	 *
-	 * @todo use Patchwork\Utf8
-	 */
-	public static function substr($string, $pos, $len=PHP_INT_MAX) {
-		if ($len < 0) {
-			return '';
-		}
-		$strlen = strlen($string);
-		if ($pos == 0) {
-			$start = 0;
-		} elseif ($pos > 0) {
-			$start = 0;
-			while ($pos > 0 && $start < $strlen) {
-				++$start;
-				while ($start < $strlen && (ord($string[$start]) & 0xC0) == 0x80) {
-					++$start;
-				}
-				--$pos;
-			}
-		} else {
-			$start = $strlen - 1;
-			do {
-				--$start;
-				while ($start && (ord($string[$start]) & 0xC0) == 0x80) {
-					--$start;
-				}
-				++$pos;
-			} while ($start && $pos<0);
-		}
-		if ($len==PHP_INT_MAX || $len<0) {
-			return substr($string, $start);
-		}
-		$end=$start;
-		while ($len>0) {
-			++$end;
-			while ($end<$strlen && (ord($string[$end]) & 0xC0) == 0x80) {
-				++$end;
-			}
-			--$len;
-		}
-		return substr($string, $start, $end-$start);
-	}
-
-	/**
-	 * UTF8 version of PHP::strlen()
-	 *
-	 * @param string $string
-	 *
-	 * @return int
-	 *
-	 * @todo use Patchwork\Utf8
-	 */
-	public static function strlen($string) {
-		$pos=0;
-		$len=strlen($string);
-		$utf8_len=0;
-		while ($pos<$len) {
-			if ((ord($string[$pos]) & 0xC0) != 0x80) {
-				++$utf8_len;
-			}
-			++$pos;
-		}
-		return $utf8_len;
-	}
-
-
-	/**
 	 * UTF8 version of PHP::strrev()
 	 *
 	 * Reverse RTL text for third-party libraries such as GD2 and googlechart.
@@ -1006,8 +895,8 @@ class WT_I18N {
 		$reversed = '';
 		$digits = '';
 		while ($text != '') {
-			$letter = WT_I18N::substr($text, 0, 1);
-			$text = WT_I18N::substr($text, 1);
+			$letter = mb_substr($text, 0, 1);
+			$text = mb_substr($text, 1);
 			if (strpos(self::DIGITS, $letter) !== false) {
 				$digits .= $letter;
 			} else {
@@ -1052,29 +941,29 @@ class WT_I18N {
 			$callback=',
 				"infoCallback": function(oSettings, iStart, iEnd, iMax, iTotal, sPre) {
 					return sPre
-						.replace(/0/g, "'.WT_I18N::substr($digits, 0, 1).'")
-						.replace(/1/g, "'.WT_I18N::substr($digits, 1, 1).'")
-						.replace(/2/g, "'.WT_I18N::substr($digits, 2, 1).'")
-						.replace(/3/g, "'.WT_I18N::substr($digits, 3, 1).'")
-						.replace(/4/g, "'.WT_I18N::substr($digits, 4, 1).'")
-						.replace(/5/g, "'.WT_I18N::substr($digits, 5, 1).'")
-						.replace(/6/g, "'.WT_I18N::substr($digits, 6, 1).'")
-						.replace(/7/g, "'.WT_I18N::substr($digits, 7, 1).'")
-						.replace(/8/g, "'.WT_I18N::substr($digits, 8, 1).'")
-						.replace(/9/g, "'.WT_I18N::substr($digits, 9, 1).'");
+						.replace(/0/g, "'.mb_substr($digits, 0, 1).'")
+						.replace(/1/g, "'.mb_substr($digits, 1, 1).'")
+						.replace(/2/g, "'.mb_substr($digits, 2, 1).'")
+						.replace(/3/g, "'.mb_substr($digits, 3, 1).'")
+						.replace(/4/g, "'.mb_substr($digits, 4, 1).'")
+						.replace(/5/g, "'.mb_substr($digits, 5, 1).'")
+						.replace(/6/g, "'.mb_substr($digits, 6, 1).'")
+						.replace(/7/g, "'.mb_substr($digits, 7, 1).'")
+						.replace(/8/g, "'.mb_substr($digits, 8, 1).'")
+						.replace(/9/g, "'.mb_substr($digits, 9, 1).'");
 				},
 				"formatNumber": function(iIn) {
 					return String(iIn)
-						.replace(/0/g, "'.WT_I18N::substr($digits, 0, 1).'")
-						.replace(/1/g, "'.WT_I18N::substr($digits, 1, 1).'")
-						.replace(/2/g, "'.WT_I18N::substr($digits, 2, 1).'")
-						.replace(/3/g, "'.WT_I18N::substr($digits, 3, 1).'")
-						.replace(/4/g, "'.WT_I18N::substr($digits, 4, 1).'")
-						.replace(/5/g, "'.WT_I18N::substr($digits, 5, 1).'")
-						.replace(/6/g, "'.WT_I18N::substr($digits, 6, 1).'")
-						.replace(/7/g, "'.WT_I18N::substr($digits, 7, 1).'")
-						.replace(/8/g, "'.WT_I18N::substr($digits, 8, 1).'")
-						.replace(/9/g, "'.WT_I18N::substr($digits, 9, 1).'");
+						.replace(/0/g, "'.mb_substr($digits, 0, 1).'")
+						.replace(/1/g, "'.mb_substr($digits, 1, 1).'")
+						.replace(/2/g, "'.mb_substr($digits, 2, 1).'")
+						.replace(/3/g, "'.mb_substr($digits, 3, 1).'")
+						.replace(/4/g, "'.mb_substr($digits, 4, 1).'")
+						.replace(/5/g, "'.mb_substr($digits, 5, 1).'")
+						.replace(/6/g, "'.mb_substr($digits, 6, 1).'")
+						.replace(/7/g, "'.mb_substr($digits, 7, 1).'")
+						.replace(/8/g, "'.mb_substr($digits, 8, 1).'")
+						.replace(/9/g, "'.mb_substr($digits, 9, 1).'");
 				}
 			';
 		}

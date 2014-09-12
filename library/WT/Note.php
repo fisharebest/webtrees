@@ -85,6 +85,6 @@ class WT_Note extends WT_GedcomRecord {
 		}
 
 		list($text) = explode("\n", $text);
-		$this->_addName('NOTE', strlen($text) > 100 ? WT_I18N::substr($text, 0, 100) . WT_I18N::translate('…') : $text, $this->getGedcom());
+		$this->_addName('NOTE', strlen($text) > 100 ? mb_substr($text, 0, 100) . WT_I18N::translate('…') : $text, $this->getGedcom());
 	}
 }

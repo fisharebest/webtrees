@@ -148,7 +148,7 @@ class WT_Query_Name {
 			break;
 		}
 		// No special rules - just take the first character
-		return WT_I18N::substr($name, 0, 1);
+		return mb_substr($name, 0, 1);
 	}
 
 	/**

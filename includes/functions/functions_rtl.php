@@ -1038,29 +1038,29 @@ function finishCurrentSpan(&$result, $theEnd=false) {
 function utf8_wordwrap($string, $width=75, $sep="\n", $cut=false) {
 	$out='';
 	while ($string) {
-		if (WT_I18N::strlen($string) <= $width){ //Do not wrap any text that is less than the output area.
-			$out.=$string;
-			$string='';
+		if (mb_strlen($string) <= $width){ //Do not wrap any text that is less than the output area.
+			$out .= $string;
+			$string = '';
 		} else {
-			$sub1=WT_I18N::substr($string, 0, $width+1);
-			if (WT_I18N::substr($string,WT_I18N::strlen($sub1)-1,1)==' ') //include words that end by a space immediately after the area.
-				$sub=$sub1;
+			$sub1 = mb_substr($string, 0, $width+1);
+			if (mb_substr($string, mb_strlen($sub1)-1, 1) == ' ') //include words that end by a space immediately after the area.
+				$sub = $sub1;
 			else
-				$sub=WT_I18N::substr($string, 0, $width);
-			$spacepos=strrpos($sub, ' ');
-			if ($spacepos==false) {
+				$sub = mb_substr($string, 0, $width);
+			$spacepos = strrpos($sub, ' ');
+			if ($spacepos == false) {
 				// No space on line?
 				if ($cut) {
-					$out.=$sub.$sep;
-					$string=WT_I18N::substr($string, WT_I18N::strlen($sub));
+					$out .= $sub . $sep;
+					$string = mb_substr($string, mb_strlen($sub));
 				} else {
-					$spacepos=strpos($string, ' ');
-					if ($spacepos==false) {
-						$out.=$string;
-						$string='';
+					$spacepos = strpos($string, ' ');
+					if ($spacepos == false) {
+						$out .= $string;
+						$string = '';
 					} else {
-						$out.=substr($string, 0, $spacepos).$sep;
-						$string=substr($string, $spacepos+1);
+						$out .= substr($string, 0, $spacepos).$sep;
+						$string = substr($string, $spacepos + 1);
 					}
 				}
 			} else {
