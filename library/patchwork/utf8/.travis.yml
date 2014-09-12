@@ -10,6 +10,3 @@ php:
 script:
   - phpunit --coverage-text
   - phpunit --group unicode --coverage-text
-
-matrix:
-  fast_finish: true

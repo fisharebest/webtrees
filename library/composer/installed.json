@@ -194,59 +194,6 @@
         ]
     },
     {
-        "name": "patchwork/utf8",
-        "version": "v1.1.24",
-        "version_normalized": "1.1.24.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/nicolas-grekas/Patchwork-UTF8.git",
-            "reference": "40f552c019956f446553b19f7de2da2f9c74d730"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/nicolas-grekas/Patchwork-UTF8/zipball/40f552c019956f446553b19f7de2da2f9c74d730",
-            "reference": "40f552c019956f446553b19f7de2da2f9c74d730",
-            "shasum": ""
-        },
-        "require": {
-            "lib-pcre": ">=7.3",
-            "php": ">=5.3.0"
-        },
-        "suggest": {
-            "ext-iconv": "Use iconv for best performance",
-            "ext-intl": "Use Intl for best performance",
-            "ext-mbstring": "Use Mbstring for best performance"
-        },
-        "time": "2014-06-17 08:23:06",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Patchwork": "class/",
-                "Normalizer": "class/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "(Apache-2.0 or GPL-2.0)"
-        ],
-        "authors": [
-            {
-                "name": "Nicolas Grekas",
-                "email": "p@tchwork.com",
-                "role": "Developer"
-            }
-        ],
-        "description": "Extensive, portable and performant handling of UTF-8 and grapheme clusters for PHP",
-        "homepage": "https://github.com/nicolas-grekas/Patchwork-UTF8",
-        "keywords": [
-            "i18n",
-            "unicode",
-            "utf-8",
-            "utf8"
-        ]
-    },
-    {
         "name": "tecnick.com/tcpdf",
         "version": "6.0.089",
         "version_normalized": "6.0.089.0",
@@ -371,6 +318,64 @@
             "guid",
             "identifier",
             "uuid"
+        ]
+    },
+    {
+        "name": "patchwork/utf8",
+        "version": "v1.1.25",
+        "version_normalized": "1.1.25.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/nicolas-grekas/Patchwork-UTF8.git",
+            "reference": "2d43bd047b120279511d45e76e61c5a9812d9a83"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/nicolas-grekas/Patchwork-UTF8/zipball/2d43bd047b120279511d45e76e61c5a9812d9a83",
+            "reference": "2d43bd047b120279511d45e76e61c5a9812d9a83",
+            "shasum": ""
+        },
+        "require": {
+            "lib-pcre": ">=7.3",
+            "php": ">=5.3.0"
+        },
+        "suggest": {
+            "ext-iconv": "Use iconv for best performance",
+            "ext-intl": "Use Intl for best performance",
+            "ext-mbstring": "Use Mbstring for best performance"
+        },
+        "time": "2014-08-05 08:00:32",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.1-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Patchwork": "class/",
+                "Normalizer": "class/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "(Apache-2.0 or GPL-2.0)"
+        ],
+        "authors": [
+            {
+                "name": "Nicolas Grekas",
+                "email": "p@tchwork.com",
+                "role": "Developer"
+            }
+        ],
+        "description": "Extensive, portable and performant handling of UTF-8 and grapheme clusters for PHP",
+        "homepage": "https://github.com/nicolas-grekas/Patchwork-UTF8",
+        "keywords": [
+            "i18n",
+            "unicode",
+            "utf-8",
+            "utf8"
         ]
     }
 ]
