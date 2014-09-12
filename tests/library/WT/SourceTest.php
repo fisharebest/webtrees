@@ -22,10 +22,10 @@ class SourceTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * Test FooBar
+	 * Test extracting the name from a source record
 	 *
 	 * @return void
 	 */
-	public function testFooBar() {
+	public function testExtractName() {
 	}
 }

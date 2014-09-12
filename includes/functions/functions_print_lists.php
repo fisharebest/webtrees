@@ -1587,7 +1587,7 @@ function format_surname_list($surnames, $style, $totals, $script) {
 		$first_spfxsurn=null;
 		foreach ($surns as $spfxsurn=>$indis) {
 			if ($first_spfxsurn) {
-				if (utf8_strtoupper($spfxsurn)==utf8_strtoupper($first_spfxsurn)) {
+				if (WT_I18N::strtoupper($spfxsurn)==WT_I18N::strtoupper($first_spfxsurn)) {
 					$surns[$first_spfxsurn]=array_merge($surns[$first_spfxsurn], $surns[$spfxsurn]);
 					unset ($surns[$spfxsurn]);
 				}

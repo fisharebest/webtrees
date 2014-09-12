@@ -38,8 +38,8 @@ function reformat_record_export($rec) {
 		// Split long lines
 		// The total length of a GEDCOM line, including level number, cross-reference number,
 		// tag, value, delimiters, and terminator, must not exceed 255 (wide) characters.
-		// Use quick strlen() check before using slower utf8_strlen() check
-		if (strlen($line)>WT_GEDCOM_LINE_LENGTH && utf8_strlen($line)>WT_GEDCOM_LINE_LENGTH) {
+		// Use quick strlen() check before using slower WT_I18N::strlen() check
+		if (strlen($line)>WT_GEDCOM_LINE_LENGTH && WT_I18N::strlen($line)>WT_GEDCOM_LINE_LENGTH) {
 			list($level, $tag)=explode(' ', $line, 3);
 			if ($tag!='CONT' && $tag!='CONC') {
 				$level++;
@@ -49,29 +49,29 @@ function reformat_record_export($rec) {
 				$pos=WT_GEDCOM_LINE_LENGTH;
 				if ($WORD_WRAPPED_NOTES) {
 					// Split on a space, and remove it (for compatibility with some desktop apps)
-					while ($pos && utf8_substr($line, $pos-1, 1)!=' ') {
+					while ($pos && WT_I18N::substr($line, $pos-1, 1)!=' ') {
 						--$pos;
 					}
 					if ($pos==strpos($line, ' ', 3)+1) {
 						// No spaces in the data! Can’t split it :-(
 						break;
 					} else {
-						$newrec.=utf8_substr($line, 0, $pos-1).WT_EOL;
-						$line=$level.' CONC '.utf8_substr($line, $pos);
+						$newrec.=WT_I18N::substr($line, 0, $pos-1).WT_EOL;
+						$line=$level.' CONC '.WT_I18N::substr($line, $pos);
 					}
 				} else {
 					// Split on a non-space (standard gedcom behaviour)
-					while ($pos && utf8_substr($line, $pos-1, 1)==' ') {
+					while ($pos && WT_I18N::substr($line, $pos-1, 1)==' ') {
 						--$pos;
 					}
 					if ($pos==strpos($line, ' ', 3)) {
 						// No non-spaces in the data! Can’t split it :-(
 						break;
 					}
-					$newrec.=utf8_substr($line, 0, $pos).WT_EOL;
-					$line=$level.' CONC '.utf8_substr($line, $pos);
+					$newrec.=WT_I18N::substr($line, 0, $pos).WT_EOL;
+					$line=$level.' CONC '.WT_I18N::substr($line, $pos);
 				}
-			} while (utf8_strlen($line)>WT_GEDCOM_LINE_LENGTH);
+			} while (WT_I18N::strlen($line)>WT_GEDCOM_LINE_LENGTH);
 		}
 		$newrec.=$line.WT_EOL;
 	}

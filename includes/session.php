@@ -232,7 +232,6 @@ require WT_ROOT.'includes/functions/functions_print.php';
 require WT_ROOT.'includes/functions/functions_mediadb.php';
 require WT_ROOT.'includes/functions/functions_date.php';
 require WT_ROOT.'includes/functions/functions_charts.php';
-require WT_ROOT.'includes/functions/functions_utf-8.php';
 
 // Set a custom error handler
 set_error_handler(function ($errno, $errstr) {

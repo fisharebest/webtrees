@@ -59,8 +59,8 @@ if (version_compare(PHP_VERSION, WT_REQUIRED_PHP_VERSION)<0) {
 }
 
 require 'includes/functions/functions.php';
-require 'includes/functions/functions_utf-8.php';
 require 'includes/functions/functions_edit.php';
+
 $WT_REQUEST = new Zend_Controller_Request_Http();
 $WT_SESSION = new stdClass;
 $WT_SESSION->locale  = null; // Needed for WT_I18N
@@ -829,9 +829,8 @@ try {
 		" comment              VARCHAR(255)     NOT NULL,".
 		" updated              TIMESTAMP        NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,".
 		" PRIMARY KEY                          (site_access_rule_id),".
-		"         KEY `##site_access_rule_ix1` (rule),".
-		"         KEY `##site_access_rule_ix2` (user_agent_pattern, ip_address_start, ip_address_end, rule),".
-		"         KEY `##site_access_rule_ix3` (updated)".
+		" UNIQUE  KEY `##site_access_rule_ix1` (ip_address_end, ip_address_start, user_agent_pattern, rule),".
+		"         KEY `##site_access_rule_ix2` (rule)".
 		") ENGINE=InnoDB COLLATE=utf8_unicode_ci"
 	);
 

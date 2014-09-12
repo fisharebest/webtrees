@@ -59,7 +59,7 @@ class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
 		if ($COMMON_NAMES_REMOVE) {
 			foreach (preg_split("/[,; ]+/", $COMMON_NAMES_REMOVE) as $delname) {
 				unset($top_surnames[$delname]);
-				unset($top_surnames[utf8_strtoupper($delname)]);
+				unset($top_surnames[WT_I18N::strtoupper($delname)]);
 			}
 		}
 
@@ -88,7 +88,7 @@ class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
 
 		switch ($infoStyle) {
 		case 'tagcloud':
-			uksort($all_surnames,'utf8_strcasecmp');
+			uksort($all_surnames,array('WT_I18N', 'strcasecmp'));
 			$content=format_surname_tagcloud($all_surnames, 'indilist.php', true);
 			break;
 		case 'list':

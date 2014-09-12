@@ -135,8 +135,6 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 					// list of linked records includes families as well as individuals.
 					if ($person) {
 						$bdate = $person->getEstimatedBirthDate();
-						$ddate = $person->getEstimatedDeathDate();
-						//--Checks to see if the details of that person can be viewed
 						if ($bdate->isOK() && $person->canShow()) {
 							$this->people[] = $person;
 						}
@@ -160,8 +158,6 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 			foreach ($indis as $person) {
 				if (empty($searchplace) || in_array($person->getXref(), $this->pids)) {
 					$bdate = $person->getEstimatedBirthDate();
-					$ddate = $person->getEstimatedDeathDate();
-					//--Checks to see if the details of that person can be viewed
 					if ($bdate->isOK() && $person->canShow()) {
 						$this->people[] = $person;
 					}
@@ -179,7 +175,7 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 			$ddate = $this->people[0]->getEstimatedDeathDate();
 			$this->timelineMinYear=$bdate->gregorianYear();
 			$this->timelineMaxYear=$ddate->gregorianYear() ? $ddate->gregorianYear() : date('Y');
-			foreach ($this->people as $key => $value) {
+			foreach ($this->people as $value) {
 				$bdate = $value->getEstimatedBirthDate();
 				$ddate = $value->getEstimatedDeathDate();
 				$this->timelineMinYear=min($this->timelineMinYear, $bdate->gregorianYear());
@@ -252,6 +248,7 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 		}
 		return $year;
 	}
+
 	//Prints the time line
 	function PrintTimeline($startYear, $endYear) {
 		$leftPosition = 14; //start point
@@ -335,7 +332,7 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 				$height = 2 * $this->zoomfactor;
 
 				$startPos = (($birthYear - $this->timelineMinYear) * $this->zoomfactor) + 14 + $modFix;
-				$minlength = utf8_strlen(strip_tags($value->getFullName())) * $this->zoomfactor;
+				$minlength = WT_I18N::strlen(strip_tags($value->getFullName())) * $this->zoomfactor;
 
 				if ($startPos > 15) {
 					$startPos = (($birthYear - $this->timelineMinYear) * $this->zoomfactor) + 15 + $modFix;
@@ -549,7 +546,7 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 		case 'BIRT':  return WT_I18N::translate_c('Abbreviation for birth',            'b.');
 		case 'MARR':  return WT_I18N::translate_c('Abbreviation for marriage',         'm.');
 		case 'DEAT':  return WT_I18N::translate_c('Abbreviation for death',            'd.');
-		default:      return utf8_substr(WT_Gedcom_Tag::getLabel($tag), 0, 1); // Just use the first letter of the full fact
+		default:      return WT_I18N::substr(WT_Gedcom_Tag::getLabel($tag), 0, 1); // Just use the first letter of the full fact
 		}
 	}
 }

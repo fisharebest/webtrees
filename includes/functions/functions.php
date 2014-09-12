@@ -249,7 +249,7 @@ function get_cont($nlevel, $nrec) {
 function event_sort($a, $b) {
 	if ($a['jd']==$b['jd']) {
 		if ($a['anniv']==$b['anniv']) {
-			return utf8_strcasecmp($a['fact'], $b['fact']);
+			return WT_I18N::strcasecmp($a['fact'], $b['fact']);
 		}
 		else {
 			return $a['anniv']-$b['anniv'];
@@ -1756,7 +1756,7 @@ function get_theme_names() {
 			}
 		}
 		$d->close();
-		uksort($themes, 'utf8_strcasecmp');
+		uksort($themes, array('WT_I18N', 'strcasecmp'));
 	}
 	return $themes;
 }

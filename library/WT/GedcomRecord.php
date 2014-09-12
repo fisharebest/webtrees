@@ -100,7 +100,7 @@ class WT_GedcomRecord {
 	// Get an instance of a GedcomRecord object.  For single records,
 	// we just receive the XREF.  For bulk records (such as lists
 	// and search results) we can receive the GEDCOM data as well.
-	static public function getInstance($xref, $gedcom_id=WT_GED_ID, $gedcom=null) {
+	public static function getInstance($xref, $gedcom_id=WT_GED_ID, $gedcom=null) {
 		// Is this record already in the cache?
 		if (isset(self::$gedcom_record_cache[$xref][$gedcom_id])) {
 			return self::$gedcom_record_cache[$xref][$gedcom_id];
@@ -550,10 +550,10 @@ class WT_GedcomRecord {
 
 	// Static helper function to sort an array of objects by name
 	// Records whose names cannot be displayed are sorted at the end.
-	static function Compare($x, $y) {
+	public static function Compare($x, $y) {
 		if ($x->canShowName()) {
 			if ($y->canShowName()) {
-				return utf8_strcasecmp($x->getSortName(), $y->getSortName());
+				return WT_I18N::strcasecmp($x->getSortName(), $y->getSortName());
 			} else {
 				return -1; // only $y is private
 			}
@@ -782,9 +782,16 @@ class WT_GedcomRecord {
 		return null;
 	}
 
-	// The facts and events for this record
-	// $override allows us to implement $SHOW_PRIVATE_RELATIONSHIPS and $SHOW_LIVING_NAMES, by giving
-	// access to otherwise private records.
+	/**
+	 * The facts and events for this record.
+	 *
+	 * @param string $filter
+	 * @param bool   $sort
+	 * @param int    $access_level
+	 * @param bool   $override     Include private records, to allow us to implement $SHOW_PRIVATE_RELATIONSHIPS and $SHOW_LIVING_NAMES.
+	 *
+	 * @return WT_Fact[]
+	 */
 	public function getFacts($filter=null, $sort=false, $access_level=WT_USER_ACCESS_LEVEL, $override=false) {
 		$facts=array();
 		if ($this->canShow($access_level) || $override) {

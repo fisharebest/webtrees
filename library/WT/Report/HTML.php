@@ -455,7 +455,7 @@ class WT_Report_HTML extends WT_Report_Base {
 
 	function getStringWidth($text) {
 		$style = $this->getStyle($this->currentStyle);
-		return utf8_strlen($text) * ($style["size"]/2);
+		return WT_I18N::strlen($text) * ($style["size"]/2);
 	}
 
 	/**
@@ -715,7 +715,7 @@ class CellHTML extends Cell {
 			}
 		}
 		// Check the width if set to page wide OR set by xml to larger then page wide
-		if (($this->width == 0) or $this->width > $html->getRemainingWidth()) {
+		if ($this->width == 0 || $this->width > $html->getRemainingWidth()) {
 			$this->width = $html->getRemainingWidth();
 		}
 		// We have to calculate a different width for the padding, counting on both side
@@ -947,7 +947,7 @@ class TextBoxHTML extends TextBox {
 		}
 
 		// Check the width if set to page wide OR set by xml to larger then page wide
-		if (($this->width == 0) or ($this->width > $html->getRemainingWidth())) {
+		if ($this->width == 0 || $this->width > $html->getRemainingWidth()) {
 			$this->width = $html->getRemainingWidth();
 		}
 		// Setup the CellPadding

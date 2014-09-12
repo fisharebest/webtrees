@@ -111,10 +111,17 @@ class WT_Family extends WT_GedcomRecord {
 		return true;
 	}
 
-	// Find the spouse of a person.
+	/**
+	 * Find the spouse of a person.
+	 *
+	 * @param WT_Individual $person
+	 * @param int           $access_level
+	 *
+	 * @return WT_Individual|null
+	 *
+	 * @todo do we need to check $access_level?  Presumably we have already checked for access to this family, which includes its members?
+	 */
 	function getSpouse(WT_Individual $person, $access_level=WT_USER_ACCESS_LEVEL) {
-		// TODO: do we need to check $access_level?  Presumably we have already checked
-		// for access to this family, which includes its members?
 		if ($person === $this->wife) {
 			return $this->husb;
 		} else {
@@ -122,6 +129,13 @@ class WT_Family extends WT_GedcomRecord {
 		}
 	}
 
+	/**
+	 * Get the (zero, one or two) spouses from this family.
+	 *
+	 * @param int $access_level
+	 *
+	 * @return WT_Individual[]
+	 */
 	function getSpouses($access_level=WT_USER_ACCESS_LEVEL) {
 		$spouses=array();
 		if ($this->husb && $this->husb->canShowName($access_level)) {
@@ -133,7 +147,13 @@ class WT_Family extends WT_GedcomRecord {
 		return $spouses;
 	}
 
-	// Get a list of this family’s children
+	/**
+	 * Get a list of this family’s children.
+	 *
+	 * @param int $access_level
+	 *
+	 * @return WT_Individual[]
+	 */
 	function getChildren($access_level=WT_USER_ACCESS_LEVEL) {
 		global $SHOW_PRIVATE_RELATIONSHIPS;
 
@@ -147,12 +167,23 @@ class WT_Family extends WT_GedcomRecord {
 		return $children;
 	}
 
-	// Static helper function to sort an array of families by marriage date
-	static function CompareMarrDate($x, $y) {
+	/**
+	 * Static helper function to sort an array of families by marriage date
+	 *
+	 * @param WT_Family $x
+	 * @param WT_Family $y
+	 *
+	 * @return int
+	 */
+	public static function compareMarrDate(WT_Family $x, WT_Family $y) {
 		return WT_Date::Compare($x->getMarriageDate(), $y->getMarriageDate());
 	}
 
-	// Number of children - for the individual list
+	/**
+	 * Number of children - for the individual list
+	 *
+	 * @return int
+	 */
 	function getNumberOfChildren() {
 		$nchi = count($this->getChildren());
 		foreach ($this->getFacts('NCHI') as $fact) {
@@ -171,8 +202,9 @@ class WT_Family extends WT_GedcomRecord {
 	}
 
 	/**
-	 * get marriage date
-	 * @return string
+	 * Get marriage date
+	 *
+	 * @return WT_Date
 	 */
 	function getMarriageDate() {
 		$marriage = $this->getMarriage();
@@ -183,14 +215,19 @@ class WT_Family extends WT_GedcomRecord {
 		}
 	}
 
-	// Get the marriage year - displayed on lists of families
+	/**
+	 * Get the marriage year - displayed on lists of families
+	 *
+	 * @return int
+	 */
 	function getMarriageYear() {
 		return $this->getMarriageDate()->MinDate()->y;
 	}
 
 	/**
-	 * get the type for this marriage
-	 * @return string
+	 * Get the type for this marriage
+	 *
+	 * @return string|null
 	 */
 	function getMarriageType() {
 		$marriage = $this->getMarriage();
@@ -202,8 +239,9 @@ class WT_Family extends WT_GedcomRecord {
 	}
 
 	/**
-	 * get the marriage place
-	 * @return string
+	 * Get the marriage place
+	 *
+	 * @return WT_Place
 	 */
 	function getMarriagePlace() {
 		$marriage = $this->getMarriage();

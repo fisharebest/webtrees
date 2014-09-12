@@ -29,12 +29,7 @@ if (!defined('WT_WEBTREES')) {
 }
 ?>
 
-
 	<table id="navenclose">
-		<?php
-
-		//-- Search Function ------------------------------------------------------------
-		?>
 		<tr>
 			<td class="descriptionbox"><?php echo WT_I18N::translate('Add individuals'); ?></td>
 		</tr>
@@ -103,7 +98,7 @@ if (!defined('WT_WEBTREES')) {
 							$chfulln = rtrim($chnam[0]['givn'],'*')." ".$chnam[0]['surname'];
 							$chfulln = str_replace("@N.N.", "(".WT_I18N::translate('unknown').")", $chfulln);
 							$chfulln = str_replace("@P.N.", "(".WT_I18N::translate('unknown').")", $chfulln);
-							$chfulln = addslashes($chfulln); // Child’s Full Name
+							$chfulln = WT_Filter::escapeHtml($chfulln); // Child’s Full Name
 							$chdob   = ($child->getBirthDate()->minJD()+$child->getBirthDate()->maxJD())/2; // Child’s Date of Birth (Julian)
 							$chdod   = ($child->getDeathDate()->minJD()+$child->getDeathDate()->maxJD())/2; // Child’s Date of Death (Julian)
 							$chBLD   = ($chfulln.", ".$chdob.", ".$chdod);
@@ -158,18 +153,18 @@ if (!defined('WT_WEBTREES')) {
 									<a href='#' onclick='insertRowToTable("<?php
 											echo $gparent->getXref() ; // pid = PID
 										?>", "<?php
-											echo addslashes($fulln); // nam = Full Name
+											echo WT_Filter::escapeHtml($fulln); // nam = Full Name
 										?>", "<?php
 											if (isset($fulmn)) {
-												echo addslashes($fulln); // mnam = Full Married Name
+												echo WT_Filter::escapeHtml($fulln); // mnam = Full Married Name
 											} else {
-												echo addslashes($fulln); // mnam = Full Name
+												echo WT_Filter::escapeHtml($fulln); // mnam = Full Name
 											}
 										?>", "<?php
 											if ($person === $gparent) {
 												echo 'head';
 											} else {
-												echo addslashes($label);
+												echo WT_Filter::escapeHtml($label);
 											}
 										?>", "<?php
 											echo $gparent->getSex(); // gend = Gender
@@ -279,18 +274,18 @@ if (!defined('WT_WEBTREES')) {
 									<a href='#' onclick='insertRowToTable("<?php
 											echo $gparent->getXref();
 										?>", "<?php
-											echo addslashes($fulln); // nam = Full Name
+											echo WT_Filter::escapeHtml($fulln); // nam = Full Name
 										?>", "<?php
 											if (isset($fulmn)) {
-												echo addslashes($fulmn); // mnam = Full Married Name
+												echo WT_Filter::escapeHtml($fulmn); // mnam = Full Married Name
 											} else {
-												echo addslashes($fulln); // mnam = Full Name
+												echo WT_Filter::escapeHtml($fulln); // mnam = Full Name
 											}
 										?>", "<?php
 											if ($person === $gparent) {
 												echo 'head';
 											} else {
-												echo addslashes($label);
+												echo WT_Filter::escapeHtml($label);
 											}
 										?>", "<?php
 											echo $gparent->getSex(); // gend = Gender
@@ -355,7 +350,7 @@ if (!defined('WT_WEBTREES')) {
 									$chfulln = rtrim($chnam[0]['givn'],'*')." ".$chnam[0]['surname'];
 									$chfulln = str_replace("@N.N.", "(".WT_I18N::translate('unknown').")", $chfulln);
 									$chfulln = str_replace("@P.N.", "(".WT_I18N::translate('unknown').")", $chfulln);
-									$chfulln = addslashes($chfulln); // Child’s Full Name// Child’s Full Name
+									$chfulln = WT_Filter::escapeHtml($chfulln); // Child’s Full Name// Child’s Full Name
 									$chdob   = ($chchild->getBirthDate()->minJD()+$chchild->getBirthDate()->maxJD())/2; // Child’s Date of Birth (Julian)
 									$chdod   = ($chchild->getDeathDate()->minJD()+$chchild->getDeathDate()->maxJD())/2; // Child’s Date of Death (Julian)
 									$chBLD   = ($chfulln.", ".$chdob.", ".$chdod);
@@ -409,18 +404,18 @@ if (!defined('WT_WEBTREES')) {
 										<a href='#' onclick='insertRowToTable("<?php
 												echo $child->getXref(); // pid = PID
 											?>", "<?php
-												echo addslashes($fulln); // nam = Full Name
+												echo WT_Filter::escapeHtml($fulln); // nam = Full Name
 											?>", "<?php
 												if (isset($chfulmn)) {
-													echo addslashes($chfulmn); // mnam = Full Married Name
+													echo WT_Filter::escapeHtml($chfulmn); // mnam = Full Married Name
 												} else {
-													echo addslashes($fulln); // mnam = Full Name
+													echo WT_Filter::escapeHtml($fulln); // mnam = Full Name
 												}
 											?>", "<?php
 											if ($person === $child) {
 												echo 'head';
 											} else {
-												echo addslashes($label);
+												echo WT_Filter::escapeHtml($label);
 											}
 											?>", "<?php
 												echo $child->getSex(); // gend = Gender
@@ -490,7 +485,7 @@ if (!defined('WT_WEBTREES')) {
 							$chfulln = rtrim($chnam[0]['givn'],'*')." ".$chnam[0]['surname'];
 							$chfulln = str_replace("@N.N.", "(".WT_I18N::translate('unknown').")", $chfulln);
 							$chfulln = str_replace("@P.N.", "(".WT_I18N::translate('unknown').")", $chfulln);
-							$chfulln = addslashes($chfulln); // Child’s Full Name
+							$chfulln = WT_Filter::escapeHtml($chfulln); // Child’s Full Name
 							$chdob   = ($child->getBirthDate()->minJD()+$child->getBirthDate()->maxJD())/2; // Child’s Date of Birth (Julian)
 							$chdod   = ($child->getDeathDate()->minJD()+$child->getDeathDate()->maxJD())/2; // Child’s Date of Death (Julian)
 							$chBLD   = ($chfulln.", ".$chdob.", ".$chdod);
@@ -546,18 +541,18 @@ if (!defined('WT_WEBTREES')) {
 									<a href='#' onclick='insertRowToTable("<?php
 											echo $gparent->getXref(); // pid = PID
 										?>", "<?php
-											echo addslashes($fulln); // nam = Full Name
+											echo WT_Filter::escapeHtml($fulln); // nam = Full Name
 										?>", "<?php
 											if (isset($fulmn)) {
-												echo addslashes($fulln); // mnam = Full Married Name
+												echo WT_Filter::escapeHtml($fulln); // mnam = Full Married Name
 											} else {
-												echo addslashes($fulln); // mnam = Full Name
+												echo WT_Filter::escapeHtml($fulln); // mnam = Full Name
 											}
 										?>", "<?php
 											if ($person === $gparent) {
 												echo 'head';
 											} else {
-												echo addslashes($label);
+												echo WT_Filter::escapeHtml($label);
 											}
 										?>", "<?php
 											echo $gparent->getSex(); // gend = Gender
@@ -669,18 +664,18 @@ if (!defined('WT_WEBTREES')) {
 									<a href='#' onclick='insertRowToTable("<?php
 											echo $gparent->getXref() ; // pid = PID
 										?>", "<?php
-											echo addslashes($fulln); // nam = Full Name
+											echo WT_Filter::escapeHtml($fulln); // nam = Full Name
 										?>", "<?php
 											if (isset($fulmn)) {
-												echo addslashes($fulmn); // mnam = Full Married Name
+												echo WT_Filter::escapeHtml($fulmn); // mnam = Full Married Name
 											} else {
-												echo addslashes($fulln); // mnam = Full Name
+												echo WT_Filter::escapeHtml($fulln); // mnam = Full Name
 											}
 										?>", "<?php
 											if ($person ===$gparent) {
 												echo 'head';
 											} else {
-												echo addslashes($label);
+												echo WT_Filter::escapeHtml($label);
 											}
 										?>", "<?php
 											echo $gparent->getSex(); // gend = Gender
@@ -743,7 +738,7 @@ if (!defined('WT_WEBTREES')) {
 									$chfulln = rtrim($chnam[0]['givn'],'*')." ".$chnam[0]['surname'];
 									$chfulln = str_replace("@N.N.", "(".WT_I18N::translate('unknown').")", $chfulln);
 									$chfulln = str_replace("@P.N.", "(".WT_I18N::translate('unknown').")", $chfulln);
-									$chfulln = addslashes($chfulln); // Child’s Full Name
+									$chfulln = WT_Filter::escapeHtml($chfulln); // Child’s Full Name
 									$chdob   = ($chchild->getBirthDate()->minJD()+$chchild->getBirthDate()->maxJD())/2; // Child’s Date of Birth (Julian)
 									$chdod   = ($chchild->getDeathDate()->minJD()+$chchild->getDeathDate()->maxJD())/2; // Child’s Date of Death (Julian)
 									$chBLD   = ($chfulln.", ".$chdob.", ".$chdod);
@@ -791,18 +786,18 @@ if (!defined('WT_WEBTREES')) {
 									<a href='#' onclick='insertRowToTable("<?php
 											echo $child->getXref() ; // pid = PID
 										?>", "<?php
-											echo addslashes($fulln); // nam = Full Name
+											echo WT_Filter::escapeHtml($fulln); // nam = Full Name
 										?>", "<?php
 											if (isset($chfulmn)) {
-												echo addslashes($chfulmn); // mnam = Full Married Name
+												echo WT_Filter::escapeHtml($chfulmn); // mnam = Full Married Name
 											} else {
-												echo addslashes($fulln); // mnam = Full Name
+												echo WT_Filter::escapeHtml($fulln); // mnam = Full Name
 											}
 										?>", "<?php
 											if ($person === $child) {
 												echo 'head';
 											} else {
-												echo addslashes($label);
+												echo WT_Filter::escapeHtml($label);
 											}
 										?>", "<?php
 											echo $child->getSex(); // gend = Gender
@@ -868,7 +863,7 @@ if (!defined('WT_WEBTREES')) {
 							$chfulln = rtrim($chnam[0]['givn'],'*')." ".$chnam[0]['surname'];
 							$chfulln = str_replace("@N.N.", "(".WT_I18N::translate('unknown').")", $chfulln);
 							$chfulln = str_replace("@P.N.", "(".WT_I18N::translate('unknown').")", $chfulln);
-							$chfulln = addslashes($chfulln); // Child’s Full Name
+							$chfulln = WT_Filter::escapeHtml($chfulln); // Child’s Full Name
 							$chdob   = ($child->getBirthDate()->minJD()+$child->getBirthDate()->maxJD())/2; // Child’s Date of Birth (Julian)
 							$chdod   = ($child->getDeathDate()->minJD()+$child->getDeathDate()->maxJD())/2; // Child’s Date of Death (Julian)
 							$chBLD   = ($chfulln.", ".$chdob.", ".$chdod);
@@ -924,18 +919,18 @@ if (!defined('WT_WEBTREES')) {
 									<a href='#' onclick='insertRowToTable("<?php
 											echo $gparent->getXref() ; // pid = PID
 										?>", "<?php
-											echo addslashes($fulln); // nam = Full Name
+											echo WT_Filter::escapeHtml($fulln); // nam = Full Name
 										?>", "<?php
 											if (isset($fulmn)) {
-												echo addslashes($fulln); // mnam = Full Married Name
+												echo WT_Filter::escapeHtml($fulln); // mnam = Full Married Name
 											} else {
-												echo addslashes($fulln); // mnam = Full Name
+												echo WT_Filter::escapeHtml($fulln); // mnam = Full Name
 											}
 										?>", "<?php
 											if ($person === $gparent) {
 												echo 'head';
 											} else {
-												echo addslashes($label);
+												echo WT_Filter::escapeHtml($label);
 											}
 										?>", "<?php
 											echo $gparent->getSex(); // gend = Gender
@@ -1048,18 +1043,18 @@ if (!defined('WT_WEBTREES')) {
 									<a href='#' onclick='insertRowToTable("<?php
 											echo $gparent->getXref() ; // pid = PID
 									?>", "<?php
-										echo addslashes($fulln); // nam = Full Name
+										echo WT_Filter::escapeHtml($fulln); // nam = Full Name
 									?>", "<?php
 										if (isset($fulmn)) {
-											echo addslashes($fulmn); // mnam = Full Married Name
+											echo WT_Filter::escapeHtml($fulmn); // mnam = Full Married Name
 										} else {
-											echo addslashes($fulln); // mnam = Full Name
+											echo WT_Filter::escapeHtml($fulln); // mnam = Full Name
 										}
 									?>", "<?php
 										if ($person === $gparent) {
 											echo 'head';
 										} else {
-											echo addslashes($label);
+											echo WT_Filter::escapeHtml($label);
 										}
 									?>", "<?php
 										echo $gparent->getSex(); // gend = Gender
@@ -1129,7 +1124,7 @@ if (!defined('WT_WEBTREES')) {
 									$chfulln = rtrim($chnam[0]['givn'],'*')." ".$chnam[0]['surname'];
 									$chfulln = str_replace("@N.N.", "(".WT_I18N::translate('unknown').")", $chfulln);
 									$chfulln = str_replace("@P.N.", "(".WT_I18N::translate('unknown').")", $chfulln);
-									$chfulln = addslashes($chfulln); // Child’s Full Name// Child’s Full Name
+									$chfulln = WT_Filter::escapeHtml($chfulln); // Child’s Full Name// Child’s Full Name
 									$chdob   = ($chchild->getBirthDate()->minJD()+$chchild->getBirthDate()->maxJD())/2; // Child’s Date of Birth (Julian)
 									$chdod   = ($chchild->getDeathDate()->minJD()+$chchild->getDeathDate()->maxJD())/2; // Child’s Date of Death (Julian)
 									$chBLD   = ($chfulln.", ".$chdob.", ".$chdod);
@@ -1176,18 +1171,18 @@ if (!defined('WT_WEBTREES')) {
 									<a href='#' onclick='insertRowToTable("<?php
 											echo $child->getXref() ; // pid = PID
 										?>", "<?php
-											echo addslashes($fulln); // nam = Full Name
+											echo WT_Filter::escapeHtml($fulln); // nam = Full Name
 										?>", "<?php
 											if (isset($chfulmn)) {
-												echo addslashes($chfulmn); // mnam = Full Married Name
+												echo WT_Filter::escapeHtml($chfulmn); // mnam = Full Married Name
 											} else {
-												echo addslashes($fulln); // mnam = Full Name
+												echo WT_Filter::escapeHtml($fulln); // mnam = Full Name
 											}
 										?>", "<?php
 											if ($person === $child) {
 												echo 'head';
 											} else {
-												echo addslashes($label);
+												echo WT_Filter::escapeHtml($label);
 											}
 										?>", "<?php
 											echo $child->getSex(); // gend = Gender
@@ -1365,11 +1360,11 @@ function print_pedigree_person_nav2($pid, $currpid, $censyear) {
 						}
 						$parentlinks .= "<a class=\"linka\" href=\"#\" onclick=\"insertRowToTable(";
 						$parentlinks .= "'".$husb->getXref()."',"; // pid = PID
-						$parentlinks .= "'".addslashes(strip_tags($fulln))."',"; // nam = Name
+						$parentlinks .= "'".WT_Filter::escapeHtml(strip_tags($fulln))."',"; // nam = Name
 						if (isset($fulmn)) {
-							$parentlinks .= "'".addslashes(strip_tags($fulln))."',"; // mnam = Full Married Name
+							$parentlinks .= "'".WT_Filter::escapeHtml(strip_tags($fulln))."',"; // mnam = Full Married Name
 						} else {
-							$parentlinks .= "'".addslashes(strip_tags($fulln))."',"; // mnam = Full Name
+							$parentlinks .= "'".WT_Filter::escapeHtml(strip_tags($fulln))."',"; // mnam = Full Name
 						}
 						if ($currpid=="Wife" || $currpid=="Husband") {
 							$parentlinks .= "'Father in Law',"; // label = 1st Gen Male Relationship
@@ -1445,11 +1440,11 @@ function print_pedigree_person_nav2($pid, $currpid, $censyear) {
 
 						$parentlinks .= "<a class=\"linka\" href=\"#\" onclick=\"insertRowToTable(";
 						$parentlinks .= "'".$wife->getXref()."',"; // pid = PID
-						$parentlinks .= "'".addslashes(strip_tags($fulln))."',"; // nam = Name
+						$parentlinks .= "'".WT_Filter::escapeHtml(strip_tags($fulln))."',"; // nam = Name
 						if (isset($fulmn)) {
-							$parentlinks .= "'".addslashes(strip_tags($fulmn))."',"; // mnam = Full Married Name
+							$parentlinks .= "'".WT_Filter::escapeHtml(strip_tags($fulmn))."',"; // mnam = Full Married Name
 						} else {
-							$parentlinks .= "'".addslashes(strip_tags($fulln))."',"; // mnam = Full Name
+							$parentlinks .= "'".WT_Filter::escapeHtml(strip_tags($fulln))."',"; // mnam = Full Name
 						}
 						if ($currpid=="Wife" || $currpid=="Husband") {
 							$parentlinks .= "'Mother in Law',"; // label = 1st Gen Female Relationship
@@ -1549,11 +1544,11 @@ function print_pedigree_person_nav2($pid, $currpid, $censyear) {
 							}
 							$parentlinks .= "<a class=\"linka\" href=\"#\" onclick=\"insertRowToTable(";
 							$parentlinks .= "'".$husb->getXref()."',"; // pid = PID
-							$parentlinks .= "'".addslashes(strip_tags($fulln))."',"; // nam = Name
+							$parentlinks .= "'".WT_Filter::escapeHtml(strip_tags($fulln))."',"; // nam = Name
 							if (isset($fulmn)) {
-								$parentlinks .= "'".addslashes(strip_tags($fulln))."',"; // mnam = Full Married Name
+								$parentlinks .= "'".WT_Filter::escapeHtml(strip_tags($fulln))."',"; // mnam = Full Married Name
 							} else {
-								$parentlinks .= "'".addslashes(strip_tags($fulln))."',"; // mnam = Full Name
+								$parentlinks .= "'".WT_Filter::escapeHtml(strip_tags($fulln))."',"; // mnam = Full Name
 							}
 							if ($currpid=="Wife" || $currpid=="Husband") {
 								$parentlinks .= "'Step Father-in-Law',"; // label = 1st Gen Male Relationship
@@ -1631,11 +1626,11 @@ function print_pedigree_person_nav2($pid, $currpid, $censyear) {
 
 							$parentlinks .= "<a class=\"linka\" href=\"#\" onclick=\"insertRowToTable(";
 							$parentlinks .= "'".$wife->getXref()."',"; // pid = PID
-							$parentlinks .= "'".addslashes(strip_tags($fulln))."',"; // nam = Name
+							$parentlinks .= "'".WT_Filter::escapeHtml(strip_tags($fulln))."',"; // nam = Name
 							if (isset($fulmn)) {
-								$parentlinks .= "'".addslashes(strip_tags($fulmn))."',"; // mnam = Full Married Name
+								$parentlinks .= "'".WT_Filter::escapeHtml(strip_tags($fulmn))."',"; // mnam = Full Married Name
 							} else {
-								$parentlinks .= "'".addslashes(strip_tags($fulln))."',"; // mnam = Full Name
+								$parentlinks .= "'".WT_Filter::escapeHtml(strip_tags($fulln))."',"; // mnam = Full Name
 							}
 							if ($currpid=="Wife" || $currpid=="Husband") {
 								$parentlinks .= "'Step Mother-in-Law',"; // label = 1st Gen Female Relationship
@@ -1739,11 +1734,11 @@ function print_pedigree_person_nav2($pid, $currpid, $censyear) {
 
 						$spouselinks .= "<a href=\"#\" onclick=\"insertRowToTable(";
 						$spouselinks .= "'".$spouse->getXref()."',"; // pid = PID
-						$spouselinks .= "'".addslashes(strip_tags($fulln))."',"; // nam = Name
+						$spouselinks .= "'".WT_Filter::escapeHtml(strip_tags($fulln))."',"; // nam = Name
 						if (isset($fulmn)) {
-							$spouselinks .= "'".addslashes(strip_tags($fulmn))."',"; // mnam = Full Married Name
+							$spouselinks .= "'".WT_Filter::escapeHtml(strip_tags($fulmn))."',"; // mnam = Full Married Name
 						} else {
-							$spouselinks .= "'".addslashes(strip_tags($fulln))."',"; // mnam = Full Name
+							$spouselinks .= "'".WT_Filter::escapeHtml(strip_tags($fulln))."',"; // mnam = Full Name
 						}
 						if ($currpid=="Son" || $currpid=="Daughter") {
 							if ($spouse->getSex()=="M") {
@@ -1868,11 +1863,11 @@ function print_pedigree_person_nav2($pid, $currpid, $censyear) {
 
 						$spouselinks .= "<a href=\"#\" onclick=\"insertRowToTable(";
 						$spouselinks .= "'".$child->getXref()."',"; // pid = PID
-						$spouselinks .= "'".addslashes(strip_tags($fulln))."',"; // nam = Name
+						$spouselinks .= "'".WT_Filter::escapeHtml(strip_tags($fulln))."',"; // nam = Name
 						if (isset($chfulmn)) {
-							$spouselinks .= "'".addslashes(strip_tags($chfulmn))."',"; // mnam = Full Married Name
+							$spouselinks .= "'".WT_Filter::escapeHtml(strip_tags($chfulmn))."',"; // mnam = Full Married Name
 						} else {
-							$spouselinks .= "'".addslashes(strip_tags($fulln))."',"; // mnam = Full Name
+							$spouselinks .= "'".WT_Filter::escapeHtml(strip_tags($fulln))."',"; // mnam = Full Name
 						}
 						if ($currpid=="Son" || $currpid=="Daughter") {
 							if ($child->getSex()=="M") {

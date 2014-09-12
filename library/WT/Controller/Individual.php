@@ -355,7 +355,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 	// charts and reports to initialise with the same records
 	public function getSignificantSurname() {
 		if ($this->record) {
-			list($surn, $givn)=explode(',', $this->record->getSortname());
+			list($surn) = explode(',', $this->record->getSortname());
 			return $surn;
 		} else {
 			return '';

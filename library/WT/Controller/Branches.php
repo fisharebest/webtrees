@@ -127,7 +127,7 @@ class WT_Controller_Branches extends WT_Controller_Page {
 	private function getDescendantsHtml(WT_Individual $individual, WT_Family $parents=null) {
 		// A person has many names.  Select the one that matches the searched surname
 		$person_name = '';
-		foreach ($individual->getAllNames() as $n=>$name) {
+		foreach ($individual->getAllNames() as $name) {
 			list($surn1) = explode(",", $name['sort']);
 			if (
 				// one name is a substring of the other
@@ -177,7 +177,7 @@ class WT_Controller_Branches extends WT_Controller_Page {
 		// spouses and children
 		$spouse_families = $individual->getSpouseFamilies();
 		if ($spouse_families) {
-			usort($spouse_families, array('WT_Family', 'CompareMarrDate'));
+			usort($spouse_families, array('WT_Family', 'compareMarrDate'));
 			$fam_html = '';
 			foreach ($spouse_families as $family) {
 				$fam_html .= $indi_html; // Repeat the individual details for each spouse.

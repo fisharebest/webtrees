@@ -95,7 +95,7 @@ class WT_Gedcom_Code_Stat {
 		foreach (self::statusCodes($tag) as $status_code) {
 			$status_names[$status_code]=self::statusName($status_code);
 		}
-		uasort($status_names, 'utf8_strcasecmp');
+		uasort($status_names, array('WT_I18N', 'strcasecmp'));
 		return $status_names;
 	}
 }
