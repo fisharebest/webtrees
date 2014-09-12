@@ -20,6 +20,9 @@ class I18NTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function setUp() {
+		\Patchwork\Utf8\Bootup::initAll();
+		\Patchwork\Utf8\Bootup::filterRequestUri();
+		\Patchwork\Utf8\Bootup::filterRequestInputs();
 	}
 
 	/**
