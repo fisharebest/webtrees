@@ -4,20 +4,20 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6a31a5ca452ae448dc494ceab93808ec",
+    "hash": "71852960dabde2be5af68460c78445db",
     "packages": [
         {
             "name": "bombayworks/zendframework1",
-            "version": "v1.12.7.1",
+            "version": "v1.12.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bombayworks/zendframework1.git",
-                "reference": "e3e6459bf317f12919d305cb8d16a61b4bf68f75"
+                "reference": "98c442a8ea215f449548db9f2269944349acc786"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bombayworks/zendframework1/zipball/e3e6459bf317f12919d305cb8d16a61b4bf68f75",
-                "reference": "e3e6459bf317f12919d305cb8d16a61b4bf68f75",
+                "url": "https://api.github.com/repos/bombayworks/zendframework1/zipball/98c442a8ea215f449548db9f2269944349acc786",
+                "reference": "98c442a8ea215f449548db9f2269944349acc786",
                 "shasum": ""
             },
             "require": {
@@ -55,7 +55,7 @@
                 "ZF1",
                 "framework"
             ],
-            "time": "2014-06-30 12:10:54"
+            "time": "2014-08-26 16:01:25"
         },
         {
             "name": "ezyang/htmlpurifier",
