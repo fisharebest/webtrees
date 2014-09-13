@@ -33,6 +33,16 @@ class WT_Date_Jalali extends WT_Date_Calendar {
 		''=>0, 'FARVA'=>1, 'ORDIB'=>2, 'KHORD'=>3, 'TIR'=>4, 'MORDA'=>5, 'SHAHR'=>6, 'MEHR'=>7, 'ABAN'=>8, 'AZAR'=>9, 'DEY'=>10, 'BAHMA'=>11, 'ESFAN'=>12
 	);
 
+	/**
+	 * Create a new calendar date
+	 *
+	 * @param mixed $date
+	 */
+	public function __construct($date) {
+		$this->calendar = new PersianCalendar;
+		parent::__construct($date);
+	}
+
 	static function calendarName() {
 		return /* I18N: The Persian/Jalali calendar */ WT_I18N::translate('Jalali');
 	}
@@ -125,33 +135,5 @@ class WT_Date_Jalali extends WT_Date_Calendar {
 		case 12: return WT_I18N::translate_c('Abbreviation for Persian month: Esfand',      'Esf' );
 		default: return '';
 		}
-	}
-
-	function IsLeapYear() {
-		return with(new PersianCalendar)->leapYear($this->y);
-	}
-
-	/**
-	 * Convert a year/month/day into a Julian day number.
-	 *
-	 * @param int $year
-	 * @param int $month
-	 * @param int $day
-	 *
-	 * @return int
-	 */
-	static function YMDtoJD($year, $month, $day) {
-		return with(new PersianCalendar)->ymdToJd($year, $month, $day);
-	}
-
-	/**
-	 * Convert a Julian day number into a year/month/day.
-	 *
-	 * @param int $jd
-	 *
-	 * @return int[]
-	 */
-	static function JDtoYMD($jd) {
-		return with(new PersianCalendar)->jdToYmd($jd);
 	}
 }

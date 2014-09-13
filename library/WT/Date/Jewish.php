@@ -24,6 +24,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use Fisharebest\ExtCalendar\JewishCalendar;
+
 class WT_Date_Jewish extends WT_Date_Calendar {
 	const CALENDAR_ESCAPE = '@#DHEBREW@';
 	const MONTHS_IN_YEAR  = 13;
@@ -31,6 +33,16 @@ class WT_Date_Jewish extends WT_Date_Calendar {
 	static $MONTH_ABBREV  = array(
 		''=>0, 'TSH'=>1, 'CSH'=>2, 'KSL'=>3, 'TVT'=>4, 'SHV'=>5, 'ADR'=>6, 'ADS'=>7, 'NSN'=>8, 'IYR'=>9, 'SVN'=>10, 'TMZ'=>11, 'AAV'=>12, 'ELL'=>13
 	);
+
+	/**
+	 * Create a new calendar date
+	 *
+	 * @param mixed $date
+	 */
+	public function __construct($date) {
+		$this->calendar = new JewishCalendar;
+		parent::__construct($date);
+	}
 
 	static function calendarName() {
 		return /* I18N: The Hebrew/Jewish calendar */ WT_I18N::translate('Jewish');
@@ -154,27 +166,6 @@ class WT_Date_Jewish extends WT_Date_Calendar {
 			return array($this->y, 8);
 		else
 			return array($this->y+($this->m==13?1:0), ($this->m%13)+1);
-	}
-
-	function IsLeapYear() {
-		return ((7*$this->y+1)%19)<7;
-	}
-
-	// TODO implement this function locally
-	static function YMDtoJD($year, $mh, $day) {
-		if (function_exists('JewishToJD'))
-			return JewishToJD($mh, $day, $year);
-		else
-			return 0;
-	}
-
-	// TODO implement this function locally
-	static function JDtoYMD($jd) {
-		if (function_exists('JdToJewish'))
-			list($m, $d, $y)=explode('/', JDToJewish($jd));
-		else
-			list($m, $d, $y)=array(0, 0, 0);
-		return array($y, $m, $d);
 	}
 
 	// Convert a decimal number to hebrew - like roman numerals, but with extra punctuation

@@ -21,6 +21,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use Fisharebest\ExtCalendar\GregorianCalendar;
+
 class WT_Individual extends WT_GedcomRecord {
 	const RECORD_TYPE = 'INDI';
 	const SQL_FETCH   = "SELECT i_gedcom FROM `##individuals` WHERE i_id=? AND i_file=?";
@@ -528,8 +530,10 @@ class WT_Individual extends WT_GedcomRecord {
 					}
 				}
 				if ($min && $max) {
-					list($y)=WT_Date_Gregorian::JDtoYMD((int)((max($min)+min($max))/2));
-					$this->_getEstimatedBirthDate=new WT_Date("EST {$y}");
+					$gregorian_calendar = new GregorianCalendar;
+
+					list($year) = $gregorian_calendar->jdToYmd((int)((max($min) + min($max)) / 2));
+					$this->_getEstimatedBirthDate=new WT_Date('EST ' . $year);
 				} else {
 					$this->_getEstimatedBirthDate=new WT_Date(''); // always return a date object
 				}

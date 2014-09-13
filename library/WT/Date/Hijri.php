@@ -34,6 +34,16 @@ class WT_Date_Hijri extends WT_Date_Calendar {
 		''=>0, 'MUHAR'=>1, 'SAFAR'=>2, 'RABIA'=>3, 'RABIT'=>4, 'JUMAA'=>5, 'JUMAT'=>6, 'RAJAB'=>7, 'SHAAB'=>8, 'RAMAD'=>9, 'SHAWW'=>10, 'DHUAQ'=>11, 'DHUAH'=>12
 	);
 
+	/**
+	 * Create a new calendar date
+	 *
+	 * @param mixed $date
+	 */
+	public function __construct($date) {
+		$this->calendar = new ArabicCalendar;
+		parent::__construct($date);
+	}
+
 	static function calendarName() {
 		return /* I18N: The Arabic/Hijri calendar */ WT_I18N::translate('Hijri');
 	}
@@ -108,35 +118,6 @@ class WT_Date_Hijri extends WT_Date_Calendar {
 	}
 
 	static function NUM_TO_SHORT_MONTH($n, $leap_year) {
-		// TODO: Do these have short names?
 		return self::NUM_TO_MONTH_NOMINATIVE($n, $leap_year);
-	}
-
-	function IsLeapYear() {
-		return with(new ArabicCalendar)->leapYear($this->y);
-	}
-
-	/**
-	 * Convert a year/month/day into a Julian day number.
-	 *
-	 * @param int $year
-	 * @param int $month
-	 * @param int $day
-	 *
-	 * @return int
-	 */
-	static function YMDtoJD($year, $month, $day) {
-		return with(new ArabicCalendar)->ymdToJd($year, $month, $day);
-	}
-
-	/**
-	 * Convert a Julian day number into a year/month/day.
-	 *
-	 * @param int $jd
-	 *
-	 * @return int[]
-	 */
-	static function JDtoYMD($jd) {
-		return with(new ArabicCalendar)->jdToYmd($jd);
 	}
 }

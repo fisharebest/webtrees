@@ -21,6 +21,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use Fisharebest\ExtCalendar\JewishCalendar;
 use Rhumsaa\Uuid\Uuid;
 
 class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
@@ -80,6 +81,8 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 
 		// ...then adjust dates
+		$jewish_calendar = new JewishCalendar;
+
 		foreach ($yahrzeits as $yahrzeit) {
 			if ($yahrzeit->getTag() == 'DEAT') { // Just DEAT, not _YART
 				$today=new WT_Date_Jewish($yahrzeit->jd);
@@ -91,13 +94,13 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 				// Everything else is taken care of by our standard anniversary rules.
 				if ($hd->d==30 && $hd->m==2 && $hd->y!=0 && $hd1->DaysInMonth()<30) { // 30 CSH
 					// Last day in CSH
-					$yahrzeit->jd = WT_Date_Jewish::YMDtoJD($today->y, 3, 1)-1;
+					$yahrzeit->jd = $jewish_calendar->ymdToJd($today->y, 3, 1)-1;
 				} elseif ($hd->d==30 && $hd->m==3 && $hd->y!=0 && $hd1->DaysInMonth()<30) { // 30 KSL
 					// Last day in KSL
-					$yahrzeit->jd = WT_Date_Jewish::YMDtoJD($today->y, 4, 1)-1;
+					$yahrzeit->jd = $jewish_calendar->ymdToJd($today->y, 4, 1)-1;
 				} elseif ($hd->d==30 && $hd->m==6 && $hd->y!=0 && $today->DaysInMonth()<30 && !$today->IsLeapYear()) { // 30 ADR
 					// Last day in SHV
-					$yahrzeit->jd = WT_Date_Jewish::YMDtoJD($today->y, 6, 1)-1;
+					$yahrzeit->jd = $jewish_calendar->ymdToJd($today->y, 6, 1)-1;
 				}
 			}
 		}

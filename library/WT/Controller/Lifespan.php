@@ -21,9 +21,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-function compare_people($a, $b) {
-	return WT_Date::Compare($a->getEstimatedBirthDate(), $b->getEstimatedBirthDate());
-}
+use Fisharebest\ExtCalendar\GregorianCalendar;
 
 class WT_Controller_Lifespan extends WT_Controller_Page {
 	var $pids = array ();
@@ -167,7 +165,9 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 		}
 
 		// Sort the array in order of birth year
-		uasort($this->people, "compare_people");
+		uasort($this->people, function (WT_Individual $a, WT_Individual $b) {
+			return WT_Date::Compare($a->getEstimatedBirthDate(), $b->getEstimatedBirthDate());
+		});
 		//If there is people in the array posted back this if occurs
 		if (isset ($this->people[0])) {
 			//Find the maximum Death year and mimimum Birth year for each individual returned in the array.
@@ -519,10 +519,12 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 
 	// Search for people who had events in a given year range
 	private static function search_indis_year_range($startyear, $endyear) {
-		// TODO: We should use Julian-days, rather than gregorian years,
-		// to allow the lifespan chart, etc., to use other calendars.
-		$startjd=WT_Date_Gregorian::YMDtoJD($startyear, 1, 1);
-		$endjd  =WT_Date_Gregorian::YMDtoJD($endyear+1, 1, 1)-1;
+		// At present, the lifespan chart is driven by Gregorian years.
+		// We ought to allow it to work with other calendars...
+		$gregorian_calendar = new GregorianCalendar;
+
+		$startjd = $gregorian_calendar->ymdToJd($startyear, 1, 1);
+		$endjd   = $gregorian_calendar->ymdToJd($endyear, 12, 31);
 
 		$sql=
 			"SELECT DISTINCT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom".

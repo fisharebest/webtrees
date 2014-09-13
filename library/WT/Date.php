@@ -31,6 +31,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use Fisharebest\ExtCalendar\GregorianCalendar;
+
 class WT_Date {
 	var $qual1=null; // Optional qualifier, such as BEF, FROM, ABT
 	var $date1=null; // The first (or only) date
@@ -406,8 +408,10 @@ class WT_Date {
 	// such as the ancestry.com search interface or the dated fact icons.
 	function gregorianYear() {
 		if ($this->isOK()) {
-			list($y)=WT_Date_Gregorian::JDtoYMD($this->JD());
-			return $y;
+			$gregorian_calendar = new GregorianCalendar;
+			list($year) = $gregorian_calendar->jdToYmd($this->JD());
+
+			return $year;
 		} else {
 			return 0;
 		}

@@ -23,6 +23,13 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use Fisharebest\ExtCalendar\ArabicCalendar;
+use Fisharebest\ExtCalendar\FrenchCalendar;
+use Fisharebest\ExtCalendar\GregorianCalendar;
+use Fisharebest\ExtCalendar\JewishCalendar;
+use Fisharebest\ExtCalendar\JulianCalendar;
+use Fisharebest\ExtCalendar\PersianCalendar;
+
 define('WT_SCRIPT_NAME', 'calendar.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
@@ -489,11 +496,31 @@ case 'calendar':
 				echo "<span class=\"cal_day\">{$d_fmt}</span>";
 			// Show a converted date
 			foreach (explode('_and_', $CALENDAR_FORMAT) as $convcal) {
-				$alt_date=$cal_date->convert_to_cal($convcal);
+				switch ($convcal) {
+				case 'french':
+					$alt_date = new WT_Date_French($cal_date->minJD + $d - 1);
+					break;
+				case 'gregorian':
+					$alt_date = new WT_Date_Gregorian($cal_date->minJD + $d - 1);
+					break;
+				case 'jewish':
+					$alt_date = new WT_Date_Jewish($cal_date->minJD + $d - 1);
+					break;
+				case 'julian':
+					$alt_date = new WT_Date_Julian($cal_date->minJD + $d - 1);
+					break;
+				case 'hijri':
+					$alt_date = new WT_Date_Hijri($cal_date->minJD + $d - 1);
+					break;
+				case 'jalali':
+					$alt_date = new WT_Date_Jalali($cal_date->minJD + $d - 1);
+					break;
+				default:
+					break 2;
+				}
 				if (get_class($alt_date)!=get_class($cal_date)) {
-					list($alt_date->y, $alt_date->m, $alt_date->d)=$alt_date->JDtoYMD($cal_date->minJD+$d-1);
-					$alt_date->SetJDfromYMD();
 					echo "<span class=\"rtl_cal_day\">".$alt_date->Format("%j %M")."</span>";
+					// Just show the first conversion
 					break;
 				}
 			}

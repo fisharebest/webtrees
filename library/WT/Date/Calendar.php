@@ -28,6 +28,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use FishareBest\ExtCalendar\Calendar;
+
 class WT_Date_Calendar {
 	const CALENDAR_ESCAPE = '@#DUNKNOWN@';
 	const MONTHS_IN_YEAR  = 12;
@@ -38,6 +40,13 @@ class WT_Date_Calendar {
 		''=>0, 'JAN'=>1, 'FEB'=>2, 'MAR'=>3, 'APR'=>4, 'MAY'=>5, 'JUN'=>6, 'JUL'=>7, 'AUG'=>8, 'SEP'=>9, 'OCT'=>10, 'NOV'=>11, 'DEC'=>12
 	);
 
+	/**
+	 * The calendar system used to represent this date
+	 *
+	 * @var Calendar
+	 */
+	protected $calendar;
+
 	var $y, $m, $d;     // Numeric year/month/day
 	var $minJD, $maxJD; // Julian Day numbers
 
@@ -46,7 +55,7 @@ class WT_Date_Calendar {
 		if (is_numeric($date)) {
 			$this->minJD=$date;
 			$this->maxJD=$date;
-			list($this->y, $this->m, $this->d)=$this->JDtoYMD($date);
+			list($this->y, $this->m, $this->d) = $this->calendar->jdToYmd($date);
 			return;
 		}
 
@@ -78,17 +87,21 @@ class WT_Date_Calendar {
 		if ($date->y==0) {
 			// Incomplete date - convert on basis of anniversary in current year
 			$today=$date->TodayYMD();
-			$jd=$date->YMDtoJD($today[0], $date->m, $date->d==0?$today[2]:$date->d);
+			$jd=$date->calendar->ymdToJd($today[0], $date->m, $date->d==0?$today[2]:$date->d);
 		} else {
 			// Complete date
 			$jd=(int)(($date->maxJD+$date->minJD)/2);
 		}
-		list($this->y, $this->m, $this->d)=$this->JDtoYMD($jd);
+		list($this->y, $this->m, $this->d) = $this->calendar->jdToYmd($jd);
 		// New date has same precision as original date
 		if ($date->y==0) $this->y=0;
 		if ($date->m==0) $this->m=0;
 		if ($date->d==0) $this->d=0;
 		$this->SetJDfromYMD();
+	}
+
+	function IsLeapYear() {
+		return $this->calendar->leapYear($this->y);
 	}
 
 	// Set the object’s JD from a potentially incomplete YMD
@@ -98,15 +111,15 @@ class WT_Date_Calendar {
 			$this->maxJD=0;
 		} else
 			if ($this->m==0) {
-				$this->minJD=$this->YMDtoJD($this->y, 1, 1);
-				$this->maxJD=$this->YMDtoJD($this->NextYear($this->y), 1, 1)-1;
+				$this->minJD=$this->calendar->ymdToJd($this->y, 1, 1);
+				$this->maxJD=$this->calendar->ymdToJd($this->NextYear($this->y), 1, 1)-1;
 			} else {
 				if ($this->d==0) {
 					list($ny,$nm)=$this->NextMonth();
-					$this->minJD=$this->YMDtoJD($this->y, $this->m,  1);
-					$this->maxJD=$this->YMDtoJD($ny, $nm, 1)-1;
+					$this->minJD=$this->calendar->ymdToJd($this->y, $this->m,  1);
+					$this->maxJD=$this->calendar->ymdToJd($ny, $nm, 1)-1;
 				} else {
-					$this->minJD=$this->YMDtoJD($this->y, $this->m, $this->d);
+					$this->minJD=$this->calendar->ymdToJd($this->y, $this->m, $this->d);
 					$this->maxJD=$this->minJD;
 				}
 			}
@@ -220,23 +233,15 @@ class WT_Date_Calendar {
 		case 6: return WT_I18N::translate('Sun');
 		}
 	}
-	static function YMDtoJD($year, $month, $day) {
-		return 0;
-	}
-	static function JDtoYMD($jd) {
-		return array(0, 0, 0);
-	}
+
 	// Most years are 1 more than the previous, but not always (e.g. 1BC->1AD)
 	static function NextYear($y) {
 		return $y+1;
 	}
+
 	// Calendars that use suffixes, etc. (e.g. “B.C.”) or OS/NS notation should redefine this.
 	public function ExtractYear($year) {
 		return (int)$year;
-	}
-	// Leap years may have extra days, extra months, etc.
-	public function IsLeapYear() {
-		return false;
 	}
 
 	// Compare two dates - helper function for sorting by date
@@ -267,7 +272,7 @@ class WT_Date_Calendar {
 		if ($warn_on_negative && $jd<$this->minJD) {
 			return '<i class="icon-warning"></i>';
 		}
-		list($y,$m,$d)=$this->JDtoYMD($jd);
+		list($y,$m,$d) = $this->calendar->jdToYmd($jd);
 		$dy=$y-$this->y;
 		$dm=$m-max($this->m,1);
 		$dd=$d-max($this->d,1);
@@ -325,7 +330,7 @@ class WT_Date_Calendar {
 	// How many days in the current month
 	public function DaysInMonth() {
 		list($ny,$nm)=$this->NextMonth();
-		return $this->YMDtoJD($ny, $nm, 1) - $this->YMDtoJD($this->y, $this->m, 1);
+		return $this->calendar->ymdToJd($ny, $nm, 1) - $this->calendar->ymdToJd($this->y, $this->m, 1);
 	}
 
 	// How many days in the current week
@@ -438,7 +443,7 @@ class WT_Date_Calendar {
 	}
 
 	protected function FormatDayOfYear() {
-		return WT_I18N::digits($this->minJD - $this->YMDtoJD($this->y, 1, 1));
+		return WT_I18N::digits($this->minJD - $this->calendar->ymdToJd($this->y, 1, 1));
 	}
 
 	protected function FormatMonth() {
@@ -531,8 +536,9 @@ class WT_Date_Calendar {
 
 	// Get today’s date in the current calendar
 	public function TodayYMD() {
-		return $this->JDtoYMD(WT_Date_Gregorian::YMDtoJD(date('Y'), date('n'), date('j')));
+		return $this->calendar->jdToYmd(unixtojd());
 	}
+
 	public function Today() {
 		$tmp=clone $this;
 		$ymd=$tmp->TodayYMD();
