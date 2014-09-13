@@ -2626,8 +2626,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		$place_count_fam = 0;
 		if (!isset($parent[$level-1])) $parent[$level-1]="";
 		$p_id = $this->set_placeid_map($level, $parent);
-		$indi = $stats->_statsPlaces('INDI', false, $p_id);
-		$fam = $stats->_statsPlaces('FAM', false, $p_id);
+		$indi = $stats->statsPlaces('INDI', false, $p_id);
+		$fam = $stats->statsPlaces('FAM', false, $p_id);
 		if (!empty($indi)) {
 			foreach ($indi as $place) {
 				$place_count_indi=$place['tot'];

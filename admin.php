@@ -173,7 +173,7 @@ $stats = new WT_Stats(WT_GEDCOM);
 						<td colspan="2"><?php echo WT_I18N::translate('Users logged in'); ?></td>
 					</tr>
 					<tr>
-						<td colspan="2"><?php echo $stats->_usersLoggedIn('list'); ?></td>
+						<td colspan="2"><?php echo $stats->usersLoggedInList(); ?></td>
 					</tr>
 				</tbody>
 			</table>
