@@ -89,16 +89,16 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 				$hd=$yahrzeit->getDate()->MinDate();
 				$hd1=new WT_Date_Jewish($hd);
 				$hd1->y+=1;
-				$hd1->SetJDFromYMD();
+				$hd1->setJdFromYmd();
 				// Special rules.  See http://www.hebcal.com/help/anniv.html
 				// Everything else is taken care of by our standard anniversary rules.
-				if ($hd->d==30 && $hd->m==2 && $hd->y!=0 && $hd1->DaysInMonth()<30) { // 30 CSH
+				if ($hd->d==30 && $hd->m==2 && $hd->y!=0 && $hd1->daysInMonth()<30) { // 30 CSH
 					// Last day in CSH
 					$yahrzeit->jd = $jewish_calendar->ymdToJd($today->y, 3, 1)-1;
-				} elseif ($hd->d==30 && $hd->m==3 && $hd->y!=0 && $hd1->DaysInMonth()<30) { // 30 KSL
+				} elseif ($hd->d==30 && $hd->m==3 && $hd->y!=0 && $hd1->daysInMonth()<30) { // 30 KSL
 					// Last day in KSL
 					$yahrzeit->jd = $jewish_calendar->ymdToJd($today->y, 4, 1)-1;
-				} elseif ($hd->d==30 && $hd->m==6 && $hd->y!=0 && $today->DaysInMonth()<30 && !$today->IsLeapYear()) { // 30 ADR
+				} elseif ($hd->d==30 && $hd->m==6 && $hd->y!=0 && $today->daysInMonth()<30 && !$today->isLeapYear()) { // 30 ADR
 					// Last day in SHV
 					$yahrzeit->jd = $jewish_calendar->ymdToJd($today->y, 6, 1)-1;
 				}
@@ -193,7 +193,7 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 						$today=new WT_Date_Jewish($yahrzeit->jd);
 						break;
 					}
-					$td=new WT_Date($today->Format('%@ %A %O %E'));
+					$td=new WT_Date($today->format('%@ %A %O %E'));
 					$content .= '<td>'.$td->Display().'</td>';
 					$content .= '<td>'.$td->minJD().'</td>';// sortable date
 

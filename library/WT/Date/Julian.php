@@ -46,7 +46,7 @@ class WT_Date_Julian extends WT_Date_Calendar {
 		return /* I18N: The julian calendar */ WT_I18N::translate('Julian');
 	}
 
-	static function NextYear($y) {
+	static function nextYear($y) {
 		if ($y==-1)
 			return 1;
 		else
@@ -54,7 +54,7 @@ class WT_Date_Julian extends WT_Date_Calendar {
 	}
 
 	// Process new-style/old-style years and years BC
-	public function ExtractYear($year) {
+	public function extractYear($year) {
 		if (preg_match('/^(\d\d\d\d)\/\d{1,4}$/', $year, $match)) { // Assume the first year is correct
 			$this->new_old_style=true;
 			return $match[1]+1;
@@ -65,7 +65,7 @@ class WT_Date_Julian extends WT_Date_Calendar {
 				return (int)$year;
 	}
 
-	protected function FormatLongYear() {
+	protected function formatLongYear() {
 		if ($this->y<0) {
 			return /*  I18N: BCE=Before the Common Era, for Julian years < 0.  See http://en.wikipedia.org/wiki/Common_Era */ WT_I18N::translate('%s&nbsp;BCE', WT_I18N::digits(-$this->y));
 		} else {
@@ -76,7 +76,7 @@ class WT_Date_Julian extends WT_Date_Calendar {
 		}
 	}
 
-	protected function FormatGedcomYear() {
+	protected function formatGedcomYear() {
 		if ($this->y<0) {
 			return sprintf('%04d B.C.', -$this->y);
 		} else {

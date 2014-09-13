@@ -378,7 +378,7 @@ class WT_Individual extends WT_GedcomRecord {
 	 * @return string the year of birth
 	 */
 	function getBirthYear() {
-		return $this->getBirthDate()->MinDate()->Format('%Y');
+		return $this->getBirthDate()->MinDate()->format('%Y');
 	}
 
 	// Get the date of death
@@ -407,7 +407,7 @@ class WT_Individual extends WT_GedcomRecord {
 	 * @return string the year of death
 	 */
 	function getDeathYear() {
-		return $this->getDeathDate()->MinDate()->Format('%Y');
+		return $this->getDeathDate()->MinDate()->format('%Y');
 	}
 
 	// Get the range of years in which a individual lived.  e.g. “1870–”, “1870–1920”, “–1920”.
@@ -418,8 +418,8 @@ class WT_Individual extends WT_GedcomRecord {
 		return
 			/* I18N: A range of years, e.g. “1870–”, “1870–1920”, “–1920” */ WT_I18N::translate(
 				'%1$s–%2$s',
-				'<span title="'.strip_tags($this->getBirthDate()->Display()).'">'.$this->getBirthDate()->MinDate()->Format('%Y').'</span>',
-				'<span title="'.strip_tags($this->getDeathDate()->Display()).'">'.$this->getDeathDate()->MinDate()->Format('%Y').'</span>'
+				'<span title="'.strip_tags($this->getBirthDate()->Display()).'">'.$this->getBirthDate()->MinDate()->format('%Y').'</span>',
+				'<span title="'.strip_tags($this->getDeathDate()->Display()).'">'.$this->getDeathDate()->MinDate()->format('%Y').'</span>'
 			);
 	}
 

@@ -50,7 +50,7 @@ class WT_Date_French extends WT_Date_Calendar {
 		return /* I18N: The French calendar */ WT_I18N::translate('French');
 	}
 
-	static function NUM_TO_MONTH_NOMINATIVE($n, $leap_year) {
+	static function monthNameNominativeCase($n, $leap_year) {
 		switch ($n) {
 		case 1:  return WT_I18N::translate_c('NOMINATIVE', 'Vendémiaire');
 		case 2:  return WT_I18N::translate_c('NOMINATIVE', 'Brumaire');
@@ -68,7 +68,7 @@ class WT_Date_French extends WT_Date_Calendar {
 		}
 	}
 
-	static function NUM_TO_MONTH_GENITIVE($n, $leap_year) {
+	static function monthNameGenitiveCase($n, $leap_year) {
 		switch ($n) {
 		case 1:  return WT_I18N::translate_c('GENITIVE', 'Vendémiaire');
 		case 2:  return WT_I18N::translate_c('GENITIVE', 'Brumaire');
@@ -86,7 +86,7 @@ class WT_Date_French extends WT_Date_Calendar {
 		}
 	}
 
-	static function NUM_TO_MONTH_LOCATIVE($n, $leap_year) {
+	static function monthNameLocativeCase($n, $leap_year) {
 		switch ($n) {
 		case 1:  return WT_I18N::translate_c('LOCATIVE', 'Vendémiaire');
 		case 2:  return WT_I18N::translate_c('LOCATIVE', 'Brumaire');
@@ -104,7 +104,7 @@ class WT_Date_French extends WT_Date_Calendar {
 		}
 	}
 
-	static function NUM_TO_MONTH_INSTRUMENTAL($n, $leap_year) {
+	static function monthNameInstrumentalCase($n, $leap_year) {
 		switch ($n) {
 		case 1:  return WT_I18N::translate_c('INSTRUMENTAL', 'Vendémiaire');
 		case 2:  return WT_I18N::translate_c('INSTRUMENTAL', 'Brumaire');
@@ -122,11 +122,11 @@ class WT_Date_French extends WT_Date_Calendar {
 		}
 	}
 
-	static function NUM_TO_SHORT_MONTH($n, $leap_year) {
-		return self::NUM_TO_MONTH_NOMINATIVE($n, $leap_year);
+	static function monthNameAbbreviated($n, $leap_year) {
+		return self::monthNameNominativeCase($n, $leap_year);
 	}
 
-	static function LONG_DAYS_OF_WEEK($n) {
+	static function dayNames($n) {
 		switch ($n) {
 		case 0: return WT_I18N::translate('Primidi');
 		case 1: return WT_I18N::translate('Duodi');
@@ -141,12 +141,12 @@ class WT_Date_French extends WT_Date_Calendar {
 		}
 	}
 
-	static function SHORT_DAYS_OF_WEEK($n) {
-		return self::LONG_DAYS_OF_WEEK($n);
+	static function dayNamesAbbreviated($n) {
+		return self::dayNames($n);
 	}
 
 	// Years were written using roman numerals
-	protected function FormatLongYear() {
-		return $this->NumToRoman($this->y);
+	protected function formatLongYear() {
+		return $this->numberToRomanNumerals($this->y);
 	}
 }

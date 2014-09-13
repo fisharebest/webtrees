@@ -48,7 +48,7 @@ class WT_Date_Hijri extends WT_Date_Calendar {
 		return /* I18N: The Arabic/Hijri calendar */ WT_I18N::translate('Hijri');
 	}
 
-	static function NUM_TO_MONTH_NOMINATIVE($n, $leap_year) {
+	static function monthNameNominativeCase($n, $leap_year) {
 		switch ($n) {
 		case 1:  return /* I18N: http://en.wikipedia.org/wiki/Muharram                     */ WT_I18N::translate_c('NOMINATIVE', 'Muharram'       );
 		case 2:  return /* I18N: http://en.wikipedia.org/wiki/Safar                        */ WT_I18N::translate_c('NOMINATIVE', 'Safar'          );
@@ -65,7 +65,7 @@ class WT_Date_Hijri extends WT_Date_Calendar {
 		default: return '';
 		}
 	}
-	static function NUM_TO_MONTH_GENITIVE($n, $leap_year) {
+	static function monthNameGenitiveCase($n, $leap_year) {
 		switch ($n) {
 		case 1:  return /* I18N: http://en.wikipedia.org/wiki/Muharram                     */ WT_I18N::translate_c('GENITIVE', 'Muharram'       );
 		case 2:  return /* I18N: http://en.wikipedia.org/wiki/Safar                        */ WT_I18N::translate_c('GENITIVE', 'Safar'          );
@@ -82,7 +82,7 @@ class WT_Date_Hijri extends WT_Date_Calendar {
 		default: return '';
 		}
 	}
-	static function NUM_TO_MONTH_LOCATIVE($n, $leap_year) {
+	static function monthNameLocativeCase($n, $leap_year) {
 		switch ($n) {
 		case 1:  return /* I18N: http://en.wikipedia.org/wiki/Muharram                     */ WT_I18N::translate_c('LOCATIVE', 'Muharram'       );
 		case 2:  return /* I18N: http://en.wikipedia.org/wiki/Safar                        */ WT_I18N::translate_c('LOCATIVE', 'Safar'          );
@@ -99,7 +99,7 @@ class WT_Date_Hijri extends WT_Date_Calendar {
 		default: return '';
 		}
 	}
-	static function NUM_TO_MONTH_INSTRUMENTAL($n, $leap_year) {
+	static function monthNameInstrumentalCase($n, $leap_year) {
 		switch ($n) {
 		case 1:  return /* I18N: http://en.wikipedia.org/wiki/Muharram                     */ WT_I18N::translate_c('INSTRUMENTAL', 'Muharram'       );
 		case 2:  return /* I18N: http://en.wikipedia.org/wiki/Safar                        */ WT_I18N::translate_c('INSTRUMENTAL', 'Safar'          );
@@ -117,7 +117,7 @@ class WT_Date_Hijri extends WT_Date_Calendar {
 		}
 	}
 
-	static function NUM_TO_SHORT_MONTH($n, $leap_year) {
-		return self::NUM_TO_MONTH_NOMINATIVE($n, $leap_year);
+	static function monthNameAbbreviated($n, $leap_year) {
+		return self::monthNameNominativeCase($n, $leap_year);
 	}
 }

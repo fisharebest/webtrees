@@ -52,39 +52,39 @@ class WT_Date_Jewish extends WT_Date_Calendar {
 	const GERSH="׳";
 	const ALAFIM="אלפים";
 
-	function FormatDayZeros() {
+	function formatDayZeros() {
 		if (WT_LOCALE=='he') {
-			return $this->NumToHebrew($this->d);
+			return $this->numberToHebrewNumerals($this->d);
 		} else {
 			return $this->d;
 		}
 	}
 
-	function FormatDay() {
+	function formatDay() {
 		if (WT_LOCALE=='he') {
-			return $this->NumToHebrew($this->d);
+			return $this->numberToHebrewNumerals($this->d);
 		} else {
 			return $this->d;
 		}
 	}
 
-	function FormatShortYear() {
+	function formatShortYear() {
 		if (WT_LOCALE=='he') {
-			return $this->NumToHebrew($this->y%1000);
+			return $this->numberToHebrewNumerals($this->y%1000);
 		} else {
 			return $this->y;
 		}
 	}
 
-	function FormatLongYear() {
+	function formatLongYear() {
 		if (WT_LOCALE=='he') {
-			return $this->NumToHebrew($this->y);
+			return $this->numberToHebrewNumerals($this->y);
 		} else {
 			return $this->y;
 		}
 	}
 
-	static function NUM_TO_MONTH_NOMINATIVE($n, $leap_year) {
+	static function monthNameNominativeCase($n, $leap_year) {
 		switch ($n) {
 		case 1:  return WT_I18N::translate_c('NOMINATIVE', 'Tishrei');
 		case 2:  return WT_I18N::translate_c('NOMINATIVE', 'Heshvan');
@@ -102,7 +102,7 @@ class WT_Date_Jewish extends WT_Date_Calendar {
 		default: return '';
 		}
 	}
-	static function NUM_TO_MONTH_GENITIVE($n, $leap_year) {
+	static function monthNameGenitiveCase($n, $leap_year) {
 		switch ($n) {
 		case 1:  return WT_I18N::translate_c('GENITIVE', 'Tishrei');
 		case 2:  return WT_I18N::translate_c('GENITIVE', 'Heshvan');
@@ -120,7 +120,8 @@ class WT_Date_Jewish extends WT_Date_Calendar {
 		default: return '';
 		}
 	}
-	static function NUM_TO_MONTH_LOCATIVE($n, $leap_year) {
+
+	protected static function monthNameLocativeCase($n, $leap_year) {
 		switch ($n) {
 		case 1:  return WT_I18N::translate_c('LOCATIVE', 'Tishrei');
 		case 2:  return WT_I18N::translate_c('LOCATIVE', 'Heshvan');
@@ -138,7 +139,8 @@ class WT_Date_Jewish extends WT_Date_Calendar {
 		default: return '';
 		}
 	}
-	static function NUM_TO_MONTH_INSTRUMENTAL($n, $leap_year) {
+
+	protected static function monthNameInstrumentalCase($n, $leap_year) {
 		switch ($n) {
 		case 1:  return WT_I18N::translate_c('INSTRUMENTAL', 'Tishrei');
 		case 2:  return WT_I18N::translate_c('INSTRUMENTAL', 'Heshvan');
@@ -156,13 +158,14 @@ class WT_Date_Jewish extends WT_Date_Calendar {
 		default: return '';
 		}
 	}
-	static function NUM_TO_SHORT_MONTH($n, $leap_year) {
+
+	protected static function monthNameAbbreviated($n, $leap_year) {
 		// TODO: Do these have short names?
-		return self::NUM_TO_MONTH_NOMINATIVE($n, $leap_year);
+		return self::monthNameNominativeCase($n, $leap_year);
 	}
 
-	function NextMonth() {
-		if ($this->m==6 && !$this->IsLeapYear())
+	protected function nextMonth() {
+		if ($this->m==6 && !$this->isLeapYear())
 			return array($this->y, 8);
 		else
 			return array($this->y+($this->m==13?1:0), ($this->m%13)+1);
@@ -170,7 +173,7 @@ class WT_Date_Jewish extends WT_Date_Calendar {
 
 	// Convert a decimal number to hebrew - like roman numerals, but with extra punctuation
 	// and special rules.
-	static function NumToHebrew($num) {
+	private static function numberToHebrewNumerals($num) {
 		$DISPLAY_JEWISH_THOUSANDS=false;
 
 		static $jHundreds = array("", "ק", "ר", "ש", "ת", "תק", "תר","תש", "תת", "תתק");

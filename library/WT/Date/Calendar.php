@@ -47,8 +47,8 @@ class WT_Date_Calendar {
 	 */
 	protected $calendar;
 
-	var $y, $m, $d;     // Numeric year/month/day
-	var $minJD, $maxJD; // Julian Day numbers
+	public $y, $m, $d;     // Numeric year/month/day
+	public $minJD, $maxJD; // Julian Day numbers
 
 	public function __construct($date) {
 		// Construct from an integer (a julian day number)
@@ -68,8 +68,8 @@ class WT_Date_Calendar {
 				$this->m = 0;
 				$this->d = 0;
 			}
-			$this->y=$this->ExtractYear($date[0]);
-			$this->SetJDfromYMD();
+			$this->y=$this->extractYear($date[0]);
+			$this->setJdFromYmd();
 			return;
 		}
 
@@ -97,25 +97,25 @@ class WT_Date_Calendar {
 		if ($date->y==0) $this->y=0;
 		if ($date->m==0) $this->m=0;
 		if ($date->d==0) $this->d=0;
-		$this->SetJDfromYMD();
+		$this->setJdFromYmd();
 	}
 
-	function IsLeapYear() {
+	function isLeapYear() {
 		return $this->calendar->leapYear($this->y);
 	}
 
 	// Set the object’s JD from a potentially incomplete YMD
-	public function SetJDfromYMD() {
+	public function setJdFromYmd() {
 		if ($this->y==0) {
 			$this->minJD=0;
 			$this->maxJD=0;
 		} else
 			if ($this->m==0) {
 				$this->minJD=$this->calendar->ymdToJd($this->y, 1, 1);
-				$this->maxJD=$this->calendar->ymdToJd($this->NextYear($this->y), 1, 1)-1;
+				$this->maxJD=$this->calendar->ymdToJd($this->nextYear($this->y), 1, 1)-1;
 			} else {
 				if ($this->d==0) {
-					list($ny,$nm)=$this->NextMonth();
+					list($ny,$nm)=$this->nextMonth();
 					$this->minJD=$this->calendar->ymdToJd($this->y, $this->m,  1);
 					$this->maxJD=$this->calendar->ymdToJd($ny, $nm, 1)-1;
 				} else {
@@ -126,7 +126,7 @@ class WT_Date_Calendar {
 	}
 
 	// We put these in the base class, to save duplicating it in the Julian and Gregorian calendars
-	static function NUM_TO_MONTH_NOMINATIVE($n, $leap_year) {
+	static function monthNameNominativeCase($n, $leap_year) {
 		switch ($n) {
 		case 1:  return WT_I18N::translate_c('NOMINATIVE', 'January');
 		case 2:  return WT_I18N::translate_c('NOMINATIVE', 'February');
@@ -143,7 +143,8 @@ class WT_Date_Calendar {
 		default: return '';
 		}
 	}
-	static function NUM_TO_MONTH_GENITIVE($n, $leap_year) {
+
+	protected static function monthNameGenitiveCase($n, $leap_year) {
 		switch ($n) {
 		case 1:  return WT_I18N::translate_c('GENITIVE', 'January');
 		case 2:  return WT_I18N::translate_c('GENITIVE', 'February');
@@ -160,7 +161,8 @@ class WT_Date_Calendar {
 		default: return '';
 		}
 	}
-	static function NUM_TO_MONTH_LOCATIVE($n, $leap_year) {
+
+	protected static function monthNameLocativeCase($n, $leap_year) {
 		switch ($n) {
 		case 1:  return WT_I18N::translate_c('LOCATIVE', 'January');
 		case 2:  return WT_I18N::translate_c('LOCATIVE', 'February');
@@ -177,7 +179,8 @@ class WT_Date_Calendar {
 		default: return '';
 		}
 	}
-	static function NUM_TO_MONTH_INSTRUMENTAL($n, $leap_year) {
+
+	protected static function monthNameInstrumentalCase($n, $leap_year) {
 		switch ($n) {
 		case 1:  return WT_I18N::translate_c('INSTRUMENTAL', 'January');
 		case 2:  return WT_I18N::translate_c('INSTRUMENTAL', 'February');
@@ -194,7 +197,8 @@ class WT_Date_Calendar {
 		default: return '';
 		}
 	}
-	static function NUM_TO_SHORT_MONTH($n, $leap_year) {
+
+	protected static function monthNameAbbreviated($n, $leap_year) {
 		switch ($n) {
 		case 1:  return WT_I18N::translate_c('Abbreviation for January',   'Jan');
 		case 2:  return WT_I18N::translate_c('Abbreviation for February',  'Feb');
@@ -211,7 +215,8 @@ class WT_Date_Calendar {
 		default: return '';
 		}
 	}
-	static function LONG_DAYS_OF_WEEK($n) {
+
+	static function dayNames($n) {
 		switch ($n) {
 		case 0: return WT_I18N::translate('Monday');
 		case 1: return WT_I18N::translate('Tuesday');
@@ -222,7 +227,8 @@ class WT_Date_Calendar {
 		case 6: return WT_I18N::translate('Sunday');
 		}
 	}
-	static function SHORT_DAYS_OF_WEEK($n) {
+
+	static function dayNamesAbbreviated($n) {
 		switch ($n) {
 		case 0: return WT_I18N::translate('Mon');
 		case 1: return WT_I18N::translate('Tue');
@@ -235,17 +241,17 @@ class WT_Date_Calendar {
 	}
 
 	// Most years are 1 more than the previous, but not always (e.g. 1BC->1AD)
-	static function NextYear($y) {
+	static function nextYear($y) {
 		return $y+1;
 	}
 
 	// Calendars that use suffixes, etc. (e.g. “B.C.”) or OS/NS notation should redefine this.
-	public function ExtractYear($year) {
+	public function extractYear($year) {
 		return (int)$year;
 	}
 
 	// Compare two dates - helper function for sorting by date
-	static function Compare($d1, $d2) {
+	static function compare($d1, $d2) {
 		if ($d1->maxJD < $d2->minJD)
 			return -1;
 		if ($d2->minJD > $d1->maxJD)
@@ -259,7 +265,7 @@ class WT_Date_Calendar {
 	// bool $full: true=gedcom style, false=just years
 	// int $jd: date for calculation
 	// TODO: WT_Date_Jewish needs to redefine this to cope with leap months
-	public function GetAge($full, $jd, $warn_on_negative=true) {
+	public function getAge($full, $jd, $warn_on_negative=true) {
 		if ($this->y==0 || $jd==0) {
 			return $full?'':'0';
 		}
@@ -298,7 +304,7 @@ class WT_Date_Calendar {
 	}
 
 	// Convert a date from one calendar to another.
-	public function convert_to_cal($calendar) {
+	public function convertToCalendar($calendar) {
 		switch ($calendar) {
 		case 'gregorian':
 			return new WT_Date_Gregorian($this);
@@ -318,29 +324,29 @@ class WT_Date_Calendar {
 	}
 
 	// Is this date within the valid range of the calendar
-	public function InValidRange() {
+	public function inValidRange() {
 		return $this->minJD >= static::CAL_START_JD && $this->maxJD <= static::CAL_END_JD;
 	}
 
 	// How many months in a year
-	public function MonthsInYear() {
+	public function monthsInYear() {
 		return static::MONTHS_IN_YEAR;
 	}
 
 	// How many days in the current month
-	public function DaysInMonth() {
-		list($ny,$nm)=$this->NextMonth();
+	public function daysInMonth() {
+		list($ny,$nm)=$this->nextMonth();
 		return $this->calendar->ymdToJd($ny, $nm, 1) - $this->calendar->ymdToJd($this->y, $this->m, 1);
 	}
 
 	// How many days in the current week
-	public function DaysInWeek() {
+	public function daysInWeek() {
 		return static::DAYS_IN_WEEK;
 	}
 
 	// Format a date
 	// $format - format string: the codes are specified in http://php.net/date
-	public function Format($format, $qualifier='') {
+	public function format($format, $qualifier='') {
 		// Don’t show exact details for inexact dates
 		if (!$this->d) {
 			// The comma is for US "M D, Y" dates
@@ -378,27 +384,27 @@ class WT_Date_Calendar {
 		preg_match_all('/%[^%]/', $format, $matches);
 		foreach ($matches[0] as $match) {
 			switch ($match) {
-			case '%d': $format=str_replace($match, $this->FormatDayZeros(),       $format); break;
-			case '%j': $format=str_replace($match, $this->FormatDay(),            $format); break;
-			case '%l': $format=str_replace($match, $this->FormatLongWeekday(),    $format); break;
-			case '%D': $format=str_replace($match, $this->FormatShortWeekday(),   $format); break;
-			case '%N': $format=str_replace($match, $this->FormatISOWeekday(),     $format); break;
-			case '%S': $format=str_replace($match, $this->FormatOrdinalSuffix(),  $format); break;
-			case '%w': $format=str_replace($match, $this->FormatNumericWeekday(), $format); break;
-			case '%z': $format=str_replace($match, $this->FormatDayOfYear(),      $format); break;
-			case '%F': $format=str_replace($match, $this->FormatLongMonth($case), $format); break;
-			case '%m': $format=str_replace($match, $this->FormatMonthZeros(),     $format); break;
-			case '%M': $format=str_replace($match, $this->FormatShortMonth(),     $format); break;
-			case '%n': $format=str_replace($match, $this->FormatMonth(),          $format); break;
-			case '%t': $format=str_replace($match, $this->DaysInMonth(),          $format); break;
-			case '%L': $format=str_replace($match, (int)$this->IsLeapYear(),      $format); break;
-			case '%Y': $format=str_replace($match, $this->FormatLongYear(),       $format); break;
-			case '%y': $format=str_replace($match, $this->FormatShortYear(),      $format); break;
+			case '%d': $format=str_replace($match, $this->formatDayZeros(),       $format); break;
+			case '%j': $format=str_replace($match, $this->formatDay(),            $format); break;
+			case '%l': $format=str_replace($match, $this->formatLongWeekday(),    $format); break;
+			case '%D': $format=str_replace($match, $this->formatShortWeekday(),   $format); break;
+			case '%N': $format=str_replace($match, $this->formatIsoWeekday(),     $format); break;
+			case '%S': $format=str_replace($match, $this->formatOrdinalSuffix(),  $format); break;
+			case '%w': $format=str_replace($match, $this->formatNumericWeekday(), $format); break;
+			case '%z': $format=str_replace($match, $this->formatDayOfYear(),      $format); break;
+			case '%F': $format=str_replace($match, $this->formatLongMonth($case), $format); break;
+			case '%m': $format=str_replace($match, $this->formatMonthZeros(),     $format); break;
+			case '%M': $format=str_replace($match, $this->formatShortMonth(),     $format); break;
+			case '%n': $format=str_replace($match, $this->formatMonth(),          $format); break;
+			case '%t': $format=str_replace($match, $this->daysInMonth(),          $format); break;
+			case '%L': $format=str_replace($match, (int)$this->isLeapYear(),      $format); break;
+			case '%Y': $format=str_replace($match, $this->formatLongYear(),       $format); break;
+			case '%y': $format=str_replace($match, $this->formatShortYear(),      $format); break;
 			// These 4 extensions are useful for re-formatting gedcom dates.
 			case '%@': $format=str_replace($match, static::CALENDAR_ESCAPE,       $format); break;
-			case '%A': $format=str_replace($match, $this->FormatGedcomDay(),      $format); break;
-			case '%O': $format=str_replace($match, $this->FormatGedcomMonth(),    $format); break;
-			case '%E': $format=str_replace($match, $this->FormatGedcomYear(),     $format); break;
+			case '%A': $format=str_replace($match, $this->formatGedcomDay(),      $format); break;
+			case '%O': $format=str_replace($match, $this->formatGedcomMonth(),    $format); break;
+			case '%E': $format=str_replace($match, $this->formatGedcomYear(),     $format); break;
 			}
 		}
 		return $format;
@@ -406,7 +412,7 @@ class WT_Date_Calendar {
 
 	// Functions to extract bits of the date in various formats.  Individual calendars
 	// will want to redefine some of these.
-	protected function FormatDayZeros() {
+	protected function formatDayZeros() {
 		if ($this->d>9) {
 			return WT_I18N::digits($this->d);
 		} else {
@@ -414,23 +420,23 @@ class WT_Date_Calendar {
 		}
 	}
 
-	protected function FormatDay() {
+	protected function formatDay() {
 		return WT_I18N::digits($this->d);
 	}
 
-	protected function FormatLongWeekday() {
-		return $this->LONG_DAYS_OF_WEEK($this->minJD % static::DAYS_IN_WEEK);
+	protected function formatLongWeekday() {
+		return $this->dayNames($this->minJD % static::DAYS_IN_WEEK);
 	}
 
-	protected function FormatShortWeekday() {
-		return $this->SHORT_DAYS_OF_WEEK($this->minJD % static::DAYS_IN_WEEK);
+	protected function formatShortWeekday() {
+		return $this->dayNamesAbbreviated($this->minJD % static::DAYS_IN_WEEK);
 	}
 
-	protected function FormatISOWeekday() {
+	protected function formatIsoWeekday() {
 		return WT_I18N::digits($this->minJD % 7 + 1);
 	}
 
-	protected function FormatOrdinalSuffix() {
+	protected function formatOrdinalSuffix() {
 		$func="ordinal_suffix_".WT_LOCALE;
 		if (function_exists($func))
 			return $func($this->d);
@@ -438,19 +444,19 @@ class WT_Date_Calendar {
 			return '';
 	}
 
-	protected function FormatNumericWeekday() {
+	protected function formatNumericWeekday() {
 		return WT_I18N::digits(($this->minJD + 1) % static::DAYS_IN_WEEK);
 	}
 
-	protected function FormatDayOfYear() {
+	protected function formatDayOfYear() {
 		return WT_I18N::digits($this->minJD - $this->calendar->ymdToJd($this->y, 1, 1));
 	}
 
-	protected function FormatMonth() {
+	protected function formatMonth() {
 		return WT_I18N::digits($this->m);
 	}
 
-	protected function FormatMonthZeros() {
+	protected function formatMonthZeros() {
 		if ($this->m>9) {
 			return WT_I18N::digits($this->m);
 		} else {
@@ -458,26 +464,26 @@ class WT_Date_Calendar {
 		}
 	}
 
-	protected function FormatLongMonth($case='NOMINATIVE') {
+	protected function formatLongMonth($case='NOMINATIVE') {
 		switch ($case) {
-		case 'GENITIVE':     return $this->NUM_TO_MONTH_GENITIVE    ($this->m, $this->IsLeapYear());
-		case 'NOMINATIVE':   return $this->NUM_TO_MONTH_NOMINATIVE  ($this->m, $this->IsLeapYear());
-		case 'LOCATIVE':     return $this->NUM_TO_MONTH_LOCATIVE    ($this->m, $this->IsLeapYear());
-		case 'INSTRUMENTAL': return $this->NUM_TO_MONTH_INSTRUMENTAL($this->m, $this->IsLeapYear());
+		case 'GENITIVE':     return $this->monthNameGenitiveCase    ($this->m, $this->isLeapYear());
+		case 'NOMINATIVE':   return $this->monthNameNominativeCase  ($this->m, $this->isLeapYear());
+		case 'LOCATIVE':     return $this->monthNameLocativeCase    ($this->m, $this->isLeapYear());
+		case 'INSTRUMENTAL': return $this->monthNameInstrumentalCase($this->m, $this->isLeapYear());
 		}
 	}
 
-	protected function FormatShortMonth() {
-		return $this->NUM_TO_SHORT_MONTH($this->m, $this->IsLeapYear());
+	protected function formatShortMonth() {
+		return $this->monthNameAbbreviated($this->m, $this->isLeapYear());
 	}
 
 	// NOTE Short year is NOT a 2-digit year.  It is for calendars such as hebrew
 	// which have a 3-digit form of 4-digit years.
-	protected function FormatShortYear() {
+	protected function formatShortYear() {
 		return WT_I18N::digits($this->y);
 	}
 
-	protected function FormatGedcomDay() {
+	protected function formatGedcomDay() {
 		if ($this->d==0) {
 			return '';
 		} else {
@@ -485,11 +491,11 @@ class WT_Date_Calendar {
 		}
 	}
 
-	protected function FormatGedcomMonth() {
+	protected function formatGedcomMonth() {
 		return array_search($this->m, static::$MONTH_ABBREV);
 	}
 
-	protected function FormatGedcomYear() {
+	protected function formatGedcomYear() {
 		if ($this->y==0) {
 			return '';
 		} else {
@@ -497,20 +503,20 @@ class WT_Date_Calendar {
 		}
 	}
 
-	protected function FormatLongYear() {
+	protected function formatLongYear() {
 		return WT_I18N::digits($this->y);
 	}
 
 	// Calendars with leap-months should redefine this.
-	protected function NextMonth() {
+	protected function nextMonth() {
 		return array(
-			$this->m==static::MONTHS_IN_YEAR ? $this->NextYear($this->y) : $this->y,
+			$this->m==static::MONTHS_IN_YEAR ? $this->nextYear($this->y) : $this->y,
 			($this->m % static::MONTHS_IN_YEAR)+1
 		);
 	}
 
 	// Convert a decimal number to roman numerals
-	static function NumToRoman($num) {
+	static function numberToRomanNumerals($num) {
 		static $lookup=array(1000=>'M', '900'=>'CM', '500'=>'D', 400=>'CD', 100=>'C', 90=>'XC', 50=>'L', 40=>'XL', 10=>'X', 9=>'IX', 5=>'V', 4=>'IV', 1=>'I');
 		if ($num<1) return $num;
 		$roman='';
@@ -523,7 +529,7 @@ class WT_Date_Calendar {
 	}
 
 	// Convert a roman numeral to decimal
-	protected static function RomanToNum($roman) {
+	protected static function romanNumeralsToNumber($roman) {
 		static $lookup=array(1000=>'M', '900'=>'CM', '500'=>'D', 400=>'CD', 100=>'C', 90=>'XC', 50=>'L', 40=>'XL', 10=>'X', 9=>'IX', 5=>'V', 4=>'IV', 1=>'I');
 		$num=0;
 		foreach ($lookup as $key=>$value)
@@ -535,22 +541,22 @@ class WT_Date_Calendar {
 	}
 
 	// Get today’s date in the current calendar
-	public function TodayYMD() {
+	public function todayYmd() {
 		return $this->calendar->jdToYmd(unixtojd());
 	}
 
-	public function Today() {
+	public function today() {
 		$tmp=clone $this;
-		$ymd=$tmp->TodayYMD();
+		$ymd=$tmp->todayYmd();
 		$tmp->y=$ymd[0];
 		$tmp->m=$ymd[1];
 		$tmp->d=$ymd[2];
-		$tmp->SetJDfromYMD();
+		$tmp->setJdFromYmd();
 		return $tmp;
 	}
 
 	// Create a URL that links this date to the WT calendar
-	public function CalendarURL($date_fmt="") {
+	public function calendarUrl($date_fmt="") {
 		global $DATE_FORMAT;
 		if (empty($date_fmt)) {
 			$date_fmt=$DATE_FORMAT;
@@ -559,20 +565,20 @@ class WT_Date_Calendar {
 		$action="year";
 		if (strpos($date_fmt, "Y")!==false
 		||  strpos($date_fmt, "y")!==false) {
-			$URL.='&amp;year='.$this->FormatGedcomYear();
+			$URL.='&amp;year='.$this->formatGedcomYear();
 		}
 		if (strpos($date_fmt, "F")!==false
 		||  strpos($date_fmt, "M")!==false
 		||  strpos($date_fmt, "m")!==false
 		||  strpos($date_fmt, "n")!==false) {
-			$URL.='&amp;month='.$this->FormatGedcomMonth();
+			$URL.='&amp;month='.$this->formatGedcomMonth();
 			if ($this->m>0)
 				$action="calendar";
 		}
 		if (strpos($date_fmt, "d")!==false
 		||  strpos($date_fmt, "D")!==false
 		||  strpos($date_fmt, "j")!==false) {
-			$URL.='&amp;day='.$this->FormatGedcomDay();
+			$URL.='&amp;day='.$this->formatGedcomDay();
 			if ($this->d>0)
 				$action="today";
 		}

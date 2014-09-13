@@ -821,7 +821,7 @@ function get_anniversary_events($jd, $facts='', $ged_id=WT_GED_ID) {
 			if ($anniv->d==1) {
 				$where.=" AND d_day<=1";
 			} else
-				if ($anniv->d==$anniv->DaysInMonth()) {
+				if ($anniv->d==$anniv->daysInMonth()) {
 					$where.=" AND d_day>={$anniv->d}";
 				} else {
 					$where.=" AND d_day={$anniv->d}";
@@ -836,7 +836,7 @@ function get_anniversary_events($jd, $facts='', $ged_id=WT_GED_ID) {
 					$where.=" AND d_day<=1 AND d_mon=2";
 				} elseif ($anniv->d==30) {
 					$where.=" AND d_day>=30 AND d_mon=2";
-				} elseif ($anniv->d==29 && $anniv->DaysInMonth()==29) {
+				} elseif ($anniv->d==29 && $anniv->daysInMonth()==29) {
 					$where.=" AND (d_day=29 OR d_day>30) AND d_mon=2";
 				} else {
 					$where.=" AND d_day={$anniv->d} AND d_mon=2";
@@ -847,7 +847,7 @@ function get_anniversary_events($jd, $facts='', $ged_id=WT_GED_ID) {
 				// 29 KSL does not include 30 KSL (but would include an invalid 31 KSL if there were no 30 KSL)
 				if ($anniv->d==1) {
 					$tmp=new WT_Date_Jewish(array($anniv->y, 'csh', 1));
-					if ($tmp->DaysInMonth()==29) {
+					if ($tmp->daysInMonth()==29) {
 						$where.=" AND (d_day<=1 AND d_mon=3 OR d_day=30 AND d_mon=2)";
 					} else {
 						$where.=" AND d_day<=1 AND d_mon=3";
@@ -855,7 +855,7 @@ function get_anniversary_events($jd, $facts='', $ged_id=WT_GED_ID) {
 				} else
 					if ($anniv->d==30) {
 						$where.=" AND d_day>=30 AND d_mon=3";
-					} elseif ($anniv->d==29 && $anniv->DaysInMonth()==29) {
+					} elseif ($anniv->d==29 && $anniv->daysInMonth()==29) {
 						$where.=" AND (d_day=29 OR d_day>30) AND d_mon=3";
 					} else {
 						$where.=" AND d_day={$anniv->d} AND d_mon=3";
@@ -865,13 +865,13 @@ function get_anniversary_events($jd, $facts='', $ged_id=WT_GED_ID) {
 				// 1 TVT includes 30 KSL (if this year didn’t have 30 KSL)
 				if ($anniv->d==1) {
 					$tmp=new WT_Date_Jewish($anniv->y, 'ksl', 1);
-					if ($tmp->DaysInMonth()==29) {
+					if ($tmp->daysInMonth()==29) {
 						$where.=" AND (d_day<=1 AND d_mon=4 OR d_day=30 AND d_mon=3)";
 					} else {
 						$where.=" AND d_day<=1 AND d_mon=4";
 					}
 				} else
-					if ($anniv->d==$anniv->DaysInMonth()) {
+					if ($anniv->d==$anniv->daysInMonth()) {
 						$where.=" AND d_day>={$anniv->d} AND d_mon=4";
 					} else {
 						$where.=" AND d_day={$anniv->d} AND d_mon=4";
@@ -880,12 +880,12 @@ function get_anniversary_events($jd, $facts='', $ged_id=WT_GED_ID) {
 			case 6: // ADR (non-leap) includes ADS (leap)
 				if ($anniv->d==1) {
 					$where.=" AND d_day<=1";
-				} elseif ($anniv->d==$anniv->DaysInMonth()) {
+				} elseif ($anniv->d==$anniv->daysInMonth()) {
 					$where.=" AND d_day>={$anniv->d}";
 				} else {
 					$where.=" AND d_day={$anniv->d}";
 				}
-				if ($anniv->IsLeapYear()) {
+				if ($anniv->isLeapYear()) {
 					$where.=" AND (d_mon=6 AND MOD(7*d_year+1, 19)<7)";
 				} else {
 					$where.=" AND (d_mon=6 OR d_mon=7)";
@@ -894,7 +894,7 @@ function get_anniversary_events($jd, $facts='', $ged_id=WT_GED_ID) {
 			case 7: // ADS includes ADR (non-leap)
 				if ($anniv->d==1) {
 					$where.=" AND d_day<=1";
-				} elseif ($anniv->d==$anniv->DaysInMonth()) {
+				} elseif ($anniv->d==$anniv->daysInMonth()) {
 					$where.=" AND d_day>={$anniv->d}";
 				} else {
 					$where.=" AND d_day={$anniv->d}";
@@ -903,12 +903,12 @@ function get_anniversary_events($jd, $facts='', $ged_id=WT_GED_ID) {
 				break;
 			case 8: // 1 NSN includes 30 ADR, if this year is non-leap
 				if ($anniv->d==1) {
-					if ($anniv->IsLeapYear()) {
+					if ($anniv->isLeapYear()) {
 						$where.=" AND d_day<=1 AND d_mon=8";
 					} else {
 						$where.=" AND (d_day<=1 AND d_mon=8 OR d_day=30 AND d_mon=6)";
 					}
-				} elseif ($anniv->d==$anniv->DaysInMonth()) {
+				} elseif ($anniv->d==$anniv->daysInMonth()) {
 					$where.=" AND d_day>={$anniv->d} AND d_mon=8";
 				} else {
 					$where.=" AND d_day={$anniv->d} AND d_mon=8";

@@ -47,7 +47,7 @@ class WT_Date_Jalali extends WT_Date_Calendar {
 		return /* I18N: The Persian/Jalali calendar */ WT_I18N::translate('Jalali');
 	}
 
-	static function NUM_TO_MONTH_NOMINATIVE($n, $leap_year) {
+	static function monthNameNominativeCase($n, $leap_year) {
 		switch ($n) {
 		case 1:  return /* I18N:  1st month in the Persian/Jalali calendar */ WT_I18N::translate_c('NOMINATIVE', 'Farvardin'  );
 		case 2:  return /* I18N:  2nd month in the Persian/Jalali calendar */ WT_I18N::translate_c('NOMINATIVE', 'Ordibehesht');
@@ -65,7 +65,7 @@ class WT_Date_Jalali extends WT_Date_Calendar {
 		}
 	}
 
-	static function NUM_TO_MONTH_GENITIVE($n, $leap_year) {
+	static function monthNameGenitiveCase($n, $leap_year) {
 		switch ($n) {
 		case 1:  return /* I18N:  1st month in the Persian/Jalali calendar */ WT_I18N::translate_c('GENITIVE', 'Farvardin'  );
 		case 2:  return /* I18N:  2nd month in the Persian/Jalali calendar */ WT_I18N::translate_c('GENITIVE', 'Ordibehesht');
@@ -83,7 +83,7 @@ class WT_Date_Jalali extends WT_Date_Calendar {
 		}
 	}
 
-	static function NUM_TO_MONTH_LOCATIVE($n, $leap_year) {
+	static function monthNameLocativeCase($n, $leap_year) {
 		switch ($n) {
 		case 1:  return /* I18N:  1st month in the Persian/Jalali calendar */ WT_I18N::translate_c('LOCATIVE', 'Farvardin'  );
 		case 2:  return /* I18N:  2nd month in the Persian/Jalali calendar */ WT_I18N::translate_c('LOCATIVE', 'Ordibehesht');
@@ -101,7 +101,7 @@ class WT_Date_Jalali extends WT_Date_Calendar {
 		}
 	}
 
-	static function NUM_TO_MONTH_INSTRUMENTAL($n, $leap_year) {
+	static function monthNameInstrumentalCase($n, $leap_year) {
 		switch ($n) {
 		case 1:  return /* I18N:  1st month in the Persian/Jalali calendar */ WT_I18N::translate_c('INSTRUMENTAL', 'Farvardin'  );
 		case 2:  return /* I18N:  2nd month in the Persian/Jalali calendar */ WT_I18N::translate_c('INSTRUMENTAL', 'Ordibehesht');
@@ -119,7 +119,7 @@ class WT_Date_Jalali extends WT_Date_Calendar {
 		}
 	}
 
-	static function NUM_TO_SHORT_MONTH($n, $leap_year) {
+	static function monthNameAbbreviated($n, $leap_year) {
 		switch ($n) {
 		case 1:  return WT_I18N::translate_c('Abbreviation for Persian month: Farvardin',   'Far' );
 		case 2:  return WT_I18N::translate_c('Abbreviation for Persian month: Ordibehesht', 'Ord' );

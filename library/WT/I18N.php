@@ -315,8 +315,8 @@ class WT_I18N {
 	 * fr: 12 345,67
 	 * de: 12.345,67
 	 *
-	 * @param int $n
-	 * @param int $precision
+	 * @param float $n
+	 * @param int   $precision
 	 *
 	 * @return string
 	 */

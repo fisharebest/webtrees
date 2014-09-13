@@ -901,7 +901,7 @@ function print_add_new_fact($id, $usedfacts, $type) {
 				// TODO use the event class to store/parse the clipboard events
 				if (preg_match('/^2 DATE (.+)/m', $fact['factrec'], $match)) {
 					$tmp=new WT_Date($match[1]);
-					echo '; ', $tmp->minDate()->Format('%Y');
+					echo '; ', $tmp->minDate()->format('%Y');
 				}
 				if (preg_match('/^2 PLAC ([^,\n]+)/m', $fact['factrec'], $match)) {
 					echo '; ', $match[1];
