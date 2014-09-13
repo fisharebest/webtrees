@@ -23,13 +23,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-use Fisharebest\ExtCalendar\ArabicCalendar;
-use Fisharebest\ExtCalendar\FrenchCalendar;
-use Fisharebest\ExtCalendar\GregorianCalendar;
-use Fisharebest\ExtCalendar\JewishCalendar;
-use Fisharebest\ExtCalendar\JulianCalendar;
-use Fisharebest\ExtCalendar\PersianCalendar;
-
 define('WT_SCRIPT_NAME', 'calendar.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
@@ -64,7 +57,7 @@ if (preg_match('/^(\d\d)\d\d\/(\d\d)$/', $year, $match)) {
 	$year=$match[1].$match[2];
 }
 
-// advance-year "year range"
+// advanced-year "year range"
 if (preg_match('/^(\d+)-(\d+)$/', $year, $match)) {
 	if (strlen($match[1]) > strlen($match[2])) {
 		$match[2]=substr($match[1], 0, strlen($match[1])-strlen($match[2])).$match[2];
