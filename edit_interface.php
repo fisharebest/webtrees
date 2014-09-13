@@ -2297,6 +2297,7 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 		$xref = 'new';
 	}
 
+	$name_fields  = array();
 	if ($name_fact) {
 		$name_fact_id = $name_fact->getFactId();
 		$name_type    = $name_fact->getAttribute('TYPE');
@@ -2312,7 +2313,6 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 	} else {
 		$name_fact_id = null;
 		$name_type    = null;
-		$name_fields  = array();
 		$namerec      = null;
 		// Populate the standard NAME field and subfields
 		foreach ($STANDARD_NAME_FACTS as $tag) {
