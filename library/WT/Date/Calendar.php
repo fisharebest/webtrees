@@ -220,10 +220,10 @@ class WT_Date_Calendar {
 		case 6: return WT_I18N::translate('Sun');
 		}
 	}
-	static function YMDtoJD($y, $m, $d) {
+	static function YMDtoJD($year, $month, $day) {
 		return 0;
 	}
-	static function JDtoYMD($j) {
+	static function JDtoYMD($jd) {
 		return array(0, 0, 0);
 	}
 	// Most years are 1 more than the previous, but not always (e.g. 1BC->1AD)

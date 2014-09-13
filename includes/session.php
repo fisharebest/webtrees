@@ -185,13 +185,25 @@ if (!ini_get('date.timezone')) {
 	date_default_timezone_set(@date_default_timezone_get());
 }
 
+// Emulate PHP 5.4 feature that allows us to create/use an object without a temporary.
+// PHP 5.4: (new X)->y()
+// PHP 5.3: with(new X)->y()
+function with($x) {
+	return $x;
+}
+
 // Use the patchwork/utf8 library to:
-// set all PHP defaults to UTF-8
-// create shims for missing mb_string functions such as mb_strlen()
-// check that requests are valid UTF-8
+// 1) set all PHP defaults to UTF-8
+// 2) create shims for missing mb_string functions such as mb_strlen()
+// 3) check that requests are valid UTF-8
 \Patchwork\Utf8\Bootup::initAll();             // Enables the portablity layer and configures PHP for UTF-8
 \Patchwork\Utf8\Bootup::filterRequestUri();    // Redirects to an UTF-8 encoded URL if it's not already the case
 \Patchwork\Utf8\Bootup::filterRequestInputs(); // Normalizes HTTP inputs to UTF-8 NFC
+
+// Use the fisharebest/ext-calendar library to
+// 1) provide shims for the PHP ext/calendar extension, such as JewishToJD()
+// 2) provide calendar conversions for the Arabic and Persian calendars
+\Fisharebest\ExtCalendar\Shim::create();
 
 // Split the request protocol://host:port/path/to/script.php?var=value into parts
 // WT_SERVER_NAME  = protocol://host:port

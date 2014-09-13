@@ -40,18 +40,18 @@ class WT_Date_Gregorian extends WT_Date_Calendar {
 		}
 	}
 
-	static function YMDtoJD($y, $m, $d) {
-		if ($y<0) { // 0=1BC, -1=2BC, etc.
-			++$y;
+	static function YMDtoJD($year, $month, $day) {
+		if ($year<0) { // 0=1BC, -1=2BC, etc.
+			++$year;
 		}
-		$a=(int)((14-$m)/12);
-		$y=$y+4800-$a;
-		$m=$m+12*$a-3;
-		return $d+(int)((153*$m+2)/5)+365*$y+(int)($y/4)-(int)($y/100)+(int)($y/400)-32045;
+		$a=(int)((14-$month)/12);
+		$year=$year+4800-$a;
+		$month=$month+12*$a-3;
+		return $day+(int)((153*$month+2)/5)+365*$year+(int)($year/4)-(int)($year/100)+(int)($year/400)-32045;
 	}
 
-	static function JDtoYMD($j) {
-		$a=$j+32044;
+	static function JDtoYMD($jd) {
+		$a=$jd+32044;
 		$b=(int)((4*$a+3)/146097);
 		$c=$a-(int)($b*146097/4);
 		$d=(int)((4*$c+3)/1461);

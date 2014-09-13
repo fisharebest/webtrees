@@ -8,4 +8,5 @@ $baseDir = dirname($vendorDir);
 return array(
     'WT\\' => array($vendorDir . '/WT'),
     'Rhumsaa\\Uuid\\' => array($vendorDir . '/rhumsaa/uuid/src'),
+    'Fisharebest\\ExtCalendar\\' => array($vendorDir . '/fisharebest/ext-calendar/src'),
 );

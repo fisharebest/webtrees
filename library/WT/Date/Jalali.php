@@ -24,6 +24,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use Fisharebest\ExtCalendar\PersianCalendar;
+
 class WT_Date_Jalali extends WT_Date_Calendar {
 	const CALENDAR_ESCAPE = '@#DJALALI@';
 	const CAL_START_JD    = 1948321;
@@ -126,48 +128,30 @@ class WT_Date_Jalali extends WT_Date_Calendar {
 	}
 
 	function IsLeapYear() {
-		return in_array(
-			(($this->y + 2346) % 2820) % 128,
-			array(0, 5, 9, 13, 17, 21, 25, 29, 34, 38, 42, 46, 50, 54, 58, 62, 67, 71, 75, 79, 83, 87, 91, 95, 100, 104, 108, 112, 116, 120, 124)
-		);
+		return with(new PersianCalendar)->leapYear($this->y);
 	}
 
+	/**
+	 * Convert a year/month/day into a Julian day number.
+	 *
+	 * @param int $year
+	 * @param int $month
+	 * @param int $day
+	 *
+	 * @return int
+	 */
 	static function YMDtoJD($year, $month, $day) {
-		$epbase = $year - (($year >= 0) ? 474 : 473);
-		$epyear = 474 + $epbase % 2820;
-
-		return $day +
-				(($month <= 7) ?
-					(($month - 1) * 31) :
-					((($month - 1) * 30) + 6)
-				) +
-				(int)((($epyear * 682) - 110) / 2816) +
-				($epyear - 1) * 365 +
-				(int)($epbase / 2820) * 1029983 +
-				(self::CAL_START_JD - 1);
+		return with(new PersianCalendar)->ymdToJd($year, $month, $day);
 	}
 
+	/**
+	 * Convert a Julian day number into a year/month/day.
+	 *
+	 * @param int $jd
+	 *
+	 * @return int[]
+	 */
 	static function JDtoYMD($jd) {
-		$jd = (int)($jd) + 0.5;
-
-		$depoch = $jd - self::YMDtoJD(475, 1, 1);
-		$cycle = (int)($depoch / 1029983);
-		$cyear = $depoch % 1029983;
-		if ($cyear == 1029982) {
-			$ycycle = 2820;
-		} else {
-			$aux1 = (int)($cyear / 366);
-			$aux2 = $cyear % 366;
-			$ycycle = (int)(((2134 * $aux1) + (2816 * $aux2) + 2815) / 1028522) +
-						$aux1 + 1;
-		}
-		$year = $ycycle + (2820 * $cycle) + 474;
-		if ($year <= 0) {
-			$year--;
-		}
-		$yday = ($jd - self::YMDtoJD($year, 1, 1)) + 1;
-		$month = ($yday <= 186) ? ceil($yday / 31) : ceil(($yday - 6) / 30);
-		$day = ($jd - self::YMDtoJD($year, $month, 1)) + 1;
-		return array($year, (int)$month, (int)$day);
+		return with(new PersianCalendar)->jdToYmd($jd);
 	}
 }

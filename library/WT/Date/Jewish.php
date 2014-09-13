@@ -161,17 +161,17 @@ class WT_Date_Jewish extends WT_Date_Calendar {
 	}
 
 	// TODO implement this function locally
-	static function YMDtoJD($y, $mh, $d) {
+	static function YMDtoJD($year, $mh, $day) {
 		if (function_exists('JewishToJD'))
-			return JewishToJD($mh, $d, $y);
+			return JewishToJD($mh, $day, $year);
 		else
 			return 0;
 	}
 
 	// TODO implement this function locally
-	static function JDtoYMD($j) {
+	static function JDtoYMD($jd) {
 		if (function_exists('JdToJewish'))
-			list($m, $d, $y)=explode('/', JDToJewish($j));
+			list($m, $d, $y)=explode('/', JDToJewish($jd));
 		else
 			list($m, $d, $y)=array(0, 0, 0);
 		return array($y, $m, $d);

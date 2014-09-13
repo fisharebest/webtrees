@@ -25,6 +25,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use Fisharebest\ExtCalendar\ArabicCalendar;
+
 class WT_Date_Hijri extends WT_Date_Calendar {
 	const CALENDAR_ESCAPE = '@#DHIJRI@';
 	const CAL_START_JD    = 1948440; // @#DHIJRI@ 1 MUHAR 0001 = @#JULIAN@ 16 JUL 0622
@@ -111,17 +113,30 @@ class WT_Date_Hijri extends WT_Date_Calendar {
 	}
 
 	function IsLeapYear() {
-		return ((11*$this->y+14)%30)<11;
+		return with(new ArabicCalendar)->leapYear($this->y);
 	}
 
-	static function YMDtoJD($y, $m, $d) {
-		return $d+29*($m-1)+(int)((6*$m-1)/11)+$y*354+(int)((3+11*$y)/30)+1948084;
+	/**
+	 * Convert a year/month/day into a Julian day number.
+	 *
+	 * @param int $year
+	 * @param int $month
+	 * @param int $day
+	 *
+	 * @return int
+	 */
+	static function YMDtoJD($year, $month, $day) {
+		return with(new ArabicCalendar)->ymdToJd($year, $month, $day);
 	}
 
-	static function JDtoYMD($j) {
-		$y=(int)((30*($j-1948439)+10646)/10631);
-		$m=(int)((11*($j-$y*354-(int)((3+11*$y)/30)-1948085)+330)/325);
-		$d=$j-29*($m-1)-(int)((6*$m-1)/11)-$y*354-(int)((3+11*$y)/30)-1948084;
-		return array($y, $m, $d);
+	/**
+	 * Convert a Julian day number into a year/month/day.
+	 *
+	 * @param int $jd
+	 *
+	 * @return int[]
+	 */
+	static function JDtoYMD($jd) {
+		return with(new ArabicCalendar)->jdToYmd($jd);
 	}
 }

@@ -49,17 +49,17 @@ class WT_Date_Julian extends WT_Date_Calendar {
 		}
 	}
 
-	static function YMDtoJD($y, $m, $d) {
-		if ($y<0) // 0=1BC, -1=2BC, etc.
-			++$y;
-		$a=(int)((14-$m)/12);
-		$y=$y+4800-$a;
-		$m=$m+12*$a-3;
-		return $d+(int)((153*$m+2)/5)+365*$y+(int)($y/4)-32083;
+	static function YMDtoJD($year, $month, $day) {
+		if ($year<0) // 0=1BC, -1=2BC, etc.
+			++$year;
+		$a=(int)((14-$month)/12);
+		$year=$year+4800-$a;
+		$month=$month+12*$a-3;
+		return $day+(int)((153*$month+2)/5)+365*$year+(int)($year/4)-32083;
 	}
 
-	static function JDtoYMD($j) {
-		$c=$j+32082;
+	static function JDtoYMD($jd) {
+		$c=$jd+32082;
 		$d=(int)((4*$c+3)/1461);
 		$e=$c-(int)(1461*$d/4);
 		$m=(int)((5*$e+2)/153);

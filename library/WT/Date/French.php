@@ -137,14 +137,14 @@ class WT_Date_French extends WT_Date_Calendar {
 		return $this->y%4==3;
 	}
 
-	static function YMDtoJD($y, $m, $d) {
-		return 2375444+$d+$m*30+$y*365+(int)($y/4);
+	static function YMDtoJD($year, $month, $day) {
+		return 2375444+$day+$month*30+$year*365+(int)($year/4);
 	}
 
-	static function JDtoYMD($j) {
-		$y=(int)(($j-2375109)*4/1461)-1;
-		$m=(int)(($j-2375475-$y*365-(int)($y/4))/30)+1;
-		$d=$j-2375444-$m*30-$y*365-(int)($y/4);
+	static function JDtoYMD($jd) {
+		$y=(int)(($jd-2375109)*4/1461)-1;
+		$m=(int)(($jd-2375475-$y*365-(int)($y/4))/30)+1;
+		$d=$jd-2375444-$m*30-$y*365-(int)($y/4);
 		return array($y, $m, $d);
 	}
 
