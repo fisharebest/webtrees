@@ -475,7 +475,7 @@ class WT_Query_Name {
 				$list[$family->getXref()]=$family;
 			}
 		}
-		usort($list, array('WT_GedcomRecord', 'Compare'));
+		usort($list, array('WT_GedcomRecord', 'compare'));
 		return $list;
 	}
 }

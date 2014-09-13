@@ -76,7 +76,7 @@ function get_source_list($ged_id) {
 	foreach ($rows as $row) {
 		$list[]=WT_Source::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 	}
-	usort($list, array('WT_GedcomRecord', 'Compare'));
+	usort($list, array('WT_GedcomRecord', 'compare'));
 	return $list;
 }
 
@@ -92,7 +92,7 @@ function get_repo_list($ged_id) {
 	foreach ($rows as $row) {
 		$list[]=WT_Repository::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 	}
-	usort($list, array('WT_GedcomRecord', 'Compare'));
+	usort($list, array('WT_GedcomRecord', 'compare'));
 	return $list;
 }
 
@@ -107,7 +107,7 @@ function get_note_list($ged_id) {
 	foreach ($rows as $row) {
 		$list[]=WT_Note::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 	}
-	usort($list, array('WT_GedcomRecord', 'Compare'));
+	usort($list, array('WT_GedcomRecord', 'compare'));
 	return $list;
 }
 

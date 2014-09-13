@@ -3780,7 +3780,7 @@ function ListSHandler($attrs) {
 
 	switch ($sortby) {
 	case "NAME":
-		uasort($list, array("WT_GedcomRecord", "Compare"));
+		uasort($list, array("WT_GedcomRecord", "compare"));
 		break;
 	case "CHAN":
 		uasort(
@@ -4041,7 +4041,7 @@ function RelativesSHandler($attrs) {
 
 	switch ($sortby) {
 	case "NAME":
-		uasort($list, array("WT_GedcomRecord", "Compare"));
+		uasort($list, array("WT_GedcomRecord", "compare"));
 		break;
 	case "BIRT:DATE":
 		uasort($list, array("WT_Individual", "CompareBirtDate"));

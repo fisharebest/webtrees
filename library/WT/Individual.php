@@ -42,7 +42,7 @@ class WT_Individual extends WT_GedcomRecord {
 	}
 
 	// Implement individual-specific privacy logic
-	protected function _canShowByType($access_level) {
+	protected function canShowByType($access_level) {
 		global $SHOW_DEAD_PEOPLE, $KEEP_ALIVE_YEARS_BIRTH, $KEEP_ALIVE_YEARS_DEATH;
 
 		// Dead people...
