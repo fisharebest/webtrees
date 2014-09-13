@@ -30,8 +30,6 @@ use WT\Auth;
 use WT\User;
 
 class WT_Stats {
-	private $_gedcom;
-	private $_gedcom_url;
 	private $_ged_id;
 
 	// Methods not allowed to be used as embedded statistics
@@ -39,9 +37,7 @@ class WT_Stats {
 	private static $_media_types = array('audio', 'book', 'card', 'certificate', 'coat', 'document', 'electronic', 'magazine', 'manuscript', 'map', 'fiche', 'film', 'newspaper', 'painting', 'photo', 'tombstone', 'video', 'other');
 
 	public function __construct($gedcom) {
-		$this->_gedcom = $gedcom;
 		$this->_ged_id = get_id_from_gedcom($gedcom);
-		$this->_gedcom_url = rawurlencode($gedcom);
 	}
 
 	/**

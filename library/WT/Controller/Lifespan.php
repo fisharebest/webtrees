@@ -252,8 +252,6 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 	//Prints the time line
 	function PrintTimeline($startYear, $endYear) {
 		$leftPosition = 14; //start point
-		$width = 8; //base width
-		$height = 10; //standard height
 		$tickDistance = 50; //length of one timeline section
 		$top = 65; //top starting position
 		$yearSpan = 5; //default zoom level
@@ -287,7 +285,7 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 		if (count($ar) == 0) return $top;
 		$maxY = $top;
 
-		foreach ($ar as $key => $value) {
+		foreach ($ar as $value) {
 			//Creates appropriate color scheme to show relationships
 			$this->currentsex = $value->getSex();
 			if ($this->currentsex == "M") {
@@ -335,17 +333,13 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 				$minlength = mb_strlen(strip_tags($value->getFullName())) * $this->zoomfactor;
 
 				if ($startPos > 15) {
-					$startPos = (($birthYear - $this->timelineMinYear) * $this->zoomfactor) + 15 + $modFix;
 					$startPos = (($birthYear - $this->timelineMinYear) * $this->zoomfactor) + 15;
 					$width = (($deathYear - $birthYear) * $this->zoomfactor) - 2;
 				}
-				//set start position to deathyear
-				$int = $deathYear;
+
 				//set minimum width for single year lifespans
-				if ($width < 10)
-				{
+				if ($width < 10) {
 					$width = 10;
-					$int = $birthYear+1;
 				}
 
 				$lifespan = "<span dir=\"ltr\">$birthYear-</span>";
@@ -404,8 +398,7 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 				sort_facts($unparsedEvents);
 
 				$eventinformation = Array();
-				$eventspacing = Array();
-				foreach ($unparsedEvents as $index=>$val) {
+				foreach ($unparsedEvents as $val) {
 					$date = $val->getDate();
 					if (!empty($date)) {
 						$fact = $val->getTag();
@@ -437,7 +430,6 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 						echo "<div style=\"position:absolute; left:", $evtwidth, ";\"><a class=\"showit\" href=\"#\" style=\"top:-2px; font-size:10px;\"><b>";
 						$text = explode("-fact, ", $val);
 						$fact = $text[0];
-						$val = $text[1];
 						echo '</b><span>', self::getAbbreviation($fact), '</span></a></div>';
 					}
 					$indiName = $value->getFullName();
@@ -464,7 +456,6 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 							echo '<div style="position:absolute; left:', $evtwidth, ' "><a class="showit" href="#" style="top:-2px; font-size:10px;"><b>';
 							$text = explode("-fact,", $val);
 							$fact = $text[0];
-							$val = $text[1];
 							echo '</b><span>'.self::getAbbreviation($fact).'</span></a></div>';
 						}
 						$indiName = $value->getFullName();
@@ -490,7 +481,7 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 						echo '<a class="showit" href="'.$value->getHtmlUrl().'"><b>';
 						echo self::getAbbreviation('BIRT');
 						echo '</b><span>'.$value->getSexImage().$indiName.'<br>'.WT_Gedcom_Tag::getLabel('BIRT').' '.strip_tags($bdate->Display(false)).' '.$value->getBirthPlace().'<br>';
-						foreach ($eventinformation as $evtwidth=>$val) {
+						foreach ($eventinformation as $val) {
 							$text = explode('-fact,', $val);
 							$val = $text[1];
 							echo $val."<br>";

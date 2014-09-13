@@ -140,7 +140,6 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 		}
 		foreach ($person->getChildFamilies() as $family) {
 			echo "<table cellspacing=\"0\" cellpadding=\"0\" border=\"0\" style=\"empty-cells: show;\">";
-			$height="100%";
 			echo "<tr>";
 			echo "<td valign=\"bottom\"><img class=\"line3\" name=\"pvline\" src=\"".$WT_IMAGES["vline"]."\" width=\"3\" height=\"$lh\" alt=\"\"></td>";
 			echo "<td><img class=\"line4\" src=\"".$WT_IMAGES["hline"]."\" width=\"7\" height=\"3\" alt=\"\"></td>";
@@ -240,9 +239,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 		echo "<td align=\"$tablealign\" width=\"100%\">";
 		$numkids = 0;
 		$families = $person->getSpouseFamilies();
-		$famcount = count($families);
 		$famNum = 0;
-		$kidNum = 0;
 		$children = array();
 		if ($count < $this->dgenerations) {
 			// Put all of the children in a common array
@@ -305,9 +302,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 				echo "<a href=\"$pid\" onclick=\"return changeDis('td_".$pid."','".$pid."','".$this->show_full."','".$this->show_spouse."','".$this->box_width."')\" class=\"".$this->left_arrow."\"></a>";
 				//-- move the arrow up to line up with the correct box
 				if ($this->show_spouse) {
-					foreach ($families as $family) {
-						echo '<br><br><br>';
-					}
+					echo str_repeat('<br><br><br>', count($families));
 				}
 				echo "</td><td width=\"$bwidth\">";
 			}
