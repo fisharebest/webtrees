@@ -795,7 +795,7 @@ case 'add_spouse_to_individual_action':
 	$islink  = WT_Filter::postArray('islink', '[01]');
 
 	if (!WT_Filter::checkCsrf()) {
-		$gender = WT_Filter::get('famtag', 'HUSB|WIFE');
+		$famtag = WT_Filter::get('famtag', 'HUSB|WIFE');
 		Zend_Session::writeClose();
 		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=add_spouse_to_individual&xref=' . $xref . '&famtag=' . $famtag);
 		exit;
@@ -887,7 +887,7 @@ case 'add_spouse_to_family_action':
 	check_record_access($family);
 
 	if (!WT_Filter::checkCsrf()) {
-		$gender = WT_Filter::get('famtag', 'HUSB|WIFE');
+		$famtag = WT_Filter::get('famtag', 'HUSB|WIFE');
 		Zend_Session::writeClose();
 		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=add_spouse_to_family&xref=' . $xref . '&famtag=' . $famtag);
 		exit;
@@ -1110,7 +1110,7 @@ case 'linkspouseaction':
 	$islink  = WT_Filter::postArray('islink', '[01]');
 
 	if (!WT_Filter::checkCsrf()) {
-		$gender = WT_Filter::get('famtag', 'HUSB|WIFE');
+		$famtag = WT_Filter::get('famtag', 'HUSB|WIFE');
 		Zend_Session::writeClose();
 		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=linkspouse&xref=' . $xref . '&famtag=' . $famtag);
 		exit;
