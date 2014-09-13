@@ -3785,7 +3785,7 @@ function ListSHandler($attrs) {
 	case "CHAN":
 		uasort(
 			$list,
-			function ($x, $y) {
+			function (WT_GedcomRecord $x, WT_GedcomRecord $y) {
 				$f1 = $x->getFirstFact('CHAN');
 				$f2 = $y->getFirstFact('CHAN');
 				if ($f1 && $f2) {
