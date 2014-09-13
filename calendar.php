@@ -455,7 +455,7 @@ case 'calendar':
 	}
 	echo "<table class=\"list_table width100\"><tr>";
 	for ($week_day=0; $week_day<$days_in_week; ++$week_day) {
-		$day_name=$cal_date->LONG_DAYS_OF_WEEK(($week_day+$week_start) % $days_in_week);
+		$day_name=$cal_date->dayNames(($week_day+$week_start) % $days_in_week);
 		echo "<td class=\"descriptionbox\" width=\"".(100/$days_in_week)."%\">{$day_name}</td>";
 	}
 	echo "</tr>";
