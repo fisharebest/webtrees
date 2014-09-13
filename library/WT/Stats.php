@@ -241,7 +241,7 @@ class WT_Stats {
 			$type = $this->totalIndividualsQuery();
 			break;
 		case 'family':
-			$type = $this->_totalFamilies();
+			$type = $this->totalFamiliesQuery();
 			break;
 		case 'source':
 			$type = $this->totalSourcesQuery();
@@ -251,7 +251,7 @@ class WT_Stats {
 			break;
 		case 'all':
 		default:
-			$type = $this->totalIndividualsQuery() + $this->_totalFamilies() + $this->totalSourcesQuery();
+			$type = $this->totalIndividualsQuery() + $this->totalFamiliesQuery() + $this->totalSourcesQuery();
 			break;
 		}
 		if ($type==0) {
@@ -262,7 +262,7 @@ class WT_Stats {
 	}
 
 	public function totalRecords() {
-		return WT_I18N::number($this->totalIndividualsQuery() + $this->_totalFamilies() + $this->totalSourcesQuery());
+		return WT_I18N::number($this->totalIndividualsQuery() + $this->totalFamiliesQuery() + $this->totalSourcesQuery());
 	}
 
 	private function totalIndividualsQuery() {
@@ -309,7 +309,7 @@ class WT_Stats {
 		return $this->getPercentage($this->totalIndividualsQuery(), 'all');
 	}
 
-	private function _totalFamilies() {
+	private function totalFamiliesQuery() {
 		return
 			WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##families` WHERE f_file=?")
 			->execute(array($this->tree_id))
@@ -317,7 +317,7 @@ class WT_Stats {
 	}
 
 	public function totalFamilies() {
-		return WT_I18N::number($this->_totalFamilies());
+		return WT_I18N::number($this->totalFamiliesQuery());
 	}
 
 	private function totalFamsWithSourcesQuery() {
@@ -336,7 +336,7 @@ class WT_Stats {
 		if (isset($params[1]) && $params[1] != '') {$color_from = strtolower($params[1]);} else {$color_from = $WT_STATS_CHART_COLOR1;}
 		if (isset($params[2]) && $params[2] != '') {$color_to = strtolower($params[2]);} else {$color_to = $WT_STATS_CHART_COLOR2;}
 		$sizes = explode('x', $size);
-		$tot_fam = $this->_totalFamilies();
+		$tot_fam = $this->totalFamiliesQuery();
 		if ($tot_fam==0) {
 			return '';
 		} else {
@@ -350,7 +350,7 @@ class WT_Stats {
 	}
 
 	public function totalFamiliesPercentage() {
-		return $this->getPercentage($this->_totalFamilies(), 'all');
+		return $this->getPercentage($this->totalFamiliesQuery(), 'all');
 	}
 
 	private function totalSourcesQuery() {
@@ -1003,7 +1003,7 @@ class WT_Stats {
 		$country_to_iso3166=array();
 		foreach (WT_I18N::installed_languages() as $code=>$lang) {
 			WT_I18N::init($code);
-			$countries=$this->get_all_countries();
+			$countries=$this->getAllCountries();
 			foreach ($this->iso3166() as $three=>$two) {
 				$country_to_iso3166[$three]=$two;
 				$country_to_iso3166[$countries[$three]]=$two;
@@ -1130,7 +1130,7 @@ class WT_Stats {
 		$country_names=array();
 		foreach (WT_I18N::installed_languages() as $code=>$lang) {
 			WT_I18N::init($code);
-			$all_countries = $this->get_all_countries();
+			$all_countries = $this->getAllCountries();
 			foreach ($all_countries as $country_code=>$country_name) {
 				$country_names[$country_name]=$country_code;
 			}
@@ -1148,7 +1148,7 @@ class WT_Stats {
 			}
 		}
 		// get all the user’s countries names
-		$all_countries = $this->get_all_countries();
+		$all_countries = $this->getAllCountries();
 		foreach ($all_db_countries as $country_code=>$country) {
 			$top10[]='<li>';
 			foreach ($country as $country_name=>$tot) {
@@ -4315,7 +4315,7 @@ class WT_Stats {
 		);
 	}
 
-	public function get_all_countries() {
+	public function getAllCountries() {
 		return array(
 			'???' => WT_I18N::translate('Unknown'),
 			'ABW' => WT_I18N::translate('Aruba'),

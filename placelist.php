@@ -124,7 +124,7 @@ case 'hierarchy':
 				$placelevels = ', ' . $parent[$j] . $placelevels;
 			}
 		}
-		$gm_module->create_map($placelevels);
+		$gm_module->createMap($placelevels);
 	} elseif (array_key_exists('places_assistant', WT_Module::getActiveModules())) {
 		// Places Assistant is a custom/add-on module that was once part of the core code.
 		places_assistant_WT_Module::display_map($level, $parent);
@@ -243,7 +243,7 @@ case 'hierarchy':
 
 	if ($gm_module && $gm_module->getSetting('GM_PLACE_HIERARCHY')) {
 		echo '<link type="text/css" href="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/css/wt_v3_googlemap.css" rel="stylesheet">';
-		$gm_module->map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $place_names);
+		$gm_module->mapScripts($numfound, $level, $parent, $linklevels, $placelevels, $place_names);
 	}
 	break;
 }
