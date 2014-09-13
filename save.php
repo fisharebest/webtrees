@@ -252,7 +252,7 @@ case 'user_setting':
 		// Approving for the first time?  Send a confirmation email
 		if ($value && !$user->getSetting('verified_by_admin') && $user->getSetting('sessiontime')==0) {
 			WT_I18N::init($user->getSetting('language'));
-			WT_Mail::system_message(
+			WT_Mail::systemMessage(
 				$WT_TREE,
 				$user,
 				WT_I18N::translate('Approval of account at %s', WT_SERVER_NAME.WT_SCRIPT_PATH),
