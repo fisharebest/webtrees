@@ -2430,24 +2430,23 @@ function GetPersonNameSHandler($attrs) {
 				$name = strip_tags($name);
 			}
 			if (!empty($attrs['truncate'])) {
-				//short-circuit with the faster strlen
-				if (strlen($name) > $attrs['truncate'] && WT_I18N::strlen($name) > $attrs['truncate']) {
-					$name  = preg_replace("/\(.*\) ?/", "", $name); //removes () and text inbetween - what about ", [ and { etc?
+				if (mb_strlen($name) > $attrs['truncate']) {
+					$name  = preg_replace("/\(.*\) ?/", '', $name); //removes () and text inbetween - what about ", [ and { etc?
 					$words = preg_split('/[, -]+/', $name); // names separated with space, comma or hyphen - any others?
 					$name  = $words[count($words) - 1];
 					for ($i = count($words) - 2; $i >= 0; $i--) {
-						$len = WT_I18N::strlen($name);
+						$len = mb_strlen($name);
 						for ($j = count($words) - 3; $j >= 0; $j--) {
-							$len += WT_I18N::strlen($words[$j]);
+							$len += mb_strlen($words[$j]);
 						}
 						if ($len > $attrs['truncate']) {
-							$first_letter = WT_I18N::substr($words[$i], 0, 1);
-							//do not show " of nick-names
+							$first_letter = mb_substr($words[$i], 0, 1);
+							// Do not show " of nick-names
 							if ($first_letter != "\"") {
-								$name = WT_I18N::substr($words[$i], 0, 1) . ". " . $name;
+								$name = mb_substr($words[$i], 0, 1) . '. ' . $name;
 							}
 						} else {
-							$name = $words[$i] . " " . $name;
+							$name = $words[$i] . ' ' . $name;
 						}
 					}
 				}

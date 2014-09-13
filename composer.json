@@ -24,5 +24,13 @@
 		"patchwork/utf8": "*",
 		"tecnick.com/tcpdf": "*",
 		"rhumsaa/uuid": "*"
+	},
+	"scripts": {
+		"post-install-cmd": [
+			"composer dump-autoload --optimize"
+		],
+		"post-update-cmd": [
+			"composer dump-autoload --optimize"
+		]
 	}
 }

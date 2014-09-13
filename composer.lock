@@ -4,20 +4,20 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6a31a5ca452ae448dc494ceab93808ec",
+    "hash": "71852960dabde2be5af68460c78445db",
     "packages": [
         {
             "name": "bombayworks/zendframework1",
-            "version": "v1.12.7.1",
+            "version": "v1.12.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bombayworks/zendframework1.git",
-                "reference": "e3e6459bf317f12919d305cb8d16a61b4bf68f75"
+                "reference": "98c442a8ea215f449548db9f2269944349acc786"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bombayworks/zendframework1/zipball/e3e6459bf317f12919d305cb8d16a61b4bf68f75",
-                "reference": "e3e6459bf317f12919d305cb8d16a61b4bf68f75",
+                "url": "https://api.github.com/repos/bombayworks/zendframework1/zipball/98c442a8ea215f449548db9f2269944349acc786",
+                "reference": "98c442a8ea215f449548db9f2269944349acc786",
                 "shasum": ""
             },
             "require": {
@@ -55,7 +55,7 @@
                 "ZF1",
                 "framework"
             ],
-            "time": "2014-06-30 12:10:54"
+            "time": "2014-08-26 16:01:25"
         },
         {
             "name": "ezyang/htmlpurifier",
@@ -194,16 +194,16 @@
         },
         {
             "name": "patchwork/utf8",
-            "version": "v1.1.24",
+            "version": "v1.1.25",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nicolas-grekas/Patchwork-UTF8.git",
-                "reference": "40f552c019956f446553b19f7de2da2f9c74d730"
+                "reference": "2d43bd047b120279511d45e76e61c5a9812d9a83"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nicolas-grekas/Patchwork-UTF8/zipball/40f552c019956f446553b19f7de2da2f9c74d730",
-                "reference": "40f552c019956f446553b19f7de2da2f9c74d730",
+                "url": "https://api.github.com/repos/nicolas-grekas/Patchwork-UTF8/zipball/2d43bd047b120279511d45e76e61c5a9812d9a83",
+                "reference": "2d43bd047b120279511d45e76e61c5a9812d9a83",
                 "shasum": ""
             },
             "require": {
@@ -216,6 +216,11 @@
                 "ext-mbstring": "Use Mbstring for best performance"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1-dev"
+                }
+            },
             "autoload": {
                 "psr-0": {
                     "Patchwork": "class/",
@@ -241,20 +246,20 @@
                 "utf-8",
                 "utf8"
             ],
-            "time": "2014-06-17 08:23:06"
+            "time": "2014-08-05 08:00:32"
         },
         {
             "name": "rhumsaa/uuid",
-            "version": "2.7.1",
+            "version": "2.7.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramsey/uuid.git",
-                "reference": "8569983a11ed96087cdf94c7aa65866138681beb"
+                "reference": "b976326ca5977d7333f34e3c828ae7c22a49a65a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramsey/uuid/zipball/8569983a11ed96087cdf94c7aa65866138681beb",
-                "reference": "8569983a11ed96087cdf94c7aa65866138681beb",
+                "url": "https://api.github.com/repos/ramsey/uuid/zipball/b976326ca5977d7333f34e3c828ae7c22a49a65a",
+                "reference": "b976326ca5977d7333f34e3c828ae7c22a49a65a",
                 "shasum": ""
             },
             "require": {
@@ -263,7 +268,8 @@
             "require-dev": {
                 "doctrine/dbal": ">=2.3",
                 "moontoast/math": "~1.1",
-                "phpunit/phpunit": "~3.7",
+                "phpunit/phpunit": "~4.1",
+                "satooshi/php-coveralls": "~0.6",
                 "symfony/console": "~2.3"
             },
             "suggest": {
@@ -281,8 +287,8 @@
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Rhumsaa\\Uuid": "src/"
+                "psr-4": {
+                    "Rhumsaa\\Uuid\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -296,8 +302,7 @@
                 },
                 {
                     "name": "Ben Ramsey",
-                    "homepage": "http://benramsey.com",
-                    "role": "Developer"
+                    "homepage": "http://benramsey.com"
                 }
             ],
             "description": "A PHP 5.3+ library for generating RFC 4122 version 1, 3, 4, and 5 universally unique identifiers (UUID).",
@@ -307,15 +312,21 @@
                 "identifier",
                 "uuid"
             ],
-            "time": "2014-02-22 00:08:43"
+            "time": "2014-08-27 22:39:41"
         },
         {
             "name": "tecnick.com/tcpdf",
-            "version": "6.0.089",
+            "version": "6.0.093",
             "source": {
                 "type": "git",
-                "url": "git://git.code.sf.net/p/tcpdf/code",
-                "reference": "979432f754965bc13960776df51cb28eabfc0938"
+                "url": "https://github.com/tecnickcom/TCPDF.git",
+                "reference": "8ec040b3ccedc2a0150a7b6b46c18c59d932ad59"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/8ec040b3ccedc2a0150a7b6b46c18c59d932ad59",
+                "reference": "8ec040b3ccedc2a0150a7b6b46c18c59d932ad59",
+                "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0"
@@ -353,7 +364,7 @@
                     "homepage": "http://nicolaasuni.tecnick.com"
                 }
             ],
-            "description": "TCPDF is a PHP class for generating PDF documents.",
+            "description": "TCPDF is a PHP class for generating PDF documents and barcodes.",
             "homepage": "http://www.tcpdf.org/",
             "keywords": [
                 "PDFD32000-2008",
@@ -364,7 +375,7 @@
                 "pdf417",
                 "qrcode"
             ],
-            "time": "2014-07-16 17:59:23"
+            "time": "2014-09-02 19:31:33"
         }
     ],
     "packages-dev": [
