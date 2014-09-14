@@ -551,7 +551,9 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 				$sql.=" AND fam.f_gedcom LIKE CONCAT('%', ?, '%')";
 				$bind[]=$value;
 			} else {
-				$sql.=" AND ind.i_gedcom LIKE CONCAT('%', ?, '%')";
+				// e.g. searches for occupation, religion, note, etc.
+				$sql.=" AND ind.i_gedcom REGEXP CONCAT('\n[0-9] ', ?, '(.*\n[0-9] CONT )* [^\n]*', ?)";
+				$bind[]=$parts[0];
 				$bind[]=$value;
 			}
 		}
