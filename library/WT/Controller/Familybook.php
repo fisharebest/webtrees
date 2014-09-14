@@ -76,20 +76,15 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 	 * Prints descendency of passed in person
 	 */
 	function print_descendency($person, $count) {
-		global $TEXT_DIRECTION, $WT_IMAGES, $bwidth, $bheight, $bhalfheight;
-		global $show_full, $box_width; // print_pedigree_person() requires these globals.
+		global $WT_IMAGES, $bwidth, $bheight, $show_full, $box_width; // print_pedigree_person() requires these globals.
 		if ($count>$this->dgenerations) return 0;
 		$show_full=$this->show_full;
 		$box_width=$this->box_width;
 		echo '<table>';
 		echo '<tr>';
 		echo '<td width="', ($bwidth), '">';
-		$gencount = 0;
 		$numkids = 0;
-		$familycount = 0;
-		$kids = 0;
 		$famNum = 0;
-		$lh = 0;
 		// if real person load child array
 		if ($person) {
 			$sfamilies=$person->getSpouseFamilies();
@@ -100,7 +95,9 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 				foreach ($sfamilies as $family) {
 					$famNum ++;
 					$chs = $family->getChildren();
-					foreach ($chs as $c=>$child) $children[] = $child;
+					foreach ($chs as $child) {
+						$children[] = $child;
+					}
 				}
 				$ct = count($children);
 			}
@@ -109,32 +106,11 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 		}
 		if ($count < $this->dgenerations) {
 			if ($ct==0 ) { // empty boxes
-				echo '<table>';
-				for ($i=0; $i<1; $i++) { //set to 2 for two child boxes
-					echo '<tr>',
-						 '<td>';
-					 $person2=null;
-					 $kids = $this->print_descendency($person2, $count+1);
-					$numkids += $kids;
-					echo '</td>';
-					//Adjust for lines
-					if ($i==0) {
-						//-- adjust for the first column on left
-						$h= round(((($bheight)*$kids)/2)-1);
-						//-- adjust for other vertical columns
-						if ($kids>1) $h = ((($kids-1)*4)+$h);
-					} else if ($i==1) {
-							//-- adjust for the first column on left
-							$h= round(((($bheight)*$kids)/2)+10);
-							//-- adjust for other vertical columns
-							if ($kids>1) $h = ((($kids-1)*4)+$h);
-					} else {
-						echo '<td style="background: url(',$WT_IMAGES["vline"],');">',
-							 '<img class="spacer" src="',$WT_IMAGES["spacer"],'" alt=""></td>';
-					}
-					echo '</tr>';
-				}
-				echo '</table>';
+				echo '<table><tr><td>';
+				 $person2=null;
+				 $kids = $this->print_descendency($person2, $count+1);
+				$numkids += $kids;
+				echo '</td></tr></table>';
 			}
 			if ($ct>0) { // real people
 				echo '<table>';
@@ -148,8 +124,6 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 					$numkids += $kids;
 					echo '</td>';
 					//-- print the lines
-					$twidth = 7;
-					if ($ct==1) $twidth+=3;
 					if ($ct>1) {
 						if ($i==0) {
 							//-- adjust for the first column on left
@@ -259,14 +233,11 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 				$sfamilies=$person->getSpouseFamilies();
 				$famcount = 0;
 				if ($this->show_spouse) { // count number of spouses
-					foreach ($sfamilies as $sfamily) {
-					$famcount++;
-					}
+					$famcount += count($sfamilies);
 				}
 				$savlh=$lh; // Save current line height
 				if ($count==1 && $genoffset<=$famcount) {
 					$linefactor=0;
-					$tblheight=$bheight+8;
 					if ($genoffset>2) { // genoffset of 2 needs no adjustment
 						$tblheight=$bheight+8;
 						if ($genoffset==3) {

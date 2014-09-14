@@ -441,13 +441,13 @@ function format_indi_table($datalist, $option='') {
 		$html .= '</td>';
 		//-- Last change
 		if ($SHOW_LAST_CHANGE) {
-			$html .= '<td>'. $person->LastChangeTimestamp(). '</td>';
+			$html .= '<td>'. $person->lastChangeTimestamp(). '</td>';
 		} else {
 			$html .= '<td>&nbsp;</td>';
 		}
 		//-- Last change hidden sort column
 		if ($SHOW_LAST_CHANGE) {
-			$html .= '<td>'. $person->LastChangeTimestamp(true). '</td>';
+			$html .= '<td>'. $person->lastChangeTimestamp(true). '</td>';
 		} else {
 			$html .= '<td>&nbsp;</td>';
 		}
@@ -1650,7 +1650,7 @@ function print_changes_list($change_ids, $sort) {
 		// setup sorting parameters
 		$arr[$n]['record'] = $record;
 		$arr[$n]['jd'] = ($sort == 'name') ? 1 : $n;
-		$arr[$n]['anniv'] = $record->LastChangeTimestamp(true);
+		$arr[$n]['anniv'] = $record->lastChangeTimestamp(true);
 		$arr[$n++]['fact'] = $record->getSortName(); // in case two changes have same timestamp
 	}
 
@@ -1674,7 +1674,7 @@ function print_changes_list($change_ids, $sort) {
 				$html .= '<a href="' . $value['record']->getHtmlUrl() . '" class="list_item">' . $value['record']->getAddName() . '</a>';
 			}
 		}
-		$html .= /* I18N: [a record was] Changed on <date/time> by <user> */ WT_I18N::translate('Changed on %1$s by %2$s', $value['record']->LastChangeTimestamp(), $value['record']->LastChangeUser());
+		$html .= /* I18N: [a record was] Changed on <date/time> by <user> */ WT_I18N::translate('Changed on %1$s by %2$s', $value['record']->lastChangeTimestamp(), $value['record']->lastChangeUser());
 		$html .= '</div>';
 	}
 	return $html;
@@ -1779,11 +1779,11 @@ function print_changes_table($change_ids, $sort) {
 		}
 		$html .= "</td>";
 		//-- Last change date/time
-		$html .= "<td class='wrap'>" . $record->LastChangeTimestamp() . "</td>";
+		$html .= "<td class='wrap'>" . $record->lastChangeTimestamp() . "</td>";
 		//-- Last change user
-		$html .= "<td class='wrap'>" . $record->LastChangeUser() . "</td>";
+		$html .= "<td class='wrap'>" . $record->lastChangeUser() . "</td>";
 		//-- change date (sortable) hidden by datatables code
-		$html .= "<td>" . $record->LastChangeTimestamp(true) . "</td>";
+		$html .= "<td>" . $record->lastChangeTimestamp(true) . "</td>";
 		//-- names (sortable) hidden by datatables code
 		$html .= "<td>" . $record->getSortName() . "</td></tr>";
 	}

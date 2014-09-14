@@ -154,7 +154,7 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 		// check if this is a family fact
 		$gdate=$event->getDate();
 		$date=$gdate->MinDate();
-		$date=$date->convert_to_cal('gregorian');
+		$date=$date->convertToCalendar('gregorian');
 		$year  = $date->y;
 		$month = max(1, $date->m);
 		$day   = max(1, $date->d);

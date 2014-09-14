@@ -315,8 +315,8 @@ class WT_I18N {
 	 * fr: 12 345,67
 	 * de: 12.345,67
 	 *
-	 * @param int $n
-	 * @param int $precision
+	 * @param float $n
+	 * @param int   $precision
 	 *
 	 * @return string
 	 */
@@ -769,7 +769,7 @@ class WT_I18N {
 	 */
 	public static function strtoupper($string) {
 		if (self::$locale == 'tr' || self::$locale == 'az') {
-			return Utf8Turkish::strtoupper($string);
+			return TurkishUtf8::strtoupper($string);
 		} else {
 			return mb_strtoupper($string);
 		}
@@ -786,7 +786,7 @@ class WT_I18N {
 	 */
 	public static function strtolower($string) {
 		if (self::$locale == 'tr' || self::$locale == 'az') {
-			return Utf8Turkish::strtolower($string);
+			return TurkishUtf8::strtolower($string);
 		} else {
 			return mb_strtolower($string);
 		}

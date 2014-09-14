@@ -65,7 +65,7 @@ class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 						foreach (WT_Tree::getAll() as $tree) {
 							if (exists_pending_change($user, $tree)) {
 								WT_I18N::init($user->getSetting('language'));
-								WT_Mail::system_message(
+								WT_Mail::systemMessage(
 									$tree,
 									$user,
 									WT_I18N::translate('Pending changes'),

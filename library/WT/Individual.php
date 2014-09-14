@@ -21,6 +21,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use Fisharebest\ExtCalendar\GregorianCalendar;
+
 class WT_Individual extends WT_GedcomRecord {
 	const RECORD_TYPE = 'INDI';
 	const SQL_FETCH   = "SELECT i_gedcom FROM `##individuals` WHERE i_id=? AND i_file=?";
@@ -40,7 +42,7 @@ class WT_Individual extends WT_GedcomRecord {
 	}
 
 	// Implement individual-specific privacy logic
-	protected function _canShowByType($access_level) {
+	protected function canShowByType($access_level) {
 		global $SHOW_DEAD_PEOPLE, $KEEP_ALIVE_YEARS_BIRTH, $KEEP_ALIVE_YEARS_DEATH;
 
 		// Dead people...
@@ -376,7 +378,7 @@ class WT_Individual extends WT_GedcomRecord {
 	 * @return string the year of birth
 	 */
 	function getBirthYear() {
-		return $this->getBirthDate()->MinDate()->Format('%Y');
+		return $this->getBirthDate()->MinDate()->format('%Y');
 	}
 
 	// Get the date of death
@@ -405,7 +407,7 @@ class WT_Individual extends WT_GedcomRecord {
 	 * @return string the year of death
 	 */
 	function getDeathYear() {
-		return $this->getDeathDate()->MinDate()->Format('%Y');
+		return $this->getDeathDate()->MinDate()->format('%Y');
 	}
 
 	// Get the range of years in which a individual lived.  e.g. “1870–”, “1870–1920”, “–1920”.
@@ -416,8 +418,8 @@ class WT_Individual extends WT_GedcomRecord {
 		return
 			/* I18N: A range of years, e.g. “1870–”, “1870–1920”, “–1920” */ WT_I18N::translate(
 				'%1$s–%2$s',
-				'<span title="'.strip_tags($this->getBirthDate()->Display()).'">'.$this->getBirthDate()->MinDate()->Format('%Y').'</span>',
-				'<span title="'.strip_tags($this->getDeathDate()->Display()).'">'.$this->getDeathDate()->MinDate()->Format('%Y').'</span>'
+				'<span title="'.strip_tags($this->getBirthDate()->Display()).'">'.$this->getBirthDate()->MinDate()->format('%Y').'</span>',
+				'<span title="'.strip_tags($this->getDeathDate()->Display()).'">'.$this->getDeathDate()->MinDate()->format('%Y').'</span>'
 			);
 	}
 
@@ -528,8 +530,10 @@ class WT_Individual extends WT_GedcomRecord {
 					}
 				}
 				if ($min && $max) {
-					list($y)=WT_Date_Gregorian::JDtoYMD((int)((max($min)+min($max))/2));
-					$this->_getEstimatedBirthDate=new WT_Date("EST {$y}");
+					$gregorian_calendar = new GregorianCalendar;
+
+					list($year) = $gregorian_calendar->jdToYmd((int)((max($min) + min($max)) / 2));
+					$this->_getEstimatedBirthDate=new WT_Date('EST ' . $year);
 				} else {
 					$this->_getEstimatedBirthDate=new WT_Date(''); // always return a date object
 				}

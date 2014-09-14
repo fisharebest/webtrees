@@ -127,7 +127,6 @@ if (!isset($_POST['lang'])) {
 	}
 	// Recommended extensions
 	foreach (array(
-		'calendar'  => /* I18N: a program feature */ WT_I18N::translate('jewish calendar'),
 		'gd'        => /* I18N: a program feature */ WT_I18N::translate('creating thumbnails of images'),
 		'xml'       => /* I18N: a program feature */ WT_I18N::translate('reporting'),
 		'simplexml' => /* I18N: a program feature */ WT_I18N::translate('reporting'),

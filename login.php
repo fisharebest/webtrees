@@ -235,7 +235,7 @@ case 'requestpw':
 		$user->setPassword($user_new_pw);
 		Log::addAuthenticationLog('Password request was sent to user: ' . $user->getUserName());
 
-		WT_Mail::system_message(
+		WT_Mail::systemMessage(
 			$WT_TREE,
 			$user,
 			WT_I18N::translate('Lost password request'),

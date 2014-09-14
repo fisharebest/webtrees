@@ -25,37 +25,36 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
+
 use Rhumsaa\Uuid\Uuid;
 use WT\Auth;
 use WT\User;
 
 class WT_Stats {
-	private $_gedcom;
-	private $_gedcom_url;
-	private $_ged_id;
+	private $tree_id;
 
-	// Methods not allowed to be used as embedded statistics
-	private static $_not_allowed = array('stats', 'getTags', 'embedTags', 'iso3166', 'get_all_countries');
-	private static $_media_types = array('audio', 'book', 'card', 'certificate', 'coat', 'document', 'electronic', 'magazine', 'manuscript', 'map', 'fiche', 'film', 'newspaper', 'painting', 'photo', 'tombstone', 'video', 'other');
+	private $public_but_not_allowed = array(
+'__construct', 'embedTags', 'iso3166', 'get_all_countries', 'getAllTagsTable', 'getAllTagsText', 'statsPlaces', 'statsBirthQuery', 'statsDeathQuery', 'statsMarrQuery', 'statsAgeQuery', 'monthFirstChildQuery', 'statsChildrenQuery', 'statsMarrAgeQuery'
+);
+
+	private $_media_types = array('audio', 'book', 'card', 'certificate', 'coat', 'document', 'electronic', 'magazine', 'manuscript', 'map', 'fiche', 'film', 'newspaper', 'painting', 'photo', 'tombstone', 'video', 'other');
 
 	public function __construct($gedcom) {
-		$this->_gedcom = $gedcom;
-		$this->_ged_id = get_id_from_gedcom($gedcom);
-		$this->_gedcom_url = rawurlencode($gedcom);
+		$this->tree_id = get_id_from_gedcom($gedcom);
 	}
 
 	/**
 	 * Return a string of all supported tags and an example of its output in table row form.
 	 */
-	function getAllTagsTable() {
+	public function getAllTagsTable() {
 		$examples = array();
 		foreach (get_class_methods($this) as $method) {
-			if (in_array($method, self::$_not_allowed) || $method[0] == '_' || $method == 'getAllTagsTable' || $method == 'getAllTagsText') {
-				continue;
-			}
-			$examples[$method] = $this->$method();
-			if (stristr($method, 'highlight')) {
-				$examples[$method]=str_replace(array(' align="left"', ' align="right"'), '', $examples[$method]);
+			$reflection = new ReflectionMethod($this, $method);
+			if ($reflection->isPublic() && !in_array($method, $this->public_but_not_allowed)) {
+				$examples[$method] = $this->$method();
+				if (stristr($method, 'highlight')) {
+					$examples[$method]=str_replace(array(' align="left"', ' align="right"'), '', $examples[$method]);
+				}
 			}
 		}
 		ksort($examples);
@@ -82,13 +81,13 @@ class WT_Stats {
 	/**
 	 * Return a string of all supported tags in plain text.
 	 */
-	function getAllTagsText() {
+	public function getAllTagsText() {
 		$examples = array();
 		foreach (get_class_methods($this) as $method) {
-			if (in_array($method, self::$_not_allowed) || $method[0] == '_' || $method == 'getAllTagsTable' || $method == 'getAllTagsText') {
-				continue;
+			$reflection = new ReflectionMethod($this, $method);
+			if ($reflection->isPublic() && !in_array($method, $this->public_but_not_allowed)) {
+				$examples[$method] = $method;
 			}
-			$examples[$method] = $method;
 		}
 		ksort($examples);
 
@@ -98,7 +97,7 @@ class WT_Stats {
 	/*
 	 * Get tags and their parsed results.
 	 */
-	function getTags($text) {
+	private function getTags($text) {
 		static $funcs;
 
 		// Retrive all class methods
@@ -124,11 +123,6 @@ class WT_Stats {
 				$params = array();
 			}
 
-			// Skip non-tags and non-allowed tags
-			if ($tags[$i][0] == '_' || in_array($tags[$i], self::$_not_allowed)) {
-				continue;
-			}
-
 			// Generate the replacement value for the tag
 			if (method_exists($this, $tags[$i])) {
 				$new_tags[] = "#{$full_tag}#";
@@ -145,7 +139,7 @@ class WT_Stats {
 	/*
 	 * Embed tags in text
 	 */
-	function embedTags($text) {
+	public function embedTags($text) {
 		if (strpos($text, '#')!==false) {
 			list($new_tags, $new_values) = $this->getTags($text);
 			$text = str_replace($new_tags, $new_values, $text);
@@ -157,16 +151,20 @@ class WT_Stats {
 // GEDCOM                                                                    //
 ///////////////////////////////////////////////////////////////////////////////
 
-	function gedcomFilename() {return get_gedcom_from_id($this->_ged_id);}
-
-	function gedcomID() {return $this->_ged_id;}
-
-	function gedcomTitle() {
-		$trees=WT_Tree::getAll();
-		return $trees[$this->_ged_id]->tree_title_html;
+	public function gedcomFilename() {
+		return get_gedcom_from_id($this->tree_id);
 	}
 
-	function _gedcomHead() {
+	public function gedcomID() {
+		return $this->tree_id;
+	}
+
+	public function gedcomTitle() {
+		$trees=WT_Tree::getAll();
+		return $trees[$this->tree_id]->tree_title_html;
+	}
+
+	private function gedcomHead() {
 		$title = "";
 		$version = '';
 		$source = '';
@@ -181,13 +179,13 @@ class WT_Stats {
 		return array($title, $version, $source);
 	}
 
-	function gedcomCreatedSoftware() {
-		$head=self::_gedcomHead();
+	public function gedcomCreatedSoftware() {
+		$head=$this->gedcomHead();
 		return $head[0];
 	}
 
-	function gedcomCreatedVersion() {
-		$head=self::_gedcomHead();
+	public function gedcomCreatedVersion() {
+		$head=$this->gedcomHead();
 		// fix broken version string in Family Tree Maker
 		if (strstr($head[1], 'Family Tree Maker ')) {
 			$p=strpos($head[1], '(') + 1;
@@ -201,7 +199,7 @@ class WT_Stats {
 		return $head[1];
 	}
 
-	function gedcomDate() {
+	public function gedcomDate() {
 		global $DATE_FORMAT;
 
 		$head = WT_GedcomRecord::getInstance('HEAD');
@@ -213,20 +211,20 @@ class WT_Stats {
 		return '';
 	}
 
-	function gedcomUpdated() {
+	public function gedcomUpdated() {
 		$row=
 			WT_DB::prepare("SELECT SQL_CACHE d_year, d_month, d_day FROM `##dates` WHERE d_julianday1 = ( SELECT max( d_julianday1 ) FROM `##dates` WHERE d_file =? AND d_fact=? ) LIMIT 1")
-			->execute(array($this->_ged_id, 'CHAN'))
+			->execute(array($this->tree_id, 'CHAN'))
 			->fetchOneRow();
 		if ($row) {
 			$date=new WT_Date("{$row->d_day} {$row->d_month} {$row->d_year}");
 			return $date->Display(false);
 		} else {
-			return self::gedcomDate();
+			return $this->gedcomDate();
 		}
 	}
 
-	function gedcomRootID() {
+	public function gedcomRootID() {
 		$root = WT_Individual::getInstance(get_gedcom_setting(WT_GED_ID, 'PEDIGREE_ROOT_ID'));
 		$root = substr($root, 0, stripos($root, "@") );
 		return $root;
@@ -237,26 +235,24 @@ class WT_Stats {
 // Totals                                                                    //
 ///////////////////////////////////////////////////////////////////////////////
 
-	function _getPercentage($total, $type) {
+	private function getPercentage($total, $type) {
 		switch($type) {
-			default:
-			case 'all':
-				$type = $this->_totalIndividuals() + $this->_totalFamilies() + $this->_totalSources();
-				break;
-			case 'individual':
-				$type = $this->_totalIndividuals();
-				break;
-			case 'family':
-				$type = $this->_totalFamilies();
-				break;
-			case 'source':
-				$type = $this->_totalSources();
-				break;
-			case 'note':
-				$type = $this->_totalNotes();
-				break;
-			default:
-				return WT_I18N::percentage(0, 1);
+		case 'individual':
+			$type = $this->totalIndividualsQuery();
+			break;
+		case 'family':
+			$type = $this->totalFamiliesQuery();
+			break;
+		case 'source':
+			$type = $this->totalSourcesQuery();
+			break;
+		case 'note':
+			$type = $this->totalNotesQuery();
+			break;
+		case 'all':
+		default:
+			$type = $this->totalIndividualsQuery() + $this->totalFamiliesQuery() + $this->totalSourcesQuery();
+			break;
 		}
 		if ($type==0) {
 			return WT_I18N::percentage(0, 1);
@@ -265,43 +261,43 @@ class WT_Stats {
 		}
 	}
 
-	function totalRecords() {
-		return WT_I18N::number($this->_totalIndividuals() + $this->_totalFamilies() + $this->_totalSources());
+	public function totalRecords() {
+		return WT_I18N::number($this->totalIndividualsQuery() + $this->totalFamiliesQuery() + $this->totalSourcesQuery());
 	}
 
-	function _totalIndividuals() {
+	private function totalIndividualsQuery() {
 		return
 			WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##individuals` WHERE i_file=?")
-			->execute(array($this->_ged_id))
+			->execute(array($this->tree_id))
 			->fetchOne();
 	}
 
-	function totalIndividuals() {
-		return WT_I18N::number($this->_totalIndividuals());
+	public function totalIndividuals() {
+		return WT_I18N::number($this->totalIndividualsQuery());
 	}
 
-	function _totalIndisWithSources() {
-		$rows=self::_runSQL("SELECT SQL_CACHE COUNT(DISTINCT i_id) AS tot FROM `##link`, `##individuals` WHERE i_id=l_from AND i_file=l_file AND l_file=".$this->_ged_id." AND l_type='SOUR'");
+	private function totalIndisWithSourcesQuery() {
+		$rows=$this->runSql("SELECT SQL_CACHE COUNT(DISTINCT i_id) AS tot FROM `##link`, `##individuals` WHERE i_id=l_from AND i_file=l_file AND l_file=".$this->tree_id." AND l_type='SOUR'");
 		return $rows[0]['tot'];
 	}
 
-	function totalIndisWithSources() {
-		return WT_I18N::number(self::_totalIndisWithSources());
+	public function totalIndisWithSources() {
+		return WT_I18N::number($this->totalIndisWithSourcesQuery());
 	}
 
-	function chartIndisWithSources($params=null) {
+	public function chartIndisWithSources($params=null) {
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 		if ($params === null) {$params = array();}
 		if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = $WT_STATS_S_CHART_X."x".$WT_STATS_S_CHART_Y;}
 		if (isset($params[1]) && $params[1] != '') {$color_from = strtolower($params[1]);} else {$color_from = $WT_STATS_CHART_COLOR1;}
 		if (isset($params[2]) && $params[2] != '') {$color_to = strtolower($params[2]);} else {$color_to = $WT_STATS_CHART_COLOR2;}
 		$sizes = explode('x', $size);
-		$tot_indi = $this->_totalIndividuals();
+		$tot_indi = $this->totalIndividualsQuery();
 		if ($tot_indi==0) {
 			return '';
 		} else {
-			$tot_sindi_per = round($this->_totalIndisWithSources()/$tot_indi, 3);
-			$chd = self::_array_to_extended_encoding(array(100-100*$tot_sindi_per, 100*$tot_sindi_per));
+			$tot_sindi_per = round($this->totalIndisWithSourcesQuery()/$tot_indi, 3);
+			$chd = $this->arrayToExtendedEncoding(array(100-100*$tot_sindi_per, 100*$tot_sindi_per));
 			$chl =  WT_I18N::translate('Without sources').' - '.WT_I18N::percentage(1-$tot_sindi_per,1).'|'.
 					WT_I18N::translate('With sources').' - '.WT_I18N::percentage($tot_sindi_per,1);
 			$chart_title = WT_I18N::translate('Individuals with sources');
@@ -309,43 +305,43 @@ class WT_Stats {
 		}
 	}
 
-	function totalIndividualsPercentage() {
-		return $this->_getPercentage($this->_totalIndividuals(), 'all');
+	public function totalIndividualsPercentage() {
+		return $this->getPercentage($this->totalIndividualsQuery(), 'all');
 	}
 
-	function _totalFamilies() {
+	private function totalFamiliesQuery() {
 		return
 			WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##families` WHERE f_file=?")
-			->execute(array($this->_ged_id))
+			->execute(array($this->tree_id))
 			->fetchOne();
 	}
 
-	function totalFamilies() {
-		return WT_I18N::number($this->_totalFamilies());
+	public function totalFamilies() {
+		return WT_I18N::number($this->totalFamiliesQuery());
 	}
 
-	function _totalFamsWithSources() {
-		$rows=self::_runSQL("SELECT SQL_CACHE COUNT(DISTINCT f_id) AS tot FROM `##link`, `##families` WHERE f_id=l_from AND f_file=l_file AND l_file=".$this->_ged_id." AND l_type='SOUR'");
+	private function totalFamsWithSourcesQuery() {
+		$rows=$this->runSql("SELECT SQL_CACHE COUNT(DISTINCT f_id) AS tot FROM `##link`, `##families` WHERE f_id=l_from AND f_file=l_file AND l_file=".$this->tree_id." AND l_type='SOUR'");
 		return $rows[0]['tot'];
 	}
 
-	function totalFamsWithSources() {
-		return WT_I18N::number(self::_totalFamsWithSources());
+	public function totalFamsWithSources() {
+		return WT_I18N::number($this->totalFamsWithSourcesQuery());
 	}
 
-	function chartFamsWithSources($params=null) {
+	public function chartFamsWithSources($params=null) {
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 		if ($params === null) {$params = array();}
 		if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = $WT_STATS_S_CHART_X."x".$WT_STATS_S_CHART_Y;}
 		if (isset($params[1]) && $params[1] != '') {$color_from = strtolower($params[1]);} else {$color_from = $WT_STATS_CHART_COLOR1;}
 		if (isset($params[2]) && $params[2] != '') {$color_to = strtolower($params[2]);} else {$color_to = $WT_STATS_CHART_COLOR2;}
 		$sizes = explode('x', $size);
-		$tot_fam = $this->_totalFamilies();
+		$tot_fam = $this->totalFamiliesQuery();
 		if ($tot_fam==0) {
 			return '';
 		} else {
-			$tot_sfam_per = round($this->_totalFamsWithSources()/$tot_fam, 3);
-			$chd = self::_array_to_extended_encoding(array(100-100*$tot_sfam_per, 100*$tot_sfam_per));
+			$tot_sfam_per = round($this->totalFamsWithSourcesQuery()/$tot_fam, 3);
+			$chd = $this->arrayToExtendedEncoding(array(100-100*$tot_sfam_per, 100*$tot_sfam_per));
 			$chl =  WT_I18N::translate('Without sources').' - '.WT_I18N::percentage(1-$tot_sfam_per,1).'|'.
 					WT_I18N::translate('With sources').' - '.WT_I18N::percentage($tot_sfam_per,1);
 			$chart_title = WT_I18N::translate('Families with sources');
@@ -353,56 +349,56 @@ class WT_Stats {
 		}
 	}
 
-	function totalFamiliesPercentage() {
-		return $this->_getPercentage($this->_totalFamilies(), 'all');
+	public function totalFamiliesPercentage() {
+		return $this->getPercentage($this->totalFamiliesQuery(), 'all');
 	}
 
-	function _totalSources() {
+	private function totalSourcesQuery() {
 		return
 			WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##sources` WHERE s_file=?")
-			->execute(array($this->_ged_id))
+			->execute(array($this->tree_id))
 			->fetchOne();
 	}
 
-	function totalSources() {
-		return WT_I18N::number($this->_totalSources());
+	public function totalSources() {
+		return WT_I18N::number($this->totalSourcesQuery());
 	}
 
-	function totalSourcesPercentage() {
-		return $this->_getPercentage($this->_totalSources(), 'all');
+	public function totalSourcesPercentage() {
+		return $this->getPercentage($this->totalSourcesQuery(), 'all');
 	}
 
-	function _totalNotes() {
+	private function totalNotesQuery() {
 		return
 			WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##other` WHERE o_type='NOTE' AND o_file=?")
-			->execute(array($this->_ged_id))
+			->execute(array($this->tree_id))
 			->fetchOne();
 	}
 
-	function totalNotes() {
-		return WT_I18N::number($this->_totalNotes());
+	public function totalNotes() {
+		return WT_I18N::number($this->totalNotesQuery());
 	}
 
-	function totalNotesPercentage() {
-		return $this->_getPercentage($this->_totalNotes(), 'all');
+	public function totalNotesPercentage() {
+		return $this->getPercentage($this->totalNotesQuery(), 'all');
 	}
 
-	function _totalRepositories() {
+	private function totalRepositoriesQuery() {
 		return
 			WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##other` WHERE o_type='REPO' AND o_file=?")
-			->execute(array($this->_ged_id))
+			->execute(array($this->tree_id))
 			->fetchOne();
 	}
 
-	function totalRepositories() {
-		return WT_I18N::number($this->_totalRepositories());
+	public function totalRepositories() {
+		return WT_I18N::number($this->totalRepositoriesQuery());
 	}
 
-	function totalRepositoriesPercentage() {
-		return $this->_getPercentage($this->_totalRepositories(), 'all');
+	public function totalRepositoriesPercentage() {
+		return $this->getPercentage($this->totalRepositoriesQuery(), 'all');
 	}
 
-	function totalSurnames($params = null) {
+	public function totalSurnames($params = null) {
 		if ($params) {
 			$qs=implode(',', array_fill(0, count($params), '?'));
 			$opt="IN ({$qs})";
@@ -413,7 +409,7 @@ class WT_Stats {
 			$vars='';
 			$distinct='DISTINCT';
 		}
-		$vars[]=$this->_ged_id;
+		$vars[]=$this->tree_id;
 		$total=
 			WT_DB::prepare(
 				"SELECT SQL_CACHE COUNT({$distinct} n_surn COLLATE '".WT_I18N::$collation."')".
@@ -424,7 +420,7 @@ class WT_Stats {
 		return WT_I18N::number($total);
 	}
 
-	function totalGivennames($params = null) {
+	public function totalGivennames($params = null) {
 		if ($params) {
 			$qs=implode(',', array_fill(0, count($params), '?'));
 			$opt="IN ({$qs})";
@@ -435,7 +431,7 @@ class WT_Stats {
 			$vars='';
 			$distinct='DISTINCT';
 		}
-		$vars[]=$this->_ged_id;
+		$vars[]=$this->tree_id;
 		$total=
 			WT_DB::prepare("SELECT SQL_CACHE COUNT({$distinct} n_givn) FROM `##name` WHERE n_givn {$opt} AND n_file=?")
 			->execute($vars)
@@ -443,9 +439,9 @@ class WT_Stats {
 		return WT_I18N::number($total);
 	}
 
-	function totalEvents($params = null) {
+	public function totalEvents($params = null) {
 		$sql="SELECT SQL_CACHE COUNT(*) AS tot FROM `##dates` WHERE d_file=?";
-		$vars=array($this->_ged_id);
+		$vars=array($this->tree_id);
 
 		$no_types=array('HEAD', 'CHAN');
 		if ($params) {
@@ -467,39 +463,39 @@ class WT_Stats {
 		return WT_I18N::number(WT_DB::prepare($sql)->execute($vars)->fetchOne());
 	}
 
-	function totalEventsBirth() {
+	public function totalEventsBirth() {
 		return $this->totalEvents(explode('|',WT_EVENTS_BIRT));
 	}
 
-	function totalBirths() {
+	public function totalBirths() {
 		return $this->totalEvents(array('BIRT'));
 	}
 
-	function totalEventsDeath() {
+	public function totalEventsDeath() {
 		return $this->totalEvents(explode('|',WT_EVENTS_DEAT));
 	}
 
-	function totalDeaths() {
+	public function totalDeaths() {
 		return $this->totalEvents(array('DEAT'));
 	}
 
-	function totalEventsMarriage() {
+	public function totalEventsMarriage() {
 		return $this->totalEvents(explode('|',WT_EVENTS_MARR));
 	}
 
-	function totalMarriages() {
+	public function totalMarriages() {
 		return $this->totalEvents(array('MARR'));
 	}
 
-	function totalEventsDivorce() {
+	public function totalEventsDivorce() {
 		return $this->totalEvents(explode('|',WT_EVENTS_DIV));
 	}
 
-	function totalDivorces() {
+	public function totalDivorces() {
 		return $this->totalEvents(array('DIV'));
 	}
 
-	function totalEventsOther() {
+	public function totalEventsOther() {
 		$facts = array_merge(explode('|', WT_EVENTS_BIRT.'|'.WT_EVENTS_MARR.'|'.WT_EVENTS_DIV.'|'.WT_EVENTS_DEAT));
 		$no_facts = array();
 		foreach ($facts as $fact) {
@@ -509,52 +505,52 @@ class WT_Stats {
 		return $this->totalEvents($no_facts);
 	}
 
-	function _totalSexMales() {
+	private function totalSexMalesQuery() {
 		return
 			WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##individuals` WHERE i_file=? AND i_sex=?")
-			->execute(array($this->_ged_id, 'M'))
+			->execute(array($this->tree_id, 'M'))
 			->fetchOne();
 	}
 
-	function totalSexMales() {
-		return WT_I18N::number($this->_totalSexMales());
+	public function totalSexMales() {
+		return WT_I18N::number($this->totalSexMalesQuery());
 	}
 
-	function totalSexMalesPercentage() {
-		return $this->_getPercentage($this->_totalSexMales(), 'individual');
+	public function totalSexMalesPercentage() {
+		return $this->getPercentage($this->totalSexMalesQuery(), 'individual');
 	}
 
-	function _totalSexFemales() {
+	private function totalSexFemalesQuery() {
 		return
 			WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##individuals` WHERE i_file=? AND i_sex=?")
-			->execute(array($this->_ged_id, 'F'))
+			->execute(array($this->tree_id, 'F'))
 			->fetchOne();
 	}
 
-	function totalSexFemales() {
-		return WT_I18N::number($this->_totalSexFemales());
+	public function totalSexFemales() {
+		return WT_I18N::number($this->totalSexFemalesQuery());
 	}
 
-	function totalSexFemalesPercentage() {
-		return $this->_getPercentage($this->_totalSexFemales(), 'individual');
+	public function totalSexFemalesPercentage() {
+		return $this->getPercentage($this->totalSexFemalesQuery(), 'individual');
 	}
 
-	function _totalSexUnknown() {
+	private function totalSexUnknownQuery() {
 		return
 			WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##individuals` WHERE i_file=? AND i_sex=?")
-			->execute(array($this->_ged_id, 'U'))
+			->execute(array($this->tree_id, 'U'))
 			->fetchOne();
 	}
 
-	function totalSexUnknown() {
-		return WT_I18N::number($this->_totalSexUnknown());
+	public function totalSexUnknown() {
+		return WT_I18N::number($this->totalSexUnknownQuery());
 	}
 
-	function totalSexUnknownPercentage() {
-		return $this->_getPercentage($this->_totalSexUnknown(), 'individual');
+	public function totalSexUnknownPercentage() {
+		return $this->getPercentage($this->totalSexUnknownQuery(), 'individual');
 	}
 
-	function chartSex($params=null) {
+	public function chartSex($params=null) {
 		global $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 		if ($params === null) {$params = array();}
 		if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = $WT_STATS_S_CHART_X."x".$WT_STATS_S_CHART_Y;}
@@ -563,9 +559,9 @@ class WT_Stats {
 		if (isset($params[3]) && $params[3] != '') {$color_unknown = strtolower($params[3]);} else {$color_unknown = '777777';}
 		$sizes = explode('x', $size);
 		// Raw data - for calculation
-		$tot_f = $this->_totalSexFemales();
-		$tot_m = $this->_totalSexMales();
-		$tot_u = $this->_totalSexUnknown();
+		$tot_f = $this->totalSexFemalesQuery();
+		$tot_m = $this->totalSexMalesQuery();
+		$tot_u = $this->totalSexUnknownQuery();
 		$tot=$tot_f+$tot_m+$tot_u;
 		// I18N data - for display
 		$per_f = $this->totalSexFemalesPercentage();
@@ -574,7 +570,7 @@ class WT_Stats {
 		if ($tot==0) {
 			return '';
 		} else if ($tot_u > 0) {
-			$chd = self::_array_to_extended_encoding(array(4095*$tot_u/$tot, 4095*$tot_f/$tot, 4095*$tot_m/$tot));
+			$chd = $this->arrayToExtendedEncoding(array(4095*$tot_u/$tot, 4095*$tot_f/$tot, 4095*$tot_m/$tot));
 			$chl =
 				WT_I18N::translate_c('unknown people', 'Unknown').' - '.$per_u.'|'.
 				WT_I18N::translate('Females').' - '.$per_f.'|'.
@@ -585,7 +581,7 @@ class WT_Stats {
 				WT_I18N::translate_c('unknown people', 'Unknown').' - '.$per_u;
 			return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_unknown},{$color_female},{$color_male}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".$chart_title."\" title=\"".$chart_title."\" />";
 		} else {
-			$chd = self::_array_to_extended_encoding(array(4095*$tot_f/$tot, 4095*$tot_m/$tot));
+			$chd = $this->arrayToExtendedEncoding(array(4095*$tot_f/$tot, 4095*$tot_m/$tot));
 			$chl =
 				WT_I18N::translate('Females').' - '.$per_f.'|'.
 				WT_I18N::translate('Males').' - '.$per_m;
@@ -600,37 +596,37 @@ class WT_Stats {
 	// than MAX_ALIVE_AGE years ago, and who have no DEAT record.
 	// A good reason to run the “Add missing DEAT records” batch-update!
 	// However, SQL cannot provide the same logic used by Person::isDead().
-	function _totalLiving() {
+	private function totalLivingQuery() {
 		return
 			WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##individuals` WHERE i_file=? AND i_gedcom NOT REGEXP '\\n1 (".WT_EVENTS_DEAT.")'")
-			->execute(array($this->_ged_id))
+			->execute(array($this->tree_id))
 			->fetchOne();
 	}
 
-	function totalLiving() {
-		return WT_I18N::number($this->_totalLiving());
+	public function totalLiving() {
+		return WT_I18N::number($this->totalLivingQuery());
 	}
 
-	function totalLivingPercentage() {
-		return $this->_getPercentage($this->_totalLiving(), 'individual');
+	public function totalLivingPercentage() {
+		return $this->getPercentage($this->totalLivingQuery(), 'individual');
 	}
 
-	function _totalDeceased() {
+	private function totalDeceasedQuery() {
 		return
 			WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##individuals` WHERE i_file=? AND i_gedcom REGEXP '\\n1 (".WT_EVENTS_DEAT.")'")
-			->execute(array($this->_ged_id))
+			->execute(array($this->tree_id))
 			->fetchOne();
 	}
 
-	function totalDeceased() {
-		return WT_I18N::number($this->_totalDeceased());
+	public function totalDeceased() {
+		return WT_I18N::number($this->totalDeceasedQuery());
 	}
 
-	function totalDeceasedPercentage() {
-		return $this->_getPercentage($this->_totalDeceased(), 'individual');
+	public function totalDeceasedPercentage() {
+		return $this->getPercentage($this->totalDeceasedQuery(), 'individual');
 	}
 
-	function chartMortality($params=null) {
+	public function chartMortality($params=null) {
 		global $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 		if ($params === null) {$params = array();}
 		if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = $WT_STATS_S_CHART_X."x".$WT_STATS_S_CHART_Y;}
@@ -638,8 +634,8 @@ class WT_Stats {
 		if (isset($params[2]) && $params[2] != '') {$color_dead = strtolower($params[2]);} else {$color_dead = 'cccccc';}
 		$sizes = explode('x', $size);
 		// Raw data - for calculation
-		$tot_l = $this->_totalLiving();
-		$tot_d = $this->_totalDeceased();
+		$tot_l = $this->totalLivingQuery();
+		$tot_d = $this->totalDeceasedQuery();
 		$tot=$tot_l+$tot_d;
 		// I18N data - for display
 		$per_l = $this->totalLivingPercentage();
@@ -647,7 +643,7 @@ class WT_Stats {
 		if ($tot==0) {
 			return '';
 		} else {
-			$chd = self::_array_to_extended_encoding(array(4095*$tot_l/$tot, 4095*$tot_d/$tot));
+			$chd = $this->arrayToExtendedEncoding(array(4095*$tot_l/$tot, 4095*$tot_d/$tot));
 			$chl =
 				WT_I18N::translate('Living').' - '.$per_l.'|'.
 				WT_I18N::translate('Dead').' - '.$per_d.'|';
@@ -657,7 +653,7 @@ class WT_Stats {
 		}
 	}
 
-	static function totalUsers($params=null) {
+	public function totalUsers($params=null) {
 		if (!empty($params[0])) {
 			$total = count(User::all()) + (int)$params[0];
 		} else {
@@ -666,25 +662,25 @@ class WT_Stats {
 		return WT_I18N::number($total);
 	}
 
-	static function totalAdmins() {
+	public function totalAdmins() {
 		return WT_I18N::number(count(User::allAdmins()));
 	}
 
-	static function totalNonAdmins() {
+	public function totalNonAdmins() {
 		return WT_I18N::number(count(User::all()) - count(User::allAdmins()));
 	}
 
-	function _totalMediaType($type='all') {
-		if (!in_array($type, self::$_media_types) && $type != 'all' && $type != 'unknown') {
+	private function totalMediaType($type='all') {
+		if (!in_array($type, $this->_media_types) && $type != 'all' && $type != 'unknown') {
 			return 0;
 		}
 		$sql="SELECT SQL_CACHE COUNT(*) AS tot FROM `##media` WHERE m_file=?";
-		$vars=array($this->_ged_id);
+		$vars=array($this->tree_id);
 
 		if ($type != 'all') {
 			if ($type=='unknown') {
 				// There has to be a better way then this :(
-				foreach (self::$_media_types as $t) {
+				foreach ($this->_media_types as $t) {
 					$sql.=" AND (m_gedcom NOT LIKE ? AND m_gedcom NOT LIKE ?)";
 					$vars[]="%3 TYPE {$t}%";
 					$vars[]="%1 _TYPE {$t}%";
@@ -698,35 +694,94 @@ class WT_Stats {
 		return WT_DB::prepare($sql)->execute($vars)->fetchOne();
 	}
 
-	function totalMedia()            {return WT_I18N::number($this->_totalMediaType('all'));}
-	function totalMediaAudio()       {return WT_I18N::number($this->_totalMediaType('audio'));}
-	function totalMediaBook()        {return WT_I18N::number($this->_totalMediaType('book'));}
-	function totalMediaCard()        {return WT_I18N::number($this->_totalMediaType('card'));}
-	function totalMediaCertificate() {return WT_I18N::number($this->_totalMediaType('certificate'));}
-	function totalMediaCoatOfArms()  {return WT_I18N::number($this->_totalMediaType('coat'));}
-	function totalMediaDocument()    {return WT_I18N::number($this->_totalMediaType('document'));}
-	function totalMediaElectronic()  {return WT_I18N::number($this->_totalMediaType('electronic'));}
-	function totalMediaMagazine()    {return WT_I18N::number($this->_totalMediaType('magazine'));}
-	function totalMediaManuscript()  {return WT_I18N::number($this->_totalMediaType('manuscript'));}
-	function totalMediaMap()         {return WT_I18N::number($this->_totalMediaType('map'));}
-	function totalMediaFiche()       {return WT_I18N::number($this->_totalMediaType('fiche'));}
-	function totalMediaFilm()        {return WT_I18N::number($this->_totalMediaType('film'));}
-	function totalMediaNewspaper()   {return WT_I18N::number($this->_totalMediaType('newspaper'));}
-	function totalMediaPainting()    {return WT_I18N::number($this->_totalMediaType('painting'));}
-	function totalMediaPhoto()       {return WT_I18N::number($this->_totalMediaType('photo'));}
-	function totalMediaTombstone()   {return WT_I18N::number($this->_totalMediaType('tombstone'));}
-	function totalMediaVideo()       {return WT_I18N::number($this->_totalMediaType('video'));}
-	function totalMediaOther()       {return WT_I18N::number($this->_totalMediaType('other'));}
-	function totalMediaUnknown()     {return WT_I18N::number($this->_totalMediaType('unknown'));}
+	public function totalMedia() {
+		return WT_I18N::number($this->totalMediaType('all'));
+	}
 
-	function chartMedia($params=null) {
+	public function totalMediaAudio() {
+		return WT_I18N::number($this->totalMediaType('audio'));
+	}
+
+	public function totalMediaBook() {
+		return WT_I18N::number($this->totalMediaType('book'));
+	}
+
+	public function totalMediaCard() {
+		return WT_I18N::number($this->totalMediaType('card'));
+	}
+
+	public function totalMediaCertificate() {
+		return WT_I18N::number($this->totalMediaType('certificate'));
+	}
+
+	public function totalMediaCoatOfArms() {
+		return WT_I18N::number($this->totalMediaType('coat'));
+	}
+
+	public function totalMediaDocument() {
+		return WT_I18N::number($this->totalMediaType('document'));
+	}
+
+	public function totalMediaElectronic() {
+		return WT_I18N::number($this->totalMediaType('electronic'));
+	}
+
+	public function totalMediaMagazine() {
+		return WT_I18N::number($this->totalMediaType('magazine'));
+	}
+
+	public function totalMediaManuscript() {
+		return WT_I18N::number($this->totalMediaType('manuscript'));
+	}
+
+	public function totalMediaMap() {
+		return WT_I18N::number($this->totalMediaType('map'));
+	}
+
+	public function totalMediaFiche() {
+		return WT_I18N::number($this->totalMediaType('fiche'));
+	}
+
+	public function totalMediaFilm() {
+		return WT_I18N::number($this->totalMediaType('film'));
+	}
+
+	public function totalMediaNewspaper() {
+		return WT_I18N::number($this->totalMediaType('newspaper'));
+	}
+
+	public function totalMediaPainting() {
+		return WT_I18N::number($this->totalMediaType('painting'));
+	}
+
+	public function totalMediaPhoto() {
+		return WT_I18N::number($this->totalMediaType('photo'));
+	}
+
+	public function totalMediaTombstone() {
+		return WT_I18N::number($this->totalMediaType('tombstone'));
+	}
+
+	public function totalMediaVideo() {
+		return WT_I18N::number($this->totalMediaType('video'));
+	}
+
+	public function totalMediaOther() {
+		return WT_I18N::number($this->totalMediaType('other'));
+	}
+
+	public function totalMediaUnknown() {
+		return WT_I18N::number($this->totalMediaType('unknown'));
+	}
+
+	public function chartMedia($params=null) {
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 		if ($params === null) {$params = array();}
 		if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = $WT_STATS_S_CHART_X."x".$WT_STATS_S_CHART_Y;}
 		if (isset($params[1]) && $params[1] != '') {$color_from = strtolower($params[1]);} else {$color_from = $WT_STATS_CHART_COLOR1;}
 		if (isset($params[2]) && $params[2] != '') {$color_to = strtolower($params[2]);} else {$color_to = $WT_STATS_CHART_COLOR2;}
 		$sizes = explode('x', $size);
-		$tot = $this->_totalMediaType('all');
+		$tot = $this->totalMediaType('all');
 		// Beware divide by zero
 		if ($tot==0) return WT_I18N::translate('None');
 		// Build a table listing only the media types actually present in the GEDCOM
@@ -736,8 +791,8 @@ class WT_Stats {
 		$c = 0;
 		$max = 0;
 		$media=array();
-		foreach (self::$_media_types as $type) {
-			$count = $this->_totalMediaType($type);
+		foreach ($this->_media_types as $type) {
+			$count = $this->totalMediaType($type);
 			if ($count>0) {
 				$media[$type] = $count;
 				if ($count > $max) {
@@ -746,7 +801,7 @@ class WT_Stats {
 				$c += $count;
 			}
 		}
-		$count = $this->_totalMediaType('unknown');
+		$count = $this->totalMediaType('unknown');
 		if ($count>0) {
 			$media['unknown'] = $tot-$c;
 			if ($tot-$c > $max) {
@@ -773,7 +828,7 @@ class WT_Stats {
 			$chart_title .= WT_Gedcom_Tag::getFileFormTypeValue($type).' ('.$count.'), ';
 		}
 		$chart_title = substr($chart_title,0,-2);
-		$chd = self::_array_to_extended_encoding($mediaCounts);
+		$chd = $this->arrayToExtendedEncoding($mediaCounts);
 		$chl = substr($mediaTypes,0,-1);
 		return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".$chart_title."\" title=\"".$chart_title."\" />";
 	}
@@ -782,7 +837,7 @@ class WT_Stats {
 // Birth & Death                                                             //
 ///////////////////////////////////////////////////////////////////////////////
 
-	function _mortalityQuery($type='full', $life_dir='ASC', $birth_death='BIRT') {
+	private function mortalityQuery($type='full', $life_dir='ASC', $birth_death='BIRT') {
 		if ($birth_death == 'MARR') {
 			$query_field = "'MARR'";
 		} else if ($birth_death == 'DIV') {
@@ -797,13 +852,13 @@ class WT_Stats {
 		} else {
 			$dmod = 'MAX';
 		}
-		$rows=self::_runSQL(
+		$rows=$this->runSql(
 			"SELECT SQL_CACHE d_year, d_type, d_fact, d_gid".
 			" FROM `##dates`".
-			" WHERE d_file={$this->_ged_id} AND d_fact IN ({$query_field}) AND d_julianday1=(".
+			" WHERE d_file={$this->tree_id} AND d_fact IN ({$query_field}) AND d_julianday1=(".
 			" SELECT {$dmod}( d_julianday1 )".
 			" FROM `##dates`".
-			" WHERE d_file={$this->_ged_id} AND d_fact IN ({$query_field}) AND d_julianday1<>0 )".
+			" WHERE d_file={$this->tree_id} AND d_fact IN ({$query_field}) AND d_julianday1<>0 )".
  			" LIMIT 1"
 		);
 		if (!isset($rows[0])) {return '';}
@@ -837,18 +892,18 @@ class WT_Stats {
 		return $result;
 	}
 
-	function _statsPlaces($what='ALL', $fact=false, $parent=0, $country=false) {
+	public function statsPlaces($what='ALL', $fact=false, $parent=0, $country=false) {
 		if ($fact) {
 			if ($what=='INDI') {
 				$rows=
 					WT_DB::prepare("SELECT i_gedcom AS ged FROM `##individuals` WHERE i_file=?")
-					->execute(array($this->_ged_id))
+					->execute(array($this->tree_id))
 					->fetchAll();
 			}
 			else if ($what=='FAM') {
 				$rows=
 					WT_DB::prepare("SELECT f_gedcom AS ged FROM `##families` WHERE f_file=?")
-					->execute(array($this->_ged_id))
+					->execute(array($this->tree_id))
 					->fetchAll();
 			}
 			$placelist = array();
@@ -880,7 +935,7 @@ class WT_Stats {
 			else {
 				$join = "";
 			}
-			$rows=self::_runSQL(
+			$rows=$this->runSql(
 				" SELECT SQL_CACHE".
 				" p_place AS place,".
 				" COUNT(*) AS tot".
@@ -890,7 +945,7 @@ class WT_Stats {
 				$join.
 				" WHERE".
 				" p_id={$parent} AND".
-				" p_file={$this->_ged_id}".
+				" p_file={$this->tree_id}".
 				" GROUP BY place"
 			);
 			if (!isset($rows[0])) {return '';}
@@ -906,7 +961,7 @@ class WT_Stats {
 			else {
 				$join = "";
 			}
-			$rows=self::_runSQL(
+			$rows=$this->runSql(
 					" SELECT SQL_CACHE".
 					" p_place AS country,".
 					" COUNT(*) AS tot".
@@ -915,7 +970,7 @@ class WT_Stats {
 					" JOIN `##placelinks` ON pl_file=p_file AND p_id=pl_p_id".
 					$join.
 					" WHERE".
-					" p_file={$this->_ged_id}".
+					" p_file={$this->tree_id}".
 					" AND p_parent_id='0'".
 					" GROUP BY country ORDER BY tot DESC, country ASC"
 					);
@@ -924,32 +979,32 @@ class WT_Stats {
 		}
 	}
 
-	function _totalPlaces() {
+	private function totalPlacesQuery() {
 		return
 			WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##places` WHERE p_file=?")
-			->execute(array($this->_ged_id))
+			->execute(array($this->tree_id))
 			->fetchOne();
 	}
 
-	function totalPlaces() {
-		return WT_I18n::number($this->_totalPlaces());
+	public function totalPlaces() {
+		return WT_I18n::number($this->totalPlacesQuery());
 	}
 
-	function chartDistribution($params = null) {
+	public function chartDistribution($params = null) {
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_CHART_COLOR3, $WT_STATS_MAP_X, $WT_STATS_MAP_Y;
 		if ($params !== null && isset($params[0])) {$chart_shows = $params[0];} else {$chart_shows='world';}
 		if ($params !== null && isset($params[1])) {$chart_type = $params[1];} else {$chart_type='';}
 		if ($params !== null && isset($params[2])) {$surname = $params[2];} else {$surname='';}
 
-		if ($this->_totalPlaces()==0) {
+		if ($this->totalPlacesQuery()==0) {
 			return '';
 		}
 		// Get the country names for each language
 		$country_to_iso3166=array();
 		foreach (WT_I18N::installed_languages() as $code=>$lang) {
 			WT_I18N::init($code);
-			$countries=self::get_all_countries();
-			foreach (self::iso3166() as $three=>$two) {
+			$countries=$this->getAllCountries();
+			foreach ($this->iso3166() as $three=>$two) {
 				$country_to_iso3166[$three]=$two;
 				$country_to_iso3166[$countries[$three]]=$two;
 			}
@@ -981,7 +1036,7 @@ class WT_Stats {
 			$chart_title=WT_I18N::translate('Birth by country');
 			// Count how many people were born in each country
 			$surn_countries=array();
-			$b_countries=$this->_statsPlaces('INDI', 'BIRT', 0, true);
+			$b_countries=$this->statsPlaces('INDI', 'BIRT', 0, true);
 			foreach ($b_countries as $place=>$count) {
 				$country = $place;
 				if (array_key_exists($country, $country_to_iso3166)) {
@@ -998,7 +1053,7 @@ class WT_Stats {
 			$chart_title=WT_I18N::translate('Death by country');
 			// Count how many people were death in each country
 			$surn_countries=array();
-			$d_countries=$this->_statsPlaces('INDI', 'DEAT', 0, true);
+			$d_countries=$this->statsPlaces('INDI', 'DEAT', 0, true);
 			foreach ($d_countries as $place=>$count) {
 				$country = $place;
 				if (array_key_exists($country, $country_to_iso3166)) {
@@ -1015,7 +1070,7 @@ class WT_Stats {
 			$chart_title=WT_I18N::translate('Marriage by country');
 			// Count how many families got marriage in each country
 			$surn_countries=array();
-			$m_countries=$this->_statsPlaces('FAM');
+			$m_countries=$this->statsPlaces('FAM');
 			// webtrees uses 3 letter country codes and localised country names, but google uses 2 letter codes.
 			foreach ($m_countries as $place) {
 				$country = $place['country'];
@@ -1031,9 +1086,9 @@ class WT_Stats {
 		case 'indi_distribution_chart':
 		default:
 			$chart_title=WT_I18N::translate('Individual distribution chart');
-			// Count how many people are events in each country
+			// Count how many people have events in each country
 			$surn_countries=array();
-			$a_countries=$this->_statsPlaces('INDI');
+			$a_countries=$this->statsPlaces('INDI');
 			// webtrees uses 3 letter country codes and localised country names, but google uses 2 letter codes.
 			foreach ($a_countries as $place) {
 				$country = $place['country'];
@@ -1058,7 +1113,7 @@ class WT_Stats {
 		$chart = '<div id="google_charts" class="center">';
 		$chart .= '<b>'.$chart_title.'</b><br><br>';
 		$chart .= '<div align="center"><img src="'.$chart_url.'" alt="'.$chart_title.'" title="'.$chart_title.'" class="gchart" /><br>';
-		$chart .= '<table align="center" border="0" cellpadding="1" cellspacing="1"><tr>';
+		$chart .= '<table class="center"><tr>';
 		$chart .= '<td bgcolor="#'.$WT_STATS_CHART_COLOR2.'" width="12"></td><td>'.WT_I18N::translate('Highest population').'&nbsp;&nbsp;</td>';
 		$chart .= '<td bgcolor="#'.$WT_STATS_CHART_COLOR3.'" width="12"></td><td>'.WT_I18N::translate('Lowest population').'&nbsp;&nbsp;</td>';
 		$chart .= '<td bgcolor="#'.$WT_STATS_CHART_COLOR1.'" width="12"></td><td>'.WT_I18N::translate('Nobody at all').'&nbsp;&nbsp;</td>';
@@ -1066,8 +1121,8 @@ class WT_Stats {
 		return $chart;
 	}
 
-	function commonCountriesList() {
-		$countries = $this->_statsPlaces();
+	public function commonCountriesList() {
+		$countries = $this->statsPlaces();
 		if (!is_array($countries)) return '';
 		$top10 = array();
 		$i = 1;
@@ -1075,7 +1130,7 @@ class WT_Stats {
 		$country_names=array();
 		foreach (WT_I18N::installed_languages() as $code=>$lang) {
 			WT_I18N::init($code);
-			$all_countries = self::get_all_countries();
+			$all_countries = $this->getAllCountries();
 			foreach ($all_countries as $country_code=>$country_name) {
 				$country_names[$country_name]=$country_code;
 			}
@@ -1093,11 +1148,11 @@ class WT_Stats {
 			}
 		}
 		// get all the user’s countries names
-		$all_countries = self::get_all_countries();
+		$all_countries = $this->getAllCountries();
 		foreach ($all_db_countries as $country_code=>$country) {
 			$top10[]='<li>';
 			foreach ($country as $country_name=>$tot) {
-				$tmp=new WT_Place($country_name, $this->_ged_id);
+				$tmp=new WT_Place($country_name, $this->tree_id);
 				$place = '<a href="' . $tmp->getURL() . '" class="list_item">'.$all_countries[$country_code].'</a>';
 				$top10[].=$place.' - '.WT_I18N::number($tot);
 			}
@@ -1108,13 +1163,13 @@ class WT_Stats {
 		return '<ul>' . $top10 . '</ul>';
 	}
 
-	function commonBirthPlacesList() {
-		$places = $this->_statsPlaces('INDI', 'BIRT');
+	public function commonBirthPlacesList() {
+		$places = $this->statsPlaces('INDI', 'BIRT');
 		$top10 = array();
 		$i = 1;
 		arsort($places);
 		foreach ($places as $place=>$count) {
-			$tmp=new WT_Place($place, $this->_ged_id);
+			$tmp=new WT_Place($place, $this->tree_id);
 			$place = '<a href="' . $tmp->getURL() . '" class="list_item">' . $tmp->getFullName() . '</a>';
 			$top10[]='<li>'.$place.' - '.WT_I18N::number($count).'</li>';
 			if ($i++==10) break;
@@ -1123,13 +1178,13 @@ class WT_Stats {
 		return '<ul>' . $top10 . '</ul>';
 	}
 
-	function commonDeathPlacesList() {
-		$places = $this->_statsPlaces('INDI', 'DEAT');
+	public function commonDeathPlacesList() {
+		$places = $this->statsPlaces('INDI', 'DEAT');
 		$top10 = array();
 		$i = 1;
 		arsort($places);
 		foreach ($places as $place=>$count) {
-			$tmp=new WT_Place($place, $this->_ged_id);
+			$tmp=new WT_Place($place, $this->tree_id);
 			$place = '<a href="' . $tmp->getURL() . '" class="list_item">' . $tmp->getFullName() . '</a>';
 			$top10[]='<li>'.$place.' - '.WT_I18N::number($count).'</li>';
 			if ($i++==10) break;
@@ -1138,13 +1193,13 @@ class WT_Stats {
 		return '<ul>' . $top10 . '</ul>';
 	}
 
-	function commonMarriagePlacesList() {
-		$places = $this->_statsPlaces('FAM', 'MARR');
+	public function commonMarriagePlacesList() {
+		$places = $this->statsPlaces('FAM', 'MARR');
 		$top10 = array();
 		$i = 1;
 		arsort($places);
 		foreach ($places as $place=>$count) {
-			$tmp=new WT_Place($place, $this->_ged_id);
+			$tmp=new WT_Place($place, $this->tree_id);
 			$place = '<a href="' . $tmp->getURL() . '" class="list_item">' . $tmp->getFullName() . '</a>';
 			$top10[]='<li>'.$place.' - '.WT_I18N::number($count).'</li>';
 			if ($i++==10) break;
@@ -1153,14 +1208,14 @@ class WT_Stats {
 		return '<ul>' . $top10 . '</ul>';
 	}
 
-	function _statsBirth($simple=true, $sex=false, $year1=-1, $year2=-1, $params=null) {
+	public function statsBirthQuery($simple=true, $sex=false, $year1=-1, $year2=-1, $params=null) {
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 
 		if ($simple) {
 			$sql =
 			 	"SELECT SQL_CACHE FLOOR(d_year/100+1) AS century, COUNT(*) AS total FROM `##dates` ".
 				"WHERE ".
-				"d_file={$this->_ged_id} AND ".
+				"d_file={$this->tree_id} AND ".
 				"d_year<>0 AND ".
 				"d_fact='BIRT' AND ".
 				"d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
@@ -1169,14 +1224,14 @@ class WT_Stats {
 				"SELECT SQL_CACHE d_month, i_sex, COUNT(*) AS total FROM `##dates` ".
 				"JOIN `##individuals` ON d_file = i_file AND d_gid = i_id ".
 				"WHERE ".
-				"d_file={$this->_ged_id} AND ".
+				"d_file={$this->tree_id} AND ".
 				"d_fact='BIRT' AND ".
 				"d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
 		} else {
 			$sql =
 				"SELECT SQL_CACHE d_month, COUNT(*) AS total FROM `##dates` ".
 				"WHERE ".
-				"d_file={$this->_ged_id} AND ".
+				"d_file={$this->tree_id} AND ".
 				"d_fact='BIRT' AND ".
 				"d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
 		}
@@ -1189,7 +1244,7 @@ class WT_Stats {
 			$sql .= " GROUP BY d_month";
 			if ($sex) $sql .= ", i_sex";
 		}
-		$rows=self::_runSQL($sql);
+		$rows=$this->runSql($sql);
 		if ($simple) {
 			if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = $WT_STATS_S_CHART_X."x".$WT_STATS_S_CHART_Y;}
 			if (isset($params[1]) && $params[1] != '') {$color_from = strtolower($params[1]);} else {$color_from = $WT_STATS_CHART_COLOR1;}
@@ -1204,9 +1259,9 @@ class WT_Stats {
 			$centuries = "";
 			foreach ($rows as $values) {
 				$counts[] = round(100 * $values['total'] / $tot, 0);
-				$centuries .= self::_centuryName($values['century']).' - '.WT_I18N::number($values['total']).'|';
+				$centuries .= $this->centuryName($values['century']).' - '.WT_I18N::number($values['total']).'|';
 			}
-			$chd = self::_array_to_extended_encoding($counts);
+			$chd = $this->arrayToExtendedEncoding($counts);
 			$chl = rawurlencode(substr($centuries,0,-1));
 			return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".WT_I18N::translate('Births by century')."\" title=\"".WT_I18N::translate('Births by century')."\" />";
 		}
@@ -1214,14 +1269,14 @@ class WT_Stats {
 		return $rows;
 	}
 
-	function _statsDeath($simple=true, $sex=false, $year1=-1, $year2=-1, $params=null) {
+	public function statsDeathQuery($simple=true, $sex=false, $year1=-1, $year2=-1, $params=null) {
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 
 		if ($simple) {
 			$sql =
 				"SELECT SQL_CACHE FLOOR(d_year/100+1) AS century, COUNT(*) AS total FROM `##dates` ".
 				"WHERE ".
-				"d_file={$this->_ged_id} AND ".
+				"d_file={$this->tree_id} AND ".
 				'd_year<>0 AND '.
 				"d_fact='DEAT' AND ".
 				"d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
@@ -1230,14 +1285,14 @@ class WT_Stats {
 				"SELECT SQL_CACHE d_month, i_sex, COUNT(*) AS total FROM `##dates` ".
 				"JOIN `##individuals` ON d_file = i_file AND d_gid = i_id ".
 				"WHERE ".
-				"d_file={$this->_ged_id} AND ".
+				"d_file={$this->tree_id} AND ".
 				"d_fact='DEAT' AND ".
 				"d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
 		} else {
 			$sql =
 				"SELECT SQL_CACHE d_month, COUNT(*) AS total FROM `##dates` ".
 				"WHERE ".
-				"d_file={$this->_ged_id} AND ".
+				"d_file={$this->tree_id} AND ".
 				"d_fact='DEAT' AND ".
 				"d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
 		}
@@ -1250,7 +1305,7 @@ class WT_Stats {
 			$sql .= " GROUP BY d_month";
 			if ($sex) $sql .= ", i_sex";
 		}
-		$rows=self::_runSQL($sql);
+		$rows=$this->runSql($sql);
 		if ($simple) {
 			if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = $WT_STATS_S_CHART_X."x".$WT_STATS_S_CHART_Y;}
 			if (isset($params[1]) && $params[1] != '') {$color_from = strtolower($params[1]);} else {$color_from = $WT_STATS_CHART_COLOR1;}
@@ -1265,9 +1320,9 @@ class WT_Stats {
 			$centuries = "";
 			foreach ($rows as $values) {
 				$counts[] = round(100 * $values['total'] / $tot, 0);
-				$centuries .= self::_centuryName($values['century']).' - '.WT_I18N::number($values['total']).'|';
+				$centuries .= $this->centuryName($values['century']).' - '.WT_I18N::number($values['total']).'|';
 			}
-			$chd = self::_array_to_extended_encoding($counts);
+			$chd = $this->arrayToExtendedEncoding($counts);
 			$chl = rawurlencode(substr($centuries,0,-1));
 			return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".WT_I18N::translate('Deaths by century')."\" title=\"".WT_I18N::translate('Deaths by century')."\" />";
 		}
@@ -1279,39 +1334,87 @@ class WT_Stats {
 	// Birth
 	//
 
-	function firstBirth()      { return $this->_mortalityQuery('full',  'ASC', 'BIRT'); }
-	function firstBirthYear()  { return $this->_mortalityQuery('year',  'ASC', 'BIRT'); }
-	function firstBirthName()  { return $this->_mortalityQuery('name',  'ASC', 'BIRT'); }
-	function firstBirthPlace() { return $this->_mortalityQuery('place', 'ASC', 'BIRT'); }
+	public function firstBirth() {
+		return $this->mortalityQuery('full', 'ASC', 'BIRT');
+	}
 
-	function lastBirth()       { return $this->_mortalityQuery('full',  'DESC', 'BIRT'); }
-	function lastBirthYear()   { return $this->_mortalityQuery('year',  'DESC', 'BIRT'); }
-	function lastBirthName()   { return $this->_mortalityQuery('name',  'DESC', 'BIRT'); }
-	function lastBirthPlace()  { return $this->_mortalityQuery('place', 'DESC', 'BIRT'); }
+	public function firstBirthYear() {
+		return $this->mortalityQuery('year', 'ASC', 'BIRT');
+	}
 
-	function statsBirth($params=null) {return $this->_statsBirth(true, false, -1, -1, $params);}
+	public function firstBirthName() {
+		return $this->mortalityQuery('name', 'ASC', 'BIRT');
+	}
+
+	public function firstBirthPlace() {
+		return $this->mortalityQuery('place', 'ASC', 'BIRT');
+	}
+
+	public function lastBirth() {
+		return $this->mortalityQuery('full', 'DESC', 'BIRT');
+	}
+
+	public function lastBirthYear() {
+		return $this->mortalityQuery('year', 'DESC', 'BIRT');
+	}
+
+	public function lastBirthName() {
+		return $this->mortalityQuery('name', 'DESC', 'BIRT');
+	}
+
+	public function lastBirthPlace() {
+		return $this->mortalityQuery('place', 'DESC', 'BIRT');
+	}
+
+	public function statsBirth($params = null) {
+		return $this->statsBirthQuery(true, false, -1, -1, $params);
+	}
 
 	//
 	// Death
 	//
 
-	function firstDeath()      { return $this->_mortalityQuery('full',  'ASC', 'DEAT'); }
-	function firstDeathYear()  { return $this->_mortalityQuery('year',  'ASC', 'DEAT'); }
-	function firstDeathName()  { return $this->_mortalityQuery('name',  'ASC', 'DEAT'); }
-	function firstDeathPlace() { return $this->_mortalityQuery('place', 'ASC', 'DEAT'); }
+	public function firstDeath() {
+		return $this->mortalityQuery('full', 'ASC', 'DEAT');
+	}
 
-	function lastDeath()       { return $this->_mortalityQuery('full',  'DESC', 'DEAT'); }
-	function lastDeathYear()   { return $this->_mortalityQuery('year',  'DESC', 'DEAT'); }
-	function lastDeathName()   { return $this->_mortalityQuery('name',  'DESC', 'DEAT'); }
-	function lastDeathPlace()  { return $this->_mortalityQuery('place', 'DESC', 'DEAT'); }
+	public function firstDeathYear() {
+		return $this->mortalityQuery('year', 'ASC', 'DEAT');
+	}
 
-	function statsDeath($params=null) { return $this->_statsDeath(true, false, -1, -1, $params); }
+	public function firstDeathName() {
+		return $this->mortalityQuery('name', 'ASC', 'DEAT');
+	}
+
+	public function firstDeathPlace() {
+		return $this->mortalityQuery('place', 'ASC', 'DEAT');
+	}
+
+	public function lastDeath() {
+		return $this->mortalityQuery('full', 'DESC', 'DEAT');
+	}
+
+	public function lastDeathYear() {
+		return $this->mortalityQuery('year', 'DESC', 'DEAT');
+	}
+
+	public function lastDeathName() {
+		return $this->mortalityQuery('name', 'DESC', 'DEAT');
+	}
+
+	public function lastDeathPlace() {
+		return $this->mortalityQuery('place', 'DESC', 'DEAT');
+	}
+
+	public function statsDeath($params = null) {
+		return $this->statsDeathQuery(true, false, -1, -1, $params);
+	}
 
 ///////////////////////////////////////////////////////////////////////////////
 // Lifespan                                                                  //
 ///////////////////////////////////////////////////////////////////////////////
 
-	function _longlifeQuery($type='full', $sex='F') {
+	private function longlifeQuery($type='full', $sex='F') {
 		$sex_search = ' 1=1';
 		if ($sex == 'F') {
 			$sex_search = " i_sex='F'";
@@ -1319,7 +1422,7 @@ class WT_Stats {
 			$sex_search = " i_sex='M'";
 		}
 
-		$rows=self::_runSQL(
+		$rows=$this->runSql(
 			" SELECT SQL_CACHE".
 			" death.d_gid AS id,".
 			" death.d_julianday2-birth.d_julianday1 AS age".
@@ -1330,7 +1433,7 @@ class WT_Stats {
 			" WHERE".
 			" indi.i_id=birth.d_gid AND".
 			" birth.d_gid=death.d_gid AND".
-			" death.d_file={$this->_ged_id} AND".
+			" death.d_file={$this->tree_id} AND".
 			" birth.d_file=death.d_file AND".
 			" birth.d_file=indi.i_file AND".
 			" birth.d_fact='BIRT' AND".
@@ -1363,7 +1466,7 @@ class WT_Stats {
 		return $result;
 	}
 
-	function _topTenOldest($type='list', $sex='BOTH', $params=null) {
+	private function topTenOldestQuery($type='list', $sex='BOTH', $params=null) {
 		global $TEXT_DIRECTION;
 
 		if ($sex == 'F') {
@@ -1375,7 +1478,7 @@ class WT_Stats {
 		}
 		if ($params !== null && isset($params[0])) {$total = $params[0];} else {$total = 10;}
 		$total=(int)$total;
-		$rows=self::_runSQL(
+		$rows=$this->runSql(
 			"SELECT SQL_CACHE ".
 			" MAX(death.d_julianday2-birth.d_julianday1) AS age, ".
 			" death.d_gid AS deathdate ".
@@ -1386,7 +1489,7 @@ class WT_Stats {
 			"WHERE ".
 			" indi.i_id=birth.d_gid AND ".
 			" birth.d_gid=death.d_gid AND ".
-			" death.d_file={$this->_ged_id} AND ".
+			" death.d_file={$this->tree_id} AND ".
 			" birth.d_file=death.d_file AND ".
 			" birth.d_file=indi.i_file AND ".
 			" birth.d_fact='BIRT' AND ".
@@ -1433,7 +1536,7 @@ class WT_Stats {
 		return $top10;
 	}
 
-	function _topTenOldestAlive($type='list', $sex='BOTH', $params=null) {
+	private function topTenOldestAliveQuery($type='list', $sex='BOTH', $params=null) {
 		global $TEXT_DIRECTION;
 
 		if (!WT_USER_CAN_ACCESS) return WT_I18N::translate('This information is private and cannot be shown.');
@@ -1446,7 +1549,7 @@ class WT_Stats {
 		}
 		if ($params !== null && isset($params[0])) {$total = $params[0];} else {$total = 10;}
 		$total=(int)$total;
-		$rows=self::_runSQL(
+		$rows=$this->runSql(
 			"SELECT SQL_CACHE".
 			" birth.d_gid AS id,".
 			" MIN(birth.d_julianday1) AS age".
@@ -1456,7 +1559,7 @@ class WT_Stats {
 			" WHERE".
 			" indi.i_id=birth.d_gid AND".
 			" indi.i_gedcom NOT REGEXP '\\n1 (".WT_EVENTS_DEAT.")' AND".
-			" birth.d_file={$this->_ged_id} AND".
+			" birth.d_file={$this->tree_id} AND".
 			" birth.d_fact='BIRT' AND".
 			" birth.d_file=indi.i_file AND".
 			" birth.d_julianday1<>0".
@@ -1498,7 +1601,7 @@ class WT_Stats {
 		return $top10;
 	}
 
-	function _averageLifespanQuery($sex='BOTH', $show_years=false) {
+	private function averageLifespanQuery($sex='BOTH', $show_years=false) {
 		if ($sex == 'F') {
 			$sex_search = " AND i_sex='F' ";
 		} elseif ($sex == 'M') {
@@ -1506,7 +1609,7 @@ class WT_Stats {
 		} else {
 			$sex_search = '';
 		}
-		$rows=self::_runSQL(
+		$rows=$this->runSql(
 			"SELECT SQL_CACHE ".
 			" AVG(death.d_julianday2-birth.d_julianday1) AS age ".
 			"FROM ".
@@ -1516,7 +1619,7 @@ class WT_Stats {
 			"WHERE ".
 			" indi.i_id=birth.d_gid AND ".
 			" birth.d_gid=death.d_gid AND ".
-			" death.d_file=".$this->_ged_id. " AND ".
+			" death.d_file=".$this->tree_id. " AND ".
 			" birth.d_file=death.d_file AND ".
 			" birth.d_file=indi.i_file AND ".
 			" birth.d_fact='BIRT' AND ".
@@ -1542,11 +1645,11 @@ class WT_Stats {
 		}
 	}
 
-	function _statsAge($simple=true, $related='BIRT', $sex='BOTH', $year1=-1, $year2=-1, $params=null) {
+	public function statsAgeQuery($simple=true, $related='BIRT', $sex='BOTH', $year1=-1, $year2=-1, $params=null) {
 		if ($simple) {
 			if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = '230x250';}
 			$sizes = explode('x', $size);
-			$rows=self::_runSQL(
+			$rows=$this->runSql(
 				"SELECT SQL_CACHE".
 				" ROUND(AVG(death.d_julianday2-birth.d_julianday1)/365.25,1) AS age,".
 				" FLOOR(death.d_year/100+1) AS century,".
@@ -1558,7 +1661,7 @@ class WT_Stats {
 				" WHERE".
 				" indi.i_id=birth.d_gid AND".
 				" birth.d_gid=death.d_gid AND".
-				" death.d_file={$this->_ged_id} AND".
+				" death.d_file={$this->tree_id} AND".
 				" birth.d_file=death.d_file AND".
 				" birth.d_file=indi.i_file AND".
 				" birth.d_fact='BIRT' AND".
@@ -1578,7 +1681,7 @@ class WT_Stats {
 			}
 			foreach ($out as $century=>$values) {
 				if ($sizes[0]<980) $sizes[0] += 50;
-				$chxl .= self::_centuryName($century).'|';
+				$chxl .= $this->centuryName($century).'|';
 				$average = 0;
 				if (isset($values['F'])) {
 					$countsf .= $values['F'].',';
@@ -1634,7 +1737,7 @@ class WT_Stats {
 					$years = " AND death.d_year BETWEEN '{$year1}' AND '{$year2}'";
 				}
 			}
-			$rows=self::_runSQL(
+			$rows=$this->runSql(
 				"SELECT SQL_CACHE".
 				" death.d_julianday2-birth.d_julianday1 AS age".
 				" FROM".
@@ -1644,7 +1747,7 @@ class WT_Stats {
 				" WHERE".
 				" indi.i_id=birth.d_gid AND".
 				" birth.d_gid=death.d_gid AND".
-				" death.d_file={$this->_ged_id} AND".
+				" death.d_file={$this->tree_id} AND".
 				" birth.d_file=death.d_file AND".
 				" birth.d_file=indi.i_file AND".
 				" birth.d_fact='BIRT' AND".
@@ -1662,53 +1765,115 @@ class WT_Stats {
 	}
 
 	// Both Sexes
-	function statsAge($params=null) {return $this->_statsAge(true, 'BIRT', 'BOTH', -1, -1, $params);}
+	public function statsAge($params = null) {
+		return $this->statsAgeQuery(true, 'BIRT', 'BOTH', -1, -1, $params);
+	}
 
-	function longestLife()     { return $this->_longlifeQuery('full', 'BOTH'); }
-	function longestLifeAge()  { return $this->_longlifeQuery('age',  'BOTH'); }
-	function longestLifeName() { return $this->_longlifeQuery('name', 'BOTH'); }
+	public function longestLife() {
+		return $this->longlifeQuery('full', 'BOTH');
+	}
 
-	function topTenOldest($params=null)          { return $this->_topTenOldest('nolist', 'BOTH', $params); }
-	function topTenOldestList($params=null)      { return $this->_topTenOldest('list',   'BOTH', $params); }
+	public function longestLifeAge() {
+		return $this->longlifeQuery('age', 'BOTH');
+	}
 
-	function topTenOldestAlive($params=null)     { return $this->_topTenOldestAlive('nolist', 'BOTH', $params); }
-	function topTenOldestListAlive($params=null) { return $this->_topTenOldestAlive('list',   'BOTH', $params); }
+	public function longestLifeName() {
+		return $this->longlifeQuery('name', 'BOTH');
+	}
 
-	function averageLifespan($show_years=false)  { return $this->_averageLifespanQuery('BOTH', $show_years); }
+	public function topTenOldest($params = null) {
+		return $this->topTenOldestQuery('nolist', 'BOTH', $params);
+	}
+
+	public function topTenOldestList($params = null) {
+		return $this->topTenOldestQuery('list', 'BOTH', $params);
+	}
+
+	public function topTenOldestAlive($params = null) {
+		return $this->topTenOldestAliveQuery('nolist', 'BOTH', $params);
+	}
+
+	public function topTenOldestListAlive($params = null) {
+		return $this->topTenOldestAliveQuery('list', 'BOTH', $params);
+	}
+
+	public function averageLifespan($show_years = false) {
+		return $this->averageLifespanQuery('BOTH', $show_years);
+	}
 
 	// Female Only
 
-	function longestLifeFemale()     { return $this->_longlifeQuery('full', 'F'); }
-	function longestLifeFemaleAge()  { return $this->_longlifeQuery('age',  'F'); }
-	function longestLifeFemaleName() { return $this->_longlifeQuery('name', 'F'); }
+	public function longestLifeFemale() {
+		return $this->longlifeQuery('full', 'F');
+	}
 
-	function topTenOldestFemale($params=null)     { return $this->_topTenOldest('nolist', 'F', $params); }
-	function topTenOldestFemaleList($params=null) { return $this->_topTenOldest('list',   'F', $params); }
+	public function longestLifeFemaleAge() {
+		return $this->longlifeQuery('age', 'F');
+	}
 
-	function topTenOldestFemaleAlive($params=null)     { return $this->_topTenOldestAlive('nolist', 'F', $params); }
-	function topTenOldestFemaleListAlive($params=null) { return $this->_topTenOldestAlive('list',   'F', $params); }
+	public function longestLifeFemaleName() {
+		return $this->longlifeQuery('name', 'F');
+	}
 
-	function averageLifespanFemale($show_years=false) { return $this->_averageLifespanQuery('F', $show_years); }
+	public function topTenOldestFemale($params = null) {
+		return $this->topTenOldestQuery('nolist', 'F', $params);
+	}
+
+	public function topTenOldestFemaleList($params = null) {
+		return $this->topTenOldestQuery('list', 'F', $params);
+	}
+
+	public function topTenOldestFemaleAlive($params = null) {
+		return $this->topTenOldestAliveQuery('nolist', 'F', $params);
+	}
+
+	public function topTenOldestFemaleListAlive($params = null) {
+		return $this->topTenOldestAliveQuery('list', 'F', $params);
+	}
+
+	public function averageLifespanFemale($show_years = false) {
+		return $this->averageLifespanQuery('F', $show_years);
+	}
 
 	// Male Only
 
-	function longestLifeMale()     { return $this->_longlifeQuery('full', 'M'); }
-	function longestLifeMaleAge()  { return $this->_longlifeQuery('age',  'M'); }
-	function longestLifeMaleName() { return $this->_longlifeQuery('name', 'M'); }
+	public function longestLifeMale() {
+		return $this->longlifeQuery('full', 'M');
+	}
 
-	function topTenOldestMale($params=null)     { return $this->_topTenOldest('nolist', 'M', $params); }
-	function topTenOldestMaleList($params=null) { return $this->_topTenOldest('list',   'M', $params); }
+	public function longestLifeMaleAge() {
+		return $this->longlifeQuery('age', 'M');
+	}
 
-	function topTenOldestMaleAlive($params=null)     { return $this->_topTenOldestAlive('nolist', 'M', $params); }
-	function topTenOldestMaleListAlive($params=null) { return $this->_topTenOldestAlive('list',   'M', $params); }
+	public function longestLifeMaleName() {
+		return $this->longlifeQuery('name', 'M');
+	}
 
-	function averageLifespanMale($show_years=false) {return $this->_averageLifespanQuery('M', $show_years);}
+	public function topTenOldestMale($params = null) {
+		return $this->topTenOldestQuery('nolist', 'M', $params);
+	}
+
+	public function topTenOldestMaleList($params = null) {
+		return $this->topTenOldestQuery('list', 'M', $params);
+	}
+
+	public function topTenOldestMaleAlive($params = null) {
+		return $this->topTenOldestAliveQuery('nolist', 'M', $params);
+	}
+
+	public function topTenOldestMaleListAlive($params = null) {
+		return $this->topTenOldestAliveQuery('list', 'M', $params);
+	}
+
+	public function averageLifespanMale($show_years = false) {
+		return $this->averageLifespanQuery('M', $show_years);
+	}
 
 ///////////////////////////////////////////////////////////////////////////////
 // Events                                                                    //
 ///////////////////////////////////////////////////////////////////////////////
 
-	function _eventQuery($type, $direction, $facts) {
+	private function eventQuery($type, $direction, $facts) {
 		$eventTypes = array(
 			'BIRT'=>WT_I18N::translate('birth'),
 			'DEAT'=>WT_I18N::translate('death'),
@@ -1721,7 +1886,7 @@ class WT_Stats {
 		$fact_query = "IN ('".str_replace('|', "','", $facts)."')";
 
 		if ($direction != 'ASC') {$direction = 'DESC';}
-		$rows=self::_runSQL(''
+		$rows=$this->runSql(''
 			.' SELECT SQL_CACHE'
 				.' d_gid AS id,'
 				.' d_year AS year,'
@@ -1730,7 +1895,7 @@ class WT_Stats {
 			.' FROM'
 				." `##dates`"
 			.' WHERE'
-				." d_file={$this->_ged_id} AND"
+				." d_file={$this->tree_id} AND"
 				." d_gid<>'HEAD' AND"
 				." d_fact {$fact_query} AND"
 				.' d_julianday1<>0'
@@ -1775,35 +1940,35 @@ class WT_Stats {
 		return $result;
 	}
 
-	function firstEvent() {
-		return $this->_eventQuery('full', 'ASC', WT_EVENTS_BIRT.'|'.WT_EVENTS_MARR.'|'.WT_EVENTS_DIV.'|'.WT_EVENTS_DEAT);
+	public function firstEvent() {
+		return $this->eventQuery('full', 'ASC', WT_EVENTS_BIRT.'|'.WT_EVENTS_MARR.'|'.WT_EVENTS_DIV.'|'.WT_EVENTS_DEAT);
 	}
-	function firstEventYear() {
-		return $this->_eventQuery('year', 'ASC', WT_EVENTS_BIRT.'|'.WT_EVENTS_MARR.'|'.WT_EVENTS_DIV.'|'.WT_EVENTS_DEAT);
+	public function firstEventYear() {
+		return $this->eventQuery('year', 'ASC', WT_EVENTS_BIRT.'|'.WT_EVENTS_MARR.'|'.WT_EVENTS_DIV.'|'.WT_EVENTS_DEAT);
 	}
-	function firstEventType() {
-		return $this->_eventQuery('type', 'ASC', WT_EVENTS_BIRT.'|'.WT_EVENTS_MARR.'|'.WT_EVENTS_DIV.'|'.WT_EVENTS_DEAT);
+	public function firstEventType() {
+		return $this->eventQuery('type', 'ASC', WT_EVENTS_BIRT.'|'.WT_EVENTS_MARR.'|'.WT_EVENTS_DIV.'|'.WT_EVENTS_DEAT);
 	}
-	function firstEventName() {
-		return $this->_eventQuery('name', 'ASC', WT_EVENTS_BIRT.'|'.WT_EVENTS_MARR.'|'.WT_EVENTS_DIV.'|'.WT_EVENTS_DEAT);
+	public function firstEventName() {
+		return $this->eventQuery('name', 'ASC', WT_EVENTS_BIRT.'|'.WT_EVENTS_MARR.'|'.WT_EVENTS_DIV.'|'.WT_EVENTS_DEAT);
 	}
-	function firstEventPlace() {
-		return $this->_eventQuery('place', 'ASC', WT_EVENTS_BIRT.'|'.WT_EVENTS_MARR.'|'.WT_EVENTS_DIV.'|'.WT_EVENTS_DEAT);
+	public function firstEventPlace() {
+		return $this->eventQuery('place', 'ASC', WT_EVENTS_BIRT.'|'.WT_EVENTS_MARR.'|'.WT_EVENTS_DIV.'|'.WT_EVENTS_DEAT);
 	}
-	function lastEvent() {
-		return $this->_eventQuery('full', 'DESC', WT_EVENTS_BIRT.'|'.WT_EVENTS_MARR.'|'.WT_EVENTS_DIV.'|'.WT_EVENTS_DEAT);
+	public function lastEvent() {
+		return $this->eventQuery('full', 'DESC', WT_EVENTS_BIRT.'|'.WT_EVENTS_MARR.'|'.WT_EVENTS_DIV.'|'.WT_EVENTS_DEAT);
 	}
-	function lastEventYear() {
-		return $this->_eventQuery('year', 'DESC', WT_EVENTS_BIRT.'|'.WT_EVENTS_MARR.'|'.WT_EVENTS_DIV.'|'.WT_EVENTS_DEAT);
+	public function lastEventYear() {
+		return $this->eventQuery('year', 'DESC', WT_EVENTS_BIRT.'|'.WT_EVENTS_MARR.'|'.WT_EVENTS_DIV.'|'.WT_EVENTS_DEAT);
 	}
-	function lastEventType() {
-		return $this->_eventQuery('type', 'DESC', WT_EVENTS_BIRT.'|'.WT_EVENTS_MARR.'|'.WT_EVENTS_DIV.'|'.WT_EVENTS_DEAT);
+	public function lastEventType() {
+		return $this->eventQuery('type', 'DESC', WT_EVENTS_BIRT.'|'.WT_EVENTS_MARR.'|'.WT_EVENTS_DIV.'|'.WT_EVENTS_DEAT);
 	}
-	function lastEventName() {
-		return $this->_eventQuery('name', 'DESC', WT_EVENTS_BIRT.'|'.WT_EVENTS_MARR.'|'.WT_EVENTS_DIV.'|'.WT_EVENTS_DEAT);
+	public function lastEventName() {
+		return $this->eventQuery('name', 'DESC', WT_EVENTS_BIRT.'|'.WT_EVENTS_MARR.'|'.WT_EVENTS_DIV.'|'.WT_EVENTS_DEAT);
 	}
-	function lastEventPlace() {
-		return $this->_eventQuery('place', 'DESC', WT_EVENTS_BIRT.'|'.WT_EVENTS_MARR.'|'.WT_EVENTS_DIV.'|'.WT_EVENTS_DEAT);
+	public function lastEventPlace() {
+		return $this->eventQuery('place', 'DESC', WT_EVENTS_BIRT.'|'.WT_EVENTS_MARR.'|'.WT_EVENTS_DIV.'|'.WT_EVENTS_DEAT);
 	}
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1813,20 +1978,20 @@ class WT_Stats {
 	/*
 	 * Query the database for marriage tags.
 	 */
-	function _marriageQuery($type='full', $age_dir='ASC', $sex='F', $show_years=false) {
+	private function marriageQuery($type='full', $age_dir='ASC', $sex='F', $show_years=false) {
 		if ($sex == 'F') {$sex_field = 'f_wife';} else {$sex_field = 'f_husb';}
 		if ($age_dir != 'ASC') {$age_dir = 'DESC';}
-		$rows=self::_runSQL(
+		$rows=$this->runSql(
 			" SELECT SQL_CACHE fam.f_id AS famid, fam.{$sex_field}, married.d_julianday2-birth.d_julianday1 AS age, indi.i_id AS i_id".
 			" FROM `##families` AS fam".
-			" LEFT JOIN `##dates` AS birth ON birth.d_file = {$this->_ged_id}".
-			" LEFT JOIN `##dates` AS married ON married.d_file = {$this->_ged_id}".
-			" LEFT JOIN `##individuals` AS indi ON indi.i_file = {$this->_ged_id}".
+			" LEFT JOIN `##dates` AS birth ON birth.d_file = {$this->tree_id}".
+			" LEFT JOIN `##dates` AS married ON married.d_file = {$this->tree_id}".
+			" LEFT JOIN `##individuals` AS indi ON indi.i_file = {$this->tree_id}".
 			" WHERE".
 			" birth.d_gid = indi.i_id AND".
 			" married.d_gid = fam.f_id AND".
 			" indi.i_id = fam.{$sex_field} AND".
-			" fam.f_file = {$this->_ged_id} AND".
+			" fam.f_file = {$this->tree_id} AND".
 			" birth.d_fact = 'BIRT' AND".
 			" married.d_fact = 'MARR' AND".
 			" birth.d_julianday1 <> 0 AND".
@@ -1870,17 +2035,17 @@ class WT_Stats {
 		return $result;
 	}
 
-	function _ageOfMarriageQuery($type='list', $age_dir='ASC', $params=null) {
+	private function ageOfMarriageQuery($type='list', $age_dir='ASC', $params=null) {
 		global $TEXT_DIRECTION;
 		if ($params !== null && isset($params[0])) {$total = $params[0];} else {$total = 10;}
 		if ($age_dir != 'ASC') {$age_dir = 'DESC';}
-		$hrows=self::_runSQL(
+		$hrows=$this->runSql(
 			" SELECT SQL_CACHE DISTINCT fam.f_id AS family, MIN(husbdeath.d_julianday2-married.d_julianday1) AS age".
 			" FROM `##families` AS fam".
-			" LEFT JOIN `##dates` AS married ON married.d_file = {$this->_ged_id}".
-			" LEFT JOIN `##dates` AS husbdeath ON husbdeath.d_file = {$this->_ged_id}".
+			" LEFT JOIN `##dates` AS married ON married.d_file = {$this->tree_id}".
+			" LEFT JOIN `##dates` AS husbdeath ON husbdeath.d_file = {$this->tree_id}".
 			" WHERE".
-			" fam.f_file = {$this->_ged_id} AND".
+			" fam.f_file = {$this->tree_id} AND".
 			" husbdeath.d_gid = fam.f_husb AND".
 			" husbdeath.d_fact = 'DEAT' AND".
 			" married.d_gid = fam.f_id AND".
@@ -1889,13 +2054,13 @@ class WT_Stats {
 			" married.d_julianday1 <> 0".
 			" GROUP BY family".
 			" ORDER BY age {$age_dir}");
-		$wrows=self::_runSQL(
+		$wrows=$this->runSql(
 			" SELECT SQL_CACHE DISTINCT fam.f_id AS family, MIN(wifedeath.d_julianday2-married.d_julianday1) AS age".
 			" FROM `##families` AS fam".
-			" LEFT JOIN `##dates` AS married ON married.d_file = {$this->_ged_id}".
-			" LEFT JOIN `##dates` AS wifedeath ON wifedeath.d_file = {$this->_ged_id}".
+			" LEFT JOIN `##dates` AS married ON married.d_file = {$this->tree_id}".
+			" LEFT JOIN `##dates` AS wifedeath ON wifedeath.d_file = {$this->tree_id}".
 			" WHERE".
-			" fam.f_file = {$this->_ged_id} AND".
+			" fam.f_file = {$this->tree_id} AND".
 			" wifedeath.d_gid = fam.f_wife AND".
 			" wifedeath.d_fact = 'DEAT' AND".
 			" married.d_gid = fam.f_id AND".
@@ -1904,13 +2069,13 @@ class WT_Stats {
 			" married.d_julianday1 <> 0".
 			" GROUP BY family".
 			" ORDER BY age {$age_dir}");
-		$drows=self::_runSQL(
+		$drows=$this->runSql(
 			" SELECT SQL_CACHE DISTINCT fam.f_id AS family, MIN(divorced.d_julianday2-married.d_julianday1) AS age".
 			" FROM `##families` AS fam".
-			" LEFT JOIN `##dates` AS married ON married.d_file = {$this->_ged_id}".
-			" LEFT JOIN `##dates` AS divorced ON divorced.d_file = {$this->_ged_id}".
+			" LEFT JOIN `##dates` AS married ON married.d_file = {$this->tree_id}".
+			" LEFT JOIN `##dates` AS divorced ON divorced.d_file = {$this->tree_id}".
 			" WHERE".
-			" fam.f_file = {$this->_ged_id} AND".
+			" fam.f_file = {$this->tree_id} AND".
 			" married.d_gid = fam.f_id AND".
 			" married.d_fact = 'MARR' AND".
 			" divorced.d_gid = fam.f_id AND".
@@ -1981,8 +2146,9 @@ class WT_Stats {
 		return $top10;
 	}
 
-	function _ageBetweenSpousesQuery($type='list', $age_dir='DESC', $params=null) {
+	private function ageBetweenSpousesQuery($type='list', $age_dir='DESC', $params=null) {
 		global $TEXT_DIRECTION;
+
 		if ($params !== null && isset($params[0])) {$total = $params[0];} else {$total = 10;}
 		if ($age_dir=='DESC') {
 			$query1 = ' MIN(wifebirth.d_julianday2-husbbirth.d_julianday1) AS age';
@@ -1992,13 +2158,13 @@ class WT_Stats {
 			$query2 = ' wifebirth.d_julianday1 < husbbirth.d_julianday2 AND wifebirth.d_julianday1 <> 0';
 		}
 		$total=(int)$total;
-		$rows=self::_runSQL(
+		$rows=$this->runSql(
 			" SELECT SQL_CACHE fam.f_id AS family," .$query1.
 			" FROM `##families` AS fam".
-			" LEFT JOIN `##dates` AS wifebirth ON wifebirth.d_file = {$this->_ged_id}".
-			" LEFT JOIN `##dates` AS husbbirth ON husbbirth.d_file = {$this->_ged_id}".
+			" LEFT JOIN `##dates` AS wifebirth ON wifebirth.d_file = {$this->tree_id}".
+			" LEFT JOIN `##dates` AS husbbirth ON husbbirth.d_file = {$this->tree_id}".
 			" WHERE".
-			" fam.f_file = {$this->_ged_id} AND".
+			" fam.f_file = {$this->tree_id} AND".
 			" husbbirth.d_gid = fam.f_husb AND".
 			" husbbirth.d_fact = 'BIRT' AND".
 			" wifebirth.d_gid = fam.f_wife AND".
@@ -2043,24 +2209,24 @@ class WT_Stats {
 		return $top10;
 	}
 
-	function _parentsQuery($type='full', $age_dir='ASC', $sex='F', $show_years=false) {
+	private function parentsQuery($type='full', $age_dir='ASC', $sex='F', $show_years=false) {
 		if ($sex == 'F') {$sex_field = 'WIFE';} else {$sex_field = 'HUSB';}
 		if ($age_dir != 'ASC') {$age_dir = 'DESC';}
-		$rows=self::_runSQL(
+		$rows=$this->runSql(
 			" SELECT SQL_CACHE".
 			" parentfamily.l_to AS id,".
 			" childbirth.d_julianday2-birth.d_julianday1 AS age".
 			" FROM `##link` AS parentfamily".
-			" JOIN `##link` AS childfamily ON childfamily.l_file = {$this->_ged_id}".
-			" JOIN `##dates` AS birth ON birth.d_file = {$this->_ged_id}".
-			" JOIN `##dates` AS childbirth ON childbirth.d_file = {$this->_ged_id}".
+			" JOIN `##link` AS childfamily ON childfamily.l_file = {$this->tree_id}".
+			" JOIN `##dates` AS birth ON birth.d_file = {$this->tree_id}".
+			" JOIN `##dates` AS childbirth ON childbirth.d_file = {$this->tree_id}".
 			" WHERE".
 			" birth.d_gid = parentfamily.l_to AND".
 			" childfamily.l_to = childbirth.d_gid AND".
 			" childfamily.l_type = 'CHIL' AND".
 			" parentfamily.l_type = '{$sex_field}' AND".
 			" childfamily.l_from = parentfamily.l_from AND".
-			" parentfamily.l_file = {$this->_ged_id} AND".
+			" parentfamily.l_file = {$this->tree_id} AND".
 			" birth.d_fact = 'BIRT' AND".
 			" childbirth.d_fact = 'BIRT' AND".
 			" birth.d_julianday1 <> 0 AND".
@@ -2101,14 +2267,14 @@ class WT_Stats {
 		return $result;
 	}
 
-	function _statsMarr($simple=true, $first=false, $year1=-1, $year2=-1, $params=null) {
+	public function statsMarrQuery($simple=true, $first=false, $year1=-1, $year2=-1, $params=null) {
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 
 		if ($simple) {
 			$sql =
 				"SELECT SQL_CACHE FLOOR(d_year/100+1) AS century, COUNT(*) AS total".
 				" FROM `##dates`".
-				" WHERE d_file={$this->_ged_id} AND d_year<>0 AND d_fact='MARR' AND d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
+				" WHERE d_file={$this->tree_id} AND d_year<>0 AND d_fact='MARR' AND d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
 			if ($year1>=0 && $year2>=0) {
 				$sql .= " AND d_year BETWEEN '{$year1}' AND '{$year2}'";
 			}
@@ -2121,11 +2287,11 @@ class WT_Stats {
 			$sql=
 				" SELECT SQL_CACHE fam.f_id AS fams, fam.f_husb, fam.f_wife, married.d_julianday2 AS age, married.d_month AS month, indi.i_id AS indi".
 				" FROM `##families` AS fam".
-				" LEFT JOIN `##dates` AS married ON married.d_file = {$this->_ged_id}".
-				" LEFT JOIN `##individuals` AS indi ON indi.i_file = {$this->_ged_id}".
+				" LEFT JOIN `##dates` AS married ON married.d_file = {$this->tree_id}".
+				" LEFT JOIN `##individuals` AS indi ON indi.i_file = {$this->tree_id}".
 				" WHERE".
 				" married.d_gid = fam.f_id AND".
-				" fam.f_file = {$this->_ged_id} AND".
+				" fam.f_file = {$this->tree_id} AND".
 				" married.d_fact = 'MARR' AND".
 				" married.d_julianday2 <> 0 AND".
 				$years.
@@ -2135,13 +2301,13 @@ class WT_Stats {
 			$sql =
 				"SELECT SQL_CACHE d_month, COUNT(*) AS total".
 				" FROM `##dates`".
-				" WHERE d_file={$this->_ged_id} AND d_fact='MARR'";
+				" WHERE d_file={$this->tree_id} AND d_fact='MARR'";
 				if ($year1>=0 && $year2>=0) {
 					$sql .= " AND d_year BETWEEN '{$year1}' AND '{$year2}'";
 				}
 			$sql .= " GROUP BY d_month";
 		}
-		$rows=self::_runSQL($sql);
+		$rows=$this->runSql($sql);
 		if (!isset($rows)) {return 0;}
 		if ($simple) {
 			if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = $WT_STATS_S_CHART_X."x".$WT_STATS_S_CHART_Y;}
@@ -2158,23 +2324,23 @@ class WT_Stats {
 			$counts=array();
 			foreach ($rows as $values) {
 				$counts[] = round(100 * $values['total'] / $tot, 0);
-				$centuries .= self::_centuryName($values['century']).' - '.WT_I18N::number($values['total']).'|';
+				$centuries .= $this->centuryName($values['century']).' - '.WT_I18N::number($values['total']).'|';
 			}
-			$chd = self::_array_to_extended_encoding($counts);
+			$chd = $this->arrayToExtendedEncoding($counts);
 			$chl = substr($centuries,0,-1);
 			return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".WT_I18N::translate('Marriages by century')."\" title=\"".WT_I18N::translate('Marriages by century')."\" />";
 		}
 		return $rows;
 	}
 
-	function _statsDiv($simple=true, $first=false, $year1=-1, $year2=-1, $params=null) {
+	private function statsDivQuery($simple=true, $first=false, $year1=-1, $year2=-1, $params=null) {
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 
 		if ($simple) {
 			$sql =
 				"SELECT SQL_CACHE FLOOR(d_year/100+1) AS century, COUNT(*) AS total".
 				" FROM `##dates`".
-				" WHERE d_file={$this->_ged_id} AND d_year<>0 AND d_fact = 'DIV' AND d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
+				" WHERE d_file={$this->tree_id} AND d_year<>0 AND d_fact = 'DIV' AND d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
 				if ($year1>=0 && $year2>=0) {
 					$sql .= " AND d_year BETWEEN '{$year1}' AND '{$year2}'";
 				}
@@ -2187,11 +2353,11 @@ class WT_Stats {
 			$sql=
 			" SELECT SQL_CACHE fam.f_id AS fams, fam.f_husb, fam.f_wife, divorced.d_julianday2 AS age, divorced.d_month AS month, indi.i_id AS indi".
 			" FROM `##families` AS fam".
-			" LEFT JOIN `##dates` AS divorced ON divorced.d_file = {$this->_ged_id}".
-			" LEFT JOIN `##individuals` AS indi ON indi.i_file = {$this->_ged_id}".
+			" LEFT JOIN `##dates` AS divorced ON divorced.d_file = {$this->tree_id}".
+			" LEFT JOIN `##individuals` AS indi ON indi.i_file = {$this->tree_id}".
 			" WHERE".
 			" divorced.d_gid = fam.f_id AND".
-			" fam.f_file = {$this->_ged_id} AND".
+			" fam.f_file = {$this->tree_id} AND".
 			" divorced.d_fact = 'DIV' AND".
 			" divorced.d_julianday2 <> 0 AND".
 			$years.
@@ -2200,13 +2366,13 @@ class WT_Stats {
 		} else {
 			$sql =
 				"SELECT SQL_CACHE d_month, COUNT(*) AS total FROM `##dates` ".
-				"WHERE d_file={$this->_ged_id} AND d_fact = 'DIV'";
+				"WHERE d_file={$this->tree_id} AND d_fact = 'DIV'";
 				if ($year1>=0 && $year2>=0) {
 					$sql .= " AND d_year BETWEEN '{$year1}' AND '{$year2}'";
 				}
 			$sql .= " GROUP BY d_month";
 		}
-		$rows=self::_runSQL($sql);
+		$rows=$this->runSql($sql);
 		if (!isset($rows)) {return 0;}
 		if ($simple) {
 			if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = $WT_STATS_S_CHART_X."x".$WT_STATS_S_CHART_Y;}
@@ -2223,9 +2389,9 @@ class WT_Stats {
 			$counts=array();
 			foreach ($rows as $values) {
 				$counts[] = round(100 * $values['total'] / $tot, 0);
-				$centuries .= self::_centuryName($values['century']).' - '.WT_I18N::number($values['total']).'|';
+				$centuries .= $this->centuryName($values['century']).' - '.WT_I18N::number($values['total']).'|';
 			}
-			$chd = self::_array_to_extended_encoding($counts);
+			$chd = $this->arrayToExtendedEncoding($counts);
 			$chl = substr($centuries,0,-1);
 			return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".WT_I18N::translate('Divorces by century')."\" title=\"".WT_I18N::translate('Divorces by century')."\" />";
 		}
@@ -2235,37 +2401,86 @@ class WT_Stats {
 	//
 	// Marriage
 	//
-	function firstMarriage()      { return $this->_mortalityQuery('full',  'ASC', 'MARR'); }
-	function firstMarriageYear()  { return $this->_mortalityQuery('year',  'ASC', 'MARR'); }
-	function firstMarriageName()  { return $this->_mortalityQuery('name',  'ASC', 'MARR'); }
-	function firstMarriagePlace() { return $this->_mortalityQuery('place', 'ASC', 'MARR'); }
+	public function firstMarriage() {
+		return $this->mortalityQuery('full', 'ASC', 'MARR');
+	}
 
-	function lastMarriage()      { return $this->_mortalityQuery('full',  'DESC', 'MARR'); }
-	function lastMarriageYear()  { return $this->_mortalityQuery('year',  'DESC', 'MARR'); }
-	function lastMarriageName()  { return $this->_mortalityQuery('name',  'DESC', 'MARR'); }
-	function lastMarriagePlace() { return $this->_mortalityQuery('place', 'DESC', 'MARR'); }
+	public function firstMarriageYear() {
+		return $this->mortalityQuery('year', 'ASC', 'MARR');
+	}
 
-	function statsMarr($params=null) {return $this->_statsMarr(true, false, -1, -1, $params);}
+	public function firstMarriageName() {
+		return $this->mortalityQuery('name', 'ASC', 'MARR');
+	}
+
+	public function firstMarriagePlace() {
+		return $this->mortalityQuery('place', 'ASC', 'MARR');
+	}
+
+	public function lastMarriage() {
+		return $this->mortalityQuery('full', 'DESC', 'MARR');
+	}
+
+	public function lastMarriageYear() {
+		return $this->mortalityQuery('year', 'DESC', 'MARR');
+	}
+
+	public function lastMarriageName() {
+		return $this->mortalityQuery('name', 'DESC', 'MARR');
+	}
+
+	public function lastMarriagePlace() {
+		return $this->mortalityQuery('place', 'DESC', 'MARR');
+	}
+
+	public function statsMarr($params = null) {
+		return $this->statsMarrQuery(true, false, -1, -1, $params);
+	}
+
 	//
 	// Divorce
 	//
-	function firstDivorce()      { return $this->_mortalityQuery('full',  'ASC', 'DIV'); }
-	function firstDivorceYear()  { return $this->_mortalityQuery('year',  'ASC', 'DIV'); }
-	function firstDivorceName()  { return $this->_mortalityQuery('name',  'ASC', 'DIV'); }
-	function firstDivorcePlace() { return $this->_mortalityQuery('place', 'ASC', 'DIV'); }
+	public function firstDivorce() {
+		return $this->mortalityQuery('full', 'ASC', 'DIV');
+	}
 
-	function lastDivorce()      { return $this->_mortalityQuery('full',  'DESC', 'DIV'); }
-	function lastDivorceYear()  { return $this->_mortalityQuery('year',  'DESC', 'DIV'); }
-	function lastDivorceName()  { return $this->_mortalityQuery('name',  'DESC', 'DIV'); }
-	function lastDivorcePlace() { return $this->_mortalityQuery('place', 'DESC', 'DIV'); }
+	public function firstDivorceYear() {
+		return $this->mortalityQuery('year', 'ASC', 'DIV');
+	}
 
-	function statsDiv($params=null) {return $this->_statsDiv(true, false, -1, -1, $params);}
+	public function firstDivorceName() {
+		return $this->mortalityQuery('name', 'ASC', 'DIV');
+	}
 
-	function _statsMarrAge($simple=true, $sex='M', $year1=-1, $year2=-1, $params=null) {
+	public function firstDivorcePlace() {
+		return $this->mortalityQuery('place', 'ASC', 'DIV');
+	}
+
+	public function lastDivorce() {
+		return $this->mortalityQuery('full', 'DESC', 'DIV');
+	}
+
+	public function lastDivorceYear() {
+		return $this->mortalityQuery('year', 'DESC', 'DIV');
+	}
+
+	public function lastDivorceName() {
+		return $this->mortalityQuery('name', 'DESC', 'DIV');
+	}
+
+	public function lastDivorcePlace() {
+		return $this->mortalityQuery('place', 'DESC', 'DIV');
+	}
+
+	public function statsDiv($params = null) {
+		return $this->statsDivQuery(true, false, -1, -1, $params);
+	}
+
+	public function statsMarrAgeQuery($simple=true, $sex='M', $year1=-1, $year2=-1, $params=null) {
 		if ($simple) {
 			if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = '200x250';}
 			$sizes = explode('x', $size);
-			$rows=self::_runSQL(
+			$rows=$this->runSql(
 				"SELECT SQL_CACHE ".
 				" ROUND(AVG(married.d_julianday2-birth.d_julianday1-182.5)/365.25,1) AS age, ".
 				" FLOOR(married.d_year/100+1) AS century, ".
@@ -2275,7 +2490,7 @@ class WT_Stats {
 				"JOIN `##dates` AS birth ON (birth.d_gid=fam.f_husb AND birth.d_file=fam.f_file) ".
 				"WHERE ".
 				" '{$sex}' IN ('M', 'BOTH') AND ".
-				" married.d_file={$this->_ged_id} AND married.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND married.d_fact='MARR' AND ".
+				" married.d_file={$this->tree_id} AND married.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND married.d_fact='MARR' AND ".
 				" birth.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND birth.d_fact='BIRT' AND ".
 				" married.d_julianday1>birth.d_julianday1 AND birth.d_julianday1<>0 ".
 				"GROUP BY century, sex ".
@@ -2289,7 +2504,7 @@ class WT_Stats {
 				"JOIN `##dates` AS birth ON (birth.d_gid=fam.f_wife AND birth.d_file=fam.f_file) ".
 				"WHERE ".
 				" '{$sex}' IN ('F', 'BOTH') AND ".
-				" married.d_file={$this->_ged_id} AND married.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND married.d_fact='MARR' AND ".
+				" married.d_file={$this->tree_id} AND married.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND married.d_fact='MARR' AND ".
 				" birth.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND birth.d_fact='BIRT' AND ".
 				" married.d_julianday1>birth.d_julianday1 AND birth.d_julianday1<>0 ".
 				" GROUP BY century, sex ORDER BY century"
@@ -2311,7 +2526,7 @@ class WT_Stats {
 			}
 			foreach ($out as $century=>$values) {
 				if ($sizes[0]<1000) $sizes[0] += 50;
-				$chxl .= self::_centuryName($century).'|';
+				$chxl .= $this->centuryName($century).'|';
 				$average = 0;
 				if (isset($values['F'])) {
 					if ($max<=50) $value = $values['F']*2;
@@ -2363,7 +2578,7 @@ class WT_Stats {
 			} else {
 				$years='';
 			}
-			$rows=self::_runSQL(
+			$rows=$this->runSql(
 				"SELECT SQL_CACHE ".
 				" fam.f_id, ".
 				" birth.d_gid, ".
@@ -2373,7 +2588,7 @@ class WT_Stats {
 				"JOIN `##dates` AS birth ON (birth.d_gid=fam.f_husb AND birth.d_file=fam.f_file) ".
 				"WHERE ".
 				" '{$sex}' IN ('M', 'BOTH') AND {$years} ".
-				" married.d_file={$this->_ged_id} AND married.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND married.d_fact='MARR' AND ".
+				" married.d_file={$this->tree_id} AND married.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND married.d_fact='MARR' AND ".
 				" birth.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND birth.d_fact='BIRT' AND ".
 				" married.d_julianday1>birth.d_julianday1 AND birth.d_julianday1<>0 ".
 				"UNION ALL ".
@@ -2386,7 +2601,7 @@ class WT_Stats {
 				"JOIN `##dates` AS birth ON (birth.d_gid=fam.f_wife AND birth.d_file=fam.f_file) ".
 				"WHERE ".
 				" '{$sex}' IN ('F', 'BOTH') AND {$years} ".
-				" married.d_file={$this->_ged_id} AND married.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND married.d_fact='MARR' AND ".
+				" married.d_file={$this->tree_id} AND married.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND married.d_fact='MARR' AND ".
 				" birth.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND birth.d_fact='BIRT' AND ".
 				" married.d_julianday1>birth.d_julianday1 AND birth.d_julianday1<>0 "
 			);
@@ -2397,72 +2612,173 @@ class WT_Stats {
 	//
 	// Female only
 	//
-	function youngestMarriageFemale()                     { return $this->_marriageQuery('full', 'ASC', 'F'); }
-	function youngestMarriageFemaleName()                 { return $this->_marriageQuery('name', 'ASC', 'F'); }
-	function youngestMarriageFemaleAge($show_years=false) { return $this->_marriageQuery('age',  'ASC', 'F', $show_years); }
+	public function youngestMarriageFemale() {
+		return $this->marriageQuery('full', 'ASC', 'F');
+	}
 
-	function oldestMarriageFemale()                     { return $this->_marriageQuery('full', 'DESC', 'F'); }
-	function oldestMarriageFemaleName()                 { return $this->_marriageQuery('name', 'DESC', 'F'); }
-	function oldestMarriageFemaleAge($show_years=false) { return $this->_marriageQuery('age',  'DESC', 'F', $show_years); }
+	public function youngestMarriageFemaleName() {
+		return $this->marriageQuery('name', 'ASC', 'F');
+	}
+
+	public function youngestMarriageFemaleAge($show_years = false) {
+		return $this->marriageQuery('age', 'ASC', 'F', $show_years);
+	}
+
+	public function oldestMarriageFemale() {
+		return $this->marriageQuery('full', 'DESC', 'F');
+	}
+
+	public function oldestMarriageFemaleName() {
+		return $this->marriageQuery('name', 'DESC', 'F');
+	}
+
+	public function oldestMarriageFemaleAge($show_years = false) {
+		return $this->marriageQuery('age', 'DESC', 'F', $show_years);
+	}
 
 	//
 	// Male only
 	//
-	function youngestMarriageMale()                     { return $this->_marriageQuery('full', 'ASC', 'M'); }
-	function youngestMarriageMaleName()                 { return $this->_marriageQuery('name', 'ASC', 'M'); }
-	function youngestMarriageMaleAge($show_years=false) { return $this->_marriageQuery('age',  'ASC', 'M', $show_years); }
+	public function youngestMarriageMale() {
+		return $this->marriageQuery('full', 'ASC', 'M');
+	}
 
-	function oldestMarriageMale()                     { return $this->_marriageQuery('full', 'DESC', 'M'); }
-	function oldestMarriageMaleName()                 { return $this->_marriageQuery('name', 'DESC', 'M'); }
-	function oldestMarriageMaleAge($show_years=false) { return $this->_marriageQuery('age',  'DESC', 'M', $show_years); }
+	public function youngestMarriageMaleName() {
+		return $this->marriageQuery('name', 'ASC', 'M');
+	}
 
-	function statsMarrAge($params=null) { return $this->_statsMarrAge(true, 'BOTH', -1, -1, $params); }
+	public function youngestMarriageMaleAge($show_years = false) {
+		return $this->marriageQuery('age', 'ASC', 'M', $show_years);
+	}
 
-	function ageBetweenSpousesMF    ($params=null) { return $this->_ageBetweenSpousesQuery($type='nolist', $age_dir='DESC', $params=null); }
-	function ageBetweenSpousesMFList($params=null) { return $this->_ageBetweenSpousesQuery($type='list',   $age_dir='DESC', $params=null); }
-	function ageBetweenSpousesFM    ($params=null) { return $this->_ageBetweenSpousesQuery($type='nolist', $age_dir='ASC',  $params=null); }
-	function ageBetweenSpousesFMList($params=null) { return $this->_ageBetweenSpousesQuery($type='list',   $age_dir='ASC',  $params=null); }
+	public function oldestMarriageMale() {
+		return $this->marriageQuery('full', 'DESC', 'M');
+	}
 
-	function topAgeOfMarriageFamily()                   { return $this->_ageOfMarriageQuery('name',   'DESC', array('1')); }
-	function topAgeOfMarriage()                         { return $this->_ageOfMarriageQuery('age',    'DESC', array('1')); }
-	function topAgeOfMarriageFamilies($params=null)     { return $this->_ageOfMarriageQuery('nolist', 'DESC', $params);    }
-	function topAgeOfMarriageFamiliesList($params=null) { return $this->_ageOfMarriageQuery('list',   'DESC', $params);    }
+	public function oldestMarriageMaleName() {
+		return $this->marriageQuery('name', 'DESC', 'M');
+	}
 
-	function minAgeOfMarriageFamily()                   { return $this->_ageOfMarriageQuery('name',   'ASC', array('1')); }
-	function minAgeOfMarriage()                         { return $this->_ageOfMarriageQuery('age',    'ASC', array('1')); }
-	function minAgeOfMarriageFamilies    ($params=null) { return $this->_ageOfMarriageQuery('nolist', 'ASC', $params); }
-	function minAgeOfMarriageFamiliesList($params=null) { return $this->_ageOfMarriageQuery('list',   'ASC', $params); }
+	public function oldestMarriageMaleAge($show_years = false) {
+		return $this->marriageQuery('age', 'DESC', 'M', $show_years);
+	}
+
+	public function statsMarrAge($params = null) {
+		return $this->statsMarrAgeQuery(true, 'BOTH', -1, -1, $params);
+	}
+
+	public function ageBetweenSpousesMF($params = null) {
+		return $this->ageBetweenSpousesQuery($type = 'nolist', $age_dir = 'DESC', $params);
+	}
+
+	public function ageBetweenSpousesMFList($params = null) {
+		return $this->ageBetweenSpousesQuery($type = 'list', $age_dir = 'DESC', $params);
+	}
+
+	public function ageBetweenSpousesFM($params = null) {
+		return $this->ageBetweenSpousesQuery($type = 'nolist', $age_dir = 'ASC', $params);
+	}
+
+	public function ageBetweenSpousesFMList($params = null) {
+		return $this->ageBetweenSpousesQuery($type = 'list', $age_dir = 'ASC', $params);
+	}
+
+	public function topAgeOfMarriageFamily() {
+		return $this->ageOfMarriageQuery('name', 'DESC', array('1'));
+	}
+
+	public function topAgeOfMarriage() {
+		return $this->ageOfMarriageQuery('age', 'DESC', array('1'));
+	}
+
+	public function topAgeOfMarriageFamilies($params = null) {
+		return $this->ageOfMarriageQuery('nolist', 'DESC', $params);
+	}
+
+	public function topAgeOfMarriageFamiliesList($params = null) {
+		return $this->ageOfMarriageQuery('list', 'DESC', $params);
+	}
+
+	public function minAgeOfMarriageFamily() {
+		return $this->ageOfMarriageQuery('name', 'ASC', array('1'));
+	}
+
+	public function minAgeOfMarriage() {
+		return $this->ageOfMarriageQuery('age', 'ASC', array('1'));
+	}
+
+	public function minAgeOfMarriageFamilies($params = null) {
+		return $this->ageOfMarriageQuery('nolist', 'ASC', $params);
+	}
+
+	public function minAgeOfMarriageFamiliesList($params = null) {
+		return $this->ageOfMarriageQuery('list', 'ASC', $params);
+	}
 
 	//
 	// Mother only
 	//
-	function youngestMother()                     { return $this->_parentsQuery('full', 'ASC',  'F'); }
-	function youngestMotherName()                 { return $this->_parentsQuery('name', 'ASC',  'F'); }
-	function youngestMotherAge($show_years=false) { return $this->_parentsQuery('age',  'ASC',  'F', $show_years); }
-	function oldestMother()                       { return $this->_parentsQuery('full', 'DESC', 'F'); }
-	function oldestMotherName()                   { return $this->_parentsQuery('name', 'DESC', 'F'); }
-	function oldestMotherAge($show_years=false)   { return $this->_parentsQuery('age',  'DESC', 'F', $show_years); }
+	public function youngestMother() {
+		return $this->parentsQuery('full', 'ASC', 'F');
+	}
+
+	public function youngestMotherName() {
+		return $this->parentsQuery('name', 'ASC', 'F');
+	}
+
+	public function youngestMotherAge($show_years = false) {
+		return $this->parentsQuery('age', 'ASC', 'F', $show_years);
+	}
+
+	public function oldestMother() {
+		return $this->parentsQuery('full', 'DESC', 'F');
+	}
+
+	public function oldestMotherName() {
+		return $this->parentsQuery('name', 'DESC', 'F');
+	}
+
+	public function oldestMotherAge($show_years = false) {
+		return $this->parentsQuery('age', 'DESC', 'F', $show_years);
+	}
 
 	//
 	// Father only
 	//
-	function youngestFather()                     { return $this->_parentsQuery('full', 'ASC',  'M'); }
-	function youngestFatherName()                 { return $this->_parentsQuery('name', 'ASC',  'M'); }
-	function youngestFatherAge($show_years=false) { return $this->_parentsQuery('age',  'ASC',  'M', $show_years); }
-	function oldestFather()                       { return $this->_parentsQuery('full', 'DESC', 'M'); }
-	function oldestFatherName()                   { return $this->_parentsQuery('name', 'DESC', 'M'); }
-	function oldestFatherAge($show_years=false)   { return $this->_parentsQuery('age',  'DESC', 'M', $show_years); }
+	public function youngestFather() {
+		return $this->parentsQuery('full', 'ASC', 'M');
+	}
 
-	function totalMarriedMales() {
+	public function youngestFatherName() {
+		return $this->parentsQuery('name', 'ASC', 'M');
+	}
+
+	public function youngestFatherAge($show_years = false) {
+		return $this->parentsQuery('age', 'ASC', 'M', $show_years);
+	}
+
+	public function oldestFather() {
+		return $this->parentsQuery('full', 'DESC', 'M');
+	}
+
+	public function oldestFatherName() {
+		return $this->parentsQuery('name', 'DESC', 'M');
+	}
+
+	public function oldestFatherAge($show_years = false) {
+		return $this->parentsQuery('age', 'DESC', 'M', $show_years);
+	}
+
+	public function totalMarriedMales() {
 		$n=WT_DB::prepare("SELECT SQL_CACHE COUNT(DISTINCT f_husb) FROM `##families` WHERE f_file=? AND f_gedcom LIKE '%\\n1 MARR%'")
-			->execute(array($this->_ged_id))
+			->execute(array($this->tree_id))
 			->fetchOne();
 		return WT_I18N::number($n);
 	}
 
-	function totalMarriedFemales() {
+	public function totalMarriedFemales() {
 		$n=WT_DB::prepare("SELECT SQL_CACHE COUNT(DISTINCT f_wife) FROM `##families` WHERE f_file=? AND f_gedcom LIKE '%\\n1 MARR%'")
-			->execute(array($this->_ged_id))
+			->execute(array($this->tree_id))
 			->fetchOne();
 		return WT_I18N::number($n);
 	}
@@ -2471,16 +2787,16 @@ class WT_Stats {
 // Family Size                                                               //
 ///////////////////////////////////////////////////////////////////////////////
 
-	function _familyQuery($type='full') {
-		$rows=self::_runSQL(
+	private function familyQuery($type='full') {
+		$rows=$this->runSql(
 			" SELECT SQL_CACHE f_numchil AS tot, f_id AS id".
 			" FROM `##families`".
 			" WHERE".
-			" f_file={$this->_ged_id}".
+			" f_file={$this->tree_id}".
 			" AND f_numchil = (".
 			"  SELECT max( f_numchil )".
 			"  FROM `##families`" .
-			"  WHERE f_file ={$this->_ged_id}".
+			"  WHERE f_file ={$this->tree_id}".
 			" )".
 			" LIMIT 1"
 		);
@@ -2506,15 +2822,15 @@ class WT_Stats {
 		return $result;
 	}
 
-	function _topTenFamilyQuery($type='list', $params=null) {
+	private function topTenFamilyQuery($type='list', $params=null) {
 		global $TEXT_DIRECTION;
 		if ($params !== null && isset($params[0])) {$total = $params[0];} else {$total = 10;}
 		$total=(int)$total;
-		$rows=self::_runSQL(
+		$rows=$this->runSql(
 			"SELECT SQL_CACHE f_numchil AS tot, f_id AS id".
 			" FROM `##families`".
 			" WHERE".
-			" f_file={$this->_ged_id}".
+			" f_file={$this->tree_id}".
 			" ORDER BY tot DESC".
 			" LIMIT ".$total
 		);
@@ -2549,24 +2865,24 @@ class WT_Stats {
 		return $top10;
 	}
 
-	function _ageBetweenSiblingsQuery($type='list', $params=null) {
+	private function ageBetweenSiblingsQuery($type='list', $params=null) {
 		global $TEXT_DIRECTION;
 		if ($params === null) {$params = array();}
 		if (isset($params[0])) {$total = $params[0];} else {$total = 10;}
 		if (isset($params[1])) {$one = $params[1];} else {$one = false;} // each family only once if true
 		$total=(int)$total;
-		$rows=self::_runSQL(
+		$rows=$this->runSql(
 			" SELECT SQL_CACHE DISTINCT".
 			" link1.l_from AS family,".
 			" link1.l_to AS ch1,".
 			" link2.l_to AS ch2,".
 			" child1.d_julianday2-child2.d_julianday2 AS age".
 			" FROM `##link` AS link1".
-			" LEFT JOIN `##dates` AS child1 ON child1.d_file = {$this->_ged_id}".
-			" LEFT JOIN `##dates` AS child2 ON child2.d_file = {$this->_ged_id}".
-			" LEFT JOIN `##link` AS link2 ON link2.l_file = {$this->_ged_id}".
+			" LEFT JOIN `##dates` AS child1 ON child1.d_file = {$this->tree_id}".
+			" LEFT JOIN `##dates` AS child2 ON child2.d_file = {$this->tree_id}".
+			" LEFT JOIN `##link` AS link2 ON link2.l_file = {$this->tree_id}".
 			" WHERE".
-			" link1.l_file = {$this->_ged_id} AND".
+			" link1.l_file = {$this->tree_id} AND".
 			" link1.l_from = link2.l_from AND".
 			" link1.l_type = 'CHIL' AND".
 			" child1.d_gid = link1.l_to AND".
@@ -2657,7 +2973,7 @@ class WT_Stats {
 		return $top10;
 	}
 
-	function _monthFirstChildQuery($simple=true, $sex=false, $year1=-1, $year2=-1, $params=null) {
+	public function monthFirstChildQuery($simple=true, $sex=false, $year1=-1, $year2=-1, $params=null) {
 		global $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y, $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2;
 		if ($params === null) {
 			$params = array();
@@ -2686,10 +3002,10 @@ class WT_Stats {
 			"  child1.d_month as d_month".
 			$sql_sex1.
 			"  FROM `##link` AS link1".
-			"  LEFT JOIN `##dates` AS child1 ON child1.d_file = {$this->_ged_id}".
+			"  LEFT JOIN `##dates` AS child1 ON child1.d_file = {$this->tree_id}".
 			$sql_sex2.
 			"  WHERE".
-			"  link1.l_file = {$this->_ged_id} AND".
+			"  link1.l_file = {$this->tree_id} AND".
 			"  link1.l_type = 'CHIL' AND".
 			"  child1.d_gid = link1.l_to AND".
 			"  child1.d_fact = 'BIRT' AND".
@@ -2704,7 +3020,7 @@ class WT_Stats {
 		if ($sex) {
 			$sql .= ', i_sex';
 		}
-		$rows=self::_runSQL($sql);
+		$rows=$this->runSQL($sql);
 		if ($simple) {
 			if (isset($params[0]) && $params[0] != '') {
 				$size = strtolower($params[0]);
@@ -2772,7 +3088,7 @@ class WT_Stats {
 				}
 				$text .= WT_I18N::translate(ucfirst(strtolower(($values['d_month'])))).' - '.$values['total'].'|';
 			}
-			$chd = self::_array_to_extended_encoding($counts);
+			$chd = $this->arrayToExtendedEncoding($counts);
 			$chl = substr($text,0,-1);
 			return '<img src="https://chart.googleapis.com/chart?cht=p3&amp;chd=e:'.$chd.'&amp;chs='.$size.'&amp;chco='.$color_from.','.$color_to.'&amp;chf=bg,s,ffffff00&amp;chl='.$chl.'" width="'.$sizes[0].'" height="'.$sizes[1].'" alt="'.WT_I18N::translate('Month of birth of first child in a relation').'" title="'.WT_I18N::translate('Month of birth of first child in a relation').'" />';
 		}
@@ -2780,26 +3096,58 @@ class WT_Stats {
 		return $rows;
 	}
 
-	function largestFamily()     { return $this->_familyQuery('full'); }
-	function largestFamilySize() { return $this->_familyQuery('size'); }
-	function largestFamilyName() { return $this->_familyQuery('name'); }
+	public function largestFamily() {
+		return $this->familyQuery('full');
+	}
 
-	function topTenLargestFamily    ($params=null) { return $this->_topTenFamilyQuery('nolist', $params); }
-	function topTenLargestFamilyList($params=null) { return $this->_topTenFamilyQuery('list',   $params); }
+	public function largestFamilySize() {
+		return $this->familyQuery('size');
+	}
 
-	function chartLargestFamilies($params=null) {
+	public function largestFamilyName() {
+		return $this->familyQuery('name');
+	}
+
+	public function topTenLargestFamily($params = null) {
+		return $this->topTenFamilyQuery('nolist', $params);
+	}
+
+	public function topTenLargestFamilyList($params = null) {
+		return $this->topTenFamilyQuery('list', $params);
+	}
+
+	public function chartLargestFamilies($params=null) {
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_L_CHART_X, $WT_STATS_S_CHART_Y;
-		if ($params === null) {$params = array();}
-		if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = $WT_STATS_L_CHART_X.'x'.$WT_STATS_S_CHART_Y;}
-		if (isset($params[1]) && $params[1] != '') {$color_from = strtolower($params[1]);} else {$color_from = $WT_STATS_CHART_COLOR1;}
-		if (isset($params[2]) && $params[2] != '') {$color_to = strtolower($params[2]);} else {$color_to = $WT_STATS_CHART_COLOR2;}
-		if (isset($params[3]) && $params[3] != '') {$total = strtolower($params[3]);} else {$total = 10;}
+
+		if ($params === null) {
+			$params = array();
+		}
+		if (isset($params[0]) && $params[0] != '') {
+			$size = strtolower($params[0]);
+		} else {
+			$size = $WT_STATS_L_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
+		}
+		if (isset($params[1]) && $params[1] != '') {
+			$color_from = strtolower($params[1]);
+		} else {
+			$color_from = $WT_STATS_CHART_COLOR1;
+		}
+		if (isset($params[2]) && $params[2] != '') {
+			$color_to = strtolower($params[2]);
+		} else {
+			$color_to = $WT_STATS_CHART_COLOR2;
+		}
+		if (isset($params[3]) && $params[3] != '') {
+			$total = strtolower($params[3]);
+		} else {
+			$total = 10;
+		}
 		$sizes = explode('x', $size);
 		$total=(int)$total;
-		$rows=self::_runSQL(
+		$rows=$this->runSql(
 			" SELECT SQL_CACHE f_numchil AS tot, f_id AS id".
 			" FROM `##families`".
-			" WHERE f_file={$this->_ged_id}".
+			" WHERE f_file={$this->tree_id}".
 			" ORDER BY tot DESC".
 			" LIMIT ".$total
 		);
@@ -2816,7 +3164,7 @@ class WT_Stats {
 				} else {
 					$per = round(100 * $row['tot'] / $tot, 0);
 				}
-				$chd .= self::_array_to_extended_encoding(array($per));
+				$chd .= $this->arrayToExtendedEncoding(array($per));
 				$chl[] = htmlspecialchars_decode(strip_tags($family->getFullName())).' - '.WT_I18N::number($row['tot']);
 			}
 		}
@@ -2825,28 +3173,28 @@ class WT_Stats {
 		return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".WT_I18N::translate('Largest families')."\" title=\"".WT_I18N::translate('Largest families')."\" />";
 	}
 
-	function totalChildren() {
-		$rows=self::_runSQL("SELECT SQL_CACHE SUM(f_numchil) AS tot FROM `##families` WHERE f_file={$this->_ged_id}");
+	public function totalChildren() {
+		$rows=$this->runSql("SELECT SQL_CACHE SUM(f_numchil) AS tot FROM `##families` WHERE f_file={$this->tree_id}");
 		$row=$rows[0];
 		return WT_I18N::number($row['tot']);
 	}
 
-	function averageChildren() {
-		$rows=self::_runSQL("SELECT SQL_CACHE AVG(f_numchil) AS tot FROM `##families` WHERE f_file={$this->_ged_id}");
+	public function averageChildren() {
+		$rows=$this->runSql("SELECT SQL_CACHE AVG(f_numchil) AS tot FROM `##families` WHERE f_file={$this->tree_id}");
 		$row=$rows[0];
 		return WT_I18N::number($row['tot'], 2);
 	}
 
-	function _statsChildren($simple=true, $sex='BOTH', $year1=-1, $year2=-1, $params=null) {
+	public function statsChildrenQuery($simple=true, $sex='BOTH', $year1=-1, $year2=-1, $params=null) {
 		if ($simple) {
 			if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = '220x200';}
 			$sizes = explode('x', $size);
 			$max = 0;
-			$rows=self::_runSQL(
+			$rows=$this->runSql(
 				" SELECT SQL_CACHE ROUND(AVG(f_numchil),2) AS num, FLOOR(d_year/100+1) AS century".
 				" FROM  `##families`".
 				" JOIN  `##dates` ON (d_file = f_file AND d_gid=f_id)".
-				" WHERE f_file = {$this->_ged_id}".
+				" WHERE f_file = {$this->tree_id}".
 				" AND   d_julianday1<>0".
 				" AND   d_fact = 'MARR'".
 				" AND   d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')".
@@ -2862,13 +3210,13 @@ class WT_Stats {
 			$counts=array();
 			foreach ($rows as $values) {
 				if ($sizes[0]<980) $sizes[0] += 38;
-				$chxl .= self::_centuryName($values['century'])."|";
+				$chxl .= $this->centuryName($values['century'])."|";
 				if ($max<=5) $counts[] = round($values['num']*819.2-1, 1);
 				else $counts[] = round($values['num']*409.6, 1);
 				$chm .= 't'.$values['num'].',000000,0,'.$i.',11,1|';
 				$i++;
 			}
-			$chd = self::_array_to_extended_encoding($counts);
+			$chd = $this->arrayToExtendedEncoding($counts);
 			$chm = substr($chm,0,-1);
 			if ($max<=5) $chxl .= "1:||".WT_I18N::translate('century')."|2:|0|1|2|3|4|5|3:||".WT_I18N::translate('Number of children')."|";
 			else $chxl .= "1:||".WT_I18N::translate('century')."|2:|0|1|2|3|4|5|6|7|8|9|10|3:||".WT_I18N::translate('Number of children')."|";
@@ -2880,7 +3228,7 @@ class WT_Stats {
 					"(SELECT count(i_sex) AS num FROM `##link` ".
 					"LEFT OUTER JOIN `##individuals` ".
 					"ON l_from=i_id AND l_file=i_file AND i_sex='M' AND l_type='FAMC' ".
-					"JOIN `##families` ON f_file=l_file AND f_id=l_to WHERE f_file={$this->_ged_id} GROUP BY l_to".
+					"JOIN `##families` ON f_file=l_file AND f_id=l_to WHERE f_file={$this->tree_id} GROUP BY l_to".
 					") boys".
 					" GROUP BY num".
 					" ORDER BY num";
@@ -2890,7 +3238,7 @@ class WT_Stats {
 					"(SELECT count(i_sex) AS num FROM `##link` ".
 					"LEFT OUTER JOIN `##individuals` ".
 					"ON l_from=i_id AND l_file=i_file AND i_sex='F' AND l_type='FAMC' ".
-					"JOIN `##families` ON f_file=l_file AND f_id=l_to WHERE f_file={$this->_ged_id} GROUP BY l_to".
+					"JOIN `##families` ON f_file=l_file AND f_id=l_to WHERE f_file={$this->tree_id} GROUP BY l_to".
 					") girls".
 					" GROUP BY num".
 					" ORDER BY num";
@@ -2898,50 +3246,63 @@ class WT_Stats {
 				$sql = "SELECT SQL_CACHE f_numchil, COUNT(*) AS total FROM `##families` ";
 				if ($year1>=0 && $year2>=0) {
 					$sql .=
-						"AS fam LEFT JOIN `##dates` AS married ON married.d_file = {$this->_ged_id}"
+						"AS fam LEFT JOIN `##dates` AS married ON married.d_file = {$this->tree_id}"
 						." WHERE"
 						." married.d_gid = fam.f_id AND"
-						." fam.f_file = {$this->_ged_id} AND"
+						." fam.f_file = {$this->tree_id} AND"
 						." married.d_fact = 'MARR' AND"
 						." married.d_year BETWEEN '{$year1}' AND '{$year2}'";
 				} else {
-					$sql .="WHERE f_file={$this->_ged_id}";
+					$sql .="WHERE f_file={$this->tree_id}";
 				}
 				$sql .= " GROUP BY f_numchil";
 			}
-			$rows=self::_runSQL($sql);
+			$rows=$this->runSql($sql);
 			if (!isset($rows)) {return 0;}
 			return $rows;
 		}
 	}
 
-	function statsChildren($params=null) {return $this->_statsChildren($simple=true, $sex='BOTH', $year1=-1, $year2=-1, $params=null);}
+	public function statsChildren($params = null) {
+		return $this->statsChildrenQuery($simple = true, $sex = 'BOTH', $year1 = -1, $year2 = -1, $params);
+	}
 
-	function topAgeBetweenSiblingsName    ($params=null) { return $this->_ageBetweenSiblingsQuery($type='name',   $params=null); }
-	function topAgeBetweenSiblings        ($params=null) { return $this->_ageBetweenSiblingsQuery($type='age',    $params=null); }
-	function topAgeBetweenSiblingsFullName($params=null) { return $this->_ageBetweenSiblingsQuery($type='nolist', $params=null); }
-	function topAgeBetweenSiblingsList    ($params=null) { return $this->_ageBetweenSiblingsQuery($type='list',   $params=null); }
+	public function topAgeBetweenSiblingsName($params = null) {
+		return $this->ageBetweenSiblingsQuery($type = 'name', $params);
+	}
 
-	function _noChildrenFamilies() {
-		$rows=self::_runSQL(
+	public function topAgeBetweenSiblings($params = null) {
+		return $this->ageBetweenSiblingsQuery($type = 'age', $params);
+	}
+
+	public function topAgeBetweenSiblingsFullName($params = null) {
+		return $this->ageBetweenSiblingsQuery($type = 'nolist', $params);
+	}
+
+	public function topAgeBetweenSiblingsList($params = null) {
+		return $this->ageBetweenSiblingsQuery($type = 'list', $params);
+	}
+
+	private function noChildrenFamiliesQuery() {
+		$rows=$this->runSql(
 			" SELECT SQL_CACHE COUNT(*) AS tot".
 			" FROM  `##families`".
-			" WHERE f_numchil = 0 AND f_file = {$this->_ged_id}");
+			" WHERE f_numchil = 0 AND f_file = {$this->tree_id}");
 		$row=$rows[0];
 		return $row['tot'];
 	}
 
-	function noChildrenFamilies() {
-		return WT_I18N::number($this->_noChildrenFamilies());
+	public function noChildrenFamilies() {
+		return WT_I18N::number($this->noChildrenFamiliesQuery());
 	}
 
-	function noChildrenFamiliesList($params = null) {
+	public function noChildrenFamiliesList($params = null) {
 		global $TEXT_DIRECTION;
 		if (isset($params[0]) && $params[0] != '') {$type = strtolower($params[0]);} else {$type = 'list';}
-		$rows=self::_runSQL(
+		$rows=$this->runSql(
 			" SELECT SQL_CACHE f_id AS family".
 			" FROM `##families` AS fam".
-			" WHERE f_numchil = 0 AND fam.f_file = {$this->_ged_id}");
+			" WHERE f_numchil = 0 AND fam.f_file = {$this->tree_id}");
 		if (!isset($rows[0])) {return '';}
 		$top10 = array();
 		foreach ($rows as $row) {
@@ -2968,19 +3329,31 @@ class WT_Stats {
 		return $top10;
 	}
 
-	function chartNoChildrenFamilies($params=null) {
-		if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = '220x200';}
-		if (isset($params[1]) && $params[1] != '') {$year1 = $params[1];} else {$year1 = -1;}
-		if (isset($params[2]) && $params[2] != '') {$year2 = $params[2];} else {$year2 = -1;}
+	public function chartNoChildrenFamilies($params = null) {
+		if (isset($params[0]) && $params[0] != '') {
+			$size = strtolower($params[0]);
+		} else {
+			$size = '220x200';
+		}
+		if (isset($params[1]) && $params[1] != '') {
+			$year1 = $params[1];
+		} else {
+			$year1 = -1;
+		}
+		if (isset($params[2]) && $params[2] != '') {
+			$year2 = $params[2];
+		} else {
+			$year2 = -1;
+		}
 		$sizes = explode('x', $size);
-		if ($year1>=0 && $year2>=0) {
+		if ($year1 >= 0 && $year2 >= 0) {
 			$years = " married.d_year BETWEEN '{$year1}' AND '{$year2}' AND";
 		} else {
 			$years = "";
 		}
 		$max = 0;
 		$tot = 0;
-		$rows=self::_runSQL(
+		$rows=$this->runSql(
 			"SELECT SQL_CACHE".
 			" COUNT(*) AS count,".
 			" FLOOR(married.d_year/100+1) AS century".
@@ -2990,7 +3363,7 @@ class WT_Stats {
 			" `##dates` AS married ON (married.d_file = fam.f_file AND married.d_gid = fam.f_id)".
 			" WHERE".
 			" f_numchil = 0 AND".
-			" fam.f_file = {$this->_ged_id} AND".
+			" fam.f_file = {$this->tree_id} AND".
 			$years.
 			" married.d_fact = 'MARR' AND".
 			" married.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')".
@@ -3001,20 +3374,20 @@ class WT_Stats {
 			if ($max<$values['count']) $max = $values['count'];
 			$tot += $values['count'];
 		}
-		$unknown = $this->_noChildrenFamilies()-$tot;
+		$unknown = $this->noChildrenFamiliesQuery()-$tot;
 		if ($unknown>$max) $max=$unknown;
 		$chm = "";
 		$chxl = "0:|";
 		$i = 0;
 		foreach ($rows as $values) {
 			if ($sizes[0]<980) $sizes[0] += 38;
-			$chxl .= self::_centuryName($values['century'])."|";
+			$chxl .= $this->centuryName($values['century'])."|";
 			$counts[] = round(4095*$values['count']/($max+1));
 			$chm .= 't'.$values['count'].',000000,0,'.$i.',11,1|';
 			$i++;
 		}
 		$counts[] = round(4095*$unknown/($max+1));
-		$chd = self::_array_to_extended_encoding($counts);
+		$chd = $this->arrayToExtendedEncoding($counts);
 		$chm .= 't'.$unknown.',000000,0,'.$i.',11,1';
 		$chxl .= WT_I18N::translate_c('unknown century', 'Unknown')."|1:||".WT_I18N::translate('century')."|2:|0|";
 		$step = $max+1;
@@ -3037,18 +3410,18 @@ class WT_Stats {
 		return "<img src=\"https://chart.googleapis.com/chart?cht=bvg&amp;chs={$sizes[0]}x{$sizes[1]}&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chm=D,FF0000,0,0:".($i-1).",3,1|{$chm}&amp;chd=e:{$chd}&amp;chco=0000FF,ffffff00&amp;chbh=30,3&amp;chxt=x,x,y,y&amp;chxl=".rawurlencode($chxl)."\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".WT_I18N::translate('Number of families without children')."\" title=\"".WT_I18N::translate('Number of families without children')."\" />";
 	}
 
-	function _topTenGrandFamilyQuery($type='list', $params=null) {
+	private function topTenGrandFamilyQuery($type='list', $params=null) {
 		global $TEXT_DIRECTION;
 		if ($params !== null && isset($params[0])) {$total = $params[0];} else {$total = 10;}
 		$total=(int)$total;
-		$rows=self::_runSQL(
+		$rows=$this->runSql(
 			"SELECT SQL_CACHE COUNT(*) AS tot, f_id AS id".
 			" FROM `##families`".
-			" JOIN `##link` AS children ON children.l_file = {$this->_ged_id}".
-			" JOIN `##link` AS mchildren ON mchildren.l_file = {$this->_ged_id}".
-			" JOIN `##link` AS gchildren ON gchildren.l_file = {$this->_ged_id}".
+			" JOIN `##link` AS children ON children.l_file = {$this->tree_id}".
+			" JOIN `##link` AS mchildren ON mchildren.l_file = {$this->tree_id}".
+			" JOIN `##link` AS gchildren ON gchildren.l_file = {$this->tree_id}".
 			" WHERE".
-			" f_file={$this->_ged_id} AND".
+			" f_file={$this->tree_id} AND".
 			" children.l_from=f_id AND".
 			" children.l_type='CHIL' AND".
 			" children.l_to=mchildren.l_from AND".
@@ -3089,14 +3462,19 @@ class WT_Stats {
 		return $top10;
 	}
 
-	function topTenLargestGrandFamily($params=null) {return $this->_topTenGrandFamilyQuery('nolist', $params);}
-	function topTenLargestGrandFamilyList($params=null) {return $this->_topTenGrandFamilyQuery('list', $params);}
+	public function topTenLargestGrandFamily($params = null) {
+		return $this->topTenGrandFamilyQuery('nolist', $params);
+	}
+
+	public function topTenLargestGrandFamilyList($params = null) {
+		return $this->topTenGrandFamilyQuery('list', $params);
+	}
 
 ///////////////////////////////////////////////////////////////////////////////
 // Surnames                                                                  //
 ///////////////////////////////////////////////////////////////////////////////
 
-	static function _commonSurnamesQuery($type='list', $show_tot=false, $params=null) {
+	private function commonSurnamesQuery($type='list', $show_tot=false, $params=null) {
 		global $GEDCOM;
 
 		$ged_id=get_id_from_gedcom($GEDCOM);
@@ -3119,7 +3497,7 @@ class WT_Stats {
 		if (count($surname_list) == 0) {
 			return '';
 		}
-		uasort($surname_list, array('WT_Stats', '_name_total_rsort'));
+		uasort($surname_list, array('WT_Stats', 'nameTotalReverseSort'));
 		if ($maxtoshow>0) {
 			$surname_list = array_slice($surname_list, 0, $maxtoshow);
 		}
@@ -3130,10 +3508,10 @@ class WT_Stats {
 			uksort($surname_list, array('WT_I18N', 'strcasecmp'));
 			break;
 		case 'count':
-			uasort($surname_list, array('WT_Stats', '_name_total_sort'));
+			uasort($surname_list, array('WT_Stats', 'nameTotalSort'));
 			break;
 		case 'rcount':
-			uasort($surname_list, array('WT_Stats', '_name_total_rsort'));
+			uasort($surname_list, array('WT_Stats', 'nameTotalReverseSort'));
 			break;
 		}
 
@@ -3145,30 +3523,41 @@ class WT_Stats {
 		return format_surname_list($surnames, ($type=='list' ? 1 : 2), $show_tot, 'indilist.php');
 	}
 
-	function getCommonSurname() {
-		$surnames=array_keys(get_top_surnames($this->_ged_id, 1, 1));
+	public function getCommonSurname() {
+		$surnames=array_keys(get_top_surnames($this->tree_id, 1, 1));
 		return array_shift($surnames);
 	}
 
-	static function commonSurnames          ($params=array('','','alpha' )) { return self::_commonSurnamesQuery('nolist', false, $params); }
-	static function commonSurnamesTotals    ($params=array('','','rcount')) { return self::_commonSurnamesQuery('nolist', true,  $params); }
-	static function commonSurnamesList      ($params=array('','','alpha' )) { return self::_commonSurnamesQuery('list',   false, $params); }
-	static function commonSurnamesListTotals($params=array('','','rcount')) { return self::_commonSurnamesQuery('list',   true,  $params); }
+	public function commonSurnames($params = array('', '', 'alpha')) {
+		return $this->commonSurnamesQuery('nolist', false, $params);
+	}
 
-	function chartCommonSurnames($params=null) {
+	public function commonSurnamesTotals($params = array('', '', 'rcount')) {
+		return $this->commonSurnamesQuery('nolist', true, $params);
+	}
+
+	public function commonSurnamesList($params = array('', '', 'alpha')) {
+		return $this->commonSurnamesQuery('list', false, $params);
+	}
+
+	public function commonSurnamesListTotals($params = array('', '', 'rcount')) {
+		return $this->commonSurnamesQuery('list', true, $params);
+	}
+
+	public function chartCommonSurnames($params=null) {
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 		if ($params === null) {$params = array();}
 		if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = $WT_STATS_S_CHART_X."x".$WT_STATS_S_CHART_Y;}
 		if (isset($params[1]) && $params[1] != '') {$color_from = strtolower($params[1]);} else {$color_from = $WT_STATS_CHART_COLOR1;}
 		if (isset($params[2]) && $params[2] != '') {$color_to = strtolower($params[2]);} else {$color_to = $WT_STATS_CHART_COLOR2;}
-		if (isset($params[3]) && $params[3] != '') {$threshold = strtolower($params[3]);} else {$threshold = get_gedcom_setting($this->_ged_id, 'COMMON_NAMES_THRESHOLD');}
+		if (isset($params[3]) && $params[3] != '') {$threshold = strtolower($params[3]);} else {$threshold = get_gedcom_setting($this->tree_id, 'COMMON_NAMES_THRESHOLD');}
 		if (isset($params[4]) && $params[4] != '') {$maxtoshow = strtolower($params[4]);} else {$maxtoshow = 7;}
 		$sizes = explode('x', $size);
-		$tot_indi = $this->_totalIndividuals();
+		$tot_indi = $this->totalIndividualsQuery();
 		$surnames = get_common_surnames($threshold);
 		if (count($surnames) <= 0) {return '';}
 		$SURNAME_TRADITION=get_gedcom_setting(WT_GED_ID, 'SURNAME_TRADITION');
-		uasort($surnames, array('WT_Stats', '_name_total_rsort'));
+		uasort($surnames, array('WT_Stats', 'nameTotalReverseSort'));
 		$surnames = array_slice($surnames, 0, $maxtoshow);
 		$all_surnames = array();
 		foreach (array_keys($surnames) as $n=>$surname) {
@@ -3201,13 +3590,13 @@ class WT_Stats {
 				$top_name=preg_replace(array('/ska$/', '/cka$/', '/dzka$/', '/żka$/'), array('ski', 'cki', 'dzki', 'żki'), $top_name);
 			}
 			$per = round(100 * $count_per / $tot_indi, 0);
-			$chd .= self::_array_to_extended_encoding($per);
+			$chd .= $this->arrayToExtendedEncoding($per);
 			//ToDo: RTL names are often printed LTR when also LTR names are present
 			$chl[] = $top_name.' - '.WT_I18N::number($count_per);
 
 		}
 		$per = round(100 * ($tot_indi - $tot) / $tot_indi, 0);
-		$chd .= self::_array_to_extended_encoding($per);
+		$chd .= $this->arrayToExtendedEncoding($per);
 		$chl[] = WT_I18N::translate('Other') . ' - ' . WT_I18N::number($tot_indi - $tot);
 
 		$chart_title=implode(WT_I18N::$list_separator, $chl);
@@ -3223,7 +3612,7 @@ class WT_Stats {
 	/*
 	 * Most Common Given Names Block
 	 */
-	static function _commonGivenQuery($sex='B', $type='list', $show_tot=false, $params=null) {
+	private function commonGivenQuery($sex='B', $type='list', $show_tot=false, $params=null) {
 		global $GEDCOM;
 
 		if (is_array($params) && isset($params[0]) && $params[0] != '' && $params[0] >= 0) {
@@ -3248,6 +3637,7 @@ class WT_Stats {
 			$sex_sql="i_sex='U'";
 			break;
 		case 'B':
+		default:
 			$sex_sql="i_sex<>'U'";
 			break;
 		}
@@ -3298,7 +3688,7 @@ class WT_Stats {
 		if ($common) {
 			switch ($type) {
 			case 'table':
-			global $controller;
+				global $controller;
 				$table_id = Uuid::uuid4(); // lists requires a unique ID in case there are multiple lists per page
 				$controller
 				->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
@@ -3332,31 +3722,87 @@ class WT_Stats {
 		}
 	}
 
-	static function commonGiven                 ($params=array(1,10,'alpha' )) { return self::_commonGivenQuery('B', 'nolist', false, $params); }
-	static function commonGivenTotals           ($params=array(1,10,'rcount')) { return self::_commonGivenQuery('B', 'nolist', true,  $params); }
-	static function commonGivenList             ($params=array(1,10,'alpha' )) { return self::_commonGivenQuery('B', 'list',   false, $params); }
-	static function commonGivenListTotals       ($params=array(1,10,'rcount')) { return self::_commonGivenQuery('B', 'list',   true,  $params); }
-	static function commonGivenTable            ($params=array(1,10,'rcount')) { return self::_commonGivenQuery('B', 'table',  false, $params); }
+	public function commonGiven($params = array(1, 10, 'alpha')) {
+		return $this->commonGivenQuery('B', 'nolist', false, $params);
+	}
 
-	static function commonGivenFemale           ($params=array(1,10,'alpha' )) { return self::_commonGivenQuery('F', 'nolist', false, $params); }
-	static function commonGivenFemaleTotals     ($params=array(1,10,'rcount')) { return self::_commonGivenQuery('F', 'nolist', true,  $params); }
-	static function commonGivenFemaleList       ($params=array(1,10,'alpha' )) { return self::_commonGivenQuery('F', 'list',   false, $params); }
-	static function commonGivenFemaleListTotals ($params=array(1,10,'rcount')) { return self::_commonGivenQuery('F', 'list',   true,  $params); }
-	static function commonGivenFemaleTable      ($params=array(1,10,'rcount')) { return self::_commonGivenQuery('F', 'table',  false, $params); }
+	public function commonGivenTotals($params = array(1, 10, 'rcount')) {
+		return $this->commonGivenQuery('B', 'nolist', true, $params);
+	}
 
-	static function commonGivenMale             ($params=array(1,10,'alpha' )) { return self::_commonGivenQuery('M', 'nolist', false, $params); }
-	static function commonGivenMaleTotals       ($params=array(1,10,'rcount')) { return self::_commonGivenQuery('M', 'nolist', true,  $params); }
-	static function commonGivenMaleList         ($params=array(1,10,'alpha' )) { return self::_commonGivenQuery('M', 'list',   false, $params); }
-	static function commonGivenMaleListTotals   ($params=array(1,10,'rcount')) { return self::_commonGivenQuery('M', 'list',   true,  $params); }
-	static function commonGivenMaleTable        ($params=array(1,10,'rcount')) { return self::_commonGivenQuery('M', 'table',  false, $params); }
+	public function commonGivenList($params = array(1, 10, 'alpha')) {
+		return $this->commonGivenQuery('B', 'list', false, $params);
+	}
 
-	static function commonGivenUnknown          ($params=array(1,10,'alpha' )) { return self::_commonGivenQuery('U', 'nolist', false, $params); }
-	static function commonGivenUnknownTotals    ($params=array(1,10,'rcount')) { return self::_commonGivenQuery('U', 'nolist', true,  $params); }
-	static function commonGivenUnknownList      ($params=array(1,10,'alpha' )) { return self::_commonGivenQuery('U', 'list',   false, $params); }
-	static function commonGivenUnknownListTotals($params=array(1,10,'rcount')) { return self::_commonGivenQuery('U', 'list',   true,  $params); }
-	static function commonGivenUnknownTable     ($params=array(1,10,'rcount')) { return self::_commonGivenQuery('U', 'table',  false, $params); }
+	public function commonGivenListTotals($params = array(1, 10, 'rcount')) {
+		return $this->commonGivenQuery('B', 'list', true, $params);
+	}
 
-	function chartCommonGiven($params=null) {
+	public function commonGivenTable($params = array(1, 10, 'rcount')) {
+		return $this->commonGivenQuery('B', 'table', false, $params);
+	}
+
+	public function commonGivenFemale($params = array(1, 10, 'alpha')) {
+		return $this->commonGivenQuery('F', 'nolist', false, $params);
+	}
+
+	public function commonGivenFemaleTotals($params = array(1, 10, 'rcount')) {
+		return $this->commonGivenQuery('F', 'nolist', true, $params);
+	}
+
+	public function commonGivenFemaleList($params = array(1, 10, 'alpha')) {
+		return $this->commonGivenQuery('F', 'list', false, $params);
+	}
+
+	public function commonGivenFemaleListTotals($params = array(1, 10, 'rcount')) {
+		return $this->commonGivenQuery('F', 'list', true, $params);
+	}
+
+	public function commonGivenFemaleTable($params = array(1, 10, 'rcount')) {
+		return $this->commonGivenQuery('F', 'table', false, $params);
+	}
+
+	public function commonGivenMale($params = array(1, 10, 'alpha')) {
+		return $this->commonGivenQuery('M', 'nolist', false, $params);
+	}
+
+	public function commonGivenMaleTotals($params = array(1, 10, 'rcount')) {
+		return $this->commonGivenQuery('M', 'nolist', true, $params);
+	}
+
+	public function commonGivenMaleList($params = array(1, 10, 'alpha')) {
+		return $this->commonGivenQuery('M', 'list', false, $params);
+	}
+
+	public function commonGivenMaleListTotals($params = array(1, 10, 'rcount')) {
+		return $this->commonGivenQuery('M', 'list', true, $params);
+	}
+
+	public function commonGivenMaleTable($params = array(1, 10, 'rcount')) {
+		return $this->commonGivenQuery('M', 'table', false, $params);
+	}
+
+	public function commonGivenUnknown($params = array(1, 10, 'alpha')) {
+		return $this->commonGivenQuery('U', 'nolist', false, $params);
+	}
+
+	public function commonGivenUnknownTotals($params = array(1, 10, 'rcount')) {
+		return $this->commonGivenQuery('U', 'nolist', true, $params);
+	}
+
+	public function commonGivenUnknownList($params = array(1, 10, 'alpha')) {
+		return $this->commonGivenQuery('U', 'list', false, $params);
+	}
+
+	public function commonGivenUnknownListTotals($params = array(1, 10, 'rcount')) {
+		return $this->commonGivenQuery('U', 'list', true, $params);
+	}
+
+	public function commonGivenUnknownTable($params = array(1, 10, 'rcount')) {
+		return $this->commonGivenQuery('U', 'table', false, $params);
+	}
+
+	public function chartCommonGiven($params=null) {
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 		if ($params === null) {$params = array();}
 		if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = $WT_STATS_S_CHART_X."x".$WT_STATS_S_CHART_Y;}
@@ -3364,8 +3810,8 @@ class WT_Stats {
 		if (isset($params[2]) && $params[2] != '') {$color_to = strtolower($params[2]);} else {$color_to = $WT_STATS_CHART_COLOR2;}
 		if (isset($params[4]) && $params[4] != '') {$maxtoshow = strtolower($params[4]);} else {$maxtoshow = 7;}
 		$sizes = explode('x', $size);
-		$tot_indi = $this->_totalIndividuals();
-		$given = self::_commonGivenQuery('B', 'chart');
+		$tot_indi = $this->totalIndividualsQuery();
+		$given = $this->commonGivenQuery('B', 'chart');
 		if (!is_array($given)) return '';
 		$given = array_slice($given, 0, $maxtoshow);
 		if (count($given) <= 0) {return '';}
@@ -3381,12 +3827,12 @@ class WT_Stats {
 			} else {
 				$per = round(100 * $count / $tot_indi, 0);
 			}
-			$chd .= self::_array_to_extended_encoding($per);
+			$chd .= $this->arrayToExtendedEncoding($per);
 			//ToDo: RTL names are often printed LTR when also LTR names are present
 			$chl[] = $givn.' - '.WT_I18N::number($count);
 		}
 		$per = round(100 * ($tot_indi-$tot) / $tot_indi, 0);
-		$chd .= self::_array_to_extended_encoding($per);
+		$chd .= $this->arrayToExtendedEncoding($per);
 		$chl[] = WT_I18N::translate('Other').' - '.WT_I18N::number($tot_indi-$tot);
 
 		$chart_title=implode(WT_I18N::$list_separator, $chl);
@@ -3398,7 +3844,7 @@ class WT_Stats {
 // Users                                                                     //
 ///////////////////////////////////////////////////////////////////////////////
 
-	static function _usersLoggedIn($type='nolist') {
+	private function usersLoggedInQuery($type='nolist') {
 		$content = '';
 		// List active users
 		$NumAnonymous = 0;
@@ -3457,7 +3903,7 @@ class WT_Stats {
 		return $content;
 	}
 
-	static function _usersLoggedInTotal($type='all') {
+	private function usersLoggedInTotalQuery($type='all') {
 		$anon = 0;
 		$visible = 0;
 		foreach (User::allLoggedIn() as $user) {
@@ -3476,19 +3922,32 @@ class WT_Stats {
 		}
 	}
 
-	static function usersLoggedIn    () { return self::_usersLoggedIn('nolist'); }
-	static function usersLoggedInList() { return self::_usersLoggedIn('list'  ); }
+	public function usersLoggedIn() {
+		return $this->usersLoggedInQuery('nolist');
+	}
 
-	static function usersLoggedInTotal       () { return self::_usersLoggedInTotal('all'    ); }
-	static function usersLoggedInTotalAnon   () { return self::_usersLoggedInTotal('anon'   ); }
-	static function usersLoggedInTotalVisible() { return self::_usersLoggedInTotal('visible'); }
+	public function usersLoggedInList() {
+		return $this->usersLoggedInQuery('list');
+	}
 
-	static function userID() {
+	public function usersLoggedInTotal() {
+		return $this->usersLoggedInTotalQuery('all');
+	}
+
+	public function usersLoggedInTotalAnon() {
+		return $this->usersLoggedInTotalQuery('anon');
+	}
+
+	public function usersLoggedInTotalVisible() {
+		return $this->usersLoggedInTotalQuery('visible');
+	}
+
+	public function userID() {
 		return Auth::id();
 	}
 
 
-	static function userName($params = null) {
+	public function userName($params = null) {
 		if (Auth::check()) {
 			return Auth::user()->getUserName();
 		} elseif (is_array($params) && isset($params[0]) && $params[0] != '') {
@@ -3498,11 +3957,11 @@ class WT_Stats {
 			return null;
 		}
 	}
-	static function userFullName() {
+	public function userFullName() {
 		return Auth::check() ? Auth::user()->getRealName() : '';
 	}
 
-	static function _getLatestUserData($type = 'userid', $params = null) {
+	private function getLatestUserData($type = 'userid', $params = null) {
 		global $DATE_FORMAT, $TIME_FORMAT;
 		static $user_id = null;
 
@@ -3549,49 +4008,89 @@ class WT_Stats {
 		}
 	}
 
-	static function latestUserId      ()             { return self::_getLatestUserData('userid'           ); }
-	static function latestUserName    ()             { return self::_getLatestUserData('username'         ); }
-	static function latestUserFullName()             { return self::_getLatestUserData('fullname'         ); }
-	static function latestUserRegDate ($params=null) { return self::_getLatestUserData('regdate',  $params); }
-	static function latestUserRegTime ($params=null) { return self::_getLatestUserData('regtime',  $params); }
-	static function latestUserLoggedin($params=null) { return self::_getLatestUserData('loggedin', $params); }
+	public function latestUserId() {
+		return $this->getLatestUserData('userid');
+	}
+
+	public function latestUserName() {
+		return $this->getLatestUserData('username');
+	}
+
+	public function latestUserFullName() {
+		return $this->getLatestUserData('fullname');
+	}
+
+	public function latestUserRegDate($params = null) {
+		return $this->getLatestUserData('regdate', $params);
+	}
+
+	public function latestUserRegTime($params = null) {
+		return $this->getLatestUserData('regtime', $params);
+	}
+
+	public function latestUserLoggedin($params = null) {
+		return $this->getLatestUserData('loggedin', $params);
+	}
 
 ///////////////////////////////////////////////////////////////////////////////
 // Contact                                                                   //
 ///////////////////////////////////////////////////////////////////////////////
 
-	function contactWebmaster() { return user_contact_link(get_gedcom_setting($this->_ged_id, 'WEBMASTER_USER_ID')); }
-	function contactGedcom   () { return user_contact_link(get_gedcom_setting($this->_ged_id, 'CONTACT_USER_ID'  )); }
+	public function contactWebmaster() {
+		return user_contact_link(get_gedcom_setting($this->tree_id, 'WEBMASTER_USER_ID'));
+	}
+
+	public function contactGedcom() {
+		return user_contact_link(get_gedcom_setting($this->tree_id, 'CONTACT_USER_ID'));
+	}
 
 ///////////////////////////////////////////////////////////////////////////////
 // Date & Time                                                               //
 ///////////////////////////////////////////////////////////////////////////////
 
-	static function serverDate     () { return timestamp_to_gedcom_date(WT_TIMESTAMP)->Display(false);}
+	public function serverDate() {
+		return timestamp_to_gedcom_date(WT_TIMESTAMP)->Display(false);
+	}
 
-	static function serverTime     () { return date('g:i a');}
-	static function serverTime24   () { return date('G:i');}
-	static function serverTimezone () { return date('T');}
+	public function serverTime() {
+		return date('g:i a');
+	}
 
-	static function browserDate    () { return timestamp_to_gedcom_date(WT_CLIENT_TIMESTAMP)->Display(false);}
+	public function serverTime24() {
+		return date('G:i');
+	}
 
-	static function browserTime    () { return date('g:i a', WT_CLIENT_TIMESTAMP);}
-	static function browserTime24  () { return date('G:i',   WT_CLIENT_TIMESTAMP);}
-	static function browserTimezone() { return date('T',     WT_CLIENT_TIMESTAMP);}
+	public function serverTimezone() {
+		return date('T');
+	}
+
+	public function browserDate() {
+		return timestamp_to_gedcom_date(WT_CLIENT_TIMESTAMP)->Display(false);
+	}
+
+	public function browserTime() {
+		return date('g:i a', WT_CLIENT_TIMESTAMP);
+	}
+
+	public function browserTime24() {
+		return date('G:i', WT_CLIENT_TIMESTAMP);
+	}
+
+	public function browserTimezone() {
+		return date('T', WT_CLIENT_TIMESTAMP);
+	}
 
 ///////////////////////////////////////////////////////////////////////////////
 // Tools                                                                     //
 ///////////////////////////////////////////////////////////////////////////////
 
-	// Older versions of webtrees allowed access to all constants and globals.
-	// Newer version just allow access to these values:
-	public static function WT_VERSION()      { return WT_VERSION; }
-	public static function WT_VERSION_TEXT() { return WT_VERSION; } // Deprecated
+	public function WT_VERSION() {
+		return WT_VERSION;
+	}
 
 	// These functions provide access to hitcounter
 	// for use in the HTML block.
-
-	static private function _getHitCount($page_name, $params) {
+	private function hitCountQuery($page_name, $params) {
 		if (is_array($params) && isset($params[0]) && $params[0] != '') {
 			$page_parameter = $params[0];
 		} else {
@@ -3617,35 +4116,40 @@ class WT_Stats {
 		return '<span class="hit-counter">'.WT_I18N::number($count).'</span>';
 	}
 
-	static function hitCount    ($params=null) {return self::_getHitCount(null,             $params);}
-	static function hitCountUser($params=null) {return self::_getHitCount('index.php',      $params);}
-	static function hitCountIndi($params=null) {return self::_getHitCount('individual.php', $params);}
-	static function hitCountFam ($params=null) {return self::_getHitCount('family.php',     $params);}
-	static function hitCountSour($params=null) {return self::_getHitCount('source.php',     $params);}
-	static function hitCountRepo($params=null) {return self::_getHitCount('repo.php',       $params);}
-	static function hitCountNote($params=null) {return self::_getHitCount('note.php',       $params);}
-	static function hitCountObje($params=null) {return self::_getHitCount('mediaviewer.php',$params);}
+	public function hitCount($params = null) {
+		return $this->hitCountQuery(null, $params);
+	}
 
-	/*
-	 * Leave for backwards compatability? Anybody using this?
-	 */
-	static function _getEventType($type) {
-		$eventTypes=array(
-			'BIRT'=>WT_I18N::translate('birth'),
-			'DEAT'=>WT_I18N::translate('death'),
-			'MARR'=>WT_I18N::translate('marriage'),
-			'ADOP'=>WT_I18N::translate('adoption'),
-			'BURI'=>WT_I18N::translate('burial'),
-			'CENS'=>WT_I18N::translate('census added')
-		);
-		if (isset($eventTypes[$type])) {
-			return $eventTypes[$type];
-		}
-		return false;
+	public function hitCountUser($params = null) {
+		return $this->hitCountQuery('index.php', $params);
+	}
+
+	public function hitCountIndi($params = null) {
+		return $this->hitCountQuery('individual.php', $params);
+	}
+
+	public function hitCountFam($params = null) {
+		return $this->hitCountQuery('family.php', $params);
+	}
+
+	public function hitCountSour($params = null) {
+		return $this->hitCountQuery('source.php', $params);
+	}
+
+	public function hitCountRepo($params = null) {
+		return $this->hitCountQuery('repo.php', $params);
+	}
+
+	public function hitCountNote($params = null) {
+		return $this->hitCountQuery('note.php', $params);
+	}
+
+	public function hitCountObje($params = null) {
+		return $this->hitCountQuery('mediaviewer.php', $params);
 	}
 
 	// http://bendodson.com/news/google-extended-encoding-made-easy/
-	static function _array_to_extended_encoding($a) {
+	private function arrayToExtendedEncoding($a) {
 		$xencoding = WT_GOOGLE_CHART_ENCODING;
 
 		if (!is_array($a)) {
@@ -3661,15 +4165,15 @@ class WT_Stats {
 		return $encoding;
 	}
 
-	static function _name_total_sort($a, $b) {
+	private function nameTotalSort($a, $b) {
 		return $a['match']-$b['match'];
 	}
 
-	static function _name_total_rsort($a, $b) {
+	private function nameTotalReverseSort($a, $b) {
 		return $b['match']-$a['match'];
 	}
 
-	static function _runSQL($sql) {
+	private function runSql($sql) {
 		static $cache = array();
 		$id = md5($sql);
 		if (isset($cache[$id])) {
@@ -3683,35 +4187,42 @@ class WT_Stats {
 	// These functions provide access to additional non-stats features of webtrees
 	// for use in the HTML block.
 
-	static function _getFavorites($isged=true) {
+	private function getFavorites($isged=true) {
 		global $GEDCOM;
 
-		ob_start();
 		if ($isged) {
-			$class_name = 'gedcom_favorites_WT_Module';
-			$block = new $class_name;
-			$content = $block->getBlock($GEDCOM);
+			$block = new gedcom_favorites_WT_Module;
+			return $block->getBlock($GEDCOM, false);
+		} elseif (WT_USER_ID) {
+			$block = new user_favorites_WT_Module;
+			return $block->getBlock($GEDCOM, false);
+		} else {
+			return '';
 		}
-		else if (WT_USER_ID) {
-			$class_name = 'user_favorites_WT_Module';
-			$block = new $class_name;
-			$content = $block->getBlock($GEDCOM);
-		}
-		return ob_get_clean();
 	}
 
-	static function gedcomFavorites() {return self::_getFavorites(true);}
-	static function userFavorites() {return self::_getFavorites(false);}
+	public function gedcomFavorites() {
+		return $this->getFavorites(true);
+	}
 
-	static function totalGedcomFavorites() {return count(gedcom_favorites_WT_Module::getFavorites(WT_GED_ID));}
-	static function totalUserFavorites() {return count(user_favorites_WT_Module::getFavorites(WT_USER_ID));}
+	public function userFavorites() {
+		return $this->getFavorites(false);
+	}
+
+	public function totalGedcomFavorites() {
+		return count(gedcom_favorites_WT_Module::getFavorites(WT_GED_ID));
+	}
+
+	public function totalUserFavorites() {
+		return count(user_favorites_WT_Module::getFavorites(WT_USER_ID));
+	}
 
 	///////////////////////////////////////////////////////////////////////////////
 	// Other blocks                                                              //
 	// example of use: #callBlock:block_name#                                    //
 	///////////////////////////////////////////////////////////////////////////////
 
-	static function callBlock($params=null) {
+	public function callBlock($params=null) {
 		global $ctype;
 		if ($params === null) {return '';}
 		if (isset($params[0]) && $params[0] != '') {$block = $params[0];} else {return '';}
@@ -3738,10 +4249,17 @@ class WT_Stats {
 		return $content;
 	}
 
-	function totalUserMessages() { return WT_I18N::number(count(getUserMessages(WT_USER_NAME))); }
+	public function totalUserMessages() {
+		return WT_I18N::number(count(getUserMessages(WT_USER_NAME)));
+	}
 
-	function totalUserJournal()  { return WT_I18N::number(count(getUserNews(WT_USER_ID))); }
-	function totalGedcomNews()   { return WT_I18N::number(count(getUserNews(WT_GEDCOM)));  }
+	public function totalUserJournal() {
+		return WT_I18N::number(count(getUserNews(WT_USER_ID)));
+	}
+
+	public function totalGedcomNews() {
+		return WT_I18N::number(count(getUserNews(WT_GEDCOM)));
+	}
 
 	//////////////////////////////////////////////////////////////////////////////
 	// Country lookup data
@@ -3750,7 +4268,7 @@ class WT_Stats {
 	// ISO3166 3 letter codes, with their 2 letter equivalent.
 	// NOTE: this is not 1:1.  ENG/SCO/WAL/NIR => GB
 	// NOTE: this also includes champman codes and others.  Should it?
-	public static function iso3166() {
+	public function iso3166() {
 		return array(
 			'ABW'=>'AW', 'AFG'=>'AF', 'AGO'=>'AO', 'AIA'=>'AI', 'ALA'=>'AX', 'ALB'=>'AL',
 			'AND'=>'AD', 'ANT'=>'AN', 'ARE'=>'AE', 'ARG'=>'AR', 'ARM'=>'AM', 'ASM'=>'AS',
@@ -3797,308 +4315,329 @@ class WT_Stats {
 		);
 	}
 
-	public static function get_all_countries() {
+	public function getAllCountries() {
 		return array(
-			'???'=>WT_I18N::translate('Unknown'),
-			'ABW'=>WT_I18N::translate('Aruba'),
-			'ACA'=>WT_I18N::translate('Acadia'),
-			'AFG'=>WT_I18N::translate('Afghanistan'),
-			'AGO'=>WT_I18N::translate('Angola'),
-			'AIA'=>WT_I18N::translate('Anguilla'),
-			'ALA'=>WT_I18N::translate('Aland Islands'),
-			'ALB'=>WT_I18N::translate('Albania'),
-			'AND'=>WT_I18N::translate('Andorra'),
-			'ANT'=>WT_I18N::translate('Netherlands Antilles'),
-			'ARE'=>WT_I18N::translate('United Arab Emirates'),
-			'ARG'=>WT_I18N::translate('Argentina'),
-			'ARM'=>WT_I18N::translate('Armenia'),
-			'ASM'=>WT_I18N::translate('American Samoa'),
-			'ATA'=>WT_I18N::translate('Antarctica'),
-			'ATF'=>WT_I18N::translate('French Southern Territories'),
-			'ATG'=>WT_I18N::translate('Antigua and Barbuda'),
-			'AUS'=>WT_I18N::translate('Australia'),
-			'AUT'=>WT_I18N::translate('Austria'),
-			'AZE'=>WT_I18N::translate('Azerbaijan'),
-			'AZR'=>WT_I18N::translate('Azores'),
-			'BDI'=>WT_I18N::translate('Burundi'),
-			'BEL'=>WT_I18N::translate('Belgium'),
-			'BEN'=>WT_I18N::translate('Benin'),
-			'BFA'=>WT_I18N::translate('Burkina Faso'),
-			'BGD'=>WT_I18N::translate('Bangladesh'),
-			'BGR'=>WT_I18N::translate('Bulgaria'),
-			'BHR'=>WT_I18N::translate('Bahrain'),
-			'BHS'=>WT_I18N::translate('Bahamas'),
-			'BIH'=>WT_I18N::translate('Bosnia and Herzegovina'),
-			'BLR'=>WT_I18N::translate('Belarus'),
-			'BLZ'=>WT_I18N::translate('Belize'),
-			'BMU'=>WT_I18N::translate('Bermuda'),
-			'BOL'=>WT_I18N::translate('Bolivia'),
-			'BRA'=>WT_I18N::translate('Brazil'),
-			'BRB'=>WT_I18N::translate('Barbados'),
-			'BRN'=>WT_I18N::translate('Brunei Darussalam'),
-			'BTN'=>WT_I18N::translate('Bhutan'),
-			'BVT'=>WT_I18N::translate('Bouvet Island'),
-			'BWA'=>WT_I18N::translate('Botswana'),
-			'BWI'=>WT_I18N::translate('British West Indies'),
-			'CAF'=>WT_I18N::translate('Central African Republic'),
-			'CAN'=>WT_I18N::translate('Canada'),
-			'CAP'=>WT_I18N::translate('Cape Colony'),
-			'CAT'=>WT_I18N::translate('Catalonia'),
-			'CCK'=>WT_I18N::translate('Cocos (Keeling) Islands'),
-			'CHE'=>WT_I18N::translate('Switzerland'),
-			'CHI'=>WT_I18N::translate('Channel Islands'),
-			'CHL'=>WT_I18N::translate('Chile'),
-			'CHN'=>WT_I18N::translate('China'),
-			'CIV'=>WT_I18N::translate('Cote d’Ivoire'),
-			'CMR'=>WT_I18N::translate('Cameroon'),
-			'COD'=>WT_I18N::translate('Congo (Kinshasa)'),
-			'COG'=>WT_I18N::translate('Congo (Brazzaville)'),
-			'COK'=>WT_I18N::translate('Cook Islands'),
-			'COL'=>WT_I18N::translate('Colombia'),
-			'COM'=>WT_I18N::translate('Comoros'),
-			'CPV'=>WT_I18N::translate('Cape Verde'),
-			'CRI'=>WT_I18N::translate('Costa Rica'),
-			'CSK'=>WT_I18N::translate('Czechoslovakia'),
-			'CUB'=>WT_I18N::translate('Cuba'),
-			'CXR'=>WT_I18N::translate('Christmas Island'),
-			'CYM'=>WT_I18N::translate('Cayman Islands'),
-			'CYP'=>WT_I18N::translate('Cyprus'),
-			'CZE'=>WT_I18N::translate('Czech Republic'),
-			'DEU'=>WT_I18N::translate('Germany'),
-			'DJI'=>WT_I18N::translate('Djibouti'),
-			'DMA'=>WT_I18N::translate('Dominica'),
-			'DNK'=>WT_I18N::translate('Denmark'),
-			'DOM'=>WT_I18N::translate('Dominican Republic'),
-			'DZA'=>WT_I18N::translate('Algeria'),
-			'ECU'=>WT_I18N::translate('Ecuador'),
-			'EGY'=>WT_I18N::translate('Egypt'),
-			'EIR'=>WT_I18N::translate('Eire'),
-			'ENG'=>WT_I18N::translate('England'),
-			'ERI'=>WT_I18N::translate('Eritrea'),
-			'ESH'=>WT_I18N::translate('Western Sahara'),
-			'ESP'=>WT_I18N::translate('Spain'),
-			'EST'=>WT_I18N::translate('Estonia'),
-			'ETH'=>WT_I18N::translate('Ethiopia'),
-			'FIN'=>WT_I18N::translate('Finland'),
-			'FJI'=>WT_I18N::translate('Fiji'),
-			'FLD'=>WT_I18N::translate('Flanders'),
-			'FLK'=>WT_I18N::translate('Falkland Islands'),
-			'FRA'=>WT_I18N::translate('France'),
-			'FRO'=>WT_I18N::translate('Faeroe Islands'),
-			'FSM'=>WT_I18N::translate('Micronesia'),
-			'GAB'=>WT_I18N::translate('Gabon'),
-			'GBR'=>WT_I18N::translate('United Kingdom'),
-			'GEO'=>WT_I18N::translate('Georgia'),
-			'GGY'=>WT_I18N::translate('Guernsey'),
-			'GHA'=>WT_I18N::translate('Ghana'),
-			'GIB'=>WT_I18N::translate('Gibraltar'),
-			'GIN'=>WT_I18N::translate('Guinea'),
-			'GLP'=>WT_I18N::translate('Guadeloupe'),
-			'GMB'=>WT_I18N::translate('Gambia'),
-			'GNB'=>WT_I18N::translate('Guinea-Bissau'),
-			'GNQ'=>WT_I18N::translate('Equatorial Guinea'),
-			'GRC'=>WT_I18N::translate('Greece'),
-			'GRD'=>WT_I18N::translate('Grenada'),
-			'GRL'=>WT_I18N::translate('Greenland'),
-			'GTM'=>WT_I18N::translate('Guatemala'),
-			'GUF'=>WT_I18N::translate('French Guiana'),
-			'GUM'=>WT_I18N::translate('Guam'),
-			'GUY'=>WT_I18N::translate('Guyana'),
-			'HKG'=>WT_I18N::translate('Hong Kong'),
-			'HMD'=>WT_I18N::translate('Heard Island and McDonald Islands'),
-			'HND'=>WT_I18N::translate('Honduras'),
-			'HRV'=>WT_I18N::translate('Croatia'),
-			'HTI'=>WT_I18N::translate('Haiti'),
-			'HUN'=>WT_I18N::translate('Hungary'),
-			'IDN'=>WT_I18N::translate('Indonesia'),
-			'IND'=>WT_I18N::translate('India'),
-			'IOM'=>WT_I18N::translate('Isle of Man'),
-			'IOT'=>WT_I18N::translate('British Indian Ocean Territory'),
-			'IRL'=>WT_I18N::translate('Ireland'),
-			'IRN'=>WT_I18N::translate('Iran'),
-			'IRQ'=>WT_I18N::translate('Iraq'),
-			'ISL'=>WT_I18N::translate('Iceland'),
-			'ISR'=>WT_I18N::translate('Israel'),
-			'ITA'=>WT_I18N::translate('Italy'),
-			'JAM'=>WT_I18N::translate('Jamaica'),
-			'JOR'=>WT_I18N::translate('Jordan'),
-			'JPN'=>WT_I18N::translate('Japan'),
-			'KAZ'=>WT_I18N::translate('Kazakhstan'),
-			'KEN'=>WT_I18N::translate('Kenya'),
-			'KGZ'=>WT_I18N::translate('Kyrgyzstan'),
-			'KHM'=>WT_I18N::translate('Cambodia'),
-			'KIR'=>WT_I18N::translate('Kiribati'),
-			'KNA'=>WT_I18N::translate('Saint Kitts and Nevis'),
-			'KOR'=>WT_I18N::translate('Korea'),
-			'KWT'=>WT_I18N::translate('Kuwait'),
-			'LAO'=>WT_I18N::translate('Laos'),
-			'LBN'=>WT_I18N::translate('Lebanon'),
-			'LBR'=>WT_I18N::translate('Liberia'),
-			'LBY'=>WT_I18N::translate('Libya'),
-			'LCA'=>WT_I18N::translate('Saint Lucia'),
-			'LIE'=>WT_I18N::translate('Liechtenstein'),
-			'LKA'=>WT_I18N::translate('Sri Lanka'),
-			'LSO'=>WT_I18N::translate('Lesotho'),
-			'LTU'=>WT_I18N::translate('Lithuania'),
-			'LUX'=>WT_I18N::translate('Luxembourg'),
-			'LVA'=>WT_I18N::translate('Latvia'),
-			'MAC'=>WT_I18N::translate('Macau'),
-			'MAR'=>WT_I18N::translate('Morocco'),
-			'MCO'=>WT_I18N::translate('Monaco'),
-			'MDA'=>WT_I18N::translate('Moldova'),
-			'MDG'=>WT_I18N::translate('Madagascar'),
-			'MDV'=>WT_I18N::translate('Maldives'),
-			'MEX'=>WT_I18N::translate('Mexico'),
-			'MHL'=>WT_I18N::translate('Marshall Islands'),
-			'MKD'=>WT_I18N::translate('Macedonia'),
-			'MLI'=>WT_I18N::translate('Mali'),
-			'MLT'=>WT_I18N::translate('Malta'),
-			'MMR'=>WT_I18N::translate('Myanmar'),
-			'MNG'=>WT_I18N::translate('Mongolia'),
-			'MNP'=>WT_I18N::translate('Northern Mariana Islands'),
-			'MNT'=>WT_I18N::translate('Montenegro'),
-			'MOZ'=>WT_I18N::translate('Mozambique'),
-			'MRT'=>WT_I18N::translate('Mauritania'),
-			'MSR'=>WT_I18N::translate('Montserrat'),
-			'MTQ'=>WT_I18N::translate('Martinique'),
-			'MUS'=>WT_I18N::translate('Mauritius'),
-			'MWI'=>WT_I18N::translate('Malawi'),
-			'MYS'=>WT_I18N::translate('Malaysia'),
-			'MYT'=>WT_I18N::translate('Mayotte'),
-			'NAM'=>WT_I18N::translate('Namibia'),
-			'NCL'=>WT_I18N::translate('New Caledonia'),
-			'NER'=>WT_I18N::translate('Niger'),
-			'NFK'=>WT_I18N::translate('Norfolk Island'),
-			'NGA'=>WT_I18N::translate('Nigeria'),
-			'NIC'=>WT_I18N::translate('Nicaragua'),
-			'NIR'=>WT_I18N::translate('Northern Ireland'),
-			'NIU'=>WT_I18N::translate('Niue'),
-			'NLD'=>WT_I18N::translate('Netherlands'),
-			'NOR'=>WT_I18N::translate('Norway'),
-			'NPL'=>WT_I18N::translate('Nepal'),
-			'NRU'=>WT_I18N::translate('Nauru'),
-			'NTZ'=>WT_I18N::translate('Neutral Zone'),
-			'NZL'=>WT_I18N::translate('New Zealand'),
-			'OMN'=>WT_I18N::translate('Oman'),
-			'PAK'=>WT_I18N::translate('Pakistan'),
-			'PAN'=>WT_I18N::translate('Panama'),
-			'PCN'=>WT_I18N::translate('Pitcairn'),
-			'PER'=>WT_I18N::translate('Peru'),
-			'PHL'=>WT_I18N::translate('Philippines'),
-			'PLW'=>WT_I18N::translate('Palau'),
-			'PNG'=>WT_I18N::translate('Papua New Guinea'),
-			'POL'=>WT_I18N::translate('Poland'),
-			'PRI'=>WT_I18N::translate('Puerto Rico'),
-			'PRK'=>WT_I18N::translate('North Korea'),
-			'PRT'=>WT_I18N::translate('Portugal'),
-			'PRY'=>WT_I18N::translate('Paraguay'),
-			'PSE'=>WT_I18N::translate('Occupied Palestinian Territory'),
-			'PYF'=>WT_I18N::translate('French Polynesia'),
-			'QAT'=>WT_I18N::translate('Qatar'),
-			'REU'=>WT_I18N::translate('Reunion'),
-			'ROM'=>WT_I18N::translate('Romania'),
-			'RUS'=>WT_I18N::translate('Russia'),
-			'RWA'=>WT_I18N::translate('Rwanda'),
-			'SAU'=>WT_I18N::translate('Saudi Arabia'),
-			'SCG'=>WT_I18N::translate('Serbia and Montenegro'),
-			'SCT'=>WT_I18N::translate('Scotland'),
-			'SDN'=>WT_I18N::translate('Sudan'),
-			'SEA'=>WT_I18N::translate('At sea'),
-			'SEN'=>WT_I18N::translate('Senegal'),
-			'SER'=>WT_I18N::translate('Serbia'),
-			'SGP'=>WT_I18N::translate('Singapore'),
-			'SGS'=>WT_I18N::translate('South Georgia and the South Sandwich Islands'),
-			'SHN'=>WT_I18N::translate('Saint Helena'),
-			'SIC'=>WT_I18N::translate('Sicily'),
-			'SJM'=>WT_I18N::translate('Svalbard and Jan Mayen Islands'),
-			'SLB'=>WT_I18N::translate('Solomon Islands'),
-			'SLE'=>WT_I18N::translate('Sierra Leone'),
-			'SLV'=>WT_I18N::translate('El Salvador'),
-			'SMR'=>WT_I18N::translate('San Marino'),
-			'SOM'=>WT_I18N::translate('Somalia'),
-			'SPM'=>WT_I18N::translate('Saint Pierre and Miquelon'),
-			'SSD'=>WT_I18N::translate('South Sudan'),
-			'STP'=>WT_I18N::translate('Sao Tome and Principe'),
-			'SUN'=>WT_I18N::translate('USSR'),
-			'SUR'=>WT_I18N::translate('Suriname'),
-			'SVK'=>WT_I18N::translate('Slovakia'),
-			'SVN'=>WT_I18N::translate('Slovenia'),
-			'SWE'=>WT_I18N::translate('Sweden'),
-			'SWZ'=>WT_I18N::translate('Swaziland'),
-			'SYC'=>WT_I18N::translate('Seychelles'),
-			'SYR'=>WT_I18N::translate('Syrian Arab Republic'),
-			'TCA'=>WT_I18N::translate('Turks and Caicos Islands'),
-			'TCD'=>WT_I18N::translate('Chad'),
-			'TGO'=>WT_I18N::translate('Togo'),
-			'THA'=>WT_I18N::translate('Thailand'),
-			'TJK'=>WT_I18N::translate('Tajikistan'),
-			'TKL'=>WT_I18N::translate('Tokelau'),
-			'TKM'=>WT_I18N::translate('Turkmenistan'),
-			'TLS'=>WT_I18N::translate('Timor-Leste'),
-			'TON'=>WT_I18N::translate('Tonga'),
-			'TRN'=>WT_I18N::translate('Transylvania'),
-			'TTO'=>WT_I18N::translate('Trinidad and Tobago'),
-			'TUN'=>WT_I18N::translate('Tunisia'),
-			'TUR'=>WT_I18N::translate('Turkey'),
-			'TUV'=>WT_I18N::translate('Tuvalu'),
-			'TWN'=>WT_I18N::translate('Taiwan'),
-			'TZA'=>WT_I18N::translate('Tanzania'),
-			'UGA'=>WT_I18N::translate('Uganda'),
-			'UKR'=>WT_I18N::translate('Ukraine'),
-			'UMI'=>WT_I18N::translate('US Minor Outlying Islands'),
-			'URY'=>WT_I18N::translate('Uruguay'),
-			'USA'=>WT_I18N::translate('USA'),
-			'UZB'=>WT_I18N::translate('Uzbekistan'),
-			'VAT'=>WT_I18N::translate('Vatican City'),
-			'VCT'=>WT_I18N::translate('Saint Vincent and the Grenadines'),
-			'VEN'=>WT_I18N::translate('Venezuela'),
-			'VGB'=>WT_I18N::translate('British Virgin Islands'),
-			'VIR'=>WT_I18N::translate('US Virgin Islands'),
-			'VNM'=>WT_I18N::translate('Viet Nam'),
-			'VUT'=>WT_I18N::translate('Vanuatu'),
-			'WAF'=>WT_I18N::translate('West Africa'),
-			'WLF'=>WT_I18N::translate('Wallis and Futuna Islands'),
-			'WLS'=>WT_I18N::translate('Wales'),
-			'WSM'=>WT_I18N::translate('Samoa'),
-			'YEM'=>WT_I18N::translate('Yemen'),
-			'YUG'=>WT_I18N::translate('Yugoslavia'),
-			'ZAF'=>WT_I18N::translate('South Africa'),
-			'ZAR'=>WT_I18N::translate('Zaire'),
-			'ZMB'=>WT_I18N::translate('Zambia'),
-			'ZWE'=>WT_I18N::translate('Zimbabwe'),
+			'???' => WT_I18N::translate('Unknown'),
+			'ABW' => WT_I18N::translate('Aruba'),
+			'ACA' => WT_I18N::translate('Acadia'),
+			'AFG' => WT_I18N::translate('Afghanistan'),
+			'AGO' => WT_I18N::translate('Angola'),
+			'AIA' => WT_I18N::translate('Anguilla'),
+			'ALA' => WT_I18N::translate('Aland Islands'),
+			'ALB' => WT_I18N::translate('Albania'),
+			'AND' => WT_I18N::translate('Andorra'),
+			'ANT' => WT_I18N::translate('Netherlands Antilles'),
+			'ARE' => WT_I18N::translate('United Arab Emirates'),
+			'ARG' => WT_I18N::translate('Argentina'),
+			'ARM' => WT_I18N::translate('Armenia'),
+			'ASM' => WT_I18N::translate('American Samoa'),
+			'ATA' => WT_I18N::translate('Antarctica'),
+			'ATF' => WT_I18N::translate('French Southern Territories'),
+			'ATG' => WT_I18N::translate('Antigua and Barbuda'),
+			'AUS' => WT_I18N::translate('Australia'),
+			'AUT' => WT_I18N::translate('Austria'),
+			'AZE' => WT_I18N::translate('Azerbaijan'),
+			'AZR' => WT_I18N::translate('Azores'),
+			'BDI' => WT_I18N::translate('Burundi'),
+			'BEL' => WT_I18N::translate('Belgium'),
+			'BEN' => WT_I18N::translate('Benin'),
+			'BFA' => WT_I18N::translate('Burkina Faso'),
+			'BGD' => WT_I18N::translate('Bangladesh'),
+			'BGR' => WT_I18N::translate('Bulgaria'),
+			'BHR' => WT_I18N::translate('Bahrain'),
+			'BHS' => WT_I18N::translate('Bahamas'),
+			'BIH' => WT_I18N::translate('Bosnia and Herzegovina'),
+			'BLR' => WT_I18N::translate('Belarus'),
+			'BLZ' => WT_I18N::translate('Belize'),
+			'BMU' => WT_I18N::translate('Bermuda'),
+			'BOL' => WT_I18N::translate('Bolivia'),
+			'BRA' => WT_I18N::translate('Brazil'),
+			'BRB' => WT_I18N::translate('Barbados'),
+			'BRN' => WT_I18N::translate('Brunei Darussalam'),
+			'BTN' => WT_I18N::translate('Bhutan'),
+			'BVT' => WT_I18N::translate('Bouvet Island'),
+			'BWA' => WT_I18N::translate('Botswana'),
+			'BWI' => WT_I18N::translate('British West Indies'),
+			'CAF' => WT_I18N::translate('Central African Republic'),
+			'CAN' => WT_I18N::translate('Canada'),
+			'CAP' => WT_I18N::translate('Cape Colony'),
+			'CAT' => WT_I18N::translate('Catalonia'),
+			'CCK' => WT_I18N::translate('Cocos (Keeling) Islands'),
+			'CHE' => WT_I18N::translate('Switzerland'),
+			'CHI' => WT_I18N::translate('Channel Islands'),
+			'CHL' => WT_I18N::translate('Chile'),
+			'CHN' => WT_I18N::translate('China'),
+			'CIV' => WT_I18N::translate('Cote d’Ivoire'),
+			'CMR' => WT_I18N::translate('Cameroon'),
+			'COD' => WT_I18N::translate('Congo (Kinshasa)'),
+			'COG' => WT_I18N::translate('Congo (Brazzaville)'),
+			'COK' => WT_I18N::translate('Cook Islands'),
+			'COL' => WT_I18N::translate('Colombia'),
+			'COM' => WT_I18N::translate('Comoros'),
+			'CPV' => WT_I18N::translate('Cape Verde'),
+			'CRI' => WT_I18N::translate('Costa Rica'),
+			'CSK' => WT_I18N::translate('Czechoslovakia'),
+			'CUB' => WT_I18N::translate('Cuba'),
+			'CXR' => WT_I18N::translate('Christmas Island'),
+			'CYM' => WT_I18N::translate('Cayman Islands'),
+			'CYP' => WT_I18N::translate('Cyprus'),
+			'CZE' => WT_I18N::translate('Czech Republic'),
+			'DEU' => WT_I18N::translate('Germany'),
+			'DJI' => WT_I18N::translate('Djibouti'),
+			'DMA' => WT_I18N::translate('Dominica'),
+			'DNK' => WT_I18N::translate('Denmark'),
+			'DOM' => WT_I18N::translate('Dominican Republic'),
+			'DZA' => WT_I18N::translate('Algeria'),
+			'ECU' => WT_I18N::translate('Ecuador'),
+			'EGY' => WT_I18N::translate('Egypt'),
+			'EIR' => WT_I18N::translate('Eire'),
+			'ENG' => WT_I18N::translate('England'),
+			'ERI' => WT_I18N::translate('Eritrea'),
+			'ESH' => WT_I18N::translate('Western Sahara'),
+			'ESP' => WT_I18N::translate('Spain'),
+			'EST' => WT_I18N::translate('Estonia'),
+			'ETH' => WT_I18N::translate('Ethiopia'),
+			'FIN' => WT_I18N::translate('Finland'),
+			'FJI' => WT_I18N::translate('Fiji'),
+			'FLD' => WT_I18N::translate('Flanders'),
+			'FLK' => WT_I18N::translate('Falkland Islands'),
+			'FRA' => WT_I18N::translate('France'),
+			'FRO' => WT_I18N::translate('Faeroe Islands'),
+			'FSM' => WT_I18N::translate('Micronesia'),
+			'GAB' => WT_I18N::translate('Gabon'),
+			'GBR' => WT_I18N::translate('United Kingdom'),
+			'GEO' => WT_I18N::translate('Georgia'),
+			'GGY' => WT_I18N::translate('Guernsey'),
+			'GHA' => WT_I18N::translate('Ghana'),
+			'GIB' => WT_I18N::translate('Gibraltar'),
+			'GIN' => WT_I18N::translate('Guinea'),
+			'GLP' => WT_I18N::translate('Guadeloupe'),
+			'GMB' => WT_I18N::translate('Gambia'),
+			'GNB' => WT_I18N::translate('Guinea-Bissau'),
+			'GNQ' => WT_I18N::translate('Equatorial Guinea'),
+			'GRC' => WT_I18N::translate('Greece'),
+			'GRD' => WT_I18N::translate('Grenada'),
+			'GRL' => WT_I18N::translate('Greenland'),
+			'GTM' => WT_I18N::translate('Guatemala'),
+			'GUF' => WT_I18N::translate('French Guiana'),
+			'GUM' => WT_I18N::translate('Guam'),
+			'GUY' => WT_I18N::translate('Guyana'),
+			'HKG' => WT_I18N::translate('Hong Kong'),
+			'HMD' => WT_I18N::translate('Heard Island and McDonald Islands'),
+			'HND' => WT_I18N::translate('Honduras'),
+			'HRV' => WT_I18N::translate('Croatia'),
+			'HTI' => WT_I18N::translate('Haiti'),
+			'HUN' => WT_I18N::translate('Hungary'),
+			'IDN' => WT_I18N::translate('Indonesia'),
+			'IND' => WT_I18N::translate('India'),
+			'IOM' => WT_I18N::translate('Isle of Man'),
+			'IOT' => WT_I18N::translate('British Indian Ocean Territory'),
+			'IRL' => WT_I18N::translate('Ireland'),
+			'IRN' => WT_I18N::translate('Iran'),
+			'IRQ' => WT_I18N::translate('Iraq'),
+			'ISL' => WT_I18N::translate('Iceland'),
+			'ISR' => WT_I18N::translate('Israel'),
+			'ITA' => WT_I18N::translate('Italy'),
+			'JAM' => WT_I18N::translate('Jamaica'),
+			'JOR' => WT_I18N::translate('Jordan'),
+			'JPN' => WT_I18N::translate('Japan'),
+			'KAZ' => WT_I18N::translate('Kazakhstan'),
+			'KEN' => WT_I18N::translate('Kenya'),
+			'KGZ' => WT_I18N::translate('Kyrgyzstan'),
+			'KHM' => WT_I18N::translate('Cambodia'),
+			'KIR' => WT_I18N::translate('Kiribati'),
+			'KNA' => WT_I18N::translate('Saint Kitts and Nevis'),
+			'KOR' => WT_I18N::translate('Korea'),
+			'KWT' => WT_I18N::translate('Kuwait'),
+			'LAO' => WT_I18N::translate('Laos'),
+			'LBN' => WT_I18N::translate('Lebanon'),
+			'LBR' => WT_I18N::translate('Liberia'),
+			'LBY' => WT_I18N::translate('Libya'),
+			'LCA' => WT_I18N::translate('Saint Lucia'),
+			'LIE' => WT_I18N::translate('Liechtenstein'),
+			'LKA' => WT_I18N::translate('Sri Lanka'),
+			'LSO' => WT_I18N::translate('Lesotho'),
+			'LTU' => WT_I18N::translate('Lithuania'),
+			'LUX' => WT_I18N::translate('Luxembourg'),
+			'LVA' => WT_I18N::translate('Latvia'),
+			'MAC' => WT_I18N::translate('Macau'),
+			'MAR' => WT_I18N::translate('Morocco'),
+			'MCO' => WT_I18N::translate('Monaco'),
+			'MDA' => WT_I18N::translate('Moldova'),
+			'MDG' => WT_I18N::translate('Madagascar'),
+			'MDV' => WT_I18N::translate('Maldives'),
+			'MEX' => WT_I18N::translate('Mexico'),
+			'MHL' => WT_I18N::translate('Marshall Islands'),
+			'MKD' => WT_I18N::translate('Macedonia'),
+			'MLI' => WT_I18N::translate('Mali'),
+			'MLT' => WT_I18N::translate('Malta'),
+			'MMR' => WT_I18N::translate('Myanmar'),
+			'MNG' => WT_I18N::translate('Mongolia'),
+			'MNP' => WT_I18N::translate('Northern Mariana Islands'),
+			'MNT' => WT_I18N::translate('Montenegro'),
+			'MOZ' => WT_I18N::translate('Mozambique'),
+			'MRT' => WT_I18N::translate('Mauritania'),
+			'MSR' => WT_I18N::translate('Montserrat'),
+			'MTQ' => WT_I18N::translate('Martinique'),
+			'MUS' => WT_I18N::translate('Mauritius'),
+			'MWI' => WT_I18N::translate('Malawi'),
+			'MYS' => WT_I18N::translate('Malaysia'),
+			'MYT' => WT_I18N::translate('Mayotte'),
+			'NAM' => WT_I18N::translate('Namibia'),
+			'NCL' => WT_I18N::translate('New Caledonia'),
+			'NER' => WT_I18N::translate('Niger'),
+			'NFK' => WT_I18N::translate('Norfolk Island'),
+			'NGA' => WT_I18N::translate('Nigeria'),
+			'NIC' => WT_I18N::translate('Nicaragua'),
+			'NIR' => WT_I18N::translate('Northern Ireland'),
+			'NIU' => WT_I18N::translate('Niue'),
+			'NLD' => WT_I18N::translate('Netherlands'),
+			'NOR' => WT_I18N::translate('Norway'),
+			'NPL' => WT_I18N::translate('Nepal'),
+			'NRU' => WT_I18N::translate('Nauru'),
+			'NTZ' => WT_I18N::translate('Neutral Zone'),
+			'NZL' => WT_I18N::translate('New Zealand'),
+			'OMN' => WT_I18N::translate('Oman'),
+			'PAK' => WT_I18N::translate('Pakistan'),
+			'PAN' => WT_I18N::translate('Panama'),
+			'PCN' => WT_I18N::translate('Pitcairn'),
+			'PER' => WT_I18N::translate('Peru'),
+			'PHL' => WT_I18N::translate('Philippines'),
+			'PLW' => WT_I18N::translate('Palau'),
+			'PNG' => WT_I18N::translate('Papua New Guinea'),
+			'POL' => WT_I18N::translate('Poland'),
+			'PRI' => WT_I18N::translate('Puerto Rico'),
+			'PRK' => WT_I18N::translate('North Korea'),
+			'PRT' => WT_I18N::translate('Portugal'),
+			'PRY' => WT_I18N::translate('Paraguay'),
+			'PSE' => WT_I18N::translate('Occupied Palestinian Territory'),
+			'PYF' => WT_I18N::translate('French Polynesia'),
+			'QAT' => WT_I18N::translate('Qatar'),
+			'REU' => WT_I18N::translate('Reunion'),
+			'ROM' => WT_I18N::translate('Romania'),
+			'RUS' => WT_I18N::translate('Russia'),
+			'RWA' => WT_I18N::translate('Rwanda'),
+			'SAU' => WT_I18N::translate('Saudi Arabia'),
+			'SCG' => WT_I18N::translate('Serbia and Montenegro'),
+			'SCT' => WT_I18N::translate('Scotland'),
+			'SDN' => WT_I18N::translate('Sudan'),
+			'SEA' => WT_I18N::translate('At sea'),
+			'SEN' => WT_I18N::translate('Senegal'),
+			'SER' => WT_I18N::translate('Serbia'),
+			'SGP' => WT_I18N::translate('Singapore'),
+			'SGS' => WT_I18N::translate('South Georgia and the South Sandwich Islands'),
+			'SHN' => WT_I18N::translate('Saint Helena'),
+			'SIC' => WT_I18N::translate('Sicily'),
+			'SJM' => WT_I18N::translate('Svalbard and Jan Mayen Islands'),
+			'SLB' => WT_I18N::translate('Solomon Islands'),
+			'SLE' => WT_I18N::translate('Sierra Leone'),
+			'SLV' => WT_I18N::translate('El Salvador'),
+			'SMR' => WT_I18N::translate('San Marino'),
+			'SOM' => WT_I18N::translate('Somalia'),
+			'SPM' => WT_I18N::translate('Saint Pierre and Miquelon'),
+			'SSD' => WT_I18N::translate('South Sudan'),
+			'STP' => WT_I18N::translate('Sao Tome and Principe'),
+			'SUN' => WT_I18N::translate('USSR'),
+			'SUR' => WT_I18N::translate('Suriname'),
+			'SVK' => WT_I18N::translate('Slovakia'),
+			'SVN' => WT_I18N::translate('Slovenia'),
+			'SWE' => WT_I18N::translate('Sweden'),
+			'SWZ' => WT_I18N::translate('Swaziland'),
+			'SYC' => WT_I18N::translate('Seychelles'),
+			'SYR' => WT_I18N::translate('Syrian Arab Republic'),
+			'TCA' => WT_I18N::translate('Turks and Caicos Islands'),
+			'TCD' => WT_I18N::translate('Chad'),
+			'TGO' => WT_I18N::translate('Togo'),
+			'THA' => WT_I18N::translate('Thailand'),
+			'TJK' => WT_I18N::translate('Tajikistan'),
+			'TKL' => WT_I18N::translate('Tokelau'),
+			'TKM' => WT_I18N::translate('Turkmenistan'),
+			'TLS' => WT_I18N::translate('Timor-Leste'),
+			'TON' => WT_I18N::translate('Tonga'),
+			'TRN' => WT_I18N::translate('Transylvania'),
+			'TTO' => WT_I18N::translate('Trinidad and Tobago'),
+			'TUN' => WT_I18N::translate('Tunisia'),
+			'TUR' => WT_I18N::translate('Turkey'),
+			'TUV' => WT_I18N::translate('Tuvalu'),
+			'TWN' => WT_I18N::translate('Taiwan'),
+			'TZA' => WT_I18N::translate('Tanzania'),
+			'UGA' => WT_I18N::translate('Uganda'),
+			'UKR' => WT_I18N::translate('Ukraine'),
+			'UMI' => WT_I18N::translate('US Minor Outlying Islands'),
+			'URY' => WT_I18N::translate('Uruguay'),
+			'USA' => WT_I18N::translate('USA'),
+			'UZB' => WT_I18N::translate('Uzbekistan'),
+			'VAT' => WT_I18N::translate('Vatican City'),
+			'VCT' => WT_I18N::translate('Saint Vincent and the Grenadines'),
+			'VEN' => WT_I18N::translate('Venezuela'),
+			'VGB' => WT_I18N::translate('British Virgin Islands'),
+			'VIR' => WT_I18N::translate('US Virgin Islands'),
+			'VNM' => WT_I18N::translate('Viet Nam'),
+			'VUT' => WT_I18N::translate('Vanuatu'),
+			'WAF' => WT_I18N::translate('West Africa'),
+			'WLF' => WT_I18N::translate('Wallis and Futuna Islands'),
+			'WLS' => WT_I18N::translate('Wales'),
+			'WSM' => WT_I18N::translate('Samoa'),
+			'YEM' => WT_I18N::translate('Yemen'),
+			'YUG' => WT_I18N::translate('Yugoslavia'),
+			'ZAF' => WT_I18N::translate('South Africa'),
+			'ZAR' => WT_I18N::translate('Zaire'),
+			'ZMB' => WT_I18N::translate('Zambia'),
+			'ZWE' => WT_I18N::translate('Zimbabwe'),
 		);
 	}
 
 	// century name, English => 21st, Polish => XXI, etc.
-	private static function _centuryName($century) {
+	private function centuryName($century) {
 		if ($century<0) {
-			return str_replace(-$century, WT_Stats::_centuryName(-$century), /* I18N: BCE=Before the Common Era, for Julian years < 0.  See http://en.wikipedia.org/wiki/Common_Era */ WT_I18N::translate('%s BCE', WT_I18N::number(-$century)));
+			return str_replace(-$century, WT_Stats::centuryName(-$century), /* I18N: BCE=Before the Common Era, for Julian years < 0.  See http://en.wikipedia.org/wiki/Common_Era */ WT_I18N::translate('%s BCE', WT_I18N::number(-$century)));
 		}
 		// The current chart engine (Google charts) can't handle <sup></sup> markup
 		switch ($century) {
-		case 21: return strip_tags(WT_I18N::translate_c('CENTURY', '21st'));
-		case 20: return strip_tags(WT_I18N::translate_c('CENTURY', '20th'));
-		case 19: return strip_tags(WT_I18N::translate_c('CENTURY', '19th'));
-		case 18: return strip_tags(WT_I18N::translate_c('CENTURY', '18th'));
-		case 17: return strip_tags(WT_I18N::translate_c('CENTURY', '17th'));
-		case 16: return strip_tags(WT_I18N::translate_c('CENTURY', '16th'));
-		case 15: return strip_tags(WT_I18N::translate_c('CENTURY', '15th'));
-		case 14: return strip_tags(WT_I18N::translate_c('CENTURY', '14th'));
-		case 13: return strip_tags(WT_I18N::translate_c('CENTURY', '13th'));
-		case 12: return strip_tags(WT_I18N::translate_c('CENTURY', '12th'));
-		case 11: return strip_tags(WT_I18N::translate_c('CENTURY', '11th'));
-		case 10: return strip_tags(WT_I18N::translate_c('CENTURY', '10th'));
-		case  9: return strip_tags(WT_I18N::translate_c('CENTURY', '9th'));
-		case  8: return strip_tags(WT_I18N::translate_c('CENTURY', '8th'));
-		case  7: return strip_tags(WT_I18N::translate_c('CENTURY', '7th'));
-		case  6: return strip_tags(WT_I18N::translate_c('CENTURY', '6th'));
-		case  5: return strip_tags(WT_I18N::translate_c('CENTURY', '5th'));
-		case  4: return strip_tags(WT_I18N::translate_c('CENTURY', '4th'));
-		case  3: return strip_tags(WT_I18N::translate_c('CENTURY', '3rd'));
-		case  2: return strip_tags(WT_I18N::translate_c('CENTURY', '2nd'));
-		case  1: return strip_tags(WT_I18N::translate_c('CENTURY', '1st'));
-		default: return ($century-1).'01-'.$century.'00';
+		case 21:
+			return strip_tags(WT_I18N::translate_c('CENTURY', '21st'));
+		case 20:
+			return strip_tags(WT_I18N::translate_c('CENTURY', '20th'));
+		case 19:
+			return strip_tags(WT_I18N::translate_c('CENTURY', '19th'));
+		case 18:
+			return strip_tags(WT_I18N::translate_c('CENTURY', '18th'));
+		case 17:
+			return strip_tags(WT_I18N::translate_c('CENTURY', '17th'));
+		case 16:
+			return strip_tags(WT_I18N::translate_c('CENTURY', '16th'));
+		case 15:
+			return strip_tags(WT_I18N::translate_c('CENTURY', '15th'));
+		case 14:
+			return strip_tags(WT_I18N::translate_c('CENTURY', '14th'));
+		case 13:
+			return strip_tags(WT_I18N::translate_c('CENTURY', '13th'));
+		case 12:
+			return strip_tags(WT_I18N::translate_c('CENTURY', '12th'));
+		case 11:
+			return strip_tags(WT_I18N::translate_c('CENTURY', '11th'));
+		case 10:
+			return strip_tags(WT_I18N::translate_c('CENTURY', '10th'));
+		case  9:
+			return strip_tags(WT_I18N::translate_c('CENTURY', '9th'));
+		case  8:
+			return strip_tags(WT_I18N::translate_c('CENTURY', '8th'));
+		case  7:
+			return strip_tags(WT_I18N::translate_c('CENTURY', '7th'));
+		case  6:
+			return strip_tags(WT_I18N::translate_c('CENTURY', '6th'));
+		case  5:
+			return strip_tags(WT_I18N::translate_c('CENTURY', '5th'));
+		case  4:
+			return strip_tags(WT_I18N::translate_c('CENTURY', '4th'));
+		case  3:
+			return strip_tags(WT_I18N::translate_c('CENTURY', '3rd'));
+		case  2:
+			return strip_tags(WT_I18N::translate_c('CENTURY', '2nd'));
+		case  1:
+			return strip_tags(WT_I18N::translate_c('CENTURY', '1st'));
+		default:
+			return ($century-1).'01-'.$century.'00';
 		}
 	}
-
 }

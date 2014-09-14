@@ -795,7 +795,7 @@ case 'add_spouse_to_individual_action':
 	$islink  = WT_Filter::postArray('islink', '[01]');
 
 	if (!WT_Filter::checkCsrf()) {
-		$gender = WT_Filter::get('famtag', 'HUSB|WIFE');
+		$famtag = WT_Filter::get('famtag', 'HUSB|WIFE');
 		Zend_Session::writeClose();
 		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=add_spouse_to_individual&xref=' . $xref . '&famtag=' . $famtag);
 		exit;
@@ -887,7 +887,7 @@ case 'add_spouse_to_family_action':
 	check_record_access($family);
 
 	if (!WT_Filter::checkCsrf()) {
-		$gender = WT_Filter::get('famtag', 'HUSB|WIFE');
+		$famtag = WT_Filter::get('famtag', 'HUSB|WIFE');
 		Zend_Session::writeClose();
 		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=add_spouse_to_family&xref=' . $xref . '&famtag=' . $famtag);
 		exit;
@@ -1110,7 +1110,7 @@ case 'linkspouseaction':
 	$islink  = WT_Filter::postArray('islink', '[01]');
 
 	if (!WT_Filter::checkCsrf()) {
-		$gender = WT_Filter::get('famtag', 'HUSB|WIFE');
+		$famtag = WT_Filter::get('famtag', 'HUSB|WIFE');
 		Zend_Session::writeClose();
 		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=linkspouse&xref=' . $xref . '&famtag=' . $famtag);
 		exit;
@@ -2262,8 +2262,8 @@ function keep_chan(WT_GedcomRecord $record=null) {
 
 		if ($record) {
 			$details =
-				WT_Gedcom_Tag::getLabelValue('DATE', $record->LastChangeTimestamp()) .
-				WT_Gedcom_Tag::getLabelValue('_WT_USER', $record->LastChangeUser());
+				WT_Gedcom_Tag::getLabelValue('DATE', $record->lastChangeTimestamp()) .
+				WT_Gedcom_Tag::getLabelValue('_WT_USER', $record->lastChangeUser());
 		} else {
 			$details = '';
 		}
@@ -2297,6 +2297,7 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 		$xref = 'new';
 	}
 
+	$name_fields  = array();
 	if ($name_fact) {
 		$name_fact_id = $name_fact->getFactId();
 		$name_type    = $name_fact->getAttribute('TYPE');
@@ -2312,7 +2313,6 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 	} else {
 		$name_fact_id = null;
 		$name_type    = null;
-		$name_fields  = array();
 		$namerec      = null;
 		// Populate the standard NAME field and subfields
 		foreach ($STANDARD_NAME_FACTS as $tag) {

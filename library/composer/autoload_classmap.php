@@ -7,6 +7,15 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Datamatrix' => $vendorDir . '/tecnick.com/tcpdf/include/barcodes/datamatrix.php',
+    'Fisharebest\\ExtCalendar\\ArabicCalendar' => $vendorDir . '/fisharebest/ext-calendar/src/ArabicCalendar.php',
+    'Fisharebest\\ExtCalendar\\Calendar' => $vendorDir . '/fisharebest/ext-calendar/src/Calendar.php',
+    'Fisharebest\\ExtCalendar\\CalendarInterface' => $vendorDir . '/fisharebest/ext-calendar/src/CalendarInterface.php',
+    'Fisharebest\\ExtCalendar\\FrenchCalendar' => $vendorDir . '/fisharebest/ext-calendar/src/FrenchCalendar.php',
+    'Fisharebest\\ExtCalendar\\GregorianCalendar' => $vendorDir . '/fisharebest/ext-calendar/src/GregorianCalendar.php',
+    'Fisharebest\\ExtCalendar\\JewishCalendar' => $vendorDir . '/fisharebest/ext-calendar/src/JewishCalendar.php',
+    'Fisharebest\\ExtCalendar\\JulianCalendar' => $vendorDir . '/fisharebest/ext-calendar/src/JulianCalendar.php',
+    'Fisharebest\\ExtCalendar\\PersianCalendar' => $vendorDir . '/fisharebest/ext-calendar/src/PersianCalendar.php',
+    'Fisharebest\\ExtCalendar\\Shim' => $vendorDir . '/fisharebest/ext-calendar/src/Shim.php',
     'HTMLPurifier' => $vendorDir . '/ezyang/htmlpurifier/library/HTMLPurifier.php',
     'HTMLPurifier_Arborize' => $vendorDir . '/ezyang/htmlpurifier/library/HTMLPurifier/Arborize.php',
     'HTMLPurifier_AttrCollections' => $vendorDir . '/ezyang/htmlpurifier/library/HTMLPurifier/AttrCollections.php',

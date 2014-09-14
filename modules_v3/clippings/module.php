@@ -375,7 +375,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 			if ($record) {
 				$clip_ctrl->id=$record->getXref();
 				$clip_ctrl->type=$record::RECORD_TYPE;
-				$ret = $clip_ctrl->add_clipping($record);
+				$ret = $clip_ctrl->addClipping($record);
 				if ($ret) return $this->askAddOptions($record);
 			}
 		} elseif (!empty($add1)) {
@@ -385,22 +385,22 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 				$clip_ctrl->type=strtolower($record::RECORD_TYPE);
 				if ($others == 'parents') {
 					foreach ($record->getChildFamilies() as $family) {
-						$clip_ctrl->add_clipping($family);
-						$clip_ctrl->add_family_members($family);
+						$clip_ctrl->addClipping($family);
+						$clip_ctrl->addFamilyMembers($family);
 					}
 				} elseif ($others == 'ancestors') {
-					$clip_ctrl->add_ancestors_to_cart($record, $clip_ctrl->level1);
+					$clip_ctrl->addAncestorsToCart($record, $clip_ctrl->level1);
 				} elseif ($others == 'ancestorsfamilies') {
-					$clip_ctrl->add_ancestors_to_cart_families($record, $clip_ctrl->level2);
+					$clip_ctrl->addAncestorsToCartFamilies($record, $clip_ctrl->level2);
 				} elseif ($others == 'members') {
 					foreach ($record->getSpouseFamilies() as $family) {
-						$clip_ctrl->add_clipping($family);
-						$clip_ctrl->add_family_members($family);
+						$clip_ctrl->addClipping($family);
+						$clip_ctrl->addFamilyMembers($family);
 					}
 				} elseif ($others == 'descendants') {
 					foreach ($record->getSpouseFamilies() as $family) {
-						$clip_ctrl->add_clipping($family);
-						$clip_ctrl->add_family_descendancy($family, $clip_ctrl->level3);
+						$clip_ctrl->addClipping($family);
+						$clip_ctrl->addFamilyDescendancy($family, $clip_ctrl->level3);
 					}
 				}
 			}

@@ -128,7 +128,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 		$myindilist=search_indis_names($filter_array, array(WT_GED_ID), 'AND');
 		if ($myindilist) {
 			echo "<td class=\"list_value_wrap\"><ul>";
-			usort($myindilist, array('WT_GedcomRecord', 'Compare'));
+			usort($myindilist, array('WT_GedcomRecord', 'compare'));
 			foreach ($myindilist as $indi) {
 				$nam = WT_Filter::escapeHtml($indi->getFullName());
 				echo "<li><a href=\"#\" onclick=\"pasterow(
