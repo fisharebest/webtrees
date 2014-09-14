@@ -34,7 +34,7 @@ class WT_Stats {
 	private $tree_id;
 
 	private $public_but_not_allowed = array(
-		'__construct', 'embedTags', 'iso3166', 'get_all_countries', 'getAllTagsTable', 'getAllTagsText', 'statsPlaces', 'statsBirthQuery', 'statsDeathQuery', 'statsMarrQuery', 'statsAgeQuery', 'monthFirstChildQuery', 'statsChildrenQuery', 'statsMarrAgeQuery'
+		'__construct', 'embedTags', 'iso3166', 'getAllCountries', 'getAllTagsTable', 'getAllTagsText', 'statsPlaces', 'statsBirthQuery', 'statsDeathQuery', 'statsMarrQuery', 'statsAgeQuery', 'monthFirstChildQuery', 'statsChildrenQuery', 'statsMarrAgeQuery'
 	);
 
 	private $_media_types = array('audio', 'book', 'card', 'certificate', 'coat', 'document', 'electronic', 'magazine', 'manuscript', 'map', 'fiche', 'film', 'newspaper', 'painting', 'photo', 'tombstone', 'video', 'other');
