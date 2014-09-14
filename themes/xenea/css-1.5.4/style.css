@@ -2983,10 +2983,8 @@ span.link_text {
 
 /* =========== Indi header ================== */
 #indi_header {
-	width: 100%;
 	overflow: hidden;
 	border-radius: 3px;
-/*	background: url(../jquery-ui-1.10.3/images/ui-bg_highlight-soft_100_e7eef3_1x100.png) repeat-x scroll 50% 50% #fff;*/
 	border: 1px solid #b2c7d7;
 	margin: 0 0 5px;
 	padding: 10px 0;
