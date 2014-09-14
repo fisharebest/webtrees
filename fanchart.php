@@ -46,7 +46,7 @@ $controller
 					var target = jQuery(this.hash);
 					target
 						// position the menu centered immediately above the mouse click position and
-						// make sure it doesn\'t end up off the screen
+						// make sure it doesn’t end up off the screen
 						.css({
 							left: Math.max(0 ,e.pageX - (target.outerWidth()/2)),
 							top:  Math.max(0, e.pageY - target.outerHeight())
@@ -62,7 +62,7 @@ $controller
 				.click(function(e) {
 					jQuery(".fan_chart_menu").hide();
 				});
-			return "' . strip_tags($controller->root->getFullName()) . '";
+			return "' . WT_Filter::escapeJs($controller->root->getFullName()) . '";
 		})();
 	');
 

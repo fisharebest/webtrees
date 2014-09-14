@@ -296,11 +296,13 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 					// add action url
 					$imagemap .= '" href="#' . $pid . '"';
 					$tempURL = 'fanchart.php?rootid='.$pid.'&amp;generations='.$this->generations.'&amp;fan_width='.$this->fan_width.'&amp;fan_style='.$this->fan_style.'&amp;ged='.WT_GEDURL;
-					$html.= "<div id=\"$pid\" class=\"fan_chart_menu\">";
-					$html.= "<div class=\"person_box\"><div class=\"details1\">";
-					$html.= "<a href=\"".$person->getHtmlUrl()."\" class=\"name1\">" . $name;
-					if (!empty($addname)) $html.= $addname;
-					$html.= "</a>";
+					$html .= '<div id="' . $pid . '" class="fan_chart_menu">';
+					$html .= '<div class="person_box"><div class="details1">';
+					$html .= '<a href="' . $person->getHtmlUrl() . '" class="name1">' . $name;
+					if ($addname) {
+						$html .= $addname;
+					}
+					$html .= '</a>';
 					$html .= '<ul class="charts">';
 					$html.= "<li><a href=\"pedigree.php?rootid=$pid&amp;amp;ged=".WT_GEDURL."\" >".WT_I18N::translate('Pedigree')."</a></li>";
 					if (array_key_exists('googlemap', WT_Module::getActiveModules())) {
@@ -315,7 +317,7 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 					$html.= "<li><a href=\"".$tempURL."\">".WT_I18N::translate('Fan chart')."</a></li>";
 					$html.= "<li><a href=\"hourglass.php?rootid=$pid&amp;ged=".WT_GEDURL."\">".WT_I18N::translate('Hourglass chart')."</a></li>";
 					if (array_key_exists('tree', WT_Module::getActiveModules())) {
-						$html.= '<li><a href="module.php?mod=tree&amp;mod_action=treeview&amp;ged='.WT_GEDURL.'&amp;rootid='.$pid."\">".WT_I18N::translate('Interactive tree')."</a></li>";
+						$html .= '<li><a href="module.php?mod=tree&amp;mod_action=treeview&amp;ged=' . WT_GEDURL . '&amp;rootid=' . $pid . '">' . WT_I18N::translate('Interactive tree') . '</a></li>';
 					}
 					$html .='</ul>';
 					// spouse(s) and children
@@ -347,10 +349,9 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 							$html .= '</ul>';
 						}
 					}
-					$html.= '</div>';
-					$html.= '</div>';
-					$html.= '</div>';
-					$imagemap .= " alt=\"".WT_Filter::escapeHtml(strip_tags($name))."\" title=\"".WT_Filter::escapeHtml(strip_tags($name))."\">";
+					$html .= '</div></div>';
+					$html .= '</div>';
+					$imagemap .= ' alt="' . WT_Filter::escapeHtml(strip_tags($name)) . '" title="' . WT_Filter::escapeHtml(strip_tags($name)) . '">';
 				}
 				$deg1 -= $angle;
 				$deg2 -= $angle;
@@ -365,7 +366,7 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 		switch ($what) {
 		case 'html':
 			$image_title=WT_I18N::translate('Fan chart of %s', strip_tags($name));
-			return $html.$imagemap.'<div id="fan_chart_img"><img src="'.WT_SCRIPT_NAME.'?rootid='.$this->rootid.'&amp;fan_style='.$this->fan_style.'&amp;generations='.$this->generations.'&amp;fan_width='.$this->fan_width.'&amp;img=1" width="'.$fanw.'" height="'.$fanh.'" alt="'.$image_title.'" title="'.$image_title.'" usemap="#fanmap"></div>';
+			return $html . $imagemap . '<div id="fan_chart_img"><img src="' . WT_SCRIPT_NAME . '?rootid=' . $this->rootid . '&amp;fan_style=' . $this->fan_style . '&amp;generations=' . $this->generations . '&amp;fan_width=' . $this->fan_width.'&amp;img=1" width="' . $fanw . '" height="' . $fanh . '" alt="' . $image_title . '" title="' . $image_title . '" usemap="#fanmap"></div>';
 		case 'png':
 			header('Content-Type: image/png');
 			ImageStringUp($image, 1, $fanw - 10, $fanh / 3, WT_SERVER_NAME . WT_SCRIPT_PATH, $color);
