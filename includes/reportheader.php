@@ -56,8 +56,6 @@ $report_array = array();
  * @param array $attrs an array of key value pairs for the attributes
  */
 function startElement($parser, $name, $attrs) {
-// @deprecated
-// global $elementHandler, $processIfs, $processGedcoms, $processRepeats;
 	global $elementHandler, $processIfs;
 
 	if (($processIfs==0) || ($name=="if")) {
@@ -136,8 +134,6 @@ function varSHandler($attrs) {
 }
 
 function TitleSHandler() {
-	// @deprecated
-	// global $report_array, $text;
 	global $text;
 
 	$text = "";

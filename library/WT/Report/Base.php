@@ -913,8 +913,6 @@ function CellSHandler($attrs) {
 	if (!empty($attrs['border'])) {
 		$border = $attrs['border'];
 	}
-	// @test Print all borders for testing
-	// $border = 1;
 	// string Border color in HTML code
 	$bocolor = "";
 	if (!empty($attrs['bocolor'])) {
@@ -1165,19 +1163,6 @@ function TextBoxSHandler($attrs) {
 			$border = false;
 		}
 	}
-	// @test Print all borders for testing
-	// $border = true;
-
-	/**
-	 * Border style of rectangle. Array with keys among the following
-	 * <ul><li>L, T, R, B or combinations: Line style of left, top, right or bottom border.</li></ul>
-	 *
-	 * @var string
-	 */
-	/** not yet in use
-	 * $borderstyle = "";
-	 * if (!empty($attrs['borderstyle'])) $borderstyle = $attrs['borderstyle'];
-	 */
 
 	// int The starting height of this cell. If the text wraps the height will automatically be adjusted
 	$height = 0;
@@ -1251,8 +1236,6 @@ function TextBoxSHandler($attrs) {
 
 	// string Style of rendering
 	$style = "";
-	// fill and border is enought for now for user input
-	//if (!empty($attrs['style'])) $style = $attrs['style'];
 
 	array_push($printDataStack, $printData);
 	$printData = false;
@@ -1392,11 +1375,6 @@ function GetPersonNameSHandler($attrs) {
 				}
 			} else {
 				$addname = $record->getAddName();
-				/*
-				echo "<br>".$addname."<br>";
-				for ($ii=0; $ii<=strlen($addname); $ii++)
-				echo substr($addname, $ii, 1)." ";
-				*/
 				$addname = preg_replace(
 					array('/<span class="starredname">/', '/<\/span><\/span>/', '/<\/span>/'),
 					array('«', '', '»'),
@@ -1572,8 +1550,7 @@ function RepeatTagEHandler() {
 	if (count($repeats) > 0) {
 		// No need to load them if not used...
 		global $parser, $parserStack, $report, $gedrec;
-		// @deprecated
-		//$line = xml_get_current_line_number($parser)-1;
+
 		$lineoffset = 0;
 		foreach ($repeatsStack as $rep) {
 			$lineoffset += $rep[1];

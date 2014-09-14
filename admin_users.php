@@ -493,7 +493,6 @@ case 'cleanup':
 	<table id="clean">
 	<?php
 	// Check for idle users
-	//if (!isset($month)) $month = 1;
 	$month = WT_Filter::getInteger('month', 1, 12, 6);
 	echo "<tr><th>", WT_I18N::translate('Number of months since the last login for a user’s account to be considered inactive: '), "</th>";
 	echo "<td><select onchange=\"document.location=options[selectedIndex].value;\">";
