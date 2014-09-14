@@ -157,6 +157,11 @@ class WT_Report_HTML extends WT_Report_Base {
 		}
 	}
 
+	/**
+	 * @param $element
+	 *
+	 * @return mixed
+	 */
 	function addElement($element) {
 		if ($this->processing == "B") {
 			return $this->bodyElements[] = $element;
@@ -167,6 +172,9 @@ class WT_Report_HTML extends WT_Report_Base {
 		}
 	}
 
+	/**
+	 *
+	 */
 	function runPageHeader() {
 		foreach ($this->pageHeaderElements as $element) {
 			if (is_object($element)) {
@@ -179,6 +187,9 @@ class WT_Report_HTML extends WT_Report_Base {
 		}
 	}
 
+	/**
+	 *
+	 */
 	function Footnotes() {
 		$this->currentStyle = "";
 		if (!empty($this->printedfootnotes)) {
@@ -188,6 +199,9 @@ class WT_Report_HTML extends WT_Report_Base {
 		}
 	}
 
+	/**
+	 *
+	 */
 	function run() {
 		$controller = new WT_Controller_Simple();
 		$controller
@@ -294,34 +308,100 @@ class WT_Report_HTML extends WT_Report_Base {
 		return new WT_Report_HTML_Cell($width, $height, $border, $align, $bgcolor, $style, $ln, $top, $left, $fill, $stretch, $bocolor, $tcolor, $reseth);
 	}
 
+	/**
+	 * @param $width
+	 * @param $height
+	 * @param $border
+	 * @param $bgcolor
+	 * @param $newline
+	 * @param $left
+	 * @param $top
+	 * @param $pagecheck
+	 * @param $style
+	 * @param $fill
+	 * @param $padding
+	 * @param $reseth
+	 *
+	 * @return WT_Report_HTML_TextBox
+	 */
 	function createTextBox($width, $height, $border, $bgcolor, $newline, $left, $top, $pagecheck, $style, $fill, $padding, $reseth) {
 		return new WT_Report_HTML_TextBox($width, $height, $border, $bgcolor, $newline, $left, $top, $pagecheck, $style, $fill, $padding, $reseth);
 	}
 
+	/**
+	 * @param $style
+	 * @param $color
+	 *
+	 * @return WT_Report_HTML_Text
+	 */
 	function createText($style, $color) {
 		return new WT_Report_HTML_Text($style, $color);
 	}
 
+	/**
+	 * @param string $style
+	 *
+	 * @return WT_Report_HTML_Footnote
+	 */
 	function createFootnote($style = "") {
 		return new WT_Report_HTML_Footnote($style);
 	}
 
+	/**
+	 * @return WT_Report_HTML_PageHeader
+	 */
 	function createPageHeader() {
 		return new WT_Report_HTML_PageHeader();
 	}
 
+	/**
+	 * @param $file
+	 * @param $x
+	 * @param $y
+	 * @param $w
+	 * @param $h
+	 * @param $align
+	 * @param $ln
+	 *
+	 * @return WT_Report_HTML_Image
+	 */
 	function createImage($file, $x, $y, $w, $h, $align, $ln) {
 		return new WT_Report_HTML_Image($file, $x, $y, $w, $h, $align, $ln);
 	}
 
+	/**
+	 * @param $mediaobject
+	 * @param $x
+	 * @param $y
+	 * @param $w
+	 * @param $h
+	 * @param $align
+	 * @param $ln
+	 *
+	 * @return WT_Report_HTML_Image
+	 */
 	function createImageFromObject($mediaobject, $x, $y, $w, $h, $align, $ln) {
 		return new WT_Report_HTML_Image($mediaobject->getHtmlUrlDirect('thumb'), $x, $y, $w, $h, $align, $ln);
 	}
 
+	/**
+	 * @param $x1
+	 * @param $y1
+	 * @param $x2
+	 * @param $y2
+	 *
+	 * @return WT_Report_HTML_Line
+	 */
 	function createLine($x1, $y1, $x2, $y2) {
 		return new WT_Report_HTML_Line($x1, $y1, $x2, $y2);
 	}
 
+	/**
+	 * @param $tag
+	 * @param $attrs
+	 *
+	 * @return WT_Report_HTML_Html
+	 */
 	function createHTML($tag, $attrs) {
 		return new WT_Report_HTML_Html($tag, $attrs);
 	}
@@ -366,6 +446,11 @@ class WT_Report_HTML extends WT_Report_Base {
 		}
 	}
 
+	/**
+	 * @param $element
+	 *
+	 * @return int
+	 */
 	function addPageHeader($element) {
 		$this->pageHeaderElements[] = $element;
 		return count($this->headerElements) - 1;
@@ -419,10 +504,16 @@ class WT_Report_HTML extends WT_Report_Base {
 		return (substr_count($str, "\n") + 1);
 	}
 
+	/**
+	 * @return string
+	 */
 	function getCurrentStyle() {
 		return $this->currentStyle;
 	}
 
+	/**
+	 * @return int
+	 */
 	function getCurrentStyleHeight() {
 		if (empty($this->currentStyle)) {
 			return $this->defaultFontSize;
@@ -431,6 +522,11 @@ class WT_Report_HTML extends WT_Report_Base {
 		return $style["size"];
 	}
 
+	/**
+	 * @param $cellWidth
+	 *
+	 * @return int
+	 */
 	function getFootnotesHeight($cellWidth) {
 		$h = 0;
 		foreach ($this->printedfootnotes as $element) {
@@ -448,10 +544,18 @@ class WT_Report_HTML extends WT_Report_Base {
 		return (int)($this->noMarginWidth - $this->X);
 	}
 
+	/**
+	 * @return float
+	 */
 	function getPageHeight() {
 		return $this->pageh - $this->topmargin;
 	}
 
+	/**
+	 * @param $text
+	 *
+	 * @return bool|int
+	 */
 	function getStringWidth($text) {
 		$style = $this->getStyle($this->currentStyle);
 		return mb_strlen($text) * ($style['size'] / 2);
@@ -498,6 +602,9 @@ class WT_Report_HTML extends WT_Report_Base {
 		return $this->pageN;
 	}
 
+	/**
+	 * @param $s
+	 */
 	function setCurrentStyle($s) {
 		$this->currentStyle = $s;
 	}
@@ -786,6 +893,13 @@ class WT_Report_HTML_Cell extends WT_Report_Base_Cell {
  * HTML element - HTML Report
  */
 class WT_Report_HTML_Html extends WT_Report_Base_Html {
+	/**
+	 * @param      $html
+	 * @param bool $sub
+	 * @param bool $inat
+	 *
+	 * @return string
+	 */
 	function render($html, $sub = false, $inat = true) {
 
 		if (!empty($this->attrs["wt_style"])) $html->setCurrentStyle($this->attrs["wt_style"]);
@@ -827,6 +941,11 @@ class WT_Report_HTML_Html extends WT_Report_Base_Html {
  * TextBox element - HTML Report
  */
 class WT_Report_HTML_TextBox extends WT_Report_Base_TextBox {
+	/**
+	 * @param $html
+	 *
+	 * @return void
+	 */
 	function render($html) {
 		// checkFootnote
 		$newelements = array();
@@ -1398,6 +1517,11 @@ class WT_Report_HTML_Footnote extends WT_Report_Base_Footnote {
  * PageHeader element
  */
 class WT_Report_HTML_PageHeader extends WT_Report_Base_PageHeader {
+	/**
+	 * @param $html
+	 *
+	 * @return void
+	 */
 	function render($html) {
 		$html->clearPageHeader();
 		foreach ($this->elements as $element) {

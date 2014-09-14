@@ -127,6 +127,9 @@ class WT_Report_PDF extends WT_Report_Base {
 		return 0;
 	}
 
+	/**
+	 *
+	 */
 	function run() {
 		$this->pdf->Body();
 		header('Expires:');
@@ -478,18 +481,30 @@ class PDF extends TCPDF {
 		return count($this->footerElements) - 1;
 	}
 
+	/**
+	 * @param $index
+	 */
 	function removeHeader($index) {
 		unset($this->headerElements[$index]);
 	}
 
+	/**
+	 * @param $index
+	 */
 	function removePageHeader($index) {
 		unset($this->pageHeaderElements[$index]);
 	}
 
+	/**
+	 * @param $index
+	 */
 	function removeBody($index) {
 		unset($this->bodyElements[$index]);
 	}
 
+	/**
+	 * @param $index
+	 */
 	function removeFooter($index) {
 		unset($this->footerElements[$index]);
 	}
@@ -510,6 +525,9 @@ class PDF extends TCPDF {
 		$this->pageHeaderElements = array();
 	}
 
+	/**
+	 * @param $r
+	 */
 	function setReport($r) {
 		$this->wt_report = $r;
 	}
@@ -585,6 +603,9 @@ class PDF extends TCPDF {
 		}
 	}
 
+	/**
+	 * @return int
+	 */
 	function getFootnotesHeight() {
 		$h = 0;
 		foreach ($this->printedfootnotes as $element) {
@@ -813,6 +834,12 @@ class WT_Report_PDF_Cell extends WT_Report_Base_Cell {
  * HTML element - PDF Report
  */
 class WT_Report_PDF_Html extends WT_Report_Base_Html {
+	/**
+	 * @param      $pdf
+	 * @param bool $sub
+	 *
+	 * @return int|string
+	 */
 	function render($pdf, $sub = false) {
 		if (!empty($this->attrs['style'])) {
 			$pdf->setCurrentStyle($this->attrs['style']);
@@ -1578,6 +1605,11 @@ class WT_Report_PDF_Image extends WT_Report_Base_Image {
 		return $this->height;
 	}
 
+	/**
+	 * @param $pdf
+	 *
+	 * @return float
+	 */
 	function getWidth($pdf) {
 		return $this->width;
 	}
