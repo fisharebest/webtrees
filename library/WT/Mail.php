@@ -65,7 +65,7 @@ class WT_Mail {
 	 *
 	 * @return bool
 	 */
-	public static function system_message(WT_Tree $tree, User $user, $subject, $message) {
+	public static function systemMessage(WT_Tree $tree, User $user, $subject, $message) {
 		return self::send(
 			$tree,
 			$user->getEmail(),                     $user->getRealName(),

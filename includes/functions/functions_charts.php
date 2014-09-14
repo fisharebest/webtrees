@@ -339,10 +339,10 @@ function print_family_children(WT_Family $family, $childid = '', $sosa = 0, $lab
 					$div  = $famids[$f]->getFirstFact('DIV');
 					if ($marr) {
 						// marriage date
-						echo $marr->getDate()->minDate()->Format('%Y');
+						echo $marr->getDate()->minDate()->format('%Y');
 						// divorce date
 						if ($div) {
-							echo '–', $div->getDate()->minDate()->Format('%Y');
+							echo '–', $div->getDate()->minDate()->format('%Y');
 						}
 					}
 					echo "<br><img width=\"100%\" class=\"line5\" height=\"3\" src=\"".$WT_IMAGES["hline"]."\" alt=\"\">";

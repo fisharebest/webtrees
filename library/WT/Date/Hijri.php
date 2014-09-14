@@ -25,6 +25,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use Fisharebest\ExtCalendar\ArabicCalendar;
+
 class WT_Date_Hijri extends WT_Date_Calendar {
 	const CALENDAR_ESCAPE = '@#DHIJRI@';
 	const CAL_START_JD    = 1948440; // @#DHIJRI@ 1 MUHAR 0001 = @#JULIAN@ 16 JUL 0622
@@ -32,11 +34,21 @@ class WT_Date_Hijri extends WT_Date_Calendar {
 		''=>0, 'MUHAR'=>1, 'SAFAR'=>2, 'RABIA'=>3, 'RABIT'=>4, 'JUMAA'=>5, 'JUMAT'=>6, 'RAJAB'=>7, 'SHAAB'=>8, 'RAMAD'=>9, 'SHAWW'=>10, 'DHUAQ'=>11, 'DHUAH'=>12
 	);
 
+	/**
+	 * Create a new calendar date
+	 *
+	 * @param mixed $date
+	 */
+	public function __construct($date) {
+		$this->calendar = new ArabicCalendar;
+		parent::__construct($date);
+	}
+
 	static function calendarName() {
 		return /* I18N: The Arabic/Hijri calendar */ WT_I18N::translate('Hijri');
 	}
 
-	static function NUM_TO_MONTH_NOMINATIVE($n, $leap_year) {
+	static function monthNameNominativeCase($n, $leap_year) {
 		switch ($n) {
 		case 1:  return /* I18N: http://en.wikipedia.org/wiki/Muharram                     */ WT_I18N::translate_c('NOMINATIVE', 'Muharram'       );
 		case 2:  return /* I18N: http://en.wikipedia.org/wiki/Safar                        */ WT_I18N::translate_c('NOMINATIVE', 'Safar'          );
@@ -53,7 +65,7 @@ class WT_Date_Hijri extends WT_Date_Calendar {
 		default: return '';
 		}
 	}
-	static function NUM_TO_MONTH_GENITIVE($n, $leap_year) {
+	static function monthNameGenitiveCase($n, $leap_year) {
 		switch ($n) {
 		case 1:  return /* I18N: http://en.wikipedia.org/wiki/Muharram                     */ WT_I18N::translate_c('GENITIVE', 'Muharram'       );
 		case 2:  return /* I18N: http://en.wikipedia.org/wiki/Safar                        */ WT_I18N::translate_c('GENITIVE', 'Safar'          );
@@ -70,7 +82,7 @@ class WT_Date_Hijri extends WT_Date_Calendar {
 		default: return '';
 		}
 	}
-	static function NUM_TO_MONTH_LOCATIVE($n, $leap_year) {
+	static function monthNameLocativeCase($n, $leap_year) {
 		switch ($n) {
 		case 1:  return /* I18N: http://en.wikipedia.org/wiki/Muharram                     */ WT_I18N::translate_c('LOCATIVE', 'Muharram'       );
 		case 2:  return /* I18N: http://en.wikipedia.org/wiki/Safar                        */ WT_I18N::translate_c('LOCATIVE', 'Safar'          );
@@ -87,7 +99,7 @@ class WT_Date_Hijri extends WT_Date_Calendar {
 		default: return '';
 		}
 	}
-	static function NUM_TO_MONTH_INSTRUMENTAL($n, $leap_year) {
+	static function monthNameInstrumentalCase($n, $leap_year) {
 		switch ($n) {
 		case 1:  return /* I18N: http://en.wikipedia.org/wiki/Muharram                     */ WT_I18N::translate_c('INSTRUMENTAL', 'Muharram'       );
 		case 2:  return /* I18N: http://en.wikipedia.org/wiki/Safar                        */ WT_I18N::translate_c('INSTRUMENTAL', 'Safar'          );
@@ -105,23 +117,7 @@ class WT_Date_Hijri extends WT_Date_Calendar {
 		}
 	}
 
-	static function NUM_TO_SHORT_MONTH($n, $leap_year) {
-		// TODO: Do these have short names?
-		return self::NUM_TO_MONTH_NOMINATIVE($n, $leap_year);
-	}
-
-	function IsLeapYear() {
-		return ((11*$this->y+14)%30)<11;
-	}
-
-	static function YMDtoJD($y, $m, $d) {
-		return $d+29*($m-1)+(int)((6*$m-1)/11)+$y*354+(int)((3+11*$y)/30)+1948084;
-	}
-
-	static function JDtoYMD($j) {
-		$y=(int)((30*($j-1948439)+10646)/10631);
-		$m=(int)((11*($j-$y*354-(int)((3+11*$y)/30)-1948085)+330)/325);
-		$d=$j-29*($m-1)-(int)((6*$m-1)/11)-$y*354-(int)((3+11*$y)/30)-1948084;
-		return array($y, $m, $d);
+	static function monthNameAbbreviated($n, $leap_year) {
+		return self::monthNameNominativeCase($n, $leap_year);
 	}
 }

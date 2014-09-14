@@ -536,8 +536,8 @@ class WT_Controller_Search extends WT_Controller_Page {
 			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.$indi->getRawUrl());
 			exit;
 		}
-		usort($this->myindilist, array('WT_GedcomRecord', 'Compare'));
-		usort($this->myfamlist, array('WT_GedcomRecord', 'Compare'));
+		usort($this->myindilist, array('WT_GedcomRecord', 'compare'));
+		usort($this->myfamlist, array('WT_GedcomRecord', 'compare'));
 	}
 
 	function printResults() {
@@ -573,7 +573,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 					}
 					if ($datalist) {
 						$somethingPrinted = true;
-						usort($datalist, array('WT_GedcomRecord', 'Compare'));
+						usort($datalist, array('WT_GedcomRecord', 'compare'));
 						$GEDCOM=$gedcom;
 						load_gedcom_settings($ged_id);
 						echo '<h3 class="indi-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $trees[$ged_id]->tree_title_html, '</span></a></h3>
@@ -597,7 +597,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 					}
 					if ($datalist) {
 						$somethingPrinted = true;
-						usort($datalist, array('WT_GedcomRecord', 'Compare'));
+						usort($datalist, array('WT_GedcomRecord', 'compare'));
 						$GEDCOM=$gedcom;
 						load_gedcom_settings($ged_id);
 						echo '<h3 class="fam-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $trees[$ged_id]->tree_title_html, '</span></a></h3>
@@ -621,7 +621,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 					}
 					if ($datalist) {
 						$somethingPrinted = true;
-						usort($datalist, array('WT_GedcomRecord', 'Compare'));
+						usort($datalist, array('WT_GedcomRecord', 'compare'));
 						$GEDCOM=$gedcom;
 						load_gedcom_settings($ged_id);
 						echo '<h3 class="source-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $trees[$ged_id]->tree_title_html, '</span></a></h3>
@@ -645,7 +645,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 					}
 					if ($datalist) {
 						$somethingPrinted = true;
-						usort($datalist, array('WT_GedcomRecord', 'Compare'));
+						usort($datalist, array('WT_GedcomRecord', 'compare'));
 						$GEDCOM=$gedcom;
 						load_gedcom_settings($ged_id);
 						echo '<h3 class="note-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $trees[$ged_id]->tree_title_html, '</span></a></h3>

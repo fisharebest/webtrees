@@ -142,7 +142,7 @@ class WT_Filter {
 	//////////////////////////////////////////////////////////////////////////////
 	// Validate INPUT requests
 	//////////////////////////////////////////////////////////////////////////////
-	private static function _input($source, $variable, $regexp=null, $default=null) {
+	private static function input($source, $variable, $regexp=null, $default=null) {
 		if ($regexp) {
 			return filter_input(
 				$source,
@@ -170,7 +170,7 @@ class WT_Filter {
 		}
 	}
 
-	private static function _inputArray($source, $variable, $regexp=null, $default=null) {
+	private static function inputArray($source, $variable, $regexp=null, $default=null) {
 		if ($regexp) {
 			// PHP5.3 requires the $tmp variable
 			$tmp = filter_input_array(
@@ -209,11 +209,11 @@ class WT_Filter {
 	// Validate GET requests
 	//////////////////////////////////////////////////////////////////////////////
 	public static function get($variable, $regexp=null, $default=null) {
-		return self::_input(INPUT_GET, $variable, $regexp, $default);
+		return self::input(INPUT_GET, $variable, $regexp, $default);
 	}
 
 	public static function getArray($variable, $regexp=null, $default=null) {
-		return self::_inputArray(INPUT_GET, $variable, $regexp, $default);
+		return self::inputArray(INPUT_GET, $variable, $regexp, $default);
 	}
 
 	public static function getBool($variable) {
@@ -236,11 +236,11 @@ class WT_Filter {
 	// Validate POST requests
 	//////////////////////////////////////////////////////////////////////////////
 	public static function post($variable, $regexp=null, $default=null) {
-		return self::_input(INPUT_POST, $variable, $regexp, $default);
+		return self::input(INPUT_POST, $variable, $regexp, $default);
 	}
 
 	public static function postArray($variable, $regexp=null, $default=null) {
-		return self::_inputArray(INPUT_POST, $variable, $regexp, $default);
+		return self::inputArray(INPUT_POST, $variable, $regexp, $default);
 	}
 
 	public static function postBool($variable) {
@@ -263,7 +263,7 @@ class WT_Filter {
 	// Validate COOKIE requests
 	//////////////////////////////////////////////////////////////////////////////
 	public static function cookie($variable, $regexp=null, $default=null) {
-		return self::_input(INPUT_COOKIE, $variable, $regexp, $default);
+		return self::input(INPUT_COOKIE, $variable, $regexp, $default);
 	}
 
 	//////////////////////////////////////////////////////////////////////////////

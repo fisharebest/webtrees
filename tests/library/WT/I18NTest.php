@@ -20,6 +20,9 @@ class I18NTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function setUp() {
+		\Patchwork\Utf8\Bootup::initAll();
+		\Patchwork\Utf8\Bootup::filterRequestUri();
+		\Patchwork\Utf8\Bootup::filterRequestInputs();
 	}
 
 	/**
@@ -60,34 +63,6 @@ class I18NTest extends PHPUnit_Framework_TestCase {
 		$this->assertTrue(WT_I18N::strcasecmp('bcd', 'ABC') > 0);
 		$this->assertTrue(WT_I18N::strcasecmp('Abc', 'abcd') < 0);
 		$this->assertTrue(WT_I18N::strcasecmp('Abcd', 'abc') > 0);
-	}
-
-	/**
-	 * Test WT_I18N::substr()
-	 *
-	 * @return void
-	 */
-	public function testSubstr() {
-		$this->assertSame(WT_I18N::substr('', 4, 2), false);
-		$this->assertSame(WT_I18N::substr('abcd', 4, 2), false);
-		$this->assertSame(WT_I18N::substr('abcde', 4, 2), 'e');
-		$this->assertSame(WT_I18N::substr('abcdef', 4, 2), 'ef');
-		$this->assertSame(WT_I18N::substr('abcdefg', 4, 2), 'ef');
-		$this->assertSame(WT_I18N::substr('ΑΒΓΔ', 4, 2), false);
-		$this->assertSame(WT_I18N::substr('ΑΒΓΔΕ', 4, 2), 'Ε');
-		$this->assertSame(WT_I18N::substr('ΑΒΓΔΕΖ', 4, 2), 'ΕΖ');
-		$this->assertSame(WT_I18N::substr('ΑΒΓΔΕΖΗ', 4, 2), 'ΕΖ');
-	}
-
-	/**
-	 * Test WT_I18N::strlen()
-	 *
-	 * @return void
-	 */
-	public function testStrlen() {
-		$this->assertSame(WT_I18N::strlen(''), 0);
-		$this->assertSame(WT_I18N::strlen('Abc'), 3);
-		$this->assertSame(WT_I18N::strlen('АБВ'), 3);
 	}
 
 	/**

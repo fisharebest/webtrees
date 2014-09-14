@@ -583,7 +583,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 	function PrintResults() {
 		require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 		if ($this->myindilist) {
-			uasort($this->myindilist, array('WT_GedcomRecord', 'Compare'));
+			uasort($this->myindilist, array('WT_GedcomRecord', 'compare'));
 			echo format_indi_table($this->myindilist);
 			return true;
 		} else {

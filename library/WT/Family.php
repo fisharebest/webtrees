@@ -92,7 +92,7 @@ class WT_Family extends WT_GedcomRecord {
 	}
 
 	// Implement family-specific privacy logic
-	protected function _canShowByType($access_level) {
+	protected function canShowByType($access_level) {
 		// Hide a family if any member is private
 		preg_match_all('/\n1 (?:CHIL|HUSB|WIFE) @('.WT_REGEX_XREF.')@/', $this->gedcom, $matches);
 		foreach ($matches[1] as $match) {

@@ -27,7 +27,7 @@ class WT_Source extends WT_GedcomRecord {
 	const URL_PREFIX  = 'source.php?sid=';
 
 	// Implement source-specific privacy logic
-	protected function _canShowByType($access_level) {
+	protected function canShowByType($access_level) {
 		// Hide sources if they are attached to private repositories ...
 		preg_match_all('/\n1 REPO @(.+)@/', $this->gedcom, $matches);
 		foreach ($matches[1] as $match) {
@@ -38,7 +38,7 @@ class WT_Source extends WT_GedcomRecord {
 		}
 
 		// ... otherwise apply default behaviour
-		return parent::_canShowByType($access_level);
+		return parent::canShowByType($access_level);
 	}
 
 	// Generate a private version of this record

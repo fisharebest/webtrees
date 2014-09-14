@@ -57,7 +57,7 @@ if (preg_match('/^(\d\d)\d\d\/(\d\d)$/', $year, $match)) {
 	$year=$match[1].$match[2];
 }
 
-// advance-year "year range"
+// advanced-year "year range"
 if (preg_match('/^(\d+)-(\d+)$/', $year, $match)) {
 	if (strlen($match[1]) > strlen($match[2])) {
 		$match[2]=substr($match[1], 0, strlen($match[1])-strlen($match[2])).$match[2];
@@ -81,23 +81,23 @@ if (preg_match('/^(\d+)-(\d+)$/', $year, $match)) {
 $cal_date=&$ged_date->date1;
 
 // Invalid month?  Pick a sensible one.
-if ($cal_date instanceof WT_Date_Jewish && $cal_date->m==7 && $cal_date->y!=0 && !$cal_date->IsLeapYear())
+if ($cal_date instanceof WT_Date_Jewish && $cal_date->m==7 && $cal_date->y!=0 && !$cal_date->isLeapYear())
 	$cal_date->m=6;
 
 // Fill in any missing bits with todays date
-$today=$cal_date->Today();
+$today=$cal_date->today();
 if ($cal_date->d==0) $cal_date->d=$today->d;
 if ($cal_date->m==0) $cal_date->m=$today->m;
 if ($cal_date->y==0) $cal_date->y=$today->y;
-$cal_date->SetJDfromYMD();
+$cal_date->setJdFromYmd();
 if ($year==0)
 	$year=$cal_date->y;
 
 // Extract values from date
-$days_in_month=$cal_date->DaysInMonth();
-$days_in_week=$cal_date->DaysInWeek();
-$cal_month=$cal_date->Format('%O');
-$today_month=$today->Format('%O');
+$days_in_month=$cal_date->daysInMonth();
+$days_in_week=$cal_date->daysInWeek();
+$cal_month=$cal_date->format('%O');
+$today_month=$today->format('%O');
 
 // Invalid dates?  Go to monthly view, where they'll be found.
 if ($cal_date->d>$days_in_month && $action=='today')
@@ -138,25 +138,25 @@ echo '<tr><td class="descriptionbox vmiddle">';
 echo WT_I18N::translate('Day'), '</td><td colspan="3" class="optionbox">';
 for ($d=1; $d<=$days_in_month; $d++) {
 	// Format the day number using the calendar
-	$tmp=new WT_Date($cal_date->Format("%@ {$d} %O %E"));
-	$d_fmt=$tmp->date1->Format('%j');
+	$tmp=new WT_Date($cal_date->format("%@ {$d} %O %E"));
+	$d_fmt=$tmp->date1->format('%j');
 	if ($d==$cal_date->d)
 		echo "<span class=\"error\">{$d_fmt}</span>";
 	else
 		echo "<a href=\"calendar.php?cal={$cal}&amp;day={$d}&amp;month={$cal_month}&amp;year={$cal_date->y}&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action={$action}"."\">{$d_fmt}</a>";
 	echo ' | ';
 }
-$tmp=new WT_Date($today->Format('%@ %A %O %E')); // Need a WT_Date object to get localisation
+$tmp=new WT_Date($today->format('%@ %A %O %E')); // Need a WT_Date object to get localisation
 echo "<a href=\"calendar.php?cal={$cal}&amp;day={$today->d}&amp;month={$today_month}&amp;year={$today->y}&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action={$action}\"><b>".$tmp->Display(false, NULL, array()).'</b></a>';
 echo '</td></tr>';
 // Month selector
 echo '<tr><td class="descriptionbox vmiddle">';
 echo WT_I18N::translate('Month'), '</td>';
 echo '<td class="optionbox" colspan="3">';
-for ($n=1; $n<=$cal_date->MonthsInYear(); ++$n) {
-	$month_name=$cal_date->NUM_TO_MONTH_NOMINATIVE($n, $cal_date->IsLeapYear());
+for ($n=1; $n<=$cal_date->monthsInYear(); ++$n) {
+	$month_name=$cal_date->monthNameNominativeCase($n, $cal_date->isLeapYear());
 	$m = array_search($n, $cal_date::$MONTH_ABBREV);
-	if ($m=='ADS' && $cal_date instanceof WT_Date_Jewish && !$cal_date->IsLeapYear()) {
+	if ($m=='ADS' && $cal_date instanceof WT_Date_Jewish && !$cal_date->isLeapYear()) {
 		// No month 7 in Jewish leap years.
 		continue;
 	}
@@ -165,7 +165,7 @@ for ($n=1; $n<=$cal_date->MonthsInYear(); ++$n) {
 	echo "<a href=\"calendar.php?cal={$cal}&amp;day={$cal_date->d}&amp;month={$m}&amp;year={$cal_date->y}&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action={$action}\">{$month_name}</a>";
 	echo ' | ';
 }
-echo "<a href=\"calendar.php?cal={$cal}&amp;day=".min($cal_date->d, $today->DaysInMonth())."&amp;month={$today_month}&amp;year={$today->y}&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action={$action}\"><b>".$today->Format('%F %Y').'</b></a></td></tr>';
+echo "<a href=\"calendar.php?cal={$cal}&amp;day=".min($cal_date->d, $today->daysInMonth())."&amp;month={$today_month}&amp;year={$today->y}&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action={$action}\"><b>".$today->format('%F %Y').'</b></a></td></tr>';
 // Year selector
 echo '<tr><td class="descriptionbox vmiddle">';
 echo WT_I18N::translate('Year'), '</td>';
@@ -173,7 +173,7 @@ echo '<td class="optionbox vmiddle">';
 echo "<a href=\"calendar.php?cal={$cal}&amp;day={$cal_date->d}&amp;month={$cal_month}&amp;year=".($cal_date->y==1?-1:$cal_date->y-1)."&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action={$action}\">-1</a>";
 echo " <input type=\"text\" name=\"year\" value=\"{$year}\" size=\"4\"> ";
 echo "<a href=\"calendar.php?cal={$cal}&amp;day={$cal_date->d}&amp;month={$cal_month}&amp;year=".($cal_date->y==-1?1:$cal_date->y+1)."&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action={$action}\">+1</a>";
-echo " | <a href=\"calendar.php?cal={$cal}&amp;day={$cal_date->d}&amp;month={$cal_month}&amp;year={$today->y}&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action={$action}\"><b>".$today->Format('%Y')."</b></a>";
+echo " | <a href=\"calendar.php?cal={$cal}&amp;day={$cal_date->d}&amp;month={$cal_month}&amp;year={$today->y}&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action={$action}\"><b>".$today->format('%Y')."</b></a>";
 echo help_link('annivers_year_select');
 echo '</td> ';
 
@@ -301,16 +301,16 @@ foreach (array(
 	'hijri'    =>WT_Date_Hijri::calendarName(),
 	'jalali'   =>WT_Date_Jalali::calendarName(),
 ) as $newcal=>$cal_name) {
-	$tmp=$cal_date->convert_to_cal($newcal);
-	if ($tmp->InValidRange()) {
+	$tmp=$cal_date->convertToCalendar($newcal);
+	if ($tmp->inValidRange()) {
 		if ($n++) {
 			echo ' | ';
 		}
 		if (get_class($tmp)==get_class($cal_date)) {
 			echo "<span class=\"error\">{$cal_name}</span>";
 		} else {
-			$newcalesc=urlencode($tmp->Format('%@'));
-			$tmpmonth=$tmp->Format('%O');
+			$newcalesc=urlencode($tmp->format('%@'));
+			$tmpmonth=$tmp->format('%O');
 			echo "<a href=\"calendar.php?cal={$newcalesc}&amp;day={$tmp->d}&amp;month={$tmpmonth}&amp;year={$tmp->y}&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action={$action}\">{$cal_name}</a>";
 		}
 	}
@@ -336,7 +336,7 @@ case 'today':
 	break;
 case 'calendar':
 	$cal_date->d=0;
-	$cal_date->SetJDfromYMD();
+	$cal_date->setJdFromYmd();
 	// Make a separate list for each day.  Unspecified/invalid days go in day 0.
 	$found_facts=array();
 	for ($d=0; $d<=$days_in_month; ++$d)
@@ -355,7 +355,7 @@ case 'calendar':
 	break;
 case 'year':
 	$cal_date->m=0;
-	$cal_date->SetJDfromYMD();
+	$cal_date->setJdFromYmd();
 	$found_facts=apply_filter(get_calendar_events($ged_date->MinJD(), $ged_date->MaxJD(), $events), $filterof, $filtersx);
 	// Eliminate duplicates (e.g. BET JUL 1900 AND SEP 1900 will appear twice in 1900)
 	$found_facts = array_unique($found_facts);
@@ -455,7 +455,7 @@ case 'calendar':
 	}
 	echo "<table class=\"list_table width100\"><tr>";
 	for ($week_day=0; $week_day<$days_in_week; ++$week_day) {
-		$day_name=$cal_date->LONG_DAYS_OF_WEEK(($week_day+$week_start) % $days_in_week);
+		$day_name=$cal_date->dayNames(($week_day+$week_start) % $days_in_week);
 		echo "<td class=\"descriptionbox\" width=\"".(100/$days_in_week)."%\">{$day_name}</td>";
 	}
 	echo "</tr>";
@@ -482,18 +482,38 @@ case 'calendar':
 				echo '&nbsp;';
 		else {
 			// Format the day number using the calendar
-			$tmp=new WT_Date($cal_date->Format("%@ {$d} %O %E")); $d_fmt=$tmp->date1->Format('%j');
+			$tmp=new WT_Date($cal_date->format("%@ {$d} %O %E")); $d_fmt=$tmp->date1->format('%j');
 			if ($d==$today->d && $cal_date->m==$today->m)
 				echo "<span class=\"cal_day current_day\">{$d_fmt}</span>";
 			else
 				echo "<span class=\"cal_day\">{$d_fmt}</span>";
 			// Show a converted date
 			foreach (explode('_and_', $CALENDAR_FORMAT) as $convcal) {
-				$alt_date=$cal_date->convert_to_cal($convcal);
+				switch ($convcal) {
+				case 'french':
+					$alt_date = new WT_Date_French($cal_date->minJD + $d - 1);
+					break;
+				case 'gregorian':
+					$alt_date = new WT_Date_Gregorian($cal_date->minJD + $d - 1);
+					break;
+				case 'jewish':
+					$alt_date = new WT_Date_Jewish($cal_date->minJD + $d - 1);
+					break;
+				case 'julian':
+					$alt_date = new WT_Date_Julian($cal_date->minJD + $d - 1);
+					break;
+				case 'hijri':
+					$alt_date = new WT_Date_Hijri($cal_date->minJD + $d - 1);
+					break;
+				case 'jalali':
+					$alt_date = new WT_Date_Jalali($cal_date->minJD + $d - 1);
+					break;
+				default:
+					break 2;
+				}
 				if (get_class($alt_date)!=get_class($cal_date)) {
-					list($alt_date->y, $alt_date->m, $alt_date->d)=$alt_date->JDtoYMD($cal_date->minJD+$d-1);
-					$alt_date->SetJDfromYMD();
-					echo "<span class=\"rtl_cal_day\">".$alt_date->Format("%j %M")."</span>";
+					echo "<span class=\"rtl_cal_day\">".$alt_date->format("%j %M")."</span>";
+					// Just show the first conversion
 					break;
 				}
 			}

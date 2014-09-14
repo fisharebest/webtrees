@@ -36,7 +36,7 @@ $media = WT_Media::getInstance($mid);
 function send404AndExit() {
 	$error = WT_I18N::translate('The media file was not found in this family tree');
 
-	$width = (WT_I18N::strlen($error)) * 6.5 + 50;
+	$width = (mb_strlen($error)) * 6.5 + 50;
 	$height = 60;
 	$im  = imagecreatetruecolor($width, $height);  /* Create a black image */
 	$bgc = imagecolorallocate($im, 255, 255, 255); /* set background color */
@@ -190,7 +190,7 @@ function embedText($im, $text, $maxsize, $color, $font, $vpos, $hpos) {
 
 function textlength($t, $mxl, $text) {
 	$taille_c = $t;
-	$len = WT_I18N::strlen($text);
+	$len = mb_strlen($text);
 	while (($taille_c-2)*($len) > $mxl) {
 		$taille_c--;
 		if ($taille_c == 2) break;
