@@ -251,11 +251,11 @@ class WT_GedcomRecord {
 
 	// Generate a URL to this record, suitable for use in HTML, etc.
 	public function getHtmlUrl() {
-		return $this->_getLinkUrl(static::URL_PREFIX, '&amp;');
+		return $this->getLinkUrl(static::URL_PREFIX, '&amp;');
 	}
 	// Generate a URL to this record, suitable for use in javascript, HTTP headers, etc.
 	public function getRawUrl() {
-		return $this->_getLinkUrl(static::URL_PREFIX, '&');
+		return $this->getLinkUrl(static::URL_PREFIX, '&');
 	}
 
 	// Generate an absolute URL for this record, suitable for sitemap.xml, RSS feeds, etc.
@@ -263,7 +263,7 @@ class WT_GedcomRecord {
 		return WT_SERVER_NAME . WT_SCRIPT_PATH . $this->getHtmlUrl();
 	}
 
-	private function _getLinkUrl($link, $separator) {
+	private function getLinkUrl($link, $separator) {
 		if ($this->gedcom_id == WT_GED_ID) {
 			return $link . $this->getXref() . $separator . 'ged=' . WT_GEDURL;
 		} elseif ($this->gedcom_id == 0) {
@@ -309,11 +309,11 @@ class WT_GedcomRecord {
 		}
 
 		// Different types of record have different privacy rules
-		return $this->_canShowByType($access_level);
+		return $this->canShowByType($access_level);
 	}
 
 	// Each object type may have its own special rules, and re-implement this function.
-	protected function _canShowByType($access_level) {
+	protected function canShowByType($access_level) {
 		global $global_facts;
 
 		if (isset($global_facts[static::RECORD_TYPE])) {
@@ -550,10 +550,10 @@ class WT_GedcomRecord {
 
 	// Static helper function to sort an array of objects by name
 	// Records whose names cannot be displayed are sorted at the end.
-	public static function Compare($x, $y) {
+	public static function compare($x, $y) {
 		if ($x->canShowName()) {
 			if ($y->canShowName()) {
-				return utf8_strcasecmp($x->getSortName(), $y->getSortName());
+				return WT_I18N::strcasecmp($x->getSortName(), $y->getSortName());
 			} else {
 				return -1; // only $y is private
 			}
@@ -811,18 +811,18 @@ class WT_GedcomRecord {
 	// Get the last-change timestamp for this record, either as a formatted string
 	// (for display) or as a unix timestamp (for sorting)
 	//////////////////////////////////////////////////////////////////////////////
-	public function LastChangeTimestamp($sorting=false) {
+	public function lastChangeTimestamp($sorting=false) {
 		$chan = $this->getFirstFact('CHAN');
 
 		if ($chan) {
 			// The record does have a CHAN event
 			$d = $chan->getDate()->MinDate();
 			if (preg_match('/\n3 TIME (\d\d):(\d\d):(\d\d)/', $chan->getGedcom(), $match)) {
-				$t=mktime((int)$match[1], (int)$match[2], (int)$match[3], (int)$d->Format('%n'), (int)$d->Format('%j'), (int)$d->Format('%Y'));
+				$t=mktime((int)$match[1], (int)$match[2], (int)$match[3], (int)$d->format('%n'), (int)$d->format('%j'), (int)$d->format('%Y'));
 			} elseif (preg_match('/\n3 TIME (\d\d):(\d\d)/', $chan->getGedcom(), $match)) {
-				$t=mktime((int)$match[1], (int)$match[2], 0, (int)$d->Format('%n'), (int)$d->Format('%j'), (int)$d->Format('%Y'));
+				$t=mktime((int)$match[1], (int)$match[2], 0, (int)$d->format('%n'), (int)$d->format('%j'), (int)$d->format('%Y'));
 			} else {
-				$t=mktime(0, 0, 0, (int)$d->Format('%n'), (int)$d->Format('%j'), (int)$d->Format('%Y'));
+				$t=mktime(0, 0, 0, (int)$d->format('%n'), (int)$d->format('%j'), (int)$d->format('%Y'));
 			}
 			if ($sorting) {
 				return $t;
@@ -842,7 +842,7 @@ class WT_GedcomRecord {
 	//////////////////////////////////////////////////////////////////////////////
 	// Get the last-change user for this record
 	//////////////////////////////////////////////////////////////////////////////
-	public function LastChangeUser() {
+	public function lastChangeUser() {
 		$chan = $this->getFirstFact('CHAN');
 
 		if (is_null($chan)) {

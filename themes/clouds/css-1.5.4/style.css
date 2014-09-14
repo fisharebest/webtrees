@@ -1136,9 +1136,9 @@ h4 {
 	font-weight: bold;
 }
 
-.alpha_index {
-	margin-top: 10px;
-}
+.center, .alpha_index {
+	margin: 12px 0;
+	}
 
 p.center a {
 	font-size: 13px;

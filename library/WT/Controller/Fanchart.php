@@ -61,7 +61,8 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 	 * split and center text by lines
 	 *
 	 * @param string $data input string
-	 * @param int $maxlen max length of each line
+	 * @param int    $maxlen max length of each line
+	 *
 	 * @return string $text output string
 	 */
 	public function split_align_text($data, $maxlen) {
@@ -80,53 +81,62 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 		$split = explode(' ', $data);
 		$text = '';
 		$line = '';
-		// do not split hebrew line
 
+		// do not split hebrew line
 		$found = false;
 		foreach ($RTLOrd as $ord) {
 			if (strpos($data, chr($ord)) !== false) $found=true;
 		}
-		if ($found) $line=$data;
-		else
-		foreach ($split as $word) {
-			$len = strlen($line);
-			//if (!empty($line) and ord($line{0})==215) $len/=2; // hebrew text
-			$wlen = strlen($word);
-			// line too long ?
-			if (($len+$wlen)<$maxlen) {
-				if (!empty($line)) $line .= " ";
-				$line .= "$word";
-			}
-			else {
-				$p = max(0,(int)(($maxlen-$len)/2));
-				if (!empty($line)) {
-					$line = str_repeat(" ", $p) . "$line"; // center alignment using spaces
-					$text .= "$line\n";
+		if ($found) {
+			$line=$data;
+		} else {
+			foreach ($split as $word) {
+				$len = strlen($line);
+				$wlen = strlen($word);
+				if (($len+$wlen)<$maxlen) {
+					if (!empty($line)) $line .= " ";
+					$line .= "$word";
+				} else {
+					$p = max(0,(int)(($maxlen-$len)/2));
+					if (!empty($line)) {
+						$line = str_repeat(' ', $p) . $line; // center alignment using spaces
+						$text .= $line. "\n";
+					}
+					$line = $word;
 				}
-				$line = $word;
 			}
 		}
 		// last line
 		if (!empty($line)) {
 			$len = strlen($line);
-			if (in_array(ord($line{0}),$RTLOrd)) $len/=2;
+			if (in_array(ord($line{0}),$RTLOrd)) {
+				$len/=2;
+			}
 			$p = max(0,(int)(($maxlen-$len)/2));
-			$line = str_repeat(" ", $p) . "$line"; // center alignment using spaces
-			$text .= "$line";
+			$line = str_repeat(' ', $p) . $line; // center alignment using spaces
+			$text .= $line;
 		}
+
 		return $text;
 	}
 
-	// Generate either the HTML or PNG components of the chart - we send them separately
-	public function generate_fan_chart($what) {
-		global $fanChart;
-
+	/**
+	 * Generate both the HTML and PNG components of the fan chart
+	 *
+	 * The HTML and PNG components both require the same co-ordinate calculations,
+	 * so we generate them using the same code, but we send them in separate
+	 * HTTP requests.
+	 *
+	 * @param string   $what     "png" or "html"
+	 * @param string[] $fanChart Presentation parameters, provided by the theme.
+	 *
+	 * @return string
+	 */
+	public function generate_fan_chart($what, $fanChart) {
 		$treeid = ancestry_array($this->root->getXref(), $this->generations);
 		$fanw   = 640 * $this->fan_width / 100;
 		$fandeg = 90 * $this->fan_style;
 		$html   = '';
-
-		$fanChart['size'] = intval($fanChart['size']); // 7px => 7
 
 		$treesize = count($treeid);
 
@@ -194,12 +204,12 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 					$name    = WT_Filter::unescapeHtml($person->getFullName());
 					$addname = WT_Filter::unescapeHtml($person->getAddName());
 
-					$text = reverseText($name);
+					$text = WT_I18N::reverseText($name);
 					if ($addname) {
-						$text .= "\n" . reverseText($addname);
+						$text .= "\n" . WT_I18N::reverseText($addname);
 					}
 
-					$text .= "\n" . WT_Filter::unescapeHtml($person->getLifeSpan());
+					$text .= "\n" . WT_I18N::reverseText($person->getLifeSpan());
 
 					switch($person->getSex()) {
 					case 'M':

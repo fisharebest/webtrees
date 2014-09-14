@@ -584,7 +584,7 @@ $controller
 			}
 		}
 
-		uasort($all_tags, 'utf8_strcasecmp');
+		uasort($all_tags, array('WT_I18N', 'strcasecmp'));
 
 		echo '<tr><td>';
 		echo '<input type="text" class="pedigree_form" name="xref" id="xref" size="6" maxlength="20">';

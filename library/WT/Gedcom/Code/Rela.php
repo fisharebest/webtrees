@@ -200,7 +200,7 @@ class WT_Gedcom_Code_Rela {
 		foreach (self::$TYPES as $type) {
 			$values[$type]=self::getValue($type, $record);
 		}
-		uasort($values, 'utf8_strcasecmp');
+		uasort($values, array('WT_I18N', 'strcasecmp'));
 		return $values;
 	}
 }

@@ -75,7 +75,7 @@ if ($action=="filter") {
 	$myindilist=search_indis_names($filter_array, array(WT_GED_ID), 'AND');
 	if ($myindilist) {
 		echo "<tr><td class=\"list_value_wrap\"><ul>";
-		usort($myindilist, array('WT_GedcomRecord', 'Compare'));
+		usort($myindilist, array('WT_GedcomRecord', 'compare'));
 		foreach ($myindilist as $indi ) {
 			$nam = $indi->getAllNames();
 			$wholename = rtrim($nam[0]['givn'],'*')."&nbsp;".$nam[0]['surname'];

@@ -1,9 +1,11 @@
 # Rhumsaa\Uuid for PHP
 
 [![Build Status](https://travis-ci.org/ramsey/uuid.png?branch=master)](https://travis-ci.org/ramsey/uuid)
+[![Coverage Status](https://coveralls.io/repos/ramsey/uuid/badge.png)](https://coveralls.io/r/ramsey/uuid)
 [![Latest Stable Version](https://poser.pugx.org/rhumsaa/uuid/v/stable.png)](https://packagist.org/packages/rhumsaa/uuid)
 [![Latest Unstable Version](https://poser.pugx.org/rhumsaa/uuid/v/unstable.png)](https://packagist.org/packages/rhumsaa/uuid)
 [![Total Downloads](https://poser.pugx.org/rhumsaa/uuid/downloads.png)](https://packagist.org/packages/rhumsaa/uuid)
+[![HHVM Status](http://hhvm.h4cc.de/badge/rhumsaa/uuid.png)](http://hhvm.h4cc.de/package/rhumsaa/uuid)
 
 ## About
 
@@ -40,7 +42,7 @@ Some methods in this library have requirements due to integer size restrictions
 on 32-bit and 64-bit builds of PHP. A 64-bit build of PHP and the [Moontoast\Math][]
 library are recommended. However, this library is designed to work on 32-bit
 builds of PHP without Moontoast\Math, with some degraded functionality. Please
-check the API documention for more information.
+check the API documentation for more information.
 
 If a particular requirement is not present, then a `Rhumsaa\Uuid\Exception\UnsatisfiedDependencyException`
 is thrown, allowing one to catch a bad call in an environment where the call is

@@ -21,6 +21,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use Fisharebest\ExtCalendar\GregorianCalendar;
+
 class WT_Individual extends WT_GedcomRecord {
 	const RECORD_TYPE = 'INDI';
 	const SQL_FETCH   = "SELECT i_gedcom FROM `##individuals` WHERE i_id=? AND i_file=?";
@@ -40,7 +42,7 @@ class WT_Individual extends WT_GedcomRecord {
 	}
 
 	// Implement individual-specific privacy logic
-	protected function _canShowByType($access_level) {
+	protected function canShowByType($access_level) {
 		global $SHOW_DEAD_PEOPLE, $KEEP_ALIVE_YEARS_BIRTH, $KEEP_ALIVE_YEARS_DEATH;
 
 		// Dead people...
@@ -376,7 +378,7 @@ class WT_Individual extends WT_GedcomRecord {
 	 * @return string the year of birth
 	 */
 	function getBirthYear() {
-		return $this->getBirthDate()->MinDate()->Format('%Y');
+		return $this->getBirthDate()->MinDate()->format('%Y');
 	}
 
 	// Get the date of death
@@ -405,7 +407,7 @@ class WT_Individual extends WT_GedcomRecord {
 	 * @return string the year of death
 	 */
 	function getDeathYear() {
-		return $this->getDeathDate()->MinDate()->Format('%Y');
+		return $this->getDeathDate()->MinDate()->format('%Y');
 	}
 
 	// Get the range of years in which a individual lived.  e.g. “1870–”, “1870–1920”, “–1920”.
@@ -416,8 +418,8 @@ class WT_Individual extends WT_GedcomRecord {
 		return
 			/* I18N: A range of years, e.g. “1870–”, “1870–1920”, “–1920” */ WT_I18N::translate(
 				'%1$s–%2$s',
-				'<span title="'.strip_tags($this->getBirthDate()->Display()).'">'.$this->getBirthDate()->MinDate()->Format('%Y').'</span>',
-				'<span title="'.strip_tags($this->getDeathDate()->Display()).'">'.$this->getDeathDate()->MinDate()->Format('%Y').'</span>'
+				'<span title="'.strip_tags($this->getBirthDate()->Display()).'">'.$this->getBirthDate()->MinDate()->format('%Y').'</span>',
+				'<span title="'.strip_tags($this->getDeathDate()->Display()).'">'.$this->getDeathDate()->MinDate()->format('%Y').'</span>'
 			);
 	}
 
@@ -528,8 +530,10 @@ class WT_Individual extends WT_GedcomRecord {
 					}
 				}
 				if ($min && $max) {
-					list($y)=WT_Date_Gregorian::JDtoYMD((int)((max($min)+min($max))/2));
-					$this->_getEstimatedBirthDate=new WT_Date("EST {$y}");
+					$gregorian_calendar = new GregorianCalendar;
+
+					list($year) = $gregorian_calendar->jdToYmd((int)((max($min) + min($max)) / 2));
+					$this->_getEstimatedBirthDate=new WT_Date('EST ' . $year);
 				} else {
 					$this->_getEstimatedBirthDate=new WT_Date(''); // always return a date object
 				}
@@ -1073,25 +1077,25 @@ class WT_Individual extends WT_GedcomRecord {
 			$surn = $tmp[$this->getPrimaryName()]['surname'];
 			$new_givn = explode(' ', $givn);
 			$count_givn = count($new_givn);
-			$len_givn = utf8_strlen($givn);
-			$len_surn = utf8_strlen($surn);
+			$len_givn = mb_strlen($givn);
+			$len_surn = mb_strlen($surn);
 			$len = $len_givn + $len_surn;
 			$i = 1;
-			while ($len > $char && $i<=$count_givn) {
-				$new_givn[$count_givn-$i] = utf8_substr($new_givn[$count_givn-$i],0,1);
+			while ($len > $char && $i <= $count_givn) {
+				$new_givn[$count_givn-$i] = mb_substr($new_givn[$count_givn-$i], 0, 1);
 				$givn = implode(' ', $new_givn);
-				$len_givn = utf8_strlen($givn);
+				$len_givn = mb_strlen($givn);
 				$len = $len_givn + $len_surn;
 				$i++;
 			}
-			$max_surn = $char-$i*2;
+			$max_surn = $char - $i * 2;
 			if ($len_surn > $max_surn) {
-				$surn = substr($surn, 0, $max_surn).'…';
+				$surn = substr($surn, 0, $max_surn) . '…';
 			}
-			$shortname =  str_replace(
+			$shortname = str_replace(
 				array('@P.N.', '@N.N.'),
 				array($UNKNOWN_PN, $UNKNOWN_NN),
-				$givn.' '.$surn
+				$givn . ' ' . $surn
 			);
 			return $shortname;
 		} else {

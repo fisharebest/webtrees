@@ -36,7 +36,7 @@ class WT_Note extends WT_GedcomRecord {
 	}
 
 	// Implement note-specific privacy logic
-	protected function _canShowByType($access_level) {
+	protected function canShowByType($access_level) {
 		// Hide notes if they are attached to private records
 		$linked_ids=WT_DB::prepare(
 			"SELECT l_from FROM `##link` WHERE l_to=? AND l_file=?"
@@ -49,7 +49,7 @@ class WT_Note extends WT_GedcomRecord {
 		}
 
 		// Apply default behaviour
-		return parent::_canShowByType($access_level);
+		return parent::canShowByType($access_level);
 	}
 
 	// Generate a private version of this record
@@ -85,6 +85,6 @@ class WT_Note extends WT_GedcomRecord {
 		}
 
 		list($text) = explode("\n", $text);
-		$this->_addName('NOTE', strlen($text) > 100 ? utf8_substr($text, 0, 100) . WT_I18N::translate('…') : $text, $this->getGedcom());
+		$this->_addName('NOTE', strlen($text) > 100 ? mb_substr($text, 0, 100) . WT_I18N::translate('…') : $text, $this->getGedcom());
 	}
 }

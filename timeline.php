@@ -126,11 +126,11 @@ document.onmousemove = function (e) {
 		}
 		var yearform = document.getElementById('yearform' + personnum);
 		var ageform = document.getElementById('ageform' + personnum);
-		yearform.innerHTML = year + "      " + month + " <?php echo utf8_substr(WT_I18N::translate('Month:'), 0, 1); ?>   " + day + " <?php echo utf8_substr(WT_I18N::translate('Day:'), 0, 1); ?>";
+		yearform.innerHTML = year + "      " + month + " <?php echo mb_substr(WT_I18N::translate('Month:'), 0, 1); ?>   " + day + " <?php echo mb_substr(WT_I18N::translate('Day:'), 0, 1); ?>";
 		if (ba * yage > 1 || ba * yage < -1 || ba * yage === 0) {
-			ageform.innerHTML = (ba * yage) + " <?php echo utf8_substr(WT_I18N::translate('years'), 0, 1); ?>   " + (ba * mage) + " <?php echo utf8_substr(WT_I18N::translate('Month:'), 0, 1); ?>   " + (ba * dage) + " <?php echo utf8_substr(WT_I18N::translate('Day:'), 0, 1); ?>";
+			ageform.innerHTML = (ba * yage) + " <?php echo mb_substr(WT_I18N::translate('years'), 0, 1); ?>   " + (ba * mage) + " <?php echo mb_substr(WT_I18N::translate('Month:'), 0, 1); ?>   " + (ba * dage) + " <?php echo mb_substr(WT_I18N::translate('Day:'), 0, 1); ?>";
 		} else {
-			ageform.innerHTML = (ba * yage) + " <?php echo utf8_substr(WT_I18N::translate('Year:'), 0, 1); ?>   " + (ba * mage) + " <?php echo utf8_substr(WT_I18N::translate('Month:'), 0, 1); ?>   " + (ba * dage) + " <?php echo utf8_substr(WT_I18N::translate('Day:'), 0, 1); ?>";
+			ageform.innerHTML = (ba * yage) + " <?php echo mb_substr(WT_I18N::translate('Year:'), 0, 1); ?>   " + (ba * mage) + " <?php echo mb_substr(WT_I18N::translate('Month:'), 0, 1); ?>   " + (ba * dage) + " <?php echo mb_substr(WT_I18N::translate('Day:'), 0, 1); ?>";
 		}
 		var line = document.getElementById('ageline' + personnum);
 		var temp = newx-oldx;

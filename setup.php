@@ -59,8 +59,8 @@ if (version_compare(PHP_VERSION, WT_REQUIRED_PHP_VERSION)<0) {
 }
 
 require 'includes/functions/functions.php';
-require 'includes/functions/functions_utf-8.php';
 require 'includes/functions/functions_edit.php';
+
 $WT_REQUEST = new Zend_Controller_Request_Http();
 $WT_SESSION = new stdClass;
 $WT_SESSION->locale  = null; // Needed for WT_I18N
@@ -127,7 +127,6 @@ if (!isset($_POST['lang'])) {
 	}
 	// Recommended extensions
 	foreach (array(
-		'calendar'  => /* I18N: a program feature */ WT_I18N::translate('jewish calendar'),
 		'gd'        => /* I18N: a program feature */ WT_I18N::translate('creating thumbnails of images'),
 		'xml'       => /* I18N: a program feature */ WT_I18N::translate('reporting'),
 		'simplexml' => /* I18N: a program feature */ WT_I18N::translate('reporting'),

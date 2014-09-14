@@ -21,9 +21,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-function compare_people($a, $b) {
-	return WT_Date::Compare($a->getEstimatedBirthDate(), $b->getEstimatedBirthDate());
-}
+use Fisharebest\ExtCalendar\GregorianCalendar;
 
 class WT_Controller_Lifespan extends WT_Controller_Page {
 	var $pids = array ();
@@ -167,7 +165,9 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 		}
 
 		// Sort the array in order of birth year
-		uasort($this->people, "compare_people");
+		uasort($this->people, function (WT_Individual $a, WT_Individual $b) {
+			return WT_Date::Compare($a->getEstimatedBirthDate(), $b->getEstimatedBirthDate());
+		});
 		//If there is people in the array posted back this if occurs
 		if (isset ($this->people[0])) {
 			//Find the maximum Death year and mimimum Birth year for each individual returned in the array.
@@ -252,8 +252,6 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 	//Prints the time line
 	function PrintTimeline($startYear, $endYear) {
 		$leftPosition = 14; //start point
-		$width = 8; //base width
-		$height = 10; //standard height
 		$tickDistance = 50; //length of one timeline section
 		$top = 65; //top starting position
 		$yearSpan = 5; //default zoom level
@@ -287,7 +285,7 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 		if (count($ar) == 0) return $top;
 		$maxY = $top;
 
-		foreach ($ar as $key => $value) {
+		foreach ($ar as $value) {
 			//Creates appropriate color scheme to show relationships
 			$this->currentsex = $value->getSex();
 			if ($this->currentsex == "M") {
@@ -332,20 +330,16 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 				$height = 2 * $this->zoomfactor;
 
 				$startPos = (($birthYear - $this->timelineMinYear) * $this->zoomfactor) + 14 + $modFix;
-				$minlength = utf8_strlen(strip_tags($value->getFullName())) * $this->zoomfactor;
+				$minlength = mb_strlen(strip_tags($value->getFullName())) * $this->zoomfactor;
 
 				if ($startPos > 15) {
-					$startPos = (($birthYear - $this->timelineMinYear) * $this->zoomfactor) + 15 + $modFix;
 					$startPos = (($birthYear - $this->timelineMinYear) * $this->zoomfactor) + 15;
 					$width = (($deathYear - $birthYear) * $this->zoomfactor) - 2;
 				}
-				//set start position to deathyear
-				$int = $deathYear;
+
 				//set minimum width for single year lifespans
-				if ($width < 10)
-				{
+				if ($width < 10) {
 					$width = 10;
-					$int = $birthYear+1;
 				}
 
 				$lifespan = "<span dir=\"ltr\">$birthYear-</span>";
@@ -404,8 +398,7 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 				sort_facts($unparsedEvents);
 
 				$eventinformation = Array();
-				$eventspacing = Array();
-				foreach ($unparsedEvents as $index=>$val) {
+				foreach ($unparsedEvents as $val) {
 					$date = $val->getDate();
 					if (!empty($date)) {
 						$fact = $val->getTag();
@@ -437,7 +430,6 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 						echo "<div style=\"position:absolute; left:", $evtwidth, ";\"><a class=\"showit\" href=\"#\" style=\"top:-2px; font-size:10px;\"><b>";
 						$text = explode("-fact, ", $val);
 						$fact = $text[0];
-						$val = $text[1];
 						echo '</b><span>', self::getAbbreviation($fact), '</span></a></div>';
 					}
 					$indiName = $value->getFullName();
@@ -464,7 +456,6 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 							echo '<div style="position:absolute; left:', $evtwidth, ' "><a class="showit" href="#" style="top:-2px; font-size:10px;"><b>';
 							$text = explode("-fact,", $val);
 							$fact = $text[0];
-							$val = $text[1];
 							echo '</b><span>'.self::getAbbreviation($fact).'</span></a></div>';
 						}
 						$indiName = $value->getFullName();
@@ -490,7 +481,7 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 						echo '<a class="showit" href="'.$value->getHtmlUrl().'"><b>';
 						echo self::getAbbreviation('BIRT');
 						echo '</b><span>'.$value->getSexImage().$indiName.'<br>'.WT_Gedcom_Tag::getLabel('BIRT').' '.strip_tags($bdate->Display(false)).' '.$value->getBirthPlace().'<br>';
-						foreach ($eventinformation as $evtwidth=>$val) {
+						foreach ($eventinformation as $val) {
 							$text = explode('-fact,', $val);
 							$val = $text[1];
 							echo $val."<br>";
@@ -519,10 +510,12 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 
 	// Search for people who had events in a given year range
 	private static function search_indis_year_range($startyear, $endyear) {
-		// TODO: We should use Julian-days, rather than gregorian years,
-		// to allow the lifespan chart, etc., to use other calendars.
-		$startjd=WT_Date_Gregorian::YMDtoJD($startyear, 1, 1);
-		$endjd  =WT_Date_Gregorian::YMDtoJD($endyear+1, 1, 1)-1;
+		// At present, the lifespan chart is driven by Gregorian years.
+		// We ought to allow it to work with other calendars...
+		$gregorian_calendar = new GregorianCalendar;
+
+		$startjd = $gregorian_calendar->ymdToJd($startyear, 1, 1);
+		$endjd   = $gregorian_calendar->ymdToJd($endyear, 12, 31);
 
 		$sql=
 			"SELECT DISTINCT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom".
@@ -546,7 +539,7 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 		case 'BIRT':  return WT_I18N::translate_c('Abbreviation for birth',            'b.');
 		case 'MARR':  return WT_I18N::translate_c('Abbreviation for marriage',         'm.');
 		case 'DEAT':  return WT_I18N::translate_c('Abbreviation for death',            'd.');
-		default:      return utf8_substr(WT_Gedcom_Tag::getLabel($tag), 0, 1); // Just use the first letter of the full fact
+		default:      return mb_substr(WT_Gedcom_Tag::getLabel($tag), 0, 1); // Just use the first letter of the full fact
 		}
 	}
 }

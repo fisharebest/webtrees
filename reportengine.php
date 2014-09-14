@@ -313,20 +313,6 @@ elseif ($action=='run') {
 			break;
 	}
 
-	$ascii_langs = array('en', 'da', 'nl', 'fr', 'he', 'hu', 'de', 'nn', 'es');
-
-	//-- setup special characters array to force embedded fonts
-	$SpecialOrds = $RTLOrd;
-	for ($i=195; $i<215; $i++) $SpecialOrds[] = $i;
-
-	if (!isset($embed_fonts)) {
-		if (in_array(WT_LOCALE, $ascii_langs)) {
-			$embed_fonts = false;
-		} else {
-			$embed_fonts = true;
-		}
-	}
-
 	/**
 	 * element handlers array
 	 *
@@ -394,7 +380,7 @@ elseif ($action=='run') {
 	 *
 	 * @global object $currentElement
 	 */
-	$currentElement = new Element();
+	$currentElement = new WT_Report_Base_Element();
 
 	/**
 	 * Should character data be printed

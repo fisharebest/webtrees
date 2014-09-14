@@ -23,8 +23,6 @@
 
 use WT\Log;
 
-require_once WT_ROOT . 'includes/functions/functions_export.php';
-
 // Tidy up a gedcom record on import, so that we can access it consistently/efficiently.
 function reformat_record_import($rec) {
 	global $WORD_WRAPPED_NOTES, $GEDCOM_MEDIA_PATH;
@@ -796,7 +794,7 @@ function update_places($gid, $ged_id, $gedrec) {
 	$pt = preg_match_all("/^[2-9] PLAC (.+)/m", $gedrec, $match, PREG_SET_ORDER);
 	for ($i = 0; $i < $pt; $i++) {
 		$place = trim($match[$i][1]);
-		$lowplace = utf8_strtolower($place);
+		$lowplace = WT_I18N::strtolower($place);
 		//-- if we have already visited this place for this person then we don't need to again
 		if (isset($personplace[$lowplace])) {
 			continue;
@@ -865,9 +863,9 @@ function update_dates($xref, $ged_id, $gedrec) {
 				$fact=$tmatch[1];
 			}
 			$date=new WT_Date($match[2]);
-			$sql_insert_date->execute(array($date->date1->d, $date->date1->Format('%O'), $date->date1->m, $date->date1->y, $date->date1->minJD, $date->date1->maxJD, $fact, $xref, $ged_id, $date->date1->Format('%@')));
+			$sql_insert_date->execute(array($date->date1->d, $date->date1->format('%O'), $date->date1->m, $date->date1->y, $date->date1->minJD, $date->date1->maxJD, $fact, $xref, $ged_id, $date->date1->format('%@')));
 			if ($date->date2) {
-				$sql_insert_date->execute(array($date->date2->d, $date->date2->Format('%O'), $date->date2->m, $date->date2->y, $date->date2->minJD, $date->date2->maxJD, $fact, $xref, $ged_id, $date->date2->Format('%@')));
+				$sql_insert_date->execute(array($date->date2->d, $date->date2->format('%O'), $date->date2->m, $date->date2->y, $date->date2->minJD, $date->date2->maxJD, $fact, $xref, $ged_id, $date->date2->format('%@')));
 			}
 		}
 	}

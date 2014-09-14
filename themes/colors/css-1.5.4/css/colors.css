@@ -1117,6 +1117,10 @@ span.title {
 	font-size: 13px;
 }
 
+.center, .alpha_index {
+	margin: 12px 0;
+	}
+
 #content .center a.warning,
 #login-box span.error,
 #calendar-page span.error {
@@ -2210,10 +2214,6 @@ a.showit:hover > span {
 
 .ui-sortable .noprint {
 	display: none;
-}
-
-.alpha_index {
-	margin-top: 10px;
 }
 
 .clearfloat {
@@ -3320,11 +3320,11 @@ span.link_text {
 }
 
 .odd {
-	background-color: #fafafa;
+	background-color: #e7eef3;
 }
 
 .even {
-	background-color: #fff;
+	background-color: #e6e6e6;
 }
 
 .css_right {

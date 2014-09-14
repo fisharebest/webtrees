@@ -106,7 +106,7 @@ class WT_Query_Name {
 	 * @return string
 	 */
 	static public function initialLetter($name) {
-		$name = utf8_strtoupper($name);
+		$name = WT_I18N::strtoupper($name);
 		switch (WT_LOCALE) {
 		case 'cs':
 			if (substr($name, 0, 2) == 'CH') {
@@ -148,7 +148,7 @@ class WT_Query_Name {
 			break;
 		}
 		// No special rules - just take the first character
-		return utf8_substr($name, 0, 1);
+		return mb_substr($name, 0, 1);
 	}
 
 	/**
@@ -171,7 +171,7 @@ class WT_Query_Name {
 	 *
 	 * @return string
 	 */
-	static private function _getInitialSql($field, $letter) {
+	static private function getInitialSql($field, $letter) {
 		switch (WT_LOCALE) {
 		case 'cs':
 			switch ($letter) {
@@ -236,7 +236,7 @@ class WT_Query_Name {
 		foreach (self::getAlphabetForLocale(WT_LOCALE) as $letter) {
 			$count = 1;
 			if ($totals) {
-				$count = WT_DB::prepare($sql . " AND " . self::_getInitialSql('n_surn', $letter))->fetchOne();
+				$count = WT_DB::prepare($sql . " AND " . self::getInitialSql('n_surn', $letter))->fetchOne();
 			}
 			$alphas[$letter] = $count;
 		}
@@ -302,7 +302,7 @@ class WT_Query_Name {
 		} elseif ($salpha=='@') {
 			$sql .= " AND n_surn='@N.N.'";
 		} elseif ($salpha) {
-			$sql .= " AND " . self::_getInitialSql('n_surn', $salpha);
+			$sql .= " AND " . self::getInitialSql('n_surn', $salpha);
 		} else {
 			// All surnames
 			$sql .= " AND n_surn NOT IN ('', '@N.N.')";
@@ -312,7 +312,7 @@ class WT_Query_Name {
 		// are any names beginning with that letter.  It looks better to
 		// show the full alphabet, rather than omitting rare letters such as X
 		foreach (self::getAlphabetForLocale(WT_LOCALE) as $letter) {
-			$count=WT_DB::prepare($sql . " AND " . self::_getInitialSql('n_givn', $letter))->fetchOne();
+			$count=WT_DB::prepare($sql . " AND " . self::getInitialSql('n_givn', $letter))->fetchOne();
 			$alphas[$letter] = $count;
 		}
 
@@ -332,7 +332,7 @@ class WT_Query_Name {
 		} elseif ($salpha=='@') {
 			$sql .= " AND n_surn='@N.N.'";
 		} elseif ($salpha) {
-			$sql .= " AND " . self::_getInitialSql('n_surn', $salpha);
+			$sql .= " AND " . self::getInitialSql('n_surn', $salpha);
 		} else {
 			// All surnames
 			$sql .= " AND n_surn NOT IN ('', '@N.N.')";
@@ -376,7 +376,7 @@ class WT_Query_Name {
 		} elseif ($salpha=='@') {
 			$sql.=" AND n_surn='@N.N.'";
 		} elseif ($salpha) {
-			$sql.=" AND ".self::_getInitialSql('n_surn', $salpha);
+			$sql.=" AND ".self::getInitialSql('n_surn', $salpha);
 		} else {
 			// All surnames
 			$sql.=" AND n_surn NOT IN ('', '@N.N.')";
@@ -388,7 +388,7 @@ class WT_Query_Name {
 
 		$list=array();
 		foreach (WT_DB::prepare($sql)->fetchAll() as $row) {
-			$list[utf8_strtoupper($row->n_surn)][$row->n_surname][$row->n_id]=true;
+			$list[WT_I18N::strtoupper($row->n_surn)][$row->n_surname][$row->n_id]=true;
 		}
 		return $list;
 	}
@@ -424,13 +424,13 @@ class WT_Query_Name {
 		} elseif ($salpha=='@') {
 			$sql .= " AND n_surn='@N.N.'";
 		} elseif ($salpha) {
-			$sql .= " AND ".self::_getInitialSql('n_surn', $salpha);
+			$sql .= " AND ".self::getInitialSql('n_surn', $salpha);
 		} else {
 			// All surnames
 			$sql .= " AND n_surn NOT IN ('', '@N.N.')";
 		}
 		if ($galpha) {
-			$sql .= " AND " . self::_getInitialSql('n_givn', $galpha);
+			$sql .= " AND " . self::getInitialSql('n_givn', $galpha);
 		}
 
 		$sql .= " ORDER BY CASE n_surn WHEN '@N.N.' THEN 1 ELSE 0 END, n_surn COLLATE '" . WT_I18N::$collation . "', CASE n_givn WHEN '@P.N.' THEN 1 ELSE 0 END, n_givn COLLATE '" . WT_I18N::$collation . "'";
@@ -475,7 +475,7 @@ class WT_Query_Name {
 				$list[$family->getXref()]=$family;
 			}
 		}
-		usort($list, array('WT_GedcomRecord', 'Compare'));
+		usort($list, array('WT_GedcomRecord', 'compare'));
 		return $list;
 	}
 }

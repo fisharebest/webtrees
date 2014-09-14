@@ -49,7 +49,7 @@ class WT_Media extends WT_GedcomRecord {
 	}
 
 	// Implement media-specific privacy logic ...
-	protected function _canShowByType($access_level) {
+	protected function canShowByType($access_level) {
 		// Hide media objects if they are attached to private records
 		$linked_ids=WT_DB::prepare(
 			"SELECT l_from FROM `##link` WHERE l_to=? AND l_file=?"
@@ -62,7 +62,7 @@ class WT_Media extends WT_GedcomRecord {
 		}
 
 		// ... otherwise apply default behaviour
-		return parent::_canShowByType($access_level);
+		return parent::canShowByType($access_level);
 	}
 
 	// Fetch the record from the database

@@ -24,6 +24,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use Fisharebest\ExtCalendar\PersianCalendar;
+
 class WT_Date_Jalali extends WT_Date_Calendar {
 	const CALENDAR_ESCAPE = '@#DJALALI@';
 	const CAL_START_JD    = 1948321;
@@ -31,11 +33,21 @@ class WT_Date_Jalali extends WT_Date_Calendar {
 		''=>0, 'FARVA'=>1, 'ORDIB'=>2, 'KHORD'=>3, 'TIR'=>4, 'MORDA'=>5, 'SHAHR'=>6, 'MEHR'=>7, 'ABAN'=>8, 'AZAR'=>9, 'DEY'=>10, 'BAHMA'=>11, 'ESFAN'=>12
 	);
 
+	/**
+	 * Create a new calendar date
+	 *
+	 * @param mixed $date
+	 */
+	public function __construct($date) {
+		$this->calendar = new PersianCalendar;
+		parent::__construct($date);
+	}
+
 	static function calendarName() {
 		return /* I18N: The Persian/Jalali calendar */ WT_I18N::translate('Jalali');
 	}
 
-	static function NUM_TO_MONTH_NOMINATIVE($n, $leap_year) {
+	static function monthNameNominativeCase($n, $leap_year) {
 		switch ($n) {
 		case 1:  return /* I18N:  1st month in the Persian/Jalali calendar */ WT_I18N::translate_c('NOMINATIVE', 'Farvardin'  );
 		case 2:  return /* I18N:  2nd month in the Persian/Jalali calendar */ WT_I18N::translate_c('NOMINATIVE', 'Ordibehesht');
@@ -53,7 +65,7 @@ class WT_Date_Jalali extends WT_Date_Calendar {
 		}
 	}
 
-	static function NUM_TO_MONTH_GENITIVE($n, $leap_year) {
+	static function monthNameGenitiveCase($n, $leap_year) {
 		switch ($n) {
 		case 1:  return /* I18N:  1st month in the Persian/Jalali calendar */ WT_I18N::translate_c('GENITIVE', 'Farvardin'  );
 		case 2:  return /* I18N:  2nd month in the Persian/Jalali calendar */ WT_I18N::translate_c('GENITIVE', 'Ordibehesht');
@@ -71,7 +83,7 @@ class WT_Date_Jalali extends WT_Date_Calendar {
 		}
 	}
 
-	static function NUM_TO_MONTH_LOCATIVE($n, $leap_year) {
+	static function monthNameLocativeCase($n, $leap_year) {
 		switch ($n) {
 		case 1:  return /* I18N:  1st month in the Persian/Jalali calendar */ WT_I18N::translate_c('LOCATIVE', 'Farvardin'  );
 		case 2:  return /* I18N:  2nd month in the Persian/Jalali calendar */ WT_I18N::translate_c('LOCATIVE', 'Ordibehesht');
@@ -89,7 +101,7 @@ class WT_Date_Jalali extends WT_Date_Calendar {
 		}
 	}
 
-	static function NUM_TO_MONTH_INSTRUMENTAL($n, $leap_year) {
+	static function monthNameInstrumentalCase($n, $leap_year) {
 		switch ($n) {
 		case 1:  return /* I18N:  1st month in the Persian/Jalali calendar */ WT_I18N::translate_c('INSTRUMENTAL', 'Farvardin'  );
 		case 2:  return /* I18N:  2nd month in the Persian/Jalali calendar */ WT_I18N::translate_c('INSTRUMENTAL', 'Ordibehesht');
@@ -107,7 +119,7 @@ class WT_Date_Jalali extends WT_Date_Calendar {
 		}
 	}
 
-	static function NUM_TO_SHORT_MONTH($n, $leap_year) {
+	static function monthNameAbbreviated($n, $leap_year) {
 		switch ($n) {
 		case 1:  return WT_I18N::translate_c('Abbreviation for Persian month: Farvardin',   'Far' );
 		case 2:  return WT_I18N::translate_c('Abbreviation for Persian month: Ordibehesht', 'Ord' );
@@ -123,51 +135,5 @@ class WT_Date_Jalali extends WT_Date_Calendar {
 		case 12: return WT_I18N::translate_c('Abbreviation for Persian month: Esfand',      'Esf' );
 		default: return '';
 		}
-	}
-
-	function IsLeapYear() {
-		return in_array(
-			(($this->y + 2346) % 2820) % 128,
-			array(0, 5, 9, 13, 17, 21, 25, 29, 34, 38, 42, 46, 50, 54, 58, 62, 67, 71, 75, 79, 83, 87, 91, 95, 100, 104, 108, 112, 116, 120, 124)
-		);
-	}
-
-	static function YMDtoJD($year, $month, $day) {
-		$epbase = $year - (($year >= 0) ? 474 : 473);
-		$epyear = 474 + $epbase % 2820;
-
-		return $day +
-				(($month <= 7) ?
-					(($month - 1) * 31) :
-					((($month - 1) * 30) + 6)
-				) +
-				(int)((($epyear * 682) - 110) / 2816) +
-				($epyear - 1) * 365 +
-				(int)($epbase / 2820) * 1029983 +
-				(self::CAL_START_JD - 1);
-	}
-
-	static function JDtoYMD($jd) {
-		$jd = (int)($jd) + 0.5;
-
-		$depoch = $jd - self::YMDtoJD(475, 1, 1);
-		$cycle = (int)($depoch / 1029983);
-		$cyear = $depoch % 1029983;
-		if ($cyear == 1029982) {
-			$ycycle = 2820;
-		} else {
-			$aux1 = (int)($cyear / 366);
-			$aux2 = $cyear % 366;
-			$ycycle = (int)(((2134 * $aux1) + (2816 * $aux2) + 2815) / 1028522) +
-						$aux1 + 1;
-		}
-		$year = $ycycle + (2820 * $cycle) + 474;
-		if ($year <= 0) {
-			$year--;
-		}
-		$yday = ($jd - self::YMDtoJD($year, 1, 1)) + 1;
-		$month = ($yday <= 186) ? ceil($yday / 31) : ceil(($yday - 6) / 30);
-		$day = ($jd - self::YMDtoJD($year, $month, 1)) + 1;
-		return array($year, (int)$month, (int)$day);
 	}
 }
