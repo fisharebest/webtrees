@@ -380,7 +380,7 @@ elseif ($action=='run') {
 	 *
 	 * @global object $currentElement
 	 */
-	$currentElement = new Element();
+	$currentElement = new WT_Report_Base_Element();
 
 	/**
 	 * Should character data be printed
