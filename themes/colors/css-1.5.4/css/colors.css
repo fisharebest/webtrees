@@ -1509,7 +1509,7 @@ ul {
 	background-color: #fff;
 	padding: 5px;
 	position: absolute;
-	visibility: hidden;
+	display: none;
 }
 
 #relationship_chart {
@@ -1532,6 +1532,26 @@ ul {
 #familybook_chart,
 #hourglass_chart {
 	margin: 20px;
+}
+
+.fan_chart_menu {
+	position: absolute;
+	display:  none;
+	z-index:  100;
+}
+
+#fan_chart ul {
+	list-style-type: none;
+	margin: 0;
+}
+
+#fan_chart ul.children li:before {
+	content: "< ";
+	font-weight: bold;
+}
+
+#fan_chart_img {
+	text-align: center;
 }
 
 .button {
@@ -3629,7 +3649,6 @@ span.link_text {
 #main {
 	min-width: 600px;
 	width: 100%;
-	overflow: hidden;
 	padding: 5px 2px 0 2px;
 	display: table;
 	table-layout: fixed;
@@ -3647,7 +3666,6 @@ span.link_text {
 }
 
 #sidebar {
-	border-color: #ddd;
 	width: 20%;
 	display: table-cell;
 	vertical-align: top;
@@ -3658,6 +3676,7 @@ span.link_text {
 	width:            2.5em;
 	position:         relative;
 	background-color: transparent;
+	overflow: hidden;
 }
 
 #separator:after {

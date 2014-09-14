@@ -108,7 +108,7 @@ var WT_INDIVIDUAL = (function () {
 		jQuery ("#tabs").tabs ({
 			// If url has a hash (e.g #stories) then don\'t set an active tab - it overrides the hash
 			// otherwise use cookie
-			active: document.location.hash ? null : jQuery.cookie ("indi-tab"),
+			active: location.hash ? null : jQuery.cookie ("indi-tab"),
 			activate: function (event, ui) {
 				jQuery.cookie ("indi-tab", jQuery ("#tabs").tabs ("option", "active"));
 			},
@@ -125,25 +125,27 @@ var WT_INDIVIDUAL = (function () {
 			}
 		});
 
-		// toggle sidebar visibility
-		jQuery ("#main").on ("click", "#separator", function (e) {
-			e.preventDefault ();
-			jQsidebar.animate ({width: "toggle"}, {
-				duration: 300,
-				done: function () {
-					jQuery.cookie ("hide-sb", jQsidebar.is (":hidden"));
-					jQseparator.toggleClass("separator-hidden separator-visible");
-				}
+		if (jQsidebar.length) { // Have we got a sidebar ?
+			// toggle sidebar visibility
+			jQuery ("#main").on ("click", "#separator", function (e) {
+				e.preventDefault ();
+				jQsidebar.animate ({width: "toggle"}, {
+					duration: 300,
+					done: function () {
+						jQuery.cookie ("hide-sb", jQsidebar.is (":hidden"));
+						jQseparator.toggleClass("separator-hidden separator-visible");
+					}
+				});
 			});
-		});
 
-		// Set initial sidebar state
-		if (jQuery.cookie ("hide-sb") === "true") {
-			jQsidebar.hide ();
-			jQseparator.addClass("separator-hidden");
-		} else {
-			jQsidebar.show ();
-			jQseparator.addClass("separator-visible");
+			// Set initial sidebar state
+			if (jQuery.cookie ("hide-sb") === "true") {
+				jQsidebar.hide ();
+				jQseparator.addClass("separator-hidden");
+			} else {
+				jQsidebar.show ();
+				jQseparator.addClass("separator-visible");
+			}
 		}
 	}
 
@@ -245,7 +247,9 @@ foreach ($controller->tabs as $tab) {
 }
 echo
 	'</div>', // close #tabs
-	'</div>', //close indi_left
-	'<div id="separator" title="', WT_I18N::translate('Click here to open or close the sidebar'), '"></div>',//clickable element to open/close sidebar
-	$sidebar_html,
-	'</div>'; // close #main
+	'</div>'; //close indi_left
+	if ($sidebar_html) {
+		echo '<div id="separator" title="' . WT_I18N::translate('Click here to open or close the sidebar') . '"></div>' . //clickable element to open/close sidebar
+		$sidebar_html;
+	}
+	echo '</div>'; // close #main

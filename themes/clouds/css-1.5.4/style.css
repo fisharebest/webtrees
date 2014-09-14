@@ -1566,7 +1566,7 @@ img.block {
 	background-color: #fff;
 	padding: 5px;
 	position: absolute;
-	visibility: hidden;
+	display: none;
 }
 
 #relationship_chart {
@@ -1585,6 +1585,26 @@ img.block {
 #familybook_chart,
 #hourglass_chart {
 	margin: 20px;
+}
+
+.fan_chart_menu {
+	position: absolute;
+	display:  none;
+	z-index:  100;
+}
+
+#fan_chart ul {
+	list-style-type: none;
+	margin: 0;
+}
+
+#fan_chart ul.children li:before {
+	content: "< ";
+	font-weight: bold;
+}
+
+#fan_chart_img {
+	text-align: center;
 }
 
 .compact_view {
@@ -3774,7 +3794,6 @@ span.link_text {
 #main {
 	min-width: 600px;
 	width: 100%;
-	overflow: hidden;
 	padding: 5px 2px 0 2px;
 	display: table;
 	table-layout: fixed;
@@ -3792,10 +3811,13 @@ span.link_text {
 }
 
 #sidebar {
-	border:         1px solid #8fbcff;
 	width:          20%;
 	display:        table-cell;
 	vertical-align: top;
+}
+
+#sidebarAccordion {
+	border: 1px solid #8fbcff;
 }
 
 #separator {
@@ -3803,6 +3825,7 @@ span.link_text {
 	width:            2.5em;
 	position:         relative;
 	background-color: transparent;
+	overflow: hidden;
 }
 
 #separator:after {

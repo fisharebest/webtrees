@@ -36,7 +36,35 @@ if (WT_Filter::getBool('img')) {
 $controller
 	->pageHeader()
 	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
-	->addInlineJavascript('autocomplete();');
+	->addInlineJavascript('
+		autocomplete();
+		var WT_FANCHART = (function() {
+			jQuery("area")
+				.click(function (e) {
+					e.stopPropagation();
+					e.preventDefault();
+					var target = jQuery(this.hash);
+					target
+						// position the menu centered immediately above the mouse click position and
+						// make sure it doesn’t end up off the screen
+						.css({
+							left: Math.max(0 ,e.pageX - (target.outerWidth()/2)),
+							top:  Math.max(0, e.pageY - target.outerHeight())
+						})
+						.toggle()
+						.siblings(".fan_chart_menu").hide();
+				});
+			jQuery(".fan_chart_menu")
+				.on("click", "a", function(e) {
+					e.stopPropagation();
+				});
+			jQuery("#fan_chart")
+				.click(function(e) {
+					jQuery(".fan_chart_menu").hide();
+				});
+			return "' . WT_Filter::escapeJs($controller->root->getFullName()) . '";
+		})();
+	');
 
 ?>
 <div id="page-fan">

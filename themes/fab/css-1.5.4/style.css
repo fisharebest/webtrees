@@ -492,7 +492,7 @@ div.fact_SHARED_NOTE {
 	background-color: #fff;
 	padding: 5px;
 	position: absolute;
-	visibility: hidden;
+	display: none;
 }
 
 .compact_view {
@@ -900,6 +900,28 @@ li .person_boxF {
 #familybook_chart,
 #hourglass_chart {
 	margin: 20px;
+}
+
+.fan_chart_menu {
+	position: absolute;
+	display:  none;
+	z-index:  100;
+}
+
+#fan_chart ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	color: #369;
+}
+
+#fan_chart ul.children li:before {
+	content: "< ";
+	font-weight: bold;
+}
+
+#fan_chart_img {
+	text-align: center;
 }
 
 #timeline_chart {
@@ -2367,7 +2389,6 @@ dd .deletelink {
 	min-width: 600px;
 	width: 100%;
 	padding: 3px 0 0 0;
-	overflow: hidden;
 	display: table;
 	table-layout: fixed;
 }
@@ -2398,6 +2419,7 @@ dd .deletelink {
 	width:            2.5em;
 	position:         relative;
 	background-color: transparent;
+	overflow: hidden;
 }
 
 #separator:after {
@@ -2428,13 +2450,11 @@ dd .deletelink {
 	background: #ccc url(images/indi_sprite.png) no-repeat -1px 100px;
 }
 
-#sidebarAccordion,
-#sidebarAccordion2 {
+#sidebarAccordion {
 	width: auto;
 }
 
-#sidebarAccordion h3,
-#sidebarAccordion2 h3 {
+#sidebarAccordion h3 {
 	text-align: center;
 }
 

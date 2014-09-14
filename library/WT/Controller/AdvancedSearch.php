@@ -230,6 +230,8 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 					} else {
 						$indi_plac=true;
 					}
+				} elseif ($field == 'FAMS:NOTE') {
+					$spouse_family = true;
 				}
 			}
 		}
@@ -550,17 +552,14 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 					break;
 				}
 			} elseif ($parts[0]=='FAMS') {
-				if ($parts[1] == 'NOTE') {
-					$sql.=" AND fam.f_gedcom LIKE CONCAT('%NOTE ', ?, '%')";
-				} else {
-					$sql.=" AND fam.f_gedcom LIKE CONCAT('%', ?, '%')";
-				}
-				$bind[]=$value;
-			} elseif ($parts[0] == 'NOTE') {
-				$sql.=" AND ind.i_gedcom LIKE CONCAT('%NOTE ', ?, '%')";
+				// e.g. searches for occupation, religion, note, etc.
+				$sql.=" AND fam.f_gedcom REGEXP CONCAT('\n[0-9] ', ?, '(.*\n[0-9] CONT)* [^\n]*', ?)";
+				$bind[]=$parts[1];
 				$bind[]=$value;
 			} else {
-				$sql.=" AND ind.i_gedcom LIKE CONCAT('%', ?, '%')";
+				// e.g. searches for occupation, religion, note, etc.
+				$sql.=" AND ind.i_gedcom REGEXP CONCAT('\n[0-9] ', ?, '(.*\n[0-9] CONT)* [^\n]*', ?)";
+				$bind[]=$parts[0];
 				$bind[]=$value;
 			}
 		}

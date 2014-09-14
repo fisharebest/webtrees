@@ -382,8 +382,9 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 			}
 		}
 
-		$controller
-			->addInlineJavascript('
+		if ($html) {
+			$controller
+				->addInlineJavascript('
 				jQuery("#sidebarAccordion").accordion({
 					active:' . $active . ',
 					heightStyle: "content",
@@ -391,6 +392,9 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 				});
 			');
 
-		return '<div id="sidebar"><div id="sidebarAccordion">'.$html.'</div></div>';
+			return '<div id="sidebar"><div id="sidebarAccordion">' . $html . '</div></div>';
+		} else {
+			return '';
+		}
 	}
 }
