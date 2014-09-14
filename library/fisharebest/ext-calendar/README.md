@@ -56,7 +56,7 @@ If you want to create the “shim” functions, you must tell the package to cre
 \Fisharebest\ExtCalendar\Shim::create();
 ```
 
-Now you can use the PHP functions, whether the ext/calendar is installed or not:
+Now you can use the PHP functions, whether `ext/calendar` is installed or not:
 
 ``` php
 print_r(cal_info(CAL_GREGORIAN));

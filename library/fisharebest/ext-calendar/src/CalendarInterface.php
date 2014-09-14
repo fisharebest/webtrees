@@ -21,9 +21,50 @@ namespace Fisharebest\ExtCalendar;
  *            along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 interface CalendarInterface {
-	public function daysInMonth($year, $month);
-	public function dayOfWeek($jd);
+	/**
+	 * Convert a Julian day number into a year/month/day.
+	 *
+	 * @param $jd
+	 *
+	 * @return int[]
+	 */
 	public function jdToYmd($jd);
-	public function leapYear($year);
+
+	/**
+	 * Convert a year/month/day to a Julian day number.
+	 *
+	 * @param int $year
+	 * @param int $month
+	 * @param int $day
+	 *
+	 * @return int
+	 */
 	public function ymdToJd($year, $month, $day);
+
+	/**
+	 * Determine whether or not a given year is a leap-year.
+	 *
+	 * @param int $year
+	 *
+	 * @return bool
+	 */
+	public function leapYear($year);
+
+	/**
+	 * Determine the number of days in a specified month, allowing for leap years, etc.
+	 *
+	 * @param int $year
+	 * @param int $month
+	 *
+	 * @return int
+	 */
+	public function daysInMonth($year, $month);
+
+	/**
+	 * Provide a list of month names, as required by PHP::cal_info()
+	 *
+	 * @return string[]
+	 */
+	public function monthNames();
+
 }

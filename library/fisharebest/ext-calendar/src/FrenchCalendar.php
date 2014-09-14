@@ -47,6 +47,10 @@ class FrenchCalendar extends Calendar implements CalendarInterface {
 	/**
 	 * Determine whether a year is a leap year.
 	 *
+	 * Leap years were based on astronomical observations.  Only years 3, 7 and 11
+	 * were ever observed.  Moves to a gregorian-like (fixed) system were proposed
+	 * but never implemented.
+	 *
 	 * @param  int  $year
 	 * @return bool
 	 */
