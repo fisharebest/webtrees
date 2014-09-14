@@ -49,11 +49,16 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 		}
 	}
 
+	/**
+	 * A list of options for the chart style.
+	 *
+	 * @return string[]
+	 */
 	public function getFanStyles() {
 		return array(
-			2=>/* I18N: layout option for the fan chart */ WT_I18N::translate('half circle'),
-			3=>/* I18N: layout option for the fan chart */ WT_I18N::translate('three-quarter circle'),
-			4=>/* I18N: layout option for the fan chart */ WT_I18N::translate('full circle'),
+			2 => /* I18N: layout option for the fan chart */ WT_I18N::translate('half circle'),
+			3 => /* I18N: layout option for the fan chart */ WT_I18N::translate('three-quarter circle'),
+			4 => /* I18N: layout option for the fan chart */ WT_I18N::translate('full circle'),
 		);
 	}
 
@@ -201,8 +206,8 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 				$pid = $treeid[$sosa];
 				$person = WT_Individual::getInstance($pid);
 				if ($person) {
-					$name    = WT_Filter::unescapeHtml($person->getFullName());
-					$addname = WT_Filter::unescapeHtml($person->getAddName());
+					$name    = $person->getFullName();
+					$addname = $person->getAddName();
 
 					$text = WT_I18N::reverseText($name);
 					if ($addname) {
@@ -351,7 +356,7 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 					}
 					$html .= '</div></div>';
 					$html .= '</div>';
-					$imagemap .= ' alt="' . WT_Filter::escapeHtml(strip_tags($name)) . '" title="' . WT_Filter::escapeHtml(strip_tags($name)) . '">';
+					$imagemap .= ' alt="' . strip_tags($person->getFullName()) . '" title="' . strip_tags($person->getFullName()) . '">';
 				}
 				$deg1 -= $angle;
 				$deg2 -= $angle;
@@ -365,7 +370,7 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 
 		switch ($what) {
 		case 'html':
-			$image_title=WT_I18N::translate('Fan chart of %s', strip_tags($name));
+			$image_title=WT_I18N::translate('Fan chart of %s', strip_tags($person->getFullName()));
 			return $html . $imagemap . '<div id="fan_chart_img"><img src="' . WT_SCRIPT_NAME . '?rootid=' . $this->rootid . '&amp;fan_style=' . $this->fan_style . '&amp;generations=' . $this->generations . '&amp;fan_width=' . $this->fan_width.'&amp;img=1" width="' . $fanw . '" height="' . $fanh . '" alt="' . $image_title . '" title="' . $image_title . '" usemap="#fanmap"></div>';
 		case 'png':
 			header('Content-Type: image/png');
