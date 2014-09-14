@@ -108,7 +108,7 @@ var WT_INDIVIDUAL = (function () {
 		jQuery ("#tabs").tabs ({
 			// If url has a hash (e.g #stories) then don\'t set an active tab - it overrides the hash
 			// otherwise use cookie
-			active: document.location.hash ? null : jQuery.cookie ("indi-tab"),
+			active: location.hash ? null : jQuery.cookie ("indi-tab"),
 			activate: function (event, ui) {
 				jQuery.cookie ("indi-tab", jQuery ("#tabs").tabs ("option", "active"));
 			},

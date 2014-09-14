@@ -3604,7 +3604,6 @@ dd .deletelink {
 #main {
 	min-width: 600px;
 	width: 100%;
-	overflow: hidden;
 	display: table;
 	table-layout: fixed;
 }
@@ -3634,7 +3633,6 @@ dd .deletelink {
 
 /* sidebar */
 #sidebar {
-	border-color:   #dddddd;
 	width:          20%;
 	display:        table-cell;
 	vertical-align: top;
@@ -3645,6 +3643,7 @@ dd .deletelink {
 	width:            2.5em;
 	position:         relative;
 	background-color: transparent;
+	overflow: hidden;
 }
 
 #separator:after {

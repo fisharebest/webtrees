@@ -3766,7 +3766,6 @@ dd .deletelink {
 #main {
 	min-width: 600px;
 	width: 100%;
-	overflow: hidden;
 	display: table;
 	table-layout: fixed;
 }
@@ -3786,20 +3785,17 @@ dd .deletelink {
 	float: right;
 }
 
-#sidebarAccordion,
-#sidebarAccordion2 {
+#sidebarAccordion {
 	width: auto;
 }
 
-#sidebarAccordion h3,
-#sidebarAccordion2 h3 {
+#sidebarAccordion h3 {
 	height: 30px;
 	text-align: center;
 	border-color: #999;
 }
 
 #sidebar {
-	border-color: #ddd;
 	width: 20%;
 	display: table-cell;
 	vertical-align: top;
@@ -3810,6 +3806,7 @@ dd .deletelink {
 	width:            2.5em;
 	position:         relative;
 	background-color: transparent;
+	overflow: hidden;
 }
 
 #separator:after {
@@ -3820,8 +3817,8 @@ dd .deletelink {
 	width:                   10px;
 	height:                  99999px;
 	content:                 "";
-	border: 1px solid #81a9cb;
-	border-top-left-radius: 3px;
+	border:                  1px solid #81a9cb;
+	border-top-left-radius:  3px;
 	border-top-right-radius: 3px;
 }
 
