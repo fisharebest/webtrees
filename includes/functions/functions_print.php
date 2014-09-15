@@ -439,7 +439,7 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false) {
 					break;
 			}
 			list($text) = explode("\n", $text);
-			$first_line = strlen($text) > 100 ? utf8_substr($text, 0, 100) . WT_I18N::translate('…') : $text;
+			$first_line = strlen($text) > 100 ? mb_substr($text, 0, 100) . WT_I18N::translate('…') : $text;
 		}
 		return
 			'<div class="fact_NOTE"><span class="label">' .
