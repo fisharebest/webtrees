@@ -253,10 +253,7 @@ case 'load_json':
 
 		// Filter unused files
 		if ($search) {
-			// Lambda functions can’t be used until PHP5.3
-			//$unused_files = array_filter($unused_files, function($x) use ($sSearch) {return strpos($x, $sSearch)!==false;});
-			function substr_search($x) {global $search; return strpos($x, $search)!==false;}
-			$unused_files = array_filter($unused_files, 'substr_search');
+			$unused_files = array_filter($unused_files, function ($x) use ($search) { return strpos($x, $search) !== false; });
 		}
 		$recordsFiltered = count($unused_files);
 

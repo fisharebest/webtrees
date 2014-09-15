@@ -23,15 +23,14 @@ use WT\User;
 
 define('WT_SCRIPT_NAME', 'admin_pgv_to_wt.php');
 require './includes/session.php';
-//require WT_ROOT.'includes/functions/functions_edit.php';
 
 // We can only import into an empty system, so deny access if we have already created a gedcom or added users.
 if (WT_GED_ID || count(User::all()) > 1) {
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
+	header('Location: ' . WT_SERVER_NAME.WT_SCRIPT_PATH);
 	exit;
 }
 
-$controller=new WT_Controller_Page();
+$controller = new WT_Controller_Page();
 $controller
 	->restrictAccess(Auth::isAdmin())
 	->setPageTitle(WT_I18N::translate('PhpGedView to webtrees transfer wizard'));

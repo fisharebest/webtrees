@@ -1200,9 +1200,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 								);'.
 		// / A function to create the marker and set up the event window
 		'function createMarker(point, name, html, mhtml, icontype) {
-			// alert(i+". "+name+", "+icontype);
 			var contentString = "<div id=\'iwcontent_edit\'>"+mhtml+"<\/div>";'.
-			//create a marker with the requested icon
+			// Create a marker with the requested icon
 			'var marker = new google.maps.Marker({
 				icon:     gicons[icontype],
 				shadow:   gicons[icontype].shadow,
@@ -2990,7 +2989,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 	// Take a place id and find its place in the hierarchy
 	// Input: place ID
 	// Output: ordered array of id=>name values, starting with the Top level
-	// e.g. array(0=>"Top level", 16=>"England", 19=>"London", 217=>"Westminster");
+	// e.g. 0=>"Top level", 16=>"England", 19=>"London", 217=>"Westminster"
 	// NB This function exists in both places.php and places_edit.php
 	private function placeIdToHierarchy($id) {
 		$statement=
@@ -3624,7 +3623,6 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 				// Set marker by clicking on map ---
 				clickset = google.maps.event.addListener(map, 'click', function(event) {
-					// alert(pos2);
 					clearMarks();
 					latlng = event.latLng;
 					<?php

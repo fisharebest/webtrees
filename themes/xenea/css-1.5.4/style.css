@@ -1842,7 +1842,7 @@ img.block {
 	background-color: #fff;
 	padding: 5px;
 	position: absolute;
-	visibility: hidden;
+	display: none;
 }
 
 /*-- pedigree chart rtl specific stylesheets --*/
@@ -1926,6 +1926,26 @@ img.block {
 #familybook_chart,
 #hourglass_chart {
 	margin: 20px;
+}
+
+.fan_chart_menu {
+	position: absolute;
+	display:  none;
+	z-index:  100;
+}
+
+#fan_chart ul {
+	list-style-type: none;
+	margin: 0;
+}
+
+#fan_chart ul.children li:before {
+	content: "< ";
+	font-weight: bold;
+}
+
+#fan_chart_img {
+	text-align: center;
 }
 
 /*-- timeline chart specific styles --*/
@@ -2963,10 +2983,8 @@ span.link_text {
 
 /* =========== Indi header ================== */
 #indi_header {
-	width: 100%;
 	overflow: hidden;
 	border-radius: 3px;
-/*	background: url(../jquery-ui-1.10.3/images/ui-bg_highlight-soft_100_e7eef3_1x100.png) repeat-x scroll 50% 50% #fff;*/
 	border: 1px solid #b2c7d7;
 	margin: 0 0 5px;
 	padding: 10px 0;
@@ -3748,7 +3766,6 @@ dd .deletelink {
 #main {
 	min-width: 600px;
 	width: 100%;
-	overflow: hidden;
 	display: table;
 	table-layout: fixed;
 }
@@ -3768,20 +3785,17 @@ dd .deletelink {
 	float: right;
 }
 
-#sidebarAccordion,
-#sidebarAccordion2 {
+#sidebarAccordion {
 	width: auto;
 }
 
-#sidebarAccordion h3,
-#sidebarAccordion2 h3 {
+#sidebarAccordion h3 {
 	height: 30px;
 	text-align: center;
 	border-color: #999;
 }
 
 #sidebar {
-	border-color: #ddd;
 	width: 20%;
 	display: table-cell;
 	vertical-align: top;
@@ -3792,6 +3806,7 @@ dd .deletelink {
 	width:            2.5em;
 	position:         relative;
 	background-color: transparent;
+	overflow: hidden;
 }
 
 #separator:after {
@@ -3802,8 +3817,8 @@ dd .deletelink {
 	width:                   10px;
 	height:                  99999px;
 	content:                 "";
-	border: 1px solid #81a9cb;
-	border-top-left-radius: 3px;
+	border:                  1px solid #81a9cb;
+	border-top-left-radius:  3px;
 	border-top-right-radius: 3px;
 }
 

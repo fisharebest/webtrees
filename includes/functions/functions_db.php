@@ -969,13 +969,10 @@ function get_calendar_events($jd1, $jd2, $facts='', $ged_id=WT_GED_ID) {
 		$skipfacts.=',_TODO';
 	}
 
-	$found_facts=array();
+	$found_facts = array();
 
-	// This where clause gives events that start/end/overlap the period
-	// e.g. 1914-1918 would show up on 1916
-	//$where="WHERE d_julianday1 <={$jd2} AND d_julianday2>={$jd1}";
-	// This where clause gives only events that start/end during the period
-	$where="WHERE (d_julianday1>={$jd1} AND d_julianday1<={$jd2} OR d_julianday2>={$jd1} AND d_julianday2<={$jd2})";
+	// Events that start or end during the period
+	$where = "WHERE (d_julianday1>={$jd1} AND d_julianday1<={$jd2} OR d_julianday2>={$jd1} AND d_julianday2<={$jd2})";
 
 	// Restrict to certain types of fact
 	if (empty($facts)) {

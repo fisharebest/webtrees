@@ -182,20 +182,20 @@ if (count($famids)>0) {
 			$addxoffset = 0;
 		}
 		echo $addxoffset, 'px; top:', $yoffset, 'px;">';
-		echo '<a href="#" onclick="togglechildrenbox(); return false;" class=" ',$arrow,'"></a>';
+		echo '<a href="#" class=" ',$arrow,'"></a>';
 		break;
 	case 1:
 		if ($PEDIGREE_GENERATIONS<4) $basexoffset += 60;
 		echo $basexoffset, 'px; top:', $yoffset, 'px;">';
-		echo '<a href="#" onclick="togglechildrenbox(); return false;" class=" ',$arrow,'"></a>';
+		echo '<a href="#" class=" ',$arrow,'"></a>';
 		break;
 	case 2:
 		echo ($xoffset-10+$controller->pbwidth/2), 'px; top:', ($yoffset+$controller->pbheight/2+10), 'px;">';
-		echo '<a href="#" onclick="togglechildrenbox(); return false;" class="icon-darrow"></a>';
+		echo '<a href="#" class="icon-darrow"></a>';
 		break;
 	case 3:
 		echo ($xoffset-10+$controller->pbwidth/2), 'px; top:', ($yoffset-$controller->pbheight/2-10), 'px;">';
-		echo '<a href="#" onclick="togglechildrenbox(); return false;" class="icon-uarrow"></a>';
+		echo '<a href="#" class="icon-uarrow"></a>';
 		break;
 	}
 	echo '</div>';
@@ -257,6 +257,11 @@ $controller->addInlineJavascript('
 	if (content_div) {
 		content_div.style.height="'.($maxyoffset+30).'px";
 	}
+
+	jQuery("#childarrow").on("click", "a", function(e) {
+		e.preventDefault();
+		jQuery("#childbox").toggle();
+	});
 
 	// Draw joining lines in <canvas>
 	// need to be able to read styles from style.css files

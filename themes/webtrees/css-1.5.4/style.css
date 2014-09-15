@@ -705,7 +705,7 @@ a:hover .nameZoom {
 	background-color: #fff;
 	padding: 5px;
 	position: absolute;
-	visibility: hidden;
+	display: none;
 }
 
 /*-- descendancy chart specific stylesheets --*/
@@ -829,6 +829,26 @@ a:hover .nameZoom {
 #familybook_chart,
 #hourglass_chart {
 	margin: 20px;
+}
+
+.fan_chart_menu {
+	position: absolute;
+	display:  none;
+	z-index:  100;
+}
+
+#fan_chart ul {
+	list-style-type: none;
+	margin: 0;
+}
+
+#fan_chart ul.children li:before {
+	content: "< ";
+	font-weight: bold;
+}
+
+#fan_chart_img {
+	text-align: center;
 }
 
 .compact_view {
@@ -3061,7 +3081,6 @@ delete links ==================== */
 	border: 1px solid #b2c7d7;
 	margin: 0 0 5px;
 	padding: 10px 0;
-	width: 100%;
 }
 
 #indi_header h3 {
@@ -3585,7 +3604,6 @@ dd .deletelink {
 #main {
 	min-width: 600px;
 	width: 100%;
-	overflow: hidden;
 	display: table;
 	table-layout: fixed;
 }
@@ -3615,7 +3633,6 @@ dd .deletelink {
 
 /* sidebar */
 #sidebar {
-	border-color:   #dddddd;
 	width:          20%;
 	display:        table-cell;
 	vertical-align: top;
@@ -3626,6 +3643,7 @@ dd .deletelink {
 	width:            2.5em;
 	position:         relative;
 	background-color: transparent;
+	overflow: hidden;
 }
 
 #separator:after {
