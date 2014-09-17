@@ -134,9 +134,13 @@ class WT_Controller_Media extends WT_Controller_GedcomRecord {
 	}
 
 	/**
-	 * edit menu items used in media list
+	 * Edit menu items used in media list
+	 *
+	 * @param WT_Media $mediaobject
+	 *
+	 * @return string
 	 */
-	static function getMediaListMenu($mediaobject) {
+	static function getMediaListMenu(WT_Media $mediaobject) {
 		$html='<div class="lightbox-menu"><ul class="makeMenu lb-menu">';
 		$menu = new WT_Menu(WT_I18N::translate('Edit details'));
 		$menu->addClass('', '', 'lb-image_edit');

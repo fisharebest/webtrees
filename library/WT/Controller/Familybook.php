@@ -74,8 +74,13 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 
 	/**
 	 * Prints descendency of passed in person
+	 *
+	 * @param WT_Individual $person
+	 * @param               $count
+	 *
+	 * @return int
 	 */
-	function print_descendency($person, $count) {
+	function print_descendency(WT_Individual $person, $count) {
 		global $WT_IMAGES, $bwidth, $bheight, $show_full, $box_width; // print_pedigree_person() requires these globals.
 		if ($count>$this->dgenerations) return 0;
 		$show_full=$this->show_full;
@@ -192,10 +197,15 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 
 	/**
 	 * Prints pedigree of the person passed in
+	 *
+	 * @param WT_Individual $person
+	 * @param int           $count
 	 */
 	function print_person_pedigree($person, $count) {
 		global $WT_IMAGES, $bheight, $bwidth, $bhalfheight;
-		if ($count>=$this->generations) return;
+		if ($count>=$this->generations) {
+			return;
+		}
 		//if (!$person) return;
 		$genoffset = $this->generations;  // handle pedigree n generations lines
 		//-- calculate how tall the lines should be
@@ -209,23 +219,17 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 
 			//-- recursively get the father’s family
 			$this->print_person_pedigree($person, $count+1);
-			echo '</td>',
-				 '<td>',
-				 '</tr>';
+			echo '</td><td></tr>';
 			$this->printEmptyBox($bwidth, $bheight);
 
 			//-- recursively get the mother’s family
 			$this->print_person_pedigree($person, $count+1);
-			echo '</td>',
-				 '<td>',
-				 '</tr></table>';
+			echo '</td><td></tr></table>';
 		}
 
 		//Empty box section done, now for regular pedigree
 		foreach ($person->getChildFamilies() as $family) {
-			echo '<table>',
-				 '<tr>',
-				 '<td class="tdbot">';
+			echo '<table><tr><td class="tdbot">';
 				//
 				//Determine line height for two or more spouces
 				//And then adjust the vertical line for the root person only
@@ -324,25 +328,45 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 
 	/**
 	 * Calculates number of generations a person has
+	 *
+	 * @param $pid
+	 * @param $depth
+	 *
+	 * @return int
 	 */
 	function max_descendency_generations($pid, $depth) {
-		if ($depth > $this->generations) return $depth;
+		if ($depth > $this->generations) {
+			return $depth;
+		}
 		$person = WT_Individual::getInstance($pid);
-		if (is_null($person)) return $depth;
+		if (is_null($person)) {
+			return $depth;
+		}
 		$maxdc = $depth;
 		foreach ($person->getSpouseFamilies() as $family) {
 			foreach ($family->getChildren() as $child) {
 				$dc = $this->max_descendency_generations($child->getXref(), $depth+1);
-				if ($dc >= $this->generations) return $dc;
-				if ($dc > $maxdc) $maxdc = $dc;
+				if ($dc >= $this->generations) {
+					return $dc;
+				}
+				if ($dc > $maxdc) {
+					$maxdc = $dc;
+				}
 			}
 		}
 		$maxdc++;
-		if ($maxdc==1) $maxdc++;
+		if ($maxdc==1) {
+			$maxdc++;
+		}
+
 		return $maxdc;
 	}
+
 	/**
 	 * Print empty box
+	 *
+	 * @param int $bwidth
+	 * @param int $bheight
 	 */
 	function printEmptyBox($bwidth, $bheight){
 	echo '<tr>',

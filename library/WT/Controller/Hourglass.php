@@ -196,8 +196,14 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 			break;
 		}
 	}
+
 	/**
 	 * Print empty box
+	 *
+	 * @param int $bwidth
+	 * @param int $bheight
+	 *
+	 * @return void
 	 */
 	function printEmptyBox($bwidth, $bheight){
 	echo '<tr>',
@@ -413,10 +419,10 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 	/**
 	 * Calculates number of generations a person has
 	 *
-	 * @param mixed $pid ID of person to see how far down the descendency goes
-	 * @param mixed $depth Pass in 0 and it calculates how far down descendency goes
-	 * @access public
-	 * @return maxdc Amount of generations the descendency actually goes
+	 * @param string $pid ID of person to see how far down the descendency goes
+	 * @param int    $depth Pass in 0 and it calculates how far down descendency goes
+	 *
+	 * @return int Number of generations the descendency actually goes
 	 */
 	function max_descendency_generations($pid, $depth) {
 		if ($depth > $this->generations) return $depth;

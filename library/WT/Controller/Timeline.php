@@ -71,7 +71,7 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 		}
 		$this->pids = $newpids;
 		$this->pidlinks = "";
-		/* @var $indi Person */
+
 		foreach ($this->people as $p => $indi) {
 			if (!is_null($indi) && $indi->canShow()) {
 				// setup string of valid pids for links

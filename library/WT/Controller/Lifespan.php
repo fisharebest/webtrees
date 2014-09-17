@@ -139,10 +139,8 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 					}
 				}
 			}
-		}
-
-		//--Finds if the begin year and end year textboxes are not empty
-		else {
+		} else {
+			//--Finds if the begin year and end year textboxes are not empty
 			//-- reset the people array when doing a year range search
 			$this->people = array();
 			//Takes the begining year and end year passed by the postback and modifies them and uses them to populate
@@ -186,8 +184,7 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 				$this->timelineMaxYear = $this->currentYear;
 			}
 
-		}
-		else {
+		} else {
 			// Sets the default timeline length
 			$this->timelineMinYear = date("Y") - 101;
 			$this->timelineMaxYear = date("Y");
@@ -231,16 +228,16 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 				$year = $year - ($this->birthMod);
 				if ($temp == $year) {
 					$this->modTest = 0;
+				} else {
+					$this->modTest = 1;
 				}
-				else $this->modTest = 1;
 				break;
 			case 2 : //rounds end year
 				$this->deathMod = ($year % 5);
 				//Only executed if the year needs to be modified
 				if ($this->deathMod > 0) {
 					$this->endMod = (5 - ($this->deathMod));
-				}
-				else {
+				} else {
 					$this->endMod = 0;
 				}
 				$year = $year + ($this->endMod);
@@ -282,7 +279,9 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 			$modFix = (9 * $this->birthMod);
 		}
 		//base case
-		if (count($ar) == 0) return $top;
+		if (count($ar) == 0) {
+			return $top;
+		}
 		$maxY = $top;
 
 		foreach ($ar as $value) {
@@ -290,10 +289,14 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 			$this->currentsex = $value->getSex();
 			if ($this->currentsex == "M") {
 				$this->Mcolorindex++;
-				if (!isset($this->malecolorR[$this->Mcolorindex])) $this->Mcolorindex=0;
+				if (!isset($this->malecolorR[$this->Mcolorindex])) {
+					$this->Mcolorindex=0;
+				}
 				$this->malecolorR[$this->Mcolorindex];
 				$this->Mcolorindex++;
-				if (!isset($this->malecolorG[$this->Mcolorindex])) $this->Mcolorindex=0;
+				if (!isset($this->malecolorG[$this->Mcolorindex])) {
+					$this->Mcolorindex=0;
+				}
 				$this->malecolorG[$this->Mcolorindex];
 				$red = dechex($this->malecolorR[$this->Mcolorindex]);
 				$green =dechex($this->malecolorR[$this->Mcolorindex]);
@@ -305,197 +308,210 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 				}
 
 				$this->color = "#".$red.$green.dechex($this->malecolorB);
-			}
-			else if ($this->currentsex == "F") {
+			}elseif ($this->currentsex == "F") {
 				$this->Fcolorindex++;
-				if (!isset($this->femalecolorG[$this->Fcolorindex])) $this->Fcolorindex = 0;
+				if (!isset($this->femalecolorG[$this->Fcolorindex])) {
+					$this->Fcolorindex = 0;
+				}
 				$this->femalecolorG[$this->Fcolorindex];
 				$this->Fcolorindex++;
-				if (!isset($this->femalecolorB[$this->Fcolorindex])) $this->Fcolorindex = 0;
+				if (!isset($this->femalecolorB[$this->Fcolorindex])) {
+					$this->Fcolorindex = 0;
+				}
 				$this->femalecolorB[$this->Fcolorindex];
 				$this->color = "#".dechex($this->femalecolorR).dechex($this->femalecolorG[$this->Fcolorindex]).dechex($this->femalecolorB[$this->Fcolorindex]);
-			}
-			else {
+			} else {
 				$this->color = $this->colors[$this->colorindex];
 			}
 
 			//set start position and size of person-box according to zoomfactor
-			/* @var $value Person */
-				$bdate=$value->getEstimatedBirthDate();
-				$ddate=$value->getEstimatedDeathDate();
-				$birthYear = $bdate->gregorianYear();
-				$deathYear = $ddate->gregorianYear() ? $ddate->gregorianYear() : date('Y');
+			$bdate=$value->getEstimatedBirthDate();
+			$ddate=$value->getEstimatedDeathDate();
+			$birthYear = $bdate->gregorianYear();
+			$deathYear = $ddate->gregorianYear() ? $ddate->gregorianYear() : date('Y');
 
-				$width = ($deathYear - $birthYear) * $this->zoomfactor;
-				$height = 2 * $this->zoomfactor;
+			$width = ($deathYear - $birthYear) * $this->zoomfactor;
+			$height = 2 * $this->zoomfactor;
 
-				$startPos = (($birthYear - $this->timelineMinYear) * $this->zoomfactor) + 14 + $modFix;
-				$minlength = mb_strlen(strip_tags($value->getFullName())) * $this->zoomfactor;
+			$startPos = (($birthYear - $this->timelineMinYear) * $this->zoomfactor) + 14 + $modFix;
+			$minlength = mb_strlen(strip_tags($value->getFullName())) * $this->zoomfactor;
 
-				if ($startPos > 15) {
-					$startPos = (($birthYear - $this->timelineMinYear) * $this->zoomfactor) + 15;
-					$width = (($deathYear - $birthYear) * $this->zoomfactor) - 2;
-				}
+			if ($startPos > 15) {
+				$startPos = (($birthYear - $this->timelineMinYear) * $this->zoomfactor) + 15;
+				$width = (($deathYear - $birthYear) * $this->zoomfactor) - 2;
+			}
 
-				//set minimum width for single year lifespans
-				if ($width < 10) {
-					$width = 10;
-				}
+			//set minimum width for single year lifespans
+			if ($width < 10) {
+				$width = 10;
+			}
 
-				$lifespan = "<span dir=\"ltr\">$birthYear-</span>";
-				$deathReal = $value->getDeathDate()->isOK();
-				$birthReal = $value->getBirthDate()->isOK();
-				if ($value->isDead() && $deathReal) $lifespan .= "<span dir=\"ltr\">$deathYear</span>";
-				$lifespannumeral = $deathYear - $birthYear;
+			$lifespan = "<span dir=\"ltr\">$birthYear-</span>";
+			$deathReal = $value->getDeathDate()->isOK();
+			$birthReal = $value->getBirthDate()->isOK();
+			if ($value->isDead() && $deathReal) {
+				$lifespan .= "<span dir=\"ltr\">$deathYear</span>";
+			}
+			$lifespannumeral = $deathYear - $birthYear;
 
-				//-- calculate a good Y top value
-				$Y = $top;
-				$Z = $zindex;
-				$ready = false;
-				while (!$ready) {
-					if (!isset($rows[$Y])) {
+			//-- calculate a good Y top value
+			$Y = $top;
+			$Z = $zindex;
+			$ready = false;
+			while (!$ready) {
+				if (!isset($rows[$Y])) {
+					$ready = true;
+					$rows[$Y]["x1"] = $startPos;
+					$rows[$Y]["x2"] = $startPos+$width;
+					$rows[$Y]["z"] = $zindex;
+				} else {
+					if ($rows[$Y]["x1"] > $startPos+$width) {
 						$ready = true;
 						$rows[$Y]["x1"] = $startPos;
+						$Z = $rows[$Y]["z"];
+					}elseif ($rows[$Y]["x2"] < $startPos) {
+						$ready = true;
 						$rows[$Y]["x2"] = $startPos+$width;
-						$rows[$Y]["z"] = $zindex;
-					}
-					else {
-						if ($rows[$Y]["x1"] > $startPos+$width) {
-							$ready = true;
-							$rows[$Y]["x1"] = $startPos;
-							$Z = $rows[$Y]["z"];
-						}
-						else if ($rows[$Y]["x2"] < $startPos) {
-							$ready = true;
-							$rows[$Y]["x2"] = $startPos+$width;
-							$Z = $rows[$Y]["z"];
-						}
-						else {
-							//move down 25 pixels
-							if ($this->zoomfactor > 10)$Y += 25 + $this->zoomfactor;
-							else $Y += 25;
-						}
-					}
-				}
-
-				//Need to calculate each event and the spacing between them
-				// event1 distance will be event - birthyear   that will be the distance. then each distance will chain off that
-
-				//$event[][]  = {"Cell 1 will hold events"}{"cell2 will hold time between that and the next value"};
-				$facts = $value->getFacts();
-				foreach ($value->getSpouseFamilies() as $family) {
-					foreach ($family->getFacts() as $fact) {
-						$facts[] = $fact;
-					}
-				}
-				$unparsedEvents = array();
-
-				foreach ($facts as $fact) {
-					if (!in_array($fact->getTag(), $this->nonfacts)) {
-						$unparsedEvents[]=$fact;
-					}
-				}
-				sort_facts($unparsedEvents);
-
-				$eventinformation = Array();
-				foreach ($unparsedEvents as $val) {
-					$date = $val->getDate();
-					if (!empty($date)) {
-						$fact = $val->getTag();
-						$yearsin = $date->date1->y-$birthYear;
-						if ($lifespannumeral==0) {
-							$lifespannumeral = 1;
-						}
-						$eventwidth = ($yearsin/$lifespannumeral)* 100; // percent of the lifespan before the event occured used for determining div spacing
-						// figure out some schema
-						$evntwdth = $eventwidth."%";
-						//-- if the fact is a generic EVENt then get the qualifying TYPE
-						if ($fact=="EVEN") {
-							$fact = $val->getAttribute('TYPE');
-						}
-						$trans = WT_Gedcom_Tag::getLabel($fact);
-						if (isset($eventinformation[$evntwdth])) {
-							$eventinformation[$evntwdth] .= '<br>' . $trans . '<br>' . strip_tags($date->Display(false, '', NULL, false)) . ' ' . $val->getPlace()->getFullName();
+						$Z = $rows[$Y]["z"];
+					} else {
+						//move down 25 pixels
+						if ($this->zoomfactor > 10) {
+							$Y += 25 + $this->zoomfactor;
 						} else {
-							$eventinformation[$evntwdth] = $fact . '-fact, ' . $trans . '<br>' . strip_tags($date->Display(false, '', NULL, false)) . ' ' . $val->getPlace()->getFullName();
+							$Y += 25;
 						}
 					}
 				}
+			}
 
-				$bdate=$value->getEstimatedBirthDate();
-				$ddate=$value->getEstimatedDeathDate();
-				if ($width > ($minlength +110)) {
-					echo "<div id=\"bar_", $value->getXref(), "\" style=\"position: absolute; top:", $Y, "px; left:", $startPos, "px; width:", $width, "px; height:", $height, "px; background-color:", $this->color, "; border: solid blue 1px; z-index:$Z;\">";
+			//Need to calculate each event and the spacing between them
+			// event1 distance will be event - birthyear   that will be the distance. then each distance will chain off that
+
+			//$event[][]  = {"Cell 1 will hold events"}{"cell2 will hold time between that and the next value"};
+			$facts = $value->getFacts();
+			foreach ($value->getSpouseFamilies() as $family) {
+				foreach ($family->getFacts() as $fact) {
+					$facts[] = $fact;
+				}
+			}
+			$unparsedEvents = array();
+
+			foreach ($facts as $fact) {
+				if (!in_array($fact->getTag(), $this->nonfacts)) {
+					$unparsedEvents[]=$fact;
+				}
+			}
+			sort_facts($unparsedEvents);
+
+			$eventinformation = Array();
+			foreach ($unparsedEvents as $val) {
+				$date = $val->getDate();
+				if (!empty($date)) {
+					$fact = $val->getTag();
+					$yearsin = $date->date1->y-$birthYear;
+					if ($lifespannumeral==0) {
+						$lifespannumeral = 1;
+					}
+					$eventwidth = ($yearsin/$lifespannumeral)* 100; // percent of the lifespan before the event occured used for determining div spacing
+					// figure out some schema
+					$evntwdth = $eventwidth."%";
+					//-- if the fact is a generic EVENt then get the qualifying TYPE
+					if ($fact=="EVEN") {
+						$fact = $val->getAttribute('TYPE');
+					}
+					$trans = WT_Gedcom_Tag::getLabel($fact);
+					if (isset($eventinformation[$evntwdth])) {
+						$eventinformation[$evntwdth] .= '<br>' . $trans . '<br>' . strip_tags($date->Display(false, '', NULL, false)) . ' ' . $val->getPlace()->getFullName();
+					} else {
+						$eventinformation[$evntwdth] = $fact . '-fact, ' . $trans . '<br>' . strip_tags($date->Display(false, '', NULL, false)) . ' ' . $val->getPlace()->getFullName();
+					}
+				}
+			}
+
+			$bdate=$value->getEstimatedBirthDate();
+			$ddate=$value->getEstimatedDeathDate();
+			if ($width > ($minlength +110)) {
+				echo "<div id=\"bar_", $value->getXref(), "\" style=\"position: absolute; top:", $Y, "px; left:", $startPos, "px; width:", $width, "px; height:", $height, "px; background-color:", $this->color, "; border: solid blue 1px; z-index:$Z;\">";
+				foreach ($eventinformation as $evtwidth=>$val) {
+					echo "<div style=\"position:absolute; left:", $evtwidth, ";\"><a class=\"showit\" href=\"#\" style=\"top:-2px; font-size:10px;\"><b>";
+					$text = explode("-fact, ", $val);
+					$fact = $text[0];
+					echo '</b><span>', self::getAbbreviation($fact), '</span></a></div>';
+				}
+				$indiName = $value->getFullName();
+				echo '<table><tr><td width="15"><a class="showit" href="#"><b>';
+				echo self::getAbbreviation('BIRT');
+				echo '</b><span>', $value->getSexImage(), $indiName, '<br>', WT_Gedcom_Tag::getLabel('BIRT'), ' ', strip_tags($bdate->Display(false)), ' ', $value->getBirthPlace(), '</span></a>',
+				'<td align="left" width="100%"><a href="', $value->getHtmlUrl(), '">', $value->getSexImage(), $indiName, '  ', $lifespan, ' </a></td>' ,
+				'<td width="15">';
+				if ($value->isDead()) {
+					if ($deathReal || $value->isDead()) {
+						echo '<a class="showit" href="#"><b>';
+						echo self::getAbbreviation('DEAT');
+						if (!$deathReal) {
+							echo '*';
+						}
+						echo '</b><span>'.$value->getSexImage().$indiName.'<br>'.WT_Gedcom_Tag::getLabel('DEAT').' '.strip_tags($ddate->Display(false)).' '.$value->getDeathPlace().'</span></a>';
+					}
+				}
+				echo '</td></tr></table>';
+				echo '</div>';
+
+			} else {
+				if ($width > $minlength +5) {
+					echo '<div style="text-align: left; position: absolute; top:', $Y, 'px; left:', $startPos, 'px; width:', $width, 'px; height:', $height, 'px; background-color:', $this->color, '; border: solid blue 1px; z-index:', $Z, '">';
 					foreach ($eventinformation as $evtwidth=>$val) {
-						echo "<div style=\"position:absolute; left:", $evtwidth, ";\"><a class=\"showit\" href=\"#\" style=\"top:-2px; font-size:10px;\"><b>";
-						$text = explode("-fact, ", $val);
+						echo '<div style="position:absolute; left:', $evtwidth, ' "><a class="showit" href="#" style="top:-2px; font-size:10px;"><b>';
+						$text = explode("-fact,", $val);
 						$fact = $text[0];
-						echo '</b><span>', self::getAbbreviation($fact), '</span></a></div>';
+						echo '</b><span>'.self::getAbbreviation($fact).'</span></a></div>';
 					}
 					$indiName = $value->getFullName();
-					echo '<table><tr><td width="15"><a class="showit" href="#"><b>';
+					echo '<table dir="ltr"><tr><td width="15"><a class="showit" href="#"><b>';
 					echo self::getAbbreviation('BIRT');
-					echo '</b><span>', $value->getSexImage(), $indiName, '<br>', WT_Gedcom_Tag::getLabel('BIRT'), ' ', strip_tags($bdate->Display(false)), ' ', $value->getBirthPlace(), '</span></a>',
-						'<td align="left" width="100%"><a href="', $value->getHtmlUrl(), '">', $value->getSexImage(), $indiName, '  ', $lifespan, ' </a></td>' ,
+					if (!$birthReal) {
+						echo '*';
+					}
+					echo '</b><span>'.$value->getSexImage().$indiName.'<br>'.WT_Gedcom_Tag::getLabel('BIRT').' '.strip_tags($bdate->Display(false)).' '.$value->getBirthPlace().'</span></a></td>'. '<td align="left" width="100%"><a href="'.$value->getHtmlUrl().'">'.$value->getSexImage().$indiName.'</a></td>'.
 						'<td width="15">';
 					if ($value->isDead()) {
 						if ($deathReal || $value->isDead()) {
 							echo '<a class="showit" href="#"><b>';
 							echo self::getAbbreviation('DEAT');
-							if (!$deathReal) echo '*';
+							if (!$deathReal) {
+								echo "*";
+							}
 							echo '</b><span>'.$value->getSexImage().$indiName.'<br>'.WT_Gedcom_Tag::getLabel('DEAT').' '.strip_tags($ddate->Display(false)).' '.$value->getDeathPlace().'</span></a>';
 						}
 					}
 					echo '</td></tr></table>';
 					echo '</div>';
-
 				} else {
-					if ($width > $minlength +5) {
-						echo '<div style="text-align: left; position: absolute; top:', $Y, 'px; left:', $startPos, 'px; width:', $width, 'px; height:', $height, 'px; background-color:', $this->color, '; border: solid blue 1px; z-index:', $Z, '">';
-						foreach ($eventinformation as $evtwidth=>$val) {
-							echo '<div style="position:absolute; left:', $evtwidth, ' "><a class="showit" href="#" style="top:-2px; font-size:10px;"><b>';
-							$text = explode("-fact,", $val);
-							$fact = $text[0];
-							echo '</b><span>'.self::getAbbreviation($fact).'</span></a></div>';
-						}
-						$indiName = $value->getFullName();
-						echo '<table dir="ltr"><tr><td width="15"><a class="showit" href="#"><b>';
-						echo self::getAbbreviation('BIRT');
-						if (!$birthReal) echo '*';
-						echo '</b><span>'.$value->getSexImage().$indiName.'<br>'.WT_Gedcom_Tag::getLabel('BIRT').' '.strip_tags($bdate->Display(false)).' '.$value->getBirthPlace().'</span></a></td>'.
-						'<td align="left" width="100%"><a href="'.$value->getHtmlUrl().'">'.$value->getSexImage().$indiName.'</a></td>'.
-						'<td width="15">';
-						if ($value->isDead()) {
-							if ($deathReal || $value->isDead()) {
-								echo '<a class="showit" href="#"><b>';
-								echo self::getAbbreviation('DEAT');
-								if (!$deathReal) echo "*";
-								echo '</b><span>'.$value->getSexImage().$indiName.'<br>'.WT_Gedcom_Tag::getLabel('DEAT').' '.strip_tags($ddate->Display(false)).' '.$value->getDeathPlace().'</span></a>';
-							}
-						}
-						echo '</td></tr></table>';
-						echo '</div>';
-					} else {
-						echo '<div style="text-align: left; position: absolute;top:', $Y, 'px; left:', $startPos, 'px;width:', $width, 'px; height:', $height, 'px; background-color:', $this->color, '; border: solid blue 1px; z-index:', $Z, '">';
-						$indiName = $value->getFullName();
-						echo '<a class="showit" href="'.$value->getHtmlUrl().'"><b>';
-						echo self::getAbbreviation('BIRT');
-						echo '</b><span>'.$value->getSexImage().$indiName.'<br>'.WT_Gedcom_Tag::getLabel('BIRT').' '.strip_tags($bdate->Display(false)).' '.$value->getBirthPlace().'<br>';
-						foreach ($eventinformation as $val) {
-							$text = explode('-fact,', $val);
-							$val = $text[1];
-							echo $val."<br>";
-						}
-						if ($value->isDead() && $deathReal) echo WT_Gedcom_Tag::getLabel('DEAT')." ".strip_tags($ddate->Display(false))." ".$value->getDeathPlace();
-						echo '</span></a>';
-						echo '</div>';
+					echo '<div style="text-align: left; position: absolute;top:', $Y, 'px; left:', $startPos, 'px;width:', $width, 'px; height:', $height, 'px; background-color:', $this->color, '; border: solid blue 1px; z-index:', $Z, '">';
+					$indiName = $value->getFullName();
+					echo '<a class="showit" href="'.$value->getHtmlUrl().'"><b>';
+					echo self::getAbbreviation('BIRT');
+					echo '</b><span>'.$value->getSexImage().$indiName.'<br>'.WT_Gedcom_Tag::getLabel('BIRT').' '.strip_tags($bdate->Display(false)).' '.$value->getBirthPlace().'<br>';
+					foreach ($eventinformation as $val) {
+						$text = explode('-fact,', $val);
+						$val = $text[1];
+						echo $val."<br>";
 					}
+					if ($value->isDead() && $deathReal) {
+						echo WT_Gedcom_Tag::getLabel('DEAT')." ".strip_tags($ddate->Display(false))." ".$value->getDeathPlace();
+					}
+					echo '</span></a>';
+					echo '</div>';
 				}
-				$zindex--;
+			}
+			$zindex--;
 
-				if ($maxX < $startPos + $width)
-					$maxX = $startPos + $width;
-				if ($maxY < $Y) $maxY = $Y;
+			if ($maxX < $startPos + $width) {
+				$maxX = $startPos + $width;
+			}
+			if ($maxY < $Y) {
+				$maxY = $Y;
+			}
 		}
 		return $maxY;
 	}
