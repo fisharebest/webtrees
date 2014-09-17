@@ -219,17 +219,9 @@ class WT_DB {
 			$current_version=0;
 		}
 
-		// The update scripts can set these to indicate that we need to run a
-		// "post update" script.  It saves from having to store/maintain lots
-		// of separate versions at each schema version.
-		$need_to_delete_old_files=false;
-		$need_to_update_config_data=false;
-		$need_to_update_stored_procedures=false;
-
 		// During installation, the current version is set to a special value of
 		// -1 (v1.2.5 to v1.2.7) or -2 (v1.3.0 onwards).  This indicates that the tables have
-		// been created, but that we still need to install/update configuration data
-		// and/or stored procedures.
+		// been created, and we are already at the latest version.
 		switch ($current_version) {
 		case -1:
 			// Due to a bug in webtrees 1.2.5 - 1.2.7, the setup value of "-1"
@@ -253,16 +245,6 @@ class WT_DB {
 			if ($current_version!=$next_version) {
 				die("Internal error while updating {$schema_name} to {$next_version}");
 			}
-		}
-
-		if ($need_to_delete_old_files) {
-			require $schema_dir.'delete_old_files.php';
-		}
-		if ($need_to_update_config_data) {
-			require $schema_dir.'config_data.php';
-		}
-		if ($need_to_update_stored_procedures) {
-			require $schema_dir.'stored_procedures.php';
 		}
 	}
 }
