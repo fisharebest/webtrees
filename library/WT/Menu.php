@@ -38,13 +38,13 @@ class WT_Menu {
 	/**
 	 * Constructor for the menu class
 	 *
-	 * @param string $label    the label for the menu item (usually a wt_lang variable)
+	 * @param string $label    The label for the menu item (usually a wt_lang variable)
 	 * @param string $link     The link that the user should be taken to when clicking on the menuitem
-	 * @param null   $id
+	 * @param string $id       An optional CSS ID
 	 * @param string $labelpos The position of the label relative to the icon (right, left, top, bottom)
 	 * @param string $flyout   The direction where any submenus should appear relative to the menu item (right, down)
 	 */
-	function __construct($label=' ', $link='#', $id=null, $labelpos='right', $flyout='down')
+	function __construct($label=' ', $link='#', $id='', $labelpos='right', $flyout='down')
 	{
 		$this->label   =$label;
 		$this->labelpos=$labelpos;
