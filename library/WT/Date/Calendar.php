@@ -28,7 +28,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-use FishareBest\ExtCalendar\Calendar;
+use FishareBest\ExtCalendar\CalendarInterface;
 
 class WT_Date_Calendar {
 	const CALENDAR_ESCAPE = '@#DUNKNOWN@';
@@ -43,7 +43,7 @@ class WT_Date_Calendar {
 	/**
 	 * The calendar system used to represent this date
 	 *
-	 * @var Calendar
+	 * @var CalendarInterface
 	 */
 	protected $calendar;
 
@@ -86,8 +86,8 @@ class WT_Date_Calendar {
 		// ...else construct an inequivalent xxxxDate object
 		if ($date->y==0) {
 			// Incomplete date - convert on basis of anniversary in current year
-			$today=$date->TodayYMD();
-			$jd=$date->calendar->ymdToJd($today[0], $date->m, $date->d==0?$today[2]:$date->d);
+			$today = $date->calendar->jdToYmd(unixtojd());
+			$jd = $date->calendar->ymdToJd($today[0], $date->m, $date->d == 0 ? $today[2] : $date->d);
 		} else {
 			// Complete date
 			$jd=(int)(($date->maxJD+$date->minJD)/2);
@@ -218,25 +218,43 @@ class WT_Date_Calendar {
 
 	static function dayNames($n) {
 		switch ($n) {
-		case 0: return WT_I18N::translate('Monday');
-		case 1: return WT_I18N::translate('Tuesday');
-		case 2: return WT_I18N::translate('Wednesday');
-		case 3: return WT_I18N::translate('Thursday');
-		case 4: return WT_I18N::translate('Friday');
-		case 5: return WT_I18N::translate('Saturday');
-		case 6: return WT_I18N::translate('Sunday');
+		case 0:
+			return WT_I18N::translate('Monday');
+		case 1:
+			return WT_I18N::translate('Tuesday');
+		case 2:
+			return WT_I18N::translate('Wednesday');
+		case 3:
+			return WT_I18N::translate('Thursday');
+		case 4:
+			return WT_I18N::translate('Friday');
+		case 5:
+			return WT_I18N::translate('Saturday');
+		case 6:
+			return WT_I18N::translate('Sunday');
+		default:
+			throw new InvalidArgumentException($n);
 		}
 	}
 
 	static function dayNamesAbbreviated($n) {
 		switch ($n) {
-		case 0: return WT_I18N::translate('Mon');
-		case 1: return WT_I18N::translate('Tue');
-		case 2: return WT_I18N::translate('Wed');
-		case 3: return WT_I18N::translate('Thu');
-		case 4: return WT_I18N::translate('Fri');
-		case 5: return WT_I18N::translate('Sat');
-		case 6: return WT_I18N::translate('Sun');
+		case 0:
+			return WT_I18N::translate('Mon');
+		case 1:
+			return WT_I18N::translate('Tue');
+		case 2:
+			return WT_I18N::translate('Wed');
+		case 3:
+			return WT_I18N::translate('Thu');
+		case 4:
+			return WT_I18N::translate('Fri');
+		case 5:
+			return WT_I18N::translate('Sat');
+		case 6:
+			return WT_I18N::translate('Sun');
+		default:
+			throw new InvalidArgumentException($n);
 		}
 	}
 
@@ -367,20 +385,29 @@ class WT_Date_Calendar {
 			$case='GENITIVE';
 		} else {
 			switch ($qualifier) {
+			case 'TO':
+			case 'ABT':
+			case 'FROM':
+				$case='GENITIVE';
+				break;
+			case 'AFT':
+				$case='LOCATIVE';
+				break;
+			case 'BEF':
+			case 'BET':
+			case 'AND':
+				$case='INSTRUMENTAL';
+				break;
 			case '':
 			case 'INT':
 			case 'EST':
-			case 'CAL': $case='NOMINATIVE'; break;
-			case 'TO':
-			case 'ABT':
-			case 'FROM': $case='GENITIVE'; break;
-			case 'AFT':  $case='LOCATIVE'; break;
-			case 'BEF':
-			case 'BET':
-			case 'AND': $case='INSTRUMENTAL'; break;
+			case 'CAL':
+			default: // There shouldn't be any other options...
+				$case='NOMINATIVE';
+				break;
 			}
 		}
-		// Build up the formated date, character at a time
+		// Build up the formatted date, character at a time
 		preg_match_all('/%[^%]/', $format, $matches);
 		foreach ($matches[0] as $match) {
 			switch ($match) {
@@ -466,10 +493,16 @@ class WT_Date_Calendar {
 
 	protected function formatLongMonth($case='NOMINATIVE') {
 		switch ($case) {
-		case 'GENITIVE':     return $this->monthNameGenitiveCase    ($this->m, $this->isLeapYear());
-		case 'NOMINATIVE':   return $this->monthNameNominativeCase  ($this->m, $this->isLeapYear());
-		case 'LOCATIVE':     return $this->monthNameLocativeCase    ($this->m, $this->isLeapYear());
-		case 'INSTRUMENTAL': return $this->monthNameInstrumentalCase($this->m, $this->isLeapYear());
+		case 'GENITIVE':
+			return $this->monthNameGenitiveCase    ($this->m, $this->isLeapYear());
+		case 'NOMINATIVE':
+			return $this->monthNameNominativeCase  ($this->m, $this->isLeapYear());
+		case 'LOCATIVE':
+			return $this->monthNameLocativeCase    ($this->m, $this->isLeapYear());
+		case 'INSTRUMENTAL':
+			return $this->monthNameInstrumentalCase($this->m, $this->isLeapYear());
+		default:
+			throw new InvalidArgumentException($case);
 		}
 	}
 
