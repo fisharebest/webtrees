@@ -520,6 +520,7 @@ function myplot($mytitle, $n, $xdata, $xtitle, $ydata, $ytitle, $legend) {
 	}
 	$yprocentmax = 0;
 	if ($percentage) {
+		$yt = array();
 		for ($i=0; $i<$stop; $i++) {
 			$ytotal = 0;
 			$ymax = 0;

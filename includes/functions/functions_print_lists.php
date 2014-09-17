@@ -115,9 +115,12 @@ function format_indi_table($datalist, $option='') {
 	$max_age = min($MAX_ALIVE_AGE, $stats->LongestLifeAge())+1;
 
 	// Inititialise chart data
-	for ($age=0; $age<=$max_age; $age++) {
+	$deat_by_age = array();
+	for ($age = 0; $age <= $max_age; $age++) {
 		$deat_by_age[$age] = '';
 	}
+	$birt_by_decade = array();
+	$deat_by_decade = array();
 	for ($year=1550; $year<2030; $year+=10) {
 		$birt_by_decade[$year] = '';
 		$deat_by_decade[$year] = '';
@@ -591,9 +594,12 @@ function format_fam_table($datalist) {
 	$max_age = max($stats->oldestMarriageMaleAge(), $stats->oldestMarriageFemaleAge())+1;
 
 	//-- init chart data
+	$marr_by_age = array();
 	for ($age=0; $age<=$max_age; $age++) {
 		$marr_by_age[$age] = '';
 	}
+	$birt_by_decade = array();
+	$marr_by_decade = array();
 	for ($year=1550; $year<2030; $year+=10) {
 		$birt_by_decade[$year] = '';
 		$marr_by_decade[$year] = '';

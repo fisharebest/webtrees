@@ -1266,7 +1266,11 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 						'4'=>'#FFFF00','5'=>'#00FFFF','6'=>'#FF00FF',
 						'7'=>'#C0C0FF','8'=>'#808000');
 
-		for ($i=0; $i<($controller->treesize); $i++) {
+		$lat = array();
+		$lon = array();
+		$latlongval = array();
+		$flags = array();
+		for ($i = 0; $i < $controller->treesize; $i++) {
 			// moved up to grab the sex of the individuals
 			$person = WT_Individual::getInstance($controller->treeid[$i]);
 			if ($person) {
@@ -1452,22 +1456,6 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		$state     = WT_Filter::get('state', '.+', 'XYZ');
 		$matching  = WT_Filter::getBool('matching');
 
-		if (!empty($WT_SESSION['placecheck_gedcom_id'])) {
-			$gedcom_id = $WT_SESSION['placecheck_gedcom_id'];
-		} else {
-			$WT_SESSION['placecheck_gedcom_id'] = $gedcom_id;
-		}
-		if (!empty($WT_SESSION['placecheck_country'])) {
-			$country = $WT_SESSION['placecheck_country'];
-		} else {
-			$WT_SESSION['placecheck_country'] = $country;
-		}
-		if (!empty($WT_SESSION['placecheck_state'])) {
-			$state = $WT_SESSION['placecheck_state'];
-		} else {
-			$WT_SESSION['placecheck_state'] = $state;
-		}
-
 		$controller=new WT_Controller_Page();
 		$controller
 			->restrictAccess(Auth::isAdmin())
@@ -1633,6 +1621,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			}
 			echo '</tr>';
 			$countrows=0;
+			$matched = array();
 			while ($x<$i) {
 				$placestr="";
 				$levels=explode(",", $place_list[$x]);
@@ -1658,6 +1647,9 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				$mapstr6="' >";
 				$mapstr7="')\">";
 				$mapstr8="</a>";
+				$plac = array();
+				$lati = array();
+				$long = array();
 				while ($z<$parts) {
 					if ($levels[$z]==' ' || $levels[$z]=='')
 						$levels[$z]="unknown";// GoogleMap module uses "unknown" while GEDCOM uses , ,
@@ -2599,12 +2591,10 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 	private function checkWhereAmI($numls, $levelm) {
 		$where_am_i = $this->placeIdToHierarchy($levelm);
-		$i=$numls+1;
-		if (!isset($levelo)) {
-			$levelo[0]=0;
-		}
-		foreach (array_reverse($where_am_i, true) as $id=>$place2) {
-			$levelo[$i]=$id;
+		$i = $numls+1;
+		$levelo = array(0 => 0);
+		foreach (array_reverse($where_am_i, true) as $id => $place2) {
+			$levelo[$i] = $id;
 			$i--;
 		}
 		return $levelo;
