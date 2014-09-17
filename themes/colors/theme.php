@@ -56,7 +56,7 @@ function color_theme_dropdown() {
 			if ($WT_SESSION->subColor == $colorChoice) {
 				$submenu->addClass('','','theme-active');
 			}
-		} elseif  (WT_Site::preference('DEFAULT_COLOR_PALETTE') == $colorChoice) { /* here when visitor changes palette from default */
+		} elseif  (WT_Site::getPreference('DEFAULT_COLOR_PALETTE') == $colorChoice) { /* here when visitor changes palette from default */
 			$submenu->addClass('','','theme-active');
 		} elseif ($subColor=='ash') { /* here when site has different theme as default and user switches to colors */
 			if ($subColor == $colorChoice) {
@@ -100,7 +100,7 @@ if (isset($_GET['themecolor']) && array_key_exists($_GET['themecolor'], $COLOR_T
 	if (Auth::id()) {
 		Auth::user()->setSetting('themecolor', $subColor);
 		if (Auth::isAdmin()) {
-			WT_Site::preference('DEFAULT_COLOR_PALETTE', $subColor);
+			WT_Site::setPreference('DEFAULT_COLOR_PALETTE', $subColor);
 		}
 	}
 	unset($_GET['themecolor']);
@@ -118,7 +118,7 @@ if (!$subColor) {
 }
 // We haven't selected one this session?  Use the site default
 if (!$subColor) {
-	$subColor = WT_Site::preference('DEFAULT_COLOR_PALETTE');
+	$subColor = WT_Site::getPreference('DEFAULT_COLOR_PALETTE');
 }
 // Make sure our selected palette actually exists
 if (!array_key_exists($subColor, $COLOR_THEME_LIST)) {

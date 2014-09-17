@@ -212,7 +212,7 @@ class WT_DB {
 	//////////////////////////////////////////////////////////////////////////////
 	public static function updateSchema($schema_dir, $schema_name, $target_version) {
 		try {
-			$current_version=(int)WT_Site::preference($schema_name);
+			$current_version=(int)WT_Site::getPreference($schema_name);
 		} catch (PDOException $e) {
 			// During initial installation, this table won’t exist.
 			// It will only be a problem if we can’t subsequently create it.
@@ -227,12 +227,12 @@ class WT_DB {
 			// Due to a bug in webtrees 1.2.5 - 1.2.7, the setup value of "-1"
 			// wasn't being updated.
 			$current_version=12;
-			WT_Site::preference($schema_name, $current_version);
+			WT_Site::setPreference($schema_name, $current_version);
 			break;
 		case -2:
 			// Because of the above bug, we now set the version to -2 during setup.
 			$current_version=$target_version;
-			WT_Site::preference($schema_name, $current_version);
+			WT_Site::setPreference($schema_name, $current_version);
 			break;
 		}
 
@@ -241,7 +241,7 @@ class WT_DB {
 			$next_version=$current_version+1;
 			require $schema_dir.'db_schema_'.$current_version.'_'.$next_version.'.php';
 			// The updatescript should update the version or throw an exception
-			$current_version=(int)WT_Site::preference($schema_name);
+			$current_version=(int)WT_Site::getPreference($schema_name);
 			if ($current_version!=$next_version) {
 				die("Internal error while updating {$schema_name} to {$next_version}");
 			}

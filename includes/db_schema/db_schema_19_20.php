@@ -35,5 +35,5 @@ self::exec("UPDATE `##default_resn` SET xref    =NULL WHERE xref    =''");
 self::exec("UPDATE `##default_resn` SET tag_type=NULL WHERE tag_type=''");
 
 // Update the version to indicate success
-WT_Site::preference($schema_name, $next_version);
+WT_Site::setPreference($schema_name, $next_version);
 

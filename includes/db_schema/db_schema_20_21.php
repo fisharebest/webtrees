@@ -60,5 +60,5 @@ try {
 self::exec("UPDATE `##media` SET m_type = SUBSTRING_INDEX(SUBSTRING_INDEX(m_gedcom, '\n3 TYPE ', -1), '\n', 1) WHERE m_gedcom like '%\n3 TYPE %'");
 
 // Update the version to indicate success
-WT_Site::preference($schema_name, $next_version);
+WT_Site::setPreference($schema_name, $next_version);
 

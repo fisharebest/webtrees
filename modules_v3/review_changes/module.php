@@ -58,7 +58,7 @@ class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 
 		if ($changes && $sendmail=='yes') {
 			// There are pending changes - tell moderators/managers/administrators about them.
-			if (WT_TIMESTAMP - WT_Site::preference('LAST_CHANGE_EMAIL') > (60*60*24*$days)) {
+			if (WT_TIMESTAMP - WT_Site::getPreference('LAST_CHANGE_EMAIL') > (60*60*24*$days)) {
 				// Which users have pending changes?
 				foreach (User::all() as $user) {
 					if ($user->getSetting('contactmethod') !== 'none') {
@@ -78,7 +78,7 @@ class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 						}
 					}
 				}
-				WT_Site::preference('LAST_CHANGE_EMAIL', WT_TIMESTAMP);
+				WT_Site::setPreference('LAST_CHANGE_EMAIL', WT_TIMESTAMP);
 			}
 			if (WT_USER_CAN_EDIT) {
 				$id=$this->getName().$block_id;
@@ -95,8 +95,8 @@ class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 					$content .= "<a href=\"#\" onclick=\"window.open('edit_changes.php','_blank', chan_window_specs); return false;\">".WT_I18N::translate('There are pending changes for you to moderate.')."</a><br>";
 				}
 				if ($sendmail=="yes") {
-					$content .= WT_I18N::translate('Last email reminder was sent ').format_timestamp(WT_Site::preference('LAST_CHANGE_EMAIL'))."<br>";
-					$content .= WT_I18N::translate('Next email reminder will be sent after ').format_timestamp(WT_Site::preference('LAST_CHANGE_EMAIL')+(60*60*24*$days))."<br><br>";
+					$content .= WT_I18N::translate('Last email reminder was sent ').format_timestamp(WT_Site::getPreference('LAST_CHANGE_EMAIL'))."<br>";
+					$content .= WT_I18N::translate('Next email reminder will be sent after ').format_timestamp(WT_Site::getPreference('LAST_CHANGE_EMAIL')+(60*60*24*$days))."<br><br>";
 				}
 				$changes=WT_DB::prepare(
 					"SELECT xref".
