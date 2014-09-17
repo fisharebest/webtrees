@@ -1,46 +1,44 @@
 <?php
 namespace WT;
 
-// Provide an interface to the wt_user table
-//
-// webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
-
 use WT_DB;
 use WT_Individual;
 use WT_Tree;
 
+/**
+ * Class User - Provide an interface to the wt_user table.
+ *
+ * @copyright (c) 2014 webtrees development team
+ * @license   This program is free software: you can redistribute it and/or modify
+ *            it under the terms of the GNU General Public License as published by
+ *            the Free Software Foundation, either version 2 of the License, or
+ *            (at your option) any later version.
+ *
+ *            This program is distributed in the hope that it will be useful,
+ *            but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *            MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *            GNU General Public License for more details.
+ *
+ *            You should have received a copy of the GNU General Public License
+ *            along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
 class User {
-	/** @var  string $user_id The primary key of this user. */
+	/** @var  string The primary key of this user. */
 	private $user_id;
 
-	/** @var  string $user_name The login name of this user. */
+	/** @var  string The login name of this user. */
 	private $user_name;
 
-	/** @var  string $real_name The real (display) name of this user. */
+	/** @var  string The real (display) name of this user. */
 	private $real_name;
 
-	/** @var  string $email The email address of this user. */
+	/** @var  string The email address of this user. */
 	private $email;
 
-	/** @var array $settings Settings for the user, from the wt_user_setting table. */
+	/** @var array Settings for the user, from the wt_user_setting table. */
 	private $settings;
 
-	/** @var  User[] $cache Only fetch users from the database once. */
+	/** @var  User[] Only fetch users from the database once. */
 	private static $cache = array();
 
 	/**
@@ -264,15 +262,31 @@ class User {
 		}
 	}
 
-	// Getters and setters for user attributes
+	/**
+	 * Get the numeric ID for this user.
+	 *
+	 * @return string
+	 */
 	public function getUserId() {
 		return $this->user_id;
 	}
 
+	/**
+	 * Get the login name for this user.
+	 *
+	 * @return string
+	 */
 	public function getUserName() {
 		return $this->user_name;
 	}
 
+	/**
+	 * Set the login name for this user.
+	 *
+	 * @param string $user_name
+	 *
+	 * @return $this
+	 */
 	public function setUserName($user_name) {
 		if ($this->user_name !== $user_name) {
 			$this->user_name = $user_name;
@@ -284,10 +298,22 @@ class User {
 		return $this;
 	}
 
+	/**
+	 * Get the real name of this user.
+	 *
+	 * @return string
+	 */
 	public function getRealName() {
 		return $this->real_name;
 	}
 
+	/**
+	 * Set the real name of this user.
+	 *
+	 * @param string $real_name
+	 *
+	 * @return User
+	 */
 	public function setRealName($real_name) {
 		if ($this->real_name !== $real_name) {
 			$this->real_name = $real_name;
@@ -299,10 +325,22 @@ class User {
 		return $this;
 	}
 
+	/**
+	 * Get the email address of this user.
+	 *
+	 * @return string
+	 */
 	public function getEmail() {
 		return $this->email;
 	}
 
+	/**
+	 * Set the email address of this user.
+	 *
+	 * @param string $email
+	 *
+	 * @return User
+	 */
 	public function setEmail($email) {
 		if ($this->email !== $email) {
 			$this->email = $email;
@@ -314,6 +352,13 @@ class User {
 		return $this;
 	}
 
+	/**
+	 * Set the password of this user.
+	 *
+	 * @param string $password
+	 *
+	 * @return User
+	 */
 	public function setPassword($password) {
 		WT_DB::prepare(
 			"UPDATE `##user` SET password = ? WHERE user_id = ?"
@@ -323,7 +368,7 @@ class User {
 	}
 
 	/**
-	 * Fetch a user option/setting from the wt_user_setting table
+	 * Fetch a user option/setting from the wt_user_setting table.
 	 *
 	 * Since we'll fetch several settings for each user, and since there aren’t
 	 * that many of them, fetch them all in one database query
