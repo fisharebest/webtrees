@@ -244,13 +244,14 @@ if (!isset($_SERVER['HTTP_USER_AGENT'])) {
 	$_SERVER['HTTP_USER_AGENT'] = '';
 }
 
-// Common functions
-require WT_ROOT.'includes/functions/functions.php';
-require WT_ROOT.'includes/functions/functions_db.php';
-require WT_ROOT.'includes/functions/functions_print.php';
-require WT_ROOT.'includes/functions/functions_mediadb.php';
-require WT_ROOT.'includes/functions/functions_date.php';
-require WT_ROOT.'includes/functions/functions_charts.php';
+// Common functions - move these to classes so we can autoload them.
+require WT_ROOT . 'includes/functions/functions.php';
+require WT_ROOT . 'includes/functions/functions_db.php';
+require WT_ROOT . 'includes/functions/functions_print.php';
+require WT_ROOT . 'includes/functions/functions_mediadb.php';
+require WT_ROOT . 'includes/functions/functions_date.php';
+require WT_ROOT . 'includes/functions/functions_charts.php';
+require WT_ROOT . 'includes/functions/functions_import.php';
 
 // Set a custom error handler
 set_error_handler(function ($errno, $errstr) {

@@ -55,7 +55,6 @@ if (!WT_Filter::checkCsrf()) {
 switch (WT_Filter::post('action')) {
 case 'accept-changes':
 	// Accept all the pending changes for a record
-	require WT_ROOT.'includes/functions/functions_import.php';
 	$record = WT_GedcomRecord::getInstance(WT_Filter::post('xref', WT_REGEX_XREF));
 	if ($record && WT_USER_CAN_ACCEPT && $record->canShow() && $record->canEdit()) {
 		WT_FlashMessages::addMessage(/* I18N: %s is the name of an individual, source or other record */ WT_I18N::translate('The changes to “%s” have been accepted.', $record->getFullName()));
@@ -232,7 +231,6 @@ case 'unlink-media':
 
 case 'reject-changes':
 	// Reject all the pending changes for a record
-	require WT_ROOT.'includes/functions/functions_import.php';
 	$record=WT_GedcomRecord::getInstance(WT_Filter::post('xref', WT_REGEX_XREF));
 	if ($record && WT_USER_CAN_ACCEPT && $record->canShow() && $record->canEdit()) {
 		WT_FlashMessages::addMessage(/* I18N: %s is the name of an individual, source or other record */ WT_I18N::translate('The changes to “%s” have been rejected.', $record->getFullName()));

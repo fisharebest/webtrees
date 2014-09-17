@@ -22,7 +22,6 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 require_once WT_ROOT.'includes/functions/functions_print_facts.php';
-require_once WT_ROOT.'includes/functions/functions_import.php';
 
 class WT_Controller_Note extends WT_Controller_GedcomRecord {
 	public function __construct() {
