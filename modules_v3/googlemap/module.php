@@ -3964,10 +3964,11 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		if ($action=='ImportGedcom') {
 			$placelist=array();
 			$j=0;
-			$statement=
+			$gedcom_records =
 				WT_DB::prepare("SELECT i_gedcom FROM `##individuals` WHERE i_file=? UNION ALL SELECT f_gedcom FROM `##families` WHERE f_file=?")
-				->execute(array(WT_GED_ID, WT_GED_ID));
-			while ($gedrec=$statement->fetchColumn()) {
+				->execute(array(WT_GED_ID, WT_GED_ID))
+				->fetchOneColumn();
+			foreach ($gedcom_records as $gedrec) {
 				$i = 1;
 				$placerec = get_sub_record(2, '2 PLAC', $gedrec, $i);
 				while (!empty($placerec)) {
