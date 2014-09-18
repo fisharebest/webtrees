@@ -353,8 +353,8 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 				// NOTE: If statement OK
 				if ($num>0) {
 					echo '<div class="center" id="childarrow" style="position:absolute; width:', $bwidth, 'px;">';
-					echo '<a href="#" onclick="togglechildrenbox(); return false;" class="icon-darrow"></a><br>';
-					echo '<div id="childbox" style="width:', $bwidth, 'px; height:', $bheight, 'px; visibility: hidden;">';
+					echo '<a href="#" class="icon-darrow"></a><br>';
+					echo '<div id="childbox">';
 					echo '<table class="person_box"><tr><td>';
 
 					foreach ($famids as $family) {

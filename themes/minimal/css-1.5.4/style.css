@@ -962,12 +962,15 @@ img.block {
 	position: absolute;
 }
 
-#pedigree_chart #childbox {
-	border: 1px solid;
-	background-color: #fff;
+#childbox {
 	padding: 5px;
 	position: absolute;
 	display: none;
+}
+
+#pedigree_chart #childbox {
+	border: 1px solid;
+	background-color: #fff;
 }
 
 /*-- pedigree chart rtl specific stylesheets --*/
