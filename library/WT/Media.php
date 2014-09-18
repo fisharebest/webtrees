@@ -311,7 +311,7 @@ class WT_Media extends WT_GedcomRecord {
 			$imgsize['mime']='';
 			$imgsize['WxH']='';
 			$imgsize['imgWH']='';
-			if ($this->isExternal($which)) {
+			if ($this->isExternal()) {
 				// don’t let large external images break the dislay
 				$imgsize['imgWH']=' width="'.$THUMBNAIL_WIDTH.'" ';
 			}

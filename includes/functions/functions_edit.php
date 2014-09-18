@@ -110,12 +110,16 @@ function select_edit_control_inline($name, $values, $empty, $selected, $controll
 	}
 }
 
-// Create a set of radio buttons for a form
-// $name     - the ID for the form element
-// $values   - array of value=>display items
-// $selected - the currently selected item (if any)
-// $extra    - extra markup for field (e.g. tab key sequence)
-function radio_buttons($name, $values, $selected, $extra='') {
+/**
+ * Create a set of radio buttons for a form
+ *
+ * @param string   $name      The ID for the form element
+ * @param string[] $values    Array of value=>display items
+ * @param string   $selected  The currently selected item
+ *
+ * @return string
+ */
+function radio_buttons($name, $values, $selected) {
 	$html='';
 	foreach ($values as $key=>$value) {
 		$uniqueID = Uuid::uuid4();

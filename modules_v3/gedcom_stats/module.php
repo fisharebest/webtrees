@@ -244,7 +244,6 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 			set_block_setting($block_id, 'stat_avg_life',        WT_Filter::postBool('stat_avg_life'));
 			set_block_setting($block_id, 'stat_most_chil',       WT_Filter::postBool('stat_most_chil'));
 			set_block_setting($block_id, 'stat_avg_chil',        WT_Filter::postBool('stat_avg_chil'));
-			set_block_setting($block_id, 'stat_link',            WT_Filter::postBool('stat_link'));
 			exit;
 		}
 
@@ -281,7 +280,6 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 		$stat_avg_life       =get_block_setting($block_id, 'stat_avg_life',        true);
 		$stat_most_chil      =get_block_setting($block_id, 'stat_most_chil',       true);
 		$stat_avg_chil       =get_block_setting($block_id, 'stat_avg_chil',        true);
-		$stat_link           =get_block_setting($block_id, 'stat_link',            true);
 ?>
 	<tr>
 	<td class="descriptionbox wrap width33"><?php echo WT_I18N::translate('Select the stats to show in this block'); ?></td>
@@ -361,11 +359,5 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 	</td>
 	</tr>
 	<?php
-		$stat_link=get_block_setting($block_id, 'stat_link', true);
-		echo '<tr><td class="descriptionbox wrap width33">';
-		echo WT_I18N::translate('Show link to Statistics charts?');
-		echo '</td><td class="optionbox">';
-		echo edit_field_yes_no('stat_link', $stat_link);
-		echo '</td></tr>';
 	}
 }

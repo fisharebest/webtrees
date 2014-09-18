@@ -149,7 +149,7 @@ echo '<div id="repo-tabs">
 	// Sources linked to this repository
 	if ($linked_sour) {
 		echo '<div id="source-repo">';
-		echo format_sour_table($linked_sour, $controller->record->getFullName());
+		echo format_sour_table($linked_sour);
 		echo '</div>';
 	}
 

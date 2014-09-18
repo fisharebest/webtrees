@@ -866,24 +866,22 @@ function print_main_notes(WT_Fact $fact, $level) {
 	for ($j=0; $j<$ct; $j++) {
 		// Note object, or inline note?
 		if (preg_match("/$level NOTE @(.*)@/", $match[$j][0], $nmatch)) {
-			$nid = $nmatch[1];
-			$note = WT_Note::getInstance($nid);
+			$note = WT_Note::getInstance($nmatch[1]);
 			if ($note && !$note->canShow()) {
 				continue;
 			}
 		} else {
-			$nid = null;
 			$note = null;
 		}
 
-		if ($level>=2) echo '<tr class="row_note2">';
-		else echo '<tr>';
-		echo '<td class="descriptionbox';
-		if ($level>=2) echo ' rela';
-		echo ' ', $styleadd, ' width20">';
+		if ($level >= 2) {
+			echo '<tr class="row_note2"><td class="descriptionbox rela ', $styleadd, ' width20">';
+		} else {
+			echo '<tr><td class="descriptionbox ', $styleadd, ' width20">';
+		}
 		if ($can_edit) {
 			echo '<a onclick="return edit_record(\'', $pid, '\', \'', $fact_id, '\');" href="#" title="', WT_I18N::translate('Edit'), '">';
-			if ($level<2) {
+			if ($level < 2) {
 				if ($SHOW_FACT_ICONS) {
 					echo '<i class="icon-note"></i> ';
 				}
