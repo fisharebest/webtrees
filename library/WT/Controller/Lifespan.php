@@ -268,7 +268,7 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 	}
 
 	//method used to place the person boxes onto the timeline
-	function fillTL($ar, $int, $top) {
+	function fillTL($ar, $top) {
 		global $maxX, $zindex;
 
 		$zindex = count($ar);

@@ -108,13 +108,11 @@ class WT_Controller_Media extends WT_Controller_GedcomRecord {
 	}
 
 	/**
-	 * return a list of facts
-	 *
-	 * @param bool $includeFileName
+	 * Return a list of facts
 	 *
 	 * @return array
 	 */
-	function getFacts($includeFileName=true) {
+	function getFacts() {
 		$facts = $this->record->getFacts();
 
 		// Add some dummy facts to show additional information
