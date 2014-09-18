@@ -246,7 +246,7 @@ class WT_Individual extends WT_GedcomRecord {
 				}
 			}
 			// Check spouse dates
-			$spouse = $family->getSpouse($this, WT_PRIV_HIDE);
+			$spouse = $family->getSpouse($this);
 			if ($spouse) {
 				preg_match_all('/\n2 DATE (.+)/', $spouse->gedcom, $date_matches);
 				foreach ($date_matches[1] as $date_match) {
