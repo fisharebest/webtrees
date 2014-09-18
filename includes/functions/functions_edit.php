@@ -159,10 +159,18 @@ function two_state_checkbox($name, $is_checked=0, $extra='') {
 		' onclick="document.getElementById(\''.$name.'\').value=(this.checked?1:0);" '.$extra.'>';
 }
 
-// Print a set of edit controls to select languages
+/**
+ * Print a set of edit controls to select languages
+ *
+ * @param $field_prefix
+ * @param $languages
+ *
+ * @return string
+ */
 function edit_language_checkboxes($field_prefix, $languages) {
-	echo '<table>';
-	$i=0;
+	$html = '';
+	$i    = 0;
+
 	foreach (WT_I18N::installed_languages() as $code=>$name) {
 		$content = '<input type="checkbox" name="'.$field_prefix.$code.'" id="'.$field_prefix.$code.'"';
 		if (strpos(",{$languages},", ",{$code},")!==false) {
@@ -171,18 +179,30 @@ function edit_language_checkboxes($field_prefix, $languages) {
 		$content .= '><label for="'.$field_prefix.$code.'"> '.$name.'</label>';
 		// print in three columns
 		switch ($i % 3) {
-		case 0: echo '<tr><td>', $content, '</td>'; break;
-		case 1: echo '<td>', $content, '</td>'; break;
-		case 2: echo '<td>', $content, '</td></tr>'; break;
+		case 0:
+			$html .= '<tr><td>' . $content . '</td>';
+			break;
+		case 1:
+			$html .= '<td>' . $content . '</td>';
+			break;
+		case 2:
+			$html .= '<td>' . $content . '</td></tr>';
+			break;
 		}
 		$i++;
 	}
 	switch ($i % 3) {
-	case 0: break;
-	case 1: echo '<td></td><td></td></tr>'; break;
-	case 2: echo '<td></td></tr>'; break;
+	case 0:
+		break;
+	case 1:
+		$html .= '<td></td><td></td></tr>';
+		break;
+	case 2:
+		$html .= '<td></td></tr>';
+		break;
 	}
-	echo '</table>';
+
+	return '<table>' . $html . '</table>';
 }
 
 // Print an edit control for access level

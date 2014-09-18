@@ -77,12 +77,18 @@ class WT_DB {
 		self::$instance=new self;
 	}
 
-	// We don't access this directly, only via query(), exec() and prepare()
+	/**
+	 * We don't access $instance directly, only via query(), exec() and prepare()
+	 *
+	 * @return WT_DB
+	 *
+	 * @throws Exception
+	 */
 	public static function getInstance() {
 		if (self::$pdo instanceof PDO) {
 			return self::$instance;
 		} else {
-			trigger_error('WT_DB::createInstance() must be called before WT_DB::getInstance().', E_USER_ERROR);
+			throw new Exception('WT_DB::createInstance() must be called before WT_DB::getInstance().');
 		}
 	}
 
