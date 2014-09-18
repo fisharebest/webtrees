@@ -3513,9 +3513,9 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 				// Setup the click event listeners: simply set the map to original LatLng
 				google.maps.event.addDomListener(controlUI, 'click', function() {
-					map.setCenter(latlng),
-					map.setZoom(pl_zoom),
-					map.setMapTypeId(google.maps.MapTypeId.ROADMAP)
+					map.setCenter(latlng);
+					map.setZoom(pl_zoom);
+					map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
 				});
 			}
 
@@ -4467,8 +4467,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				var pos = parms[i].indexOf('=');
 				if (pos > 0) {
 					var key = parms[i].substring(0,pos);
-					var val = parms[i].substring(pos+1);
-					qsParm[key] = val;
+					qsParm[key] = parms[i].substring(pos + 1);
 				}
 			}
 		}
@@ -4506,8 +4505,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		}
 
 		function roundNumber(num, dec) {
-			var result = Math.round(num*Math.pow(10,dec))/Math.pow(10,dec);
-			return result;
+			return Math.round(num * Math.pow(10, dec)) / Math.pow(10, dec);
 		}
 
 		function initialize() {

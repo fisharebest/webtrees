@@ -106,8 +106,7 @@ if (!defined('WT_WEBTREES')) {
 		}
 		// Change Date field -----------------------------------------------------
 		var cendate = getCenDate(cenyear);
-		var cdate = cendate.format("dd NNN yyyy");
-		document.getElementById('censDate').value = cdate;
+		document.getElementById('censDate').value = cendate.format("dd NNN yyyy");
 		// Change Year field Colour ----------------------------------------------
 		if (document.getElementById('censYear').value=="") {
 			document.getElementById('censYear').style.backgroundColor = "#ffaaaa";
