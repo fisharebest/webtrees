@@ -339,9 +339,9 @@ function user_contact_link($user_id) {
 		case 'none':
 			return '';
 		case 'mailto':
-			return '<a href="mailto:' . WT_Filter::escapeHtml($user->getEmail()).'">'.WT_Filter::escapeHtml($user->getRealName($user_id)).'</a>';
+			return '<a href="mailto:' . WT_Filter::escapeHtml($user->getEmail()).'">'.WT_Filter::escapeHtml($user->getRealName()).'</a>';
 		default:
-			return "<a href='#' onclick='message(\"" . WT_Filter::escapeJs($user->getUserName()) . "\", \"" . $method . "\", \"" . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_Filter::escapeJs(get_query_url()) . "\", \"\");return false;'>" . WT_Filter::escapeHtml($user->getRealName($user_id)) . '</a>';
+			return "<a href='#' onclick='message(\"" . WT_Filter::escapeJs($user->getUserName()) . "\", \"" . $method . "\", \"" . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_Filter::escapeJs(get_query_url()) . "\", \"\");return false;'>" . WT_Filter::escapeHtml($user->getRealName()) . '</a>';
 		}
 	} else {
 		return '';

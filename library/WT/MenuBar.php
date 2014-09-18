@@ -378,12 +378,9 @@ class WT_MenuBar {
 	/**
 	 * get the reports menu
 	 *
-	 * @param string $pid
-	 * @param string $famid
-	 *
 	 * @return WT_Menu the menu item
 	 */
-	public static function getReportsMenu($pid='', $famid='') {
+	public static function getReportsMenu() {
 		global $SEARCH_SPIDER;
 
 		$active_reports=WT_Module::getActiveReports();
