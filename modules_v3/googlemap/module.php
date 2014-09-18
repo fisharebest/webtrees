@@ -773,6 +773,9 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		$miscount=0;
 		$missing = '';
 
+		$latlongval = array();
+		$lat = array();
+		$lon = array();
 		for ($i=0; $i<($controller->treesize); $i++) {
 			// -- check to see if we have moved to the next generation
 			if ($i+1 >= pow(2, $curgen)) {$curgen++;}
