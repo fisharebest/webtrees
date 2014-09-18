@@ -182,16 +182,6 @@ class WT_DB {
 		}
 	}
 
-	// Add logging to query()
-	public static function query($statement) {
-		$statement=str_replace('##', WT_TBLPREFIX, $statement);
-		$start=microtime(true);
-		$result=self::$pdo->query($statement);
-		$end=microtime(true);
-		self::logQuery($statement, count($result), $end-$start, array());
-		return $result;
-	}
-
 	// Add logging to exec()
 	public static function exec($statement) {
 		$statement=str_replace('##', WT_TBLPREFIX, $statement);

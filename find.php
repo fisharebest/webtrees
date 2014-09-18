@@ -613,7 +613,7 @@ if ($action=="filter") {
 	if ($type == "repo") {
 		echo '<div id="find-output">';
 		if ($filter) {
-			$repo_list = search_repos($filter_array, array(WT_GED_ID), 'AND', true);
+			$repo_list = search_repos($filter_array, array(WT_GED_ID), 'AND');
 		} else {
 			$repo_list = get_repo_list(WT_GED_ID);
 		}

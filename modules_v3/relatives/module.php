@@ -238,13 +238,9 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		// Re-order children / add a new child
 		if ($family->canEdit()) {
 			if ($type == 'FAMS') {
-				$child_u = WT_I18N::translate('Add a new son or daughter');
-				$child_m = WT_I18N::translate('son');
-				$child_f = WT_I18N::translate('daughter');
+				$add_child_text = WT_I18N::translate('Add a new son or daughter');
 			} else {
-				$child_u = WT_I18N::translate('Add a new brother or sister');
-				$child_m = WT_I18N::translate('brother');
-				$child_f = WT_I18N::translate('sister');
+				$add_child_text = WT_I18N::translate('Add a new brother or sister');
 			}
 			?>
 			<tr>
@@ -254,7 +250,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 					<?php } ?>
 				</td>
 				<td class="facts_value">
-					<a href="#" onclick="return add_child_to_family('<?php echo $family->getXref(); ?>');"><?php echo $child_u; ?></a>
+					<a href="#" onclick="return add_child_to_family('<?php echo $family->getXref(); ?>');"><?php echo $add_child_text; ?></a>
 					<span style='white-space:nowrap;'>
 						<a href="#" class="icon-sex_m_15x15" onclick="return add_child_to_family('<?php echo $family->getXref(); ?>','M');"></a>
 						<a href="#" class="icon-sex_f_15x15" onclick="return add_child_to_family('<?php echo $family->getXref(); ?>','F');"></a>
