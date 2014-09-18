@@ -28,7 +28,6 @@
 
 define('WT_SCRIPT_NAME', 'import.php');
 require './includes/session.php';
-require_once WT_ROOT.'includes/functions/functions_import.php';
 
 if (!WT_USER_GEDCOM_ADMIN) {
 	header('HTTP/1.1 403 Access Denied');

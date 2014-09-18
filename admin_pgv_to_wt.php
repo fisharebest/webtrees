@@ -181,20 +181,20 @@ if (ini_get('output_buffering')) {
 	ob_flush();
 }
 // TODO May need to set 'DATA_DIRECTORY' to $INDEX_DIRECTORY when dealing with media??
-@WT_Site::preference('USE_REGISTRATION_MODULE',         $USE_REGISTRATION_MODULE);
-@WT_Site::preference('REQUIRE_ADMIN_AUTH_REGISTRATION', $REQUIRE_ADMIN_AUTH_REGISTRATION);
-@WT_Site::preference('ALLOW_USER_THEMES',               $ALLOW_USER_THEMES);
-@WT_Site::preference('ALLOW_CHANGE_GEDCOM',             $ALLOW_CHANGE_GEDCOM);
-@WT_Site::preference('SESSION_TIME',                    $PGV_SESSION_TIME);
-@WT_Site::preference('SMTP_ACTIVE',                     $PGV_SMTP_ACTIVE ? 'external' : 'internal');
-@WT_Site::preference('SMTP_HOST',                       $PGV_SMTP_HOST);
-@WT_Site::preference('SMTP_HELO',                       $PGV_SMTP_HELO);
-@WT_Site::preference('SMTP_PORT',                       $PGV_SMTP_PORT);
-@WT_Site::preference('SMTP_AUTH',                       $PGV_SMTP_AUTH);
-@WT_Site::preference('SMTP_AUTH_USER',                  $PGV_SMTP_AUTH_USER);
-@WT_Site::preference('SMTP_AUTH_PASS',                  $PGV_SMTP_AUTH_PASS);
-@WT_Site::preference('SMTP_SSL',                        $PGV_SMTP_SSL);
-@WT_Site::preference('SMTP_FROM_NAME',                  $PGV_SMTP_FROM_NAME);
+@WT_Site::setPreference('USE_REGISTRATION_MODULE',         $USE_REGISTRATION_MODULE);
+@WT_Site::setPreference('REQUIRE_ADMIN_AUTH_REGISTRATION', $REQUIRE_ADMIN_AUTH_REGISTRATION);
+@WT_Site::setPreference('ALLOW_USER_THEMES',               $ALLOW_USER_THEMES);
+@WT_Site::setPreference('ALLOW_CHANGE_GEDCOM',             $ALLOW_CHANGE_GEDCOM);
+@WT_Site::setPreference('SESSION_TIME',                    $PGV_SESSION_TIME);
+@WT_Site::setPreference('SMTP_ACTIVE',                     $PGV_SMTP_ACTIVE ? 'external' : 'internal');
+@WT_Site::setPreference('SMTP_HOST',                       $PGV_SMTP_HOST);
+@WT_Site::setPreference('SMTP_HELO',                       $PGV_SMTP_HELO);
+@WT_Site::setPreference('SMTP_PORT',                       $PGV_SMTP_PORT);
+@WT_Site::setPreference('SMTP_AUTH',                       $PGV_SMTP_AUTH);
+@WT_Site::setPreference('SMTP_AUTH_USER',                  $PGV_SMTP_AUTH_USER);
+@WT_Site::setPreference('SMTP_AUTH_PASS',                  $PGV_SMTP_AUTH_PASS);
+@WT_Site::setPreference('SMTP_SSL',                        $PGV_SMTP_SSL);
+@WT_Site::setPreference('SMTP_FROM_NAME',                  $PGV_SMTP_FROM_NAME);
 
 ////////////////////////////////////////////////////////////////////////////////
 

@@ -44,7 +44,7 @@ class WT_Mail {
 				->setSubject ($subject)
 				->setBodyHtml($message)
 				->setBodyText(WT_Filter::unescapeHtml($message))
-				->setFrom    (WT_Site::preference('SMTP_FROM_NAME'), $tree->preference('title'))
+				->setFrom    (WT_Site::getPreference('SMTP_FROM_NAME'), $tree->preference('title'))
 				->addTo      ($to_email,                             $to_name)
 				->setReplyTo ($replyto_email,                        $replyto_name)
 				->send       (WT_Mail::transport());
@@ -69,7 +69,7 @@ class WT_Mail {
 		return self::send(
 			$tree,
 			$user->getEmail(),                     $user->getRealName(),
-			WT_Site::preference('SMTP_FROM_NAME'), $tree->preference('title'),
+			WT_Site::getPreference('SMTP_FROM_NAME'), $tree->preference('title'),
 			$subject,
 			$message
 		);
@@ -78,24 +78,24 @@ class WT_Mail {
 
 	// Create a transport mechanism for sending mail
 	public static function transport() {
-		switch (WT_Site::preference('SMTP_ACTIVE')) {
+		switch (WT_Site::getPreference('SMTP_ACTIVE')) {
 		case 'internal':
 			return new Zend_Mail_Transport_Sendmail();
 		case 'external':
 			$config = array(
-				'name' => WT_Site::preference('SMTP_HELO'),
-				'port' => WT_Site::preference('SMTP_PORT'),
+				'name' => WT_Site::getPreference('SMTP_HELO'),
+				'port' => WT_Site::getPreference('SMTP_PORT'),
 			);
-			if (WT_Site::preference('SMTP_AUTH')) {
+			if (WT_Site::getPreference('SMTP_AUTH')) {
 				$config['auth']     = 'login';
-				$config['username'] = WT_Site::preference('SMTP_AUTH_USER');
-				$config['password'] = WT_Site::preference('SMTP_AUTH_PASS');
+				$config['username'] = WT_Site::getPreference('SMTP_AUTH_USER');
+				$config['password'] = WT_Site::getPreference('SMTP_AUTH_PASS');
 			}
-			if (WT_Site::preference('SMTP_SSL') !== 'none') {
-				$config['ssl'] = WT_Site::preference('SMTP_SSL');
+			if (WT_Site::getPreference('SMTP_SSL') !== 'none') {
+				$config['ssl'] = WT_Site::getPreference('SMTP_SSL');
 			}
 
-			return new Zend_Mail_Transport_Smtp(WT_Site::preference('SMTP_HOST'), $config);
+			return new Zend_Mail_Transport_Smtp(WT_Site::getPreference('SMTP_HOST'), $config);
 		default:
 			// For testing
 			return new Zend_Mail_Transport_File();

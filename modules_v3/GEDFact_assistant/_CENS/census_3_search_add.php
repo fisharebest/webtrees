@@ -132,9 +132,8 @@ if (!defined('WT_WEBTREES')) {
 							}
 							$label = get_close_relationship_name($person, $gparent);
 							$menu = new WT_Menu($label);
-							$slabel  = print_pedigree_person_nav2($gparent->getXref(), $label, $censdate);
-							$slabel .= $parentlinks;
-							$submenu = new WT_Menu($slabel);
+							print_pedigree_person_nav2($gparent->getXref(), $label, $censdate);
+							$submenu = new WT_Menu($parentlinks);
 							$menu->addSubMenu($submenu);
 
 							?>
@@ -254,9 +253,8 @@ if (!defined('WT_WEBTREES')) {
 							}
 							$label = get_close_relationship_name($person, $gparent);
 							$menu = new WT_Menu($label);
-							$slabel  = print_pedigree_person_nav2($gparent->getXref(), $label, $censyear);
-							$slabel .= $parentlinks;
-							$submenu = new WT_Menu($slabel);
+							print_pedigree_person_nav2($gparent->getXref(), $label, $censyear);
+							$submenu = new WT_Menu($parentlinks);
 							$menu->addSubMenu($submenu);
 							?>
 							<tr>
@@ -380,9 +378,8 @@ if (!defined('WT_WEBTREES')) {
 							}
 							$label = get_close_relationship_name($person, $child);
 							$menu = new WT_Menu($label);
-							$slabel  = print_pedigree_person_nav2($child->getXref(), $label, $censyear);
-							$slabel .= $spouselinks;
-							$submenu = new WT_Menu($slabel);
+							print_pedigree_person_nav2($child->getXref(), $label, $censyear);
+							$submenu = new WT_Menu($spouselinks);
 							$menu->addSubMenu($submenu);
 
 							?>
@@ -519,9 +516,8 @@ if (!defined('WT_WEBTREES')) {
 							}
 							$label = get_close_relationship_name($person, $gparent);
 							$menu = new WT_Menu($label);
-							$slabel  = print_pedigree_person_nav2($gparent->getXref(), $label, $censyear);
-							$slabel .= $parentlinks;
-							$submenu = new WT_Menu($slabel);
+							print_pedigree_person_nav2($gparent->getXref(), $label, $censyear);
+							$submenu = new WT_Menu($parentlinks);
 							$menu->addSubMenu($submenu);
 							if ($gparent->getDeathYear() == 0) { $DeathYr = ""; } else { $DeathYr = $gparent->getDeathYear(); }
 							if ($gparent->getBirthYear() == 0) { $BirthYr = ""; } else { $BirthYr = $gparent->getBirthYear(); }
@@ -642,9 +638,8 @@ if (!defined('WT_WEBTREES')) {
 							}
 							$label = get_close_relationship_name($person, $gparent);
 							$menu = new WT_Menu($label);
-							$slabel  = print_pedigree_person_nav2($gparent->getXref(), $label, $censyear);
-							$slabel .= $parentlinks;
-							$submenu = new WT_Menu($slabel);
+							print_pedigree_person_nav2($gparent->getXref(), $label, $censyear);
+							$submenu = new WT_Menu($parentlinks);
 							$menu->addSubMenu($submenu);
 							if ($gparent->getDeathYear() == 0) { $DeathYr = ""; } else { $DeathYr = $gparent->getDeathYear(); }
 							if ($gparent->getBirthYear() == 0) { $BirthYr = ""; } else { $BirthYr = $gparent->getBirthYear(); }
@@ -761,9 +756,8 @@ if (!defined('WT_WEBTREES')) {
 							}
 							$label = get_close_relationship_name($person, $child);
 							$menu = new WT_Menu($label);
-							$slabel  = print_pedigree_person_nav2($child->getXref(), $label, $censyear);
-							$slabel .= $spouselinks;
-							$submenu = new WT_Menu($slabel);
+							print_pedigree_person_nav2($child->getXref(), $label, $censyear);
+							$submenu = new WT_Menu($spouselinks);
 							$menu->addSubMenu($submenu);
 							if ($child->getDeathYear() == 0) { $DeathYr = ""; } else { $DeathYr = $child->getDeathYear(); }
 							if ($child->getBirthYear() == 0) { $BirthYr = ""; } else { $BirthYr = $child->getBirthYear(); }
@@ -897,9 +891,8 @@ if (!defined('WT_WEBTREES')) {
 							}
 							$label = get_close_relationship_name($person, $gparent);
 							$menu = new WT_Menu($label);
-							$slabel  = print_pedigree_person_nav2($gparent->getXref(), $label, $censyear);
-							$slabel .= $parentlinks;
-							$submenu = new WT_Menu($slabel);
+							print_pedigree_person_nav2($gparent->getXref(), $label, $censyear);
+							$submenu = new WT_Menu($parentlinks);
 							$menu->addSubMenu($submenu);
 							if ($gparent->getDeathYear() == 0) { $DeathYr = ""; } else { $DeathYr = $gparent->getDeathYear(); }
 							if ($gparent->getBirthYear() == 0) { $BirthYr = ""; } else { $BirthYr = $gparent->getBirthYear(); }
@@ -1021,9 +1014,8 @@ if (!defined('WT_WEBTREES')) {
 							}
 							$label = get_close_relationship_name($person, $gparent);
 							$menu = new WT_Menu($label);
-							$slabel  = print_pedigree_person_nav2($gparent->getXref(), $label, $censyear);
-							$slabel .= $parentlinks;
-							$submenu = new WT_Menu($slabel);
+							print_pedigree_person_nav2($gparent->getXref(), $label, $censyear);
+							$submenu = new WT_Menu($parentlinks);
 							$menu->addSubMenu($submenu);
 							if ($gparent->getDeathYear() == 0) { $DeathYr = ""; } else { $DeathYr = $gparent->getDeathYear(); }
 							if ($gparent->getBirthYear() == 0) { $BirthYr = ""; } else { $BirthYr = $gparent->getBirthYear(); }
@@ -1148,9 +1140,8 @@ if (!defined('WT_WEBTREES')) {
 							}
 							$label = get_close_relationship_name($person, $child);
 							$menu = new WT_Menu($label);
-							$slabel = print_pedigree_person_nav2($child->getXref(), $label, $censyear);
-							$slabel .= $spouselinks;
-							$submenu = new WT_Menu($slabel);
+							print_pedigree_person_nav2($child->getXref(), $label, $censyear);
+							$submenu = new WT_Menu($spouselinks);
 							$menu->addSubmenu($submenu);
 							?>
 							<tr>
@@ -1247,19 +1238,18 @@ if (!defined('WT_WEBTREES')) {
 				</tr>
 			</table>
 <?php
-// ==================================================================
 
 /**
  * print the information for an individual chart box
  *
- * find and print a given individuals information for a pedigree chart
+ * Find and print a given individuals information for a pedigree chart
  *
- * @param string $pid The Gedcom Xref ID of the individual  to print
+ * @param string $pid      The Gedcom Xref ID of the individual  to print
  * @param string $currpid
  * @param string $censyear
  *
+ * @return void
  */
-
 function print_pedigree_person_nav2($pid, $currpid, $censyear) {
 	global $PEDIGREE_FULL_DETAILS;
 	global $TEXT_DIRECTION, $DEFAULT_PEDIGREE_GENERATIONS, $OLD_PGENS, $talloffset, $PEDIGREE_LAYOUT;

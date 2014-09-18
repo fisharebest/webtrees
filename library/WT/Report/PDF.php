@@ -677,7 +677,7 @@ class PDF extends TCPDF {
 	/**
 	 * Add a page if needed -PDF
 	 *
-	 * @param $height Cell height. Default value: 0
+	 * @param int $height Cell height
 	 *
 	 * @return boolean true in case of page break, false otherwise
 	 */

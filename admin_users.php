@@ -407,7 +407,7 @@ case 'createform':
 			<tr>
 				<td>', WT_I18N::translate('Language'), '</td>
 				<td>', edit_field_language('user_language', $user_language), '</td>';
-				if (WT_Site::preference('ALLOW_USER_THEMES')) {
+				if (WT_Site::getPreference('ALLOW_USER_THEMES')) {
 					echo '<td>', WT_I18N::translate('Theme'), help_link('THEME'), '</td>
 					<td>
 						<select name="new_user_theme">

@@ -33,7 +33,13 @@ $controller
 	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
 	->addInlineJavascript('autocomplete();')
 	->setupJavascript()
-	->addInlineJavascript('sizeLines();');
+	->addInlineJavascript('
+		sizeLines();
+		jQuery("#childarrow").on("click", "a", function(e) {
+			e.preventDefault();
+			jQuery("#childbox").toggle();
+		});
+	');
 
 $gencount=0;
 

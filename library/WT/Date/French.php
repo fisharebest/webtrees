@@ -52,73 +52,133 @@ class WT_Date_French extends WT_Date_Calendar {
 
 	static function monthNameNominativeCase($n, $leap_year) {
 		switch ($n) {
-		case 1:  return WT_I18N::translate_c('NOMINATIVE', 'Vendémiaire');
-		case 2:  return WT_I18N::translate_c('NOMINATIVE', 'Brumaire');
-		case 3:  return WT_I18N::translate_c('NOMINATIVE', 'Frimaire');
-		case 4:  return WT_I18N::translate_c('NOMINATIVE', 'Nivôse');
-		case 5:  return WT_I18N::translate_c('NOMINATIVE', 'Pluviôse');
-		case 6:  return WT_I18N::translate_c('NOMINATIVE', 'Ventôse');
-		case 7:  return WT_I18N::translate_c('NOMINATIVE', 'Germinal');
-		case 8:  return WT_I18N::translate_c('NOMINATIVE', 'Floréal');
-		case 9:  return WT_I18N::translate_c('NOMINATIVE', 'Prairial');
-		case 10: return WT_I18N::translate_c('NOMINATIVE', 'Messidor');
-		case 11: return WT_I18N::translate_c('NOMINATIVE', 'Thermidor');
-		case 12: return WT_I18N::translate_c('NOMINATIVE', 'Fructidor');
-		case 13: return WT_I18N::translate_c('NOMINATIVE', 'jours complémentaires');
+		case 1:
+			return WT_I18N::translate_c('NOMINATIVE', 'Vendémiaire');
+		case 2:
+			return WT_I18N::translate_c('NOMINATIVE', 'Brumaire');
+		case 3:
+			return WT_I18N::translate_c('NOMINATIVE', 'Frimaire');
+		case 4:
+			return WT_I18N::translate_c('NOMINATIVE', 'Nivôse');
+		case 5:
+			return WT_I18N::translate_c('NOMINATIVE', 'Pluviôse');
+		case 6:
+			return WT_I18N::translate_c('NOMINATIVE', 'Ventôse');
+		case 7:
+			return WT_I18N::translate_c('NOMINATIVE', 'Germinal');
+		case 8:
+			return WT_I18N::translate_c('NOMINATIVE', 'Floréal');
+		case 9:
+			return WT_I18N::translate_c('NOMINATIVE', 'Prairial');
+		case 10:
+			return WT_I18N::translate_c('NOMINATIVE', 'Messidor');
+		case 11:
+			return WT_I18N::translate_c('NOMINATIVE', 'Thermidor');
+		case 12:
+			return WT_I18N::translate_c('NOMINATIVE', 'Fructidor');
+		case 13:
+			return WT_I18N::translate_c('NOMINATIVE', 'jours complémentaires');
+		default:
+			throw new InvalidArgumentException($n);
 		}
 	}
 
 	static function monthNameGenitiveCase($n, $leap_year) {
 		switch ($n) {
-		case 1:  return WT_I18N::translate_c('GENITIVE', 'Vendémiaire');
-		case 2:  return WT_I18N::translate_c('GENITIVE', 'Brumaire');
-		case 3:  return WT_I18N::translate_c('GENITIVE', 'Frimaire');
-		case 4:  return WT_I18N::translate_c('GENITIVE', 'Nivôse');
-		case 5:  return WT_I18N::translate_c('GENITIVE', 'Pluviôse');
-		case 6:  return WT_I18N::translate_c('GENITIVE', 'Ventôse');
-		case 7:  return WT_I18N::translate_c('GENITIVE', 'Germinal');
-		case 8:  return WT_I18N::translate_c('GENITIVE', 'Floréal');
-		case 9:  return WT_I18N::translate_c('GENITIVE', 'Prairial');
-		case 10: return WT_I18N::translate_c('GENITIVE', 'Messidor');
-		case 11: return WT_I18N::translate_c('GENITIVE', 'Thermidor');
-		case 12: return WT_I18N::translate_c('GENITIVE', 'Fructidor');
-		case 13: return WT_I18N::translate_c('GENITIVE', 'jours complémentaires');
+		case 1:
+			return WT_I18N::translate_c('GENITIVE', 'Vendémiaire');
+		case 2:
+			return WT_I18N::translate_c('GENITIVE', 'Brumaire');
+		case 3:
+			return WT_I18N::translate_c('GENITIVE', 'Frimaire');
+		case 4:
+			return WT_I18N::translate_c('GENITIVE', 'Nivôse');
+		case 5:
+			return WT_I18N::translate_c('GENITIVE', 'Pluviôse');
+		case 6:
+			return WT_I18N::translate_c('GENITIVE', 'Ventôse');
+		case 7:
+			return WT_I18N::translate_c('GENITIVE', 'Germinal');
+		case 8:
+			return WT_I18N::translate_c('GENITIVE', 'Floréal');
+		case 9:
+			return WT_I18N::translate_c('GENITIVE', 'Prairial');
+		case 10:
+			return WT_I18N::translate_c('GENITIVE', 'Messidor');
+		case 11:
+			return WT_I18N::translate_c('GENITIVE', 'Thermidor');
+		case 12:
+			return WT_I18N::translate_c('GENITIVE', 'Fructidor');
+		case 13:
+			return WT_I18N::translate_c('GENITIVE', 'jours complémentaires');
+		default:
+			throw new InvalidArgumentException($n);
 		}
 	}
 
 	static function monthNameLocativeCase($n, $leap_year) {
 		switch ($n) {
-		case 1:  return WT_I18N::translate_c('LOCATIVE', 'Vendémiaire');
-		case 2:  return WT_I18N::translate_c('LOCATIVE', 'Brumaire');
-		case 3:  return WT_I18N::translate_c('LOCATIVE', 'Frimaire');
-		case 4:  return WT_I18N::translate_c('LOCATIVE', 'Nivôse');
-		case 5:  return WT_I18N::translate_c('LOCATIVE', 'Pluviôse');
-		case 6:  return WT_I18N::translate_c('LOCATIVE', 'Ventôse');
-		case 7:  return WT_I18N::translate_c('LOCATIVE', 'Germinal');
-		case 8:  return WT_I18N::translate_c('LOCATIVE', 'Floréal');
-		case 9:  return WT_I18N::translate_c('LOCATIVE', 'Prairial');
-		case 10: return WT_I18N::translate_c('LOCATIVE', 'Messidor');
-		case 11: return WT_I18N::translate_c('LOCATIVE', 'Thermidor');
-		case 12: return WT_I18N::translate_c('LOCATIVE', 'Fructidor');
-		case 13: return WT_I18N::translate_c('LOCATIVE', 'jours complémentaires');
+		case 1:
+			return WT_I18N::translate_c('LOCATIVE', 'Vendémiaire');
+		case 2:
+			return WT_I18N::translate_c('LOCATIVE', 'Brumaire');
+		case 3:
+			return WT_I18N::translate_c('LOCATIVE', 'Frimaire');
+		case 4:
+			return WT_I18N::translate_c('LOCATIVE', 'Nivôse');
+		case 5:
+			return WT_I18N::translate_c('LOCATIVE', 'Pluviôse');
+		case 6:
+			return WT_I18N::translate_c('LOCATIVE', 'Ventôse');
+		case 7:
+			return WT_I18N::translate_c('LOCATIVE', 'Germinal');
+		case 8:
+			return WT_I18N::translate_c('LOCATIVE', 'Floréal');
+		case 9:
+			return WT_I18N::translate_c('LOCATIVE', 'Prairial');
+		case 10:
+			return WT_I18N::translate_c('LOCATIVE', 'Messidor');
+		case 11:
+			return WT_I18N::translate_c('LOCATIVE', 'Thermidor');
+		case 12:
+			return WT_I18N::translate_c('LOCATIVE', 'Fructidor');
+		case 13:
+			return WT_I18N::translate_c('LOCATIVE', 'jours complémentaires');
+		default:
+			throw new InvalidArgumentException($n);
 		}
 	}
 
 	static function monthNameInstrumentalCase($n, $leap_year) {
 		switch ($n) {
-		case 1:  return WT_I18N::translate_c('INSTRUMENTAL', 'Vendémiaire');
-		case 2:  return WT_I18N::translate_c('INSTRUMENTAL', 'Brumaire');
-		case 3:  return WT_I18N::translate_c('INSTRUMENTAL', 'Frimaire');
-		case 4:  return WT_I18N::translate_c('INSTRUMENTAL', 'Nivôse');
-		case 5:  return WT_I18N::translate_c('INSTRUMENTAL', 'Pluviôse');
-		case 6:  return WT_I18N::translate_c('INSTRUMENTAL', 'Ventôse');
-		case 7:  return WT_I18N::translate_c('INSTRUMENTAL', 'Germinal');
-		case 8:  return WT_I18N::translate_c('INSTRUMENTAL', 'Floréal');
-		case 9:  return WT_I18N::translate_c('INSTRUMENTAL', 'Prairial');
-		case 10: return WT_I18N::translate_c('INSTRUMENTAL', 'Messidor');
-		case 11: return WT_I18N::translate_c('INSTRUMENTAL', 'Thermidor');
-		case 12: return WT_I18N::translate_c('INSTRUMENTAL', 'Fructidor');
-		case 13: return WT_I18N::translate_c('INSTRUMENTAL', 'jours complémentaires');
+		case 1:
+			return WT_I18N::translate_c('INSTRUMENTAL', 'Vendémiaire');
+		case 2:
+			return WT_I18N::translate_c('INSTRUMENTAL', 'Brumaire');
+		case 3:
+			return WT_I18N::translate_c('INSTRUMENTAL', 'Frimaire');
+		case 4:
+			return WT_I18N::translate_c('INSTRUMENTAL', 'Nivôse');
+		case 5:
+			return WT_I18N::translate_c('INSTRUMENTAL', 'Pluviôse');
+		case 6:
+			return WT_I18N::translate_c('INSTRUMENTAL', 'Ventôse');
+		case 7:
+			return WT_I18N::translate_c('INSTRUMENTAL', 'Germinal');
+		case 8:
+			return WT_I18N::translate_c('INSTRUMENTAL', 'Floréal');
+		case 9:
+			return WT_I18N::translate_c('INSTRUMENTAL', 'Prairial');
+		case 10:
+			return WT_I18N::translate_c('INSTRUMENTAL', 'Messidor');
+		case 11:
+			return WT_I18N::translate_c('INSTRUMENTAL', 'Thermidor');
+		case 12:
+			return WT_I18N::translate_c('INSTRUMENTAL', 'Fructidor');
+		case 13:
+			return WT_I18N::translate_c('INSTRUMENTAL', 'jours complémentaires');
+		default:
+			throw new InvalidArgumentException($n);
 		}
 	}
 
@@ -128,16 +188,28 @@ class WT_Date_French extends WT_Date_Calendar {
 
 	static function dayNames($n) {
 		switch ($n) {
-		case 0: return WT_I18N::translate('Primidi');
-		case 1: return WT_I18N::translate('Duodi');
-		case 2: return WT_I18N::translate('Tridi');
-		case 3: return WT_I18N::translate('Quartidi');
-		case 4: return WT_I18N::translate('Quintidi');
-		case 5: return WT_I18N::translate('Sextidi');
-		case 6: return WT_I18N::translate('Septidi');
-		case 7: return WT_I18N::translate('Octidi');
-		case 8: return WT_I18N::translate('Nonidi');
-		case 9: return WT_I18N::translate('Decidi');
+		case 0:
+			return WT_I18N::translate('Primidi');
+		case 1:
+			return WT_I18N::translate('Duodi');
+		case 2:
+			return WT_I18N::translate('Tridi');
+		case 3:
+			return WT_I18N::translate('Quartidi');
+		case 4:
+			return WT_I18N::translate('Quintidi');
+		case 5:
+			return WT_I18N::translate('Sextidi');
+		case 6:
+			return WT_I18N::translate('Septidi');
+		case 7:
+			return WT_I18N::translate('Octidi');
+		case 8:
+			return WT_I18N::translate('Nonidi');
+		case 9:
+			return WT_I18N::translate('Decidi');
+		default:
+			throw new InvalidArgumentException($n);
 		}
 	}
 

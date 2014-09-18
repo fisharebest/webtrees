@@ -26,7 +26,6 @@ use WT\Log;
 
 define('WT_SCRIPT_NAME', 'edit_changes.php');
 require './includes/session.php';
-require WT_ROOT.'includes/functions/functions_import.php';
 
 $controller=new WT_Controller_Simple();
 $controller

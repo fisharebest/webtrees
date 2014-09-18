@@ -49,9 +49,8 @@ if (preg_match('/^[0-9.]+\|[0-9.]+\|/', $latest_version_txt)) {
 $old_files = array();
 foreach (old_paths() as $path) {
 	if (file_exists($path)) {
-		delete_recursively($path);
-		// we may not have permission to delete.  Is it still there?
-		if (file_exists($path)) {
+		if (!WT_File::delete($path)) {
+			// We may be unable to delete it.  If so, tell the user to delete it manually.
 			$old_files[] = $path;
 		}
 	}
@@ -620,6 +619,7 @@ function old_paths() {
 		WT_ROOT.'themes/webtrees/css-1.5.2',
 		WT_ROOT.'themes/xenea/css-1.5.2',
 		// Removed in 1.5.4
+		WT_ROOT.'downloadbackup.php',
 		WT_ROOT.'includes/functions/functions_utf-8.php',
 		WT_ROOT.'js/jquery.colorbox-1.4.15.js',
 		WT_ROOT.'js/jquery.cookie-1.4.0.js',
@@ -638,21 +638,4 @@ function old_paths() {
 		WT_ROOT.'themes/webtrees/css-1.5.3',
 		WT_ROOT.'themes/xenea/css-1.5.3',
 	);
-}
-
-// Delete a file or folder, ignoring errors
-function delete_recursively($path) {
-	@chmod($path, 0777);
-	if (is_dir($path)) {
-		$dir=opendir($path);
-		while ($dir!==false && (($file=readdir($dir))!==false)) {
-			if ($file!='.' && $file!='..') {
-				delete_recursively($path.'/'.$file);
-			}
-		}
-		closedir($dir);
-		@rmdir($path);
-	} else {
-		@unlink($path);
-	}
 }

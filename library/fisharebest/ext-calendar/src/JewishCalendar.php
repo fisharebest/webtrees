@@ -21,7 +21,7 @@ namespace Fisharebest\ExtCalendar;
  *            You should have received a copy of the GNU General Public License
  *            along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-class JewishCalendar extends Calendar implements CalendarInterface{
+class JewishCalendar extends Calendar implements CalendarInterface {
 	/** Same as PHP’s ext/calendar extension */
 	const PHP_CALENDAR_NAME = 'Jewish';
 
@@ -56,13 +56,13 @@ class JewishCalendar extends Calendar implements CalendarInterface{
 	const ALAFIM = 'אלפים';
 
 	/** A year that is one day shorter than normal. */
-	const DEFECTIVE_YEAR  = -1;
+	const DEFECTIVE_YEAR = -1;
 
 	/** A year that has the normal number of days. */
-	const REGULAR_YEAR  = 0;
+	const REGULAR_YEAR = 0;
 
 	/** A year that is one day longer than normal. */
-	const COMPLETE_YEAR  = 1;
+	const COMPLETE_YEAR = 1;
 
 	/**
 	 * Hebrew numbers are represented by letters, similar to roman numerals.
@@ -70,15 +70,6 @@ class JewishCalendar extends Calendar implements CalendarInterface{
 	 * @var string[]
 	 */
 	private static $HEBREW_NUMERALS = array(
-		9000 => 'ט',
-		8000 => 'ח',
-		7000 => 'ז',
-		6000 => 'ו',
-		5000 => 'ה',
-		4000 => 'ד',
-		3000 => 'ג',
-		2000 => 'ב',
-		1000 => 'א',
 		400 => 'ת',
 		300 => 'ש',
 		200 => 'ר',
@@ -109,23 +100,6 @@ class JewishCalendar extends Calendar implements CalendarInterface{
 	);
 
 	/**
-	 * Some numerals take a different form when they appear at the end of a number.
-	 *
-	 * @var string[]
-	 */
-	private static $HEBREW_NUMERALS_FINAL = array(
-		90 => 'צ',
-		80 => 'פ',
-		70 => 'ע',
-		60 => 'ס',
-		50 => 'נ',
-		40 => 'מ',
-		30 => 'ל',
-		20 => 'כ',
-		10 => 'י',
-	);
-
-	/**
 	 * These months have fixed lengths.  Others are variable.
 	 *
 	 * @var int[]
@@ -147,7 +121,7 @@ class JewishCalendar extends Calendar implements CalendarInterface{
 			-1 => array( // Deficient years
 				1 => 0, 30, 59, 88, 117, 147, 147, 176, 206, 235, 265, 294, 324
 			),
-			0 =>  array( // Regular years
+			0 => array( // Regular years
 				1 => 0, 30, 59, 89, 118, 148, 148, 177, 207, 236, 266, 295, 325
 			),
 			1 => array( // Complete years
@@ -158,7 +132,7 @@ class JewishCalendar extends Calendar implements CalendarInterface{
 			-1 => array( // Deficient years
 				1 => 0, 30, 59, 88, 117, 147, 177, 206, 236, 265, 295, 324, 354
 			),
-			0 =>  array( // Regular years
+			0 => array( // Regular years
 				1 => 0, 30, 59, 89, 118, 148, 178, 207, 237, 266, 296, 325, 355
 			),
 			1 => array( // Complete years
@@ -178,7 +152,8 @@ class JewishCalendar extends Calendar implements CalendarInterface{
 	/**
 	 * Determine whether a year is a leap year.
 	 *
-	 * @param  int  $year
+	 * @param  int $year
+	 *
 	 * @return bool
 	 */
 	public function leapYear($year) {
@@ -441,24 +416,39 @@ class JewishCalendar extends Calendar implements CalendarInterface{
 	}
 
 	/**
-	 * Convert a number into Hebrew numerals.
-	 * 
-	 * @param int $number
-	 * @param bool $alafim_garesh
-	 * @param bool $alafim
-	 * @param bool $gereshayim
+	 * Add geresh (׳) and gershayim (״) punctuation to numeric values.
+	 *
+	 * Gereshayim is a contraction of “geresh” and “gershayim”.
+	 *
+	 * @param string $number
 	 *
 	 * @return string
 	 */
-	protected function numToHebrew($number, $alafim_garesh, $alafim, $gereshayim) {
+	protected function addGereshayim($hebrew) {
+		switch (mb_strlen($hebrew, 'UTF-8')) {
+		case 0:
+			// Zero, e.g. the zeros from the year 5,000
+			return $hebrew;
+		case 1:
+			// Single digit - append a geresh
+			return $hebrew . self::GERESH;
+		default:
+			// Multiple digits - insert a gershayim
+			return mb_substr($hebrew, 0, mb_strlen($hebrew, 'UTF-8') - 1, 'UTF-8') . self::GERSHAYIM . mb_substr($hebrew, -1, 1, 'UTF-8');
+		}
+	}
+
+	/**
+	 * Convert a number into Hebrew numerals.
+	 *
+	 * @param int  $number
+	 * @param bool $gereshayim Add punctuation to numeric values
+	 *
+	 * @return string
+	 */
+	protected function numberToHebrewNumerals($number, $gereshayim) {
 		$hebrew = '';
 		while ($number > 0) {
-			foreach (self::$HEBREW_NUMERALS_FINAL as $n => $h) {
-				if ($number == $n) {
-					$hebrew .= $h;
-					break 2;
-				}
-			}
 			foreach (self::$HEBREW_NUMERALS as $n => $h) {
 				if ($number >= $n) {
 					$hebrew .= $h;
@@ -467,7 +457,38 @@ class JewishCalendar extends Calendar implements CalendarInterface{
 				}
 			}
 		}
-		return $hebrew;
+
+		// Hebrew numerals are letters.  Add punctuation to prevent confusion with actual words.
+		if ($gereshayim) {
+			return $this->addGereshayim($hebrew);
+		} else {
+			return $hebrew;
+		}
+	}
+
+	/**
+	 * Format a year using Hebrew numerals.
+	 *
+	 * @param int  $year
+	 * @param bool $alafim_geresh Add a geresh  (׳) after thousands
+	 * @param bool $alafim        Add the word for thousands after the thousands
+	 * @param bool $gereshayim    Add geresh (׳) and gershayim (״) punctuation to numeric values
+	 *
+	 * @return string
+	 */
+	protected function yearToHebrewNumerals($year, $alafim_geresh, $alafim, $gereshayim) {
+		if ($year < 1000) {
+			return $this->numberToHebrewNumerals($year, $gereshayim);
+		} else {
+			$thousands = $this->numberToHebrewNumerals((int)($year / 1000), false);
+			if ($alafim_geresh) {
+				$thousands .= self::GERESH;
+			}
+			if ($alafim) {
+				$thousands .= ' ' . self::ALAFIM . ' ';
+			}
+			return $thousands . $this->numberToHebrewNumerals($year % 1000, $gereshayim);
+		}
 	}
 
 	/**
@@ -484,8 +505,8 @@ class JewishCalendar extends Calendar implements CalendarInterface{
 		list($year, $month, $day) = $this->jdToYmd($jd);
 
 		return
-			$this->numToHebrew($day, $alafim_garesh, $alafim, $gereshayim) . ' ' .
+			$this->numberToHebrewNumerals($day, $gereshayim) . ' ' .
 			$this->hebrewMonthName($year, $month) . ' ' .
-			$this->numToHebrew($year, $alafim_garesh, $alafim, $gereshayim);
+			$this->yearToHebrewNumerals($year, $alafim_garesh, $alafim, $gereshayim);
 	}
 }

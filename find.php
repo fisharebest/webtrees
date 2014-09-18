@@ -507,7 +507,7 @@ if ($action=="filter") {
 		// Get the famrecs with hits in the gedcom record from the family table
 		$myfamlist = array_unique(array_merge(
 			search_fams_names($filter_array, array(WT_GED_ID), 'AND'),
-			search_fams($filter_array, array(WT_GED_ID), 'AND', true)
+			search_fams($filter_array, array(WT_GED_ID), 'AND')
 		));
 
 		if ($myfamlist) {
@@ -613,7 +613,7 @@ if ($action=="filter") {
 	if ($type == "repo") {
 		echo '<div id="find-output">';
 		if ($filter) {
-			$repo_list = search_repos($filter_array, array(WT_GED_ID), 'AND', true);
+			$repo_list = search_repos($filter_array, array(WT_GED_ID), 'AND');
 		} else {
 			$repo_list = get_repo_list(WT_GED_ID);
 		}
@@ -636,7 +636,7 @@ if ($action=="filter") {
 	if ($type=="note") {
 		echo '<div id="find-output">';
 		if ($filter) {
-			$mynotelist = search_notes($filter_array, array(WT_GED_ID), 'AND', true);
+			$mynotelist = search_notes($filter_array, array(WT_GED_ID), 'AND');
 		} else {
 			$mynotelist = get_note_list(WT_GED_ID);
 		}
@@ -659,7 +659,7 @@ if ($action=="filter") {
 	if ($type=="source") {
 		echo '<div id="find-output">';
 		if ($filter) {
-			$mysourcelist = search_sources($filter_array, array(WT_GED_ID), 'AND', true);
+			$mysourcelist = search_sources($filter_array, array(WT_GED_ID), 'AND');
 		} else {
 			$mysourcelist = get_source_list(WT_GED_ID);
 		}

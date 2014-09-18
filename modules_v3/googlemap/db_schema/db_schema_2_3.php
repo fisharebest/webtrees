@@ -35,4 +35,4 @@ if (!defined('WT_WEBTREES')) {
 WT_DB::exec("UPDATE `##placelocation` SET pl_icon=REPLACE(pl_icon, '.gif', '.png')");
 
 // Update the version to indicate success
-WT_Site::preference($schema_name, $next_version);
+WT_Site::setPreference($schema_name, $next_version);

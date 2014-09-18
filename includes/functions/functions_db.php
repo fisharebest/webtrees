@@ -846,7 +846,7 @@ function get_anniversary_events($jd, $facts='', $ged_id=WT_GED_ID) {
 				// 1 KSL includes 30 CSH (if this year didn’t have 30 CSH)
 				// 29 KSL does not include 30 KSL (but would include an invalid 31 KSL if there were no 30 KSL)
 				if ($anniv->d==1) {
-					$tmp=new WT_Date_Jewish(array($anniv->y, 'csh', 1));
+					$tmp=new WT_Date_Jewish(array($anniv->y, 'CSH', 1));
 					if ($tmp->daysInMonth()==29) {
 						$where.=" AND (d_day<=1 AND d_mon=3 OR d_day=30 AND d_mon=2)";
 					} else {
@@ -864,7 +864,7 @@ function get_anniversary_events($jd, $facts='', $ged_id=WT_GED_ID) {
 			case 4:
 				// 1 TVT includes 30 KSL (if this year didn’t have 30 KSL)
 				if ($anniv->d==1) {
-					$tmp=new WT_Date_Jewish($anniv->y, 'ksl', 1);
+					$tmp=new WT_Date_Jewish(array($anniv->y, 'KSL', 1));
 					if ($tmp->daysInMonth()==29) {
 						$where.=" AND (d_day<=1 AND d_mon=4 OR d_day=30 AND d_mon=3)";
 					} else {

@@ -773,6 +773,9 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		$miscount=0;
 		$missing = '';
 
+		$latlongval = array();
+		$lat = array();
+		$lon = array();
 		for ($i=0; $i<($controller->treesize); $i++) {
 			// -- check to see if we have moved to the next generation
 			if ($i+1 >= pow(2, $curgen)) {$curgen++;}
@@ -1266,7 +1269,11 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 						'4'=>'#FFFF00','5'=>'#00FFFF','6'=>'#FF00FF',
 						'7'=>'#C0C0FF','8'=>'#808000');
 
-		for ($i=0; $i<($controller->treesize); $i++) {
+		$lat = array();
+		$lon = array();
+		$latlongval = array();
+		$flags = array();
+		for ($i = 0; $i < $controller->treesize; $i++) {
 			// moved up to grab the sex of the individuals
 			$person = WT_Individual::getInstance($controller->treeid[$i]);
 			if ($person) {
@@ -1452,22 +1459,6 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		$state     = WT_Filter::get('state', '.+', 'XYZ');
 		$matching  = WT_Filter::getBool('matching');
 
-		if (!empty($WT_SESSION['placecheck_gedcom_id'])) {
-			$gedcom_id = $WT_SESSION['placecheck_gedcom_id'];
-		} else {
-			$WT_SESSION['placecheck_gedcom_id'] = $gedcom_id;
-		}
-		if (!empty($WT_SESSION['placecheck_country'])) {
-			$country = $WT_SESSION['placecheck_country'];
-		} else {
-			$WT_SESSION['placecheck_country'] = $country;
-		}
-		if (!empty($WT_SESSION['placecheck_state'])) {
-			$state = $WT_SESSION['placecheck_state'];
-		} else {
-			$WT_SESSION['placecheck_state'] = $state;
-		}
-
 		$controller=new WT_Controller_Page();
 		$controller
 			->restrictAccess(Auth::isAdmin())
@@ -1633,6 +1624,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			}
 			echo '</tr>';
 			$countrows=0;
+			$matched = array();
 			while ($x<$i) {
 				$placestr="";
 				$levels=explode(",", $place_list[$x]);
@@ -1658,6 +1650,9 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				$mapstr6="' >";
 				$mapstr7="')\">";
 				$mapstr8="</a>";
+				$plac = array();
+				$lati = array();
+				$long = array();
 				while ($z<$parts) {
 					if ($levels[$z]==' ' || $levels[$z]=='')
 						$levels[$z]="unknown";// GoogleMap module uses "unknown" while GEDCOM uses , ,
@@ -2599,12 +2594,10 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 	private function checkWhereAmI($numls, $levelm) {
 		$where_am_i = $this->placeIdToHierarchy($levelm);
-		$i=$numls+1;
-		if (!isset($levelo)) {
-			$levelo[0]=0;
-		}
-		foreach (array_reverse($where_am_i, true) as $id=>$place2) {
-			$levelo[$i]=$id;
+		$i = $numls+1;
+		$levelo = array(0 => 0);
+		foreach (array_reverse($where_am_i, true) as $id => $place2) {
+			$levelo[$i] = $id;
 			$i--;
 		}
 		return $levelo;
@@ -3329,7 +3322,6 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 							document.editplaces.NEW_PLACE_LONG.value = longitude;
 							document.editplaces.LONG_CONTROL.value = 'PL_W';
 						} else {
-							longitude = longitude ;
 							document.editplaces.NEW_PLACE_LONG.value = longitude;
 							document.editplaces.LONG_CONTROL.value = 'PL_E';
 						}
@@ -3338,7 +3330,6 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 							document.editplaces.NEW_PLACE_LATI.value = latitude;
 							document.editplaces.LATI_CONTROL.value = 'PL_S';
 						} else {
-							latitude = latitude ;
 							document.editplaces.NEW_PLACE_LATI.value = latitude;
 							document.editplaces.LATI_CONTROL.value = 'PL_N';
 						}
@@ -3525,9 +3516,9 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 				// Setup the click event listeners: simply set the map to original LatLng
 				google.maps.event.addDomListener(controlUI, 'click', function() {
-					map.setCenter(latlng),
-					map.setZoom(pl_zoom),
-					map.setMapTypeId(google.maps.MapTypeId.ROADMAP)
+					map.setCenter(latlng);
+					map.setZoom(pl_zoom);
+					map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
 				});
 			}
 
@@ -3538,9 +3529,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					mapTyp = google.maps.MapTypeId.ROADMAP;
 				}
 				geocoder = new google.maps.Geocoder();
-				if (zoom) {
-					zoom = zoom;
-				} else {
+				if (!zoom) {
 					zoom = pl_zoom;
 				}
 				// Define map
@@ -4481,8 +4470,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				var pos = parms[i].indexOf('=');
 				if (pos > 0) {
 					var key = parms[i].substring(0,pos);
-					var val = parms[i].substring(pos+1);
-					qsParm[key] = val;
+					qsParm[key] = parms[i].substring(pos + 1);
 				}
 			}
 		}
@@ -4520,8 +4508,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		}
 
 		function roundNumber(num, dec) {
-			var result = Math.round(num*Math.pow(10,dec))/Math.pow(10,dec);
-			return result;
+			return Math.round(num * Math.pow(10, dec)) / Math.pow(10, dec);
 		}
 
 		function initialize() {

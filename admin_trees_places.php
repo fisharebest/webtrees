@@ -23,7 +23,6 @@ use WT\Auth;
 define('WT_SCRIPT_NAME', 'admin_trees_places.php');
 
 require './includes/session.php';
-require WT_ROOT . 'includes/functions/functions_import.php';
 require WT_ROOT . 'includes/functions/functions_edit.php';
 
 $search  = WT_Filter::post('search');

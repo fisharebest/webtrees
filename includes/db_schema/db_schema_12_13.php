@@ -43,5 +43,5 @@ self::exec("DELETE FROM `##gedcom_setting` WHERE setting_name IN ('SHOW_MEDIA_FI
 self::exec("DELETE FROM `##default_resn` WHERE tag_type IN ('_PRIM')");
 
 // Update the version to indicate success
-WT_Site::preference($schema_name, $next_version);
+WT_Site::setPreference($schema_name, $next_version);
 

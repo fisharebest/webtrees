@@ -37,7 +37,7 @@ if (WT_USER_ID && WT_GED_ID) {
 
 $controller = new WT_Controller_Page();
 
-$REQUIRE_ADMIN_AUTH_REGISTRATION = WT_Site::preference('REQUIRE_ADMIN_AUTH_REGISTRATION');
+$REQUIRE_ADMIN_AUTH_REGISTRATION = WT_Site::getPreference('REQUIRE_ADMIN_AUTH_REGISTRATION');
 
 $action          = WT_Filter::post('action');
 $user_realname   = WT_Filter::post('user_realname');
@@ -146,7 +146,7 @@ default:
 	echo '<div id="login-page">';
 	echo '<div id="login-text">';
 
-	switch (WT_Site::preference('WELCOME_TEXT_AUTH_MODE')) {
+	switch (WT_Site::getPreference('WELCOME_TEXT_AUTH_MODE')) {
 	case 1:
 		echo WT_I18N::translate('<center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.');
 		break;
@@ -157,7 +157,7 @@ default:
 		echo WT_I18N::translate('<center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.');
 		break;
 	case 4:
-		echo '<p>', WT_Site::preference('WELCOME_TEXT_AUTH_MODE_'.WT_LOCALE), '</p>';
+		echo '<p>', WT_Site::getPreference('WELCOME_TEXT_AUTH_MODE_'.WT_LOCALE), '</p>';
 		break;
 	}
 
@@ -191,7 +191,7 @@ default:
 			<div>
 				<a href="#" id="passwd_click">', WT_I18N::translate('Request new password'), '</a>
 			</div>';
-			if (WT_Site::preference('USE_REGISTRATION_MODULE')) {
+			if (WT_Site::getPreference('USE_REGISTRATION_MODULE')) {
 				echo '<div><a href="'.WT_LOGIN_URL.'?action=register">', WT_I18N::translate('Request new user account'), '</a></div>';
 			}
 		}
@@ -259,7 +259,7 @@ case 'requestpw':
 	break;
 
 case 'register':
-	if (!WT_Site::preference('USE_REGISTRATION_MODULE')) {
+	if (!WT_Site::getPreference('USE_REGISTRATION_MODULE')) {
 		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
 		exit;
 	}
@@ -398,7 +398,7 @@ case 'register':
 
 	echo '<div id="login-register-page">
 		<h2>', $controller->getPageTitle(), '</h2>';
-		if (WT_Site::preference('SHOW_REGISTER_CAUTION')) {
+		if (WT_Site::getPreference('SHOW_REGISTER_CAUTION')) {
 			echo '<div id="register-text">';
 			echo WT_I18N::translate('<div class="largeError">Notice:</div><div class="error">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div>');
 			echo '</div>';
@@ -449,7 +449,7 @@ case 'register':
 	break;
 
 case 'userverify':
-	if (!WT_Site::preference('USE_REGISTRATION_MODULE')) {
+	if (!WT_Site::getPreference('USE_REGISTRATION_MODULE')) {
 		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
 		exit;
 	}
@@ -486,7 +486,7 @@ case 'userverify':
 	break;
 
 case 'verify_hash':
-	if (!WT_Site::preference('USE_REGISTRATION_MODULE')) {
+	if (!WT_Site::getPreference('USE_REGISTRATION_MODULE')) {
 		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH);
 		exit;
 	}

@@ -84,7 +84,7 @@ case 'delete':
 	break;
 case 'setdefault':
 	if (WT_Filter::checkCsrf()) {
-		WT_Site::preference('DEFAULT_GEDCOM', WT_Filter::post('default_ged'));
+		WT_Site::setPreference('DEFAULT_GEDCOM', WT_Filter::post('default_ged'));
 	}
 	break;
 case 'new_tree':
@@ -252,7 +252,7 @@ if (Auth::isAdmin()) {
 			'<td><form name="defaultform" method="post" action="', WT_SCRIPT_NAME, '">',
 			'<input type="hidden" name="action" value="setdefault">',
 			WT_Filter::getCsrf(),
-			select_edit_control('default_ged', WT_Tree::getNameList(), '', WT_Site::preference('DEFAULT_GEDCOM'), 'onchange="document.defaultform.submit();"'),
+			select_edit_control('default_ged', WT_Tree::getNameList(), '', WT_Site::getPreference('DEFAULT_GEDCOM'), 'onchange="document.defaultform.submit();"'),
 			'</form></td>';
 	}
 	echo

@@ -30,8 +30,11 @@ class WT_DB {
 	// See http://en.wikipedia.org/wiki/Singleton_pattern
 	// See http://en.wikipedia.org/wiki/Decorator_pattern
 	//////////////////////////////////////////////////////////////////////////////
-	private static $instance=null;
-	private static $pdo=null;
+	/** @var WT_DB  */
+	private static $instance;
+
+	/** @var PDO  */
+	private static $pdo;
 
 	// Prevent instantiation via new WT_DB
 	private final function __construct() {
@@ -39,12 +42,12 @@ class WT_DB {
 
 	// Prevent instantiation via clone()
 	public final function __clone() {
-		trigger_error('WT_DB::clone() is not allowed.', E_USER_ERROR);
+		throw new Exception('WT_DB::clone() is not allowed.');
 	}
 
 	// Prevent instantiation via serialize()
 	public final function __wakeup() {
-		trigger_error('WT_DB::unserialize() is not allowed.', E_USER_ERROR);
+		throw new Exception('WT_DB::unserialize() is not allowed.');
 	}
 
 	// Disconnect from the server, so we can connect to another one
@@ -55,7 +58,7 @@ class WT_DB {
 	// Implement the singleton pattern
 	public static function createInstance($DBHOST, $DBPORT, $DBNAME, $DBUSER, $DBPASS) {
 		if (self::$pdo instanceof PDO) {
-			trigger_error('WT_DB::createInstance() can only be called once.', E_USER_ERROR);
+			throw new Exception('WT_DB::createInstance() can only be called once.');
 		}
 		// Create the underlying PDO object
 		self::$pdo=new PDO(
@@ -77,12 +80,18 @@ class WT_DB {
 		self::$instance=new self;
 	}
 
-	// We don't access this directly, only via query(), exec() and prepare()
+	/**
+	 * We don't access $instance directly, only via query(), exec() and prepare()
+	 *
+	 * @return WT_DB
+	 *
+	 * @throws Exception
+	 */
 	public static function getInstance() {
 		if (self::$pdo instanceof PDO) {
 			return self::$instance;
 		} else {
-			trigger_error('WT_DB::createInstance() must be called before WT_DB::getInstance().', E_USER_ERROR);
+			throw new Exception('WT_DB::createInstance() must be called before WT_DB::getInstance().');
 		}
 	}
 
@@ -173,16 +182,6 @@ class WT_DB {
 		}
 	}
 
-	// Add logging to query()
-	public static function query($statement, $parameter_type= PDO::PARAM_STR) {
-		$statement=str_replace('##', WT_TBLPREFIX, $statement);
-		$start=microtime(true);
-		$result=self::$pdo->query($statement, $parameter_type);
-		$end=microtime(true);
-		self::logQuery($statement, count($result), $end-$start, array());
-		return $result;
-	}
-
 	// Add logging to exec()
 	public static function exec($statement) {
 		$statement=str_replace('##', WT_TBLPREFIX, $statement);
@@ -196,7 +195,7 @@ class WT_DB {
 	// Add logging/functionality to prepare()
 	public static function prepare($statement) {
 		if (!self::$pdo instanceof PDO) {
-			throw new PDOException("No Connection Established");
+			throw new Exception("No Connection Established");
 		}
 		$statement=str_replace('##', WT_TBLPREFIX, $statement);
 		return new WT_DBStatement(self::$pdo->prepare($statement));
@@ -212,35 +211,27 @@ class WT_DB {
 	//////////////////////////////////////////////////////////////////////////////
 	public static function updateSchema($schema_dir, $schema_name, $target_version) {
 		try {
-			$current_version=(int)WT_Site::preference($schema_name);
+			$current_version=(int)WT_Site::getPreference($schema_name);
 		} catch (PDOException $e) {
 			// During initial installation, this table won’t exist.
 			// It will only be a problem if we can’t subsequently create it.
 			$current_version=0;
 		}
 
-		// The update scripts can set these to indicate that we need to run a
-		// "post update" script.  It saves from having to store/maintain lots
-		// of separate versions at each schema version.
-		$need_to_delete_old_files=false;
-		$need_to_update_config_data=false;
-		$need_to_update_stored_procedures=false;
-
 		// During installation, the current version is set to a special value of
 		// -1 (v1.2.5 to v1.2.7) or -2 (v1.3.0 onwards).  This indicates that the tables have
-		// been created, but that we still need to install/update configuration data
-		// and/or stored procedures.
+		// been created, and we are already at the latest version.
 		switch ($current_version) {
 		case -1:
 			// Due to a bug in webtrees 1.2.5 - 1.2.7, the setup value of "-1"
 			// wasn't being updated.
 			$current_version=12;
-			WT_Site::preference($schema_name, $current_version);
+			WT_Site::setPreference($schema_name, $current_version);
 			break;
 		case -2:
 			// Because of the above bug, we now set the version to -2 during setup.
 			$current_version=$target_version;
-			WT_Site::preference($schema_name, $current_version);
+			WT_Site::setPreference($schema_name, $current_version);
 			break;
 		}
 
@@ -249,20 +240,10 @@ class WT_DB {
 			$next_version=$current_version+1;
 			require $schema_dir.'db_schema_'.$current_version.'_'.$next_version.'.php';
 			// The updatescript should update the version or throw an exception
-			$current_version=(int)WT_Site::preference($schema_name);
+			$current_version=(int)WT_Site::getPreference($schema_name);
 			if ($current_version!=$next_version) {
 				die("Internal error while updating {$schema_name} to {$next_version}");
 			}
-		}
-
-		if ($need_to_delete_old_files) {
-			require $schema_dir.'delete_old_files.php';
-		}
-		if ($need_to_update_config_data) {
-			require $schema_dir.'config_data.php';
-		}
-		if ($need_to_update_stored_procedures) {
-			require $schema_dir.'stored_procedures.php';
 		}
 	}
 }

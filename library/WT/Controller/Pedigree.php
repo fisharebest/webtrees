@@ -240,12 +240,17 @@ class WT_Controller_Pedigree extends WT_Controller_Chart {
 
 	function adjust_subtree($index, $diff) {
 		global $offsetarray, $treeid;
+
 		$f = ($index*2)+1; //-- father index
 		$m = $f+1; //-- mother index
 
 		if (empty($offsetarray[$index])) return;
 		$offsetarray[$index]["y"] += $diff;
-		if ($f<count($treeid)) adjust_subtree($f, $diff);
-		if ($m<count($treeid)) adjust_subtree($m, $diff);
+		if ($f<count($treeid)) {
+			adjust_subtree($f, $diff);
+		}
+		if ($m<count($treeid)) {
+			adjust_subtree($m, $diff);
+		}
 	}
 }

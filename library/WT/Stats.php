@@ -1374,6 +1374,7 @@ class WT_Stats {
 				return '';
 			}
 			$centuries = "";
+			$counts = array();
 			foreach ($rows as $values) {
 				$counts[] = round(100 * $values['total'] / $tot, 0);
 				$centuries .= $this->centuryName($values['century']) . ' - ' . WT_I18N::number($values['total']) . '|';
@@ -1453,6 +1454,7 @@ class WT_Stats {
 				return '';
 			}
 			$centuries = "";
+			$counts = array();
 			foreach ($rows as $values) {
 				$counts[] = round(100 * $values['total'] / $tot, 0);
 				$centuries .= $this->centuryName($values['century']) . ' - ' . WT_I18N::number($values['total']) . '|';
@@ -1837,6 +1839,7 @@ class WT_Stats {
 			$countsm = '';
 			$countsf = '';
 			$countsa = '';
+			$out = array();
 			foreach ($rows as $values) {
 				$out[$values['century']][$values['sex']] = $values['age'];
 			}
@@ -2790,6 +2793,7 @@ class WT_Stats {
 			$countsm = '';
 			$countsf = '';
 			$countsa = '';
+			$out = array();
 			foreach ($rows as $values) {
 				$out[$values['century']][$values['sex']] = $values['age'];
 			}
@@ -3360,6 +3364,7 @@ class WT_Stats {
 				return '';
 			}
 			$text = '';
+			$counts = array();
 			foreach ($rows as $values) {
 				$counts[] = round(100 * $values['total'] / $tot, 0);
 				switch ($values['d_month']) {
@@ -3731,6 +3736,7 @@ class WT_Stats {
 		$chm = "";
 		$chxl = "0:|";
 		$i = 0;
+		$counts = array();
 		foreach ($rows as $values) {
 			if ($sizes[0] < 980) {
 				$sizes[0] += 38;
