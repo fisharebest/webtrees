@@ -3319,7 +3319,6 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 							document.editplaces.NEW_PLACE_LONG.value = longitude;
 							document.editplaces.LONG_CONTROL.value = 'PL_W';
 						} else {
-							longitude = longitude ;
 							document.editplaces.NEW_PLACE_LONG.value = longitude;
 							document.editplaces.LONG_CONTROL.value = 'PL_E';
 						}
@@ -3328,7 +3327,6 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 							document.editplaces.NEW_PLACE_LATI.value = latitude;
 							document.editplaces.LATI_CONTROL.value = 'PL_S';
 						} else {
-							latitude = latitude ;
 							document.editplaces.NEW_PLACE_LATI.value = latitude;
 							document.editplaces.LATI_CONTROL.value = 'PL_N';
 						}
@@ -3528,9 +3526,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					mapTyp = google.maps.MapTypeId.ROADMAP;
 				}
 				geocoder = new google.maps.Geocoder();
-				if (zoom) {
-					zoom = zoom;
-				} else {
+				if (!zoom) {
 					zoom = pl_zoom;
 				}
 				// Define map

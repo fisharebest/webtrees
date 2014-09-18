@@ -607,10 +607,8 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 	// Check if Census year filled in -------------
 	// var cctry = document.getElementById('censCtry').value;
 	var cyear = document.getElementById('censYear').value;
-	if (cyear!="choose") {
-		cyear=cyear;
-	} else {
-		alert ("You must choose a Census year first");
+	if (cyear == "choose") {
+		alert("You must choose a Census year first");
 		return;
 	}
 
@@ -795,18 +793,16 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 		// *** NOTE ***
 		// *** This is then corrected when ChangeYear() function is run
 		// *** ChangeYear() is run each time Census Year is selected or changed
-		if (age2!="Age" && age2!=null) {
+		if (age2 != "Age" && age2 != null) {
 			// Check if Census year filled in -------------
-			if (cyear!="choose") {
-				cyear=cyear;
-			} else {
-				alert ("You must choose a Census year first");
+			if (cyear == "choose") {
+				alert("You must choose a Census year first");
 				return;
 			}
-			var diffage=(1901-cyear);
-			age=(age2-diffage);
+			var diffage = 1901 - cyear;
+			age = age2 - diffage;
 		} else {
-			age="-";
+			age = "-";
 		}
 
 		// add the row =======================================================

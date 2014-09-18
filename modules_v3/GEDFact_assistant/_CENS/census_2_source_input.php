@@ -93,7 +93,6 @@ if (!defined('WT_WEBTREES')) {
 		} else {
 			document.getElementById('censYear').style.backgroundColor = "#ffffff";
 		}
-		return;
 	}
 
 	function changeYear(cenyear) {
