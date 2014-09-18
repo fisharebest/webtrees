@@ -197,4 +197,13 @@ class WT_DBStatement {
 
 		return $list;
 	}
+
+	/**
+	 * How many rows were affected by this statement.
+	 *
+	 * @return int
+	 */
+	public function rowCount() {
+		return $this->pdo_statement->rowCount();
+	}
 }
