@@ -1420,7 +1420,6 @@ function print_pedigree_person_nav2($pid, $currpid, $censyear) {
 						$fulln = rtrim($nam[0]['givn'],'*')."&nbsp;".$nam[0]['surname'];
 						$fulln = str_replace("@N.N.", "(".WT_I18N::translate('unknown').")", $fulln);
 						$fulln = str_replace("@P.N.", "(".WT_I18N::translate('unknown').")", $fulln);
-						$husbnam = null;
 
 						for ($i=0; $i<count($nam); $i++) {
 							if ($nam[$i]['type']=='_MARNM') {
@@ -1606,7 +1605,6 @@ function print_pedigree_person_nav2($pid, $currpid, $censyear) {
 							$fulln = rtrim($nam[0]['givn'],'*')."&nbsp;".$nam[0]['surname'];
 							$fulln = str_replace("@N.N.", "(".WT_I18N::translate('unknown').")", $fulln);
 							$fulln = str_replace("@P.N.", "(".WT_I18N::translate('unknown').")", $fulln);
-							$husbnam = null;
 
 							for ($i=0; $i<count($nam); $i++) {
 								if ($nam[$i]['type']=='_MARNM') {
@@ -1834,7 +1832,6 @@ function print_pedigree_person_nav2($pid, $currpid, $censyear) {
 						$fulln = rtrim($nam[0]['givn'],'*')."&nbsp;".$nam[0]['surname'];
 						$fulln = str_replace("@N.N.", "(".WT_I18N::translate('unknown').")", $fulln);
 						$fulln = str_replace("@P.N.", "(".WT_I18N::translate('unknown').")", $fulln);
-						$husbnam = null;
 
 						// Get childs married name if available
 						$chfulmn=null;

@@ -153,7 +153,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 						</td>
 						<td class="optionbox">
 							<?php echo print_findindi_link('cart_item_id'); ?>
-							<?php echo print_findfamily_link('cart_item_id', ''); ?>
+							<?php echo print_findfamily_link('cart_item_id'); ?>
 							<?php echo print_findsource_link('cart_item_id', ''); ?>
 							<input type="submit" value="<?php echo WT_I18N::translate('Add'); ?>">
 
@@ -335,7 +335,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 			require_once WT_ROOT.WT_MODULES_DIR.'clippings/clippings_ctrl.php';
 
 			// Creating a controller has the side effect of initialising the cart
-			$clip_ctrl=new WT_Controller_Clippings();
+			new WT_Controller_Clippings();
 
 			return true;
 		}
