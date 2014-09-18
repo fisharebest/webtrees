@@ -160,7 +160,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 	$addname=$person->getAddName();
 
 	if ($PEDIGREE_SHOW_GENDER && $show_full) {
-		$genderImage = " ".$person->getSexImage('small', "box-$boxID-gender");
+		$genderImage = " ".$person->getSexImage('large');
 	}
 
 	// Here for alternate name2
