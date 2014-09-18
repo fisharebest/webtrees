@@ -28,7 +28,7 @@ if (!defined('WT_WEBTREES')) {
 
 // Create tables, if not already present
 try {
-	WT_DB::updateSchema(WT_MODULES_DIR, 'user_blog/db_schema/', 'NB_SCHEMA_VERSION', 3);
+	WT_DB::updateSchema(WT_MODULES_DIR . 'user_blog/db_schema/', 'NB_SCHEMA_VERSION', 3);
 } catch (PDOException $ex) {
 	// The schema update scripts should never fail.  If they do, there is no clean recovery.
 	die($ex);
