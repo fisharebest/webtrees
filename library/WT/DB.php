@@ -30,8 +30,11 @@ class WT_DB {
 	// See http://en.wikipedia.org/wiki/Singleton_pattern
 	// See http://en.wikipedia.org/wiki/Decorator_pattern
 	//////////////////////////////////////////////////////////////////////////////
-	private static $instance=null;
-	private static $pdo=null;
+	/** @var WT_DB  */
+	private static $instance;
+
+	/** @var PDO  */
+	private static $pdo;
 
 	// Prevent instantiation via new WT_DB
 	private final function __construct() {
@@ -39,12 +42,12 @@ class WT_DB {
 
 	// Prevent instantiation via clone()
 	public final function __clone() {
-		trigger_error('WT_DB::clone() is not allowed.', E_USER_ERROR);
+		throw new Exception('WT_DB::clone() is not allowed.');
 	}
 
 	// Prevent instantiation via serialize()
 	public final function __wakeup() {
-		trigger_error('WT_DB::unserialize() is not allowed.', E_USER_ERROR);
+		throw new Exception('WT_DB::unserialize() is not allowed.');
 	}
 
 	// Disconnect from the server, so we can connect to another one
@@ -55,7 +58,7 @@ class WT_DB {
 	// Implement the singleton pattern
 	public static function createInstance($DBHOST, $DBPORT, $DBNAME, $DBUSER, $DBPASS) {
 		if (self::$pdo instanceof PDO) {
-			trigger_error('WT_DB::createInstance() can only be called once.', E_USER_ERROR);
+			throw new Exception('WT_DB::createInstance() can only be called once.');
 		}
 		// Create the underlying PDO object
 		self::$pdo=new PDO(
@@ -180,10 +183,10 @@ class WT_DB {
 	}
 
 	// Add logging to query()
-	public static function query($statement, $parameter_type= PDO::PARAM_STR) {
+	public static function query($statement) {
 		$statement=str_replace('##', WT_TBLPREFIX, $statement);
 		$start=microtime(true);
-		$result=self::$pdo->query($statement, $parameter_type);
+		$result=self::$pdo->query($statement);
 		$end=microtime(true);
 		self::logQuery($statement, count($result), $end-$start, array());
 		return $result;
@@ -202,7 +205,7 @@ class WT_DB {
 	// Add logging/functionality to prepare()
 	public static function prepare($statement) {
 		if (!self::$pdo instanceof PDO) {
-			throw new PDOException("No Connection Established");
+			throw new Exception("No Connection Established");
 		}
 		$statement=str_replace('##', WT_TBLPREFIX, $statement);
 		return new WT_DBStatement(self::$pdo->prepare($statement));
