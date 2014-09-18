@@ -333,17 +333,17 @@
     },
     {
         "name": "bombayworks/zendframework1",
-        "version": "v1.12.8",
-        "version_normalized": "1.12.8.0",
+        "version": "v1.12.9",
+        "version_normalized": "1.12.9.0",
         "source": {
             "type": "git",
             "url": "https://github.com/bombayworks/zendframework1.git",
-            "reference": "98c442a8ea215f449548db9f2269944349acc786"
+            "reference": "4bce65c9427866dc62e9ea9ab511f0edffa49f85"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/bombayworks/zendframework1/zipball/98c442a8ea215f449548db9f2269944349acc786",
-            "reference": "98c442a8ea215f449548db9f2269944349acc786",
+            "url": "https://api.github.com/repos/bombayworks/zendframework1/zipball/4bce65c9427866dc62e9ea9ab511f0edffa49f85",
+            "reference": "4bce65c9427866dc62e9ea9ab511f0edffa49f85",
             "shasum": ""
         },
         "require": {
@@ -353,7 +353,7 @@
             "phpunit/dbunit": "1.3.*",
             "phpunit/phpunit": "3.7.*"
         },
-        "time": "2014-08-26 16:01:25",
+        "time": "2014-09-17 15:01:24",
         "bin": [
             "bin/zf.sh",
             "bin/zf.php"
@@ -386,17 +386,17 @@
     },
     {
         "name": "fisharebest/ext-calendar",
-        "version": "1.1.0",
-        "version_normalized": "1.1.0.0",
+        "version": "1.1.2",
+        "version_normalized": "1.1.2.0",
         "source": {
             "type": "git",
             "url": "https://github.com/fisharebest/ext-calendar.git",
-            "reference": "c7b8215eca18475112a7d1f1f351f15e054ae2f4"
+            "reference": "6ba593dd58de9964f456df0b388e77df1bce22a1"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/fisharebest/ext-calendar/zipball/c7b8215eca18475112a7d1f1f351f15e054ae2f4",
-            "reference": "c7b8215eca18475112a7d1f1f351f15e054ae2f4",
+            "url": "https://api.github.com/repos/fisharebest/ext-calendar/zipball/6ba593dd58de9964f456df0b388e77df1bce22a1",
+            "reference": "6ba593dd58de9964f456df0b388e77df1bce22a1",
             "shasum": ""
         },
         "require": {
@@ -411,7 +411,7 @@
         "suggest": {
             "patchwork/utf8": "ext/mb_string support is required to generate dates using Hebrew text."
         },
-        "time": "2014-09-13 11:34:57",
+        "time": "2014-09-16 06:20:56",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
