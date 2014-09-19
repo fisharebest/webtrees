@@ -138,20 +138,47 @@ if (!function_exists('password_hash')) {
 	if (crypt("password", $hash) === $hash) {
 		require WT_ROOT.'library/ircmaxell/password-compat/lib/password.php';
 	} else {
-		// For older/unpatched versions of PHP, use the default crypt behaviour.
-		function password_hash($password) {
+		/**
+		 * There is no secure password facility on this server.
+		 * Simply implement something that won't crash...
+		 *
+		 * @param string  $password
+		 * @param integer $algo
+		 *
+		 * @return string
+		 */
+		function password_hash($password, $algo) {
 			$salt = '$2a$12$';
 			$salt_chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789./';
 			for ($i = 0; $i < 22; ++$i) {
 				$salt .= substr($salt_chars, mt_rand(0, 63), 1);
 			}
+
 			return crypt($password, $salt);
 		}
 
-		function password_needs_rehash() {
+		/**
+		 * There is no secure password facility on this server.
+		 * Simply implement something that won't crash...
+		 *
+		 * @param string  $hash
+		 * @param integer $algo
+		 *
+		 * @return boolean
+		 */
+		function password_needs_rehash($hash, $algo) {
 			return false;
 		}
 
+		/**
+		 * There is no secure password facility on this server.
+		 * Simply implement something that won't crash...
+		 *
+		 * @param string  $password
+		 * @param integer $hash
+		 *
+		 * @return string
+		 */
 		function password_verify($password, $hash) {
 			return crypt($password, $hash) === $hash;
 		}

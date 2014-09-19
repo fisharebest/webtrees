@@ -274,7 +274,6 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 			if (strpos($SHOW_RELATIVES_EVENTS, '_DEAT'.str_replace('_HSIB', '_SIBL', $option))!==false) {
 				foreach ($child->getFacts(WT_EVENTS_DEAT) as $fact) {
 					$sgdate=$fact->getDate();
-					$srec = $fact->getGedcom();
 					if ($sgdate->isOK() && WT_Date::Compare($birt_date, $sgdate)<=0 && WT_Date::Compare($sgdate, $deat_date)<=0) {
 						if ($option=='_GCHI' && $relation=='dau') {
 							// Convert the event to a close relatives event.
