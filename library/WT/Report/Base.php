@@ -814,10 +814,8 @@ function HeaderSHandler() {
 
 /**
  * XML <PageHeader> start element handler
- *
- * @param array $attrs an array of key value pairs for the attributes
  */
-function PageHeaderSHandler($attrs) {
+function PageHeaderSHandler() {
 	global $printDataStack, $printData, $wt_reportStack, $wt_report, $ReportRoot;
 
 	array_push($printDataStack, $printData);
@@ -1060,11 +1058,6 @@ function GedcomSHandler($attrs) {
 		return;
 	}
 
-	$id = "";
-	$match = array();
-	if (preg_match("/0 @(.+)@/", $gedrec, $match)) {
-		$id = $match[1];
-	}
 	$tag = $attrs['id'];
 	$tag = str_replace("@fact", $fact, $tag);
 	$tags = explode(":", $tag);
@@ -1436,7 +1429,7 @@ function GedcomValueSHandler($attrs) {
 				$truncate = $attrs['truncate'];
 			}
 			$tags = preg_split('/[: ]/', $tag);
-			$value = get_gedcom_value($tag, $level, $gedrec, $truncate);
+			$value = get_gedcom_value($tag, $level, $gedrec);
 			switch (end($tags)) {
 			case 'DATE':
 				$tmp = new WT_Date($value);
@@ -1479,12 +1472,6 @@ function RepeatTagSHandler($attrs) {
 	array_push($repeatsStack, array($repeats, $repeatBytes));
 	$repeats = array();
 	$repeatBytes = xml_get_current_line_number($parser);
-
-	$id = "";
-	$match = array();
-	if (preg_match("/0 @(.+)@/", $gedrec, $match)) {
-		$id = $match[1];
-	}
 
 	$tag = "";
 	if (isset($attrs['tag'])) {
@@ -1955,11 +1942,8 @@ function ifEHandler() {
 function FootnoteSHandler($attrs) {
 	global $printData, $printDataStack, $currentElement, $footnoteElement, $processFootnote, $gedrec, $ReportRoot;
 
-	$match = array();
 	$id = "";
-	$tag = "";
 	if (preg_match("/[0-9] (.+) @(.+)@/", $gedrec, $match)) {
-		$tag = $match[1];
 		$id = $match[2];
 	}
 	$record = WT_GedcomRecord::GetInstance($id);
@@ -2631,7 +2615,6 @@ function ListSHandler($attrs) {
 						$v = get_sub_record(1, $tag, $grec);
 					}
 
-					$level = count($tags);
 					switch ($expr) {
 					case "GTE":
 						if ($t == "DATE") {
@@ -3217,13 +3200,12 @@ function get_gedcom_value($tag, $level, $gedrec) {
 }
 
 /**
- * @param      $list
- * @param      $pid
- * @param bool $children
- * @param      $generations
- * @param bool $show_empty
+ * @param string[] $list
+ * @param string   $pid
+ * @param bool     $children
+ * @param integer  $generations
  */
-function add_ancestors(&$list, $pid, $children = false, $generations = -1, $show_empty = false) {
+function add_ancestors(&$list, $pid, $children = false, $generations = -1) {
 	$genlist = array($pid);
 	$list[$pid]->generation = 1;
 	while (count($genlist) > 0) {
