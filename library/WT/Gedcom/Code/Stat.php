@@ -37,7 +37,7 @@ class WT_Gedcom_Code_Stat {
 			// LDS_SPOUSE_SEALING_DATE_STATUS
 			return array('CANCELED', 'COMPLETED', 'DNS', 'DNS/CAN', 'EXCLUDED', 'PRE-1970', 'SUBMITTED', 'UNCLEARED');
 		default:
-			return trigger_error('Internal error - bad argument to WT_Gedcom_Code_Stat::statusCodes("'.$tag.'")', E_USER_ERROR);
+			throw new InvalidArgumentException('Internal error - bad argument to WT_Gedcom_Code_Stat::statusCodes("'.$tag.'")');
 		}
 	}
 

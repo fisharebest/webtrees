@@ -1749,7 +1749,7 @@ function print_changes_table($change_ids, $sort) {
 		$html .= '<tr><td>';
 		switch ($record::RECORD_TYPE) {
 			case 'INDI':
-				$icon = $record->getSexImage('small', '', '', false);
+				$icon = $record->getSexImage();
 				break;
 			case 'FAM':
 				$icon = '<i class="icon-button_family"></i>';

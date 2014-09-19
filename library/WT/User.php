@@ -399,8 +399,8 @@ class User {
 	/**
 	 * Update a setting for the user.
 	 *
-	 * @param string $setting_name
-	 * @param string $setting_value
+	 * @param string          $setting_name
+	 * @param string|int|bool $setting_value
 	 *
 	 * @return User
 	 */

@@ -24,20 +24,18 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 class WT_DB {
-	//////////////////////////////////////////////////////////////////////////////
-	// CONSTRUCTION
-	// Implement a singleton to decorate a PDO object.
-	// See http://en.wikipedia.org/wiki/Singleton_pattern
-	// See http://en.wikipedia.org/wiki/Decorator_pattern
-	//////////////////////////////////////////////////////////////////////////////
-	/** @var WT_DB  */
+	/** @var WT_DB Implement the singleton pattern */
 	private static $instance;
 
-	/** @var PDO  */
+	/** @var PDO Native PHP database driver */
 	private static $pdo;
+
+	/** @var array Keep a log of all the SQL statements that we execute */
+	private static $log;
 
 	// Prevent instantiation via new WT_DB
 	private final function __construct() {
+		self::$log = array();
 	}
 
 	// Prevent instantiation via clone()
@@ -50,34 +48,47 @@ class WT_DB {
 		throw new Exception('WT_DB::unserialize() is not allowed.');
 	}
 
-	// Disconnect from the server, so we can connect to another one
+	/**
+	 * Disconnect from the server, so we can connect to another one
+	 *
+	 * @return void
+	 */
 	public static function disconnect() {
-		self::$pdo=null;
+		self::$pdo = null;
 	}
 
-	// Implement the singleton pattern
+	/**
+	 * Implement the singleton pattern, using a static accessor.
+	 *
+	 * @param string $DBHOST
+	 * @param string $DBPORT
+	 * @param string $DBNAME
+	 * @param string $DBUSER
+	 * @param string $DBPASS
+	 *
+	 * @throws Exception
+	 */
 	public static function createInstance($DBHOST, $DBPORT, $DBNAME, $DBUSER, $DBPASS) {
 		if (self::$pdo instanceof PDO) {
 			throw new Exception('WT_DB::createInstance() can only be called once.');
 		}
 		// Create the underlying PDO object
 		self::$pdo=new PDO(
-			(substr($DBHOST, 0, 1)=='/' ?
+			(substr($DBHOST, 0, 1) == '/' ?
 				"mysql:unix_socket={$DBHOST};dbname={$DBNAME}" :
 				"mysql:host={$DBHOST};dbname={$DBNAME};port={$DBPORT}"
 			),
 			$DBUSER, $DBPASS,
 			array(
-				PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION,
-				PDO::ATTR_DEFAULT_FETCH_MODE=>PDO::FETCH_OBJ,
-				PDO::ATTR_CASE=>PDO::CASE_LOWER,
-				PDO::ATTR_AUTOCOMMIT=>true
+				PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+				PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
+				PDO::ATTR_CASE               => PDO::CASE_LOWER,
+				PDO::ATTR_AUTOCOMMIT         => true
 			)
 		);
 		self::$pdo->exec("SET NAMES UTF8");
 
-		// Assign the singleton
-		self::$instance=new self;
+		self::$instance = new self;
 	}
 
 	/**
@@ -95,127 +106,176 @@ class WT_DB {
 		}
 	}
 
+	/**
+	 * Are we currently connected to a database?
+	 *
+	 * @return bool
+	 */
 	public static function isConnected() {
-		return (self::$pdo instanceof PDO);
+		return self::$pdo instanceof PDO;
 	}
 
-	//////////////////////////////////////////////////////////////////////////////
-	// LOGGING
-	// Keep a log of the statements executed using this connection
-	//////////////////////////////////////////////////////////////////////////////
-	private static $log=array();
-
-	// Add an entry to the log
+	/**
+	 * Log the details of a query, for debugging and analysis.
+	 *
+	 * @param $query
+	 * @param $rows
+	 * @param $microtime
+	 * @param $bind_variables
+	 *
+	 * @return void
+	 */
 	public static function logQuery($query, $rows, $microtime, $bind_variables) {
 		if (WT_DEBUG_SQL) {
 			// Full logging
 			// Trace
-			$trace=debug_backtrace();
+			$trace = debug_backtrace();
 			array_shift($trace);
 			array_shift($trace);
-			foreach ($trace as $n=>$frame) {
+			foreach ($trace as $n => $frame) {
 				if (isset($frame['file']) && isset($frame['line'])) {
-					$trace[$n]=basename($frame['file']).':'.$frame['line'].' '.$frame['function'].'('./*implode(',', $frame['args']).*/')';
+					$trace[$n] = basename($frame['file']) . ':' . $frame['line'] . ' ' . $frame['function'];
 				} else {
 					unset($trace[$n]);
 				}
 			}
-			$stack='<abbr title="'.WT_Filter::escapeHtml(implode(" / ", $trace)).'">'.(count(self::$log)+1).'</abbr>';
+			$stack = '<abbr title="' . WT_Filter::escapeHtml(implode(" / ", $trace)) . '">' . (count(self::$log) + 1) . '</abbr>';
 			// Bind variables
-			$query2='';
-			foreach ($bind_variables as $key=>$value) {
+			$query2 = '';
+			foreach ($bind_variables as $key => $value) {
 				if (is_null($value)) {
-					$bind_variables[$key]='[NULL]';
+					$bind_variables[$key] = '[NULL]';
 				}
 			}
 			foreach (str_split(WT_Filter::escapeHtml($query)) as $char) {
-				if ($char=='?') {
-					$query2.='<abbr title="'.WT_Filter::escapeHtml(array_shift($bind_variables)).'">'.$char.'</abbr>';
+				if ($char == '?') {
+					$query2 .= '<abbr title="' . WT_Filter::escapeHtml(array_shift($bind_variables)) . '">' . $char . '</abbr>';
 				} else {
-					$query2.=$char;
+					$query2 .= $char;
 				}
 			}
 			// Highlight embedded literal strings.
 			if (preg_match('/[\'"]/', $query)) {
-				$query2='<span style="background-color:yellow;">'.$query2.'</span>';
-		}
-			// Highlight slow queries
-			$microtime*=1000; // convert to milliseconds
-			if ($microtime>1000) {
-				$microtime=sprintf('<span style="background-color: #ff0000;">%.3f</span>', $microtime);
-			} elseif ($microtime>100) {
-				$microtime=sprintf('<span style="background-color: #ffa500;">%.3f</span>', $microtime);
-			} elseif ($microtime>1) {
-				$microtime=sprintf('<span style="background-color: #ffff00;">%.3f</span>', $microtime);
-			} else {
-			$microtime=sprintf('%.3f', $microtime);
+				$query2 = '<span style="background-color:yellow;">'.$query2.'</span>';
 			}
-			self::$log[]="<tr><td>{$stack}</td><td>{$query2}</td><td>{$rows}</td><td>{$microtime}</td></tr>";
+			// Highlight slow queries
+			$microtime *= 1000; // convert to milliseconds
+			if ($microtime > 1000) {
+				$microtime = sprintf('<span style="background-color: #ff0000;">%.3f</span>', $microtime);
+			} elseif ($microtime>100) {
+				$microtime = sprintf('<span style="background-color: #ffa500;">%.3f</span>', $microtime);
+			} elseif ($microtime>1) {
+				$microtime = sprintf('<span style="background-color: #ffff00;">%.3f</span>', $microtime);
+			} else {
+			$microtime = sprintf('%.3f', $microtime);
+			}
+			self::$log[] = "<tr><td>{$stack}</td><td>{$query2}</td><td>{$rows}</td><td>{$microtime}</td></tr>";
 		} else {
 			// Just log query count for statistics
-			self::$log[]=true;
+			self::$log[] = true;
 		}
 	}
 
-	// Total number of queries executed, for the page statistics
+	/**
+	 * Determine the number of queries executed, for the page statistics.
+	 *
+	 * @return int
+	 */
 	public static function getQueryCount() {
 		return count(self::$log);
 	}
 
-	// Display the query log as a table, for debugging
+	/**
+	 * Convert the query log into an HTML table.
+	 *
+	 * @return string
+	 */
 	public static function getQueryLog() {
-		$html='<table border="1"><col span="3"><col align="char"><thead><tr><th>#</th><th>Query</th><th>Rows</th><th>Time (ms)</th></tr></thead><tbody>'.implode('', self::$log).'</tbody></table>';
-		self::$log=array();
+		$html = '<table border="1"><col span="3"><col align="char"><thead><tr><th>#</th><th>Query</th><th>Rows</th><th>Time (ms)</th></tr></thead><tbody>'.implode('', self::$log).'</tbody></table>';
+		self::$log = array();
+
 		return $html;
 	}
 
-	//////////////////////////////////////////////////////////////////////////////
-	// FUNCTIONALITY ENHANCEMENTS
-	//////////////////////////////////////////////////////////////////////////////
+	/**
+	 * Determine the most recently created value of an AUTO_INCREMENT field.
+	 *
+	 * @return string
+	 */
+	public static function lastInsertId() {
+		return self::$pdo->lastInsertId();
+	}
 
-	// The native quote() function does not convert PHP nulls to DB nulls
-	public static function quote($string, $parameter_type=PDO::PARAM_STR) {
+	/**
+	 * Quote a string for embedding in a MySQL statement.
+	 *
+	 * The native quote() function does not convert PHP nulls to DB nulls
+	 *
+	 * @param  $string
+	 *
+	 * @return string
+	 *
+	 * @deprecated We should use bind-variables instead.
+	 */
+	public static function quote($string) {
 		if (is_null($string)) {
 			return 'NULL';
 		} else {
-			return self::$pdo->quote($string, $parameter_type);
+			return self::$pdo->quote($string, PDO::PARAM_STR);
 		}
 	}
 
-	// Add logging to exec()
-	public static function exec($statement) {
-		$statement=str_replace('##', WT_TBLPREFIX, $statement);
-		$start=microtime(true);
-		$result=self::$pdo->exec($statement);
-		$end=microtime(true);
-		self::logQuery($statement, $result, $end-$start, array());
-		return $result;
+	/**
+	 * Execute an SQL statement, and log the result.
+	 *
+	 * @param string $sql The SQL statement to execute
+	 *
+	 * @return int The number of rows affected by this SQL query
+	 */
+	public static function exec($sql) {
+		$sql   = str_replace('##', WT_TBLPREFIX, $sql);
+		$start = microtime(true);
+		$rows  = self::$pdo->exec($sql);
+		$end   = microtime(true);
+		self::logQuery($sql, $rows, $end-$start, array());
+
+		return $rows;
 	}
 
-	// Add logging/functionality to prepare()
-	public static function prepare($statement) {
+	/**
+	 * Prepare an SQL statement for execution.
+	 *
+	 * @param $sql
+	 *
+	 * @return WT_DBStatement
+	 * @throws Exception
+	 */
+	public static function prepare($sql) {
 		if (!self::$pdo instanceof PDO) {
 			throw new Exception("No Connection Established");
 		}
-		$statement=str_replace('##', WT_TBLPREFIX, $statement);
-		return new WT_DBStatement(self::$pdo->prepare($statement));
+		$sql = str_replace('##', WT_TBLPREFIX, $sql);
+
+		return new WT_DBStatement(self::$pdo->prepare($sql));
 	}
 
-	// Map all other functions onto the base PDO object
-	public function __call($function, $params) {
-		return call_user_func_array(array(self::$pdo, $function), $params);
-	}
-
-	//////////////////////////////////////////////////////////////////////////////
-	// Create/update tables, indexes, etc.
-	//////////////////////////////////////////////////////////////////////////////
+	/**
+	 * Run a series of scripts to bring the database schema up to date.
+	 *
+	 * @param $schema_dir
+	 * @param $schema_name
+	 * @param $target_version
+	 *
+	 * @return void
+	 * @throws Exception
+	 */
 	public static function updateSchema($schema_dir, $schema_name, $target_version) {
 		try {
-			$current_version=(int)WT_Site::getPreference($schema_name);
+			$current_version = (int)WT_Site::getPreference($schema_name);
 		} catch (PDOException $e) {
 			// During initial installation, this table won’t exist.
 			// It will only be a problem if we can’t subsequently create it.
-			$current_version=0;
+			$current_version = 0;
 		}
 
 		// During installation, the current version is set to a special value of
@@ -225,24 +285,24 @@ class WT_DB {
 		case -1:
 			// Due to a bug in webtrees 1.2.5 - 1.2.7, the setup value of "-1"
 			// wasn't being updated.
-			$current_version=12;
+			$current_version = 12;
 			WT_Site::setPreference($schema_name, $current_version);
 			break;
 		case -2:
 			// Because of the above bug, we now set the version to -2 during setup.
-			$current_version=$target_version;
+			$current_version = $target_version;
 			WT_Site::setPreference($schema_name, $current_version);
 			break;
 		}
 
 		// Update the schema, one version at a time.
-		while ($current_version<$target_version) {
-			$next_version=$current_version+1;
-			require $schema_dir.'db_schema_'.$current_version.'_'.$next_version.'.php';
+		while ($current_version < $target_version) {
+			$next_version = $current_version + 1;
+			require $schema_dir . 'db_schema_' . $current_version . '_' . $next_version . '.php';
 			// The updatescript should update the version or throw an exception
-			$current_version=(int)WT_Site::getPreference($schema_name);
-			if ($current_version!=$next_version) {
-				die("Internal error while updating {$schema_name} to {$next_version}");
+			$current_version = (int)WT_Site::getPreference($schema_name);
+			if ($current_version != $next_version) {
+				throw new Exception("Internal error while updating {$schema_name} to {$next_version}");
 			}
 		}
 	}
