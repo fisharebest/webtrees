@@ -44,12 +44,6 @@ class WT_Report_HTML_Cell extends WT_Report_Base_Cell {
 			$html->setCurrentStyle($this->styleName);
 		}
 
-		/**
-		 * Keep the original values, use these local variables
-		 */
-		$cW = 0; // Class Width
-		$cP = 0; // Class Padding
-
 		// If (Future-feature-enable/disable cell padding)
 		$cP = $html->cPadding;
 

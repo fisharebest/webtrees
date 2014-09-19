@@ -33,12 +33,6 @@ class WT_Report_PDF_Cell extends WT_Report_Base_Cell {
 	 * @return void
 	 */
 	function render($pdf) {
-		/**
-		 * Use these variables to update/manipulate values
-		 * Repeted classes would reupdate all their class variables again, Header/Page Header/Footer
-		 * This is the bugfree version
-		 */
-		$cX = 0; // Class Left
 
 		// Set up the text style
 		if (($pdf->getCurrentStyle()) != ($this->styleName)) {
