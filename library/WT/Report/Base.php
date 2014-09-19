@@ -1424,10 +1424,6 @@ function GedcomValueSHandler($attrs) {
 			} else {
 				$level = $attrs['level'];
 			}
-			$truncate = "";
-			if (isset($attrs['truncate'])) {
-				$truncate = $attrs['truncate'];
-			}
 			$tags = preg_split('/[: ]/', $tag);
 			$value = get_gedcom_value($tag, $level, $gedrec);
 			switch (end($tags)) {
