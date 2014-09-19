@@ -580,10 +580,10 @@ class WT_Individual extends WT_GedcomRecord {
 
 	// Get the individual’s sex image
 	function getSexImage($size='small', $style='', $title='') {
-		return self::sexImage($this->getSex(), $size, $style, $title);
+		return self::sexImage($this->getSex(), $size, $title);
 	}
 
-	static function sexImage($sex, $size='small', $style='', $title='') {
+	static function sexImage($sex, $size='small', $title='') {
 		return '<i class="icon-sex_'.strtolower($sex).'_'.($size=='small' ? '9x9' : '15x15').'" title="'.$title.'"></i>';
 	}
 

@@ -66,7 +66,6 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 	// print parents informations
 	function printFamily(WT_Family $family, $type, $label) {
 		global $controller;
-		global $personcount; // TODO: use a unique id instead?
 		global $SHOW_PRIVATE_RELATIONSHIPS;
 
 		if ($SHOW_PRIVATE_RELATIONSHIPS) {
@@ -109,7 +108,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 						<?php echo get_close_relationship_name($controller->record, $person); ?>
 					</td>
 					<td class="<?php echo $controller->getPersonStyle($person); ?>">
-						<?php print_pedigree_person($person, 2, 0, $personcount++); ?>
+						<?php print_pedigree_person($person, 2); ?>
 					</td>
 					</tr>
 				<?php
@@ -143,7 +142,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 						<?php echo get_close_relationship_name($controller->record, $person); ?>
 					</td>
 					<td class="<?php echo $controller->getPersonStyle($person); ?>">
-						<?php print_pedigree_person($person, 2, 0, $personcount++); ?>
+						<?php print_pedigree_person($person, 2); ?>
 					</td>
 				</tr>
 				<?php
@@ -228,7 +227,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 						<?php echo get_close_relationship_name($controller->record, $person); ?>
 					</td>
 					<td class="<?php echo $controller->getPersonStyle($person); ?>">
-						<?php print_pedigree_person($person, 2, 0, $personcount++); ?>
+						<?php print_pedigree_person($person, 2); ?>
 					</td>
 				</tr>
 				<?php
@@ -271,7 +270,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 
 	// Implement WT_Module_Tab
 	public function getTabContent() {
-		global $SHOW_AGE_DIFF, $GEDCOM, $show_full, $personcount, $controller;
+		global $SHOW_AGE_DIFF, $show_full, $controller;
 
 		if (isset($show_full)) $saved_show_full = $show_full; // We always want to see full details here
 		$show_full = 1;
@@ -283,7 +282,6 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		<label for="checkbox_elder"><?php echo WT_I18N::translate('Show date differences'); ?></label>
 		</td></tr></table>
 		<?php
-		$personcount=0;
 		$families = $controller->record->getChildFamilies();
 		if (!$families && $controller->record->canEdit()) {
 			?>
