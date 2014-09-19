@@ -591,7 +591,6 @@ function startElement($parser, $name, $attrs) {
 	global $processFootnote;
 
 	$newattrs = array();
-	$match = array();
 
 	foreach ($attrs as $key => $value) {
 		if (preg_match("/^\\$(\w+)$/", $value, $match)) {
@@ -1740,7 +1739,6 @@ function FactsEHandler() {
 		$oldgedrec = $gedrec;
 		$count = count($repeats);
 		$i = 0;
-		$match = array();
 		while ($i < $count) {
 			$gedrec = $repeats[$i];
 			$fact = "";
