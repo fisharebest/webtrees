@@ -197,20 +197,16 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				$controller=new WT_Controller_Page();
 				if ($block_id) {
 					$controller->setPageTitle(WT_I18N::translate('Edit story'));
-					$title=get_block_setting($block_id, 'title');
-					$story_body=get_block_setting($block_id, 'story_body');
-					$gedcom_id=WT_DB::prepare(
-						"SELECT gedcom_id FROM `##block` WHERE block_id=?"
-					)->execute(array($block_id))->fetchOne();
-					$xref=WT_DB::prepare(
+					$title = get_block_setting($block_id, 'title');
+					$story_body = get_block_setting($block_id, 'story_body');
+					$xref = WT_DB::prepare(
 						"SELECT xref FROM `##block` WHERE block_id=?"
 					)->execute(array($block_id))->fetchOne();
 				} else {
 					$controller->setPageTitle(WT_I18N::translate('Add a story'));
-					$title='';
-					$story_body='';
-					$gedcom_id=WT_GED_ID;
-					$xref=WT_Filter::get('xref', WT_REGEX_XREF);
+					$title = '';
+					$story_body = '';
+					$xref = WT_Filter::get('xref', WT_REGEX_XREF);
 				}
 				$controller
 					->pageHeader()
@@ -244,13 +240,13 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				echo '<input data-autocomplete-type="INDI" type="text" name="xref" id="pid" size="4" value="'.$xref.'">';
 				echo print_findindi_link('pid');
 				if ($xref) {
-					$person=WT_Individual::getInstance($xref);
+					$person = WT_Individual::getInstance($xref);
 					if ($person) {
 						echo ' ', $person->format_list('span');
 					}
 				}
 				echo '</td>';
-				$languages=get_block_setting($block_id, 'languages');
+				$languages = get_block_setting($block_id, 'languages');
 				echo '<td class="optionbox">';
 				echo edit_language_checkboxes('lang_', $languages);
 				echo '</td></tr></table>';
@@ -268,7 +264,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 
 	private function delete() {
 		if (WT_USER_CAN_EDIT) {
-			$block_id=WT_Filter::getInteger('block_id');
+			$block_id = WT_Filter::getInteger('block_id');
 
 			WT_DB::prepare(
 				"DELETE FROM `##block_setting` WHERE block_id=?"
