@@ -52,7 +52,7 @@ class WT_DBStatement {
 			throw new Exception('WT_DBStatement::execute() called twice.');
 		}
 
-		// Turn booleans into integers.  Otherwise MySQL's strict mode can get upset.
+		// Turn booleans into integers.  Otherwise MySQL’s strict mode can get upset.
 		foreach ($bind_variables as &$bind_variable) {
 			if ($bind_variable === false) {
 				// Otherwise true=>'1' and false=>''
