@@ -260,13 +260,6 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			Log::addConfigurationLog('Googlemap config updated');
 		}
 
-		// TODO There are functions in functions_edit.php to edit these...
-		$GM_PRECISION_0 = $this->getSetting('GM_PRECISION_0');
-		$GM_PRECISION_1 = $this->getSetting('GM_PRECISION_1');
-		$GM_PRECISION_2 = $this->getSetting('GM_PRECISION_2');
-		$GM_PRECISION_3 = $this->getSetting('GM_PRECISION_3');
-		$GM_PRECISION_4 = $this->getSetting('GM_PRECISION_4');
-		$GM_PRECISION_5 = $this->getSetting('GM_PRECISION_5');
 		?>
 		<table id="gm_config">
 			<tr>
@@ -848,7 +841,6 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		// print summary statistics
 		if (isset($curgen)) {
 			$total=pow(2,$curgen)-1;
-			$miss=$total-$count-$priv;
 			echo WT_I18N::plural(
 				'%1$d individual displayed, out of the normal total of %2$d, from %3$d generations.',
 				'%1$d individuals displayed, out of the normal total of %2$d, from %3$d generations.',
@@ -1261,10 +1253,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		'var bounds = new google.maps.LatLngBounds();';
 		// add the points
 		$curgen=1;
-		$priv=0;
 		$count=0;
-		$event = '<img src="'.WT_STATIC_URL.WT_MODULES_DIR.'googlemap/images/sq1.png" width="10" height="10">'.
-			'<strong>&nbsp;'.WT_I18N::translate('Root').':&nbsp;</strong>';
 		$colored_line = array('1'=>'#FF0000','2'=>'#0000FF','3'=>'#00FF00',
 						'4'=>'#FFFF00','5'=>'#00FFFF','6'=>'#FF00FF',
 						'7'=>'#C0C0FF','8'=>'#808000');
