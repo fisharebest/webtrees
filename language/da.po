@@ -14440,9 +14440,7 @@ msgstr "For at oprette en ny forskningsopgave skal du først tilføje \"forsknin
 
 #: help_text.php:528
 msgid "To ensure compatibility with other genealogy applications, notes, text, and transcripts should be recorded in simple, unformatted text.  However, formatting is often desirable to aid presentation, comprehension, etc."
-msgstr "For at sikre kompatibilitet med andre slægtsforskning programmer, 
-bør noter, tekst, og udskrifter registreres i enkel, uformateret tekst. 
-Men formatering er ofte ønskeligt for at yde den bedste præsentation, forståelse, etc."
+msgstr "For at sikre kompatibilitet med andre slægtsforskning programmer, bør noter, tekst, og udskrifter registreres i enkel, uformateret tekst.  Men formatering er ofte ønskeligt for at yde den bedste præsentation, forståelse, etc."
 
 #: admin_media.php:465 library/WT/Controller/Media.php:64
 #: library/WT/Controller/Media.php:149 modules_v3/lightbox/module.php:161
@@ -14457,8 +14455,7 @@ msgstr "Til person"
 #: admin_site_upgrade.php:393
 #, php-format
 msgid "To prevent visitors from accessing the site while you are in the middle of copying files, you can temporarily create a file %s on the server.  If it contains a message, it will be displayed to visitors."
-msgstr "For at forhindre besøgende adgang til webstedet, mens du er ved at kopiere filer (FTP upload), 
-kan du oprette en midlertidig fil% s på serveren. Hvis den indeholder et besked, vil dette blive vist til besøgende"
+msgstr "For at forhindre besøgende adgang til webstedet, mens du er ved at kopiere filer (FTP upload), kan du oprette en midlertidig fil% s på serveren.  Hvis den indeholder et besked, vil dette blive vist til besøgende."
 
 #. I18N: “Apache” is a software program.
 #: help_text.php:583
