@@ -116,7 +116,7 @@ function get_note_list($ged_id) {
  *
  * @todo This function is only used by the report engine.  Move the code there.
  *
- * @param string   $join
+ * @param string[] $join
  * @param string[] $where
  * @param string[] $order
  *
@@ -142,7 +142,7 @@ function search_indis_custom($join, $where, $order) {
  *
  * @todo This function is only used by the report engine.  Move the code there.
  *
- * @param string   $join
+ * @param string[] $join
  * @param string[] $where
  * @param string[] $order
  *
