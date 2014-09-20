@@ -25,7 +25,6 @@ use WT\Log;
 
 class WT_Media extends WT_GedcomRecord {
 	const RECORD_TYPE = 'OBJE';
-	const SQL_FETCH   = "SELECT m_gedcom FROM `##media` WHERE m_id=? AND m_file=?";
 	const URL_PREFIX  = 'mediaviewer.php?mid=';
 
 	public $title = null; // TODO: these should be private, with getTitle() and getFilename() functions
