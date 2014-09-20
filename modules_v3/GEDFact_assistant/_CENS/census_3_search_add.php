@@ -132,7 +132,7 @@ if (!defined('WT_WEBTREES')) {
 							}
 							$label = get_close_relationship_name($person, $gparent);
 							$menu = new WT_Menu($label);
-							print_pedigree_person_nav2($gparent->getXref(), $label, $censdate);
+							print_pedigree_person_nav_cens($gparent->getXref(), $label, $censdate);
 							$submenu = new WT_Menu($parentlinks);
 							$menu->addSubMenu($submenu);
 
@@ -253,7 +253,7 @@ if (!defined('WT_WEBTREES')) {
 							}
 							$label = get_close_relationship_name($person, $gparent);
 							$menu = new WT_Menu($label);
-							print_pedigree_person_nav2($gparent->getXref(), $label, $censyear);
+							print_pedigree_person_nav_cens($gparent->getXref(), $label, $censyear);
 							$submenu = new WT_Menu($parentlinks);
 							$menu->addSubMenu($submenu);
 							?>
@@ -378,7 +378,7 @@ if (!defined('WT_WEBTREES')) {
 							}
 							$label = get_close_relationship_name($person, $child);
 							$menu = new WT_Menu($label);
-							print_pedigree_person_nav2($child->getXref(), $label, $censyear);
+							print_pedigree_person_nav_cens($child->getXref(), $label, $censyear);
 							$submenu = new WT_Menu($spouselinks);
 							$menu->addSubMenu($submenu);
 
@@ -516,7 +516,7 @@ if (!defined('WT_WEBTREES')) {
 							}
 							$label = get_close_relationship_name($person, $gparent);
 							$menu = new WT_Menu($label);
-							print_pedigree_person_nav2($gparent->getXref(), $label, $censyear);
+							print_pedigree_person_nav_cens($gparent->getXref(), $label, $censyear);
 							$submenu = new WT_Menu($parentlinks);
 							$menu->addSubMenu($submenu);
 							if ($gparent->getDeathYear() == 0) { $DeathYr = ""; } else { $DeathYr = $gparent->getDeathYear(); }
@@ -638,7 +638,7 @@ if (!defined('WT_WEBTREES')) {
 							}
 							$label = get_close_relationship_name($person, $gparent);
 							$menu = new WT_Menu($label);
-							print_pedigree_person_nav2($gparent->getXref(), $label, $censyear);
+							print_pedigree_person_nav_cens($gparent->getXref(), $label, $censyear);
 							$submenu = new WT_Menu($parentlinks);
 							$menu->addSubMenu($submenu);
 							if ($gparent->getDeathYear() == 0) { $DeathYr = ""; } else { $DeathYr = $gparent->getDeathYear(); }
@@ -756,7 +756,7 @@ if (!defined('WT_WEBTREES')) {
 							}
 							$label = get_close_relationship_name($person, $child);
 							$menu = new WT_Menu($label);
-							print_pedigree_person_nav2($child->getXref(), $label, $censyear);
+							print_pedigree_person_nav_cens($child->getXref(), $label, $censyear);
 							$submenu = new WT_Menu($spouselinks);
 							$menu->addSubMenu($submenu);
 							if ($child->getDeathYear() == 0) { $DeathYr = ""; } else { $DeathYr = $child->getDeathYear(); }
@@ -891,7 +891,7 @@ if (!defined('WT_WEBTREES')) {
 							}
 							$label = get_close_relationship_name($person, $gparent);
 							$menu = new WT_Menu($label);
-							print_pedigree_person_nav2($gparent->getXref(), $label, $censyear);
+							print_pedigree_person_nav_cens($gparent->getXref(), $label, $censyear);
 							$submenu = new WT_Menu($parentlinks);
 							$menu->addSubMenu($submenu);
 							if ($gparent->getDeathYear() == 0) { $DeathYr = ""; } else { $DeathYr = $gparent->getDeathYear(); }
@@ -1014,7 +1014,7 @@ if (!defined('WT_WEBTREES')) {
 							}
 							$label = get_close_relationship_name($person, $gparent);
 							$menu = new WT_Menu($label);
-							print_pedigree_person_nav2($gparent->getXref(), $label, $censyear);
+							print_pedigree_person_nav_cens($gparent->getXref(), $label, $censyear);
 							$submenu = new WT_Menu($parentlinks);
 							$menu->addSubMenu($submenu);
 							if ($gparent->getDeathYear() == 0) { $DeathYr = ""; } else { $DeathYr = $gparent->getDeathYear(); }
@@ -1140,7 +1140,7 @@ if (!defined('WT_WEBTREES')) {
 							}
 							$label = get_close_relationship_name($person, $child);
 							$menu = new WT_Menu($label);
-							print_pedigree_person_nav2($child->getXref(), $label, $censyear);
+							print_pedigree_person_nav_cens($child->getXref(), $label, $censyear);
 							$submenu = new WT_Menu($spouselinks);
 							$menu->addSubmenu($submenu);
 							?>
@@ -1244,17 +1244,16 @@ if (!defined('WT_WEBTREES')) {
  *
  * Find and print a given individuals information for a pedigree chart
  *
- * @param string $pid      The Gedcom Xref ID of the individual  to print
+ * @param string $pid      The Gedcom Xref ID of the individual to print
  * @param string $currpid
  * @param string $censyear
  *
  * @return void
  */
-function print_pedigree_person_nav2($pid, $currpid, $censyear) {
+function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
 	global $PEDIGREE_FULL_DETAILS;
 	global $TEXT_DIRECTION, $DEFAULT_PEDIGREE_GENERATIONS, $OLD_PGENS, $talloffset, $PEDIGREE_LAYOUT;
 	global $show_full;
-	global $SEARCH_SPIDER;
 	global $spouselinks, $parentlinks, $step_parentlinks, $persons, $person_step, $person_parent;
 	global $natdad, $natmom, $censyear;
 
@@ -1265,19 +1264,14 @@ function print_pedigree_person_nav2($pid, $currpid, $censyear) {
 	if (!isset($talloffset)) $talloffset = $PEDIGREE_LAYOUT;
 
 	$person=WT_Individual::getInstance($pid);
-	if ($pid==false || empty($person)) {
-		$spouselinks  = false;
-		$parentlinks  = false;
-		$step_parentlinks = false;
-	}
 
-	$tmp=array('M'=>'','F'=>'F', 'U'=>'NN');
-	$isF=$tmp[$person->getSex()];
-	$spouselinks = "";
-	$parentlinks = "";
-	$step_parentlinks   = "";
+	$tmp = array('M'=>'','F'=>'F', 'U'=>'NN');
+	$isF = $tmp[$person->getSex()];
+	$spouselinks      = '';
+	$parentlinks      = '';
+	$step_parentlinks = '';
 
-	if ($person->canShowName() && !$SEARCH_SPIDER) {
+	if ($person->canShowName()) {
 		//-- draw a box for the family popup
 
 		if ($TEXT_DIRECTION=="rtl") {
@@ -1296,38 +1290,37 @@ function print_pedigree_person_nav2($pid, $currpid, $censyear) {
 			$step_parentlinks .= "<b>" . WT_I18N::translate('Parents') . "</b> (" .$person->getFullName(). ")<br>";
 		}
 
-		$persons       = "";
-		$person_parent = "";
-		$person_step   = "";
+		$persons       = '';
+		$person_parent = '';
+		$person_step   = '';
 
-		//-- Parent families --------------------------------------
+		// Parent families
 		foreach ($person->getChildFamilies() as $family) {
 			$husb = $family->getHusband();
 			$wife = $family->getWife();
 			$children = $family->getChildren();
-			$num = count($children);
-			$marrdate = $family->getMarriageDate();
 
-			//-- Get Parent Children’s Name, DOB, DOD --------------------------
-			if (isset($children)) {
+			// Get Parent Children’s Name, DOB, DOD
+			$marrdate = $family->getMarriageDate();
+			if ($children) {
 				$chBLDarray = Array();
 				foreach ($children as $child) {
 					$chnam   = $child->getAllNames();
 					$chfulln = rtrim($chnam[0]['givn'],'*')." ".$chnam[0]['surname'];
 					$chfulln = str_replace('"', "", $chfulln); // Must remove quotes completely here
 					$chfulln = str_replace("@N.N.", "(".WT_I18N::translate('unknown').")", $chfulln);
-					$chfulln = str_replace("@P.N.", "(".WT_I18N::translate('unknown').")", $chfulln); // Child’s Full Name
-					$chdob   = ($child->getBirthDate()->minJD()+$child->getBirthDate()->maxJD())/2; // Child’s Date of Birth (Julian)
-					$chdod   = ($child->getDeathDate()->minJD()+$child->getDeathDate()->maxJD())/2; // Child’s Date of Death (Julian)
+					$chfulln = str_replace("@P.N.", "(".WT_I18N::translate('unknown').")", $chfulln);
+					$chdob   = ($child->getBirthDate()->minJD()+$child->getBirthDate()->maxJD())/2;
+					$chdod   = ($child->getDeathDate()->minJD()+$child->getDeathDate()->maxJD())/2;
 					$chBLD   = ($chfulln.", ".$chdob.", ".$chdod);
 					array_push($chBLDarray, $chBLD);
 				}
 			}
 
-			//-- Parent Husband ------------------------------
-			if ($husb || $num>0) {
+			// Parent Husband
+			if ($husb || $children) {
 				if ($husb) {
-					//-- Parent Husbands Parents ----------------------
+					// Parent Husbands Parents
 					$gparent=WT_Individual::getInstance($husb->getXref());
 					$parfams = $gparent->getChildFamilies();
 					foreach ($parfams as $pfamily) {
@@ -1336,8 +1329,9 @@ function print_pedigree_person_nav2($pid, $currpid, $censyear) {
 						if ($phusb) { $pHusbFBP = $phusb->getBirthPlace(); }
 						if ($pwife) { $pHusbMBP = $pwife->getBirthPlace(); }
 					}
-					//-- Parent Husbands Details ----------------------
-					$person_parent="Yes";
+
+					// Parent Husbands Details
+					$person_parent = 'Yes';
 					if ($husb->canShowName()) {
 						$nam   = $husb->getAllNames();
 						$fulln = rtrim($nam[0]['givn'],'*')."&nbsp;".$nam[0]['surname'];
@@ -1392,7 +1386,7 @@ function print_pedigree_person_nav2($pid, $currpid, $censyear) {
 							$parentlinks .= "''";
 						}
 						$parentlinks .= ");\">";
-						$parentlinks .= $husb->getFullName(); // Full Name (Link)
+						$parentlinks .= $husb->getFullName();
 						$parentlinks .= "</a>";
 					} else {
 						$parentlinks .= WT_I18N::translate('Private');
@@ -1401,11 +1395,11 @@ function print_pedigree_person_nav2($pid, $currpid, $censyear) {
 				}
 			}
 
-			//-- Parent Wife ------------------------------
-			if ($wife || $num>0) {
+			// Parent Wife
+			if ($wife || $children) {
 				if ($wife) {
-					//-- Parent Wifes Parents ----------------------
-					$gparent=WT_Individual::getInstance($wife->getXref());
+					// Parent Wifes Parents
+					$gparent = WT_Individual::getInstance($wife->getXref());
 					$parfams = $gparent->getChildFamilies();
 					foreach ($parfams as $pfamily) {
 						$pwhusb = $pfamily->getHusband();
@@ -1413,7 +1407,8 @@ function print_pedigree_person_nav2($pid, $currpid, $censyear) {
 						if ($pwhusb) { $pWifeFBP = $pwhusb->getBirthPlace(); }
 						if ($pwwife) { $pWifeMBP = $pwwife->getBirthPlace(); }
 					}
-					//-- Parent Wifes Details ----------------------
+
+					// Parent Wifes Details
 					$person_parent="Yes";
 					if ($wife->canShowName()) {
 						$nam   = $wife->getAllNames();
@@ -1429,11 +1424,11 @@ function print_pedigree_person_nav2($pid, $currpid, $censyear) {
 
 						$parentlinks .= "<a class=\"linka\" href=\"#\" onclick=\"insertRowToTable(";
 						$parentlinks .= "'".$wife->getXref()."',"; // pid = PID
-						$parentlinks .= "'".WT_Filter::escapeHtml(strip_tags($fulln))."',"; // nam = Name
+						$parentlinks .= "'".WT_Filter::escapeHtml(strip_tags($fulln))."',";
 						if (isset($fulmn)) {
-							$parentlinks .= "'".WT_Filter::escapeHtml(strip_tags($fulmn))."',"; // mnam = Full Married Name
+							$parentlinks .= "'".WT_Filter::escapeHtml(strip_tags($fulmn))."',";
 						} else {
-							$parentlinks .= "'".WT_Filter::escapeHtml(strip_tags($fulln))."',"; // mnam = Full Name
+							$parentlinks .= "'".WT_Filter::escapeHtml(strip_tags($fulln))."',";
 						}
 						if ($currpid=="Wife" || $currpid=="Husband") {
 							$parentlinks .= "'Mother in Law',"; // label = 1st Gen Female Relationship
@@ -1471,25 +1466,24 @@ function print_pedigree_person_nav2($pid, $currpid, $censyear) {
 							$parentlinks .= "''";
 						}
 						$parentlinks .= ");\">";
-						$parentlinks .= $wife->getFullName(); // Full Name (Link)
+						$parentlinks .= $wife->getFullName();
 						$parentlinks .= "</a>";
 					} else {
 						$parentlinks .= WT_I18N::translate('Private');
 					}
-					$natmom = "yes";
+					$natmom = 'yes';
 				}
 			}
 		}
 
-		//-- Step families -----------------------------------------
+		// Step families
 		foreach ($person->getChildStepFamilies() as $family) {
 			$husb = $family->getHusband();
 			$wife = $family->getWife();
 			$children = $family->getChildren();
-			$num = count($children);
 			$marrdate = $family->getMarriageDate();
 
-			//-- Get StepParent’s Children’s Name, DOB, DOD --------------------------
+			// Get StepParent’s Children’s Name, DOB, DOD
 			if (isset($children)) {
 				$chBLDarray = Array();
 				foreach ($children as $child) {
@@ -1497,20 +1491,20 @@ function print_pedigree_person_nav2($pid, $currpid, $censyear) {
 					$chfulln = rtrim($chnam[0]['givn'],'*')." ".$chnam[0]['surname'];
 					$chfulln = str_replace('"', "", $chfulln); // Must remove quotes completely here
 					$chfulln = str_replace("@N.N.", "(".WT_I18N::translate('unknown').")", $chfulln);
-					$chfulln = str_replace("@P.N.", "(".WT_I18N::translate('unknown').")", $chfulln); // Child’s Full Name
-					$chdob   = ($child->getBirthDate()->minJD()+$child->getBirthDate()->maxJD())/2; // Child’s Date of Birth (Julian)
-					$chdod   = ($child->getDeathDate()->minJD()+$child->getDeathDate()->maxJD())/2; // Child’s Date of Death (Julian)
+					$chfulln = str_replace("@P.N.", "(".WT_I18N::translate('unknown').")", $chfulln);
+					$chdob   = ($child->getBirthDate()->minJD()+$child->getBirthDate()->maxJD())/2;
+					$chdod   = ($child->getDeathDate()->minJD()+$child->getDeathDate()->maxJD())/2;
 					$chBLD   = ($chfulln.", ".$chdob.", ".$chdod);
 					array_push($chBLDarray, $chBLD);
 				}
 			}
 
-			//-- Step Husband --------------------------------------
-			if ($natdad == "yes") {
+			// Step Husband
+			if ($natdad == 'yes') {
 			} else {
-				if (($husb || $num>0) && $husb !== $person) {
+				if (($husb || $children) && $husb !== $person) {
 					if ($husb) {
-						//-- Step Husbands Parents -----------------------------
+						// Step Husbands Parents
 						$gparent=WT_Individual::getInstance($husb->getXref());
 						$parfams = $gparent->getChildFamilies();
 						foreach ($parfams as $pfamily) {
@@ -1520,7 +1514,7 @@ function print_pedigree_person_nav2($pid, $currpid, $censyear) {
 							if ($pwife) { $pHusbMBP = $pwife->getBirthPlace(); }
 						}
 						//-- Step Husband Details ------------------------------
-						$person_step="Yes";
+						$person_step = 'Yes';
 						if ($husb->canShowName()) {
 							$nam   = $husb->getAllNames();
 							$fulln = rtrim($nam[0]['givn'],'*')."&nbsp;".$nam[0]['surname'];
@@ -1584,12 +1578,13 @@ function print_pedigree_person_nav2($pid, $currpid, $censyear) {
 				}
 			}
 
-			//-- Step Wife ----------------------------------------
-			if ($natmom == "yes") {
+			// Step Wife
+			if ($natmom == 'yes') {
 			} else {
-				if ($wife || $num>0) {
+				// Wife
+				if ($wife || $children) {
 					if ($wife) {
-						//-- Step Wifes Parents ---------------------------
+						// Step Wifes Parents
 						$gparent=WT_Individual::getInstance($wife->getXref());
 						$parfams = $gparent->getChildFamilies();
 						foreach ($parfams as $pfamily) {
@@ -1598,8 +1593,8 @@ function print_pedigree_person_nav2($pid, $currpid, $censyear) {
 							if ($pwhusb) { $pWifeFBP = $pwhusb->getBirthPlace(); }
 							if ($pwwife) { $pWifeMBP = $pwwife->getBirthPlace(); }
 						}
-						//-- Step Wife Details ------------------------------
-						$person_step="Yes";
+						// Step Wife Details
+						$person_step = 'Yes';
 						if ($wife->canShowName()) {
 							$nam   = $wife->getAllNames();
 							$fulln = rtrim($nam[0]['givn'],'*')."&nbsp;".$nam[0]['surname'];
@@ -1666,15 +1661,14 @@ function print_pedigree_person_nav2($pid, $currpid, $censyear) {
 			}
 		}
 
-		// Spouse Families ------------------------------------------
+		// Spouse Families
 		foreach ($person->getSpouseFamilies() as $family) {
 			$spouse = $family->getSpouse($person);
 			$children = $family->getChildren();
-			$num = count($children);
-			$marrdate = $family->getMarriageDate();
-			$is_wife = $family->getWife();
 
 			//-- Get Spouse’s Children’s Name, DOB, DOD --------------------------
+			$marrdate = $family->getMarriageDate();
+			$is_wife = $family->getWife();
 			if (isset($children)) {
 				$chBLDarray = Array();
 				foreach ($children as $child) {
@@ -1690,11 +1684,11 @@ function print_pedigree_person_nav2($pid, $currpid, $censyear) {
 				}
 			}
 
-			//-- Spouse -----------------------------------------
-			if ($spouse || $num>0) {
+			// Spouse
+			if ($spouse || $children) {
 				if ($spouse) {
 
-					//-- Spouse Parents -----------------------------
+					// Spouse Parents
 					$gparent=WT_Individual::getInstance($spouse->getXref());
 					$spousefams = $gparent->getChildFamilies();
 					foreach ($spousefams as $pfamily) {
@@ -1704,7 +1698,7 @@ function print_pedigree_person_nav2($pid, $currpid, $censyear) {
 						if ($pwife) { $pSpouseMBP = $pwife->getBirthPlace(); }
 					}
 
-					//-- Spouse Details -----------------------------
+					// Spouse Details
 					if ($spouse->canShowName()) {
 						$nam   = $spouse->getAllNames();
 						$fulln = rtrim($nam[0]['givn'],'*')."&nbsp;".$nam[0]['surname'];
@@ -1722,11 +1716,11 @@ function print_pedigree_person_nav2($pid, $currpid, $censyear) {
 
 						$spouselinks .= "<a href=\"#\" onclick=\"insertRowToTable(";
 						$spouselinks .= "'".$spouse->getXref()."',"; // pid = PID
-						$spouselinks .= "'".WT_Filter::escapeHtml(strip_tags($fulln))."',"; // nam = Name
+						$spouselinks .= "'".WT_Filter::escapeHtml(strip_tags($fulln))."',";
 						if (isset($fulmn)) {
-							$spouselinks .= "'".WT_Filter::escapeHtml(strip_tags($fulmn))."',"; // mnam = Full Married Name
+							$spouselinks .= "'".WT_Filter::escapeHtml(strip_tags($fulmn))."',";
 						} else {
-							$spouselinks .= "'".WT_Filter::escapeHtml(strip_tags($fulln))."',"; // mnam = Full Name
+							$spouselinks .= "'".WT_Filter::escapeHtml(strip_tags($fulln))."',";
 						}
 						if ($currpid=="Son" || $currpid=="Daughter") {
 							if ($spouse->getSex()=="M") {
@@ -1744,9 +1738,9 @@ function print_pedigree_person_nav2($pid, $currpid, $censyear) {
 						$spouselinks .= "'".$spouse->getSex()."',"; // sex = Gender
 						$spouselinks .= "''".","; // cond = Condition (Married etc)
 						if ($marrdate) {
-							$spouselinks .= "'".(($marrdate->minJD()+$marrdate->maxJD())/2)."',"; // dom = Date of Marriage (Julian)
+							$spouselinks .= "'".(($marrdate->minJD()+$marrdate->maxJD())/2)."',";
 						}
-						$spouselinks .= "'".(($spouse->getBirthDate()->minJD()+$spouse->getBirthDate()->maxJD())/2)."',"; // dob = Date of Birth
+						$spouselinks .= "'".(($spouse->getBirthDate()->minJD()+$spouse->getBirthDate()->maxJD())/2)."',";
 						if ($spouse->getbirthyear()>=1) {
 							$spouselinks .= "'".($censyear-$spouse->getbirthyear())."',"; // age =  Census Year - Year of Birth
 						} else {
@@ -1772,7 +1766,7 @@ function print_pedigree_person_nav2($pid, $currpid, $censyear) {
 							$spouselinks .= "''";
 						}
 						$spouselinks .= ");\">";
-						$spouselinks .= $spouse->getFullName(); // Full Name (Link)
+						$spouselinks .= $spouse->getFullName(); // Full Name
 						$spouselinks .= "</a>";
 					} else {
 						$spouselinks .= WT_I18N::translate('Private');
@@ -1784,150 +1778,148 @@ function print_pedigree_person_nav2($pid, $currpid, $censyear) {
 				}
 			}
 
-			// Children -------------------------------------
+			// Children
 			$spouselinks .= "<ul class=\"clist\">";
 			foreach ($children as $child) {
-				if ($child) {
-					$persons="Yes";
+				$persons="Yes";
 
-					//-- Childs Parents ---------------------
-					$gparent=WT_Individual::getInstance($child->getXref());
-					foreach ($gparent->getChildFamilies() as $family) {
-						$husb = $family->getHusband();
-						$wife = $family->getWife();
-						if ($husb) { $ChildFBP = $husb->getBirthPlace(); }
-						if ($wife) { $ChildMBP = $wife->getBirthPlace(); }
+				// Child’s Parents
+				$gparent=WT_Individual::getInstance($child->getXref());
+				foreach ($gparent->getChildFamilies() as $family) {
+					$husb = $family->getHusband();
+					$wife = $family->getWife();
+					if ($husb) { $ChildFBP = $husb->getBirthPlace(); }
+					if ($wife) { $ChildMBP = $wife->getBirthPlace(); }
+				}
+
+				// Child’s Children
+				$chBLDarray=Array();
+				foreach ($child->getSpouseFamilies() as $childfamily) {
+					$chchildren = $childfamily->getChildren();
+					foreach ($chchildren as $chchild) {
+						$chnam   = $chchild->getAllNames();
+						$chfulln = rtrim($chnam[0]['givn'],'*')." ".$chnam[0]['surname'];
+						$chfulln = str_replace('"', "", $chfulln); // Must remove quotes completely here
+						$chfulln = str_replace("@N.N.", "(".WT_I18N::translate('unknown').")", $chfulln);
+						$chfulln = str_replace("@P.N.", "(".WT_I18N::translate('unknown').")", $chfulln); // Child’s Full Name
+						$chdob   = ($chchild->getBirthDate()->minJD()+$chchild->getBirthDate()->maxJD())/2; // Child’s Date of Birth (Julian)
+						$chdod   = ($chchild->getDeathDate()->minJD()+$chchild->getDeathDate()->maxJD())/2; // Child’s Date of Death (Julian)
+						$chBLD   = ($chfulln.", ".$chdob.", ".$chdod);
+						array_push($chBLDarray, $chBLD);
 					}
+				}
 
-					// Get Child’s Children
-					$chBLDarray=Array();
-					foreach ($child->getSpouseFamilies() as $childfamily) {
-						$chchildren = $childfamily->getChildren();
-						foreach ($chchildren as $chchild) {
-							$chnam   = $chchild->getAllNames();
-							$chfulln = rtrim($chnam[0]['givn'],'*')." ".$chnam[0]['surname'];
-							$chfulln = str_replace('"', "", $chfulln); // Must remove quotes completely here
-							$chfulln = str_replace("@N.N.", "(".WT_I18N::translate('unknown').")", $chfulln);
-							$chfulln = str_replace("@P.N.", "(".WT_I18N::translate('unknown').")", $chfulln); // Child’s Full Name
-							$chdob   = ($chchild->getBirthDate()->minJD()+$chchild->getBirthDate()->maxJD())/2; // Child’s Date of Birth (Julian)
-							$chdod   = ($chchild->getDeathDate()->minJD()+$chchild->getDeathDate()->maxJD())/2; // Child’s Date of Death (Julian)
-							$chBLD   = ($chfulln.", ".$chdob.", ".$chdod);
-							array_push($chBLDarray, $chBLD);
-						}
+				// Child’s marriage status
+				$marrdate = '';
+				$chhusbnam = null;
+				foreach ($child->getSpouseFamilies() as $childfamily) {
+					$marrdate = $childfamily->getMarriageDate();
+					if ($childfamily->getHusband()) {
+						$chhusbnam = $childfamily->getHusband()->getAllNames();
 					}
+				}
+				// Childs Details -------------------------
+				$spouselinks .= '<li>';
+				if ($child->canShowName()) {
+					$nam   = $child->getAllNames();
+					$fulln = rtrim($nam[0]['givn'],'*')."&nbsp;".$nam[0]['surname'];
+					$fulln = str_replace("@N.N.", "(".WT_I18N::translate('unknown').")", $fulln);
+					$fulln = str_replace("@P.N.", "(".WT_I18N::translate('unknown').")", $fulln);
 
-					// Get Childs marriage status ------------
-					$marrdate="";
-					$chhusbnam=null;
-					foreach ($child->getSpouseFamilies() as $childfamily) {
-						$marrdate=$childfamily->getMarriageDate();
-						if ($childfamily->getHusband()) {
-							$chhusbnam = $childfamily->getHusband()->getAllNames();
-						}
-					}
-					// Childs Details -------------------------
-					$spouselinks .= "<li>";
-					if ($child->canShowName()) {
-						$nam   = $child->getAllNames();
-						$fulln = rtrim($nam[0]['givn'],'*')."&nbsp;".$nam[0]['surname'];
-						$fulln = str_replace("@N.N.", "(".WT_I18N::translate('unknown').")", $fulln);
-						$fulln = str_replace("@P.N.", "(".WT_I18N::translate('unknown').")", $fulln);
-
-						// Get childs married name if available
-						$chfulmn=null;
-						$chnam = $child->getAllNames();
-						if ($chhusbnam[0]['surname']=="@N.N." || $chhusbnam[0]['surname']=="") {
-							// if Husband or his name is not known then use wifes birth name
-							$husbnam = $nam[0]['surname'];
-						} else {
-							$husbnam = $chhusbnam[0]['surname'];
-						}
-						for ($i=0; $i<count($nam); $i++) {
-							if ($chnam[$i]['type']=='_MARNM') {
-								$chfulmn = rtrim($chnam[$i]['givn'],'*')."&nbsp;".$husbnam;
-							}
-						}
-
-						$spouselinks .= "<a href=\"#\" onclick=\"insertRowToTable(";
-						$spouselinks .= "'".$child->getXref()."',"; // pid = PID
-						$spouselinks .= "'".WT_Filter::escapeHtml(strip_tags($fulln))."',"; // nam = Name
-						if (isset($chfulmn)) {
-							$spouselinks .= "'".WT_Filter::escapeHtml(strip_tags($chfulmn))."',"; // mnam = Full Married Name
-						} else {
-							$spouselinks .= "'".WT_Filter::escapeHtml(strip_tags($fulln))."',"; // mnam = Full Name
-						}
-						if ($currpid=="Son" || $currpid=="Daughter") {
-							if ($child->getSex()=="M") {
-								$spouselinks .= "'Grand-Son',"; // label = Male Relationship
-							} else {
-								$spouselinks .= "'Grand-Daughter',"; // label = Female Relationship
-							}
-						} else {
-							if ($child->getSex()=="M") {
-								$spouselinks .= "'Nephew',"; // label = Male Relationship
-							} else {
-								$spouselinks .= "'Niece',"; // label = Female Relationship
-							}
-						}
-						$spouselinks .= "'".$child->getSex()."',"; // sex = Gender
-						$spouselinks .= "''".","; // cond = Condition (Married etc)
-						if ($marrdate) {
-							$spouselinks .= "'".(($marrdate->minJD()+$marrdate->maxJD())/2)."',"; // dom = Date of Marriage (Julian)
-						} else {
-							$spouselinks .= "'nm'".",";
-						}
-						$spouselinks .= "'".(($child->getBirthDate()->minJD()+$child->getBirthDate()->maxJD())/2)."',"; // dob = Date of Birth
-						if ($child->getbirthyear()>=1) {
-							$spouselinks .= "'".($censyear-$child->getbirthyear())."',"; // age =  Census Year - Year of Birth
-						} else {
-							$spouselinks .= "''".","; // age =  Undefined
-						}
-						$spouselinks .= "'".(($child->getDeathDate()->minJD()+$child->getDeathDate()->maxJD())/2)."',"; // dod = Date of Death
-						$spouselinks .= "''".","; // occu  = Occupation
-						$spouselinks .= "'".WT_Filter::escapeHtml($child->getBirthPlace())."'".","; // birthpl = Individuals Birthplace
-						if (isset($ChildFBP)) {
-							$spouselinks .= "'".WT_Filter::escapeHtml($ChildFBP)."'".","; // fbirthpl = Fathers Birthplace
-						} else {
-							$spouselinks .= "'UNK, UNK, UNK, UNK'".","; // fbirthpl = Fathers Birthplace Not Known
-						}
-						if (isset($ChildMBP)) {
-							$spouselinks .= "'".WT_Filter::escapeHtml($ChildMBP)."'".","; // mbirthpl = Mothers Birthplace
-						} else {
-							$spouselinks .= "'UNK, UNK, UNK, UNK'".","; // mbirthpl = Mothers Birthplace Not Known
-						}
-						if (isset($chBLDarray) && $child->getSex()=="F") {
-							$chBLDarray = implode("::", $chBLDarray);
-							$spouselinks .= "'".$chBLDarray."'"; // Array of Children (name, birthdate, deathdate)
-						} else {
-							$spouselinks .= "''";
-						}
-						$spouselinks .= ");\">";
-						$spouselinks .= $child->getFullName(); // Full Name (Link)
-						$spouselinks .= "</a>";
-						$spouselinks .= "</li>";
+					// Get childs married name if available
+					$chfulmn=null;
+					$chnam = $child->getAllNames();
+					if ($chhusbnam[0]['surname']=="@N.N." || $chhusbnam[0]['surname']=="") {
+						// if Husband or his name is not known then use wifes birth name
+						$husbnam = $nam[0]['surname'];
 					} else {
-						$spouselinks .= WT_I18N::translate('Private');
+						$husbnam = $chhusbnam[0]['surname'];
 					}
+					for ($i=0; $i<count($nam); $i++) {
+						if ($chnam[$i]['type']=='_MARNM') {
+							$chfulmn = rtrim($chnam[$i]['givn'],'*')."&nbsp;".$husbnam;
+						}
+					}
+
+					$spouselinks .= "<a href=\"#\" onclick=\"insertRowToTable(";
+					$spouselinks .= "'".$child->getXref()."',";
+					$spouselinks .= "'".WT_Filter::escapeHtml(strip_tags($fulln))."',"; // nam = Name
+					if (isset($chfulmn)) {
+						$spouselinks .= "'".WT_Filter::escapeHtml(strip_tags($chfulmn))."',"; // mnam = Full Married Name
+					} else {
+						$spouselinks .= "'".WT_Filter::escapeHtml(strip_tags($fulln))."',"; // mnam = Full Name
+					}
+					if ($currpid=="Son" || $currpid=="Daughter") {
+						if ($child->getSex()=="M") {
+							$spouselinks .= "'Grand-Son',"; // label = Male Relationship
+						} else {
+							$spouselinks .= "'Grand-Daughter',"; // label = Female Relationship
+						}
+					} else {
+						if ($child->getSex()=="M") {
+							$spouselinks .= "'Nephew',"; // label = Male Relationship
+						} else {
+							$spouselinks .= "'Niece',"; // label = Female Relationship
+						}
+					}
+					$spouselinks .= "'".$child->getSex()."',"; // sex = Gender
+					$spouselinks .= "''".","; // cond = Condition (Married etc)
+					if ($marrdate) {
+						$spouselinks .= "'".(($marrdate->minJD()+$marrdate->maxJD())/2)."',"; // dom = Date of Marriage (Julian)
+					} else {
+						$spouselinks .= "'nm'".",";
+					}
+					$spouselinks .= "'".(($child->getBirthDate()->minJD()+$child->getBirthDate()->maxJD())/2)."',"; // dob = Date of Birth
+					if ($child->getbirthyear()>=1) {
+						$spouselinks .= "'".($censyear-$child->getbirthyear())."',"; // age =  Census Year - Year of Birth
+					} else {
+						$spouselinks .= "''".","; // age =  Undefined
+					}
+					$spouselinks .= "'".(($child->getDeathDate()->minJD()+$child->getDeathDate()->maxJD())/2)."',"; // dod = Date of Death
+					$spouselinks .= "''".","; // occu  = Occupation
+					$spouselinks .= "'".WT_Filter::escapeHtml($child->getBirthPlace())."'".","; // birthpl = Individuals Birthplace
+					if (isset($ChildFBP)) {
+						$spouselinks .= "'".WT_Filter::escapeHtml($ChildFBP)."'".","; // fbirthpl = Fathers Birthplace
+					} else {
+						$spouselinks .= "'UNK, UNK, UNK, UNK'".","; // fbirthpl = Fathers Birthplace Not Known
+					}
+					if (isset($ChildMBP)) {
+						$spouselinks .= "'".WT_Filter::escapeHtml($ChildMBP)."'".","; // mbirthpl = Mothers Birthplace
+					} else {
+						$spouselinks .= "'UNK, UNK, UNK, UNK'".","; // mbirthpl = Mothers Birthplace Not Known
+					}
+					if (isset($chBLDarray) && $child->getSex()=="F") {
+						$chBLDarray = implode("::", $chBLDarray);
+						$spouselinks .= "'".$chBLDarray."'"; // Array of Children (name, birthdate, deathdate)
+					} else {
+						$spouselinks .= "''";
+					}
+					$spouselinks .= ");\">";
+					$spouselinks .= $child->getFullName();
+					$spouselinks .= "</a>";
+					$spouselinks .= "</li>";
+				} else {
+					$spouselinks .= WT_I18N::translate('Private');
 				}
 			}
 			$spouselinks .= "</ul>";
 		}
-		if ($persons != "Yes") {
-			$spouselinks  .= "(" . WT_I18N::translate('none') . ")</td></tr></table>";
+		if ($persons != 'Yes') {
+			$spouselinks  .= '(' . WT_I18N::translate('none') . ')</td></tr></table>';
 		} else {
-			$spouselinks  .= "</td></tr></table>";
+			$spouselinks  .= '</td></tr></table>';
 		}
 
-		if ($person_parent != "Yes") {
-			$parentlinks .= "(" . WT_I18N::translate_c('unknown family', 'unknown') . ")</td></tr></table>";
+		if ($person_parent != 'Yes') {
+			$parentlinks .= '(' . WT_I18N::translate_c('unknown family', 'unknown') . ')</td></tr></table>';
 		} else {
-			$parentlinks .= "</td></tr></table>";
+			$parentlinks .= '</td></tr></table>';
 		}
 
-		if ($person_step != "Yes") {
-			$step_parentlinks .= "(" . WT_I18N::translate_c('unknown family', 'unknown') . ")</td></tr></table>";
+		if ($person_step != 'Yes') {
+			$step_parentlinks .= '(' . WT_I18N::translate_c('unknown family', 'unknown') . ')</td></tr></table>';
 		} else {
-			$step_parentlinks .= "</td></tr></table>";
+			$step_parentlinks .= '</td></tr></table>';
 		}
 	}
 }
