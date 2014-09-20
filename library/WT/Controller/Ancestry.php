@@ -106,11 +106,11 @@ class WT_Controller_Ancestry extends WT_Controller_Chart {
 			echo '<img src="', $WT_IMAGES['spacer'], '" height="3" width="2" alt="">';
 			echo '<img src="', $WT_IMAGES['hline'], '" height="3" width="', ($Dindent-2), '" alt=""></td><td>';
 		}
-		print_pedigree_person($person, 1);
+		print_pedigree_person($person);
 		echo '</td>';
 		echo '<td>';
 		if ($sosa>1) {
-			print_url_arrow($pid, '?rootid='.$pid.'&amp;PEDIGREE_GENERATIONS='.$OLD_PGENS.'&amp;show_full='.$this->show_full.'&amp;box_width='.$box_width.'&amp;chart_style='.$this->chart_style.'&amp;ged='.WT_GEDURL, $label, 3);
+			print_url_arrow('?rootid='.$pid.'&amp;PEDIGREE_GENERATIONS='.$OLD_PGENS.'&amp;show_full='.$this->show_full.'&amp;box_width='.$box_width.'&amp;chart_style='.$this->chart_style.'&amp;ged='.WT_GEDURL, $label, 3);
 		}
 		echo '</td>';
 		echo '<td class="details1">&nbsp;<span dir="ltr" class="person_box'. (($sosa==1)?'NN':(($sosa%2)?'F':'')) . '">&nbsp;', $sosa, '&nbsp;</span>&nbsp;';

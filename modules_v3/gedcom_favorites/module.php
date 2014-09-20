@@ -141,7 +141,7 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 							$content .= '">';
 							if ($ctype=="user" || WT_USER_GEDCOM_ADMIN) $content .= $removeFavourite;
 							ob_start();
-							print_pedigree_person($record, $style, 1, $key);
+							print_pedigree_person($record, $style);
 							$content .= ob_get_clean();
 							$content .= $favorite['note'];
 							$content .= '</div>';

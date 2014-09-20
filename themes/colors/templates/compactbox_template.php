@@ -2,8 +2,7 @@
 // Template for drawing person boxes
 // This template expects that the following variables will be set
 //  $pid, $boxID, $icons, $GEDCOM, $style,
-// $name, $classfacts, $genderImage, $BirthDeath, $isF, $outBoxAdd,
-// $addname, $showid, $float
+// $name, $outBoxAdd, $addname
 //
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
@@ -30,27 +29,17 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-echo '<div id="out-', $boxID ,'" ', $outBoxAdd, '>
+echo
+'<div data-pid="'. $pid . '"' , $outBoxAdd, '>
 	<div class="compact_view">',
 		$thumbnail,
-		'<a onclick="event.cancelBubble=true;" href="individual.php?pid=', $pid, '&amp;ged=', rawurlencode($GEDCOM), '" title="',strip_tags($name.$addname),'">
-			<span id="namedef-',$boxID, '" class="name',$style,' ',$classfacts,'">', $shortname, '</span>
+		'<a href="individual.php?pid=', $pid, '&amp;ged=', rawurlencode($GEDCOM), '" title="',strip_tags($name.$addname),'">
+			<span class="namedef name',$style,'">', $shortname, '</span>
 		</a>
-		<p>', $person->getLifeSpan(), '</p>
-		<p>', $birthplace, '</p>
-	</div>';
-	//	details for zoom view
-		echo '<div id="fontdef-',$boxID,'" class="details',$style,'" style="display:none;">
-			<br><hr>
-				<a onclick="event.cancelBubble=true;" href="individual.php?pid=', $pid, '&amp;ged=', rawurlencode($GEDCOM), '">',
-					'<span id="namedef-',$boxID, '.2" class="name',$style,' ',$classfacts,'">', $name.$addname, '</span>
-					<span class="name',$style,'">',$genderImage,'</span>
-				</a>',
-			$BirthDeath,
-		'</div>
-		<div id="inout-',$boxID,'" style="display:none;">
-			<div id="LOADING-inout-',$boxID,'">',WT_I18N::translate('Loading…'),'</div>
-		</div>';
-	// end of zoom view
-echo '</div>';
+	</div>
+	<div class="inout2 details',$style,'">',
+		$person->getLifeSpan(), '
+	</div>
+	<div class="inout"></div>
+</div>';
 
