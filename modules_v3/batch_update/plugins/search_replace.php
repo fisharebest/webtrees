@@ -69,11 +69,10 @@ class search_replace_bu_plugin extends base_plugin {
 			break;
 		case 'regex':
 			$this->regex=$this->search;
-			// Check for invalid regexes
-			// If the regex is bad, $ct will be left at -1
-			$ct=-1;
-			$ct=@preg_match('/'.$this->search.'/', '');
-			if ($ct==-1) {
+			// Check for invalid regular expressions.
+			// A valid regex on a null string returns zero.
+			// An invalid regex on a null string returns false (and throws a warning).
+			if (@preg_match('/'.$this->search.'/', null) === false) {
 				$this->error='<br><span class="error">'.WT_I18N::translate('The regex appears to contain an error.  It can’t be used.').'</span>';
 			}
 			break;
