@@ -1977,9 +1977,7 @@ function print_events_list($startjd, $endjd, $events='BIRT MARR DEAT', $only_liv
 	// Now we've filtered the list, we can sort by event, if required
 	switch ($sort_by) {
 	case 'anniv':
-		uasort($filtered_events, function($x, $y) {
-			return WT_Date::compare($y->getDate(), $x->getDate()); // most recent first
-		});
+		// Data is already sorted by anniversary date
 		break;
 	case 'alpha':
 		uasort($filtered_events, function($x, $y) {
