@@ -27,7 +27,7 @@ require WT_ROOT.'includes/functions/functions_edit.php';
 $controller=new WT_Controller_Page();
 $controller
 	->restrictAccess(Auth::isAdmin())
-	->setPageTitle(WT_I18N::translate('Module administration'))
+	->setPageTitle(WT_I18N::translate('Module administration') . ' — ' . WT_I18N::translate('Reports'))
 	->pageHeader();
 
 $modules=WT_Module::getActiveReports(WT_GED_ID, WT_PRIV_HIDE);
@@ -46,8 +46,10 @@ if ($action=='update_mods' && WT_Filter::checkCsrf()) {
 }
 
 ?>
+<h2><?php echo $controller->getPageTitle(); ?></h2>
+
 <div id="reports" align="center">
-	<form method="post" action="<?php echo WT_SCRIPT_NAME; ?>">
+	<form method="post">
 		<input type="hidden" name="action" value="update_mods">
 		<?php echo WT_Filter::getCsrf(); ?>
 		<table id="reports_table" class="modules_table">
