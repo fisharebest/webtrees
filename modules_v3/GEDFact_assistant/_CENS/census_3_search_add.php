@@ -86,7 +86,6 @@ if (!defined('WT_WEBTREES')) {
 					//-- Parents Family ---------------------------------------------------
 
 					//-- Build Parents Family --------------------------------------
-					$personcount=0;
 					$families = $person->getChildFamilies();
 					foreach ($families as $family) {
 						$marrdate = $family->getMarriageDate();
