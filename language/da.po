@@ -15319,8 +15319,7 @@ msgstr "Brug af vandmærker er valgfrie og normalt kun vist til besøgende"
 
 #: help_text.php:1029
 msgid "Watermarks can be slow to generate for large images.  Busy sites may prefer to generate them once and store the watermarked image on the server."
-msgstr "Vandmærker kan være længe om at blive dannet på store billeder.
-På ofte besøgte sider kan det anbefales at generere dem én gang og gemme vandmærket på serveren"
+msgstr "Vandmærker kan være længe om at blive dannet på store billeder.  På ofte besøgte sider kan det anbefales at generere dem én gang og gemme vandmærket på serveren"
 
 #: login.php:379
 #, php-format
