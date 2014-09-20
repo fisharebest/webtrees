@@ -4783,19 +4783,19 @@ a.icon-uarrow:hover {
 /* Silhouettes on charts */
 .icon-silhouette-F {
 	width: 37px;
-	height: 50px;
+	height: 45px;
 	background-image: url(../images/silhouette_female_small.png);
 }
 
 .icon-silhouette-M {
 	width: 37px;
-	height: 50px;
+	height: 45px;
 	background-image: url(../images/silhouette_male_small.png);
 }
 
 .icon-silhouette-U {
 	width: 37px;
-	height: 50px;
+	height: 45px;
 	background-image: url(../images/silhouette_unknown_small.png);
 }
 
