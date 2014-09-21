@@ -23,7 +23,6 @@
 
 class WT_Family extends WT_GedcomRecord {
 	const RECORD_TYPE = 'FAM';
-	const SQL_FETCH   = "SELECT f_gedcom FROM `##families` WHERE f_id=? AND f_file=?";
 	const URL_PREFIX  = 'family.php?famid=';
 
 	private $husb = null;

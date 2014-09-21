@@ -153,7 +153,7 @@ case 1:
 	echo '<div id="ancestry_chart">';
 	// Booklet
 	// first page : show indi facts
-	print_pedigree_person($controller->root, 1, 1);
+	print_pedigree_person($controller->root);
 	// process the tree
 	$treeid=ancestry_array($controller->root->getXref(), $PEDIGREE_GENERATIONS-1);
 	foreach ($treeid as $i=>$pid) {

@@ -247,10 +247,11 @@ function spanLTRRTL($inputText, $direction='BOTH', $class='') {
 							break 2;
 						}
 
-						if ($nextLetter == ' ') break;
+						if ($nextLetter == ' ') {
+							break;
+						}
 						$nextLetter .= substr($tempText."\n", 0, 5);
 						if ($nextLetter == '&nbsp;') {
-							$tempText = substr($tempText, 5);
 							break;
 						}
 					}
@@ -336,7 +337,6 @@ function spanLTRRTL($inputText, $direction='BOTH', $class='') {
 
 	// We're done.  Finish last <span> if necessary
 	if ($numberState) {
-		$numberState = false;
 		if ($waitingText == '') {
 			if ($currentState == 'RTL') {
 				$result .= WT_UTF8_PDF;
@@ -479,6 +479,7 @@ function spanLTRRTL($inputText, $direction='BOTH', $class='') {
 		break;
 	}
 	$result = str_replace(array($startLTR, $endLTR, $startRTL, $endRTL), array($sLTR, $eLTR, $sRTL, $eRTL), $result);
+
 	return $result;
 }
 
@@ -739,7 +740,6 @@ function finishCurrentSpan(&$result, $theEnd=false) {
 			$textSpan = $savedSpan;
 		}
 
-		$savedSpan = $textSpan;
 		$trailingBlanks = '';
 		$trailingPunctuation = '';
 		$trailingID = '';
@@ -795,7 +795,6 @@ function finishCurrentSpan(&$result, $theEnd=false) {
 			}
 
 			// Look for " - " or blank preceding the ID number and remove it for inclusion in a separate LTR span
-			$savedSpan = $textSpan;
 			if ($trailingID != '') {
 				while ($textSpan != '') {
 					if (substr($textSpan, -1) == ' ') {

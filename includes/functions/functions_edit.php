@@ -133,9 +133,9 @@ function radio_buttons($name, $values, $selected) {
 }
 
 // Print an edit control for a Yes/No field
-function edit_field_yes_no($name, $selected=false, $extra='') {
+function edit_field_yes_no($name, $selected=false) {
 	return radio_buttons(
-		$name, array(false=>WT_I18N::translate('no'), true=>WT_I18N::translate('yes')), $selected, $extra
+		$name, array(false=>WT_I18N::translate('no'), true=>WT_I18N::translate('yes')), $selected
 	);
 }
 

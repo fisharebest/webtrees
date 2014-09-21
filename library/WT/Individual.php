@@ -25,7 +25,6 @@ use Fisharebest\ExtCalendar\GregorianCalendar;
 
 class WT_Individual extends WT_GedcomRecord {
 	const RECORD_TYPE = 'INDI';
-	const SQL_FETCH   = "SELECT i_gedcom FROM `##individuals` WHERE i_id=? AND i_file=?";
 	const URL_PREFIX  = 'individual.php?pid=';
 
 	var $generation; // used in some lists to keep track of this individual’s generation in that list

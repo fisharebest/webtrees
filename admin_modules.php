@@ -47,8 +47,9 @@ case 'update_mods':
 			}
 		}
 	}
-	header('Location: admin_modules.php');
-	break;
+
+	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'admin_modules.php');
+	exit;
 }
 
 switch (WT_Filter::get('action')) {
@@ -72,7 +73,9 @@ case 'delete_module':
 	WT_DB::prepare("DELETE FROM `##module`         WHERE module_name=?")->execute(array($module_name));
 	unset($modules[$module_name]);
 	unset($module_status[$module_name]);
-	break;
+
+	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'admin_modules.php');
+	exit;
 }
 
 $controller

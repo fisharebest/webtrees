@@ -114,23 +114,14 @@ class WT_Report_PDF_TextBox extends WT_Report_Base_TextBox {
 		$this->elements = $newelements;
 		unset($footnote_element, $lastelement, $links, $newelements);
 
-		/**
-		 * Use these variables to update/manipulate values
-		 * Repeted classes would reupdate all their class variables again, Header/Page Header/Footer
-		 * This is the bugfree version
-		 */
-		$cH = 0; // Class Height
-		$cW = 0; // Class Width
-		$cX = 0; // Class Left
-		$cY = 0; // Class Top
 		// Used with line breaks and cell height calculation within this box
 		$pdf->largestFontHeight = 0;
 
 		// If current position (left)
 		if ($this->left == ".") {
 			$cX = $pdf->GetX();
-		} // For static position add margin (returns and updates X)
-		else {
+		} else {
+			// For static position add margin (returns and updates X)
 			$cX = $pdf->addMarginX($this->left);
 		}
 

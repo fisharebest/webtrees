@@ -170,15 +170,22 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 		return '';
 	}
 
-	// Extra facts to be shown on this tabparent
-	private static function spouse_facts(WT_Individual $person, WT_Individual $spouse) {
-		global $controller, $SHOW_RELATIVES_EVENTS;
+	/**
+	 * Spouse facts that are shown on an individual’s page.
+	 *
+	 * @param WT_Individual $individual Show events that occured during the lifetime of this individual
+	 * @param WT_Individual $spouse     Show events of this individual
+	 *
+	 * @return WT_Fact[]
+	 */
+	private static function spouse_facts(WT_Individual $individual, WT_Individual $spouse) {
+		global $SHOW_RELATIVES_EVENTS;
 
 		$facts = array();
 		if (strstr($SHOW_RELATIVES_EVENTS, '_DEAT_SPOU')) {
 			// Only include events between birth and death
-			$birt_date = $controller->record->getEstimatedBirthDate();
-			$deat_date = $controller->record->getEstimatedDeathDate();
+			$birt_date = $individual->getEstimatedBirthDate();
+			$deat_date = $individual->getEstimatedDeathDate();
 
 			foreach ($spouse->getFacts(WT_EVENTS_DEAT) as $fact) {
 
@@ -267,7 +274,6 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 			if (strpos($SHOW_RELATIVES_EVENTS, '_DEAT'.str_replace('_HSIB', '_SIBL', $option))!==false) {
 				foreach ($child->getFacts(WT_EVENTS_DEAT) as $fact) {
 					$sgdate=$fact->getDate();
-					$srec = $fact->getGedcom();
 					if ($sgdate->isOK() && WT_Date::Compare($birt_date, $sgdate)<=0 && WT_Date::Compare($sgdate, $deat_date)<=0) {
 						if ($option=='_GCHI' && $relation=='dau') {
 							// Convert the event to a close relatives event.

@@ -112,16 +112,8 @@ class WT_Report_HTML_TextBox extends WT_Report_Base_TextBox {
 		$this->elements = $newelements;
 		unset($footnote_element, $lastelement, $links, $newelements);
 
-		/**
-		 * Use these variables to update/manipulate values
-		 * Repeted classes would reupdate all their class variables again, Header/Page Header/Footer
-		 * This is the bugfree version
-		 */
-		$cH = 0; // Class Height
-		$cX = 0; // Class Left
-		// Protect height, width, lastheight from padding
 		$cP = 0; // Class Padding
-		$cW = 0; // Class Width
+
 		// Used with line breaks and cell height calculation within this box only
 		$html->largestFontHeight = 0;
 

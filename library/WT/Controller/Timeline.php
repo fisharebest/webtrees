@@ -72,7 +72,7 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 		$this->pids = $newpids;
 		$this->pidlinks = "";
 
-		foreach ($this->people as $p => $indi) {
+		foreach ($this->people as $indi) {
 			if (!is_null($indi) && $indi->canShow()) {
 				// setup string of valid pids for links
 				$this->pidlinks .= "pids%5B%5D=" . $indi->getXref() . "&amp;";
@@ -87,7 +87,6 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 				$facts = $indi->getFacts();
 				foreach ($indi->getSpouseFamilies() as $family) {
 					foreach ($family->getFacts() as $fact) {
-						$fact->spouse = $family->getSpouse($indi);
 						$facts[] = $fact;
 					}
 				}
@@ -105,9 +104,8 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 							if (!$indi->isDead()) {
 								$this->topyear = max($this->topyear, date('Y'));
 							}
-							$event->temp = $p;
+
 							// do not add the same fact twice (prevents marriages from being added multiple times)
-							// TODO - this code does not work.  If both spouses are shown, their marriage is duplicated...
 							if (!in_array($event, $this->indifacts, true)) {
 								$this->indifacts[] = $event;
 							}
@@ -156,6 +154,8 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 	function print_time_fact(WT_Fact $event) {
 		global $basexoffset, $baseyoffset, $factcount, $TEXT_DIRECTION, $WT_IMAGES, $placements;
 
+		static $col = 0;
+
 		$desc = $event->getValue();
 		// check if this is a family fact
 		$gdate = $event->getDate();
@@ -190,12 +190,14 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 		echo "<div id=\"fact$factcount\" style=\"position:absolute; " . ($TEXT_DIRECTION == "ltr" ? "left: " . ($xoffset) : "right: " . ($xoffset)) . "px; top:" . ($yoffset) . "px; font-size: 8pt; height: " . ($this->bheight) . "px;\" onmousedown=\"factMouseDown(this, '" . $factcount . "', " . ($yoffset - $tyoffset) . ");\">";
 		echo "<table cellspacing=\"0\" cellpadding=\"0\" border=\"0\" style=\"cursor: hand;\"><tr><td>";
 		echo "<img src=\"" . $WT_IMAGES["hline"] . "\" name=\"boxline$factcount\" id=\"boxline$factcount\" height=\"3\" align=\"left\" width=\"10\" alt=\"\" style=\"padding-";
-		if ($TEXT_DIRECTION == "ltr")
-			echo "left";
-		else echo "right";
-		echo ": 3px;\">";
-		$col = $event->temp % 6;
-		echo "</td><td valign=\"top\" class=\"person" . $col . "\">";
+		if ($TEXT_DIRECTION == 'ltr') {
+			echo 'left: 3px;">';
+		} else {
+			echo 'right: 3px;">';
+		}
+
+		$col = $col++ % 6;
+		echo '</td><td valign="top" class="person' . $col . '">';
 		if (count($this->pids) > 6) {
 			echo $event->getParent()->getFullName() . ' — ';
 		}
@@ -228,50 +230,35 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 		if (!$event->getPlace()->isEmpty()) {
 			echo ' — ' . $event->getPlace()->getShortName();
 		}
-		// print spouse name for marriage events
-		if (isset($event->spouse)) {
-			$spouse = $event->spouse;
-		} else {
-			$spouse = null;
+		// Print spouses names for family events
+		if ($event->getParent() instanceof WT_Family) {
+			echo ' — <a href="', $event->getParent()->getHtmlUrl(), '">', $event->getParent()->getFullName(), '</a>';
 		}
-		if ($spouse) {
-			for ($p = 0; $p < count($this->pids); $p++) {
-				if ($this->pids[$p] == $spouse->getXref())
-					break;
-			}
-			if ($p == count($this->pids))
-				$p = $event->temp;
-			if ($spouse->getXref() != $this->pids[$p]) {
-				echo ' <a href="', $spouse->getHtmlUrl(), '">', $spouse->getFullName(), '</a>';
-			} else {
-				echo ' <a href="', $event->getParent()->getHtmlUrl(), '">', $event->getParent()->getFullName(), '</a>';
-			}
-		}
-		echo "</td></tr></table>";
-		echo "</div>";
+		echo '</td></tr></table>';
+		echo '</div>';
 		if ($TEXT_DIRECTION == 'ltr') {
-			$img = "dline2";
-			$ypos = "0%";
+			$img = 'dline2';
+			$ypos = '0%';
 		} else {
-			$img = "dline";
-			$ypos = "100%";
+			$img = 'dline';
+			$ypos = '100%';
 		}
 		$dyoffset = ($yoffset - $tyoffset) + $this->bheight / 3;
 		if ($tyoffset < 0) {
 			$dyoffset = $yoffset + $this->bheight / 3;
 			if ($TEXT_DIRECTION == 'ltr') {
-				$img = "dline";
-				$ypos = "100%";
+				$img = 'dline';
+				$ypos = '100%';
 			} else {
-				$img = "dline2";
-				$ypos = "0%";
+				$img = 'dline2';
+				$ypos = '0%';
 			}
 		}
-		// print the diagnal line
-		echo "<div id=\"dbox$factcount\" style=\"position:absolute; " . ($TEXT_DIRECTION == "ltr" ? "left: " . ($basexoffset + 25) : "right: " . ($basexoffset + 25)) . "px; top:" . ($dyoffset) . "px; font-size: 8pt; height: " . (abs($tyoffset)) . "px; width: " . (abs($tyoffset)) . "px;";
-		echo " background-image: url('" . $WT_IMAGES[$img] . "');";
-		echo " background-position: 0% $ypos;\">";
-		echo "</div>";
+		// Print the diagonal line
+		echo '<div id="dbox' . $factcount . '" style="position:absolute; ' . ($TEXT_DIRECTION == 'ltr' ? 'left: ' . ($basexoffset + 25) : 'right: ' . ($basexoffset + 25)) . 'px; top:' . ($dyoffset) . 'px; font-size: 8pt; height: ' . abs($tyoffset) . 'px; width: ' . abs($tyoffset) . 'px;';
+		echo ' background-image: url(\'' . $WT_IMAGES[$img] . '\');';
+		echo ' background-position: 0% ' . $ypos . ';">';
+		echo '</div>';
 	}
 
 	public function getSignificantIndividual() {

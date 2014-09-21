@@ -23,7 +23,6 @@
 
 class WT_Source extends WT_GedcomRecord {
 	const RECORD_TYPE = 'SOUR';
-	const SQL_FETCH   = "SELECT s_gedcom FROM `##sources` WHERE s_id=? AND s_file=?";
 	const URL_PREFIX  = 'source.php?sid=';
 
 	// Implement source-specific privacy logic

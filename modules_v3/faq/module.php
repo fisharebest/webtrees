@@ -257,14 +257,16 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 			->pageHeader();
 
 		$faqs=WT_DB::prepare(
-			"SELECT block_id, bs1.setting_value AS header, bs2.setting_value AS body".
-			" FROM `##block` b".
-			" JOIN `##block_setting` bs1 USING (block_id)".
-			" JOIN `##block_setting` bs2 USING (block_id)".
-			" WHERE module_name=?".
-			" AND bs1.setting_name='header'".
-			" AND bs2.setting_name='faqbody'".
-			" AND IFNULL(gedcom_id, ?)=?".
+			"SELECT block_id, bs1.setting_value AS header, bs2.setting_value AS body, bs3.setting_value AS languages" .
+			" FROM `##block` b" .
+			" JOIN `##block_setting` bs1 USING (block_id)" .
+			" JOIN `##block_setting` bs2 USING (block_id)" .
+			" JOIN `##block_setting` bs3 USING (block_id)" .
+			" WHERE module_name=?" .
+			" AND bs1.setting_name='header'" .
+			" AND bs2.setting_name='faqbody'" .
+			" AND bs3.setting_name='languages'" .
+			" AND IFNULL(gedcom_id, ?)=?" .
 			" ORDER BY block_order"
 		)->execute(array($this->getName(), WT_GED_ID, WT_GED_ID))->fetchAll();
 
@@ -278,15 +280,11 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 				'</div>';
 			}
 		echo '</div>';
-		//Start the table to contain the list of headers
 		$row_count = 0;
 		echo '<table class="faq">';
 		// List of titles
 		foreach ($faqs as $id => $faq) {
-			$header   =get_block_setting($faq->block_id, 'header');
-			$faqbody  =get_block_setting($faq->block_id, 'faqbody');
-			$languages=get_block_setting($faq->block_id, 'languages');
-			if (!$languages || in_array(WT_LOCALE, explode(',', $languages))) {
+			if (!$faq->languages || in_array(WT_LOCALE, explode(',', $faq->languages))) {
 				$row_color = ($row_count % 2) ? 'odd' : 'even';
 				// NOTE: Print the header of the current item
 				echo '<tr class="', $row_color, '"><td style="padding: 5px;">';
@@ -298,17 +296,13 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 		echo '</table><hr>';
 		// Detailed entries
 		foreach ($faqs as $id => $faq) {
-			$header   =get_block_setting($faq->block_id, 'header');
-			$faqbody  =get_block_setting($faq->block_id, 'faqbody');
-			$languages=get_block_setting($faq->block_id, 'languages');
-			if (!$languages || in_array(WT_LOCALE, explode(',', $languages))) {
-				// NOTE: Print the body text of the current item, with its header
+			if (!$faq->languages || in_array(WT_LOCALE, explode(',', $faq->languages))) {
 				echo '<div class="faq_title" id="faq', $id, '">', $faq->header;
 				echo '<div class="faq_top faq_italic">';
 				echo '<a href="#body">', WT_I18N::translate('back to top'), '</a>';
 				echo '</div>';
 				echo '</div>';
-				echo '<div class="faq_body">', substr($faqbody, 0, 1)=='<' ? $faqbody : nl2br($faqbody, false), '</div>';
+				echo '<div class="faq_body">', substr($faq->body, 0, 1)=='<' ? $faq->body : nl2br($faq->body, false), '</div>';
 				echo '<hr>';
 			}
 		}
@@ -323,14 +317,14 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 			->pageHeader();
 
 		$faqs=WT_DB::prepare(
-			"SELECT block_id, block_order, gedcom_id, bs1.setting_value AS header, bs2.setting_value AS faqbody".
-			" FROM `##block` b".
-			" JOIN `##block_setting` bs1 USING (block_id)".
-			" JOIN `##block_setting` bs2 USING (block_id)".
-			" WHERE module_name=?".
-			" AND bs1.setting_name='header'".
-			" AND bs2.setting_name='faqbody'".
-			" AND IFNULL(gedcom_id, ?)=?".
+			"SELECT block_id, block_order, gedcom_id, bs1.setting_value AS header, bs2.setting_value AS faqbody" .
+			" FROM `##block` b" .
+			" JOIN `##block_setting` bs1 USING (block_id)" .
+			" JOIN `##block_setting` bs2 USING (block_id)" .
+			" WHERE module_name = ?" .
+			" AND bs1.setting_name = 'header'" .
+			" AND bs2.setting_name = 'faqbody'" .
+			" AND IFNULL(gedcom_id, ?) = ?" .
 			" ORDER BY block_order"
 		)->execute(array($this->getName(), WT_GED_ID, WT_GED_ID))->fetchAll();
 

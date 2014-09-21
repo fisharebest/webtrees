@@ -63,7 +63,7 @@ class WT_DBStatement {
 		$this->pdo_statement->execute($bind_variables);
 		$end = microtime(true);
 		// If it was a SELECT statement, we cannot run it again.
-		$this->executed = preg_match('/^SELECT /i', $this->pdo_statement->queryString);
+		$this->executed = strpos($this->pdo_statement->queryString, 'SELECT') === 0;
 
 		WT_DB::logQuery($this->pdo_statement->queryString, $this->pdo_statement->rowCount(), $end - $start, $bind_variables);
 
