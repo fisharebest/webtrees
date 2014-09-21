@@ -29,7 +29,6 @@ class WT_Place {
 		} else {
 			// Empty => "Top level"
 			$this->gedcom_place=array();
-			$this->place_id=0;
 		}
 		$this->gedcom_id=$gedcom_id;
 	}

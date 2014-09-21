@@ -26,7 +26,6 @@ use WT\Log;
 
 class WT_GedcomRecord {
 	const RECORD_TYPE = 'UNKNOWN';
-	const SQL_FETCH   = "SELECT o_gedcom FROM `##other` WHERE o_id=? AND o_file=?";
 	const URL_PREFIX  = 'gedrecord.php?pid=';
 
 	protected $xref        = null;  // The record identifier
@@ -982,10 +981,6 @@ class WT_GedcomRecord {
 
 		// Return the newly created record
 		return WT_GedcomRecord::getInstance($xref);
-	}
-
-	private static function readRecord($xref, $gedcom_id) {
-		return WT_DB::prepare(static::SQL_FETCH)->execute(array($xref, $gedcom_id))->fetchOne();
 	}
 
 	public function updateRecord($gedcom, $update_chan) {

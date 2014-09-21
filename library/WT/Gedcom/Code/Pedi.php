@@ -32,27 +32,39 @@ class WT_Gedcom_Code_Pedi {
 		switch ($type) {
 		case 'birth':
 			switch ($sex) {
-			case 'U': return WT_I18N::translate_c('Pedigree',        'Birth');
-			case 'M': return WT_I18N::translate_c('Male pedigree',   'Birth');
-			case 'F': return WT_I18N::translate_c('Female pedigree', 'Birth');
+			case 'M':
+				return WT_I18N::translate_c('Male pedigree',   'Birth');
+			case 'F':
+				return WT_I18N::translate_c('Female pedigree', 'Birth');
+			default:
+				return WT_I18N::translate_c('Pedigree',        'Birth');
 			}
 		case 'adopted':
 			switch ($sex) {
-			case 'U': return WT_I18N::translate_c('Pedigree',        'Adopted');
-			case 'M': return WT_I18N::translate_c('Male pedigree',   'Adopted');
-			case 'F': return WT_I18N::translate_c('Female pedigree', 'Adopted');
+			case 'M':
+				return WT_I18N::translate_c('Male pedigree',   'Adopted');
+			case 'F':
+				return WT_I18N::translate_c('Female pedigree', 'Adopted');
+			default:
+				return WT_I18N::translate_c('Pedigree',        'Adopted');
 			}
 		case 'foster':
 			switch ($sex) {
-			case 'U': return WT_I18N::translate_c('Pedigree',        'Foster');
-			case 'M': return WT_I18N::translate_c('Male pedigree',   'Foster');
-			case 'F': return WT_I18N::translate_c('Female pedigree', 'Foster');
+			case 'M':
+				return WT_I18N::translate_c('Male pedigree',   'Foster');
+			case 'F':
+				return WT_I18N::translate_c('Female pedigree', 'Foster');
+			default:
+				return WT_I18N::translate_c('Pedigree',        'Foster');
 			}
 		case 'sealing':
 			switch ($sex) {
-			case 'U': return /* I18N: “sealing” is a ceremony in the Mormon church. */ WT_I18N::translate_c('Pedigree',        'Sealing');
-			case 'M': return /* I18N: “sealing” is a ceremony in the Mormon church. */ WT_I18N::translate_c('Male pedigree',   'Sealing');
-			case 'F': return /* I18N: “sealing” is a ceremony in the Mormon church. */ WT_I18N::translate_c('Female pedigree', 'Sealing');
+			case 'M':
+				return /* I18N: “sealing” is a ceremony in the Mormon church. */ WT_I18N::translate_c('Male pedigree',   'Sealing');
+			case 'F':
+				return /* I18N: “sealing” is a ceremony in the Mormon church. */ WT_I18N::translate_c('Female pedigree', 'Sealing');
+			default:
+				return /* I18N: “sealing” is a ceremony in the Mormon church. */ WT_I18N::translate_c('Pedigree',        'Sealing');
 			}
 			case 'rada':
 				// Not standard GEDCOM - a webtrees extension

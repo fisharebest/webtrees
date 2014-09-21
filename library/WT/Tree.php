@@ -345,8 +345,8 @@ class WT_Tree {
 	// Delete everything relating to a tree
 	public static function delete($tree_id) {
 		// If this is the default tree, then unset
-		if (WT_Site::preference('DEFAULT_GEDCOM')==self::getNameFromId($tree_id)) {
-			WT_Site::preference('DEFAULT_GEDCOM', '');
+		if (WT_Site::getPreference('DEFAULT_GEDCOM')==self::getNameFromId($tree_id)) {
+			WT_Site::setPreference('DEFAULT_GEDCOM', '');
 		}
 		// Don't delete the logs.
 		WT_DB::prepare("UPDATE `##log` SET gedcom_id=NULL   WHERE gedcom_id =?")->execute(array($tree_id));

@@ -506,7 +506,7 @@ function fill_ydata($z, $x, $val) {
 	}
 }
 
-function myplot($mytitle, $n, $xdata, $xtitle, $ydata, $ytitle, $legend) {
+function myplot($mytitle, $xdata, $xtitle, $ydata, $ytitle, $legend) {
 	global $percentage, $male_female;
 	global $ymax, $scalefactor, $datastring, $imgurl;
 	//Google Chart API only allows text encoding for numbers less than 100
@@ -520,6 +520,7 @@ function myplot($mytitle, $n, $xdata, $xtitle, $ydata, $ytitle, $legend) {
 	}
 	$yprocentmax = 0;
 	if ($percentage) {
+		$yt = array();
 		for ($i=0; $i<$stop; $i++) {
 			$ytotal = 0;
 			$ymax = 0;
@@ -730,8 +731,7 @@ function calc_legend($grenzen_zas) {
 	}
 }
 
-//--------------------nr,-----bron ,xgiven,zgiven,title, xtitle,ytitle,grenzen_xas, grenzen-zas,functie,
-function set_params($current, $indfam, $xg, $zg, $titstr, $xt, $yt, $gx, $gz, $myfunc) {
+function set_params($current, $indfam, $xg, $zg, $titstr, $xt, $gx, $gz, $myfunc) {
 	global $x_as, $y_as, $z_as, $n1, $months;
 	global $legend, $xdata, $ydata, $xmax, $zmax, $zgrenzen, $xgiven, $zgiven, $percentage, $male_female;
 	global $stats;
@@ -806,13 +806,13 @@ function set_params($current, $indfam, $xg, $zg, $titstr, $xt, $yt, $gx, $gz, $m
 		}
 		$myfunc();
 		if ($indfam == 'IND') {
-			$hstr = $title.'|' .WT_I18N::translate('Counts ').' '.WT_I18N::number($n1).' '.WT_I18N::translate('of').' '.$stats->totalIndividuals();
-		} else if ($x_as==21) {
-			$hstr = $title.'|' .WT_I18N::translate('Counts ').' '.WT_I18N::number($n1).' '.WT_I18N::translate('of').' '.$stats->totalChildren();
+			$hstr = $title . '|' . WT_I18N::translate('Counts ') . ' ' . WT_I18N::number($n1) . ' ' . WT_I18N::translate('of') . ' ' . $stats->totalIndividuals();
+		} else if ($x_as == 21) {
+			$hstr = $title . '|' . WT_I18N::translate('Counts ') . ' ' . WT_I18N::number($n1) . ' ' . WT_I18N::translate('of') . ' ' . $stats->totalChildren();
 		} else {
-			$hstr = $title.'|' .WT_I18N::translate('Counts ').' '.WT_I18N::number($n1).' '.WT_I18N::translate('of').' '.$stats->totalFamilies();
+			$hstr = $title . '|' . WT_I18N::translate('Counts ') . ' ' . WT_I18N::number($n1) . ' ' . WT_I18N::translate('of') . ' ' . $stats->totalFamilies();
 		}
-		myplot($hstr, $zmax, $xdata, $xtitle, $ydata, $ytitle, $legend);
+		myplot($hstr, $xdata, $xtitle, $ydata, $ytitle, $legend);
 	}
 }
 
@@ -890,37 +890,37 @@ $g_xas = '1,2,3,4,5,6,7,8,9,10,11,12'; //should not be needed. but just for mont
 switch ($x_as) {
 case '11':
 	//--------- nr, type, xgiven, zgiven, title, xtitle, ytitle, boundaries_x, boundaries-z, function
-	set_params(11, 'IND', true, false, WT_I18N::translate('Month of birth'),  WT_I18N::translate('month'), $y_as, $g_xas, $zgp, 'bimo');
+	set_params(11, 'IND', true, false, WT_I18N::translate('Month of birth'),  WT_I18N::translate('month'), $g_xas, $zgp, 'bimo');
 	break;
 case '12':
-	set_params(12, 'IND', true, false, WT_I18N::translate('Month of death'),  WT_I18N::translate('month'), $y_as, $g_xas, $zgp, 'demo');
+	set_params(12, 'IND', true, false, WT_I18N::translate('Month of death'),  WT_I18N::translate('month'), $g_xas, $zgp, 'demo');
 	break;
 case '13':
-	set_params(13, 'FAM', true, false, WT_I18N::translate('Month of marriage'),  WT_I18N::translate('month'), $y_as, $g_xas, $zgp, 'mamo');
+	set_params(13, 'FAM', true, false, WT_I18N::translate('Month of marriage'),  WT_I18N::translate('month'), $g_xas, $zgp, 'mamo');
 	break;
 case '14':
-	set_params(14, 'FAM', true, false, WT_I18N::translate('Month of birth of first child in a relation'), WT_I18N::translate('month'), $y_as, $g_xas, $zgp, 'bimo1');
+	set_params(14, 'FAM', true, false, WT_I18N::translate('Month of birth of first child in a relation'), WT_I18N::translate('month'), $g_xas, $zgp, 'bimo1');
 	break;
 case '15':
-	set_params(15, 'FAM', true, false, WT_I18N::translate('Month of first marriage'), WT_I18N::translate('month'), $y_as, $g_xas, $zgp, 'mamo1');
+	set_params(15, 'FAM', true, false, WT_I18N::translate('Month of first marriage'), WT_I18N::translate('month'), $g_xas, $zgp, 'mamo1');
 	break;
 case '16':
-	set_params(16, 'FAM', false, false, WT_I18N::translate('Months between marriage and first child'), WT_I18N::translate('Months between marriage and birth of first child'), $y_as, $xgm, $zgp, 'mamam');
+	set_params(16, 'FAM', false, false, WT_I18N::translate('Months between marriage and first child'), WT_I18N::translate('Months between marriage and birth of first child'), $xgm, $zgp, 'mamam');
 	break;
 case '17':
-	set_params(17, 'IND', false, false, WT_I18N::translate('Age related to birth year'), WT_I18N::translate('age'), $y_as, $xgl, $zgp, 'agbi');
+	set_params(17, 'IND', false, false, WT_I18N::translate('Age related to birth year'), WT_I18N::translate('age'), $xgl, $zgp, 'agbi');
 	break;
 case '18':
-	set_params(18, 'IND', false, false, WT_I18N::translate('Age related to death year'), WT_I18N::translate('age'), $y_as, $xgl, $zgp, 'agde');
+	set_params(18, 'IND', false, false, WT_I18N::translate('Age related to death year'), WT_I18N::translate('age'), $xgl, $zgp, 'agde');
 	break;
 case '19':
-	set_params(19, 'IND', false, false, WT_I18N::translate('Age in year of marriage'), WT_I18N::translate('age'), $y_as, $xglm, $zgp, 'agma');
+	set_params(19, 'IND', false, false, WT_I18N::translate('Age in year of marriage'), WT_I18N::translate('age'), $xglm, $zgp, 'agma');
 	break;
 case '20':
-	set_params(20, 'IND', false, false, WT_I18N::translate('Age in year of first marriage'), WT_I18N::translate('age'), $y_as, $xglm, $zgp, 'agma1');
+	set_params(20, 'IND', false, false, WT_I18N::translate('Age in year of first marriage'), WT_I18N::translate('age'), $xglm, $zgp, 'agma1');
 	break;
 case '21':
-	set_params(21, 'FAM', false, false, WT_I18N::translate('Number of children'), WT_I18N::translate('children'), $y_as, $xga, $zgp, 'nuch');
+	set_params(21, 'FAM', false, false, WT_I18N::translate('Number of children'), WT_I18N::translate('children'), $xga, $zgp, 'nuch');
 	break;
 case '1':
 	echo $stats->chartDistribution(array($chart_shows, $chart_type, $surname));

@@ -76,15 +76,6 @@ class WT_Report_Base_Footnote extends WT_Report_Base_Element {
 	}
 
 	/**
-	 * @param $renderer
-	 *
-	 * @return bool
-	 */
-	function rerender($renderer) {
-		return false;
-	}
-
-	/**
 	 * @param $t
 	 *
 	 * @return int

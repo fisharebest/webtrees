@@ -64,5 +64,5 @@ self::exec(
 //self::exec("DROP TABLE IF EXISTS `##wt_ip_address`");
 
 // Update the version to indicate success
-WT_Site::preference($schema_name, $next_version);
+WT_Site::setPreference($schema_name, $next_version);
 

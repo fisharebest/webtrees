@@ -48,5 +48,5 @@ self::exec("DELETE FROM `##site_setting` WHERE setting_name='SERVER_URL' AND set
 self::exec("ALTER TABLE `##session` CHANGE session_id session_id CHAR(128) COLLATE utf8_unicode_ci NOT NULL");
 
 // Update the version to indicate success
-WT_Site::preference($schema_name, $next_version);
+WT_Site::setPreference($schema_name, $next_version);
 

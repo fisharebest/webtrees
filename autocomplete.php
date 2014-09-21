@@ -515,7 +515,6 @@ case 'IFS':
 
 function get_FAM_rows($term) {
 	return
-	$rows=
 		WT_DB::prepare(
 			"SELECT DISTINCT 'FAM' AS type, f_id AS xref, f_file AS gedcom_id, f_gedcom AS gedcom".
 			" FROM `##families`".

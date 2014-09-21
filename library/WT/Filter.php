@@ -94,11 +94,8 @@ class WT_Filter {
 		switch ($WT_TREE->preference('FORMAT_TEXT')) {
 		case 'markdown':
 			return '<div class="markdown" dir="auto">' . WT_Filter::markdown($text) . '</div>';
-			break;
-		case '':
 		default:
 			return '<div style="white-space: pre-wrap;" dir="auto">' . WT_Filter::expandUrls($text) . '</div>';
-			break;
 		}
 	}
 

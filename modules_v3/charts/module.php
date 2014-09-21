@@ -70,7 +70,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 
 		if ($type!='treenav' && $person) {
-			$controller=new WT_Controller_Hourglass($person->getXref(), 0, 3);
+			$controller=new WT_Controller_Hourglass($person->getXref(), 0);
 			$controller->setupJavascript();
 		}
 

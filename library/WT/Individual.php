@@ -25,7 +25,6 @@ use Fisharebest\ExtCalendar\GregorianCalendar;
 
 class WT_Individual extends WT_GedcomRecord {
 	const RECORD_TYPE = 'INDI';
-	const SQL_FETCH   = "SELECT i_gedcom FROM `##individuals` WHERE i_id=? AND i_file=?";
 	const URL_PREFIX  = 'individual.php?pid=';
 
 	var $generation; // used in some lists to keep track of this individual’s generation in that list
@@ -246,7 +245,7 @@ class WT_Individual extends WT_GedcomRecord {
 				}
 			}
 			// Check spouse dates
-			$spouse = $family->getSpouse($this, WT_PRIV_HIDE);
+			$spouse = $family->getSpouse($this);
 			if ($spouse) {
 				preg_match_all('/\n2 DATE (.+)/', $spouse->gedcom, $date_matches);
 				foreach ($date_matches[1] as $date_match) {
@@ -579,17 +578,17 @@ class WT_Individual extends WT_GedcomRecord {
 	}
 
 	// Get the individual’s sex image
-	function getSexImage($size='small', $style='', $title='') {
-		return self::sexImage($this->getSex(), $size, $style, $title);
+	function getSexImage($size='small') {
+		return self::sexImage($this->getSex(), $size);
 	}
 
-	static function sexImage($sex, $size='small', $style='', $title='') {
-		return '<i class="icon-sex_'.strtolower($sex).'_'.($size=='small' ? '9x9' : '15x15').'" title="'.$title.'"></i>';
+	static function sexImage($sex, $size='small') {
+		return '<i class="icon-sex_' . strtolower($sex) . '_' . ($size=='small' ? '9x9' : '15x15') . '"></i>';
 	}
 
 	function getBoxStyle() {
 		$tmp=array('M'=>'','F'=>'F', 'U'=>'NN');
-		return 'person_box'.$tmp[$this->getSex()];
+		return 'person_box' . $tmp[$this->getSex()];
 	}
 
 	/**

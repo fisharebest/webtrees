@@ -381,7 +381,7 @@ if ($person1 && $person2) {
 				$zIndex = 200 - ($colNum * $depth + $rowNum);
 
 				echo '<div style="position:absolute; ', $TEXT_DIRECTION=='ltr'?'left':'right', ':', $pxoffset, 'px; top:', $pyoffset, 'px; width:', $Dbwidth, 'px; height:', $Dbheight, 'px; z-index:', $zIndex, ';">';
-				print_pedigree_person($person, 1);
+				print_pedigree_person($person);
 				echo '</div>';
 			}
 		}

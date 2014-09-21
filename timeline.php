@@ -87,14 +87,11 @@ document.onmousemove = function (e) {
 				oldx = newx;
 			}
 		}
-		if (newy >= topy-bheight / 2 && newy <= bottomy) {
-			newy = newy;
-		} else {
-			if (newy < topy - bheight / 2) {
-				newy = topy - bheight / 2;
-			} else {
-				newy = (bottomy - 1);
-			}
+		if (newy < topy - bheight / 2) {
+			newy = topy - bheight / 2;
+		}
+		if (newy > bottomy) {
+			newy = bottomy - 1;
 		}
 		ob.style.top = newy + "px";
 		var tyear = (newy + bheight - 4 - topy + scale) / scale + baseyear;
@@ -171,16 +168,11 @@ document.onmousemove = function (e) {
 			ebottomy = boxmean + 175;
 		}
 		// check if in the bounds of the limits
-		if (newy >= etopy && newy <= ebottomy) {
-			newy = newy;
-		} else {
-			if (newy < etopy) {
-				newy = etopy;
-			} else {
-				if (newy > ebottomy) {
-					newy = ebottomy;
-				}
-			}
+		if (newy < etopy) {
+			newy = etopy;
+		}
+		if (newy > ebottomy) {
+			newy = ebottomy;
 		}
 		// calculate the change in Y position
 		var dy = newy-ob.offsetTop;

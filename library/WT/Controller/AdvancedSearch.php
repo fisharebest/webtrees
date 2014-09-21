@@ -187,7 +187,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 		}
 	}
 
-	function advancedSearch($justSql=false, $table="individuals", $prefix="i") {
+	function advancedSearch() {
 		$this->myindilist = array ();
 		$fct = count($this->fields);
 		if ($fct==0) {

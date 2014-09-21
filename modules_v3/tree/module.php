@@ -112,11 +112,6 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 						jQuery("head").append(\'<link rel="stylesheet" type="text/css" href="' . $this->css() . '">\');
 					}
 				');
-
-			if (WT_USE_LIGHTBOX) {
-				$album = new lightbox_WT_Module();
-				$album->getPreLoadContent();
-			}
 			echo $html;
 			break;
 

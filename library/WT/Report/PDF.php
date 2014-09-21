@@ -254,13 +254,13 @@ class WT_Report_PDF extends WT_Report_Base {
 	/**
 	 * Create a new image object from WT_Media Object - WT_Report_PDF
 	 *
-	 * @param string $mediaobject WT_Media Object
-	 * @param mixed  $x
-	 * @param mixed  $y
-	 * @param int    $w           Image width
-	 * @param int    $h           Image height
-	 * @param string $align       L:left, C:center, R:right or empty to use x/y
-	 * @param string $ln          T:same line, N:next line
+	 * @param WT_Media $mediaobject
+	 * @param mixed    $x
+	 * @param mixed    $y
+	 * @param int      $w           Image width
+	 * @param int      $h           Image height
+	 * @param string   $align       L:left, C:center, R:right or empty to use x/y
+	 * @param string   $ln          T:same line, N:next line
 	 *
 	 * @return WT_Report_PDF_Image
 	 */
@@ -677,7 +677,7 @@ class PDF extends TCPDF {
 	/**
 	 * Add a page if needed -PDF
 	 *
-	 * @param $height Cell height. Default value: 0
+	 * @param int $height Cell height
 	 *
 	 * @return boolean true in case of page break, false otherwise
 	 */

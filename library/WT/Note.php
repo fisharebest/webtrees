@@ -23,7 +23,6 @@
 
 class WT_Note extends WT_GedcomRecord {
 	const RECORD_TYPE = 'NOTE';
-	const SQL_FETCH   = "SELECT o_gedcom FROM `##other` WHERE o_id=? AND o_file=?";
 	const URL_PREFIX  = 'note.php?nid=';
 
 	// Get the text contents of the note

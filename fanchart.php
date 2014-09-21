@@ -62,7 +62,7 @@ $controller
 				.click(function(e) {
 					jQuery(".fan_chart_menu").hide();
 				});
-			return "' . WT_Filter::escapeJs($controller->root->getFullName()) . '";
+			return "' . strip_tags($controller->root->getFullName()) . '";
 		})();
 	');
 

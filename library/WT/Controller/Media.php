@@ -24,7 +24,6 @@
 use WT\Auth;
 
 require_once WT_ROOT.'includes/functions/functions_print_facts.php';
-require_once WT_ROOT.'includes/functions/functions_import.php';
 
 class WT_Controller_Media extends WT_Controller_GedcomRecord {
 
@@ -109,13 +108,11 @@ class WT_Controller_Media extends WT_Controller_GedcomRecord {
 	}
 
 	/**
-	 * return a list of facts
-	 *
-	 * @param bool $includeFileName
+	 * Return a list of facts
 	 *
 	 * @return array
 	 */
-	function getFacts($includeFileName=true) {
+	function getFacts() {
 		$facts = $this->record->getFacts();
 
 		// Add some dummy facts to show additional information
@@ -134,9 +131,13 @@ class WT_Controller_Media extends WT_Controller_GedcomRecord {
 	}
 
 	/**
-	 * edit menu items used in media list
+	 * Edit menu items used in media list
+	 *
+	 * @param WT_Media $mediaobject
+	 *
+	 * @return string
 	 */
-	static function getMediaListMenu($mediaobject) {
+	static function getMediaListMenu(WT_Media $mediaobject) {
 		$html='<div class="lightbox-menu"><ul class="makeMenu lb-menu">';
 		$menu = new WT_Menu(WT_I18N::translate('Edit details'));
 		$menu->addClass('', '', 'lb-image_edit');

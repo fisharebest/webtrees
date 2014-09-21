@@ -242,255 +242,257 @@ class WT_Report_Base {
 			 */
 			switch ($this->pageFormat) {
 			// ISO A series
-			case "4A0": // ISO 216, 1682 mm x 2378 mm
+			case '4A0': // ISO 216, 1682 mm x 2378 mm
 				$sizes = array(4767.86, 6740.79);
 				break;
-			case "2A0": // ISO 216, 1189 mm x 1682 mm
+			case '2A0': // ISO 216, 1189 mm x 1682 mm
 				$sizes = array(3370.39, 4767.86);
 				break;
-			case "A0": // ISO 216, 841 mm x 1189mm
+			case 'A0': // ISO 216, 841 mm x 1189mm
 				$sizes = array(2383.94, 3370.39);
 				break;
-			case "A1": // ISO 216, 594 mm x 841 mm
+			case 'A1': // ISO 216, 594 mm x 841 mm
 				$sizes = array(1683.78, 2383.94);
 				break;
-			case "A2": // ISO 216, 420 mm x 594 mm
+			case 'A2': // ISO 216, 420 mm x 594 mm
 				$sizes = array(1190.55, 1683.78);
 				break;
-			case "A3": // ISO 216, 297 mm x 420 mm
+			case 'A3': // ISO 216, 297 mm x 420 mm
 				$sizes = array(841.89, 1190.55);
 				break;
-			case "A4": // ISO 216, 210 mm 297 mm
-			default:
+			case 'A4': // ISO 216, 210 mm 297 mm
 				$sizes = array(595.28, 841.89);
-				$this->pageFormat = "A4";
 				break;
-			case "A5": // ISO 216, 148 mm x 210 mm
+			case 'A5': // ISO 216, 148 mm x 210 mm
 				$sizes = array(419.53, 595.28);
 				break;
-			case "A6": // ISO 216, 105 mm x 148 mm
+			case 'A6': // ISO 216, 105 mm x 148 mm
 				$sizes = array(297.64, 419.53);
 				break;
-			case "A7": // ISO 216, 74 mm x 105 mm
+			case 'A7': // ISO 216, 74 mm x 105 mm
 				$sizes = array(209.76, 297.64);
 				break;
-			case "A8": // ISO 216, 52 mm x 74 mm
+			case 'A8': // ISO 216, 52 mm x 74 mm
 				$sizes = array(147.40, 209.76);
 				break;
-			case "A9": // ISO 216, 37 mm x 52 mm
+			case 'A9': // ISO 216, 37 mm x 52 mm
 				$sizes = array(104.88, 147.40);
 				break;
-			case "A10": // ISO 216, 26 mm x 37 mm
+			case 'A10': // ISO 216, 26 mm x 37 mm
 				$sizes = array(73.70, 104.88);
 				break;
 
 			// ISO B series
-			case "B0": // ISO 216, 1000 mm x 1414 mm
+			case 'B0': // ISO 216, 1000 mm x 1414 mm
 				$sizes = array(2834.65, 4008.19);
 				break;
-			case "B1": // ISO 216, 707 mm x 1000 mm
+			case 'B1': // ISO 216, 707 mm x 1000 mm
 				$sizes = array(2004.09, 2834.65);
 				break;
-			case "B2": // ISO 216, 500 mm x 707 mm
+			case 'B2': // ISO 216, 500 mm x 707 mm
 				$sizes = array(1417.32, 2004.09);
 				break;
-			case "B3": // ISO 216, 353 mm x 500 mm
+			case 'B3': // ISO 216, 353 mm x 500 mm
 				$sizes = array(1000.63, 1417.32);
 				break;
-			case "B4": // ISO 216, 250 mm x 353 mm
+			case 'B4': // ISO 216, 250 mm x 353 mm
 				$sizes = array(708.66, 1000.63);
 				break;
-			case "B5": // ISO 216, 176 mm x 250 mm
+			case 'B5': // ISO 216, 176 mm x 250 mm
 				$sizes = array(498.90, 708.66);
 				break;
-			case "B6": // ISO 216, 125 mm x 176 mm
+			case 'B6': // ISO 216, 125 mm x 176 mm
 				$sizes = array(354.33, 498.90);
 				break;
-			case "B7": // ISO 216, 88 mm x 125 mm
+			case 'B7': // ISO 216, 88 mm x 125 mm
 				$sizes = array(249.45, 354.33);
 				break;
-			case "B8": // ISO 216, 62 mm x 88 mm
+			case 'B8': // ISO 216, 62 mm x 88 mm
 				$sizes = array(175.75, 249.45);
 				break;
-			case "B9": // ISO 216, 44 mm x 62 mm
+			case 'B9': // ISO 216, 44 mm x 62 mm
 				$sizes = array(124.72, 175.75);
 				break;
-			case "B10": // ISO 216, 31 mm x 44 mm
+			case 'B10': // ISO 216, 31 mm x 44 mm
 				$sizes = array(87.87, 124.72);
 				break;
 
 			// ISO C series, Envelope
-			case "C0": // ISO 269, 917 mm x 1297 mm, For flat A0 sheet
+			case 'C0': // ISO 269, 917 mm x 1297 mm, For flat A0 sheet
 				$sizes = array(2599.37, 3676.54);
 				break;
-			case "C1": // ISO 269, 648 mm x 917 mm, For flat A1 sheet
+			case 'C1': // ISO 269, 648 mm x 917 mm, For flat A1 sheet
 				$sizes = array(1836.85, 2599.37);
 				break;
-			case "C2": // ISO 269, 458 mm x 648 mm, For flat A2 sheet, A1 folded in half
+			case 'C2': // ISO 269, 458 mm x 648 mm, For flat A2 sheet, A1 folded in half
 				$sizes = array(1298.27, 1836.85);
 				break;
-			case "C3": // ISO 269, 324 mm x 458 mm, For flat A3 sheet, A2 folded in half
+			case 'C3': // ISO 269, 324 mm x 458 mm, For flat A3 sheet, A2 folded in half
 				$sizes = array(918.43, 1298.27);
 				break;
-			case "C4": // ISO 269, 229 mm x 324 mm, For flat A4 sheet, A3 folded in half
+			case 'C4': // ISO 269, 229 mm x 324 mm, For flat A4 sheet, A3 folded in half
 				$sizes = array(649.13, 918.43);
 				break;
-			case "C5": // ISO 269, 162 mm x 229 mm, For flat A5 sheet, A4 folded in half
+			case 'C5': // ISO 269, 162 mm x 229 mm, For flat A5 sheet, A4 folded in half
 				$sizes = array(459.21, 649.13);
 				break;
-			case "C6/5": // ISO 269, 114 mm x 229 mm. A5 folded twice = 1/3 A4. Alternative for the DL envelope
+			case 'C6/5': // ISO 269, 114 mm x 229 mm. A5 folded twice = 1/3 A4. Alternative for the DL envelope
 				$sizes = array(323.15, 649.13);
 				break;
-			case "C6": // ISO 269, 114 mm x 162 mm, For A5 folded in half
+			case 'C6': // ISO 269, 114 mm x 162 mm, For A5 folded in half
 				$sizes = array(323.15, 459.21);
 				break;
-			case "C7/6": // ISO 269, 81 mm x 162 mm, For A5 sheet folded in thirds
+			case 'C7/6': // ISO 269, 81 mm x 162 mm, For A5 sheet folded in thirds
 				$sizes = array(229.61, 459.21);
 				break;
-			case "C7": // ISO 269, 81 mm x 114 mm, For A5 folded in quarters
+			case 'C7': // ISO 269, 81 mm x 114 mm, For A5 folded in quarters
 				$sizes = array(229.61, 323.15);
 				break;
-			case "C8": // ISO 269, 57 mm x 81 mm
+			case 'C8': // ISO 269, 57 mm x 81 mm
 				$sizes = array(161.57, 229.61);
 				break;
-			case "C9": // ISO 269, 40 mm x 57 mm
+			case 'C9': // ISO 269, 40 mm x 57 mm
 				$sizes = array(113.39, 161.57);
 				break;
-			case "C10": // ISO 269, 28 mm x 40 mm
+			case 'C10': // ISO 269, 28 mm x 40 mm
 				$sizes = array(79.37, 113.39);
 				break;
-			case "DL": // Original DIN 678 but ISO 269 now has this C6/5 , 110 mm x 220 mm, For A4 sheet folded in thirds, A5 in half
+			case 'DL': // Original DIN 678 but ISO 269 now has this C6/5 , 110 mm x 220 mm, For A4 sheet folded in thirds, A5 in half
 				$sizes = array(311.81, 623.62);
 				break;
 
 			// Untrimmed stock sizes for the ISO-A Series - ISO primary range
-			case "RA0": // ISO 478, 860 mm x 1220 mm
+			case 'RA0': // ISO 478, 860 mm x 1220 mm
 				$sizes = array(2437.80, 3458.27);
 				break;
-			case "RA1": // ISO 478, 610 mm x 860 mm
+			case 'RA1': // ISO 478, 610 mm x 860 mm
 				$sizes = array(1729.13, 2437.80);
 				break;
-			case "RA2": // ISO 478, 430 mm x 610 mm
+			case 'RA2': // ISO 478, 430 mm x 610 mm
 				$sizes = array(1218.90, 1729.13);
 				break;
-			case "RA3": // ISO 478, 305 mm x 430 mm
+			case 'RA3': // ISO 478, 305 mm x 430 mm
 				$sizes = array(864.57, 1218.90);
 				break;
-			case "RA4": // ISO 478, 215 mm x 305 mm
+			case 'RA4': // ISO 478, 215 mm x 305 mm
 				$sizes = array(609.45, 864.57);
 				break;
 
 			// Untrimmed stock sizes for the ISO-A Series - ISO supplementary range
-			case "SRA0": // ISO 593, 900 mm x 1280 mm
+			case 'SRA0': // ISO 593, 900 mm x 1280 mm
 				$sizes = array(2551.18, 3628.35);
 				break;
-			case "SRA1": // ISO 593, 640 mm x 900 mm
+			case 'SRA1': // ISO 593, 640 mm x 900 mm
 				$sizes = array(1814.17, 2551.18);
 				break;
-			case "SRA2": // ISO 593, 450 mm x 640 mm
+			case 'SRA2': // ISO 593, 450 mm x 640 mm
 				$sizes = array(1275.59, 1814.17);
 				break;
-			case "SRA3": // ISO 593, 320 mm x 450 mm
+			case 'SRA3': // ISO 593, 320 mm x 450 mm
 				$sizes = array(907.09, 1275.59);
 				break;
-			case "SRA4": // ISO 593, 225 mm x 320 mm
+			case 'SRA4': // ISO 593, 225 mm x 320 mm
 				$sizes = array(637.80, 907.09);
 				break;
 
 			// ISO size variations
-			case "A2EXTRA": // ISO 216, 445 mm x 619 mm
+			case 'A2EXTRA': // ISO 216, 445 mm x 619 mm
 				$sizes = array(1261.42, 1754.65);
 				break;
-			case "A2SUPER": // ISO 216, 305 mm x 508 mm
+			case 'A2SUPER': // ISO 216, 305 mm x 508 mm
 				$sizes = array(864.57, 1440.00);
 				break;
-			case "A3EXTRA": // ISO 216, 322 mm x 445 mm
+			case 'A3EXTRA': // ISO 216, 322 mm x 445 mm
 				$sizes = array(912.76, 1261.42);
 				break;
-			case "SUPERA3": // ISO 216, 305 mm x 487 mm
+			case 'SUPERA3': // ISO 216, 305 mm x 487 mm
 				$sizes = array(864.57, 1380.47);
 				break;
-			case "A4EXTRA": // ISO 216, 235 mm x 322 mm
+			case 'A4EXTRA': // ISO 216, 235 mm x 322 mm
 				$sizes = array(666.14, 912.76);
 				break;
-			case "A4LONG": // ISO 216, 210 mm x 348 mm
+			case 'A4LONG': // ISO 216, 210 mm x 348 mm
 				$sizes = array(595.28, 986.46);
 				break;
-			case "A4SUPER": // ISO 216, 229 mm x 322 mm
+			case 'A4SUPER': // ISO 216, 229 mm x 322 mm
 				$sizes = array(649.13, 912.76);
 				break;
-			case "SUPERA4": // ISO 216, 227 mm x 356 mm
+			case 'SUPERA4': // ISO 216, 227 mm x 356 mm
 				$sizes = array(643.46, 1009.13);
 				break;
-			case "A5EXTRA": // ISO 216, 173 mm x 235 mm
+			case 'A5EXTRA': // ISO 216, 173 mm x 235 mm
 				$sizes = array(490.39, 666.14);
 				break;
-			case "SOB5EXTRA": // ISO 216, 202 mm x 276 mm
+			case 'SOB5EXTRA': // ISO 216, 202 mm x 276 mm
 				$sizes = array(572.60, 782.36);
 				break;
 
 			// Japanese version of the ISO 216 B series
-			case "JB0": // JIS P 0138-61, 1030 mm x 1456 mm
+			case 'JB0': // JIS P 0138-61, 1030 mm x 1456 mm
 				$sizes = array(2919.69, 4127.24);
 				break;
-			case "JB1": // JIS P 0138-61, 728 mm x 1030 mm
+			case 'JB1': // JIS P 0138-61, 728 mm x 1030 mm
 				$sizes = array(2063.62, 2919.69);
 				break;
-			case "JB2": // JIS P 0138-61, 515 mm x 728 mm
+			case 'JB2': // JIS P 0138-61, 515 mm x 728 mm
 				$sizes = array(1459.84, 2063.62);
 				break;
-			case "JB3": // JIS P 0138-61, 364 mm x 515 mm
+			case 'JB3': // JIS P 0138-61, 364 mm x 515 mm
 				$sizes = array(1031.81, 1459.84);
 				break;
-			case "JB4": // JIS P 0138-61, 257 mm x 364 mm
+			case 'JB4': // JIS P 0138-61, 257 mm x 364 mm
 				$sizes = array(728.50, 1031.81);
 				break;
-			case "JB5": // JIS P 0138-61, 182 mm x 257 mm
+			case 'JB5': // JIS P 0138-61, 182 mm x 257 mm
 				$sizes = array(515.91, 728.50);
 				break;
-			case "JB6": // JIS P 0138-61, 128 mm x 182 mm
+			case 'JB6': // JIS P 0138-61, 128 mm x 182 mm
 				$sizes = array(362.83, 515.91);
 				break;
-			case "JB7": // JIS P 0138-61, 91 mm x 128 mm
+			case 'JB7': // JIS P 0138-61, 91 mm x 128 mm
 				$sizes = array(257.95, 362.83);
 				break;
-			case "JB8": // JIS P 0138-61, 64 mm x 91 mm
+			case 'JB8': // JIS P 0138-61, 64 mm x 91 mm
 				$sizes = array(181.42, 257.95);
 				break;
-			case "JB9": // JIS P 0138-61, 45 mm x 64 mm
+			case 'JB9': // JIS P 0138-61, 45 mm x 64 mm
 				$sizes = array(127.56, 181.42);
 				break;
-			case "JB10": // JIS P 0138-61, 32 mm x 45 mm
+			case 'JB10': // JIS P 0138-61, 32 mm x 45 mm
 				$sizes = array(90.71, 127.56);
 				break;
 
 			// US pages
-			case "EXECUTIVE": // 7.25 in x 10.5 in
+			case 'EXECUTIVE': // 7.25 in x 10.5 in
 				$sizes = array(522.00, 756.00);
 				break;
-			case "FOLIO": // 8.5 in x 13 in
+			case 'FOLIO': // 8.5 in x 13 in
 				$sizes = array(612.00, 936.00);
 				break;
-			case "FOOLSCAP": // 13.5 in x 17 in
+			case 'FOOLSCAP': // 13.5 in x 17 in
 				$sizes = array(972.00, 1224.00);
 				break;
-			case "LEDGER": // 11 in x 17 in
+			case 'LEDGER': // 11 in x 17 in
 				$sizes = array(792.00, 1224.00);
 				break;
-			case "LEGAL": // 8.5 in x 14 in
+			case 'LEGAL': // 8.5 in x 14 in
 				$sizes = array(612.00, 1008.00);
 				break;
-			case "LETTER": // 8.5 in x 11 in
+			case 'LETTER': // 8.5 in x 11 in
 				$sizes = array(612.00, 792.00);
 				break;
-			case "QUARTO": // 8.46 in x 10.8 in
+			case 'QUARTO': // 8.46 in x 10.8 in
 				$sizes = array(609.12, 777.50);
 				break;
-			case "STATEMENT": // 5.5 in x 8.5 in
+			case 'STATEMENT': // 5.5 in x 8.5 in
 				$sizes = array(396.00, 612.00);
 				break;
-			case "USGOVT": // 8 in x 11 in
+			case 'USGOVT': // 8 in x 11 in
 				$sizes = array(576.00, 792.00);
+				break;
+			default:
+				$this->pageFormat = 'A4';
+				$sizes = array(595.28, 841.89);
 				break;
 			}
 			$this->pagew = $sizes[0];
@@ -591,7 +593,6 @@ function startElement($parser, $name, $attrs) {
 	global $processFootnote;
 
 	$newattrs = array();
-	$match = array();
 
 	foreach ($attrs as $key => $value) {
 		if (preg_match("/^\\$(\w+)$/", $value, $match)) {
@@ -814,10 +815,8 @@ function HeaderSHandler() {
 
 /**
  * XML <PageHeader> start element handler
- *
- * @param array $attrs an array of key value pairs for the attributes
  */
-function PageHeaderSHandler($attrs) {
+function PageHeaderSHandler() {
 	global $printDataStack, $printData, $wt_reportStack, $wt_report, $ReportRoot;
 
 	array_push($printDataStack, $printData);
@@ -913,8 +912,6 @@ function CellSHandler($attrs) {
 	if (!empty($attrs['border'])) {
 		$border = $attrs['border'];
 	}
-	// @test Print all borders for testing
-	// $border = 1;
 	// string Border color in HTML code
 	$bocolor = "";
 	if (!empty($attrs['bocolor'])) {
@@ -1062,11 +1059,6 @@ function GedcomSHandler($attrs) {
 		return;
 	}
 
-	$id = "";
-	$match = array();
-	if (preg_match("/0 @(.+)@/", $gedrec, $match)) {
-		$id = $match[1];
-	}
 	$tag = $attrs['id'];
 	$tag = str_replace("@fact", $fact, $tag);
 	$tags = explode(":", $tag);
@@ -1165,19 +1157,6 @@ function TextBoxSHandler($attrs) {
 			$border = false;
 		}
 	}
-	// @test Print all borders for testing
-	// $border = true;
-
-	/**
-	 * Border style of rectangle. Array with keys among the following
-	 * <ul><li>L, T, R, B or combinations: Line style of left, top, right or bottom border.</li></ul>
-	 *
-	 * @var string
-	 */
-	/** not yet in use
-	 * $borderstyle = "";
-	 * if (!empty($attrs['borderstyle'])) $borderstyle = $attrs['borderstyle'];
-	 */
 
 	// int The starting height of this cell. If the text wraps the height will automatically be adjusted
 	$height = 0;
@@ -1251,8 +1230,6 @@ function TextBoxSHandler($attrs) {
 
 	// string Style of rendering
 	$style = "";
-	// fill and border is enought for now for user input
-	//if (!empty($attrs['style'])) $style = $attrs['style'];
 
 	array_push($printDataStack, $printData);
 	$printData = false;
@@ -1392,11 +1369,6 @@ function GetPersonNameSHandler($attrs) {
 				}
 			} else {
 				$addname = $record->getAddName();
-				/*
-				echo "<br>".$addname."<br>";
-				for ($ii=0; $ii<=strlen($addname); $ii++)
-				echo substr($addname, $ii, 1)." ";
-				*/
 				$addname = preg_replace(
 					array('/<span class="starredname">/', '/<\/span><\/span>/', '/<\/span>/'),
 					array('«', '', '»'),
@@ -1453,12 +1425,8 @@ function GedcomValueSHandler($attrs) {
 			} else {
 				$level = $attrs['level'];
 			}
-			$truncate = "";
-			if (isset($attrs['truncate'])) {
-				$truncate = $attrs['truncate'];
-			}
 			$tags = preg_split('/[: ]/', $tag);
-			$value = get_gedcom_value($tag, $level, $gedrec, $truncate);
+			$value = get_gedcom_value($tag, $level, $gedrec);
 			switch (end($tags)) {
 			case 'DATE':
 				$tmp = new WT_Date($value);
@@ -1501,12 +1469,6 @@ function RepeatTagSHandler($attrs) {
 	array_push($repeatsStack, array($repeats, $repeatBytes));
 	$repeats = array();
 	$repeatBytes = xml_get_current_line_number($parser);
-
-	$id = "";
-	$match = array();
-	if (preg_match("/0 @(.+)@/", $gedrec, $match)) {
-		$id = $match[1];
-	}
 
 	$tag = "";
 	if (isset($attrs['tag'])) {
@@ -1572,8 +1534,7 @@ function RepeatTagEHandler() {
 	if (count($repeats) > 0) {
 		// No need to load them if not used...
 		global $parser, $parserStack, $report, $gedrec;
-		// @deprecated
-		//$line = xml_get_current_line_number($parser)-1;
+
 		$lineoffset = 0;
 		foreach ($repeatsStack as $rep) {
 			$lineoffset += $rep[1];
@@ -1780,7 +1741,6 @@ function FactsEHandler() {
 		$oldgedrec = $gedrec;
 		$count = count($repeats);
 		$i = 0;
-		$match = array();
 		while ($i < $count) {
 			$gedrec = $repeats[$i];
 			$fact = "";
@@ -1978,11 +1938,8 @@ function ifEHandler() {
 function FootnoteSHandler($attrs) {
 	global $printData, $printDataStack, $currentElement, $footnoteElement, $processFootnote, $gedrec, $ReportRoot;
 
-	$match = array();
 	$id = "";
-	$tag = "";
 	if (preg_match("/[0-9] (.+) @(.+)@/", $gedrec, $match)) {
-		$tag = $match[1];
 		$id = $match[2];
 	}
 	$record = WT_GedcomRecord::GetInstance($id);
@@ -2654,7 +2611,6 @@ function ListSHandler($attrs) {
 						$v = get_sub_record(1, $tag, $grec);
 					}
 
-					$level = count($tags);
 					switch ($expr) {
 					case "GTE":
 						if ($t == "DATE") {
@@ -3240,13 +3196,12 @@ function get_gedcom_value($tag, $level, $gedrec) {
 }
 
 /**
- * @param      $list
- * @param      $pid
- * @param bool $children
- * @param      $generations
- * @param bool $show_empty
+ * @param string[] $list
+ * @param string   $pid
+ * @param bool     $children
+ * @param integer  $generations
  */
-function add_ancestors(&$list, $pid, $children = false, $generations = -1, $show_empty = false) {
+function add_ancestors(&$list, $pid, $children = false, $generations = -1) {
 	$genlist = array($pid);
 	$list[$pid]->generation = 1;
 	while (count($genlist) > 0) {

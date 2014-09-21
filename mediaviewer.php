@@ -118,7 +118,7 @@ echo '<div id="media-tabs">';
 						<tr>
 							<td>
 								<table class="facts_table">';
-										$facts = $controller->getFacts(WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT);
+										$facts = $controller->getFacts();
 										foreach ($facts as $f=>$fact) {
 											print_fact($fact, $controller->record);
 										}
