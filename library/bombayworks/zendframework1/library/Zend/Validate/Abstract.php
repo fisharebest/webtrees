@@ -264,7 +264,7 @@ abstract class Zend_Validate_Abstract implements Zend_Validate_Interface
      */
     protected function _implodeRecursive(array $pieces)
     {
-        $values = '';
+        $values = array();
         foreach ($pieces as $item) {
             if (is_array($item)) {
                 $values[] = $this->_implodeRecursive($item);

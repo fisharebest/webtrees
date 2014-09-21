@@ -106,159 +106,8 @@ function closePopupAndReloadParent(url) {
 	window.close();
 }
 
-// variables to hold mouse x-y pos.s
-var msX = 0;
-var msY = 0;
-
-//  the following javascript function is for the positioning and hide/show of
-//  DIV layers used in the display of the pedigree chart.
-function MM_showHideLayers() { //v6.0
-	var i,p,v,obj,args=MM_showHideLayers.arguments;
-	for (i=0; i<(args.length-3); i+=4) {
-		if ((obj=document.getElementById(args[i])) !== null) {
-			if (obj.style) {
-				div=obj; // unused?
-				obj=obj.style;
-			}
-			v=args[i+2];
-			if (v=='toggle') {
-				if (obj.visibility.indexOf('hid') == -1) {
-					v = 'hide';
-				} else {
-					v = 'show';
-				}
-			}
-			v=(v=='show')?'visible':(v=='hide')?'hidden':v;
-			obj.visibility=v;
-			if (args[i+1]=='followmouse') {
-				var pobj = document.getElementById(args[i+3]);
-				if (pobj === null) {
-					var Xadjust;
-					if (WT_SCRIPT_NAME.indexOf("fanchart") > 0) {
-						obj.top = (msY - 20) + 'px';
-						obj.left = (msX - 20) + 'px';
-					} else if (WT_SCRIPT_NAME.indexOf("index.php") == -1) {
-						Xadjust = document.getElementById('content').offsetLeft;
-						obj.left = (5 + (msX - Xadjust)) + 'px';
-						obj.top = "auto";
-					} else {
-						Xadjust = document.getElementById('content').offsetLeft;
-						obj.top = (msY - 50) + 'px';
-						obj.left = (10 + (msX - Xadjust)) + 'px';
-					}
-					obj.zIndex = 1000;
-				} else {
-					if (pobj.style.top != "auto" && args[i + 3] != "relatives") {
-						obj.top = 5 + msY - parseInt(pobj.style.top) + 'px';
-						if (textDirection == "ltr") {
-							obj.left = 5 + msX - parseInt(pobj.style.left) + 'px';
-						}
-						if (textDirection == "rtl") {
-							obj.right = 5 + msX - parseInt(pobj.style.right) + 'px';
-						}
-					} else {
-						obj.top = "auto";
-						var pagewidth = document.documentElement.offsetWidth + document.documentElement.scrollLeft;
-						if (textDirection == "rtl") {
-							pagewidth -= document.documentElement.scrollLeft;
-						}
-						if (msX > pagewidth - 160) {
-							msX = msX - 150 - pobj.offsetLeft;
-						}
-						var contentdiv = document.getElementById("content");
-						msX = msX - contentdiv.offsetLeft;
-						if (textDirection == "ltr") {
-							obj.left = (5 + msX) + 'px';
-						}
-						obj.zIndex = 1000;
-					}
-				}
-			}
-		}
-	}
-}
-
-var show = false;
-
-function togglechildrenbox(pid) {
-	if (pid) {
-		pid = '.' + pid;
-	} else {
-		pid = '';
-	}
-	if (show) {
-		MM_showHideLayers('childbox'+pid, ' ', 'hide',' ');
-		show=false;
-	} else {
-		MM_showHideLayers('childbox'+pid, ' ', 'show', ' ');
-		show=true;
-	}
-	return false;
-}
-
-var lastfamilybox = "";
-var popupopen = 0;
-
-function show_family_box(boxid, pboxid) {
-	popupopen = 1;
-	lastfamilybox=boxid;
-	if (pboxid=='relatives') {
-		MM_showHideLayers('I' + boxid + 'links', 'followmouse', 'show', '' + pboxid);
-	} else {
-		famlinks = document.getElementById("I"+boxid+"links");
-		divbox = document.getElementById("out-"+boxid);
-		parentbox = document.getElementById("box"+boxid);
-		if (famlinks && divbox && parentbox) {
-			famlinks.style.top = "0px";
-			if (textDirection=="ltr") {
-				famleft = parseInt(divbox.style.width) + 15;
-			} else {
-				famleft = 0;
-			}
-			if (isNaN(famleft)) {
-				famleft = 0;
-				famlinks.style.top = parentbox.offsetTop + "px";
-			}
-			pagewidth = document.documentElement.offsetWidth + document.documentElement.scrollLeft;
-			if (textDirection=="rtl") {
-				pagewidth -= document.documentElement.scrollLeft;
-			}
-			if (famleft + parseInt(parentbox.style.left) > pagewidth - 100) {
-				famleft = 25;
-			}
-			famlinks.style.left = famleft + "px";
-			if (WT_SCRIPT_NAME.indexOf("index.php")!=-1) {
-				famlinks.style.left = "100%";
-			}
-			MM_showHideLayers('I'+boxid+'links', ' ', 'show',''+pboxid);
-			return;
-		}
-		MM_showHideLayers('I'+boxid+'links', 'followmouse', 'show',''+pboxid);
-	}
-}
-
-function hide_family_box(boxid) {
-	MM_showHideLayers('I'+boxid+'links', '', 'hide','');
-	popupopen = 0;
-	lastfamilybox="";
-}
-
-var timeouts = [];
-
-function family_box_timeout(boxid) {
-	timeouts[boxid] = setTimeout("hide_family_box('"+boxid+"')", 2500);
-}
-
-function clear_family_box_timeout(boxid) {
-	clearTimeout(timeouts[boxid]);
-}
-
 function expand_layer(sid) {
-	if (jQuery("#" + sid + "_img").hasClass("icon-plus")) {
-		jQuery('#' + sid + "_img").removeClass("icon-plus").addClass("icon-minus");
-	} else {
-		jQuery('#' + sid + "_img").removeClass("icon-minus").addClass("icon-plus");
-	}
+	jQuery("#" + sid + "_img").toggleClass("icon-plus icon-minus");
 	jQuery('#' + sid).slideToggle("fast");
 	jQuery('#' + sid + '-alt').toggle(); // hide something when we show the layer - and vice-versa
 	return false;
@@ -823,238 +672,6 @@ function valid_date(datefield) {
 	if (datefield.value !== datestr) {
 		datefield.value=datestr;
 	}
-}
-
-var oldheight = 0;
-var oldwidth = 0;
-var oldz = 0;
-var oldleft = 0;
-var big = 0;
-var oldboxid = "";
-var oldimgw = 0;
-var oldimgh = 0;
-var oldimgw1 = 0;
-var oldimgh1 = 0;
-var diff = 0;
-var oldfont = 0;
-var oldname = 0;
-var oldthumbdisp = 0;
-var repositioned = 0;
-var oldiconsdislpay = 0;
-var rv =null;
-
-function expandbox(boxid, bstyle) {
-	if (big==1) {
-		if (clength>0) { // True only if compact chart
-			fontdef.style.display='none';
-		}
-		restorebox(oldboxid, bstyle);
-		if (boxid==oldboxid) {
-			return true;
-		}
-	}
-
-	jQuery(document).ready(function() {
-		clength = jQuery(".compact_view").length;
-	});
-
-	var url = window.location.toString();
-	divbox = document.getElementById("out-"+boxid);
-	inbox = document.getElementById("inout-"+boxid);
-	inbox2 = document.getElementById("inout2-"+boxid);
-	parentbox = document.getElementById("box"+boxid);
-	if (!parentbox) {
-		parentbox=divbox;
-	}
-	gender = document.getElementById("box-"+boxid+"-gender");
-	thumb1 = document.getElementById("box-"+boxid+"-thumb");
-	famlinks = document.getElementById("I"+boxid+"links");
-	icons = document.getElementById("icons-"+boxid);
-	iconz = document.getElementById("iconz-"+boxid);	// This is the Zoom icon
-
-	if (divbox) {
-		if (icons) {
-		oldiconsdislpay = icons.style.display;
-		icons.style.display = "block";
-		}
-		if (jQuery(iconz).hasClass("icon-zoomin")) {
-			jQuery(iconz).removeClass("icon-zoomin").addClass("icon-zoomout");
-		} else {
-			jQuery(iconz).removeClass("icon-zoomout").addClass("icon-zoomin");
-		}
-		oldboxid=boxid;
-		big = 1;
-		oldheight=divbox.style.height;
-		oldwidth=divbox.style.width;
-		oldz = parentbox.style.zIndex;
-		if (url.indexOf("descendancy.php")==-1) {
-			parentbox.style.zIndex = '100';
-		}
-		if (bstyle!=2) {
-			divbox.style.width='300px';
-			diff = 300-parseInt(oldwidth);
-			if (famlinks) {
-				famleft = parseInt(famlinks.style.left);
-				famlinks.style.left = (famleft+diff)+"px";
-			}
-		}
-		divleft = parseInt(parentbox.style.left);
-		if (textDirection=="rtl") {
-			divleft = parseInt(parentbox.style.right);
-		}
-		oldleft=divleft;
-		divleft = divleft - diff;
-		repositioned = 0;
-		if (divleft<0) {
-			repositioned = 1;
-			divleft=0;
-		}
-		divbox.style.height='auto';
-		if (inbox)
-		{
-			inbox.style.display='block';
-			if ( inbox.innerHTML.indexOf("LOADING")>0 )
-			{
-				//-- load data from expand_view.php
-				var pid = boxid.split(".")[0];
-				var oXmlHttp = createXMLHttp();
-				oXmlHttp.open("get", "expand_view.php?pid=" + pid, true);
-				oXmlHttp.onreadystatechange=function()
-				{
-					if (oXmlHttp.readyState==4)
-					{
-						inbox.innerHTML = oXmlHttp.responseText;
-					}
-				};
-				oXmlHttp.send(null);
-			}
-		} else {
-			inbox.style.display='none';
-		}
-
-		if (inbox2) {
-			inbox2.style.display = 'none';
-		}
-
-		fontdef = document.getElementById("fontdef-"+boxid);
-		if (fontdef) {
-			oldfont = fontdef.className;
-			fontdef.className = 'detailsZoom';
-			fontdef.style.display='block';
-		}
-		namedef = document.getElementById("namedef-"+boxid);
-		if (namedef) {
-			oldname = namedef.className;
-			namedef.className = 'nameZoom';
-		}
-		addnamedef = document.getElementById("addnamedef-"+boxid);
-		if (addnamedef) {
-			oldaddname = addnamedef.className;
-			addnamedef.className = 'nameZoom';
-		}
-		if (thumb1) {
-			oldthumbdisp = thumb1.style.display;
-			thumb1.style.display='block';
-			oldimgw = thumb1.offsetWidth;
-			oldimgh = thumb1.offsetHeight;
-			if (oldimgw) {
-				thumb1.style.width = (oldimgw * 2) + "px";
-			}
-			if (oldimgh) {
-				thumb1.style.height = (oldimgh * 2) + "px";
-			}
-		}
-		if (gender) {
-			oldimgw1 = gender.offsetWidth;
-			oldimgh1 = gender.offsetHeight;
-			if (oldimgw1) {
-				gender.style.width = "15px";
-			}
-			if (oldimgh1) {
-				gender.style.height = "15px";
-			}
-		}
-	}
-	return true;
-}
-
-function createXMLHttp() {
-	if (typeof XMLHttpRequest != "undefined") {
-		return new XMLHttpRequest();
-	} else if (window.ActiveXObject) {
-		var ARR_XMLHTTP_VERS=["MSXML2.XmlHttp.5.0","MSXML2.XmlHttp.4.0",
-			"MSXML2.XmlHttp.3.0","MSXML2.XmlHttp","Microsoft.XmlHttp"];
-
-		for (var i = 0; i < ARR_XMLHTTP_VERS.length; i++)
-		{
-			try {
-				var oXmlHttp = new ActiveXObject(ARR_XMLHTTP_VERS[i]);
-				return oXmlHttp;
-			} catch (oError) {}
-		}
-	}
-	throw new Error("XMLHttp object could not be created.");
-}
-
-function restorebox(boxid, bstyle) {
-	divbox = document.getElementById("out-"+boxid);
-	inbox = document.getElementById("inout-"+boxid);
-	inbox2 = document.getElementById("inout2-"+boxid);
-	parentbox = document.getElementById("box"+boxid);
-	if (!parentbox) {
-		parentbox=divbox;
-	}
-	thumb1 = document.getElementById("box-"+boxid+"-thumb");
-	icons = document.getElementById("icons-"+boxid);
-	iconz = document.getElementById("iconz-"+boxid); // This is the Zoom icon
-	if (divbox) {
-		if (icons) {
-			icons.style.display = oldiconsdislpay;
-		}
-		if (jQuery(iconz).hasClass("icon-zoomin")) {
-			jQuery(iconz).removeClass("icon-zoomin").addClass("icon-zoomout");
-		} else {
-			jQuery(iconz).removeClass("icon-zoomout").addClass("icon-zoomin");
-		}
-		big = 0;
-		if (gender) {
-			oldimgw1 = oldimgw1+"px";
-			oldimgh1 = oldimgh1+"px";
-			gender.style.width = oldimgw1;
-			gender.style.height = oldimgh1;
-		}
-		if (thumb1) {
-			oldimgw = oldimgw+"px";
-			oldimgh = oldimgh+"px";
-			thumb1.style.width = oldimgw;
-			thumb1.style.height = oldimgh;
-			thumb1.style.display=oldthumbdisp;
-		}
-		divbox.style.height=oldheight;
-		divbox.style.width=oldwidth;
-		if (parentbox) {
-			parentbox.style.zIndex=oldz;
-		}
-		if (inbox) {
-			inbox.style.display = 'none';
-		}
-		if (inbox2) {
-			inbox2.style.display = 'block';
-		}
-		fontdef = document.getElementById("fontdef-"+boxid);
-		if (fontdef) {
-			fontdef.className = oldfont;
-		}
-		namedef = document.getElementById("namedef-"+boxid);
-		if (namedef) {
-			namedef.className = oldname;
-		}
-		addnamedef = document.getElementById("addnamedef-"+boxid);
-		if (addnamedef) {
-			addnamedef.className = oldaddname;
-		}
-	}
-	return true;
 }
 
 var menutimeouts = [];
@@ -1661,4 +1278,53 @@ jQuery.widget( "ui.dialog", jQuery.ui.dialog, {
 			this._super( event, silent );
 		}
 	}
+});
+
+/* Show / Hide event data for boxes used on charts and elsewhere */
+jQuery ('body').on ('click', '.iconz', function (e) {
+	"use strict";
+	e.stopPropagation ();
+
+	var wrapper = jQuery (this).closest (".person_box_template"),
+		inout = wrapper.find (".inout"),
+		inout2 = wrapper.find (".inout2"),
+		namedef = wrapper.find (".namedef"),
+		basestyle = wrapper.attr ("class").match (/(box-style[0-2])/)[1];
+
+	function showDetails() {
+		toggleExpanded();
+		namedef.addClass ("nameZoom");
+		inout2.hide (0, function () {
+			inout.slideDown ();
+		});
+	}
+
+	function hideDetails() {
+		inout.slideUp (function () {
+			inout2.show (0);
+			namedef.removeClass ("nameZoom");
+			toggleExpanded();
+		});
+	}
+
+	function toggleExpanded() {
+		wrapper.toggleClass(function(){
+			return basestyle + " " + basestyle + "-expanded";
+		})
+	}
+
+	if (!inout.text().length) {
+		wrapper.css("cursor", "progress");
+		inout.load ("expand_view.php?pid=" + wrapper.data("pid"), function () {
+			wrapper.css("cursor", "");
+			showDetails ();
+		});
+	} else {
+		if(wrapper.hasClass(basestyle)) {
+			showDetails ();
+		} else {
+			hideDetails ();
+		}
+	}
+	wrapper.find ('.iconz').toggleClass ("icon-zoomin icon-zoomout");
 });

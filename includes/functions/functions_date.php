@@ -35,10 +35,6 @@ function get_age_at_event($age_string, $show_years) {
 				'/(\d+)([ymwd])/',
 			),
 			function ($match) use ($age_string, $show_years) {
-				switch (WT_LOCALE) {
-				case 'pl':
-					$show_years = true;
-				}
 				switch ($match[2]) {
 				case 'y':
 					if ($show_years || preg_match('/[dm]/', $age_string)) {

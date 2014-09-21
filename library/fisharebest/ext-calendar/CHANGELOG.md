@@ -1,6 +1,12 @@
 CHANGE LOG
 ==========
 
+## 1.1.2 (2014-09-16)
+ - Fix #1; add support for the third parameter in jdtojewish().
+
+## 1.1.1 (2014-09-14)
+ - Cannot inherit abstract classes in PHP 5.3.0 - 5.3.8.
+
 ## 1.1.0 (2014-09-13)
  - Add support for Arabic (Hijri) and Persian (Jalali) calendars.
  - Convert logic to lookup tables for better performance.

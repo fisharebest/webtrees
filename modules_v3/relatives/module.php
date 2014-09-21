@@ -66,7 +66,6 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 	// print parents informations
 	function printFamily(WT_Family $family, $type, $label) {
 		global $controller;
-		global $personcount; // TODO: use a unique id instead?
 		global $SHOW_PRIVATE_RELATIONSHIPS;
 
 		if ($SHOW_PRIVATE_RELATIONSHIPS) {
@@ -109,7 +108,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 						<?php echo get_close_relationship_name($controller->record, $person); ?>
 					</td>
 					<td class="<?php echo $controller->getPersonStyle($person); ?>">
-						<?php print_pedigree_person($person, 2, 0, $personcount++); ?>
+						<?php print_pedigree_person($person, 2); ?>
 					</td>
 					</tr>
 				<?php
@@ -143,7 +142,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 						<?php echo get_close_relationship_name($controller->record, $person); ?>
 					</td>
 					<td class="<?php echo $controller->getPersonStyle($person); ?>">
-						<?php print_pedigree_person($person, 2, 0, $personcount++); ?>
+						<?php print_pedigree_person($person, 2); ?>
 					</td>
 				</tr>
 				<?php
@@ -228,7 +227,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 						<?php echo get_close_relationship_name($controller->record, $person); ?>
 					</td>
 					<td class="<?php echo $controller->getPersonStyle($person); ?>">
-						<?php print_pedigree_person($person, 2, 0, $personcount++); ?>
+						<?php print_pedigree_person($person, 2); ?>
 					</td>
 				</tr>
 				<?php
@@ -238,13 +237,9 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		// Re-order children / add a new child
 		if ($family->canEdit()) {
 			if ($type == 'FAMS') {
-				$child_u = WT_I18N::translate('Add a new son or daughter');
-				$child_m = WT_I18N::translate('son');
-				$child_f = WT_I18N::translate('daughter');
+				$add_child_text = WT_I18N::translate('Add a new son or daughter');
 			} else {
-				$child_u = WT_I18N::translate('Add a new brother or sister');
-				$child_m = WT_I18N::translate('brother');
-				$child_f = WT_I18N::translate('sister');
+				$add_child_text = WT_I18N::translate('Add a new brother or sister');
 			}
 			?>
 			<tr>
@@ -254,7 +249,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 					<?php } ?>
 				</td>
 				<td class="facts_value">
-					<a href="#" onclick="return add_child_to_family('<?php echo $family->getXref(); ?>');"><?php echo $child_u; ?></a>
+					<a href="#" onclick="return add_child_to_family('<?php echo $family->getXref(); ?>');"><?php echo $add_child_text; ?></a>
 					<span style='white-space:nowrap;'>
 						<a href="#" class="icon-sex_m_15x15" onclick="return add_child_to_family('<?php echo $family->getXref(); ?>','M');"></a>
 						<a href="#" class="icon-sex_f_15x15" onclick="return add_child_to_family('<?php echo $family->getXref(); ?>','F');"></a>
@@ -271,7 +266,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 
 	// Implement WT_Module_Tab
 	public function getTabContent() {
-		global $SHOW_AGE_DIFF, $GEDCOM, $show_full, $personcount, $controller;
+		global $SHOW_AGE_DIFF, $show_full, $controller;
 
 		if (isset($show_full)) $saved_show_full = $show_full; // We always want to see full details here
 		$show_full = 1;
@@ -283,7 +278,6 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		<label for="checkbox_elder"><?php echo WT_I18N::translate('Show date differences'); ?></label>
 		</td></tr></table>
 		<?php
-		$personcount=0;
 		$families = $controller->record->getChildFamilies();
 		if (!$families && $controller->record->canEdit()) {
 			?>

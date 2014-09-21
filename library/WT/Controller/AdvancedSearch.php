@@ -187,7 +187,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 		}
 	}
 
-	function advancedSearch($justSql=false, $table="individuals", $prefix="i") {
+	function advancedSearch() {
 		$this->myindilist = array ();
 		$fct = count($this->fields);
 		if ($fct==0) {
@@ -229,6 +229,8 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 					} else {
 						$indi_plac=true;
 					}
+				} elseif ($field == 'FAMS:NOTE') {
+					$spouse_family = true;
 				}
 			}
 		}
@@ -548,10 +550,14 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 					break;
 				}
 			} elseif ($parts[0]=='FAMS') {
-				$sql.=" AND fam.f_gedcom LIKE CONCAT('%', ?, '%')";
+				// e.g. searches for occupation, religion, note, etc.
+				$sql.=" AND fam.f_gedcom REGEXP CONCAT('\n[0-9] ', ?, '(.*\n[0-9] CONT)* [^\n]*', ?)";
+				$bind[]=$parts[1];
 				$bind[]=$value;
 			} else {
-				$sql.=" AND ind.i_gedcom LIKE CONCAT('%', ?, '%')";
+				// e.g. searches for occupation, religion, note, etc.
+				$sql.=" AND ind.i_gedcom REGEXP CONCAT('\n[0-9] ', ?, '(.*\n[0-9] CONT)* [^\n]*', ?)";
+				$bind[]=$parts[0];
 				$bind[]=$value;
 			}
 		}

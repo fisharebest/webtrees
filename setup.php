@@ -331,7 +331,7 @@ if ($dbname_ok) {
 	try {
 		// PhpGedView (4.2.3 and earlier) and many other applications have a USERS table.
 		// webtrees has a USER table
-		$dummy=WT_DB::query("SELECT COUNT(*) FROM `##users`")->fetchOne();
+		$dummy=WT_DB::prepare("SELECT COUNT(*) FROM `##users`")->fetchOne();
 		echo '<p class="bad">', WT_I18N::translate('This database and table-prefix appear to be used by another application.  If you have an existing PhpGedView system, you should create a new webtrees system.  You can import your PhpGedView data and settings later.'), '</p>';
 		$dbname_ok=false;
 	} catch (PDOException $ex) {
@@ -342,7 +342,7 @@ if ($dbname_ok) {
 	try {
 		// PhpGedView (4.2.4 and later) has a site_setting.site_setting_name column.
 		// [We changed the column name in webtrees, so we can tell the difference!]
-		$dummy=WT_DB::query("SELECT site_setting_value FROM `##site_setting` WHERE site_setting_name='PGV_SCHEMA_VERSION'")->fetchOne();
+		$dummy=WT_DB::prepare("SELECT site_setting_value FROM `##site_setting` WHERE site_setting_name='PGV_SCHEMA_VERSION'")->fetchOne();
 		echo '<p class="bad">', WT_I18N::translate('This database and table-prefix appear to be used by another application.  If you have an existing PhpGedView system, you should create a new webtrees system.  You can import your PhpGedView data and settings later.'), '</p>';
 		$dbname_ok=false;
 	} catch (PDOException $ex) {

@@ -37,7 +37,6 @@ $controller
 	->pageHeader();
 
 require_once WT_ROOT.'includes/functions/functions_edit.php';
-require_once WT_ROOT.'includes/functions/functions_import.php';
 
 $ged    = $GEDCOM;
 $gid1   = WT_Filter::post('gid1', WT_REGEX_XREF);

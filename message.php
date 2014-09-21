@@ -46,9 +46,8 @@ $controller->setPageTitle(WT_I18N::translate('webtrees message'));
 $to_user = User::findByIdentifier($to);
 
 // Only admins can send broadcast messages
-if ((!$to_user || $to=='all' || $to=='last_6mo' || $to=='never_logged') && !Auth::isAdmin()) {
+if (!$to_user || ($to=='all' || $to=='last_6mo' || $to=='never_logged') && !Auth::isAdmin()) {
 	// TODO, what if we have a user called "all" or "last_6mo" or "never_logged" ???
-	WT_FlashMessages::addMessage(WT_I18N::translate('Message was not sent'));
 	$controller->pageHeader();
 	$controller->addInlineJavascript('window.opener.location.reload(); window.close();');
 	exit;

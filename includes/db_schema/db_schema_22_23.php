@@ -31,7 +31,7 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-$_data_dir = realpath(WT_Site::preference('INDEX_DIRECTORY') ? WT_Site::preference('INDEX_DIRECTORY') : 'data').DIRECTORY_SEPARATOR;
+$_data_dir = realpath(WT_Site::getPreference('INDEX_DIRECTORY') ? WT_Site::getPreference('INDEX_DIRECTORY') : 'data').DIRECTORY_SEPARATOR;
 
 $_cfgs = self::prepare(
 	"SELECT gs1.gedcom_id AS gedcom_id, gs1.setting_value AS media_directory, gs2.setting_value AS use_media_firewall, gs3.setting_value AS media_firewall_thumbs, gs4.setting_value AS media_firewall_rootdir" .
@@ -94,4 +94,4 @@ unset($_data_dir, $_cfgs, $_cfg, $_mf_dir, $_tmp_dir);
 self::exec("DELETE FROM `##gedcom_setting` WHERE setting_name IN ('USE_MEDIA_FIREWALL', 'MEDIA_FIREWALL_THUMBS', 'MEDIA_FIREWALL_ROOTDIR')");
 
 // Update the version to indicate success
-WT_Site::preference($schema_name, $next_version);
+WT_Site::setPreference($schema_name, $next_version);

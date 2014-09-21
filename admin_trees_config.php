@@ -509,7 +509,7 @@ $controller
 						<?php echo WT_I18N::translate('Privacy options'), help_link('HIDE_LIVE_PEOPLE'); ?>
 					</td>
 					<td>
-						<?php  echo radio_buttons('NEW_HIDE_LIVE_PEOPLE', array(false=>WT_I18N::translate('disable'), true=>WT_I18N::translate('enable')), $HIDE_LIVE_PEOPLE, ''); ?>
+						<?php  echo radio_buttons('NEW_HIDE_LIVE_PEOPLE', array(false=>WT_I18N::translate('disable'), true=>WT_I18N::translate('enable')), $HIDE_LIVE_PEOPLE); ?>
 					</td>
 				</tr>
 				<tr>

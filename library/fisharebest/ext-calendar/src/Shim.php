@@ -220,18 +220,17 @@ class Shim {
 	 *
 	 * @return int
 	 */
-	public static function easterDate($year=null) {
-		if ($year === null) {
-			$year = date('Y');
-		} elseif ($year < 1970 || $year > 2037) {
+	public static function easterDate($year) {
+		if ($year < 1970 || $year > 2037) {
 			return trigger_error('This function is only valid for years between 1970 and 2037 inclusive', E_USER_WARNING);
 		}
+
 		$gregorian = new GregorianCalendar;
 		$days = $gregorian->easterDays($year);
 
-        // Calculate time-zone offset
-        $date_time = new \DateTime('now', new \DateTimeZone(date_default_timezone_get()));
-        $offset_seconds = $date_time->format('Z');
+		// Calculate time-zone offset
+		$date_time = new \DateTime('now', new \DateTimeZone(date_default_timezone_get()));
+		$offset_seconds = $date_time->format('Z');
 
 		if ($days < 11) {
 			return jdtounix($gregorian->ymdToJd($year, 3, $days + 21)) - $offset_seconds;
@@ -439,15 +438,18 @@ class Shim {
 	 * @link https://php.net/JdtoJewish
 	 *
 	 * @param int $juliandaycount A Julian Day number
-	 * @param bool $hebrew        If set, the date is returned in Hebrew text
-	 * @param int $fl             If set, then add alafim and gereshayim to the text
+	 * @param bool $hebrew        If true, the date is returned in Hebrew text
+	 * @param int $fl             If $hebrew is true, then add alafim and gereshayim to the text
 	 *
 	 * @return string A string of the form "month/day/year"
 	 */
-	public static function jdToJewish($juliandaycount, $hebrew = false, $fl = 0) {
+	public static function jdToJewish($juliandaycount, $hebrew, $fl) {
 		$jewish = new JewishCalendar;
 
 		if ($hebrew) {
+			if ($juliandaycount < 347998 || $juliandaycount > 4000075) {
+				return trigger_error('Year out of range (0-9999).', E_USER_WARNING);
+			}
 			$hebrew = $jewish->jdToHebrew($juliandaycount, $fl & CAL_JEWISH_ADD_ALAFIM_GERESH, $fl & CAL_JEWISH_ADD_ALAFIM, $fl & CAL_JEWISH_ADD_GERESHAYIM);
 			// Our code generates Hebrew punctuation.  PHP uses ASCII punctuation.
 			$hebrew = strtr($hebrew, array(JewishCalendar::GERESH => "'", JewishCalendar::GERSHAYIM => '"'));

@@ -146,7 +146,7 @@ for ($i=($controller->treesize-1); $i>=0; $i--) {
 	if (($talloffset == 3) && ($curgen ==2)) {$yoffset +=10;}
 	echo $xoffset, "px; top:", $yoffset, "px; width:", ($controller->pbwidth), "px; height:", $controller->pbheight, "px; z-index:", $zindex, ";\">";
 	if (!isset($controller->treeid[$i])) {$controller->treeid[$i] = false;}
-	print_pedigree_person(WT_Individual::getInstance($controller->treeid[$i]), 1, $iref, 1);
+	print_pedigree_person(WT_Individual::getInstance($controller->treeid[$i]));
 	if ($can_go_back) {
 		$did = 1;
 		if ($i > (int)($controller->treesize/2) + (int)($controller->treesize/4)) {
@@ -182,20 +182,20 @@ if (count($famids)>0) {
 			$addxoffset = 0;
 		}
 		echo $addxoffset, 'px; top:', $yoffset, 'px;">';
-		echo '<a href="#" onclick="togglechildrenbox(); return false;" class=" ',$arrow,'"></a>';
+		echo '<a href="#" class=" ',$arrow,'"></a>';
 		break;
 	case 1:
 		if ($PEDIGREE_GENERATIONS<4) $basexoffset += 60;
 		echo $basexoffset, 'px; top:', $yoffset, 'px;">';
-		echo '<a href="#" onclick="togglechildrenbox(); return false;" class=" ',$arrow,'"></a>';
+		echo '<a href="#" class=" ',$arrow,'"></a>';
 		break;
 	case 2:
 		echo ($xoffset-10+$controller->pbwidth/2), 'px; top:', ($yoffset+$controller->pbheight/2+10), 'px;">';
-		echo '<a href="#" onclick="togglechildrenbox(); return false;" class="icon-darrow"></a>';
+		echo '<a href="#" class="icon-darrow"></a>';
 		break;
 	case 3:
 		echo ($xoffset-10+$controller->pbwidth/2), 'px; top:', ($yoffset-$controller->pbheight/2-10), 'px;">';
-		echo '<a href="#" onclick="togglechildrenbox(); return false;" class="icon-uarrow"></a>';
+		echo '<a href="#" class="icon-uarrow"></a>';
 		break;
 	}
 	echo '</div>';
@@ -252,93 +252,84 @@ echo '</div>'; //close #pedigree-page
 
 // Expand <div id="content"> to include the absolutely-positioned elements.
 $controller->addInlineJavascript('
+	var WT_PEDIGREE_CHART = (function() {
 	jQuery("html").css("overflow","visible"); // workaround for chrome v37 canvas bugs
-	content_div = document.getElementById("content");
-	if (content_div) {
-		content_div.style.height="'.($maxyoffset+30).'px";
-	}
+	jQuery("#content").css("height", "' . ($maxyoffset+30) . '");
+
+	jQuery("#childarrow").on("click", "a", function(e) {
+		e.preventDefault();
+		jQuery("#childbox").toggle();
+	});
 
 	// Draw joining lines in <canvas>
-	// need to be able to read styles from style.css files
-	function getStyle(oElm, strCssRule){
-		var strValue = "";
-		if(document.defaultView && document.defaultView.getComputedStyle){
-			strValue = document.defaultView.getComputedStyle(oElm, "").getPropertyValue(strCssRule);
-		}
-		else if(oElm.currentStyle){
-			strCssRule = strCssRule.replace(/\-(\w)/g, function (strMatch, p1){
-				return p1.toUpperCase();
-			});
-			strValue = oElm.currentStyle[strCssRule];
-		}
-		return strValue;
-	}
 	// Set variables
-		var c=document.getElementById("pedigree_canvas");
-		var ctx=c.getContext("2d");
-		var textdirection = "'.$TEXT_DIRECTION.'";
-		var talloffset = '.$talloffset.';
-		var canvaswidth = '.($canvaswidth).';
-		var offset_x = 20;
-		var offset_y = '.$controller->pbheight.'/2+'.$controller->linewidth.';
-		var lineDrawx = new Array("'. join(array_reverse ($lineDrawx),'","'). '");
-		var lineDrawy = new Array("'. join(array_reverse ($lineDrawy),'","'). '");
-		var offset_x2 = '.$controller->pbwidth.'/2+'.$controller->linewidth.';
-		var offset_y2 = '.$controller->pbheight.'*2;
-		var lineDrawx2 = new Array("'. join($lineDrawx,'","'). '");
-		var lineDrawy2 = new Array("'. join($lineDrawy,'","'). '");
-		var maxjoins = Math.pow(2,'.$PEDIGREE_GENERATIONS.');
+	var textdirection = "'.$TEXT_DIRECTION.'",
+		talloffset = '.$talloffset.',
+		canvaswidth = '.($canvaswidth).',
+		offset_x = 20,
+		offset_y = '.$controller->pbheight.'/2+'.$controller->linewidth.',
+		lineDrawx = new Array("'. join(array_reverse ($lineDrawx),'","'). '"),
+		lineDrawy = new Array("'. join(array_reverse ($lineDrawy),'","'). '"),
+		offset_x2 = '.$controller->pbwidth.'/2+'.$controller->linewidth.',
+		offset_y2 = '.$controller->pbheight.'*2,
+		lineDrawx2 = new Array("'. join($lineDrawx,'","'). '"),
+		lineDrawy2 = new Array("'. join($lineDrawy,'","'). '"),
+		maxjoins = Math.pow(2,'.$PEDIGREE_GENERATIONS.'),
+		ctx = jQuery("#pedigree_canvas")[0].getContext("2d");
+
+	// Set line styles
+	ctx.strokeStyle = jQuery("#pedigree_canvas").css("color");
+	ctx.lineWidth = '.$controller->linewidth.';
+	ctx.shadowColor = "'.$controller->shadowcolor.'";
+	ctx.shadowBlur = '.$controller->shadowblur.';
+	ctx.shadowOffsetX = '.$controller->shadowoffsetX.';
+	ctx.shadowOffsetY = '.$controller->shadowoffsetY.';
+
 	//Draw the lines
-		if (talloffset < 2) { // landscape and portrait styles
-			for (var i = 0; i <= maxjoins-3; i++) {
-				if(i%2==0){
-					if (textdirection == "rtl") {
-						ctx.moveTo(canvaswidth-lineDrawx[i],lineDrawy[i]-0+offset_y+offset_x/2);
-						ctx.lineTo(canvaswidth-lineDrawx[i]+offset_x,lineDrawy[i]-0+offset_y+offset_x/2);
-						ctx.lineTo(canvaswidth-lineDrawx[i+1]+offset_x,lineDrawy[i+1]-0+offset_y-offset_x/2);
-						ctx.lineTo(canvaswidth-lineDrawx[i+1],lineDrawy[i+1]-0+offset_y-offset_x/2);
-					} else {
-						ctx.moveTo(lineDrawx[i],lineDrawy[i]-0+offset_y+offset_x/2);
-						ctx.lineTo(lineDrawx[i]-offset_x,lineDrawy[i]-0+offset_y+offset_x/2);
-						ctx.lineTo(lineDrawx[i+1]-offset_x,lineDrawy[i+1]-0+offset_y-offset_x/2);
-						ctx.lineTo(lineDrawx[i+1],lineDrawy[i+1]-0+offset_y-offset_x/2);
-					}
+		switch (talloffset) {
+		case 0: // portrait
+			// drop through
+		case 1: // landscape
+			for (var i = 0; i <= maxjoins-3; i+=2) {
+				if (textdirection == "rtl") {
+					ctx.moveTo(canvaswidth-lineDrawx[i],lineDrawy[i]-0+offset_y+offset_x/2);
+					ctx.lineTo(canvaswidth-lineDrawx[i]+offset_x,lineDrawy[i]-0+offset_y+offset_x/2);
+					ctx.lineTo(canvaswidth-lineDrawx[i+1]+offset_x,lineDrawy[i+1]-0+offset_y-offset_x/2);
+					ctx.lineTo(canvaswidth-lineDrawx[i+1],lineDrawy[i+1]-0+offset_y-offset_x/2);
+				} else {
+					ctx.moveTo(lineDrawx[i],lineDrawy[i]-0+offset_y+offset_x/2);
+					ctx.lineTo(lineDrawx[i]-offset_x,lineDrawy[i]-0+offset_y+offset_x/2);
+					ctx.lineTo(lineDrawx[i+1]-offset_x,lineDrawy[i+1]-0+offset_y-offset_x/2);
+					ctx.lineTo(lineDrawx[i+1],lineDrawy[i+1]-0+offset_y-offset_x/2);
 				}
 			}
-		}
-		if (talloffset == 2) { // oldest at top
-			for (var i = 0; i <= maxjoins; i++) {
-				if(i%2!=0){
-					if (textdirection == "rtl") {
-						ctx.moveTo(lineDrawx2[i]-0+offset_x2-offset_x,lineDrawy2[i]);
-						ctx.lineTo(lineDrawx2[i]-0+offset_x2-offset_x,lineDrawy2[i]-0+offset_y2);
-						ctx.lineTo(lineDrawx2[i+1]-0+offset_x2+offset_x/2,lineDrawy2[i]-0+offset_y2);
-						ctx.lineTo(lineDrawx2[i+1]-0+offset_x2+offset_x/2,lineDrawy2[i]);
-					} else {
-						ctx.moveTo(lineDrawx2[i]-0+offset_x2-offset_x/2,lineDrawy2[i]);
-						ctx.lineTo(lineDrawx2[i]-0+offset_x2-offset_x/2,lineDrawy2[i]-0+offset_y2);
-						ctx.lineTo(lineDrawx2[i+1]-0+offset_x2+offset_x/2,lineDrawy2[i]-0+offset_y2);
-						ctx.lineTo(lineDrawx2[i+1]-0+offset_x2+offset_x/2,lineDrawy2[i]);
-					}
-				}
-			}
-		}
-		if (talloffset == 3) { // oldest at bottom
-			for (var i = 0; i <= maxjoins; i++) {
-				if(i%2!=0){
+			break;
+		case 2: // oldest at top
+			for (var i = 1; i <= maxjoins; i+=2) {
+				if (textdirection == "rtl") {
 					ctx.moveTo(lineDrawx2[i]-0+offset_x2-offset_x,lineDrawy2[i]);
-					ctx.lineTo(lineDrawx2[i]-0+offset_x2-offset_x,lineDrawy2[i]-offset_y2/2);
-					ctx.lineTo(lineDrawx2[i+1]-0+offset_x2+offset_x/2,lineDrawy2[i]-offset_y2/2);
+					ctx.lineTo(lineDrawx2[i]-0+offset_x2-offset_x,lineDrawy2[i]-0+offset_y2);
+					ctx.lineTo(lineDrawx2[i+1]-0+offset_x2+offset_x/2,lineDrawy2[i]-0+offset_y2);
+					ctx.lineTo(lineDrawx2[i+1]-0+offset_x2+offset_x/2,lineDrawy2[i]);
+				} else {
+					ctx.moveTo(lineDrawx2[i]-0+offset_x2-offset_x/2,lineDrawy2[i]);
+					ctx.lineTo(lineDrawx2[i]-0+offset_x2-offset_x/2,lineDrawy2[i]-0+offset_y2);
+					ctx.lineTo(lineDrawx2[i+1]-0+offset_x2+offset_x/2,lineDrawy2[i]-0+offset_y2);
 					ctx.lineTo(lineDrawx2[i+1]-0+offset_x2+offset_x/2,lineDrawy2[i]);
 				}
 			}
+			break;
+		case 3: // oldest at bottom
+			// drop through
+		default:  // anything else
+			for (var i = 1; i <= maxjoins; i+=2) {
+				ctx.moveTo(lineDrawx2[i]-0+offset_x2-offset_x,lineDrawy2[i]);
+				ctx.lineTo(lineDrawx2[i]-0+offset_x2-offset_x,lineDrawy2[i]-offset_y2/2);
+				ctx.lineTo(lineDrawx2[i+1]-0+offset_x2+offset_x/2,lineDrawy2[i]-offset_y2/2);
+				ctx.lineTo(lineDrawx2[i+1]-0+offset_x2+offset_x/2,lineDrawy2[i]);
+			}
 		}
-		// Set line styles
-		ctx.strokeStyle = getStyle(document.getElementById("pedigree_canvas"), "color");
-		ctx.lineWidth = '.$controller->linewidth.';
-		ctx.shadowColor = "'.$controller->shadowcolor.'";
-		ctx.shadowBlur = '.$controller->shadowblur.';
-		ctx.shadowOffsetX = '.$controller->shadowoffsetX.';
-		ctx.shadowOffsetY = '.$controller->shadowoffsetY.';
 		ctx.stroke();
+		return "' . strip_tags($controller->root->getFullName()) . '";
+	})();
 ');

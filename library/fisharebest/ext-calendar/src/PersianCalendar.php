@@ -72,7 +72,7 @@ class PersianCalendar extends Calendar implements CalendarInterface {
 	 * @return int[];
 	 */
 	public function jdToYmd($jd) {
-		$depoch = $jd - self::YMDtoJD(475, 1, 1);
+		$depoch = $jd - $this->ymdToJd(475, 1, 1);
 		$cycle = (int)($depoch / 1029983);
 		$cyear = $depoch % 1029983;
 		if ($cyear == 1029982) {
@@ -87,9 +87,9 @@ class PersianCalendar extends Calendar implements CalendarInterface {
 		if ($year <= 0) {
 			$year--;
 		}
-		$yday = ($jd - self::YMDtoJD($year, 1, 1)) + 1;
+		$yday = ($jd - $this->ymdToJd($year, 1, 1)) + 1;
 		$month = ($yday <= 186) ? ceil($yday / 31) : ceil(($yday - 6) / 30);
-		$day = ($jd - self::YMDtoJD($year, $month, 1)) + 1;
+		$day = ($jd - $this->ymdToJd($year, $month, 1)) + 1;
 
 		return array($year, (int)$month, (int)$day);
 	}

@@ -23,7 +23,6 @@
 
 class WT_Repository extends WT_GedcomRecord {
 	const RECORD_TYPE = 'REPO';
-	const SQL_FETCH   = "SELECT o_gedcom FROM `##other` WHERE o_id=? AND o_file=?";
 	const URL_PREFIX  = 'repo.php?rid=';
 
 	// Fetch the record from the database

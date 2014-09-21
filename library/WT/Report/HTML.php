@@ -157,6 +157,11 @@ class WT_Report_HTML extends WT_Report_Base {
 		}
 	}
 
+	/**
+	 * @param $element
+	 *
+	 * @return mixed
+	 */
 	function addElement($element) {
 		if ($this->processing == "B") {
 			return $this->bodyElements[] = $element;
@@ -167,6 +172,9 @@ class WT_Report_HTML extends WT_Report_Base {
 		}
 	}
 
+	/**
+	 *
+	 */
 	function runPageHeader() {
 		foreach ($this->pageHeaderElements as $element) {
 			if (is_object($element)) {
@@ -179,6 +187,9 @@ class WT_Report_HTML extends WT_Report_Base {
 		}
 	}
 
+	/**
+	 *
+	 */
 	function Footnotes() {
 		$this->currentStyle = "";
 		if (!empty($this->printedfootnotes)) {
@@ -188,6 +199,9 @@ class WT_Report_HTML extends WT_Report_Base {
 		}
 	}
 
+	/**
+	 *
+	 */
 	function run() {
 		$controller = new WT_Controller_Simple();
 		$controller
@@ -294,34 +308,100 @@ class WT_Report_HTML extends WT_Report_Base {
 		return new WT_Report_HTML_Cell($width, $height, $border, $align, $bgcolor, $style, $ln, $top, $left, $fill, $stretch, $bocolor, $tcolor, $reseth);
 	}
 
+	/**
+	 * @param $width
+	 * @param $height
+	 * @param $border
+	 * @param $bgcolor
+	 * @param $newline
+	 * @param $left
+	 * @param $top
+	 * @param $pagecheck
+	 * @param $style
+	 * @param $fill
+	 * @param $padding
+	 * @param $reseth
+	 *
+	 * @return WT_Report_HTML_TextBox
+	 */
 	function createTextBox($width, $height, $border, $bgcolor, $newline, $left, $top, $pagecheck, $style, $fill, $padding, $reseth) {
 		return new WT_Report_HTML_TextBox($width, $height, $border, $bgcolor, $newline, $left, $top, $pagecheck, $style, $fill, $padding, $reseth);
 	}
 
+	/**
+	 * @param $style
+	 * @param $color
+	 *
+	 * @return WT_Report_HTML_Text
+	 */
 	function createText($style, $color) {
 		return new WT_Report_HTML_Text($style, $color);
 	}
 
+	/**
+	 * @param string $style
+	 *
+	 * @return WT_Report_HTML_Footnote
+	 */
 	function createFootnote($style = "") {
 		return new WT_Report_HTML_Footnote($style);
 	}
 
+	/**
+	 * @return WT_Report_HTML_PageHeader
+	 */
 	function createPageHeader() {
 		return new WT_Report_HTML_PageHeader();
 	}
 
+	/**
+	 * @param $file
+	 * @param $x
+	 * @param $y
+	 * @param $w
+	 * @param $h
+	 * @param $align
+	 * @param $ln
+	 *
+	 * @return WT_Report_HTML_Image
+	 */
 	function createImage($file, $x, $y, $w, $h, $align, $ln) {
 		return new WT_Report_HTML_Image($file, $x, $y, $w, $h, $align, $ln);
 	}
 
+	/**
+	 * @param $mediaobject
+	 * @param $x
+	 * @param $y
+	 * @param $w
+	 * @param $h
+	 * @param $align
+	 * @param $ln
+	 *
+	 * @return WT_Report_HTML_Image
+	 */
 	function createImageFromObject($mediaobject, $x, $y, $w, $h, $align, $ln) {
 		return new WT_Report_HTML_Image($mediaobject->getHtmlUrlDirect('thumb'), $x, $y, $w, $h, $align, $ln);
 	}
 
+	/**
+	 * @param $x1
+	 * @param $y1
+	 * @param $x2
+	 * @param $y2
+	 *
+	 * @return WT_Report_HTML_Line
+	 */
 	function createLine($x1, $y1, $x2, $y2) {
 		return new WT_Report_HTML_Line($x1, $y1, $x2, $y2);
 	}
 
+	/**
+	 * @param $tag
+	 * @param $attrs
+	 *
+	 * @return WT_Report_HTML_Html
+	 */
 	function createHTML($tag, $attrs) {
 		return new WT_Report_HTML_Html($tag, $attrs);
 	}
@@ -366,6 +446,11 @@ class WT_Report_HTML extends WT_Report_Base {
 		}
 	}
 
+	/**
+	 * @param $element
+	 *
+	 * @return int
+	 */
 	function addPageHeader($element) {
 		$this->pageHeaderElements[] = $element;
 		return count($this->headerElements) - 1;
@@ -419,10 +504,16 @@ class WT_Report_HTML extends WT_Report_Base {
 		return (substr_count($str, "\n") + 1);
 	}
 
+	/**
+	 * @return string
+	 */
 	function getCurrentStyle() {
 		return $this->currentStyle;
 	}
 
+	/**
+	 * @return int
+	 */
 	function getCurrentStyleHeight() {
 		if (empty($this->currentStyle)) {
 			return $this->defaultFontSize;
@@ -431,6 +522,11 @@ class WT_Report_HTML extends WT_Report_Base {
 		return $style["size"];
 	}
 
+	/**
+	 * @param $cellWidth
+	 *
+	 * @return int
+	 */
 	function getFootnotesHeight($cellWidth) {
 		$h = 0;
 		foreach ($this->printedfootnotes as $element) {
@@ -448,10 +544,18 @@ class WT_Report_HTML extends WT_Report_Base {
 		return (int)($this->noMarginWidth - $this->X);
 	}
 
+	/**
+	 * @return float
+	 */
 	function getPageHeight() {
 		return $this->pageh - $this->topmargin;
 	}
 
+	/**
+	 * @param $text
+	 *
+	 * @return bool|int
+	 */
 	function getStringWidth($text) {
 		$style = $this->getStyle($this->currentStyle);
 		return mb_strlen($text) * ($style['size'] / 2);
@@ -498,6 +602,9 @@ class WT_Report_HTML extends WT_Report_Base {
 		return $this->pageN;
 	}
 
+	/**
+	 * @param $s
+	 */
 	function setCurrentStyle($s) {
 		$this->currentStyle = $s;
 	}
@@ -594,922 +701,4 @@ class WT_Report_HTML extends WT_Report_Base {
 		echo $htmlcode;
 	}
 
-} //-- end Report
-
-/**
- * Cell element - HTML
- */
-class WT_Report_HTML_Cell extends WT_Report_Base_Cell {
-	/**
-	 * HTML Cell renderer
-	 *
-	 * @param WT_Report_HTML $html
-	 *
-	 * @return void
-	 */
-	function render($html) {
-		if (strpos($this->text, "{{:ptp:}}") !== false) {
-			return;
-		}
-		$temptext = str_replace("#PAGENUM#", $html->PageNo(), $this->text);
-		// underline «title» part of Source item
-		$temptext = str_replace(array('«', '»'), array('<u>', '</u>'), $temptext);
-
-		// Setup the style name
-		if ($html->getCurrentStyle() != $this->styleName) {
-			$html->setCurrentStyle($this->styleName);
-		}
-
-		/**
-		 * Keep the original values, use these local variables
-		 */
-		$cW = 0; // Class Width
-		$cP = 0; // Class Padding
-
-		// If (Future-feature-enable/disable cell padding)
-		$cP = $html->cPadding;
-
-		// Adjust the positions
-		if ($this->left == ".") {
-			$this->left = $html->GetX();
-		} else {
-			$html->SetX($this->left);
-		}
-
-		if ($this->top == ".") {
-			$this->top = $html->GetY();
-		} else {
-			$html->SetY($this->top);
-		}
-
-		// Start collecting the HTML code
-		echo "<div class=\"", $this->styleName, "\" style=\"position:absolute;top:", $this->top, "pt;";
-		// Use Cell around padding to support RTL also
-		echo "padding:", $cP, "pt;";
-		// LTR (left) or RTL (right)
-		echo $html->alignRTL, ":", $this->left, "pt;";
-		// Background color
-		if (!empty($this->bgcolor)) {
-			echo "background-color:", $this->bgcolor, ";";
-		}
-		// Border setup
-		$bpixX = 0;
-		$bpixY = 0;
-		if (!empty($this->border)) {
-			// Border all around
-			if ($this->border == 1) {
-				echo " border:solid ";
-				if (!empty($this->bocolor)) {
-					echo $this->bocolor;
-				} else {
-					echo "black";
-				}
-				echo " 1pt;";
-				$bpixX = 1;
-				$bpixY = 1;
-			} else {
-				if (stripos($this->border, "T") !== false) {
-					echo " border-top:solid ";
-					if (!empty($this->bocolor)) {
-						echo $this->bocolor;
-					} else {
-						echo "black";
-					}
-					echo " 1pt;";
-					$bpixY = 1;
-				}
-				if (stripos($this->border, "B") !== false) {
-					echo " border-bottom:solid ";
-					if (!empty($this->bocolor)) {
-						echo $this->bocolor;
-					} else {
-						echo "black";
-					}
-					echo " 1pt;";
-					$bpixY = 1;
-				}
-				if (stripos($this->border, "R") !== false) {
-					echo " border-right:solid ";
-					if (!empty($this->bocolor)) {
-						echo $this->bocolor;
-					} else {
-						echo "black";
-					}
-					echo " 1pt;";
-					$bpixX = 1;
-				}
-				if (stripos($this->border, "L") !== false) {
-					echo " border-left:solid ";
-					if (!empty($this->bocolor)) {
-						echo $this->bocolor;
-					} else {
-						echo "black";
-					}
-					echo " 1pt;";
-					$bpixX = 1;
-				}
-			}
-		}
-		// Check the width if set to page wide OR set by xml to larger then page wide
-		if ($this->width == 0 || $this->width > $html->getRemainingWidth()) {
-			$this->width = $html->getRemainingWidth();
-		}
-		// We have to calculate a different width for the padding, counting on both side
-		$cW = $this->width - ($cP * 2);
-
-		// If there is any text
-		if (!empty($temptext)) {
-			// Wrap the text
-			$temptext = $html->textWrap($temptext, $cW);
-			$tmph = $html->getTextCellHeight($temptext);
-			// Add some cell padding
-			$this->height += $cP;
-			if ($tmph > $this->height) {
-				$this->height = $tmph;
-			}
-		}
-		// Check the last cell height and ajust with the current cell height
-		if ($html->lastCellHeight > $this->height) {
-			$this->height = $html->lastCellHeight;
-		}
-		echo " width:", $cW - $bpixX, "pt;height:", $this->height - $bpixY, "pt;";
-
-		// Text alignment
-		switch ($this->align) {
-		case "C":
-			echo " text-align:center;";
-			break;
-		case "L":
-			echo " text-align:left;";
-			break;
-		case "R":
-			echo " text-align:right;";
-			break;
-		}
-
-		// Print the collected HTML code
-		echo "\">";
-
-		// Print URL
-		if (!empty($this->url)) {
-			echo "<a href=\"", $this->url, "\">";
-		}
-		// Print any text if exists
-		if (!empty($temptext)) {
-			$html->write($temptext, $this->tcolor, false);
-		}
-		if (!empty($this->url)) {
-			echo "</a>";
-		}
-		// Finish the cell printing and start to clean up
-		echo "</div>\n";
-		// Where to place the next position
-		// -> Next to this cell in the same line
-		if ($this->newline == 0) {
-			$html->SetXY($this->left + $this->width, $this->top);
-			$html->lastCellHeight = $this->height;
-		} // -> On a new line at the margin - Default
-		elseif ($this->newline == 1) {
-			$html->SetXY(0, $html->GetY() + $this->height + ($cP * 2));
-			// Reset the last cell height for the next line
-			$html->lastCellHeight = 0;
-		} // -> On a new line at the end of this cell
-		elseif ($this->newline == 2) {
-			$html->SetXY($html->GetX() + $this->width, $html->GetY() + $this->height + ($cP * 2));
-			// Reset the last cell height for the next line
-			$html->lastCellHeight = 0;
-		}
-	}
-}
-
-/**
- * HTML element - HTML Report
- */
-class WT_Report_HTML_Html extends WT_Report_Base_Html {
-	function render($html, $sub = false, $inat = true) {
-
-		if (!empty($this->attrs["wt_style"])) $html->setCurrentStyle($this->attrs["wt_style"]);
-
-		$this->text = $this->getStart() . $this->text;
-		foreach ($this->elements as $element) {
-			if (is_string($element) && $element == "footnotetexts") {
-				$html->Footnotes();
-			} elseif (is_string($element) && $element == "addpage") {
-				$html->AddPage();
-			} elseif ($element instanceof WT_Report_Base_Html) {
-				$this->text .= $element->render($html, true, false);
-			} else {
-				$element->render($html);
-			}
-		}
-		$this->text .= $this->getEnd();
-		if ($sub) return $this->text;
-
-		// If not called by an other attribute
-		if ($inat) {
-			$startX = $html->GetX();
-			$startY = $html->GetY();
-			$width = $html->getRemainingWidth();
-			echo "<div style=\"position: absolute;top: ", $startY, "pt;", $html->alignRTL, ": ", $startX, "pt;width: ", $width, "pt;\">";
-			$startY += $html->getCurrentStyleHeight() + 2;
-			$html->SetY($startY);
-		}
-
-		echo $this->text;
-
-		if ($inat) {
-			echo "</div>\n";
-		}
-	}
-}
-
-/**
- * TextBox element - HTML Report
- */
-class WT_Report_HTML_TextBox extends WT_Report_Base_TextBox {
-	function render($html) {
-		// checkFootnote
-		$newelements = array();
-		$lastelement = array();
-		$footnote_element = array();
-		// Element counter
-		$cE = count($this->elements);
-		//-- collapse duplicate elements
-		for ($i = 0; $i < $cE; $i++) {
-			$element = $this->elements[$i];
-			if (is_object($element)) {
-				if ($element instanceof WT_Report_Base_Text) {
-					if (!empty($footnote_element)) {
-						ksort($footnote_element);
-						foreach ($footnote_element as $links) {
-							$newelements[] = $links;
-						}
-						$footnote_element = array();
-					}
-					if (empty($lastelement)) {
-						$lastelement = $element;
-					} else {
-						// Checking if the Text has the same style
-						if ($element->getStyleName() == $lastelement->getStyleName()) {
-							$lastelement->addText(str_replace("\n", "<br>", $element->getValue()));
-						} elseif (!empty($lastelement)) {
-							$newelements[] = $lastelement;
-							$lastelement = $element;
-						}
-					}
-				} // Collect the Footnote links
-				elseif ($element instanceof WT_Report_Base_Footnote) {
-					// Check if the Footnote has been set with it’s link number
-					$html->checkFootnote($element);
-					// Save first the last element if any
-					if (!empty($lastelement)) {
-						$newelements[] = $lastelement;
-						$lastelement = array();
-					}
-					// Save the Footnote with it’s link number as key for sorting later
-					$footnote_element[$element->num] = $element;
-				} //-- do not keep empty footnotes
-				elseif (!($element instanceof WT_Report_Base_Footnote) || trim($element->getValue()) != "") {
-					if (!empty($footnote_element)) {
-						ksort($footnote_element);
-						foreach ($footnote_element as $links) {
-							$newelements[] = $links;
-						}
-						$footnote_element = array();
-					}
-					if (!empty($lastelement)) {
-						$newelements[] = $lastelement;
-						$lastelement = array();
-					}
-					$newelements[] = $element;
-				}
-			} else {
-				if (!empty($lastelement)) {
-					$newelements[] = $lastelement;
-					$lastelement = array();
-				}
-				if (!empty($footnote_element)) {
-					ksort($footnote_element);
-					foreach ($footnote_element as $links) {
-						$newelements[] = $links;
-					}
-					$footnote_element = array();
-				}
-				$newelements[] = $element;
-			}
-		}
-		if (!empty($lastelement)) {
-			$newelements[] = $lastelement;
-		}
-		if (!empty($footnote_element)) {
-			ksort($footnote_element);
-			foreach ($footnote_element as $links) {
-				$newelements[] = $links;
-			}
-		}
-		$this->elements = $newelements;
-		unset($footnote_element, $lastelement, $links, $newelements);
-
-		/**
-		 * Use these variables to update/manipulate values
-		 * Repeted classes would reupdate all their class variables again, Header/Page Header/Footer
-		 * This is the bugfree version
-		 */
-		$cH = 0; // Class Height
-		$cX = 0; // Class Left
-		// Protect height, width, lastheight from padding
-		$cP = 0; // Class Padding
-		$cW = 0; // Class Width
-		// Used with line breaks and cell height calculation within this box only
-		$html->largestFontHeight = 0;
-
-		// Current position
-		if ($this->left == ".") {
-			$cX = $html->GetX();
-		} else {
-			$cX = $this->left;
-			$html->SetX($cX);
-		}
-		// Current position (top)
-		if ($this->top == ".") {
-			$this->top = $html->GetY();
-		} else {
-			$html->SetY($this->top);
-		}
-
-		// Check the width if set to page wide OR set by xml to larger then page wide
-		if ($this->width == 0 || $this->width > $html->getRemainingWidth()) {
-			$this->width = $html->getRemainingWidth();
-		}
-		// Setup the CellPadding
-		if ($this->padding) {
-			$cP = $html->cPadding;
-		}
-
-		// For padding, we have to use less wrap width
-		$cW = $this->width - ($cP * 2);
-
-		//-- calculate the text box height
-		// Number of lines, will be converted to height
-		$cHT = 0;
-		// Element height (exept text)
-		$eH = 0;
-		// Footnote height (in points)
-		$fH = 0;
-		$w = 0;
-		//-- $lw is an array
-		// 0 => last line width
-		// 1 => 1 if text was wrapped, 0 if text did not wrap
-		// 2 => number of LF
-		$lw = array();
-		// Element counter
-		$cE = count($this->elements);
-		for ($i = 0; $i < $cE; $i++) {
-			if (is_object($this->elements[$i])) {
-				$ew = $this->elements[$i]->setWrapWidth($cW - $w - 2, $cW);
-				if ($ew == $cW)
-					$w = 0;
-				$lw = $this->elements[$i]->getWidth($html);
-				// Text is already gets the # LF
-				$cHT += $lw[2];
-				if ($lw[1] == 1) {
-					$w = $lw[0];
-				} elseif ($lw[1] == 2) {
-					$w = 0;
-				} else {
-					$w += $lw[0];
-				}
-				if ($w > $cW) {
-					$w = $lw[0];
-				}
-				// For anything else but text (images), get the height
-				$eH += $this->elements[$i]->getHeight($html);
-			} else {
-				//if (is_string($element) and $element == "footnotetexts") $html->Footnotes();
-				$fH += abs($html->getFootnotesHeight($cW));
-			}
-		}
-		// Add up what’s the final height
-		$cH = $this->height;
-		// If any element exist
-		if ($cE > 0) {
-			// Check if this is text or some other element, like images
-			if ($eH == 0) {
-				// Number of LF but at least one line
-				$cHT = ($cHT + 1) * $html->cellHeightRatio;
-				// Calculate the cell hight with the largest font size used
-				$cHT = $cHT * $html->largestFontHeight;
-				if ($cH < $cHT) {
-					$cH = $cHT;
-				}
-			} // This is any other element
-			else {
-				if ($cH < $eH) {
-					$cH = $eH;
-				}
-				// Add Footnote height to the rest of the height
-				$cH += $fH;
-			}
-		}
-
-		unset($lw, $cHT, $fH, $w);
-
-		// Finaly, check the last cells height
-		if ($cH < $html->lastCellHeight) {
-			$cH = $html->lastCellHeight;
-		}
-		// Update max Y incase of a pagebreak
-		// We don't want to over write any images or other stuff
-		$html->addMaxY($this->top + $cH);
-
-		// Start to print HTML
-		echo "<div style=\"position:absolute;top:", $this->top, "pt;";
-		// LTR (left) or RTL (right)
-		echo $html->alignRTL, ":", $cX, "pt;";
-		// Background color
-		if ($this->fill) {
-			if (!empty($this->bgcolor)) {
-				echo " background-color:", $this->bgcolor, ";";
-			}
-		}
-		// Print padding only when it’s set
-		if ($this->padding) {
-			// Use Cell around padding to support RTL also
-			echo "padding:", $cP, "pt;";
-		}
-		// Border setup
-		if ($this->border) {
-			echo " border:solid black 1pt;";
-			echo "width:", ($this->width - 1 - ($cP * 2)), "pt;height:", $cH - 1, "pt;";
-		} else {
-			echo "width:", ($this->width - ($cP * 2)), "pt;height:", $cH, "pt;";
-		}
-		echo "\">";
-
-		// Do a little "margin" trick before print
-		// to get the correct current position => "."
-		$cXT = $html->GetX();
-		$cYT = $html->GetY();
-		$html->SetXY(0, 0);
-
-		// Print the text elements
-		foreach ($this->elements as $element) {
-			if (is_object($element)) {
-				$element->render($html, $cX, false);
-			} elseif (is_string($element) && $element == "footnotetexts") {
-				$html->Footnotes();
-			} elseif (is_string($element) && $element == "addpage") {
-				$html->AddPage();
-			}
-		}
-		echo "</div>\n";
-
-		// Reset "margins"
-		$html->SetXY($cXT, $cYT);
-		// This will be mostly used to trick the multiple images last height
-		if ($this->reseth) {
-			$cH = 0;
-		}
-		// New line and some clean up
-		if (!$this->newline) {
-			$html->SetXY($cX + $this->width, $this->top);
-			$html->lastCellHeight = $cH;
-		} else {
-			$html->SetXY(0, $this->top + $cH + ($cP * 2));
-			$html->lastCellHeight = 0;
-		}
-	}
-}
-
-/**
- * Text element - HTML Report
- */
-class WT_Report_HTML_Text extends WT_Report_Base_Text {
-	/**
-	 * @param WT_Report_HTML $html
-	 * @param int            $curx
-	 * @param boolean        $attrib Is is called from a different element?
-	 *
-	 * @return void
-	 */
-	function render($html, $curx = 0, $attrib = true) {
-
-		// Setup the style name
-		if ($html->getCurrentStyle() != $this->styleName) {
-			$html->setCurrentStyle($this->styleName);
-		}
-		$temptext = str_replace("#PAGENUM#", $html->PageNo(), $this->text);
-		// underline «title» part of Source item
-		$temptext = str_replace(array('«', '»'), array('<u>', '</u>'), $temptext);
-
-		// If any text at all
-		if (!empty($temptext)) {
-			// If called by an other element
-			if (!$attrib) {
-				$html->write($temptext, $this->color);
-			} else {
-				// Save the start positions
-				$startX = $html->GetX();
-				$startY = $html->GetY();
-				$width = $html->getRemainingWidth();
-				// If text is wider then page width then wrap it
-				if ($html->GetStringWidth($temptext) > $width) {
-					$lines = explode("\n", $temptext);
-					foreach ($lines as $line) {
-						echo "<div style=\"position:absolute;top:", $startY, "pt;", $html->alignRTL, ":", $startX, "pt;width:", $width, "pt;\">";
-						$line = $html->textWrap($line, $width);
-						$startY += $html->getTextCellHeight($line);
-						$html->SetY($startY);
-						$html->write($line, $this->color);
-						echo "</div>\n";
-					}
-				} else {
-					echo "<div style=\"position:absolute;top:", $startY, "pt;", $html->alignRTL, ":", $startX, "pt;width:", $width, "pt;\">";
-					$html->write($temptext, $this->color);
-					echo "</div>\n";
-					$html->SetX($startX + $html->GetStringWidth($temptext));
-					if ($html->countLines($temptext) != 1) {
-						$html->SetXY(0, ($startY + $html->getTextCellHeight($temptext)));
-					}
-				}
-			}
-		}
-	}
-
-	/**
-	 * Returns the height in points of the text element
-	 *
-	 * The height is already calculated in getWidth()
-	 *
-	 * @param WT_Report_HTML $html
-	 *
-	 * @return float
-	 */
-	function getHeight($html) {
-		$ct = substr_count($this->text, "\n");
-		if ($ct > 0) {
-			$ct += 1;
-		}
-		$style = $html->getStyle($this->styleName);
-		return ($style["size"] * $ct) * $html->cellHeightRatio;
-	}
-
-	/**
-	 * Get the width of text and wrap it too
-	 *
-	 * @param WT_Report_HTML $html
-	 *
-	 * @return array
-	 */
-	function getWidth($html) {
-		// Setup the style name
-		if ($html->getCurrentStyle() != $this->styleName) {
-			$html->setCurrentStyle($this->styleName);
-		}
-
-		// Check for the largest font size in the box
-		$fsize = $html->getCurrentStyleHeight();
-		if ($fsize > $html->largestFontHeight) {
-			$html->largestFontHeight = $fsize;
-		}
-
-		// Get the line width for the text in points
-		$lw = $html->GetStringWidth($this->text);
-		// Line Feed counter - Number of lines in the text
-		$lfct = $html->countLines($this->text);
-		// If there is still remaining wrap width...
-		if ($this->wrapWidthRemaining > 0) {
-			// Check with line counter too!
-			if (($lw >= $this->wrapWidthRemaining) or ($lfct > 1)) {
-				$newtext = "";
-				$wrapWidthRemaining = $this->wrapWidthRemaining;
-				$lines = explode("\n", $this->text);
-				// Go throught the text line by line
-				foreach ($lines as $line) {
-					// Line width in points + a little margin
-					$lw = $html->GetStringWidth($line);
-					// If the line has to be wraped
-					if ($lw > $wrapWidthRemaining) {
-						$words = explode(" ", $line);
-						$addspace = count($words);
-						$lw = 0;
-						foreach ($words as $word) {
-							$addspace--;
-							$lw += $html->GetStringWidth($word . " ");
-							if ($lw <= $wrapWidthRemaining) {
-								$newtext .= $word;
-								if ($addspace != 0) {
-									$newtext .= " ";
-								}
-							} else {
-								$lw = $html->GetStringWidth($word . " ");
-								$newtext .= "\n$word";
-								if ($addspace != 0) {
-									$newtext .= " ";
-								}
-								// Reset the wrap width to the cell width
-								$wrapWidthRemaining = $this->wrapWidthCell;
-							}
-						}
-					} else {
-						$newtext .= $line;
-					}
-					// Check the Line Feed counter
-					if ($lfct > 1) {
-						// Add a new line feed as long as it’s not the last line
-						$newtext .= "\n";
-						// Reset the line width
-						$lw = 0;
-						// Reset the wrap width to the cell width
-						$wrapWidthRemaining = $this->wrapWidthCell;
-					}
-					$lfct--;
-				}
-				$this->text = $newtext;
-				$lfct = substr_count($this->text, "\n");
-				return array($lw, 1, $lfct);
-			}
-		}
-		$l = 0;
-		$lfct = substr_count($this->text, "\n");
-		if ($lfct > 0) {
-			$l = 2;
-		}
-		return array($lw, $l, $lfct);
-	}
-}
-
-/**
- * Footnote element
- */
-class WT_Report_HTML_Footnote extends WT_Report_Base_Footnote {
-	/**
-	 * HTML Footnotes number renderer
-	 *
-	 * @param WT_Report_HTML $html
-	 *
-	 * @return void
-	 */
-	function render($html) {
-		$html->setCurrentStyle("footnotenum");
-		echo "<a href=\"#footnote", $this->num, "\"><sup>";
-		$html->write($html->entityRTL . $this->num);
-		echo "</sup></a>\n";
-	}
-
-	/**
-	 * Write the Footnote text
-	 *
-	 * Uses style name "footnote" by default
-	 *
-	 * @param WT_Report_HTML $html
-	 *
-	 * @return void
-	 */
-	function renderFootnote($html) {
-
-		if ($html->getCurrentStyle() != $this->styleName) {
-			$html->setCurrentStyle($this->styleName);
-		}
-
-		$temptext = str_replace("#PAGENUM#", $html->PageNo(), $this->text);
-		// underline «title» part of Source item
-		$temptext = str_replace(array('«', '»'), array('<u>', '</u>'), $temptext);
-		echo "\n<div><a name=\"footnote", $this->num, "\"></a>";
-		$html->write($this->num . ". " . $temptext);
-		echo "</div>";
-
-		$html->SetXY(0, $html->GetY() + $this->getFootnoteHeight($html));
-	}
-
-	/**
-	 * Calculates the Footnotes height
-	 *
-	 * @param WT_Report_HTML $html
-	 * @param int            $cellWidth The width of the cell to use it for text wraping
-	 *
-	 * @return Footnote height in points
-	 */
-	function getFootnoteHeight($html, $cellWidth = 0) {
-		if ($html->getCurrentStyle() != $this->styleName) {
-			$html->setCurrentStyle($this->styleName);
-		}
-
-		if ($cellWidth > 0) {
-			$this->text = $html->textWrap($this->text, $cellWidth);
-		}
-		$this->text = $this->text . "\n\n";
-		$ct = substr_count($this->text, "\n");
-		$fsize = $html->getCurrentStyleHeight();
-		return ($fsize * $ct) * $html->cellHeightRatio;
-	}
-
-	/**
-	 * Get the width of text
-	 *
-	 * Breaks up a text into lines if needed
-	 *
-	 * @param WT_Report_HTML $html
-	 *
-	 * @return array
-	 */
-	function getWidth($html) {
-		// Setup the style name
-		$html->setCurrentStyle("footnotenum");
-
-		// Check for the largest font size in the box
-		$fsize = $html->getCurrentStyleHeight();
-		if ($fsize > $html->largestFontHeight) {
-			$html->largestFontHeight = $fsize;
-		}
-
-		// Returns the Object if already numbered else false
-		if (empty($this->num)) {
-			$html->checkFootnote($this);
-		}
-
-		// Get the line width for the text in points + a little margin
-		$lw = $html->GetStringWidth($this->numText);
-		// Line Feed counter - Number of lines in the text
-		$lfct = $html->countLines($this->numText);
-		// If there is still remaining wrap width...
-		if ($this->wrapWidthRemaining > 0) {
-			// Check with line counter too!
-			if (($lw >= $this->wrapWidthRemaining) or ($lfct > 1)) {
-				$newtext = "";
-				$wrapWidthRemaining = $this->wrapWidthRemaining;
-				$lines = explode("\n", $this->numText);
-				// Go throught the text line by line
-				foreach ($lines as $line) {
-					// Line width in points + a little margin
-					$lw = $html->GetStringWidth($line);
-					// If the line has to be wraped
-					if ($lw > $wrapWidthRemaining) {
-						$words = explode(" ", $line);
-						$addspace = count($words);
-						$lw = 0;
-						foreach ($words as $word) {
-							$addspace--;
-							$lw += $html->GetStringWidth($word . " ");
-							if ($lw <= $wrapWidthRemaining) {
-								$newtext .= $word;
-								if ($addspace != 0) {
-									$newtext .= " ";
-								}
-							} else {
-								$lw = $html->GetStringWidth($word . " ");
-								$newtext .= "\n$word";
-								if ($addspace != 0) {
-									$newtext .= " ";
-								}
-								// Reset the wrap width to the cell width
-								$wrapWidthRemaining = $this->wrapWidthCell;
-							}
-						}
-					} else {
-						$newtext .= $line;
-					}
-					// Check the Line Feed counter
-					if ($lfct > 1) {
-						// Add a new line feed as long as it’s not the last line
-						$newtext .= "\n";
-						// Reset the line width
-						$lw = 0;
-						// Reset the wrap width to the cell width
-						$wrapWidthRemaining = $this->wrapWidthCell;
-					}
-					$lfct--;
-				}
-				$this->numText = $newtext;
-				$lfct = substr_count($this->numText, "\n");
-				return array($lw, 1, $lfct);
-			}
-		}
-		$l = 0;
-		$lfct = substr_count($this->numText, "\n");
-		if ($lfct > 0) {
-			$l = 2;
-		}
-		return array($lw, $l, $lfct);
-	}
-}
-
-/**
- * PageHeader element
- */
-class WT_Report_HTML_PageHeader extends WT_Report_Base_PageHeader {
-	function render($html) {
-		$html->clearPageHeader();
-		foreach ($this->elements as $element) {
-			$html->addPageHeader($element);
-		}
-	}
-}
-
-/**
- * Image element
- */
-class WT_Report_HTML_Image extends WT_Report_Base_Image {
-	/**
-	 * Image renderer
-	 *
-	 * @param WT_Report_HTML $html
-	 *
-	 * @return void
-	 */
-	function render($html) {
-		global $lastpicbottom, $lastpicpage, $lastpicleft, $lastpicright;
-
-		// Get the current positions
-		if ($this->x == ".") {
-			$this->x = $html->GetX();
-		}
-		if ($this->y == ".") {
-			//-- first check for a collision with the last picture
-			if (isset($lastpicbottom)) {
-				if (($html->PageNo() == $lastpicpage) && ($lastpicbottom >= $html->GetY()) && ($this->x >= $lastpicleft) && ($this->x <= $lastpicright)) {
-					$html->SetY($lastpicbottom + ($html->cPadding * 2));
-				}
-			}
-			$this->y = $html->GetY();
-		}
-
-		// Image alignment
-		switch ($this->align) {
-		case "L":
-			echo "<div style=\"position:absolute;top:", $this->y, "pt;left:0pt;width:", $html->getRemainingWidth(), "pt;text-align:left;\">\n";
-			echo "<img src=\"", $this->file, "\" style=\"width:", $this->width, "pt;height:", $this->height, "pt;\" alt=\"\">\n</div>\n";
-			break;
-		case "C":
-			echo "<div style=\"position:absolute;top:", $this->y, "pt;left:0pt;width:", $html->getRemainingWidth(), "pt;text-align:center;\">\n";
-			echo "<img src=\"", $this->file, "\" style=\"width:", $this->width, "pt;height:", $this->height, "pt;\" alt=\"\">\n</div>\n";
-			break;
-		case "R":
-			echo "<div style=\"position:absolute;top:", $this->y, "pt;left:0pt;width:", $html->getRemainingWidth(), "pt;text-align:right;\">\n";
-			echo "<img src=\"", $this->file, "\" style=\"width:", $this->width, "pt;height:", $this->height, "pt;\" alt=\"\">\n</div>\n";
-			break;
-		default:
-			echo "<img src=\"", $this->file, "\" style=\"position:absolute;", $html->alignRTL, ":", $this->x, "pt;top:", $this->y, "pt;width:", $this->width, "pt;height:", $this->height, "pt;\" alt=\"\">\n";
-		}
-
-		$lastpicpage = $html->PageNo();
-		$lastpicleft = $this->x;
-		$lastpicright = $this->x + $this->width;
-		$lastpicbottom = $this->y + $this->height;
-		// Setup for the next line
-		if ($this->line == "N") {
-			$html->SetY($lastpicbottom);
-		}
-		// Keep max Y updated
-		$html->addMaxY($lastpicbottom);
-	}
-
-	/**
-	 * Get the image height
-	 *
-	 * This would be called from the TextBox only for multiple images
-	 * so we add a bit bottom space between the images
-	 *
-	 * @param WT_Report_HTML $html
-	 *
-	 * @return float
-	 */
-	function getHeight($html) {
-		return $this->height + ($html->cPadding * 2);
-	}
-
-}
-
-/**
- * Line element - HTML Report
- */
-class WT_Report_HTML_Line extends WT_Report_Base_Line {
-	/**
-	 * HTML line renderer
-	 *
-	 * @param WT_Report_HTML $html
-	 *
-	 * @return void
-	 */
-	function render($html) {
-		if ($this->x1 == ".") $this->x1 = $html->GetX();
-		if ($this->y1 == ".") $this->y1 = $html->GetY();
-		if ($this->x2 == ".") {
-			$this->x2 = $html->getRemainingWidth();
-		}
-		if ($this->y2 == ".") $this->y2 = $html->GetY();
-		// TODO Non verticle or horizontal lines can use a series of divs absolutely positioned
-		// Vertical line
-		if ($this->x1 == $this->x2) {
-			echo "<div style=\"position:absolute;overflow:hidden;border-", $html->alignRTL, ":solid black 1pt;", $html->alignRTL, ":", $this->x1, "pt;top:", $this->y1 + 1, "pt;width:1pt;height:", $this->y2 - $this->y1, "pt;\"> </div>\n";
-		}
-		// Horizontal line
-		if ($this->y1 == $this->y2) {
-			echo "<div style=\"position:absolute;overflow:hidden;border-top:solid black 1pt;", $html->alignRTL, ":", $this->x1, "pt;top:", $this->y1 + 1, "pt;width:", $this->x2 - $this->x1, "pt;height:1pt;\"> </div>\n";
-		}
-		// Keep max Y updated
-		// One or the other will be higher... lasy mans way...
-		$html->addMaxY($this->y1);
-		$html->addMaxY($this->y2);
-	}
 }

@@ -123,8 +123,6 @@ class batch_update {
 			$this->getAllXrefs();
 
 			switch ($this->action) {
-			case '':
-				break;
 			case 'update':
 				$record=self::getLatestRecord($this->xref, $this->all_xrefs[$this->xref]);
 				if ($this->PLUGIN->doesRecordNeedUpdate($this->xref, $record)) {
@@ -155,25 +153,7 @@ class batch_update {
 				}
 				$this->xref='';
 				return;
-			case 'delete':
-				$record=self::getLatestRecord($this->xref, $this->all_xrefs[$this->xref]);
-				if ($this->PLUGIN->doesRecordNeedUpdate($this->xref, $record)) {
-					WT_GedcomRecord::getInstance($this->xref)->deleteRecord();
-				}
-				$this->xref=$this->findNextXref($this->xref);
-				break;
-			case 'delete_all':
-				foreach ($this->all_xrefs as $xref=>$type) {
-					$record=self::getLatestRecord($xref, $type);
-					if ($this->PLUGIN->doesRecordNeedUpdate($xref, $record)) {
-						WT_GedcomRecord::getInstance($this->xref)->deleteRecord();
-					}
-				}
-				$xref->xref='';
-				return;
 			default:
-				// Anything else will be handled by the plugin
-				$this->PLUGIN->performAction($this->xref, $this->record, $this->action, $this->data);
 				break;
 			}
 
@@ -416,14 +396,11 @@ class base_plugin {
 		}
 	}
 
-	// Default handler for plugin with no custom actions.
-	function performAction($xref, $gedrec, $action, $data) {
-	}
-
 	// Decorate inserted/deleted text
 	static function decorateInsertedText($text) {
 		return '<span class="added_text">'.$text.'</span>';
 	}
+
 	static function decorateDeletedText($text) {
 		return '<span class="deleted_text">'.$text.'</span>';
 	}

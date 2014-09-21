@@ -199,8 +199,8 @@ case 'load_json':
 	}
 
 	// Total filtered/unfiltered rows
-	$recordsFiltered = WT_DB::prepare("SELECT FOUND_ROWS()")->fetchColumn();
-	$recordsTotal = WT_DB::prepare($SELECT2.$WHERE)->execute($args)->fetchColumn();
+	$recordsFiltered = WT_DB::prepare("SELECT FOUND_ROWS()")->fetchOne();
+	$recordsTotal = WT_DB::prepare($SELECT2.$WHERE)->execute($args)->fetchOne();
 
 	header('Content-type: application/json');
 	echo json_encode(array( // See http://www.datatables.net/usage/server-side

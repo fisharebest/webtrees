@@ -23,7 +23,6 @@
 
 class WT_Family extends WT_GedcomRecord {
 	const RECORD_TYPE = 'FAM';
-	const SQL_FETCH   = "SELECT f_gedcom FROM `##families` WHERE f_id=? AND f_file=?";
 	const URL_PREFIX  = 'family.php?famid=';
 
 	private $husb = null;
@@ -115,13 +114,10 @@ class WT_Family extends WT_GedcomRecord {
 	 * Find the spouse of a person.
 	 *
 	 * @param WT_Individual $person
-	 * @param int           $access_level
 	 *
 	 * @return WT_Individual|null
-	 *
-	 * @todo do we need to check $access_level?  Presumably we have already checked for access to this family, which includes its members?
 	 */
-	function getSpouse(WT_Individual $person, $access_level=WT_USER_ACCESS_LEVEL) {
+	function getSpouse(WT_Individual $person) {
 		if ($person === $this->wife) {
 			return $this->husb;
 		} else {

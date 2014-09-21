@@ -162,9 +162,9 @@ foreach ($all_links as $xref1=>$links) {
 				);
 			}
 		} elseif ($type2=='SOUR' && $type1=='NOTE') {
-			//echo warning(WT_I18N::translate('The note %1$s has a source %2$s. Notes are intended to add explanations and comments to other records.  They should not have their own sources.'), format_link($xref1), format_link($xref2));
+			// Notes are intended to add explanations and comments to other records.  They should not have their own sources.
 		} elseif ($type2=='SOUR' && $type1=='OBJE') {
-			//echo warning(WT_I18N::translate('The media object %1$s has a source %2$s. Media objects are intended to illustrate other records, facts, and source/citations.  They should not have their own sources.', format_link($xref1), format_link($xref2)));
+			// Media objects are intended to illustrate other records, facts, and source/citations.  They should not have their own sources.
 		} elseif ($type2=='OBJE' && $type1=='REPO') {
 			echo warning(
 				link_message($type1, $xref1, $type2, $xref2) . ' ' .  WT_I18N::translate('This type of link is not allowed here.')

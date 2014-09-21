@@ -200,10 +200,10 @@ function textlength($t, $mxl, $text) {
 
 // imagettftext is the function that is most likely to throw an error
 // use this custom error handler to catch and log it
-function imagettftextErrorHandler($errno, $errstr, $errfile, $errline) {
+function imagettftextErrorHandler($errno, $errstr) {
 	global $useTTF, $serverFilename;
 	// log the error
-	Log::addErrorLog("Media Firewall error: >" . $errstr . "< in file >" . $serverFilename . "<");
+	Log::addErrorLog("Media Firewall error: >" . $errno . '/' . $errstr . "< while processing file >" . $serverFilename . "<");
 
 	// change value of useTTF to false so the fallback watermarking can be used.
 	$useTTF = false;

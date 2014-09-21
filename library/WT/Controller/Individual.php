@@ -25,7 +25,6 @@ use WT\Auth;
 use WT\User;
 
 require_once WT_ROOT.'includes/functions/functions_print_facts.php';
-require_once WT_ROOT.'includes/functions/functions_import.php';
 
 class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 	public $name_count = 0;
@@ -382,8 +381,9 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 			}
 		}
 
-		$controller
-			->addInlineJavascript('
+		if ($html) {
+			$controller
+				->addInlineJavascript('
 				jQuery("#sidebarAccordion").accordion({
 					active:' . $active . ',
 					heightStyle: "content",
@@ -391,6 +391,9 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 				});
 			');
 
-		return '<div id="sidebar"><div id="sidebarAccordion">'.$html.'</div></div>';
+			return '<div id="sidebar"><div id="sidebarAccordion">' . $html . '</div></div>';
+		} else {
+			return '';
+		}
 	}
 }

@@ -138,20 +138,47 @@ if (!function_exists('password_hash')) {
 	if (crypt("password", $hash) === $hash) {
 		require WT_ROOT.'library/ircmaxell/password-compat/lib/password.php';
 	} else {
-		// For older/unpatched versions of PHP, use the default crypt behaviour.
-		function password_hash($password) {
+		/**
+		 * There is no secure password facility on this server.
+		 * Simply implement something that won't crash...
+		 *
+		 * @param string  $password
+		 * @param integer $algo
+		 *
+		 * @return string
+		 */
+		function password_hash($password, $algo) {
 			$salt = '$2a$12$';
 			$salt_chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789./';
 			for ($i = 0; $i < 22; ++$i) {
 				$salt .= substr($salt_chars, mt_rand(0, 63), 1);
 			}
+
 			return crypt($password, $salt);
 		}
 
-		function password_needs_rehash() {
+		/**
+		 * There is no secure password facility on this server.
+		 * Simply implement something that won't crash...
+		 *
+		 * @param string  $hash
+		 * @param integer $algo
+		 *
+		 * @return boolean
+		 */
+		function password_needs_rehash($hash, $algo) {
 			return false;
 		}
 
+		/**
+		 * There is no secure password facility on this server.
+		 * Simply implement something that won't crash...
+		 *
+		 * @param string  $password
+		 * @param integer $hash
+		 *
+		 * @return string
+		 */
 		function password_verify($password, $hash) {
 			return crypt($password, $hash) === $hash;
 		}
@@ -244,13 +271,14 @@ if (!isset($_SERVER['HTTP_USER_AGENT'])) {
 	$_SERVER['HTTP_USER_AGENT'] = '';
 }
 
-// Common functions
-require WT_ROOT.'includes/functions/functions.php';
-require WT_ROOT.'includes/functions/functions_db.php';
-require WT_ROOT.'includes/functions/functions_print.php';
-require WT_ROOT.'includes/functions/functions_mediadb.php';
-require WT_ROOT.'includes/functions/functions_date.php';
-require WT_ROOT.'includes/functions/functions_charts.php';
+// Common functions - move these to classes so we can autoload them.
+require WT_ROOT . 'includes/functions/functions.php';
+require WT_ROOT . 'includes/functions/functions_db.php';
+require WT_ROOT . 'includes/functions/functions_print.php';
+require WT_ROOT . 'includes/functions/functions_mediadb.php';
+require WT_ROOT . 'includes/functions/functions_date.php';
+require WT_ROOT . 'includes/functions/functions_charts.php';
+require WT_ROOT . 'includes/functions/functions_import.php';
 
 // Set a custom error handler
 set_error_handler(function ($errno, $errstr) {
@@ -339,10 +367,10 @@ try {
 
 // The config.ini.php file must always be in a fixed location.
 // Other user files can be stored elsewhere...
-define('WT_DATA_DIR', realpath(WT_Site::preference('INDEX_DIRECTORY') ? WT_Site::preference('INDEX_DIRECTORY') : 'data').DIRECTORY_SEPARATOR);
+define('WT_DATA_DIR', realpath(WT_Site::getPreference('INDEX_DIRECTORY') ? WT_Site::getPreference('INDEX_DIRECTORY') : 'data').DIRECTORY_SEPARATOR);
 
 // If we have a preferred URL (e.g. www.example.com instead of www.isp.com/~example), then redirect to it.
-$SERVER_URL=WT_Site::preference('SERVER_URL');
+$SERVER_URL=WT_Site::getPreference('SERVER_URL');
 if ($SERVER_URL && $SERVER_URL != WT_SERVER_NAME.WT_SCRIPT_PATH) {
 	header('Location: ' . $SERVER_URL . WT_SCRIPT_NAME . (isset($_SERVER['QUERY_STRING']) ? '?' . $_SERVER['QUERY_STRING'] : ''), true, 301);
 	exit;
@@ -350,11 +378,11 @@ if ($SERVER_URL && $SERVER_URL != WT_SERVER_NAME.WT_SCRIPT_PATH) {
 
 // Request more resources - if we can/want to
 if (!ini_get('safe_mode')) {
-	$memory_limit=WT_Site::preference('MEMORY_LIMIT');
+	$memory_limit=WT_Site::getPreference('MEMORY_LIMIT');
 	if ($memory_limit) {
 		ini_set('memory_limit', $memory_limit);
 	}
-	$max_execution_time=WT_Site::preference('MAX_EXECUTION_TIME');
+	$max_execution_time=WT_Site::getPreference('MAX_EXECUTION_TIME');
 	if ($max_execution_time && strpos(ini_get('disable_functions'), 'set_time_limit')===false) {
 		set_time_limit($max_execution_time);
 	}
@@ -435,7 +463,7 @@ define('WT_SESSION_NAME', 'WT_SESSION');
 $cfg=array(
 	'name'            => WT_SESSION_NAME,
 	'cookie_lifetime' => 0,
-	'gc_maxlifetime'  => WT_Site::preference('SESSION_TIME'),
+	'gc_maxlifetime'  => WT_Site::getPreference('SESSION_TIME'),
 	'gc_probability'  => 1,
 	'gc_divisor'      => 100,
 	'cookie_path'     => WT_SCRIPT_PATH,
@@ -470,7 +498,7 @@ if (isset($_REQUEST['ged'])) {
 	$GEDCOM=$WT_SESSION->GEDCOM;
 } else {
 	// Try the site default
-	$GEDCOM=WT_Site::preference('DEFAULT_GEDCOM');
+	$GEDCOM=WT_Site::getPreference('DEFAULT_GEDCOM');
 }
 
 // Choose the selected tree (if it exists), or any valid tree otherwise
@@ -549,8 +577,8 @@ define('WT_CLIENT_JD', 2440588 + (int)(WT_CLIENT_TIMESTAMP/86400));
 require WT_ROOT . 'includes/config_data.php';
 
 // The login URL must be an absolute URL, and can be user-defined
-if (WT_Site::preference('LOGIN_URL')) {
-	define('WT_LOGIN_URL', WT_Site::preference('LOGIN_URL'));
+if (WT_Site::getPreference('LOGIN_URL')) {
+	define('WT_LOGIN_URL', WT_Site::getPreference('LOGIN_URL'));
 } else {
 	define('WT_LOGIN_URL', WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php');
 }
@@ -581,7 +609,7 @@ if (substr(WT_SCRIPT_NAME, 0, 5)=='admin' || WT_SCRIPT_NAME=='module.php' && sub
 	// Administration scripts begin with “admin” and use a special administration theme
 	define('WT_THEME_DIR', WT_THEMES_DIR.'_administration/');
 } else {
-	if (WT_Site::preference('ALLOW_USER_THEMES')) {
+	if (WT_Site::getPreference('ALLOW_USER_THEMES')) {
 		// Requested change of theme?
 		$THEME_DIR = WT_Filter::get('theme');
 		if (!in_array($THEME_DIR, get_theme_names())) {
@@ -604,7 +632,7 @@ if (substr(WT_SCRIPT_NAME, 0, 5)=='admin' || WT_SCRIPT_NAME=='module.php' && sub
 			$THEME_DIR=get_gedcom_setting(WT_GED_ID, 'THEME_DIR');
 		}
 		if (!in_array($THEME_DIR, get_theme_names())) {
-			$THEME_DIR=WT_Site::preference('THEME_DIR');
+			$THEME_DIR=WT_Site::getPreference('THEME_DIR');
 		}
 		if (!in_array($THEME_DIR, get_theme_names())) {
 			$THEME_DIR='webtrees';

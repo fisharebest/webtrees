@@ -407,7 +407,7 @@ case 'createform':
 			<tr>
 				<td>', WT_I18N::translate('Language'), '</td>
 				<td>', edit_field_language('user_language', $user_language), '</td>';
-				if (WT_Site::preference('ALLOW_USER_THEMES')) {
+				if (WT_Site::getPreference('ALLOW_USER_THEMES')) {
 					echo '<td>', WT_I18N::translate('Theme'), help_link('THEME'), '</td>
 					<td>
 						<select name="new_user_theme">
@@ -493,7 +493,6 @@ case 'cleanup':
 	<table id="clean">
 	<?php
 	// Check for idle users
-	//if (!isset($month)) $month = 1;
 	$month = WT_Filter::getInteger('month', 1, 12, 6);
 	echo "<tr><th>", WT_I18N::translate('Number of months since the last login for a user’s account to be considered inactive: '), "</th>";
 	echo "<td><select onchange=\"document.location=options[selectedIndex].value;\">";

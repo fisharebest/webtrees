@@ -159,8 +159,8 @@ case 'load_json':
 
 		$rows = WT_DB::prepare($SELECT1.$ORDER_BY.$LIMIT)->execute($ARGS1)->fetchAll();
 		// Total filtered/unfiltered rows
-		$recordsFiltered = WT_DB::prepare("SELECT FOUND_ROWS()")->fetchColumn();
-		$recordsTotal    = WT_DB::prepare($SELECT2)->execute($ARGS2)->fetchColumn();
+		$recordsFiltered = WT_DB::prepare("SELECT FOUND_ROWS()")->fetchOne();
+		$recordsTotal    = WT_DB::prepare($SELECT2)->execute($ARGS2)->fetchOne();
 
 		$data = array();
 		foreach ($rows as $row) {
@@ -221,8 +221,8 @@ case 'load_json':
 		$rows = WT_DB::prepare($SELECT1.$ORDER_BY.$LIMIT)->execute($ARGS1)->fetchAll();
 
 		// Total filtered/unfiltered rows
-		$recordsFiltered = WT_DB::prepare("SELECT FOUND_ROWS()")->fetchColumn();
-		$recordsTotal    = WT_DB::prepare($SELECT2)->execute($ARGS2)->fetchColumn();
+		$recordsFiltered = WT_DB::prepare("SELECT FOUND_ROWS()")->fetchOne();
+		$recordsTotal    = WT_DB::prepare($SELECT2)->execute($ARGS2)->fetchOne();
 
 		$data = array();
 		foreach ($rows as $row) {
@@ -253,10 +253,7 @@ case 'load_json':
 
 		// Filter unused files
 		if ($search) {
-			// Lambda functions can’t be used until PHP5.3
-			//$unused_files = array_filter($unused_files, function($x) use ($sSearch) {return strpos($x, $sSearch)!==false;});
-			function substr_search($x) {global $search; return strpos($x, $search)!==false;}
-			$unused_files = array_filter($unused_files, 'substr_search');
+			$unused_files = array_filter($unused_files, function ($x) use ($search) { return strpos($x, $search) !== false; });
 		}
 		$recordsFiltered = count($unused_files);
 

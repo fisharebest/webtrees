@@ -40,7 +40,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 	//  the following are ajax variables  //
 	var $ARID;
 
-	function __construct($rootid='', $show_full=1, $generations=3) {
+	function __construct($rootid='', $show_full=1) {
 		global $bheight, $bwidth, $cbwidth, $cbheight, $bhalfheight, $PEDIGREE_FULL_DETAILS, $MAX_DESCENDANCY_GENERATIONS;
 		global $TEXT_DIRECTION, $show_full;
 
@@ -196,8 +196,14 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 			break;
 		}
 	}
+
 	/**
 	 * Print empty box
+	 *
+	 * @param int $bwidth
+	 * @param int $bheight
+	 *
+	 * @return void
 	 */
 	function printEmptyBox($bwidth, $bheight){
 	echo '<tr>',
@@ -347,8 +353,8 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 				// NOTE: If statement OK
 				if ($num>0) {
 					echo '<div class="center" id="childarrow" style="position:absolute; width:', $bwidth, 'px;">';
-					echo '<a href="#" onclick="togglechildrenbox(); return false;" class="icon-darrow"></a><br>';
-					echo '<div id="childbox" style="width:', $bwidth, 'px; height:', $bheight, 'px; visibility: hidden;">';
+					echo '<a href="#" class="icon-darrow"></a><br>';
+					echo '<div id="childbox">';
 					echo '<table class="person_box"><tr><td>';
 
 					foreach ($famids as $family) {
@@ -413,10 +419,10 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 	/**
 	 * Calculates number of generations a person has
 	 *
-	 * @param mixed $pid ID of person to see how far down the descendency goes
-	 * @param mixed $depth Pass in 0 and it calculates how far down descendency goes
-	 * @access public
-	 * @return maxdc Amount of generations the descendency actually goes
+	 * @param string $pid ID of person to see how far down the descendency goes
+	 * @param int    $depth Pass in 0 and it calculates how far down descendency goes
+	 *
+	 * @return int Number of generations the descendency actually goes
 	 */
 	function max_descendency_generations($pid, $depth) {
 		if ($depth > $this->generations) return $depth;
