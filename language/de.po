@@ -13348,7 +13348,7 @@ msgstr "Die Details dieser Person sind nicht öffentlich."
 #: action.php:157
 #, php-format
 msgid "The family “%s” has been deleted, as it only has one member."
-msgstr "Die Familie “%s”" wurde gelöscht, da sie nur aus einem Mitglied bestand."
+msgstr "Die Familie “%s” wurde gelöscht, da sie nur aus einem Mitglied bestand."
 
 #: addmedia.php:170 admin_media_upload.php:130
 #, php-format
