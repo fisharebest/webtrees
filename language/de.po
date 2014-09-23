@@ -14710,7 +14710,7 @@ msgstr "Typ"
 
 #: modules_v3/googlemap/module.php:446
 msgid "Type of place markers in Place Hierarchy"
-msgstr "Art des Orte Markierers in der Orteliste"
+msgstr "Art des Markierung in der Hierarchie der Orte"
 
 #. I18N: placeholder text for repeat-password field
 #: admin_users.php:390 login.php:428
@@ -14719,7 +14719,7 @@ msgstr "Das Passwort bitte erneut eingeben."
 
 #: help_text.php:1299 setup.php:416
 msgid "Type your password again, to make sure you have typed it correctly."
-msgstr "Geben Sie ihr Passwort erneut ein um sicherzugehen, dass Sie es korrekt eingegeben haben."
+msgstr "Geben Sie Ihr Passwort erneut ein, um sicherzugehen, dass Sie es korrekt eingegeben haben."
 
 #: admin_trees_check.php:127
 msgid "Types of error"
@@ -14774,7 +14774,7 @@ msgstr "%s kann nicht angelegt werden. Bitte Berechtigungen prüfen."
 
 #: admin_site_merge.php:60 admin_site_merge.php:63 admin_trees_config.php:250
 msgid "Unable to find record with ID"
-msgstr "Kann den Datensatz mit folgendem ID nicht finden:"
+msgstr "Kein Datensatz gefunden mit der ID"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: library/WT/Gedcom/Code/Stat.php:86
@@ -14845,7 +14845,7 @@ msgstr "Verbindung löschen"
 
 #: library/WT/Gedcom/Tag.php:829
 msgid "Unrecognized GEDCOM code"
-msgstr "Unbekanntes GEDCOM Code"
+msgstr "Unbekannter GEDCOM Code"
 
 #: admin_media.php:559
 msgid "Unused files"
@@ -14940,15 +14940,15 @@ msgstr "Uruguay"
 #. I18N: GeoNames is the www.geonames.org website
 #: admin_trees_config.php:1277 help_text.php:996
 msgid "Use GeoNames database for autocomplete on places"
-msgstr "Verwendung der GeoNamendatenbank für AutoVervollständigen von Orten"
+msgstr "Verwendung der GeoNames Datenbank zur Autovervollständigung von Orten"
 
 #: modules_v3/googlemap/module.php:433
 msgid "Use Google Maps™ for the place hierarchy"
-msgstr "Google Maps™ für die Reihenfolge der Orte verwenden"
+msgstr "Google Maps™ für die Hierarchie der Orte verwenden"
 
 #: admin_site_config.php:40
 msgid "Use PHP mail to send messages"
-msgstr "PHP Mail zum senden von Nachrichten benutzen"
+msgstr "PHP Mail zum Senden von Nachrichten benutzen"
 
 #: admin_trees_config.php:306 help_text.php:1011
 msgid "Use RIN number instead of GEDCOM ID"
@@ -14956,11 +14956,11 @@ msgstr "RIN# anstelle von GEDCOM ID verwenden"
 
 #: admin_site_config.php:41
 msgid "Use SMTP to send messages"
-msgstr "SMTP zum senden von Nachrichten benutzen"
+msgstr "SMTP zum Senden von Nachrichten benutzen"
 
 #: modules_v3/batch_update/plugins/search_replace.php:92
 msgid "Use a “?” to match a single character, use “*” to match zero or more characters."
-msgstr "“?” ist einem einzelnen beliebigen Zeichen gleich; “*” ist einem oder mehreren beliebigen Zeichen gleich."
+msgstr "“?” ist einem einzelnen beliebigen Zeichen gleich; “*” ist keinem, einem oder mehreren beliebigen Zeichen gleich."
 
 #. I18N: placeholder text for new-password field
 #: admin_users.php:385 login.php:423
@@ -14993,7 +14993,7 @@ msgstr "Verwandtschafts-Datenschutz einschalten"
 
 #: help_text.php:1017
 msgid "Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the gender of the individual in question.<br><br><table><tr><td style=\"vertical-align:middle\">This image might be used when the gender of the individual is unknown:"
-msgstr "Benutze Silhouetten wenn kein spezielles Bild für diese Person spezifiziert wurde. Die Bilder die verwendet werden sind geschlechts-spezifisch zu der entsprechenden Person<br><br><table><tr><td style=\"vertical-align:middle\">Dieses Bild wird benutzt wenn das Geschlecht der Person unbekannt ist:"
+msgstr "Benutze Silhouetten, wenn kein spezielles Bild für diese Person spezifiziert wurde. Die Bilder, die verwendet werden, sind geschlechts-spezifisch zu der entsprechenden Person<br><br><table><tr><td style=\"vertical-align:middle\">Dieses Bild wird benutzt, wenn das Geschlecht der Person unbekannt ist:"
 
 #: admin_trees_config.php:675 help_text.php:1016
 msgid "Use silhouettes"
@@ -15001,23 +15001,23 @@ msgstr "Silhouetten verwenden"
 
 #: help_text.php:1104
 msgid "Use these buttons to move an entry from one list to another.<br><br>Highlight the entry to be moved, and then click a button to move or copy that entry in the direction of the arrow.  Use the <b>&raquo;</b> and <b>&laquo;</b> buttons to move the highlighted entry from the leftmost to the rightmost list or vice-versa.  Use the <b>&gt;</b> and <b>&lt;</b> buttons to move the highlighted entry between the Available blocks list and the list to its right or left.<br><br>The entries in the Available Blocks list do not change, regardless of what you do with the Move right and Move left buttons.  This is so because the same block can appear several times on the same page.  The HTML block is a good example of why you might want to do this."
-msgstr "Mit diesen Schaltflächen können Sie Einträge aus einer Liste kopieren oder entfernen und in einer anderen Liste eintragen.<br><br>Wie gewohnt, wählen Sie zuerst mit <u>einem</u> Klick der <u>linken</u> Maustaste den Block mit dem Sie eben arbeiten möchten.  Danach klicken Sie einen der Pfeile um den gewählten Block in der Pfeilrichtung zu verschieben.  Die <b>&raquo;</b> und <b>&laquo;</b> verschieben den gewählten Block von der ganz linken zur ganz rechten Liste oder umgekehrt. Die  <b>&gt;</b> und <b>&lt;</b> Pfeile verschieben den gewählten Block zwischen der Liste Verfügbare Blöcke und der Liste rechts oder links daneben.<br><br>Die Einträge in der Liste Verfügbare Blöcke werden niemals entfernt, weil der selbe Block, z.B. der HTML Block, mehrmals auf der Seite dargestellt werden kann."
+msgstr "Mit diesen Schaltflächen können Sie Einträge aus einer Liste kopieren oder entfernen und in einer anderen Liste eintragen.<br><br>Wie gewohnt, wählen Sie zuerst mit <u>einem</u> Klick der <u>linken</u> Maustaste den Block, mit dem Sie eben arbeiten möchten. Danach klicken Sie auf einen der Pfeile, um den gewählten Block in die Pfeilrichtung zu verschieben. Die <b>&raquo;</b> und <b>&laquo;</b> verschieben den gewählten Block von der ganz linken zur ganz rechten Liste oder umgekehrt. Die <b>&gt;</b> und <b>&lt;</b> Pfeile verschieben den gewählten Block zwischen der Liste Verfügbare Blöcke und der Liste rechts oder links daneben.<br><br>Die Einträge in der Liste Verfügbare Blöcke werden niemals entfernt, weil der selbe Block, z.B. der HTML Block, mehrmals auf der Seite dargestellt werden kann."
 
 #: help_text.php:1109
 msgid "Use these buttons to re-arrange the order of the entries within the list.  The blocks will be printed in the order in which they are listed.<br><br>Highlight the entry to be moved, and then click a button to move that entry up or down."
-msgstr "Mit diesen Schaltflächen können Sie die Reihenfolge der Blöcke ändern.  Die Blöcke werden auf der Startseite in der selben Reihenfolge dargestellt, wie sie in dieser Liste vorkommen.<br><br>Um die Reihenfolge zu ändern, wählen Sie zuerst mit <u>einem</u> Klick der <u>linken</u> Maustaste den Block den Sie verschieben möchten.  Danach klicken Sie die Schaltflächen so oft wie notwendig, um den gewählten Block in der Reihenfolge zu verschieben."
+msgstr "Mit diesen Schaltflächen können Sie die Reihenfolge der Blöcke ändern. Die Blöcke werden auf der Startseite in der selben Reihenfolge dargestellt, wie sie in dieser Liste vorkommen.<br><br>Um die Reihenfolge zu ändern, wählen Sie zuerst mit <u>einem</u> Klick der <u>linken</u> Maustaste den Block, den Sie verschieben möchten. Danach klicken Sie die Schaltflächen so oft wie notwendig, um den gewählten Block in der Reihenfolge zu verschieben."
 
 #: help_text.php:398
 msgid "Use this field to signal that this media item is the highlighted or primary item for the individual it is attached to.  The highlighted image is the one that will be used on charts and on the individual’s page."
-msgstr "Dieses Feld deutet an dass das Medienobjekt als primäres Objekt der verbundenen Person benutzt werden soll.  Als primäres Objekt wird das Bild dann auf der Persönliche Fakten und Details Seite und auf allen Diagrammen benutzt."
+msgstr "Dieses Feld deutet an, dass das Medienobjekt als primäres Objekt der verbundenen Person benutzt werden soll. Als primäres Objekt wird das Bild dann auf der Persönliche Fakten und Details Seite und auf allen Diagrammen benutzt."
 
 #: help_text.php:1358
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site.  You can also use this to enter any other comments you may have for the site administrator."
-msgstr "Bitte benutzen Sie dieses Feld um dem Verwalter mitzuteilen warum Sie sich registrieren lassen wollen und wie Sie mit diesem Stammbaum verbunden sind.  Sie können hier auch andere Bemerkungen machen, die Sie dem Verwalter mitteilen möchten."
+msgstr "Bitte benutzen Sie dieses Feld, um dem Verwalter mitzuteilen, warum Sie sich registrieren lassen wollen und wie Sie mit diesem Stammbaum verbunden sind. Sie können hier auch andere Bemerkungen machen, die Sie dem Verwalter mitteilen möchten."
 
 #: edit_interface.php:1906
 msgid "Use this page to change or remove family members.<br><br>For each member in the family, you can use the Change link to choose a different individual to fill that role in the family.  You can also use the Remove link to remove that individual from the family.<br><br>When you have finished changing the family members, click the save button to save the changes."
-msgstr "Benutze diese Seite zum Ändern oder Entfernen von Familienmitgliedern.<br><br>Für jedes Familienmitglied können Sie die Schaltfläche <b>Ändern</b> klicken, um eine andere Person für diese Rolle in der Familie zu wählen.<br><br>Um Ihre Änderungen zu speichern, klicken Sie die Schaltfläche <b>Speichern</b>."
+msgstr "Benutzen Sie diese Seite zum Ändern oder Entfernen von Familienmitgliedern.<br><br>Für jedes Familienmitglied können Sie die Schaltfläche <b>Ändern</b> klicken, um eine andere Person für diese Rolle in der Familie zu wählen.<br><br>Um Ihre Änderungen zu speichern, klicken Sie die Schaltfläche <b>Speichern</b>."
 
 #: modules_v3/googlemap/module.php:3754
 msgid "Use this value"
@@ -15030,11 +15030,11 @@ msgstr "Benutzer"
 
 #: admin_users.php:30 edituser.php:91
 msgid "User administration"
-msgstr "Benutzer Verwaltung"
+msgstr "Benutzerverwaltung"
 
 #: admin_users.php:524
 msgid "User didn’t verify within 7 days."
-msgstr "Registrierungswunsch nicht bestätigt"
+msgstr "Registrierung nicht innerhalb von 7 Tagen bestätigt."
 
 #: admin_users.php:533
 msgid "User not verified by administrator."
@@ -15250,7 +15250,7 @@ msgstr "Villa Hermosa, Mexiko"
 
 #: help_text.php:1478
 msgid "Visible online"
-msgstr "Sichtbar wenn Online"
+msgstr "Sichtbar, wenn angemeldet"
 
 #: admin_users.php:206 admin_users.php:398 edituser.php:171
 msgid "Visible to other users when online"
@@ -15311,21 +15311,21 @@ msgstr "Wasserzeichen sind optional und sind normalerweise nur für Besucher sic
 
 #: help_text.php:1029
 msgid "Watermarks can be slow to generate for large images.  Busy sites may prefer to generate them once and store the watermarked image on the server."
-msgstr "Das Erzeugen von Wasserzeichen kann für große Bilder sehr langsam sein. Bei stark frequentierten Seiten empfiehlt es sich die entspr. Bilder einmalig zu erzeugen und auf dem Server zwischenzuspeichern."
+msgstr "Das Erzeugen von Wasserzeichen kann für große Bilder sehr langsam sein. Bei stark frequentierten Seiten empfiehlt es sich, die entspr. Bilder einmalig zu erzeugen und auf dem Server zwischenzuspeichern."
 
 #: login.php:379
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To login to this site, you will need to know your user name and password."
-msgstr "Ihnen wird nun eine Bestätigungsmail an die Adresse <b>%s</b> geschickt.  Sie müssen den in der Mail enthaltenen Anweisungen folgen, um Ihren Benutzernamen zu aktivieren. Falls Sie innerhalb von 7 Tagen nicht reagieren, wird Ihr Registrierungswunsch automatisch abgewiesen. Sie müssen dann erneut anfragen.<br><br>Wenn Sie den Anweisungen in der Bestätigungsmail gefolgt sind, muss der Verwalter Ihren Benutzernamen noch freischalten, bevor Sie ihn benutzen können.<br><br>Um sich auf dieser Webseite anzumelden, benötigen Sie Ihren Benutzernamen und Ihr Passwort."
+msgstr "Ihnen wird nun eine Bestätigungsmail an die Adresse <b>%s</b> geschickt. Sie müssen den in der Mail enthaltenen Anweisungen folgen, um Ihr Benutzerkonto zu aktivieren. Falls Sie innerhalb von 7 Tagen nicht reagieren, wird Ihre Registrierungsanfrage automatisch abgelehnt. Sie müssen dann erneut anfragen.<br><br>Wenn Sie den Anweisungen in der Bestätigungsmail gefolgt sind, muss der Verwalter Ihren Benutzernamen noch freischalten, bevor Sie ihn benutzen können.<br><br>Um sich auf dieser Webseite anzumelden, benötigen Sie dann Ihren Benutzernamen und Ihr Passwort."
 
 #: login.php:381
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, you can login.  To login to this site, you will need to know your user name and password."
-msgstr "Ihnen wird nun eine Bestätigungsmail an die Adresse <b>%s</b> geschickt. Sie müssen den in der Mail enthaltenen Anweisungen folgen, um Ihren Benutzernamen zu aktivieren. Falls Sie innerhalb von 7 Tagen nicht reagieren, wird Ihr Registrierungswunsch automatisch abgewiesen. Sie müssen dann erneut anfragen.<br><br>Wenn Sie den Anweisungen in der Bestätigungs Mail gefolgt sind, können Sie sich sofort auf dieser Webseite anmelden. Dazu benötigen Sie Ihren Benutzernamen und Ihr Passwort."
+msgstr "Ihnen wird nun eine Bestätigungsmail an die Adresse <b>%s</b> geschickt. Sie müssen den in der Mail enthaltenen Anweisungen folgen, um Ihr Benutzerkonto zu aktivieren. Falls Sie innerhalb von 7 Tagen nicht reagieren, wird Ihre Registrierungsanfrage automatisch abgelehnt. Sie müssen dann erneut anfragen.<br><br>Wenn Sie den Anweisungen in der Bestätigungsmail gefolgt sind, können Sie sich sofort auf dieser Webseite anmelden. Dazu benötigen Sie Ihren Benutzernamen und Ihr Passwort."
 
 #: admin_trees_config.php:421
 msgid "Web site and META tag settings"
-msgstr "Konfiguration META Tags"
+msgstr "Webseiten und META Tags Einstellungen"
 
 #: admin_site_config.php:91 help_text.php:828
 msgid "Website URL"
@@ -15369,27 +15369,27 @@ msgstr "Westsahara"
 
 #: help_text.php:521
 msgid "When a new family record is added online in <b>webtrees</b>, a new ID for that family will be generated automatically. The family ID will have this prefix."
-msgstr "Jeder neu erstellte Familiendatensatz bekommt automatisch eine neue Identifikations-Nummer mit diesem Präfix."
+msgstr "Jeder mit <b>webtrees</b> neu erstellte Familiendatensatz bekommt automatisch eine neue Identifikations-Nummer mit diesem Präfix."
 
 #: help_text.php:540
 msgid "When a new individual record is added online in <b>webtrees</b>, a new ID for that individual will be generated automatically. The individual ID will have this prefix."
-msgstr "Jeder neu erstellte Personendatensatz bekommt automatisch eine neue Identifikations-Nummer mit diesem Präfix."
+msgstr "Jeder mit <b>webtrees</b> neu erstellte Personendatensatz bekommt automatisch eine neue Identifikations-Nummer mit diesem Präfix."
 
 #: help_text.php:667
 msgid "When a new media record is added online in <b>webtrees</b>, a new ID for that media will be generated automatically. The media ID will have this prefix."
-msgstr "Jedes mit webtrees neu erstellte Medienobjekt bekommt automatisch eine neue Identifikations-Nummer mit diesem Präfix."
+msgstr "Jedes mit <b>webtrees</b> neu erstellte Medienobjekt bekommt automatisch eine neue Identifikations-Nummer mit diesem Präfix."
 
 #: help_text.php:699
 msgid "When a new note record is added online in <b>webtrees</b>, a new ID for that note will be generated automatically. The note ID will have this prefix."
-msgstr "Wird eine neue Notiz in <b>webtrees</b> angelegt, so wird eine neue ID dafür automatisch erstellt. Die Notiz ID hat dieses Präfix."
+msgstr "Jede mit <b>webtrees</b> neu angelegte Notiz bekommt automatisch eine neue Identifikations-Nummer mit diesem Präfix."
 
 #: help_text.php:814
 msgid "When a new repository record is added online in <b>webtrees</b>, a new ID for that repository will be generated automatically. The repository ID will have this prefix."
-msgstr "Jeder neu erstellte Archiv-Datensatz bekommt automatisch eine neue Identifikations-Nummer mit diesem Präfix."
+msgstr "Jeder mit <b>webtrees</b> neu angelegte Archiv-Datensatz bekommt automatisch eine neue Identifikations-Nummer mit diesem Präfix."
 
 #: help_text.php:905
 msgid "When a new source record is added online in <b>webtrees</b>, a new ID for that source will be generated automatically.  The source ID will have this prefix."
-msgstr "Jeder neu erstellte Quellendatensatz bekommt automatisch eine neue Identifikations-Nummer mit diesem Präfix."
+msgstr "Jeder mit <b>webtrees</b> neu angelegte Quellendatensatz bekommt automatisch eine neue Identifikations-Nummer mit diesem Präfix."
 
 #: help_text.php:1468
 msgid "When a user registers for an account, an email is sent to their email address with a verification link.  When they click this link, we know the email address is correct, and the “email verified” option is selected automatically."
@@ -15397,19 +15397,19 @@ msgstr "Sobald sich ein Benutzer für ein Konto einträgt, wird eine E-Mail mit 
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:44
 msgid "When adding a link, the ID field cannot be empty."
-msgstr "ID-Nummer fehlt.  Befehl kann nicht ausgeführt werden."
+msgstr "ID-Nummer fehlt. Befehl kann nicht ausgeführt werden."
 
 #: help_text.php:784
 msgid "When adding new close relatives, you can add source citations to the records (e.g. INDI, FAM) or the facts (BIRT, MARR, DEAT).  This option controls which checkboxes are ticked by default."
-msgstr "Wenn Sie neue nahe Verwandte in die Datenbank eintragen, können Sie Quellenzitate entweder den Datensätzen (INDI, FAM)  oder aber den verschiedenen Ereignissen (BIRT, MARR, DEAT) hinzufügen.  Diese Option bestimmt die Voreinstellung der jeweiligen Auswahlbox."
+msgstr "Wenn Sie neue nahe Verwandte in die Datenbank eintragen, können Sie Quellenzitate entweder den Datensätzen (INDI, FAM) oder aber den verschiedenen Ereignissen (BIRT, MARR, DEAT) hinzufügen. Diese Option bestimmt die Voreinstellung der jeweiligen Auswahlbox."
 
 #: help_text.php:461
 msgid "When calculating relationships, this option controls whether <b>webtrees</b> will include spouses/partners as well as blood relatives."
-msgstr "Für die Berechnung von Verwandschaftsgraden, bestimmt diese Option, ob <strong>webtrees</strong> Ehe-/Partner genauso wie Blutsverwandte mit einschließt."
+msgstr "Für die Berechnung von Verwandschaftsgraden bestimmt diese Option, ob <strong>webtrees</strong> Ehe-/Partner genauso wie Blutsverwandte mit einschließt."
 
 #: help_text.php:895
 msgid "When set to <b>Yes</b>, the following message will appear above the input fields on the “Request new user account” page:<div class=\"list_value_wrap\"><div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div></div>"
-msgstr "Wenn Sie <b>Ja</b>, wählen, wird folgende Notiz als Überschrift auf der «Neues Benutzerkonto anfragen» Seite gezeigt:<div class=\"list_value_wrap\"><div class=\"largeError\">Bitte beachten Sie:</div><div class=\"error\">Indem Sie dieses ausgefüllte Formular einsenden, bestätigen Sie Ihr Einverständnis mit den folgenden Bedingungen:<ul><li>dass Sie Informationen über lebende Personen, die in dieser Datenbank vorkommen, immer vertraulich halten;</li><li>und dass Sie in der unten stehenden Textbox Ihre Verwandtschaft zu Personen in dieser Datenbank erklären und Informationen über Personen, die in dieser Datenbank vorkommen, aber dort eventuell fehlen sollten, mitteilen.</li></ul></div></div>"
+msgstr "Wenn Sie <b>Ja</b> wählen, wird folgende Notiz als Überschrift auf der «Neues Benutzerkonto anfragen» Seite gezeigt:<div class=\"list_value_wrap\"><div class=\"largeError\">Bitte beachten Sie:</div><div class=\"error\">Indem Sie dieses ausgefüllte Formular einsenden, bestätigen Sie Ihr Einverständnis mit den folgenden Bedingungen:<ul><li>dass Sie Informationen über lebende Personen, die in dieser Datenbank vorkommen, immer vertraulich halten;</li><li>und dass Sie in der unten stehenden Textbox Ihre Verwandtschaft zu Personen in dieser Datenbank erklären und Informationen über Personen, die in dieser Datenbank vorkommen, aber dort eventuell fehlen sollten, mitteilen.</li></ul></div></div>"
 
 #: help_text.php:1289
 msgid "When this check box is checked, the chart will be printed with oldest individuals at the top.  When it is unchecked, youngest individuals will appear at the top."
@@ -15417,31 +15417,31 @@ msgstr "Wenn dieses Steuerelement aktiviert ist, wird das Diagramm mit den älte
 
 #: help_text.php:1409
 msgid "When this option is checked, you can see all source or note records for this individual.  When this option is unchecked, source or note records that are associated with other facts for this individual will not be shown."
-msgstr "Wenn diese Option angekreuzt ist, können Sie alle Quellenangaben oder Bemerkungen dieser Person sehen.  Wenn die Option nicht angekreuzt ist, werden Quellenangaben oder Bemerkungen, die mit Fakten verbunden sind, nicht gezeigt."
+msgstr "Wenn diese Option angekreuzt ist, können Sie alle Quellenangaben oder Bemerkungen dieser Person sehen. Wenn die Option nicht angekreuzt ist, werden Quellenangaben oder Bemerkungen, die mit Fakten verbunden sind, nicht gezeigt."
 
 #: help_text.php:1404
 msgid "When this option is selected, webtrees will calculate the age differences between siblings, children, spouses, etc."
-msgstr "Wird diese Option ausgewählt, so berechnet webtrees die Altersunterschiede zwischen Geschwistern, Kindern, Ehepartnern, etc."
+msgstr "Wird diese Option ausgewählt ist, berechnet webtrees die Altersunterschiede zwischen Geschwistern, Kindern, Ehepartnern, etc."
 
 #: help_text.php:931
 msgid "When you add a new family member, a default surname can be provided.  This surname will depend on the local tradition."
-msgstr "Beim Hinzufügen eines neuen Familienmitgliedes kann ein voreingestellter Name in Abhängigkeit von lokalen Tarditionen zur Verfügung gestellt werden."
+msgstr "Beim Hinzufügen eines neuen Familienmitgliedes kann ein voreingestellter Name in Abhängigkeit von lokalen Traditionen zu Verfügung gestellt werden."
 
 #: help_text.php:1331
 msgid "When you add, edit, or delete information, the changes are not saved immediately.  Instead, they are kept in a “pending” area.  These pending changes need to be reviewed by a moderator before they are accepted."
-msgstr "Wenn Sie Informationen hinzufügen, bearbeiten oder löschen, werden zur Sicherheit die Änderungen nicht unmittelbar wirksam. Stattdessen werden sie in einer “Warteschlange” zur Überprüfung und Freigabe bereitgehalten. Die von Ihnen vorgenommenen Ergänzungen oder Änderungen müssen zunächst von einem Administrator überprüft und akzeptiert werden, bevor sie allgemein sichtbar werden. Auf diese Weise sollen Bedienungsfehler und versehentliche Änderungen vermieden werden."
+msgstr "Wenn Sie Informationen hinzufügen, bearbeiten oder löschen, werden die Änderungen zur Sicherheit nicht unmittelbar wirksam. Stattdessen werden sie in einer “Warteschlange” zur Überprüfung und Freigabe bereitgehalten. Die von Ihnen vorgenommenen Ergänzungen oder Änderungen müssen zunächst von einem Administrator überprüft und akzeptiert werden, bevor sie allgemein sichtbar werden. Auf diese Weise sollen Bedienungsfehler und versehentliche Änderungen vermieden werden."
 
 #: help_text.php:1129
 msgid "When you check this option, a copy of the GEDCOM file will be compressed into ZIP format before the download begins. This will reduce its size considerably, but you will need to use a compatible Unzip program (WinZIP, for example) to decompress the transmitted GEDCOM file before you can use it.<br><br>This is a useful option for downloading large GEDCOM files.  There is a risk that the download time for the uncompressed file may exceed the maximum allowed execution time, resulting in incompletely downloaded files.  The ZIP option should reduce the download time by 75 percent."
-msgstr "Diese Option ist besonders nützlich wenn große GEDCOM-Dateien übertragen werden sollen.  Wenn diese Option angekreuzt ist, erstellt <b>webtrees</b> vor dem übertragen der GEDCOM-Datei eine komprimierte Version im ZIP-Format.  Die komprimierte Version, die gewöhnlich mindestens 75% kleiner ist, wird dann übertragen.  Das Komprimieren hat den Vorteil dass die Dateigröße wesentlich geringer ist.  Der Nachteil ist dass die komprimierte Datei zuerst mit einem geeigneten Programm wie WinZip oder 7-Zip bearbeitet werden muss so dass sie für normale Programme gültig wird.<br><br>Es besteht immer die Möglichkeit, dass bei unkomprimierten großen Dateien die maximale Laufzeit überschritten wird und die Übertragung deshalb vorzeitig abgebrochen wird. Die ZIP-Option sollte die Zeit für das herunterladen um ca. 75&#37; verringern."
+msgstr "Diese Option ist besonders nützlich, wenn große GEDCOM-Dateien übertragen werden sollen. Wenn diese Option angekreuzt ist, erstellt <b>webtrees</b> vor dem Übertragen der GEDCOM-Datei eine komprimierte Version im ZIP-Format. Die komprimierte Version, die gewöhnlich mindestens 75% kleiner ist, wird dann übertragen. Das Komprimieren hat den Vorteil, dass die Dateigröße wesentlich geringer ist. Sie müssen die komprimierte Datei nach dem Download mit einem geeigneten Programm wie WinZip oder 7-Zip entpacken.<br><br>Es besteht immer die Möglichkeit, dass bei unkomprimierten großen Dateien die maximale Laufzeit überschritten wird und die Übertragung deshalb vorzeitig abgebrochen wird. Die ZIP-Option sollte die Zeit für das Herunterladen um ca. 75&#37; verringern."
 
 #: help_text.php:1083
 msgid "When you click the <b>Add a new shared note</b> link, a new window will open.  You can choose to link to an existing shared note, or you can create a new shared note and at the same time create a link to it."
-msgstr "Wenn Sie auf den Link <b>Hinzufügen einer neuen “Gemeinsamen Notiz”</b> klicken, wird sich ein neues Fenster öffnen. Sie können dort wählen, entweder auf eine bereits vorhandene “Gemeinsame Notiz” zu verweisen, oder Sie können eine neune “Gemeinsame Notiz” erstellen und gleichzeitig einen Link darauf erzeugen."
+msgstr "Wenn Sie auf den Link <b>Hinzufügen einer neuen “Gemeinsamen Notiz”</b> klicken, wird sich ein neues Fenster öffnen. Sie können dort wählen, ob auf eine bereits vorhandene “Gemeinsame Notiz” verlinkt werden soll, oder ob Sie eine neue “Gemeinsame Notiz” erstellen und gleichzeitig einen Link darauf erzeugen wollen."
 
 #: modules_v3/clippings/help_text.php:37
 msgid "When you click this link your clippings cart will be totally emptied.<br><br>If you don’t want to remove all individuals, families, etc. from the clippings cart, you can remove items individually by clicking the <b>Remove</b> link in the name boxes.  There is <u>no</u> confirmation dialog when you click either of these links;  the requested deletion takes place immediately."
-msgstr "Klicken Sie dieses Link, um den Sammelbehälter zu leeren.<br><br>Falls Sie nicht ALLE Personen, Familien usw. aus dem Sammelbehälter entfernen möchten, können Sie auch einzelne Elemente entfernen, indem Sie das jeweilige <b>Entfernen</b>-Link in der Namensbox klicken."
+msgstr "Klicken Sie auf dieses Link, um den Sammelbehälter zu leeren.<br><br>Falls Sie nicht ALLE Personen, Familien usw. aus dem Sammelbehälter entfernen möchten, können Sie auch einzelne Elemente entfernen, indem Sie das jeweilige <b>Entfernen</b>-Link in der Namensbox klicken. Nach einem Klick gibt es <u>keine</u> weiter Bestätigung mehr; die gewählten Elemente werden sofort aus der Sammelbox entfernt."
 
 #: message.php:143
 msgid "When you send this message you will receive a copy sent via email to the address you provided."
@@ -15449,7 +15449,7 @@ msgstr "Wenn Sie diese Nachricht senden, erhalten Sie eine Kopie an die von Ihne
 
 #: help_text.php:720
 msgid "Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations.  You specify the number of relationship steps that the user is allowed to see."
-msgstr "Wenn ein Benutzer einem einzelnen Datensatz in einem Stammbaum zugeordnet ist und zugleich eine Rolle als Mitglied, Redakteur oder Moderator ausübt, können Sie den Zugriff auf  Details von entfernten bzw. lebenden Personen verhindern. Sie geben die Anzahl der Stufen zu den Verwandten an, die der Benutzer sehen darf."
+msgstr "Wenn ein Benutzer einem einzelnen Datensatz in einem Stammbaum zugeordnet ist und zugleich eine Rolle als Mitglied, Redakteur oder Moderator ausübt, können Sie den Zugriff auf Details von entfernten bzw. lebenden Personen verhindern. Sie geben die Anzahl der Stufen zu den Verwandten an, die der Benutzer sehen darf."
 
 #: admin_pgv_to_wt.php:133
 msgid "Where is your PhpGedView installation?"
@@ -15473,7 +15473,7 @@ msgstr "Welche Verbindungen dieser Quelle möchten Sie noch sammeln?"
 
 #: admin_trees_config.php:647 help_text.php:671
 msgid "Who can upload new media files?"
-msgstr "Wer darf neue Mediendateien auf den Server laden?"
+msgstr "Wer darf neue Mediendateien auf den Server hochladen?"
 
 #. I18N: Name of a module. (A list of users who are online now)
 #: modules_v3/logged_in/module.php:32
@@ -15546,15 +15546,15 @@ msgstr "mit Quellen"
 
 #: help_text.php:1184
 msgid "With this option, the <b>webtrees</b> internal messaging system will be used and no emails will be sent.  You will receive only <u>internal</u> messages from the other users.  When another site user sends you a message, that message will appear in the Message block on your “My page”.  If you have removed this block from your “My page”, you will not see any messages.  They will, however, show up as soon as you configure your “My page” to again have the Message block."
-msgstr "Wenn Sie diese Option nutzen, wird das interne <b>webtrees</b> Nachrichtensystem benutzt und es werden keine Mails versendet.  So werden Sie nur <b>interne Nachrichten</b> von den anderen Nutzern erhalten. Wenn ein anderer Nutzer Ihnen eine Nachricht von dieser Seite aus schickt, wird diese im Nachrichtenblock auf Ihrer <b>Mein webtrees</b> Seite erscheinen, sofern Sie den Block nicht deaktiviert haben."
+msgstr "Wenn Sie diese Option nutzen, wird das interne <b>webtrees</b> Nachrichtensystem benutzt und es werden keine Mails versendet. So werden Sie nur <b>interne Nachrichten</b> von den anderen Nutzern erhalten. Wenn ein anderer Nutzer Ihnen eine Nachricht von dieser Seite aus schickt, wird diese im Nachrichtenblock auf Ihrer <b>Mein webtrees</b> Seite erscheinen, sofern Sie den Block nicht deaktiviert haben."
 
 #: help_text.php:1196
 msgid "With this option, you will not receive any messages.  Even the administrator will not be able to reach you."
-msgstr "Mit dieser Option werden Sie überhaupt keine Nachrichten erhalten."
+msgstr "Mit dieser Option werden Sie überhaupt keine Nachrichten erhalten. Auch der Verwalter wird Sie nicht erreichen können."
 
 #: help_text.php:1192
 msgid "With this option, you will only receive email messages at the address you configured on your Account page.  The messaging system internal to <b>webtrees</b> will not be used at all, and there will never be any messages in the Message block on your “My page”."
-msgstr "Mit dieser Option werden Sie die Nachrichten nur per E-Mail erhalten. Die anderen Benutzer können Sie nicht über das interne Mail System erreichen."
+msgstr "Mit dieser Option werden Sie die Nachrichten nur per E-Mail erhalten. Die anderen Benutzer können Sie nicht über das interne Mail System erreichen. Er werden auch keine Nachrichten im Nachrichtenblock auf Ihrer <b>Mein webtrees</b> Seite erscheinen."
 
 #: library/WT/Stats.php:302 library/WT/Stats.php:346
 msgid "Without sources"
@@ -15592,7 +15592,7 @@ msgstr "Jahr"
 
 #: help_text.php:1093
 msgid "Year input box"
-msgstr "Jahres Eingabefeld"
+msgstr "Eingabefeld für das Jahr"
 
 #: timeline.php:132 timeline.php:388
 msgid "Year:"
@@ -15619,7 +15619,7 @@ msgstr "Sie können das Aussehen von <b>webtrees</b> mit vorgefertigten Layoutvo
 
 #: help_text.php:1279
 msgid "You can click this button to see whether there is another relationship path between the two individuals.  Previously found paths can be displayed again by clicking the link with the path number."
-msgstr "Klicken Sie diesen Schaltfläche, um zu prüfen, ob es einen weiteren Verwandtschafts-Pfad gibt, der diese beiden Personen verbindet. Zuvor gefundene Pfade können wieder gezeigt werden, indem man die entsprechende Pfad-Nummer klickt."
+msgstr "Klicken Sie auf diese Schaltfläche, um zu prüfen, ob es einen weiteren Verwandtschafts-Pfad gibt, der diese beiden Personen verbindet. Zuvor gefundene Pfade können wieder gezeigt werden, indem man die entsprechende Pfad-Nummer anklickt."
 
 #. I18N: %s is a URL
 #: help_text.php:1165
@@ -15629,11 +15629,11 @@ msgstr "Eine Kopie der GEDCOM-Spezifikation kann von %s heruntergeladen werden."
 
 #: help_text.php:1243
 msgid "You can limit the number of news articles displayed, thereby reducing the height of the GEDCOM News block.<br><br>This option determines whether any limits should be applied or whether the limit should be according to the age of the article or according to the number of articles."
-msgstr "Sie können die Anzahl der dargestellten Notizen beschränken, so dass der GEDCOM Neuigkeiten Block nicht zu hoch wird.<br><br>Diese Option bestimmt ob überhaupt Beschränkungen belegt sind, oder, ob diese Beschränkungen das Alter oder die Anzahl der Notizen berücksichtigen."
+msgstr "Sie können die Anzahl der dargestellten Notizen beschränken, so dass der GEDCOM Neuigkeiten Block nicht zu hoch wird.<br><br>Diese Option bestimmt, ob überhaupt Beschränkungen belegt sind, oder ob diese Beschränkungen das Alter oder die Anzahl der Notizen berücksichtigen."
 
 #: modules_v3/batch_update/plugins/married_names.php:37
 msgid "You can make it easier to search for married women by recording their married name.<br>However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
-msgstr "Das Suchen nach verheirateten Frauen kann erleichtert werden, wenn die Datenbank nicht nur Geburtsnamen sondern auch Ehenamen enthält.<br>Da nicht alle verheiratete Frauen den Nachnamen des Gatten nehmen, sollten Sie diese Option vielleicht nicht benutzen;  Sie könnten dadurch falsche Daten in Ihre Datenbank einfügen."
+msgstr "Das Suchen nach verheirateten Frauen kann erleichtert werden, wenn die Datenbank nicht nur Geburtsnamen sondern auch Ehenamen enthält.<br>Da nicht alle verheiratete Frauen den Nachnamen des Gatten nehmen, sollten Sie diese Option vielleicht nicht benutzen; Sie könnten dadurch falsche Daten in Ihre Datenbank einfügen."
 
 #: login.php:563
 msgid "You can now login with your user name and password."
@@ -15657,7 +15657,7 @@ msgstr "Wenn für eine Person noch kein Datensatz für das Todes-, Begräbnis- o
 
 #: login.php:65
 msgid "You cannot login because your browser does not accept cookies."
-msgstr "Sie können sich nicht anmelden, weil in Ihrem Browser keine Cookies aktiviert sind."
+msgstr "Sie können sich nicht anmelden, weil in Ihrem Browser keine Cookies akzeptiert werden."
 
 #: downloadbackup.php:34 includes/session.php:638
 msgid "You do not have permission to view this page."
@@ -15665,7 +15665,7 @@ msgstr "Sie haben keine Berechtigung diese Seite anzusehen."
 
 #: login.php:507
 msgid "You do not have to take any action; the user can now login."
-msgstr "Der Benutzer kann sich jetzt anmelden;  Sie müssen nichts weiter unternehmen."
+msgstr "Der Benutzer kann sich jetzt anmelden; Sie müssen nichts weiter unternehmen."
 
 #: admin_site_merge.php:54
 msgid "You entered the same IDs.  You cannot merge the same records."
@@ -15697,7 +15697,7 @@ msgstr "HTML kann benutzt werden, um die Anwort zu formatieren und Links auf and
 
 #: setup.php:213
 msgid "You must change this before you can continue."
-msgstr "Um fortzufahren, muß dies erst geändert werden."
+msgstr "Um fortzufahren, muss dies erst geändert werden."
 
 #: admin_users.php:333
 msgid "You must confirm the password."
@@ -15758,12 +15758,12 @@ msgstr "Sie müssen ein Administratorkonto einrichten. Mit diesem Konto haben Si
 
 #: login.php:505
 msgid "You now need to review the account details, and set the “approved” status to “yes”."
-msgstr "Sie sollten nun die Angaben des Benutzerkonto prüfen und den “bestätigt”-Status auf “ja” setzen."
+msgstr "Sie sollten nun die Angaben des Benutzerkontos prüfen und den “bestätigt”-Status auf “ja” setzen."
 
 #. I18N: Help text for the “Login URL” site configuration setting
 #: help_text.php:618
 msgid "You only need to enter a Login URL if you want to redirect to a different site or location when your users login.  This is very useful if you need to switch from http to https when your users login.  Include the full URL to <i>login.php</i>.  For example, https://www.yourserver.com/webtrees/login.php ."
-msgstr "Die Login URL muss nur dann angegeben werden, wenn Sie zu einer anderen Seite umleiten möchten, wenn die Benutzer sich anmelden. Dies ist dann sinnvoll, wenn Sie beim Benutzer-Login von http auf https wechseln möchten. Geben Sie die vollständige URL für <i>login.php</i> ein. Zum Beispiel https://www.ihr_server.de/webtrees/login.php."
+msgstr "Die Login URL muss nur dann angegeben werden, wenn Sie zu einer anderen Seite umleiten möchten, wenn die Benutzer sich anmelden. Dies ist dann sinnvoll, wenn Sie beim Benutzer-Login von http auf https wechseln möchten. Geben Sie die vollständige URL für <i>login.php</i> ein. Zum Beispiel https://www.example.com/webtrees/login.php."
 
 #: includes/authentication.php:98
 msgid "You sent the following message to a webtrees administrator:"
@@ -15775,19 +15775,19 @@ msgstr "Sie haben die folgende Nachricht an einen webtrees Benutzer gesendet:"
 
 #: admin_site_upgrade.php:102
 msgid "You should accept or reject all pending changes before upgrading."
-msgstr "Vor der Aktualisierung sollten sie ausstehende Änderungen entweder akzeptieren oder ablehnen."
+msgstr "Vor der Aktualisierung sollten Sie ausstehende Änderungen entweder akzeptieren oder ablehnen."
 
 #: help_text.php:1151
 msgid "You should avoid using the vertical line character “|” in your notes.  It is used internally by webtrees and may cause your note to display incorrectly."
-msgstr "Sie sollten vermeiden, das vertikale Linienzeichen “|” in Ihrer Merkliste zu verwenden. Es wird intern von webtrees verwendet und kann dazu führen, das Bemerkungen falsch angezeigt werden."
+msgstr "Sie sollten vermeiden, dass vertikale Linienzeichen “|” in Ihrer Merkliste verwendet werden. Es wird intern von webtrees verwendet und kann dazu führen, das Bemerkungen falsch angezeigt werden."
 
 #: admin_site_upgrade.php:200
 msgid "You should consult the module’s author to confirm compatibility with this version of webtrees."
-msgstr "Sie sollten den Autor des Moduls kontaktieren um die Kompatibilität mit dieser Version von webtrees sicher zu stellen."
+msgstr "Sie sollten den Autor des Moduls kontaktieren, um die Kompatibilität mit dieser Version von webtrees sicher zu stellen."
 
 #: admin_site_upgrade.php:263
 msgid "You should consult the theme’s author to confirm compatibility with this version of webtrees."
-msgstr "Sie sollten den Autor des Themas kontaktieren um die Kompatibilität mit dieser Version von webtrees sicher zu stellen."
+msgstr "Sie sollten den Autor des Themas kontaktieren, um die Kompatibilität mit dieser Version von webtrees sicher zu stellen."
 
 #. I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’
 #: login.php:276 message.php:69
@@ -15801,15 +15801,15 @@ msgstr "Sie sollten keinen Zugang genehmigen, solange Sie nicht wissen, dass die
 
 #: login.php:315
 msgid "You will be informed by e-mail when this prospective user has confirmed the request.  After this, the user will be able to login without any action on your part."
-msgstr "Sie werden per E-Mail in Kenntnis gesetzt, wenn der zukünftige Benutzer die Anfrage bestätigt hat.  Danach kann der Benutzer sich ohne Ihr Zutun frei anmelden."
+msgstr "Sie werden per E-Mail in Kenntnis gesetzt, wenn der zukünftige Benutzer die Anfrage bestätigt hat. Danach kann der Benutzer sich ohne Ihr Zutun frei anmelden."
 
 #: login.php:313
 msgid "You will be informed by e-mail when this prospective user has confirmed the request.  You can then complete the process by activating the user name.  The new user will not be able to login until you activate the account."
-msgstr "Sie werden per E-Mail informiert wenn diese Benutzer die Anfrage bestätigt hat. Sie können dann den Prozess vollenden wenn Sie den Benutzer aktivieren. Der Benutzer wird nicht in der Lage sein sich anzumelden bis Sie den Zugang aktiviert haben."
+msgstr "Sie werden per E-Mail informiert, wenn diese Benutzer die Anfrage bestätigt hat. Sie können dann den Prozess abschließen, wenn Sie den Benutzer aktivieren. Der Benutzer wird sich nicht anmelden können, bis Sie den Zugang aktiviert haben."
 
 #: setup.php:408
 msgid "You will use this to login to webtrees."
-msgstr "Diesen Benutzernamen benötigen Sie um sich in <b>webtrees</b> einzuloggen."
+msgstr "Diesen Benutzernamen benötigen Sie, um sich in <b>webtrees</b> einzuloggen."
 
 #: statistics.php:280
 msgid "Youngest father"
@@ -15930,13 +15930,13 @@ msgstr "um %s"
 #: source.php:57
 msgctxt "You should review the changes and then accept or reject them."
 msgid "accept"
-msgstr "Annehmen"
+msgstr "annehmen"
 
 #: family.php:39 individual.php:50 mediaviewer.php:40 note.php:39 repo.php:39
 #: source.php:39
 msgctxt "You should review the deletion and then accept or reject it."
 msgid "accept"
-msgstr "Annehmen"
+msgstr "annehmen"
 
 #. I18N: the status of an edit accepted/rejected/pending
 #: admin_site_change.php:33
