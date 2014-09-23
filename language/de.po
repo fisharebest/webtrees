@@ -18482,7 +18482,7 @@ msgstr "Liste"
 #: library/WT/Controller/Lifespan.php:550
 msgctxt "Abbreviation for marriage"
 msgid "m."
-msgstr "∞"
+msgstr "⚭"
 
 #. I18N: A woman’s name, before she marries (in cultures where women take their new husband’s name on marriage)
 #: library/WT/Gedcom/Code/Name.php:109
@@ -18533,17 +18533,17 @@ msgstr "ausgeben"
 #: includes/functions/functions.php:852
 msgctxt "mother’s father"
 msgid "maternal grandfather"
-msgstr "Großvater mutterlicher Seite"
+msgstr "Großvater mütterlicherseits"
 
 #: includes/functions/functions.php:854
 msgctxt "mother’s mother"
 msgid "maternal grandmother"
-msgstr "Großmutter"
+msgstr "Großmutter mütterlicherseits"
 
 #: includes/functions/functions.php:855
 msgctxt "mother’s parent"
 msgid "maternal grandparent"
-msgstr "mütterlicher Großvater"
+msgstr "Großvater mütterlicherseits"
 
 #. I18N: https://en.wikipedia.org/wiki/Matrilineal (a system where children take their mother’s surname
 #: admin_trees_config.php:1256 help_text.php:940
@@ -18560,7 +18560,7 @@ msgstr "Maximum"
 #, php-format
 msgid "maximum %d day"
 msgid_plural "maximum %d days"
-msgstr[0] "maximal %d Tag"
+msgstr[0] "maximal ein Tag"
 msgstr[1] "maximal %d Tage"
 
 #. I18N: time format “%a” - exactly 00:00:00
@@ -18571,7 +18571,7 @@ msgstr "Mitternacht"
 #. I18N: Name of a theme.
 #: themes/minimal/theme.php:30
 msgid "minimal"
-msgstr ""
+msgstr "minimal"
 
 #: modules_v3/googlemap/module.php:330
 msgid "minimum"
@@ -18808,22 +18808,22 @@ msgstr "Partner/in"
 #: admin_trees_config.php:1256 help_text.php:945
 msgctxt "Surname tradition"
 msgid "paternal"
-msgstr "väterlich"
+msgstr "väterlicherseits"
 
 #: includes/functions/functions.php:834
 msgctxt "father’s father"
 msgid "paternal grandfather"
-msgstr "Großvater"
+msgstr "Großvater väterlicherseits"
 
 #: includes/functions/functions.php:835
 msgctxt "father’s mother"
 msgid "paternal grandmother"
-msgstr "Großmutter"
+msgstr "Großmutter väterlicherseits"
 
 #: includes/functions/functions.php:836
 msgctxt "father’s parent"
 msgid "paternal grandparent"
-msgstr "väterlicher Großvater"
+msgstr "Großeltern väterlicherseits"
 
 #. I18N: https://en.wikipedia.org/wiki/Patrilineal (a system where children take their father’s surname
 #: admin_trees_config.php:1256 help_text.php:934
@@ -18904,7 +18904,7 @@ msgstr "kirchlicher Name"
 #. I18N: a program feature
 #: setup.php:131 setup.php:132
 msgid "reporting"
-msgstr "melden …"
+msgstr "melden"
 
 #: statistics.php:690
 msgid "reset"
@@ -19298,12 +19298,12 @@ msgstr "Sortierung nach Heiratsdatum"
 #. I18N: An option in a list-box
 #: modules_v3/recent_changes/module.php:156
 msgid "sort by date, newest first"
-msgstr "sortiert nach Datum, mit dem Jüngsten beginnend"
+msgstr "sortiert nach Datum, mit dem neusten beginnend"
 
 #. I18N: An option in a list-box
 #: modules_v3/recent_changes/module.php:155
 msgid "sort by date, oldest first"
-msgstr "sortiert nach Datum, mit dem Ältesten beginnend"
+msgstr "sortiert nach Datum, mit dem ältesten beginnend"
 
 #. I18N: An option in a list-box
 #: medialist.php:93
@@ -19323,7 +19323,7 @@ msgstr "sortiert nach Dateiname"
 #: modules_v3/todays_events/module.php:149
 #: modules_v3/upcoming_events/module.php:161
 msgid "sort by name"
-msgstr "nach Namen sortieren"
+msgstr "sortiert nach Namen"
 
 #. I18N: An option in a list-box
 #: medialist.php:90
@@ -19342,7 +19342,7 @@ msgstr "Ehepartner"
 #. I18N: Secure Sockets Layer - a secure communications protocol
 #: admin_site_config.php:36
 msgid "ssl"
-msgstr "ssl"
+msgstr "SSL"
 
 #: includes/functions/functions.php:978
 msgctxt "father’s wife’s son"
@@ -19486,7 +19486,7 @@ msgstr "die Datenbankverbindungseinstellungen in der Datei <b>/data/config.ini.p
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:80
 msgid "the directory <b>/data</b> and the file <b>/data/config.ini.php</b> have access permissions that allow the webserver to read them"
-msgstr "das Verzeichnis <b>/data</b> und die Datei <b>/data/config.ini.php</b> besitzten Attribute die es dem Server erlauben sie zu lesen"
+msgstr "das Verzeichnis <b>/data</b> und die Datei <b>/data/config.ini.php</b> besitzten Berechtigungen, die es dem Server erlauben, sie zu lesen"
 
 #: includes/functions/functions.php:681
 #, php-format
@@ -19550,7 +19550,7 @@ msgstr "Dreiviertelkreis"
 #. I18N: Transport Layer Security - a secure communications protocol
 #: admin_site_config.php:37
 msgid "tls"
-msgstr "tls"
+msgstr "TLS"
 
 #. I18N: Gedcom TO dates
 #: library/WT/Date.php:235
@@ -19747,7 +19747,7 @@ msgstr "webtrees Wiki"
 
 #: help_text.php:1306
 msgid "webtrees’ database must be on the same server as PGV’s"
-msgstr "Die webtrees Datenbank muss auf demselben Server, wie die PGV-Datenbank sein."
+msgstr "Die webtrees Datenbank muss auf demselben Server wie die PGV-Datenbank sein."
 
 #: modules_v3/googlemap/module.php:3888
 msgid "west"
@@ -19761,7 +19761,7 @@ msgstr "Ehefrau"
 #. I18N: Name of a theme.
 #: themes/xenea/theme.php:30
 msgid "xenea"
-msgstr ""
+msgstr "Xenea"
 
 #: timeline.php:130
 msgid "years"
@@ -19789,7 +19789,7 @@ msgstr "ja"
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:81
 msgid "you can connect to the database using other applications, such as phpmyadmin"
-msgstr "Sie können sich mit anderen Anwendungen wie »phpmyadmin«, mit der Datenbank verbinden"
+msgstr "Sie können sich mit anderen Anwendungen, wie »phpmyadmin«, mit der Datenbank verbinden"
 
 #: includes/functions/functions.php:778
 msgid "younger brother"
@@ -19845,7 +19845,7 @@ msgstr "…"
 #~ msgstr "Zugriff"
 
 #~ msgid "Add a new parent"
-#~ msgstr "Ein neues Elternteil hinzufügen"
+#~ msgstr "Einen neuen Elternteil hinzufügen"
 
 #~ msgid "Add an unlinked person"
 #~ msgstr "Verbindungslose Person hinzufügen"
@@ -19863,7 +19863,7 @@ msgstr "…"
 #~ msgstr "Erlauben Nachrichten online zu speichern"
 
 #~ msgid "An error occurred while creating the Edit form.  Another user may have changed this record since you previously viewed it."
-#~ msgstr "Ein Fehler trat während dem Aufbau des Editier-Formulars auf.  Ein anderer Benutzer hat womöglich den Datensatz geändert, seit Sie ihn aufruften."
+#~ msgstr "Ein Fehler trat während dem Aufbau des Editier-Formulars auf. Ein anderer Benutzer hat womöglich den Datensatz geändert, seit Sie ihn aufgerufen haben."
 
 #~ msgid "An unexpected database error occured."
 #~ msgstr "Ein unerwarteter Datenbankfehler ist aufgetreten."
@@ -19881,7 +19881,7 @@ msgstr "…"
 #~ msgstr "Geburten, Sterbefälle, Heiraten"
 
 #~ msgid "Choose to display a standard header for your custom Welcome text.  When your users change language, this header will appear in the new language.<br><br>If set to <b>Yes</b>, the header will look like this:<div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website.<br></div>"
-#~ msgstr "Wählen Sie eine Standardüberschrift für den benutzerdefinierten Begrüßungsstext. Wenn Ihre Benutzer die Sprache wechseln, wird diese Überschrift in der neuen Sprache angezeigt<br><br>wenn eingestellt auf <b>Ja</b>, sieht die Überschrift wie folgt aus:. <div Class=\"list_value_wrap\"> <center> <b> Willkommen auf dieser Genealogie-Webseite</b></center><br>Der Zugang ist nur Nutzern möglich, die ein Konto und ein Passwort für diese Webseite.<br></div> besitzen."
+#~ msgstr "Wählen Sie eine Standardüberschrift für den benutzerdefinierten Begrüßungsstext. Wenn Ihre Benutzer die Sprache wechseln, wird diese Überschrift in der neuen Sprache angezeigt<br><br>wenn eingestellt auf <b>Ja</b>, sieht die Überschrift wie folgt aus: <div class=\"list_value_wrap\"><center><b>Willkommen auf dieser Genealogie-Webseite</b></center><br>Der Zugang ist nur Nutzern möglich, die ein Konto und ein Passwort für diese Webseite besitzen.<br></div>"
 
 #~ msgid "Click here to continue"
 #~ msgstr "Fortsetzen"
@@ -19890,7 +19890,7 @@ msgstr "…"
 #~ msgstr "Alle minimieren"
 
 #~ msgid "Copy the new files to the web server, replacing any that have the same name."
-#~ msgstr "Kopiert neue Dateien auf den Server, und überschreibt Dateien gleichen Namens."
+#~ msgstr "Kopiert neue Dateien auf den Server und überschreibt Dateien gleichen Namens."
 
 #~ msgid "Create missing thumbnails"
 #~ msgstr "Fehlende Vorschaubilder erzeugen"
@@ -19917,10 +19917,10 @@ msgstr "…"
 #~ msgstr "Bericht herunterladen"
 
 #~ msgid "Each media item should be associated with one or more person, family, or source records in your database.<br><br>To establish such a link, you can enter or search for the ID of the person, family, or source at the same time as you create the media item.  You can also establish the link later through editing options on the Manage MultiMedia page, or by adding media items through the Add Media link available on the Individual, Family, or Source Details pages."
-#~ msgstr "Jedes Medienobjekt soll mit mindestens einer Person, Familie, oder Quelle Ihrer Datenbank verbunden sein.<br><br>Um solche Verbindung herzustellen, können Sie die Datenbank nach der ID-Nummer der gewünschten Person, Familie, oder Quelle zur gleichen Zeit durchsuchen, als Sie das Medienobjekt erstellen.<br><br>Es ist aber nicht nötig die Verbindungen sofort herzustellen.  Sie können das jederzeit durch das Betätigen des <b>bearbeiten</b> oder <b>Link hinzufügen</b> Buttons der <b>Mediendateien verwalten</b> Seite oder des <b>Multimedia</b> Links der Personen-, Familien-, oder Quelleninformationsseiten tun."
+#~ msgstr "Jedes Medienobjekt soll mit mindestens einer Person, Familie, oder Quelle Ihrer Datenbank verbunden sein.<br><br>Um solche Verbindung herzustellen, können Sie die Datenbank nach der ID-Nummer der gewünschten Person, Familie, oder Quelle zur gleichen Zeit durchsuchen, während Sie das Medienobjekt erstellen.<br><br>Es ist aber nicht nötig die Verbindungen sofort herzustellen. Sie können das jederzeit durch das Betätigen des <b>bearbeiten</b> oder <b>Link hinzufügen</b> Buttons der <b>Mediendateien verwalten</b> Seite oder des <b>Multimedia</b> Links der Personen-, Familien-, oder Quelleninformationsseiten tun."
 
 #~ msgid "Enter a title for the item you are editing.  If this is a title for a multimedia item, enter a descriptive title that will identify that item to the user."
-#~ msgstr "Geben Sie den Titel des Objekts das Sie bearbeiten.  Bei Multimedia-Objekten sollte der Titel das Objekt beschreiben."
+#~ msgstr "Geben Sie den Titel des Objekts an, das Sie bearbeiten. Bei Multimedia-Objekten sollte der Titel das Objekt beschreiben."
 
 #~ msgid "Enter associate GEDCOM ID."
 #~ msgstr "Geben Sie hier die ID-Nummer der verbundenen Person ein."
@@ -19929,7 +19929,7 @@ msgstr "…"
 #~ msgstr "Geben Sie hier den Namen des Friedhofs ein, wo diese Person beerdigt ist."
 
 #~ msgid "Execution time: %1$s seconds. Database queries: %2$s. Privacy checks: %3$s. Memory usage: %4$s KB."
-#~ msgstr "Ausführungszeit: %1$s Sekunden. Datenbankabfragen: %2$s. Datenschutzprüfungen: %3$s. Speicherverbrauch: %4$s KiB."
+#~ msgstr "Ausführungszeit: %1$s Sekunden. Datenbankabfragen: %2$s. Datenschutzprüfungen: %3$s. Speicherverbrauch: %4$s KB."
 
 #~ msgid "Expand all"
 #~ msgstr "Alle anzeigen"
@@ -19956,13 +19956,13 @@ msgstr "…"
 #~ msgstr "GEDCOM"
 
 #~ msgid "Here the default level for the highest level in the place-hierarchy can be defined. If a place cannot be found this name is added as the highest level (country) and the database is searched again."
-#~ msgstr "Standardwert für oberste Stufe<br><br>Hier wird der Standardwert der Genauigkeit für die höchste Stufe in der Orte-Hierarchie bestimmt werden. Wenn ein Ort in der Datenbank nicht gefunden wird, wird sein Name als höchste Stufe (Staat) eingetragen und die Datenbank erneut durchsucht."
+#~ msgstr "Standardwert für die oberste Stufe<br><br>Hier wird der Standardwert der Genauigkeit für die höchste Stufe in der Orte-Hierarchie bestimmt werden. Wenn ein Ort in der Datenbank nicht gefunden wird, wird sein Name als höchste Stufe (Staat) eingetragen und die Datenbank erneut durchsucht."
 
 #~ msgid "If the Media Firewall is enabled, should copies of watermarked full size images be stored on the server in addition to the same images without watermarks?<br><br>When set to <b>Yes</b>, full-sized watermarked images will be produced more quickly at the expense of higher server disk space requirements."
-#~ msgstr "Wenn die Medienfirewall benutzt wird und hier <b>Ja</b> gewählt ist, sind alle mit Wasserzeichen versehene Bilder auf dem Server bewahrt.<br><br>Der Vorteil dieser Option ist ein schnelleres Zeigen der Bilder;  der Nachteil ist ein erhöhter Festplattenspeicherbedarf, da dann jedes Bild zweimal gespeichert werden muss."
+#~ msgstr "Wenn die Medienfirewall benutzt wird und hier <b>Ja</b> gewählt ist, werden alle mit Wasserzeichen versehene Bilder auf dem Server gespeichert.<br><br>Der Vorteil dieser Option ist ein schnelleres Zeigen der Bilder; der Nachteil ist ein erhöhter Festplattenspeicherbedarf, da dann jedes Bild zweimal gespeichert werden muss."
 
 #~ msgid "If the Media Firewall is enabled, should copies of watermarked thumbnails be stored on the server in addition to the same thumbnails without watermarks?<br><br>When set to <b>Yes</b>, media lists containing watermarked thumbnails will be produced more quickly at the expense of higher server disk space requirements."
-#~ msgstr "Wenn die Medienfirewall benutzt wird und hier <b>Ja</b> gewählt ist, werden alle mit Wasserzeichen versehene Vorschaubilder auf dem Server bewahrt.<br><br>Der Vorteil dieser Option ist ein schnelleres Zeigen der Medienlisten; der Nachteil ist ein erhöhter Festplattenspeicherbedarf, da dann jedes Vorschaubild zweimal gespeichert werden muss."
+#~ msgstr "Wenn die Medienfirewall benutzt wird und hier <b>Ja</b> gewählt ist, werden alle mit Wasserzeichen versehene Vorschaubilder auf dem Server gespeichert.<br><br>Der Vorteil dieser Option ist ein schnelleres Zeigen der Medienlisten; der Nachteil ist ein erhöhter Festplattenspeicherbedarf, da dann jedes Vorschaubild zweimal gespeichert werden muss."
 
 #~ msgid "If the Media Firewall is enabled, should thumbnails be watermarked? Your media lists will load faster if you don't watermark the thumbnails."
 #~ msgstr "Wenn die Medienfirewall benutzt wird, sollen Vorschaubilder auch mit Wasserzeichen versehen werden? Medienlisten laden langsamer, wenn diese Option auf <b>Ja</b> gestellt ist."
@@ -20004,7 +20004,7 @@ msgstr "…"
 #~ msgstr "Diese Person als Ehefrau mit einer existierenden Familie verbinden"
 
 #~ msgid "Load all your family trees from disk, by using the “import” function for each one."
-#~ msgstr "Laden Sie alle Stammbäume mittels der  “Import”-Funktion einzeln von Ihrer Festplatte."
+#~ msgstr "Laden Sie alle Stammbäume mittels der “Import”-Funktion einzeln von Ihrer Festplatte."
 
 #~ msgid "Mailer error: %s"
 #~ msgstr "Mailer-Fehler: %s"
@@ -20026,8 +20026,8 @@ msgstr "…"
 
 #~ msgid "No events for living individuals exist for the next %s day."
 #~ msgid_plural "No events for living people exist for the next %s days."
-#~ msgstr[0] "Für den nächsten Tag steht bezüglich lebenden Personen kein Ereignis an."
-#~ msgstr[1] "Für die nächsten %s Tage steht bezüglich lebenden Personen kein Ereignis an."
+#~ msgstr[0] "Für den nächsten Tag steht bezüglich lebender Personen kein Ereignis an."
+#~ msgstr[1] "Für die nächsten %s Tage steht bezüglich lebender Personen kein Ereignis an."
 
 #~ msgid "No such ID exists in this GEDCOM file."
 #~ msgstr "Diese ID existiert nicht in der GEDCOM Datei."
@@ -20036,7 +20036,7 @@ msgstr "…"
 #~ msgstr "Nicht in der Datenbank vorhanden"
 
 #~ msgid "Online changes have been made to a genealogical database.  These changes need to be reviewed and accepted before they will appear to all users.  Please use the URL below to enter that webtrees site and login to review the changes."
-#~ msgstr "An einer genealogischen Datenbank wurden Änderungen vorgenommen. Diese Änderungen müssen kontrolliert und übernommen werden, bevor sie für alle Nutzer sichtbar werden. Bitte klicken Sie auf die angegebene URL, um auf die webtrees-Seite zu gelangen um die Änderungen zu überprüfen und zu genehmigen."
+#~ msgstr "An einer genealogischen Datenbank wurden Änderungen vorgenommen. Diese Änderungen müssen kontrolliert und übernommen werden, bevor sie für alle Nutzer sichtbar werden. Bitte klicken Sie auf die angegebene URL, um auf die webtrees-Seite zu gelangen und um die Änderungen zu überprüfen und zu genehmigen."
 
 #~ msgid "Online editing"
 #~ msgstr "Online editieren"
@@ -20045,13 +20045,13 @@ msgstr "…"
 #~ msgstr "Name des SMTP Servers"
 
 #~ msgid "Places should be entered according to the standards for genealogy.  In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels.  The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place.  The first part, “Salt Lake City,” is the city or township where the event occurred.  In some countries, there may be municipalities or districts inside a city which are important to note.  In that case, they should come before the city.  The next part, “Salt Lake,” is the county.  “Utah” is the state, and “USA” is the country.  It is important to note each place because genealogical records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas.  Suppose, in the example above, you didn’t know the county for Salt Lake City.  You should then record it like this: “Salt Lake City, , Utah, USA”.  Suppose you only know that an individual was born in Utah.  You would enter the information like this: “, , Utah, USA”.<br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
-#~ msgstr "Orte sollten dem üblichen Ahnenforschungs-Standard entsprechend eingegeben werden. Das heißt, man gibt von links nach rechts immer größere Ortschaften ein, mit einem Komma zwischen jedem Ort. Jeder so angegebene Ort sollte einem Archiv oder Standesamt entsprechen, wo Geburts-, Ehe-, und Todes-Fälle registriert werden.<br><br>Zum Beispiel, Salt Lake City sollte als «Salt Lake City, Salt Lake, Utah, USA» eingegeben werden.<br><br>Der erste Teil, «Salt Lake City», ist die Stadt oder Gemeinde wo das Ereignis statt fand. Für manche Städte, London, Paris, und Berlin, zum Beispiel, ist der Stadtteil auch wichtig und wird deshalb vor dem Stadtnamen mit folgendem Komma eingegeben. In Berlin nennt man den Stadtteil gewöhnlich hinter «Berlin» (z.B. «Berlin-Tempelhof»), aber Ahnenforscher nennen den Stadtteil zuerst (z.B. «Dahlem, Berlin».<br><br>Der zweite Teil des obigen Beispiels «Salt Lake» entspricht dem Kreis (englisch: county).<br><br>Der dritte Teil «Utah» ist das Bundesland oder Provinz.<br><br>Der vierte Teil «USA» ist das Land.<br><br>Teile der Ortsangabe die entfallen oder unbekannt sind, sollten durch leere entsprechende Eingaben angedeutet werden. Zum Beispiel, die Eingabe «Salt Lake City,,Utah,USA» bedeutet dass Sie den Kreis worin sich Salt Lake City befindet nicht wissen. Die Eingabe «Vaduz,,,Liechtenstein» bedeutet dass in Liechtenstein keine Kreise oder Bundesländer vorkommen.<br><br>Mit dem Ort suchen Link können Sie leicht Orte ermitteln, die schon in der Datenbank vorhanden sind."
+#~ msgstr "Orte sollten dem üblichen Ahnenforschungs-Standard entsprechend eingegeben werden. Das heißt, man gibt von links nach rechts immer größere Ortschaften ein, mit einem Komma zwischen jedem Ort. Jeder so angegebene Ort sollte einem Archiv oder Standesamt entsprechen, wo Geburts-, Ehe-, und Todes-Fälle registriert werden.<br><br>Zum Beispiel, Salt Lake City sollte als «Salt Lake City, Salt Lake, Utah, USA» eingegeben werden.<br><br>Der erste Teil, «Salt Lake City», ist die Stadt oder Gemeinde, wo das Ereignis statt fand. Für manche Städte, London, Paris, und Berlin, zum Beispiel, ist der Stadtteil auch wichtig und wird deshalb vor dem Stadtnamen mit folgendem Komma eingegeben. In Berlin nennt man den Stadtteil gewöhnlich hinter «Berlin» (z.B. «Berlin-Tempelhof»), aber Ahnenforscher nennen den Stadtteil zuerst (z.B. «Dahlem, Berlin».<br><br>Der zweite Teil des obigen Beispiels «Salt Lake» entspricht dem Kreis (englisch: county).<br><br>Der dritte Teil «Utah» ist das Bundesland oder Provinz.<br><br>Der vierte Teil «USA» ist das Land.<br><br>Teile der Ortsangabe, die entfallen oder unbekannt sind, sollten durch leere entsprechende Eingaben angedeutet werden. Zum Beispiel, die Eingabe «Salt Lake City, , Utah, USA» bedeutet, dass Sie den Kreis, in dem sich Salt Lake City befindet, nicht wissen. Die Eingabe «Vaduz, , , Liechtenstein» bedeutet, dass in Liechtenstein keine Kreise oder Bundesländer vorkommen.<br><br>Mit dem <b>Ort suchen</b> Link können Sie leicht Orte ermitteln, die schon in der Datenbank vorhanden sind."
 
 #~ msgid "Please click on the link below or paste it into your browser, login with the new password, and change it immediately to keep the integrity of your data secure."
-#~ msgstr "Bitte klicken Sie jetzt auf den unten stehenden Link oder kopieren Sie ihn in die Adresszeile Ihres Browsers, melden sich mit dem neuen Passwort an und ändern Sie es sofort aus Datenschutzgründen."
+#~ msgstr "Bitte klicken Sie jetzt auf den unten stehenden Link oder kopieren Sie ihn in die Adresszeile Ihres Browsers, melden sich mit dem neuen Passwort an und ändern Sie es sofort aus Sicherheitsgründen."
 
 #~ msgid "Please reload the previous page to make sure you are working with the most recent record."
-#~ msgstr "Bitte rufen Sie die vorige Seite erneut auf.  So können Sie sicher sein, dass Sie den neuesten Datensatz bearbeiten."
+#~ msgstr "Bitte rufen Sie die vorige Seite erneut auf. So können Sie sicher sein, dass Sie den neuesten Datensatz bearbeiten."
 
 #~ msgid "Port"
 #~ msgstr "Port"
@@ -20066,10 +20066,10 @@ msgstr "…"
 #~ msgstr "Empfehlungen"
 
 #~ msgid "Regular expressions are an advanced pattern matching technique.  See <a href=\"http://php.net/manual/en/regexp.reference.php\" target=\"_blank\">php.net/manual/en/regexp.reference.php</a> for futher details."
-#~ msgstr "Reguläre Ausdrücke sind eine erweiterte Pattern-Matching-Technik. Siehe <a href=\"http://php.net/manual/de/regexp.reference.php\" target=\"_blank\">php.net/manual/de/regexp.reference.php</a> für weitere Details."
+#~ msgstr "Reguläre Ausdrücke sind eine fortgeschrittene Mustererkennungstechnik. Siehe <a href=\"http://php.net/manual/de/regexp.reference.php\" target=\"_blank\">php.net/manual/de/regexp.reference.php</a> für weitere Details."
 
 #~ msgid "Regular expressions are an advanced pattern matching technique.  See <a href=\"http://php.net/manual/en/regexp.reference.php\" target=\"_new\">php.net/manual/en/regexp.reference.php</a> for futher details."
-#~ msgstr "Regular Expressions ist eine erweitertes Pattern Matching Technik. Für weitere Detail besuchen Sie bitte die Seite <a href=\"http://php.net/manual/en/regexp.reference.php\" target=\"_new\">php.net/manual/en/regexp.reference.php</a>."
+#~ msgstr "Regular Expressions ist eine fortgeschrittene Mustererkennungstechnik. Siehe <a href=\"http://php.net/manual/en/regexp.reference.php\" target=\"_new\">php.net/manual/en/regexp.reference.php</a> für weitere Details."
 
 #~ msgid "Replace record"
 #~ msgstr "Datensatz ersetzen"
@@ -20081,10 +20081,10 @@ msgstr "…"
 #~ msgstr "SMTP Port"
 
 #~ msgid "Save all your family trees to disk, by using the “export” function for each one."
-#~ msgstr "Sichern Sie alle Stammbäume mittels der  “Export”-Funktion einzeln auf Ihre Festplatte."
+#~ msgstr "Sichern Sie alle Stammbäume mittels der “Export”-Funktion einzeln auf Ihrer Festplatte."
 
 #~ msgid "Search and/or replace data in your GEDCOM using simple searches or advanced pattern matching."
-#~ msgstr "Daten in Ihrer Datenbank, einfachen oder komplizierten Regeln folgend, suchen oder ersetzen."
+#~ msgstr "Suchen und/oder ersetzen Sie Daten in Ihrer Datenbank anhand einfacher oder komplizierter Regeln."
 
 #~ msgid "Security"
 #~ msgstr "Sicherheit"
@@ -20099,7 +20099,7 @@ msgstr "…"
 #~ msgstr "Server"
 
 #~ msgid "Should the GeoNames database be used to provide more suggestions for place names?<br><br>When this option is set to <b>Yes</b>, the GeoNames database will be queried to supply suggestions for the place name being entered.  When set to <b>No</b>, only the current genealogical database will be searched.  As you enter more of the place name, the suggestion will become more precise.  This option can slow down data entry, particularly if your Internet connection is slow.<br><br>The GeoNames geographical database is accessible free of charge. It currently contains over 8,000,000 geographical names."
-#~ msgstr "Soll die GeoNames Datenbank benutzt werden, so dass Sie mehr Vorschläge über den Ortsnamen, den Sie eben eingeben, erhalten?<br><br>Die Wahl <b>Ja</b> bedeutet dass die GeoNames Datenbank während der Eingabe des Ortsnamens nach passenden Vorschlägen durchsucht wird.  Mit der Wahl <b>Nein</b> wird nur die jetzige genealogische Datenbank durchsucht.  Je mehr Ortsnamen Sie eingeben, desto passender sind die Vorschläge. Diese Option kann verursachen, dass die Eingabe des Ortsnamens verlangsamt wird, besonders wenn Sie über keine schnelle Internetverbindung verfügen.<br><br>Die GeoNames Datenbank kann kostenlos durchsucht werden.  Sie enthält derzeit Informationen über mehr als 8&nbsp;000&nbsp;000 geographische Namen."
+#~ msgstr "Soll die GeoNames Datenbank benutzt werden, so dass Sie mehr Vorschläge über den Ortsnamen, den Sie eben eingeben, erhalten?<br><br>Die Wahl <b>Ja</b> bedeutet, dass die GeoNames Datenbank während der Eingabe des Ortsnamens nach passenden Vorschlägen durchsucht wird. Mit der Wahl <b>Nein</b> wird nur die jetzige genealogische Datenbank durchsucht. Je mehr Ortsnamen Sie eingeben, desto passender sind die Vorschläge. Diese Option kann verursachen, dass die Eingabe des Ortsnamens verlangsamt wird, besonders wenn Sie über keine schnelle Internetverbindung verfügen.<br><br>Die GeoNames Datenbank kann kostenlos durchsucht werden. Sie enthält derzeit Informationen über mehr als 8.000.000 geographische Namen."
 
 #~ msgid "Show timeline"
 #~ msgstr "Zeige die Zeitachse"
@@ -20108,43 +20108,43 @@ msgstr "…"
 #~ msgstr "Daten zur Quelle hinzufügen"
 
 #~ msgid "Specifies whether messages sent through <b>webtrees</b> can be stored in the database.  If set to <b>Yes</b> users will be able to retrieve their messages when they login to <b>webtrees</b>.  If set to <b>No</b> messages will only be emailed."
-#~ msgstr "Stellt ein, ob Nachrichten, die über <b>webtrees</b>gesendet werden, in der Datenbank gespeichert werden. Bei <b>Ja</b> können Benutzer ihre Nachrichten wieder finden, wenn sie sich bei <b>webtrees</b> anmelden. Bei <b>Nein</b> werden die Nachrichten nur gesendet."
+#~ msgstr "Stellt ein, ob Nachrichten, die über <b>webtrees</b> gesendet werden, in der Datenbank gespeichert werden. Bei <b>Ja</b> können Benutzer ihre Nachrichten wieder finden, wenn sie sich bei <b>webtrees</b> anmelden. Bei <b>Nein</b> werden die Nachrichten nur per E-Mail versendet."
 
 #~ msgid "Standard header for custom welcome text"
-#~ msgstr "Standard Einleitung für selbsterstellten Text"
+#~ msgstr "Standard Textkopf für selbsterstellten WillkommentsText"
 
 #~ msgid "Take your site offline while copying the new files.  Do this by temporarily creating a file %s on the web server."
-#~ msgstr "Nehmen Sie Ihre Webseite vom Netz während Sie die neuen Dateien kopieren. Dies geschieht, indem Sie temporär eine Datei namens  %s auf dem Server erstellen."
+#~ msgstr "Nehmen Sie Ihre Webseite vom Netz, während Sie die neuen Dateien kopieren. Dies geschieht, indem Sie temporär eine Datei namens  %s auf dem Server erstellen."
 
 #~ msgid "The Type field is used to enter additional information about the item.  In most cases, the field is completely free-form, and you can enter anything you want."
-#~ msgstr "In diesem Feld können Sie zusätzliche Informationen eingeben.  Meistens ist dieses Feld ohne vorgesetzes Format; Sie können eingeben was und wie Sie wollen."
+#~ msgstr "In diesem Feld können Sie zusätzliche Informationen eingeben. Meistens ist dieses Feld ohne vorgesetzes Format; Sie können eingeben was und wie Sie wollen."
 
 #~ msgid "The following changes were made to this record:"
 #~ msgstr "An diesem Datensatz wurden folgende Änderungen vorgenommen:"
 
 #~ msgid "The port number to be used for connections to the SMTP server.  Generally, this is port <b>25</b>."
-#~ msgstr "Das TCP Protokoll, das benutzt werden soll, um eine Verbindung zum SMTP Server herzustellen.  Gewöhnlich wird das Protokoll <b>25</b> benutzt."
+#~ msgstr "Der Port, der benutzt werden soll, um eine Verbindung zum SMTP Server herzustellen. Gewöhnlich wird der Port <b>25</b> benutzt."
 
 #~ msgid "The record with id %s was changed by another user since you last accessed it."
-#~ msgstr "Ein anderer Benutzer hat den Datensatz mit ID-Nummer %s geändert, seit Sie ihn aufruften."
+#~ msgstr "Ein anderer Benutzer hat den Datensatz mit ID-Nummer %s geändert, seit Sie ihn aufgerufen haben."
 
 #~ msgid "This GEDCOM was created using <b>%1$s</b> on <b>%2$s</b>."
-#~ msgstr "Diese GEDCOM Datei wurde mit <b>%1$s</b> erstellt am <b>%2$s</b>."
+#~ msgstr "Diese GEDCOM Datei wurde mit <b>%1$s</b> am <b>%2$s</b> erstellt."
 
 #~ msgid "This block will show the 10 records that have been viewed the most.  This block requires that hit counters be enabled in the GEDCOM configuration settings."
 #~ msgstr "Dieser Block zeigt die 10 Datensätze an, die am häufigsten aufgerufen wurden. Sie müssen dazu in der GEDCOM Konfiguration die Zähler zunächst aktivieren."
 
 #~ msgid "This is the name of the SMTP mail server.  Example: <b>smtp.foo.bar.com</b>.<br><br>Configuration values for some e-mail providers:<br><br><b>Gmail<br></b><br><b>Outgoing server (SMTP) name:</b> smtp.gmail.com<br><b>SMTP Port:</b> 465 or 587<br><b>Secure connection:</b> SSL<br><br><b>Hotmail<br></b><br><b>Outgoing server (SMTP) name:</b> smtp.live.com<br><b>SMTP Port:</b> 25 or 587<br><b>Secure connection:</b> TLS<br><br><b>Yahoo Mail Plus (currently a paid service)<br></b><br><b>Outgoing server (SMTP) name:</b> smtp.mail.yahoo.com<br><b>SMTP Port:</b> 25"
-#~ msgstr "Hier geben Sie den Namen des SMTP Servers ein.  Beispiel: <b>smtp.foo.bar.com</b>.<br><br>Einige Server benötigen folgende Einträge:<br><br><b>Gmail<br></b><br><b>Name des SMTP Servers:</b> smtp.gmail.com<br><b>TCP Port (SMTP):</b> 465 or 587<br><b>Gesicherte (SSL) Verbindung:</b> SSL<br><br><b>Hotmail<br></b><br><b>Name des SMTP Servers:</b> smtp.live.com<br><b>TCP Port (SMTP):</b> 25 or 587<br><b>Gesicherte (SSL) Verbindung:</b> TLS<br><br><b>Yahoo Mail Plus (Gebührenpflichtig)<br></b><br><b>Name des SMTP Servers:</b> smtp.mail.yahoo.com<br><b>TCP Port (SMTP):</b> 25"
+#~ msgstr "Hier geben Sie den Namen des SMTP Servers ein. Beispiel: <b>smtp.foo.bar.com</b>.<br><br>Einige Server benötigen folgende Einträge:<br><br><b>Gmail<br></b><br><b>Name des SMTP Servers:</b> smtp.gmail.com<br><b>SMTP Port:</b> 465 or 587<br><b>Gesicherte Verbindung:</b> SSL<br><br><b>Hotmail<br></b><br><b>Name des SMTP Servers:</b> smtp.live.com<br><b>SMTP Port:</b> 25 or 587<br><b>Gesicherte (SSL) Verbindung:</b> TLS<br><br><b>Yahoo Mail Plus (Gebührenpflichtig)<br></b><br><b>Name des SMTP Servers:</b> smtp.mail.yahoo.com<br><b>SMTP Port:</b> 25"
 
 #~ msgid "This is used in the \"From:\" header when sending mails."
-#~ msgstr "Dieser Name wird als Absender \"Von:\" beim senden von Mails benutzt."
+#~ msgstr "Dieser Name wird als Absender \"Von:\" beim Senden von Mails benutzt."
 
 #~ msgid "This is used in the \"Sender:\" header when sending mails.  It is often the same as the \"From:\" header."
 #~ msgstr "Dies wird als \"Absender:\" beim Senden von E-Mails benutzt. Es ist häufig das gleiche wie \"Von:\"."
 
 #~ msgid "This option causes <b>webtrees</b> to show all individuals who are recorded as having an association relationship to the person or family that was found as a direct result of the search.  The inverse, where all persons or families are shown when a person found as a direct result of the search has an association relationship to these other persons or families, is not possible.<br><br>Example:  Suppose person <b>A</b> is godparent to person <b>B</b>.  This relationship is recorded in the GEDCOM record of person <b>B</b> by means of an ASSO tag.  No corresponding tag exists in the GEDCOM record of person <b>A</b>.<br><br>When this option is set to <b>Yes</b> and the Search results list includes <b>B</b>, <b>A</b> will be included automatically because of the ASSO tag in the GEDCOM record of <b>B</b>.  However, if the Search results list includes <b>A</b>, <b>B</b> will not be included automatically since there is no matching ASSO tag in the GEDCOM record of person <b>A</b>."
-#~ msgstr "Diese Option bewirkt, dass in den Such-Resultaten von <b>webtrees</b> auch Personen gezeigt werden, die mit der gefundenen Person oder Familie irgend eine Beziehung haben. Die umgekehrte Wirkung, wo alle Personen oder Familien die irgend eine Beziehung zu der gefundenen Person haben, ist leider nicht möglich.<br><br>Zum Beispiel, falls Person <b>A</b> Pate von Person <b>B</b> ist, und dieses durch einen ASSO Tag im Datensatz der Person <b>B</b> angedeutet wurde, wird Person <b>A</b> immer in den Resultaten automatisch gezeigt, wenn Person <b>B</b> darin gezeigt wird.<br><br>Das Umgekehrte, wo Person <b>B</b> in den Resultaten automatisch gezeigt werden sollte wenn Person <b>A</b> sich darin befindet, ist nicht möglich, da das ASSO Tag im Datensatz der Person <b>A</b> fehlt."
+#~ msgstr "Diese Option bewirkt, dass in den Such-Resultaten von <b>webtrees</b> auch Personen gezeigt werden, die mit der gefundenen Person oder Familie irgendeine Beziehung haben. Die umgekehrte Wirkung, wo alle Personen oder Familien gefunden werden, die irgend eine Beziehung zu der gefundenen Person haben, ist leider nicht möglich.<br><br>Zum Beispiel, falls Person <b>A</b> Pate von Person <b>B</b> ist, und dieses durch einen ASSO Tag im Datensatz der Person <b>B</b> angedeutet wurde, wird Person <b>A</b> immer in den Resultaten automatisch gezeigt, wenn Person <b>B</b> darin gezeigt wird.<br><br>Das Umgekehrte, wo Person <b>B</b> in den Resultaten automatisch gezeigt werden sollte, wenn Person <b>A</b> sich darin befindet, ist nicht möglich, da das ASSO Tag im Datensatz der Person <b>A</b> fehlt."
 
 #~ msgid "This option controls whether or not to abbreviate labels like <b>Birth</b> on charts with just the first letter like <b>B</b>."
 #~ msgstr "Diese Option bestimmt, ob Benennungen in Diagrammen wie <strong>Birth</strong> nur mit dem Anfangsbuchstaben <b>B</b> abgekürzt werden."
@@ -20165,7 +20165,7 @@ msgstr "…"
 #~ msgstr "Dieser Nutzer bevorzugt Nachrichten in %s"
 
 #~ msgid "This version of webtrees cannot be installed on this web-server."
-#~ msgstr "Diese webtrees Version kann auf diesem Web-Server nicht installiert werden."
+#~ msgstr "Diese webtrees Version kann auf diesem Webserver nicht installiert werden."
 
 #~ msgid "Transport Layer Security (TLS) and Secure Sockets Layer (SSL) are Internet data encryption protocols.<br><br>TLS 1.0, 1.1 and 1.2 are standardized developments of SSL 3.0. TLS 1.0 and SSL 3.1 are equivalent. Further work on SSL is now done under the new name, TLS.<br><br>If your SMTP Server requires the SSL protocol during login, you should select the <b>SSL</b> option. If your SMTP Server requires the TLS protocol during login, you should select the <b>TLS</b> option."
 #~ msgstr "Transport Layer Security (TLS) und Secure Sockets Layer (SSL) sind Verschlüsselungsprotokolle zur Datenübertragung im Internet.<br><br>TLS 1.0, 1.1 und 1.2 sind die standardisierten Weiterentwicklungen von SSL 3.0. TLS 1.0 und SSL 3.1 sind sich gleich. SSL wird also nun unter dem neuen Namen TLS weiterentwickelt.<br><br>Falls Ihr SMTP-Server das SSL Protokoll während dem Anmelden erfordert, sollten Sie <b>SSL</b> wählen. Falls Ihr SMTP-Server das TLS Protokoll während dem Anmelden erfordert, sollten Sie <b>TLS</b> wählen."
@@ -20180,19 +20180,19 @@ msgstr "…"
 #~ msgstr "Upgrade Anweisungen"
 
 #~ msgid "Upgrade the web-server to PHP %s or higher."
-#~ msgstr "Aufrüsten des Servers auf  PHP %s oder höher."
+#~ msgstr "Aufrüsten des Servers auf PHP %s oder höher."
 
 #~ msgid "Use SMTP to send e-mails from <b>webtrees</b>.<br><br>This option requires access to an SMTP mail server.  When set to <b>No</b> <b>webtrees</b> will use the e-mail system built into PHP on this server."
-#~ msgstr "SMTP zum senden von E-Mails aus <b>webtrees</b> benutzen.<br><br>Diese Option benötigt Zugang zu SMTP. Wenn Sie <b>Nein</b> einstellen, benutzt <b>webtrees</b> das im PHP eingebaute E-Mail-System des Servers."
+#~ msgstr "SMTP zum Senden von E-Mails aus <b>webtrees</b> benutzen.<br><br>Diese Option benötigt Zugang zu einem SMTP Server. Wenn Sie <b>Nein</b> einstellen, benutzt <b>webtrees</b> das in PHP eingebaute E-Mail-System des Servers."
 
 #~ msgid "Use SMTP to send external mails"
 #~ msgstr "Mails durch SMTP senden"
 
 #~ msgid "Use name and password authentication to connect to the SMTP server.<br><br>Some SMTP servers require all connections to be authenticated before they will accept outbound e-mails."
-#~ msgstr "Erfordert der SMTP Server die Eingabe eines Nutzernamens und dessen Passwort?<br><br>Manche SMTP Server erfordern dass Verbindungen authentifiziert sind, bevor sie das Senden von Mails erlauben."
+#~ msgstr "Erfordert der SMTP Server die Eingabe eines Nutzernamens und dessen Passwort?<br><br>Manche SMTP Server erfordern, dass Verbindungen authentifiziert sind, bevor sie das Senden von Mails erlauben."
 
 #~ msgid "Use this field for storing an abbreviated version of a title.  This field is used in conjunction with the title field on sources.  By default <b>webtrees</b> will first use the title and then the abbreviated title.<br><br>According to the GEDCOM 5.5 specification, \"this entry is to provide a short title used for sorting, filing, and retrieving source records (pg 62).\"<br><br>In <b>webtrees</b> the abbreviated title is optional, but in other genealogical programs it is required."
-#~ msgstr "Dieses Feld enthält die Abkürzung des Quellentitels. Es wird zusammen mit dem vollen Quellentitel benutzt. Gewöhnlich benutzt <b>webtrees</b> zuerst den vollen Titel und danach die hier eingegebene Abkürzung.<br><br>Seite 62 des GEDCOM 5.5 Standards beschreibt dieses Feld so: «This entry is to provide a short title used for sorting, filing, and retrieving source records.» (Dieser Eintrag sorgt für einen kurzen Titel der dem Sortieren, Speichern, und Abfragen von Quellen dient.)<br><br>Bei <b>webtrees</b> ist der Gebrauch von Titelabkürzungen nicht notwendig; bei anderen Programmen können diese Abkürzungen notwendig sein."
+#~ msgstr "Dieses Feld enthält die Abkürzung des Quellentitels. Es wird zusammen mit dem vollen Quellentitel benutzt. Gewöhnlich benutzt <b>webtrees</b> zuerst den vollen Titel und danach die hier eingegebene Abkürzung.<br><br>Seite 62 des GEDCOM 5.5 Standards beschreibt dieses Feld so: «This entry is to provide a short title used for sorting, filing, and retrieving source records.» (Dieser Eintrag sorgt für einen kurzen Titel, der dem Sortieren, Speichern und Abfragen von Quellen dient.)<br><br>Bei <b>webtrees</b> ist der Gebrauch von Titelabkürzungen nicht notwendig; bei anderen Programmen können diese Abkürzungen notwendig sein."
 
 #~ msgid "Users with warnings"
 #~ msgstr "Verwarnte Benutzer"
@@ -20246,4 +20246,4 @@ msgstr "…"
 #~ msgstr "unbekannte Person"
 
 #~ msgid "webtrees - Review changes"
-#~ msgstr "webtrees  - Änderungen kontrollieren"
+#~ msgstr "webtrees - Änderungen kontrollieren"
