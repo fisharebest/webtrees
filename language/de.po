@@ -13348,7 +13348,7 @@ msgstr "Die Details dieser Person sind nicht öffentlich."
 #: action.php:157
 #, php-format
 msgid "The family “%s” has been deleted, as it only has one member."
-msgstr "Die Familie “%s”" wurde gelöscht, da sie nur aus einem Mitglied bestand."
+msgstr "Die Familie “%s” wurde gelöscht, da sie nur aus einem Mitglied bestand."
 
 #: addmedia.php:170 admin_media_upload.php:130
 #, php-format
@@ -13473,7 +13473,7 @@ msgstr "Die Mail-Adresse, die kontaktiert werden soll, falls jemand technische F
 
 #: help_text.php:481
 msgid "The individual to contact about the genealogical data on this site."
-msgstr "Die Mail-Adresse, die kontaktiert werden soll, falls jemand Fragen zu den genealogischen Daten auf Ihrer Webseite habt."
+msgstr "Die Mail-Adresse, die kontaktiert werden soll, falls jemand Fragen zu den genealogischen Daten auf Ihrer Webseite hat."
 
 #: help_text.php:573
 msgid "The length of time after birth can be set on the “Privacy” tab option “Age at which to assume an individual is dead”."
