@@ -166,9 +166,9 @@ case 'load_json':
 		foreach ($rows as $row) {
 			$media = WT_Media::getInstance($row->xref, $row->gedcom_id);
 			$data[] = array(
-				media_file_info($media_folder, $media_path, $row->media_path),
+				mediaFileInfo($media_folder, $media_path, $row->media_path),
 				$media->displayImage(),
-				media_object_info($media),
+				mediaObjectInfo($media),
 			);
 		}
 		break;
@@ -230,7 +230,7 @@ case 'load_json':
 			$data[] = array(
 			 	WT_Gedcom_Tag::getLabelValue('URL', $row->m_filename),
 				$media->displayImage(),
-				media_object_info($media),
+				mediaObjectInfo($media),
 			);
 		}
 		break;
@@ -294,7 +294,7 @@ case 'load_json':
 			if (!$exists_pending) {
 				foreach ($media_trees as $media_tree) {
 					$create_form .=
-						'<p><a onclick="window.open(\'addmedia.php?action=showmediaform&amp;ged=' . rawurlencode($media_tree) . '&amp;filename=' . rawurlencode(basename($unused_file)) . '&amp;folder=' . rawurlencode(dirname($unused_file)) . '\', \'_blank\', edit_window_specs); return false;">' .  WT_I18N::translate('Create') . '</a> — ' . WT_Filter::escapeHtml($media_tree) . '<p>';
+						'<p><a onclick="window.open(\'addmedia.php?action=showmediaform&amp;ged=' . rawurlencode($media_tree) . '&amp;filename=' . rawurlencode($unused_file) . '\', \'_blank\', edit_window_specs); return false;">' .  WT_I18N::translate('Create') . '</a> — ' . WT_Filter::escapeHtml($media_tree) . '<p>';
 				}
 			}
 
@@ -303,7 +303,7 @@ case 'load_json':
 				'<p><a onclick="if (confirm(\'' . WT_Filter::escapeJs($conf) . '\')) jQuery.post(\'admin_media.php\',{delete:\'' .WT_Filter::escapeJs($media_path . $unused_file) . '\',media_folder:\'' . WT_Filter::escapeJs($media_folder) . '\'},function(){location.reload();})" href="#">' . WT_I18N::Translate('Delete') . '</a></p>';
 
 			$data[] = array(
-				media_file_info($media_folder, $media_path, $unused_file) . $delete_link,
+				mediaFileInfo($media_folder, $media_path, $unused_file) . $delete_link,
 				$img,
 				$create_form,
 			);
@@ -321,11 +321,11 @@ case 'load_json':
 	exit;
 }
 
-////////////////////////////////////////////////////////////////////////////////
-// Local functions
-////////////////////////////////////////////////////////////////////////////////
-
-// A unique list of media folders, from all trees.
+/**
+ * A unique list of media folders, from all trees.
+ *
+ * @return string[]
+ */
 function all_media_folders() {
 	return WT_DB::prepare(
 		"SELECT SQL_CACHE setting_value, setting_value" .
@@ -336,6 +336,13 @@ function all_media_folders() {
 	)->execute(array(WT_GED_ID))->fetchAssoc();
 }
 
+/**
+ * Generate a list of media paths (within a media folder) used by all media objects.
+ *
+ * @param string $media_folder
+ *
+ * @return string[]
+ */
 function media_paths($media_folder) {
 	$media_paths = WT_DB::prepare(
 		"SELECT SQL_CACHE LEFT(m_filename, CHAR_LENGTH(m_filename) - CHAR_LENGTH(SUBSTRING_INDEX(m_filename, '/', -1))) AS media_path" .
@@ -356,6 +363,15 @@ function media_paths($media_folder) {
 	return array_combine($media_paths, $media_paths);
 }
 
+/**
+ * Search a folder (and optional subfolders) for filenames that match a search pattern.
+ *
+ * @param string  $dir
+ * @param boolean $recursive
+ * @param string  $filter
+ *
+ * @return array
+ */
 function scan_dirs($dir, $recursive, $filter) {
 	$files = array();
 
@@ -377,12 +393,34 @@ function scan_dirs($dir, $recursive, $filter) {
 	return $files;
 }
 
-// Fetch a list of all files on disk
+/**
+ * Fetch a list of all files on disk
+ *
+ * @param string $media_folder Location of root folder
+ * @param string $media_path   Any subfolder
+ * @param string $subfolders   Include or exclude subfolders
+ * @param string $filter       Filter files whose name contains this test
+ *
+ * @return array
+ */
 function all_disk_files($media_folder, $media_path, $subfolders, $filter) {
 	return scan_dirs(WT_DATA_DIR . $media_folder . $media_path, $subfolders=='include', $filter);
 }
 
-// Fetch a list of all files on in the database
+/**
+ * Fetch a list of all files on in the database.
+ *
+ * @todo The subfolders parameter is not implemented.  However, as we
+ *       currently use this function as an exclusion list, it is harmless
+ *       to always include sub-folders.
+ *
+ * @param string $media_folder
+ * @param string $media_path
+ * @param string $subfolders
+ * @param string $filter
+ *
+ * @return string[]
+ */
 function all_media_files($media_folder, $media_path, $subfolders, $filter) {
 	return WT_DB::prepare(
 		"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS TRIM(LEADING ? FROM m_filename) AS media_path, 'OBJE' AS type, m_titl, m_id AS xref, m_file AS ged_id, m_gedcom AS gedrec, m_filename" .
@@ -404,7 +442,16 @@ function all_media_files($media_folder, $media_path, $subfolders, $filter) {
 	))->fetchOneColumn();
 }
 
-function media_file_info($media_folder, $media_path, $file) {
+/**
+ * Generate some useful information and links about a media file.
+ *
+ * @param string $media_folder
+ * @param string $media_path
+ * @param string $file
+ *
+ * @return string
+ */
+function mediaFileInfo($media_folder, $media_path, $file) {
 	$html = '<b>' . WT_Filter::escapeHtml($file). '</b>';
 
 	$full_path = WT_DATA_DIR . $media_folder . $media_path . $file;
@@ -429,7 +476,14 @@ function media_file_info($media_folder, $media_path, $file) {
 	return $html;
 }
 
-function media_object_info(WT_Media $media) {
+/**
+ * Generate some useful information and links about a media object.
+ *
+ * @param WT_Media $media
+ *
+ * @return string HTML
+ */
+function mediaObjectInfo(WT_Media $media) {
 	$xref   = $media->getXref();
 	$gedcom = WT_Tree::getNameFromId($media->getGedcomId());
 	$name   = $media->getFullName();
