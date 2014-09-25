@@ -402,13 +402,18 @@ class WT_Date {
 	 *
 	 * @return int|string
 	 */
-	static function getAge(WT_Date $d1, WT_Date $d2, $format) {
-		if ($d2->MaxJD() >= $d1->MinJD() && $d2->MinJD() <= $d1->MinJD()) {
-			// Overlapping dates
-			$jd = $d1->MinJD();
+	static function getAge(WT_Date $d1, WT_Date $d2 = null, $format = 0) {
+		if ($d2) {
+			if ($d2->MaxJD() >= $d1->MinJD() && $d2->MinJD() <= $d1->MinJD()) {
+				// Overlapping dates
+				$jd = $d1->MinJD();
+			} else {
+				// Non-overlapping dates
+				$jd = $d2->MinJD();
+			}
 		} else {
-			// Non-overlapping dates
-			$jd = $d2->MinJD();
+			// If second date not specified, use today’s date
+			$jd = WT_CLIENT_JD;
 		}
 
 		switch ($format) {
