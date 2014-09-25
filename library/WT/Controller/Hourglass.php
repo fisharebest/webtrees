@@ -63,7 +63,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 			$this->left_arrow='icon-larrow';
 			$this->right_arrow='icon-rarrow';
 		} else {
-			$this->left_arrow='icon-larrow';
+			$this->left_arrow='icon-rarrow';
 			$this->right_arrow='icon-larrow';
 		}
 
