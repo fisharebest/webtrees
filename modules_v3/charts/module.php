@@ -34,7 +34,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function getBlock($block_id, $template=true, $cfg=null) {
-		global $WT_TREE, $ctype, $PEDIGREE_FULL_DETAILS, $show_full, $bwidth, $bheight;
+		global $WT_TREE, $ctype, $PEDIGREE_FULL_DETAILS, $show_full, $bwidth, $bheight, $controller;
 
 		$PEDIGREE_ROOT_ID = $WT_TREE->getPreference('PEDIGREE_ROOT_ID');
 
@@ -70,8 +70,8 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 
 		if ($type!='treenav' && $person) {
-			$controller = new WT_Controller_Hourglass($person->getXref(), 0);
-			$controller->setupJavascript();
+			$chartController = new WT_Controller_Hourglass($person->getXref(), 0, false);
+			$controller->addInlineJavascript($chartController->setupJavascript());
 		}
 
 		$id=$this->getName().$block_id;
@@ -102,7 +102,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 			if ($type=='descendants' || $type=='hourglass') {
 				$content .= "<td valign=\"middle\">";
 				ob_start();
-				$controller->print_descendency($person, 1, false);
+				$chartController->print_descendency($person, 1, false);
 				$content .= ob_get_clean();
 				$content .= "</td>";
 			}
@@ -117,7 +117,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 				}
 				$content .= "<td valign=\"middle\">";
 				ob_start();
-				$controller->print_person_pedigree($person, 1);
+				$chartController->print_person_pedigree($person, 1);
 				$content .= ob_get_clean();
 				$content .= "</td>";
 			}
