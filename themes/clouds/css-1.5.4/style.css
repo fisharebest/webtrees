@@ -1565,6 +1565,14 @@ img.block {
 	padding: 5px;
 	position: absolute;
 	display: none;
+	text-align: start;
+	white-space: nowrap;
+}
+
+#hourglass_chart #childbox a.name1 {
+	font-weight: normal;
+	display: block;
+	margin-left: 5px;
 }
 
 #pedigree_chart #childbox {
