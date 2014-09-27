@@ -2,7 +2,7 @@
 namespace Fisharebest\ExtCalendar;
 
 /**
- * class PersianCalendar - calculations for the Persian (Jalali) calendar.
+ * Class PersianCalendar - calculations for the Persian (Jalali) calendar.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
  * @copyright (c) 2014 Greg Roach
@@ -19,21 +19,12 @@ namespace Fisharebest\ExtCalendar;
  *            You should have received a copy of the GNU General Public License
  *            along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-class PersianCalendar extends Calendar implements CalendarInterface {
-	/** Same as PHP’s ext/calendar extension */
-	const PHP_CALENDAR_NAME = 'Persian';
-
-	/** Same as PHP’s ext/calendar extension */
-	const PHP_CALENDAR_NUMBER = 5; // PHP uses 0-3
-
-	/** Same as PHP’s ext/calendar extension */
-	const PHP_CALENDAR_SYMBOL = 'CAL_PERSIAN';
-
+class PersianCalendar extends AbstractCalendar implements CalendarInterface {
 	/** See the GEDCOM specification */
 	const GEDCOM_CALENDAR_ESCAPE = '@#DJALALI@';
 
 	/** The earliest Julian Day number that can be converted into this calendar. */
-	const JD_START = 1948321; // 1 Farvardīn 0001 AP = ?? ??? ???? (Julian)
+	const JD_START = 1948320; // 1 Farvardīn 0001 AP = 19 MAR 0622 (Julian)
 
 	/**
 	 * Month lengths for regular years and leap-years.
@@ -60,36 +51,34 @@ class PersianCalendar extends Calendar implements CalendarInterface {
 	 * @param  int  $year
 	 * @return bool
 	 */
-	public function leapYear($year) {
+	public function isLeapYear($year) {
 		return in_array((($year + 2346) % 2820) % 128, self::$LEAP_YEAR_CYCLE);
 	}
 
 	/**
 	 * Convert a Julian day number into a year/month/day.
 	 *
-	 * @param $jd
+	 * @param $julian_day
 	 *
 	 * @return int[];
 	 */
-	public function jdToYmd($jd) {
-		$depoch = $jd - $this->ymdToJd(475, 1, 1);
-		$cycle = (int)($depoch / 1029983);
-		$cyear = $depoch % 1029983;
+	public function jdToYmd($julian_day) {
+		$depoch = $julian_day - 2121447;
+		$cycle  = (int)($depoch / 1029983);
+		$cyear  = $depoch % 1029983;
 		if ($cyear == 1029982) {
 			$ycycle = 2820;
 		} else {
-			$aux1 = (int)($cyear / 366);
-			$aux2 = $cyear % 366;
-			$ycycle = (int)(((2134 * $aux1) + (2816 * $aux2) + 2815) / 1028522) +
-				$aux1 + 1;
+			$aux1   = (int)($cyear / 366);
+			$aux2   = $cyear % 366;
+			$ycycle = (int)(((2134 * $aux1) + (2816 * $aux2) + 2815) / 1028522) + $aux1 + 1;
 		}
 		$year = $ycycle + (2820 * $cycle) + 474;
-		if ($year <= 0) {
-			$year--;
-		}
-		$yday = ($jd - $this->ymdToJd($year, 1, 1)) + 1;
+
+		// If we allowed negative years, we would deal with them here.
+		$yday  = ($julian_day - $this->ymdToJd($year, 1, 1)) + 1;
 		$month = ($yday <= 186) ? ceil($yday / 31) : ceil(($yday - 6) / 30);
-		$day = ($jd - $this->ymdToJd($year, $month, 1)) + 1;
+		$day   = ($julian_day - $this->ymdToJd($year, $month, 1)) + 1;
 
 		return array($year, (int)$month, (int)$day);
 	}
@@ -113,34 +102,6 @@ class PersianCalendar extends Calendar implements CalendarInterface {
 			(int)((($epyear * 682) - 110) / 2816) +
 			($epyear - 1) * 365 +
 			(int)($epbase / 2820) * 1029983 +
-			(self::JD_START - 1);
-	}
-
-	/**
-	 * Month names for the calendar.
-	 *
-	 * @return string[]
-	 */
-	public function monthNames() {
-		return array(
-			1 => 'Farvardin', 'Ordibehesht', 'Khordad', 'Tir', 'Mordad', 'Shahrivar',
-			'Mehr', 'Aban', 'Azar', 'Dey', 'Bahman', 'Esfand',
-		);
-	}
-
-	/**
-	 * Calculate the number of days in a month.
-	 *
-	 * @param  int $year
-	 * @param  int $month
-	 *
-	 * @return int
-	 */
-	public function daysInMonth($year, $month) {
-		if ($year == 0 || $month < 1 || $month > self::MAX_MONTHS_IN_YEAR) {
-			return trigger_error('invalid date.', E_USER_WARNING);
-		} else {
-			return static::$DAYS_IN_MONTH[$this->leapYear($year)][$month];
-		}
+			self::JD_START;
 	}
 }

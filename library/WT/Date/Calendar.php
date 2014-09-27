@@ -101,7 +101,7 @@ class WT_Date_Calendar {
 	}
 
 	function isLeapYear() {
-		return $this->calendar->leapYear($this->y);
+		return $this->calendar->isLeapYear($this->y);
 	}
 
 	// Set the object’s JD from a potentially incomplete YMD

@@ -17,7 +17,7 @@ This package provides an implementation of the
 [shims](https://en.wikipedia.org/wiki/Shim_%28computing%29) for the
 [functions](https://php.net/ref.calendar) and [constants](https://php.net/calendar.constants)
 in PHP‘s [ext/calendar](https://php.net/calendar) extension.
-It allows you to use these functions on servers that do not have the extension installed.
+It allows you to use these functions on servers that do not have the extension installed (such as HHVM).
 
 * [cal_days_in_month()](https://php.net/cal_days_in_month)
 * [cal_from_jd()](https://php.net/cal_from_jd)
@@ -59,7 +59,7 @@ If you want to create the “shim” functions, you must tell the package to cre
 Now you can use the PHP functions, whether `ext/calendar` is installed or not:
 
 ``` php
-print_r(cal_info(CAL_GREGORIAN));
+print_r(cal_info(CAL_GREGORIAN)); // Works in HHVM!
 ```
 
 Alternatively, just use the calendar classes directly.
@@ -79,9 +79,8 @@ $calendar = new PersianCalendar;
 $julian_day = $calendar->ymdToJd($year, $month, $day);
 list($year, $month, $day) = $calendar->jdToYmd($julian_day);
 
-// Information functions (see the source for more)
-$is_leap_year = $calendar->leapYear($year);
-$day_of_week = $calendar->dayOfWeek($julian_day);
+// Information functions
+$is_leap_year = $calendar->isLeapYear($year);
 $month_length = $calendar->daysInMonth($year, $month);
 ```
 
@@ -104,17 +103,8 @@ Thus the package always provides the same behaviour as the native `ext/calendar`
 
 * [#67976](https://bugs.php.net/bug.php?id=67976) Wrong value in `cal_days_in_month()` for French calendar - found by this project!
 
-HHVM
-====
-
-The package should work on [HHVM](http://hhvm.com/).  However, we can’t run the unit
-tests on it, as HHVM does not (yet?) include the `ext/calendar` extension.
-
 Development and contributions
 =============================
-
-Note that `require-dev` will require `ext-calendar`, as we use it as a reference
-implementation for testing.
 
 Due to the known restrictions above, you may need to run unit tests using `TZ=UTC phpunit`.
 
