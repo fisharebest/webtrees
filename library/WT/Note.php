@@ -76,14 +76,16 @@ class WT_Note extends WT_GedcomRecord {
 
 		$text = $this->getNote();
 
-		switch($WT_TREE->preference('FORMAT_TEXT')) {
-		case 'markdown':
-			$text = WT_Filter::markdown($text);
-			$text = strip_tags($text);
-			break;
-		}
+		if ($text) {
+			switch ($WT_TREE->preference('FORMAT_TEXT')) {
+			case 'markdown':
+				$text = WT_Filter::markdown($text);
+				$text = strip_tags($text);
+				break;
+			}
 
-		list($text) = explode("\n", $text);
-		$this->_addName('NOTE', strlen($text) > 100 ? mb_substr($text, 0, 100) . WT_I18N::translate('…') : $text, $this->getGedcom());
+			list($text) = explode("\n", $text);
+			$this->_addName('NOTE', strlen($text) > 100 ? mb_substr($text, 0, 100) . WT_I18N::translate('…') : $text, $this->getGedcom());
+		}
 	}
 }
