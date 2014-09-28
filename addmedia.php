@@ -309,14 +309,6 @@ case 'update': // Save the information from the “editmedia” action
 	$oldFilename = $media->getFilename();
 	$newFilename = $folderName . $fileName;
 
-	//-- check if the file is used in more than one gedcom
-	//-- do not allow it to be moved or renamed if it is
-	$multi_gedcom=!$media->isExternal() && is_media_used_in_other_gedcom($media->getFilename(), WT_GED_ID);
-	if ($multi_gedcom) {
-		WT_FlashMessages::addMessage(WT_I18N::translate('This file is linked to another genealogical database on this server.  It cannot be deleted, moved, or renamed until these links have been removed.'));
-		break;
-	}
-
 	// Cannot rename local to external or vice-versa
 	if (isFileExternal($oldFilename) != isFileExternal($filename)) {
 		WT_FlashMessages::addMessage(WT_I18N::translate('Media file %1$s could not be renamed to %2$s.', '<span class="filename">'.$oldFilename.'</span>', '<span class="filename">'.$newFilename.'</span>'));
@@ -335,6 +327,13 @@ case 'update': // Save the information from the “editmedia” action
 
 		// We could be either renaming an existing file, or updating a record (with no valid file) to point to a new file
 		if ($oldServerFile != $newServerFile) {
+			//-- check if the file is used in more than one gedcom
+			//-- do not allow it to be moved or renamed if it is
+			if (!$media->isExternal() && is_media_used_in_other_gedcom($media->getFilename(), WT_GED_ID)) {
+				WT_FlashMessages::addMessage(WT_I18N::translate('This file is linked to another genealogical database on this server.  It cannot be deleted, moved, or renamed until these links have been removed.'));
+				break;
+			}
+
 			if (!file_exists($newServerFile) || @md5_file($oldServerFile)==md5_file($newServerFile)) {
 				if (@rename($oldServerFile, $newServerFile)) {
 					WT_FlashMessages::addMessage(WT_I18N::translate('Media file %1$s successfully renamed to %2$s.', '<span class="filename">'.$oldFilename.'</span>', '<span class="filename">'.$newFilename.'</span>'));

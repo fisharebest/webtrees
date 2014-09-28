@@ -2,8 +2,10 @@
 namespace Fisharebest\ExtCalendar;
 
 /**
- * interface CalendarInterface - each calendar implementation needs to provide
+ * Interface CalendarInterface - each calendar implementation needs to provide
  * these methods.
+ *
+ * Many of them are actually provided by the AbstractCalendar base class.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
  * @copyright (c) 2014 Greg Roach
@@ -22,13 +24,32 @@ namespace Fisharebest\ExtCalendar;
  */
 interface CalendarInterface {
 	/**
+	 * Determine the number of days in a specified month, allowing for leap years, etc.
+	 *
+	 * @param int $year
+	 * @param int $month
+	 *
+	 * @return int
+	 */
+	public function daysInMonth($year, $month);
+
+	/**
 	 * Convert a Julian day number into a year/month/day.
 	 *
-	 * @param $jd
+	 * @param int $julian_day
 	 *
 	 * @return int[]
 	 */
-	public function jdToYmd($jd);
+	public function jdToYmd($julian_day);
+
+	/**
+	 * Determine whether or not a given year is a leap-year.
+	 *
+	 * @param int $year
+	 *
+	 * @return bool
+	 */
+	public function isLeapYear($year);
 
 	/**
 	 * Convert a year/month/day to a Julian day number.
@@ -40,31 +61,4 @@ interface CalendarInterface {
 	 * @return int
 	 */
 	public function ymdToJd($year, $month, $day);
-
-	/**
-	 * Determine whether or not a given year is a leap-year.
-	 *
-	 * @param int $year
-	 *
-	 * @return bool
-	 */
-	public function leapYear($year);
-
-	/**
-	 * Determine the number of days in a specified month, allowing for leap years, etc.
-	 *
-	 * @param int $year
-	 * @param int $month
-	 *
-	 * @return int
-	 */
-	public function daysInMonth($year, $month);
-
-	/**
-	 * Provide a list of month names, as required by PHP::cal_info()
-	 *
-	 * @return string[]
-	 */
-	public function monthNames();
-
 }

@@ -2,7 +2,7 @@
 namespace Fisharebest\ExtCalendar;
 
 /**
- * class JulianCalendar - calculations for the Julian calendar.
+ * Class JulianCalendar - calculations for the Julian calendar.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
  * @copyright (c) 2014 Greg Roach
@@ -19,18 +19,12 @@ namespace Fisharebest\ExtCalendar;
  *            You should have received a copy of the GNU General Public License
  *            along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-class JulianCalendar extends Calendar implements CalendarInterface {
-	/** Same as PHP’s ext/calendar extension */
-	const PHP_CALENDAR_NAME = 'Julian';
-
-	/** Same as PHP’s ext/calendar extension */
-	const PHP_CALENDAR_NUMBER = 1;
-
-	/** Same as PHP’s ext/calendar extension */
-	const PHP_CALENDAR_SYMBOL = 'CAL_JULIAN';
-
+class JulianCalendar extends AbstractCalendar implements CalendarInterface {
 	/** See the GEDCOM specification */
 	const GEDCOM_CALENDAR_ESCAPE = '@#DJULIAN@';
+
+	/** Does the calendar start at year 1, or are we allowed negative (BCE) years. */
+	const NEGATIVE_YEARS_ALLOWED = true;
 
 	/**
 	 * Month lengths for regular years and leap-years.
@@ -43,35 +37,12 @@ class JulianCalendar extends Calendar implements CalendarInterface {
 	);
 
 	/**
-	 * English month names.
-	 *
-	 * @return string[]
-	 */
-	public function monthNames() {
-		return array(
-			1 => 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December',
-		);
-	}
-
-	/**
-	 * Abbreviated English month names.
-	 *
-	 * @return string[]
-	 */
-	public function monthNamesAbbreviated() {
-		return array(
-			1 => 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
-		);
-	}
-
-
-	/**
 	 * Determine whether a year is a leap year.
 	 *
 	 * @param  int  $year
 	 * @return bool
 	 */
-	public function leapYear($year) {
+	public function isLeapYear($year) {
 		if ($year < 0) {
 			$year++;
 		}
@@ -82,20 +53,21 @@ class JulianCalendar extends Calendar implements CalendarInterface {
 	/**
 	 * Convert a Julian day number into a year/month/day.
 	 *
-	 * @param $jd
+	 * @param $julian_day
 	 *
 	 * @return int[];
 	 */
-	public function jdToYmd($jd) {
-		$c = $jd + 32082;
+	public function jdToYmd($julian_day) {
+		$c = $julian_day + 32082;
 		$d = (int)((4 * $c + 3) / 1461);
 		$e = $c - (int)(1461 * $d / 4);
 		$m = (int)((5 * $e + 2) / 153);
-		$day = $e - (int)((153 * $m + 2) / 5) + 1;
+
+		$day   = $e - (int)((153 * $m + 2) / 5) + 1;
 		$month = $m + 3 - 12 * (int)($m / 10);
-		$year = $d - 4800 + (int)($m / 10);
+		$year  = $d - 4800 + (int)($m / 10);
 		if ($year < 1) {
-			// 0=1BC, -1=2BC, etc.
+			// 0 is 1 BCE, -1 is 2 BCE, etc.
 			$year--;
 		}
 
@@ -113,30 +85,14 @@ class JulianCalendar extends Calendar implements CalendarInterface {
 	 */
 	public function ymdToJd($year, $month, $day) {
 		if ($year < 0) {
-			// 1 B.C.E. => 0, 2 B.C.E> => 1, etc.
+			// 1 BCE is 0, 2 BCE is -1, etc.
 			++$year;
 		}
-		$a = (int)((14 - $month) / 12);
-		$year = $year + 4800 - $a;
+		$a     = (int)((14 - $month) / 12);
+		$year  = $year + 4800 - $a;
 		$month = $month + 12 * $a - 3;
 
 		return $day + (int)((153 * $month + 2) / 5) + 365 * $year + (int)($year / 4) - 32083;
-	}
-
-	/**
-	 * Calculate the number of days in a month.
-	 *
-	 * @param  int $year
-	 * @param  int $month
-	 *
-	 * @return int
-	 */
-	public function daysInMonth($year, $month) {
-		if ($year == 0 || $month < 1 || $month > 12) {
-			return trigger_error('invalid date.', E_USER_WARNING);
-		} else {
-			return static::$DAYS_IN_MONTH[$this->leapYear($year)][$month];
-		}
 	}
 
 	/**
@@ -165,7 +121,7 @@ class JulianCalendar extends Calendar implements CalendarInterface {
 		}
 
 		// The corrected “Paschal full moon” date
-		if ($pfm == 29 || $pfm == 28 && $golden > 11) {
+		if ($pfm === 29 || $pfm === 28 && $golden > 11) {
 			$pfm--;
 		}
 
