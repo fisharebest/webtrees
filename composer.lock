@@ -104,29 +104,24 @@
         },
         {
             "name": "fisharebest/ext-calendar",
-            "version": "1.1.2",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fisharebest/ext-calendar.git",
-                "reference": "6ba593dd58de9964f456df0b388e77df1bce22a1"
+                "reference": "e73e382d347440c9ea6ac8abc658cc4405c9250d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fisharebest/ext-calendar/zipball/6ba593dd58de9964f456df0b388e77df1bce22a1",
-                "reference": "6ba593dd58de9964f456df0b388e77df1bce22a1",
+                "url": "https://api.github.com/repos/fisharebest/ext-calendar/zipball/e73e382d347440c9ea6ac8abc658cc4405c9250d",
+                "reference": "e73e382d347440c9ea6ac8abc658cc4405c9250d",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0"
             },
             "require-dev": {
-                "ext-calendar": "*",
-                "ext-mbstring": "*",
                 "phpunit/phpunit": "*",
                 "satooshi/php-coveralls": "dev-master"
-            },
-            "suggest": {
-                "patchwork/utf8": "ext/mb_string support is required to generate dates using Hebrew text."
             },
             "type": "library",
             "autoload": {
@@ -145,20 +140,25 @@
                     "role": "Developer"
                 }
             ],
-            "description": "Implementation of various calendars, plus PHP shims for the ext/calendar extension",
+            "description": "Implementation of the Arabic (Hijri), French, Gregorian, Jewish, Julian and Persian (Jalali) calendars.  PHP shims for the ext/calendar extension.",
             "homepage": "https://github.com/fisharebest/ext-calendar",
             "keywords": [
+                "Jalali",
+                "arabic",
                 "calendar",
                 "ext-calendar",
                 "french",
                 "gregorian",
                 "hebrew",
+                "hijri",
                 "jewish",
                 "julian",
                 "julian day",
-                "julian day number"
+                "julian day number",
+                "persian",
+                "shamsi"
             ],
-            "time": "2014-09-16 06:20:56"
+            "time": "2014-09-27 08:43:30"
         },
         {
             "name": "ircmaxell/password-compat",

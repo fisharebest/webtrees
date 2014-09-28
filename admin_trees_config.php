@@ -953,7 +953,7 @@ $controller
 				</tr>
 				<tr>
 					<th colspan="2">
-						<?php echo WT_I18N::translate('Format'); ?>
+						<?php echo WT_Gedcom_Tag::getLabel('TEXT'); ?>
 					</th>
 				</tr>
 				<tr>
