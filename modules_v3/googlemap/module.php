@@ -466,45 +466,50 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 	}
 
 	private function flags() {
-		require WT_ROOT.'includes/functions/functions_edit.php';
+		require WT_ROOT . 'includes/functions/functions_edit.php';
 
-		$controller=new WT_Controller_Simple();
+		$controller = new WT_Controller_Simple();
 		$controller
 			->setPageTitle(WT_I18N::translate('Select flag'))
 			->pageHeader();
 
-		$countries = WT_Stats::getAllCountries();
+		$stats = new WT_Stats(WT_GEDCOM);
+		$countries = $stats->getAllCountries();
 		$action    = WT_Filter::post('action');
 
 		$countrySelected = WT_Filter::get('countrySelected', null, 'Countries');
 		$stateSelected   = WT_Filter::get('stateSelected',   null, 'States');
 
 		$country = array();
-		$rep = opendir(WT_ROOT.WT_MODULES_DIR.'googlemap/places/flags/');
-		while ($file = readdir($rep)) {
-			if (stristr($file, '.png')) {
-				$country[] = substr($file, 0, strlen($file)-4);
+		if (is_dir(WT_ROOT . WT_MODULES_DIR . 'googlemap/places/flags')) {
+			$rep = opendir(WT_ROOT . WT_MODULES_DIR . 'googlemap/places/flags');
+			while ($file = readdir($rep)) {
+				if (stristr($file, '.png')) {
+					$country[] = substr($file, 0, strlen($file) - 4);
+				}
 			}
+			closedir($rep);
+			sort($country);
 		}
-		closedir($rep);
-		sort($country);
 
 		if ($countrySelected == 'Countries') {
 			$flags = $country;
 		} else {
 			$flags = array();
-			$rep = opendir(WT_ROOT.WT_MODULES_DIR.'googlemap/places/'.$countrySelected.'/flags/');
-			while ($file = readdir($rep)) {
-				if (stristr($file, '.png')) {
-					$flags[] = substr($file, 0, strlen($file)-4);
+			if (is_dir(WT_ROOT . WT_MODULES_DIR . 'googlemap/places/' . $countrySelected . '/flags')) {
+				$rep = opendir(WT_ROOT . WT_MODULES_DIR . 'googlemap/places/' . $countrySelected . '/flags');
+				while ($file = readdir($rep)) {
+					if (stristr($file, '.png')) {
+						$flags[] = substr($file, 0, strlen($file) - 4);
+					}
 				}
+				closedir($rep);
+				sort($flags);
 			}
-			closedir($rep);
-			sort($flags);
 		}
 		$flags_s = array();
-		if ($stateSelected != 'States' && is_dir(WT_ROOT.WT_MODULES_DIR.'googlemap/places/'.$countrySelected.'/flags/'.$stateSelected.'/')) {
-			$rep = opendir(WT_ROOT.WT_MODULES_DIR.'googlemap/places/'.$countrySelected.'/flags/'.$stateSelected.'/');
+		if ($stateSelected != 'States' && is_dir(WT_ROOT . WT_MODULES_DIR . 'googlemap/places/' . $countrySelected . '/flags/' . $stateSelected)) {
+			$rep = opendir(WT_ROOT . WT_MODULES_DIR . 'googlemap/places/' . $countrySelected . '/flags/' . $stateSelected);
 			while ($file = readdir($rep)) {
 				if (stristr($file, '.png')) {
 					$flags_s[] = substr($file, 0, strlen($file)-4);
