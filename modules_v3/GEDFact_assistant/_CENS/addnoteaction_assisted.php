@@ -25,9 +25,6 @@
 
 //-- create a shared note record from the incoming variables
 
-if (WT_DEBUG) {
-	phpinfo(INFO_VARIABLES);
-}
 $newgedrec  = "0 @XREF@ NOTE\n";
 
 if (isset($_REQUEST['EVEN'])) $EVEN = $_REQUEST['EVEN'];

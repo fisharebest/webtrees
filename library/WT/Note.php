@@ -27,7 +27,7 @@ class WT_Note extends WT_GedcomRecord {
 
 	// Get the text contents of the note
 	public function getNote() {
-		if (preg_match('/^0 @' . WT_REGEX_TAG . '@ NOTE ?(.*(?:\n1 CONT ?.*)*)/', $this->gedcom.$this->pending, $match)) {
+		if (preg_match('/^0 @' . WT_REGEX_XREF . '@ NOTE ?(.*(?:\n1 CONT ?.*)*)/', $this->gedcom.$this->pending, $match)) {
 			return preg_replace("/\n1 CONT ?/", "\n", $match[1]);
 		} else {
 			return null;
@@ -76,14 +76,16 @@ class WT_Note extends WT_GedcomRecord {
 
 		$text = $this->getNote();
 
-		switch($WT_TREE->preference('FORMAT_TEXT')) {
-		case 'markdown':
-			$text = WT_Filter::markdown($text);
-			$text = strip_tags($text);
-			break;
-		}
+		if ($text) {
+			switch ($WT_TREE->preference('FORMAT_TEXT')) {
+			case 'markdown':
+				$text = WT_Filter::markdown($text);
+				$text = strip_tags($text);
+				break;
+			}
 
-		list($text) = explode("\n", $text);
-		$this->_addName('NOTE', strlen($text) > 100 ? mb_substr($text, 0, 100) . WT_I18N::translate('…') : $text, $this->getGedcom());
+			list($text) = explode("\n", $text);
+			$this->_addName('NOTE', strlen($text) > 100 ? mb_substr($text, 0, 100) . WT_I18N::translate('…') : $text, $this->getGedcom());
+		}
 	}
 }

@@ -541,25 +541,19 @@ class WT_Individual extends WT_GedcomRecord {
 		return $this->_getEstimatedBirthDate;
 	}
 	function getEstimatedDeathDate() {
-		if (is_null($this->_getEstimatedDeathDate)) {
+		if ($this->_getEstimatedDeathDate === null) {
 			foreach ($this->getAllDeathDates() as $date) {
 				if ($date->isOK()) {
 					$this->_getEstimatedDeathDate=$date;
 					break;
 				}
 			}
-			if (is_null($this->_getEstimatedDeathDate)) {
-				$tmp=$this->getEstimatedBirthDate();
-				if ($tmp->MinJD()) {
+			if ($this->_getEstimatedDeathDate === null) {
+				if ($this->getEstimatedBirthDate()->MinJD()) {
 					global $MAX_ALIVE_AGE;
-					$tmp2=$tmp->AddYears($MAX_ALIVE_AGE, 'BEF');
-					if ($tmp2->MaxJD() < WT_CLIENT_JD) {
-						$this->_getEstimatedDeathDate=$tmp2;
-					} else {
-						$this->_getEstimatedDeathDate=new WT_Date(''); // always return a date object
-					}
+					$this->_getEstimatedDeathDate = $this->getEstimatedBirthDate()->AddYears($MAX_ALIVE_AGE, 'BEF');
 				} else {
-					$this->_getEstimatedDeathDate=new WT_Date(''); // always return a date object
+					$this->_getEstimatedDeathDate = new WT_Date(''); // always return a date object
 				}
 			}
 		}
