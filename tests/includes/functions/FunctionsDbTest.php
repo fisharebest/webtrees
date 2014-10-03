@@ -302,24 +302,6 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * Test that function get_module_setting() exists in the global namespace.
-	 *
-	 * @return void
-	 */
-	public function testFunctionGetModuleSettingExists() {
-		$this->assertEquals(function_exists('\\get_module_setting'), true);
-	}
-
-	/**
-	 * Test that function set_module_setting() exists in the global namespace.
-	 *
-	 * @return void
-	 */
-	public function testFunctionSetModuleSettingExists() {
-		$this->assertEquals(function_exists('\\set_module_setting'), true);
-	}
-
-	/**
 	 * Test that function update_favorites() exists in the global namespace.
 	 *
 	 * @return void

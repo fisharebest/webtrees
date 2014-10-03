@@ -1123,27 +1123,6 @@ function set_block_setting($block_id, $setting_name, $setting_value) {
 	}
 }
 
-function get_module_setting($module_name, $setting_name, $default_value=null) {
-	static $statement;
-	if ($statement===null) {
-		$statement=WT_DB::prepare(
-			"SELECT SQL_CACHE setting_value FROM `##module_setting` WHERE module_name=? AND setting_name=?"
-		);
-	}
-	$setting_value=$statement->execute(array($module_name, $setting_name))->fetchOne();
-	return $setting_value===null ? $default_value : $setting_value;
-}
-
-function set_module_setting($module_name, $setting_name, $setting_value) {
-	if ($setting_value===null) {
-		WT_DB::prepare("DELETE FROM `##module_setting` WHERE module_name=? AND setting_name=?")
-			->execute(array($module_name, $setting_name));
-	} else {
-		WT_DB::prepare("REPLACE INTO `##module_setting` (module_name, setting_name, setting_value) VALUES (?, ?, ?)")
-			->execute(array($module_name, $setting_name, $setting_value));
-	}
-}
-
 // update favorites after merging records
 function update_favorites($xref_from, $xref_to, $ged_id=WT_GED_ID) {
 	return

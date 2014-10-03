@@ -63,9 +63,9 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 	// These files are the same for visitors/users/admins.
 	private function generate_index() {
 		// Check the cache
-		$timestamp=get_module_setting($this->getName(), 'sitemap.timestamp');
+		$timestamp = $this->getSetting( 'sitemap.timestamp');
 		if ($timestamp > WT_TIMESTAMP - self::CACHE_LIFE) {
-			$data=get_module_setting($this->getName(), 'sitemap.xml');
+			$data = $this->getSetting('sitemap.xml');
 		} else {
 			$data='';
 			$lastmod='<lastmod>'.date('Y-m-d').'</lastmod>';
@@ -101,13 +101,13 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 					}
 				}
 			}
-			$data='<'.'?xml version="1.0" encoding="UTF-8" ?'.'>'.PHP_EOL.'<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'.PHP_EOL.$data.'</sitemapindex>'.PHP_EOL;
+			$data = '<'.'?xml version="1.0" encoding="UTF-8" ?'.'>' . PHP_EOL . '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . PHP_EOL . $data . '</sitemapindex>' . PHP_EOL;
 			// Cache this data.
-			set_module_setting($this->getName(), 'sitemap.xml', $data);
-			set_module_setting($this->getName(), 'sitemap.timestamp', WT_TIMESTAMP);
+			$this->setSetting('sitemap.xml', $data);
+			$this->setSetting('sitemap.timestamp', WT_TIMESTAMP);
 		}
 		header('Content-Type: application/xml');
-		header('Content-Length: '.strlen($data));
+		header('Content-Length: ' . strlen($data));
 		echo $data;
 	}
 
@@ -115,9 +115,9 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 	// These files depend on access levels, so only cache for visitors.
 	private function generate_file($ged_id, $rec_type, $volume) {
 		// Check the cache
-		$timestamp=get_module_setting($this->getName(), 'sitemap-'.$ged_id.'-'.$rec_type.'-'.$volume.'.timestamp');
+		$timestamp = $this->getSetting('sitemap-' . $ged_id . '-' . $rec_type . '-' . $volume . '.timestamp');
 		if ($timestamp > WT_TIMESTAMP - self::CACHE_LIFE && !WT_USER_ID) {
-			$data=get_module_setting($this->getName(), 'sitemap-'.$ged_id.'-'.$rec_type.'-'.$volume.'.xml');
+			$data = $this->getSetting('sitemap-' . $ged_id . '-' . $rec_type . '-' . $volume . '.xml');
 		} else {
 			$tree=WT_Tree::get($ged_id);
 			$data='<url><loc>'.WT_SERVER_NAME.WT_SCRIPT_PATH.'index.php?ctype=gedcom&amp;ged='.$tree->tree_name_url.'</loc></url>'.PHP_EOL;
@@ -202,8 +202,8 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 			// Cache this data - but only for visitors, as we don’t want
 			// visitors to see data created by logged-in users.
 			if (!WT_USER_ID) {
-				set_module_setting($this->getName(), 'sitemap-'.$ged_id.'-'.$rec_type.'-'.$volume.'.xml', $data);
-				set_module_setting($this->getName(), 'sitemap-'.$ged_id.'-'.$rec_type.'-'.$volume.'.timestamp', WT_TIMESTAMP);
+				$this->setSetting('sitemap-' . $ged_id . '-' . $rec_type . '-' . $volume . '.xml', $data);
+				$this->setSetting('sitemap-' . $ged_id . '-' . $rec_type . '-' . $volume . '.timestamp', WT_TIMESTAMP);
 			}
 		}
 		header('Content-Type: application/xml');
