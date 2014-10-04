@@ -32,14 +32,7 @@ $controller
 	->pageHeader()
 	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
 	->addInlineJavascript('autocomplete();')
-	->setupJavascript()
-	->addInlineJavascript('
-		sizeLines();
-		jQuery("#childarrow").on("click", "a", function(e) {
-			e.preventDefault();
-			jQuery("#childbox").toggle();
-		});
-	');
+	->setupJavascript();
 
 $gencount=0;
 
@@ -101,12 +94,12 @@ $gencount=0;
 	</form>
 
 	<div id="hourglass_chart" style="width:98%; z-index:1;">
-		<table cellspacing="0" cellpadding="0" border="0">
+		<table>
 			<tr>
-				<td valign="middle">
+				<td style="vertical-align:middle">
 					<?php $controller->print_descendency(WT_Individual::getInstance($controller->pid), 1); ?>
 				</td>
-				<td valign="middle">
+				<td style="vertical-align:middle">
 					<?php $controller->print_person_pedigree(WT_Individual::getInstance($controller->pid), 1); ?>
 				</td>
 			</tr>

@@ -1292,6 +1292,7 @@ jQuery ('body').on ('click', '.iconz', function (e) {
 		basestyle = wrapper.attr ("class").match (/(box-style[0-2])/)[1];
 
 	function showDetails() {
+		wrapper.parent().css("z-index", 100);
 		toggleExpanded();
 		namedef.addClass ("nameZoom");
 		inout2.hide (0, function () {
@@ -1304,6 +1305,7 @@ jQuery ('body').on ('click', '.iconz', function (e) {
 			inout2.show (0);
 			namedef.removeClass ("nameZoom");
 			toggleExpanded();
+			wrapper.parent().css("z-index", '');
 		});
 	}
 

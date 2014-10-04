@@ -1557,7 +1557,8 @@ img.block {
 
 #pedigree_chart #childarrow,
 #pedigree_chart #uparrow,
-#pedigree_chart .shadow {
+#pedigree_chart .shadow,
+.ancestorarrow {
 	position: absolute;
 }
 
@@ -1565,6 +1566,37 @@ img.block {
 	padding: 5px;
 	position: absolute;
 	display: none;
+	text-align: start;
+	white-space: nowrap;
+	top: 20px;
+	left: 0;
+}
+
+[dir=rtl] #childbox {
+	left: auto;
+	right: 0;
+}
+
+.layout3 #childbox {
+	top: auto;
+	bottom: 20px;
+}
+
+#childbox a.name1 {
+	/*	font-weight: normal;*/
+	display: block;
+	margin-left: 5px;
+}
+
+#hourglass_chart table,
+.charts_block table {
+	border-collapse: collapse;
+}
+
+#hourglass_chart td,
+.charts_block td {
+	padding: 0;
+	empty-cells: show;
 }
 
 #pedigree_chart #childbox {
@@ -2482,7 +2514,6 @@ dt {
 .box-style0-expanded,
 .box-style1-expanded {
 	width: 300px!important;
-	z-index: 100;
 }
 
 .person_box_template {
