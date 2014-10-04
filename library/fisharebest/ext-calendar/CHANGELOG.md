@@ -1,6 +1,11 @@
 CHANGE LOG
 ==========
 
+## 1.2.0 (2014-09-27)
+ - Improve coverage of unit tests.
+ - Remove dependency on mb_string - generate Hebrew text directly in ISO-8859-8.
+ - Code style tips from scrutinizer-ci.com.
+
 ## 1.1.2 (2014-09-16)
  - Fix #1; add support for the third parameter in jdtojewish().
 

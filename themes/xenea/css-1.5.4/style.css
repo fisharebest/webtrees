@@ -3128,10 +3128,6 @@ dd .deletelink {
 	float: right;
 }
 
-[dir=rtl] #indi_header {
-	float: right;
-}
-
 [dir=rtl] #indi_header h3 {
 	padding: 0 30px 0 10px;
 	text-align: right;

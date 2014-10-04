@@ -38,7 +38,7 @@ class GregorianCalendar extends JulianCalendar implements CalendarInterface {
 	 * @param  int  $year
 	 * @return bool
 	 */
-	public function leapYear($year) {
+	public function isLeapYear($year) {
 		if ($year < 0) {
 			$year++;
 		}
@@ -49,21 +49,22 @@ class GregorianCalendar extends JulianCalendar implements CalendarInterface {
 	/**
 	 * Convert a Julian day number into a year/month/day.
 	 *
-	 * @param $jd
+	 * @param $julian_day
 	 *
 	 * @return int[];
 	 */
-	public function jdToYmd($jd) {
-		$a = $jd + 32044;
+	public function jdToYmd($julian_day) {
+		$a = $julian_day + 32044;
 		$b = (int)((4 * $a + 3) / 146097);
 		$c = $a - (int)($b * 146097 / 4);
 		$d = (int)((4 * $c + 3) / 1461);
 		$e = $c - (int)((1461 * $d) / 4);
 		$m = (int)((5 * $e + 2) / 153);
-		$day = $e - (int)((153 * $m + 2) / 5) + 1;
+
+		$day   = $e - (int)((153 * $m + 2) / 5) + 1;
 		$month = $m + 3 - 12 * (int)($m / 10);
-		$year = $b * 100 + $d - 4800 + (int)($m / 10);
-		if ($year < 1) { // 0=1BC, -1=2BC, etc.
+		$year  = $b * 100 + $d - 4800 + (int)($m / 10);
+		if ($year < 1) { // 0 is 1 BCE, -1 is 2 BCE, etc.
 			$year--;
 		}
 
@@ -84,8 +85,8 @@ class GregorianCalendar extends JulianCalendar implements CalendarInterface {
 			// 1 B.C.E. => 0, 2 B.C.E> => 1, etc.
 			++$year;
 		}
-		$a = (int)((14 - $month) / 12);
-		$year = $year + 4800 - $a;
+		$a     = (int)((14 - $month) / 12);
+		$year  = $year + 4800 - $a;
 		$month = $month + 12 * $a - 3;
 
 		return $day + (int)((153 * $month + 2) / 5) + 365 * $year + (int)($year / 4) - (int)($year / 100) + (int)($year / 400) - 32045;
@@ -114,7 +115,7 @@ class GregorianCalendar extends JulianCalendar implements CalendarInterface {
 		$solar = (int)(($year - 1600) / 100) - (int)(($year - 1600) / 400);
 
 		// The lunar correction
-		$lunar = (int)((int)(($year-1400) / 100) * 8) / 25;
+		$lunar = (int)((int)(($year - 1400) / 100) * 8) / 25;
 
 		// The uncorrected “Paschal full moon” date
 		$pfm = (3 - 11 * $golden + $solar - $lunar) % 30;
@@ -123,7 +124,7 @@ class GregorianCalendar extends JulianCalendar implements CalendarInterface {
 		}
 
 		// The corrected “Paschal full moon” date
-		if ($pfm == 29 || $pfm == 28 && $golden > 11) {
+		if ($pfm === 29 || $pfm === 28 && $golden > 11) {
 			$pfm--;
 		}
 

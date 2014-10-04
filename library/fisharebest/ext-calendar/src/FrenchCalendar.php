@@ -2,7 +2,7 @@
 namespace Fisharebest\ExtCalendar;
 
 /**
- * class FrenchCalendar - calculations for the French Republican calendar.
+ * Class FrenchCalendar - calculations for the French Republican calendar.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
  * @copyright (c) 2014 Greg Roach
@@ -19,16 +19,7 @@ namespace Fisharebest\ExtCalendar;
  *            You should have received a copy of the GNU General Public License
  *            along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-class FrenchCalendar extends Calendar implements CalendarInterface {
-	/** Same as PHP’s ext/calendar extension */
-	const PHP_CALENDAR_NAME = 'French';
-
-	/** Same as PHP’s ext/calendar extension */
-	const PHP_CALENDAR_NUMBER = 3;
-
-	/** Same as PHP’s ext/calendar extension */
-	const PHP_CALENDAR_SYMBOL = 'CAL_FRENCH';
-
+class FrenchCalendar extends AbstractCalendar implements CalendarInterface {
 	/** See the GEDCOM specification */
 	const GEDCOM_CALENDAR_ESCAPE = '@#DFRENCH R@';
 
@@ -41,8 +32,15 @@ class FrenchCalendar extends Calendar implements CalendarInterface {
 	/** The maximum number of months in any year */
 	const MAX_MONTHS_IN_YEAR = 13;
 
-	/** The maximum number of days in any month */
-	const MAX_DAYS_IN_MONTH = 30;
+	/**
+	 * Month lengths for regular years and leap-years.
+	 *
+	 * @var int[][]
+	 */
+	protected static $DAYS_IN_MONTH = array(
+		0 => array(1 => 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 5),
+		1 => array(1 => 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 6),
+	);
 
 	/**
 	 * Determine whether a year is a leap year.
@@ -54,21 +52,21 @@ class FrenchCalendar extends Calendar implements CalendarInterface {
 	 * @param  int  $year
 	 * @return bool
 	 */
-	public function leapYear($year) {
+	public function isLeapYear($year) {
 		return $year % 4 == 3;
 	}
 
 	/**
 	 * Convert a Julian day number into a year/month/day.
 	 *
-	 * @param $jd
+	 * @param $julian_day
 	 *
 	 * @return int[];
 	 */
-	public function jdToYmd($jd) {
-		$year = (int)(($jd - 2375109) * 4 / 1461) - 1;
-		$month = (int)(($jd - 2375475 - $year * 365 - (int)($year / 4)) / 30) + 1;
-		$day = $jd - 2375444 - $month * 30 - $year * 365 - (int)($year / 4);
+	public function jdToYmd($julian_day) {
+		$year  = (int)(($julian_day - 2375109) * 4 / 1461) - 1;
+		$month = (int)(($julian_day - 2375475 - $year * 365 - (int)($year / 4)) / 30) + 1;
+		$day   = $julian_day - 2375444 - $month * 30 - $year * 365 - (int)($year / 4);
 
 		return array($year, $month, $day);
 	}
@@ -84,41 +82,5 @@ class FrenchCalendar extends Calendar implements CalendarInterface {
 	 */
 	public function ymdToJd($year, $month, $day) {
 		return 2375444 + $day + $month * 30 + $year * 365 + (int)($year / 4);
-	}
-
-	/**
-	 * Month names for the calendar.
-	 *
-	 * @return string[]
-	 */
-	public function monthNames() {
-		return array(
-			1 => 'Vendemiaire', 'Brumaire', 'Frimaire', 'Nivose', 'Pluviose', 'Ventose',
-			'Germinal', 'Floreal', 'Prairial', 'Messidor', 'Thermidor', 'Fructidor', 'Extra',
-		);
-	}
-
-	/**
-	 * Calculate the number of days in a month.
-	 *
-	 * @param  int $year
-	 * @param  int $month
-	 *
-	 * @return int
-	 */
-	public function daysInMonth($year, $month) {
-		if ($year < 1 || $year > 14) {
-			return trigger_error('invalid date.', E_USER_WARNING);
-		} elseif ($month >=1 && $month <= 12) {
-			return 30;
-		} elseif ($month == 13) {
-			if ($this->leapYear($year)) {
-				return 6;
-			} else {
-				return $year == 14 ? -2380948 : 5; // Emulate a bug in PHP
-			}
-		} else {
-			return trigger_error('invalid date.', E_USER_WARNING);
-		}
 	}
 }

@@ -973,7 +973,15 @@ class WT_Stats {
 		return $result;
 	}
 
-	public function statsPlaces($what = 'ALL', $fact = false, $parent = 0, $country = false) {
+	/**
+	 * @param string $what
+	 * @param string $fact
+	 * @param int    $parent
+	 * @param bool   $country
+	 *
+	 * @return array|null|stdClass|string
+	 */
+	public function statsPlaces($what = 'ALL', $fact = '', $parent = 0, $country = false) {
 		if ($fact) {
 			if ($what == 'INDI') {
 				$rows =
@@ -3845,18 +3853,18 @@ class WT_Stats {
 		global $GEDCOM;
 
 		$ged_id = get_id_from_gedcom($GEDCOM);
-		if (is_array($params) && isset($params[0]) && $params[0] != '') {
-			$threshold = strtolower($params[0]);
+		if (is_array($params) && isset($params[0])) {
+			$threshold = (int) $params[0];
 		} else {
 			$threshold = get_gedcom_setting($ged_id, 'COMMON_NAMES_THRESHOLD');
 		}
-		if (is_array($params) && isset($params[1]) && $params[1] != '' && $params[1] >= 0) {
-			$maxtoshow = strtolower($params[1]);
+		if (is_array($params) && isset($params[1])) {
+			$maxtoshow = (int) $params[1];
 		} else {
-			$maxtoshow = false;
+			$maxtoshow = 0;
 		}
-		if (is_array($params) && isset($params[2]) && $params[2] != '') {
-			$sorting = strtolower($params[2]);
+		if (is_array($params) && isset($params[2])) {
+			$sorting = $params[2];
 		} else {
 			$sorting = 'alpha';
 		}
