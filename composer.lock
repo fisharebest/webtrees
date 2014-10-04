@@ -374,16 +374,16 @@
         },
         {
             "name": "tecnick.com/tcpdf",
-            "version": "6.0.093",
+            "version": "6.0.094",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tecnickcom/TCPDF.git",
-                "reference": "8ec040b3ccedc2a0150a7b6b46c18c59d932ad59"
+                "reference": "89d007897e20471d4990d4bd0456272dece03a26"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/8ec040b3ccedc2a0150a7b6b46c18c59d932ad59",
-                "reference": "8ec040b3ccedc2a0150a7b6b46c18c59d932ad59",
+                "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/89d007897e20471d4990d4bd0456272dece03a26",
+                "reference": "89d007897e20471d4990d4bd0456272dece03a26",
                 "shasum": ""
             },
             "require": {
@@ -433,7 +433,7 @@
                 "pdf417",
                 "qrcode"
             ],
-            "time": "2014-09-02 19:31:33"
+            "time": "2014-09-30 17:01:15"
         }
     ],
     "packages-dev": [
