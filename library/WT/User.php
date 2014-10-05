@@ -216,7 +216,7 @@ class User {
 	 *
 	 * @param \stdclass $user A row from the wt_user table
 	 */
-	private function __construct(\stdClass $user) {
+	public function __construct(\stdClass $user) {
 		$this->user_id   = $user->user_id;
 		$this->user_name = $user->user_name;
 		$this->real_name = $user->real_name;

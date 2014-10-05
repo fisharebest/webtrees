@@ -117,7 +117,7 @@ class WT_Tree {
 	 *
 	 * @return string
 	 */
-	public function getUserPreference($user, $setting_name, $default = null) {
+	public function getUserPreference(User $user, $setting_name, $default = null) {
 		// There are lots of settings, and we need to fetch lots of them on every page
 		// so it is quicker to fetch them all in one go.
 		if (!array_key_exists($user->getUserId(), $this->user_preferences)) {
