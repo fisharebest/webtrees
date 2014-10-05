@@ -133,7 +133,7 @@ case 'load_json':
 	Zend_Session::writeClose();
 	$start  = WT_Filter::getInteger('start');
 	$length = WT_Filter::getInteger('length');
-	Auth::user()->setSetting('admin_site_log_page_size', $length);
+	Auth::user()->setPreference('admin_site_log_page_size', $length);
 
 	if ($length>0) {
 		$LIMIT=" LIMIT " . $start . ',' . $length;
@@ -196,7 +196,7 @@ $controller
 			jQueryUI: true,
 			autoWidth: false,
 			sorting: [[ 0, "desc" ]],
-			pageLength: ' . Auth::user()->getSetting('admin_site_log_page_size', 20) . ',
+			pageLength: ' . Auth::user()->getPreference('admin_site_log_page_size', 20) . ',
 			pagingType: "full_numbers"
 		});
 	');

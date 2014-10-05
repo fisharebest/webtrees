@@ -247,7 +247,7 @@ case 'theme':
 		$WT_SESSION->theme_dir=$theme_dir;
 		if (Auth::id()) {
 			// Remember our selection
-			Auth::user()->setSetting('theme', $theme_dir);
+			Auth::user()->setPreference('theme', $theme_dir);
 		}
 	} else {
 		// Request for a non-existant theme.

@@ -57,7 +57,7 @@ class WT_MenuBar {
 		$submenu = new WT_Menu(WT_I18N::translate('My page'), 'index.php?ctype=user&amp;ged='.WT_GEDURL, 'menu-mypage');
 		$menu->addSubmenu($submenu);
 		//-- editaccount submenu
-		if (Auth::user()->getSetting('editaccount')) {
+		if (Auth::user()->getPreference('editaccount')) {
 			$submenu = new WT_Menu(WT_I18N::translate('My account'), 'edituser.php', 'menu-myaccount');
 			$menu->addSubmenu($submenu);
 		}

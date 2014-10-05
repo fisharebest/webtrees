@@ -270,7 +270,7 @@ function whoisonline() {
 	$loggedusers = array ();
 	$content='';
 	foreach (User::allLoggedIn() as $user) {
-		if (Auth::isAdmin() || $user->getSetting('visibleonline')) {
+		if (Auth::isAdmin() || $user->getPreference('visibleonline')) {
 			$loggedusers[] = $user;
 		} else {
 			$NumAnonymous++;
@@ -293,7 +293,7 @@ function whoisonline() {
 		foreach ($loggedusers as $user) {
 			$content .= '<div class="logged_in_name">';
 			$content .= WT_Filter::escapeHtml($user->getRealName()) . ' - ' . WT_Filter::escapeHtml($user->getUserName());
-			if (WT_USER_ID != $user->getUserId() && $user->getSetting('contactmethod') != 'none') {
+			if (WT_USER_ID != $user->getUserId() && $user->getPreference('contactmethod') != 'none') {
 				$content .= ' <a class="icon-email" href="#" onclick="return message(\'' . WT_Filter::escapeJs($user->getUserName()) . '\', \'\', \'' . WT_Filter::escapeJs(get_query_url()) . '\');" title="' . WT_I18N::translate('Send message').'"></a>';
 			}
 			$content .= '</div>';
@@ -310,7 +310,7 @@ function user_contact_link($user_id) {
 	$user = User::find($user_id);
 
 	if ($user) {
-		$method = $user->getSetting('contactmethod');
+		$method = $user->getPreference('contactmethod');
 
 		switch ($method) {
 		case 'none':

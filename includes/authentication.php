@@ -77,7 +77,7 @@ function addMessage($message) {
 	if ($message['method']!='messaging') {
 		// Switch to the sender’s language.
 		if ($sender) {
-			WT_I18N::init($sender->getSetting('language'));
+			WT_I18N::init($sender->getPreference('language'));
 		}
 
 		$copy_email = $message['body'];
@@ -112,7 +112,7 @@ function addMessage($message) {
 	}
 
 	// Switch to the recipient’s language.
-	WT_I18N::init($recipient->getSetting('language'));
+	WT_I18N::init($recipient->getPreference('language'));
 	if (isset($message['from_name'])) {
 		$message['body'] =
 			WT_I18N::translate('Your name:') . ' ' . $message['from_name'] . WT_Mail::EOL .

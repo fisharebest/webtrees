@@ -404,7 +404,7 @@ $controller
 					<?php
 						$CONTACT_USER_ID = $WT_TREE->getPreference('CONTACT_USER_ID');
 						foreach (User::all() as $user) {
-							if ($user->getSetting('verified_by_admin')) {
+							if ($user->getPreference('verified_by_admin')) {
 								echo "<option value=\"" . $user->getUserId() . "\"";
 								if ($CONTACT_USER_ID == $user->getUserId()) {
 									echo " selected=\"selected\"";

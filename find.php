@@ -96,9 +96,9 @@ case "specialchar":
 	if (Auth::id()) {
 		// Users will probably always want the same language, so remember their setting
 		if (!$language_filter) {
-			$language_filter = Auth::user()->getSetting('default_language_filter');
+			$language_filter = Auth::user()->getPreference('default_language_filter');
 		} else {
-			Auth::user()->setSetting('default_language_filter', $language_filter);
+			Auth::user()->setPreference('default_language_filter', $language_filter);
 		}
 	}
 	require WT_ROOT.'includes/specialchars.php';

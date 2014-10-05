@@ -237,7 +237,7 @@ case 'user_setting':
 
 	$user = User::find($id1);
 	// Authorisation
-	if (!(Auth::isAdmin() || $user && $user->getSetting('editaccount') && in_array($id2, array('language','visible_online','contact_method')))) {
+	if (!(Auth::isAdmin() || $user && $user->getPreference('editaccount') && in_array($id2, array('language','visible_online','contact_method')))) {
 		fail();
 	}
 
@@ -251,8 +251,8 @@ case 'user_setting':
 		break;
 	case 'verified_by_admin':
 		// Approving for the first time?  Send a confirmation email
-		if ($value && !$user->getSetting('verified_by_admin') && $user->getSetting('sessiontime')==0) {
-			WT_I18N::init($user->getSetting('language'));
+		if ($value && !$user->getPreference('verified_by_admin') && $user->getPreference('sessiontime')==0) {
+			WT_I18N::init($user->getPreference('language'));
 			WT_Mail::systemMessage(
 				$WT_TREE,
 				$user,
@@ -279,7 +279,7 @@ case 'user_setting':
 	}
 
 	// Authorised and valid - make update
-	$user->setSetting($id2, $value);
+	$user->setPreference($id2, $value);
 	ok();
 
 case 'module':

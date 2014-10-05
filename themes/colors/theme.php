@@ -98,7 +98,7 @@ if (isset($_GET['themecolor']) && array_key_exists($_GET['themecolor'], $COLOR_T
 	// Request to change color
 	$subColor = $_GET['themecolor'];
 	if (Auth::id()) {
-		Auth::user()->setSetting('themecolor', $subColor);
+		Auth::user()->setPreference('themecolor', $subColor);
 		if (Auth::isAdmin()) {
 			WT_Site::setPreference('DEFAULT_COLOR_PALETTE', $subColor);
 		}
@@ -110,7 +110,7 @@ if (isset($_GET['themecolor']) && array_key_exists($_GET['themecolor'], $COLOR_T
 // If we are logged in, use our preference
 $subColor = null;
 if (Auth::id()) {
-	$subColor = Auth::user()->getSetting('themecolor');
+	$subColor = Auth::user()->getPreference('themecolor');
 }
 // If not logged in or no preference, use one we selected earlier in the session?
 if (!$subColor) {

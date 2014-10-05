@@ -46,7 +46,7 @@ class Auth {
 			$user = self::user();
 		}
 
-		return $user && $user->getSetting('canadmin') === '1';
+		return $user && $user->getPreference('canadmin') === '1';
 	}
 
 	/**

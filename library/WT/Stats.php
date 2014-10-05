@@ -4281,7 +4281,7 @@ class WT_Stats {
 		$NumAnonymous = 0;
 		$loggedusers = array();
 		foreach (User::allLoggedIn() as $user) {
-			if (Auth::isAdmin() || $user->getSetting('visibleonline')) {
+			if (Auth::isAdmin() || $user->getPreference('visibleonline')) {
 				$loggedusers[] = $user;
 			} else {
 				$NumAnonymous++;
@@ -4312,11 +4312,11 @@ class WT_Stats {
 		if (Auth::check()) {
 			foreach ($loggedusers as $user) {
 				if ($type == 'list') {
-					$content .= "<li>" . WT_Filter::escapeHtml($user->getRealName()) . ' - ' . WT_Filter::escapeHtml($user->getUserName());
+					$content .= '<li>' . WT_Filter::escapeHtml($user->getRealName()) . ' - ' . WT_Filter::escapeHtml($user->getUserName());
 				} else {
 					$content .= WT_Filter::escapeHtml($user->getRealName()) . ' - ' . WT_Filter::escapeHtml($user->getUserName());
 				}
-				if (WT_USER_ID != $user->getUserId() && $user->getSetting('contactmethod') != 'none') {
+				if (WT_USER_ID != $user->getUserId() && $user->getPreference('contactmethod') != 'none') {
 					if ($type == 'list') {
 						$content .= '<br><a class="icon-email" href="#" onclick="return message(\'' . $user->getUserId() . '\', \'\', \'' . WT_Filter::escapeJs(get_query_url()) . '\');" title="' . WT_I18N::translate('Send message') . '"></a>';
 					} else {
@@ -4338,7 +4338,7 @@ class WT_Stats {
 		$anon = 0;
 		$visible = 0;
 		foreach (User::allLoggedIn() as $user) {
-			if (Auth::isAdmin() || $user->getSetting('visibleonline')) {
+			if (Auth::isAdmin() || $user->getPreference('visibleonline')) {
 				$visible++;
 			} else {
 				$anon++;
@@ -4418,14 +4418,14 @@ class WT_Stats {
 			} else {
 				$datestamp = $DATE_FORMAT;
 			}
-			return timestamp_to_gedcom_date($user->getSetting('reg_timestamp'))->Display(false, $datestamp);
+			return timestamp_to_gedcom_date($user->getPreference('reg_timestamp'))->Display(false, $datestamp);
 		case 'regtime':
 			if (is_array($params) && isset($params[0]) && $params[0] != '') {
 				$datestamp = $params[0];
 			} else {
 				$datestamp = str_replace('%', '', $TIME_FORMAT);
 			}
-			return date($datestamp, $user->getSetting('reg_timestamp'));
+			return date($datestamp, $user->getPreference('reg_timestamp'));
 		case 'loggedin':
 			if (is_array($params) && isset($params[0]) && $params[0] != '') {
 				$yes = $params[0];
