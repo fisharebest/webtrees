@@ -659,18 +659,6 @@ if ($WT_TREE && $WT_TREE->getPreference('SHOW_COUNTER') && !$SEARCH_SPIDER) {
 	$hitCount='';
 }
 
-// define constants to be used when setting permissions after creating files/directories
-if (substr(PHP_SAPI, 0, 3) == 'cgi') {  // cgi-mode, should only be writable by owner
-	define('WT_PERM_EXE',  0755);  // to be used on directories, php files, etc.
-	define('WT_PERM_FILE', 0644);  // to be used on images, text files, etc.
-} else { // mod_php mode, should be writable by everyone
-	define('WT_PERM_EXE',  0777);
-	define('WT_PERM_FILE', 0666);
-}
-
-// Lightbox needs custom integration in many places.  Only check for the module once.
-define('WT_USE_LIGHTBOX', !$SEARCH_SPIDER && array_key_exists('lightbox', WT_Module::getActiveModules()));
-
 // Search engines are only allowed to see certain pages.
 if ($SEARCH_SPIDER && !in_array(WT_SCRIPT_NAME , array(
 	'index.php', 'indilist.php', 'module.php', 'mediafirewall.php',

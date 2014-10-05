@@ -57,7 +57,7 @@ if ($action == "upload") {
 
 			// Make sure the media folder exists
 			if (!is_dir(WT_DATA_DIR . $MEDIA_DIRECTORY)) {
-				if (@mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY, WT_PERM_EXE, true)) {
+				if (WT_File::mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY)) {
 					WT_FlashMessages::addMessage(WT_I18N::translate('The folder %s was created.', '<span class="filename">' . WT_DATA_DIR . $MEDIA_DIRECTORY . '</span>'));
 				} else {
 					WT_FlashMessages::addMessage(WT_I18N::translate('The folder %s does not exist, and it could not be created.', '<span class="filename">' . WT_DATA_DIR . $MEDIA_DIRECTORY . '</span>'));
@@ -68,7 +68,7 @@ if ($action == "upload") {
 			// Managers can create new media paths (subfolders).  Users must use existing folders.
 			if ($folderName && !is_dir(WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName)) {
 				if (WT_USER_GEDCOM_ADMIN) {
-					if (@mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName, WT_PERM_EXE, true)) {
+					if (WT_File::mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName)) {
 						WT_FlashMessages::addMessage(WT_I18N::translate('The folder %s was created.', '<span class="filename">' . WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName . '</span>'));
 					} else {
 						WT_FlashMessages::addMessage(WT_I18N::translate('The folder %s does not exist, and it could not be created.', '<span class="filename">' . WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName . '</span>'));
@@ -82,7 +82,7 @@ if ($action == "upload") {
 
 			// The media folder exists.  Now create a thumbnail folder to match it.
 			if (!is_dir(WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName)) {
-				if (!@mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName, WT_PERM_EXE, true)) {
+				if (!WT_File::mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName)) {
 					WT_FlashMessages::addMessage(WT_I18N::translate('The folder %s does not exist, and it could not be created.', '<span class="filename">' . WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName . '</span>'));
 					break;
 				}
@@ -136,7 +136,6 @@ if ($action == "upload") {
 				}
 				if (move_uploaded_file($_FILES['mediafile' . $i]['tmp_name'], $serverFileName)) {
 					WT_FlashMessages::addMessage(WT_I18N::translate('The file %s was uploaded.', '<span class="filename">' . $serverFileName . '</span>'));
-					chmod($serverFileName, WT_PERM_FILE);
 					Log::addMediaLog('Media file ' . $serverFileName . ' uploaded');
 				} else {
 					WT_FlashMessages::addMessage(
@@ -155,7 +154,6 @@ if ($action == "upload") {
 					$serverFileName = WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName .  $thumbFile;
 					if (move_uploaded_file($_FILES['thumbnail' . $i]['tmp_name'], $serverFileName)) {
 					WT_FlashMessages::addMessage(WT_I18N::translate('The file %s was uploaded.', '<span class="filename">' . $serverFileName . '</span>'));
-						chmod($serverFileName, WT_PERM_FILE);
 						Log::addMediaLog('Thumbnail file ' . $serverFileName . ' uploaded');
 					}
 				}
