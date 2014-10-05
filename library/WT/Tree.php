@@ -90,9 +90,15 @@ class WT_Tree {
 	public function setPreference($setting_name, $setting_value) {
 		if ($setting_value !== $this->getPreference($setting_name)) {
 			// Update the database
-			WT_DB::prepare(
-				"REPLACE INTO `##gedcom_setting` (gedcom_id, setting_name, setting_value) VALUES (?, ?, LEFT(?, 255))"
-			)->execute(array($this->tree_id, $setting_name, $setting_value));
+			if ($setting_value === null) {
+				WT_DB::prepare(
+					"DELETE FROM `##gedcom_setting` WHERE gedcom_id = ? AND setting_name = ?"
+				)->execute(array($this->tree_id, $setting_name));
+			} else {
+				WT_DB::prepare(
+					"REPLACE INTO `##gedcom_setting` (gedcom_id, setting_name, setting_value) VALUES (?, ?, LEFT(?, 255))"
+				)->execute(array($this->tree_id, $setting_name, $setting_value));
+			}
 			// Update our cache
 			$this->preferences[$setting_name] = $setting_value;
 			// Audit log of changes
