@@ -109,7 +109,6 @@ case 'update':
 	$WT_TREE->setPreference('GEONAMES_ACCOUNT',             WT_Filter::post('NEW_GEONAMES_ACCOUNT'));
 	$WT_TREE->setPreference('HIDE_GEDCOM_ERRORS',           WT_Filter::postBool('NEW_HIDE_GEDCOM_ERRORS'));
 	$WT_TREE->setPreference('HIDE_LIVE_PEOPLE',             WT_Filter::postBool('NEW_HIDE_LIVE_PEOPLE'));
-	$WT_TREE->setPreference('GEDCOM_MEDIA_PATH',            WT_Filter::post('GEDCOM_MEDIA_PATH'));
 	$WT_TREE->setPreference('INDI_FACTS_ADD',               str_replace(' ', '', WT_Filter::post('NEW_INDI_FACTS_ADD')));
 	$WT_TREE->setPreference('INDI_FACTS_QUICK',             str_replace(' ', '', WT_Filter::post('NEW_INDI_FACTS_QUICK')));
 	$WT_TREE->setPreference('INDI_FACTS_UNIQUE',            str_replace(' ', '', WT_Filter::post('NEW_INDI_FACTS_UNIQUE')));
