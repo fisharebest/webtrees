@@ -61,7 +61,7 @@ $row=WT_DB::prepare(
 )->execute(array($gedcom_id))->fetchOneRow();
 
 if ($row->import_offset==$row->import_total) {
-	set_gedcom_setting($gedcom_id, 'imported', true);
+	WT_Tree::get($gedcom_id)->setPreference('imported', true);
 	// Finished?  Show the maintenance links, similar to admin_trees_manage.php
 	WT_DB::exec("COMMIT");
 	$controller->addInlineJavascript(
@@ -95,7 +95,7 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 		$keep_media=WT_Filter::getBool('keep_media'.$gedcom_id);
 		// Delete any existing genealogical data
 		empty_database($gedcom_id, $keep_media);
-		set_gedcom_setting($gedcom_id, 'imported', false);
+		WT_Tree::get($gedcom_id)->setPreference('imported', false);
 		// Remove any byte-order-mark
 		WT_DB::prepare(
 			"UPDATE `##gedcom_chunk`".

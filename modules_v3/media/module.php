@@ -51,7 +51,7 @@ class media_WT_Module extends WT_Module implements WT_Module_Tab {
 
 	// Implement WT_Module_Tab
 	public function getTabContent() {
-		global $controller;
+		global $WT_TREE, $controller;
 
 		ob_start();
 		echo '<table class="facts_table">';
@@ -68,7 +68,7 @@ class media_WT_Module extends WT_Module implements WT_Module_Tab {
 			echo '<tr><td id="no_tab4" colspan="2" class="facts_value">', WT_I18N::translate('There are no media objects for this individual.'), '</td></tr>';
 		}
 		// New media link
-		if ($controller->record->canEdit() && get_gedcom_setting(WT_GED_ID, 'MEDIA_UPLOAD') >= WT_USER_ACCESS_LEVEL) {
+		if ($controller->record->canEdit() && $WT_TREE->getPreference('MEDIA_UPLOAD') >= WT_USER_ACCESS_LEVEL) {
 			?>
 			<tr>
 				<td class="facts_label">

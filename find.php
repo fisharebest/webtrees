@@ -93,13 +93,11 @@ case "source":
 case "specialchar":
 	$controller->setPageTitle(WT_I18N::translate('Find a special character'));
 	$language_filter = WT_Filter::get('language_filter');
-	if (Auth::id()) {
-		// Users will probably always want the same language, so remember their setting
-		if (!$language_filter) {
-			$language_filter = Auth::user()->getSetting('default_language_filter');
-		} else {
-			Auth::user()->setSetting('default_language_filter', $language_filter);
-		}
+	// Users will probably always want the same language, so remember their setting
+	if (!$language_filter) {
+		$language_filter = Auth::user()->getPreference('default_language_filter');
+	} else {
+		Auth::user()->setPreference('default_language_filter', $language_filter);
 	}
 	require WT_ROOT.'includes/specialchars.php';
 	$action="filter";

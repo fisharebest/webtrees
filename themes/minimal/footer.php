@@ -33,7 +33,7 @@ if ($view!='simple') {
 	echo '<p class="logo">';
 	echo '<a href="', WT_WEBTREES_URL, '" target="_blank" title="', WT_WEBTREES, ' ', WT_VERSION, '">webtrees</a>';
 	echo '</p>';
-	if (WT_DEBUG || get_gedcom_setting(WT_GED_ID, 'SHOW_STATS')) {
+	if ($WT_TREE && $WT_TREE->getPreference('SHOW_STATS')) {
 		echo execution_stats();
 	}
 	echo '</div>'; // <div id="footer">

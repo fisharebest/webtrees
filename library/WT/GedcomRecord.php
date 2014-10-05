@@ -927,7 +927,7 @@ class WT_GedcomRecord {
 
 			$this->pending = $new_gedcom;
 
-			if (Auth::user()->getSetting('auto_accept')) {
+			if (Auth::user()->getPreference('auto_accept')) {
 				accept_all_changes($this->xref, $this->gedcom_id);
 				$this->gedcom  = $new_gedcom;
 				$this->pending = null;
@@ -970,7 +970,7 @@ class WT_GedcomRecord {
 		));
 
 		// Accept this pending change
-		if (Auth::user()->getSetting('auto_accept')) {
+		if (Auth::user()->getPreference('auto_accept')) {
 			accept_all_changes($xref, $gedcom_id);
 		}
 
@@ -1009,7 +1009,7 @@ class WT_GedcomRecord {
 		$this->pending = $gedcom;
 
 		// Accept this pending change
-		if (Auth::user()->getSetting('auto_accept')) {
+		if (Auth::user()->getPreference('auto_accept')) {
 			accept_all_changes($this->xref, $this->gedcom_id);
 			$this->gedcom  = $gedcom;
 			$this->pending = null;
@@ -1032,7 +1032,7 @@ class WT_GedcomRecord {
 		));
 
 		// Accept this pending change
-		if (Auth::user()->getSetting('auto_accept')) {
+		if (Auth::user()->getPreference('auto_accept')) {
 			accept_all_changes($this->xref, $this->gedcom_id);
 		}
 

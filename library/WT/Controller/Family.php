@@ -71,7 +71,9 @@ class WT_Controller_Family extends WT_Controller_GedcomRecord {
 	 * get edit menu
 	 */
 	function getEditMenu() {
-		$SHOW_GEDCOM_RECORD=get_gedcom_setting(WT_GED_ID, 'SHOW_GEDCOM_RECORD');
+		global $WT_TREE;
+
+		$SHOW_GEDCOM_RECORD = $WT_TREE->getPreference('SHOW_GEDCOM_RECORD');
 
 		if (!$this->record || $this->record->isOld()) {
 			return null;
@@ -146,7 +148,7 @@ class WT_Controller_Family extends WT_Controller_GedcomRecord {
 
 	// Print the facts
 	public function printFamilyFacts() {
-		global $linkToID;
+		global $linkToID, $WT_TREE;
 
 		$linkToID = $this->record->getXref(); // -- Tell addmedia.php what to link to
 
@@ -177,7 +179,7 @@ class WT_Controller_Family extends WT_Controller_GedcomRecord {
 			echo help_link('add_shared_note');
 			echo '</td></tr>';
 
-			if (get_gedcom_setting(WT_GED_ID, 'MEDIA_UPLOAD') >= WT_USER_ACCESS_LEVEL) {
+			if ($WT_TREE->getPreference('MEDIA_UPLOAD') >= WT_USER_ACCESS_LEVEL) {
 				echo '<tr><td class="descriptionbox">';
 				echo WT_Gedcom_Tag::getLabel('OBJE');
 				echo '</td><td class="optionbox">';

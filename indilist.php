@@ -48,18 +48,14 @@ if ($show_all_firstnames=='yes') {
 switch (WT_Filter::get('show_marnm', 'no|yes')) {
 case 'no':
 	$show_marnm = false;
-	if (Auth::id()) {
-		Auth::user()->setSetting(WT_SCRIPT_NAME.'_show_marnm', $show_marnm);
-	}
+	Auth::user()->setPreference(WT_SCRIPT_NAME.'_show_marnm', $show_marnm);
 	break;
 case 'yes':
 	$show_marnm = true;
-	if (Auth::id()) {
-		Auth::user()->setSetting(WT_SCRIPT_NAME.'_show_marnm', $show_marnm);
-	}
+	Auth::user()->setPreference(WT_SCRIPT_NAME.'_show_marnm', $show_marnm);
 	break;
 default:
-	$show_marnm = Auth::id() && Auth::user()->getSetting(WT_SCRIPT_NAME.'_show_marnm');
+	$show_marnm = Auth::user()->getPreference(WT_SCRIPT_NAME.'_show_marnm');
 }
 
 // Make sure selections are consistent.
@@ -217,7 +213,7 @@ if ($show=='indi' || $show=='surn') {
 			}
 		}
 		// Don't sublists short lists.
-		if ($count<get_gedcom_setting(WT_GED_ID, 'SUBLIST_TRIGGER_I')) {
+		if ($count < $WT_TREE->getPreference('SUBLIST_TRIGGER_I')) {
 			$falpha='';
 			$show_all_firstnames='no';
 		} else {

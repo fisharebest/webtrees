@@ -79,102 +79,101 @@ case 'update':
 	if (!WT_Filter::checkCsrf()) {
 		break;
 	}
-	set_gedcom_setting(WT_GED_ID, 'ADVANCED_NAME_FACTS',          WT_Filter::post('NEW_ADVANCED_NAME_FACTS'));
-	set_gedcom_setting(WT_GED_ID, 'ADVANCED_PLAC_FACTS',          WT_Filter::post('NEW_ADVANCED_PLAC_FACTS'));
-	set_gedcom_setting(WT_GED_ID, 'ALLOW_THEME_DROPDOWN',         WT_Filter::postBool('NEW_ALLOW_THEME_DROPDOWN'));
+	$WT_TREE->setPreference('ADVANCED_NAME_FACTS',          WT_Filter::post('NEW_ADVANCED_NAME_FACTS'));
+	$WT_TREE->setPreference('ADVANCED_PLAC_FACTS',          WT_Filter::post('NEW_ADVANCED_PLAC_FACTS'));
+	$WT_TREE->setPreference('ALLOW_THEME_DROPDOWN',         WT_Filter::postBool('NEW_ALLOW_THEME_DROPDOWN'));
 	// For backwards compatibility with webtrees 1.x we store the two calendar formats in one variable
 	// e.g. "gregorian_and_jewish"
-	set_gedcom_setting(WT_GED_ID, 'CALENDAR_FORMAT',              implode('_and_', array_unique(array(
+	$WT_TREE->setPreference('CALENDAR_FORMAT',              implode('_and_', array_unique(array(
 		WT_Filter::post('NEW_CALENDAR_FORMAT0', 'gregorian|julian|french|jewish|hijri|jalali', 'none'),
 		WT_Filter::post('NEW_CALENDAR_FORMAT1', 'gregorian|julian|french|jewish|hijri|jalali', 'none')
 	))));
-	set_gedcom_setting(WT_GED_ID, 'CHART_BOX_TAGS',               WT_Filter::post('NEW_CHART_BOX_TAGS'));
-	set_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_ADD',             str_replace(' ', '', WT_Filter::post('NEW_COMMON_NAMES_ADD')));
-	set_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_REMOVE',          str_replace(' ', '', WT_Filter::post('NEW_COMMON_NAMES_REMOVE')));
-	set_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_THRESHOLD',       WT_Filter::post('NEW_COMMON_NAMES_THRESHOLD', WT_REGEX_INTEGER, 40));
-	set_gedcom_setting(WT_GED_ID, 'CONTACT_USER_ID',              WT_Filter::post('NEW_CONTACT_USER_ID'));
-	set_gedcom_setting(WT_GED_ID, 'DEFAULT_PEDIGREE_GENERATIONS', WT_Filter::post('NEW_DEFAULT_PEDIGREE_GENERATIONS'));
-	set_gedcom_setting(WT_GED_ID, 'EXPAND_NOTES',                 WT_Filter::postBool('NEW_EXPAND_NOTES'));
-	set_gedcom_setting(WT_GED_ID, 'EXPAND_RELATIVES_EVENTS',      WT_Filter::postBool('NEW_EXPAND_RELATIVES_EVENTS'));
-	set_gedcom_setting(WT_GED_ID, 'EXPAND_SOURCES',               WT_Filter::postBool('NEW_EXPAND_SOURCES'));
-	set_gedcom_setting(WT_GED_ID, 'FAM_FACTS_ADD',                str_replace(' ', '', WT_Filter::post('NEW_FAM_FACTS_ADD')));
-	set_gedcom_setting(WT_GED_ID, 'FAM_FACTS_QUICK',              str_replace(' ', '', WT_Filter::post('NEW_FAM_FACTS_QUICK')));
-	set_gedcom_setting(WT_GED_ID, 'FAM_FACTS_UNIQUE',             str_replace(' ', '', WT_Filter::post('NEW_FAM_FACTS_UNIQUE')));
-	set_gedcom_setting(WT_GED_ID, 'FAM_ID_PREFIX',                WT_Filter::post('NEW_FAM_ID_PREFIX'));
-	set_gedcom_setting(WT_GED_ID, 'FULL_SOURCES',                 WT_Filter::postBool('NEW_FULL_SOURCES'));
-	set_gedcom_setting(WT_GED_ID, 'FORMAT_TEXT',                  WT_Filter::post('NEW_FORMAT_TEXT'));
-	set_gedcom_setting(WT_GED_ID, 'GEDCOM_ID_PREFIX',             WT_Filter::post('NEW_GEDCOM_ID_PREFIX'));
-	set_gedcom_setting(WT_GED_ID, 'GEDCOM_MEDIA_PATH',            WT_Filter::post('NEW_GEDCOM_MEDIA_PATH'));
-	set_gedcom_setting(WT_GED_ID, 'GENERATE_UIDS',                WT_Filter::postBool('NEW_GENERATE_UIDS'));
-	set_gedcom_setting(WT_GED_ID, 'GEONAMES_ACCOUNT',             WT_Filter::post('NEW_GEONAMES_ACCOUNT'));
-	set_gedcom_setting(WT_GED_ID, 'HIDE_GEDCOM_ERRORS',           WT_Filter::postBool('NEW_HIDE_GEDCOM_ERRORS'));
-	set_gedcom_setting(WT_GED_ID, 'HIDE_LIVE_PEOPLE',             WT_Filter::postBool('NEW_HIDE_LIVE_PEOPLE'));
-	set_gedcom_setting(WT_GED_ID, 'GEDCOM_MEDIA_PATH',            WT_Filter::post('GEDCOM_MEDIA_PATH'));
-	set_gedcom_setting(WT_GED_ID, 'INDI_FACTS_ADD',               str_replace(' ', '', WT_Filter::post('NEW_INDI_FACTS_ADD')));
-	set_gedcom_setting(WT_GED_ID, 'INDI_FACTS_QUICK',             str_replace(' ', '', WT_Filter::post('NEW_INDI_FACTS_QUICK')));
-	set_gedcom_setting(WT_GED_ID, 'INDI_FACTS_UNIQUE',            str_replace(' ', '', WT_Filter::post('NEW_INDI_FACTS_UNIQUE')));
-	set_gedcom_setting(WT_GED_ID, 'KEEP_ALIVE_YEARS_BIRTH',       WT_Filter::post('KEEP_ALIVE_YEARS_BIRTH', WT_REGEX_INTEGER, 0));
-	set_gedcom_setting(WT_GED_ID, 'KEEP_ALIVE_YEARS_DEATH',       WT_Filter::post('KEEP_ALIVE_YEARS_DEATH', WT_REGEX_INTEGER, 0));
-	set_gedcom_setting(WT_GED_ID, 'LANGUAGE',                     WT_Filter::post('GEDCOMLANG'));
-	set_gedcom_setting(WT_GED_ID, 'MAX_ALIVE_AGE',                WT_Filter::post('MAX_ALIVE_AGE', WT_REGEX_INTEGER, 100));
-	set_gedcom_setting(WT_GED_ID, 'MAX_DESCENDANCY_GENERATIONS',  WT_Filter::post('NEW_MAX_DESCENDANCY_GENERATIONS'));
-	set_gedcom_setting(WT_GED_ID, 'MAX_PEDIGREE_GENERATIONS',     WT_Filter::post('NEW_MAX_PEDIGREE_GENERATIONS'));
-	set_gedcom_setting(WT_GED_ID, 'MEDIA_ID_PREFIX',              WT_Filter::post('NEW_MEDIA_ID_PREFIX'));
-	set_gedcom_setting(WT_GED_ID, 'MEDIA_UPLOAD',                 WT_Filter::post('NEW_MEDIA_UPLOAD'));
-	set_gedcom_setting(WT_GED_ID, 'META_DESCRIPTION',             WT_Filter::post('NEW_META_DESCRIPTION'));
-	set_gedcom_setting(WT_GED_ID, 'META_TITLE',                   WT_Filter::post('NEW_META_TITLE'));
-	set_gedcom_setting(WT_GED_ID, 'NOTE_ID_PREFIX',               WT_Filter::post('NEW_NOTE_ID_PREFIX'));
-	set_gedcom_setting(WT_GED_ID, 'NO_UPDATE_CHAN',               WT_Filter::postBool('NEW_NO_UPDATE_CHAN'));
-	set_gedcom_setting(WT_GED_ID, 'PEDIGREE_FULL_DETAILS',        WT_Filter::postBool('NEW_PEDIGREE_FULL_DETAILS'));
-	set_gedcom_setting(WT_GED_ID, 'PEDIGREE_LAYOUT',              WT_Filter::postBool('NEW_PEDIGREE_LAYOUT'));
-	set_gedcom_setting(WT_GED_ID, 'PEDIGREE_ROOT_ID',             WT_Filter::post('NEW_PEDIGREE_ROOT_ID', WT_REGEX_XREF));
-	set_gedcom_setting(WT_GED_ID, 'PEDIGREE_SHOW_GENDER',         WT_Filter::postBool('NEW_PEDIGREE_SHOW_GENDER'));
-	set_gedcom_setting(WT_GED_ID, 'PREFER_LEVEL2_SOURCES',        WT_Filter::post('NEW_PREFER_LEVEL2_SOURCES'));
-	set_gedcom_setting(WT_GED_ID, 'QUICK_REQUIRED_FACTS',         WT_Filter::post('NEW_QUICK_REQUIRED_FACTS'));
-	set_gedcom_setting(WT_GED_ID, 'QUICK_REQUIRED_FAMFACTS',      WT_Filter::post('NEW_QUICK_REQUIRED_FAMFACTS'));
-	set_gedcom_setting(WT_GED_ID, 'REPO_FACTS_ADD',               str_replace(' ', '', WT_Filter::post('NEW_REPO_FACTS_ADD')));
-	set_gedcom_setting(WT_GED_ID, 'REPO_FACTS_QUICK',             str_replace(' ', '', WT_Filter::post('NEW_REPO_FACTS_QUICK')));
-	set_gedcom_setting(WT_GED_ID, 'REPO_FACTS_UNIQUE',            str_replace(' ', '', WT_Filter::post('NEW_REPO_FACTS_UNIQUE')));
-	set_gedcom_setting(WT_GED_ID, 'REPO_ID_PREFIX',               WT_Filter::post('NEW_REPO_ID_PREFIX'));
-	set_gedcom_setting(WT_GED_ID, 'REQUIRE_AUTHENTICATION',       WT_Filter::postBool('NEW_REQUIRE_AUTHENTICATION'));
-	set_gedcom_setting(WT_GED_ID, 'SAVE_WATERMARK_IMAGE',         WT_Filter::postBool('NEW_SAVE_WATERMARK_IMAGE'));
-	set_gedcom_setting(WT_GED_ID, 'SAVE_WATERMARK_THUMB',         WT_Filter::postBool('NEW_SAVE_WATERMARK_THUMB'));
-	set_gedcom_setting(WT_GED_ID, 'SHOW_AGE_DIFF',                WT_Filter::postBool('NEW_SHOW_AGE_DIFF'));
-	set_gedcom_setting(WT_GED_ID, 'SHOW_COUNTER',                 WT_Filter::postBool('NEW_SHOW_COUNTER'));
-	set_gedcom_setting(WT_GED_ID, 'SHOW_DEAD_PEOPLE',             WT_Filter::post('SHOW_DEAD_PEOPLE'));
-	set_gedcom_setting(WT_GED_ID, 'SHOW_EST_LIST_DATES',          WT_Filter::postBool('NEW_SHOW_EST_LIST_DATES'));
-	set_gedcom_setting(WT_GED_ID, 'SHOW_FACT_ICONS',              WT_Filter::postBool('NEW_SHOW_FACT_ICONS'));
-	set_gedcom_setting(WT_GED_ID, 'SHOW_GEDCOM_RECORD',           WT_Filter::postBool('NEW_SHOW_GEDCOM_RECORD'));
-	set_gedcom_setting(WT_GED_ID, 'SHOW_HIGHLIGHT_IMAGES',        WT_Filter::postBool('NEW_SHOW_HIGHLIGHT_IMAGES'));
-	set_gedcom_setting(WT_GED_ID, 'SHOW_LAST_CHANGE',             WT_Filter::postBool('NEW_SHOW_LAST_CHANGE'));
-	set_gedcom_setting(WT_GED_ID, 'SHOW_LDS_AT_GLANCE',           WT_Filter::postBool('NEW_SHOW_LDS_AT_GLANCE'));
-	set_gedcom_setting(WT_GED_ID, 'SHOW_LEVEL2_NOTES',            WT_Filter::postBool('NEW_SHOW_LEVEL2_NOTES'));
-	set_gedcom_setting(WT_GED_ID, 'SHOW_LIVING_NAMES',            WT_Filter::post('SHOW_LIVING_NAMES'));
-	set_gedcom_setting(WT_GED_ID, 'SHOW_MEDIA_DOWNLOAD',          WT_Filter::postBool('NEW_SHOW_MEDIA_DOWNLOAD'));
-	set_gedcom_setting(WT_GED_ID, 'SHOW_NO_WATERMARK',            WT_Filter::post('NEW_SHOW_NO_WATERMARK'));
-	set_gedcom_setting(WT_GED_ID, 'SHOW_PARENTS_AGE',             WT_Filter::postBool('NEW_SHOW_PARENTS_AGE'));
-	set_gedcom_setting(WT_GED_ID, 'SHOW_PEDIGREE_PLACES',         WT_Filter::post('NEW_SHOW_PEDIGREE_PLACES'));
-	set_gedcom_setting(WT_GED_ID, 'SHOW_PEDIGREE_PLACES_SUFFIX',  WT_Filter::postBool('NEW_SHOW_PEDIGREE_PLACES_SUFFIX'));
-	set_gedcom_setting(WT_GED_ID, 'SHOW_PRIVATE_RELATIONSHIPS',   WT_Filter::post('SHOW_PRIVATE_RELATIONSHIPS'));
-	set_gedcom_setting(WT_GED_ID, 'SHOW_RELATIVES_EVENTS',        WT_Filter::post('NEW_SHOW_RELATIVES_EVENTS'));
-	set_gedcom_setting(WT_GED_ID, 'SHOW_STATS',                   WT_Filter::postBool('NEW_SHOW_STATS'));
-	set_gedcom_setting(WT_GED_ID, 'SOURCE_ID_PREFIX',             WT_Filter::post('NEW_SOURCE_ID_PREFIX'));
-	set_gedcom_setting(WT_GED_ID, 'SOUR_FACTS_ADD',               str_replace(' ', '', WT_Filter::post('NEW_SOUR_FACTS_ADD')));
-	set_gedcom_setting(WT_GED_ID, 'SOUR_FACTS_QUICK',             str_replace(' ', '', WT_Filter::post('NEW_SOUR_FACTS_QUICK')));
-	set_gedcom_setting(WT_GED_ID, 'SOUR_FACTS_UNIQUE',            str_replace(' ', '', WT_Filter::post('NEW_SOUR_FACTS_UNIQUE')));
-	set_gedcom_setting(WT_GED_ID, 'SUBLIST_TRIGGER_I',            WT_Filter::post('NEW_SUBLIST_TRIGGER_I', WT_REGEX_INTEGER, 200));
-	set_gedcom_setting(WT_GED_ID, 'SURNAME_LIST_STYLE',           WT_Filter::post('NEW_SURNAME_LIST_STYLE'));
-	set_gedcom_setting(WT_GED_ID, 'SURNAME_TRADITION',            WT_Filter::post('NEW_SURNAME_TRADITION'));
-	set_gedcom_setting(WT_GED_ID, 'THEME_DIR',                    WT_Filter::post('NEW_THEME_DIR'));
-	set_gedcom_setting(WT_GED_ID, 'THUMBNAIL_WIDTH',              WT_Filter::post('NEW_THUMBNAIL_WIDTH'));
-	set_gedcom_setting(WT_GED_ID, 'USE_RIN',                      WT_Filter::postBool('NEW_USE_RIN'));
-	set_gedcom_setting(WT_GED_ID, 'USE_SILHOUETTE',               WT_Filter::postBool('NEW_USE_SILHOUETTE'));
-	set_gedcom_setting(WT_GED_ID, 'WATERMARK_THUMB',              WT_Filter::postBool('NEW_WATERMARK_THUMB'));
-	set_gedcom_setting(WT_GED_ID, 'WEBMASTER_USER_ID',            WT_Filter::post('NEW_WEBMASTER_USER_ID'));
-	set_gedcom_setting(WT_GED_ID, 'WEBTREES_EMAIL',               WT_Filter::post('NEW_WEBTREES_EMAIL'));
-	set_gedcom_setting(WT_GED_ID, 'WORD_WRAPPED_NOTES',           WT_Filter::postBool('NEW_WORD_WRAPPED_NOTES'));
+	$WT_TREE->setPreference('CHART_BOX_TAGS',               WT_Filter::post('NEW_CHART_BOX_TAGS'));
+	$WT_TREE->setPreference('COMMON_NAMES_ADD',             str_replace(' ', '', WT_Filter::post('NEW_COMMON_NAMES_ADD')));
+	$WT_TREE->setPreference('COMMON_NAMES_REMOVE',          str_replace(' ', '', WT_Filter::post('NEW_COMMON_NAMES_REMOVE')));
+	$WT_TREE->setPreference('COMMON_NAMES_THRESHOLD',       WT_Filter::post('NEW_COMMON_NAMES_THRESHOLD', WT_REGEX_INTEGER, 40));
+	$WT_TREE->setPreference('CONTACT_USER_ID',              WT_Filter::post('NEW_CONTACT_USER_ID'));
+	$WT_TREE->setPreference('DEFAULT_PEDIGREE_GENERATIONS', WT_Filter::post('NEW_DEFAULT_PEDIGREE_GENERATIONS'));
+	$WT_TREE->setPreference('EXPAND_NOTES',                 WT_Filter::postBool('NEW_EXPAND_NOTES'));
+	$WT_TREE->setPreference('EXPAND_RELATIVES_EVENTS',      WT_Filter::postBool('NEW_EXPAND_RELATIVES_EVENTS'));
+	$WT_TREE->setPreference('EXPAND_SOURCES',               WT_Filter::postBool('NEW_EXPAND_SOURCES'));
+	$WT_TREE->setPreference('FAM_FACTS_ADD',                str_replace(' ', '', WT_Filter::post('NEW_FAM_FACTS_ADD')));
+	$WT_TREE->setPreference('FAM_FACTS_QUICK',              str_replace(' ', '', WT_Filter::post('NEW_FAM_FACTS_QUICK')));
+	$WT_TREE->setPreference('FAM_FACTS_UNIQUE',             str_replace(' ', '', WT_Filter::post('NEW_FAM_FACTS_UNIQUE')));
+	$WT_TREE->setPreference('FAM_ID_PREFIX',                WT_Filter::post('NEW_FAM_ID_PREFIX'));
+	$WT_TREE->setPreference('FULL_SOURCES',                 WT_Filter::postBool('NEW_FULL_SOURCES'));
+	$WT_TREE->setPreference('FORMAT_TEXT',                  WT_Filter::post('NEW_FORMAT_TEXT'));
+	$WT_TREE->setPreference('GEDCOM_ID_PREFIX',             WT_Filter::post('NEW_GEDCOM_ID_PREFIX'));
+	$WT_TREE->setPreference('GEDCOM_MEDIA_PATH',            WT_Filter::post('NEW_GEDCOM_MEDIA_PATH'));
+	$WT_TREE->setPreference('GENERATE_UIDS',                WT_Filter::postBool('NEW_GENERATE_UIDS'));
+	$WT_TREE->setPreference('GEONAMES_ACCOUNT',             WT_Filter::post('NEW_GEONAMES_ACCOUNT'));
+	$WT_TREE->setPreference('HIDE_GEDCOM_ERRORS',           WT_Filter::postBool('NEW_HIDE_GEDCOM_ERRORS'));
+	$WT_TREE->setPreference('HIDE_LIVE_PEOPLE',             WT_Filter::postBool('NEW_HIDE_LIVE_PEOPLE'));
+	$WT_TREE->setPreference('INDI_FACTS_ADD',               str_replace(' ', '', WT_Filter::post('NEW_INDI_FACTS_ADD')));
+	$WT_TREE->setPreference('INDI_FACTS_QUICK',             str_replace(' ', '', WT_Filter::post('NEW_INDI_FACTS_QUICK')));
+	$WT_TREE->setPreference('INDI_FACTS_UNIQUE',            str_replace(' ', '', WT_Filter::post('NEW_INDI_FACTS_UNIQUE')));
+	$WT_TREE->setPreference('KEEP_ALIVE_YEARS_BIRTH',       WT_Filter::post('KEEP_ALIVE_YEARS_BIRTH', WT_REGEX_INTEGER, 0));
+	$WT_TREE->setPreference('KEEP_ALIVE_YEARS_DEATH',       WT_Filter::post('KEEP_ALIVE_YEARS_DEATH', WT_REGEX_INTEGER, 0));
+	$WT_TREE->setPreference('LANGUAGE',                     WT_Filter::post('GEDCOMLANG'));
+	$WT_TREE->setPreference('MAX_ALIVE_AGE',                WT_Filter::post('MAX_ALIVE_AGE', WT_REGEX_INTEGER, 100));
+	$WT_TREE->setPreference('MAX_DESCENDANCY_GENERATIONS',  WT_Filter::post('NEW_MAX_DESCENDANCY_GENERATIONS'));
+	$WT_TREE->setPreference('MAX_PEDIGREE_GENERATIONS',     WT_Filter::post('NEW_MAX_PEDIGREE_GENERATIONS'));
+	$WT_TREE->setPreference('MEDIA_ID_PREFIX',              WT_Filter::post('NEW_MEDIA_ID_PREFIX'));
+	$WT_TREE->setPreference('MEDIA_UPLOAD',                 WT_Filter::post('NEW_MEDIA_UPLOAD'));
+	$WT_TREE->setPreference('META_DESCRIPTION',             WT_Filter::post('NEW_META_DESCRIPTION'));
+	$WT_TREE->setPreference('META_TITLE',                   WT_Filter::post('NEW_META_TITLE'));
+	$WT_TREE->setPreference('NOTE_ID_PREFIX',               WT_Filter::post('NEW_NOTE_ID_PREFIX'));
+	$WT_TREE->setPreference('NO_UPDATE_CHAN',               WT_Filter::postBool('NEW_NO_UPDATE_CHAN'));
+	$WT_TREE->setPreference('PEDIGREE_FULL_DETAILS',        WT_Filter::postBool('NEW_PEDIGREE_FULL_DETAILS'));
+	$WT_TREE->setPreference('PEDIGREE_LAYOUT',              WT_Filter::postBool('NEW_PEDIGREE_LAYOUT'));
+	$WT_TREE->setPreference('PEDIGREE_ROOT_ID',             WT_Filter::post('NEW_PEDIGREE_ROOT_ID', WT_REGEX_XREF));
+	$WT_TREE->setPreference('PEDIGREE_SHOW_GENDER',         WT_Filter::postBool('NEW_PEDIGREE_SHOW_GENDER'));
+	$WT_TREE->setPreference('PREFER_LEVEL2_SOURCES',        WT_Filter::post('NEW_PREFER_LEVEL2_SOURCES'));
+	$WT_TREE->setPreference('QUICK_REQUIRED_FACTS',         WT_Filter::post('NEW_QUICK_REQUIRED_FACTS'));
+	$WT_TREE->setPreference('QUICK_REQUIRED_FAMFACTS',      WT_Filter::post('NEW_QUICK_REQUIRED_FAMFACTS'));
+	$WT_TREE->setPreference('REPO_FACTS_ADD',               str_replace(' ', '', WT_Filter::post('NEW_REPO_FACTS_ADD')));
+	$WT_TREE->setPreference('REPO_FACTS_QUICK',             str_replace(' ', '', WT_Filter::post('NEW_REPO_FACTS_QUICK')));
+	$WT_TREE->setPreference('REPO_FACTS_UNIQUE',            str_replace(' ', '', WT_Filter::post('NEW_REPO_FACTS_UNIQUE')));
+	$WT_TREE->setPreference('REPO_ID_PREFIX',               WT_Filter::post('NEW_REPO_ID_PREFIX'));
+	$WT_TREE->setPreference('REQUIRE_AUTHENTICATION',       WT_Filter::postBool('NEW_REQUIRE_AUTHENTICATION'));
+	$WT_TREE->setPreference('SAVE_WATERMARK_IMAGE',         WT_Filter::postBool('NEW_SAVE_WATERMARK_IMAGE'));
+	$WT_TREE->setPreference('SAVE_WATERMARK_THUMB',         WT_Filter::postBool('NEW_SAVE_WATERMARK_THUMB'));
+	$WT_TREE->setPreference('SHOW_AGE_DIFF',                WT_Filter::postBool('NEW_SHOW_AGE_DIFF'));
+	$WT_TREE->setPreference('SHOW_COUNTER',                 WT_Filter::postBool('NEW_SHOW_COUNTER'));
+	$WT_TREE->setPreference('SHOW_DEAD_PEOPLE',             WT_Filter::post('SHOW_DEAD_PEOPLE'));
+	$WT_TREE->setPreference('SHOW_EST_LIST_DATES',          WT_Filter::postBool('NEW_SHOW_EST_LIST_DATES'));
+	$WT_TREE->setPreference('SHOW_FACT_ICONS',              WT_Filter::postBool('NEW_SHOW_FACT_ICONS'));
+	$WT_TREE->setPreference('SHOW_GEDCOM_RECORD',           WT_Filter::postBool('NEW_SHOW_GEDCOM_RECORD'));
+	$WT_TREE->setPreference('SHOW_HIGHLIGHT_IMAGES',        WT_Filter::postBool('NEW_SHOW_HIGHLIGHT_IMAGES'));
+	$WT_TREE->setPreference('SHOW_LAST_CHANGE',             WT_Filter::postBool('NEW_SHOW_LAST_CHANGE'));
+	$WT_TREE->setPreference('SHOW_LDS_AT_GLANCE',           WT_Filter::postBool('NEW_SHOW_LDS_AT_GLANCE'));
+	$WT_TREE->setPreference('SHOW_LEVEL2_NOTES',            WT_Filter::postBool('NEW_SHOW_LEVEL2_NOTES'));
+	$WT_TREE->setPreference('SHOW_LIVING_NAMES',            WT_Filter::post('SHOW_LIVING_NAMES'));
+	$WT_TREE->setPreference('SHOW_MEDIA_DOWNLOAD',          WT_Filter::postBool('NEW_SHOW_MEDIA_DOWNLOAD'));
+	$WT_TREE->setPreference('SHOW_NO_WATERMARK',            WT_Filter::post('NEW_SHOW_NO_WATERMARK'));
+	$WT_TREE->setPreference('SHOW_PARENTS_AGE',             WT_Filter::postBool('NEW_SHOW_PARENTS_AGE'));
+	$WT_TREE->setPreference('SHOW_PEDIGREE_PLACES',         WT_Filter::post('NEW_SHOW_PEDIGREE_PLACES'));
+	$WT_TREE->setPreference('SHOW_PEDIGREE_PLACES_SUFFIX',  WT_Filter::postBool('NEW_SHOW_PEDIGREE_PLACES_SUFFIX'));
+	$WT_TREE->setPreference('SHOW_PRIVATE_RELATIONSHIPS',   WT_Filter::post('SHOW_PRIVATE_RELATIONSHIPS'));
+	$WT_TREE->setPreference('SHOW_RELATIVES_EVENTS',        WT_Filter::post('NEW_SHOW_RELATIVES_EVENTS'));
+	$WT_TREE->setPreference('SHOW_STATS',                   WT_Filter::postBool('NEW_SHOW_STATS'));
+	$WT_TREE->setPreference('SOURCE_ID_PREFIX',             WT_Filter::post('NEW_SOURCE_ID_PREFIX'));
+	$WT_TREE->setPreference('SOUR_FACTS_ADD',               str_replace(' ', '', WT_Filter::post('NEW_SOUR_FACTS_ADD')));
+	$WT_TREE->setPreference('SOUR_FACTS_QUICK',             str_replace(' ', '', WT_Filter::post('NEW_SOUR_FACTS_QUICK')));
+	$WT_TREE->setPreference('SOUR_FACTS_UNIQUE',            str_replace(' ', '', WT_Filter::post('NEW_SOUR_FACTS_UNIQUE')));
+	$WT_TREE->setPreference('SUBLIST_TRIGGER_I',            WT_Filter::post('NEW_SUBLIST_TRIGGER_I', WT_REGEX_INTEGER, 200));
+	$WT_TREE->setPreference('SURNAME_LIST_STYLE',           WT_Filter::post('NEW_SURNAME_LIST_STYLE'));
+	$WT_TREE->setPreference('SURNAME_TRADITION',            WT_Filter::post('NEW_SURNAME_TRADITION'));
+	$WT_TREE->setPreference('THEME_DIR',                    WT_Filter::post('NEW_THEME_DIR'));
+	$WT_TREE->setPreference('THUMBNAIL_WIDTH',              WT_Filter::post('NEW_THUMBNAIL_WIDTH'));
+	$WT_TREE->setPreference('USE_RIN',                      WT_Filter::postBool('NEW_USE_RIN'));
+	$WT_TREE->setPreference('USE_SILHOUETTE',               WT_Filter::postBool('NEW_USE_SILHOUETTE'));
+	$WT_TREE->setPreference('WATERMARK_THUMB',              WT_Filter::postBool('NEW_WATERMARK_THUMB'));
+	$WT_TREE->setPreference('WEBMASTER_USER_ID',            WT_Filter::post('NEW_WEBMASTER_USER_ID'));
+	$WT_TREE->setPreference('WEBTREES_EMAIL',               WT_Filter::post('NEW_WEBTREES_EMAIL'));
+	$WT_TREE->setPreference('WORD_WRAPPED_NOTES',           WT_Filter::postBool('NEW_WORD_WRAPPED_NOTES'));
 	if (WT_Filter::post('gedcom_title')) {
-		set_gedcom_setting(WT_GED_ID, 'title',                        WT_Filter::post('gedcom_title'));
+		$WT_TREE->setPreference('title',                        WT_Filter::post('gedcom_title'));
 	}
 	// Only accept valid folders for NEW_MEDIA_DIRECTORY
 	$NEW_MEDIA_DIRECTORY = preg_replace('/[\/\\\\]+/', '/', WT_Filter::post('NEW_MEDIA_DIRECTORY') . '/');
@@ -184,9 +183,9 @@ case 'update':
 
 	if ($NEW_MEDIA_DIRECTORY) {
 		if (is_dir(WT_DATA_DIR . $NEW_MEDIA_DIRECTORY)) {
-			set_gedcom_setting(WT_GED_ID, 'MEDIA_DIRECTORY', $NEW_MEDIA_DIRECTORY);
-		} elseif (@mkdir(WT_DATA_DIR . $NEW_MEDIA_DIRECTORY, 0755, true)) {
-			set_gedcom_setting(WT_GED_ID, 'MEDIA_DIRECTORY', $NEW_MEDIA_DIRECTORY);
+			$WT_TREE->setPreference('MEDIA_DIRECTORY', $NEW_MEDIA_DIRECTORY);
+		} elseif (WT_File::mkdir(WT_DATA_DIR . $NEW_MEDIA_DIRECTORY)) {
+			$WT_TREE->setPreference('MEDIA_DIRECTORY', $NEW_MEDIA_DIRECTORY);
 			WT_FlashMessages::addMessage(WT_I18N::translate('The folder %s was created.', WT_DATA_DIR . $NEW_MEDIA_DIRECTORY));
 		} else {
 			WT_FlashMessages::addMessage(WT_I18N::translate('The folder %s does not exist, and it could not be created.', WT_DATA_DIR . $NEW_MEDIA_DIRECTORY));
@@ -240,7 +239,7 @@ $controller
 						<?php echo WT_I18N::translate('Family tree title'); ?>
 					</td>
 					<td>
-						<input type="text" name="gedcom_title" dir="ltr" value="<?php echo WT_Filter::escapeHtml(get_gedcom_setting(WT_GED_ID, 'title')); ?>" size="50" maxlength="255">
+						<input type="text" name="gedcom_title" dir="ltr" value="<?php echo WT_Filter::escapeHtml($WT_TREE->getPreference('title')); ?>" size="50" maxlength="255">
 					</td>
 				</tr>
 				<tr>
@@ -260,10 +259,10 @@ $controller
 						<?php echo WT_I18N::translate('Default individual'), help_link('default_individual'); ?>
 					</td>
 					<td class="wrap">
-						<input data-autocomplete-type="INDI" type="text" name="NEW_PEDIGREE_ROOT_ID" id="NEW_PEDIGREE_ROOT_ID" value="<?php echo get_gedcom_setting(WT_GED_ID, 'PEDIGREE_ROOT_ID'); ?>" size="5" maxlength="20">
+						<input data-autocomplete-type="INDI" type="text" name="NEW_PEDIGREE_ROOT_ID" id="NEW_PEDIGREE_ROOT_ID" value="<?php echo $WT_TREE->getPreference('PEDIGREE_ROOT_ID'); ?>" size="5" maxlength="20">
 						<?php
 							echo print_findindi_link('NEW_PEDIGREE_ROOT_ID');
-							$person=WT_Individual::getInstance(get_gedcom_setting(WT_GED_ID, 'PEDIGREE_ROOT_ID'));
+							$person=WT_Individual::getInstance($WT_TREE->getPreference('PEDIGREE_ROOT_ID'));
 							if ($person) {
 								echo ' <span class="list_item">', $person->getFullName(), ' ', $person->format_first_major_fact(WT_EVENTS_BIRT, 1), '</span>';
 							} else {
@@ -326,7 +325,7 @@ $controller
 						<?php echo WT_I18N::translate('Use RIN number instead of GEDCOM ID'), help_link('USE_RIN'); ?>
 					</td>
 					<td>
-						<?php echo edit_field_yes_no('NEW_USE_RIN', get_gedcom_setting(WT_GED_ID, 'USE_RIN')); ?>
+						<?php echo edit_field_yes_no('NEW_USE_RIN', $WT_TREE->getPreference('USE_RIN')); ?>
 					</td>
 				</tr>
 				<tr>
@@ -334,7 +333,7 @@ $controller
 						<?php echo WT_I18N::translate('Automatically create globally unique IDs'), help_link('GENERATE_GUID'); ?>
 					</td>
 					<td>
-						<?php echo edit_field_yes_no('NEW_GENERATE_UIDS', get_gedcom_setting(WT_GED_ID, 'GENERATE_UIDS')); ?>
+						<?php echo edit_field_yes_no('NEW_GENERATE_UIDS', $WT_TREE->getPreference('GENERATE_UIDS')); ?>
 					</td>
 				</tr>
 				<tr>
@@ -342,7 +341,7 @@ $controller
 						<?php echo WT_I18N::translate('Add spaces where notes were wrapped'), help_link('WORD_WRAPPED_NOTES'); ?>
 					</td>
 					<td>
-						<?php echo edit_field_yes_no('NEW_WORD_WRAPPED_NOTES', get_gedcom_setting(WT_GED_ID, 'WORD_WRAPPED_NOTES')); ?>
+						<?php echo edit_field_yes_no('NEW_WORD_WRAPPED_NOTES', $WT_TREE->getPreference('WORD_WRAPPED_NOTES')); ?>
 					</td>
 				</tr>
 			</table>
@@ -403,9 +402,9 @@ $controller
 					</td>
 					<td><select name="NEW_CONTACT_USER_ID">
 					<?php
-						$CONTACT_USER_ID = get_gedcom_setting(WT_GED_ID, 'CONTACT_USER_ID');
+						$CONTACT_USER_ID = $WT_TREE->getPreference('CONTACT_USER_ID');
 						foreach (User::all() as $user) {
-							if ($user->getSetting('verified_by_admin')) {
+							if ($user->getPreference('verified_by_admin')) {
 								echo "<option value=\"" . $user->getUserId() . "\"";
 								if ($CONTACT_USER_ID == $user->getUserId()) {
 									echo " selected=\"selected\"";
@@ -423,7 +422,7 @@ $controller
 					</td>
 					<td><select name="NEW_WEBMASTER_USER_ID">
 					<?php
-						$WEBMASTER_USER_ID = get_gedcom_setting(WT_GED_ID, 'WEBMASTER_USER_ID');
+						$WEBMASTER_USER_ID = $WT_TREE->getPreference('WEBMASTER_USER_ID');
 						foreach (User::allAdmins() as $user) {
 							echo '<option value="' . $user->getUserId() . '"';
 							if ($WEBMASTER_USER_ID == $user->getUserId()) {
@@ -445,7 +444,7 @@ $controller
 						<?php echo WT_I18N::translate('Add to TITLE header tag'), help_link('META_TITLE'); ?>
 					</td>
 					<td>
-						<input type="text" dir="ltr" name="NEW_META_TITLE" value="<?php echo WT_Filter::escapeHtml(get_gedcom_setting(WT_GED_ID, 'META_TITLE')); ?>" size="40" maxlength="255">
+						<input type="text" dir="ltr" name="NEW_META_TITLE" value="<?php echo WT_Filter::escapeHtml($WT_TREE->getPreference('META_TITLE')); ?>" size="40" maxlength="255">
 					</td>
 				</tr>
 				<tr>
@@ -453,7 +452,7 @@ $controller
 						<?php echo WT_I18N::translate('Description META tag'), help_link('META_DESCRIPTION'); ?>
 					</td>
 					<td>
-						<input type="text" dir="ltr" name="NEW_META_DESCRIPTION" value="<?php echo get_gedcom_setting(WT_GED_ID, 'META_DESCRIPTION'); ?>" size="40" maxlength="255">
+						<input type="text" dir="ltr" name="NEW_META_DESCRIPTION" value="<?php echo $WT_TREE->getPreference('META_DESCRIPTION'); ?>" size="40" maxlength="255">
 						<br>
 						<?php echo WT_I18N::translate('Leave this field empty to use the name of the family tree.'); ?>
 					</td>
@@ -468,7 +467,7 @@ $controller
 						<?php echo WT_I18N::translate('Theme dropdown selector for theme changes'), help_link('ALLOW_THEME_DROPDOWN'); ?>
 					</td>
 					<td>
-						<?php echo radio_buttons('NEW_ALLOW_THEME_DROPDOWN', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), get_gedcom_setting(WT_GED_ID, 'ALLOW_THEME_DROPDOWN')); ?>
+						<?php echo radio_buttons('NEW_ALLOW_THEME_DROPDOWN', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $WT_TREE->getPreference('ALLOW_THEME_DROPDOWN')); ?>
 					</td>
 				</tr>
 				<tr>
@@ -479,7 +478,7 @@ $controller
 						<select name="NEW_THEME_DIR">
 							<?php
 								echo '<option value="">', WT_Filter::escapeHtml(WT_I18N::translate('<default theme>')), '</option>';
-								$current_themedir=get_gedcom_setting(WT_GED_ID, 'THEME_DIR');
+								$current_themedir=$WT_TREE->getPreference('THEME_DIR');
 								foreach (get_theme_names() as $themename=>$themedir) {
 									echo '<option value="', $themedir, '"';
 									if ($themedir==$current_themedir) {
@@ -501,7 +500,7 @@ $controller
 						<?php echo WT_I18N::translate('Require visitor authentication'), help_link('REQUIRE_AUTHENTICATION'); ?>
 					</td>
 					<td>
-						<?php echo edit_field_yes_no('NEW_REQUIRE_AUTHENTICATION', get_gedcom_setting(WT_GED_ID, 'REQUIRE_AUTHENTICATION')); ?>
+						<?php echo edit_field_yes_no('NEW_REQUIRE_AUTHENTICATION', $WT_TREE->getPreference('REQUIRE_AUTHENTICATION')); ?>
 					</td>
 				</tr>
 				<tr>
@@ -517,7 +516,7 @@ $controller
 						<?php echo WT_I18N::translate('Show dead individuals'), help_link('SHOW_DEAD_PEOPLE'); ?>
 					</td>
 					<td>
-						<?php echo edit_field_access_level("SHOW_DEAD_PEOPLE", get_gedcom_setting(WT_GED_ID, 'SHOW_DEAD_PEOPLE')); ?>
+						<?php echo edit_field_access_level("SHOW_DEAD_PEOPLE", $WT_TREE->getPreference('SHOW_DEAD_PEOPLE')); ?>
 					</td>
 				</tr>
 				<tr>
@@ -529,8 +528,8 @@ $controller
 						echo
 							/* I18N: Extend privacy to dead people [who were] ... */ WT_I18N::translate(
 								'born in the last %1$s years or died in the last %2$s years',
-								'<input type="text" name="KEEP_ALIVE_YEARS_BIRTH" value="'.get_gedcom_setting(WT_GED_ID, 'KEEP_ALIVE_YEARS_BIRTH').'" size="5" maxlength="3">',
-								'<input type="text" name="KEEP_ALIVE_YEARS_DEATH" value="'.get_gedcom_setting(WT_GED_ID, 'KEEP_ALIVE_YEARS_DEATH').'" size="5" maxlength="3">'
+								'<input type="text" name="KEEP_ALIVE_YEARS_BIRTH" value="'.$WT_TREE->getPreference('KEEP_ALIVE_YEARS_BIRTH').'" size="5" maxlength="3">',
+								'<input type="text" name="KEEP_ALIVE_YEARS_DEATH" value="'.$WT_TREE->getPreference('KEEP_ALIVE_YEARS_DEATH').'" size="5" maxlength="3">'
 							); ?>
 					</td>
 				</tr>
@@ -539,7 +538,7 @@ $controller
 						<?php echo WT_I18N::translate('Names of private individuals'), help_link('SHOW_LIVING_NAMES'); ?>
 					</td>
 					<td>
-						<?php echo edit_field_access_level("SHOW_LIVING_NAMES", get_gedcom_setting(WT_GED_ID, 'SHOW_LIVING_NAMES')); ?>
+						<?php echo edit_field_access_level("SHOW_LIVING_NAMES", $WT_TREE->getPreference('SHOW_LIVING_NAMES')); ?>
 					</td>
 				</tr>
 				<tr>
@@ -547,7 +546,7 @@ $controller
 						<?php echo WT_I18N::translate('Show private relationships'), help_link('SHOW_PRIVATE_RELATIONSHIPS'); ?>
 					</td>
 					<td>
-						<?php  echo edit_field_yes_no('SHOW_PRIVATE_RELATIONSHIPS', get_gedcom_setting(WT_GED_ID, 'SHOW_PRIVATE_RELATIONSHIPS')); ?>
+						<?php  echo edit_field_yes_no('SHOW_PRIVATE_RELATIONSHIPS', $WT_TREE->getPreference('SHOW_PRIVATE_RELATIONSHIPS')); ?>
 					</td>
 				</tr>
 				<tr>
@@ -555,7 +554,7 @@ $controller
 						<?php echo WT_I18N::translate('Age at which to assume an individual is dead'), help_link('MAX_ALIVE_AGE'); ?>
 					</td>
 					<td>
-						<input type="text" name="MAX_ALIVE_AGE" value="<?php echo get_gedcom_setting(WT_GED_ID, 'MAX_ALIVE_AGE'); ?>" size="5" maxlength="3">
+						<input type="text" name="MAX_ALIVE_AGE" value="<?php echo $WT_TREE->getPreference('MAX_ALIVE_AGE'); ?>" size="5" maxlength="3">
 					</td>
 				</tr>
 			</table>
@@ -570,11 +569,11 @@ $controller
 
 		$all_tags=array();
 		$tags=array_unique(array_merge(
-			explode(',', get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_ADD')), explode(',', get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_UNIQUE')),
-			explode(',', get_gedcom_setting(WT_GED_ID, 'FAM_FACTS_ADD' )), explode(',', get_gedcom_setting(WT_GED_ID, 'FAM_FACTS_UNIQUE' )),
-			explode(',', get_gedcom_setting(WT_GED_ID, 'NOTE_FACTS_ADD')), explode(',', get_gedcom_setting(WT_GED_ID, 'NOTE_FACTS_UNIQUE')),
-			explode(',', get_gedcom_setting(WT_GED_ID, 'SOUR_FACTS_ADD')), explode(',', get_gedcom_setting(WT_GED_ID, 'SOUR_FACTS_UNIQUE')),
-			explode(',', get_gedcom_setting(WT_GED_ID, 'REPO_FACTS_ADD')), explode(',', get_gedcom_setting(WT_GED_ID, 'REPO_FACTS_UNIQUE')),
+			explode(',', $WT_TREE->getPreference('INDI_FACTS_ADD')), explode(',', $WT_TREE->getPreference('INDI_FACTS_UNIQUE')),
+			explode(',', $WT_TREE->getPreference('FAM_FACTS_ADD' )), explode(',', $WT_TREE->getPreference('FAM_FACTS_UNIQUE' )),
+			explode(',', $WT_TREE->getPreference('NOTE_FACTS_ADD')), explode(',', $WT_TREE->getPreference('NOTE_FACTS_UNIQUE')),
+			explode(',', $WT_TREE->getPreference('SOUR_FACTS_ADD')), explode(',', $WT_TREE->getPreference('SOUR_FACTS_UNIQUE')),
+			explode(',', $WT_TREE->getPreference('REPO_FACTS_ADD')), explode(',', $WT_TREE->getPreference('REPO_FACTS_UNIQUE')),
 			array('SOUR', 'REPO', 'OBJE', '_PRIM', 'NOTE', 'SUBM', 'SUBN', '_UID', 'CHAN')
 		));
 
@@ -668,7 +667,7 @@ $controller
 					</td>
 					<td>
 						<?php echo select_edit_control('NEW_MEDIA_UPLOAD', array(WT_PRIV_USER=>WT_I18N::translate('Show to members'),
-	 WT_PRIV_NONE=>WT_I18N::translate('Show to managers'), WT_PRIV_HIDE=>WT_I18N::translate('Hide from everyone')), null, get_gedcom_setting(WT_GED_ID, 'MEDIA_UPLOAD')); ?>
+	 WT_PRIV_NONE=>WT_I18N::translate('Show to managers'), WT_PRIV_HIDE=>WT_I18N::translate('Hide from everyone')), null, $WT_TREE->getPreference('MEDIA_UPLOAD')); ?>
 					</td>
 				</tr>
 				<tr>
@@ -676,7 +675,7 @@ $controller
 						<?php echo WT_I18N::translate('Show download link in media viewer'), help_link('SHOW_MEDIA_DOWNLOAD'); ?>
 					</td>
 					<td>
-						<?php echo edit_field_yes_no('NEW_SHOW_MEDIA_DOWNLOAD', get_gedcom_setting(WT_GED_ID, 'SHOW_MEDIA_DOWNLOAD')); ?>
+						<?php echo edit_field_yes_no('NEW_SHOW_MEDIA_DOWNLOAD', $WT_TREE->getPreference('SHOW_MEDIA_DOWNLOAD')); ?>
 					</td>
 				</tr>
 				<tr>
@@ -695,7 +694,7 @@ $controller
 						<?php echo WT_I18N::translate('Use silhouettes'), help_link('USE_SILHOUETTE'); ?>
 					</td>
 					<td>
-						<?php echo edit_field_yes_no('NEW_USE_SILHOUETTE', get_gedcom_setting(WT_GED_ID, 'USE_SILHOUETTE')); ?>
+						<?php echo edit_field_yes_no('NEW_USE_SILHOUETTE', $WT_TREE->getPreference('USE_SILHOUETTE')); ?>
 					</td>
 				</tr>
 				<tr>
@@ -703,7 +702,7 @@ $controller
 						<?php echo WT_I18N::translate('Show highlight images in individual boxes'); ?>
 					</td>
 					<td>
-						<?php echo edit_field_yes_no('NEW_SHOW_HIGHLIGHT_IMAGES', get_gedcom_setting(WT_GED_ID, 'SHOW_HIGHLIGHT_IMAGES')); ?>
+						<?php echo edit_field_yes_no('NEW_SHOW_HIGHLIGHT_IMAGES', $WT_TREE->getPreference('SHOW_HIGHLIGHT_IMAGES')); ?>
 					</td>
 				</tr>
 				<tr>
@@ -716,7 +715,7 @@ $controller
 						<?php echo WT_I18N::translate('Add watermarks to thumbnails?'); ?>
 					</td>
 					<td>
-						<?php echo edit_field_yes_no('NEW_WATERMARK_THUMB', get_gedcom_setting(WT_GED_ID, 'WATERMARK_THUMB')); ?>
+						<?php echo edit_field_yes_no('NEW_WATERMARK_THUMB', $WT_TREE->getPreference('WATERMARK_THUMB')); ?>
 					</td>
 				</tr>
 				<tr>
@@ -724,7 +723,7 @@ $controller
 						<?php echo WT_I18N::translate('Store watermarked full size images on server?'); ?>
 					</td>
 					<td>
-						<?php echo edit_field_yes_no('NEW_SAVE_WATERMARK_IMAGE', get_gedcom_setting(WT_GED_ID, 'SAVE_WATERMARK_IMAGE')); ?>
+						<?php echo edit_field_yes_no('NEW_SAVE_WATERMARK_IMAGE', $WT_TREE->getPreference('SAVE_WATERMARK_IMAGE')); ?>
 					</td>
 				</tr>
 				<tr>
@@ -732,7 +731,7 @@ $controller
 						<?php echo WT_I18N::translate('Store watermarked thumbnails on server?'); ?>
 					</td>
 					<td>
-						<?php echo edit_field_yes_no('NEW_SAVE_WATERMARK_THUMB', get_gedcom_setting(WT_GED_ID, 'SAVE_WATERMARK_THUMB')); ?>
+						<?php echo edit_field_yes_no('NEW_SAVE_WATERMARK_THUMB', $WT_TREE->getPreference('SAVE_WATERMARK_THUMB')); ?>
 					</td>
 				</tr>
 				<tr>
@@ -758,7 +757,7 @@ $controller
 						<?php echo WT_I18N::translate('Min. no. of occurrences to be a “common surname”'), help_link('COMMON_NAMES_THRESHOLD'); ?>
 					</td>
 					<td>
-						<input type="text" name="NEW_COMMON_NAMES_THRESHOLD" value="<?php echo get_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_THRESHOLD'); ?>" size="5" maxlength="5">
+						<input type="text" name="NEW_COMMON_NAMES_THRESHOLD" value="<?php echo $WT_TREE->getPreference('COMMON_NAMES_THRESHOLD'); ?>" size="5" maxlength="5">
 					</td>
 				</tr>
 				<tr>
@@ -766,7 +765,7 @@ $controller
 						<?php echo WT_I18N::translate('Names to add to common surnames (comma separated)'), help_link('COMMON_NAMES_ADD'); ?>
 					</td>
 					<td>
-						<input type="text" name="NEW_COMMON_NAMES_ADD" dir="ltr" value="<?php echo get_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_ADD'); ?>" size="50" maxlength="255">
+						<input type="text" name="NEW_COMMON_NAMES_ADD" dir="ltr" value="<?php echo $WT_TREE->getPreference('COMMON_NAMES_ADD'); ?>" size="50" maxlength="255">
 					</td>
 				</tr>
 				<tr>
@@ -774,7 +773,7 @@ $controller
 						<?php echo WT_I18N::translate('Names to remove from common surnames (comma separated)'), help_link('COMMON_NAMES_REMOVE'); ?>
 					</td>
 					<td>
-						<input type="text" name="NEW_COMMON_NAMES_REMOVE" dir="ltr" value="<?php echo get_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_REMOVE'); ?>" size="50" maxlength="255">
+						<input type="text" name="NEW_COMMON_NAMES_REMOVE" dir="ltr" value="<?php echo $WT_TREE->getPreference('COMMON_NAMES_REMOVE'); ?>" size="50" maxlength="255">
 					</td>
 				</tr>
 				<tr>
@@ -799,7 +798,7 @@ $controller
 						<?php echo WT_I18N::translate('Maximum number of surnames on individual list'), help_link('SUBLIST_TRIGGER_I'); ?>
 					</td>
 					<td>
-						<input type="text" name="NEW_SUBLIST_TRIGGER_I" value="<?php echo get_gedcom_setting(WT_GED_ID, 'SUBLIST_TRIGGER_I'); ?>" size="5" maxlength="5">
+						<input type="text" name="NEW_SUBLIST_TRIGGER_I" value="<?php echo $WT_TREE->getPreference('SUBLIST_TRIGGER_I'); ?>" size="5" maxlength="5">
 					</td>
 				</tr>
 				<tr>
@@ -807,7 +806,7 @@ $controller
 						<?php echo WT_I18N::translate('Estimated dates for birth and death'), help_link('SHOW_EST_LIST_DATES'); ?>
 					</td>
 					<td>
-						<?php echo radio_buttons('NEW_SHOW_EST_LIST_DATES', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), get_gedcom_setting(WT_GED_ID, 'SHOW_EST_LIST_DATES')); ?>
+						<?php echo radio_buttons('NEW_SHOW_EST_LIST_DATES', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $WT_TREE->getPreference('SHOW_EST_LIST_DATES')); ?>
 					</td>
 				</tr>
 				<tr>
@@ -868,7 +867,7 @@ $controller
 						<?php echo WT_I18N::translate('Automatically expand list of events of close relatives'), help_link('EXPAND_RELATIVES_EVENTS'); ?>
 					</td>
 					<td>
-						<?php echo edit_field_yes_no('NEW_EXPAND_RELATIVES_EVENTS', get_gedcom_setting(WT_GED_ID, 'EXPAND_RELATIVES_EVENTS')); ?>
+						<?php echo edit_field_yes_no('NEW_EXPAND_RELATIVES_EVENTS', $WT_TREE->getPreference('EXPAND_RELATIVES_EVENTS')); ?>
 					</td>
 				</tr>
 				<tr>
@@ -930,7 +929,7 @@ $controller
 									true =>WT_I18N::translate_c('Show the [first/last] [N] parts of a place name.', 'last')
 								),
 								null,
-								get_gedcom_setting(WT_GED_ID, 'SHOW_PEDIGREE_PLACES_SUFFIX')
+								$WT_TREE->getPreference('SHOW_PEDIGREE_PLACES_SUFFIX')
 							),
 							select_edit_control('NEW_SHOW_PEDIGREE_PLACES',
 								array(
@@ -945,7 +944,7 @@ $controller
 									9=>WT_I18N::number(9),
 								),
 								null,
-								get_gedcom_setting(WT_GED_ID, 'SHOW_PEDIGREE_PLACES')
+								$WT_TREE->getPreference('SHOW_PEDIGREE_PLACES')
 							)
 						);
 						?>
@@ -968,7 +967,7 @@ $controller
 									'markdown' => /* I18N: https://en.wikipedia.org/wiki/Markdown */ WT_I18N::translate('markdown')
 								),
 								null,
-								get_gedcom_setting(WT_GED_ID, 'FORMAT_TEXT')
+								$WT_TREE->getPreference('FORMAT_TEXT')
 							);
 						?>
 					</td>
@@ -988,7 +987,7 @@ $controller
 						<?php echo WT_I18N::translate('Show chart details by default'), help_link('PEDIGREE_FULL_DETAILS'); ?>
 					</td>
 					<td>
-						<?php echo edit_field_yes_no('NEW_PEDIGREE_FULL_DETAILS', get_gedcom_setting(WT_GED_ID, 'PEDIGREE_FULL_DETAILS')); ?>
+						<?php echo edit_field_yes_no('NEW_PEDIGREE_FULL_DETAILS', $WT_TREE->getPreference('PEDIGREE_FULL_DETAILS')); ?>
 					</td>
 				</tr>
 				<tr>
@@ -1041,7 +1040,7 @@ $controller
 						<?php echo WT_I18N::translate('Automatically expand notes'), help_link('EXPAND_NOTES'); ?>
 					</td>
 					<td>
-						<?php echo edit_field_yes_no('NEW_EXPAND_NOTES', get_gedcom_setting(WT_GED_ID, 'EXPAND_NOTES')); ?>
+						<?php echo edit_field_yes_no('NEW_EXPAND_NOTES', $WT_TREE->getPreference('EXPAND_NOTES')); ?>
 					</td>
 				</tr>
 				<tr>
@@ -1049,7 +1048,7 @@ $controller
 						<?php echo WT_I18N::translate('Automatically expand sources'), help_link('EXPAND_SOURCES'); ?>
 					</td>
 					<td>
-						<?php echo edit_field_yes_no('NEW_EXPAND_SOURCES', get_gedcom_setting(WT_GED_ID, 'EXPAND_SOURCES')); ?>
+						<?php echo edit_field_yes_no('NEW_EXPAND_SOURCES', $WT_TREE->getPreference('EXPAND_SOURCES')); ?>
 					</td>
 				</tr>
 				<tr>
@@ -1057,7 +1056,7 @@ $controller
 						<?php echo WT_I18N::translate('Show all notes and source references on notes and sources tabs'), help_link('SHOW_LEVEL2_NOTES'); ?>
 					</td>
 					<td>
-						<?php echo edit_field_yes_no('NEW_SHOW_LEVEL2_NOTES', get_gedcom_setting(WT_GED_ID, 'SHOW_LEVEL2_NOTES')); ?>
+						<?php echo edit_field_yes_no('NEW_SHOW_LEVEL2_NOTES', $WT_TREE->getPreference('SHOW_LEVEL2_NOTES')); ?>
 					</td>
 				</tr>
 				<tr>
@@ -1078,7 +1077,7 @@ $controller
 						<?php echo WT_I18N::translate('Allow users to see raw GEDCOM records'), help_link('SHOW_GEDCOM_RECORD'); ?>
 					</td>
 					<td>
-						<?php echo edit_field_yes_no('NEW_SHOW_GEDCOM_RECORD', get_gedcom_setting(WT_GED_ID, 'SHOW_GEDCOM_RECORD')); ?>
+						<?php echo edit_field_yes_no('NEW_SHOW_GEDCOM_RECORD', $WT_TREE->getPreference('SHOW_GEDCOM_RECORD')); ?>
 					</td>
 				</tr>
 				<tr>
@@ -1102,7 +1101,7 @@ $controller
 						<?php echo WT_I18N::translate('Execution statistics'), help_link('SHOW_STATS'); ?>
 					</td>
 					<td>
-						<?php echo radio_buttons('NEW_SHOW_STATS', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), get_gedcom_setting(WT_GED_ID, 'SHOW_STATS')); ?>
+						<?php echo radio_buttons('NEW_SHOW_STATS', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $WT_TREE->getPreference('SHOW_STATS')); ?>
 					</td>
 				</tr>
 			</table>
@@ -1120,7 +1119,7 @@ $controller
 					<?php echo WT_I18N::translate('All individual facts'), help_link('INDI_FACTS_ADD'); ?>
 				</td>
 				<td>
-					<input type="text" id="NEW_INDI_FACTS_ADD" name="NEW_INDI_FACTS_ADD" value="<?php echo get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_ADD'); ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('NEW_INDI_FACTS_ADD'); ?>
+					<input type="text" id="NEW_INDI_FACTS_ADD" name="NEW_INDI_FACTS_ADD" value="<?php echo $WT_TREE->getPreference('INDI_FACTS_ADD'); ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('NEW_INDI_FACTS_ADD'); ?>
 				</td>
 			</tr>
 			<tr>
@@ -1128,7 +1127,7 @@ $controller
 					<?php echo WT_I18N::translate('Unique individual facts'), help_link('INDI_FACTS_UNIQUE'); ?>
 				</td>
 				<td>
-					<input type="text" id="NEW_INDI_FACTS_UNIQUE" name="NEW_INDI_FACTS_UNIQUE" value="<?php echo get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_UNIQUE'); ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('NEW_INDI_FACTS_UNIQUE'); ?>
+					<input type="text" id="NEW_INDI_FACTS_UNIQUE" name="NEW_INDI_FACTS_UNIQUE" value="<?php echo $WT_TREE->getPreference('INDI_FACTS_UNIQUE'); ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('NEW_INDI_FACTS_UNIQUE'); ?>
 				</td>
 			</tr>
 			<tr>
@@ -1144,7 +1143,7 @@ $controller
 					<?php echo WT_I18N::translate('Quick individual facts'), help_link('INDI_FACTS_QUICK'); ?>
 				</td>
 				<td>
-					<input type="text" id="NEW_INDI_FACTS_QUICK" name="NEW_INDI_FACTS_QUICK" value="<?php echo get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_QUICK'); ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('NEW_INDI_FACTS_QUICK'); ?>
+					<input type="text" id="NEW_INDI_FACTS_QUICK" name="NEW_INDI_FACTS_QUICK" value="<?php echo $WT_TREE->getPreference('INDI_FACTS_QUICK'); ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('NEW_INDI_FACTS_QUICK'); ?>
 				</td>
 			</tr>
 			<tr>
@@ -1157,7 +1156,7 @@ $controller
 					<?php echo WT_I18N::translate('All family facts'), help_link('FAM_FACTS_ADD'); ?>
 				</td>
 				<td>
-					<input type="text" id="NEW_FAM_FACTS_ADD" name="NEW_FAM_FACTS_ADD" value="<?php echo get_gedcom_setting(WT_GED_ID, 'FAM_FACTS_ADD'); ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('NEW_FAM_FACTS_ADD'); ?>
+					<input type="text" id="NEW_FAM_FACTS_ADD" name="NEW_FAM_FACTS_ADD" value="<?php echo $WT_TREE->getPreference('FAM_FACTS_ADD'); ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('NEW_FAM_FACTS_ADD'); ?>
 				</td>
 			</tr>
 			<tr>
@@ -1165,7 +1164,7 @@ $controller
 					<?php echo WT_I18N::translate('Unique family facts'), help_link('FAM_FACTS_UNIQUE'); ?>
 				</td>
 				<td>
-					<input type="text" id="NEW_FAM_FACTS_UNIQUE" name="NEW_FAM_FACTS_UNIQUE" value="<?php echo get_gedcom_setting(WT_GED_ID, 'FAM_FACTS_UNIQUE'); ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('NEW_FAM_FACTS_UNIQUE'); ?>
+					<input type="text" id="NEW_FAM_FACTS_UNIQUE" name="NEW_FAM_FACTS_UNIQUE" value="<?php echo $WT_TREE->getPreference('FAM_FACTS_UNIQUE'); ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('NEW_FAM_FACTS_UNIQUE'); ?>
 				</td>
 			</tr>
 			<tr>
@@ -1181,7 +1180,7 @@ $controller
 					<?php echo WT_I18N::translate('Quick family facts'), help_link('FAM_FACTS_QUICK'); ?>
 				</td>
 				<td>
-					<input type="text" id="NEW_FAM_FACTS_QUICK" name="NEW_FAM_FACTS_QUICK" value="<?php echo get_gedcom_setting(WT_GED_ID, 'FAM_FACTS_QUICK'); ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('NEW_FAM_FACTS_QUICK'); ?>
+					<input type="text" id="NEW_FAM_FACTS_QUICK" name="NEW_FAM_FACTS_QUICK" value="<?php echo $WT_TREE->getPreference('FAM_FACTS_QUICK'); ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('NEW_FAM_FACTS_QUICK'); ?>
 				</td>
 			</tr>
 			<tr>
@@ -1194,7 +1193,7 @@ $controller
 					<?php echo WT_I18N::translate('All source facts'), help_link('SOUR_FACTS_ADD'); ?>
 				</td>
 				<td>
-					<input type="text" id="NEW_SOUR_FACTS_ADD" name="NEW_SOUR_FACTS_ADD" value="<?php echo get_gedcom_setting(WT_GED_ID, 'SOUR_FACTS_ADD'); ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('NEW_SOUR_FACTS_ADD'); ?>
+					<input type="text" id="NEW_SOUR_FACTS_ADD" name="NEW_SOUR_FACTS_ADD" value="<?php echo $WT_TREE->getPreference('SOUR_FACTS_ADD'); ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('NEW_SOUR_FACTS_ADD'); ?>
 				</td>
 			</tr>
 			<tr>
@@ -1202,7 +1201,7 @@ $controller
 					<?php echo WT_I18N::translate('Unique source facts'), help_link('SOUR_FACTS_UNIQUE'); ?>
 				</td>
 				<td>
-					<input type="text" id="NEW_SOUR_FACTS_UNIQUE" name="NEW_SOUR_FACTS_UNIQUE" value="<?php echo get_gedcom_setting(WT_GED_ID, 'SOUR_FACTS_UNIQUE'); ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('NEW_SOUR_FACTS_UNIQUE'); ?>
+					<input type="text" id="NEW_SOUR_FACTS_UNIQUE" name="NEW_SOUR_FACTS_UNIQUE" value="<?php echo $WT_TREE->getPreference('SOUR_FACTS_UNIQUE'); ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('NEW_SOUR_FACTS_UNIQUE'); ?>
 				</td>
 			</tr>
 			<tr>
@@ -1210,7 +1209,7 @@ $controller
 					<?php echo WT_I18N::translate('Quick source facts'), help_link('SOUR_FACTS_QUICK'); ?>
 				</td>
 				<td>
-					<input type="text" id="NEW_SOUR_FACTS_QUICK" name="NEW_SOUR_FACTS_QUICK" value="<?php echo get_gedcom_setting(WT_GED_ID, 'SOUR_FACTS_QUICK'); ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('NEW_SOUR_FACTS_QUICK'); ?>
+					<input type="text" id="NEW_SOUR_FACTS_QUICK" name="NEW_SOUR_FACTS_QUICK" value="<?php echo $WT_TREE->getPreference('SOUR_FACTS_QUICK'); ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('NEW_SOUR_FACTS_QUICK'); ?>
 				</td>
 			</tr>
 			<tr>
@@ -1223,7 +1222,7 @@ $controller
 					<?php echo WT_I18N::translate('All repository facts'), help_link('REPO_FACTS_ADD'); ?>
 				</td>
 				<td>
-					<input type="text" id="NEW_REPO_FACTS_ADD" name="NEW_REPO_FACTS_ADD" value="<?php echo get_gedcom_setting(WT_GED_ID, 'REPO_FACTS_ADD'); ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('NEW_REPO_FACTS_ADD'); ?>
+					<input type="text" id="NEW_REPO_FACTS_ADD" name="NEW_REPO_FACTS_ADD" value="<?php echo $WT_TREE->getPreference('REPO_FACTS_ADD'); ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('NEW_REPO_FACTS_ADD'); ?>
 				</td>
 			</tr>
 			<tr>
@@ -1231,7 +1230,7 @@ $controller
 					<?php echo WT_I18N::translate('Unique repository facts'), help_link('REPO_FACTS_UNIQUE'); ?>
 				</td>
 				<td>
-					<input type="text" id="NEW_REPO_FACTS_UNIQUE" name="NEW_REPO_FACTS_UNIQUE" value="<?php echo get_gedcom_setting(WT_GED_ID, 'REPO_FACTS_UNIQUE'); ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('NEW_REPO_FACTS_UNIQUE'); ?>
+					<input type="text" id="NEW_REPO_FACTS_UNIQUE" name="NEW_REPO_FACTS_UNIQUE" value="<?php echo $WT_TREE->getPreference('REPO_FACTS_UNIQUE'); ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('NEW_REPO_FACTS_UNIQUE'); ?>
 				</td>
 			</tr>
 			<tr>
@@ -1239,7 +1238,7 @@ $controller
 					<?php echo WT_I18N::translate('Quick repository facts'), help_link('REPO_FACTS_QUICK'); ?>
 				</td>
 				<td>
-					<input type="text" id="NEW_REPO_FACTS_QUICK" name="NEW_REPO_FACTS_QUICK" value="<?php echo get_gedcom_setting(WT_GED_ID, 'REPO_FACTS_QUICK'); ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('NEW_REPO_FACTS_QUICK'); ?>
+					<input type="text" id="NEW_REPO_FACTS_QUICK" name="NEW_REPO_FACTS_QUICK" value="<?php echo $WT_TREE->getPreference('REPO_FACTS_QUICK'); ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('NEW_REPO_FACTS_QUICK'); ?>
 				</td>
 			</tr>
 			<tr>
@@ -1273,7 +1272,7 @@ $controller
 					<?php echo WT_I18N::translate('Surname tradition'), help_link('SURNAME_TRADITION'); ?>
 				</td>
 				<td>
-					<?php echo select_edit_control('NEW_SURNAME_TRADITION', array('paternal'=>WT_I18N::translate_c('Surname tradition', 'paternal'), 'patrilineal'=>WT_I18N::translate('patrilineal'), 'matrilineal'=>WT_I18N::translate('matrilineal'), 'spanish'=>WT_I18N::translate_c('Surname tradition', 'Spanish'), 'portuguese'=>WT_I18N::translate_c('Surname tradition', 'Portuguese'), 'icelandic'=>WT_I18N::translate_c('Surname tradition', 'Icelandic'), 'polish'=>WT_I18N::translate_c('Surname tradition', 'Polish'), 'lithuanian'=>WT_I18N::translate_c('Surname tradition', 'Lithuanian'), 'none'=>WT_I18N::translate_c('Surname tradition', 'none')), null, get_gedcom_setting(WT_GED_ID, 'SURNAME_TRADITION')); ?>
+					<?php echo select_edit_control('NEW_SURNAME_TRADITION', array('paternal'=>WT_I18N::translate_c('Surname tradition', 'paternal'), 'patrilineal'=>WT_I18N::translate('patrilineal'), 'matrilineal'=>WT_I18N::translate('matrilineal'), 'spanish'=>WT_I18N::translate_c('Surname tradition', 'Spanish'), 'portuguese'=>WT_I18N::translate_c('Surname tradition', 'Portuguese'), 'icelandic'=>WT_I18N::translate_c('Surname tradition', 'Icelandic'), 'polish'=>WT_I18N::translate_c('Surname tradition', 'Polish'), 'lithuanian'=>WT_I18N::translate_c('Surname tradition', 'Lithuanian'), 'none'=>WT_I18N::translate_c('Surname tradition', 'none')), null, $WT_TREE->getPreference('SURNAME_TRADITION')); ?>
 				</td>
 			</tr>
 			<tr>
@@ -1281,7 +1280,7 @@ $controller
 					<?php echo WT_I18N::translate('Use full source citations'), help_link('FULL_SOURCES'); ?>
 				</td>
 				<td>
-					<?php echo edit_field_yes_no('NEW_FULL_SOURCES', get_gedcom_setting(WT_GED_ID, 'FULL_SOURCES')); ?>
+					<?php echo edit_field_yes_no('NEW_FULL_SOURCES', $WT_TREE->getPreference('FULL_SOURCES')); ?>
 				</td>
 			</tr>
 			<tr>
@@ -1289,7 +1288,7 @@ $controller
 					<?php echo WT_I18N::translate('Source type'), help_link('PREFER_LEVEL2_SOURCES'); ?>
 				</td>
 				<td>
-					<?php echo select_edit_control('NEW_PREFER_LEVEL2_SOURCES', array(0=>WT_I18N::translate('none'), 1=>WT_I18N::translate('facts'), 2=>WT_I18N::translate('records')), null, get_gedcom_setting(WT_GED_ID, 'PREFER_LEVEL2_SOURCES')); ?>
+					<?php echo select_edit_control('NEW_PREFER_LEVEL2_SOURCES', array(0=>WT_I18N::translate('none'), 1=>WT_I18N::translate('facts'), 2=>WT_I18N::translate('records')), null, $WT_TREE->getPreference('PREFER_LEVEL2_SOURCES')); ?>
 				</td>
 			</tr>
 			<tr>
@@ -1297,7 +1296,7 @@ $controller
 					<?php echo /* I18N: GeoNames is the www.geonames.org website */ WT_I18N::translate('Use GeoNames database for autocomplete on places'), help_link('GEONAMES_ACCOUNT'); ?>
 				</td>
 				<td>
-					<input type="text" id="NEW_GEONAMES_ACCOUNT" name="NEW_GEONAMES_ACCOUNT" value="<?php echo WT_Filter::escapeHtml(get_gedcom_setting(WT_GED_ID, 'GEONAMES_ACCOUNT')); ?>" size="40" maxlength="255" dir="ltr" placeholder="<?php echo WT_I18N::translate('Username'); ?>">
+					<input type="text" id="NEW_GEONAMES_ACCOUNT" name="NEW_GEONAMES_ACCOUNT" value="<?php echo WT_Filter::escapeHtml($WT_TREE->getPreference('GEONAMES_ACCOUNT')); ?>" size="40" maxlength="255" dir="ltr" placeholder="<?php echo WT_I18N::translate('Username'); ?>">
 				</td>
 			</tr>
 			<tr>
@@ -1305,7 +1304,7 @@ $controller
 					<?php echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN'); ?>
 				</td>
 				<td>
-					<?php echo edit_field_yes_no('NEW_NO_UPDATE_CHAN', get_gedcom_setting(WT_GED_ID, 'NO_UPDATE_CHAN')); ?>
+					<?php echo edit_field_yes_no('NEW_NO_UPDATE_CHAN', $WT_TREE->getPreference('NO_UPDATE_CHAN')); ?>
 				</td>
 			</tr>
 			</table>

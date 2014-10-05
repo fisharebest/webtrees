@@ -34,18 +34,18 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function getBlock($block_id, $template=true, $cfg=null) {
-		global $ctype, $PEDIGREE_FULL_DETAILS, $show_full, $bwidth, $bheight;
+		global $WT_TREE, $ctype, $PEDIGREE_FULL_DETAILS, $show_full, $bwidth, $bheight;
 
-		$PEDIGREE_ROOT_ID=get_gedcom_setting(WT_GED_ID, 'PEDIGREE_ROOT_ID');
+		$PEDIGREE_ROOT_ID = $WT_TREE->getPreference('PEDIGREE_ROOT_ID');
 
-		$details=get_block_setting($block_id, 'details', false);
-		$type   =get_block_setting($block_id, 'type', 'pedigree');
-		$pid    =get_block_setting($block_id, 'pid', WT_USER_ID ? (WT_USER_GEDCOM_ID ? WT_USER_GEDCOM_ID : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
-		$block  =get_block_setting($block_id, 'block');
+		$details = get_block_setting($block_id, 'details', false);
+		$type    = get_block_setting($block_id, 'type', 'pedigree');
+		$pid     = get_block_setting($block_id, 'pid', WT_USER_ID ? (WT_USER_GEDCOM_ID ? WT_USER_GEDCOM_ID : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
+		$block   = get_block_setting($block_id, 'block');
 		if ($cfg) {
 			foreach (array('details', 'type', 'pid', 'block') as $name) {
 				if (array_key_exists($name, $cfg)) {
-					$$name=$cfg[$name];
+					$$name = $cfg[$name];
 				}
 			}
 		}
@@ -172,9 +172,9 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function configureBlock($block_id) {
-		global $ctype, $controller;
+		global $WT_TREE, $ctype, $controller;
 
-		$PEDIGREE_ROOT_ID=get_gedcom_setting(WT_GED_ID, 'PEDIGREE_ROOT_ID');
+		$PEDIGREE_ROOT_ID = $WT_TREE->getPreference('PEDIGREE_ROOT_ID');
 
 		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
 			set_block_setting($block_id, 'details', WT_Filter::postBool('details'));

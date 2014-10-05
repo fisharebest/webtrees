@@ -32,36 +32,6 @@ $controller
 
 require WT_ROOT.'includes/functions/functions_edit.php';
 
-function full_rmdir($dir) {
-	if (!is_writable($dir)) {
-		if (!@chmod($dir, WT_PERM_EXE)) {
-			return false;
-		}
-	}
-
-	$d = dir($dir);
-	while (false !== ($entry = $d->read())) {
-		if ($entry == '.' || $entry == '..') {
-			continue;
-		}
-		$entry = $dir . '/' . $entry;
-		if (is_dir($entry)) {
-			if (!full_rmdir($entry)) {
-				return false;
-			}
-			continue;
-		}
-		if (!@unlink($entry)) {
-			$d->close();
-			return false;
-		}
-	}
-
-	$d->close();
-	rmdir($dir);
-	return TRUE;
-}
-
 // Vars
 $ajaxdeleted = false;
 $locked_by_context = array('index.php', 'config.ini.php');
@@ -70,7 +40,7 @@ $locked_by_context = array('index.php', 'config.ini.php');
 // defaultl), then don’t delete it.
 // Need to consider the settings for all gedcoms
 foreach (WT_Tree::getAll() as $tree) {
-	$MEDIA_DIRECTORY=$tree->preference('MEDIA_DIRECTORY');
+	$MEDIA_DIRECTORY=$tree->getPreference('MEDIA_DIRECTORY');
 
 	if (substr($MEDIA_DIRECTORY, 0, 3) !='../') {
 		// Just need to add the first part of the path
@@ -89,11 +59,7 @@ echo
 if (isset($_REQUEST['to_delete'])) {
 	echo '<div class="error">', WT_I18N::translate('Deleted files:'), '</div>';
 	foreach ($_REQUEST['to_delete'] as $k=>$v) {
-		if (is_dir(WT_DATA_DIR.$v)) {
-			full_rmdir(WT_DATA_DIR.$v);
-		} elseif (file_exists(WT_DATA_DIR.$v)) {
-			unlink(WT_DATA_DIR.$v);
-		}
+		WT_File::delete(WT_DATA_DIR.$v);
 		echo '<div class="error">', $v, '</div>';
 	}
 }

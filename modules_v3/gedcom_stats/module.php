@@ -34,7 +34,7 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function getBlock($block_id, $template=true, $cfg=null) {
-		global $ctype, $top10_block_present;
+		global $WT_TREE, $ctype, $top10_block_present;
 
 		$show_last_update    =get_block_setting($block_id, 'show_last_update',     true);
 		$show_common_surnames=get_block_setting($block_id, 'show_common_surnames', true);
@@ -182,7 +182,7 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 		// NOTE: Print the most common surnames
 		if ($show_common_surnames) {
-			$surnames = get_common_surnames(get_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_THRESHOLD'));
+			$surnames = get_common_surnames($WT_TREE->getPreference('COMMON_NAMES_THRESHOLD'));
 			if (count($surnames)>0) {
 				$content .= '<p><b>'.WT_I18N::translate('Most common surnames').'</b></p>';
 				$content .= '<div class="common_surnames">';
