@@ -596,12 +596,10 @@ if (WT_SCRIPT_NAME!='admin_trees_manage.php' && WT_SCRIPT_NAME!='admin_pgv_to_wt
 	}
 }
 
-if (Auth::id()) {
-	// Update the login time every 5 minutes
-	if (WT_TIMESTAMP - $WT_SESSION->activity_time > 300) {
-		Auth::user()->setPreference('sessiontime', WT_TIMESTAMP);
-		$WT_SESSION->activity_time = WT_TIMESTAMP;
-	}
+// Update the login time every 5 minutes
+if (WT_TIMESTAMP - $WT_SESSION->activity_time > 300) {
+	Auth::user()->setPreference('sessiontime', WT_TIMESTAMP);
+	$WT_SESSION->activity_time = WT_TIMESTAMP;
 }
 
 // Set the theme

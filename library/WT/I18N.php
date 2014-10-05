@@ -133,9 +133,7 @@ class WT_I18N {
 			$locale = WT_Filter::get('lang');
 			if ($locale && array_key_exists($locale, $installed_languages)) {
 				// Requested in the URL?
-				if (Auth::id()) {
-					Auth::user()->setPreference('language', $locale);
-				}
+				Auth::user()->setPreference('language', $locale);
 			} elseif (array_key_exists($WT_SESSION->locale, $installed_languages)) {
 				// Rembered from a previous visit?
 				$locale = $WT_SESSION->locale;
