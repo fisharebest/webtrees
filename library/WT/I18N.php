@@ -403,7 +403,7 @@ class WT_I18N {
 	 * This is necessary to fetch a format string (containing % characters) without
 	 * performing sustitution of arguments.
 	 *
-	 * @param string,... $string, $args...
+	 * @param string $string
 	 *
 	 * @return string
 	 */

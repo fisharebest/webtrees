@@ -162,7 +162,11 @@ class WT_Tree {
 		return Auth::isModerator($this, $user);
 	}
 
-	// Fetch all the trees that we have permission to access.
+	/**
+	 * Fetch all the trees that we have permission to access.
+	 *
+	 * @return WT_Tree[]
+	 */
 	public static function getAll() {
 		if (self::$trees === null) {
 			self::$trees = array();
@@ -177,7 +181,7 @@ class WT_Tree {
 				"  g.gedcom_id>0 AND (".          // exclude the "template" tree
 				"    EXISTS (SELECT 1 FROM `##user_setting` WHERE user_id=? AND setting_name='canadmin' AND setting_value=1)" . // Admin sees all
 				"   ) OR (" .
-				"    gs2.setting_value = 1 AND (".                // Allow imported trees, with either:
+				"    gs2.setting_value = 1 AND (".                 // Allow imported trees, with either:
 				"     gs3.setting_value <> 1 OR" .                 // visitor access
 				"     IFNULL(ugs.setting_value, 'none')<>'none'" . // explicit access
 				"   )" .
@@ -192,16 +196,26 @@ class WT_Tree {
 		return self::$trees;
 	}
 
-	// Get the tree with a specific ID.  TODO - is this function needed long-term, or just while
-	// we integrate this class into the rest of the code?
+	/**
+	 * Get the tree with a specific ID.  TODO - is this function needed long-term, or just while
+	 * we integrate this class into the rest of the code?
+	 *
+	 * @param int $tree_id
+	 *
+	 * @return WT_Tree
+	 */
 	public static function get($tree_id) {
 		$trees = self::getAll();
 
 		return $trees[$tree_id];
 	}
 
-	// Create arguments to select_edit_control()
-	// Note - these will be escaped later
+	/**
+	 * Create arguments to select_edit_control()
+	 * Note - these will be escaped later
+	 *
+	 * @return string[]
+	 */
 	public static function getIdList() {
 		$list = array();
 		foreach (self::getAll() as $tree) {
@@ -211,8 +225,12 @@ class WT_Tree {
 		return $list;
 	}
 
-	// Create arguments to select_edit_control()
-	// Note - these will be escaped later
+	/**
+	 * Create arguments to select_edit_control()
+	 * Note - these will be escaped later
+	 *
+	 * @return string[]
+	 */
 	public static function getNameList() {
 		$list = array();
 		foreach (self::getAll() as $tree) {
@@ -222,6 +240,13 @@ class WT_Tree {
 		return $list;
 	}
 
+	/**
+	 * Find the ID number for a tree name
+	 *
+	 * @param int $tree_name
+	 *
+	 * @return int|null
+	 */
 	public static function getIdFromName($tree_name) {
 		foreach (self::getAll() as $tree_id => $tree) {
 			if ($tree->tree_name == $tree_name) {
@@ -232,11 +257,23 @@ class WT_Tree {
 		return null;
 	}
 
+	/**
+	 * Find the tree name from a numeric ID.
+	 * @param int $tree_id
+	 *
+	 * @return string
+	 */
 	public static function getNameFromId($tree_id) {
 		return self::get($tree_id)->tree_name;
 	}
 
-	// Create a new tree
+	/**
+	 * Create a new tree
+	 *
+	 * @param string $tree_name
+	 *
+	 * @return void
+	 */
 	public static function create($tree_name) {
 		try {
 			// Create a new tree
