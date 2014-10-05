@@ -68,7 +68,7 @@ function import_gedcom_file($gedcom_id, $path, $filename) {
 		"INSERT INTO `##gedcom_chunk` (gedcom_id, chunk_data) VALUES (?, ?)"
 	)->execute(array($gedcom_id, $file_data));
 
-	set_gedcom_setting($gedcom_id, 'gedcom_filename', $filename);
+	WT_Tree::get($gedcom_id)->setPreference('gedcom_filename', $filename);
 	WT_DB::exec("COMMIT");
 	fclose($fp);
 }
@@ -96,7 +96,7 @@ case 'new_tree':
 case 'replace_upload':
 	$gedcom_id = WT_Filter::postInteger('gedcom_id');
 	// Make sure the gedcom still exists
-	if (WT_Filter::checkCsrf() && get_gedcom_from_id($gedcom_id)) {
+	if (WT_Filter::checkCsrf() && WT_Tree::get($gedcom_id)) {
 		foreach ($_FILES as $FILE) {
 			if ($FILE['error'] == 0 && is_readable($FILE['tmp_name'])) {
 				import_gedcom_file($gedcom_id, $FILE['tmp_name'], $FILE['name']);
@@ -108,7 +108,7 @@ case 'replace_upload':
 case 'replace_import':
 	$gedcom_id = WT_Filter::postInteger('gedcom_id');
 	// Make sure the gedcom still exists
-	if (WT_Filter::checkCsrf() && get_gedcom_from_id($gedcom_id)) {
+	if (WT_Filter::checkCsrf() && WT_Tree::get($gedcom_id)) {
 		$ged_name = basename(WT_Filter::post('ged_name'));
 		import_gedcom_file($gedcom_id, WT_DATA_DIR.$ged_name, $ged_name);
 	}
@@ -122,17 +122,16 @@ $controller->pageHeader();
 switch (WT_Filter::get('action')) {
 case 'uploadform':
 case 'importform':
-	$gedcom_id=WT_Filter::getInteger('gedcom_id');
-	$gedcom_name=get_gedcom_from_id($gedcom_id);
+	$tree=WT_Tree::get(WT_Filter::getInteger('gedcom_id'));
 	// Check it exists
-	if (!$gedcom_name) {
+	if (!$tree) {
 		break;
 	}
-	echo '<p>', WT_I18N::translate('This will delete all the genealogical data from <b>%s</b> and replace it with data from another GEDCOM.', $gedcom_name), '</p>';
+	echo '<p>', WT_I18N::translate('This will delete all the genealogical data from <b>%s</b> and replace it with data from another GEDCOM.', $tree->tree_name_html), '</p>';
 	// the javascript in the next line strips any path associated with the file before comparing it to the current GEDCOM name (both Chrome and IE8 include c:\fakepath\ in the filename).
-	$previous_gedcom_filename=get_gedcom_setting($gedcom_id, 'gedcom_filename');
+	$previous_gedcom_filename = $tree->getPreference('gedcom_filename');
 	echo '<form name="replaceform" method="post" enctype="multipart/form-data" action="', WT_SCRIPT_NAME, '" onsubmit="var newfile = document.replaceform.ged_name.value; newfile = newfile.substr(newfile.lastIndexOf(\'\\\\\')+1); if (newfile!=\'', WT_Filter::escapeHtml($previous_gedcom_filename), '\' && \'\' != \'', WT_Filter::escapeHtml($previous_gedcom_filename), '\') return confirm(\'', WT_Filter::escapeHtml(WT_I18N::translate('You have selected a GEDCOM with a different name.  Is this correct?')), '\'); else return true;">';
-	echo '<input type="hidden" name="gedcom_id" value="', $gedcom_id, '">';
+	echo '<input type="hidden" name="gedcom_id" value="', $tree->tree_id, '">';
 	echo WT_Filter::getCsrf();
 	if (WT_Filter::get('action')=='uploadform') {
 		echo '<input type="hidden" name="action" value="replace_upload">';
@@ -168,7 +167,7 @@ case 'importform':
 			exit;
 		}
 	}
-	echo '<br><br><input type="checkbox" name="keep_media', $gedcom_id, '" value="1">';
+	echo '<br><br><input type="checkbox" name="keep_media', $tree->tree_id, '" value="1">';
 	echo WT_I18N::translate('If you have created media objects in webtrees, and have edited your gedcom off-line using a program that deletes media objects, then check this box to merge the current media objects with the new GEDCOM.');
 	echo '<br><br><input type="submit" value="', WT_I18N::translate('continue'), '">';
 	echo '</form>';

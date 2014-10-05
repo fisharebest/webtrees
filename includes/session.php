@@ -629,7 +629,7 @@ if (substr(WT_SCRIPT_NAME, 0, 5)=='admin' || WT_SCRIPT_NAME=='module.php' && sub
 		// 3) webtrees
 		// 4) first one found
 		if (WT_GED_ID) {
-			$THEME_DIR=get_gedcom_setting(WT_GED_ID, 'THEME_DIR');
+			$THEME_DIR = $WT_TREE->getPreference('THEME_DIR');
 		}
 		if (!in_array($THEME_DIR, get_theme_names())) {
 			$THEME_DIR=WT_Site::getPreference('THEME_DIR');
@@ -641,19 +641,19 @@ if (substr(WT_SCRIPT_NAME, 0, 5)=='admin' || WT_SCRIPT_NAME=='module.php' && sub
 			list($THEME_DIR)=get_theme_names();
 		}
 	}
-	define('WT_THEME_DIR', WT_THEMES_DIR.$THEME_DIR.'/');
+	define('WT_THEME_DIR', WT_THEMES_DIR . $THEME_DIR . '/');
 	// Remember this setting
-	if (WT_THEME_DIR!=WT_THEMES_DIR.'_administration/') {
+	if (WT_THEME_DIR != WT_THEMES_DIR . '_administration/') {
 		$WT_SESSION->theme_dir=$THEME_DIR;
 	}
 }
 // If we have specified a CDN, use it for static theme resources
 define('WT_THEME_URL', WT_STATIC_URL.WT_THEME_DIR);
 
-require WT_ROOT.WT_THEME_DIR.'theme.php';
+require WT_ROOT . WT_THEME_DIR . 'theme.php';
 
 // Page hit counter - load after theme, as we need theme formatting
-if ($WT_TREE && $WT_TREE->preference('SHOW_COUNTER') && !$SEARCH_SPIDER) {
+if ($WT_TREE && $WT_TREE->getPreference('SHOW_COUNTER') && !$SEARCH_SPIDER) {
 	require WT_ROOT.'includes/hitcount.php';
 } else {
 	$hitCount='';

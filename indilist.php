@@ -217,7 +217,7 @@ if ($show=='indi' || $show=='surn') {
 			}
 		}
 		// Don't sublists short lists.
-		if ($count<get_gedcom_setting(WT_GED_ID, 'SUBLIST_TRIGGER_I')) {
+		if ($count < $WT_TREE->getPreference('SUBLIST_TRIGGER_I')) {
 			$falpha='';
 			$show_all_firstnames='no';
 		} else {

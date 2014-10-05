@@ -301,7 +301,7 @@ case 'register':
 				->setSetting('sessiontime',       0);
 
 			// Generate an email in the admin’s language
-			$webmaster = User::find(get_gedcom_setting(WT_GED_ID, 'WEBMASTER_USER_ID'));
+			$webmaster = User::find($WT_TREE->getPreference('WEBMASTER_USER_ID'));
 			WT_I18N::init($webmaster->getSetting('language'));
 
 			$mail1_body =
@@ -492,7 +492,7 @@ case 'verify_hash':
 	}
 
 	// switch language to webmaster settings
-	$webmaster = User::find(get_gedcom_setting(WT_GED_ID, 'WEBMASTER_USER_ID'));
+	$webmaster = User::find($WT_TREE->getPreference('WEBMASTER_USER_ID'));
 	WT_I18N::init($webmaster->getSetting('language'));
 
 	$user = User::findByIdentifier($user_name);

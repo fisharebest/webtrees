@@ -148,7 +148,7 @@ echo '<div id="source-tabs">
 		if ($controller->record->canEdit()) {
 			print_add_new_fact($controller->record->getXref(), $facts, 'SOUR');
 			// new media
-			if (get_gedcom_setting(WT_GED_ID, 'MEDIA_UPLOAD') >= WT_USER_ACCESS_LEVEL) {
+			if ($WT_TREE->getPreference('MEDIA_UPLOAD') >= WT_USER_ACCESS_LEVEL) {
 				echo '<tr><td class="descriptionbox">';
 				echo WT_Gedcom_Tag::getLabel('OBJE');
 				echo '</td><td class="optionbox">';

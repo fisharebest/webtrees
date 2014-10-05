@@ -70,7 +70,7 @@ $locked_by_context = array('index.php', 'config.ini.php');
 // defaultl), then don’t delete it.
 // Need to consider the settings for all gedcoms
 foreach (WT_Tree::getAll() as $tree) {
-	$MEDIA_DIRECTORY=$tree->preference('MEDIA_DIRECTORY');
+	$MEDIA_DIRECTORY=$tree->getPreference('MEDIA_DIRECTORY');
 
 	if (substr($MEDIA_DIRECTORY, 0, 3) !='../') {
 		// Just need to add the first part of the path

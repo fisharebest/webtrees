@@ -1214,12 +1214,12 @@ case 'addnewsource':
 					<td class="descriptionbox wrap width25"><?php echo WT_I18N::translate('Select events'), help_link('edit_SOUR_EVEN'); ?></td>
 					<td class="optionbox wrap"><select name="EVEN[]" multiple="multiple" size="5">
 						<?php
-						$parts = explode(',', get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_ADD'));
+						$parts = explode(',', $WT_TREE->getPreference('INDI_FACTS_ADD'));
 						foreach ($parts as $key) {
 							?><option value="<?php echo $key; ?>"><?php echo WT_Gedcom_Tag::getLabel($key); ?></option>
 						<?php
 						}
-						$parts = explode(',', get_gedcom_setting(WT_GED_ID, 'FAM_FACTS_ADD'));
+						$parts = explode(',', $WT_TREE->getPreference('FAM_FACTS_ADD'));
 						foreach ($parts as $key) {
 							?><option value="<?php echo $key; ?>"><?php echo WT_Gedcom_Tag::getLabel($key); ?></option>
 						<?php
@@ -2287,7 +2287,7 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 	global $WORD_WRAPPED_NOTES, $NPFX_accept, $SHOW_GEDCOM_RECORD, $bdm, $STANDARD_NAME_FACTS, $ADVANCED_NAME_FACTS;
 	global $QUICK_REQUIRED_FACTS, $QUICK_REQUIRED_FAMFACTS, $controller;
 
-	$SURNAME_TRADITION=get_gedcom_setting(WT_GED_ID, 'SURNAME_TRADITION');
+	$SURNAME_TRADITION = $WT_TREE->getPreference('SURNAME_TRADITION');
 
 	if ($person) {
 		$xref = $person->getXref();

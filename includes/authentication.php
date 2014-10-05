@@ -104,7 +104,7 @@ function addMessage($message) {
 			$sender_real_name,
 			// Reply-To:
 			WT_Site::getPreference('SMTP_FROM_NAME'),
-			$WT_TREE->preference('title'),
+			$WT_TREE->getPreference('title'),
 			// Message
 			WT_I18N::translate('webtrees message') . ' - ' . $message['subject'],
 			$copy_email

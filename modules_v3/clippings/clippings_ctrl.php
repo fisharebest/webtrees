@@ -53,7 +53,7 @@ class WT_Controller_Clippings {
 	var $level3; // number of levels of descendents
 
 	public function __construct() {
-		global $SCRIPT_NAME, $MEDIA_DIRECTORY, $WT_SESSION;
+		global $WT_TREE, $SCRIPT_NAME, $MEDIA_DIRECTORY, $WT_SESSION;
 
 		// Our cart is an array of items in the session
 		if (!is_array($WT_SESSION->cart)) {
@@ -249,7 +249,7 @@ class WT_Controller_Clippings {
 				$this->media_list = $media;
 			}
 			$filetext .= "0 @WEBTREES@ SOUR\n1 TITL ".WT_SERVER_NAME.WT_SCRIPT_PATH."\n";
-			if ($user_id = get_gedcom_setting(WT_GED_ID, 'CONTACT_EMAIL')) {
+			if ($user_id = $WT_TREE->getPreference('CONTACT_EMAIL')) {
 				$user = User::find($user_id);
 				$filetext .= "1 AUTH " . $user->getRealName() . "\n";
 			}

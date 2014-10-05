@@ -70,7 +70,7 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 			$data='';
 			$lastmod='<lastmod>'.date('Y-m-d').'</lastmod>';
 			foreach (WT_Tree::getAll() as $tree) {
-				if (get_gedcom_setting($tree->tree_id, 'include_in_sitemap')) {
+				if ($tree->getPreference('include_in_sitemap')) {
 					$n=WT_DB::prepare("SELECT COUNT(*) FROM `##individuals` WHERE i_file=?")->execute(array($tree->tree_id))->fetchOne();
 					for ($i=0; $i<=$n/self::RECORDS_PER_VOLUME; ++$i) {
 						$data.='<sitemap><loc>'.WT_SERVER_NAME.WT_SCRIPT_PATH.'module.php?mod='.$this->getName().'&amp;mod_action=generate&amp;file=sitemap-'.$tree->tree_id.'-i-'.$i.'.xml</loc>'.$lastmod.'</sitemap>'.PHP_EOL;
@@ -221,7 +221,7 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 		// Save the updated preferences
 		if (WT_Filter::post('action')=='save') {
 			foreach (WT_Tree::getAll() as $tree) {
-				set_gedcom_setting($tree->tree_id, 'include_in_sitemap', WT_Filter::postBool('include'.$tree->tree_id));
+				$tree->setPreference('include_in_sitemap', WT_Filter::postBool('include'.$tree->tree_id));
 			}
 			// Clear cache and force files to be regenerated
 			WT_DB::prepare(
@@ -241,7 +241,7 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 			'<input type="hidden" name="action" value="save">';
 		foreach (WT_Tree::getAll() as $tree) {
 			echo '<p><input type="checkbox" name="include', $tree->tree_id, '"';
-			if (get_gedcom_setting($tree->tree_id, 'include_in_sitemap')) {
+			if ($tree->getPreference('include_in_sitemap')) {
 				echo ' checked="checked"';
 				$include_any=true;
 			}

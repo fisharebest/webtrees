@@ -45,7 +45,7 @@ foreach ($settings as $gedcom_id=>$setting) {
 	// Remove duplicates
 	preg_match_all('/[_A-Z]+/', $setting, $match);
 	// And save
-	set_gedcom_setting($gedcom_id, 'SHOW_RELATIVES_EVENTS', implode(',', array_unique($match[0])));
+	WT_Tree::get($gedcom_id)->setPreference('SHOW_RELATIVES_EVENTS', implode(',', array_unique($match[0])));
 }
 
 // Update the version to indicate success

@@ -91,7 +91,7 @@ class WT_Filter {
 	// Format block-level text such as notes or transcripts, etc.
 	//////////////////////////////////////////////////////////////////////////////
 	public static function formatText($text, WT_Tree $WT_TREE) {
-		switch ($WT_TREE->preference('FORMAT_TEXT')) {
+		switch ($WT_TREE->getPreference('FORMAT_TEXT')) {
 		case 'markdown':
 			return '<div class="markdown" dir="auto">' . WT_Filter::markdown($text) . '</div>';
 		default:

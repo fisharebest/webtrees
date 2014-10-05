@@ -108,7 +108,7 @@ class WT_I18N {
 	 * @return string $string
 	 */
 	public static function init($locale=null) {
-		global $WT_SESSION;
+		global $WT_SESSION, $WT_TREE;
 
 		// The translation libraries only work with a cache.
 		$cache_options = array(
@@ -148,7 +148,7 @@ class WT_I18N {
 				}
 				if (WT_GED_ID) {
 					// Add the tree’s default language as a low-priority
-					$locale = get_gedcom_setting(WT_GED_ID, 'LANGUAGE');
+					$locale = $WT_TREE->getPreference('LANGUAGE');
 					$prefs[] = $locale.';q=0.2';
 				}
 				$prefs2=array();

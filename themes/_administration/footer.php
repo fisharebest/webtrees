@@ -24,8 +24,3 @@ if (!defined('WT_WEBTREES')) {
 }
 
 echo '</div>'; // id="admin_content"
-echo '<div id="admin_footer">';
-if (WT_DEBUG) {
-	echo execution_stats();
-}
-echo '</div>'; // id="admin_footer"

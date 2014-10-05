@@ -730,8 +730,10 @@ function find_rin_id($rin) {
  * @return array
  */
 function get_common_surnames($min) {
-	$COMMON_NAMES_ADD   =get_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_ADD');
-	$COMMON_NAMES_REMOVE=get_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_REMOVE');
+	global $WT_TREE;
+
+	$COMMON_NAMES_ADD    = $WT_TREE->getPreference('COMMON_NAMES_ADD');
+	$COMMON_NAMES_REMOVE = $WT_TREE->getPreference('COMMON_NAMES_REMOVE');
 
 	$topsurns=get_top_surnames(WT_GED_ID, $min, 0);
 	foreach (explode(',', $COMMON_NAMES_ADD) as $surname) {
@@ -1043,19 +1045,6 @@ function get_id_from_gedcom($ged_name) {
 		WT_DB::prepare("SELECT SQL_CACHE gedcom_id FROM `##gedcom` WHERE gedcom_name=?")
 		->execute(array($ged_name))
 		->fetchOne();
-}
-
-
-////////////////////////////////////////////////////////////////////////////////
-// Functions to access the WT_GEDCOM_SETTING table
-////////////////////////////////////////////////////////////////////////////////
-
-function get_gedcom_setting($gedcom_id, $setting_name) {
-	return WT_Tree::get($gedcom_id)->preference($setting_name);
-}
-
-function set_gedcom_setting($gedcom_id, $setting_name, $setting_value) {
-	WT_Tree::get($gedcom_id)->preference($setting_name, $setting_value);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
