@@ -244,14 +244,14 @@ case 'load1row':
 			//Pedigree root person
 			'</td><td>',
 			// TODO: autocomplete/find/etc. for this field
-			edit_field_inline('user_gedcom_setting-'.$user_id.'-'.$tree->tree_id.'-rootid', $tree->userPreference($user_id, 'rootid')),
+			edit_field_inline('user_gedcom_setting-'.$user_id.'-'.$tree->tree_id.'-rootid', $tree->getUserPreference($user, 'rootid')),
 			'</td><td>',
 			// TODO: autocomplete/find/etc. for this field
-			edit_field_inline('user_gedcom_setting-'.$user_id.'-'.$tree->tree_id.'-gedcomid', $tree->userPreference($user_id, 'gedcomid')),
+			edit_field_inline('user_gedcom_setting-'.$user_id.'-'.$tree->tree_id.'-gedcomid', $tree->getUserPreference($user, 'gedcomid')),
 			'</td><td>',
-			select_edit_control_inline('user_gedcom_setting-'.$user_id.'-'.$tree->tree_id.'-canedit', $ALL_EDIT_OPTIONS, null, $tree->userPreference($user_id, 'canedit')),
+			select_edit_control_inline('user_gedcom_setting-'.$user_id.'-'.$tree->tree_id.'-canedit', $ALL_EDIT_OPTIONS, null, $tree->getUserPreference($user, 'canedit')),
 			'</td><td>',
-			select_edit_control_inline('user_gedcom_setting-'.$user_id.'-'.$tree->tree_id.'-RELATIONSHIP_PATH_LENGTH', array(0=>WT_I18N::translate('no'), 1=>1, 2=>2, 3=>3, 4=>4, 5=>5, 6=>6, 7=>7, 8=>8, 9=>9, 10=>10), null, $tree->userPreference($user_id, 'RELATIONSHIP_PATH_LENGTH')),
+			select_edit_control_inline('user_gedcom_setting-'.$user_id.'-'.$tree->tree_id.'-RELATIONSHIP_PATH_LENGTH', array(0=>WT_I18N::translate('no'), 1=>1, 2=>2, 3=>3, 4=>4, 5=>5, 6=>6, 7=>7, 8=>8, 9=>9, 10=>10), null, $tree->getUserPreference($user, 'RELATIONSHIP_PATH_LENGTH')),
 			'</td></tr>';
 	}
 	echo '</table>';
@@ -285,14 +285,14 @@ case 'createuser':
 			->setSetting('verified',             $verified)
 			->setSetting('verified_by_admin',    $verified_by_admin);
 		foreach (WT_Tree::getAll() as $tree) {
-			$tree->userPreference($user->getUserId(), 'gedcomid', WT_Filter::post('gedcomid'.$tree->tree_id, WT_REGEX_XREF));
-			$tree->userPreference($user->getUserId(), 'rootid',   WT_Filter::post('rootid'.$tree->tree_id, WT_REGEX_XREF));
-			$tree->userPreference($user->getUserId(), 'canedit',  WT_Filter::post('canedit'.$tree->tree_id, implode('|', array_keys($ALL_EDIT_OPTIONS))));
+			$tree->setUserPreference($user, 'gedcomid', WT_Filter::post('gedcomid'.$tree->tree_id, WT_REGEX_XREF));
+			$tree->setUserPreference($user, 'rootid',   WT_Filter::post('rootid'.$tree->tree_id, WT_REGEX_XREF));
+			$tree->setUserPreference($user, 'canedit',  WT_Filter::post('canedit'.$tree->tree_id, implode('|', array_keys($ALL_EDIT_OPTIONS))));
 			if (WT_Filter::post('gedcomid'.$tree->tree_id, WT_REGEX_XREF)) {
-				$tree->userPreference($user->getUserId(), 'RELATIONSHIP_PATH_LENGTH', WT_Filter::postInteger('RELATIONSHIP_PATH_LENGTH'.$tree->tree_id, 0, 10, 0));
+				$tree->setUserPreference($user, 'RELATIONSHIP_PATH_LENGTH', WT_Filter::postInteger('RELATIONSHIP_PATH_LENGTH'.$tree->tree_id, 0, 10, 0));
 			} else {
 				// Do not allow a path length to be set if the individual ID is not
-				$tree->userPreference($user->getUserId(), 'RELATIONSHIP_PATH_LENGTH', null);
+				$tree->setUserPreference($user, 'RELATIONSHIP_PATH_LENGTH', null);
 			}
 		}
 		Log::addAuthenticationLog("User ->{$username}<- created");

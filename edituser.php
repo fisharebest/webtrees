@@ -82,10 +82,10 @@ if ($form_action=='update' && WT_Filter::checkCsrf()) {
 			->setSetting('contactmethod', $form_contact_method)
 			->setSetting('visibleonline', $form_visible_online);
 
-		$WT_TREE->userPreference(WT_USER_ID, 'rootid', $form_rootid);
+		$WT_TREE->setUserPreference(Auth::user(), 'rootid', $form_rootid);
 
 		// Reload page to pick up changes such as theme and user_id
-		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME);
+		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME);
 		exit;
 	}
 }

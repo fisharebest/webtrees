@@ -184,7 +184,7 @@ case 'update':
 	if ($NEW_MEDIA_DIRECTORY) {
 		if (is_dir(WT_DATA_DIR . $NEW_MEDIA_DIRECTORY)) {
 			$WT_TREE->setPreference('MEDIA_DIRECTORY', $NEW_MEDIA_DIRECTORY);
-		} elseif (WT_File::mkdir(WT_DATA_DIR . $NEW_MEDIA_DIRECTORY, 0755, true)) {
+		} elseif (WT_File::mkdir(WT_DATA_DIR . $NEW_MEDIA_DIRECTORY)) {
 			$WT_TREE->setPreference('MEDIA_DIRECTORY', $NEW_MEDIA_DIRECTORY);
 			WT_FlashMessages::addMessage(WT_I18N::translate('The folder %s was created.', WT_DATA_DIR . $NEW_MEDIA_DIRECTORY));
 		} else {

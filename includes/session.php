@@ -521,9 +521,9 @@ if ($WT_TREE) {
 	define('WT_USER_CAN_ACCEPT',   Auth::isModerator($WT_TREE));
 	define('WT_USER_CAN_EDIT',     Auth::isEditor($WT_TREE));
 	define('WT_USER_CAN_ACCESS',   Auth::isMember($WT_TREE));
-	define('WT_USER_GEDCOM_ID',    $WT_TREE->userPreference(WT_USER_ID, 'gedcomid'));
-	define('WT_USER_ROOT_ID',      $WT_TREE->userPreference(WT_USER_ID, 'rootid') ? $WT_TREE->userPreference(WT_USER_ID, 'rootid') : WT_USER_GEDCOM_ID);
-	define('WT_USER_PATH_LENGTH',  $WT_TREE->userPreference(WT_USER_ID, 'RELATIONSHIP_PATH_LENGTH'));
+	define('WT_USER_GEDCOM_ID',    $WT_TREE->getUserPreference(Auth::user(), 'gedcomid'));
+	define('WT_USER_ROOT_ID',      $WT_TREE->getUserPreference(Auth::user(), 'rootid') ? $WT_TREE->getUserPreference(Auth::user(), 'rootid') : WT_USER_GEDCOM_ID);
+	define('WT_USER_PATH_LENGTH',  $WT_TREE->getUserPreference(Auth::user(), 'RELATIONSHIP_PATH_LENGTH'));
 	if (WT_USER_GEDCOM_ADMIN) {
 		define('WT_USER_ACCESS_LEVEL', WT_PRIV_NONE);
 	} elseif (WT_USER_CAN_ACCESS) {

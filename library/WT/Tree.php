@@ -32,13 +32,13 @@ class WT_Tree {
 	public $tree_title_html;
 	public $imported;
 
-	/** @var WT_Tree[] All trees (that we have permission to see */
+	/** @var WT_Tree[] All trees that we have permission to see. */
 	private static $trees;
 
-	/** @var string[] Cached copy of the wt_gedcom_setting table */
-	private $preferences;
+	/** @var string[] Cached copy of the wt_gedcom_setting table. */
+	private $preference;
 
-	/** @var string[][] Cached copy of the wt_user_gedcom_setting table */
+	/** @var string[][] Cached copy of the wt_user_gedcom_setting table. */
 	private $user_preference = array();
 
 	// Create a tree object.  This is a private constructor - it can only
@@ -66,14 +66,14 @@ class WT_Tree {
 	 * @return string|null
 	 */
 	public function getPreference($setting_name, $default = null) {
-		if ($this->preferences === null) {
-			$this->preferences = WT_DB::prepare(
+		if ($this->preference === null) {
+			$this->preference = WT_DB::prepare(
 				"SELECT SQL_CACHE setting_name, setting_value FROM `##gedcom_setting` WHERE gedcom_id = ?"
 			)->execute(array($this->tree_id))->fetchAssoc();
 		}
 
-		if (array_key_exists($setting_name, $this->preferences)) {
-			return $this->preferences[$setting_name];
+		if (array_key_exists($setting_name, $this->preference)) {
+			return $this->preference[$setting_name];
 		} else {
 			return $default;
 		}
@@ -94,7 +94,7 @@ class WT_Tree {
 				"REPLACE INTO `##gedcom_setting` (gedcom_id, setting_name, setting_value) VALUES (?, ?, LEFT(?, 255))"
 			)->execute(array($this->tree_id, $setting_name, $setting_value));
 			// Update our cache
-			$this->preferences[$setting_name] = $setting_value;
+			$this->preference[$setting_name] = $setting_value;
 			// Audit log of changes
 			Log::addConfigurationLog('Tree setting "' . $setting_name . '" set to "' . $setting_value . '"');
 		}
@@ -102,35 +102,53 @@ class WT_Tree {
 		return $this;
 	}
 
-	// Get and Set the tree’s configuration settings
-	public function userPreference($user_id, $setting_name, $setting_value = null) {
+	/**
+	 * Get the tree’s user-configuration settings.
+	 *
+	 * @param User        $user
+	 * @param string      $setting_name
+	 * @param string|null $default
+	 *
+	 * @return string
+	 */
+	public function getUserPreference($user, $setting_name, $default = null) {
 		// There are lots of settings, and we need to fetch lots of them on every page
 		// so it is quicker to fetch them all in one go.
-		if (!array_key_exists($user_id, $this->user_preference)) {
-			$this->user_preference[$user_id] = WT_DB::prepare(
-				"SELECT SQL_CACHE setting_name, setting_value FROM `##user_gedcom_setting` WHERE user_id=? AND gedcom_id=?"
-			)->execute(array($user_id, $this->tree_id))->fetchAssoc();
+		if (!array_key_exists($user->getUserId(), $this->user_preference)) {
+			$this->user_preference[$user->getUserId()] = WT_DB::prepare(
+				"SELECT SQL_CACHE setting_name, setting_value FROM `##user_gedcom_setting` WHERE user_id = ? AND gedcom_id = ?"
+			)->execute(array($user->getUserId(), $this->tree_id))->fetchAssoc();
 		}
 
-		// If $setting_value is null, then GET the setting
-		if ($setting_value === null) {
-			// If parameter two is not specified, GET the setting
-			if (!array_key_exists($setting_name, $this->user_preference[$user_id])) {
-				$this->user_preference[$user_id][$setting_name] = null;
-			}
-
-			return $this->user_preference[$user_id][$setting_name];
+		if (array_key_exists($setting_name, $this->user_preference[$user->getUserId()])) {
+			return $this->user_preference[$user->getUserId()][$setting_name];
 		} else {
-			// If parameter two is specified, then SET the setting.
-			if ($this->userPreference($user_id, $setting_name) !== $setting_value) {
-				// Audit log of changes
-				Log::addConfigurationLog('Gedcom setting "' . $setting_name . '" set to "' . $setting_value . '"');
-			}
+			return $default;
+		}
+	}
+
+	/**
+	 * Set the tree’s user-configuration settings.
+	 *
+	 * @param User    $user
+	 * @param string  setting_name
+	 * @param string  setting_value
+	 *
+	 * @return $this
+	 */
+	public function setUserPreference($user, $setting_name, $setting_value) {
+		if ($this->getUserPreference($user, $setting_name) !== $setting_value) {
+			// Update the database
 			WT_DB::prepare(
 				"REPLACE INTO `##user_gedcom_setting` (user_id, gedcom_id, setting_name, setting_value) VALUES (?, ?, ?, LEFT(?, 255))"
-			)->execute(array($user_id, $this->tree_id, $setting_name, $setting_value));
-			return $this;
+			)->execute(array($user->getUserId(), $this->tree_id, $setting_name, $setting_value));
+			// Update our cache
+			$this->user_preference[$user->getUserId()][$setting_name] = $setting_value;
+			// Audit log of changes
+			Log::addConfigurationLog('Tree setting "' . $setting_name . '" set to "' . $setting_value . '" for user "' . $user->getUserName() . '"');
 		}
+
+		return $this;
 	}
 
 	// Can a user accept changes for this tree?

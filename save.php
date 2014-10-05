@@ -218,9 +218,10 @@ case 'user_gedcom_setting':
 	case 'gedcomid':
 	case 'canedit':
 	case 'RELATIONSHIP_PATH_LENGTH':
+		$user = User::find($id1);
 		$tree = WT_Tree::get($id2);
 		if (Auth::isManager($tree)) {
-			$tree->userPreference($id1, $id3, $value);
+			$tree->setUserPreference($user, $id3, $value);
 			ok();
 			break;
 		}
