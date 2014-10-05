@@ -335,22 +335,22 @@ case 'today':
 	$found_facts=apply_filter(get_anniversary_events($cal_date->minJD, $events), $filterof, $filtersx);
 	break;
 case 'calendar':
-	$cal_date->d=0;
+	$cal_date->d = 0;
 	$cal_date->setJdFromYmd();
 	// Make a separate list for each day.  Unspecified/invalid days go in day 0.
-	$found_facts=array();
-	for ($d=0; $d<=$days_in_month; ++$d)
-		$found_facts[$d]=array();
+	$found_facts = array();
+	for ($d = 0; $d <= $days_in_month; ++$d) {
+		$found_facts[$d] = array();
+	}
 	// Fetch events for each day
-	for ($jd=$cal_date->minJD; $jd<=$cal_date->maxJD; ++$jd)
+	for ($jd = $cal_date->minJD; $jd <= $cal_date->maxJD; ++$jd)
 		foreach (apply_filter(get_anniversary_events($jd, $events), $filterof, $filtersx) as $fact) {
-			$tmp=$fact->getDate()->MinDate();
-			if ($tmp->d>=1 && $tmp->y && $tmp->d<=$tmp->DaysInMonth()) {
-				$d=$jd-$cal_date->minJD+1;
+			$d = $jd - $cal_date->minJD + 1;
+			if (array_key_exists($d, $found_facts)) {
+				$found_facts[$d][]=$fact;
 			} else {
-				$d=0;
+				$found_facts[0][]=$fact;
 			}
-			$found_facts[$d][]=$fact;
 		}
 	break;
 case 'year':
