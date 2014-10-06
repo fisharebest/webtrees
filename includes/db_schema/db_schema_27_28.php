@@ -26,11 +26,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 // Delete old/unused settings
 WT_DB::exec(
 	"DELETE FROM `##gedcom_setting` WHERE setting_name IN ('USE_GEONAMES')"
@@ -52,11 +47,15 @@ WT_DB::exec(
 
 // ix1 - covering index for visitor lookup
 // ix2 - for total counts in admin page
-//try {
-	WT_DB::exec("ALTER TABLE `##site_access_rule` ADD UNIQUE INDEX `##site_access_rule_ix1` (ip_address_end, ip_address_start, user_agent_pattern, rule), ADD INDEX `##site_access_rule_ix2` (rule)");
-//} catch (Exception $ex) {
-	// Already done?
-//}
+try {
+	WT_DB::exec(
+		"ALTER TABLE `##site_access_rule`" .
+		" ADD UNIQUE INDEX `##site_access_rule_ix1` (ip_address_end, ip_address_start, user_agent_pattern, rule)," .
+		" ADD        INDEX `##site_access_rule_ix2` (rule)"
+	);
+} catch (Exception $ex) {
+	 Already done?
+}
 
 // Update the version to indicate success
 WT_Site::setPreference($schema_name, $next_version);

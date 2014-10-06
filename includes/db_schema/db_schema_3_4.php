@@ -30,12 +30,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
-self::exec(
+WT_DB::exec(
 	"INSERT IGNORE INTO `##user_gedcom_setting` (user_id, gedcom_id, setting_name, setting_value)".
 	" SELECT u.user_id, g.gedcom_id, 'RELATIONSHIP_PATH_LENGTH', LEAST(us1.setting_value, gs1.setting_value)".
 	" FROM   `##user` u".
@@ -48,18 +43,18 @@ self::exec(
 );
 
 // Delete old/unused settings
-self::exec(
+WT_DB::exec(
 	"DELETE FROM `##site_setting` WHERE setting_name IN ('SESSION_SAVE_PATH')"
 );
-self::exec(
+WT_DB::exec(
 	"DELETE FROM `##gedcom_setting` WHERE setting_name IN ('HOME_SITE_TEXT', 'HOME_SITE_URL', 'CHECK_MARRIAGE_RELATIONS', 'MAX_RELATION_PATH_LENGTH', 'USE_RELATIONSHIP_PRIVACY')"
 );
-self::exec(
+WT_DB::exec(
 	"DELETE FROM `##user_setting` WHERE setting_name IN ('loggedin', 'relationship_privacy', 'max_relation_path_length')"
 );
 
 // Fix Mc/Mac problems - See SVN9701
-self::exec(
+WT_DB::exec(
 	"UPDATE `##name` SET n_surn=CONCAT('MC', SUBSTRING(n_surn, 4)) WHERE n_surn LIKE 'MC0%'"
 );
 

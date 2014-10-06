@@ -26,14 +26,9 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 // Earlier versions of webtrees put quote marks round soundex codes.
 // These are harmless, but clean them up for consistency.
-self::exec(
+WT_DB::exec(
 	"UPDATE `##name` SET" .
 	" n_soundex_givn_std = TRIM('''' FROM n_soundex_givn_std)," .
 	" n_soundex_surn_std = TRIM('''' FROM n_soundex_surn_std)," .
@@ -43,21 +38,21 @@ self::exec(
 
 // Earlier versions of webtrees added zero codes for names without phonetic content.
 // These are harmless, but clean them up for consistency.
-self::exec(
+WT_DB::exec(
 	"UPDATE `##name` SET" .
 	" n_soundex_givn_std = REPLACE(n_soundex_givn_std, '0000:',   '')," .
 	" n_soundex_surn_std = REPLACE(n_soundex_surn_std, '0000:',   '')," .
 	" n_soundex_givn_dm  = REPLACE(n_soundex_givn_dm,  '000000:', '')," .
 	" n_soundex_surn_dm  = REPLACE(n_soundex_surn_dm,  '000000:', '')"
 );
-self::exec(
+WT_DB::exec(
 	"UPDATE `##name` SET" .
 	" n_soundex_givn_std = REPLACE(n_soundex_givn_std, ':0000',   '')," .
 	" n_soundex_surn_std = REPLACE(n_soundex_surn_std, ':0000',   '')," .
 	" n_soundex_givn_dm  = REPLACE(n_soundex_givn_dm,  ':000000', '')," .
 	" n_soundex_surn_dm  = REPLACE(n_soundex_surn_dm,  ':000000', '')"
 );
-self::exec(
+WT_DB::exec(
 	"UPDATE `##name` SET" .
 	" n_soundex_givn_std = NULLIF(n_soundex_givn_std, '0000'  )," .
 	" n_soundex_surn_std = NULLIF(n_soundex_surn_std, '0000'  )," .
@@ -65,22 +60,21 @@ self::exec(
 	" n_soundex_surn_dm  = NULLIF(n_soundex_surn_dm,  '000000')"
 );
 
-self::exec(
+WT_DB::exec(
 	"UPDATE `##places` SET" .
 	" p_std_soundex = REPLACE(p_std_soundex, '0000:',   '')," .
 	" p_dm_soundex  = REPLACE(p_dm_soundex,  '000000:', '')"
 );
-self::exec(
+WT_DB::exec(
 	"UPDATE `##places` SET" .
 	" p_std_soundex = REPLACE(p_std_soundex, ':0000',   '')," .
 	" p_dm_soundex  = REPLACE(p_dm_soundex,  ':000000', '')"
 );
-self::exec(
+WT_DB::exec(
 	"UPDATE `##places` SET" .
 	" p_std_soundex = NULLIF(p_std_soundex, '0000'  )," .
 	" p_dm_soundex  = NULLIF(p_dm_soundex,  '000000')"
 );
-
 
 // Update the version to indicate success
 WT_Site::setPreference($schema_name, $next_version);

@@ -28,28 +28,23 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 try {
-	self::exec("ALTER TABLE `##gedcom` ADD COLUMN sort_order INTEGER NOT NULL DEFAULT 0");
+	WT_DB::exec("ALTER TABLE `##gedcom` ADD COLUMN sort_order INTEGER NOT NULL DEFAULT 0");
 } catch (PDOException $ex) {
 	// If this fails, it has probably already been done.
 }
 
 try {
-	self::exec("ALTER TABLE `##gedcom` ADD INDEX ix1 (sort_order)");
+	WT_DB::exec("ALTER TABLE `##gedcom` ADD INDEX ix1 (sort_order)");
 } catch (PDOException $ex) {
 	// If this fails, it has probably already been done.
 }
 
 // No longer used
-self::exec("DELETE FROM `##gedcom_setting` WHERE setting_name IN ('PAGE_AFTER_LOGIN')");
+WT_DB::exec("DELETE FROM `##gedcom_setting` WHERE setting_name IN ('PAGE_AFTER_LOGIN')");
 
 // Change of defaults - do not add ASSO, etc. to NOTE objects
-self::exec("UPDATE `##gedcom_setting` SET setting_value='SOUR' WHERE setting_value='ASSO,SOUR,NOTE,REPO' AND setting_name='NOTE_FACTS_ADD'");
+WT_DB::exec("UPDATE `##gedcom_setting` SET setting_value='SOUR' WHERE setting_value='ASSO,SOUR,NOTE,REPO' AND setting_name='NOTE_FACTS_ADD'");
 
 // Update the version to indicate success
 WT_Site::setPreference($schema_name, $next_version);

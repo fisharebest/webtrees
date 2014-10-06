@@ -27,11 +27,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 WT_DB::exec("UPDATE `##placelocation` SET pl_icon=REPLACE(pl_icon, '.gif', '.png')");
 
 // Update the version to indicate success
