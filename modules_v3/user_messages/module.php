@@ -66,7 +66,7 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 			$content.='<br>'.WT_I18N::translate('Send message')." <select name=\"touser\">";
 			$content.='<option value="">' . WT_I18N::translate('&lt;select&gt;') . '</option>';
 			foreach (User::all() as $user) {
-				if ($user->getUserId() != WT_USER_ID && $user->getSetting('verified_by_admin') && $user->getSetting('contactmethod') != 'none') {
+				if ($user->getUserId() != WT_USER_ID && $user->getPreference('verified_by_admin') && $user->getPreference('contactmethod') != 'none') {
 					$content.='<option value="' . WT_Filter::escapeHtml($user->getUserName()) . '">';
 					$content.='<span dir="auto">'.WT_Filter::escapeHtml($user->getRealName()).'</span> - <span dir="auto">' . WT_Filter::escapeHtml($user->getUserName()) . '</span>';
 					$content.='</option>';

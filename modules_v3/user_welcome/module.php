@@ -40,7 +40,7 @@ class user_welcome_WT_Module extends WT_Module implements WT_Module_Block {
 		$class=$this->getName().'_block';
 		$title = '<span dir="auto">' . /* I18N: A greeting; %s is the user’s name */ WT_I18N::translate('Welcome %s', Auth::user()->getRealName()) . '</span>';
 		$content = '<table><tr>';
-		if (Auth::user()->getSetting('editaccount')) {
+		if (Auth::user()->getPreference('editaccount')) {
 			$content .= '<td><a href="edituser.php"><i class="icon-mypage"></i><br>'.WT_I18N::translate('My account').'</a></td>';
 		}
 		if (WT_USER_GEDCOM_ID) {

@@ -61,10 +61,10 @@ class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 			if (WT_TIMESTAMP - WT_Site::getPreference('LAST_CHANGE_EMAIL') > (60*60*24*$days)) {
 				// Which users have pending changes?
 				foreach (User::all() as $user) {
-					if ($user->getSetting('contactmethod') !== 'none') {
+					if ($user->getPreference('contactmethod') !== 'none') {
 						foreach (WT_Tree::getAll() as $tree) {
 							if (exists_pending_change($user, $tree)) {
-								WT_I18N::init($user->getSetting('language'));
+								WT_I18N::init($user->getPreference('language'));
 								WT_Mail::systemMessage(
 									$tree,
 									$user,

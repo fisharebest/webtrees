@@ -55,13 +55,11 @@ echo
 	'<link type="text/css" rel="stylesheet" href="', WT_CSS_URL, 'style.css">',
 	'<!--[if IE]>',
 	'<link type="text/css" rel="stylesheet" href="', WT_CSS_URL, 'msie.css">',
-	'<![endif]-->';
-
-echo
+	'<![endif]-->',
 	'</head>',
 	'<body id="body">';
 
-if ($view!='simple') { // Use “simple” headers for popup windows
+if ($view != 'simple') { // Use “simple” headers for popup windows
 	echo '<div id="header" class="block">';
 	echo '<div id="header-user-links"><ul class="makeMenu">';
 	if (WT_USER_ID) {

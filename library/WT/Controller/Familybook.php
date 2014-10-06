@@ -34,10 +34,12 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 	// Data for the controller
 	private $dgenerations=null;
 	public function __construct() {
+		global $WT_TREE;
+
 		parent::__construct();
 
-		$PEDIGREE_FULL_DETAILS      =get_gedcom_setting(WT_GED_ID, 'PEDIGREE_FULL_DETAILS');
-		$MAX_DESCENDANCY_GENERATIONS=get_gedcom_setting(WT_GED_ID, 'MAX_DESCENDANCY_GENERATIONS');
+		$PEDIGREE_FULL_DETAILS       = $WT_TREE->getPreference('PEDIGREE_FULL_DETAILS');
+		$MAX_DESCENDANCY_GENERATIONS = $WT_TREE->getPreference('MAX_DESCENDANCY_GENERATIONS');
 
 		// Extract the request parameters
 		$this->show_full   = WT_Filter::getInteger('show_full',   0, 1, $PEDIGREE_FULL_DETAILS);

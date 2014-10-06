@@ -26,7 +26,7 @@ use WT\Auth;
 define('WT_SCRIPT_NAME', 'index_edit.php');
 require './includes/session.php';
 
-$controller=new WT_Controller_Ajax();
+$controller = new WT_Controller_Ajax();
 
 // Only one of $user_id and $gedcom_id should be set
 $user_id = WT_Filter::get('user_id', WT_REGEX_INTEGER, WT_Filter::post('user_id', WT_REGEX_INTEGER));

@@ -27,7 +27,7 @@ define('WT_SCRIPT_NAME', 'find.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
-$controller=new WT_Controller_Simple();
+$controller = new WT_Controller_Simple();
 
 $type      = WT_Filter::get('type');
 $filter    = WT_Filter::get('filter');
@@ -93,13 +93,11 @@ case "source":
 case "specialchar":
 	$controller->setPageTitle(WT_I18N::translate('Find a special character'));
 	$language_filter = WT_Filter::get('language_filter');
-	if (Auth::id()) {
-		// Users will probably always want the same language, so remember their setting
-		if (!$language_filter) {
-			$language_filter = Auth::user()->getSetting('default_language_filter');
-		} else {
-			Auth::user()->setSetting('default_language_filter', $language_filter);
-		}
+	// Users will probably always want the same language, so remember their setting
+	if (!$language_filter) {
+		$language_filter = Auth::user()->getPreference('default_language_filter');
+	} else {
+		Auth::user()->setPreference('default_language_filter', $language_filter);
 	}
 	require WT_ROOT.'includes/specialchars.php';
 	$action="filter";

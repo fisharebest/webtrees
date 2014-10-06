@@ -843,7 +843,7 @@ function add_simple_tag(
 
 // prints collapsable fields to add ASSO/RELA, SOUR, OBJE ...
 function print_add_layer($tag, $level=2) {
-	global $FULL_SOURCES;
+	global $FULL_SOURCES, $WT_TREE;
 
 	switch ($tag) {
 	case 'SOUR':
@@ -922,7 +922,7 @@ function print_add_layer($tag, $level=2) {
 		break;
 
 	case 'OBJE':
-		if (get_gedcom_setting(WT_GED_ID, 'MEDIA_UPLOAD') >= WT_USER_ACCESS_LEVEL) {
+		if ($WT_TREE->getPreference('MEDIA_UPLOAD') >= WT_USER_ACCESS_LEVEL) {
 			echo "<a href=\"#\" onclick=\"return expand_layer('newobje');\"><i id=\"newobje_img\" class=\"icon-plus\"></i> ", WT_I18N::translate('Add a new media object'), '</a>';
 			echo help_link('OBJE');
 			echo '<br>';
@@ -977,7 +977,7 @@ function addSimpleTags($fact) {
 
 // Assemble the pieces of a newly created record into gedcom
 function addNewName() {
-	global $ADVANCED_NAME_FACTS;
+	global $ADVANCED_NAME_FACTS, $WT_TREE;
 
 	$gedrec="\n1 NAME ".WT_Filter::post('NAME');
 
@@ -988,7 +988,7 @@ function addNewName() {
 	}
 
 	// Paternal and Polish and Lithuanian surname traditions can also create a _MARNM
-	$SURNAME_TRADITION=get_gedcom_setting(WT_GED_ID, 'SURNAME_TRADITION');
+	$SURNAME_TRADITION = $WT_TREE->getPreference('SURNAME_TRADITION');
 	if ($SURNAME_TRADITION=='paternal' || $SURNAME_TRADITION=='polish' || $SURNAME_TRADITION=='lithuanian') {
 		$tags[]='_MARNM';
 	}

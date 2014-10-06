@@ -38,14 +38,15 @@ class login_block_WT_Module extends WT_Module implements WT_Module_Block {
 		$id=$this->getName().$block_id;
 		$class=$this->getName().'_block';
 		$controller->addInlineJavascript('
-				jQuery("#new_passwd").hide();
-				jQuery("#passwd_click").click(function() {
-					jQuery("#new_passwd").slideToggle(100, function() {
-						jQuery("#new_passwd_username").focus();
-					});
-					return false;
+			jQuery("#new_passwd").hide();
+			jQuery("#passwd_click").click(function() {
+				jQuery("#new_passwd").slideToggle(100, function() {
+					jQuery("#new_passwd_username").focus();
 				});
-			');
+				return false;
+			});
+		');
+
 		if (WT_USER_ID) {
 			$title = WT_I18N::translate('Logout');
 			$content = '<div class="center"><form method="post" action="logout.php" name="logoutform" onsubmit="return true;">';

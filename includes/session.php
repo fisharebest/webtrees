@@ -521,9 +521,9 @@ if ($WT_TREE) {
 	define('WT_USER_CAN_ACCEPT',   Auth::isModerator($WT_TREE));
 	define('WT_USER_CAN_EDIT',     Auth::isEditor($WT_TREE));
 	define('WT_USER_CAN_ACCESS',   Auth::isMember($WT_TREE));
-	define('WT_USER_GEDCOM_ID',    $WT_TREE->userPreference(WT_USER_ID, 'gedcomid'));
-	define('WT_USER_ROOT_ID',      $WT_TREE->userPreference(WT_USER_ID, 'rootid') ? $WT_TREE->userPreference(WT_USER_ID, 'rootid') : WT_USER_GEDCOM_ID);
-	define('WT_USER_PATH_LENGTH',  $WT_TREE->userPreference(WT_USER_ID, 'RELATIONSHIP_PATH_LENGTH'));
+	define('WT_USER_GEDCOM_ID',    $WT_TREE->getUserPreference(Auth::user(), 'gedcomid'));
+	define('WT_USER_ROOT_ID',      $WT_TREE->getUserPreference(Auth::user(), 'rootid') ? $WT_TREE->getUserPreference(Auth::user(), 'rootid') : WT_USER_GEDCOM_ID);
+	define('WT_USER_PATH_LENGTH',  $WT_TREE->getUserPreference(Auth::user(), 'RELATIONSHIP_PATH_LENGTH'));
 	if (WT_USER_GEDCOM_ADMIN) {
 		define('WT_USER_ACCESS_LEVEL', WT_PRIV_NONE);
 	} elseif (WT_USER_CAN_ACCESS) {
@@ -596,12 +596,10 @@ if (WT_SCRIPT_NAME!='admin_trees_manage.php' && WT_SCRIPT_NAME!='admin_pgv_to_wt
 	}
 }
 
-if (Auth::id()) {
-	// Update the login time every 5 minutes
-	if (WT_TIMESTAMP - $WT_SESSION->activity_time > 300) {
-		Auth::user()->setSetting('sessiontime', WT_TIMESTAMP);
-		$WT_SESSION->activity_time = WT_TIMESTAMP;
-	}
+// Update the login time every 5 minutes
+if (WT_TIMESTAMP - $WT_SESSION->activity_time > 300) {
+	Auth::user()->setPreference('sessiontime', WT_TIMESTAMP);
+	$WT_SESSION->activity_time = WT_TIMESTAMP;
 }
 
 // Set the theme
@@ -629,7 +627,7 @@ if (substr(WT_SCRIPT_NAME, 0, 5)=='admin' || WT_SCRIPT_NAME=='module.php' && sub
 		// 3) webtrees
 		// 4) first one found
 		if (WT_GED_ID) {
-			$THEME_DIR=get_gedcom_setting(WT_GED_ID, 'THEME_DIR');
+			$THEME_DIR = $WT_TREE->getPreference('THEME_DIR');
 		}
 		if (!in_array($THEME_DIR, get_theme_names())) {
 			$THEME_DIR=WT_Site::getPreference('THEME_DIR');
@@ -641,35 +639,23 @@ if (substr(WT_SCRIPT_NAME, 0, 5)=='admin' || WT_SCRIPT_NAME=='module.php' && sub
 			list($THEME_DIR)=get_theme_names();
 		}
 	}
-	define('WT_THEME_DIR', WT_THEMES_DIR.$THEME_DIR.'/');
+	define('WT_THEME_DIR', WT_THEMES_DIR . $THEME_DIR . '/');
 	// Remember this setting
-	if (WT_THEME_DIR!=WT_THEMES_DIR.'_administration/') {
+	if (WT_THEME_DIR != WT_THEMES_DIR . '_administration/') {
 		$WT_SESSION->theme_dir=$THEME_DIR;
 	}
 }
 // If we have specified a CDN, use it for static theme resources
 define('WT_THEME_URL', WT_STATIC_URL.WT_THEME_DIR);
 
-require WT_ROOT.WT_THEME_DIR.'theme.php';
+require WT_ROOT . WT_THEME_DIR . 'theme.php';
 
 // Page hit counter - load after theme, as we need theme formatting
-if ($WT_TREE && $WT_TREE->preference('SHOW_COUNTER') && !$SEARCH_SPIDER) {
+if ($WT_TREE && $WT_TREE->getPreference('SHOW_COUNTER') && !$SEARCH_SPIDER) {
 	require WT_ROOT.'includes/hitcount.php';
 } else {
 	$hitCount='';
 }
-
-// define constants to be used when setting permissions after creating files/directories
-if (substr(PHP_SAPI, 0, 3) == 'cgi') {  // cgi-mode, should only be writable by owner
-	define('WT_PERM_EXE',  0755);  // to be used on directories, php files, etc.
-	define('WT_PERM_FILE', 0644);  // to be used on images, text files, etc.
-} else { // mod_php mode, should be writable by everyone
-	define('WT_PERM_EXE',  0777);
-	define('WT_PERM_FILE', 0666);
-}
-
-// Lightbox needs custom integration in many places.  Only check for the module once.
-define('WT_USE_LIGHTBOX', !$SEARCH_SPIDER && array_key_exists('lightbox', WT_Module::getActiveModules()));
 
 // Search engines are only allowed to see certain pages.
 if ($SEARCH_SPIDER && !in_array(WT_SCRIPT_NAME , array(
@@ -677,7 +663,7 @@ if ($SEARCH_SPIDER && !in_array(WT_SCRIPT_NAME , array(
 	'individual.php', 'family.php', 'mediaviewer.php', 'note.php', 'repo.php', 'source.php',
 ))) {
 	header($_SERVER['SERVER_PROTOCOL'].' 403 Forbidden');
-	$controller=new WT_Controller_Page();
+	$controller = new WT_Controller_Page();
 	$controller->setPageTitle(WT_I18N::translate('Search engine'));
 	$controller->pageHeader();
 	echo '<p class="ui-state-error">', WT_I18N::translate('You do not have permission to view this page.'), '</p>';

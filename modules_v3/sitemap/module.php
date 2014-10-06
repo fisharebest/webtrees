@@ -63,14 +63,14 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 	// These files are the same for visitors/users/admins.
 	private function generate_index() {
 		// Check the cache
-		$timestamp=get_module_setting($this->getName(), 'sitemap.timestamp');
+		$timestamp = $this->getSetting( 'sitemap.timestamp');
 		if ($timestamp > WT_TIMESTAMP - self::CACHE_LIFE) {
-			$data=get_module_setting($this->getName(), 'sitemap.xml');
+			$data = $this->getSetting('sitemap.xml');
 		} else {
 			$data='';
 			$lastmod='<lastmod>'.date('Y-m-d').'</lastmod>';
 			foreach (WT_Tree::getAll() as $tree) {
-				if (get_gedcom_setting($tree->tree_id, 'include_in_sitemap')) {
+				if ($tree->getPreference('include_in_sitemap')) {
 					$n=WT_DB::prepare("SELECT COUNT(*) FROM `##individuals` WHERE i_file=?")->execute(array($tree->tree_id))->fetchOne();
 					for ($i=0; $i<=$n/self::RECORDS_PER_VOLUME; ++$i) {
 						$data.='<sitemap><loc>'.WT_SERVER_NAME.WT_SCRIPT_PATH.'module.php?mod='.$this->getName().'&amp;mod_action=generate&amp;file=sitemap-'.$tree->tree_id.'-i-'.$i.'.xml</loc>'.$lastmod.'</sitemap>'.PHP_EOL;
@@ -101,13 +101,13 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 					}
 				}
 			}
-			$data='<'.'?xml version="1.0" encoding="UTF-8" ?'.'>'.PHP_EOL.'<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'.PHP_EOL.$data.'</sitemapindex>'.PHP_EOL;
+			$data = '<'.'?xml version="1.0" encoding="UTF-8" ?'.'>' . PHP_EOL . '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . PHP_EOL . $data . '</sitemapindex>' . PHP_EOL;
 			// Cache this data.
-			set_module_setting($this->getName(), 'sitemap.xml', $data);
-			set_module_setting($this->getName(), 'sitemap.timestamp', WT_TIMESTAMP);
+			$this->setSetting('sitemap.xml', $data);
+			$this->setSetting('sitemap.timestamp', WT_TIMESTAMP);
 		}
 		header('Content-Type: application/xml');
-		header('Content-Length: '.strlen($data));
+		header('Content-Length: ' . strlen($data));
 		echo $data;
 	}
 
@@ -115,9 +115,9 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 	// These files depend on access levels, so only cache for visitors.
 	private function generate_file($ged_id, $rec_type, $volume) {
 		// Check the cache
-		$timestamp=get_module_setting($this->getName(), 'sitemap-'.$ged_id.'-'.$rec_type.'-'.$volume.'.timestamp');
+		$timestamp = $this->getSetting('sitemap-' . $ged_id . '-' . $rec_type . '-' . $volume . '.timestamp');
 		if ($timestamp > WT_TIMESTAMP - self::CACHE_LIFE && !WT_USER_ID) {
-			$data=get_module_setting($this->getName(), 'sitemap-'.$ged_id.'-'.$rec_type.'-'.$volume.'.xml');
+			$data = $this->getSetting('sitemap-' . $ged_id . '-' . $rec_type . '-' . $volume . '.xml');
 		} else {
 			$tree=WT_Tree::get($ged_id);
 			$data='<url><loc>'.WT_SERVER_NAME.WT_SCRIPT_PATH.'index.php?ctype=gedcom&amp;ged='.$tree->tree_name_url.'</loc></url>'.PHP_EOL;
@@ -202,8 +202,8 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 			// Cache this data - but only for visitors, as we don’t want
 			// visitors to see data created by logged-in users.
 			if (!WT_USER_ID) {
-				set_module_setting($this->getName(), 'sitemap-'.$ged_id.'-'.$rec_type.'-'.$volume.'.xml', $data);
-				set_module_setting($this->getName(), 'sitemap-'.$ged_id.'-'.$rec_type.'-'.$volume.'.timestamp', WT_TIMESTAMP);
+				$this->setSetting('sitemap-' . $ged_id . '-' . $rec_type . '-' . $volume . '.xml', $data);
+				$this->setSetting('sitemap-' . $ged_id . '-' . $rec_type . '-' . $volume . '.timestamp', WT_TIMESTAMP);
 			}
 		}
 		header('Content-Type: application/xml');
@@ -212,7 +212,7 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 	}
 
 	private function admin() {
-		$controller=new WT_Controller_Page();
+		$controller = new WT_Controller_Page();
 		$controller
 			->restrictAccess(Auth::isAdmin())
 			->setPageTitle($this->getTitle())
@@ -221,7 +221,7 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 		// Save the updated preferences
 		if (WT_Filter::post('action')=='save') {
 			foreach (WT_Tree::getAll() as $tree) {
-				set_gedcom_setting($tree->tree_id, 'include_in_sitemap', WT_Filter::postBool('include'.$tree->tree_id));
+				$tree->setPreference('include_in_sitemap', WT_Filter::postBool('include'.$tree->tree_id));
 			}
 			// Clear cache and force files to be regenerated
 			WT_DB::prepare(
@@ -241,7 +241,7 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 			'<input type="hidden" name="action" value="save">';
 		foreach (WT_Tree::getAll() as $tree) {
 			echo '<p><input type="checkbox" name="include', $tree->tree_id, '"';
-			if (get_gedcom_setting($tree->tree_id, 'include_in_sitemap')) {
+			if ($tree->getPreference('include_in_sitemap')) {
 				echo ' checked="checked"';
 				$include_any=true;
 			}

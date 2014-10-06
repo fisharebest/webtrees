@@ -21,7 +21,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-$controller=new WT_Controller_Simple();
+$controller = new WT_Controller_Simple();
 
 $filter   = WT_Filter::get('filter');
 $action   = WT_Filter::get('action');

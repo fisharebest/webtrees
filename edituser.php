@@ -31,7 +31,7 @@ require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
 // prevent users with editing account disabled from being able to edit their account
-if (!Auth::id() || !Auth::user()->getSetting('editaccount')) {
+if (!Auth::id() || !Auth::user()->getPreference('editaccount')) {
 	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
 	exit;
 }
@@ -77,20 +77,20 @@ if ($form_action=='update' && WT_Filter::checkCsrf()) {
 		Auth::user()
 			->setRealName($form_realname)
 			->setEmail($form_email)
-			->setSetting('theme',         $form_theme)
-			->setSetting('language',      $form_language)
-			->setSetting('contactmethod', $form_contact_method)
-			->setSetting('visibleonline', $form_visible_online);
+			->setPreference('theme',         $form_theme)
+			->setPreference('language',      $form_language)
+			->setPreference('contactmethod', $form_contact_method)
+			->setPreference('visibleonline', $form_visible_online);
 
-		$WT_TREE->userPreference(WT_USER_ID, 'rootid', $form_rootid);
+		$WT_TREE->setUserPreference(Auth::user(), 'rootid', $form_rootid);
 
 		// Reload page to pick up changes such as theme and user_id
-		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME);
+		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME);
 		exit;
 	}
 }
 
-$controller=new WT_Controller_Page();
+$controller = new WT_Controller_Page();
 $controller
 	->setPageTitle(WT_I18N::translate('User administration'))
 	->pageHeader()
@@ -155,7 +155,7 @@ echo '<div id="edituser-page">
 		<div class="label">', WT_I18N::translate('Confirm password'), help_link('password_confirm'), '</div>
 		<div class="value"><input type="password" name="form_pass2"></div>
 		<div class="label">', WT_I18N::translate('Language'), '</div>
-		<div class="value">', edit_field_language('form_language', Auth::user()->getSetting('language')), '</div>
+		<div class="value">', edit_field_language('form_language', Auth::user()->getPreference('language')), '</div>
 		<div class="label">', WT_I18N::translate('Email address'), help_link('email'), '</div>
 		<div class="value"><input type="email" name="form_email" value="', WT_Filter::escapeHtml(Auth::user()->getEmail()), '" size="50"></div>
 		<div class="label">', WT_I18N::translate('Theme'), help_link('THEME'), '</div>
@@ -164,7 +164,7 @@ echo '<div id="edituser-page">
 			<option value="">', WT_Filter::escapeHtml(/* I18N: default option in list of themes */ WT_I18N::translate('<default theme>')), '</option>';
 			foreach (get_theme_names() as $themename=>$themedir) {
 				echo '<option value="', $themedir, '"';
-				if ($themedir == Auth::user()->getSetting('theme')) {
+				if ($themedir == Auth::user()->getPreference('theme')) {
 					echo ' selected="selected"';
 				}
 				echo '>', $themename, '</option>';
@@ -172,9 +172,9 @@ echo '<div id="edituser-page">
 			echo '</select>
 		</div>
 		<div class="label">', WT_I18N::translate('Preferred contact method'), help_link('edituser_contact_meth'), '</div>
-		<div class="value">', edit_field_contact('form_contact_method', Auth::user()->getSetting('contactmethod')), '</div>
+		<div class="value">', edit_field_contact('form_contact_method', Auth::user()->getPreference('contactmethod')), '</div>
 		<div class="label">', WT_I18N::translate('Visible to other users when online'), help_link('useradmin_visibleonline'), '</div>
-		<div class="value">', checkbox('form_visible_online', Auth::user()->getSetting('visibleonline')), '</div>
+		<div class="value">', checkbox('form_visible_online', Auth::user()->getPreference('visibleonline')), '</div>
 	</div>'; // close edituser-table
 	echo '<div id="edituser_submit"><input type="submit" value="', WT_I18N::translate('save'), '"></div>';
 	echo '</form>

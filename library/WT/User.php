@@ -35,8 +35,8 @@ class User {
 	/** @var  string The email address of this user. */
 	private $email;
 
-	/** @var array Settings for the user, from the wt_user_setting table. */
-	private $settings;
+	/** @var array Cached copy of the wt_user_setting table. */
+	private $preferences;
 
 	/** @var  User[] Only fetch users from the database once. */
 	private static $cache = array();
@@ -216,7 +216,7 @@ class User {
 	 *
 	 * @param \stdclass $user A row from the wt_user table
 	 */
-	private function __construct(\stdClass $user) {
+	public function __construct(\stdClass $user) {
 		$this->user_id   = $user->user_id;
 		$this->user_name = $user->user_name;
 		$this->real_name = $user->real_name;
@@ -378,19 +378,20 @@ class User {
 	 *
 	 * @return string|null
 	 */
-	public function getSetting($setting_name, $default = null) {
-		if ($this->settings === null) {
-			if ($this->getUserId()) {
-				$this->settings = WT_DB::prepare(
+	public function getPreference($setting_name, $default = null) {
+		if ($this->preferences === null) {
+			if ($this->user_id) {
+				$this->preferences = WT_DB::prepare(
 					"SELECT SQL_CACHE setting_name, setting_value FROM `##user_setting` WHERE user_id = ?"
 				)->execute(array($this->user_id))->fetchAssoc();
 			} else {
-				$this->settings = array();
+				// Not logged in?  We have no preferences.
+				$this->preferences = array();
 			}
 		}
 
-		if (array_key_exists($setting_name, $this->settings)) {
-			return $this->settings[$setting_name];
+		if (array_key_exists($setting_name, $this->preferences)) {
+			return $this->preferences[$setting_name];
 		} else {
 			return $default;
 		}
@@ -399,20 +400,16 @@ class User {
 	/**
 	 * Update a setting for the user.
 	 *
-	 * @param string          $setting_name
-	 * @param string|int|bool $setting_value
+	 * @param string $setting_name
+	 * @param string $setting_value
 	 *
 	 * @return User
 	 */
-	public function setSetting($setting_name, $setting_value) {
-		if ($setting_value === null) {
-			WT_DB::prepare("DELETE FROM `##user_setting` WHERE user_id=? AND setting_name=?")
-				->execute(array($this->user_id, $setting_name));
-			unset($this->settings[$setting_name]);
-		} elseif ($this->getsetting($setting_name) !== $setting_value) {
+	public function setPreference($setting_name, $setting_value) {
+		if ($this->user_id && $this->getPreference($setting_name) !== $setting_value) {
 			WT_DB::prepare("REPLACE INTO `##user_setting` (user_id, setting_name, setting_value) VALUES (?, ?, LEFT(?, 255))")
 				->execute(array($this->user_id, $setting_name, $setting_value));
-			$this->settings[$setting_name] = $setting_value;
+			$this->preferences[$setting_name] = $setting_value;
 		}
 
 		return $this;

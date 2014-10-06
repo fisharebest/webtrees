@@ -27,16 +27,15 @@ use WT\Auth;
 
 define('WT_SCRIPT_NAME', 'admin_site_merge.php');
 require './includes/session.php';
+require_once WT_ROOT.'includes/functions/functions_edit.php';
 
-$controller=new WT_Controller_Page;
+$controller = new WT_Controller_Page;
 $controller
 	->restrictAccess(Auth::isManager())
 	->setPageTitle(WT_I18N::translate('Merge records'))
 	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
 	->addInlineJavascript('autocomplete();')
 	->pageHeader();
-
-require_once WT_ROOT.'includes/functions/functions_edit.php';
 
 $ged    = $GEDCOM;
 $gid1   = WT_Filter::post('gid1', WT_REGEX_XREF);

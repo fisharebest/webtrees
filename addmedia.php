@@ -90,7 +90,7 @@ case 'create': // Save the information from the “showcreateform” action
 
 	// Make sure the media folder exists
 	if (!is_dir(WT_DATA_DIR . $MEDIA_DIRECTORY)) {
-		if (@mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY, WT_PERM_EXE, true)) {
+		if (WT_File::mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY)) {
 			WT_FlashMessages::addMessage(WT_I18N::translate('The folder %s was created.', '<span class="filename">' . WT_DATA_DIR . $MEDIA_DIRECTORY . '</span>'));
 		} else {
 			WT_FlashMessages::addMessage(WT_I18N::translate('The folder %s does not exist, and it could not be created.', '<span class="filename">' . WT_DATA_DIR . $MEDIA_DIRECTORY . '</span>'));
@@ -101,7 +101,7 @@ case 'create': // Save the information from the “showcreateform” action
 	// Managers can create new media paths (subfolders).  Users must use existing folders.
 	if ($folderName && !is_dir(WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName)) {
 		if (WT_USER_GEDCOM_ADMIN) {
-			if (@mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName, WT_PERM_EXE, true)) {
+			if (WT_File::mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName)) {
 				WT_FlashMessages::addMessage(WT_I18N::translate('The folder %s was created.', '<span class="filename">' . WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName . '</span>'));
 			} else {
 				WT_FlashMessages::addMessage(WT_I18N::translate('The folder %s does not exist, and it could not be created.', '<span class="filename">' . WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName . '</span>'));
@@ -115,7 +115,7 @@ case 'create': // Save the information from the “showcreateform” action
 
 	// The media folder exists.  Now create a thumbnail folder to match it.
 	if (!is_dir(WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName)) {
-		if (!@mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName, WT_PERM_EXE, true)) {
+		if (!WT_File::mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName)) {
 			WT_FlashMessages::addMessage(WT_I18N::translate('The folder %s does not exist, and it could not be created.', '<span class="filename">' . WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName . '</span>'));
 			break;
 		}
@@ -176,7 +176,6 @@ case 'create': // Save the information from the “showcreateform” action
 			break;
 		}
 		if (move_uploaded_file($_FILES['mediafile']['tmp_name'], $serverFileName)) {
-			chmod($serverFileName, WT_PERM_FILE);
 			Log::addMediaLog('Media file ' . $serverFileName . ' uploaded');
 		} else {
 			WT_FlashMessages::addMessage(
@@ -200,7 +199,6 @@ case 'create': // Save the information from the “showcreateform” action
 			}
 			$serverFileName = WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName .  $thumbFile;
 			if (move_uploaded_file($_FILES['thumbnail']['tmp_name'], $serverFileName)) {
-				chmod($serverFileName, WT_PERM_FILE);
 				Log::addMediaLog('Thumbnail file ' . $serverFileName . ' uploaded');
 			}
 		}
@@ -252,7 +250,7 @@ case 'update': // Save the information from the “editmedia” action
 
 	// Make sure the media folder exists
 	if (!is_dir(WT_DATA_DIR . $MEDIA_DIRECTORY)) {
-		if (@mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY, WT_PERM_EXE, true)) {
+		if (WT_File::mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY)) {
 			WT_FlashMessages::addMessage(WT_I18N::translate('The folder %s was created.', '<span class="filename">' . WT_DATA_DIR . $MEDIA_DIRECTORY . '</span>'));
 		} else {
 			WT_FlashMessages::addMessage(WT_I18N::translate('The folder %s does not exist, and it could not be created.', '<span class="filename">' . WT_DATA_DIR . $MEDIA_DIRECTORY . '</span>'));
@@ -263,7 +261,7 @@ case 'update': // Save the information from the “editmedia” action
 	// Managers can create new media paths (subfolders).  Users must use existing folders.
 	if ($folderName && !is_dir(WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName)) {
 		if (WT_USER_GEDCOM_ADMIN) {
-			if (@mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName, WT_PERM_EXE, true)) {
+			if (WT_File::mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName)) {
 				WT_FlashMessages::addMessage(WT_I18N::translate('The folder %s was created.', '<span class="filename">' . WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName . '</span>'));
 			} else {
 				WT_FlashMessages::addMessage(WT_I18N::translate('The folder %s does not exist, and it could not be created.', '<span class="filename">' . WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName . '</span>'));
@@ -277,7 +275,7 @@ case 'update': // Save the information from the “editmedia” action
 
 	// The media folder exists.  Now create a thumbnail folder to match it.
 	if (!is_dir(WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName)) {
-		if (!@mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName, WT_PERM_EXE, true)) {
+		if (!WT_File::mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName)) {
 			WT_FlashMessages::addMessage(WT_I18N::translate('The folder %s does not exist, and it could not be created.', '<span class="filename">' . WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName . '</span>'));
 			break;
 		}

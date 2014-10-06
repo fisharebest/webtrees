@@ -81,7 +81,7 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		global $WT_IMAGES, $UNKNOWN_NN, $controller;
 
 		// Fetch a list of the initial letters of all surnames in the database
-		$initials=WT_Query_Name::surnameAlpha(true, false, WT_GED_ID, false);
+		$initials = WT_Query_Name::surnameAlpha(true, false, WT_GED_ID, false);
 
 		$controller->addInlineJavascript('
 			var famloadedNames = new Array();
@@ -89,7 +89,7 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			function fsearchQ() {
 				var query = jQuery("#sb_fam_name").val();
 				if (query.length>1) {
-					jQuery("#sb_fam_content").load("module.php?mod='.$this->getName().'&mod_action=ajax&sb_action=families&search="+query);
+					jQuery("#sb_fam_content").load("module.php?mod=' . $this->getName() . '&mod_action=ajax&sb_action=families&search="+query);
 				}
 			}
 

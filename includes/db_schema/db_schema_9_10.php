@@ -26,15 +26,10 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 // A bug in the original version of db_schema_8_9 failed to update this :-(
 // Do it again....
 try {
-	self::exec(
+	WT_DB::exec(
 		"ALTER TABLE `##dates` CHANGE d_type d_type ENUM('@#DGREGORIAN@', '@#DJULIAN@', '@#DHEBREW@', '@#DFRENCH R@', '@#DHIJRI@', '@#DROMAN@', '@#DJALALI@')"
 	);
 } catch (PDOException $ex) {
@@ -44,7 +39,7 @@ try {
 
 try {
 	// The INDILIST and FAMLIST scripts have been rewritten to use this index
-	self::exec(
+	WT_DB::exec(
 		"ALTER TABLE `##name` DROP INDEX ix2, ADD INDEX ix2 (n_surn, n_file, n_type, n_id), ADD INDEX ix3 (n_givn, n_file, n_type, n_id)"
 	);
 } catch (PDOException $ex) {
@@ -53,4 +48,3 @@ try {
 
 // Update the version to indicate success
 WT_Site::setPreference($schema_name, $next_version);
-

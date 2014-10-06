@@ -42,6 +42,7 @@ $this
 			}
 		});
 	');
+
 echo
 	'<!DOCTYPE html>',
 	'<html ', WT_I18N::html_markup(), '>',

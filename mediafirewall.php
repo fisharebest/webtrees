@@ -348,9 +348,7 @@ if ($generatewatermark) {
 		// save the image, if preferences allow
 		if ((($which=='thumb') && $SAVE_WATERMARK_THUMB) || (($which=='main') && $SAVE_WATERMARK_IMAGE)) {
 			// make sure the folder exists
-			if (!is_dir(dirname($watermarkfile))) {
-				mkdir(dirname($watermarkfile), WT_PERM_EXE, true);
-			}
+			WT_File::mkdir(dirname($watermarkfile));
 			// save the image
 			$imSendFunc($im, $watermarkfile);
 		}

@@ -29,7 +29,7 @@ define('WT_SCRIPT_NAME', 'inverselink.php');
 require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
-$controller=new WT_Controller_Simple();
+$controller = new WT_Controller_Simple();
 $controller
 	->restrictAccess(Auth::isEditor())
 	->setPageTitle(WT_I18N::translate('Link to an existing media object'))

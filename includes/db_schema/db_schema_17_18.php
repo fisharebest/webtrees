@@ -26,12 +26,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
-self::exec(
+WT_DB::exec(
 	"CREATE TABLE IF NOT EXISTS `##site_access_rule` (".
 	" site_access_rule_id INTEGER          NOT NULL AUTO_INCREMENT,".
 	" ip_address_start     INTEGER UNSIGNED NOT NULL DEFAULT 0,".
@@ -50,7 +45,7 @@ self::exec(
 	") ENGINE=InnoDB COLLATE=utf8_unicode_ci"
 );
 
-self::exec(
+WT_DB::exec(
 	"INSERT IGNORE INTO `##site_access_rule` (user_agent_pattern, rule, comment) VALUES".
 	" ('Mozilla/5.0 (%) Gecko/% %/%', 'allow', 'Gecko-based browsers'),".
 	" ('Mozilla/5.0 (%) AppleWebKit/% (KHTML, like Gecko)%', 'allow', 'WebKit-based browsers'),".
@@ -61,8 +56,7 @@ self::exec(
 
 // Don't do this.  We can’t easily/safely migrate the data, and the user may
 // wish to migrate it manually....
-//self::exec("DROP TABLE IF EXISTS `##wt_ip_address`");
+//WT_DB::exec("DROP TABLE IF EXISTS `##wt_ip_address`");
 
 // Update the version to indicate success
 WT_Site::setPreference($schema_name, $next_version);
-

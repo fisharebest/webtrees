@@ -28,7 +28,7 @@ use WT\User;
 define('WT_SCRIPT_NAME', 'admin_users.php');
 require './includes/session.php';
 
-$controller=new WT_Controller_Page();
+$controller = new WT_Controller_Page();
 $controller
 	->restrictAccess(Auth::isAdmin())
 	->setPageTitle(WT_I18N::translate('User administration'));
@@ -89,7 +89,7 @@ case 'loadrows':
 			" email     LIKE CONCAT('%', ?, '%'))";
 		$ARGS=array($search, $search, $search);
 	}
-	Auth::user()->setSetting('admin_users_page_size', $length);
+	Auth::user()->setPreference('admin_users_page_size', $length);
 	if ($length > 0) {
 		$LIMIT = " LIMIT " . $start . ',' . $length;
 	} else {
@@ -190,28 +190,28 @@ case 'load1row':
 	echo '<h2>', WT_I18N::translate('Details'), '</h2>';
 	echo '<dl>';
 	echo '<dt>', WT_I18N::translate('Administrator'), '</dt>';
-	echo '<dd>', edit_field_yes_no_inline('user_setting-'.$user_id.'-canadmin', $user->getSetting('canadmin')), '</dd>';
+	echo '<dd>', edit_field_yes_no_inline('user_setting-'.$user_id.'-canadmin', $user->getPreference('canadmin')), '</dd>';
 
 	echo '<dt>', WT_I18N::translate('Password'), '</dt>';
 	echo '<dd>', edit_field_inline('user-password-'.$user_id, ''), '</dd>';
 
 	echo '<dt>', WT_I18N::translate('Preferred contact method'), '</dt>';
-	echo '<dd>', edit_field_contact_inline('user_setting-'.$user_id.'-contactmethod', $user->getSetting('contactmethod')), '</dd>';
+	echo '<dd>', edit_field_contact_inline('user_setting-'.$user_id.'-contactmethod', $user->getPreference('contactmethod')), '</dd>';
 
 	echo '<dt>', WT_I18N::translate('Allow this user to edit his account information'), '</dt>';
-	echo '<dd>', edit_field_yes_no_inline('user_setting-'.$user_id.'-editaccount', $user->getSetting('editaccount')), '</dd>';
+	echo '<dd>', edit_field_yes_no_inline('user_setting-'.$user_id.'-editaccount', $user->getPreference('editaccount')), '</dd>';
 
 	echo '<dt>', WT_I18N::translate('Automatically approve changes made by this user'), '</dt>';
-	echo '<dd>', edit_field_yes_no_inline('user_setting-'.$user_id.'-auto_accept', $user->getSetting('auto_accept')), '</dd>';
+	echo '<dd>', edit_field_yes_no_inline('user_setting-'.$user_id.'-auto_accept', $user->getPreference('auto_accept')), '</dd>';
 
 	echo '<dt>', WT_I18N::translate('Theme'), '</dt>';
-	echo '<dd>', select_edit_control_inline('user_setting-'.$user_id.'-theme', array_flip(get_theme_names()), WT_I18N::translate('<default theme>'), $user->getSetting('theme')), '</dd>';
+	echo '<dd>', select_edit_control_inline('user_setting-'.$user_id.'-theme', array_flip(get_theme_names()), WT_I18N::translate('<default theme>'), $user->getPreference('theme')), '</dd>';
 
 	echo '<dt>', WT_I18N::translate('Visible to other users when online'), '</dt>';
-	echo '<dd>', edit_field_yes_no_inline('user_setting-'.$user_id.'-visibleonline', $user->getSetting('visibleonline')), '</dd>';
+	echo '<dd>', edit_field_yes_no_inline('user_setting-'.$user_id.'-visibleonline', $user->getPreference('visibleonline')), '</dd>';
 
 	echo '<dt>', WT_I18N::translate('Comments'), '</dt>';
-	echo '<dd>', edit_field_inline('user_setting-'.$user_id.'-comment', $user->getSetting('comment')), '</dd>';
+	echo '<dd>', edit_field_inline('user_setting-'.$user_id.'-comment', $user->getPreference('comment')), '</dd>';
 
 	echo '<dt>', WT_I18N::translate('My page'), '</dt>';
 	echo '<dd><a href="#" onclick="modalDialog(\'index_edit.php?user_id='.$user_id.'\', \'', WT_I18N::translate('Change the blocks on this page'), '\');">', WT_I18N::translate('Change the blocks on this page'), '</a></dd>';
@@ -244,14 +244,14 @@ case 'load1row':
 			//Pedigree root person
 			'</td><td>',
 			// TODO: autocomplete/find/etc. for this field
-			edit_field_inline('user_gedcom_setting-'.$user_id.'-'.$tree->tree_id.'-rootid', $tree->userPreference($user_id, 'rootid')),
+			edit_field_inline('user_gedcom_setting-'.$user_id.'-'.$tree->tree_id.'-rootid', $tree->getUserPreference($user, 'rootid')),
 			'</td><td>',
 			// TODO: autocomplete/find/etc. for this field
-			edit_field_inline('user_gedcom_setting-'.$user_id.'-'.$tree->tree_id.'-gedcomid', $tree->userPreference($user_id, 'gedcomid')),
+			edit_field_inline('user_gedcom_setting-'.$user_id.'-'.$tree->tree_id.'-gedcomid', $tree->getUserPreference($user, 'gedcomid')),
 			'</td><td>',
-			select_edit_control_inline('user_gedcom_setting-'.$user_id.'-'.$tree->tree_id.'-canedit', $ALL_EDIT_OPTIONS, null, $tree->userPreference($user_id, 'canedit')),
+			select_edit_control_inline('user_gedcom_setting-'.$user_id.'-'.$tree->tree_id.'-canedit', $ALL_EDIT_OPTIONS, null, $tree->getUserPreference($user, 'canedit')),
 			'</td><td>',
-			select_edit_control_inline('user_gedcom_setting-'.$user_id.'-'.$tree->tree_id.'-RELATIONSHIP_PATH_LENGTH', array(0=>WT_I18N::translate('no'), 1=>1, 2=>2, 3=>3, 4=>4, 5=>5, 6=>6, 7=>7, 8=>8, 9=>9, 10=>10), null, $tree->userPreference($user_id, 'RELATIONSHIP_PATH_LENGTH')),
+			select_edit_control_inline('user_gedcom_setting-'.$user_id.'-'.$tree->tree_id.'-RELATIONSHIP_PATH_LENGTH', array(0=>WT_I18N::translate('no'), 1=>1, 2=>2, 3=>3, 4=>4, 5=>5, 6=>6, 7=>7, 8=>8, 9=>9, 10=>10), null, $tree->getUserPreference($user, 'RELATIONSHIP_PATH_LENGTH')),
 			'</td></tr>';
 	}
 	echo '</table>';
@@ -272,27 +272,27 @@ case 'createuser':
 	} else {
 		$user = User::create($username, $realname, $emailaddress, $pass1);
 		$user
-			->setSetting('reg_timestamp', date('U'))
-			->setSetting('sessiontime', '0')
-			->setSetting('theme',                $user_theme)
-			->setSetting('language',             $user_language)
-			->setSetting('contactmethod',        $new_contact_method)
-			->setSetting('comment',              $new_comment)
-			->setSetting('auto_accept',          $new_auto_accept)
-			->setSetting('canadmin',             $canadmin)
-			->setSetting('visibleonline',        $visibleonline)
-			->setSetting('editaccount',          $editaccount)
-			->setSetting('verified',             $verified)
-			->setSetting('verified_by_admin',    $verified_by_admin);
+			->setPreference('reg_timestamp', date('U'))
+			->setPreference('sessiontime', '0')
+			->setPreference('theme',                $user_theme)
+			->setPreference('language',             $user_language)
+			->setPreference('contactmethod',        $new_contact_method)
+			->setPreference('comment',              $new_comment)
+			->setPreference('auto_accept',          $new_auto_accept)
+			->setPreference('canadmin',             $canadmin)
+			->setPreference('visibleonline',        $visibleonline)
+			->setPreference('editaccount',          $editaccount)
+			->setPreference('verified',             $verified)
+			->setPreference('verified_by_admin',    $verified_by_admin);
 		foreach (WT_Tree::getAll() as $tree) {
-			$tree->userPreference($user->getUserId(), 'gedcomid', WT_Filter::post('gedcomid'.$tree->tree_id, WT_REGEX_XREF));
-			$tree->userPreference($user->getUserId(), 'rootid',   WT_Filter::post('rootid'.$tree->tree_id, WT_REGEX_XREF));
-			$tree->userPreference($user->getUserId(), 'canedit',  WT_Filter::post('canedit'.$tree->tree_id, implode('|', array_keys($ALL_EDIT_OPTIONS))));
+			$tree->setUserPreference($user, 'gedcomid', WT_Filter::post('gedcomid'.$tree->tree_id, WT_REGEX_XREF));
+			$tree->setUserPreference($user, 'rootid',   WT_Filter::post('rootid'.$tree->tree_id, WT_REGEX_XREF));
+			$tree->setUserPreference($user, 'canedit',  WT_Filter::post('canedit'.$tree->tree_id, implode('|', array_keys($ALL_EDIT_OPTIONS))));
 			if (WT_Filter::post('gedcomid'.$tree->tree_id, WT_REGEX_XREF)) {
-				$tree->userPreference($user->getUserId(), 'RELATIONSHIP_PATH_LENGTH', WT_Filter::postInteger('RELATIONSHIP_PATH_LENGTH'.$tree->tree_id, 0, 10, 0));
+				$tree->setUserPreference($user, 'RELATIONSHIP_PATH_LENGTH', WT_Filter::postInteger('RELATIONSHIP_PATH_LENGTH'.$tree->tree_id, 0, 10, 0));
 			} else {
 				// Do not allow a path length to be set if the individual ID is not
-				$tree->userPreference($user->getUserId(), 'RELATIONSHIP_PATH_LENGTH', null);
+				$tree->setUserPreference($user, 'RELATIONSHIP_PATH_LENGTH', null);
 			}
 		}
 		Log::addAuthenticationLog("User ->{$username}<- created");
@@ -508,12 +508,12 @@ case 'cleanup':
 	// Check users not logged in too long
 	$ucnt = 0;
 	foreach (User::all() as $user) {
-		if ($user->getSetting('sessiontime') == "0") {
-			$datelogin = (int)$user->getSetting('reg_timestamp');
+		if ($user->getPreference('sessiontime') == "0") {
+			$datelogin = (int)$user->getPreference('reg_timestamp');
 		} else {
-			$datelogin = (int)$user->getSetting('sessiontime');
+			$datelogin = (int)$user->getPreference('sessiontime');
 		}
-		if ((mktime(0, 0, 0, (int)date("m")-$month, (int)date("d"), (int)date("Y")) > $datelogin) && $user->getSetting('verified') && $user->getSetting('verified_by_admin')) {
+		if ((mktime(0, 0, 0, (int)date("m")-$month, (int)date("d"), (int)date("Y")) > $datelogin) && $user->getPreference('verified') && $user->getPreference('verified_by_admin')) {
 			?><tr><td><?php echo WT_Filter::escapeHtml($user->getUserName()), " - <p>", WT_Filter::escapeHtml($user->getRealName()), "</p>", WT_I18N::translate('User’s account has been inactive too long: ');
 			echo timestamp_to_gedcom_date($datelogin)->Display(false);
 			$ucnt++;
@@ -523,7 +523,7 @@ case 'cleanup':
 
 	// Check unverified users
 	foreach (User::all() as $user) {
-		if (((date("U") - (int)$user->getSetting('reg_timestamp')) > 604800) && !$user->getSetting('verified')) {
+		if (((date("U") - (int)$user->getPreference('reg_timestamp')) > 604800) && !$user->getPreference('verified')) {
 			?><tr><td><?php echo WT_Filter::escapeHtml($user->getUserName()), " - ", WT_Filter::escapeHtml($user->getRealName()), ":&nbsp;&nbsp;", WT_I18N::translate('User didn’t verify within 7 days.');
 			$ucnt++;
 			?></td><td><input type="checkbox" checked="checked" name="del_<?php echo $user->getUserId(); ?>" value="1"></td></tr><?php
@@ -532,7 +532,7 @@ case 'cleanup':
 
 	// Check users not verified by admin
 	foreach (User::all() as $user) {
-		if (!$user->getSetting('verified_by_admin') && $user->getSetting('verified')) {
+		if (!$user->getPreference('verified_by_admin') && $user->getPreference('verified')) {
 			?><tr><td><?php echo WT_Filter::escapeHtml($user->getUserName()), " - ", WT_Filter::escapeHtml($user->getRealName()), ":&nbsp;&nbsp;", WT_I18N::translate('User not verified by administrator.');
 			?></td><td><input type="checkbox" name="del_<?php echo $user->getUserId(); ?>" value="1"></td></tr><?php
 			$ucnt++;
@@ -598,7 +598,7 @@ default:
 				ajax: "'.WT_SCRIPT_NAME.'?action=loadrows",
 				jQueryUI: true,
 				autoWidth: false,
-				pageLength: ' . Auth::user()->getSetting('admin_users_page_size', 10).',
+				pageLength: ' . Auth::user()->getPreference('admin_users_page_size', 10).',
 				pagingType: "full_numbers",
 				sorting: [[2,"asc"]],
 				columns: [

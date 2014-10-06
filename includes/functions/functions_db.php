@@ -730,8 +730,10 @@ function find_rin_id($rin) {
  * @return array
  */
 function get_common_surnames($min) {
-	$COMMON_NAMES_ADD   =get_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_ADD');
-	$COMMON_NAMES_REMOVE=get_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_REMOVE');
+	global $WT_TREE;
+
+	$COMMON_NAMES_ADD    = $WT_TREE->getPreference('COMMON_NAMES_ADD');
+	$COMMON_NAMES_REMOVE = $WT_TREE->getPreference('COMMON_NAMES_REMOVE');
 
 	$topsurns=get_top_surnames(WT_GED_ID, $min, 0);
 	foreach (explode(',', $COMMON_NAMES_ADD) as $surname) {
@@ -1045,19 +1047,6 @@ function get_id_from_gedcom($ged_name) {
 		->fetchOne();
 }
 
-
-////////////////////////////////////////////////////////////////////////////////
-// Functions to access the WT_GEDCOM_SETTING table
-////////////////////////////////////////////////////////////////////////////////
-
-function get_gedcom_setting($gedcom_id, $setting_name) {
-	return WT_Tree::get($gedcom_id)->preference($setting_name);
-}
-
-function set_gedcom_setting($gedcom_id, $setting_name, $setting_value) {
-	WT_Tree::get($gedcom_id)->preference($setting_name, $setting_value);
-}
-
 ////////////////////////////////////////////////////////////////////////////////
 // Functions to access the WT_BLOCK table
 ////////////////////////////////////////////////////////////////////////////////
@@ -1120,27 +1109,6 @@ function set_block_setting($block_id, $setting_name, $setting_value) {
 	} else {
 		WT_DB::prepare("REPLACE INTO `##block_setting` (block_id, setting_name, setting_value) VALUES (?, ?, ?)")
 			->execute(array($block_id, $setting_name, $setting_value));
-	}
-}
-
-function get_module_setting($module_name, $setting_name, $default_value=null) {
-	static $statement;
-	if ($statement===null) {
-		$statement=WT_DB::prepare(
-			"SELECT SQL_CACHE setting_value FROM `##module_setting` WHERE module_name=? AND setting_name=?"
-		);
-	}
-	$setting_value=$statement->execute(array($module_name, $setting_name))->fetchOne();
-	return $setting_value===null ? $default_value : $setting_value;
-}
-
-function set_module_setting($module_name, $setting_name, $setting_value) {
-	if ($setting_value===null) {
-		WT_DB::prepare("DELETE FROM `##module_setting` WHERE module_name=? AND setting_name=?")
-			->execute(array($module_name, $setting_name));
-	} else {
-		WT_DB::prepare("REPLACE INTO `##module_setting` (module_name, setting_name, setting_value) VALUES (?, ?, ?)")
-			->execute(array($module_name, $setting_name, $setting_value));
 	}
 }
 

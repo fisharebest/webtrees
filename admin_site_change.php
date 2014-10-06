@@ -24,7 +24,7 @@ use WT\User;
 define('WT_SCRIPT_NAME', 'admin_site_change.php');
 require './includes/session.php';
 
-$controller=new WT_Controller_Page();
+$controller = new WT_Controller_Page();
 $controller
 	->restrictAccess(Auth::isManager())
 	->setPageTitle(WT_I18N::translate('Changes'));
@@ -153,7 +153,7 @@ case 'load_json':
 	$length = WT_Filter::getInteger('length');
 	$search = WT_Filter::get('search');
 	$search = $search['value'];
-	Auth::user()->setSetting('admin_site_change_page_size', $length);
+	Auth::user()->setPreference('admin_site_change_page_size', $length);
 	if ($length>0) {
 		$LIMIT = " LIMIT " . $start . ',' . $length;
 	} else {
@@ -225,7 +225,7 @@ $controller
 			jQueryUI: true,
 			autoWidth: false,
 			sorting: [[ 0, "desc" ]],
-			pageLength: ' . Auth::user()->getSetting('admin_site_change_page_size', 10) . ',
+			pageLength: ' . Auth::user()->getPreference('admin_site_change_page_size', 10) . ',
 			pagingType: "full_numbers",
 			columns: [
 			/* Timestamp   */ { },
