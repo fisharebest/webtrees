@@ -25,7 +25,7 @@ define('WT_SCRIPT_NAME', 'search.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
-$controller=new WT_Controller_Search();
+$controller = new WT_Controller_Search();
 $controller
 	->pageHeader()
 	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
@@ -125,8 +125,7 @@ echo '<div id="search-page">
 							box.form.replaceNames.disabled = false;
 							box.form.replacePlaces.disabled = false;
 							box.form.replacePlacesWord.disabled = false;
-						}
-						else {
+						} else {
 							box.form.replaceNames.disabled = true;
 							box.form.replacePlaces.disabled = true;
 							box.form.replacePlacesWord.disabled = true;

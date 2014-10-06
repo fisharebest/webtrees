@@ -26,7 +26,7 @@ define('WT_SCRIPT_NAME', 'source.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
-$controller=new WT_Controller_Source();
+$controller = new WT_Controller_Source();
 
 if ($controller->record && $controller->record->canShow()) {
 	$controller->pageHeader();
@@ -74,15 +74,14 @@ if ($controller->record && $controller->record->canShow()) {
 	exit;
 }
 
-$controller
-	->addInlineJavascript('
-		jQuery("#source-tabs")
-			.tabs({
-				create: function(e, ui){
-					jQuery(e.target).css("visibility", "visible");  // prevent FOUC
-				}
-			});
-	');
+$controller->addInlineJavascript('
+	jQuery("#source-tabs")
+		.tabs({
+			create: function(e, ui){
+				jQuery(e.target).css("visibility", "visible");  // prevent FOUC
+			}
+		});
+');
 
 $linked_indi = $controller->record->linkedIndividuals('SOUR');
 $linked_fam  = $controller->record->linkedFamilies('SOUR');

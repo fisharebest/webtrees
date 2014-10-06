@@ -22,7 +22,7 @@
 define('WT_SCRIPT_NAME', 'gedrecord.php');
 require './includes/session.php';
 
-$controller=new WT_Controller_Page();
+$controller = new WT_Controller_Page();
 
 $obj = WT_GedcomRecord::getInstance(WT_Filter::get('pid', WT_REGEX_XREF));
 

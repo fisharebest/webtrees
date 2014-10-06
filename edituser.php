@@ -90,7 +90,7 @@ if ($form_action=='update' && WT_Filter::checkCsrf()) {
 	}
 }
 
-$controller=new WT_Controller_Page();
+$controller = new WT_Controller_Page();
 $controller
 	->setPageTitle(WT_I18N::translate('User administration'))
 	->pageHeader()

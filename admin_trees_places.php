@@ -75,7 +75,7 @@ if ($search && $replace) {
 	}
 }
 
-$controller=new WT_Controller_Page();
+$controller = new WT_Controller_Page();
 $controller
 	->restrictAccess(Auth::isManager())
 	->setPageTitle(WT_I18N::translate('Administration - place edit'))

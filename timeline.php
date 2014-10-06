@@ -26,7 +26,7 @@
 define('WT_SCRIPT_NAME', 'timeline.php');
 require './includes/session.php';
 
-$controller=new WT_Controller_Timeline();
+$controller = new WT_Controller_Timeline();
 $controller
 	->pageHeader()
 	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
@@ -131,6 +131,8 @@ document.onmousemove = function (e) {
 		}
 		var line = document.getElementById('ageline' + personnum);
 		var temp = newx-oldx;
+
+		var textDirection = jQuery('html').attr('dir');
 		if (textDirection === 'rtl') {
 			temp = temp * -1;
 		}
@@ -177,39 +179,40 @@ document.onmousemove = function (e) {
 		// calculate the change in Y position
 		var dy = newy-ob.offsetTop;
 		// check if we are above the starting point and switch the background image
+		var textDirection = jQuery('html').attr('dir');
+
 		if (newy < boxmean) {
-			if (textDirection === 'ltr') {
-				dbox.style.backgroundImage = "url('<?php echo $WT_IMAGES["dline"]; ?>')";
-				dbox.style.backgroundPosition = "0% 100%";
-			} else {
+			if (textDirection === 'rtl') {
 				dbox.style.backgroundImage = "url('<?php echo $WT_IMAGES["dline2"]; ?>')";
 				dbox.style.backgroundPosition = "0% 0%";
+			} else {
+				dbox.style.backgroundImage = "url('<?php echo $WT_IMAGES["dline"]; ?>')";
+				dbox.style.backgroundPosition = "0% 100%";
 			}
 			dy = -dy;
 			dbox.style.top = (newy + bheight / 3) + "px";
 		} else {
-			if (textDirection === 'ltr') {
-				dbox.style.backgroundImage = "url('<?php echo $WT_IMAGES["dline2"]; ?>')";
-				dbox.style.backgroundPosition = "0% 0%";
-			} else {
+			if (textDirection === 'rtl') {
 				dbox.style.backgroundImage = "url('<?php echo $WT_IMAGES["dline"]; ?>')";
 				dbox.style.backgroundPosition = "0% 100%";
+			} else {
+				dbox.style.backgroundImage = "url('<?php echo $WT_IMAGES["dline2"]; ?>')";
+				dbox.style.backgroundPosition = "0% 0%";
 			}
 
 			dbox.style.top = (boxmean + bheight / 3) + "px";
 		}
 		// the new X posistion moves the same as the y position
-		if (textDirection === 'ltr') {
-			newx = dbox.offsetLeft + Math.abs(newy - boxmean);
-		} else {
+		if (textDirection === 'rtl') {
 			newx = dbox.offsetRight + Math.abs(newy - boxmean);
+		} else {
+			newx = dbox.offsetLeft + Math.abs(newy - boxmean);
 		}
 		// set the X position of the box
-		if (textDirection === 'ltr') {
-			ob.style.left = newx + "px";
-		}
-		else {
+		if (textDirection === 'rtl') {
 			ob.style.right = newx + "px";
+		} else {
+			ob.style.left = newx + "px";
 		}
 		// set new top positions
 		ob.style.top = newy + "px";

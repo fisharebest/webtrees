@@ -393,11 +393,10 @@ echo '</div>'; // close #relationshippage
 // The contents of <div id="relationship_chart"> use relative positions.
 // Need to expand the div to include the children, or we'll overlap the footer.
 // $maxyoffset is the top edge of the lowest box.
-$controller
-	->addInlineJavascript('
-		relationship_chart_div = document.getElementById("relationship_chart");
-		if (relationship_chart_div) {
-			relationship_chart_div.style.height = "'.($maxyoffset+$Dbheight+20).'px";
-			relationship_chart_div.style.width = "100%";
-		}'
-	);
+$controller->addInlineJavascript('
+	relationship_chart_div = document.getElementById("relationship_chart");
+	if (relationship_chart_div) {
+		relationship_chart_div.style.height = "'.($maxyoffset+$Dbheight+20).'px";
+		relationship_chart_div.style.width = "100%";
+	}'
+);

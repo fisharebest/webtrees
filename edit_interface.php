@@ -29,7 +29,7 @@ require WT_ROOT.'includes/functions/functions_edit.php';
 
 $action = WT_Filter::post('action', null, WT_Filter::get('action'));
 
-$controller=new WT_Controller_Simple();
+$controller = new WT_Controller_Simple();
 $controller
 	->restrictAccess(Auth::isEditor())
 	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')

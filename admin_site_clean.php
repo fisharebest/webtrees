@@ -24,7 +24,7 @@ use WT\Auth;
 define('WT_SCRIPT_NAME', 'admin_site_clean.php');
 require './includes/session.php';
 
-$controller=new WT_Controller_Page();
+$controller = new WT_Controller_Page();
 $controller
 	->restrictAccess(Auth::isAdmin())
 	->setPageTitle(/* I18N: The “Data folder” is a configuration setting */ WT_I18N::translate('Clean up data folder'))

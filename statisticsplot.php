@@ -27,7 +27,7 @@
 define('WT_SCRIPT_NAME', 'statisticsplot.php');
 require './includes/session.php';
 
-$controller=new WT_Controller_Ajax();
+$controller = new WT_Controller_Ajax();
 
 $stats = new WT_Stats($GEDCOM);
 

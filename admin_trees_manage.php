@@ -25,7 +25,7 @@ define('WT_SCRIPT_NAME', 'admin_trees_manage.php');
 require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
-$controller=new WT_Controller_Page();
+$controller = new WT_Controller_Page();
 $controller
 	->restrictAccess(Auth::isAdmin())
 	->setPageTitle(WT_I18N::translate('Family trees'));
@@ -196,7 +196,7 @@ foreach (WT_Tree::GetAll() as $tree) {
 			)->execute(array($tree->tree_id))->fetchOne();
 			if (!$in_progress) {
 				echo '<div id="import', $tree->tree_id, '"><div id="progressbar', $tree->tree_id, '"><div style="position:absolute;">', WT_I18N::translate('Deleting old genealogy data…'), '</div></div></div>';
-			$controller->addInlineJavascript(
+				$controller->addInlineJavascript(
 				'jQuery("#progressbar'.$tree->tree_id.'").progressbar({value: 0});'
 			);
 			} else {

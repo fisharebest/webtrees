@@ -29,6 +29,7 @@ if (!defined('WT_WEBTREES')) {
 }
 
 global $WT_IMAGES;
+
 // This theme uses the jQuery “colorbox” plugin to display images
 $this
 	->addExternalJavascript(WT_JQUERY_COLORBOX_URL)

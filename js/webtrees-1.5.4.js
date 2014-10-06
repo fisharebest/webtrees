@@ -38,6 +38,9 @@ var fam_nav_specs='width=300,height=600,left=817,top=150,resizable=1,scrollbars=
 
 var pastefield, nameElement, remElement; // Elements to paste to
 
+// "rtl" on right-to-left pages.
+var textDirection = jQuery('html').attr('dir');
+
 // Create a modal dialog, fetching the contents from a URL
 function modalDialog(url, title, width) {
 	jQuery('<div title="' + title + '"></div>')
@@ -679,15 +682,16 @@ var menutimeouts = [];
 function show_submenu(elementid, parentid, dir) {
 	var pagewidth = document.body.scrollWidth+document.documentElement.scrollLeft;
 	var element = document.getElementById(elementid);
+
 	if (element && element.style) {
-				if (document.all) {
-					pagewidth = document.body.offsetWidth;
-				} else {
-					pagewidth = document.body.scrollWidth+document.documentElement.scrollLeft-55;
-					if (textDirection=="rtl") {
-						boxright = element.offsetLeft+element.offsetWidth+10;
-					}
-				}
+		if (document.all) {
+			pagewidth = document.body.offsetWidth;
+		} else {
+			pagewidth = document.body.scrollWidth+document.documentElement.scrollLeft-55;
+			if (textDirection === "rtl") {
+				boxright = element.offsetLeft+element.offsetWidth+10;
+			}
+		}
 
 		//-- make sure the submenu is the size of the largest child
 		var maxwidth = 0;
@@ -715,16 +719,16 @@ function show_submenu(elementid, parentid, dir) {
 		} else if (dir=="right") {
 			pelement = document.getElementById(parentid);
 			if (pelement) {
-				if (textDirection=="ltr") {
-				var boxleft = pelement.offsetLeft+pelement.offsetWidth-40;
-				boxright = boxleft+element.offsetWidth+10;
-				if (boxright > pagewidth) {
-					element.style.right = pelement.offsetLeft + "px";
+				if (textDirection === "rtl") {
+					element.style.left = (pelement.offsetLeft - element.offsetWidth) + "px";
 				} else {
-					element.style.left=boxleft+"px";
-				}
-				} else {
-					element.style.left = (pelement.offsetLeft-element.offsetWidth)+"px";
+					var boxleft = pelement.offsetLeft + pelement.offsetWidth - 40;
+					boxright = boxleft + element.offsetWidth + 10;
+					if (boxright > pagewidth) {
+						element.style.right = pelement.offsetLeft + "px";
+					} else {
+						element.style.left = boxleft + "px";
+					}
 				}
 				element.style.top = pelement.offsetTop+"px";
 			}
@@ -1153,8 +1157,8 @@ function activate_colorbox(config) {
 		fixed:         true,
 		// Simple I18N - the text will need to come from PHP
 		current:        '',
-		previous:       textDirection=='ltr' ? '\u25c0' : '\u25b6', // ◀ ▶
-		next:           textDirection=='ltr' ? '\u25b6' : '\u25c0', // ▶ ◀
+		previous:       textDirection === 'rtl' ? '\u25b6' : '\u25c0', // ▶ ◀
+		next:           textDirection === 'rtl' ? '\u25c0' : '\u25b6', // ◀ ▶
 		slideshowStart: '\u25cb', // ○
 		slideshowStop:  '\u25cf', // ●
 		close:          '\u2715'  // ×

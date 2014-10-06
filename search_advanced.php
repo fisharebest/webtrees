@@ -25,7 +25,7 @@ define('WT_SCRIPT_NAME', 'search_advanced.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
-$controller=new WT_Controller_AdvancedSearch();
+$controller = new WT_Controller_AdvancedSearch();
 $controller
 	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
 	->addInlineJavascript('autocomplete();')

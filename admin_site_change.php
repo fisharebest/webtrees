@@ -24,7 +24,7 @@ use WT\User;
 define('WT_SCRIPT_NAME', 'admin_site_change.php');
 require './includes/session.php';
 
-$controller=new WT_Controller_Page();
+$controller = new WT_Controller_Page();
 $controller
 	->restrictAccess(Auth::isManager())
 	->setPageTitle(WT_I18N::translate('Changes'));

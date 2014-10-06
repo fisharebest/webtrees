@@ -25,7 +25,7 @@ define('WT_SCRIPT_NAME', 'pedigree.php');
 require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
-$controller=new WT_Controller_Pedigree();
+$controller = new WT_Controller_Pedigree();
 $controller
 	->pageHeader()
 	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')

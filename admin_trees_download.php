@@ -27,7 +27,7 @@ define('WT_SCRIPT_NAME', 'admin_trees_download.php');
 require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_export.php';
 
-$controller=new WT_Controller_Page();
+$controller = new WT_Controller_Page();
 $controller
 	->setPageTitle(WT_I18N::translate('Download GEDCOM'))
 	->restrictAccess(Auth::isManager());

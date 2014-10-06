@@ -87,6 +87,11 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 
 	// Extend WT_Module
 	// We define here actions to proceed when called, either by Ajax or not
+	/**
+	 * @param string $mod_action
+	 *
+	 * @throws Exception
+	 */
 	public function modAction($mod_action) {
 		require_once WT_MODULES_DIR . $this->getName() . '/class_treeview.php';
 		switch ($mod_action) {

@@ -566,7 +566,7 @@ function mediaObjectInfo(WT_Media $media) {
 // selected folder.
 $table_id=md5($files.$media_folder.$media_path.$subfolders);
 
-$controller=new WT_Controller_Page();
+$controller = new WT_Controller_Page();
 $controller
 	->restrictAccess(Auth::isAdmin())
 	->setPageTitle(WT_I18N::translate('Media'))

@@ -157,7 +157,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 	private static function media_query_3a() {
 		$iid2 = WT_Filter::get('iid', WT_REGEX_XREF);
 
-		$controller=new WT_Controller_Simple();
+		$controller = new WT_Controller_Simple();
 		$controller
 			->setPageTitle(WT_I18N::translate('Link to an existing media object'))
 			->pageHeader();
@@ -349,6 +349,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 					return false;
 				}
 			');
+
 			return '
 				<select id="selcensdate" name="selcensdate" onchange = "if (this.options[this.selectedIndex].value!=\'\') {
 										addDate(this.options[this.selectedIndex].value);
