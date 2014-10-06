@@ -363,7 +363,7 @@ case 'register':
 				// From:
 				$WT_TREE,
 				// To:
-				$webmaster->getUserId(),
+				$webmaster->getEmail(),
 				$webmaster->getRealName(),
 				// Reply-To:
 				$WEBTREES_EMAIL,

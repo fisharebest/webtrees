@@ -155,7 +155,18 @@ class Auth {
 	 * @return User|null
 	 */
 	public static function user() {
-		return User::find(Auth::id());
+		$user = User::find(Auth::id());
+		if ($user === null) {
+			$visitor = new \stdClass;
+			$visitor->user_id = '';
+			$visitor->user_name = '';
+			$visitor->real_name = '';
+			$visitor->email = '';
+
+			return new User($visitor);
+		} else {
+			return $user;
+		}
 	}
 
 	/**
