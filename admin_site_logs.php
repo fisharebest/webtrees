@@ -217,7 +217,7 @@ foreach (User::all() as $tmp_user) {
 
 echo
 	'<form name="logs" method="get" action="'.WT_SCRIPT_NAME.'">',
-		'<input type="hidden" name="action", value="show">',
+		'<input type="hidden" name="action" value="show">',
 		'<table class="site_logs">',
 			'<tr>',
 				'<td colspan="6">',
