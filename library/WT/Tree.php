@@ -187,7 +187,7 @@ class WT_Tree {
 				"   )" .
 				"  )" .
 				" ORDER BY g.sort_order, 3"
-			)->execute(array(WT_USER_ID, WT_USER_ID))->fetchAll();
+			)->execute(array(Auth::id(), Auth::id()))->fetchAll();
 			foreach ($rows as $row) {
 				self::$trees[$row->tree_id] = new WT_Tree($row->tree_id, $row->tree_name, $row->tree_title, $row->imported);
 			}
