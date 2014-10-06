@@ -137,8 +137,8 @@ class WT_Tree {
 	 * Set the tree’s user-configuration settings.
 	 *
 	 * @param User    $user
-	 * @param string  setting_name
-	 * @param string  setting_value
+	 * @param string  $setting_name
+	 * @param string  $setting_value
 	 *
 	 * @return $this
 	 */
