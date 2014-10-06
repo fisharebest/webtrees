@@ -56,11 +56,11 @@ class fancy_branches_WT_Module extends WT_Module implements WT_Module_Config, WT
 
 			$save = WT_Filter::postBool('save');
 			if (isset($save)) {
-				set_module_setting($this->getName(), 'SB',  WT_Filter::postInteger('NEW_SB'));
+				$this->setSetting('SB',  WT_Filter::postInteger('NEW_SB'));
 				Log::addConfigurationLog($this->getTitle().' config updated');
 			}
 
-			$SB = get_module_setting($this->getName(), 'SB');
+			$SB = $this->getSetting('SB');
 			echo '
 				<h2>'.$controller->getPageTitle().'</h2>
 				<form method="post" name="configform" action="'.$this->getConfigLink().'">
@@ -113,7 +113,7 @@ class fancy_branches_WT_Module extends WT_Module implements WT_Module_Config, WT
 			');
 
 			// Instigate the "d'Aboville" numbering system. Use it by default. The user can change it on the configuration page.
-			$SB = get_module_setting($this->getName(), 'SB');
+			$SB = $this->getSetting('SB');
 			if (!isset($SB) || $SB == 1) {
 				$controller->addInlineJavaScript('
 					jQuery("#branch-list, #branch-list ul, #branch-list li").addClass("aboville");

@@ -56,11 +56,11 @@ class custom_js_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
                 $action = WT_Filter::post("action");
 
                 if ($action == 'update') {
-                    set_module_setting('custom_js', 'CJS_FOOTER', WT_Filter::post('NEW_CJS_FOOTER'));
+                    $this->setSetting('CJS_FOOTER', WT_Filter::post('NEW_CJS_FOOTER'));
                     AddToLog($this->getTitle() . ' config updated', 'config');
                 }
 
-                $CJS_FOOTER = get_module_setting('custom_js', 'CJS_FOOTER');
+                $CJS_FOOTER = $this->getSetting('CJS_FOOTER');
                 ?>
                 <h3><?php echo WT_I18N::translate('Custom Javascript for Footer'); ?></h3>
                 <form method="post" name="configform" action="<?php echo $this->getConfigLink(); ?>">
@@ -94,7 +94,7 @@ class custom_js_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
         // code at the right time during page execution
         global $controller;
 
-        $cjs_footer = get_module_setting('custom_js', 'CJS_FOOTER', '');
+        $cjs_footer = $this->getSetting('CJS_FOOTER', '');
         if (strpos($cjs_footer, '#') !== false) {
             # parse for embedded keywords
             $stats = new WT_Stats(WT_GEDCOM);
