@@ -27,7 +27,7 @@ use WT\Log;
 define('WT_SCRIPT_NAME', 'edit_changes.php');
 require './includes/session.php';
 
-$controller=new WT_Controller_Simple();
+$controller = new WT_Controller_Simple();
 $controller
 	->restrictAccess(Auth::isModerator())
 	->setPageTitle(WT_I18N::translate('Pending changes'))

@@ -81,7 +81,7 @@ if ($action == 'ajax') {
 	exit;
 }
 
-$controller=new WT_Controller_Page();
+$controller = new WT_Controller_Page();
 if ($ctype=='user') {
 	$controller->restrictAccess(Auth::isMember());
 }

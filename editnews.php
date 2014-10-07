@@ -28,7 +28,7 @@ use WT\Auth;
 define('WT_SCRIPT_NAME', 'editnews.php');
 require './includes/session.php';
 
-$controller=new WT_Controller_Simple();
+$controller = new WT_Controller_Simple();
 $controller
 	->setPageTitle(WT_I18N::translate('Add/edit a journal/news entry'))
 	->restrictAccess(Auth::isMember())

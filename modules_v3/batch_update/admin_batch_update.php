@@ -73,7 +73,7 @@ class batch_update {
 		}
 		$html.='</td></tr>';
 
-		if (!Auth::user()->getSetting('auto_accept'))
+		if (!Auth::user()->getPreference('auto_accept'))
 			$html.='<tr><td colspan="2" class="warning">'.WT_I18N::translate('Your user account does not have “automatically approve changes” enabled.  You will only be able to change one record at a time.').'</td></tr>';
 
 		// If a plugin is selected, display the details
@@ -327,7 +327,7 @@ class base_plugin {
 
 	// Default buttons are update and update_all
 	function getActionButtons($xref) {
-		if (Auth::user()->getSetting('auto_accept')) {
+		if (Auth::user()->getPreference('auto_accept')) {
 			return array(
 				batch_update::createSubmitButton(WT_I18N::translate('Update'),     $xref, 'update'),
 				batch_update::createSubmitButton(WT_I18N::translate('Update all'), $xref, 'update_all')

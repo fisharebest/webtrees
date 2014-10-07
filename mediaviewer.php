@@ -27,7 +27,7 @@ define('WT_SCRIPT_NAME', 'mediaviewer.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
-$controller=new WT_Controller_Media();
+$controller = new WT_Controller_Media();
 
 if ($controller->record && $controller->record->canShow()) {
 	$controller->pageHeader();
@@ -75,15 +75,14 @@ if ($controller->record && $controller->record->canShow()) {
 	exit;
 }
 
-$controller
-	->addInlineJavascript('
-		jQuery("#media-tabs")
-			.tabs({
-				create: function(e, ui){
-					jQuery(e.target).css("visibility", "visible");  // prevent FOUC
-				}
-			});
-	');
+$controller->addInlineJavascript('
+	jQuery("#media-tabs")
+		.tabs({
+			create: function(e, ui){
+				jQuery(e.target).css("visibility", "visible");  // prevent FOUC
+			}
+		});
+');
 
 $linked_indi = $controller->record->linkedIndividuals('OBJE');
 $linked_fam  = $controller->record->linkedFamilies('OBJE');

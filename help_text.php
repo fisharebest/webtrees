@@ -568,7 +568,7 @@ case 'HIDE_LIVE_PEOPLE':
         $title=WT_I18N::translate('Privacy options');
         $text=WT_I18N::translate('This option will enable all privacy settings and hide the details of living individuals, as defined or modified on the Privacy tab of each GEDCOM’s configuration page.');
         $text .= '<p>';
-		$text .= WT_I18N::plural('Note: “living” is defined (if no death or burial is known) as ending %d year after birth or estimated birth.','Note: “living” is defined (if no death or burial is known) as ending %d years after birth or estimated birth.', get_gedcom_setting(WT_GED_ID, 'MAX_ALIVE_AGE'), get_gedcom_setting(WT_GED_ID, 'MAX_ALIVE_AGE'));
+		$text .= WT_I18N::plural('Note: “living” is defined (if no death or burial is known) as ending %d year after birth or estimated birth.','Note: “living” is defined (if no death or burial is known) as ending %d years after birth or estimated birth.', $WT_TREE->getPreference('MAX_ALIVE_AGE'), $WT_TREE->getPreference('MAX_ALIVE_AGE'));
 		$text .= ' ';
 		$text .= WT_I18N::translate('The length of time after birth can be set on the “Privacy” tab option “Age at which to assume an individual is dead”.');
 		$text .= '</p>';

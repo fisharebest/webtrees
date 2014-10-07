@@ -270,7 +270,7 @@ function whoisonline() {
 	$loggedusers = array ();
 	$content='';
 	foreach (User::allLoggedIn() as $user) {
-		if (Auth::isAdmin() || $user->getSetting('visibleonline')) {
+		if (Auth::isAdmin() || $user->getPreference('visibleonline')) {
 			$loggedusers[] = $user;
 		} else {
 			$NumAnonymous++;
@@ -293,7 +293,7 @@ function whoisonline() {
 		foreach ($loggedusers as $user) {
 			$content .= '<div class="logged_in_name">';
 			$content .= WT_Filter::escapeHtml($user->getRealName()) . ' - ' . WT_Filter::escapeHtml($user->getUserName());
-			if (WT_USER_ID != $user->getUserId() && $user->getSetting('contactmethod') != 'none') {
+			if (WT_USER_ID != $user->getUserId() && $user->getPreference('contactmethod') != 'none') {
 				$content .= ' <a class="icon-email" href="#" onclick="return message(\'' . WT_Filter::escapeJs($user->getUserName()) . '\', \'\', \'' . WT_Filter::escapeJs(get_query_url()) . '\');" title="' . WT_I18N::translate('Send message').'"></a>';
 			}
 			$content .= '</div>';
@@ -310,7 +310,7 @@ function user_contact_link($user_id) {
 	$user = User::find($user_id);
 
 	if ($user) {
-		$method = $user->getSetting('contactmethod');
+		$method = $user->getPreference('contactmethod');
 
 		switch ($method) {
 		case 'none':
@@ -330,9 +330,11 @@ function user_contact_link($user_id) {
 // this function will print appropriate links based on the preferred contact methods for the genealogy
 // contact user and the technical support contact user
 function contact_links($ged_id=WT_GED_ID) {
-	$contact_user_id  =get_gedcom_setting($ged_id, 'CONTACT_USER_ID');
-	$webmaster_user_id=get_gedcom_setting($ged_id, 'WEBMASTER_USER_ID');
-	$supportLink = user_contact_link($webmaster_user_id);
+	$tree = WT_Tree::get($ged_id);
+
+	$contact_user_id   = $tree->getPreference('CONTACT_USER_ID');
+	$webmaster_user_id = $tree->getPreference('WEBMASTER_USER_ID');
+	$supportLink       = user_contact_link($webmaster_user_id);
 	if ($webmaster_user_id==$contact_user_id) {
 		$contactLink = $supportLink;
 	} else {
@@ -399,7 +401,7 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false) {
 	if (strpos($text, "\n") === false) {
 		// A one-line note? strip the block-level tags, so it displays inline
 		return WT_Gedcom_Tag::getLabelValue($label, strip_tags($html, '<a><strong><em>'));
-	} elseif ($WT_TREE->preference('EXPAND_NOTES')) {
+	} elseif ($WT_TREE->getPreference('EXPAND_NOTES')) {
 		// A multi-line note, and we're expanding notes by default
 		return WT_Gedcom_Tag::getLabelValue($label, $html);
 	} else {
@@ -409,7 +411,7 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false) {
 		if ($note) {
 			$first_line = '<a href="' . $note->getHtmlUrl() . '">' . $note->getFullName() . '</a>';
 		} else {
-			switch ($WT_TREE->preference('FORMAT_TEXT')) {
+			switch ($WT_TREE->getPreference('FORMAT_TEXT')) {
 				case 'markdown':
 					$text = WT_Filter::markdown($text);
 					$text = html_entity_decode(strip_tags($text, '<a><strong><em>'), ENT_QUOTES, 'UTF-8');
@@ -867,7 +869,7 @@ function CheckFactUnique($uniquefacts, $recfacts, $type) {
  * @param string $type      the type of record INDI, FAM, SOUR etc
  */
 function print_add_new_fact($id, $usedfacts, $type) {
-	global $WT_SESSION;
+	global $WT_SESSION, $WT_TREE;
 
 	// -- Add from clipboard
 	if ($WT_SESSION->clipboard) {
@@ -903,29 +905,29 @@ function print_add_new_fact($id, $usedfacts, $type) {
 	// -- Add from pick list
 	switch ($type) {
 	case "INDI":
-		$addfacts   =preg_split("/[, ;:]+/", get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_ADD'),    -1, PREG_SPLIT_NO_EMPTY);
-		$uniquefacts=preg_split("/[, ;:]+/", get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
-		$quickfacts =preg_split("/[, ;:]+/", get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_QUICK'),  -1, PREG_SPLIT_NO_EMPTY);
+		$addfacts   =preg_split("/[, ;:]+/", $WT_TREE->getPreference('INDI_FACTS_ADD'),    -1, PREG_SPLIT_NO_EMPTY);
+		$uniquefacts=preg_split("/[, ;:]+/", $WT_TREE->getPreference('INDI_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
+		$quickfacts =preg_split("/[, ;:]+/", $WT_TREE->getPreference('INDI_FACTS_QUICK'),  -1, PREG_SPLIT_NO_EMPTY);
 		break;
 	case "FAM":
-		$addfacts   =preg_split("/[, ;:]+/", get_gedcom_setting(WT_GED_ID, 'FAM_FACTS_ADD'),     -1, PREG_SPLIT_NO_EMPTY);
-		$uniquefacts=preg_split("/[, ;:]+/", get_gedcom_setting(WT_GED_ID, 'FAM_FACTS_UNIQUE'),  -1, PREG_SPLIT_NO_EMPTY);
-		$quickfacts =preg_split("/[, ;:]+/", get_gedcom_setting(WT_GED_ID, 'FAM_FACTS_QUICK'),   -1, PREG_SPLIT_NO_EMPTY);
+		$addfacts   =preg_split("/[, ;:]+/", $WT_TREE->getPreference('FAM_FACTS_ADD'),     -1, PREG_SPLIT_NO_EMPTY);
+		$uniquefacts=preg_split("/[, ;:]+/", $WT_TREE->getPreference('FAM_FACTS_UNIQUE'),  -1, PREG_SPLIT_NO_EMPTY);
+		$quickfacts =preg_split("/[, ;:]+/", $WT_TREE->getPreference('FAM_FACTS_QUICK'),   -1, PREG_SPLIT_NO_EMPTY);
 		break;
 	case "SOUR":
-		$addfacts   =preg_split("/[, ;:]+/", get_gedcom_setting(WT_GED_ID, 'SOUR_FACTS_ADD'),    -1, PREG_SPLIT_NO_EMPTY);
-		$uniquefacts=preg_split("/[, ;:]+/", get_gedcom_setting(WT_GED_ID, 'SOUR_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
-		$quickfacts =preg_split("/[, ;:]+/", get_gedcom_setting(WT_GED_ID, 'SOUR_FACTS_QUICK'),  -1, PREG_SPLIT_NO_EMPTY);
+		$addfacts   =preg_split("/[, ;:]+/", $WT_TREE->getPreference('SOUR_FACTS_ADD'),    -1, PREG_SPLIT_NO_EMPTY);
+		$uniquefacts=preg_split("/[, ;:]+/", $WT_TREE->getPreference('SOUR_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
+		$quickfacts =preg_split("/[, ;:]+/", $WT_TREE->getPreference('SOUR_FACTS_QUICK'),  -1, PREG_SPLIT_NO_EMPTY);
 		break;
 	case "NOTE":
-		$addfacts   =preg_split("/[, ;:]+/", get_gedcom_setting(WT_GED_ID, 'NOTE_FACTS_ADD'),    -1, PREG_SPLIT_NO_EMPTY);
-		$uniquefacts=preg_split("/[, ;:]+/", get_gedcom_setting(WT_GED_ID, 'NOTE_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
-		$quickfacts =preg_split("/[, ;:]+/", get_gedcom_setting(WT_GED_ID, 'NOTE_FACTS_QUICK'),  -1, PREG_SPLIT_NO_EMPTY);
+		$addfacts   =preg_split("/[, ;:]+/", $WT_TREE->getPreference('NOTE_FACTS_ADD'),    -1, PREG_SPLIT_NO_EMPTY);
+		$uniquefacts=preg_split("/[, ;:]+/", $WT_TREE->getPreference('NOTE_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
+		$quickfacts =preg_split("/[, ;:]+/", $WT_TREE->getPreference('NOTE_FACTS_QUICK'),  -1, PREG_SPLIT_NO_EMPTY);
 		break;
 	case "REPO":
-		$addfacts   =preg_split("/[, ;:]+/", get_gedcom_setting(WT_GED_ID, 'REPO_FACTS_ADD'),    -1, PREG_SPLIT_NO_EMPTY);
-		$uniquefacts=preg_split("/[, ;:]+/", get_gedcom_setting(WT_GED_ID, 'REPO_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
-		$quickfacts =preg_split("/[, ;:]+/", get_gedcom_setting(WT_GED_ID, 'REPO_FACTS_QUICK'),  -1, PREG_SPLIT_NO_EMPTY);
+		$addfacts   =preg_split("/[, ;:]+/", $WT_TREE->getPreference('REPO_FACTS_ADD'),    -1, PREG_SPLIT_NO_EMPTY);
+		$uniquefacts=preg_split("/[, ;:]+/", $WT_TREE->getPreference('REPO_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
+		$quickfacts =preg_split("/[, ;:]+/", $WT_TREE->getPreference('REPO_FACTS_QUICK'),  -1, PREG_SPLIT_NO_EMPTY);
 		break;
 	default:
 		return;

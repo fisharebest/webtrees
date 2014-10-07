@@ -40,7 +40,7 @@ $to         = WT_Filter::post('to', null, WT_Filter::get('to'));
 $method     = WT_Filter::post('method', 'messaging|messaging2|messaging3|mailto|none', WT_Filter::get('method', 'messaging|messaging2|messaging3|mailto|none', 'messaging2'));
 $url        = WT_Filter::postUrl('url', WT_Filter::getUrl('url'));
 
-$controller=new WT_Controller_Simple();
+$controller = new WT_Controller_Simple();
 $controller->setPageTitle(WT_I18N::translate('webtrees message'));
 
 $to_user = User::findByIdentifier($to);
@@ -167,7 +167,7 @@ case 'send':
 	if ($to == 'never_logged') {
 		$toarray = array();
 		foreach (User::all() as $user) {
-			if ($user->getSetting('verified_by_admin') && $user->getSetting('reg_timestamp') > $user->getSetting('sessiontime')) {
+			if ($user->getPreference('verified_by_admin') && $user->getPreference('reg_timestamp') > $user->getPreference('sessiontime')) {
 				$toarray[$user->getUserId()] = $user->getUserName();
 			}
 		}
@@ -176,9 +176,9 @@ case 'send':
 		$toarray = array();
 		$sixmos = 60*60*24*30*6; //-- timestamp for six months
 		foreach (User::all() as $user) {
-			if ($user->getSetting('sessiontime')>0 && (WT_TIMESTAMP - $user->getSetting('sessiontime') > $sixmos)) {
+			if ($user->getPreference('sessiontime')>0 && (WT_TIMESTAMP - $user->getPreference('sessiontime') > $sixmos)) {
 				$toarray[$user->getUserId()] = $user->getUserName();
-			} elseif (!$user->getSetting('verified_by_admin') && (WT_TIMESTAMP - $user->getSetting('reg_timestamp') > $sixmos)) {
+			} elseif (!$user->getPreference('verified_by_admin') && (WT_TIMESTAMP - $user->getPreference('reg_timestamp') > $sixmos)) {
 				//-- not verified by registration past 6 months
 				$toarray[$user->getUserId()] = $user->getUserName();
 			}

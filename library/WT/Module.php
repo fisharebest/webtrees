@@ -104,8 +104,8 @@ abstract class WT_Module {
 	/**
 	 * Get a module setting.  Return a default if the setting is not set.
 	 *
-	 * @param      $setting_name
-	 * @param null $default
+	 * @param string $setting_name
+	 * @param string $default
 	 *
 	 * @return string|null
 	 */

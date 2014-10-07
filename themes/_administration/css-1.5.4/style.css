@@ -483,13 +483,6 @@ select {
 	margin: 0 220px 0 0;
 }
 
-/* FOOTER */
-#admin_footer {
-	text-align: center;
-	width: 100%;
-	margin-top: 30px;
-}
-
 /* DASHBOARD BLOCKS */
 #content_container {
 	background: #fdf5e6;

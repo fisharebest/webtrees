@@ -44,9 +44,9 @@ class WT_Mail {
 				->setSubject ($subject)
 				->setBodyHtml($message)
 				->setBodyText(WT_Filter::unescapeHtml($message))
-				->setFrom    (WT_Site::getPreference('SMTP_FROM_NAME'), $tree->preference('title'))
-				->addTo      ($to_email,                             $to_name)
-				->setReplyTo ($replyto_email,                        $replyto_name)
+				->setFrom    (WT_Site::getPreference('SMTP_FROM_NAME'), $tree->getPreference('title'))
+				->addTo      ($to_email,                                $to_name)
+				->setReplyTo ($replyto_email,                           $replyto_name)
 				->send       (WT_Mail::transport());
 		} catch (Exception $ex) {
 			Log::addErrorLog('Mail: ' . $ex->getMessage());
@@ -68,8 +68,8 @@ class WT_Mail {
 	public static function systemMessage(WT_Tree $tree, User $user, $subject, $message) {
 		return self::send(
 			$tree,
-			$user->getEmail(),                     $user->getRealName(),
-			WT_Site::getPreference('SMTP_FROM_NAME'), $tree->preference('title'),
+			$user->getEmail(),                        $user->getRealName(),
+			WT_Site::getPreference('SMTP_FROM_NAME'), $tree->getPreference('title'),
 			$subject,
 			$message
 		);

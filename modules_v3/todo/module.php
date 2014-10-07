@@ -60,29 +60,31 @@ class todo_WT_Module extends WT_Module implements WT_Module_Block {
 		$title.=$this->getTitle().help_link('todo', $this->getName());
 
 		$table_id = Uuid::uuid4(); // create a unique ID
+
 		$controller
 			->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 			->addInlineJavascript('
-				jQuery("#'.$table_id.'").dataTable({
-					dom: \'t\',
-					'.WT_I18N::datatablesI18N().',
-					autoWidth: false,
-					paginate: false,
-					lengthChange: false,
-					filter: false,
-					info: true,
-					jQueryUI: true,
-					columns: [
-						/* 0-DATE */   		{ visible: false },
-						/* 1-Date */		{ dataSort: 0 },
-						/* 1-Record */ 		null,
-						/* 2-Username */	null,
-						/* 3-Text */		null
-					]
-				});
-			jQuery("#'.$table_id.'").css("visibility", "visible");
+			jQuery("#' . $table_id . '").dataTable({
+				dom: \'t\',
+				'.WT_I18N::datatablesI18N().',
+				autoWidth: false,
+				paginate: false,
+				lengthChange: false,
+				filter: false,
+				info: true,
+				jQueryUI: true,
+				columns: [
+					/* 0-DATE */     { visible: false },
+					/* 1-Date */     { dataSort: 0 },
+					/* 1-Record */   null,
+					/* 2-Username */ null,
+					/* 3-Text */     null
+				]
+			});
+			jQuery("#' . $table_id . '").css("visibility", "visible");
 			jQuery(".loading-image").css("display", "none");
-			');
+		');
+
 		$content='';
 		$content .= '<div class="loading-image">&nbsp;</div>';
 		$content .= '<table id="'.$table_id.'" style="visibility:hidden;">';

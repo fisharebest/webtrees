@@ -38,7 +38,9 @@ class WT_Controller_Media extends WT_Controller_GedcomRecord {
 	 * get edit menu
 	 */
 	function getEditMenu() {
-		$SHOW_GEDCOM_RECORD=get_gedcom_setting(WT_GED_ID, 'SHOW_GEDCOM_RECORD');
+		global $WT_TREE;
+
+		$SHOW_GEDCOM_RECORD = $WT_TREE->getPreference('SHOW_GEDCOM_RECORD');
 
 		if (!$this->record || $this->record->isOld()) {
 			return null;

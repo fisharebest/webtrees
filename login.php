@@ -81,12 +81,12 @@ case 'login':
 			throw new Exception(WT_I18N::translate('The username or password is incorrect.'));
 		}
 
-		if (!$user->getSetting('verified')) {
+		if (!$user->getPreference('verified')) {
 			Log::addAuthenticationLog('Login failed (not verified by user): ' . $username);
 			throw new Exception(WT_I18N::translate('This account has not been verified.  Please check your email for a verification message.'));
 		}
 
-		if (!$user->getSetting('verified_by_admin')) {
+		if (!$user->getPreference('verified_by_admin')) {
 			Log::addAuthenticationLog('Login failed (not approved by admin): ' . $username);
 			throw new Exception(WT_I18N::translate('This account has not been approved.  Please wait for an administrator to approve it.'));
 		}
@@ -95,8 +95,8 @@ case 'login':
 		Log::addAuthenticationLog('Login: ' . Auth::user()->getUserName() . '/' . Auth::user()->getRealName());
 
 		$WT_SESSION->timediff  = $timediff;
-		$WT_SESSION->locale    = Auth::user()->getSetting('language');
-		$WT_SESSION->theme_dir = Auth::user()->getSetting('theme');
+		$WT_SESSION->locale    = Auth::user()->getPreference('language');
+		$WT_SESSION->theme_dir = Auth::user()->getPreference('theme');
 
 		// If we’ve clicked login from the login page, we don’t want to go back there.
 		if (strpos($url, WT_SCRIPT_NAME) === 0) {
@@ -287,22 +287,22 @@ case 'register':
 
 			$user = User::create($user_name, $user_realname, $user_email, $user_password01);
 			$user
-				->setSetting('language',          WT_LOCALE)
-				->setSetting('verified',          0)
-				->setSetting('verified_by_admin', !$REQUIRE_ADMIN_AUTH_REGISTRATION)
-				->setSetting('reg_timestamp',     date('U'))
-				->setSetting('reg_hashcode',      md5(Uuid::uuid4()))
-				->setSetting('contactmethod',     'messaging2')
-				->setSetting('comment',           $user_comments)
-				->setSetting('visibleonline',     1)
-				->setSetting('editaccount',       1)
-				->setSetting('auto_accept',       0)
-				->setSetting('canadmin',          0)
-				->setSetting('sessiontime',       0);
+				->setPreference('language',          WT_LOCALE)
+				->setPreference('verified',          0)
+				->setPreference('verified_by_admin', !$REQUIRE_ADMIN_AUTH_REGISTRATION)
+				->setPreference('reg_timestamp',     date('U'))
+				->setPreference('reg_hashcode',      md5(Uuid::uuid4()))
+				->setPreference('contactmethod',     'messaging2')
+				->setPreference('comment',           $user_comments)
+				->setPreference('visibleonline',     1)
+				->setPreference('editaccount',       1)
+				->setPreference('auto_accept',       0)
+				->setPreference('canadmin',          0)
+				->setPreference('sessiontime',       0);
 
 			// Generate an email in the admin’s language
-			$webmaster = User::find(get_gedcom_setting(WT_GED_ID, 'WEBMASTER_USER_ID'));
-			WT_I18N::init($webmaster->getSetting('language'));
+			$webmaster = User::find($WT_TREE->getPreference('WEBMASTER_USER_ID'));
+			WT_I18N::init($webmaster->getPreference('language'));
 
 			$mail1_body =
 				WT_I18N::translate('Hello administrator…') . WT_Mail::EOL . WT_Mail::EOL .
@@ -332,12 +332,12 @@ case 'register':
 				WT_I18N::translate('You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s.', WT_SERVER_NAME . WT_SCRIPT_PATH . ' ' . $WT_TREE->tree_title_html, $user->getEmail()) . '  '.
 				WT_I18N::translate('Information about the request is shown under the link below.') . WT_Mail::EOL .
 				WT_I18N::translate('Please click on the following link and fill in the requested data to confirm your request and email address.') . WT_Mail::EOL . WT_Mail::EOL .
-				'<a href="' . WT_LOGIN_URL . "?user_name=".urlencode($user->getUserName())."&amp;user_hashcode=".urlencode($user->getSetting('reg_hashcode')) . '&amp;action=userverify">' .
-				WT_LOGIN_URL . "?user_name=".urlencode($user->getUserName())."&user_hashcode=".urlencode($user->getSetting('reg_hashcode'))."&action=userverify" .
+				'<a href="' . WT_LOGIN_URL . "?user_name=".urlencode($user->getUserName())."&amp;user_hashcode=".urlencode($user->getPreference('reg_hashcode')) . '&amp;action=userverify">' .
+				WT_LOGIN_URL . "?user_name=".urlencode($user->getUserName())."&user_hashcode=".urlencode($user->getPreference('reg_hashcode'))."&action=userverify" .
 				'</a>' . WT_Mail::EOL . WT_Mail::EOL .
 				WT_I18N::translate('Username') . " " . $user->getUserName() . WT_Mail::EOL .
-				WT_I18N::translate('Verification code:') . " " . $user->getSetting('reg_hashcode') . WT_Mail::EOL .
-				WT_I18N::translate('Comments').": " . $user->getSetting('comment') . WT_Mail::EOL .
+				WT_I18N::translate('Verification code:') . " " . $user->getPreference('reg_hashcode') . WT_Mail::EOL .
+				WT_I18N::translate('Comments').": " . $user->getPreference('comment') . WT_Mail::EOL .
 				WT_I18N::translate('If you didn’t request an account, you can just delete this message.') . WT_Mail::EOL;
 			$mail2_subject = /* I18N: %s is a server name/URL */ WT_I18N::translate('Your registration at %s', WT_SERVER_NAME.WT_SCRIPT_PATH);
 			$mail2_to      = $user->getEmail();
@@ -363,7 +363,7 @@ case 'register':
 				// From:
 				$WT_TREE,
 				// To:
-				$webmaster->getUserId(),
+				$webmaster->getEmail(),
 				$webmaster->getRealName(),
 				// Reply-To:
 				$WEBTREES_EMAIL,
@@ -372,7 +372,7 @@ case 'register':
 				$mail1_subject,
 				$mail1_body
 			);
-			$mail1_method = $webmaster->getSetting('contact_method');
+			$mail1_method = $webmaster->getPreference('contact_method');
 			if ($mail1_method!='messaging3' && $mail1_method!='mailto' && $mail1_method!='none') {
 				WT_DB::prepare("INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)")
 					->execute(array($user->getEmail(), $WT_REQUEST->getClientIp(), $webmaster->getUserId(), $mail1_subject, WT_Filter::unescapeHtml($mail1_body)));
@@ -457,7 +457,7 @@ case 'userverify':
 	// Change to the new user’s language
 	$user = User::findByIdentifier($user_name);
 
-	WT_I18N::init($user->getSetting('language'));
+	WT_I18N::init($user->getPreference('language'));
 
 	$controller->setPageTitle(WT_I18N::translate('User verification'));
 	$controller->pageHeader();
@@ -492,8 +492,8 @@ case 'verify_hash':
 	}
 
 	// switch language to webmaster settings
-	$webmaster = User::find(get_gedcom_setting(WT_GED_ID, 'WEBMASTER_USER_ID'));
-	WT_I18N::init($webmaster->getSetting('language'));
+	$webmaster = User::find($WT_TREE->getPreference('WEBMASTER_USER_ID'));
+	WT_I18N::init($webmaster->getPreference('language'));
 
 	$user = User::findByIdentifier($user_name);
 	$mail1_body =
@@ -505,7 +505,7 @@ case 'verify_hash':
 			$user->getUserName(),
 			$user->getEmail()
 		) . WT_Mail::EOL . WT_Mail::EOL;
-	if ($REQUIRE_ADMIN_AUTH_REGISTRATION && !$user->getSetting('verified_by_admin')) {
+	if ($REQUIRE_ADMIN_AUTH_REGISTRATION && !$user->getPreference('verified_by_admin')) {
 		$mail1_body .= WT_I18N::translate('You now need to review the account details, and set the “approved” status to “yes”.');
 	} else {
 		$mail1_body .= WT_I18N::translate('You do not have to take any action; the user can now login.');
@@ -520,7 +520,7 @@ case 'verify_hash':
 	$mail1_subject = /* I18N: %s is a server name/URL */ WT_I18N::translate('New user at %s', WT_SERVER_NAME . WT_SCRIPT_PATH . ' ' . $WT_TREE->tree_title);
 
 	// Change to the new user’s language
-	WT_I18N::init($user->getSetting('language'));
+	WT_I18N::init($user->getPreference('language'));
 
 	$controller->setPageTitle(WT_I18N::translate('User verification'));
 	$controller->pageHeader();
@@ -530,7 +530,7 @@ case 'verify_hash':
 	echo '<div id="user-verify">';
 	echo WT_I18N::translate('The data for the user <b>%s</b> was checked.', $user_name);
 	if ($user) {
-		if ($user->checkPassword($user_password) && $user->getSetting('reg_hashcode') == $user_hashcode) {
+		if ($user->checkPassword($user_password) && $user->getPreference('reg_hashcode') == $user_hashcode) {
 			WT_Mail::send(
 				// From:
 				$WT_TREE,
@@ -544,16 +544,16 @@ case 'verify_hash':
 				$mail1_subject,
 				$mail1_body
 			);
-			$mail1_method  = $webmaster->getSetting('CONTACT_METHOD');
+			$mail1_method  = $webmaster->getPreference('CONTACT_METHOD');
 			if ($mail1_method!='messaging3' && $mail1_method!='mailto' && $mail1_method!='none') {
 				WT_DB::prepare("INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)")
 					->execute(array($user_name, $WT_REQUEST->getClientIp(), $webmaster->getUserId(), $mail1_subject, WT_Filter::unescapeHtml($mail1_body)));
 			}
 
 			$user
-				->setSetting('verified', 1)
-				->setSetting('reg_timestamp', date("U"))
-				->setSetting('reg_hashcode', null);
+				->setPreference('verified', 1)
+				->setPreference('reg_timestamp', date("U"))
+				->setPreference('reg_hashcode', null);
 
 			if (!$REQUIRE_ADMIN_AUTH_REGISTRATION) {
 				set_user_setting($user_id, 'verified_by_admin', 1);
@@ -561,7 +561,7 @@ case 'verify_hash':
 			Log::addAuthenticationLog('User ' . $user_name . ' verified their email address');
 
 			echo '<br><br>'.WT_I18N::translate('You have confirmed your request to become a registered user.').'<br><br>';
-			if ($REQUIRE_ADMIN_AUTH_REGISTRATION && !$user->getSetting('verified_by_admin')) {
+			if ($REQUIRE_ADMIN_AUTH_REGISTRATION && !$user->getPreference('verified_by_admin')) {
 				echo WT_I18N::translate('The administrator has been informed.  As soon as he gives you permission to login, you can login with your user name and password.');
 			} else {
 				echo WT_I18N::translate('You can now login with your user name and password.');

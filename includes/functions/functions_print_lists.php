@@ -28,10 +28,10 @@ use Rhumsaa\Uuid\Uuid;
 
 // print a table of individuals
 function format_indi_table($datalist, $option='') {
-	global $GEDCOM, $SHOW_LAST_CHANGE, $SEARCH_SPIDER, $MAX_ALIVE_AGE, $controller;
+	global $GEDCOM, $SHOW_LAST_CHANGE, $SEARCH_SPIDER, $MAX_ALIVE_AGE, $controller, $WT_TREE;
 
 	$table_id = 'table-indi-' . Uuid::uuid4(); // lists requires a unique ID in case there are multiple lists per page
-	$SHOW_EST_LIST_DATES = get_gedcom_setting(WT_GED_ID, 'SHOW_EST_LIST_DATES');
+	$SHOW_EST_LIST_DATES = $WT_TREE->getPreference('SHOW_EST_LIST_DATES');
 
 	$controller
 		->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
@@ -406,7 +406,9 @@ function format_indi_table($datalist, $option='') {
 			}
 		} else {
 			$death_date=$person->getEstimatedDeathDate();
-			if ($SHOW_EST_LIST_DATES) {
+			// Estimated death dates are a fixed number of years after the birth date.
+			// Don't show estimates in the future.
+			if ($SHOW_EST_LIST_DATES && $death_date->MinJD() < WT_CLIENT_JD) {
 				$html .= $death_date->Display(!$SEARCH_SPIDER);
 			} else if ($person->isDead()) {
 				$html .= WT_I18N::translate('yes');

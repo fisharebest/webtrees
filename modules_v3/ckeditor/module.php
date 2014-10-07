@@ -34,7 +34,16 @@ class ckeditor_WT_Module extends WT_Module {
 		return /* I18N: Description of the “CKEditor” module.  WYSIWYG = “what you see is what you get” */ WT_I18N::translate('Allow other modules to edit text using a “WYSIWYG” editor, instead of using HTML codes.');
 	}
 
-	// Convert <textarea class="html-edit"> fields to CKEditor fields
+	/**
+	 * Convert <textarea class="html-edit"> fields to CKEditor fields
+	 *
+	 * This function needs to be called *after* we have sent the page header and
+	 * before we have sent the page footer.
+	 *
+	 * @param WT_Controller_Base $controller
+	 *
+	 * @return void
+	 */
 	public static function enableEditor($controller) {
 		$controller
 			->addExternalJavascript(WT_MODULES_DIR . 'ckeditor/' . self::VERSION . '/ckeditor.js')

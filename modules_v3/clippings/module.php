@@ -54,7 +54,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 
 			$clip_ctrl=new WT_Controller_Clippings();
 
-			$controller=new WT_Controller_Page();
+			$controller = new WT_Controller_Page();
 			$controller
 				->setPageTitle($this->getTitle())
 				->PageHeader()
@@ -481,7 +481,6 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 			}';
 		$out .= '</script>';
 		if ($person::RECORD_TYPE=='FAM') {
-
 			$out .= '<form action="module.php" method="get" onsubmit="continueAjax(this); return false;">
 			<input type="hidden" name="mod" value="clippings">
 			<input type="hidden" name="mod_action" value="index">
@@ -497,8 +496,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 			<tr><td class="topbottombar"><input type="submit" value="'.WT_I18N::translate('Continue adding').'"></td></tr>
 			</table>
 			</form>';
-		}
-		else if ($person::RECORD_TYPE=='INDI') {
+		} elseif ($person::RECORD_TYPE=='INDI') {
 			$out .= '<form action="module.php" method="get" onsubmit="continueAjax(this); return false;">
 			<input type="hidden" name="mod" value="clippings">
 			<input type="hidden" name="mod_action" value="index">
@@ -544,7 +542,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 
 		$out = '<script>';
 		$out .= 'function cancelDownload() {
-				var link = "module.php?mod='.$this->getName().'&mod_action=ajax&sb_action=clippings&pid='.$pid.'";
+				var link = "module.php?mod=' . $this->getName() . '&mod_action=ajax&sb_action=clippings&pid=' . $pid . '";
 				jQuery("#sb_clippings_content").load(link);
 			}';
 		$out .= '</script>';

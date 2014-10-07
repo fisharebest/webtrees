@@ -68,6 +68,8 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 	}
 
 	function getOtherFields() {
+		global $WT_TREE;
+
 		$ofields = array(
 			'ADDR','ADDR:CITY','ADDR:STAE','ADDR:CTRY','ADDR:POST',
 			'ADOP:DATE','ADOP:PLAC',
@@ -110,7 +112,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 			'_MILI',
 		);
 		// Allow (some of) the user-specified fields to be selected
-		preg_match_all('/(' . WT_REGEX_TAG . ')/', get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_ADD'), $facts);
+		preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('INDI_FACTS_ADD'), $facts);
 		foreach ($facts[1] as $fact) {
 			if (
 				$fact!='BIRT' &&

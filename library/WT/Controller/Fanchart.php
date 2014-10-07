@@ -30,9 +30,11 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 	public $chart_html     =null;
 
 	public function __construct() {
+		global $WT_TREE;
+
 		parent::__construct();
 
-		$default_generations=get_gedcom_setting(WT_GED_ID, 'DEFAULT_PEDIGREE_GENERATIONS');
+		$default_generations = $WT_TREE->getPreference('DEFAULT_PEDIGREE_GENERATIONS');
 
 		// Extract the request parameters
 		$this->fan_style   = WT_Filter::getInteger('fan_style',   2,  4,  3);

@@ -108,7 +108,7 @@ class WT_I18N {
 	 * @return string $string
 	 */
 	public static function init($locale=null) {
-		global $WT_SESSION;
+		global $WT_SESSION, $WT_TREE;
 
 		// The translation libraries only work with a cache.
 		$cache_options = array(
@@ -133,9 +133,7 @@ class WT_I18N {
 			$locale = WT_Filter::get('lang');
 			if ($locale && array_key_exists($locale, $installed_languages)) {
 				// Requested in the URL?
-				if (Auth::id()) {
-					Auth::user()->setSetting('language', $locale);
-				}
+				Auth::user()->setPreference('language', $locale);
 			} elseif (array_key_exists($WT_SESSION->locale, $installed_languages)) {
 				// Rembered from a previous visit?
 				$locale = $WT_SESSION->locale;
@@ -148,7 +146,7 @@ class WT_I18N {
 				}
 				if (WT_GED_ID) {
 					// Add the tree’s default language as a low-priority
-					$locale = get_gedcom_setting(WT_GED_ID, 'LANGUAGE');
+					$locale = $WT_TREE->getPreference('LANGUAGE');
 					$prefs[] = $locale.';q=0.2';
 				}
 				$prefs2=array();
@@ -405,7 +403,7 @@ class WT_I18N {
 	 * This is necessary to fetch a format string (containing % characters) without
 	 * performing sustitution of arguments.
 	 *
-	 * @param string,... $string, $args...
+	 * @param string $string
 	 *
 	 * @return string
 	 */

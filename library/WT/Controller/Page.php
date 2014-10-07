@@ -78,7 +78,7 @@ class WT_Controller_Page extends WT_Controller_Base {
 	// Print the page header, using the theme
 	public function pageHeader() {
 		// Import global variables into the local scope, for the theme’s header.php
-		global $SEARCH_SPIDER, $TEXT_DIRECTION, $REQUIRE_AUTHENTICATION, $headerfile, $view;
+		global $WT_TREE, $SEARCH_SPIDER, $TEXT_DIRECTION, $REQUIRE_AUTHENTICATION, $headerfile, $view;
 
 		// The title often includes the names of records, which may have markup
 		// that cannot be used in the page title.
@@ -87,12 +87,12 @@ class WT_Controller_Page extends WT_Controller_Base {
 		// Initialise variables for the theme’s header.php
 		$LINK_CANONICAL   = $this->canonical_url;
 		$META_ROBOTS      = $this->meta_robots;
-		$META_DESCRIPTION = WT_GED_ID ? get_gedcom_setting(WT_GED_ID, 'META_DESCRIPTION') : '';
+		$META_DESCRIPTION = $WT_TREE ? $WT_TREE->getPreference('META_DESCRIPTION') : '';
 		if (!$META_DESCRIPTION) {
 			$META_DESCRIPTION = strip_tags(WT_TREE_TITLE);
 		}
 		$META_GENERATOR = WT_WEBTREES . ' ' . WT_VERSION . ' - ' . WT_WEBTREES_URL;
-		$META_TITLE     = WT_GED_ID ? get_gedcom_setting(WT_GED_ID, 'META_TITLE') : '';
+		$META_TITLE     = $WT_TREE ? $WT_TREE->getPreference('META_TITLE') : '';
 		if ($META_TITLE) {
 			$title .= ' - ' . $META_TITLE;
 		}
@@ -143,7 +143,7 @@ class WT_Controller_Page extends WT_Controller_Base {
 
 	// Print the page footer, using the theme
 	protected function pageFooter() {
-		global $footerfile, $TEXT_DIRECTION, $view;
+		global $footerfile, $WT_TREE, $TEXT_DIRECTION, $view;
 
 		if (WT_GED_ID) {
 			require WT_ROOT.$footerfile;
@@ -161,6 +161,8 @@ class WT_Controller_Page extends WT_Controller_Base {
 	// Get significant information from this page, to allow other pages such as
 	// charts and reports to initialise with the same records
 	public function getSignificantIndividual() {
+		global $WT_TREE;
+
 		static $individual; // Only query the DB once.
 
 		if (!$individual && WT_USER_ROOT_ID) {
@@ -170,7 +172,7 @@ class WT_Controller_Page extends WT_Controller_Base {
 			$individual=WT_Individual::getInstance(WT_USER_GEDCOM_ID);
 		}
 		if (!$individual) {
-			$individual=WT_Individual::getInstance(get_gedcom_setting(WT_GED_ID, 'PEDIGREE_ROOT_ID'));
+			$individual=WT_Individual::getInstance($WT_TREE->getPreference('PEDIGREE_ROOT_ID'));
 		}
 		if (!$individual) {
 			$individual=WT_Individual::getInstance(

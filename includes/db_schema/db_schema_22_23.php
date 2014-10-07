@@ -26,14 +26,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
-$_data_dir = realpath(WT_Site::getPreference('INDEX_DIRECTORY') ? WT_Site::getPreference('INDEX_DIRECTORY') : 'data').DIRECTORY_SEPARATOR;
-
-$_cfgs = self::prepare(
+$_cfgs = WT_DB::prepare(
 	"SELECT gs1.gedcom_id AS gedcom_id, gs1.setting_value AS media_directory, gs2.setting_value AS use_media_firewall, gs3.setting_value AS media_firewall_thumbs, gs4.setting_value AS media_firewall_rootdir" .
 	" FROM `##gedcom_setting` gs1" .
 	" LEFT JOIN `##gedcom_setting` gs2 ON (gs1.gedcom_id = gs2.gedcom_id AND gs2.setting_name='USE_MEDIA_FIREWALL')" .
@@ -47,16 +40,16 @@ foreach ($_cfgs as $_cfg) {
 	if ($_cfg->use_media_firewall) {
 		// We’re using the media firewall.
 		$_mf_dir = realpath($_cfg->media_firewall_rootdir) . DIRECTORY_SEPARATOR;
-		if ($_mf_dir == $_data_dir) {
+		if ($_mf_dir == WT_DATA_DIR) {
 			// We’re already storing our media in the data folder - nothing to do.
 		} else {
 			// We’ve chosen a custom location for our media folder - need to update our media-folder to point to it.
 			// We have, for example,
 			// $_mf_dir = /home/fisharebest/my_pictures/
-			// $_data_dir = /home/fisharebest/public_html/webtrees/data/
+			// WT_DATA_DIR = /home/fisharebest/public_html/webtrees/data/
 			// Therefore we need to calculate ../../../my_pictures/
 			$_media_dir = '';
-			$_tmp_dir = $_data_dir;
+			$_tmp_dir = WT_DATA_DIR;
 			while (strpos($_mf_dir, $_tmp_dir)!==0) {
 				$_media_dir .= '../';
 				$_tmp_dir = preg_replace('~[^/\\\\]+[/\\\\]$~', '', $_tmp_dir);
@@ -66,7 +59,7 @@ foreach ($_cfgs as $_cfg) {
 				}
 			}
 			$_media_dir .= $_cfg->media_directory;
-			self::prepare(
+			WT_DB::prepare(
 				"UPDATE `##gedcom_setting`" .
 				" SET setting_value=?" .
 				" WHERE gedcom_id=? AND setting_name='MEDIA_DIRECTORY'"
@@ -77,21 +70,21 @@ foreach ($_cfgs as $_cfg) {
 		if (
 			file_exists(WT_ROOT . $_cfg->media_directory) &&
 			is_dir(WT_ROOT . $_cfg->media_directory) &&
-			!file_exists($_data_dir . $_cfg->media_directory)
+			!file_exists(WT_DATA_DIR . $_cfg->media_directory)
 		) {
-			@rename(WT_ROOT . $_cfg->media_directory, $_data_dir . $_cfg->media_directory);
-			@unlink($_data_dir . $_cfg->media_directory . '.htaccess');
-			@unlink($_data_dir . $_cfg->media_directory . 'index.php');
-			@unlink($_data_dir . $_cfg->media_directory . 'Mediainfo.txt');
-			@unlink($_data_dir . $_cfg->media_directory . 'thumbs/Thumbsinfo.txt');
+			@rename(WT_ROOT . $_cfg->media_directory, WT_DATA_DIR . $_cfg->media_directory);
+			WT_File::delete(WT_DATA_DIR . $_cfg->media_directory . '.htaccess');
+			WT_File::delete(WT_DATA_DIR . $_cfg->media_directory . 'index.php');
+			WT_File::delete(WT_DATA_DIR . $_cfg->media_directory . 'Mediainfo.txt');
+			WT_File::delete(WT_DATA_DIR . $_cfg->media_directory . 'thumbs/Thumbsinfo.txt');
 		}
 	}
 }
 
-unset($_data_dir, $_cfgs, $_cfg, $_mf_dir, $_tmp_dir);
+unset($_cfgs, $_cfg, $_mf_dir, $_tmp_dir);
 
 // Delete old settings
-self::exec("DELETE FROM `##gedcom_setting` WHERE setting_name IN ('USE_MEDIA_FIREWALL', 'MEDIA_FIREWALL_THUMBS', 'MEDIA_FIREWALL_ROOTDIR')");
+WT_DB::exec("DELETE FROM `##gedcom_setting` WHERE setting_name IN ('USE_MEDIA_FIREWALL', 'MEDIA_FIREWALL_THUMBS', 'MEDIA_FIREWALL_ROOTDIR')");
 
 // Update the version to indicate success
 WT_Site::setPreference($schema_name, $next_version);

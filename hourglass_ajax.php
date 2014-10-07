@@ -26,7 +26,7 @@
 define('WT_SCRIPT_NAME', 'hourglass_ajax.php');
 require './includes/session.php';
 
-$controller=new WT_Controller_Hourglass();
+$controller = new WT_Controller_Hourglass();
 
 header('Content-type: text/html; charset=UTF-8');
 

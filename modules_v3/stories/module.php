@@ -194,7 +194,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 			} else {
 				$block_id=WT_Filter::getInteger('block_id');
 
-				$controller=new WT_Controller_Page();
+				$controller = new WT_Controller_Page();
 				if ($block_id) {
 					$controller->setPageTitle(WT_I18N::translate('Edit story'));
 					$title = get_block_setting($block_id, 'title');
@@ -283,7 +283,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
 		if (WT_USER_GEDCOM_ADMIN) {
 
-			$controller=new WT_Controller_Page();
+			$controller = new WT_Controller_Page();
 			$controller
 				->setPageTitle($this->getTitle())
 				->pageHeader()
@@ -309,7 +309,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 					});
 				');
 
-			$stories=WT_DB::prepare(
+			$stories = WT_DB::prepare(
 				"SELECT block_id, xref".
 				" FROM `##block` b".
 				" WHERE module_name=?".
@@ -360,7 +360,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 	private function show_list() {
 		global $controller;
 
-		$controller=new WT_Controller_Page();
+		$controller = new WT_Controller_Page();
 		$controller
 			->setPageTitle($this->getTitle())
 			->pageHeader()
@@ -384,7 +384,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				});
 			');
 
-		$stories=WT_DB::prepare(
+		$stories = WT_DB::prepare(
 			"SELECT block_id, xref".
 			" FROM `##block` b".
 			" WHERE module_name=?".
