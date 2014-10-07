@@ -25,7 +25,7 @@ define('WT_SCRIPT_NAME', 'branches.php');
 require './includes/session.php';
 
 
-$controller=new WT_Controller_Branches();
+$controller = new WT_Controller_Branches();
 $controller
 	->pageHeader()
 	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')

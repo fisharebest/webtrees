@@ -26,7 +26,7 @@ define('WT_SCRIPT_NAME', 'repo.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
-$controller=new WT_Controller_Repository();
+$controller = new WT_Controller_Repository();
 
 if ($controller->record && $controller->record->canShow()) {
 	$controller->pageHeader();
@@ -74,15 +74,14 @@ if ($controller->record && $controller->record->canShow()) {
 	exit;
 }
 
-$controller
-	->addInlineJavascript('
-		jQuery("#repo-tabs")
-			.tabs({
-				create: function(e, ui){
-					jQuery(e.target).css("visibility", "visible");  // prevent FOUC
-				}
-			});
-	');
+$controller->addInlineJavascript('
+	jQuery("#repo-tabs")
+		.tabs({
+			create: function(e, ui){
+				jQuery(e.target).css("visibility", "visible");  // prevent FOUC
+			}
+		});
+');
 
 $linked_sour = $controller->record->linkedSources('REPO');
 

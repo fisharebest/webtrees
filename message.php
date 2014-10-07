@@ -40,7 +40,7 @@ $to         = WT_Filter::post('to', null, WT_Filter::get('to'));
 $method     = WT_Filter::post('method', 'messaging|messaging2|messaging3|mailto|none', WT_Filter::get('method', 'messaging|messaging2|messaging3|mailto|none', 'messaging2'));
 $url        = WT_Filter::postUrl('url', WT_Filter::getUrl('url'));
 
-$controller=new WT_Controller_Simple();
+$controller = new WT_Controller_Simple();
 $controller->setPageTitle(WT_I18N::translate('webtrees message'));
 
 $to_user = User::findByIdentifier($to);

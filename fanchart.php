@@ -25,7 +25,7 @@ define('WT_SCRIPT_NAME', 'fanchart.php');
 require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
-$controller=new WT_Controller_Fanchart();
+$controller = new WT_Controller_Fanchart();
 
 if (WT_Filter::getBool('img')) {
 	Zend_Session::writeClose();

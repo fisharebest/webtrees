@@ -24,7 +24,7 @@ use WT\User;
 define('WT_SCRIPT_NAME', 'admin_site_logs.php');
 require './includes/session.php';
 
-$controller=new WT_Controller_Page();
+$controller = new WT_Controller_Page();
 $controller
 	->restrictAccess(Auth::isManager())
 	->setPageTitle(WT_I18N::translate('Logs'));
@@ -217,7 +217,7 @@ foreach (User::all() as $tmp_user) {
 
 echo
 	'<form name="logs" method="get" action="'.WT_SCRIPT_NAME.'">',
-		'<input type="hidden" name="action", value="show">',
+		'<input type="hidden" name="action" value="show">',
 		'<table class="site_logs">',
 			'<tr>',
 				'<td colspan="6">',

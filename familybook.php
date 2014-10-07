@@ -24,7 +24,7 @@
 define('WT_SCRIPT_NAME', 'familybook.php');
 require './includes/session.php';
 
-$controller=new WT_Controller_Familybook();
+$controller = new WT_Controller_Familybook();
 $controller
 	->pageHeader()
 	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')

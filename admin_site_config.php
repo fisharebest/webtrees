@@ -24,7 +24,7 @@ define('WT_SCRIPT_NAME', 'admin_site_config.php');
 require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
-$controller=new WT_Controller_Page();
+$controller = new WT_Controller_Page();
 $controller
 	->restrictAccess(Auth::isAdmin())
 	->addExternalJavascript(WT_JQUERY_JEDITABLE_URL)

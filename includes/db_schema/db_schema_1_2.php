@@ -27,12 +27,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
-self::exec(
+WT_DB::exec(
 	"CREATE TABLE IF NOT EXISTS `##session` (".
 	" session_id   CHAR(32)    NOT NULL,".
 	" session_time TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,".

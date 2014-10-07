@@ -27,13 +27,12 @@ use WT\User;
 define('WT_SCRIPT_NAME', 'admin_trees_config.php');
 
 require './includes/session.php';
+require WT_ROOT.'includes/functions/functions_edit.php';
 
-$controller=new WT_Controller_Page();
+$controller = new WT_Controller_Page();
 $controller
 	->restrictAccess(Auth::isManager())
 	->setPageTitle(WT_I18N::translate('Family tree configuration'));
-
-require WT_ROOT.'includes/functions/functions_edit.php';
 
 $PRIVACY_CONSTANTS = array(
 	'none'         => WT_I18N::translate('Show to visitors'),

@@ -34,7 +34,7 @@ if (!WT_USER_GEDCOM_ADMIN) {
 	exit;
 }
 
-$controller=new WT_Controller_Ajax();
+$controller = new WT_Controller_Ajax();
 $controller
 	->pageHeader();
 

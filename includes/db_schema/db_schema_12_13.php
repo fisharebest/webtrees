@@ -26,22 +26,16 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 // Convert MULTI_MEDIA (0=false, 1=true) to MEDIA_UPLOAD (1=members, 0=managers, -1=nobody)
 try {
-	self::exec("UPDATE `##gedcom_setting` SET setting_name='MEDIA_UPLOAD' WHERE setting_name='MULTI_MEDIA'");
+	WT_DB::exec("UPDATE `##gedcom_setting` SET setting_name='MEDIA_UPLOAD' WHERE setting_name='MULTI_MEDIA'");
 } catch (PDOException $ex) {
 	// This could theoretically cause a duplicate key error, if a MULTI_MEDIA setting already exists
 }
 
 // Remove old settings
-self::exec("DELETE FROM `##gedcom_setting` WHERE setting_name IN ('SHOW_MEDIA_FILENAME', 'USE_THUMBS_MAIN', 'MULTI_MEDIA')");
-self::exec("DELETE FROM `##default_resn` WHERE tag_type IN ('_PRIM')");
+WT_DB::exec("DELETE FROM `##gedcom_setting` WHERE setting_name IN ('SHOW_MEDIA_FILENAME', 'USE_THUMBS_MAIN', 'MULTI_MEDIA')");
+WT_DB::exec("DELETE FROM `##default_resn` WHERE tag_type IN ('_PRIM')");
 
 // Update the version to indicate success
 WT_Site::setPreference($schema_name, $next_version);
-

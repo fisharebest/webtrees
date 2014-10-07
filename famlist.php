@@ -30,7 +30,7 @@ define('WT_SCRIPT_NAME', 'famlist.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
-$controller=new WT_Controller_Page();
+$controller = new WT_Controller_Page();
 
 // We show three different lists: initials, surnames and individuals
 // Note that the data may contain special chars, such as surname="<unknown>",

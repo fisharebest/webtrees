@@ -28,7 +28,7 @@ define('WT_SCRIPT_NAME', 'admin_media_upload.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_mediadb.php';
 
-$controller=new WT_Controller_Page();
+$controller = new WT_Controller_Page();
 $controller
 	->restrictAccess(Auth::isManager())
 	->setPageTitle(WT_I18N::translate('Upload media files'));

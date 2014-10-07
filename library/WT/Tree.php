@@ -137,8 +137,8 @@ class WT_Tree {
 	 * Set the tree’s user-configuration settings.
 	 *
 	 * @param User    $user
-	 * @param string  setting_name
-	 * @param string  setting_value
+	 * @param string  $setting_name
+	 * @param string  $setting_value
 	 *
 	 * @return $this
 	 */
@@ -187,7 +187,7 @@ class WT_Tree {
 				"   )" .
 				"  )" .
 				" ORDER BY g.sort_order, 3"
-			)->execute(array(WT_USER_ID, WT_USER_ID))->fetchAll();
+			)->execute(array(Auth::id(), Auth::id()))->fetchAll();
 			foreach ($rows as $row) {
 				self::$trees[$row->tree_id] = new WT_Tree($row->tree_id, $row->tree_name, $row->tree_title, $row->imported);
 			}
