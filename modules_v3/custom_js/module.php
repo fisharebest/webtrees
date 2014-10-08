@@ -20,10 +20,8 @@
 //
 // $Id: module.php 8218 2010-05-09 07:39:07Z greg $
 
-if (!defined('WT_WEBTREES')) {
-    header('HTTP/1.0 403 Forbidden');
-    exit;
-}
+use WT\Auth;
+use WT\Log;
 
 class custom_js_WT_Module extends WT_Module implements WT_Module_Config, WT_Module_Menu {
 
@@ -43,7 +41,7 @@ class custom_js_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
             case 'admin_config':
                 $controller = new WT_Controller_Page;
                 $controller
-                    ->requireAdminLogin()
+                    ->restrictAccess(Auth::isAdmin())
                     ->setPageTitle($this->getTitle())
             ->addInlineJavascript("
                 jQuery('head')
@@ -57,7 +55,7 @@ class custom_js_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
                 if ($action == 'update') {
                     $this->setSetting('CJS_FOOTER', WT_Filter::post('NEW_CJS_FOOTER'));
-                    AddToLog($this->getTitle() . ' config updated', 'config');
+                    Log::addConfigurationLog($this->getTitle().' config updated');
                 }
 
                 $CJS_FOOTER = $this->getSetting('CJS_FOOTER');
