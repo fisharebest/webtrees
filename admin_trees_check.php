@@ -63,7 +63,7 @@ foreach ($rows as $row) {
 // Need to merge pending new/changed/deleted records
 
 $rows=WT_DB::prepare(
-	" SELECT xref, SUBSTRING_INDEX(SUBSTRING_INDEX(SUBSTRING_INDEX(CASE WHEN old_gedcom='' THEN new_gedcom ELSE old_gedcom END, '\n', 1), ' ', 3), ' ', -1) AS type, new_gedcom AS gedrec".
+	"SELECT xref, SUBSTRING_INDEX(SUBSTRING_INDEX(SUBSTRING_INDEX(CASE WHEN old_gedcom='' THEN new_gedcom ELSE old_gedcom END, '\n', 1), ' ', 3), ' ', -1) AS type, new_gedcom AS gedrec".
 	" FROM (".
 	"  SELECT MAX(change_id) AS change_id".
 	"  FROM `##change`".
