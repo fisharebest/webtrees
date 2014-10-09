@@ -80,19 +80,21 @@ case 'delete':
 	if (WT_Filter::checkCsrf() && $gedcom_id) {
 		WT_Tree::delete($gedcom_id);
 	}
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME);
+	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME);
 	break;
 case 'setdefault':
 	if (WT_Filter::checkCsrf()) {
 		WT_Site::setPreference('DEFAULT_GEDCOM', WT_Filter::post('default_ged'));
 	}
-	break;
+	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME);
+	exit;
 case 'new_tree':
 	$ged_name=basename(WT_Filter::post('ged_name'));
 	if (WT_Filter::checkCsrf() && $ged_name) {
 		WT_Tree::create($ged_name);
 	}
-	break;
+	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME);
+	exit;
 case 'replace_upload':
 	$gedcom_id = WT_Filter::postInteger('gedcom_id');
 	// Make sure the gedcom still exists
@@ -103,7 +105,7 @@ case 'replace_upload':
 			}
 		}
 	}
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME.'?keep_media'.$gedcom_id.'='.WT_Filter::postBool('keep_media'.$gedcom_id));
+	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?keep_media' . $gedcom_id . '=' . WT_Filter::postBool('keep_media' . $gedcom_id));
 	exit;
 case 'replace_import':
 	$gedcom_id = WT_Filter::postInteger('gedcom_id');
@@ -112,7 +114,7 @@ case 'replace_import':
 		$ged_name = basename(WT_Filter::post('ged_name'));
 		import_gedcom_file($gedcom_id, WT_DATA_DIR.$ged_name, $ged_name);
 	}
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME.'?keep_media'.$gedcom_id.'='.WT_Filter::postBool('keep_media'.$gedcom_id));
+	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?keep_media' . $gedcom_id . '=' . WT_Filter::postBool('keep_media' . $gedcom_id));
 	exit;
 }
 
@@ -238,41 +240,52 @@ foreach (WT_Tree::GetAll() as $tree) {
 			'</td></tr></table></td></tr></table><br>';
 	}
 }
+?>
 
-// Options for creating new gedcoms and setting defaults
-if (Auth::isAdmin()) {
-	echo '<table class="gedcom_table2"><tr>';
-	if (count(WT_Tree::GetAll())>1) {
-		echo '<th>', WT_I18N::translate('Default family tree'), help_link('default_gedcom'), '</th>';
-	}
-	echo '<th>', WT_I18N::translate('Create a new family tree'), help_link('add_new_gedcom'), '</th></tr><tr>';
-	if (count(WT_Tree::GetAll())>1) {
-		echo
-			'<td><form name="defaultform" method="post" action="', WT_SCRIPT_NAME, '">',
-			'<input type="hidden" name="action" value="setdefault">',
-			WT_Filter::getCsrf(),
-			select_edit_control('default_ged', WT_Tree::getNameList(), '', WT_Site::getPreference('DEFAULT_GEDCOM'), 'onchange="document.defaultform.submit();"'),
-			'</form></td>';
-	}
+<?php if (Auth::isAdmin()): ?>
+	<table class="gedcom_table2">
+		<tr>
+			<?php if (count(WT_Tree::GetAll())>1): ?>
+			<th>
+				<?php echo WT_I18N::translate('Default family tree'), help_link('default_gedcom'); ?>
+			</th>
+			<?php endif; ?>
+			<th>
+				<?php echo WT_I18N::translate('Create a new family tree'), help_link('add_new_gedcom'); ?>
+			</th>
+		</tr>
+		<tr>
+			<?php if (count(WT_Tree::GetAll())>1): ?>
+			<td>
+				<form method="post">
+					<input type="hidden" name="action" value="setdefault">
+					<?php echo WT_Filter::getCsrf(); ?>
+					<?php echo select_edit_control('default_ged', WT_Tree::getNameList(), '', WT_Site::getPreference('DEFAULT_GEDCOM'), 'onchange="document.defaultform.submit();"'); ?>
+					<input type="submit" value="<?php echo WT_I18N::translate('save'); ?>">
+				</form>
+			</td>
+			<?php endif; ?>
+			<td class="button">
+				<form method="post">
+					<?php echo WT_Filter::getCsrf(); ?>
+					<input type="hidden" name="action" value="new_tree">
+					<input name="ged_name">
+					<input type="submit" value="<?php echo WT_I18N::translate('save'); ?>">
+				</form>
+			</td>
+		</tr>
+	</table>
+<?php endif; ?>
+<br>
+<?php
+// display link to PGV-WT transfer wizard on first visit to this page, before any GEDCOM is loaded
+if (count(WT_Tree::GetAll())==0 && count(User::all())==1) {
 	echo
-		'<td class="button">',
-		'<form name="createform" method="post" action="', WT_SCRIPT_NAME, '">',
-		WT_Filter::getCsrf(),
-		'<input type="hidden" name="action" value="new_tree">',
-		'<input name="ged_name">',
-		' <input type="submit" value="', WT_I18N::translate('save') , '">',
-		'</form>',
-		'</td>',
-		'</tr></table><br>';
-
-		// display link to PGV-WT transfer wizard on first visit to this page, before any GEDCOM is loaded
-		if (count(WT_Tree::GetAll())==0 && count(User::all())==1) {
-			echo
-				'<div class="center">',
-				'<a style="color:green; font-weight:bold;" href="admin_pgv_to_wt.php">',
-				WT_I18N::translate('Click here for PhpGedView to <b>webtrees</b> transfer wizard'),
-				'</a>',
-				help_link('PGV_WIZARD'),
-				'</div>';
-		}
+		'<div class="center">',
+		'<a style="color:green; font-weight:bold;" href="admin_pgv_to_wt.php">',
+		WT_I18N::translate('Click here for PhpGedView to <b>webtrees</b> transfer wizard'),
+		'</a>',
+		help_link('PGV_WIZARD'),
+		'</div>';
 }
+

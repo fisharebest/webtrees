@@ -28,10 +28,11 @@ $block = WT_DB::prepare(
 	"SELECT SQL_CACHE * FROM `##block` WHERE block_id=?"
 )->execute(array($block_id))->fetchOneRow();
 
-// Check access.  (1) the block must exist, (2) gedcom blocks require
+// Check access.  (1) the block must exist and be enabled, (2) gedcom blocks require
 // managers, (3) user blocks require the user or an admin
 if (
 	!$block ||
+	!array_key_exists($block->module_name, WT_Module::getActiveBlocks(WT_GED_ID)) ||
 	$block->gedcom_id && !Auth::isManager(WT_Tree::get($block->gedcom_id)) ||
 	$block->user_id && $block->user_id != Auth::id() && !Auth::isAdmin()
 ) {
