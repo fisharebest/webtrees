@@ -345,7 +345,7 @@ case 'calendar':
 	// Fetch events for each day
 	for ($jd = $cal_date->minJD; $jd <= $cal_date->maxJD; ++$jd)
 		foreach (apply_filter(get_anniversary_events($jd, $events), $filterof, $filtersx) as $fact) {
-			$d = $jd - $cal_date->minJD + 1;
+			$d = $fact->getDate()->minDate()->d;
 			if (array_key_exists($d, $found_facts)) {
 				$found_facts[$d][]=$fact;
 			} else {
