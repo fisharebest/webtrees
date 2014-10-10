@@ -151,7 +151,7 @@ echo '<div id="edituser-page">
 				}
 			echo '</div>
 		<div class="label">', WT_I18N::translate('Password'), help_link('password'), '</div>
-		<div class="value"><input type="password" name="form_pass1"> ', WT_I18N::translate('Leave password blank if you want to keep the current password.'), '</div>
+		<div class="value"><input type="password" name="form_pass1"> ', WT_I18N::translate('Leave the password blank if you want to keep the current password.'), '</div>
 		<div class="label">', WT_I18N::translate('Confirm password'), help_link('password_confirm'), '</div>
 		<div class="value"><input type="password" name="form_pass2"></div>
 		<div class="label">', WT_I18N::translate('Language'), '</div>

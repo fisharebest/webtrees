@@ -51,7 +51,7 @@ major desktop application.
 third-party tools, design techniques and open standards.
 
 **webtrees** allows you to view and edit your genealogy on your website. It has
-full editing capabilities, full privacy functions, and supports multimedia like
+full editing capabilities, full privacy functions, and supports imedia such as
 photos and document images. As an online program, it fosters extended family
 participation and good ancestral recording habits, as it simplifies the process
 of collaborating with others working on your family lines. Your latest information
@@ -77,7 +77,7 @@ To install **webtrees**, you need:
 * A webserver. Apache and IIS are the most common types. There are no requirements
   to use a specific type or version.
 * Approximately 65MB of disk space for the application files, plus whatever is
-  needed for your multi-media files, GEDCOM files and database.
+  needed for your media files, GEDCOM files and database.
 * PHP 5.3.2 or later. Note that many web hosts offer *both* PHP4 and PHP5,
   typically with PHP4 as the default. If this is the case, you will be able to
   switch between the two using a control panel or a configuration file. Refer
@@ -87,15 +87,15 @@ To install **webtrees**, you need:
      See [http://php.net/pdo](http://php.net/pdo)
    * PHP should be configured to allow sufficient server resources (memory and
      execution time) for the size of your system. Typical requirements are:
-      * Small systems (500 individuals): 16-32MB, 10-20 seconds
-      * Medium systems (5000 individuals): 32-64MB, 20-40 seconds
-      * Large systems (50000 individuals): 64-128MB, 40-80 seconds
+      * Small systems (500 individuals): 16–32 MB, 10–20 seconds
+      * Medium systems (5,000 individuals): 32–64 MB, 20–40 seconds
+      * Large systems (50,000 individuals): 64–128 MB, 40–80 seconds
 * MySQL 5.0.13 or later. Note that **webtrees** can share a single database
   with other applications, by choosing a unique table prefix during configuration.
   If the number of databases is not restricted, you can set up a database purely
   for use by **webtrees** and create a separate user and password for only
   your genealogy.
-* Internet browser compatability. **webtrees** supports the use of most
+* Internet browser compatibility. **webtrees** supports the use of most
   current versions of open-source browsers such as Firefox, Chrome, and Safari.
   We will do our best to support others such as Opera and Internet Explorer,
   though not their earlier versions. Currently many things do not work well in
@@ -399,7 +399,7 @@ be outlined there.
 
 #### Important Note
 
-This transfer wizard is not able to assist with moving media items. You will need
+This transfer wizard is not able to assist with moving media items.  You will need
 to set up and move or copy your media configuration and objects separately after
 the transfer wizard is finished. If you use the media firewall in PGV with a
 directory outside the PGV root, then duplicating the media configuration in

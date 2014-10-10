@@ -53,7 +53,7 @@ build/webtrees: clean update
 	# Extract from the repository, to filter files using .gitattributes
 	git archive --prefix=$@/ $(GIT_BRANCH) | tar -x
 	# Embed the build number in the code (for DEV builds only)
-	sed -i "s/define('WT_RELEASE', '$(WT_VERSION)-dev')/define('WT_RELEASE', '$(WT_VERSION)-dev+$(BUILD_NUMBER)')/" $@/includes/session.php
+	sed -i -e "s/define('WT_RELEASE', '$(WT_VERSION)-dev')/define('WT_RELEASE', '$(WT_VERSION)-dev+$(BUILD_NUMBER)')/" $@/includes/session.php
 	# Add language files
 	cp -R $(LANGUAGE_DIR)/*.mo       $@/$(LANGUAGE_DIR)/
 	cp -R $(LANGUAGE_DIR)/extra/*.mo $@/$(LANGUAGE_DIR)/extra/

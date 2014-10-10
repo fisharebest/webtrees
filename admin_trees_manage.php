@@ -132,7 +132,7 @@ case 'importform':
 	echo '<p>', WT_I18N::translate('This will delete all the genealogical data from <b>%s</b> and replace it with data from another GEDCOM.', $tree->tree_name_html), '</p>';
 	// the javascript in the next line strips any path associated with the file before comparing it to the current GEDCOM name (both Chrome and IE8 include c:\fakepath\ in the filename).
 	$previous_gedcom_filename = $tree->getPreference('gedcom_filename');
-	echo '<form name="replaceform" method="post" enctype="multipart/form-data" action="', WT_SCRIPT_NAME, '" onsubmit="var newfile = document.replaceform.ged_name.value; newfile = newfile.substr(newfile.lastIndexOf(\'\\\\\')+1); if (newfile!=\'', WT_Filter::escapeHtml($previous_gedcom_filename), '\' && \'\' != \'', WT_Filter::escapeHtml($previous_gedcom_filename), '\') return confirm(\'', WT_Filter::escapeHtml(WT_I18N::translate('You have selected a GEDCOM with a different name.  Is this correct?')), '\'); else return true;">';
+	echo '<form name="replaceform" method="post" enctype="multipart/form-data" action="', WT_SCRIPT_NAME, '" onsubmit="var newfile = document.replaceform.ged_name.value; newfile = newfile.substr(newfile.lastIndexOf(\'\\\\\')+1); if (newfile!=\'', WT_Filter::escapeHtml($previous_gedcom_filename), '\' && \'\' != \'', WT_Filter::escapeHtml($previous_gedcom_filename), '\') return confirm(\'', WT_Filter::escapeHtml(WT_I18N::translate('You have selected a GEDCOM file with a different name.  Is this correct?')), '\'); else return true;">';
 	echo '<input type="hidden" name="gedcom_id" value="', $tree->tree_id, '">';
 	echo WT_Filter::getCsrf();
 	if (WT_Filter::get('action')=='uploadform') {
@@ -170,7 +170,7 @@ case 'importform':
 		}
 	}
 	echo '<br><br><input type="checkbox" name="keep_media', $tree->tree_id, '" value="1">';
-	echo WT_I18N::translate('If you have created media objects in webtrees, and have edited your gedcom off-line using a program that deletes media objects, then check this box to merge the current media objects with the new GEDCOM.');
+	echo WT_I18N::translate('If you have created media objects in webtrees, and have edited your gedcom off-line using a program that deletes media objects, then check this box to merge the current media objects with the new GEDCOM file.');
 	echo '<br><br><input type="submit" value="', WT_I18N::translate('continue'), '">';
 	echo '</form>';
 	exit;
@@ -283,7 +283,7 @@ if (count(WT_Tree::GetAll())==0 && count(User::all())==1) {
 	echo
 		'<div class="center">',
 		'<a style="color:green; font-weight:bold;" href="admin_pgv_to_wt.php">',
-		WT_I18N::translate('Click here for PhpGedView to <b>webtrees</b> transfer wizard'),
+		WT_I18N::translate('Click here for PhpGedView to webtrees transfer wizard'),
 		'</a>',
 		help_link('PGV_WIZARD'),
 		'</div>';
