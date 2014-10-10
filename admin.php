@@ -618,7 +618,7 @@ function old_paths() {
 		WT_ROOT.'themes/minimal/css-1.5.2',
 		WT_ROOT.'themes/webtrees/css-1.5.2',
 		WT_ROOT.'themes/xenea/css-1.5.2',
-		// Removed in 1.5.4
+		// Removed in 1.6.0
 		WT_ROOT.'downloadbackup.php',
 		WT_ROOT.'includes/functions/functions_utf-8.php',
 		WT_ROOT.'js/jquery.colorbox-1.4.15.js',
