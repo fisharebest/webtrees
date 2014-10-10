@@ -62,7 +62,7 @@ if ($PGV_PATH) {
 		}
 		$wt_config=parse_ini_file(WT_ROOT.'data/config.ini.php');
 		if ($DBHOST!=$wt_config['dbhost']) {
-			$error=WT_I18N::translate('PhpGedView must use the same database as <b>webtrees</b>');
+			$error=WT_I18N::translate('PhpGedView must use the same database as webtrees.');
 			unset($wt_config);
 		} else {
 			unset($wt_config);
@@ -71,14 +71,14 @@ if ($PGV_PATH) {
 					"SELECT site_setting_value FROM `{$DBNAME}`.`{$TBLPREFIX}site_setting` WHERE site_setting_name='PGV_SCHEMA_VERSION'"
 				)->fetchOne();
 				if ($PGV_SCHEMA_VERSION<10) {
-					$error=WT_I18N::translate('The version of %s is too old', 'PhpGedView');
+					$error=WT_I18N::translate('The version of %s is too old.', 'PhpGedView');
 				} elseif ($PGV_SCHEMA_VERSION>14) {
-					$error=WT_I18N::translate('The version of %s is too new', 'PhpGedView');
+					$error=WT_I18N::translate('The version of %s is too new.', 'PhpGedView');
 				}
 			} catch (PDOException $ex) {
 				$error=
 					/* I18N: %s is a database name/identifier */
-					WT_I18N::translate('<b>webtrees</b> cannot connect to the PhpGedView database: %s.', $DBNAME.'@'.$DBHOST).
+					WT_I18N::translate('webtrees cannot connect to the PhpGedView database: %s.', $DBNAME.'@'.$DBHOST).
 					'<br>'.
 					/* I18N: %s is an error message */
 					WT_I18N::translate('MySQL gave the error: %s', $ex->getMessage());
@@ -113,7 +113,7 @@ if ($error || !$PGV_PATH) {
 	echo '<div id="container">';
 	echo
 		'<h2>',
-		WT_I18N::translate('PhpGedView to <b>webtrees</b> transfer wizard'),
+		WT_I18N::translate('PhpGedView to webtrees transfer wizard'),
 		help_link('PGV_WIZARD'),
 		'</h2>';
 	if ($error) {
@@ -134,7 +134,7 @@ if ($error || !$PGV_PATH) {
 		'<form action="', WT_SCRIPT_NAME, '" method="post">',
 		'<p>', WT_I18N::translate('Where is your PhpGedView installation?'), '</p>',
 		'<dl>',
-		'<dt>',WT_I18N::translate('Installation directory'), '</dt>';
+		'<dt>',WT_I18N::translate('Installation folder'), '</dt>';
 	switch (count($pgv_dirs)) {
 	case '0':
 		echo '<dd><input type="text" name="PGV_PATH" size="40" value="" autofocus></dd>';
@@ -144,7 +144,7 @@ if ($error || !$PGV_PATH) {
 		break;
 	default:
 		echo '<dd><input type="text" name="PGV_PATH" size="40" value="" autofocus></dd>';
-		echo '<dt>', /* find better english before translating */ 'PhpGedView might be found in these locations', '</dt>';
+		echo '<dt>', WT_I18N::translate('PhpGedView might be installed in one of these folders:'), '</dt>';
 		echo '<dd>';
 		foreach ($pgv_dirs as $pgvpath) {
 			echo '<p class="pgv">', $pgvpath, '</p>';

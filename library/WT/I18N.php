@@ -442,13 +442,13 @@ class WT_I18N {
 	public static function gedcom_age($string) {
 		switch ($string) {
 		case 'STILLBORN':
-			// I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan 1900 (stillborn)
+			// I18N: Description of an individual’s age at an event.  For example, Died 14 Jan 1900 (stillborn)
 			return self::translate('(stillborn)');
 		case 'INFANT':
-			// I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan 1900 (in infancy)
+			// I18N: Description of an individual’s age at an event.  For example, Died 14 Jan 1900 (in infancy)
 			return self::translate('(in infancy)');
 		case 'CHILD':
-			// I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan 1900 (in childhood)
+			// I18N: Description of an individual’s age at an event.  For example, Died 14 Jan 1900 (in childhood)
 			return self::translate('(in childhood)');
 		}
 		$age=array();
@@ -477,13 +477,13 @@ class WT_I18N {
 		}
 		if ($age) {
 			if (!substr_compare($string, '<', 0, 1)) {
-				// I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan 1900 (aged less than 21 years)
+				// I18N: Description of an individual’s age at an event.  For example, Died 14 Jan 1900 (aged less than 21 years)
 				return self::translate('(aged less than %s)', $age);
 			} elseif (!substr_compare($string, '>', 0, 1)) {
-				// I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan 1900 (aged more than 21 years)
+				// I18N: Description of an individual’s age at an event.  For example, Died 14 Jan 1900 (aged more than 21 years)
 				return self::translate('(aged more than %s)', $age);
 			} else {
-				// I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan 1900 (aged 43 years)
+				// I18N: Description of an individual’s age at an event.  For example, Died 14 Jan 1900 (aged 43 years)
 				return self::translate('(aged %s)', $age);
 			}
 		} else {
@@ -493,7 +493,7 @@ class WT_I18N {
 	}
 
 	/**
-	 * Convert a number of seconds into a relative time.  e.g. 630 => "10 hours, 30 minutes ago"
+	 * Convert a number of seconds into a relative time.  For example, 630 => "10 hours, 30 minutes ago"
 	 *
 	 * @param int $seconds
 	 *

@@ -85,7 +85,7 @@ case 'compose':
 case 'send':
 	// Only send messages if we've come straight from the compose page.
 	if (!$WT_SESSION->good_to_send) {
-		Log::addAuthenticationLog('Attempt to send message without visiting the compose page.  Spam attack?');
+		Log::addAuthenticationLog('Attempt to send a message without visiting the compose page.  Spam attack?');
 		$action='compose';
 	}
 	if (!WT_Filter::checkCsrf()) {
@@ -114,7 +114,7 @@ case 'compose':
 			return true;
 		}
 	');
-	echo '<span class="subheaders">', WT_I18N::translate('Send message'), '</span>';
+	echo '<span class="subheaders">', WT_I18N::translate('Send a message'), '</span>';
 	echo $errors;
 
 	if (!WT_USER_ID) {
@@ -203,7 +203,7 @@ case 'send':
 			WT_FlashMessages::addMessage(WT_I18N::translate('Message successfully sent to %s', WT_Filter::escapeHtml($to)));
 		} else {
 			WT_FlashMessages::addMessage(WT_I18N::translate('Message was not sent'));
-			Log::addErrorLog('Unable to send message.  FROM:'.$from.' TO:'.$to.' (failed to send)');
+			Log::addErrorLog('Unable to send a message.  FROM:'.$from.' TO:'.$to.' (failed to send)');
 		}
 		$i++;
 	}

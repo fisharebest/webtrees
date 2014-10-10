@@ -1724,7 +1724,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		default:
 			// Do not run until user selects a gedcom/place/etc.
 			// Instead, show some useful help info.
-			echo '<div class="gm_check_top accepted">', WT_I18N::translate('This will list all the places from the selected GEDCOM file. By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables'), '</div>';
+			echo '<div class="gm_check_top accepted">', WT_I18N::translate('This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables'), '</div>';
 			break;
 		}
 	}

@@ -59,7 +59,7 @@ function file_upload_error_text($error_code) {
 		return WT_I18N::translate('File was only partially uploaded, please try again');
 	case UPLOAD_ERR_NO_FILE:
 		// I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
-		return WT_I18N::translate('No file was received. Please upload again.');
+		return WT_I18N::translate('No file was received.  Please upload again.');
 	case UPLOAD_ERR_NO_TMP_DIR:
 		// I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 		return WT_I18N::translate('Missing PHP temporary directory');

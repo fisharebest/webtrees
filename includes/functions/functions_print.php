@@ -230,7 +230,7 @@ function execution_stats() {
 	return
 		'<div class="execution_stats">'.
 		WT_I18N::translate(
-			'Execution time: %1$s seconds. Database queries: %2$s. Memory usage: %3$s KB.',
+			'Execution time: %1$s seconds.  Database queries: %2$s.  Memory usage: %3$s KB.',
 			WT_I18N::number(microtime(true) - $start_time, 3),
 			WT_I18N::number(WT_DB::getQueryCount()),
 			WT_I18N::number(memory_get_peak_usage(true)/1024)
@@ -294,7 +294,7 @@ function whoisonline() {
 			$content .= '<div class="logged_in_name">';
 			$content .= WT_Filter::escapeHtml($user->getRealName()) . ' - ' . WT_Filter::escapeHtml($user->getUserName());
 			if (WT_USER_ID != $user->getUserId() && $user->getPreference('contactmethod') != 'none') {
-				$content .= ' <a class="icon-email" href="#" onclick="return message(\'' . WT_Filter::escapeJs($user->getUserName()) . '\', \'\', \'' . WT_Filter::escapeJs(get_query_url()) . '\');" title="' . WT_I18N::translate('Send message').'"></a>';
+				$content .= ' <a class="icon-email" href="#" onclick="return message(\'' . WT_Filter::escapeJs($user->getUserName()) . '\', \'\', \'' . WT_Filter::escapeJs(get_query_url()) . '\');" title="' . WT_I18N::translate('Send a message').'"></a>';
 			}
 			$content .= '</div>';
 		}

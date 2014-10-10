@@ -29,12 +29,12 @@ if (!defined('WT_WEBTREES') || !defined('WT_SCRIPT_NAME') || WT_SCRIPT_NAME!='he
 switch ($help) {
 case 'GM_MAP_ZOOM':
 	$title=WT_I18N::translate('Zoom level of map');
-	$text=WT_I18N::translate('Minimum and maximum zoom level for the Google map. 1 is the full map, 15 is single house. Note that 15 is only available in certain areas.');
+	$text=WT_I18N::translate('Minimum and maximum zoom level for the Google map. 1 is the full map, 15 is single house.  Note that 15 is only available in certain areas.');
 	break;
 
 case 'GM_PRECISION':
 	$title=WT_I18N::translate('Precision of the latitude and longitude');
-	$text=WT_I18N::translate('This specifies the precision of the different levels when entering new geographic locations. For example a country will be specified with precision 0 (=0 digits after the decimal point), while a town needs 3 or 4 digits.');
+	$text=WT_I18N::translate('This specifies the precision of the different levels when entering new geographic locations.  For example a country will be specified with precision 0 (=0 digits after the decimal point), while a town needs 3 or 4 digits.');
 	break;
 
 case 'GM_NAME_PREFIX_SUFFIX':
@@ -51,22 +51,22 @@ case 'GM_COORD':
 
 case 'PLE_PRECISION':
 	$title=WT_I18N::translate('Enter precision');
-	$text=WT_I18N::translate('Here you can enter the precision. Based on this setting the number of digits that will be used in the latitude and longitude is determined.');
+	$text=WT_I18N::translate('Here you can enter the precision.  Based on this setting the number of digits that will be used in the latitude and longitude is determined.');
 	break;
 
 case 'PLE_ZOOM':
 	$title=WT_I18N::translate('Enter zoom level');
-	$text=WT_I18N::translate('Here the zoom level can be entered. This value will be used as the minimal value when displaying this geographic location on a map.');
+	$text=WT_I18N::translate('Here the zoom level can be entered.  This value will be used as the minimal value when displaying this geographic location on a map.');
 	break;
 
 case 'PLE_ICON':
 	$title=WT_I18N::translate('Select an icon');
-	$text=WT_I18N::translate('Here an icon can be set or removed. Using this link a flag can be selected. When this geographic location is shown, this flag will be displayed.');
+	$text=WT_I18N::translate('Here an icon can be set or removed.  Using this link a flag can be selected.  When this geographic location is shown, this flag will be displayed.');
 	break;
 
 case 'PLE_FLAGS':
 	$title=WT_I18N::translate('Select flag');
-	$text=WT_I18N::translate('Using the pull down menu it is possible to select a country, of which a flag can be selected. If no flags are shown, then there are no flags defined for this country.');
+	$text=WT_I18N::translate('Using the pull down menu it is possible to select a country, of which a flag can be selected.  If no flags are shown, then there are no flags defined for this country.');
 	break;
 
 case 'PLIF_LOCALFILE':
@@ -88,7 +88,7 @@ case 'PLE_ACTIVE':
 
 case 'GM_DISP_SHORT_PLACE':
 	$title=WT_I18N::translate('Display short placenames');
-	$text=WT_I18N::translate('Here you can choose between two types of displaying places names in hierarchy. If set Yes the place has short name or actual level name, if No - full name.<br><b>Examples:<br>Full name: </b>Chicago, Illinois, USA<br><b>Short name: </b>Chicago<br><b>Full name: </b>Illinois, USA<br><b>Short name: </b>Illinois');
+	$text=WT_I18N::translate('Here you can choose between two types of displaying places names in hierarchy.  If set Yes the place has short name or actual level name, if No - full name.<br><b>Examples:<br>Full name: </b>Chicago, Illinois, USA<br><b>Short name: </b>Chicago<br><b>Full name: </b>Illinois, USA<br><b>Short name: </b>Illinois');
 	break;
 
 // Pedigree map
@@ -100,6 +100,6 @@ case 'PEDIGREE_MAP_hidelines':
 
 case 'PEDIGREE_MAP_hideflags':
 	$title=WT_I18N::translate('Hide flags');
-	$text=WT_I18N::translate('Hide the flags that are configured in the googlemap module.  Usually these are for countries and states. This serves as a visual cue that the markers around the flag are from the general area, and not the specific spot.');
+	$text=WT_I18N::translate('Hide the flags that are configured in the googlemap module.  Usually these are for countries and states.  This serves as a visual cue that the markers around the flag are from the general area, and not the specific spot.');
 	break;
 }

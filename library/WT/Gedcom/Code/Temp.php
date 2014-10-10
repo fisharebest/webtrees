@@ -127,7 +127,7 @@ class WT_Gedcom_Code_Temp {
 		case 'MONTE': return WT_I18N::translate('Monterrey, Mexico');
 		case 'MONTI': return WT_I18N::translate('Monticello, Utah');
 		case 'MONTR': return WT_I18N::translate('Montreal, Quebec, Canada');
-		case 'MTIMP': return WT_I18N::translate('Mt. Timpanogos, Utah');
+		case 'MTIMP': return WT_I18N::translate('Mount Timpanogos, Utah');
 		case 'NASHV': return WT_I18N::translate('Nashville, Tennessee');
 		case 'NAUV2': return WT_I18N::translate('Nauvoo, Illinois (new)');
 		case 'NAUVO': return WT_I18N::translate('Nauvoo, Illinois (original)');
@@ -158,7 +158,7 @@ class WT_Gedcom_Code_Temp {
 		case 'SANTI': return WT_I18N::translate('Santiago, Chile');
 		case 'SANTO': return WT_I18N::translate('San Antonio, Texas');
 		case 'SDIEG': return WT_I18N::translate('San Diego, California');
-		case 'SDOMI': return WT_I18N::translate('Santo Domingo, Dom. Rep.');
+		case 'SDOMI': return WT_I18N::translate('Santo Domingo, Dominican Republic');
 		case 'SEATT': return WT_I18N::translate('Seattle, Washington');
 		case 'SEOUL': return WT_I18N::translate('Seoul, Korea');
 		case 'SGEOR': return WT_I18N::translate('St. George, Utah');
