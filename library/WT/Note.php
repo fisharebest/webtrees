@@ -89,4 +89,3 @@ class WT_Note extends WT_GedcomRecord {
 		}
 	}
 }
-git statg
