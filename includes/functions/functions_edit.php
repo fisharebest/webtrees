@@ -397,16 +397,19 @@ function add_simple_tag(
 		$element_id = $upperlevel . '_' . $fact . Uuid::uuid4();
 
 	// field value
-	$islink = (substr($value, 0, 1) === '@' && substr($value, 0, 2) != '@#');
+	$islink = preg_match('/^@' . WT_REGEX_XREF . '@$/', $value);
 	if ($islink) {
-		$value=trim(trim(substr($tag, strlen($fact)+3)), " @\r");
+		$value = trim(substr($tag, strlen($fact)+3), '@');
 	} else {
-		$value=trim(substr($tag, strlen($fact)+3));
+		$value = substr($tag, strlen($fact)+3);
 	}
-	if ($fact=='REPO' || $fact=='SOUR' || $fact=='OBJE' || $fact=='FAMC')
+	if ($fact == 'REPO' || $fact == 'SOUR' || $fact == 'OBJE' || $fact == 'FAMC')
 		$islink = true;
 
-	if ($fact=='SHARED_NOTE_EDIT' || $fact=='SHARED_NOTE') {$islink=1;$fact="NOTE";}
+	if ($fact == 'SHARED_NOTE_EDIT' || $fact == 'SHARED_NOTE') {
+		$islink = true;
+		$fact = 'NOTE';
+	}
 
 	// label
 	echo "<tr id=\"", $element_id, "_tr\" ";
