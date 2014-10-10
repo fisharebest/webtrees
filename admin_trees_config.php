@@ -1292,7 +1292,7 @@ $controller
 			</tr>
 			<tr>
 				<td>
-					<?php echo /* I18N: GeoNames is the www.geonames.org website */ WT_I18N::translate('Use GeoNames database for autocomplete on places'), help_link('GEONAMES_ACCOUNT'); ?>
+					<?php echo /* I18N: GeoNames is the www.geonames.org website */ WT_I18N::translate('Use the GeoNames database for autocomplete on places'), help_link('GEONAMES_ACCOUNT'); ?>
 				</td>
 				<td>
 					<input type="text" id="NEW_GEONAMES_ACCOUNT" name="NEW_GEONAMES_ACCOUNT" value="<?php echo WT_Filter::escapeHtml($WT_TREE->getPreference('GEONAMES_ACCOUNT')); ?>" size="40" maxlength="255" dir="ltr" placeholder="<?php echo WT_I18N::translate('Username'); ?>">

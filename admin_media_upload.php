@@ -95,9 +95,9 @@ if ($action == "upload") {
 				unset($_FILES['thumbnail' . $i]);
 			}
 
-			// Thumbnails must be images.
+			// Thumbnail files must contain images.
 			if (!empty($_FILES['thumbnail' . $i]['name']) && !preg_match('/^image\/(png|gif|jpeg)/', $_FILES['thumbnail' . $i]['type'])) {
-				WT_FlashMessages::addMessage(WT_I18N::translate('Thumbnails must be images.'));
+				WT_FlashMessages::addMessage(WT_I18N::translate('Thumbnail files must contain images.'));
 				break;
 			}
 
@@ -195,11 +195,11 @@ for ($i=1; $i<6; $i++) {
 
 	if (WT_USER_GEDCOM_ADMIN) {
 		echo '<tr><td>';
-		echo WT_I18N::translate('File name on server'), help_link('upload_server_file');
+		echo WT_I18N::translate('Filename on server'), help_link('upload_server_file');
 		echo '</td>';
 		echo '<td>';
 		echo '<input name="filename', $i, '" type="text" size="40">';
-		if ($i==1) echo "<br><sub>", WT_I18N::translate('Do not change to keep original file name.'), "</sub>";
+		if ($i==1) echo "<br><sub>", WT_I18N::translate('Do not change to keep original filename.'), "</sub>";
 		echo '</td></tr>';
 	} else {
 		echo '<tr style="display:none;"><td><input type="hidden" name="filename', $i, '" value=""></td></tr>';

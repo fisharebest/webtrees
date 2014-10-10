@@ -257,8 +257,8 @@ if (WT_Filter::get('go')) {
 
 	}
 } else {
-	echo '<p>', WT_I18N::translate('In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”.') ,'</p>';
-	echo '<p>', WT_I18N::translate('You can renumber a family tree so that these reference numbers are unique across all family trees.') ,'</p>';
+	echo '<p>', WT_I18N::translate('In a family tree, each record has an internal identification number (called an “XREF”), such as “F123” or “R14”.') ,'</p>';
+	echo '<p>', WT_I18N::translate('You can renumber the records in a family tree, so that these internal identification numbers are not duplicated in any other family tree.') ,'</p>';
 }
 
 echo '<p>', WT_I18N::plural(

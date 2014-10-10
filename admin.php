@@ -101,7 +101,7 @@ $stats = new WT_Stats(WT_GEDCOM);
 		<h2><?php echo WT_WEBTREES, ' ', WT_VERSION; ?></h2>
 		<div id="about">
 			<p>
-				<?php echo WT_I18N::translate('These pages provide access to all the configuration settings and management tools for this <b>webtrees</b> site.'); ?>
+				<?php echo WT_I18N::translate('These pages provide access to all the configuration settings and management tools for this webtrees site.'); ?>
 			</p>
 			<p>
 				<?php echo /* I18N: %s is a URL/link to the project website */ WT_I18N::translate('Support and documentation can be found at %s.', ' <a class="current" href="http://webtrees.net/">webtrees.net</a>'); ?>
@@ -110,7 +110,7 @@ $stats = new WT_Stats(WT_GEDCOM);
 			<p>
 				<?php echo WT_I18N::translate('A new version of webtrees is available.'); ?>
 				<a href="admin_site_upgrade.php" class="error">
-					<?php echo WT_I18N::translate('Upgrade to webtrees %s', WT_Filter::escapeHtml($latest_version)); ?>
+					<?php echo /* I18N: %s is a version number */ WT_I18N::translate('Upgrade to webtrees %s', WT_Filter::escapeHtml($latest_version)); ?>
 				</a>
 			</p>
 			<?php } ?>
