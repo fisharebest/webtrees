@@ -7350,9 +7350,6 @@ msgid "Import family tree"
 msgstr "Importar árbol genealógico"
 
 #: admin_trees_renumber.php:260
-msgid "In a family tree, each record has an internal identification number (called an “XREF”), such as “F123” or “R14”."
-msgstr ""
-
 #: admin_trees_merge.php:73
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
 msgstr ""
