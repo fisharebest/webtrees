@@ -2761,17 +2761,16 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 
 	// Generate a full name from the name components
 	function generate_name() {
-		var frm =document.forms[0];
-		var npfx=frm.NPFX.value;
-		var givn=frm.GIVN.value;
-		var spfx=frm.SPFX.value;
-		var surn=frm.SURN.value;
-		var nsfx=frm.NSFX.value;
-		if (SURNAME_TRADITION=="polish" && (gender=="F" || famtag=="WIFE")) {
-			surn=surn.replace(/ski$/, "ska");
-			surn=surn.replace(/cki$/, "cka");
-			surn=surn.replace(/dzki$/, "dzka");
-			surn=surn.replace(/żki$/, "żka");
+		var npfx = jQuery("#NPFX").val();
+		var givn = jQuery("#GIVN").val();
+		var spfx = jQuery("#SPFX").val();
+		var surn = jQuery("#SURN").val();
+		var nsfx = jQuery("#NSFX").val();
+		if (SURNAME_TRADITION == "polish" && (gender == "F" || famtag == "WIFE")) {
+			surn = surn.replace(/ski$/, "ska");
+			surn = surn.replace(/cki$/, "cka");
+			surn = surn.replace(/dzki$/, "dzka");
+			surn = surn.replace(/żki$/, "żka");
 		}
 		// Commas are used in the GIVN and SURN field to separate lists of surnames.
 		// For example, to differentiate the two Spanish surnames from an English
@@ -2792,47 +2791,48 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 	// Update the NAME and _MARNM fields from the name components
 	// and also display the value in read-only "gedcom" format.
 	function updatewholename() {
-		// don’t update the name if the user manually changed it
-		if (manualChange) return;
-		// Update NAME field from components and display it
-		var frm =document.forms[0];
-		var npfx=frm.NPFX.value;
-		var givn=frm.GIVN.value;
-		var spfx=frm.SPFX.value;
-		var surn=frm.SURN.value;
-		var nsfx=frm.NSFX.value;
-		document.getElementById("NAME").value=generate_name();
-		document.getElementById("NAME_display").innerText=frm.NAME.value;
+		// Don’t update the name if the user manually changed it
+		if (manualChange) {
+			return;
+		}
+		var npfx = jQuery("#NPFX").val();
+		var givn = jQuery("#GIVN").val();
+		var spfx = jQuery("#SPFX").val();
+		var surn = jQuery("#SURN").val();
+		var nsfx = jQuery("#NSFX").val();
+		var name = generate_name();
+		jQuery("#NAME").val(name);
+		jQuery("#NAME_display").text(name);
 		// Married names inherit some NSFX values, but not these
-		nsfx=nsfx.replace(/^(I|II|III|IV|V|VI|Junior|Jr\.?|Senior|Sr\.?)$/i, "");
+		nsfx = nsfx.replace(/^(I|II|III|IV|V|VI|Junior|Jr\.?|Senior|Sr\.?)$/i, "");
 		// Update _MARNM field from _MARNM_SURN field and display it
 		// Be careful of mixing latin/hebrew/etc. character sets.
-		var ip=document.getElementsByTagName("input");
-		var marnm_id="";
-		var romn="";
-		var heb="";
-		for (var i=0; i<ip.length; i++) {
-			var val=ip[i].value;
-			if (ip[i].id.indexOf("_HEB")==0)
-				heb=val;
-			if (ip[i].id.indexOf("ROMN")==0)
-				romn=val;
-			if (ip[i].id.indexOf("_MARNM")==0) {
-				if (ip[i].id.indexOf("_MARNM_SURN")==0) {
-					var msurn="";
-					if (val!="") {
-						var lc=lang_class(document.getElementById(ip[i].id).value);
-						if (lang_class(frm.NAME.value)==lc)
-							msurn=trim(npfx+" "+givn+" /"+val+"/ "+nsfx);
-						else if (lc=="hebrew")
-							msurn=heb.replace(/\/.*\//, "/"+val+"/");
-						else if (lang_class(romn)==lc)
-							msurn=romn.replace(/\/.*\//, "/"+val+"/");
+		var ip = document.getElementsByTagName("input");
+		var marnm_id = "";
+		var romn = "";
+		var heb = "";
+		for (var i = 0; i < ip.length; i++) {
+			var val = ip[i].value;
+			if (ip[i].id.indexOf("_HEB") === 0)
+				heb = val;
+			if (ip[i].id.indexOf("ROMN") === 0)
+				romn = val;
+			if (ip[i].id.indexOf("_MARNM") === 0) {
+				if (ip[i].id.indexOf("_MARNM_SURN") === 0) {
+					var msurn = "";
+					if (val != "") {
+						var lc = lang_class(document.getElementById(ip[i].id).value);
+						if (lang_class(name) === lc)
+							msurn = trim(npfx + " " + givn + " /" + val + "/ " + nsfx);
+						else if (lc == "hebrew")
+							msurn = heb.replace(/\/.*\//, "/" + val + "/");
+						else if (lang_class(romn) == lc)
+							msurn = romn.replace(/\/.*\//, "/" + val + "/");
 					}
-					document.getElementById(marnm_id).value=msurn;
-					document.getElementById(marnm_id+"_display").innerHTML=msurn;
+					document.getElementById(marnm_id).value = msurn;
+					document.getElementById(marnm_id+"_display").innerHTML = msurn;
 				} else {
-					marnm_id=ip[i].id;
+					marnm_id = ip[i].id;
 				}
 			}
 		}
@@ -2842,7 +2842,13 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 	// <input type="hidden"> <span style="display:inline">
 	// <input type="text">   <span style="display:hidden">
 	var oldName = "";
-	var manualChange = false;
+
+	// Calls to generate_name() trigger an update - hence need to
+	// set the manual change to true first.  We are probably
+	// listening to the wrong events on the input fields...
+	var manualChange = true;
+	manualChange = generate_name() !== jQuery("#NAME").val();
+
 	function convertHidden(eid) {
 		var input1 = jQuery("#" + eid);
 		var input2 = jQuery("#" + eid + "_display");
