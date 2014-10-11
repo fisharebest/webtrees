@@ -29,16 +29,6 @@ function get_age_at_event($age_string, $show_years) {
 		return WT_I18N::translate('Infant');
 	case 'STILLBORN':
 		return WT_I18N::translate('Stillborn');
-//@@ ->		
-	case 'YOUTH':
-		return WT_I18N::translate('Youth');
-	case 'YOUNG':
-		return WT_I18N::translate('Young');
-	case 'MAIDEN':
-		return WT_I18N::translate('Maiden');
-	case 'WOMAN':
-		return WT_I18N::translate('Woman');
-//@@ <-		
 	default:
 		return preg_replace_callback(
 			array(

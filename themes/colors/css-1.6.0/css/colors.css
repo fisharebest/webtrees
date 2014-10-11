@@ -4074,15 +4074,12 @@ span.link_text {
 	}
 
 	#pedigree_chart {
-		/* @@ left: -90px; */
-		left: -30px; /* @@ */
-		top: -270px; /* @@ */
+		left: -90px;
 	}
+
 	[dir=rtl] #pedigree_chart {
 		left: auto;
-		/* @@ right: -90px; */
-		right: -30px; /* @@ */
-		top: -270px; /* @@ */
+		right: -90px;
 	}
 
 	.lifespan_outer {
@@ -5065,7 +5062,6 @@ a.icon-uarrow:hover {
 	top: 10px;
 	color: #949494;
 	text-align: center;
-	direction: ltr; /* @@ */
 	width: 100%;
 	font-weight: 800;
 	font-size: 14px;

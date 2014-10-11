@@ -171,9 +171,6 @@ $emptyfacts=array(
 	'_NMAR',
 	'_SEPR',
 );
-$emptyfacts=array_flip($emptyfacts); //@@
-unset($emptyfacts['DATA'], $emptyfacts['GRAD'], $emptyfacts['MARR']); //@@
-$emptyfacts=array_flip($emptyfacts); //@@
 
 // Tags that don't require a PLAC subtag
 $nonplacfacts=array(
@@ -440,14 +437,6 @@ $level2_tags=array(
 		//'BURI',
 	),
 );
-
-$level2_tags['DATE'][]='COMM'; //@@
-$level2_tags['DATE'][]='DATA'; //@@
-$level2_tags['DATE'][]='NATU'; //@@
-$level2_tags['DATE'][]='NATI'; //@@
-$level2_tags['PLAC'][]='DATA'; //@@
-$level2_tags['PLAC'][]='COMM'; //@@
-$level2_tags['AGE'][] ='IMMI'; //@@
 
 // The order of name parts, when generating names
 $STANDARD_NAME_FACTS=array('NAME', 'NPFX', 'GIVN', 'SPFX', 'SURN', 'NSFX');

@@ -68,12 +68,6 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 	'<div id="clouds-container">',
 		'<div id="header">',
 			'<div class="header" >',
-//* @@
-//				'<span class="title" dir="auto">',
-//@@				htmlspecialchars($GEDCOM_TITLE),
-//					htmlspecialchars(WT_I18N::translate($GEDCOM_TITLE)), //@@
-//				'</span>',
-//@@ */
 				'<span class="title" dir="auto">', WT_TREE_TITLE, '</span>',
 				'<div class="hsearch">',
 					'<form style="display:inline;" action="search.php" method="post">',

@@ -756,8 +756,7 @@ function add_simple_tag(
 				}
 			}
 			if (strpos($bdm, 'M')!==false) {
-//@@			echo '&nbsp;<input type="checkbox" name="SOUR_FAM" ', $level1_checked, ' value="1">';
-				echo '&nbsp;<input type="checkbox" name="SOUR_FAM" ', '', ' value="1">'; //@@ I do not want the indi source as def. to the family record
+				echo '&nbsp;<input type="checkbox" name="SOUR_FAM" ', $level1_checked, ' value="1">';
 				echo WT_I18N::translate('Family');
 				if (preg_match_all('/('.WT_REGEX_TAG.')/', $QUICK_REQUIRED_FAMFACTS, $matches)) {
 					foreach ($matches[1] as $match) {
@@ -954,7 +953,6 @@ function print_add_layer($tag, $level=2) {
 function addSimpleTags($fact) {
 	global $ADVANCED_PLAC_FACTS, $nonplacfacts, $nondatefacts;
 
-/* @@ I do not want as a default a 1 MARR Y record	*/
 	// For new individuals, these facts default to "Y"
 	if ($fact=='MARR') {
 		add_simple_tag("0 {$fact} Y");

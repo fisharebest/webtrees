@@ -3220,9 +3220,7 @@ dd .deletelink {
 	}
 
 	#pedigree_chart {
-		/* @@ left: -80px; */
-		left: -20px; /* @@ */
-		top: -270px; /* @@ */
+		left: -80px;
 	}
 
 	#header_accordion1 {
@@ -3231,9 +3229,7 @@ dd .deletelink {
 
 	[dir=rtl] #pedigree_chart {
 		left: auto;
-		/* @@ right: -80px; */
-		right: -20px; /* @@ */
-		top: -270px; /* @@ */
+		right: -80px;
 	}
 
 	#header,
@@ -4160,7 +4156,6 @@ a.icon-udarrow {
 	top: 10px;
 	color: #949494;
 	text-align: center;
-	direction: ltr; /* @@ */
 	width: 100%;
 	font-weight: 800;
 	font-size: 14px;

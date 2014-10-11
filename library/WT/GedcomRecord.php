@@ -744,18 +744,6 @@ class WT_GedcomRecord {
 		}
 		return $list;
 	}
-	
-//@@ ->	
-	public function fetchLinkedIndividualsNum() {
-		return fetch_linked_indi_num($this->getXref(), static::RECORD_TYPE, $this->gedcom_id);
-	}
-	public function fetchLinkedFamiliesNum() {
-		return fetch_linked_fam_num($this->getXref(), static::RECORD_TYPE, $this->gedcom_id);
-	}
-	public function fetchLinkedMediaNum() {
-		return fetch_linked_obje_num($this->getXref(), static::RECORD_TYPE, $this->gedcom_id);
-	}
-//@@ <-
 
 	// Get all attributes (e.g. DATE or PLAC) from an event (e.g. BIRT or MARR).
 	// This is used to display multiple events on the individual/family lists.

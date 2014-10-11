@@ -382,44 +382,29 @@ class WT_Date_Calendar {
 		}
 		if ($this->d && preg_match('/%[djlDNSwz]/', $format)) {
 			// If we have a day-number *and* we are being asked to display it, then genitive
-			$case='GENITIVE';	//value is called 'PARTITIVE' in Finnish
-//@@ added Hebrew and Finnish rules
+			$case='GENITIVE';
 		} else {
-			if (WT_LOCALE=='he')
-				$case='NOMINATIVE';
-			else if (WT_LOCALE=='fi')
-				switch ($qualifier) {
-					case 'INT':
-					case 'EST':
-					case 'CAL':
-					case 'ABT': $case='LOCATIVE'; break; //is the calendar month OK? - 'INESSIVE'
-					case 'BEF':	$case='GENITIVE'; break;  //value is 'PARTITIVE'
-					case '':
-					default: $case='NOMINATIVE'; break; //to - 'ILLATIVE' & from - 'ELATIVE' - use for Calendar month titles - I would prefer to use nominative for ''
-				}
-			else {
-				switch ($qualifier) {
-					case 'TO':
-					case 'ABT':
-					case 'FROM':
-						$case='GENITIVE';
-						break;
-					case 'AFT':
-						$case='LOCATIVE';
-						break;
-					case 'BEF':
-					case 'BET':
-					case 'AND':
-						$case='INSTRUMENTAL';
-						break;
-					case '':
-					case 'INT':
-					case 'EST':
-					case 'CAL':
-					default: // There shouldn't be any other options...
-						$case='NOMINATIVE';
-						break;
-				}
+			switch ($qualifier) {
+				case 'TO':
+				case 'ABT':
+				case 'FROM':
+					$case='GENITIVE';
+					break;
+				case 'AFT':
+					$case='LOCATIVE';
+					break;
+				case 'BEF':
+				case 'BET':
+				case 'AND':
+					$case='INSTRUMENTAL';
+					break;
+				case '':
+				case 'INT':
+				case 'EST':
+				case 'CAL':
+				default: // There shouldn't be any other options...
+					$case='NOMINATIVE';
+					break;
 			}
 		}
 		// Build up the formatted date, character at a time

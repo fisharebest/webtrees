@@ -115,8 +115,7 @@ class todo_WT_Module extends WT_Module implements WT_Module_Block {
 					$content.='<td class="wrap">'.$user_name.'</td>';
 				}
 				$text = $fact->getValue();
-//@@			$content.='<td class="wrap">'.$text.'</td>';
-				$content.='<td class="wrap" dir="ltr">'.$text.'</td>'; //@@ all my _TODOs are ltr
+				$content.='<td class="wrap">'.$text.'</td>';
 				$content.='</tr>';
 				$found=true;
 			}

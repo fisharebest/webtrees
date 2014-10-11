@@ -65,10 +65,7 @@ define('WT_THEMES_DIR',  'themes/' );
 
 // Enable debugging output?
 define('WT_DEBUG',      false);
-//define('WT_DEBUG',      true); //@@
 define('WT_DEBUG_SQL',  false);
-//define('WT_DEBUG_SQL',  true); //@@
-//set it only for my ip address something like $_SERVER['REMOTE_ADDR']=='123.45.6.78' //@@
 
 // Error reporting
 define('WT_ERROR_LEVEL', 2); // 0=none, 1=minimal, 2=full

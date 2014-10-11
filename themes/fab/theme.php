@@ -26,8 +26,7 @@ if (!defined('WT_WEBTREES')) {
 }
 
 // Theme name - this needs double quotes, as file is scanned/parsed by script
-//@@$theme_name="F.A.B."; /* I18N: Name of a theme. */ WT_I18N::translate('F.A.B.');
-$theme_name="F.A.B.&lrm;"; //@@
+$theme_name="F.A.B."; /* I18N: Name of a theme. */ WT_I18N::translate('F.A.B.');
 
 // A version number in the path prevents browser-cache problems during upgrade
 define('WT_CSS_URL', WT_THEME_URL . 'css-1.6.0/');
@@ -69,8 +68,7 @@ $fanChart = array(
 
 // variables for the pedigree chart
 $bwidth        = 260; // width of boxes on pedigree chart
-$bheight	   = 96;  // height of boxes on pedigree chart //@@
-//@@$bheight   = 80;  // height of boxes on pedigree chart
+$bheight	   = 80;  // height of boxes on pedigree chart
 $baseyoffset   = 10;  // position the entire pedigree tree relative to the top of the page
 $basexoffset   = 10;  // position the entire pedigree tree relative to the left of the page
 $bxspacing     = 0;   // horizontal spacing between boxes on the pedigree chart

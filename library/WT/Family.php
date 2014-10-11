@@ -241,9 +241,7 @@ class WT_Family extends WT_GedcomRecord {
 	 */
 	function getMarriagePlace() {
 		$marriage = $this->getMarriage();
-		if ($marriage) //@@
-			return $marriage->getPlace();
-		return ''; //@@
+		return $marriage->getPlace();
 	}
 
 	// Get all the dates/places for marriages - for the FAM lists

@@ -1819,32 +1819,6 @@ class WT_Stats {
 				$size = '230x250';
 			}
 			$sizes = explode('x', $size);
-/* /@@ ->
-			if ($related=='BIRT')
-				$rows=self::_runSQL(
-					"SELECT SQL_CACHE".
-					" ROUND(AVG(death.d_julianday2-birth.d_julianday1)/365.25,1) AS age,".
-					" FLOOR(birth.d_year/100+1) AS century,".
-					" i_sex AS sex".
-					" FROM".
-					" `##dates` AS death,".
-					" `##dates` AS birth,".
-					" `##individuals` AS indi".
-					" WHERE".
-					" indi.i_id=birth.d_gid AND".
-					" birth.d_gid=death.d_gid AND".
-					" death.d_file={$this->_ged_id} AND".
-					" birth.d_file=death.d_file AND".
-					" birth.d_file=indi.i_file AND".
-					" birth.d_fact='BIRT' AND".
-					" death.d_fact='DEAT' AND".
-					" birth.d_julianday1<>0 AND".
-					" birth.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND".
-					" death.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND".
-					" death.d_julianday1>birth.d_julianday2".
-					" GROUP BY century, sex ORDER BY century, sex");
-			else
-//@@ <-	*/
 			$rows = $this->runSql(
 				"SELECT SQL_CACHE" .
 				" ROUND(AVG(death.d_julianday2-birth.d_julianday1)/365.25,1) AS age," .
@@ -3561,7 +3535,6 @@ class WT_Stats {
 				" JOIN  `##dates` ON (d_file = f_file AND d_gid=f_id)" .
 				" WHERE f_file = {$this->tree->tree_id}" .
 				" AND   d_julianday1<>0" .
-//@@			" AND married.d_year<>0 AND". //@@ ??
 				" AND   d_fact = 'MARR'" .
 				" AND   d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')" .
 				" GROUP BY century" .
@@ -3769,7 +3742,6 @@ class WT_Stats {
 		if ($unknown > $max) {
 			$max = $unknown;
 		}
-		$max=intval($max*1.2); //@@ else we do not see the value of the highest column
 		$chm = "";
 		$chxl = "0:|";
 		$i = 0;

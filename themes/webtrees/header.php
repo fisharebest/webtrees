@@ -73,14 +73,6 @@ $this
 		</ul>
 		<div class="title" dir="auto">
 			<?php echo  WT_TREE_TITLE; ?>
-/* @@
-	echo '</ul><div class="title" dir="auto">',
-//@@	htmlspecialchars($GEDCOM_TITLE),
-		htmlspecialchars(WT_I18N::translate($GEDCOM_TITLE)), //@@
-		'</div>',
-	echo '</ul>',
-@@ */
-
 		</div>
 		<div class="header_search">
 			<form action="search.php" method="post">

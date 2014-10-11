@@ -193,9 +193,7 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 						$today=new WT_Date_Jewish($yahrzeit->jd);
 						break;
 					}
-//@@				$today=new WT_Date_Jewish($yahrzeit->jd); //@@ replace by Gregorian date
-//					$today=new WT_Date_Gregorian($yahrzeit->jd); //@@
-					$td=new WT_Date($today->Format('%@ %A %O %E'));
+					$td=new WT_Date($today->format('%@ %A %O %E'));
 					$content .= '<td>'.$td->Display().'</td>';
 					$content .= '<td>'.$td->minJD().'</td>';// sortable date
 
