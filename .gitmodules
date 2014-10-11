@@ -25,3 +25,6 @@
 [submodule "modules_v3/justlight_theme_options"]
 	path = modules_v3/justlight_theme_options
 	url = https://github.com/JustCarmen/justlight_theme_options.git
+[submodule "modules_v3/fancy_branches"]
+	path = modules_v3/fancy_branches
+	url = ../fancy_branches
