@@ -33,7 +33,7 @@ class fancy_branches_WT_Module extends WT_Module implements WT_Module_Config, WT
 
 	// Extend WT_Module
 	public function getDescription() {
-		return /* I18N: Description of the module */ WT_I18N::translate('A replacement for the standard webtrees Branches list');
+		return /* I18N: Description of the module */ WT_I18N::translate('A replacement for the standard webtrees branches list');
 	}
 
 	// Extend WT_Module_Config
@@ -46,16 +46,10 @@ class fancy_branches_WT_Module extends WT_Module implements WT_Module_Config, WT
 			$controller=new WT_Controller_Page;
 			$controller
 				->restrictAccess(Auth::isAdmin())
-				->setPageTitle(WT_I18N::translate('Configuration page for the Simpl Branches Module'))
-				->pageHeader()
-				->addInlineJavaScript ('
-					jQuery("form input:checkbox").click(function(){
-						this.value = this.checked ? 1 : 0;
-					});
-				');
+				->setPageTitle(WT_I18N::translate('Fancy Branches'))
+				->pageHeader();
 
-			$save = WT_Filter::postBool('save');
-			if (isset($save)) {
+			if (WT_Filter::post('action')=='save' && WT_Filter::checkCsrf()) {
 				$this->setSetting('SB',  WT_Filter::postInteger('NEW_SB'));
 				Log::addConfigurationLog($this->getTitle().' config updated');
 			}
@@ -64,9 +58,10 @@ class fancy_branches_WT_Module extends WT_Module implements WT_Module_Config, WT
 			echo '
 				<h2>'.$controller->getPageTitle().'</h2>
 				<form method="post" name="configform" action="'.$this->getConfigLink().'">
+					<input type="hidden" name="action" value="save">'.WT_Filter::getCsrf().'
 					<label>'.WT_I18N::translate('Use d\'Aboville numbering system').'</label>'
 					.two_state_checkbox('NEW_SB', $SB).'
-					<input type="submit" name="save" value="'.WT_I18N::translate('Save').'" />
+					<input type="submit" value="'.WT_I18N::translate('Save').'" />
 				</form>';
 			break;
 		}
