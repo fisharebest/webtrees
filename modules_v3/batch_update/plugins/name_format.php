@@ -46,3 +46,4 @@ class name_format_bu_plugin extends base_plugin {
 			$gedrec
 		);
 	}
+}

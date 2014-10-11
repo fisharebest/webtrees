@@ -385,26 +385,26 @@ class WT_Date_Calendar {
 			$case='GENITIVE';
 		} else {
 			switch ($qualifier) {
-				case 'TO':
-				case 'ABT':
-				case 'FROM':
-					$case='GENITIVE';
-					break;
-				case 'AFT':
-					$case='LOCATIVE';
-					break;
-				case 'BEF':
-				case 'BET':
-				case 'AND':
-					$case='INSTRUMENTAL';
-					break;
-				case '':
-				case 'INT':
-				case 'EST':
-				case 'CAL':
-				default: // There shouldn't be any other options...
-					$case='NOMINATIVE';
-					break;
+			case 'TO':
+			case 'ABT':
+			case 'FROM':
+				$case='GENITIVE';
+				break;
+			case 'AFT':
+				$case='LOCATIVE';
+				break;
+			case 'BEF':
+			case 'BET':
+			case 'AND':
+				$case='INSTRUMENTAL';
+				break;
+			case '':
+			case 'INT':
+			case 'EST':
+			case 'CAL':
+			default: // There shouldn't be any other options...
+				$case='NOMINATIVE';
+				break;
 			}
 		}
 		// Build up the formatted date, character at a time

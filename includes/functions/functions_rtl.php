@@ -1071,3 +1071,4 @@ function utf8_wordwrap($string, $width=75, $sep="\n", $cut=false) {
 	}
 	return $out;
 }
+

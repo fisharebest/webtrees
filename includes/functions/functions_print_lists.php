@@ -439,7 +439,7 @@ function format_indi_table($datalist, $option='') {
 			if ($SEARCH_SPIDER) {
 				$html .= $tmp->getShortName();
 			} else {
- 				$html .= '<a href="'. $tmp->getURL() . '" title="'. strip_tags($tmp->getFullName()) . '">';
+				$html .= '<a href="'. $tmp->getURL() . '" title="'. strip_tags($tmp->getFullName()) . '">';
 				$html .= highlight_search_hits($tmp->getShortName()). '</a>';
 			}
 		}
