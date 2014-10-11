@@ -80,7 +80,7 @@ class WT_Note extends WT_GedcomRecord {
 			switch ($WT_TREE->getPreference('FORMAT_TEXT')) {
 			case 'markdown':
 				$text = WT_Filter::markdown($text);
-				$text = strip_tags($text);
+				$text = WT_Filter::unescapeHtml($text);
 				break;
 			}
 

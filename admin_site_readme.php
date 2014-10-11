@@ -31,7 +31,11 @@ $controller
 	->setPageTitle(WT_I18N::translate('README documentation'))
 	->pageHeader();
 
+// The readme file contains code-quality badges before the first header
+$readme = file_get_contents('README.md');
+$readme = preg_replace('/.*(?=# webtrees)/s', '', $readme);
+
 ?>
 <div class="markdown" dir="ltr" lang="en">
-	<?php echo MarkdownExtra::defaultTransform(file_get_contents('README.md')); ?>
+	<?php echo MarkdownExtra::defaultTransform($readme); ?>
 </div>
