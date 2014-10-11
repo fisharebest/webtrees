@@ -245,9 +245,11 @@ case 'load1row':
 			'</td><td>',
 			// TODO: autocomplete/find/etc. for this field
 			edit_field_inline('user_gedcom_setting-'.$user_id.'-'.$tree->tree_id.'-rootid', $tree->getUserPreference($user, 'rootid')),
+//			edit_field_inline_autocomplete('user_gedcom_setting-'.$user_id.'-'.$tree->tree_id.'-rootid', $tree->userPreference($user_id, 'rootid'), 'INDI'), //@@
 			'</td><td>',
 			// TODO: autocomplete/find/etc. for this field
 			edit_field_inline('user_gedcom_setting-'.$user_id.'-'.$tree->tree_id.'-gedcomid', $tree->getUserPreference($user, 'gedcomid')),
+//			edit_field_inline_autocomplete('user_gedcom_setting-'.$user_id.'-'.$tree->tree_id.'-gedcomid', $tree->userPreference($user_id, 'gedcomid'), 'INDI'), //@@
 			'</td><td>',
 			select_edit_control_inline('user_gedcom_setting-'.$user_id.'-'.$tree->tree_id.'-canedit', $ALL_EDIT_OPTIONS, null, $tree->getUserPreference($user, 'canedit')),
 			'</td><td>',

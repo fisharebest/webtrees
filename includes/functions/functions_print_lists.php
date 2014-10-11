@@ -305,6 +305,21 @@ function format_indi_table($datalist, $option='') {
 		if (!$person || !$person->canShowName()) {
 			continue;
 		}
+//@@* -> mark emails in lists - correct place? was after birth and death data
+		if (WT_USER_IS_ADMIN) {
+			$Mmail = '';
+			foreach ($person->getFacts() as $fact) {
+				switch ($fact->getTag()) {
+				case 'EMAIL':
+				case 'EMAI':
+					$Mmail = ' @';
+					break;
+				default:
+					break;
+				}
+			}
+		}
+//@@* <-
 		if ($person->isNew()) {
 			$class = ' class="new"';
 		} elseif ($person->isOld()) {
@@ -324,6 +339,9 @@ function format_indi_table($datalist, $option='') {
 			if ($num==$person->getPrimaryName()) {
 				$class=' class="name2"';
 				$sex_image=$person->getSexImage();
+				if (WT_USER_IS_ADMIN) //@@*
+					if (get_user_from_gedcom_xref(WT_GED_ID, $person->getXref())) $sex_image .= ' **'; //@@* mark users in lists
+					else if ($Mmail) $sex_image .= $Mmail; //@@* mark emails in lists
 				list($surn, $givn)=explode(',', $name['sort']);
 			} else {
 				$class='';
@@ -382,10 +400,11 @@ function format_indi_table($datalist, $option='') {
 				$html .= '<br>';
 			}
 			if ($SEARCH_SPIDER) {
-				$html .= $tmp->getShortName();
+ 				$html .= $tmp->getShortName();
 			} else {
-				$html .= '<a href="'. $tmp->getURL() . '" title="'. strip_tags($tmp->getFullName()) . '">';
-				$html .= highlight_search_hits($tmp->getShortName()). '</a>';
+//@@			$html .= '<a href="'. $tmp->getURL() . '" title="'. addslashes(strip_tags($tmp->getFullName())) . '">';
+				$html .= '<a dir="auto" href="'. $tmp->getURL() . '" title="'. addslashes(strip_tags($tmp->getFullName())) . '">'; //@@
+				$html .= ' ' .highlight_search_hits($tmp->getShortName()).'</a>';
 			}
 		}
 		$html .= '</td>';
@@ -439,7 +458,8 @@ function format_indi_table($datalist, $option='') {
 			if ($SEARCH_SPIDER) {
 				$html .= $tmp->getShortName();
 			} else {
-				$html .= '<a href="'. $tmp->getURL() . '" title="'. strip_tags($tmp->getFullName()) . '">';
+//@@			$html .= '<a href="'. $tmp->getURL() . '" title="'. strip_tags($tmp->getFullName()) . '">';
+				$html .= '<a dir="auto" href="'. $tmp->getURL() . '" title="'. strip_tags($tmp->getFullName()) . '">'; //@@ mouse over death place - addslashes
 				$html .= highlight_search_hits($tmp->getShortName()). '</a>';
 			}
 		}
@@ -916,7 +936,9 @@ function format_fam_table($datalist) {
 			if ($SEARCH_SPIDER) {
 				$html .= $tmp->getShortName();
 			} else {
-				$html .= '<a href="'. $tmp->getURL() . '" title="'. strip_tags($tmp->getFullName()) . '">';
+//@@			$html .= '<a href="'. $tmp->getURL() . '" title="'. strip_tags($tmp->getFullName()) . '">';
+				$html .= '<a dir="auto" href="'. $tmp->getURL() . '" title="'. strip_tags($tmp->getFullName()) . '">'; //@@
+//				$html .= '<a dir="auto" href="'. $tmp->getURL() . ' title="'. strip_tags($tmp->getFullName()) . '#$%">'; //@@ list place link alt - I do not see the full place, only the town - addslashes
 				$html .= highlight_search_hits($tmp->getShortName()). '</a>';
 			}
 		}
@@ -1098,13 +1120,16 @@ function format_sour_table($datalist) {
 		}
 		$html .= '<td>'. highlight_search_hits($author). '</td>';
 		//-- Linked INDIs
-		$num = count($source->linkedIndividuals('SOUR'));
+//@@*	$num = count($source->linkedIndividuals('SOUR'));
+		$num=$source->fetchLinkedIndividualsNum(); //@@*
 		$html .= '<td>'. WT_I18N::number($num). '</td><td>'. $num. '</td>';
 		//-- Linked FAMs
-		$num = count($source->linkedfamilies('SOUR'));
+//@@*	$num = count($source->linkedfamilies('SOUR'));
+		$num=$source->fetchLinkedFamiliesNum(); //@@*
 		$html .= '<td>'. WT_I18N::number($num). '</td><td>'. $num. '</td>';
 		//-- Linked OBJEcts
-		$num = count($source->linkedMedia('SOUR'));
+//@@*	$num = count($source->linkedMedia('SOUR'));
+		$num=$source->fetchLinkedMediaNum(); //@@*
 		$html .= '<td>'. WT_I18N::number($num). '</td><td>'. $num. '</td>';
 		//-- Linked NOTEs
 		$num = count($source->linkedNotes('SOUR'));
@@ -1204,7 +1229,7 @@ function format_note_table($datalist) {
 		}
 		$html .= '<tr' . $class . '>';
 		//-- Shared Note name
-		$html .= '<td><a class="name2" href="'. $note->getHtmlUrl(). '">'. highlight_search_hits($note->getFullName()). '</a></td>';
+		$html .= '<td><a class="name2" href="'. $note->getHtmlUrl(). '">'. highlight_search_hits($note->getFullName()). '</a></td>'; //@@* how can I print the note title adjusted by the text dir?
 		//-- Linked INDIs
 		$num = count($note->linkedIndividuals('NOTE'));
 		$html .= '<td>'. WT_I18N::number($num). '</td><td>'. $num. '</td>';
@@ -2000,7 +2025,7 @@ function print_events_list($startjd, $endjd, $events='BIRT MARR DEAT', $only_liv
 			$html .= ' (' . WT_I18N::translate('%s year anniversary', $fact->anniv) . ')';
 		}
 		if (!$fact->getPlace()->isEmpty()) {
-			$html .= ' — <a href="' . $fact->getPlace()->getURL() . '">' . $fact->getPlace()->getFullName() . '</a>';
+			$html .= ' — <a href="' . $fact->getPlace()->getURL() . '">' . $fact->getPlace()->getFullName() . '</a>'; //@@ Where is the place shown???
 		}
 		$html .= '</div>';
 	}

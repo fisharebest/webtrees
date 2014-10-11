@@ -1072,3 +1072,18 @@ function utf8_wordwrap($string, $width=75, $sep="\n", $cut=false) {
 	return $out;
 }
 
+/* @@ my use MA @@
+ * Verify if text is RTL
+ *
+ * This will verify if text has RTL characters
+ * @param string $text to verify
+*/
+function hasRTLText($text) {
+	global $RTLOrd;
+	//--- What if gedcom in ANSI?
+	for ($i=0; $i<strlen($text); $i++) {
+	  if (in_array(ord(substr(trim($text),$i,2)),$RTLOrd)) return true;
+	}
+	return false;
+}
+// @@ */

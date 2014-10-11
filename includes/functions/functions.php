@@ -220,6 +220,7 @@ function get_sub_record($level, $tag, $gedrec, $num=1) {
  * @param string $nrec the gedcom subrecord to search in
  * @return string a string with all CONT or CONC lines merged
  */
+//@@ function get_cont($nlevel, $nrec, $tobr=true) {
 function get_cont($nlevel, $nrec) {
 	global $WORD_WRAPPED_NOTES;
 	$text = "";
@@ -399,7 +400,22 @@ function get_relationship(WT_Individual $person1, WT_Individual $person2, $follo
 		if ($shortest==-1)
 			return false;
 		$node = $p1nodes[$shortest];
-		if ($maxlength==0 || count($node['path'])<=$maxlength) {
+//@@ ->
+		$pathlength=count($node['path']);
+		$continue=true;
+		for ($i=$pathlength-1; $i>-1; $i--) {
+			if  ($node['path'][$i]===$person2) {
+				$continue=false;
+				break;
+			}
+			if ($node['path'][$i]==$node['path'][$pathlength-1] && $i!=$pathlength-1) {
+				$continue=false;
+				break;
+			}
+		}
+//<- @@
+//@@	if ($maxlength==0 || count($node['path'])<=$maxlength) {}
+		if (($maxlength==0 || count($node['path'])<=$maxlength) && $continue==true) { //@@
 			$indi = $node['indi'];
 			//-- check all parents and siblings of this node
 			foreach ($indi->getChildFamilies(WT_PRIV_HIDE) as $family) {
@@ -413,7 +429,28 @@ function get_relationship(WT_Individual $person1, WT_Individual $person2, $follo
 						$node1['relations'][] = 'parent';
 						$p1nodes[] = $node1;
 						if ($spouse === $person2) {
-							if ($path_to_find>0) {
+//*@@ ->
+							$trivial=false;
+							if ($followspouse && $pathlength>1) { //trivial parent-child-parent$pid2 for check relations - I1-I90
+								foreach ($family->getSpouses(WT_PRIV_HIDE) as $tr_spouse) {
+
+									if ($tr_spouse->getXref().'@10'==$node1['path'][$pathlength-2]) {
+										$trivial=true;
+										break;
+									}
+								}
+							}
+							if ($pathlength>1) { // child-child-parent$pid2
+								foreach ($family->getChildren(WT_PRIV_HIDE) as $tr_child) {
+									if ($tr_child->getXref().'@10'==$node1['path'][$pathlength-2]) {
+										$trivial=true;
+										break;
+									}
+								}
+							}
+//@@ <-
+//							if ($path_to_find>0) { //@@ }
+							if ($path_to_find>0 || $trivial) { //@@
 								$path_to_find--;
 							} else {
 								$found=true;
@@ -433,7 +470,35 @@ function get_relationship(WT_Individual $person1, WT_Individual $person2, $follo
 						$node1['relations'][] = 'sibling';
 						$p1nodes[] = $node1;
 						if ($child === $person2) {
-							if ($path_to_find>0) {
+//@@ ->
+							$trivial=false;
+							if ($pathlength>0 && $node1['path'][$pathlength-1]==$person2) {
+								$trivial=true;
+								break;
+							}
+/*							if ($pathlength>2 && $node1['path'][$pathlength-2]==$node1['path'][$pathlength-1]) { //spouse-samespouse
+								$trivial=true;
+								break;
+							} */
+							if ($pathlength>1) { //trivial child-child-child$pid2? I1-I90
+								foreach ($family->getChildren(WT_PRIV_HIDE) as $tr_child) {
+									if ($tr_child->getXref().'@10'==$node1['path'][$pathlength-2]) {
+										$trivial=true;
+										break;
+									}
+								}
+							}
+							if ($pathlength>1) { //trivial parent-child-child$pid2? I86-I710  I86-I88
+								foreach ($family->getSpouses(WT_PRIV_HIDE) as $tr_spouse) {
+									if ($tr_spouse->getXref().'@10'==$node1['path'][$pathlength-2]) {
+										$trivial=true;
+										break;
+									}
+								}
+							}
+//@@ <-							
+//							if ($path_to_find>0) { //@@	}
+							if ($path_to_find>0 || $trivial) { //@@
 								$path_to_find--;
 							} else {
 								$found=true;
@@ -457,8 +522,25 @@ function get_relationship(WT_Individual $person1, WT_Individual $person2, $follo
 							$node1['indi'] = $spouse;
 							$node1['relations'][] = 'spouse';
 							$p1nodes[] = $node1;
+//@@ child-parent-parent is trivial
 							if ($spouse === $person2) {
-								if ($path_to_find>0) {
+//@@ ->
+								$trivial=false;
+								if ($pathlength>0 && ($node1['path'][$pathlength-1]==$person2 || $node1['path'][$pathlength]==$node1['path'][$pathlength-1])) {
+									$trivial=true;
+									break;
+								}
+								if ($followspouse && $pathlength>1) {
+									foreach ($family->getChildren(WT_PRIV_HIDE) as $tr_child) {
+										if ($tr_child->getXref().'@10'==$node1['path'][$pathlength-2]) {
+											$trivial=true;
+											break;
+										}
+									}
+								}
+//@@ <-
+///								if ($path_to_find>0) { //@@
+								if ($path_to_find>0 || $trivial) { //@@	}
 									$path_to_find--;
 								} else {
 									$found=true;
@@ -479,14 +561,51 @@ function get_relationship(WT_Individual $person1, WT_Individual $person2, $follo
 						$node1['relations'][] = 'child';
 						$p1nodes[] = $node1;
 						if ($child === $person2) {
-							if ($path_to_find>0) {
+//@@ ->
+							$trivial=false;
+							if ($pathlength>1) { //trivial child-parent-child$pid2 I1-I90 or parent-parent-child$pid2 I86-I710
+								foreach ($family->getChildren(WT_PRIV_HIDE) as $tr_child) {
+									if ($tr_child->getXref().'@10'==$node1['path'][$pathlength-2]) {
+										$trivial=true;
+										break;
+									}
+								}
+								foreach ($family->getSpouses(WT_PRIV_HIDE) as $tr_spouse) {  //parent-parent-child$pid2
+									if ($tr_spouse->getXref().'@10'==$node1['path'][$pathlength-2]) {
+										$trivial=true;
+										break;
+									}
+								}
+							}
+
+							if (!$trivial && $followspouse && $pathlength>2) { //trivial child-parent-parent-childpid2 I92-I91
+								foreach ($family->getSpouses(WT_PRIV_HIDE) as $tr_spouse) { 
+									if ($tr_spouse->getXref().'@10'==$node1['path'][$pathlength-2]) {
+										$trivial=true;
+										break;
+									}
+								}
+								if ($trivial) {
+									$trivial=false;
+									foreach ($family->getChildren(WT_PRIV_HIDE) as $tr_child) {
+										if ($tr_child->getXref().'@10'==$node1['path'][$pathlength-3]) {
+											$trivial=true;
+											break;
+										}
+									}
+								}
+							}
+//							if ($trivial) break; //@@@@?
+//@@ <-
+///							if ($path_to_find>0) {
+							if ($path_to_find>0 || $trivial) { //@@	}
 								$path_to_find--;
 							} else {
 								$found=true;
 								$resnode = $node1;
 							}
 						} else {
-							$visited[$child->getXref()] = true;
+							$visited[$child->getXref()] = true;  //????? @@@@@
 						}
 					}
 				}

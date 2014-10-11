@@ -96,6 +96,7 @@ class WT_Place {
 		$tmp=array();
 		foreach ($this->gedcom_place as $place) {
 			$tmp[]='<span dir="auto">' . WT_Filter::escapeHtml($place) . '</span>';
+//          $tmp[]=htmlspecialchars($place); //@@
 		}
 		return implode(WT_I18N::$list_separator, $tmp);
 	}

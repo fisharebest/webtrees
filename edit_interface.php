@@ -1139,13 +1139,15 @@ case 'linkspouseaction':
 	if (WT_Filter::postBool('SOUR_FAM') || count($tagSOUR)>0) {
 		// before adding 2 SOUR it needs to add 1 MARR Y first
 		if (addNewFact('MARR') == '') {
-			$gedcom .= "\n1 MARR Y";
+//@@		$gedcom .= "\n1 MARR Y";
+			$gedcom .= "\n1 MARR"; //@@
 		}
 		$gedcom = handle_updates($gedcom);
 	} else {
 		// before adding level 2 facts it needs to add 1 MARR Y first
 		if (addNewFact('MARR')=='') {
-			$gedcom .= "\n1 MARR Y";
+//@@		$gedcom .= "\n1 MARR Y";
+			$gedcom .= "\n1 MARR"; //@@
 		}
 		$gedcom = updateRest($gedcom);
 	}

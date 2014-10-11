@@ -4245,7 +4245,9 @@ span.link_text {
 	}
 
 	#pedigree_chart {
-		left: -80px;
+		/* @@ left: -80px; */
+		left: -30px; /* @@ */
+		top: -277px;  /* @@ */
 	}
 
 	#header_accordion1 {
@@ -4254,7 +4256,9 @@ span.link_text {
 
 	[dir=rtl] #pedigree_chart {
 		left: auto;
-		right: -80px;
+		/* @@ right: -80px; */
+		right: -30px; /* @@ */
+		top: -277px; /* @@ */
 	}
 
 	#topMenu,
@@ -5285,6 +5289,7 @@ textarea:required:invalid {
 	top: 10px;
 	color: #949494;
 	text-align: center;
+	direction: ltr; /* @@ */
 	width: 100%;
 	font-weight: 800;
 	font-size: 14px;
@@ -5395,6 +5400,7 @@ textarea:required:invalid {
 	right: auto;
 	left: 0;
 }
+
 
 [dir=rtl] #cboxSlideshow {
 	right: 57px;

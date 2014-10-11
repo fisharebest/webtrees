@@ -4221,7 +4221,9 @@ dd .deletelink {
 
 	#pedigree_chart {
 		right: auto;
-		left: -80px;
+		/* @@ left: -80px; */
+		left: -30px; /* @@ */
+		top:-287px; /* @@ */
 	}
 
 	#header_accordion1 {
@@ -4230,7 +4232,9 @@ dd .deletelink {
 
 	[dir=rtl] #pedigree_chart {
 		left: auto;
-		right: -80px;
+		/* @@ right: -80px; */
+		right: -30px; /* @@ */
+		top: -287px; /* @@ */
 	}
 
 	#familybook_chart h3 {
@@ -5238,6 +5242,7 @@ a.icon-uarrow:hover {
 	top: 10px;
 	color: #949494;
 	text-align: center;
+	direction: ltr; /* @@ */
 	width: 100%;
 	font-weight: 800;
 	font-size: 14px;

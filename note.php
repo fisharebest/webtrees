@@ -161,6 +161,7 @@ if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
 						<?php } ?>
 					</td>
 					<td class="optionbox wrap width80"><?php echo $text; ?></td>
+//@@ was ??		    <td class="optionbox wrap width80" style="white-space: pre-wrap;" dir="auto"><?php echo $text; ?></td> <?php /* @@* */ ?>
 				</tr>
 				<?php
 					foreach ($facts as $fact) {

@@ -406,7 +406,8 @@ class WT_Media extends WT_GedcomRecord {
 				'<i' .
 				' dir="'   . 'auto'                           . '"' . // For the tool-tip
 				' class="' . 'icon-mime-' . $mime_type        . '"' .
-				' title="' . strip_tags($this->getFullName()) . '"' .
+//@@			' title="' . strip_tags($this->getFullName()) . '"' .
+				' title="' . '&rlm;'.strip_tags($this->getFullName()).'&rlm;"' . //@@
 				'></i>';
 		} else {
 			$imgsize = getimagesize($this->getServerFilename('thumb'));
@@ -416,7 +417,8 @@ class WT_Media extends WT_GedcomRecord {
 				' dir="'   . 'auto'                           . '"' . // For the tool-tip
 				' src="'   . $this->getHtmlUrlDirect('thumb') . '"' .
 				' alt="'   . strip_tags($this->getFullName()) . '"' .
-				' title="' . strip_tags($this->getFullName()) . '"' .
+//@@			' title="' . strip_tags($this->getFullName()) . '"' .
+				' title="' . '&rlm;'.strip_tags($this->getFullName()).'&rlm;"' . //@@
 				' '. $imgsize[3] . // height="yyy" width="xxx"
 				'>';
 		}
@@ -429,6 +431,10 @@ class WT_Media extends WT_GedcomRecord {
 			' data-obje-url="'  . $this->getHtmlUrl()                . '"' .
 			' data-obje-note="' . WT_Filter::escapeHtml($this->getNote()) . '"' .
 			' data-title="'     . WT_Filter::escapeHtml($this->getFullName())   . '"' .
+/* @@
+			' data-obje-note="' . WT_Filter::escapeHtml($this->getNote()) . '"' .			' data-obje-note="' . htmlspecialchars($this->getNote()) . '"' .
+			' data-title="'     . strip_tags($this->getFullName())   . '"' .
+*/
 			'>' . $image . '</a>';
 	}
 

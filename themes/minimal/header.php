@@ -65,6 +65,10 @@ echo
 if ($view!='simple') {
 	echo '<div id="header">';
 	echo '<div id="header-title" dir="auto">', WT_TREE_TITLE, '</div>';
+/* @@
+//@@ echo '<li class="title" dir="auto">',htmlspecialchars($GEDCOM_TITLE),'</li>';
+	 echo '<li class="title" dir="auto">',htmlspecialchars(WT_I18N::translate($GEDCOM_TITLE)),'</li>'; //@@
+@@ */
 	echo '<div id="header-user-links">';
 	echo '<ul class="makeMenu">';
 	if (WT_USER_ID) {

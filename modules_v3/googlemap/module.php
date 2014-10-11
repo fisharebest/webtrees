@@ -1290,6 +1290,15 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				}
 				// end of add image
 
+/* @@
+				require_once WT_ROOT.'includes/functions/functions_rtl.php'; //@@
+				if (hasRTLText($person->getBirthPlace())) //@@
+					$temp=WT_UTF8_RLM.addslashes($person->getBirthPlace()).WT_UTF8_RLM; //@@
+				else //@@
+					$temp=WT_UTF8_LRM.addslashes($person->getBirthPlace()).WT_UTF8_LRM; //@@
+				$dataright = '<br><strong>'. WT_I18N::translate('Birth:') . '&nbsp;</strong>' .
+						addslashes($person->getBirthDate()->Display(false)).'<br>'.$temp; //@@ used in infowindow and in relatives nav list next to map
+@@ */
 				$dataleft  = WT_Filter::escapeJs($image . $event . ' — ' . $name);
 				$datamid   = WT_Filter::escapeJs(' <span><a href="' . $person->getHtmlUrl() . '">('.WT_I18N::translate('View person').')</a></span>');
 				$dataright = WT_Filter::escapeJs('<br><strong>'. WT_I18N::translate('Birth:') . '&nbsp;</strong>' .  $person->getBirthDate()->Display(false) . ' — ' . $person->getBirthPlace());
@@ -1334,12 +1343,12 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 							}
 						}
 						$js.= 'var point = new google.maps.LatLng('.$lat[$i].','.$lon[$i].');';
-						$js.= "var marker = createMarker(point, \"".WT_Filter::escapeJs($name)."\",\"<div>".$dataleft.$datamid.$dataright."</div>\", \"";
+						$js.= "var marker = createMarker(point, \"".WT_Filter::escapeJs($name)."\",\"<div>".$dataleft.$datamid.$dataright."</div>\", \""; //@@ relatives nav list
 						$js.= "<div class='iwstyle'>";
 						$js.= "<a href='module.php?ged=".WT_GEDURL."&amp;mod=googlemap&amp;mod_action=pedigree_map&amp;rootid=" . $person->getXref() . "&amp;PEDIGREE_GENERATIONS={$PEDIGREE_GENERATIONS}";
 						if ($hideflags) $js.= '&amp;hideflags=1';
 						if ($hidelines) $js.= '&amp;hidelines=1';
-						$js.= "' title='".WT_I18N::translate('Pedigree map')."'>".$dataleft."</a>".$datamid.$dataright."</div>\", \"".$marker_number."\");";
+						$js.= "' title='".WT_I18N::translate('Pedigree map')."'>".$dataleft."</a>".$datamid.$dataright."</div>\", \"".$marker_number."\");"; //@@ map infowindow
 						// Construct the polygon lines
 						if (!$hidelines) {
 							$to_child = (intval(($i-1)/2)); // Draw a line from parent to child

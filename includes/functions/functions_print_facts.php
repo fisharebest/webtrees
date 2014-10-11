@@ -35,6 +35,7 @@ use WT\User;
 // calculate ages, relationships, etc.
 function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 	global $HIDE_GEDCOM_ERRORS, $SHOW_FACT_ICONS;
+//	global $TEXT_DIRECTION; //@@ needed
 	static $n_chil=0, $n_gchi=0;
 
 	$parent = $fact->getParent();
@@ -322,6 +323,7 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 
 	// Print the place of this fact/event
 	echo '<div class="place">', format_fact_place($fact, true, true, true), '</div>';
+//	echo '<div dir="auto"  align="' , $TEXT_DIRECTION== 'rtl'?'right':'left', '" class="place">', format_fact_place($fact, true, true, true), '</div>'; //@@
 	// A blank line between the primary attributes (value, date, place) and the secondary ones
 	echo '<br>';
 
@@ -559,6 +561,7 @@ function print_fact_sources($factrec, $level) {
 //-- Print the links to media objects
 function print_media_links($factrec, $level) {
 	global $SEARCH_SPIDER, $HIDE_GEDCOM_ERRORS;
+//@@ global $TEXT_DIRECTION;
 
 	$nlevel = $level+1;
 	if (preg_match_all("/$level OBJE @(.*)@/", $factrec, $omatch, PREG_SET_ORDER) == 0) {
@@ -844,7 +847,8 @@ function getSourceStructure($srec) {
 
 // Print a row for the notes tab on the individual page
 function print_main_notes(WT_Fact $fact, $level) {
-	global $WT_TREE, $SHOW_FACT_ICONS;
+	global $WT_TREE, $SHOW_FACT_ICONS, $TEXT_DIRECTION;
+//@@* do we need $TEXT_DIRECTION;
 
 	$factrec = $fact->getGedcom();
 	$fact_id = $fact->getFactId();
@@ -946,7 +950,7 @@ function print_main_notes(WT_Fact $fact, $level) {
 			// Inline notes
 			$nrec = get_sub_record($level, "$level NOTE", $factrec, $j+1);
 			$text = $match[$j][1] . get_cont($level+1, $nrec);
-			$text = WT_Filter::formatText($text, $WT_TREE);
+			$text = WT_Filter::formatText($text, $WT_TREE); //@@ notes on the indi notes tab
 		}
 
 		echo '<td class="optionbox', $styleadd, ' wrap">';

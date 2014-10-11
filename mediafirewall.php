@@ -57,7 +57,8 @@ function send404AndExit() {
 // before returning it back to the media firewall
 function applyWatermark($im) {
 	// text to watermark with
-	$word1_text   = WT_TREE_TITLE;
+	$word1_text   = "חֵקֶר מִשְׁפָּחָה שֶׁל מְלִיצָה - ygolaeneG s'azileM"; //@@
+//@@$word1_text   = WT_TREE_TITLE;
 	// maximum font size for “word1” ; will be automaticaly reduced to fit in the image
 	$word1_maxsize = 100;
 	// rgb color codes for text

@@ -227,6 +227,13 @@ function header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CA
 function execution_stats() {
 	global $start_time;
 
+/* //@@ ->
+$stats = exec('uptime');
+preg_match('/averages?: ([0-9\.]+),[\s]+([0-9\.]+),[\s]+([0-9\.]+)/', $stats, $regs);
+// uptime gives a one line display of the following information. The current time, how long the system has been running, how many users are currently logged on,
+// and the system load averages for the past 1, 5, and 15 minutes.
+//@@<- 	*/
+	
 	return
 		'<div class="execution_stats">'.
 		WT_I18N::translate(
@@ -235,6 +242,9 @@ function execution_stats() {
 			WT_I18N::number(WT_DB::getQueryCount()),
 			WT_I18N::number(memory_get_peak_usage(true)/1024)
 		).
+/*		'<br>'. //@@
+		'CPU: '.$regs[1].', '.$regs[2].', '.$regs[3].'  '.  //@@
+		WT_I18N::translate('Current Server Time:').'  '.date("Y-m-d H:i:s", time()).  //@@ */
 		'</div>';
 }
 

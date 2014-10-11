@@ -370,7 +370,6 @@ textarea:required:invalid {
 .person_boxNN {
 	background-color: #dfd;
 }
-
 .person_box,
 .person_boxF,
 .person_boxNN {
@@ -469,7 +468,7 @@ div.fact_SHARED_NOTE {
 
 #pedigree_chart {
 	position: relative;
-	top: -200px;
+	top: -230px; /* -200 @@ */
 	left: 0;
 }
 
@@ -578,6 +577,8 @@ div.fact_SHARED_NOTE {
 
 /* Printer friendliness */
 @media print {
+	#pedigree_chart {top: -275px;} /* @@ */
+
 	.person_box, .person_boxF, .person_boxNN {
 		border: solid #888 1px;
 		background: #fff;
@@ -3813,6 +3814,7 @@ a.icon-uarrow:hover {
 	top: 10px;
 	color: #888;
 	text-align: center;
+	direction: ltr; /* OK for Latin titles - how also for rtl ones? */
 	width: 100%;
 	font-weight: 800;
 }

@@ -40,6 +40,38 @@ function fetch_all_links($xref, $gedcom_id) {
 		->fetchOneColumn();
 }
 
+//@@ Do we need still??
+//@@ ->
+function fetch_linked_indi_num($xref, $link, $ged_id) {
+	return
+		WT_DB::prepare(
+		"SELECT count(*) FROM `##individuals`".
+		" JOIN `##link` ON (i_file=l_file AND i_id=l_from)".
+		" WHERE i_file=? AND l_type=? AND l_to=?")
+	->execute(array($ged_id, $link, $xref))->fetchOne();
+}
+
+function fetch_linked_fam_num($xref, $link, $ged_id) {
+	return
+	    WT_DB::prepare(
+		"SELECT count(*)".
+		" FROM `##families`".
+		" JOIN `##link` ON (f_file=l_file AND f_id=l_from)".
+		" WHERE f_file=? AND l_type=? AND l_to=?")
+	->execute(array($ged_id, $link, $xref))->fetchOne();
+}
+
+function fetch_linked_obje_num($xref, $link, $ged_id) {
+	return
+		WT_DB::prepare(
+		"SELECT count(*)".
+		" FROM `##media`".
+		" JOIN `##link` ON (m_file=l_file AND m_id=l_from)".
+		" WHERE m_file=? AND l_type=? AND l_to=?")
+	->execute(array($ged_id, $link, $xref))->fetchOne();
+}
+//@@ <-
+
 // Find out if there are any pending changes that a given user may accept
 function exists_pending_change(User $user = null, WT_Tree $tree = null) {
 	global $WT_TREE;

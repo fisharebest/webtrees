@@ -48,7 +48,7 @@ class WT_Fact {
 			$this->tag     = $match[1];
 		} else {
 			// TODO need to rewrite code that passes dummy data to this function
-			//throw new Exception('Invalid GEDCOM data passed to WT_Fact::_construct('.$gedcom.')');
+			// throw new Exception('Invalid GEDCOM data passed to WT_Fact::_construct('.$gedcom.')');
 		}
 	}
 

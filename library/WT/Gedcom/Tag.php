@@ -78,6 +78,8 @@ class WT_Gedcom_Tag {
 		'__FILE_SIZE__', '__IMAGE_SIZE__',
 );
 
+	//$ALL_TAGS[] = '_MTNG'; 	//MA @@	
+
 	// Is $tag one of our known tags?
 	public static function isTag($tag) {
 		return in_array($tag, self::$ALL_TAGS);
@@ -821,6 +823,13 @@ class WT_Gedcom_Tag {
 		// These "pseudo" tags are generated internally to present information about a media object
 		case '__FILE_SIZE__':  return WT_I18N::translate('File size');
 		case '__IMAGE_SIZE__': return WT_I18N::translate('Image dimensions');
+
+//Local facts MA @@
+//		case '_HIST': return WT_I18N::translate ( 'History');
+		case '_MTNG': return WT_I18N::translate ( 'Mother tongue');
+//		case '_PRTN': return WT_I18N::translate ( 'Partners');
+		
+
 		default:
 			// If no specialisation exists (e.g. DEAT:CAUS), then look for the general (CAUS)
 			if (strpos($tag, ':')) {
@@ -856,6 +865,15 @@ class WT_Gedcom_Tag {
 			'_INTE', '_MARI', '_MBON', '_MDCL', '_MEDC', '_MILI', '_MILT', '_NAME',	'_NAMS',
 			'_NLIV', '_NMAR', '_NMR', '_PRMN', '_SEPR', '_TODO', '_UID', '_WEIG', '_YART',
 		);
+
+		$tags[]='_MTNG'; //MA @@
+		$tags[]='ADDR'; //MA @@
+		$tags[]='COMM'; //MA @@
+		$tags[]='DATA'; //MA @@
+		$tags[]='EMAIL'; //MA @@
+		$tags[]='FAX'; //MA @@
+		$tags[]='PHON'; //MA @@
+
 		$facts=array();
 		foreach ($tags as $tag) {
 			$facts[$tag]=self::getLabel($tag, null);
