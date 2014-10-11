@@ -59,7 +59,7 @@ class fancy_branches_WT_Module extends WT_Module implements WT_Module_Config, WT
 				<h2>'.$controller->getPageTitle().'</h2>
 				<form method="post" name="configform" action="'.$this->getConfigLink().'">
 					<input type="hidden" name="action" value="save">'.WT_Filter::getCsrf().'
-					<label>'.WT_I18N::translate('Use d\'Aboville numbering system').'</label>'
+					<label>'.WT_I18N::translate('Use “d’Aboville” numbering system').'</label>'
 					.two_state_checkbox('NEW_SB', $SB).'
 					<input type="submit" value="'.WT_I18N::translate('Save').'" />
 				</form>';
