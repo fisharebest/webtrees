@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2014-10-10 13:52+0100\n"
-"PO-Revision-Date: 2014-10-11 09:02+0100\n"
+"PO-Revision-Date: 2014-10-11 09:26+0100\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -12555,7 +12555,7 @@ msgstr "Zijpaneel"
 
 #: admin_module_sidebar.php:30
 msgid "Sidebars"
-msgstr "Zijbalk"
+msgstr "Zijpaneel"
 
 #: library/WT/Stats.php:4979
 msgid "Sierra Leone"
