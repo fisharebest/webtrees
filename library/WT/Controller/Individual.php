@@ -166,7 +166,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 					if (isset($nmatch[$i][2])) {
 							$name = WT_Filter::escapeHtml($nmatch[$i][2]);
 							$name = str_replace('/', '', $name);
-							$name=preg_replace('/(\S*)\*/', '<span class="starredname">\\1</span>', $name);
+							$name = preg_replace('/(\S*)\*/', '<span class="starredname">\\1</span>', $name);
 							switch ($fact) {
 							case 'TYPE':
 								echo WT_Gedcom_Code_Name::getValue($name, $this->record);
@@ -176,13 +176,13 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 								// Where it is not a substring of the real surname, show it after the real surname.
 								$surname = WT_Filter::escapeHtml($primary_name['surname']);
 								if (strpos($primary_name['surname'], str_replace(',', ' ', $nmatch[$i][2]))!==false) {
-									echo $surname;
+									echo '<span dir="auto">' . $surname . '</span>';
 								} else {
-									echo WT_I18N::translate('%1$s (%2$s)', $surname, $name);
+									echo '<span dir="auto">' . WT_I18N::translate('%1$s (%2$s)', $surname, $name) . '</span>';
 								}
 								break;
 							default:
-								echo $name;
+								echo '<span dir="auto">' . $name . '</span>';
 								break;
 							}
 						}
