@@ -397,9 +397,9 @@ function add_simple_tag(
 		$element_id = $upperlevel . '_' . $fact . Uuid::uuid4();
 
 	// field value
-	$islink = preg_match('/^@' . WT_REGEX_XREF . '@$/', $value);
+	$islink = (substr($value, 0, 1) === '@' && substr($value, 0, 2) != '@#');
 	if ($islink) {
-		$value = trim(substr($tag, strlen($fact)+3), '@');
+		$value = trim(substr($tag, strlen($fact)+3), " @\r");
 	} else {
 		$value = substr($tag, strlen($fact)+3);
 	}
