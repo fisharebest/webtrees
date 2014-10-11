@@ -3885,7 +3885,7 @@ msgstr "Copier"
 #: admin_trees_merge.php:182
 #, php-format
 msgid "Copy all the records from %1$s into %2$s."
-msgstr "Copie tous les enregistrements de %1s vers %2s."
+msgstr "Copie tous les enregistrements de %1$s vers %2$s."
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:422
