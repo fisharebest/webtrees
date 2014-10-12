@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2014-10-10 13:52+0100\n"
-"PO-Revision-Date: 2014-10-11 09:26+0100\n"
+"PO-Revision-Date: 2014-10-12 07:37+0100\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -13360,7 +13360,7 @@ msgstr "De volgende lijst toont u typische benodigdheden."
 
 #: includes/authentication.php:150 includes/authentication.php:153
 msgid "The following message has been sent to your webtrees user account from "
-msgstr "Het volgende bericht is verzonden naar uw webtrees-gebruikersaccount van "
+msgstr "Het volgende bericht is verzonden naar uw webtrees-gebruikersaccount door "
 
 #: admin_trees_places.php:111
 msgid "The following places were changed:"
