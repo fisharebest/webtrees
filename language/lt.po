@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2014-10-10 13:52+0100\n"
-"PO-Revision-Date: 2014-06-13 09:07+1000\n"
+"PO-Revision-Date: 2014-10-12 20:41+1000\n"
 "Last-Translator: Vytautas Krivickas <vytautas.krivickas@gmail.com>\n"
 "Language-Team: \n"
 "Language: lt\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Launchpad-Export-Date: 2013-08-04 19:02+0000\n"
-"X-Generator: Poedit 1.6.5\n"
+"X-Generator: Poedit 1.6.9\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 "X-Poedit-Basepath: ..\n"
@@ -3909,7 +3909,7 @@ msgstr "Kopijuoti"
 #: admin_trees_merge.php:182
 #, php-format
 msgid "Copy all the records from %1$s into %2$s."
-msgstr ""
+msgstr "Kopijuoti visus įrašus iš %1$s į %2$s."
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:422
@@ -7372,8 +7372,7 @@ msgstr "Idėti visas vietoves iš šeimos medžio"
 msgid "Import family tree"
 msgstr "Importuoti šeimos medį"
 
-#: admin_trees_renumber.php:260
-#: admin_trees_merge.php:73
+#: admin_trees_renumber.php:260 admin_trees_merge.php:73
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
 msgstr ""
 
@@ -8913,7 +8912,7 @@ msgstr "Merkurijaus"
 
 #: admin_trees_merge.php:30 themes/_administration/header.php:122
 msgid "Merge family trees"
-msgstr ""
+msgstr "Sujungti šeimos medžius"
 
 #: admin_site_merge.php:266
 msgid "Merge from ID:"
@@ -11357,7 +11356,7 @@ msgstr "Reno, Nevada"
 #: admin_trees_merge.php:87 admin_trees_merge.php:92
 #: admin_trees_renumber.php:29
 msgid "Renumber family tree"
-msgstr ""
+msgstr "Pernumeruoti šeimos medį"
 
 #: admin_trees_places.php:101 search.php:119
 msgid "Replace with"
@@ -13493,7 +13492,7 @@ msgstr "Priešdėlis nėra privalomas, tačiau rekomenduojamas. Suteikdami lente
 #: admin_trees_renumber.php:237
 #, php-format
 msgid "The record %1$s was renamed to %2$s."
-msgstr ""
+msgstr "Įrašas %1$s buvo pervadintas į %2$s."
 
 #: action.php:100
 msgid "The record was copied to the clipboard."
@@ -13554,9 +13553,9 @@ msgstr "Laikotarpis sekundėmis per kurį webtrees sesija pasilieka atidaryta be
 #, php-format
 msgid "The two family trees have %1$s record which use the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Šie du šeimos medžiai turi %1$s įrašą su tuo pačiu “XREF” numeriu."
+msgstr[1] "Šie du šeimos medžiai turi %1$s įrašus su tuo pačiu “XREF” numeriu."
+msgstr[2] "Šie du šeimos medžiai turi %1$s įrašų su tuo pačiu “XREF” numeriu."
 
 #: admin_site_upgrade.php:490
 msgid "The upgrade is complete."
@@ -13756,9 +13755,9 @@ msgstr "Ši šeima liko bevaikė"
 #, php-format
 msgid "This family tree has %s record which uses the same “XREF” as another family tree."
 msgid_plural "This family tree has %s records which use the same “XREF” as another family tree."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Šis šeimos medžis turi %1$s įrašą su tais pačiais “XREF” numeriais kitame šeimos medyje."
+msgstr[1] "Šis šeimos medžis turi %1$s įrašus su tais pačiais “XREF” numeriais kitame šeimos medyje."
+msgstr[2] "Šis šeimos medžis turi %1$s įrašų su tais pačiais “XREF” numeriais kitame šeimos medyje."
 
 #: modules_v3/random_media/module.php:189
 msgid "This family tree has no images to display."
