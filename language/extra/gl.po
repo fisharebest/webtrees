@@ -10474,7 +10474,7 @@ msgstr ""
 
 #: admin_pgv_to_wt.php:65
 msgid "PhpGedView must use the same database as webtrees."
-msgstr "PhpGedView debe empregar o mesmo base de datos  que <b>webtrees</ b>"
+msgstr "PhpGedView debe empregar o mesmo base de datos  que webtrees"
 
 #: admin_pgv_to_wt.php:36 admin_pgv_to_wt.php:116 help_text.php:1303
 msgid "PhpGedView to webtrees transfer wizard"
@@ -19692,7 +19692,7 @@ msgstr ""
 #: admin_pgv_to_wt.php:81
 #, php-format
 msgid "webtrees cannot connect to the PhpGedView database: %s."
-msgstr "<b>webtrees</ b> non se pode conectar á base de datos de PhpGedView: %s."
+msgstr "webtrees non se pode conectar á base de datos de PhpGedView: %s."
 
 #: help_text.php:1180
 msgid "webtrees has several different contact methods.  The administrator determines which method will be used to contact him.  You have control over the method to be used to contact <u>you</u>.  Depending on site configuration, some of the listed methods may not be available to you."

@@ -353,8 +353,13 @@ class WT_Date_Calendar {
 
 	// How many days in the current month
 	public function daysInMonth() {
-		list($ny,$nm)=$this->nextMonth();
-		return $this->calendar->ymdToJd($ny, $nm, 1) - $this->calendar->ymdToJd($this->y, $this->m, 1);
+		try {
+			return $this->calendar->daysInMonth($this->y, $this->m);
+		} catch (InvalidArgumentException $ex) {
+			// calendar.php calls this with "DD MMM" dates, for which we cannot calculate
+			// the length of a month.  Should we validate this before calling this function?
+			return 0;
+		}
 	}
 
 	// How many days in the current week

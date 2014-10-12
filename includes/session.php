@@ -31,8 +31,8 @@ if (!defined('WT_SCRIPT_NAME')) {
 }
 
 // Identify ourself
-define('WT_WEBTREES',     'webtrees');
-define('WT_VERSION',      '1.6.0-dev');
+define('WT_WEBTREES', 'webtrees');
+define('WT_VERSION',  '1.6.1-dev');
 
 // External URLs
 define('WT_WEBTREES_URL',  'http://www.webtrees.net/');
