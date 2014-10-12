@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2014-10-10 13:52+0100\n"
-"PO-Revision-Date: 2014-10-11 09:26+0100\n"
+"PO-Revision-Date: 2014-10-12 08:12+0100\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -7348,8 +7348,7 @@ msgstr "Importeer alle plaatsen van een stamboom."
 msgid "Import family tree"
 msgstr "Importeer stamboom"
 
-#: admin_trees_renumber.php:260
-#: admin_trees_merge.php:73
+#: admin_trees_renumber.php:260 admin_trees_merge.php:73
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
 msgstr "In een stamboom heeft ieder record een intern referentie nummer (dat noemt men een “XREF”), zoals “F123” of “R14”."
 
@@ -13360,7 +13359,7 @@ msgstr "De volgende lijst toont u typische benodigdheden."
 
 #: includes/authentication.php:150 includes/authentication.php:153
 msgid "The following message has been sent to your webtrees user account from "
-msgstr "Het volgende bericht is verzonden naar uw webtrees-gebruikersaccount van "
+msgstr "Het volgende bericht is verzonden naar uw webtrees-gebruikersaccount door "
 
 #: admin_trees_places.php:111
 msgid "The following places were changed:"
@@ -16421,7 +16420,7 @@ msgstr "ex-partner"
 
 #: includes/functions/functions.php:744
 msgid "ex-wife"
-msgstr "ex-vrouw"
+msgstr "ex-echtgenote"
 
 #: admin_trees_config.php:1290 modules_v3/fact_sources/report.xml:6
 msgid "facts"

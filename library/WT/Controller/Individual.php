@@ -178,7 +178,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 								if (strpos($primary_name['surname'], str_replace(',', ' ', $nmatch[$i][2]))!==false) {
 									echo '<span dir="auto">' . $surname . '</span>';
 								} else {
-									echo '<span dir="auto">' . WT_I18N::translate('%1$s (%2$s)', $surname, $name) . '</span>';
+									echo WT_I18N::translate('%1$s (%2$s)', '<span dir="auto">' . $surname . '</span>', '<span dir="auto">' . $name . '</span>');
 								}
 								break;
 							default:
