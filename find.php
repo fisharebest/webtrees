@@ -460,7 +460,7 @@ if ($type == "facts") {
 	</table></div>
 
 	<table id="tabDefinedTagsShow"><tbody><tr>
-		<td><a href="#" onclick="Lister.showSelected();return false">', WT_I18N::translate('Show only selected tags'), ' (<span id="layCurSelectedCount"></span>)</a></td>
+		<td><a href="#" onclick="Lister.showSelected();return false">', WT_I18N::translate('Show only the selected tags'), ' (<span id="layCurSelectedCount"></span>)</a></td>
 		<td><a href="#" onclick="Lister.refreshNow(true);return false">', WT_I18N::translate('Show all tags'), '</a></td>
 	</tr></tbody></table>
 

@@ -42,11 +42,13 @@ if (!$ajax) {
 					jQuery("#loading-indicator").removeClass("loading-image");
 				},
 				beforeLoad: function(event, ui) {
-					jQuery("#loading-indicator").addClass("loading-image");
 					// Only load each tab once
 					if (ui.tab.data("loaded")) {
 						event.preventDefault();
 						return;
+					}
+					else {
+						jQuery("#loading-indicator").addClass("loading-image");
 					}
 					ui.jqXHR.success(function() {
 						ui.tab.data("loaded", true);

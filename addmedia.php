@@ -128,9 +128,9 @@ case 'create': // Save the information from the “showcreateform” action
 		unset($_FILES['thumbnail']);
 	}
 
-	// Thumbnails must be images.
+	// Thumbnail files must contain images.
 	if (!empty($_FILES['thumbnail']['name']) && !preg_match('/^image/', $_FILES['thumbnail']['type'])) {
-		WT_FlashMessages::addMessage(WT_I18N::translate('Thumbnails must be images.'));
+		WT_FlashMessages::addMessage(WT_I18N::translate('Thumbnail files must contain images.'));
 		break;
 	}
 
@@ -208,7 +208,7 @@ case 'create': // Save the information from the “showcreateform” action
 	// Build the gedcom record
 	$newged = "0 @new@ OBJE";
 	if ($tag[0]=='FILE') {
-		// The admin has an edit field to change the file name
+		// The admin has an edit field to change the filename
 		$text[0] = $folderName . $fileName;
 	} else {
 		// Users keep the original filename
@@ -309,7 +309,7 @@ case 'update': // Save the information from the “editmedia” action
 
 	// Cannot rename local to external or vice-versa
 	if (isFileExternal($oldFilename) != isFileExternal($filename)) {
-		WT_FlashMessages::addMessage(WT_I18N::translate('Media file %1$s could not be renamed to %2$s.', '<span class="filename">'.$oldFilename.'</span>', '<span class="filename">'.$newFilename.'</span>'));
+		WT_FlashMessages::addMessage(WT_I18N::translate('The media file %1$s could not be renamed to %2$s.', '<span class="filename">'.$oldFilename.'</span>', '<span class="filename">'.$newFilename.'</span>'));
 		break;
 	}
 
@@ -328,34 +328,34 @@ case 'update': // Save the information from the “editmedia” action
 			//-- check if the file is used in more than one gedcom
 			//-- do not allow it to be moved or renamed if it is
 			if (!$media->isExternal() && is_media_used_in_other_gedcom($media->getFilename(), WT_GED_ID)) {
-				WT_FlashMessages::addMessage(WT_I18N::translate('This file is linked to another genealogical database on this server.  It cannot be deleted, moved, or renamed until these links have been removed.'));
+				WT_FlashMessages::addMessage(WT_I18N::translate('This file is linked to another family tree on this server.  It cannot be deleted, moved, or renamed until these links have been removed.'));
 				break;
 			}
 
 			if (!file_exists($newServerFile) || @md5_file($oldServerFile)==md5_file($newServerFile)) {
 				if (@rename($oldServerFile, $newServerFile)) {
-					WT_FlashMessages::addMessage(WT_I18N::translate('Media file %1$s successfully renamed to %2$s.', '<span class="filename">'.$oldFilename.'</span>', '<span class="filename">'.$newFilename.'</span>'));
+					WT_FlashMessages::addMessage(WT_I18N::translate('The media file %1$s was renamed to %2$s.', '<span class="filename">'.$oldFilename.'</span>', '<span class="filename">'.$newFilename.'</span>'));
 				} else {
-					WT_FlashMessages::addMessage(WT_I18N::translate('Media file %1$s could not be renamed to %2$s.', '<span class="filename">'.$oldFilename.'</span>', '<span class="filename">'.$newFilename.'</span>'));
+					WT_FlashMessages::addMessage(WT_I18N::translate('The media file %1$s could not be renamed to %2$s.', '<span class="filename">'.$oldFilename.'</span>', '<span class="filename">'.$newFilename.'</span>'));
 				}
 				$messages = true;
 			}
 			if (!file_exists($newServerFile)) {
-				WT_FlashMessages::addMessage(WT_I18N::translate('Media file %s does not exist.', '<span class="filename">'.$newFilename.'</span>'));
+				WT_FlashMessages::addMessage(WT_I18N::translate('The media file %s does not exist.', '<span class="filename">'.$newFilename.'</span>'));
 				$messages = true;
 			}
 		}
 		if ($oldServerThumb != $newServerThumb) {
 			if (!file_exists($newServerThumb) || @md5_file($oldServerFile)==md5_file($newServerThumb)) {
 				if (@rename($oldServerThumb, $newServerThumb)) {
-					WT_FlashMessages::addMessage(WT_I18N::translate('Thumbnail file %1$s successfully renamed to %2$s.', '<span class="filename">'.$oldFilename.'</span>', '<span class="filename">'.$newFilename.'</span>'));
+					WT_FlashMessages::addMessage(WT_I18N::translate('The thumbnail file %1$s was renamed to %2$s.', '<span class="filename">'.$oldFilename.'</span>', '<span class="filename">'.$newFilename.'</span>'));
 				} else {
-					WT_FlashMessages::addMessage(WT_I18N::translate('Thumbnail file %1$s could not be renamed to %2$s.', '<span class="filename">'.$oldFilename.'</span>', '<span class="filename">'.$newFilename.'</span>'));
+					WT_FlashMessages::addMessage(WT_I18N::translate('The thumbnail file %1$s could not be renamed to %2$s.', '<span class="filename">'.$oldFilename.'</span>', '<span class="filename">'.$newFilename.'</span>'));
 				}
 				$messages = true;
 			}
 			if (!file_exists($newServerThumb)) {
-				WT_FlashMessages::addMessage(WT_I18N::translate('Thumbnail file %s does not exist.', '<span class="filename">'.$newFilename.'</span>'));
+				WT_FlashMessages::addMessage(WT_I18N::translate('The thumbnail file %s does not exist.', '<span class="filename">'.$newFilename.'</span>'));
 				$messages = true;
 			}
 		}
@@ -459,8 +459,8 @@ if ($gedfile == 'FILE') {
 		add_simple_tag(
 			"1 $gedfile",
 			'',
-			WT_I18N::translate('File name on server'),
-			WT_I18N::translate('Do not change to keep original file name.') . '<br>' .WT_I18N::translate('You may enter a URL, beginning with “http://”.')
+			WT_I18N::translate('Filename on server'),
+			WT_I18N::translate('Do not change to keep original filename.') . '<br>' .WT_I18N::translate('You may enter a URL, beginning with “http://”.')
 		);
 	}
 	$fileName = '';
@@ -480,7 +480,7 @@ if ($gedfile == 'FILE') {
 
 	echo '<tr>';
 	echo '<td class="descriptionbox wrap width25">';
-	echo WT_I18N::translate('File name on server'), help_link('upload_server_file');
+	echo WT_I18N::translate('Filename on server'), help_link('upload_server_file');
 	echo '</td>';
 	echo '<td class="optionbox wrap wrap">';
 	if (WT_USER_GEDCOM_ADMIN) {
@@ -488,7 +488,7 @@ if ($gedfile == 'FILE') {
 		if ($isExternal)
 			echo '>';
 		else
-			echo '><p class="sub">' . WT_I18N::translate('Do not change to keep original file name.') . '</p>';
+			echo '><p class="sub">' . WT_I18N::translate('Do not change to keep original filename.') . '</p>';
 	} else {
 		echo $fileName;
 		echo '<input name="filename" type="hidden" value="' . WT_Filter::escapeHtml($fileName) . '" size="40">';
@@ -524,7 +524,7 @@ if (!$isExternal) {
 	if (Auth::isAdmin()) {
 		echo '<br><span dir="ltr"><input type="text" name="folder" size="40" value="', $folder, '"></span>';
 		if ($gedfile == 'FILE') {
-			echo '<p class="sub">', WT_I18N::translate('This entry is ignored if you have entered a URL into the file name field.'), '</p>';
+			echo '<p class="sub">', WT_I18N::translate('This entry is ignored if you have entered a URL into the filename field.'), '</p>';
 		}
 	} else {
 		echo '<input name="folder" type="hidden" value="', WT_Filter::escapeHtml($folder), '">';

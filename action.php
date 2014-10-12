@@ -97,7 +97,7 @@ case 'copy-fact':
 				while (count($WT_SESSION->clipboard)>10) {
 					array_shift($WT_SESSION->clipboard);
 				}
-				WT_FlashMessages::addMessage(WT_I18N::translate('Record copied to clipboard'));
+				WT_FlashMessages::addMessage(WT_I18N::translate('The record was copied to the clipboard.'));
 				break 2;
 			}
 		}
@@ -157,7 +157,7 @@ case 'delete-source':
 				if (preg_match('/^0 @'.WT_REGEX_XREF.'@ FAM/', $new_gedcom) && preg_match_all('/\n1 (HUSB|WIFE|CHIL) @(' . WT_REGEX_XREF . ')@/', $new_gedcom, $match)==1) {
 					// Delete the family
 					$family = WT_GedcomRecord::getInstance($xref);
-					WT_FlashMessages::addMessage(/* I18N: %s is the name of a family group, e.g. “Husband name + Wife name” */ WT_I18N::translate('The family “%s” has been deleted, as it only has one member.', $family->getFullName()));
+					WT_FlashMessages::addMessage(/* I18N: %s is the name of a family group, e.g. “Husband name + Wife name” */ WT_I18N::translate('The family “%s” was deleted because it only has one member.', $family->getFullName()));
 					$family->deleteRecord();
 					// Delete any remaining link to this family
 					if ($match) {

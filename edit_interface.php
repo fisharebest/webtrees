@@ -1214,6 +1214,8 @@ case 'addnewsource':
 					<td class="descriptionbox wrap width25"><?php echo WT_I18N::translate('Select events'), help_link('edit_SOUR_EVEN'); ?></td>
 					<td class="optionbox wrap"><select name="EVEN[]" multiple="multiple" size="5">
 						<?php
+						global $WT_TREE;
+
 						$parts = explode(',', $WT_TREE->getPreference('INDI_FACTS_ADD'));
 						foreach ($parts as $key) {
 							?><option value="<?php echo $key; ?>"><?php echo WT_Gedcom_Tag::getLabel($key); ?></option>
@@ -1895,7 +1897,7 @@ case 'changefamily':
 	check_record_access($family);
 
 	$controller
-		->setPageTitle(WT_I18N::translate('Change family members'))
+		->setPageTitle(WT_I18N::translate('Change family members') . ' – ' . $family->getFullName())
 		->pageHeader();
 
 	$father = $family->getHusband();
@@ -1905,9 +1907,6 @@ case 'changefamily':
 	<div id="edit_interface-page">
 		<h4><?php echo $controller->getPageTitle(); ?></h4>
 		<div id="changefam">
-			<p>
-				<?php echo WT_I18N::translate('Use this page to change or remove family members.<br><br>For each member in the family, you can use the Change link to choose a different individual to fill that role in the family.  You can also use the Remove link to remove that individual from the family.<br><br>When you have finished changing the family members, click the save button to save the changes.'); ?>
-			</p>
 			<form name="changefamform" method="post" action="edit_interface.php">
 				<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>">
 				<input type="hidden" name="action" value="changefamily_update">
@@ -2067,7 +2066,7 @@ case 'changefamily_update':
 	check_record_access($family);
 
 	$controller
-		->setPageTitle(WT_I18N::translate('Change family members'))
+		->setPageTitle(WT_I18N::translate('Change family members') . ' – ' . $family->getFullName())
 		->pageHeader();
 
 	// Current family members
@@ -2284,7 +2283,7 @@ function keep_chan(WT_GedcomRecord $record=null) {
 
 // prints a form to add an individual or edit an individual’s name
 function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $family=null, WT_Fact $name_fact=null, $famtag='CHIL', $gender='U') {
-	global $WORD_WRAPPED_NOTES, $NPFX_accept, $SHOW_GEDCOM_RECORD, $bdm, $STANDARD_NAME_FACTS, $ADVANCED_NAME_FACTS;
+	global $WT_TREE, $WORD_WRAPPED_NOTES, $NPFX_accept, $SHOW_GEDCOM_RECORD, $bdm, $STANDARD_NAME_FACTS, $ADVANCED_NAME_FACTS;
 	global $QUICK_REQUIRED_FACTS, $QUICK_REQUIRED_FAMFACTS, $controller;
 
 	$SURNAME_TRADITION = $WT_TREE->getPreference('SURNAME_TRADITION');
@@ -2762,17 +2761,16 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 
 	// Generate a full name from the name components
 	function generate_name() {
-		var frm =document.forms[0];
-		var npfx=frm.NPFX.value;
-		var givn=frm.GIVN.value;
-		var spfx=frm.SPFX.value;
-		var surn=frm.SURN.value;
-		var nsfx=frm.NSFX.value;
-		if (SURNAME_TRADITION=="polish" && (gender=="F" || famtag=="WIFE")) {
-			surn=surn.replace(/ski$/, "ska");
-			surn=surn.replace(/cki$/, "cka");
-			surn=surn.replace(/dzki$/, "dzka");
-			surn=surn.replace(/żki$/, "żka");
+		var npfx = jQuery("#NPFX").val();
+		var givn = jQuery("#GIVN").val();
+		var spfx = jQuery("#SPFX").val();
+		var surn = jQuery("#SURN").val();
+		var nsfx = jQuery("#NSFX").val();
+		if (SURNAME_TRADITION == "polish" && (gender == "F" || famtag == "WIFE")) {
+			surn = surn.replace(/ski$/, "ska");
+			surn = surn.replace(/cki$/, "cka");
+			surn = surn.replace(/dzki$/, "dzka");
+			surn = surn.replace(/żki$/, "żka");
 		}
 		// Commas are used in the GIVN and SURN field to separate lists of surnames.
 		// For example, to differentiate the two Spanish surnames from an English
@@ -2793,47 +2791,48 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 	// Update the NAME and _MARNM fields from the name components
 	// and also display the value in read-only "gedcom" format.
 	function updatewholename() {
-		// don’t update the name if the user manually changed it
-		if (manualChange) return;
-		// Update NAME field from components and display it
-		var frm =document.forms[0];
-		var npfx=frm.NPFX.value;
-		var givn=frm.GIVN.value;
-		var spfx=frm.SPFX.value;
-		var surn=frm.SURN.value;
-		var nsfx=frm.NSFX.value;
-		document.getElementById("NAME").value=generate_name();
-		document.getElementById("NAME_display").innerText=frm.NAME.value;
+		// Don’t update the name if the user manually changed it
+		if (manualChange) {
+			return;
+		}
+		var npfx = jQuery("#NPFX").val();
+		var givn = jQuery("#GIVN").val();
+		var spfx = jQuery("#SPFX").val();
+		var surn = jQuery("#SURN").val();
+		var nsfx = jQuery("#NSFX").val();
+		var name = generate_name();
+		jQuery("#NAME").val(name);
+		jQuery("#NAME_display").text(name);
 		// Married names inherit some NSFX values, but not these
-		nsfx=nsfx.replace(/^(I|II|III|IV|V|VI|Junior|Jr\.?|Senior|Sr\.?)$/i, "");
+		nsfx = nsfx.replace(/^(I|II|III|IV|V|VI|Junior|Jr\.?|Senior|Sr\.?)$/i, "");
 		// Update _MARNM field from _MARNM_SURN field and display it
 		// Be careful of mixing latin/hebrew/etc. character sets.
-		var ip=document.getElementsByTagName("input");
-		var marnm_id="";
-		var romn="";
-		var heb="";
-		for (var i=0; i<ip.length; i++) {
-			var val=ip[i].value;
-			if (ip[i].id.indexOf("_HEB")==0)
-				heb=val;
-			if (ip[i].id.indexOf("ROMN")==0)
-				romn=val;
-			if (ip[i].id.indexOf("_MARNM")==0) {
-				if (ip[i].id.indexOf("_MARNM_SURN")==0) {
-					var msurn="";
-					if (val!="") {
-						var lc=lang_class(document.getElementById(ip[i].id).value);
-						if (lang_class(frm.NAME.value)==lc)
-							msurn=trim(npfx+" "+givn+" /"+val+"/ "+nsfx);
-						else if (lc=="hebrew")
-							msurn=heb.replace(/\/.*\//, "/"+val+"/");
-						else if (lang_class(romn)==lc)
-							msurn=romn.replace(/\/.*\//, "/"+val+"/");
+		var ip = document.getElementsByTagName("input");
+		var marnm_id = "";
+		var romn = "";
+		var heb = "";
+		for (var i = 0; i < ip.length; i++) {
+			var val = ip[i].value;
+			if (ip[i].id.indexOf("_HEB") === 0)
+				heb = val;
+			if (ip[i].id.indexOf("ROMN") === 0)
+				romn = val;
+			if (ip[i].id.indexOf("_MARNM") === 0) {
+				if (ip[i].id.indexOf("_MARNM_SURN") === 0) {
+					var msurn = "";
+					if (val != "") {
+						var lc = lang_class(document.getElementById(ip[i].id).value);
+						if (lang_class(name) === lc)
+							msurn = trim(npfx + " " + givn + " /" + val + "/ " + nsfx);
+						else if (lc == "hebrew")
+							msurn = heb.replace(/\/.*\//, "/" + val + "/");
+						else if (lang_class(romn) == lc)
+							msurn = romn.replace(/\/.*\//, "/" + val + "/");
 					}
-					document.getElementById(marnm_id).value=msurn;
-					document.getElementById(marnm_id+"_display").innerHTML=msurn;
+					document.getElementById(marnm_id).value = msurn;
+					document.getElementById(marnm_id+"_display").innerHTML = msurn;
 				} else {
-					marnm_id=ip[i].id;
+					marnm_id = ip[i].id;
 				}
 			}
 		}
@@ -2843,7 +2842,13 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 	// <input type="hidden"> <span style="display:inline">
 	// <input type="text">   <span style="display:hidden">
 	var oldName = "";
-	var manualChange = false;
+
+	// Calls to generate_name() trigger an update - hence need to
+	// set the manual change to true first.  We are probably
+	// listening to the wrong events on the input fields...
+	var manualChange = true;
+	manualChange = generate_name() !== jQuery("#NAME").val();
+
 	function convertHidden(eid) {
 		var input1 = jQuery("#" + eid);
 		var input2 = jQuery("#" + eid + "_display");

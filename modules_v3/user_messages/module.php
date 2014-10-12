@@ -63,7 +63,7 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 		$title=WT_I18N::plural('%s message', '%s messages',count($messages), WT_I18N::number(count($messages)));
 		$content='<form name="messageform" method="post" onsubmit="return confirm(\''.WT_I18N::translate('Are you sure you want to delete this message?  It cannot be retrieved later.').'\');">';
 		if (count(User::all()) > 1) {
-			$content.='<br>'.WT_I18N::translate('Send message')." <select name=\"touser\">";
+			$content.='<br>'.WT_I18N::translate('Send a message')." <select name=\"touser\">";
 			$content.='<option value="">' . WT_I18N::translate('&lt;select&gt;') . '</option>';
 			foreach (User::all() as $user) {
 				if ($user->getUserId() != WT_USER_ID && $user->getPreference('verified_by_admin') && $user->getPreference('contactmethod') != 'none') {
