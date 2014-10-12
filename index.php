@@ -22,14 +22,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-// webtrees requires a modern version of PHP
-// Note - maintaining this check requires that this file can be parsed by PHP5.2
 use WT\Auth;
-
-if (version_compare(PHP_VERSION, '5.3.2', '<')) {
-	// RFC2616 requires an absolute URL, but we don’t have it here.
-	header('Location: site-php-version.php');
-}
 
 define('WT_SCRIPT_NAME', 'index.php');
 require './includes/session.php';
