@@ -7374,7 +7374,7 @@ msgstr "Importuoti šeimos medį"
 
 #: admin_trees_renumber.php:260 admin_trees_merge.php:73
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
-msgstr ""
+msgstr "Šeimos medyje kiekvienas įrašas turi vidaus koda (vadinama „XREF“) pavyzdžiui „F123“ arba „R14“."
 
 #: help_text.php:348
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet.  This might be of use with Japanese names, where three different alphabets may occur."
@@ -13553,9 +13553,9 @@ msgstr "Laikotarpis sekundėmis per kurį webtrees sesija pasilieka atidaryta be
 #, php-format
 msgid "The two family trees have %1$s record which use the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
-msgstr[0] "Šie du šeimos medžiai turi %1$s įrašą su tuo pačiu “XREF” numeriu."
-msgstr[1] "Šie du šeimos medžiai turi %1$s įrašus su tuo pačiu “XREF” numeriu."
-msgstr[2] "Šie du šeimos medžiai turi %1$s įrašų su tuo pačiu “XREF” numeriu."
+msgstr[0] "Šie du šeimos medžiai turi %1$s įrašą su tuo pačiu „XREF“ numeriu."
+msgstr[1] "Šie du šeimos medžiai turi %1$s įrašus su tuo pačiu „XREF“ numeriu."
+msgstr[2] "Šie du šeimos medžiai turi %1$s įrašų su tuo pačiu „XREF“ numeriu."
 
 #: admin_site_upgrade.php:490
 msgid "The upgrade is complete."
@@ -13755,9 +13755,9 @@ msgstr "Ši šeima liko bevaikė"
 #, php-format
 msgid "This family tree has %s record which uses the same “XREF” as another family tree."
 msgid_plural "This family tree has %s records which use the same “XREF” as another family tree."
-msgstr[0] "Šis šeimos medžis turi %1$s įrašą su tais pačiais “XREF” numeriais kitame šeimos medyje."
-msgstr[1] "Šis šeimos medžis turi %1$s įrašus su tais pačiais “XREF” numeriais kitame šeimos medyje."
-msgstr[2] "Šis šeimos medžis turi %1$s įrašų su tais pačiais “XREF” numeriais kitame šeimos medyje."
+msgstr[0] "Šis šeimos medžis turi %1$s įrašą su tais pačiais „XREF“ numeriais kitame šeimos medyje."
+msgstr[1] "Šis šeimos medžis turi %1$s įrašus su tais pačiais „XREF“ numeriais kitame šeimos medyje."
+msgstr[2] "Šis šeimos medžis turi %1$s įrašų su tais pačiais „XREF“ numeriais kitame šeimos medyje."
 
 #: modules_v3/random_media/module.php:189
 msgid "This family tree has no images to display."
