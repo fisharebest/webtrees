@@ -176,13 +176,13 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 								// Where it is not a substring of the real surname, show it after the real surname.
 								$surname = WT_Filter::escapeHtml($primary_name['surname']);
 								if (strpos($primary_name['surname'], str_replace(',', ' ', $nmatch[$i][2]))!==false) {
-									echo $surname;
+									echo '<span dir="auto">' . $surname . '</span>';
 								} else {
-									echo WT_I18N::translate('%1$s (%2$s)', $surname, $name);
+									echo WT_I18N::translate('%1$s (%2$s)', '<span dir="auto">' . $surname . '</span>', '<span dir="auto">' . $name . '</span>');
 								}
 								break;
 							default:
-								echo $name;
+								echo '<span dir="auto">' . $name . '</span>';
 								break;
 							}
 						}
