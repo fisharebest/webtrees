@@ -7374,9 +7374,6 @@ msgid "Import family tree"
 msgstr "Importuj drzewo genealogiczne"
 
 #: admin_trees_renumber.php:260
-msgid "In a family tree, each record has an internal identification number (called an “XREF”), such as “F123” or “R14”."
-msgstr "Każdy wpis w drzewie genealogicznym ma wewnętrzny numer identyfikacyjny (nazywany „XREF”), na przykład „F123” lub „R14”."
-
 #: admin_trees_merge.php:73
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
 msgstr "Każdy wpis w drzewie genealogicznym ma wewnętrzny numer powiązania (nazywany „XREF”), na przykład „F123” lub „R14”."

@@ -2923,22 +2923,22 @@ msgstr "Frère"
 #: library/WT/Date/French.php:91
 msgctxt "GENITIVE"
 msgid "Brumaire"
-msgstr "Brumaire"
+msgstr "brumaire"
 
 #: library/WT/Date/French.php:157
 msgctxt "INSTRUMENTAL"
 msgid "Brumaire"
-msgstr "Brumaire"
+msgstr "brumaire"
 
 #: library/WT/Date/French.php:124
 msgctxt "LOCATIVE"
 msgid "Brumaire"
-msgstr "Brumaire"
+msgstr "brumaire"
 
 #: library/WT/Date/French.php:58
 msgctxt "NOMINATIVE"
 msgid "Brumaire"
-msgstr "Brumaire"
+msgstr "brumaire"
 
 #: library/WT/Stats.php:4802
 msgid "Brunei Darussalam"
@@ -3231,7 +3231,7 @@ msgstr "Cause du décès"
 
 #: admin_trees_renumber.php:278
 msgid "Caution!  This may take a long time.  Be patient."
-msgstr ""
+msgstr "Attention, ça pourrait prendre un bon moment ! Patience."
 
 #: admin_site_upgrade.php:204
 msgid "Caution: old modules may not work, or they may prevent webtrees from working."
@@ -3885,7 +3885,7 @@ msgstr "Copier"
 #: admin_trees_merge.php:182
 #, php-format
 msgid "Copy all the records from %1$s into %2$s."
-msgstr ""
+msgstr "Copie tous les enregistrements de %1$s vers %2$s."
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:422
@@ -5177,7 +5177,7 @@ msgstr "République dominicaine"
 #: modules_v3/clippings/module.php:555 modules_v3/clippings/module.php:598
 #: modules_v3/googlemap/module.php:4422
 msgid "Download"
-msgstr "Télécharger (<i>Download</i>)"
+msgstr "Télécharger (Download)"
 
 #. I18N: The system is about to [...]; %s is a URL.
 #: admin_site_upgrade.php:302
@@ -5219,7 +5219,7 @@ msgstr "Utilisateur déjà existant.  Un utilisateur existe déjà sous ce nom. 
 
 #: help_text.php:779
 msgid "E-mail address to be used in the “From:” field of e-mails that webtrees creates automatically.<br><br>webtrees can automatically create e-mails to notify administrators of changes that need to be reviewed.  webtrees also sends notification e-mails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created e-mails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the e-mail is required.  To guard against spam or other e-mail abuse, some e-mail systems require each message’s “From:” field to reflect a valid e-mail account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
-msgstr "Adresse courriel utilisés dans le champ &laquo;De:&raquo; pour un courriel que webtrees crée automatiquement.<br><br>webtrees peut créer automatiquement des courriels pour informer les administrateurs des changements survenus. webtrees envoie également des notifications par courriel aux utilisateurs qui ont demandé un compte.<br><br>Habituellement, le champ &laquo;From:&raquo; des créations automatiquement des courriels est quelque chose comme<i>De: webtrees-noreply@yoursite</i> montre qu’il n’y a pas de réponse nécessaire à faire pour ce courriel. Pour se prémunir contre le spam ou autres abus de courriel, certains systèmes de courrier électronique exige que tous les champs d’adresse de message doit être celui d’un compte courriel valide et les messages venant de <i>webtrees-noreply</i> ne seront pas acceptés."
+msgstr "Adresse courriel à utiliser dans le champ &laquo;De:&raquo; pour un courriel que webtrees crée automatiquement.<br><br>webtrees peut créer automatiquement des courriels pour informer les administrateurs des changements survenus. webtrees envoie également des notifications par courriel aux utilisateurs qui ont demandé un compte.<br><br>Habituellement, le champ &laquo;De:&raquo; des créations automatiquement des courriels est quelque chose comme<i>De: webtrees-noreply@yoursite</i> montre qu’il n’y a pas de réponse nécessaire à faire pour ce courriel. Pour se prémunir contre le spam ou autres abus de courriel, certains systèmes de courrier électronique exige que tous les champs d’adresse de message doit être celui d’un compte courriel valide et les messages venant de <i>webtrees-noreply</i> ne seront pas acceptés."
 
 #: help_text.php:1175
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided.  The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>.  The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source.  For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
@@ -6309,22 +6309,22 @@ msgstr "Flandress"
 #: library/WT/Date/French.php:103
 msgctxt "GENITIVE"
 msgid "Floréal"
-msgstr "Floréal"
+msgstr "floréal"
 
 #: library/WT/Date/French.php:169
 msgctxt "INSTRUMENTAL"
 msgid "Floréal"
-msgstr "Floréal"
+msgstr "floréal"
 
 #: library/WT/Date/French.php:136
 msgctxt "LOCATIVE"
 msgid "Floréal"
-msgstr "Floréal"
+msgstr "floréal"
 
 #: library/WT/Date/French.php:70
 msgctxt "NOMINATIVE"
 msgid "Floréal"
-msgstr "Floréal"
+msgstr "floréal"
 
 #: medialist.php:79
 msgid "Folder"
@@ -6486,22 +6486,22 @@ msgstr "Ami"
 #: library/WT/Date/French.php:93
 msgctxt "GENITIVE"
 msgid "Frimaire"
-msgstr "Frimaire"
+msgstr "frimaire"
 
 #: library/WT/Date/French.php:159
 msgctxt "INSTRUMENTAL"
 msgid "Frimaire"
-msgstr "Frimaire"
+msgstr "frimaire"
 
 #: library/WT/Date/French.php:126
 msgctxt "LOCATIVE"
 msgid "Frimaire"
-msgstr "Frimaire"
+msgstr "frimaire"
 
 #: library/WT/Date/French.php:60
 msgctxt "NOMINATIVE"
 msgid "Frimaire"
-msgstr "Frimaire"
+msgstr "frimaire"
 
 #. I18N: %s are both user-input date fields
 #: admin_site_change.php:264 admin_site_logs.php:225
@@ -6512,22 +6512,22 @@ msgstr "de %s à %s"
 #: library/WT/Date/French.php:111
 msgctxt "GENITIVE"
 msgid "Fructidor"
-msgstr "Fructidor"
+msgstr "fructidor"
 
 #: library/WT/Date/French.php:177
 msgctxt "INSTRUMENTAL"
 msgid "Fructidor"
-msgstr "Fructidor"
+msgstr "fructidor"
 
 #: library/WT/Date/French.php:144
 msgctxt "LOCATIVE"
 msgid "Fructidor"
-msgstr "Fructidor"
+msgstr "fructidor"
 
 #: library/WT/Date/French.php:78
 msgctxt "NOMINATIVE"
 msgid "Fructidor"
-msgstr "Fructidor"
+msgstr "fructidor"
 
 #: library/WT/Gedcom/Code/Temp.php:94
 msgid "Fukuoka, Japan"
@@ -6658,22 +6658,22 @@ msgstr "Allemagne"
 #: library/WT/Date/French.php:101
 msgctxt "GENITIVE"
 msgid "Germinal"
-msgstr "Germinal"
+msgstr "germinal"
 
 #: library/WT/Date/French.php:167
 msgctxt "INSTRUMENTAL"
 msgid "Germinal"
-msgstr "Germinal"
+msgstr "germinal"
 
 #: library/WT/Date/French.php:134
 msgctxt "LOCATIVE"
 msgid "Germinal"
-msgstr "Germinal"
+msgstr "germinal"
 
 #: library/WT/Date/French.php:68
 msgctxt "NOMINATIVE"
 msgid "Germinal"
-msgstr "Germinal"
+msgstr "germinal"
 
 #: library/WT/Stats.php:4857
 msgid "Ghana"
@@ -7348,13 +7348,9 @@ msgstr "Importer tous les lieux d’un arbre généalogique"
 msgid "Import family tree"
 msgstr "Importer l’arbre généalogique"
 
-#: admin_trees_renumber.php:260
-msgid "In a family tree, each record has an internal identification number (called an “XREF”), such as “F123” or “R14”."
-msgstr ""
-
 #: admin_trees_merge.php:73
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
-msgstr ""
+msgstr "Dans un arbre généalogique, chaque enregistrement a un identifiant (un “XREF”) du genre “F123” ou “R14”."
 
 #: help_text.php:348
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet.  This might be of use with Japanese names, where three different alphabets may occur."
@@ -8892,7 +8888,7 @@ msgstr "Mercure"
 
 #: admin_trees_merge.php:30 themes/_administration/header.php:122
 msgid "Merge family trees"
-msgstr ""
+msgstr "Fusionne des arbres généalogiques."
 
 #: admin_site_merge.php:266
 msgid "Merge from ID:"
@@ -8939,22 +8935,22 @@ msgstr "Messages"
 #: library/WT/Date/French.php:107
 msgctxt "GENITIVE"
 msgid "Messidor"
-msgstr "Messidor"
+msgstr "messidor"
 
 #: library/WT/Date/French.php:173
 msgctxt "INSTRUMENTAL"
 msgid "Messidor"
-msgstr "Messidor"
+msgstr "messidor"
 
 #: library/WT/Date/French.php:140
 msgctxt "LOCATIVE"
 msgid "Messidor"
-msgstr "Messidor"
+msgstr "messidor"
 
 #: library/WT/Date/French.php:74
 msgctxt "NOMINATIVE"
 msgid "Messidor"
-msgstr "Messidor"
+msgstr "messidor"
 
 #: library/WT/Stats.php:4915
 msgid "Mexico"
@@ -9552,22 +9548,22 @@ msgstr "Nioué"
 #: library/WT/Date/French.php:95
 msgctxt "GENITIVE"
 msgid "Nivôse"
-msgstr "Nivôse"
+msgstr "nivôse"
 
 #: library/WT/Date/French.php:161
 msgctxt "INSTRUMENTAL"
 msgid "Nivôse"
-msgstr "Nivôse"
+msgstr "nivôse"
 
 #: library/WT/Date/French.php:128
 msgctxt "LOCATIVE"
 msgid "Nivôse"
-msgstr "Nivôse"
+msgstr "nivôse"
 
 #: library/WT/Date/French.php:62
 msgctxt "NOMINATIVE"
 msgid "Nivôse"
-msgstr "Nivôse"
+msgstr "nivôse"
 
 #: admin_users.php:473 includes/functions/functions_print_facts.php:285
 msgid "No"
@@ -10472,7 +10468,7 @@ msgstr "Photo"
 
 #: admin_pgv_to_wt.php:147
 msgid "PhpGedView might be installed in one of these folders:"
-msgstr ""
+msgstr "PhpGedView doit être installé dans un de ces répertoires :"
 
 #: admin_pgv_to_wt.php:65
 msgid "PhpGedView must use the same database as webtrees."
@@ -10722,22 +10718,22 @@ msgstr "Veuillez indiquer votre adresse courriel afin que nous puissions vous co
 #: library/WT/Date/French.php:97
 msgctxt "GENITIVE"
 msgid "Pluviôse"
-msgstr "Pluviôse"
+msgstr "pluviôse"
 
 #: library/WT/Date/French.php:163
 msgctxt "INSTRUMENTAL"
 msgid "Pluviôse"
-msgstr "Pluviôse"
+msgstr "pluviôse"
 
 #: library/WT/Date/French.php:130
 msgctxt "LOCATIVE"
 msgid "Pluviôse"
-msgstr "Pluviôse"
+msgstr "pluviôse"
 
 #: library/WT/Date/French.php:64
 msgctxt "NOMINATIVE"
 msgid "Pluviôse"
-msgstr "Pluviôse"
+msgstr "pluviôse"
 
 #: library/WT/Stats.php:4954
 msgid "Poland"
@@ -10787,22 +10783,22 @@ msgstr "Code postal"
 #: library/WT/Date/French.php:105
 msgctxt "GENITIVE"
 msgid "Prairial"
-msgstr "Prairial"
+msgstr "prairial"
 
 #: library/WT/Date/French.php:171
 msgctxt "INSTRUMENTAL"
 msgid "Prairial"
-msgstr "Prairial"
+msgstr "prairial"
 
 #: library/WT/Date/French.php:138
 msgctxt "LOCATIVE"
 msgid "Prairial"
-msgstr "Prairial"
+msgstr "prairial"
 
 #: library/WT/Date/French.php:72
 msgctxt "NOMINATIVE"
 msgid "Prairial"
-msgstr "Prairial"
+msgstr "prairial"
 
 #: modules_v3/googlemap/module.php:3790
 msgid "Precision"
@@ -11333,7 +11329,7 @@ msgstr "Reno, Nevada"
 #: admin_trees_merge.php:87 admin_trees_merge.php:92
 #: admin_trees_renumber.php:29
 msgid "Renumber family tree"
-msgstr ""
+msgstr "Renumérote l’arbre généalogique"
 
 #: admin_trees_places.php:101 search.php:119
 msgid "Replace with"
@@ -12535,11 +12531,10 @@ msgstr "Affichage de %1$s à %2$s parmi %3$s"
 
 #: library/WT/Controller/Fanchart.php:349
 #: library/WT/Controller/Hourglass.php:398 pedigree.php:228
-#, fuzzy
 msgid "Sibling"
 msgid_plural "Siblings"
 msgstr[0] "Frère/Sœur"
-msgstr[1] "Frère/Sœur"
+msgstr[1] "Frères/Sœurs"
 
 #: library/WT/Controller/Hourglass.php:397 pedigree.php:225
 msgid "Siblings"
@@ -12556,7 +12551,7 @@ msgstr "Barre latérale"
 
 #: admin_module_sidebar.php:30
 msgid "Sidebars"
-msgstr ""
+msgstr "Barres latérales"
 
 #: library/WT/Stats.php:4979
 msgid "Sierra Leone"
@@ -13266,7 +13261,7 @@ msgstr "Les détails de cette personne sont privés."
 
 #: admin_trees_merge.php:176
 msgid "The family trees were merged successfully."
-msgstr ""
+msgstr "Les arbres généalogiques ont été fusionnés avec succès."
 
 #. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
 #: action.php:160
@@ -13468,7 +13463,7 @@ msgstr "Le préfixe est optionnel, mais recommandé. En donnant à vos tables un
 #: admin_trees_renumber.php:237
 #, php-format
 msgid "The record %1$s was renamed to %2$s."
-msgstr ""
+msgstr "L’enregistrement %1$s a été renommé %2$s."
 
 #: action.php:100
 msgid "The record was copied to the clipboard."
@@ -13484,7 +13479,7 @@ msgstr "La configuration du serveur est correcte."
 
 #: admin_trees_renumber.php:252
 msgid "The server’s time limit was reached."
-msgstr ""
+msgstr "La durée limite du serveur a été atteinte."
 
 #: site-offline.php:78
 msgid "The site is down for maintenance.  You should <a href=\"index.php\">try again</a> in a few minutes."
@@ -13529,8 +13524,8 @@ msgstr "La durée en secondes durant laquelle la session webtrees reste active a
 #, php-format
 msgid "The two family trees have %1$s record which use the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Les deux arbres généalogiques ont %1$s enregistrement qui utilise le même code (“XREF”)."
+msgstr[1] "Les deux arbres généalogiques ont %1$s enregistrements qui utilisent le même identifiant (“XREF”)."
 
 #: admin_site_upgrade.php:490
 msgid "The upgrade is complete."
@@ -13633,22 +13628,22 @@ msgstr "Erreur lors de l’envoi de votre fichier GEDCOM sur le serveur."
 #: library/WT/Date/French.php:109
 msgctxt "GENITIVE"
 msgid "Thermidor"
-msgstr "Thermidor"
+msgstr "thermidor"
 
 #: library/WT/Date/French.php:175
 msgctxt "INSTRUMENTAL"
 msgid "Thermidor"
-msgstr "Thermidor"
+msgstr "thermidor"
 
 #: library/WT/Date/French.php:142
 msgctxt "LOCATIVE"
 msgid "Thermidor"
-msgstr "Thermidor"
+msgstr "thermidor"
 
 #: library/WT/Date/French.php:76
 msgctxt "NOMINATIVE"
 msgid "Thermidor"
-msgstr "Thermidor"
+msgstr "thermidor"
 
 #: admin.php:104
 msgid "These pages provide access to all the configuration settings and management tools for this webtrees site."
@@ -13730,8 +13725,8 @@ msgstr "Famille sans enfant"
 #, php-format
 msgid "This family tree has %s record which uses the same “XREF” as another family tree."
 msgid_plural "This family tree has %s records which use the same “XREF” as another family tree."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Cet arbre généalogique a %s enregistrement qui utilise le même identifiant (“XREF”) qu’un autre arbre."
+msgstr[1] "Cet arbre généalogique a %s enregistrements qui utilisent le même identifiant (“XREF”) qu’un autre arbre."
 
 #: modules_v3/random_media/module.php:189
 msgid "This family tree has no images to display."
@@ -15061,22 +15056,22 @@ msgstr "Saint-Siège"
 #: library/WT/Date/French.php:89
 msgctxt "GENITIVE"
 msgid "Vendémiaire"
-msgstr "Vendémiaire"
+msgstr "vendémiaire"
 
 #: library/WT/Date/French.php:155
 msgctxt "INSTRUMENTAL"
 msgid "Vendémiaire"
-msgstr "Vendémiaire"
+msgstr "vendémiaire"
 
 #: library/WT/Date/French.php:122
 msgctxt "LOCATIVE"
 msgid "Vendémiaire"
-msgstr "Vendémiaire"
+msgstr "vendémiaire"
 
 #: library/WT/Date/French.php:56
 msgctxt "NOMINATIVE"
 msgid "Vendémiaire"
-msgstr "Vendémiaire"
+msgstr "vendémiaire"
 
 #: library/WT/Stats.php:5018
 msgid "Venezuela"
@@ -15085,22 +15080,22 @@ msgstr "Venezuela"
 #: library/WT/Date/French.php:99
 msgctxt "GENITIVE"
 msgid "Ventôse"
-msgstr "Ventôse"
+msgstr "ventôse"
 
 #: library/WT/Date/French.php:165
 msgctxt "INSTRUMENTAL"
 msgid "Ventôse"
-msgstr "Ventôse"
+msgstr "ventôse"
 
 #: library/WT/Date/French.php:132
 msgctxt "LOCATIVE"
 msgid "Ventôse"
-msgstr "Ventôse"
+msgstr "ventôse"
 
 #: library/WT/Date/French.php:66
 msgctxt "NOMINATIVE"
 msgid "Ventôse"
-msgstr "Ventôse"
+msgstr "ventôse"
 
 #: library/WT/Gedcom/Code/Temp.php:181
 msgid "Veracruz, Mexico"
@@ -15602,12 +15597,12 @@ msgid "You can re-enable these themes after the upgrade."
 msgstr "Vous pouvez réactiver ces thèmes après la mise à jour."
 
 #: admin_trees_renumber.php:261
-msgid "You can renumber the records in a family tree, so that these internal identification numbers are not duplicated in any other family tree."
-msgstr ""
+msgid "You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree."
+msgstr "Vous pouvez renuméroter les enregistrements d’un arbre généalogique, de façon à ce que leurs identifiants ne doublonnent pas avec ceux d’autres arbres."
 
 #: admin_trees_renumber.php:274
 msgid "You can renumber this family tree."
-msgstr ""
+msgstr "Vous pouvez renuméroter cet arbre généalogique."
 
 #: help_text.php:643 help_text.php:682
 msgid "You can request a higher or lower limit, although the server may ignore this request."
@@ -15704,7 +15699,7 @@ msgstr "Vous devez fournir un titre de la source"
 
 #: admin_trees_merge.php:83
 msgid "You must renumber the records in one of the trees before you can merge them."
-msgstr ""
+msgstr "Vous devez renuméroter les enregistrements d’un des arbres généalogiques avant de les fusionner."
 
 #: modules_v3/charts/module.php:139
 msgid "You must select an individual and chart type in the block configuration settings."
@@ -16823,7 +16818,7 @@ msgstr "sexe"
 #. I18N: button label
 #: admin_trees_renumber.php:275
 msgid "go"
-msgstr ""
+msgstr "aller"
 
 #. I18N: button label
 #: edit_interface.php:2740
