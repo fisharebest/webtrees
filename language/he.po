@@ -8073,13 +8073,6 @@ msgid "Import family tree"
 msgstr "ייבא עץ משפחה"
 
 #: admin_trees_renumber.php:260
-msgid ""
-"In a family tree, each record has an internal identification number (called "
-"an “XREF”), such as “F123” or “R14”."
-msgstr ""
-"בעץ משפחה, לכל רשומה יש מספר זיהוי פנימי (הנקרא ”XREF”), כגון ”F123” או "
-"”R14”."
-
 #: admin_trees_merge.php:73
 msgid ""
 "In a family tree, each record has an internal reference number (called an "

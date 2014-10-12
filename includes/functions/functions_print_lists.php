@@ -2000,7 +2000,7 @@ function print_events_list($startjd, $endjd, $events='BIRT MARR DEAT', $only_liv
 			$html .= ' (' . WT_I18N::translate('%s year anniversary', $fact->anniv) . ')';
 		}
 		if (!$fact->getPlace()->isEmpty()) {
-			$html .= ' — <a href="' . $fact->getPlace()->getURL() . '">' . $fact->getPlace()->getFullName() . '</a>';
+			$html .= ' â€” <a href="' . $fact->getPlace()->getURL() . '">' . $fact->getPlace()->getFullName() . '</a>';
 		}
 		$html .= '</div>';
 	}

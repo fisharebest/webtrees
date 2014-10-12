@@ -5598,15 +5598,15 @@ msgstr ""
 "skapar automatiskt.<br><br>webtrees kan automatiskt skapa e-post för att "
 "meddela administratörer av förändringar som behöver granskas.  webtrees "
 "skickar också e-postmeddelanden till användare som har ansökt om ett konto."
-"<br><br>Vanligtvis är ʺfrån:ʺ fältet i dessa automatiskt skapade e-"
+"<br><br>Vanligtvis är "från:" fältet i dessa automatiskt skapade e-"
 "postmeddelanden t ex <i>från: webtrees-noreply@yoursite</i> för att visa att "
 "inget svar på e-post krävs.  För att skydda mot skräppost eller andra e-"
-"missbruk, kräver vissa system en giltig adress i ʺfrån:ʺ fältet och kommer "
+"missbruk, kräver vissa system en giltig adress i "från:" fältet och kommer "
 "inte att acceptera meddelanden som är från kontot <i>webtrees-noreply</i>."
-"Vanligtvis är ʺfrån:ʺ fältet i dessa automatiskt skapade e-postmeddelanden t "
+"Vanligtvis är "från:" fältet i dessa automatiskt skapade e-postmeddelanden t "
 "ex <i>från: webtrees-noreply@yoursite</i> för att visa att inget svar på e-"
 "post krävs.  För att skydda mot skräppost eller andra e-missbruk, kräver "
-"vissa system en giltig adress i ʺfrån:ʺ fältet och kommer inte att acceptera "
+"vissa system en giltig adress i "från:" fältet och kommer inte att acceptera "
 "meddelanden som är från kontot <i>webtrees-noreply</i>."
 
 #: help_text.php:1175
@@ -8187,13 +8187,6 @@ msgid "Import family tree"
 msgstr "Importera släktträd"
 
 #: admin_trees_renumber.php:260
-msgid ""
-"In a family tree, each record has an internal identification number (called "
-"an “XREF”), such as “F123” or “R14”."
-msgstr ""
-"I ett släktträd har varje post ett internt identifikationsnummer (kallas "
-"”XREF”), så som ”F123” eller ”R14”."
-
 #: admin_trees_merge.php:73
 msgid ""
 "In a family tree, each record has an internal reference number (called an "
