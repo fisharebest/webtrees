@@ -715,7 +715,7 @@ msgstr "Liste des utilisateurs et des visiteurs qui sont actuellement en ligne."
 
 #: help_text.php:309
 msgid "A media object is a record in the family tree which contains information about a media file.  This information may include a title, a copyright notice, a transcript, privacy restrictions, etc.  The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
-msgstr "Un objet multimédia est un enregistrement dans l’arbre généalogique qui contient des informations sur un fichier multimédia. Ces informations peuvent inclure un titre, un copyright, une transcription, des restrictions de confidentialité, etc. Le fichier multimédia, comme la photo ou la vidéo, peuvent être stockées localement (sur ce serveur) ou à distance (sur un autre serveur Web)."
+msgstr "Un objet média est un enregistrement dans l’arbre généalogique qui contient des informations sur un fichier média. Ces informations peuvent inclure un titre, un copyright, une transcription, des restrictions de confidentialité, etc. Le fichier média, comme la photo ou la vidéo, peuvent être stockées localement (sur ce serveur) ou à distance (sur un autre serveur Web)."
 
 #. I18N: %s is a username
 #: login.php:256
@@ -885,7 +885,7 @@ msgstr "Onglet montrant les faits et les événements d’un individu."
 #. I18N: Description of the “Media” module
 #: modules_v3/media/module.php:34
 msgid "A tab showing the media objects linked to an individual."
-msgstr "Onglet affichant les objets multimédia reliés à un individu."
+msgstr "Onglet affichant les objets média reliés à un individu."
 
 #. I18N: Description of the “Notes” module
 #: modules_v3/notes/module.php:34
@@ -1161,7 +1161,7 @@ msgstr "Ajouter un élément au journal"
 #: modules_v3/lightbox/module.php:67 modules_v3/media/module.php:79
 #: repo.php:137 source.php:154
 msgid "Add a new media object"
-msgstr "Ajouter un nouvel objet multimédia"
+msgstr "Ajouter un nouvel objet média"
 
 #: edit_interface.php:643 family.php:110 modules_v3/relatives/module.php:289
 msgid "Add a new mother"
@@ -3655,7 +3655,7 @@ msgstr "Cliquez %s pour choisir la personne comme chef de famille (de-cujus)."
 
 #: edit_interface.php:1705
 msgid "Click a row, then drag-and-drop to re-order media "
-msgstr "Cliquez sur une ligne, puis glissez et déposez les fichiers multimédia afin de les réorganiser. "
+msgstr "Cliquez sur une ligne, puis glissez et déposez les fichiers média afin de les réorganiser. "
 
 #: admin_trees_manage.php:286
 msgid "Click here for PhpGedView to webtrees transfer wizard"
@@ -4155,7 +4155,7 @@ msgstr "Personnalisé"
 
 #: calendar.php:269 includes/functions/functions_print.php:956
 msgid "Custom event"
-msgstr "Évènement personnalisé"
+msgstr "Événement personnalisé"
 
 #: includes/functions/functions_print.php:955
 msgid "Custom fact"
@@ -5151,7 +5151,7 @@ msgstr "Ne pas sceller: précédent scellement annulé"
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: library/WT/Gedcom/Code/Stat.php:65
 msgid "Do not seal: unauthorized"
-msgstr "Ne pas sceller: interdit"
+msgstr "Ne pas sceller : interdit"
 
 #: addmedia.php:706 admin_trees_config.php:1303 edit_interface.php:2275
 #: help_text.php:1283
@@ -5305,7 +5305,7 @@ msgstr "Modifier le média"
 
 #: addmedia.php:234 addmedia.php:392 library/WT/Controller/Media.php:53
 msgid "Edit media object"
-msgstr "Modifier l’objet multimédia"
+msgstr "Modifier l’objet média"
 
 #: edit_interface.php:1627 includes/functions/functions_edit.php:597
 #: library/WT/Controller/Individual.php:154
@@ -5648,7 +5648,7 @@ msgstr "Évènements par pays"
 
 #: modules_v3/personal_facts/module.php:124
 msgid "Events of close relatives"
-msgstr "Évènements de la famille proche"
+msgstr "Événements de la famille proche"
 
 #: help_text.php:1363
 msgid "Every individual in the database has a unique ID number on this site.  If you know the ID number for your own record, please enter it here.  If you don’t know your ID number or could not find it because of privacy settings, please provide enough information in the comments field to help the site administrator identify who you are on this site so that he can set the ID for you."
@@ -6239,7 +6239,7 @@ msgstr "Rechercher une famille"
 
 #: find.php:79 includes/functions/functions_print.php:1039
 msgid "Find a media object"
-msgstr "Rechercher un objet multimédia"
+msgstr "Rechercher un objet média"
 
 #: find.php:82 includes/functions/functions_print.php:1005
 msgid "Find a place"
@@ -6360,7 +6360,7 @@ msgstr "Pour des ordinations SDJ (Eglise de Jésus-Christ des saints des dernier
 #: help_text.php:551
 #, php-format
 msgid "For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then the GEDCOM media path would be %3$s."
-msgstr "Par exemple, si le fichier GECOM contient %1$s et que webtrees attend %2$s dans le dossier média, alors le chemin média du GEDCOM sera %3$s."
+msgstr "Par exemple, si le fichier GEDCOM contient %1$s et que webtrees attend %2$s dans le dossier média, alors le chemin média du GEDCOM sera %3$s."
 
 #: help_text.php:722
 msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
@@ -8131,7 +8131,7 @@ msgstr "Relier cette personne comme enfant d’une famille existante"
 #: modules_v3/lightbox/module.php:71 modules_v3/lightbox/module.php:72
 #: modules_v3/media/module.php:84 repo.php:140 source.php:157
 msgid "Link to an existing media object"
-msgstr "Relier à un objet multimédia existant"
+msgstr "Relier à un objet média existant"
 
 #. I18N: gedcom tag _DBID
 #: library/WT/Gedcom/Tag.php:627
@@ -8750,11 +8750,11 @@ msgstr "Média"
 
 #: admin_trees_config.php:375 help_text.php:666
 msgid "Media ID prefix"
-msgstr "Préfixe Multimédia"
+msgstr "Préfixe média"
 
 #: find.php:214
 msgid "Media contains:"
-msgstr "Objet multimédia :"
+msgstr "Objet média :"
 
 #: admin_media.php:661 admin_media_upload.php:182
 msgid "Media file"
@@ -8762,7 +8762,7 @@ msgstr "Fichier média"
 
 #: addmedia.php:447 admin_media_upload.php:184
 msgid "Media file to upload"
-msgstr "Objet multimédia"
+msgstr "Objet média"
 
 #: admin_media.php:600 admin_trees_config.php:661
 msgid "Media files"
@@ -8779,7 +8779,7 @@ msgstr "Dossiers Media"
 #. I18N: gedcom tag OBJE
 #: admin_media.php:663 library/WT/Gedcom/Tag.php:262
 msgid "Media object"
-msgstr "Objet multimédia"
+msgstr "Objet média"
 
 #: admin.php:211 admin.php:265
 #: includes/functions/functions_print_lists.php:1054
@@ -8790,15 +8790,15 @@ msgstr "Objet multimédia"
 #: note.php:132 source.php:103 statistics.php:346 statistics.php:373
 #: statistics.php:376
 msgid "Media objects"
-msgstr "Objets multimédia"
+msgstr "Objets média"
 
 #: medialist.php:169
 msgid "Media objects found"
-msgstr "Objets multimédia trouvés"
+msgstr "Objets média trouvés"
 
 #: medialist.php:112
 msgid "Media objects per page"
-msgstr "Objets multimédia par page"
+msgstr "Objets média par page"
 
 #. I18N: gedcom tag MEDI
 #. I18N: gedcom tag _TYPE
@@ -10076,7 +10076,7 @@ msgstr "Oops! Le serveur Web ne parvient pas à se connecter au serveur de base 
 
 #: setup.php:211
 msgid "Oops!  webtrees was unable to create files in this folder."
-msgstr "Oups ! webtrees a été incapable de créer des fichiers dans ce dossier."
+msgstr "Oups !  webtrees a été incapable de créer des fichiers dans ce dossier."
 
 #: includes/functions/functions_print.php:814
 msgid "OpenStreetMap™"
@@ -10328,7 +10328,7 @@ msgstr "Parents"
 #: modules_v3/missing_facts_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:6
 msgid "Parents and siblings"
-msgstr "Parents et frères et sœurs"
+msgstr "Parents, frères et sœurs"
 
 #: includes/functions/functions_print.php:614
 msgid "Parent’s age"
@@ -11111,7 +11111,7 @@ msgstr "Réorganiser les familles"
 #: library/WT/Gedcom/Tag.php:812 modules_v3/lightbox/module.php:78
 #: modules_v3/lightbox/module.php:79
 msgid "Re-order media"
-msgstr "Réorganiser les objets multimédia"
+msgstr "Réorganiser les objets média"
 
 #: admin_users.php:370 admin_users.php:572 edituser.php:138 help_text.php:1352
 #: login.php:312 login.php:411
@@ -11786,7 +11786,7 @@ msgstr "Choisissez cette option pour inclure les fichiers média liés aux enreg
 
 #: admin_site_merge.php:242
 msgid "Select two GEDCOM records to merge.  The records must be of the same type."
-msgstr "Sélectionner les 2 enregistrements GEDCOM à fusionner. Ils doivent être du même type."
+msgstr "Sélectionner les deux enregistrements GEDCOM à fusionner. Ils doivent être du même type."
 
 #: library/WT/Gedcom/Code/Rela.php:169
 msgid "Seller"
@@ -13004,7 +13004,7 @@ msgstr "Le support et la documentation sont disponibles sur %s."
 
 #: library/WT/Stats.php:4987
 msgid "Suriname"
-msgstr "Surinam"
+msgstr "Suriname"
 
 #. I18N: gedcom tag SURN
 #: help_text.php:1247 library/WT/Gedcom/Tag.php:311 search.php:157
@@ -13421,11 +13421,11 @@ msgstr "Le fichier média %s n’existe pas."
 
 #: mediafirewall.php:37
 msgid "The media file was not found in this family tree"
-msgstr "Le fichier multimédia est introuvable dans cet arbre généalogique"
+msgstr "Le fichier média est introuvable dans cet arbre généalogique"
 
 #: help_text.php:1434
 msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer.  This is so because often the local filename has meaning to you but is much less meaningful to others visiting this site.  Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading.  The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically.  You do not need to enter the filename extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
-msgstr "Le fichier multimédia que vous téléversez peut être, et devrait probablement être, nommé différemment sur le serveur que sur votre ordinateur local. Il en est ainsi parce que souvent le nom du fichier local a une signification pour vous, mais est beaucoup moins significatif pour les autres visiteurs. Considérez aussi la possibilité que vous ou quelqu’un d’autre essaie de transférer différents fichiers appelés «&nbsp;grands-parents.jpg&nbsp;».<br><br>Dans ce champ, vous spécifiez le nouveau nom du fichier que vous téléchargez. Le nom que vous entrez ici sera également utilisé pour nommer la miniature, qui peut être téléchargée séparément ou générée automatiquement. Vous n’avez pas besoin d’entrer l’extension dans le nom de fichier (jpg, gif, pdf, doc, etc)<br><br>Laissez ce champ vide pour garder le nom original du fichier que vous avez téléchargé à partir de votre ordinateur local."
+msgstr "Le fichier média que vous téléversez peut être, et devrait probablement être, nommé différemment sur le serveur que sur votre ordinateur local. Il en est ainsi parce que souvent le nom du fichier local a une signification pour vous, mais est beaucoup moins significatif pour les autres visiteurs. Considérez aussi la possibilité que vous ou quelqu’un d’autre essaie de transférer différents fichiers appelés «&nbsp;grands-parents.jpg&nbsp;».<br><br>Dans ce champ, vous spécifiez le nouveau nom du fichier que vous téléchargez. Le nom que vous entrez ici sera également utilisé pour nommer la miniature, qui peut être téléchargée séparément ou générée automatiquement. Vous n’avez pas besoin d’entrer l’extension dans le nom de fichier (jpg, gif, pdf, doc, etc)<br><br>Laissez ce champ vide pour garder le nom original du fichier que vous avez téléchargé à partir de votre ordinateur local."
 
 #: setup.php:170
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
@@ -13446,7 +13446,7 @@ msgstr "L’organisation, l’institution, l’entreprise, la personne, ou toute
 
 #: setup.php:390
 msgid "The password needs to be at least six characters long."
-msgstr "Le mot de passe doit être long d’au moins 6 caractères."
+msgstr "Le mot de passe doit être long d’au moins six caractères."
 
 #: help_text.php:739
 msgid "The password required for authentication with the SMTP server."
@@ -13591,7 +13591,7 @@ msgstr "Aucun fait lié à cet individu."
 
 #: modules_v3/media/module.php:68
 msgid "There are no media objects for this individual."
-msgstr "Aucun objet multimédia lié à cet individu."
+msgstr "Aucun objet média lié à cet individu."
 
 #: modules_v3/notes/module.php:76
 msgid "There are no notes for this individual."
@@ -13735,7 +13735,7 @@ msgstr "Aucune image dans cet arbre généalogique."
 #. I18N: do not translate the #keywords#
 #: modules_v3/html/module.php:154
 msgid "This family tree was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree.  The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#."
-msgstr "Ce arbre généalogique a été mis à jour le #gedcomUpdated#. Il y a #totalSurnames# noms de famille dans cet arbre généalogique. Le premier évènement enregistré est le #firstEventType# de #firstEventName# en #firstEventYear#. L’évènement le plus récent est le #lastEventType# de #lastEventName# en #lastEventYear#.<br><br>Si vous avez des commentaires ou des suggestions s’il vous plaît contactez le #contactWebmaster#."
+msgstr "Ce arbre généalogique a été mis à jour le #gedcomUpdated#. Il y a #totalSurnames# noms de famille dans cet arbre généalogique. Le premier événement enregistré est le #firstEventType# de #firstEventName# en #firstEventYear#. L’événement le plus récent est le #lastEventType# de #lastEventName# en #lastEventYear#.<br><br>Si vous avez des commentaires ou des suggestions s’il vous plaît contactez le #contactWebmaster#."
 
 #. I18N: %s is a date
 #: modules_v3/gedcom_stats/module.php:81 modules_v3/html/module.php:159
@@ -13836,7 +13836,7 @@ msgstr "Il s’agit d’un lien vers vos propres informations dans l’arbre gé
 
 #: help_text.php:268
 msgid "This is an optional field that can be used to enter the file format of the media object.  Some genealogy programs may look at this field to determine how to handle the item.  However, since media do not transfer across computer systems very well, this field is not very important."
-msgstr "Il s’agit d’un champ optionnel qui peut être utilisé pour renseigner le type de fichier multimédia. Certains programmes généalogiques regardent ce champ pour déterminer comment traiter le fichier. De toute façon, comme les transferts de fichiers média entre systèmes ne sont pas toujours évidents, ce champ n’est pas très important."
+msgstr "Il s’agit d’un champ optionnel qui peut être utilisé pour renseigner le type de fichier média. Certains programmes généalogiques regardent ce champ pour déterminer comment traiter le fichier. De toute façon, comme les transferts de fichiers média entre systèmes ne sont pas toujours évidents, ce champ n’est pas très important."
 
 #: help_text.php:368
 msgid "This is an optional status field and is used mostly for LDS ordinances as they are run through the TempleReady program."
@@ -13946,15 +13946,15 @@ msgstr "Ce fichier média existe mais n’est pas accessible."
 
 #: mediafirewall.php:364
 msgid "This media file is broken and cannot be watermarked"
-msgstr "Ce fichier multimédia est défectueux. Il n’est pas possible de lui ajouter un filigrane"
+msgstr "Ce fichier média est défectueux. Il n’est pas possible de lui ajouter un filigrane"
 
 #: mediaviewer.php:74
 msgid "This media object does not exist or you do not have permission to view it."
-msgstr "Cet objet multimédia n’existe pas ou vous n’avez pas le droit d’y accéder."
+msgstr "Cet objet média n’existe pas ou vous n’avez pas le droit d’y accéder."
 
 #: mediaviewer.php:48
 msgid "This media object has been deleted.  The deletion will need to be reviewed by a moderator."
-msgstr "Cet objet multimédia a été supprimé. La suppression doit être révisée par un gestionnaire."
+msgstr "Cet objet média a été supprimé. La suppression doit être révisée par un gestionnaire."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: mediaviewer.php:39
@@ -13964,7 +13964,7 @@ msgstr "Cet objet média a été supprimé. Vous devez examiner la suppression e
 
 #: mediaviewer.php:66
 msgid "This media object has been edited.  The changes need to be reviewed by a moderator."
-msgstr "Cet objet multimédia a été modifié. Les modifications doivent être révisées par un gestionnaire."
+msgstr "Cet objet média a été modifié. Les modifications doivent être révisées par un gestionnaire."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: mediaviewer.php:57
@@ -14527,7 +14527,7 @@ msgstr "Nombre total de divorces"
 #: modules_v3/gedcom_stats/module.php:347 modules_v3/html/module.php:197
 #: modules_v3/missing_facts_report/report.xml:598 statistics.php:360
 msgid "Total events"
-msgstr "Nombre total d’évènements"
+msgstr "Nombre total d’événements"
 
 #: library/WT/Stats.php:3778 modules_v3/fact_sources/report.xml:245
 #: modules_v3/fact_sources/report.xml:249
@@ -14766,7 +14766,7 @@ msgstr "Faits uniques pour une source"
 
 #: library/WT/Stats.php:4776
 msgid "United Arab Emirates"
-msgstr "Émirats Arabes Unis"
+msgstr "Émirats arabes unis"
 
 #: library/WT/Stats.php:4854
 msgid "United Kingdom"
@@ -14878,7 +14878,7 @@ msgstr "Téléverser un fichier"
 
 #: help_text.php:1429
 msgid "Upload one or more media files from your local computer.  Media files can be pictures, video, audio, or other formats."
-msgstr "Téléversez un ou plusieurs fichiers multimédia sur le serveur. Les fichiers peuvent être des images, des vidéos, des sons ou autres."
+msgstr "Téléversez un ou plusieurs fichiers média sur le serveur. Les fichiers peuvent être des images, des vidéos, des sons ou autres."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:56
@@ -15740,7 +15740,7 @@ msgstr "Vous devez accepter ou rejeter toutes les modifications en attente avant
 
 #: help_text.php:1151
 msgid "You should avoid using the vertical line character “|” in your notes.  It is used internally by webtrees and may cause your note to display incorrectly."
-msgstr "Vous ne devez pas utiliser la barre verticale &ldquo;|&rdquo; dans vos notes. Elle est utilisée dans le code de webtrees et peut causer un affichage incorrect de vos notes."
+msgstr "Vous ne devez pas utiliser la barre verticale “|” dans vos notes. Elle est utilisée dans le code de webtrees et peut causer un affichage incorrect de vos notes."
 
 #: admin_site_upgrade.php:202
 msgid "You should consult the module’s author to confirm compatibility with this version of webtrees."
@@ -18064,7 +18064,7 @@ msgstr "petit-neveu/petite-nièce"
 #: includes/functions/functions.php:1040
 msgctxt "(a man’s) sister’s child’s child"
 msgid "great-nephew/niece"
-msgstr "petit-neveu"
+msgstr "petit-neveu/petite-nièce"
 
 #: includes/functions/functions.php:1046
 msgctxt "(a man’s) sister’s daughter’s child"
@@ -18899,7 +18899,7 @@ msgstr "robot"
 #: modules_v3/googlemap/module.php:3867 modules_v3/sitemap/module.php:251
 #: modules_v3/stories/module.php:253
 msgid "save"
-msgstr "Enregistrer"
+msgstr "enregistrer"
 
 #: includes/functions/functions.php:676
 #, php-format
@@ -19683,7 +19683,7 @@ msgstr "est né"
 
 #: help_text.php:1063
 msgid "webtrees allows you to copy up to 10 facts, with all their details, to a clipboard.  This clipboard is different from the clippings cart that you can use to export portions of your database.<br><br>You can select any of the facts from the clipboard and copy the selected fact to the individual, family, media, source, or repository record currently being edited.  However, you cannot copy facts of dissimilar record types.  For example, you cannot copy a marriage fact to a source or an individual record since the marriage fact is associated only with family records.<br><br>This is very helpful when entering similar facts, such as census facts, for many individuals or families."
-msgstr "webtrees vous permet de copier jusqu’à 10 faits, incluant tous leurs détails, dans un presse-papier. Ce presse-papier est différent de Panier que vous utilisez pour exporter des extraits de votre base de données généalogiques.<br><br>Vous pouvez sélectionner n’importe lequel des faits du presse-papier et le copier dans un enregistrement en cours de modification d’un Individu, d’une Famille, d’un objet Multimedia, d’une Source ou un Dépôt d’archives. Cependant, vous ne pouvez copier des faits d’enregistrements de type discordant. Par exemple, vous ne pouvez copier un fait Mariage à un enregistrement de type Individu car un fait Mariage est associé uniquement aux enregistrements de type Famille.<br><br>Ceci est très utile lorsque des faits similaires, comme les faits des recensements, s’appliquent à plusieurs individus ou familles."
+msgstr "webtrees vous permet de copier jusqu’à 10 faits, incluant tous leurs détails, dans un presse-papier. Ce presse-papier est différent de Panier que vous utilisez pour exporter des extraits de votre base de données généalogiques.<br><br>Vous pouvez sélectionner n’importe lequel des faits du presse-papier et le copier dans un enregistrement en cours de modification d’un Individu, d’une Famille, d’un objet média, d’une Source ou un Dépôt d’archives. Cependant, vous ne pouvez copier des faits d’enregistrements de type discordant. Par exemple, vous ne pouvez copier un fait Mariage à un enregistrement de type Individu car un fait Mariage est associé uniquement aux enregistrements de type Famille.<br><br>Ceci est très utile lorsque des faits similaires, comme les faits des recensements, s’appliquent à plusieurs individus ou familles."
 
 #. I18N: %s is a database name/identifier
 #: admin_pgv_to_wt.php:81
@@ -19819,473 +19819,3 @@ msgstr "…"
 msgctxt "Unknown surname"
 msgid "…"
 msgstr "…"
-
-#~ msgid "%s"
-#~ msgstr "%s"
-
-#~ msgid "<center><b>Welcome to this genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website."
-#~ msgstr "<center><b>Bienvenue sur ce site généalogique.</b></center><br>L’accès à ce site est autorisé aux utilisateurs ayant un compte et un mot de passe."
-
-#~ msgid "Abbreviate chart labels"
-#~ msgstr "Abréger les intitulés dans les diagrammes"
-
-#~ msgid "Accept or reject any pending changes."
-#~ msgstr "Accepter ou refuser les modifications en attente."
-
-#~ msgid "Access"
-#~ msgstr "Accès"
-
-#~ msgid "Add a new parent"
-#~ msgstr "Ajouter un nouveau parent"
-
-#~ msgid "Add an unlinked person"
-#~ msgstr "Ajouter une personne isolée"
-
-#~ msgid "Add child"
-#~ msgstr "Ajouter un enfant"
-
-#~ msgid "Add husband"
-#~ msgstr "Ajouter un époux"
-
-#~ msgid "Add individual by ID"
-#~ msgstr "Ajout de données par leur code (ID)"
-
-#~ msgid "Add wife"
-#~ msgstr "Ajouter une épouse"
-
-#~ msgid "All facts"
-#~ msgstr "Tous les faits"
-
-#~ msgid "Allow GEDCOM switching"
-#~ msgstr "Autoriser le choix du fichier GEDCOM"
-
-#~ msgid "Allow messages to be stored online"
-#~ msgstr "Autoriser le stockage des messages sur le serveur"
-
-#~ msgid "An error occurred while creating the Edit form.  Another user may have changed this record since you previously viewed it."
-#~ msgstr "Erreur au chargement : cet enregistrement a peut-être été modifié par un autre utilisateur depuis votre dernière visite."
-
-#~ msgid "An unexpected database error occured."
-#~ msgstr "Une erreur de base de données s’est produite de manière inattendue"
-
-#~ msgid "Append record"
-#~ msgstr "Ajouter un enregistrement"
-
-#~ msgid "Are you sure you want to undo all of the changes for this GEDCOM?"
-#~ msgstr "Voulez-vous vraiment annuler toutes les modifications de ce fichier GEDCOM ?"
-
-#~ msgid "Birth and death details on charts"
-#~ msgstr "Afficher les détails de la naissance et du décès sur les diagrammes"
-
-#~ msgid "Births, Deaths, Marriages"
-#~ msgstr "Naissances, Mariages, Décès"
-
-#~ msgid "Choose to display a standard header for your custom Welcome text.  When your users change language, this header will appear in the new language.<br><br>If set to <b>Yes</b>, the header will look like this:<div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website.<br></div>"
-#~ msgstr "Choisissez d’afficher un en-tête standard pour votre texte personnalisé de bienvenue. Quand les utilisateurs changent de langue, cet en-tête apparaît dans la nouvelle langue.<br><br>Si réglé sur <b>Oui</b>, l’en-tête ressemble à ceci&nbsp;:<div class=\"list_value_wrap\"><center><b>Bienvenue sur ce site de généalogie</b></center><br>L’accès est réservé aux utilisateurs qui ont un compte et un mot de passe pour ce site.<br></div>"
-
-#~ msgid "Click here to continue"
-#~ msgstr "Continuer"
-
-#~ msgid "Collapse all"
-#~ msgstr "Tout réduire"
-
-#~ msgid "Convert from UTF-8 to ANSI"
-#~ msgstr "Convertir de l’UTF-8 à la norme ANSI"
-
-#~ msgid "Copy the new files to the web server, replacing any that have the same name."
-#~ msgstr "Copiez les nouveaux fichiers sur le serveur web et remplacez ceux qui ont le même nom."
-
-#~ msgid "Create missing thumbnails"
-#~ msgstr "Créer les miniatures manquantes"
-
-#~ msgid "Current Server Time:"
-#~ msgstr "Heure du serveur"
-
-#~ msgid "Date not known"
-#~ msgstr "Date inconnue"
-
-#~ msgid "Default value for top-level"
-#~ msgstr "Valeur par défaut pour le premier niveau"
-
-#~ msgid "Delete record"
-#~ msgstr "Supprimer l’enregistrement"
-
-#~ msgid "Do not send messages"
-#~ msgstr "Ne pas envoyer de messages."
-
-#~ msgid "Download %s and extract the files."
-#~ msgstr "Télécharger %s et extraire les fichiers."
-
-#~ msgid "Download Now"
-#~ msgstr "Télécharger maintenant"
-
-#~ msgid "Download report"
-#~ msgstr "Enregistrer le rapport"
-
-#~ msgid "Each media item should be associated with one or more person, family, or source records in your database.<br><br>To establish such a link, you can enter or search for the ID of the person, family, or source at the same time as you create the media item.  You can also establish the link later through editing options on the Manage MultiMedia page, or by adding media items through the Add Media link available on the Individual, Family, or Source Details pages."
-#~ msgstr "Chaque élément des médias doit être associé à une ou plusieurs personnes, une famille, ou une source enregistrés dans votre base de données.<br><br>Pour établir un tel lien, vous pouvez entrer ou rechercher le numéro ID de la personne, de la famille, ou de la source en même temps que vous créez l’élément multimédia. Vous pouvez également établir un lien plus tard, grâce aux options d’édition sur la page Gérer les multimédia, ou en ajoutant des éléments médias en utilisant le lien Ajouter des médias disponible sur la page d’un individu, celle d’une famille, ou celle des détails d’une source."
-
-#~ msgid "Enter Family ID"
-#~ msgstr "Code famille"
-
-#~ msgid "Enter Individual ID"
-#~ msgstr "Code individu"
-
-#~ msgid "Enter a title for the item you are editing.  If this is a title for a multimedia item, enter a descriptive title that will identify that item to the user."
-#~ msgstr "Saisir un titre pour l’objet que vous mettez à jour. Si c’est un titre pour un objet multimédia, donnez un titre descriptif pour son identification par l’utilisateur."
-
-#~ msgid "Enter associate GEDCOM ID."
-#~ msgstr "Saisir l’identifiant GEDCOM de la personne à associer."
-
-#~ msgid "Enter the name of the cemetery or other resting place where individual is buried."
-#~ msgstr "Saisir le nom du cimetière où cette personne est enterrée. Exemple&nbsp;: Père-Lachaise.<br>La commune est à saisir dans le champ lieu."
-
-#~ msgid "Error"
-#~ msgstr "Erreur"
-
-#~ msgid "Execution time: %1$s seconds. Database queries: %2$s. Privacy checks: %3$s. Memory usage: %4$s KB."
-#~ msgstr "Temps d’exécution : %1$s secondes. Requêtes sur la base de données : %2$s. Vérification des droits d’accès : %3$s. Mémoire utilisée : %4$s Ko."
-
-#~ msgid "Expand all"
-#~ msgstr "Tout développer"
-
-#~ msgid "External objects"
-#~ msgstr "Objets externes"
-
-#~ msgid "Family add facts"
-#~ msgstr "Faits pour la saisie de familles"
-
-#~ msgid "Father’s Birthplace - (Chapman format)"
-#~ msgstr "Lieu de naissance du père - (format Chapman)"
-
-#~ msgid "File Information"
-#~ msgstr "Informations du fichier"
-
-#~ msgid "For more information contact"
-#~ msgstr "Pour plus d’informations contacter"
-
-#~ msgid "From email address"
-#~ msgstr "Adresse courriel de l’expéditeur"
-
-#~ msgid "GEDCOM statistics"
-#~ msgstr "Statistiques GEDCOM"
-
-#~ msgid "Gedcom"
-#~ msgstr "Gedcom"
-
-#~ msgid "Here the default level for the highest level in the place-hierarchy can be defined. If a place cannot be found this name is added as the highest level (country) and the database is searched again."
-#~ msgstr "Ici, vous pouvez définir le niveau par défaut du niveau le plus élevé des lieux. Si un lieu est introuvable, ce nom est ajouté en tant que niveau le plus élevé (pays)."
-
-#~ msgid "If the Media Firewall is enabled, should copies of watermarked full size images be stored on the server in addition to the same images without watermarks?<br><br>When set to <b>Yes</b>, full-sized watermarked images will be produced more quickly at the expense of higher server disk space requirements."
-#~ msgstr "Si le pare-feu multimédia est activé, voulez-vous stocker les copies des images filigranées en taille réelle sur le serveur en plus des mêmes images sans filigrane?<br><br>Lorsque la valeur est <b>Oui</b>, les images filigranées en taille réelle seront stockés, cela permettra un affichage plus rapide au détriment de plus d’espace disque nécessaire sur le serveur."
-
-#~ msgid "If the Media Firewall is enabled, should copies of watermarked thumbnails be stored on the server in addition to the same thumbnails without watermarks?<br><br>When set to <b>Yes</b>, media lists containing watermarked thumbnails will be produced more quickly at the expense of higher server disk space requirements."
-#~ msgstr "Si le pare-feu des médias est activé, doit-on stocker sur le serveur les miniatures avec un filigrane, en plus des miniatures sans filigrane ?<br><br>Lorsque la valeur est <b>Oui</b>, la liste des médias contenant les miniatures avec un filigrane sera produite plus rapidement au détriment de l’espace disque du serveur."
-
-#~ msgid "If the Media Firewall is enabled, should thumbnails be watermarked? Your media lists will load faster if you don't watermark the thumbnails."
-#~ msgstr "Si le pare-feu multimédia est activé, les miniatures doivent-elles être filigranées ? Votre liste de médias se charge plus rapidement si vous n’avez pas d’image avec filigrane."
-
-#~ msgid "If the Media Firewall is enabled, users will see watermarks if they do not have the privilege level specified here."
-#~ msgstr "Si le pare-feu médias est activé, les utilisateurs verront les filigranes, s’ils n’ont pas le niveau de privilège spécifié ici."
-
-#~ msgid "If you do not know these settings, leave the default values.  They may work.  You can change them later."
-#~ msgstr "Si vous ne connaissez pas les paramètres suivants, laissez les valeurs par défaut, qui peuvent parfois fonctionner. Vous pourrez également les changer ultérieurement."
-
-#~ msgid "If you don't want to send mail, for example when running webtrees with a single user or on a standalone computer, you can disable this feature."
-#~ msgstr "Si vous ne souhaitez pas envoyer de messages, si vous utilisez webtrees en local ou si vous êtes l’unique utilisateur par exemple, vous pouvez désactiver cette fonctionnalité."
-
-#~ msgid "If you have an environment with multiple GEDCOMs, setting this value to <b>Yes</b> allows your site visitors <u>and</u> users to have the option of changing GEDCOMs.  Setting it to <b>No</b> disables GEDCOM switching for both visitors <u>and</u> logged in users."
-#~ msgstr "Permet aux visiteurs et aux utilisateurs de changer de fichier GEDCOM quand il en existent plusieurs sur le serveur."
-
-#~ msgid "Immediate Family"
-#~ msgstr "Famille proche"
-
-#~ msgid "Individual add facts"
-#~ msgstr "Faits pour la saisie d’individus"
-
-#~ msgid "Individual information"
-#~ msgstr "Renseignements personnels"
-
-#~ msgid "Install (or re-install) webtrees %s."
-#~ msgstr "Installez (ou installez de nouveau) webtrees %s."
-
-#~ msgid "It is easier to manage your media files if you choose a consistent format for the filenames.  To organise media files into folders, you must first set the number of levels in the GEDCOM administration page."
-#~ msgstr "Il est plus facile de gérer les fichiers multimédia s’ils suivent des règles de nommage fixes. Pour organiser vos fichiers dans des dossiers, vous devez au préalable indiquer la profondeur de dossiers maximale dans la page d’administration GEDCOM."
-
-#~ msgid "Last name"
-#~ msgstr "Nom"
-
-#~ msgid "Link ID"
-#~ msgstr "ID du lien"
-
-#~ msgid "Link this individual to an existing family as a husband"
-#~ msgstr "Relier cette personne comme époux d’une famille existante"
-
-#~ msgid "Link this individual to an existing family as a wife"
-#~ msgstr "Relier cette personne comme épouse d’une famille existante"
-
-#~ msgid "Load all your family trees from disk, by using the “import” function for each one."
-#~ msgstr "Chargez tous vos arbres généalogiques à partir du disque, en utilisant la fonction «&nbsp;importer&nbsp;» pour chacun d’eux."
-
-#~ msgid "Mailer error: %s"
-#~ msgstr "Erreur expéditeur: %s"
-
-#~ msgid "Make a backup of your database before you start."
-#~ msgstr "Faites une sauvegarde de votre base de données avant de commencer."
-
-#~ msgid "Most Viewed Items"
-#~ msgstr "Bloc «&nbsp;Pages les plus visitées&nbsp;»"
-
-#~ msgid "Mother’s Birthplace - (Chapman format)"
-#~ msgstr "Lieu de naissance de la mère - (format Chapman)"
-
-#~ msgid "Name / Description"
-#~ msgstr "Nom / Description"
-
-#~ msgid "Name List"
-#~ msgstr "Liste des noms"
-
-#~ msgid "New entry facts"
-#~ msgstr "Faits pour un nouvel enregistrement"
-
-#~ msgid "No events for living individuals exist for the next %s day."
-#~ msgid_plural "No events for living people exist for the next %s days."
-#~ msgstr[0] "Aucun événement pour des personnes vivantes dans le prochain jour."
-#~ msgstr[1] "Aucun événement pour des personnes vivantes dans les %s prochains jours."
-
-#~ msgid "No such ID exists in this GEDCOM file."
-#~ msgstr "Objet non trouvé dans ce fichier GEDCOM."
-
-#~ msgid "Not in DB"
-#~ msgstr "Pas dans DB"
-
-#~ msgid "Online changes have been made to a genealogical database.  These changes need to be reviewed and accepted before they will appear to all users.  Please use the URL below to enter that webtrees site and login to review the changes."
-#~ msgstr "Des modifications en ligne ont été apportées à une base de données généalogiques. Ces changements doivent être examinés et acceptés avant d’apparaître à tous les utilisateurs. Veuillez utiliser l’URL ci-dessous pour entrer dans le site webtrees et vous connecter afin de réviser ces modifications."
-
-#~ msgid "Online editing"
-#~ msgstr "Édition en ligne"
-
-#~ msgid "Outgoing server (SMTP) name"
-#~ msgstr "Nom du serveur sortant (SMTP)"
-
-#~ msgid "Please click on the link below or paste it into your browser, login with the new password, and change it immediately to keep the integrity of your data secure."
-#~ msgstr "Cliquez maintenant sur le lien ci-dessous, connectez-vous avec le nouveau mot de passe et, par précaution, changez-le immédiatement."
-
-#~ msgid "Please reload the previous page to make sure you are working with the most recent record."
-#~ msgstr "Recharger la page avec le bouton «&nbsp;Page précédente&nbsp;» de votre navigateur pour être certain d’afficher la dernière version de l’enregistrement."
-
-#~ msgid "Port"
-#~ msgstr "Port"
-
-#~ msgid "Quick facts"
-#~ msgstr "Faits en accès rapide"
-
-#~ msgid "Recommendation:"
-#~ msgstr "Recommandation:"
-
-#~ msgid "Recommendations"
-#~ msgstr "Recommandations"
-
-#~ msgid "Regular expressions are an advanced pattern matching technique.  See <a href=\"http://php.net/manual/en/regexp.reference.php\" target=\"_blank\">php.net/manual/en/regexp.reference.php</a> for futher details."
-#~ msgstr "Les expressions régulières constituent un système très puissant et très rapide pour faire des recherches dans des chaînes de caractères. Voir <a href=\"http://php.net/manual/en/regexp.reference.php\" target=\"_blank\">php.net/manual/en/regexp.reference.php</a> pour de plus amples détails."
-
-#~ msgid "Regular expressions are an advanced pattern matching technique.  See <a href=\"http://php.net/manual/en/regexp.reference.php\" target=\"_new\">php.net/manual/en/regexp.reference.php</a> for futher details."
-#~ msgstr "Les expressions régulières permettent des recherches suivant des correspondances complexes. Voir par exemple <a href=\"http://php.net/manual/fr/regexp.reference.php\" target=\"_new\">la documentation de PHP</a> pour plus de détails."
-
-#~ msgid "Replace record"
-#~ msgstr "Remplacer un enregistrement"
-
-#~ msgid "Repository add facts"
-#~ msgstr "Faits pour la saisie de dépôts d’archives"
-
-#~ msgid "Reset to the list defaults."
-#~ msgstr "Retour à la liste complète."
-
-#~ msgid "Root"
-#~ msgstr "Racine"
-
-#~ msgid "SMTP port"
-#~ msgstr "Port SMTP"
-
-#~ msgid "Save all your family trees to disk, by using the “export” function for each one."
-#~ msgstr "Sauvegardez toutes vos arbres généalogiques sur le disque, en utilisant la fonction «&nbsp;exporter&nbsp;» pour chacun d’eux."
-
-#~ msgid "Search and/or replace data in your GEDCOM using simple searches or advanced pattern matching."
-#~ msgstr "Recherche et/ou remplace des données de votre fichier GEDCOM en utilisant des recherches par texte ou par motif"
-
-#~ msgid "Security"
-#~ msgstr "Sécurité"
-
-#~ msgid "Select report"
-#~ msgstr "Sélectionner"
-
-#~ msgid "Select the media file that you want to upload.  If a file already exists with the same name, it will be overwritten."
-#~ msgstr "Choisissez le fichier multimédia à téléverser (upload). Si un fichier du même nom existe, il sera écrasé."
-
-#~ msgid "Selected Report"
-#~ msgstr "Rapport sélectionné"
-
-#~ msgid "Sender email address"
-#~ msgstr "Adresse courriel de l’expéditeur (nom de domaine)"
-
-#~ msgid "Server"
-#~ msgstr "Serveur"
-
-#~ msgid "Should the GeoNames database be used to provide more suggestions for place names?<br><br>When this option is set to <b>Yes</b>, the GeoNames database will be queried to supply suggestions for the place name being entered.  When set to <b>No</b>, only the current genealogical database will be searched.  As you enter more of the place name, the suggestion will become more precise.  This option can slow down data entry, particularly if your Internet connection is slow.<br><br>The GeoNames geographical database is accessible free of charge. It currently contains over 8,000,000 geographical names."
-#~ msgstr "La base de données <a href=\"http://www.geonames.org/\" target=\"_blank\">GeoNames</a> doit-elle être utilisée dans la suggestion des lieux&nbsp;?<br><br>Si l’option est à <b>Oui</b>, la base GeoNames sera interrogée pour fournir des suggestions sur le lieu en cours de saisie. Si l’option est à <b>Non</b>,  seule la base de données géographiques actuelle sera interrogée. Au fur et à mesure de votre saisie, les suggestions seront plus précises. Cette option peut ralentir la saisie de donnée, notamment si votre connexion internet est lente.<br><br>La base GeoName est accessible gratuitement. Elle contient plus de 8&nbsp;000&nbsp;000 de lieux."
-
-#~ msgid "Show link to Statistics charts?"
-#~ msgstr "Afficher le lien vers les statistiques graphiques ?"
-
-#~ msgid "Show timeline"
-#~ msgstr "Chronologie"
-
-#~ msgid "Source add facts"
-#~ msgstr "Faits pour la saisie de sources"
-
-#~ msgid "Specifies whether messages sent through webtrees can be stored in the database.  If set to <b>Yes</b> users will be able to retrieve their messages when they login to webtrees.  If set to <b>No</b> messages will only be emailed."
-#~ msgstr "Indique si les messages envoyés par webtrees peuvent être stockés dans la base de données. Si vous choisissez <b>Oui</b> les utilisateurs seront en mesure de récupérer leurs messages quand ils se connecteront dans webtrees. Si vous choisissez <b>Non</b> les messages seront uniquement envoyés par courriel."
-
-#~ msgid "Standard header for custom welcome text"
-#~ msgstr "En-tête standard pour le texte personnalisé de bienvenue"
-
-#~ msgid "Take your site offline while copying the new files.  Do this by temporarily creating a file %s on the web server."
-#~ msgstr "Mettre votre site hors ligne lorsque vous copiez les nouveaux fichiers. Faire ceci en créant temporairement un fichier %s sur votre serveur web."
-
-#~ msgid "The Type field is used to enter additional information about the item.  In most cases, the field is completely free-form, and you can enter anything you want."
-#~ msgstr "Le champ Type vous permet de spécifier un évenement particulier. C’est un champ libre dans lequel vous pouvez entrer toute information que vous voulez mémoriser."
-
-#~ msgid "The following changes were made to this record:"
-#~ msgstr "Les modifications suivantes ont été apportées à cet enregistrement"
-
-#~ msgid "The port number to be used for connections to the SMTP server.  Generally, this is port <b>25</b>."
-#~ msgstr "Port à utiliser sur le serveur SMTP. Il s’agit généralement du port <b>25</b>."
-
-#~ msgid "The record with id %s was changed by another user since you last accessed it."
-#~ msgstr "L’enregistrement %s a été modifié par un autre utilisateur depuis votre dernière visite."
-
-#~ msgid "This GEDCOM was created using <b>%1$s</b> on <b>%2$s</b>."
-#~ msgstr "Ce GEDCOM a été créé avec <b>%1$s</b> le <b>%2$s</b>."
-
-#~ msgid "This block will show the 10 records that have been viewed the most.  This block requires that hit counters be enabled in the GEDCOM configuration settings."
-#~ msgstr "Ce bloc affiche les 10 pages les plus visitées pour ce fichier GEDCOM. Le compteur de visites doit être activé (voir les options de configuration)."
-
-#~ msgid "This is the name of the SMTP mail server.  Example: <b>smtp.foo.bar.com</b>.<br><br>Configuration values for some e-mail providers:<br><br><b>Gmail<br></b><br><b>Outgoing server (SMTP) name:</b> smtp.gmail.com<br><b>SMTP Port:</b> 465 or 587<br><b>Secure connection:</b> SSL<br><br><b>Hotmail<br></b><br><b>Outgoing server (SMTP) name:</b> smtp.live.com<br><b>SMTP Port:</b> 25 or 587<br><b>Secure connection:</b> TLS<br><br><b>Yahoo Mail Plus (currently a paid service)<br></b><br><b>Outgoing server (SMTP) name:</b> smtp.mail.yahoo.com<br><b>SMTP Port:</b> 25"
-#~ msgstr "Nom du serveur de courriels SMTP (exemple : <b>smtp.foo.bar.com</b>. Port:</b> 25)"
-
-#~ msgid "This is used in the \"From:\" header when sending mails."
-#~ msgstr "Cette adresse est utilisée dans l’en-tête «&nbsp;De/From&nbsp;» lors de l’envoi de messages."
-
-#~ msgid "This is used in the \"Sender:\" header when sending mails.  It is often the same as the \"From:\" header."
-#~ msgstr "Cette adresse est utilisée dans l’en-tête «&nbsp;Expéditeur/Sender&nbsp;» lors de l’envoi de messages."
-
-#~ msgid "This option causes webtrees to show all individuals who are recorded as having an association relationship to the person or family that was found as a direct result of the search.  The inverse, where all persons or families are shown when a person found as a direct result of the search has an association relationship to these other persons or families, is not possible.<br><br>Example:  Suppose person <b>A</b> is godparent to person <b>B</b>.  This relationship is recorded in the GEDCOM record of person <b>B</b> by means of an ASSO tag.  No corresponding tag exists in the GEDCOM record of person <b>A</b>.<br><br>When this option is set to <b>Yes</b> and the Search results list includes <b>B</b>, <b>A</b> will be included automatically because of the ASSO tag in the GEDCOM record of <b>B</b>.  However, if the Search results list includes <b>A</b>, <b>B</b> will not be included automatically since there is no matching ASSO tag in the GEDCOM record of person <b>A</b>."
-#~ msgstr "Cette option fait en sorte que webtrees affichera tous les individus qui sont enregistrés comme ayant une relation de parenté avec la personne ou la famille trouvée en tant que résultat direct de la recherche. Le contraire, où toutes les personnes ou familles sont affichées lorsqu’une personne est trouvée en tant que résultat direct de la recherche a une relation de parenté avec ces autres personnes ou familles, n’est pas possible.<br><br>Exemple: Supposons qu’une personne <b>A</b> est le parrain de la personne <b>B</b>. Cette relation de parenté est enregistrée dans l’enregistrement GEDCOM de la personne <b>B</b> au moyen de la balise ASSO. Il n’y a aucune balise correspondante dans l’enregistrement GEDCOM de la personne <b>A</b>.<br><br>Lorsque cette option est réglée à <b>Oui</b> et que la liste des résultats de Recherche inclut <b>B</b>, <b>A</b> sera inclus automatiquement à cause de la balise ASSO dans l’enregistrement GEDCOM de <b>B</b>. Cependant, si la liste des résultats de Recherche inclut <b>A</b>, <b>B</b> ne sera pas inclus automatiquement car il n’y a pas de balise ASSO correspondante dans l’enregistrement GEDCOM de la personne <b>A</b>."
-
-#~ msgid "This option controls whether or not to abbreviate labels like <b>Birth</b> on charts with just the first letter like <b>B</b>."
-#~ msgstr "Cette option détermine si l’on désire l’abréviation des libellés comme <b>Naissance</b> sur les diagrammes avec seulement la première lettre comme <b>N</b>."
-
-#~ msgid "This option controls whether or not to show the Birth and Death details of an individual on charts."
-#~ msgstr "Cette option vous permet d’afficher ou de masquer les détails de la naissance et du décès d’un individu sur les arbres d’ascendance et de descendance."
-
-#~ msgid "This option enables online editing features for this database so that users with Edit privileges may update data online."
-#~ msgstr "Autorise les fonctions de modification des données GEDCOM de sorte que les utilisateurs autorisés puissent mettre à jour ce fichier directement."
-
-#~ msgid "This option will generate thumbnails for all files in the current directory which don't already have a thumbnail.  This is much more convenient than clicking the <b>Create thumbnail</b> link for each such file.<br><br>If you wish to retain control over which files should have corresponding thumbnails, you should not use this option.  Instead, click the appropriate <b>Create thumbnail</b> links."
-#~ msgstr "Cette option génèrera les miniatures pour tous les fichiers présents dans la répertoire actif dont les miniatures sont manquantes. Cela est beaucoup plus pratique que de cliquer sur le lien <b>Créer la miniature</b> pour chacun des fichiers concernés.<br><br>Si vous désirez vérifier quels sont les fichiers qui doivent avoir des miniatures, vous ne devez pas utiliser cette option. Dans ce dernier cas, il vaut mieux cliquer sur les liens appropriés <b>Créer les miniatures</b>."
-
-#~ msgid "This record was last changed by <i>%s</i> at %s"
-#~ msgstr "Enregistrement modifié en dernier par <i>%s</i> le %s"
-
-#~ msgid "This user prefers to receive messages in %s"
-#~ msgstr "Cet utilisateur préfère recevoir les messages en %s"
-
-#~ msgid "This version of webtrees cannot be installed on this web-server."
-#~ msgstr "Cette version de webtrees ne peut être installée sur ce serveur Web."
-
-#~ msgid "Transport Layer Security (TLS) and Secure Sockets Layer (SSL) are Internet data encryption protocols.<br><br>TLS 1.0, 1.1 and 1.2 are standardized developments of SSL 3.0. TLS 1.0 and SSL 3.1 are equivalent. Further work on SSL is now done under the new name, TLS.<br><br>If your SMTP Server requires the SSL protocol during login, you should select the <b>SSL</b> option. If your SMTP Server requires the TLS protocol during login, you should select the <b>TLS</b> option."
-#~ msgstr "Transport Layer Security (TLS) et Secure Sockets Layer (SSL) sont des protocoles d’encryption des données sur Internet.<br><br>TLS 1.0, 1.1 et 1.2 sont des développements standardisés de SSL 3.0. TLS 1.0 et SSL 3.1 sont équivalents. Des travaux plus approfondis sur SSL sont effectués sous le nouveau nom TLS.<br><br>Si votre serveur SMTP requiert les protocoles TLS ou SLL durant la connexion, sélectionnez l’option <b>Oui</b>."
-
-#~ msgid "Unique facts"
-#~ msgstr "Faits uniques"
-
-#~ msgid "Update the CHAN record"
-#~ msgstr "Mettre à jour la date de modification (CHAN)"
-
-#~ msgid "Upgrade instructions"
-#~ msgstr "Instructions pour effectuer la mise à jour"
-
-#~ msgid "Upgrade the web-server to PHP %s or higher."
-#~ msgstr "Mettre à niveau le serveur Web à la version de PHP %s ou plus récente."
-
-#~ msgid "Use SMTP to send e-mails from webtrees.<br><br>This option requires access to an SMTP mail server.  When set to <b>No</b> webtrees will use the e-mail system built into PHP on this server."
-#~ msgstr "Utiliser SMTP pour envoyer des e-mails à partir de webtrees.<br><br>Cette option nécessite l’accès à un serveur de messagerie SMTP. Lorsque la valeur est <b>Non</b> webtrees utilisera le système e-mail intégré dans PHP sur ce serveur."
-
-#~ msgid "Use SMTP to send external mails"
-#~ msgstr "Utiliser SMTP pour envoyer des mails externes"
-
-#~ msgid "Use name and password authentication to connect to the SMTP server.<br><br>Some SMTP servers require all connections to be authenticated before they will accept outbound e-mails."
-#~ msgstr "Certains serveurs SMTP demandent une authentification afin d’envoyer un mail. Entrez le nom d’utilisateur et le mot de passe ci-dessous."
-
-#~ msgid "Use this field for storing an abbreviated version of a title.  This field is used in conjunction with the title field on sources.  By default webtrees will first use the title and then the abbreviated title.<br><br>According to the GEDCOM 5.5 specification, \"this entry is to provide a short title used for sorting, filing, and retrieving source records (pg 62).\"<br><br>In webtrees the abbreviated title is optional, but in other genealogical programs it is required."
-#~ msgstr "Utilisez ce champ pour stocker une version abrégée d’un titre. Ce champ est utilisé en conjonction avec le champ du titre sur les sources. Par défaut webtrees sera utilisé en premier comme titre et titre abrégé.<br><br>Selon la spécification GEDCOM 5.5, «&nbsp;cette entrée sert à donner un titre court utilisée pour le tri, le classement et l’extraction des documents source (pg 62).&nbsp;»<br><br>Dans webtrees le titre abrégé est facultatif, mais dans d’autres programmes de généalogie, il est nécessaire."
-
-#~ msgid "Use this page to change or remove family members.<br><br>For each member in the family, you can use the Change link to choose a different individual to fill that role in the family.  You can also use the Remove link to remove that individual from the family.<br><br>When you have finished changing the family members, click the save button to save the changes."
-#~ msgstr "Utilisez cette page pour modifier ou supprimer un membre de la famille.<br><br>Pour chaque membre de la famille, vous pouvez utiliser le lien «&nbsp;Changer&nbsp;» pour choisir un individu différent pour remplir ce rôle (père, mère …) dans la famille. Vous pouvez également utiliser le lien «&nbsp;Retirer&nbsp;» pour supprimer cet individu de cette famille.<br><br>Quand vous avez terminé les modifications des membres de la famille, cliquez sur le bouton «&nbsp;sauver (enregistrer)&nbsp;» pour sauvegarder vos modifications."
-
-#~ msgid "Users with warnings"
-#~ msgstr "Utilisateurs en anomalie"
-
-#~ msgid "View GEDCOM record"
-#~ msgstr "Voir l’enregistrement GEDCOM"
-
-#~ msgid "Visitor options"
-#~ msgstr "Options visiteurs"
-
-#~ msgid "Visitors"
-#~ msgstr "Visiteurs"
-
-#~ msgid "Web URL"
-#~ msgstr "URL web"
-
-#~ msgid "Who can view non-watermarked images?"
-#~ msgstr "Qui peut voir les images sans filigrane ?"
-
-#~ msgid "You can determine whether this FAQ will be visible regardless of GEDCOM, or whether it will be visible only to the current GEDCOM.<br><ul><li><b>ALL</b>&nbsp;&nbsp;&nbsp;The FAQ will appear in all FAQ lists, regardless of GEDCOM.</li><li><b>%s</b>&nbsp;&nbsp;&nbsp;The FAQ will appear only in the currently active GEDCOM's FAQ list.</li></ul>"
-#~ msgstr "Vous pouvez déterminer si cette FAQ sera spécifique à ce GEDCOM ou non.<br><ul><li><b>TOUS</b>&nbsp;&nbsp;&nbsp;La FAQ apparaîtra dans toutes les listes de FAQ peu importe le GEDCOM.</li><li><b>%s</b>&nbsp;&nbsp;&nbsp;La FAQ apparaîtra uniquement dans la FAQ du GEDCOM en cours.</li></ul>"
-
-#~ msgid "You have the following options:"
-#~ msgstr "Vous avez les options suivantes&nbsp;:&nbsp;"
-
-#~ msgid "You won’t get any more email from this site, because the account request will be deleted automatically after seven days."
-#~ msgstr "Vous ne recevrez plus de messages de ce système parce que, sauf réponse de votre part dans 7 jours, ce compte sera supprimé."
-
-#~ msgid "before %d"
-#~ msgstr "avant %d"
-
-#~ msgctxt "Abbreviation for email address"
-#~ msgid "e."
-#~ msgstr "@"
-
-#~ msgctxt "Abbreviation for fax number"
-#~ msgid "f."
-#~ msgstr "fax"
-
-#~ msgid "from %d"
-#~ msgstr "de %d"
-
-#~ msgid "jewish calendar"
-#~ msgstr "Calendrier juif"
-
-#~ msgid "or"
-#~ msgstr "ou"
-
-#~ msgctxt "Abbreviation for telephone number"
-#~ msgid "t."
-#~ msgstr "tél."
-
-#~ msgid "unknown person"
-#~ msgstr "personne inconnue"
-
-#~ msgid "webtrees - Review changes"
-#~ msgstr "webtrees - Examen des changements"
