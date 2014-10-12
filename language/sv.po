@@ -3231,7 +3231,7 @@ msgstr "Dödsorsak"
 
 #: admin_trees_renumber.php:278
 msgid "Caution!  This may take a long time.  Be patient."
-msgstr ""
+msgstr "Varning!  Detta kan ta lång tid.  Ha tålamod."
 
 #: admin_site_upgrade.php:204
 msgid "Caution: old modules may not work, or they may prevent webtrees from working."
@@ -3885,7 +3885,7 @@ msgstr "Kopiera"
 #: admin_trees_merge.php:182
 #, php-format
 msgid "Copy all the records from %1$s into %2$s."
-msgstr ""
+msgstr "Kopiera alla poster från %1$s till %2$s."
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:422
@@ -5219,7 +5219,7 @@ msgstr "En avändare med detta användarnamn finns redan. Välj ett annat använ
 
 #: help_text.php:779
 msgid "E-mail address to be used in the “From:” field of e-mails that webtrees creates automatically.<br><br>webtrees can automatically create e-mails to notify administrators of changes that need to be reviewed.  webtrees also sends notification e-mails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created e-mails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the e-mail is required.  To guard against spam or other e-mail abuse, some e-mail systems require each message’s “From:” field to reflect a valid e-mail account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
-msgstr "E-postadress som skall användas i ”från:”-fältet för e-post som webtrees skapar automatiskt.<br><br>webtrees kan automatiskt skapa e-post för att meddela administratörer av förändringar som behöver granskas.  webtrees skickar också e-postmeddelanden till användare som har ansökt om ett konto.<br><br>Vanligtvis är ʺfrån:ʺ fältet i dessa automatiskt skapade e-postmeddelanden t ex <i>från: webtrees-noreply@yoursite</i> för att visa att inget svar på e-post krävs.  För att skydda mot skräppost eller andra e-missbruk, kräver vissa system en giltig adress i ʺfrån:ʺ fältet och kommer inte att acceptera meddelanden som är från kontot <i>webtrees-noreply</i>.Vanligtvis är ʺfrån:ʺ fältet i dessa automatiskt skapade e-postmeddelanden t ex <i>från: webtrees-noreply@yoursite</i> för att visa att inget svar på e-post krävs.  För att skydda mot skräppost eller andra e-missbruk, kräver vissa system en giltig adress i ʺfrån:ʺ fältet och kommer inte att acceptera meddelanden som är från kontot <i>webtrees-noreply</i>."
+msgstr "E-postadress som skall användas i ”från:”-fältet för e-post som webtrees skapar automatiskt.<br><br>webtrees kan automatiskt skapa e-post för att meddela administratörer av förändringar som behöver granskas.  webtrees skickar också e-postmeddelanden till användare som har ansökt om ett konto.<br><br>Vanligtvis är ”från:” fältet i dessa automatiskt skapade e-postmeddelanden t ex <i>från: webtrees-noreply@yoursite</i> för att visa att inget svar på e-post krävs.  För att skydda mot skräppost eller andra e-missbruk, kräver vissa system en giltig adress i ”från:” fältet och kommer inte att acceptera meddelanden som är från kontot <i>webtrees-noreply</i>.Vanligtvis är ”från:” fältet i dessa automatiskt skapade e-postmeddelanden t ex <i>från: webtrees-noreply@yoursite</i> för att visa att inget svar på e-post krävs.  För att skydda mot skräppost eller andra e-missbruk, kräver vissa system en giltig adress i ”från:” fältet och kommer inte att acceptera meddelanden som är från kontot <i>webtrees-noreply</i>."
 
 #: help_text.php:1175
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided.  The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>.  The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source.  For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
@@ -7351,7 +7351,7 @@ msgstr "Importera släktträd"
 #: admin_trees_renumber.php:260
 #: admin_trees_merge.php:73
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
-msgstr ""
+msgstr "I ett släktträd har varje post ett internt referensnummer (kallas ”XREF”), så som ”F123” eller ”R14”."
 
 #: help_text.php:348
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet.  This might be of use with Japanese names, where three different alphabets may occur."
@@ -8889,7 +8889,7 @@ msgstr "Kvicksilver"
 
 #: admin_trees_merge.php:30 themes/_administration/header.php:122
 msgid "Merge family trees"
-msgstr ""
+msgstr "Slå ihop släktträd"
 
 #: admin_site_merge.php:266
 msgid "Merge from ID:"
@@ -10469,7 +10469,7 @@ msgstr "Foto"
 
 #: admin_pgv_to_wt.php:147
 msgid "PhpGedView might be installed in one of these folders:"
-msgstr ""
+msgstr "PhpGedView kan vara installerad i en av dessa mappar:"
 
 #: admin_pgv_to_wt.php:65
 msgid "PhpGedView must use the same database as webtrees."
@@ -11330,7 +11330,7 @@ msgstr "Reno, Nevada"
 #: admin_trees_merge.php:87 admin_trees_merge.php:92
 #: admin_trees_renumber.php:29
 msgid "Renumber family tree"
-msgstr ""
+msgstr "Numrera om släktträdet"
 
 #: admin_trees_places.php:101 search.php:119
 msgid "Replace with"
@@ -12553,7 +12553,7 @@ msgstr "Sidopanel"
 
 #: admin_module_sidebar.php:30
 msgid "Sidebars"
-msgstr ""
+msgstr "Sidopaneler"
 
 #: library/WT/Stats.php:4979
 msgid "Sierra Leone"
@@ -13263,7 +13263,7 @@ msgstr "Denna persons detaljer är privata."
 
 #: admin_trees_merge.php:176
 msgid "The family trees were merged successfully."
-msgstr ""
+msgstr "Släktträden slogs ihop utan problem."
 
 #. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
 #: action.php:160
@@ -13465,7 +13465,7 @@ msgstr "Man kan välja om man vill ha prefix, men det rekommenderas. Genom att g
 #: admin_trees_renumber.php:237
 #, php-format
 msgid "The record %1$s was renamed to %2$s."
-msgstr ""
+msgstr "Posten %1$s ändrades till %2$s."
 
 #: action.php:100
 msgid "The record was copied to the clipboard."
@@ -13481,7 +13481,7 @@ msgstr "Server-konfigurationen är OK."
 
 #: admin_trees_renumber.php:252
 msgid "The server’s time limit was reached."
-msgstr ""
+msgstr "Serverns tidsgräns har nåtts."
 
 #: site-offline.php:78
 msgid "The site is down for maintenance.  You should <a href=\"index.php\">try again</a> in a few minutes."
@@ -13526,8 +13526,8 @@ msgstr "Tid i sekunder som en webtrees session är aktiv tills en ny inloggning 
 #, php-format
 msgid "The two family trees have %1$s record which use the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "De två släktträden har en post som använder samma ”XREF”."
+msgstr[1] "De två släktträden har %1$s poster som använder samma ”XREF”."
 
 #: admin_site_upgrade.php:490
 msgid "The upgrade is complete."
@@ -13547,7 +13547,7 @@ msgstr "Användarnamnet eller lösenordet är felaktigt."
 
 #: help_text.php:689
 msgid "The value to place in the “meta description” tag in the HTML page header.  Leave this field empty to use the name of the family tree."
-msgstr ""
+msgstr "Värdet att placera i ”Metabeskrivning” taggen i HTML-sidhuvudet.  Lämna fältet tomt om du vill använda namnet på släktträdet."
 
 #: admin_pgv_to_wt.php:76
 #, php-format
@@ -13727,8 +13727,8 @@ msgstr "Denna familj förblev barnlös"
 #, php-format
 msgid "This family tree has %s record which uses the same “XREF” as another family tree."
 msgid_plural "This family tree has %s records which use the same “XREF” as another family tree."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Detta släktträden har en post som använder samma ”XREF” som ett annat släktträd."
+msgstr[1] "Detta släktträden har %s poster som använder samma ”XREF” som ett annat släktträd."
 
 #: modules_v3/random_media/module.php:189
 msgid "This family tree has no images to display."
@@ -13830,7 +13830,7 @@ msgstr "Detta är en kommaseparerad lista med GEDCOM faktataggar som visas när 
 
 #: help_text.php:412
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
-msgstr ""
+msgstr "Detta är en kommaseparerad lista av GEDCOM-fakta som kommer att visas på lägg till/redigera ortsnamn formuläret. Om du väljer ett icke latinskt alfabet som Hebreiska, Grekiska, Kyrilliskt eller Arabiskt vill du kanske lägga till taggar som _HEB, ROMN, FONE, osv. för att låta dig spara namnen enligt flera alfabet."
 
 #: help_text.php:1202
 msgid "This is a link to your own record in the family tree.  If this is the wrong individual, contact an administrator."
@@ -15600,11 +15600,11 @@ msgstr "Du kan återaktivera dessa teman efter uppgraderingen."
 
 #: admin_trees_renumber.php:261
 msgid "You can renumber the records in a family tree, so that these internal identification numbers are not duplicated in any other family tree."
-msgstr ""
+msgstr "Du kan numrera posterna i ett släktträd, så att dessa inre identifikationsnummer inte dubbleras i något annat släktträd."
 
 #: admin_trees_renumber.php:274
 msgid "You can renumber this family tree."
-msgstr ""
+msgstr "Du kan numrera om detta släktträd."
 
 #: help_text.php:643 help_text.php:682
 msgid "You can request a higher or lower limit, although the server may ignore this request."
@@ -15701,7 +15701,7 @@ msgstr "Du måste ange en rubrik för källan"
 
 #: admin_trees_merge.php:83
 msgid "You must renumber the records in one of the trees before you can merge them."
-msgstr ""
+msgstr "Du måste numrera om posterna i ett av träden innan kan du slå ihop dem."
 
 #: modules_v3/charts/module.php:139
 msgid "You must select an individual and chart type in the block configuration settings."
@@ -16820,7 +16820,7 @@ msgstr "kön"
 #. I18N: button label
 #: admin_trees_renumber.php:275
 msgid "go"
-msgstr ""
+msgstr "gå"
 
 #. I18N: button label
 #: edit_interface.php:2740

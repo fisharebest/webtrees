@@ -345,11 +345,14 @@ case 'calendar':
 	// Fetch events for each day
 	for ($jd = $cal_date->minJD; $jd <= $cal_date->maxJD; ++$jd)
 		foreach (apply_filter(get_anniversary_events($jd, $events), $filterof, $filtersx) as $fact) {
-			$d = $fact->getDate()->minDate()->d;
-			if (array_key_exists($d, $found_facts)) {
-				$found_facts[$d][]=$fact;
+			$tmp = $fact->getDate()->minDate();
+			if ($tmp->d >= 1 && $tmp->d <= $tmp->daysInMonth()) {
+				// If the day is valid (for its own calendar), display it in the
+				// anniversary day (for the display calendar).
+				$found_facts[$jd-$cal_date->minJD + 1][] = $fact;
 			} else {
-				$found_facts[0][]=$fact;
+				// Otherwise, display it in the "Day not set" box.
+				$found_facts[0][] = $fact;
 			}
 		}
 	break;

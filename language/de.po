@@ -15352,7 +15352,7 @@ msgstr "Wenn Sie neue nahe Verwandte in die Datenbank eintragen, können Sie Que
 
 #: help_text.php:461
 msgid "When calculating relationships, this option controls whether webtrees will include spouses/partners as well as blood relatives."
-msgstr "Für die Berechnung von Verwandschaftsgraden bestimmt diese Option, ob <strong>webtrees</strong> Ehe-/Partner genauso wie Blutsverwandte mit einschließt."
+msgstr "Für die Berechnung von Verwandschaftsgraden bestimmt diese Option, ob webtrees Ehe-/Partner genauso wie Blutsverwandte mit einschließt."
 
 #: help_text.php:895
 msgid "When set to <b>Yes</b>, the following message will appear above the input fields on the “Request new user account” page:<div class=\"list_value_wrap\"><div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div></div>"
