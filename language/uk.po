@@ -13233,7 +13233,7 @@ msgstr "Медіа перегляд може відображати посила
 
 #: help_text.php:1304
 msgid "The PGV to webtrees wizard is an automated process to assist administrators make the move from a PGV installation to a new webtrees one.  It will transfer all PGV GEDCOM and other database information directly to your new webtrees database.  The following requirements are necessary:"
-msgstr "Майстер перенесення PGV в webtrees представляє собою автоматизований процес, який допоможе адміністраторам зробити перехід PGV до нової системи <b>webtrees</B>. Це дозволить перемістити всі файли GEDCOM та іншої інформації, що міститься в базі даних PGV безпосередньо в нову базу даних <b>webtrees</B>. Потрібні наступні параметри:"
+msgstr "Майстер перенесення PGV в webtrees представляє собою автоматизований процес, який допоможе адміністраторам зробити перехід PGV до нової системи webtrees. Це дозволить перемістити всі файли GEDCOM та іншої інформації, що міститься в базі даних PGV безпосередньо в нову базу даних webtrees. Потрібні наступні параметри:"
 
 #: save.php:260
 #, php-format
