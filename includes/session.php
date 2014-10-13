@@ -211,13 +211,6 @@ if (!ini_get('date.timezone')) {
 	date_default_timezone_set(@date_default_timezone_get());
 }
 
-// Emulate PHP 5.4 feature that allows us to create/use an object without a temporary.
-// PHP 5.4: (new X)->y()
-// PHP 5.3: with(new X)->y()
-function with($x) {
-	return $x;
-}
-
 // Use the patchwork/utf8 library to:
 // 1) set all PHP defaults to UTF-8
 // 2) create shims for missing mb_string functions such as mb_strlen()
