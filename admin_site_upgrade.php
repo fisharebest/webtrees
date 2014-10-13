@@ -383,6 +383,7 @@ echo '<li>', WT_I18N::translate('Check file permissions…');
 
 reset_timeout();
 $iterator = new RecursiveDirectoryIterator($zip_dir);
+$iterator->setFlags(RecursiveDirectoryIterator::SKIP_DOTS);
 foreach (new RecursiveIteratorIterator($iterator) as $file) {
 	$file = WT_ROOT . substr($file, strlen($zip_dir) + 1);
 	if (file_exists($file) && (!is_readable($file) || !is_writable($file))) {
