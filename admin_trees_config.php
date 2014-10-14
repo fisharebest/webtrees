@@ -1092,7 +1092,7 @@ $controller
 						<?php echo WT_I18N::translate('Hit counters'), help_link('SHOW_COUNTER'); ?>
 					</td>
 					<td>
-						<?php echo radio_buttons('NEW_SHOW_COUNTER', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $SHOW_COUNTER); ?>
+						<?php echo radio_buttons('NEW_SHOW_COUNTER', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $WT_TREE->getPreference('SHOW_COUNTER')); ?>
 					</td>
 				</tr>
 				<tr>
