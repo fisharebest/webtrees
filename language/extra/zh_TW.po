@@ -7293,7 +7293,7 @@ msgstr ""
 
 #: setup.php:185
 msgid "If your server’s security policy permits it, you will be able to request increased memory or CPU time using the webtrees administration page.  Otherwise, you will need to contact your server’s administrator."
-msgstr "如果您的伺服器的安全策略允許，您將可以使用<b>webtrees</ B>管理頁面,增加記憶體或CPU時間使用。否則，您將需要您的伺服器管理員聯繫。"
+msgstr "如果您的伺服器的安全策略允許，您將可以使用webtrees管理頁面,增加記憶體或CPU時間使用。否則，您將需要您的伺服器管理員聯繫。"
 
 #. I18N: Help text for the "Website URL" site configuration setting
 #: help_text.php:829
@@ -15684,7 +15684,7 @@ msgstr ""
 
 #: setup.php:399
 msgid "You need to set up an administrator account.  This account can control all aspects of this webtrees installation.  Please choose a strong password."
-msgstr "您需要設置一個管理員帳戶。此帳戶可以控制<B> webtrees</ B>安裝。請選擇一個強密碼。"
+msgstr "您需要設置一個管理員帳戶。此帳戶可以控制webtrees安裝。請選擇一個強密碼。"
 
 #: login.php:509
 msgid "You now need to review the account details, and set the “approved” status to “yes”."
@@ -19679,7 +19679,7 @@ msgstr "webtrees需要MySQL資料庫 版本為%s以上"
 #. I18N: Help text for the “Messages” site configuration setting
 #: help_text.php:734
 msgid "webtrees needs to send emails, such as password reminders and site notifications.  To do this, it can use this server’s built in PHP mail facility (which is not always available) or an external SMTP (mail-relay) service, for which you will need to provide the connection details."
-msgstr "<b> webtrees</b>需要發送的電子郵件，如密碼提醒和網站通知。要做到這一點，就可以使用此伺服器的內建PHP mail功能（這不是永遠可用）或外部SMTP（郵件中繼）服務，您需要提供連接的細節。"
+msgstr "webtrees需要發送的電子郵件，如密碼提醒和網站通知。要做到這一點，就可以使用此伺服器的內建PHP mail功能（這不是永遠可用）或外部SMTP（郵件中繼）服務，您需要提供連接的細節。"
 
 #: admin_trees_config.php:394 help_text.php:778
 msgid "webtrees reply address"

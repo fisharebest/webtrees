@@ -2434,7 +2434,8 @@ msgstr "בת מצווח"
 
 #. I18N: Name of a module
 #: modules_v3/batch_update/admin_batch_update.php:62
-#: modules_v3/batch_update/module.php:26 modules_v3/batch_update/module.php:40
+#: modules_v3/batch_update/module.php:26
+#: modules_v3/batch_update/module.php:40
 #: modules_v3/googlemap/module.php:2505
 msgid "Batch update"
 msgstr "עדכון אצווה"
@@ -3231,7 +3232,7 @@ msgstr "גורם המוות"
 
 #: admin_trees_renumber.php:278
 msgid "Caution!  This may take a long time.  Be patient."
-msgstr ""
+msgstr "התראה: יתכן שזה יקח זמן רב. סבלנות."
 
 #: admin_site_upgrade.php:204
 msgid "Caution: old modules may not work, or they may prevent webtrees from working."
@@ -3885,7 +3886,7 @@ msgstr "העתק"
 #: admin_trees_merge.php:182
 #, php-format
 msgid "Copy all the records from %1$s into %2$s."
-msgstr ""
+msgstr "העתק את כל הרשומות מ-%1$s ל-%2$s."
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:422
@@ -7351,7 +7352,7 @@ msgstr "ייבא עץ משפחה"
 #: admin_trees_renumber.php:260
 #: admin_trees_merge.php:73
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
-msgstr ""
+msgstr "בעץ משפחה, לכל רשומה יש מספר התיחסות פנימי (הנקרא ”XREF”), כגון ”F123” או ”R14”."
 
 #: help_text.php:348
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet.  This might be of use with Japanese names, where three different alphabets may occur."
@@ -8889,7 +8890,7 @@ msgstr "כספית"
 
 #: admin_trees_merge.php:30 themes/_administration/header.php:122
 msgid "Merge family trees"
-msgstr ""
+msgstr "מזג עצי משפחה"
 
 #: admin_site_merge.php:266
 msgid "Merge from ID:"
@@ -10469,7 +10470,7 @@ msgstr "תצלום"
 
 #: admin_pgv_to_wt.php:147
 msgid "PhpGedView might be installed in one of these folders:"
-msgstr ""
+msgstr "יתכן ש-PhpGedView הותקן באחת התיקיות הבאות:"
 
 #: admin_pgv_to_wt.php:65
 msgid "PhpGedView must use the same database as webtrees."
@@ -11330,7 +11331,7 @@ msgstr "רינו, נבדה"
 #: admin_trees_merge.php:87 admin_trees_merge.php:92
 #: admin_trees_renumber.php:29
 msgid "Renumber family tree"
-msgstr ""
+msgstr "מספר מחדש עץ משפחה"
 
 #: admin_trees_places.php:101 search.php:119
 msgid "Replace with"
@@ -12532,11 +12533,10 @@ msgstr "מציג %1$s עד %2$s מתוך %3$s"
 
 #: library/WT/Controller/Fanchart.php:349
 #: library/WT/Controller/Hourglass.php:398 pedigree.php:228
-#, fuzzy
 msgid "Sibling"
 msgid_plural "Siblings"
-msgstr[0] "אח/ות"
-msgstr[1] "אח/ות"
+msgstr[0] "אח או אחות"
+msgstr[1] "אחים"
 
 #: library/WT/Controller/Hourglass.php:397 pedigree.php:225
 msgid "Siblings"
@@ -12553,7 +12553,7 @@ msgstr "סרגל צדדי"
 
 #: admin_module_sidebar.php:30
 msgid "Sidebars"
-msgstr ""
+msgstr "סרגלים צדדיים"
 
 #: library/WT/Stats.php:4979
 msgid "Sierra Leone"
@@ -13263,7 +13263,7 @@ msgstr "הפרטים של האדם הזה הם אישיים."
 
 #: admin_trees_merge.php:176
 msgid "The family trees were merged successfully."
-msgstr ""
+msgstr "עצי המשפחה מוזגו בהצלחה."
 
 #. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
 #: action.php:160
@@ -13465,7 +13465,7 @@ msgstr "הקידומת היא אופציונלית, אך מומלצת. על יד
 #: admin_trees_renumber.php:237
 #, php-format
 msgid "The record %1$s was renamed to %2$s."
-msgstr ""
+msgstr "הרשומה%1$s  שונתה ל-%2$s."
 
 #: action.php:100
 msgid "The record was copied to the clipboard."
@@ -13481,7 +13481,7 @@ msgstr "תצורת השרת תקינה."
 
 #: admin_trees_renumber.php:252
 msgid "The server’s time limit was reached."
-msgstr ""
+msgstr "הגעת למגבלת הזמן של השרת."
 
 #: site-offline.php:78
 msgid "The site is down for maintenance.  You should <a href=\"index.php\">try again</a> in a few minutes."
@@ -13526,8 +13526,8 @@ msgstr "הזמן בשניות שמושב webtrees נשאר פעיל לפני ש�
 #, php-format
 msgid "The two family trees have %1$s record which use the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "בשני עצי המשפחה יש רשומה אחת המשתמשת באותו ”XREF”."
+msgstr[1] "בשני עצי המשפחה יש %1$s  רשומות המשתמשות באותו ”XREF”."
 
 #: admin_site_upgrade.php:490
 msgid "The upgrade is complete."
@@ -13727,8 +13727,8 @@ msgstr "המשפחה רשומה ללא ילדים"
 #, php-format
 msgid "This family tree has %s record which uses the same “XREF” as another family tree."
 msgid_plural "This family tree has %s records which use the same “XREF” as another family tree."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "בעץ משפחה זה יש רשומה אחת המשתמשת באותו ”XREF” כמו עץ משפחה אחר."
+msgstr[1] "בעץ משפחה זה יש %s רשומות המשתמשות באותו ”XREF” כמו עץ משפחה אחר."
 
 #: modules_v3/random_media/module.php:189
 msgid "This family tree has no images to display."
@@ -15600,11 +15600,11 @@ msgstr "תוכל להפעיל עיצובים אלה מחדש לאחר השדרו
 
 #: admin_trees_renumber.php:261
 msgid "You can renumber the records in a family tree, so that these internal identification numbers are not duplicated in any other family tree."
-msgstr ""
+msgstr "תוכל למספר מחדש את הרשומות בעץ משפחה, כך שמספרי הזיהוי הפנימיים האלה אינם משוכפלים באף עץ משפחה אחר."
 
 #: admin_trees_renumber.php:274
 msgid "You can renumber this family tree."
-msgstr ""
+msgstr "ניתן למספר מחדש עץ משפחה זה."
 
 #: help_text.php:643 help_text.php:682
 msgid "You can request a higher or lower limit, although the server may ignore this request."
@@ -15701,7 +15701,7 @@ msgstr "עליך לספק כותרת מקור"
 
 #: admin_trees_merge.php:83
 msgid "You must renumber the records in one of the trees before you can merge them."
-msgstr ""
+msgstr "עליך למספר מחדש את הרשומות באחד מהעצים לפני שתוכל למזג אותם."
 
 #: modules_v3/charts/module.php:139
 msgid "You must select an individual and chart type in the block configuration settings."
@@ -16820,7 +16820,7 @@ msgstr "מגדר"
 #. I18N: button label
 #: admin_trees_renumber.php:275
 msgid "go"
-msgstr ""
+msgstr "המשך"
 
 #. I18N: button label
 #: edit_interface.php:2740

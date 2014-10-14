@@ -19986,7 +19986,7 @@ msgstr "…"
 #~ msgstr "Uuenda CHAN kirje"
 
 #~ msgid "Use this field for storing an abbreviated version of a title.  This field is used in conjunction with the title field on sources.  By default webtrees will first use the title and then the abbreviated title.<br><br>According to the GEDCOM 5.5 specification, \"this entry is to provide a short title used for sorting, filing, and retrieving source records (pg 62).\"<br><br>In webtrees the abbreviated title is optional, but in other genealogical programs it is required."
-#~ msgstr "Kasuta seda välja lühendatud pealkirja jaoks. Seda välja kasutatakse allikates koostöös pealkirjaga. Algseadetes kasutab webtrees esmalt pealkirja ja seejärel lühendatud pealkirja.<br><br>GEDCOM 5.5 spetsifikatsiooni kohaselt \"see väli on lühikese pealkirja jaoks mida kasutada allikakirjete sorteerimisel, arhiveerimisel ja kasutamisel (lk 62).\"<br><br><b>webtrees</b> kasutab seda välja valikulisena, kuid teistes genealoogiaprogrammides on see kohustuslik."
+#~ msgstr "Kasuta seda välja lühendatud pealkirja jaoks. Seda välja kasutatakse allikates koostöös pealkirjaga. Algseadetes kasutab webtrees esmalt pealkirja ja seejärel lühendatud pealkirja.<br><br>GEDCOM 5.5 spetsifikatsiooni kohaselt \"see väli on lühikese pealkirja jaoks mida kasutada allikakirjete sorteerimisel, arhiveerimisel ja kasutamisel (lk 62).\"<br><br>webtrees kasutab seda välja valikulisena, kuid teistes genealoogiaprogrammides on see kohustuslik."
 
 #~ msgid "Users with warnings"
 #~ msgstr "Kasutajad hoiatustega"

@@ -31,8 +31,8 @@ if (!defined('WT_SCRIPT_NAME')) {
 }
 
 // Identify ourself
-define('WT_WEBTREES',     'webtrees');
-define('WT_VERSION',      '1.6.0-dev');
+define('WT_WEBTREES', 'webtrees');
+define('WT_VERSION',  '1.6.1-dev');
 
 // External URLs
 define('WT_WEBTREES_URL',  'http://www.webtrees.net/');
@@ -209,13 +209,6 @@ require WT_ROOT.'library/autoload.php';
 // PHP requires a time zone to be set in php.ini
 if (!ini_get('date.timezone')) {
 	date_default_timezone_set(@date_default_timezone_get());
-}
-
-// Emulate PHP 5.4 feature that allows us to create/use an object without a temporary.
-// PHP 5.4: (new X)->y()
-// PHP 5.3: with(new X)->y()
-function with($x) {
-	return $x;
 }
 
 // Use the patchwork/utf8 library to:
