@@ -147,7 +147,7 @@ for ($d=1; $d<=$days_in_month; $d++) {
 	echo ' | ';
 }
 $tmp=new WT_Date($today->format('%@ %A %O %E')); // Need a WT_Date object to get localisation
-echo "<a href=\"calendar.php?cal={$cal}&amp;day={$today->d}&amp;month={$today_month}&amp;year={$today->y}&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action={$action}\"><b>".$tmp->Display(false, NULL, array()).'</b></a>';
+echo "<a href=\"calendar.php?cal={$cal}&amp;day={$today->d}&amp;month={$today_month}&amp;year={$today->y}&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action={$action}\"><b>".$tmp->Display().'</b></a>';
 echo '</td></tr>';
 // Month selector
 echo '<tr><td class="descriptionbox vmiddle">';
