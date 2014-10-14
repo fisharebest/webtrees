@@ -18,11 +18,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 class WT_Soundex {
 	public static function getAlgorithms() {
 		return array(
@@ -658,7 +653,7 @@ class WT_Soundex {
 
 	private static function DMSoundex($name) {
 		// Apply special transformation rules to the input string
-		$name = utf8_strtoupper($name);
+		$name = WT_I18N::strtoupper($name);
 		foreach (self::$transformNameTable as $transformRule) {
 			$name = str_replace($transformRule[0], $transformRule[1], $name);
 		}

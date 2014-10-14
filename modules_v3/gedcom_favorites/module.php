@@ -21,10 +21,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
+use Rhumsaa\Uuid\Uuid;
 
 // Note that the user favorites module simply extends this module, so ensure that the
 // logic works for both.
@@ -52,7 +49,6 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 			if ($favorite_id) {
 				self::deleteFavorite($favorite_id);
 			}
-			unset($_GET['action']);
 			break;
 		case 'addfav':
 			$gid      = WT_Filter::get('gid', WT_REGEX_XREF);
@@ -84,7 +80,6 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 					'title'     => $favtitle ? $favtitle : $url,
 				));
 			}
-			unset($_GET['action']);
 			break;
 		}
 
@@ -112,7 +107,8 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 
 		if (WT_USER_ID) {
 			$controller
-				->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');
+				->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+				->addInlineJavascript('autocomplete();');
 		}
 
 		$content = '';
@@ -120,7 +116,7 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 		if ($userfavs) {
 			foreach ($userfavs as $key=>$favorite) {
 				if (isset($favorite['id'])) $key=$favorite['id'];
-				$removeFavourite = '<a class="font9" href="index.php?ctype='.$ctype.'&amp;action=deletefav&amp;favorite_id='.$key.'" onclick="return confirm(\''.WT_I18N::translate('Are you sure you want to remove this item from your list of Favorites?').'\');">'.WT_I18N::translate('Remove').'</a> ';
+				$removeFavourite = '<a class="font9" href="index.php?ctype='.$ctype.'&amp;action=deletefav&amp;favorite_id='.$key.'" onclick="return confirm(\''.WT_I18N::translate('Are you sure you want to remove this item from your list of favorites?').'\');">'.WT_I18N::translate('Remove').'</a> ';
 				if ($favorite['type']=='URL') {
 					$content .= '<div id="boxurl'.$key.'.0" class="person_box">';
 					if ($ctype=='user' || WT_USER_GEDCOM_ADMIN) $content .= $removeFavourite;
@@ -145,7 +141,7 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 							$content .= '">';
 							if ($ctype=="user" || WT_USER_GEDCOM_ADMIN) $content .= $removeFavourite;
 							ob_start();
-							print_pedigree_person($record, $style, 1, $key);
+							print_pedigree_person($record, $style);
 							$content .= ob_get_clean();
 							$content .= $favorite['note'];
 							$content .= '</div>';
@@ -163,7 +159,7 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 			}
 		}
 		if ($ctype=='user' || WT_USER_GEDCOM_ADMIN) {
-			$uniqueID = (int)(microtime() * 1000000); // This block can theoretically appear multiple times, so use a unique ID.
+			$uniqueID = Uuid::uuid4(); // This block can theoretically appear multiple times, so use a unique ID.
 			$content .= '<div class="add_fav_head">';
 			$content .= '<a href="#" onclick="return expand_layer(\'add_fav'.$uniqueID.'\');">'.WT_I18N::translate('Add a new favorite').'<i id="add_fav'.$uniqueID.'_img" class="icon-plus"></i></a>';
 			$content .= '</div>';
@@ -175,7 +171,7 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= '<div class="add_fav_ref">';
 			$content .= '<input type="radio" name="fav_category" value="record" checked="checked" onclick="jQuery(\'#gid'.$uniqueID.'\').removeAttr(\'disabled\'); jQuery(\'#url, #favtitle\').attr(\'disabled\',\'disabled\').val(\'\');">';
 			$content .= '<label for="gid'.$uniqueID.'">'.WT_I18N::translate('Enter an individual, family, or source ID').'</label>';
-			$content .= '<input class="pedigree_form" type="text" name="gid" id="gid'.$uniqueID.'" size="5" value="">';
+			$content .= '<input class="pedigree_form" data-autocomplete-type="IFSRO" type="text" name="gid" id="gid'.$uniqueID.'" size="5" value="">';
 			$content .= ' '.print_findindi_link('gid'.$uniqueID);
 			$content .= ' '.print_findfamily_link('gid'.$uniqueID);
 			$content .= ' '.print_findsource_link('gid'.$uniqueID);

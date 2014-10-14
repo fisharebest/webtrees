@@ -21,11 +21,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
 	// Extend class WT_Module
 	public function getTitle() {
@@ -39,12 +34,12 @@ class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function getBlock($block_id, $template=true, $cfg=null) {
-		global $ctype, $SURNAME_LIST_STYLE;
+		global $WT_TREE, $ctype, $SURNAME_LIST_STYLE;
 
 		require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
-		$COMMON_NAMES_REMOVE=get_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_REMOVE');
-		$COMMON_NAMES_THRESHOLD=get_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_THRESHOLD');
+		$COMMON_NAMES_REMOVE    = $WT_TREE->getPreference('COMMON_NAMES_REMOVE');
+		$COMMON_NAMES_THRESHOLD = $WT_TREE->getPreference('COMMON_NAMES_THRESHOLD');
 
 		$num=get_block_setting($block_id, 'num', 10);
 		$infoStyle=get_block_setting($block_id, 'infoStyle', 'table');
@@ -64,7 +59,7 @@ class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
 		if ($COMMON_NAMES_REMOVE) {
 			foreach (preg_split("/[,; ]+/", $COMMON_NAMES_REMOVE) as $delname) {
 				unset($top_surnames[$delname]);
-				unset($top_surnames[utf8_strtoupper($delname)]);
+				unset($top_surnames[WT_I18N::strtoupper($delname)]);
 			}
 		}
 
@@ -93,7 +88,7 @@ class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
 
 		switch ($infoStyle) {
 		case 'tagcloud':
-			uksort($all_surnames,'utf8_strcasecmp');
+			uksort($all_surnames,array('WT_I18N', 'strcasecmp'));
 			$content=format_surname_tagcloud($all_surnames, 'indilist.php', true);
 			break;
 		case 'list':

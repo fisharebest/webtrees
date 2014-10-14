@@ -40,7 +40,7 @@ if ($display=='hierarchy') {
 		$controller->setPageTitle(WT_I18N::translate('Place hierarchy'));
 	}
 } else {
-	$controller->setPageTitle(WT_I18N::translate('Place List'));
+	$controller->setPageTitle(WT_I18N::translate('Place list'));
 }
 
 $controller->pageHeader();
@@ -59,7 +59,7 @@ case 'list':
 		echo '<table class="list_table">';
 		echo '<tr><td class="list_label" ';
 		echo ' colspan="', $num_places>20 ? 3 : 2, '"><i class="icon-place"></i> ';
-		echo WT_I18N::translate('Place List');
+		echo WT_I18N::translate('Place list');
 		echo '</td></tr><tr><td class="list_value_wrap"><ul>';
 		foreach ($list_places as $n=>$list_place) {
 			echo '<li><a href="', $list_place->getURL(), '">', $list_place->getReverseName(), '</a></li>';
@@ -86,7 +86,7 @@ case 'hierarchy':
 	} else {
 		$gm_module = null;
 	}
-	
+
 	// Find this place and its ID
 	$place=new WT_Place(implode(', ', array_reverse($parent)), WT_GED_ID);
 	$place_id=$place->getPlaceId();
@@ -108,7 +108,7 @@ case 'hierarchy':
 			echo ', <a href="', $parent_place->getURL(), '" dir="auto">', $parent_place->getPlaceName(), '</a>';
 			$parent_place=$parent_place->getParentPlace();
 		}
-		echo ', <a href="', WT_SCRIPT_NAME, '">', WT_I18N::translate('Top Level'), '</a>';
+		echo ', <a href="', WT_SCRIPT_NAME, '">', WT_I18N::translate('Top level'), '</a>';
 	}
 	echo '</h2>';
 
@@ -124,7 +124,7 @@ case 'hierarchy':
 				$placelevels = ', ' . $parent[$j] . $placelevels;
 			}
 		}
-		$gm_module->create_map($placelevels);
+		$gm_module->createMap($placelevels);
 	} elseif (array_key_exists('places_assistant', WT_Module::getActiveModules())) {
 		// Places Assistant is a custom/add-on module that was once part of the core code.
 		places_assistant_WT_Module::display_map($level, $parent);
@@ -243,7 +243,7 @@ case 'hierarchy':
 
 	if ($gm_module && $gm_module->getSetting('GM_PLACE_HIERARCHY')) {
 		echo '<link type="text/css" href="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/css/wt_v3_googlemap.css" rel="stylesheet">';
-		$gm_module->map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $place_names);
+		$gm_module->mapScripts($numfound, $level, $parent, $linklevels, $placelevels, $place_names);
 	}
 	break;
 }

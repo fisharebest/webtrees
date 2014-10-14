@@ -21,12 +21,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
-require_once WT_ROOT.'includes/functions/functions_export.php';
+use WT\Log;
 
 // Tidy up a gedcom record on import, so that we can access it consistently/efficiently.
 function reformat_record_import($rec) {
@@ -584,13 +579,14 @@ function reformat_record_import($rec) {
 }
 
 /**
-* import record into database
-*
-* this function will parse the given gedcom record and add it to the database
-* @param string $gedrec the raw gedcom record to parse
-* @param integer $ged_id import the record into this gedcom
-* @param boolean $update whether or not this is an updated record that has been accepted
-*/
+ * import record into database
+ *
+ * this function will parse the given gedcom record and add it to the database
+ *
+ * @param string  $gedrec the raw gedcom record to parse
+ * @param integer $ged_id import the record into this gedcom
+ * @param boolean $update whether or not this is an updated record that has been accepted
+ */
 function import_record($gedrec, $ged_id, $update) {
 	global $USE_RIN, $GENERATE_UIDS, $keep_media;
 
@@ -630,7 +626,7 @@ function import_record($gedrec, $ged_id, $update) {
 		list(,$xref, $type) = $match;
 		// check for a _UID, if the record doesn't have one, add one
 		if ($GENERATE_UIDS && !strpos($gedrec, "\n1 _UID ")) {
-			$gedrec .= "\n1 _UID " . uuid();
+			$gedrec .= "\n1 _UID " . WT_Gedcom_Tag::createUid();
 		}
 	} elseif (preg_match('/0 (HEAD|TRLR)/', $gedrec, $match)) {
 		$type = $match[1];
@@ -676,7 +672,6 @@ function import_record($gedrec, $ged_id, $update) {
 		// Convert inline media into media objects
 		$gedrec = convert_inline_media($ged_id, $gedrec);
 
-		$record = new WT_Family($xref, $gedrec, null, $ged_id);
 		if (preg_match('/\n1 HUSB @('.WT_REGEX_XREF.')@/', $gedrec, $match)) {
 			$husb = $match[1];
 		} else {
@@ -687,11 +682,7 @@ function import_record($gedrec, $ged_id, $update) {
 		} else {
 			$wife = '';
 		}
-		if ($nchi = preg_match_all('/\n1 CHIL @('.WT_REGEX_XREF.')@/', $gedrec, $match)) {
-			$chil = implode(';', $match[1]).';';
-		} else {
-			$chil = '';
-		}
+		$nchi = preg_match_all('/\n1 CHIL @('.WT_REGEX_XREF.')@/', $gedrec, $match);
 		if (preg_match('/\n1 NCHI (\d+)/', $gedrec, $match)) {
 			$nchi = max($nchi, $match[1]);
 		}
@@ -751,7 +742,6 @@ function import_record($gedrec, $ged_id, $update) {
 	case 'TRLR':
 	case 'SUBM':
 	case 'SUBN':
-		$record = new WT_GedcomRecord($xref, $gedrec, null, $ged_id);
 		$sql_insert_other->execute(array($xref, $ged_id, $type, $gedrec));
 		// Update the cross-reference/index tables.
 		update_links ($xref, $ged_id, $gedrec);
@@ -767,10 +757,12 @@ function import_record($gedrec, $ged_id, $update) {
 }
 
 /**
-* extract all places from the given record and insert them
-* into the places table
-* @param string $gedrec
-*/
+ * extract all places from the given record and insert them into the places table
+ *
+ * @param        $gid
+ * @param        $ged_id
+ * @param string $gedrec
+ */
 function update_places($gid, $ged_id, $gedrec) {
 	global $placecache;
 
@@ -802,7 +794,7 @@ function update_places($gid, $ged_id, $gedrec) {
 	$pt = preg_match_all("/^[2-9] PLAC (.+)/m", $gedrec, $match, PREG_SET_ORDER);
 	for ($i = 0; $i < $pt; $i++) {
 		$place = trim($match[$i][1]);
-		$lowplace = utf8_strtolower($place);
+		$lowplace = WT_I18N::strtolower($place);
 		//-- if we have already visited this place for this person then we don't need to again
 		if (isset($personplace[$lowplace])) {
 			continue;
@@ -814,7 +806,7 @@ function update_places($gid, $ged_id, $gedrec) {
 		$parent_id = 0;
 		$search = true;
 
-		foreach ($secalp as $indexval => $place) {
+		foreach ($secalp as $place) {
 			$place = trim($place);
 			$key = strtolower($place."_".$parent_id);
 			//-- if this place has already been added then we don't need to add it again
@@ -871,9 +863,9 @@ function update_dates($xref, $ged_id, $gedrec) {
 				$fact=$tmatch[1];
 			}
 			$date=new WT_Date($match[2]);
-			$sql_insert_date->execute(array($date->date1->d, $date->date1->Format('%O'), $date->date1->m, $date->date1->y, $date->date1->minJD, $date->date1->maxJD, $fact, $xref, $ged_id, $date->date1->Format('%@')));
+			$sql_insert_date->execute(array($date->date1->d, $date->date1->format('%O'), $date->date1->m, $date->date1->y, $date->date1->minJD, $date->date1->maxJD, $fact, $xref, $ged_id, $date->date1->format('%@')));
 			if ($date->date2) {
-				$sql_insert_date->execute(array($date->date2->d, $date->date2->Format('%O'), $date->date2->m, $date->date2->y, $date->date2->minJD, $date->date2->maxJD, $fact, $xref, $ged_id, $date->date2->Format('%@')));
+				$sql_insert_date->execute(array($date->date2->d, $date->date2->format('%O'), $date->date2->m, $date->date2->y, $date->date2->minJD, $date->date2->maxJD, $fact, $xref, $ged_id, $date->date2->format('%@')));
 			}
 		}
 	}
@@ -994,12 +986,13 @@ function create_media_object($level, $gedrec, $ged_id) {
 }
 
 /**
-* delete a gedcom from the database
-*
-* deletes all of the imported data about a gedcom from the database
-* @param string $ged_id the gedcom to remove from the database
-* @param boolean $keepmedia Whether or not to keep media and media links in the tables
-*/
+ * delete a gedcom from the database
+ *
+ * deletes all of the imported data about a gedcom from the database
+ *
+ * @param string  $ged_id    the gedcom to remove from the database
+ * @param boolean $keepmedia Whether or not to keep media and media links in the tables
+ */
 function empty_database($ged_id, $keepmedia) {
 	WT_DB::prepare("DELETE FROM `##individuals` WHERE i_file   =?")->execute(array($ged_id));
 	WT_DB::prepare("DELETE FROM `##families`    WHERE f_file   =?")->execute(array($ged_id));
@@ -1041,7 +1034,7 @@ function accept_all_changes($xref, $ged_id) {
 			" SET status='accepted'".
 			" WHERE status='pending' AND xref=? AND gedcom_id=?"
 		)->execute(array($xref, $ged_id));
-		AddToLog("Accepted change {$change->change_id} for {$xref} / {$change->gedcom_name} into database", 'edit');
+		Log::addEditLog("Accepted change {$change->change_id} for {$xref} / {$change->gedcom_name} into database");
 	}
 }
 
@@ -1055,17 +1048,18 @@ function reject_all_changes($xref, $ged_id) {
 }
 
 /**
-* update a record in the database
-* @param string $gedrec
-*/
+ * update a record in the database
+ *
+ * @param string $gedrec
+ * @param int    $ged_id
+ * @param bool   $delete
+ */
 function update_record($gedrec, $ged_id, $delete) {
-	global $GEDCOM;
-
 	if (preg_match('/^0 @('.WT_REGEX_XREF.')@ ('.WT_REGEX_TAG.')/', $gedrec, $match)) {
-		list(,$gid, $type)=$match;
+		list(,$gid, $type) = $match;
 	} else {
 		echo "ERROR: Invalid gedcom record.";
-		return false;
+		return;
 	}
 
 	// TODO deleting unlinked places can be done more efficiently in a single query
@@ -1079,11 +1073,11 @@ function update_record($gedrec, $ged_id, $delete) {
 
 	//-- delete any unlinked places
 	foreach ($placeids as $p_id) {
-		$num=
+		$num =
 			WT_DB::prepare("SELECT count(pl_p_id) FROM `##placelinks` WHERE pl_p_id=? AND pl_file=?")
 			->execute(array($p_id, $ged_id))
 			->fetchOne();
-		if ($num==0) {
+		if ($num == 0) {
 			WT_DB::prepare("DELETE FROM `##places` WHERE p_id=? AND p_file=?")->execute(array($p_id, $ged_id));
 		}
 	}
@@ -1112,54 +1106,4 @@ function update_record($gedrec, $ged_id, $delete) {
 	if (!$delete) {
 		import_record($gedrec, $ged_id, true);
 	}
-}
-
-// Create a pseudo-random UUID
-function uuid() {
-	// Official Format with dashes ('%04x%04x-%04x-%04x-%04x-%04x%04x%04x')
-	// Most users want this format (for compatibility with PAF)
-	$fmt='%04X%04X%04X%04X%04X%04X%04X%04X';
-
-	$uid = sprintf(
-		$fmt,
-    // 32 bits for "time_low"
-    mt_rand(0, 0xffff), mt_rand(0, 0xffff),
-
-    // 16 bits for "time_mid"
-    mt_rand(0, 0xffff),
-
-    // 16 bits for "time_hi_and_version",
-    // four most significant bits holds version number 4
-    mt_rand(0, 0x0fff) | 0x4000,
-
-    // 16 bits, 8 bits for "clk_seq_hi_res",
-    // 8 bits for "clk_seq_low",
-    // two most significant bits holds zero and one for variant RFC4122
-    mt_rand(0, 0x3fff) | 0x8000,
-
-    // 48 bits for "node"
-    mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0xffff)
-    );
-	return sprintf('%s%s', $uid, getCheckSums($uid));
-}
-
-/**
-* Produces checksums compliant with a Family Search guideline from 2007
-* these checksums are compatible with PAF, Legacy, RootsMagic and other applications
-* following these guidelines. This prevents dropping and recreation of UID's
-*
-* @author Veit Olschinski
-* @param string $uid the 32 hexadecimal character long uid
-* @return string containing the checksum string for the uid
-*/
-function getCheckSums($uid) {
-	$checkA=0; // a sum of the bytes
-	$checkB=0; // a sum of the incremental values of checkA
-
-	// Compute both checksums
-	for ($i = 0; $i < 32; $i+=2) {
-		$checkA += hexdec(substr($uid, $i, 2));
-		$checkB += $checkA & 0xFF;
-	}
-	return strtoupper(sprintf('%s%s', substr(dechex($checkA), -2), substr(dechex($checkB), -2)));
 }

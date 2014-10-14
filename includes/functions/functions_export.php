@@ -21,11 +21,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 // Tidy up a gedcom record on export, for compatibility/portability
 function reformat_record_export($rec) {
 	global $WORD_WRAPPED_NOTES;
@@ -43,10 +38,9 @@ function reformat_record_export($rec) {
 		// Split long lines
 		// The total length of a GEDCOM line, including level number, cross-reference number,
 		// tag, value, delimiters, and terminator, must not exceed 255 (wide) characters.
-		// Use quick strlen() check before using slower utf8_strlen() check
-		if (strlen($line)>WT_GEDCOM_LINE_LENGTH && utf8_strlen($line)>WT_GEDCOM_LINE_LENGTH) {
+		if (mb_strlen($line) > WT_GEDCOM_LINE_LENGTH) {
 			list($level, $tag)=explode(' ', $line, 3);
-			if ($tag!='CONT' && $tag!='CONC') {
+			if ($tag != 'CONT' && $tag != 'CONC') {
 				$level++;
 			}
 			do {
@@ -54,31 +48,31 @@ function reformat_record_export($rec) {
 				$pos=WT_GEDCOM_LINE_LENGTH;
 				if ($WORD_WRAPPED_NOTES) {
 					// Split on a space, and remove it (for compatibility with some desktop apps)
-					while ($pos && utf8_substr($line, $pos-1, 1)!=' ') {
+					while ($pos && mb_substr($line, $pos-1, 1)!=' ') {
 						--$pos;
 					}
-					if ($pos==strpos($line, ' ', 3)+1) {
+					if ($pos == strpos($line, ' ', 3) + 1) {
 						// No spaces in the data! Can’t split it :-(
 						break;
 					} else {
-						$newrec.=utf8_substr($line, 0, $pos-1).WT_EOL;
-						$line=$level.' CONC '.utf8_substr($line, $pos);
+						$newrec .= mb_substr($line, 0, $pos - 1).WT_EOL;
+						$line=$level.' CONC ' . mb_substr($line, $pos);
 					}
 				} else {
 					// Split on a non-space (standard gedcom behaviour)
-					while ($pos && utf8_substr($line, $pos-1, 1)==' ') {
+					while ($pos && mb_substr($line, $pos-1, 1) == ' ') {
 						--$pos;
 					}
-					if ($pos==strpos($line, ' ', 3)) {
+					if ($pos == strpos($line, ' ', 3)) {
 						// No non-spaces in the data! Can’t split it :-(
 						break;
 					}
-					$newrec.=utf8_substr($line, 0, $pos).WT_EOL;
-					$line=$level.' CONC '.utf8_substr($line, $pos);
+					$newrec .= mb_substr($line, 0, $pos) . WT_EOL;
+					$line = $level . ' CONC ' . mb_substr($line, $pos);
 				}
-			} while (utf8_strlen($line)>WT_GEDCOM_LINE_LENGTH);
+			} while (mb_strlen($line) > WT_GEDCOM_LINE_LENGTH);
 		}
-		$newrec.=$line.WT_EOL;
+		$newrec .= $line . WT_EOL;
 	}
 	return $newrec;
 }

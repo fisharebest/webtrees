@@ -21,10 +21,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
+use WT\User;
 
 class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 	// Extend class WT_Module
@@ -44,8 +41,8 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 		require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 
 		// Block actions
-		$action     = WT_Filter::get('action');
-		$message_id = WT_Filter::getArray('message_id');
+		$action     = WT_Filter::post('action');
+		$message_id = WT_Filter::postArray('message_id');
 		if ($action=='deletemessage') {
 			foreach ($message_id as $msg_id) {
 				deleteMessage($msg_id);
@@ -64,14 +61,14 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 		$id=$this->getName().$block_id;
 		$class=$this->getName().'_block';
 		$title=WT_I18N::plural('%s message', '%s messages',count($messages), WT_I18N::number(count($messages)));
-		$content='<form name="messageform" action="index.php?ctype='.$ctype.'" method="get" onsubmit="return confirm(\''.WT_I18N::translate('Are you sure you want to delete this message?  It cannot be retrieved later.').'\');">';
-		if (get_user_count()>1) {
-			$content.='<br>'.WT_I18N::translate('Send message')." <select name=\"touser\">";
+		$content='<form name="messageform" method="post" onsubmit="return confirm(\''.WT_I18N::translate('Are you sure you want to delete this message?  It cannot be retrieved later.').'\');">';
+		if (count(User::all()) > 1) {
+			$content.='<br>'.WT_I18N::translate('Send a message')." <select name=\"touser\">";
 			$content.='<option value="">' . WT_I18N::translate('&lt;select&gt;') . '</option>';
-			foreach (get_all_users() as $user_id=>$user_name) {
-				if ($user_id!=WT_USER_ID && get_user_setting($user_id, 'verified_by_admin') && get_user_setting($user_id, 'contactmethod')!='none') {
-					$content.='<option value="'.$user_name.'">';
-					$content.='<span dir="auto">'.WT_Filter::escapeHtml(getUserFullName($user_id)).'</span> - <span dir="auto">'.$user_name.'</span>';
+			foreach (User::all() as $user) {
+				if ($user->getUserId() != WT_USER_ID && $user->getPreference('verified_by_admin') && $user->getPreference('contactmethod') != 'none') {
+					$content.='<option value="' . WT_Filter::escapeHtml($user->getUserName()) . '">';
+					$content.='<span dir="auto">'.WT_Filter::escapeHtml($user->getRealName()).'</span> - <span dir="auto">' . WT_Filter::escapeHtml($user->getUserName()) . '</span>';
 					$content.='</option>';
 				}
 			}
@@ -84,7 +81,7 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 			$content.='<table class="list_table"><tr>';
 			$content.='<td class="list_label">'.WT_I18N::translate('Delete').'<br><a href="#" onclick="jQuery(\'#' . $this->getName() . $block_id . ' :checkbox\').prop(\'checked\', true); return false;">'.WT_I18N::translate('All').'</a></td>';
 			$content.='<td class="list_label">'.WT_I18N::translate('Subject:').'</td>';
-			$content.='<td class="list_label">'.WT_I18N::translate('Date Sent:').'</td>';
+			$content.='<td class="list_label">'.WT_I18N::translate('Date sent:').'</td>';
 			$content.='<td class="list_label">'.WT_I18N::translate('Email address:').'</td>';
 			$content.='</tr>';
 			foreach ($messages as $message) {
@@ -93,10 +90,10 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 				$content.='<td class="list_value_wrap"><a href="#" onclick="return expand_layer(\'message'.$message->message_id.'\');"><i id="message'.$message->message_id.'_img" class="icon-plus"></i> <b dir="auto">'.WT_Filter::escapeHtml($message->subject).'</b></a></td>';
 				$content.='<td class="list_value_wrap">'.format_timestamp($message->created).'</td>';
 				$content.='<td class="list_value_wrap">';
-				$user_id=get_user_id($message->sender);
-				if ($user_id) {
-					$content.='<span dir="auto">'.getUserFullName($user_id).'</span>';
-					$content.='  - <span dir="auto">'.getUserEmail($user_id).'</span>';
+				$user = User::findByIdentifier($message->sender);
+				if ($user) {
+					$content.='<span dir="auto">' . $user->getRealName() . '</span>';
+					$content.='  - <span dir="auto">' . $user->getEmail() . '</span>';
 				} else {
 					$content.='<a href="mailto:'.WT_Filter::escapeHtml($message->sender).'">'.WT_Filter::escapeHtml($message->sender).'</a>';
 				}
@@ -107,13 +104,13 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 				if (strpos($message->subject, /* I18N: When replying to an email, the subject becomes “RE: <subject>” */ WT_I18N::translate('RE: '))!==0) {
 					$message->subject= WT_I18N::translate('RE: ').$message->subject;
 				}
-				if ($user_id) {
+				if ($user) {
 					$content.='<a href="#" onclick="reply(\''.WT_Filter::escapeJs($message->sender).'\', \''.WT_Filter::escapeJs($message->subject).'\'); return false;">'.WT_I18N::translate('Reply').'</a> | ';
 				}
 				$content.='<a href="index.php?action=deletemessage&amp;message_id[]='.$message->message_id.'" onclick="return confirm(\''.WT_I18N::translate('Are you sure you want to delete this message?  It cannot be retrieved later.').'\');">'.WT_I18N::translate('Delete').'</a></div></td></tr>';
 			}
 			$content.='</table>';
-			$content.='<input type="submit" value="'.WT_I18N::translate('Delete Selected Messages').'"><br>';
+			$content.='<input type="submit" value="'.WT_I18N::translate('Delete selected messages').'"><br>';
 		}
 		$content.='</form>';
 

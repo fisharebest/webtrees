@@ -111,15 +111,15 @@ class Utf8
 
             if (preg_match('/[\x80-\xFF]/', $var))
             {
-                if (n::isNormalized($var, $normalization_form)) $n = '';
+                if (n::isNormalized($var, $normalization_form)) $n = '-';
                 else
                 {
                     $n = n::normalize($var, $normalization_form);
-                    if (false === $n) $var = static::utf8_encode($var);
-                    else $var = $n;
+                    if (isset($n[0])) $var = $n;
+                    else $var = static::utf8_encode($var);
                 }
 
-                if ($var[0] >= "\x80" && false !== $n && isset($leading_combining[0]) && preg_match('/^\p{Mn}/u', $var))
+                if ($var[0] >= "\x80" && isset($n[0], $leading_combining[0]) && preg_match('/^\p{Mn}/u', $var))
                 {
                     // Prevent leading combining chars
                     // for NFC-safe concatenations.

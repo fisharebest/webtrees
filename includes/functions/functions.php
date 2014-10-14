@@ -21,57 +21,27 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
-// Fetch a remote file.  Stream wrappers are disabled on
-// many hosts, and do not allow the detection of timeout.
-function fetch_remote_file($host, $path, $timeout=3) {
-	$fp=@fsockopen($host, '80', $errno, $errstr, $timeout );
-	if (!$fp) {
-		return null;
-	}
-
-	fputs($fp, "GET $path HTTP/1.0\r\nHost: $host\r\nConnection: Close\r\n\r\n");
-
-	$response='';
-	while ($data=fread($fp, 65536)) {
-		$response.=$data;
-	}
-	fclose($fp);
-
-	// Take account of a “moved” response.
-	if (substr($response, 0, 12)=='HTTP/1.1 303' && preg_match('/\nLocation: http:\/\/([a-z0-9.-]+)(.+)/', $response, $match)) {
-		return fetch_remote_file($match[1], $match[2]);
-	} else {
-		// The response includes headers, a blank line, then the content
-		return substr($response, strpos($response, "\r\n\r\n") + 4);
-	}
-}
-
 // Check with the webtrees.net server for the latest version of webtrees.
 // Fetching the remote file can be slow, so check infrequently, and cache the result.
 // Pass the current versions of webtrees, PHP and MySQL, as the response
 // may be different for each.  The server logs are used to generate
 // installation statistics which can be found at http://svn.webtrees.net/statistics.html
 function fetch_latest_version() {
-	$last_update_timestamp=WT_Site::preference('LATEST_WT_VERSION_TIMESTAMP');
+	$last_update_timestamp = WT_Site::getPreference('LATEST_WT_VERSION_TIMESTAMP');
 	if ($last_update_timestamp < WT_TIMESTAMP - 24*60*60) {
-		$row=WT_DB::prepare("SHOW VARIABLES LIKE 'version'")->fetchOneRow();
-		$params='?w='.WT_VERSION.'&p='.PHP_VERSION.'&m='.$row->value.'&o='.(DIRECTORY_SEPARATOR=='/'?'u':'w');
-		$latest_version_txt=fetch_remote_file('svn.webtrees.net', '/build/latest-version.txt'.$params);
+		$row = WT_DB::prepare("SHOW VARIABLES LIKE 'version'")->fetchOneRow();
+		$params = '?w='.WT_VERSION.'&p='.PHP_VERSION.'&m='.$row->value.'&o='.(DIRECTORY_SEPARATOR=='/'?'u':'w');
+		$latest_version_txt = WT_File::fetchUrl('http://svn.webtrees.net/build/latest-version.txt' . $params);
 		if ($latest_version_txt) {
-			WT_Site::preference('LATEST_WT_VERSION', $latest_version_txt);
-			WT_Site::preference('LATEST_WT_VERSION_TIMESTAMP', WT_TIMESTAMP);
+			WT_Site::setPreference('LATEST_WT_VERSION', $latest_version_txt);
+			WT_Site::setPreference('LATEST_WT_VERSION_TIMESTAMP', WT_TIMESTAMP);
 			return $latest_version_txt;
 		} else {
 			// Cannot connect to server - use cached version (if we have one)
-			return WT_Site::preference('LATEST_WT_VERSION');
+			return WT_Site::getPreference('LATEST_WT_VERSION');
 		}
 	} else {
-		return WT_Site::preference('LATEST_WT_VERSION');
+		return WT_Site::getPreference('LATEST_WT_VERSION');
 	}
 }
 
@@ -89,7 +59,7 @@ function file_upload_error_text($error_code) {
 		return WT_I18N::translate('File was only partially uploaded, please try again');
 	case UPLOAD_ERR_NO_FILE:
 		// I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
-		return WT_I18N::translate('No file was received. Please upload again.');
+		return WT_I18N::translate('No file was received.  Please upload again.');
 	case UPLOAD_ERR_NO_TMP_DIR:
 		// I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 		return WT_I18N::translate('Missing PHP temporary directory');
@@ -105,68 +75,68 @@ function file_upload_error_text($error_code) {
 function load_gedcom_settings($ged_id=WT_GED_ID) {
 	// Load the configuration settings into global scope
 	// TODO: some of these are used infrequently - just load them when we need them
-	global $ADVANCED_NAME_FACTS;          $ADVANCED_NAME_FACTS          =get_gedcom_setting($ged_id, 'ADVANCED_NAME_FACTS');
-	global $ADVANCED_PLAC_FACTS;          $ADVANCED_PLAC_FACTS          =get_gedcom_setting($ged_id, 'ADVANCED_PLAC_FACTS');
-	global $CALENDAR_FORMAT;              $CALENDAR_FORMAT              =get_gedcom_setting($ged_id, 'CALENDAR_FORMAT');
-	global $CHART_BOX_TAGS;               $CHART_BOX_TAGS               =get_gedcom_setting($ged_id, 'CHART_BOX_TAGS');
-	global $CONTACT_USER_ID;              $CONTACT_USER_ID              =get_gedcom_setting($ged_id, 'CONTACT_USER_ID');
-	global $DEFAULT_PEDIGREE_GENERATIONS; $DEFAULT_PEDIGREE_GENERATIONS =get_gedcom_setting($ged_id, 'DEFAULT_PEDIGREE_GENERATIONS');
-	global $EXPAND_NOTES;                 $EXPAND_NOTES                 =get_gedcom_setting($ged_id, 'EXPAND_NOTES');
-	global $EXPAND_RELATIVES_EVENTS;      $EXPAND_RELATIVES_EVENTS      =get_gedcom_setting($ged_id, 'EXPAND_RELATIVES_EVENTS');
-	global $EXPAND_SOURCES;               $EXPAND_SOURCES               =get_gedcom_setting($ged_id, 'EXPAND_SOURCES');
-	global $FAM_ID_PREFIX;                $FAM_ID_PREFIX                =get_gedcom_setting($ged_id, 'FAM_ID_PREFIX');
-	global $FULL_SOURCES;                 $FULL_SOURCES                 =get_gedcom_setting($ged_id, 'FULL_SOURCES');
-	global $GEDCOM_ID_PREFIX;             $GEDCOM_ID_PREFIX             =get_gedcom_setting($ged_id, 'GEDCOM_ID_PREFIX');
-	global $GEDCOM_MEDIA_PATH;            $GEDCOM_MEDIA_PATH            =get_gedcom_setting($ged_id, 'GEDCOM_MEDIA_PATH');
-	global $GENERATE_UIDS;                $GENERATE_UIDS                =get_gedcom_setting($ged_id, 'GENERATE_UIDS');
-	global $HIDE_GEDCOM_ERRORS;           $HIDE_GEDCOM_ERRORS           =get_gedcom_setting($ged_id, 'HIDE_GEDCOM_ERRORS');
-	global $HIDE_LIVE_PEOPLE;             $HIDE_LIVE_PEOPLE             =get_gedcom_setting($ged_id, 'HIDE_LIVE_PEOPLE');
-	global $KEEP_ALIVE_YEARS_BIRTH;       $KEEP_ALIVE_YEARS_BIRTH       =get_gedcom_setting($ged_id, 'KEEP_ALIVE_YEARS_BIRTH');
-	global $KEEP_ALIVE_YEARS_DEATH;       $KEEP_ALIVE_YEARS_DEATH       =get_gedcom_setting($ged_id, 'KEEP_ALIVE_YEARS_DEATH');
-	global $LANGUAGE;                     $LANGUAGE                     =get_gedcom_setting($ged_id, 'LANGUAGE');
-	global $MAX_ALIVE_AGE;                $MAX_ALIVE_AGE                =get_gedcom_setting($ged_id, 'MAX_ALIVE_AGE');
-	global $MAX_DESCENDANCY_GENERATIONS;  $MAX_DESCENDANCY_GENERATIONS  =get_gedcom_setting($ged_id, 'MAX_DESCENDANCY_GENERATIONS');
-	global $MAX_PEDIGREE_GENERATIONS;     $MAX_PEDIGREE_GENERATIONS     =get_gedcom_setting($ged_id, 'MAX_PEDIGREE_GENERATIONS');
-	global $MEDIA_DIRECTORY;              $MEDIA_DIRECTORY              =get_gedcom_setting($ged_id, 'MEDIA_DIRECTORY');
-	global $MEDIA_ID_PREFIX;              $MEDIA_ID_PREFIX              =get_gedcom_setting($ged_id, 'MEDIA_ID_PREFIX');
-	global $NOTE_ID_PREFIX;               $NOTE_ID_PREFIX               =get_gedcom_setting($ged_id, 'NOTE_ID_PREFIX');
-	global $NO_UPDATE_CHAN;               $NO_UPDATE_CHAN               =get_gedcom_setting($ged_id, 'NO_UPDATE_CHAN');
-	global $PEDIGREE_FULL_DETAILS;        $PEDIGREE_FULL_DETAILS        =get_gedcom_setting($ged_id, 'PEDIGREE_FULL_DETAILS');
-	global $PEDIGREE_LAYOUT;              $PEDIGREE_LAYOUT              =get_gedcom_setting($ged_id, 'PEDIGREE_LAYOUT');
-	global $PEDIGREE_SHOW_GENDER;         $PEDIGREE_SHOW_GENDER         =get_gedcom_setting($ged_id, 'PEDIGREE_SHOW_GENDER');
-	global $PREFER_LEVEL2_SOURCES;        $PREFER_LEVEL2_SOURCES        =get_gedcom_setting($ged_id, 'PREFER_LEVEL2_SOURCES');
-	global $QUICK_REQUIRED_FACTS;         $QUICK_REQUIRED_FACTS         =get_gedcom_setting($ged_id, 'QUICK_REQUIRED_FACTS');
-	global $QUICK_REQUIRED_FAMFACTS;      $QUICK_REQUIRED_FAMFACTS      =get_gedcom_setting($ged_id, 'QUICK_REQUIRED_FAMFACTS');
-	global $REPO_ID_PREFIX;               $REPO_ID_PREFIX               =get_gedcom_setting($ged_id, 'REPO_ID_PREFIX');
-	global $REQUIRE_AUTHENTICATION;       $REQUIRE_AUTHENTICATION       =get_gedcom_setting($ged_id, 'REQUIRE_AUTHENTICATION');
-	global $SAVE_WATERMARK_IMAGE;         $SAVE_WATERMARK_IMAGE         =get_gedcom_setting($ged_id, 'SAVE_WATERMARK_IMAGE');
-	global $SAVE_WATERMARK_THUMB;         $SAVE_WATERMARK_THUMB         =get_gedcom_setting($ged_id, 'SAVE_WATERMARK_THUMB');
-	global $SHOW_AGE_DIFF;                $SHOW_AGE_DIFF                =get_gedcom_setting($ged_id, 'SHOW_AGE_DIFF');
-	global $SHOW_COUNTER;                 $SHOW_COUNTER                 =get_gedcom_setting($ged_id, 'SHOW_COUNTER');
-	global $SHOW_DEAD_PEOPLE;             $SHOW_DEAD_PEOPLE             =get_gedcom_setting($ged_id, 'SHOW_DEAD_PEOPLE');
-	global $SHOW_FACT_ICONS;              $SHOW_FACT_ICONS              =get_gedcom_setting($ged_id, 'SHOW_FACT_ICONS');
-	global $SHOW_GEDCOM_RECORD;           $SHOW_GEDCOM_RECORD           =get_gedcom_setting($ged_id, 'SHOW_GEDCOM_RECORD');
-	global $SHOW_HIGHLIGHT_IMAGES;        $SHOW_HIGHLIGHT_IMAGES        =get_gedcom_setting($ged_id, 'SHOW_HIGHLIGHT_IMAGES');
-	global $SHOW_LAST_CHANGE;             $SHOW_LAST_CHANGE             =get_gedcom_setting($ged_id, 'SHOW_LAST_CHANGE');
-	global $SHOW_LDS_AT_GLANCE;           $SHOW_LDS_AT_GLANCE           =get_gedcom_setting($ged_id, 'SHOW_LDS_AT_GLANCE');
-	global $SHOW_LEVEL2_NOTES;            $SHOW_LEVEL2_NOTES            =get_gedcom_setting($ged_id, 'SHOW_LEVEL2_NOTES');
-	global $SHOW_LIVING_NAMES;            $SHOW_LIVING_NAMES            =get_gedcom_setting($ged_id, 'SHOW_LIVING_NAMES');
-	global $SHOW_MEDIA_DOWNLOAD;          $SHOW_MEDIA_DOWNLOAD          =get_gedcom_setting($ged_id, 'SHOW_MEDIA_DOWNLOAD');
-	global $SHOW_NO_WATERMARK;            $SHOW_NO_WATERMARK            =get_gedcom_setting($ged_id, 'SHOW_NO_WATERMARK');
-	global $SHOW_PARENTS_AGE;             $SHOW_PARENTS_AGE             =get_gedcom_setting($ged_id, 'SHOW_PARENTS_AGE');
-	global $SHOW_PEDIGREE_PLACES;         $SHOW_PEDIGREE_PLACES         =get_gedcom_setting($ged_id, 'SHOW_PEDIGREE_PLACES');
-	global $SHOW_PEDIGREE_PLACES_SUFFIX;  $SHOW_PEDIGREE_PLACES_SUFFIX  =get_gedcom_setting($ged_id, 'SHOW_PEDIGREE_PLACES_SUFFIX');
-	global $SHOW_PRIVATE_RELATIONSHIPS;   $SHOW_PRIVATE_RELATIONSHIPS   =get_gedcom_setting($ged_id, 'SHOW_PRIVATE_RELATIONSHIPS');
-	global $SHOW_RELATIVES_EVENTS;        $SHOW_RELATIVES_EVENTS        =get_gedcom_setting($ged_id, 'SHOW_RELATIVES_EVENTS');
-	global $SOURCE_ID_PREFIX;             $SOURCE_ID_PREFIX             =get_gedcom_setting($ged_id, 'SOURCE_ID_PREFIX');
-	global $SURNAME_LIST_STYLE;           $SURNAME_LIST_STYLE           =get_gedcom_setting($ged_id, 'SURNAME_LIST_STYLE');
-	global $THUMBNAIL_WIDTH;              $THUMBNAIL_WIDTH              =get_gedcom_setting($ged_id, 'THUMBNAIL_WIDTH');
-	global $USE_RIN;                      $USE_RIN                      =get_gedcom_setting($ged_id, 'USE_RIN');
-	global $USE_SILHOUETTE;               $USE_SILHOUETTE               =get_gedcom_setting($ged_id, 'USE_SILHOUETTE');
-	global $WATERMARK_THUMB;              $WATERMARK_THUMB              =get_gedcom_setting($ged_id, 'WATERMARK_THUMB');
-	global $WEBMASTER_USER_ID;            $WEBMASTER_USER_ID            =get_gedcom_setting($ged_id, 'WEBMASTER_USER_ID');
-	global $WEBTREES_EMAIL;               $WEBTREES_EMAIL               =get_gedcom_setting($ged_id, 'WEBTREES_EMAIL');
-	global $WORD_WRAPPED_NOTES;           $WORD_WRAPPED_NOTES           =get_gedcom_setting($ged_id, 'WORD_WRAPPED_NOTES');
+	$tree = WT_Tree::get($ged_id);
+	global $ADVANCED_NAME_FACTS;          $ADVANCED_NAME_FACTS          = $tree->getPreference('ADVANCED_NAME_FACTS');
+	global $ADVANCED_PLAC_FACTS;          $ADVANCED_PLAC_FACTS          = $tree->getPreference('ADVANCED_PLAC_FACTS');
+	global $CALENDAR_FORMAT;              $CALENDAR_FORMAT              = $tree->getPreference('CALENDAR_FORMAT');
+	global $CHART_BOX_TAGS;               $CHART_BOX_TAGS               = $tree->getPreference('CHART_BOX_TAGS');
+	global $CONTACT_USER_ID;              $CONTACT_USER_ID              = $tree->getPreference('CONTACT_USER_ID');
+	global $DEFAULT_PEDIGREE_GENERATIONS; $DEFAULT_PEDIGREE_GENERATIONS = $tree->getPreference('DEFAULT_PEDIGREE_GENERATIONS');
+	global $EXPAND_NOTES;                 $EXPAND_NOTES                 = $tree->getPreference('EXPAND_NOTES');
+	global $EXPAND_RELATIVES_EVENTS;      $EXPAND_RELATIVES_EVENTS      = $tree->getPreference('EXPAND_RELATIVES_EVENTS');
+	global $EXPAND_SOURCES;               $EXPAND_SOURCES               = $tree->getPreference('EXPAND_SOURCES');
+	global $FAM_ID_PREFIX;                $FAM_ID_PREFIX                = $tree->getPreference('FAM_ID_PREFIX');
+	global $FULL_SOURCES;                 $FULL_SOURCES                 = $tree->getPreference('FULL_SOURCES');
+	global $GEDCOM_ID_PREFIX;             $GEDCOM_ID_PREFIX             = $tree->getPreference('GEDCOM_ID_PREFIX');
+	global $GEDCOM_MEDIA_PATH;            $GEDCOM_MEDIA_PATH            = $tree->getPreference('GEDCOM_MEDIA_PATH');
+	global $GENERATE_UIDS;                $GENERATE_UIDS                = $tree->getPreference('GENERATE_UIDS');
+	global $HIDE_GEDCOM_ERRORS;           $HIDE_GEDCOM_ERRORS           = $tree->getPreference('HIDE_GEDCOM_ERRORS');
+	global $HIDE_LIVE_PEOPLE;             $HIDE_LIVE_PEOPLE             = $tree->getPreference('HIDE_LIVE_PEOPLE');
+	global $KEEP_ALIVE_YEARS_BIRTH;       $KEEP_ALIVE_YEARS_BIRTH       = $tree->getPreference('KEEP_ALIVE_YEARS_BIRTH');
+	global $KEEP_ALIVE_YEARS_DEATH;       $KEEP_ALIVE_YEARS_DEATH       = $tree->getPreference('KEEP_ALIVE_YEARS_DEATH');
+	global $LANGUAGE;                     $LANGUAGE                     = $tree->getPreference('LANGUAGE');
+	global $MAX_ALIVE_AGE;                $MAX_ALIVE_AGE                = $tree->getPreference('MAX_ALIVE_AGE');
+	global $MAX_DESCENDANCY_GENERATIONS;  $MAX_DESCENDANCY_GENERATIONS  = $tree->getPreference('MAX_DESCENDANCY_GENERATIONS');
+	global $MAX_PEDIGREE_GENERATIONS;     $MAX_PEDIGREE_GENERATIONS     = $tree->getPreference('MAX_PEDIGREE_GENERATIONS');
+	global $MEDIA_DIRECTORY;              $MEDIA_DIRECTORY              = $tree->getPreference('MEDIA_DIRECTORY');
+	global $MEDIA_ID_PREFIX;              $MEDIA_ID_PREFIX              = $tree->getPreference('MEDIA_ID_PREFIX');
+	global $NOTE_ID_PREFIX;               $NOTE_ID_PREFIX               = $tree->getPreference('NOTE_ID_PREFIX');
+	global $NO_UPDATE_CHAN;               $NO_UPDATE_CHAN               = $tree->getPreference('NO_UPDATE_CHAN');
+	global $PEDIGREE_FULL_DETAILS;        $PEDIGREE_FULL_DETAILS        = $tree->getPreference('PEDIGREE_FULL_DETAILS');
+	global $PEDIGREE_LAYOUT;              $PEDIGREE_LAYOUT              = $tree->getPreference('PEDIGREE_LAYOUT');
+	global $PEDIGREE_SHOW_GENDER;         $PEDIGREE_SHOW_GENDER         = $tree->getPreference('PEDIGREE_SHOW_GENDER');
+	global $PREFER_LEVEL2_SOURCES;        $PREFER_LEVEL2_SOURCES        = $tree->getPreference('PREFER_LEVEL2_SOURCES');
+	global $QUICK_REQUIRED_FACTS;         $QUICK_REQUIRED_FACTS         = $tree->getPreference('QUICK_REQUIRED_FACTS');
+	global $QUICK_REQUIRED_FAMFACTS;      $QUICK_REQUIRED_FAMFACTS      = $tree->getPreference('QUICK_REQUIRED_FAMFACTS');
+	global $REPO_ID_PREFIX;               $REPO_ID_PREFIX               = $tree->getPreference('REPO_ID_PREFIX');
+	global $REQUIRE_AUTHENTICATION;       $REQUIRE_AUTHENTICATION       = $tree->getPreference('REQUIRE_AUTHENTICATION');
+	global $SAVE_WATERMARK_IMAGE;         $SAVE_WATERMARK_IMAGE         = $tree->getPreference('SAVE_WATERMARK_IMAGE');
+	global $SAVE_WATERMARK_THUMB;         $SAVE_WATERMARK_THUMB         = $tree->getPreference('SAVE_WATERMARK_THUMB');
+	global $SHOW_AGE_DIFF;                $SHOW_AGE_DIFF                = $tree->getPreference('SHOW_AGE_DIFF');
+	global $SHOW_DEAD_PEOPLE;             $SHOW_DEAD_PEOPLE             = $tree->getPreference('SHOW_DEAD_PEOPLE');
+	global $SHOW_FACT_ICONS;              $SHOW_FACT_ICONS              = $tree->getPreference('SHOW_FACT_ICONS');
+	global $SHOW_GEDCOM_RECORD;           $SHOW_GEDCOM_RECORD           = $tree->getPreference('SHOW_GEDCOM_RECORD');
+	global $SHOW_HIGHLIGHT_IMAGES;        $SHOW_HIGHLIGHT_IMAGES        = $tree->getPreference('SHOW_HIGHLIGHT_IMAGES');
+	global $SHOW_LAST_CHANGE;             $SHOW_LAST_CHANGE             = $tree->getPreference('SHOW_LAST_CHANGE');
+	global $SHOW_LDS_AT_GLANCE;           $SHOW_LDS_AT_GLANCE           = $tree->getPreference('SHOW_LDS_AT_GLANCE');
+	global $SHOW_LEVEL2_NOTES;            $SHOW_LEVEL2_NOTES            = $tree->getPreference('SHOW_LEVEL2_NOTES');
+	global $SHOW_LIVING_NAMES;            $SHOW_LIVING_NAMES            = $tree->getPreference('SHOW_LIVING_NAMES');
+	global $SHOW_MEDIA_DOWNLOAD;          $SHOW_MEDIA_DOWNLOAD          = $tree->getPreference('SHOW_MEDIA_DOWNLOAD');
+	global $SHOW_NO_WATERMARK;            $SHOW_NO_WATERMARK            = $tree->getPreference('SHOW_NO_WATERMARK');
+	global $SHOW_PARENTS_AGE;             $SHOW_PARENTS_AGE             = $tree->getPreference('SHOW_PARENTS_AGE');
+	global $SHOW_PEDIGREE_PLACES;         $SHOW_PEDIGREE_PLACES         = $tree->getPreference('SHOW_PEDIGREE_PLACES');
+	global $SHOW_PEDIGREE_PLACES_SUFFIX;  $SHOW_PEDIGREE_PLACES_SUFFIX  = $tree->getPreference('SHOW_PEDIGREE_PLACES_SUFFIX');
+	global $SHOW_PRIVATE_RELATIONSHIPS;   $SHOW_PRIVATE_RELATIONSHIPS   = $tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS');
+	global $SHOW_RELATIVES_EVENTS;        $SHOW_RELATIVES_EVENTS        = $tree->getPreference('SHOW_RELATIVES_EVENTS');
+	global $SOURCE_ID_PREFIX;             $SOURCE_ID_PREFIX             = $tree->getPreference('SOURCE_ID_PREFIX');
+	global $SURNAME_LIST_STYLE;           $SURNAME_LIST_STYLE           = $tree->getPreference('SURNAME_LIST_STYLE');
+	global $THUMBNAIL_WIDTH;              $THUMBNAIL_WIDTH              = $tree->getPreference('THUMBNAIL_WIDTH');
+	global $USE_RIN;                      $USE_RIN                      = $tree->getPreference('USE_RIN');
+	global $USE_SILHOUETTE;               $USE_SILHOUETTE               = $tree->getPreference('USE_SILHOUETTE');
+	global $WATERMARK_THUMB;              $WATERMARK_THUMB              = $tree->getPreference('WATERMARK_THUMB');
+	global $WEBMASTER_USER_ID;            $WEBMASTER_USER_ID            = $tree->getPreference('WEBMASTER_USER_ID');
+	global $WEBTREES_EMAIL;               $WEBTREES_EMAIL               = $tree->getPreference('WEBTREES_EMAIL');
+	global $WORD_WRAPPED_NOTES;           $WORD_WRAPPED_NOTES           = $tree->getPreference('WORD_WRAPPED_NOTES');
 
 	global $person_privacy; $person_privacy=array();
 	global $person_facts;   $person_facts  =array();
@@ -190,60 +160,6 @@ function load_gedcom_settings($ged_id=WT_GED_ID) {
 }
 
 /**
- * Webtrees Error Handling function
- *
- * This function will be called by PHP whenever an error occurs.  The error handling
- * is set in the session.php
- * @see http://us2.php.net/manual/en/function.set-error-handler.php
- */
-function wt_error_handler($errno, $errstr, $errfile, $errline) {
-	if ((error_reporting() > 0)&&($errno<2048)) {
-		if (WT_ERROR_LEVEL==0) {
-			return;
-		}
-		$fmt_msg="<br>ERROR {$errno}: {$errstr}<br>";
-		$log_msg="ERROR {$errno}: {$errstr};";
-		// Although debug_backtrace should always exist in PHP5, without this check, PHP sometimes crashes.
-		// Possibly calling it generates an error, which causes infinite recursion??
-		if ($errno<16 && function_exists("debug_backtrace") && strstr($errstr, "headers already sent by")===false) {
-			$backtrace=debug_backtrace();
-			$num=count($backtrace);
-			if (WT_ERROR_LEVEL==1) {
-				$num=1;
-			}
-			for ($i=0; $i<$num; $i++) {
-				if ($i==0) {
-					$fmt_msg.="0 Error occurred on ";
-					$log_msg.="\n0 Error occurred on ";
-				} else {
-					$fmt_msg.="{$i} called from ";
-					$log_msg.="\n{$i} called from ";
-				}
-				if (isset($backtrace[$i]["line"]) && isset($backtrace[$i]["file"])) {
-					$fmt_msg.="line <b>{$backtrace[$i]['line']}</b> of file <b>".basename($backtrace[$i]['file'])."</b>";
-					$log_msg.="line {$backtrace[$i]['line']} of file ".basename($backtrace[$i]['file']);
-				}
-				if ($i<$num-1) {
-					$fmt_msg.=" in function <b>".$backtrace[$i+1]['function']."</b>";
-					$log_msg.=" in function ".$backtrace[$i+1]['function'];
-				}
-				$fmt_msg.="<br>";
-			}
-		}
-		echo $fmt_msg;
-		if (function_exists('AddToLog')) {
-			AddToLog($log_msg, 'error');
-		}
-		if ($errno==1) {
-			die();
-		}
-	}
-	return false;
-}
-
-// ************************************************* START OF GEDCOM FUNCTIONS ********************************* //
-
-/**
  * get a gedcom subrecord
  *
  * searches a gedcom record and returns a subrecord of it.  A subrecord is defined starting at a
@@ -254,37 +170,31 @@ function wt_error_handler($errno, $errstr, $errfile, $errline) {
  * 2 PLAC Phoenix, Maricopa, Arizona</code>
  * The following example is the DATE subrecord of the above BIRT subrecord:
  * <code>2 DATE 1 JAN 1900</code>
- * @author John Finlay (yalnifj)
- * @author Roland Dalmulder (roland-d)
- * @param int $level the N level of the subrecord to get
- * @param string $tag a gedcom tag or string to search for in the record (ie 1 BIRT or 2 DATE)
+ *
+ * @param int    $level  the N level of the subrecord to get
+ * @param string $tag    a gedcom tag or string to search for in the record (ie 1 BIRT or 2 DATE)
  * @param string $gedrec the parent gedcom record to search in
- * @param int $num this allows you to specify which matching <var>$tag</var> to get.  Oftentimes a
- * gedcom record will have more that 1 of the same type of subrecord.  An individual may have
- * multiple events for example.  Passing $num=1 would get the first 1.  Passing $num=2 would get the
- * second one, etc.
+ * @param int    $num    this allows you to specify which matching <var>$tag</var> to get.  Oftentimes a
+ *                       gedcom record will have more that 1 of the same type of subrecord.  An individual may have
+ *                       multiple events for example.  Passing $num=1 would get the first 1.  Passing $num=2 would get the
+ *                       second one, etc.
+ *
  * @return string the subrecord that was found or an empty string "" if not found.
  */
 function get_sub_record($level, $tag, $gedrec, $num=1) {
 	if (empty($gedrec)) {
-		return "";
+		return '';
 	}
 	// -- adding \n before and after gedrec
 	$gedrec = "\n".$gedrec."\n";
-	$pos1=0;
-	$subrec = "";
 	$tag = trim($tag);
 	$searchTarget = "~[\n]".$tag."[\s]~";
 	$ct = preg_match_all($searchTarget, $gedrec, $match, PREG_SET_ORDER | PREG_OFFSET_CAPTURE);
 	if ($ct==0) {
-		$tag = preg_replace('/(\w+)/', "_$1", $tag);
-		$ct = preg_match_all($searchTarget, $gedrec, $match, PREG_SET_ORDER | PREG_OFFSET_CAPTURE);
-		if ($ct==0) {
-			return "";
-		}
+		return '';
 	}
 	if ($ct<$num) {
-		return "";
+		return '';
 	}
 	$pos1 = $match[$num-1][0][1];
 	$pos2 = strpos($gedrec, "\n$level", $pos1+1);
@@ -333,19 +243,13 @@ function get_cont($nlevel, $nrec) {
 	return rtrim($text, " ");
 }
 
-// ************************************************* START OF SORTING FUNCTIONS ********************************* //
-// Function to sort GEDCOM fact tags based on their translations
-function factsort($a, $b) {
-	return utf8_strcasecmp(WT_I18N::translate($a), WT_I18N::translate($b));
-}
-
 ////////////////////////////////////////////////////////////////////////////////
 // Sort a list events for the today/upcoming blocks
 ////////////////////////////////////////////////////////////////////////////////
 function event_sort($a, $b) {
 	if ($a['jd']==$b['jd']) {
 		if ($a['anniv']==$b['anniv']) {
-			return utf8_strcasecmp($a['fact'], $b['fact']);
+			return WT_I18N::strcasecmp($a['fact'], $b['fact']);
 		}
 		else {
 			return $a['anniv']-$b['anniv'];
@@ -370,7 +274,7 @@ function event_sort_name($a, $b) {
  * using the compare type function
  * 3. Then merge the arrays back into the original array using the compare type function
  *
- * @param unknown_type $arr
+ * @param WT_Fact[] $arr
  */
 function sort_facts(&$arr) {
 	$dated = array();
@@ -448,11 +352,13 @@ function get_associate_relationship_name(WT_Individual $person1, WT_Individual $
 /**
  * Get relationship between two individuals in the gedcom
  *
- * @param string $pid1 - the ID of the first person to compute the relationship from
- * @param string $pid2 - the ID of the second person to compute the relatiohip to
- * @param bool $followspouse = whether to add spouses to the path
- * @param int $maxlength - the maximum length of path
- * @param int $path_to_find - which path in the relationship to find, 0 is the shortest path, 1 is the next shortest path, etc
+ * @param WT_Individual $person1 the person to compute the relationship from
+ * @param WT_Individual $person2 the person to compute the relatiohip to
+ * @param bool          $followspouse whether to add spouses to the path
+ * @param int           $maxlength    the maximum length of path
+ * @param int           $path_to_find which path in the relationship to find, 0 is the shortest path, 1 is the next shortest path, etc
+ *
+ * @return array|bool An array of nodes on the relationship path, or false if no path found
  */
 function get_relationship(WT_Individual $person1, WT_Individual $person2, $followspouse=true, $maxlength=0, $path_to_find=0) {
 	if ($person1 === $person2) {
@@ -704,7 +610,7 @@ function cousin_name($n, $sex) {
 			return WT_I18N::translate_c('MALE', 'fifteenth cousin');
 		default:
 			/* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers. */
-			return WT_I18N::translate_c('MALE', '%d x cousin', $n);
+			return WT_I18N::translate_c('MALE', '%d × cousin', $n);
 		}
 	case 'F':
 		switch ($n) {
@@ -723,7 +629,7 @@ function cousin_name($n, $sex) {
 		case 13: return WT_I18N::translate_c('FEMALE', 'thirteenth cousin');
 		case 14: return WT_I18N::translate_c('FEMALE', 'fourteenth cousin');
 		case 15: return WT_I18N::translate_c('FEMALE', 'fifteenth cousin');
-		default: return WT_I18N::translate_c('FEMALE', '%d x cousin', $n);
+		default: return WT_I18N::translate_c('FEMALE', '%d × cousin', $n);
 		}
 	case 'U':
 		switch ($n) {
@@ -742,7 +648,7 @@ function cousin_name($n, $sex) {
 		case 13: return WT_I18N::translate_c('MALE/FEMALE', 'thirteenth cousin');
 		case 14: return WT_I18N::translate_c('MALE/FEMALE', 'fourteenth cousin');
 		case 15: return WT_I18N::translate_c('MALE/FEMALE', 'fifteenth cousin');
-		default: return WT_I18N::translate_c('MALE/FEMALE', '%d x cousin', $n);
+		default: return WT_I18N::translate_c('MALE/FEMALE', '%d × cousin', $n);
 		}
 	}
 }
@@ -760,7 +666,7 @@ function cousin_name2($n, $sex, $relation) {
 		case  4: return WT_I18N::translate_c('MALE', 'fourth %s', $relation);
 		case  5: return WT_I18N::translate_c('MALE', 'fifth %s', $relation);
 		default: // I18N: A Spanish relationship name, such as third great-nephew
-		         return WT_I18N::translate_c('MALE', '%1$d x %2$s', $n, $relation);
+		         return WT_I18N::translate_c('MALE', '%1$d × %2$s', $n, $relation);
 		}
 	case 'F':
 		switch ($n) {
@@ -771,7 +677,7 @@ function cousin_name2($n, $sex, $relation) {
 		case  4: return WT_I18N::translate_c('FEMALE', 'fourth %s', $relation);
 		case  5: return WT_I18N::translate_c('FEMALE', 'fifth %s', $relation);
 		default: // I18N: A Spanish relationship name, such as third great-nephew
-		         return WT_I18N::translate_c('FEMALE', '%1$d x %2$s', $n, $relation);
+		         return WT_I18N::translate_c('FEMALE', '%1$d × %2$s', $n, $relation);
 		}
 	case 'U':
 		switch ($n) {
@@ -782,7 +688,7 @@ function cousin_name2($n, $sex, $relation) {
 		case  4: return WT_I18N::translate_c('MALE/FEMALE', 'fourth %s', $relation);
 		case  5: return WT_I18N::translate_c('MALE/FEMALE', 'fifth %s', $relation);
 		default: // I18N: A Spanish relationship name, such as third great-nephew
-		         return WT_I18N::translate_c('MALE/FEMALE', '%1$d x %2$s', $n, $relation);
+		         return WT_I18N::translate_c('MALE/FEMALE', '%1$d × %2$s', $n, $relation);
 		}
 	}
 }
@@ -1315,63 +1221,63 @@ function get_relationship_name_from_path($path, WT_Individual $person1=null, WT_
 		case 5:
 			switch ($sex2) {
 			case 'M':
-				if ($bef_last=='fat')      return WT_I18N::translate_c('great-great-great-grandfather’s brother', 'great x4 uncle');
-				else if ($bef_last=='mot') return WT_I18N::translate_c('great-great-great-grandmother’s brother', 'great x4 uncle');
-				else                       return WT_I18N::translate_c('great-great-great-grandparent’s brother', 'great x4 uncle');
-			case 'F': return WT_I18N::translate('great x4 aunt');
-			case 'U': return WT_I18N::translate('great x4 aunt/uncle');
+				if ($bef_last=='fat')      return WT_I18N::translate_c('great-great-great-grandfather’s brother', 'great ×4 uncle');
+				else if ($bef_last=='mot') return WT_I18N::translate_c('great-great-great-grandmother’s brother', 'great ×4 uncle');
+				else                       return WT_I18N::translate_c('great-great-great-grandparent’s brother', 'great ×4 uncle');
+			case 'F': return WT_I18N::translate('great ×4 aunt');
+			case 'U': return WT_I18N::translate('great ×4 aunt/uncle');
 			}
 			break;
 		case 6:
 			switch ($sex2) {
 			case 'M':
-				if ($bef_last=='fat')      return WT_I18N::translate_c('great x4 grandfather’s brother', 'great x5 uncle');
-				else if ($bef_last=='mot') return WT_I18N::translate_c('great x4 grandmother’s brother', 'great x5 uncle');
-				else                       return WT_I18N::translate_c('great x4 grandparent’s brother', 'great x5 uncle');
-			case 'F': return WT_I18N::translate('great x5 aunt');
-			case 'U': return WT_I18N::translate('great x5 aunt/uncle');
+				if ($bef_last=='fat')      return WT_I18N::translate_c('great ×4 grandfather’s brother', 'great ×5 uncle');
+				else if ($bef_last=='mot') return WT_I18N::translate_c('great ×4 grandmother’s brother', 'great ×5 uncle');
+				else                       return WT_I18N::translate_c('great ×4 grandparent’s brother', 'great ×5 uncle');
+			case 'F': return WT_I18N::translate('great ×5 aunt');
+			case 'U': return WT_I18N::translate('great ×5 aunt/uncle');
 			}
 			break;
 		case 7:
 			switch ($sex2) {
 			case 'M':
-				if ($bef_last=='fat')      return WT_I18N::translate_c('great x5 grandfather’s brother', 'great x6 uncle');
-				else if ($bef_last=='mot') return WT_I18N::translate_c('great x5 grandmother’s brother', 'great x6 uncle');
-				else                       return WT_I18N::translate_c('great x5 grandparent’s brother', 'great x6 uncle');
-			case 'F': return WT_I18N::translate('great x6 aunt');
-			case 'U': return WT_I18N::translate('great x6 aunt/uncle');
+				if ($bef_last=='fat')      return WT_I18N::translate_c('great ×5 grandfather’s brother', 'great ×6 uncle');
+				else if ($bef_last=='mot') return WT_I18N::translate_c('great ×5 grandmother’s brother', 'great ×6 uncle');
+				else                       return WT_I18N::translate_c('great ×5 grandparent’s brother', 'great ×6 uncle');
+			case 'F': return WT_I18N::translate('great ×6 aunt');
+			case 'U': return WT_I18N::translate('great ×6 aunt/uncle');
 			}
 			break;
 		case 8:
 			switch ($sex2) {
 			case 'M':
-				if ($bef_last=='fat')      return WT_I18N::translate_c('great x6 grandfather’s brother', 'great x7 uncle');
-				else if ($bef_last=='mot') return WT_I18N::translate_c('great x6 grandmother’s brother', 'great x7 uncle');
-				else                       return WT_I18N::translate_c('great x6 grandparent’s brother', 'great x7 uncle');
-			case 'F': return WT_I18N::translate('great x7 aunt');
-			case 'U': return WT_I18N::translate('great x7 aunt/uncle');
+				if ($bef_last=='fat')      return WT_I18N::translate_c('great ×6 grandfather’s brother', 'great ×7 uncle');
+				else if ($bef_last=='mot') return WT_I18N::translate_c('great ×6 grandmother’s brother', 'great ×7 uncle');
+				else                       return WT_I18N::translate_c('great ×6 grandparent’s brother', 'great ×7 uncle');
+			case 'F': return WT_I18N::translate('great ×7 aunt');
+			case 'U': return WT_I18N::translate('great ×7 aunt/uncle');
 			}
 			break;
 		default:
 			// Different languages have different rules for naming generations.
-			// An English great x12 uncle is a Danish great x10 uncle.
+			// An English great ×12 uncle is a Danish great ×10 uncle.
 			//
 			// Need to find out which languages use which rules.
 			switch (WT_LOCALE) {
 			case 'da':
 				switch ($sex2) {
-				case 'M': return WT_I18N::translate('great x%d uncle', $up-4);
-				case 'F': return WT_I18N::translate('great x%d aunt', $up-4);
-				case 'U': return WT_I18N::translate('great x%d aunt/uncle', $up-4);
+				case 'M': return WT_I18N::translate('great ×%d uncle', $up-4);
+				case 'F': return WT_I18N::translate('great ×%d aunt', $up-4);
+				case 'U': return WT_I18N::translate('great ×%d aunt/uncle', $up-4);
 				}
 			case 'pl':
 				switch ($sex2) {
 				case 'M':
-					if ($bef_last=='fat')      return WT_I18N::translate_c('great x(%d-1) grandfather’s brother', 'great x%d uncle', $up-2);
-					else if ($bef_last=='mot') return WT_I18N::translate_c('great x(%d-1) grandmother’s brother', 'great x%d uncle', $up-2);
-					else                       return WT_I18N::translate_c('great x(%d-1) grandparent’s brother', 'great x%d uncle', $up-2);
-				case 'F': return WT_I18N::translate('great x%d aunt', $up-2);
-				case 'U': return WT_I18N::translate('great x%d aunt/uncle', $up-2);
+					if ($bef_last=='fat')      return WT_I18N::translate_c('great ×(%d-1) grandfather’s brother', 'great ×%d uncle', $up-2);
+					else if ($bef_last=='mot') return WT_I18N::translate_c('great ×(%d-1) grandmother’s brother', 'great ×%d uncle', $up-2);
+					else                       return WT_I18N::translate_c('great ×(%d-1) grandparent’s brother', 'great ×%d uncle', $up-2);
+				case 'F': return WT_I18N::translate('great ×%d aunt', $up-2);
+				case 'U': return WT_I18N::translate('great ×%d aunt/uncle', $up-2);
 				}
 			case 'it': // Source: Michele Locati
 			case 'en_AU':
@@ -1380,9 +1286,9 @@ function get_relationship_name_from_path($path, WT_Individual $person1=null, WT_
 			default:
 				switch ($sex2) {
 				case 'M': // I18N: if you need a different number for %d, contact the developers, as a code-change is required
-				          return WT_I18N::translate('great x%d uncle', $up-2);
-				case 'F': return WT_I18N::translate('great x%d aunt', $up-2);
-				case 'U': return WT_I18N::translate('great x%d aunt/uncle', $up-2);
+				          return WT_I18N::translate('great ×%d uncle', $up-1);
+				case 'F': return WT_I18N::translate('great ×%d aunt', $up-1);
+				case 'U': return WT_I18N::translate('great ×%d aunt/uncle', $up-1);
 				}
 			}
 		}
@@ -1450,59 +1356,59 @@ function get_relationship_name_from_path($path, WT_Individual $person1=null, WT_
 			switch ($sex2) {
 			case 'M':
 				if ($first=='bro' && $sex1=='M') {
-					return WT_I18N::translate_c('(a man’s) brother’s great-great-great-grandson', 'great x4 nephew');
+					return WT_I18N::translate_c('(a man’s) brother’s great-great-great-grandson', 'great ×4 nephew');
 				} else if ($first=='sis' && $sex1=='M') {
-					return WT_I18N::translate_c('(a man’s) sister’s great-great-great-grandson',  'great x4 nephew');
+					return WT_I18N::translate_c('(a man’s) sister’s great-great-great-grandson',  'great ×4 nephew');
 				} else {
-					return WT_I18N::translate_c('(a woman’s) great x4 nephew',  'great x4 nephew');
+					return WT_I18N::translate_c('(a woman’s) great ×4 nephew',  'great ×4 nephew');
 				}
 			case 'F':
 				if ($first=='bro' && $sex1=='M') {
-					return WT_I18N::translate_c('(a man’s) brother’s great-great-great-granddaughter', 'great x4 niece');
+					return WT_I18N::translate_c('(a man’s) brother’s great-great-great-granddaughter', 'great ×4 niece');
 				} else if ($first=='sis' && $sex1=='M') {
-					return WT_I18N::translate_c('(a man’s) sister’s great-great-great-granddaughter',  'great x4 niece');
+					return WT_I18N::translate_c('(a man’s) sister’s great-great-great-granddaughter',  'great ×4 niece');
 				} else {
-					return WT_I18N::translate_c('(a woman’s) great x4 niece',  'great x4 niece');
+					return WT_I18N::translate_c('(a woman’s) great ×4 niece',  'great ×4 niece');
 				}
 			case 'U':
 				if ($first=='bro' && $sex1=='M') {
-					return WT_I18N::translate_c('(a man’s) brother’s great-great-great-grandchild', 'great x4 nephew/niece');
+					return WT_I18N::translate_c('(a man’s) brother’s great-great-great-grandchild', 'great ×4 nephew/niece');
 				} else if ($first=='sis' && $sex1=='M') {
-					return WT_I18N::translate_c('(a man’s) sister’s great-great-great-grandchild',  'great x4 nephew/niece');
+					return WT_I18N::translate_c('(a man’s) sister’s great-great-great-grandchild',  'great ×4 nephew/niece');
 				} else {
-					return WT_I18N::translate_c('(a woman’s) great x4 nephew/niece',  'great x4 nephew/niece');
+					return WT_I18N::translate_c('(a woman’s) great ×4 nephew/niece',  'great ×4 nephew/niece');
 				}
 			}
 		case 7:
 			switch ($sex2) {
 			case 'M':
 				if ($first=='bro' && $sex1=='M') {
-					return WT_I18N::translate_c('(a man’s) brother’s great x4 grandson', 'great x5 nephew');
+					return WT_I18N::translate_c('(a man’s) brother’s great ×4 grandson', 'great ×5 nephew');
 				} else if ($first=='sis' && $sex1=='M') {
-					return WT_I18N::translate_c('(a man’s) sister’s great x4 grandson',  'great x5 nephew');
+					return WT_I18N::translate_c('(a man’s) sister’s great ×4 grandson',  'great ×5 nephew');
 				} else {
-					return WT_I18N::translate_c('(a woman’s) great x5 nephew',  'great x5 nephew');
+					return WT_I18N::translate_c('(a woman’s) great ×5 nephew',  'great ×5 nephew');
 				}
 			case 'F':
 				if ($first=='bro' && $sex1=='M') {
-					return WT_I18N::translate_c('(a man’s) brother’s great x4 granddaughter', 'great x5 niece');
+					return WT_I18N::translate_c('(a man’s) brother’s great ×4 granddaughter', 'great ×5 niece');
 				} else if ($first=='sis' && $sex1=='M') {
-					return WT_I18N::translate_c('(a man’s) sister’s great x4 granddaughter',  'great x5 niece');
+					return WT_I18N::translate_c('(a man’s) sister’s great ×4 granddaughter',  'great ×5 niece');
 				} else {
-					return WT_I18N::translate_c('(a woman’s) great x5 niece',  'great x5 niece');
+					return WT_I18N::translate_c('(a woman’s) great ×5 niece',  'great ×5 niece');
 				}
 			case 'U':
 				if ($first=='bro' && $sex1=='M') {
-					return WT_I18N::translate_c('(a man’s) brother’s great x4 grandchild', 'great x5 nephew/niece');
+					return WT_I18N::translate_c('(a man’s) brother’s great ×4 grandchild', 'great ×5 nephew/niece');
 				} else if ($first=='sis' && $sex1=='M') {
-					return WT_I18N::translate_c('(a man’s) sister’s great x4 grandchild',  'great x5 nephew/niece');
+					return WT_I18N::translate_c('(a man’s) sister’s great ×4 grandchild',  'great ×5 nephew/niece');
 				} else {
-					return WT_I18N::translate_c('(a woman’s) great x5 nephew/niece',  'great x5 nephew/niece');
+					return WT_I18N::translate_c('(a woman’s) great ×5 nephew/niece',  'great ×5 nephew/niece');
 				}
 			}
 		default:
 			// Different languages have different rules for naming generations.
-			// An English great x12 nephew is a Polish great x11 nephew.
+			// An English great ×12 nephew is a Polish great ×11 nephew.
 			//
 			// Need to find out which languages use which rules.
 			switch (WT_LOCALE) {
@@ -1510,33 +1416,33 @@ function get_relationship_name_from_path($path, WT_Individual $person1=null, WT_
 				switch ($sex2) {
 				case 'M':
 					if ($first=='bro' && $sex1=='M') {
-						return WT_I18N::translate_c('(a man’s) brother’s great x(%d-1) grandson', 'great x%d nephew', $down-3);
+						return WT_I18N::translate_c('(a man’s) brother’s great ×(%d-1) grandson', 'great ×%d nephew', $down-3);
 					} else if ($first=='sis' && $sex1=='M') {
-						return WT_I18N::translate_c('(a man’s) sister’s great x(%d-1) grandson',  'great x%d nephew', $down-3);
+						return WT_I18N::translate_c('(a man’s) sister’s great ×(%d-1) grandson',  'great ×%d nephew', $down-3);
 					} else
-						return WT_I18N::translate_c('(a woman’s) great x%d nephew',  'great x%d nephew', $down-3);
+						return WT_I18N::translate_c('(a woman’s) great ×%d nephew',  'great ×%d nephew', $down-3);
 				case 'F':
 					if ($first=='bro' && $sex1=='M') {
-						return WT_I18N::translate_c('(a man’s) brother’s great x(%d-1) granddaughter', 'great x%d niece', $down-3);
+						return WT_I18N::translate_c('(a man’s) brother’s great ×(%d-1) granddaughter', 'great ×%d niece', $down-3);
 					} else if ($first=='sis' && $sex1=='M') {
-						return WT_I18N::translate_c('(a man’s) sister’s great x(%d-1) granddaughter',  'great x%d niece', $down-3);
+						return WT_I18N::translate_c('(a man’s) sister’s great ×(%d-1) granddaughter',  'great ×%d niece', $down-3);
 					} else {
-						return WT_I18N::translate_c('(a woman’s) great x%d niece',  'great x%d niece', $down-3);
+						return WT_I18N::translate_c('(a woman’s) great ×%d niece',  'great ×%d niece', $down-3);
 					}
 				case 'U':
 					if ($first=='bro' && $sex1=='M') {
-						return WT_I18N::translate_c('(a man’s) brother’s great x(%d-1) grandchild', 'great x%d nephew/niece', $down-3);
+						return WT_I18N::translate_c('(a man’s) brother’s great ×(%d-1) grandchild', 'great ×%d nephew/niece', $down-3);
 					} else if ($first=='sis' && $sex1=='M') {
-						return WT_I18N::translate_c('(a man’s) sister’s great x(%d-1) grandchild',  'great x%d nephew/niece', $down-3);
+						return WT_I18N::translate_c('(a man’s) sister’s great ×(%d-1) grandchild',  'great ×%d nephew/niece', $down-3);
 					} else {
-						return WT_I18N::translate_c('(a woman’s) great x%d nephew/niece',  'great x%d nephew/niece', $down-3);
+						return WT_I18N::translate_c('(a woman’s) great ×%d nephew/niece',  'great ×%d nephew/niece', $down-3);
 					}
 				}
 			case 'he': // Source: Meliza Amity
 				switch ($sex2) {
-				case 'M': return WT_I18N::translate('great x%d nephew', $down-1);
-				case 'F': return WT_I18N::translate('great x%d niece', $down-1);
-				case 'U': return WT_I18N::translate('great x%d nephew/niece', $down-1);
+				case 'M': return WT_I18N::translate('great ×%d nephew', $down-1);
+				case 'F': return WT_I18N::translate('great ×%d niece', $down-1);
+				case 'U': return WT_I18N::translate('great ×%d nephew/niece', $down-1);
 				}
 			case 'it': // Source: Michele Locati.
 			case 'en_AU':
@@ -1545,9 +1451,9 @@ function get_relationship_name_from_path($path, WT_Individual $person1=null, WT_
 			default:
 				switch ($sex2) {
 				case 'M': // I18N: if you need a different number for %d, contact the developers, as a code-change is required
-				          return WT_I18N::translate('great x%d nephew', $down-2);
-				case 'F': return WT_I18N::translate('great x%d niece', $down-2);
-				case 'U': return WT_I18N::translate('great x%d nephew/niece', $down-2);
+				          return WT_I18N::translate('great ×%d nephew', $down-2);
+				case 'F': return WT_I18N::translate('great ×%d niece', $down-2);
+				case 'U': return WT_I18N::translate('great ×%d nephew/niece', $down-2);
 				}
 			}
 		}
@@ -1572,65 +1478,65 @@ function get_relationship_name_from_path($path, WT_Individual $person1=null, WT_
 			break;
 		case 6:
 			switch ($sex2) {
-			case 'M': return WT_I18N::translate('great x4 grandfather');
-			case 'F': return WT_I18N::translate('great x4 grandmother');
-			case 'U': return WT_I18N::translate('great x4 grandparent');
+			case 'M': return WT_I18N::translate('great ×4 grandfather');
+			case 'F': return WT_I18N::translate('great ×4 grandmother');
+			case 'U': return WT_I18N::translate('great ×4 grandparent');
 			}
 			break;
 		case 7:
 			switch ($sex2) {
-			case 'M': return WT_I18N::translate('great x5 grandfather');
-			case 'F': return WT_I18N::translate('great x5 grandmother');
-			case 'U': return WT_I18N::translate('great x5 grandparent');
+			case 'M': return WT_I18N::translate('great ×5 grandfather');
+			case 'F': return WT_I18N::translate('great ×5 grandmother');
+			case 'U': return WT_I18N::translate('great ×5 grandparent');
 			}
 			break;
 		case 8:
 			switch ($sex2) {
-			case 'M': return WT_I18N::translate('great x6 grandfather');
-			case 'F': return WT_I18N::translate('great x6 grandmother');
-			case 'U': return WT_I18N::translate('great x6 grandparent');
+			case 'M': return WT_I18N::translate('great ×6 grandfather');
+			case 'F': return WT_I18N::translate('great ×6 grandmother');
+			case 'U': return WT_I18N::translate('great ×6 grandparent');
 			}
 			break;
 		case 9:
 			switch ($sex2) {
-			case 'M': return WT_I18N::translate('great x7 grandfather');
-			case 'F': return WT_I18N::translate('great x7 grandmother');
-			case 'U': return WT_I18N::translate('great x7 grandparent');
+			case 'M': return WT_I18N::translate('great ×7 grandfather');
+			case 'F': return WT_I18N::translate('great ×7 grandmother');
+			case 'U': return WT_I18N::translate('great ×7 grandparent');
 			}
 			break;
 		default:
 			// Different languages have different rules for naming generations.
-			// An English great x12 grandfather is a Danish great x11 grandfather.
+			// An English great ×12 grandfather is a Danish great ×11 grandfather.
 			//
 			// Need to find out which languages use which rules.
 			switch (WT_LOCALE) {
 			case 'da': // Source: Patrick Sorensen
 				switch ($sex2) {
-				case 'M': return WT_I18N::translate('great x%d grandfather', $up-3);
-				case 'F': return WT_I18N::translate('great x%d grandmother', $up-3);
-				case 'U': return WT_I18N::translate('great x%d grandparent', $up-3);
+				case 'M': return WT_I18N::translate('great ×%d grandfather', $up-3);
+				case 'F': return WT_I18N::translate('great ×%d grandmother', $up-3);
+				case 'U': return WT_I18N::translate('great ×%d grandparent', $up-3);
 				}
 			case 'it': // Source: Michele Locati
 			case 'es': // Source: Wes Groleau
 				switch ($sex2) {
-				case 'M': return WT_I18N::translate('great x%d grandfather', $up);
-				case 'F': return WT_I18N::translate('great x%d grandmother', $up);
-				case 'U': return WT_I18N::translate('great x%d grandparent', $up);
+				case 'M': return WT_I18N::translate('great ×%d grandfather', $up);
+				case 'F': return WT_I18N::translate('great ×%d grandmother', $up);
+				case 'U': return WT_I18N::translate('great ×%d grandparent', $up);
 				}
 			case 'fr': // Source: Jacqueline Tetreault
 			case 'fr_CA':
 				switch ($sex2) {
-				case 'M': return WT_I18N::translate('great x%d grandfather', $up-1);
-				case 'F': return WT_I18N::translate('great x%d grandmother', $up-1);
-				case 'U': return WT_I18N::translate('great x%d grandparent', $up-1);
+				case 'M': return WT_I18N::translate('great ×%d grandfather', $up-1);
+				case 'F': return WT_I18N::translate('great ×%d grandmother', $up-1);
+				case 'U': return WT_I18N::translate('great ×%d grandparent', $up-1);
 				}
 			case 'nn': // Source: Hogne Røed Nilsen (https://bugs.launchpad.net/webtrees/+bug/1168553)
 			case 'nb':
 				switch ($sex2) {
 				case 'M': // I18N: if you need a different number for %d, contact the developers, as a code-change is required
-				          return WT_I18N::translate('great x%d grandfather', $up-3);
-				case 'F': return WT_I18N::translate('great x%d grandmother', $up-3);
-				case 'U': return WT_I18N::translate('great x%d grandparent', $up-3);
+				          return WT_I18N::translate('great ×%d grandfather', $up-3);
+				case 'F': return WT_I18N::translate('great ×%d grandmother', $up-3);
+				case 'U': return WT_I18N::translate('great ×%d grandparent', $up-3);
 				}
 			case 'en_AU':
 			case 'en_GB':
@@ -1638,9 +1544,9 @@ function get_relationship_name_from_path($path, WT_Individual $person1=null, WT_
 			default:
 				switch ($sex2) {
 				case 'M': // I18N: if you need a different number for %d, contact the developers, as a code-change is required
-				          return WT_I18N::translate('great x%d grandfather', $up-2);
-				case 'F': return WT_I18N::translate('great x%d grandmother', $up-2);
-				case 'U': return WT_I18N::translate('great x%d grandparent', $up-2);
+				          return WT_I18N::translate('great ×%d grandfather', $up-2);
+				case 'F': return WT_I18N::translate('great ×%d grandmother', $up-2);
+				case 'U': return WT_I18N::translate('great ×%d grandparent', $up-2);
 				}
 			}
 		}
@@ -1665,35 +1571,35 @@ function get_relationship_name_from_path($path, WT_Individual $person1=null, WT_
 			break;
 		case 6:
 			switch ($sex2) {
-			case 'M': return WT_I18N::translate('great x4 grandson');
-			case 'F': return WT_I18N::translate('great x4 granddaughter');
-			case 'U': return WT_I18N::translate('great x4 grandchild');
+			case 'M': return WT_I18N::translate('great ×4 grandson');
+			case 'F': return WT_I18N::translate('great ×4 granddaughter');
+			case 'U': return WT_I18N::translate('great ×4 grandchild');
 			}
 			break;
 		case 7:
 			switch ($sex2) {
-			case 'M': return WT_I18N::translate('great x5 grandson');
-			case 'F': return WT_I18N::translate('great x5 granddaughter');
-			case 'U': return WT_I18N::translate('great x5 grandchild');
+			case 'M': return WT_I18N::translate('great ×5 grandson');
+			case 'F': return WT_I18N::translate('great ×5 granddaughter');
+			case 'U': return WT_I18N::translate('great ×5 grandchild');
 			}
 			break;
 		case 8:
 			switch ($sex2) {
-			case 'M': return WT_I18N::translate('great x6 grandson');
-			case 'F': return WT_I18N::translate('great x6 granddaughter');
-			case 'U': return WT_I18N::translate('great x6 grandchild');
+			case 'M': return WT_I18N::translate('great ×6 grandson');
+			case 'F': return WT_I18N::translate('great ×6 granddaughter');
+			case 'U': return WT_I18N::translate('great ×6 grandchild');
 			}
 			break;
 		case 9:
 			switch ($sex2) {
-			case 'M': return WT_I18N::translate('great x7 grandson');
-			case 'F': return WT_I18N::translate('great x7 granddaughter');
-			case 'U': return WT_I18N::translate('great x7 grandchild');
+			case 'M': return WT_I18N::translate('great ×7 grandson');
+			case 'F': return WT_I18N::translate('great ×7 granddaughter');
+			case 'U': return WT_I18N::translate('great ×7 grandchild');
 			}
 			break;
 		default:
 			// Different languages have different rules for naming generations.
-			// An English great x12 grandson is a Danish great x11 grandson.
+			// An English great ×12 grandson is a Danish great ×11 grandson.
 			//
 			// Need to find out which languages use which rules.
 			switch (WT_LOCALE) {
@@ -1701,9 +1607,9 @@ function get_relationship_name_from_path($path, WT_Individual $person1=null, WT_
 			case 'nb':
 			case 'da': // Source: Patrick Sorensen
 				switch ($sex2) {
-				case 'M': return WT_I18N::translate('great x%d grandson',      $up-3);
-				case 'F': return WT_I18N::translate('great x%d granddaughter', $up-3);
-				case 'U': return WT_I18N::translate('great x%d grandchild',    $up-3);
+				case 'M': return WT_I18N::translate('great ×%d grandson',      $up-3);
+				case 'F': return WT_I18N::translate('great ×%d granddaughter', $up-3);
+				case 'U': return WT_I18N::translate('great ×%d grandchild',    $up-3);
 				}
 			case 'it': // Source: Michele Locati
 			case 'es': // Source: Wes Groleau (adding doesn’t change behavior, but needs to be better researched)
@@ -1714,9 +1620,9 @@ function get_relationship_name_from_path($path, WT_Individual $person1=null, WT_
 				switch ($sex2) {
 
 				case 'M': // I18N: if you need a different number for %d, contact the developers, as a code-change is required
-				          return WT_I18N::translate('great x%d grandson',      $up-2);
-				case 'F': return WT_I18N::translate('great x%d granddaughter', $up-2);
-				case 'U': return WT_I18N::translate('great x%d grandchild',    $up-2);
+				          return WT_I18N::translate('great ×%d grandson',      $up-2);
+				case 'F': return WT_I18N::translate('great ×%d granddaughter', $up-2);
+				case 'U': return WT_I18N::translate('great ×%d grandchild',    $up-2);
 				}
 			}
 		}
@@ -1825,23 +1731,32 @@ function get_relationship_name_from_path($path, WT_Individual $person1=null, WT_
  * function to get the names of all of the themes as an array
  * it searches the themes folder and reads the name from the theme_name variable
  * in the theme.php file.
- * @return array and array of theme names and their corresponding folder
+ *
+ * @throws Exception
+ *
+ * @return array An array of theme names and their corresponding folder
  */
 function get_theme_names() {
 	static $themes;
-	if ($themes===null) {
+
+	if ($themes === null) {
 		$themes = array();
 		$d = dir(WT_ROOT.WT_THEMES_DIR);
-		while (false !== ($entry = $d->read())) {
-			if ($entry[0]!='.' && $entry[0]!='_' && is_dir(WT_ROOT.WT_THEMES_DIR.$entry) && file_exists(WT_ROOT.WT_THEMES_DIR.$entry.'/theme.php')) {
-				$themefile = implode('', file(WT_ROOT.WT_THEMES_DIR.$entry.'/theme.php'));
+		while (false !== ($folder = $d->read())) {
+			if ($folder[0] != '.' && $folder[0] != '_' && is_dir(WT_ROOT.WT_THEMES_DIR.$folder) && file_exists(WT_ROOT.WT_THEMES_DIR.$folder.'/theme.php')) {
+				$themefile = implode('', file(WT_ROOT.WT_THEMES_DIR.$folder.'/theme.php'));
 				if (preg_match('/theme_name\s*=\s*"(.*)";/', $themefile, $match)) {
-					$themes[WT_I18N::translate('%s', $match[1])] = $entry;
+					$theme_name = WT_I18N::translate($match[1]);
+					if (array_key_exists($theme_name, $themes)) {
+						throw new Exception('More than one theme with the same name: ' . $theme_name);
+					} else {
+						$themes[$theme_name] = $folder;
+					}
 				}
 			}
 		}
 		$d->close();
-		uksort($themes, 'utf8_strcasecmp');
+		uksort($themes, array('WT_I18N', 'strcasecmp'));
 	}
 	return $themes;
 }
@@ -1880,24 +1795,33 @@ function get_query_url($overwrite=null, $separator='&') {
 
 // Generate a new XREF, unique across all family trees
 function get_new_xref($type='INDI', $ged_id=WT_GED_ID) {
-	global $SOURCE_ID_PREFIX, $REPO_ID_PREFIX, $MEDIA_ID_PREFIX, $FAM_ID_PREFIX, $GEDCOM_ID_PREFIX;
+	global $SOURCE_ID_PREFIX, $REPO_ID_PREFIX, $MEDIA_ID_PREFIX, $FAM_ID_PREFIX, $GEDCOM_ID_PREFIX, $NOTE_ID_PREFIX;
 
 	switch ($type) {
-	case "INDI":
+	case 'INDI':
 		$prefix = $GEDCOM_ID_PREFIX;
 		break;
-	case "FAM":
+
+	case 'FAM':
 		$prefix = $FAM_ID_PREFIX;
 		break;
-	case "OBJE":
+
+	case 'OBJE':
 		$prefix = $MEDIA_ID_PREFIX;
 		break;
-	case "SOUR":
+
+	case 'SOUR':
 		$prefix = $SOURCE_ID_PREFIX;
 		break;
-	case "REPO":
+
+	case 'REPO':
 		$prefix = $REPO_ID_PREFIX;
 		break;
+
+	case 'NOTE':
+		$prefix = $NOTE_ID_PREFIX;
+		break;
+
 	default:
 		$prefix = $type{0};
 		break;
@@ -1948,10 +1872,4 @@ function get_new_xref($type='INDI', $ged_id=WT_GED_ID) {
  */
 function isFileExternal($file) {
 	return strpos($file, '://') !== false;
-}
-
-// Returns the part of the haystack before the first occurrence of the needle.
-// Use it to emulate the before_needle php 5.3.0 strstr function
-function strstrb($haystack, $needle){
-	return substr($haystack, 0, strpos($haystack, $needle));
 }

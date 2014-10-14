@@ -1,22 +1,23 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
     ],
-    "hash": "ee294f74bbc203e88b588cd07880c42c",
+    "hash": "e66292dd056ad73db261782d2d24a6c0",
     "packages": [
         {
             "name": "bombayworks/zendframework1",
-            "version": "v1.12.5",
+            "version": "v1.12.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bombayworks/zendframework1.git",
-                "reference": "3f8af440199be5eb31cc9e73c196278227bb73af"
+                "reference": "4bce65c9427866dc62e9ea9ab511f0edffa49f85"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bombayworks/zendframework1/zipball/3f8af440199be5eb31cc9e73c196278227bb73af",
-                "reference": "3f8af440199be5eb31cc9e73c196278227bb73af",
+                "url": "https://api.github.com/repos/bombayworks/zendframework1/zipball/4bce65c9427866dc62e9ea9ab511f0edffa49f85",
+                "reference": "4bce65c9427866dc62e9ea9ab511f0edffa49f85",
                 "shasum": ""
             },
             "require": {
@@ -38,14 +39,12 @@
             },
             "autoload": {
                 "psr-0": {
-                    "Zend_": "library/",
-                    "ZendX_": "extras/library/"
+                    "Zend_": "library/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
             "include-path": [
-                "library/",
-                "extras/library/"
+                "library/"
             ],
             "license": [
                 "BSD-3-Clause"
@@ -56,7 +55,7 @@
                 "ZF1",
                 "framework"
             ],
-            "time": "2014-03-07 17:08:56"
+            "time": "2014-09-17 15:01:24"
         },
         {
             "name": "ezyang/htmlpurifier",
@@ -104,17 +103,114 @@
             "time": "2013-11-30 08:25:19"
         },
         {
-            "name": "michelf/php-markdown",
-            "version": "1.4.0",
+            "name": "fisharebest/ext-calendar",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/michelf/php-markdown.git",
-                "reference": "96d8150406f67e683ef4acc09fef91785fef1266"
+                "url": "https://github.com/fisharebest/ext-calendar.git",
+                "reference": "e73e382d347440c9ea6ac8abc658cc4405c9250d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/michelf/php-markdown/zipball/96d8150406f67e683ef4acc09fef91785fef1266",
-                "reference": "96d8150406f67e683ef4acc09fef91785fef1266",
+                "url": "https://api.github.com/repos/fisharebest/ext-calendar/zipball/e73e382d347440c9ea6ac8abc658cc4405c9250d",
+                "reference": "e73e382d347440c9ea6ac8abc658cc4405c9250d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "*",
+                "satooshi/php-coveralls": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Fisharebest\\ExtCalendar\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Greg Roach",
+                    "email": "fisharebest@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Implementation of the Arabic (Hijri), French, Gregorian, Jewish, Julian and Persian (Jalali) calendars.  PHP shims for the ext/calendar extension.",
+            "homepage": "https://github.com/fisharebest/ext-calendar",
+            "keywords": [
+                "Jalali",
+                "arabic",
+                "calendar",
+                "ext-calendar",
+                "french",
+                "gregorian",
+                "hebrew",
+                "hijri",
+                "jewish",
+                "julian",
+                "julian day",
+                "julian day number",
+                "persian",
+                "shamsi"
+            ],
+            "time": "2014-09-27 08:43:30"
+        },
+        {
+            "name": "ircmaxell/password-compat",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ircmaxell/password_compat.git",
+                "reference": "1fc1521b5e9794ea77e4eca30717be9635f1d4f4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ircmaxell/password_compat/zipball/1fc1521b5e9794ea77e4eca30717be9635f1d4f4",
+                "reference": "1fc1521b5e9794ea77e4eca30717be9635f1d4f4",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "lib/password.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anthony Ferrara",
+                    "email": "ircmaxell@php.net",
+                    "homepage": "http://blog.ircmaxell.com"
+                }
+            ],
+            "description": "A compatibility library for the proposed simplified password hashing algorithm: https://wiki.php.net/rfc/password_hash",
+            "homepage": "https://github.com/ircmaxell/password_compat",
+            "keywords": [
+                "hashing",
+                "password"
+            ],
+            "time": "2013-04-30 19:58:08"
+        },
+        {
+            "name": "michelf/php-markdown",
+            "version": "1.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/michelf/php-markdown.git",
+                "reference": "de9a19c7bf352d41cc99ed86c3c0ef17e87394b6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/michelf/php-markdown/zipball/de9a19c7bf352d41cc99ed86c3c0ef17e87394b6",
+                "reference": "de9a19c7bf352d41cc99ed86c3c0ef17e87394b6",
                 "shasum": ""
             },
             "require": {
@@ -152,20 +248,20 @@
             "keywords": [
                 "markdown"
             ],
-            "time": "2013-11-29 17:09:24"
+            "time": "2014-05-05 02:43:50"
         },
         {
             "name": "patchwork/utf8",
-            "version": "v1.1.21",
+            "version": "v1.1.25",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nicolas-grekas/Patchwork-UTF8.git",
-                "reference": "f45ba8bc7962b7356847724989a6949b68d975a2"
+                "reference": "2d43bd047b120279511d45e76e61c5a9812d9a83"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nicolas-grekas/Patchwork-UTF8/zipball/f45ba8bc7962b7356847724989a6949b68d975a2",
-                "reference": "f45ba8bc7962b7356847724989a6949b68d975a2",
+                "url": "https://api.github.com/repos/nicolas-grekas/Patchwork-UTF8/zipball/2d43bd047b120279511d45e76e61c5a9812d9a83",
+                "reference": "2d43bd047b120279511d45e76e61c5a9812d9a83",
                 "shasum": ""
             },
             "require": {
@@ -178,6 +274,11 @@
                 "ext-mbstring": "Use Mbstring for best performance"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1-dev"
+                }
+            },
             "autoload": {
                 "psr-0": {
                     "Patchwork": "class/",
@@ -203,15 +304,87 @@
                 "utf-8",
                 "utf8"
             ],
-            "time": "2014-03-26 10:52:02"
+            "time": "2014-08-05 08:00:32"
+        },
+        {
+            "name": "rhumsaa/uuid",
+            "version": "2.7.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ramsey/uuid.git",
+                "reference": "b976326ca5977d7333f34e3c828ae7c22a49a65a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ramsey/uuid/zipball/b976326ca5977d7333f34e3c828ae7c22a49a65a",
+                "reference": "b976326ca5977d7333f34e3c828ae7c22a49a65a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "doctrine/dbal": ">=2.3",
+                "moontoast/math": "~1.1",
+                "phpunit/phpunit": "~4.1",
+                "satooshi/php-coveralls": "~0.6",
+                "symfony/console": "~2.3"
+            },
+            "suggest": {
+                "doctrine/dbal": "Allow the use of a UUID as doctrine field type.",
+                "moontoast/math": "Support for converting UUID to 128-bit integer (in string form).",
+                "symfony/console": "Support for use of the bin/uuid command line tool."
+            },
+            "bin": [
+                "bin/uuid"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.7.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Rhumsaa\\Uuid\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marijn Huizendveld",
+                    "email": "marijn.huizendveld@gmail.com"
+                },
+                {
+                    "name": "Ben Ramsey",
+                    "homepage": "http://benramsey.com"
+                }
+            ],
+            "description": "A PHP 5.3+ library for generating RFC 4122 version 1, 3, 4, and 5 universally unique identifiers (UUID).",
+            "homepage": "https://github.com/ramsey/uuid",
+            "keywords": [
+                "guid",
+                "identifier",
+                "uuid"
+            ],
+            "time": "2014-08-27 22:39:41"
         },
         {
             "name": "tecnick.com/tcpdf",
-            "version": "6.0.062",
+            "version": "6.0.094",
             "source": {
                 "type": "git",
-                "url": "git://git.code.sf.net/p/tcpdf/code",
-                "reference": "cada5f0ef8c1bb0799f2694ea501db437b02a2ea"
+                "url": "https://github.com/tecnickcom/TCPDF.git",
+                "reference": "89d007897e20471d4990d4bd0456272dece03a26"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/89d007897e20471d4990d4bd0456272dece03a26",
+                "reference": "89d007897e20471d4990d4bd0456272dece03a26",
+                "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0"
@@ -249,7 +422,7 @@
                     "homepage": "http://nicolaasuni.tecnick.com"
                 }
             ],
-            "description": "TCPDF is a PHP class for generating PDF documents.",
+            "description": "TCPDF is a PHP class for generating PDF documents and barcodes.",
             "homepage": "http://www.tcpdf.org/",
             "keywords": [
                 "PDFD32000-2008",
@@ -260,7 +433,7 @@
                 "pdf417",
                 "qrcode"
             ],
-            "time": "2014-03-02 10:22:27"
+            "time": "2014-09-30 17:01:15"
         }
     ],
     "packages-dev": [
@@ -273,6 +446,7 @@
     "stability-flags": [
 
     ],
+    "prefer-stable": false,
     "platform": [
 
     ],

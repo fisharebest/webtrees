@@ -21,10 +21,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
+use WT\Log;
 
 class WT_Controller_Search extends WT_Controller_Page {
 	public $action;
@@ -79,7 +76,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 	function __construct() {
 		parent::__construct();
 
-		// $action comes from $_GET (menus) or $_POST (form submission)
+		// $action comes from GET (menus) or POST (form submission)
 		$this->action = WT_Filter::post('action', 'advanced|general|soundex|replace');
 		if (!$this->action) {
 			$this->action = WT_Filter::get('action', 'advanced|general|soundex|replace', 'general');
@@ -117,7 +114,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 		}
 
 		// Retrieve the gedcoms to search in
-		if (count(WT_Tree::getAll())>1 && WT_Site::preference('ALLOW_CHANGE_GEDCOM')) {
+		if (count(WT_Tree::getAll())>1 && WT_Site::getPreference('ALLOW_CHANGE_GEDCOM')) {
 			foreach (WT_Tree::getAll() as $tree) {
 				$str = str_replace(array (".", "-", " "), array ("_", "_", "_"), $tree->tree_name);
 				if (isset ($_REQUEST["$str"]) || $topsearch) {
@@ -235,7 +232,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 	 * @param array $varNames - Array of variable names(strings).
 	 */
 	function setRequestValues($varNames) {
-		foreach ($varNames as $key => $varName) {
+		foreach ($varNames as $varName) {
 			if (isset ($_REQUEST[$varName])) {
 				if ($varName=='action' && $_REQUEST[$varName]=='replace' && !WT_USER_CAN_EDIT) {
 					$this->action='general';
@@ -272,9 +269,6 @@ class WT_Controller_Search extends WT_Controller_Page {
 	 * Gathers results for a general search
 	 */
 	function GeneralSearch() {
-		global $GEDCOM;
-		$oldged = $GEDCOM;
-
 		// Split search terms into an array
 		$query_terms=array();
 		$query=$this->query;
@@ -371,13 +365,13 @@ class WT_Controller_Search extends WT_Controller_Page {
 	 */
 	function SearchAndReplace()
 	{
-		global $GEDCOM, $manual_save, $STANDARD_NAME_FACTS, $ADVANCED_NAME_FACTS;
+		global $STANDARD_NAME_FACTS, $ADVANCED_NAME_FACTS;
 
 		$this->sgeds = array(WT_GED_ID=>WT_GEDCOM);
-		$this->srindi = "yes";
-		$this->srfams = "yes";
-		$this->srsour = "yes";
-		$this->srnote = "yes";
+		$this->srindi = 'yes';
+		$this->srfams = 'yes';
+		$this->srsour = 'yes';
+		$this->srnote = 'yes';
 		$oldquery = $this->query;
 		$this->GeneralSearch();
 
@@ -386,20 +380,13 @@ class WT_Controller_Search extends WT_Controller_Page {
 			return;
 		}
 
-		AddToLog("Search And Replace old:".$oldquery." new:".$this->replace, 'edit');
-		$manual_save = true;
+		Log::addEditLog("Search And Replace old:".$oldquery." new:".$this->replace);
 		// Include edit functions.
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
-		// These contain the search query and the replace string
-		// $this->replace;
-		// $this->query;
 
-		// These contain the search results
-		// We need to iterate through them and do the replaces
-		//$this->myindilist;
 		$adv_name_tags = preg_split("/[\s,;: ]+/", $ADVANCED_NAME_FACTS);
 		$name_tags = array_unique(array_merge($STANDARD_NAME_FACTS, $adv_name_tags));
-		$name_tags[] = "_MARNM";
+		$name_tags[] = '_MARNM';
 		foreach ($this->myindilist as $id=>$record) {
 			$oldRecord = $record->getGedcom();
 			$newRecord = $oldRecord;
@@ -407,7 +394,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 				$newRecord = preg_replace("~".$oldquery."~i", $this->replace, $newRecord);
 			} else {
 				if ($this->replaceNames) {
-					foreach ($name_tags as $f=>$tag) {
+					foreach ($name_tags as $tag) {
 						$newRecord = preg_replace("~(\d) ".$tag." (.*)".$oldquery."(.*)~i", "$1 ".$tag." $2".$this->replace."$3", $newRecord);
 					}
 				}
@@ -430,8 +417,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 
 			if ($this->replaceAll) {
 				$newRecord = preg_replace("~".$oldquery."~i", $this->replace, $newRecord);
-			}
-			else {
+			} else {
 				if ($this->replacePlaces) {
 					if ($this->replacePlacesWord) $newRecord = preg_replace('~(\d) PLAC (.*)([,\W\s])'.$oldquery.'([,\W\s])~i', "$1 PLAC $2$3".$this->replace."$4",$newRecord);
 					else $newRecord = preg_replace("~(\d) PLAC (.*)".$oldquery."(.*)~i", "$1 PLAC $2".$this->replace."$3",$newRecord);
@@ -550,8 +536,8 @@ class WT_Controller_Search extends WT_Controller_Page {
 			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.$indi->getRawUrl());
 			exit;
 		}
-		usort($this->myindilist, array('WT_GedcomRecord', 'Compare'));
-		usort($this->myfamlist, array('WT_GedcomRecord', 'Compare'));
+		usort($this->myindilist, array('WT_GedcomRecord', 'compare'));
+		usort($this->myfamlist, array('WT_GedcomRecord', 'compare'));
 	}
 
 	function printResults() {
@@ -587,7 +573,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 					}
 					if ($datalist) {
 						$somethingPrinted = true;
-						usort($datalist, array('WT_GedcomRecord', 'Compare'));
+						usort($datalist, array('WT_GedcomRecord', 'compare'));
 						$GEDCOM=$gedcom;
 						load_gedcom_settings($ged_id);
 						echo '<h3 class="indi-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $trees[$ged_id]->tree_title_html, '</span></a></h3>
@@ -611,7 +597,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 					}
 					if ($datalist) {
 						$somethingPrinted = true;
-						usort($datalist, array('WT_GedcomRecord', 'Compare'));
+						usort($datalist, array('WT_GedcomRecord', 'compare'));
 						$GEDCOM=$gedcom;
 						load_gedcom_settings($ged_id);
 						echo '<h3 class="fam-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $trees[$ged_id]->tree_title_html, '</span></a></h3>
@@ -635,7 +621,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 					}
 					if ($datalist) {
 						$somethingPrinted = true;
-						usort($datalist, array('WT_GedcomRecord', 'Compare'));
+						usort($datalist, array('WT_GedcomRecord', 'compare'));
 						$GEDCOM=$gedcom;
 						load_gedcom_settings($ged_id);
 						echo '<h3 class="source-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $trees[$ged_id]->tree_title_html, '</span></a></h3>
@@ -659,7 +645,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 					}
 					if ($datalist) {
 						$somethingPrinted = true;
-						usort($datalist, array('WT_GedcomRecord', 'Compare'));
+						usort($datalist, array('WT_GedcomRecord', 'compare'));
 						$GEDCOM=$gedcom;
 						load_gedcom_settings($ged_id);
 						echo '<h3 class="note-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $trees[$ged_id]->tree_title_html, '</span></a></h3>

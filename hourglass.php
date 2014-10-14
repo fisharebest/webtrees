@@ -27,14 +27,14 @@ define('WT_SCRIPT_NAME', 'hourglass.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_edit.php';
 
-$controller=new WT_Controller_Hourglass();
+$controller = new WT_Controller_Hourglass();
 $controller
 	->pageHeader()
-	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
-	->setupJavascript()
-	->addInlineJavascript('sizeLines();');
+	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+	->addInlineJavascript('autocomplete();')
+	->setupJavascript();
 
-$gencount=0;
+$gencount = 0;
 
 ?>
 <div id="hourglass-page">
@@ -48,7 +48,7 @@ $gencount=0;
 					<?php echo WT_I18N::translate('Individual'); ?>
 				</td>
 				<td class="optionbox">
-					<input class="pedigree_form" type="text" name="rootid" id="rootid" size="3" value="<?php echo $controller->pid; ?>">
+					<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="rootid" id="rootid" size="3" value="<?php echo $controller->pid; ?>">
 					<?php echo print_findindi_link('pid'); ?>
 				</td>
 				<td class="descriptionbox">
@@ -94,12 +94,12 @@ $gencount=0;
 	</form>
 
 	<div id="hourglass_chart" style="width:98%; z-index:1;">
-		<table cellspacing="0" cellpadding="0" border="0">
+		<table>
 			<tr>
-				<td valign="middle">
+				<td style="vertical-align:middle">
 					<?php $controller->print_descendency(WT_Individual::getInstance($controller->pid), 1); ?>
 				</td>
-				<td valign="middle">
+				<td style="vertical-align:middle">
 					<?php $controller->print_person_pedigree(WT_Individual::getInstance($controller->pid), 1); ?>
 				</td>
 			</tr>

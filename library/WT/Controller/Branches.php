@@ -18,11 +18,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 class WT_Controller_Branches extends WT_Controller_Page {
 	private $surname;
 	private $soundex_std;
@@ -132,7 +127,7 @@ class WT_Controller_Branches extends WT_Controller_Page {
 	private function getDescendantsHtml(WT_Individual $individual, WT_Family $parents=null) {
 		// A person has many names.  Select the one that matches the searched surname
 		$person_name = '';
-		foreach ($individual->getAllNames() as $n=>$name) {
+		foreach ($individual->getAllNames() as $name) {
 			list($surn1) = explode(",", $name['sort']);
 			if (
 				// one name is a substring of the other
@@ -153,7 +148,7 @@ class WT_Controller_Branches extends WT_Controller_Page {
 		}
 
 		// Is this individual one of our ancestors?
-		$sosa = array_search($individual, $this->ancestors);
+		$sosa = array_search($individual, $this->ancestors, true);
 		if ($sosa) {
 			$sosa_class = 'search_hit';
 			$sosa_html  = ' <a class="details1 ' . $individual->getBoxStyle() . '" title="' . WT_I18N::translate('Sosa') . '" href="relationship.php?pid2=' . WT_USER_ROOT_ID . '&amp;pid1=' . $individual->getXref() . '">' . $sosa . '</a>' . self::sosaGeneration($sosa);
@@ -182,13 +177,14 @@ class WT_Controller_Branches extends WT_Controller_Page {
 		// spouses and children
 		$spouse_families = $individual->getSpouseFamilies();
 		if ($spouse_families) {
+			usort($spouse_families, array('WT_Family', 'compareMarrDate'));
 			$fam_html = '';
 			foreach ($spouse_families as $family) {
 				$fam_html .= $indi_html; // Repeat the individual details for each spouse.
 
 				$spouse = $family->getSpouse($individual);
 				if ($spouse) {
-					$sosa = array_search($spouse, $this->ancestors);
+					$sosa = array_search($spouse, $this->ancestors, true);
 					if ($sosa) {
 						$sosa_class = 'search_hit';
 						$sosa_html  = ' <a class="details1 ' . $spouse->getBoxStyle() . '" title="' . WT_I18N::translate('Sosa') . '" href="relationship.php?pid2=' . WT_USER_ROOT_ID . '&amp;pid1=' . $spouse->getXref() . '"> '.$sosa.' </a>' . self::sosaGeneration($sosa);

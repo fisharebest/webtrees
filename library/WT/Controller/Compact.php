@@ -21,11 +21,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 class WT_Controller_Compact extends WT_Controller_Chart {
 	// Data for the view
 	public $show_thumbs=false;
@@ -101,25 +96,25 @@ class WT_Controller_Compact extends WT_Controller_Chart {
 
 		$pid = $this->treeid[$n];
 
-		$arrow_swap = array("l"=>"0", "r"=>"1", "u"=>"2", "d"=>"3");
-
-		$arrow_dir = substr($arrow_dir,0,1);
-		if ($TEXT_DIRECTION=="rtl") {
-			if ($arrow_dir=="l") {
-				$arrow_dir="r";
-			} elseif ($arrow_dir=="r") {
-				$arrow_dir="l";
+		$arrow_dir = substr($arrow_dir, 0, 1);
+		if ($TEXT_DIRECTION == 'rtl') {
+			if ($arrow_dir=='l') {
+				$arrow_dir = 'r';
+			} elseif ($arrow_dir == 'r') {
+				$arrow_dir = 'l';
 			}
 		}
 
-		$indi=WT_Individual::getInstance($pid);
+		$indi = WT_Individual::getInstance($pid);
 		if ($indi) {
-			$title=WT_I18N::translate('Compact tree of %s', $indi->getFullName());
-			$text = '<a class="icon-'.$arrow_dir.'arrow" title="'.strip_tags($title).'" href="?rootid='.$pid;
-			if ($this->show_thumbs) $text .= "&amp;show_thumbs=".$this->show_thumbs;
+			$title = WT_I18N::translate('Compact tree of %s', $indi->getFullName());
+			$text = '<a class="icon-' . $arrow_dir . 'arrow" title="' . strip_tags($title) . '" href="?rootid=' . $pid;
+			if ($this->show_thumbs) {
+				$text .= "&amp;show_thumbs=".$this->show_thumbs;
+			}
 			$text .= "\"></a>";
 		} else {
-			$text = '<i class="icon-'.$arrow_dir.'arrow"></i>';
+			$text = '<i class="icon-' . $arrow_dir . 'arrow"></i>';
 		}
 
 		return $text;

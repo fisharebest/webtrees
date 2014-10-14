@@ -21,14 +21,10 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
+use Fisharebest\ExtCalendar\GregorianCalendar;
 
 class WT_Individual extends WT_GedcomRecord {
 	const RECORD_TYPE = 'INDI';
-	const SQL_FETCH   = "SELECT i_gedcom FROM `##individuals` WHERE i_id=? AND i_file=?";
 	const URL_PREFIX  = 'individual.php?pid=';
 
 	var $generation; // used in some lists to keep track of this individual’s generation in that list
@@ -45,7 +41,7 @@ class WT_Individual extends WT_GedcomRecord {
 	}
 
 	// Implement individual-specific privacy logic
-	protected function _canShowByType($access_level) {
+	protected function canShowByType($access_level) {
 		global $SHOW_DEAD_PEOPLE, $KEEP_ALIVE_YEARS_BIRTH, $KEEP_ALIVE_YEARS_DEATH;
 
 		// Dead people...
@@ -249,7 +245,7 @@ class WT_Individual extends WT_GedcomRecord {
 				}
 			}
 			// Check spouse dates
-			$spouse = $family->getSpouse($this, WT_PRIV_HIDE);
+			$spouse = $family->getSpouse($this);
 			if ($spouse) {
 				preg_match_all('/\n2 DATE (.+)/', $spouse->gedcom, $date_matches);
 				foreach ($date_matches[1] as $date_match) {
@@ -376,11 +372,12 @@ class WT_Individual extends WT_GedcomRecord {
 	}
 
 	/**
-	* get the birth year
-	* @return string the year of birth
-	*/
+	 * get the birth year
+	 *
+	 * @return string the year of birth
+	 */
 	function getBirthYear() {
-		return $this->getBirthDate()->MinDate()->Format('%Y');
+		return $this->getBirthDate()->MinDate()->format('%Y');
 	}
 
 	// Get the date of death
@@ -404,11 +401,12 @@ class WT_Individual extends WT_GedcomRecord {
 	}
 
 	/**
-	* get the death year
-	* @return string the year of death
-	*/
+	 * get the death year
+	 *
+	 * @return string the year of death
+	 */
 	function getDeathYear() {
-		return $this->getDeathDate()->MinDate()->Format('%Y');
+		return $this->getDeathDate()->MinDate()->format('%Y');
 	}
 
 	// Get the range of years in which a individual lived.  e.g. “1870–”, “1870–1920”, “–1920”.
@@ -419,8 +417,8 @@ class WT_Individual extends WT_GedcomRecord {
 		return
 			/* I18N: A range of years, e.g. “1870–”, “1870–1920”, “–1920” */ WT_I18N::translate(
 				'%1$s–%2$s',
-				'<span title="'.strip_tags($this->getBirthDate()->Display()).'">'.$this->getBirthDate()->MinDate()->Format('%Y').'</span>',
-				'<span title="'.strip_tags($this->getDeathDate()->Display()).'">'.$this->getDeathDate()->MinDate()->Format('%Y').'</span>'
+				'<span title="'.strip_tags($this->getBirthDate()->Display()).'">'.$this->getBirthDate()->MinDate()->format('%Y').'</span>',
+				'<span title="'.strip_tags($this->getDeathDate()->Display()).'">'.$this->getDeathDate()->MinDate()->format('%Y').'</span>'
 			);
 	}
 
@@ -531,8 +529,10 @@ class WT_Individual extends WT_GedcomRecord {
 					}
 				}
 				if ($min && $max) {
-					list($y)=WT_Date_Gregorian::JDtoYMD((int)((max($min)+min($max))/2));
-					$this->_getEstimatedBirthDate=new WT_Date("EST {$y}");
+					$gregorian_calendar = new GregorianCalendar;
+
+					list($year) = $gregorian_calendar->jdToYmd((int)((max($min) + min($max)) / 2));
+					$this->_getEstimatedBirthDate=new WT_Date('EST ' . $year);
 				} else {
 					$this->_getEstimatedBirthDate=new WT_Date(''); // always return a date object
 				}
@@ -541,25 +541,19 @@ class WT_Individual extends WT_GedcomRecord {
 		return $this->_getEstimatedBirthDate;
 	}
 	function getEstimatedDeathDate() {
-		if (is_null($this->_getEstimatedDeathDate)) {
+		if ($this->_getEstimatedDeathDate === null) {
 			foreach ($this->getAllDeathDates() as $date) {
 				if ($date->isOK()) {
 					$this->_getEstimatedDeathDate=$date;
 					break;
 				}
 			}
-			if (is_null($this->_getEstimatedDeathDate)) {
-				$tmp=$this->getEstimatedBirthDate();
-				if ($tmp->MinJD()) {
+			if ($this->_getEstimatedDeathDate === null) {
+				if ($this->getEstimatedBirthDate()->MinJD()) {
 					global $MAX_ALIVE_AGE;
-					$tmp2=$tmp->AddYears($MAX_ALIVE_AGE, 'BEF');
-					if ($tmp2->MaxJD() < WT_CLIENT_JD) {
-						$this->_getEstimatedDeathDate=$tmp2;
-					} else {
-						$this->_getEstimatedDeathDate=new WT_Date(''); // always return a date object
-					}
+					$this->_getEstimatedDeathDate = $this->getEstimatedBirthDate()->AddYears($MAX_ALIVE_AGE, 'BEF');
 				} else {
-					$this->_getEstimatedDeathDate=new WT_Date(''); // always return a date object
+					$this->_getEstimatedDeathDate = new WT_Date(''); // always return a date object
 				}
 			}
 		}
@@ -578,21 +572,27 @@ class WT_Individual extends WT_GedcomRecord {
 	}
 
 	// Get the individual’s sex image
-	function getSexImage($size='small', $style='', $title='') {
-		return self::sexImage($this->getSex(), $size, $style, $title);
+	function getSexImage($size='small') {
+		return self::sexImage($this->getSex(), $size);
 	}
 
-	static function sexImage($sex, $size='small', $style='', $title='') {
-		return '<i class="icon-sex_'.strtolower($sex).'_'.($size=='small' ? '9x9' : '15x15').'" title="'.$title.'"></i>';
+	static function sexImage($sex, $size='small') {
+		return '<i class="icon-sex_' . strtolower($sex) . '_' . ($size=='small' ? '9x9' : '15x15') . '"></i>';
 	}
 
 	function getBoxStyle() {
 		$tmp=array('M'=>'','F'=>'F', 'U'=>'NN');
-		return 'person_box'.$tmp[$this->getSex()];
+		return 'person_box' . $tmp[$this->getSex()];
 	}
 
-	// Get a list of this individual’s spouse families
-	function getSpouseFamilies($access_level=WT_USER_ACCESS_LEVEL) {
+	/**
+	 * Get a list of this individual’s spouse families
+	 *
+	 * @param int $access_level
+	 *
+	 * @return WT_Family[]
+	 */
+	public function getSpouseFamilies($access_level=WT_USER_ACCESS_LEVEL) {
 		global $SHOW_PRIVATE_RELATIONSHIPS;
 
 		$families = array();
@@ -605,10 +605,15 @@ class WT_Individual extends WT_GedcomRecord {
 		return $families;
 	}
 
-	// get the current spouse of this individual
-	// The current spouse is defined as the spouse from the latest family.
-	// The latest family is defined as the last family in the GEDCOM record
-	function getCurrentSpouse() {
+	/**
+	 * Get the current spouse of this individual.
+	 *
+	 * Where an individual has multiple spouses, assume they are stored
+	 * in chronological order, and take the last one found.
+	 *
+	 * @return WT_Individual|null
+	 */
+	public function getCurrentSpouse() {
 		$tmp=$this->getSpouseFamilies();
 		$family = end($tmp);
 		if ($family) {
@@ -618,8 +623,12 @@ class WT_Individual extends WT_GedcomRecord {
 		}
 	}
 
-	// Get a count of the children for this individual
-	function getNumberOfChildren() {
+	/**
+	 * Count the children belonging to this individual.
+	 *
+	 * @return int
+	 */
+	public function getNumberOfChildren() {
 		if (preg_match('/\n1 NCHI (\d+)(?:\n|$)/', $this->getGedcom(), $match)) {
 			return $match[1];
 		} else {
@@ -633,8 +642,14 @@ class WT_Individual extends WT_GedcomRecord {
 		}
 	}
 
-	// Get a list of this individual’s child families (i.e. their parents)
-	function getChildFamilies($access_level=WT_USER_ACCESS_LEVEL) {
+	/**
+	 * Get a list of this individual’s child families (i.e. their parents).
+	 *
+	 * @param int $access_level
+	 *
+	 * @return WT_Family[]
+	 */
+	public function getChildFamilies($access_level=WT_USER_ACCESS_LEVEL) {
 		global $SHOW_PRIVATE_RELATIONSHIPS;
 
 		$families = array();
@@ -647,8 +662,19 @@ class WT_Individual extends WT_GedcomRecord {
 		return $families;
 	}
 
-	// Get primary family with parents
-	function getPrimaryChildFamily() {
+	/**
+	 * Get the preferred parents for this individual.
+	 *
+	 * An individual may multiple parents (e.g. birth, adopted, disputed).
+	 * The preferred family record is:
+	 * (a) the first one with an explicit tag "_PRIMARY Y"
+	 * (b) the first one with a pedigree of "birth"
+	 * (c) the first one with no pedigree (default is "birth")
+	 * (d) the first one found
+	 *
+	 * @return WT_Family|null
+	 */
+	public function getPrimaryChildFamily() {
 		$families=$this->getChildFamilies();
 		switch (count($families)) {
 		case 0:
@@ -680,7 +706,11 @@ class WT_Individual extends WT_GedcomRecord {
 		}
 	}
 
-	// Get a list of step-parent families
+	/**
+	 * Get a list of step-parent families.
+	 *
+	 * @return WT_Family[]
+	 */
 	function getChildStepFamilies() {
 		$step_families=array();
 		$families=$this->getChildFamilies();
@@ -705,7 +735,11 @@ class WT_Individual extends WT_GedcomRecord {
 		return $step_families;
 	}
 
-	// Get a list of step-child families
+	/**
+	 * Get a list of step-parent families.
+	 *
+	 * @return WT_Family[]
+	 */
 	function getSpouseStepFamilies() {
 		$step_families=array();
 		$families=$this->getSpouseFamilies();
@@ -778,11 +812,13 @@ class WT_Individual extends WT_GedcomRecord {
 	}
 
 	/**
-	* get primary parents names for this individual
-	* @param string $classname optional css class
-	* @param string $display optional css style display
-	* @return string a div block with father & mother names
-	*/
+	 * get primary parents names for this individual
+	 *
+	 * @param string $classname optional css class
+	 * @param string $display   optional css style display
+	 *
+	 * @return string a div block with father & mother names
+	 */
 	function getPrimaryParentsNames($classname='', $display='') {
 		$fam = $this->getPrimaryChildFamily();
 		if (!$fam) return '';
@@ -1034,26 +1070,25 @@ class WT_Individual extends WT_GedcomRecord {
 			$surn = $tmp[$this->getPrimaryName()]['surname'];
 			$new_givn = explode(' ', $givn);
 			$count_givn = count($new_givn);
-			$len_givn = utf8_strlen($givn);
-			$len_surn = utf8_strlen($surn);
+			$len_givn = mb_strlen($givn);
+			$len_surn = mb_strlen($surn);
 			$len = $len_givn + $len_surn;
 			$i = 1;
-			while ($len > $char && $i<=$count_givn) {
-				$new_givn[$count_givn-$i] = utf8_substr($new_givn[$count_givn-$i],0,1);
+			while ($len > $char && $i <= $count_givn) {
+				$new_givn[$count_givn-$i] = mb_substr($new_givn[$count_givn-$i], 0, 1);
 				$givn = implode(' ', $new_givn);
-				$len_givn = utf8_strlen($givn);
+				$len_givn = mb_strlen($givn);
 				$len = $len_givn + $len_surn;
 				$i++;
 			}
-			$max_surn = $char-$i*2;
+			$max_surn = $char - $i * 2;
 			if ($len_surn > $max_surn) {
-				$surn = substr($surn, 0, $max_surn).'…';
-				$len_surn = utf8_strlen($surn);
+				$surn = substr($surn, 0, $max_surn) . '…';
 			}
-			$shortname =  str_replace(
+			$shortname = str_replace(
 				array('@P.N.', '@N.N.'),
 				array($UNKNOWN_PN, $UNKNOWN_NN),
-				$givn.' '.$surn
+				$givn . ' ' . $surn
 			);
 			return $shortname;
 		} else {

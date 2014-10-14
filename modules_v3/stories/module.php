@@ -21,11 +21,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Tab, WT_Module_Config, WT_Module_Menu {
 	// Extend class WT_Module
 	public function getTitle() {
@@ -124,7 +119,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 		if (WT_USER_GEDCOM_ADMIN && !$html) {
 			$html.='<div class="news_title center">'.$this->getTitle().'</div>';
 			$html.='<div><a href="module.php?mod='.$this->getName().'&amp;mod_action=admin_edit&amp;xref='.$controller->record->getXref().'">';
-			$html.=WT_I18N::translate('Add story').'</a></div><br>';
+			$html.=WT_I18N::translate('Add a story').'</a></div><br>';
 		}
 		return $html;
 	}
@@ -199,27 +194,24 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 			} else {
 				$block_id=WT_Filter::getInteger('block_id');
 
-				$controller=new WT_Controller_Page();
+				$controller = new WT_Controller_Page();
 				if ($block_id) {
 					$controller->setPageTitle(WT_I18N::translate('Edit story'));
-					$title=get_block_setting($block_id, 'title');
-					$story_body=get_block_setting($block_id, 'story_body');
-					$gedcom_id=WT_DB::prepare(
-						"SELECT gedcom_id FROM `##block` WHERE block_id=?"
-					)->execute(array($block_id))->fetchOne();
-					$xref=WT_DB::prepare(
+					$title = get_block_setting($block_id, 'title');
+					$story_body = get_block_setting($block_id, 'story_body');
+					$xref = WT_DB::prepare(
 						"SELECT xref FROM `##block` WHERE block_id=?"
 					)->execute(array($block_id))->fetchOne();
 				} else {
-					$controller->setPageTitle(WT_I18N::translate('Add story'));
-					$title='';
-					$story_body='';
-					$gedcom_id=WT_GED_ID;
-					$xref=WT_Filter::get('xref', WT_REGEX_XREF);
+					$controller->setPageTitle(WT_I18N::translate('Add a story'));
+					$title = '';
+					$story_body = '';
+					$xref = WT_Filter::get('xref', WT_REGEX_XREF);
 				}
 				$controller
 					->pageHeader()
-					->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');
+					->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+					->addInlineJavascript('autocomplete();');
 				if (array_key_exists('ckeditor', WT_Module::getActiveModules())) {
 					ckeditor_WT_Module::enableEditor($controller);
 				}
@@ -245,16 +237,16 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td class="optionbox">';
-				echo '<input type="text" name="xref" id="pid" size="4" value="'.$xref.'">';
+				echo '<input data-autocomplete-type="INDI" type="text" name="xref" id="pid" size="4" value="'.$xref.'">';
 				echo print_findindi_link('pid');
 				if ($xref) {
-					$person=WT_Individual::getInstance($xref);
+					$person = WT_Individual::getInstance($xref);
 					if ($person) {
 						echo ' ', $person->format_list('span');
 					}
 				}
 				echo '</td>';
-				$languages=get_block_setting($block_id, 'languages');
+				$languages = get_block_setting($block_id, 'languages');
 				echo '<td class="optionbox">';
 				echo edit_language_checkboxes('lang_', $languages);
 				echo '</td></tr></table>';
@@ -272,7 +264,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 
 	private function delete() {
 		if (WT_USER_CAN_EDIT) {
-			$block_id=WT_Filter::getInteger('block_id');
+			$block_id = WT_Filter::getInteger('block_id');
 
 			WT_DB::prepare(
 				"DELETE FROM `##block_setting` WHERE block_id=?"
@@ -288,36 +280,36 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 	}
 
 	private function config() {
-		require_once 'includes/functions/functions_edit.php';
+		require_once WT_ROOT.'includes/functions/functions_edit.php';
 		if (WT_USER_GEDCOM_ADMIN) {
 
-			$controller=new WT_Controller_Page();
+			$controller = new WT_Controller_Page();
 			$controller
 				->setPageTitle($this->getTitle())
 				->pageHeader()
 				->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 				->addInlineJavascript('
 					jQuery("#story_table").dataTable({
-						"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
+						dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 						'.WT_I18N::datatablesI18N().',
-						"bAutoWidth":false,
-						"bPaginate": true,
-						"sPaginationType": "full_numbers",
-						"bLengthChange": true,
-						"bFilter": true,
-						"bInfo": true,
-						"bJQueryUI": true,
-						"aaSorting": [[0,"asc"]],
-						"aoColumns": [
+						autoWidth: false,
+						paging: true,
+						pagingType: "full_numbers",
+						lengthChange: true,
+						filter: true,
+						info: true,
+						jQueryUI: true,
+						sorting: [[0,"asc"]],
+						columns: [
 							/* 0-name */ null,
 							/* 1-NAME */ null,
-							/* 2-NAME */ { bSortable:false },
-							/* 3-NAME */ { bSortable:false }
+							/* 2-NAME */ { sortable:false },
+							/* 3-NAME */ { sortable:false }
 						]
 					});
 				');
 
-			$stories=WT_DB::prepare(
+			$stories = WT_DB::prepare(
 				"SELECT block_id, xref".
 				" FROM `##block` b".
 				" WHERE module_name=?".
@@ -334,7 +326,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				'<input type="submit" value="', WT_I18N::translate('show'), '">',
 				'</form>';
 
-			echo '<h3><a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit">', WT_I18N::translate('Add story'), '</a></h3>';
+			echo '<h3><a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit">', WT_I18N::translate('Add a story'), '</a></h3>';
 			if (count($stories)>0) {
 			echo '<table id="story_table">';
 				echo '<thead><tr>
@@ -368,31 +360,31 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 	private function show_list() {
 		global $controller;
 
-		$controller=new WT_Controller_Page();
+		$controller = new WT_Controller_Page();
 		$controller
 			->setPageTitle($this->getTitle())
 			->pageHeader()
 			->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 			->addInlineJavascript('
 				jQuery("#story_table").dataTable({
-					"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
+					dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 					'.WT_I18N::datatablesI18N().',
-					"bAutoWidth":false,
-					"bPaginate": true,
-					"sPaginationType": "full_numbers",
-					"bLengthChange": true,
-					"bFilter": true,
-					"bInfo": true,
-					"bJQueryUI": true,
-					"aaSorting": [[0,"asc"]],
-					"aoColumns": [
+					autoWidth: false,
+					paging: true,
+					pagingType: "full_numbers",
+					lengthChange: true,
+					filter: true,
+					info: true,
+					jQueryUI: true,
+					sorting: [[0,"asc"]],
+					columns: [
 						/* 0-name */ null,
 						/* 1-NAME */ null
 					]
 				});
 			');
 
-		$stories=WT_DB::prepare(
+		$stories = WT_DB::prepare(
 			"SELECT block_id, xref".
 			" FROM `##block` b".
 			" WHERE module_name=?".

@@ -18,11 +18,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 class WT_Gedcom_Code_Stat {
 
 	// Get a list of status codes that can be used on a given LDS tag
@@ -42,7 +37,7 @@ class WT_Gedcom_Code_Stat {
 			// LDS_SPOUSE_SEALING_DATE_STATUS
 			return array('CANCELED', 'COMPLETED', 'DNS', 'DNS/CAN', 'EXCLUDED', 'PRE-1970', 'SUBMITTED', 'UNCLEARED');
 		default:
-			trigger_error('Internal error - bad argument to WT_Gedcom_Code_Stat::statusCodes("'.$tag.'")', E_USER_ERROR);
+			throw new InvalidArgumentException('Internal error - bad argument to WT_Gedcom_Code_Stat::statusCodes("'.$tag.'")');
 		}
 	}
 
@@ -100,7 +95,7 @@ class WT_Gedcom_Code_Stat {
 		foreach (self::statusCodes($tag) as $status_code) {
 			$status_names[$status_code]=self::statusName($status_code);
 		}
-		uasort($status_names, 'utf8_strcasecmp');
+		uasort($status_names, array('WT_I18N', 'strcasecmp'));
 		return $status_names;
 	}
 }

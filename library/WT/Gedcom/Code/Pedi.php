@@ -18,13 +18,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 class WT_Gedcom_Code_Pedi {
-
 	private static $TYPES=array('adopted', 'birth', 'foster', 'rada', 'sealing');
 
 	// Translate a code, for an optional record
@@ -38,27 +32,39 @@ class WT_Gedcom_Code_Pedi {
 		switch ($type) {
 		case 'birth':
 			switch ($sex) {
-			case 'U': return WT_I18N::translate_c('Pedigree',        'Birth');
-			case 'M': return WT_I18N::translate_c('Male pedigree',   'Birth');
-			case 'F': return WT_I18N::translate_c('Female pedigree', 'Birth');
+			case 'M':
+				return WT_I18N::translate_c('Male pedigree',   'Birth');
+			case 'F':
+				return WT_I18N::translate_c('Female pedigree', 'Birth');
+			default:
+				return WT_I18N::translate_c('Pedigree',        'Birth');
 			}
 		case 'adopted':
 			switch ($sex) {
-			case 'U': return WT_I18N::translate_c('Pedigree',        'Adopted');
-			case 'M': return WT_I18N::translate_c('Male pedigree',   'Adopted');
-			case 'F': return WT_I18N::translate_c('Female pedigree', 'Adopted');
+			case 'M':
+				return WT_I18N::translate_c('Male pedigree',   'Adopted');
+			case 'F':
+				return WT_I18N::translate_c('Female pedigree', 'Adopted');
+			default:
+				return WT_I18N::translate_c('Pedigree',        'Adopted');
 			}
 		case 'foster':
 			switch ($sex) {
-			case 'U': return WT_I18N::translate_c('Pedigree',        'Foster');
-			case 'M': return WT_I18N::translate_c('Male pedigree',   'Foster');
-			case 'F': return WT_I18N::translate_c('Female pedigree', 'Foster');
+			case 'M':
+				return WT_I18N::translate_c('Male pedigree',   'Foster');
+			case 'F':
+				return WT_I18N::translate_c('Female pedigree', 'Foster');
+			default:
+				return WT_I18N::translate_c('Pedigree',        'Foster');
 			}
 		case 'sealing':
 			switch ($sex) {
-			case 'U': return /* I18N: “sealing” is a ceremony in the Mormon church. */ WT_I18N::translate_c('Pedigree',        'Sealing');
-			case 'M': return /* I18N: “sealing” is a ceremony in the Mormon church. */ WT_I18N::translate_c('Male pedigree',   'Sealing');
-			case 'F': return /* I18N: “sealing” is a ceremony in the Mormon church. */ WT_I18N::translate_c('Female pedigree', 'Sealing');
+			case 'M':
+				return /* I18N: “sealing” is a ceremony in the Mormon church. */ WT_I18N::translate_c('Male pedigree',   'Sealing');
+			case 'F':
+				return /* I18N: “sealing” is a ceremony in the Mormon church. */ WT_I18N::translate_c('Female pedigree', 'Sealing');
+			default:
+				return /* I18N: “sealing” is a ceremony in the Mormon church. */ WT_I18N::translate_c('Pedigree',        'Sealing');
 			}
 			case 'rada':
 				// Not standard GEDCOM - a webtrees extension
@@ -76,7 +82,7 @@ class WT_Gedcom_Code_Pedi {
 		foreach (self::$TYPES as $type) {
 			$values[$type]=self::getValue($type, $record);
 		}
-		uasort($values, 'utf8_strcasecmp');
+		uasort($values, array('WT_I18N', 'strcasecmp'));
 		return $values;
 	}
 

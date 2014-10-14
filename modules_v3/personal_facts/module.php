@@ -21,11 +21,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 	// Extend WT_Module
 	public function getTitle() {
@@ -119,7 +114,7 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 		echo '<table class="facts_table">';
 		echo '<tbody>';
 		if (!$indifacts) {
-			echo '<tr><td colspan="2" class="facts_value">', WT_I18N::translate('There are no Facts for this individual.'), '</td></tr>';
+			echo '<tr><td colspan="2" class="facts_value">', WT_I18N::translate('There are no facts for this individual.'), '</td></tr>';
 		}
 
 		echo '<tr><td colspan="2" class="descriptionbox rela"><form action="?"><input id="checkbox_rela_facts" type="checkbox"';
@@ -127,7 +122,7 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 			echo ' checked="checked"';
 		}
 		echo ' onclick="jQuery(\'tr.rela\').toggle();"><label for="checkbox_rela_facts">', WT_I18N::translate('Events of close relatives'), '</label>';
-		if (file_exists(WT_Site::preference('INDEX_DIRECTORY').'histo.'.WT_LOCALE.'.php')) {
+		if (file_exists(WT_Site::getPreference('INDEX_DIRECTORY').'histo.'.WT_LOCALE.'.php')) {
 			echo ' <input id="checkbox_histo" type="checkbox"';
 			if ($EXPAND_HISTO_EVENTS) {
 				echo ' checked="checked"';
@@ -175,15 +170,22 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 		return '';
 	}
 
-	// Extra facts to be shown on this tabparent
-	private static function spouse_facts(WT_Individual $person, WT_Individual $spouse) {
-		global $controller, $SHOW_RELATIVES_EVENTS;
+	/**
+	 * Spouse facts that are shown on an individual’s page.
+	 *
+	 * @param WT_Individual $individual Show events that occured during the lifetime of this individual
+	 * @param WT_Individual $spouse     Show events of this individual
+	 *
+	 * @return WT_Fact[]
+	 */
+	private static function spouse_facts(WT_Individual $individual, WT_Individual $spouse) {
+		global $SHOW_RELATIVES_EVENTS;
 
 		$facts = array();
 		if (strstr($SHOW_RELATIVES_EVENTS, '_DEAT_SPOU')) {
 			// Only include events between birth and death
-			$birt_date = $controller->record->getEstimatedBirthDate();
-			$deat_date = $controller->record->getEstimatedDeathDate();
+			$birt_date = $individual->getEstimatedBirthDate();
+			$deat_date = $individual->getEstimatedDeathDate();
 
 			foreach ($spouse->getFacts(WT_EVENTS_DEAT) as $fact) {
 
@@ -272,7 +274,6 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 			if (strpos($SHOW_RELATIVES_EVENTS, '_DEAT'.str_replace('_HSIB', '_SIBL', $option))!==false) {
 				foreach ($child->getFacts(WT_EVENTS_DEAT) as $fact) {
 					$sgdate=$fact->getDate();
-					$srec = $fact->getGedcom();
 					if ($sgdate->isOK() && WT_Date::Compare($birt_date, $sgdate)<=0 && WT_Date::Compare($sgdate, $deat_date)<=0) {
 						if ($option=='_GCHI' && $relation=='dau') {
 							// Convert the event to a close relatives event.
@@ -425,13 +426,13 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 			$birt_date = $person->getEstimatedBirthDate();
 			$deat_date = $person->getEstimatedDeathDate();
 
-			if (file_exists(WT_Site::preference('INDEX_DIRECTORY') . 'histo.' . WT_LOCALE . '.php')) {
-				require WT_Site::preference('INDEX_DIRECTORY') . 'histo.' . WT_LOCALE . '.php';
+			if (file_exists(WT_Site::getPreference('INDEX_DIRECTORY') . 'histo.' . WT_LOCALE . '.php')) {
+				require WT_Site::getPreference('INDEX_DIRECTORY') . 'histo.' . WT_LOCALE . '.php';
 				foreach ($histo as $hist) {
 					// Earlier versions of the WIKI encouraged people to use HTML entities,
 					// rather than UTF8 encoding.
 					$hist = html_entity_decode($hist, ENT_QUOTES, 'UTF-8');
-					
+
 					$fact = new WT_Fact($hist, $person, 'histo');
 					$sdate = $fact->getDate();
 					if ($sdate->isOK() && WT_Date::Compare($birt_date, $sdate)<=0 && WT_Date::Compare($sdate, $deat_date)<=0) {

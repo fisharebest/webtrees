@@ -21,14 +21,11 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
+use WT\Auth;
+use WT\Log;
 
 class WT_GedcomRecord {
 	const RECORD_TYPE = 'UNKNOWN';
-	const SQL_FETCH   = "SELECT o_gedcom FROM `##other` WHERE o_id=? AND o_file=?";
 	const URL_PREFIX  = 'gedrecord.php?pid=';
 
 	protected $xref        = null;  // The record identifier
@@ -102,7 +99,7 @@ class WT_GedcomRecord {
 	// Get an instance of a GedcomRecord object.  For single records,
 	// we just receive the XREF.  For bulk records (such as lists
 	// and search results) we can receive the GEDCOM data as well.
-	static public function getInstance($xref, $gedcom_id=WT_GED_ID, $gedcom=null) {
+	public static function getInstance($xref, $gedcom_id=WT_GED_ID, $gedcom=null) {
 		// Is this record already in the cache?
 		if (isset(self::$gedcom_record_cache[$xref][$gedcom_id])) {
 			return self::$gedcom_record_cache[$xref][$gedcom_id];
@@ -253,11 +250,11 @@ class WT_GedcomRecord {
 
 	// Generate a URL to this record, suitable for use in HTML, etc.
 	public function getHtmlUrl() {
-		return $this->_getLinkUrl(static::URL_PREFIX, '&amp;');
+		return $this->getLinkUrl(static::URL_PREFIX, '&amp;');
 	}
 	// Generate a URL to this record, suitable for use in javascript, HTTP headers, etc.
 	public function getRawUrl() {
-		return $this->_getLinkUrl(static::URL_PREFIX, '&');
+		return $this->getLinkUrl(static::URL_PREFIX, '&');
 	}
 
 	// Generate an absolute URL for this record, suitable for sitemap.xml, RSS feeds, etc.
@@ -265,7 +262,7 @@ class WT_GedcomRecord {
 		return WT_SERVER_NAME . WT_SCRIPT_PATH . $this->getHtmlUrl();
 	}
 
-	private function _getLinkUrl($link, $separator) {
+	private function getLinkUrl($link, $separator) {
 		if ($this->gedcom_id == WT_GED_ID) {
 			return $link . $this->getXref() . $separator . 'ged=' . WT_GEDURL;
 		} elseif ($this->gedcom_id == 0) {
@@ -311,11 +308,11 @@ class WT_GedcomRecord {
 		}
 
 		// Different types of record have different privacy rules
-		return $this->_canShowByType($access_level);
+		return $this->canShowByType($access_level);
 	}
 
 	// Each object type may have its own special rules, and re-implement this function.
-	protected function _canShowByType($access_level) {
+	protected function canShowByType($access_level) {
 		global $global_facts;
 
 		if (isset($global_facts[static::RECORD_TYPE])) {
@@ -370,8 +367,6 @@ class WT_GedcomRecord {
 	// Remove private data from the raw gedcom record.
 	// Return both the visible and invisible data.  We need the invisible data when editing.
 	public function privatizeGedcom($access_level) {
-		global $global_facts, $person_facts;
-
 		if ($access_level==WT_PRIV_HIDE) {
 			// We may need the original record, for example when downloading a GEDCOM or clippings cart
 			return $this->gedcom;
@@ -554,10 +549,10 @@ class WT_GedcomRecord {
 
 	// Static helper function to sort an array of objects by name
 	// Records whose names cannot be displayed are sorted at the end.
-	static function Compare($x, $y) {
+	public static function compare($x, $y) {
 		if ($x->canShowName()) {
 			if ($y->canShowName()) {
-				return utf8_strcasecmp($x->getSortName(), $y->getSortName());
+				return WT_I18N::strcasecmp($x->getSortName(), $y->getSortName());
 			} else {
 				return -1; // only $y is private
 			}
@@ -786,9 +781,16 @@ class WT_GedcomRecord {
 		return null;
 	}
 
-	// The facts and events for this record
-	// $override allows us to implement $SHOW_PRIVATE_RELATIONSHIPS and $SHOW_LIVING_NAMES, by giving
-	// access to otherwise private records.
+	/**
+	 * The facts and events for this record.
+	 *
+	 * @param string $filter
+	 * @param bool   $sort
+	 * @param int    $access_level
+	 * @param bool   $override     Include private records, to allow us to implement $SHOW_PRIVATE_RELATIONSHIPS and $SHOW_LIVING_NAMES.
+	 *
+	 * @return WT_Fact[]
+	 */
 	public function getFacts($filter=null, $sort=false, $access_level=WT_USER_ACCESS_LEVEL, $override=false) {
 		$facts=array();
 		if ($this->canShow($access_level) || $override) {
@@ -808,18 +810,18 @@ class WT_GedcomRecord {
 	// Get the last-change timestamp for this record, either as a formatted string
 	// (for display) or as a unix timestamp (for sorting)
 	//////////////////////////////////////////////////////////////////////////////
-	public function LastChangeTimestamp($sorting=false) {
+	public function lastChangeTimestamp($sorting=false) {
 		$chan = $this->getFirstFact('CHAN');
 
 		if ($chan) {
 			// The record does have a CHAN event
 			$d = $chan->getDate()->MinDate();
 			if (preg_match('/\n3 TIME (\d\d):(\d\d):(\d\d)/', $chan->getGedcom(), $match)) {
-				$t=mktime((int)$match[1], (int)$match[2], (int)$match[3], (int)$d->Format('%n'), (int)$d->Format('%j'), (int)$d->Format('%Y'));
+				$t=mktime((int)$match[1], (int)$match[2], (int)$match[3], (int)$d->format('%n'), (int)$d->format('%j'), (int)$d->format('%Y'));
 			} elseif (preg_match('/\n3 TIME (\d\d):(\d\d)/', $chan->getGedcom(), $match)) {
-				$t=mktime((int)$match[1], (int)$match[2], 0, (int)$d->Format('%n'), (int)$d->Format('%j'), (int)$d->Format('%Y'));
+				$t=mktime((int)$match[1], (int)$match[2], 0, (int)$d->format('%n'), (int)$d->format('%j'), (int)$d->format('%Y'));
 			} else {
-				$t=mktime(0, 0, 0, (int)$d->Format('%n'), (int)$d->Format('%j'), (int)$d->Format('%Y'));
+				$t=mktime(0, 0, 0, (int)$d->format('%n'), (int)$d->format('%j'), (int)$d->format('%Y'));
 			}
 			if ($sorting) {
 				return $t;
@@ -839,7 +841,7 @@ class WT_GedcomRecord {
 	//////////////////////////////////////////////////////////////////////////////
 	// Get the last-change user for this record
 	//////////////////////////////////////////////////////////////////////////////
-	public function LastChangeUser() {
+	public function lastChangeUser() {
 		$chan = $this->getFirstFact('CHAN');
 
 		if (is_null($chan)) {
@@ -888,7 +890,7 @@ class WT_GedcomRecord {
 
 		// First line of record may contain data - e.g. NOTE records.
 		list($new_gedcom) = explode("\n", $old_gedcom, 2);
-		$old_chan = $this->getFirstFact('CHAN');
+
 		// Replacing (or deleting) an existing fact
 		foreach ($this->getFacts(null, false, WT_PRIV_HIDE) as $fact) {
 			if (!$fact->isOld()) {
@@ -925,7 +927,7 @@ class WT_GedcomRecord {
 
 			$this->pending = $new_gedcom;
 
-			if (get_user_setting(WT_USER_ID, 'auto_accept')) {
+			if (Auth::user()->getPreference('auto_accept')) {
 				accept_all_changes($this->xref, $this->gedcom_id);
 				$this->gedcom  = $new_gedcom;
 				$this->pending = null;
@@ -968,21 +970,17 @@ class WT_GedcomRecord {
 		));
 
 		// Accept this pending change
-		if (get_user_setting(WT_USER_ID, 'auto_accept')) {
+		if (Auth::user()->getPreference('auto_accept')) {
 			accept_all_changes($xref, $gedcom_id);
 		}
 
 		// Clear this record from the cache
 		self::$pending_record_cache = null;
 
-		AddToLog('Create: ' . $type . ' ' . $xref, 'edit');
+		Log::addEditLog('Create: ' . $type . ' ' . $xref);
 
 		// Return the newly created record
 		return WT_GedcomRecord::getInstance($xref);
-	}
-
-	private static function readRecord($xref, $gedcom_id) {
-		return WT_DB::prepare(static::SQL_FETCH)->execute(array($xref, $gedcom_id))->fetchOne();
 	}
 
 	public function updateRecord($gedcom, $update_chan) {
@@ -1011,7 +1009,7 @@ class WT_GedcomRecord {
 		$this->pending = $gedcom;
 
 		// Accept this pending change
-		if (get_user_setting(WT_USER_ID, 'auto_accept')) {
+		if (Auth::user()->getPreference('auto_accept')) {
 			accept_all_changes($this->xref, $this->gedcom_id);
 			$this->gedcom  = $gedcom;
 			$this->pending = null;
@@ -1019,7 +1017,7 @@ class WT_GedcomRecord {
 
 		$this->parseFacts();
 
-		AddToLog('Update: ' . static::RECORD_TYPE . ' ' . $this->xref, 'edit');
+		Log::addEditLog('Update: ' . static::RECORD_TYPE . ' ' . $this->xref);
 	}
 
 	public function deleteRecord() {
@@ -1030,11 +1028,11 @@ class WT_GedcomRecord {
 			$this->gedcom_id,
 			$this->xref,
 			$this->getGedcom(),
-			WT_USER_ID
+			Auth::id(),
 		));
 
 		// Accept this pending change
-		if (get_user_setting(WT_USER_ID, 'auto_accept')) {
+		if (Auth::user()->getPreference('auto_accept')) {
 			accept_all_changes($this->xref, $this->gedcom_id);
 		}
 
@@ -1042,7 +1040,7 @@ class WT_GedcomRecord {
 		self::$gedcom_record_cache = null;
 		self::$pending_record_cache = null;
 
-		AddToLog('Delete: ' . static::RECORD_TYPE . ' ' . $this->xref, 'edit');
+		Log::addEditLog('Delete: ' . static::RECORD_TYPE . ' ' . $this->xref);
 	}
 
 	// Remove all links from this record to $xref

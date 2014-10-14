@@ -22,6 +22,8 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 // PNG Icons By: Alessandro Rei; License:  GPL; www.deviantdark.com
 
+use WT\Auth;
+
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
@@ -47,14 +49,14 @@ function getMenuAsCustomList($menu) {
 function color_theme_dropdown() {
 	global $COLOR_THEME_LIST, $WT_SESSION, $subColor;
 	$menu=new WT_Menu(/* I18N: A colour scheme */ WT_I18N::translate('Palette'), '#', 'menu-color');
-	uasort($COLOR_THEME_LIST, 'utf8_strcasecmp');
+	uasort($COLOR_THEME_LIST, array('WT_I18N', 'strcasecmp'));
 	foreach ($COLOR_THEME_LIST as $colorChoice=>$colorName) {
 		$submenu=new WT_Menu($colorName, get_query_url(array('themecolor'=>$colorChoice), '&amp;'), 'menu-color-'.$colorChoice);
 		if (isset($WT_SESSION->subColor)) {
 			if ($WT_SESSION->subColor == $colorChoice) {
 				$submenu->addClass('','','theme-active');
 			}
-		} elseif  (WT_Site::preference('DEFAULT_COLOR_PALETTE') == $colorChoice) { /* here when visitor changes palette from default */
+		} elseif  (WT_Site::getPreference('DEFAULT_COLOR_PALETTE') == $colorChoice) { /* here when visitor changes palette from default */
 			$submenu->addClass('','','theme-active');
 		} elseif ($subColor=='ash') { /* here when site has different theme as default and user switches to colors */
 			if ($subColor == $colorChoice) {
@@ -94,40 +96,35 @@ $COLOR_THEME_LIST=array(
 // If we've selected a new palette, and we are logged in, set this value as a default.
 if (isset($_GET['themecolor']) && array_key_exists($_GET['themecolor'], $COLOR_THEME_LIST)) {
 	// Request to change color
-	$subColor=$_GET['themecolor'];
-	if (WT_USER_ID) {
-		set_user_setting(WT_USER_ID, 'themecolor', $subColor);
-		if (WT_USER_IS_ADMIN) {
-			WT_Site::preference('DEFAULT_COLOR_PALETTE', $subColor);
-		}
+	$subColor = $_GET['themecolor'];
+	Auth::user()->setPreference('themecolor', $subColor);
+	if (Auth::isAdmin()) {
+		WT_Site::setPreference('DEFAULT_COLOR_PALETTE', $subColor);
 	}
 	unset($_GET['themecolor']);
 	// Rember that we have selected a value
 	$WT_SESSION->subColor=$subColor;
 }
 // If we are logged in, use our preference
-$subColor=null;
-if (WT_USER_ID) {
-	$subColor=get_user_setting(WT_USER_ID, 'themecolor');
-}
+$subColor = Auth::user()->getPreference('themecolor');
 // If not logged in or no preference, use one we selected earlier in the session?
 if (!$subColor) {
-	$subColor=$WT_SESSION->subColor;
+	$subColor = $WT_SESSION->subColor;
 }
 // We haven't selected one this session?  Use the site default
 if (!$subColor) {
-	$subColor=WT_Site::preference('DEFAULT_COLOR_PALETTE');
+	$subColor = WT_Site::getPreference('DEFAULT_COLOR_PALETTE');
 }
 // Make sure our selected palette actually exists
 if (!array_key_exists($subColor, $COLOR_THEME_LIST)) {
-	$subColor='ash';
+	$subColor = 'ash';
 }
 
 // Theme name - this needs double quotes, as file is scanned/parsed by script
-$theme_name = "colors";
+$theme_name = "colors"; /* I18N: Name of a theme. */ WT_I18N::translate('colors');
 
 // A version number in the path prevents browser-cache problems during upgrade
-define('WT_CSS_URL', WT_THEME_URL . 'css-1.5.3/');
+define('WT_CSS_URL', WT_THEME_URL . 'css-1.6.0/');
 
 $footerfile = WT_THEME_DIR . 'footer.php';
 $headerfile = WT_THEME_DIR . 'header.php';
@@ -156,8 +153,8 @@ $WT_IMAGES=array(
 
 //-- Variables for the Fan chart
 $fanChart = array(
-	'font'     => WT_ROOT.'includes/fonts/DejaVuSans.ttf',
-	'size'     => '7px',
+	'font'     => WT_ROOT . 'includes/fonts/DejaVuSans.ttf',
+	'size'     => 7,
 	'color'    => '#000000',
 	'bgColor'  => '#eeeeee',
 	'bgMColor' => '#b1cff0',

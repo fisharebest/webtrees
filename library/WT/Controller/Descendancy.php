@@ -21,11 +21,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
+use Rhumsaa\Uuid\Uuid;
 class WT_Controller_Descendancy extends WT_Controller_Chart {
 	var $descPerson = null;
 
@@ -38,7 +34,6 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 	var $show_full;
 	var $chart_style;
 	var $generations;
-	var $personcount;
 	var $box_width;
 	var $Dbwidth;
 	var $Dbheight;
@@ -52,7 +47,7 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 	var $show_cousins;
 
 	function __construct() {
-		global $USE_RIN, $MAX_ALIVE_AGE, $bwidth, $bheight, $cbwidth, $cbheight, $pbwidth, $pbheight, $GEDCOM, $PEDIGREE_FULL_DETAILS, $MAX_DESCENDANCY_GENERATIONS, $DEFAULT_PEDIGREE_GENERATIONS, $show_full;
+		global $bwidth, $bheight, $cbwidth, $cbheight, $pbwidth, $pbheight, $PEDIGREE_FULL_DETAILS, $MAX_DESCENDANCY_GENERATIONS, $DEFAULT_PEDIGREE_GENERATIONS, $show_full;
 
 		parent::__construct();
 
@@ -100,19 +95,20 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 	}
 
 	/**
-	 * print a child family
+	 * Print a child family
 	 *
-	 * @param string $pid individual Gedcom Id
-	 * @param int $depth the descendancy depth to show
+	 * @param WT_Individual $person
+	 * @param int           $depth the descendancy depth to show
+	 * @param string        $label
+	 * @param string        $gpid
+	 *
+	 * @return void
 	 */
-	function print_child_family($person, $depth, $label='1.', $gpid='') {
-		global $personcount;
+	function print_child_family(WT_Individual $person, $depth, $label='1.', $gpid='') {
 
-		if (is_null($person)) return;
 		if ($depth<2) return;
 		foreach ($person->getSpouseFamilies() as $family) {
-			print_sosa_family($family->getXref(), '', -1, $label, $person->getXref(), $gpid, $personcount);
-			$personcount++;
+			print_sosa_family($family->getXref(), '', -1, $label, $person->getXref(), $gpid);
 			$i=1;
 			foreach ($family->getChildren() as $child) {
 				$this->print_child_family($child, $depth-1, $label.($i++).'.', $person->getXref());
@@ -123,14 +119,14 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 	/**
 	 * print a child descendancy
 	 *
-	 * @param string $pid individual Gedcom Id
-	 * @param int $depth the descendancy depth to show
+	 * @param WT_Individual $person
+	 * @param int           $depth the descendancy depth to show
+	 *
+	 * @return void
 	 */
-	function print_child_descendancy($person, $depth) {
-		global $WT_IMAGES, $Dindent, $personcount;
+	function print_child_descendancy(WT_Individual $person, $depth) {
+		global $WT_IMAGES, $Dindent;
 
-		if (is_null($person)) return;
-		//print_r($person);
 		echo "<li>";
 		echo "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td>";
 		if ($depth==$this->generations) echo "<img src=\"".$WT_IMAGES["spacer"]."\" height=\"3\" width=\"$Dindent\" alt=\"\"></td><td>";
@@ -138,7 +134,7 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 			echo "<img src=\"".$WT_IMAGES["spacer"]."\" height=\"3\" width=\"3\" alt=\"\">";
 			echo "<img src=\"".$WT_IMAGES["hline"]."\" height=\"3\" width=\"".($Dindent-3)."\" alt=\"\"></td><td>";
 		}
-		print_pedigree_person($person, 1, 0, $personcount);
+		print_pedigree_person($person);
 		echo '</td>';
 
 		// check if child has parents and add an arrow
@@ -146,8 +142,7 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 		echo '<td>';
 		foreach ($person->getChildFamilies() as $cfamily) {
 			foreach ($cfamily->getSpouses() as $parent) {
-				print_url_arrow($parent->getXref().$personcount.$person->getXref(), '?rootid='.$parent->getXref().'&amp;generations='.$this->generations.'&amp;chart_style='.$this->chart_style.'&amp;show_full='.$this->show_full.'&amp;box_width='.$this->box_width.'&amp;ged='.WT_GEDURL, WT_I18N::translate('Start at parents'), 2);
-				$personcount++;
+				print_url_arrow('?rootid='.$parent->getXref().'&amp;generations='.$this->generations.'&amp;chart_style='.$this->chart_style.'&amp;show_full='.$this->show_full.'&amp;box_width='.$this->box_width.'&amp;ged='.WT_GEDURL, WT_I18N::translate('Start at parents'), 2);
 				// only show the arrow for one of the parents
 				break;
 			}
@@ -175,7 +170,6 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 
 		// loop for each spouse
 		foreach ($person->getSpouseFamilies() as $family) {
-			$personcount++;
 			$this->print_family_descendancy($person, $family, $depth);
 		}
 	}
@@ -183,21 +177,21 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 	/**
 	 * print a family descendancy
 	 *
-	 * @param string $pid individual Gedcom Id
-	 * @param Family $famid family record
-	 * @param int $depth the descendancy depth to show
+	 * @param WT_Individual $person
+	 * @param WT_Family     $family
+	 * @param int           $depth the descendancy depth to show
+	 *
+	 * @return void
 	 */
-	function print_family_descendancy($person, $family, $depth) {
-		global $GEDCOM, $WT_IMAGES, $Dindent, $personcount;
+	function print_family_descendancy(WT_Individual $person, WT_Family $family, $depth) {
+		global $WT_IMAGES, $Dindent;
 
-		if (is_null($family)) return;
-		if (is_null($person)) return;
-
+		$uid = Uuid::uuid4(); // create a unique ID
 		// print marriage info
 		echo '<li>';
 		echo '<img src="', $WT_IMAGES['spacer'], '" height="2" width="', ($Dindent+4), '" alt="">';
 		echo '<span class="details1" style="white-space:nowrap;">';
-		echo "<a href=\"#\" onclick=\"expand_layer('".$family->getXref().$personcount."'); return false;\" class=\"top\"><i id=\"".$family->getXref().$personcount."_img\" class=\"icon-minus\" title=\"".WT_I18N::translate('View family')."\"></i></a>";
+		echo "<a href=\"#\" onclick=\"expand_layer('".$uid."'); return false;\" class=\"top\"><i id=\"".$uid."_img\" class=\"icon-minus\" title=\"".WT_I18N::translate('View family')."\"></i></a>";
 		if ($family->canShow()) {
 			foreach ($family->getFacts(WT_EVENTS_MARR) as $fact) {
 				echo ' <a href="', $family->getHtmlUrl(), '" class="details1">', $fact->summary(), '</a>';
@@ -207,10 +201,10 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 
 		// print spouse
 		$spouse=$family->getSpouse($person);
-		echo '<ul style="list-style:none; display:block;" id="'.$family->getXref().$personcount.'">';
+		echo '<ul style="list-style:none; display:block;" id="'.$uid.'">';
 		echo '<li>';
 		echo '<table border="0" cellpadding="0" cellspacing="0"><tr><td>';
-		print_pedigree_person($spouse, 1, 0, $personcount);
+		print_pedigree_person($spouse);
 		echo '</td>';
 
 		// check if spouse has parents and add an arrow
@@ -219,8 +213,7 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 		if ($spouse) {
 			foreach ($spouse->getChildFamilies() as $cfamily) {
 				foreach ($cfamily->getSpouses() as $parent) {
-					print_url_arrow($parent->getXref().$personcount.$person->getXref(), '?rootid='.$parent->getXref().'&amp;generations='.$this->generations.'&amp;chart_style='.$this->chart_style.'&amp;show_full='.$this->show_full.'&amp;box_width='.$this->box_width.'&amp;ged='.WT_GEDURL, WT_I18N::translate('Start at parents'), 2);
-					$personcount++;
+					print_url_arrow('?rootid='.$parent->getXref().'&amp;generations='.$this->generations.'&amp;chart_style='.$this->chart_style.'&amp;show_full='.$this->show_full.'&amp;box_width='.$this->box_width.'&amp;ged='.WT_GEDURL, WT_I18N::translate('Start at parents'), 2);
 					// only show the arrow for one of the parents
 					break;
 				}
@@ -246,14 +239,22 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 		echo '</td></tr></table>';
 		echo '</li>';
 		if ($depth>1) foreach ($children as $child) {
-			$personcount++;
 			$this->print_child_descendancy($child, $depth-1);
 		}
 		echo '</ul>';
 		echo '</li>';
 	}
 
-	public function indi_desc($person, $n, $array) {
+	/**
+	 * Find all the individuals that are descended from an individual.
+	 *
+	 * @param WT_Individual   $person
+	 * @param int             $n
+	 * @param WT_Individual[] $array
+	 *
+	 * @return WT_Individual[]
+	 */
+	public function indi_desc(WT_Individual $person, $n, $array) {
 		if ($n < 1) {
 			return $array;
 		}
@@ -270,6 +271,15 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 		return $array;
 	}
 
+	/**
+	 * Find all the families that are descended from an individual.
+	 *
+	 * @param WT_Individual $person
+	 * @param int           $n
+	 * @param WT_Family[]   $array
+	 *
+	 * @return WT_Family[]
+	 */
 	public function fam_desc($person, $n, $array) {
 		if ($n < 1) {
 			return $array;

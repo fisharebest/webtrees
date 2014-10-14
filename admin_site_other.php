@@ -21,13 +21,15 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+
 define('WT_SCRIPT_NAME', 'admin_site_other.php');
 require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
-$controller=new WT_Controller_Page();
+$controller = new WT_Controller_Page();
 $controller
-	->requireManagerLogin()
+	->restrictAccess(Auth::isManager())
 	->setPageTitle(WT_I18N::translate('Add unlinked records'))
 	->pageHeader();
 

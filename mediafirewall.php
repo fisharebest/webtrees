@@ -21,6 +21,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Log;
+
 define('WT_SCRIPT_NAME', 'mediafirewall.php');
 require './includes/session.php';
 
@@ -34,7 +36,7 @@ $media = WT_Media::getInstance($mid);
 function send404AndExit() {
 	$error = WT_I18N::translate('The media file was not found in this family tree');
 
-	$width = (utf8_strlen($error)) * 6.5 + 50;
+	$width = (mb_strlen($error)) * 6.5 + 50;
 	$height = 60;
 	$im  = imagecreatetruecolor($width, $height);  /* Create a black image */
 	$bgc = imagecolorallocate($im, 255, 255, 255); /* set background color */
@@ -111,7 +113,7 @@ function embedText($im, $text, $maxsize, $color, $font, $vpos, $hpos) {
 		if ($hpos=="top2bottom") $hpos = "bottom2top";
 	}
 
-	$text = reverseText($text);
+	$text = WT_I18N::reverseText($text);
 	$height = imagesy($im);
 	$width  = imagesx($im);
 	$calc_angle=rad2deg(atan($height/$width));
@@ -188,7 +190,7 @@ function embedText($im, $text, $maxsize, $color, $font, $vpos, $hpos) {
 
 function textlength($t, $mxl, $text) {
 	$taille_c = $t;
-	$len = utf8_strlen($text);
+	$len = mb_strlen($text);
 	while (($taille_c-2)*($len) > $mxl) {
 		$taille_c--;
 		if ($taille_c == 2) break;
@@ -198,10 +200,10 @@ function textlength($t, $mxl, $text) {
 
 // imagettftext is the function that is most likely to throw an error
 // use this custom error handler to catch and log it
-function imagettftextErrorHandler($errno, $errstr, $errfile, $errline) {
+function imagettftextErrorHandler($errno, $errstr) {
 	global $useTTF, $serverFilename;
 	// log the error
-	AddToLog("Media Firewall error: >" . $errstr . "< in file >" . $serverFilename . "<", 'error');
+	Log::addErrorLog("Media Firewall error: >" . $errno . '/' . $errstr . "< while processing file >" . $serverFilename . "<");
 
 	// change value of useTTF to false so the fallback watermarking can be used.
 	$useTTF = false;
@@ -346,9 +348,7 @@ if ($generatewatermark) {
 		// save the image, if preferences allow
 		if ((($which=='thumb') && $SAVE_WATERMARK_THUMB) || (($which=='main') && $SAVE_WATERMARK_IMAGE)) {
 			// make sure the folder exists
-			if (!is_dir(dirname($watermarkfile))) {
-				mkdir(dirname($watermarkfile), WT_PERM_EXE, true);
-			}
+			WT_File::mkdir(dirname($watermarkfile));
 			// save the image
 			$imSendFunc($im, $watermarkfile);
 		}
@@ -361,7 +361,7 @@ if ($generatewatermark) {
 
 	} else {
 		// this image is defective.  log it
-		AddToLog("Media Firewall error: >" . WT_I18N::translate('This media file is broken and cannot be watermarked') . "< in file >" . $serverFilename . "< memory used: " . memory_get_usage(), 'media');
+		Log::addMediaLog("Media Firewall error: >" . WT_I18N::translate('This media file is broken and cannot be watermarked') . "< in file >" . $serverFilename . "< memory used: " . memory_get_usage());
 
 		// set usewatermark to false so image will simply be passed through below
 		$usewatermark = false;

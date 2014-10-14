@@ -21,11 +21,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 function get_age_at_event($age_string, $show_years) {
 	switch (strtoupper($age_string)) {
 	case 'CHILD':
@@ -40,10 +35,6 @@ function get_age_at_event($age_string, $show_years) {
 				'/(\d+)([ymwd])/',
 			),
 			function ($match) use ($age_string, $show_years) {
-				switch (WT_LOCALE) {
-				case 'pl':
-					$show_years = true;
-				}
 				switch ($match[2]) {
 				case 'y':
 					if ($show_years || preg_match('/[dm]/', $age_string)) {
@@ -65,10 +56,12 @@ function get_age_at_event($age_string, $show_years) {
 }
 
 /**
-* Parse a time string into its different parts
-* @param string $timestr the time as it was taken from the TIME tag
-* @return array returns an array with the hour, minutes, and seconds
-*/
+ * Parse a time string into its different parts
+ *
+ * @param string $timestr the time as it was taken from the TIME tag
+ *
+ * @return array returns an array with the hour, minutes, and seconds
+ */
 function parse_time($timestr)
 {
 	$time = explode(':', $timestr.':0:0');

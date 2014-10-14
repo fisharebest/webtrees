@@ -18,6 +18,9 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+use WT\User;
+
 define('WT_SCRIPT_NAME', 'save.php');
 require './includes/session.php';
 
@@ -61,7 +64,7 @@ case 'site_setting':
 	//////////////////////////////////////////////////////////////////////////////
 
 	// Authorisation
-	if (!WT_USER_IS_ADMIN) {
+	if (!Auth::isAdmin()) {
 		fail();
 	}
 
@@ -126,7 +129,7 @@ case 'site_setting':
 		// The password will be displayed as "click to edit" on screen.
 		// Accept the update, but pretend to fail.  This will leave the "click to edit" on screen
 		if ($value) {
-			WT_Site::preference($id1, $value);
+			WT_Site::setPreference($id1, $value);
 		}
 		fail();
 	default:
@@ -135,7 +138,7 @@ case 'site_setting':
 	}
 
 	// Authorised and valid - make update
-	WT_Site::preference($id1, $value);
+	WT_Site::setPreference($id1, $value);
 	ok();
 
 case 'site_access_rule':
@@ -144,7 +147,7 @@ case 'site_access_rule':
 	// ID format:  site_access_rule-{column_name}-{user_id}
 	//////////////////////////////////////////////////////////////////////////////
 
-	if (!WT_USER_IS_ADMIN) {
+	if (!Auth::isAdmin()) {
 		fail();
 	}
 	switch ($id1) {
@@ -172,39 +175,37 @@ case 'user':
 	// ID format:  user-{column_name}-{user_id}
 	//////////////////////////////////////////////////////////////////////////////
 
+	$user = User::find($id2);
+
 	// Authorisation
-	if (!(WT_USER_IS_ADMIN || WT_USER_ID && WT_USER_ID==$id2)) {
+	if (!Auth::isAdmin() && WT::currentUser() != $user) {
 		fail();
 	}
 
 	// Validation
 	switch ($id1) {
 	case 'password':
+		$user->setPassword($value);
 		// The password will be displayed as "click to edit" on screen.
 		// Accept the update, but pretend to fail.  This will leave the "click to edit" on screen
-		if ($value) {
-			set_user_password($id2, $value);
-		}
 		fail();
+		break;
 	case 'user_name':
+		$user->setUserName($value);
+		break;
 	case 'real_name':
+		$user->setRealName($value);
+		break;
 	case 'email':
+		$user->setEmail($value);
 		break;
 	default:
 		// An unrecognized setting
 		fail();
+		break;
 	}
-
-	// Authorised and valid - make update
-	try {
-		WT_DB::prepare("UPDATE `##user` SET {$id1}=? WHERE user_id=?")
-			->execute(array($value, $id2));
-		AddToLog('User ID: '.$id2. ' changed '.$id1.' to '.$value, 'auth');
-		ok();
-	} catch (PDOException $ex) {
-		// Duplicate email or username?
-		fail();
-	}
+	ok();
+	break;
 
 case 'user_gedcom_setting':
 	//////////////////////////////////////////////////////////////////////////////
@@ -212,26 +213,21 @@ case 'user_gedcom_setting':
 	// ID format:  user_gedcom_setting-{user_id}-{gedcom_id}-{setting_name}
 	//////////////////////////////////////////////////////////////////////////////
 
-	// Authorisation
-	if (!(WT_USER_IS_ADMIN || userGedcomAdmin($id2, $id3))) {
-		fail();
-	}
-
-	// Validation
 	switch($id3) {
 	case 'rootid':
 	case 'gedcomid':
 	case 'canedit':
 	case 'RELATIONSHIP_PATH_LENGTH':
-		break;
-	default:
-		// An unrecognized setting
-		fail();
+		$user = User::find($id1);
+		$tree = WT_Tree::get($id2);
+		if (Auth::isManager($tree)) {
+			$tree->setUserPreference($user, $id3, $value);
+			ok();
+			break;
+		}
 	}
-
-	// Authorised and valid - make update
-	WT_Tree::get($id2)->userPreference($id1, $id3, $value);
-	ok();
+	fail();
+	break;
 
 case 'user_setting':
 	//////////////////////////////////////////////////////////////////////////////
@@ -239,8 +235,9 @@ case 'user_setting':
 	// ID format:  user_setting-{user_id}-{setting_name}
 	//////////////////////////////////////////////////////////////////////////////
 
+	$user = User::find($id1);
 	// Authorisation
-	if (!(WT_USER_IS_ADMIN || WT_USER_ID && get_user_setting($id1, 'editaccount') && in_array($id2, array('language','visible_online','contact_method')))) {
+	if (!(Auth::isAdmin() || $user && $user->getPreference('editaccount') && in_array($id2, array('language','visible_online','contact_method')))) {
 		fail();
 	}
 
@@ -248,17 +245,17 @@ case 'user_setting':
 	switch ($id2) {
 	case 'canadmin':
 		// Cannot change our own admin status - either to add it or remove it
-		if (WT_USER_ID==$id1) {
+		if (Auth::user() == $user) {
 			fail();
 		}
 		break;
 	case 'verified_by_admin':
 		// Approving for the first time?  Send a confirmation email
-		if ($value && get_user_setting($id1, $id2)!=$value && get_user_setting($id1, 'sessiontime')==0) {
-			WT_I18N::init(get_user_setting($id1, 'language'));
-			WT_Mail::system_message(
+		if ($value && !$user->getPreference('verified_by_admin') && $user->getPreference('sessiontime')==0) {
+			WT_I18N::init($user->getPreference('language'));
+			WT_Mail::systemMessage(
 				$WT_TREE,
-				$id1,
+				$user,
 				WT_I18N::translate('Approval of account at %s', WT_SERVER_NAME.WT_SCRIPT_PATH),
 				WT_I18N::translate('The administrator at the webtrees site %s has approved your application for an account.  You may now login by accessing the following link: %s', WT_SERVER_NAME.WT_SCRIPT_PATH, WT_SERVER_NAME.WT_SCRIPT_PATH)
 			);
@@ -282,7 +279,7 @@ case 'user_setting':
 	}
 
 	// Authorised and valid - make update
-	set_user_setting($id1, $id2, $value);
+	$user->setPreference($id2, $value);
 	ok();
 
 case 'module':
@@ -292,7 +289,7 @@ case 'module':
 	//////////////////////////////////////////////////////////////////////////////
 
 	// Authorisation
-	if (!WT_USER_IS_ADMIN) {
+	if (!Auth::isAdmin()) {
 		fail();
 	}
 

@@ -1,36 +1,24 @@
 <?php
-// Static functions to support media lists
-//
-// webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
+/**
+ * Class WT_Query_Media - generate lists of files for admin_media.php
+ *
+ * @package   webtrees
+ * @copyright (c) 2014 webtrees development team
+ * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2
+ */
 class WT_Query_Media {
-	// Generate a list of all the folders in the current tree - for the media list.
+	/**
+	 * Generate a list of all the folders in the current tree - for the media list.
+	 *
+	 * @return string[]
+	 */
 	public static function folderList() {
 		$folders = WT_DB::prepare(
 			"SELECT SQL_CACHE LEFT(m_filename, CHAR_LENGTH(m_filename) - CHAR_LENGTH(SUBSTRING_INDEX(m_filename, '/', -1))) AS media_path" .
 			" FROM  `##media`" .
 			" WHERE m_file = ?" .
-			"	AND   m_filename NOT LIKE 'http://%'" .
+			" AND   m_filename NOT LIKE 'http://%'" .
 			" AND   m_filename NOT LIKE 'https://%'" .
 			" GROUP BY 1" .
 			" ORDER BY 1"
@@ -43,7 +31,11 @@ class WT_Query_Media {
 		return array_combine($folders, $folders);
 	}
 
-	// Generate a list of all folders from all the trees - for the media admin.
+	/**
+	 * Generate a list of all folders from all the trees - for the media admin.
+	 *
+	 * @return array
+	 */
 	public static function folderListAll() {
 		$folders = WT_DB::prepare(
 			"SELECT SQL_CACHE LEFT(m_filename, CHAR_LENGTH(m_filename) - CHAR_LENGTH(SUBSTRING_INDEX(m_filename, '/', -1))) AS media_path" .
@@ -61,7 +53,17 @@ class WT_Query_Media {
 		}
 	}
 
-	// Generate a filtered, sourced, privacy-checked list of media objects - for the media list.
+	/**
+	 * Generate a filtered, sourced, privacy-checked list of media objects - for the media list.
+	 *
+	 * @param string $folder     folder to search
+	 * @param string $subfolders either "include" or "exclude"
+	 * @param string $sort       either "file" or "title"
+	 * @param string $filter     optional search string
+	 *
+	 * @return WT_Media[]
+	 * @throws Exception
+	 */
 	public static function mediaList($folder, $subfolders, $sort, $filter) {
 		// All files in the folder, plus external files
 		$sql =

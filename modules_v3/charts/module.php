@@ -21,11 +21,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 class charts_WT_Module extends WT_Module implements WT_Module_Block {
 	// Extend class WT_Module
 	public function getTitle() {
@@ -39,24 +34,21 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function getBlock($block_id, $template=true, $cfg=null) {
-		global $ctype, $PEDIGREE_FULL_DETAILS, $show_full, $bwidth, $bheight;
+		global $WT_TREE, $ctype, $PEDIGREE_FULL_DETAILS, $show_full, $bwidth, $bheight, $controller;
 
-		$PEDIGREE_ROOT_ID=get_gedcom_setting(WT_GED_ID, 'PEDIGREE_ROOT_ID');
+		$PEDIGREE_ROOT_ID = $WT_TREE->getPreference('PEDIGREE_ROOT_ID');
 
-		$details=get_block_setting($block_id, 'details', false);
-		$type   =get_block_setting($block_id, 'type', 'pedigree');
-		$pid    =get_block_setting($block_id, 'pid', WT_USER_ID ? (WT_USER_GEDCOM_ID ? WT_USER_GEDCOM_ID : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
-		$block  =get_block_setting($block_id, 'block');
+		$details = get_block_setting($block_id, 'details', false);
+		$type    = get_block_setting($block_id, 'type', 'pedigree');
+		$pid     = get_block_setting($block_id, 'pid', WT_USER_ID ? (WT_USER_GEDCOM_ID ? WT_USER_GEDCOM_ID : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
+		$block   = get_block_setting($block_id, 'block');
 		if ($cfg) {
 			foreach (array('details', 'type', 'pid', 'block') as $name) {
 				if (array_key_exists($name, $cfg)) {
-					$$name=$cfg[$name];
+					$$name = $cfg[$name];
 				}
 			}
 		}
-
-		// Override the request
-		$_GET['rootid']=$pid;
 
 		// Override GEDCOM configuration temporarily
 		if (isset($show_full)) $saveShowFull = $show_full;
@@ -78,8 +70,8 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 
 		if ($type!='treenav' && $person) {
-			$controller=new WT_Controller_Hourglass($person->getXref(),0,3);
-			$controller->setupJavascript();
+			$chartController = new WT_Controller_Hourglass($person->getXref(), 0, false);
+			$controller->addInlineJavascript($chartController->setupJavascript());
 		}
 
 		$id=$this->getName().$block_id;
@@ -110,7 +102,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 			if ($type=='descendants' || $type=='hourglass') {
 				$content .= "<td valign=\"middle\">";
 				ob_start();
-				$controller->print_descendency($person, 1, false);
+				$chartController->print_descendency($person, 1, false);
 				$content .= ob_get_clean();
 				$content .= "</td>";
 			}
@@ -125,7 +117,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 				}
 				$content .= "<td valign=\"middle\">";
 				ob_start();
-				$controller->print_person_pedigree($person, 1);
+				$chartController->print_person_pedigree($person, 1);
 				$content .= ob_get_clean();
 				$content .= "</td>";
 			}
@@ -180,9 +172,9 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function configureBlock($block_id) {
-		global $ctype, $controller;
+		global $WT_TREE, $ctype, $controller;
 
-		$PEDIGREE_ROOT_ID=get_gedcom_setting(WT_GED_ID, 'PEDIGREE_ROOT_ID');
+		$PEDIGREE_ROOT_ID = $WT_TREE->getPreference('PEDIGREE_ROOT_ID');
 
 		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
 			set_block_setting($block_id, 'details', WT_Filter::postBool('details'));
@@ -195,7 +187,9 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 		$type   =get_block_setting($block_id, 'type',    'pedigree');
 		$pid    =get_block_setting($block_id, 'pid', WT_USER_ID ? (WT_USER_GEDCOM_ID ? WT_USER_GEDCOM_ID : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
 
-		$controller->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');
+		$controller
+			->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+			->addInlineJavascript('autocomplete();');
 	?>
 		<tr><td class="descriptionbox wrap width33"><?php echo WT_I18N::translate('Chart type'); ?></td>
 		<td class="optionbox">
@@ -218,7 +212,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 		<tr>
 			<td class="descriptionbox wrap width33"><?php echo WT_I18N::translate('Individual'); ?></td>
 			<td class="optionbox">
-				<input type="text" name="pid" id="pid" value="<?php echo $pid; ?>" size="5">
+				<input data-autocomplete-type="INDI" type="text" name="pid" id="pid" value="<?php echo $pid; ?>" size="5">
 				<?php
 				echo print_findindi_link('pid');
 				$root=WT_Individual::getInstance($pid);

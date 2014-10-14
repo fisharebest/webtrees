@@ -18,6 +18,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+
 define('WT_SCRIPT_NAME', 'admin_site_upgrade.php');
 
 require './includes/session.php';
@@ -51,7 +53,7 @@ $themes_action       = WT_Filter::post('themes',   'ignore|disable');
 
 $controller = new WT_Controller_Page();
 $controller
-	->requireAdminLogin()
+	->restrictAccess(Auth::isAdmin())
 	->setPageTitle(WT_I18N::translate('Upgrade wizard'))
 	->pageHeader();
 
@@ -102,7 +104,7 @@ if ($changes) {
 	echo '<br>', WT_I18N::translate('You should accept or reject all pending changes before upgrading.'), $icon_failure;
 	echo '<br><button onclick="window.open(\'edit_changes.php\',\'_blank\', chan_window_specs); return false;"">', WT_I18N::translate('Pending changes'), '</button>';
 	echo '</li></ul></form>';
-	exit;	
+	exit;
 } else {
 	echo '<br>', WT_I18N::translate('There are no pending changes.'), $icon_success;
 }
@@ -201,7 +203,7 @@ if ($custom_modules) {
 	echo '<br>', '<button type="submit" name="modules" value="disable">', WT_I18N::translate('Disable these modules'), '</button> — ', WT_I18N::translate('You can re-enable these modules after the upgrade.');
 	echo '<br>', '<button type="submit" name="modules" value="ignore">', /* I18N: Ignore the warnings, and [...] */ WT_I18N::translate('Upgrade anyway'), '</button> — ', WT_I18N::translate('Caution: old modules may not work, or they may prevent webtrees from working.');
 	echo '</li></ul></form>';
-	exit;	
+	exit;
 } else {
 	if ($modules_action != 'ignore') {
 		echo '<br>', WT_I18N::translate('No custom modules are enabled.'), $icon_success;
@@ -264,7 +266,7 @@ if ($custom_themes) {
 	echo '<br>', '<button type="submit" name="themes" value="disable">', WT_I18N::translate('Disable these themes'), '</button> — ', WT_I18N::translate('You can re-enable these themes after the upgrade.');
 	echo '<br>', '<button type="submit" name="themes" value="ignore">', WT_I18N::translate('Upgrade anyway'), '</button> — ', WT_I18N::translate('Caution: old themes may not work, or they may prevent webtrees from working.');
 	echo '</li></ul></form>';
-	exit;	
+	exit;
 } else {
 	if ($themes_action != 'ignore') {
 		echo '<br>', WT_I18N::translate('No custom themes are enabled.'), $icon_success;
@@ -309,7 +311,7 @@ $end_time   = microtime(true);
 $zip_size   = filesize($zip_file);
 fclose($zip_stream);
 
-echo '<br>', /* I18N: %1$s is a number of KB, %2$s is a (fractional) number of seconds */ WT_I18N::translate('%1$sKB were downloaded in %2$s seconds.', WT_I18N::number($zip_size / 1024), WT_I18N::number($end_time - $start_time, 2));
+echo '<br>', /* I18N: %1$s is a number of KB, %2$s is a (fractional) number of seconds */ WT_I18N::translate('%1$s KB were downloaded in %2$s seconds.', WT_I18N::number($zip_size / 1024), WT_I18N::number($end_time - $start_time, 2));
 if ($zip_size) {
 	echo $icon_success;
 } else {
@@ -338,7 +340,7 @@ $res = $archive->properties();
 if (!is_array($res) || $res['status'] != 'ok') {
 	echo '<br>', WT_I18N::translate('An error occurred when unzipping the file.'), $icon_failure;
 	echo '</li></ul></form>';
-	exit;	
+	exit;
 }
 
 $num_files = $res['nb'];
@@ -357,18 +359,18 @@ if (is_array($res)) {
 		// Note that we're stripping the initial "webtrees/", so the top folder will fail.
 		if ($result['status'] != 'ok' && $result['filename'] != 'webtrees/') {
 			echo '<br>', WT_I18N::translate('An error occurred when unzipping the file.'), $icon_failure;
-			echo '<pre>';
-			var_dump($result);
-			echo '</pre>';
+			echo '<pre>', $result['status'], '</pre>';
+			echo '<pre>', $result['filename'], '</pre>';
 			echo '</li></ul></form>';
-			exit;	
+			exit;
 		}
 	}
 	echo '<br>', /* I18N: [...] from the .ZIP file, %2$s is a (fractional) number of seconds */ WT_I18N::plural('%1$s file was extracted in %2$s seconds.', '%1$s files were extracted in %2$s seconds.', count($res), count($res), WT_I18N::number($end_time - $start_time, 2)), $icon_success;
 } else {
 	echo '<br>', WT_I18N::translate('An error occurred when unzipping the file.'), $icon_failure;
+	echo '<pre>', $archive->errorInfo(true), '</pre>';
 	echo '</li></ul></form>';
-	exit;	
+	exit;
 }
 
 echo '</li>'; flush();
@@ -381,7 +383,7 @@ echo '<li>', WT_I18N::translate('Check file permissions…');
 
 reset_timeout();
 $iterator = new RecursiveDirectoryIterator($zip_dir);
-//$iterator->setFlags(RecursiveDirectoryIterator::SKIP_DOTS);
+$iterator->setFlags(RecursiveDirectoryIterator::SKIP_DOTS);
 foreach (new RecursiveIteratorIterator($iterator) as $file) {
 	$file = WT_ROOT . substr($file, strlen($zip_dir) + 1);
 	if (file_exists($file) && (!is_readable($file) || !is_writable($file))) {
@@ -445,7 +447,7 @@ if (is_array($res)) {
 } else {
 	echo '<br>', WT_I18N::translate('An error occurred when unzipping the file.'), $icon_failure;
 	echo '</li></ul></form>';
-	exit;	
+	exit;
 }
 
 echo '</li>'; flush();

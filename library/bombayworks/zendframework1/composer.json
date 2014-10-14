@@ -13,13 +13,11 @@
     },
     "autoload": {
         "psr-0": {
-            "Zend_": "library/",
-            "ZendX_": "extras/library/"
+            "Zend_": "library/"
         }
     },
     "include-path": [
-        "library/",
-        "extras/library/"
+        "library/"
     ],
     "config": {
         "bin-dir": "bin"
@@ -33,5 +31,8 @@
     "require-dev": {
         "phpunit/phpunit": "3.7.*",
         "phpunit/dbunit": "1.3.*"
+    },
+    "archive": {
+        "exclude": ["/demos", "/documentation", "/tests"]
     }
 }

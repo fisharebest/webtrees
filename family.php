@@ -26,7 +26,7 @@
 define('WT_SCRIPT_NAME', 'family.php');
 require './includes/session.php';
 
-$controller=new WT_Controller_Family();
+$controller = new WT_Controller_Family();
 
 if ($controller->record && $controller->record->canShow()) {
 	$controller->pageHeader();
@@ -81,21 +81,10 @@ if ($controller->record && $controller->record->canShow()) {
 $PEDIGREE_FULL_DETAILS = '1'; // Override GEDCOM configuration
 $show_full = '1';
 
-echo '<script>';
-echo 'function show_gedcom_record() {';
-echo ' var recwin=window.open("gedrecord.php?pid=', $controller->record->getXref(), '", "_blank", edit_window_specs);';
-echo '}';
-echo '</script>';
-
 ?>
 <div id="family-page">
-<table align="center" width="95%">
-	<tr>
-		<td>
-			<p class="name_head"><?php echo $controller->record->getFullName(); ?></p>
-		</td>
-	</tr>
-</table>
+<h2><?php echo $controller->record->getFullName(); ?></h2>
+
 <table id="family-table" align="center" width="95%">
 	<tr valign="top">
 		<td valign="top" style="width: <?php echo $pbwidth+30; ?>px;"><!--//List of children//-->

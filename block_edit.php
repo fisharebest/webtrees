@@ -18,6 +18,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+
 define('WT_SCRIPT_NAME', 'block_edit.php');
 require './includes/session.php';
 
@@ -26,16 +28,21 @@ $block = WT_DB::prepare(
 	"SELECT SQL_CACHE * FROM `##block` WHERE block_id=?"
 )->execute(array($block_id))->fetchOneRow();
 
-// Check access.  (1) the block must exist, (2) gedcom blocks require
+// Check access.  (1) the block must exist and be enabled, (2) gedcom blocks require
 // managers, (3) user blocks require the user or an admin
-if (!$block || $block->gedcom_id && !userGedcomAdmin(WT_USER_ID, $block->gedcom_id) || $block->user_id && $block->user_id!=WT_USER_ID && !WT_USER_IS_ADMIN) {
+if (
+	!$block ||
+	!array_key_exists($block->module_name, WT_Module::getActiveBlocks(WT_GED_ID)) ||
+	$block->gedcom_id && !Auth::isManager(WT_Tree::get($block->gedcom_id)) ||
+	$block->user_id && $block->user_id != Auth::id() && !Auth::isAdmin()
+) {
 	exit;
 }
 
 $class_name=$block->module_name.'_WT_Module';
 $block=new $class_name;
 
-$controller=new WT_Controller_Ajax();
+$controller = new WT_Controller_Ajax();
 $controller->pageHeader();
 
 if (array_key_exists('ckeditor', WT_Module::getActiveModules())) {

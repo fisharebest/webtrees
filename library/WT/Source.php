@@ -21,18 +21,12 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 class WT_Source extends WT_GedcomRecord {
 	const RECORD_TYPE = 'SOUR';
-	const SQL_FETCH   = "SELECT s_gedcom FROM `##sources` WHERE s_id=? AND s_file=?";
 	const URL_PREFIX  = 'source.php?sid=';
 
 	// Implement source-specific privacy logic
-	protected function _canShowByType($access_level) {
+	protected function canShowByType($access_level) {
 		// Hide sources if they are attached to private repositories ...
 		preg_match_all('/\n1 REPO @(.+)@/', $this->gedcom, $matches);
 		foreach ($matches[1] as $match) {
@@ -43,7 +37,7 @@ class WT_Source extends WT_GedcomRecord {
 		}
 
 		// ... otherwise apply default behaviour
-		return parent::_canShowByType($access_level);
+		return parent::canShowByType($access_level);
 	}
 
 	// Generate a private version of this record

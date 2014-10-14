@@ -21,13 +21,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 class ckeditor_WT_Module extends WT_Module {
-	const VERSION = 'ckeditor-4.3.2-custom';
+	const VERSION = 'ckeditor-4.4.1-custom';
 
 	// Extend WT_Module
 	public function getTitle() {
@@ -39,7 +34,16 @@ class ckeditor_WT_Module extends WT_Module {
 		return /* I18N: Description of the “CKEditor” module.  WYSIWYG = “what you see is what you get” */ WT_I18N::translate('Allow other modules to edit text using a “WYSIWYG” editor, instead of using HTML codes.');
 	}
 
-	// Convert <textarea class="html-edit"> fields to CKEditor fields
+	/**
+	 * Convert <textarea class="html-edit"> fields to CKEditor fields
+	 *
+	 * This function needs to be called *after* we have sent the page header and
+	 * before we have sent the page footer.
+	 *
+	 * @param WT_Controller_Base $controller
+	 *
+	 * @return void
+	 */
 	public static function enableEditor($controller) {
 		$controller
 			->addExternalJavascript(WT_MODULES_DIR . 'ckeditor/' . self::VERSION . '/ckeditor.js')

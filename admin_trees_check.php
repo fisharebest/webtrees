@@ -18,13 +18,15 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+
 define('WT_SCRIPT_NAME', 'admin_trees_check.php');
 require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
-$controller=new WT_Controller_Page();
+$controller = new WT_Controller_Page();
 $controller
-	->requireManagerLogin()
+	->restrictAccess(Auth::isManager())
 	->setPageTitle(WT_I18N::translate('Check for errors'))
 	->pageHeader();
 
@@ -61,7 +63,7 @@ foreach ($rows as $row) {
 // Need to merge pending new/changed/deleted records
 
 $rows=WT_DB::prepare(
-	" SELECT xref, SUBSTRING_INDEX(SUBSTRING_INDEX(SUBSTRING_INDEX(CASE WHEN old_gedcom='' THEN new_gedcom ELSE old_gedcom END, '\n', 1), ' ', 3), ' ', -1) AS type, new_gedcom AS gedrec".
+	"SELECT xref, SUBSTRING_INDEX(SUBSTRING_INDEX(SUBSTRING_INDEX(CASE WHEN old_gedcom='' THEN new_gedcom ELSE old_gedcom END, '\n', 1), ' ', 3), ' ', -1) AS type, new_gedcom AS gedrec".
 	" FROM (".
 	"  SELECT MAX(change_id) AS change_id".
 	"  FROM `##change`".
@@ -150,19 +152,19 @@ foreach ($all_links as $xref1=>$links) {
 			if (array_key_exists(strtoupper($xref2), $upper_links)) {
 				echo warning(
 					link_message($type1, $xref1, $type2, $xref2).' '.
-					/* I18N: placeholders are GEDCOM IDs, such as R123 */ WT_I18N::translate('%1$s does not exist.  Did you mean %2$s?', format_link($xref2), format_link($upper_links[strtoupper($xref2)]))
+					/* I18N: placeholders are GEDCOM XREFs, such as R123 */ WT_I18N::translate('%1$s does not exist.  Did you mean %2$s?', format_link($xref2), format_link($upper_links[strtoupper($xref2)]))
 				);
 			} else {
 				echo error(
 					link_message(
 						$type1, $xref1, $type2, $xref2).' '.
-						/* I18N: placeholders are GEDCOM IDs, such as R123 */ WT_I18N::translate('%1$s does not exist.', format_link($xref2))
+						/* I18N: placeholders are GEDCOM XREFs, such as R123 */ WT_I18N::translate('%1$s does not exist.', format_link($xref2))
 				);
 			}
 		} elseif ($type2=='SOUR' && $type1=='NOTE') {
-			//echo warning(WT_I18N::translate('The note %1$s has a source %2$s. Notes are intended to add explanations and comments to other records.  They should not have their own sources.'), format_link($xref1), format_link($xref2));
+			// Notes are intended to add explanations and comments to other records.  They should not have their own sources.
 		} elseif ($type2=='SOUR' && $type1=='OBJE') {
-			//echo warning(WT_I18N::translate('The media object %1$s has a source %2$s. Media objects are intended to illustrate other records, facts, and source/citations.  They should not have their own sources.', format_link($xref1), format_link($xref2)));
+			// Media objects are intended to illustrate other records, facts, and source/citations.  They should not have their own sources.
 		} elseif ($type2=='OBJE' && $type1=='REPO') {
 			echo warning(
 				link_message($type1, $xref1, $type2, $xref2) . ' ' .  WT_I18N::translate('This type of link is not allowed here.')
@@ -195,7 +197,7 @@ foreach ($all_links as $xref1=>$links) {
 
 function link_message($type1, $xref1, $type2, $xref2) {
 	return
-		/* I18N: The placeholders are GEDCOM identifiers and tags.  e.g. “INDI I123 contains a FAMC link to F234.” */ WT_I18N::translate(
+		/* I18N: The placeholders are GEDCOM XREFs and tags.  e.g. “INDI I123 contains a FAMC link to F234.” */ WT_I18N::translate(
 			'%1$s %2$s has a %3$s link to %4$s.',
 			format_type($type1),
 			format_link($xref1),

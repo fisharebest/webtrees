@@ -21,13 +21,9 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
+use WT\Auth;
 
 require_once WT_ROOT.'includes/functions/functions_print_facts.php';
-require_once WT_ROOT.'includes/functions/functions_import.php';
 
 class WT_Controller_Repository extends WT_Controller_GedcomRecord {
 	public function __construct() {
@@ -38,10 +34,12 @@ class WT_Controller_Repository extends WT_Controller_GedcomRecord {
 	}
 
 	/**
-	* get edit menu
-	*/
+	 * get edit menu
+	 */
 	function getEditMenu() {
-		$SHOW_GEDCOM_RECORD=get_gedcom_setting(WT_GED_ID, 'SHOW_GEDCOM_RECORD');
+		global $WT_TREE;
+
+		$SHOW_GEDCOM_RECORD = $WT_TREE->getPreference('SHOW_GEDCOM_RECORD');
 
 		if (!$this->record || $this->record->isOld()) {
 			return null;
@@ -71,7 +69,7 @@ class WT_Controller_Repository extends WT_Controller_GedcomRecord {
 		}
 
 		// edit raw
-		if (WT_USER_IS_ADMIN || WT_USER_CAN_EDIT && $SHOW_GEDCOM_RECORD) {
+		if (Auth::isAdmin() || WT_USER_CAN_EDIT && $SHOW_GEDCOM_RECORD) {
 			$submenu = new WT_Menu(WT_I18N::translate('Edit raw GEDCOM'), '#', 'menu-repo-editraw');
 			$submenu->addOnclick("return edit_raw('" . $this->record->getXref() . "');");
 			$menu->addSubmenu($submenu);

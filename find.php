@@ -21,11 +21,13 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+
 define('WT_SCRIPT_NAME', 'find.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
-$controller=new WT_Controller_Simple();
+$controller = new WT_Controller_Simple();
 
 $type      = WT_Filter::get('type');
 $filter    = WT_Filter::get('filter');
@@ -83,7 +85,7 @@ case "repo":
 	$controller->setPageTitle(WT_I18N::translate('Find a repository'));
 	break;
 case "note":
-	$controller->setPageTitle(WT_I18N::translate('Find a note'));
+	$controller->setPageTitle(WT_I18N::translate('Find a shared note'));
 	break;
 case "source":
 	$controller->setPageTitle(WT_I18N::translate('Find a source'));
@@ -91,13 +93,11 @@ case "source":
 case "specialchar":
 	$controller->setPageTitle(WT_I18N::translate('Find a special character'));
 	$language_filter = WT_Filter::get('language_filter');
-	if (WT_USER_ID) {
-		// Users will probably always want the same language, so remember their setting
-		if (!$language_filter) {
-			$language_filter=get_user_setting(WT_USER_ID, 'default_language_filter');
-		} else {
-			set_user_setting(WT_USER_ID, 'default_language_filter', $language_filter);
-		}
+	// Users will probably always want the same language, so remember their setting
+	if (!$language_filter) {
+		$language_filter = Auth::user()->getPreference('default_language_filter');
+	} else {
+		Auth::user()->setPreference('default_language_filter', $language_filter);
 	}
 	require WT_ROOT.'includes/specialchars.php';
 	$action="filter";
@@ -460,7 +460,7 @@ if ($type == "facts") {
 	</table></div>
 
 	<table id="tabDefinedTagsShow"><tbody><tr>
-		<td><a href="#" onclick="Lister.showSelected();return false">', WT_I18N::translate('Show only selected tags'), ' (<span id="layCurSelectedCount"></span>)</a></td>
+		<td><a href="#" onclick="Lister.showSelected();return false">', WT_I18N::translate('Show only the selected tags'), ' (<span id="layCurSelectedCount"></span>)</a></td>
 		<td><a href="#" onclick="Lister.refreshNow(true);return false">', WT_I18N::translate('Show all tags'), '</a></td>
 	</tr></tbody></table>
 
@@ -486,7 +486,7 @@ if ($action=="filter") {
 		$myindilist=search_indis_names($filter_array, array(WT_GED_ID), 'AND');
 		if ($myindilist) {
 			echo '<ul>';
-			usort($myindilist, array('WT_GedcomRecord', 'Compare'));
+			usort($myindilist, array('WT_GedcomRecord', 'compare'));
 			foreach ($myindilist as $indi) {
 				echo $indi->format_list('li', true);
 			}
@@ -505,13 +505,13 @@ if ($action=="filter") {
 		// Get the famrecs with hits in the gedcom record from the family table
 		$myfamlist = array_unique(array_merge(
 			search_fams_names($filter_array, array(WT_GED_ID), 'AND'),
-			search_fams($filter_array, array(WT_GED_ID), 'AND', true)
+			search_fams($filter_array, array(WT_GED_ID), 'AND')
 		));
 
 		if ($myfamlist) {
 			$curged = $GEDCOM;
 			echo '<ul>';
-			usort($myfamlist, array('WT_GedcomRecord', 'Compare'));
+			usort($myfamlist, array('WT_GedcomRecord', 'compare'));
 			foreach ($myfamlist as $family) {
 				echo $family->format_list('li', true);
 			}
@@ -611,12 +611,12 @@ if ($action=="filter") {
 	if ($type == "repo") {
 		echo '<div id="find-output">';
 		if ($filter) {
-			$repo_list = search_repos($filter_array, array(WT_GED_ID), 'AND', true);
+			$repo_list = search_repos($filter_array, array(WT_GED_ID), 'AND');
 		} else {
 			$repo_list = get_repo_list(WT_GED_ID);
 		}
 		if ($repo_list) {
-			usort($repo_list, array('WT_GedcomRecord', 'Compare'));
+			usort($repo_list, array('WT_GedcomRecord', 'compare'));
 			echo '<ul>';
 			foreach ($repo_list as $repo) {
 				echo '<li><a href="', $repo->getHtmlUrl(), '" onclick="pasteid(\'', $repo->getXref(), '\');"><span class="list_item">', $repo->getFullName(),'</span></a></li>';
@@ -634,12 +634,12 @@ if ($action=="filter") {
 	if ($type=="note") {
 		echo '<div id="find-output">';
 		if ($filter) {
-			$mynotelist = search_notes($filter_array, array(WT_GED_ID), 'AND', true);
+			$mynotelist = search_notes($filter_array, array(WT_GED_ID), 'AND');
 		} else {
 			$mynotelist = get_note_list(WT_GED_ID);
 		}
 		if ($mynotelist) {
-			usort($mynotelist, array('WT_GedcomRecord', 'Compare'));
+			usort($mynotelist, array('WT_GedcomRecord', 'compare'));
 			echo '<ul>';
 			foreach ($mynotelist as $note) {
 				echo '<li><a href="', $note->getHtmlUrl(), '" onclick="pasteid(\'', $note->getXref(), '\');"><span class="list_item">', $note->getFullName(),'</span></a></li>';
@@ -657,12 +657,12 @@ if ($action=="filter") {
 	if ($type=="source") {
 		echo '<div id="find-output">';
 		if ($filter) {
-			$mysourcelist = search_sources($filter_array, array(WT_GED_ID), 'AND', true);
+			$mysourcelist = search_sources($filter_array, array(WT_GED_ID), 'AND');
 		} else {
 			$mysourcelist = get_source_list(WT_GED_ID);
 		}
 		if ($mysourcelist) {
-			usort($mysourcelist, array('WT_GedcomRecord', 'Compare'));
+			usort($mysourcelist, array('WT_GedcomRecord', 'compare'));
 			echo '<ul>';
 			foreach ($mysourcelist as $source) {
 				echo '<li><a href="', $source->getHtmlUrl(), '" onclick="pasteid(\'', $source->getXref(), '\', \'',

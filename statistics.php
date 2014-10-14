@@ -32,9 +32,9 @@ $tab  = WT_Filter::getInteger('tab', 0, 3);
 $ajax = WT_Filter::getBool('ajax');
 
 if (!$ajax) {
-	$controller=new WT_Controller_Page();
+	$controller = new WT_Controller_Page();
 	$controller->setPageTitle(WT_I18N::translate('Statistics'))
-		->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
+		->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
 		->addInlineJavascript('
 			jQuery("#statistics_chart").css("visibility", "visible");
 			jQuery("#statistics_chart").tabs({
@@ -42,11 +42,13 @@ if (!$ajax) {
 					jQuery("#loading-indicator").removeClass("loading-image");
 				},
 				beforeLoad: function(event, ui) {
-					jQuery("#loading-indicator").addClass("loading-image");
 					// Only load each tab once
 					if (ui.tab.data("loaded")) {
 						event.preventDefault();
 						return;
+					}
+					else {
+						jQuery("#loading-indicator").addClass("loading-image");
 					}
 					ui.jqXHR.success(function() {
 						ui.tab.data("loaded", true);
@@ -73,10 +75,10 @@ if (!$ajax) {
 		'</div>', // statistics-page
 	'<br><br>';
 } else {
-	$controller=new WT_Controller_Ajax();
+	$controller = new WT_Controller_Ajax();
 	$controller
 		->pageHeader()
-		->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
+		->addInlineJavascript('autocomplete();')
 		->addInlineJavascript('jQuery("#loading-indicator").removeClass("loading-image");');
 	$stats = new WT_Stats($GEDCOM);
 	if ($tab==0) {
@@ -629,7 +631,7 @@ if (!$ajax) {
 			<br>
 			</div>
 			<div id="surname_opt" style="display:none;">';
-			echo WT_Gedcom_Tag::getLabel('SURN'), help_link('google_chart_surname'), '<br><input type="text" name="SURN" size="20">';
+			echo WT_Gedcom_Tag::getLabel('SURN'), help_link('google_chart_surname'), '<br><input data-autocomplete-type="SURN" type="text" name="SURN" size="20">';
 			echo '<br>
 			</div>';
 			echo WT_I18N::translate('Geographical area');

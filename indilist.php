@@ -24,11 +24,13 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+
 define('WT_SCRIPT_NAME', 'indilist.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
-$controller=new WT_Controller_Page();
+$controller = new WT_Controller_Page();
 
 // We show three different lists: initials, surnames and individuals
 // Note that the data may contain special chars, such as surname="<unknown>",
@@ -43,20 +45,17 @@ if ($show_all_firstnames=='yes') {
 	$falpha = WT_Filter::get('falpha'); // All first names beginning with this letter
 }
 
-$show_marnm=get_user_setting(WT_USER_ID, WT_SCRIPT_NAME.'_show_marnm');
 switch (WT_Filter::get('show_marnm', 'no|yes')) {
 case 'no':
-	$show_marnm=false;
-	if (WT_USER_ID) {
-		set_user_setting(WT_USER_ID, WT_SCRIPT_NAME.'_show_marnm', $show_marnm);
-	}
+	$show_marnm = false;
+	Auth::user()->setPreference(WT_SCRIPT_NAME.'_show_marnm', $show_marnm);
 	break;
 case 'yes':
-	$show_marnm=true;
-	if (WT_USER_ID) {
-		set_user_setting(WT_USER_ID, WT_SCRIPT_NAME.'_show_marnm', $show_marnm);
-	}
+	$show_marnm = true;
+	Auth::user()->setPreference(WT_SCRIPT_NAME.'_show_marnm', $show_marnm);
 	break;
+default:
+	$show_marnm = Auth::user()->getPreference(WT_SCRIPT_NAME.'_show_marnm');
 }
 
 // Make sure selections are consistent.
@@ -148,9 +147,9 @@ foreach (WT_Query_Name::surnameAlpha($show_marnm, false, WT_GED_ID) as $letter=>
 	}
 	if ($count) {
 		if ($letter==$alpha) {
-			$list[]='<a href="'.WT_SCRIPT_NAME.'?alpha='.rawurlencode($letter).'&amp;ged='.WT_GEDURL.'" class="warning" title="'.$count.'">'.$html.'</a>';
+			$list[]='<a href="'.WT_SCRIPT_NAME.'?alpha='.rawurlencode($letter).'&amp;ged='.WT_GEDURL.'" class="warning" title="'.WT_I18N::number($count).'">'.$html.'</a>';
 		} else {
-			$list[]='<a href="'.WT_SCRIPT_NAME.'?alpha='.rawurlencode($letter).'&amp;ged='.WT_GEDURL.'" title="'.$count.'">'.$html.'</a>';
+			$list[]='<a href="'.WT_SCRIPT_NAME.'?alpha='.rawurlencode($letter).'&amp;ged='.WT_GEDURL.'" title="'.WT_I18N::number($count).'">'.$html.'</a>';
 		}
 	} else {
 		$list[]=$html;
@@ -214,7 +213,7 @@ if ($show=='indi' || $show=='surn') {
 			}
 		}
 		// Don't sublists short lists.
-		if ($count<get_gedcom_setting(WT_GED_ID, 'SUBLIST_TRIGGER_I')) {
+		if ($count < $WT_TREE->getPreference('SUBLIST_TRIGGER_I')) {
 			$falpha='';
 			$show_all_firstnames='no';
 		} else {
@@ -235,9 +234,9 @@ if ($show=='indi' || $show=='surn') {
 					}
 					if ($count) {
 						if ($show=='indi' && $givn_initial==$falpha && $show_all_firstnames=='no') {
-							$list[]='<a class="warning" href="'.$url.'&amp;falpha='.rawurlencode($givn_initial).'" title="'.$count.'">'.$html.'</a>';
+							$list[]='<a class="warning" href="'.$url.'&amp;falpha='.rawurlencode($givn_initial).'" title="'.WT_I18N::number($count).'">'.$html.'</a>';
 						} else {
-							$list[]='<a href="'.$url.'&amp;falpha='.rawurlencode($givn_initial).'" title="'.$count.'">'.$html.'</a>';
+							$list[]='<a href="'.$url.'&amp;falpha='.rawurlencode($givn_initial).'" title="'.WT_I18N::number($count).'">'.$html.'</a>';
 						}
 					} else {
 						$list[]=$html;
@@ -257,10 +256,8 @@ if ($show=='indi' || $show=='surn') {
 				echo '<p class="center alpha_index">', join(' | ', $list), '</p>';
 			}
 		}
-		if ($show=='indi') {
-			echo format_indi_table(
-				WT_Query_Name::individuals($surname, $alpha, $falpha, $show_marnm, false, WT_GED_ID)
-			);
+		if ($show == 'indi') {
+			echo format_indi_table(WT_Query_Name::individuals($surname, $alpha, $falpha, $show_marnm, false, WT_GED_ID));
 		}
 	}
 }

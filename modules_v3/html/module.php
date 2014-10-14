@@ -21,11 +21,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 class html_WT_Module extends WT_Module implements WT_Module_Block {
 	// Extend class WT_Module
 	public function getTitle() {
@@ -48,8 +43,8 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 
 		/*
-		* Select GEDCOM
-		*/
+		 * Select GEDCOM
+		 */
 		$gedcom=get_block_setting($block_id, 'gedcom');
 		switch($gedcom) {
 		case '__current__':
@@ -57,7 +52,7 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		case '':
 			break;
 		case '__default__':
-			$GEDCOM=WT_Site::preference('DEFAULT_GEDCOM');
+			$GEDCOM=WT_Site::getPreference('DEFAULT_GEDCOM');
 			if (!$GEDCOM) {
 				foreach (WT_Tree::getAll() as $tree) {
 					$GEDCOM=$tree->tree_name;
@@ -156,7 +151,7 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 			'#getAllTagsTable#',
 
 			WT_I18N::translate('Narrative description')=>
-			/* I18N: do not translate the #keywords# */ WT_I18N::translate('This GEDCOM (family tree) was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#.'),
+			/* I18N: do not translate the #keywords# */ WT_I18N::translate('This family tree was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree.  The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#.'),
 
 			WT_I18N::translate('Statistics')=>
 			'<div class="gedcom_stats">
@@ -255,7 +250,7 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 						</td>
 					</tr>
 				</table><br>
-				<span style="font-weight: bold">'.WT_I18N::translate('Most Common Surnames').'</span><br>
+				<span style="font-weight: bold">'.WT_I18N::translate('Most common surnames').'</span><br>
 				#commonSurnames#
 			</div>'
 		);

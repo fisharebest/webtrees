@@ -26,7 +26,7 @@ define('WT_SCRIPT_NAME', 'note.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
-$controller=new WT_Controller_Note();
+$controller = new WT_Controller_Note();
 
 if ($controller->record && $controller->record->canShow()) {
 	$controller->pageHeader();
@@ -74,10 +74,14 @@ if ($controller->record && $controller->record->canShow()) {
 	exit;
 }
 
-$controller
-	->addInlineJavascript('function show_gedcom_record() {var recwin=window.open("gedrecord.php?pid=' . $controller->record->getXref() . '", "_blank", edit_window_specs);}')
-	->addInlineJavascript('jQuery("#note-tabs").tabs();')
-	->addInlineJavascript('jQuery("#note-tabs").css("visibility", "visible");');
+$controller->addInlineJavascript('
+	jQuery("#note-tabs")
+		.tabs({
+			create: function(e, ui){
+				jQuery(e.target).css("visibility", "visible");  // prevent FOUC
+			}
+		});
+');
 
 $linked_indi = $controller->record->linkedIndividuals('NOTE');
 $linked_fam  = $controller->record->linkedFamilies('NOTE');
@@ -137,58 +141,50 @@ if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
 			</li>
 			<?php } ?>
 		</ul>
-	<div id="note-edit">
-		<table class="facts_table">
-			<tr>
-				<td class="descriptionbox">
-					<?php if (WT_USER_CAN_EDIT) { ?>
-						<a href="#" onclick="return edit_note('<?php echo $controller->record->getXref(); ?>')" title="<?php echo WT_I18N::translate('Edit'); ?>">
-						<i class="icon-note"></i> <?php echo WT_I18N::translate('Shared note'); ?>
-						</a>
-						<div class="editfacts">
-							<div class="editlink">
-							<a class="editicon" href="#" onclick="return edit_note('<?php echo $controller->record->getXref(); ?>')" title="<?php echo WT_I18N::translate('Edit'); ?>">
-								<span class="link_text"><?php echo WT_I18N::translate('Edit'); ?></span>
+		<div id="note-edit">
+			<table class="facts_table">
+				<tr>
+					<td class="descriptionbox">
+						<?php if (WT_USER_CAN_EDIT) { ?>
+							<a href="#" onclick="return edit_note('<?php echo $controller->record->getXref(); ?>')" title="<?php echo WT_I18N::translate('Edit'); ?>">
+							<i class="icon-note"></i> <?php echo WT_I18N::translate('Shared note'); ?>
 							</a>
-						</div>
-					<?php } else { ?>
-					<i class="icon-note"></i>
-						<?php echo WT_I18N::translate('Shared note'); ?>
-					<?php } ?>
-				</td>
-				<td class="optionbox wrap width80"><?php echo $text; ?></td>
-			</tr>
-			<?php
-				foreach ($facts as $fact) {
-					print_fact($fact, $controller->record);
-				}
-				if ($controller->record->canEdit()) {
-					print_add_new_fact($controller->record->getXref(), $facts, 'NOTE');
-				}
-			?>
-		</table>
-	</div>
-<?php
-	if ($linked_indi) {
-		echo '<div id="indi-note">';
-		echo format_indi_table($linked_indi, $controller->record->getFullName());
-		echo '</div>';
-	}
-	if ($linked_fam) {
-		echo '<div id="fam-note">';
-		echo format_fam_table($linked_fam, $controller->record->getFullName());
-		echo '</div>';
-	}
-	if ($linked_obje) {
-		echo '<div id="media-note">';
-		echo format_media_table($linked_obje, $controller->record->getFullName());
-		echo '</div>';
-	}
-	if ($linked_sour) {
-		echo '<div id="source-note">';
-		echo format_sour_table($linked_sour, $controller->record->getFullName());
-		echo '</div>';
-	}
-?>
+							<div class="editfacts">
+								<div class="editlink">
+								<a class="editicon" href="#" onclick="return edit_note('<?php echo $controller->record->getXref(); ?>')" title="<?php echo WT_I18N::translate('Edit'); ?>">
+									<span class="link_text"><?php echo WT_I18N::translate('Edit'); ?></span>
+								</a>
+							</div>
+						<?php } else { ?>
+						<i class="icon-note"></i>
+							<?php echo WT_I18N::translate('Shared note'); ?>
+						<?php } ?>
+					</td>
+					<td class="optionbox wrap width80"><?php echo $text; ?></td>
+				</tr>
+				<?php
+					foreach ($facts as $fact) {
+						print_fact($fact, $controller->record);
+					}
+					if ($controller->record->canEdit()) {
+						print_add_new_fact($controller->record->getXref(), $facts, 'NOTE');
+					}
+				?>
+			</table>
+		</div>
+		<?php
+		if ($linked_indi) {
+			echo '<div id="indi-note">', format_indi_table($linked_indi), '</div>';
+		}
+		if ($linked_fam) {
+			echo '<div id="fam-note">', format_fam_table($linked_fam), '</div>';
+		}
+		if ($linked_obje) {
+			echo '<div id="media-note">', format_media_table($linked_obje), '</div>';
+		}
+		if ($linked_sour) {
+			echo '<div id="source-note">', format_sour_table($linked_sour), '</div>';
+		}
+		?>
 	</div>
 </div>

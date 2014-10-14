@@ -23,10 +23,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
+use Rhumsaa\Uuid\Uuid;
+use WT\User;
 
 // Print a fact record, for the individual/family/source/repository/etc. pages.
 //
@@ -189,12 +187,12 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 
 	switch ($fact->getTag()) {
 	case '_BIRT_CHIL':
-		echo '<br>', WT_I18N::translate('#%d', ++$n_chil);
+		echo '<br>', /* I18N: Abbreviation for "number %s" */WT_I18N::translate('#%s', ++$n_chil);
 		break;
 	case '_BIRT_GCHI':
 	case '_BIRT_GCH1':
 	case '_BIRT_GCH2':
-		echo '<br>', WT_I18N::translate('#%d', ++$n_gchi);
+		echo '<br>', WT_I18N::translate('#%s', ++$n_gchi);
 		break;
 	}
 
@@ -223,7 +221,7 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 		echo '<div class="field"><a href="https://familysearch.org/search/tree/results#count=20&query=afn:', rawurlencode($fact->getValue()), '" target="new">', WT_Filter::escapeHtml($fact->getValue()), '</a></div>';
 		break;
 	case 'ASSO':
-		// we handle this later, in print_asso_rela_record()
+		// we handle this later, in format_asso_rela_record()
 		break;
 	case 'EMAIL':
 	case 'EMAI':
@@ -333,7 +331,7 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 	}
 
 	// Print the associates of this fact/event
-	print_asso_rela_record($fact, $record);
+	echo format_asso_rela_record($fact);
 
 	// Print any other "2 XXXX" attributes, in the order in which they appear.
 	preg_match_all('/\n2 ('.WT_REGEX_TAG.') (.+)/', $fact->getGedcom(), $matches, PREG_SET_ORDER);
@@ -388,9 +386,9 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 			}
 			break;
 		case '_WT_USER':
-			$fullname=getUserFullname(get_user_id($match[2])); // may not exist
-			if ($fullname) {
-				echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $fullname);
+			$user = User::findByIdentifier($match[2]); // may not exist
+			if ($user) {
+				echo WT_Gedcom_Tag::getLabelValue('_WT_USER', WT_Filter::escapeHtml($user->getRealName()));
 			} else {
 				echo WT_Gedcom_Tag::getLabelValue('_WT_USER', WT_Filter::escapeHtml($match[2]));
 			}
@@ -452,16 +450,16 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 	}
 	echo print_fact_sources($fact->getGedcom(), 2);
 	echo print_fact_notes($fact->getGedcom(), 2);
-	print_media_links($fact->getGedcom(), 2, $parent->getXref());
+	print_media_links($fact->getGedcom(), 2);
 	echo '</td></tr>';
 }
-//------------------- end print fact function
 
 /**
  * print a repository record
  *
  * find and print repository information attached to a source
- * @param string $sid  the Gedcom Xref ID of the repository to print
+ *
+ * @param $xref the Gedcom Xref ID of the repository to print
  */
 function print_repository_record($xref) {
 	$repository=WT_Repository::getInstance($xref);
@@ -477,8 +475,11 @@ function print_repository_record($xref) {
  *
  * this function is called by the print_fact function and other functions to
  * print any source information attached to the fact
+ *
  * @param string $factrec The fact record to look for sources in
- * @param int $level The level to look for sources at
+ * @param int    $level   The level to look for sources at
+ *
+ * @return string HTML text
  */
 function print_fact_sources($factrec, $level) {
 	global $EXPAND_SOURCES;
@@ -510,7 +511,7 @@ function print_fact_sources($factrec, $level) {
 				$lt = preg_match_all("/$nlevel \w+/", $srec, $matches);
 				$data .= '<div class="fact_SOUR">';
 				$data .= '<span class="label">';
-				$elementID = $sid."-".(int)(microtime()*1000000);
+				$elementID = Uuid::uuid4();
 				if ($EXPAND_SOURCES) {
 					$plusminus='icon-minus';
 				} else {
@@ -556,24 +557,22 @@ function print_fact_sources($factrec, $level) {
 }
 
 //-- Print the links to media objects
-function print_media_links($factrec, $level, $pid='') {
-	global $TEXT_DIRECTION;
-	global $SEARCH_SPIDER;
-	global $THUMBNAIL_WIDTH;
-	global $GEDCOM, $HIDE_GEDCOM_ERRORS;
+function print_media_links($factrec, $level) {
+	global $SEARCH_SPIDER, $HIDE_GEDCOM_ERRORS;
 
-	$ged_id=get_id_from_gedcom($GEDCOM);
 	$nlevel = $level+1;
-	if ($level==1) $size=50;
-	else $size=25;
-	if (preg_match_all("/$level OBJE @(.*)@/", $factrec, $omatch, PREG_SET_ORDER) == 0) return;
+	if (preg_match_all("/$level OBJE @(.*)@/", $factrec, $omatch, PREG_SET_ORDER) == 0) {
+		return;
+	}
 	$objectNum = 0;
 	while ($objectNum < count($omatch)) {
 		$media_id = $omatch[$objectNum][1];
-		$media=WT_Media::getInstance($media_id);
+		$media = WT_Media::getInstance($media_id);
 		if ($media) {
 			if ($media->canShow()) {
-				if ($objectNum > 0) echo '<br class="media-separator" style="clear:both;">';
+				if ($objectNum > 0) {
+					echo '<br class="media-separator" style="clear:both;">';
+				}
 				echo '<div class="media-display"><div class="media-display-image">';
 				echo $media->displayImage();
 				echo '</div>'; // close div "media-display-image"
@@ -595,7 +594,7 @@ function print_media_links($factrec, $level, $pid='') {
 				//-- print spouse name for marriage events
 				$ct = preg_match("/WT_SPOUSE: (.*)/", $factrec, $match);
 				if ($ct>0) {
-					$spouse=WT_Individual::getInstance($match[1]);
+					$spouse = WT_Individual::getInstance($match[1]);
 					if ($spouse) {
 						echo '<a href="', $spouse->getHtmlUrl(), '">';
 						echo $spouse->getFullName();
@@ -603,7 +602,7 @@ function print_media_links($factrec, $level, $pid='') {
 					}
 					if (empty($SEARCH_SPIDER)) {
 						$ct = preg_match("/WT_FAMILY_ID: (.*)/", $factrec, $match);
-						if ($ct>0) {
+						if ($ct > 0) {
 							$famid = trim($match[1]);
 							$family = WT_Family::getInstance($famid);
 							if ($family) {
@@ -615,13 +614,13 @@ function print_media_links($factrec, $level, $pid='') {
 				}
 				echo print_fact_notes($media->getGedcom(), $nlevel);
 				echo print_fact_sources($media->getGedcom(), $nlevel);
-				echo '</div>';//close div "media-display-title"
-				echo '</div>';//close div "media-display"
+				echo '</div>'; //close div "media-display-title"
+				echo '</div>'; //close div "media-display"
 			}
 		} elseif (!$HIDE_GEDCOM_ERRORS) {
 			echo '<p class="ui-state-error">', $media_id, '</p>';
 		}
-		$objectNum ++;
+		$objectNum++;
 	}
 }
 
@@ -663,7 +662,6 @@ function print_main_sources(WT_Fact $fact, $level) {
 			echo '<td class="descriptionbox';
 			if ($level>1) echo ' rela';
 			echo ' ', $styleadd, ' width20">';
-			$temp = preg_match("/^\d (\w*)/", $factrec, $factname);
 			$factlines = explode("\n", $factrec); // 1 BIRT Y\n2 SOUR ...
 			$factwords = explode(" ", $factlines[0]); // 1 BIRT Y
 			$factname = $factwords[1]; // BIRT
@@ -821,7 +819,6 @@ function getSourceStructure($srec) {
 	if ($srec) {
 		$subrecords=explode("\n", $srec);
 		for ($i=0; $i<count($subrecords); $i++) {
-			$level=substr($subrecords[$i], 0, 1);
 			$tag  =substr($subrecords[$i], 2, 4);
 			$text =substr($subrecords[$i], 7);
 			$i++;
@@ -847,7 +844,7 @@ function getSourceStructure($srec) {
 
 // Print a row for the notes tab on the individual page
 function print_main_notes(WT_Fact $fact, $level) {
-	global $GEDCOM, $WT_TREE, $SHOW_FACT_ICONS, $TEXT_DIRECTION;
+	global $WT_TREE, $SHOW_FACT_ICONS;
 
 	$factrec = $fact->getGedcom();
 	$fact_id = $fact->getFactId();
@@ -865,20 +862,30 @@ function print_main_notes(WT_Fact $fact, $level) {
 		$can_edit = $level==1 && $fact->canEdit();
 	}
 
-	$ct = preg_match_all("/$level NOTE(.*)/", $factrec, $match, PREG_SET_ORDER);
+	$ct = preg_match_all("/$level NOTE (.*)/", $factrec, $match, PREG_SET_ORDER);
 	for ($j=0; $j<$ct; $j++) {
-		if ($level>=2) echo '<tr class="row_note2">';
-		else echo '<tr>';
-		echo '<td class="descriptionbox';
-		if ($level>=2) echo ' rela';
-		echo ' ', $styleadd, ' width20">';
+		// Note object, or inline note?
+		if (preg_match("/$level NOTE @(.*)@/", $match[$j][0], $nmatch)) {
+			$note = WT_Note::getInstance($nmatch[1]);
+			if ($note && !$note->canShow()) {
+				continue;
+			}
+		} else {
+			$note = null;
+		}
+
+		if ($level >= 2) {
+			echo '<tr class="row_note2"><td class="descriptionbox rela ', $styleadd, ' width20">';
+		} else {
+			echo '<tr><td class="descriptionbox ', $styleadd, ' width20">';
+		}
 		if ($can_edit) {
 			echo '<a onclick="return edit_record(\'', $pid, '\', \'', $fact_id, '\');" href="#" title="', WT_I18N::translate('Edit'), '">';
-			if ($level<2) {
+			if ($level < 2) {
 				if ($SHOW_FACT_ICONS) {
 					echo '<i class="icon-note"></i> ';
 				}
-				if (strstr($factrec, "1 NOTE @" )) {
+				if ($note) {
 					echo WT_Gedcom_Tag::getLabel('SHARED_NOTE');
 				} else {
 					echo WT_Gedcom_Tag::getLabel('NOTE');
@@ -888,6 +895,9 @@ function print_main_notes(WT_Fact $fact, $level) {
 				echo "<div class=\"editlink\"><a class=\"editicon\" onclick=\"return edit_record('$pid', '$fact_id');\" href=\"#\" title=\"".WT_I18N::translate('Edit')."\"><span class=\"link_text\">".WT_I18N::translate('Edit')."</span></a></div>";
 				echo '<div class="copylink"><a class="copyicon" href="#" onclick="return copy_fact(\'', $pid, '\', \'', $fact_id, '\');" title="'.WT_I18N::translate('Copy').'"><span class="link_text">'.WT_I18N::translate('Copy').'</span></a></div>';
 				echo "<div class=\"deletelink\"><a class=\"deleteicon\" onclick=\"return delete_fact('".WT_I18N::translate('Are you sure you want to delete this fact?')."', '$pid', '$fact_id');\" href=\"#\" title=\"".WT_I18N::translate('Delete')."\"><span class=\"link_text\">".WT_I18N::translate('Delete')."</span></a></div>";
+				if ($note) {
+					echo '<a class="icon-note" href="', $note->getHtmlUrl() ,'" title="' . WT_I18N::translate('View') . '"><span class="link_text">' . WT_I18N::translate('View') . '</span></a>';
+				}
 				echo '</div>';
 			}
 		} else {
@@ -895,7 +905,7 @@ function print_main_notes(WT_Fact $fact, $level) {
 				if ($SHOW_FACT_ICONS) {
 					echo '<i class="icon-note"></i> ';
 				}
-				if (strstr($factrec, "1 NOTE @" )) {
+				if ($note) {
 					echo WT_Gedcom_Tag::getLabel('SHARED_NOTE');
 				} else {
 					echo WT_Gedcom_Tag::getLabel('NOTE');
@@ -917,22 +927,20 @@ function print_main_notes(WT_Fact $fact, $level) {
 			} else if ($factname != 'NOTE') {
 				// Note is already printed
 				echo WT_Gedcom_Tag::getLabel($factname, $parent);
+				if ($note) {
+					echo '<div class="editfacts"><a class="icon-note" href="', $note->getHtmlUrl() ,'" title="' . WT_I18N::translate('View') . '"><span class="link_text">' . WT_I18N::translate('View') . '</span></a></div>';
+
+				}
 			}
 		}
 		echo '</td>';
-		if (preg_match("/$level NOTE @(.*)@/", $match[$j][0], $nmatch)) {
+		if ($note) {
 			// Note objects
-			$nid = $nmatch[1];
-			$note = WT_Note::getInstance($nid);
-			if ($note) {
+			if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
 				// If Census assistant installed, allow it to format the note
-				if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
-					$text = GEDFact_assistant_WT_Module::formatCensusNote($note);
-				} else {
-					$text = WT_Filter::formatText($note->getNote(), $WT_TREE);
-				}
+				$text = GEDFact_assistant_WT_Module::formatCensusNote($note);
 			} else {
-				$text = '<span class="error">' . WT_Filter::escapeHtml($nid) . '</span>';
+				$text = WT_Filter::formatText($note->getNote(), $WT_TREE);
 			}
 		} else {
 			// Inline notes
@@ -981,7 +989,6 @@ function print_main_notes(WT_Fact $fact, $level) {
 // Print a row for the media tab on the individual page
 function print_main_media(WT_Fact $fact, $level) {
 	$factrec = $fact->getGedcom();
-	$fact_id = $fact->getFactId();
 	$parent  = $fact->getParent();
 
 	if ($fact->isNew()) {
@@ -1011,7 +1018,7 @@ function print_main_media(WT_Fact $fact, $level) {
 				echo ' rela';
 			}
 			echo ' ', $styleadd, ' width20">';
-			$temp = preg_match("/^\d (\w*)/", $factrec, $factname);
+			preg_match("/^\d (\w*)/", $factrec, $factname);
 			$factlines = explode("\n", $factrec); // 1 BIRT Y\n2 SOUR ...
 			$factwords = explode(" ", $factlines[0]); // 1 BIRT Y
 			$factname = $factwords[1]; // BIRT

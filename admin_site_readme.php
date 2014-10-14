@@ -18,24 +18,24 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use Michelf\MarkdownExtra;
+use WT\Auth;
+
 define('WT_SCRIPT_NAME', 'admin_site_readme.php');
 
 require './includes/session.php';
 
 $controller = new WT_Controller_Page();
 $controller
-	->requireAdminLogin()
+	->restrictAccess(Auth::isAdmin())
 	->setPageTitle(WT_I18N::translate('README documentation'))
 	->pageHeader();
 
-// This information is always LTR/English
+// The readme file contains code-quality badges before the first header
+$readme = file_get_contents('README.md');
+$readme = preg_replace('/.*(?=# webtrees)/s', '', $readme);
+
 ?>
 <div class="markdown" dir="ltr" lang="en">
-	<?php
-		use \Michelf\MarkdownExtra;
-
-		echo MarkdownExtra::defaultTransform(
-			file_get_contents('README.md')
-		);
-	?>
+	<?php echo MarkdownExtra::defaultTransform($readme); ?>
 </div>

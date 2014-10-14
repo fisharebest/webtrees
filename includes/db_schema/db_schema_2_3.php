@@ -27,12 +27,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
-self::exec(
+WT_DB::exec(
 	"CREATE TABLE IF NOT EXISTS `##gedcom_chunk` (".
 	" gedcom_chunk_id INTEGER AUTO_INCREMENT NOT NULL,".
 	" gedcom_id       INTEGER                NOT NULL,".
@@ -45,7 +40,7 @@ self::exec(
 );
 
 try {
-	self::exec(
+	WT_DB::exec(
 		"ALTER TABLE `##gedcom` DROP import_gedcom, DROP import_offset"
 	);
 } catch (PDOException $ex) {
@@ -53,4 +48,4 @@ try {
 }
 
 // Update the version to indicate success
-WT_Site::preference($schema_name, $next_version);
+WT_Site::setPreference($schema_name, $next_version);

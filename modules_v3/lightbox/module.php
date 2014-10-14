@@ -21,10 +21,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
+use WT\Auth;
 
 class lightbox_WT_Module extends WT_Module implements WT_Module_Tab {
 	private $media_list;
@@ -57,37 +54,36 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Tab {
 
 	// Implement WT_Module_Tab
 	public function getTabContent() {
-		global $controller, $sort_i;
+		global $WT_TREE, $controller;
 
 		$html='<div id="'.$this->getName().'_content">';
 		//Show Lightbox-Album header Links
 		if (WT_USER_CAN_EDIT) {
 			$html.='<table class="facts_table"><tr><td class="descriptionbox rela">';
 			// Add a new media object
-			if (get_gedcom_setting(WT_GED_ID, 'MEDIA_UPLOAD') >= WT_USER_ACCESS_LEVEL) {
-				$html.='<span><a href="#" onclick="window.open(\'addmedia.php?action=showmediaform&linktoid='.$controller->record->getXref().'\', \'_blank\', \'resizable=1,scrollbars=1,top=50,height=780,width=600\');return false;">';
-				$html.='<img src="'.WT_CSS_URL.'images/image_add.png" id="head_icon" class="icon" title="'.WT_I18N::translate('Add a new media object').'" alt="'.WT_I18N::translate('Add a new media object').'">';
-				$html.=WT_I18N::translate('Add a new media object');
-				$html.='</a></span>';
+			if ($WT_TREE->getPreference('MEDIA_UPLOAD') >= WT_USER_ACCESS_LEVEL) {
+				$html .= '<span><a href="#" onclick="window.open(\'addmedia.php?action=showmediaform&linktoid='.$controller->record->getXref().'\', \'_blank\', \'resizable=1,scrollbars=1,top=50,height=780,width=600\');return false;">';
+				$html .= '<img src="'.WT_CSS_URL.'images/image_add.png" id="head_icon" class="icon" title="'.WT_I18N::translate('Add a new media object').'" alt="'.WT_I18N::translate('Add a new media object').'">';
+				$html .= WT_I18N::translate('Add a new media object');
+				$html .= '</a></span>';
 				// Link to an existing item
-				$html.='<span><a href="#" onclick="window.open(\'inverselink.php?linktoid='.$controller->record->getXref().'&linkto=person\', \'_blank\', \'resizable=1,scrollbars=1,top=50,height=300,width=450\');">';
-				$html.= '<img src="'.WT_CSS_URL.'images/image_link.png" id="head_icon" class="icon" title="'.WT_I18N::translate('Link to an existing media object').'" alt="'.WT_I18N::translate('Link to an existing media object').'">';
-				$html.=WT_I18N::translate('Link to an existing media object');
-				$html.='</a></span>';
+				$html .= '<span><a href="#" onclick="window.open(\'inverselink.php?linktoid='.$controller->record->getXref().'&linkto=person\', \'_blank\', \'resizable=1,scrollbars=1,top=50,height=300,width=450\');">';
+				$html .= '<img src="'.WT_CSS_URL.'images/image_link.png" id="head_icon" class="icon" title="'.WT_I18N::translate('Link to an existing media object').'" alt="'.WT_I18N::translate('Link to an existing media object').'">';
+				$html .= WT_I18N::translate('Link to an existing media object');
+				$html .= '</a></span>';
 			}
 			if (WT_USER_GEDCOM_ADMIN && $this->get_media()) {
 				// Popup Reorder Media
-				$html.='<span><a href="#" onclick="reorder_media(\''.$controller->record->getXref().'\')">';
-				$html.='<img src="'.WT_CSS_URL.'images/images.png" id="head_icon" class="icon" title="'.WT_I18N::translate('Re-order media').'" alt="'.WT_I18N::translate('Re-order media').'">';
-				$html.=WT_I18N::translate('Re-order media');
-				$html.='</a></span>';
+				$html .= '<span><a href="#" onclick="reorder_media(\''.$controller->record->getXref().'\')">';
+				$html .= '<img src="'.WT_CSS_URL.'images/images.png" id="head_icon" class="icon" title="'.WT_I18N::translate('Re-order media').'" alt="'.WT_I18N::translate('Re-order media').'">';
+				$html .= WT_I18N::translate('Re-order media');
+				$html .= '</a></span>';
 			}
-			$html.='</td></tr></table>';
+			$html .= '</td></tr></table>';
 		}
-		$media_found = false;
 
 		// Used when sorting media on album tab page
-		$html .= '<table><tr><td class="facts_value">'; // one-cell table - for presentation only
+		$html .= '<table class="facts_table"><tr><td class="facts_value">'; // one-cell table - for presentation only
 		$html .= '<ul class="album-list">';
 		foreach ($this->get_media() as $media) {
 			//View Edit Menu ----------------------------------
@@ -97,7 +93,7 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Tab {
 			$needle   = '1 NOTE';
 			$before   = substr($haystack, 0, strpos($haystack, $needle));
 			$after    = substr(strstr($haystack, $needle), strlen($needle));
-			$notes    = print_fact_notes($before . $needle . $after, 1, true, true);
+			$notes    = print_fact_notes($before . $needle . $after, 1, true);
 
 			// Prepare Below Thumbnail  menu ----------------------------------------------------
 			$menu = new WT_Menu('<div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap">' . $media->getFullName() . '</div>');
@@ -142,7 +138,7 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Tab {
 				$submenu->addOnclick("return window.open('addmedia.php?action=editmedia&amp;pid=".$media->getXref()."', '_blank', edit_window_specs);");
 				$submenu->addClass("submenuitem");
 				$menu->addSubMenu($submenu);
-				if (WT_USER_IS_ADMIN) {
+				if (Auth::isAdmin()) {
 					// Manage Links
 					if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
 						$submenu = new WT_Menu(WT_I18N::translate('Manage links'));
@@ -170,8 +166,8 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Tab {
 
 						$menu->addSubMenu($submenu);
 					}
-					// Unlink Media
-					$submenu = new WT_Menu(WT_I18N::translate('Unlink Media'));
+					// Unlink media
+					$submenu = new WT_Menu(WT_I18N::translate('Unlink media'));
 					$submenu->addOnclick("return unlink_media('" . WT_I18N::translate('Are you sure you want to remove links to this media object?') . "', '" . $controller->record->getXref() . "', '" . $media->getXref() . "');");
 					$submenu->addClass("submenuitem");
 					$menu->addSubMenu($submenu);

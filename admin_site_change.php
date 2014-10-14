@@ -18,12 +18,15 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+use WT\User;
+
 define('WT_SCRIPT_NAME', 'admin_site_change.php');
 require './includes/session.php';
 
-$controller=new WT_Controller_Page();
+$controller = new WT_Controller_Page();
 $controller
-	->requireManagerLogin()
+	->restrictAccess(Auth::isManager())
 	->setPageTitle(WT_I18N::translate('Changes'));
 
 require WT_ROOT.'includes/functions/functions_edit.php';
@@ -47,7 +50,11 @@ $oldged = WT_Filter::get('oldged');
 $newged = WT_Filter::get('newged');
 $xref   = WT_Filter::get('xref', WT_REGEX_XREF);
 $user   = WT_Filter::get('user');
-if (WT_USER_IS_ADMIN) {
+
+$search = WT_Filter::get('search');
+$search = isset($search['value']) ? $search['value'] : null;
+
+if (Auth::isAdmin()) {
 	// Administrators can see all logs
 	$gedc = WT_Filter::get('gedc');
 } else {
@@ -57,6 +64,11 @@ if (WT_USER_IS_ADMIN) {
 
 $query=array();
 $args =array();
+if ($search) {
+	$query[] = "(old_gedcom LIKE CONCAT('%', ?, '%') OR new_gedcom LIKE CONCAT('%', ?, '%'))";
+	$args [] = $search;
+	$args [] = $search;
+}
 if ($from) {
 	$query[]='change_time>=?';
 	$args []=$from;
@@ -137,63 +149,65 @@ case 'export':
 	exit;
 case 'load_json':
 	Zend_Session::writeClose();
-	$iDisplayStart  = WT_Filter::getInteger('iDisplayStart');
-	$iDisplayLength = WT_Filter::getInteger('iDisplayLength');
-	set_user_setting(WT_USER_ID, 'admin_site_change_page_size', $iDisplayLength);
-	if ($iDisplayLength>0) {
-		$LIMIT = " LIMIT " . $iDisplayStart . ',' . $iDisplayLength;
+	$start  = WT_Filter::getInteger('start');
+	$length = WT_Filter::getInteger('length');
+	$search = WT_Filter::get('search');
+	$search = $search['value'];
+	Auth::user()->setPreference('admin_site_change_page_size', $length);
+	if ($length>0) {
+		$LIMIT = " LIMIT " . $start . ',' . $length;
 	} else {
 		$LIMIT = "";
 	}
-	$iSortingCols = WT_Filter::getInteger('iSortingCols');
-	if ($iSortingCols) {
-		$ORDER_BY=' ORDER BY ';
-		for ($i=0; $i<$iSortingCols; ++$i) {
+	$order = WT_Filter::get('order');
+	if ($order) {
+		$ORDER_BY = ' ORDER BY ';
+		for ($i = 0; $i < count($order); ++$i) {
+			if ($i > 0) {
+				$ORDER_BY.=',';
+			}
 			// Datatables numbers columns 0, 1, 2, ...
 			// MySQL numbers columns 1, 2, 3, ...
-			switch (WT_Filter::get('sSortDir_'.$i)) {
+			switch ($order[$i]['dir']) {
 			case 'asc':
 				if (WT_Filter::getInteger('iSortCol_'.$i)==0) {
-					$ORDER_BY.='change_id ASC '; // column 0 is "timestamp", using change_id gives the correct order for events in the same second
+					$ORDER_BY .= 'change_id ASC '; // column 0 is "timestamp", using change_id gives the correct order for events in the same second
 				} else {
-					$ORDER_BY.=(1 + WT_Filter::getInteger('iSortCol_'.$i)).' ASC ';
+					$ORDER_BY .= (1 + $order[$i]['column']) . ' ASC ';
 				}
 				break;
 			case 'desc':
 				if (WT_Filter::getInteger('iSortCol_'.$i)==0) {
-					$ORDER_BY.='change_id DESC ';
+					$ORDER_BY .= 'change_id DESC ';
 				} else {
-					$ORDER_BY.=(1 + WT_Filter::getInteger('iSortCol_'.$i)).' DESC ';
+					$ORDER_BY .= (1 + $order[$i]['column']) . ' DESC ';
 				}
 				break;
 			}
-			if ($i<$iSortingCols-1) {
-				$ORDER_BY.=',';
-			}
 		}
 	} else {
-		$ORDER_BY='1 DESC';
+		$ORDER_BY = 'ORDER BY 1 DESC';
 	}
 
 	// This becomes a JSON list, not array, so need to fetch with numeric keys.
-	$aaData=WT_DB::prepare($SELECT1.$WHERE.$ORDER_BY.$LIMIT)->execute($args)->fetchAll(PDO::FETCH_NUM);
-	foreach ($aaData as &$row) {
-		$row[1]=WT_I18N::translate($row[1]);
-		$row[2]='<a href="gedrecord.php?pid='.$row[2].'&ged='.$row[6].'" target="_blank">'.$row[2].'</a>';
-		$row[3]='<pre>'.WT_Filter::escapeHtml($row[3]).'</pre>';
-		$row[4]='<pre>'.WT_Filter::escapeHtml($row[4]).'</pre>';
+	$data=WT_DB::prepare($SELECT1.$WHERE.$ORDER_BY.$LIMIT)->execute($args)->fetchAll(PDO::FETCH_NUM);
+	foreach ($data as &$datum) {
+		$datum[1] = WT_I18N::translate($datum[1]);
+		$datum[2] = '<a href="gedrecord.php?pid='.$datum[2] . '&ged='.$datum[6] . '" target="_blank">' . $datum[2] . '</a>';
+		$datum[3] = '<pre>' . WT_Filter::escapeHtml($datum[3]) . '</pre>';
+		$datum[4] = '<pre>' . WT_Filter::escapeHtml($datum[4]) . '</pre>';
 	}
 
 	// Total filtered/unfiltered rows
-	$iTotalDisplayRecords=WT_DB::prepare("SELECT FOUND_ROWS()")->fetchColumn();
-	$iTotalRecords=WT_DB::prepare($SELECT2.$WHERE)->execute($args)->fetchColumn();
+	$recordsFiltered = WT_DB::prepare("SELECT FOUND_ROWS()")->fetchOne();
+	$recordsTotal = WT_DB::prepare($SELECT2.$WHERE)->execute($args)->fetchOne();
 
 	header('Content-type: application/json');
 	echo json_encode(array( // See http://www.datatables.net/usage/server-side
-		'sEcho'                => WT_Filter::getInteger('sEcho'), // Always an integer
-		'iTotalRecords'        => $iTotalRecords,
-		'iTotalDisplayRecords' => $iTotalDisplayRecords,
-		'aaData'               => $aaData
+		'draw'            => WT_Filter::getInteger('draw'), // Always an integer
+		'recordsTotal'    => $recordsTotal,
+		'recordsFiltered' => $recordsFiltered,
+		'data'            => $data
 	));
 	exit;
 }
@@ -202,25 +216,25 @@ $controller
 	->pageHeader()
 	->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 	->addInlineJavascript('
-		var oTable=jQuery("#log_list").dataTable( {
-			"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
-			"bProcessing": true,
-			"bServerSide": true,
-			"sAjaxSource": "'.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME.'?action=load_json&from='.$from.'&to='.$to.'&type='.$type.'&oldged='.rawurlencode($oldged).'&newged='.rawurlencode($newged).'&xref='.rawurlencode($xref).'&user='.rawurlencode($user).'&gedc='.rawurlencode($gedc).'",
-			'.WT_I18N::datatablesI18N(array(10,20,50,100,500,1000,-1)).',
-			"bJQueryUI": true,
-			"bAutoWidth":false,
-			"aaSorting": [[ 0, "desc" ]],
-			"iDisplayLength": '.get_user_setting(WT_USER_ID, 'admin_site_change_page_size', 10).',
-			"sPaginationType": "full_numbers",
-			"aoColumns": [
-			/* Timestamp   */ {},
-			/* Status      */ {},
-			/* Record      */ {},
-			/* Old data    */ {"sClass":"raw_gedcom"},
-			/* New data    */ {"sClass":"raw_gedcom"},
-			/* User        */ {},
-			/* Family tree */ {}
+		jQuery("#log_list").dataTable( {
+			"dom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
+			"processing": true,
+			"serverSide": true,
+			"ajax": "'.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME.'?action=load_json&from='.$from.'&to='.$to.'&type='.$type.'&oldged='.rawurlencode($oldged).'&newged='.rawurlencode($newged).'&xref='.rawurlencode($xref).'&user='.rawurlencode($user).'&gedc='.rawurlencode($gedc).'",
+			' . WT_I18N::datatablesI18N(array(10, 20, 50, 100, 500, 1000, -1)) . ',
+			jQueryUI: true,
+			autoWidth: false,
+			sorting: [[ 0, "desc" ]],
+			pageLength: ' . Auth::user()->getPreference('admin_site_change_page_size', 10) . ',
+			pagingType: "full_numbers",
+			columns: [
+			/* Timestamp   */ { },
+			/* Status      */ { },
+			/* Record      */ { },
+			/* Old data    */ { class: "raw_gedcom", sortable: false },
+			/* New data    */ { class: "raw_gedcom", sortable: false },
+			/* User        */ { },
+			/* Family tree */ { }
 			]
 		});
 	');
@@ -235,8 +249,10 @@ $url=
 	'&amp;user='.rawurlencode($user).
 	'&amp;gedc='.rawurlencode($gedc);
 
-$users_array=array_combine(get_all_users(), get_all_users());
-uksort($users_array, 'strnatcasecmp');
+$users_array = array();
+foreach (User::all() as $tmp_user) {
+	$users_array[$tmp_user->getUserName()] = $tmp_user->getUserName();
+}
 
 echo
 	'<form name="changes" method="get" action="'.WT_SCRIPT_NAME.'">',
@@ -264,7 +280,7 @@ echo
 					WT_I18N::translate('User'), '<br>', select_edit_control('user', $users_array, '', $user, ''),
 				'</td>',
 				'<td>',
-					WT_I18N::translate('Family tree'), '<br>',  select_edit_control('gedc', WT_Tree::getNameList(), '', $gedc, WT_USER_IS_ADMIN ? '' : 'disabled'),
+					WT_I18N::translate('Family tree'), '<br>',  select_edit_control('gedc', WT_Tree::getNameList(), '', $gedc, Auth::isAdmin() ? '' : 'disabled'),
 				'</td>',
 			'</tr><tr>',
 				'<td colspan="6">',

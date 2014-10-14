@@ -30,22 +30,27 @@
 
 global $summary, $censyear, $censdate;
 
-$censdate  = new WT_Date('31 MAR 1901');
-$censyear   = $censdate->date1->y;
-
-$ctry       = 'UK';
-// $married    = WT_Date::Compare($censdate, $marrdate);
+$censdate = new WT_Date('31 MAR 1901');
+$censyear = $censdate->date1->y;
+$ctry     = 'UK';
 
 // === Set $married to "Not married as we only want the Birth name here" ===
 $married=-1;
 
-// var_dump($person->getAllNames());
 $nam = $person->getAllNames();
-if ($person->getDeathYear() == 0) { $DeathYr = ""; } else { $DeathYr = $person->getDeathYear(); }
-if ($person->getBirthYear() == 0) { $BirthYr = ""; } else { $BirthYr = $person->getBirthYear(); }
-$fulln   = rtrim($nam[0]['givn'],'*')." ".$nam[0]['surname'];
-$fulln   = str_replace("@N.N.", "(".WT_I18N::translate('unknown').")", $fulln);
-$fulln   = str_replace("@P.N.", "(".WT_I18N::translate('unknown').")", $fulln);
+if ($person->getDeathYear() == 0) {
+	$DeathYr = '';
+} else {
+	$DeathYr = $person->getDeathYear();
+}
+if ($person->getBirthYear() == 0) {
+	$BirthYr = '';
+} else {
+	$BirthYr = $person->getBirthYear();
+}
+$fulln = rtrim($nam[0]['givn'],'*')." ".$nam[0]['surname'];
+$fulln = str_replace("@N.N.", "(".WT_I18N::translate('unknown').")", $fulln);
+$fulln = str_replace("@P.N.", "(".WT_I18N::translate('unknown').")", $fulln);
 $wholename = $fulln;
 
 echo '<script src="', WT_STATIC_URL, WT_MODULES_DIR, 'GEDFact_assistant/_CENS/js/dynamicoptionlist.js"></script>';
@@ -59,7 +64,7 @@ echo '</script>';
 // Header of assistant window =====================================================
 echo '<div class="cens_header">';
 echo '<div class="cens_header_left">';
-echo WT_I18N::translate('Head of Household:');
+echo WT_I18N::translate('Head of household:');
 echo ' ', $wholename;
 echo '</div>';
 if ($summary) {
@@ -88,7 +93,7 @@ echo '</div>';
 ?>
 <div class="optionbox cens_textinput">
 	<div class="cens_textinput_left">
-		<input type="button" value="<?php echo WT_I18N::translate('Add/Insert Blank Row'); ?>" onclick="insertRowToTable('', '', '', '', '', '', '', '', 'Age', '', '', '', '', '', '');">
+		<input type="button" value="<?php echo WT_I18N::translate('Add/insert a blank row'); ?>" onclick="insertRowToTable('', '', '', '', '', '', '', '', 'Age', '', '', '', '', '', '');">
 	</div>
 	<div class="cens_textinput_right">
 		<?php echo WT_I18N::translate('Add'); ?>

@@ -21,11 +21,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	// Extend class WT_Module
 	public function getTitle() {
@@ -86,7 +81,7 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		global $WT_IMAGES, $UNKNOWN_NN, $controller;
 
 		// Fetch a list of the initial letters of all surnames in the database
-		$initials=WT_Query_Name::surnameAlpha(true, false, WT_GED_ID, false);
+		$initials = WT_Query_Name::surnameAlpha(true, false, WT_GED_ID, false);
 
 		$controller->addInlineJavascript('
 			var famloadedNames = new Array();
@@ -94,7 +89,7 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			function fsearchQ() {
 				var query = jQuery("#sb_fam_name").val();
 				if (query.length>1) {
-					jQuery("#sb_fam_content").load("module.php?mod='.$this->getName().'&mod_action=ajax&sb_action=families&search="+query);
+					jQuery("#sb_fam_content").load("module.php?mod=' . $this->getName() . '&mod_action=ajax&sb_action=families&search="+query);
 				}
 			}
 

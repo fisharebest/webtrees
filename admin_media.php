@@ -16,6 +16,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+
 define('WT_SCRIPT_NAME', 'admin_media.php');
 require './includes/session.php';
 require WT_ROOT . 'includes/functions/functions_edit.php';
@@ -81,30 +83,31 @@ if ($delete_file) {
 switch($action) {
 case 'load_json':
 	Zend_Session::writeClose();
-	$sSearch        = WT_Filter::get('sSearch', null, ''); // MySQL needs an empty string, not NULL
-	$iDisplayStart  = WT_Filter::getInteger('iDisplayStart');
-	$iDisplayLength = WT_Filter::getInteger('iDisplayLength');
+	$search = WT_Filter::get('search');
+	$search = $search['value'];
+	$start  = WT_Filter::getInteger('start');
+	$length = WT_Filter::getInteger('length');
 
 	switch ($files) {
 	case 'local':
 		// Filtered rows
 		$SELECT1 =
-				"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS TRIM(LEADING ? FROM m_filename) AS media_path, m_id AS xref, m_file AS gedcom_id, m_gedcom AS gedcom" .
+				"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS TRIM(LEADING ? FROM m_filename) AS media_path, m_id AS xref, m_titl, m_file AS gedcom_id, m_gedcom AS gedcom" .
 				" FROM  `##media`" .
 				" JOIN  `##gedcom_setting` ON (m_file = gedcom_id AND setting_name = 'MEDIA_DIRECTORY')" .
-				" JOIN  `##gedcom`         USING (gedcom_id)" .
+				" JOIN  `##gedcom` USING (gedcom_id)" .
 				" WHERE setting_value=?" .
 				" AND   m_filename LIKE CONCAT(?, '%')" .
 				" AND   (SUBSTRING_INDEX(m_filename, '/', -1) LIKE CONCAT('%', ?, '%')" .
 				"  OR   m_titl LIKE CONCAT('%', ?, '%'))" .
-				"	AND   m_filename NOT LIKE 'http://%'" .
+				" AND   m_filename NOT LIKE 'http://%'" .
 				" AND   m_filename NOT LIKE 'https://%'";
 		$ARGS1 = array(
 			$media_path,
 			$media_folder,
 			WT_Filter::escapeLike($media_path),
-			WT_Filter::escapeLike($sSearch),
-			WT_Filter::escapeLike($sSearch)
+			WT_Filter::escapeLike($search),
+			WT_Filter::escapeLike($search)
 		);
 		// Unfiltered rows
 		$SELECT2 =
@@ -113,7 +116,7 @@ case 'load_json':
 				" JOIN  `##gedcom_setting` ON (m_file = gedcom_id AND setting_name = 'MEDIA_DIRECTORY')" .
 				" WHERE setting_value=?" .
 				" AND   m_filename LIKE CONCAT(?, '%')" .
-				"	AND   m_filename NOT LIKE 'http://%'" .
+				" AND   m_filename NOT LIKE 'http://%'" .
 				" AND   m_filename NOT LIKE 'https://%'";
 		$ARGS2 = array(
 			$media_folder,
@@ -127,45 +130,45 @@ case 'load_json':
 			$ARGS2[] = WT_Filter::escapeLike($media_path);
 		}
 
-		if ($iDisplayLength>0) {
-			$LIMIT = " LIMIT " . $iDisplayStart . ',' . $iDisplayLength;
+		if ($length > 0) {
+			$LIMIT = " LIMIT " . $start . ',' . $length;
 		} else {
 			$LIMIT = "";
 		}
-		$iSortingCols=WT_Filter::getInteger('iSortingCols');
-		if ($iSortingCols) {
+		$order = WT_Filter::get('order');
+		if ($order) {
 			$ORDER_BY = " ORDER BY ";
-			for ($i=0; $i<$iSortingCols; ++$i) {
+			for ($i = 0; $i < count($order); ++$i) {
+				if ($i > 0) {
+					$ORDER_BY .= ',';
+				}
 				// Datatables numbers columns 0, 1, 2, ...
 				// MySQL numbers columns 1, 2, 3, ...
-				switch (WT_Filter::get('sSortDir_'.$i)) {
+				switch ($order[$i]['dir']) {
 				case 'asc':
-					$ORDER_BY .= (1 + WT_Filter::getInteger('iSortCol_'.$i)).' ASC ';
+					$ORDER_BY .= (1 + $order[$i]['column']) . ' ASC ';
 					break;
 				case 'desc':
-					$ORDER_BY .= (1 + WT_Filter::getInteger('iSortCol_'.$i)).' DESC ';
+					$ORDER_BY .= (1 + $order[$i]['column']) . ' DESC ';
 					break;
-				}
-				if ($i<$iSortingCols-1) {
-					$ORDER_BY .= ',';
 				}
 			}
 		} else {
-			$ORDER_BY="1 ASC";
+			$ORDER_BY = " ORDER BY 1 ASC";
 		}
 
 		$rows = WT_DB::prepare($SELECT1.$ORDER_BY.$LIMIT)->execute($ARGS1)->fetchAll();
 		// Total filtered/unfiltered rows
-		$iTotalDisplayRecords = WT_DB::prepare("SELECT FOUND_ROWS()")->fetchColumn();
-		$iTotalRecords        = WT_DB::prepare($SELECT2)->execute($ARGS2)->fetchColumn();
+		$recordsFiltered = WT_DB::prepare("SELECT FOUND_ROWS()")->fetchOne();
+		$recordsTotal    = WT_DB::prepare($SELECT2)->execute($ARGS2)->fetchOne();
 
-		$aaData = array();
+		$data = array();
 		foreach ($rows as $row) {
 			$media = WT_Media::getInstance($row->xref, $row->gedcom_id);
-			$aaData[] = array(
-				media_file_info($media_folder, $media_path, $row->media_path),
+			$data[] = array(
+				mediaFileInfo($media_folder, $media_path, $row->media_path),
 				$media->displayImage(),
-				media_object_info($media),
+				mediaObjectInfo($media),
 			);
 		}
 		break;
@@ -173,13 +176,13 @@ case 'load_json':
 	case 'external':
 		// Filtered rows
 		$SELECT1 =
-				"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS m_id AS xref, m_file AS gedcom_id, m_gedcom AS gedcom, m_filename" .
+				"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS m_filename, m_id AS xref, m_titl, m_file AS gedcom_id, m_gedcom AS gedcom" .
 				" FROM  `##media`" .
 				" WHERE (m_filename LIKE 'http://%' OR m_filename LIKE 'https://%')" .
 				" AND   (m_filename LIKE CONCAT('%', ?, '%') OR m_titl LIKE CONCAT('%', ?, '%'))";
 		$ARGS1 = array(
-			WT_Filter::escapeLike($sSearch),
-			WT_Filter::escapeLike($sSearch)
+			WT_Filter::escapeLike($search),
+			WT_Filter::escapeLike($search)
 		);
 		// Unfiltered rows
 		$SELECT2 =
@@ -188,46 +191,46 @@ case 'load_json':
 				" WHERE (m_filename LIKE 'http://%' OR m_filename LIKE 'https://%')";
 		$ARGS2 = array();
 
-		if ($iDisplayLength>0) {
-			$LIMIT = " LIMIT " . $iDisplayStart . ',' . $iDisplayLength;
+		if ($length>0) {
+			$LIMIT = " LIMIT " . $start . ',' . $length;
 		} else {
 			$LIMIT = "";
 		}
-		$iSortingCols = WT_Filter::getInteger('iSortingCols');
-		if ($iSortingCols) {
+		$order = WT_Filter::get('order');
+		if ($order) {
 			$ORDER_BY = " ORDER BY ";
-			for ($i=0; $i<$iSortingCols; ++$i) {
+			for ($i=0; $i < count($order); ++$i) {
+				if ($i > 0) {
+					$ORDER_BY .= ',';
+				}
 				// Datatables numbers columns 0, 1, 2, ...
 				// MySQL numbers columns 1, 2, 3, ...
-				switch (WT_Filter::get('sSortDir_'.$i)) {
+				switch ($order[$i]['dir']) {
 				case 'asc':
-					$ORDER_BY.=(1 + WT_Filter::getInteger('iSortCol_'.$i)).' ASC ';
+					$ORDER_BY .= (1 + $order[$i]['column']).' ASC ';
 					break;
 				case 'desc':
-					$ORDER_BY.=(1 + WT_Filter::getInteger('iSortCol_'.$i)).' DESC ';
+					$ORDER_BY .= (1 + $order[$i]['column']).' DESC ';
 					break;
-				}
-				if ($i<$iSortingCols-1) {
-					$ORDER_BY.=',';
 				}
 			}
 		} else {
-			$ORDER_BY="1 ASC";
+			$ORDER_BY = " ORDER BY 1 ASC";
 		}
 
 		$rows = WT_DB::prepare($SELECT1.$ORDER_BY.$LIMIT)->execute($ARGS1)->fetchAll();
 
 		// Total filtered/unfiltered rows
-		$iTotalDisplayRecords = WT_DB::prepare("SELECT FOUND_ROWS()")->fetchColumn();
-		$iTotalRecords        = WT_DB::prepare($SELECT2)->execute($ARGS2)->fetchColumn();
+		$recordsFiltered = WT_DB::prepare("SELECT FOUND_ROWS()")->fetchOne();
+		$recordsTotal    = WT_DB::prepare($SELECT2)->execute($ARGS2)->fetchOne();
 
-		$aaData = array();
+		$data = array();
 		foreach ($rows as $row) {
 			$media = WT_Media::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
-			$aaData[] = array(
+			$data[] = array(
 			 	WT_Gedcom_Tag::getLabelValue('URL', $row->m_filename),
 				$media->displayImage(),
-				media_object_info($media),
+				mediaObjectInfo($media),
 			);
 		}
 		break;
@@ -241,32 +244,30 @@ case 'load_json':
 			" WHERE setting_name='MEDIA_DIRECTORY' AND setting_value=?"
 		)->execute(array($media_folder))->fetchAssoc();
 
-		$disk_files = all_disk_files ($media_folder, $media_path, $subfolders, $sSearch);
-		$db_files   = all_media_files($media_folder, $media_path, $subfolders, $sSearch);
+		$disk_files = all_disk_files ($media_folder, $media_path, $subfolders, $search);
+		$db_files   = all_media_files($media_folder, $media_path, $subfolders, $search);
 
 		// All unused files
 		$unused_files  = array_diff($disk_files, $db_files);
-		$iTotalRecords = count($unused_files);
+		$recordsTotal = count($unused_files);
 
 		// Filter unused files
-		if ($sSearch) {
-			// Lambda functions can’t be used until PHP5.3
-			//$unused_files = array_filter($unused_files, function($x) use ($sSearch) {return strpos($x, $sSearch)!==false;});
-			function substr_search($x) {global $sSearch; return strpos($x, $sSearch)!==false;}
-			$unused_files = array_filter($unused_files, 'substr_search');
+		if ($search) {
+			$unused_files = array_filter($unused_files, function ($x) use ($search) { return strpos($x, $search) !== false; });
 		}
-		$iTotalDisplayRecords = count($unused_files);
+		$recordsFiltered = count($unused_files);
 
 		// Sort files - only option is column 0
 		sort($unused_files);
-		if (WT_Filter::get('sSortDir_0')=='desc') {
+		$order = WT_Filter::get('order');
+		if ($order && $order[0]['dir'] === 'desc') {
 			$unused_files = array_reverse($unused_files);
 		}
 
 		// Paginate unused files
-		$unused_files = array_slice($unused_files, $iDisplayStart, $iDisplayLength);
+		$unused_files = array_slice($unused_files, $start, $length);
 
-		$aaData = array();
+		$data = array();
 		foreach ($unused_files as $unused_file) {
 			$full_path  = WT_DATA_DIR . $media_folder .             $media_path . $unused_file;
 			$thumb_path = WT_DATA_DIR . $media_folder . 'thumbs/' . $media_path . $unused_file;
@@ -293,7 +294,7 @@ case 'load_json':
 			if (!$exists_pending) {
 				foreach ($media_trees as $media_tree) {
 					$create_form .=
-						'<p><a onclick="window.open(\'addmedia.php?action=showmediaform&amp;ged=' . rawurlencode($media_tree) . '&amp;filename=' . rawurlencode(basename($unused_file)) . '&amp;folder=' . rawurlencode(dirname($unused_file)) . '\', \'_blank\', edit_window_specs); return false;">' .  WT_I18N::translate('Create') . '</a> — ' . WT_Filter::escapeHtml($media_tree) . '<p>';
+						'<p><a onclick="window.open(\'addmedia.php?action=showmediaform&amp;ged=' . rawurlencode($media_tree) . '&amp;filename=' . rawurlencode($unused_file) . '\', \'_blank\', edit_window_specs); return false;">' .  WT_I18N::translate('Create') . '</a> — ' . WT_Filter::escapeHtml($media_tree) . '<p>';
 				}
 			}
 
@@ -301,8 +302,8 @@ case 'load_json':
 			$delete_link =
 				'<p><a onclick="if (confirm(\'' . WT_Filter::escapeJs($conf) . '\')) jQuery.post(\'admin_media.php\',{delete:\'' .WT_Filter::escapeJs($media_path . $unused_file) . '\',media_folder:\'' . WT_Filter::escapeJs($media_folder) . '\'},function(){location.reload();})" href="#">' . WT_I18N::Translate('Delete') . '</a></p>';
 
-			$aaData[] = array(
-				media_file_info($media_folder, $media_path, $unused_file) . $delete_link,
+			$data[] = array(
+				mediaFileInfo($media_folder, $media_path, $unused_file) . $delete_link,
 				$img,
 				$create_form,
 			);
@@ -312,19 +313,19 @@ case 'load_json':
 
 	header('Content-type: application/json');
 	echo json_encode(array( // See http://www.datatables.net/usage/server-side
-		'sEcho'                => WT_Filter::getInteger('sEcho'), // String, but always an integer
-		'iTotalRecords'        => $iTotalRecords,
-		'iTotalDisplayRecords' => $iTotalDisplayRecords,
-		'aaData'               => $aaData
+		'draw'            => WT_Filter::getInteger('draw'), // String, but always an integer
+		'recordsTotal'    => $recordsTotal,
+		'recordsFiltered' => $recordsFiltered,
+		'data'            => $data
 	));
 	exit;
 }
 
-////////////////////////////////////////////////////////////////////////////////
-// Local functions
-////////////////////////////////////////////////////////////////////////////////
-
-// A unique list of media folders, from all trees.
+/**
+ * A unique list of media folders, from all trees.
+ *
+ * @return string[]
+ */
 function all_media_folders() {
 	return WT_DB::prepare(
 		"SELECT SQL_CACHE setting_value, setting_value" .
@@ -335,6 +336,13 @@ function all_media_folders() {
 	)->execute(array(WT_GED_ID))->fetchAssoc();
 }
 
+/**
+ * Generate a list of media paths (within a media folder) used by all media objects.
+ *
+ * @param string $media_folder
+ *
+ * @return string[]
+ */
 function media_paths($media_folder) {
 	$media_paths = WT_DB::prepare(
 		"SELECT SQL_CACHE LEFT(m_filename, CHAR_LENGTH(m_filename) - CHAR_LENGTH(SUBSTRING_INDEX(m_filename, '/', -1))) AS media_path" .
@@ -355,6 +363,15 @@ function media_paths($media_folder) {
 	return array_combine($media_paths, $media_paths);
 }
 
+/**
+ * Search a folder (and optional subfolders) for filenames that match a search pattern.
+ *
+ * @param string  $dir
+ * @param boolean $recursive
+ * @param string  $filter
+ *
+ * @return array
+ */
 function scan_dirs($dir, $recursive, $filter) {
 	$files = array();
 
@@ -376,12 +393,34 @@ function scan_dirs($dir, $recursive, $filter) {
 	return $files;
 }
 
-// Fetch a list of all files on disk
+/**
+ * Fetch a list of all files on disk
+ *
+ * @param string $media_folder Location of root folder
+ * @param string $media_path   Any subfolder
+ * @param string $subfolders   Include or exclude subfolders
+ * @param string $filter       Filter files whose name contains this test
+ *
+ * @return array
+ */
 function all_disk_files($media_folder, $media_path, $subfolders, $filter) {
 	return scan_dirs(WT_DATA_DIR . $media_folder . $media_path, $subfolders=='include', $filter);
 }
 
-// Fetch a list of all files on in the database
+/**
+ * Fetch a list of all files on in the database.
+ *
+ * @todo The subfolders parameter is not implemented.  However, as we
+ *       currently use this function as an exclusion list, it is harmless
+ *       to always include sub-folders.
+ *
+ * @param string $media_folder
+ * @param string $media_path
+ * @param string $subfolders
+ * @param string $filter
+ *
+ * @return string[]
+ */
 function all_media_files($media_folder, $media_path, $subfolders, $filter) {
 	return WT_DB::prepare(
 		"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS TRIM(LEADING ? FROM m_filename) AS media_path, 'OBJE' AS type, m_titl, m_id AS xref, m_file AS ged_id, m_gedcom AS gedrec, m_filename" .
@@ -403,7 +442,16 @@ function all_media_files($media_folder, $media_path, $subfolders, $filter) {
 	))->fetchOneColumn();
 }
 
-function media_file_info($media_folder, $media_path, $file) {
+/**
+ * Generate some useful information and links about a media file.
+ *
+ * @param string $media_folder
+ * @param string $media_path
+ * @param string $file
+ *
+ * @return string
+ */
+function mediaFileInfo($media_folder, $media_path, $file) {
 	$html = '<b>' . WT_Filter::escapeHtml($file). '</b>';
 
 	$full_path = WT_DATA_DIR . $media_folder . $media_path . $file;
@@ -428,7 +476,14 @@ function media_file_info($media_folder, $media_path, $file) {
 	return $html;
 }
 
-function media_object_info(WT_Media $media) {
+/**
+ * Generate some useful information and links about a media object.
+ *
+ * @param WT_Media $media
+ *
+ * @return string HTML
+ */
+function mediaObjectInfo(WT_Media $media) {
 	$xref   = $media->getXref();
 	$gedcom = WT_Tree::getNameFromId($media->getGedcomId());
 	$name   = $media->getFullName();
@@ -511,29 +566,29 @@ function media_object_info(WT_Media $media) {
 // selected folder.
 $table_id=md5($files.$media_folder.$media_path.$subfolders);
 
-$controller=new WT_Controller_Page();
+$controller = new WT_Controller_Page();
 $controller
-	->requireAdminLogin()
+	->restrictAccess(Auth::isAdmin())
 	->setPageTitle(WT_I18N::translate('Media'))
 	->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 	->pageHeader()
 	->addInlineJavascript('
-	var oTable=jQuery("#media-table-' . $table_id . '").dataTable( {
-		sDom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
-		bProcessing: true,
-		bServerSide: true,
-		sAjaxSource: "'.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME.'?action=load_json&files='.$files.'&media_folder='.$media_folder.'&media_path='.$media_path.'&subfolders='.$subfolders.'",
-		'.WT_I18N::datatablesI18N(array(5,10,20,50,100,500,1000,-1)).',
-		bJQueryUI: true,
-		bAutoWidth:false,
-		iDisplayLength: 10,
-		sPaginationType: "full_numbers",
-		bStateSave: true,
-		iCookieDuration: 300,
-		aoColumns: [
+	jQuery("#media-table-' . $table_id . '").dataTable({
+		dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
+		processing: true,
+		serverSide: true,
+		ajax: "'.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME.'?action=load_json&files='.$files.'&media_folder='.$media_folder.'&media_path='.$media_path.'&subfolders='.$subfolders.'",
+		' . WT_I18N::datatablesI18N(array(5, 10, 20, 50, 100, 500, 1000, -1)) . ',
+		jQueryUI: true,
+		autoWidth:false,
+		pageLength: 10,
+		pagingType: "full_numbers",
+		stateSave: true,
+		stateDuration: 300,
+		columns: [
 			{},
-			{bSortable: false},
-			{bSortable: ' . ($files=='unused' ? 'false' : 'true') . '}
+			{ sortable: false },
+			{ sortable: ' . ($files=='unused' ? 'false' : 'true') . ' }
 		]
 	});
 	');

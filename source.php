@@ -26,7 +26,7 @@ define('WT_SCRIPT_NAME', 'source.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
-$controller=new WT_Controller_Source();
+$controller = new WT_Controller_Source();
 
 if ($controller->record && $controller->record->canShow()) {
 	$controller->pageHeader();
@@ -74,12 +74,14 @@ if ($controller->record && $controller->record->canShow()) {
 	exit;
 }
 
-$linkToID=$controller->record->getXref(); // Tell addmedia.php what to link to
-
-$controller
-	->addInlineJavascript('function show_gedcom_record() {window.open("gedrecord.php?pid=' . $controller->record->getXref() . '", "_blank", edit_window_specs);}')
-	->addInlineJavascript('jQuery("#source-tabs").tabs();')
-	->addInlineJavascript('jQuery("#source-tabs").css("visibility", "visible");');
+$controller->addInlineJavascript('
+	jQuery("#source-tabs")
+		.tabs({
+			create: function(e, ui){
+				jQuery(e.target).css("visibility", "visible");  // prevent FOUC
+			}
+		});
+');
 
 $linked_indi = $controller->record->linkedIndividuals('SOUR');
 $linked_fam  = $controller->record->linkedFamilies('SOUR');
@@ -145,7 +147,7 @@ echo '<div id="source-tabs">
 		if ($controller->record->canEdit()) {
 			print_add_new_fact($controller->record->getXref(), $facts, 'SOUR');
 			// new media
-			if (get_gedcom_setting(WT_GED_ID, 'MEDIA_UPLOAD') >= WT_USER_ACCESS_LEVEL) {
+			if ($WT_TREE->getPreference('MEDIA_UPLOAD') >= WT_USER_ACCESS_LEVEL) {
 				echo '<tr><td class="descriptionbox">';
 				echo WT_Gedcom_Tag::getLabel('OBJE');
 				echo '</td><td class="optionbox">';
@@ -161,27 +163,19 @@ echo '<div id="source-tabs">
 
 	// Individuals linked to this source
 	if ($linked_indi) {
-		echo '<div id="indi-sources">';
-		echo format_indi_table($linked_indi, $controller->record->getFullName());
-		echo '</div>'; //close "indi-sources"
+		echo '<div id="indi-sources">', format_indi_table($linked_indi), '</div>';
 	}
 	// Families linked to this source
 	if ($linked_fam) {
-		echo '<div id="fam-sources">';
-		echo format_fam_table($linked_fam, $controller->record->getFullName());
-		echo '</div>'; //close "fam-sources"
+		echo '<div id="fam-sources">', format_fam_table($linked_fam), '</div>';
 	}
 	// Media Items linked to this source
 	if ($linked_obje) {
-		echo '<div id="media-sources">';
-		echo format_media_table($linked_obje, $controller->record->getFullName());
-		echo '</div>'; //close "media-sources"
+		echo '<div id="media-sources">', format_media_table($linked_obje), '</div>';
 	}
 	// Shared Notes linked to this source
 	if ($linked_note) {
-		echo '<div id="note-sources">';
-		echo format_note_table($linked_note, $controller->record->getFullName());
-		echo '</div>'; //close "note-sources"
+		echo '<div id="note-sources">', format_note_table($linked_note), '</div>';
 	}
 echo '</div>'; //close div "source-tabs"
 echo '</div>'; //close div "source-details"

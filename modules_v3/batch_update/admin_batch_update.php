@@ -18,6 +18,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
@@ -71,7 +73,7 @@ class batch_update {
 		}
 		$html.='</td></tr>';
 
-		if (!get_user_setting(WT_USER_ID, 'auto_accept'))
+		if (!Auth::user()->getPreference('auto_accept'))
 			$html.='<tr><td colspan="2" class="warning">'.WT_I18N::translate('Your user account does not have “automatically approve changes” enabled.  You will only be able to change one record at a time.').'</td></tr>';
 
 		// If a plugin is selected, display the details
@@ -121,8 +123,6 @@ class batch_update {
 			$this->getAllXrefs();
 
 			switch ($this->action) {
-			case '':
-				break;
 			case 'update':
 				$record=self::getLatestRecord($this->xref, $this->all_xrefs[$this->xref]);
 				if ($this->PLUGIN->doesRecordNeedUpdate($this->xref, $record)) {
@@ -153,25 +153,7 @@ class batch_update {
 				}
 				$this->xref='';
 				return;
-			case 'delete':
-				$record=self::getLatestRecord($this->xref, $this->all_xrefs[$this->xref]);
-				if ($this->PLUGIN->doesRecordNeedUpdate($this->xref, $record)) {
-					WT_GedcomRecord::getInstance($this->xref)->deleteRecord();
-				}
-				$this->xref=$this->findNextXref($this->xref);
-				break;
-			case 'delete_all':
-				foreach ($this->all_xrefs as $xref=>$type) {
-					$record=self::getLatestRecord($xref, $type);
-					if ($this->PLUGIN->doesRecordNeedUpdate($xref, $record)) {
-						WT_GedcomRecord::getInstance($this->xref)->deleteRecord();
-					}
-				}
-				$xref->xref='';
-				return;
 			default:
-				// Anything else will be handled by the plugin
-				$this->PLUGIN->performAction($this->xref, $this->record, $this->action, $this->data);
 				break;
 			}
 
@@ -345,7 +327,7 @@ class base_plugin {
 
 	// Default buttons are update and update_all
 	function getActionButtons($xref) {
-		if (get_user_setting(WT_USER_ID, 'auto_accept')) {
+		if (Auth::user()->getPreference('auto_accept')) {
 			return array(
 				batch_update::createSubmitButton(WT_I18N::translate('Update'),     $xref, 'update'),
 				batch_update::createSubmitButton(WT_I18N::translate('Update all'), $xref, 'update_all')
@@ -414,14 +396,11 @@ class base_plugin {
 		}
 	}
 
-	// Default handler for plugin with no custom actions.
-	function performAction($xref, $gedrec, $action, $data) {
-	}
-
 	// Decorate inserted/deleted text
 	static function decorateInsertedText($text) {
 		return '<span class="added_text">'.$text.'</span>';
 	}
+
 	static function decorateDeletedText($text) {
 		return '<span class="deleted_text">'.$text.'</span>';
 	}

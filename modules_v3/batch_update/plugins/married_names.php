@@ -21,11 +21,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 class married_names_bu_plugin extends base_plugin {
 	var $surname=null; // User option: add or replace husband’s surname
 
@@ -42,7 +37,9 @@ class married_names_bu_plugin extends base_plugin {
 	}
 
 	function updateRecord($xref, $gedrec) {
-		$SURNAME_TRADITION=get_gedcom_setting(WT_GED_ID, 'SURNAME_TRADITION');
+		global $WT_TREE;
+
+		$SURNAME_TRADITION = $WT_TREE->getPreference('SURNAME_TRADITION');
 
 		preg_match('/^1 NAME (.*)/m', $gedrec, $match);
 		$wife_name=$match[1];

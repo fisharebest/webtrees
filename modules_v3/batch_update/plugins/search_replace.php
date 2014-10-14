@@ -18,11 +18,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 class search_replace_bu_plugin extends base_plugin {
 	var $search =null; // Search string
 	var $replace=null; // Replace string
@@ -74,11 +69,10 @@ class search_replace_bu_plugin extends base_plugin {
 			break;
 		case 'regex':
 			$this->regex=$this->search;
-			// Check for invalid regexes
-			// If the regex is bad, $ct will be left at -1
-			$ct=-1;
-			$ct=@preg_match('/'.$this->search.'/', '');
-			if ($ct==-1) {
+			// Check for invalid regular expressions.
+			// A valid regex on a null string returns zero.
+			// An invalid regex on a null string returns false (and throws a warning).
+			if (@preg_match('/'.$this->search.'/', null) === false) {
 				$this->error='<br><span class="error">'.WT_I18N::translate('The regex appears to contain an error.  It can’t be used.').'</span>';
 			}
 			break;
@@ -89,7 +83,7 @@ class search_replace_bu_plugin extends base_plugin {
 		$descriptions=array(
 			'exact'     => WT_I18N::translate('Match the exact text, even if it occurs in the middle of a word.'),
 			'words'     => WT_I18N::translate('Match the exact text, unless it occurs in the middle of a word.'),
-			'wildcards' => WT_I18N::translate('Use a &laquo;?&raquo; to match a single character, use &laquo;*&raquo; to match zero or more characters.'),
+			'wildcards' => WT_I18N::translate('Use a “?” to match a single character, use “*” to match zero or more characters.'),
 			'regex'     => /* I18N: http://en.wikipedia.org/wiki/Regular_expression */ WT_I18N::translate('Regular expressions are an advanced pattern matching technique.') . '<br>' . /* I18N: %s is a URL */ WT_I18N::translate('See %s for more information.', '<a href="http://php.net/manual/regexp.reference.php" target="_blank">php.net/manual/regexp.reference.php</a>'),
 		);
 

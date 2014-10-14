@@ -21,14 +21,10 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
+use WT\Log;
 
 class WT_Media extends WT_GedcomRecord {
 	const RECORD_TYPE = 'OBJE';
-	const SQL_FETCH   = "SELECT m_gedcom FROM `##media` WHERE m_id=? AND m_file=?";
 	const URL_PREFIX  = 'mediaviewer.php?mid=';
 
 	public $title = null; // TODO: these should be private, with getTitle() and getFilename() functions
@@ -52,7 +48,7 @@ class WT_Media extends WT_GedcomRecord {
 	}
 
 	// Implement media-specific privacy logic ...
-	protected function _canShowByType($access_level) {
+	protected function canShowByType($access_level) {
 		// Hide media objects if they are attached to private records
 		$linked_ids=WT_DB::prepare(
 			"SELECT l_from FROM `##link` WHERE l_to=? AND l_file=?"
@@ -65,7 +61,7 @@ class WT_Media extends WT_GedcomRecord {
 		}
 
 		// ... otherwise apply default behaviour
-		return parent::_canShowByType($access_level);
+		return parent::canShowByType($access_level);
 	}
 
 	// Fetch the record from the database
@@ -125,14 +121,14 @@ class WT_Media extends WT_GedcomRecord {
 				return $user_thumb;
 			}
 			// Does the folder exist for this thumbnail?
-			if (!is_dir(dirname($file)) && !@mkdir(dirname($file), WT_PERM_EXE, true)) {
-				AddToLog('The folder ' . dirname($file) . ' could not be created for ' . $this->getXref(), 'media');
+			if (!is_dir(dirname($file)) && !WT_File::mkdir(dirname($file))) {
+				Log::addMediaLog('The folder ' . dirname($file) . ' could not be created for ' . $this->getXref());
 				return $file;
 			}
 			// Is there a corresponding main image?
 			$main_file = WT_DATA_DIR . $MEDIA_DIRECTORY . $this->file;
 			if (!file_exists($main_file)) {
-				AddToLog('The file ' . $main_file . ' does not exist for ' . $this->getXref(), 'media');
+				Log::addMediaLog('The file ' . $main_file . ' does not exist for ' . $this->getXref());
 				return $file;
 			}
 			// Try to create a thumbnail automatically
@@ -140,7 +136,7 @@ class WT_Media extends WT_GedcomRecord {
 			if ($imgsize[0] && $imgsize[1]) {
 				// Image small enough to be its own thumbnail?
 				if ($imgsize[0] < $THUMBNAIL_WIDTH) {
-					AddToLog('Thumbnail created for ' . $main_file . ' (copy of main image)', 'media');
+					Log::addMediaLog('Thumbnail created for ' . $main_file . ' (copy of main image)');
 					@copy($main_file, $file);
 				} else {
 					if (hasMemoryForImage($main_file)) {
@@ -167,12 +163,12 @@ class WT_Media extends WT_GedcomRecord {
 							}
 							@imagedestroy($main_image);
 							@imagedestroy($thumb_image);
-							AddToLog('Thumbnail created for ' . $main_file, 'media');
+							Log::addMediaLog('Thumbnail created for ' . $main_file);
 						} else {
-							AddToLog('Failed to create thumbnail for ' . $main_file, 'media');
+							Log::addMediaLog('Failed to create thumbnail for ' . $main_file);
 						}
 					} else {
-						AddToLog('Not enough memory to create thumbnail for ' . $main_file, 'media');
+						Log::addMediaLog('Not enough memory to create thumbnail for ' . $main_file);
 					}
 				}
 			}
@@ -182,7 +178,9 @@ class WT_Media extends WT_GedcomRecord {
 
 	/**
 	 * check if the file exists on this server
-	 * @param which string - specify either 'main' or 'thumb'
+	 *
+	 * @param string $which specify either 'main' or 'thumb'
+	 *
 	 * @return boolean
 	 */
 	public function fileExists($which='main') {
@@ -196,7 +194,8 @@ class WT_Media extends WT_GedcomRecord {
 
 	/**
 	 * get the media file size in KB
-	 * @param which string - specify either 'main' or 'thumb'
+	 *
+	 * @param string $which specify either 'main' or 'thumb'
 	 * @return string
 	 */
 	public function getFilesize($which='main') {
@@ -207,7 +206,8 @@ class WT_Media extends WT_GedcomRecord {
 
 	/**
 	 * get the media file size, unformatted
-	 * @param which string - specify either 'main' or 'thumb'
+	 *
+	 * @param string $which specify either 'main' or 'thumb'
 	 * @return number
 	 */
 	public function getFilesizeraw($which='main') {
@@ -217,8 +217,10 @@ class WT_Media extends WT_GedcomRecord {
 
 	/**
 	 * get filemtime for the media file
-	 * @param which string - specify either 'main' or 'thumb'
-	 * @return number
+	 *
+	 * @param string $which specify either 'main' or 'thumb'
+	 *
+	 * @return int
 	 */
 	public function getFiletime($which='main') {
 		if ($this->fileExists($which)) return @filemtime($this->getServerFilename($which));
@@ -227,19 +229,23 @@ class WT_Media extends WT_GedcomRecord {
 
 	/**
 	 * generate an etag specific to this media item and the current user
-	 * @param which string - specify either 'main' or 'thumb'
-	 * @return number
+	 *
+	 * @param string $which - specify either 'main' or 'thumb'
+	 *
+	 * @return string
 	 */
 	public function getEtag($which='main') {
 		// setup the etag.  use enough info so that if anything important changes, the etag won’t match
 		global $SHOW_NO_WATERMARK;
 		if ($this->isExternal()) {
 			// etag not really defined for external media
+
 			return '';
 		}
 		$etag_string = basename($this->getServerFilename($which)).$this->getFiletime($which).WT_GEDCOM.WT_USER_ACCESS_LEVEL.$SHOW_NO_WATERMARK;
 		$etag_string = dechex(crc32($etag_string));
-		return ($etag_string);
+
+		return $etag_string;
 	}
 
 	// TODO Deprecated? This does not need to be a function here.
@@ -262,9 +268,11 @@ class WT_Media extends WT_GedcomRecord {
 
 	/**
 	 * get image properties
-	 * @param which string - specify either 'main' or 'thumb'
-	 * @param addWidth int - amount to add to width
-	 * @param addHeight int - amount to add to height
+	 *
+	 * @param string $which     specify either 'main' or 'thumb'
+	 * @param int    $addWidth  amount to add to width
+	 * @param int    $addHeight amount to add to height
+	 *
 	 * @return array
 	 */
 	public function getImageAttributes($which='main',$addWidth=0,$addHeight=0) {
@@ -302,7 +310,7 @@ class WT_Media extends WT_GedcomRecord {
 			$imgsize['mime']='';
 			$imgsize['WxH']='';
 			$imgsize['imgWH']='';
-			if ($this->isExternal($which)) {
+			if ($this->isExternal()) {
 				// don’t let large external images break the dislay
 				$imgsize['imgWH']=' width="'.$THUMBNAIL_WIDTH.'" ';
 			}
@@ -324,7 +332,7 @@ class WT_Media extends WT_GedcomRecord {
 				if ($this->fileExists($which)) {
 					// alert the admin if we cannot determine the mime type of an existing file
 					// as the media firewall will be unable to serve this file properly
-					AddToLog('Media Firewall error: >Unknown Mimetype< for file >'.$this->file.'<', 'media');
+					Log::addMediaLog('Media Firewall error: >Unknown Mimetype< for file >' . $this->file . '<');
 				}
 			} else {
 				$imgsize['mime']=$mime[$imgsize['ext']];
@@ -420,7 +428,7 @@ class WT_Media extends WT_GedcomRecord {
 			' type="'           . $this->mimeType()                  . '"' .
 			' data-obje-url="'  . $this->getHtmlUrl()                . '"' .
 			' data-obje-note="' . WT_Filter::escapeHtml($this->getNote()) . '"' .
-			' data-title="'     . strip_tags($this->getFullName())   . '"' .
+			' data-title="'     . WT_Filter::escapeHtml($this->getFullName())   . '"' .
 			'>' . $image . '</a>';
 	}
 
@@ -446,7 +454,7 @@ class WT_Media extends WT_GedcomRecord {
 	public function format_list_details() {
 		require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 		ob_start();
-		print_media_links('1 OBJE @'.$this->getXref().'@', 1, $this->getXref());
+		print_media_links('1 OBJE @'.$this->getXref().'@', 1);
 		return ob_get_clean();
 	}
 }

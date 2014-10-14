@@ -18,10 +18,11 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+
 define('WT_SCRIPT_NAME', 'admin_trees_places.php');
 
 require './includes/session.php';
-require WT_ROOT . 'includes/functions/functions_import.php';
 require WT_ROOT . 'includes/functions/functions_edit.php';
 
 $search  = WT_Filter::post('search');
@@ -74,15 +75,17 @@ if ($search && $replace) {
 	}
 }
 
-$controller=new WT_Controller_Page();
+$controller = new WT_Controller_Page();
 $controller
-	->requireManagerLogin()
+	->restrictAccess(Auth::isManager())
 	->setPageTitle(WT_I18N::translate('Administration - place edit'))
 	->pageHeader();
 ?>
 
 <h2>
 	<?php echo WT_I18N::translate('Update all the place names in a family tree'); ?>
+	—
+	<?php echo WT_Filter::escapeHtml($WT_TREE->tree_title); ?>
 </h2>
 
 <p>
@@ -92,9 +95,9 @@ $controller
 <form method="post">
 	<dl>
 		<dt><?php echo WT_I18N::translate('Family tree'); ?></dt>
-		<dd><?php echo select_edit_control('ged', WT_Tree::getNameList(), null, WT_GEDCOM, 'autofocus'); ?></dd>
+		<dd><?php echo select_edit_control('ged', WT_Tree::getNameList(), null, WT_GEDCOM); ?></dd>
 		<dt><label for="search"><?php echo WT_I18N::translate('Search for'); ?></label></dt>
-		<dd><input name="search" id="search" type="text" size="30" value="<?= WT_Filter::escapeHtml($search) ?>" required></dd>
+		<dd><input name="search" id="search" type="text" size="30" value="<?= WT_Filter::escapeHtml($search) ?>" required autofocus></dd>
 		<dt><label for="replace"><?php echo WT_I18N::translate('Replace with'); ?></label></dt>
 		<dd><input name="replace" id="replace" type="text" size="30" value="<?= WT_Filter::escapeHtml($replace) ?>" required></dd>
 	</dl>

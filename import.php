@@ -28,14 +28,13 @@
 
 define('WT_SCRIPT_NAME', 'import.php');
 require './includes/session.php';
-require_once WT_ROOT.'includes/functions/functions_import.php';
 
 if (!WT_USER_GEDCOM_ADMIN) {
 	header('HTTP/1.1 403 Access Denied');
 	exit;
 }
 
-$controller=new WT_Controller_Ajax();
+$controller = new WT_Controller_Ajax();
 $controller
 	->pageHeader();
 
@@ -62,7 +61,7 @@ $row=WT_DB::prepare(
 )->execute(array($gedcom_id))->fetchOneRow();
 
 if ($row->import_offset==$row->import_total) {
-	set_gedcom_setting($gedcom_id, 'imported', true);
+	WT_Tree::get($gedcom_id)->setPreference('imported', true);
 	// Finished?  Show the maintenance links, similar to admin_trees_manage.php
 	WT_DB::exec("COMMIT");
 	$controller->addInlineJavascript(
@@ -74,7 +73,7 @@ if ($row->import_offset==$row->import_total) {
 
 // Calculate progress so far
 $percent=100*(($row->import_offset) / $row->import_total);
-$status=WT_I18N::translate('Loading data from GEDCOM: %.1f%%', $percent);
+$status=WT_I18N::translate('Loading data from GEDCOM file: %.1f%%', $percent);
 
 echo '<div id="progressbar', $gedcom_id, '"><div style="position:absolute;">', $status, '</div></div>';
 $controller->addInlineJavascript(
@@ -96,7 +95,7 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 		$keep_media=WT_Filter::getBool('keep_media'.$gedcom_id);
 		// Delete any existing genealogical data
 		empty_database($gedcom_id, $keep_media);
-		set_gedcom_setting($gedcom_id, 'imported', false);
+		WT_Tree::get($gedcom_id)->setPreference('imported', false);
 		// Remove any byte-order-mark
 		WT_DB::prepare(
 			"UPDATE `##gedcom_chunk`".
@@ -145,7 +144,7 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 			break;
 		case 'ANSI': // ANSI could be anything.  Most applications seem to treat it as latin1.
 			$controller->addInlineJavascript(
-				'alert("'. /* I18N: %1$s and %2$s are the names of character encodings, such as ISO-8859-1 or ASCII */ WT_I18N::translate('This GEDCOM is encoded using %1$s.  Assume this to mean %2$s.', $charset, 'ISO-8859-1'). '");'
+				'alert("'. /* I18N: %1$s and %2$s are the names of character encodings, such as ISO-8859-1 or ASCII */ WT_I18N::translate('This GEDCOM file is encoded using %1$s.  Assume this to mean %2$s.', $charset, 'ISO-8859-1'). '");'
 			);
 		case 'WINDOWS':
 		case 'CP1252':

@@ -36,6 +36,10 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+use WT\Log;
+use WT\User;
+
 define('WT_SCRIPT_NAME', 'action.php');
 require './includes/session.php';
 
@@ -51,7 +55,6 @@ if (!WT_Filter::checkCsrf()) {
 switch (WT_Filter::post('action')) {
 case 'accept-changes':
 	// Accept all the pending changes for a record
-	require WT_ROOT.'includes/functions/functions_edit.php';
 	$record = WT_GedcomRecord::getInstance(WT_Filter::post('xref', WT_REGEX_XREF));
 	if ($record && WT_USER_CAN_ACCEPT && $record->canShow() && $record->canEdit()) {
 		WT_FlashMessages::addMessage(/* I18N: %s is the name of an individual, source or other record */ WT_I18N::translate('The changes to “%s” have been accepted.', $record->getFullName()));
@@ -94,7 +97,7 @@ case 'copy-fact':
 				while (count($WT_SESSION->clipboard)>10) {
 					array_shift($WT_SESSION->clipboard);
 				}
-				WT_FlashMessages::addMessage(WT_I18N::translate('Record copied to clipboard'));
+				WT_FlashMessages::addMessage(WT_I18N::translate('The record was copied to the clipboard.'));
 				break 2;
 			}
 		}
@@ -145,26 +148,30 @@ case 'delete-source':
 		// Delete links to this record
 		foreach (fetch_all_links($record->getXref(), $record->getGedcomId()) as $xref) {
 			$linker = WT_GedcomRecord::getInstance($xref);
-			$gedcom =$linker->getGedcom();
-			$gedcom = remove_links($gedcom, $record->getXref());
-			// If we have removed a link from a family to an individual, and it has only one member
-			if (preg_match('/^0 @'.WT_REGEX_XREF.'@ FAM/', $gedcom) && preg_match_all('/\n1 (HUSB|WIFE|CHIL) @(' . WT_REGEX_XREF . ')@/', $gedcom, $match)==1) {
-				// Delete the family
-				$family = WT_GedcomRecord::getInstance($xref);
-				WT_FlashMessages::addMessage(/* I18N: %s is the name of a family group, e.g. “Husband name + Wife name” */ WT_I18N::translate('The family “%s” has been deleted, as it only has one member.', $family->getFullName()));
-				$family->deleteRecord();
-				// Delete any remaining link to this family
-				if ($match) {
-					$relict = WT_GedcomRecord::getInstance($match[2][0]);
-					$gedcom = $relict->getGedcom();
-					$gedcom = remove_links($gedcom, $linker->getXref());
-					$relict->updateRecord($gedcom, false);
-					WT_FlashMessages::addMessage(/* I18N: %s are names of records, such as sources, repositories or individuals */ WT_I18N::translate('The link from “%1$s” to “%2$s” has been deleted.', $relict->getFullName(), $family->getFullName()));
+			$old_gedcom =$linker->getGedcom();
+			$new_gedcom = remove_links($old_gedcom, $record->getXref());
+			// fetch_all_links() does not take account of pending changes.  The links (or even the
+			// record itself) may have already been deleted.
+			if ($old_gedcom !== $new_gedcom) {
+				// If we have removed a link from a family to an individual, and it has only one member
+				if (preg_match('/^0 @'.WT_REGEX_XREF.'@ FAM/', $new_gedcom) && preg_match_all('/\n1 (HUSB|WIFE|CHIL) @(' . WT_REGEX_XREF . ')@/', $new_gedcom, $match)==1) {
+					// Delete the family
+					$family = WT_GedcomRecord::getInstance($xref);
+					WT_FlashMessages::addMessage(/* I18N: %s is the name of a family group, e.g. “Husband name + Wife name” */ WT_I18N::translate('The family “%s” was deleted because it only has one member.', $family->getFullName()));
+					$family->deleteRecord();
+					// Delete any remaining link to this family
+					if ($match) {
+						$relict = WT_GedcomRecord::getInstance($match[2][0]);
+						$new_gedcom = $relict->getGedcom();
+						$new_gedcom = remove_links($new_gedcom, $linker->getXref());
+						$relict->updateRecord($new_gedcom, false);
+						WT_FlashMessages::addMessage(/* I18N: %s are names of records, such as sources, repositories or individuals */ WT_I18N::translate('The link from “%1$s” to “%2$s” has been deleted.', $relict->getFullName(), $family->getFullName()));
+					}
+				} else {
+					// Remove links from $linker to $record
+					WT_FlashMessages::addMessage(/* I18N: %s are names of records, such as sources, repositories or individuals */ WT_I18N::translate('The link from “%1$s” to “%2$s” has been deleted.', $linker->getFullName(), $record->getFullName()));
+					$linker->updateRecord($new_gedcom, false);
 				}
-			} else {
-				// Remove links from $linker to $record
-				WT_FlashMessages::addMessage(/* I18N: %s are names of records, such as sources, repositories or individuals */ WT_I18N::translate('The link from “%1$s” to “%2$s” has been deleted.', $linker->getFullName(), $record->getFullName()));
-				$linker->updateRecord($gedcom, false);
 			}
 		}
 		// Delete the record itself
@@ -175,23 +182,20 @@ case 'delete-source':
 	break;
 
 case 'delete-user':
-	$user_id = WT_Filter::postInteger('user_id');
+	$user = User::find(WT_Filter::postInteger('user_id'));
 
-	if (WT_USER_IS_ADMIN && WT_USER_ID != $user_id) {
-		AddToLog('deleted user ->' . get_user_name($user_id) . '<-', 'auth');
-		delete_user($user_id);
+	if ($user && Auth::isAdmin() && Auth::user() !== $user) {
+		Log::addAuthenticationLog('Deleted user: ' . $user->getUserName());
+		$user->delete();
 	}
 	break;
 
 case 'masquerade':
-	$user_id   = WT_Filter::postInteger('user_id');
-	$all_users = get_all_users('ASC', 'username');
+	$user = User::find(WT_Filter::postInteger('user_id'));
 
-	if (WT_USER_IS_ADMIN && WT_USER_ID != $user_id && array_key_exists($user_id, $all_users)) {
-		AddToLog('masquerade as user ->' . get_user_name($user_id) . '<-', 'auth');
-		$WT_SESSION->wt_user = $user_id;
-		Zend_Session::regenerateId();
-		Zend_Session::writeClose();
+	if ($user && Auth::isAdmin() && Auth::user() !== $user) {
+		Log::addAuthenticationLog('Masquerade as user: ' . $user->getUserName());
+		Auth::login($user);
 	} else {
 		header('HTTP/1.0 406 Not Acceptable');
 	}
@@ -227,7 +231,6 @@ case 'unlink-media':
 
 case 'reject-changes':
 	// Reject all the pending changes for a record
-	require WT_ROOT.'includes/functions/functions_edit.php';
 	$record=WT_GedcomRecord::getInstance(WT_Filter::post('xref', WT_REGEX_XREF));
 	if ($record && WT_USER_CAN_ACCEPT && $record->canShow() && $record->canEdit()) {
 		WT_FlashMessages::addMessage(/* I18N: %s is the name of an individual, source or other record */ WT_I18N::translate('The changes to “%s” have been rejected.', $record->getFullName()));
@@ -240,12 +243,10 @@ case 'reject-changes':
 case 'theme':
 	// Change the current theme
 	$theme_dir=WT_Filter::post('theme');
-	if (WT_Site::preference('ALLOW_USER_THEMES') && in_array($theme_dir, get_theme_names())) {
+	if (WT_Site::getPreference('ALLOW_USER_THEMES') && in_array($theme_dir, get_theme_names())) {
 		$WT_SESSION->theme_dir=$theme_dir;
-		if (WT_USER_ID) {
-			// Remember our selection
-			set_user_setting(WT_USER_ID, 'theme', $theme_dir);
-		}
+		// Remember our selection
+		Auth::user()->setPreference('theme', $theme_dir);
 	} else {
 		// Request for a non-existant theme.
 		header('HTTP/1.0 406 Not Acceptable');

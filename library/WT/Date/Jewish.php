@@ -24,10 +24,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
+use Fisharebest\ExtCalendar\JewishCalendar;
 
 class WT_Date_Jewish extends WT_Date_Calendar {
 	const CALENDAR_ESCAPE = '@#DHEBREW@';
@@ -37,6 +34,16 @@ class WT_Date_Jewish extends WT_Date_Calendar {
 		''=>0, 'TSH'=>1, 'CSH'=>2, 'KSL'=>3, 'TVT'=>4, 'SHV'=>5, 'ADR'=>6, 'ADS'=>7, 'NSN'=>8, 'IYR'=>9, 'SVN'=>10, 'TMZ'=>11, 'AAV'=>12, 'ELL'=>13
 	);
 
+	/**
+	 * Create a new calendar date
+	 *
+	 * @param mixed $date
+	 */
+	public function __construct($date) {
+		$this->calendar = new JewishCalendar;
+		parent::__construct($date);
+	}
+
 	static function calendarName() {
 		return /* I18N: The Hebrew/Jewish calendar */ WT_I18N::translate('Jewish');
 	}
@@ -45,39 +52,39 @@ class WT_Date_Jewish extends WT_Date_Calendar {
 	const GERSH="׳";
 	const ALAFIM="אלפים";
 
-	function FormatDayZeros() {
+	function formatDayZeros() {
 		if (WT_LOCALE=='he') {
-			return $this->NumToHebrew($this->d);
+			return $this->numberToHebrewNumerals($this->d);
 		} else {
 			return $this->d;
 		}
 	}
 
-	function FormatDay() {
+	function formatDay() {
 		if (WT_LOCALE=='he') {
-			return $this->NumToHebrew($this->d);
+			return $this->numberToHebrewNumerals($this->d);
 		} else {
 			return $this->d;
 		}
 	}
 
-	function FormatShortYear() {
+	function formatShortYear() {
 		if (WT_LOCALE=='he') {
-			return $this->NumToHebrew($this->y%1000);
+			return $this->numberToHebrewNumerals($this->y%1000);
 		} else {
 			return $this->y;
 		}
 	}
 
-	function FormatLongYear() {
+	function formatLongYear() {
 		if (WT_LOCALE=='he') {
-			return $this->NumToHebrew($this->y);
+			return $this->numberToHebrewNumerals($this->y);
 		} else {
 			return $this->y;
 		}
 	}
 
-	static function NUM_TO_MONTH_NOMINATIVE($n, $leap_year) {
+	static function monthNameNominativeCase($n, $leap_year) {
 		switch ($n) {
 		case 1:  return WT_I18N::translate_c('NOMINATIVE', 'Tishrei');
 		case 2:  return WT_I18N::translate_c('NOMINATIVE', 'Heshvan');
@@ -95,7 +102,7 @@ class WT_Date_Jewish extends WT_Date_Calendar {
 		default: return '';
 		}
 	}
-	static function NUM_TO_MONTH_GENITIVE($n, $leap_year) {
+	static function monthNameGenitiveCase($n, $leap_year) {
 		switch ($n) {
 		case 1:  return WT_I18N::translate_c('GENITIVE', 'Tishrei');
 		case 2:  return WT_I18N::translate_c('GENITIVE', 'Heshvan');
@@ -113,7 +120,8 @@ class WT_Date_Jewish extends WT_Date_Calendar {
 		default: return '';
 		}
 	}
-	static function NUM_TO_MONTH_LOCATIVE($n, $leap_year) {
+
+	protected static function monthNameLocativeCase($n, $leap_year) {
 		switch ($n) {
 		case 1:  return WT_I18N::translate_c('LOCATIVE', 'Tishrei');
 		case 2:  return WT_I18N::translate_c('LOCATIVE', 'Heshvan');
@@ -131,7 +139,8 @@ class WT_Date_Jewish extends WT_Date_Calendar {
 		default: return '';
 		}
 	}
-	static function NUM_TO_MONTH_INSTRUMENTAL($n, $leap_year) {
+
+	protected static function monthNameInstrumentalCase($n, $leap_year) {
 		switch ($n) {
 		case 1:  return WT_I18N::translate_c('INSTRUMENTAL', 'Tishrei');
 		case 2:  return WT_I18N::translate_c('INSTRUMENTAL', 'Heshvan');
@@ -149,42 +158,22 @@ class WT_Date_Jewish extends WT_Date_Calendar {
 		default: return '';
 		}
 	}
-	static function NUM_TO_SHORT_MONTH($n, $leap_year) {
+
+	protected static function monthNameAbbreviated($n, $leap_year) {
 		// TODO: Do these have short names?
-		return self::NUM_TO_MONTH_NOMINATIVE($n, $leap_year);
+		return self::monthNameNominativeCase($n, $leap_year);
 	}
 
-	function NextMonth() {
-		if ($this->m==6 && !$this->IsLeapYear())
+	protected function nextMonth() {
+		if ($this->m==6 && !$this->isLeapYear())
 			return array($this->y, 8);
 		else
 			return array($this->y+($this->m==13?1:0), ($this->m%13)+1);
 	}
 
-	function IsLeapYear() {
-		return ((7*$this->y+1)%19)<7;
-	}
-
-	// TODO implement this function locally
-	static function YMDtoJD($y, $mh, $d) {
-		if (function_exists('JewishToJD'))
-			return JewishToJD($mh, $d, $y);
-		else
-			return 0;
-	}
-
-	// TODO implement this function locally
-	static function JDtoYMD($j) {
-		if (function_exists('JdToJewish'))
-			list($m, $d, $y)=explode('/', JDToJewish($j));
-		else
-			list($m, $d, $y)=array(0, 0, 0);
-		return array($y, $m, $d);
-	}
-
 	// Convert a decimal number to hebrew - like roman numerals, but with extra punctuation
 	// and special rules.
-	static function NumToHebrew($num) {
+	private static function numberToHebrewNumerals($num) {
 		$DISPLAY_JEWISH_THOUSANDS=false;
 
 		static $jHundreds = array("", "ק", "ר", "ש", "ת", "תק", "תר","תש", "תת", "תתק");

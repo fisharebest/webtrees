@@ -21,13 +21,9 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
+use WT\Auth;
 
 require_once WT_ROOT.'includes/functions/functions_print_facts.php';
-require_once WT_ROOT.'includes/functions/functions_import.php';
 
 class WT_Controller_Media extends WT_Controller_GedcomRecord {
 
@@ -39,10 +35,12 @@ class WT_Controller_Media extends WT_Controller_GedcomRecord {
 	}
 
 	/**
-	* get edit menu
-	*/
+	 * get edit menu
+	 */
 	function getEditMenu() {
-		$SHOW_GEDCOM_RECORD=get_gedcom_setting(WT_GED_ID, 'SHOW_GEDCOM_RECORD');
+		global $WT_TREE;
+
+		$SHOW_GEDCOM_RECORD = $WT_TREE->getPreference('SHOW_GEDCOM_RECORD');
 
 		if (!$this->record || $this->record->isOld()) {
 			return null;
@@ -86,7 +84,7 @@ class WT_Controller_Media extends WT_Controller_GedcomRecord {
 		}
 
 		// edit raw
-		if (WT_USER_IS_ADMIN || WT_USER_CAN_EDIT && $SHOW_GEDCOM_RECORD) {
+		if (Auth::isAdmin() || WT_USER_CAN_EDIT && $SHOW_GEDCOM_RECORD) {
 			$submenu = new WT_Menu(WT_I18N::translate('Edit raw GEDCOM'), '#', 'menu-obje-editraw');
 			$submenu->addOnclick("return edit_raw('" . $this->record->getXref() . "');");
 			$menu->addSubmenu($submenu);
@@ -112,10 +110,11 @@ class WT_Controller_Media extends WT_Controller_GedcomRecord {
 	}
 
 	/**
-	* return a list of facts
-	* @return array
-	*/
-	function getFacts($includeFileName=true) {
+	 * Return a list of facts
+	 *
+	 * @return array
+	 */
+	function getFacts() {
 		$facts = $this->record->getFacts();
 
 		// Add some dummy facts to show additional information
@@ -134,9 +133,13 @@ class WT_Controller_Media extends WT_Controller_GedcomRecord {
 	}
 
 	/**
-	* edit menu items used in media list
-	*/
-	static function getMediaListMenu($mediaobject) {
+	 * Edit menu items used in media list
+	 *
+	 * @param WT_Media $mediaobject
+	 *
+	 * @return string
+	 */
+	static function getMediaListMenu(WT_Media $mediaobject) {
 		$html='<div class="lightbox-menu"><ul class="makeMenu lb-menu">';
 		$menu = new WT_Menu(WT_I18N::translate('Edit details'));
 		$menu->addClass('', '', 'lb-image_edit');

@@ -21,11 +21,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 class notes_WT_Module extends WT_Module implements WT_Module_Tab {
 	private $facts;
 
@@ -78,7 +73,7 @@ class notes_WT_Module extends WT_Module implements WT_Module_Tab {
 			}
 		}
 		if (!$this->get_facts()) {
-			echo '<tr><td id="no_tab4" colspan="2" class="facts_value">', WT_I18N::translate('There are no Notes for this individual.'), '</td></tr>';
+			echo '<tr><td id="no_tab4" colspan="2" class="facts_value">', WT_I18N::translate('There are no notes for this individual.'), '</td></tr>';
 			}
 
 		// New note link

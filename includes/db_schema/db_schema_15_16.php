@@ -27,26 +27,20 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 // Remove old settings
-self::exec("DELETE FROM `##gedcom_setting` WHERE setting_name IN('GEDCOM_DEFAULT_TAB', 'LINK_ICONS', 'ZOOM_BOXES', 'SHOW_LIST_PLACES', 'SHOW_CONTEXT_HELP')");
-self::exec("DELETE FROM `##user_setting` WHERE setting_name='defaulttab'");
+WT_DB::exec("DELETE FROM `##gedcom_setting` WHERE setting_name IN('GEDCOM_DEFAULT_TAB', 'LINK_ICONS', 'ZOOM_BOXES', 'SHOW_LIST_PLACES', 'SHOW_CONTEXT_HELP')");
+WT_DB::exec("DELETE FROM `##user_setting` WHERE setting_name='defaulttab'");
 
 // There is no way to add a RESN tag to NOTE objects
-self::exec("UPDATE `##gedcom_setting` SET setting_value='SOUR,RESN' WHERE setting_name='NOTE_FACTS_ADD' AND setting_value='SOUR'");
+WT_DB::exec("UPDATE `##gedcom_setting` SET setting_value='SOUR,RESN' WHERE setting_name='NOTE_FACTS_ADD' AND setting_value='SOUR'");
 
 // This needs to be an absolute URL.  If not set, it defaults to the full path to login.php
-self::exec("DELETE FROM `##site_setting` WHERE setting_name='LOGIN_URL' AND setting_value='login.php'");
+WT_DB::exec("DELETE FROM `##site_setting` WHERE setting_name='LOGIN_URL' AND setting_value='login.php'");
 // No need for an empty value
-self::exec("DELETE FROM `##site_setting` WHERE setting_name='SERVER_URL' AND setting_value=''");
+WT_DB::exec("DELETE FROM `##site_setting` WHERE setting_name='SERVER_URL' AND setting_value=''");
 
 // Later PHP versions use session IDs longer than 32 chars.
-self::exec("ALTER TABLE `##session` CHANGE session_id session_id CHAR(128) COLLATE utf8_unicode_ci NOT NULL");
+WT_DB::exec("ALTER TABLE `##session` CHANGE session_id session_id CHAR(128) COLLATE utf8_unicode_ci NOT NULL");
 
 // Update the version to indicate success
-WT_Site::preference($schema_name, $next_version);
-
+WT_Site::setPreference($schema_name, $next_version);

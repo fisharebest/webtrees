@@ -27,30 +27,25 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 // Data fix for bug #1072477
-self::exec("UPDATE `##default_resn` SET xref    =NULL WHERE xref    =''");
-self::exec("UPDATE `##default_resn` SET tag_type=NULL WHERE tag_type=''");
+WT_DB::exec("UPDATE `##default_resn` SET xref    =NULL WHERE xref    =''");
+WT_DB::exec("UPDATE `##default_resn` SET tag_type=NULL WHERE tag_type=''");
 
 // Delete old settings
-self::exec("DELETE FROM `##gedcom_setting` WHERE setting_name IN ('AUTO_GENERATE_THUMBS', 'POSTAL_CODE', 'MEDIA_DIRECTORY_LEVELS', 'USE_MEDIA_VIEWER')");
+WT_DB::exec("DELETE FROM `##gedcom_setting` WHERE setting_name IN ('AUTO_GENERATE_THUMBS', 'POSTAL_CODE', 'MEDIA_DIRECTORY_LEVELS', 'USE_MEDIA_VIEWER')");
 
 // Delete old settings
-self::exec("DELETE FROM `##module_setting` WHERE module_name='lightbox'");
+WT_DB::exec("DELETE FROM `##module_setting` WHERE module_name='lightbox'");
 
 // Very old versions of phpGedView allowed media paths beginning “./”
 // Remove these
-self::exec(
+WT_DB::exec(
 	"UPDATE `##media` m".
 	" SET".
 	"  m_filename = TRIM(LEADING './' FROM m_filename),".
 	"  m_gedcom   = REPLACE(m_gedcom, '\n1 FILE ./', '\n1 FILE ')"
 );
-self::exec(
+WT_DB::exec(
 	"UPDATE `##change` c".
 	" SET new_gedcom = REPLACE(new_gedcom, '\n1 FILE ./', '\n1 FILE ')".
 	" WHERE status = 'pending'"
@@ -58,7 +53,7 @@ self::exec(
 
 // Previous versions of webtrees included the MEDIA_DIRECTORY setting in the
 // FILE tag of the OBJE records.  Remove it…
-self::exec(
+WT_DB::exec(
 	"UPDATE `##media` m".
 	" JOIN `##gedcom_setting` gs ON (m.m_file = gs.gedcom_id AND gs.setting_name = 'MEDIA_DIRECTORY')".
 	" SET".
@@ -66,7 +61,7 @@ self::exec(
 	"  m_gedcom   = REPLACE(m_gedcom, CONCAT('\n1 FILE ', gs.setting_value), '\n1 FILE ')"
 );
 // …don’t forget pending changes
-self::exec(
+WT_DB::exec(
 	"UPDATE `##change` c".
 	" JOIN `##gedcom_setting` gs ON (c.gedcom_id = gs.gedcom_id AND gs.setting_name = 'MEDIA_DIRECTORY')".
 	" SET new_gedcom = REPLACE(new_gedcom, CONCAT('\n1 FILE ', gs.setting_value), '\n1 FILE ')".
@@ -74,4 +69,4 @@ self::exec(
 );
 
 // Update the version to indicate success
-WT_Site::preference($schema_name, $next_version);
+WT_Site::setPreference($schema_name, $next_version);

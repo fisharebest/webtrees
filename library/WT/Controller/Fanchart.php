@@ -21,11 +21,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 class WT_Controller_Fanchart extends WT_Controller_Chart {
 	// Variables for the view
 	public $fan_style      =null;
@@ -35,9 +30,11 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 	public $chart_html     =null;
 
 	public function __construct() {
+		global $WT_TREE;
+
 		parent::__construct();
 
-		$default_generations=get_gedcom_setting(WT_GED_ID, 'DEFAULT_PEDIGREE_GENERATIONS');
+		$default_generations = $WT_TREE->getPreference('DEFAULT_PEDIGREE_GENERATIONS');
 
 		// Extract the request parameters
 		$this->fan_style   = WT_Filter::getInteger('fan_style',   2,  4,  3);
@@ -54,11 +51,16 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 		}
 	}
 
+	/**
+	 * A list of options for the chart style.
+	 *
+	 * @return string[]
+	 */
 	public function getFanStyles() {
 		return array(
-			2=>/* I18N: layout option for the fan chart */ WT_I18N::translate('half circle'),
-			3=>/* I18N: layout option for the fan chart */ WT_I18N::translate('three-quarter circle'),
-			4=>/* I18N: layout option for the fan chart */ WT_I18N::translate('full circle'),
+			2 => /* I18N: layout option for the fan chart */ WT_I18N::translate('half circle'),
+			3 => /* I18N: layout option for the fan chart */ WT_I18N::translate('three-quarter circle'),
+			4 => /* I18N: layout option for the fan chart */ WT_I18N::translate('full circle'),
 		);
 	}
 
@@ -66,7 +68,8 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 	 * split and center text by lines
 	 *
 	 * @param string $data input string
-	 * @param int $maxlen max length of each line
+	 * @param int    $maxlen max length of each line
+	 *
 	 * @return string $text output string
 	 */
 	public function split_align_text($data, $maxlen) {
@@ -75,107 +78,102 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 		$lines = explode("\n", $data);
 		// more than 1 line : recursive calls
 		if (count($lines)>1) {
-			$text = "";
-			foreach ($lines as $indexval => $line) $text .= $this->split_align_text($line, $maxlen)."\n";
+			$text = '';
+			foreach ($lines as $line) {
+				$text .= $this->split_align_text($line, $maxlen)."\n";
+			}
 			return $text;
 		}
 		// process current line word by word
-		$split = explode(" ", $data);
-		$text = "";
-		$line = "";
-		// do not split hebrew line
+		$split = explode(' ', $data);
+		$text = '';
+		$line = '';
 
+		// do not split hebrew line
 		$found = false;
-		foreach ($RTLOrd as $indexval => $ord) {
+		foreach ($RTLOrd as $ord) {
 			if (strpos($data, chr($ord)) !== false) $found=true;
 		}
-		if ($found) $line=$data;
-		else
-		foreach ($split as $indexval => $word) {
-			$len = strlen($line);
-			//if (!empty($line) and ord($line{0})==215) $len/=2; // hebrew text
-			$wlen = strlen($word);
-			// line too long ?
-			if (($len+$wlen)<$maxlen) {
-				if (!empty($line)) $line .= " ";
-				$line .= "$word";
-			}
-			else {
-				$p = max(0,(int)(($maxlen-$len)/2));
-				if (!empty($line)) {
-					$line = str_repeat(" ", $p) . "$line"; // center alignment using spaces
-					$text .= "$line\n";
+		if ($found) {
+			$line=$data;
+		} else {
+			foreach ($split as $word) {
+				$len = strlen($line);
+				$wlen = strlen($word);
+				if (($len+$wlen)<$maxlen) {
+					if (!empty($line)) $line .= " ";
+					$line .= "$word";
+				} else {
+					$p = max(0,(int)(($maxlen-$len)/2));
+					if (!empty($line)) {
+						$line = str_repeat(' ', $p) . $line; // center alignment using spaces
+						$text .= $line. "\n";
+					}
+					$line = $word;
 				}
-				$line = $word;
 			}
 		}
 		// last line
 		if (!empty($line)) {
 			$len = strlen($line);
-			if (in_array(ord($line{0}),$RTLOrd)) $len/=2;
+			if (in_array(ord($line{0}),$RTLOrd)) {
+				$len/=2;
+			}
 			$p = max(0,(int)(($maxlen-$len)/2));
-			$line = str_repeat(" ", $p) . "$line"; // center alignment using spaces
-			$text .= "$line";
+			$line = str_repeat(' ', $p) . $line; // center alignment using spaces
+			$text .= $line;
 		}
+
 		return $text;
 	}
 
-	// Generate either the HTML or PNG components of the chart - we send them separately
-	public function generate_fan_chart($what) {
-		global $fanChart;
+	/**
+	 * Generate both the HTML and PNG components of the fan chart
+	 *
+	 * The HTML and PNG components both require the same co-ordinate calculations,
+	 * so we generate them using the same code, but we send them in separate
+	 * HTTP requests.
+	 *
+	 * @param string   $what     "png" or "html"
+	 * @param string[] $fanChart Presentation parameters, provided by the theme.
+	 *
+	 * @return string
+	 */
+	public function generate_fan_chart($what, $fanChart) {
+		$treeid = ancestry_array($this->root->getXref(), $this->generations);
+		$fanw   = 640 * $this->fan_width / 100;
+		$fandeg = 90 * $this->fan_style;
+		$html   = '';
 
-		$treeid=ancestry_array($this->root->getXref(), $this->generations);
-		$fanw  =640*$this->fan_width/100;
-		$fandeg=90*$this->fan_style;
-		$html  ='';
-
-		// check for GD 2.x library
-		if (!defined("IMG_ARC_PIE")) {
-			return false;
-		}
-		if (!function_exists("ImageTtfBbox")) {
-			return false;
-		}
-
-		// Validate
-		if (!file_exists($fanChart['font'])) {
-			$html.= '<p class="ui-state-error">'.WT_I18N::translate('The file “%s” does not exist.', $fanChart['font']).'</p>';
-			return false;
-		}
-
-		$fanChart['size'] = intval($fanChart['size']);
-		if ($fanChart['size']<2) $fanChart['size'] = 7;
-
-		if (empty($fanChart['color']) || $fanChart['color']{0}!='#') $fanChart['color'] = '#000000';
-		if (empty($fanChart['bgColor']) || $fanChart['bgColor']{0}!='#') $fanChart['bgColor'] = '#EEEEEE';
-		if (empty($fanChart['bgMColor']) || $fanChart['bgMColor']{0}!='#') $fanChart['bgMColor'] = '#D0D0AC';
-		if (empty($fanChart['bgFColor']) || $fanChart['bgFColor']{0}!='#') $fanChart['bgFColor'] = '#D0ACD0';
-
-		$treesize=count($treeid);
-		if ($treesize<1) return;
+		$treesize = count($treeid);
 
 		// generations count
-		$gen=log($treesize)/log(2)-1;
-		$sosa=$treesize-1;
+		$gen = log($treesize) / log(2) - 1;
+		$sosa = $treesize - 1;
 
 		// fan size
-		if ($fandeg==0) $fandeg=360;
-		$fandeg=min($fandeg, 360);
-		$fandeg=max($fandeg, 90);
-		$cx=$fanw/2-1; // center x
-		$cy=$cx; // center y
-		$rx=$fanw-1;
-		$rw=$fanw/($gen+1);
-		$fanh=$fanw; // fan height
-		if ($fandeg==180) $fanh=round($fanh*($gen+1)/($gen*2));
-		if ($fandeg==270) $fanh=round($fanh*.86);
-		$scale=$fanw/640;
+		if ($fandeg == 0) {
+			$fandeg = 360;
+		}
+		$fandeg = min($fandeg, 360);
+		$fandeg = max($fandeg, 90);
+		$cx = $fanw / 2 - 1; // center x
+		$cy = $cx; // center y
+		$rx = $fanw - 1;
+		$rw = $fanw / ($gen + 1);
+		$fanh = $fanw; // fan height
+		if ($fandeg == 180) {
+			$fanh = round($fanh * ($gen + 1) / ($gen * 2));
+		}
+		if ($fandeg == 270) {
+			$fanh = round($fanh * 0.86);
+		}
+		$scale = $fanw / 640;
 
 		// image init
 		$image = ImageCreate($fanw, $fanh);
-		$black = ImageColorAllocate($image, 0, 0, 0);
 		$white = ImageColorAllocate($image, 0xFF, 0xFF, 0xFF);
-		ImageFilledRectangle ($image, 0, 0, $fanw, $fanh, $white);
+		ImageFilledRectangle($image, 0, 0, $fanw, $fanh, $white);
 		ImageColorTransparent($image, $white);
 
 		$color = ImageColorAllocate($image, hexdec(substr($fanChart['color'],1,2)), hexdec(substr($fanChart['color'],3,2)), hexdec(substr($fanChart['color'],5,2)));
@@ -184,25 +182,25 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 		$bgcolorF = ImageColorAllocate($image, hexdec(substr($fanChart['bgFColor'],1,2)), hexdec(substr($fanChart['bgFColor'],3,2)), hexdec(substr($fanChart['bgFColor'],5,2)));
 
 		// imagemap
-		$imagemap="<map id=\"fanmap\" name=\"fanmap\">";
+		$imagemap = '<map id="fanmap" name="fanmap">';
 
 		// loop to create fan cells
-		while ($gen>=0) {
+		while ($gen >= 0) {
 			// clean current generation area
-			$deg2=360+($fandeg-180)/2;
-			$deg1=$deg2-$fandeg;
+			$deg2 = 360 + ($fandeg - 180) / 2;
+			$deg1 = $deg2 - $fandeg;
 			ImageFilledArc($image, $cx, $cy, $rx, $rx, $deg1, $deg2, $bgcolor, IMG_ARC_PIE);
-			$rx-=3;
+			$rx -= 3;
 
 			// calculate new angle
-			$p2=pow(2, $gen);
-			$angle=$fandeg/$p2;
-			$deg2=360+($fandeg-180)/2;
-			$deg1=$deg2-$angle;
+			$p2 = pow(2, $gen);
+			$angle = $fandeg / $p2;
+			$deg2 = 360 + ($fandeg - 180) / 2;
+			$deg1 = $deg2 - $angle;
 			// special case for rootid cell
-			if ($gen==0) {
-				$deg1=90;
-				$deg2=360+$deg1;
+			if ($gen == 0) {
+				$deg1 = 90;
+				$deg2 = 360 + $deg1;
 			}
 
 			// draw each cell
@@ -210,15 +208,15 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 				$pid = $treeid[$sosa];
 				$person = WT_Individual::getInstance($pid);
 				if ($person) {
-					$name    = WT_Filter::unescapeHtml($person->getFullName());
-					$addname = WT_Filter::unescapeHtml($person->getAddName());
+					$name    = $person->getFullName();
+					$addname = $person->getAddName();
 
-					$text = reverseText($name);
+					$text = WT_I18N::reverseText($name);
 					if ($addname) {
-						$text .= "\n" . reverseText($addname);
+						$text .= "\n" . WT_I18N::reverseText($addname);
 					}
 
-					$text .= "\n" . WT_Filter::unescapeHtml($person->getLifeSpan());
+					$text .= "\n" . WT_I18N::reverseText($person->getLifeSpan());
 
 					switch($person->getSex()) {
 					case 'M':
@@ -235,9 +233,11 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 					ImageFilledArc($image, $cx, $cy, $rx, $rx, $deg1, $deg2, $bg, IMG_ARC_PIE);
 
 					// split and center text by lines
-					$wmax = (int)($angle*7/$fanChart['size']*$scale);
-					$wmax = min($wmax, 35*$scale);
-					if ($gen==0) $wmax = min($wmax, 17*$scale);
+					$wmax = (int)($angle * 7 / $fanChart['size'] * $scale);
+					$wmax = min($wmax, 35 * $scale);
+					if ($gen == 0) {
+						$wmax = min($wmax, 17 * $scale);
+					}
 					$text = $this->split_align_text($text, $wmax);
 
 					// text angle
@@ -245,111 +245,129 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 					if ($gen==0) $tangle=0;
 
 					// calculate text position
-					$bbox=ImageTtfBbox((double)$fanChart['size'], 0, $fanChart['font'], $text);
-					$textwidth = $bbox[4];
-					$deg = $deg1+.44;
-					if ($deg2-$deg1>40) $deg = $deg1+($deg2-$deg1)/11;
-					if ($deg2-$deg1>80) $deg = $deg1+($deg2-$deg1)/7;
-					if ($deg2-$deg1>140) $deg = $deg1+($deg2-$deg1)/4;
-					if ($gen==0) $deg=180;
-					$rad=deg2rad($deg);
-					$mr=($rx-$rw/4)/2;
-					if ($gen>0 and $deg2-$deg1>80) $mr=$rx/2;
-					$tx=$cx + ($mr) * cos($rad);
+					$deg = $deg1 + 0.44;
+					if ($deg2 - $deg1 > 40) {
+						$deg = $deg1 + ($deg2 - $deg1) / 11;
+					}
+					if ($deg2 - $deg1 > 80) {
+						$deg = $deg1 + ($deg2 - $deg1) / 7;
+					}
+					if ($deg2 - $deg1 > 140) {
+						$deg = $deg1 + ($deg2 - $deg1) / 4;
+					}
+					if ($gen == 0) {
+						$deg = 180;
+					}
+					$rad = deg2rad($deg);
+					$mr = ($rx - $rw / 4) / 2;
+					if ($gen > 0 && $deg2 - $deg1 > 80) {
+						$mr = $rx / 2;
+					}
+					$tx=$cx + $mr * cos($rad);
 					$ty=$cy - $mr * -sin($rad);
-					if ($sosa==1) $ty-=$mr/2;
+					if ($sosa == 1) {
+						$ty -= $mr / 2;
+					}
 
 					// print text
 					ImageTtfText($image, (double)$fanChart['size'], $tangle, $tx, $ty, $color, $fanChart['font'], $text);
 
 					$imagemap .= '<area shape="poly" coords="';
 					// plot upper points
-					$mr=$rx/2;
-					$deg=$deg1;
-					while ($deg<=$deg2) {
-						$rad=deg2rad($deg);
-						$tx=round($cx + ($mr) * cos($rad));
-						$ty=round($cy - $mr * -sin($rad));
+					$mr=$rx / 2;
+					$deg = $deg1;
+					while ($deg <= $deg2) {
+						$rad = deg2rad($deg);
+						$tx = round($cx + $mr * cos($rad));
+						$ty = round($cy - $mr * -sin($rad));
 						$imagemap .= "$tx,$ty,";
-						$deg+=($deg2-$deg1)/6;
+						$deg += ($deg2 - $deg1) / 6;
 					}
 					// plot lower points
-					$mr=($rx-$rw)/2;
-					$deg=$deg2;
-					while ($deg>=$deg1) {
-						$rad=deg2rad($deg);
-						$tx=round($cx + ($mr) * cos($rad));
-						$ty=round($cy - $mr * -sin($rad));
+					$mr = ($rx - $rw) / 2;
+					$deg = $deg2;
+					while ($deg >= $deg1) {
+						$rad = deg2rad($deg);
+						$tx = round($cx + $mr * cos($rad));
+						$ty = round($cy - $mr * -sin($rad));
 						$imagemap .= "$tx,$ty,";
-						$deg-=($deg2-$deg1)/6;
+						$deg -= ($deg2 - $deg1)/6;
 					}
 					// join first point
-					$mr=$rx/2;
-					$deg=$deg1;
-					$rad=deg2rad($deg);
-					$tx=round($cx + ($mr) * cos($rad));
-					$ty=round($cy - $mr * -sin($rad));
+					$mr = $rx / 2;
+					$deg = $deg1;
+					$rad = deg2rad($deg);
+					$tx = round($cx + $mr * cos($rad));
+					$ty = round($cy - $mr * -sin($rad));
 					$imagemap .= "$tx,$ty";
 					// add action url
-					$imagemap .= '" href="'.$person->getHtmlUrl().'"';
+					$imagemap .= '" href="#' . $pid . '"';
 					$tempURL = 'fanchart.php?rootid='.$pid.'&amp;generations='.$this->generations.'&amp;fan_width='.$this->fan_width.'&amp;fan_style='.$this->fan_style.'&amp;ged='.WT_GEDURL;
-					$count=0;
-					$html.= "<div id=\"I".$pid.".".$count."links\" style=\"position:absolute;";
-					$html.= "left:".$tx."px; top:".$ty."px; width:200px; visibility:hidden; z-index:100;\">";
-					$html.= "<table class=\"person_box\"><tr><td class=\"details1\">";
-					$html.= "<a href=\"".$person->getHtmlUrl()."\" class=\"name1\">" . $name;
-					if (!empty($addname)) $html.= "<br>" . $addname;
-					$html.= "</a>";
-					$html.= "<br><a href=\"pedigree.php?rootid=$pid&amp;amp;ged=".WT_GEDURL."\" >".WT_I18N::translate('Pedigree')."</a>";
+					$html .= '<div id="' . $pid . '" class="fan_chart_menu">';
+					$html .= '<div class="person_box"><div class="details1">';
+					$html .= '<a href="' . $person->getHtmlUrl() . '" class="name1">' . $name;
+					if ($addname) {
+						$html .= $addname;
+					}
+					$html .= '</a>';
+					$html .= '<ul class="charts">';
+					$html.= "<li><a href=\"pedigree.php?rootid=$pid&amp;amp;ged=".WT_GEDURL."\" >".WT_I18N::translate('Pedigree')."</a></li>";
 					if (array_key_exists('googlemap', WT_Module::getActiveModules())) {
-						$html.= "<br><a href=\"module.php?mod=googlemap&amp;mod_action=pedigree_map&amp;rootid=".$pid."&amp;ged=".WT_GEDURL."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".WT_I18N::translate('Pedigree map')."</a>";
+						$html.= "<li><a href=\"module.php?mod=googlemap&amp;mod_action=pedigree_map&amp;rootid=".$pid."&amp;ged=".WT_GEDURL."\">".WT_I18N::translate('Pedigree map')."</a></li>";
 					}
 					if (WT_USER_GEDCOM_ID && WT_USER_GEDCOM_ID!=$pid) {
-						$html.= "<br><a href=\"relationship.php?pid1=".WT_USER_GEDCOM_ID."&amp;pid2={$pid}&amp;ged=".WT_GEDURL."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".WT_I18N::translate('Relationship to me')."</a>";
+						$html.= "<li><a href=\"relationship.php?pid1=".WT_USER_GEDCOM_ID."&amp;pid2={$pid}&amp;ged=".WT_GEDURL."\">".WT_I18N::translate('Relationship to me')."</a></li>";
 					}
-					$html.= "<br><a href=\"descendancy.php?rootid=$pid&amp;ged=".WT_GEDURL."\" >".WT_I18N::translate('Descendants')."</a>";
-					$html.= "<br><a href=\"ancestry.php?rootid=$pid&amp;ged=".WT_GEDURL."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".WT_I18N::translate('Ancestors')."</a>";
-					$html.= "<br><a href=\"compact.php?rootid=$pid&amp;ged=".WT_GEDURL."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".WT_I18N::translate('Compact tree')."</a>";
-					$html.= "<br><a href=\"".$tempURL."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".WT_I18N::translate('Fan chart')."</a>";
-					$html.= "<br><a href=\"hourglass.php?rootid=$pid&amp;ged=".WT_GEDURL."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".WT_I18N::translate('Hourglass chart')."</a>";
+					$html.= "<li><a href=\"descendancy.php?rootid=$pid&amp;ged=".WT_GEDURL."\" >".WT_I18N::translate('Descendants')."</a></li>";
+					$html.= "<li><a href=\"ancestry.php?rootid=$pid&amp;ged=".WT_GEDURL."\">".WT_I18N::translate('Ancestors')."</a></li>";
+					$html.= "<li><a href=\"compact.php?rootid=$pid&amp;ged=".WT_GEDURL."\">".WT_I18N::translate('Compact tree')."</a></li>";
+					$html.= "<li><a href=\"".$tempURL."\">".WT_I18N::translate('Fan chart')."</a></li>";
+					$html.= "<li><a href=\"hourglass.php?rootid=$pid&amp;ged=".WT_GEDURL."\">".WT_I18N::translate('Hourglass chart')."</a></li>";
 					if (array_key_exists('tree', WT_Module::getActiveModules())) {
-						$html.= '<br><a href="module.php?mod=tree&amp;mod_action=treeview&amp;ged='.WT_GEDURL.'&amp;rootid='.$pid."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".WT_I18N::translate('Interactive tree')."</a>";
+						$html .= '<li><a href="module.php?mod=tree&amp;mod_action=treeview&amp;ged=' . WT_GEDURL . '&amp;rootid=' . $pid . '">' . WT_I18N::translate('Interactive tree') . '</a></li>';
 					}
+					$html .='</ul>';
 					// spouse(s) and children
 					foreach ($person->getSpouseFamilies() as $family) {
-						$spouse=$family->getSpouse($person);
+						$spouse = $family->getSpouse($person);
 						if ($spouse) {
-							$html.= '<br><a href="'.$spouse->getHtmlUrl().'" class="name1">'.$spouse->getFullName().'</a>';
-							foreach ($family->getChildren() as $child) {
-								$html.= '<br>&nbsp;&nbsp;<a href="'.$child->getHtmlUrl().'" class="name1">&lt; '.$child->getFullName().'</a>';
+							$html .= '<a href="' . $spouse->getHtmlUrl() . '" class="name1">' . $spouse->getFullName() . '</a>';
+							$kids = $family->getChildren();
+							if ($kids) {
+								$html .= '<ul class="children">';
+								foreach ($kids as $child) {
+									$html .= '<li><a href="' . $child->getHtmlUrl() . '" class="name1">' . $child->getFullName() . '</a></li>';
+								}
+								$html .= '</ul>';
 							}
 						}
 					}
 					// siblings
 					foreach ($person->getChildFamilies() as $family) {
-						$children=$family->getChildren();
-						if (count($children)>2) {
-							$html.= '<br><span class="name1">'.WT_I18N::translate('Siblings').'</span>';
-						} elseif (count($children)==2) {
-							$html.= '<br><span class="name1">'.WT_I18N::translate('Sibling').'</span>';
-						}
-						foreach ($children as $sibling) {
-							if ($sibling !== $person) {
-								$html.= '<br>&nbsp;&nbsp;<a href="'.$sibling->getHtmlUrl().'" class="name1"> '.$sibling->getFullName().'</a>';
+						$children = $family->getChildren();
+						if ($children) {
+							$html .= '<div class="name1">';
+							// With two children in a family, you have only one sibling.
+							$html .= count($children) > 2 ? WT_I18N::translate('Siblings') : WT_I18N::translate('Sibling');
+							$html .= '</div>';
+							$html .= '<ul class="siblings">';
+							foreach ($children as $sibling) {
+								if ($sibling !== $person) {
+									$html .= '<li><a href="' . $sibling->getHtmlUrl() . '" class="name1"> ' . $sibling->getFullName() . '</a></li>';
+								}
 							}
+							$html .= '</ul>';
 						}
 					}
-					$html.= '</td></tr></table>';
-					$html.= '</div>';
-					$imagemap .= " onclick=\"show_family_box('".$pid.".".$count."', 'relatives'); return false;\"";
-					$imagemap .= " onmouseout=\"family_box_timeout('".$pid.".".$count."'); return false;\"";
-					$imagemap .= " alt=\"".WT_Filter::escapeHtml(strip_tags($name))."\" title=\"".WT_Filter::escapeHtml(strip_tags($name))."\">";
+					$html .= '</div></div>';
+					$html .= '</div>';
+					$imagemap .= ' alt="' . strip_tags($person->getFullName()) . '" title="' . strip_tags($person->getFullName()) . '">';
 				}
-				$deg1-=$angle;
-				$deg2-=$angle;
+				$deg1 -= $angle;
+				$deg2 -= $angle;
 				$sosa--;
 			}
-			$rx-=$rw;
+			$rx -= $rw;
 			$gen--;
 		}
 
@@ -357,11 +375,11 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 
 		switch ($what) {
 		case 'html':
-			$image_title=WT_I18N::translate('Fan chart of %s', strip_tags($name));
-			return $html.$imagemap.'<p align="center"><img src="'.WT_SCRIPT_NAME.'?rootid='.$this->rootid.'&amp;fan_style='.$this->fan_style.'&amp;generations='.$this->generations.'&amp;fan_width='.$this->fan_width.'&amp;img=1" width="'.$fanw.'" height="'.$fanh.'" alt="'.$image_title.'" title="'.$image_title.'" usemap="#fanmap"></p>';
+			$image_title=WT_I18N::translate('Fan chart of %s', strip_tags($person->getFullName()));
+			return $html . $imagemap . '<div id="fan_chart_img"><img src="' . WT_SCRIPT_NAME . '?rootid=' . $this->rootid . '&amp;fan_style=' . $this->fan_style . '&amp;generations=' . $this->generations . '&amp;fan_width=' . $this->fan_width.'&amp;img=1" width="' . $fanw . '" height="' . $fanh . '" alt="' . $image_title . '" title="' . $image_title . '" usemap="#fanmap"></div>';
 		case 'png':
 			header('Content-Type: image/png');
-			ImageStringUp($image, 1, $fanw-10, $fanh/3, WT_SERVER_NAME.WT_SCRIPT_PATH, $color);
+			ImageStringUp($image, 1, $fanw - 10, $fanh / 3, WT_SERVER_NAME . WT_SCRIPT_PATH, $color);
 			ImagePng($image);
 			ImageDestroy($image);
 		}

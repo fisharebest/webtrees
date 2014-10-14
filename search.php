@@ -25,10 +25,11 @@ define('WT_SCRIPT_NAME', 'search.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
-$controller=new WT_Controller_Search();
+$controller = new WT_Controller_Search();
 $controller
 	->pageHeader()
-	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');
+	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+	->addInlineJavascript('autocomplete();');
 
 ?>
 <script>
@@ -49,7 +50,6 @@ $controller
 			lname = frm.lastname.value;
 			place = frm.place.value;
 
-			// display an error message if there is insufficient data to perform a search on
 			if (year == "") {
 				if (fname.length < 2 && lname.length < 2 && place.length < 2) {
 					alert("<?php echo WT_I18N::translate('Please enter more than one character'); ?>");
@@ -57,10 +57,9 @@ $controller
 				}
 			}
 
-			// display a special error if the year is entered without a valid Given Name, Last Name, or Place
 			if (year != "") {
 				if (fname === "" && lname === "" && place === "") {
-					alert("<?php echo WT_I18N::translate('Please enter a Given name, Last name, or Place in addition to Year'); ?>");
+					alert("<?php echo WT_I18N::translate('Please enter a given name, surname, or place in addition to the year'); ?>");
 					frm.firstname.focus();
 					return false;
 				}
@@ -126,8 +125,7 @@ echo '<div id="search-page">
 							box.form.replaceNames.disabled = false;
 							box.form.replacePlaces.disabled = false;
 							box.form.replacePlacesWord.disabled = false;
-						}
-						else {
+						} else {
 							box.form.replaceNames.disabled = true;
 							box.form.replacePlaces.disabled = true;
 							box.form.replacePlacesWord.disabled = true;
@@ -155,11 +153,11 @@ echo '<div id="search-page">
 		//========== Phonetic search Form //==========
 		if ($controller->action == "soundex") {
 			echo '<div class="label">' , WT_I18N::translate('Given name'), '</div>
-				<div class="value"><input tabindex="3" type="text" name="firstname" value="' , WT_Filter::escapeHtml($controller->firstname), '" autofocus></div>
-				<div class="label">' , WT_I18N::translate('Last name'), '</div>
-				<div class="value"><input tabindex="4" type="text" name="lastname" value="' , WT_Filter::escapeHtml($controller->lastname), '"></div>
+				<div class="value"><input tabindex="3" type="text" data-autocomplete-type="GIVN" name="firstname" value="' , WT_Filter::escapeHtml($controller->firstname), '" autofocus></div>
+				<div class="label">' , WT_I18N::translate('Surname'), '</div>
+				<div class="value"><input tabindex="4" type="text" data-autocomplete-type="SURN" name="lastname" value="' , WT_Filter::escapeHtml($controller->lastname), '"></div>
 				<div class="label">' , WT_I18N::translate('Place'), '</div>
-				<div class="value"><input tabindex="5" type="text" name="place" value="' , WT_Filter::escapeHtml($controller->place), '"></div>
+				<div class="value"><input tabindex="5" type="text"  data-autocomplete-type="PLAC2" name="place" value="' , WT_Filter::escapeHtml($controller->place), '"></div>
 				<div class="label">' , WT_I18N::translate('Year'), '</div>
 				<div class="value"><input tabindex="6" type="text" name="year" value="' , WT_Filter::escapeHtml($controller->year), '"></div>';
 
@@ -184,7 +182,7 @@ echo '<div id="search-page">
 		// If the search is a general or soundex search then possibly display checkboxes for the gedcoms
 		if ($controller->action == "general" || $controller->action == "soundex") {
 			// If more than one GEDCOM, switching is allowed AND DB mode is set, let the user select
-			if ((count(WT_Tree::getAll()) > 1) && WT_Site::preference('ALLOW_CHANGE_GEDCOM')) {
+			if ((count(WT_Tree::getAll()) > 1) && WT_Site::getPreference('ALLOW_CHANGE_GEDCOM')) {
 				// More Than 3 Gedcom Filess enable elect all & select none buttons
 				if (count(WT_Tree::getAll())>3) {
 					echo '<div class="label">&nbsp;</div>
@@ -214,7 +212,7 @@ echo '<div id="search-page">
 		}
 
 		// Links to Other Search Options
-			echo '<div class="label">' , WT_I18N::translate('Other Searches'), '</div>
+			echo '<div class="label">' , WT_I18N::translate('Other searches'), '</div>
 				<div class="value">';
 				if ($controller->action == "general") {
 					echo '<a href="?action=soundex">', WT_I18N::translate('Phonetic search'), '</a>&nbsp;|&nbsp;<a href="search_advanced.php">', WT_I18N::translate('Advanced search'), '</a>';

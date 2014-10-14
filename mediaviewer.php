@@ -27,7 +27,7 @@ define('WT_SCRIPT_NAME', 'mediaviewer.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
-$controller=new WT_Controller_Media();
+$controller = new WT_Controller_Media();
 
 if ($controller->record && $controller->record->canShow()) {
 	$controller->pageHeader();
@@ -75,10 +75,14 @@ if ($controller->record && $controller->record->canShow()) {
 	exit;
 }
 
-$controller
-	->addInlineJavascript('function show_gedcom_record() {var recwin=window.open("gedrecord.php?pid=' . $controller->record->getXref() . '", "_blank", edit_window_specs);}')
-	->addInlineJavascript('jQuery("#media-tabs").tabs();')
-	->addInlineJavascript('jQuery("#media-tabs").css("visibility", "visible");');
+$controller->addInlineJavascript('
+	jQuery("#media-tabs")
+		.tabs({
+			create: function(e, ui){
+				jQuery(e.target).css("visibility", "visible");  // prevent FOUC
+			}
+		});
+');
 
 $linked_indi = $controller->record->linkedIndividuals('OBJE');
 $linked_fam  = $controller->record->linkedFamilies('OBJE');
@@ -101,7 +105,7 @@ echo '<div id="media-tabs">';
 					if (!$tmp->isExternal()) {
 						if ($tmp->fileExists('main')) {
 							if ($SHOW_MEDIA_DOWNLOAD) {
-								echo '<p><a href="' . $tmp->getHtmlUrlDirect('main', true).'">' . WT_I18N::translate('Download File') . '</a></p>';
+								echo '<p><a href="' . $tmp->getHtmlUrlDirect('main', true).'">' . WT_I18N::translate('Download file') . '</a></p>';
 							}
 						} else {
 							echo '<p class="ui-state-error">' . WT_I18N::translate('The file “%s” does not exist.', $tmp->getFilename()) . '</p>';
@@ -113,7 +117,7 @@ echo '<div id="media-tabs">';
 						<tr>
 							<td>
 								<table class="facts_table">';
-										$facts = $controller->getFacts(WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT);
+										$facts = $controller->getFacts();
 										foreach ($facts as $f=>$fact) {
 											print_fact($fact, $controller->record);
 										}
@@ -145,37 +149,27 @@ echo '<div id="media-tabs">';
 
 	// Individuals linked to this media object
 	if ($linked_indi) {
-		echo '<div id="indi-media">';
-		echo format_indi_table($linked_indi, $controller->record->getFullName());
-		echo '</div>';
+		echo '<div id="indi-media">', format_indi_table($linked_indi), '</div>';
 	}
 
 	// Families linked to this media object
 	if ($linked_fam) {
-		echo '<div id="fam-media">';
-		echo format_fam_table($linked_fam, $controller->record->getFullName());
-		echo '</div>';
+		echo '<div id="fam-media">', format_fam_table($linked_fam), '</div>';
 	}
 
 	// Sources linked to this media object
 	if ($linked_sour) {
-		echo '<div id="sources-media">';
-		echo format_sour_table($linked_sour, $controller->record->getFullName());
-		echo '</div>';
+		echo '<div id="sources-media">', format_sour_table($linked_sour), '</div>';
 	}
 
 	// Repositories linked to this media object
 	if ($linked_repo) {
-		echo '<div id="repo-media">';
-		echo format_repo_table($linked_repo, $controller->record->getFullName());
-		echo '</div>';
+		echo '<div id="repo-media">', format_repo_table($linked_repo), '</div>';
 	}
 
 	// medias linked to this media object
 	if ($linked_note) {
-		echo '<div id="notes-media">';
-		echo format_note_table($linked_note, $controller->record->getFullName());
-		echo '</div>';
+		echo '<div id="notes-media">', format_note_table($linked_note), '</div>';
 	}
 echo '</div>';
 echo '</div>';

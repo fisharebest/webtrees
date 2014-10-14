@@ -67,7 +67,7 @@ return array(
 
     // Zend_Validate_Db_Abstract
     "No record matching %value% was found" => "Nije pronađen zapis koji se podudara sa %value%",
-    "A record matching %value% was found" => "Zapis koji se podudara sa %value% je pronađen",
+    "A record matching '%value%' was found" => "Zapis koji se podudara sa %value% je pronađen",
 
     // Zend_Validate_Digits
     "Invalid type given, value should be string, integer or float" => "Neispravan tip, vrijednost bi trebala biti niz slova, brojki ili realni broj",

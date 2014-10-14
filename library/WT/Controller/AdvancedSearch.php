@@ -21,11 +21,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 	var $fields = array();
 	var $values = array();
@@ -73,6 +68,8 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 	}
 
 	function getOtherFields() {
+		global $WT_TREE;
+
 		$ofields = array(
 			'ADDR','ADDR:CITY','ADDR:STAE','ADDR:CTRY','ADDR:POST',
 			'ADOP:DATE','ADOP:PLAC',
@@ -115,7 +112,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 			'_MILI',
 		);
 		// Allow (some of) the user-specified fields to be selected
-		preg_match_all('/(' . WT_REGEX_TAG . ')/', get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_ADD'), $facts);
+		preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('INDI_FACTS_ADD'), $facts);
 		foreach ($facts[1] as $fact) {
 			if (
 				$fact!='BIRT' &&
@@ -139,11 +136,11 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 	public static function tagSort($x, $y) {
 		list($x1)=explode(':', $x.':');
 		list($y1)=explode(':', $y.':');
-		$tmp=utf8_strcasecmp(WT_Gedcom_Tag::getLabel($x1), WT_Gedcom_Tag::getLabel($y1));
+		$tmp=WT_I18N::strcasecmp(WT_Gedcom_Tag::getLabel($x1), WT_Gedcom_Tag::getLabel($y1));
 		if ($tmp) {
 			return $tmp;
 		} else {
-			return utf8_strcasecmp(WT_Gedcom_Tag::getLabel($x), WT_Gedcom_Tag::getLabel($y));
+			return WT_I18N::strcasecmp(WT_Gedcom_Tag::getLabel($x), WT_Gedcom_Tag::getLabel($y));
 		}
 	}
 
@@ -192,7 +189,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 		}
 	}
 
-	function advancedSearch($justSql=false, $table="individuals", $prefix="i") {
+	function advancedSearch() {
 		$this->myindilist = array ();
 		$fct = count($this->fields);
 		if ($fct==0) {
@@ -204,7 +201,6 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 		$bind=array();
 
 		// Join the following tables
-		$anything_to_find=false;
 		$father_name     =false;
 		$mother_name     =false;
 		$spouse_family   =false;
@@ -215,7 +211,6 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 		$fam_plac        =false;
 		foreach ($this->fields as $n=>$field) {
 			if ($this->values[$n]) {
-				$anything_to_find=true;
 				if (substr($field, 0, 14)=='FAMC:HUSB:NAME') {
 					$father_name=true;
 				} elseif (substr($field, 0, 14)=='FAMC:WIFE:NAME') {
@@ -236,6 +231,8 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 					} else {
 						$indi_plac=true;
 					}
+				} elseif ($field == 'FAMS:NOTE') {
+					$spouse_family = true;
 				}
 			}
 		}
@@ -555,10 +552,14 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 					break;
 				}
 			} elseif ($parts[0]=='FAMS') {
-				$sql.=" AND fam.f_gedcom LIKE CONCAT('%', ?, '%')";
+				// e.g. searches for occupation, religion, note, etc.
+				$sql.=" AND fam.f_gedcom REGEXP CONCAT('\n[0-9] ', ?, '(.*\n[0-9] CONT)* [^\n]*', ?)";
+				$bind[]=$parts[1];
 				$bind[]=$value;
 			} else {
-				$sql.=" AND ind.i_gedcom LIKE CONCAT('%', ?, '%')";
+				// e.g. searches for occupation, religion, note, etc.
+				$sql.=" AND ind.i_gedcom REGEXP CONCAT('\n[0-9] ', ?, '(.*\n[0-9] CONT)* [^\n]*', ?)";
+				$bind[]=$parts[0];
 				$bind[]=$value;
 			}
 		}
@@ -580,7 +581,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 	function PrintResults() {
 		require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 		if ($this->myindilist) {
-			uasort($this->myindilist, array('WT_GedcomRecord', 'Compare'));
+			uasort($this->myindilist, array('WT_GedcomRecord', 'compare'));
 			echo format_indi_table($this->myindilist);
 			return true;
 		} else {

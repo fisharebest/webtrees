@@ -21,11 +21,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 class WT_Menu {
 	var $label = ' ';
 	var $labelpos = 'right';
@@ -41,13 +36,15 @@ class WT_Menu {
 	var $submenus;
 
 	/**
-	* Constructor for the menu class
-	* @param string $label the label for the menu item (usually a wt_lang variable)
-	* @param string $link The link that the user should be taken to when clicking on the menuitem
-	* @param string $pos The position of the label relative to the icon (right, left, top, bottom)
-	* @param string $flyout The direction where any submenus should appear relative to the menu item (right, down)
-	*/
-	function __construct($label=' ', $link='#', $id=null, $labelpos='right', $flyout='down')
+	 * Constructor for the menu class
+	 *
+	 * @param string $label    The label for the menu item (usually a wt_lang variable)
+	 * @param string $link     The link that the user should be taken to when clicking on the menuitem
+	 * @param string $id       An optional CSS ID
+	 * @param string $labelpos The position of the label relative to the icon (right, left, top, bottom)
+	 * @param string $flyout   The direction where any submenus should appear relative to the menu item (right, down)
+	 */
+	function __construct($label=' ', $link='#', $id='', $labelpos='right', $flyout='down')
 	{
 		$this->label   =$label;
 		$this->labelpos=$labelpos;
@@ -138,7 +135,7 @@ class WT_Menu {
 	}
 
 	function getMenu() {
-		global $menucount, $TEXT_DIRECTION, $WT_IMAGES;
+		global $menucount, $TEXT_DIRECTION;
 
 		if (!isset($menucount)) {
 			$menucount = 0;
@@ -194,9 +191,10 @@ class WT_Menu {
 	}
 
 	/**
-	* returns the number of submenus in this menu
-	* @return int
-	*/
+	 * returns the number of submenus in this menu
+	 *
+	 * @return int
+	 */
 	function subCount() {
 		return count($this->submenus);
 	}

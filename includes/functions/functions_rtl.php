@@ -22,15 +22,9 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 $SpecialChar = array(' ','.',',','"','\'','/','\\','|',':',';','+','&','#','@','-','=','*','%','!','?','$','<','>',"\n");
 $SpecialPar = array('(',')','[',']','{','}');
 $SpecialNum  = array('0','1','2','3','4','5','6','7','8','9');
-$RTLOrd = array(215,216,217,218,219);
 
 $openPar  = '([{';
 $closePar = ')]}';
@@ -44,7 +38,8 @@ $punctuation = ',.:;?!';
  * text that has been passed through the PrintReady() function before that text is stored
  * in the database.  The database should NEVER contain these characters.
  *
- * @param  string The string from which the &lrm; and &rlm; characters should be stripped
+ * @param  string $inputText The string from which the &lrm; and &rlm; characters should be stripped
+ *
  * @return string The input string, with &lrm; and &rlm; stripped
  */
 function stripLRMRLM($inputText) {
@@ -64,7 +59,7 @@ function spanLTRRTL($inputText, $direction='BOTH', $class='') {
 	global $TEXT_DIRECTION;
 	global $openPar, $closePar, $punctuation;
 	global $numbers, $numberPrefix, $numberPunctuation;
-	global $previousState, $currentState, $posSpanStart, $waitingText;
+	global $previousState, $currentState, $waitingText;
 	global $startLTR, $endLTR, $startRTL, $endRTL, $lenStart, $lenEnd;
 	static $spanNumber = 0;
 
@@ -252,10 +247,11 @@ function spanLTRRTL($inputText, $direction='BOTH', $class='') {
 							break 2;
 						}
 
-						if ($nextLetter == ' ') break;
+						if ($nextLetter == ' ') {
+							break;
+						}
 						$nextLetter .= substr($tempText."\n", 0, 5);
 						if ($nextLetter == '&nbsp;') {
-							$tempText = substr($tempText, 5);
 							break;
 						}
 					}
@@ -341,7 +337,6 @@ function spanLTRRTL($inputText, $direction='BOTH', $class='') {
 
 	// We're done.  Finish last <span> if necessary
 	if ($numberState) {
-		$numberState = false;
 		if ($waitingText == '') {
 			if ($currentState == 'RTL') {
 				$result .= WT_UTF8_PDF;
@@ -484,6 +479,7 @@ function spanLTRRTL($inputText, $direction='BOTH', $class='') {
 		break;
 	}
 	$result = str_replace(array($startLTR, $endLTR, $startRTL, $endRTL), array($sLTR, $eLTR, $sRTL, $eRTL), $result);
+
 	return $result;
 }
 
@@ -744,7 +740,6 @@ function finishCurrentSpan(&$result, $theEnd=false) {
 			$textSpan = $savedSpan;
 		}
 
-		$savedSpan = $textSpan;
 		$trailingBlanks = '';
 		$trailingPunctuation = '';
 		$trailingID = '';
@@ -800,7 +795,6 @@ function finishCurrentSpan(&$result, $theEnd=false) {
 			}
 
 			// Look for " - " or blank preceding the ID number and remove it for inclusion in a separate LTR span
-			$savedSpan = $textSpan;
 			if ($trailingID != '') {
 				while ($textSpan != '') {
 					if (substr($textSpan, -1) == ' ') {
@@ -1043,29 +1037,29 @@ function finishCurrentSpan(&$result, $theEnd=false) {
 function utf8_wordwrap($string, $width=75, $sep="\n", $cut=false) {
 	$out='';
 	while ($string) {
-		if (utf8_strlen($string) <= $width){ //Do not wrap any text that is less than the output area.
-			$out.=$string;
-			$string='';
+		if (mb_strlen($string) <= $width){ //Do not wrap any text that is less than the output area.
+			$out .= $string;
+			$string = '';
 		} else {
-			$sub1=utf8_substr($string, 0, $width+1);
-			if (utf8_substr($string,utf8_strlen($sub1)-1,1)==' ') //include words that end by a space immediately after the area.
-				$sub=$sub1;
+			$sub1 = mb_substr($string, 0, $width+1);
+			if (mb_substr($string, mb_strlen($sub1)-1, 1) == ' ') //include words that end by a space immediately after the area.
+				$sub = $sub1;
 			else
-				$sub=utf8_substr($string, 0, $width);
-			$spacepos=strrpos($sub, ' ');
-			if ($spacepos==false) {
+				$sub = mb_substr($string, 0, $width);
+			$spacepos = strrpos($sub, ' ');
+			if ($spacepos == false) {
 				// No space on line?
 				if ($cut) {
-					$out.=$sub.$sep;
-					$string=utf8_substr($string, utf8_strlen($sub));
+					$out .= $sub . $sep;
+					$string = mb_substr($string, mb_strlen($sub));
 				} else {
-					$spacepos=strpos($string, ' ');
-					if ($spacepos==false) {
-						$out.=$string;
-						$string='';
+					$spacepos = strpos($string, ' ');
+					if ($spacepos == false) {
+						$out .= $string;
+						$string = '';
 					} else {
-						$out.=substr($string, 0, $spacepos).$sep;
-						$string=substr($string, $spacepos+1);
+						$out .= substr($string, 0, $spacepos).$sep;
+						$string = substr($string, $spacepos + 1);
 					}
 				}
 			} else {

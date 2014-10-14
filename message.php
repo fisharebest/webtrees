@@ -21,11 +21,15 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+use WT\Log;
+use WT\User;
+
 define('WT_SCRIPT_NAME', 'message.php');
 require './includes/session.php';
 
-// Some variables are initialised from $_GET (so we can set initial values in URLs),
-// but are submitted in $_POST so we can have long body text.
+// Some variables are initialised from GET (so we can set initial values in URLs),
+// but are submitted in POST so we can have long body text.
 
 $subject    = WT_Filter::post('subject', null, WT_Filter::get('subject'));
 $body       = WT_Filter::post('body');
@@ -36,15 +40,14 @@ $to         = WT_Filter::post('to', null, WT_Filter::get('to'));
 $method     = WT_Filter::post('method', 'messaging|messaging2|messaging3|mailto|none', WT_Filter::get('method', 'messaging|messaging2|messaging3|mailto|none', 'messaging2'));
 $url        = WT_Filter::postUrl('url', WT_Filter::getUrl('url'));
 
-$controller=new WT_Controller_Simple();
-$controller->setPageTitle(WT_I18N::translate('webtrees Message'));
+$controller = new WT_Controller_Simple();
+$controller->setPageTitle(WT_I18N::translate('webtrees message'));
 
-$to_user_id=get_user_id($to);
+$to_user = User::findByIdentifier($to);
 
 // Only admins can send broadcast messages
-if ((!$to_user_id || $to=='all' || $to=='last_6mo' || $to=='never_logged') && !WT_USER_IS_ADMIN) {
+if (!$to_user || ($to=='all' || $to=='last_6mo' || $to=='never_logged') && !Auth::isAdmin()) {
 	// TODO, what if we have a user called "all" or "last_6mo" or "never_logged" ???
-	WT_FlashMessages::addMessage(WT_I18N::translate('Message was not sent'));
 	$controller->pageHeader();
 	$controller->addInlineJavascript('window.opener.location.reload(); window.close();');
 	exit;
@@ -67,7 +70,7 @@ if (WT_USER_ID) {
 		$errors.=
 			'<p class="ui-state-error">'.WT_I18N::translate('You are not allowed to send messages that contain external links.').'</p>'.
 			'<p class="ui-state-highlight">'./* I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’ */ WT_I18N::translate('You should delete the “%1$s” from “%2$s” and try again.', $match[2], $match[1]).'</p>'.
-		AddToLog('Possible spam message from "'.$from_name.'"/"'.$from_email.'", IP="'.$WT_REQUEST->getClientIp().'", subject="'.$subject.'", body="'.$body.'"', 'auth');
+			Log::addAuthenticationLog('Possible spam message from "'.$from_name.'"/"'.$from_email.'", subject="'.$subject.'", body="'.$body.'"');
 		$action='compose';
 	}
 	$from=$from_email;
@@ -82,7 +85,7 @@ case 'compose':
 case 'send':
 	// Only send messages if we've come straight from the compose page.
 	if (!$WT_SESSION->good_to_send) {
-		AddToLog('Attempt to send message without visiting the compose page.  Spam attack?', 'auth');
+		Log::addAuthenticationLog('Attempt to send a message without visiting the compose page.  Spam attack?');
 		$action='compose';
 	}
 	if (!WT_Filter::checkCsrf()) {
@@ -111,20 +114,20 @@ case 'compose':
 			return true;
 		}
 	');
-	echo '<span class="subheaders">', WT_I18N::translate('Send message'), '</span>';
+	echo '<span class="subheaders">', WT_I18N::translate('Send a message'), '</span>';
 	echo $errors;
 
 	if (!WT_USER_ID) {
-		echo '<br><br>', WT_I18N::translate('<b>Please Note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogical data, please include the sources where you obtained the data.');
+		echo '<br><br>', WT_I18N::translate('<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogical data, please include the sources where you obtained the data.');
 	}
 	echo '<br><form name="messageform" method="post" action="message.php" onsubmit="t = new Date(); document.messageform.time.value=t.toUTCString(); return checkForm(this);">';
 	echo WT_Filter::getCsrf();
 	echo '<table>';
 	if ($to != 'all' && $to != 'last_6mo' && $to != 'never_logged') {
-		echo '<tr><td></td><td>', WT_I18N::translate('This message will be sent to %s', '<b>'.getUserFullName($to_user_id).'</b>'), '</td></tr>';
+		echo '<tr><td></td><td>', WT_I18N::translate('This message will be sent to %s', '<b>' . WT_Filter::escapeHtml($to_user->getRealName()) . '</b>'), '</td></tr>';
 	}
 	if (!WT_USER_ID) {
-		echo '<tr><td valign="top" width="15%" align="right">', WT_I18N::translate('Your Name:'), '</td>';
+		echo '<tr><td valign="top" width="15%" align="right">', WT_I18N::translate('Your name:'), '</td>';
 		echo '<td><input type="text" name="from_name" size="40" value="', WT_Filter::escapeHtml($from_name), '"></td></tr><tr><td valign="top" align="right">', WT_I18N::translate('Email address:'), '</td><td><input type="email" name="from_email" size="40" value="', WT_Filter::escapeHtml($from_email), '"><br>', WT_I18N::translate('Please provide your email address so that we may contact you in response to this message.  If you do not provide your email address we will not be able to respond to your inquiry.  Your email address will not be used in any other way besides responding to this inquiry.'), '<br><br></td></tr>';
 	}
 	echo '<tr><td align="right">', WT_I18N::translate('Subject:'), '</td>';
@@ -156,26 +159,28 @@ case 'send':
 
 	$toarray = array($to);
 	if ($to == 'all') {
-		$toarray = get_all_users();
+		$toarray = array();
+		foreach (User::all() as $user) {
+			$toarray[$user->getUserId()] = $user->getUserName();
+		}
 	}
 	if ($to == 'never_logged') {
 		$toarray = array();
-		foreach (get_all_users() as $user_id=>$user_name) {
-			if (get_user_setting($user_id,'verified_by_admin') && get_user_setting($user_id, 'reg_timestamp') > get_user_setting($user_id, 'sessiontime')) {
-				$toarray[$user_id] = $user_name;
+		foreach (User::all() as $user) {
+			if ($user->getPreference('verified_by_admin') && $user->getPreference('reg_timestamp') > $user->getPreference('sessiontime')) {
+				$toarray[$user->getUserId()] = $user->getUserName();
 			}
 		}
 	}
 	if ($to == 'last_6mo') {
 		$toarray = array();
 		$sixmos = 60*60*24*30*6; //-- timestamp for six months
-		foreach (get_all_users() as $user_id=>$user_name) {
-			if (get_user_setting($user_id,'sessiontime')>0 && (WT_TIMESTAMP - get_user_setting($user_id, 'sessiontime') > $sixmos)) {
-				$toarray[$user_id] = $user_name;
-			}
-			//-- not verified by registration past 6 months
-			else if (!get_user_setting($user_id, 'verified_by_admin') && (WT_TIMESTAMP - get_user_setting($user_id, 'reg_timestamp') > $sixmos)) {
-				$toarray[$user_id] = $user_name;
+		foreach (User::all() as $user) {
+			if ($user->getPreference('sessiontime')>0 && (WT_TIMESTAMP - $user->getPreference('sessiontime') > $sixmos)) {
+				$toarray[$user->getUserId()] = $user->getUserName();
+			} elseif (!$user->getPreference('verified_by_admin') && (WT_TIMESTAMP - $user->getPreference('reg_timestamp') > $sixmos)) {
+				//-- not verified by registration past 6 months
+				$toarray[$user->getUserId()] = $user->getUserName();
 			}
 		}
 	}
@@ -198,7 +203,7 @@ case 'send':
 			WT_FlashMessages::addMessage(WT_I18N::translate('Message successfully sent to %s', WT_Filter::escapeHtml($to)));
 		} else {
 			WT_FlashMessages::addMessage(WT_I18N::translate('Message was not sent'));
-			AddToLog('Unable to send message.  FROM:'.$from.' TO:'.$to.' (failed to send)', 'error');
+			Log::addErrorLog('Unable to send a message.  FROM:'.$from.' TO:'.$to.' (failed to send)');
 		}
 		$i++;
 	}

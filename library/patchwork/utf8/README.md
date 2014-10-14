@@ -91,7 +91,7 @@ the `php composer.phar install` command to install it:
 
     {
         "require": {
-            "patchwork/utf8": "1.1.*"
+            "patchwork/utf8": "~1.1"
         }
     }
 

@@ -21,11 +21,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 class WT_Controller_Pedigree extends WT_Controller_Chart {
 	var $rootid;
 	var $name;
@@ -50,7 +45,7 @@ class WT_Controller_Pedigree extends WT_Controller_Chart {
 		global $bwidth, $bheight, $cbwidth, $cbheight, $baseyoffset, $basexoffset, $byspacing, $bxspacing;
 		global $linewidth, $shadowcolor, $shadowblur, $shadowoffsetX, $shadowoffsetY;
 
-		global $BROWSER_TYPE, $show_full, $talloffset;
+		global $show_full, $talloffset;
 
 		parent::__construct();
 
@@ -245,12 +240,17 @@ class WT_Controller_Pedigree extends WT_Controller_Chart {
 
 	function adjust_subtree($index, $diff) {
 		global $offsetarray, $treeid;
+
 		$f = ($index*2)+1; //-- father index
 		$m = $f+1; //-- mother index
 
 		if (empty($offsetarray[$index])) return;
 		$offsetarray[$index]["y"] += $diff;
-		if ($f<count($treeid)) adjust_subtree($f, $diff);
-		if ($m<count($treeid)) adjust_subtree($m, $diff);
+		if ($f<count($treeid)) {
+			adjust_subtree($f, $diff);
+		}
+		if ($m<count($treeid)) {
+			adjust_subtree($m, $diff);
+		}
 	}
 }

@@ -23,6 +23,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\User;
+
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
@@ -32,8 +34,8 @@ require_once WT_ROOT.'includes/functions/functions_export.php';
 require_once WT_ROOT.'library/pclzip.lib.php';
 
 /**
-* Main controller class for the Clippings page.
-*/
+ * Main controller class for the Clippings page.
+ */
 class WT_Controller_Clippings {
 
 	var $download_data;
@@ -51,7 +53,7 @@ class WT_Controller_Clippings {
 	var $level3; // number of levels of descendents
 
 	public function __construct() {
-		global $SCRIPT_NAME, $MEDIA_DIRECTORY, $WT_SESSION;
+		global $WT_TREE, $SCRIPT_NAME, $MEDIA_DIRECTORY, $WT_SESSION;
 
 		// Our cart is an array of items in the session
 		if (!is_array($WT_SESSION->cart)) {
@@ -98,46 +100,46 @@ class WT_Controller_Clippings {
 
 		if ($this->action == 'add1') {
 			$obj = WT_GedcomRecord::getInstance($this->id);
-			$this->add_clipping($obj);
+			$this->addClipping($obj);
 			if ($this->type == 'sour') {
 				if ($others == 'linked') {
 					foreach ($obj->linkedIndividuals('SOUR') as $indi) {
-						$this->add_clipping($indi);
+						$this->addClipping($indi);
 					}
 					foreach ($obj->linkedFamilies('SOUR') as $fam) {
-						$this->add_clipping($fam);
+						$this->addClipping($fam);
 					}
 				}
 			}
 			if ($this->type == 'fam') {
 				if ($others == 'parents') {
-					$this->add_clipping($obj->getHusband());
-					$this->add_clipping($obj->getWife());
+					$this->addClipping($obj->getHusband());
+					$this->addClipping($obj->getWife());
 				} elseif ($others == "members") {
-					$this->add_family_members(WT_Family::getInstance($this->id));
+					$this->addFamilyMembers(WT_Family::getInstance($this->id));
 				} elseif ($others == "descendants") {
-					$this->add_family_descendancy(WT_Family::getInstance($this->id));
+					$this->addFamilyDescendancy(WT_Family::getInstance($this->id));
 				}
 			} elseif ($this->type == 'indi') {
 				if ($others == 'parents') {
 					foreach (WT_Individual::getInstance($this->id)->getChildFamilies() as $family) {
-						$this->add_family_members($family);
+						$this->addFamilyMembers($family);
 					}
 				} elseif ($others == 'ancestors') {
-					$this->add_ancestors_to_cart(WT_Individual::getInstance($this->id), $this->level1);
+					$this->addAncestorsToCart(WT_Individual::getInstance($this->id), $this->level1);
 				} elseif ($others == 'ancestorsfamilies') {
-					$this->add_ancestors_to_cart_families(WT_Individual::getInstance($this->id), $this->level2);
+					$this->addAncestorsToCartFamilies(WT_Individual::getInstance($this->id), $this->level2);
 				} elseif ($others == 'members') {
 					foreach (WT_Individual::getInstance($this->id)->getSpouseFamilies() as $family) {
-						$this->add_family_members($family);
+						$this->addFamilyMembers($family);
 					}
 				} elseif ($others == 'descendants') {
 					foreach (WT_Individual::getInstance($this->id)->getSpouseFamilies() as $family) {
-						$this->add_clipping($family);
-						$this->add_family_descendancy($family, $this->level3);
+						$this->addClipping($family);
+						$this->addFamilyDescendancy($family, $this->level3);
 					}
 				}
-				uksort($WT_SESSION->cart[WT_GED_ID], array('WT_Controller_Clippings', 'compare_clippings'));
+				uksort($WT_SESSION->cart[WT_GED_ID], array('WT_Controller_Clippings', 'compareClippings'));
 			}
 		} elseif ($this->action == 'remove') {
 			unset ($WT_SESSION->cart[WT_GED_ID][$this->id]);
@@ -247,19 +249,20 @@ class WT_Controller_Clippings {
 				$this->media_list = $media;
 			}
 			$filetext .= "0 @WEBTREES@ SOUR\n1 TITL ".WT_SERVER_NAME.WT_SCRIPT_PATH."\n";
-			if ($user_id=get_gedcom_setting(WT_GED_ID, 'CONTACT_EMAIL')) {
-				$filetext .= "1 AUTH " . getUserFullName($user_id) . "\n";
+			if ($user_id = $WT_TREE->getPreference('CONTACT_EMAIL')) {
+				$user = User::find($user_id);
+				$filetext .= "1 AUTH " . $user->getRealName() . "\n";
 			}
 			$filetext .= "0 TRLR\n";
 			//-- make sure the preferred line endings are used
 			$filetext = preg_replace("/[\r\n]+/", WT_EOL, $filetext);
 			$this->download_data = $filetext;
-			$this->download_clipping();
+			$this->downloadClipping();
 		}
 	}
 
 	// Loads everything in the clippings cart into a zip file.
-	function zip_cart() {
+	function zipCart() {
 		$tempFileName = 'clipping'.rand().'.ged';
 		$fp = fopen(WT_DATA_DIR.$tempFileName, "wb");
 		if ($fp) {
@@ -290,25 +293,25 @@ class WT_Controller_Clippings {
 
 	// Brings up the download dialog box and allows the user to download the file
 	// based on the options he or she selected
-	function download_clipping() {
+	function downloadClipping() {
 		Zend_Session::writeClose();
 
-		if ($this->IncludeMedia == "yes" || $this->Zip == "yes") {
+		if ($this->IncludeMedia == 'yes' || $this->Zip == 'yes') {
 			header('Content-Type: application/zip');
 			header('Content-Disposition: attachment; filename="clipping.zip"');
-			$this->zip_cart();
+			$this->zipCart();
 		} else {
 			header('Content-Type: text/plain');
 			header('Content-Disposition: attachment; filename="clipping.ged"');
 		}
 
-		header("Content-length: ".strlen($this->download_data));
-		print_r ($this->download_data);
+		header('Content-length: ' . strlen($this->download_data));
+		echo $this->download_data;
 		exit;
 	}
 
 	// Inserts a clipping into the clipping cart
-	function add_clipping($record) {
+	function addClipping(WT_GedcomRecord $record) {
 		global $WT_SESSION;
 
 		if ($record->canShowName()) {
@@ -321,70 +324,70 @@ class WT_Controller_Clippings {
 		}
 	}
 
-	// --------------------------------- Recursive function to traverse the tree
-	function add_family_descendancy($family, $level=PHP_INT_MAX) {
+	// Recursive function to traverse the tree
+	function addFamilyDescendancy(WT_Family $family = null, $level = PHP_INT_MAX) {
 		if (!$family) {
 			return;
 		}
 		foreach ($family->getSpouses() as $spouse) {
-			$this->add_clipping($spouse);
+			$this->addClipping($spouse);
 		}
 		foreach ($family->getChildren() as $child) {
-			$this->add_clipping($child);
+			$this->addClipping($child);
 			foreach ($child->getSpouseFamilies() as $child_family) {
-				$this->add_clipping($child_family);
+				$this->addClipping($child_family);
 				if ($level>0) {
-					$this->add_family_descendancy($child_family, $level-1); // recurse on the childs family
+					$this->addFamilyDescendancy($child_family, $level-1); // recurse on the childs family
 				}
 			}
 		}
 	}
 
 	// Add a family, and all its members
-	function add_family_members($family) {
+	function addFamilyMembers(WT_Family $family = null) {
 		if (!$family) {
 			return;
 		}
-		$this->add_clipping($family);
+		$this->addClipping($family);
 		foreach ($family->getSpouses() as $spouse) {
-			$this->add_clipping($spouse);
+			$this->addClipping($spouse);
 		}
 		foreach ($family->getChildren() as $child) {
-			$this->add_clipping($child);
+			$this->addClipping($child);
 		}
 	}
 
-	//-- recursively adds direct-line ancestors to cart
-	function add_ancestors_to_cart($person, $level) {
+	// Recursively add direct-line ancestors to cart
+	function addAncestorsToCart(WT_Individual $person = null, $level = null) {
 		if (!$person) {
 			return;
 		}
-		$this->add_clipping($person);
+		$this->addClipping($person);
 		if ($level>0) {
 			foreach ($person->getChildFamilies() as $family) {
-				$this->add_clipping($family);
-				$this->add_ancestors_to_cart($family->getHusband(), $level-1);
-				$this->add_ancestors_to_cart($family->getWife(), $level-1);
+				$this->addClipping($family);
+				$this->addAncestorsToCart($family->getHusband(), $level-1);
+				$this->addAncestorsToCart($family->getWife(), $level-1);
 			}
 		}
 	}
 
-	//-- recursively adds direct-line ancestors and their families to the cart
-	function add_ancestors_to_cart_families($person, $level) {
+	// Recursively adds direct-line ancestors and their families to the cart
+	function addAncestorsToCartFamilies(WT_Individual $person = null, $level = null) {
 		if (!$person) {
 			return;
 		}
 		if ($level>0) {
 			foreach ($person->getChildFamilies() as $family) {
-				$this->add_family_members($family);
-				$this->add_ancestors_to_cart_families($family->getHusband(), $level-1);
-				$this->add_ancestors_to_cart_families($family->getWife(), $level-1);
+				$this->addFamilyMembers($family);
+				$this->addAncestorsToCartFamilies($family->getHusband(), $level-1);
+				$this->addAncestorsToCartFamilies($family->getWife(), $level-1);
 			}
 		}
 	}
 
 	// Helper function to sort records by type/name
-	static function compare_clippings($a, $b) {
+	static function compareClippings($a, $b) {
 		$a=WT_GedcomRecord::getInstance($a);
 		$b=WT_GedcomRecord::getInstance($b);
 		if ($a && $b) {

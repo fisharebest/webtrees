@@ -22,7 +22,7 @@
 define('WT_SCRIPT_NAME', 'gedrecord.php');
 require './includes/session.php';
 
-$controller=new WT_Controller_Page();
+$controller = new WT_Controller_Page();
 
 $obj = WT_GedcomRecord::getInstance(WT_Filter::get('pid', WT_REGEX_XREF));
 
@@ -39,7 +39,7 @@ if (
 	exit;
 } elseif (!$obj || !$obj->canShow()) {
 	$controller->pageHeader();
-	print_privacy_error();
+	echo '<div class="error">', WT_I18N::translate('This information is private and cannot be shown.'), '</div>';
 } else {
 	$controller->pageHeader();
 	echo

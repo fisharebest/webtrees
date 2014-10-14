@@ -18,14 +18,16 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+
 define('WT_SCRIPT_NAME', 'admin_module_blocks.php');
 require 'includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
-$controller=new WT_Controller_Page();
+$controller = new WT_Controller_Page();
 $controller
-	->requireAdminLogin()
-	->setPageTitle(WT_I18N::translate('Module administration'))
+	->restrictAccess(Auth::isAdmin())
+	->setPageTitle(WT_I18N::translate('Module administration') . ' — ' . WT_I18N::translate('Blocks'))
 	->pageHeader();
 
 $modules=WT_Module::getActiveBlocks(WT_GED_ID, WT_PRIV_HIDE);
@@ -44,8 +46,10 @@ if ($action=='update_mods' && WT_Filter::checkCsrf()) {
 }
 
 ?>
+<h2><?php echo $controller->getPageTitle(); ?></h2>
+
 <div id="blocks" align="center">
-	<form method="post" action="<?php echo WT_SCRIPT_NAME; ?>">
+	<form method="post">
 		<input type="hidden" name="action" value="update_mods">
 		<?php echo WT_Filter::getCsrf(); ?>
 		<table id="blocks_table" class="modules_table">

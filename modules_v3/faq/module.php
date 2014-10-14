@@ -21,11 +21,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block, WT_Module_Config {
 	// Extend class WT_Module
 	public function getTitle() {
@@ -142,7 +137,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 					"SELECT gedcom_id FROM `##block` WHERE block_id=?"
 				)->execute(array($block_id))->fetchOne();
 			} else {
-				$controller->setPageTitle(WT_I18N::translate('Add FAQ item'));
+				$controller->setPageTitle(WT_I18N::translate('Add an FAQ item'));
 				$header='';
 				$faqbody='';
 				$block_order=WT_DB::prepare(
@@ -256,20 +251,22 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 
 	private function show() {
 		global $controller;
-		$controller=new WT_Controller_Page();
+		$controller = new WT_Controller_Page();
 		$controller
 			->setPageTitle($this->getTitle())
 			->pageHeader();
 
 		$faqs=WT_DB::prepare(
-			"SELECT block_id, bs1.setting_value AS header, bs2.setting_value AS body".
-			" FROM `##block` b".
-			" JOIN `##block_setting` bs1 USING (block_id)".
-			" JOIN `##block_setting` bs2 USING (block_id)".
-			" WHERE module_name=?".
-			" AND bs1.setting_name='header'".
-			" AND bs2.setting_name='faqbody'".
-			" AND IFNULL(gedcom_id, ?)=?".
+			"SELECT block_id, bs1.setting_value AS header, bs2.setting_value AS body, bs3.setting_value AS languages" .
+			" FROM `##block` b" .
+			" JOIN `##block_setting` bs1 USING (block_id)" .
+			" JOIN `##block_setting` bs2 USING (block_id)" .
+			" JOIN `##block_setting` bs3 USING (block_id)" .
+			" WHERE module_name=?" .
+			" AND bs1.setting_name='header'" .
+			" AND bs2.setting_name='faqbody'" .
+			" AND bs3.setting_name='languages'" .
+			" AND IFNULL(gedcom_id, ?)=?" .
 			" ORDER BY block_order"
 		)->execute(array($this->getName(), WT_GED_ID, WT_GED_ID))->fetchAll();
 
@@ -279,19 +276,15 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 		echo '<div class="faq_italic">', WT_I18N::translate('Click on a title to go straight to it, or scroll down to read them all');
 			if (WT_USER_GEDCOM_ADMIN) {
 				echo '<div class="faq_edit">',
-						'<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_config">', WT_I18N::translate('Click here to Add, Edit, or Delete'), '</a>',
+						'<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_config">', WT_I18N::translate('Click here to add, edit, or delete'), '</a>',
 				'</div>';
 			}
 		echo '</div>';
-		//Start the table to contain the list of headers
 		$row_count = 0;
 		echo '<table class="faq">';
 		// List of titles
 		foreach ($faqs as $id => $faq) {
-			$header   =get_block_setting($faq->block_id, 'header');
-			$faqbody  =get_block_setting($faq->block_id, 'faqbody');
-			$languages=get_block_setting($faq->block_id, 'languages');
-			if (!$languages || in_array(WT_LOCALE, explode(',', $languages))) {
+			if (!$faq->languages || in_array(WT_LOCALE, explode(',', $faq->languages))) {
 				$row_color = ($row_count % 2) ? 'odd' : 'even';
 				// NOTE: Print the header of the current item
 				echo '<tr class="', $row_color, '"><td style="padding: 5px;">';
@@ -303,39 +296,35 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 		echo '</table><hr>';
 		// Detailed entries
 		foreach ($faqs as $id => $faq) {
-			$header   =get_block_setting($faq->block_id, 'header');
-			$faqbody  =get_block_setting($faq->block_id, 'faqbody');
-			$languages=get_block_setting($faq->block_id, 'languages');
-			if (!$languages || in_array(WT_LOCALE, explode(',', $languages))) {
-				// NOTE: Print the body text of the current item, with its header
+			if (!$faq->languages || in_array(WT_LOCALE, explode(',', $faq->languages))) {
 				echo '<div class="faq_title" id="faq', $id, '">', $faq->header;
 				echo '<div class="faq_top faq_italic">';
 				echo '<a href="#body">', WT_I18N::translate('back to top'), '</a>';
 				echo '</div>';
 				echo '</div>';
-				echo '<div class="faq_body">', substr($faqbody, 0, 1)=='<' ? $faqbody : nl2br($faqbody, false), '</div>';
+				echo '<div class="faq_body">', substr($faq->body, 0, 1)=='<' ? $faq->body : nl2br($faq->body, false), '</div>';
 				echo '<hr>';
 			}
 		}
 	}
 
 	private function config() {
-		require_once 'includes/functions/functions_edit.php';
+		require_once WT_ROOT.'includes/functions/functions_edit.php';
 
-		$controller=new WT_Controller_Page();
+		$controller = new WT_Controller_Page();
 		$controller
 			->setPageTitle($this->getTitle())
 			->pageHeader();
 
 		$faqs=WT_DB::prepare(
-			"SELECT block_id, block_order, gedcom_id, bs1.setting_value AS header, bs2.setting_value AS faqbody".
-			" FROM `##block` b".
-			" JOIN `##block_setting` bs1 USING (block_id)".
-			" JOIN `##block_setting` bs2 USING (block_id)".
-			" WHERE module_name=?".
-			" AND bs1.setting_name='header'".
-			" AND bs2.setting_name='faqbody'".
-			" AND IFNULL(gedcom_id, ?)=?".
+			"SELECT block_id, block_order, gedcom_id, bs1.setting_value AS header, bs2.setting_value AS faqbody" .
+			" FROM `##block` b" .
+			" JOIN `##block_setting` bs1 USING (block_id)" .
+			" JOIN `##block_setting` bs2 USING (block_id)" .
+			" WHERE module_name = ?" .
+			" AND bs1.setting_name = 'header'" .
+			" AND bs2.setting_name = 'faqbody'" .
+			" AND IFNULL(gedcom_id, ?) = ?" .
 			" ORDER BY block_order"
 		)->execute(array($this->getName(), WT_GED_ID, WT_GED_ID))->fetchAll();
 
@@ -356,7 +345,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 			'<input type="submit" value="', WT_I18N::translate('show'), '">',
 			'</form></p>';
 
-		echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit">', WT_I18N::translate('Add FAQ item'), '</a>';
+		echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit">', WT_I18N::translate('Add an FAQ item'), '</a>';
 		echo help_link('add_faq_item', $this->getName());
 
 		echo '<table id="faq_edit">';

@@ -21,11 +21,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	// Extend class WT_Module
 	public function getTitle() {
@@ -94,7 +89,7 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			function isearchQ() {
 				var query = jQuery("#sb_indi_name").val();
 				if (query.length>1) {
-					jQuery("#sb_indi_content").load("module.php?mod='.$this->getName().'&mod_action=ajax&sb_action=individuals&search="+query);
+					jQuery("#sb_indi_content").load("module.php?mod=' . $this->getName() . '&mod_action=ajax&sb_action=individuals&search="+query);
 				}
 			}
 
@@ -113,12 +108,12 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 				if (!loadedNames[surname]) {
 					jQuery.ajax({
-					  url: "module.php?mod='.$this->getName().'&mod_action=ajax&sb_action=individuals&alpha="+alpha+"&surname="+surname,
+					  url: "module.php?mod=' . $this->getName() . '&mod_action=ajax&sb_action=individuals&alpha="+alpha+"&surname="+surname,
 					  cache: false,
 					  success: function(html) {
 					    jQuery("#sb_indi_"+surname+" div").html(html);
 					    jQuery("#sb_indi_"+surname+" div").show("fast");
-					    jQuery("#sb_indi_"+surname).css("list-style-image", "url('.$WT_IMAGES['minus'].')");
+					    jQuery("#sb_indi_"+surname).css("list-style-image", "url(' . $WT_IMAGES['minus'] . ')");
 					    loadedNames[surname]=2;
 					  }
 					});
@@ -126,12 +121,12 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				else if (loadedNames[surname]==1) {
 					loadedNames[surname]=2;
 					jQuery("#sb_indi_"+surname+" div").show("fast");
-					jQuery("#sb_indi_"+surname).css("list-style-image", "url('.$WT_IMAGES['minus'].')");
+					jQuery("#sb_indi_"+surname).css("list-style-image", "url(' . $WT_IMAGES['minus'] . ')");
 				}
 				else {
 					loadedNames[surname]=1;
 					jQuery("#sb_indi_"+surname+" div").hide("fast");
-					jQuery("#sb_indi_"+surname).css("list-style-image", "url('.$WT_IMAGES['plus'].')");
+					jQuery("#sb_indi_"+surname).css("list-style-image", "url(' . $WT_IMAGES['plus'] . ')");
 				}
 				return false;
 			});

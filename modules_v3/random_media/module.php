@@ -21,11 +21,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 	// Extend class WT_Module
 	public function getTitle() {
@@ -185,7 +180,7 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 				$content .= '<a href="' . $source->getHtmlUrl() . '">' . WT_I18N::translate('View source') . ' — ' . $source->getFullname().'</a><br>';
 			}
 			$content .= '<br><div class="indent">';
-			$content .= print_fact_notes($random_media->getGedcom(), "1", false, true);
+			$content .= print_fact_notes($random_media->getGedcom(), "1", false);
 			$content .= '</div>';
 			$content .= '</td></tr></table>';
 			$content .= '</div>'; // random_picture_content

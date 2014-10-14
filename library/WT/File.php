@@ -18,11 +18,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 class WT_File {
 	//////////////////////////////////////////////////////////////////////////////
 	// Fetch a remote file
@@ -34,9 +29,10 @@ class WT_File {
 	//////////////////////////////////////////////////////////////////////////////
 
 	public static function fetchUrl($url, $stream=null) {
-		$host = parse_url($url, PHP_URL_HOST);
-		$port = parse_url($url, PHP_URL_PORT);
-		$path = parse_url($url, PHP_URL_PATH);
+		$host  = parse_url($url, PHP_URL_HOST);
+		$port  = parse_url($url, PHP_URL_PORT);
+		$path  = parse_url($url, PHP_URL_PATH);
+		$query = parse_url($url, PHP_URL_QUERY);
 
 		if (!$port) {
 			$port = parse_url($url, PHP_URL_SCHEME) == 'https' ? 443 : 80;
@@ -49,7 +45,7 @@ class WT_File {
 			return null;
 		}
 
-		fputs($fp, "GET $path HTTP/1.0\r\nHost: $host\r\nConnection: Close\r\n\r\n");
+		fputs($fp, "GET $path?$query HTTP/1.0\r\nHost: $host\r\nConnection: Close\r\n\r\n");
 
 		// The first part of the response include the HTTP headers
 		$response = fread($fp, 65536);
@@ -103,18 +99,18 @@ class WT_File {
 	}
 
 	//////////////////////////////////////////////////////////////////////////////
-	// Create a folder, and subfolders, if it does not already exist
+	// Create a folder, and sub-folders, if it does not already exist
 	//////////////////////////////////////////////////////////////////////////////
 
 	public static function mkdir($path) {
-		if (!is_dir($path)) {
+		if (is_dir($path)) {
+			return true;
+		} else {
 			if (!is_dir(dirname($path))) {
 				WT_File::mkdir(dirname($path));
 			}
 			@mkdir($path);
 			return is_dir($path);
-		} else {
-			return true;
 		}
 	}
 }

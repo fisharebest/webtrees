@@ -19,6 +19,7 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 use Michelf\MarkdownExtra;
+use WT\Log;
 
 class WT_Filter {
 	// REGEX to match a URL
@@ -90,14 +91,11 @@ class WT_Filter {
 	// Format block-level text such as notes or transcripts, etc.
 	//////////////////////////////////////////////////////////////////////////////
 	public static function formatText($text, WT_Tree $WT_TREE) {
-		switch ($WT_TREE->preference('FORMAT_TEXT')) {
+		switch ($WT_TREE->getPreference('FORMAT_TEXT')) {
 		case 'markdown':
 			return '<div class="markdown" dir="auto">' . WT_Filter::markdown($text) . '</div>';
-			break;
-		case '':
 		default:
 			return '<div style="white-space: pre-wrap;" dir="auto">' . WT_Filter::expandUrls($text) . '</div>';
-			break;
 		}
 	}
 
@@ -141,7 +139,7 @@ class WT_Filter {
 	//////////////////////////////////////////////////////////////////////////////
 	// Validate INPUT requests
 	//////////////////////////////////////////////////////////////////////////////
-	private static function _input($source, $variable, $regexp=null, $default=null) {
+	private static function input($source, $variable, $regexp=null, $default=null) {
 		if ($regexp) {
 			return filter_input(
 				$source,
@@ -169,7 +167,7 @@ class WT_Filter {
 		}
 	}
 
-	private static function _inputArray($source, $variable, $regexp=null, $default=null) {
+	private static function inputArray($source, $variable, $regexp=null, $default=null) {
 		if ($regexp) {
 			// PHP5.3 requires the $tmp variable
 			$tmp = filter_input_array(
@@ -208,11 +206,11 @@ class WT_Filter {
 	// Validate GET requests
 	//////////////////////////////////////////////////////////////////////////////
 	public static function get($variable, $regexp=null, $default=null) {
-		return self::_input(INPUT_GET, $variable, $regexp, $default);
+		return self::input(INPUT_GET, $variable, $regexp, $default);
 	}
 
 	public static function getArray($variable, $regexp=null, $default=null) {
-		return self::_inputArray(INPUT_GET, $variable, $regexp, $default);
+		return self::inputArray(INPUT_GET, $variable, $regexp, $default);
 	}
 
 	public static function getBool($variable) {
@@ -235,11 +233,11 @@ class WT_Filter {
 	// Validate POST requests
 	//////////////////////////////////////////////////////////////////////////////
 	public static function post($variable, $regexp=null, $default=null) {
-		return self::_input(INPUT_POST, $variable, $regexp, $default);
+		return self::input(INPUT_POST, $variable, $regexp, $default);
 	}
 
 	public static function postArray($variable, $regexp=null, $default=null) {
-		return self::_inputArray(INPUT_POST, $variable, $regexp, $default);
+		return self::inputArray(INPUT_POST, $variable, $regexp, $default);
 	}
 
 	public static function postBool($variable) {
@@ -256,6 +254,13 @@ class WT_Filter {
 
 	public static function postUrl($variable, $default=null) {
 		return filter_input(INPUT_POST, $variable, FILTER_VALIDATE_URL) ?: $default;
+	}
+
+	//////////////////////////////////////////////////////////////////////////////
+	// Validate COOKIE requests
+	//////////////////////////////////////////////////////////////////////////////
+	public static function cookie($variable, $regexp=null, $default=null) {
+		return self::input(INPUT_COOKIE, $variable, $regexp, $default);
 	}
 
 	//////////////////////////////////////////////////////////////////////////////
@@ -284,7 +289,7 @@ class WT_Filter {
 	public static function checkCsrf() {
 		if (WT_Filter::post('csrf') !== WT_Filter::getCsrfToken()) {
 			// Oops.  Something is not quite right
-			AddToLog('CSRF mismatch - session expired or malicious attack', 'auth');
+			Log::addAuthenticationLog('CSRF mismatch - session expired or malicious attack');
 			WT_FlashMessages::addMessage(WT_I18N::translate('This form has expired.  Try again.'));
 			return false;
 		}
