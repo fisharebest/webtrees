@@ -189,7 +189,7 @@ if ($show === 'indi' || $show === 'surn') {
 	$surns = WT_Query_Name::surnames($surname, $alpha, $show_marnm === 'yes', true, WT_GED_ID);
 	if ($show === 'surn') {
 		// Show the surname list
-		switch ($SURNAME_LIST_STYLE) {
+		switch ($WT_TREE->getPreference('SURNAME_LIST_STYLE')) {
 		case 'style1';
 			echo format_surname_list($surns, 3, true, WT_SCRIPT_NAME);
 			break;

@@ -129,7 +129,6 @@ function load_gedcom_settings($ged_id=WT_GED_ID) {
 	global $SHOW_PRIVATE_RELATIONSHIPS;   $SHOW_PRIVATE_RELATIONSHIPS   = $tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS');
 	global $SHOW_RELATIVES_EVENTS;        $SHOW_RELATIVES_EVENTS        = $tree->getPreference('SHOW_RELATIVES_EVENTS');
 	global $SOURCE_ID_PREFIX;             $SOURCE_ID_PREFIX             = $tree->getPreference('SOURCE_ID_PREFIX');
-	global $SURNAME_LIST_STYLE;           $SURNAME_LIST_STYLE           = $tree->getPreference('SURNAME_LIST_STYLE');
 	global $THUMBNAIL_WIDTH;              $THUMBNAIL_WIDTH              = $tree->getPreference('THUMBNAIL_WIDTH');
 	global $USE_RIN;                      $USE_RIN                      = $tree->getPreference('USE_RIN');
 	global $USE_SILHOUETTE;               $USE_SILHOUETTE               = $tree->getPreference('USE_SILHOUETTE');
