@@ -30,6 +30,14 @@ if (!defined('WT_SCRIPT_NAME')) {
 	exit;
 }
 
+// To embed webtrees code in other applications, we must explicitly declare any global variables that we create.
+// session.php
+global $start_time, $WT_REQUEST, $WT_SESSION, $WT_TREE, $GEDCOM, $SEARCH_SPIDER;
+// theme.php
+global $headerfile, $footerfile, $WT_IMAGES, $fanchart, $bwidth, $bheight, $baseyoffset, $basexoffset, $bxspacing, $byspacing, $linewidth, $shadowcolor, $shadowblur, $shadowoffsetX, $shadowoffsetY, $Dbaseyoffset, $Dbasexoffset, $Dbxspacing, $Dbyspacing, $Dbwidth, $Dbheight, $Dindent, $Darrowwidth, $cbwidth, $cbheight, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y, $WT_STATS_L_CHART_X, $WT_STATS_MAP_X, $WT_STATS_MAP_Y, $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_CHART_COLOR3;
+// most pages
+global $controller;
+
 // Identify ourself
 define('WT_WEBTREES', 'webtrees');
 define('WT_VERSION',  '1.6.1-dev');
