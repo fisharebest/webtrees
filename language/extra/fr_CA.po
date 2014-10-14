@@ -8886,7 +8886,7 @@ msgstr "Mercure"
 
 #: admin_trees_merge.php:30 themes/_administration/header.php:122
 msgid "Merge family trees"
-msgstr "Fusionne des arbres généalogiques."
+msgstr "Fusionner des arbres"
 
 #: admin_site_merge.php:266
 msgid "Merge from ID:"
