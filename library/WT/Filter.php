@@ -21,6 +21,9 @@
 use Michelf\MarkdownExtra;
 use WT\Log;
 
+/**
+ * Class WT_Filter - utility functions for validating input and filtering output
+ */
 class WT_Filter {
 	// REGEX to match a URL
 	// Some versions of RFC3987 have an appendix B which gives the following regex
@@ -29,10 +32,13 @@ class WT_Filter {
 	// This is a compromise.
 	const URL_REGEX='((https?|ftp]):)(//([^\s/?#<>]*))?([^\s?#<>]*)(\?([^\s#<>]*))?(#[^\s?#<>]+)?';
 
-
-	//////////////////////////////////////////////////////////////////////////////
-	// Escape a string for use in HTML
-	//////////////////////////////////////////////////////////////////////////////
+	/**
+	 * Escape a string for use in HTML
+	 *
+	 * @param string $string
+	 *
+	 * @return string
+	 */
 	public static function escapeHtml($string) {
 		if (defined('ENT_SUBSTITUTE')) {
 			// PHP5.4 allows us to substitute invalid UTF8 sequences
@@ -42,16 +48,24 @@ class WT_Filter {
 		}
 	}
 
-	//////////////////////////////////////////////////////////////////////////////
-	// Escape a string for use in a URL
-	//////////////////////////////////////////////////////////////////////////////
+	/**
+	 * Escape a string for use in a URL
+	 *
+	 * @param string $string
+	 *
+	 * @return string
+	 */
 	public static function escapeUrl($string) {
 		return rawurlencode($string);
 	}
 
-	//////////////////////////////////////////////////////////////////////////////
-	// Escape a string for use in Javascript
-	//////////////////////////////////////////////////////////////////////////////
+	/**
+	 * Escape a string for use in Javascript
+	 *
+	 * @param string $string
+	 *
+	 * @return string
+	 */
 	public static function escapeJs($string) {
 		return preg_replace_callback('/[^A-Za-z0-9,. _]/Su', function($x) {
 			if (strlen($x[0]) == 1) {
@@ -66,9 +80,13 @@ class WT_Filter {
 		}, $string);
 	}
 
-	//////////////////////////////////////////////////////////////////////////////
-	// Escape a string for use in a SQL "LIKE" clause
-	//////////////////////////////////////////////////////////////////////////////
+	/**
+	 * Escape a string for use in a SQL "LIKE" clause
+	 *
+	 * @param string $string
+	 *
+	 * @return string
+	 */
 	public static function escapeLike($string) {
 		return strtr(
 			$string,
@@ -80,16 +98,25 @@ class WT_Filter {
 		);
 	}
 
-	//////////////////////////////////////////////////////////////////////////////
-	// Unescape an HTML string, giving just the literal text
-	//////////////////////////////////////////////////////////////////////////////
+	/**
+	 * Unescape an HTML string, giving just the literal text
+	 *
+	 * @param string $string
+	 *
+	 * @return string
+	 */
 	public static function unescapeHtml($string) {
 		return html_entity_decode(strip_tags($string), ENT_QUOTES, 'UTF-8');
 	}
 
-	//////////////////////////////////////////////////////////////////////////////
-	// Format block-level text such as notes or transcripts, etc.
-	//////////////////////////////////////////////////////////////////////////////
+	/**
+	 * Format block-level text such as notes or transcripts, etc.
+	 *
+	 * @param string  $text
+	 * @param WT_Tree $WT_TREE
+	 *
+	 * @return string
+	 */
 	public static function formatText($text, WT_Tree $WT_TREE) {
 		switch ($WT_TREE->getPreference('FORMAT_TEXT')) {
 		case 'markdown':
@@ -99,9 +126,13 @@ class WT_Filter {
 		}
 	}
 
-	//////////////////////////////////////////////////////////////////////////////
-	// Escape a string for use in HTML, and additionally convert URLs to links.
-	//////////////////////////////////////////////////////////////////////////////
+	/**
+	 * Escape a string for use in HTML, and additionally convert URLs to links.
+	 *
+	 * @param string $text
+	 *
+	 * @return string
+	 */
 	public static function expandUrls($text) {
 		return preg_replace_callback(
 			'/' . addcslashes('(?!>)' . WT_Filter::URL_REGEX . '(?!</a>)', '/') . '/i',
@@ -112,9 +143,13 @@ class WT_Filter {
 		);
 	}
 
-	//////////////////////////////////////////////////////////////////////////////
-	// Format a block of text, using "Markdown".
-	//////////////////////////////////////////////////////////////////////////////
+	/**
+	 * Format a block of text, using "Markdown".
+	 *
+	 * @param STRING $text
+	 *
+	 * @return string
+	 */
 	public static function markdown($text) {
 		$parser = new MarkdownExtra;
 		$parser->empty_element_suffix = '>';
@@ -136,9 +171,16 @@ class WT_Filter {
 		return $text;
 	}
 
-	//////////////////////////////////////////////////////////////////////////////
-	// Validate INPUT requests
-	//////////////////////////////////////////////////////////////////////////////
+	/**
+	 * Validate INPUT requests
+	 *
+	 * @param string      $source
+	 * @param string      $variable
+	 * @param string|null $regexp
+	 * @param string|null $default
+	 *
+	 * @return string|null
+	 */
 	private static function input($source, $variable, $regexp=null, $default=null) {
 		if ($regexp) {
 			return filter_input(
@@ -167,6 +209,16 @@ class WT_Filter {
 		}
 	}
 
+	/**
+	 * Validate array INPUT requests
+	 *
+	 * @param string      $source
+	 * @param string      $variable
+	 * @param string|null $regexp
+	 * @param string|null $default
+	 *
+	 * @return string[]
+	 */
 	private static function inputArray($source, $variable, $regexp=null, $default=null) {
 		if ($regexp) {
 			// PHP5.3 requires the $tmp variable
@@ -202,71 +254,175 @@ class WT_Filter {
 		}
 	}
 
-	//////////////////////////////////////////////////////////////////////////////
-	// Validate GET requests
-	//////////////////////////////////////////////////////////////////////////////
+	/**
+	 * Validate GET requests
+	 *
+	 * @param string      $variable
+	 * @param string|null $regexp
+	 * @param string|null $default
+	 *
+	 * @return null|string
+	 */
 	public static function get($variable, $regexp=null, $default=null) {
 		return self::input(INPUT_GET, $variable, $regexp, $default);
 	}
 
+	/**
+	 * Validate array GET requests
+	 *
+	 * @param string      $variable
+	 * @param string|null $regexp
+	 * @param string|null $default
+	 *
+	 * @return string[]
+	 */
 	public static function getArray($variable, $regexp=null, $default=null) {
 		return self::inputArray(INPUT_GET, $variable, $regexp, $default);
 	}
 
+	/**
+	 * Validate boolean GET requests
+	 *
+	 * @param string $variable
+	 *
+	 * @return bool
+	 */
 	public static function getBool($variable) {
 		return (bool)filter_input(INPUT_GET, $variable, FILTER_VALIDATE_BOOLEAN);
 	}
 
+	/**
+	 * Validate integer GET requests
+	 *
+	 * @param string $variable
+	 * @param int    $min
+	 * @param int    $max
+	 * @param int    $default
+	 *
+	 * @return int
+	 */
 	public static function getInteger($variable, $min=0, $max=PHP_INT_MAX, $default=0) {
 		return filter_input(INPUT_GET, $variable, FILTER_VALIDATE_INT, array('options'=>array('min_range'=>$min, 'max_range'=>$max, 'default'=>$default)));
 	}
 
+	/**
+	 * Validate email GET requests
+	 *
+	 * @param string      $variable
+	 * @param string|null $default
+	 *
+	 * @return null|string
+	 */
 	public static function getEmail($variable, $default=null) {
 		return filter_input(INPUT_GET, $variable, FILTER_VALIDATE_EMAIL) ?: $default;
 	}
 
+	/**
+	 * Validate URL GET requests
+	 *
+	 * @param string      $variable
+	 * @param string|null $default
+	 *
+	 * @return null|string
+	 */
 	public static function getUrl($variable, $default=null) {
 		return filter_input(INPUT_GET, $variable, FILTER_VALIDATE_URL) ?: $default;
 	}
 
-	//////////////////////////////////////////////////////////////////////////////
-	// Validate POST requests
-	//////////////////////////////////////////////////////////////////////////////
+	/**
+	 * Validate POST requests
+	 *
+	 * @param string      $variable
+	 * @param string|null $regexp
+	 * @param string|null $default
+	 *
+	 * @return null|string
+	 */
 	public static function post($variable, $regexp=null, $default=null) {
 		return self::input(INPUT_POST, $variable, $regexp, $default);
 	}
 
+	/**
+	 * Validate array POST requests
+	 *
+	 * @param string      $variable
+	 * @param string|null $regexp
+	 * @param string|null $default
+	 *
+	 * @return string[]
+	 */
 	public static function postArray($variable, $regexp=null, $default=null) {
 		return self::inputArray(INPUT_POST, $variable, $regexp, $default);
 	}
 
+	/**
+	 * Validate boolean POST requests
+	 *
+	 * @param string $variable
+	 *
+	 * @return bool
+	 */
 	public static function postBool($variable) {
 		return (bool)filter_input(INPUT_POST, $variable, FILTER_VALIDATE_BOOLEAN);
 	}
 
+	/**
+	 * Validate integer POST requests
+	 *
+	 * @param string $variable
+	 * @param int    $min
+	 * @param int    $max
+	 * @param int    $default
+	 *
+	 * @return int
+	 */
 	public static function postInteger($variable, $min=0, $max=PHP_INT_MAX, $default=0) {
 		return filter_input(INPUT_POST, $variable, FILTER_VALIDATE_INT, array('options'=>array('min_range'=>$min, 'max_range'=>$max, 'default'=>$default)));
 	}
 
+	/**
+	 * Validate email POST requests
+	 *
+	 * @param string      $variable
+	 * @param string|null $default
+	 *
+	 * @return null|string
+	 */
 	public static function postEmail($variable, $default=null) {
 		return filter_input(INPUT_POST, $variable, FILTER_VALIDATE_EMAIL) ?: $default;
 	}
 
+	/**
+	 * Validate URL GET requests
+	 *
+	 * @param string      $variable
+	 * @param string|null $default
+	 *
+	 * @return null|string
+	 */
 	public static function postUrl($variable, $default=null) {
 		return filter_input(INPUT_POST, $variable, FILTER_VALIDATE_URL) ?: $default;
 	}
 
-	//////////////////////////////////////////////////////////////////////////////
-	// Validate COOKIE requests
-	//////////////////////////////////////////////////////////////////////////////
+	/**
+	 * Validate COOKIE requests
+	 *
+	 * @param string      $variable
+	 * @param string|null $regexp
+	 * @param string|null $default
+	 *
+	 * @return null|string
+	 */
 	public static function cookie($variable, $regexp=null, $default=null) {
 		return self::input(INPUT_COOKIE, $variable, $regexp, $default);
 	}
 
-	//////////////////////////////////////////////////////////////////////////////
-	// Cross-Site Request Forgery tokens - ensure that the user is submitting
-	// a form that was generated by the current session.
-	//////////////////////////////////////////////////////////////////////////////
+	/**
+	 * Cross-Site Request Forgery tokens - ensure that the user is submitting
+	 * a form that was generated by the current session.
+	 *
+	 * @return string
+	 */
 	public static function getCsrfToken() {
 		global $WT_SESSION;
 
@@ -280,12 +436,20 @@ class WT_Filter {
 		return $WT_SESSION->CSRF_TOKEN;
 	}
 
-	// Generate an <input> element - to protect the current form from CSRF attacks.
+	/**
+	 * Generate an <input> element - to protect the current form from CSRF attacks.
+	 *
+	 * @return string
+	 */
 	public static function getCsrf() {
 		return '<input type="hidden" name="csrf" value="' . WT_Filter::getCsrfToken() . '">';
 	}
 
-	// Check that the POST request contains the CSRF token generated above.
+	/**
+	 * Check that the POST request contains the CSRF token generated above.
+	 *
+	 * @return bool
+	 */
 	public static function checkCsrf() {
 		if (WT_Filter::post('csrf') !== WT_Filter::getCsrfToken()) {
 			// Oops.  Something is not quite right
