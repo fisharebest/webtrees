@@ -251,7 +251,7 @@ $controller
 				</tr>
 				<tr>
 					<td><?php echo WT_I18N::translate('Language'), help_link('LANGUAGE'); ?></td>
-					<td><?php echo edit_field_language('GEDCOMLANG', $LANGUAGE); ?></td>
+					<td><?php echo edit_field_language('GEDCOMLANG', $WT_TREE->getPreference('LANGUAGE')); ?></td>
 				</tr>
 				<tr>
 					<td>
@@ -353,30 +353,30 @@ $controller
 						<?php echo WT_I18N::translate('Individual ID prefix'), help_link('GEDCOM_ID_PREFIX'); ?>
 					</td>
 					<td>
-						<input type="text" name="GEDCOM_ID_PREFIX" dir="ltr" value="<?php echo $GEDCOM_ID_PREFIX; ?>" size="5" maxlength="20">
+						<input type="text" name="GEDCOM_ID_PREFIX" dir="ltr" value="<?php echo $WT_TREE->getPreference('GEDCOM_ID_PREFIX'); ?>" size="5" maxlength="20">
 					</td>
 					<td>
 						<?php echo WT_I18N::translate('Family ID prefix'), help_link('FAM_ID_PREFIX'); ?>
 					</td>
 					<td>
-						<input type="text" name="FAM_ID_PREFIX" dir="ltr" value="<?php echo $FAM_ID_PREFIX; ?>" size="5" maxlength="20">
+						<input type="text" name="FAM_ID_PREFIX" dir="ltr" value="<?php echo $WT_TREE->getPreference('FAM_ID_PREFIX'); ?>" size="5" maxlength="20">
 					</td>
 					<td>
 						<?php echo WT_I18N::translate('Source ID prefix'), help_link('SOURCE_ID_PREFIX'); ?>
 					</td>
 					<td>
-						<input type="text" name="SOURCE_ID_PREFIX" dir="ltr" value="<?php echo $SOURCE_ID_PREFIX; ?>" size="5" maxlength="20">
+						<input type="text" name="SOURCE_ID_PREFIX" dir="ltr" value="<?php echo $WT_TREE->getPreference('SOURCE_ID_PREFIX'); ?>" size="5" maxlength="20">
 					</td>
 				</tr>
 				<tr>
 					<td><?php echo WT_I18N::translate('Repository ID prefix'), help_link('REPO_ID_PREFIX'); ?></td>
-					<td><input type="text" name="REPO_ID_PREFIX" dir="ltr" value="<?php echo $REPO_ID_PREFIX; ?>" size="5" maxlength="20">
+					<td><input type="text" name="REPO_ID_PREFIX" dir="ltr" value="<?php echo $WT_TREE->getPreference('REPO_ID_PREFIX'); ?>" size="5" maxlength="20">
 					</td>
 					<td><?php echo WT_I18N::translate('Media ID prefix'), help_link('MEDIA_ID_PREFIX'); ?></td>
-					<td><input type="text" name="MEDIA_ID_PREFIX" dir="ltr" value="<?php echo $MEDIA_ID_PREFIX; ?>" size="5" maxlength="20">
+					<td><input type="text" name="MEDIA_ID_PREFIX" dir="ltr" value="<?php echo $WT_TREE->getPreference('MEDIA_ID_PREFIX'); ?>" size="5" maxlength="20">
 					</td>
 					<td><?php echo WT_I18N::translate('Note ID prefix'), help_link('NOTE_ID_PREFIX'); ?></td>
-					<td><input type="text" name="NOTE_ID_PREFIX" dir="ltr" value="<?php echo $NOTE_ID_PREFIX; ?>" size="5" maxlength="20">
+					<td><input type="text" name="NOTE_ID_PREFIX" dir="ltr" value="<?php echo $WT_TREE->getPreference('NOTE_ID_PREFIX'); ?>" size="5" maxlength="20">
 					</td>
 				</tr>
 			</table>
@@ -507,7 +507,7 @@ $controller
 						<?php echo WT_I18N::translate('Privacy options'), help_link('HIDE_LIVE_PEOPLE'); ?>
 					</td>
 					<td>
-						<?php  echo radio_buttons('HIDE_LIVE_PEOPLE', array(false=>WT_I18N::translate('disable'), true=>WT_I18N::translate('enable')), $HIDE_LIVE_PEOPLE); ?>
+						<?php  echo radio_buttons('HIDE_LIVE_PEOPLE', array(false=>WT_I18N::translate('disable'), true=>WT_I18N::translate('enable')), $WT_TREE->getPreference('HIDE_LIVE_PEOPLE')); ?>
 					</td>
 				</tr>
 				<tr>
@@ -646,7 +646,7 @@ $controller
 						<?php echo WT_I18N::translate('Media folder'), help_link('MEDIA_DIRECTORY'); ?>
 					</td>
 					<td>
-						<?php echo WT_DATA_DIR; ?><input type="text" name="MEDIA_DIRECTORY" value="<?php echo $MEDIA_DIRECTORY; ?>" dir="ltr" size="15" maxlength="255">
+						<?php echo WT_DATA_DIR; ?><input type="text" name="MEDIA_DIRECTORY" value="<?php echo $WT_TREE->getPreference('MEDIA_DIRECTORY'); ?>" dir="ltr" size="15" maxlength="255">
 					</td>
 				</tr>
 				<tr>
@@ -654,7 +654,7 @@ $controller
 						<?php echo /* I18N: A media path (e.g. c:\aaa\bbb\ccc\ddd.jpeg) in a GEDCOM file */ WT_I18N::translate('GEDCOM media path'), help_link('GEDCOM_MEDIA_PATH'); ?>
 					</td>
 					<td>
-						<input type="text" name="GEDCOM_MEDIA_PATH" value="<?php echo $GEDCOM_MEDIA_PATH; ?>" dir="ltr" size="30" maxlength="255">
+						<input type="text" name="GEDCOM_MEDIA_PATH" value="<?php echo $WT_TREE->getPreference('GEDCOM_MEDIA_PATH'); ?>" dir="ltr" size="30" maxlength="255">
 					</td>
 				</tr>
 				<tr>
@@ -685,7 +685,7 @@ $controller
 						<?php echo WT_I18N::translate('Width of generated thumbnails'), help_link('THUMBNAIL_WIDTH'); ?>
 					</td>
 					<td>
-						<input type="text" name="THUMBNAIL_WIDTH" value="<?php echo $THUMBNAIL_WIDTH; ?>" size="5" maxlength="4">
+						<input type="text" name="THUMBNAIL_WIDTH" value="<?php echo $WT_TREE->getPreference('THUMBNAIL_WIDTH'); ?>" size="5" maxlength="4">
 					</td>
 				</tr>
 				<tr>
@@ -738,7 +738,7 @@ $controller
 						<?php echo WT_I18N::translate('Images without watermarks'); ?>
 					</td>
 					<td>
-						<?php echo edit_field_access_level("SHOW_NO_WATERMARK", $SHOW_NO_WATERMARK); ?>
+						<?php echo edit_field_access_level("SHOW_NO_WATERMARK", $WT_TREE->getPreference('SHOW_NO_WATERMARK')); ?>
 					</td>
 				</tr>
 			</table>
@@ -786,9 +786,9 @@ $controller
 					</td>
 					<td>
 						<select name="SURNAME_LIST_STYLE">
-							<option value="style1" <?php if ($SURNAME_LIST_STYLE=="style1") echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('list'); ?></option>
-							<option value="style2" <?php if ($SURNAME_LIST_STYLE=="style2") echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('table'); ?></option>
-							<option value="style3" <?php if ($SURNAME_LIST_STYLE=="style3") echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('tag cloud'); ?></option>
+							<option value="style1" <?php if ($WT_TREE->getPreference('SURNAME_LIST_STYLE') == 'style1') echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('list'); ?></option>
+							<option value="style2" <?php if ($WT_TREE->getPreference('SURNAME_LIST_STYLE') === 'style2') echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('table'); ?></option>
+							<option value="style3" <?php if ($WT_TREE->getPreference('SURNAME_LIST_STYLE') === 'style3') echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('tag cloud'); ?></option>
 						</select>
 					</td>
 				</tr>
@@ -813,7 +813,7 @@ $controller
 						<?php echo WT_I18N::translate('The date and time of the last update'); ?>
 					</td>
 					<td>
-						<?php echo radio_buttons('SHOW_LAST_CHANGE', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $SHOW_LAST_CHANGE); ?>
+						<?php echo radio_buttons('SHOW_LAST_CHANGE', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $WT_TREE->getPreference('SHOW_LAST_CHANGE')); ?>
 					</td>
 				</tr>
 				<tr>
@@ -827,8 +827,8 @@ $controller
 					</td>
 					<td>
 						<select name="PEDIGREE_LAYOUT">
-							<option value="yes" <?php if ($PEDIGREE_LAYOUT) echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('Landscape'); ?></option>
-							<option value="no" <?php if (!$PEDIGREE_LAYOUT) echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('Portrait'); ?></option>
+							<option value="yes" <?php if ($WT_TREE->getPreference('PEDIGREE_LAYOUT')) echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('Landscape'); ?></option>
+							<option value="no" <?php if (!$WT_TREE->getPreference('PEDIGREE_LAYOUT')) echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('Portrait'); ?></option>
 						</select>
 					</td>
 				</tr>
@@ -837,7 +837,7 @@ $controller
 						<?php echo WT_I18N::translate('Default pedigree generations'), help_link('DEFAULT_PEDIGREE_GENERATIONS'); ?>
 					</td>
 					<td>
-						<input type="text" name="DEFAULT_PEDIGREE_GENERATIONS" value="<?php echo $DEFAULT_PEDIGREE_GENERATIONS; ?>" size="5" maxlength="3">
+						<input type="text" name="DEFAULT_PEDIGREE_GENERATIONS" value="<?php echo $WT_TREE->getPreference('DEFAULT_PEDIGREE_GENERATIONS'); ?>" size="5" maxlength="3">
 					</td>
 				</tr>
 				<tr>
@@ -845,7 +845,7 @@ $controller
 						<?php echo WT_I18N::translate('Maximum pedigree generations'), help_link('MAX_PEDIGREE_GENERATIONS'); ?>
 					</td>
 					<td>
-						<input type="text" name="MAX_PEDIGREE_GENERATIONS" value="<?php echo $MAX_PEDIGREE_GENERATIONS; ?>" size="5" maxlength="3">
+						<input type="text" name="MAX_PEDIGREE_GENERATIONS" value="<?php echo $WT_TREE->getPreference('MAX_PEDIGREE_GENERATIONS'); ?>" size="5" maxlength="3">
 					</td>
 				</tr>
 				<tr>
@@ -853,7 +853,7 @@ $controller
 						<?php echo WT_I18N::translate('Maximum descendancy generations'), help_link('MAX_DESCENDANCY_GENERATIONS'); ?>
 					</td>
 					<td>
-						<input type="text" name="MAX_DESCENDANCY_GENERATIONS" value="<?php echo $MAX_DESCENDANCY_GENERATIONS; ?>" size="5" maxlength="3">
+						<input type="text" name="MAX_DESCENDANCY_GENERATIONS" value="<?php echo $WT_TREE->getPreference('MAX_DESCENDANCY_GENERATIONS'); ?>" size="5" maxlength="3">
 					</td>
 				</tr>
 				<tr>
@@ -876,7 +876,7 @@ $controller
 				</tr>
 				<tr>
 					<td>
-						<input type="hidden" name="SHOW_RELATIVES_EVENTS" value="<?php echo $SHOW_RELATIVES_EVENTS; ?>">
+						<input type="hidden" name="SHOW_RELATIVES_EVENTS" value="<?php echo $WT_TREE->getPreference('SHOW_RELATIVES_EVENTS'); ?>">
 						<table id="relatives">
 							<?php
 							$rel_events=array(
@@ -895,7 +895,7 @@ $controller
 										echo '&nbsp;';
 									} else {
 										echo "<input type=\"checkbox\" name=\"SHOW_RELATIVES_EVENTS_checkbox\" value=\"".$col."\"";
-										if (strstr($SHOW_RELATIVES_EVENTS, $col)) {
+										if (strstr($WT_TREE->getPreference('SHOW_RELATIVES_EVENTS'), $col)) {
 											echo " checked=\"checked\"";
 										}
 										echo " onchange=\"var old=document.configform.SHOW_RELATIVES_EVENTS.value; if (this.checked) old+=','+this.value; else old=old.replace(/".$col."/g,''); old=old.replace(/[,]+/gi,','); old=old.replace(/^[,]/gi,''); old=old.replace(/[,]$/gi,''); document.configform.SHOW_RELATIVES_EVENTS.value=old\"> ";
@@ -994,7 +994,7 @@ $controller
 						<?php echo WT_I18N::translate('Gender icon on charts'), help_link('PEDIGREE_SHOW_GENDER'); ?>
 					</td>
 					<td>
-						<?php echo radio_buttons('PEDIGREE_SHOW_GENDER', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $PEDIGREE_SHOW_GENDER); ?>
+						<?php echo radio_buttons('PEDIGREE_SHOW_GENDER', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $WT_TREE->getPreference('PEDIGREE_SHOW_GENDER')); ?>
 					</td>
 				</tr>
 				<tr>
@@ -1002,7 +1002,7 @@ $controller
 						<?php echo WT_I18N::translate('Age of parents next to child’s birthdate'), help_link('SHOW_PARENTS_AGE'); ?>
 					</td>
 					<td>
-						<?php echo radio_buttons('SHOW_PARENTS_AGE', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $SHOW_PARENTS_AGE); ?>
+						<?php echo radio_buttons('SHOW_PARENTS_AGE', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $WT_TREE->getPreference('SHOW_PARENTS_AGE')); ?>
 					</td>
 				</tr>
 				<tr>
@@ -1010,7 +1010,7 @@ $controller
 						<?php echo WT_I18N::translate('LDS ordinance codes in chart boxes'), help_link('SHOW_LDS_AT_GLANCE'); ?>
 					</td>
 					<td>
-						<?php echo radio_buttons('SHOW_LDS_AT_GLANCE', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $SHOW_LDS_AT_GLANCE); ?>
+						<?php echo radio_buttons('SHOW_LDS_AT_GLANCE', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $WT_TREE->getPreference('SHOW_LDS_AT_GLANCE')); ?>
 					</td>
 				</tr>
 				<tr>
@@ -1018,7 +1018,7 @@ $controller
 						<?php echo WT_I18N::translate('Other facts to show in charts'), help_link('CHART_BOX_TAGS'); ?>
 					</td>
 					<td>
-						<input type="text" id="CHART_BOX_TAGS" name="CHART_BOX_TAGS" value="<?php echo $CHART_BOX_TAGS; ?>" dir="ltr" size="50" maxlength="255"><?php echo print_findfact_link('CHART_BOX_TAGS'); ?>
+						<input type="text" id="CHART_BOX_TAGS" name="CHART_BOX_TAGS" value="<?php echo $WT_TREE->getPreference('CHART_BOX_TAGS'); ?>" dir="ltr" size="50" maxlength="255"><?php echo print_findfact_link('CHART_BOX_TAGS'); ?>
 					</td>
 				</tr>
 				<tr>
@@ -1031,7 +1031,7 @@ $controller
 						<?php echo WT_I18N::translate('Fact icons'), help_link('SHOW_FACT_ICONS'); ?>
 					</td>
 					<td>
-						<?php echo radio_buttons('SHOW_FACT_ICONS', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $SHOW_FACT_ICONS); ?>
+						<?php echo radio_buttons('SHOW_FACT_ICONS', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $WT_TREE->getPreference('SHOW_FACT_ICONS')); ?>
 					</td>
 				</tr>
 				<tr>
@@ -1063,7 +1063,7 @@ $controller
 						<?php echo WT_I18N::translate('Date differences'), help_link('SHOW_AGE_DIFF'); ?>
 					</td>
 					<td>
-						<?php echo radio_buttons('SHOW_AGE_DIFF', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $SHOW_AGE_DIFF); ?>
+						<?php echo radio_buttons('SHOW_AGE_DIFF', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $WT_TREE->getPreference('SHOW_AGE_DIFF')); ?>
 					</td>
 				</tr>
 				<tr>
@@ -1084,7 +1084,7 @@ $controller
 						<?php echo WT_I18N::translate('GEDCOM errors'), help_link('HIDE_GEDCOM_ERRORS'); ?>
 					</td>
 					<td>
-						<?php echo radio_buttons('HIDE_GEDCOM_ERRORS', array(true=>WT_I18N::translate('hide'), false=>WT_I18N::translate('show')), $HIDE_GEDCOM_ERRORS); /* Note: name of object is reverse of description */ ?>
+						<?php echo radio_buttons('HIDE_GEDCOM_ERRORS', array(true=>WT_I18N::translate('hide'), false=>WT_I18N::translate('show')), $WT_TREE->getPreference('HIDE_GEDCOM_ERRORS')); /* Note: name of object is reverse of description */ ?>
 					</td>
 				</tr>
 				<tr>
@@ -1092,7 +1092,7 @@ $controller
 						<?php echo WT_I18N::translate('Hit counters'), help_link('SHOW_COUNTER'); ?>
 					</td>
 					<td>
-						<?php echo radio_buttons('SHOW_COUNTER', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $SHOW_COUNTER); ?>
+						<?php echo radio_buttons('SHOW_COUNTER', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $WT_TREE->getPreference('SHOW_COUNTER')); ?>
 					</td>
 				</tr>
 				<tr>
@@ -1134,7 +1134,7 @@ $controller
 					<?php echo WT_I18N::translate('Facts for new individuals'), help_link('QUICK_REQUIRED_FACTS'); ?>
 				</td>
 				<td>
-					<input type="text" id="QUICK_REQUIRED_FACTS" name="QUICK_REQUIRED_FACTS" value="<?php echo $QUICK_REQUIRED_FACTS; ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('QUICK_REQUIRED_FACTS'); ?>
+					<input type="text" id="QUICK_REQUIRED_FACTS" name="QUICK_REQUIRED_FACTS" value="<?php echo $WT_TREE->getPreference('QUICK_REQUIRED_FACTS'); ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('QUICK_REQUIRED_FACTS'); ?>
 				</td>
 			</tr>
 			<tr>
@@ -1171,7 +1171,7 @@ $controller
 					<?php echo WT_I18N::translate('Facts for new families'), help_link('QUICK_REQUIRED_FAMFACTS'); ?>
 				</td>
 				<td>
-					<input type="text" id="QUICK_REQUIRED_FAMFACTS" name="QUICK_REQUIRED_FAMFACTS" value="<?php echo $QUICK_REQUIRED_FAMFACTS; ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('QUICK_REQUIRED_FAMFACTS'); ?>
+					<input type="text" id="QUICK_REQUIRED_FAMFACTS" name="QUICK_REQUIRED_FAMFACTS" value="<?php echo $WT_TREE->getPreference('QUICK_REQUIRED_FAMFACTS'); ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('QUICK_REQUIRED_FAMFACTS'); ?>
 				</td>
 			</tr>
 			<tr>
@@ -1250,7 +1250,7 @@ $controller
 					<?php echo WT_I18N::translate('Advanced name facts'), help_link('ADVANCED_NAME_FACTS'); ?>
 				</td>
 				<td>
-					<input type="text" id="ADVANCED_NAME_FACTS" name="ADVANCED_NAME_FACTS" value="<?php echo $ADVANCED_NAME_FACTS; ?>" size="40" maxlength="255" dir="ltr"><?php echo print_findfact_link('ADVANCED_NAME_FACTS'); ?>
+					<input type="text" id="ADVANCED_NAME_FACTS" name="ADVANCED_NAME_FACTS" value="<?php echo $WT_TREE->getPreference('ADVANCED_NAME_FACTS'); ?>" size="40" maxlength="255" dir="ltr"><?php echo print_findfact_link('ADVANCED_NAME_FACTS'); ?>
 				</td>
 			</tr>
 			<tr>
@@ -1258,7 +1258,7 @@ $controller
 					<?php echo WT_I18N::translate('Advanced place name facts'), help_link('ADVANCED_PLAC_FACTS'); ?>
 				</td>
 				<td>
-					<input type="text" id="ADVANCED_PLAC_FACTS" name="ADVANCED_PLAC_FACTS" value="<?php echo $ADVANCED_PLAC_FACTS; ?>" size="40" maxlength="255" dir="ltr"><?php echo print_findfact_link('ADVANCED_PLAC_FACTS'); ?>
+					<input type="text" id="ADVANCED_PLAC_FACTS" name="ADVANCED_PLAC_FACTS" value="<?php echo $WT_TREE->getPreference('ADVANCED_PLAC_FACTS'); ?>" size="40" maxlength="255" dir="ltr"><?php echo print_findfact_link('ADVANCED_PLAC_FACTS'); ?>
 				</td>
 			</tr>
 			<tr>
