@@ -92,12 +92,25 @@ class WT_I18N {
 		'’' => '‘',
 	);
 
+	/** @var string the name of the current locale, such as fr or en_GB */
 	public  static $locale;
+
+	/** @var string The MySQL collation sequence used by this language, typically utf8_unicode_ci */
 	public  static $collation;
+
+	/** @var string Puncutation used to separate list items, typically a comma */
 	public  static $list_separator;
+
+	/** @var string Text direction; ltr or rtl */
 	private static $dir;
+
+	/** @var Zend_Cache_Core */
 	private static $cache;
+
+	/** @var string The numbering system used by this language; typically latin digits */
 	private static $numbering_system;
+
+	/** @var Zend_Translate */
 	private static $translation_adapter;
 
 	/**
@@ -246,7 +259,7 @@ class WT_I18N {
 	 * @param Zend_Translate $translation
 	 */
 	public static function addTranslation(Zend_Translate $translation) {
-		self::$translation_adapter->addTranslation($translation);
+		self::$translation_adapter->getAdapter()->addTranslation($translation);
 	}
 
 	/**
@@ -371,7 +384,7 @@ class WT_I18N {
 	 */
 	public static function translate(/* var_args */) {
 		$args = func_get_args();
-		$args[0] = self::$translation_adapter->_($args[0]);
+		$args[0] = self::$translation_adapter->getAdapter()->_($args[0]);
 
 		return call_user_func_array('sprintf', $args);
 	}
@@ -387,7 +400,7 @@ class WT_I18N {
 	public static function translate_c(/* var_args */) {
 		$args = func_get_args();
 		$msgid = $args[0] . "\x04" . $args[1];
-		$msgtxt = self::$translation_adapter->_($msgid);
+		$msgtxt = self::$translation_adapter->getAdapter()->_($msgid);
 		if ($msgtxt == $msgid) {
 			$msgtxt = $args[1];
 		}
@@ -408,7 +421,7 @@ class WT_I18N {
 	 * @return string
 	 */
 	public static function noop($string) {
-		return self::$translation_adapter->_($string);
+		return self::$translation_adapter->getAdapter()->_($string);
 	}
 
 	/**
@@ -422,7 +435,7 @@ class WT_I18N {
 	 */
 	public static function plural(/* var_args */) {
 		$args = func_get_args();
-		$string = self::$translation_adapter->plural($args[0], $args[1], $args[2]);
+		$string = self::$translation_adapter->getAdapter()->plural($args[0], $args[1], $args[2]);
 		array_splice($args, 0, 3, array($string));
 
 		return call_user_func_array('sprintf', $args);

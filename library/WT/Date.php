@@ -180,9 +180,9 @@ class WT_Date {
 	/**
 	 * Convert a date to the prefered format and calendar(s) display.
 	 *
-	 * @param boolean     $url      - convert the dates into links to the calendar
-	 * @param string|null $date_fmt - override the default date format
-	 * @param string|null $cal_fmts - override the default calendar conversion
+	 * @param boolean|null $url      - convert the dates into links to the calendar
+	 * @param string|null  $date_fmt - override the default date format
+	 * @param string|null  $cal_fmts - override the default calendar conversion
 	 *
 	 * @return string
 	 */

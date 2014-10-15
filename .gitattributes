@@ -5,8 +5,6 @@
 .travis.yml    export-ignore
 Makefile       export-ignore
 build/         export-ignore
-composer.json  export-ignore
-composer.lock  export-ignore
 phpunit.xml    export-ignore
 library/bombayworks/zendframework1/library/Zend/Acl/           export-ignore
 library/bombayworks/zendframework1/library/Zend/Amf/           export-ignore

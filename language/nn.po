@@ -12534,9 +12534,7 @@ msgstr "Syner %1$s til %2$s av %3$s"
 #: library/WT/Controller/Hourglass.php:398 pedigree.php:228
 #, fuzzy
 msgid "Sibling"
-msgid_plural "Siblings"
-msgstr[0] "Sysken"
-msgstr[1] "Sysken"
+msgstr "Sysken"
 
 #: library/WT/Controller/Hourglass.php:397 pedigree.php:225
 msgid "Siblings"
