@@ -230,7 +230,7 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 	 * @param int $year
 	 * @param int $key
 	 *
-	 * @return mixed
+	 * @return int
 	 */
 	private function modifyYear($year, $key) {
 		$temp = $year;
@@ -542,6 +542,11 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 		return $maxY;
 	}
 
+	/**
+	 * The significant individual on this page is the first one.
+	 *
+	 * @return WT_Individual
+	 */
 	public function getSignificantIndividual() {
 		if ($this->people) {
 			return $this->people[0];

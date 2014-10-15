@@ -78,7 +78,7 @@ class WT_Controller_Page extends WT_Controller_Base {
 	/**
 	 * Restrict access
 	 *
-	 * @param $condition
+	 * @param bool $condition
 	 *
 	 * @return WT_Controller_Page
 	 */

@@ -339,8 +339,8 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 	/**
 	 * Calculates number of generations a person has
 	 *
-	 * @param $pid
-	 * @param $depth
+	 * @param string $pid
+	 * @param int    $depth
 	 *
 	 * @return int
 	 */
