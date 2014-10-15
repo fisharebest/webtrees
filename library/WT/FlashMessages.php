@@ -20,12 +20,22 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 class WT_FlashMessages {
+	/**
+	 * Add a new message to the session storage.
+	 *
+	 * @param string $message
+	 */
 	public static function addMessage($message) {
 		$flash_messenger = Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger');
 
 		$flash_messenger->addMessage($message);
 	}
 
+	/**
+	 * Get the current messages, and remove them from session storage.
+	 *
+	 * @return string[]
+	 */
 	public static function getMessages() {
 		$flash_messenger = Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger');
 
@@ -40,12 +50,16 @@ class WT_FlashMessages {
 		foreach ($flash_messenger->getCurrentMessages() as $message) {
 			$messages[] = $message;
 		}
-    $flash_messenger->clearCurrentMessages();
+		$flash_messenger->clearCurrentMessages();
 
 		return $messages;
 	}
 
-	// Most theres will want a simple block of HTML to display
+	/**
+	 * Most theres will want a simple block of HTML to display
+	 *
+	 * @return string
+	 */
 	public static function getHtmlMessages() {
 		$html = '';
 
@@ -59,6 +73,4 @@ class WT_FlashMessages {
 
 		return $html;
 	}
-
-
 }
