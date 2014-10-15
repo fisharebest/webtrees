@@ -146,7 +146,7 @@ class WT_Filter {
 	/**
 	 * Format a block of text, using "Markdown".
 	 *
-	 * @param STRING $text
+	 * @param string $text
 	 *
 	 * @return string
 	 */
