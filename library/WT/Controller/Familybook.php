@@ -102,7 +102,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 			if ($count < $this->dgenerations) {
 				//-- put all of the children in a common array
 				foreach ($sfamilies as $family) {
-					$famNum ++;
+					$famNum++;
 					$chs = $family->getChildren();
 					foreach ($chs as $child) {
 						$children[] = $child;
