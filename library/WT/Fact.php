@@ -22,30 +22,30 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 class WT_Fact {
-	private $fact_id  = null;  // Unique identifier for this fact
-	private $parent   = null;  // The GEDCOM record from which this fact is taken.
-	private $gedcom   = null;  // The raw GEDCOM data for this fact
-	private $tag      = null;  // The GEDCOM tag for this record
+	private $fact_id = null;  // Unique identifier for this fact
+	private $parent = null;  // The GEDCOM record from which this fact is taken.
+	private $gedcom = null;  // The raw GEDCOM data for this fact
+	private $tag = null;  // The GEDCOM tag for this record
 
-	private $is_old   = false; // Is this a pending record?
-	private $is_new   = false; // Is this a pending record?
+	private $is_old = false; // Is this a pending record?
+	private $is_new = false; // Is this a pending record?
 
-	private $date     = null;  // The WT_Date object for the "2 DATE ..." attribute
-	private $place    = null;  // The WT_Place object for the "2 PLAC ..." attribute
+	private $date = null;  // The WT_Date object for the "2 DATE ..." attribute
+	private $place = null;  // The WT_Place object for the "2 PLAC ..." attribute
 
 	// Temporary(!) variables that are used by other scripts
-	public $temp      = null; // Timeline controller
+	public $temp = null; // Timeline controller
 	public $sortOrder = 0;    // sort_facts()
 
 	// Create an event objects from a gedcom fragment.
 	// We need the parent object (to check privacy) and a (pseudo) fact ID to
 	// identify the fact within the record.
 	public function __construct($gedcom, WT_GedcomRecord $parent, $fact_id) {
-		if (preg_match('/^1 ('.WT_REGEX_TAG.')/', $gedcom, $match)) {
-			$this->gedcom  = $gedcom;
-			$this->parent  = $parent;
+		if (preg_match('/^1 (' . WT_REGEX_TAG . ')/', $gedcom, $match)) {
+			$this->gedcom = $gedcom;
+			$this->parent = $parent;
 			$this->fact_id = $fact_id;
-			$this->tag     = $match[1];
+			$this->tag = $match[1];
 		} else {
 			// TODO need to rewrite code that passes dummy data to this function
 			//throw new Exception('Invalid GEDCOM data passed to WT_Fact::_construct('.$gedcom.')');
@@ -96,7 +96,7 @@ class WT_Fact {
 	}
 
 	// Do the privacy rules allow us to display this fact to the current user
-	public function canShow($access_level=WT_USER_ACCESS_LEVEL) {
+	public function canShow($access_level = WT_USER_ACCESS_LEVEL) {
 		// TODO - use the privacy settings for $this->gedcom_id, not the default gedcom.
 		global $person_facts, $global_facts;
 
@@ -131,7 +131,7 @@ class WT_Fact {
 		return
 			$this->parent->canEdit() && !$this->isOld() && (
 				WT_USER_GEDCOM_ADMIN ||
-				WT_USER_CAN_EDIT && strpos($this->gedcom, "\n2 RESN locked")===false && $this->getTag()!='RESN' && $this->getTag()!='CHAN'
+				WT_USER_CAN_EDIT && strpos($this->gedcom, "\n2 RESN locked") === false && $this->getTag() != 'RESN' && $this->getTag() != 'CHAN'
 			);
 	}
 
@@ -140,6 +140,7 @@ class WT_Fact {
 		if ($this->place === null) {
 			$this->place = new WT_Place($this->getAttribute('PLAC'), $this->getParent()->getGedcomId());
 		}
+
 		return $this->place;
 	}
 
@@ -149,6 +150,7 @@ class WT_Fact {
 		if ($this->date === null) {
 			$this->date = new WT_Date($this->getAttribute('DATE'));
 		}
+
 		return $this->date;
 	}
 
@@ -167,7 +169,11 @@ class WT_Fact {
 		return $this->tag;
 	}
 
-	// Used to convert a real fact (e.g. BIRT) into a close-relative’s fact (e.g. _BIRT_CHIL)
+	/**
+	 * Used to convert a real fact (e.g. BIRT) into a close-relative’s fact (e.g. _BIRT_CHIL)
+	 *
+	 * @param string $tag
+	 */
 	public function setTag($tag) {
 		$this->tag = $tag;
 	}
@@ -178,7 +184,7 @@ class WT_Fact {
 	}
 
 	public function getLabel() {
-		switch($this->tag) {
+		switch ($this->tag) {
 		case 'EVEN':
 		case 'FACT':
 			if ($this->getAttribute('TYPE')) {
@@ -196,13 +202,16 @@ class WT_Fact {
 		$this->is_old = true;
 		$this->is_new = false;
 	}
+
 	public function isOld() {
 		return $this->is_old;
 	}
+
 	public function setIsNew() {
 		$this->is_new = true;
 		$this->is_old = false;
 	}
+
 	public function isNew() {
 		return $this->is_new;
 	}
@@ -217,6 +226,7 @@ class WT_Fact {
 				$citations[] = $match[1];
 			}
 		}
+
 		return $citations;
 	}
 
@@ -237,6 +247,7 @@ class WT_Fact {
 				$notes[] = $note;
 			}
 		}
+
 		return $notes;
 	}
 
@@ -250,6 +261,7 @@ class WT_Fact {
 				$media[] = $obje;
 			}
 		}
+
 		return $media;
 	}
 
@@ -263,7 +275,7 @@ class WT_Fact {
 			$attributes[] = $target->getFullName();
 		} else {
 			$value = $this->getValue();
-			if ($value && $value!='Y') {
+			if ($value && $value != 'Y') {
 				$attributes[] = '<span dir="auto">' . WT_Filter::escapeHtml($value) . '</span>';
 			}
 			$date = $this->getDate();
@@ -310,8 +322,7 @@ class WT_Fact {
 	 *
 	 * @return integer
 	 */
-	public static function CompareDate(WT_Fact $a, WT_Fact $b)
-	{
+	public static function CompareDate(WT_Fact $a, WT_Fact $b) {
 		if ($a->getDate()->isOK() && $b->getDate()->isOK()) {
 			// If both events have dates, compare by date
 			$ret = WT_Date::Compare($a->getDate(), $b->getDate());
@@ -371,7 +382,7 @@ class WT_Fact {
 					'MARS',
 					'_BIRT_CHIL',
 					'DIV', 'ANUL',
-					'_BIRT_', '_MARR_', '_DEAT_','_BURI_', // other events of close relatives
+					'_BIRT_', '_MARR_', '_DEAT_', '_BURI_', // other events of close relatives
 					'CENS',
 					'OCCU',
 					'RESI',
@@ -464,7 +475,7 @@ class WT_Fact {
 			}
 
 			if (($b->getAttribute('DATE') != null)
-				&& ($a->getAttribute('DATE')==null)
+				&& ($a->getAttribute('DATE') == null)
 			) {
 				return 1;
 			}
