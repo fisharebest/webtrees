@@ -27,8 +27,8 @@ class WT_File {
 	 * To allow arbitrarily large downloads with small memory limits, we either
 	 * write output to a stream or return it.
 	 *
-	 * @param string $url
-	 * @param null   $stream
+	 * @param string        $url
+	 * @param resource|null $stream
 	 *
 	 * @return null|string
 	 */
