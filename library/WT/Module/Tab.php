@@ -19,10 +19,48 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 interface WT_Module_Tab {
+	/**
+	 * The user can re-arrange the tab order, but until they do, this
+	 * is the order in which tabs are shown.
+	 *
+	 * @return int
+	 */
 	public function defaultTabOrder();
+
+	/**
+	 * Generate the HTML content of this tab.
+	 *
+	 * @return string
+	 */
 	public function getTabContent();
+
+	/**
+	 * Is this tab empty?  If so, we don't always need to display it.
+	 * @return bool
+	 */
 	public function hasTabContent();
+
+	/**
+	 * Can this tab load asynchronously?
+	 *
+	 * @return bool
+	 */
 	public function canLoadAjax();
+
+	/**
+	 * Any content (e.g. Javascript) that needs to be rendered before the tabs.
+	 *
+	 * This function is probably not needed, as there are better ways to achieve this.
+	 *
+	 * @return string
+	 */
 	public function getPreLoadContent();
+
+	/**
+	 * A greyed out tab has no actual content, but may perhaps have
+	 * options to create content.
+	 *
+	 * @return bool
+	 */
 	public function isGrayedOut();
 }

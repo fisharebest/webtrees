@@ -19,5 +19,10 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 interface WT_Module_Menu {
+	/**
+	 * The user can re-order menus.  Until they do, they are shown in this order.
+	 *
+	 * @return int
+	 */
 	public function defaultMenuOrder();
 }

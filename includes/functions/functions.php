@@ -113,7 +113,6 @@ function load_gedcom_settings($ged_id=WT_GED_ID) {
 	global $SAVE_WATERMARK_IMAGE;         $SAVE_WATERMARK_IMAGE         = $tree->getPreference('SAVE_WATERMARK_IMAGE');
 	global $SAVE_WATERMARK_THUMB;         $SAVE_WATERMARK_THUMB         = $tree->getPreference('SAVE_WATERMARK_THUMB');
 	global $SHOW_AGE_DIFF;                $SHOW_AGE_DIFF                = $tree->getPreference('SHOW_AGE_DIFF');
-	global $SHOW_COUNTER;                 $SHOW_COUNTER                 = $tree->getPreference('SHOW_COUNTER');
 	global $SHOW_DEAD_PEOPLE;             $SHOW_DEAD_PEOPLE             = $tree->getPreference('SHOW_DEAD_PEOPLE');
 	global $SHOW_FACT_ICONS;              $SHOW_FACT_ICONS              = $tree->getPreference('SHOW_FACT_ICONS');
 	global $SHOW_GEDCOM_RECORD;           $SHOW_GEDCOM_RECORD           = $tree->getPreference('SHOW_GEDCOM_RECORD');
@@ -130,7 +129,6 @@ function load_gedcom_settings($ged_id=WT_GED_ID) {
 	global $SHOW_PRIVATE_RELATIONSHIPS;   $SHOW_PRIVATE_RELATIONSHIPS   = $tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS');
 	global $SHOW_RELATIVES_EVENTS;        $SHOW_RELATIVES_EVENTS        = $tree->getPreference('SHOW_RELATIVES_EVENTS');
 	global $SOURCE_ID_PREFIX;             $SOURCE_ID_PREFIX             = $tree->getPreference('SOURCE_ID_PREFIX');
-	global $SURNAME_LIST_STYLE;           $SURNAME_LIST_STYLE           = $tree->getPreference('SURNAME_LIST_STYLE');
 	global $THUMBNAIL_WIDTH;              $THUMBNAIL_WIDTH              = $tree->getPreference('THUMBNAIL_WIDTH');
 	global $USE_RIN;                      $USE_RIN                      = $tree->getPreference('USE_RIN');
 	global $USE_SILHOUETTE;               $USE_SILHOUETTE               = $tree->getPreference('USE_SILHOUETTE');
@@ -293,8 +291,8 @@ function sort_facts(&$arr) {
 	}
 
 	//-- sort each type of array
-	usort($dated, array("WT_Fact", "CompareDate"));
-	usort($nondated, array("WT_Fact", "CompareType"));
+	usort($dated, array("WT_Fact", "compareDate"));
+	usort($nondated, array("WT_Fact", "compareType"));
 
 	//-- merge the arrays back together comparing by Facts
 	$dc = count($dated);
@@ -305,7 +303,7 @@ function sort_facts(&$arr) {
 	// while there is anything in the dated array continue merging
 	while ($i<$dc) {
 		// compare each fact by type to merge them in order
-		if ($j<$nc && WT_Fact::CompareType($dated[$i], $nondated[$j])>0) {
+		if ($j<$nc && WT_Fact::compareType($dated[$i], $nondated[$j])>0) {
 			$arr[$k] = $nondated[$j];
 			$j++;
 		}

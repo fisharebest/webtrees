@@ -106,7 +106,7 @@ function spanLTRRTL($inputText, $direction='BOTH', $class='') {
 			$currentLen += $endPos;
 			$element = substr($workingText, 0, $currentLen);
 			$temp = strtolower(substr($element, 0, 3));
-			if (strlen($element < 7) && $temp == '<br') { // assume we have '<br>' or a variant thereof
+			if (strlen($element) < 7 && $temp == '<br') { // assume we have '<br>' or a variant thereof
 				if ($numberState) {
 					$numberState = false;
 					if ($currentState == 'RTL') {
@@ -127,9 +127,9 @@ function spanLTRRTL($inputText, $direction='BOTH', $class='') {
 			if ($endPos === false) $endPos = 0;
 			$currentLen += $endPos;
 			$entity = substr($workingText, 0, $currentLen);
-			if (substr($entity, 0, 2 == '&#')) {
+			if (substr($entity, 0, 2) == '&#') {
 				// look for possible New Line codes
-				if ((substr($entity, 2, 1) == 'x') || (substr($entity, 2, 1) == 'X')) {
+				if (substr($entity, 2, 1) == 'x' || substr($entity, 2, 1) == 'X') {
 					// the entity is a hexadecimal number
 					$ordinal = hexdec(substr($entity, 3, -1));
 				} else {

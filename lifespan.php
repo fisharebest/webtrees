@@ -202,10 +202,10 @@ $people = count($controller->people);
 	</table>
 	<div dir="ltr" id="lifespan_chart" class="lifespan_outer">
 		<div dir="ltr" id="topInner"  class="lifespan_timeline" onmousedown="pandiv(); return false;">';
-			<?php $controller->PrintTimeline($controller->timelineMinYear,$controller->timelineMaxYear); ?>
+			<?php $controller->printTimeline($controller->timelineMinYear,$controller->timelineMaxYear); ?>
 		</div>
 		<div id="inner" class="lifespan_people" onmousedown="pandiv(); return false;">
-			<?php $maxY = $controller->fillTL($controller->people, $controller->YrowLoc); ?>
+			<?php $maxY = $controller->fillTimeline($controller->people, $controller->YrowLoc); ?>
 		</div>
 		<!--  Floating div controls START -->
 		<div dir="ltr" style="position:relative; z-index: 100; filter: alpha(opacity=67); -moz-opacity: 0.67;  opacity: 0.67; width:180px; top: 80px;">

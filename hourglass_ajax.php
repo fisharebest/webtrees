@@ -34,7 +34,7 @@ Zend_Session::writeClose();
 
 // -- print html header information
 if (WT_Filter::get('type')=='desc') {
-	$controller->print_descendency(WT_Individual::getInstance($controller->pid), 1, false);
+	$controller->printDescendency(WT_Individual::getInstance($controller->pid), 1, false);
 } else {
-	$controller->print_person_pedigree(WT_Individual::getInstance($controller->pid), 0);
+	$controller->printPersonPedigree(WT_Individual::getInstance($controller->pid), 0);
 }

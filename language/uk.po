@@ -12555,12 +12555,8 @@ msgstr "Показано %1$s до %2$s из %3$s"
 
 #: library/WT/Controller/Fanchart.php:349
 #: library/WT/Controller/Hourglass.php:398 pedigree.php:228
-#, fuzzy
 msgid "Sibling"
-msgid_plural "Siblings"
-msgstr[0] "Брат чи сестра"
-msgstr[1] "Брат чи сестра"
-msgstr[2] "Брат чи сестра"
+msgstr "Брат чи сестра"
 
 #: library/WT/Controller/Hourglass.php:397 pedigree.php:225
 msgid "Siblings"

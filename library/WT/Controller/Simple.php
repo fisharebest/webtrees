@@ -19,23 +19,36 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 class WT_Controller_Simple extends WT_Controller_Page {
-	// Popup windows don't always need a title
+	/**
+	 * Create content for a popup window.
+	 * The page title is not used by all browsers.
+	 */
 	public function __construct() {
 		parent::__construct();
 		$this->setPageTitle(WT_WEBTREES);
 	}
 
-	// Simple (i.e. popup) windows are deprecated.
+	/**
+	 * Simple (i.e. popup) windows are deprecated.
+	 *
+	 * @return WT_Controller_Simple
+	 */
 	public function pageHeader() {
 		global $view;
 
-		$view='simple';
+		$view = 'simple';
 		parent::pageHeader();
 
 		return $this;
 	}
 
-	// Restrict access
+	/**
+	 * Restrict access
+	 *
+	 * @param bool $condition
+	 *
+	 * @return WT_Controller_Simple
+	 */
 	public function restrictAccess($condition) {
 		if ($condition !== true) {
 			$this->addInlineJavascript('opener.window.location.reload(); window.close();');

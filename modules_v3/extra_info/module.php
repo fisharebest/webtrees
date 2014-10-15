@@ -41,7 +41,7 @@ class extra_info_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 	// Implement WT_Module_Sidebar
 	public function getSidebarContent() {
-		global $SHOW_COUNTER, $controller;
+		global $WT_TREE, $controller;
 
 		$indifacts = array();
 		// The individual’s own facts
@@ -59,13 +59,11 @@ class extra_info_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				print_fact($fact, $controller->record);
 			}
 		}
-		echo '<div id="hitcounter">';
-		if ($SHOW_COUNTER && (empty($SEARCH_SPIDER))) {
-			//print indi counter only if displaying a non-private person
-			require WT_ROOT.'includes/hitcount.php';
-			echo WT_I18N::translate('Hit count:'). ' '. $hitCount;
+		if ($WT_TREE->getPreference('SHOW_COUNTER')) {
+			$hitCount = 0;
+			require WT_ROOT . 'includes/hitcount.php';
+			echo '<div id="hitcounter">', WT_I18N::translate('Hit count:'), ' ', $hitCount, '</div>';
 		}
-		echo '</div>';// close #hitcounter
 		return strip_tags(ob_get_clean(), '<a><div><span>');
 	}
 

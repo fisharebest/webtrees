@@ -12558,12 +12558,8 @@ msgstr "Rodoma nuo %1$s iki %2$s iš %3$s"
 
 #: library/WT/Controller/Fanchart.php:349
 #: library/WT/Controller/Hourglass.php:398 pedigree.php:228
-#, fuzzy
 msgid "Sibling"
-msgid_plural "Siblings"
-msgstr[0] "Brolis, sesuo"
-msgstr[1] "Brolis, sesuo"
-msgstr[2] "Brolis, sesuo"
+msgstr "Brolis ir sesuo"
 
 #: library/WT/Controller/Hourglass.php:397 pedigree.php:225
 msgid "Siblings"
