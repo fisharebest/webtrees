@@ -73,7 +73,7 @@ class WT_DB {
 			throw new Exception('WT_DB::createInstance() can only be called once.');
 		}
 		// Create the underlying PDO object
-		self::$pdo=new PDO(
+		self::$pdo = new PDO(
 			(substr($DBHOST, 0, 1) == '/' ?
 				"mysql:unix_socket={$DBHOST};dbname={$DBNAME}" :
 				"mysql:host={$DBHOST};dbname={$DBNAME};port={$DBPORT}"
@@ -118,10 +118,10 @@ class WT_DB {
 	/**
 	 * Log the details of a query, for debugging and analysis.
 	 *
-	 * @param $query
-	 * @param $rows
-	 * @param $microtime
-	 * @param $bind_variables
+	 * @param string   $query
+	 * @param int      $rows
+	 * @param double   $microtime
+	 * @param string[] $bind_variables
 	 *
 	 * @return void
 	 */
@@ -156,18 +156,18 @@ class WT_DB {
 			}
 			// Highlight embedded literal strings.
 			if (preg_match('/[\'"]/', $query)) {
-				$query2 = '<span style="background-color:yellow;">'.$query2.'</span>';
+				$query2 = '<span style="background-color:yellow;">' . $query2 . '</span>';
 			}
 			// Highlight slow queries
 			$microtime *= 1000; // convert to milliseconds
 			if ($microtime > 1000) {
 				$microtime = sprintf('<span style="background-color: #ff0000;">%.3f</span>', $microtime);
-			} elseif ($microtime>100) {
+			} elseif ($microtime > 100) {
 				$microtime = sprintf('<span style="background-color: #ffa500;">%.3f</span>', $microtime);
-			} elseif ($microtime>1) {
+			} elseif ($microtime > 1) {
 				$microtime = sprintf('<span style="background-color: #ffff00;">%.3f</span>', $microtime);
 			} else {
-			$microtime = sprintf('%.3f', $microtime);
+				$microtime = sprintf('%.3f', $microtime);
 			}
 			self::$log[] = "<tr><td>{$stack}</td><td>{$query2}</td><td>{$rows}</td><td>{$microtime}</td></tr>";
 		} else {
@@ -191,7 +191,7 @@ class WT_DB {
 	 * @return string
 	 */
 	public static function getQueryLog() {
-		$html = '<table border="1"><col span="3"><col align="char"><thead><tr><th>#</th><th>Query</th><th>Rows</th><th>Time (ms)</th></tr></thead><tbody>'.implode('', self::$log).'</tbody></table>';
+		$html = '<table border="1"><col span="3"><col align="char"><thead><tr><th>#</th><th>Query</th><th>Rows</th><th>Time (ms)</th></tr></thead><tbody>' . implode('', self::$log) . '</tbody></table>';
 		self::$log = array();
 
 		return $html;
@@ -233,11 +233,11 @@ class WT_DB {
 	 * @return int The number of rows affected by this SQL query
 	 */
 	public static function exec($sql) {
-		$sql   = str_replace('##', WT_TBLPREFIX, $sql);
+		$sql = str_replace('##', WT_TBLPREFIX, $sql);
 		$start = microtime(true);
-		$rows  = self::$pdo->exec($sql);
-		$end   = microtime(true);
-		self::logQuery($sql, $rows, $end-$start, array());
+		$rows = self::$pdo->exec($sql);
+		$end = microtime(true);
+		self::logQuery($sql, $rows, $end - $start, array());
 
 		return $rows;
 	}
@@ -262,9 +262,9 @@ class WT_DB {
 	/**
 	 * Run a series of scripts to bring the database schema up to date.
 	 *
-	 * @param $schema_dir
-	 * @param $schema_name
-	 * @param $target_version
+	 * @param string $schema_dir
+	 * @param string $schema_name
+	 * @param int    $target_version
 	 *
 	 * @return void
 	 * @throws Exception
