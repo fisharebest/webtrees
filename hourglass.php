@@ -97,10 +97,10 @@ $gencount = 0;
 		<table>
 			<tr>
 				<td style="vertical-align:middle">
-					<?php $controller->print_descendency(WT_Individual::getInstance($controller->pid), 1); ?>
+					<?php $controller->printDescendency(WT_Individual::getInstance($controller->pid), 1); ?>
 				</td>
 				<td style="vertical-align:middle">
-					<?php $controller->print_person_pedigree(WT_Individual::getInstance($controller->pid), 1); ?>
+					<?php $controller->printPersonPedigree(WT_Individual::getInstance($controller->pid), 1); ?>
 				</td>
 			</tr>
 		</table>

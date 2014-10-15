@@ -45,22 +45,22 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 	CONST LINK = "<a class='%s' href='%s' data-parms='%s-%s-%s-%s'></a>";
 	CONST SWITCH_LINK = "<a href='hourglass.php?rootid=%s&amp;show_spouse=%s&amp;show_full=%s&amp;generations=%s&amp;box_width=%s' class='name1'>%s</a>";
 
-	function __construct($rootid='', $show_full=1, $loadJS=true) {
+	function __construct($rootid = '', $show_full = 1, $loadJS = true) {
 		global $bheight, $bwidth, $cbwidth, $cbheight, $PEDIGREE_FULL_DETAILS, $MAX_DESCENDANCY_GENERATIONS;
 		global $TEXT_DIRECTION, $show_full;
 
 		parent::__construct();
 
 		// Extract parameters from from
-		$this->pid         = WT_Filter::get('rootid', WT_REGEX_XREF);
-		$this->show_full   = WT_Filter::getInteger('show_full',   0, 1, $PEDIGREE_FULL_DETAILS);
+		$this->pid = WT_Filter::get('rootid', WT_REGEX_XREF);
+		$this->show_full = WT_Filter::getInteger('show_full', 0, 1, $PEDIGREE_FULL_DETAILS);
 		$this->show_spouse = WT_Filter::getInteger('show_spouse', 0, 1, 0);
 		$this->generations = WT_Filter::getInteger('generations', 2, $MAX_DESCENDANCY_GENERATIONS, 3);
-		$this->box_width   = WT_Filter::getInteger('box_width',   50, 300, 100);
+		$this->box_width = WT_Filter::getInteger('box_width', 50, 300, 100);
 
 		$this->canLoadJS = $loadJS;
 		// This is passed as a global.  A parameter would be better...
-		$show_full=$this->show_full;
+		$show_full = $this->show_full;
 
 		if (!empty($rootid)) {
 			$this->pid = $rootid;
@@ -68,22 +68,22 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 
 		//-- flip the arrows for RTL languages
 		if ($TEXT_DIRECTION == 'ltr') {
-			$this->left_arrow  = 'icon-larrow';
+			$this->left_arrow = 'icon-larrow';
 			$this->right_arrow = 'icon-rarrow';
 		} else {
-			$this->left_arrow  = 'icon-rarrow';
+			$this->left_arrow = 'icon-rarrow';
 			$this->right_arrow = 'icon-larrow';
 		}
 
 		// -- size of the detailed boxes based upon optional width parameter
-		$Dbwidth  = $this->box_width * $bwidth  / 100;
+		$Dbwidth = $this->box_width * $bwidth / 100;
 		$Dbheight = $this->box_width * $bheight / 100;
-		$bwidth   = $Dbwidth;
-		$bheight  = $Dbheight;
+		$bwidth = $Dbwidth;
+		$bheight = $Dbheight;
 
 		// -- adjust size of the compact box
 		if (!$this->show_full) {
-			$bwidth = $this->box_width * $cbwidth  / 100;
+			$bwidth = $this->box_width * $cbwidth / 100;
 			$bheight = $cbheight;
 		}
 
@@ -99,7 +99,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 		$this->name = $this->hourPerson->getFullName();
 
 		//Checks how many generations of descendency is for the person for formatting purposes
-		$this->dgenerations = $this->max_descendency_generations($this->pid, 0);
+		$this->dgenerations = $this->maxDescendencyGenerations($this->pid, 0);
 		if ($this->dgenerations < 1) {
 			$this->dgenerations = 1;
 		}
@@ -110,30 +110,30 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 	/**
 	 * Prints pedigree of the person passed in. Which is the descendancy
 	 *
-	 * @param string $person ID of person to print the pedigree for
-	 * @param int    $count  generation count, so it recursively calls itself
+	 * @param WT_Individual $person ID of person to print the pedigree for
+	 * @param int           $count  generation count, so it recursively calls itself
 	 */
-	function print_person_pedigree($person, $count) {
+	public function printPersonPedigree(WT_Individual $person, $count) {
 		global $WT_IMAGES, $bheight, $bwidth;
 
-		if ($count>=$this->generations) {
+		if ($count >= $this->generations) {
 			return;
 		}
-		//if (!$person) return;
+
 		$genoffset = $this->generations;  // handle pedigree n generations lines
 
 		//
 		//Prints empty table columns for children w/o parents up to the max generation
 		//This allows vertical line spacing to be consistent
 		//
-		if (count($person->getChildFamilies())==0) {
+		if (count($person->getChildFamilies()) == 0) {
 			echo '<table><tr><td><div style="width:', $bwidth, 'px; height:', $bheight, 'px;"></div></td><td>';
 
 			//-- recursively get the father’s family
-			$this->print_person_pedigree($person, $count + 1);
+			$this->printPersonPedigree($person, $count + 1);
 			echo '</td><td></tr><tr><td><div style="width:', $bwidth, 'px; height:', $bheight, 'px;"></div></td><td>';
 			//-- recursively get the father’s family
-			$this->print_person_pedigree($person, $count+1);
+			$this->printPersonPedigree($person, $count + 1);
 			echo '</td><td></tr></table>';
 		}
 		foreach ($person->getChildFamilies() as $family) {
@@ -147,20 +147,20 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 			echo "</td>";
 			if ($family->getHusband()) {
 				$ARID = $family->getHusband()->getXref();
-				echo "<td id=\"td_".$ARID."\">";
+				echo "<td id=\"td_" . $ARID . "\">";
 
 				//-- print an Ajax arrow on the last generation of the adult male
-				if ($count==$this->generations-1 && $family->getHusband()->getChildFamilies()) {
+				if ($count == $this->generations - 1 && $family->getHusband()->getChildFamilies()) {
 					printf(self::LINK, $this->right_arrow, $ARID, 'asc', $this->show_full, $this->box_width, $this->show_spouse);
 				}
 				//-- recursively get the father’s family
-				$this->print_person_pedigree($family->getHusband(), $count+1);
+				$this->printPersonPedigree($family->getHusband(), $count + 1);
 				echo "</td>";
 			} else {
 				echo '<td>';
-				if ($count<$genoffset-1) {
+				if ($count < $genoffset - 1) {
 					echo '<table>';
-					for ($i=$count; $i<(pow(2, ($genoffset-1)-$count)/2)+2; $i++) {
+					for ($i = $count; $i < (pow(2, ($genoffset - 1) - $count) / 2) + 2; $i++) {
 						$this->printEmptyBox($bwidth, $bheight);
 						echo '</tr>';
 						$this->printEmptyBox($bwidth, $bheight);
@@ -170,23 +170,23 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 				}
 			}
 			echo
-				'</tr><tr>',
-				"<td style='vertical-align:top'><img class='pvline' src='{$WT_IMAGES["vline"]}' width='3' alt=''></td>",
-				'<td><img class="line4" src="'.$WT_IMAGES["hline"].'" width="7" height="3" alt=""></td>',
-				'<td>';
+			'</tr><tr>',
+			"<td style='vertical-align:top'><img class='pvline' src='{$WT_IMAGES["vline"]}' width='3' alt=''></td>",
+				'<td><img class="line4" src="' . $WT_IMAGES["hline"] . '" width="7" height="3" alt=""></td>',
+			'<td>';
 			//-- print the mother box
 			print_pedigree_person($family->getWife());
 			echo '</td>';
 			if ($family->getWife()) {
 				$ARID = $family->getWife()->getXref();
-				echo '<td id="td_'.$ARID.'">';
+				echo '<td id="td_' . $ARID . '">';
 
 				//-- print an ajax arrow on the last generation of the adult female
-				if ($count==$this->generations-1 && $family->getWife()->getChildFamilies()) {
+				if ($count == $this->generations - 1 && $family->getWife()->getChildFamilies()) {
 					printf(self::LINK, $this->right_arrow, $ARID, 'asc', $this->show_full, $this->box_width, $this->show_spouse);
 				}
 				//-- recursively print the mother’s family
-				$this->print_person_pedigree($family->getWife(), $count+1);
+				$this->printPersonPedigree($family->getWife(), $count + 1);
 				echo '</td>';
 			}
 			echo '</tr></table>';
@@ -202,14 +202,14 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 	 *
 	 * @return void
 	 */
-	function printEmptyBox($bwidth, $bheight){
-	echo '<tr>',
-		 '<td>',
-		 '<div style="width:',$bwidth+16,'px; height:',$bheight+8,'px;"></div>',
-		 '</td>',
-		 '<td>';
+	private function printEmptyBox($bwidth, $bheight) {
+		echo '<tr>',
+		'<td>',
+		'<div style="width:', $bwidth + 16, 'px; height:', $bheight + 8, 'px;"></div>',
+		'</td>',
+		'<td>';
 	}
-	
+
 	/**
 	 * Prints descendency of passed in person
 	 *
@@ -219,15 +219,13 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 	 *
 	 * @return int
 	 */
-	function print_descendency($person, $count, $showNav=true) {
+	public function printDescendency($person, $count, $showNav = true) {
 		global $TEXT_DIRECTION, $WT_IMAGES, $bheight, $bwidth, $lastGenSecondFam;
 
-		if ($count>$this->dgenerations) {
+		if ($count > $this->dgenerations) {
 			return;
 		}
-		if (!$person) {
-			return;
-		}
+
 		$pid = $person->getXref();
 		$tablealign = 'right';
 		$otablealign = 'left';
@@ -237,7 +235,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 		}
 
 		//-- put a space between families on the last generation
-		if ($count == $this->dgenerations-1) {
+		if ($count == $this->dgenerations - 1) {
 			if (isset($lastGenSecondFam)) {
 				echo '<br>';
 			}
@@ -253,7 +251,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 		if ($count < $this->dgenerations) {
 			// Put all of the children in a common array
 			foreach ($families as $family) {
-				$famNum ++;
+				$famNum++;
 				foreach ($family->getChildren() as $child) {
 					$children[] = $child;
 				}
@@ -267,7 +265,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 					$chil = $person2->getXref();
 					echo '<tr>';
 					echo "<td id='td_$chil' class='$TEXT_DIRECTION' style='text-align:$otablealign'>";
-					$kids = $this->print_descendency($person2, $count+1);
+					$kids = $this->printDescendency($person2, $count + 1);
 					$numkids += $kids;
 					echo '</td>';
 
@@ -276,7 +274,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 						if ($i == 0) {
 							// First child
 							echo "<td style='vertical-align:bottom'><img alt='' class='line1 tvertline' id='vline_$chil' src='{$WT_IMAGES["vline"]}' width='3'></td>";
-						} elseif ($i==$ct-1) {
+						} elseif ($i == $ct - 1) {
 							// Last child
 							echo "<td style='vertical-align:top'><img alt='' class='bvertline' id='vline_$chil' src='{$WT_IMAGES["vline"]}' width='3'></td>";
 						} else {
@@ -301,12 +299,12 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 			}
 			$kcount = 0;
 			foreach ($families as $family) {
-				$kcount+=$family->getNumberOfChildren();
+				$kcount += $family->getNumberOfChildren();
 			}
 			if ($kcount == 0) {
 				echo "&nbsp;</td><td style='width:{$bwidth}px'>";
 			} else {
-				printf(self::LINK,  $this->left_arrow, $pid, 'desc', $this->show_full, $this->box_width, $this->show_spouse);
+				printf(self::LINK, $this->left_arrow, $pid, 'desc', $this->show_full, $this->box_width, $this->show_spouse);
 				//-- move the arrow up to line up with the correct box
 				if ($this->show_spouse) {
 					echo str_repeat('<br><br><br>', count($families));
@@ -335,21 +333,21 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 				echo "</td><td></td>";
 			}
 			//-- add offset divs to make things line up better
-			if ($count==$this->dgenerations) {
-				echo "<tr><td colspan '2'><div style='height: ".($this->bhalfheight/2)."px; width: ".$bwidth."px;'><br></div>";
+			if ($count == $this->dgenerations) {
+				echo "<tr><td colspan '2'><div style='height: " . ($this->bhalfheight / 2) . "px; width: " . $bwidth . "px;'><br></div>";
 			}
 		}
 		echo "</td></tr></table>";
 
 		// For the root person, print a down arrow that allows changing the root of tree
-		if ($showNav && $count==1) {
+		if ($showNav && $count == 1) {
 			// NOTE: If statement OK
 			if ($person->canShowName()) {
 				// -- print left arrow for decendants so that we can move down the tree
 				$famids = $person->getSpouseFamilies();
 				//-- make sure there is more than 1 child in the family with parents
 				$cfamids = $person->getChildFamilies();
-				$num=0;
+				$num = 0;
 				foreach ($cfamids as $family) {
 					$num += $family->getNumberOfChildren();
 				}
@@ -360,7 +358,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 					echo '<table class="person_box"><tr><td>';
 
 					foreach ($famids as $family) {
-						echo "<span class='name1'>".WT_I18N::translate('Family')."</span>";
+						echo "<span class='name1'>" . WT_I18N::translate('Family') . "</span>";
 						$spouse = $family->getSpouse($person);
 						if ($spouse) {
 							printf(self::SWITCH_LINK, $spouse->getXref(), $this->show_spouse, $this->show_full, $this->generations, $this->box_width, $spouse->getFullName());
@@ -385,10 +383,10 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 						}
 
 						// filter out root person from children array so only siblings remain
-						$siblings = array_filter($family->getChildren(), function($item) use ($pid) {
+						$siblings = array_filter($family->getChildren(), function ($item) use ($pid) {
 							return $item->getXref() != $pid;
 						});
-						$num  = count($siblings);
+						$num = count($siblings);
 						if ($num) {
 							echo "<span class='name1'>";
 							echo $num > 1 ? WT_I18N::translate('Siblings') : WT_I18N::translate('Sibling');
@@ -405,32 +403,44 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 			}
 		}
 		echo '</td></tr></table>';
+
 		return $numkids;
 	}
 
 	/**
 	 * Calculates number of generations a person has
 	 *
-	 * @param string $pid ID of person to see how far down the descendency goes
+	 * @param string $pid   ID of person to see how far down the descendency goes
 	 * @param int    $depth Pass in 0 and it calculates how far down descendency goes
 	 *
 	 * @return int Number of generations the descendency actually goes
 	 */
-	function max_descendency_generations($pid, $depth) {
-		if ($depth > $this->generations) return $depth;
+	private function maxDescendencyGenerations($pid, $depth) {
+		if ($depth > $this->generations) {
+			return $depth;
+		}
 		$person = WT_Individual::getInstance($pid);
-		if (is_null($person)) return $depth;
+		if (is_null($person)) {
+			return $depth;
+		}
 		$maxdc = $depth;
 		foreach ($person->getSpouseFamilies() as $family) {
 			foreach ($family->getChildren() as $child) {
-				$dc = $this->max_descendency_generations($child->getXref(), $depth+1);
-				if ($dc >= $this->generations) return $dc;
-				if ($dc > $maxdc) $maxdc = $dc;
+				$dc = $this->maxDescendencyGenerations($child->getXref(), $depth + 1);
+				if ($dc >= $this->generations) {
+					return $dc;
+				}
+				if ($dc > $maxdc) {
+					$maxdc = $dc;
+				}
 			}
 		}
 
 		$maxdc++;
-		if ($maxdc==1) $maxdc++;
+		if ($maxdc == 1) {
+			$maxdc++;
+		}
+
 		return $maxdc;
 	}
 
