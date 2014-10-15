@@ -205,21 +205,21 @@ class WT_Controller_Search extends WT_Controller_Page {
 
 		// Get the search results based on the action
 		if ($topsearch) {
-			$this->TopSearch();
+			$this->topSearch();
 		}
 		// If we want to show associated persons, build the list
 		switch ($this->action) {
 		case 'general':
 			$this->setPageTitle(WT_I18N::translate('General search'));
-			$this->GeneralSearch();
+			$this->generalSearch();
 			break;
 		case 'soundex':
 			$this->setPageTitle(WT_I18N::translate('Phonetic search'));
-			$this->SoundexSearch();
+			$this->soundexSearch();
 			break;
 		case 'replace':
 			$this->setPageTitle(WT_I18N::translate('Search and replace'));
-			$this->SearchAndReplace();
+			$this->searchAndReplace();
 			return;
 		}
 	}
@@ -247,8 +247,8 @@ class WT_Controller_Search extends WT_Controller_Page {
 	 * Handles searches entered in the top search box in the themes and
 	 * prepares the search to do a general search on individuals, families and sources.
 	 */
-	function TopSearch() {
-		// first set some required variables. Search only in current gedcom, only in individuals.
+	private function topSearch() {
+		// first set some required variables. Search only in the current tree, only in individuals.
 		$this->srindi = "yes";
 
 		// Enable the default gedcom for search
@@ -268,7 +268,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 	/**
 	 * Gathers results for a general search
 	 */
-	function GeneralSearch() {
+	private function generalSearch() {
 		// Split search terms into an array
 		$query_terms=array();
 		$query=$this->query;
@@ -363,7 +363,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 	/**
 	 *  Preforms a search and replace
 	 */
-	function SearchAndReplace()
+	private function searchAndReplace()
 	{
 		global $STANDARD_NAME_FACTS, $ADVANCED_NAME_FACTS;
 
@@ -373,7 +373,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 		$this->srsour = 'yes';
 		$this->srnote = 'yes';
 		$oldquery = $this->query;
-		$this->GeneralSearch();
+		$this->generalSearch();
 
 		//-- don't try to make any changes if nothing was found
 		if (!$this->myindilist && !$this->myfamlist && !$this->mysourcelist && !$this->mynotelist) {
@@ -490,7 +490,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 	 *  The code should be improved - see RFE
 	 *
 	 */
-	function SoundexSearch() {
+	private function soundexSearch() {
 		if (((!empty ($this->lastname)) || (!empty ($this->firstname)) || (!empty ($this->place))) && (count($this->sgeds) > 0)) {
 			$logstring = "Type: Soundex\n";
 			if (!empty ($this->lastname))
