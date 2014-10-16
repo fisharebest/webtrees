@@ -197,20 +197,20 @@ class WT_I18N {
 		Zend_Registry::set('Zend_Translate', self::$translation_adapter);
 
 		// Load any local user translations
-		if (is_dir(WT_DATA_DIR.'language')) {
-			if (file_exists(WT_DATA_DIR.'language/'.$locale.'.mo')) {
+		if (is_dir(WT_DATA_DIR . 'language')) {
+			if (file_exists(WT_DATA_DIR . 'language/' . $locale . '.mo')) {
 				self::addTranslation(
-					new Zend_Translate('gettext', WT_DATA_DIR.'language/'.$locale.'.mo', $locale)
+					new Zend_Translate('gettext', WT_DATA_DIR.'language/' . $locale . '.mo', $locale)
 				);
 			}
-			if (file_exists(WT_DATA_DIR.'language/'.$locale.'.php')) {
+			if (file_exists(WT_DATA_DIR.'language/' . $locale . '.php')) {
 				self::addTranslation(
-					new Zend_Translate('array', WT_DATA_DIR.'language/'.$locale.'.php', $locale)
+					new Zend_Translate('array', WT_DATA_DIR . 'language/' . $locale . '.php', $locale)
 				);
 			}
-			if (file_exists(WT_DATA_DIR.'language/'.$locale.'.csv')) {
+			if (file_exists(WT_DATA_DIR . 'language/' . $locale . '.csv')) {
 				self::addTranslation(
-					new Zend_Translate('csv', WT_DATA_DIR.'language/'.$locale.'.csv', $locale)
+					new Zend_Translate('csv', WT_DATA_DIR . 'language/' . $locale . '.csv', $locale)
 				);
 			}
 		}
@@ -259,7 +259,7 @@ class WT_I18N {
 	 * @param Zend_Translate $translation
 	 */
 	public static function addTranslation(Zend_Translate $translation) {
-		self::$translation_adapter->getAdapter()->addTranslation($translation);
+		self::$translation_adapter->getAdapter()->addTranslation(array('content' => $translation));
 	}
 
 	/**
