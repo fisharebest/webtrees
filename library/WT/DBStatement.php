@@ -52,15 +52,35 @@ class WT_DBStatement {
 			throw new Exception('WT_DBStatement::execute() called twice.');
 		}
 
-		// Turn booleans into integers.  Otherwise MySQL’s strict mode can get upset.
-		foreach ($bind_variables as &$bind_variable) {
-			if ($bind_variable === false) {
-				// Otherwise true=>'1' and false=>''
-				$bind_variable = 0;
+		// Parameters may be either named (e.g. :foo) or positional (e.g. ?).
+		// Named parameters may take any type.  Positional parameters are always strings.
+		// Queries should use one format or the other.
+		foreach ($bind_variables as $key => $bind_variable) {
+			if (is_numeric($key)) {
+				// Positional parameters are numeric (starting at 1)
+				$key = 1 + $key;
+			} else {
+				// Named parameters are prefixed with a colon
+				$key = ':' . $key;
+			}
+			switch (gettype($bind_variable)) {
+			case 'NULL':
+				$this->pdo_statement->bindValue($key, $bind_variable, PDO::PARAM_NULL);
+				break;
+			case 'boolean':
+				$this->pdo_statement->bindValue($key, (int)$bind_variable, PDO::PARAM_INT);
+				break;
+			case 'integer':
+				$this->pdo_statement->bindValue($key, $bind_variable, PDO::PARAM_INT);
+				break;
+			default:
+				$this->pdo_statement->bindValue($key, $bind_variable, PDO::PARAM_STR);
+				break;
 			}
 		}
+
 		$start = microtime(true);
-		$this->pdo_statement->execute($bind_variables);
+		$this->pdo_statement->execute();
 		$end = microtime(true);
 		// If it was a SELECT statement, we cannot run it again.
 		$this->executed = strpos($this->pdo_statement->queryString, 'SELECT') === 0;
