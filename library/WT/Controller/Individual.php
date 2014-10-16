@@ -111,7 +111,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 	 *
 	 * @param WT_Fact $event the event object
 	 */
-	function print_name_record(WT_Fact $event) {
+	public function printNameRecord(WT_Fact $event) {
 		global $WT_TREE;
 
 		$factrec = $event->getGedcom();
@@ -205,7 +205,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 	 *
 	 * @param WT_Fact $event the Event object
 	 */
-	function print_sex_record(WT_Fact $event) {
+	public function printSexRecord(WT_Fact $event) {
 		$sex = $event->getValue();
 		if (empty($sex)) $sex = 'U';
 		echo '<span id="sex" class="';

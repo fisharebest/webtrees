@@ -398,7 +398,7 @@ class WT_Date {
 	 *
 	 * @param WT_Date $d1
 	 * @param WT_Date $d2
-	 * @param string  $format
+	 * @param int     $format
 	 *
 	 * @return int|string
 	 */

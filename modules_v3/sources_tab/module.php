@@ -41,66 +41,71 @@ class sources_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 
 	// Implement WT_Module_Tab
 	public function hasTabContent() {
-		return WT_USER_CAN_EDIT || $this->get_facts();
+		return WT_USER_CAN_EDIT || $this->getFactsWithSources();
 	}
 
 	// Implement WT_Module_Tab
 	public function isGrayedOut() {
-		return !$this->get_facts();
+		return !$this->getFactsWithSources();
 	}
+
 	// Implement WT_Module_Tab
 	public function getTabContent() {
 		global $SHOW_LEVEL2_NOTES, $controller;
 
 		ob_start();
-		echo '<table class="facts_table">';
 		?>
-		<tr>
-			<td colspan="2" class="descriptionbox rela">
+		<table class="facts_table">
+			<tr>
+				<td colspan="2" class="descriptionbox rela">
 				<input id="checkbox_sour2" type="checkbox" <?php if ($SHOW_LEVEL2_NOTES) echo " checked=\"checked\""; ?> onclick="jQuery('tr.row_sour2').toggle();">
 				<label for="checkbox_sour2"><?php echo WT_I18N::translate('Show all sources'), help_link('show_fact_sources'); ?></label>
-			</td>
-		</tr>
-		<?php
-		foreach ($this->get_facts() as $fact) {
-			if ($fact->getTag() == 'SOUR') {
-				print_main_sources($fact, 1);
-				} else {
-				for ($i=2; $i<4; ++$i) {
-					print_main_sources($fact, $i);
-				}
-			}
-		}
-		if (!$this->get_facts()) {
-			echo '<tr><td id="no_tab4" colspan="2" class="facts_value">', WT_I18N::translate('There are no source citations for this individual.'), '</td></tr>';
-		}
-
-		// New Source Link
-		if ($controller->record->canEdit()) {
-		?>
-			<tr>
-				<td class="facts_label">
-					<?php echo WT_Gedcom_Tag::getLabel('SOUR'); ?>
-				</td>
-				<td class="facts_value">
-					<a href="#" onclick="add_new_record('<?php echo $controller->record->getXref(); ?>','SOUR'); return false;">
-						<?php echo WT_I18N::translate('Add a new source citation'); ?>
-					</a>
-					<?php echo help_link('add_source'); ?>
 				</td>
 			</tr>
 			<?php
-		}
-		?>
+			foreach ($this->getFactsWithSources() as $fact) {
+				if ($fact->getTag() == 'SOUR') {
+					print_main_sources($fact, 1);
+				} else {
+					print_main_sources($fact, 2);
+				}
+			}
+			if (!$this->getFactsWithSources()) {
+				echo '<tr><td id="no_tab4" colspan="2" class="facts_value">', WT_I18N::translate('There are no source citations for this individual.'), '</td></tr>';
+			}
+
+			// New Source Link
+			if ($controller->record->canEdit()) {
+				?>
+				<tr>
+					<td class="facts_label">
+						<?php echo WT_Gedcom_Tag::getLabel('SOUR'); ?>
+					</td>
+					<td class="facts_value">
+						<a href="#" onclick="add_new_record('<?php echo $controller->record->getXref(); ?>','SOUR'); return false;">
+							<?php echo WT_I18N::translate('Add a new source citation'); ?>
+						</a>
+						<?php echo help_link('add_source'); ?>
+					</td>
+				</tr>
+			<?php
+			}
+			?>
 		</table>
 		<?php
 		if (!$SHOW_LEVEL2_NOTES) {
 			echo '<script>jQuery("tr.row_sour2").toggle();</script>';
 		}
-		return '<div id="'.$this->getName().'_content">'.ob_get_clean().'</div>';
+
+		return '<div id="' . $this->getName() . '_content">' . ob_get_clean() . '</div>';
 	}
 
-	function get_facts() {
+	/**
+	 * Get all the facts for an individual which contain sources.
+	 *
+	 * @return WT_Fact[]
+	 */
+	private function getFactsWithSources() {
 		global $controller;
 
 		if ($this->facts === null) {
@@ -109,7 +114,7 @@ class sources_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 				if ($family->canShow()) {
 					foreach ($family->getFacts() as $fact) {
 						$facts[] = $fact;
-		}
+					}
 				}
 			}
 			$this->facts = array();
@@ -120,6 +125,7 @@ class sources_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 			}
 			sort_facts($this->facts);
 		}
+
 		return $this->facts;
 	}
 

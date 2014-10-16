@@ -20,18 +20,17 @@
 
 class WT_Controller_Base {
 	// The controller accumulates Javascript (inline and external), and renders it in the footer
-	const JS_PRIORITY_HIGH   = 0;
+	const JS_PRIORITY_HIGH = 0;
 	const JS_PRIORITY_NORMAL = 1;
-	const JS_PRIORITY_LOW    = 2;
+	const JS_PRIORITY_LOW = 2;
 	private $inline_javascript = array(
 		self::JS_PRIORITY_HIGH   => array(),
 		self::JS_PRIORITY_NORMAL => array(),
 		self::JS_PRIORITY_LOW    => array(),
 	);
 	private $external_javascript = array();
-	private $external_stylesheet = array();
 
-	protected $page_header  = false;              // Have we printed a page header?
+	protected $page_header = false;        // Have we printed a page header?
 
 	// Startup activity
 	public function __construct() {
@@ -45,34 +44,47 @@ class WT_Controller_Base {
 		}
 	}
 
-	// Make a list of external Javascript, so we can render them in the footer
+	/**
+	 * Make a list of external Javascript, so we can render them in the footer
+	 *
+	 * @param string $script_name
+	 *
+	 * @return WT_Controller_Base
+	 */
 	public function addExternalJavascript($script_name) {
-		$this->external_javascript[$script_name]=true;
+		$this->external_javascript[$script_name] = true;
+
 		return $this;
 	}
 
-	// Make a list of external stylesheets, so we can render them in the header
-	public function addExternalStylesheet($stylesheet, $attributes=array()) {
-		$this->external_stylesheet[$stylesheet]=$attributes;
-		return $this;
-	}
-
-	// Make a list of inline Javascript, so we can render them in the footer
-	// NOTE: there is no need to use "jQuery(document).ready(function(){...})", etc.
-	// as this Javascript won’t be inserted until the very end of the page.
-	public function addInlineJavascript($script, $priority=self::JS_PRIORITY_NORMAL) {
+	/**
+	 * Make a list of inline Javascript, so we can render them in the footer
+	 * NOTE: there is no need to use "jQuery(document).ready(function(){...})", etc.
+	 * as this Javascript won’t be inserted until the very end of the page.
+	 *
+	 * @param string $script
+	 * @param int    $priority
+	 *
+	 * @return WT_Controller_Base
+	 */
+	public function addInlineJavascript($script, $priority = self::JS_PRIORITY_NORMAL) {
 		if (WT_DEBUG) {
 			/* Show where the JS was added */
-			$backtrace=debug_backtrace();
-			$script='/* '.$backtrace[0]['file'].':'.$backtrace[0]['line'].' */'.PHP_EOL.$script;
+			$backtrace = debug_backtrace();
+			$script = '/* ' . $backtrace[0]['file'] . ':' . $backtrace[0]['line'] . ' */' . PHP_EOL . $script;
 		}
-		$tmp=&$this->inline_javascript[$priority];
-		$tmp[]=$script;
+		$tmp =& $this->inline_javascript[$priority];
+		$tmp[] = $script;
+
 		return $this;
 	}
 
-	// We've collected up Javascript fragments while rendering the page.
-	// Now display them in order.
+	/**
+	 * We've collected up Javascript fragments while rendering the page.
+	 * Now display them in order.
+	 *
+	 * @return string
+	 */
 	public function getJavascript() {
 		$javascript1 = '';
 		$javascript2 = '';
@@ -101,26 +113,33 @@ class WT_Controller_Base {
 
 		// We could, in theory, inject JS at any point in the page (not just the bottom) - prepare for next time
 		$this->inline_javascript = array(
-			self::JS_PRIORITY_HIGH  =>array(),
-			self::JS_PRIORITY_NORMAL=>array(),
-			self::JS_PRIORITY_LOW   =>array(),
+			self::JS_PRIORITY_HIGH   => array(),
+			self::JS_PRIORITY_NORMAL => array(),
+			self::JS_PRIORITY_LOW    => array(),
 		);
-		$this->external_javascript=array();
+		$this->external_javascript = array();
 
 		return '<script>' . $javascript1 . '</script>' . $javascript2 . '<script>' . $javascript3 . '</script>';
 	}
 
-	// Print the page header, using the theme
+	/**
+	 * Print the page header, using the theme
+	 *
+	 * @return WT_Controller_Base
+	 */
 	public function pageHeader() {
 		// Once we've displayed the header, we should no longer write session data.
 		Zend_Session::writeClose();
 
 		// We've displayed the header - display the footer automatically
-		$this->page_header=true;
+		$this->page_header = true;
+
 		return $this;
 	}
 
-	// Print the page footer, using the theme
+	/**
+	 * Print the page footer, using the theme
+	 */
 	protected function pageFooter() {
 		if (WT_DEBUG_SQL) {
 			echo WT_DB::getQueryLog();

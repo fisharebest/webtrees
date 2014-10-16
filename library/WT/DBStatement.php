@@ -90,7 +90,7 @@ class WT_DBStatement {
 	 *
 	 * @return stdClass|array|false
 	 */
-	public function fetch($fetch_style=PDO::FETCH_OBJ) {
+	public function fetch($fetch_style = PDO::FETCH_OBJ) {
 		if (!$this->executed) {
 			$this->execute();
 		}
@@ -107,7 +107,7 @@ class WT_DBStatement {
 	 *
 	 * @return stdClass|array|null
 	 */
-	public function fetchAll($fetch_style=PDO::FETCH_OBJ) {
+	public function fetchAll($fetch_style = PDO::FETCH_OBJ) {
 		if (!$this->executed) {
 			$this->execute();
 		}
@@ -127,7 +127,7 @@ class WT_DBStatement {
 	 *
 	 * @return stdClass|array|null
 	 */
-	public function fetchOneRow($fetch_style=PDO::FETCH_OBJ) {
+	public function fetchOneRow($fetch_style = PDO::FETCH_OBJ) {
 		if (!$this->executed) {
 			$this->execute();
 		}
@@ -150,7 +150,7 @@ class WT_DBStatement {
 			$this->execute();
 		}
 
-		$value=$this->pdo_statement->fetchColumn();
+		$value = $this->pdo_statement->fetchColumn();
 		$this->closeCursor();
 
 		return $value === false ? null : $value;
