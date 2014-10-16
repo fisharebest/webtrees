@@ -653,8 +653,8 @@ function format_fact_date(WT_Fact $event, WT_GedcomRecord $record, $anchor=false
 
 	// Calculated age
 	if (preg_match('/2 DATE (.+)/', $factrec, $match)) {
-		$date=new WT_Date($match[1]);
-		$html.=' '.$date->Display($anchor && !$SEARCH_SPIDER);
+		$date = new WT_Date($match[1]);
+		$html .= ' ' . $date->display($anchor && !$SEARCH_SPIDER);
 		// time
 		if ($time) {
 			$timerec=get_sub_record(2, '2 TIME', $factrec);
@@ -826,7 +826,7 @@ function format_fact_place(WT_Fact $event, $anchor=false, $sub_records=false, $l
 			$html.='<br>'.WT_I18N::translate('Status').': '.WT_Gedcom_Code_Stat::statusName($match[1]);
 			if (preg_match('/3 DATE (.*)/', $event->getGedcom(), $match)) {
 				$date=new WT_Date($match[1]);
-				$html.=', '.WT_Gedcom_Tag::getLabel('STAT:DATE').': '.$date->Display(false);
+				$html.=', '.WT_Gedcom_Tag::getLabel('STAT:DATE').': '.$date->display();
 			}
 		}
 	}

@@ -363,7 +363,7 @@ function format_indi_table($datalist, $option='') {
 		} else {
 			$birth_date=$person->getEstimatedBirthDate();
 			if ($SHOW_EST_LIST_DATES) {
-				$html .= $birth_date->Display(!$SEARCH_SPIDER);
+				$html .= $birth_date->display(!$SEARCH_SPIDER);
 			} else {
 				$html .= '&nbsp;';
 			}
@@ -409,7 +409,7 @@ function format_indi_table($datalist, $option='') {
 			// Estimated death dates are a fixed number of years after the birth date.
 			// Don't show estimates in the future.
 			if ($SHOW_EST_LIST_DATES && $death_date->MinJD() < WT_CLIENT_JD) {
-				$html .= $death_date->Display(!$SEARCH_SPIDER);
+				$html .= $death_date->display(!$SEARCH_SPIDER);
 			} else if ($person->isDead()) {
 				$html .= WT_I18N::translate('yes');
 			} else {

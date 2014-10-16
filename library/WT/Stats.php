@@ -205,7 +205,7 @@ class WT_Stats {
 		$fact = $head->getFirstFact('DATE');
 		if ($fact) {
 			$date = new WT_Date($fact->getValue());
-			return $date->Display();
+			return $date->display();
 		}
 		return '';
 	}
@@ -217,7 +217,7 @@ class WT_Stats {
 				->fetchOneRow();
 		if ($row) {
 			$date = new WT_Date("{$row->d_day} {$row->d_month} {$row->d_year}");
-			return $date->Display(false);
+			return $date->display();
 		} else {
 			return $this->gedcomDate();
 		}
@@ -957,7 +957,7 @@ class WT_Stats {
 			break;
 		case 'year':
 			$date = new WT_Date($row['d_type'] . ' ' . $row['d_year']);
-			$result = $date->Display(true);
+			$result = $date->display();
 			break;
 		case 'name':
 			$result = "<a href=\"" . $record->getHtmlUrl() . "\">" . $record->getFullName() . "</a>";
@@ -2102,7 +2102,7 @@ class WT_Stats {
 			break;
 		case 'year':
 			$date = new WT_Date($row['type'] . ' ' . $row['year']);
-			$result = $date->Display(true);
+			$result = $date->display();
 			break;
 		case 'type':
 			if (isset($eventTypes[$row['fact']])) {
@@ -4418,7 +4418,7 @@ class WT_Stats {
 			} else {
 				$datestamp = $DATE_FORMAT;
 			}
-			return timestamp_to_gedcom_date($user->getPreference('reg_timestamp'))->Display(false, $datestamp);
+			return timestamp_to_gedcom_date($user->getPreference('reg_timestamp'))->display(false, $datestamp);
 		case 'regtime':
 			if (is_array($params) && isset($params[0]) && $params[0] != '') {
 				$datestamp = $params[0];
@@ -4482,7 +4482,7 @@ class WT_Stats {
 ///////////////////////////////////////////////////////////////////////////////
 
 	public function serverDate() {
-		return timestamp_to_gedcom_date(WT_TIMESTAMP)->Display(false);
+		return timestamp_to_gedcom_date(WT_TIMESTAMP)->display();
 	}
 
 	public function serverTime() {
@@ -4498,7 +4498,7 @@ class WT_Stats {
 	}
 
 	public function browserDate() {
-		return timestamp_to_gedcom_date(WT_CLIENT_TIMESTAMP)->Display(false);
+		return timestamp_to_gedcom_date(WT_CLIENT_TIMESTAMP)->display();
 	}
 
 	public function browserTime() {
