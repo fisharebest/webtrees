@@ -418,12 +418,12 @@ class WT_Date_Calendar {
 	/**
 	 * Most years are 1 more than the previous, but not always (e.g. 1BC->1AD)
 	 *
-	 * @param int $y
+	 * @param int $year
 	 *
 	 * @return int
 	 */
-	private static function nextYear($y) {
-		return $y + 1;
+	protected static function nextYear($year) {
+		return $year + 1;
 	}
 
 	/**
@@ -445,7 +445,7 @@ class WT_Date_Calendar {
 	 *
 	 * @return int
 	 */
-	static function compare(WT_Date_Calendar $d1, WT_Date_Calendar $d2) {
+	public static function compare(WT_Date_Calendar $d1, WT_Date_Calendar $d2) {
 		if ($d1->maxJD < $d2->minJD) {
 			return -1;
 		} elseif ($d2->minJD > $d1->maxJD) {
@@ -895,7 +895,7 @@ class WT_Date_Calendar {
 	/**
 	 * Which months follows this one?  Calendars with leap-months should provide their own implementation.
 	 *
-	 * @return array
+	 * @return int[]
 	 */
 	protected function nextMonth() {
 		return array($this->m == static::MONTHS_IN_YEAR ? $this->nextYear($this->y) : $this->y, ($this->m % static::MONTHS_IN_YEAR) + 1);
@@ -908,12 +908,10 @@ class WT_Date_Calendar {
 	 *
 	 * @return string
 	 */
-	static function numberToRomanNumerals($number) {
-		if ($number == 0) {
-			return 'N';
-		} elseif ($number < 1) {
-			// Not strictly valid - but what else can we do!
-			return '-' . self::numberToRomanNumerals(-$number);
+	protected static function numberToRomanNumerals($number) {
+		if ($number < 1) {
+			// Cannot convert zero/negative numbers
+			return (string)$number;
 		}
 		$roman = '';
 		foreach (self::$roman_numerals as $key => $value) {

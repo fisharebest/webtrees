@@ -51,11 +51,11 @@ class WT_Date_Julian extends WT_Date_Calendar {
 	/**
 	 * {@inheritDoc}
 	 */
-	protected static function nextYear($y) {
-		if ($y == -1) {
+	protected static function nextYear($year) {
+		if ($year == -1) {
 			return 1;
 		} else {
-			return $y + 1;
+			return $year + 1;
 		}
 	}
 
