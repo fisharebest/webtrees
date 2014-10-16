@@ -12559,12 +12559,8 @@ msgstr "Prikazuje %1$s do %2$s od %3$s"
 
 #: library/WT/Controller/Fanchart.php:349
 #: library/WT/Controller/Hourglass.php:398 pedigree.php:228
-#, fuzzy
 msgid "Sibling"
-msgid_plural "Siblings"
-msgstr[0] "Brat/Sestra"
-msgstr[1] "Brat/Sestra"
-msgstr[2] "Brat/Sestra"
+msgstr "Brat/Sestra"
 
 #: library/WT/Controller/Hourglass.php:397 pedigree.php:225
 msgid "Siblings"

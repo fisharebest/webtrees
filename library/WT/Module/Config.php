@@ -19,5 +19,11 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 interface WT_Module_Config {
+	/**
+	 * The URL to a page where the user can modify the configuration of this module.
+	 * These links are displayed in the admin page menu.
+	 *
+	 * @return string
+	 */
 	public function getConfigLink();
 }

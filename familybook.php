@@ -96,7 +96,7 @@ $controller
 <div id="familybook_chart" style="z-index:1;">
 <?php
 if ($controller->root) {
-	$controller->print_family_book($controller->root, $controller->descent);
+	$controller->printFamilyBook($controller->root, $controller->descent);
 }
 ?>
 </div>

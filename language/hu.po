@@ -12536,9 +12536,7 @@ msgstr "Mutat %1$s-től %2$s-ig %3$s-bó"
 #: library/WT/Controller/Hourglass.php:398 pedigree.php:228
 #, fuzzy
 msgid "Sibling"
-msgid_plural "Siblings"
-msgstr[0] "Testvér"
-msgstr[1] "Testvér"
+msgstr "Testvér"
 
 #: library/WT/Controller/Hourglass.php:397 pedigree.php:225
 msgid "Siblings"

@@ -41,13 +41,14 @@ class notes_WT_Module extends WT_Module implements WT_Module_Tab {
 
 	// Implement WT_Module_Tab
 	public function hasTabContent() {
-		return WT_USER_CAN_EDIT || $this->get_facts();
+		return WT_USER_CAN_EDIT || $this->getFactsWithNotes();
 	}
 
 	// Implement WT_Module_Tab
 	public function isGrayedOut() {
-		return !$this->get_facts();
+		return !$this->getFactsWithNotes();
 	}
+
 	// Implement WT_Module_Tab
 	public function getTabContent() {
 		global $SHOW_LEVEL2_NOTES, $NAV_NOTES, $controller;
@@ -63,18 +64,18 @@ class notes_WT_Module extends WT_Module implements WT_Module_Tab {
 			</td>
 		</tr>
 		<?php
-		foreach ($this->get_facts() as $fact) {
+		foreach ($this->getFactsWithNotes() as $fact) {
 			if ($fact->getTag() == 'NOTE') {
 				print_main_notes($fact, 1);
 			} else {
-				for ($i=2; $i<4; ++$i) {
+				for ($i = 2; $i < 4; ++$i) {
 					print_main_notes($fact, $i);
 				}
 			}
 		}
-		if (!$this->get_facts()) {
+		if (!$this->getFactsWithNotes()) {
 			echo '<tr><td id="no_tab4" colspan="2" class="facts_value">', WT_I18N::translate('There are no notes for this individual.'), '</td></tr>';
-			}
+		}
 
 		// New note link
 		if ($controller->record->canEdit()) {
@@ -101,18 +102,24 @@ class notes_WT_Module extends WT_Module implements WT_Module_Tab {
 					<?php echo help_link('add_shared_note'); ?>
 				</td>
 			</tr>
-			<?php
+		<?php
 		}
 		?>
 		</table>
 		<?php
-		if (!$SHOW_LEVEL2_NOTES)  {
+		if (!$SHOW_LEVEL2_NOTES) {
 			echo '<script>jQuery("tr.row_note2").toggle();</script>';
 		}
-		return '<div id="'.$this->getName().'_content">'.ob_get_clean().'</div>';
+
+		return '<div id="' . $this->getName() . '_content">' . ob_get_clean() . '</div>';
 	}
 
-	function get_facts() {
+	/**
+	 * Get all the facts for an individual which contain notes.
+	 *
+	 * @return WT_Fact[]
+	 */
+	private function getFactsWithNotes() {
 		global $controller;
 
 		if ($this->facts === null) {
@@ -132,6 +139,7 @@ class notes_WT_Module extends WT_Module implements WT_Module_Tab {
 			}
 			sort_facts($this->facts);
 		}
+
 		return $this->facts;
 	}
 

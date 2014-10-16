@@ -346,7 +346,10 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 					foreach ($person->getChildFamilies() as $family) {
 						$children = $family->getChildren();
 						if ($children) {
-							$html .= '<div class="name1">' . WT_I18N::plural('Sibling', 'Siblings', count($children) - 1) . '</div>';
+							$html .= '<div class="name1">';
+							// With two children in a family, you have only one sibling.
+							$html .= count($children) > 2 ? WT_I18N::translate('Siblings') : WT_I18N::translate('Sibling');
+							$html .= '</div>';
 							$html .= '<ul class="siblings">';
 							foreach ($children as $sibling) {
 								if ($sibling !== $person) {

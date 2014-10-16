@@ -19,5 +19,10 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 interface WT_Module_Report {
+	/**
+	 * Return a list of (usually just one) menu items.
+	 *
+	 * @return WT_Menu[]
+	 */
 	public function getReportMenus();
 }

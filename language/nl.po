@@ -12532,9 +12532,7 @@ msgstr "Toont %1$s tot %2$s van %3$s"
 #: library/WT/Controller/Fanchart.php:349
 #: library/WT/Controller/Hourglass.php:398 pedigree.php:228
 msgid "Sibling"
-msgid_plural "Siblings"
-msgstr[0] "Broer/zus"
-msgstr[1] "Broer/zus"
+msgstr "Broer/zus"
 
 #: library/WT/Controller/Hourglass.php:397 pedigree.php:225
 msgid "Siblings"

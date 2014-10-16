@@ -188,7 +188,7 @@ if ($controller->record->canShow()) {
 	// Display gender icon
 	foreach ($controller->record->getFacts() as $fact) {
 		if ($fact->getTag() == 'SEX') {
-			$controller->print_sex_record($fact);
+			$controller->printSexRecord($fact);
 		}
 	}
 	echo '</h3>'; // close first name accordion header
@@ -196,7 +196,7 @@ if ($controller->record->canShow()) {
 	// Display name details
 	foreach ($controller->record->getFacts() as $fact) {
 		if ($fact->getTag() == 'NAME') {
-			$controller->print_name_record($fact);
+			$controller->printNameRecord($fact);
 		}
 	}
 
