@@ -521,7 +521,6 @@ class WT_I18N {
 		$hour   = 60*60;
 		$minute = 60;
 
-		// TODO: Display two units (years+months), (months+days), etc.
 		// This requires "contexts".  i.e. "%s months" has a different translation
 		// in different contexts.
 		// We must AVOID combining phrases to make sentences.
