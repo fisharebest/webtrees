@@ -617,6 +617,9 @@ function add_simple_tag(
 
 			// Extra markup for specific fact types
 			switch ($fact) {
+			case 'ASSO':
+				echo ' data-autocomplete-type="ASSO"';
+				break;
 			case 'DATE':
 				echo " onblur=\"valid_date(this);\" onmouseout=\"valid_date(this);\"";
 				break;
