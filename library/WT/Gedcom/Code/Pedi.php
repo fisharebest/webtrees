@@ -25,12 +25,12 @@ class WT_Gedcom_Code_Pedi {
 	/**
 	 * Translate a code, for an optional record
 	 *
-	 * @param string             $type
-	 * @param WT_Individual|null $record
+	 * @param string               $type
+	 * @param WT_GedcomRecord|null $record
 	 *
 	 * @return string
 	 */
-	public static function getValue($type, WT_Individual $record = null) {
+	public static function getValue($type, WT_GedcomRecord $record = null) {
 		if ($record instanceof WT_Individual) {
 			$sex = $record->getSex();
 		} else {
@@ -95,11 +95,11 @@ class WT_Gedcom_Code_Pedi {
 	/**
 	 * A list of all possible values for PEDI
 	 *
-	 * @param WT_Individual|null $record
+	 * @param WT_GedcomRecord|null $record
 	 *
 	 * @return array
 	 */
-	public static function getValues(WT_Individual $record = null) {
+	public static function getValues(WT_GedcomRecord $record = null) {
 		$values = array();
 		foreach (self::$TYPES as $type) {
 			$values[$type] = self::getValue($type, $record);
