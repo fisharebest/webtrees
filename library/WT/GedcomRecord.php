@@ -782,7 +782,14 @@ class WT_GedcomRecord {
 		return '';
 	}
 
-	// Extract/format the first fact from a list of facts.
+	/**
+	 * Extract/format the first fact from a list of facts.
+	 *
+	 * @param string  $facts
+	 * @param integer $style
+	 *
+	 * @return string
+	 */
 	public function format_first_major_fact($facts, $style) {
 		foreach ($this->getFacts($facts, true) as $event) {
 			// Only display if it has a date or place (or both)
@@ -798,9 +805,13 @@ class WT_GedcomRecord {
 		return '';
 	}
 
-	//////////////////////////////////////////////////////////////////////////////
-	// Fetch records that link to this one
-	//////////////////////////////////////////////////////////////////////////////
+	/**
+	 * Find individuals linked to this record.
+	 *
+	 * @param string $link
+	 *
+	 * @return array
+	 */
 	public function linkedIndividuals($link) {
 		$rows = WT_DB::prepare(
 			"SELECT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom" .
@@ -820,6 +831,14 @@ class WT_GedcomRecord {
 		}
 		return $list;
 	}
+
+	/**
+	 * Find families linked to this record.
+	 *
+	 * @param string $link
+	 *
+	 * @return array
+	 */
 	public function linkedFamilies($link) {
 		$rows = WT_DB::prepare(
 			"SELECT f_id AS xref, f_file AS gedcom_id, f_gedcom AS gedcom" .
@@ -838,6 +857,14 @@ class WT_GedcomRecord {
 		}
 		return $list;
 	}
+
+	/**
+	 * Find sources linked to this record.
+	 *
+	 * @param string $link
+	 *
+	 * @return array
+	 */
 	public function linkedSources($link) {
 		$rows = WT_DB::prepare(
 				"SELECT s_id AS xref, s_file AS gedcom_id, s_gedcom AS gedcom" .
@@ -856,6 +883,14 @@ class WT_GedcomRecord {
 		}
 		return $list;
 	}
+
+	/**
+	 * Find media objects linked to this record.
+	 *
+	 * @param string $link
+	 *
+	 * @return array
+	 */
 	public function linkedMedia($link) {
 		$rows = WT_DB::prepare(
 			"SELECT m_id AS xref, m_file AS gedcom_id, m_gedcom AS gedcom" .
@@ -874,6 +909,14 @@ class WT_GedcomRecord {
 		}
 		return $list;
 	}
+
+	/**
+	 * Find notes linked to this record.
+	 *
+	 * @param string $link
+	 *
+	 * @return WT_Note[]
+	 */
 	public function linkedNotes($link) {
 		$rows=WT_DB::prepare(
 			"SELECT o_id AS xref, o_file AS gedcom_id, o_gedcom AS gedcom".
@@ -893,6 +936,14 @@ class WT_GedcomRecord {
 		}
 		return $list;
 	}
+
+	/**
+	 * Find repositories linked to this record.
+	 *
+	 * @param string $link
+	 *
+	 * @return WT_Repository
+	 */
 	public function linkedRepositories($link) {
 		$rows=WT_DB::prepare(
 			"SELECT o_id AS xref, o_file AS gedcom_id, o_gedcom AS gedcom".
@@ -905,7 +956,7 @@ class WT_GedcomRecord {
 
 		$list = array();
 		foreach ($rows as $row) {
-			$record = WT_Note::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+			$record = WT_Repository::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 			if ($record->canShowName()) {
 				$list[] = $record;
 			}
@@ -913,11 +964,17 @@ class WT_GedcomRecord {
 		return $list;
 	}
 
-	// Get all attributes (e.g. DATE or PLAC) from an event (e.g. BIRT or MARR).
-	// This is used to display multiple events on the individual/family lists.
-	// Multiple events can exist because of uncertainty in dates, dates in different
-	// calendars, place-names in both latin and hebrew character sets, etc.
-	// It also allows us to combine dates/places from different events in the summaries.
+	/**
+	 * Get all attributes (e.g. DATE or PLAC) from an event (e.g. BIRT or MARR).
+	 * This is used to display multiple events on the individual/family lists.
+	 * Multiple events can exist because of uncertainty in dates, dates in different
+	 * calendars, place-names in both latin and hebrew character sets, etc.
+	 * It also allows us to combine dates/places from different events in the summaries.
+	 *
+	 * @param string $event
+	 *
+	 * @return WT_Date[]
+	 */
 	public function getAllEventDates($event) {
 		$dates = array();
 		foreach ($this->getFacts($event) as $event) {
