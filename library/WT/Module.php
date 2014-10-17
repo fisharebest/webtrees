@@ -26,7 +26,7 @@ abstract class WT_Module {
 	/** @var string A user-friendly, localized name for this module */
 	private $_title = null;
 
-	/** @var  string[] A cached copy of the module settings */
+	/** @var string[] A cached copy of the module settings */
 	private $settings;
 
 	/**
@@ -68,7 +68,7 @@ abstract class WT_Module {
 	 *
 	 * Some modules are aimed at admins or managers, and are not generally shown to users.
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	public function defaultAccessLevel() {
 		// Returns one of: WT_PRIV_HIDE, WT_PRIV_PUBLIC, WT_PRIV_USER, WT_PRIV_ADMIN
@@ -462,7 +462,7 @@ abstract class WT_Module {
 	 * After creating a new family tree, we need to assign the default access
 	 * rights for each module.
 	 *
-	 * @param $tree_id
+	 * @param integer $tree_id
 	 *
 	 * @return void
 	 */
