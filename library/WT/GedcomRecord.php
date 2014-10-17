@@ -321,6 +321,14 @@ class WT_GedcomRecord {
 		return WT_SERVER_NAME . WT_SCRIPT_PATH . $this->getHtmlUrl();
 	}
 
+	/**
+	 * Generate a URL to this record.
+	 *
+	 * @param $link
+	 * @param $separator
+	 *
+	 * @return string
+	 */
 	private function getLinkUrl($link, $separator) {
 		if ($this->gedcom_id == WT_GED_ID) {
 			return $link . $this->getXref() . $separator . 'ged=' . WT_GEDURL;

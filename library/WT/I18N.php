@@ -326,8 +326,8 @@ class WT_I18N {
 	 * fr: 12 345,67
 	 * de: 12.345,67
 	 *
-	 * @param float $n
-	 * @param int   $precision
+	 * @param float   $n
+	 * @param integer $precision
 	 *
 	 * @return string
 	 */
@@ -343,7 +343,7 @@ class WT_I18N {
 	 *
 	 * Used for years, etc., where we do not want thousands-separators, decimals, etc.
 	 *
-	 * @param int $n
+	 * @param integer $n
 	 *
 	 * @return string
 	 */
@@ -363,10 +363,10 @@ class WT_I18N {
 	 * fr: 12,3 %
 	 * de: 12,3%
 	 *
-	 * @param     $n
-	 * @param int $precision
+	 * @param float   $n
+	 * @param integer $precision
 	 *
-	 * @return mixed
+	 * @return string
 	 */
 	public static function percentage($n, $precision=0) {
 		return
@@ -547,7 +547,7 @@ class WT_I18N {
 	/**
 	 * Return the endonym for a given language - as per http://cldr.unicode.org/
 	 *
-	 * @param $language
+	 * @param string $language
 	 *
 	 * @return string
 	 */
