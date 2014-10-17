@@ -207,7 +207,7 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 		if ($record instanceof WT_Individual) {
 			echo format_fact_date($event, $record, false, false);
 		} elseif ($record instanceof WT_Family) {
-			echo $gdate->Display(false);
+			echo $gdate->display();
 			if ($record->getHusband() && $record->getHusband()->getBirthDate()->isOK()) {
 				$ageh = get_age_at_event(WT_Date::GetAgeGedcom($record->getHusband()->getBirthDate(), $gdate), false);
 			} else {

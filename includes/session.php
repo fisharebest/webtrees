@@ -184,7 +184,7 @@ if (!function_exists('password_hash')) {
 		 * @param string  $password
 		 * @param integer $hash
 		 *
-		 * @return string
+		 * @return boolean
 		 */
 		function password_verify($password, $hash) {
 			return crypt($password, $hash) === $hash;

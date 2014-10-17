@@ -19,30 +19,49 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 class WT_Gedcom_Code_Quay {
-	private static $TYPES=array('3', '2', '1', '0');
+	private static $TYPES = array('3', '2', '1', '0');
 
-	// Translate a code, for an optional record
+	/**
+	 * Translate a code, for an optional record
+	 *
+	 * @param string $type
+	 *
+	 * @return string
+	 */
 	public static function getValue($type) {
 		switch ($type) {
 		case '3':
-			return /* I18N: Quality of source information - GEDCOM tag “QUAY 3” */ WT_I18N::translate('primary evidence');
+			return
+				/* I18N: Quality of source information - GEDCOM tag “QUAY 3” */
+				WT_I18N::translate('primary evidence');
 		case '2':
-			return /* I18N: Quality of source information - GEDCOM tag “QUAY 2” */ WT_I18N::translate('secondary evidence');
+			return
+				/* I18N: Quality of source information - GEDCOM tag “QUAY 2” */
+				WT_I18N::translate('secondary evidence');
 		case '1':
-			return /* I18N: Quality of source information - GEDCOM tag “QUAY 1” */ WT_I18N::translate('questionable evidence');
+			return
+				/* I18N: Quality of source information - GEDCOM tag “QUAY 1” */
+				WT_I18N::translate('questionable evidence');
 		case '0':
-			return /* I18N: Quality of source information - GEDCOM tag “QUAY 0” */ WT_I18N::translate('unreliable evidence');
+			return
+				/* I18N: Quality of source information - GEDCOM tag “QUAY 0” */
+				WT_I18N::translate('unreliable evidence');
 		default:
 			return $type;
 		}
 	}
 
-	// A list of all possible values for QUAY
+	/**
+	 * A list of all possible values for QUAY
+	 *
+	 * @return string[]
+	 */
 	public static function getValues() {
-		$values=array();
+		$values = array();
 		foreach (self::$TYPES as $type) {
-			$values[$type]=self::getValue($type);
+			$values[$type] = self::getValue($type);
 		}
+
 		return $values;
 	}
 }

@@ -329,7 +329,7 @@ class TreeView {
 						WT_I18N::translate('Daughter of %s', $family->getFullName())
 					) . '"';
 					break;
-				case 'U':
+				default:
 					$title = ' title="' . strip_tags(
 						/* I18N: e.g. “Child of [father name & mother name]” */
 						WT_I18N::translate('Child of %s', $family->getFullName())

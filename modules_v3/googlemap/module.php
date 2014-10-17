@@ -1292,7 +1292,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 				$dataleft  = WT_Filter::escapeJs($image . $event . ' — ' . $name);
 				$datamid   = WT_Filter::escapeJs(' <span><a href="' . $person->getHtmlUrl() . '">('.WT_I18N::translate('View person').')</a></span>');
-				$dataright = WT_Filter::escapeJs('<br><strong>'. WT_I18N::translate('Birth:') . '&nbsp;</strong>' .  $person->getBirthDate()->Display(false) . ' — ' . $person->getBirthPlace());
+				$dataright = WT_Filter::escapeJs('<br><strong>'. WT_I18N::translate('Birth:') . '&nbsp;</strong>' .  $person->getBirthDate()->display() . ' — ' . $person->getBirthPlace());
 
 				$latlongval[$i] = $this->getLatitudeAndLongitudeFromPlaceLocation($person->getBirthPlace());
 				if ($latlongval[$i]) {
@@ -1894,7 +1894,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 						if ($ctla && $ctlo) {
 							$i++;
 							$gmarks[$i]=array(
-								'date'         => $birth->getDate()->Display(true),
+								'date'         => $birth->getDate()->display(true),
 								'image'        => $child->displayImage(),
 								'info'         => '',
 								'lat'          => str_replace(array('N', 'S', ','), array('', '-', '.'), $match1[1]),
@@ -1928,7 +1928,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 							if ($latlongval && $latlongval->pl_lati && $latlongval->pl_long) {
 								$i++;
 								$gmarks[$i] = array(
-									'date'         => $birth->getDate()->Display(true),
+									'date'         => $birth->getDate()->display(true),
 									'image'        => $child->displayImage(),
 									'info'         => '',
 									'lat'          => str_replace(array('N', 'S', ','), array('', '-', '.'), $latlongval->pl_lati),

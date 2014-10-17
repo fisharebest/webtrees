@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2014-10-10 13:52+0100\n"
-"PO-Revision-Date: 2014-10-12 20:41+1000\n"
+"PO-Revision-Date: 2014-10-15 10:37+1000\n"
 "Last-Translator: Vytautas Krivickas <vytautas.krivickas@gmail.com>\n"
 "Language-Team: \n"
 "Language: lt\n"
@@ -3254,7 +3254,7 @@ msgstr "Mirties priežastis"
 
 #: admin_trees_renumber.php:278
 msgid "Caution!  This may take a long time.  Be patient."
-msgstr ""
+msgstr "Atsargiai! Tai gali užtrukti gana ilgai. Būkite kantrūs."
 
 #: admin_site_upgrade.php:204
 msgid "Caution: old modules may not work, or they may prevent webtrees from working."
@@ -12559,11 +12559,11 @@ msgstr "Rodoma nuo %1$s iki %2$s iš %3$s"
 #: library/WT/Controller/Fanchart.php:349
 #: library/WT/Controller/Hourglass.php:398 pedigree.php:228
 msgid "Sibling"
-msgstr "Brolis ir sesuo"
+msgstr "Brolis ar sesuo"
 
 #: library/WT/Controller/Hourglass.php:397 pedigree.php:225
 msgid "Siblings"
-msgstr "Broliai ir seserys"
+msgstr "Broliai ar seserys"
 
 #: library/WT/Stats.php:4976
 msgid "Sicily"
@@ -12576,7 +12576,7 @@ msgstr "Šoninė juosta"
 
 #: admin_module_sidebar.php:30
 msgid "Sidebars"
-msgstr ""
+msgstr "Šoninės juostos"
 
 #: library/WT/Stats.php:4979
 msgid "Sierra Leone"
@@ -15627,12 +15627,12 @@ msgid "You can re-enable these themes after the upgrade."
 msgstr "Jūs galite iš naujo įgalinti šias temas po atnaujinimo."
 
 #: admin_trees_renumber.php:261
-msgid "You can renumber the records in a family tree, so that these internal identification numbers are not duplicated in any other family tree."
-msgstr ""
+msgid "You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree."
+msgstr "Jūs galite pernumeruoti įrašus šeimos medyje, kad šie vidiniai kodai neturėtu duplikatų kituose medžiuose."
 
 #: admin_trees_renumber.php:274
 msgid "You can renumber this family tree."
-msgstr ""
+msgstr "Jūs galite pernumeruoti šį šeimos medį."
 
 #: help_text.php:643 help_text.php:682
 msgid "You can request a higher or lower limit, although the server may ignore this request."
@@ -15729,7 +15729,7 @@ msgstr "Turite nurodyti šaltinio pavadinimą"
 
 #: admin_trees_merge.php:83
 msgid "You must renumber the records in one of the trees before you can merge them."
-msgstr ""
+msgstr "Jūs turite pernumeruoti įrašus viename iš šių šeimos medžių prieš bandant juos sujungti."
 
 #: modules_v3/charts/module.php:139
 msgid "You must select an individual and chart type in the block configuration settings."
@@ -16849,7 +16849,7 @@ msgstr "lytis"
 #. I18N: button label
 #: admin_trees_renumber.php:275
 msgid "go"
-msgstr ""
+msgstr "veikti"
 
 #. I18N: button label
 #: edit_interface.php:2740

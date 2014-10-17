@@ -515,7 +515,7 @@ case 'cleanup':
 		}
 		if ((mktime(0, 0, 0, (int)date("m")-$month, (int)date("d"), (int)date("Y")) > $datelogin) && $user->getPreference('verified') && $user->getPreference('verified_by_admin')) {
 			?><tr><td><?php echo WT_Filter::escapeHtml($user->getUserName()), " - <p>", WT_Filter::escapeHtml($user->getRealName()), "</p>", WT_I18N::translate('User’s account has been inactive too long: ');
-			echo timestamp_to_gedcom_date($datelogin)->Display(false);
+			echo timestamp_to_gedcom_date($datelogin)->display();
 			$ucnt++;
 			?></td><td><input type="checkbox" name="del_<?php echo $user->getUserId(); ?>" value="1"></td></tr><?php
 		}

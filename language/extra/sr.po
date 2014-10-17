@@ -15629,7 +15629,7 @@ msgid "You can re-enable these themes after the upgrade."
 msgstr ""
 
 #: admin_trees_renumber.php:261
-msgid "You can renumber the records in a family tree, so that these internal identification numbers are not duplicated in any other family tree."
+msgid "You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree."
 msgstr ""
 
 #: admin_trees_renumber.php:274

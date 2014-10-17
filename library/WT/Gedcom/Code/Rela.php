@@ -20,7 +20,8 @@
 
 class WT_Gedcom_Code_Rela {
 
-	private static $TYPES=array(
+	/** @var string[] List of possible values for the RELA tag */
+	private static $TYPES = array(
 		'attendant', 'attending', 'best_man', 'bridesmaid', 'buyer',
 		'circumciser', 'civil_registrar', 'employee', 'employer', 'foster_child',
 		'foster_father', 'foster_mother', 'friend', 'godfather', 'godmother',
@@ -30,26 +31,41 @@ class WT_Gedcom_Code_Rela {
 		'slave', 'ward', 'witness',
 	);
 
-	// Translate a code, for an (optional) record
-	public static function getValue($type, $record=null) {
+	/**
+	 * Translate a code, for an (optional) record.
+	 * We need the record to translate the sex (godfather/godmother) but
+	 * we won’t have this when adding data for new individuals.
+	 *
+	 * @param string               $type
+	 * @param WT_GedcomRecord|null $record
+	 *
+	 * @return string
+	 */
+	public static function getValue($type, WT_GedcomRecord $record = null) {
 		if ($record instanceof WT_Individual) {
-			$sex=$record->getSex();
+			$sex = $record->getSex();
 		} else {
-			$sex='U';
+			$sex = 'U';
 		}
 
 		switch ($type) {
 		case 'attendant':
 			switch ($sex) {
-			case 'M': return WT_I18N::translate_c('MALE',   'Attendant');
-			case 'F': return WT_I18N::translate_c('FEMALE', 'Attendant');
-			default:  return WT_I18N::translate  (          'Attendant');
+			case 'M':
+				return WT_I18N::translate_c('MALE', 'Attendant');
+			case 'F':
+				return WT_I18N::translate_c('FEMALE', 'Attendant');
+			default:
+				return WT_I18N::translate('Attendant');
 			}
 		case 'attending':
 			switch ($sex) {
-			case 'M': return WT_I18N::translate_c('MALE',   'Attending');
-			case 'F': return WT_I18N::translate_c('FEMALE', 'Attending');
-			default:  return WT_I18N::translate  (          'Attending');
+			case 'M':
+				return WT_I18N::translate_c('MALE', 'Attending');
+			case 'F':
+				return WT_I18N::translate_c('FEMALE', 'Attending');
+			default:
+				return WT_I18N::translate('Attending');
 			}
 		case 'best_man':
 			// always male
@@ -59,30 +75,42 @@ class WT_Gedcom_Code_Rela {
 			return WT_I18N::translate('Bridesmaid');
 		case 'buyer':
 			switch ($sex) {
-			case 'M': return WT_I18N::translate_c('MALE',   'Buyer');
-			case 'F': return WT_I18N::translate_c('FEMALE', 'Buyer');
-			default:  return WT_I18N::translate  (          'Buyer');
+			case 'M':
+				return WT_I18N::translate_c('MALE', 'Buyer');
+			case 'F':
+				return WT_I18N::translate_c('FEMALE', 'Buyer');
+			default:
+				return WT_I18N::translate('Buyer');
 			}
 		case 'circumciser':
 			// always male
 			return WT_I18N::translate('Circumciser');
 		case 'civil_registrar':
 			switch ($sex) {
-			case 'M': return WT_I18N::translate_c('MALE',   'Civil registrar');
-			case 'F': return WT_I18N::translate_c('FEMALE', 'Civil registrar');
-			default:  return WT_I18N::translate  (          'Civil registrar');
+			case 'M':
+				return WT_I18N::translate_c('MALE', 'Civil registrar');
+			case 'F':
+				return WT_I18N::translate_c('FEMALE', 'Civil registrar');
+			default:
+				return WT_I18N::translate('Civil registrar');
 			}
 		case 'employee':
 			switch ($sex) {
-			case 'M': return WT_I18N::translate_c('MALE',   'Employee');
-			case 'F': return WT_I18N::translate_c('FEMALE', 'Employee');
-			default:  return WT_I18N::translate  (          'Employee');
+			case 'M':
+				return WT_I18N::translate_c('MALE', 'Employee');
+			case 'F':
+				return WT_I18N::translate_c('FEMALE', 'Employee');
+			default:
+				return WT_I18N::translate('Employee');
 			}
 		case 'employer':
 			switch ($sex) {
-			case 'M': return WT_I18N::translate_c('MALE',   'Employer');
-			case 'F': return WT_I18N::translate_c('FEMALE', 'Employer');
-			default:  return WT_I18N::translate  (          'Employer');
+			case 'M':
+				return WT_I18N::translate_c('MALE', 'Employer');
+			case 'F':
+				return WT_I18N::translate_c('FEMALE', 'Employer');
+			default:
+				return WT_I18N::translate('Employer');
 			}
 		case 'foster_child':
 			// no sex implied
@@ -95,9 +123,12 @@ class WT_Gedcom_Code_Rela {
 			return WT_I18N::translate('Foster mother');
 		case 'friend':
 			switch ($sex) {
-			case 'M': return WT_I18N::translate_c('MALE',   'Friend');
-			case 'F': return WT_I18N::translate_c('FEMALE', 'Friend');
-			default:  return WT_I18N::translate  (          'Friend');
+			case 'M':
+				return WT_I18N::translate_c('MALE', 'Friend');
+			case 'F':
+				return WT_I18N::translate_c('FEMALE', 'Friend');
+			default:
+				return WT_I18N::translate('Friend');
 			}
 		case 'godfather':
 			// always male
@@ -119,36 +150,51 @@ class WT_Gedcom_Code_Rela {
 			return WT_I18N::translate('Godchild');
 		case 'guardian':
 			switch ($sex) {
-			case 'M': return WT_I18N::translate_c('MALE',   'Guardian');
-			case 'F': return WT_I18N::translate_c('FEMALE', 'Guardian');
-			default:  return WT_I18N::translate  (          'Guardian');
+			case 'M':
+				return WT_I18N::translate_c('MALE', 'Guardian');
+			case 'F':
+				return WT_I18N::translate_c('FEMALE', 'Guardian');
+			default:
+				return WT_I18N::translate('Guardian');
 			}
 		case 'informant':
 			switch ($sex) {
-			case 'M': return WT_I18N::translate_c('MALE',   'Informant');
-			case 'F': return WT_I18N::translate_c('FEMALE', 'Informant');
-			default:  return WT_I18N::translate  (          'Informant');
+			case 'M':
+				return WT_I18N::translate_c('MALE', 'Informant');
+			case 'F':
+				return WT_I18N::translate_c('FEMALE', 'Informant');
+			default:
+				return WT_I18N::translate('Informant');
 			}
 		case 'lodger':
 			switch ($sex) {
-			case 'M': return WT_I18N::translate_c('MALE',   'Lodger');
-			case 'F': return WT_I18N::translate_c('FEMALE', 'Lodger');
-			default:  return WT_I18N::translate  (          'Lodger');
+			case 'M':
+				return WT_I18N::translate_c('MALE', 'Lodger');
+			case 'F':
+				return WT_I18N::translate_c('FEMALE', 'Lodger');
+			default:
+				return WT_I18N::translate('Lodger');
 			}
 		case 'nanny':
 			// no sex implied
 			return WT_I18N::translate('Nanny');
 		case 'nurse':
 			switch ($sex) {
-			case 'M': return WT_I18N::translate_c('MALE',   'Nurse');
-			case 'F': return WT_I18N::translate_c('FEMALE', 'Nurse');
-			default:  return WT_I18N::translate  (          'Nurse');
+			case 'M':
+				return WT_I18N::translate_c('MALE', 'Nurse');
+			case 'F':
+				return WT_I18N::translate_c('FEMALE', 'Nurse');
+			default:
+				return WT_I18N::translate('Nurse');
 			}
 		case 'owner':
 			switch ($sex) {
-			case 'M': return WT_I18N::translate_c('MALE',   'Owner');
-			case 'F': return WT_I18N::translate_c('FEMALE', 'Owner');
-			default:  return WT_I18N::translate  (          'Owner');
+			case 'M':
+				return WT_I18N::translate_c('MALE', 'Owner');
+			case 'F':
+				return WT_I18N::translate_c('FEMALE', 'Owner');
+			default:
+				return WT_I18N::translate('Owner');
 			}
 		case 'priest':
 			// no sex implied
@@ -158,33 +204,48 @@ class WT_Gedcom_Code_Rela {
 			return WT_I18N::translate('Rabbi');
 		case 'registry_officer':
 			switch ($sex) {
-			case 'M': return WT_I18N::translate_c('MALE',   'Registry officer');
-			case 'F': return WT_I18N::translate_c('FEMALE', 'Registry officer');
-			default:  return WT_I18N::translate  (          'Registry officer');
+			case 'M':
+				return WT_I18N::translate_c('MALE', 'Registry officer');
+			case 'F':
+				return WT_I18N::translate_c('FEMALE', 'Registry officer');
+			default:
+				return WT_I18N::translate('Registry officer');
 			}
 		case 'seller':
 			switch ($sex) {
-			case 'M': return WT_I18N::translate_c('MALE',   'Seller');
-			case 'F': return WT_I18N::translate_c('FEMALE', 'Seller');
-			default:  return WT_I18N::translate  (          'Seller');
+			case 'M':
+				return WT_I18N::translate_c('MALE', 'Seller');
+			case 'F':
+				return WT_I18N::translate_c('FEMALE', 'Seller');
+			default:
+				return WT_I18N::translate('Seller');
 			}
 		case 'servant':
 			switch ($sex) {
-			case 'M': return WT_I18N::translate_c('MALE',   'Servant');
-			case 'F': return WT_I18N::translate_c('FEMALE', 'Servant');
-			default:  return WT_I18N::translate  (          'Servant');
+			case 'M':
+				return WT_I18N::translate_c('MALE', 'Servant');
+			case 'F':
+				return WT_I18N::translate_c('FEMALE', 'Servant');
+			default:
+				return WT_I18N::translate('Servant');
 			}
 		case 'slave':
 			switch ($sex) {
-			case 'M': return WT_I18N::translate_c('MALE',   'Slave');
-			case 'F': return WT_I18N::translate_c('FEMALE', 'Slave');
-			default:  return WT_I18N::translate  (          'Slave');
+			case 'M':
+				return WT_I18N::translate_c('MALE', 'Slave');
+			case 'F':
+				return WT_I18N::translate_c('FEMALE', 'Slave');
+			default:
+				return WT_I18N::translate('Slave');
 			}
 		case 'ward':
 			switch ($sex) {
-			case 'M': return WT_I18N::translate_c('MALE',   'Ward');
-			case 'F': return WT_I18N::translate_c('FEMALE', 'Ward');
-			default:  return WT_I18N::translate  (          'Ward');
+			case 'M':
+				return WT_I18N::translate_c('MALE', 'Ward');
+			case 'F':
+				return WT_I18N::translate_c('FEMALE', 'Ward');
+			default:
+				return WT_I18N::translate('Ward');
 			}
 		case 'witness':
 			// Do we need separate male/female translations for this?
@@ -194,14 +255,20 @@ class WT_Gedcom_Code_Rela {
 		}
 	}
 
-	// A list of all possible values for RELA
-	public static function getValues($record=null) {
-		$values=array();
+	/**
+	 * A list of all possible values for RELA
+	 *
+	 * @param WT_GedcomRecord|null $record
+	 *
+	 * @return string[]
+	 */
+	public static function getValues(WT_GedcomRecord $record = null) {
+		$values = array();
 		foreach (self::$TYPES as $type) {
-			$values[$type]=self::getValue($type, $record);
+			$values[$type] = self::getValue($type, $record);
 		}
 		uasort($values, array('WT_I18N', 'strcasecmp'));
+
 		return $values;
 	}
 }
-

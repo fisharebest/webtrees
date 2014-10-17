@@ -428,9 +428,9 @@ case 'ALLOW_USER_THEMES':
 	break;
 
 case 'CALENDAR_FORMAT':
-	$d1=new WT_Date('22 SEP 1792'); $d1=$d1->Display();
-	$d2=new WT_Date('31 DEC 1805'); $d2=$d2->Display();
-	$d3=new WT_Date('15 OCT 1582'); $d3=$d3->Display();
+	$d1=new WT_Date('22 SEP 1792'); $d1=$d1->display();
+	$d2=new WT_Date('31 DEC 1805'); $d2=$d2->display();
+	$d3=new WT_Date('15 OCT 1582'); $d3=$d3->display();
 	$title=WT_I18N::translate('Calendar conversion');
 	$text=
 		'<p>'.
