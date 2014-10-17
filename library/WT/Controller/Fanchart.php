@@ -218,15 +218,15 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 
 					$text .= "\n" . WT_I18N::reverseText($person->getLifeSpan());
 
-					switch($person->getSex()) {
+					switch ($person->getSex()) {
 					case 'M':
-						$bg=$bgcolorM;
+						$bg = $bgcolorM;
 						break;
 					case 'F':
-						$bg=$bgcolorF;
+						$bg = $bgcolorF;
 						break;
-					case 'U':
-						$bg=$bgcolor;
+						default:
+						$bg = $bgcolor;
 						break;
 					}
 

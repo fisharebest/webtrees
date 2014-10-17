@@ -128,15 +128,15 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 					if ($record && $record->canShow()) {
 						if ($record instanceof WT_Individual) {
 							$content .= '<div id="box'.$favorite["gid"].'.0" class="person_box action_header';
-							switch($record->getsex()) {
-								case 'M':
-									break;
-								case 'F':
-									$content.='F';
-									break;
-								case 'U':
-									$content.='NN';
-									break;
+							switch ($record->getsex()) {
+							case 'M':
+								break;
+							case 'F':
+								$content .= 'F';
+								break;
+							default:
+								$content .= 'NN';
+								break;
 							}
 							$content .= '">';
 							if ($ctype=="user" || WT_USER_GEDCOM_ADMIN) $content .= $removeFavourite;
