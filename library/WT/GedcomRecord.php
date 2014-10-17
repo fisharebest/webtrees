@@ -979,38 +979,55 @@ class WT_GedcomRecord {
 	 * calendars, place-names in both latin and hebrew character sets, etc.
 	 * It also allows us to combine dates/places from different events in the summaries.
 	 *
-	 * @param string $event
+	 * @param string $event_type
 	 *
 	 * @return WT_Date[]
 	 */
-	public function getAllEventDates($event) {
+	public function getAllEventDates($event_type) {
 		$dates = array();
-		foreach ($this->getFacts($event) as $event) {
+		foreach ($this->getFacts($event_type) as $event) {
 			if ($event->getDate()->isOK() && $event->canShow()) {
 				$dates[] = $event->getDate();
 			}
 		}
+
 		return $dates;
 	}
-	public function getAllEventPlaces($event) {
+
+	/**
+	 * Get all the places for a particular type of event
+	 *
+	 * @param string $event_type
+	 *
+	 * @return array
+	 */
+	public function getAllEventPlaces($event_type) {
 		$places = array();
-		foreach ($this->getFacts($event) as $event) {
+		foreach ($this->getFacts($event_type) as $event) {
 			if (preg_match_all('/\n(?:2 PLAC|3 (?:ROMN|FONE|_HEB)) +(.+)/', $event->getGedcom(), $ged_places) && $event->canShow()) {
 				foreach ($ged_places[1] as $ged_place) {
 					$places[] = $ged_place;
 				}
 			}
 		}
+
 		return $places;
 	}
 
-	// Get the first WT_Fact for the given fact type
+	/**
+	 * Get the first (i.e. prefered) WT_Fact for the given fact type
+	 *
+	 * @param $tag
+	 *
+	 * @return null|WT_Fact
+	 */
 	public function getFirstFact($tag) {
 		foreach ($this->getFacts() as $fact) {
 			if ($fact->getTag() == $tag && $fact->canShow()) {
 				return $fact;
 			}
 		}
+
 		return null;
 	}
 
