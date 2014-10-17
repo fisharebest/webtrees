@@ -19,14 +19,22 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 class WT_Gedcom_Code_Name {
-	private static $TYPES=array('adopted', 'aka', 'birth', 'change', 'estate', 'immigrant', 'maiden', 'married', 'religious');
+	/** @var string[] A list of possible types of name */
+	private static $TYPES = array('adopted', 'aka', 'birth', 'change', 'estate', 'immigrant', 'maiden', 'married', 'religious');
 
-	// Translate a code, for an (optional) record
-	public static function getValue($type, $record=null) {
+	/**
+	 * Translate a code, for an (optional) record
+	 *
+	 * @param string             $type
+	 * @param WT_Individual|null $record
+	 *
+	 * @return string
+	 */
+	public static function getValue($type, WT_Individual $record = null) {
 		if ($record instanceof WT_Individual) {
-			$sex=$record->getSex();
+			$sex = $record->getSex();
 		} else {
-			$sex='U';
+			$sex = 'U';
 		}
 
 		switch ($type) {
@@ -136,13 +144,20 @@ class WT_Gedcom_Code_Name {
 		}
 	}
 
-	// A list of all possible values for NAME types
-	public static function getValues($record=null) {
-		$values=array();
+	/**
+	 * A list of all possible values for NAME types
+	 *
+	 * @param WT_Individual|null $record
+	 *
+	 * @return string[]
+	 */
+	public static function getValues(WT_Individual $record = null) {
+		$values = array();
 		foreach (self::$TYPES as $type) {
-			$values[$type]=self::getValue($type, $record);
+			$values[$type] = self::getValue($type, $record);
 		}
 		uasort($values, array('WT_I18N', 'strcasecmp'));
+
 		return $values;
 	}
 }

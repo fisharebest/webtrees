@@ -19,46 +19,70 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 class WT_Gedcom_Code_Adop {
-	private static $TYPES=array('BOTH', 'HUSB', 'WIFE');
+	/** @var string[] A list of possible adoption codes */
+	private static $TYPES = array('BOTH', 'HUSB', 'WIFE');
 
-	// Translate a code, for an (optional) record
-	public static function getValue($type, $record=null) {
+	/**
+	 * Translate a code, for an (optional) record
+	 *
+	 * @param string            $type
+	 * @param WT_Individualnull $record
+	 *
+	 * @return string
+	 */
+	public static function getValue($type, WT_Individual $record = null) {
 		if ($record instanceof WT_Individual) {
-			$sex=$record->getSex();
+			$sex = $record->getSex();
 		} else {
-			$sex='U';
+			$sex = 'U';
 		}
 
 		switch ($type) {
 		case 'BOTH':
 			switch ($sex) {
-			case 'M': return WT_I18N::translate_c('MALE',   'Adopted by both parents');
-			case 'F': return WT_I18N::translate_c('FEMALE', 'Adopted by both parents');
-			default:  return WT_I18N::translate  (          'Adopted by both parents');
+			case 'M':
+				return WT_I18N::translate_c('MALE', 'Adopted by both parents');
+			case 'F':
+				return WT_I18N::translate_c('FEMALE', 'Adopted by both parents');
+			default:
+				return WT_I18N::translate('Adopted by both parents');
 			}
 		case 'HUSB':
 			switch ($sex) {
-			case 'M': return WT_I18N::translate_c('MALE',   'Adopted by father');
-			case 'F': return WT_I18N::translate_c('FEMALE', 'Adopted by father');
-			default:  return WT_I18N::translate  (          'Adopted by father');
+			case 'M':
+				return WT_I18N::translate_c('MALE', 'Adopted by father');
+			case 'F':
+				return WT_I18N::translate_c('FEMALE', 'Adopted by father');
+			default:
+				return WT_I18N::translate('Adopted by father');
 			}
 		case 'WIFE':
 			switch ($sex) {
-			case 'M': return WT_I18N::translate_c('MALE',   'Adopted by mother');
-			case 'F': return WT_I18N::translate_c('FEMALE', 'Adopted by mother');
-			default:  return WT_I18N::translate  (          'Adopted by mother');
+			case 'M':
+				return WT_I18N::translate_c('MALE', 'Adopted by mother');
+			case 'F':
+				return WT_I18N::translate_c('FEMALE', 'Adopted by mother');
+			default:
+				return WT_I18N::translate('Adopted by mother');
 			}
 		default:
 			return $type;
 		}
 	}
 
-	// A list of all possible values for PEDI
-	public static function getValues($record=null) {
-		$values=array();
+	/**
+	 * A list of all possible values for PEDI
+	 *
+	 * @param null WT_Individual|null $record
+	 *
+	 * @return array
+	 */
+	public static function getValues(WT_Individual $record = null) {
+		$values = array();
 		foreach (self::$TYPES as $type) {
-			$values[$type]=self::getValue($type, $record);
+			$values[$type] = self::getValue($type, $record);
 		}
+
 		// Don't sort these.  We want the order: both parents, father, mother
 		return $values;
 	}
