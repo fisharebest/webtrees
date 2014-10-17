@@ -15627,7 +15627,7 @@ msgid "You can re-enable these themes after the upgrade."
 msgstr "Jūs galite iš naujo įgalinti šias temas po atnaujinimo."
 
 #: admin_trees_renumber.php:261
-msgid "You can renumber the records in a family tree, so that these internal identification numbers are not duplicated in any other family tree."
+msgid "You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree."
 msgstr "Jūs galite pernumeruoti įrašus šeimos medyje, kad šie vidiniai kodai neturėtu duplikatų kituose medžiuose."
 
 #: admin_trees_renumber.php:274
