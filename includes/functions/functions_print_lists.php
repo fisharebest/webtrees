@@ -29,8 +29,8 @@ use Rhumsaa\Uuid\Uuid;
 /**
  * Print a table of individuals
  *
- * @param WT_Note[] $datalist
- * @param string    $option
+ * @param WT_Individual[] $datalist
+ * @param string          $option
  *
  * @return string
  */
