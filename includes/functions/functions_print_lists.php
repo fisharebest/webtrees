@@ -2298,4 +2298,3 @@ function print_chart_by_decade($data, $title) {
 
 	return $html;
 }
-s
