@@ -35,7 +35,7 @@ class WT_Date_French extends WT_Date_Calendar {
 	static $MONTH_ABBREV = array('' => 0, 'VEND' => 1, 'BRUM' => 2, 'FRIM' => 3, 'NIVO' => 4, 'PLUV' => 5, 'VENT' => 6, 'GERM' => 7, 'FLOR' => 8, 'PRAI' => 9, 'MESS' => 10, 'THER' => 11, 'FRUC' => 12, 'COMP' => 13);
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	public function __construct($date) {
 		$this->calendar = new FrenchCalendar;
@@ -43,14 +43,14 @@ class WT_Date_French extends WT_Date_Calendar {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	public static function calendarName() {
 		return /* I18N: The French calendar */ WT_I18N::translate('French');
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	public static function monthNameNominativeCase($month_number, $leap_year) {
 		switch ($month_number) {
@@ -86,7 +86,7 @@ class WT_Date_French extends WT_Date_Calendar {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	static function monthNameGenitiveCase($month_number, $leap_year) {
 		switch ($month_number) {
@@ -122,7 +122,7 @@ class WT_Date_French extends WT_Date_Calendar {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	static function monthNameLocativeCase($month_number, $leap_year) {
 		switch ($month_number) {
@@ -158,7 +158,7 @@ class WT_Date_French extends WT_Date_Calendar {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	static function monthNameInstrumentalCase($month_number, $leap_year) {
 		switch ($month_number) {
@@ -194,14 +194,14 @@ class WT_Date_French extends WT_Date_Calendar {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	protected static function monthNameAbbreviated($month_number, $leap_year) {
 		return self::monthNameNominativeCase($month_number, $leap_year);
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	public static function dayNames($day_number) {
 		switch ($day_number) {
@@ -231,7 +231,7 @@ class WT_Date_French extends WT_Date_Calendar {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	protected static function dayNamesAbbreviated($day_number) {
 		return self::dayNames($day_number);
@@ -240,7 +240,7 @@ class WT_Date_French extends WT_Date_Calendar {
 	/**
 	 * Years were written using roman numerals
 	 *
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	protected function formatLongYear() {
 		return $this->numberToRomanNumerals($this->y);

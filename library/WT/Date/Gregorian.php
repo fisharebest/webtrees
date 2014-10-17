@@ -31,7 +31,7 @@ class WT_Date_Gregorian extends WT_Date_Calendar {
 	const CAL_START_JD = 2299161; // 15 OCT 1582
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	public function __construct($date) {
 		$this->calendar = new GregorianCalendar;
@@ -39,7 +39,7 @@ class WT_Date_Gregorian extends WT_Date_Calendar {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	public static function calendarName() {
 		return /* I18N: The gregorian calendar */

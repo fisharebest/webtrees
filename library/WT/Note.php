@@ -39,7 +39,7 @@ class WT_Note extends WT_GedcomRecord {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	protected function canShowByType($access_level) {
 		// Hide notes if they are attached to private records
@@ -58,14 +58,14 @@ class WT_Note extends WT_GedcomRecord {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	protected function createPrivateGedcomRecord($access_level) {
 		return '0 @' . $this->xref . '@ NOTE ' . WT_I18N::translate('Private');
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	protected static function fetchGedcomRecord($xref, $gedcom_id) {
 		static $statement = null;
@@ -81,7 +81,7 @@ class WT_Note extends WT_GedcomRecord {
 	 * Create a name for this note - apply (and remove) markup, then take
 	 * a maximum of 100 characters from the first line.
 	 *
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	public function extractNames() {
 		global $WT_TREE;

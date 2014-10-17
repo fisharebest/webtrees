@@ -32,7 +32,7 @@ class WT_Date_Jalali extends WT_Date_Calendar {
 	static $MONTH_ABBREV = array('' => 0, 'FARVA' => 1, 'ORDIB' => 2, 'KHORD' => 3, 'TIR' => 4, 'MORDA' => 5, 'SHAHR' => 6, 'MEHR' => 7, 'ABAN' => 8, 'AZAR' => 9, 'DEY' => 10, 'BAHMA' => 11, 'ESFAN' => 12);
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	public function __construct($date) {
 		$this->calendar = new PersianCalendar;
@@ -40,7 +40,7 @@ class WT_Date_Jalali extends WT_Date_Calendar {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	public static function calendarName() {
 		return /* I18N: The Persian/Jalali calendar */
@@ -48,7 +48,7 @@ class WT_Date_Jalali extends WT_Date_Calendar {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	public static function monthNameNominativeCase($month_number, $leap_year) {
 		switch ($month_number) {
@@ -82,7 +82,7 @@ class WT_Date_Jalali extends WT_Date_Calendar {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	static function monthNameGenitiveCase($month_number, $leap_year) {
 		switch ($month_number) {
@@ -116,7 +116,7 @@ class WT_Date_Jalali extends WT_Date_Calendar {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	static function monthNameLocativeCase($month_number, $leap_year) {
 		switch ($month_number) {
@@ -150,7 +150,7 @@ class WT_Date_Jalali extends WT_Date_Calendar {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	static function monthNameInstrumentalCase($month_number, $leap_year) {
 		switch ($month_number) {
@@ -184,7 +184,7 @@ class WT_Date_Jalali extends WT_Date_Calendar {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	static function monthNameAbbreviated($month_number, $leap_year) {
 		switch ($month_number) {

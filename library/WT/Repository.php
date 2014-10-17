@@ -26,7 +26,7 @@ class WT_Repository extends WT_GedcomRecord {
 	const URL_PREFIX = 'repo.php?rid=';
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	protected static function fetchGedcomRecord($xref, $gedcom_id) {
 		static $statement = null;
@@ -39,14 +39,14 @@ class WT_Repository extends WT_GedcomRecord {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	protected function createPrivateGedcomRecord($access_level) {
 		return '0 @' . $this->xref . "@ REPO\n1 NAME " . WT_I18N::translate('Private');
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	public function extractNames() {
 		parent::_extractNames(1, 'NAME', $this->getFacts('NAME'));

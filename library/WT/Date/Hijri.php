@@ -33,7 +33,7 @@ class WT_Date_Hijri extends WT_Date_Calendar {
 	static $MONTH_ABBREV = array('' => 0, 'MUHAR' => 1, 'SAFAR' => 2, 'RABIA' => 3, 'RABIT' => 4, 'JUMAA' => 5, 'JUMAT' => 6, 'RAJAB' => 7, 'SHAAB' => 8, 'RAMAD' => 9, 'SHAWW' => 10, 'DHUAQ' => 11, 'DHUAH' => 12);
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	public function __construct($date) {
 		$this->calendar = new ArabicCalendar;
@@ -41,7 +41,7 @@ class WT_Date_Hijri extends WT_Date_Calendar {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	public static function calendarName() {
 		return /* I18N: The Arabic/Hijri calendar */
@@ -49,7 +49,7 @@ class WT_Date_Hijri extends WT_Date_Calendar {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	public static function monthNameNominativeCase($month_number, $leap_year) {
 		switch ($month_number) {
@@ -83,7 +83,7 @@ class WT_Date_Hijri extends WT_Date_Calendar {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	static function monthNameGenitiveCase($month_number, $leap_year) {
 		switch ($month_number) {
@@ -117,7 +117,7 @@ class WT_Date_Hijri extends WT_Date_Calendar {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	static function monthNameLocativeCase($month_number, $leap_year) {
 		switch ($month_number) {
@@ -151,7 +151,7 @@ class WT_Date_Hijri extends WT_Date_Calendar {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	static function monthNameInstrumentalCase($month_number, $leap_year) {
 		switch ($month_number) {
@@ -185,7 +185,7 @@ class WT_Date_Hijri extends WT_Date_Calendar {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	static function monthNameAbbreviated($month_number, $leap_year) {
 		return self::monthNameNominativeCase($month_number, $leap_year);

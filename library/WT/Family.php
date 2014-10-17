@@ -29,7 +29,7 @@ class WT_Family extends WT_GedcomRecord {
 	private $wife = null;
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	function __construct($xref, $gedcom, $pending, $gedcom_id) {
 		parent::__construct($xref, $gedcom, $pending, $gedcom_id);
@@ -49,7 +49,7 @@ class WT_Family extends WT_GedcomRecord {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	protected function createPrivateGedcomRecord($access_level) {
 		global $SHOW_PRIVATE_RELATIONSHIPS;
@@ -68,7 +68,7 @@ class WT_Family extends WT_GedcomRecord {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	protected static function fetchGedcomRecord($xref, $gedcom_id) {
 		static $statement = null;
@@ -107,7 +107,7 @@ class WT_Family extends WT_GedcomRecord {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	protected function canShowByType($access_level) {
 		// Hide a family if any member is private
@@ -123,7 +123,7 @@ class WT_Family extends WT_GedcomRecord {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	public function canShowName($access_level = WT_USER_ACCESS_LEVEL) {
 		// We can always see the name (Husband-name + Wife-name), however,
@@ -300,7 +300,7 @@ class WT_Family extends WT_GedcomRecord {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	public function getAllNames() {
 		global $UNKNOWN_NN, $UNKNOWN_PN;
@@ -367,7 +367,7 @@ class WT_Family extends WT_GedcomRecord {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	function format_list_details() {
 		return

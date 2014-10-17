@@ -33,7 +33,7 @@ class WT_Date_Julian extends WT_Date_Calendar {
 	var $new_old_style = false;
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	public function __construct($date) {
 		$this->calendar = new JulianCalendar;
@@ -41,7 +41,7 @@ class WT_Date_Julian extends WT_Date_Calendar {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	public static function calendarName() {
 		return /* I18N: The julian calendar */
@@ -49,7 +49,7 @@ class WT_Date_Julian extends WT_Date_Calendar {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	protected static function nextYear($year) {
 		if ($year == -1) {
@@ -62,7 +62,7 @@ class WT_Date_Julian extends WT_Date_Calendar {
 	/**
 	 * Process new-style/old-style years and years BC
 	 *
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	protected function extractYear($year) {
 		if (preg_match('/^(\d\d\d\d)\/\d{1,4}$/', $year, $match)) { // Assume the first year is correct
@@ -77,7 +77,7 @@ class WT_Date_Julian extends WT_Date_Calendar {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	protected function formatLongYear() {
 		if ($this->y < 0) {
@@ -94,7 +94,7 @@ class WT_Date_Julian extends WT_Date_Calendar {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	protected function formatGedcomYear() {
 		if ($this->y < 0) {

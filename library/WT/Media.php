@@ -31,7 +31,7 @@ class WT_Media extends WT_GedcomRecord {
 	public $file = null;
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	public function __construct($xref, $gedcom, $pending, $gedcom_id) {
 		parent::__construct($xref, $gedcom, $pending, $gedcom_id);
@@ -50,7 +50,7 @@ class WT_Media extends WT_GedcomRecord {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	protected function canShowByType($access_level) {
 		// Hide media objects if they are attached to private records
@@ -69,7 +69,7 @@ class WT_Media extends WT_GedcomRecord {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	protected static function fetchGedcomRecord($xref, $gedcom_id) {
 		static $statement = null;
@@ -536,7 +536,7 @@ class WT_Media extends WT_GedcomRecord {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	public function getFallBackName() {
 		if ($this->canShow()) {
@@ -547,7 +547,7 @@ class WT_Media extends WT_GedcomRecord {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	public function extractNames() {
 		// Earlier gedcom versions had level 1 titles
@@ -557,7 +557,7 @@ class WT_Media extends WT_GedcomRecord {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	public function format_list_details() {
 		require_once WT_ROOT . 'includes/functions/functions_print_facts.php';

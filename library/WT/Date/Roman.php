@@ -31,14 +31,14 @@ class WT_Date_Roman extends WT_Date_Calendar {
 	const CALENDAR_ESCAPE = '@#DROMAN@';
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	protected function formatGedcomYear() {
 		return sprintf('%04dAUC', $this->y);
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	protected function formatLongYear() {
 		return $this->y . 'AUC';

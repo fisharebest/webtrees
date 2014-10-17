@@ -36,7 +36,7 @@ class WT_Individual extends WT_GedcomRecord {
 	/**
 	 * Can the name of this record be shown?
 	 *
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	public function canShowName($access_level = WT_USER_ACCESS_LEVEL) {
 		global $SHOW_LIVING_NAMES;
@@ -47,7 +47,7 @@ class WT_Individual extends WT_GedcomRecord {
 	/**
 	 * Implement individual-specific privacy logic
 	 *
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	protected function canShowByType($access_level) {
 		global $SHOW_DEAD_PEOPLE, $KEEP_ALIVE_YEARS_BIRTH, $KEEP_ALIVE_YEARS_DEATH;
@@ -164,7 +164,7 @@ class WT_Individual extends WT_GedcomRecord {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	protected function createPrivateGedcomRecord($access_level) {
 		global $SHOW_PRIVATE_RELATIONSHIPS, $SHOW_LIVING_NAMES;
@@ -193,7 +193,7 @@ class WT_Individual extends WT_GedcomRecord {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	protected static function fetchGedcomRecord($xref, $gedcom_id) {
 		static $statement = null;
@@ -1037,7 +1037,7 @@ class WT_Individual extends WT_GedcomRecord {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	function getFallBackName() {
 		return '@P.N. /@N.N./';

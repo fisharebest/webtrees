@@ -26,7 +26,7 @@ class WT_Source extends WT_GedcomRecord {
 	const URL_PREFIX = 'source.php?sid=';
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	protected function canShowByType($access_level) {
 		// Hide sources if they are attached to private repositories ...
@@ -43,14 +43,14 @@ class WT_Source extends WT_GedcomRecord {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	protected function createPrivateGedcomRecord($access_level) {
 		return '0 @' . $this->xref . "@ SOUR\n1 TITL " . WT_I18N::translate('Private');
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	protected static function fetchGedcomRecord($xref, $gedcom_id) {
 		static $statement = null;
@@ -63,7 +63,7 @@ class WT_Source extends WT_GedcomRecord {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritdoc}
 	 */
 	public function extractNames() {
 		parent::_extractNames(1, 'TITL', $this->getFacts('TITL'));
