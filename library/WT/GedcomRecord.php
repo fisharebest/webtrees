@@ -208,7 +208,7 @@ class WT_GedcomRecord {
 	 *
 	 * @return null|string
 	 */
-	private static function fetchGedcomRecord($xref, $gedcom_id) {
+	protected static function fetchGedcomRecord($xref, $gedcom_id) {
 		static $statement=null;
 
 		// We don't know what type of object this is.  Try each one in turn.
