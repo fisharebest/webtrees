@@ -74,10 +74,16 @@ $verified_by_admin  = WT_Filter::postBool('verified_by_admin');
 switch ($action) {
 case 'loadrows':
 	// Generate an AJAX/JSON response for datatables to load a block of rows
-	$search = WT_Filter::get('search');
+	$search = WT_Filter::post('search');
 	$search = $search['value'];
-	$start  = WT_Filter::getInteger('start');
-	$length = WT_Filter::getInteger('length');
+	$query_string = WT_Filter::post('query_string'); // url query string
+	// Datatables filter takes precedence over the url query string
+	if(!$search) {
+		$search = $query_string;
+	}
+
+	$start  = WT_Filter::postInteger('start');
+	$length = WT_Filter::postInteger('length');
 
 	$WHERE=" WHERE u.user_id>0";
 	$ARGS=array();
@@ -95,7 +101,7 @@ case 'loadrows':
 	} else {
 		$LIMIT = "";
 	}
-	$order = WT_Filter::get('order');
+	$order = WT_Filter::post('order');
 	if ($order) {
 		$ORDER_BY=' ORDER BY ';
 		for ($i = 0; $i < count($order); ++$i) {
@@ -169,7 +175,7 @@ case 'loadrows':
 	}
 
 	// Total filtered/unfiltered rows
-	$recordsFiltered = WT_DB::prepare("SELECT FOUND_ROWS()")->fetchOne();
+	$recordsFiltered = (int) WT_DB::prepare("SELECT FOUND_ROWS()")->fetchOne();
 	$recordsTotal = User::count();
 
 	Zend_Session::writeClose();
@@ -590,12 +596,18 @@ default:
 		->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 		->addExternalJavascript(WT_JQUERY_JEDITABLE_URL)
 		->addInlineJavascript('
-			var oTable = jQuery("#list").dataTable({
+			jQuery("#list").dataTable({
 				dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 				'.WT_I18N::datatablesI18N().',
 				processing: true,
 				serverSide: true,
-				ajax: "'.WT_SCRIPT_NAME.'?action=loadrows",
+				ajax: {
+					"url": "'.WT_SCRIPT_NAME.'?action=loadrows",
+					"type": "POST",
+					"data": function ( d ) {
+						d.query_string = "'. WT_Filter::get('filter'). '"
+                    }
+				},
 				jQueryUI: true,
 				autoWidth: false,
 				pageLength: ' . Auth::user()->getPreference('admin_users_page_size', 10).',
@@ -626,22 +638,22 @@ default:
 			});
 
 			/* When clicking on the +/- icon, we expand/collapse the details block */
-			jQuery("#list tbody").on("click", "td.icon-close", function () {
-				var nTr=this.parentNode;
-				jQuery(this).removeClass("icon-close");
-				oTable.fnClose(nTr);
-				jQuery(this).addClass("icon-open");
+			jQuery("#list").on("click", "tr td:first-child", function () {
+				var self = jQuery(this),
+					aData,
+					oTable = self.parents("table").dataTable();
+				    nTr=self.parent();
+
+				if(self.hasClass("icon-open")) {
+					aData=oTable.fnGetData(nTr);
+					jQuery.get("'.WT_SCRIPT_NAME.'?action=load1row&user_id="+aData[1], function(data) {
+						oTable.fnOpen(nTr, data, "details");
+					});
+				} else {
+					oTable.fnClose(nTr);
+				}
+				jQuery(this).toggleClass("icon-open icon-close");
 			});
-			jQuery("#list tbody").on("click", "td.icon-open", function () {
-				var nTr=this.parentNode;
-				jQuery(this).removeClass("icon-open");
-				var aData=oTable.fnGetData(nTr);
-				jQuery.get("'.WT_SCRIPT_NAME.'?action=load1row&user_id="+aData[1], function(data) {
-					oTable.fnOpen(nTr, data, "details");
-				});
-				jQuery(this).addClass("icon-close");
-			});
-			oTable.fnFilter("'.WT_Filter::get('filter').'");
 		');
 	break;
 }
