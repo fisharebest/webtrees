@@ -598,19 +598,19 @@ default:
 		->addInlineJavascript('
 			jQuery("#list").dataTable({
 				dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
-				'.WT_I18N::datatablesI18N().',
+				' . WT_I18N::datatablesI18N() . ',
 				processing: true,
 				serverSide: true,
 				ajax: {
-					"url": "'.WT_SCRIPT_NAME.'?action=loadrows",
-					"type": "POST",
-					"data": function ( d ) {
-						d.query_string = "'. WT_Filter::get('filter'). '"
-                    }
+					"url": "' . WT_SCRIPT_NAME . '?action=loadrows",
+					"type": "POST"
+				},
+				search: {
+					search: "' . WT_Filter::escapeJs(WT_Filter::get('filter')) . '"
 				},
 				jQueryUI: true,
 				autoWidth: false,
-				pageLength: ' . Auth::user()->getPreference('admin_users_page_size', 10).',
+				pageLength: ' . Auth::user()->getPreference('admin_users_page_size', 10) . ',
 				pagingType: "full_numbers",
 				sorting: [[2,"asc"]],
 				columns: [
