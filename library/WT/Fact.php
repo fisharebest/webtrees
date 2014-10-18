@@ -116,9 +116,9 @@ class WT_Fact {
 	/**
 	 * Do the privacy rules allow us to display this fact to the current user
 	 *
-	 * @param int $access_level
+	 * @param integer $access_level
 	 *
-	 * @return bool
+	 * @return boolean
 	 */
 	public function canShow($access_level = WT_USER_ACCESS_LEVEL) {
 		// TODO - use the privacy settings for $this->gedcom_id, not the default gedcom.
@@ -151,7 +151,7 @@ class WT_Fact {
 	/**
 	 * Check whether this fact is protected against edit
 	 *
-	 * @return bool
+	 * @return boolean
 	 */
 	public function canEdit() {
 		// Managers can edit anything
@@ -268,7 +268,7 @@ class WT_Fact {
 	/**
 	 * Is this a newly deleted fact, pending approval.
 	 *
-	 * @return bool
+	 * @return boolean
 	 */
 	public function isOld() {
 		return $this->is_old;
@@ -285,7 +285,7 @@ class WT_Fact {
 	/**
 	 * Is this a newly added fact, pending approval.
 	 *
-	 * @return bool
+	 * @return boolean
 	 */
 	public function isNew() {
 		return $this->is_new;

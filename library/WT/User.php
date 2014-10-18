@@ -44,7 +44,7 @@ class User {
 	/**
 	 * Find the user with a specified user_id.
 	 *
-	 * @param int|null $user_id
+	 * @param integer|null $user_id
 	 *
 	 * @return User|null
 	 */
@@ -136,7 +136,7 @@ class User {
 	/**
 	 * Get a count of all users.
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	public static function count() {
 		return (int)WT_DB::prepare(
@@ -245,7 +245,7 @@ class User {
 	 *
 	 * @param string $password
 	 *
-	 * @return bool
+	 * @return boolean
 	 */
 	public function checkPassword($password) {
 		$password_hash = WT_DB::prepare(

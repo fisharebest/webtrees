@@ -211,7 +211,7 @@ class WT_Individual extends WT_GedcomRecord {
 	 * @param WT_Individual $x
 	 * @param WT_Individual $y
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	static function CompareBirtDate(WT_Individual $x, WT_Individual $y) {
 		return WT_Date::Compare($x->getEstimatedBirthDate(), $y->getEstimatedBirthDate());
@@ -223,7 +223,7 @@ class WT_Individual extends WT_GedcomRecord {
 	 * @param WT_Individual $x
 	 * @param WT_Individual $y
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	static function CompareDeatDate(WT_Individual $x, WT_Individual $y) {
 		return WT_Date::Compare($x->getEstimatedDeathDate(), $y->getEstimatedDeathDate());
@@ -730,7 +730,7 @@ class WT_Individual extends WT_GedcomRecord {
 	/**
 	 * Get a list of this individual’s spouse families
 	 *
-	 * @param int $access_level
+	 * @param integer $access_level
 	 *
 	 * @return WT_Family[]
 	 */
@@ -769,7 +769,7 @@ class WT_Individual extends WT_GedcomRecord {
 	/**
 	 * Count the children belonging to this individual.
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	public function getNumberOfChildren() {
 		if (preg_match('/\n1 NCHI (\d+)(?:\n|$)/', $this->getGedcom(), $match)) {
@@ -789,7 +789,7 @@ class WT_Individual extends WT_GedcomRecord {
 	/**
 	 * Get a list of this individual’s child families (i.e. their parents).
 	 *
-	 * @param int $access_level
+	 * @param integer $access_level
 	 *
 	 * @return WT_Family[]
 	 */

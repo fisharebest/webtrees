@@ -514,7 +514,7 @@ class WT_Report_Base {
 	 *
 	 * @param string $p Header (H), Page header (PH), Body (B) or Footer (F)
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	function setProcessing($p) {
 		$this->processing = $p;
@@ -527,7 +527,7 @@ class WT_Report_Base {
 	 *
 	 * @param string $data
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	function addTitle($data) {
 		$this->title .= $data;
@@ -540,7 +540,7 @@ class WT_Report_Base {
 	 *
 	 * @param string $data
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	function addDescription($data) {
 		$this->rsubject .= $data;
@@ -553,7 +553,7 @@ class WT_Report_Base {
 	 *
 	 * @param array $style
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	function addStyle($style) {
 		$this->Styles[$style['name']] = $style;
@@ -3050,7 +3050,7 @@ function HTMLSHandler($tag, $attrs) {
 }
 
 /**
- * @param $tag
+ * @param string $tag
  */
 function HTMLEHandler($tag) {
 	global $printData, $printDataStack, $wt_report, $currentElement, $wt_reportStack;
@@ -3103,9 +3103,9 @@ function DescriptionEHandler() {
 /**
  * get gedcom tag value
  *
- * @param string $tag    The tag to find, use : to delineate subtags
- * @param int    $level  The gedcom line level of the first tag to find, setting level to 0 will cause it to use 1+ the level of the incoming record
- * @param string $gedrec The gedcom record to get the value from
+ * @param string  $tag    The tag to find, use : to delineate subtags
+ * @param integer $level  The gedcom line level of the first tag to find, setting level to 0 will cause it to use 1+ the level of the incoming record
+ * @param string  $gedrec The gedcom record to get the value from
  *
  * @return string the value of a gedcom tag from the given gedcom record
  */
@@ -3178,7 +3178,7 @@ function get_gedcom_value($tag, $level, $gedrec) {
 /**
  * @param string[] $list
  * @param string   $pid
- * @param bool     $children
+ * @param boolean  $children
  * @param integer  $generations
  */
 function add_ancestors(&$list, $pid, $children = false, $generations = -1) {
@@ -3224,10 +3224,10 @@ function add_ancestors(&$list, $pid, $children = false, $generations = -1) {
 }
 
 /**
- * @param      $list
- * @param      $pid
- * @param bool $parents
- * @param      $generations
+ * @param string[] $list
+ * @param string   $pid
+ * @param boolean  $parents
+ * @param integer  $generations
  */
 function add_descendancy(&$list, $pid, $parents = false, $generations = -1) {
 	$person = WT_Individual::getInstance($pid);

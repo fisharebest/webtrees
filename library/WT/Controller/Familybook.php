@@ -81,9 +81,9 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 	 * Prints descendency of passed in person
 	 *
 	 * @param WT_Individual|null $person
-	 * @param int                $count
+	 * @param integer            $count
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	private function printDescendency(WT_Individual $person = null, $count) {
 		global $WT_IMAGES, $bwidth, $bheight, $show_full, $box_width; // print_pedigree_person() requires these globals.
@@ -209,7 +209,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 	 * Prints pedigree of the person passed in
 	 *
 	 * @param WT_Individual $person
-	 * @param int           $count
+	 * @param integer       $count
 	 */
 	private function printPersonPedigree($person, $count) {
 		global $WT_IMAGES, $bheight, $bwidth, $bhalfheight;
@@ -339,10 +339,10 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 	/**
 	 * Calculates number of generations a person has
 	 *
-	 * @param string $pid
-	 * @param int    $depth
+	 * @param string  $pid
+	 * @param integer $depth
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	private function maxDescendencyGenerations($pid, $depth) {
 		if ($depth > $this->generations) {
@@ -375,8 +375,8 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 	/**
 	 * Print empty box
 	 *
-	 * @param int $bwidth
-	 * @param int $bheight
+	 * @param integer $bwidth
+	 * @param integer $bheight
 	 */
 	private function printEmptyBox($bwidth, $bheight) {
 		echo '<tr><td><div style="width:', $bwidth + 16, 'px; height:', $bheight + 8, 'px;"></div></td><td>';
@@ -386,7 +386,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 	 * Print a “Family Book” for an individual
 	 *
 	 * @param WT_Individual $person
-	 * @param int           $descent_steps
+	 * @param integer       $descent_steps
 	 */
 	public function printFamilyBook(WT_Individual $person, $descent_steps) {
 		global $first_run;

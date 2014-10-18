@@ -277,7 +277,7 @@ class WT_Date_Jewish extends WT_Date_Calendar {
 	/**
 	 * Convert a decimal number to hebrew - like roman numerals, but with extra punctuation and special rules.
 	 *
-	 * @param int $num
+	 * @param integer $num
 	 *
 	 * @return string
 	 */

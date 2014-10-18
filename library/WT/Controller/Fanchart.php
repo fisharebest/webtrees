@@ -67,8 +67,8 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 	/**
 	 * split and center text by lines
 	 *
-	 * @param string $data input string
-	 * @param int    $maxlen max length of each line
+	 * @param string  $data input string
+	 * @param integer $maxlen max length of each line
 	 *
 	 * @return string $text output string
 	 */

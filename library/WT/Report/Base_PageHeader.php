@@ -36,7 +36,7 @@ class WT_Report_Base_PageHeader extends WT_Report_Base_Element {
 	}
 
 	/**
-	 * @return int
+	 * @return integer
 	 */
 	function TextBox() {
 		$this->elements = array();
@@ -49,7 +49,7 @@ class WT_Report_Base_PageHeader extends WT_Report_Base_Element {
 	 *
 	 * @param $element
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	function addElement($element) {
 		$this->elements[] = $element;

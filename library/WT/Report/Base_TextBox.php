@@ -162,7 +162,7 @@ class WT_Report_Base_TextBox extends WT_Report_Base_Element {
 	 *
 	 * @param object|string $element
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	function addElement($element) {
 		$this->elements[] = $element;

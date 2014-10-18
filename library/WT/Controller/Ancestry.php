@@ -83,9 +83,9 @@ class WT_Controller_Ancestry extends WT_Controller_Chart {
 	/**
 	 * print a child ascendancy
 	 *
-	 * @param     $person
-	 * @param int $sosa  child sosa number
-	 * @param int $depth the ascendancy depth to show
+	 * @param         $person
+	 * @param integer $sosa  child sosa number
+	 * @param integer $depth the ascendancy depth to show
 	 */
 	function print_child_ascendancy($person, $sosa, $depth) {
 		global $OLD_PGENS, $WT_IMAGES, $Dindent, $pidarr, $box_width;

@@ -29,7 +29,7 @@ class WT_Report_PDF_TextBox extends WT_Report_Base_TextBox {
 	 *
 	 * @param PDF $pdf
 	 *
-	 * @return bool|int
+	 * @return boolean|integer
 	 */
 	function render($pdf) {
 

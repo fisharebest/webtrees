@@ -200,7 +200,7 @@ class WT_Tree {
 	 * Get the tree with a specific ID.  TODO - is this function needed long-term, or just while
 	 * we integrate this class into the rest of the code?
 	 *
-	 * @param int $tree_id
+	 * @param integer $tree_id
 	 *
 	 * @return WT_Tree
 	 */
@@ -243,9 +243,9 @@ class WT_Tree {
 	/**
 	 * Find the ID number for a tree name
 	 *
-	 * @param int $tree_name
+	 * @param integer $tree_name
 	 *
-	 * @return int|null
+	 * @return integer|null
 	 */
 	public static function getIdFromName($tree_name) {
 		foreach (self::getAll() as $tree_id => $tree) {
@@ -259,7 +259,7 @@ class WT_Tree {
 
 	/**
 	 * Find the tree name from a numeric ID.
-	 * @param int $tree_id
+	 * @param integer $tree_id
 	 *
 	 * @return string
 	 */

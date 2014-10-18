@@ -25,9 +25,9 @@
 
 class WT_Report_HTML_Html extends WT_Report_Base_Html {
 	/**
-	 * @param      $html
-	 * @param bool $sub
-	 * @param bool $inat
+	 * @param string  $html
+	 * @param boolean $sub
+	 * @param boolean $inat
 	 *
 	 * @return string
 	 */

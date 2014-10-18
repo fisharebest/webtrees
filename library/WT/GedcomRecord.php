@@ -324,8 +324,8 @@ class WT_GedcomRecord {
 	/**
 	 * Generate a URL to this record.
 	 *
-	 * @param $link
-	 * @param $separator
+	 * @param string $link
+	 * @param string $separator
 	 *
 	 * @return string
 	 */
@@ -444,7 +444,7 @@ class WT_GedcomRecord {
 	 *
 	 * @param integer $access_level
 	 *
-	 * @return bool
+	 * @return boolean
 	 */
 	public function canShowName($access_level=WT_USER_ACCESS_LEVEL) {
 		return $this->canShow($access_level);
@@ -1034,10 +1034,10 @@ class WT_GedcomRecord {
 	/**
 	 * The facts and events for this record.
 	 *
-	 * @param string $filter
-	 * @param bool   $sort
-	 * @param int    $access_level
-	 * @param bool   $override     Include private records, to allow us to implement $SHOW_PRIVATE_RELATIONSHIPS and $SHOW_LIVING_NAMES.
+	 * @param string  $filter
+	 * @param boolean $sort
+	 * @param integer $access_level
+	 * @param boolean $override     Include private records, to allow us to implement $SHOW_PRIVATE_RELATIONSHIPS and $SHOW_LIVING_NAMES.
 	 *
 	 * @return WT_Fact[]
 	 */

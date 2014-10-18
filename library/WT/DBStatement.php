@@ -106,7 +106,7 @@ class WT_DBStatement {
 	 *
 	 * Execute the query, if necessary.  Typically when there are no parameters.
 	 *
-	 * @param int $fetch_style
+	 * @param integer $fetch_style
 	 *
 	 * @return stdClass|array|false
 	 */
@@ -123,7 +123,7 @@ class WT_DBStatement {
 	 *
 	 * Execute the query, if necessary.  Typically when there are no parameters.
 	 *
-	 * @param int $fetch_style
+	 * @param integer $fetch_style
 	 *
 	 * @return stdClass|array|null
 	 */
@@ -143,7 +143,7 @@ class WT_DBStatement {
 	 *
 	 * Execute the query, if necessary.  Typically when there are no parameters.
 	 *
-	 * @param int $fetch_style
+	 * @param integer $fetch_style
 	 *
 	 * @return stdClass|array|null
 	 */
@@ -221,7 +221,7 @@ class WT_DBStatement {
 	/**
 	 * How many rows were affected by this statement.
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	public function rowCount() {
 		return $this->pdo_statement->rowCount();
