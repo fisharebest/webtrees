@@ -234,7 +234,7 @@ case 'PLAC': // Place names (with hierarchy), that include the search term
 	foreach (WT_Place::findPlaces($term, WT_GED_ID) as $place) {
 		$data[]=$place->getGedcomName();
 	}
-	if (!$data && get_gedcom_setting(WT_GED_ID, 'GEONAMES_ACCOUNT')) {
+	if (!$data && $WT_TREE->getPreference('GEONAMES_ACCOUNT')) {
 		// No place found?  Use an external gazetteer
 		$url=
 			"http://api.geonames.org/searchJSON".
@@ -242,7 +242,7 @@ case 'PLAC': // Place names (with hierarchy), that include the search term
 			"&lang=".WT_LOCALE.
 			"&fcode=CMTY&fcode=ADM4&fcode=PPL&fcode=PPLA&fcode=PPLC".
 			"&style=full".
-			"&username=" . get_gedcom_setting(WT_GED_ID, 'GEONAMES_ACCOUNT');
+			"&username=" . $WT_TREE->getPreference('GEONAMES_ACCOUNT');
 		// try to use curl when file_get_contents not allowed
 		if (ini_get('allow_url_fopen')) {
 			$json = file_get_contents($url);
@@ -515,7 +515,6 @@ case 'IFS':
 
 function get_FAM_rows($term) {
 	return
-	$rows=
 		WT_DB::prepare(
 			"SELECT DISTINCT 'FAM' AS type, f_id AS xref, f_file AS gedcom_id, f_gedcom AS gedcom".
 			" FROM `##families`".

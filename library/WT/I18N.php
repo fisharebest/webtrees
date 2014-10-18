@@ -25,6 +25,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use Patchwork\TurkishUtf8;
 use WT\Auth;
 
 /**
@@ -91,12 +92,25 @@ class WT_I18N {
 		'’' => '‘',
 	);
 
+	/** @var string the name of the current locale, such as fr or en_GB */
 	public  static $locale;
+
+	/** @var string The MySQL collation sequence used by this language, typically utf8_unicode_ci */
 	public  static $collation;
+
+	/** @var string Puncutation used to separate list items, typically a comma */
 	public  static $list_separator;
+
+	/** @var string Text direction; ltr or rtl */
 	private static $dir;
+
+	/** @var Zend_Cache_Core */
 	private static $cache;
+
+	/** @var string The numbering system used by this language; typically latin digits */
 	private static $numbering_system;
+
+	/** @var Zend_Translate */
 	private static $translation_adapter;
 
 	/**
@@ -107,7 +121,7 @@ class WT_I18N {
 	 * @return string $string
 	 */
 	public static function init($locale=null) {
-		global $WT_SESSION;
+		global $WT_SESSION, $WT_TREE;
 
 		// The translation libraries only work with a cache.
 		$cache_options = array(
@@ -132,9 +146,7 @@ class WT_I18N {
 			$locale = WT_Filter::get('lang');
 			if ($locale && array_key_exists($locale, $installed_languages)) {
 				// Requested in the URL?
-				if (Auth::id()) {
-					Auth::user()->setSetting('language', $locale);
-				}
+				Auth::user()->setPreference('language', $locale);
 			} elseif (array_key_exists($WT_SESSION->locale, $installed_languages)) {
 				// Rembered from a previous visit?
 				$locale = $WT_SESSION->locale;
@@ -147,7 +159,7 @@ class WT_I18N {
 				}
 				if (WT_GED_ID) {
 					// Add the tree’s default language as a low-priority
-					$locale = get_gedcom_setting(WT_GED_ID, 'LANGUAGE');
+					$locale = $WT_TREE->getPreference('LANGUAGE');
 					$prefs[] = $locale.';q=0.2';
 				}
 				$prefs2=array();
@@ -185,20 +197,20 @@ class WT_I18N {
 		Zend_Registry::set('Zend_Translate', self::$translation_adapter);
 
 		// Load any local user translations
-		if (is_dir(WT_DATA_DIR.'language')) {
-			if (file_exists(WT_DATA_DIR.'language/'.$locale.'.mo')) {
+		if (is_dir(WT_DATA_DIR . 'language')) {
+			if (file_exists(WT_DATA_DIR . 'language/' . $locale . '.mo')) {
 				self::addTranslation(
-					new Zend_Translate('gettext', WT_DATA_DIR.'language/'.$locale.'.mo', $locale)
+					new Zend_Translate('gettext', WT_DATA_DIR.'language/' . $locale . '.mo', $locale)
 				);
 			}
-			if (file_exists(WT_DATA_DIR.'language/'.$locale.'.php')) {
+			if (file_exists(WT_DATA_DIR.'language/' . $locale . '.php')) {
 				self::addTranslation(
-					new Zend_Translate('array', WT_DATA_DIR.'language/'.$locale.'.php', $locale)
+					new Zend_Translate('array', WT_DATA_DIR . 'language/' . $locale . '.php', $locale)
 				);
 			}
-			if (file_exists(WT_DATA_DIR.'language/'.$locale.'.csv')) {
+			if (file_exists(WT_DATA_DIR . 'language/' . $locale . '.csv')) {
 				self::addTranslation(
-					new Zend_Translate('csv', WT_DATA_DIR.'language/'.$locale.'.csv', $locale)
+					new Zend_Translate('csv', WT_DATA_DIR . 'language/' . $locale . '.csv', $locale)
 				);
 			}
 		}
@@ -247,7 +259,7 @@ class WT_I18N {
 	 * @param Zend_Translate $translation
 	 */
 	public static function addTranslation(Zend_Translate $translation) {
-		self::$translation_adapter->addTranslation($translation);
+		self::$translation_adapter->getAdapter()->addTranslation(array('content' => $translation));
 	}
 
 	/**
@@ -314,8 +326,8 @@ class WT_I18N {
 	 * fr: 12 345,67
 	 * de: 12.345,67
 	 *
-	 * @param int $n
-	 * @param int $precision
+	 * @param float   $n
+	 * @param integer $precision
 	 *
 	 * @return string
 	 */
@@ -331,7 +343,7 @@ class WT_I18N {
 	 *
 	 * Used for years, etc., where we do not want thousands-separators, decimals, etc.
 	 *
-	 * @param int $n
+	 * @param integer $n
 	 *
 	 * @return string
 	 */
@@ -351,10 +363,10 @@ class WT_I18N {
 	 * fr: 12,3 %
 	 * de: 12,3%
 	 *
-	 * @param     $n
-	 * @param int $precision
+	 * @param float   $n
+	 * @param integer $precision
 	 *
-	 * @return mixed
+	 * @return string
 	 */
 	public static function percentage($n, $precision=0) {
 		return
@@ -372,7 +384,7 @@ class WT_I18N {
 	 */
 	public static function translate(/* var_args */) {
 		$args = func_get_args();
-		$args[0] = self::$translation_adapter->_($args[0]);
+		$args[0] = self::$translation_adapter->getAdapter()->_($args[0]);
 
 		return call_user_func_array('sprintf', $args);
 	}
@@ -388,7 +400,7 @@ class WT_I18N {
 	public static function translate_c(/* var_args */) {
 		$args = func_get_args();
 		$msgid = $args[0] . "\x04" . $args[1];
-		$msgtxt = self::$translation_adapter->_($msgid);
+		$msgtxt = self::$translation_adapter->getAdapter()->_($msgid);
 		if ($msgtxt == $msgid) {
 			$msgtxt = $args[1];
 		}
@@ -404,12 +416,12 @@ class WT_I18N {
 	 * This is necessary to fetch a format string (containing % characters) without
 	 * performing sustitution of arguments.
 	 *
-	 * @param string,... $string, $args...
+	 * @param string $string
 	 *
 	 * @return string
 	 */
 	public static function noop($string) {
-		return self::$translation_adapter->_($string);
+		return self::$translation_adapter->getAdapter()->_($string);
 	}
 
 	/**
@@ -423,7 +435,7 @@ class WT_I18N {
 	 */
 	public static function plural(/* var_args */) {
 		$args = func_get_args();
-		$string = self::$translation_adapter->plural($args[0], $args[1], $args[2]);
+		$string = self::$translation_adapter->getAdapter()->plural($args[0], $args[1], $args[2]);
 		array_splice($args, 0, 3, array($string));
 
 		return call_user_func_array('sprintf', $args);
@@ -443,13 +455,13 @@ class WT_I18N {
 	public static function gedcom_age($string) {
 		switch ($string) {
 		case 'STILLBORN':
-			// I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan 1900 (stillborn)
+			// I18N: Description of an individual’s age at an event.  For example, Died 14 Jan 1900 (stillborn)
 			return self::translate('(stillborn)');
 		case 'INFANT':
-			// I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan 1900 (in infancy)
+			// I18N: Description of an individual’s age at an event.  For example, Died 14 Jan 1900 (in infancy)
 			return self::translate('(in infancy)');
 		case 'CHILD':
-			// I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan 1900 (in childhood)
+			// I18N: Description of an individual’s age at an event.  For example, Died 14 Jan 1900 (in childhood)
 			return self::translate('(in childhood)');
 		}
 		$age=array();
@@ -478,13 +490,13 @@ class WT_I18N {
 		}
 		if ($age) {
 			if (!substr_compare($string, '<', 0, 1)) {
-				// I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan 1900 (aged less than 21 years)
+				// I18N: Description of an individual’s age at an event.  For example, Died 14 Jan 1900 (aged less than 21 years)
 				return self::translate('(aged less than %s)', $age);
 			} elseif (!substr_compare($string, '>', 0, 1)) {
-				// I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan 1900 (aged more than 21 years)
+				// I18N: Description of an individual’s age at an event.  For example, Died 14 Jan 1900 (aged more than 21 years)
 				return self::translate('(aged more than %s)', $age);
 			} else {
-				// I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan 1900 (aged 43 years)
+				// I18N: Description of an individual’s age at an event.  For example, Died 14 Jan 1900 (aged 43 years)
 				return self::translate('(aged %s)', $age);
 			}
 		} else {
@@ -494,7 +506,7 @@ class WT_I18N {
 	}
 
 	/**
-	 * Convert a number of seconds into a relative time.  e.g. 630 => "10 hours, 30 minutes ago"
+	 * Convert a number of seconds into a relative time.  For example, 630 => "10 hours, 30 minutes ago"
 	 *
 	 * @param int $seconds
 	 *
@@ -509,7 +521,6 @@ class WT_I18N {
 		$hour   = 60*60;
 		$minute = 60;
 
-		// TODO: Display two units (years+months), (months+days), etc.
 		// This requires "contexts".  i.e. "%s months" has a different translation
 		// in different contexts.
 		// We must AVOID combining phrases to make sentences.
@@ -536,7 +547,7 @@ class WT_I18N {
 	/**
 	 * Return the endonym for a given language - as per http://cldr.unicode.org/
 	 *
-	 * @param $language
+	 * @param string $language
 	 *
 	 * @return string
 	 */
@@ -767,30 +778,11 @@ class WT_I18N {
 	 * @return string
 	 */
 	public static function strtoupper($string) {
-		$upper = $string;
-		$pos = 0;
-		$strlen = strlen($string);
-		while ($pos < $strlen) {
-			$byte = ord($string[$pos]);
-			if (($byte & 0xE0) == 0xC0) {
-				$chrlen = 2;
-				$chr = $string[$pos].$string[$pos+1];
-			} elseif (($byte & 0xF0) == 0xE0) {
-				$chrlen = 3;
-				$chr = $string[$pos].$string[$pos+1].$string[$pos+2];
-			} else {
-				$chrlen = 1;
-				$chr = $string[$pos];
-			}
-			// Try language-specific conversion before generic conversion
-			if (($chrpos = strpos(self::$alphabet_lower, $chr)) !== false) {
-				$upper = substr_replace($upper, substr(self::$alphabet_upper, $chrpos, $chrlen), $pos, $chrlen);
-			} elseif (($chrpos=strpos(self::ALPHABET_LOWER, $chr))!==false) {
-				$upper = substr_replace($upper, substr(self::ALPHABET_UPPER, $chrpos, $chrlen), $pos, $chrlen);
-			}
-			$pos += $chrlen;
+		if (self::$locale == 'tr' || self::$locale == 'az') {
+			return TurkishUtf8::strtoupper($string);
+		} else {
+			return mb_strtoupper($string);
 		}
-		return $upper;
 	}
 
 	/**
@@ -803,30 +795,11 @@ class WT_I18N {
 	 * @return string
 	 */
 	public static function strtolower($string) {
-		$lower = $string;
-		$pos = 0;
-		$strlen = strlen($string);
-		while ($pos < $strlen) {
-			$byte=ord($string[$pos]);
-			if (($byte & 0xE0) == 0xC0) {
-				$chrlen = 2;
-				$chr = $string[$pos].$string[$pos+1];
-			} elseif (($byte & 0xF0) == 0xE0) {
-				$chrlen = 3;
-				$chr = $string[$pos].$string[$pos+1].$string[$pos+2];
-			} else {
-				$chrlen = 1;
-				$chr = $string[$pos];
-			}
-			// Try language-specific conversion before generic conversion
-			if (($chrpos = strpos(self::$alphabet_upper, $chr)) !== false) {
-				$lower = substr_replace($lower, substr(self::$alphabet_lower, $chrpos, $chrlen), $pos, $chrlen);
-			} elseif (($chrpos=strpos(self::ALPHABET_UPPER, $chr)) !== false) {
-				$lower = substr_replace($lower, substr(self::ALPHABET_LOWER, $chrpos, $chrlen), $pos, $chrlen);
-			}
-			$pos += $chrlen;
+		if (self::$locale == 'tr' || self::$locale == 'az') {
+			return TurkishUtf8::strtolower($string);
+		} else {
+			return mb_strtolower($string);
 		}
-		return $lower;
 	}
 
 	/**
@@ -904,80 +877,6 @@ class WT_I18N {
 	}
 
 	/**
-	 * UTF8 version of PHP::substr()
-	 *
-	 * @param string $string
-	 * @param int    $pos
-	 * @param int    $len
-	 *
-	 * @return string
-	 *
-	 * @todo use Patchwork\Utf8
-	 */
-	public static function substr($string, $pos, $len=PHP_INT_MAX) {
-		if ($len < 0) {
-			return '';
-		}
-		$strlen = strlen($string);
-		if ($pos == 0) {
-			$start = 0;
-		} elseif ($pos > 0) {
-			$start = 0;
-			while ($pos > 0 && $start < $strlen) {
-				++$start;
-				while ($start < $strlen && (ord($string[$start]) & 0xC0) == 0x80) {
-					++$start;
-				}
-				--$pos;
-			}
-		} else {
-			$start = $strlen - 1;
-			do {
-				--$start;
-				while ($start && (ord($string[$start]) & 0xC0) == 0x80) {
-					--$start;
-				}
-				++$pos;
-			} while ($start && $pos<0);
-		}
-		if ($len==PHP_INT_MAX || $len<0) {
-			return substr($string, $start);
-		}
-		$end=$start;
-		while ($len>0) {
-			++$end;
-			while ($end<$strlen && (ord($string[$end]) & 0xC0) == 0x80) {
-				++$end;
-			}
-			--$len;
-		}
-		return substr($string, $start, $end-$start);
-	}
-
-	/**
-	 * UTF8 version of PHP::strlen()
-	 *
-	 * @param string $string
-	 *
-	 * @return int
-	 *
-	 * @todo use Patchwork\Utf8
-	 */
-	public static function strlen($string) {
-		$pos=0;
-		$len=strlen($string);
-		$utf8_len=0;
-		while ($pos<$len) {
-			if ((ord($string[$pos]) & 0xC0) != 0x80) {
-				++$utf8_len;
-			}
-			++$pos;
-		}
-		return $utf8_len;
-	}
-
-
-	/**
 	 * UTF8 version of PHP::strrev()
 	 *
 	 * Reverse RTL text for third-party libraries such as GD2 and googlechart.
@@ -1006,8 +905,8 @@ class WT_I18N {
 		$reversed = '';
 		$digits = '';
 		while ($text != '') {
-			$letter = WT_I18N::substr($text, 0, 1);
-			$text = WT_I18N::substr($text, 1);
+			$letter = mb_substr($text, 0, 1);
+			$text = mb_substr($text, 1);
 			if (strpos(self::DIGITS, $letter) !== false) {
 				$digits .= $letter;
 			} else {
@@ -1052,29 +951,29 @@ class WT_I18N {
 			$callback=',
 				"infoCallback": function(oSettings, iStart, iEnd, iMax, iTotal, sPre) {
 					return sPre
-						.replace(/0/g, "'.WT_I18N::substr($digits, 0, 1).'")
-						.replace(/1/g, "'.WT_I18N::substr($digits, 1, 1).'")
-						.replace(/2/g, "'.WT_I18N::substr($digits, 2, 1).'")
-						.replace(/3/g, "'.WT_I18N::substr($digits, 3, 1).'")
-						.replace(/4/g, "'.WT_I18N::substr($digits, 4, 1).'")
-						.replace(/5/g, "'.WT_I18N::substr($digits, 5, 1).'")
-						.replace(/6/g, "'.WT_I18N::substr($digits, 6, 1).'")
-						.replace(/7/g, "'.WT_I18N::substr($digits, 7, 1).'")
-						.replace(/8/g, "'.WT_I18N::substr($digits, 8, 1).'")
-						.replace(/9/g, "'.WT_I18N::substr($digits, 9, 1).'");
+						.replace(/0/g, "'.mb_substr($digits, 0, 1).'")
+						.replace(/1/g, "'.mb_substr($digits, 1, 1).'")
+						.replace(/2/g, "'.mb_substr($digits, 2, 1).'")
+						.replace(/3/g, "'.mb_substr($digits, 3, 1).'")
+						.replace(/4/g, "'.mb_substr($digits, 4, 1).'")
+						.replace(/5/g, "'.mb_substr($digits, 5, 1).'")
+						.replace(/6/g, "'.mb_substr($digits, 6, 1).'")
+						.replace(/7/g, "'.mb_substr($digits, 7, 1).'")
+						.replace(/8/g, "'.mb_substr($digits, 8, 1).'")
+						.replace(/9/g, "'.mb_substr($digits, 9, 1).'");
 				},
 				"formatNumber": function(iIn) {
 					return String(iIn)
-						.replace(/0/g, "'.WT_I18N::substr($digits, 0, 1).'")
-						.replace(/1/g, "'.WT_I18N::substr($digits, 1, 1).'")
-						.replace(/2/g, "'.WT_I18N::substr($digits, 2, 1).'")
-						.replace(/3/g, "'.WT_I18N::substr($digits, 3, 1).'")
-						.replace(/4/g, "'.WT_I18N::substr($digits, 4, 1).'")
-						.replace(/5/g, "'.WT_I18N::substr($digits, 5, 1).'")
-						.replace(/6/g, "'.WT_I18N::substr($digits, 6, 1).'")
-						.replace(/7/g, "'.WT_I18N::substr($digits, 7, 1).'")
-						.replace(/8/g, "'.WT_I18N::substr($digits, 8, 1).'")
-						.replace(/9/g, "'.WT_I18N::substr($digits, 9, 1).'");
+						.replace(/0/g, "'.mb_substr($digits, 0, 1).'")
+						.replace(/1/g, "'.mb_substr($digits, 1, 1).'")
+						.replace(/2/g, "'.mb_substr($digits, 2, 1).'")
+						.replace(/3/g, "'.mb_substr($digits, 3, 1).'")
+						.replace(/4/g, "'.mb_substr($digits, 4, 1).'")
+						.replace(/5/g, "'.mb_substr($digits, 5, 1).'")
+						.replace(/6/g, "'.mb_substr($digits, 6, 1).'")
+						.replace(/7/g, "'.mb_substr($digits, 7, 1).'")
+						.replace(/8/g, "'.mb_substr($digits, 8, 1).'")
+						.replace(/9/g, "'.mb_substr($digits, 9, 1).'");
 				}
 			';
 		}

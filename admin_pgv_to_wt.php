@@ -23,15 +23,14 @@ use WT\User;
 
 define('WT_SCRIPT_NAME', 'admin_pgv_to_wt.php');
 require './includes/session.php';
-//require WT_ROOT.'includes/functions/functions_edit.php';
 
 // We can only import into an empty system, so deny access if we have already created a gedcom or added users.
 if (WT_GED_ID || count(User::all()) > 1) {
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
+	header('Location: ' . WT_SERVER_NAME.WT_SCRIPT_PATH);
 	exit;
 }
 
-$controller=new WT_Controller_Page();
+$controller = new WT_Controller_Page();
 $controller
 	->restrictAccess(Auth::isAdmin())
 	->setPageTitle(WT_I18N::translate('PhpGedView to webtrees transfer wizard'));
@@ -63,7 +62,7 @@ if ($PGV_PATH) {
 		}
 		$wt_config=parse_ini_file(WT_ROOT.'data/config.ini.php');
 		if ($DBHOST!=$wt_config['dbhost']) {
-			$error=WT_I18N::translate('PhpGedView must use the same database as <b>webtrees</b>');
+			$error=WT_I18N::translate('PhpGedView must use the same database as webtrees.');
 			unset($wt_config);
 		} else {
 			unset($wt_config);
@@ -72,14 +71,14 @@ if ($PGV_PATH) {
 					"SELECT site_setting_value FROM `{$DBNAME}`.`{$TBLPREFIX}site_setting` WHERE site_setting_name='PGV_SCHEMA_VERSION'"
 				)->fetchOne();
 				if ($PGV_SCHEMA_VERSION<10) {
-					$error=WT_I18N::translate('The version of %s is too old', 'PhpGedView');
+					$error=WT_I18N::translate('The version of %s is too old.', 'PhpGedView');
 				} elseif ($PGV_SCHEMA_VERSION>14) {
-					$error=WT_I18N::translate('The version of %s is too new', 'PhpGedView');
+					$error=WT_I18N::translate('The version of %s is too new.', 'PhpGedView');
 				}
 			} catch (PDOException $ex) {
 				$error=
 					/* I18N: %s is a database name/identifier */
-					WT_I18N::translate('<b>webtrees</b> cannot connect to the PhpGedView database: %s.', $DBNAME.'@'.$DBHOST).
+					WT_I18N::translate('webtrees cannot connect to the PhpGedView database: %s.', $DBNAME.'@'.$DBHOST).
 					'<br>'.
 					/* I18N: %s is an error message */
 					WT_I18N::translate('MySQL gave the error: %s', $ex->getMessage());
@@ -114,7 +113,7 @@ if ($error || !$PGV_PATH) {
 	echo '<div id="container">';
 	echo
 		'<h2>',
-		WT_I18N::translate('PhpGedView to <b>webtrees</b> transfer wizard'),
+		WT_I18N::translate('PhpGedView to webtrees transfer wizard'),
 		help_link('PGV_WIZARD'),
 		'</h2>';
 	if ($error) {
@@ -135,7 +134,7 @@ if ($error || !$PGV_PATH) {
 		'<form action="', WT_SCRIPT_NAME, '" method="post">',
 		'<p>', WT_I18N::translate('Where is your PhpGedView installation?'), '</p>',
 		'<dl>',
-		'<dt>',WT_I18N::translate('Installation directory'), '</dt>';
+		'<dt>',WT_I18N::translate('Installation folder'), '</dt>';
 	switch (count($pgv_dirs)) {
 	case '0':
 		echo '<dd><input type="text" name="PGV_PATH" size="40" value="" autofocus></dd>';
@@ -145,7 +144,7 @@ if ($error || !$PGV_PATH) {
 		break;
 	default:
 		echo '<dd><input type="text" name="PGV_PATH" size="40" value="" autofocus></dd>';
-		echo '<dt>', /* find better english before translating */ 'PhpGedView might be found in these locations', '</dt>';
+		echo '<dt>', WT_I18N::translate('PhpGedView might be installed in one of these folders:'), '</dt>';
 		echo '<dd>';
 		foreach ($pgv_dirs as $pgvpath) {
 			echo '<p class="pgv">', $pgvpath, '</p>';
@@ -182,20 +181,20 @@ if (ini_get('output_buffering')) {
 	ob_flush();
 }
 // TODO May need to set 'DATA_DIRECTORY' to $INDEX_DIRECTORY when dealing with media??
-@WT_Site::preference('USE_REGISTRATION_MODULE',         $USE_REGISTRATION_MODULE);
-@WT_Site::preference('REQUIRE_ADMIN_AUTH_REGISTRATION', $REQUIRE_ADMIN_AUTH_REGISTRATION);
-@WT_Site::preference('ALLOW_USER_THEMES',               $ALLOW_USER_THEMES);
-@WT_Site::preference('ALLOW_CHANGE_GEDCOM',             $ALLOW_CHANGE_GEDCOM);
-@WT_Site::preference('SESSION_TIME',                    $PGV_SESSION_TIME);
-@WT_Site::preference('SMTP_ACTIVE',                     $PGV_SMTP_ACTIVE ? 'external' : 'internal');
-@WT_Site::preference('SMTP_HOST',                       $PGV_SMTP_HOST);
-@WT_Site::preference('SMTP_HELO',                       $PGV_SMTP_HELO);
-@WT_Site::preference('SMTP_PORT',                       $PGV_SMTP_PORT);
-@WT_Site::preference('SMTP_AUTH',                       $PGV_SMTP_AUTH);
-@WT_Site::preference('SMTP_AUTH_USER',                  $PGV_SMTP_AUTH_USER);
-@WT_Site::preference('SMTP_AUTH_PASS',                  $PGV_SMTP_AUTH_PASS);
-@WT_Site::preference('SMTP_SSL',                        $PGV_SMTP_SSL);
-@WT_Site::preference('SMTP_FROM_NAME',                  $PGV_SMTP_FROM_NAME);
+@WT_Site::setPreference('USE_REGISTRATION_MODULE',         $USE_REGISTRATION_MODULE);
+@WT_Site::setPreference('REQUIRE_ADMIN_AUTH_REGISTRATION', $REQUIRE_ADMIN_AUTH_REGISTRATION);
+@WT_Site::setPreference('ALLOW_USER_THEMES',               $ALLOW_USER_THEMES);
+@WT_Site::setPreference('ALLOW_CHANGE_GEDCOM',             $ALLOW_CHANGE_GEDCOM);
+@WT_Site::setPreference('SESSION_TIME',                    $PGV_SESSION_TIME);
+@WT_Site::setPreference('SMTP_ACTIVE',                     $PGV_SMTP_ACTIVE ? 'external' : 'internal');
+@WT_Site::setPreference('SMTP_HOST',                       $PGV_SMTP_HOST);
+@WT_Site::setPreference('SMTP_HELO',                       $PGV_SMTP_HELO);
+@WT_Site::setPreference('SMTP_PORT',                       $PGV_SMTP_PORT);
+@WT_Site::setPreference('SMTP_AUTH',                       $PGV_SMTP_AUTH);
+@WT_Site::setPreference('SMTP_AUTH_USER',                  $PGV_SMTP_AUTH_USER);
+@WT_Site::setPreference('SMTP_AUTH_PASS',                  $PGV_SMTP_AUTH_PASS);
+@WT_Site::setPreference('SMTP_SSL',                        $PGV_SMTP_SSL);
+@WT_Site::setPreference('SMTP_FROM_NAME',                  $PGV_SMTP_FROM_NAME);
 
 ////////////////////////////////////////////////////////////////////////////////
 

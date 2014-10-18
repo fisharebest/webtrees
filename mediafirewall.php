@@ -36,7 +36,7 @@ $media = WT_Media::getInstance($mid);
 function send404AndExit() {
 	$error = WT_I18N::translate('The media file was not found in this family tree');
 
-	$width = (WT_I18N::strlen($error)) * 6.5 + 50;
+	$width = (mb_strlen($error)) * 6.5 + 50;
 	$height = 60;
 	$im  = imagecreatetruecolor($width, $height);  /* Create a black image */
 	$bgc = imagecolorallocate($im, 255, 255, 255); /* set background color */
@@ -190,7 +190,7 @@ function embedText($im, $text, $maxsize, $color, $font, $vpos, $hpos) {
 
 function textlength($t, $mxl, $text) {
 	$taille_c = $t;
-	$len = WT_I18N::strlen($text);
+	$len = mb_strlen($text);
 	while (($taille_c-2)*($len) > $mxl) {
 		$taille_c--;
 		if ($taille_c == 2) break;
@@ -200,10 +200,10 @@ function textlength($t, $mxl, $text) {
 
 // imagettftext is the function that is most likely to throw an error
 // use this custom error handler to catch and log it
-function imagettftextErrorHandler($errno, $errstr, $errfile, $errline) {
+function imagettftextErrorHandler($errno, $errstr) {
 	global $useTTF, $serverFilename;
 	// log the error
-	Log::addErrorLog("Media Firewall error: >" . $errstr . "< in file >" . $serverFilename . "<");
+	Log::addErrorLog("Media Firewall error: >" . $errno . '/' . $errstr . "< while processing file >" . $serverFilename . "<");
 
 	// change value of useTTF to false so the fallback watermarking can be used.
 	$useTTF = false;
@@ -348,9 +348,7 @@ if ($generatewatermark) {
 		// save the image, if preferences allow
 		if ((($which=='thumb') && $SAVE_WATERMARK_THUMB) || (($which=='main') && $SAVE_WATERMARK_IMAGE)) {
 			// make sure the folder exists
-			if (!is_dir(dirname($watermarkfile))) {
-				mkdir(dirname($watermarkfile), WT_PERM_EXE, true);
-			}
+			WT_File::mkdir(dirname($watermarkfile));
 			// save the image
 			$imSendFunc($im, $watermarkfile);
 		}

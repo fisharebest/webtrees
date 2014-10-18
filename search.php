@@ -25,7 +25,7 @@ define('WT_SCRIPT_NAME', 'search.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
-$controller=new WT_Controller_Search();
+$controller = new WT_Controller_Search();
 $controller
 	->pageHeader()
 	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
@@ -125,8 +125,7 @@ echo '<div id="search-page">
 							box.form.replaceNames.disabled = false;
 							box.form.replacePlaces.disabled = false;
 							box.form.replacePlacesWord.disabled = false;
-						}
-						else {
+						} else {
 							box.form.replaceNames.disabled = true;
 							box.form.replacePlaces.disabled = true;
 							box.form.replacePlacesWord.disabled = true;
@@ -183,7 +182,7 @@ echo '<div id="search-page">
 		// If the search is a general or soundex search then possibly display checkboxes for the gedcoms
 		if ($controller->action == "general" || $controller->action == "soundex") {
 			// If more than one GEDCOM, switching is allowed AND DB mode is set, let the user select
-			if ((count(WT_Tree::getAll()) > 1) && WT_Site::preference('ALLOW_CHANGE_GEDCOM')) {
+			if ((count(WT_Tree::getAll()) > 1) && WT_Site::getPreference('ALLOW_CHANGE_GEDCOM')) {
 				// More Than 3 Gedcom Filess enable elect all & select none buttons
 				if (count(WT_Tree::getAll())>3) {
 					echo '<div class="label">&nbsp;</div>

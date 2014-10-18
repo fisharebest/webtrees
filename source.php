@@ -26,7 +26,7 @@ define('WT_SCRIPT_NAME', 'source.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
-$controller=new WT_Controller_Source();
+$controller = new WT_Controller_Source();
 
 if ($controller->record && $controller->record->canShow()) {
 	$controller->pageHeader();
@@ -74,15 +74,14 @@ if ($controller->record && $controller->record->canShow()) {
 	exit;
 }
 
-$controller
-	->addInlineJavascript('
-		jQuery("#source-tabs")
-			.tabs({
-				create: function(e, ui){
-					jQuery(e.target).css("visibility", "visible");  // prevent FOUC
-				}
-			});
-	');
+$controller->addInlineJavascript('
+	jQuery("#source-tabs")
+		.tabs({
+			create: function(e, ui){
+				jQuery(e.target).css("visibility", "visible");  // prevent FOUC
+			}
+		});
+');
 
 $linked_indi = $controller->record->linkedIndividuals('SOUR');
 $linked_fam  = $controller->record->linkedFamilies('SOUR');
@@ -148,7 +147,7 @@ echo '<div id="source-tabs">
 		if ($controller->record->canEdit()) {
 			print_add_new_fact($controller->record->getXref(), $facts, 'SOUR');
 			// new media
-			if (get_gedcom_setting(WT_GED_ID, 'MEDIA_UPLOAD') >= WT_USER_ACCESS_LEVEL) {
+			if ($WT_TREE->getPreference('MEDIA_UPLOAD') >= WT_USER_ACCESS_LEVEL) {
 				echo '<tr><td class="descriptionbox">';
 				echo WT_Gedcom_Tag::getLabel('OBJE');
 				echo '</td><td class="optionbox">';

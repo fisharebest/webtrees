@@ -28,8 +28,8 @@ class todays_events_WT_Module extends WT_Module implements WT_Module_Block {
 	}
 
 	// Extend class WT_Module
-	public /* I18N: Description of the “On this day” module */ function getDescription() {
-		return WT_I18N::translate('A list of the anniversaries that occur today.');
+	public function getDescription() {
+		return /* I18N: Description of the “On this day” module */ WT_I18N::translate('A list of the anniversaries that occur today.');
 	}
 
 	// Implement class WT_Module_Block
@@ -38,11 +38,11 @@ class todays_events_WT_Module extends WT_Module implements WT_Module_Block {
 
 		require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
-		$filter       =get_block_setting($block_id, 'filter',   true);
-		$onlyBDM      =get_block_setting($block_id, 'onlyBDM',  true);
-		$infoStyle    =get_block_setting($block_id, 'infoStyle','table');
-		$sortStyle    =get_block_setting($block_id, 'sortStyle','alpha');
-		$block        =get_block_setting($block_id, 'block',    true);
+		$filter    = get_block_setting($block_id, 'filter',    true);
+		$onlyBDM   = get_block_setting($block_id, 'onlyBDM',   true);
+		$infoStyle = get_block_setting($block_id, 'infoStyle', 'table');
+		$sortStyle = get_block_setting($block_id, 'sortStyle', 'alpha');
+		$block     = get_block_setting($block_id, 'block',     true);
 		if ($cfg) {
 			foreach (array('filter', 'onlyBDM', 'infoStyle', 'sortStyle', 'block') as $name) {
 				if (array_key_exists($name, $cfg)) {
@@ -51,16 +51,16 @@ class todays_events_WT_Module extends WT_Module implements WT_Module_Block {
 			}
 		}
 
-		$todayjd=WT_CLIENT_JD;
+		$todayjd = WT_CLIENT_JD;
 
-		$id=$this->getName().$block_id;
-		$class=$this->getName().'_block';
-		if ($ctype=='gedcom' && WT_USER_GEDCOM_ADMIN || $ctype=='user' && WT_USER_ID) {
-			$title='<i class="icon-admin" title="'.WT_I18N::translate('Configure').'" onclick="modalDialog(\'block_edit.php?block_id='.$block_id.'\', \''.$this->getTitle().'\');"></i>';
+		$id = $this->getName().$block_id;
+		$class = $this->getName().'_block';
+		if ($ctype == 'gedcom' && WT_USER_GEDCOM_ADMIN || $ctype=='user' && WT_USER_ID) {
+			$title = '<i class="icon-admin" title="' . WT_I18N::translate('Configure') . '" onclick="modalDialog(\'block_edit.php?block_id=' . $block_id . '\', \'' . $this->getTitle() . '\');"></i>';
 		} else {
-			$title='';
+			$title = '';
 		}
-		$title.=$this->getTitle();
+		$title .= $this->getTitle();
 
 		$content = '';
 		switch ($infoStyle) {
@@ -78,9 +78,9 @@ class todays_events_WT_Module extends WT_Module implements WT_Module_Block {
 
 		if ($template) {
 			if ($block) {
-				require WT_THEME_DIR.'templates/block_small_temp.php';
+				require WT_THEME_DIR . 'templates/block_small_temp.php';
 			} else {
-				require WT_THEME_DIR.'templates/block_main_temp.php';
+				require WT_THEME_DIR . 'templates/block_main_temp.php';
 			}
 		} else {
 			return $content;
@@ -142,8 +142,8 @@ class todays_events_WT_Module extends WT_Module implements WT_Module_Block {
 		echo '</td><td class="optionbox">';
 		echo select_edit_control('sortStyle', array(
 			/* I18N: An option in a list-box */ 'alpha'=>WT_I18N::translate('sort by name'),
-			/* I18N: An option in a list-box */ 'anniv'=>WT_I18N::translate('sort by date'
-		)), null, $sortStyle, '');
+			/* I18N: An option in a list-box */ 'anniv'=>WT_I18N::translate('sort by date'),
+		), null, $sortStyle, '');
 		echo '</td></tr>';
 
 		$block=get_block_setting($block_id, 'block', true);

@@ -24,7 +24,7 @@
 define('WT_SCRIPT_NAME', 'compact.php');
 require './includes/session.php';
 
-$controller=new WT_Controller_Compact();
+$controller = new WT_Controller_Compact();
 $controller
 	->pageHeader()
 	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')

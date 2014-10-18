@@ -18,6 +18,9 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+// To embed webtrees code in other applications, we must explicitly declare any global variables that we create.
+global $WT_REQUEST, $WT_SESSION;
+
 define('WT_SCRIPT_NAME', 'setup.php');
 define('WT_CONFIG_FILE', 'config.ini.php');
 
@@ -90,7 +93,7 @@ header('Content-Type: text/html; charset=UTF-8');
 	</head>
 	<body>
 		<h1>
-			<?php echo WT_I18N::translate('Setup wizard for <b>webtrees</b>'); ?>
+			<?php echo WT_I18N::translate('Setup wizard for webtrees'); ?>
 		</h1>
 <?php
 
@@ -127,7 +130,6 @@ if (!isset($_POST['lang'])) {
 	}
 	// Recommended extensions
 	foreach (array(
-		'calendar'  => /* I18N: a program feature */ WT_I18N::translate('jewish calendar'),
 		'gd'        => /* I18N: a program feature */ WT_I18N::translate('creating thumbnails of images'),
 		'xml'       => /* I18N: a program feature */ WT_I18N::translate('reporting'),
 		'simplexml' => /* I18N: a program feature */ WT_I18N::translate('reporting'),
@@ -142,7 +144,7 @@ if (!isset($_POST['lang'])) {
 		'file_uploads'=>/* I18N: a program feature */ WT_I18N::translate('file upload capability'),
 	) as $setting=>$features) {
 		if (!ini_get($setting)) {
-			echo '<p class="bad">', WT_I18N::translate('PHP setting “%1$s” is disabled. Without it, the following features will not work: %2$s.  Please ask your server’s administrator to enable it.', $setting, $features), '</p>';
+			echo '<p class="bad">', WT_I18N::translate('PHP setting “%1$s” is disabled.  Without it, the following features will not work: %2$s.  Please ask your server’s administrator to enable it.', $setting, $features), '</p>';
 			$warnings=true;
 		}
 	}
@@ -172,18 +174,18 @@ if (!isset($_POST['lang'])) {
 		'<br>',
 		WT_I18N::translate('The following list shows typical requirements.'),
 		'</p><p>',
-		WT_I18N::translate('Small systems (500 individuals): 16-32MB, 10-20 seconds'),
+		WT_I18N::translate('Small systems (500 individuals): 16–32 MB, 10–20 seconds'),
 		'<br>',
-		WT_I18N::translate('Medium systems (5000 individuals): 32-64MB, 20-40 seconds'),
+		WT_I18N::translate('Medium systems (5,000 individuals): 32–64 MB, 20–40 seconds'),
 		'<br>',
-		WT_I18N::translate('Large systems (50000 individuals): 64-128MB, 40-80 seconds'),
+		WT_I18N::translate('Large systems (50,000 individuals): 64–128 MB, 40–80 seconds'),
 		'</p>',
 		($maxmem<32 || $maxcpu<20) ? '<p class="bad">' : '<p class="good">',
-		WT_I18N::translate('This server’s memory limit is %dMB and its CPU time limit is %d seconds.', $maxmem, $maxcpu),
+		WT_I18N::translate('This server’s memory limit is %d MB and its CPU time limit is %d seconds.', $maxmem, $maxcpu),
 		'</p><p>',
 		WT_I18N::translate('If you try to exceed these limits, you may experience server time-outs and blank pages.'),
 		'</p><p>',
-		WT_I18N::translate('If your server’s security policy permits it, you will be able to request increased memory or CPU time using the <b>webtrees</b> administration page.  Otherwise, you will need to contact your server’s administrator.'),
+		WT_I18N::translate('If your server’s security policy permits it, you will be able to request increased memory or CPU time using the webtrees administration page.  Otherwise, you will need to contact your server’s administrator.'),
 		'</p>';
 	if (!$errors) {
 		echo '<input type="hidden" name="maxcpu" value="', $maxcpu, '">';
@@ -259,7 +261,7 @@ try {
 if (empty($_POST['dbuser']) || !WT_DB::isConnected() || !$db_version_ok) {
 	echo
 		'<h2>', WT_I18N::translate('Connection to database server'), '</h2>',
-		'<p>', WT_I18N::translate('<b>webtrees</b> needs a MySQL database, version %s or later.', WT_REQUIRED_MYSQL_VERSION), '</p>',
+		'<p>', WT_I18N::translate('webtrees needs a MySQL database, version %s or later.', WT_REQUIRED_MYSQL_VERSION), '</p>',
 		'<p>', WT_I18N::translate('Your server’s administrator will provide you with the connection details.'), '</p>',
 		'<fieldset><legend>', WT_I18N::translate('Database connection'), '</legend>',
 		'<table border="0"><tr><td>',
@@ -332,7 +334,7 @@ if ($dbname_ok) {
 	try {
 		// PhpGedView (4.2.3 and earlier) and many other applications have a USERS table.
 		// webtrees has a USER table
-		$dummy=WT_DB::query("SELECT COUNT(*) FROM `##users`")->fetchOne();
+		$dummy=WT_DB::prepare("SELECT COUNT(*) FROM `##users`")->fetchOne();
 		echo '<p class="bad">', WT_I18N::translate('This database and table-prefix appear to be used by another application.  If you have an existing PhpGedView system, you should create a new webtrees system.  You can import your PhpGedView data and settings later.'), '</p>';
 		$dbname_ok=false;
 	} catch (PDOException $ex) {
@@ -343,7 +345,7 @@ if ($dbname_ok) {
 	try {
 		// PhpGedView (4.2.4 and later) has a site_setting.site_setting_name column.
 		// [We changed the column name in webtrees, so we can tell the difference!]
-		$dummy=WT_DB::query("SELECT site_setting_value FROM `##site_setting` WHERE site_setting_name='PGV_SCHEMA_VERSION'")->fetchOne();
+		$dummy=WT_DB::prepare("SELECT site_setting_value FROM `##site_setting` WHERE site_setting_name='PGV_SCHEMA_VERSION'")->fetchOne();
 		echo '<p class="bad">', WT_I18N::translate('This database and table-prefix appear to be used by another application.  If you have an existing PhpGedView system, you should create a new webtrees system.  You can import your PhpGedView data and settings later.'), '</p>';
 		$dbname_ok=false;
 	} catch (PDOException $ex) {
@@ -359,7 +361,7 @@ if (!$dbname_ok) {
 		'<table border="0"><tr><td>',
 		WT_I18N::translate('Database name'), '</td><td>',
 		'<input type="text" name="dbname" value="', WT_Filter::escapeHtml($_POST['dbname']), '" autofocus></td><td>',
-		WT_I18N::translate('This is case sensitive. If a database with this name does not already exist webtrees will attempt to create one for you. Success will depend on permissions set for your web server, but you will be notified if this fails.'),
+		WT_I18N::translate('This is case sensitive.  If a database with this name does not already exist webtrees will attempt to create one for you.  Success will depend on permissions set for your web server, but you will be notified if this fails.'),
 		'</td></tr><tr><td>',
 		WT_I18N::translate('Table prefix'), '</td><td>',
 		'<input type="text" name="tblpfx" value="', WT_Filter::escapeHtml($_POST['tblpfx']), '"></td><td>',
@@ -397,7 +399,7 @@ if (empty($_POST['wtname']) || empty($_POST['wtuser']) || strlen($_POST['wtpass'
 	echo
 		'<h2>', WT_I18N::translate('System settings'), '</h2>',
 		'<h3>', WT_I18N::translate('Administrator account'), '</h3>',
-		'<p>', WT_I18N::translate('You need to set up an administrator account.  This account can control all aspects of this <b>webtrees</b> installation.  Please choose a strong password.'), '</p>',
+		'<p>', WT_I18N::translate('You need to set up an administrator account.  This account can control all aspects of this webtrees installation.  Please choose a strong password.'), '</p>',
 		'<fieldset><legend>', WT_I18N::translate('Administrator account'), '</legend>',
 		'<table border="0"><tr><td>',
 		WT_I18N::translate('Your name'), '</td><td>',

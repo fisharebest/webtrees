@@ -24,16 +24,16 @@ define('WT_SCRIPT_NAME', 'admin_module_sidebar.php');
 require 'includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
-$controller=new WT_Controller_Page();
+$controller = new WT_Controller_Page();
 $controller
 	->restrictAccess(Auth::isAdmin())
-	->setPageTitle(WT_I18N::translate('Module administration'))
+	->setPageTitle(WT_I18N::translate('Module administration') . ' — ' . WT_I18N::translate('Sidebars'))
 	->pageHeader()
 	->addInlineJavascript('
-    jQuery("#sidebars_table").sortable({items: ".sortme", forceHelperSize: true, forcePlaceholderSize: true, opacity: 0.7, cursor: "move", axis: "y"});
+	jQuery("#sidebars_table").sortable({items: ".sortme", forceHelperSize: true, forcePlaceholderSize: true, opacity: 0.7, cursor: "move", axis: "y"});
 
-    //-- update the order numbers after drag-n-drop sorting is complete
-    jQuery("#sidebars_table").bind("sortupdate", function(event, ui) {
+	//-- update the order numbers after drag-n-drop sorting is complete
+	jQuery("#sidebars_table").bind("sortupdate", function(event, ui) {
 			jQuery("#"+jQuery(this).attr("id")+" input").each(
 				function (index, value) {
 					value.value = index+1;
@@ -64,8 +64,10 @@ if ($action=='update_mods' && WT_Filter::checkCsrf()) {
 }
 
 ?>
+<h2><?php echo $controller->getPageTitle(); ?></h2>
+
 <div id="sidebars" align="center">
-	<form method="post" action="<?php echo WT_SCRIPT_NAME; ?>">
+	<form method="post">
 		<input type="hidden" name="action" value="update_mods">
 		<?php echo WT_Filter::getCsrf(); ?>
 		<table id="sidebars_table" class="modules_table">

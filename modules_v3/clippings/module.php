@@ -54,7 +54,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 
 			$clip_ctrl=new WT_Controller_Clippings();
 
-			$controller=new WT_Controller_Page();
+			$controller = new WT_Controller_Page();
 			$controller
 				->setPageTitle($this->getTitle())
 				->PageHeader()
@@ -135,7 +135,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 			if (!$WT_SESSION->cart[WT_GED_ID]) {
 				if ($clip_ctrl->action!='add') {
 
-					echo WT_I18N::translate('The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the “Download” link.  Follow the instructions and links.</li></ul>');
+					echo WT_I18N::translate('The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple.  Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name.  There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the “Download” link.  Follow the instructions and links.</li></ul>');
 					?>
 					<form method="get" name="addin" action="module.php">
 					<input type="hidden" name="mod" value="clippings">
@@ -153,7 +153,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 						</td>
 						<td class="optionbox">
 							<?php echo print_findindi_link('cart_item_id'); ?>
-							<?php echo print_findfamily_link('cart_item_id', ''); ?>
+							<?php echo print_findfamily_link('cart_item_id'); ?>
 							<?php echo print_findsource_link('cart_item_id', ''); ?>
 							<input type="submit" value="<?php echo WT_I18N::translate('Add'); ?>">
 
@@ -335,7 +335,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 			require_once WT_ROOT.WT_MODULES_DIR.'clippings/clippings_ctrl.php';
 
 			// Creating a controller has the side effect of initialising the cart
-			$clip_ctrl=new WT_Controller_Clippings();
+			new WT_Controller_Clippings();
 
 			return true;
 		}
@@ -375,7 +375,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 			if ($record) {
 				$clip_ctrl->id=$record->getXref();
 				$clip_ctrl->type=$record::RECORD_TYPE;
-				$ret = $clip_ctrl->add_clipping($record);
+				$ret = $clip_ctrl->addClipping($record);
 				if ($ret) return $this->askAddOptions($record);
 			}
 		} elseif (!empty($add1)) {
@@ -385,22 +385,22 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 				$clip_ctrl->type=strtolower($record::RECORD_TYPE);
 				if ($others == 'parents') {
 					foreach ($record->getChildFamilies() as $family) {
-						$clip_ctrl->add_clipping($family);
-						$clip_ctrl->add_family_members($family);
+						$clip_ctrl->addClipping($family);
+						$clip_ctrl->addFamilyMembers($family);
 					}
 				} elseif ($others == 'ancestors') {
-					$clip_ctrl->add_ancestors_to_cart($record, $clip_ctrl->level1);
+					$clip_ctrl->addAncestorsToCart($record, $clip_ctrl->level1);
 				} elseif ($others == 'ancestorsfamilies') {
-					$clip_ctrl->add_ancestors_to_cart_families($record, $clip_ctrl->level2);
+					$clip_ctrl->addAncestorsToCartFamilies($record, $clip_ctrl->level2);
 				} elseif ($others == 'members') {
 					foreach ($record->getSpouseFamilies() as $family) {
-						$clip_ctrl->add_clipping($family);
-						$clip_ctrl->add_family_members($family);
+						$clip_ctrl->addClipping($family);
+						$clip_ctrl->addFamilyMembers($family);
 					}
 				} elseif ($others == 'descendants') {
 					foreach ($record->getSpouseFamilies() as $family) {
-						$clip_ctrl->add_clipping($family);
-						$clip_ctrl->add_family_descendancy($family, $clip_ctrl->level3);
+						$clip_ctrl->addClipping($family);
+						$clip_ctrl->addFamilyDescendancy($family, $clip_ctrl->level3);
 					}
 				}
 			}
@@ -481,7 +481,6 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 			}';
 		$out .= '</script>';
 		if ($person::RECORD_TYPE=='FAM') {
-
 			$out .= '<form action="module.php" method="get" onsubmit="continueAjax(this); return false;">
 			<input type="hidden" name="mod" value="clippings">
 			<input type="hidden" name="mod_action" value="index">
@@ -497,8 +496,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 			<tr><td class="topbottombar"><input type="submit" value="'.WT_I18N::translate('Continue adding').'"></td></tr>
 			</table>
 			</form>';
-		}
-		else if ($person::RECORD_TYPE=='INDI') {
+		} elseif ($person::RECORD_TYPE=='INDI') {
 			$out .= '<form action="module.php" method="get" onsubmit="continueAjax(this); return false;">
 			<input type="hidden" name="mod" value="clippings">
 			<input type="hidden" name="mod_action" value="index">
@@ -544,7 +542,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 
 		$out = '<script>';
 		$out .= 'function cancelDownload() {
-				var link = "module.php?mod='.$this->getName().'&mod_action=ajax&sb_action=clippings&pid='.$pid.'";
+				var link = "module.php?mod=' . $this->getName() . '&mod_action=ajax&sb_action=clippings&pid=' . $pid . '";
 				jQuery("#sb_clippings_content").load(link);
 			}';
 		$out .= '</script>';

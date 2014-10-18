@@ -19,8 +19,30 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 interface WT_Module_Sidebar {
+	/**
+	 * The user can change the order of sidebars.  Until they do this, they are shown in this order.
+	 *
+	 * @return int
+	 */
 	public function defaultSidebarOrder();
+
+	/**
+	 * Load this sidebar synchronously.
+	 * @return string
+	 */
 	public function getSidebarContent();
+
+	/**
+	 * Load this sidebar asynchronously.
+	 *
+	 * @return string
+	 */
 	public function getSidebarAjaxContent();
+
+	/**
+	 * Does this sidebar have anything to display for this individual?
+	 *
+	 * @return bool
+	 */
 	public function hasSidebarContent();
 }

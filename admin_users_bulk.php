@@ -28,7 +28,7 @@ use WT\Auth;
 define('WT_SCRIPT_NAME', 'admin_users_bulk.php');
 require './includes/session.php';
 
-$controller=new WT_Controller_Page();
+$controller = new WT_Controller_Page();
 $controller
 	->restrictAccess(Auth::isAdmin())
 	->setPageTitle(WT_I18N::translate('Send broadcast messages'))
@@ -38,17 +38,17 @@ $controller
 <div id="users_bulk">
 	<p>
 		<a href="#" onclick="message('all', 'messaging2', ''); return false;">
-			<?php echo WT_I18N::translate('Send message to all users'); ?>
+			<?php echo WT_I18N::translate('Send a message to all users'); ?>
 		</a>
 	</p>
 	<p>
 		<a href="#" onclick="message('never_logged', 'messaging2', ''); return false;">
-			<?php echo WT_I18N::translate('Send message to users who have never logged in'); ?>
+			<?php echo WT_I18N::translate('Send a message to users who have never logged in'); ?>
 		</a>
 	</p>
 	<p>
 		<a href="#" onclick="message('last_6mo', 'messaging2', ''); return false;">
-			<?php echo WT_I18N::translate('Send message to users who have not logged in for 6 months'); ?>
+			<?php echo WT_I18N::translate('Send a message to users who have not logged in for 6 months'); ?>
 		</a>
 	</p>
 </div>

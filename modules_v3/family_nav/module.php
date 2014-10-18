@@ -58,16 +58,16 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	public function getSidebarContent() {
 		global $controller;
 
-		$controller->addInlineJavascript("
-			jQuery('#sb_family_nav_content')
-				.on('click', '.flyout a', function() {
+		$controller->addInlineJavascript('
+			jQuery("#sb_family_nav_content")
+				.on("click", ".flyout a", function() {
 					return false;
 				})
-				.on('click', '.flyout3', function() {
-					window.location.href = jQuery(this).data('href');
+				.on("click", ".flyout3", function() {
+					window.location.href = jQuery(this).data("href");
 					return false;
 				});
-		");
+		');
 
 		ob_start();
 

@@ -25,7 +25,6 @@ use WT\Auth;
 use WT\User;
 
 require_once WT_ROOT.'includes/functions/functions_print_facts.php';
-require_once WT_ROOT.'includes/functions/functions_import.php';
 
 class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 	public $name_count = 0;
@@ -112,7 +111,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 	 *
 	 * @param WT_Fact $event the event object
 	 */
-	function print_name_record(WT_Fact $event) {
+	public function printNameRecord(WT_Fact $event) {
 		global $WT_TREE;
 
 		$factrec = $event->getGedcom();
@@ -177,13 +176,13 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 								// Where it is not a substring of the real surname, show it after the real surname.
 								$surname = WT_Filter::escapeHtml($primary_name['surname']);
 								if (strpos($primary_name['surname'], str_replace(',', ' ', $nmatch[$i][2]))!==false) {
-									echo $surname;
+									echo '<span dir="auto">' . $surname . '</span>';
 								} else {
-									echo WT_I18N::translate('%1$s (%2$s)', $surname, $name);
+									echo WT_I18N::translate('%1$s (%2$s)', '<span dir="auto">' . $surname . '</span>', '<span dir="auto">' . $name . '</span>');
 								}
 								break;
 							default:
-								echo $name;
+								echo '<span dir="auto">' . $name . '</span>';
 								break;
 							}
 						}
@@ -206,7 +205,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 	 *
 	 * @param WT_Fact $event the Event object
 	 */
-	function print_sex_record(WT_Fact $event) {
+	public function printSexRecord(WT_Fact $event) {
 		$sex = $event->getValue();
 		if (empty($sex)) $sex = 'U';
 		echo '<span id="sex" class="';
@@ -251,7 +250,9 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 	 * get edit menu
 	 */
 	function getEditMenu() {
-		$SHOW_GEDCOM_RECORD=get_gedcom_setting(WT_GED_ID, 'SHOW_GEDCOM_RECORD');
+		global $WT_TREE;
+
+		$SHOW_GEDCOM_RECORD = $WT_TREE->getPreference('SHOW_GEDCOM_RECORD');
 
 		if (!$this->record || $this->record->isOld()) {
 			return null;
@@ -382,8 +383,9 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 			}
 		}
 
-		$controller
-			->addInlineJavascript('
+		if ($html) {
+			$controller
+				->addInlineJavascript('
 				jQuery("#sidebarAccordion").accordion({
 					active:' . $active . ',
 					heightStyle: "content",
@@ -391,6 +393,9 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 				});
 			');
 
-		return '<div id="sidebar"><div id="sidebarAccordion">'.$html.'</div></div>';
+			return '<div id="sidebar"><div id="sidebarAccordion">' . $html . '</div></div>';
+		} else {
+			return '';
+		}
 	}
 }

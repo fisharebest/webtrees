@@ -27,7 +27,7 @@
 
 define('WT_SCRIPT_NAME', 'individual.php');
 require './includes/session.php';
-$controller=new WT_Controller_Individual();
+$controller = new WT_Controller_Individual();
 $controller
 	->addExternalJavascript(WT_JQUERY_COOKIE_URL); // We use this to record the sidebar state
 
@@ -108,7 +108,7 @@ var WT_INDIVIDUAL = (function () {
 		jQuery ("#tabs").tabs ({
 			// If url has a hash (e.g #stories) then don\'t set an active tab - it overrides the hash
 			// otherwise use cookie
-			active: document.location.hash ? null : jQuery.cookie ("indi-tab"),
+			active: location.hash ? null : jQuery.cookie ("indi-tab"),
 			activate: function (event, ui) {
 				jQuery.cookie ("indi-tab", jQuery ("#tabs").tabs ("option", "active"));
 			},
@@ -125,25 +125,27 @@ var WT_INDIVIDUAL = (function () {
 			}
 		});
 
-		// toggle sidebar visibility
-		jQuery ("#main").on ("click", "#separator", function (e) {
-			e.preventDefault ();
-			jQsidebar.animate ({width: "toggle"}, {
-				duration: 300,
-				done: function () {
-					jQuery.cookie ("hide-sb", jQsidebar.is (":hidden"));
-					jQseparator.toggleClass("separator-hidden separator-visible");
-				}
+		if (jQsidebar.length) { // Have we got a sidebar ?
+			// toggle sidebar visibility
+			jQuery ("#main").on ("click", "#separator", function (e) {
+				e.preventDefault ();
+				jQsidebar.animate ({width: "toggle"}, {
+					duration: 300,
+					done: function () {
+						jQuery.cookie ("hide-sb", jQsidebar.is (":hidden"));
+						jQseparator.toggleClass("separator-hidden separator-visible");
+					}
+				});
 			});
-		});
 
-		// Set initial sidebar state
-		if (jQuery.cookie ("hide-sb") === "true") {
-			jQsidebar.hide ();
-			jQseparator.addClass("separator-hidden");
-		} else {
-			jQsidebar.show ();
-			jQseparator.addClass("separator-visible");
+			// Set initial sidebar state
+			if (jQuery.cookie ("hide-sb") === "true") {
+				jQsidebar.hide ();
+				jQseparator.addClass("separator-hidden");
+			} else {
+				jQsidebar.show ();
+				jQseparator.addClass("separator-visible");
+			}
 		}
 	}
 
@@ -174,10 +176,10 @@ if ($controller->record->canShow()) {
 	echo '<span class="header_age">';
 	if ($bdate->isOK() && !$controller->record->isDead()) {
 		// If living display age
-		echo WT_Gedcom_Tag::getLabelValue('AGE', get_age_at_event(WT_Date::GetAgeGedcom($bdate), true), '', 'span');
+		echo WT_Gedcom_Tag::getLabelValue('AGE', get_age_at_event(WT_Date::GetAgeGedcom($bdate), true), $controller->record, 'span');
 	} elseif ($bdate->isOK() && $ddate->isOK()) {
 		// If dead, show age at death
-		echo WT_Gedcom_Tag::getLabelValue('AGE', get_age_at_event(WT_Date::GetAgeGedcom($bdate, $ddate), false), '', 'span');
+		echo WT_Gedcom_Tag::getLabelValue('AGE', get_age_at_event(WT_Date::GetAgeGedcom($bdate, $ddate), false), $controller->record, 'span');
 	}
 	echo '</span>';
 	// Display summary birth/death info.
@@ -186,7 +188,7 @@ if ($controller->record->canShow()) {
 	// Display gender icon
 	foreach ($controller->record->getFacts() as $fact) {
 		if ($fact->getTag() == 'SEX') {
-			$controller->print_sex_record($fact);
+			$controller->printSexRecord($fact);
 		}
 	}
 	echo '</h3>'; // close first name accordion header
@@ -194,7 +196,7 @@ if ($controller->record->canShow()) {
 	// Display name details
 	foreach ($controller->record->getFacts() as $fact) {
 		if ($fact->getTag() == 'NAME') {
-			$controller->print_name_record($fact);
+			$controller->printNameRecord($fact);
 		}
 	}
 
@@ -245,7 +247,9 @@ foreach ($controller->tabs as $tab) {
 }
 echo
 	'</div>', // close #tabs
-	'</div>', //close indi_left
-	'<div id="separator" title="', WT_I18N::translate('Click here to open or close the sidebar'), '"></div>',//clickable element to open/close sidebar
-	$sidebar_html,
-	'</div>'; // close #main
+	'</div>'; //close indi_left
+	if ($sidebar_html) {
+		echo '<div id="separator" title="' . WT_I18N::translate('Click here to open or close the sidebar') . '"></div>' . //clickable element to open/close sidebar
+		$sidebar_html;
+	}
+	echo '</div>'; // close #main

@@ -26,14 +26,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
-self::exec("UPDATE `##default_resn` SET xref    =NULL WHERE xref    =''");
-self::exec("UPDATE `##default_resn` SET tag_type=NULL WHERE tag_type=''");
+WT_DB::exec("UPDATE `##default_resn` SET xref    =NULL WHERE xref    =''");
+WT_DB::exec("UPDATE `##default_resn` SET tag_type=NULL WHERE tag_type=''");
 
 // Update the version to indicate success
-WT_Site::preference($schema_name, $next_version);
-
+WT_Site::setPreference($schema_name, $next_version);

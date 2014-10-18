@@ -2,7 +2,7 @@
 // Update the database schema from version 10 to 11
 // - delete old configuration setting
 // - increase password field from 64 to 128 chars (some versions of PHP use
-// the SHA512 algorithm for crypt() which generates 98 digit hashes)
+//   the SHA512 algorithm for crypt() which generates 98 digit hashes)
 //
 // The script should assume that it can be interrupted at
 // any point, and be able to continue by re-running the script.
@@ -28,17 +28,11 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 // Delete some old/unused config settings
-self::exec("DELETE FROM `##gedcom_setting` WHERE setting_name IN ('SEARCH_FACTS_DEFAULT', 'DISPLAY_JEWISH_GERESHAYIM', 'DISPLAY_JEWISH_THOUSANDS')");
+WT_DB::exec("DELETE FROM `##gedcom_setting` WHERE setting_name IN ('SEARCH_FACTS_DEFAULT', 'DISPLAY_JEWISH_GERESHAYIM', 'DISPLAY_JEWISH_THOUSANDS')");
 
 // Increase the password column from 64 to 128 characters
-self::exec("ALTER TABLE `##user` CHANGE password password VARCHAR(128) COLLATE utf8_unicode_ci NOT NULL");
+WT_DB::exec("ALTER TABLE `##user` CHANGE password password VARCHAR(128) COLLATE utf8_unicode_ci NOT NULL");
 
 // Update the version to indicate success
-WT_Site::preference($schema_name, $next_version);
-
+WT_Site::setPreference($schema_name, $next_version);

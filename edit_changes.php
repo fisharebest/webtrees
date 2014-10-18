@@ -26,9 +26,8 @@ use WT\Log;
 
 define('WT_SCRIPT_NAME', 'edit_changes.php');
 require './includes/session.php';
-require WT_ROOT.'includes/functions/functions_import.php';
 
-$controller=new WT_Controller_Simple();
+$controller = new WT_Controller_Simple();
 $controller
 	->restrictAccess(Auth::isModerator())
 	->setPageTitle(WT_I18N::translate('Pending changes'))
@@ -192,7 +191,7 @@ if ($changed_gedcoms) {
 			}
 		}
 		echo '</td>';
-		$output .= "<td class=\"list_value\"><a href=\"#\" onclick=\"return reply('".$change->user_name."', '".WT_I18N::translate('Moderate pending changes')."')\" alt=\"".WT_I18N::translate('Send message')."\">";
+		$output .= "<td class=\"list_value\"><a href=\"#\" onclick=\"return reply('".$change->user_name."', '".WT_I18N::translate('Moderate pending changes')."')\" alt=\"".WT_I18N::translate('Send a message')."\">";
 		$output .= WT_Filter::escapeHtml($change->real_name);
 		$output .= ' - '.WT_Filter::escapeHtml($change->user_name).'</a></td>';
 		$output .= '<td class="list_value">'.$change->change_time.'</td>';

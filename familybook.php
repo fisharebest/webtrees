@@ -24,7 +24,7 @@
 define('WT_SCRIPT_NAME', 'familybook.php');
 require './includes/session.php';
 
-$controller=new WT_Controller_Familybook();
+$controller = new WT_Controller_Familybook();
 $controller
 	->pageHeader()
 	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
@@ -96,7 +96,7 @@ $controller
 <div id="familybook_chart" style="z-index:1;">
 <?php
 if ($controller->root) {
-	$controller->print_family_book($controller->root, $controller->descent);
+	$controller->printFamilyBook($controller->root, $controller->descent);
 }
 ?>
 </div>

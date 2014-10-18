@@ -26,7 +26,7 @@
 define('WT_SCRIPT_NAME', 'timeline.php');
 require './includes/session.php';
 
-$controller=new WT_Controller_Timeline();
+$controller = new WT_Controller_Timeline();
 $controller
 	->pageHeader()
 	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
@@ -87,14 +87,11 @@ document.onmousemove = function (e) {
 				oldx = newx;
 			}
 		}
-		if (newy >= topy-bheight / 2 && newy <= bottomy) {
-			newy = newy;
-		} else {
-			if (newy < topy - bheight / 2) {
-				newy = topy - bheight / 2;
-			} else {
-				newy = (bottomy - 1);
-			}
+		if (newy < topy - bheight / 2) {
+			newy = topy - bheight / 2;
+		}
+		if (newy > bottomy) {
+			newy = bottomy - 1;
 		}
 		ob.style.top = newy + "px";
 		var tyear = (newy + bheight - 4 - topy + scale) / scale + baseyear;
@@ -126,14 +123,16 @@ document.onmousemove = function (e) {
 		}
 		var yearform = document.getElementById('yearform' + personnum);
 		var ageform = document.getElementById('ageform' + personnum);
-		yearform.innerHTML = year + "      " + month + " <?php echo WT_I18N::substr(WT_I18N::translate('Month:'), 0, 1); ?>   " + day + " <?php echo WT_I18N::substr(WT_I18N::translate('Day:'), 0, 1); ?>";
+		yearform.innerHTML = year + "      " + month + " <?php echo mb_substr(WT_I18N::translate('Month:'), 0, 1); ?>   " + day + " <?php echo mb_substr(WT_I18N::translate('Day:'), 0, 1); ?>";
 		if (ba * yage > 1 || ba * yage < -1 || ba * yage === 0) {
-			ageform.innerHTML = (ba * yage) + " <?php echo WT_I18N::substr(WT_I18N::translate('years'), 0, 1); ?>   " + (ba * mage) + " <?php echo WT_I18N::substr(WT_I18N::translate('Month:'), 0, 1); ?>   " + (ba * dage) + " <?php echo WT_I18N::substr(WT_I18N::translate('Day:'), 0, 1); ?>";
+			ageform.innerHTML = (ba * yage) + " <?php echo mb_substr(WT_I18N::translate('years'), 0, 1); ?>   " + (ba * mage) + " <?php echo mb_substr(WT_I18N::translate('Month:'), 0, 1); ?>   " + (ba * dage) + " <?php echo mb_substr(WT_I18N::translate('Day:'), 0, 1); ?>";
 		} else {
-			ageform.innerHTML = (ba * yage) + " <?php echo WT_I18N::substr(WT_I18N::translate('Year:'), 0, 1); ?>   " + (ba * mage) + " <?php echo WT_I18N::substr(WT_I18N::translate('Month:'), 0, 1); ?>   " + (ba * dage) + " <?php echo WT_I18N::substr(WT_I18N::translate('Day:'), 0, 1); ?>";
+			ageform.innerHTML = (ba * yage) + " <?php echo mb_substr(WT_I18N::translate('Year:'), 0, 1); ?>   " + (ba * mage) + " <?php echo mb_substr(WT_I18N::translate('Month:'), 0, 1); ?>   " + (ba * dage) + " <?php echo mb_substr(WT_I18N::translate('Day:'), 0, 1); ?>";
 		}
 		var line = document.getElementById('ageline' + personnum);
 		var temp = newx-oldx;
+
+		var textDirection = jQuery('html').attr('dir');
 		if (textDirection === 'rtl') {
 			temp = temp * -1;
 		}
@@ -171,53 +170,49 @@ document.onmousemove = function (e) {
 			ebottomy = boxmean + 175;
 		}
 		// check if in the bounds of the limits
-		if (newy >= etopy && newy <= ebottomy) {
-			newy = newy;
-		} else {
-			if (newy < etopy) {
-				newy = etopy;
-			} else {
-				if (newy > ebottomy) {
-					newy = ebottomy;
-				}
-			}
+		if (newy < etopy) {
+			newy = etopy;
+		}
+		if (newy > ebottomy) {
+			newy = ebottomy;
 		}
 		// calculate the change in Y position
 		var dy = newy-ob.offsetTop;
 		// check if we are above the starting point and switch the background image
+		var textDirection = jQuery('html').attr('dir');
+
 		if (newy < boxmean) {
-			if (textDirection === 'ltr') {
-				dbox.style.backgroundImage = "url('<?php echo $WT_IMAGES["dline"]; ?>')";
-				dbox.style.backgroundPosition = "0% 100%";
-			} else {
+			if (textDirection === 'rtl') {
 				dbox.style.backgroundImage = "url('<?php echo $WT_IMAGES["dline2"]; ?>')";
 				dbox.style.backgroundPosition = "0% 0%";
+			} else {
+				dbox.style.backgroundImage = "url('<?php echo $WT_IMAGES["dline"]; ?>')";
+				dbox.style.backgroundPosition = "0% 100%";
 			}
 			dy = -dy;
 			dbox.style.top = (newy + bheight / 3) + "px";
 		} else {
-			if (textDirection === 'ltr') {
-				dbox.style.backgroundImage = "url('<?php echo $WT_IMAGES["dline2"]; ?>')";
-				dbox.style.backgroundPosition = "0% 0%";
-			} else {
+			if (textDirection === 'rtl') {
 				dbox.style.backgroundImage = "url('<?php echo $WT_IMAGES["dline"]; ?>')";
 				dbox.style.backgroundPosition = "0% 100%";
+			} else {
+				dbox.style.backgroundImage = "url('<?php echo $WT_IMAGES["dline2"]; ?>')";
+				dbox.style.backgroundPosition = "0% 0%";
 			}
 
 			dbox.style.top = (boxmean + bheight / 3) + "px";
 		}
 		// the new X posistion moves the same as the y position
-		if (textDirection === 'ltr') {
-			newx = dbox.offsetLeft + Math.abs(newy - boxmean);
-		} else {
+		if (textDirection === 'rtl') {
 			newx = dbox.offsetRight + Math.abs(newy - boxmean);
+		} else {
+			newx = dbox.offsetLeft + Math.abs(newy - boxmean);
 		}
 		// set the X position of the box
-		if (textDirection === 'ltr') {
-			ob.style.left = newx + "px";
-		}
-		else {
+		if (textDirection === 'rtl') {
 			ob.style.right = newx + "px";
+		} else {
+			ob.style.left = newx + "px";
 		}
 		// set new top positions
 		ob.style.top = newy + "px";

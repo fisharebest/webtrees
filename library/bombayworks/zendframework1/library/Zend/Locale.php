@@ -60,7 +60,7 @@ class Zend_Locale
         'uz_UZ'  => 'uz_Latn_UZ',
         'vai_LR' => 'vai_Latn_LR',
         'zh_CN' => 'zh_Hans_CN',
-        'zh_HK' => 'zh_Hans_HK',
+        'zh_HK' => 'zh_Hant_HK',
         'zh_MO' => 'zh_Hans_MO',
         'zh_SG' => 'zh_Hans_SG',
         'zh_TW' => 'zh_Hant_TW',

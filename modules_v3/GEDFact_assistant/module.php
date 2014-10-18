@@ -128,7 +128,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 		$myindilist=search_indis_names($filter_array, array(WT_GED_ID), 'AND');
 		if ($myindilist) {
 			echo "<td class=\"list_value_wrap\"><ul>";
-			usort($myindilist, array('WT_GedcomRecord', 'Compare'));
+			usort($myindilist, array('WT_GedcomRecord', 'compare'));
 			foreach ($myindilist as $indi) {
 				$nam = WT_Filter::escapeHtml($indi->getFullName());
 				echo "<li><a href=\"#\" onclick=\"pasterow(
@@ -157,7 +157,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 	private static function media_query_3a() {
 		$iid2 = WT_Filter::get('iid', WT_REGEX_XREF);
 
-		$controller=new WT_Controller_Simple();
+		$controller = new WT_Controller_Simple();
 		$controller
 			->setPageTitle(WT_I18N::translate('Link to an existing media object'))
 			->pageHeader();
@@ -349,6 +349,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 					return false;
 				}
 			');
+
 			return '
 				<select id="selcensdate" name="selcensdate" onchange = "if (this.options[this.selectedIndex].value!=\'\') {
 										addDate(this.options[this.selectedIndex].value);

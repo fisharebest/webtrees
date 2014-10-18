@@ -110,12 +110,16 @@ function select_edit_control_inline($name, $values, $empty, $selected, $controll
 	}
 }
 
-// Create a set of radio buttons for a form
-// $name     - the ID for the form element
-// $values   - array of value=>display items
-// $selected - the currently selected item (if any)
-// $extra    - extra markup for field (e.g. tab key sequence)
-function radio_buttons($name, $values, $selected, $extra='') {
+/**
+ * Create a set of radio buttons for a form
+ *
+ * @param string   $name      The ID for the form element
+ * @param string[] $values    Array of value=>display items
+ * @param string   $selected  The currently selected item
+ *
+ * @return string
+ */
+function radio_buttons($name, $values, $selected) {
 	$html='';
 	foreach ($values as $key=>$value) {
 		$uniqueID = Uuid::uuid4();
@@ -129,9 +133,9 @@ function radio_buttons($name, $values, $selected, $extra='') {
 }
 
 // Print an edit control for a Yes/No field
-function edit_field_yes_no($name, $selected=false, $extra='') {
+function edit_field_yes_no($name, $selected=false) {
 	return radio_buttons(
-		$name, array(false=>WT_I18N::translate('no'), true=>WT_I18N::translate('yes')), $selected, $extra
+		$name, array(false=>WT_I18N::translate('no'), true=>WT_I18N::translate('yes')), $selected
 	);
 }
 
@@ -159,10 +163,18 @@ function two_state_checkbox($name, $is_checked=0, $extra='') {
 		' onclick="document.getElementById(\''.$name.'\').value=(this.checked?1:0);" '.$extra.'>';
 }
 
-// Print a set of edit controls to select languages
+/**
+ * Print a set of edit controls to select languages
+ *
+ * @param $field_prefix
+ * @param $languages
+ *
+ * @return string
+ */
 function edit_language_checkboxes($field_prefix, $languages) {
-	echo '<table>';
-	$i=0;
+	$html = '';
+	$i    = 0;
+
 	foreach (WT_I18N::installed_languages() as $code=>$name) {
 		$content = '<input type="checkbox" name="'.$field_prefix.$code.'" id="'.$field_prefix.$code.'"';
 		if (strpos(",{$languages},", ",{$code},")!==false) {
@@ -171,18 +183,30 @@ function edit_language_checkboxes($field_prefix, $languages) {
 		$content .= '><label for="'.$field_prefix.$code.'"> '.$name.'</label>';
 		// print in three columns
 		switch ($i % 3) {
-		case 0: echo '<tr><td>', $content, '</td>'; break;
-		case 1: echo '<td>', $content, '</td>'; break;
-		case 2: echo '<td>', $content, '</td></tr>'; break;
+		case 0:
+			$html .= '<tr><td>' . $content . '</td>';
+			break;
+		case 1:
+			$html .= '<td>' . $content . '</td>';
+			break;
+		case 2:
+			$html .= '<td>' . $content . '</td></tr>';
+			break;
 		}
 		$i++;
 	}
 	switch ($i % 3) {
-	case 0: break;
-	case 1: echo '<td></td><td></td></tr>'; break;
-	case 2: echo '<td></td></tr>'; break;
+	case 0:
+		break;
+	case 1:
+		$html .= '<td></td><td></td></tr>';
+		break;
+	case 2:
+		$html .= '<td></td></tr>';
+		break;
 	}
-	echo '</table>';
+
+	return '<table>' . $html . '</table>';
 }
 
 // Print an edit control for access level
@@ -375,14 +399,17 @@ function add_simple_tag(
 	// field value
 	$islink = (substr($value, 0, 1) === '@' && substr($value, 0, 2) != '@#');
 	if ($islink) {
-		$value=trim(trim(substr($tag, strlen($fact)+3)), " @\r");
+		$value = trim(substr($tag, strlen($fact)+3), " @\r");
 	} else {
-		$value=trim(substr($tag, strlen($fact)+3));
+		$value = substr($tag, strlen($fact)+3);
 	}
-	if ($fact=='REPO' || $fact=='SOUR' || $fact=='OBJE' || $fact=='FAMC')
+	if ($fact == 'REPO' || $fact == 'SOUR' || $fact == 'OBJE' || $fact == 'FAMC')
 		$islink = true;
 
-	if ($fact=='SHARED_NOTE_EDIT' || $fact=='SHARED_NOTE') {$islink=1;$fact="NOTE";}
+	if ($fact == 'SHARED_NOTE_EDIT' || $fact == 'SHARED_NOTE') {
+		$islink = true;
+		$fact = 'NOTE';
+	}
 
 	// label
 	echo "<tr id=\"", $element_id, "_tr\" ";
@@ -770,11 +797,11 @@ function add_simple_tag(
 	echo '<div id="' . $element_id . '_description">';
 
 	// current value
-	if ($fact=='DATE') {
-		$date=new WT_Date($value);
-		echo $date->Display(false);
+	if ($fact == 'DATE') {
+		$date = new WT_Date($value);
+		echo $date->display();
 	}
-	if ($value && $value!='new' && $islink) {
+	if ($value && $value != 'new' && $islink) {
 		switch ($fact) {
 		case 'ASSO':
 		case '_ASSO':
@@ -819,7 +846,7 @@ function add_simple_tag(
 
 // prints collapsable fields to add ASSO/RELA, SOUR, OBJE ...
 function print_add_layer($tag, $level=2) {
-	global $FULL_SOURCES;
+	global $FULL_SOURCES, $WT_TREE;
 
 	switch ($tag) {
 	case 'SOUR':
@@ -898,7 +925,7 @@ function print_add_layer($tag, $level=2) {
 		break;
 
 	case 'OBJE':
-		if (get_gedcom_setting(WT_GED_ID, 'MEDIA_UPLOAD') >= WT_USER_ACCESS_LEVEL) {
+		if ($WT_TREE->getPreference('MEDIA_UPLOAD') >= WT_USER_ACCESS_LEVEL) {
 			echo "<a href=\"#\" onclick=\"return expand_layer('newobje');\"><i id=\"newobje_img\" class=\"icon-plus\"></i> ", WT_I18N::translate('Add a new media object'), '</a>';
 			echo help_link('OBJE');
 			echo '<br>';
@@ -953,7 +980,7 @@ function addSimpleTags($fact) {
 
 // Assemble the pieces of a newly created record into gedcom
 function addNewName() {
-	global $ADVANCED_NAME_FACTS;
+	global $ADVANCED_NAME_FACTS, $WT_TREE;
 
 	$gedrec="\n1 NAME ".WT_Filter::post('NAME');
 
@@ -964,7 +991,7 @@ function addNewName() {
 	}
 
 	// Paternal and Polish and Lithuanian surname traditions can also create a _MARNM
-	$SURNAME_TRADITION=get_gedcom_setting(WT_GED_ID, 'SURNAME_TRADITION');
+	$SURNAME_TRADITION = $WT_TREE->getPreference('SURNAME_TRADITION');
 	if ($SURNAME_TRADITION=='paternal' || $SURNAME_TRADITION=='polish' || $SURNAME_TRADITION=='lithuanian') {
 		$tags[]='_MARNM';
 	}

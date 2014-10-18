@@ -27,15 +27,14 @@ define('WT_SCRIPT_NAME', 'hourglass.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_edit.php';
 
-$controller=new WT_Controller_Hourglass();
+$controller = new WT_Controller_Hourglass();
 $controller
 	->pageHeader()
 	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
 	->addInlineJavascript('autocomplete();')
-	->setupJavascript()
-	->addInlineJavascript('sizeLines();');
+	->setupJavascript();
 
-$gencount=0;
+$gencount = 0;
 
 ?>
 <div id="hourglass-page">
@@ -95,13 +94,13 @@ $gencount=0;
 	</form>
 
 	<div id="hourglass_chart" style="width:98%; z-index:1;">
-		<table cellspacing="0" cellpadding="0" border="0">
+		<table>
 			<tr>
-				<td valign="middle">
-					<?php $controller->print_descendency(WT_Individual::getInstance($controller->pid), 1); ?>
+				<td style="vertical-align:middle">
+					<?php $controller->printDescendency(WT_Individual::getInstance($controller->pid), 1); ?>
 				</td>
-				<td valign="middle">
-					<?php $controller->print_person_pedigree(WT_Individual::getInstance($controller->pid), 1); ?>
+				<td style="vertical-align:middle">
+					<?php $controller->printPersonPedigree(WT_Individual::getInstance($controller->pid), 1); ?>
 				</td>
 			</tr>
 		</table>

@@ -34,18 +34,18 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function getBlock($block_id, $template=true, $cfg=null) {
-		global $ctype, $PEDIGREE_FULL_DETAILS, $show_full, $bwidth, $bheight;
+		global $WT_TREE, $ctype, $PEDIGREE_FULL_DETAILS, $show_full, $bwidth, $bheight, $controller;
 
-		$PEDIGREE_ROOT_ID=get_gedcom_setting(WT_GED_ID, 'PEDIGREE_ROOT_ID');
+		$PEDIGREE_ROOT_ID = $WT_TREE->getPreference('PEDIGREE_ROOT_ID');
 
-		$details=get_block_setting($block_id, 'details', false);
-		$type   =get_block_setting($block_id, 'type', 'pedigree');
-		$pid    =get_block_setting($block_id, 'pid', WT_USER_ID ? (WT_USER_GEDCOM_ID ? WT_USER_GEDCOM_ID : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
-		$block  =get_block_setting($block_id, 'block');
+		$details = get_block_setting($block_id, 'details', false);
+		$type    = get_block_setting($block_id, 'type', 'pedigree');
+		$pid     = get_block_setting($block_id, 'pid', WT_USER_ID ? (WT_USER_GEDCOM_ID ? WT_USER_GEDCOM_ID : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
+		$block   = get_block_setting($block_id, 'block');
 		if ($cfg) {
 			foreach (array('details', 'type', 'pid', 'block') as $name) {
 				if (array_key_exists($name, $cfg)) {
-					$$name=$cfg[$name];
+					$$name = $cfg[$name];
 				}
 			}
 		}
@@ -70,8 +70,8 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 
 		if ($type!='treenav' && $person) {
-			$controller=new WT_Controller_Hourglass($person->getXref(), 0, 3);
-			$controller->setupJavascript();
+			$chartController = new WT_Controller_Hourglass($person->getXref(), 0, false);
+			$controller->addInlineJavascript($chartController->setupJavascript());
 		}
 
 		$id=$this->getName().$block_id;
@@ -102,7 +102,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 			if ($type=='descendants' || $type=='hourglass') {
 				$content .= "<td valign=\"middle\">";
 				ob_start();
-				$controller->print_descendency($person, 1, false);
+				$chartController->printDescendency($person, 1, false);
 				$content .= ob_get_clean();
 				$content .= "</td>";
 			}
@@ -117,7 +117,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 				}
 				$content .= "<td valign=\"middle\">";
 				ob_start();
-				$controller->print_person_pedigree($person, 1);
+				$chartController->printPersonPedigree($person, 1);
 				$content .= ob_get_clean();
 				$content .= "</td>";
 			}
@@ -172,9 +172,9 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function configureBlock($block_id) {
-		global $ctype, $controller;
+		global $WT_TREE, $ctype, $controller;
 
-		$PEDIGREE_ROOT_ID=get_gedcom_setting(WT_GED_ID, 'PEDIGREE_ROOT_ID');
+		$PEDIGREE_ROOT_ID = $WT_TREE->getPreference('PEDIGREE_ROOT_ID');
 
 		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
 			set_block_setting($block_id, 'details', WT_Filter::postBool('details'));

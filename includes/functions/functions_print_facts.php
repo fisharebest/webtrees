@@ -368,7 +368,7 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 			else echo WT_Gedcom_Tag::getLabelValue('EVEN', implode(WT_I18N::$list_separator, $events));
 			if (preg_match('/\n3 DATE (.+)/', $fact->getGedcom(), $date_match)) {
 				$date=new WT_Date($date_match[1]);
-				echo WT_Gedcom_Tag::getLabelValue('DATE', $date->Display());
+				echo WT_Gedcom_Tag::getLabelValue('DATE', $date->display());
 			}
 			if (preg_match('/\n3 PLAC (.+)/', $fact->getGedcom(), $plac_match)) {
 				echo WT_Gedcom_Tag::getLabelValue('PLAC', $plac_match[1]);
@@ -778,7 +778,7 @@ function printSourceStructure($textSOUR) {
 	if ($textSOUR['DATE'] || count($textSOUR['TEXT'])) {
 		if ($textSOUR['DATE']) {
 			$date = new WT_Date($textSOUR['DATE']);
-			$html .= WT_Gedcom_Tag::getLabelValue('DATA:DATE', $date->Display(false));
+			$html .= WT_Gedcom_Tag::getLabelValue('DATA:DATE', $date->display());
 		}
 		foreach ($textSOUR['TEXT'] as $text) {
 			$html .= WT_Gedcom_Tag::getLabelValue('TEXT', WT_Filter::formatText($text, $WT_TREE));
@@ -866,24 +866,22 @@ function print_main_notes(WT_Fact $fact, $level) {
 	for ($j=0; $j<$ct; $j++) {
 		// Note object, or inline note?
 		if (preg_match("/$level NOTE @(.*)@/", $match[$j][0], $nmatch)) {
-			$nid = $nmatch[1];
-			$note = WT_Note::getInstance($nid);
+			$note = WT_Note::getInstance($nmatch[1]);
 			if ($note && !$note->canShow()) {
 				continue;
 			}
 		} else {
-			$nid = null;
 			$note = null;
 		}
 
-		if ($level>=2) echo '<tr class="row_note2">';
-		else echo '<tr>';
-		echo '<td class="descriptionbox';
-		if ($level>=2) echo ' rela';
-		echo ' ', $styleadd, ' width20">';
+		if ($level >= 2) {
+			echo '<tr class="row_note2"><td class="descriptionbox rela ', $styleadd, ' width20">';
+		} else {
+			echo '<tr><td class="descriptionbox ', $styleadd, ' width20">';
+		}
 		if ($can_edit) {
 			echo '<a onclick="return edit_record(\'', $pid, '\', \'', $fact_id, '\');" href="#" title="', WT_I18N::translate('Edit'), '">';
-			if ($level<2) {
+			if ($level < 2) {
 				if ($SHOW_FACT_ICONS) {
 					echo '<i class="icon-note"></i> ';
 				}

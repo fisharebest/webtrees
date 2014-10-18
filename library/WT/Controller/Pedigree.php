@@ -225,27 +225,18 @@ class WT_Controller_Pedigree extends WT_Controller_Chart {
 				if (($minyoffset==0)||($minyoffset>$this->offsetarray[$i]["y"]))  $minyoffset = $this->offsetarray[$i]["y"];
 			}
 		}
-
-		$ydiff = $baseyoffset+35-$minyoffset;
-		$this->adjust_subtree(0, $ydiff);
 	}
 
+	/**
+	 * Get the name of the person at the root of the tree.
+	 *
+	 * @return string
+	 */
 	function getPersonName() {
 		if (is_null($this->root)) {
 			return WT_I18N::translate('unknown');
 		} else {
 			return $this->root->getFullName();
 		}
-	}
-
-	function adjust_subtree($index, $diff) {
-		global $offsetarray, $treeid;
-		$f = ($index*2)+1; //-- father index
-		$m = $f+1; //-- mother index
-
-		if (empty($offsetarray[$index])) return;
-		$offsetarray[$index]["y"] += $diff;
-		if ($f<count($treeid)) adjust_subtree($f, $diff);
-		if ($m<count($treeid)) adjust_subtree($m, $diff);
 	}
 }

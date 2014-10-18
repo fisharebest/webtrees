@@ -41,34 +41,34 @@ class media_WT_Module extends WT_Module implements WT_Module_Tab {
 
 	// Implement WT_Module_Tab
 	public function hasTabContent() {
-		return WT_USER_CAN_EDIT || $this->get_facts();
+		return WT_USER_CAN_EDIT || $this->getFactsWithMedia();
 	}
 
 	// Implement WT_Module_Tab
 	public function isGrayedOut() {
-		return !$this->get_facts();
+		return !$this->getFactsWithMedia();
 	}
 
 	// Implement WT_Module_Tab
 	public function getTabContent() {
-		global $controller;
+		global $WT_TREE, $controller;
 
 		ob_start();
 		echo '<table class="facts_table">';
-		foreach ($this->get_facts() as $fact) {
+		foreach ($this->getFactsWithMedia() as $fact) {
 			if ($fact->getTag() == 'OBJE') {
 				print_main_media($fact, 1);
 			} else {
-				for ($i=2; $i<4; ++$i) {
+				for ($i = 2; $i < 4; ++$i) {
 					print_main_media($fact, $i);
 				}
 			}
 		}
-		if (!$this->get_facts()) {
+		if (!$this->getFactsWithMedia()) {
 			echo '<tr><td id="no_tab4" colspan="2" class="facts_value">', WT_I18N::translate('There are no media objects for this individual.'), '</td></tr>';
 		}
 		// New media link
-		if ($controller->record->canEdit() && get_gedcom_setting(WT_GED_ID, 'MEDIA_UPLOAD') >= WT_USER_ACCESS_LEVEL) {
+		if ($controller->record->canEdit() && $WT_TREE->getPreference('MEDIA_UPLOAD') >= WT_USER_ACCESS_LEVEL) {
 			?>
 			<tr>
 				<td class="facts_label">
@@ -85,16 +85,20 @@ class media_WT_Module extends WT_Module implements WT_Module_Tab {
 					</a>
 				</td>
 			</tr>
-			<?php
+		<?php
 		}
 		?>
 		</table>
 		<?php
-		return '<div id="'.$this->getName().'_content">'.ob_get_clean().'</div>';
+		return '<div id="' . $this->getName() . '_content">' . ob_get_clean() . '</div>';
 	}
 
-	// Get all facts containing media links for this person and their spouse-family records
-	private function get_facts() {
+	/**
+	 * Get all the facts for an individual which contain media objects.
+	 *
+	 * @return WT_Fact[]
+	 */
+	private function getFactsWithMedia() {
 		global $controller;
 
 		if ($this->facts === null) {
@@ -114,6 +118,7 @@ class media_WT_Module extends WT_Module implements WT_Module_Tab {
 			}
 			sort_facts($this->facts);
 		}
+
 		return $this->facts;
 	}
 

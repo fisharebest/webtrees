@@ -23,41 +23,48 @@
 
 class WT_Source extends WT_GedcomRecord {
 	const RECORD_TYPE = 'SOUR';
-	const SQL_FETCH   = "SELECT s_gedcom FROM `##sources` WHERE s_id=? AND s_file=?";
-	const URL_PREFIX  = 'source.php?sid=';
+	const URL_PREFIX = 'source.php?sid=';
 
-	// Implement source-specific privacy logic
-	protected function _canShowByType($access_level) {
+	/**
+	 * {@inheritdoc}
+	 */
+	protected function canShowByType($access_level) {
 		// Hide sources if they are attached to private repositories ...
 		preg_match_all('/\n1 REPO @(.+)@/', $this->gedcom, $matches);
 		foreach ($matches[1] as $match) {
-			$repo=WT_Repository::getInstance($match);
+			$repo = WT_Repository::getInstance($match);
 			if ($repo && !$repo->canShow($access_level)) {
 				return false;
 			}
 		}
 
 		// ... otherwise apply default behaviour
-		return parent::_canShowByType($access_level);
+		return parent::canShowByType($access_level);
 	}
 
-	// Generate a private version of this record
+	/**
+	 * {@inheritdoc}
+	 */
 	protected function createPrivateGedcomRecord($access_level) {
 		return '0 @' . $this->xref . "@ SOUR\n1 TITL " . WT_I18N::translate('Private');
 	}
 
-	// Fetch the record from the database
+	/**
+	 * {@inheritdoc}
+	 */
 	protected static function fetchGedcomRecord($xref, $gedcom_id) {
-		static $statement=null;
+		static $statement = null;
 
-		if ($statement===null) {
-			$statement=WT_DB::prepare("SELECT s_gedcom FROM `##sources` WHERE s_id=? AND s_file=?");
+		if ($statement === null) {
+			$statement = WT_DB::prepare("SELECT s_gedcom FROM `##sources` WHERE s_id=? AND s_file=?");
 		}
 
 		return $statement->execute(array($xref, $gedcom_id))->fetchOne();
 	}
 
-	// Get an array of structures containing all the names in the record
+	/**
+	 * {@inheritdoc}
+	 */
 	public function extractNames() {
 		parent::_extractNames(1, 'TITL', $this->getFacts('TITL'));
 	}

@@ -21,7 +21,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-$controller=new WT_Controller_Simple();
+$controller = new WT_Controller_Simple();
 
 $filter   = WT_Filter::get('filter');
 $action   = WT_Filter::get('action');
@@ -75,7 +75,7 @@ if ($action=="filter") {
 	$myindilist=search_indis_names($filter_array, array(WT_GED_ID), 'AND');
 	if ($myindilist) {
 		echo "<tr><td class=\"list_value_wrap\"><ul>";
-		usort($myindilist, array('WT_GedcomRecord', 'Compare'));
+		usort($myindilist, array('WT_GedcomRecord', 'compare'));
 		foreach ($myindilist as $indi ) {
 			$nam = $indi->getAllNames();
 			$wholename = rtrim($nam[0]['givn'],'*')."&nbsp;".$nam[0]['surname'];

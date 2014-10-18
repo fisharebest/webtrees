@@ -235,11 +235,16 @@ if ($person1 && $person2) {
 			foreach ($node['path'] as $index=>$person) {
 				$linex = $xoffset;
 				$liney = $yoffset;
-				$mfstyle = 'NN';
 				switch ($person->getSex()) {
-				case 'M': $mfstyle='';   break;
-				case 'F': $mfstyle='F';  break;
-				case 'U': $mfstyle='NN'; break;
+				case 'M':
+					$mfstyle='';
+					break;
+				case 'F':
+					$mfstyle='F';
+					break;
+				default:
+					$mfstyle='NN';
+					break;
 				}
 				switch ($node['relations'][$index]) {
 				case 'father':
@@ -381,7 +386,7 @@ if ($person1 && $person2) {
 				$zIndex = 200 - ($colNum * $depth + $rowNum);
 
 				echo '<div style="position:absolute; ', $TEXT_DIRECTION=='ltr'?'left':'right', ':', $pxoffset, 'px; top:', $pyoffset, 'px; width:', $Dbwidth, 'px; height:', $Dbheight, 'px; z-index:', $zIndex, ';">';
-				print_pedigree_person($person, 1);
+				print_pedigree_person($person);
 				echo '</div>';
 			}
 		}
@@ -393,11 +398,10 @@ echo '</div>'; // close #relationshippage
 // The contents of <div id="relationship_chart"> use relative positions.
 // Need to expand the div to include the children, or we'll overlap the footer.
 // $maxyoffset is the top edge of the lowest box.
-$controller
-	->addInlineJavascript('
-		relationship_chart_div = document.getElementById("relationship_chart");
-		if (relationship_chart_div) {
-			relationship_chart_div.style.height = "'.($maxyoffset+$Dbheight+20).'px";
-			relationship_chart_div.style.width = "100%";
-		}'
-	);
+$controller->addInlineJavascript('
+	relationship_chart_div = document.getElementById("relationship_chart");
+	if (relationship_chart_div) {
+		relationship_chart_div.style.height = "'.($maxyoffset+$Dbheight+20).'px";
+		relationship_chart_div.style.width = "100%";
+	}'
+);

@@ -27,7 +27,7 @@ define('WT_SCRIPT_NAME', 'admin_trees_download.php');
 require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_export.php';
 
-$controller=new WT_Controller_Page();
+$controller = new WT_Controller_Page();
 $controller
 	->setPageTitle(WT_I18N::translate('Download GEDCOM'))
 	->restrictAccess(Auth::isManager());
@@ -40,57 +40,57 @@ $conv_path        = WT_Filter::get('conv_path');
 $privatize_export = WT_Filter::get('privatize_export', 'none|visitor|user|gedadmin');
 
 if ($action == 'download') {
-	$exportOptions = array();
-	$exportOptions['privatize'] = $privatize_export;
-	$exportOptions['toANSI'] = $convert;
-	$exportOptions['path'] = $conv_path;
-}
+	$exportOptions = array(
+		'privatize' => $privatize_export,
+		'toANSI'    => $convert,
+		'path'      => $conv_path,
+	);
 
-$fileName = WT_GEDCOM;
-if ($action == "download" && $zip == "yes") {
-	require WT_ROOT.'library/pclzip.lib.php';
+	// What to call the downloaded file
+	$download_filename = WT_GEDCOM;
+	if (strtolower(substr($download_filename, -4, 4)) != '.ged') {
+		$download_filename .= '.ged';
+	}
 
-	$temppath = WT_Site::preference('INDEX_DIRECTORY') . "tmp/";
-	$zipname = "dl" . date("YmdHis") . $fileName . ".zip";
-	$zipfile = WT_Site::preference('INDEX_DIRECTORY') . $zipname;
-	$gedname = $temppath . $fileName;
+	if ($zip == "yes") {
+		require WT_ROOT.'library/pclzip.lib.php';
 
-	$removeTempDir = false;
-	if (!is_dir($temppath)) {
-		$res = mkdir($temppath);
-		if ($res !== true) {
+		$temp_dir = WT_DATA_DIR . 'tmp-' . WT_GEDCOM . '-' . date("YmdHis") . '/';
+		$zip_file  = $download_filename . ".zip";
+
+		if (!WT_File::mkdir($temp_dir)) {
 			echo "Error : Could not create temporary path!";
 			exit;
 		}
-		$removeTempDir = true;
-	}
-	$gedout = fopen($gedname, "w");
-	export_gedcom($GEDCOM, $gedout, $exportOptions);
-	fclose($gedout);
-	$comment = "Created by ".WT_WEBTREES." ".WT_VERSION." on " . date("r") . ".";
-	$archive = new PclZip($zipfile);
-	$v_list = $archive->create($gedname, PCLZIP_OPT_COMMENT, $comment, PCLZIP_OPT_REMOVE_PATH, $temppath);
-	if ($v_list == 0) echo "Error : " . $archive->errorInfo(true);
-	else {
-		unlink($gedname);
-		if ($removeTempDir) rmdir($temppath);
-		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH."downloadbackup.php?fname=".$zipname);
-		exit;
-	}
-	exit;
-}
 
-if ($action == "download") {
-	Zend_Session::writeClose();
-	header('Content-Type: text/plain; charset=UTF-8');
-	// We could open "php://compress.zlib" to create a .gz file or "php://compress.bzip2" to create a .bz2 file
-	$gedout = fopen('php://output', 'w');
-	if (strtolower(substr($fileName, -4, 4))!='.ged') {
-		$fileName.='.ged';
+		// Create the unzipped GEDCOM on disk, so we can ZIP it.
+		$stream = fopen($temp_dir . $download_filename, "w");
+		export_gedcom(WT_GEDCOM, $stream, $exportOptions);
+		fclose($stream);
+
+		// Create a ZIP file containing the GEDCOM file.
+		$comment = "Created by " . WT_WEBTREES . " " . WT_VERSION . " on " . date("r") . ".";
+		$archive = new PclZip($temp_dir . $zip_file);
+		$v_list = $archive->add($temp_dir . $download_filename, PCLZIP_OPT_COMMENT, $comment, PCLZIP_OPT_REMOVE_PATH, $temp_dir);
+		if ($v_list == 0) {
+			echo "Error : " . $archive->errorInfo(true);
+		} else {
+			header('Content-Type: application/zip');
+			header('Content-Disposition: attachment; filename="' . $zip_file . '"');
+			header('Content-length: '.filesize($temp_dir . $zip_file));
+			readfile($temp_dir . $zip_file);
+			WT_File::delete($temp_dir);
+		}
+	} else {
+		Zend_Session::writeClose();
+		header('Content-Type: text/plain; charset=UTF-8');
+		header('Content-Disposition: attachment; filename="' . $download_filename . '"');
+		// Stream the GEDCOM file straight to the browser.
+		// We could open "php://compress.zlib" to create a .gz file or "php://compress.bzip2" to create a .bz2 file
+		$stream = fopen('php://output', 'w');
+		export_gedcom(WT_GEDCOM, $stream, $exportOptions);
+		fclose($stream);
 	}
-	header('Content-Disposition: attachment; filename="'.$fileName.'"');
-	export_gedcom(WT_GEDCOM, $gedout, $exportOptions);
-	fclose($gedout);
 	exit;
 }
 

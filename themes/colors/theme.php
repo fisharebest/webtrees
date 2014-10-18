@@ -56,7 +56,7 @@ function color_theme_dropdown() {
 			if ($WT_SESSION->subColor == $colorChoice) {
 				$submenu->addClass('','','theme-active');
 			}
-		} elseif  (WT_Site::preference('DEFAULT_COLOR_PALETTE') == $colorChoice) { /* here when visitor changes palette from default */
+		} elseif  (WT_Site::getPreference('DEFAULT_COLOR_PALETTE') == $colorChoice) { /* here when visitor changes palette from default */
 			$submenu->addClass('','','theme-active');
 		} elseif ($subColor=='ash') { /* here when site has different theme as default and user switches to colors */
 			if ($subColor == $colorChoice) {
@@ -97,28 +97,23 @@ $COLOR_THEME_LIST=array(
 if (isset($_GET['themecolor']) && array_key_exists($_GET['themecolor'], $COLOR_THEME_LIST)) {
 	// Request to change color
 	$subColor = $_GET['themecolor'];
-	if (Auth::id()) {
-		Auth::user()->setSetting('themecolor', $subColor);
-		if (Auth::isAdmin()) {
-			WT_Site::preference('DEFAULT_COLOR_PALETTE', $subColor);
-		}
+	Auth::user()->setPreference('themecolor', $subColor);
+	if (Auth::isAdmin()) {
+		WT_Site::setPreference('DEFAULT_COLOR_PALETTE', $subColor);
 	}
 	unset($_GET['themecolor']);
 	// Rember that we have selected a value
 	$WT_SESSION->subColor=$subColor;
 }
 // If we are logged in, use our preference
-$subColor = null;
-if (Auth::id()) {
-	$subColor = Auth::user()->getSetting('themecolor');
-}
+$subColor = Auth::user()->getPreference('themecolor');
 // If not logged in or no preference, use one we selected earlier in the session?
 if (!$subColor) {
 	$subColor = $WT_SESSION->subColor;
 }
 // We haven't selected one this session?  Use the site default
 if (!$subColor) {
-	$subColor = WT_Site::preference('DEFAULT_COLOR_PALETTE');
+	$subColor = WT_Site::getPreference('DEFAULT_COLOR_PALETTE');
 }
 // Make sure our selected palette actually exists
 if (!array_key_exists($subColor, $COLOR_THEME_LIST)) {
@@ -129,7 +124,7 @@ if (!array_key_exists($subColor, $COLOR_THEME_LIST)) {
 $theme_name = "colors"; /* I18N: Name of a theme. */ WT_I18N::translate('colors');
 
 // A version number in the path prevents browser-cache problems during upgrade
-define('WT_CSS_URL', WT_THEME_URL . 'css-1.5.4/');
+define('WT_CSS_URL', WT_THEME_URL . 'css-1.6.0/');
 
 $footerfile = WT_THEME_DIR . 'footer.php';
 $headerfile = WT_THEME_DIR . 'header.php';

@@ -248,24 +248,6 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * Test that function get_gedcom_setting() exists in the global namespace.
-	 *
-	 * @return void
-	 */
-	public function testFunctionGetGedcomSettingExists() {
-		$this->assertEquals(function_exists('\\get_gedcom_setting'), true);
-	}
-
-	/**
-	 * Test that function set_gedcom_setting() exists in the global namespace.
-	 *
-	 * @return void
-	 */
-	public function testFunctionSetGedcomSettingExists() {
-		$this->assertEquals(function_exists('\\set_gedcom_setting'), true);
-	}
-
-	/**
 	 * Test that function get_user_blocks() exists in the global namespace.
 	 *
 	 * @return void
@@ -299,24 +281,6 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 	 */
 	public function testFunctionSetBlockSettingExists() {
 		$this->assertEquals(function_exists('\\set_block_setting'), true);
-	}
-
-	/**
-	 * Test that function get_module_setting() exists in the global namespace.
-	 *
-	 * @return void
-	 */
-	public function testFunctionGetModuleSettingExists() {
-		$this->assertEquals(function_exists('\\get_module_setting'), true);
-	}
-
-	/**
-	 * Test that function set_module_setting() exists in the global namespace.
-	 *
-	 * @return void
-	 */
-	public function testFunctionSetModuleSettingExists() {
-		$this->assertEquals(function_exists('\\set_module_setting'), true);
 	}
 
 	/**

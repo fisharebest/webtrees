@@ -129,7 +129,7 @@ case 'site_setting':
 		// The password will be displayed as "click to edit" on screen.
 		// Accept the update, but pretend to fail.  This will leave the "click to edit" on screen
 		if ($value) {
-			WT_Site::preference($id1, $value);
+			WT_Site::setPreference($id1, $value);
 		}
 		fail();
 	default:
@@ -138,7 +138,7 @@ case 'site_setting':
 	}
 
 	// Authorised and valid - make update
-	WT_Site::preference($id1, $value);
+	WT_Site::setPreference($id1, $value);
 	ok();
 
 case 'site_access_rule':
@@ -218,9 +218,10 @@ case 'user_gedcom_setting':
 	case 'gedcomid':
 	case 'canedit':
 	case 'RELATIONSHIP_PATH_LENGTH':
+		$user = User::find($id1);
 		$tree = WT_Tree::get($id2);
 		if (Auth::isManager($tree)) {
-			$tree->userPreference($id1, $id3, $value);
+			$tree->setUserPreference($user, $id3, $value);
 			ok();
 			break;
 		}
@@ -236,7 +237,7 @@ case 'user_setting':
 
 	$user = User::find($id1);
 	// Authorisation
-	if (!(Auth::isAdmin() || $user && $user->getSetting('editaccount') && in_array($id2, array('language','visible_online','contact_method')))) {
+	if (!(Auth::isAdmin() || $user && $user->getPreference('editaccount') && in_array($id2, array('language','visible_online','contact_method')))) {
 		fail();
 	}
 
@@ -250,9 +251,9 @@ case 'user_setting':
 		break;
 	case 'verified_by_admin':
 		// Approving for the first time?  Send a confirmation email
-		if ($value && !$user->getSetting('verified_by_admin') && $user->getSetting('sessiontime')==0) {
-			WT_I18N::init($user->getSetting('language'));
-			WT_Mail::system_message(
+		if ($value && !$user->getPreference('verified_by_admin') && $user->getPreference('sessiontime')==0) {
+			WT_I18N::init($user->getPreference('language'));
+			WT_Mail::systemMessage(
 				$WT_TREE,
 				$user,
 				WT_I18N::translate('Approval of account at %s', WT_SERVER_NAME.WT_SCRIPT_PATH),
@@ -278,7 +279,7 @@ case 'user_setting':
 	}
 
 	// Authorised and valid - make update
-	$user->setSetting($id2, $value);
+	$user->setPreference($id2, $value);
 	ok();
 
 case 'module':
