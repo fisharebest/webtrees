@@ -228,7 +228,7 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 							$facts[] = $fact;
 						}
 						break;
-					case 'U':
+					default:
 						foreach (self::child_facts($person, $cfamily, '_GCHI', 'chi') as $fact) {
 							$facts[] = $fact;
 						}
@@ -479,13 +479,13 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 						if (preg_match('/^(?:BAPM|CHR)$/', $fact->getTag()) && preg_match('/2 _?ASSO @('.$person->getXref().')@\n3 RELA god(?:parent|mother|father)/', $fact->getGedcom())) {
 							switch ($associate->getSex()) {
 							case 'M':
-								$factrec.="\n3 RELA godson";
+								$factrec .= "\n3 RELA godson";
 								break;
 							case 'F':
-								$factrec.="\n3 RELA goddaughter";
+								$factrec .= "\n3 RELA goddaughter";
 								break;
-							case 'U':
-								$factrec.="\n3 RELA godchild";
+							default:
+								$factrec .= "\n3 RELA godchild";
 								break;
 							}
 						}

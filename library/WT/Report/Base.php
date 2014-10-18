@@ -1028,7 +1028,7 @@ function NowSHandler() {
 	global $currentElement;
 
 	$g = timestamp_to_gedcom_date(WT_CLIENT_TIMESTAMP);
-	$currentElement->addText($g->Display());
+	$currentElement->addText($g->display());
 }
 
 /**
@@ -1430,7 +1430,7 @@ function GedcomValueSHandler($attrs) {
 			switch (end($tags)) {
 			case 'DATE':
 				$tmp = new WT_Date($value);
-				$value = $tmp->Display();
+				$value = $tmp->display();
 				break;
 			case 'PLAC':
 				$tmp = new WT_Place($value, WT_GED_ID);
@@ -1645,7 +1645,7 @@ function varSHandler($attrs) {
 	if (isset($attrs['date'])) {
 		if ($attrs['date'] === "1") {
 			$g = new WT_Date($var);
-			$var = $g->Display();
+			$var = $g->display();
 		}
 	}
 	$currentElement->addText($var);

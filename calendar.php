@@ -122,13 +122,13 @@ $cal=rawurlencode($cal);
 
 switch ($action) {
 case 'today':
-	echo WT_I18N::translate('On this day…').'<br>'.$ged_date->Display(false);
+	echo WT_I18N::translate('On this day…').'<br>'.$ged_date->display();
 	break;
 case 'calendar':
-	echo WT_I18N::translate('In this month…').'<br>'.$ged_date->Display(false, '%F %Y');
+	echo WT_I18N::translate('In this month…').'<br>'.$ged_date->display(false, '%F %Y');
 	break;
 case 'year':
-	echo WT_I18N::translate('In this year…').'<br>'.$ged_date->Display(false, '%Y');
+	echo WT_I18N::translate('In this year…').'<br>'.$ged_date->display(false, '%Y');
 	break;
 }
 echo '</h2></td></tr>';
@@ -147,7 +147,7 @@ for ($d=1; $d<=$days_in_month; $d++) {
 	echo ' | ';
 }
 $tmp=new WT_Date($today->format('%@ %A %O %E')); // Need a WT_Date object to get localisation
-echo "<a href=\"calendar.php?cal={$cal}&amp;day={$today->d}&amp;month={$today_month}&amp;year={$today->y}&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action={$action}\"><b>".$tmp->Display().'</b></a>';
+echo "<a href=\"calendar.php?cal={$cal}&amp;day={$today->d}&amp;month={$today_month}&amp;year={$today->y}&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action={$action}\"><b>".$tmp->display().'</b></a>';
 echo '</td></tr>';
 // Month selector
 echo '<tr><td class="descriptionbox vmiddle">';
@@ -578,7 +578,7 @@ function apply_filter($facts, $filterof, $filtersx) {
 // Format an anniversary display.
 ////////////////////////////////////////////////////////////////////////////////
 function calendar_fact_text(WT_Fact $fact, $show_places) {
-	$text = $fact->getLabel().' — '.$fact->getDate()->Display(true, "", array());
+	$text = $fact->getLabel().' — '.$fact->getDate()->display(true, null, false);
 	if ($fact->anniv) {
 		$text .= ' (' . WT_I18N::translate('%s year anniversary', $fact->anniv) . ')';
 	}

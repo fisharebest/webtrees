@@ -797,11 +797,11 @@ function add_simple_tag(
 	echo '<div id="' . $element_id . '_description">';
 
 	// current value
-	if ($fact=='DATE') {
-		$date=new WT_Date($value);
-		echo $date->Display(false);
+	if ($fact == 'DATE') {
+		$date = new WT_Date($value);
+		echo $date->display();
 	}
-	if ($value && $value!='new' && $islink) {
+	if ($value && $value != 'new' && $islink) {
 		switch ($fact) {
 		case 'ASSO':
 		case '_ASSO':

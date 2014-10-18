@@ -15597,7 +15597,8 @@ msgid "You can re-enable these themes after the upgrade."
 msgstr "תוכל להפעיל עיצובים אלה מחדש לאחר השדרוג."
 
 #: admin_trees_renumber.php:261
-msgid "You can renumber the records in a family tree, so that these internal identification numbers are not duplicated in any other family tree."
+#, fuzzy
+msgid "You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree."
 msgstr "תוכל למספר מחדש את הרשומות בעץ משפחה, כך שמספרי הזיהוי הפנימיים האלה אינם משוכפלים באף עץ משפחה אחר."
 
 #: admin_trees_renumber.php:274

@@ -28,196 +28,220 @@ use Fisharebest\ExtCalendar\FrenchCalendar;
 
 class WT_Date_French extends WT_Date_Calendar {
 	const CALENDAR_ESCAPE = '@#DFRENCH R@';
-	const MONTHS_IN_YEAR  = 13;
-	const CAL_START_JD    = 2375840; // 22 SEP 1792 = 01 VEND 0001
-	const CAL_END_JD      = 2380687; // 31 DEC 1805 = 10 NIVO 0014
-	const DAYS_IN_WEEK    = 10; // A metric week of 10 unimaginatively named days.
-	static $MONTH_ABBREV  = array(
-		''=>0, 'VEND'=>1, 'BRUM'=>2, 'FRIM'=>3, 'NIVO'=>4, 'PLUV'=>5, 'VENT'=>6, 'GERM'=>7, 'FLOR'=>8, 'PRAI'=>9, 'MESS'=>10, 'THER'=>11, 'FRUC'=>12, 'COMP'=>13
-	);
+	const MONTHS_IN_YEAR = 13;
+	const CAL_START_JD = 2375840; // 22 SEP 1792 = 01 VEND 0001
+	const CAL_END_JD = 2380687; // 31 DEC 1805 = 10 NIVO 0014
+	const DAYS_IN_WEEK = 10; // A metric week of 10 unimaginatively named days.
+	static $MONTH_ABBREV = array('' => 0, 'VEND' => 1, 'BRUM' => 2, 'FRIM' => 3, 'NIVO' => 4, 'PLUV' => 5, 'VENT' => 6, 'GERM' => 7, 'FLOR' => 8, 'PRAI' => 9, 'MESS' => 10, 'THER' => 11, 'FRUC' => 12, 'COMP' => 13);
 
 	/**
-	 * Create a new calendar date
-	 *
-	 * @param mixed $date
+	 * {@inheritdoc}
 	 */
 	public function __construct($date) {
 		$this->calendar = new FrenchCalendar;
 		parent::__construct($date);
 	}
 
-	static function calendarName() {
+	/**
+	 * {@inheritdoc}
+	 */
+	public static function calendarName() {
 		return /* I18N: The French calendar */ WT_I18N::translate('French');
 	}
 
-	static function monthNameNominativeCase($n, $leap_year) {
-		switch ($n) {
+	/**
+	 * {@inheritdoc}
+	 */
+	public static function monthNameNominativeCase($month_number, $leap_year) {
+		switch ($month_number) {
 		case 1:
-			return WT_I18N::translate_c('NOMINATIVE', 'Vendémiaire');
+			return /* I18N: a month in the French republican calendar */ WT_I18N::translate_c('NOMINATIVE', 'Vendémiaire');
 		case 2:
-			return WT_I18N::translate_c('NOMINATIVE', 'Brumaire');
+			return /* I18N: a month in the French republican calendar */ WT_I18N::translate_c('NOMINATIVE', 'Brumaire');
 		case 3:
-			return WT_I18N::translate_c('NOMINATIVE', 'Frimaire');
+			return /* I18N: a month in the French republican calendar */ WT_I18N::translate_c('NOMINATIVE', 'Frimaire');
 		case 4:
-			return WT_I18N::translate_c('NOMINATIVE', 'Nivôse');
+			return /* I18N: a month in the French republican calendar */ WT_I18N::translate_c('NOMINATIVE', 'Nivôse');
 		case 5:
-			return WT_I18N::translate_c('NOMINATIVE', 'Pluviôse');
+			return /* I18N: a month in the French republican calendar */ WT_I18N::translate_c('NOMINATIVE', 'Pluviôse');
 		case 6:
-			return WT_I18N::translate_c('NOMINATIVE', 'Ventôse');
+			return /* I18N: a month in the French republican calendar */ WT_I18N::translate_c('NOMINATIVE', 'Ventôse');
 		case 7:
-			return WT_I18N::translate_c('NOMINATIVE', 'Germinal');
+			return /* I18N: a month in the French republican calendar */ WT_I18N::translate_c('NOMINATIVE', 'Germinal');
 		case 8:
-			return WT_I18N::translate_c('NOMINATIVE', 'Floréal');
+			return /* I18N: a month in the French republican calendar */ WT_I18N::translate_c('NOMINATIVE', 'Floréal');
 		case 9:
-			return WT_I18N::translate_c('NOMINATIVE', 'Prairial');
+			return /* I18N: a month in the French republican calendar */ WT_I18N::translate_c('NOMINATIVE', 'Prairial');
 		case 10:
-			return WT_I18N::translate_c('NOMINATIVE', 'Messidor');
+			return /* I18N: a month in the French republican calendar */ WT_I18N::translate_c('NOMINATIVE', 'Messidor');
 		case 11:
-			return WT_I18N::translate_c('NOMINATIVE', 'Thermidor');
+			return /* I18N: a month in the French republican calendar */ WT_I18N::translate_c('NOMINATIVE', 'Thermidor');
 		case 12:
-			return WT_I18N::translate_c('NOMINATIVE', 'Fructidor');
+			return /* I18N: a month in the French republican calendar */ WT_I18N::translate_c('NOMINATIVE', 'Fructidor');
 		case 13:
-			return WT_I18N::translate_c('NOMINATIVE', 'jours complémentaires');
+			return /* I18N: a month in the French republican calendar */ WT_I18N::translate_c('NOMINATIVE', 'jours complémentaires');
 		default:
-			throw new InvalidArgumentException($n);
+			throw new InvalidArgumentException($month_number);
 		}
 	}
 
-	static function monthNameGenitiveCase($n, $leap_year) {
-		switch ($n) {
+	/**
+	 * {@inheritdoc}
+	 */
+	static function monthNameGenitiveCase($month_number, $leap_year) {
+		switch ($month_number) {
 		case 1:
-			return WT_I18N::translate_c('GENITIVE', 'Vendémiaire');
+			return /* I18N: a month in the French republican calendar */ WT_I18N::translate_c('GENITIVE', 'Vendémiaire');
 		case 2:
-			return WT_I18N::translate_c('GENITIVE', 'Brumaire');
+			return /* I18N: a month in the French republican calendar */ WT_I18N::translate_c('GENITIVE', 'Brumaire');
 		case 3:
-			return WT_I18N::translate_c('GENITIVE', 'Frimaire');
+			return /* I18N: a month in the French republican calendar */ WT_I18N::translate_c('GENITIVE', 'Frimaire');
 		case 4:
-			return WT_I18N::translate_c('GENITIVE', 'Nivôse');
+			return /* I18N: a month in the French republican calendar */ WT_I18N::translate_c('GENITIVE', 'Nivôse');
 		case 5:
-			return WT_I18N::translate_c('GENITIVE', 'Pluviôse');
+			return /* I18N: a month in the French republican calendar */ WT_I18N::translate_c('GENITIVE', 'Pluviôse');
 		case 6:
-			return WT_I18N::translate_c('GENITIVE', 'Ventôse');
+			return /* I18N: a month in the French republican calendar */ WT_I18N::translate_c('GENITIVE', 'Ventôse');
 		case 7:
-			return WT_I18N::translate_c('GENITIVE', 'Germinal');
+			return /* I18N: a month in the French republican calendar */ WT_I18N::translate_c('GENITIVE', 'Germinal');
 		case 8:
-			return WT_I18N::translate_c('GENITIVE', 'Floréal');
+			return /* I18N: a month in the French republican calendar */ WT_I18N::translate_c('GENITIVE', 'Floréal');
 		case 9:
-			return WT_I18N::translate_c('GENITIVE', 'Prairial');
+			return /* I18N: a month in the French republican calendar */ WT_I18N::translate_c('GENITIVE', 'Prairial');
 		case 10:
-			return WT_I18N::translate_c('GENITIVE', 'Messidor');
+			return /* I18N: a month in the French republican calendar */ WT_I18N::translate_c('GENITIVE', 'Messidor');
 		case 11:
-			return WT_I18N::translate_c('GENITIVE', 'Thermidor');
+			return /* I18N: a month in the French republican calendar */ WT_I18N::translate_c('GENITIVE', 'Thermidor');
 		case 12:
-			return WT_I18N::translate_c('GENITIVE', 'Fructidor');
+			return /* I18N: a month in the French republican calendar */ WT_I18N::translate_c('GENITIVE', 'Fructidor');
 		case 13:
-			return WT_I18N::translate_c('GENITIVE', 'jours complémentaires');
+			return /* I18N: a month in the French republican calendar */ WT_I18N::translate_c('GENITIVE', 'jours complémentaires');
 		default:
-			throw new InvalidArgumentException($n);
+			throw new InvalidArgumentException($month_number);
 		}
 	}
 
-	static function monthNameLocativeCase($n, $leap_year) {
-		switch ($n) {
+	/**
+	 * {@inheritdoc}
+	 */
+	static function monthNameLocativeCase($month_number, $leap_year) {
+		switch ($month_number) {
 		case 1:
-			return WT_I18N::translate_c('LOCATIVE', 'Vendémiaire');
+			return /* I18N: a month in the French republican calendar */ WT_I18N::translate_c('LOCATIVE', 'Vendémiaire');
 		case 2:
-			return WT_I18N::translate_c('LOCATIVE', 'Brumaire');
+			return /* I18N: a month in the French republican calendar */ WT_I18N::translate_c('LOCATIVE', 'Brumaire');
 		case 3:
-			return WT_I18N::translate_c('LOCATIVE', 'Frimaire');
+			return /* I18N: a month in the French republican calendar */ WT_I18N::translate_c('LOCATIVE', 'Frimaire');
 		case 4:
-			return WT_I18N::translate_c('LOCATIVE', 'Nivôse');
+			return /* I18N: a month in the French republican calendar */ WT_I18N::translate_c('LOCATIVE', 'Nivôse');
 		case 5:
-			return WT_I18N::translate_c('LOCATIVE', 'Pluviôse');
+			return /* I18N: a month in the French republican calendar */ WT_I18N::translate_c('LOCATIVE', 'Pluviôse');
 		case 6:
-			return WT_I18N::translate_c('LOCATIVE', 'Ventôse');
+			return /* I18N: a month in the French republican calendar */ WT_I18N::translate_c('LOCATIVE', 'Ventôse');
 		case 7:
-			return WT_I18N::translate_c('LOCATIVE', 'Germinal');
+			return /* I18N: a month in the French republican calendar */ WT_I18N::translate_c('LOCATIVE', 'Germinal');
 		case 8:
-			return WT_I18N::translate_c('LOCATIVE', 'Floréal');
+			return /* I18N: a month in the French republican calendar */ WT_I18N::translate_c('LOCATIVE', 'Floréal');
 		case 9:
-			return WT_I18N::translate_c('LOCATIVE', 'Prairial');
+			return /* I18N: a month in the French republican calendar */ WT_I18N::translate_c('LOCATIVE', 'Prairial');
 		case 10:
-			return WT_I18N::translate_c('LOCATIVE', 'Messidor');
+			return /* I18N: a month in the French republican calendar */ WT_I18N::translate_c('LOCATIVE', 'Messidor');
 		case 11:
-			return WT_I18N::translate_c('LOCATIVE', 'Thermidor');
+			return /* I18N: a month in the French republican calendar */ WT_I18N::translate_c('LOCATIVE', 'Thermidor');
 		case 12:
-			return WT_I18N::translate_c('LOCATIVE', 'Fructidor');
+			return /* I18N: a month in the French republican calendar */ WT_I18N::translate_c('LOCATIVE', 'Fructidor');
 		case 13:
-			return WT_I18N::translate_c('LOCATIVE', 'jours complémentaires');
+			return /* I18N: a month in the French republican calendar */ WT_I18N::translate_c('LOCATIVE', 'jours complémentaires');
 		default:
-			throw new InvalidArgumentException($n);
+			throw new InvalidArgumentException($month_number);
 		}
 	}
 
-	static function monthNameInstrumentalCase($n, $leap_year) {
-		switch ($n) {
+	/**
+	 * {@inheritdoc}
+	 */
+	static function monthNameInstrumentalCase($month_number, $leap_year) {
+		switch ($month_number) {
 		case 1:
-			return WT_I18N::translate_c('INSTRUMENTAL', 'Vendémiaire');
+			return /* I18N: a month in the French republican calendar */ WT_I18N::translate_c('INSTRUMENTAL', 'Vendémiaire');
 		case 2:
-			return WT_I18N::translate_c('INSTRUMENTAL', 'Brumaire');
+			return /* I18N: a month in the French republican calendar */ WT_I18N::translate_c('INSTRUMENTAL', 'Brumaire');
 		case 3:
-			return WT_I18N::translate_c('INSTRUMENTAL', 'Frimaire');
+			return /* I18N: a month in the French republican calendar */ WT_I18N::translate_c('INSTRUMENTAL', 'Frimaire');
 		case 4:
-			return WT_I18N::translate_c('INSTRUMENTAL', 'Nivôse');
+			return /* I18N: a month in the French republican calendar */ WT_I18N::translate_c('INSTRUMENTAL', 'Nivôse');
 		case 5:
-			return WT_I18N::translate_c('INSTRUMENTAL', 'Pluviôse');
+			return /* I18N: a month in the French republican calendar */ WT_I18N::translate_c('INSTRUMENTAL', 'Pluviôse');
 		case 6:
-			return WT_I18N::translate_c('INSTRUMENTAL', 'Ventôse');
+			return /* I18N: a month in the French republican calendar */ WT_I18N::translate_c('INSTRUMENTAL', 'Ventôse');
 		case 7:
-			return WT_I18N::translate_c('INSTRUMENTAL', 'Germinal');
+			return /* I18N: a month in the French republican calendar */ WT_I18N::translate_c('INSTRUMENTAL', 'Germinal');
 		case 8:
-			return WT_I18N::translate_c('INSTRUMENTAL', 'Floréal');
+			return /* I18N: a month in the French republican calendar */ WT_I18N::translate_c('INSTRUMENTAL', 'Floréal');
 		case 9:
-			return WT_I18N::translate_c('INSTRUMENTAL', 'Prairial');
+			return /* I18N: a month in the French republican calendar */ WT_I18N::translate_c('INSTRUMENTAL', 'Prairial');
 		case 10:
-			return WT_I18N::translate_c('INSTRUMENTAL', 'Messidor');
+			return /* I18N: a month in the French republican calendar */ WT_I18N::translate_c('INSTRUMENTAL', 'Messidor');
 		case 11:
-			return WT_I18N::translate_c('INSTRUMENTAL', 'Thermidor');
+			return /* I18N: a month in the French republican calendar */ WT_I18N::translate_c('INSTRUMENTAL', 'Thermidor');
 		case 12:
-			return WT_I18N::translate_c('INSTRUMENTAL', 'Fructidor');
+			return /* I18N: a month in the French republican calendar */ WT_I18N::translate_c('INSTRUMENTAL', 'Fructidor');
 		case 13:
-			return WT_I18N::translate_c('INSTRUMENTAL', 'jours complémentaires');
+			return /* I18N: a month in the French republican calendar */ WT_I18N::translate_c('INSTRUMENTAL', 'jours complémentaires');
 		default:
-			throw new InvalidArgumentException($n);
+			throw new InvalidArgumentException($month_number);
 		}
 	}
 
-	static function monthNameAbbreviated($n, $leap_year) {
-		return self::monthNameNominativeCase($n, $leap_year);
+	/**
+	 * {@inheritdoc}
+	 */
+	protected static function monthNameAbbreviated($month_number, $leap_year) {
+		return self::monthNameNominativeCase($month_number, $leap_year);
 	}
 
-	static function dayNames($n) {
-		switch ($n) {
+	/**
+	 * {@inheritdoc}
+	 */
+	public static function dayNames($day_number) {
+		switch ($day_number) {
 		case 0:
-			return WT_I18N::translate('Primidi');
+			return /* I18N: a day in the French republican calendar */ WT_I18N::translate('Primidi');
 		case 1:
-			return WT_I18N::translate('Duodi');
+			return /* I18N: a day in the French republican calendar */ WT_I18N::translate('Duodi');
 		case 2:
-			return WT_I18N::translate('Tridi');
+			return /* I18N: a day in the French republican calendar */ WT_I18N::translate('Tridi');
 		case 3:
-			return WT_I18N::translate('Quartidi');
+			return /* I18N: a day in the French republican calendar */ WT_I18N::translate('Quartidi');
 		case 4:
-			return WT_I18N::translate('Quintidi');
+			return /* I18N: a day in the French republican calendar */ WT_I18N::translate('Quintidi');
 		case 5:
-			return WT_I18N::translate('Sextidi');
+			return /* I18N: a day in the French republican calendar */ WT_I18N::translate('Sextidi');
 		case 6:
-			return WT_I18N::translate('Septidi');
+			return /* I18N: a day in the French republican calendar */ WT_I18N::translate('Septidi');
 		case 7:
-			return WT_I18N::translate('Octidi');
+			return /* I18N: a day in the French republican calendar */ WT_I18N::translate('Octidi');
 		case 8:
-			return WT_I18N::translate('Nonidi');
+			return /* I18N: a day in the French republican calendar */ WT_I18N::translate('Nonidi');
 		case 9:
-			return WT_I18N::translate('Decidi');
+			return /* I18N: a day in the French republican calendar */ WT_I18N::translate('Decidi');
 		default:
-			throw new InvalidArgumentException($n);
+			throw new InvalidArgumentException($day_number);
 		}
 	}
 
-	static function dayNamesAbbreviated($n) {
-		return self::dayNames($n);
+	/**
+	 * {@inheritdoc}
+	 */
+	protected static function dayNamesAbbreviated($day_number) {
+		return self::dayNames($day_number);
 	}
 
-	// Years were written using roman numerals
+	/**
+	 * Years were written using roman numerals
+	 *
+	 * {@inheritdoc}
+	 */
 	protected function formatLongYear() {
 		return $this->numberToRomanNumerals($this->y);
 	}

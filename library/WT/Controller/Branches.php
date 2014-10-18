@@ -233,7 +233,7 @@ class WT_Controller_Branches extends WT_Controller_Page {
 					}
 					$marriage_year = $family->getMarriageYear();
 					if ($marriage_year) {
-						$fam_html .= ' <a href="' . $family->getHtmlUrl() . '" title="' . strip_tags($family->getMarriageDate()->Display()) . '"><i class="icon-rings"></i>' . $marriage_year . '</a>';
+						$fam_html .= ' <a href="' . $family->getHtmlUrl() . '" title="' . strip_tags($family->getMarriageDate()->display()) . '"><i class="icon-rings"></i>' . $marriage_year . '</a>';
 					} elseif ($family->getFirstFact('MARR')) {
 						$fam_html .= ' <a href="' . $family->getHtmlUrl() . '" title="' . WT_Gedcom_Tag::getLabel('MARR') . '"><i class="icon-rings"></i></a>';
 					} elseif ($family->getFirstFact('_NMR')) {

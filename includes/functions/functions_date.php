@@ -119,7 +119,7 @@ function format_timestamp($time) {
 		}
 	}
 
-	return timestamp_to_gedcom_date($time)->Display(false, $DATE_FORMAT).  '<span class="date"> - '.$time_fmt.'</span>';
+	return timestamp_to_gedcom_date($time)->display() . '<span class="date"> - ' . $time_fmt . '</span>';
 }
 
 ////////////////////////////////////////////////////////////////////////////////

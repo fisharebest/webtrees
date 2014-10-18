@@ -197,20 +197,20 @@ class WT_I18N {
 		Zend_Registry::set('Zend_Translate', self::$translation_adapter);
 
 		// Load any local user translations
-		if (is_dir(WT_DATA_DIR.'language')) {
-			if (file_exists(WT_DATA_DIR.'language/'.$locale.'.mo')) {
+		if (is_dir(WT_DATA_DIR . 'language')) {
+			if (file_exists(WT_DATA_DIR . 'language/' . $locale . '.mo')) {
 				self::addTranslation(
-					new Zend_Translate('gettext', WT_DATA_DIR.'language/'.$locale.'.mo', $locale)
+					new Zend_Translate('gettext', WT_DATA_DIR.'language/' . $locale . '.mo', $locale)
 				);
 			}
-			if (file_exists(WT_DATA_DIR.'language/'.$locale.'.php')) {
+			if (file_exists(WT_DATA_DIR.'language/' . $locale . '.php')) {
 				self::addTranslation(
-					new Zend_Translate('array', WT_DATA_DIR.'language/'.$locale.'.php', $locale)
+					new Zend_Translate('array', WT_DATA_DIR . 'language/' . $locale . '.php', $locale)
 				);
 			}
-			if (file_exists(WT_DATA_DIR.'language/'.$locale.'.csv')) {
+			if (file_exists(WT_DATA_DIR . 'language/' . $locale . '.csv')) {
 				self::addTranslation(
-					new Zend_Translate('csv', WT_DATA_DIR.'language/'.$locale.'.csv', $locale)
+					new Zend_Translate('csv', WT_DATA_DIR . 'language/' . $locale . '.csv', $locale)
 				);
 			}
 		}
@@ -259,7 +259,7 @@ class WT_I18N {
 	 * @param Zend_Translate $translation
 	 */
 	public static function addTranslation(Zend_Translate $translation) {
-		self::$translation_adapter->getAdapter()->addTranslation($translation);
+		self::$translation_adapter->getAdapter()->addTranslation(array('content' => $translation));
 	}
 
 	/**
@@ -326,8 +326,8 @@ class WT_I18N {
 	 * fr: 12 345,67
 	 * de: 12.345,67
 	 *
-	 * @param float $n
-	 * @param int   $precision
+	 * @param float   $n
+	 * @param integer $precision
 	 *
 	 * @return string
 	 */
@@ -343,7 +343,7 @@ class WT_I18N {
 	 *
 	 * Used for years, etc., where we do not want thousands-separators, decimals, etc.
 	 *
-	 * @param int $n
+	 * @param integer $n
 	 *
 	 * @return string
 	 */
@@ -363,10 +363,10 @@ class WT_I18N {
 	 * fr: 12,3 %
 	 * de: 12,3%
 	 *
-	 * @param     $n
-	 * @param int $precision
+	 * @param float   $n
+	 * @param integer $precision
 	 *
-	 * @return mixed
+	 * @return string
 	 */
 	public static function percentage($n, $precision=0) {
 		return
@@ -521,7 +521,6 @@ class WT_I18N {
 		$hour   = 60*60;
 		$minute = 60;
 
-		// TODO: Display two units (years+months), (months+days), etc.
 		// This requires "contexts".  i.e. "%s months" has a different translation
 		// in different contexts.
 		// We must AVOID combining phrases to make sentences.
@@ -548,7 +547,7 @@ class WT_I18N {
 	/**
 	 * Return the endonym for a given language - as per http://cldr.unicode.org/
 	 *
-	 * @param $language
+	 * @param string $language
 	 *
 	 * @return string
 	 */
