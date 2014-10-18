@@ -518,7 +518,7 @@ class WT_I18N {
 		$minute = 60;
 		$hour   = 60 * $minute;
 		$day    = 24 * $hour;
-		$month  = 30 * $day;git 
+		$month  = 30 * $day;
 		$year   = 365 * $day;
 
 		if ($seconds>$year) {

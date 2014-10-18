@@ -1050,9 +1050,9 @@ function reject_all_changes($xref, $ged_id) {
 /**
  * update a record in the database
  *
- * @param string $gedrec
- * @param int    $ged_id
- * @param bool   $delete
+ * @param string  $gedrec
+ * @param integer $ged_id
+ * @param boolean $delete
  */
 function update_record($gedrec, $ged_id, $delete) {
 	if (preg_match('/^0 @('.WT_REGEX_XREF.')@ ('.WT_REGEX_TAG.')/', $gedrec, $match)) {

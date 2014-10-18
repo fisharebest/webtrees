@@ -24,9 +24,9 @@
 /**
  * print a table cell with sosa number
  *
- * @param int $sosa
- * @param string $pid optional pid
- * @param string $arrowDirection   direction of link arrow
+ * @param integer $sosa
+ * @param string  $pid optional pid
+ * @param string  $arrowDirection   direction of link arrow
  */
 function print_sosa_number($sosa, $pid = "", $arrowDirection = "up") {
 	if (substr($sosa,-1,1)==".") {
@@ -61,7 +61,7 @@ function print_sosa_number($sosa, $pid = "", $arrowDirection = "up") {
  * print the parents table for a family
  *
  * @param WT_Family $family family gedcom ID
- * @param int       $sosa   child sosa number
+ * @param integer   $sosa   child sosa number
  * @param string    $label  indi label (descendancy booklet)
  * @param string    $parid  parent ID (descendancy booklet)
  * @param string    $gparid gd-parent ID (descendancy booklet)
@@ -242,7 +242,7 @@ function print_family_parents(WT_Family $family, $sosa=0, $label='', $parid='', 
  *
  * @param WT_Family $family  family
  * @param string    $childid child ID
- * @param int       $sosa    child sosa number
+ * @param integer   $sosa    child sosa number
  * @param string    $label   indi label (descendancy booklet)
  */
 function print_family_children(WT_Family $family, $childid = '', $sosa = 0, $label = '') {
@@ -406,8 +406,8 @@ function print_sosa_family($famid, $childid, $sosa, $label="", $parid="", $gpari
  * if an individual is at position $i then individual $i’s father will occupy position ($i*2) and $i’s mother
  * will occupy ($i*2)+1
  *
- * @param string $rootid
- * @param int    $maxgen
+ * @param string  $rootid
+ * @param integer $maxgen
  *
  * @return array $treeid
  */
@@ -443,9 +443,9 @@ function ancestry_array($rootid, $maxgen=0) {
 /**
  * print an arrow to a new url
  *
- * @param string $url   target url
- * @param string $label arrow label
- * @param int    $dir   arrow direction 0=left 1=right 2=up 3=down (default=2)
+ * @param string  $url   target url
+ * @param string  $label arrow label
+ * @param integer $dir   arrow direction 0=left 1=right 2=up 3=down (default=2)
  */
 function print_url_arrow($url, $label, $dir=2) {
 	global $TEXT_DIRECTION;
