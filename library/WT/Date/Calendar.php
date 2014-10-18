@@ -41,11 +41,7 @@ class WT_Date_Calendar {
 	/** @var string[] Convert numbers to/from roman numerals */
 	private static $roman_numerals = array(1000 => 'M', 900 => 'CM', 500 => 'D', 400 => 'CD', 100 => 'C', 90 => 'XC', 50 => 'L', 40 => 'XL', 10 => 'X', 9 => 'IX', 5 => 'V', 4 => 'IV', 1 => 'I');
 
-	/**
-	 * The calendar system used to represent this date
-	 *
-	 * @var CalendarInterface
-	 */
+	/** @var CalendarInterface The calendar system used to represent this date */
 	protected $calendar;
 
 	public $y, $m, $d;     // Numeric year/month/day
@@ -130,7 +126,7 @@ class WT_Date_Calendar {
 	/**
 	 * Is the current year a leap year?
 	 *
-	 * @return bool
+	 * @return boolean
 	 */
 	function isLeapYear() {
 		return $this->calendar->isLeapYear($this->y);
@@ -161,8 +157,8 @@ class WT_Date_Calendar {
 	 *
 	 * We put these in the base class, to save duplicating it in the Julian and Gregorian calendars.
 	 *
-	 * @param int  $month_number
-	 * @param bool $leap_year    Some calendars use leap months
+	 * @param integer $month_number
+	 * @param boolean $leap_year    Some calendars use leap months
 	 *
 	 * @return string
 	 */
@@ -202,8 +198,8 @@ class WT_Date_Calendar {
 	 *
 	 * We put these in the base class, to save duplicating it in the Julian and Gregorian calendars.
 	 *
-	 * @param int  $month_number
-	 * @param bool $leap_year    Some calendars use leap months
+	 * @param integer $month_number
+	 * @param boolean $leap_year    Some calendars use leap months
 	 *
 	 * @return string
 	 */
@@ -243,8 +239,8 @@ class WT_Date_Calendar {
 	 *
 	 * We put these in the base class, to save duplicating it in the Julian and Gregorian calendars.
 	 *
-	 * @param int  $month_number
-	 * @param bool $leap_year    Some calendars use leap months
+	 * @param integer $month_number
+	 * @param boolean $leap_year    Some calendars use leap months
 	 *
 	 * @return string
 	 */
@@ -284,8 +280,8 @@ class WT_Date_Calendar {
 	 *
 	 * We put these in the base class, to save duplicating it in the Julian and Gregorian calendars.
 	 *
-	 * @param int  $month_number
-	 * @param bool $leap_year    Some calendars use leap months
+	 * @param integer $month_number
+	 * @param boolean $leap_year    Some calendars use leap months
 	 *
 	 * @return string
 	 */
@@ -323,8 +319,8 @@ class WT_Date_Calendar {
 	/**
 	 * Abbreviated month name
 	 *
-	 * @param int  $month_number
-	 * @param bool $leap_year    Some calendars use leap months
+	 * @param integer $month_number
+	 * @param boolean $leap_year    Some calendars use leap months
 	 *
 	 * @return string
 	 */
@@ -362,7 +358,7 @@ class WT_Date_Calendar {
 	/**
 	 * Full day of th eweek
 	 *
-	 * @param int $day_number
+	 * @param integer $day_number
 	 *
 	 * @return string
 	 */
@@ -390,7 +386,7 @@ class WT_Date_Calendar {
 	/**
 	 * Abbreviated day of the week
 	 *
-	 * @param int $day_number
+	 * @param integer $day_number
 	 *
 	 * @return string
 	 */
@@ -418,9 +414,9 @@ class WT_Date_Calendar {
 	/**
 	 * Most years are 1 more than the previous, but not always (e.g. 1BC->1AD)
 	 *
-	 * @param int $year
+	 * @param integer $year
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	protected static function nextYear($year) {
 		return $year + 1;
@@ -431,7 +427,7 @@ class WT_Date_Calendar {
 	 *
 	 * @param string $year
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	protected function extractYear($year) {
 		return (int)$year;
@@ -443,7 +439,7 @@ class WT_Date_Calendar {
 	 * @param WT_Date_Calendar $d1
 	 * @param WT_Date_Calendar $d2
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	public static function compare(WT_Date_Calendar $d1, WT_Date_Calendar $d2) {
 		if ($d1->maxJD < $d2->minJD) {
@@ -462,9 +458,9 @@ class WT_Date_Calendar {
 	 *
 	 * @todo WT_Date_Jewish needs to redefine this to cope with leap months
 	 *
-	 * @param bool $full             true=gedcom style, false=just years
-	 * @param int  $jd               date for calculation
-	 * @param bool $warn_on_negative show a warning triangle for negative ages
+	 * @param boolean $full             true=gedcom style, false=just years
+	 * @param integer $jd               date for calculation
+	 * @param boolean $warn_on_negative show a warning triangle for negative ages
 	 *
 	 * @return string
 	 */
@@ -539,7 +535,7 @@ class WT_Date_Calendar {
 	/**
 	 * Is this date within the valid range of the calendar
 	 *
-	 * @return bool
+	 * @return boolean
 	 */
 	public function inValidRange() {
 		return $this->minJD >= static::CAL_START_JD && $this->maxJD <= static::CAL_END_JD;
@@ -548,7 +544,7 @@ class WT_Date_Calendar {
 	/**
 	 * How many months in a year
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	public function monthsInYear() {
 		return static::MONTHS_IN_YEAR;
@@ -557,7 +553,7 @@ class WT_Date_Calendar {
 	/**
 	 * How many days in the current month
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	public function daysInMonth() {
 		try {
@@ -572,7 +568,7 @@ class WT_Date_Calendar {
 	/**
 	 * How many days in the current week
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	public function daysInWeek() {
 		return static::DAYS_IN_WEEK;
@@ -895,7 +891,7 @@ class WT_Date_Calendar {
 	/**
 	 * Which months follows this one?  Calendars with leap-months should provide their own implementation.
 	 *
-	 * @return int[]
+	 * @return integer[]
 	 */
 	protected function nextMonth() {
 		return array($this->m == static::MONTHS_IN_YEAR ? $this->nextYear($this->y) : $this->y, ($this->m % static::MONTHS_IN_YEAR) + 1);
@@ -904,7 +900,7 @@ class WT_Date_Calendar {
 	/**
 	 * Convert a decimal number to roman numerals
 	 *
-	 * @param int $number
+	 * @param integer $number
 	 *
 	 * @return string
 	 */
@@ -929,7 +925,7 @@ class WT_Date_Calendar {
 	 *
 	 * @param string $roman
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	protected static function romanNumeralsToNumber($roman) {
 		$num = 0;
@@ -946,7 +942,7 @@ class WT_Date_Calendar {
 	/**
 	 * Get today’s date in the current calendar.
 	 *
-	 * @return int[]
+	 * @return integer[]
 	 */
 	public function todayYmd() {
 		return $this->calendar->jdToYmd(unixtojd());

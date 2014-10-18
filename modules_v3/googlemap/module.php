@@ -676,11 +676,11 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 	}
 
 	private function pedigreeMap() {
-		global $controller, $PEDIGREE_GENERATIONS, $MAX_PEDIGREE_GENERATIONS;
+		global $controller, $MAX_PEDIGREE_GENERATIONS;
 
 		// Default is show for both of these.
-		$hideflags = WT_Filter::get('hideflags');
-		$hidelines = WT_Filter::get('hidelines');
+		$hideflags = WT_Filter::getBool('hideflags');
+		$hidelines = WT_Filter::getBool('hidelines');
 
 		$controller = new WT_Controller_Pedigree();
 
@@ -741,7 +741,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					</td>
 					<td class="optionbox">
 						<?php
-						echo '<input name="hideflags" type="checkbox"';
+						echo '<input name="hideflags" type="checkbox" value="1"';
 						if ($hideflags) {
 							echo ' checked="checked"';
 						}
@@ -750,7 +750,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					</td>
 					<td class="optionbox">
 						<?php
-						echo '<input name="hidelines" type="checkbox"';
+						echo '<input name="hidelines" type="checkbox" value="1"';
 						if ($hidelines) {
 							echo ' checked="checked"';
 						}
@@ -1348,9 +1348,13 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 						$js.= "var marker = createMarker(point, \"".WT_Filter::escapeJs($name)."\",\"<div>".$dataleft.$datamid.$dataright."</div>\", \"";
 						$js.= "<div class='iwstyle'>";
 						$js.= "<a href='module.php?ged=".WT_GEDURL."&amp;mod=googlemap&amp;mod_action=pedigree_map&amp;rootid=" . $person->getXref() . "&amp;PEDIGREE_GENERATIONS={$PEDIGREE_GENERATIONS}";
-						if ($hideflags) $js.= '&amp;hideflags=1';
-						if ($hidelines) $js.= '&amp;hidelines=1';
-						$js.= "' title='".WT_I18N::translate('Pedigree map')."'>".$dataleft."</a>".$datamid.$dataright."</div>\", \"".$marker_number."\");";
+						if ($hideflags) {
+							$js .= '&amp;hideflags=1';
+						}
+						if ($hidelines) {
+							$js .= '&amp;hidelines=1';
+						}
+						$js .= "' title='" . WT_I18N::translate('Pedigree map') . "'>" . $dataleft . "</a>" . $datamid . $dataright . "</div>\", \"" . $marker_number . "\");";
 						// Construct the polygon lines
 						if (!$hidelines) {
 							$to_child = (intval(($i-1)/2)); // Draw a line from parent to child
@@ -2554,7 +2558,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		global $level, $levelm, $plzoom, $controller;
 
 		$STREETVIEW = $this->getSetting('GM_USE_STREETVIEW');
-		$parent = WT_Filter::get('parent');
+		$parent = WT_Filter::getArray('parent');
 
 		// create the map
 		echo '<table style="margin:20px auto 0 auto;"><tr valign="top"><td>';
