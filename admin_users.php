@@ -74,26 +74,20 @@ $verified_by_admin  = WT_Filter::postBool('verified_by_admin');
 switch ($action) {
 case 'loadrows':
 	// Generate an AJAX/JSON response for datatables to load a block of rows
-	$search = WT_Filter::post('search');
+	$search = WT_Filter::postArray('search');
 	$search = $search['value'];
-	$query_string = WT_Filter::post('query_string'); // url query string
-	// Datatables filter takes precedence over the url query string
-	if(!$search) {
-		$search = $query_string;
-	}
-
 	$start  = WT_Filter::postInteger('start');
 	$length = WT_Filter::postInteger('length');
 
-	$WHERE=" WHERE u.user_id>0";
-	$ARGS=array();
+	$WHERE = " WHERE u.user_id > 0";
+	$ARGS  = array();
 	if ($search) {
-		$WHERE.=
+		$WHERE .=
 			" AND (".
 			" user_name LIKE CONCAT('%', ?, '%') OR " .
 			" real_name LIKE CONCAT('%', ?, '%') OR " .
 			" email     LIKE CONCAT('%', ?, '%'))";
-		$ARGS=array($search, $search, $search);
+		$ARGS = array($search, $search, $search);
 	}
 	Auth::user()->setPreference('admin_users_page_size', $length);
 	if ($length > 0) {
@@ -101,9 +95,9 @@ case 'loadrows':
 	} else {
 		$LIMIT = "";
 	}
-	$order = WT_Filter::post('order');
+	$order = WT_Filter::postArray('order');
 	if ($order) {
-		$ORDER_BY=' ORDER BY ';
+		$ORDER_BY = ' ORDER BY ';
 		for ($i = 0; $i < count($order); ++$i) {
 			if ($i > 0) {
 				$ORDER_BY .= ',';
