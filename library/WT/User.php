@@ -401,12 +401,19 @@ class User {
 	 * Update a setting for the user.
 	 *
 	 * @param string $setting_name
-	 * @param string $setting_value
+	 * @param string|null $setting_value
 	 *
 	 * @return User
 	 */
 	public function setPreference($setting_name, $setting_value) {
 		if ($this->user_id && $this->getPreference($setting_name) !== $setting_value) {
+			if ($setting_value === null) {
+				WT_DB::prepare("DELETE FROM `##user_setting` WHERE user_id=? AND setting_name=?")
+					->execute(array($this->user_id, $setting_name));
+				unset($this->preferences[$setting_name]);
+				return $this;
+			}
+
 			WT_DB::prepare("REPLACE INTO `##user_setting` (user_id, setting_name, setting_value) VALUES (?, ?, LEFT(?, 255))")
 				->execute(array($this->user_id, $setting_name, $setting_value));
 			$this->preferences[$setting_name] = $setting_value;
