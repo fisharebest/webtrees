@@ -1208,6 +1208,7 @@ img.block {
 }
 
 /* colors */
+a.edit-changes-link,
 .red {
 	color: #f00;
 }

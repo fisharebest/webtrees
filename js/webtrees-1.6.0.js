@@ -264,6 +264,11 @@ function add_name(xref) {
 	});
 }
 
+function edit_changes() {
+	window.open('edit_changes.php', '_blank', chan_window_specs);
+	return false;
+}
+
 // Accept the changes to a record - and reload the page
 function accept_changes(xref) {
 	jQuery.post('action.php', {

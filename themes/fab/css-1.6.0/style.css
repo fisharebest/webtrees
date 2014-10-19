@@ -1007,6 +1007,7 @@ li .person_boxF {
 }
 
 /* Colors */
+a.edit-changes-link,
 .red {
 	color: #f00;
 }

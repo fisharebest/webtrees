@@ -73,7 +73,7 @@ echo
 		}
 	echo '</ul>';
 	if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
-	echo ' | <li><a href="#" onclick="window.open(\'edit_changes.php\',\'_blank\', chan_window_specs); return false;" style="color:red;">', WT_I18N::translate('Pending changes'), '</a></li>';
+		echo ' | <li>' . edit_changes_link() . '</li>';
 	}
 	echo '</div>',
 	'<div id="info">',

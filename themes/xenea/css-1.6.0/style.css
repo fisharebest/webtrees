@@ -1360,6 +1360,7 @@ a:hover .nameZoom {
 	font-weight: bold;
 }
 
+a.edit-changes-link,
 .error {
 	color: #d00;
 	font-weight: bold;
@@ -2120,6 +2121,7 @@ h4 {
 }
 
 /* Colors */
+.makeMenu .edit-changes-link,
 .red {
 	color: #f00;
 }
