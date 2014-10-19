@@ -62,8 +62,8 @@ class WT_Controller_Base {
 	 * NOTE: there is no need to use "jQuery(document).ready(function(){...})", etc.
 	 * as this Javascript won’t be inserted until the very end of the page.
 	 *
-	 * @param string $script
-	 * @param int    $priority
+	 * @param string  $script
+	 * @param integer $priority
 	 *
 	 * @return WT_Controller_Base
 	 */

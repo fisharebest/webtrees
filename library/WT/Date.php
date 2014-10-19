@@ -365,7 +365,7 @@ class WT_Date {
 	 * For a month-only date, this would be somewhere around the 16 day.
 	 * For a year-only date, this would be somewhere around 1st July.
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	function JD() {
 		return (int)(($this->MinJD() + $this->MaxJD()) / 2);
@@ -400,9 +400,9 @@ class WT_Date {
 	 *
 	 * @param WT_Date $d1
 	 * @param WT_Date $d2
-	 * @param int     $format
+	 * @param integer $format
 	 *
-	 * @return int|string
+	 * @return integer|string
 	 */
 	static function getAge(WT_Date $d1, WT_Date $d2 = null, $format = 0) {
 		if ($d2) {
@@ -483,7 +483,7 @@ class WT_Date {
 	 * @param WT_Date $a
 	 * @param WT_Date $b
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	static function Compare(WT_Date $a, WT_Date $b) {
 		// Get min/max JD for each date.
@@ -534,7 +534,7 @@ class WT_Date {
 	 * An incomplete date such as "12 AUG" would be invalid, as
 	 * we cannot sort it.
 	 *
-	 * @return bool
+	 * @return boolean
 	 */
 	function isOK() {
 		return $this->MinJD() && $this->MaxJD();
@@ -546,7 +546,7 @@ class WT_Date {
 	 * jewish/arabic users.  This is only for interfacing with external entities,
 	 * such as the ancestry.com search interface or the dated fact icons.
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	function gregorianYear() {
 		if ($this->isOK()) {

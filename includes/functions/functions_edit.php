@@ -1227,8 +1227,8 @@ function updateRest($inputRec, $levelOverride = 'no') {
  * a 2 PLAC or 2 DATE line following it.  If there are no sub lines, then the line
  * can be safely removed.
  *
- * @param string     $newged        the new gedcom record to add the lines to
- * @param int|string $levelOverride Override GEDCOM level specified in $glevels[0]
+ * @param string $newged        the new gedcom record to add the lines to
+ * @param string $levelOverride Override GEDCOM level specified in $glevels[0]
  *
  * @return string The updated gedcom record
  */
@@ -1483,8 +1483,8 @@ function create_edit_form(WT_GedcomRecord $record, WT_Fact $fact) {
 /**
  * Populates the global $tags array with any missing sub-tags.
  *
- * @param string $level1tag the type of the level 1 gedcom record
- * @param bool   $add_date
+ * @param string  $level1tag the type of the level 1 gedcom record
+ * @param boolean $add_date
  */
 function insert_missing_subtags($level1tag, $add_date=false) {
 	global $tags, $date_and_time, $level2_tags, $ADVANCED_PLAC_FACTS, $ADVANCED_NAME_FACTS;

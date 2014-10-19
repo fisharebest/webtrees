@@ -28,7 +28,7 @@ class Auth {
 	/**
 	 * Are we currently logged in?
 	 *
-	 * @return bool
+	 * @return boolean
 	 */
 	public static function check() {
 		return Auth::id() !== null;
@@ -39,7 +39,7 @@ class Auth {
 	 *
 	 * @param User|null $user
 	 *
-	 * @return bool
+	 * @return boolean
 	 */
 	public static function isAdmin(User $user = null) {
 		if ($user === null) {
@@ -55,7 +55,7 @@ class Auth {
 	 * @param WT_Tree|null $tree
 	 * @param User|null    $user
 	 *
-	 * @return bool
+	 * @return boolean
 	 */
 	public static function isManager(WT_Tree $tree = null, User $user = null) {
 		global $WT_TREE;
@@ -77,7 +77,7 @@ class Auth {
 	 * @param WT_Tree|null $tree
 	 * @param User|null    $user
 	 *
-	 * @return bool
+	 * @return boolean
 	 */
 	public static function isModerator(WT_Tree $tree = null, User $user = null) {
 		global $WT_TREE;
@@ -100,7 +100,7 @@ class Auth {
 	 * @param User|null    $user
 	 *
 	 *
-	 * @return bool
+	 * @return boolean
 	 */
 	public static function isEditor(WT_Tree $tree = null, User $user = null) {
 		global $WT_TREE;
@@ -122,7 +122,7 @@ class Auth {
 	 * @param WT_Tree|null $tree
 	 * @param User|null    $user
 	 *
-	 * @return bool
+	 * @return boolean
 	 */
 	public static function isMember(WT_Tree $tree = null, User $user=null) {
 		global $WT_TREE;

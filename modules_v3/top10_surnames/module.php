@@ -190,7 +190,7 @@ class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
 	 * @param string[] $a
 	 * @param string[] $b
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	private static function top_surname_sort($a, $b) {
 		$counta = 0;

@@ -476,8 +476,8 @@ function print_repository_record($xref) {
  * this function is called by the print_fact function and other functions to
  * print any source information attached to the fact
  *
- * @param string $factrec The fact record to look for sources in
- * @param int    $level   The level to look for sources at
+ * @param string  $factrec The fact record to look for sources in
+ * @param integer $level   The level to look for sources at
  *
  * @return string HTML text
  */

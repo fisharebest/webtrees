@@ -162,7 +162,7 @@ abstract class WT_Module {
 	/**
 	 * Get a list of all active (enabled) modules.
 	 *
-	 * @param bool $sort Sort the module by the (localised) name
+	 * @param boolean $sort Sort the module by the (localised) name
 	 *
 	 * @return WT_Module[]
 	 */

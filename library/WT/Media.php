@@ -247,7 +247,7 @@ class WT_Media extends WT_GedcomRecord {
 	 *
 	 * @param string $which specify either 'main' or 'thumb'
 	 *
-	 * @return number
+	 * @return integer
 	 */
 	public function getFilesizeraw($which = 'main') {
 		if ($this->fileExists($which)) {
@@ -262,7 +262,7 @@ class WT_Media extends WT_GedcomRecord {
 	 *
 	 * @param string $which specify either 'main' or 'thumb'
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	public function getFiletime($which = 'main') {
 		if ($this->fileExists($which)) {
@@ -323,9 +323,9 @@ class WT_Media extends WT_GedcomRecord {
 	/**
 	 * get image properties
 	 *
-	 * @param string $which     specify either 'main' or 'thumb'
-	 * @param int    $addWidth  amount to add to width
-	 * @param int    $addHeight amount to add to height
+	 * @param string  $which     specify either 'main' or 'thumb'
+	 * @param integer $addWidth  amount to add to width
+	 * @param integer $addHeight amount to add to height
 	 *
 	 * @return array
 	 */
@@ -404,8 +404,8 @@ class WT_Media extends WT_GedcomRecord {
 	/**
 	 * Generate a URL directly to the media file
 	 *
-	 * @param string $which
-	 * @param bool   $download
+	 * @param string  $which
+	 * @param boolean $download
 	 *
 	 * @return string
 	 */

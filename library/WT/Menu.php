@@ -226,7 +226,7 @@ class WT_Menu {
 	/**
 	 * returns the number of submenus in this menu
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	function subCount() {
 		return count($this->submenus);
