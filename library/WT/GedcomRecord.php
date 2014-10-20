@@ -463,7 +463,7 @@ class WT_GedcomRecord {
 	 * Remove private data from the raw gedcom record.
 	 * Return both the visible and invisible data.  We need the invisible data when editing.
 	 *
-	 * @param $access_level
+	 * @param integer $access_level
 	 *
 	 * @return string
 	 */
