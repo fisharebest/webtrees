@@ -272,18 +272,19 @@ case 'createuser':
 	} else {
 		$user = User::create($username, $realname, $emailaddress, $pass1);
 		$user
-			->setPreference('reg_timestamp', date('U'))
-			->setPreference('sessiontime', '0')
-			->setPreference('theme',                $user_theme)
-			->setPreference('language',             $user_language)
-			->setPreference('contactmethod',        $new_contact_method)
-			->setPreference('comment',              $new_comment)
-			->setPreference('auto_accept',          $new_auto_accept)
-			->setPreference('canadmin',             $canadmin)
-			->setPreference('visibleonline',        $visibleonline)
-			->setPreference('editaccount',          $editaccount)
-			->setPreference('verified',             $verified)
-			->setPreference('verified_by_admin',    $verified_by_admin);
+			->setPreference('reg_timestamp',     date('U'))
+			->setPreference('sessiontime',       '0')
+			->setPreference('theme',             $user_theme)
+			->setPreference('language',          $user_language)
+			->setPreference('contactmethod',     $new_contact_method)
+			->setPreference('comment',           $new_comment)
+			->setPreference('auto_accept',       $new_auto_accept ? '1' : '0')
+			->setPreference('canadmin',          $canadmin ? '1' : '0')
+			->setPreference('visibleonline',     $visibleonline ? '1' : '0')
+			->setPreference('editaccount',       $editaccount ? '1' : '0')
+			->setPreference('verified',          $verified ? '1' : '0')
+			->setPreference('verified_by_admin', $verified_by_admin ? '1' : '0');
+
 		foreach (WT_Tree::getAll() as $tree) {
 			$tree->setUserPreference($user, 'gedcomid', WT_Filter::post('gedcomid'.$tree->tree_id, WT_REGEX_XREF));
 			$tree->setUserPreference($user, 'rootid',   WT_Filter::post('rootid'.$tree->tree_id, WT_REGEX_XREF));

@@ -414,4 +414,21 @@ class User {
 
 		return $this;
 	}
+
+	/**
+	 * Delete a setting for the user.
+	 *
+	 * @param string $setting_name
+	 *
+	 * @return User
+	 */
+	public function deletePreference($setting_name) {
+		if ($this->user_id && $this->getPreference($setting_name) !== null) {
+			WT_DB::prepare("DELETE FROM `##user_setting` WHERE user_id = ? AND setting_name = ?")
+				->execute(array($this->user_id, $setting_name));
+			unset($this->preferences[$setting_name]);
+		}
+
+		return $this;
+	}
 }
