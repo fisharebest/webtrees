@@ -4935,10 +4935,10 @@ class WT_Stats {
 	private function getFavorites($isged = true) {
 		global $GEDCOM;
 
-		if ($isged) {
+		if ($isged && array_key_exists('gedcom_favorites', WT_Module::getActiveModules())) {
 			$block = new gedcom_favorites_WT_Module;
 			return $block->getBlock($GEDCOM, false);
-		} elseif (WT_USER_ID) {
+		} elseif (WT_USER_ID && array_key_exists('user_favorites', WT_Module::getActiveModules())) {
 			$block = new user_favorites_WT_Module;
 			return $block->getBlock($GEDCOM, false);
 		} else {
@@ -4955,11 +4955,19 @@ class WT_Stats {
 	}
 
 	public function totalGedcomFavorites() {
-		return count(gedcom_favorites_WT_Module::getFavorites(WT_GED_ID));
+		if (array_key_exists('gedcom_favorites', WT_Module::getActiveModules())) {
+			return count(gedcom_favorites_WT_Module::getFavorites(WT_GED_ID));
+		} else {
+			return 0;
+		}
 	}
 
 	public function totalUserFavorites() {
-		return count(user_favorites_WT_Module::getFavorites(WT_USER_ID));
+		if (array_key_exists('user_favorites', WT_Module::getActiveModules())) {
+			return count(user_favorites_WT_Module::getFavorites(WT_USER_ID));
+		} else {
+			return 0;
+		}
 	}
 
 	///////////////////////////////////////////////////////////////////////////////
