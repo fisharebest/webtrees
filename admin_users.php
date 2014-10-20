@@ -74,20 +74,20 @@ $verified_by_admin  = WT_Filter::postBool('verified_by_admin');
 switch ($action) {
 case 'loadrows':
 	// Generate an AJAX/JSON response for datatables to load a block of rows
-	$search = WT_Filter::get('search');
+	$search = WT_Filter::postArray('search');
 	$search = $search['value'];
-	$start  = WT_Filter::getInteger('start');
-	$length = WT_Filter::getInteger('length');
+	$start  = WT_Filter::postInteger('start');
+	$length = WT_Filter::postInteger('length');
 
-	$WHERE=" WHERE u.user_id>0";
-	$ARGS=array();
+	$WHERE = " WHERE u.user_id > 0";
+	$ARGS  = array();
 	if ($search) {
-		$WHERE.=
+		$WHERE .=
 			" AND (".
 			" user_name LIKE CONCAT('%', ?, '%') OR " .
 			" real_name LIKE CONCAT('%', ?, '%') OR " .
 			" email     LIKE CONCAT('%', ?, '%'))";
-		$ARGS=array($search, $search, $search);
+		$ARGS = array($search, $search, $search);
 	}
 	Auth::user()->setPreference('admin_users_page_size', $length);
 	if ($length > 0) {
@@ -95,9 +95,9 @@ case 'loadrows':
 	} else {
 		$LIMIT = "";
 	}
-	$order = WT_Filter::get('order');
+	$order = WT_Filter::postArray('order');
 	if ($order) {
-		$ORDER_BY=' ORDER BY ';
+		$ORDER_BY = ' ORDER BY ';
 		for ($i = 0; $i < count($order); ++$i) {
 			if ($i > 0) {
 				$ORDER_BY .= ',';
@@ -169,7 +169,7 @@ case 'loadrows':
 	}
 
 	// Total filtered/unfiltered rows
-	$recordsFiltered = WT_DB::prepare("SELECT FOUND_ROWS()")->fetchOne();
+	$recordsFiltered = (int) WT_DB::prepare("SELECT FOUND_ROWS()")->fetchOne();
 	$recordsTotal = User::count();
 
 	Zend_Session::writeClose();
@@ -272,18 +272,19 @@ case 'createuser':
 	} else {
 		$user = User::create($username, $realname, $emailaddress, $pass1);
 		$user
-			->setPreference('reg_timestamp', date('U'))
-			->setPreference('sessiontime', '0')
-			->setPreference('theme',                $user_theme)
-			->setPreference('language',             $user_language)
-			->setPreference('contactmethod',        $new_contact_method)
-			->setPreference('comment',              $new_comment)
-			->setPreference('auto_accept',          $new_auto_accept)
-			->setPreference('canadmin',             $canadmin)
-			->setPreference('visibleonline',        $visibleonline)
-			->setPreference('editaccount',          $editaccount)
-			->setPreference('verified',             $verified)
-			->setPreference('verified_by_admin',    $verified_by_admin);
+			->setPreference('reg_timestamp',     date('U'))
+			->setPreference('sessiontime',       '0')
+			->setPreference('theme',             $user_theme)
+			->setPreference('language',          $user_language)
+			->setPreference('contactmethod',     $new_contact_method)
+			->setPreference('comment',           $new_comment)
+			->setPreference('auto_accept',       $new_auto_accept ? '1' : '0')
+			->setPreference('canadmin',          $canadmin ? '1' : '0')
+			->setPreference('visibleonline',     $visibleonline ? '1' : '0')
+			->setPreference('editaccount',       $editaccount ? '1' : '0')
+			->setPreference('verified',          $verified ? '1' : '0')
+			->setPreference('verified_by_admin', $verified_by_admin ? '1' : '0');
+
 		foreach (WT_Tree::getAll() as $tree) {
 			$tree->setUserPreference($user, 'gedcomid', WT_Filter::post('gedcomid'.$tree->tree_id, WT_REGEX_XREF));
 			$tree->setUserPreference($user, 'rootid',   WT_Filter::post('rootid'.$tree->tree_id, WT_REGEX_XREF));
@@ -590,15 +591,21 @@ default:
 		->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 		->addExternalJavascript(WT_JQUERY_JEDITABLE_URL)
 		->addInlineJavascript('
-			var oTable = jQuery("#list").dataTable({
+			jQuery("#list").dataTable({
 				dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
-				'.WT_I18N::datatablesI18N().',
+				' . WT_I18N::datatablesI18N() . ',
 				processing: true,
 				serverSide: true,
-				ajax: "'.WT_SCRIPT_NAME.'?action=loadrows",
+				ajax: {
+					"url": "' . WT_SCRIPT_NAME . '?action=loadrows",
+					"type": "POST"
+				},
+				search: {
+					search: "' . WT_Filter::escapeJs(WT_Filter::get('filter')) . '"
+				},
 				jQueryUI: true,
 				autoWidth: false,
-				pageLength: ' . Auth::user()->getPreference('admin_users_page_size', 10).',
+				pageLength: ' . Auth::user()->getPreference('admin_users_page_size', 10) . ',
 				pagingType: "full_numbers",
 				sorting: [[2,"asc"]],
 				columns: [
@@ -626,22 +633,22 @@ default:
 			});
 
 			/* When clicking on the +/- icon, we expand/collapse the details block */
-			jQuery("#list tbody").on("click", "td.icon-close", function () {
-				var nTr=this.parentNode;
-				jQuery(this).removeClass("icon-close");
-				oTable.fnClose(nTr);
-				jQuery(this).addClass("icon-open");
+			jQuery("#list").on("click", "tr td:first-child", function () {
+				var self = jQuery(this),
+					aData,
+					oTable = self.parents("table").dataTable();
+				    nTr=self.parent();
+
+				if(self.hasClass("icon-open")) {
+					aData=oTable.fnGetData(nTr);
+					jQuery.get("'.WT_SCRIPT_NAME.'?action=load1row&user_id="+aData[1], function(data) {
+						oTable.fnOpen(nTr, data, "details");
+					});
+				} else {
+					oTable.fnClose(nTr);
+				}
+				jQuery(this).toggleClass("icon-open icon-close");
 			});
-			jQuery("#list tbody").on("click", "td.icon-open", function () {
-				var nTr=this.parentNode;
-				jQuery(this).removeClass("icon-open");
-				var aData=oTable.fnGetData(nTr);
-				jQuery.get("'.WT_SCRIPT_NAME.'?action=load1row&user_id="+aData[1], function(data) {
-					oTable.fnOpen(nTr, data, "details");
-				});
-				jQuery(this).addClass("icon-close");
-			});
-			oTable.fnFilter("'.WT_Filter::get('filter').'");
 		');
 	break;
 }

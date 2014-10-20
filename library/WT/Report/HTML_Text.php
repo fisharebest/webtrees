@@ -26,7 +26,7 @@
 class WT_Report_HTML_Text extends WT_Report_Base_Text {
 	/**
 	 * @param WT_Report_HTML $html
-	 * @param int            $curx
+	 * @param integer        $curx
 	 * @param boolean        $attrib Is is called from a different element?
 	 *
 	 * @return void

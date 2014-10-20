@@ -77,10 +77,15 @@ if ($form_action=='update' && WT_Filter::checkCsrf()) {
 		Auth::user()
 			->setRealName($form_realname)
 			->setEmail($form_email)
-			->setPreference('theme',         $form_theme)
 			->setPreference('language',      $form_language)
 			->setPreference('contactmethod', $form_contact_method)
-			->setPreference('visibleonline', $form_visible_online);
+			->setPreference('visibleonline', $form_visible_online ? '1' : '0');
+
+		if ($form_theme === null) {
+			Auth::user()->deletePreference('theme');
+		} else {
+			Auth::user()->setPreference('theme', $form_theme);
+		}
 
 		$WT_TREE->setUserPreference(Auth::user(), 'rootid', $form_rootid);
 

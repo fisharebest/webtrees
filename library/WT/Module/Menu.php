@@ -22,7 +22,7 @@ interface WT_Module_Menu {
 	/**
 	 * The user can re-order menus.  Until they do, they are shown in this order.
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	public function defaultMenuOrder();
 }

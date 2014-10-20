@@ -288,17 +288,17 @@ case 'register':
 			$user = User::create($user_name, $user_realname, $user_email, $user_password01);
 			$user
 				->setPreference('language',          WT_LOCALE)
-				->setPreference('verified',          0)
+				->setPreference('verified',          '0')
 				->setPreference('verified_by_admin', !$REQUIRE_ADMIN_AUTH_REGISTRATION)
 				->setPreference('reg_timestamp',     date('U'))
 				->setPreference('reg_hashcode',      md5(Uuid::uuid4()))
 				->setPreference('contactmethod',     'messaging2')
 				->setPreference('comment',           $user_comments)
-				->setPreference('visibleonline',     1)
-				->setPreference('editaccount',       1)
-				->setPreference('auto_accept',       0)
-				->setPreference('canadmin',          0)
-				->setPreference('sessiontime',       0);
+				->setPreference('visibleonline',     '1')
+				->setPreference('editaccount',       '1')
+				->setPreference('auto_accept',       '0')
+				->setPreference('canadmin',          '0')
+				->setPreference('sessiontime',       '0');
 
 			// Generate an email in the admin’s language
 			$webmaster = User::find($WT_TREE->getPreference('WEBMASTER_USER_ID'));
@@ -551,9 +551,9 @@ case 'verify_hash':
 			}
 
 			$user
-				->setPreference('verified', 1)
-				->setPreference('reg_timestamp', date("U"))
-				->setPreference('reg_hashcode', null);
+				->setPreference('verified', '1')
+				->setPreference('reg_timestamp', date('U'))
+				->deletePreference('reg_hashcode');
 
 			if (!$REQUIRE_ADMIN_AUTH_REGISTRATION) {
 				set_user_setting($user_id, 'verified_by_admin', 1);

@@ -87,7 +87,7 @@ class WT_File {
 	 *
 	 * @param string $path
 	 *
-	 * @return bool Was the file deleted
+	 * @return boolean Was the file deleted
 	 */
 	public static function delete($path) {
 		// In case the file is marked read-only
@@ -114,7 +114,7 @@ class WT_File {
 	 *
 	 * @param string $path
 	 *
-	 * @return bool Does the folder now exist
+	 * @return boolean Does the folder now exist
 	 */
 	public static function mkdir($path) {
 		if (is_dir($path)) {

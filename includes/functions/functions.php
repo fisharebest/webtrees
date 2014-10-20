@@ -21,11 +21,15 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-// Check with the webtrees.net server for the latest version of webtrees.
-// Fetching the remote file can be slow, so check infrequently, and cache the result.
-// Pass the current versions of webtrees, PHP and MySQL, as the response
-// may be different for each.  The server logs are used to generate
-// installation statistics which can be found at http://svn.webtrees.net/statistics.html
+/**
+ * Check with the webtrees.net server for the latest version of webtrees.
+ * Fetching the remote file can be slow, so check infrequently, and cache the result.
+ * Pass the current versions of webtrees, PHP and MySQL, as the response
+ * may be different for each.  The server logs are used to generate
+ * installation statistics which can be found at http://svn.webtrees.net/statistics.html
+ *
+ * @return null|string
+ */
 function fetch_latest_version() {
 	$last_update_timestamp = WT_Site::getPreference('LATEST_WT_VERSION_TIMESTAMP');
 	if ($last_update_timestamp < WT_TIMESTAMP - 24 * 60 * 60) {
@@ -81,9 +85,14 @@ function file_upload_error_text($error_code) {
 	}
 }
 
-function load_gedcom_settings($ged_id = WT_GED_ID) {
-	// Load the configuration settings into global scope
-	// TODO: some of these are used infrequently - just load them when we need them
+/**
+ * Load the configuration settings into global scope
+ *
+ * @todo some of these are used infrequently - just load them when we need them
+ *
+ * @param integer $ged_id
+ */
+function load_gedcom_settings($ged_id) {
 	$tree = WT_Tree::get($ged_id);
 	global $ADVANCED_NAME_FACTS;          $ADVANCED_NAME_FACTS          = $tree->getPreference('ADVANCED_NAME_FACTS');
 	global $ADVANCED_PLAC_FACTS;          $ADVANCED_PLAC_FACTS          = $tree->getPreference('ADVANCED_PLAC_FACTS');
@@ -179,13 +188,13 @@ function load_gedcom_settings($ged_id = WT_GED_ID) {
  * The following example is the DATE subrecord of the above BIRT subrecord:
  * <code>2 DATE 1 JAN 1900</code>
  *
- * @param int    $level  the N level of the subrecord to get
- * @param string $tag    a gedcom tag or string to search for in the record (ie 1 BIRT or 2 DATE)
- * @param string $gedrec the parent gedcom record to search in
- * @param int    $num    this allows you to specify which matching <var>$tag</var> to get.  Oftentimes a
- *                       gedcom record will have more that 1 of the same type of subrecord.  An individual may have
- *                       multiple events for example.  Passing $num=1 would get the first 1.  Passing $num=2 would get the
- *                       second one, etc.
+ * @param integer $level  the N level of the subrecord to get
+ * @param string  $tag    a gedcom tag or string to search for in the record (ie 1 BIRT or 2 DATE)
+ * @param string  $gedrec the parent gedcom record to search in
+ * @param integer $num    this allows you to specify which matching <var>$tag</var> to get.  Oftentimes a
+ *                        gedcom record will have more that 1 of the same type of subrecord.  An individual may have
+ *                        multiple events for example.  Passing $num=1 would get the first 1.  Passing $num=2 would get the
+ *                        second one, etc.
  *
  * @return string the subrecord that was found or an empty string "" if not found.
  */
@@ -225,8 +234,8 @@ function get_sub_record($level, $tag, $gedrec, $num = 1) {
  *
  * get the N+1 CONT or CONC lines of a gedcom subrecord
  *
- * @param int    $nlevel the level of the CONT lines to get
- * @param string $nrec   the gedcom subrecord to search in
+ * @param integer $nlevel the level of the CONT lines to get
+ * @param string  $nrec   the gedcom subrecord to search in
  *
  * @return string a string with all CONT or CONC lines merged
  */
@@ -365,9 +374,9 @@ function get_associate_relationship_name(WT_Individual $person1, WT_Individual $
  *
  * @param WT_Individual $person1      the person to compute the relationship from
  * @param WT_Individual $person2      the person to compute the relatiohip to
- * @param bool          $followspouse whether to add spouses to the path
- * @param int           $maxlength    the maximum length of path
- * @param int           $path_to_find which path in the relationship to find, 0 is the shortest path, 1 is the next shortest path, etc
+ * @param boolean       $followspouse whether to add spouses to the path
+ * @param integer       $maxlength    the maximum length of path
+ * @param integer       $path_to_find which path in the relationship to find, 0 is the shortest path, 1 is the next shortest path, etc
  *
  * @return array|bool An array of nodes on the relationship path, or false if no path found
  */
@@ -588,6 +597,12 @@ function get_relationship_name($nodes) {
 	return get_relationship_name_from_path($combined_path, $person1, $person2);
 }
 
+/**
+ * @param integer $n
+ * @param string  $sex
+ *
+ * @return string
+ */
 function cousin_name($n, $sex) {
 	switch ($sex) {
 	case 'M':
@@ -714,8 +729,16 @@ function cousin_name($n, $sex) {
 	}
 }
 
-// A variation on cousin_name(), for constructs such as “sixth great-nephew”
-// Currently used only by Spanish relationship names.
+/**
+ * A variation on cousin_name(), for constructs such as “sixth great-nephew”
+ * Currently used only by Spanish relationship names.
+ *
+ * @param integer $n
+ * @param string  $sex
+ * @param string  $relation
+ *
+ * @return string
+ */
 function cousin_name2($n, $sex, $relation) {
 	switch ($sex) {
 	case 'M':
@@ -766,6 +789,13 @@ function cousin_name2($n, $sex, $relation) {
 	}
 }
 
+/**
+ * @param string        $path
+ * @param WT_Individual $person1
+ * @param WT_Individual $person2
+ *
+ * @return string
+ */
 function get_relationship_name_from_path($path, WT_Individual $person1 = null, WT_Individual $person2 = null) {
 	if (!preg_match('/^(mot|fat|par|hus|wif|spo|son|dau|chi|bro|sis|sib)*$/', $path)) {
 		// TODO: Update all the “3 RELA ” values in class_person
@@ -2295,8 +2325,15 @@ function get_theme_names() {
 	return $themes;
 }
 
-// Function to build an URL querystring from GET variables
-// Optionally, add/replace specified values
+/**
+ * Function to build an URL querystring from GET variables
+ * Optionally, add/replace specified values
+ *
+ * @param null|string[] $overwrite
+ * @param null|string  $separator
+ *
+ * @return string
+ */
 function get_query_url($overwrite = null, $separator = '&') {
 	if (empty($_GET)) {
 		$get = array();
@@ -2407,7 +2444,7 @@ function get_new_xref($type = 'INDI', $ged_id = WT_GED_ID) {
  *
  * @param string $file
  *
- * @return bool
+ * @return boolean
  */
 function isFileExternal($file) {
 	return strpos($file, '://') !== false;

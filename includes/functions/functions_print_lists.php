@@ -1300,11 +1300,11 @@ function format_note_table($datalist) {
 /**
  * Print a table of repositories
  *
- * @param WT_Repository[] $datalist
+ * @param WT_Repository[] $repositories
  *
  * @return string
  */
-function format_repo_table($repos) {
+function format_repo_table($repositories) {
 	global $SHOW_LAST_CHANGE, $controller;
 
 	$html = '';
@@ -1350,13 +1350,13 @@ function format_repo_table($repos) {
 	//-- table body
 	$html .= '<tbody>';
 
-	foreach ($repos as $repo) {
-		if (!$repo->canShow()) {
+	foreach ($repositories as $repository) {
+		if (!$repository->canShow()) {
 			continue;
 		}
-		if ($repo->isNew()) {
+		if ($repository->isNew()) {
 			$class = ' class="new"';
-		} elseif ($repo->isOld()) {
+		} elseif ($repository->isOld()) {
 			$class = ' class="old"';
 		} else {
 			$class = '';
@@ -1364,35 +1364,35 @@ function format_repo_table($repos) {
 		$html .= '<tr' . $class . '>';
 		//-- Repository name(s)
 		$html .= '<td>';
-		foreach ($repo->getAllNames() as $n => $name) {
+		foreach ($repository->getAllNames() as $n => $name) {
 			if ($n) {
 				$html .= '<br>';
 			}
-			if ($n == $repo->getPrimaryName()) {
-				$html .= '<a class="name2" href="' . $repo->getHtmlUrl() . '">' . highlight_search_hits($name['full']) . '</a>';
+			if ($n == $repository->getPrimaryName()) {
+				$html .= '<a class="name2" href="' . $repository->getHtmlUrl() . '">' . highlight_search_hits($name['full']) . '</a>';
 			} else {
-				$html .= '<a href="' . $repo->getHtmlUrl() . '">' . highlight_search_hits($name['full']) . '</a>';
+				$html .= '<a href="' . $repository->getHtmlUrl() . '">' . highlight_search_hits($name['full']) . '</a>';
 			}
 		}
 		$html .= '</td>';
 		//-- Linked SOURces
-		$num = count($repo->linkedSources('REPO'));
+		$num = count($repository->linkedSources('REPO'));
 		$html .= '<td>' . WT_I18N::number($num) . '</td><td>' . $num . '</td>';
 		//-- Last change
 		if ($SHOW_LAST_CHANGE) {
-			$html .= '<td>' . $repo->LastChangeTimestamp() . '</td>';
+			$html .= '<td>' . $repository->LastChangeTimestamp() . '</td>';
 		} else {
 			$html .= '<td>&nbsp;</td>';
 		}
 		//-- Last change hidden sort column
 		if ($SHOW_LAST_CHANGE) {
-			$html .= '<td>' . $repo->LastChangeTimestamp(true) . '</td>';
+			$html .= '<td>' . $repository->LastChangeTimestamp(true) . '</td>';
 		} else {
 			$html .= '<td>&nbsp;</td>';
 		}
 		//-- Delete
 		if (WT_USER_GEDCOM_ADMIN) {
-			$html .= '<td><div title="' . WT_I18N::translate('Delete') . '" class="deleteicon" onclick="return delete_repository(\'' . WT_I18N::translate('Are you sure you want to delete “%s”?', WT_Filter::escapeJs(WT_Filter::unescapeHtml($repo->getFullName()))) . "', '" . $repo->getXref() . '\');"><span class="link_text">' . WT_I18N::translate('Delete') . '</span></div></td>';
+			$html .= '<td><div title="' . WT_I18N::translate('Delete') . '" class="deleteicon" onclick="return delete_repository(\'' . WT_I18N::translate('Are you sure you want to delete “%s”?', WT_Filter::escapeJs(WT_Filter::unescapeHtml($repository->getFullName()))) . "', '" . $repository->getXref() . '\');"><span class="link_text">' . WT_I18N::translate('Delete') . '</span></div></td>';
 		} else {
 			$html .= '<td>&nbsp;</td>';
 		}
@@ -1406,12 +1406,13 @@ function format_repo_table($repos) {
 /**
  * Print a table of media objects
  *
- * @param WT_Media[] $datalist
+ * @param WT_Media[] $media_objects
  *
  * @return string
  */
-function format_media_table($datalist) {
+function format_media_table($media_objects) {
 	global $SHOW_LAST_CHANGE, $controller;
+
 	$html = '';
 	$table_id = 'table-obje-' . Uuid::uuid4(); // lists requires a unique ID in case there are multiple lists per page
 	$controller
@@ -1463,46 +1464,46 @@ function format_media_table($datalist) {
 	//-- table body
 	$html .= '<tbody>';
 
-	foreach ($datalist as $media) {
-		if ($media->canShow()) {
-			$name = $media->getFullName();
-			if ($media->isNew()) {
+	foreach ($media_objects as $media_object) {
+		if ($media_object->canShow()) {
+			$name = $media_object->getFullName();
+			if ($media_object->isNew()) {
 				$class = ' class="new"';
-			} elseif ($media->isOld()) {
+			} elseif ($media_object->isOld()) {
 				$class = ' class="old"';
 			} else {
 				$class = '';
 			}
 			$html .= '<tr' . $class . '>';
 			//-- Object thumbnail
-			$html .= '<td>' . $media->displayImage() . '</td>';
+			$html .= '<td>' . $media_object->displayImage() . '</td>';
 			//-- Object name(s)
 			$html .= '<td>';
-			$html .= '<a href="' . $media->getHtmlUrl() . '" class="list_item name2">';
+			$html .= '<a href="' . $media_object->getHtmlUrl() . '" class="list_item name2">';
 			$html .= highlight_search_hits($name) . '</a>';
 			if (WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT) {
-				$html .= '<br><a href="' . $media->getHtmlUrl() . '">' . basename($media->getFilename()) . '</a>';
+				$html .= '<br><a href="' . $media_object->getHtmlUrl() . '">' . basename($media_object->getFilename()) . '</a>';
 			}
 			$html .= '</td>';
 
 			//-- Linked INDIs
-			$num = count($media->linkedIndividuals('OBJE'));
+			$num = count($media_object->linkedIndividuals('OBJE'));
 			$html .= '<td>' . WT_I18N::number($num) . '</td><td>' . $num . '</td>';
 			//-- Linked FAMs
-			$num = count($media->linkedfamilies('OBJE'));
+			$num = count($media_object->linkedfamilies('OBJE'));
 			$html .= '<td>' . WT_I18N::number($num) . '</td><td>' . $num . '</td>';
 			//-- Linked SOURces
-			$num = count($media->linkedSources('OBJE'));
+			$num = count($media_object->linkedSources('OBJE'));
 			$html .= '<td>' . WT_I18N::number($num) . '</td><td>' . $num . '</td>';
 			//-- Last change
 			if ($SHOW_LAST_CHANGE) {
-				$html .= '<td>' . $media->LastChangeTimestamp() . '</td>';
+				$html .= '<td>' . $media_object->LastChangeTimestamp() . '</td>';
 			} else {
 				$html .= '<td>&nbsp;</td>';
 			}
 			//-- Last change hidden sort column
 			if ($SHOW_LAST_CHANGE) {
-				$html .= '<td>' . $media->LastChangeTimestamp(true) . '</td>';
+				$html .= '<td>' . $media_object->LastChangeTimestamp(true) . '</td>';
 			} else {
 				$html .= '<td>&nbsp;</td>';
 			}

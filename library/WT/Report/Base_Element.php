@@ -34,7 +34,7 @@ class WT_Report_Base_Element {
 	 *
 	 * @param $renderer
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	function render($renderer) {
 		//print "Nothing rendered.  Something bad happened";
@@ -46,7 +46,7 @@ class WT_Report_Base_Element {
 	/**
 	 * @param $renderer
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	function getHeight($renderer) {
 		return 0;
@@ -55,7 +55,7 @@ class WT_Report_Base_Element {
 	/**
 	 * @param $renderer
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	function getWidth($renderer) {
 		return 0;
@@ -64,7 +64,7 @@ class WT_Report_Base_Element {
 	/**
 	 * @param $t
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	function addText($t) {
 		global $wt_report, $reportTitle, $reportDescription;
@@ -86,7 +86,7 @@ class WT_Report_Base_Element {
 	}
 
 	/**
-	 * @return int
+	 * @return integer
 	 */
 	function addNewline() {
 		$this->text .= "\n";
@@ -105,7 +105,7 @@ class WT_Report_Base_Element {
 	 * @param $wrapwidth
 	 * @param $cellwidth
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	function setWrapWidth($wrapwidth, $cellwidth) {
 		return 0;
@@ -114,7 +114,7 @@ class WT_Report_Base_Element {
 	/**
 	 * @param $renderer
 	 *
-	 * @return bool
+	 * @return boolean
 	 */
 	function renderFootnote($renderer) {
 		return false;
@@ -124,7 +124,7 @@ class WT_Report_Base_Element {
 	/**
 	 * @param $text
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	function setText($text) {
 		$this->text = $text;

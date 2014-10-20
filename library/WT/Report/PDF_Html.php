@@ -25,10 +25,10 @@
 
 class WT_Report_PDF_Html extends WT_Report_Base_Html {
 	/**
-	 * @param      $pdf
-	 * @param bool $sub
+	 * @param         $pdf
+	 * @param boolean $sub
 	 *
-	 * @return int|string
+	 * @return integer|string
 	 */
 	function render($pdf, $sub = false) {
 		if (!empty($this->attrs['style'])) {

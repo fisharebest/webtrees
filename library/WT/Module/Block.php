@@ -22,7 +22,7 @@ interface WT_Module_Block {
 	/**
 	 * Generate the HTML content of this block.
 	 * 
-	 * @param int $block_id
+	 * @param integer $block_id
 	 *
 	 * @return string
 	 */
@@ -33,30 +33,30 @@ interface WT_Module_Block {
 	 * Simple blocks are faster in-line, more comples ones
 	 * can be loaded later.
 	 *
-	 * @return bool
+	 * @return boolean
 	 */
 	public function loadAjax();
 
 	/**
 	 * Can this block be shown on the user’s home page?
 	 *
-	 * @return bool
+	 * @return boolean
 	 */
 	public function isUserBlock();
 
 	/**
 	 * Can this block be shown on the tree’s home page?
 	 *
-	 * @return bool
+	 * @return boolean
 	 */
 	public function isGedcomBlock();
 
 	/**
 	 * An HTML form to edit block settings
 	 *
-	 * @param int $block_id
+	 * @param integer $block_id
 	 *
-	 * @return mixed
+	 * @return void
 	 */
 	public function configureBlock($block_id);
 }

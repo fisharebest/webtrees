@@ -24,7 +24,11 @@ use WT\User;
 class WT_Mail {
 	const EOL = "<br>\r\n"; // End-of-line that works for both TEXT and HTML messages
 
-	// Audit information to add to email footer
+	/**
+	 * Audit information to add to email footer
+	 *
+	 * @return string
+	 */
 	public static function auditFooter() {
 		global $WT_REQUEST;
 
@@ -32,11 +36,23 @@ class WT_Mail {
 			self::EOL .
 			'---------------------------------------' . self::EOL .
 			'IP ADDRESS: ' . $WT_REQUEST->getClientIp() . self::EOL .
-			'LANGUAGE: '   . WT_LOCALE . self::EOL;
+			'LANGUAGE: ' . WT_LOCALE . self::EOL;
 	}
 
-	// Send an external email message
-	// Caution! gmail may rewrite the "From" header unless you have added the address to your account.
+	/**
+	 * Send an external email message
+	 * Caution! gmail may rewrite the "From" header unless you have added the address to your account.
+	 *
+	 * @param WT_Tree $tree
+	 * @param string  $to_email
+	 * @param string  $to_name
+	 * @param string  $replyto_email
+	 * @param string  $replyto_name
+	 * @param string  $subject
+	 * @param string  $message
+	 *
+	 * @return boolean
+	 */
 	public static function send(WT_Tree $tree, $to_email, $to_name, $replyto_email, $replyto_name, $subject, $message) {
 		try {
 			$mail = new Zend_Mail('UTF-8');
@@ -50,8 +66,10 @@ class WT_Mail {
 				->send       (WT_Mail::transport());
 		} catch (Exception $ex) {
 			Log::addErrorLog('Mail: ' . $ex->getMessage());
+
 			return false;
 		}
+
 		return true;
 	}
 
@@ -63,7 +81,7 @@ class WT_Mail {
 	 * @param string  $subject
 	 * @param string  $message
 	 *
-	 * @return bool
+	 * @return boolean
 	 */
 	public static function systemMessage(WT_Tree $tree, User $user, $subject, $message) {
 		return self::send(
@@ -75,8 +93,11 @@ class WT_Mail {
 		);
 	}
 
-
-	// Create a transport mechanism for sending mail
+	/**
+	 * Create a transport mechanism for sending mail
+	 *
+	 * @return Zend_Mail_Transport_File|Zend_Mail_Transport_Smtp
+	 */
 	public static function transport() {
 		switch (WT_Site::getPreference('SMTP_ACTIVE')) {
 		case 'internal':

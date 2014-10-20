@@ -23,7 +23,7 @@ interface WT_Module_Tab {
 	 * The user can re-arrange the tab order, but until they do, this
 	 * is the order in which tabs are shown.
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	public function defaultTabOrder();
 
@@ -36,14 +36,14 @@ interface WT_Module_Tab {
 
 	/**
 	 * Is this tab empty?  If so, we don't always need to display it.
-	 * @return bool
+	 * @return boolean
 	 */
 	public function hasTabContent();
 
 	/**
 	 * Can this tab load asynchronously?
 	 *
-	 * @return bool
+	 * @return boolean
 	 */
 	public function canLoadAjax();
 
@@ -60,7 +60,7 @@ interface WT_Module_Tab {
 	 * A greyed out tab has no actual content, but may perhaps have
 	 * options to create content.
 	 *
-	 * @return bool
+	 * @return boolean
 	 */
 	public function isGrayedOut();
 }

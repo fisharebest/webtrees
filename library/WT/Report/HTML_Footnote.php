@@ -70,9 +70,9 @@ class WT_Report_HTML_Footnote extends WT_Report_Base_Footnote {
 	 * Calculates the Footnotes height
 	 *
 	 * @param WT_Report_HTML $html
-	 * @param int            $cellWidth The width of the cell to use it for text wraping
+	 * @param integer        $cellWidth The width of the cell to use it for text wraping
 	 *
-	 * @return int           Footnote height in points
+	 * @return integer       Footnote height in points
 	 */
 	function getFootnoteHeight($html, $cellWidth = 0) {
 		if ($html->getCurrentStyle() != $this->styleName) {

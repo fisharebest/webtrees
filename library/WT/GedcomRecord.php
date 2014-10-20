@@ -324,8 +324,8 @@ class WT_GedcomRecord {
 	/**
 	 * Generate a URL to this record.
 	 *
-	 * @param $link
-	 * @param $separator
+	 * @param string $link
+	 * @param string $separator
 	 *
 	 * @return string
 	 */
@@ -444,7 +444,7 @@ class WT_GedcomRecord {
 	 *
 	 * @param integer $access_level
 	 *
-	 * @return bool
+	 * @return boolean
 	 */
 	public function canShowName($access_level=WT_USER_ACCESS_LEVEL) {
 		return $this->canShow($access_level);
@@ -463,7 +463,7 @@ class WT_GedcomRecord {
 	 * Remove private data from the raw gedcom record.
 	 * Return both the visible and invisible data.  We need the invisible data when editing.
 	 *
-	 * @param $access_level
+	 * @param integer $access_level
 	 *
 	 * @return string
 	 */
@@ -986,7 +986,7 @@ class WT_GedcomRecord {
 	public function getAllEventDates($event_type) {
 		$dates = array();
 		foreach ($this->getFacts($event_type) as $event) {
-			if ($event->getDate()->isOK() && $event->canShow()) {
+			if ($event->getDate()->isOK()) {
 				$dates[] = $event->getDate();
 			}
 		}
@@ -1004,7 +1004,7 @@ class WT_GedcomRecord {
 	public function getAllEventPlaces($event_type) {
 		$places = array();
 		foreach ($this->getFacts($event_type) as $event) {
-			if (preg_match_all('/\n(?:2 PLAC|3 (?:ROMN|FONE|_HEB)) +(.+)/', $event->getGedcom(), $ged_places) && $event->canShow()) {
+			if (preg_match_all('/\n(?:2 PLAC|3 (?:ROMN|FONE|_HEB)) +(.+)/', $event->getGedcom(), $ged_places)) {
 				foreach ($ged_places[1] as $ged_place) {
 					$places[] = $ged_place;
 				}
@@ -1023,7 +1023,7 @@ class WT_GedcomRecord {
 	 */
 	public function getFirstFact($tag) {
 		foreach ($this->getFacts() as $fact) {
-			if ($fact->getTag() == $tag && $fact->canShow()) {
+			if ($fact->getTag() == $tag) {
 				return $fact;
 			}
 		}
@@ -1034,10 +1034,10 @@ class WT_GedcomRecord {
 	/**
 	 * The facts and events for this record.
 	 *
-	 * @param string $filter
-	 * @param bool   $sort
-	 * @param int    $access_level
-	 * @param bool   $override     Include private records, to allow us to implement $SHOW_PRIVATE_RELATIONSHIPS and $SHOW_LIVING_NAMES.
+	 * @param string  $filter
+	 * @param boolean $sort
+	 * @param integer $access_level
+	 * @param boolean $override     Include private records, to allow us to implement $SHOW_PRIVATE_RELATIONSHIPS and $SHOW_LIVING_NAMES.
 	 *
 	 * @return WT_Fact[]
 	 */

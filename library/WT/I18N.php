@@ -508,22 +508,19 @@ class WT_I18N {
 	/**
 	 * Convert a number of seconds into a relative time.  For example, 630 => "10 hours, 30 minutes ago"
 	 *
-	 * @param int $seconds
+	 * @param integer $seconds
 	 *
 	 * @return string
 	 *
 	 * @todo Does Nesbot\Carbon do this for us?
 	 */
 	public static function time_ago($seconds) {
-		$year   = 365*24*60*60;
-		$month  = 30*24*60*60;
-		$day    = 24*60*60;
-		$hour   = 60*60;
 		$minute = 60;
+		$hour   = 60 * $minute;
+		$day    = 24 * $hour;
+		$month  = 30 * $day;
+		$year   = 365 * $day;
 
-		// This requires "contexts".  i.e. "%s months" has a different translation
-		// in different contexts.
-		// We must AVOID combining phrases to make sentences.
 		if ($seconds>$year) {
 			$years=(int)($seconds/$year);
 			return self::plural('%s year ago', '%s years ago', $years, self::number($years));
@@ -810,7 +807,7 @@ class WT_I18N {
 	 * @param string $string1
 	 * @param string $string2
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	public static function strcasecmp($string1, $string2) {
 		$strpos1 = 0;

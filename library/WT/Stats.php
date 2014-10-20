@@ -47,6 +47,8 @@ class WT_Stats {
 
 	/**
 	 * Return a string of all supported tags and an example of its output in table row form.
+	 *
+	 * @return string
 	 */
 	public function getAllTagsTable() {
 		$examples = array();
@@ -72,8 +74,12 @@ class WT_Stats {
 		return
 			'<table id="keywords"><thead>' .
 			'<tr>' .
-			'<th class="list_label_wrap">' . WT_I18N::translate('Embedded variable') . '</th>' .
-			'<th class="list_label_wrap">' . WT_I18N::translate('Resulting value') . '</th>' .
+			'<th class="list_label_wrap">' .
+			WT_I18N::translate('Embedded variable') .
+			'</th>' .
+			'<th class="list_label_wrap">' .
+			WT_I18N::translate('Resulting value') .
+			'</th>' .
 			'</tr>' .
 			'</thead><tbody>' .
 			$html .
@@ -82,6 +88,8 @@ class WT_Stats {
 
 	/**
 	 * Return a string of all supported tags in plain text.
+	 *
+	 * @return string
 	 */
 	public function getAllTagsText() {
 		$examples = array();
@@ -96,8 +104,12 @@ class WT_Stats {
 		return implode('<br>', $examples);
 	}
 
-	/*
+	/**
 	 * Get tags and their parsed results.
+	 *
+	 * @param string $text
+	 *
+	 * @return string[][]
 	 */
 	private function getTags($text) {
 		static $funcs;
@@ -107,9 +119,9 @@ class WT_Stats {
 
 		// Extract all tags from the provided text
 		preg_match_all("/#([^#]+)(?=#)/", (string)$text, $match);
-		$tags = $match[1];
-		$c = count($tags);
-		$new_tags = array(); // tag to replace
+		$tags       = $match[1];
+		$c          = count($tags);
+		$new_tags   = array(); // tag to replace
 		$new_values = array(); // value to replace it with
 
 		/*
@@ -127,113 +139,149 @@ class WT_Stats {
 
 			// Generate the replacement value for the tag
 			if (method_exists($this, $tags[$i])) {
-				$new_tags[] = "#{$full_tag}#";
+				$new_tags[]   = "#{$full_tag}#";
 				$new_values[] = call_user_func_array(array($this, $tags[$i]), array($params));
 			} elseif ($tags[$i] == 'help') {
 				// re-merge, just in case
-				$new_tags[] = "#{$full_tag}#";
+				$new_tags[]   = "#{$full_tag}#";
 				$new_values[] = help_link(join(':', $params));
 			}
 		}
+
 		return array($new_tags, $new_values);
 	}
 
-	/*
+	/**
 	 * Embed tags in text
+	 *
+	 * @param $text
+	 *
+	 * @return mixed
 	 */
 	public function embedTags($text) {
 		if (strpos($text, '#') !== false) {
 			list($new_tags, $new_values) = $this->getTags($text);
 			$text = str_replace($new_tags, $new_values, $text);
 		}
+
 		return $text;
 	}
 
-///////////////////////////////////////////////////////////////////////////////
-// GEDCOM                                                                    //
-///////////////////////////////////////////////////////////////////////////////
-
+	/**
+	 * @return string
+	 */
 	public function gedcomFilename() {
 		return $this->tree->tree_name;
 	}
 
+	/**
+	 * @return string
+	 */
 	public function gedcomID() {
 		return $this->tree->tree_id;
 	}
 
+	/**
+	 * @return string
+	 */
 	public function gedcomTitle() {
 		return $this->tree->tree_title_html;
 	}
 
+	/**
+	 * @return string
+	 */
 	private function gedcomHead() {
-		$title = "";
+		$title   = '';
 		$version = '';
-		$source = '';
+		$source  = '';
 
 		$head = WT_GedcomRecord::getInstance('HEAD');
 		$sour = $head->getFirstFact('SOUR');
 		if ($sour) {
-			$source = $sour->getValue();
-			$title = $sour->getAttribute('NAME');
+			$source  = $sour->getValue();
+			$title   = $sour->getAttribute('NAME');
 			$version = $sour->getAttribute('VERS');
 		}
+
 		return array($title, $version, $source);
 	}
 
+	/**
+	 * @return string
+	 */
 	public function gedcomCreatedSoftware() {
 		$head = $this->gedcomHead();
+
 		return $head[0];
 	}
 
+	/**
+	 * @return string
+	 */
 	public function gedcomCreatedVersion() {
 		$head = $this->gedcomHead();
 		// fix broken version string in Family Tree Maker
 		if (strstr($head[1], 'Family Tree Maker ')) {
-			$p = strpos($head[1], '(') + 1;
-			$p2 = strpos($head[1], ')');
+			$p       = strpos($head[1], '(') + 1;
+			$p2      = strpos($head[1], ')');
 			$head[1] = substr($head[1], $p, ($p2 - $p));
 		}
 		// Fix EasyTree version
 		if ($head[2] == 'EasyTree') {
 			$head[1] = substr($head[1], 1);
 		}
+
 		return $head[1];
 	}
 
+	/**
+	 * @return string
+	 */
 	public function gedcomDate() {
 		$head = WT_GedcomRecord::getInstance('HEAD');
 		$fact = $head->getFirstFact('DATE');
 		if ($fact) {
 			$date = new WT_Date($fact->getValue());
+
 			return $date->display();
 		}
+
 		return '';
 	}
 
+	/**
+	 * @return string
+	 */
 	public function gedcomUpdated() {
-		$row =
-			WT_DB::prepare("SELECT SQL_CACHE d_year, d_month, d_day FROM `##dates` WHERE d_julianday1 = ( SELECT max( d_julianday1 ) FROM `##dates` WHERE d_file =? AND d_fact=? ) LIMIT 1")
-				->execute(array($this->tree->tree_id, 'CHAN'))
-				->fetchOneRow();
+		$row = WT_DB::prepare(
+			"SELECT SQL_CACHE d_year, d_month, d_day FROM `##dates` WHERE d_julianday1 = (SELECT MAX(d_julianday1) FROM `##dates` WHERE d_file =? AND d_fact='CHAN') LIMIT 1"
+		)->execute(array($this->tree->tree_id))->fetchOneRow();
 		if ($row) {
 			$date = new WT_Date("{$row->d_day} {$row->d_month} {$row->d_year}");
+
 			return $date->display();
 		} else {
 			return $this->gedcomDate();
 		}
 	}
 
+	/**
+	 * @return string
+	 */
 	public function gedcomRootID() {
 		$root = WT_Individual::getInstance($this->tree->getPreference('PEDIGREE_ROOT_ID'));
 		$root = substr($root, 0, stripos($root, "@"));
+
 		return $root;
 	}
 
-
-///////////////////////////////////////////////////////////////////////////////
-// Totals                                                                    //
-///////////////////////////////////////////////////////////////////////////////
-
+	/**
+	 * @param string $total
+	 * @param string $type
+	 *
+	 * @return string
+	 */
 	private function getPercentage($total, $type) {
 		switch ($type) {
 		case 'individual':
@@ -260,6 +308,9 @@ class WT_Stats {
 		}
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalRecords() {
 		return WT_I18N::number($this->totalIndividualsQuery() + $this->totalFamiliesQuery() + $this->totalSourcesQuery());
 	}
@@ -975,10 +1026,10 @@ class WT_Stats {
 	}
 
 	/**
-	 * @param string $what
-	 * @param string $fact
-	 * @param int    $parent
-	 * @param bool   $country
+	 * @param string  $what
+	 * @param string  $fact
+	 * @param integer $parent
+	 * @param boolean $country
 	 *
 	 * @return array|null|stdClass|string
 	 */

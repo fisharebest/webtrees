@@ -25,7 +25,10 @@ class WT_Family extends WT_GedcomRecord {
 	const RECORD_TYPE = 'FAM';
 	const URL_PREFIX = 'family.php?famid=';
 
+	/** @var WT_Individual|null The husband (or first spouse for same-sex couples) */
 	private $husb = null;
+
+	/** @var WT_Individual|null The wife (or second spouse for same-sex couples) */
 	private $wife = null;
 
 	/**
@@ -149,7 +152,7 @@ class WT_Family extends WT_GedcomRecord {
 	/**
 	 * Get the (zero, one or two) spouses from this family.
 	 *
-	 * @param int $access_level
+	 * @param integer $access_level
 	 *
 	 * @return WT_Individual[]
 	 */
@@ -168,7 +171,7 @@ class WT_Family extends WT_GedcomRecord {
 	/**
 	 * Get a list of this family’s children.
 	 *
-	 * @param int $access_level
+	 * @param integer $access_level
 	 *
 	 * @return WT_Individual[]
 	 */
@@ -192,7 +195,7 @@ class WT_Family extends WT_GedcomRecord {
 	 * @param WT_Family $x
 	 * @param WT_Family $y
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	public static function compareMarrDate(WT_Family $x, WT_Family $y) {
 		return WT_Date::Compare($x->getMarriageDate(), $y->getMarriageDate());
@@ -201,7 +204,7 @@ class WT_Family extends WT_GedcomRecord {
 	/**
 	 * Number of children - for the individual list
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	public function getNumberOfChildren() {
 		$nchi = count($this->getChildren());
@@ -238,7 +241,7 @@ class WT_Family extends WT_GedcomRecord {
 	/**
 	 * Get the marriage year - displayed on lists of families
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	public function getMarriageYear() {
 		return $this->getMarriageDate()->MinDate()->y;
