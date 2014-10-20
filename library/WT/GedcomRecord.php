@@ -492,7 +492,7 @@ class WT_GedcomRecord {
 	/**
 	 * Generate a private version of this record
 	 *
-	 * @param $access_level
+	 * @param integer $access_level
 	 *
 	 * @return string
 	 */

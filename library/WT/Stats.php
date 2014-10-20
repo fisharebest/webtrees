@@ -189,7 +189,7 @@ class WT_Stats {
 	}
 
 	/**
-	 * @return string
+	 * @return string[]
 	 */
 	private function gedcomHead() {
 		$title   = '';
@@ -315,26 +315,42 @@ class WT_Stats {
 		return WT_I18N::number($this->totalIndividualsQuery() + $this->totalFamiliesQuery() + $this->totalSourcesQuery());
 	}
 
+	/**
+	 * @return integer
+	 */
 	private function totalIndividualsQuery() {
 		return
-			WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##individuals` WHERE i_file=?")
+			(int)WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##individuals` WHERE i_file = ?")
 				->execute(array($this->tree->tree_id))
 				->fetchOne();
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalIndividuals() {
 		return WT_I18N::number($this->totalIndividualsQuery());
 	}
 
+	/**
+	 * @return integer
+	 */
 	private function totalIndisWithSourcesQuery() {
 		$rows = $this->runSql("SELECT SQL_CACHE COUNT(DISTINCT i_id) AS tot FROM `##link`, `##individuals` WHERE i_id=l_from AND i_file=l_file AND l_file=" . $this->tree->tree_id . " AND l_type='SOUR'");
-		return $rows[0]['tot'];
+
+		return (int)$rows[0]['tot'];
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalIndisWithSources() {
 		return WT_I18N::number($this->totalIndisWithSourcesQuery());
 	}
 
+	/**
+	 * @return string
+	 */
 	public function chartIndisWithSources($params = null) {
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 
@@ -344,7 +360,7 @@ class WT_Stats {
 		if (isset($params[0]) && $params[0] != '') {
 			$size = strtolower($params[0]);
 		} else {
-			$size = $WT_STATS_S_CHART_X . "x" . $WT_STATS_S_CHART_Y;
+			$size = $WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
 		}
 		if (isset($params[1]) && $params[1] != '') {
 			$color_from = strtolower($params[1]);
@@ -370,30 +386,49 @@ class WT_Stats {
 		}
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalIndividualsPercentage() {
 		return $this->getPercentage($this->totalIndividualsQuery(), 'all');
 	}
 
+	/**
+	 * @return integer
+	 */
 	private function totalFamiliesQuery() {
 		return
-			WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##families` WHERE f_file=?")
+			(int)WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##families` WHERE f_file=?")
 				->execute(array($this->tree->tree_id))
 				->fetchOne();
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalFamilies() {
 		return WT_I18N::number($this->totalFamiliesQuery());
 	}
 
+	/**
+	 * @return integer
+	 */
 	private function totalFamsWithSourcesQuery() {
 		$rows = $this->runSql("SELECT SQL_CACHE COUNT(DISTINCT f_id) AS tot FROM `##link`, `##families` WHERE f_id=l_from AND f_file=l_file AND l_file=" . $this->tree->tree_id . " AND l_type='SOUR'");
-		return $rows[0]['tot'];
+
+		return (int)$rows[0]['tot'];
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalFamsWithSources() {
 		return WT_I18N::number($this->totalFamsWithSourcesQuery());
 	}
 
+	/**
+	 * @return string
+	 */
 	public function chartFamsWithSources($params = null) {
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 
@@ -429,55 +464,88 @@ class WT_Stats {
 		}
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalFamiliesPercentage() {
 		return $this->getPercentage($this->totalFamiliesQuery(), 'all');
 	}
 
+	/**
+	 * @return integer
+	 */
 	private function totalSourcesQuery() {
 		return
-			WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##sources` WHERE s_file=?")
+			(int)WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##sources` WHERE s_file=?")
 				->execute(array($this->tree->tree_id))
 				->fetchOne();
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalSources() {
 		return WT_I18N::number($this->totalSourcesQuery());
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalSourcesPercentage() {
 		return $this->getPercentage($this->totalSourcesQuery(), 'all');
 	}
 
+	/**
+	 * @return integer
+	 */
 	private function totalNotesQuery() {
 		return
-			WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##other` WHERE o_type='NOTE' AND o_file=?")
+			(int)WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##other` WHERE o_type='NOTE' AND o_file=?")
 				->execute(array($this->tree->tree_id))
 				->fetchOne();
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalNotes() {
 		return WT_I18N::number($this->totalNotesQuery());
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalNotesPercentage() {
 		return $this->getPercentage($this->totalNotesQuery(), 'all');
 	}
 
+	/**
+	 * @return integer
+	 */
 	private function totalRepositoriesQuery() {
 		return
-			WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##other` WHERE o_type='REPO' AND o_file=?")
+			(Int)WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##other` WHERE o_type='REPO' AND o_file=?")
 				->execute(array($this->tree->tree_id))
 				->fetchOne();
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalRepositories() {
 		return WT_I18N::number($this->totalRepositoriesQuery());
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalRepositoriesPercentage() {
 		return $this->getPercentage($this->totalRepositoriesQuery(), 'all');
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalSurnames($params = null) {
 		if ($params) {
 			$qs = implode(',', array_fill(0, count($params), '?'));
@@ -497,9 +565,13 @@ class WT_Stats {
 				" WHERE n_surn COLLATE '" . WT_I18N::$collation . "' {$opt} AND n_file=?")
 				->execute($vars)
 				->fetchOne();
+
 		return WT_I18N::number($total);
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalGivennames($params = null) {
 		if ($params) {
 			$qs = implode(',', array_fill(0, count($params), '?'));
@@ -516,9 +588,13 @@ class WT_Stats {
 			WT_DB::prepare("SELECT SQL_CACHE COUNT({$distinct} n_givn) FROM `##name` WHERE n_givn {$opt} AND n_file=?")
 				->execute($vars)
 				->fetchOne();
+
 		return WT_I18N::number($total);
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalEvents($params = null) {
 		$sql = "SELECT SQL_CACHE COUNT(*) AS tot FROM `##dates` WHERE d_file=?";
 		$vars = array($this->tree->tree_id);
@@ -540,41 +616,69 @@ class WT_Stats {
 		}
 		$sql .= ' AND d_fact NOT IN (' . implode(', ', array_fill(0, count($no_types), '?')) . ')';
 		$vars = array_merge($vars, $no_types);
+
 		return WT_I18N::number(WT_DB::prepare($sql)->execute($vars)->fetchOne());
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalEventsBirth() {
 		return $this->totalEvents(explode('|', WT_EVENTS_BIRT));
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalBirths() {
 		return $this->totalEvents(array('BIRT'));
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalEventsDeath() {
 		return $this->totalEvents(explode('|', WT_EVENTS_DEAT));
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalDeaths() {
 		return $this->totalEvents(array('DEAT'));
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalEventsMarriage() {
 		return $this->totalEvents(explode('|', WT_EVENTS_MARR));
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalMarriages() {
 		return $this->totalEvents(array('MARR'));
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalEventsDivorce() {
 		return $this->totalEvents(explode('|', WT_EVENTS_DIV));
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalDivorces() {
 		return $this->totalEvents(array('DIV'));
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalEventsOther() {
 		$facts = array_merge(explode('|', WT_EVENTS_BIRT . '|' . WT_EVENTS_MARR . '|' . WT_EVENTS_DIV . '|' . WT_EVENTS_DEAT));
 		$no_facts = array();
@@ -582,54 +686,85 @@ class WT_Stats {
 			$fact = '!' . str_replace('\'', '', $fact);
 			$no_facts[] = $fact;
 		}
+
 		return $this->totalEvents($no_facts);
 	}
 
+	/**
+	 * @return integer
+	 */
 	private function totalSexMalesQuery() {
 		return
-			WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##individuals` WHERE i_file=? AND i_sex=?")
+			(int)WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##individuals` WHERE i_file=? AND i_sex=?")
 				->execute(array($this->tree->tree_id, 'M'))
 				->fetchOne();
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalSexMales() {
 		return WT_I18N::number($this->totalSexMalesQuery());
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalSexMalesPercentage() {
 		return $this->getPercentage($this->totalSexMalesQuery(), 'individual');
 	}
 
+	/**
+	 * @return integer
+	 */
 	private function totalSexFemalesQuery() {
 		return
-			WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##individuals` WHERE i_file=? AND i_sex=?")
+			(int)WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##individuals` WHERE i_file=? AND i_sex=?")
 				->execute(array($this->tree->tree_id, 'F'))
 				->fetchOne();
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalSexFemales() {
 		return WT_I18N::number($this->totalSexFemalesQuery());
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalSexFemalesPercentage() {
 		return $this->getPercentage($this->totalSexFemalesQuery(), 'individual');
 	}
 
+	/**
+	 * @return integer
+	 */
 	private function totalSexUnknownQuery() {
 		return
-			WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##individuals` WHERE i_file=? AND i_sex=?")
+			(int)WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##individuals` WHERE i_file=? AND i_sex=?")
 				->execute(array($this->tree->tree_id, 'U'))
 				->fetchOne();
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalSexUnknown() {
 		return WT_I18N::number($this->totalSexUnknownQuery());
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalSexUnknownPercentage() {
 		return $this->getPercentage($this->totalSexUnknownQuery(), 'individual');
 	}
 
+	/**
+	 * @return string
+	 */
 	public function chartSex($params = null) {
 		global $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 
@@ -690,41 +825,63 @@ class WT_Stats {
 		}
 	}
 
-	// The totalLiving/totalDeceased queries assume that every dead person will
-	// have a DEAT record.  It will not include individuals who were born more
-	// than MAX_ALIVE_AGE years ago, and who have no DEAT record.
-	// A good reason to run the “Add missing DEAT records” batch-update!
-	// However, SQL cannot provide the same logic used by Person::isDead().
+	/**
+	 * The totalLiving/totalDeceased queries assume that every dead person will
+	 * have a DEAT record.  It will not include individuals who were born more
+	 * than MAX_ALIVE_AGE years ago, and who have no DEAT record.
+	 * A good reason to run the “Add missing DEAT records” batch-update!
+	 * However, SQL cannot provide the same logic used by Person::isDead().
+	 *
+	 * @return integer
+	 */
 	private function totalLivingQuery() {
 		return
-			WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##individuals` WHERE i_file=? AND i_gedcom NOT REGEXP '\\n1 (" . WT_EVENTS_DEAT . ")'")
+			(int)WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##individuals` WHERE i_file=? AND i_gedcom NOT REGEXP '\\n1 (" . WT_EVENTS_DEAT . ")'")
 				->execute(array($this->tree->tree_id))
 				->fetchOne();
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalLiving() {
 		return WT_I18N::number($this->totalLivingQuery());
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalLivingPercentage() {
 		return $this->getPercentage($this->totalLivingQuery(), 'individual');
 	}
 
+	/**
+	 * @return integer
+	 */
 	private function totalDeceasedQuery() {
 		return
-			WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##individuals` WHERE i_file=? AND i_gedcom REGEXP '\\n1 (" . WT_EVENTS_DEAT . ")'")
+			(int)WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##individuals` WHERE i_file=? AND i_gedcom REGEXP '\\n1 (" . WT_EVENTS_DEAT . ")'")
 				->execute(array($this->tree->tree_id))
 				->fetchOne();
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalDeceased() {
 		return WT_I18N::number($this->totalDeceasedQuery());
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalDeceasedPercentage() {
 		return $this->getPercentage($this->totalDeceasedQuery(), 'individual');
 	}
 
+	/**
+	 * @return string
+	 */
 	public function chartMortality($params = null) {
 		global $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 
@@ -763,27 +920,41 @@ class WT_Stats {
 				WT_I18N::translate('Dead') . ' - ' . $per_d . '|';
 			$chart_title = WT_I18N::translate('Living') . ' - ' . $per_l . WT_I18N::$list_separator .
 				WT_I18N::translate('Dead') . ' - ' . $per_d;
+
 			return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_living},{$color_dead}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . $chart_title . "\" title=\"" . $chart_title . "\" />";
 		}
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalUsers($params = null) {
 		if (!empty($params[0])) {
 			$total = count(User::all()) + (int)$params[0];
 		} else {
 			$total = count(User::all());
 		}
+
 		return WT_I18N::number($total);
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalAdmins() {
 		return WT_I18N::number(count(User::allAdmins()));
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalNonAdmins() {
 		return WT_I18N::number(count(User::all()) - count(User::allAdmins()));
 	}
 
+	/**
+	 * @return integer
+	 */
 	private function totalMediaType($type = 'all') {
 		if (!in_array($type, $this->_media_types) && $type != 'all' && $type != 'unknown') {
 			return 0;
@@ -805,89 +976,153 @@ class WT_Stats {
 				$vars[] = "%1 _TYPE {$type}%";
 			}
 		}
-		return WT_DB::prepare($sql)->execute($vars)->fetchOne();
+
+		return (int)WT_DB::prepare($sql)->execute($vars)->fetchOne();
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalMedia() {
 		return WT_I18N::number($this->totalMediaType('all'));
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalMediaAudio() {
 		return WT_I18N::number($this->totalMediaType('audio'));
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalMediaBook() {
 		return WT_I18N::number($this->totalMediaType('book'));
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalMediaCard() {
 		return WT_I18N::number($this->totalMediaType('card'));
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalMediaCertificate() {
 		return WT_I18N::number($this->totalMediaType('certificate'));
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalMediaCoatOfArms() {
 		return WT_I18N::number($this->totalMediaType('coat'));
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalMediaDocument() {
 		return WT_I18N::number($this->totalMediaType('document'));
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalMediaElectronic() {
 		return WT_I18N::number($this->totalMediaType('electronic'));
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalMediaMagazine() {
 		return WT_I18N::number($this->totalMediaType('magazine'));
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalMediaManuscript() {
 		return WT_I18N::number($this->totalMediaType('manuscript'));
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalMediaMap() {
 		return WT_I18N::number($this->totalMediaType('map'));
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalMediaFiche() {
 		return WT_I18N::number($this->totalMediaType('fiche'));
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalMediaFilm() {
 		return WT_I18N::number($this->totalMediaType('film'));
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalMediaNewspaper() {
 		return WT_I18N::number($this->totalMediaType('newspaper'));
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalMediaPainting() {
 		return WT_I18N::number($this->totalMediaType('painting'));
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalMediaPhoto() {
 		return WT_I18N::number($this->totalMediaType('photo'));
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalMediaTombstone() {
 		return WT_I18N::number($this->totalMediaType('tombstone'));
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalMediaVideo() {
 		return WT_I18N::number($this->totalMediaType('video'));
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalMediaOther() {
 		return WT_I18N::number($this->totalMediaType('other'));
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalMediaUnknown() {
 		return WT_I18N::number($this->totalMediaType('unknown'));
 	}
 
+	/**
+	 * @return string
+	 */
 	public function chartMedia($params = null) {
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 
@@ -897,7 +1132,7 @@ class WT_Stats {
 		if (isset($params[0]) && $params[0] != '') {
 			$size = strtolower($params[0]);
 		} else {
-			$size = $WT_STATS_S_CHART_X . "x" . $WT_STATS_S_CHART_Y;
+			$size = $WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
 		}
 		if (isset($params[1]) && $params[1] != '') {
 			$color_from = strtolower($params[1]);
@@ -961,13 +1196,15 @@ class WT_Stats {
 		$chart_title = substr($chart_title, 0, -2);
 		$chd = $this->arrayToExtendedEncoding($mediaCounts);
 		$chl = substr($mediaTypes, 0, -1);
+
 		return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . $chart_title . "\" title=\"" . $chart_title . "\" />";
 	}
 
-///////////////////////////////////////////////////////////////////////////////
-// Birth & Death                                                             //
-///////////////////////////////////////////////////////////////////////////////
-
+	/**
+	 * Birth & Death
+	 *
+	 * @return string
+	 */
 	private function mortalityQuery($type = 'full', $life_dir = 'ASC', $birth_death = 'BIRT') {
 		if ($birth_death == 'MARR') {
 			$query_field = "'MARR'";
@@ -1022,6 +1259,7 @@ class WT_Stats {
 			}
 			break;
 		}
+
 		return $result;
 	}
 
@@ -1031,7 +1269,7 @@ class WT_Stats {
 	 * @param integer $parent
 	 * @param boolean $country
 	 *
-	 * @return array|null|stdClass|string
+	 * @return array|string
 	 */
 	public function statsPlaces($what = 'ALL', $fact = '', $parent = 0, $country = false) {
 		if ($fact) {
@@ -1117,17 +1355,26 @@ class WT_Stats {
 		}
 	}
 
+	/**
+	 * @return integer
+	 */
 	private function totalPlacesQuery() {
 		return
-			WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##places` WHERE p_file=?")
+			(int)WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##places` WHERE p_file=?")
 				->execute(array($this->tree->tree_id))
 				->fetchOne();
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalPlaces() {
 		return WT_I18n::number($this->totalPlacesQuery());
 	}
 
+	/**
+	 * @return string
+	 */
 	public function chartDistribution($params = null) {
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_CHART_COLOR3, $WT_STATS_MAP_X, $WT_STATS_MAP_Y;
 
@@ -1272,6 +1519,9 @@ class WT_Stats {
 		return $chart;
 	}
 
+	/**
+	 * @return string
+	 */
 	public function commonCountriesList() {
 		$countries = $this->statsPlaces();
 		if (!is_array($countries)) {
@@ -1318,6 +1568,9 @@ class WT_Stats {
 		return '<ul>' . $top10 . '</ul>';
 	}
 
+	/**
+	 * @return string
+	 */
 	public function commonBirthPlacesList() {
 		$places = $this->statsPlaces('INDI', 'BIRT');
 		$top10 = array();
@@ -1335,6 +1588,9 @@ class WT_Stats {
 		return '<ul>' . $top10 . '</ul>';
 	}
 
+	/**
+	 * @return string
+	 */
 	public function commonDeathPlacesList() {
 		$places = $this->statsPlaces('INDI', 'DEAT');
 		$top10 = array();
@@ -1352,6 +1608,9 @@ class WT_Stats {
 		return '<ul>' . $top10 . '</ul>';
 	}
 
+	/**
+	 * @return string
+	 */
 	public function commonMarriagePlacesList() {
 		$places = $this->statsPlaces('FAM', 'MARR');
 		$top10 = array();
