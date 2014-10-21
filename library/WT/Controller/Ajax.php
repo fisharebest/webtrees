@@ -20,6 +20,9 @@
 
 class WT_Controller_Ajax extends WT_Controller_Base {
 
+	/**
+	 * @return $this
+	 */
 	public function pageHeader() {
 		// We have finished writing session data, so release the lock
 		Zend_Session::writeClose();
@@ -29,13 +32,22 @@ class WT_Controller_Ajax extends WT_Controller_Base {
 		return $this;
 	}
 
+	/**
+	 * @return $this
+	 */
 	public function pageFooter() {
 		// Ajax responses may have Javascript
 		echo $this->getJavascript();
 		return $this;
 	}
 
-	// Restrict access
+	/**
+	 * Restrict access.
+	 *
+	 * @param boolean $condition
+	 *
+	 * @return $this
+	 */
 	public function restrictAccess($condition) {
 		if ($condition !== true) {
 			header('HTTP/1.0 403 Access Denied');

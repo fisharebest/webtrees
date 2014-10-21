@@ -35,6 +35,10 @@ use WT\User;
  * Used in custom theme headers...
  *
  * @deprecated
+ *
+ * @param $user_id
+ *
+ * @return string
  */
 function getUserFullName($user_id) {
 	return User::find($user_id)->getRealName();
@@ -186,12 +190,22 @@ function addMessage($message) {
 	return $success;
 }
 
-//-- deletes a message in the database
+/**
+ * Deletes a message in the database.
+ *
+ * @param integer $message_id
+ */
 function deleteMessage($message_id) {
 	WT_DB::prepare("DELETE FROM `##message` WHERE message_id=?")->execute(array($message_id));
 }
 
-//-- Return an array of a users messages
+/**
+ * Return an array of a users messages.
+ *
+ * @param integer $user_id
+ *
+ * @return stdClass[]
+ */
 function getUserMessages($user_id) {
 	return
 		WT_DB::prepare("SELECT message_id, sender, subject, body, UNIX_TIMESTAMP(created) AS created FROM `##message` WHERE user_id=? ORDER BY message_id DESC")
@@ -229,7 +243,13 @@ function deleteNews($news_id) {
 	return (bool)WT_DB::prepare("DELETE FROM `##news` WHERE news_id=?")->execute(array($news_id));
 }
 
-// Gets the news items for the given user or gedcom
+/**
+ * Gets the news items for the given user or gedcom.
+ *
+ * @param integer $user_id
+ *
+ * @return string[][]
+ */
 function getUserNews($user_id) {
 	$rows =
 		WT_DB::prepare("SELECT SQL_CACHE news_id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) AS updated, subject, body FROM `##news` WHERE user_id=? ORDER BY updated DESC")
@@ -251,6 +271,11 @@ function getUserNews($user_id) {
 	return $news;
 }
 
+/**
+ * @param integer $gedcom_id
+ *
+ * @return string[][]
+ */
 function getGedcomNews($gedcom_id) {
 	$rows=
 		WT_DB::prepare("SELECT SQL_CACHE news_id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) AS updated, subject, body FROM `##news` WHERE gedcom_id=? ORDER BY updated DESC")
