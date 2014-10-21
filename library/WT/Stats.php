@@ -1279,7 +1279,7 @@ class WT_Stats {
 	 * @param integer $parent
 	 * @param boolean $country
 	 *
-	 * @return string[]
+	 * @return integer[]
 	 */
 	public function statsPlaces($what = 'ALL', $fact = '', $parent = 0, $country = false) {
 		if ($fact) {
@@ -1873,6 +1873,8 @@ class WT_Stats {
 	}
 
 	/**
+	 * @param string[] $params
+	 *
 	 * @return string
 	 */
 	public function statsBirth($params = array()) {
@@ -1936,16 +1938,22 @@ class WT_Stats {
 	}
 
 	/**
+	 * @param string[] $params
+	 *
 	 * @return string
 	 */
 	public function statsDeath($params = array()) {
 		return $this->statsDeathQuery(true, false, -1, -1, $params);
 	}
 
-///////////////////////////////////////////////////////////////////////////////
-// Lifespan                                                                  //
-///////////////////////////////////////////////////////////////////////////////
-
+	/**
+	 * Lifespan
+	 *
+	 * @param string $type
+	 * @param string $sex
+	 *
+	 * @return string
+	 */
 	private function longlifeQuery($type = 'full', $sex = 'F') {
 		$sex_search = ' 1=1';
 		if ($sex == 'F') {
@@ -2000,6 +2008,13 @@ class WT_Stats {
 		return $result;
 	}
 
+	/**
+	 * @param string   $type
+	 * @param string   $sex
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	private function topTenOldestQuery($type = 'list', $sex = 'BOTH', $params = array()) {
 		global $TEXT_DIRECTION;
 
@@ -2075,6 +2090,13 @@ class WT_Stats {
 		return $top10;
 	}
 
+	/**
+	 * @param string   $type
+	 * @param string   $sex
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	private function topTenOldestAliveQuery($type = 'list', $sex = 'BOTH', $params = array()) {
 		global $TEXT_DIRECTION;
 
@@ -2112,9 +2134,6 @@ class WT_Stats {
 			" ORDER BY age" .
 			" ASC LIMIT " . $total
 		);
-		if (!isset($rows)) {
-			return 0;
-		}
 		$top10 = array();
 		foreach ($rows as $row) {
 			$person = WT_Individual::getInstance($row['id']);
@@ -2147,6 +2166,12 @@ class WT_Stats {
 		return $top10;
 	}
 
+	/**
+	 * @param string $sex
+	 * @param bool   $show_years
+	 *
+	 * @return string
+	 */
 	private function averageLifespanQuery($sex = 'BOTH', $show_years = false) {
 		if ($sex == 'F') {
 			$sex_search = " AND i_sex='F' ";
@@ -2193,6 +2218,16 @@ class WT_Stats {
 		}
 	}
 
+	/**
+	 * @param boolean  $simple
+	 * @param string   $related
+	 * @param string   $sex
+	 * @param integer  $year1
+	 * @param integer  $year2
+	 * @param string[] $params
+	 *
+	 * @return array|string
+	 */
 	public function statsAgeQuery($simple = true, $related = 'BIRT', $sex = 'BOTH', $year1 = -1, $year2 = -1, $params = array()) {
 		if ($simple) {
 			if (isset($params[0]) && $params[0] != '') {
@@ -2321,114 +2356,214 @@ class WT_Stats {
 				$years .
 				$sex_search .
 				" ORDER BY age DESC");
-			if (!isset($rows)) {
-				return 0;
-			}
+
 			return $rows;
 		}
 	}
 
-	// Both Sexes
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function statsAge($params = array()) {
 		return $this->statsAgeQuery(true, 'BIRT', 'BOTH', -1, -1, $params);
 	}
 
+	/**
+	 * @return string
+	 */
 	public function longestLife() {
 		return $this->longlifeQuery('full', 'BOTH');
 	}
 
+	/**
+	 * @return string
+	 */
 	public function longestLifeAge() {
 		return $this->longlifeQuery('age', 'BOTH');
 	}
 
+	/**
+	 * @return string
+	 */
 	public function longestLifeName() {
 		return $this->longlifeQuery('name', 'BOTH');
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function topTenOldest($params = array()) {
 		return $this->topTenOldestQuery('nolist', 'BOTH', $params);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function topTenOldestList($params = array()) {
 		return $this->topTenOldestQuery('list', 'BOTH', $params);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function topTenOldestAlive($params = array()) {
 		return $this->topTenOldestAliveQuery('nolist', 'BOTH', $params);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function topTenOldestListAlive($params = array()) {
 		return $this->topTenOldestAliveQuery('list', 'BOTH', $params);
 	}
 
+	/**
+	 * @param bool $show_years
+	 *
+	 * @return string
+	 */
 	public function averageLifespan($show_years = false) {
 		return $this->averageLifespanQuery('BOTH', $show_years);
 	}
 
-	// Female Only
-
+	/**
+	 * @return string
+	 */
 	public function longestLifeFemale() {
 		return $this->longlifeQuery('full', 'F');
 	}
 
+	/**
+	 * @return string
+	 */
 	public function longestLifeFemaleAge() {
 		return $this->longlifeQuery('age', 'F');
 	}
 
+	/**
+	 * @return string
+	 */
 	public function longestLifeFemaleName() {
 		return $this->longlifeQuery('name', 'F');
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function topTenOldestFemale($params = array()) {
 		return $this->topTenOldestQuery('nolist', 'F', $params);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function topTenOldestFemaleList($params = array()) {
 		return $this->topTenOldestQuery('list', 'F', $params);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function topTenOldestFemaleAlive($params = array()) {
 		return $this->topTenOldestAliveQuery('nolist', 'F', $params);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function topTenOldestFemaleListAlive($params = array()) {
 		return $this->topTenOldestAliveQuery('list', 'F', $params);
 	}
 
+	/**
+	 * @param bool $show_years
+	 *
+	 * @return string
+	 */
 	public function averageLifespanFemale($show_years = false) {
 		return $this->averageLifespanQuery('F', $show_years);
 	}
 
-	// Male Only
-
+	/**
+	 * @return string
+	 */
 	public function longestLifeMale() {
 		return $this->longlifeQuery('full', 'M');
 	}
 
+	/**
+	 * @return string
+	 */
 	public function longestLifeMaleAge() {
 		return $this->longlifeQuery('age', 'M');
 	}
 
+	/**
+	 * @return string
+	 */
 	public function longestLifeMaleName() {
 		return $this->longlifeQuery('name', 'M');
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function topTenOldestMale($params = array()) {
 		return $this->topTenOldestQuery('nolist', 'M', $params);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function topTenOldestMaleList($params = array()) {
 		return $this->topTenOldestQuery('list', 'M', $params);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function topTenOldestMaleAlive($params = array()) {
 		return $this->topTenOldestAliveQuery('nolist', 'M', $params);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function topTenOldestMaleListAlive($params = array()) {
 		return $this->topTenOldestAliveQuery('list', 'M', $params);
 	}
 
+	/**
+	 * @param bool $show_years
+	 *
+	 * @return string
+	 */
 	public function averageLifespanMale($show_years = false) {
 		return $this->averageLifespanQuery('M', $show_years);
 	}
