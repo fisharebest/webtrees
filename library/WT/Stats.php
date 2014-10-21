@@ -273,10 +273,7 @@ class WT_Stats {
 	 * @return string
 	 */
 	public function gedcomRootID() {
-		$root = WT_Individual::getInstance($this->tree->getPreference('PEDIGREE_ROOT_ID'));
-		$root = substr($root, 0, stripos($root, "@"));
-
-		return $root;
+		return $this->tree->getPreference('PEDIGREE_ROOT_ID');
 	}
 
 	/**
@@ -573,6 +570,9 @@ class WT_Stats {
 	}
 
 	/**
+	 * Count the number of distinct given names, or count the number of
+	 * occurrences of a specific name or names.
+	 *
 	 * @param string[] $params
 	 *
 	 * @return string
@@ -580,19 +580,17 @@ class WT_Stats {
 	public function totalGivennames($params = array()) {
 		if ($params) {
 			$qs = implode(',', array_fill(0, count($params), '?'));
-			$opt = "IN ({$qs})";
-			$vars = $params;
-			$distinct = '';
+			$params[] = $this->tree->tree_id;
+			$total =
+				WT_DB::prepare("SELECT SQL_CACHE COUNT( n_givn) FROM `##name` WHERE n_givn IN ({$qs}) AND n_file=?")
+					->execute($params)
+					->fetchOne();
 		} else {
-			$opt = "IS NOT NULL";
-			$vars = '';
-			$distinct = 'DISTINCT';
+			$total =
+				WT_DB::prepare("SELECT SQL_CACHE COUNT(DISTINCT n_givn) FROM `##name` WHERE n_givn IS NOT NULL AND n_file=?")
+					->execute(array($this->tree->tree_id))
+					->fetchOne();
 		}
-		$vars[] = $this->tree->tree_id;
-		$total =
-			WT_DB::prepare("SELECT SQL_CACHE COUNT({$distinct} n_givn) FROM `##name` WHERE n_givn {$opt} AND n_file=?")
-				->execute($vars)
-				->fetchOne();
 
 		return WT_I18N::number($total);
 	}
@@ -1281,7 +1279,7 @@ class WT_Stats {
 	 * @param integer $parent
 	 * @param boolean $country
 	 *
-	 * @return array|string
+	 * @return string[]
 	 */
 	public function statsPlaces($what = 'ALL', $fact = '', $parent = 0, $country = false) {
 		if ($fact) {
@@ -1312,6 +1310,7 @@ class WT_Stats {
 					}
 				}
 			}
+
 			return $placelist;
 		} elseif ($parent > 0) {
 			// used by placehierarchy googlemap module
@@ -1335,6 +1334,7 @@ class WT_Stats {
 				" p_file={$this->tree->tree_id}" .
 				" GROUP BY place"
 			);
+
 			return $rows;
 		} else {
 			if ($what == 'INDI') {
@@ -1357,6 +1357,7 @@ class WT_Stats {
 				" AND p_parent_id='0'" .
 				" GROUP BY country ORDER BY tot DESC, country ASC"
 			);
+
 			return $rows;
 		}
 	}
@@ -3596,9 +3597,7 @@ class WT_Stats {
 			return '';
 		}
 		$top10 = array();
-		if ($one) {
-			$dist = array();
-		}
+		$dist  = array();
 		foreach ($rows as $fam) {
 			$family = WT_Family::getInstance($fam['family']);
 			$child1 = WT_Individual::getInstance($fam['ch1']);
@@ -4337,7 +4336,8 @@ class WT_Stats {
 		$chl = array();
 		foreach ($all_surnames as $surns) {
 			$count_per = 0;
-			$max_name = 0;
+			$max_name  = 0;
+			$top_name  = '';
 			foreach ($surns as $spfxsurn => $indis) {
 				$per = count($indis);
 				$count_per += $per;
