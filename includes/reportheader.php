@@ -98,6 +98,9 @@ function characterData($parser, $data) {
 	$text .= $data;
 }
 
+/**
+ * @param string[] $attrs
+ */
 function ReportSHandler($attrs) {
 	global $report_array;
 
@@ -116,6 +119,9 @@ function ReportSHandler($attrs) {
 	}
 }
 
+/**
+ * @param string[] $attrs
+ */
 function varSHandler($attrs) {
 	global $text, $fact, $desc, $type;
 
@@ -153,6 +159,9 @@ function DescriptionEHandler() {
 	$text = "";
 }
 
+/**
+ * @param string[] $attrs
+ */
 function InputSHandler($attrs) {
 	global $input, $text;
 

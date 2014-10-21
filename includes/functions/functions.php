@@ -263,9 +263,14 @@ function get_cont($nlevel, $nrec) {
 	return rtrim($text, " ");
 }
 
-////////////////////////////////////////////////////////////////////////////////
-// Sort a list events for the today/upcoming blocks
-////////////////////////////////////////////////////////////////////////////////
+/**
+ * Sort a list events for the today/upcoming blocks
+ *
+ * @param array $a
+ * @param array $b
+ *
+ * @return integer
+ */
 function event_sort($a, $b) {
 	if ($a['jd'] == $b['jd']) {
 		if ($a['anniv'] == $b['anniv']) {
@@ -278,6 +283,14 @@ function event_sort($a, $b) {
 	}
 }
 
+/**
+ * Sort a list events for the today/upcoming blocks
+ *
+ * @param array $a
+ * @param array $b
+ *
+ * @return integer
+ */
 function event_sort_name($a, $b) {
 	if ($a['jd'] == $b['jd']) {
 		return WT_GedcomRecord::compare($a['record'], $b['record']);
@@ -342,10 +355,17 @@ function sort_facts(&$arr) {
 
 }
 
-// For close family relationships, such as the families tab and the family navigator
-// Display a tick if both individuals are the same.
-// Stop after 3 steps, because pending edits may mean that there is no longer a
-// relationship to find.
+/**
+ * For close family relationships, such as the families tab and the family navigator
+ * Display a tick if both individuals are the same.
+ * Stop after 3 steps, because pending edits may mean that there is no longer a
+ * relationship to find.
+ *
+ * @param WT_Individual $person1
+ * @param WT_Individual $person2
+ *
+ * @return string
+ */
 function get_close_relationship_name(WT_Individual $person1, WT_Individual $person2) {
 	if ($person1 === $person2) {
 		$label = '<i class="icon-selected" title="' . WT_I18N::translate('self') . '"></i>';
@@ -356,9 +376,16 @@ function get_close_relationship_name(WT_Individual $person1, WT_Individual $pers
 	return $label;
 }
 
-// For facts on the individual/family pages.
-// Stop after 4 steps, as distant relationships may take a long time to find.
-// TODO review the limit of 4 when the performance of the function is improved
+/**
+ * For facts on the individual/family pages.
+ * Stop after 4 steps, as distant relationships may take a long time to find.
+ * Review the limit of 4 if/when the performance of the function is improved.
+ *
+ * @param WT_Individual $person1
+ * @param WT_Individual $person2
+ *
+ * @return string
+ */
 function get_associate_relationship_name(WT_Individual $person1, WT_Individual $person2) {
 	if ($person1 === $person2) {
 		$label = WT_I18N::translate('self');
@@ -564,7 +591,13 @@ function get_relationship(WT_Individual $person1, WT_Individual $person2, $follo
 	return $resnode;
 }
 
-// Convert the result of get_relationship() into a relationship name.
+/**
+ * Convert the result of get_relationship() into a relationship name.
+ *
+ * @param mixed[][] $nodes
+ *
+ * @return string
+ */
 function get_relationship_name($nodes) {
 	if (!is_array($nodes)) {
 		return '';
@@ -2297,7 +2330,7 @@ function get_relationship_name_from_path($path, WT_Individual $person1 = null, W
  *
  * @throws Exception
  *
- * @return array An array of theme names and their corresponding folder
+ * @return string[] An array of theme names and their corresponding folder
  */
 function get_theme_names() {
 	static $themes;
@@ -2364,7 +2397,14 @@ function get_query_url($overwrite = null, $separator = '&') {
 	}
 }
 
-// Generate a new XREF, unique across all family trees
+/**
+ * Generate a new XREF, unique across all family trees
+ *
+ * @param string  $type
+ * @param integer $ged_id
+ *
+ * @return string
+ */
 function get_new_xref($type = 'INDI', $ged_id = WT_GED_ID) {
 	global $SOURCE_ID_PREFIX, $REPO_ID_PREFIX, $MEDIA_ID_PREFIX, $FAM_ID_PREFIX, $GEDCOM_ID_PREFIX, $NOTE_ID_PREFIX;
 

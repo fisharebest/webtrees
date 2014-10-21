@@ -514,7 +514,7 @@ class WT_I18N {
 	 *
 	 * @todo Does Nesbot\Carbon do this for us?
 	 */
-	public static function time_ago($seconds) {
+	public static function timeAgo($seconds) {
 		$minute = 60;
 		$hour   = 60 * $minute;
 		$day    = 24 * $hour;

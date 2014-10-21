@@ -32,15 +32,6 @@ class FunctionsDateTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * Test that function parse_time() exists in the global namespace.
-	 *
-	 * @return void
-	 */
-	public function testFunctionParseTimeExists() {
-		$this->assertEquals(function_exists('\\parse_time'), true);
-	}
-
-	/**
 	 * Test that function format_timestamp() exists in the global namespace.
 	 *
 	 * @return void

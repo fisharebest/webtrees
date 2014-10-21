@@ -62,26 +62,6 @@ function get_age_at_event($age_string, $show_years) {
 }
 
 /**
- * Parse a time string into its different parts
- *
- * @param string $timestr the time as it was taken from the TIME tag
- *
- * @return array returns an array with the hour, minutes, and seconds
- */
-function parse_time($timestr)
-{
-	$time = explode(':', $timestr.':0:0');
-	$time[0] = min(((int) $time[0]), 23); // Hours: integer, 0 to 23
-	$time[1] = min(((int) $time[1]), 59); // Minutes: integer, 0 to 59
-	$time[2] = min(((int) $time[2]), 59); // Seconds: integer, 0 to 59
-	$time["hour"] = $time[0];
-	$time["minutes"] = $time[1];
-	$time["seconds"] = $time[2];
-
-	return $time;
-}
-
-/**
  * Convert a unix timestamp into a formated date-time value, for logs, etc.
  * We can’t just use date("$DATE_FORMAT- $TIME_FORMAT") as this doesn't
  * support internationalisation.

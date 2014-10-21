@@ -19,6 +19,9 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 class WT_Soundex {
+	/**
+	 * @return string[]
+	 */
 	public static function getAlgorithms() {
 		return array(
 			'std' => /* I18N: http://en.wikipedia.org/wiki/Soundex */                 WT_I18N::translate('Russell'),
@@ -26,6 +29,12 @@ class WT_Soundex {
 		);
 	}
 
+	/**
+	 * @param string $algorithm
+	 * @param string $text
+	 *
+	 * @return string
+	 */
 	public static function soundex($algorithm, $text) {
 		switch ($algorithm) {
 		case 'std': return self::soundex_std($text);

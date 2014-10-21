@@ -118,7 +118,7 @@ class WT_Controller_Branches extends WT_Controller_Page {
 			$this->individuals[] = WT_Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 		}
 		// Sort by birth date, oldest first
-		usort($this->individuals, array('WT_Individual', 'CompareBirtDate'));
+		usort($this->individuals, array('WT_Individual', 'compareBirthDate'));
 	}
 
 	/**

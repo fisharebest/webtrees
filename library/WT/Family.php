@@ -372,7 +372,7 @@ class WT_Family extends WT_GedcomRecord {
 	/**
 	 * {@inheritdoc}
 	 */
-	function format_list_details() {
+	function formatListDetails() {
 		return
 			$this->format_first_major_fact(WT_EVENTS_MARR, 1) .
 			$this->format_first_major_fact(WT_EVENTS_DIV, 1);

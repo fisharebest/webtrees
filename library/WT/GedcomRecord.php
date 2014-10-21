@@ -508,12 +508,12 @@ class WT_GedcomRecord {
 	 * @param string $value
 	 * @param string $gedcom
 	 */
-	protected function _addName($type, $value, $gedcom) {
-		$this->_getAllNames[]=array(
-			'type'=>$type,
-			'sort'=>preg_replace_callback('/([0-9]+)/', function($matches) { return str_pad($matches[0], 10, '0', STR_PAD_LEFT); }, $value),
-			'full'=>'<span dir="auto">'.WT_Filter::escapeHtml($value).'</span>',    // This is used for display
-			'fullNN'=>$value, // This goes into the database
+	protected function addName($type, $value, $gedcom) {
+		$this->_getAllNames[] = array(
+			'type'   => $type,
+			'sort'   => preg_replace_callback('/([0-9]+)/', function($matches) { return str_pad($matches[0], 10, '0', STR_PAD_LEFT); }, $value),
+			'full'   => '<span dir="auto">'.WT_Filter::escapeHtml($value).'</span>',    // This is used for display
+			'fullNN' => $value, // This goes into the database
 		);
 	}
 
@@ -538,13 +538,13 @@ class WT_GedcomRecord {
 				foreach ($matches as $match) {
 					// Treat 1 NAME / 2 TYPE married the same as _MARNM
 					if ($match[1]=='NAME' && strpos($match[3], "\n2 TYPE married")!==false) {
-						$this->_addName('_MARNM', $match[2], $fact->getGedcom());
+						$this->addName('_MARNM', $match[2], $fact->getGedcom());
 					} else {
-						$this->_addName($match[1], $match[2], $fact->getGedcom());
+						$this->addName($match[1], $match[2], $fact->getGedcom());
 					}
 					if ($match[3] && preg_match_all("/^{$sublevel} (ROMN|FONE|_\w+) (.+)((\n[{$subsublevel}-9].+)*)/m", $match[3], $submatches, PREG_SET_ORDER)) {
 						foreach ($submatches as $submatch) {
-							$this->_addName($submatch[1], $submatch[2], $match[3]);
+							$this->addName($submatch[1], $submatch[2], $match[3]);
 						}
 					}
 				}
@@ -556,7 +556,7 @@ class WT_GedcomRecord {
 	 * Default for "other" object types
 	 */
 	public function extractNames() {
-		$this->_addName(static::RECORD_TYPE, $this->getFallBackName(), null);
+		$this->addName(static::RECORD_TYPE, $this->getFallBackName(), null);
 	}
 
 	/**
@@ -572,10 +572,10 @@ class WT_GedcomRecord {
 				$this->extractNames();
 				// No name found?  Use a fallback.
 				if (!$this->_getAllNames) {
-					$this->_addName(static::RECORD_TYPE, $this->getFallBackName(), null);
+					$this->addName(static::RECORD_TYPE, $this->getFallBackName(), null);
 				}
 			} else {
-				$this->_addName(static::RECORD_TYPE, WT_I18N::translate('Private'), null);
+				$this->addName(static::RECORD_TYPE, WT_I18N::translate('Private'), null);
 			}
 		}
 		return $this->_getAllNames;
@@ -775,7 +775,7 @@ class WT_GedcomRecord {
 			$html.=' onclick="pasteid(\''.$this->getXref().'\', \'' . htmlentities($name) . '\');"';
 		}
 		$html.=' class="list_item"><b>'.$name.'</b>';
-		$html.=$this->format_list_details();
+		$html.=$this->formatListDetails();
 		$html='<'.$tag.'>'.$html.'</a></'.$tag.'>';
 		return $html;
 	}
@@ -786,7 +786,7 @@ class WT_GedcomRecord {
 	 *
 	 * @return string
 	 */
-	public function format_list_details() {
+	public function formatListDetails() {
 		return '';
 	}
 
