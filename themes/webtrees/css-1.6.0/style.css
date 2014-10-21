@@ -389,6 +389,7 @@ a:hover .nameZoom {
 	font-weight: bold;
 }
 
+a.edit-changes-link,
 .error {
 	color: #d00;
 	font-weight: bold;

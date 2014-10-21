@@ -1168,6 +1168,8 @@ span.error {
 	color: #f50;
 }
 
+.makeMenu li .edit-changes-link,
+a.edit-changes-link,
 .error,
 .warning,
 .red,
@@ -1855,6 +1857,7 @@ a:hover .nameZoom {
 	font-weight: bold;
 }
 
+#footer .edit-changes-link,
 .error,
 .largeError {
 	font-weight: bold;

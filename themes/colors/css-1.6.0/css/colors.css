@@ -1121,6 +1121,8 @@ span.title {
 	margin: 12px 0;
 	}
 
+.makeMenu li .edit-changes-link,
+a.edit-changes-link,
 #content .center a.warning,
 #login-box span.error,
 #calendar-page span.error {

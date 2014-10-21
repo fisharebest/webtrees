@@ -480,6 +480,13 @@ function print_fact_notes($factrec, $level, $textOnly=false) {
 	return $data;
 }
 
+function edit_changes_link($text = NULL) {
+	if (!$text) {
+		$text = WT_I18N::translate('Pending changes');
+	}
+	return '<a class="edit-changes-link" href="#" onclick="return edit_changes()">' . $text . '</a>';
+}
+
 // Print a link for a popup help window
 function help_link($help_topic, $module='') {
 	return '<span class="icon-help" onclick="helpDialog(\''.$help_topic.'\',\''.$module.'\'); return false;">&nbsp;</span>';

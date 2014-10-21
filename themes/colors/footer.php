@@ -39,9 +39,7 @@ if ($view!='simple') {
 		echo execution_stats();
 	}
 	if (exists_pending_change()) {
-		echo '<a href="#" onclick="window.open(\'edit_changes.php\', \'_blank\', chan_window_specs); return false;">';
-		echo '<p class="error center">', WT_I18N::translate('There are pending changes for you to moderate.'), '</p>';
-		echo '</a>';
+		echo '<p class="center">', edit_changes_link(WT_I18N::translate('There are pending changes for you to moderate.')), '</p>';
 	}
 	echo '</div>'; // <div id="footer">
 }
