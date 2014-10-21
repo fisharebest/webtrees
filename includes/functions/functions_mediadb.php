@@ -23,21 +23,31 @@
 
 use WT\Log;
 
-// converts raw values from php.ini file into bytes
-// from http://www.php.net/manual/en/function.ini-get.php
+/**
+ * Convert raw values from php.ini file into bytes
+ *
+ * @param string $val
+ *
+ * @return integer
+ */
 function return_bytes($val) {
 	if (!$val) {
 		// no value was passed in, assume no limit and return -1
 		$val = -1;
 	}
-	$val = trim($val);
-	$last = strtolower($val{strlen($val)-1});
-	switch($last) {
-		case 'g': $val *= 1024;  // fallthrough
-		case 'm': $val *= 1024;  // fallthrough
-		case 'k': $val *= 1024;
+	switch (substr($val, -1)) {
+	case 'g':
+	case 'G':
+		return (int)$val * 1024 * 1024 * 1024;
+	case 'm':
+	case 'M':
+		return (int)$val * 1024 * 1024;
+	case 'k':
+	case 'K':
+		return (int)$val * 1024;
+	default:
+		return (int)$val;
 	}
-	return $val;
 }
 
 // attempts to determine whether there is enough memory to load a particular image
