@@ -75,7 +75,7 @@ class WT_Gedcom_Code_Adop {
 	 *
 	 * @param null WT_GedcomRecord|null $record
 	 *
-	 * @return array
+	 * @return string[]
 	 */
 	public static function getValues(WT_GedcomRecord $record = null) {
 		$values = array();

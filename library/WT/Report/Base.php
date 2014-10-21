@@ -2392,7 +2392,7 @@ function ListSHandler($attrs) {
 					}
 					$sql_where[] = "f_gedcom LIKE " . WT_DB::quote($query);
 				} else {
-					// TODO: what other filters can we apply in SQL?
+					// What other filters can we apply in SQL?
 				}
 			}
 		}
