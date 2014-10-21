@@ -21,7 +21,13 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-// Tidy up a gedcom record on export, for compatibility/portability
+/**
+ * Tidy up a gedcom record on export, for compatibility/portability.
+ *
+ * @param string $rec
+ *
+ * @return string
+ */
 function reformat_record_export($rec) {
 	global $WORD_WRAPPED_NOTES;
 

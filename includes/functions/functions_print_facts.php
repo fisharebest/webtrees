@@ -756,9 +756,12 @@ function print_main_sources(WT_Fact $fact, $level) {
 
 /**
  * Print SOUR structure
- *
  *  This function prints the input array of SOUR sub-records built by the
  *  getSourceStructure() function.
+ *
+ * @param string $textSOUR
+ *
+ * @return string
  */
 function printSourceStructure($textSOUR) {
 	global $WT_TREE;
@@ -794,7 +797,6 @@ function printSourceStructure($textSOUR) {
 
 /**
  * Extract SOUR structure from the incoming Source sub-record
- *
  * The output array is defined as follows:
  *  $textSOUR['PAGE'] = Source citation
  *  $textSOUR['EVEN'] = Event type
@@ -803,6 +805,10 @@ function printSourceStructure($textSOUR) {
  *  $textSOUR['DATE'] = Entry recording date
  *  $textSOUR['TEXT'] = (array) Text from source
  *  $textSOUR['QUAY'] = Certainty assessment
+ *
+ * @param string $srec
+ *
+ * @return string[]
  */
 function getSourceStructure($srec) {
 	// Set up the output array

@@ -23,7 +23,15 @@
 
 use Rhumsaa\Uuid\Uuid;
 
-// Create an edit control for inline editing using jeditable
+/**
+ * Create an edit control for inline editing using jeditable.
+ *
+ * @param string                  $name
+ * @param string                  $value
+ * @param WT_Controller_Base|null $controller
+ *
+ * @return string
+ */
 function edit_field_inline($name, $value, $controller=null) {
 	$html='<span class="editable" id="' . $name . '">' . WT_Filter::escapeHtml($value) . '</span>';
 	$js='jQuery("#' . $name . '").editable("' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'save.php", {submitdata: {csrf: WT_CSRF_TOKEN}, submit:"&nbsp;&nbsp;' . /* I18N: button label */ WT_I18N::translate('save') . '&nbsp;&nbsp;", style:"inherit", placeholder: "'.WT_I18N::translate('click to edit').'"});';
@@ -1136,9 +1144,12 @@ function splitSOUR() {
 /**
  * Add new GEDCOM lines from the $xxxSOUR interface update arrays, which
  * were produced by the splitSOUR() function.
- *
  * See the handle_updates() function for details.
  *
+ * @param string $inputRec
+ * @param string $levelOverride
+ *
+ * @return string
  */
 function updateSOUR($inputRec, $levelOverride = 'no') {
 	global $glevels, $tag, $islink, $text;
@@ -1173,9 +1184,12 @@ function updateSOUR($inputRec, $levelOverride = 'no') {
 /**
  * Add new GEDCOM lines from the $xxxRest interface update arrays, which
  * were produced by the splitSOUR() function.
- *
  * See the handle_updates() function for details.
  *
+ * @param string $inputRec
+ * @param string $levelOverride
+ *
+ * @return string
  */
 function updateRest($inputRec, $levelOverride = 'no') {
 	global $glevels, $tag, $islink, $text;
@@ -1343,7 +1357,14 @@ function create_add_form($fact) {
 	}
 }
 
-// Create a form to edit a WT_Fact object
+/**
+ * Create a form to edit a WT_Fact object.
+ *
+ * @param WT_GedcomRecord $record
+ * @param WT_Fact         $fact
+ *
+ * @return string
+ */
 function create_edit_form(WT_GedcomRecord $record, WT_Fact $fact) {
 	global $ADVANCED_PLAC_FACTS, $date_and_time, $FULL_SOURCES, $tags;
 

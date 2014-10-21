@@ -2364,7 +2364,14 @@ function get_query_url($overwrite = null, $separator = '&') {
 	}
 }
 
-// Generate a new XREF, unique across all family trees
+/**
+ * Generate a new XREF, unique across all family trees
+ *
+ * @param string  $type
+ * @param integer $ged_id
+ *
+ * @return string
+ */
 function get_new_xref($type = 'INDI', $ged_id = WT_GED_ID) {
 	global $SOURCE_ID_PREFIX, $REPO_ID_PREFIX, $MEDIA_ID_PREFIX, $FAM_ID_PREFIX, $GEDCOM_ID_PREFIX, $NOTE_ID_PREFIX;
 

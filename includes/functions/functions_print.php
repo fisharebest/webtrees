@@ -836,6 +836,12 @@ function format_fact_place(WT_Fact $event, $anchor=false, $sub_records=false, $l
 /**
  * Check for facts that may exist only once for a certain record type.
  * If the fact already exists in the second array, delete it from the first one.
+ *
+ * @param string[]  $uniquefacts
+ * @param WT_Fact[] $recfacts
+ * @param string    $type
+ *
+ * @return string[]
  */
 function CheckFactUnique($uniquefacts, $recfacts, $type) {
 	foreach ($recfacts as $factarray) {

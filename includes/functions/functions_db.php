@@ -24,10 +24,15 @@
 use WT\Auth;
 use WT\User;
 
-////////////////////////////////////////////////////////////////////////////////
-// Fetch all records linked to a record - when deleting an object, we must
-// also delete all links to it.
-////////////////////////////////////////////////////////////////////////////////
+/**
+ * Fetch all records linked to a record - when deleting an object, we must
+ * also delete all links to it.
+ *
+ * @param string  $xref
+ * @param integer $gedcom_id
+ *
+ * @return string[]
+ */
 function fetch_all_links($xref, $gedcom_id) {
 	return
 		WT_DB::prepare(
@@ -1112,7 +1117,15 @@ function set_block_setting($block_id, $setting_name, $setting_value) {
 	}
 }
 
-// update favorites after merging records
+/**
+ * Update favorites after merging records.
+ *
+ * @param string  $xref_from
+ * @param string  $xref_to
+ * @param integer $ged_id
+ *
+ * @return integer
+ */
 function update_favorites($xref_from, $xref_to, $ged_id=WT_GED_ID) {
 	return
 		WT_DB::prepare("UPDATE `##favorite` SET xref=? WHERE xref=? AND gedcom_id=?")

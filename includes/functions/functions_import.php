@@ -23,7 +23,13 @@
 
 use WT\Log;
 
-// Tidy up a gedcom record on import, so that we can access it consistently/efficiently.
+/**
+ * Tidy up a gedcom record on import, so that we can access it consistently/efficiently.
+ *
+ * @param string $rec
+ *
+ * @return string
+ */
 function reformat_record_import($rec) {
 	global $WORD_WRAPPED_NOTES, $GEDCOM_MEDIA_PATH;
 
