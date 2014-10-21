@@ -1072,7 +1072,7 @@ class WT_Individual extends WT_GedcomRecord {
 	 * @param string $full
 	 * @param string $gedcom
 	 */
-	protected function _addName($type, $full, $gedcom) {
+	protected function addName($type, $full, $gedcom) {
 		global $UNKNOWN_NN, $UNKNOWN_PN;
 
 		////////////////////////////////////////////////////////////////////////////
@@ -1253,7 +1253,7 @@ class WT_Individual extends WT_GedcomRecord {
 	 *
 	 * @return string
 	 */
-	function format_list_details() {
+	function formatListDetails() {
 		return
 			$this->format_first_major_fact(WT_EVENTS_BIRT, 1) .
 			$this->format_first_major_fact(WT_EVENTS_DEAT, 1);
