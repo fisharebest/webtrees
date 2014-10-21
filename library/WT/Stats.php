@@ -30,15 +30,21 @@ use Rhumsaa\Uuid\Uuid;
 use WT\Auth;
 use WT\User;
 
+/**
+ * Class WT_Stats A selection of pre-formatted statistical queries.  These are primarily
+ *                used for embedded keywords on HTML blocks, but are also used elsewhere in
+ *                the code.
+ */
 class WT_Stats {
 	/** @var WT_Tree  */
 	private $tree;
-	private $tree_id;
 
+	/** @var string[] All public functions are available as keywords - except these ones */
 	private $public_but_not_allowed = array(
 		'__construct', 'embedTags', 'iso3166', 'getAllCountries', 'getAllTagsTable', 'getAllTagsText', 'statsPlaces', 'statsBirthQuery', 'statsDeathQuery', 'statsMarrQuery', 'statsAgeQuery', 'monthFirstChildQuery', 'statsChildrenQuery', 'statsMarrAgeQuery'
 	);
 
+	/** @var string[] List of GEDCOM media types */
 	private $_media_types = array('audio', 'book', 'card', 'certificate', 'coat', 'document', 'electronic', 'magazine', 'manuscript', 'map', 'fiche', 'film', 'newspaper', 'painting', 'photo', 'tombstone', 'video', 'other');
 
 	/**
@@ -2718,7 +2724,7 @@ class WT_Stats {
 		return $this->eventQuery('place', 'DESC', WT_EVENTS_BIRT . '|' . WT_EVENTS_MARR . '|' . WT_EVENTS_DIV . '|' . WT_EVENTS_DEAT);
 	}
 
-	/*
+	/**
 	 * Query the database for marriage tags.
 	 *
 	 * @param string  $type
@@ -2726,7 +2732,7 @@ class WT_Stats {
 	 * @param string  $sex
 	 * @param boolean $show_years
 	 *
-	 * @return integer|string
+	 * @return string
 	 */
 	private function marriageQuery($type = 'full', $age_dir = 'ASC', $sex = 'F', $show_years = false) {
 		if ($sex == 'F') {
@@ -2790,7 +2796,7 @@ class WT_Stats {
 				}
 				$result = get_age_at_event($age, true);
 			} else {
-				$result = (int)($age / 365.25);
+				$result = WT_I18N::number((int)($age / 365.25));
 			}
 			break;
 		}
@@ -3563,163 +3569,302 @@ class WT_Stats {
 		}
 	}
 
+	/**
+	 * @return string
+	 */
 	public function youngestMarriageFemale() {
 		return $this->marriageQuery('full', 'ASC', 'F', false);
 	}
 
+	/**
+	 * @return string
+	 */
 	public function youngestMarriageFemaleName() {
 		return $this->marriageQuery('name', 'ASC', 'F', false);
 	}
 
+	/**
+	 * @param boolean $show_years
+	 *
+	 * @return string
+	 */
 	public function youngestMarriageFemaleAge($show_years = false) {
 		return $this->marriageQuery('age', 'ASC', 'F', $show_years);
 	}
 
+	/**
+	 * @return string
+	 */
 	public function oldestMarriageFemale() {
 		return $this->marriageQuery('full', 'DESC', 'F', false);
 	}
 
+	/**
+	 * @return string
+	 */
 	public function oldestMarriageFemaleName() {
 		return $this->marriageQuery('name', 'DESC', 'F', false);
 	}
 
+	/**
+	 * @param boolean $show_years
+	 *
+	 * @return string
+	 */
 	public function oldestMarriageFemaleAge($show_years = false) {
 		return $this->marriageQuery('age', 'DESC', 'F', $show_years);
 	}
 
-	//
-	// Male only
-	//
+	/**
+	 * @return string
+	 */
 	public function youngestMarriageMale() {
 		return $this->marriageQuery('full', 'ASC', 'M', false);
 	}
 
+	/**
+	 * @return string
+	 */
 	public function youngestMarriageMaleName() {
 		return $this->marriageQuery('name', 'ASC', 'M', false);
 	}
 
+	/**
+	 * @param boolean $show_years
+	 *
+	 * @return string
+	 */
 	public function youngestMarriageMaleAge($show_years = false) {
 		return $this->marriageQuery('age', 'ASC', 'M', $show_years);
 	}
 
+	/**
+	 * @return string
+	 */
 	public function oldestMarriageMale() {
 		return $this->marriageQuery('full', 'DESC', 'M', false);
 	}
 
+	/**
+	 * @return string
+	 */
 	public function oldestMarriageMaleName() {
 		return $this->marriageQuery('name', 'DESC', 'M', false);
 	}
 
+	/**
+	 * @param boolean $show_years
+	 *
+	 * @return string
+	 */
 	public function oldestMarriageMaleAge($show_years = false) {
 		return $this->marriageQuery('age', 'DESC', 'M', $show_years);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function statsMarrAge($params = array()) {
 		return $this->statsMarrAgeQuery(true, 'BOTH', -1, -1, $params);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function ageBetweenSpousesMF($params = array()) {
 		return $this->ageBetweenSpousesQuery($type = 'nolist', $age_dir = 'DESC', $params);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function ageBetweenSpousesMFList($params = array()) {
 		return $this->ageBetweenSpousesQuery($type = 'list', $age_dir = 'DESC', $params);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function ageBetweenSpousesFM($params = array()) {
 		return $this->ageBetweenSpousesQuery($type = 'nolist', $age_dir = 'ASC', $params);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function ageBetweenSpousesFMList($params = array()) {
 		return $this->ageBetweenSpousesQuery($type = 'list', $age_dir = 'ASC', $params);
 	}
 
+	/**
+	 * @return string
+	 */
 	public function topAgeOfMarriageFamily() {
 		return $this->ageOfMarriageQuery('name', 'DESC', array('1'));
 	}
 
+	/**
+	 * @return string
+	 */
 	public function topAgeOfMarriage() {
 		return $this->ageOfMarriageQuery('age', 'DESC', array('1'));
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function topAgeOfMarriageFamilies($params = array()) {
 		return $this->ageOfMarriageQuery('nolist', 'DESC', $params);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function topAgeOfMarriageFamiliesList($params = array()) {
 		return $this->ageOfMarriageQuery('list', 'DESC', $params);
 	}
 
+	/**
+	 * @return string
+	 */
 	public function minAgeOfMarriageFamily() {
 		return $this->ageOfMarriageQuery('name', 'ASC', array('1'));
 	}
 
+	/**
+	 * @return string
+	 */
 	public function minAgeOfMarriage() {
 		return $this->ageOfMarriageQuery('age', 'ASC', array('1'));
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function minAgeOfMarriageFamilies($params = array()) {
 		return $this->ageOfMarriageQuery('nolist', 'ASC', $params);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function minAgeOfMarriageFamiliesList($params = array()) {
 		return $this->ageOfMarriageQuery('list', 'ASC', $params);
 	}
 
-	//
-	// Mother only
-	//
+	/**
+	 * @return string
+	 */
 	public function youngestMother() {
 		return $this->parentsQuery('full', 'ASC', 'F');
 	}
 
+	/**
+	 * @return string
+	 */
 	public function youngestMotherName() {
 		return $this->parentsQuery('name', 'ASC', 'F');
 	}
 
+	/**
+	 * @param bool $show_years
+	 *
+	 * @return string
+	 */
 	public function youngestMotherAge($show_years = false) {
 		return $this->parentsQuery('age', 'ASC', 'F', $show_years);
 	}
 
+	/**
+	 * @return string
+	 */
 	public function oldestMother() {
 		return $this->parentsQuery('full', 'DESC', 'F');
 	}
 
+	/**
+	 * @return string
+	 */
 	public function oldestMotherName() {
 		return $this->parentsQuery('name', 'DESC', 'F');
 	}
 
+	/**
+	 * @param bool $show_years
+	 *
+	 * @return string
+	 */
 	public function oldestMotherAge($show_years = false) {
 		return $this->parentsQuery('age', 'DESC', 'F', $show_years);
 	}
 
-	//
-	// Father only
-	//
+	/**
+	 * @return string
+	 */
 	public function youngestFather() {
 		return $this->parentsQuery('full', 'ASC', 'M');
 	}
 
+	/**
+	 * @return string
+	 */
 	public function youngestFatherName() {
 		return $this->parentsQuery('name', 'ASC', 'M');
 	}
 
+	/**
+	 * @param bool $show_years
+	 *
+	 * @return string
+	 */
 	public function youngestFatherAge($show_years = false) {
 		return $this->parentsQuery('age', 'ASC', 'M', $show_years);
 	}
 
+	/**
+	 * @return string
+	 */
 	public function oldestFather() {
 		return $this->parentsQuery('full', 'DESC', 'M');
 	}
 
+	/**
+	 * @return string
+	 */
 	public function oldestFatherName() {
 		return $this->parentsQuery('name', 'DESC', 'M');
 	}
 
+	/**
+	 * @param bool $show_years
+	 *
+	 * @return string
+	 */
 	public function oldestFatherAge($show_years = false) {
 		return $this->parentsQuery('age', 'DESC', 'M', $show_years);
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalMarriedMales() {
 		$n = WT_DB::prepare("SELECT SQL_CACHE COUNT(DISTINCT f_husb) FROM `##families` WHERE f_file=? AND f_gedcom LIKE '%\\n1 MARR%'")
 			->execute(array($this->tree->tree_id))
@@ -3727,6 +3872,9 @@ class WT_Stats {
 		return WT_I18N::number($n);
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalMarriedFemales() {
 		$n = WT_DB::prepare("SELECT SQL_CACHE COUNT(DISTINCT f_wife) FROM `##families` WHERE f_file=? AND f_gedcom LIKE '%\\n1 MARR%'")
 			->execute(array($this->tree->tree_id))
@@ -3734,10 +3882,11 @@ class WT_Stats {
 		return WT_I18N::number($n);
 	}
 
-///////////////////////////////////////////////////////////////////////////////
-// Family Size                                                               //
-///////////////////////////////////////////////////////////////////////////////
-
+	/**
+	 * @param string $type
+	 *
+	 * @return string
+	 */
 	private function familyQuery($type = 'full') {
 		$rows = $this->runSql(
 			" SELECT SQL_CACHE f_numchil AS tot, f_id AS id" .
@@ -3775,6 +3924,12 @@ class WT_Stats {
 		return $result;
 	}
 
+	/**
+	 * @param string   $type
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	private function topTenFamilyQuery($type = 'list', $params = array()) {
 		global $TEXT_DIRECTION;
 
@@ -3826,6 +3981,12 @@ class WT_Stats {
 		return $top10;
 	}
 
+	/**
+	 * @param string   $type
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	private function ageBetweenSiblingsQuery($type = 'list', $params = array()) {
 		global $TEXT_DIRECTION;
 
@@ -3943,6 +4104,15 @@ class WT_Stats {
 		return $top10;
 	}
 
+	/**
+	 * @param boolean  $simple
+	 * @param boolean  $sex
+	 * @param integer  $year1
+	 * @param integer  $year2
+	 * @param string[] $params
+	 *
+	 * @return string|string[][]
+	 */
 	public function monthFirstChildQuery($simple = true, $sex = false, $year1 = -1, $year2 = -1, $params = array()) {
 		global $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y, $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2;
 
@@ -4063,32 +4233,53 @@ class WT_Stats {
 			$chl = substr($text, 0, -1);
 			return '<img src="https://chart.googleapis.com/chart?cht=p3&amp;chd=e:' . $chd . '&amp;chs=' . $size . '&amp;chco=' . $color_from . ',' . $color_to . '&amp;chf=bg,s,ffffff00&amp;chl=' . $chl . '" width="' . $sizes[0] . '" height="' . $sizes[1] . '" alt="' . WT_I18N::translate('Month of birth of first child in a relation') . '" title="' . WT_I18N::translate('Month of birth of first child in a relation') . '" />';
 		}
-		if (!isset($rows)) {
-			return 0;
-		}
 		return $rows;
 	}
 
+	/**
+	 * @return string
+	 */
 	public function largestFamily() {
 		return $this->familyQuery('full');
 	}
 
+	/**
+	 * @return string
+	 */
 	public function largestFamilySize() {
 		return $this->familyQuery('size');
 	}
 
+	/**
+	 * @return string
+	 */
 	public function largestFamilyName() {
 		return $this->familyQuery('name');
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function topTenLargestFamily($params = array()) {
 		return $this->topTenFamilyQuery('nolist', $params);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function topTenLargestFamilyList($params = array()) {
 		return $this->topTenFamilyQuery('list', $params);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function chartLargestFamilies($params = array()) {
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_L_CHART_X, $WT_STATS_S_CHART_Y;
 
@@ -4147,18 +4338,33 @@ class WT_Stats {
 		return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . WT_I18N::translate('Largest families') . "\" title=\"" . WT_I18N::translate('Largest families') . "\" />";
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalChildren() {
 		$rows = $this->runSql("SELECT SQL_CACHE SUM(f_numchil) AS tot FROM `##families` WHERE f_file={$this->tree->tree_id}");
-		$row = $rows[0];
-		return WT_I18N::number($row['tot']);
+
+		return WT_I18N::number($rows[0]['tot']);
 	}
 
+	/**
+	 * @return string
+	 */
 	public function averageChildren() {
 		$rows = $this->runSql("SELECT SQL_CACHE AVG(f_numchil) AS tot FROM `##families` WHERE f_file={$this->tree->tree_id}");
-		$row = $rows[0];
-		return WT_I18N::number($row['tot'], 2);
+
+		return WT_I18N::number($rows[0]['tot'], 2);
 	}
 
+	/**
+	 * @param boolean $simple
+	 * @param string  $sex
+	 * @param integer $year1
+	 * @param integer $year2
+	 * @param array   $params
+	 *
+	 * @return string|string[][]
+	 */
 	public function statsChildrenQuery($simple = true, $sex = 'BOTH', $year1 = -1, $year2 = -1, $params = array()) {
 		if ($simple) {
 			if (isset($params[0]) && $params[0] != '') {
@@ -4210,6 +4416,7 @@ class WT_Stats {
 			} else {
 				$chxl .= "1:||" . WT_I18N::translate('century') . "|2:|0|1|2|3|4|5|6|7|8|9|10|3:||" . WT_I18N::translate('Number of children') . "|";
 			}
+
 			return "<img src=\"https://chart.googleapis.com/chart?cht=bvg&amp;chs={$sizes[0]}x{$sizes[1]}&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chm=D,FF0000,0,0,3,1|{$chm}&amp;chd=e:{$chd}&amp;chco=0000FF&amp;chbh=30,3&amp;chxt=x,x,y,y&amp;chxl=" . rawurlencode($chxl) . "\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . WT_I18N::translate('Average number of children per family') . "\" title=\"" . WT_I18N::translate('Average number of children per family') . "\" />";
 		} else {
 			if ($sex == 'M') {
@@ -4248,46 +4455,81 @@ class WT_Stats {
 				$sql .= " GROUP BY f_numchil";
 			}
 			$rows = $this->runSql($sql);
-			if (!isset($rows)) {
-				return 0;
-			}
+
 			return $rows;
 		}
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function statsChildren($params = array()) {
 		return $this->statsChildrenQuery($simple = true, $sex = 'BOTH', $year1 = -1, $year2 = -1, $params);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function topAgeBetweenSiblingsName($params = array()) {
 		return $this->ageBetweenSiblingsQuery($type = 'name', $params);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function topAgeBetweenSiblings($params = array()) {
 		return $this->ageBetweenSiblingsQuery($type = 'age', $params);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function topAgeBetweenSiblingsFullName($params = array()) {
 		return $this->ageBetweenSiblingsQuery($type = 'nolist', $params);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function topAgeBetweenSiblingsList($params = array()) {
 		return $this->ageBetweenSiblingsQuery($type = 'list', $params);
 	}
 
+	/**
+	 * @return string
+	 */
 	private function noChildrenFamiliesQuery() {
 		$rows = $this->runSql(
 			" SELECT SQL_CACHE COUNT(*) AS tot" .
 			" FROM  `##families`" .
 			" WHERE f_numchil = 0 AND f_file = {$this->tree->tree_id}");
-		$row = $rows[0];
-		return $row['tot'];
+
+		return $rows[0]['tot'];
 	}
 
+	/**
+	 * @return string
+	 */
 	public function noChildrenFamilies() {
 		return WT_I18N::number($this->noChildrenFamiliesQuery());
 	}
 
+	/**
+	 * @param array $params
+	 *
+	 * @return array|mixed|string
+	 * @throws Exception
+	 */
 	public function noChildrenFamiliesList($params = array()) {
 		global $TEXT_DIRECTION;
 
@@ -4325,9 +4567,15 @@ class WT_Stats {
 		if ($type == 'list') {
 			return '<ul>' . $top10 . '</ul>';
 		}
+
 		return $top10;
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function chartNoChildrenFamilies($params = array()) {
 		if (isset($params[0]) && $params[0] != '') {
 			$size = strtolower($params[0]);
@@ -4418,6 +4666,12 @@ class WT_Stats {
 		return "<img src=\"https://chart.googleapis.com/chart?cht=bvg&amp;chs={$sizes[0]}x{$sizes[1]}&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chm=D,FF0000,0,0:" . ($i - 1) . ",3,1|{$chm}&amp;chd=e:{$chd}&amp;chco=0000FF,ffffff00&amp;chbh=30,3&amp;chxt=x,x,y,y&amp;chxl=" . rawurlencode($chxl) . "\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . WT_I18N::translate('Number of families without children') . "\" title=\"" . WT_I18N::translate('Number of families without children') . "\" />";
 	}
 
+	/**
+	 * @param string   $type
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	private function topTenGrandFamilyQuery($type = 'list', $params = array()) {
 		global $TEXT_DIRECTION;
 
@@ -4476,18 +4730,31 @@ class WT_Stats {
 		return $top10;
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function topTenLargestGrandFamily($params = array()) {
 		return $this->topTenGrandFamilyQuery('nolist', $params);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function topTenLargestGrandFamilyList($params = array()) {
 		return $this->topTenGrandFamilyQuery('list', $params);
 	}
 
-///////////////////////////////////////////////////////////////////////////////
-// Surnames                                                                  //
-///////////////////////////////////////////////////////////////////////////////
-
+	/**
+	 * @param string   $type
+	 * @param boolean  $show_tot
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	private function commonSurnamesQuery($type = 'list', $show_tot = false, $params = array()) {
 		if (isset($params[0]) && $params[0] > 0) {
 			$threshold = (int)$params[0];
@@ -4534,27 +4801,55 @@ class WT_Stats {
 		return format_surname_list($surnames, ($type == 'list' ? 1 : 2), $show_tot, 'indilist.php');
 	}
 
+	/**
+	 * @return string
+	 */
 	public function getCommonSurname() {
 		$surnames = array_keys(get_top_surnames($this->tree->tree_id, 1, 1));
 		return array_shift($surnames);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function commonSurnames($params = array('', '', 'alpha')) {
 		return $this->commonSurnamesQuery('nolist', false, $params);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function commonSurnamesTotals($params = array('', '', 'rcount')) {
 		return $this->commonSurnamesQuery('nolist', true, $params);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function commonSurnamesList($params = array('', '', 'alpha')) {
 		return $this->commonSurnamesQuery('list', false, $params);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function commonSurnamesListTotals($params = array('', '', 'rcount')) {
 		return $this->commonSurnamesQuery('list', true, $params);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function chartCommonSurnames($params = array()) {
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 
@@ -4638,13 +4933,13 @@ class WT_Stats {
 		return '<img src="https://chart.googleapis.com/chart?cht=p3&amp;chd=e:' . $chd . '&amp;chs=' . $size . '&amp;chco=' . $color_from . ',' . $color_to . '&amp;chf=bg,s,ffffff00&amp;chl=' . rawurlencode($chl) . '" width="' . $sizes[0] . '" height="' . $sizes[1] . '" alt="' . $chart_title . '" title="' . $chart_title . '" />';
 	}
 
-
-///////////////////////////////////////////////////////////////////////////////
-// Given Names                                                               //
-///////////////////////////////////////////////////////////////////////////////
-
-	/*
-	 * Most Common Given Names Block
+	/**
+	 * @param string   $sex
+	 * @param string   $type
+	 * @param boolean  $show_tot
+	 * @param string[] $params
+	 *
+	 * @return string
 	 */
 	private function commonGivenQuery($sex = 'B', $type = 'list', $show_tot = false, $params = array()) {
 		global $GEDCOM;
@@ -4768,86 +5063,191 @@ class WT_Stats {
 		}
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function commonGiven($params = array(1, 10, 'alpha')) {
 		return $this->commonGivenQuery('B', 'nolist', false, $params);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function commonGivenTotals($params = array(1, 10, 'rcount')) {
 		return $this->commonGivenQuery('B', 'nolist', true, $params);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function commonGivenList($params = array(1, 10, 'alpha')) {
 		return $this->commonGivenQuery('B', 'list', false, $params);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function commonGivenListTotals($params = array(1, 10, 'rcount')) {
 		return $this->commonGivenQuery('B', 'list', true, $params);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function commonGivenTable($params = array(1, 10, 'rcount')) {
 		return $this->commonGivenQuery('B', 'table', false, $params);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function commonGivenFemale($params = array(1, 10, 'alpha')) {
 		return $this->commonGivenQuery('F', 'nolist', false, $params);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function commonGivenFemaleTotals($params = array(1, 10, 'rcount')) {
 		return $this->commonGivenQuery('F', 'nolist', true, $params);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function commonGivenFemaleList($params = array(1, 10, 'alpha')) {
 		return $this->commonGivenQuery('F', 'list', false, $params);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function commonGivenFemaleListTotals($params = array(1, 10, 'rcount')) {
 		return $this->commonGivenQuery('F', 'list', true, $params);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function commonGivenFemaleTable($params = array(1, 10, 'rcount')) {
 		return $this->commonGivenQuery('F', 'table', false, $params);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function commonGivenMale($params = array(1, 10, 'alpha')) {
 		return $this->commonGivenQuery('M', 'nolist', false, $params);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function commonGivenMaleTotals($params = array(1, 10, 'rcount')) {
 		return $this->commonGivenQuery('M', 'nolist', true, $params);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function commonGivenMaleList($params = array(1, 10, 'alpha')) {
 		return $this->commonGivenQuery('M', 'list', false, $params);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function commonGivenMaleListTotals($params = array(1, 10, 'rcount')) {
 		return $this->commonGivenQuery('M', 'list', true, $params);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function commonGivenMaleTable($params = array(1, 10, 'rcount')) {
 		return $this->commonGivenQuery('M', 'table', false, $params);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function commonGivenUnknown($params = array(1, 10, 'alpha')) {
 		return $this->commonGivenQuery('U', 'nolist', false, $params);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function commonGivenUnknownTotals($params = array(1, 10, 'rcount')) {
 		return $this->commonGivenQuery('U', 'nolist', true, $params);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function commonGivenUnknownList($params = array(1, 10, 'alpha')) {
 		return $this->commonGivenQuery('U', 'list', false, $params);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function commonGivenUnknownListTotals($params = array(1, 10, 'rcount')) {
 		return $this->commonGivenQuery('U', 'list', true, $params);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function commonGivenUnknownTable($params = array(1, 10, 'rcount')) {
 		return $this->commonGivenQuery('U', 'table', false, $params);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function chartCommonGiven($params = array()) {
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 
@@ -4906,10 +5306,11 @@ class WT_Stats {
 		return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl=" . rawurlencode($chl) . "\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . $chart_title . "\" title=\"" . $chart_title . "\" />";
 	}
 
-///////////////////////////////////////////////////////////////////////////////
-// Users                                                                     //
-///////////////////////////////////////////////////////////////////////////////
-
+	/**
+	 * @param string $type
+	 *
+	 * @return string
+	 */
 	private function usersLoggedInQuery($type = 'nolist') {
 		$content = '';
 		// List active users
@@ -4969,6 +5370,11 @@ class WT_Stats {
 		return $content;
 	}
 
+	/**
+	 * @param string $type
+	 *
+	 * @return integer
+	 */
 	private function usersLoggedInTotalQuery($type = 'all') {
 		$anon = 0;
 		$visible = 0;
@@ -4988,22 +5394,37 @@ class WT_Stats {
 		}
 	}
 
+	/**
+	 * @return string
+	 */
 	public function usersLoggedIn() {
 		return $this->usersLoggedInQuery('nolist');
 	}
 
+	/**
+	 * @return string
+	 */
 	public function usersLoggedInList() {
 		return $this->usersLoggedInQuery('list');
 	}
 
+	/**
+	 * @return integer
+	 */
 	public function usersLoggedInTotal() {
 		return $this->usersLoggedInTotalQuery('all');
 	}
 
+	/**
+	 * @return integer
+	 */
 	public function usersLoggedInTotalAnon() {
 		return $this->usersLoggedInTotalQuery('anon');
 	}
 
+	/**
+	 * @return integer
+	 */
 	public function usersLoggedInTotalVisible() {
 		return $this->usersLoggedInTotalQuery('visible');
 	}
@@ -5093,8 +5514,6 @@ class WT_Stats {
 	}
 
 	/**
-	 * @param string[] $params
-	 *
 	 * @return string
 	 */
 	public function latestUserId() {
@@ -5102,8 +5521,6 @@ class WT_Stats {
 	}
 
 	/**
-	 * @param string[] $params
-	 *
 	 * @return string
 	 */
 	public function latestUserName() {
@@ -5111,8 +5528,6 @@ class WT_Stats {
 	}
 
 	/**
-	 * @param string[] $params
-	 *
 	 * @return string
 	 */
 	public function latestUserFullName() {
@@ -5377,7 +5792,7 @@ class WT_Stats {
 	/**
 	 * @param string $sql
 	 *
-	 * @return array
+	 * @return string[][]
 	 */
 	private function runSql($sql) {
 		static $cache = array();
@@ -5396,6 +5811,7 @@ class WT_Stats {
 	public function gedcomFavorites() {
 		if (array_key_exists('gedcom_favorites', WT_Module::getActiveModules())) {
 			$block = new gedcom_favorites_WT_Module;
+
 			return $block->getBlock(0, false);
 		} else {
 			return '';
@@ -5408,6 +5824,7 @@ class WT_Stats {
 	public function userFavorites() {
 		if (WT_USER_ID && array_key_exists('user_favorites', WT_Module::getActiveModules())) {
 			$block = new user_favorites_WT_Module;
+
 			return $block->getBlock(0, false);
 		} else {
 			return '';
