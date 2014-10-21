@@ -149,7 +149,7 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 	echo '<td class="descriptionbox width20">';
 
 	if ($SHOW_FACT_ICONS) {
-		echo $fact->Icon(), ' ';
+		echo $fact->icon(), ' ';
 	}
 
 	if ($fact->getFactId()!='histo' && $fact->canEdit()) {

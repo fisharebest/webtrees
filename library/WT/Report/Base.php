@@ -2565,10 +2565,10 @@ function ListSHandler($attrs) {
 		});
 		break;
 	case "BIRT:DATE":
-		uasort($list, array("WT_Individual", "CompareBirtDate"));
+		uasort($list, array("WT_Individual", "compareBirthDate"));
 		break;
 	case "DEAT:DATE":
-		uasort($list, array("WT_Individual", "CompareDeatDate"));
+		uasort($list, array("WT_Individual", "compareDeathDate"));
 		break;
 	case "MARR:DATE":
 		uasort($list, array("WT_Family", "compareMarrDate"));
@@ -2797,10 +2797,10 @@ function RelativesSHandler($attrs) {
 		uasort($list, array("WT_GedcomRecord", "compare"));
 		break;
 	case "BIRT:DATE":
-		uasort($list, array("WT_Individual", "CompareBirtDate"));
+		uasort($list, array("WT_Individual", "compareBirthDate"));
 		break;
 	case "DEAT:DATE":
-		uasort($list, array("WT_Individual", "CompareDeatDate"));
+		uasort($list, array("WT_Individual", "compareDeathDate"));
 		break;
 	case "generation":
 		$newarray = array();

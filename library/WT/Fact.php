@@ -396,7 +396,7 @@ class WT_Fact {
 	 *
 	 * @return string
 	 */
-	public function Icon() {
+	public function icon() {
 		$icon = 'images/facts/' . $this->getTag() . '.png';
 		$dir  = substr(WT_CSS_URL, strlen(WT_STATIC_URL));
 		if (file_exists($dir . $icon)) {

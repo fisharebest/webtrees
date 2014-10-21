@@ -213,7 +213,7 @@ class WT_Individual extends WT_GedcomRecord {
 	 *
 	 * @return integer
 	 */
-	static function CompareBirtDate(WT_Individual $x, WT_Individual $y) {
+	public static function compareBirthDate(WT_Individual $x, WT_Individual $y) {
 		return WT_Date::Compare($x->getEstimatedBirthDate(), $y->getEstimatedBirthDate());
 	}
 
@@ -225,7 +225,7 @@ class WT_Individual extends WT_GedcomRecord {
 	 *
 	 * @return integer
 	 */
-	static function CompareDeatDate(WT_Individual $x, WT_Individual $y) {
+	public static function compareDeathDate(WT_Individual $x, WT_Individual $y) {
 		return WT_Date::Compare($x->getEstimatedDeathDate(), $y->getEstimatedDeathDate());
 	}
 
