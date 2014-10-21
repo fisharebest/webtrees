@@ -2428,7 +2428,7 @@ class WT_Stats {
 	}
 
 	/**
-	 * @param bool $show_years
+	 * @param boolean $show_years
 	 *
 	 * @return string
 	 */
@@ -2494,7 +2494,7 @@ class WT_Stats {
 	}
 
 	/**
-	 * @param bool $show_years
+	 * @param boolean $show_years
 	 *
 	 * @return string
 	 */
@@ -2560,7 +2560,7 @@ class WT_Stats {
 	}
 
 	/**
-	 * @param bool $show_years
+	 * @param boolean $show_years
 	 *
 	 * @return string
 	 */
@@ -2568,10 +2568,15 @@ class WT_Stats {
 		return $this->averageLifespanQuery('M', $show_years);
 	}
 
-///////////////////////////////////////////////////////////////////////////////
-// Events                                                                    //
-///////////////////////////////////////////////////////////////////////////////
-
+	/**
+	 * Events
+	 *
+	 * @param string $type
+	 * @param string $direction
+	 * @param string $facts
+	 *
+	 * @return string
+	 */
 	private function eventQuery($type, $direction, $facts) {
 		$eventTypes = array(
 			'BIRT' => WT_I18N::translate('birth'),
@@ -2643,52 +2648,85 @@ class WT_Stats {
 		return $result;
 	}
 
+	/**
+	 * @return string
+	 */
 	public function firstEvent() {
 		return $this->eventQuery('full', 'ASC', WT_EVENTS_BIRT . '|' . WT_EVENTS_MARR . '|' . WT_EVENTS_DIV . '|' . WT_EVENTS_DEAT);
 	}
 
+	/**
+	 * @return string
+	 */
 	public function firstEventYear() {
 		return $this->eventQuery('year', 'ASC', WT_EVENTS_BIRT . '|' . WT_EVENTS_MARR . '|' . WT_EVENTS_DIV . '|' . WT_EVENTS_DEAT);
 	}
 
+	/**
+	 * @return string
+	 */
 	public function firstEventType() {
 		return $this->eventQuery('type', 'ASC', WT_EVENTS_BIRT . '|' . WT_EVENTS_MARR . '|' . WT_EVENTS_DIV . '|' . WT_EVENTS_DEAT);
 	}
 
+	/**
+	 * @return string
+	 */
 	public function firstEventName() {
 		return $this->eventQuery('name', 'ASC', WT_EVENTS_BIRT . '|' . WT_EVENTS_MARR . '|' . WT_EVENTS_DIV . '|' . WT_EVENTS_DEAT);
 	}
 
+	/**
+	 * @return string
+	 */
 	public function firstEventPlace() {
 		return $this->eventQuery('place', 'ASC', WT_EVENTS_BIRT . '|' . WT_EVENTS_MARR . '|' . WT_EVENTS_DIV . '|' . WT_EVENTS_DEAT);
 	}
 
+	/**
+	 * @return string
+	 */
 	public function lastEvent() {
 		return $this->eventQuery('full', 'DESC', WT_EVENTS_BIRT . '|' . WT_EVENTS_MARR . '|' . WT_EVENTS_DIV . '|' . WT_EVENTS_DEAT);
 	}
 
+	/**
+	 * @return string
+	 */
 	public function lastEventYear() {
 		return $this->eventQuery('year', 'DESC', WT_EVENTS_BIRT . '|' . WT_EVENTS_MARR . '|' . WT_EVENTS_DIV . '|' . WT_EVENTS_DEAT);
 	}
 
+	/**
+	 * @return string
+	 */
 	public function lastEventType() {
 		return $this->eventQuery('type', 'DESC', WT_EVENTS_BIRT . '|' . WT_EVENTS_MARR . '|' . WT_EVENTS_DIV . '|' . WT_EVENTS_DEAT);
 	}
 
+	/**
+	 * @return string
+	 */
 	public function lastEventName() {
 		return $this->eventQuery('name', 'DESC', WT_EVENTS_BIRT . '|' . WT_EVENTS_MARR . '|' . WT_EVENTS_DIV . '|' . WT_EVENTS_DEAT);
 	}
 
+	/**
+	 * @return string
+	 */
 	public function lastEventPlace() {
 		return $this->eventQuery('place', 'DESC', WT_EVENTS_BIRT . '|' . WT_EVENTS_MARR . '|' . WT_EVENTS_DIV . '|' . WT_EVENTS_DEAT);
 	}
 
-///////////////////////////////////////////////////////////////////////////////
-// Marriage                                                                  //
-///////////////////////////////////////////////////////////////////////////////
-
 	/*
 	 * Query the database for marriage tags.
+	 *
+	 * @param string  $type
+	 * @param string  $age_dir
+	 * @param string  $sex
+	 * @param boolean $show_years
+	 *
+	 * @return integer|string
 	 */
 	private function marriageQuery($type = 'full', $age_dir = 'ASC', $sex = 'F', $show_years = false) {
 		if ($sex == 'F') {
@@ -2759,6 +2797,13 @@ class WT_Stats {
 		return $result;
 	}
 
+	/**
+	 * @param string   $type
+	 * @param string   $age_dir
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	private function ageOfMarriageQuery($type = 'list', $age_dir = 'ASC', $params = array()) {
 		global $TEXT_DIRECTION;
 
@@ -2816,7 +2861,7 @@ class WT_Stats {
 			" GROUP BY family" .
 			" ORDER BY age {$age_dir}");
 		if (!isset($hrows) && !isset($wrows) && !isset($drows)) {
-			return 0;
+			return '';
 		}
 		$rows = array();
 		foreach ($drows as $family) {
@@ -2886,6 +2931,13 @@ class WT_Stats {
 		return $top10;
 	}
 
+	/**
+	 * @param string   $type
+	 * @param string   $age_dir
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	private function ageBetweenSpousesQuery($type = 'list', $age_dir = 'DESC', $params = array()) {
 		global $TEXT_DIRECTION;
 
@@ -2956,6 +3008,14 @@ class WT_Stats {
 		return $top10;
 	}
 
+	/**
+	 * @param string  $type
+	 * @param string  $age_dir
+	 * @param string  $sex
+	 * @param boolean $show_years
+	 *
+	 * @return string
+	 */
 	private function parentsQuery($type = 'full', $age_dir = 'ASC', $sex = 'F', $show_years = false) {
 		if ($sex == 'F') {
 			$sex_field = 'WIFE';
@@ -3024,6 +3084,15 @@ class WT_Stats {
 		return $result;
 	}
 
+	/**
+	 * @param boolean  $simple
+	 * @param boolean  $first
+	 * @param integer  $year1
+	 * @param integer  $year2
+	 * @param string[] $params
+	 *
+	 * @return string|array
+	 */
 	public function statsMarrQuery($simple = true, $first = false, $year1 = -1, $year2 = -1, $params = array()) {
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 
@@ -3066,7 +3135,7 @@ class WT_Stats {
 		}
 		$rows = $this->runSql($sql);
 		if (!isset($rows)) {
-			return 0;
+			return '';
 		}
 		if ($simple) {
 			if (isset($params[0]) && $params[0] != '') {
@@ -3106,6 +3175,15 @@ class WT_Stats {
 		return $rows;
 	}
 
+	/**
+	 * @param boolean  $simple
+	 * @param boolean  $first
+	 * @param integer  $year1
+	 * @param integer  $year2
+	 * @param string[] $params
+	 *
+	 * @return string|array
+	 */
 	private function statsDivQuery($simple = true, $first = false, $year1 = -1, $year2 = -1, $params = array()) {
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 
@@ -3147,7 +3225,7 @@ class WT_Stats {
 		}
 		$rows = $this->runSql($sql);
 		if (!isset($rows)) {
-			return 0;
+			return '';
 		}
 		if ($simple) {
 			if (isset($params[0]) && $params[0] != '') {
@@ -3187,84 +3265,145 @@ class WT_Stats {
 		return $rows;
 	}
 
-	//
-	// Marriage
-	//
+	/**
+	 * @return string
+	 */
 	public function firstMarriage() {
 		return $this->mortalityQuery('full', 'ASC', 'MARR');
 	}
 
+	/**
+	 * @return string
+	 */
 	public function firstMarriageYear() {
 		return $this->mortalityQuery('year', 'ASC', 'MARR');
 	}
 
+	/**
+	 * @return string
+	 */
 	public function firstMarriageName() {
 		return $this->mortalityQuery('name', 'ASC', 'MARR');
 	}
 
+	/**
+	 * @return string
+	 */
 	public function firstMarriagePlace() {
 		return $this->mortalityQuery('place', 'ASC', 'MARR');
 	}
 
+	/**
+	 * @return string
+	 */
 	public function lastMarriage() {
 		return $this->mortalityQuery('full', 'DESC', 'MARR');
 	}
 
+	/**
+	 * @return string
+	 */
 	public function lastMarriageYear() {
 		return $this->mortalityQuery('year', 'DESC', 'MARR');
 	}
 
+	/**
+	 * @return string
+	 */
 	public function lastMarriageName() {
 		return $this->mortalityQuery('name', 'DESC', 'MARR');
 	}
 
+	/**
+	 * @return string
+	 */
 	public function lastMarriagePlace() {
 		return $this->mortalityQuery('place', 'DESC', 'MARR');
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function statsMarr($params = array()) {
 		return $this->statsMarrQuery(true, false, -1, -1, $params);
 	}
 
-	//
-	// Divorce
-	//
+	/**
+	 * @return string
+	 */
 	public function firstDivorce() {
 		return $this->mortalityQuery('full', 'ASC', 'DIV');
 	}
 
+	/**
+	 * @return string
+	 */
 	public function firstDivorceYear() {
 		return $this->mortalityQuery('year', 'ASC', 'DIV');
 	}
 
+	/**
+	 * @return string
+	 */
 	public function firstDivorceName() {
 		return $this->mortalityQuery('name', 'ASC', 'DIV');
 	}
 
+	/**
+	 * @return string
+	 */
 	public function firstDivorcePlace() {
 		return $this->mortalityQuery('place', 'ASC', 'DIV');
 	}
 
+	/**
+	 * @return string
+	 */
 	public function lastDivorce() {
 		return $this->mortalityQuery('full', 'DESC', 'DIV');
 	}
 
+	/**
+	 * @return string
+	 */
 	public function lastDivorceYear() {
 		return $this->mortalityQuery('year', 'DESC', 'DIV');
 	}
 
+	/**
+	 * @return string
+	 */
 	public function lastDivorceName() {
 		return $this->mortalityQuery('name', 'DESC', 'DIV');
 	}
 
+	/**
+	 * @return string
+	 */
 	public function lastDivorcePlace() {
 		return $this->mortalityQuery('place', 'DESC', 'DIV');
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function statsDiv($params = array()) {
 		return $this->statsDivQuery(true, false, -1, -1, $params);
 	}
 
+	/**
+	 * @param boolean  $simple
+	 * @param string   $sex
+	 * @param integer  $year1
+	 * @param integer  $year2
+	 * @param string[] $params
+	 *
+	 * @return array|string
+	 */
 	public function statsMarrAgeQuery($simple = true, $sex = 'M', $year1 = -1, $year2 = -1, $params = array()) {
 		if ($simple) {
 			if (isset($params[0]) && $params[0] != '') {
@@ -3424,15 +3563,12 @@ class WT_Stats {
 		}
 	}
 
-	//
-	// Female only
-	//
 	public function youngestMarriageFemale() {
-		return $this->marriageQuery('full', 'ASC', 'F');
+		return $this->marriageQuery('full', 'ASC', 'F', false);
 	}
 
 	public function youngestMarriageFemaleName() {
-		return $this->marriageQuery('name', 'ASC', 'F');
+		return $this->marriageQuery('name', 'ASC', 'F', false);
 	}
 
 	public function youngestMarriageFemaleAge($show_years = false) {
@@ -3440,11 +3576,11 @@ class WT_Stats {
 	}
 
 	public function oldestMarriageFemale() {
-		return $this->marriageQuery('full', 'DESC', 'F');
+		return $this->marriageQuery('full', 'DESC', 'F', false);
 	}
 
 	public function oldestMarriageFemaleName() {
-		return $this->marriageQuery('name', 'DESC', 'F');
+		return $this->marriageQuery('name', 'DESC', 'F', false);
 	}
 
 	public function oldestMarriageFemaleAge($show_years = false) {
@@ -3455,11 +3591,11 @@ class WT_Stats {
 	// Male only
 	//
 	public function youngestMarriageMale() {
-		return $this->marriageQuery('full', 'ASC', 'M');
+		return $this->marriageQuery('full', 'ASC', 'M', false);
 	}
 
 	public function youngestMarriageMaleName() {
-		return $this->marriageQuery('name', 'ASC', 'M');
+		return $this->marriageQuery('name', 'ASC', 'M', false);
 	}
 
 	public function youngestMarriageMaleAge($show_years = false) {
@@ -3467,11 +3603,11 @@ class WT_Stats {
 	}
 
 	public function oldestMarriageMale() {
-		return $this->marriageQuery('full', 'DESC', 'M');
+		return $this->marriageQuery('full', 'DESC', 'M', false);
 	}
 
 	public function oldestMarriageMaleName() {
-		return $this->marriageQuery('name', 'DESC', 'M');
+		return $this->marriageQuery('name', 'DESC', 'M', false);
 	}
 
 	public function oldestMarriageMaleAge($show_years = false) {
@@ -4488,13 +4624,13 @@ class WT_Stats {
 				$top_name = preg_replace(array('/ska$/', '/cka$/', '/dzka$/', '/żka$/'), array('ski', 'cki', 'dzki', 'żki'), $top_name);
 			}
 			$per = round(100 * $count_per / $tot_indi, 0);
-			$chd .= $this->arrayToExtendedEncoding($per);
+			$chd .= $this->arrayToExtendedEncoding(array($per));
 			//ToDo: RTL names are often printed LTR when also LTR names are present
 			$chl[] = $top_name . ' - ' . WT_I18N::number($count_per);
 
 		}
 		$per = round(100 * ($tot_indi - $tot) / $tot_indi, 0);
-		$chd .= $this->arrayToExtendedEncoding($per);
+		$chd .= $this->arrayToExtendedEncoding(array($per));
 		$chl[] = WT_I18N::translate('Other') . ' - ' . WT_I18N::number($tot_indi - $tot);
 
 		$chart_title = implode(WT_I18N::$list_separator, $chl);
@@ -4757,12 +4893,12 @@ class WT_Stats {
 			} else {
 				$per = round(100 * $count / $tot_indi, 0);
 			}
-			$chd .= $this->arrayToExtendedEncoding($per);
+			$chd .= $this->arrayToExtendedEncoding(array($per));
 			//ToDo: RTL names are often printed LTR when also LTR names are present
 			$chl[] = $givn . ' - ' . WT_I18N::number($count);
 		}
 		$per = round(100 * ($tot_indi - $tot) / $tot_indi, 0);
-		$chd .= $this->arrayToExtendedEncoding($per);
+		$chd .= $this->arrayToExtendedEncoding(array($per));
 		$chl[] = WT_I18N::translate('Other') . ' - ' . WT_I18N::number($tot_indi - $tot);
 
 		$chart_title = implode(WT_I18N::$list_separator, $chl);
@@ -4872,11 +5008,18 @@ class WT_Stats {
 		return $this->usersLoggedInTotalQuery('visible');
 	}
 
+	/**
+	 * @return null|string
+	 */
 	public function userID() {
 		return Auth::id();
 	}
 
-
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function userName($params = array()) {
 		if (Auth::check()) {
 			return Auth::user()->getUserName();
@@ -4888,10 +5031,19 @@ class WT_Stats {
 		}
 	}
 
+	/**
+	 * @return string
+	 */
 	public function userFullName() {
 		return Auth::check() ? Auth::user()->getRealName() : '';
 	}
 
+	/**
+	 * @param string   $type
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	private function getLatestUserData($type = 'userid', $params = array()) {
 		global $DATE_FORMAT, $TIME_FORMAT;
 
@@ -4940,88 +5092,148 @@ class WT_Stats {
 		}
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function latestUserId() {
 		return $this->getLatestUserData('userid');
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function latestUserName() {
 		return $this->getLatestUserData('username');
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function latestUserFullName() {
 		return $this->getLatestUserData('fullname');
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function latestUserRegDate($params = array()) {
 		return $this->getLatestUserData('regdate', $params);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function latestUserRegTime($params = array()) {
 		return $this->getLatestUserData('regtime', $params);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function latestUserLoggedin($params = array()) {
 		return $this->getLatestUserData('loggedin', $params);
 	}
 
-///////////////////////////////////////////////////////////////////////////////
-// Contact                                                                   //
-///////////////////////////////////////////////////////////////////////////////
-
+	/**
+	 * @return string
+	 */
 	public function contactWebmaster() {
 		return user_contact_link($this->tree->getPreference('WEBMASTER_USER_ID'));
 	}
 
+	/**
+	 * @return string
+	 */
 	public function contactGedcom() {
 		return user_contact_link($this->tree->getPreference('CONTACT_USER_ID'));
 	}
 
-///////////////////////////////////////////////////////////////////////////////
-// Date & Time                                                               //
-///////////////////////////////////////////////////////////////////////////////
-
+	/**
+	 * @return string
+	 */
 	public function serverDate() {
 		return timestamp_to_gedcom_date(WT_TIMESTAMP)->display();
 	}
 
+	/**
+	 * @return string
+	 */
 	public function serverTime() {
 		return date('g:i a');
 	}
 
+	/**
+	 * @return string
+	 */
 	public function serverTime24() {
 		return date('G:i');
 	}
 
+	/**
+	 * @return string
+	 */
+	/**
+	 * @return string
+	 */
 	public function serverTimezone() {
 		return date('T');
 	}
 
+	/**
+	 * @return string
+	 */
 	public function browserDate() {
 		return timestamp_to_gedcom_date(WT_CLIENT_TIMESTAMP)->display();
 	}
 
+	/**
+	 * @return string
+	 */
 	public function browserTime() {
 		return date('g:i a', WT_CLIENT_TIMESTAMP);
 	}
 
+	/**
+	 * @return string
+	 */
 	public function browserTime24() {
 		return date('G:i', WT_CLIENT_TIMESTAMP);
 	}
 
+	/**
+	 * @return string
+	 */
 	public function browserTimezone() {
 		return date('T', WT_CLIENT_TIMESTAMP);
 	}
 
-///////////////////////////////////////////////////////////////////////////////
-// Tools                                                                     //
-///////////////////////////////////////////////////////////////////////////////
-
+	/**
+	 * @return string
+	 */
 	public function WT_VERSION() {
 		return WT_VERSION;
 	}
 
-	// These functions provide access to hitcounter
-	// for use in the HTML block.
+	/**
+	 * These functions provide access to hitcounter for use in the HTML block.
+	 *
+	 * @param string   $page_name
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	private function hitCountQuery($page_name, $params) {
 		if (is_array($params) && isset($params[0]) && $params[0] != '') {
 			$page_parameter = $params[0];
@@ -5048,45 +5260,88 @@ class WT_Stats {
 		return '<span class="hit-counter">' . WT_I18N::number($count) . '</span>';
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function hitCount($params = array()) {
 		return $this->hitCountQuery(null, $params);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function hitCountUser($params = array()) {
 		return $this->hitCountQuery('index.php', $params);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function hitCountIndi($params = array()) {
 		return $this->hitCountQuery('individual.php', $params);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function hitCountFam($params = array()) {
 		return $this->hitCountQuery('family.php', $params);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function hitCountSour($params = array()) {
 		return $this->hitCountQuery('source.php', $params);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function hitCountRepo($params = array()) {
 		return $this->hitCountQuery('repo.php', $params);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function hitCountNote($params = array()) {
 		return $this->hitCountQuery('note.php', $params);
 	}
 
+	/**
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function hitCountObje($params = array()) {
 		return $this->hitCountQuery('mediaviewer.php', $params);
 	}
 
-	// http://bendodson.com/news/google-extended-encoding-made-easy/
+	/**
+	 * @link http://bendodson.com/news/google-extended-encoding-made-easy
+	 *
+	 * @param integer[] $a
+	 *
+	 * @return string
+	 */
 	private function arrayToExtendedEncoding($a) {
 		$xencoding = WT_GOOGLE_CHART_ENCODING;
 
-		if (!is_array($a)) {
-			$a = array($a);
-		}
 		$encoding = '';
 		foreach ($a as $value) {
 			if ($value < 0) {
@@ -5099,14 +5354,31 @@ class WT_Stats {
 		return $encoding;
 	}
 
+	/**
+	 * @param array $a
+	 * @param array $b
+	 *
+	 * @return integer
+	 */
 	private function nameTotalSort($a, $b) {
 		return $a['match'] - $b['match'];
 	}
 
+	/**
+	 * @param array $a
+	 * @param array $b
+	 *
+	 * @return integer
+	 */
 	private function nameTotalReverseSort($a, $b) {
 		return $b['match'] - $a['match'];
 	}
 
+	/**
+	 * @param string $sql
+	 *
+	 * @return array
+	 */
 	private function runSql($sql) {
 		static $cache = array();
 		$id = md5($sql);
@@ -5118,31 +5390,33 @@ class WT_Stats {
 		return $rows;
 	}
 
-	// These functions provide access to additional non-stats features of webtrees
-	// for use in the HTML block.
-
-	private function getFavorites($isged = true) {
-		global $GEDCOM;
-
-		if ($isged && array_key_exists('gedcom_favorites', WT_Module::getActiveModules())) {
+	/**
+	 * @return string
+	 */
+	public function gedcomFavorites() {
+		if (array_key_exists('gedcom_favorites', WT_Module::getActiveModules())) {
 			$block = new gedcom_favorites_WT_Module;
-			return $block->getBlock($GEDCOM, false);
-		} elseif (WT_USER_ID && array_key_exists('user_favorites', WT_Module::getActiveModules())) {
-			$block = new user_favorites_WT_Module;
-			return $block->getBlock($GEDCOM, false);
+			return $block->getBlock(0, false);
 		} else {
 			return '';
 		}
 	}
 
-	public function gedcomFavorites() {
-		return $this->getFavorites(true);
-	}
-
+	/**
+	 * @return string
+	 */
 	public function userFavorites() {
-		return $this->getFavorites(false);
+		if (WT_USER_ID && array_key_exists('user_favorites', WT_Module::getActiveModules())) {
+			$block = new user_favorites_WT_Module;
+			return $block->getBlock(0, false);
+		} else {
+			return '';
+		}
 	}
 
+	/**
+	 * @return integer
+	 */
 	public function totalGedcomFavorites() {
 		if (array_key_exists('gedcom_favorites', WT_Module::getActiveModules())) {
 			return count(gedcom_favorites_WT_Module::getFavorites(WT_GED_ID));
@@ -5151,6 +5425,9 @@ class WT_Stats {
 		}
 	}
 
+	/**
+	 * @return integer
+	 */
 	public function totalUserFavorites() {
 		if (array_key_exists('user_favorites', WT_Module::getActiveModules())) {
 			return count(user_favorites_WT_Module::getFavorites(WT_USER_ID));
@@ -5159,11 +5436,14 @@ class WT_Stats {
 		}
 	}
 
-	///////////////////////////////////////////////////////////////////////////////
-	// Other blocks                                                              //
-	// example of use: #callBlock:block_name#                                    //
-	///////////////////////////////////////////////////////////////////////////////
-
+	/**
+	 * Other blocks
+	 * example of use: #callBlock:block_name#
+	 *
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
 	public function callBlock($params = array()) {
 		global $ctype;
 
@@ -5199,25 +5479,34 @@ class WT_Stats {
 		return $content;
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalUserMessages() {
 		return WT_I18N::number(count(getUserMessages(WT_USER_NAME)));
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalUserJournal() {
 		return WT_I18N::number(count(getUserNews(WT_USER_ID)));
 	}
 
+	/**
+	 * @return string
+	 */
 	public function totalGedcomNews() {
 		return WT_I18N::number(count(getUserNews(WT_GEDCOM)));
 	}
 
-	//////////////////////////////////////////////////////////////////////////////
-	// Country lookup data
-	//////////////////////////////////////////////////////////////////////////////
-
-	// ISO3166 3 letter codes, with their 2 letter equivalent.
-	// NOTE: this is not 1:1.  ENG/SCO/WAL/NIR => GB
-	// NOTE: this also includes champman codes and others.  Should it?
+	/**
+	 * ISO3166 3 letter codes, with their 2 letter equivalent.
+	 * NOTE: this is not 1:1.  ENG/SCO/WAL/NIR => GB
+	 * NOTE: this also includes champman codes and others.  Should it?
+	 *
+	 * @return string[]
+	 */
 	public function iso3166() {
 		return array(
 			'ABW' => 'AW', 'AFG' => 'AF', 'AGO' => 'AO', 'AIA' => 'AI', 'ALA' => 'AX', 'ALB' => 'AL',
@@ -5265,6 +5554,11 @@ class WT_Stats {
 		);
 	}
 
+	/**
+	 * Country codes and names
+	 *
+	 * @return string[]
+	 */
 	public function getAllCountries() {
 		return array(
 			'???' => WT_I18N::translate('Unknown'),
@@ -5537,7 +5831,13 @@ class WT_Stats {
 		);
 	}
 
-	// century name, English => 21st, Polish => XXI, etc.
+	/**
+	 * century name, English => 21st, Polish => XXI, etc.
+	 *
+	 * @param integer $century
+	 *
+	 * @return string
+	 */
 	private function centuryName($century) {
 		if ($century < 0) {
 			return str_replace(-$century, WT_Stats::centuryName(-$century), /* I18N: BCE=Before the Common Era, for Julian years < 0.  See http://en.wikipedia.org/wiki/Common_Era */
