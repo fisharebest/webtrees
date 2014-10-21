@@ -134,37 +134,15 @@ function spanLTRRTL($inputText, $direction = 'BOTH', $class = '') {
 			}
 			$currentLen += $endPos;
 			$entity = substr($workingText, 0, $currentLen);
-			if (substr($entity, 0, 2) == '&#') {
-				// look for possible New Line codes
-				if (substr($entity, 2, 1) == 'x' || substr($entity, 2, 1) == 'X') {
-					// the entity is a hexadecimal number
-					$ordinal = hexdec(substr($entity, 3, -1));
-				} else {
-					// the entity is a decimal number
-					$ordinal = intval(substr($entity, 2, -1));
-				}
-				if ($ordinal == 10) {
-					// we have a New-Line code
-					if ($numberState) {
-						$numberState = false;
-						if ($currentState == 'RTL') {
-							$waitingText .= WT_UTF8_PDF;
-						}
-					}
-					breakCurrentSpan($result);
-					$workingText = substr($workingText, $currentLen);
-				}
-			} else {
-				if (strtolower($entity) == '&nbsp;') {
-					$entity .= '&nbsp;'; // Ensure consistent case for this entity
-				}
-				if ($waitingText == '') {
-					$result .= $entity;
-				} else {
-					$waitingText .= $entity;
-				}
-				$workingText = substr($workingText, $currentLen);
+			if (strtolower($entity) == '&nbsp;') {
+				$entity .= '&nbsp;'; // Ensure consistent case for this entity
 			}
+			if ($waitingText == '') {
+				$result .= $entity;
+			} else {
+				$waitingText .= $entity;
+			}
+			$workingText = substr($workingText, $currentLen);
 			break;
 		case '{':
 			if (substr($workingText, 1, 1) == '{') {
