@@ -618,6 +618,7 @@ function add_simple_tag(
 			// Extra markup for specific fact types
 			switch ($fact) {
 			case 'ASSO':
+			case '_ASSO':
 				echo ' data-autocomplete-type="ASSO"';
 				break;
 			case 'DATE':
