@@ -508,21 +508,40 @@ function print_fact_notes($factrec, $level, $textOnly=false) {
 	return $data;
 }
 
-// Print a link for a popup help window
+/**
+ * Print a link for a popup help window.
+ *
+ * @param string $help_topic
+ * @param string $module
+ *
+ * @return string
+ */
 function help_link($help_topic, $module='') {
 	return '<span class="icon-help" onclick="helpDialog(\''.$help_topic.'\',\''.$module.'\'); return false;">&nbsp;</span>';
 }
 
-
-// Print an external help link to the wiki site, in a new window
+/**
+ * Print an external help link to the wiki site, in a new window
+ *
+ * @param string $topic
+ *
+ * @return string
+ */
 function wiki_help_link($topic) {
 	return '<a class="help icon-wiki" href="'.WT_WEBTREES_WIKI.$topic.'" title="'.WT_I18N::translate('webtrees wiki').'" target="_blank">&nbsp;</a>';
 }
 
-// When a user has searched for text, highlight any matches in
-// the displayed string.
+/**
+ * When a user has searched for text, highlight any matches in
+ * the displayed string.
+ *
+ * @param string $string
+ *
+ * @return string
+ */
 function highlight_search_hits($string) {
 	global $controller;
+
 	if ($controller instanceof WT_Controller_Search && $controller->query) {
 		// TODO: when a search contains multiple words, we search independently.
 		// e.g. searching for "FOO BAR" will find records containing both FOO and BAR.
@@ -534,13 +553,20 @@ function highlight_search_hits($string) {
 		}
 		// Match these strings, provided they do not occur inside HTML tags
 		$regex='('.implode('|', $regex).')(?![^<]*>)';
+
 		return preg_replace('/'.$regex.'/i', '<span class="search_hit">$1</span>', $string);
 	} else {
 		return $string;
 	}
 }
 
-// Print the associations from the associated individuals in $event to the individuals in $record
+/**
+ * Print the associations from the associated individuals in $event to the individuals in $record
+ *
+ * @param WT_Fact $event
+ *
+ * @return string
+ */
 function format_asso_rela_record(WT_Fact $event) {
 	global $SEARCH_SPIDER;
 
@@ -651,12 +677,16 @@ function format_parents_age(WT_Individual $person, WT_Date $birth_date) {
 	return $html;
 }
 
-// print fact DATE TIME
-//
-// $event - event containing the date/age
-// $record - the person (or couple) whose ages should be printed
-// $anchor option to print a link to calendar
-// $time option to print TIME value
+/**
+ * Print fact DATE/TIME
+ *
+ * @param WT_Fact         $event  event containing the date/age
+ * @param WT_GedcomRecord $record the person (or couple) whose ages should be printed
+ * @param boolean         $anchor option to print a link to calendar
+ * @param boolean         $time   option to print TIME value
+ *
+ * @return string
+ */
 function format_fact_date(WT_Fact $event, WT_GedcomRecord $record, $anchor=false, $time=false) {
 	global $pid, $SEARCH_SPIDER, $SHOW_PARENTS_AGE;
 
@@ -1031,22 +1061,48 @@ function init_calendar_popup() {
 	');
 }
 
+/**
+ * @param string $element_id
+ * @param string $indiname
+ * @param string $ged
+ *
+ * @return string
+ */
 function print_findindi_link($element_id, $indiname='', $ged=WT_GEDCOM) {
 	return '<a href="#" onclick="findIndi(document.getElementById(\''.$element_id.'\'), document.getElementById(\''.$indiname.'\'), \'' . WT_Filter::escapeHtml($ged) . '\'); return false;" class="icon-button_indi" title="'.WT_I18N::translate('Find an individual').'"></a>';
 }
 
+/**
+ * @param string $element_id
+ *
+ * @return string
+ */
 function print_findplace_link($element_id) {
 	return '<a href="#" onclick="findPlace(document.getElementById(\''.$element_id.'\'), \''.WT_GEDURL.'\'); return false;" class="icon-button_place" title="'.WT_I18N::translate('Find a place').'"></a>';
 }
 
+/**
+ * @param string $element_id
+ *
+ * @return string
+ */
 function print_findfamily_link($element_id) {
 	return '<a href="#" onclick="findFamily(document.getElementById(\''.$element_id.'\'), \''.WT_GEDURL.'\'); return false;" class="icon-button_family" title="'.WT_I18N::translate('Find a family').'"></a>';
 }
 
+/**
+ * @param string $element_id
+ *
+ * @return string
+ */
 function print_specialchar_link($element_id) {
 	return '<span onclick="findSpecialChar(document.getElementById(\''.$element_id.'\')); if (window.updatewholename) { updatewholename(); } return false;" class="icon-button_keyboard" title="'.WT_I18N::translate('Find a special character').'"></span>';
 }
 
+/**
+ * @param string   $element_id
+ * @param string[] $choices
+ */
 function print_autopaste_link($element_id, $choices) {
 	echo '<small>';
 	foreach ($choices as $choice) {
@@ -1057,34 +1113,69 @@ function print_autopaste_link($element_id, $choices) {
 	echo '</small>';
 }
 
+/**
+ * @param string $element_id
+ * @param string $sourcename
+ *
+ * @return string
+ */
 function print_findsource_link($element_id, $sourcename='') {
 	return '<a href="#" onclick="findSource(document.getElementById(\''.$element_id.'\'), document.getElementById(\''.$sourcename.'\'), \''.WT_GEDURL.'\'); return false;" class="icon-button_source" title="'.WT_I18N::translate('Find a source').'"></a>';
 }
 
+/**
+ * @param string $element_id
+ * @param string $notename
+ *
+ * @return string
+ */
 function print_findnote_link($element_id, $notename='') {
 	return '<a href="#" onclick="findnote(document.getElementById(\''.$element_id.'\'), document.getElementById(\''.$notename.'\'), \''.WT_GEDURL.'\'); return false;" class="icon-button_note" title="'.WT_I18N::translate('Find a shared note').'"></a>';
 }
 
+/**
+ * @param string $element_id
+ *
+ * @return string
+ */
 function print_findrepository_link($element_id) {
 	return '<a href="#" onclick="findRepository(document.getElementById(\''.$element_id.'\'), \''.WT_GEDURL.'\'); return false;" class="icon-button_repository" title="'.WT_I18N::translate('Find a repository').'"></a>';
 }
 
+/**
+ * @param string $element_id
+ * @param string $choose
+ *
+ * @return string
+ */
 function print_findmedia_link($element_id, $choose='') {
 	return '<a href="#" onclick="findMedia(document.getElementById(\''.$element_id.'\'), \''.$choose.'\', \''.WT_GEDURL.'\'); return false;" class="icon-button_media" title="'.WT_I18N::translate('Find a media object').'"></a>';
 }
 
+/**
+ * @param string $element_id
+ *
+ * @return string
+ */
 function print_findfact_link($element_id) {
 	return '<a href="#" onclick="findFact(document.getElementById(\''.$element_id.'\'), \''.WT_GEDURL.'\'); return false;" class="icon-button_find_facts" title="'.WT_I18N::translate('Find a fact or event').'"></a>';
 }
 
-// Summary of LDS ordinances
-function get_lds_glance(WT_Individual $indi) {
-	$BAPL = $indi->getFacts('BAPL') ? 'B' : '_';
-	$ENDL = $indi->getFacts('ENDL') ? 'E' : '_';
-	$SLGC = $indi->getFacts('SLGC') ? 'C' : '_';
+/**
+ * Summary of LDS ordinances.
+
+ *
+*@param WT_Individual $individual
+ *
+*@return string
+ */
+function get_lds_glance(WT_Individual $individual) {
+	$BAPL = $individual->getFacts('BAPL') ? 'B' : '_';
+	$ENDL = $individual->getFacts('ENDL') ? 'E' : '_';
+	$SLGC = $individual->getFacts('SLGC') ? 'C' : '_';
 	$SLGS = '_';
 
-	foreach ($indi->getSpouseFamilies() as $family) {
+	foreach ($individual->getSpouseFamilies() as $family) {
 		if ($family->getFacts('SLGS')) {
 			$SLGS = '';
 		}

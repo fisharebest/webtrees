@@ -1124,10 +1124,11 @@ function is_media_used_in_other_gedcom($file_name, $ged_id) {
 		->fetchOne();
 }
 
-////////////////////////////////////////////////////////////////////////////////
-// Functions to access the WT_GEDCOM table
-////////////////////////////////////////////////////////////////////////////////
-
+/**
+ * @param $ged_id
+ *
+ * @return null|string
+ */
 function get_gedcom_from_id($ged_id) {
 	// No need to look up the default gedcom
 	if (defined('WT_GED_ID') && defined('WT_GEDCOM') && $ged_id==WT_GED_ID) {
@@ -1140,7 +1141,13 @@ function get_gedcom_from_id($ged_id) {
 		->fetchOne();
 }
 
-// Convert an (external) gedcom name to an (internal) gedcom ID.
+/**
+ * Convert an (external) gedcom name to an (internal) gedcom ID.
+ *
+ * @param string $ged_name
+ *
+ * @return integer|null
+ */
 function get_id_from_gedcom($ged_name) {
 	// No need to look up the default gedcom
 	if (defined('WT_GED_ID') && defined('WT_GEDCOM') && $ged_name==WT_GEDCOM) {
@@ -1153,10 +1160,11 @@ function get_id_from_gedcom($ged_name) {
 		->fetchOne();
 }
 
-////////////////////////////////////////////////////////////////////////////////
-// Functions to access the WT_BLOCK table
-////////////////////////////////////////////////////////////////////////////////
-
+/**
+ * @param integer $user_id
+ *
+ * @return string[][]
+ */
 function get_user_blocks($user_id) {
 	$blocks=array('main'=>array(), 'side'=>array());
 	$rows=WT_DB::prepare(
@@ -1176,9 +1184,15 @@ function get_user_blocks($user_id) {
 	return $blocks;
 }
 
-// NOTE - this function is only correct when $gedcom_id==WT_GED_ID
-// since the privacy depends on WT_USER_ACCESS_LEVEL, which depends
-// on WT_GED_ID		"SELECT SQL_CACHE location, block_id, module_name".
+/**
+ * NOTE - this function is only correct when $gedcom_id==WT_GED_ID
+ * since the privacy depends on WT_USER_ACCESS_LEVEL, which depends
+ * on WT_GED_ID		"SELECT SQL_CACHE location, block_id, module_name".
+ *
+ * @param integer $gedcom_id
+ *
+ * @return string[][]
+ */
 function get_gedcom_blocks($gedcom_id) {
 	$blocks=array('main'=>array(), 'side'=>array());
 	$rows=WT_DB::prepare(
@@ -1194,9 +1208,17 @@ function get_gedcom_blocks($gedcom_id) {
 	foreach ($rows as $row) {
 		$blocks[$row->location][$row->block_id]=$row->module_name;
 	}
+
 	return $blocks;
 }
 
+/**
+ * @param integer     $block_id
+ * @param string      $setting_name
+ * @param string|null $default_value
+ *
+ * @return null|string
+ */
 function get_block_setting($block_id, $setting_name, $default_value=null) {
 	static $statement;
 	if ($statement===null) {
@@ -1208,6 +1230,13 @@ function get_block_setting($block_id, $setting_name, $default_value=null) {
 	return $setting_value===null ? $default_value : $setting_value;
 }
 
+/**
+ * @param integer     $block_id
+ * @param string      $setting_name
+ * @param string|null $setting_value
+ *
+ * @throws Exception
+ */
 function set_block_setting($block_id, $setting_name, $setting_value) {
 	if ($setting_value===null) {
 		WT_DB::prepare("DELETE FROM `##block_setting` WHERE block_id=? AND setting_name=?")

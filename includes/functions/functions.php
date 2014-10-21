@@ -355,10 +355,17 @@ function sort_facts(&$arr) {
 
 }
 
-// For close family relationships, such as the families tab and the family navigator
-// Display a tick if both individuals are the same.
-// Stop after 3 steps, because pending edits may mean that there is no longer a
-// relationship to find.
+/**
+ * For close family relationships, such as the families tab and the family navigator
+ * Display a tick if both individuals are the same.
+ * Stop after 3 steps, because pending edits may mean that there is no longer a
+ * relationship to find.
+ *
+ * @param WT_Individual $person1
+ * @param WT_Individual $person2
+ *
+ * @return string
+ */
 function get_close_relationship_name(WT_Individual $person1, WT_Individual $person2) {
 	if ($person1 === $person2) {
 		$label = '<i class="icon-selected" title="' . WT_I18N::translate('self') . '"></i>';
@@ -369,9 +376,16 @@ function get_close_relationship_name(WT_Individual $person1, WT_Individual $pers
 	return $label;
 }
 
-// For facts on the individual/family pages.
-// Stop after 4 steps, as distant relationships may take a long time to find.
-// TODO review the limit of 4 when the performance of the function is improved
+/**
+ * For facts on the individual/family pages.
+ * Stop after 4 steps, as distant relationships may take a long time to find.
+ * Review the limit of 4 if/when the performance of the function is improved.
+ *
+ * @param WT_Individual $person1
+ * @param WT_Individual $person2
+ *
+ * @return string
+ */
 function get_associate_relationship_name(WT_Individual $person1, WT_Individual $person2) {
 	if ($person1 === $person2) {
 		$label = WT_I18N::translate('self');
@@ -577,7 +591,13 @@ function get_relationship(WT_Individual $person1, WT_Individual $person2, $follo
 	return $resnode;
 }
 
-// Convert the result of get_relationship() into a relationship name.
+/**
+ * Convert the result of get_relationship() into a relationship name.
+ *
+ * @param mixed[][] $nodes
+ *
+ * @return string
+ */
 function get_relationship_name($nodes) {
 	if (!is_array($nodes)) {
 		return '';

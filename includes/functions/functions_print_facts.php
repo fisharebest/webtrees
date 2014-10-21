@@ -561,7 +561,12 @@ function print_fact_sources($factrec, $level) {
 	return $data;
 }
 
-//-- Print the links to media objects
+/**
+ * Print the links to media objects
+ *
+ * @param string  $factrec
+ * @param integer $level
+ */
 function print_media_links($factrec, $level) {
 	global $SEARCH_SPIDER, $HIDE_GEDCOM_ERRORS;
 
@@ -629,7 +634,12 @@ function print_media_links($factrec, $level) {
 	}
 }
 
-// Print a row for the sources tab on the individual page
+/**
+ * Print a row for the sources tab on the individual page.
+ *
+ * @param WT_Fact $fact
+ * @param integer $level
+ */
 function print_main_sources(WT_Fact $fact, $level) {
 	global $SHOW_FACT_ICONS;
 
@@ -853,7 +863,12 @@ function getSourceStructure($srec) {
 	return $textSOUR;
 }
 
-// Print a row for the notes tab on the individual page
+/**
+ * Print a row for the notes tab on the individual page.
+ *
+ * @param WT_Fact $fact
+ * @param integer $level
+ */
 function print_main_notes(WT_Fact $fact, $level) {
 	global $WT_TREE, $SHOW_FACT_ICONS;
 
@@ -997,7 +1012,12 @@ function print_main_notes(WT_Fact $fact, $level) {
 	}
 }
 
-// Print a row for the media tab on the individual page
+/**
+ * Print a row for the media tab on the individual page.
+ *
+ * @param WT_Fact $fact
+ * @param integer $level
+ */
 function print_main_media(WT_Fact $fact, $level) {
 	$factrec = $fact->getGedcom();
 	$parent  = $fact->getParent();

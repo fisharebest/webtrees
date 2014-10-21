@@ -1051,7 +1051,12 @@ function empty_database($ged_id, $keepmedia) {
 	}
 }
 
-// Accept all pending changes for a specified record
+/**
+ * Accept all pending changes for a specified record.
+ *
+ * @param string  $xref
+ * @param integer $ged_id
+ */
 function accept_all_changes($xref, $ged_id) {
 	$changes=WT_DB::prepare(
 		"SELECT change_id, gedcom_name, old_gedcom, new_gedcom".

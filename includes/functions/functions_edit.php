@@ -67,15 +67,11 @@ function edit_text_inline($name, $value, $controller=null) {
 	}
 }
 
-// Create a <select> control for a form
-// $name     - the ID for the form element
-// $values   - array of value=>display items
-// $empty    - if not null, then add an entry ""=>$empty
-// $selected - the currently selected item (if any)
-// $extra    - extra markup for field (e.g. tab key sequence)
 /**
+ * Create a <select> control for a form.
+ *
  * @param string      $name
- * @param string      $values
+ * @param string[]    $values
  * @param string|null $empty
  * @param string      $selected
  * @param string      $extra
@@ -115,7 +111,7 @@ function select_edit_control($name, $values, $empty, $selected, $extra='') {
  * An inline-editing version of select_edit_control()
  *
  * @param string             $name
- * @param string             $values
+ * @param string[]           $values
  * @param string|null        $empty
  * @param string             $selected
  * @param WT_Controller_Base $controller
@@ -451,12 +447,29 @@ function edit_field_pedi($name, $selected='', $extra='', WT_Individual $individu
 	return select_edit_control($name, WT_Gedcom_Code_Pedi::getValues($individual), '', $selected, $extra);
 }
 
-// Print an edit control for a NAME TYPE field
+/**
+ * Print an edit control for a NAME TYPE field.
+ *
+ * @param string        $name
+ * @param string        $selected
+ * @param string        $extra
+ * @param WT_Individual $individual
+ *
+ * @return string
+ */
 function edit_field_name_type($name, $selected='', $extra='', WT_Individual $individual=null) {
 	return select_edit_control($name, WT_Gedcom_Code_Name::getValues($individual), '', $selected, $extra);
 }
 
-// Print an edit control for a RELA field
+/**
+ * Print an edit control for a RELA field.
+ *
+ * @param string $name
+ * @param string $selected
+ * @param string $extra
+ *
+ * @return string
+ */
 function edit_field_rela($name, $selected='', $extra='') {
 	$rela_codes=WT_Gedcom_Code_Rela::getValues();
 	// The user is allowed to specify values that aren't in the list.
@@ -466,39 +479,78 @@ function edit_field_rela($name, $selected='', $extra='') {
 	return select_edit_control($name, $rela_codes, '', $selected, $extra);
 }
 
-// Remove all links from $gedrec to $xref, and any sub-tags.
+/**
+ * Remove all links from $gedrec to $xref, and any sub-tags.
+ *
+ * @param string $gedrec
+ * @param string $xref
+ *
+ * @return string
+ */
 function remove_links($gedrec, $xref) {
 	$gedrec = preg_replace('/\n1 '.WT_REGEX_TAG.' @'.$xref.'@(\n[2-9].*)*/', '', $gedrec);
 	$gedrec = preg_replace('/\n2 '.WT_REGEX_TAG.' @'.$xref.'@(\n[3-9].*)*/', '', $gedrec);
 	$gedrec = preg_replace('/\n3 '.WT_REGEX_TAG.' @'.$xref.'@(\n[4-9].*)*/', '', $gedrec);
 	$gedrec = preg_replace('/\n4 '.WT_REGEX_TAG.' @'.$xref.'@(\n[5-9].*)*/', '', $gedrec);
 	$gedrec = preg_replace('/\n5 '.WT_REGEX_TAG.' @'.$xref.'@(\n[6-9].*)*/', '', $gedrec);
+
 	return $gedrec;
 }
 
-// generates javascript code for calendar popup in user’s language
+/**
+ * Generates javascript code for calendar popup in user’s language.
+ *
+ * @param string $id
+ *
+ * @return string
+ */
 function print_calendar_popup($id) {
 	return
 		' <a href="#" onclick="cal_toggleDate(\'caldiv'.$id.'\', \''.$id.'\'); return false;" class="icon-button_calendar" title="'.WT_I18N::translate('Select a date').'"></a>'.
 		'<div id="caldiv'.$id.'" style="position:absolute;visibility:hidden;background-color:white;z-index:1000;"></div>';
 }
 
+/**
+ * @param string $element_id
+ *
+ * @return string
+ */
 function print_addnewmedia_link($element_id) {
 	return '<a href="#" onclick="pastefield=document.getElementById(\''.$element_id.'\'); window.open(\'addmedia.php?action=showmediaform\', \'_blank\', edit_window_specs); return false;" class="icon-button_addmedia" title="'.WT_I18N::translate('Create a new media object').'"></a>';
 }
 
+/**
+ * @param string $element_id
+ *
+ * @return string
+ */
 function print_addnewrepository_link($element_id) {
 	return '<a href="#" onclick="addnewrepository(document.getElementById(\''.$element_id.'\')); return false;" class="icon-button_addrepository" title="'.WT_I18N::translate('Create a new repository').'"></a>';
 }
 
+/**
+ * @param string $element_id
+ *
+ * @return string
+ */
 function print_addnewnote_link($element_id) {
 	return '<a href="#" onclick="addnewnote(document.getElementById(\''.$element_id.'\')); return false;" class="icon-button_addnote" title="'.WT_I18N::translate('Create a new shared note').'"></a>';
 }
 
+/**
+ * @param string $note_id
+ *
+ * @return string
+ */
 function print_editnote_link($note_id) {
 	return '<a href="#" onclick="edit_note(\''.$note_id.'\'); return false;" class="icon-button_note" title="'.WT_I18N::translate('Edit shared note').'"></a>';
 }
 
+/**
+ * @param string $element_id
+ *
+ * @return string
+ */
 function print_addnewsource_link($element_id) {
 	return '<a href="#" onclick="addnewsource(document.getElementById(\''.$element_id.'\')); return false;" class="icon-button_addsource" title="'.WT_I18N::translate('Create a new source').'"></a>';
 }
@@ -996,7 +1048,12 @@ function add_simple_tag(
 	return $element_id;
 }
 
-// prints collapsable fields to add ASSO/RELA, SOUR, OBJE ...
+/**
+ * Prints collapsable fields to add ASSO/RELA, SOUR, OBJE, etc.
+ *
+ * @param string  $tag
+ * @param integer $level
+ */
 function print_add_layer($tag, $level=2) {
 	global $FULL_SOURCES, $WT_TREE;
 
@@ -1101,7 +1158,11 @@ function print_add_layer($tag, $level=2) {
 	}
 }
 
-// Add some empty tags to create a new fact
+/**
+ * Add some empty tags to create a new fact.
+ *
+ * @param string $fact
+ */
 function addSimpleTags($fact) {
 	global $ADVANCED_PLAC_FACTS, $nonplacfacts, $nondatefacts;
 
@@ -1130,7 +1191,11 @@ function addSimpleTags($fact) {
 	}
 }
 
-// Assemble the pieces of a newly created record into gedcom
+/**
+ * Assemble the pieces of a newly created record into gedcom
+ *
+ * @return string
+ */
 function addNewName() {
 	global $ADVANCED_NAME_FACTS, $WT_TREE;
 
@@ -1156,6 +1221,10 @@ function addNewName() {
 	}
 	return $gedrec;
 }
+
+/**
+ * @return string
+ */
 function addNewSex() {
 	switch (WT_Filter::post('SEX', '[MF]', 'U')) {
 	case 'M':
@@ -1166,6 +1235,12 @@ function addNewSex() {
 		return "\n1 SEX U";
 	}
 }
+
+/**
+ * @param string $fact
+ *
+ * @return string
+ */
 function addNewFact($fact) {
 	global $ADVANCED_PLAC_FACTS;
 
