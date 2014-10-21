@@ -22,7 +22,7 @@ interface WT_Module_Sidebar {
 	/**
 	 * The user can change the order of sidebars.  Until they do this, they are shown in this order.
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	public function defaultSidebarOrder();
 
@@ -42,7 +42,7 @@ interface WT_Module_Sidebar {
 	/**
 	 * Does this sidebar have anything to display for this individual?
 	 *
-	 * @return bool
+	 * @return boolean
 	 */
 	public function hasSidebarContent();
 }

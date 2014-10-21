@@ -21,20 +21,25 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-// Check with the webtrees.net server for the latest version of webtrees.
-// Fetching the remote file can be slow, so check infrequently, and cache the result.
-// Pass the current versions of webtrees, PHP and MySQL, as the response
-// may be different for each.  The server logs are used to generate
-// installation statistics which can be found at http://svn.webtrees.net/statistics.html
+/**
+ * Check with the webtrees.net server for the latest version of webtrees.
+ * Fetching the remote file can be slow, so check infrequently, and cache the result.
+ * Pass the current versions of webtrees, PHP and MySQL, as the response
+ * may be different for each.  The server logs are used to generate
+ * installation statistics which can be found at http://svn.webtrees.net/statistics.html
+ *
+ * @return null|string
+ */
 function fetch_latest_version() {
 	$last_update_timestamp = WT_Site::getPreference('LATEST_WT_VERSION_TIMESTAMP');
-	if ($last_update_timestamp < WT_TIMESTAMP - 24*60*60) {
+	if ($last_update_timestamp < WT_TIMESTAMP - 24 * 60 * 60) {
 		$row = WT_DB::prepare("SHOW VARIABLES LIKE 'version'")->fetchOneRow();
-		$params = '?w='.WT_VERSION.'&p='.PHP_VERSION.'&m='.$row->value.'&o='.(DIRECTORY_SEPARATOR=='/'?'u':'w');
+		$params = '?w=' . WT_VERSION . '&p=' . PHP_VERSION . '&m=' . $row->value . '&o=' . (DIRECTORY_SEPARATOR === '/' ? 'u' : 'w');
 		$latest_version_txt = WT_File::fetchUrl('http://svn.webtrees.net/build/latest-version.txt' . $params);
 		if ($latest_version_txt) {
 			WT_Site::setPreference('LATEST_WT_VERSION', $latest_version_txt);
 			WT_Site::setPreference('LATEST_WT_VERSION_TIMESTAMP', WT_TIMESTAMP);
+
 			return $latest_version_txt;
 		} else {
 			// Cannot connect to server - use cached version (if we have one)
@@ -45,7 +50,13 @@ function fetch_latest_version() {
 	}
 }
 
-// Convert a file upload PHP error code into user-friendly text
+/**
+ * Convert a file upload PHP error code into user-friendly text.
+ *
+ * @param integer $error_code
+ *
+ * @return string
+ */
 function file_upload_error_text($error_code) {
 	switch ($error_code) {
 	case UPLOAD_ERR_OK:
@@ -69,12 +80,19 @@ function file_upload_error_text($error_code) {
 	case UPLOAD_ERR_EXTENSION:
 		// I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 		return WT_I18N::translate('PHP blocked file by extension');
+	default:
+		return 'Error: ' . $error_code;
 	}
 }
 
-function load_gedcom_settings($ged_id=WT_GED_ID) {
-	// Load the configuration settings into global scope
-	// TODO: some of these are used infrequently - just load them when we need them
+/**
+ * Load the configuration settings into global scope
+ *
+ * @todo some of these are used infrequently - just load them when we need them
+ *
+ * @param integer $ged_id
+ */
+function load_gedcom_settings($ged_id) {
 	$tree = WT_Tree::get($ged_id);
 	global $ADVANCED_NAME_FACTS;          $ADVANCED_NAME_FACTS          = $tree->getPreference('ADVANCED_NAME_FACTS');
 	global $ADVANCED_PLAC_FACTS;          $ADVANCED_PLAC_FACTS          = $tree->getPreference('ADVANCED_PLAC_FACTS');
@@ -141,19 +159,19 @@ function load_gedcom_settings($ged_id=WT_GED_ID) {
 	global $person_facts;   $person_facts  =array();
 	global $global_facts;   $global_facts  =array();
 
-	$rows=WT_DB::prepare(
+	$rows = WT_DB::prepare(
 		"SELECT SQL_CACHE xref, tag_type, CASE resn WHEN 'none' THEN ? WHEN 'privacy' THEN ? WHEN 'confidential' THEN ? WHEN 'hidden' THEN ? END AS resn FROM `##default_resn` WHERE gedcom_id=?"
 	)->execute(array(WT_PRIV_PUBLIC, WT_PRIV_USER, WT_PRIV_NONE, WT_PRIV_HIDE, $ged_id))->fetchAll();
 
 	foreach ($rows as $row) {
-		if ($row->xref!==null) {
-			if ($row->tag_type!==null) {
-				$person_facts[$row->xref][$row->tag_type]=(int)$row->resn;
+		if ($row->xref !== null) {
+			if ($row->tag_type !== null) {
+				$person_facts[$row->xref][$row->tag_type] = (int)$row->resn;
 			} else {
-				$person_privacy[$row->xref]=(int)$row->resn;
+				$person_privacy[$row->xref] = (int)$row->resn;
 			}
 		} else {
-			$global_facts[$row->tag_type]=(int)$row->resn;
+			$global_facts[$row->tag_type] = (int)$row->resn;
 		}
 	}
 }
@@ -170,43 +188,44 @@ function load_gedcom_settings($ged_id=WT_GED_ID) {
  * The following example is the DATE subrecord of the above BIRT subrecord:
  * <code>2 DATE 1 JAN 1900</code>
  *
- * @param int    $level  the N level of the subrecord to get
- * @param string $tag    a gedcom tag or string to search for in the record (ie 1 BIRT or 2 DATE)
- * @param string $gedrec the parent gedcom record to search in
- * @param int    $num    this allows you to specify which matching <var>$tag</var> to get.  Oftentimes a
- *                       gedcom record will have more that 1 of the same type of subrecord.  An individual may have
- *                       multiple events for example.  Passing $num=1 would get the first 1.  Passing $num=2 would get the
- *                       second one, etc.
+ * @param integer $level  the N level of the subrecord to get
+ * @param string  $tag    a gedcom tag or string to search for in the record (ie 1 BIRT or 2 DATE)
+ * @param string  $gedrec the parent gedcom record to search in
+ * @param integer $num    this allows you to specify which matching <var>$tag</var> to get.  Oftentimes a
+ *                        gedcom record will have more that 1 of the same type of subrecord.  An individual may have
+ *                        multiple events for example.  Passing $num=1 would get the first 1.  Passing $num=2 would get the
+ *                        second one, etc.
  *
  * @return string the subrecord that was found or an empty string "" if not found.
  */
-function get_sub_record($level, $tag, $gedrec, $num=1) {
+function get_sub_record($level, $tag, $gedrec, $num = 1) {
 	if (empty($gedrec)) {
 		return '';
 	}
 	// -- adding \n before and after gedrec
-	$gedrec = "\n".$gedrec."\n";
+	$gedrec = "\n" . $gedrec . "\n";
 	$tag = trim($tag);
-	$searchTarget = "~[\n]".$tag."[\s]~";
+	$searchTarget = "~[\n]" . $tag . "[\s]~";
 	$ct = preg_match_all($searchTarget, $gedrec, $match, PREG_SET_ORDER | PREG_OFFSET_CAPTURE);
-	if ($ct==0) {
+	if ($ct == 0) {
 		return '';
 	}
-	if ($ct<$num) {
+	if ($ct < $num) {
 		return '';
 	}
-	$pos1 = $match[$num-1][0][1];
-	$pos2 = strpos($gedrec, "\n$level", $pos1+1);
+	$pos1 = $match[$num - 1][0][1];
+	$pos2 = strpos($gedrec, "\n$level", $pos1 + 1);
 	if (!$pos2) {
-		$pos2 = strpos($gedrec, "\n1", $pos1+1);
+		$pos2 = strpos($gedrec, "\n1", $pos1 + 1);
 	}
 	if (!$pos2) {
-		$pos2 = strpos($gedrec, "\nWT_", $pos1+1); // WT_SPOUSE, WT_FAMILY_ID ...
+		$pos2 = strpos($gedrec, "\nWT_", $pos1 + 1); // WT_SPOUSE, WT_FAMILY_ID ...
 	}
 	if (!$pos2) {
 		return ltrim(substr($gedrec, $pos1));
 	}
-	$subrec = substr($gedrec, $pos1, $pos2-$pos1);
+	$subrec = substr($gedrec, $pos1, $pos2 - $pos1);
+
 	return ltrim($subrec);
 }
 
@@ -214,8 +233,10 @@ function get_sub_record($level, $tag, $gedrec, $num=1) {
  * get CONT lines
  *
  * get the N+1 CONT or CONC lines of a gedcom subrecord
- * @param int $nlevel the level of the CONT lines to get
- * @param string $nrec the gedcom subrecord to search in
+ *
+ * @param integer $nlevel the level of the CONT lines to get
+ * @param string  $nrec   the gedcom subrecord to search in
+ *
  * @return string a string with all CONT or CONC lines merged
  */
 function get_cont($nlevel, $nrec) {
@@ -224,17 +245,17 @@ function get_cont($nlevel, $nrec) {
 
 	$subrecords = explode("\n", $nrec);
 	foreach ($subrecords as $thisSubrecord) {
-		if (substr($thisSubrecord, 0, 2)!=$nlevel." ") {
+		if (substr($thisSubrecord, 0, 2) !== $nlevel . " ") {
 			continue;
 		}
 		$subrecordType = substr($thisSubrecord, 2, 4);
-		if ($subrecordType=="CONT") {
+		if ($subrecordType == "CONT") {
 			$text .= "\n";
 		}
-		if ($subrecordType=="CONC" && $WORD_WRAPPED_NOTES) {
+		if ($subrecordType == "CONC" && $WORD_WRAPPED_NOTES) {
 			$text .= " ";
 		}
-		if ($subrecordType=="CONT" || $subrecordType=="CONC") {
+		if ($subrecordType == "CONT" || $subrecordType == "CONC") {
 			$text .= rtrim(substr($thisSubrecord, 7));
 		}
 	}
@@ -246,23 +267,22 @@ function get_cont($nlevel, $nrec) {
 // Sort a list events for the today/upcoming blocks
 ////////////////////////////////////////////////////////////////////////////////
 function event_sort($a, $b) {
-	if ($a['jd']==$b['jd']) {
-		if ($a['anniv']==$b['anniv']) {
+	if ($a['jd'] == $b['jd']) {
+		if ($a['anniv'] == $b['anniv']) {
 			return WT_I18N::strcasecmp($a['fact'], $b['fact']);
-		}
-		else {
-			return $a['anniv']-$b['anniv'];
+		} else {
+			return $a['anniv'] - $b['anniv'];
 		}
 	} else {
-		return $a['jd']-$b['jd'];
+		return $a['jd'] - $b['jd'];
 	}
 }
 
 function event_sort_name($a, $b) {
-	if ($a['jd']==$b['jd']) {
+	if ($a['jd'] == $b['jd']) {
 		return WT_GedcomRecord::compare($a['record'], $b['record']);
 	} else {
-		return $a['jd']-$b['jd'];
+		return $a['jd'] - $b['jd'];
 	}
 }
 
@@ -301,13 +321,12 @@ function sort_facts(&$arr) {
 	$j = 0;
 	$k = 0;
 	// while there is anything in the dated array continue merging
-	while ($i<$dc) {
+	while ($i < $dc) {
 		// compare each fact by type to merge them in order
-		if ($j<$nc && WT_Fact::compareType($dated[$i], $nondated[$j])>0) {
+		if ($j < $nc && WT_Fact::compareType($dated[$i], $nondated[$j]) > 0) {
 			$arr[$k] = $nondated[$j];
 			$j++;
-		}
-		else {
+		} else {
 			$arr[$k] = $dated[$i];
 			$i++;
 		}
@@ -315,7 +334,7 @@ function sort_facts(&$arr) {
 	}
 
 	// get anything that might be left in the nondated array
-	while ($j<$nc) {
+	while ($j < $nc) {
 		$arr[$k] = $nondated[$j];
 		$j++;
 		$k++;
@@ -333,6 +352,7 @@ function get_close_relationship_name(WT_Individual $person1, WT_Individual $pers
 	} else {
 		$label = get_relationship_name(get_relationship($person1, $person2, true, 3));
 	}
+
 	return $label;
 }
 
@@ -345,21 +365,22 @@ function get_associate_relationship_name(WT_Individual $person1, WT_Individual $
 	} else {
 		$label = get_relationship_name(get_relationship($person1, $person2, true, 4));
 	}
+
 	return $label;
 }
 
 /**
  * Get relationship between two individuals in the gedcom
  *
- * @param WT_Individual $person1 the person to compute the relationship from
- * @param WT_Individual $person2 the person to compute the relatiohip to
- * @param bool          $followspouse whether to add spouses to the path
- * @param int           $maxlength    the maximum length of path
- * @param int           $path_to_find which path in the relationship to find, 0 is the shortest path, 1 is the next shortest path, etc
+ * @param WT_Individual $person1      the person to compute the relationship from
+ * @param WT_Individual $person2      the person to compute the relatiohip to
+ * @param boolean       $followspouse whether to add spouses to the path
+ * @param integer       $maxlength    the maximum length of path
+ * @param integer       $path_to_find which path in the relationship to find, 0 is the shortest path, 1 is the next shortest path, etc
  *
  * @return array|bool An array of nodes on the relationship path, or false if no path found
  */
-function get_relationship(WT_Individual $person1, WT_Individual $person2, $followspouse=true, $maxlength=0, $path_to_find=0) {
+function get_relationship(WT_Individual $person1, WT_Individual $person2, $followspouse = true, $maxlength = 0, $path_to_find = 0) {
 	if ($person1 === $person2) {
 		return false;
 	}
@@ -384,7 +405,7 @@ function get_relationship(WT_Individual $person1, WT_Individual $person2, $follo
 	while (!$found) {
 		//-- search the node list for the shortest path length
 		$shortest = -1;
-		foreach ($p1nodes as $index=>$node) {
+		foreach ($p1nodes as $index => $node) {
 			if ($shortest == -1) {
 				$shortest = $index;
 			} else {
@@ -394,10 +415,11 @@ function get_relationship(WT_Individual $person1, WT_Individual $person2, $follo
 				}
 			}
 		}
-		if ($shortest==-1)
+		if ($shortest === -1) {
 			return false;
+		}
 		$node = $p1nodes[$shortest];
-		if ($maxlength==0 || count($node['path'])<=$maxlength) {
+		if ($maxlength == 0 || count($node['path']) <= $maxlength) {
 			$indi = $node['indi'];
 			//-- check all parents and siblings of this node
 			foreach ($indi->getChildFamilies(WT_PRIV_HIDE) as $family) {
@@ -411,10 +433,10 @@ function get_relationship(WT_Individual $person1, WT_Individual $person2, $follo
 						$node1['relations'][] = 'parent';
 						$p1nodes[] = $node1;
 						if ($spouse === $person2) {
-							if ($path_to_find>0) {
+							if ($path_to_find > 0) {
 								$path_to_find--;
 							} else {
-								$found=true;
+								$found = true;
 								$resnode = $node1;
 							}
 						} else {
@@ -431,10 +453,10 @@ function get_relationship(WT_Individual $person1, WT_Individual $person2, $follo
 						$node1['relations'][] = 'sibling';
 						$p1nodes[] = $node1;
 						if ($child === $person2) {
-							if ($path_to_find>0) {
+							if ($path_to_find > 0) {
 								$path_to_find--;
 							} else {
-								$found=true;
+								$found = true;
 								$resnode = $node1;
 							}
 						} else {
@@ -456,10 +478,10 @@ function get_relationship(WT_Individual $person1, WT_Individual $person2, $follo
 							$node1['relations'][] = 'spouse';
 							$p1nodes[] = $node1;
 							if ($spouse === $person2) {
-								if ($path_to_find>0) {
+								if ($path_to_find > 0) {
 									$path_to_find--;
 								} else {
-									$found=true;
+									$found = true;
 									$resnode = $node1;
 								}
 							} else {
@@ -477,10 +499,10 @@ function get_relationship(WT_Individual $person1, WT_Individual $person2, $follo
 						$node1['relations'][] = 'child';
 						$p1nodes[] = $node1;
 						if ($child === $person2) {
-							if ($path_to_find>0) {
+							if ($path_to_find > 0) {
 								$path_to_find--;
 							} else {
-								$found=true;
+								$found = true;
 								$resnode = $node1;
 							}
 						} else {
@@ -494,34 +516,51 @@ function get_relationship(WT_Individual $person1, WT_Individual $person2, $follo
 	}
 
 	// Convert generic relationships into sex-specific ones.
-	foreach ($resnode['path'] as $n=>$indi) {
+	foreach ($resnode['path'] as $n => $indi) {
 		switch ($resnode['relations'][$n]) {
 		case 'parent':
 			switch ($indi->getSex()) {
-			case 'M': $resnode['relations'][$n]='father'; break;
-			case 'F': $resnode['relations'][$n]='mother'; break;
+			case 'M':
+				$resnode['relations'][$n] = 'father';
+				break;
+			case 'F':
+				$resnode['relations'][$n] = 'mother';
+				break;
 			}
 			break;
 		case 'child':
 			switch ($indi->getSex()) {
-			case 'M': $resnode['relations'][$n]='son'; break;
-			case 'F': $resnode['relations'][$n]='daughter'; break;
+			case 'M':
+				$resnode['relations'][$n] = 'son';
+				break;
+			case 'F':
+				$resnode['relations'][$n] = 'daughter';
+				break;
 			}
 			break;
 		case 'spouse':
 			switch ($indi->getSex()) {
-			case 'M': $resnode['relations'][$n]='husband'; break;
-			case 'F': $resnode['relations'][$n]='wife'; break;
+			case 'M':
+				$resnode['relations'][$n] = 'husband';
+				break;
+			case 'F':
+				$resnode['relations'][$n] = 'wife';
+				break;
 			}
 			break;
 		case 'sibling':
 			switch ($indi->getSex()) {
-			case 'M': $resnode['relations'][$n]='brother'; break;
-			case 'F': $resnode['relations'][$n]='sister'; break;
+			case 'M':
+				$resnode['relations'][$n] = 'brother';
+				break;
+			case 'F':
+				$resnode['relations'][$n] = 'sister';
+				break;
 			}
 			break;
 		}
 	}
+
 	return $resnode;
 }
 
@@ -530,9 +569,9 @@ function get_relationship_name($nodes) {
 	if (!is_array($nodes)) {
 		return '';
 	}
-	$person1=$nodes['path'][0];
-	$person2=$nodes['path'][count($nodes['path'])-1];
-	$path=array_slice($nodes['relations'], 1);
+	$person1 = $nodes['path'][0];
+	$person2 = $nodes['path'][count($nodes['path']) - 1];
+	$path = array_slice($nodes['relations'], 1);
 	// Look for paths with *specific* names first.
 	// Note that every combination must be listed separately, as the same English
 	// name can be used for many different relationships.  e.g.
@@ -550,14 +589,20 @@ function get_relationship_name($nodes) {
 	// complexities of other languages.
 
 	// Make each relationship parts the same length, for simpler matching.
-	$combined_path='';
+	$combined_path = '';
 	foreach ($path as $rel) {
-		$combined_path.=substr($rel, 0, 3);
+		$combined_path .= substr($rel, 0, 3);
 	}
 
 	return get_relationship_name_from_path($combined_path, $person1, $person2);
 }
 
+/**
+ * @param integer $n
+ * @param string  $sex
+ *
+ * @return string
+ */
 function cousin_name($n, $sex) {
 	switch ($sex) {
 	case 'M':
@@ -613,89 +658,148 @@ function cousin_name($n, $sex) {
 		}
 	case 'F':
 		switch ($n) {
-		case  1: return WT_I18N::translate_c('FEMALE', 'first cousin');
-		case  2: return WT_I18N::translate_c('FEMALE', 'second cousin');
-		case  3: return WT_I18N::translate_c('FEMALE', 'third cousin');
-		case  4: return WT_I18N::translate_c('FEMALE', 'fourth cousin');
-		case  5: return WT_I18N::translate_c('FEMALE', 'fifth cousin');
-		case  6: return WT_I18N::translate_c('FEMALE', 'sixth cousin');
-		case  7: return WT_I18N::translate_c('FEMALE', 'seventh cousin');
-		case  8: return WT_I18N::translate_c('FEMALE', 'eighth cousin');
-		case  9: return WT_I18N::translate_c('FEMALE', 'ninth cousin');
-		case 10: return WT_I18N::translate_c('FEMALE', 'tenth cousin');
-		case 11: return WT_I18N::translate_c('FEMALE', 'eleventh cousin');
-		case 12: return WT_I18N::translate_c('FEMALE', 'twelfth cousin');
-		case 13: return WT_I18N::translate_c('FEMALE', 'thirteenth cousin');
-		case 14: return WT_I18N::translate_c('FEMALE', 'fourteenth cousin');
-		case 15: return WT_I18N::translate_c('FEMALE', 'fifteenth cousin');
-		default: return WT_I18N::translate_c('FEMALE', '%d × cousin', $n);
+		case  1:
+			return WT_I18N::translate_c('FEMALE', 'first cousin');
+		case  2:
+			return WT_I18N::translate_c('FEMALE', 'second cousin');
+		case  3:
+			return WT_I18N::translate_c('FEMALE', 'third cousin');
+		case  4:
+			return WT_I18N::translate_c('FEMALE', 'fourth cousin');
+		case  5:
+			return WT_I18N::translate_c('FEMALE', 'fifth cousin');
+		case  6:
+			return WT_I18N::translate_c('FEMALE', 'sixth cousin');
+		case  7:
+			return WT_I18N::translate_c('FEMALE', 'seventh cousin');
+		case  8:
+			return WT_I18N::translate_c('FEMALE', 'eighth cousin');
+		case  9:
+			return WT_I18N::translate_c('FEMALE', 'ninth cousin');
+		case 10:
+			return WT_I18N::translate_c('FEMALE', 'tenth cousin');
+		case 11:
+			return WT_I18N::translate_c('FEMALE', 'eleventh cousin');
+		case 12:
+			return WT_I18N::translate_c('FEMALE', 'twelfth cousin');
+		case 13:
+			return WT_I18N::translate_c('FEMALE', 'thirteenth cousin');
+		case 14:
+			return WT_I18N::translate_c('FEMALE', 'fourteenth cousin');
+		case 15:
+			return WT_I18N::translate_c('FEMALE', 'fifteenth cousin');
+		default:
+			return WT_I18N::translate_c('FEMALE', '%d × cousin', $n);
 		}
-	case 'U':
+	default:
 		switch ($n) {
-		case  1: return WT_I18N::translate_c('MALE/FEMALE', 'first cousin');
-		case  2: return WT_I18N::translate_c('MALE/FEMALE', 'second cousin');
-		case  3: return WT_I18N::translate_c('MALE/FEMALE', 'third cousin');
-		case  4: return WT_I18N::translate_c('MALE/FEMALE', 'fourth cousin');
-		case  5: return WT_I18N::translate_c('MALE/FEMALE', 'fifth cousin');
-		case  6: return WT_I18N::translate_c('MALE/FEMALE', 'sixth cousin');
-		case  7: return WT_I18N::translate_c('MALE/FEMALE', 'seventh cousin');
-		case  8: return WT_I18N::translate_c('MALE/FEMALE', 'eighth cousin');
-		case  9: return WT_I18N::translate_c('MALE/FEMALE', 'ninth cousin');
-		case 10: return WT_I18N::translate_c('MALE/FEMALE', 'tenth cousin');
-		case 11: return WT_I18N::translate_c('MALE/FEMALE', 'eleventh cousin');
-		case 12: return WT_I18N::translate_c('MALE/FEMALE', 'twelfth cousin');
-		case 13: return WT_I18N::translate_c('MALE/FEMALE', 'thirteenth cousin');
-		case 14: return WT_I18N::translate_c('MALE/FEMALE', 'fourteenth cousin');
-		case 15: return WT_I18N::translate_c('MALE/FEMALE', 'fifteenth cousin');
-		default: return WT_I18N::translate_c('MALE/FEMALE', '%d × cousin', $n);
+		case  1:
+			return WT_I18N::translate_c('MALE/FEMALE', 'first cousin');
+		case  2:
+			return WT_I18N::translate_c('MALE/FEMALE', 'second cousin');
+		case  3:
+			return WT_I18N::translate_c('MALE/FEMALE', 'third cousin');
+		case  4:
+			return WT_I18N::translate_c('MALE/FEMALE', 'fourth cousin');
+		case  5:
+			return WT_I18N::translate_c('MALE/FEMALE', 'fifth cousin');
+		case  6:
+			return WT_I18N::translate_c('MALE/FEMALE', 'sixth cousin');
+		case  7:
+			return WT_I18N::translate_c('MALE/FEMALE', 'seventh cousin');
+		case  8:
+			return WT_I18N::translate_c('MALE/FEMALE', 'eighth cousin');
+		case  9:
+			return WT_I18N::translate_c('MALE/FEMALE', 'ninth cousin');
+		case 10:
+			return WT_I18N::translate_c('MALE/FEMALE', 'tenth cousin');
+		case 11:
+			return WT_I18N::translate_c('MALE/FEMALE', 'eleventh cousin');
+		case 12:
+			return WT_I18N::translate_c('MALE/FEMALE', 'twelfth cousin');
+		case 13:
+			return WT_I18N::translate_c('MALE/FEMALE', 'thirteenth cousin');
+		case 14:
+			return WT_I18N::translate_c('MALE/FEMALE', 'fourteenth cousin');
+		case 15:
+			return WT_I18N::translate_c('MALE/FEMALE', 'fifteenth cousin');
+		default:
+			return WT_I18N::translate_c('MALE/FEMALE', '%d × cousin', $n);
 		}
 	}
 }
 
-// A variation on cousin_name(), for constructs such as “sixth great-nephew”
-// Currently used only by Spanish relationship names.
+/**
+ * A variation on cousin_name(), for constructs such as “sixth great-nephew”
+ * Currently used only by Spanish relationship names.
+ *
+ * @param integer $n
+ * @param string  $sex
+ * @param string  $relation
+ *
+ * @return string
+ */
 function cousin_name2($n, $sex, $relation) {
 	switch ($sex) {
 	case 'M':
 		switch ($n) {
 		case  1: // I18N: A Spanish relationship name, such as third great-nephew
-		         return WT_I18N::translate_c('MALE', 'first %s', $relation);
-		case  2: return WT_I18N::translate_c('MALE', 'second %s', $relation);
-		case  3: return WT_I18N::translate_c('MALE', 'third %s', $relation);
-		case  4: return WT_I18N::translate_c('MALE', 'fourth %s', $relation);
-		case  5: return WT_I18N::translate_c('MALE', 'fifth %s', $relation);
+			return WT_I18N::translate_c('MALE', 'first %s', $relation);
+		case  2:
+			return WT_I18N::translate_c('MALE', 'second %s', $relation);
+		case  3:
+			return WT_I18N::translate_c('MALE', 'third %s', $relation);
+		case  4:
+			return WT_I18N::translate_c('MALE', 'fourth %s', $relation);
+		case  5:
+			return WT_I18N::translate_c('MALE', 'fifth %s', $relation);
 		default: // I18N: A Spanish relationship name, such as third great-nephew
-		         return WT_I18N::translate_c('MALE', '%1$d × %2$s', $n, $relation);
+			return WT_I18N::translate_c('MALE', '%1$d × %2$s', $n, $relation);
 		}
 	case 'F':
 		switch ($n) {
 		case  1: // I18N: A Spanish relationship name, such as third great-nephew
-		         return WT_I18N::translate_c('FEMALE', 'first %s', $relation);
-		case  2: return WT_I18N::translate_c('FEMALE', 'second %s', $relation);
-		case  3: return WT_I18N::translate_c('FEMALE', 'third %s', $relation);
-		case  4: return WT_I18N::translate_c('FEMALE', 'fourth %s', $relation);
-		case  5: return WT_I18N::translate_c('FEMALE', 'fifth %s', $relation);
+			return WT_I18N::translate_c('FEMALE', 'first %s', $relation);
+		case  2:
+			return WT_I18N::translate_c('FEMALE', 'second %s', $relation);
+		case  3:
+			return WT_I18N::translate_c('FEMALE', 'third %s', $relation);
+		case  4:
+			return WT_I18N::translate_c('FEMALE', 'fourth %s', $relation);
+		case  5:
+			return WT_I18N::translate_c('FEMALE', 'fifth %s', $relation);
 		default: // I18N: A Spanish relationship name, such as third great-nephew
-		         return WT_I18N::translate_c('FEMALE', '%1$d × %2$s', $n, $relation);
+			return WT_I18N::translate_c('FEMALE', '%1$d × %2$s', $n, $relation);
 		}
-	case 'U':
+	default:
 		switch ($n) {
 		case  1: // I18N: A Spanish relationship name, such as third great-nephew
-		         return WT_I18N::translate_c('MALE/FEMALE', 'first %s', $relation);
-		case  2: return WT_I18N::translate_c('MALE/FEMALE', 'second %s', $relation);
-		case  3: return WT_I18N::translate_c('MALE/FEMALE', 'third %s', $relation);
-		case  4: return WT_I18N::translate_c('MALE/FEMALE', 'fourth %s', $relation);
-		case  5: return WT_I18N::translate_c('MALE/FEMALE', 'fifth %s', $relation);
+			return WT_I18N::translate_c('MALE/FEMALE', 'first %s', $relation);
+		case  2:
+			return WT_I18N::translate_c('MALE/FEMALE', 'second %s', $relation);
+		case  3:
+			return WT_I18N::translate_c('MALE/FEMALE', 'third %s', $relation);
+		case  4:
+			return WT_I18N::translate_c('MALE/FEMALE', 'fourth %s', $relation);
+		case  5:
+			return WT_I18N::translate_c('MALE/FEMALE', 'fifth %s', $relation);
 		default: // I18N: A Spanish relationship name, such as third great-nephew
-		         return WT_I18N::translate_c('MALE/FEMALE', '%1$d × %2$s', $n, $relation);
+			return WT_I18N::translate_c('MALE/FEMALE', '%1$d × %2$s', $n, $relation);
 		}
 	}
 }
 
-function get_relationship_name_from_path($path, WT_Individual $person1=null, WT_Individual $person2=null) {
+/**
+ * @param string        $path
+ * @param WT_Individual $person1
+ * @param WT_Individual $person2
+ *
+ * @return string
+ */
+function get_relationship_name_from_path($path, WT_Individual $person1 = null, WT_Individual $person2 = null) {
 	if (!preg_match('/^(mot|fat|par|hus|wif|spo|son|dau|chi|bro|sis|sib)*$/', $path)) {
 		// TODO: Update all the “3 RELA ” values in class_person
-		return '<span class="error">'.$path.'</span>';
+		return '<span class="error">' . $path . '</span>';
 	}
 	// The path does not include the starting person.  In some languages, the
 	// translation for a man’s (relative) is different to a woman’s (relative),
@@ -705,32 +809,36 @@ function get_relationship_name_from_path($path, WT_Individual $person1=null, WT_
 	// The sex of the last person in the relationship determines the name in
 	// many cases.  e.g. great-aunt / great-uncle
 	if (preg_match('/(fat|hus|son|bro)$/', $path)) {
-		$sex2='M';
+		$sex2 = 'M';
 	} elseif (preg_match('/(mot|wif|dau|sis)$/', $path)) {
-		$sex2='F';
+		$sex2 = 'F';
 	} else {
-		$sex2='U';
+		$sex2 = 'U';
 	}
 
 	switch ($path) {
-	case '': return WT_I18N::translate('self');
-
-	//  Level One relationships
-	case 'mot': return WT_I18N::translate('mother');
-	case 'fat': return WT_I18N::translate('father');
-	case 'par': return WT_I18N::translate('parent');
+	case '':
+		return WT_I18N::translate('self');
+		//  Level One relationships
+	case 'mot':
+		return WT_I18N::translate('mother');
+	case 'fat':
+		return WT_I18N::translate('father');
+	case 'par':
+		return WT_I18N::translate('parent');
 	case 'hus':
 		if ($person1 && $person2) {
 			foreach ($person1->getSpouseFamilies() as $family) {
 				if ($person2 === $family->getSpouse($person1)) {
 					if ($family->getFacts('_NMR')) {
 						return WT_I18N::translate_c('MALE', 'partner');
-					} elseif($family->getFacts(WT_EVENTS_DIV)) {
+					} elseif ($family->getFacts(WT_EVENTS_DIV)) {
 						return WT_I18N::translate('ex-husband');
 					}
 				}
 			}
 		}
+
 		return WT_I18N::translate('husband');
 	case 'wif':
 		if ($person1 && $person1) {
@@ -738,12 +846,13 @@ function get_relationship_name_from_path($path, WT_Individual $person1=null, WT_
 				if ($person2 === $family->getSpouse($person1)) {
 					if ($family->getFacts('_NMR')) {
 						return WT_I18N::translate_c('FEMALE', 'partner');
-					} elseif($family->getFacts(WT_EVENTS_DIV)) {
+					} elseif ($family->getFacts(WT_EVENTS_DIV)) {
 						return WT_I18N::translate('ex-wife');
 					}
 				}
 			}
 		}
+
 		return WT_I18N::translate('wife');
 	case 'spo':
 		if ($person1 && $person2) {
@@ -751,439 +860,795 @@ function get_relationship_name_from_path($path, WT_Individual $person1=null, WT_
 				if ($person2 === $family->getSpouse($person1)) {
 					if ($family->getFacts('_NMR')) {
 						return WT_I18N::translate_c('MALE/FEMALE', 'partner');
-					} elseif($family->getFacts(WT_EVENTS_DIV)) {
+					} elseif ($family->getFacts(WT_EVENTS_DIV)) {
 						return WT_I18N::translate('ex-spouse');
 					}
 				}
 			}
 		}
+
 		return WT_I18N::translate('spouse');
-	case 'son': return WT_I18N::translate('son');
-	case 'dau': return WT_I18N::translate('daughter');
-	case 'chi': return WT_I18N::translate('child');
+	case 'son':
+		return WT_I18N::translate('son');
+	case 'dau':
+		return WT_I18N::translate('daughter');
+	case 'chi':
+		return WT_I18N::translate('child');
 	case 'bro':
 		if ($person1 && $person2) {
-			$dob1=$person1->getBirthDate();
-			$dob2=$person2->getBirthDate();
+			$dob1 = $person1->getBirthDate();
+			$dob2 = $person2->getBirthDate();
 			if ($dob1->isOK() && $dob2->isOK()) {
-				if (abs($dob1->JD()-$dob2->JD())<2 && !$dob1->qual1 && !$dob2->qual1) { // Exclude BEF, AFT, etc.
+				if (abs($dob1->JD() - $dob2->JD()) < 2 && !$dob1->qual1 && !$dob2->qual1) { // Exclude BEF, AFT, etc.
 					return WT_I18N::translate('twin brother');
-				} elseif ($dob1->MaxJD()<$dob2->MinJD()) {
+				} elseif ($dob1->MaxJD() < $dob2->MinJD()) {
 					return WT_I18N::translate('younger brother');
-				} elseif ($dob1->MinJD()>$dob2->MaxJD()) {
+				} elseif ($dob1->MinJD() > $dob2->MaxJD()) {
 					return WT_I18N::translate('elder brother');
 				}
 			}
 		}
+
 		return WT_I18N::translate('brother');
 	case 'sis':
 		if ($person1 && $person2) {
-			$dob1=$person1->getBirthDate();
-			$dob2=$person2->getBirthDate();
+			$dob1 = $person1->getBirthDate();
+			$dob2 = $person2->getBirthDate();
 			if ($dob1->isOK() && $dob2->isOK()) {
-				if (abs($dob1->JD()-$dob2->JD())<2 && !$dob1->qual1 && !$dob2->qual1) { // Exclude BEF, AFT, etc.
+				if (abs($dob1->JD() - $dob2->JD()) < 2 && !$dob1->qual1 && !$dob2->qual1) { // Exclude BEF, AFT, etc.
 					return WT_I18N::translate('twin sister');
-				} elseif ($dob1->MaxJD()<$dob2->MinJD()) {
+				} elseif ($dob1->MaxJD() < $dob2->MinJD()) {
 					return WT_I18N::translate('younger sister');
-				} elseif ($dob1->MinJD()>$dob2->MaxJD()) {
+				} elseif ($dob1->MinJD() > $dob2->MaxJD()) {
 					return WT_I18N::translate('elder sister');
 				}
 			}
 		}
+
 		return WT_I18N::translate('sister');
 	case 'sib':
 		if ($person1 && $person2) {
-			$dob1=$person1->getBirthDate();
-			$dob2=$person2->getBirthDate();
+			$dob1 = $person1->getBirthDate();
+			$dob2 = $person2->getBirthDate();
 			if ($dob1->isOK() && $dob2->isOK()) {
-				if (abs($dob1->JD()-$dob2->JD())<2 && !$dob1->qual1 && !$dob2->qual1) { // Exclude BEF, AFT, etc.
+				if (abs($dob1->JD() - $dob2->JD()) < 2 && !$dob1->qual1 && !$dob2->qual1) { // Exclude BEF, AFT, etc.
 					return WT_I18N::translate('twin sibling');
-				} elseif ($dob1->MaxJD()<$dob2->MinJD()) {
+				} elseif ($dob1->MaxJD() < $dob2->MinJD()) {
 					return WT_I18N::translate('younger sibling');
-				} elseif ($dob1->MinJD()>$dob2->MaxJD()) {
+				} elseif ($dob1->MinJD() > $dob2->MaxJD()) {
 					return WT_I18N::translate('elder sibling');
 				}
 			}
 		}
+
 		return WT_I18N::translate('sibling');
 
-	// Level Two relationships
-	case 'brochi': return WT_I18N::translate_c('brother’s child', 'nephew/niece');
-	case 'brodau': return WT_I18N::translate_c('brother’s daughter', 'niece');
-	case 'broson': return WT_I18N::translate_c('brother’s son', 'nephew');
-	case 'browif': return WT_I18N::translate_c('brother’s wife', 'sister-in-law');
-	case 'chichi': return WT_I18N::translate_c('child’s child', 'grandchild');
-	case 'chidau': return WT_I18N::translate_c('child’s daughter', 'granddaughter');
-	case 'chihus': return WT_I18N::translate_c('child’s husband', 'son-in-law');
-	case 'chison': return WT_I18N::translate_c('child’s son', 'grandson');
-	case 'chispo': return WT_I18N::translate_c('child’s spouse', 'son/daughter-in-law');
-	case 'chiwif': return WT_I18N::translate_c('child’s wife', 'daughter-in-law');
-	case 'dauchi': return WT_I18N::translate_c('daughter’s child', 'grandchild');
-	case 'daudau': return WT_I18N::translate_c('daughter’s daughter', 'granddaughter');
-	case 'dauhus': return WT_I18N::translate_c('daughter’s husband', 'son-in-law');
-	case 'dauson': return WT_I18N::translate_c('daughter’s son', 'grandson');
-	case 'fatbro': return WT_I18N::translate_c('father’s brother', 'uncle');
-	case 'fatchi': return WT_I18N::translate_c('father’s child', 'half-sibling');
-	case 'fatdau': return WT_I18N::translate_c('father’s daughter', 'half-sister');
-	case 'fatfat': return WT_I18N::translate_c('father’s father', 'paternal grandfather');
-	case 'fatmot': return WT_I18N::translate_c('father’s mother', 'paternal grandmother');
-	case 'fatpar': return WT_I18N::translate_c('father’s parent', 'paternal grandparent');
-	case 'fatsib': return WT_I18N::translate_c('father’s sibling', 'aunt/uncle');
-	case 'fatsis': return WT_I18N::translate_c('father’s sister', 'aunt');
-	case 'fatson': return WT_I18N::translate_c('father’s son', 'half-brother');
-	case 'fatwif': return WT_I18N::translate_c('father’s wife', 'step-mother');
-	case 'husbro': return WT_I18N::translate_c('husband’s brother', 'brother-in-law');
-	case 'huschi': return WT_I18N::translate_c('husband’s child', 'step-child');
-	case 'husdau': return WT_I18N::translate_c('husband’s daughter', 'step-daughter');
-	case 'husfat': return WT_I18N::translate_c('husband’s father', 'father-in-law');
-	case 'husmot': return WT_I18N::translate_c('husband’s mother', 'mother-in-law');
-	case 'hussib': return WT_I18N::translate_c('husband’s sibling', 'brother/sister-in-law');
-	case 'hussis': return WT_I18N::translate_c('husband’s sister', 'sister-in-law');
-	case 'husson': return WT_I18N::translate_c('husband’s son', 'step-son');
-	case 'motbro': return WT_I18N::translate_c('mother’s brother', 'uncle');
-	case 'motchi': return WT_I18N::translate_c('mother’s child', 'half-sibling');
-	case 'motdau': return WT_I18N::translate_c('mother’s daughter', 'half-sister');
-	case 'motfat': return WT_I18N::translate_c('mother’s father', 'maternal grandfather');
-	case 'mothus': return WT_I18N::translate_c('mother’s husband', 'step-father');
-	case 'motmot': return WT_I18N::translate_c('mother’s mother', 'maternal grandmother');
-	case 'motpar': return WT_I18N::translate_c('mother’s parent', 'maternal grandparent');
-	case 'motsib': return WT_I18N::translate_c('mother’s sibling', 'aunt/uncle');
-	case 'motsis': return WT_I18N::translate_c('mother’s sister', 'aunt');
-	case 'motson': return WT_I18N::translate_c('mother’s son', 'half-brother');
-	case 'parbro': return WT_I18N::translate_c('parent’s brother', 'uncle');
-	case 'parchi': return WT_I18N::translate_c('parent’s child', 'half-sibling');
-	case 'pardau': return WT_I18N::translate_c('parent’s daughter', 'half-sister');
-	case 'parfat': return WT_I18N::translate_c('parent’s father', 'grandfather');
-	case 'parmot': return WT_I18N::translate_c('parent’s mother', 'grandmother');
-	case 'parpar': return WT_I18N::translate_c('parent’s parent', 'grandparent');
-	case 'parsib': return WT_I18N::translate_c('parent’s sibling', 'aunt/uncle');
-	case 'parsis': return WT_I18N::translate_c('parent’s sister', 'aunt');
-	case 'parson': return WT_I18N::translate_c('parent’s son', 'half-brother');
-	case 'parspo': return WT_I18N::translate_c('parent’s spouse', 'step-parent');
-	case 'sibchi': return WT_I18N::translate_c('sibling’s child', 'nephew/niece');
-	case 'sibdau': return WT_I18N::translate_c('sibling’s daughter', 'niece');
-	case 'sibson': return WT_I18N::translate_c('sibling’s son', 'nephew');
-	case 'sibspo': return WT_I18N::translate_c('sibling’s spouse', 'brother/sister-in-law');
-	case 'sischi': return WT_I18N::translate_c('sister’s child', 'nephew/niece');
-	case 'sisdau': return WT_I18N::translate_c('sister’s daughter', 'niece');
-	case 'sishus': return WT_I18N::translate_c('sister’s husband', 'brother-in-law');
-	case 'sisson': return WT_I18N::translate_c('sister’s son', 'nephew');
-	case 'sonchi': return WT_I18N::translate_c('son’s child', 'grandchild');
-	case 'sondau': return WT_I18N::translate_c('son’s daughter', 'granddaughter');
-	case 'sonson': return WT_I18N::translate_c('son’s son', 'grandson');
-	case 'sonwif': return WT_I18N::translate_c('son’s wife', 'daughter-in-law');
-	case 'spobro': return WT_I18N::translate_c('spouse’s brother', 'brother-in-law');
-	case 'spochi': return WT_I18N::translate_c('spouse’s child', 'step-child');
-	case 'spodau': return WT_I18N::translate_c('spouse’s daughter', 'step-daughter');
-	case 'spofat': return WT_I18N::translate_c('spouse’s father', 'father-in-law');
-	case 'spomot': return WT_I18N::translate_c('spouse’s mother', 'mother-in-law');
-	case 'sposis': return WT_I18N::translate_c('spouse’s sister', 'sister-in-law');
-	case 'sposon': return WT_I18N::translate_c('spouse’s son', 'step-son');
-	case 'spopar': return WT_I18N::translate_c('spouse’s parent', 'mother/father-in-law');
-	case 'sposib': return WT_I18N::translate_c('spouse’s sibling', 'brother/sister-in-law');
-	case 'wifbro': return WT_I18N::translate_c('wife’s brother', 'brother-in-law');
-	case 'wifchi': return WT_I18N::translate_c('wife’s child', 'step-child');
-	case 'wifdau': return WT_I18N::translate_c('wife’s daughter', 'step-daughter');
-	case 'wiffat': return WT_I18N::translate_c('wife’s father', 'father-in-law');
-	case 'wifmot': return WT_I18N::translate_c('wife’s mother', 'mother-in-law');
-	case 'wifsib': return WT_I18N::translate_c('wife’s sibling', 'brother/sister-in-law');
-	case 'wifsis': return WT_I18N::translate_c('wife’s sister', 'sister-in-law');
-	case 'wifson': return WT_I18N::translate_c('wife’s son', 'step-son');
+		// Level Two relationships
+	case 'brochi':
+		return WT_I18N::translate_c('brother’s child', 'nephew/niece');
+	case 'brodau':
+		return WT_I18N::translate_c('brother’s daughter', 'niece');
+	case 'broson':
+		return WT_I18N::translate_c('brother’s son', 'nephew');
+	case 'browif':
+		return WT_I18N::translate_c('brother’s wife', 'sister-in-law');
+	case 'chichi':
+		return WT_I18N::translate_c('child’s child', 'grandchild');
+	case 'chidau':
+		return WT_I18N::translate_c('child’s daughter', 'granddaughter');
+	case 'chihus':
+		return WT_I18N::translate_c('child’s husband', 'son-in-law');
+	case 'chison':
+		return WT_I18N::translate_c('child’s son', 'grandson');
+	case 'chispo':
+		return WT_I18N::translate_c('child’s spouse', 'son/daughter-in-law');
+	case 'chiwif':
+		return WT_I18N::translate_c('child’s wife', 'daughter-in-law');
+	case 'dauchi':
+		return WT_I18N::translate_c('daughter’s child', 'grandchild');
+	case 'daudau':
+		return WT_I18N::translate_c('daughter’s daughter', 'granddaughter');
+	case 'dauhus':
+		return WT_I18N::translate_c('daughter’s husband', 'son-in-law');
+	case 'dauson':
+		return WT_I18N::translate_c('daughter’s son', 'grandson');
+	case 'fatbro':
+		return WT_I18N::translate_c('father’s brother', 'uncle');
+	case 'fatchi':
+		return WT_I18N::translate_c('father’s child', 'half-sibling');
+	case 'fatdau':
+		return WT_I18N::translate_c('father’s daughter', 'half-sister');
+	case 'fatfat':
+		return WT_I18N::translate_c('father’s father', 'paternal grandfather');
+	case 'fatmot':
+		return WT_I18N::translate_c('father’s mother', 'paternal grandmother');
+	case 'fatpar':
+		return WT_I18N::translate_c('father’s parent', 'paternal grandparent');
+	case 'fatsib':
+		return WT_I18N::translate_c('father’s sibling', 'aunt/uncle');
+	case 'fatsis':
+		return WT_I18N::translate_c('father’s sister', 'aunt');
+	case 'fatson':
+		return WT_I18N::translate_c('father’s son', 'half-brother');
+	case 'fatwif':
+		return WT_I18N::translate_c('father’s wife', 'step-mother');
+	case 'husbro':
+		return WT_I18N::translate_c('husband’s brother', 'brother-in-law');
+	case 'huschi':
+		return WT_I18N::translate_c('husband’s child', 'step-child');
+	case 'husdau':
+		return WT_I18N::translate_c('husband’s daughter', 'step-daughter');
+	case 'husfat':
+		return WT_I18N::translate_c('husband’s father', 'father-in-law');
+	case 'husmot':
+		return WT_I18N::translate_c('husband’s mother', 'mother-in-law');
+	case 'hussib':
+		return WT_I18N::translate_c('husband’s sibling', 'brother/sister-in-law');
+	case 'hussis':
+		return WT_I18N::translate_c('husband’s sister', 'sister-in-law');
+	case 'husson':
+		return WT_I18N::translate_c('husband’s son', 'step-son');
+	case 'motbro':
+		return WT_I18N::translate_c('mother’s brother', 'uncle');
+	case 'motchi':
+		return WT_I18N::translate_c('mother’s child', 'half-sibling');
+	case 'motdau':
+		return WT_I18N::translate_c('mother’s daughter', 'half-sister');
+	case 'motfat':
+		return WT_I18N::translate_c('mother’s father', 'maternal grandfather');
+	case 'mothus':
+		return WT_I18N::translate_c('mother’s husband', 'step-father');
+	case 'motmot':
+		return WT_I18N::translate_c('mother’s mother', 'maternal grandmother');
+	case 'motpar':
+		return WT_I18N::translate_c('mother’s parent', 'maternal grandparent');
+	case 'motsib':
+		return WT_I18N::translate_c('mother’s sibling', 'aunt/uncle');
+	case 'motsis':
+		return WT_I18N::translate_c('mother’s sister', 'aunt');
+	case 'motson':
+		return WT_I18N::translate_c('mother’s son', 'half-brother');
+	case 'parbro':
+		return WT_I18N::translate_c('parent’s brother', 'uncle');
+	case 'parchi':
+		return WT_I18N::translate_c('parent’s child', 'half-sibling');
+	case 'pardau':
+		return WT_I18N::translate_c('parent’s daughter', 'half-sister');
+	case 'parfat':
+		return WT_I18N::translate_c('parent’s father', 'grandfather');
+	case 'parmot':
+		return WT_I18N::translate_c('parent’s mother', 'grandmother');
+	case 'parpar':
+		return WT_I18N::translate_c('parent’s parent', 'grandparent');
+	case 'parsib':
+		return WT_I18N::translate_c('parent’s sibling', 'aunt/uncle');
+	case 'parsis':
+		return WT_I18N::translate_c('parent’s sister', 'aunt');
+	case 'parson':
+		return WT_I18N::translate_c('parent’s son', 'half-brother');
+	case 'parspo':
+		return WT_I18N::translate_c('parent’s spouse', 'step-parent');
+	case 'sibchi':
+		return WT_I18N::translate_c('sibling’s child', 'nephew/niece');
+	case 'sibdau':
+		return WT_I18N::translate_c('sibling’s daughter', 'niece');
+	case 'sibson':
+		return WT_I18N::translate_c('sibling’s son', 'nephew');
+	case 'sibspo':
+		return WT_I18N::translate_c('sibling’s spouse', 'brother/sister-in-law');
+	case 'sischi':
+		return WT_I18N::translate_c('sister’s child', 'nephew/niece');
+	case 'sisdau':
+		return WT_I18N::translate_c('sister’s daughter', 'niece');
+	case 'sishus':
+		return WT_I18N::translate_c('sister’s husband', 'brother-in-law');
+	case 'sisson':
+		return WT_I18N::translate_c('sister’s son', 'nephew');
+	case 'sonchi':
+		return WT_I18N::translate_c('son’s child', 'grandchild');
+	case 'sondau':
+		return WT_I18N::translate_c('son’s daughter', 'granddaughter');
+	case 'sonson':
+		return WT_I18N::translate_c('son’s son', 'grandson');
+	case 'sonwif':
+		return WT_I18N::translate_c('son’s wife', 'daughter-in-law');
+	case 'spobro':
+		return WT_I18N::translate_c('spouse’s brother', 'brother-in-law');
+	case 'spochi':
+		return WT_I18N::translate_c('spouse’s child', 'step-child');
+	case 'spodau':
+		return WT_I18N::translate_c('spouse’s daughter', 'step-daughter');
+	case 'spofat':
+		return WT_I18N::translate_c('spouse’s father', 'father-in-law');
+	case 'spomot':
+		return WT_I18N::translate_c('spouse’s mother', 'mother-in-law');
+	case 'sposis':
+		return WT_I18N::translate_c('spouse’s sister', 'sister-in-law');
+	case 'sposon':
+		return WT_I18N::translate_c('spouse’s son', 'step-son');
+	case 'spopar':
+		return WT_I18N::translate_c('spouse’s parent', 'mother/father-in-law');
+	case 'sposib':
+		return WT_I18N::translate_c('spouse’s sibling', 'brother/sister-in-law');
+	case 'wifbro':
+		return WT_I18N::translate_c('wife’s brother', 'brother-in-law');
+	case 'wifchi':
+		return WT_I18N::translate_c('wife’s child', 'step-child');
+	case 'wifdau':
+		return WT_I18N::translate_c('wife’s daughter', 'step-daughter');
+	case 'wiffat':
+		return WT_I18N::translate_c('wife’s father', 'father-in-law');
+	case 'wifmot':
+		return WT_I18N::translate_c('wife’s mother', 'mother-in-law');
+	case 'wifsib':
+		return WT_I18N::translate_c('wife’s sibling', 'brother/sister-in-law');
+	case 'wifsis':
+		return WT_I18N::translate_c('wife’s sister', 'sister-in-law');
+	case 'wifson':
+		return WT_I18N::translate_c('wife’s son', 'step-son');
 
-	// Level Three relationships
-	// I have commented out some of the unknown-sex relationships that are unlikely to to occur.
-	// Feel free to add them in, if you think they might be needed
-	case 'brochichi': if ($sex1=='M') return WT_I18N::translate_c('(a man’s) brother’s child’s child',       'great-nephew/niece');
-	                  else            return WT_I18N::translate_c('(a woman’s) brother’s child’s child',     'great-nephew/niece');
-	case 'brochidau': if ($sex1=='M') return WT_I18N::translate_c('(a man’s) brother’s child’s daughter',    'great-niece');
-	                  else            return WT_I18N::translate_c('(a woman’s) brother’s child’s daughter',  'great-niece');
-	case 'brochison': if ($sex1=='M') return WT_I18N::translate_c('(a man’s) brother’s child’s son',         'great-nephew');
-	                  else            return WT_I18N::translate_c('(a woman’s) brother’s child’s son',       'great-nephew');
-	case 'brodauchi': if ($sex1=='M') return WT_I18N::translate_c('(a man’s) brother’s daughter’s child',    'great-nephew/niece');
-	                  else            return WT_I18N::translate_c('(a woman’s) brother’s daughter’s child',  'great-nephew/niece');
-	case 'brodaudau': if ($sex1=='M') return WT_I18N::translate_c('(a man’s) brother’s daughter’s daughter', 'great-niece');
-	                  else            return WT_I18N::translate_c('(a woman’s) brother’s daughter’s daughter', 'great-niece');
-	case 'brodauhus': return WT_I18N::translate_c('brother’s daughter’s husband',   'nephew-in-law');
-	case 'brodauson': if ($sex1=='M') return WT_I18N::translate_c('(a man’s) brother’s daughter’s son',      'great-nephew');
-	                  else            return WT_I18N::translate_c('(a woman’s) brother’s daughter’s son',    'great-nephew');
-	case 'brosonchi': if ($sex1=='M') return WT_I18N::translate_c('(a man’s) brother’s son’s child',         'great-nephew/niece');
-	                  else            return WT_I18N::translate_c('(a woman’s) brother’s son’s child',       'great-nephew/niece');
-	case 'brosondau': if ($sex1=='M') return WT_I18N::translate_c('(a man’s) brother’s son’s daughter',      'great-niece');
-	                  else            return WT_I18N::translate_c('(a woman’s) brother’s son’s daughter',    'great-niece');
-	case 'brosonson': if ($sex1=='M') return WT_I18N::translate_c('(a man’s) brother’s son’s son',           'great-nephew');
-	                  else            return WT_I18N::translate_c('(a woman’s) brother’s son’s son',         'great-nephew');
-	case 'brosonwif': return WT_I18N::translate_c('brother’s son’s wife',           'niece-in-law');
-	case 'browifbro': return WT_I18N::translate_c('brother’s wife’s brother',       'brother-in-law');
-	case 'browifsib': return WT_I18N::translate_c('brother’s wife’s sibling',       'brother/sister-in-law');
-	case 'browifsis': return WT_I18N::translate_c('brother’s wife’s sister',        'sister-in-law');
-	case 'chichichi': return WT_I18N::translate_c('child’s child’s child',          'great-grandchild');
-	case 'chichidau': return WT_I18N::translate_c('child’s child’s daughter',       'great-granddaughter');
-	case 'chichison': return WT_I18N::translate_c('child’s child’s son',            'great-grandson');
-	case 'chidauchi': return WT_I18N::translate_c('child’s daughter’s child',       'great-grandchild');
-	case 'chidaudau': return WT_I18N::translate_c('child’s daughter’s daughter',    'great-granddaughter');
-	case 'chidauhus': return WT_I18N::translate_c('child’s daughter’s husband',     'granddaughter’s husband');
-	case 'chidauson': return WT_I18N::translate_c('child’s daughter’s son',         'great-grandson');
-	case 'chisonchi': return WT_I18N::translate_c('child’s son’s child',            'great-grandchild');
-	case 'chisondau': return WT_I18N::translate_c('child’s son’s daughter',         'great-granddaughter');
-	case 'chisonson': return WT_I18N::translate_c('child’s son’s son',              'great-grandson');
-	case 'chisonwif': return WT_I18N::translate_c('child’s son’s wife',             'grandson’s wife');
-	case 'dauchichi': return WT_I18N::translate_c('daughter’s child’s child',       'great-grandchild');
-	case 'dauchidau': return WT_I18N::translate_c('daughter’s child’s daughter',    'great-granddaughter');
-	case 'dauchison': return WT_I18N::translate_c('daughter’s child’s son',         'great-grandson');
-	case 'daudauchi': return WT_I18N::translate_c('daughter’s daughter’s child',    'great-grandchild');
-	case 'daudaudau': return WT_I18N::translate_c('daughter’s daughter’s daughter', 'great-granddaughter');
-	case 'daudauhus': return WT_I18N::translate_c('daughter’s daughter’s husband',  'granddaughter’s husband');
-	case 'daudauson': return WT_I18N::translate_c('daughter’s daughter’s son',      'great-grandson');
-	case 'dauhusfat': return WT_I18N::translate_c('daughter’s husband’s father',    'son-in-law’s father');
-	case 'dauhusmot': return WT_I18N::translate_c('daughter’s husband’s mother',    'son-in-law’s mother');
-	case 'dauhuspar': return WT_I18N::translate_c('daughter’s husband’s parent',    'son-in-law’s parent');
-	case 'dausonchi': return WT_I18N::translate_c('daughter’s son’s child',         'great-grandchild');
-	case 'dausondau': return WT_I18N::translate_c('daughter’s son’s daughter',      'great-granddaughter');
-	case 'dausonson': return WT_I18N::translate_c('daughter’s son’s son',           'great-grandson');
-	case 'dausonwif': return WT_I18N::translate_c('daughter’s son’s wife',          'grandson’s wife');
-	case 'fatbrochi': return WT_I18N::translate_c('father’s brother’s child',       'first cousin');
-	case 'fatbrodau': return WT_I18N::translate_c('father’s brother’s daughter',    'first cousin');
-	case 'fatbroson': return WT_I18N::translate_c('father’s brother’s son',         'first cousin');
-	case 'fatbrowif': return WT_I18N::translate_c('father’s brother’s wife',        'aunt');
-	case 'fatfatbro': return WT_I18N::translate_c('father’s father’s brother',      'great-uncle');
-	case 'fatfatfat': return WT_I18N::translate_c('father’s father’s father',       'great-grandfather');
-	case 'fatfatmot': return WT_I18N::translate_c('father’s father’s mother',       'great-grandmother');
-	case 'fatfatpar': return WT_I18N::translate_c('father’s father’s parent',       'great-grandparent');
-	case 'fatfatsib': return WT_I18N::translate_c('father’s father’s sibling',      'great-aunt/uncle');
-	case 'fatfatsis': return WT_I18N::translate_c('father’s father’s sister',       'great-aunt');
-	case 'fatmotbro': return WT_I18N::translate_c('father’s mother’s brother',      'great-uncle');
-	case 'fatmotfat': return WT_I18N::translate_c('father’s mother’s father',       'great-grandfather');
-	case 'fatmotmot': return WT_I18N::translate_c('father’s mother’s mother',       'great-grandmother');
-	case 'fatmotpar': return WT_I18N::translate_c('father’s mother’s parent',       'great-grandparent');
-	case 'fatmotsib': return WT_I18N::translate_c('father’s mother’s sibling',      'great-aunt/uncle');
-	case 'fatmotsis': return WT_I18N::translate_c('father’s mother’s sister',       'great-aunt');
-	case 'fatparbro': return WT_I18N::translate_c('father’s parent’s brother',      'great-uncle');
-	case 'fatparfat': return WT_I18N::translate_c('father’s parent’s father',       'great-grandfather');
-	case 'fatparmot': return WT_I18N::translate_c('father’s parent’s mother',       'great-grandmother');
-	case 'fatparpar': return WT_I18N::translate_c('father’s parent’s parent',       'great-grandparent');
-	case 'fatparsib': return WT_I18N::translate_c('father’s parent’s sibling',      'great-aunt/uncle');
-	case 'fatparsis': return WT_I18N::translate_c('father’s parent’s sister',       'great-aunt');
-	case 'fatsischi': return WT_I18N::translate_c('father’s sister’s child',        'first cousin');
-	case 'fatsisdau': return WT_I18N::translate_c('father’s sister’s daughter',     'first cousin');
-	case 'fatsishus': return WT_I18N::translate_c('father’s sister’s husband',      'uncle');
-	case 'fatsisson': return WT_I18N::translate_c('father’s sister’s son',          'first cousin');
-	case 'fatwifchi': return WT_I18N::translate_c('father’s wife’s child',          'step-sibling');
-	case 'fatwifdau': return WT_I18N::translate_c('father’s wife’s daughter',       'step-sister');
-	case 'fatwifson': return WT_I18N::translate_c('father’s wife’s son',            'step-brother');
-	case 'husbrowif': return WT_I18N::translate_c('husband’s brother’s wife',       'sister-in-law');
-	case 'hussishus': return WT_I18N::translate_c('husband’s sister’s husband',     'brother-in-law');
-	case 'motbrochi': return WT_I18N::translate_c('mother’s brother’s child',       'first cousin');
-	case 'motbrodau': return WT_I18N::translate_c('mother’s brother’s daughter',    'first cousin');
-	case 'motbroson': return WT_I18N::translate_c('mother’s brother’s son',         'first cousin');
-	case 'motbrowif': return WT_I18N::translate_c('mother’s brother’s wife',        'aunt');
-	case 'motfatbro': return WT_I18N::translate_c('mother’s father’s brother',      'great-uncle');
-	case 'motfatfat': return WT_I18N::translate_c('mother’s father’s father',       'great-grandfather');
-	case 'motfatmot': return WT_I18N::translate_c('mother’s father’s mother',       'great-grandmother');
-	case 'motfatpar': return WT_I18N::translate_c('mother’s father’s parent',       'great-grandparent');
-	case 'motfatsib': return WT_I18N::translate_c('mother’s father’s sibling',      'great-aunt/uncle');
-	case 'motfatsis': return WT_I18N::translate_c('mother’s father’s sister',       'great-aunt');
-	case 'mothuschi': return WT_I18N::translate_c('mother’s husband’s child',       'step-sibling');
-	case 'mothusdau': return WT_I18N::translate_c('mother’s husband’s daughter',    'step-sister');
-	case 'mothusson': return WT_I18N::translate_c('mother’s husband’s son',         'step-brother');
-	case 'motmotbro': return WT_I18N::translate_c('mother’s mother’s brother',      'great-uncle');
-	case 'motmotfat': return WT_I18N::translate_c('mother’s mother’s father',       'great-grandfather');
-	case 'motmotmot': return WT_I18N::translate_c('mother’s mother’s mother',       'great-grandmother');
-	case 'motmotpar': return WT_I18N::translate_c('mother’s mother’s parent',       'great-grandparent');
-	case 'motmotsib': return WT_I18N::translate_c('mother’s mother’s sibling',      'great-aunt/uncle');
-	case 'motmotsis': return WT_I18N::translate_c('mother’s mother’s sister',       'great-aunt');
-	case 'motparbro': return WT_I18N::translate_c('mother’s parent’s brother',      'great-uncle');
-	case 'motparfat': return WT_I18N::translate_c('mother’s parent’s father',       'great-grandfather');
-	case 'motparmot': return WT_I18N::translate_c('mother’s parent’s mother',       'great-grandmother');
-	case 'motparpar': return WT_I18N::translate_c('mother’s parent’s parent',       'great-grandparent');
-	case 'motparsib': return WT_I18N::translate_c('mother’s parent’s sibling',      'great-aunt/uncle');
-	case 'motparsis': return WT_I18N::translate_c('mother’s parent’s sister',       'great-aunt');
-	case 'motsischi': return WT_I18N::translate_c('mother’s sister’s child',        'first cousin');
-	case 'motsisdau': return WT_I18N::translate_c('mother’s sister’s daughter',     'first cousin');
-	case 'motsishus': return WT_I18N::translate_c('mother’s sister’s husband',      'uncle');
-	case 'motsisson': return WT_I18N::translate_c('mother’s sister’s son',          'first cousin');
-	case 'parbrowif': return WT_I18N::translate_c('parent’s brother’s wife',        'aunt');
-	case 'parfatbro': return WT_I18N::translate_c('parent’s father’s brother',      'great-uncle');
-	case 'parfatfat': return WT_I18N::translate_c('parent’s father’s father',       'great-grandfather');
-	case 'parfatmot': return WT_I18N::translate_c('parent’s father’s mother',       'great-grandmother');
-	case 'parfatpar': return WT_I18N::translate_c('parent’s father’s parent',       'great-grandparent');
-	case 'parfatsib': return WT_I18N::translate_c('parent’s father’s sibling',      'great-aunt/uncle');
-	case 'parfatsis': return WT_I18N::translate_c('parent’s father’s sister',       'great-aunt');
-	case 'parmotbro': return WT_I18N::translate_c('parent’s mother’s brother',      'great-uncle');
-	case 'parmotfat': return WT_I18N::translate_c('parent’s mother’s father',       'great-grandfather');
-	case 'parmotmot': return WT_I18N::translate_c('parent’s mother’s mother',       'great-grandmother');
-	case 'parmotpar': return WT_I18N::translate_c('parent’s mother’s parent',       'great-grandparent');
-	case 'parmotsib': return WT_I18N::translate_c('parent’s mother’s sibling',      'great-aunt/uncle');
-	case 'parmotsis': return WT_I18N::translate_c('parent’s mother’s sister',       'great-aunt');
-	case 'parparbro': return WT_I18N::translate_c('parent’s parent’s brother',      'great-uncle');
-	case 'parparfat': return WT_I18N::translate_c('parent’s parent’s father',       'great-grandfather');
-	case 'parparmot': return WT_I18N::translate_c('parent’s parent’s mother',       'great-grandmother');
-	case 'parparpar': return WT_I18N::translate_c('parent’s parent’s parent',       'great-grandparent');
-	case 'parparsib': return WT_I18N::translate_c('parent’s parent’s sibling',      'great-aunt/uncle');
-	case 'parparsis': return WT_I18N::translate_c('parent’s parent’s sister',       'great-aunt');
-	case 'parsishus': return WT_I18N::translate_c('parent’s sister’s husband',      'uncle');
-	case 'parspochi': return WT_I18N::translate_c('parent’s spouse’s child',        'step-sibling');
-	case 'parspodau': return WT_I18N::translate_c('parent’s spouse’s daughter',     'step-sister');
-	case 'parsposon': return WT_I18N::translate_c('parent’s spouse’s son',          'step-brother');
-	case 'sibchichi': return WT_I18N::translate_c('sibling’s child’s child',        'great-nephew/niece');
-	case 'sibchidau': return WT_I18N::translate_c('sibling’s child’s daughter',     'great-niece');
-	case 'sibchison': return WT_I18N::translate_c('sibling’s child’s son',          'great-nephew');
-	case 'sibdauchi': return WT_I18N::translate_c('sibling’s daughter’s child',     'great-nephew/niece');
-	case 'sibdaudau': return WT_I18N::translate_c('sibling’s daughter’s daughter',  'great-niece');
-	case 'sibdauhus': return WT_I18N::translate_c('sibling’s daughter’s husband',   'nephew-in-law');
-	case 'sibdauson': return WT_I18N::translate_c('sibling’s daughter’s son',       'great-nephew');
-	case 'sibsonchi': return WT_I18N::translate_c('sibling’s son’s child',          'great-nephew/niece');
-	case 'sibsondau': return WT_I18N::translate_c('sibling’s son’s daughter',       'great-niece');
-	case 'sibsonson': return WT_I18N::translate_c('sibling’s son’s son',            'great-nephew');
-	case 'sibsonwif': return WT_I18N::translate_c('sibling’s son’s wife',           'niece-in-law');
-	case 'sischichi': if ($sex1=='M') return WT_I18N::translate_c('(a man’s) sister’s child’s child',          'great-nephew/niece');
-	                  else            return WT_I18N::translate_c('(a woman’s) sister’s child’s child',        'great-nephew/niece');
-	case 'sischidau': if ($sex1=='M') return WT_I18N::translate_c('(a man’s) sister’s child’s daughter',       'great-niece');
-	                  else            return WT_I18N::translate_c('(a woman’s) sister’s child’s daughter',     'great-niece');
-	case 'sischison': if ($sex1=='M') return WT_I18N::translate_c('(a man’s) sister’s child’s son',            'great-nephew');
-	                  else            return WT_I18N::translate_c('(a woman’s) sister’s child’s son',          'great-nephew');
-	case 'sisdauchi': if ($sex1=='M') return WT_I18N::translate_c('(a man’s) sister’s daughter’s child',       'great-nephew/niece');
-	                  else            return WT_I18N::translate_c('(a woman’s) sister’s daughter’s child',     'great-nephew/niece');
-	case 'sisdaudau': if ($sex1=='M') return WT_I18N::translate_c('(a man’s) sister’s daughter’s daughter',    'great-niece');
-	                  else            return WT_I18N::translate_c('(a woman’s) sister’s daughter’s daughter',  'great-niece');
-	case 'sisdauhus': return WT_I18N::translate_c('sisters’s daughter’s husband',   'nephew-in-law');
-	case 'sisdauson': if ($sex1=='M') return WT_I18N::translate_c('(a man’s) sister’s daughter’s son',         'great-nephew');
-	                  else            return WT_I18N::translate_c('(a woman’s) sister’s daughter’s son',       'great-nephew');
-	case 'sishusbro': return WT_I18N::translate_c('sister’s husband’s brother',     'brother-in-law');
-	case 'sishussib': return WT_I18N::translate_c('sister’s husband’s sibling',     'brother/sister-in-law');
-	case 'sishussis': return WT_I18N::translate_c('sister’s husband’s sister',      'sister-in-law');
-	case 'sissonchi': if ($sex1=='M') return WT_I18N::translate_c('(a man’s) sister’s son’s child',            'great-nephew/niece');
-	                  else            return WT_I18N::translate_c('(a woman’s) sister’s son’s child',          'great-nephew/niece');
-	case 'sissondau': if ($sex1=='M') return WT_I18N::translate_c('(a man’s) sister’s son’s daughter',         'great-niece');
-	                  else            return WT_I18N::translate_c('(a woman’s) sister’s son’s daughter',       'great-niece');
-	case 'sissonson': if ($sex1=='M') return WT_I18N::translate_c('(a man’s) sister’s son’s son',              'great-nephew');
-	                  else            return WT_I18N::translate_c('(a woman’s) sister’s son’s son',            'great-nephew');
-	case 'sissonwif': return WT_I18N::translate_c('sisters’s son’s wife',           'niece-in-law');
-	case 'sonchichi': return WT_I18N::translate_c('son’s child’s child',            'great-grandchild');
-	case 'sonchidau': return WT_I18N::translate_c('son’s child’s daughter',         'great-granddaughter');
-	case 'sonchison': return WT_I18N::translate_c('son’s child’s son',              'great-grandson');
-	case 'sondauchi': return WT_I18N::translate_c('son’s daughter’s child',         'great-grandchild');
-	case 'sondaudau': return WT_I18N::translate_c('son’s daughter’s daughter',      'great-granddaughter');
-	case 'sondauhus': return WT_I18N::translate_c('son’s daughter’s husband',       'granddaughter’s husband');
-	case 'sondauson': return WT_I18N::translate_c('son’s daughter’s son',           'great-grandson');
-	case 'sonsonchi': return WT_I18N::translate_c('son’s son’s child',              'great-grandchild');
-	case 'sonsondau': return WT_I18N::translate_c('son’s son’s daughter',           'great-granddaughter');
-	case 'sonsonson': return WT_I18N::translate_c('son’s son’s son',                'great-grandson');
-	case 'sonsonwif': return WT_I18N::translate_c('son’s son’s wife',               'grandson’s wife');
-	case 'sonwiffat': return WT_I18N::translate_c('son’s wife’s father',            'daughter-in-law’s father');
-	case 'sonwifmot': return WT_I18N::translate_c('son’s wife’s mother',            'daughter-in-law’s mother');
-	case 'sonwifpar': return WT_I18N::translate_c('son’s wife’s parent',            'daughter-in-law’s parent');
-	case 'wifbrowif': return WT_I18N::translate_c('wife’s brother’s wife',          'sister-in-law');
-	case 'wifsishus': return WT_I18N::translate_c('wife’s sister’s husband',        'brother-in-law');
+		// Level Three relationships
+		// I have commented out some of the unknown-sex relationships that are unlikely to to occur.
+		// Feel free to add them in, if you think they might be needed
+	case 'brochichi':
+		if ($sex1 === 'M') {
+			return WT_I18N::translate_c('(a man’s) brother’s child’s child', 'great-nephew/niece');
+		} else {
+			return WT_I18N::translate_c('(a woman’s) brother’s child’s child', 'great-nephew/niece');
+		}
+	case 'brochidau':
+		if ($sex1 === 'M') {
+			return WT_I18N::translate_c('(a man’s) brother’s child’s daughter', 'great-niece');
+		} else {
+			return WT_I18N::translate_c('(a woman’s) brother’s child’s daughter', 'great-niece');
+		}
+	case 'brochison':
+		if ($sex1 === 'M') {
+			return WT_I18N::translate_c('(a man’s) brother’s child’s son', 'great-nephew');
+		} else {
+			return WT_I18N::translate_c('(a woman’s) brother’s child’s son', 'great-nephew');
+		}
+	case 'brodauchi':
+		if ($sex1 === 'M') {
+			return WT_I18N::translate_c('(a man’s) brother’s daughter’s child', 'great-nephew/niece');
+		} else {
+			return WT_I18N::translate_c('(a woman’s) brother’s daughter’s child', 'great-nephew/niece');
+		}
+	case 'brodaudau':
+		if ($sex1 === 'M') {
+			return WT_I18N::translate_c('(a man’s) brother’s daughter’s daughter', 'great-niece');
+		} else {
+			return WT_I18N::translate_c('(a woman’s) brother’s daughter’s daughter', 'great-niece');
+		}
+	case 'brodauhus':
+		return WT_I18N::translate_c('brother’s daughter’s husband', 'nephew-in-law');
+	case 'brodauson':
+		if ($sex1 === 'M') {
+			return WT_I18N::translate_c('(a man’s) brother’s daughter’s son', 'great-nephew');
+		} else {
+			return WT_I18N::translate_c('(a woman’s) brother’s daughter’s son', 'great-nephew');
+		}
+	case 'brosonchi':
+		if ($sex1 === 'M') {
+			return WT_I18N::translate_c('(a man’s) brother’s son’s child', 'great-nephew/niece');
+		} else {
+			return WT_I18N::translate_c('(a woman’s) brother’s son’s child', 'great-nephew/niece');
+		}
+	case 'brosondau':
+		if ($sex1 === 'M') {
+			return WT_I18N::translate_c('(a man’s) brother’s son’s daughter', 'great-niece');
+		} else {
+			return WT_I18N::translate_c('(a woman’s) brother’s son’s daughter', 'great-niece');
+		}
+	case 'brosonson':
+		if ($sex1 === 'M') {
+			return WT_I18N::translate_c('(a man’s) brother’s son’s son', 'great-nephew');
+		} else {
+			return WT_I18N::translate_c('(a woman’s) brother’s son’s son', 'great-nephew');
+		}
+	case 'brosonwif':
+		return WT_I18N::translate_c('brother’s son’s wife', 'niece-in-law');
+	case 'browifbro':
+		return WT_I18N::translate_c('brother’s wife’s brother', 'brother-in-law');
+	case 'browifsib':
+		return WT_I18N::translate_c('brother’s wife’s sibling', 'brother/sister-in-law');
+	case 'browifsis':
+		return WT_I18N::translate_c('brother’s wife’s sister', 'sister-in-law');
+	case 'chichichi':
+		return WT_I18N::translate_c('child’s child’s child', 'great-grandchild');
+	case 'chichidau':
+		return WT_I18N::translate_c('child’s child’s daughter', 'great-granddaughter');
+	case 'chichison':
+		return WT_I18N::translate_c('child’s child’s son', 'great-grandson');
+	case 'chidauchi':
+		return WT_I18N::translate_c('child’s daughter’s child', 'great-grandchild');
+	case 'chidaudau':
+		return WT_I18N::translate_c('child’s daughter’s daughter', 'great-granddaughter');
+	case 'chidauhus':
+		return WT_I18N::translate_c('child’s daughter’s husband', 'granddaughter’s husband');
+	case 'chidauson':
+		return WT_I18N::translate_c('child’s daughter’s son', 'great-grandson');
+	case 'chisonchi':
+		return WT_I18N::translate_c('child’s son’s child', 'great-grandchild');
+	case 'chisondau':
+		return WT_I18N::translate_c('child’s son’s daughter', 'great-granddaughter');
+	case 'chisonson':
+		return WT_I18N::translate_c('child’s son’s son', 'great-grandson');
+	case 'chisonwif':
+		return WT_I18N::translate_c('child’s son’s wife', 'grandson’s wife');
+	case 'dauchichi':
+		return WT_I18N::translate_c('daughter’s child’s child', 'great-grandchild');
+	case 'dauchidau':
+		return WT_I18N::translate_c('daughter’s child’s daughter', 'great-granddaughter');
+	case 'dauchison':
+		return WT_I18N::translate_c('daughter’s child’s son', 'great-grandson');
+	case 'daudauchi':
+		return WT_I18N::translate_c('daughter’s daughter’s child', 'great-grandchild');
+	case 'daudaudau':
+		return WT_I18N::translate_c('daughter’s daughter’s daughter', 'great-granddaughter');
+	case 'daudauhus':
+		return WT_I18N::translate_c('daughter’s daughter’s husband', 'granddaughter’s husband');
+	case 'daudauson':
+		return WT_I18N::translate_c('daughter’s daughter’s son', 'great-grandson');
+	case 'dauhusfat':
+		return WT_I18N::translate_c('daughter’s husband’s father', 'son-in-law’s father');
+	case 'dauhusmot':
+		return WT_I18N::translate_c('daughter’s husband’s mother', 'son-in-law’s mother');
+	case 'dauhuspar':
+		return WT_I18N::translate_c('daughter’s husband’s parent', 'son-in-law’s parent');
+	case 'dausonchi':
+		return WT_I18N::translate_c('daughter’s son’s child', 'great-grandchild');
+	case 'dausondau':
+		return WT_I18N::translate_c('daughter’s son’s daughter', 'great-granddaughter');
+	case 'dausonson':
+		return WT_I18N::translate_c('daughter’s son’s son', 'great-grandson');
+	case 'dausonwif':
+		return WT_I18N::translate_c('daughter’s son’s wife', 'grandson’s wife');
+	case 'fatbrochi':
+		return WT_I18N::translate_c('father’s brother’s child', 'first cousin');
+	case 'fatbrodau':
+		return WT_I18N::translate_c('father’s brother’s daughter', 'first cousin');
+	case 'fatbroson':
+		return WT_I18N::translate_c('father’s brother’s son', 'first cousin');
+	case 'fatbrowif':
+		return WT_I18N::translate_c('father’s brother’s wife', 'aunt');
+	case 'fatfatbro':
+		return WT_I18N::translate_c('father’s father’s brother', 'great-uncle');
+	case 'fatfatfat':
+		return WT_I18N::translate_c('father’s father’s father', 'great-grandfather');
+	case 'fatfatmot':
+		return WT_I18N::translate_c('father’s father’s mother', 'great-grandmother');
+	case 'fatfatpar':
+		return WT_I18N::translate_c('father’s father’s parent', 'great-grandparent');
+	case 'fatfatsib':
+		return WT_I18N::translate_c('father’s father’s sibling', 'great-aunt/uncle');
+	case 'fatfatsis':
+		return WT_I18N::translate_c('father’s father’s sister', 'great-aunt');
+	case 'fatmotbro':
+		return WT_I18N::translate_c('father’s mother’s brother', 'great-uncle');
+	case 'fatmotfat':
+		return WT_I18N::translate_c('father’s mother’s father', 'great-grandfather');
+	case 'fatmotmot':
+		return WT_I18N::translate_c('father’s mother’s mother', 'great-grandmother');
+	case 'fatmotpar':
+		return WT_I18N::translate_c('father’s mother’s parent', 'great-grandparent');
+	case 'fatmotsib':
+		return WT_I18N::translate_c('father’s mother’s sibling', 'great-aunt/uncle');
+	case 'fatmotsis':
+		return WT_I18N::translate_c('father’s mother’s sister', 'great-aunt');
+	case 'fatparbro':
+		return WT_I18N::translate_c('father’s parent’s brother', 'great-uncle');
+	case 'fatparfat':
+		return WT_I18N::translate_c('father’s parent’s father', 'great-grandfather');
+	case 'fatparmot':
+		return WT_I18N::translate_c('father’s parent’s mother', 'great-grandmother');
+	case 'fatparpar':
+		return WT_I18N::translate_c('father’s parent’s parent', 'great-grandparent');
+	case 'fatparsib':
+		return WT_I18N::translate_c('father’s parent’s sibling', 'great-aunt/uncle');
+	case 'fatparsis':
+		return WT_I18N::translate_c('father’s parent’s sister', 'great-aunt');
+	case 'fatsischi':
+		return WT_I18N::translate_c('father’s sister’s child', 'first cousin');
+	case 'fatsisdau':
+		return WT_I18N::translate_c('father’s sister’s daughter', 'first cousin');
+	case 'fatsishus':
+		return WT_I18N::translate_c('father’s sister’s husband', 'uncle');
+	case 'fatsisson':
+		return WT_I18N::translate_c('father’s sister’s son', 'first cousin');
+	case 'fatwifchi':
+		return WT_I18N::translate_c('father’s wife’s child', 'step-sibling');
+	case 'fatwifdau':
+		return WT_I18N::translate_c('father’s wife’s daughter', 'step-sister');
+	case 'fatwifson':
+		return WT_I18N::translate_c('father’s wife’s son', 'step-brother');
+	case 'husbrowif':
+		return WT_I18N::translate_c('husband’s brother’s wife', 'sister-in-law');
+	case 'hussishus':
+		return WT_I18N::translate_c('husband’s sister’s husband', 'brother-in-law');
+	case 'motbrochi':
+		return WT_I18N::translate_c('mother’s brother’s child', 'first cousin');
+	case 'motbrodau':
+		return WT_I18N::translate_c('mother’s brother’s daughter', 'first cousin');
+	case 'motbroson':
+		return WT_I18N::translate_c('mother’s brother’s son', 'first cousin');
+	case 'motbrowif':
+		return WT_I18N::translate_c('mother’s brother’s wife', 'aunt');
+	case 'motfatbro':
+		return WT_I18N::translate_c('mother’s father’s brother', 'great-uncle');
+	case 'motfatfat':
+		return WT_I18N::translate_c('mother’s father’s father', 'great-grandfather');
+	case 'motfatmot':
+		return WT_I18N::translate_c('mother’s father’s mother', 'great-grandmother');
+	case 'motfatpar':
+		return WT_I18N::translate_c('mother’s father’s parent', 'great-grandparent');
+	case 'motfatsib':
+		return WT_I18N::translate_c('mother’s father’s sibling', 'great-aunt/uncle');
+	case 'motfatsis':
+		return WT_I18N::translate_c('mother’s father’s sister', 'great-aunt');
+	case 'mothuschi':
+		return WT_I18N::translate_c('mother’s husband’s child', 'step-sibling');
+	case 'mothusdau':
+		return WT_I18N::translate_c('mother’s husband’s daughter', 'step-sister');
+	case 'mothusson':
+		return WT_I18N::translate_c('mother’s husband’s son', 'step-brother');
+	case 'motmotbro':
+		return WT_I18N::translate_c('mother’s mother’s brother', 'great-uncle');
+	case 'motmotfat':
+		return WT_I18N::translate_c('mother’s mother’s father', 'great-grandfather');
+	case 'motmotmot':
+		return WT_I18N::translate_c('mother’s mother’s mother', 'great-grandmother');
+	case 'motmotpar':
+		return WT_I18N::translate_c('mother’s mother’s parent', 'great-grandparent');
+	case 'motmotsib':
+		return WT_I18N::translate_c('mother’s mother’s sibling', 'great-aunt/uncle');
+	case 'motmotsis':
+		return WT_I18N::translate_c('mother’s mother’s sister', 'great-aunt');
+	case 'motparbro':
+		return WT_I18N::translate_c('mother’s parent’s brother', 'great-uncle');
+	case 'motparfat':
+		return WT_I18N::translate_c('mother’s parent’s father', 'great-grandfather');
+	case 'motparmot':
+		return WT_I18N::translate_c('mother’s parent’s mother', 'great-grandmother');
+	case 'motparpar':
+		return WT_I18N::translate_c('mother’s parent’s parent', 'great-grandparent');
+	case 'motparsib':
+		return WT_I18N::translate_c('mother’s parent’s sibling', 'great-aunt/uncle');
+	case 'motparsis':
+		return WT_I18N::translate_c('mother’s parent’s sister', 'great-aunt');
+	case 'motsischi':
+		return WT_I18N::translate_c('mother’s sister’s child', 'first cousin');
+	case 'motsisdau':
+		return WT_I18N::translate_c('mother’s sister’s daughter', 'first cousin');
+	case 'motsishus':
+		return WT_I18N::translate_c('mother’s sister’s husband', 'uncle');
+	case 'motsisson':
+		return WT_I18N::translate_c('mother’s sister’s son', 'first cousin');
+	case 'parbrowif':
+		return WT_I18N::translate_c('parent’s brother’s wife', 'aunt');
+	case 'parfatbro':
+		return WT_I18N::translate_c('parent’s father’s brother', 'great-uncle');
+	case 'parfatfat':
+		return WT_I18N::translate_c('parent’s father’s father', 'great-grandfather');
+	case 'parfatmot':
+		return WT_I18N::translate_c('parent’s father’s mother', 'great-grandmother');
+	case 'parfatpar':
+		return WT_I18N::translate_c('parent’s father’s parent', 'great-grandparent');
+	case 'parfatsib':
+		return WT_I18N::translate_c('parent’s father’s sibling', 'great-aunt/uncle');
+	case 'parfatsis':
+		return WT_I18N::translate_c('parent’s father’s sister', 'great-aunt');
+	case 'parmotbro':
+		return WT_I18N::translate_c('parent’s mother’s brother', 'great-uncle');
+	case 'parmotfat':
+		return WT_I18N::translate_c('parent’s mother’s father', 'great-grandfather');
+	case 'parmotmot':
+		return WT_I18N::translate_c('parent’s mother’s mother', 'great-grandmother');
+	case 'parmotpar':
+		return WT_I18N::translate_c('parent’s mother’s parent', 'great-grandparent');
+	case 'parmotsib':
+		return WT_I18N::translate_c('parent’s mother’s sibling', 'great-aunt/uncle');
+	case 'parmotsis':
+		return WT_I18N::translate_c('parent’s mother’s sister', 'great-aunt');
+	case 'parparbro':
+		return WT_I18N::translate_c('parent’s parent’s brother', 'great-uncle');
+	case 'parparfat':
+		return WT_I18N::translate_c('parent’s parent’s father', 'great-grandfather');
+	case 'parparmot':
+		return WT_I18N::translate_c('parent’s parent’s mother', 'great-grandmother');
+	case 'parparpar':
+		return WT_I18N::translate_c('parent’s parent’s parent', 'great-grandparent');
+	case 'parparsib':
+		return WT_I18N::translate_c('parent’s parent’s sibling', 'great-aunt/uncle');
+	case 'parparsis':
+		return WT_I18N::translate_c('parent’s parent’s sister', 'great-aunt');
+	case 'parsishus':
+		return WT_I18N::translate_c('parent’s sister’s husband', 'uncle');
+	case 'parspochi':
+		return WT_I18N::translate_c('parent’s spouse’s child', 'step-sibling');
+	case 'parspodau':
+		return WT_I18N::translate_c('parent’s spouse’s daughter', 'step-sister');
+	case 'parsposon':
+		return WT_I18N::translate_c('parent’s spouse’s son', 'step-brother');
+	case 'sibchichi':
+		return WT_I18N::translate_c('sibling’s child’s child', 'great-nephew/niece');
+	case 'sibchidau':
+		return WT_I18N::translate_c('sibling’s child’s daughter', 'great-niece');
+	case 'sibchison':
+		return WT_I18N::translate_c('sibling’s child’s son', 'great-nephew');
+	case 'sibdauchi':
+		return WT_I18N::translate_c('sibling’s daughter’s child', 'great-nephew/niece');
+	case 'sibdaudau':
+		return WT_I18N::translate_c('sibling’s daughter’s daughter', 'great-niece');
+	case 'sibdauhus':
+		return WT_I18N::translate_c('sibling’s daughter’s husband', 'nephew-in-law');
+	case 'sibdauson':
+		return WT_I18N::translate_c('sibling’s daughter’s son', 'great-nephew');
+	case 'sibsonchi':
+		return WT_I18N::translate_c('sibling’s son’s child', 'great-nephew/niece');
+	case 'sibsondau':
+		return WT_I18N::translate_c('sibling’s son’s daughter', 'great-niece');
+	case 'sibsonson':
+		return WT_I18N::translate_c('sibling’s son’s son', 'great-nephew');
+	case 'sibsonwif':
+		return WT_I18N::translate_c('sibling’s son’s wife', 'niece-in-law');
+	case 'sischichi':
+		if ($sex1 === 'M') {
+			return WT_I18N::translate_c('(a man’s) sister’s child’s child', 'great-nephew/niece');
+		} else {
+			return WT_I18N::translate_c('(a woman’s) sister’s child’s child', 'great-nephew/niece');
+		}
+	case 'sischidau':
+		if ($sex1 === 'M') {
+			return WT_I18N::translate_c('(a man’s) sister’s child’s daughter', 'great-niece');
+		} else {
+			return WT_I18N::translate_c('(a woman’s) sister’s child’s daughter', 'great-niece');
+		}
+	case 'sischison':
+		if ($sex1 === 'M') {
+			return WT_I18N::translate_c('(a man’s) sister’s child’s son', 'great-nephew');
+		} else {
+			return WT_I18N::translate_c('(a woman’s) sister’s child’s son', 'great-nephew');
+		}
+	case 'sisdauchi':
+		if ($sex1 === 'M') {
+			return WT_I18N::translate_c('(a man’s) sister’s daughter’s child', 'great-nephew/niece');
+		} else {
+			return WT_I18N::translate_c('(a woman’s) sister’s daughter’s child', 'great-nephew/niece');
+		}
+	case 'sisdaudau':
+		if ($sex1 === 'M') {
+			return WT_I18N::translate_c('(a man’s) sister’s daughter’s daughter', 'great-niece');
+		} else {
+			return WT_I18N::translate_c('(a woman’s) sister’s daughter’s daughter', 'great-niece');
+		}
+	case 'sisdauhus':
+		return WT_I18N::translate_c('sisters’s daughter’s husband', 'nephew-in-law');
+	case 'sisdauson':
+		if ($sex1 === 'M') {
+			return WT_I18N::translate_c('(a man’s) sister’s daughter’s son', 'great-nephew');
+		} else {
+			return WT_I18N::translate_c('(a woman’s) sister’s daughter’s son', 'great-nephew');
+		}
+	case 'sishusbro':
+		return WT_I18N::translate_c('sister’s husband’s brother', 'brother-in-law');
+	case 'sishussib':
+		return WT_I18N::translate_c('sister’s husband’s sibling', 'brother/sister-in-law');
+	case 'sishussis':
+		return WT_I18N::translate_c('sister’s husband’s sister', 'sister-in-law');
+	case 'sissonchi':
+		if ($sex1 === 'M') {
+			return WT_I18N::translate_c('(a man’s) sister’s son’s child', 'great-nephew/niece');
+		} else {
+			return WT_I18N::translate_c('(a woman’s) sister’s son’s child', 'great-nephew/niece');
+		}
+	case 'sissondau':
+		if ($sex1 === 'M') {
+			return WT_I18N::translate_c('(a man’s) sister’s son’s daughter', 'great-niece');
+		} else {
+			return WT_I18N::translate_c('(a woman’s) sister’s son’s daughter', 'great-niece');
+		}
+	case 'sissonson':
+		if ($sex1 === 'M') {
+			return WT_I18N::translate_c('(a man’s) sister’s son’s son', 'great-nephew');
+		} else {
+			return WT_I18N::translate_c('(a woman’s) sister’s son’s son', 'great-nephew');
+		}
+	case 'sissonwif':
+		return WT_I18N::translate_c('sisters’s son’s wife', 'niece-in-law');
+	case 'sonchichi':
+		return WT_I18N::translate_c('son’s child’s child', 'great-grandchild');
+	case 'sonchidau':
+		return WT_I18N::translate_c('son’s child’s daughter', 'great-granddaughter');
+	case 'sonchison':
+		return WT_I18N::translate_c('son’s child’s son', 'great-grandson');
+	case 'sondauchi':
+		return WT_I18N::translate_c('son’s daughter’s child', 'great-grandchild');
+	case 'sondaudau':
+		return WT_I18N::translate_c('son’s daughter’s daughter', 'great-granddaughter');
+	case 'sondauhus':
+		return WT_I18N::translate_c('son’s daughter’s husband', 'granddaughter’s husband');
+	case 'sondauson':
+		return WT_I18N::translate_c('son’s daughter’s son', 'great-grandson');
+	case 'sonsonchi':
+		return WT_I18N::translate_c('son’s son’s child', 'great-grandchild');
+	case 'sonsondau':
+		return WT_I18N::translate_c('son’s son’s daughter', 'great-granddaughter');
+	case 'sonsonson':
+		return WT_I18N::translate_c('son’s son’s son', 'great-grandson');
+	case 'sonsonwif':
+		return WT_I18N::translate_c('son’s son’s wife', 'grandson’s wife');
+	case 'sonwiffat':
+		return WT_I18N::translate_c('son’s wife’s father', 'daughter-in-law’s father');
+	case 'sonwifmot':
+		return WT_I18N::translate_c('son’s wife’s mother', 'daughter-in-law’s mother');
+	case 'sonwifpar':
+		return WT_I18N::translate_c('son’s wife’s parent', 'daughter-in-law’s parent');
+	case 'wifbrowif':
+		return WT_I18N::translate_c('wife’s brother’s wife', 'sister-in-law');
+	case 'wifsishus':
+		return WT_I18N::translate_c('wife’s sister’s husband', 'brother-in-law');
 
-	// Some “special case” level four relationships that have specific names in certain languages
-	case 'fatfatbrowif': return WT_I18N::translate_c('father’s father’s brother’s wife',    'great-aunt');
-	case 'fatfatsibspo': return WT_I18N::translate_c('father’s father’s sibling’s spouse',  'great-aunt/uncle');
-	case 'fatfatsishus': return WT_I18N::translate_c('father’s father’s sister’s husband',  'great-uncle');
-	case 'fatmotbrowif': return WT_I18N::translate_c('father’s mother’s brother’s wife',    'great-aunt');
-	case 'fatmotsibspo': return WT_I18N::translate_c('father’s mother’s sibling’s spouse',  'great-aunt/uncle');
-	case 'fatmotsishus': return WT_I18N::translate_c('father’s mother’s sister’s husband',  'great-uncle');
-	case 'fatparbrowif': return WT_I18N::translate_c('father’s parent’s brother’s wife',    'great-aunt');
-	case 'fatparsibspo': return WT_I18N::translate_c('father’s parent’s sibling’s spouse',  'great-aunt/uncle');
-	case 'fatparsishus': return WT_I18N::translate_c('father’s parent’s sister’s husband',  'great-uncle');
-	case 'motfatbrowif': return WT_I18N::translate_c('mother’s father’s brother’s wife',    'great-aunt');
-	case 'motfatsibspo': return WT_I18N::translate_c('mother’s father’s sibling’s spouse',  'great-aunt/uncle');
-	case 'motfatsishus': return WT_I18N::translate_c('mother’s father’s sister’s husband',  'great-uncle');
-	case 'motmotbrowif': return WT_I18N::translate_c('mother’s mother’s brother’s wife',    'great-aunt');
-	case 'motmotsibspo': return WT_I18N::translate_c('mother’s mother’s sibling’s spouse',  'great-aunt/uncle');
-	case 'motmotsishus': return WT_I18N::translate_c('mother’s mother’s sister’s husband',  'great-uncle');
-	case 'motparbrowif': return WT_I18N::translate_c('mother’s parent’s brother’s wife',    'great-aunt');
-	case 'motparsibspo': return WT_I18N::translate_c('mother’s parent’s sibling’s spouse',  'great-aunt/uncle');
-	case 'motparsishus': return WT_I18N::translate_c('mother’s parent’s sister’s husband',  'great-uncle');
-	case 'parfatbrowif': return WT_I18N::translate_c('parent’s father’s brother’s wife',    'great-aunt');
-	case 'parfatsibspo': return WT_I18N::translate_c('parent’s father’s sibling’s spouse',  'great-aunt/uncle');
-	case 'parfatsishus': return WT_I18N::translate_c('parent’s father’s sister’s husband',  'great-uncle');
-	case 'parmotbrowif': return WT_I18N::translate_c('parent’s mother’s brother’s wife',    'great-aunt');
-	case 'parmotsibspo': return WT_I18N::translate_c('parent’s mother’s sibling’s spouse',  'great-aunt/uncle');
-	case 'parmotsishus': return WT_I18N::translate_c('parent’s mother’s sister’s husband',  'great-uncle');
-	case 'parparbrowif': return WT_I18N::translate_c('parent’s parent’s brother’s wife',    'great-aunt');
-	case 'parparsibspo': return WT_I18N::translate_c('parent’s parent’s sibling’s spouse',  'great-aunt/uncle');
-	case 'parparsishus': return WT_I18N::translate_c('parent’s parent’s sister’s husband',  'great-uncle');
-	case 'fatfatbrodau': return WT_I18N::translate_c('father’s father’s brother’s daughter','first cousin once removed ascending');
-	case 'fatfatbroson': return WT_I18N::translate_c('father’s father’s brother’s son',     'first cousin once removed ascending');
-	case 'fatfatbrochi': return WT_I18N::translate_c('father’s father’s brother’s child', 'first cousin once removed ascending');
-	case 'fatfatsisdau': return WT_I18N::translate_c('father’s father’s sister’s daughter', 'first cousin once removed ascending');
-	case 'fatfatsisson': return WT_I18N::translate_c('father’s father’s sister’s son',      'first cousin once removed ascending');
-	case 'fatfatsischi': return WT_I18N::translate_c('father’s father’s sister’s child',    'first cousin once removed ascending');
-	case 'fatmotbrodau': return WT_I18N::translate_c('father’s mother’s brother’s daughter','first cousin once removed ascending');
-	case 'fatmotbroson': return WT_I18N::translate_c('father’s mother’s brother’s son',     'first cousin once removed ascending');
-	case 'fatmotbrochi': return WT_I18N::translate_c('father’s mother’s brother’s child',   'first cousin once removed ascending');
-	case 'fatmotsisdau': return WT_I18N::translate_c('father’s mother’s sister’s daughter', 'first cousin once removed ascending');
-	case 'fatmotsisson': return WT_I18N::translate_c('father’s mother’s sister’s son',      'first cousin once removed ascending');
-	case 'fatmotsischi': return WT_I18N::translate_c('father’s mother’s sister’s child',    'first cousin once removed ascending');
-	case 'motfatbrodau': return WT_I18N::translate_c('mother’s father’s brother’s daughter','first cousin once removed ascending');
-	case 'motfatbroson': return WT_I18N::translate_c('mother’s father’s brother’s son',     'first cousin once removed ascending');
-	case 'motfatbrochi': return WT_I18N::translate_c('mother’s father’s brother’s child',   'first cousin once removed ascending');
-	case 'motfatsisdau': return WT_I18N::translate_c('mother’s father’s sister’s daughter', 'first cousin once removed ascending');
-	case 'motfatsisson': return WT_I18N::translate_c('mother’s father’s sister’s son',      'first cousin once removed ascending');
-	case 'motfatsischi': return WT_I18N::translate_c('mother’s father’s sister’s child',    'first cousin once removed ascending');
-	case 'motmotbrodau': return WT_I18N::translate_c('mother’s mother’s brother’s daughter','first cousin once removed ascending');
-	case 'motmotbroson': return WT_I18N::translate_c('mother’s mother’s brother’s son',     'first cousin once removed ascending');
-	case 'motmotbrochi': return WT_I18N::translate_c('mother’s mother’s brother’s child',   'first cousin once removed ascending');
-	case 'motmotsisdau': return WT_I18N::translate_c('mother’s mother’s sister’s daughter', 'first cousin once removed ascending');
-	case 'motmotsisson': return WT_I18N::translate_c('mother’s mother’s sister’s son',      'first cousin once removed ascending');
-	case 'motmotsischi': return WT_I18N::translate_c('mother’s mother’s sister’s child',    'first cousin once removed ascending');
+		// Some “special case” level four relationships that have specific names in certain languages
+	case 'fatfatbrowif':
+		return WT_I18N::translate_c('father’s father’s brother’s wife', 'great-aunt');
+	case 'fatfatsibspo':
+		return WT_I18N::translate_c('father’s father’s sibling’s spouse', 'great-aunt/uncle');
+	case 'fatfatsishus':
+		return WT_I18N::translate_c('father’s father’s sister’s husband', 'great-uncle');
+	case 'fatmotbrowif':
+		return WT_I18N::translate_c('father’s mother’s brother’s wife', 'great-aunt');
+	case 'fatmotsibspo':
+		return WT_I18N::translate_c('father’s mother’s sibling’s spouse', 'great-aunt/uncle');
+	case 'fatmotsishus':
+		return WT_I18N::translate_c('father’s mother’s sister’s husband', 'great-uncle');
+	case 'fatparbrowif':
+		return WT_I18N::translate_c('father’s parent’s brother’s wife', 'great-aunt');
+	case 'fatparsibspo':
+		return WT_I18N::translate_c('father’s parent’s sibling’s spouse', 'great-aunt/uncle');
+	case 'fatparsishus':
+		return WT_I18N::translate_c('father’s parent’s sister’s husband', 'great-uncle');
+	case 'motfatbrowif':
+		return WT_I18N::translate_c('mother’s father’s brother’s wife', 'great-aunt');
+	case 'motfatsibspo':
+		return WT_I18N::translate_c('mother’s father’s sibling’s spouse', 'great-aunt/uncle');
+	case 'motfatsishus':
+		return WT_I18N::translate_c('mother’s father’s sister’s husband', 'great-uncle');
+	case 'motmotbrowif':
+		return WT_I18N::translate_c('mother’s mother’s brother’s wife', 'great-aunt');
+	case 'motmotsibspo':
+		return WT_I18N::translate_c('mother’s mother’s sibling’s spouse', 'great-aunt/uncle');
+	case 'motmotsishus':
+		return WT_I18N::translate_c('mother’s mother’s sister’s husband', 'great-uncle');
+	case 'motparbrowif':
+		return WT_I18N::translate_c('mother’s parent’s brother’s wife', 'great-aunt');
+	case 'motparsibspo':
+		return WT_I18N::translate_c('mother’s parent’s sibling’s spouse', 'great-aunt/uncle');
+	case 'motparsishus':
+		return WT_I18N::translate_c('mother’s parent’s sister’s husband', 'great-uncle');
+	case 'parfatbrowif':
+		return WT_I18N::translate_c('parent’s father’s brother’s wife', 'great-aunt');
+	case 'parfatsibspo':
+		return WT_I18N::translate_c('parent’s father’s sibling’s spouse', 'great-aunt/uncle');
+	case 'parfatsishus':
+		return WT_I18N::translate_c('parent’s father’s sister’s husband', 'great-uncle');
+	case 'parmotbrowif':
+		return WT_I18N::translate_c('parent’s mother’s brother’s wife', 'great-aunt');
+	case 'parmotsibspo':
+		return WT_I18N::translate_c('parent’s mother’s sibling’s spouse', 'great-aunt/uncle');
+	case 'parmotsishus':
+		return WT_I18N::translate_c('parent’s mother’s sister’s husband', 'great-uncle');
+	case 'parparbrowif':
+		return WT_I18N::translate_c('parent’s parent’s brother’s wife', 'great-aunt');
+	case 'parparsibspo':
+		return WT_I18N::translate_c('parent’s parent’s sibling’s spouse', 'great-aunt/uncle');
+	case 'parparsishus':
+		return WT_I18N::translate_c('parent’s parent’s sister’s husband', 'great-uncle');
+	case 'fatfatbrodau':
+		return WT_I18N::translate_c('father’s father’s brother’s daughter', 'first cousin once removed ascending');
+	case 'fatfatbroson':
+		return WT_I18N::translate_c('father’s father’s brother’s son', 'first cousin once removed ascending');
+	case 'fatfatbrochi':
+		return WT_I18N::translate_c('father’s father’s brother’s child', 'first cousin once removed ascending');
+	case 'fatfatsisdau':
+		return WT_I18N::translate_c('father’s father’s sister’s daughter', 'first cousin once removed ascending');
+	case 'fatfatsisson':
+		return WT_I18N::translate_c('father’s father’s sister’s son', 'first cousin once removed ascending');
+	case 'fatfatsischi':
+		return WT_I18N::translate_c('father’s father’s sister’s child', 'first cousin once removed ascending');
+	case 'fatmotbrodau':
+		return WT_I18N::translate_c('father’s mother’s brother’s daughter', 'first cousin once removed ascending');
+	case 'fatmotbroson':
+		return WT_I18N::translate_c('father’s mother’s brother’s son', 'first cousin once removed ascending');
+	case 'fatmotbrochi':
+		return WT_I18N::translate_c('father’s mother’s brother’s child', 'first cousin once removed ascending');
+	case 'fatmotsisdau':
+		return WT_I18N::translate_c('father’s mother’s sister’s daughter', 'first cousin once removed ascending');
+	case 'fatmotsisson':
+		return WT_I18N::translate_c('father’s mother’s sister’s son', 'first cousin once removed ascending');
+	case 'fatmotsischi':
+		return WT_I18N::translate_c('father’s mother’s sister’s child', 'first cousin once removed ascending');
+	case 'motfatbrodau':
+		return WT_I18N::translate_c('mother’s father’s brother’s daughter', 'first cousin once removed ascending');
+	case 'motfatbroson':
+		return WT_I18N::translate_c('mother’s father’s brother’s son', 'first cousin once removed ascending');
+	case 'motfatbrochi':
+		return WT_I18N::translate_c('mother’s father’s brother’s child', 'first cousin once removed ascending');
+	case 'motfatsisdau':
+		return WT_I18N::translate_c('mother’s father’s sister’s daughter', 'first cousin once removed ascending');
+	case 'motfatsisson':
+		return WT_I18N::translate_c('mother’s father’s sister’s son', 'first cousin once removed ascending');
+	case 'motfatsischi':
+		return WT_I18N::translate_c('mother’s father’s sister’s child', 'first cousin once removed ascending');
+	case 'motmotbrodau':
+		return WT_I18N::translate_c('mother’s mother’s brother’s daughter', 'first cousin once removed ascending');
+	case 'motmotbroson':
+		return WT_I18N::translate_c('mother’s mother’s brother’s son', 'first cousin once removed ascending');
+	case 'motmotbrochi':
+		return WT_I18N::translate_c('mother’s mother’s brother’s child', 'first cousin once removed ascending');
+	case 'motmotsisdau':
+		return WT_I18N::translate_c('mother’s mother’s sister’s daughter', 'first cousin once removed ascending');
+	case 'motmotsisson':
+		return WT_I18N::translate_c('mother’s mother’s sister’s son', 'first cousin once removed ascending');
+	case 'motmotsischi':
+		return WT_I18N::translate_c('mother’s mother’s sister’s child', 'first cousin once removed ascending');
 	}
 
 	// Some “special case” level five relationships that have specific names in certain languages
 	if (preg_match('/^(mot|fat|par)fatbro(son|dau|chi)dau$/', $path)) {
-		return WT_I18N::translate_c('grandfather’s brother’s granddaughter',  'second cousin');
-	} else if (preg_match('/^(mot|fat|par)fatbro(son|dau|chi)son$/', $path)) {
-		return WT_I18N::translate_c('grandfather’s brother’s grandson',       'second cousin');
-	} else if (preg_match('/^(mot|fat|par)fatbro(son|dau|chi)chi$/', $path)) {
-		return WT_I18N::translate_c('grandfather’s brother’s grandchild',     'second cousin');
-	} else if (preg_match('/^(mot|fat|par)fatsis(son|dau|chi)dau$/', $path)) {
-		return WT_I18N::translate_c('grandfather’s sister’s granddaughter',   'second cousin');
-	} else if (preg_match('/^(mot|fat|par)fatsis(son|dau|chi)son$/', $path)) {
-		return WT_I18N::translate_c('grandfather’s sister’s grandson',        'second cousin');
-	} else if (preg_match('/^(mot|fat|par)fatsis(son|dau|chi)chi$/', $path)) {
-		return WT_I18N::translate_c('grandfather’s sister’s grandchild',      'second cousin');
-	} else if (preg_match('/^(mot|fat|par)fatsib(son|dau|chi)dau$/', $path)) {
-		return WT_I18N::translate_c('grandfather’s sibling’s granddaughter',  'second cousin');
-	} else if (preg_match('/^(mot|fat|par)fatsib(son|dau|chi)son$/', $path)) {
-		return WT_I18N::translate_c('grandfather’s sibling’s grandson',       'second cousin');
-	} else if (preg_match('/^(mot|fat|par)fatsib(son|dau|chi)chi$/', $path)) {
-		return WT_I18N::translate_c('grandfather’s sibling’s grandchild',     'second cousin');
-	} else if (preg_match('/^(mot|fat|par)motbro(son|dau|chi)dau$/', $path)) {
-		return WT_I18N::translate_c('grandmother’s brother’s granddaughter',  'second cousin');
-	} else if (preg_match('/^(mot|fat|par)motbro(son|dau|chi)son$/', $path)) {
-		return WT_I18N::translate_c('grandmother’s brother’s grandson',       'second cousin');
-	} else if (preg_match('/^(mot|fat|par)motbro(son|dau|chi)chi$/', $path)) {
-		return WT_I18N::translate_c('grandmother’s brother’s grandchild',     'second cousin');
-	} else if (preg_match('/^(mot|fat|par)motsis(son|dau|chi)dau$/', $path)) {
-		return WT_I18N::translate_c('grandmother’s sister’s granddaughter',   'second cousin');
-	} else if (preg_match('/^(mot|fat|par)motsis(son|dau|chi)son$/', $path)) {
-		return WT_I18N::translate_c('grandmother’s sister’s grandson',        'second cousin');
-	} else if (preg_match('/^(mot|fat|par)motsis(son|dau|chi)chi$/', $path)) {
-		return WT_I18N::translate_c('grandmother’s sister’s grandchild',      'second cousin');
-	} else if (preg_match('/^(mot|fat|par)motsib(son|dau|chi)dau$/', $path)) {
-		return WT_I18N::translate_c('grandmother’s sibling’s granddaughter',  'second cousin');
-	} else if (preg_match('/^(mot|fat|par)motsib(son|dau|chi)son$/', $path)) {
-		return WT_I18N::translate_c('grandmother’s sibling’s grandson',       'second cousin');
-	} else if (preg_match('/^(mot|fat|par)motsib(son|dau|chi)chi$/', $path)) {
-		return WT_I18N::translate_c('grandmother’s sibling’s grandchild',     'second cousin');
-	} else if (preg_match('/^(mot|fat|par)parbro(son|dau|chi)dau$/', $path)) {
-		return WT_I18N::translate_c('grandparent’s brother’s granddaughter',  'second cousin');
-	} else if (preg_match('/^(mot|fat|par)parbro(son|dau|chi)son$/', $path)) {
-		return WT_I18N::translate_c('grandparent’s brother’s grandson',       'second cousin');
-	} else if (preg_match('/^(mot|fat|par)parbro(son|dau|chi)chi$/', $path)) {
-		return WT_I18N::translate_c('grandparent’s brother’s grandchild',     'second cousin');
-	} else if (preg_match('/^(mot|fat|par)parsis(son|dau|chi)dau$/', $path)) {
-		return WT_I18N::translate_c('grandparent’s sister’s granddaughter',   'second cousin');
-	} else if (preg_match('/^(mot|fat|par)parsis(son|dau|chi)son$/', $path)) {
-		return WT_I18N::translate_c('grandparent’s sister’s grandson',        'second cousin');
-	} else if (preg_match('/^(mot|fat|par)parsis(son|dau|chi)chi$/', $path)) {
-		return WT_I18N::translate_c('grandparent’s sister’s grandchild',      'second cousin');
-	} else if (preg_match('/^(mot|fat|par)parsib(son|dau|chi)dau$/', $path)) {
-		return WT_I18N::translate_c('grandparent’s sibling’s granddaughter',  'second cousin');
-	} else if (preg_match('/^(mot|fat|par)parsib(son|dau|chi)son$/', $path)) {
-		return WT_I18N::translate_c('grandparent’s sibling’s grandson',       'second cousin');
-	} else if (preg_match('/^(mot|fat|par)parsib(son|dau|chi)chi$/', $path)) {
-		return WT_I18N::translate_c('grandparent’s sibling’s grandchild',     'second cousin');
+		return WT_I18N::translate_c('grandfather’s brother’s granddaughter', 'second cousin');
+	} elseif (preg_match('/^(mot|fat|par)fatbro(son|dau|chi)son$/', $path)) {
+		return WT_I18N::translate_c('grandfather’s brother’s grandson', 'second cousin');
+	} elseif (preg_match('/^(mot|fat|par)fatbro(son|dau|chi)chi$/', $path)) {
+		return WT_I18N::translate_c('grandfather’s brother’s grandchild', 'second cousin');
+	} elseif (preg_match('/^(mot|fat|par)fatsis(son|dau|chi)dau$/', $path)) {
+		return WT_I18N::translate_c('grandfather’s sister’s granddaughter', 'second cousin');
+	} elseif (preg_match('/^(mot|fat|par)fatsis(son|dau|chi)son$/', $path)) {
+		return WT_I18N::translate_c('grandfather’s sister’s grandson', 'second cousin');
+	} elseif (preg_match('/^(mot|fat|par)fatsis(son|dau|chi)chi$/', $path)) {
+		return WT_I18N::translate_c('grandfather’s sister’s grandchild', 'second cousin');
+	} elseif (preg_match('/^(mot|fat|par)fatsib(son|dau|chi)dau$/', $path)) {
+		return WT_I18N::translate_c('grandfather’s sibling’s granddaughter', 'second cousin');
+	} elseif (preg_match('/^(mot|fat|par)fatsib(son|dau|chi)son$/', $path)) {
+		return WT_I18N::translate_c('grandfather’s sibling’s grandson', 'second cousin');
+	} elseif (preg_match('/^(mot|fat|par)fatsib(son|dau|chi)chi$/', $path)) {
+		return WT_I18N::translate_c('grandfather’s sibling’s grandchild', 'second cousin');
+	} elseif (preg_match('/^(mot|fat|par)motbro(son|dau|chi)dau$/', $path)) {
+		return WT_I18N::translate_c('grandmother’s brother’s granddaughter', 'second cousin');
+	} elseif (preg_match('/^(mot|fat|par)motbro(son|dau|chi)son$/', $path)) {
+		return WT_I18N::translate_c('grandmother’s brother’s grandson', 'second cousin');
+	} elseif (preg_match('/^(mot|fat|par)motbro(son|dau|chi)chi$/', $path)) {
+		return WT_I18N::translate_c('grandmother’s brother’s grandchild', 'second cousin');
+	} elseif (preg_match('/^(mot|fat|par)motsis(son|dau|chi)dau$/', $path)) {
+		return WT_I18N::translate_c('grandmother’s sister’s granddaughter', 'second cousin');
+	} elseif (preg_match('/^(mot|fat|par)motsis(son|dau|chi)son$/', $path)) {
+		return WT_I18N::translate_c('grandmother’s sister’s grandson', 'second cousin');
+	} elseif (preg_match('/^(mot|fat|par)motsis(son|dau|chi)chi$/', $path)) {
+		return WT_I18N::translate_c('grandmother’s sister’s grandchild', 'second cousin');
+	} elseif (preg_match('/^(mot|fat|par)motsib(son|dau|chi)dau$/', $path)) {
+		return WT_I18N::translate_c('grandmother’s sibling’s granddaughter', 'second cousin');
+	} elseif (preg_match('/^(mot|fat|par)motsib(son|dau|chi)son$/', $path)) {
+		return WT_I18N::translate_c('grandmother’s sibling’s grandson', 'second cousin');
+	} elseif (preg_match('/^(mot|fat|par)motsib(son|dau|chi)chi$/', $path)) {
+		return WT_I18N::translate_c('grandmother’s sibling’s grandchild', 'second cousin');
+	} elseif (preg_match('/^(mot|fat|par)parbro(son|dau|chi)dau$/', $path)) {
+		return WT_I18N::translate_c('grandparent’s brother’s granddaughter', 'second cousin');
+	} elseif (preg_match('/^(mot|fat|par)parbro(son|dau|chi)son$/', $path)) {
+		return WT_I18N::translate_c('grandparent’s brother’s grandson', 'second cousin');
+	} elseif (preg_match('/^(mot|fat|par)parbro(son|dau|chi)chi$/', $path)) {
+		return WT_I18N::translate_c('grandparent’s brother’s grandchild', 'second cousin');
+	} elseif (preg_match('/^(mot|fat|par)parsis(son|dau|chi)dau$/', $path)) {
+		return WT_I18N::translate_c('grandparent’s sister’s granddaughter', 'second cousin');
+	} elseif (preg_match('/^(mot|fat|par)parsis(son|dau|chi)son$/', $path)) {
+		return WT_I18N::translate_c('grandparent’s sister’s grandson', 'second cousin');
+	} elseif (preg_match('/^(mot|fat|par)parsis(son|dau|chi)chi$/', $path)) {
+		return WT_I18N::translate_c('grandparent’s sister’s grandchild', 'second cousin');
+	} elseif (preg_match('/^(mot|fat|par)parsib(son|dau|chi)dau$/', $path)) {
+		return WT_I18N::translate_c('grandparent’s sibling’s granddaughter', 'second cousin');
+	} elseif (preg_match('/^(mot|fat|par)parsib(son|dau|chi)son$/', $path)) {
+		return WT_I18N::translate_c('grandparent’s sibling’s grandson', 'second cousin');
+	} elseif (preg_match('/^(mot|fat|par)parsib(son|dau|chi)chi$/', $path)) {
+		return WT_I18N::translate_c('grandparent’s sibling’s grandchild', 'second cousin');
 	}
 
 	// Look for generic/pattern relationships.
@@ -1194,69 +1659,99 @@ function get_relationship_name_from_path($path, WT_Individual $person1=null, WT_
 
 	if (preg_match('/^((?:mot|fat|par)+)(bro|sis|sib)$/', $path, $match)) {
 		// siblings of direct ancestors
-		$up=strlen($match[1])/3;
-		$bef_last=substr($path, -6, 3);
+		$up = strlen($match[1]) / 3;
+		$bef_last = substr($path, -6, 3);
 		switch ($up) {
 		case 3:
 			switch ($sex2) {
 			case 'M':
-				if ($bef_last=='fat')      return WT_I18N::translate_c('great-grandfather’s brother', 'great-great-uncle');
-				else if ($bef_last=='mot') return WT_I18N::translate_c('great-grandmother’s brother', 'great-great-uncle');
-				else                       return WT_I18N::translate_c('great-grandparent’s brother', 'great-great-uncle');
-			case 'F': return WT_I18N::translate('great-great-aunt');
-			case 'U': return WT_I18N::translate('great-great-aunt/uncle');
+				if ($bef_last === 'fat') {
+					return WT_I18N::translate_c('great-grandfather’s brother', 'great-great-uncle');
+				} elseif ($bef_last === 'mot') {
+					return WT_I18N::translate_c('great-grandmother’s brother', 'great-great-uncle');
+				} else {
+					return WT_I18N::translate_c('great-grandparent’s brother', 'great-great-uncle');
+				}
+			case 'F':
+				return WT_I18N::translate('great-great-aunt');
+			default:
+				return WT_I18N::translate('great-great-aunt/uncle');
 			}
-			break;
 		case 4:
 			switch ($sex2) {
 			case 'M':
-				if ($bef_last=='fat')      return WT_I18N::translate_c('great-great-grandfather’s brother', 'great-great-great-uncle');
-				else if ($bef_last=='mot') return WT_I18N::translate_c('great-great-grandmother’s brother', 'great-great-great-uncle');
-				else                       return WT_I18N::translate_c('great-great-grandparent’s brother', 'great-great-great-uncle');
-			case 'F': return WT_I18N::translate('great-great-great-aunt');
-			case 'U': return WT_I18N::translate('great-great-great-aunt/uncle');
+				if ($bef_last === 'fat') {
+					return WT_I18N::translate_c('great-great-grandfather’s brother', 'great-great-great-uncle');
+				} elseif ($bef_last === 'mot') {
+					return WT_I18N::translate_c('great-great-grandmother’s brother', 'great-great-great-uncle');
+				} else {
+					return WT_I18N::translate_c('great-great-grandparent’s brother', 'great-great-great-uncle');
+				}
+			case 'F':
+				return WT_I18N::translate('great-great-great-aunt');
+			default:
+				return WT_I18N::translate('great-great-great-aunt/uncle');
 			}
-			break;
 		case 5:
 			switch ($sex2) {
 			case 'M':
-				if ($bef_last=='fat')      return WT_I18N::translate_c('great-great-great-grandfather’s brother', 'great ×4 uncle');
-				else if ($bef_last=='mot') return WT_I18N::translate_c('great-great-great-grandmother’s brother', 'great ×4 uncle');
-				else                       return WT_I18N::translate_c('great-great-great-grandparent’s brother', 'great ×4 uncle');
-			case 'F': return WT_I18N::translate('great ×4 aunt');
-			case 'U': return WT_I18N::translate('great ×4 aunt/uncle');
+				if ($bef_last === 'fat') {
+					return WT_I18N::translate_c('great-great-great-grandfather’s brother', 'great ×4 uncle');
+				} elseif ($bef_last === 'mot') {
+					return WT_I18N::translate_c('great-great-great-grandmother’s brother', 'great ×4 uncle');
+				} else {
+					return WT_I18N::translate_c('great-great-great-grandparent’s brother', 'great ×4 uncle');
+				}
+			case 'F':
+				return WT_I18N::translate('great ×4 aunt');
+			default:
+				return WT_I18N::translate('great ×4 aunt/uncle');
 			}
-			break;
 		case 6:
 			switch ($sex2) {
 			case 'M':
-				if ($bef_last=='fat')      return WT_I18N::translate_c('great ×4 grandfather’s brother', 'great ×5 uncle');
-				else if ($bef_last=='mot') return WT_I18N::translate_c('great ×4 grandmother’s brother', 'great ×5 uncle');
-				else                       return WT_I18N::translate_c('great ×4 grandparent’s brother', 'great ×5 uncle');
-			case 'F': return WT_I18N::translate('great ×5 aunt');
-			case 'U': return WT_I18N::translate('great ×5 aunt/uncle');
+				if ($bef_last === 'fat') {
+					return WT_I18N::translate_c('great ×4 grandfather’s brother', 'great ×5 uncle');
+				} elseif ($bef_last === 'mot') {
+					return WT_I18N::translate_c('great ×4 grandmother’s brother', 'great ×5 uncle');
+				} else {
+					return WT_I18N::translate_c('great ×4 grandparent’s brother', 'great ×5 uncle');
+				}
+			case 'F':
+				return WT_I18N::translate('great ×5 aunt');
+			default:
+				return WT_I18N::translate('great ×5 aunt/uncle');
 			}
-			break;
 		case 7:
 			switch ($sex2) {
 			case 'M':
-				if ($bef_last=='fat')      return WT_I18N::translate_c('great ×5 grandfather’s brother', 'great ×6 uncle');
-				else if ($bef_last=='mot') return WT_I18N::translate_c('great ×5 grandmother’s brother', 'great ×6 uncle');
-				else                       return WT_I18N::translate_c('great ×5 grandparent’s brother', 'great ×6 uncle');
-			case 'F': return WT_I18N::translate('great ×6 aunt');
-			case 'U': return WT_I18N::translate('great ×6 aunt/uncle');
+				if ($bef_last === 'fat') {
+					return WT_I18N::translate_c('great ×5 grandfather’s brother', 'great ×6 uncle');
+				} elseif ($bef_last === 'mot') {
+					return WT_I18N::translate_c('great ×5 grandmother’s brother', 'great ×6 uncle');
+				} else {
+					return WT_I18N::translate_c('great ×5 grandparent’s brother', 'great ×6 uncle');
+				}
+			case 'F':
+				return WT_I18N::translate('great ×6 aunt');
+			default:
+				return WT_I18N::translate('great ×6 aunt/uncle');
 			}
-			break;
 		case 8:
 			switch ($sex2) {
 			case 'M':
-				if ($bef_last=='fat')      return WT_I18N::translate_c('great ×6 grandfather’s brother', 'great ×7 uncle');
-				else if ($bef_last=='mot') return WT_I18N::translate_c('great ×6 grandmother’s brother', 'great ×7 uncle');
-				else                       return WT_I18N::translate_c('great ×6 grandparent’s brother', 'great ×7 uncle');
-			case 'F': return WT_I18N::translate('great ×7 aunt');
-			case 'U': return WT_I18N::translate('great ×7 aunt/uncle');
+				if ($bef_last === 'fat') {
+					return WT_I18N::translate_c('great ×6 grandfather’s brother', 'great ×7 uncle');
+				} elseif ($bef_last === 'mot') {
+					return WT_I18N::translate_c('great ×6 grandmother’s brother', 'great ×7 uncle');
+				} else {
+					return WT_I18N::translate_c('great ×6 grandparent’s brother', 'great ×7 uncle');
+				}
+			case 'F':
+				return WT_I18N::translate('great ×7 aunt');
+			default:
+				return WT_I18N::translate('great ×7 aunt/uncle');
 			}
-			break;
 		default:
 			// Different languages have different rules for naming generations.
 			// An English great ×12 uncle is a Danish great ×10 uncle.
@@ -1265,18 +1760,27 @@ function get_relationship_name_from_path($path, WT_Individual $person1=null, WT_
 			switch (WT_LOCALE) {
 			case 'da':
 				switch ($sex2) {
-				case 'M': return WT_I18N::translate('great ×%d uncle', $up-4);
-				case 'F': return WT_I18N::translate('great ×%d aunt', $up-4);
-				case 'U': return WT_I18N::translate('great ×%d aunt/uncle', $up-4);
+				case 'M':
+					return WT_I18N::translate('great ×%d uncle', $up - 4);
+				case 'F':
+					return WT_I18N::translate('great ×%d aunt', $up - 4);
+				default:
+					return WT_I18N::translate('great ×%d aunt/uncle', $up - 4);
 				}
 			case 'pl':
 				switch ($sex2) {
 				case 'M':
-					if ($bef_last=='fat')      return WT_I18N::translate_c('great ×(%d-1) grandfather’s brother', 'great ×%d uncle', $up-2);
-					else if ($bef_last=='mot') return WT_I18N::translate_c('great ×(%d-1) grandmother’s brother', 'great ×%d uncle', $up-2);
-					else                       return WT_I18N::translate_c('great ×(%d-1) grandparent’s brother', 'great ×%d uncle', $up-2);
-				case 'F': return WT_I18N::translate('great ×%d aunt', $up-2);
-				case 'U': return WT_I18N::translate('great ×%d aunt/uncle', $up-2);
+					if ($bef_last === 'fat') {
+						return WT_I18N::translate_c('great ×(%d-1) grandfather’s brother', 'great ×%d uncle', $up - 2);
+					} elseif ($bef_last === 'mot') {
+						return WT_I18N::translate_c('great ×(%d-1) grandmother’s brother', 'great ×%d uncle', $up - 2);
+					} else {
+						return WT_I18N::translate_c('great ×(%d-1) grandparent’s brother', 'great ×%d uncle', $up - 2);
+					}
+				case 'F':
+					return WT_I18N::translate('great ×%d aunt', $up - 2);
+				default:
+					return WT_I18N::translate('great ×%d aunt/uncle', $up - 2);
 				}
 			case 'it': // Source: Michele Locati
 			case 'en_AU':
@@ -1285,41 +1789,43 @@ function get_relationship_name_from_path($path, WT_Individual $person1=null, WT_
 			default:
 				switch ($sex2) {
 				case 'M': // I18N: if you need a different number for %d, contact the developers, as a code-change is required
-				          return WT_I18N::translate('great ×%d uncle', $up-1);
-				case 'F': return WT_I18N::translate('great ×%d aunt', $up-1);
-				case 'U': return WT_I18N::translate('great ×%d aunt/uncle', $up-1);
+					return WT_I18N::translate('great ×%d uncle', $up - 1);
+				case 'F':
+					return WT_I18N::translate('great ×%d aunt', $up - 1);
+				default:
+					return WT_I18N::translate('great ×%d aunt/uncle', $up - 1);
 				}
 			}
 		}
 	}
 	if (preg_match('/^(?:bro|sis|sib)((?:son|dau|chi)+)$/', $path, $match)) {
 		// direct descendants of siblings
-		$down=strlen($match[1])/3+1; // Add one, as we count generations from the common ancestor
-		$first=substr($path, 0, 3);
+		$down = strlen($match[1]) / 3 + 1; // Add one, as we count generations from the common ancestor
+		$first = substr($path, 0, 3);
 		switch ($down) {
 		case 4:
 			switch ($sex2) {
 			case 'M':
-				if ($first=='bro' && $sex1=='M') {
+				if ($first === 'bro' && $sex1 === 'M') {
 					return WT_I18N::translate_c('(a man’s) brother’s great-grandson', 'great-great-nephew');
-				} else if ($first=='sis' && $sex1=='M') {
-					return WT_I18N::translate_c('(a man’s) sister’s great-grandson',  'great-great-nephew');
+				} elseif ($first === 'sis' && $sex1 === 'M') {
+					return WT_I18N::translate_c('(a man’s) sister’s great-grandson', 'great-great-nephew');
 				} else {
 					return WT_I18N::translate_c('(a woman’s) great-great-nephew', 'great-great-nephew');
 				}
 			case 'F':
-				if ($first=='bro' && $sex1=='M') {
+				if ($first === 'bro' && $sex1 === 'M') {
 					return WT_I18N::translate_c('(a man’s) brother’s great-granddaughter', 'great-great-niece');
-				} else if ($first=='sis' && $sex1=='M') {
-					return WT_I18N::translate_c('(a man’s) sister’s great-granddaughter',  'great-great-niece');
+				} elseif ($first === 'sis' && $sex1 === 'M') {
+					return WT_I18N::translate_c('(a man’s) sister’s great-granddaughter', 'great-great-niece');
 				} else {
 					return WT_I18N::translate_c('(a woman’s) great-great-niece', 'great-great-niece');
 				}
-			case 'U':
-				if ($first=='bro' && $sex1=='M') {
+			default:
+				if ($first === 'bro' && $sex1 === 'M') {
 					return WT_I18N::translate_c('(a man’s) brother’s great-grandchild', 'great-great-nephew/niece');
-				} else if ($first=='sis' && $sex1=='M') {
-					return WT_I18N::translate_c('(a man’s) sister’s great-grandchild',  'great-great-nephew/niece');
+				} elseif ($first === 'sis' && $sex1 === 'M') {
+					return WT_I18N::translate_c('(a man’s) sister’s great-grandchild', 'great-great-nephew/niece');
 				} else {
 					return WT_I18N::translate_c('(a woman’s) great-great-nephew/niece', 'great-great-nephew/niece');
 				}
@@ -1327,82 +1833,82 @@ function get_relationship_name_from_path($path, WT_Individual $person1=null, WT_
 		case 5:
 			switch ($sex2) {
 			case 'M':
-				if ($first=='bro' && $sex1=='M') {
+				if ($first === 'bro' && $sex1 === 'M') {
 					return WT_I18N::translate_c('(a man’s) brother’s great-great-grandson', 'great-great-great-nephew');
-				} else if ($first=='sis' && $sex1=='M') {
-					return WT_I18N::translate_c('(a man’s) sister’s great-great-grandson',  'great-great-great-nephew');
+				} elseif ($first === 'sis' && $sex1 === 'M') {
+					return WT_I18N::translate_c('(a man’s) sister’s great-great-grandson', 'great-great-great-nephew');
 				} else {
-					return WT_I18N::translate_c('(a woman’s) great-great-great-nephew',  'great-great-great-nephew');
+					return WT_I18N::translate_c('(a woman’s) great-great-great-nephew', 'great-great-great-nephew');
 				}
 			case 'F':
-				if ($first=='bro' && $sex1=='M') {
+				if ($first === 'bro' && $sex1 === 'M') {
 					return WT_I18N::translate_c('(a man’s) brother’s great-great-granddaughter', 'great-great-great-niece');
-				} else if ($first=='sis' && $sex1=='M') {
-					return WT_I18N::translate_c('(a man’s) sister’s great-great-granddaughter',  'great-great-great-niece');
+				} elseif ($first === 'sis' && $sex1 === 'M') {
+					return WT_I18N::translate_c('(a man’s) sister’s great-great-granddaughter', 'great-great-great-niece');
 				} else {
-					return WT_I18N::translate_c('(a woman’s) great-great-great-niece',  'great-great-great-niece');
+					return WT_I18N::translate_c('(a woman’s) great-great-great-niece', 'great-great-great-niece');
 				}
-			case 'U':
-				if ($first=='bro' && $sex1=='M') {
+			default:
+				if ($first === 'bro' && $sex1 === 'M') {
 					return WT_I18N::translate_c('(a man’s) brother’s great-great-grandchild', 'great-great-great-nephew/niece');
-				} else if ($first=='sis' && $sex1=='M') {
-					return WT_I18N::translate_c('(a man’s) sister’s great-great-grandchild',  'great-great-great-nephew/niece');
+				} elseif ($first === 'sis' && $sex1 === 'M') {
+					return WT_I18N::translate_c('(a man’s) sister’s great-great-grandchild', 'great-great-great-nephew/niece');
 				} else {
-					return WT_I18N::translate_c('(a woman’s) great-great-great-nephew/niece',  'great-great-great-nephew/niece');
+					return WT_I18N::translate_c('(a woman’s) great-great-great-nephew/niece', 'great-great-great-nephew/niece');
 				}
 			}
 		case 6:
 			switch ($sex2) {
 			case 'M':
-				if ($first=='bro' && $sex1=='M') {
+				if ($first === 'bro' && $sex1 === 'M') {
 					return WT_I18N::translate_c('(a man’s) brother’s great-great-great-grandson', 'great ×4 nephew');
-				} else if ($first=='sis' && $sex1=='M') {
-					return WT_I18N::translate_c('(a man’s) sister’s great-great-great-grandson',  'great ×4 nephew');
+				} elseif ($first === 'sis' && $sex1 === 'M') {
+					return WT_I18N::translate_c('(a man’s) sister’s great-great-great-grandson', 'great ×4 nephew');
 				} else {
-					return WT_I18N::translate_c('(a woman’s) great ×4 nephew',  'great ×4 nephew');
+					return WT_I18N::translate_c('(a woman’s) great ×4 nephew', 'great ×4 nephew');
 				}
 			case 'F':
-				if ($first=='bro' && $sex1=='M') {
+				if ($first === 'bro' && $sex1 === 'M') {
 					return WT_I18N::translate_c('(a man’s) brother’s great-great-great-granddaughter', 'great ×4 niece');
-				} else if ($first=='sis' && $sex1=='M') {
-					return WT_I18N::translate_c('(a man’s) sister’s great-great-great-granddaughter',  'great ×4 niece');
+				} elseif ($first === 'sis' && $sex1 === 'M') {
+					return WT_I18N::translate_c('(a man’s) sister’s great-great-great-granddaughter', 'great ×4 niece');
 				} else {
-					return WT_I18N::translate_c('(a woman’s) great ×4 niece',  'great ×4 niece');
+					return WT_I18N::translate_c('(a woman’s) great ×4 niece', 'great ×4 niece');
 				}
-			case 'U':
-				if ($first=='bro' && $sex1=='M') {
+			default:
+				if ($first === 'bro' && $sex1 === 'M') {
 					return WT_I18N::translate_c('(a man’s) brother’s great-great-great-grandchild', 'great ×4 nephew/niece');
-				} else if ($first=='sis' && $sex1=='M') {
-					return WT_I18N::translate_c('(a man’s) sister’s great-great-great-grandchild',  'great ×4 nephew/niece');
+				} elseif ($first === 'sis' && $sex1 === 'M') {
+					return WT_I18N::translate_c('(a man’s) sister’s great-great-great-grandchild', 'great ×4 nephew/niece');
 				} else {
-					return WT_I18N::translate_c('(a woman’s) great ×4 nephew/niece',  'great ×4 nephew/niece');
+					return WT_I18N::translate_c('(a woman’s) great ×4 nephew/niece', 'great ×4 nephew/niece');
 				}
 			}
 		case 7:
 			switch ($sex2) {
 			case 'M':
-				if ($first=='bro' && $sex1=='M') {
+				if ($first === 'bro' && $sex1 === 'M') {
 					return WT_I18N::translate_c('(a man’s) brother’s great ×4 grandson', 'great ×5 nephew');
-				} else if ($first=='sis' && $sex1=='M') {
-					return WT_I18N::translate_c('(a man’s) sister’s great ×4 grandson',  'great ×5 nephew');
+				} elseif ($first === 'sis' && $sex1 === 'M') {
+					return WT_I18N::translate_c('(a man’s) sister’s great ×4 grandson', 'great ×5 nephew');
 				} else {
-					return WT_I18N::translate_c('(a woman’s) great ×5 nephew',  'great ×5 nephew');
+					return WT_I18N::translate_c('(a woman’s) great ×5 nephew', 'great ×5 nephew');
 				}
 			case 'F':
-				if ($first=='bro' && $sex1=='M') {
+				if ($first === 'bro' && $sex1 === 'M') {
 					return WT_I18N::translate_c('(a man’s) brother’s great ×4 granddaughter', 'great ×5 niece');
-				} else if ($first=='sis' && $sex1=='M') {
-					return WT_I18N::translate_c('(a man’s) sister’s great ×4 granddaughter',  'great ×5 niece');
+				} elseif ($first === 'sis' && $sex1 === 'M') {
+					return WT_I18N::translate_c('(a man’s) sister’s great ×4 granddaughter', 'great ×5 niece');
 				} else {
-					return WT_I18N::translate_c('(a woman’s) great ×5 niece',  'great ×5 niece');
+					return WT_I18N::translate_c('(a woman’s) great ×5 niece', 'great ×5 niece');
 				}
-			case 'U':
-				if ($first=='bro' && $sex1=='M') {
+			default:
+				if ($first === 'bro' && $sex1 === 'M') {
 					return WT_I18N::translate_c('(a man’s) brother’s great ×4 grandchild', 'great ×5 nephew/niece');
-				} else if ($first=='sis' && $sex1=='M') {
-					return WT_I18N::translate_c('(a man’s) sister’s great ×4 grandchild',  'great ×5 nephew/niece');
+				} elseif ($first === 'sis' && $sex1 === 'M') {
+					return WT_I18N::translate_c('(a man’s) sister’s great ×4 grandchild', 'great ×5 nephew/niece');
 				} else {
-					return WT_I18N::translate_c('(a woman’s) great ×5 nephew/niece',  'great ×5 nephew/niece');
+					return WT_I18N::translate_c('(a woman’s) great ×5 nephew/niece', 'great ×5 nephew/niece');
 				}
 			}
 		default:
@@ -1414,34 +1920,38 @@ function get_relationship_name_from_path($path, WT_Individual $person1=null, WT_
 			case 'pl': // Source: Lukasz Wilenski
 				switch ($sex2) {
 				case 'M':
-					if ($first=='bro' && $sex1=='M') {
-						return WT_I18N::translate_c('(a man’s) brother’s great ×(%d-1) grandson', 'great ×%d nephew', $down-3);
-					} else if ($first=='sis' && $sex1=='M') {
-						return WT_I18N::translate_c('(a man’s) sister’s great ×(%d-1) grandson',  'great ×%d nephew', $down-3);
-					} else
-						return WT_I18N::translate_c('(a woman’s) great ×%d nephew',  'great ×%d nephew', $down-3);
-				case 'F':
-					if ($first=='bro' && $sex1=='M') {
-						return WT_I18N::translate_c('(a man’s) brother’s great ×(%d-1) granddaughter', 'great ×%d niece', $down-3);
-					} else if ($first=='sis' && $sex1=='M') {
-						return WT_I18N::translate_c('(a man’s) sister’s great ×(%d-1) granddaughter',  'great ×%d niece', $down-3);
+					if ($first === 'bro' && $sex1 === 'M') {
+						return WT_I18N::translate_c('(a man’s) brother’s great ×(%d-1) grandson', 'great ×%d nephew', $down - 3);
+					} elseif ($first === 'sis' && $sex1 === 'M') {
+						return WT_I18N::translate_c('(a man’s) sister’s great ×(%d-1) grandson', 'great ×%d nephew', $down - 3);
 					} else {
-						return WT_I18N::translate_c('(a woman’s) great ×%d niece',  'great ×%d niece', $down-3);
+						return WT_I18N::translate_c('(a woman’s) great ×%d nephew', 'great ×%d nephew', $down - 3);
 					}
-				case 'U':
-					if ($first=='bro' && $sex1=='M') {
-						return WT_I18N::translate_c('(a man’s) brother’s great ×(%d-1) grandchild', 'great ×%d nephew/niece', $down-3);
-					} else if ($first=='sis' && $sex1=='M') {
-						return WT_I18N::translate_c('(a man’s) sister’s great ×(%d-1) grandchild',  'great ×%d nephew/niece', $down-3);
+				case 'F':
+					if ($first === 'bro' && $sex1 === 'M') {
+						return WT_I18N::translate_c('(a man’s) brother’s great ×(%d-1) granddaughter', 'great ×%d niece', $down - 3);
+					} elseif ($first === 'sis' && $sex1 === 'M') {
+						return WT_I18N::translate_c('(a man’s) sister’s great ×(%d-1) granddaughter', 'great ×%d niece', $down - 3);
 					} else {
-						return WT_I18N::translate_c('(a woman’s) great ×%d nephew/niece',  'great ×%d nephew/niece', $down-3);
+						return WT_I18N::translate_c('(a woman’s) great ×%d niece', 'great ×%d niece', $down - 3);
+					}
+				default:
+					if ($first === 'bro' && $sex1 === 'M') {
+						return WT_I18N::translate_c('(a man’s) brother’s great ×(%d-1) grandchild', 'great ×%d nephew/niece', $down - 3);
+					} elseif ($first === 'sis' && $sex1 === 'M') {
+						return WT_I18N::translate_c('(a man’s) sister’s great ×(%d-1) grandchild', 'great ×%d nephew/niece', $down - 3);
+					} else {
+						return WT_I18N::translate_c('(a woman’s) great ×%d nephew/niece', 'great ×%d nephew/niece', $down - 3);
 					}
 				}
 			case 'he': // Source: Meliza Amity
 				switch ($sex2) {
-				case 'M': return WT_I18N::translate('great ×%d nephew', $down-1);
-				case 'F': return WT_I18N::translate('great ×%d niece', $down-1);
-				case 'U': return WT_I18N::translate('great ×%d nephew/niece', $down-1);
+				case 'M':
+					return WT_I18N::translate('great ×%d nephew', $down - 1);
+				case 'F':
+					return WT_I18N::translate('great ×%d niece', $down - 1);
+				default:
+					return WT_I18N::translate('great ×%d nephew/niece', $down - 1);
 				}
 			case 'it': // Source: Michele Locati.
 			case 'en_AU':
@@ -1450,59 +1960,73 @@ function get_relationship_name_from_path($path, WT_Individual $person1=null, WT_
 			default:
 				switch ($sex2) {
 				case 'M': // I18N: if you need a different number for %d, contact the developers, as a code-change is required
-				          return WT_I18N::translate('great ×%d nephew', $down-2);
-				case 'F': return WT_I18N::translate('great ×%d niece', $down-2);
-				case 'U': return WT_I18N::translate('great ×%d nephew/niece', $down-2);
+					return WT_I18N::translate('great ×%d nephew', $down - 2);
+				case 'F':
+					return WT_I18N::translate('great ×%d niece', $down - 2);
+				default:
+					return WT_I18N::translate('great ×%d nephew/niece', $down - 2);
 				}
 			}
 		}
 	}
 	if (preg_match('/^((?:mot|fat|par)*)$/', $path, $match)) {
 		// direct ancestors
-		$up=strlen($match[1])/3;
+		$up = strlen($match[1]) / 3;
 		switch ($up) {
 		case 4:
 			switch ($sex2) {
-			case 'M': return WT_I18N::translate('great-great-grandfather');
-			case 'F': return WT_I18N::translate('great-great-grandmother');
-			case 'U': return WT_I18N::translate('great-great-grandparent');
+			case 'M':
+				return WT_I18N::translate('great-great-grandfather');
+			case 'F':
+				return WT_I18N::translate('great-great-grandmother');
+			default:
+				return WT_I18N::translate('great-great-grandparent');
 			}
-			break;
 		case 5:
 			switch ($sex2) {
-			case 'M': return WT_I18N::translate('great-great-great-grandfather');
-			case 'F': return WT_I18N::translate('great-great-great-grandmother');
-			case 'U': return WT_I18N::translate('great-great-great-grandparent');
+			case 'M':
+				return WT_I18N::translate('great-great-great-grandfather');
+			case 'F':
+				return WT_I18N::translate('great-great-great-grandmother');
+			default:
+				return WT_I18N::translate('great-great-great-grandparent');
 			}
-			break;
 		case 6:
 			switch ($sex2) {
-			case 'M': return WT_I18N::translate('great ×4 grandfather');
-			case 'F': return WT_I18N::translate('great ×4 grandmother');
-			case 'U': return WT_I18N::translate('great ×4 grandparent');
+			case 'M':
+				return WT_I18N::translate('great ×4 grandfather');
+			case 'F':
+				return WT_I18N::translate('great ×4 grandmother');
+			default:
+				return WT_I18N::translate('great ×4 grandparent');
 			}
-			break;
 		case 7:
 			switch ($sex2) {
-			case 'M': return WT_I18N::translate('great ×5 grandfather');
-			case 'F': return WT_I18N::translate('great ×5 grandmother');
-			case 'U': return WT_I18N::translate('great ×5 grandparent');
+			case 'M':
+				return WT_I18N::translate('great ×5 grandfather');
+			case 'F':
+				return WT_I18N::translate('great ×5 grandmother');
+			default:
+				return WT_I18N::translate('great ×5 grandparent');
 			}
-			break;
 		case 8:
 			switch ($sex2) {
-			case 'M': return WT_I18N::translate('great ×6 grandfather');
-			case 'F': return WT_I18N::translate('great ×6 grandmother');
-			case 'U': return WT_I18N::translate('great ×6 grandparent');
+			case 'M':
+				return WT_I18N::translate('great ×6 grandfather');
+			case 'F':
+				return WT_I18N::translate('great ×6 grandmother');
+			default:
+				return WT_I18N::translate('great ×6 grandparent');
 			}
-			break;
 		case 9:
 			switch ($sex2) {
-			case 'M': return WT_I18N::translate('great ×7 grandfather');
-			case 'F': return WT_I18N::translate('great ×7 grandmother');
-			case 'U': return WT_I18N::translate('great ×7 grandparent');
+			case 'M':
+				return WT_I18N::translate('great ×7 grandfather');
+			case 'F':
+				return WT_I18N::translate('great ×7 grandmother');
+			default:
+				return WT_I18N::translate('great ×7 grandparent');
 			}
-			break;
 		default:
 			// Different languages have different rules for naming generations.
 			// An English great ×12 grandfather is a Danish great ×11 grandfather.
@@ -1511,31 +2035,42 @@ function get_relationship_name_from_path($path, WT_Individual $person1=null, WT_
 			switch (WT_LOCALE) {
 			case 'da': // Source: Patrick Sorensen
 				switch ($sex2) {
-				case 'M': return WT_I18N::translate('great ×%d grandfather', $up-3);
-				case 'F': return WT_I18N::translate('great ×%d grandmother', $up-3);
-				case 'U': return WT_I18N::translate('great ×%d grandparent', $up-3);
+				case 'M':
+					return WT_I18N::translate('great ×%d grandfather', $up - 3);
+				case 'F':
+					return WT_I18N::translate('great ×%d grandmother', $up - 3);
+				default:
+					return WT_I18N::translate('great ×%d grandparent', $up - 3);
 				}
 			case 'it': // Source: Michele Locati
 			case 'es': // Source: Wes Groleau
 				switch ($sex2) {
-				case 'M': return WT_I18N::translate('great ×%d grandfather', $up);
-				case 'F': return WT_I18N::translate('great ×%d grandmother', $up);
-				case 'U': return WT_I18N::translate('great ×%d grandparent', $up);
+				case 'M':
+					return WT_I18N::translate('great ×%d grandfather', $up);
+				case 'F':
+					return WT_I18N::translate('great ×%d grandmother', $up);
+				default:
+					return WT_I18N::translate('great ×%d grandparent', $up);
 				}
 			case 'fr': // Source: Jacqueline Tetreault
 			case 'fr_CA':
 				switch ($sex2) {
-				case 'M': return WT_I18N::translate('great ×%d grandfather', $up-1);
-				case 'F': return WT_I18N::translate('great ×%d grandmother', $up-1);
-				case 'U': return WT_I18N::translate('great ×%d grandparent', $up-1);
+				case 'M':
+					return WT_I18N::translate('great ×%d grandfather', $up - 1);
+				case 'F':
+					return WT_I18N::translate('great ×%d grandmother', $up - 1);
+				default:
+					return WT_I18N::translate('great ×%d grandparent', $up - 1);
 				}
 			case 'nn': // Source: Hogne Røed Nilsen (https://bugs.launchpad.net/webtrees/+bug/1168553)
 			case 'nb':
 				switch ($sex2) {
 				case 'M': // I18N: if you need a different number for %d, contact the developers, as a code-change is required
-				          return WT_I18N::translate('great ×%d grandfather', $up-3);
-				case 'F': return WT_I18N::translate('great ×%d grandmother', $up-3);
-				case 'U': return WT_I18N::translate('great ×%d grandparent', $up-3);
+					return WT_I18N::translate('great ×%d grandfather', $up - 3);
+				case 'F':
+					return WT_I18N::translate('great ×%d grandmother', $up - 3);
+				default:
+					return WT_I18N::translate('great ×%d grandparent', $up - 3);
 				}
 			case 'en_AU':
 			case 'en_GB':
@@ -1543,57 +2078,77 @@ function get_relationship_name_from_path($path, WT_Individual $person1=null, WT_
 			default:
 				switch ($sex2) {
 				case 'M': // I18N: if you need a different number for %d, contact the developers, as a code-change is required
-				          return WT_I18N::translate('great ×%d grandfather', $up-2);
-				case 'F': return WT_I18N::translate('great ×%d grandmother', $up-2);
-				case 'U': return WT_I18N::translate('great ×%d grandparent', $up-2);
+					return WT_I18N::translate('great ×%d grandfather', $up - 2);
+				case 'F':
+					return WT_I18N::translate('great ×%d grandmother', $up - 2);
+				default:
+					return WT_I18N::translate('great ×%d grandparent', $up - 2);
 				}
 			}
 		}
 	}
 	if (preg_match('/^((?:son|dau|chi)*)$/', $path, $match)) {
 		// direct descendants
-		$up=strlen($match[1])/3;
+		$up = strlen($match[1]) / 3;
 		switch ($up) {
 		case 4:
 			switch ($sex2) {
-			case 'son': return WT_I18N::translate('great-great-grandson');
-			case 'dau': return WT_I18N::translate('great-great-granddaughter');
-			case 'chi': return WT_I18N::translate('great-great-grandchild');
+			case 'M':
+				return WT_I18N::translate('great-great-grandson');
+			case 'F':
+				return WT_I18N::translate('great-great-granddaughter');
+			default:
+				return WT_I18N::translate('great-great-grandchild');
 			}
 			break;
 		case 5:
 			switch ($sex2) {
-			case 'M': return WT_I18N::translate('great-great-great-grandson');
-			case 'F': return WT_I18N::translate('great-great-great-granddaughter');
-			case 'U': return WT_I18N::translate('great-great-great-grandchild');
+			case 'M':
+				return WT_I18N::translate('great-great-great-grandson');
+			case 'F':
+				return WT_I18N::translate('great-great-great-granddaughter');
+			default:
+				return WT_I18N::translate('great-great-great-grandchild');
 			}
 			break;
 		case 6:
 			switch ($sex2) {
-			case 'M': return WT_I18N::translate('great ×4 grandson');
-			case 'F': return WT_I18N::translate('great ×4 granddaughter');
-			case 'U': return WT_I18N::translate('great ×4 grandchild');
+			case 'M':
+				return WT_I18N::translate('great ×4 grandson');
+			case 'F':
+				return WT_I18N::translate('great ×4 granddaughter');
+			default:
+				return WT_I18N::translate('great ×4 grandchild');
 			}
 			break;
 		case 7:
 			switch ($sex2) {
-			case 'M': return WT_I18N::translate('great ×5 grandson');
-			case 'F': return WT_I18N::translate('great ×5 granddaughter');
-			case 'U': return WT_I18N::translate('great ×5 grandchild');
+			case 'M':
+				return WT_I18N::translate('great ×5 grandson');
+			case 'F':
+				return WT_I18N::translate('great ×5 granddaughter');
+			default:
+				return WT_I18N::translate('great ×5 grandchild');
 			}
 			break;
 		case 8:
 			switch ($sex2) {
-			case 'M': return WT_I18N::translate('great ×6 grandson');
-			case 'F': return WT_I18N::translate('great ×6 granddaughter');
-			case 'U': return WT_I18N::translate('great ×6 grandchild');
+			case 'M':
+				return WT_I18N::translate('great ×6 grandson');
+			case 'F':
+				return WT_I18N::translate('great ×6 granddaughter');
+			default:
+				return WT_I18N::translate('great ×6 grandchild');
 			}
 			break;
 		case 9:
 			switch ($sex2) {
-			case 'M': return WT_I18N::translate('great ×7 grandson');
-			case 'F': return WT_I18N::translate('great ×7 granddaughter');
-			case 'U': return WT_I18N::translate('great ×7 grandchild');
+			case 'M':
+				return WT_I18N::translate('great ×7 grandson');
+			case 'F':
+				return WT_I18N::translate('great ×7 granddaughter');
+			default:
+				return WT_I18N::translate('great ×7 grandchild');
 			}
 			break;
 		default:
@@ -1606,9 +2161,12 @@ function get_relationship_name_from_path($path, WT_Individual $person1=null, WT_
 			case 'nb':
 			case 'da': // Source: Patrick Sorensen
 				switch ($sex2) {
-				case 'M': return WT_I18N::translate('great ×%d grandson',      $up-3);
-				case 'F': return WT_I18N::translate('great ×%d granddaughter', $up-3);
-				case 'U': return WT_I18N::translate('great ×%d grandchild',    $up-3);
+				case 'M':
+					return WT_I18N::translate('great ×%d grandson', $up - 3);
+				case 'F':
+					return WT_I18N::translate('great ×%d granddaughter', $up - 3);
+				default:
+					return WT_I18N::translate('great ×%d grandchild', $up - 3);
 				}
 			case 'it': // Source: Michele Locati
 			case 'es': // Source: Wes Groleau (adding doesn’t change behavior, but needs to be better researched)
@@ -1619,21 +2177,23 @@ function get_relationship_name_from_path($path, WT_Individual $person1=null, WT_
 				switch ($sex2) {
 
 				case 'M': // I18N: if you need a different number for %d, contact the developers, as a code-change is required
-				          return WT_I18N::translate('great ×%d grandson',      $up-2);
-				case 'F': return WT_I18N::translate('great ×%d granddaughter', $up-2);
-				case 'U': return WT_I18N::translate('great ×%d grandchild',    $up-2);
+					return WT_I18N::translate('great ×%d grandson', $up - 2);
+				case 'F':
+					return WT_I18N::translate('great ×%d granddaughter', $up - 2);
+				default:
+					return WT_I18N::translate('great ×%d grandchild', $up - 2);
 				}
 			}
 		}
 	}
 	if (preg_match('/^((?:mot|fat|par)+)(?:bro|sis|sib)((?:son|dau|chi)+)$/', $path, $match)) {
 		// cousins in English
-		$ascent  = $match[1];
+		$ascent = $match[1];
 		$descent = $match[2];
-		$up      = strlen($ascent)/3;
-		$down    = strlen($descent)/3;
-		$cousin=min($up, $down);  // Moved out of switch (en/default case) so that
-		$removed=abs($down-$up);  // Spanish (and other languages) can use it, too.
+		$up = strlen($ascent) / 3;
+		$down = strlen($descent) / 3;
+		$cousin = min($up, $down);  // Moved out of switch (en/default case) so that
+		$removed = abs($down - $up);  // Spanish (and other languages) can use it, too.
 
 		// Different languages have different rules for naming cousins.  For example,
 		// an English “second cousin once removed” is a Polish “cousin of 7th degree”.
@@ -1641,22 +2201,25 @@ function get_relationship_name_from_path($path, WT_Individual $person1=null, WT_
 		// Need to find out which languages use which rules.
 		switch (WT_LOCALE) {
 		case 'pl': // Source: Lukasz Wilenski
-			return cousin_name($up+$down+2, $sex2);
+			return cousin_name($up + $down + 2, $sex2);
 		case 'it':
 			// Source: Michele Locati.  See italian_cousins_names.zip
 			// http://webtrees.net/forums/8-translation/1200-great-xn-grandparent?limit=6&start=6
-			return cousin_name($up+$down-3, $sex2);
+			return cousin_name($up + $down - 3, $sex2);
 		case 'es':
 			// Source: Wes Groleau.  See http://UniGen.us/Parentesco.html & http://UniGen.us/Parentesco-D.html
-			if ($down==$up) {
+			if ($down == $up) {
 				return cousin_name($cousin, $sex2);
-			} elseif ($down<$up) {
-				return cousin_name2($cousin+1, $sex2, get_relationship_name_from_path('sib' . $descent, null, null));
+			} elseif ($down < $up) {
+				return cousin_name2($cousin + 1, $sex2, get_relationship_name_from_path('sib' . $descent, null, null));
 			} else {
 				switch ($sex2) {
-				case 'M': return cousin_name2($cousin+1, $sex2, get_relationship_name_from_path('bro' . $descent, null, null));
-				case 'F': return cousin_name2($cousin+1, $sex2, get_relationship_name_from_path('sis' . $descent, null, null));
-				case 'U': return cousin_name2($cousin+1, $sex2, get_relationship_name_from_path('sib' . $descent, null, null));
+				case 'M':
+					return cousin_name2($cousin + 1, $sex2, get_relationship_name_from_path('bro' . $descent, null, null));
+				case 'F':
+					return cousin_name2($cousin + 1, $sex2, get_relationship_name_from_path('sis' . $descent, null, null));
+				default:
+					return cousin_name2($cousin + 1, $sex2, get_relationship_name_from_path('sib' . $descent, null, null));
 				}
 			}
 		case 'en_AU': // See: http://en.wikipedia.org/wiki/File:CousinTree.svg
@@ -1667,7 +2230,7 @@ function get_relationship_name_from_path($path, WT_Individual $person1=null, WT_
 			case 0:
 				return cousin_name($cousin, $sex2);
 			case 1:
-				if ($up>$down) {
+				if ($up > $down) {
 					/* I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856 */
 					return WT_I18N::translate('%s once removed ascending', cousin_name($cousin, $sex2));
 				} else {
@@ -1675,7 +2238,7 @@ function get_relationship_name_from_path($path, WT_Individual $person1=null, WT_
 					return WT_I18N::translate('%s once removed descending', cousin_name($cousin, $sex2));
 				}
 			case 2:
-				if ($up>$down) {
+				if ($up > $down) {
 					/* I18N: %s=“fifth cousin”, etc. */
 					return WT_I18N::translate('%s twice removed ascending', cousin_name($cousin, $sex2));
 				} else {
@@ -1683,7 +2246,7 @@ function get_relationship_name_from_path($path, WT_Individual $person1=null, WT_
 					return WT_I18N::translate('%s twice removed descending', cousin_name($cousin, $sex2));
 				}
 			case 3:
-				if ($up>$down) {
+				if ($up > $down) {
 					/* I18N: %s=“fifth cousin”, etc. */
 					return WT_I18N::translate('%s three times removed ascending', cousin_name($cousin, $sex2));
 				} else {
@@ -1691,7 +2254,7 @@ function get_relationship_name_from_path($path, WT_Individual $person1=null, WT_
 					return WT_I18N::translate('%s three times removed descending', cousin_name($cousin, $sex2));
 				}
 			default:
-				if ($up>$down) {
+				if ($up > $down) {
 					/* I18N: %1$s=“fifth cousin”, etc., %2$d>=4 */
 					return WT_I18N::translate('%1$s %2$d times removed ascending', cousin_name($cousin, $sex2), $removed);
 				} else {
@@ -1705,22 +2268,23 @@ function get_relationship_name_from_path($path, WT_Individual $person1=null, WT_
 	// Split the relationship into sub-relationships, e.g., third-cousin’s great-uncle.
 	// Try splitting at every point, and choose the path with the shorted translated name.
 
-	$relationship=null;
-	$path1=substr($path, 0, 3);
-	$path2=substr($path, 3);
+	$relationship = null;
+	$path1 = substr($path, 0, 3);
+	$path2 = substr($path, 3);
 	while ($path2) {
-		$tmp=WT_I18N::translate(
-			// I18N: A complex relationship, such as “third-cousin’s great-uncle”
+		$tmp = WT_I18N::translate(
+		// I18N: A complex relationship, such as “third-cousin’s great-uncle”
 			'%1$s’s %2$s',
 			get_relationship_name_from_path($path1, null, null), // TODO: need the actual people
 			get_relationship_name_from_path($path2, null, null)
 		);
-		if (!$relationship || strlen($tmp)<strlen($relationship)) {
-			$relationship=$tmp;
+		if (!$relationship || strlen($tmp) < strlen($relationship)) {
+			$relationship = $tmp;
 		}
-		$path1.=substr($path2, 0, 3);
-		$path2=substr($path2, 3);
+		$path1 .= substr($path2, 0, 3);
+		$path2 = substr($path2, 3);
 	}
+
 	return $relationship;
 }
 
@@ -1740,10 +2304,10 @@ function get_theme_names() {
 
 	if ($themes === null) {
 		$themes = array();
-		$d = dir(WT_ROOT.WT_THEMES_DIR);
+		$d = dir(WT_ROOT . WT_THEMES_DIR);
 		while (false !== ($folder = $d->read())) {
-			if ($folder[0] != '.' && $folder[0] != '_' && is_dir(WT_ROOT.WT_THEMES_DIR.$folder) && file_exists(WT_ROOT.WT_THEMES_DIR.$folder.'/theme.php')) {
-				$themefile = implode('', file(WT_ROOT.WT_THEMES_DIR.$folder.'/theme.php'));
+			if ($folder[0] !== '.' && $folder[0] !== '_' && is_dir(WT_ROOT . WT_THEMES_DIR . $folder) && file_exists(WT_ROOT . WT_THEMES_DIR . $folder . '/theme.php')) {
+				$themefile = implode('', file(WT_ROOT . WT_THEMES_DIR . $folder . '/theme.php'));
 				if (preg_match('/theme_name\s*=\s*"(.*)";/', $themefile, $match)) {
 					$theme_name = WT_I18N::translate($match[1]);
 					if (array_key_exists($theme_name, $themes)) {
@@ -1757,43 +2321,51 @@ function get_theme_names() {
 		$d->close();
 		uksort($themes, array('WT_I18N', 'strcasecmp'));
 	}
+
 	return $themes;
 }
 
-// Function to build an URL querystring from GET variables
-// Optionally, add/replace specified values
-function get_query_url($overwrite=null, $separator='&') {
+/**
+ * Function to build an URL querystring from GET variables
+ * Optionally, add/replace specified values
+ *
+ * @param null|string[] $overwrite
+ * @param null|string  $separator
+ *
+ * @return string
+ */
+function get_query_url($overwrite = null, $separator = '&') {
 	if (empty($_GET)) {
-		$get=array();
+		$get = array();
 	} else {
-		$get=$_GET;
+		$get = $_GET;
 	}
 	if (is_array($overwrite)) {
-		foreach ($overwrite as $key=>$value) {
-			$get[$key]=$value;
+		foreach ($overwrite as $key => $value) {
+			$get[$key] = $value;
 		}
 	}
 
-	$query_string='';
-	foreach ($get as $key=>$value) {
+	$query_string = '';
+	foreach ($get as $key => $value) {
 		if (!is_array($value)) {
-			$query_string.=$separator . rawurlencode($key) . '=' . rawurlencode($value);
+			$query_string .= $separator . rawurlencode($key) . '=' . rawurlencode($value);
 		} else {
-			foreach ($value as $k=>$v) {
-				$query_string.=$separator . rawurlencode($key) . '%5B' . rawurlencode($k) . '%5D=' . rawurlencode($v);
+			foreach ($value as $k => $v) {
+				$query_string .= $separator . rawurlencode($key) . '%5B' . rawurlencode($k) . '%5D=' . rawurlencode($v);
 			}
 		}
 	}
-	$query_string=substr($query_string, strlen($separator)); // Remove leading “&amp;”
+	$query_string = substr($query_string, strlen($separator)); // Remove leading “&amp;”
 	if ($query_string) {
-		return WT_SCRIPT_NAME.'?'.$query_string;
+		return WT_SCRIPT_NAME . '?' . $query_string;
 	} else {
 		return WT_SCRIPT_NAME;
 	}
 }
 
 // Generate a new XREF, unique across all family trees
-function get_new_xref($type='INDI', $ged_id=WT_GED_ID) {
+function get_new_xref($type = 'INDI', $ged_id = WT_GED_ID) {
 	global $SOURCE_ID_PREFIX, $REPO_ID_PREFIX, $MEDIA_ID_PREFIX, $FAM_ID_PREFIX, $GEDCOM_ID_PREFIX, $NOTE_ID_PREFIX;
 
 	switch ($type) {
@@ -1854,7 +2426,7 @@ function get_new_xref($type='INDI', $ged_id=WT_GED_ID) {
 		"SELECT xref FROM `##change` WHERE xref = ?"
 	);
 
-	while ($statement->execute(array_fill(0, 6, $prefix.$num))->fetchOne()) {
+	while ($statement->execute(array_fill(0, 6, $prefix . $num))->fetchOne()) {
 		// Applications such as ancestry.com generate XREFs with numbers larger than
 		// PHP’s signed integer.  MySQL can handle large integers.
 		$num = WT_DB::prepare("SELECT 1+?")->execute(array($num))->fetchOne();
@@ -1862,12 +2434,17 @@ function get_new_xref($type='INDI', $ged_id=WT_GED_ID) {
 
 	//-- update the next id number in the DB table
 	WT_DB::prepare("UPDATE `##next_id` SET next_id=? WHERE record_type=? AND gedcom_id=?")
-		->execute(array($num+1, $type, $ged_id));
-	return $prefix.$num;
+		->execute(array($num + 1, $type, $ged_id));
+
+	return $prefix . $num;
 }
 
 /**
- * determines whether the passed in filename is a link to an external source (i.e. contains “://”)
+ * Determines whether the passed in filename is a link to an external source (i.e. contains “://”)
+ *
+ * @param string $file
+ *
+ * @return boolean
  */
 function isFileExternal($file) {
 	return strpos($file, '://') !== false;

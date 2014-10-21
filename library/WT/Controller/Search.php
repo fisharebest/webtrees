@@ -39,34 +39,34 @@ class WT_Controller_Search extends WT_Controller_Page {
 	var $famResultsPrinted = -1;
 	var $srcResultsPrinted = -1;
 	var $query;
-	var $myquery = "";
-	var $soundex = "DaitchM";
-	var $subaction = "";
-	var $nameprt = "";
-	var $showasso = "off";
-	var $name = "";
+	var $myquery = '';
+	var $soundex = 'DaitchM';
+	var $subaction = '';
+	var $nameprt = '';
+	var $showasso = 'off';
+	var $name = '';
 	var $myname;
-	var $birthdate = "";
+	var $birthdate = '';
 	var $mybirthdate;
-	var $birthplace = "";
+	var $birthplace = '';
 	var $mybirthplace;
-	var $deathdate = "";
+	var $deathdate = '';
 	var $mydeathdate;
-	var $deathplace = "";
+	var $deathplace = '';
 	var $mydeathplace;
-	var $gender = "";
+	var $gender = '';
 	var $mygender;
-	var $firstname = "";
-	var $lastname = "";
-	var $place = "";
-	var $year = "";
+	var $firstname = '';
+	var $lastname = '';
+	var $place = '';
+	var $year = '';
 	var $sgeds = array();
 	var $myindilist = array();
 	var $mysourcelist = array();
 	var $myfamlist = array();
 	var $mynotelist = array();
 	var $inputFieldNames = array();
-	var $replace = false;
+	var $replace = '';
 	var $replaceNames = false;
 	var $replacePlaces = false;
 	var $replaceAll = false;
@@ -86,21 +86,21 @@ class WT_Controller_Search extends WT_Controller_Page {
 
 		if ($topsearch) {
 			$this->isPostBack = true;
-			$this->srfams = 'yes';
-			$this->srindi = 'yes';
-			$this->srsour = 'yes';
-			$this->srnote = 'yes';
+			$this->srfams     = 'yes';
+			$this->srindi     = 'yes';
+			$this->srsour     = 'yes';
+			$this->srnote     = 'yes';
 		}
 
 		// Get the query
-		$this->query = WT_Filter::post('query', '.{2,}');
+		$this->query   = WT_Filter::post('query', '.{2,}');
 		$this->myquery = WT_Filter::escapeHtml($this->query);
 
-		$this->replace = WT_Filter::post('replace');
-		$this->replaceNames = WT_Filter::postBool('replaceNames');
-		$this->replacePlaces = WT_Filter::postBool('replacePlaces');
+		$this->replace           = WT_Filter::post('replace');
+		$this->replaceNames      = WT_Filter::postBool('replaceNames');
+		$this->replacePlaces     = WT_Filter::postBool('replacePlaces');
 		$this->replacePlacesWord = WT_Filter::postBool('replacePlacesWord');
-		$this->replaceAll = WT_Filter::postBool('replaceAll');
+		$this->replaceAll        = WT_Filter::postBool('replaceAll');
 
 		// TODO: fetch each variable independently, using appropriate validation
 		// Aquire all the variables values from the $_REQUEST
@@ -109,7 +109,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 
 		if (!$this->isPostBack) {
 			// Enable the default gedcom for search
-			$str = str_replace(array(".", "-", " "), array("_", "_", "_"), WT_GEDCOM);
+			$str              = str_replace(array(".", "-", " "), array("_", "_", "_"), WT_GEDCOM);
 			$_REQUEST["$str"] = $str;
 		}
 
@@ -119,7 +119,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 				$str = str_replace(array(".", "-", " "), array("_", "_", "_"), $tree->tree_name);
 				if (isset ($_REQUEST["$str"]) || $topsearch) {
 					$this->sgeds[$tree->tree_id] = $tree->tree_name;
-					$_REQUEST["$str"] = 'yes';
+					$_REQUEST["$str"]            = 'yes';
 				}
 			}
 		} else {
@@ -128,9 +128,9 @@ class WT_Controller_Search extends WT_Controller_Page {
 
 		// vars use for soundex search
 		$this->firstname = WT_Filter::post('firstname');
-		$this->lastname = WT_Filter::post('lastname');
-		$this->place = WT_Filter::post('place');
-		$this->year = WT_Filter::post('year');
+		$this->lastname  = WT_Filter::post('lastname');
+		$this->place     = WT_Filter::post('place');
+		$this->year      = WT_Filter::post('year');
 
 		// Set the search result titles for soundex searches
 		if ($this->firstname || $this->lastname || $this->place) {
@@ -138,45 +138,45 @@ class WT_Controller_Search extends WT_Controller_Page {
 		};
 
 		if (!empty ($_REQUEST["name"])) {
-			$this->name = $_REQUEST["name"];
+			$this->name   = $_REQUEST["name"];
 			$this->myname = $this->name;
 		} else {
-			$this->name = "";
+			$this->name   = "";
 			$this->myname = "";
 		}
 		if (!empty ($_REQUEST["birthdate"])) {
-			$this->birthdate = $_REQUEST["birthdate"];
+			$this->birthdate   = $_REQUEST["birthdate"];
 			$this->mybirthdate = $this->birthdate;
 		} else {
-			$this->birthdate = "";
+			$this->birthdate   = "";
 			$this->mybirthdate = "";
 		}
 		if (!empty ($_REQUEST["birthplace"])) {
-			$this->birthplace = $_REQUEST["birthplace"];
+			$this->birthplace   = $_REQUEST["birthplace"];
 			$this->mybirthplace = $this->birthplace;
 		} else {
-			$this->birthplace = "";
+			$this->birthplace   = "";
 			$this->mybirthplace = "";
 		}
 		if (!empty ($_REQUEST["deathdate"])) {
-			$this->deathdate = $_REQUEST["deathdate"];
+			$this->deathdate   = $_REQUEST["deathdate"];
 			$this->mydeathdate = $this->deathdate;
 		} else {
-			$this->deathdate = "";
+			$this->deathdate   = "";
 			$this->mydeathdate = "";
 		}
 		if (!empty ($_REQUEST["deathplace"])) {
-			$this->deathplace = $_REQUEST["deathplace"];
+			$this->deathplace   = $_REQUEST["deathplace"];
 			$this->mydeathplace = $this->deathplace;
 		} else {
-			$this->deathplace = "";
+			$this->deathplace   = "";
 			$this->mydeathplace = "";
 		}
 		if (!empty ($_REQUEST["gender"])) {
-			$this->gender = $_REQUEST["gender"];
+			$this->gender   = $_REQUEST["gender"];
 			$this->mygender = $this->gender;
 		} else {
-			$this->gender = "";
+			$this->gender   = "";
 			$this->mygender = "";
 		}
 
@@ -253,7 +253,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 		$this->srindi = "yes";
 
 		// Enable the default gedcom for search
-		$str = str_replace(array(".", "-", " "), array("_", "_", "_"), WT_GEDCOM);
+		$str              = str_replace(array(".", "-", " "), array("_", "_", "_"), WT_GEDCOM);
 		$_REQUEST["$str"] = "yes";
 
 		// Then see if an ID is typed in. If so, we might want to jump there.
@@ -272,16 +272,16 @@ class WT_Controller_Search extends WT_Controller_Page {
 	private function generalSearch() {
 		// Split search terms into an array
 		$query_terms = array();
-		$query = $this->query;
+		$query       = $this->query;
 		// Words in double quotes stay together
 		while (preg_match('/"([^"]+)"/', $query, $match)) {
 			$query_terms[] = trim($match[1]);
-			$query = str_replace($match[0], '', $query);
+			$query         = str_replace($match[0], '', $query);
 		}
 		// Other words get treated separately
 		while (preg_match('/[\S]+/', $query, $match)) {
 			$query_terms[] = trim($match[0]);
-			$query = str_replace($match[0], '', $query);
+			$query         = str_replace($match[0], '', $query);
 		}
 
 		//-- perform the search
@@ -369,12 +369,12 @@ class WT_Controller_Search extends WT_Controller_Page {
 	private function searchAndReplace() {
 		global $STANDARD_NAME_FACTS, $ADVANCED_NAME_FACTS;
 
-		$this->sgeds = array(WT_GED_ID => WT_GEDCOM);
+		$this->sgeds  = array(WT_GED_ID => WT_GEDCOM);
 		$this->srindi = 'yes';
 		$this->srfams = 'yes';
 		$this->srsour = 'yes';
 		$this->srnote = 'yes';
-		$oldquery = $this->query;
+		$oldquery     = $this->query;
 		$this->generalSearch();
 
 		//-- don't try to make any changes if nothing was found
@@ -387,8 +387,8 @@ class WT_Controller_Search extends WT_Controller_Page {
 		require_once WT_ROOT . 'includes/functions/functions_edit.php';
 
 		$adv_name_tags = preg_split("/[\s,;: ]+/", $ADVANCED_NAME_FACTS);
-		$name_tags = array_unique(array_merge($STANDARD_NAME_FACTS, $adv_name_tags));
-		$name_tags[] = '_MARNM';
+		$name_tags     = array_unique(array_merge($STANDARD_NAME_FACTS, $adv_name_tags));
+		$name_tags[]   = '_MARNM';
 		foreach ($this->myindilist as $id => $record) {
 			$oldRecord = $record->getGedcom();
 			$newRecord = $oldRecord;

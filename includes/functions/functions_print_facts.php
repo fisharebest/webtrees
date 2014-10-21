@@ -368,7 +368,7 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 			else echo WT_Gedcom_Tag::getLabelValue('EVEN', implode(WT_I18N::$list_separator, $events));
 			if (preg_match('/\n3 DATE (.+)/', $fact->getGedcom(), $date_match)) {
 				$date=new WT_Date($date_match[1]);
-				echo WT_Gedcom_Tag::getLabelValue('DATE', $date->Display());
+				echo WT_Gedcom_Tag::getLabelValue('DATE', $date->display());
 			}
 			if (preg_match('/\n3 PLAC (.+)/', $fact->getGedcom(), $plac_match)) {
 				echo WT_Gedcom_Tag::getLabelValue('PLAC', $plac_match[1]);
@@ -476,8 +476,8 @@ function print_repository_record($xref) {
  * this function is called by the print_fact function and other functions to
  * print any source information attached to the fact
  *
- * @param string $factrec The fact record to look for sources in
- * @param int    $level   The level to look for sources at
+ * @param string  $factrec The fact record to look for sources in
+ * @param integer $level   The level to look for sources at
  *
  * @return string HTML text
  */
@@ -778,7 +778,7 @@ function printSourceStructure($textSOUR) {
 	if ($textSOUR['DATE'] || count($textSOUR['TEXT'])) {
 		if ($textSOUR['DATE']) {
 			$date = new WT_Date($textSOUR['DATE']);
-			$html .= WT_Gedcom_Tag::getLabelValue('DATA:DATE', $date->Display(false));
+			$html .= WT_Gedcom_Tag::getLabelValue('DATA:DATE', $date->display());
 		}
 		foreach ($textSOUR['TEXT'] as $text) {
 			$html .= WT_Gedcom_Tag::getLabelValue('TEXT', WT_Filter::formatText($text, $WT_TREE));

@@ -287,17 +287,17 @@ class WT_Report_HTML extends WT_Report_Base {
 	/**
 	 * Create a new Cell object - WT_Report_HTML
 	 *
-	 * @param int     $width   cell width (expressed in points)
-	 * @param int     $height  cell height (expressed in points)
+	 * @param integer $width   cell width (expressed in points)
+	 * @param integer $height  cell height (expressed in points)
 	 * @param mixed   $border  Border style
 	 * @param string  $align   Text alignement
 	 * @param string  $bgcolor Background color code
 	 * @param string  $style   The name of the text style
-	 * @param int     $ln      Indicates where the current position should go after the call
+	 * @param integer $ln      Indicates where the current position should go after the call
 	 * @param mixed   $top     Y-position
 	 * @param mixed   $left    X-position
-	 * @param int     $fill    Indicates if the cell background must be painted (1) or transparent (0). Default value: 0.
-	 * @param int     $stretch Stretch carachter mode
+	 * @param integer $fill    Indicates if the cell background must be painted (1) or transparent (0). Default value: 0.
+	 * @param integer $stretch Stretch carachter mode
 	 * @param string  $bocolor Border color
 	 * @param string  $tcolor  Text color
 	 * @param boolean $reseth
@@ -449,7 +449,7 @@ class WT_Report_HTML extends WT_Report_Base {
 	/**
 	 * @param $element
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	function addPageHeader($element) {
 		$this->pageHeaderElements[] = $element;
@@ -495,7 +495,7 @@ class WT_Report_HTML extends WT_Report_Base {
 	 *
 	 * @param string $str
 	 *
-	 * @return int Number of lines. 0 if empty line
+	 * @return integer Number of lines. 0 if empty line
 	 */
 	function countLines($str) {
 		if ($str == "") {
@@ -512,7 +512,7 @@ class WT_Report_HTML extends WT_Report_Base {
 	}
 
 	/**
-	 * @return int
+	 * @return integer
 	 */
 	function getCurrentStyleHeight() {
 		if (empty($this->currentStyle)) {
@@ -525,7 +525,7 @@ class WT_Report_HTML extends WT_Report_Base {
 	/**
 	 * @param $cellWidth
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	function getFootnotesHeight($cellWidth) {
 		$h = 0;
@@ -554,7 +554,7 @@ class WT_Report_HTML extends WT_Report_Base {
 	/**
 	 * @param $text
 	 *
-	 * @return bool|int
+	 * @return integer
 	 */
 	function getStringWidth($text) {
 		$style = $this->getStyle($this->currentStyle);
@@ -566,7 +566,7 @@ class WT_Report_HTML extends WT_Report_Base {
 	 *
 	 * @param $str
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	function getTextCellHeight($str) {
 		// Count the number of lines to calculate the height
@@ -596,7 +596,7 @@ class WT_Report_HTML extends WT_Report_Base {
 	/**
 	 * Get the current page number - WT_Report_HTML
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	function PageNo() {
 		return $this->pageN;
@@ -649,8 +649,8 @@ class WT_Report_HTML extends WT_Report_Base {
 	/**
 	 * Wrap text - WT_Report_HTML
 	 *
-	 * @param string $str   Text to wrap
-	 * @param int    $width Width in points the text has to fit into
+	 * @param string  $str   Text to wrap
+	 * @param integer $width Width in points the text has to fit into
 	 *
 	 * @return string
 	 */
@@ -677,9 +677,9 @@ class WT_Report_HTML extends WT_Report_Base {
 	/**
 	 * Write text - WT_Report_HTML
 	 *
-	 * @param string $text  Text to print
-	 * @param string $color HTML RGB color code (Ex: #001122)
-	 * @param bool   $useclass
+	 * @param string  $text  Text to print
+	 * @param string  $color HTML RGB color code (Ex: #001122)
+	 * @param boolean $useclass
 	 */
 	function write($text, $color = "", $useclass = true) {
 		global $TEXT_DIRECTION;

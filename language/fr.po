@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2014-10-10 13:52+0100\n"
-"PO-Revision-Date: 2014-07-23 17:14+0100\n"
+"PO-Revision-Date: 2014-10-16 21:02+0100\n"
 "Last-Translator: fisharebest <fisharebest@gmail.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -153,7 +153,7 @@ msgstr "%1$s n’a pas un lien vers %2$s."
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
 msgstr[0] "%1$s fichier a été extrait en %2$s secondes."
-msgstr[1] "%1$s fichiers ont été extraits %2$s secondes."
+msgstr[1] "%1$s fichiers ont été extraits en %2$s secondes."
 
 #. I18N: %1$s is an internal ID number such as R123.  %2$s and %3$s are record types, such as INDI or SOUR
 #: admin_trees_check.php:181
@@ -590,7 +590,7 @@ msgstr "<b>GUID</b> dans ce contexte est un acronyme pour «&nbsp;Globally Uniqu
 
 #: help_text.php:1318
 msgid "<b>Important note:</b> The transfer wizard is not able to assist with moving media items.  You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
-msgstr "<b>Note importante:</b> L’assistant de transfert n’est pas en mesure d’aider à déplacer des éléments médias. Vous aurez besoin de mettre en place et de déplacer ou copier votre configuration des médias et des objets séparément après l’assistant de transfert est terminé."
+msgstr "<b>Note importante:</b> L’assistant de transfert n’est pas en mesure d’aider à déplacer des éléments médias. Vous aurez besoin de mettre en place et de déplacer ou copier votre configuration des médias et les objets séparément après que l’assistant de transfert ait terminé."
 
 #: help_text.php:1007
 msgid "<b>No</b> means that authenticated users can see the details of all living individuals.  <b>Yes</b> means that users can only see the private information of living individuals they are related to.<br><br>This option sets the default for all users who have access to this genealogical database.  The administrator can override this option for individual users by editing the user’s account details."
@@ -3371,21 +3371,21 @@ msgstr "Diagrammes"
 
 #: modules_v3/clippings/clippings_ctrl.php:290
 msgid "Check access rights on this directory."
-msgstr "Vérifier les droits d’écriture du répertoire."
+msgstr "Vérifie les droits d’écriture du répertoire."
 
 #: admin_site_upgrade.php:382
 msgid "Check file permissions…"
-msgstr "Vérifier les permissions de fichier…"
+msgstr "Vérifie les permissions de fichier…"
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:118
 msgid "Check for custom modules…"
-msgstr "Vérifier les modules personnalisés…"
+msgstr "Vérifie les modules personnalisés…"
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:220
 msgid "Check for custom themes…"
-msgstr "Vérifier les thèmes personnalisés…"
+msgstr "Vérifie les thèmes personnalisés…"
 
 #: admin_trees_check.php:30 themes/_administration/header.php:125
 msgid "Check for errors"
@@ -3394,7 +3394,7 @@ msgstr "Rechercher d’éventuelles erreurs"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:99
 msgid "Check for pending changes…"
-msgstr "Vérifier les modifications en attente d’approbation…"
+msgstr "Vérifie les modifications en attente d’approbation…"
 
 #: help_text.php:460 relationship.php:138
 msgid "Check relationships by marriage"
@@ -3885,12 +3885,12 @@ msgstr "Copier"
 #: admin_trees_merge.php:182
 #, php-format
 msgid "Copy all the records from %1$s into %2$s."
-msgstr "Copie tous les enregistrements de %1$s vers %2$s."
+msgstr "Copier tous les enregistrements de %1$s vers %2$s."
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:422
 msgid "Copy files…"
-msgstr "Copier les fichiers…"
+msgstr "Copie les fichiers…"
 
 #: admin_site_upgrade.php:393
 #, php-format
@@ -4867,7 +4867,7 @@ msgstr "Supprimer les messages sélectionnés"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:472
 msgid "Delete temporary files…"
-msgstr "Supprimer les fichiers temporaires…"
+msgstr "Supprime les fichiers temporaires…"
 
 #: library/WT/Controller/Individual.php:153
 msgid "Delete this name"
@@ -5183,7 +5183,7 @@ msgstr "Télécharger (Download)"
 #: admin_site_upgrade.php:302
 #, php-format
 msgid "Download %s…"
-msgstr "Télécharger %s…"
+msgstr "Télécharge %s…"
 
 #: admin_trees_download.php:32
 msgid "Download GEDCOM"
@@ -5707,7 +5707,7 @@ msgstr "Exporter"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:283
 msgid "Export all family trees to GEDCOM files…"
-msgstr "Exporter tous les arbres vers les fichiers GEDCOM…"
+msgstr "Exporte tous les arbres vers des fichiers GEDCOM…"
 
 #: help_text.php:1211
 msgid "Export family tree"
@@ -7601,7 +7601,7 @@ msgstr "Israël"
 
 #: admin_site_upgrade.php:83 admin_site_upgrade.php:87
 msgid "It can take several minutes to download and install the upgrade.  Be patient."
-msgstr "Il peut prendre plusieurs minutes à télécharger et à installer la mise à jour. Soyez patient."
+msgstr "Plusieurs minutes peuvent être nécessaires pour télécharger et installer la mise à jour. Soyez patient."
 
 #: library/WT/Stats.php:4886
 msgid "Italy"
@@ -8888,7 +8888,7 @@ msgstr "Mercure"
 
 #: admin_trees_merge.php:30 themes/_administration/header.php:122
 msgid "Merge family trees"
-msgstr "Fusionne des arbres généalogiques."
+msgstr "Fusionner des arbres généalogiques."
 
 #: admin_site_merge.php:266
 msgid "Merge from ID:"
@@ -9599,11 +9599,11 @@ msgstr "Messagerie désactivée"
 
 #: admin_site_upgrade.php:209
 msgid "No custom modules are enabled."
-msgstr "Aucun module personnalisé est activé."
+msgstr "Aucun module personnalisé n’est activé."
 
 #: admin_site_upgrade.php:272
 msgid "No custom themes are enabled."
-msgstr "Aucun thème personnalisé est activé."
+msgstr "Aucun thème personnalisé n’est activé."
 
 #: admin_trees_check.php:229
 msgid "No errors were found."
@@ -10654,12 +10654,12 @@ msgstr "Lieu de résidence"
 #: admin_site_upgrade.php:407
 #, php-format
 msgid "Place the site offline, by creating the file %s…"
-msgstr "Mettre le site hors ligne en créant le fichier %s…"
+msgstr "Met le site hors ligne en créant le fichier %s…"
 
 #: admin_site_upgrade.php:458
 #, php-format
 msgid "Place the site online, by deleting the file %s…"
-msgstr "Mettre le site en ligne en supprimant le fichier %s…"
+msgstr "Remet le site en ligne en supprimant le fichier %s…"
 
 #: admin_trees_config.php:914 statistics.php:401
 msgid "Places"
@@ -13297,12 +13297,12 @@ msgstr "Le fichier %s a été créé."
 #: admin_site_upgrade.php:482
 #, php-format
 msgid "The file %s was deleted."
-msgstr "Ce fichier %s a été supprimé."
+msgstr "Le fichier %s a été supprimé."
 
 #: admin_media_upload.php:138 admin_media_upload.php:156
 #, php-format
 msgid "The file %s was uploaded."
-msgstr "Le fichier %s a été téléchargé."
+msgstr "Le fichier %s a été téléversé."
 
 #. I18N: %s is a filename
 #: medialist.php:277 mediaviewer.php:111
@@ -13527,7 +13527,7 @@ msgstr[1] "Les deux arbres généalogiques ont %1$s enregistrements qui utilisen
 
 #: admin_site_upgrade.php:490
 msgid "The upgrade is complete."
-msgstr "La mise à jour est complétée."
+msgstr "La mise à jour est terminée."
 
 #: login.php:315
 msgid "The user has been sent an e-mail with the information necessary to confirm the access request"
@@ -13597,7 +13597,7 @@ msgstr "Aucune note liée à cet individu."
 
 #: admin_site_upgrade.php:109
 msgid "There are no pending changes."
-msgstr "Il n’y a pas de modifications en attente d’approbation."
+msgstr "Il n’y a pas de modification en attente d’approbation."
 
 #: modules_v3/todo/module.php:126
 msgid "There are no research tasks in this family tree."
@@ -14385,7 +14385,7 @@ msgstr "Pour vous aider à travailler avec ce bloc, nous avons créé plusieurs 
 
 #: admin_site_upgrade.php:391
 msgid "To complete the upgrade, you should install the files manually."
-msgstr "Pour compléter la mise à jour, vous devez installer manuellement les fichiers."
+msgstr "Pour terminer la mise à jour, vous devez installer manuellement les fichiers."
 
 #: modules_v3/todo/help_text.php:34
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
@@ -14812,7 +14812,7 @@ msgstr "Les fichiers inutilisés"
 #: admin_site_upgrade.php:332
 #, php-format
 msgid "Unzip %s to a temporary folder…"
-msgstr "Décompresser %s vers un dossier temporaire…"
+msgstr "Décompresse %s vers un dossier temporaire…"
 
 #. I18N: Name of a module
 #: modules_v3/upcoming_events/module.php:27

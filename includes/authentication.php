@@ -40,14 +40,19 @@ function getUserFullName($user_id) {
 	return User::find($user_id)->getRealName();
 }
 
-//-- requires a string to add into the searchlog-file
+/**
+ * Log a search query
+ *
+ * @param string    $log_message
+ * @param integer[] $geds
+ */
 function AddToSearchLog($log_message, $geds) {
 	global $WT_REQUEST;
 	foreach (WT_Tree::getAll() as $tree) {
 		WT_DB::prepare(
 			"INSERT INTO `##log` (log_type, log_message, ip_address, user_id, gedcom_id) VALUES ('search', ?, ?, ?, ?)"
 		)->execute(array(
-			(count(WT_Tree::getAll())==count($geds) ? 'Global search: ' : 'Gedcom search: ').$log_message,
+			(count(WT_Tree::getAll()) == count($geds) ? 'Global search: ' : 'Gedcom search: ') . $log_message,
 			$WT_REQUEST->getClientIp(),
 			WT_USER_ID ? WT_USER_ID : null,
 			$tree->tree_id
@@ -55,7 +60,13 @@ function AddToSearchLog($log_message, $geds) {
 	}
 }
 
-// Store a new message in the database
+/**
+ * Add a message to a user's inbox
+ *
+ * @param string[] $message
+ *
+ * @return bool
+ */
 function addMessage($message) {
 	global $WT_TREE, $WT_REQUEST;
 
@@ -66,15 +77,15 @@ function addMessage($message) {
 
 	// Sender may not be a webtrees user
 	if ($sender) {
-		$sender_email = $sender->getEmail();
+		$sender_email     = $sender->getEmail();
 		$sender_real_name = $sender->getRealName();
 	} else {
-		$sender_email = $message['from'];
+		$sender_email     = $message['from'];
 		$sender_real_name = $message['from_name'];
 	}
 
 	// Send a copy of the copy message back to the sender.
-	if ($message['method']!='messaging') {
+	if ($message['method'] != 'messaging') {
 		// Switch to the sender’s language.
 		if ($sender) {
 			WT_I18N::init($sender->getPreference('language'));
@@ -96,10 +107,8 @@ function addMessage($message) {
 			$copy_email = WT_I18N::translate('You sent the following message to a webtrees administrator:') . WT_Mail::EOL . WT_Mail::EOL . WT_Mail::EOL . $copy_email;
 		}
 
-		$success = $success && WT_Mail::send(
-			// From:
-			$WT_TREE,
-			// To:
+		$success = $success && WT_Mail::send(// From:
+				$WT_TREE, // To:
 			$sender_email,
 			$sender_real_name,
 			// Reply-To:
@@ -132,10 +141,10 @@ function addMessage($message) {
 	}
 
 	if (empty($message['created'])) {
-		$message['created'] = gmdate ("D, d M Y H:i:s T");
+		$message['created'] = gmdate("D, d M Y H:i:s T");
 	}
 
-	if ($message['method']!='messaging3' && $message['method']!='mailto' && $message['method']!='none') {
+	if ($message['method'] != 'messaging3' && $message['method'] != 'mailto' && $message['method'] != 'none') {
 		WT_DB::prepare("INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)")
 			->execute(array(
 				$message['from'],
@@ -145,7 +154,7 @@ function addMessage($message) {
 				str_replace('<br>', '', $message['body']) // Remove the <br> that we added for the external email.  TODO: create different messages
 			));
 	}
-	if ($message['method']!='messaging') {
+	if ($message['method'] != 'messaging') {
 		if ($sender) {
 			$original_email = WT_I18N::translate('The following message has been sent to your webtrees user account from ');
 			$original_email .= $sender->getRealName();
@@ -159,10 +168,8 @@ function addMessage($message) {
 		}
 		$original_email .= WT_Mail::EOL . WT_Mail::EOL . $message['body'];
 
-		$success = $success && WT_Mail::send(
-			// From:
-			$WT_TREE,
-			// To:
+		$success = $success && WT_Mail::send(// From:
+				$WT_TREE, // To:
 			$recipient->getEmail(),
 			$recipient->getRealName(),
 			// Reply-To:
@@ -214,9 +221,9 @@ function addNews($news) {
 /**
  * Deletes a news item from the database
  *
- * @param int $news_id the id number of the news item to delete
+ * @param integer $news_id the id number of the news item to delete
  *
- * @return bool
+ * @return boolean
  */
 function deleteNews($news_id) {
 	return (bool)WT_DB::prepare("DELETE FROM `##news` WHERE news_id=?")->execute(array($news_id));
@@ -224,22 +231,23 @@ function deleteNews($news_id) {
 
 // Gets the news items for the given user or gedcom
 function getUserNews($user_id) {
-	$rows=
+	$rows =
 		WT_DB::prepare("SELECT SQL_CACHE news_id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) AS updated, subject, body FROM `##news` WHERE user_id=? ORDER BY updated DESC")
 		->execute(array($user_id))
 		->fetchAll();
 
-	$news=array();
+	$news = array();
 	foreach ($rows as $row) {
-		$news[$row->news_id]=array(
-			'id'=>$row->news_id,
-			'user_id'=>$row->user_id,
-			'gedcom_id'=>$row->gedcom_id,
-			'date'=>$row->updated,
-			'title'=>$row->subject,
-			'text'=>$row->body,
+		$news[$row->news_id] = array(
+			'id' => $row->news_id,
+			'user_id' => $row->user_id,
+			'gedcom_id' => $row->gedcom_id,
+			'date' => $row->updated,
+			'title' => $row->subject,
+			'text' => $row->body,
 		);
 	}
+
 	return $news;
 }
 
@@ -249,41 +257,42 @@ function getGedcomNews($gedcom_id) {
 		->execute(array($gedcom_id))
 		->fetchAll();
 
-	$news=array();
+	$news = array();
 	foreach ($rows as $row) {
-		$news[$row->news_id]=array(
-			'id'=>$row->news_id,
-			'user_id'=>$row->user_id,
-			'gedcom_id'=>$row->gedcom_id,
-			'date'=>$row->updated,
-			'title'=>$row->subject,
-			'text'=>$row->body,
+		$news[$row->news_id] = array(
+			'id' => $row->news_id,
+			'user_id' => $row->user_id,
+			'gedcom_id' => $row->gedcom_id,
+			'date' => $row->updated,
+			'title' => $row->subject,
+			'text' => $row->body,
 		);
 	}
+
 	return $news;
 }
 
 /**
  * Gets the news item for the given news id
  *
- * @param int $news_id the id of the news entry to get
+ * @param integer $news_id the id of the news entry to get
  *
  * @return array|null
  */
 function getNewsItem($news_id) {
-	$row=
+	$row =
 		WT_DB::prepare("SELECT SQL_CACHE news_id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) AS updated, subject, body FROM `##news` WHERE news_id=?")
 		->execute(array($news_id))
 		->fetchOneRow();
 
 	if ($row) {
 		return array(
-			'id'=>$row->news_id,
-			'user_id'=>$row->user_id,
-			'gedcom_id'=>$row->gedcom_id,
-			'date'=>$row->updated,
-			'title'=>$row->subject,
-			'text'=>$row->body,
+			'id' => $row->news_id,
+			'user_id' => $row->user_id,
+			'gedcom_id' => $row->gedcom_id,
+			'date' => $row->updated,
+			'title' => $row->subject,
+			'text' => $row->body,
 		);
 	} else {
 		return null;

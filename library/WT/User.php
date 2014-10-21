@@ -44,7 +44,7 @@ class User {
 	/**
 	 * Find the user with a specified user_id.
 	 *
-	 * @param int|null $user_id
+	 * @param integer|null $user_id
 	 *
 	 * @return User|null
 	 */
@@ -136,7 +136,7 @@ class User {
 	/**
 	 * Get a count of all users.
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	public static function count() {
 		return (int)WT_DB::prepare(
@@ -245,7 +245,7 @@ class User {
 	 *
 	 * @param string $password
 	 *
-	 * @return bool
+	 * @return boolean
 	 */
 	public function checkPassword($password) {
 		$password_hash = WT_DB::prepare(
@@ -410,6 +410,23 @@ class User {
 			WT_DB::prepare("REPLACE INTO `##user_setting` (user_id, setting_name, setting_value) VALUES (?, ?, LEFT(?, 255))")
 				->execute(array($this->user_id, $setting_name, $setting_value));
 			$this->preferences[$setting_name] = $setting_value;
+		}
+
+		return $this;
+	}
+
+	/**
+	 * Delete a setting for the user.
+	 *
+	 * @param string $setting_name
+	 *
+	 * @return User
+	 */
+	public function deletePreference($setting_name) {
+		if ($this->user_id && $this->getPreference($setting_name) !== null) {
+			WT_DB::prepare("DELETE FROM `##user_setting` WHERE user_id = ? AND setting_name = ?")
+				->execute(array($this->user_id, $setting_name));
+			unset($this->preferences[$setting_name]);
 		}
 
 		return $this;

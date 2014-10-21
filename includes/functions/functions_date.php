@@ -21,6 +21,12 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * @param string  $age_string
+ * @param boolean $show_years
+ *
+ * @return string
+ */
 function get_age_at_event($age_string, $show_years) {
 	switch (strtoupper($age_string)) {
 	case 'CHILD':
@@ -75,13 +81,17 @@ function parse_time($timestr)
 	return $time;
 }
 
-////////////////////////////////////////////////////////////////////////////////
-// Convert a unix timestamp into a formated date-time value, for logs, etc.
-// We can’t just use date("$DATE_FORMAT- $TIME_FORMAT") as this doesn't
-// support internationalisation.
-// Don't attempt to convert into other calendars, as not all days start at
-// midnight, and we can only get it wrong.
-////////////////////////////////////////////////////////////////////////////////
+/**
+ * Convert a unix timestamp into a formated date-time value, for logs, etc.
+ * We can’t just use date("$DATE_FORMAT- $TIME_FORMAT") as this doesn't
+ * support internationalisation.
+ * Don't attempt to convert into other calendars, as not all days start at
+ * midnight, and we can only get it wrong.
+ *
+ * @param integer $time
+ *
+ * @return string
+ */
 function format_timestamp($time) {
 	global $DATE_FORMAT, $TIME_FORMAT;
 
@@ -119,12 +129,16 @@ function format_timestamp($time) {
 		}
 	}
 
-	return timestamp_to_gedcom_date($time)->Display(false, $DATE_FORMAT).  '<span class="date"> - '.$time_fmt.'</span>';
+	return timestamp_to_gedcom_date($time)->display() . '<span class="date"> - ' . $time_fmt . '</span>';
 }
 
-////////////////////////////////////////////////////////////////////////////////
-// Convert a unix-style timestamp into a WT_Date object
-////////////////////////////////////////////////////////////////////////////////
+/**
+ * Convert a unix-style timestamp into a WT_Date object
+ *
+ * @param integer $time
+ *
+ * @return WT_Date
+ */
 function timestamp_to_gedcom_date($time) {
 	return new WT_Date(strtoupper(gmdate('j M Y', $time)));
 }

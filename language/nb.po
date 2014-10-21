@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2014-10-10 13:52+0100\n"
-"PO-Revision-Date: 2014-04-22 23:25+0300\n"
-"Last-Translator: HRN\n"
+"PO-Revision-Date: 2014-10-20 17:35+0100\n"
+"Last-Translator: Eyolf Østrem <eyolf@oestrem.com>\n"
 "Language-Team: Norwegian Bokmal <nb@li.org>\n"
 "Language: nb\n"
 "MIME-Version: 1.0\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Launchpad-Export-Date: 2013-08-04 19:02+0000\n"
-"X-Generator: Poedit 1.5.7\n"
+"X-Generator: Poedit 1.6.9\n"
 
 #: modules_v3/ahnentafel_report/report.xml:157
 #: modules_v3/ahnentafel_report/report.xml:185
@@ -2510,7 +2510,7 @@ msgstr "Binært dataobjekt"
 
 #: includes/functions/functions_print.php:813
 msgid "Bing Maps™"
-msgstr ""
+msgstr "Bing Maps™"
 
 #: library/WT/Gedcom/Code/Temp.php:68
 msgid "Birmingham, Alabama"
@@ -3227,7 +3227,7 @@ msgstr "Dødsårsak"
 
 #: admin_trees_renumber.php:278
 msgid "Caution!  This may take a long time.  Be patient."
-msgstr ""
+msgstr "NB! Dette kan ta lang tid. Vær tålmodig."
 
 #: admin_site_upgrade.php:204
 msgid "Caution: old modules may not work, or they may prevent webtrees from working."
@@ -3881,7 +3881,7 @@ msgstr "Kopier"
 #: admin_trees_merge.php:182
 #, php-format
 msgid "Copy all the records from %1$s into %2$s."
-msgstr ""
+msgstr "Kopier alle postene fra %1$s til %2$s."
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:422
@@ -5736,7 +5736,7 @@ msgstr "Øyenfarge"
 #. I18N: Name of a theme.
 #: themes/fab/theme.php:29
 msgid "F.A.B."
-msgstr ""
+msgstr "F.A.B."
 
 #. I18N: Name of a module.  Abbreviation for “Frequently Asked Questions”
 #: modules_v3/faq/module.php:27 modules_v3/faq/module.php:420
@@ -7347,7 +7347,7 @@ msgstr "Importer slektstre"
 #: admin_trees_renumber.php:260
 #: admin_trees_merge.php:73
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
-msgstr ""
+msgstr "Hver post i et slektstre har et internt referansenummer (en \"XREF\"), som f.eks. \"F123\" eller \"R14\"."
 
 #: help_text.php:348
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet.  This might be of use with Japanese names, where three different alphabets may occur."
@@ -8885,7 +8885,7 @@ msgstr "Kvikksølv"
 
 #: admin_trees_merge.php:30 themes/_administration/header.php:122
 msgid "Merge family trees"
-msgstr ""
+msgstr "Sammenflett slektstrær"
 
 #: admin_site_merge.php:266
 msgid "Merge from ID:"
@@ -10077,7 +10077,7 @@ msgstr "Ops! Det var ikke mulig for webtrees å opprette filer i denne mappen."
 
 #: includes/functions/functions_print.php:814
 msgid "OpenStreetMap™"
-msgstr ""
+msgstr "OpenStreetMap™"
 
 #: modules_v3/googlemap/help_text.php:41 modules_v3/googlemap/module.php:397
 msgid "Optional prefixes and suffixes"
@@ -10465,7 +10465,7 @@ msgstr "Bilde"
 
 #: admin_pgv_to_wt.php:147
 msgid "PhpGedView might be installed in one of these folders:"
-msgstr ""
+msgstr "PhpGedView kan være installert i en av følgende mapper:"
 
 #: admin_pgv_to_wt.php:65
 msgid "PhpGedView must use the same database as webtrees."
@@ -11326,7 +11326,7 @@ msgstr "Reno, Nevada"
 #: admin_trees_merge.php:87 admin_trees_merge.php:92
 #: admin_trees_renumber.php:29
 msgid "Renumber family tree"
-msgstr ""
+msgstr "Gi postene i slektstreet nye referansenumre"
 
 #: admin_trees_places.php:101 search.php:119
 msgid "Replace with"
@@ -12547,7 +12547,7 @@ msgstr "Sidepanel"
 
 #: admin_module_sidebar.php:30
 msgid "Sidebars"
-msgstr ""
+msgstr "Sidepanel"
 
 #: library/WT/Stats.php:4979
 msgid "Sierra Leone"
@@ -13257,7 +13257,7 @@ msgstr "Detaljene om denne personen er private"
 
 #: admin_trees_merge.php:176
 msgid "The family trees were merged successfully."
-msgstr ""
+msgstr "Sammenfletningen av slektstreene var vellykket."
 
 #. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
 #: action.php:160
@@ -13459,7 +13459,7 @@ msgstr "Det er valgfritt å bruke prefiks, men anbefalt. Ved å gi tabellen et u
 #: admin_trees_renumber.php:237
 #, php-format
 msgid "The record %1$s was renamed to %2$s."
-msgstr ""
+msgstr "Posten %1$s ble omdøpt til %2$s."
 
 #: action.php:100
 msgid "The record was copied to the clipboard."
@@ -13475,7 +13475,7 @@ msgstr "Serverkonfigurasjon OK."
 
 #: admin_trees_renumber.php:252
 msgid "The server’s time limit was reached."
-msgstr ""
+msgstr "Serverens tidsgrense ble nådd."
 
 #: site-offline.php:78
 msgid "The site is down for maintenance.  You should <a href=\"index.php\">try again</a> in a few minutes."
@@ -13520,8 +13520,8 @@ msgstr "Tid i sekunder som en webtrees økt er aktiv før ny innlogging kreves. 
 #, php-format
 msgid "The two family trees have %1$s record which use the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "De to slektstrærne har %1$s post med samme “XREF”."
+msgstr[1] "De to slektstrærne har %1$s poster med samme “XREF”."
 
 #: admin_site_upgrade.php:490
 msgid "The upgrade is complete."
@@ -13555,7 +13555,7 @@ msgstr "Denne versjon av %s er for gammel"
 
 #: help_text.php:997
 msgid "The website www.geonames.org provides a large database of place names.  This can be searched when entering new places.  To use this feature, you must register for a free account at www.geonames.org and provide the username."
-msgstr ""
+msgstr "Nettstedet www.geonames.org har en stor database over stedsnavn, som kan gjennomsøkes når man skriver inn nye steder. For å bruke denne tjenesten trenger du en gratis konto på www.geonames.org, og angi ditt brukernavn her."
 
 #: setup.php:933
 msgid "The webtrees developers would be very interested to learn about this error.  If you contact them, they will help you resolve the problem."
@@ -13721,8 +13721,8 @@ msgstr "Det er ikke registrert noen barn på denne familien"
 #, php-format
 msgid "This family tree has %s record which uses the same “XREF” as another family tree."
 msgid_plural "This family tree has %s records which use the same “XREF” as another family tree."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "De to slektstrærne har %1$s post med samme “XREF” som et annet slektstre."
+msgstr[1] "De to slektstrærne har %1$s poster med samme “XREF” som et annet slektstre."
 
 #: modules_v3/random_media/module.php:189
 msgid "This family tree has no images to display."
@@ -15593,12 +15593,12 @@ msgid "You can re-enable these themes after the upgrade."
 msgstr "Disse temaene kan gjenaktiveres etter oppdateringen."
 
 #: admin_trees_renumber.php:261
-msgid "You can renumber the records in a family tree, so that these internal identification numbers are not duplicated in any other family tree."
-msgstr ""
+msgid "You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree."
+msgstr "Du kan nummerere postene i et slektstre på nytt så de interne referansenumrene ikke sammenfaller med numrene i et annet slektstre."
 
 #: admin_trees_renumber.php:274
 msgid "You can renumber this family tree."
-msgstr ""
+msgstr "Du kan nummerere postene i dette slektstreet på nytt."
 
 #: help_text.php:643 help_text.php:682
 msgid "You can request a higher or lower limit, although the server may ignore this request."
@@ -15695,7 +15695,7 @@ msgstr "Du må agi tittel for kilden"
 
 #: admin_trees_merge.php:83
 msgid "You must renumber the records in one of the trees before you can merge them."
-msgstr ""
+msgstr "Du må nummerere postene i ett av slektstrærne på nytt før du kan sammenflette dem."
 
 #: modules_v3/charts/module.php:139
 msgid "You must select an individual and chart type in the block configuration settings."
@@ -16226,12 +16226,12 @@ msgstr "lukk"
 #. I18N: Name of a theme.
 #: themes/clouds/theme.php:48
 msgid "clouds"
-msgstr ""
+msgstr "clouds"
 
 #. I18N: Name of a theme.
 #: themes/colors/theme.php:124
 msgid "colors"
-msgstr ""
+msgstr "colors"
 
 #: modules_v3/top10_surnames/module.php:157
 msgid "compact list"
@@ -16814,7 +16814,7 @@ msgstr "Kjønn"
 #. I18N: button label
 #: admin_trees_renumber.php:275
 msgid "go"
-msgstr ""
+msgstr "start"
 
 #. I18N: button label
 #: edit_interface.php:2740
@@ -18527,7 +18527,7 @@ msgstr "midnatt"
 #. I18N: Name of a theme.
 #: themes/minimal/theme.php:30
 msgid "minimal"
-msgstr ""
+msgstr "minimal"
 
 #: modules_v3/googlemap/module.php:321
 msgid "minimum"
@@ -19740,7 +19740,7 @@ msgstr "hustru"
 #. I18N: Name of a theme.
 #: themes/xenea/theme.php:30
 msgid "xenea"
-msgstr ""
+msgstr "xenea"
 
 #: timeline.php:128
 msgid "years"

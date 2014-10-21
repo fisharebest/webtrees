@@ -109,7 +109,7 @@ class WT_DB {
 	/**
 	 * Are we currently connected to a database?
 	 *
-	 * @return bool
+	 * @return boolean
 	 */
 	public static function isConnected() {
 		return self::$pdo instanceof PDO;
@@ -119,7 +119,7 @@ class WT_DB {
 	 * Log the details of a query, for debugging and analysis.
 	 *
 	 * @param string   $query
-	 * @param int      $rows
+	 * @param integer  $rows
 	 * @param double   $microtime
 	 * @param string[] $bind_variables
 	 *
@@ -179,7 +179,7 @@ class WT_DB {
 	/**
 	 * Determine the number of queries executed, for the page statistics.
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	public static function getQueryCount() {
 		return count(self::$log);
@@ -230,7 +230,7 @@ class WT_DB {
 	 *
 	 * @param string $sql The SQL statement to execute
 	 *
-	 * @return int The number of rows affected by this SQL query
+	 * @return integer The number of rows affected by this SQL query
 	 */
 	public static function exec($sql) {
 		$sql = str_replace('##', WT_TBLPREFIX, $sql);
@@ -262,9 +262,9 @@ class WT_DB {
 	/**
 	 * Run a series of scripts to bring the database schema up to date.
 	 *
-	 * @param string $schema_dir
-	 * @param string $schema_name
-	 * @param int    $target_version
+	 * @param string  $schema_dir
+	 * @param string  $schema_name
+	 * @param integer $target_version
 	 *
 	 * @return void
 	 * @throws Exception

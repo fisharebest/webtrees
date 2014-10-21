@@ -725,7 +725,7 @@ function find_rin_id($rin) {
  * This function returns a simple array of the most common surnames
  * found in the individuals list.
  *
- * @param int $min the number of times a surname must occur before it is added to the array
+ * @param integer $min the number of times a surname must occur before it is added to the array
  *
  * @return array
  */
@@ -760,9 +760,9 @@ function get_common_surnames($min) {
 /**
  * get the top surnames
  *
- * @param int $ged_id fetch surnames from this gedcom
- * @param int $min    only fetch surnames occuring this many times
- * @param int $max    only fetch this number of surnames (0=all)
+ * @param integer $ged_id fetch surnames from this gedcom
+ * @param integer $min    only fetch surnames occuring this many times
+ * @param integer $max    only fetch this number of surnames (0=all)
  *
  * @return array
  */

@@ -33,7 +33,8 @@ class WT_GedcomRecord {
 	protected $gedcom      = null;  // GEDCOM data (before any pending edits)
 	protected $pending     = null;  // GEDCOM data (after any pending edits)
 
-	protected $facts       = null;  // Array of WT_Fact objects (from $gedcom/$pending)
+	/** @var WT_Fact[] facts extracted from $gedcom/$pending */
+	protected $facts       = null;
 
 	private   $disp_public = null;  // Can we display details of this record to WT_PRIV_PUBLIC
 	private   $disp_user   = null;  // Can we display details of this record to WT_PRIV_USER
@@ -49,10 +50,15 @@ class WT_GedcomRecord {
 	// Fetch all pending edits in one database query
 	private static $pending_record_cache;
 
-	// Create a GedcomRecord object from raw GEDCOM data.
-	// $gedcom is an empty string for new/pending records
-	// $pending is null for a record with no pending edits
-	// $pending is an empty string for records with pending deletions
+	/**
+	 * Create a GedcomRecord object from raw GEDCOM data.
+	 *
+	 * @param string      $xref
+	 * @param string      $gedcom  an empty string for new/pending records
+	 * @param string|null $pending null for a record with no pending edits,
+	 *                             empty string for records with pending deletions
+	 * @param integer     $gedcom_id
+	 */
 	public function __construct($xref, $gedcom, $pending, $gedcom_id) {
 		$this->xref      = $xref;
 		$this->gedcom    = $gedcom;
@@ -62,7 +68,9 @@ class WT_GedcomRecord {
 		$this->parseFacts();
 	}
 
-	// Split the record into facts
+	/**
+	 * Split the record into facts
+	 */
 	private function parseFacts() {
 		// Split the record into facts
 		if ($this->gedcom) {
@@ -96,9 +104,18 @@ class WT_GedcomRecord {
 		}
 	}
 
-	// Get an instance of a GedcomRecord object.  For single records,
-	// we just receive the XREF.  For bulk records (such as lists
-	// and search results) we can receive the GEDCOM data as well.
+	/**
+	 * Get an instance of a GedcomRecord object.  For single records,
+	 * we just receive the XREF.  For bulk records (such as lists
+	 * and search results) we can receive the GEDCOM data as well.
+	 *
+	 * @param string       $xref
+	 * @param integer|null $gedcom_id
+	 * @param string|null  $gedcom
+	 *
+	 * @return WT_GedcomRecord|null
+	 * @throws Exception
+	 */
 	public static function getInstance($xref, $gedcom_id=WT_GED_ID, $gedcom=null) {
 		// Is this record already in the cache?
 		if (isset(self::$gedcom_record_cache[$xref][$gedcom_id])) {
@@ -183,7 +200,15 @@ class WT_GedcomRecord {
 		return $record;
 	}
 
-	private static function fetchGedcomRecord($xref, $gedcom_id) {
+	/**
+	 * Fetch data from the database
+	 *
+	 * @param string  $xref
+	 * @param integer $gedcom_id
+	 *
+	 * @return null|string
+	 */
+	protected static function fetchGedcomRecord($xref, $gedcom_id) {
 		static $statement=null;
 
 		// We don't know what type of object this is.  Try each one in turn.
@@ -219,17 +244,30 @@ class WT_GedcomRecord {
 
 	}
 
-	// XREF
+	/**
+	 * Get the XREF for this record
+	 *
+	 * @return string
+	 */
 	public function getXref() {
 		return $this->xref;
 	}
 
-	// GEDCOM ID
+	/**
+	 * Get the tree ID for this record
+	 *
+	 * @return integer
+	 */
 	public function getGedcomId() {
 		return $this->gedcom_id;
 	}
 
-	// Application code should access data via WT_Fact objects
+	/**
+	 * Application code should access data via WT_Fact objects.
+	 * This function exists to support old code.
+	 *
+	 * @return string
+	 */
 	public function getGedcom() {
 		if ($this->pending === null) {
 			return $this->gedcom;
@@ -238,30 +276,59 @@ class WT_GedcomRecord {
 		}
 	}
 
-	// Does this record have a pending change?
+	/**
+	 * Does this record have a pending change?
+	 *
+	 * @return boolean
+	 */
 	public function isNew() {
 		return $this->pending !== null;
 	}
 
-	// Does this record have a pending deletion?
+	/**
+	 * Does this record have a pending deletion?
+	 *
+	 * @return boolean
+	 */
 	public function isOld() {
 		return $this->pending === '';
 	}
 
-	// Generate a URL to this record, suitable for use in HTML, etc.
+	/**
+	 * Generate a URL to this record, suitable for use in HTML, etc.
+	 *
+	 * @return string
+	 */
 	public function getHtmlUrl() {
 		return $this->getLinkUrl(static::URL_PREFIX, '&amp;');
 	}
-	// Generate a URL to this record, suitable for use in javascript, HTTP headers, etc.
+
+	/**
+	 * Generate a URL to this record, suitable for use in javascript, HTTP headers, etc.
+	 *
+	 * @return string
+	 */
 	public function getRawUrl() {
 		return $this->getLinkUrl(static::URL_PREFIX, '&');
 	}
 
-	// Generate an absolute URL for this record, suitable for sitemap.xml, RSS feeds, etc.
+	/**
+	 * Generate an absolute URL for this record, suitable for sitemap.xml, RSS feeds, etc.
+	 *
+	 * @return string
+	 */
 	public function getAbsoluteLinkUrl() {
 		return WT_SERVER_NAME . WT_SCRIPT_PATH . $this->getHtmlUrl();
 	}
 
+	/**
+	 * Generate a URL to this record.
+	 *
+	 * @param string $link
+	 * @param string $separator
+	 *
+	 * @return string
+	 */
 	private function getLinkUrl($link, $separator) {
 		if ($this->gedcom_id == WT_GED_ID) {
 			return $link . $this->getXref() . $separator . 'ged=' . WT_GEDURL;
@@ -272,7 +339,13 @@ class WT_GedcomRecord {
 		}
 	}
 
-	// Work out whether this record can be shown to a user with a given access level
+	/**
+	 * Work out whether this record can be shown to a user with a given access level
+	 *
+	 * @param integer $access_level
+	 *
+	 * @return boolean
+	 */
 	private function _canShow($access_level) {
 		global $person_privacy, $HIDE_LIVE_PEOPLE;
 
@@ -311,7 +384,13 @@ class WT_GedcomRecord {
 		return $this->canShowByType($access_level);
 	}
 
-	// Each object type may have its own special rules, and re-implement this function.
+	/**
+	 * Each object type may have its own special rules, and re-implement this function.
+	 *
+	 * @param integer $access_level
+	 *
+	 * @return boolean
+	 */
 	protected function canShowByType($access_level) {
 		global $global_facts;
 
@@ -324,7 +403,13 @@ class WT_GedcomRecord {
 		}
 	}
 
-	// Can the details of this record be shown?
+	/**
+	 * Can the details of this record be shown?
+	 *
+	 * @param integer $access_level
+	 *
+	 * @return boolean
+	 */
 	public function canShow($access_level=WT_USER_ACCESS_LEVEL) {
 		// CACHING: this function can take three different parameters,
 		// and therefore needs three different caches for the result.
@@ -354,18 +439,34 @@ class WT_GedcomRecord {
 		}
 	}
 
-	// Can the name of this record be shown?
+	/**
+	 * Can the name of this record be shown?
+	 *
+	 * @param integer $access_level
+	 *
+	 * @return boolean
+	 */
 	public function canShowName($access_level=WT_USER_ACCESS_LEVEL) {
 		return $this->canShow($access_level);
 	}
 
-	// Can we edit this record?
+	/**
+	 * Can we edit this record?
+	 *
+	 * @return boolean
+	 */
 	public function canEdit() {
 		return WT_USER_GEDCOM_ADMIN || WT_USER_CAN_EDIT && strpos($this->gedcom, "\n1 RESN locked")===false;
 	}
 
-	// Remove private data from the raw gedcom record.
-	// Return both the visible and invisible data.  We need the invisible data when editing.
+	/**
+	 * Remove private data from the raw gedcom record.
+	 * Return both the visible and invisible data.  We need the invisible data when editing.
+	 *
+	 * @param integer $access_level
+	 *
+	 * @return string
+	 */
 	public function privatizeGedcom($access_level) {
 		if ($access_level==WT_PRIV_HIDE) {
 			// We may need the original record, for example when downloading a GEDCOM or clippings cart
@@ -388,13 +489,25 @@ class WT_GedcomRecord {
 		}
 	}
 
-	// Generate a private version of this record
+	/**
+	 * Generate a private version of this record
+	 *
+	 * @param integer $access_level
+	 *
+	 * @return string
+	 */
 	protected function createPrivateGedcomRecord($access_level) {
 		return '0 @' . $this->xref . '@ ' . static::RECORD_TYPE . "\n1 NOTE " . WT_I18N::translate('Private');
 	}
 
-	// Convert a name record into sortable and full/display versions.  This default
-	// should be OK for simple record types.  INDI/FAM records will need to redefine it.
+	/**
+	 * Convert a name record into sortable and full/display versions.  This default
+	 * should be OK for simple record types.  INDI/FAM records will need to redefine it.
+	 *
+	 * @param string $type
+	 * @param string $value
+	 * @param string $gedcom
+	 */
 	protected function _addName($type, $value, $gedcom) {
 		$this->_getAllNames[]=array(
 			'type'=>$type,
@@ -404,14 +517,19 @@ class WT_GedcomRecord {
 		);
 	}
 
-	// Get all the names of a record, including ROMN, FONE and _HEB alternatives.
-	// Records without a name (e.g. FAM) will need to redefine this function.
-	//
-	// Parameters: the level 1 fact containing the name.
-	// Return value: an array of name structures, each containing
-	// ['type'] = the gedcom fact, e.g. NAME, TITL, FONE, _HEB, etc.
-	// ['full'] = the name as specified in the record, e.g. 'Vincent van Gogh' or 'John Unknown'
-	// ['sort'] = a sortable version of the name (not for display), e.g. 'Gogh, Vincent' or '@N.N., John'
+	/**
+	 * Get all the names of a record, including ROMN, FONE and _HEB alternatives.
+	 * Records without a name (e.g. FAM) will need to redefine this function.
+	 * Parameters: the level 1 fact containing the name.
+	 * Return value: an array of name structures, each containing
+	 * ['type'] = the gedcom fact, e.g. NAME, TITL, FONE, _HEB, etc.
+	 * ['full'] = the name as specified in the record, e.g. 'Vincent van Gogh' or 'John Unknown'
+	 * ['sort'] = a sortable version of the name (not for display), e.g. 'Gogh, Vincent' or '@N.N., John'
+	 *
+	 * @param integer    $level
+	 * @param string    $fact_type
+	 * @param WT_Fact[] $facts
+	 */
 	protected function _extractNames($level, $fact_type, $facts) {
 		$sublevel    = $level + 1;
 		$subsublevel = $sublevel + 1;
@@ -434,12 +552,18 @@ class WT_GedcomRecord {
 		}
 	}
 
-	// Default for "other" object types
+	/**
+	 * Default for "other" object types
+	 */
 	public function extractNames() {
 		$this->_addName(static::RECORD_TYPE, $this->getFallBackName(), null);
 	}
 
-	// Derived classes should redefine this function, otherwise the object will have no name
+	/**
+	 * Derived classes should redefine this function, otherwise the object will have no name
+	 *
+	 * @return string[][]
+	 */
 	public function getAllNames() {
 		if ($this->_getAllNames === null) {
 			$this->_getAllNames = array();
@@ -457,12 +581,20 @@ class WT_GedcomRecord {
 		return $this->_getAllNames;
 	}
 
-	// If this object has no name, what do we call it?
+	/**
+	 * If this object has no name, what do we call it?
+	 *
+	 * @return string
+	 */
 	public function getFallBackName() {
 		return $this->getXref();
 	}
 
-	// Which of the (possibly several) names of this record is the primary one.
+	/**
+	 * Which of the (possibly several) names of this record is the primary one.
+	 *
+	 * @return integer
+	 */
 	public function getPrimaryName() {
 		if (is_null($this->_getPrimaryName)) {
 			// Generally, the first name is the primary one....
@@ -516,7 +648,11 @@ class WT_GedcomRecord {
 		return $this->_getPrimaryName;
 	}
 
-	// Which of the (possibly several) names of this record is the secondary one.
+	/**
+	 * Which of the (possibly several) names of this record is the secondary one.
+	 *
+	 * @return integer
+	 */
 	public function getSecondaryName() {
 		if (is_null($this->_getSecondaryName)) {
 			// Generally, the primary and secondary names are the same
@@ -536,20 +672,35 @@ class WT_GedcomRecord {
 		return $this->_getSecondaryName;
 	}
 
-	// Allow the choice of primary name to be overidden, e.g. in a search result
+	/**
+	 * Allow the choice of primary name to be overidden, e.g. in a search result
+	 *
+	 * @param integer $n
+	 */
 	public function setPrimaryName($n) {
 		$this->_getPrimaryName   = $n;
 		$this->_getSecondaryName = null;
 	}
 
-	// Allow native PHP functions such as array_unique() to work with objects
+	/**
+	 * Allow native PHP functions such as array_unique() to work with objects
+	 *
+	 * @return string
+	 */
 	public function __toString() {
 		return $this->xref . '@' . $this->gedcom_id;
 	}
 
-	// Static helper function to sort an array of objects by name
-	// Records whose names cannot be displayed are sorted at the end.
-	public static function compare($x, $y) {
+	/**
+	 * Static helper function to sort an array of objects by name
+	 * Records whose names cannot be displayed are sorted at the end.
+	 *
+	 * @param WT_GedcomRecord $x
+	 * @param WT_GedcomRecord $y
+	 *
+	 * @return integer
+	 */
+	public static function compare(WT_GedcomRecord $x, WT_GedcomRecord $y) {
 		if ($x->canShowName()) {
 			if ($y->canShowName()) {
 				return WT_I18N::strcasecmp($x->getSortName(), $y->getSortName());
@@ -565,7 +716,11 @@ class WT_GedcomRecord {
 		}
 	}
 
-	// Get variants of the name
+	/**
+	 * Get variants of the name
+	 *
+	 * @return string
+	 */
 	public function getFullName() {
 		if ($this->canShowName()) {
 			$tmp = $this->getAllNames();
@@ -574,12 +729,23 @@ class WT_GedcomRecord {
 			return WT_I18N::translate('Private');
 		}
 	}
+
+	/**
+	 * Get a sortable version of the name.  Do not display this!
+	 *
+	 * @return string
+	 */
 	public function getSortName() {
 		// The sortable name is never displayed, no need to call canShowName()
 		$tmp = $this->getAllNames();
 		return $tmp[$this->getPrimaryName()]['sort'];
 	}
-	// Get the fullname in an alternative character set
+
+	/**
+	 * Get the full name in an alternative character set
+	 *
+	 * @return null|string
+	 */
 	public function getAddName() {
 		if ($this->canShowName() && $this->getPrimaryName()!=$this->getSecondaryName()) {
 			$all_names = $this->getAllNames();
@@ -589,11 +755,17 @@ class WT_GedcomRecord {
 		}
 	}
 
-	//////////////////////////////////////////////////////////////////////////////
-	// Format this object for display in a list
-	// If $find is set, then we are displaying items from a selection list.
-	// $name allows us to use something other than the record name.
-	//////////////////////////////////////////////////////////////////////////////
+	/**
+	 * Format this object for display in a list
+	 * If $find is set, then we are displaying items from a selection list.
+	 * $name allows us to use something other than the record name.
+	 *
+	 * @param string  $tag
+	 * @param boolean $find
+	 * @param null    $name
+	 *
+	 * @return string
+	 */
 	public function format_list($tag='li', $find=false, $name=null) {
 		if (is_null($name)) {
 			$name=$this->getFullName();
@@ -608,13 +780,24 @@ class WT_GedcomRecord {
 		return $html;
 	}
 
-	// This function should be redefined in derived classes to show any major
-	// identifying characteristics of this record.
+	/**
+	 * This function should be redefined in derived classes to show any major
+	 * identifying characteristics of this record.
+	 *
+	 * @return string
+	 */
 	public function format_list_details() {
 		return '';
 	}
 
-	// Extract/format the first fact from a list of facts.
+	/**
+	 * Extract/format the first fact from a list of facts.
+	 *
+	 * @param string  $facts
+	 * @param integer $style
+	 *
+	 * @return string
+	 */
 	public function format_first_major_fact($facts, $style) {
 		foreach ($this->getFacts($facts, true) as $event) {
 			// Only display if it has a date or place (or both)
@@ -630,9 +813,13 @@ class WT_GedcomRecord {
 		return '';
 	}
 
-	//////////////////////////////////////////////////////////////////////////////
-	// Fetch records that link to this one
-	//////////////////////////////////////////////////////////////////////////////
+	/**
+	 * Find individuals linked to this record.
+	 *
+	 * @param string $link
+	 *
+	 * @return array
+	 */
 	public function linkedIndividuals($link) {
 		$rows = WT_DB::prepare(
 			"SELECT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom" .
@@ -652,6 +839,14 @@ class WT_GedcomRecord {
 		}
 		return $list;
 	}
+
+	/**
+	 * Find families linked to this record.
+	 *
+	 * @param string $link
+	 *
+	 * @return array
+	 */
 	public function linkedFamilies($link) {
 		$rows = WT_DB::prepare(
 			"SELECT f_id AS xref, f_file AS gedcom_id, f_gedcom AS gedcom" .
@@ -670,6 +865,14 @@ class WT_GedcomRecord {
 		}
 		return $list;
 	}
+
+	/**
+	 * Find sources linked to this record.
+	 *
+	 * @param string $link
+	 *
+	 * @return array
+	 */
 	public function linkedSources($link) {
 		$rows = WT_DB::prepare(
 				"SELECT s_id AS xref, s_file AS gedcom_id, s_gedcom AS gedcom" .
@@ -688,6 +891,14 @@ class WT_GedcomRecord {
 		}
 		return $list;
 	}
+
+	/**
+	 * Find media objects linked to this record.
+	 *
+	 * @param string $link
+	 *
+	 * @return array
+	 */
 	public function linkedMedia($link) {
 		$rows = WT_DB::prepare(
 			"SELECT m_id AS xref, m_file AS gedcom_id, m_gedcom AS gedcom" .
@@ -706,6 +917,14 @@ class WT_GedcomRecord {
 		}
 		return $list;
 	}
+
+	/**
+	 * Find notes linked to this record.
+	 *
+	 * @param string $link
+	 *
+	 * @return WT_Note[]
+	 */
 	public function linkedNotes($link) {
 		$rows=WT_DB::prepare(
 			"SELECT o_id AS xref, o_file AS gedcom_id, o_gedcom AS gedcom".
@@ -725,6 +944,14 @@ class WT_GedcomRecord {
 		}
 		return $list;
 	}
+
+	/**
+	 * Find repositories linked to this record.
+	 *
+	 * @param string $link
+	 *
+	 * @return WT_Repository
+	 */
 	public function linkedRepositories($link) {
 		$rows=WT_DB::prepare(
 			"SELECT o_id AS xref, o_file AS gedcom_id, o_gedcom AS gedcom".
@@ -737,7 +964,7 @@ class WT_GedcomRecord {
 
 		$list = array();
 		foreach ($rows as $row) {
-			$record = WT_Note::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+			$record = WT_Repository::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 			if ($record->canShowName()) {
 				$list[] = $record;
 			}
@@ -745,49 +972,72 @@ class WT_GedcomRecord {
 		return $list;
 	}
 
-	// Get all attributes (e.g. DATE or PLAC) from an event (e.g. BIRT or MARR).
-	// This is used to display multiple events on the individual/family lists.
-	// Multiple events can exist because of uncertainty in dates, dates in different
-	// calendars, place-names in both latin and hebrew character sets, etc.
-	// It also allows us to combine dates/places from different events in the summaries.
-	public function getAllEventDates($event) {
+	/**
+	 * Get all attributes (e.g. DATE or PLAC) from an event (e.g. BIRT or MARR).
+	 * This is used to display multiple events on the individual/family lists.
+	 * Multiple events can exist because of uncertainty in dates, dates in different
+	 * calendars, place-names in both latin and hebrew character sets, etc.
+	 * It also allows us to combine dates/places from different events in the summaries.
+	 *
+	 * @param string $event_type
+	 *
+	 * @return WT_Date[]
+	 */
+	public function getAllEventDates($event_type) {
 		$dates = array();
-		foreach ($this->getFacts($event) as $event) {
-			if ($event->getDate()->isOK() && $event->canShow()) {
+		foreach ($this->getFacts($event_type) as $event) {
+			if ($event->getDate()->isOK()) {
 				$dates[] = $event->getDate();
 			}
 		}
+
 		return $dates;
 	}
-	public function getAllEventPlaces($event) {
+
+	/**
+	 * Get all the places for a particular type of event
+	 *
+	 * @param string $event_type
+	 *
+	 * @return array
+	 */
+	public function getAllEventPlaces($event_type) {
 		$places = array();
-		foreach ($this->getFacts($event) as $event) {
-			if (preg_match_all('/\n(?:2 PLAC|3 (?:ROMN|FONE|_HEB)) +(.+)/', $event->getGedcom(), $ged_places) && $event->canShow()) {
+		foreach ($this->getFacts($event_type) as $event) {
+			if (preg_match_all('/\n(?:2 PLAC|3 (?:ROMN|FONE|_HEB)) +(.+)/', $event->getGedcom(), $ged_places)) {
 				foreach ($ged_places[1] as $ged_place) {
 					$places[] = $ged_place;
 				}
 			}
 		}
+
 		return $places;
 	}
 
-	// Get the first WT_Fact for the given fact type
+	/**
+	 * Get the first (i.e. prefered) WT_Fact for the given fact type
+	 *
+	 * @param $tag
+	 *
+	 * @return null|WT_Fact
+	 */
 	public function getFirstFact($tag) {
 		foreach ($this->getFacts() as $fact) {
-			if ($fact->getTag() == $tag && $fact->canShow()) {
+			if ($fact->getTag() == $tag) {
 				return $fact;
 			}
 		}
+
 		return null;
 	}
 
 	/**
 	 * The facts and events for this record.
 	 *
-	 * @param string $filter
-	 * @param bool   $sort
-	 * @param int    $access_level
-	 * @param bool   $override     Include private records, to allow us to implement $SHOW_PRIVATE_RELATIONSHIPS and $SHOW_LIVING_NAMES.
+	 * @param string  $filter
+	 * @param boolean $sort
+	 * @param integer $access_level
+	 * @param boolean $override     Include private records, to allow us to implement $SHOW_PRIVATE_RELATIONSHIPS and $SHOW_LIVING_NAMES.
 	 *
 	 * @return WT_Fact[]
 	 */
@@ -806,10 +1056,14 @@ class WT_GedcomRecord {
 		return $facts;
 	}
 
-	//////////////////////////////////////////////////////////////////////////////
-	// Get the last-change timestamp for this record, either as a formatted string
-	// (for display) or as a unix timestamp (for sorting)
-	//////////////////////////////////////////////////////////////////////////////
+	/**
+	 * Get the last-change timestamp for this record, either as a formatted string
+	 * (for display) or as a unix timestamp (for sorting)
+	 *
+	 * @param boolean $sorting
+	 *
+	 * @return string
+	 */
 	public function lastChangeTimestamp($sorting=false) {
 		$chan = $this->getFirstFact('CHAN');
 
@@ -831,20 +1085,22 @@ class WT_GedcomRecord {
 		} else {
 			// The record does not have a CHAN event
 			if ($sorting) {
-				return 0;
+				return '0';
 			} else {
 				return '&nbsp;';
 			}
 		}
 	}
 
-	//////////////////////////////////////////////////////////////////////////////
-	// Get the last-change user for this record
-	//////////////////////////////////////////////////////////////////////////////
+	/**
+	 * Get the last-change user for this record
+	 *
+	 * @return string
+	 */
 	public function lastChangeUser() {
 		$chan = $this->getFirstFact('CHAN');
 
-		if (is_null($chan)) {
+		if ($chan === null) {
 			return '&nbsp;';
 		}
 
@@ -855,21 +1111,35 @@ class WT_GedcomRecord {
 		return $chan_user;
 	}
 
-	//////////////////////////////////////////////////////////////////////////////
-	// CRUD operations
-	//////////////////////////////////////////////////////////////////////////////
-
-	// Add a new fact to this record
+	/**
+	 * Add a new fact to this record
+	 *
+	 * @param string  $gedcom
+	 * @param boolean $update_chan
+	 */
 	public function createFact($gedcom, $update_chan) {
 		$this->updateFact(null, $gedcom, $update_chan);
 	}
 
-	// Delete a fact from this record
+	/**
+	 * Delete a fact from this record
+	 *
+	 * @param string  $fact_id
+	 * @param boolean $update_chan
+	 */
 	public function deleteFact($fact_id, $update_chan) {
 		$this->updateFact($fact_id, null, $update_chan);
 	}
 
-	// Replace a fact with a new gedcom data.
+	/**
+	 * Replace a fact with a new gedcom data.
+	 *
+	 * @param string  $fact_id
+	 * @param string  $gedcom
+	 * @param boolean $update_chan
+	 *
+	 * @throws Exception
+	 */
 	public function updateFact($fact_id, $gedcom, $update_chan) {
 		// MSDOS line endings will break things in horrible ways
 		$gedcom = preg_replace('/[\r\n]+/', "\n", $gedcom);
@@ -936,6 +1206,15 @@ class WT_GedcomRecord {
 		$this->parseFacts();
 	}
 
+	/**
+	 * Create a new record from GEDCOM data.
+	 *
+	 * @param string  $gedcom
+	 * @param integer $gedcom_id
+	 *
+	 * @return WT_GedcomRecord
+	 * @throws Exception
+	 */
 	static public function createRecord($gedcom, $gedcom_id) {
 		if (preg_match('/^0 @(' . WT_REGEX_XREF . ')@ (' . WT_REGEX_TAG . ')/', $gedcom, $match)) {
 			$xref = $match[1];
@@ -983,6 +1262,12 @@ class WT_GedcomRecord {
 		return WT_GedcomRecord::getInstance($xref);
 	}
 
+	/**
+	 * Update this record
+	 *
+	 * @param string  $gedcom
+	 * @param boolean $update_chan
+	 */
 	public function updateRecord($gedcom, $update_chan) {
 		// MSDOS line endings will break things in horrible ways
 		$gedcom = preg_replace('/[\r\n]+/', "\n", $gedcom);
@@ -1020,6 +1305,9 @@ class WT_GedcomRecord {
 		Log::addEditLog('Update: ' . static::RECORD_TYPE . ' ' . $this->xref);
 	}
 
+	/**
+	 * Delete this record
+	 */
 	public function deleteRecord() {
 		// Create a pending change
 		WT_DB::prepare(
@@ -1043,7 +1331,12 @@ class WT_GedcomRecord {
 		Log::addEditLog('Delete: ' . static::RECORD_TYPE . ' ' . $this->xref);
 	}
 
-	// Remove all links from this record to $xref
+	/**
+	 * Remove all links from this record to $xref
+	 *
+	 * @param string  $xref
+	 * @param boolean $update_chan
+	 */
 	public function removeLinks($xref, $update_chan) {
 		$value = '@' . $xref . '@';
 
@@ -1053,7 +1346,8 @@ class WT_GedcomRecord {
 			} elseif (preg_match_all('/\n(\d) ' . WT_REGEX_TAG . ' ' . $value . '/', $fact->getGedcom(), $matches, PREG_SET_ORDER)) {
 				$gedcom = $fact->getGedcom();
 				foreach ($matches as $match) {
-					$next_levels = '[' . $match[1]+1 . '-9]';
+					$next_level = $match[1] + 1;
+					$next_levels = '[' . $next_level . '-9]';
 					$gedcom = preg_replace('/' . $match[0] . '(\n' . $next_levels .'.*)*/', '', $gedcom);
 				}
 				$this->updateFact($fact->getFactId(), $gedcom, $update_chan);

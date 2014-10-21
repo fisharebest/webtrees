@@ -78,7 +78,7 @@ class WT_Report_Base_Footnote extends WT_Report_Base_Element {
 	/**
 	 * @param $t
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	function addText($t) {
 		$t = trim($t, "\r\n\t");
@@ -110,7 +110,7 @@ class WT_Report_Base_Footnote extends WT_Report_Base_Element {
 	/**
 	 * @param $n
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	function setNum($n) {
 		$this->num = $n;
@@ -122,7 +122,7 @@ class WT_Report_Base_Footnote extends WT_Report_Base_Element {
 	/**
 	 * @param $a
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	function setAddlink($a) {
 		$this->addlink = $a;

@@ -98,7 +98,7 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 	 * Print a child family
 	 *
 	 * @param WT_Individual $person
-	 * @param int           $depth the descendancy depth to show
+	 * @param integer       $depth the descendancy depth to show
 	 * @param string        $label
 	 * @param string        $gpid
 	 *
@@ -120,7 +120,7 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 	 * print a child descendancy
 	 *
 	 * @param WT_Individual $person
-	 * @param int           $depth the descendancy depth to show
+	 * @param integer       $depth the descendancy depth to show
 	 *
 	 * @return void
 	 */
@@ -179,7 +179,7 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 	 *
 	 * @param WT_Individual $person
 	 * @param WT_Family     $family
-	 * @param int           $depth the descendancy depth to show
+	 * @param integer       $depth the descendancy depth to show
 	 *
 	 * @return void
 	 */
@@ -249,7 +249,7 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 	 * Find all the individuals that are descended from an individual.
 	 *
 	 * @param WT_Individual   $person
-	 * @param int             $n
+	 * @param integer         $n
 	 * @param WT_Individual[] $array
 	 *
 	 * @return WT_Individual[]
@@ -275,7 +275,7 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 	 * Find all the families that are descended from an individual.
 	 *
 	 * @param WT_Individual $person
-	 * @param int           $n
+	 * @param integer       $n
 	 * @param WT_Family[]   $array
 	 *
 	 * @return WT_Family[]

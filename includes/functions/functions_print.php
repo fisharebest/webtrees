@@ -33,7 +33,7 @@ use WT\User;
  * find and print a given individuals information for a pedigree chart
  *
  * @param WT_Individual $person The person to print
- * @param int           $style  the style to print the box in, 1 for smaller boxes, 2 for larger boxes
+ * @param integer       $style  the style to print the box in, 1 for smaller boxes, 2 for larger boxes
  */
 function print_pedigree_person($person, $style = 1) {
 	global $GEDCOM;
@@ -367,9 +367,9 @@ function contact_links($ged_id=WT_GED_ID) {
  * print a note record
  *
  * @param string $text
- * @param int    $nlevel   the level of the note record
- * @param string $nrec     the note record to print
- * @param bool   $textOnly Don't print the "Note: " introduction
+ * @param integer $nlevel   the level of the note record
+ * @param string  $nrec     the note record to print
+ * @param boolean $textOnly Don't print the "Note: " introduction
  *
  * @return boolean
  */
@@ -431,9 +431,9 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false) {
 /**
  * Print all of the notes in this fact record
  *
- * @param string $factrec  the factrecord to print the notes from
- * @param int    $level    The level of the factrecord
- * @param bool   $textOnly Don't print the "Note: " introduction
+ * @param string  $factrec  the factrecord to print the notes from
+ * @param integer $level    The level of the factrecord
+ * @param boolean $textOnly Don't print the "Note: " introduction
  *
  * @return string HTML
  */
@@ -653,8 +653,8 @@ function format_fact_date(WT_Fact $event, WT_GedcomRecord $record, $anchor=false
 
 	// Calculated age
 	if (preg_match('/2 DATE (.+)/', $factrec, $match)) {
-		$date=new WT_Date($match[1]);
-		$html.=' '.$date->Display($anchor && !$SEARCH_SPIDER);
+		$date = new WT_Date($match[1]);
+		$html .= ' ' . $date->display($anchor && !$SEARCH_SPIDER);
 		// time
 		if ($time) {
 			$timerec=get_sub_record(2, '2 TIME', $factrec);
@@ -764,9 +764,9 @@ function format_fact_date(WT_Fact $event, WT_GedcomRecord $record, $anchor=false
  * print fact PLACe TEMPle STATus
  *
  * @param WT_Fact $event       gedcom fact record
- * @param bool    $anchor      to print a link to placelist
- * @param bool    $sub_records to print place subrecords
- * @param bool    $lds         to print LDS TEMPle and STATus
+ * @param boolean $anchor      to print a link to placelist
+ * @param boolean $sub_records to print place subrecords
+ * @param boolean $lds         to print LDS TEMPle and STATus
  *
  * @return string HTML
  */
@@ -826,7 +826,7 @@ function format_fact_place(WT_Fact $event, $anchor=false, $sub_records=false, $l
 			$html.='<br>'.WT_I18N::translate('Status').': '.WT_Gedcom_Code_Stat::statusName($match[1]);
 			if (preg_match('/3 DATE (.*)/', $event->getGedcom(), $match)) {
 				$date=new WT_Date($match[1]);
-				$html.=', '.WT_Gedcom_Tag::getLabel('STAT:DATE').': '.$date->Display(false);
+				$html.=', '.WT_Gedcom_Tag::getLabel('STAT:DATE').': '.$date->display();
 			}
 		}
 	}

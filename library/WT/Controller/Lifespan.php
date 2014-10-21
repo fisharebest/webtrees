@@ -58,7 +58,9 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 	var $startDate;
 	var $currentsex;
 
-	private $nonfacts = array('FAMS', 'FAMC', 'MAY', 'BLOB', 'OBJE', 'SEX', 'NAME', 'SOUR', 'NOTE', 'BAPL', 'ENDL', 'SLGC', 'SLGS', '_TODO', '_WT_OBJE_SORT', 'CHAN', 'HUSB', 'WIFE', 'CHIL', 'BIRT', 'DEAT', 'BURI');
+	private $nonfacts = array(
+		'FAMS', 'FAMC', 'MAY', 'BLOB', 'OBJE', 'SEX', 'NAME', 'SOUR', 'NOTE', 'BAPL', 'ENDL', 'SLGC', 'SLGS', '_TODO', '_WT_OBJE_SORT', 'CHAN', 'HUSB', 'WIFE', 'CHIL', 'BIRT', 'DEAT', 'BURI'
+	);
 
 	function __construct() {
 		global $WT_SESSION;
@@ -66,24 +68,26 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 		parent::__construct();
 		$this->setPageTitle(WT_I18N::translate('Lifespans'));
 
-		$this->colorindex = 0;
+		$this->colorindex  = 0;
 		$this->Fcolorindex = 0;
 		$this->Mcolorindex = 0;
-		$this->zoomfactor = 10;
-		$this->color = "#0000FF";
-		$this->currentYear = date("Y");
-		$this->deathMod = 0;
-		$this->endDate = $this->currentYear;
+		$this->zoomfactor  = 10;
+		$this->color       = '#0000FF';
+		$this->currentYear = (int)date('Y');
+		$this->deathMod    = 0;
+		$this->endDate     = $this->currentYear;
 
 		// Request parameters
-		$newpid = WT_Filter::get('newpid', WT_REGEX_XREF);
-		$remove = WT_Filter::get('remove', WT_REGEX_XREF);
-		$pids = WT_Filter::getArray('pids', WT_REGEX_XREF);
-		$clear = WT_Filter::getBool('clear');
-		$addfam = WT_Filter::getBool('addFamily');
-		$place = WT_Filter::get('place');
-		$beginYear = WT_Filter::getInteger('beginYear', 0, date('Y') + 100, 0);
-		$endYear = WT_Filter::getInteger('endYear', 0, date('Y') + 100, 0);
+		$newpid    = WT_Filter::get('newpid', WT_REGEX_XREF);
+		$remove    = WT_Filter::get('remove', WT_REGEX_XREF);
+		$pids      = WT_Filter::getArray('pids', WT_REGEX_XREF);
+		$clear     = WT_Filter::getBool('clear');
+		$addfam    = WT_Filter::getBool('addFamily');
+		$place     = WT_Filter::get('place');
+		$beginYear = WT_Filter::getInteger('beginYear', 0, $this->currentYear + 100, 0);
+		$endYear   = WT_Filter::getInteger('endYear', 0, $this->currentYear + 100, 0);
+
+		$new_person = WT_Individual::getInstance($newpid);
 
 		if ($clear) {
 			// Empty list
@@ -93,11 +97,10 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 			$this->pids = $pids;
 		} elseif ($place) {
 			// All records found in a place
-			$wt_place = new WT_Place($place, WT_GED_ID);
-			$this->pids =
-				WT_DB::prepare("SELECT DISTINCT pl_gid FROM `##placelinks` WHERE pl_p_id=? AND pl_file=?")
-					->execute(array($wt_place->getPlaceId(), WT_GED_ID))
-					->fetchOneColumn();
+			$wt_place    = new WT_Place($place, WT_GED_ID);
+			$this->pids  = WT_DB::prepare(
+				"SELECT DISTINCT pl_gid FROM `##placelinks` WHERE pl_p_id = ? AND pl_file = ?"
+			)->execute(array($wt_place->getPlaceId(), WT_GED_ID))->fetchOneColumn();
 			$this->place = $place;
 		} else {
 			// Modify an existing list of records
@@ -112,9 +115,8 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 						unset($this->pids[$key]);
 					}
 				}
-			} elseif ($newpid) {
-				$person = WT_Individual::getInstance($newpid);
-				$this->addFamily($person, $addfam);
+			} elseif ($new_person) {
+				$this->addFamily($new_person, $addfam);
 			} elseif (!$this->pids) {
 				$this->addFamily($this->getSignificantIndividual(), false);
 			}
@@ -122,14 +124,14 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 		$WT_SESSION->timeline_pids = $this->pids;
 
 		$this->beginYear = $beginYear;
-		$this->endYear = $endYear;
+		$this->endYear   = $endYear;
 		if ($beginYear == 0 || $endYear == 0) {
 			//-- cleanup user input
 			$this->pids = array_unique($this->pids);  //removes duplicates
 			foreach ($this->pids as $key => $value) {
 				if ($value != $remove) {
 					$this->pids[$key] = $value;
-					$person = WT_Individual::getInstance($value);
+					$person           = WT_Individual::getInstance($value);
 					// list of linked records includes families as well as individuals.
 					if ($person) {
 						$bdate = $person->getEstimatedBirthDate();
@@ -169,13 +171,13 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 		//If there is people in the array posted back this if occurs
 		if (isset ($this->people[0])) {
 			//Find the maximum Death year and mimimum Birth year for each individual returned in the array.
-			$bdate = $this->people[0]->getEstimatedBirthDate();
-			$ddate = $this->people[0]->getEstimatedDeathDate();
+			$bdate                 = $this->people[0]->getEstimatedBirthDate();
+			$ddate                 = $this->people[0]->getEstimatedDeathDate();
 			$this->timelineMinYear = $bdate->gregorianYear();
 			$this->timelineMaxYear = $ddate->gregorianYear() ? $ddate->gregorianYear() : date('Y');
 			foreach ($this->people as $value) {
-				$bdate = $value->getEstimatedBirthDate();
-				$ddate = $value->getEstimatedDeathDate();
+				$bdate                 = $value->getEstimatedBirthDate();
+				$ddate                 = $value->getEstimatedDeathDate();
 				$this->timelineMinYear = min($this->timelineMinYear, $bdate->gregorianYear());
 				$this->timelineMaxYear = max($this->timelineMaxYear, $ddate->gregorianYear() ? $ddate->gregorianYear() : date('Y'));
 			}
@@ -183,7 +185,6 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 			if ($this->timelineMaxYear > $this->currentYear) {
 				$this->timelineMaxYear = $this->currentYear;
 			}
-
 		} else {
 			// Sets the default timeline length
 			$this->timelineMinYear = date("Y") - 101;
@@ -195,29 +196,27 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 	 * Add a person (and optionally their immediate family members) to the pids array
 	 *
 	 * @param WT_Individual $person
-	 * @param bool          $add_family
+	 * @param boolean       $add_family
 	 */
-	private function addFamily($person, $add_family) {
-		if ($person) {
-			$this->pids[] = $person->getXref();
-			if ($add_family) {
-				foreach ($person->getSpouseFamilies() as $family) {
-					$spouse = $family->getSpouse($person);
-					if ($spouse) {
-						$this->pids[] = $spouse->getXref();
-						foreach ($family->getChildren() as $child) {
-							$this->pids[] = $child->getXref();
-						}
+	private function addFamily(WT_Individual $person, $add_family) {
+		$this->pids[] = $person->getXref();
+		if ($add_family) {
+			foreach ($person->getSpouseFamilies() as $family) {
+				$spouse = $family->getSpouse($person);
+				if ($spouse) {
+					$this->pids[] = $spouse->getXref();
+					foreach ($family->getChildren() as $child) {
+						$this->pids[] = $child->getXref();
 					}
 				}
-				foreach ($person->getChildFamilies() as $family) {
-					foreach ($family->getSpouses() as $parent) {
-						$this->pids[] = $parent->getXref();
-					}
-					foreach ($family->getChildren() as $sibling) {
-						if ($person !== $sibling) {
-							$this->pids[] = $sibling->getXref();
-						}
+			}
+			foreach ($person->getChildFamilies() as $family) {
+				foreach ($family->getSpouses() as $parent) {
+					$this->pids[] = $parent->getXref();
+				}
+				foreach ($family->getChildren() as $sibling) {
+					if ($person !== $sibling) {
+						$this->pids[] = $sibling->getXref();
 					}
 				}
 			}
@@ -227,17 +226,17 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 	/**
 	 * Sets the start year and end year to a factor of 5
 	 *
-	 * @param int $year
-	 * @param int $key
+	 * @param integer $year
+	 * @param integer $key
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	private function modifyYear($year, $key) {
 		$temp = $year;
 		switch ($key) {
 		case 1 : // rounds beginning year
 			$this->birthMod = $year % 5;
-			$year = $year - $this->birthMod;
+			$year           = $year - $this->birthMod;
 			if ($temp == $year) {
 				$this->modTest = 0;
 			} else {
@@ -262,25 +261,24 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 	/**
 	 * Prints the time line
 	 *
-	 * @param int $startYear
-	 * @param int $endYear
+	 * @param integer $startYear
+	 * @param integer $endYear
 	 */
 	public function printTimeline($startYear, $endYear) {
-		$leftPosition = 14; //start point
-		$tickDistance = 50; //length of one timeline section
-		$top = 65; //top starting position
-		$yearSpan = 5; //default zoom level
-		$newStartYear = $this->modifyYear($startYear, 1); //starting date for timeline
+		$leftPosition          = 14; //start point
+		$tickDistance          = 50; //length of one timeline section
+		$top                   = 65; //top starting position
+		$yearSpan              = 5; //default zoom level
+		$newStartYear          = $this->modifyYear($startYear, 1); //starting date for timeline
 		$this->timelineMinYear = $newStartYear;
-		$newEndYear = $this->modifyYear($endYear, 2); //ending date for timeline
-		$totalYears = $newEndYear - $newStartYear; //length of timeline
-		$timelineTick = $totalYears / $yearSpan; //calculates the length of the timeline
+		$newEndYear            = $this->modifyYear($endYear, 2); //ending date for timeline
+		$totalYears            = $newEndYear - $newStartYear; //length of timeline
+		$timelineTick          = $totalYears / $yearSpan; //calculates the length of the timeline
 
 		for ($i = 0; $i < $timelineTick; $i++) { //prints the timeline
 			echo "<div class=\"sublinks_cell\" style=\"text-align: left; position: absolute; top: ", $top, "px; left: ", $leftPosition, "px; width: ", $tickDistance, "px;\">$newStartYear<i class=\"icon-lifespan-chunk\"></i></div>";  //onclick="zoomToggle('100px', '100px', '200px', '200px', this);"
 			$leftPosition += $tickDistance;
 			$newStartYear += $yearSpan;
-
 		}
 		echo "<div class=\"sublinks_cell\" style=\"text-align: left; position: absolute; top: ", $top, "px; left: ", $leftPosition, "px; width: ", $tickDistance, "px;\">$newStartYear</div>";
 	}
@@ -289,16 +287,16 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 	 * Method used to place the person boxes onto the timeline
 	 *
 	 * @param WT_Individual[] $ar
-	 * @param int             $top
+	 * @param integer         $top
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	public function fillTimeline($ar, $top) {
 		global $maxX, $zindex;
 
 		$zindex = count($ar);
 
-		$rows = array();
+		$rows   = array();
 		$modFix = 0;
 		if ($this->modTest == 1) {
 			$modFix = (9 * $this->birthMod);
@@ -323,7 +321,7 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 					$this->Mcolorindex = 0;
 				}
 				$this->malecolorG[$this->Mcolorindex];
-				$red = dechex($this->malecolorR[$this->Mcolorindex]);
+				$red   = dechex($this->malecolorR[$this->Mcolorindex]);
 				$green = dechex($this->malecolorR[$this->Mcolorindex]);
 				if (strlen($red) < 2) {
 					$red = "0" . $red;
@@ -350,20 +348,20 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 			}
 
 			//set start position and size of person-box according to zoomfactor
-			$bdate = $value->getEstimatedBirthDate();
-			$ddate = $value->getEstimatedDeathDate();
+			$bdate     = $value->getEstimatedBirthDate();
+			$ddate     = $value->getEstimatedDeathDate();
 			$birthYear = $bdate->gregorianYear();
 			$deathYear = $ddate->gregorianYear() ? $ddate->gregorianYear() : date('Y');
 
-			$width = ($deathYear - $birthYear) * $this->zoomfactor;
+			$width  = ($deathYear - $birthYear) * $this->zoomfactor;
 			$height = 2 * $this->zoomfactor;
 
-			$startPos = (($birthYear - $this->timelineMinYear) * $this->zoomfactor) + 14 + $modFix;
+			$startPos  = (($birthYear - $this->timelineMinYear) * $this->zoomfactor) + 14 + $modFix;
 			$minlength = mb_strlen(strip_tags($value->getFullName())) * $this->zoomfactor;
 
 			if ($startPos > 15) {
 				$startPos = (($birthYear - $this->timelineMinYear) * $this->zoomfactor) + 15;
-				$width = (($deathYear - $birthYear) * $this->zoomfactor) - 2;
+				$width    = (($deathYear - $birthYear) * $this->zoomfactor) - 2;
 			}
 
 			//set minimum width for single year lifespans
@@ -371,7 +369,7 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 				$width = 10;
 			}
 
-			$lifespan = "<span dir=\"ltr\">$birthYear-</span>";
+			$lifespan  = "<span dir=\"ltr\">$birthYear-</span>";
 			$deathReal = $value->getDeathDate()->isOK();
 			$birthReal = $value->getBirthDate()->isOK();
 			if ($value->isDead() && $deathReal) {
@@ -380,24 +378,24 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 			$lifespannumeral = $deathYear - $birthYear;
 
 			//-- calculate a good Y top value
-			$Y = $top;
-			$Z = $zindex;
+			$Y     = $top;
+			$Z     = $zindex;
 			$ready = false;
 			while (!$ready) {
 				if (!isset($rows[$Y])) {
-					$ready = true;
+					$ready          = true;
 					$rows[$Y]["x1"] = $startPos;
 					$rows[$Y]["x2"] = $startPos + $width;
-					$rows[$Y]["z"] = $zindex;
+					$rows[$Y]["z"]  = $zindex;
 				} else {
 					if ($rows[$Y]["x1"] > $startPos + $width) {
-						$ready = true;
+						$ready          = true;
 						$rows[$Y]["x1"] = $startPos;
-						$Z = $rows[$Y]["z"];
+						$Z              = $rows[$Y]["z"];
 					} elseif ($rows[$Y]["x2"] < $startPos) {
-						$ready = true;
+						$ready          = true;
 						$rows[$Y]["x2"] = $startPos + $width;
-						$Z = $rows[$Y]["z"];
+						$Z              = $rows[$Y]["z"];
 					} else {
 						//move down 25 pixels
 						if ($this->zoomfactor > 10) {
@@ -432,7 +430,7 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 			foreach ($unparsedEvents as $val) {
 				$date = $val->getDate();
 				if (!empty($date)) {
-					$fact = $val->getTag();
+					$fact    = $val->getTag();
 					$yearsin = $date->date1->y - $birthYear;
 					if ($lifespannumeral == 0) {
 						$lifespannumeral = 1;
@@ -446,9 +444,9 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 					}
 					$trans = WT_Gedcom_Tag::getLabel($fact);
 					if (isset($eventinformation[$evntwdth])) {
-						$eventinformation[$evntwdth] .= '<br>' . $trans . '<br>' . strip_tags($date->Display(false, '', null, false)) . ' ' . $val->getPlace()->getFullName();
+						$eventinformation[$evntwdth] .= '<br>' . $trans . '<br>' . strip_tags($date->Display()) . ' ' . $val->getPlace()->getFullName();
 					} else {
-						$eventinformation[$evntwdth] = $fact . '-fact, ' . $trans . '<br>' . strip_tags($date->Display(false, '', null, false)) . ' ' . $val->getPlace()->getFullName();
+						$eventinformation[$evntwdth] = $fact . '-fact, ' . $trans . '<br>' . strip_tags($date->Display()) . ' ' . $val->getPlace()->getFullName();
 					}
 				}
 			}
@@ -466,7 +464,7 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 				$indiName = $value->getFullName();
 				echo '<table><tr><td width="15"><a class="showit" href="#"><b>';
 				echo self::getAbbreviation('BIRT');
-				echo '</b><span>', $value->getSexImage(), $indiName, '<br>', WT_Gedcom_Tag::getLabel('BIRT'), ' ', strip_tags($bdate->Display(false)), ' ', $value->getBirthPlace(), '</span></a>',
+				echo '</b><span>', $value->getSexImage(), $indiName, '<br>', WT_Gedcom_Tag::getLabel('BIRT'), ' ', strip_tags($bdate->display()), ' ', $value->getBirthPlace(), '</span></a>',
 				'<td align="left" width="100%"><a href="', $value->getHtmlUrl(), '">', $value->getSexImage(), $indiName, '  ', $lifespan, ' </a></td>',
 				'<td width="15">';
 				if ($value->isDead()) {
@@ -476,12 +474,11 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 						if (!$deathReal) {
 							echo '*';
 						}
-						echo '</b><span>' . $value->getSexImage() . $indiName . '<br>' . WT_Gedcom_Tag::getLabel('DEAT') . ' ' . strip_tags($ddate->Display(false)) . ' ' . $value->getDeathPlace() . '</span></a>';
+						echo '</b><span>' . $value->getSexImage() . $indiName . '<br>' . WT_Gedcom_Tag::getLabel('DEAT') . ' ' . strip_tags($ddate->display()) . ' ' . $value->getDeathPlace() . '</span></a>';
 					}
 				}
 				echo '</td></tr></table>';
 				echo '</div>';
-
 			} else {
 				if ($width > $minlength + 5) {
 					echo '<div style="text-align: left; position: absolute; top:', $Y, 'px; left:', $startPos, 'px; width:', $width, 'px; height:', $height, 'px; background-color:', $this->color, '; border: solid blue 1px; z-index:', $Z, '">';
@@ -497,7 +494,7 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 					if (!$birthReal) {
 						echo '*';
 					}
-					echo '</b><span>' . $value->getSexImage() . $indiName . '<br>' . WT_Gedcom_Tag::getLabel('BIRT') . ' ' . strip_tags($bdate->Display(false)) . ' ' . $value->getBirthPlace() . '</span></a></td>' . '<td align="left" width="100%"><a href="' . $value->getHtmlUrl() . '">' . $value->getSexImage() . $indiName . '</a></td>' .
+					echo '</b><span>' . $value->getSexImage() . $indiName . '<br>' . WT_Gedcom_Tag::getLabel('BIRT') . ' ' . strip_tags($bdate->display(false)) . ' ' . $value->getBirthPlace() . '</span></a></td>' . '<td align="left" width="100%"><a href="' . $value->getHtmlUrl() . '">' . $value->getSexImage() . $indiName . '</a></td>' .
 						'<td width="15">';
 					if ($value->isDead()) {
 						if ($deathReal || $value->isDead()) {
@@ -506,7 +503,7 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 							if (!$deathReal) {
 								echo "*";
 							}
-							echo '</b><span>' . $value->getSexImage() . $indiName . '<br>' . WT_Gedcom_Tag::getLabel('DEAT') . ' ' . strip_tags($ddate->Display(false)) . ' ' . $value->getDeathPlace() . '</span></a>';
+							echo '</b><span>' . $value->getSexImage() . $indiName . '<br>' . WT_Gedcom_Tag::getLabel('DEAT') . ' ' . strip_tags($ddate->display()) . ' ' . $value->getDeathPlace() . '</span></a>';
 						}
 					}
 					echo '</td></tr></table>';
@@ -516,14 +513,14 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 					$indiName = $value->getFullName();
 					echo '<a class="showit" href="' . $value->getHtmlUrl() . '"><b>';
 					echo self::getAbbreviation('BIRT');
-					echo '</b><span>' . $value->getSexImage() . $indiName . '<br>' . WT_Gedcom_Tag::getLabel('BIRT') . ' ' . strip_tags($bdate->Display(false)) . ' ' . $value->getBirthPlace() . '<br>';
+					echo '</b><span>' . $value->getSexImage() . $indiName . '<br>' . WT_Gedcom_Tag::getLabel('BIRT') . ' ' . strip_tags($bdate->display()) . ' ' . $value->getBirthPlace() . '<br>';
 					foreach ($eventinformation as $val) {
 						$text = explode('-fact,', $val);
-						$val = $text[1];
+						$val  = $text[1];
 						echo $val . "<br>";
 					}
 					if ($value->isDead() && $deathReal) {
-						echo WT_Gedcom_Tag::getLabel('DEAT') . " " . strip_tags($ddate->Display(false)) . " " . $value->getDeathPlace();
+						echo WT_Gedcom_Tag::getLabel('DEAT') . " " . strip_tags($ddate->display()) . " " . $value->getDeathPlace();
 					}
 					echo '</span></a>';
 					echo '</div>';
@@ -558,8 +555,8 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 	/**
 	 * Search for people who had events in a given year range
 	 *
-	 * @param int $startyear
-	 * @param int $endyear
+	 * @param integer $startyear
+	 * @param integer $endyear
 	 *
 	 * @return WT_Individual[]
 	 */
@@ -569,17 +566,14 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 		$gregorian_calendar = new GregorianCalendar;
 
 		$startjd = $gregorian_calendar->ymdToJd($startyear, 1, 1);
-		$endjd = $gregorian_calendar->ymdToJd($endyear, 12, 31);
+		$endjd   = $gregorian_calendar->ymdToJd($endyear, 12, 31);
 
-		$sql =
-			"SELECT DISTINCT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom" .
+		$rows = WT_DB::prepare(
+"SELECT DISTINCT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom" .
 			" FROM `##individuals`" .
 			" JOIN `##dates` ON i_id=d_gid AND i_file=d_file" .
-			" WHERE i_file=? AND d_julianday1 BETWEEN ? AND ?";
-
-		$rows = WT_DB::prepare($sql)
-			->execute(array(WT_GED_ID, $startjd, $endjd))
-			->fetchAll();
+			" WHERE i_file=? AND d_julianday1 BETWEEN ? AND ?"
+		)->execute(array(WT_GED_ID, $startjd, $endjd))->fetchAll();
 
 		$list = array();
 		foreach ($rows as $row) {

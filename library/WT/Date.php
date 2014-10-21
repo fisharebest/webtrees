@@ -178,42 +178,44 @@ class WT_Date {
 	}
 
 	/**
-	 * Convert a date to the prefered format and calendar(s) display.
+	 * Convert a date to the preferred format and calendar(s) display.
 	 *
-	 * @param boolean|null $url      - convert the dates into links to the calendar
-	 * @param string|null  $date_fmt - override the default date format
-	 * @param string|null  $cal_fmts - override the default calendar conversion
+	 * @param boolean|null $url             Wrap the date in a link to calendar.php
+	 * @param string|null  $date_format     Override the default date format
+	 * @param boolean|null $calendar_format Convert the date into other calendars
 	 *
 	 * @return string
 	 */
-	function Display($url = false, $date_fmt = null, $cal_fmts = null) {
+	function display($url = false, $date_format = null, $calendar_format = true) {
 		global $TEXT_DIRECTION, $DATE_FORMAT, $CALENDAR_FORMAT;
 
 		// Convert dates to given calendars and given formats
-		if (!$date_fmt) {
-			$date_fmt = $DATE_FORMAT;
+		if ($date_format === null) {
+			$date_format = $DATE_FORMAT;
 		}
-		if (is_null($cal_fmts)) {
-			$cal_fmts = explode('_and_', $CALENDAR_FORMAT);
+		if ($calendar_format === null) {
+			$calendar_format = explode('_and_', $CALENDAR_FORMAT);
+		} else {
+			$calendar_format = array();
 		}
 
 		// Two dates with text before, between and after
 		$q1 = $this->qual1;
-		$d1 = $this->date1->format($date_fmt, $this->qual1);
+		$d1 = $this->date1->format($date_format, $this->qual1);
 		$q2 = $this->qual2;
 		if (is_null($this->date2)) {
 			$d2 = '';
 		} else {
-			$d2 = $this->date2->format($date_fmt, $this->qual2);
+			$d2 = $this->date2->format($date_format, $this->qual2);
 		}
 		// Con vert to other calendars, if requested
 		$conv1 = '';
 		$conv2 = '';
-		foreach ($cal_fmts as $cal_fmt) {
+		foreach ($calendar_format as $cal_fmt) {
 			if ($cal_fmt != 'none') {
 				$d1conv = $this->date1->convertToCalendar($cal_fmt);
 				if ($d1conv->inValidRange()) {
-					$d1tmp = $d1conv->format($date_fmt, $this->qual1);
+					$d1tmp = $d1conv->format($date_format, $this->qual1);
 				} else {
 					$d1tmp = '';
 				}
@@ -223,7 +225,7 @@ class WT_Date {
 				} else {
 					$d2conv = $this->date2->convertToCalendar($cal_fmt);
 					if ($d2conv->inValidRange()) {
-						$d2tmp = $d2conv->format($date_fmt, $this->qual2);
+						$d2tmp = $d2conv->format($date_format, $this->qual2);
 					} else {
 						$d2tmp = '';
 					}
@@ -232,9 +234,9 @@ class WT_Date {
 				if ($d1 != $d1tmp && $d1tmp != '') {
 					if ($url) {
 						if ($CALENDAR_FORMAT != "none") {
-							$conv1 .= ' <span dir="' . $TEXT_DIRECTION . '">(<a href="' . $d1conv->calendarUrl($date_fmt) . '">' . $d1tmp . '</a>)</span>';
+							$conv1 .= ' <span dir="' . $TEXT_DIRECTION . '">(<a href="' . $d1conv->calendarUrl($date_format) . '">' . $d1tmp . '</a>)</span>';
 						} else {
-							$conv1 .= ' <span dir="' . $TEXT_DIRECTION . '"><br><a href="' . $d1conv->calendarUrl($date_fmt) . '">' . $d1tmp . '</a></span>';
+							$conv1 .= ' <span dir="' . $TEXT_DIRECTION . '"><br><a href="' . $d1conv->calendarUrl($date_format) . '">' . $d1tmp . '</a></span>';
 						}
 					} else {
 						$conv1 .= ' <span dir="' . $TEXT_DIRECTION . '">(' . $d1tmp . ')</span>';
@@ -242,7 +244,7 @@ class WT_Date {
 				}
 				if (!is_null($this->date2) && $d2 != $d2tmp && $d1tmp != '') {
 					if ($url) {
-						$conv2 .= ' <span dir="' . $TEXT_DIRECTION . '">(<a href="' . $d2conv->calendarUrl($date_fmt) . '">' . $d2tmp . '</a>)</span>';
+						$conv2 .= ' <span dir="' . $TEXT_DIRECTION . '">(<a href="' . $d2conv->calendarUrl($date_format) . '">' . $d2tmp . '</a>)</span>';
 					} else {
 						$conv2 .= ' <span dir="' . $TEXT_DIRECTION . '">(' . $d2tmp . ')</span>';
 					}
@@ -252,9 +254,9 @@ class WT_Date {
 
 		// Add URLs, if requested
 		if ($url) {
-			$d1 = '<a href="' . $this->date1->calendarUrl($date_fmt) . '">' . $d1 . '</a>';
+			$d1 = '<a href="' . $this->date1->calendarUrl($date_format) . '">' . $d1 . '</a>';
 			if (!is_null($this->date2)) {
-				$d2 = '<a href="' . $this->date2->calendarUrl($date_fmt) . '">' . $d2 . '</a>';
+				$d2 = '<a href="' . $this->date2->calendarUrl($date_format) . '">' . $d2 . '</a>';
 			}
 		}
 
@@ -363,7 +365,7 @@ class WT_Date {
 	 * For a month-only date, this would be somewhere around the 16 day.
 	 * For a year-only date, this would be somewhere around 1st July.
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	function JD() {
 		return (int)(($this->MinJD() + $this->MaxJD()) / 2);
@@ -398,9 +400,9 @@ class WT_Date {
 	 *
 	 * @param WT_Date $d1
 	 * @param WT_Date $d2
-	 * @param int     $format
+	 * @param integer $format
 	 *
-	 * @return int|string
+	 * @return integer|string
 	 */
 	static function getAge(WT_Date $d1, WT_Date $d2 = null, $format = 0) {
 		if ($d2) {
@@ -481,7 +483,7 @@ class WT_Date {
 	 * @param WT_Date $a
 	 * @param WT_Date $b
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	static function Compare(WT_Date $a, WT_Date $b) {
 		// Get min/max JD for each date.
@@ -532,7 +534,7 @@ class WT_Date {
 	 * An incomplete date such as "12 AUG" would be invalid, as
 	 * we cannot sort it.
 	 *
-	 * @return bool
+	 * @return boolean
 	 */
 	function isOK() {
 		return $this->MinJD() && $this->MaxJD();
@@ -544,7 +546,7 @@ class WT_Date {
 	 * jewish/arabic users.  This is only for interfacing with external entities,
 	 * such as the ancestry.com search interface or the dated fact icons.
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	function gregorianYear() {
 		if ($this->isOK()) {

@@ -62,7 +62,7 @@ class WT_Report_Base_Html extends WT_Report_Base_Element {
 	/**
 	 * @param $element
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	function addElement($element) {
 		$this->elements[] = $element;

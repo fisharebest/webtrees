@@ -39,13 +39,13 @@ class WT_Report_Base_Text extends WT_Report_Base_Element {
 	/**
 	 * Remaining width of a cel
 	 *
-	 * @var int User unit (points)
+	 * @var integer User unit (points)
 	 */
 	public $wrapWidthRemaining;
 	/**
 	 * Original width of a cell
 	 *
-	 * @var int User unit (points)
+	 * @var integer User unit (points)
 	 */
 	public $wrapWidthCell;
 

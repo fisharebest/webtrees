@@ -45,7 +45,7 @@ class WT_Controller_Simple extends WT_Controller_Page {
 	/**
 	 * Restrict access
 	 *
-	 * @param bool $condition
+	 * @param boolean $condition
 	 *
 	 * @return WT_Controller_Simple
 	 */
