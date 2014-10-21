@@ -181,7 +181,7 @@ abstract class WT_Module {
 			foreach ($module_names as $module_name) {
 				if (file_exists(WT_ROOT . WT_MODULES_DIR . $module_name . '/module.php')) {
 					require_once WT_ROOT . WT_MODULES_DIR . $module_name . '/module.php';
-					$class = $module_name.'_WT_Module';
+					$class                 = $module_name . '_WT_Module';
 					$modules[$module_name] = new $class;
 				} else {
 					// Module has been deleted from disk?  Disable it.
@@ -225,8 +225,13 @@ abstract class WT_Module {
 		foreach ($module_names as $module_name) {
 			if (file_exists(WT_ROOT . WT_MODULES_DIR . $module_name . '/module.php')) {
 				require_once WT_ROOT . WT_MODULES_DIR . $module_name . '/module.php';
-				$class = $module_name . '_WT_Module';
-				$array[$module_name] = new $class;
+				$class     = $module_name . '_WT_Module';
+				$interface = 'WT_Module_' . ucfirst($component);
+				$module    = new $class;
+				// Check that this module is still implementing the desired interface.
+				if ($module instanceof $interface) {
+					$array[$module_name] = new $module;
+				}
 			} else {
 				// Module has been deleted from disk?  Disable it.
 				Log::addConfigurationLog("Module {$module_name} has been deleted from disk - disabling it");
@@ -389,8 +394,8 @@ abstract class WT_Module {
 		while (($module_name = readdir($dir)) !== false) {
 			if (preg_match('/^[a-zA-Z0-9_]+$/', $module_name) && file_exists(WT_ROOT . WT_MODULES_DIR . $module_name . '/module.php')) {
 				require_once WT_ROOT . WT_MODULES_DIR . $module_name . '/module.php';
-				$class = $module_name . '_WT_Module';
-				$module = new $class;
+				$class                       = $module_name . '_WT_Module';
+				$module                      = new $class;
 				$modules[$module->getName()] = $module;
 				WT_DB::prepare("INSERT IGNORE INTO `##module` (module_name, status, menu_order, sidebar_order, tab_order) VALUES (?, ?, ?, ?, ?)")
 					->execute(array(

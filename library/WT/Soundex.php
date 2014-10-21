@@ -34,30 +34,45 @@ class WT_Soundex {
 		}
 	}
 
-	// Is there a match between two soundex codes?
+	/**
+	 * Is there a match between two soundex codes?
+	 *
+	 * @param string $soundex1
+	 * @param string $soundex2
+	 *
+	 * @return boolean
+	 */
 	public static function compare($soundex1, $soundex2) {
 		if ($soundex1 && $soundex2) {
 			foreach (explode(':', $soundex1) as $code) {
-				if (strpos($soundex2, $code)!==false) {
+				if (strpos($soundex2, $code) !== false) {
 					return true;
 				}
 			}
 		}
+
 		return false;
 	}
 
+	/**
+	 * Generate standard soundex codes for a given text.
+	 *
+	 * @param $text
+	 *
+	 * @return null|string
+	 */
 	public static function soundex_std($text) {
 		$words = explode(' ', $text);
 		$soundex_array = array();
 		foreach ($words as $word) {
 			$soundex = soundex($word);
 			// Only return codes from recognisable sounds
-			if ($soundex != '0000') {
+			if ($soundex !== '0000') {
 				$soundex_array[] = $soundex;
 			}
 		}
 		// Combine words, e.g. “New York” as “Newyork”
-		if (count($words)>1) {
+		if (count($words) > 1) {
 			$soundex_array[] = soundex(strtr($text, ' ', ''));
 		}
 		// A varchar(255) column can only hold 51 4-character codes (plus 50 delimiters)
@@ -70,6 +85,13 @@ class WT_Soundex {
 		}
 	}
 
+	/**
+	 * Generate Daitch–Mokotoff soundex codes for a given text.
+	 *
+	 * @param $text
+	 *
+	 * @return null|string
+	 */
 	public static function soundex_dm($text) {
 		$words = explode(' ', $text);
 		$soundex_array = array();
@@ -79,7 +101,7 @@ class WT_Soundex {
 			}
 		}
 		// Combine words, e.g. “New York” as “Newyork”
-		if (count($words)>1) {
+		if (count($words) > 1) {
 			$soundex_array = array_merge($soundex_array, self::DMSoundex(strtr($text, ' ', '')));
 		}
 		// A varchar(255) column can only hold 36 6-entries (plus 35 delimiters)
@@ -97,6 +119,7 @@ class WT_Soundex {
 
 	// Max. table key length (in ASCII bytes -- NOT in UTF-8 characters!)
 	const MAXCHAR=7;
+
 	// Name transformation arrays.
 	// Used to transform the Name string to simplify the "sounds like" table.
 	// This is especially useful in Hebrew.
@@ -107,6 +130,7 @@ class WT_Soundex {
 	// Note about the use of "\x01":
 	// This code, which can’t legitimately occur in the kind of text we're dealing with,
 	// is used as a place-holder so that conditional string replacements can be done.
+
 	private static $transformNameTable=array(
 		// Force Yiddish ligatures to be treated as separate letters
 		array('װ',    'וו'),
@@ -125,6 +149,7 @@ class WT_Soundex {
 		array('יי',   'ע'),
 		array("\x01", 'יי'),
 	);
+
 	// The DM sound coding table is organized this way:
 	// key: a variable-length string that corresponds to the UTF-8 character sequence
 	//  represented by the table entry.  Currently, that string can be up to 7

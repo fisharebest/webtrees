@@ -31,10 +31,14 @@ require './includes/session.php';
 $action = WT_Filter::get('action');
 
 // The default view depends on whether we are logged in
-$ctype = WT_Filter::get('ctype', 'gedcom|user', WT_USER_ID ? 'user' : 'gedcom');
+if (Auth::check()) {
+	$ctype = WT_Filter::get('ctype', 'gedcom|user', 'user');
+} else {
+	$ctype = 'gedcom';
+}
 
 // Get the blocks list
-if (WT_USER_ID && $ctype == 'user') {
+if ($ctype === 'user') {
 	$blocks = get_user_blocks(WT_USER_ID);
 } else {
 	$blocks = get_gedcom_blocks(WT_GED_ID);
@@ -43,11 +47,10 @@ if (WT_USER_ID && $ctype == 'user') {
 $all_blocks = WT_Module::getActiveBlocks();
 
 // The latest version is shown on the administration page.  This updates it every day.
-// TODO: send an email notification to the admin when new versions are available.
 fetch_latest_version();
 
 // We generate individual blocks using AJAX
-if ($action == 'ajax') {
+if ($action === 'ajax') {
 	$controller = new WT_Controller_Ajax();
 	$controller->pageHeader();
 
@@ -62,7 +65,7 @@ if ($action == 'ajax') {
 	}
 	if (array_key_exists($module_name, $all_blocks)) {
 		$class_name = $module_name . '_WT_Module';
-		$module = new $class_name;
+		$module     = new $class_name;
 		$module->getBlock($block_id);
 	}
 	if (WT_DEBUG) {
@@ -76,7 +79,7 @@ if ($action == 'ajax') {
 
 $controller = new WT_Controller_Page();
 if ($ctype === 'user') {
-	$controller->restrictAccess(Auth::isMember());
+	$controller->restrictAccess(Auth::check());
 }
 $controller
 	->setPageTitle($ctype === 'user' ? WT_I18N::translate('My page') : WT_TREE_TITLE)
@@ -100,7 +103,7 @@ if ($blocks['main']) {
 	}
 	foreach ($blocks['main'] as $block_id => $module_name) {
 		$class_name = $module_name . '_WT_Module';
-		$module = new $class_name;
+		$module     = new $class_name;
 		if ($SEARCH_SPIDER || !$module->loadAjax()) {
 			// Load the block directly
 			$module->getBlock($block_id);
@@ -122,7 +125,7 @@ if ($blocks['side']) {
 	}
 	foreach ($blocks['side'] as $block_id => $module_name) {
 		$class_name = $module_name . '_WT_Module';
-		$module = new $class_name;
+		$module     = new $class_name;
 		if ($SEARCH_SPIDER || !$module->loadAjax()) {
 			// Load the block directly
 			$module->getBlock($block_id);

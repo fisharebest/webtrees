@@ -25,7 +25,10 @@ class WT_Family extends WT_GedcomRecord {
 	const RECORD_TYPE = 'FAM';
 	const URL_PREFIX = 'family.php?famid=';
 
+	/** @var WT_Individual|null The husband (or first spouse for same-sex couples) */
 	private $husb = null;
+
+	/** @var WT_Individual|null The wife (or second spouse for same-sex couples) */
 	private $wife = null;
 
 	/**
