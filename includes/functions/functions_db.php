@@ -850,7 +850,7 @@ function get_common_surnames($min) {
  * @param integer $min    only fetch surnames occuring this many times
  * @param integer $max    only fetch this number of surnames (0=all)
  *
- * @return string[][]
+ * @return string[]
  */
 function get_top_surnames($ged_id, $min, $max) {
 	// Use n_surn, rather than n_surname, as it is used to generate URLs for
@@ -1226,8 +1226,9 @@ function get_block_setting($block_id, $setting_name, $default_value=null) {
 			"SELECT SQL_CACHE setting_value FROM `##block_setting` WHERE block_id=? AND setting_name=?"
 		);
 	}
-	$setting_value=$statement->execute(array($block_id, $setting_name))->fetchOne();
-	return $setting_value===null ? $default_value : $setting_value;
+	$setting_value = $statement->execute(array($block_id, $setting_name))->fetchOne();
+
+	return $setting_value === null ? $default_value : $setting_value;
 }
 
 /**

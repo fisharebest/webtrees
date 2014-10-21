@@ -50,9 +50,9 @@ function stripLRMRLM($inputText) {
  * This function encapsulates all texts in the input with <span dir='xxx'> and </span>
  * according to the directionality specified.
  *
- * @param string Raw input
- * @param string Directionality (LTR, BOTH, RTL) default BOTH
- * @param string Additional text to insert into output <span dir="xxx"> (such as 'class="yyy"')
+ * @param string $inputText Raw input
+ * @param string $direction Directionality (LTR, BOTH, RTL) default BOTH
+ * @param string $class     Additional text to insert into output <span dir="xxx"> (such as 'class="yyy"')
  *
  * @return string The string with all texts encapsulated as required
  */
@@ -616,7 +616,7 @@ function beginCurrentSpan(&$result) {
  */
 function finishCurrentSpan(&$result, $theEnd = false) {
 	global $previousState, $currentState, $posSpanStart, $TEXT_DIRECTION, $waitingText;
-	global $startLTR, $endLTR, $startRTL, $endRTL, $lenStart, $lenEnd;
+	global $startLTR, $endLTR, $startRTL, $endRTL;
 	global $numbers, $punctuation;
 
 	$textSpan = substr($result, $posSpanStart);

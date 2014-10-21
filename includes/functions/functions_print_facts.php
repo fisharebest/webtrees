@@ -464,7 +464,7 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
  *
  * find and print repository information attached to a source
  *
- * @param $xref the Gedcom Xref ID of the repository to print
+ * @param string $xref the Gedcom Xref ID of the repository to print
  */
 function print_repository_record($xref) {
 	$repository=WT_Repository::getInstance($xref);

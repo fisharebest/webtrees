@@ -765,9 +765,9 @@ function import_record($gedrec, $ged_id, $update) {
 /**
  * extract all places from the given record and insert them into the places table
  *
- * @param        $gid
- * @param        $ged_id
- * @param string $gedrec
+ * @param string  $gid
+ * @param integer $ged_id
+ * @param string  $gedrec
  */
 function update_places($gid, $ged_id, $gedrec) {
 	global $placecache;

@@ -399,7 +399,7 @@ function contact_links($ged_id=WT_GED_ID) {
  * @param string  $nrec     the note record to print
  * @param boolean $textOnly Don't print the "Note: " introduction
  *
- * @return boolean
+ * @return string
  */
 function print_note_record($text, $nlevel, $nrec, $textOnly=false) {
 	global $WT_TREE;

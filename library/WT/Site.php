@@ -32,7 +32,7 @@ class WT_Site {
 	 *
 	 * @param string $setting_name
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 	public static function getPreference($setting_name) {
 		// There are lots of settings, and we need to fetch lots of them on every page

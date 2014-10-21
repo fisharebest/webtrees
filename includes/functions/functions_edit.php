@@ -165,8 +165,8 @@ function radio_buttons($name, $values, $selected) {
 
 // Print an edit control for a Yes/No field
 /**
- * @param      $name
- * @param bool $selected
+ * @param string  $name
+ * @param boolean $selected
  *
  * @return string
  */
@@ -227,8 +227,8 @@ function two_state_checkbox($name, $is_checked=0, $extra='') {
 /**
  * Print a set of edit controls to select languages
  *
- * @param $field_prefix
- * @param $languages
+ * @param string $field_prefix
+ * @param string $languages
  *
  * @return string
  */
