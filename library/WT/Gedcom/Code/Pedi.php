@@ -97,7 +97,7 @@ class WT_Gedcom_Code_Pedi {
 	 *
 	 * @param WT_GedcomRecord|null $record
 	 *
-	 * @return array
+	 * @return string[]
 	 */
 	public static function getValues(WT_GedcomRecord $record = null) {
 		$values = array();

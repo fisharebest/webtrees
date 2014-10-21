@@ -302,7 +302,7 @@ function getGedcomNews($gedcom_id) {
  *
  * @param integer $news_id the id of the news entry to get
  *
- * @return array|null
+ * @return string[]|null
  */
 function getNewsItem($news_id) {
 	$row =

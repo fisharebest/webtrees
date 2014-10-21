@@ -2330,7 +2330,7 @@ function get_relationship_name_from_path($path, WT_Individual $person1 = null, W
  *
  * @throws Exception
  *
- * @return array An array of theme names and their corresponding folder
+ * @return string[] An array of theme names and their corresponding folder
  */
 function get_theme_names() {
 	static $themes;

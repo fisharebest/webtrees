@@ -370,7 +370,7 @@ function media_paths($media_folder) {
  * @param boolean $recursive
  * @param string  $filter
  *
- * @return array
+ * @return string[]
  */
 function scan_dirs($dir, $recursive, $filter) {
 	$files = array();
@@ -401,7 +401,7 @@ function scan_dirs($dir, $recursive, $filter) {
  * @param string $subfolders   Include or exclude subfolders
  * @param string $filter       Filter files whose name contains this test
  *
- * @return array
+ * @return string[]
  */
 function all_disk_files($media_folder, $media_path, $subfolders, $filter) {
 	return scan_dirs(WT_DATA_DIR . $media_folder . $media_path, $subfolders=='include', $filter);
