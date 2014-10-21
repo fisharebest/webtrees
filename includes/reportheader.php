@@ -36,9 +36,9 @@ if (!defined('WT_WEBTREES')) {
 $elementHandler = array();
 $elementHandler["Report"]["start"]   ="ReportSHandler";
 $elementHandler["var"]["start"]      ="varSHandler";
-$elementHandler["Title"]["start"]    ="TitleSHandler";
-$elementHandler["Title"]["end"]      ="TitleEHandler";
-$elementHandler["Description"]["end"]="DescriptionEHandler";
+$elementHandler["Title"]["start"]    ="titleStartHandler";
+$elementHandler["Title"]["end"]      ="titleEndHandler";
+$elementHandler["Description"]["end"]="descriptionEndHandler";
 $elementHandler["Input"]["start"]    ="InputSHandler";
 $elementHandler["Input"]["end"]      ="InputEHandler";
 

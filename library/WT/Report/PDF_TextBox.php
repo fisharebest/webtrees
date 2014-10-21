@@ -304,7 +304,7 @@ class WT_Report_PDF_TextBox extends WT_Report_Base_TextBox {
 			if (is_object($element)) {
 				$element->render($pdf);
 			} elseif (is_string($element) && $element == 'footnotetexts') {
-				$pdf->Footnotes();
+				$pdf->footnotes();
 			} elseif (is_string($element) && $element == 'addpage') {
 				$pdf->newPage();
 			}

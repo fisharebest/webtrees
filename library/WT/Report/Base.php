@@ -517,7 +517,7 @@ function startElement($parser, $name, $attrs) {
 				call_user_func($elementHandler[$name]['start'], $attrs);
 			}
 		} elseif (!isset($elementHandler[$name]['end'])) {
-			HTMLSHandler($name, $attrs);
+			htmlStartHandler($name, $attrs);
 		}
 	}
 }
@@ -542,7 +542,7 @@ function endElement($parser, $name) {
 				call_user_func($elementHandler[$name]['end']);
 			}
 		} elseif (!isset($elementHandler[$name]['start'])) {
-			HTMLEHandler($name);
+			htmlEndHandler($name);
 		}
 	}
 }
@@ -569,11 +569,11 @@ function characterData($parser, $data) {
 }
 
 /**
- * XML <StyleSHandler /> element handler
+ * XML <style> start element handler
  *
  * @param array $attrs an array of key value pairs for the attributes
  */
-function StyleSHandler($attrs) {
+function styleStartHandler($attrs) {
 	global $wt_report;
 
 	if (empty($attrs['name'])) {
@@ -614,7 +614,7 @@ function StyleSHandler($attrs) {
  *
  * @param array $attrs an array of key value pairs for the attributes
  */
-function DocSHandler($attrs) {
+function docStartHandler($attrs) {
 	global $parser, $xml_parser, $wt_report;
 
 	$parser = $xml_parser;
@@ -705,7 +705,7 @@ function DocSHandler($attrs) {
 /**
  * XML </Doc> end element handler
  */
-function DocEHandler() {
+function docEndHandler() {
 	global $wt_report;
 	$wt_report->run();
 }
@@ -713,7 +713,7 @@ function DocEHandler() {
 /**
  * XML <Header> start element handler
  */
-function HeaderSHandler() {
+function headerStartHandler() {
 	global $wt_report;
 
 	// Clear the Header before any new elements are added
@@ -724,7 +724,7 @@ function HeaderSHandler() {
 /**
  * XML <PageHeader> start element handler
  */
-function PageHeaderSHandler() {
+function pageHeaderStartHandler() {
 	global $printDataStack, $printData, $wt_reportStack, $wt_report, $ReportRoot;
 
 	array_push($printDataStack, $printData);
@@ -734,9 +734,9 @@ function PageHeaderSHandler() {
 }
 
 /**
- * XML <PageHeaderEHandler> end element handler
+ * XML <pageHeaderEndHandler> end element handler
  */
-function PageHeaderEHandler() {
+function pageHeaderEndHandler() {
 	global $printData, $printDataStack, $wt_report, $currentElement, $wt_reportStack;
 
 	$printData = array_pop($printDataStack);
@@ -746,17 +746,17 @@ function PageHeaderEHandler() {
 }
 
 /**
- * XML <BodySHandler> start element handler
+ * XML <bodyStartHandler> start element handler
  */
-function BodySHandler() {
+function bodyStartHandler() {
 	global $wt_report;
 	$wt_report->setProcessing("B");
 }
 
 /**
- * XML <FooterSHandler> start element handler
+ * XML <footerStartHandler> start element handler
  */
-function FooterSHandler() {
+function footerStartHandler() {
 	global $wt_report;
 	$wt_report->setProcessing("F");
 }
@@ -766,7 +766,7 @@ function FooterSHandler() {
  *
  * @param array $attrs an array of key value pairs for the attributes
  */
-function CellSHandler($attrs) {
+function cellStartHandler($attrs) {
 	global $printData, $printDataStack, $currentElement, $ReportRoot, $wt_report;
 
 	// string The text alignment of the text in this box.
@@ -922,7 +922,7 @@ function CellSHandler($attrs) {
 /**
  * XML </Cell> end element handler
  */
-function CellEHandler() {
+function cellEndHandler() {
 	global $printData, $printDataStack, $currentElement, $wt_report;
 
 	$printData = array_pop($printDataStack);
@@ -932,7 +932,7 @@ function CellEHandler() {
 /**
  * XML <Now /> element handler
  */
-function NowSHandler() {
+function nowStartHandler() {
 	global $currentElement;
 
 	$g = timestamp_to_gedcom_date(WT_CLIENT_TIMESTAMP);
@@ -942,7 +942,7 @@ function NowSHandler() {
 /**
  * XML <PageNum /> element handler
  */
-function PageNumSHandler() {
+function pageNumStartHandler() {
 	global $currentElement;
 	$currentElement->addText("#PAGENUM#");
 }
@@ -950,7 +950,7 @@ function PageNumSHandler() {
 /**
  * XML <TotalPages /> element handler
  */
-function TotalPagesSHandler() {
+function totalPagesStartHandler() {
 	global $currentElement;
 	$currentElement->addText("{{:ptp:}}");
 }
@@ -958,7 +958,7 @@ function TotalPagesSHandler() {
 /**
  * @param array $attrs an array of key value pairs for the attributes
  */
-function GedcomSHandler($attrs) {
+function gedcomStartHandler($attrs) {
 	global $vars, $gedrec, $gedrecStack, $processGedcoms, $fact, $desc, $ged_level;
 
 	if ($processGedcoms > 0) {
@@ -1019,7 +1019,7 @@ function GedcomSHandler($attrs) {
 	}
 }
 
-function GedcomEHandler() {
+function gedcomEndHandler() {
 	global $gedrec, $gedrecStack, $processGedcoms, $fact, $desc;
 
 	if ($processGedcoms > 0) {
@@ -1033,11 +1033,11 @@ function GedcomEHandler() {
 }
 
 /**
- * XML <TextBoxSHandler> start element handler
+ * XML <textBoxStartHandler> start element handler
  *
  * @param array $attrs an array of key value pairs for the attributes
  */
-function TextBoxSHandler($attrs) {
+function textBoxStartHandler($attrs) {
 	global $printData, $printDataStack, $wt_report, $currentElement, $wt_reportStack, $ReportRoot;
 
 	// string Background color code
@@ -1160,9 +1160,9 @@ function TextBoxSHandler($attrs) {
 }
 
 /**
- * XML <TextBoxEHandler> end element handler
+ * XML <textBoxEndHandler> end element handler
  */
-function TextBoxEHandler() {
+function textBoxEndHandler() {
 	global $printData, $printDataStack, $wt_report, $currentElement, $wt_reportStack;
 
 	$printData = array_pop($printDataStack);
@@ -1174,7 +1174,7 @@ function TextBoxEHandler() {
 /**
  * @param array $attrs an array of key value pairs for the attributes
  */
-function TextSHandler($attrs) {
+function textStartHandler($attrs) {
 	global $printData, $printDataStack, $currentElement, $ReportRoot;
 
 	array_push($printDataStack, $printData);
@@ -1198,7 +1198,7 @@ function TextSHandler($attrs) {
 /**
  *
  */
-function TextEHandler() {
+function textEndHandler() {
 	global $printData, $printDataStack, $wt_report, $currentElement;
 
 	$printData = array_pop($printDataStack);
@@ -1213,7 +1213,7 @@ function TextEHandler() {
  *
  * @param array $attrs an array of key value pairs for the attributes
  */
-function GetPersonNameSHandler($attrs) {
+function getPersonNameStartHandler($attrs) {
 	// @deprecated
 	global $currentElement, $vars, $gedrec;
 
@@ -1297,7 +1297,7 @@ function GetPersonNameSHandler($attrs) {
  *
  * @param array $attrs an array of key value pairs for the attributes
  */
-function GedcomValueSHandler($attrs) {
+function gedcomValueStartHandler($attrs) {
 	// @deprecated
 	global $currentElement, $gedrec, $fact, $desc;
 
@@ -1365,7 +1365,7 @@ function GedcomValueSHandler($attrs) {
  *
  * @param array $attrs an array of key value pairs for the attributes
  */
-function RepeatTagSHandler($attrs) {
+function repeatTagStartHandler($attrs) {
 	// @deprecated
 	global $repeats, $repeatsStack, $gedrec, $repeatBytes, $parser, $processRepeats, $fact, $desc;
 
@@ -1430,7 +1430,7 @@ function RepeatTagSHandler($attrs) {
 /**
  * XML </ RepeatTag> end element handler
  */
-function RepeatTagEHandler() {
+function repeatTagEndHandler() {
 	global $processRepeats, $repeats, $repeatsStack, $repeatBytes;
 
 	$processRepeats--;
@@ -1562,7 +1562,7 @@ function varSHandler($attrs) {
 /**
  * @param array $attrs an array of key value pairs for the attributes
  */
-function FactsSHandler($attrs) {
+function factsStartHandler($attrs) {
 	// @deprecated
 	global $repeats, $repeatsStack, $gedrec, $parser, $repeatBytes, $processRepeats, $vars;
 
@@ -1611,7 +1611,7 @@ function FactsSHandler($attrs) {
 /**
  * XML </ Facts> end element handler
  */
-function FactsEHandler() {
+function factsEndHandler() {
 	global $repeats, $repeatsStack, $repeatBytes, $parser, $parserStack, $report, $gedrec, $fact, $desc, $type, $processRepeats;
 
 	$processRepeats--;
@@ -1700,7 +1700,7 @@ function FactsEHandler() {
  *
  * @param array $attrs an array of key value pairs for the attributes
  */
-function SetVarSHandler($attrs) {
+function setVarStartHandler($attrs) {
 	global $vars, $gedrec, $fact, $desc, $type, $generation;
 
 	if (empty($attrs['name'])) {
@@ -1843,7 +1843,7 @@ function ifEHandler() {
  *
  * @param array $attrs an array of key value pairs for the attributes
  */
-function FootnoteSHandler($attrs) {
+function footnoteStartHandler($attrs) {
 	global $printData, $printDataStack, $currentElement, $footnoteElement, $processFootnote, $gedrec, $ReportRoot;
 
 	$id = "";
@@ -1870,7 +1870,7 @@ function FootnoteSHandler($attrs) {
  * XML <Footnote /> end element
  * Print the collected Footnote data
  */
-function FootnoteEHandler() {
+function footnoteEndHandler() {
 	// @deprecated
 	global $printData, $printDataStack, $currentElement, $footnoteElement, $processFootnote, $wt_report;
 
@@ -1889,7 +1889,7 @@ function FootnoteEHandler() {
 /**
  * XML <FootnoteTexts /> element
  */
-function FootnoteTextsSHandler() {
+function footnoteTextsStartHandler() {
 	global $wt_report;
 
 	$temp = "footnotetexts";
@@ -1899,7 +1899,7 @@ function FootnoteTextsSHandler() {
 /**
  * XML <AgeAtDeath /> element handler
  */
-function AgeAtDeathSHandler() {
+function ageAtDeathStartHandler() {
 	// TODO: This duplicates functionality in format_fact_date()
 	global $currentElement, $gedrec, $fact, $desc;
 
@@ -1977,7 +1977,7 @@ function spSHandler() {
 /**
  * @param array $attrs an array of key value pairs for the attributes
  */
-function HighlightedImageSHandler($attrs) {
+function highlightedImageStartHandler($attrs) {
 	global $gedrec, $wt_report, $ReportRoot;
 
 	$id = '';
@@ -2076,8 +2076,8 @@ function HighlightedImageSHandler($attrs) {
 /**
  * @param array $attrs an array of key value pairs for the attributes
  */
-function ImageSHandler($attrs) {
-	global $gedrec, $wt_report, $MEDIA_DIRECTORY, $ReportRoot;
+function imageStartHandler($attrs) {
+	global $gedrec, $wt_report, $ReportRoot;
 
 	// mixed Position the top corner of this box on the page. the default is the current position
 	$top = '.';
@@ -2193,7 +2193,7 @@ function ImageSHandler($attrs) {
  *
  * @param array $attrs an array of key value pairs for the attributes
  */
-function LineSHandler($attrs) {
+function lineStartHandler($attrs) {
 	global $wt_report, $ReportRoot;
 
 	// Start horizontal position, current position (default)
@@ -2250,9 +2250,8 @@ function LineSHandler($attrs) {
  *
  * @param array $attrs an array of key value pairs for the attributes
  */
-function ListSHandler($attrs) {
+function listStartHandler($attrs) {
 	global $gedrec, $repeats, $repeatBytes, $list, $repeatsStack, $processRepeats, $parser, $vars, $sortby;
-	global $GEDCOM;
 
 	$processRepeats++;
 	if ($processRepeats > 1) {
@@ -2585,7 +2584,7 @@ function ListSHandler($attrs) {
 /**
  * XML <List> end element handler
  */
-function ListEHandler() {
+function listEndHandler() {
 	global $list, $repeats, $repeatsStack, $repeatBytes, $parser, $parserStack, $report, $gedrec, $processRepeats, $list_total, $list_private;
 
 	$processRepeats--;
@@ -2673,7 +2672,7 @@ function ListEHandler() {
  * The total number is collected from
  * List and Relatives
  */
-function ListTotalSHandler() {
+function listTotalStartHandler() {
 	global $list_total, $list_private, $currentElement;
 
 	if (empty($list_total)) {
@@ -2690,7 +2689,7 @@ function ListTotalSHandler() {
 /**
  * @param array $attrs an array of key value pairs for the attributes
  */
-function RelativesSHandler($attrs) {
+function relativesStartHandler($attrs) {
 	global $repeats, $repeatBytes, $list, $repeatsStack, $processRepeats, $parser, $vars, $sortby;
 
 	$processRepeats++;
@@ -2829,7 +2828,7 @@ function RelativesSHandler($attrs) {
 /**
  * XML </ Relatives> end element handler
  */
-function RelativesEHandler() {
+function relativesEndHandler() {
 	global $list, $repeats, $repeatsStack, $repeatBytes, $parser, $parserStack, $report, $gedrec, $processRepeats, $list_total, $list_private, $generation;
 
 	$processRepeats--;
@@ -2917,7 +2916,7 @@ function RelativesEHandler() {
  *
  * Prints the number of generations
  */
-function GenerationSHandler() {
+function generationStartHandler() {
 	global $generation, $currentElement;
 
 	if (empty($generation)) {
@@ -2932,7 +2931,7 @@ function GenerationSHandler() {
  *
  * Has to be placed in an element (header, pageheader, body or footer)
  */
-function NewPageSHandler() {
+function newPageStartHandler() {
 	global $wt_report;
 
 	$temp = "addpage";
@@ -2943,7 +2942,7 @@ function NewPageSHandler() {
  * @param array  $attrs an array of key value pairs for the attributes
  * @param string $tag   HTML tag name
  */
-function HTMLSHandler($tag, $attrs) {
+function htmlStartHandler($tag, $attrs) {
 	global $printData, $printDataStack, $wt_reportStack, $wt_report, $currentElement, $ReportRoot;
 
 	if ($tag == "tempdoc") {
@@ -2960,7 +2959,7 @@ function HTMLSHandler($tag, $attrs) {
 /**
  * @param string $tag
  */
-function HTMLEHandler($tag) {
+function htmlEndHandler($tag) {
 	global $printData, $printDataStack, $wt_report, $currentElement, $wt_reportStack;
 	if ($tag == "tempdoc") {
 		return;
@@ -2977,33 +2976,33 @@ function HTMLEHandler($tag) {
 }
 
 /**
- * XML <TitleSHandler> start element handler
+ * XML <titleStartHandler> start element handler
  */
-function TitleSHandler() {
+function titleStartHandler() {
 	global $reportTitle;
 	$reportTitle = true;
 }
 
 /**
- * XML </TitleEHandler> end element handler
+ * XML </titleEndHandler> end element handler
  */
-function TitleEHandler() {
+function titleEndHandler() {
 	global $reportTitle;
 	$reportTitle = false;
 }
 
 /**
- * XML <DescriptionSHandler> start element handler
+ * XML <descriptionStartHandler> start element handler
  */
-function DescriptionSHandler() {
+function descriptionStartHandler() {
 	global $reportDescription;
 	$reportDescription = true;
 }
 
 /**
- * XML </DescriptionEHandler> end element handler
+ * XML </descriptionEndHandler> end element handler
  */
-function DescriptionEHandler() {
+function descriptionEndHandler() {
 	global $reportDescription;
 	$reportDescription = false;
 }

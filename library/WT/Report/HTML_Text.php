@@ -37,7 +37,7 @@ class WT_Report_HTML_Text extends WT_Report_Base_Text {
 		if ($html->getCurrentStyle() != $this->styleName) {
 			$html->setCurrentStyle($this->styleName);
 		}
-		$temptext = str_replace("#PAGENUM#", $html->PageNo(), $this->text);
+		$temptext = str_replace("#PAGENUM#", $html->pageNo(), $this->text);
 		// underline «title» part of Source item
 		$temptext = str_replace(array('«', '»'), array('<u>', '</u>'), $temptext);
 
@@ -48,8 +48,8 @@ class WT_Report_HTML_Text extends WT_Report_Base_Text {
 				$html->write($temptext, $this->color);
 			} else {
 				// Save the start positions
-				$startX = $html->GetX();
-				$startY = $html->GetY();
+				$startX = $html->getX();
+				$startY = $html->getY();
 				$width = $html->getRemainingWidth();
 				// If text is wider then page width then wrap it
 				if ($html->GetStringWidth($temptext) > $width) {
@@ -58,7 +58,7 @@ class WT_Report_HTML_Text extends WT_Report_Base_Text {
 						echo "<div style=\"position:absolute;top:", $startY, "pt;", $html->alignRTL, ":", $startX, "pt;width:", $width, "pt;\">";
 						$line = $html->textWrap($line, $width);
 						$startY += $html->getTextCellHeight($line);
-						$html->SetY($startY);
+						$html->setY($startY);
 						$html->write($line, $this->color);
 						echo "</div>\n";
 					}
@@ -66,9 +66,9 @@ class WT_Report_HTML_Text extends WT_Report_Base_Text {
 					echo "<div style=\"position:absolute;top:", $startY, "pt;", $html->alignRTL, ":", $startX, "pt;width:", $width, "pt;\">";
 					$html->write($temptext, $this->color);
 					echo "</div>\n";
-					$html->SetX($startX + $html->GetStringWidth($temptext));
+					$html->setX($startX + $html->GetStringWidth($temptext));
 					if ($html->countLines($temptext) != 1) {
-						$html->SetXY(0, ($startY + $html->getTextCellHeight($temptext)));
+						$html->setXy(0, ($startY + $html->getTextCellHeight($temptext)));
 					}
 				}
 			}
