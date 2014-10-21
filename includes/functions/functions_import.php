@@ -853,7 +853,13 @@ function update_places($gid, $ged_id, $gedrec) {
 	}
 }
 
-// extract all the dates from the given record and insert them into the database
+/**
+ * Extract all the dates from the given record and insert them into the database.
+ *
+ * @param string  $xref
+ * @param integer $ged_id
+ * @param string  $gedrec
+ */
 function update_dates($xref, $ged_id, $gedrec) {
 	static $sql_insert_date=null;
 	if (!$sql_insert_date) {
@@ -875,10 +881,15 @@ function update_dates($xref, $ged_id, $gedrec) {
 			}
 		}
 	}
-	return;
 }
 
-// extract all the links from the given record and insert them into the database
+/**
+ * Extract all the links from the given record and insert them into the database
+ *
+ * @param string  $xref
+ * @param integer $ged_id
+ * @param string  $gedrec
+ */
 function update_links($xref, $ged_id, $gedrec) {
 	static $sql_insert_link=null;
 	if (!$sql_insert_link) {
@@ -902,7 +913,13 @@ function update_links($xref, $ged_id, $gedrec) {
 	}
 }
 
-// extract all the names from the given record and insert them into the database
+/**
+ * Extract all the names from the given record and insert them into the database.
+ *
+ * @param string  $xref
+ * @param integer $ged_id
+ * @param string  $record
+ */
 function update_names($xref, $ged_id, $record) {
 	static $sql_insert_name_indi=null;
 	static $sql_insert_name_other=null;
@@ -934,7 +951,14 @@ function update_names($xref, $ged_id, $record) {
 	}
 }
 
-// Extract inline media data, and convert to media objects
+/**
+ * Extract inline media data, and convert to media objects.
+ *
+ * @param integer $ged_id
+ * @param string  $gedrec
+ *
+ * @return string
+ */
 function convert_inline_media($ged_id, $gedrec) {
 	while (preg_match('/\n1 OBJE(?:\n[2-9].+)+/', $gedrec, $match)) {
 		$gedrec = str_replace($match[0], create_media_object(1, $match[0], $ged_id), $gedrec);
@@ -948,7 +972,15 @@ function convert_inline_media($ged_id, $gedrec) {
 	return $gedrec;
 }
 
-// Create a new media object, from inline media data
+/**
+ * Create a new media object, from inline media data.
+ *
+ * @param integer $level
+ * @param string  $gedrec
+ * @param integer $ged_id
+ *
+ * @return string
+ */
 function create_media_object($level, $gedrec, $ged_id) {
 	static $sql_insert_media=null;
 	static $sql_select_media=null;
@@ -988,6 +1020,7 @@ function create_media_object($level, $gedrec, $ged_id) {
 		$record = new WT_Media($xref, $gedrec, null, $ged_id);
 		$sql_insert_media->execute(array($xref, $record->extension(), $record->getMediaType(), $record->title, $record->file, $ged_id, $gedrec));
 	}
+
 	return "\n" . $level . ' OBJE @' . $xref . '@';
 }
 
@@ -1044,7 +1077,12 @@ function accept_all_changes($xref, $ged_id) {
 	}
 }
 
-// Accept all pending changes for a specified record
+/**
+ * Accept all pending changes for a specified record.
+ *
+ * @param string  $xref
+ * @param integer $ged_id
+ */
 function reject_all_changes($xref, $ged_id) {
 	WT_DB::prepare(
 		"UPDATE `##change`".

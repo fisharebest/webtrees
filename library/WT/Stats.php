@@ -1285,7 +1285,7 @@ class WT_Stats {
 	 * @param integer $parent
 	 * @param boolean $country
 	 *
-	 * @return integer[]
+	 * @return integer[]|string[][]
 	 */
 	public function statsPlaces($what = 'ALL', $fact = '', $parent = 0, $country = false) {
 		if ($fact) {
@@ -5796,12 +5796,14 @@ class WT_Stats {
 	 */
 	private function runSql($sql) {
 		static $cache = array();
+
 		$id = md5($sql);
 		if (isset($cache[$id])) {
 			return $cache[$id];
 		}
 		$rows = WT_DB::prepare($sql)->fetchAll(PDO::FETCH_ASSOC);
 		$cache[$id] = $rows;
+
 		return $rows;
 	}
 

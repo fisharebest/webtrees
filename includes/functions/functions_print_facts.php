@@ -759,7 +759,7 @@ function print_main_sources(WT_Fact $fact, $level) {
  *  This function prints the input array of SOUR sub-records built by the
  *  getSourceStructure() function.
  *
- * @param string $textSOUR
+ * @param string[] $textSOUR
  *
  * @return string
  */
