@@ -26,13 +26,18 @@
 use Rhumsaa\Uuid\Uuid;
 use WT\User;
 
-// Print a fact record, for the individual/family/source/repository/etc. pages.
-//
-// Although a WT_Fact has a parent object, we also need to know
-// the WT_GedcomRecord for which we are printing it.  For example,
-// we can show the death of X on the page of Y, or the marriage
-// of X+Y on the page of Z.  We need to know both records to
-// calculate ages, relationships, etc.
+/**
+ * Print a fact record, for the individual/family/source/repository/etc. pages.
+ *
+ * Although a WT_Fact has a parent object, we also need to know
+ * the WT_GedcomRecord for which we are printing it.  For example,
+ * we can show the death of X on the page of Y, or the marriage
+ * of X+Y on the page of Z.  We need to know both records to
+ * calculate ages, relationships, etc.
+ *
+ * @param WT_Fact         $fact
+ * @param WT_GedcomRecord $record
+ */
 function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 	global $HIDE_GEDCOM_ERRORS, $SHOW_FACT_ICONS;
 	static $n_chil=0, $n_gchi=0;

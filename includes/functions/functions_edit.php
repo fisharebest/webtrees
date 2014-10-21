@@ -26,9 +26,9 @@ use Rhumsaa\Uuid\Uuid;
 /**
  * Create an edit control for inline editing using jeditable.
  *
- * @param string                  $name
- * @param string                  $value
- * @param WT_Controller_Base|null $controller
+ * @param string             $name
+ * @param string             $value
+ * @param WT_Controller_Base $controller
  *
  * @return string
  */
@@ -45,7 +45,15 @@ function edit_field_inline($name, $value, $controller=null) {
 	}
 }
 
-// Create a text area for inline editing using jeditable
+/**
+ * Create a text area for inline editing using jeditable.
+ *
+ * @param string             $name
+ * @param string             $value
+ * @param WT_Controller_Base $controller
+ *
+ * @return string
+ */
 function edit_text_inline($name, $value, $controller=null) {
 	$html='<span class="editable" style="white-space:pre-wrap;" id="' . $name . '">' . WT_Filter::escapeHtml($value) . '</span>';
 	$js='jQuery("#' . $name . '").editable("' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'save.php", {submitdata: {csrf: WT_CSRF_TOKEN}, submit:"&nbsp;&nbsp;' . WT_I18N::translate('save') . '&nbsp;&nbsp;", style:"inherit", placeholder: "'.WT_I18N::translate('click to edit').'", type: "textarea", rows:4, cols:60 });';
@@ -65,6 +73,15 @@ function edit_text_inline($name, $value, $controller=null) {
 // $empty    - if not null, then add an entry ""=>$empty
 // $selected - the currently selected item (if any)
 // $extra    - extra markup for field (e.g. tab key sequence)
+/**
+ * @param string      $name
+ * @param string      $values
+ * @param string|null $empty
+ * @param string      $selected
+ * @param string      $extra
+ *
+ * @return string
+ */
 function select_edit_control($name, $values, $empty, $selected, $extra='') {
 	if (is_null($empty)) {
 		$html='';
@@ -94,7 +111,17 @@ function select_edit_control($name, $values, $empty, $selected, $extra='') {
 	}
 }
 
-// An inline-editing version of select_edit_control()
+/**
+ * An inline-editing version of select_edit_control()
+ *
+ * @param string             $name
+ * @param string             $values
+ * @param string|null        $empty
+ * @param string             $selected
+ * @param WT_Controller_Base $controller
+ *
+ * @return string
+ */
 function select_edit_control_inline($name, $values, $empty, $selected, $controller=null) {
 	if (!is_null($empty)) {
 		// Push ''=>$empty onto the front of the array, maintaining keys
@@ -141,28 +168,58 @@ function radio_buttons($name, $values, $selected) {
 }
 
 // Print an edit control for a Yes/No field
+/**
+ * @param      $name
+ * @param bool $selected
+ *
+ * @return string
+ */
 function edit_field_yes_no($name, $selected=false) {
 	return radio_buttons(
 		$name, array(false=>WT_I18N::translate('no'), true=>WT_I18N::translate('yes')), $selected
 	);
 }
 
-// An inline-editing version of edit_field_yes_no()
+/**
+ * An inline-editing version of edit_field_yes_no()
+ *
+ * @param string             $name
+ * @param boolean            $selected
+ * @param WT_Controller_Base $controller
+ *
+ * @return string
+ */
 function edit_field_yes_no_inline($name, $selected=false, $controller=null) {
 	return select_edit_control_inline(
 		$name, array(true=>WT_I18N::translate('yes'), false=>WT_I18N::translate('no')), null, (int)$selected, $controller
 	);
 }
 
-// Print an edit control for a checkbox
+/**
+ * Print an edit control for a checkbox.
+ *
+ * @param string  $name
+ * @param boolean $is_checked
+ * @param string  $extra
+ *
+ * @return string
+ */
 function checkbox($name, $is_checked=false, $extra='') {
 	return '<input type="checkbox" name="'.$name.'" value="1" '.($is_checked ? 'checked="checked" ' : '').$extra.'>';
 }
 
-// Print an edit control for a checkbox, with a hidden field to store one of the two states.
-// By default, a checkbox is either set, or not sent.
-// This function gives us a three options, set, unset or not sent.
-// Useful for dynamically generated forms where we don't know what elements are present.
+/**
+ * Print an edit control for a checkbox, with a hidden field to store one of the two states.
+ * By default, a checkbox is either set, or not sent.
+ * This function gives us a three options, set, unset or not sent.
+ * Useful for dynamically generated forms where we don't know what elements are present.
+ *
+ * @param string  $name
+ * @param integer $is_checked 0 or 1
+ * @param string  $extra
+ *
+ * @return string
+ */
 function two_state_checkbox($name, $is_checked=0, $extra='') {
 	return
 		'<input type="hidden" id="'.$name.'" name="'.$name.'" value="'.($is_checked?1:0).'">'.
@@ -217,7 +274,15 @@ function edit_language_checkboxes($field_prefix, $languages) {
 	return '<table>' . $html . '</table>';
 }
 
-// Print an edit control for access level
+/**
+ * Print an edit control for access level.
+ *
+ * @param string $name
+ * @param string $selected
+ * @param string $extra
+ *
+ * @return string
+ */
 function edit_field_access_level($name, $selected='', $extra='') {
 	$ACCESS_LEVEL=array(
 		WT_PRIV_PUBLIC=>WT_I18N::translate('Show to visitors'),
@@ -228,7 +293,15 @@ function edit_field_access_level($name, $selected='', $extra='') {
 	return select_edit_control($name, $ACCESS_LEVEL, null, $selected, $extra);
 }
 
-// Print an edit control for a RESN field
+/**
+ * Print an edit control for a RESN field.
+ *
+ * @param string $name
+ * @param string $selected
+ * @param string $extra
+ *
+ * @return string
+ */
 function edit_field_resn($name, $selected='', $extra='') {
 	$RESN=array(
 		''            =>'',
@@ -240,7 +313,15 @@ function edit_field_resn($name, $selected='', $extra='') {
 	return select_edit_control($name, $RESN, null, $selected, $extra);
 }
 
-// Print an edit control for a contact method field
+/**
+ * Print an edit control for a contact method field.
+ *
+ * @param string $name
+ * @param string $selected
+ * @param string $extra
+ *
+ * @return string
+ */
 function edit_field_contact($name, $selected='', $extra='') {
 	// Different ways to contact the users
 	$CONTACT_METHODS=array(
@@ -252,6 +333,16 @@ function edit_field_contact($name, $selected='', $extra='') {
 	);
 	return select_edit_control($name, $CONTACT_METHODS, null, $selected, $extra);
 }
+
+/**
+ * Print an edit control for a contact method field.
+ *
+ * @param string             $name
+ * @param string             $selected
+ * @param WT_Controller_Base $controller
+ *
+ * @return string
+ */
 function edit_field_contact_inline($name, $selected='', $controller=null) {
 	// Different ways to contact the users
 	$CONTACT_METHODS=array(
@@ -264,19 +355,45 @@ function edit_field_contact_inline($name, $selected='', $controller=null) {
 	return select_edit_control_inline($name, $CONTACT_METHODS, null, $selected, $controller);
 }
 
-// Print an edit control for a language field
+/**
+ * Print an edit control for a language field.
+ *
+ * @param string $name
+ * @param string $selected
+ * @param string $extra
+ *
+ * @return string
+ */
 function edit_field_language($name, $selected='', $extra='') {
 	return select_edit_control($name, WT_I18N::installed_languages(), null, $selected, $extra);
 }
 
-// An inline-editing version of edit_field_language()
-function edit_field_language_inline($name, $selected=false, $controller=null) {
+/**
+ * An inline-editing version of edit_field_language().
+ *
+ * @param string             $name
+ * @param string             $selected
+ * @param WT_Controller_Base $controller
+ *
+ * @return string
+ */
+function edit_field_language_inline($name, $selected='', $controller=null) {
 	return select_edit_control_inline(
 		$name, WT_I18N::installed_languages(), null, $selected, $controller
 	);
 }
 
-// Print an edit control for a range of integers
+/**
+ * Print an edit control for a range of integers.
+ *
+ * @param string  $name
+ * @param string  $selected
+ * @param integer $min
+ * @param integer $max
+ * @param string  $extra
+ *
+ * @return string
+ */
 function edit_field_integers($name, $selected='', $min, $max, $extra='') {
 	$array=array();
 	for ($i=$min; $i<=$max; ++$i) {
@@ -285,7 +402,15 @@ function edit_field_integers($name, $selected='', $min, $max, $extra='') {
 	return select_edit_control($name, $array, null, $selected, $extra);
 }
 
-// Print an edit control for a username
+/**
+ * Print an edit control for a username.
+ *
+ * @param string $name
+ * @param string $selected
+ * @param string $extra
+ *
+ * @return string
+ */
 function edit_field_username($name, $selected='', $extra='') {
 	$all_users=WT_DB::prepare(
 		"SELECT user_name, CONCAT_WS(' ', real_name, '-', user_name) FROM `##user` ORDER BY real_name"
@@ -294,15 +419,34 @@ function edit_field_username($name, $selected='', $extra='') {
 	if ($selected && !array_key_exists($selected, $all_users)) {
 		$all_users[$selected]=$selected;
 	}
+
 	return select_edit_control($name, $all_users, '-', $selected, $extra);
 }
 
-// Print an edit control for a ADOP field
+/**
+ * Print an edit control for a ADOP field.
+ *
+ * @param string        $name
+ * @param string        $selected
+ * @param string        $extra
+ * @param WT_Individual $individual
+ *
+ * @return string
+ */
 function edit_field_adop($name, $selected='', $extra='', WT_Individual $individual=null) {
 	return select_edit_control($name, WT_Gedcom_Code_Adop::getValues($individual), null, $selected, $extra);
 }
 
-// Print an edit control for a PEDI field
+/**
+ * Print an edit control for a PEDI field.
+ *
+ * @param string        $name
+ * @param string        $selected
+ * @param string        $extra
+ * @param WT_Individual $individual
+ *
+ * @return string
+ */
 function edit_field_pedi($name, $selected='', $extra='', WT_Individual $individual=null) {
 	return select_edit_control($name, WT_Gedcom_Code_Pedi::getValues($individual), '', $selected, $extra);
 }

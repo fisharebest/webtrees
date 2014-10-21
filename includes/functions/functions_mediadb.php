@@ -50,7 +50,13 @@ function return_bytes($val) {
 	}
 }
 
-// attempts to determine whether there is enough memory to load a particular image
+/**
+ * Determine whether there is enough memory to load a particular image.
+ *
+ * @param string $serverFilename
+ *
+ * @return boolean
+ */
 function hasMemoryForImage($serverFilename) {
 	// find out how much total memory this script can access
 	$memoryAvailable = return_bytes(@ini_get('memory_limit'));

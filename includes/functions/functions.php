@@ -263,9 +263,14 @@ function get_cont($nlevel, $nrec) {
 	return rtrim($text, " ");
 }
 
-////////////////////////////////////////////////////////////////////////////////
-// Sort a list events for the today/upcoming blocks
-////////////////////////////////////////////////////////////////////////////////
+/**
+ * Sort a list events for the today/upcoming blocks
+ *
+ * @param array $a
+ * @param array $b
+ *
+ * @return integer
+ */
 function event_sort($a, $b) {
 	if ($a['jd'] == $b['jd']) {
 		if ($a['anniv'] == $b['anniv']) {
@@ -278,6 +283,14 @@ function event_sort($a, $b) {
 	}
 }
 
+/**
+ * Sort a list events for the today/upcoming blocks
+ *
+ * @param array $a
+ * @param array $b
+ *
+ * @return integer
+ */
 function event_sort_name($a, $b) {
 	if ($a['jd'] == $b['jd']) {
 		return WT_GedcomRecord::compare($a['record'], $b['record']);

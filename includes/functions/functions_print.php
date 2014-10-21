@@ -200,10 +200,16 @@ function print_pedigree_person($person, $style = 1) {
 	}
 }
 
-// print HTML header meta links
-// previously identical code in each theme’s header.php file
-// now added as a function here.
-
+/**
+ * Print HTML header meta links
+ *
+ * @param string $META_DESCRIPTION
+ * @param string $META_ROBOTS
+ * @param string $META_GENERATOR
+ * @param string $LINK_CANONICAL
+ *
+ * @return string
+ */
 function header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL) {
 	$header_links = '';
 	if ($LINK_CANONICAL) {
@@ -238,7 +244,11 @@ function execution_stats() {
 		'</div>';
 }
 
-// Generate a login link
+/**
+ * Generate a login link.
+ *
+ * @return string
+ */
 function login_link() {
 	global $SEARCH_SPIDER;
 
@@ -246,14 +256,17 @@ function login_link() {
 		return '';
 	} else {
 		return
-			'<a href="'.WT_LOGIN_URL.'?url='.rawurlencode(get_query_url()).'" class="link">'.
-//			'<a href="#" onclick="modalDialog(\''. WT_LOGIN_URL .'?url='.rawurlencode(get_query_url()) .'\', \''. WT_I18N::translate('Login') . '\');" '.$extra.' class="link">'.
-			WT_I18N::translate('Login').
+			'<a href="' . WT_LOGIN_URL . '?url='.rawurlencode(get_query_url()) . '" class="link">' .
+			WT_I18N::translate('Login') .
 			'</a>';
 	}
 }
 
-// Generate a logout link
+/**
+ * Generate a logout link.
+ *
+ * @return string
+ */
 function logout_link() {
 	global $SEARCH_SPIDER;
 
@@ -264,7 +277,11 @@ function logout_link() {
 	}
 }
 
-//generate Who is online list
+/**
+ * Generate Who is online list.
+ *
+ * @return string
+ */
 function whoisonline() {
 	$NumAnonymous = 0;
 	$loggedusers = array ();
@@ -303,9 +320,14 @@ function whoisonline() {
 	return $content;
 }
 
-
-// Print a link to allow email/messaging contact with a user
-// Optionally specify a method (used for webmaster/genealogy contacts)
+/**
+ * Print a link to allow email/messaging contact with a user
+ * Optionally specify a method (used for webmaster/genealogy contacts)
+ *
+ * @param integer $user_id
+ *
+ * @return string
+ */
 function user_contact_link($user_id) {
 	$user = User::find($user_id);
 
@@ -325,10 +347,16 @@ function user_contact_link($user_id) {
 	}
 }
 
-// print links for genealogy and technical contacts
-//
-// this function will print appropriate links based on the preferred contact methods for the genealogy
-// contact user and the technical support contact user
+/**
+ * Print links for genealogy and technical contacts.
+ * This function will print appropriate links based on the preferred
+ * contact methods for the genealogy contact user and the technical
+ * support contact user.
+ *
+ * @param integer $ged_id
+ *
+ * @return string
+ */
 function contact_links($ged_id=WT_GED_ID) {
 	$tree = WT_Tree::get($ged_id);
 

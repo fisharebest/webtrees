@@ -916,11 +916,11 @@ function update_links($xref, $ged_id, $gedrec) {
 /**
  * Extract all the names from the given record and insert them into the database.
  *
- * @param string  $xref
- * @param integer $ged_id
- * @param string  $record
+ * @param string          $xref
+ * @param integer         $ged_id
+ * @param WT_GedcomRecord $record
  */
-function update_names($xref, $ged_id, $record) {
+function update_names($xref, $ged_id, WT_GedcomRecord $record) {
 	static $sql_insert_name_indi=null;
 	static $sql_insert_name_other=null;
 	if (!$sql_insert_name_indi) {

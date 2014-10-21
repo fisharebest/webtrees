@@ -45,7 +45,14 @@ function fetch_all_links($xref, $gedcom_id) {
 		->fetchOneColumn();
 }
 
-// Find out if there are any pending changes that a given user may accept
+/**
+ * Find out if there are any pending changes that a given user may accept.
+ *
+ * @param User    $user
+ * @param WT_Tree $tree
+ *
+ * @return boolean
+ */
 function exists_pending_change(User $user = null, WT_Tree $tree = null) {
 	global $WT_TREE;
 
@@ -70,7 +77,13 @@ function exists_pending_change(User $user = null, WT_Tree $tree = null) {
 		)->execute(array($tree->tree_id))->fetchOne();
 }
 
-// get a list of all the sources
+/**
+ * Get a list of all the sources.
+ *
+ * @param integer $ged_id
+ *
+ * @return WT_Source[] array
+ */
 function get_source_list($ged_id) {
 	$rows=
 		WT_DB::prepare("SELECT s_id AS xref, s_file AS gedcom_id, s_gedcom AS gedcom FROM `##sources` WHERE s_file=?")
@@ -85,8 +98,13 @@ function get_source_list($ged_id) {
 	return $list;
 }
 
-// Get a list of repositories from the database
-// $ged_id - the gedcom to search
+/**
+ * Get a list of all the repositories.
+ *
+ * @param integer $ged_id
+ *
+ * @return WT_SRepository[] array
+ */
 function get_repo_list($ged_id) {
 	$rows=
 		WT_DB::prepare("SELECT o_id AS xref, o_file AS gedcom_id, o_gedcom AS gedcom FROM `##other` WHERE o_type='REPO' AND o_file=?")
@@ -101,7 +119,13 @@ function get_repo_list($ged_id) {
 	return $list;
 }
 
-//-- get the shared note list from the datastore
+/**
+ * Get a list of all the shared notes.
+ *
+ * @param integer $ged_id
+ *
+ * @return WT_Note[] array
+ */
 function get_note_list($ged_id) {
 	$rows=
 		WT_DB::prepare("SELECT o_id AS xref, o_file AS gedcom_id, o_gedcom AS gedcom FROM `##other` WHERE o_type='NOTE' AND o_file=?")
@@ -168,10 +192,15 @@ function search_fams_custom($join, $where, $order) {
 	return $list;
 }
 
-// Search the gedcom records of indis
-// $query - array of search terms
-// $geds - array of gedcoms to search
-// $match - AND or OR
+/**
+ * Search all individuals
+ *
+ * @param string[]  $query array of search terms
+ * @param integer[] $geds  array of gedcoms to search
+ * @param string    $match AND or OR
+ *
+ * @return WT_Individual[]
+ */
 function search_indis($query, $geds, $match) {
 	global $GEDCOM;
 
@@ -228,10 +257,15 @@ function search_indis($query, $geds, $match) {
 	return $list;
 }
 
-// Search the names of indis
-// $query - array of search terms
-// $geds - array of gedcoms to search
-// $match - AND or OR
+/**
+ * Search the names of individuals
+ *
+ * @param string[]  $query array of search terms
+ * @param integer[] $geds  array of gedcoms to search
+ * @param string    $match AND or OR
+ *
+ * @return WT_Individual[]
+ */
 function search_indis_names($query, $geds, $match) {
 	global $GEDCOM;
 
@@ -284,10 +318,17 @@ function search_indis_names($query, $geds, $match) {
 	return $list;
 }
 
-// Search for individuals names/places using soundex
-// $soundex - standard or dm
-// $lastname, $firstname, $place - search terms
-// $geds - array of gedcoms to search
+/**
+ * Search for individuals names/places using soundex
+ *
+ * @param string    $soundex
+ * @param string    $lastname
+ * @param string    $firstname
+ * @param string    $place
+ * @param integer[] $geds
+ *
+ * @return WT_Individual[]
+ */
 function search_indis_soundex($soundex, $lastname, $firstname, $place, $geds) {
 	$sql="SELECT DISTINCT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom FROM `##individuals`";
 	if ($place) {
@@ -381,7 +422,16 @@ function get_recent_changes($jd=0, $allgeds=false) {
 	return WT_DB::prepare($sql)->execute($vars)->fetchOneColumn();
 }
 
-// Seach for individuals with events on a given day
+/**
+ * Seach for individuals with events on a given day.
+ *
+ * @param integer $day
+ * @param integer $month
+ * @param integer $year
+ * @param string  $facts
+ *
+ * @return WT_Individual[]
+ */
 function search_indis_dates($day, $month, $year, $facts) {
 	$sql="SELECT DISTINCT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom FROM `##individuals` JOIN `##dates` ON i_id=d_gid AND i_file=d_file WHERE i_file=?";
 	$vars=array(WT_GED_ID);
@@ -419,10 +469,15 @@ function search_indis_dates($day, $month, $year, $facts) {
 	return $list;
 }
 
-// Search the gedcom records of families
-// $query - array of search terms
-// $geds - array of gedcoms to search
-// $match - AND or OR
+/**
+ * Search family records
+ *
+ * @param string[]  $query array of search terms
+ * @param integer[] $geds  array of gedcoms to search
+ * @param string    $match AND or OR
+ *
+ * @return WT_Family[]
+ */
 function search_fams($query, $geds, $match) {
 	global $GEDCOM;
 
@@ -481,10 +536,15 @@ function search_fams($query, $geds, $match) {
 	return $list;
 }
 
-// Search the names of the husb/wife in a family
-// $query - array of search terms
-// $geds - array of gedcoms to search
-// $match - AND or OR
+/**
+ * Search the names of the husb/wife in a family
+ *
+ * @param string[]  $query array of search terms
+ * @param integer[] $geds  array of gedcoms to search
+ * @param string    $match AND or OR
+ *
+ * @return WT_Family[]
+ */
 function search_fams_names($query, $geds, $match) {
 	global $GEDCOM;
 
@@ -527,10 +587,15 @@ function search_fams_names($query, $geds, $match) {
 	return $list;
 }
 
-// Search the gedcom records of sources
-// $query - array of search terms
-// $geds - array of gedcoms to search
-// $match - AND or OR
+/**
+ * Search the gedcom records of sources
+ *
+ * @param string[]  $query array of search terms
+ * @param integer[] $geds  array of gedcoms to search
+ * @param string    $match AND or OR
+ *
+ * @return WT_Source[]
+ */
 function search_sources($query, $geds, $match) {
 	global $GEDCOM;
 
@@ -589,10 +654,15 @@ function search_sources($query, $geds, $match) {
 	return $list;
 }
 
-// Search the gedcom records of shared notes
-// $query - array of search terms
-// $geds - array of gedcoms to search
-// $match - AND or OR
+/**
+ * Search the shared notes
+ *
+ * @param string[]  $query array of search terms
+ * @param integer[] $geds  array of gedcoms to search
+ * @param string    $match AND or OR
+ *
+ * @return WT_Note[]
+ */
 function search_notes($query, $geds, $match) {
 	global $GEDCOM;
 
@@ -652,10 +722,15 @@ function search_notes($query, $geds, $match) {
 }
 
 
-// Search the gedcom records of repositories
-// $query - array of search terms
-// $geds - array of gedcoms to search
-// $match - AND or OR
+/**
+ * Search the gedcom records of repositories
+ *
+ * @param string[]  $query array of search terms
+ * @param integer[] $geds  array of gedcoms to search
+ * @param string    $match AND or OR
+ *
+ * @return WT_Repository[]
+ */
 function search_repos($query, $geds, $match) {
 	global $GEDCOM;
 
@@ -714,7 +789,13 @@ function search_repos($query, $geds, $match) {
 	return $list;
 }
 
-//-- function to find the gedcom id for the given rin
+/**
+ * Find the record for the given rin.
+ *
+ * @param string $rin
+ *
+ * @return string
+ */
 function find_rin_id($rin) {
 	$xref=
 		WT_DB::prepare("SELECT i_id FROM `##individuals` WHERE i_rin=? AND i_file=?")
@@ -732,7 +813,7 @@ function find_rin_id($rin) {
  *
  * @param integer $min the number of times a surname must occur before it is added to the array
  *
- * @return array
+ * @return mixed[][]
  */
 function get_common_surnames($min) {
 	global $WT_TREE;
@@ -769,7 +850,7 @@ function get_common_surnames($min) {
  * @param integer $min    only fetch surnames occuring this many times
  * @param integer $max    only fetch this number of surnames (0=all)
  *
- * @return array
+ * @return string[][]
  */
 function get_top_surnames($ged_id, $min, $max) {
 	// Use n_surn, rather than n_surname, as it is used to generate URLs for
@@ -788,13 +869,16 @@ function get_top_surnames($ged_id, $min, $max) {
 	}
 }
 
-////////////////////////////////////////////////////////////////////////////////
-// Get a list of events whose anniversary occured on a given julian day.
-// Used on the on-this-day/upcoming blocks and the day/month calendar views.
-// $jd     - the julian day
-// $facts  - restrict the search to just these facts or leave blank for all
-// $ged_id - the id of the gedcom to search
-////////////////////////////////////////////////////////////////////////////////
+/**
+ * Get a list of events whose anniversary occured on a given julian day.
+ * Used on the on-this-day/upcoming blocks and the day/month calendar views.
+ *
+ * @param integer $jd      the julian day
+ * @param string  $facts   restrict the search to just these facts or leave blank for all
+ * @param integer $ged_id  the id of the gedcom to search
+ *
+ * @return WT_Fact[]
+ */
 function get_anniversary_events($jd, $facts='', $ged_id=WT_GED_ID) {
 	// If no facts specified, get all except these
 	$skipfacts = "CHAN,BAPL,SLGC,SLGS,ENDL,CENS,RESI,NOTE,ADDR,OBJE,SOUR,PAGE,DATA,TEXT";
@@ -948,14 +1032,16 @@ function get_anniversary_events($jd, $facts='', $ged_id=WT_GED_ID) {
 	return $found_facts;
 }
 
-
-////////////////////////////////////////////////////////////////////////////////
-// Get a list of events which occured during a given date range.
-// TODO: Used by the recent-changes block and the calendar year view.
-// $jd1, $jd2 - the range of julian day
-// $facts     - restrict the search to just these facts or leave blank for all
-// $ged_id    - the id of the gedcom to search
-////////////////////////////////////////////////////////////////////////////////
+/**
+ * Get a list of events which occured during a given date range.
+ *
+ * @param integer $jd1    the start range of julian day
+ * @param integer $jd2    the end range of julian day
+ * @param string  $facts  restrict the search to just these facts or leave blank for all
+ * @param integer $ged_id the id of the gedcom to search
+ *
+ * @return WT_Fact[]
+ */
 function get_calendar_events($jd1, $jd2, $facts='', $ged_id=WT_GED_ID) {
 	// If no facts specified, get all except these
 	$skipfacts = "CHAN,BAPL,SLGC,SLGS,ENDL,CENS,RESI,NOTE,ADDR,OBJE,SOUR,PAGE,DATA,TEXT";
@@ -1002,9 +1088,15 @@ function get_calendar_events($jd1, $jd2, $facts='', $ged_id=WT_GED_ID) {
 	return $found_facts;
 }
 
-////////////////////////////////////////////////////////////////////////////////
-// Get the list of current and upcoming events, sorted by anniversary date
-////////////////////////////////////////////////////////////////////////////////
+/**
+ * Get the list of current and upcoming events, sorted by anniversary date
+ *
+ * @param integer $jd1
+ * @param integer $jd2
+ * @param string  $events
+ *
+ * @return WT_Fact[]
+ */
 function get_events_list($jd1, $jd2, $events='') {
 	$found_facts=array();
 	for ($jd=$jd1; $jd<=$jd2; ++$jd) {
@@ -1014,8 +1106,17 @@ function get_events_list($jd1, $jd2, $events='') {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// Check if a media file is shared (i.e. used by another gedcom)
+//
 ////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * Check if a media file is shared (i.e. used by another gedcom)
+ *
+ * @param string  $file_name
+ * @param integer $ged_id
+ *
+ * @return boolean
+ */
 function is_media_used_in_other_gedcom($file_name, $ged_id) {
 	return
 		(bool)WT_DB::prepare("SELECT COUNT(*) FROM `##media` WHERE m_filename LIKE ? AND m_file<>?")
