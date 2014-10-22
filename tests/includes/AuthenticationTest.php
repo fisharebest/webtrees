@@ -66,49 +66,4 @@ class AuthenticationTest extends PHPUnit_Framework_TestCase {
 	public function testFunctionGetUserMessagesExists() {
 		$this->assertEquals(function_exists('\\getUserMessages'), true);
 	}
-
-	/**
-	 * Test that function addNews() exists in the global namespace.
-	 *
-	 * @return void
-	 */
-	public function testFunctionAddNewsExists() {
-		$this->assertEquals(function_exists('\\addNews'), true);
-	}
-
-	/**
-	 * Test that function deleteNews() exists in the global namespace.
-	 *
-	 * @return void
-	 */
-	public function testFunctionDeleteNewsExists() {
-		$this->assertEquals(function_exists('\\deleteNews'), true);
-	}
-
-	/**
-	 * Test that function getUserNews() exists in the global namespace.
-	 *
-	 * @return void
-	 */
-	public function testFunctionGetUserNewsExists() {
-		$this->assertEquals(function_exists('\\getUserNews'), true);
-	}
-
-	/**
-	 * Test that function getGedcomNews() exists in the global namespace.
-	 *
-	 * @return void
-	 */
-	public function testFunctionGetGedcomNewsExists() {
-		$this->assertEquals(function_exists('\\getGedcomNews'), true);
-	}
-
-	/**
-	 * Test that function getNewsItem() exists in the global namespace.
-	 *
-	 * @return void
-	 */
-	public function testFunctionGetNewsItemExists() {
-		$this->assertEquals(function_exists('\\getNewsItem'), true);
-	}
 }
