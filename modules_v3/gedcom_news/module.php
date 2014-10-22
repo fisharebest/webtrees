@@ -21,8 +21,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-use \WT\Auth;
-
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
@@ -118,7 +116,7 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= $news->body;
 			// Print Admin options for this News item
 			if (WT_USER_GEDCOM_ADMIN) {
-				$content .= '<hr>' . '<a href="#" onclick="window.open(\'editnews.php?news_id=\'+' . $news->news_id . ', \'_blank\', news_window_specs); return false;">' . WT_I18N::translate('Edit') . '</a> | ' . '<a href="index.php?action=deletenews&amp;news_id=' . $news->news_id . '&amp;ctype={$ctype}" onclick="return confirm(\'' . WT_I18N::translate('Are you sure you want to delete this news article?') . "');\">" . WT_I18N::translate('Delete') . '</a><br>';
+				$content .= '<hr>' . '<a href="#" onclick="window.open(\'editnews.php?news_id=\'+' . $news->news_id . ', \'_blank\', news_window_specs); return false;">' . WT_I18N::translate('Edit') . '</a> | ' . '<a href="index.php?action=deletenews&amp;news_id=' . $news->news_id . '&amp;ctype=' . $ctype .'" onclick="return confirm(\'' . WT_I18N::translate('Are you sure you want to delete this news article?') . "');\">" . WT_I18N::translate('Delete') . '</a><br>';
 			}
 			$content .= '</div>';
 		}
@@ -129,9 +127,9 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 		if ($limit == 'date' || $limit == 'count') {
 			if ($printedAddLink) {
-				$content .= "&nbsp;&nbsp;|&nbsp;&nbsp;";
+				$content .= '&nbsp;&nbsp;|&nbsp;&nbsp;';
 			}
-			$content .= "<a href=\"index.php?gedcom_news_archive=yes&amp;ctype={$ctype}\">" . WT_I18N::translate('View archive') . "</a>";
+			$content .= '<a href="index.php?gedcom_news_archive=yes&amp;ctype=' . $ctype .'">' . WT_I18N::translate('View archive') . "</a>";
 			$content .= help_link('gedcom_news_archive') . '<br>';
 		}
 
