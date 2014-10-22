@@ -2104,7 +2104,7 @@ function print_events_list($startjd, $endjd, $events = 'BIRT MARR DEAT', $only_l
 		// Data is already sorted by anniversary date
 		break;
 	case 'alpha':
-		uasort($filtered_events, function ($x, $y) {
+		uasort($filtered_events, function (WT_Fact $x, WT_Fact $y) {
 			return WT_GedcomRecord::compare($x->getParent(), $y->getParent());
 		});
 		break;
