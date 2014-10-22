@@ -414,7 +414,6 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 					else $jd2 = $date->date1->maxJD;
 					if (!empty($this->plusminus[$i])) {
 						$adjd = $this->plusminus[$i]*365;
-						//echo $jd1.":".$jd2.":".$adjd;
 						$jd1 = $jd1 - $adjd;
 						$jd2 = $jd2 + $adjd;
 					}
@@ -432,7 +431,6 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 					else $jd2 = $date->date1->maxJD;
 					if (!empty($this->plusminus[$i])) {
 						$adjd = $this->plusminus[$i]*365;
-						//echo $jd1.":".$jd2.":".$adjd;
 						$jd1 = $jd1 - $adjd;
 						$jd2 = $jd2 + $adjd;
 					}

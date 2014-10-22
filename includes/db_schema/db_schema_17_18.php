@@ -54,9 +54,9 @@ WT_DB::exec(
 	" ('Mozilla/5.0 (compatible; Konqueror/%', 'allow', 'Konqueror browser')"
 );
 
-// Don't do this.  We can’t easily/safely migrate the data, and the user may
-// wish to migrate it manually....
-//WT_DB::exec("DROP TABLE IF EXISTS `##wt_ip_address`");
+// Don't call "DROP TABLE IF EXISTS `##wt_ip_address`".
+// We can’t easily/safely migrate the data, and the user may
+// wish to migrate it manually.
 
 // Update the version to indicate success
 WT_Site::setPreference($schema_name, $next_version);

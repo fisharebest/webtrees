@@ -3011,21 +3011,11 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		if (isset($levelo[0])) $levelo[0]=0;
 		$numls = count($parent)-1;
 		$levelo = $this->checkWhereAmI($numls, $levelm);
-		if ($numfound<2 && ($level==1 || !(isset($levelo[($level-1)])))) {
+		if ($numfound<2 && ($level==1 || !isset($levelo[$level-1]))) {
 			$controller->addInlineJavascript('map.maxZoom=6;');
-			// echo "zoomlevel = map.getBoundsZoomLevel(bounds);\n";
-			// echo " map.setCenter(new google.maps.LatLng(0, 0), zoomlevel+5);\n";
-		} elseif ($numfound<2 && !isset($levelo[($level-2)])) {
-			// echo "zoomlevel = map.getBoundsZoomLevel(bounds);\n";
-			// echo " map.setCenter(new google.maps.LatLng(0, 0), zoomlevel+6);\n";
+		} elseif ($numfound<2 && !isset($levelo[$level-2])) {
 		} elseif ($level==2) {
 			$controller->addInlineJavascript('map.maxZoom=10;');
-			// echo "zoomlevel = map.getBoundsZoomLevel(bounds);\n";
-			// echo " map.setCenter(new google.maps.LatLng(0, 0), zoomlevel+8);\n";
-		} elseif ($numfound<2 && $level>1) {
-			// echo "map.maxZoom=".$GM_MAX_ZOOM.";";
-			// echo "zoomlevel = map.getBoundsZoomLevel(bounds);\n";
-			// echo " map.setCenter(new google.maps.LatLng(0, 0), zoomlevel+18);\n";
 		}
 		//create markers
 

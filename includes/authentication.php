@@ -111,14 +111,16 @@ function addMessage($message) {
 			$copy_email = WT_I18N::translate('You sent the following message to a webtrees administrator:') . WT_Mail::EOL . WT_Mail::EOL . WT_Mail::EOL . $copy_email;
 		}
 
-		$success = $success && WT_Mail::send(// From:
-				$WT_TREE, // To:
+		$success = $success && WT_Mail::send(
+			// “From:” header
+			$WT_TREE,
+			// “To:” header
 			$sender_email,
 			$sender_real_name,
-			// Reply-To:
+			// “Reply-To:” header
 			WT_Site::getPreference('SMTP_FROM_NAME'),
 			$WT_TREE->getPreference('title'),
-			// Message
+			// Message body
 			WT_I18N::translate('webtrees message') . ' - ' . $message['subject'],
 			$copy_email
 		);
@@ -172,14 +174,16 @@ function addMessage($message) {
 		}
 		$original_email .= WT_Mail::EOL . WT_Mail::EOL . $message['body'];
 
-		$success = $success && WT_Mail::send(// From:
-				$WT_TREE, // To:
+		$success = $success && WT_Mail::send(
+			// “From:” header
+			$WT_TREE,
+			// “To:” header
 			$recipient->getEmail(),
 			$recipient->getRealName(),
-			// Reply-To:
+			// “Reply-To:” header
 			$sender_email,
 			$sender_real_name,
-			// Message
+			// Message body
 			WT_I18N::translate('webtrees message') . ' - ' . $message['subject'],
 			$original_email
 		);

@@ -1520,12 +1520,14 @@ function handle_updates($newged, $levelOverride = 'no') {
 		if ($pass==true) {
 			$newline = $glevels[$j]+$levelAdjust.' '.$tag[$j];
 			//-- check and translate the incoming dates
-			if ($tag[$j]=="DATE" && $text[$j]!='') {
+			if ($tag[$j] == 'DATE' && $text[$j]!='') {
 			}
-			// echo $newline;
-			if ($text[$j]!='') {
-				if ($islink[$j]) $newline .= " @".$text[$j]."@";
-				else $newline .= ' '.$text[$j];
+			if ($text[$j] != '') {
+				if ($islink[$j]) {
+					$newline .= ' @' . $text[$j] . '@';
+				} else {
+					$newline .= ' ' . $text[$j];
+				}
 			}
 			$newged .= "\n".str_replace("\n", "\n" . (1 + substr($newline, 0, 1)) . ' CONT ', $newline);
 		}

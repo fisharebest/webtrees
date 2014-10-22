@@ -72,8 +72,6 @@ function startElement($parser, $name, $attrs) {
  * @param string $name the name of the xml element parsed
  */
 function endElement($parser, $name) {
-	// @deprecated
-	// global $elementHandler, $processIfs, $processGedcoms, $processRepeats;
 	global $elementHandler, $processIfs;
 
 	if (($processIfs==0) || ($name=="if")) {

@@ -302,16 +302,17 @@ function print_family_children(WT_Family $family, $childid = '', $sosa = 0, $lab
 
 
 				$maxfam = count($famids)-1;
-				for ($f=0; $f<=$maxfam; $f++) {
+				for ($f = 0; $f <= $maxfam; $f++) {
 					$famid_child = $famids[$f]->getXref();
 					// multiple marriages
-					if ($f>0) {
-						echo "</tr><tr><td>&nbsp;</td>";
-						echo "<td valign=\"top\"";
-						if ($TEXT_DIRECTION == "rtl") echo " align=\"left\">";
-						else echo " align=\"right\">";
-						//if ($f==$maxfam) echo "<img height=\"50%\"";
-						//else echo "<img height=\"100%\"";
+					if ($f > 0) {
+						echo '</tr><tr><td>&nbsp;</td>';
+						echo '<td valign="top"';
+						if ($TEXT_DIRECTION == 'rtl') {
+							echo ' align="left">';
+						} else {
+							echo ' align="right">';
+						}
 
 						//find out how many cousins there are to establish vertical line on second families
 						$fchildren=$famids[$f]->getChildren();

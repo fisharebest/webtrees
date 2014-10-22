@@ -44,10 +44,6 @@ class WT_Tree {
 	// Create a tree object.  This is a private constructor - it can only
 	// be called from WT_Tree::getAll() to ensure proper initialisation.
 	private function __construct($tree_id, $tree_name, $tree_title, $imported) {
-		if (strpos($tree_title, '%') === false) {
-			// Allow users to translate tree titles.
-			//$tree_title=WT_I18N::Translate($tree_title);
-		}
 		$this->tree_id         = $tree_id;
 		$this->tree_name       = $tree_name;
 		$this->tree_name_url   = rawurlencode($tree_name);

@@ -651,9 +651,7 @@ function myplot($mytitle, $xdata, $xtitle, $ydata, $ytitle, $legend) {
 			}
 		}
 	}
-	// in PHP 5.3.0 we can use
-	//$title = strstr($mytitle, '|', true);
-	$title = substr($mytitle, 0, strpos($mytitle, '|'));
+	$title = strstr($mytitle, '|', true);
 	echo '<img src="', $imgurl, '" width="950" height="300" alt="', WT_Filter::escapeHtml($title), '" title="', WT_Filter::escapeHtml($title), '">';
 }
 

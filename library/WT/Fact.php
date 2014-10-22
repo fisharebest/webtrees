@@ -57,6 +57,8 @@ class WT_Fact {
 	 * @param string          $gedcom
 	 * @param WT_GedcomRecord $parent
 	 * @param string          $fact_id
+	 *
+	 * @throws InvalidArgumentException
 	 */
 	public function __construct($gedcom, WT_GedcomRecord $parent, $fact_id) {
 		if (preg_match('/^1 (' . WT_REGEX_TAG . ')/', $gedcom, $match)) {
@@ -65,8 +67,7 @@ class WT_Fact {
 			$this->fact_id = $fact_id;
 			$this->tag     = $match[1];
 		} else {
-			// TODO need to rewrite code that passes dummy data to this function
-			//throw new Exception('Invalid GEDCOM data passed to WT_Fact::_construct('.$gedcom.')');
+			throw new InvalidArgumentException('Invalid GEDCOM data passed to WT_Fact::_construct('.$gedcom.')');
 		}
 	}
 
