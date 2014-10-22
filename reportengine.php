@@ -322,7 +322,7 @@ case 'run':
 	 */
 	$elementHandler = array();
 	$elementHandler['AgeAtDeath']['start'] = 'ageAtDeathStartHandler';
-	$elementHandler['br']['start'] = 'brSHandler';
+	$elementHandler['br']['start'] = 'brStartHandler';
 	$elementHandler['Body']['start'] = 'bodyStartHandler';
 	$elementHandler['Cell']['end'] = 'cellEndHandler';
 	$elementHandler['Cell']['start'] = 'cellStartHandler';
@@ -345,8 +345,8 @@ case 'run':
 	$elementHandler['GetPersonName']['start'] = 'getPersonNameStartHandler';
 	$elementHandler['Header']['start'] = 'headerStartHandler';
 	$elementHandler['HighlightedImage']['start'] = 'highlightedImageStartHandler';
-	$elementHandler['if']['end'] = 'ifEHandler';
-	$elementHandler['if']['start'] = 'ifSHandler';
+	$elementHandler['if']['end'] = 'ifEndHandler';
+	$elementHandler['if']['start'] = 'ifStartHandler';
 	$elementHandler['Image']['start'] = 'imageStartHandler';
 	$elementHandler['Input']['end'] = '';
 	$elementHandler['Input']['start'] = '';
@@ -372,8 +372,8 @@ case 'run':
 	$elementHandler['Title']['end'] = 'titleEndHandler';
 	$elementHandler['Title']['start'] = 'titleStartHandler';
 	$elementHandler['TotalPages']['start'] = 'totalPagesStartHandler';
-	$elementHandler['var']['start'] = 'varSHandler';
-	$elementHandler['sp']['start'] = 'spSHandler';
+	$elementHandler['var']['start'] = 'varStartHandler';
+	$elementHandler['sp']['start'] = 'spStartHandler';
 
 	/**
 	 * A new object of the currently used element class

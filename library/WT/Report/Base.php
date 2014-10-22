@@ -1521,7 +1521,7 @@ function repeatTagEndHandler() {
  *
  * @param array $attrs an array of key value pairs for the attributes
  */
-function varSHandler($attrs) {
+function varStartHandler($attrs) {
 	// @deprecated
 	global $currentElement, $type, $parser;
 	// Retrievable variables
@@ -1772,7 +1772,7 @@ function setVarStartHandler($attrs) {
  *
  * @param array $attrs an array of key value pairs for the attributes
  */
-function ifSHandler($attrs) {
+function ifStartHandler($attrs) {
 	global $vars, $gedrec, $processIfs, $fact, $desc, $generation;
 
 	if ($processIfs > 0) {
@@ -1829,7 +1829,7 @@ function ifSHandler($attrs) {
 /**
  * XML <if /> end element
  */
-function ifEHandler() {
+function ifEndHandler() {
 	global $processIfs;
 	if ($processIfs > 0) {
 		$processIfs--;
@@ -1957,7 +1957,7 @@ function ageAtDeathStartHandler() {
  * XML element Forced line break handler - HTML code
  *
  */
-function brSHandler() {
+function brStartHandler() {
 	global $printData, $currentElement, $processGedcoms;
 	if ($printData && ($processGedcoms == 0)) {
 		$currentElement->addText('<br>');
@@ -1967,7 +1967,7 @@ function brSHandler() {
 /**
  * XML <sp />element Forced space handler
  */
-function spSHandler() {
+function spStartHandler() {
 	global $printData, $currentElement, $processGedcoms;
 	if ($printData && ($processGedcoms == 0)) {
 		$currentElement->addText(' ');
