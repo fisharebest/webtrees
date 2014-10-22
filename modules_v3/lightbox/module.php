@@ -198,7 +198,7 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Tab {
 			// Use all media from each fact
 			$this->media_list = array();
 			foreach ($facts as $fact) {
-				if (!$fact->isOld()) { // Don't show pending edits, as the user just sees duplicates
+				if (!$fact->isPendingDeletion()) { // Don't show pending edits, as the user just sees duplicates
 					preg_match_all('/(?:^1|\n\d) OBJE @(' . WT_REGEX_XREF . ')@/', $fact->getGedcom(), $matches);
 					foreach ($matches[1] as $match) {
 						$media = WT_Media::getInstance($match);

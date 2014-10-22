@@ -316,9 +316,9 @@ function format_indi_table($datalist, $option = '') {
 		if (!$person || !$person->canShowName()) {
 			continue;
 		}
-		if ($person->isNew()) {
+		if ($person->isPendingAddtion()) {
 			$class = ' class="new"';
-		} elseif ($person->isOld()) {
+		} elseif ($person->isPendingDeletion()) {
 			$class = ' class="old"';
 		} else {
 			$class = '';
@@ -804,9 +804,9 @@ function format_fam_table($datalist) {
 		if (!$family->canShow()) {
 			continue;
 		}
-		if ($family->isNew()) {
+		if ($family->isPendingAddtion()) {
 			$class = ' class="new"';
-		} elseif ($family->isOld()) {
+		} elseif ($family->isPendingDeletion()) {
 			$class = ' class="old"';
 		} else {
 			$class = '';
@@ -1115,9 +1115,9 @@ function format_sour_table($datalist) {
 		if (!$source->canShow()) {
 			continue;
 		}
-		if ($source->isNew()) {
+		if ($source->isPendingAddtion()) {
 			$class = ' class="new"';
-		} elseif ($source->isOld()) {
+		} elseif ($source->isPendingDeletion()) {
 			$class = ' class="old"';
 		} else {
 			$class = '';
@@ -1250,9 +1250,9 @@ function format_note_table($datalist) {
 		if (!$note->canShow()) {
 			continue;
 		}
-		if ($note->isNew()) {
+		if ($note->isPendingAddtion()) {
 			$class = ' class="new"';
-		} elseif ($note->isOld()) {
+		} elseif ($note->isPendingDeletion()) {
 			$class = ' class="old"';
 		} else {
 			$class = '';
@@ -1354,9 +1354,9 @@ function format_repo_table($repositories) {
 		if (!$repository->canShow()) {
 			continue;
 		}
-		if ($repository->isNew()) {
+		if ($repository->isPendingAddtion()) {
 			$class = ' class="new"';
-		} elseif ($repository->isOld()) {
+		} elseif ($repository->isPendingDeletion()) {
 			$class = ' class="old"';
 		} else {
 			$class = '';
@@ -1467,9 +1467,9 @@ function format_media_table($media_objects) {
 	foreach ($media_objects as $media_object) {
 		if ($media_object->canShow()) {
 			$name = $media_object->getFullName();
-			if ($media_object->isNew()) {
+			if ($media_object->isPendingAddtion()) {
 				$class = ' class="new"';
-			} elseif ($media_object->isOld()) {
+			} elseif ($media_object->isPendingDeletion()) {
 				$class = ' class="old"';
 			} else {
 				$class = '';

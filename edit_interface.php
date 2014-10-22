@@ -65,7 +65,7 @@ case 'editraw':
 			<?php echo WT_Filter::getCsrf(); ?>
 			<ul id="raw-gedcom-list">
 				<?php foreach ($record->getFacts() as $fact) { ?>
-					<?php if (!$fact->isOld()) { ?>
+					<?php if (!$fact->isPendingDeletion()) { ?>
 					<li>
 						<div style="cursor:move;">
 							<?php echo $fact->summary(); ?>
