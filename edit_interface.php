@@ -1687,7 +1687,7 @@ case 'reorder_media':
 	foreach ($record_list as $record) {
 		if ($record->canShow()) {
 			foreach ($record->getFacts() as $fact) {
-				if (!$fact->isOld()) {
+				if (!$fact->isPendingDeletion()) {
 					preg_match_all('/(?:^1|\n\d) OBJE @(' . WT_REGEX_XREF . ')@/', $fact->getGedcom(), $matches);
 					foreach ($matches[1] as $match) {
 						$media = WT_Media::getInstance($match);
