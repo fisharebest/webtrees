@@ -39,16 +39,16 @@ class WT_Report_HTML_Image extends WT_Report_Base_Image {
 
 		// Get the current positions
 		if ($this->x == ".") {
-			$this->x = $html->GetX();
+			$this->x = $html->getX();
 		}
 		if ($this->y == ".") {
 			//-- first check for a collision with the last picture
 			if (isset($lastpicbottom)) {
-				if (($html->PageNo() == $lastpicpage) && ($lastpicbottom >= $html->GetY()) && ($this->x >= $lastpicleft) && ($this->x <= $lastpicright)) {
-					$html->SetY($lastpicbottom + ($html->cPadding * 2));
+				if (($html->pageNo() == $lastpicpage) && ($lastpicbottom >= $html->getY()) && ($this->x >= $lastpicleft) && ($this->x <= $lastpicright)) {
+					$html->setY($lastpicbottom + ($html->cPadding * 2));
 				}
 			}
-			$this->y = $html->GetY();
+			$this->y = $html->getY();
 		}
 
 		// Image alignment
@@ -69,13 +69,13 @@ class WT_Report_HTML_Image extends WT_Report_Base_Image {
 			echo "<img src=\"", $this->file, "\" style=\"position:absolute;", $html->alignRTL, ":", $this->x, "pt;top:", $this->y, "pt;width:", $this->width, "pt;height:", $this->height, "pt;\" alt=\"\">\n";
 		}
 
-		$lastpicpage = $html->PageNo();
+		$lastpicpage = $html->pageNo();
 		$lastpicleft = $this->x;
 		$lastpicright = $this->x + $this->width;
 		$lastpicbottom = $this->y + $this->height;
 		// Setup for the next line
 		if ($this->line == "N") {
-			$html->SetY($lastpicbottom);
+			$html->setY($lastpicbottom);
 		}
 		// Keep max Y updated
 		$html->addMaxY($lastpicbottom);

@@ -26,13 +26,18 @@
 use Rhumsaa\Uuid\Uuid;
 use WT\User;
 
-// Print a fact record, for the individual/family/source/repository/etc. pages.
-//
-// Although a WT_Fact has a parent object, we also need to know
-// the WT_GedcomRecord for which we are printing it.  For example,
-// we can show the death of X on the page of Y, or the marriage
-// of X+Y on the page of Z.  We need to know both records to
-// calculate ages, relationships, etc.
+/**
+ * Print a fact record, for the individual/family/source/repository/etc. pages.
+ *
+ * Although a WT_Fact has a parent object, we also need to know
+ * the WT_GedcomRecord for which we are printing it.  For example,
+ * we can show the death of X on the page of Y, or the marriage
+ * of X+Y on the page of Z.  We need to know both records to
+ * calculate ages, relationships, etc.
+ *
+ * @param WT_Fact         $fact
+ * @param WT_GedcomRecord $record
+ */
 function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 	global $HIDE_GEDCOM_ERRORS, $SHOW_FACT_ICONS;
 	static $n_chil=0, $n_gchi=0;
@@ -144,7 +149,7 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 	echo '<td class="descriptionbox width20">';
 
 	if ($SHOW_FACT_ICONS) {
-		echo $fact->Icon(), ' ';
+		echo $fact->icon(), ' ';
 	}
 
 	if ($fact->getFactId()!='histo' && $fact->canEdit()) {
@@ -459,7 +464,7 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
  *
  * find and print repository information attached to a source
  *
- * @param $xref the Gedcom Xref ID of the repository to print
+ * @param string $xref the Gedcom Xref ID of the repository to print
  */
 function print_repository_record($xref) {
 	$repository=WT_Repository::getInstance($xref);
@@ -556,7 +561,12 @@ function print_fact_sources($factrec, $level) {
 	return $data;
 }
 
-//-- Print the links to media objects
+/**
+ * Print the links to media objects
+ *
+ * @param string  $factrec
+ * @param integer $level
+ */
 function print_media_links($factrec, $level) {
 	global $SEARCH_SPIDER, $HIDE_GEDCOM_ERRORS;
 
@@ -624,7 +634,12 @@ function print_media_links($factrec, $level) {
 	}
 }
 
-// Print a row for the sources tab on the individual page
+/**
+ * Print a row for the sources tab on the individual page.
+ *
+ * @param WT_Fact $fact
+ * @param integer $level
+ */
 function print_main_sources(WT_Fact $fact, $level) {
 	global $SHOW_FACT_ICONS;
 
@@ -756,9 +771,12 @@ function print_main_sources(WT_Fact $fact, $level) {
 
 /**
  * Print SOUR structure
- *
  *  This function prints the input array of SOUR sub-records built by the
  *  getSourceStructure() function.
+ *
+ * @param string[] $textSOUR
+ *
+ * @return string
  */
 function printSourceStructure($textSOUR) {
 	global $WT_TREE;
@@ -794,7 +812,6 @@ function printSourceStructure($textSOUR) {
 
 /**
  * Extract SOUR structure from the incoming Source sub-record
- *
  * The output array is defined as follows:
  *  $textSOUR['PAGE'] = Source citation
  *  $textSOUR['EVEN'] = Event type
@@ -803,6 +820,10 @@ function printSourceStructure($textSOUR) {
  *  $textSOUR['DATE'] = Entry recording date
  *  $textSOUR['TEXT'] = (array) Text from source
  *  $textSOUR['QUAY'] = Certainty assessment
+ *
+ * @param string $srec
+ *
+ * @return string[]
  */
 function getSourceStructure($srec) {
 	// Set up the output array
@@ -842,7 +863,12 @@ function getSourceStructure($srec) {
 	return $textSOUR;
 }
 
-// Print a row for the notes tab on the individual page
+/**
+ * Print a row for the notes tab on the individual page.
+ *
+ * @param WT_Fact $fact
+ * @param integer $level
+ */
 function print_main_notes(WT_Fact $fact, $level) {
 	global $WT_TREE, $SHOW_FACT_ICONS;
 
@@ -986,7 +1012,12 @@ function print_main_notes(WT_Fact $fact, $level) {
 	}
 }
 
-// Print a row for the media tab on the individual page
+/**
+ * Print a row for the media tab on the individual page.
+ *
+ * @param WT_Fact $fact
+ * @param integer $level
+ */
 function print_main_media(WT_Fact $fact, $level) {
 	$factrec = $fact->getGedcom();
 	$parent  = $fact->getParent();

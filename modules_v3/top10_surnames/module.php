@@ -102,16 +102,16 @@ class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
 			$content = format_surname_tagcloud($all_surnames, 'indilist.php', true);
 			break;
 		case 'list':
-			uasort($all_surnames, array('top10_surnames_WT_Module', 'top_surname_sort'));
+			uasort($all_surnames, array('top10_surnames_WT_Module', 'surnameCountSort'));
 			$content = format_surname_list($all_surnames, '1', true, 'indilist.php');
 			break;
 		case 'array':
-			uasort($all_surnames, array('top10_surnames_WT_Module', 'top_surname_sort'));
+			uasort($all_surnames, array('top10_surnames_WT_Module', 'surnameCountSort'));
 			$content = format_surname_list($all_surnames, '2', true, 'indilist.php');
 			break;
 		case 'table':
 		default:
-			uasort($all_surnames, array('top10_surnames_WT_Module', 'top_surname_sort'));
+			uasort($all_surnames, array('top10_surnames_WT_Module', 'surnameCountSort'));
 			$content = format_surname_table($all_surnames, 'indilist.php');
 			break;
 		}
@@ -192,7 +192,7 @@ class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
 	 *
 	 * @return integer
 	 */
-	private static function top_surname_sort($a, $b) {
+	private static function surnameCountSort($a, $b) {
 		$counta = 0;
 		foreach ($a as $x) {
 			$counta += count($x);

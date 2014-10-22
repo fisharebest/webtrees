@@ -125,7 +125,7 @@ class WT_DBStatement {
 	 *
 	 * @param integer $fetch_style
 	 *
-	 * @return stdClass|array|null
+	 * @return stdClass[]|string[][]
 	 */
 	public function fetchAll($fetch_style = PDO::FETCH_OBJ) {
 		if (!$this->executed) {
@@ -135,7 +135,7 @@ class WT_DBStatement {
 		$rows = $this->pdo_statement->fetchAll($fetch_style);
 		$this->closeCursor();
 
-		return $rows === false ? null : $rows;
+		return $rows;
 	}
 
 	/**

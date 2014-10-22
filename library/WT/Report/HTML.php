@@ -180,9 +180,9 @@ class WT_Report_HTML extends WT_Report_Base {
 			if (is_object($element)) {
 				$element->render($this);
 			} elseif (is_string($element) && $element == "footnotetexts") {
-				$this->Footnotes();
+				$this->footnotes();
 			} elseif (is_string($element) && $element == "addpage") {
-				$this->AddPage();
+				$this->addPage();
 			}
 		}
 	}
@@ -190,7 +190,7 @@ class WT_Report_HTML extends WT_Report_Base {
 	/**
 	 *
 	 */
-	function Footnotes() {
+	function footnotes() {
 		$this->currentStyle = "";
 		if (!empty($this->printedfootnotes)) {
 			foreach ($this->printedfootnotes as $element) {
@@ -241,9 +241,9 @@ class WT_Report_HTML extends WT_Report_Base {
 			if (is_object($element)) {
 				$element->render($this);
 			} elseif (is_string($element) && $element == "footnotetexts") {
-				$this->Footnotes();
+				$this->footnotes();
 			} elseif (is_string($element) && $element == "addpage") {
-				$this->AddPage();
+				$this->addPage();
 			}
 		}
 		//-- body
@@ -257,9 +257,9 @@ class WT_Report_HTML extends WT_Report_Base {
 			if (is_object($element)) {
 				$element->render($this);
 			} elseif (is_string($element) && $element == "footnotetexts") {
-				$this->Footnotes();
+				$this->footnotes();
 			} elseif (is_string($element) && $element == "addpage") {
-				$this->AddPage();
+				$this->addPage();
 			}
 		}
 		//-- footer
@@ -274,9 +274,9 @@ class WT_Report_HTML extends WT_Report_Base {
 			if (is_object($element)) {
 				$element->render($this);
 			} elseif (is_string($element) && $element == "footnotetexts") {
-				$this->Footnotes();
+				$this->footnotes();
 			} elseif (is_string($element) && $element == "addpage") {
-				$this->AddPage();
+				$this->addPage();
 			}
 		}
 		echo '</div>';
@@ -420,7 +420,7 @@ class WT_Report_HTML extends WT_Report_Base {
 	/**
 	 * Update the Page Number and set a new Y if max Y is larger - WT_Report_HTML
 	 */
-	function AddPage() {
+	function addPage() {
 		//echo("\n\n<p style=\"page-break-before:always;\"><p>\n");
 		$this->pageN++;
 		// Add a little margin to max Y "between pages"
@@ -580,7 +580,7 @@ class WT_Report_HTML extends WT_Report_Base {
 	 *
 	 * @return float
 	 */
-	function GetX() {
+	function getX() {
 		return $this->X;
 	}
 
@@ -589,7 +589,7 @@ class WT_Report_HTML extends WT_Report_Base {
 	 *
 	 * @return float
 	 */
-	function GetY() {
+	function getY() {
 		return $this->Y;
 	}
 
@@ -598,7 +598,7 @@ class WT_Report_HTML extends WT_Report_Base {
 	 *
 	 * @return integer
 	 */
-	function PageNo() {
+	function pageNo() {
 		return $this->pageN;
 	}
 
@@ -614,7 +614,7 @@ class WT_Report_HTML extends WT_Report_Base {
 	 *
 	 * @param float $x
 	 */
-	function SetX($x) {
+	function setX($x) {
 		$this->X = $x;
 	}
 
@@ -625,7 +625,7 @@ class WT_Report_HTML extends WT_Report_Base {
 	 *
 	 * @param float $y
 	 */
-	function SetY($y) {
+	function setY($y) {
 		$this->Y = $y;
 		if ($this->maxY < $y) {
 			$this->maxY = $y;
@@ -640,10 +640,9 @@ class WT_Report_HTML extends WT_Report_Base {
 	 * @param float $x
 	 * @param float $y
 	 */
-	function SetXY($x, $y) {
-		$this->X = $x;
-		// Don't reinvent the wheel, use this instead
-		$this->SetY($y);
+	function setXy($x, $y) {
+		$this->setX($x);
+		$this->setY($y);
 	}
 
 	/**

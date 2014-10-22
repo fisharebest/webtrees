@@ -1904,7 +1904,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 						'class'        => 'optionbox',
 						'date'         => $fact->getDate()->Display(true),
 						'fact_label'   => $fact->getLabel(),
-						'image'        => $spouse ? $spouse->displayImage() : $fact->Icon(),
+						'image'        => $spouse ? $spouse->displayImage() : $fact->icon(),
 						'info'         => $fact->getValue(),
 						'lat'          => str_replace(array('N', 'S', ','), array('', '-', '.') , $match1[1]),
 						'lng'          => str_replace(array('E', 'W', ','), array('', '-', '.') , $match2[1]),
@@ -1926,7 +1926,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 							'class'        => 'optionbox',
 							'date'         => $fact->getDate()->Display(true),
 							'fact_label'   => $fact->getLabel(),
-							'image'        => $spouse ? $spouse->displayImage() : $fact->Icon(),
+							'image'        => $spouse ? $spouse->displayImage() : $fact->icon(),
 							'info'         => $fact->getValue(),
 							'lat'          => str_replace(array('N', 'S', ','), array('', '-', '.'), $latlongval->pl_lati),
 							'lng'          => str_replace(array('E', 'W', ','), array('', '-', '.'), $latlongval->pl_long),
@@ -2720,15 +2720,11 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		$p_id = $this->setPlaceIdMap($level, $parent);
 		$indi = $stats->statsPlaces('INDI', false, $p_id);
 		$fam  = $stats->statsPlaces('FAM', false, $p_id);
-		if (!empty($indi)) {
-			foreach ($indi as $place) {
-				$place_count_indi = $place['tot'];
-			}
+		foreach ($indi as $place) {
+			$place_count_indi = $place['tot'];
 		}
-		if (!empty($fam)) {
-			foreach ($fam as $place) {
-				$place_count_fam = $place['tot'];
-			}
+		foreach ($fam as $place) {
+			$place_count_fam = $place['tot'];
 		}
 		echo '<br><br>', WT_I18N::translate('Individuals'), ': ', $place_count_indi, ', ', WT_I18N::translate('Families'), ': ', $place_count_fam;
 	}

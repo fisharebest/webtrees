@@ -559,7 +559,7 @@ class WT_Media extends WT_GedcomRecord {
 	/**
 	 * {@inheritdoc}
 	 */
-	public function format_list_details() {
+	public function formatListDetails() {
 		require_once WT_ROOT . 'includes/functions/functions_print_facts.php';
 		ob_start();
 		print_media_links('1 OBJE @' . $this->getXref() . '@', 1);
