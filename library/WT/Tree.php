@@ -142,7 +142,7 @@ class WT_Tree {
 	 *
 	 * @return $this
 	 */
-	public function setUserPreference($user, $setting_name, $setting_value) {
+	public function setUserPreference(User $user, $setting_name, $setting_value) {
 		if ($this->getUserPreference($user, $setting_name) !== $setting_value) {
 			// Update the database
 			WT_DB::prepare(

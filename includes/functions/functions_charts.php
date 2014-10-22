@@ -100,9 +100,9 @@ function print_family_parents(WT_Family $family, $sosa=0, $label='', $parid='', 
 	} elseif ($sosa) {
 		print_sosa_number($sosa * 2);
 	}
-	if ($husb->isNew()) {
+	if ($husb->isPendingAddtion()) {
 		echo '<td valign="top" class="facts_value new">';
-	} elseif ($husb->isOld()) {
+	} elseif ($husb->isPendingDeletion()) {
 		echo '<td valign="top" class="facts_value old">';
 	} else {
 		echo '<td valign="top">';
@@ -179,9 +179,9 @@ function print_family_parents(WT_Family $family, $sosa=0, $label='', $parid='', 
 	} elseif ($sosa) {
 		print_sosa_number($sosa * 2 + 1);
 	}
-	if ($wife->isNew()) {
+	if ($wife->isPendingAddtion()) {
 		echo '<td valign="top" class="facts_value new">';
-	} elseif ($wife->isOld()) {
+	} elseif ($wife->isPendingDeletion()) {
 		echo '<td valign="top" class="facts_value old">';
 	} else {
 		echo '<td valign="top">';
@@ -287,9 +287,9 @@ function print_family_children(WT_Family $family, $childid = '', $sosa = 0, $lab
 					print_sosa_number($label.($nchi++).".");
 				}
 			}
-			if ($child->isNew()) {
+			if ($child->isPendingAddtion()) {
 				echo '<td valign="middle" class="new">';
-			} elseif ($child->isOld()) {
+			} elseif ($child->isPendingDeletion()) {
 				echo '<td valign="middle" class="old">';
 			} else {
 				echo '<td valign="middle">';

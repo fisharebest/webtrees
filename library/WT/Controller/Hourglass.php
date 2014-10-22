@@ -383,7 +383,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 						}
 
 						// filter out root person from children array so only siblings remain
-						$siblings = array_filter($family->getChildren(), function ($item) use ($pid) {
+						$siblings = array_filter($family->getChildren(), function (WT_Individual $item) use ($pid) {
 							return $item->getXref() != $pid;
 						});
 						$num = count($siblings);

@@ -65,7 +65,7 @@ case 'editraw':
 			<?php echo WT_Filter::getCsrf(); ?>
 			<ul id="raw-gedcom-list">
 				<?php foreach ($record->getFacts() as $fact) { ?>
-					<?php if (!$fact->isOld()) { ?>
+					<?php if (!$fact->isPendingDeletion()) { ?>
 					<li>
 						<div style="cursor:move;">
 							<?php echo $fact->summary(); ?>
@@ -1687,7 +1687,7 @@ case 'reorder_media':
 	foreach ($record_list as $record) {
 		if ($record->canShow()) {
 			foreach ($record->getFacts() as $fact) {
-				if (!$fact->isOld()) {
+				if (!$fact->isPendingDeletion()) {
 					preg_match_all('/(?:^1|\n\d) OBJE @(' . WT_REGEX_XREF . ')@/', $fact->getGedcom(), $matches);
 					foreach ($matches[1] as $match) {
 						$media = WT_Media::getInstance($match);

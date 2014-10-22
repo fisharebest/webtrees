@@ -86,7 +86,7 @@ class User {
 	 *
 	 * @return User|null
 	 */
-	public static function findByGenealogyRecord(WT_Tree $tree, $individual) {
+	public static function findByGenealogyRecord(WT_Tree $tree, WT_Individual $individual) {
 		$user_id = WT_DB::prepare(
 			"SELECT SQL_CACHE user_id" .
 			" FROM `##user_gedcom_setting`" .

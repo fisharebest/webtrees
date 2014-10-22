@@ -26,6 +26,27 @@ class WT_Repository extends WT_GedcomRecord {
 	const URL_PREFIX = 'repo.php?rid=';
 
 	/**
+	 * Get an instance of a repository object.  For single records,
+	 * we just receive the XREF.  For bulk records (such as lists
+	 * and search results) we can receive the GEDCOM data as well.
+	 *
+	 * @param string       $xref
+	 * @param integer|null $gedcom_id
+	 * @param string|null  $gedcom
+	 *
+	 * @return WT_Repository|null
+	 */
+	public static function getInstance($xref, $gedcom_id = WT_GED_ID, $gedcom = null) {
+		$record = parent::getInstance($xref, $gedcom_id, $gedcom);
+
+		if ($record instanceof WT_Repository) {
+			return $record;
+		} else {
+			return null;
+		}
+	}
+
+	/**
 	 * {@inheritdoc}
 	 */
 	protected static function fetchGedcomRecord($xref, $gedcom_id) {

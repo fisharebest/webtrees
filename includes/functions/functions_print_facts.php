@@ -84,10 +84,10 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 
 	// New or deleted facts need different styling
 	$styleadd='';
-	if ($fact->isNew()) {
+	if ($fact->isPendingAddition()) {
 		$styleadd = 'new';
 	}
-	if ($fact->isOld()) {
+	if ($fact->isPendingDeletion()) {
 		$styleadd = 'old';
 	}
 
@@ -649,10 +649,10 @@ function print_main_sources(WT_Fact $fact, $level) {
 	$pid     = $parent->getXref();
 
 	$nlevel = $level+1;
-	if ($fact->isNew()) {
+	if ($fact->isPendingAddition()) {
 		$styleadd = 'new';
 		$can_edit = $level==1 && $fact->canEdit();
-	} elseif ($fact->isOld()) {
+	} elseif ($fact->isPendingDeletion()) {
 		$styleadd='old';
 		$can_edit = false;
 	} else {
@@ -877,10 +877,10 @@ function print_main_notes(WT_Fact $fact, $level) {
 	$parent  = $fact->getParent();
 	$pid     = $parent->getXref();
 
-	if ($fact->isNew()) {
+	if ($fact->isPendingAddition()) {
 		$styleadd = ' new';
 		$can_edit = $level==1 && $fact->canEdit();
-	} elseif ($fact->isOld()) {
+	} elseif ($fact->isPendingDeletion()) {
 		$styleadd=' old';
 		$can_edit = false;
 	} else {
@@ -1022,10 +1022,10 @@ function print_main_media(WT_Fact $fact, $level) {
 	$factrec = $fact->getGedcom();
 	$parent  = $fact->getParent();
 
-	if ($fact->isNew()) {
+	if ($fact->isPendingAddition()) {
 		$styleadd = 'new';
 		$can_edit = $level==1 && $fact->canEdit();
-	} elseif ($fact->isOld()) {
+	} elseif ($fact->isPendingDeletion()) {
 		$styleadd='old';
 		$can_edit = false;
 	} else {

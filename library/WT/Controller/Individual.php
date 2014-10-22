@@ -129,10 +129,10 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 		$this->name_count++;
 		if ($this->name_count >1) { echo '<h3 class="name_two">',$dummy->getFullName(), '</h3>'; } //Other names accordion element
 		echo '<div class="indi_name_details';
-		if ($event->isOld()) {
+		if ($event->isPendingDeletion()) {
 			echo ' old';
 		}
-		if ($event->isNew()) {
+		if ($event->isPendingAddition()) {
 			echo ' new';
 		}
 		echo '">';
@@ -149,7 +149,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 				}
 			}
 		}
-		if ($this->record->canEdit() && !$event->isOld()) {
+		if ($this->record->canEdit() && !$event->isPendingDeletion()) {
 			echo "<div class=\"deletelink\"><a class=\"deleteicon\" href=\"#\" onclick=\"return delete_fact('".WT_I18N::translate('Are you sure you want to delete this fact?')."', '".$this->record->getXref()."', '".$event->getFactId()."');\" title=\"".WT_I18N::translate('Delete this name')."\"><span class=\"link_text\">".WT_I18N::translate('Delete this name')."</span></a></div>";
 			echo "<div class=\"editlink\"><a href=\"#\" class=\"editicon\" onclick=\"edit_name('".$this->record->getXref()."', '".$event->getFactId()."'); return false;\" title=\"".WT_I18N::translate('Edit name')."\"><span class=\"link_text\">".WT_I18N::translate('Edit name')."</span></a></div>";
 		}
@@ -209,10 +209,10 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 		$sex = $event->getValue();
 		if (empty($sex)) $sex = 'U';
 		echo '<span id="sex" class="';
-		if ($event->isOld()) {
+		if ($event->isPendingDeletion()) {
 			echo 'old ';
 		}
-		if ($event->isNew()) {
+		if ($event->isPendingAddition()) {
 			echo 'new ';
 		}
 		switch ($sex) {
@@ -254,7 +254,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 
 		$SHOW_GEDCOM_RECORD = $WT_TREE->getPreference('SHOW_GEDCOM_RECORD');
 
-		if (!$this->record || $this->record->isOld()) {
+		if (!$this->record || $this->record->isPendingDeletion()) {
 			return null;
 		}
 		// edit menu
@@ -344,9 +344,9 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 				$class = 'person_boxNN';
 				break;
 		}
-		if ($person->isOld()) {
+		if ($person->isPendingDeletion()) {
 			$class .= ' old';
-		} elseif ($person->isNew()) {
+		} elseif ($person->isPendingAddtion()) {
 			$class .= ' new';
 		}
 		return $class;

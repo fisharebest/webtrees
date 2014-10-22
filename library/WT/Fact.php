@@ -22,18 +22,32 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 class WT_Fact {
-	private $fact_id = null;  // Unique identifier for this fact
-	private $parent = null;  // The GEDCOM record from which this fact is taken.
-	private $gedcom = null;  // The raw GEDCOM data for this fact
-	private $tag = null;  // The GEDCOM tag for this record
-	private $is_old = false; // Is this a pending record?
-	private $is_new = false; // Is this a pending record?
-	private $date = null;  // The WT_Date object for the "2 DATE ..." attribute
-	private $place = null;  // The WT_Place object for the "2 PLAC ..." attribute
+	/** @var string Unique identifier for this fact (currently implemented as a hash of the raw data). */
+	private $fact_id;
 
-	// Temporary(!) variables that are used by other scripts
-	public $temp = null; // Timeline controller
-	public $sortOrder = 0;    // sort_facts()
+	/** @var WT_GedcomRecord The GEDCOM record from which this fact is taken */
+	private $parent;
+
+	/** @var string The raw GEDCOM data for this fact */
+	private $gedcom;
+
+	/** @var string The GEDCOM tag for this record */
+	private $tag;
+
+	/** @var boolean Is this a recently deleted fact, pending approval? */
+	private $pending_deletion = false;
+
+	/** @var boolean Is this a recently added fact, pending approval? */
+	private $pending_addition = false;
+
+	/** @var WT_Date The date of this fact, from the “2 DATE …” attribute */
+	private $date;
+
+	/** @var WT_Place The place of this fact, from the “2 PLAC …” attribute */
+	private $place;
+
+	/** @var integer Temporary(!) variable Used by sort_facts() */
+	public $sortOrder;
 
 	/**
 	 * Create an event object from a gedcom fragment.
@@ -157,7 +171,7 @@ class WT_Fact {
 		// Managers can edit anything
 		// Members cannot edit RESN, CHAN and locked records
 		return
-			$this->parent->canEdit() && !$this->isOld() && (
+			$this->parent->canEdit() && !$this->isPendingDeletion() && (
 				WT_USER_GEDCOM_ADMIN ||
 				WT_USER_CAN_EDIT && strpos($this->gedcom, "\n2 RESN locked") === false && $this->getTag() != 'RESN' && $this->getTag() != 'CHAN'
 			);
@@ -260,9 +274,9 @@ class WT_Fact {
 	/**
 	 * This is a newly deleted fact, pending approval.
 	 */
-	public function setIsOld() {
-		$this->is_old = true;
-		$this->is_new = false;
+	public function setPendingDeletion() {
+		$this->pending_deletion = true;
+		$this->pending_addition = false;
 	}
 
 	/**
@@ -270,16 +284,16 @@ class WT_Fact {
 	 *
 	 * @return boolean
 	 */
-	public function isOld() {
-		return $this->is_old;
+	public function isPendingDeletion() {
+		return $this->pending_deletion;
 	}
 
 	/**
 	 * This is a newly added fact, pending approval.
 	 */
-	public function setIsNew() {
-		$this->is_new = true;
-		$this->is_old = false;
+	public function setPendingAddition() {
+		$this->pending_addition = true;
+		$this->pending_deletion = false;
 	}
 
 	/**
@@ -287,8 +301,8 @@ class WT_Fact {
 	 *
 	 * @return boolean
 	 */
-	public function isNew() {
-		return $this->is_new;
+	public function isPendingAddition() {
+		return $this->pending_addition;
 	}
 
 	/**
@@ -381,9 +395,9 @@ class WT_Fact {
 			}
 		}
 		$html = WT_Gedcom_Tag::getLabelValue($this->getTag(), implode(' — ', $attributes), $this->getParent());
-		if ($this->isNew()) {
+		if ($this->isPendingAddition()) {
 			return '<div class="new">' . $html . '</div>';
-		} elseif ($this->isOld()) {
+		} elseif ($this->isPendingDeletion()) {
 			return '<div class="old">' . $html . '</div>';
 		} else {
 			return $html;

@@ -35,7 +35,7 @@ use WT\User;
  * @param WT_Individual $person The person to print
  * @param integer       $style  the style to print the box in, 1 for smaller boxes, 2 for larger boxes
  */
-function print_pedigree_person($person, $style = 1) {
+function print_pedigree_person(WT_Individual $person = null, $style = 1) {
 	global $GEDCOM;
 	global $SHOW_HIGHLIGHT_IMAGES, $bwidth, $bheight, $PEDIGREE_FULL_DETAILS;
 	global $DEFAULT_PEDIGREE_GENERATIONS, $OLD_PGENS, $talloffset, $PEDIGREE_LAYOUT;

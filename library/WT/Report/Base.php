@@ -1601,7 +1601,7 @@ function factsStartHandler($attrs) {
 		}
 	} else {
 		foreach ($record->getFacts() as $fact) {
-			if ($fact->isNew() && $fact->getTag() <> 'CHAN') {
+			if ($fact->isPendingAddition() && $fact->getTag() <> 'CHAN') {
 				$repeats[] = $fact->getGedcom();
 			}
 		}

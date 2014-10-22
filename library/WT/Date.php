@@ -457,7 +457,7 @@ class WT_Date {
 	 *
 	 * @return string
 	 */
-	static function GetAgeGedcom($d1, $d2 = null, $warn_on_negative = true) {
+	static function GetAgeGedcom(WT_Date $d1, WT_Date $d2 = null, $warn_on_negative = true) {
 		if (is_null($d2)) {
 			return $d1->date1->GetAge(true, WT_CLIENT_JD, $warn_on_negative);
 		} else {

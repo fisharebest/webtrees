@@ -223,7 +223,7 @@ if (count($famids) > 0) {
 	//-- echo the siblings
 	foreach ($cfamids as $family) {
 		if ($family != null) {
-			$siblings = array_filter($family->getChildren(), function ($item) use ($controller) {
+			$siblings = array_filter($family->getChildren(), function (WT_Individual $item) use ($controller) {
 				return $controller->rootid != $item->getXref();
 			});
 			$num      = count($siblings);
