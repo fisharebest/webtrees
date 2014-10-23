@@ -22,10 +22,11 @@ class SourceTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * Test extracting the name from a source record
+	 * Test that the class exists
 	 *
 	 * @return void
 	 */
-	public function testExtractName() {
+	public function testClassExists() {
+		$this->assertTrue(class_exists('\WT_Source'));
 	}
 }

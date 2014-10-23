@@ -20,12 +20,12 @@ class ControllerBranchesTest extends PHPUnit_Framework_TestCase {
 	 */
 	public function setUp() {
 	}
-
 	/**
-	 * Test FooBar
+	 * Test that the class exists
 	 *
 	 * @return void
 	 */
-	public function testFooBar() {
+	public function testClassExists() {
+		$this->assertTrue(class_exists('\WT_Controller_Branches'));
 	}
 }

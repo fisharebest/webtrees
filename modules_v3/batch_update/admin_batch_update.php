@@ -20,17 +20,7 @@
 
 use WT\Auth;
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
-if (!WT_USER_GEDCOM_ADMIN) {
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'module.php?mod=batch_update');
-	exit;
-}
-
-require WT_ROOT.'includes/functions/functions_edit.php';
+require_once WT_ROOT . 'includes/functions/functions_edit.php';
 
 class batch_update {
 	var $plugin   =null; // Form parameter: chosen plugin

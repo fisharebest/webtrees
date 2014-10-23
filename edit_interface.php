@@ -2051,8 +2051,6 @@ case 'changefamily_update':
 		exit;
 	}
 
-	//TODO use CHIL[] instead of CHIL<n>
-	//$CHIL      = WT_Filter::postArray('CHIL', WT_REGEX_XREF);
 	$CHIL = array();
 	for ($i=0; ;++$i) {
 		if (isset($_POST['CHIL'.$i])) {

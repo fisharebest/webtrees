@@ -1192,7 +1192,7 @@ class WT_Individual extends WT_GedcomRecord {
 		if ($NICK) {
 			// NICK field found.  Add localised quotation marks.
 
-			// GREG 28/Jan/12 - these localised quotation marks apparantly cause problems with LTR names on RTL
+			// GREG 28/Jan/12 - these localised quotation marks apparently cause problems with LTR names on RTL
 			// pages and vice-versa.  Just use straight ASCII quotes.  Keep the old code, so that we keep the
 			// translations.
 			if (false) {

@@ -1,6 +1,4 @@
 <?php
-// Batch Update plugin for phpGedView - search/replace
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 Greg Roach
 //
@@ -18,6 +16,9 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class search_replace_bu_plugin Batch Update plugin: search/replace
+ */
 class search_replace_bu_plugin extends base_plugin {
 	var $search =null; // Search string
 	var $replace=null; // Replace string
@@ -26,30 +27,63 @@ class search_replace_bu_plugin extends base_plugin {
 	var $case   =null; // "i" for case insensitive, "" for case sensitive
 	var $error  =null; // Message for bad user parameters
 
-	static function getName() {
+	/**
+	 * User-friendly name for this plugin.
+	 *
+	 * @return string
+	 */
+	public function getName() {
 		return WT_I18N::translate('Search and replace');
 	}
 
-	static function getDescription() {
+	/**
+	 * Description / help-text for this plugin.
+	 *
+	 * @return string
+	 */
+	public function getDescription() {
 		return /* I18N: Description of the “Search and replace” option of the batch update module */ WT_I18N::translate('Search and replace text, using simple searches or advanced pattern matching.');
 	}
 
-	// Default is to operate on INDI records
-	function getRecordTypesToUpdate() {
+	/**
+	 * This plugin will update all types of record.
+	 *
+	 * @return string[]
+	 */
+	public function getRecordTypesToUpdate() {
 		return array('INDI', 'FAM', 'SOUR', 'REPO', 'NOTE', 'OBJE');
 	}
 
-	function doesRecordNeedUpdate($xref, $gedrec) {
+	/**
+	 * Does this record need updating?
+	 *
+	 * @param string $xref
+	 * @param string $gedrec
+	 *
+	 * @return boolean
+	 */
+	public function doesRecordNeedUpdate($xref, $gedrec) {
 		return !$this->error && preg_match('/(?:'.$this->regex.')/mu'.$this->case, $gedrec);
 	}
 
-	function updateRecord($xref, $gedrec) {
+	/**
+	 * Apply any updates to this record
+	 *
+	 * @param string $xref
+	 * @param string $gedrec
+	 *
+	 * @return string
+	 */
+	public function updateRecord($xref, $gedrec) {
 		// Allow "\n" to indicate a line-feed in replacement text.
 		// Back-references such as $1, $2 are handled automatically.
 		return preg_replace('/'.$this->regex.'/mu'.$this->case, str_replace('\n', "\n", $this->replace), $gedrec);
 	}
 
-	function getOptions() {
+	/**
+	 * Process the user-supplied options.
+	 */
+	public function getOptions() {
 		parent::getOptions();
 		$this->search  = WT_Filter::get('search');
 		$this->replace = WT_Filter::get('replace');
@@ -79,7 +113,12 @@ class search_replace_bu_plugin extends base_plugin {
 		}
 	}
 
-	function getOptionsForm() {
+	/**
+	 * Generate a form to ask the user for options.
+	 *
+	 * @return string
+	 */
+	public function getOptionsForm() {
 		$descriptions=array(
 			'exact'     => WT_I18N::translate('Match the exact text, even if it occurs in the middle of a word.'),
 			'words'     => WT_I18N::translate('Match the exact text, unless it occurs in the middle of a word.'),
@@ -88,28 +127,25 @@ class search_replace_bu_plugin extends base_plugin {
 		);
 
 		return
-			'<tr><th>'.WT_I18N::translate('Search text/pattern').'</th>'.
-			'<td>'.
-			'<input name="search" size="40" value="'.WT_Filter::escapeHtml($this->search).
-			'" onchange="this.form.submit();"></td></tr>'.
-
-			'<tr><th>'.WT_I18N::translate('Replacement text').'</th>'.
-			'<td>'.
-			'<input name="replace" size="40" value="'.WT_Filter::escapeHtml($this->replace).
-			'" onchange="this.form.submit();"></td></tr>'.
-
-			'<tr><th>'.WT_I18N::translate('Search method').'</th>'.
-			'<td><select name="method" onchange="this.form.submit();">'.
-			'<option value="exact"'    .($this->method=='exact'     ? ' selected="selected"' : '').'>'.WT_I18N::translate('Exact text')    .'</option>'.
-			'<option value="words"'    .($this->method=='words'     ? ' selected="selected"' : '').'>'.WT_I18N::translate('Whole words only')    .'</option>'.
-			'<option value="wildcards"'.($this->method=='wildcards' ? ' selected="selected"' : '').'>'.WT_I18N::translate('Wildcards').'</option>'.
-			'<option value="regex"'    .($this->method=='regex'     ? ' selected="selected"' : '').'>'.WT_I18N::translate('Regular expression')    .'</option>'.
-			'</select><br><em>'.$descriptions[$this->method].'</em>'.$this->error.'</td></tr>'.
-
-			'<tr><th>'.WT_I18N::translate('Case insensitive').'</th>'.
-			'<td>'.
-			'<input type="checkbox" name="case" value="i" '.($this->case=='i' ? 'checked="checked"' : '').'" onchange="this.form.submit();">'.
-			'<br><em>'.WT_I18N::translate('Tick this box to match both upper and lower case letters.').'</em></td></tr>'.
+			'<tr><th>' . WT_I18N::translate('Search text/pattern') . '</th>' .
+			'<td>' .
+			'<input name="search" size="40" value="' . WT_Filter::escapeHtml($this->search) .
+			'" onchange="this.form.submit();"></td></tr>' .
+			'<tr><th>' . WT_I18N::translate('Replacement text') . '</th>' .
+			'<td>' .
+			'<input name="replace" size="40" value="' . WT_Filter::escapeHtml($this->replace) .
+			'" onchange="this.form.submit();"></td></tr>' .
+			'<tr><th>' . WT_I18N::translate('Search method') . '</th>' .
+			'<td><select name="method" onchange="this.form.submit();">' .
+			'<option value="exact"' . ($this->method == 'exact' ? ' selected="selected"' : '') . '>' . WT_I18N::translate('Exact text') . '</option>' .
+			'<option value="words"' . ($this->method == 'words' ? ' selected="selected"' : '') . '>' . WT_I18N::translate('Whole words only') . '</option>' .
+			'<option value="wildcards"' . ($this->method == 'wildcards' ? ' selected="selected"' : '') . '>' . WT_I18N::translate('Wildcards') . '</option>' .
+			'<option value="regex"' . ($this->method == 'regex' ? ' selected="selected"' : '') . '>' . WT_I18N::translate('Regular expression') . '</option>' .
+			'</select><br><em>' . $descriptions[$this->method] . '</em>' . $this->error . '</td></tr>' .
+			'<tr><th>' . WT_I18N::translate('Case insensitive') . '</th>' .
+			'<td>' .
+			'<input type="checkbox" name="case" value="i" ' . ($this->case == 'i' ? 'checked="checked"' : '') . '" onchange="this.form.submit();">' .
+			'<br><em>' . WT_I18N::translate('Tick this box to match both upper and lower case letters.') . '</em></td></tr>' .
 			parent::getOptionsForm();
 	}
 }

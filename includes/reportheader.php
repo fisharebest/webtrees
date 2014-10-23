@@ -34,13 +34,13 @@ if (!defined('WT_WEBTREES')) {
  * @global array $elementHandler
  */
 $elementHandler = array();
-$elementHandler["Report"]["start"]   ="ReportSHandler";
-$elementHandler["var"]["start"]      ="varSHandler";
+$elementHandler["Report"]["start"]   ="reportStartHandler";
+$elementHandler["var"]["start"]      ="varStartHandler";
 $elementHandler["Title"]["start"]    ="titleStartHandler";
 $elementHandler["Title"]["end"]      ="titleEndHandler";
 $elementHandler["Description"]["end"]="descriptionEndHandler";
-$elementHandler["Input"]["start"]    ="InputSHandler";
-$elementHandler["Input"]["end"]      ="InputEHandler";
+$elementHandler["Input"]["start"]    ="inputStartHandler";
+$elementHandler["Input"]["end"]      ="inputEndHandler";
 
 $text = "";
 $report_array = array();
@@ -72,8 +72,6 @@ function startElement($parser, $name, $attrs) {
  * @param string $name the name of the xml element parsed
  */
 function endElement($parser, $name) {
-	// @deprecated
-	// global $elementHandler, $processIfs, $processGedcoms, $processRepeats;
 	global $elementHandler, $processIfs;
 
 	if (($processIfs==0) || ($name=="if")) {
@@ -100,7 +98,7 @@ function characterData($parser, $data) {
 /**
  * @param string[] $attrs
  */
-function ReportSHandler($attrs) {
+function reportStartHandler($attrs) {
 	global $report_array;
 
 	$access = WT_PRIV_PUBLIC;
@@ -121,7 +119,7 @@ function ReportSHandler($attrs) {
 /**
  * @param string[] $attrs
  */
-function varSHandler($attrs) {
+function varStartHandler($attrs) {
 	global $text, $fact, $desc, $type;
 
 	$var = $attrs["var"];
@@ -138,20 +136,20 @@ function varSHandler($attrs) {
 	}
 }
 
-function TitleSHandler() {
+function titleStartHandler() {
 	global $text;
 
 	$text = "";
 }
 
-function TitleEHandler() {
+function titleEndHandler() {
 	global $report_array, $text;
 
 	$report_array["title"] = $text;
 	$text = "";
 }
 
-function DescriptionEHandler() {
+function descriptionEndHandler() {
 	global $report_array, $text;
 
 	$report_array["description"] = $text;
@@ -161,7 +159,7 @@ function DescriptionEHandler() {
 /**
  * @param string[] $attrs
  */
-function InputSHandler($attrs) {
+function inputStartHandler($attrs) {
 	global $input, $text;
 
 	$text ="";
@@ -202,7 +200,7 @@ function InputSHandler($attrs) {
 	}
 }
 
-function InputEHandler() {
+function inputEndHandler() {
 	global $report_array, $text, $input;
 
 	$input["value"] = $text;

@@ -166,18 +166,17 @@ if ($action == 'choose' && $paramok) {
 		echo '<b>', $record->getFullName(), '</b>';
 	}
 	echo '<table><tr><td>';
-		echo '<input type="text" data-autocomplete-type="IFS" name="gid" id="gid" size="6" value="">';
-		// echo ' Enter Name or ID &nbsp; &nbsp; &nbsp; <b>OR</b> &nbsp; &nbsp; &nbsp;Search for ID ';
+	echo '<input type="text" data-autocomplete-type="IFS" name="gid" id="gid" size="6" value="">';
 	echo '</td><td style="padding-bottom: 2px; vertical-align: middle;">';
-		echo '&nbsp;';
-		if (isset($WT_IMAGES["add"])) {
-			echo '<img style="border-style:none;" src="', $WT_IMAGES["add"], '" alt="', WT_I18N::translate('Add'), ' " title="', WT_I18N::translate('Add'), '" align="middle" name="addLink" value="" onclick="blankwin(); return false;">';
-			} else {
-			echo '<button name="addLink" value="" type="button" onclick="blankwin(); return false;">', WT_I18N::translate('Add'), '</button>';
-		}
-		echo ' ', print_findindi_link('gid');
-		echo ' ', print_findfamily_link('gid');
-		echo ' ', print_findsource_link('gid');
+	echo '&nbsp;';
+	if (isset($WT_IMAGES["add"])) {
+		echo '<img style="border-style:none;" src="', $WT_IMAGES["add"], '" alt="', WT_I18N::translate('Add'), ' " title="', WT_I18N::translate('Add'), '" align="middle" name="addLink" value="" onclick="blankwin(); return false;">';
+	} else {
+		echo '<button name="addLink" value="" type="button" onclick="blankwin(); return false;">', WT_I18N::translate('Add'), '</button>';
+	}
+	echo ' ', print_findindi_link('gid');
+	echo ' ', print_findfamily_link('gid');
+	echo ' ', print_findsource_link('gid');
 	echo '</td></tr></table>';
 	echo "<sub>" . WT_I18N::translate('Enter or search for the ID of the individual, family, or source to which this media item should be linked.') . "</sub>";
 	echo '<br><br>';
@@ -222,14 +221,11 @@ var hasLoaded = false;
 
 window.onload=fillInRows;
 
-function fillInRows()
-{
+function fillInRows() {
 	hasLoaded = true;
-	//insertRowToTable();
-	//addRowToTable();
 }
 
-// CONFIG:
+// CONFIG
 // myRowObject is an object for storing information about the table rows
 //function myRowObject(zero, one, two, three, four, five, six, seven, eight, nine, ten, cb, ra)
 function myRowObject(zero, one, two, cb, ra)
@@ -269,7 +265,6 @@ function insertRowToTable(pid, nam, head)
 
 		//Check if id exists in Links list =================================
 		if (strRow.match(pid+',')!= pid+',') {
-			// alert('NO MATCH');
 		} else {
 			rowToInsertAt = 'EXIST' ;
 		}

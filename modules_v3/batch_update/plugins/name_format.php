@@ -1,6 +1,4 @@
 <?php
-// Batch Update plugin for phpGedView - fix spacing in names, particularly that before/after the surname slashes
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 Greg Roach
 //
@@ -18,30 +16,59 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class name_format_bu_plugin Batch Update plugin: fix spacing in names, particularly that before/after the surname slashes
+ */
 class name_format_bu_plugin extends base_plugin {
-	static function getName() {
+	/**
+	 * User-friendly name for this plugin.
+	 *
+	 * @return string
+	 */
+	public function getName() {
 		return WT_I18N::translate('Fix name slashes and spaces');
 	}
 
-	static function getDescription() {
+	/**
+	 * Description / help-text for this plugin.
+	 *
+	 * @return string
+	 */
+	public function getDescription() {
 		return WT_I18N::translate('Correct NAME records of the form “John/DOE/” or “John /DOE”, as produced by older genealogy programs.');
 	}
 
-	static function doesRecordNeedUpdate($xref, $gedrec) {
+	/**
+	 * Does this record need updating?
+	 *
+	 * @param string $xref
+	 * @param string $gedrec
+	 *
+	 * @return boolean
+	 */
+	public function doesRecordNeedUpdate($xref, $gedrec) {
 		return
 			preg_match('/^(?:1 NAME|2 (?:FONE|ROMN|_MARNM|_AKA|_HEB)) [^\/\n]*\/[^\/\n]*$/m', $gedrec) ||
 			preg_match('/^(?:1 NAME|2 (?:FONE|ROMN|_MARNM|_AKA|_HEB)) [^\/\n]*[^\/ ]\//m', $gedrec);
 	}
 
-	static function updateRecord($xref, $gedrec) {
+	/**
+	 * Apply any updates to this record
+	 *
+	 * @param string $xref
+	 * @param string $gedrec
+	 *
+	 * @return string
+	 */
+	public function updateRecord($xref, $gedrec) {
 		return preg_replace(
 			array(
 				'/^((?:1 NAME|2 (?:FONE|ROMN|_MARNM|_AKA|_HEB)) [^\/\n]*\/[^\/\n]*)$/m',
-				'/^((?:1 NAME|2 (?:FONE|ROMN|_MARNM|_AKA|_HEB)) [^\/\n]*[^\/ ])(\/)/m'
+				'/^((?:1 NAME|2 (?:FONE|ROMN|_MARNM|_AKA|_HEB)) [^\/\n]*[^\/ ])(\/)/m',
 			),
 			array(
 				'$1/',
-				'$1 $2'
+				'$1 $2',
 			),
 			$gedrec
 		);

@@ -21,6 +21,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use \WT\Auth;
+
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
@@ -46,60 +48,62 @@ class user_blog_WT_Module extends WT_Module implements WT_Module_Block {
 	}
 
 	// Implement class WT_Module_Block
-	public function getBlock($block_id, $template=true, $cfg=null) {
+	public function getBlock($block_id, $template = true, $cfg = null) {
 		global $ctype;
 
 		switch (WT_Filter::get('action')) {
 		case 'deletenews':
-			$news_id=WT_Filter::getInteger('news_id');
+			$news_id = WT_Filter::getInteger('news_id');
 			if ($news_id) {
-				deleteNews($news_id);
+				WT_DB::prepare("DELETE FROM `##news` WHERE news_id = ?")->execute(array($news_id));
 			}
 			break;
 		}
-		$block=get_block_setting($block_id, 'block', true);
+		$block = get_block_setting($block_id, 'block', true);
 		if ($cfg) {
 			foreach (array('block') as $name) {
 				if (array_key_exists($name, $cfg)) {
-					$$name=$cfg[$name];
+					$$name = $cfg[$name];
 				}
 			}
 		}
-		$usernews = getUserNews(WT_USER_ID);
+		$usernews = WT_DB::prepare(
+			"SELECT SQL_CACHE news_id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) AS updated, subject, body FROM `##news` WHERE user_id = ? ORDER BY updated DESC"
+		)->execute(array(Auth::id()))->fetchAll();
 
-		$id=$this->getName().$block_id;
-		$class=$this->getName().'_block';
-		$title='';
-		$title.=$this->getTitle();
+		$id    = $this->getName() . $block_id;
+		$class = $this->getName() . '_block';
+		$title = '';
+		$title .= $this->getTitle();
 		$content = '';
-		if (count($usernews)==0) {
+		if (count($usernews) == 0) {
 			$content .= WT_I18N::translate('You have not created any journal items.');
 		}
-		foreach ($usernews as $key=>$news) {
-			$day = date('j', $news['date']);
-			$mon = date('M', $news['date']);
-			$year = date('Y', $news['date']);
-			$content .= "<div class=\"journal_box\">";
-			$content .= "<div class=\"news_title\">".$news['title'].'</div>';
-			$content .= "<div class=\"news_date\">".format_timestamp($news['date']).'</div>';
-			if ($news["text"]==strip_tags($news["text"])) {
+		foreach ($usernews as $news) {
+			$day  = date('j', $news->updated);
+			$mon  = date('M', $news->updated);
+			$year = date('Y', $news->updated);
+			$content .= '<div class="journal_box">';
+			$content .= '<div class="news_title">' . $news->subject . '</div>';
+			$content .= '<div class="news_date">' . format_timestamp($news->updated) . '</div>';
+			if ($news->body == strip_tags($news->body)) {
 				// No HTML?
-				$news["text"]=nl2br($news["text"], false);
+				$news->body = nl2br($news->body, false);
 			}
-			$content .= $news["text"]."<br><br>";
-			$content .= "<a href=\"#\" onclick=\"window.open('editnews.php?news_id='+".$key.", '_blank', indx_window_specs); return false;\">".WT_I18N::translate('Edit')."</a> | ";
-			$content .= "<a href=\"index.php?action=deletenews&amp;news_id={$key}&amp;ctype={$ctype}\" onclick=\"return confirm('".WT_I18N::translate('Are you sure you want to delete this journal entry?')."');\">".WT_I18N::translate('Delete')."</a><br>";
+			$content .= $news->body . '<br><br>';
+			$content .= '<a href="#" onclick="window.open(\'editnews.php?news_id=\'+' . $news->news_id . ', \'_blank\', indx_window_specs); return false;">' . WT_I18N::translate('Edit') . '</a> | ';
+			$content .= '<a href="index.php?action=deletenews&amp;news_id=' . $news->news_id . '&amp;ctype=' . $ctype .'" onclick="return confirm(\'' . WT_I18N::translate('Are you sure you want to delete this journal entry?') . "');\">" . WT_I18N::translate('Delete') . '</a><br>';
 			$content .= "</div><br>";
 		}
 		if (WT_USER_ID) {
-			$content .= "<br><a href=\"#\" onclick=\"window.open('editnews.php?user_id='+WT_USER_ID, '_blank', indx_window_specs); return false;\">".WT_I18N::translate('Add a new journal entry')."</a>";
+			$content .= "<br><a href=\"#\" onclick=\"window.open('editnews.php?user_id='+WT_USER_ID, '_blank', indx_window_specs); return false;\">" . WT_I18N::translate('Add a new journal entry') . "</a>";
 		}
 
 		if ($template) {
 			if ($block) {
-				require WT_THEME_DIR.'templates/block_small_temp.php';
+				require WT_THEME_DIR . 'templates/block_small_temp.php';
 			} else {
-				require WT_THEME_DIR.'templates/block_main_temp.php';
+				require WT_THEME_DIR . 'templates/block_main_temp.php';
 			}
 		} else {
 			return $content;

@@ -363,7 +363,6 @@ if ($pid=="") {
 							</td>
 						</tr>
 						<?php
-						//$elderdate = $child->getBirthDate(false);
 					}
 				}
 			}

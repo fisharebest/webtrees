@@ -26,6 +26,13 @@ class I18NTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
+	 * Test that the class exists
+	 *
+	 * @return void
+	 */
+	public function testClassExists() {
+		$this->assertTrue(class_exists('\WT_I18N'));
+	}	/**
 	 * Test WT_I18N::strtoupper()
 	 *
 	 * @todo test all locales

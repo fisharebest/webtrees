@@ -90,14 +90,18 @@ class WT_Place {
 	}
 
 	public function getFullName() {
-		// If a place hierarchy is a single entity
-		return '<span dir="auto">' . WT_Filter::escapeHtml(implode(WT_I18N::$list_separator, $this->gedcom_place)) . '</span>';
-		// If a place hierarchy is a list of distinct items
-		$tmp=array();
-		foreach ($this->gedcom_place as $place) {
-			$tmp[]='<span dir="auto">' . WT_Filter::escapeHtml($place) . '</span>';
+		if (true) {
+			// If a place hierarchy is a single entity
+			return '<span dir="auto">' . WT_Filter::escapeHtml(implode(WT_I18N::$list_separator, $this->gedcom_place)) . '</span>';
+		} else {
+			// If a place hierarchy is a list of distinct items
+			$tmp = array();
+			foreach ($this->gedcom_place as $place) {
+				$tmp[] = '<span dir="auto">' . WT_Filter::escapeHtml($place) . '</span>';
+			}
+
+			return implode(WT_I18N::$list_separator, $tmp);
 		}
-		return implode(WT_I18N::$list_separator, $tmp);
 	}
 
 	// For lists and charts, where the full name won’t fit.

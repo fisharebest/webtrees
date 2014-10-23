@@ -753,7 +753,6 @@ class WT_Soundex {
 							// one of the pair with only a single occurrence of the duplicate sound,
 							// the other with both occurrences
 							if ($noVowels) {
-								//$partialResult[] = $workingEntry;
 								$workingEntry[] = $soundTableEntry[$state];
 							}
 						}
