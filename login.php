@@ -532,15 +532,15 @@ case 'verify_hash':
 	if ($user) {
 		if ($user->checkPassword($user_password) && $user->getPreference('reg_hashcode') == $user_hashcode) {
 			WT_Mail::send(
-				// From:
+			// “From:” header
 				$WT_TREE,
-				// To:
+				// “To:” header
 				$webmaster->getEmail(),
 				$webmaster->getRealName(),
-				// Reply-To:
+				// “Reply-To:” header
 				$WEBTREES_EMAIL,
 				$WEBTREES_EMAIL,
-				// Message
+				// Message body
 				$mail1_subject,
 				$mail1_body
 			);

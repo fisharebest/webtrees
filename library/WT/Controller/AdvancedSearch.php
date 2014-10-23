@@ -443,7 +443,6 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 				// *:PLAC
 				// SQL can only link a place to a person/family, not to an event.
 				$sql.=" AND i_p.place LIKE CONCAT('%', ?, '%')";
-				//$sql.=" AND i_p.p_place=?";
 				$bind[]=$value;
 			} elseif ($parts[0]=='FAMS' && $parts[2]=='PLAC') {
 				// FAMS:*:PLAC
