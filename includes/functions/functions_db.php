@@ -341,15 +341,15 @@ function search_indis_soundex($soundex, $lastname, $firstname, $place, $geds) {
 	$sql.=' WHERE i_file IN ('.implode(',', $geds).')';
 	switch ($soundex) {
 	case 'Russell':
-		$givn_sdx = WT_Soundex::soundex_std($firstname);
-		$surn_sdx = WT_Soundex::soundex_std($lastname);
-		$plac_sdx = WT_Soundex::soundex_std($place);
+		$givn_sdx = WT_Soundex::russell($firstname);
+		$surn_sdx = WT_Soundex::russell($lastname);
+		$plac_sdx = WT_Soundex::russell($place);
 		$field    = 'std';
 		break;
 	case 'DaitchM':
-		$givn_sdx = WT_Soundex::soundex_dm($firstname);
-		$surn_sdx = WT_Soundex::soundex_dm($lastname);
-		$plac_sdx = WT_Soundex::soundex_dm($place);
+		$givn_sdx = WT_Soundex::daitchMokotoff($firstname);
+		$surn_sdx = WT_Soundex::daitchMokotoff($lastname);
+		$plac_sdx = WT_Soundex::daitchMokotoff($place);
 		$field    = 'dm';
 		break;
 	default:
