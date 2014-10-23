@@ -47,20 +47,6 @@ if (!is_array($type)) {
 	$type = array();
 }
 
-/**
- * function to get the values for the given tag
- */
-function get_tag_values($tag) {
-	global $tags, $values;
-
-	$indexes = $tags[$tag];
-	$vals = array();
-	foreach ($indexes as $i) {
-		$vals[] = $values[$i];
-	}
-	return $vals;
-}
-
 //-- setup the arrays
 $newvars = array();
 foreach ($vars as $name => $var) {
