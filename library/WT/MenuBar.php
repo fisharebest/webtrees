@@ -274,10 +274,10 @@ class WT_MenuBar {
 		global $SEARCH_SPIDER, $controller;
 
 		// The top level menu shows the individual list
-		$menu=new WT_Menu(WT_I18N::translate('Lists'), 'indilist.php?ged='.WT_GEDURL, 'menu-list');
+		$menu = new WT_Menu(WT_I18N::translate('Lists'), 'indilist.php?ged=' . WT_GEDURL, 'menu-list');
 
 		// Do not show empty lists
-		$row=WT_DB::prepare(
+		$row = WT_DB::prepare(
 			"SELECT SQL_CACHE".
 			" EXISTS(SELECT 1 FROM `##sources` WHERE s_file=?                  ) AS sour,".
 			" EXISTS(SELECT 1 FROM `##other`   WHERE o_file=? AND o_type='REPO') AS repo,".
@@ -286,71 +286,32 @@ class WT_MenuBar {
 		)->execute(array(WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID))->fetchOneRow();
 
 		// Build a list of submenu items and then sort it in localized name order
-		$menulist=array('indilist.php'  =>WT_I18N::translate('Individuals'));
+		$surname_url = '&surname=' . rawurlencode($controller->getSignificantSurname()) . '&amp;ged=' . WT_GEDURL;
+
+		$menulist = array(
+			new WT_Menu(WT_I18N::translate('Individuals'), 'indilist.php?ged=' . WT_GEDURL . $surname_url, 'menu-list-indi'),
+		);
+
 		if (!$SEARCH_SPIDER) {
-			$menulist['famlist.php'  ]=WT_I18N::translate('Families');
-			$menulist['branches.php' ]=WT_I18N::translate('Branches');
-			$menulist['placelist.php']=WT_I18N::translate('Place hierarchy');
-			// Build a list of submenu items and then sort it in localized name order
+			$menulist[] = new WT_Menu(WT_I18N::translate('Families'), 'famlist.php?ged=' . WT_GEDURL . $surname_url, 'menu-list-fam');
+			$menulist[] = new WT_Menu(WT_I18N::translate('Branches'), 'branches.php?ged=' . WT_GEDURL . $surname_url, 'menu-branches');
+			$menulist[] = new WT_Menu(WT_I18N::translate('Place hierarchy'), 'placelist.php?ged=' . WT_GEDURL, 'menu-list-plac');
 			if ($row->obje) {
-				$menulist['medialist.php']=WT_I18N::translate('Media objects');
+				$menulist[] = new WT_Menu(WT_I18N::translate('Media objects'), 'medialist.php?ged=' . WT_GEDURL, 'menu-list-obje');
 			}
 			if ($row->repo) {
-				$menulist['repolist.php']=WT_I18N::translate('Repositories');
+				$menulist[] = new WT_Menu(WT_I18N::translate('Repositories'), 'repolist.php?ged=' . WT_GEDURL, 'menu-list-repo');
 			}
 			if ($row->sour) {
-				$menulist['sourcelist.php']=WT_I18N::translate('Sources');
+				$menulist[] = new WT_Menu(WT_I18N::translate('Sources'), 'sourcelist.php?ged=' . WT_GEDURL, 'menu-list-sour');
 			}
 			if ($row->note) {
-				$menulist['notelist.php']=WT_I18N::translate('Shared notes');
+				$menulist[] = new WT_Menu(WT_I18N::translate('Shared notes'), 'medialist.php?ged=' . WT_GEDURL, 'menu-list-note');
 			}
 		}
-		asort($menulist);
+		uasort($menulist, function($x, $y) { return WT_I18N::strcasecmp($x->label, $y->label); });
 
-		$surname_url='?surname='.rawurlencode($controller->getSignificantSurname()).'&amp;ged='.WT_GEDURL;
-		foreach ($menulist as $page=>$name) {
-			switch ($page) {
-			case 'indilist.php':
-				$submenu = new WT_Menu($name, $page.$surname_url, 'menu-list-indi');
-				$menu->addSubmenu($submenu);
-				break;
-
-			case 'famlist.php':
-				$submenu = new WT_Menu($name, $page.$surname_url, 'menu-list-fam');
-				$menu->addSubmenu($submenu);
-				break;
-
-			case 'branches.php':
-				$submenu = new WT_Menu($name, $page.$surname_url, 'menu-branches');
-				$menu->addSubmenu($submenu);
-				break;
-
-			case 'sourcelist.php':
-				$submenu = new WT_Menu($name, $page.'?ged='.WT_GEDURL, 'menu-list-sour');
-				$menu->addSubmenu($submenu);
-				break;
-
-			case 'notelist.php':
-				$submenu = new WT_Menu($name, $page.'?ged='.WT_GEDURL, 'menu-list-note');
-				$menu->addSubmenu($submenu);
-				break;
-
-			case 'repolist.php':
-				$submenu = new WT_Menu($name, $page.'?ged='.WT_GEDURL, 'menu-list-repo');
-				$menu->addSubmenu($submenu);
-				break;
-
-			case 'placelist.php':
-				$submenu = new WT_Menu($name, $page.'?ged='.WT_GEDURL, 'menu-list-plac');
-				$menu->addSubmenu($submenu);
-				break;
-
-			case 'medialist.php':
-				$submenu = new WT_Menu($name, $page.'?ged='.WT_GEDURL, 'menu-list-obje');
-				$menu->addSubmenu($submenu);
-				break;
-			}
-		}
+		$menu->submenus = $menulist;
 
 		return $menu;
 	}
