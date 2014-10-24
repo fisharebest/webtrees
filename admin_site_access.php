@@ -72,21 +72,21 @@ case 'load_rules':
 		$args[]=$search;
 	}
 
-	$order = WT_Filter::get('order');
+	$order = WT_Filter::getArray('order');
 	if ($order) {
 		$sql .= ' ORDER BY ';
-		for ($i = 0; $i < count($order); ++$i) {
-			if ($i > 0) {
+		foreach ($order as $key => $value) {
+			if ($key > 0) {
 				$sql .= ',';
 			}
 			// Datatables numbers columns 0, 1, 2, ...
 			// MySQL numbers columns 1, 2, 3, ...
-			switch ($order[$i]['dir']) {
+			switch ($value['dir']) {
 			case 'asc':
-				$sql .= (1 + $order[$i]['column']) . ' ASC ';
+				$sql .= (1 + $value['column']) . ' ASC ';
 				break;
 			case 'desc':
-				$sql .= (1 + $order[$i]['column']) . ' DESC ';
+				$sql .= (1 + $value['column']) . ' DESC ';
 				break;
 			}
 		}
@@ -151,21 +151,21 @@ case 'load_unknown':
 		$args[] = $search;
 	}
 
-	$order = WT_Filter::get('order');
+	$order = WT_Filter::getArray('order');
 	if ($order) {
 		$sql .= ' ORDER BY ';
-		for ($i = 0; $i < count($order); ++$i) {
-			if ($i > 0) {
+		foreach ($order as $key => $value) {
+			if ($key > 0) {
 				$sql .= ',';
 			}
 			// Datatables numbers columns 0, 1, 2, ...
 			// MySQL numbers columns 1, 2, 3, ...
-			switch ($order[$i]['dir']) {
+			switch ($value['dir']) {
 			case 'asc':
-				$sql .= (1 + $order[$i]['column']) . ' ASC ';
+				$sql .= (1 + $value['column']) . ' ASC ';
 				break;
 			case 'desc':
-				$sql .= (1 + $order[$i]['column']) . ' DESC ';
+				$sql .= (1 + $value['column']) . ' DESC ';
 				break;
 			}
 		}
