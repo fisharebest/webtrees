@@ -317,7 +317,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 						$bind[]=$value;
 						break;
 					case 'SDX_STD':
-						$sdx = WT_Soundex::soundex_std($value);
+						$sdx = WT_Soundex::russell($value);
 						if ($sdx) {
 							$sdx = explode(':', $sdx);
 							foreach ($sdx as $k=>$v) {
@@ -333,7 +333,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 						break;
 					case 'SDX': // SDX uses DM by default.
 					case 'SDX_DM':
-						$sdx = WT_Soundex::soundex_dm($value);
+						$sdx = WT_Soundex::daitchMokotoff($value);
 						if ($sdx) {
 							$sdx = explode(':', $sdx);
 							foreach ($sdx as $k=>$v) {
@@ -364,7 +364,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 						$bind[]=$value;
 						break;
 					case 'SDX_STD':
-						$sdx = WT_Soundex::soundex_std($value);
+						$sdx = WT_Soundex::russell($value);
 						if ($sdx) {
 							$sdx = explode(':', $sdx);
 							foreach ($sdx as $k=>$v) {
@@ -380,7 +380,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 						break;
 					case 'SDX': // SDX uses DM by default.
 					case 'SDX_DM':
-						$sdx = WT_Soundex::soundex_dm($value);
+						$sdx = WT_Soundex::daitchMokotoff($value);
 						if ($sdx) {
 							$sdx = explode(':', $sdx);
 							foreach ($sdx as $k=>$v) {
@@ -468,7 +468,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 						$bind[]=$value;
 						break;
 					case 'SDX_STD':
-						$sdx = WT_Soundex::soundex_std($value);
+						$sdx = WT_Soundex::russell($value);
 						if ($sdx) {
 							$sdx = explode(':', $sdx);
 							foreach ($sdx as $k=>$v) {
@@ -484,7 +484,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 						break;
 					case 'SDX': // SDX uses DM by default.
 					case 'SDX_DM':
-						$sdx = WT_Soundex::soundex_dm($value);
+						$sdx = WT_Soundex::daitchMokotoff($value);
 						if ($sdx) {
 							$sdx = explode(':', $sdx);
 							foreach ($sdx as $k=>$v) {
@@ -515,7 +515,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 						$bind[]=$value;
 						break;
 					case 'SDX_STD':
-						$sdx = WT_Soundex::soundex_std($value);
+						$sdx = WT_Soundex::russell($value);
 						if ($sdx) {
 							$sdx = explode(':', $sdx);
 							foreach ($sdx as $k=>$v) {
@@ -531,7 +531,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 						break;
 					case 'SDX': // SDX uses DM by default.
 					case 'SDX_DM':
-						$sdx = WT_Soundex::soundex_dm($value);
+						$sdx = WT_Soundex::daitchMokotoff($value);
 						if ($sdx) {
 							$sdx = explode(':', $sdx);
 							foreach ($sdx as $k=>$v) {
