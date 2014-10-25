@@ -135,7 +135,7 @@ $controller
 
 if ($controller->error_message) {
 	echo '<p class="ui-state-error">', $controller->error_message, '</p>';
-	exit;
+	return;
 }
 
 switch ($controller->chart_style) {
@@ -149,20 +149,17 @@ case 0:
 	break;
 case 1:
 	// TODO: this should be a parameter to a function, not a global
-	$show_cousins=$controller->show_cousins;
+	$show_cousins = $controller->show_cousins;
 	echo '<div id="ancestry_chart">';
 	// Booklet
 	// first page : show indi facts
 	print_pedigree_person($controller->root);
 	// process the tree
-	$treeid=ancestry_array($controller->root->getXref(), $PEDIGREE_GENERATIONS-1);
-	foreach ($treeid as $i=>$pid) {
-		if ($pid) {
-			$person=WT_Individual::getInstance($pid);
-			if ($person) {
-				foreach ($person->getChildFamilies() as $family) {
-					print_sosa_family($family->getXref(), $pid, $i);
-				}
+	$ancestors = $controller->sosaAncestors($PEDIGREE_GENERATIONS-1);
+	foreach ($ancestors as $sosa => $individual) {
+		if ($individual) {
+			foreach ($individual->getChildFamilies() as $family) {
+				print_sosa_family($family->getXref(), $individual, $sosa);
 			}
 		}
 	}
@@ -170,23 +167,21 @@ case 1:
 	break;
 case 2:
 	// Individual list
-	$treeid=ancestry_array($controller->root->getXref(), $PEDIGREE_GENERATIONS);
-	echo '<div id="ancestry-list">', format_indi_table($treeid, 'sosa'), '</div>';
+	$ancestors = $controller->sosaAncestors($PEDIGREE_GENERATIONS);
+	echo '<div id="ancestry-list">', format_indi_table($ancestors, 'sosa'), '</div>';
 	break;
 case 3:
 	// Family list
-	$treeid=ancestry_array($controller->root->getXref(), $PEDIGREE_GENERATIONS-1);
-	$famlist=array();
-	foreach ($treeid as $pid) {
-		$person = WT_Individual::getInstance($pid);
-		if (!$person) {
-			continue;
-		}
-		foreach ($person->getChildFamilies() as $famc) {
-			$famlist[$famc->getXref()]=$famc;
+	$ancestors = $controller->sosaAncestors($PEDIGREE_GENERATIONS-1);
+	$families = array();
+	foreach ($ancestors as $individual) {
+		if ($individual) {
+			foreach ($individual->getChildFamilies() as $family) {
+				$families[$family->getXref()] = $family;
+			}
 		}
 	}
-	echo '<div id="ancestry-list">', format_fam_table($famlist), '</div>';
+	echo '<div id="ancestry-list">', format_fam_table($families), '</div>';
 	break;
 }
-echo '</div>'; // close #ancestry-page
+echo '</div>';

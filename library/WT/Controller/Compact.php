@@ -42,13 +42,13 @@ class WT_Controller_Compact extends WT_Controller_Chart {
 		} else {
 			$this->setPageTitle(WT_I18N::translate('Compact tree'));
 		}
-		$this->treeid=ancestry_array($this->rootid, 5);
+		$this->treeid = $this->sosaAncestors(5);
 	}
 
 	function sosa_person($n) {
 		global $SHOW_HIGHLIGHT_IMAGES;
 
-		$indi=WT_Individual::getInstance($this->treeid[$n]);
+		$indi = $this->treeid[$n];
 
 		if ($indi && $indi->canShowName()) {
 			$name=$indi->getFullName();
@@ -94,7 +94,7 @@ class WT_Controller_Compact extends WT_Controller_Chart {
 	function sosa_arrow($n, $arrow_dir) {
 		global $TEXT_DIRECTION;
 
-		$pid = $this->treeid[$n];
+		$indi = $this->treeid[$n];
 
 		$arrow_dir = substr($arrow_dir, 0, 1);
 		if ($TEXT_DIRECTION == 'rtl') {
@@ -105,10 +105,9 @@ class WT_Controller_Compact extends WT_Controller_Chart {
 			}
 		}
 
-		$indi = WT_Individual::getInstance($pid);
 		if ($indi) {
 			$title = WT_I18N::translate('Compact tree of %s', $indi->getFullName());
-			$text = '<a class="icon-' . $arrow_dir . 'arrow" title="' . strip_tags($title) . '" href="?rootid=' . $pid;
+			$text = '<a class="icon-' . $arrow_dir . 'arrow" title="' . strip_tags($title) . '" href="?rootid=' . $indi->getXref();
 			if ($this->show_thumbs) {
 				$text .= "&amp;show_thumbs=".$this->show_thumbs;
 			}

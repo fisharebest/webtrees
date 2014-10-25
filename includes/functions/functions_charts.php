@@ -401,44 +401,6 @@ function print_sosa_family($famid, $childid, $sosa, $label="", $parid="", $gpari
 }
 
 /**
- * creates an array with all of the individual ids to be displayed on an ascendancy chart
- *
- * the id in position 1 is the root person.  The other positions are filled according to the following algorithm
- * if an individual is at position $i then individual $i’s father will occupy position ($i*2) and $i’s mother
- * will occupy ($i*2)+1
- *
- * @param string  $rootid
- * @param integer $generations
- *
- * @return string[] $treeid
- */
-function ancestry_array($rootid, $generations) {
-	$ancestors = array(
-		1 => $rootid
-	);
-
-	$max = pow(2, $generations - 1);
-	for ($i = 1; $i < $max; $i++) {
-		$ancestors[$i * 2] = null;
-		$ancestors[$i * 2 + 1] = null;
-		$person = WT_Individual::getInstance($ancestors[$i]);
-		if ($person) {
-			$family = $person->getPrimaryChildFamily();
-			if ($family) {
-				if ($family->getHusband()) {
-					$ancestors[$i * 2] = $family->getHusband()->getXref();
-				}
-				if ($family->getWife()) {
-					$ancestors[$i * 2 + 1] = $family->getWife()->getXref();
-				}
-			}
-		}
-	}
-
-	return $ancestors;
-}
-
-/**
  * print an arrow to a new url
  *
  * @param string  $url   target url
