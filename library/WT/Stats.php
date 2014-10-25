@@ -5906,17 +5906,39 @@ class WT_Stats {
 	}
 
 	/**
+	 * How many blog entries exist for this user.
+	 *
 	 * @return string
 	 */
 	public function totalUserJournal() {
-		return WT_I18N::number(count(getUserNews(WT_USER_ID)));
+		try {
+			$number = (int)WT_DB::prepare("SELECT COUNT(*) FROM `##news` WHERE user_id = ?")
+				->execute(array(Auth::id()))
+				->fetchOne();
+		} catch (PDOException $ex) {
+			// The module may not be installed, so the table may not exist.
+			$number = 0;
+		}
+
+		return WT_I18N::number($number);
 	}
 
 	/**
+	 * How many news items exist for this tree.
+	 *
 	 * @return string
 	 */
 	public function totalGedcomNews() {
-		return WT_I18N::number(count(getUserNews(WT_GEDCOM)));
+		try {
+			$number = (int)WT_DB::prepare("SELECT COUNT(*) FROM `##news` WHERE gedcom_id = ?")
+				->execute(array($this->tree->tree_id))
+				->fetchOne();
+		} catch (PDOException $ex) {
+			// The module may not be installed, so the table may not exist.
+			$number = 0;
+		}
+
+		return WT_I18N::number($number);
 	}
 
 	/**

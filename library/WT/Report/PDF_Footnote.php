@@ -71,13 +71,6 @@ class WT_Report_PDF_Footnote extends WT_Report_Base_Footnote {
 	 * @return float $h
 	 */
 	function getFootnoteHeight($pdf) {
-		//$style = $pdf->getStyle($this->styleName);
-		//$ct = substr_count($this->numText, "\n");
-		//if ($ct > 0) {
-		//$ct += 1;
-		//}
-		//$h = ($style['size'] * $ct);
-		//return $h;
 		return 0;
 	}
 

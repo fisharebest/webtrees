@@ -26,6 +26,13 @@ class I18NTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
+	 * Test that the class exists
+	 *
+	 * @return void
+	 */
+	public function testClassExists() {
+		$this->assertTrue(class_exists('\WT_I18N'));
+	}	/**
 	 * Test WT_I18N::strtoupper()
 	 *
 	 * @todo test all locales
@@ -87,5 +94,47 @@ class I18NTest extends PHPUnit_Framework_TestCase {
 		$this->assertSame(WT_I18N::reverseText($rtl_abc . '[123]'), '[123]' . $rtl_cba);
 		$this->assertSame(WT_I18N::reverseText('123' . $rtl_abc . '456'), '456' . $rtl_cba . '123');
 		$this->assertSame(WT_I18N::reverseText($rtl_abc . '&lt;'), '>' . $rtl_cba);
+	}
+
+	/**
+	 * Test WT_I18N::languageName()
+	 *
+	 * @return void
+	 */
+	public function testKnownLanguageName() {
+		$this->assertSame('العربية', WT_I18N::languageName('ar'));
+		$this->assertSame('Deutsch', WT_I18N::languageName('de'));
+		$this->assertSame('Ελληνικά', WT_I18N::languageName('el'));
+		$this->assertSame('British English', WT_I18N::languageName('en-GB'));
+		$this->assertSame('français', WT_I18N::languageName('fr'));
+	}
+
+	/**
+	 * Test WT_I18N::languageName()
+	 *
+	 * @return void
+	 */
+	public function testUnknownLanguageName() {
+		$this->assertSame('English (India)', WT_I18N::languageName('en-IN'));
+	}
+
+	/**
+	 * Test WT_I18N::languageScript()
+	 *
+	 * @return void
+	 */
+	public function testKnownLanguageScript() {
+		$this->assertSame('Arab', WT_I18N::languageScript('ar'));
+		$this->assertSame('Latn', WT_I18N::languageScript('de'));
+		$this->assertSame('Grek', WT_I18N::languageScript('el'));
+	}
+
+	/**
+	 * Test WT_I18N::languageScript()
+	 *
+	 * @return void
+	 */
+	public function testUnknownLanguageScript() {
+		$this->assertSame('Latn', WT_I18N::languageScript('zz'));
 	}
 }

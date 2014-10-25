@@ -125,6 +125,11 @@ class TreeView {
 
 	/**
 	 * Return the details for a person
+	 *
+	 * @param WT_Individual $individual
+	 * @param WT_Family     $family
+	 *
+	 * @return string
 	 */
 	private function getPersonDetails(WT_Individual $individual, WT_Family $family = null) {
 		$hmtl = $this->getThumbnail($individual);

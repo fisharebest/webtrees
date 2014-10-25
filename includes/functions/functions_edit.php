@@ -32,7 +32,7 @@ use Rhumsaa\Uuid\Uuid;
  *
  * @return string
  */
-function edit_field_inline($name, $value, $controller=null) {
+function edit_field_inline($name, $value, WT_Controller_Base $controller=null) {
 	$html='<span class="editable" id="' . $name . '">' . WT_Filter::escapeHtml($value) . '</span>';
 	$js='jQuery("#' . $name . '").editable("' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'save.php", {submitdata: {csrf: WT_CSRF_TOKEN}, submit:"&nbsp;&nbsp;' . /* I18N: button label */ WT_I18N::translate('save') . '&nbsp;&nbsp;", style:"inherit", placeholder: "'.WT_I18N::translate('click to edit').'"});';
 
@@ -54,7 +54,7 @@ function edit_field_inline($name, $value, $controller=null) {
  *
  * @return string
  */
-function edit_text_inline($name, $value, $controller=null) {
+function edit_text_inline($name, $value, WT_Controller_Base $controller=null) {
 	$html='<span class="editable" style="white-space:pre-wrap;" id="' . $name . '">' . WT_Filter::escapeHtml($value) . '</span>';
 	$js='jQuery("#' . $name . '").editable("' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'save.php", {submitdata: {csrf: WT_CSRF_TOKEN}, submit:"&nbsp;&nbsp;' . WT_I18N::translate('save') . '&nbsp;&nbsp;", style:"inherit", placeholder: "'.WT_I18N::translate('click to edit').'", type: "textarea", rows:4, cols:60 });';
 
@@ -118,7 +118,7 @@ function select_edit_control($name, $values, $empty, $selected, $extra='') {
  *
  * @return string
  */
-function select_edit_control_inline($name, $values, $empty, $selected, $controller=null) {
+function select_edit_control_inline($name, $values, $empty, $selected, WT_Controller_Base $controller=null) {
 	if (!is_null($empty)) {
 		// Push ''=>$empty onto the front of the array, maintaining keys
 		$tmp=array(''=>WT_Filter::escapeHtml($empty));
@@ -185,7 +185,7 @@ function edit_field_yes_no($name, $selected=false) {
  *
  * @return string
  */
-function edit_field_yes_no_inline($name, $selected=false, $controller=null) {
+function edit_field_yes_no_inline($name, $selected=false, WT_Controller_Base $controller=null) {
 	return select_edit_control_inline(
 		$name, array(true=>WT_I18N::translate('yes'), false=>WT_I18N::translate('no')), null, (int)$selected, $controller
 	);
@@ -339,7 +339,7 @@ function edit_field_contact($name, $selected='', $extra='') {
  *
  * @return string
  */
-function edit_field_contact_inline($name, $selected='', $controller=null) {
+function edit_field_contact_inline($name, $selected='', WT_Controller_Base $controller=null) {
 	// Different ways to contact the users
 	$CONTACT_METHODS=array(
 		'messaging' =>WT_I18N::translate('webtrees internal messaging'),
@@ -373,7 +373,7 @@ function edit_field_language($name, $selected='', $extra='') {
  *
  * @return string
  */
-function edit_field_language_inline($name, $selected='', $controller=null) {
+function edit_field_language_inline($name, $selected='', WT_Controller_Base $controller=null) {
 	return select_edit_control_inline(
 		$name, WT_I18N::installed_languages(), null, $selected, $controller
 	);
@@ -1520,12 +1520,14 @@ function handle_updates($newged, $levelOverride = 'no') {
 		if ($pass==true) {
 			$newline = $glevels[$j]+$levelAdjust.' '.$tag[$j];
 			//-- check and translate the incoming dates
-			if ($tag[$j]=="DATE" && $text[$j]!='') {
+			if ($tag[$j] == 'DATE' && $text[$j]!='') {
 			}
-			// echo $newline;
-			if ($text[$j]!='') {
-				if ($islink[$j]) $newline .= " @".$text[$j]."@";
-				else $newline .= ' '.$text[$j];
+			if ($text[$j] != '') {
+				if ($islink[$j]) {
+					$newline .= ' @' . $text[$j] . '@';
+				} else {
+					$newline .= ' ' . $text[$j];
+				}
 			}
 			$newged .= "\n".str_replace("\n", "\n" . (1 + substr($newline, 0, 1)) . ' CONT ', $newline);
 		}

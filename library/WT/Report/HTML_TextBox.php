@@ -179,7 +179,6 @@ class WT_Report_HTML_TextBox extends WT_Report_Base_TextBox {
 				// For anything else but text (images), get the height
 				$eH += $this->elements[$i]->getHeight($html);
 			} else {
-				//if (is_string($element) and $element == "footnotetexts") $html->Footnotes();
 				$fH += abs($html->getFootnotesHeight($cW));
 			}
 		}

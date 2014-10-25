@@ -67,12 +67,12 @@ if ($action!='choose') {
 			$facts1 = array();
 			$facts2 = array();
 			foreach ($rec1->getFacts() as $fact) {
-				if (!$fact->isOld()) {
+				if (!$fact->isPendingDeletion()) {
 					$facts1[$fact->getFactId()]=$fact;
 				}
 			}
 			foreach ($rec2->getFacts() as $fact) {
-				if (!$fact->isOld()) {
+				if (!$fact->isPendingDeletion()) {
 					$facts2[$fact->getFactId()]=$fact;
 				}
 			}
@@ -150,7 +150,7 @@ if ($action!='choose') {
 					$ids=fetch_all_links($gid2, WT_GED_ID);
 					foreach ($ids as $id) {
 						$record=WT_GedcomRecord::getInstance($id);
-						if (!$record->isOld()) {
+						if (!$record->isPendingDeletion()) {
 							echo WT_I18N::translate('Updating linked record'), ' ', $id, '<br>';
 							$gedcom=str_replace("@$gid2@", "@$gid1@", $record->getGedcom());
 							$gedcom=preg_replace(

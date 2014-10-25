@@ -121,8 +121,6 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 			break;
 
 		case 'getDetails':
-			//$controller = new WT_Controller_Ajax();
-			//$controller->pageHeader();
 			Zend_Session::writeClose();
 			header('Content-Type: text/html; charset=UTF-8');
 			$pid = WT_Filter::get('pid', WT_REGEX_XREF);
@@ -135,8 +133,6 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 			break;
 
 		case 'getPersons':
-			//$controller = new WT_Controller_Ajax();
-			//$controller->pageHeader();
 			Zend_Session::writeClose();
 			header('Content-Type: text/html; charset=UTF-8');
 			$q = WT_Filter::get('q');

@@ -466,9 +466,6 @@ window.onload=fillInRows;
 // fillInRows - can be used to pre-load a table with a header, row, or rows
 function fillInRows() {
 	hasLoaded = true;
-	// create_header();
-	// insertRowToTable();
-	// addRowToTable();
 	if (TheCenYear!='') {
 		changeYear(TheCenYear);
 	}
@@ -838,8 +835,6 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 			}
 
 			// ---- Show Cell Columns =========================================
-			//var currcenyear = document.getElementById('censYear').value;
-			//changeCols(currcenyear);
 
 		// **C** Define Header Cell elements ==================================
 		if (iteration == 0) {
@@ -2196,10 +2191,6 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 
 		// Extra Cells for Navigation =========================================
 		// 74. Extra 1. Delete Row Button -----------------------------------------
-			//var btnEl = document.createElement('input');
-			// btnEl.setAttribute('type', 'button');
-			// btnEl.setAttribute('value', 'x');
-			// btnEl.onclick = function () {deleteCurrentRow(this)};
 			var btnEl = document.createElement('button');
 			  var btnEltext = document.createTextNode('X');
 				btnEl.style.color='red';

@@ -26,7 +26,7 @@ class WT_Controller_GedcomRecord extends WT_Controller_Page {
 		if ($this->record && $this->record->canEdit()) {
 			$broken_links=0;
 			foreach ($this->record->getFacts('HUSB|WIFE|CHIL|FAMS|FAMC|REPO') as $fact) {
-				if (!$fact->isOld() && $fact->getTarget() === null) {
+				if (!$fact->isPendingDeletion() && $fact->getTarget() === null) {
 					$this->record->deleteFact($fact->getFactId(), false);
 					WT_FlashMessages::addMessage(/* I18N: %s are names of records, such as sources, repositories or individuals */ WT_I18N::translate('The link from “%1$s” to “%2$s” has been deleted.', $this->record->getFullName(), $fact->getValue()));
 					$broken_links = true;
@@ -34,7 +34,7 @@ class WT_Controller_GedcomRecord extends WT_Controller_Page {
 			}
 			foreach ($this->record->getFacts('NOTE|SOUR|OBJE') as $fact) {
 				// These can be links or inline.  Only delete links.
-				if (!$fact->isOld() && $fact->getTarget() === null && preg_match('/^@.*@$/', $fact->getValue())) {
+				if (!$fact->isPendingDeletion() && $fact->getTarget() === null && preg_match('/^@.*@$/', $fact->getValue())) {
 					$this->record->deleteFact($fact->getFactId(), false);
 					WT_FlashMessages::addMessage(/* I18N: %s are names of records, such as sources, repositories or individuals */ WT_I18N::translate('The link from “%1$s” to “%2$s” has been deleted.', $this->record->getFullName(), $fact->getValue()));
 					$broken_links = true;

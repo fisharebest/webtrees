@@ -22,10 +22,11 @@ class FilterTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * Test FooBar
+	 * Test that the class exists
 	 *
 	 * @return void
 	 */
-	public function testFooBar() {
+	public function testClassExists() {
+		$this->assertTrue(class_exists('\WT_Filter'));
 	}
 }

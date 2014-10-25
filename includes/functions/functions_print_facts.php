@@ -84,10 +84,10 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 
 	// New or deleted facts need different styling
 	$styleadd='';
-	if ($fact->isNew()) {
+	if ($fact->isPendingAddition()) {
 		$styleadd = 'new';
 	}
-	if ($fact->isOld()) {
+	if ($fact->isPendingDeletion()) {
 		$styleadd = 'old';
 	}
 
@@ -548,10 +548,10 @@ function print_fact_sources($factrec, $level) {
 				$data .= '</div>';
 				$data .= '</div>';
 			} else {
-				// Show that we do actually have sources for this data.
-				// Commented out for now, based on user feedback.
+				// Here we could show that we do actually have sources for this data,
+				// but not the details.  For example “Sources: ”.
+				// But not by default, based on user feedback.
 				// http://webtrees.net/index.php/en/forum/3-help-for-beta-and-svn-versions/27002-source-media-privacy-issue
-				//$data .= WT_Gedcom_Tag::getLabelValue('SOUR', WT_I18N::translate('yes'));
 			}
 		} else {
 			$data .= WT_Gedcom_Tag::getLabelValue('SOUR', '<span class="error">'.$sid.'</span>');
@@ -649,10 +649,10 @@ function print_main_sources(WT_Fact $fact, $level) {
 	$pid     = $parent->getXref();
 
 	$nlevel = $level+1;
-	if ($fact->isNew()) {
+	if ($fact->isPendingAddition()) {
 		$styleadd = 'new';
 		$can_edit = $level==1 && $fact->canEdit();
-	} elseif ($fact->isOld()) {
+	} elseif ($fact->isPendingDeletion()) {
 		$styleadd='old';
 		$can_edit = false;
 	} else {
@@ -877,10 +877,10 @@ function print_main_notes(WT_Fact $fact, $level) {
 	$parent  = $fact->getParent();
 	$pid     = $parent->getXref();
 
-	if ($fact->isNew()) {
+	if ($fact->isPendingAddition()) {
 		$styleadd = ' new';
 		$can_edit = $level==1 && $fact->canEdit();
-	} elseif ($fact->isOld()) {
+	} elseif ($fact->isPendingDeletion()) {
 		$styleadd=' old';
 		$can_edit = false;
 	} else {
@@ -1022,10 +1022,10 @@ function print_main_media(WT_Fact $fact, $level) {
 	$factrec = $fact->getGedcom();
 	$parent  = $fact->getParent();
 
-	if ($fact->isNew()) {
+	if ($fact->isPendingAddition()) {
 		$styleadd = 'new';
 		$can_edit = $level==1 && $fact->canEdit();
-	} elseif ($fact->isOld()) {
+	} elseif ($fact->isPendingDeletion()) {
 		$styleadd='old';
 		$can_edit = false;
 	} else {

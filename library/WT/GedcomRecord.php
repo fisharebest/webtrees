@@ -91,14 +91,14 @@ class WT_GedcomRecord {
 		foreach ($gedcom_facts as $gedcom_fact) {
 			$fact = new WT_Fact($gedcom_fact, $this, md5($gedcom_fact));
 			if ($this->pending !== null && !in_array($gedcom_fact, $pending_facts)) {
-				$fact->setIsOld();
+				$fact->setPendingDeletion();
 			}
 			$this->facts[] = $fact;
 		}
 		foreach ($pending_facts as $pending_fact) {
 			if (!in_array($pending_fact, $gedcom_facts)) {
 				$fact = new WT_Fact($pending_fact, $this, md5($pending_fact));
-				$fact->setIsNew();
+				$fact->setPendingAddition();
 				$this->facts[] = $fact;
 			}
 		}
@@ -281,7 +281,7 @@ class WT_GedcomRecord {
 	 *
 	 * @return boolean
 	 */
-	public function isNew() {
+	public function isPendingAddtion() {
 		return $this->pending !== null;
 	}
 
@@ -290,7 +290,7 @@ class WT_GedcomRecord {
 	 *
 	 * @return boolean
 	 */
-	public function isOld() {
+	public function isPendingDeletion() {
 		return $this->pending === '';
 	}
 
@@ -1163,7 +1163,7 @@ class WT_GedcomRecord {
 
 		// Replacing (or deleting) an existing fact
 		foreach ($this->getFacts(null, false, WT_PRIV_HIDE) as $fact) {
-			if (!$fact->isOld()) {
+			if (!$fact->isPendingDeletion()) {
 				if ($fact->getFactId() === $fact_id) {
 					if ($gedcom) {
 						$new_gedcom .= "\n" . $gedcom;

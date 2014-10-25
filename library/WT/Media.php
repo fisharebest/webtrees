@@ -50,6 +50,27 @@ class WT_Media extends WT_GedcomRecord {
 	}
 
 	/**
+	 * Get an instance of a media object.  For single records,
+	 * we just receive the XREF.  For bulk records (such as lists
+	 * and search results) we can receive the GEDCOM data as well.
+	 *
+	 * @param string       $xref
+	 * @param integer|null $gedcom_id
+	 * @param string|null  $gedcom
+	 *
+	 * @return WT_Media|null
+	 */
+	public static function getInstance($xref, $gedcom_id = WT_GED_ID, $gedcom = null) {
+		$record = parent::getInstance($xref, $gedcom_id, $gedcom);
+
+		if ($record instanceof WT_Media) {
+			return $record;
+		} else {
+			return null;
+		}
+	}
+
+	/**
 	 * {@inheritdoc}
 	 */
 	protected function canShowByType($access_level) {

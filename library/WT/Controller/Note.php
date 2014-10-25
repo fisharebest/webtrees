@@ -35,7 +35,7 @@ class WT_Controller_Note extends WT_Controller_GedcomRecord {
 	 * get edit menu
 	 */
 	function getEditMenu() {
-		if (!$this->record || $this->record->isOld()) {
+		if (!$this->record || $this->record->isPendingDeletion()) {
 			return null;
 		}
 

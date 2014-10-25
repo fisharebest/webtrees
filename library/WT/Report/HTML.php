@@ -421,7 +421,6 @@ class WT_Report_HTML extends WT_Report_Base {
 	 * Update the Page Number and set a new Y if max Y is larger - WT_Report_HTML
 	 */
 	function addPage() {
-		//echo("\n\n<p style=\"page-break-before:always;\"><p>\n");
 		$this->pageN++;
 		// Add a little margin to max Y "between pages"
 		$this->maxY += 10;

@@ -544,10 +544,6 @@ if (!$ajax) {
 			if ($plottype == "14") echo ' checked="checked"';
 			echo " onclick=\"{statusEnable('z_sex'); statusHide('x_years'); statusHide('x_months'); statusHide('x_numbers'); statusHide('map_opt');}";
 			echo '"><label for="stat_14">', WT_I18N::translate('Month of birth of first child in a relation'), '</label><br>';
-			//echo '<input type="radio" id="stat_16" name="x-as" value="16"';
-			//if ($plottype == "16") echo ' checked="checked"';
-			//echo " onclick=\"{statusEnable('z_sex'); statusHide('x_years'); statusShow('x_months'); statusHide('x_numbers'); statusHide('map_opt');}";
-			//echo '"><label for="stat_16">', WT_I18N::translate('Months between marriage and first child'), '</label><br>';
 			echo '<input type="radio" id="stat_17" name="x-as" value="17"';
 			if ($plottype == "17") echo ' checked="checked"';
 			echo " onclick=\"{statusEnable('z_sex'); statusShow('x_years'); statusHide('x_months'); statusHide('x_numbers'); statusHide('map_opt');}";

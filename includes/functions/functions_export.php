@@ -33,14 +33,6 @@ function reformat_record_export($rec) {
 
 	$newrec='';
 	foreach (preg_split('/[\r\n]+/', $rec, -1, PREG_SPLIT_NO_EMPTY) as $line) {
-		// Escape @ characters
-		// TODO:
-		// Need to replace “@” with “@@”, unless it is either
-		// a) an xref, such as @I123@
-		// b) an escape, such as @#D FRENCH R@
-		if (false) {
-			$line=str_replace('@', '@@', $line);
-		}
 		// Split long lines
 		// The total length of a GEDCOM line, including level number, cross-reference number,
 		// tag, value, delimiters, and terminator, must not exceed 255 (wide) characters.
