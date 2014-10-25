@@ -1902,7 +1902,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					$i++;
 					$gmarks[$i]=array(
 						'class'        => 'optionbox',
-						'date'         => $fact->getDate()->Display(true),
+						'date'         => $fact->getDate()->display(true),
 						'fact_label'   => $fact->getLabel(),
 						'image'        => $spouse ? $spouse->displayImage() : $fact->icon(),
 						'info'         => $fact->getValue(),
@@ -1924,7 +1924,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 						$i++;
 						$gmarks[$i] = array(
 							'class'        => 'optionbox',
-							'date'         => $fact->getDate()->Display(true),
+							'date'         => $fact->getDate()->display(true),
 							'fact_label'   => $fact->getLabel(),
 							'image'        => $spouse ? $spouse->displayImage() : $fact->icon(),
 							'info'         => $fact->getValue(),

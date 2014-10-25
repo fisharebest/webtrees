@@ -141,21 +141,21 @@ case 'load_json':
 		$LIMIT="";
 	}
 
-	$order = WT_Filter::get('order');
+	$order = WT_Filter::getArray('order');
 	if ($order) {
 		$ORDER_BY=' ORDER BY ';
-		for ($i = 0; $i < count($order); ++$i) {
-			if ($i > 0) {
+		foreach ($order as $key => $value) {
+			if ($key > 0) {
 				$ORDER_BY .= ',';
 			}
 			// Datatables numbers columns 0, 1, 2, ...
 			// MySQL numbers columns 1, 2, 3, ...
-			switch ($order[$i]['dir']) {
+			switch ($value['dir']) {
 			case 'asc':
-				$ORDER_BY .= (1 + $order[$i]['column']) . ' ASC ';
+				$ORDER_BY .= (1 + $value['column']) . ' ASC ';
 				break;
 			case 'desc':
-				$ORDER_BY .= (1 + $order[$i]['column']) . ' DESC ';
+				$ORDER_BY .= (1 + $value['column']) . ' DESC ';
 				break;
 			}
 		}

@@ -109,7 +109,7 @@ class todo_WT_Module extends WT_Module implements WT_Module_Block {
 				$content .= '<td>'; //hidden by datables code
 				$content .= $fact->getDate()->JD();
 				$content .= '</td>';
-				$content.='<td class="wrap">'. $fact->getDate()->Display(empty($SEARCH_SPIDER)).'</td>';
+				$content.='<td class="wrap">'. $fact->getDate()->display(empty($SEARCH_SPIDER)).'</td>';
 				$content.='<td class="wrap"><a href="'.$record->getHtmlUrl().'">'.$record->getFullName().'</a></td>';
 				if ($show_unassigned || $show_other) {
 					$content.='<td class="wrap">'.$user_name.'</td>';

@@ -153,15 +153,16 @@ echo '</td></tr>';
 echo '<tr><td class="descriptionbox vmiddle">';
 echo WT_I18N::translate('Month'), '</td>';
 echo '<td class="optionbox" colspan="3">';
-for ($n=1; $n<=$cal_date->monthsInYear(); ++$n) {
-	$month_name=$cal_date->monthNameNominativeCase($n, $cal_date->isLeapYear());
+for ($n = 1, $months_in_year = $cal_date->monthsInYear(); $n <= $months_in_year; ++$n) {
+	$month_name = $cal_date->monthNameNominativeCase($n, $cal_date->isLeapYear());
 	$m = array_search($n, $cal_date::$MONTH_ABBREV);
-	if ($m=='ADS' && $cal_date instanceof WT_Date_Jewish && !$cal_date->isLeapYear()) {
+	if ($m == 'ADS' && $cal_date instanceof WT_Date_Jewish && !$cal_date->isLeapYear()) {
 		// No month 7 in Jewish leap years.
 		continue;
 	}
-	if ($n==$cal_date->m)
-		$month_name="<span class=\"error\">{$month_name}</span>";
+	if ($n == $cal_date->m) {
+		$month_name = '<span class="error">' . $month_name . '</span>';
+	}
 	echo "<a href=\"calendar.php?cal={$cal}&amp;day={$cal_date->d}&amp;month={$m}&amp;year={$cal_date->y}&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action={$action}\">{$month_name}</a>";
 	echo ' | ';
 }

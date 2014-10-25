@@ -244,9 +244,6 @@ document.onmouseup = function () {
 <h2><?php echo WT_I18N::translate('Timeline'); ?></h2>
 <form name="people" action="?">
 	<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>">
-<?php
-$controller->checkPrivacy();
-?>
 <table>
 	<tr>
 	<?php

@@ -101,7 +101,7 @@ class WT_Controller_Pedigree extends WT_Controller_Chart {
 		$this->pbwidth = $bwidth+6;
 		$this->pbheight = $bheight+5;
 
-		$this->treeid = ancestry_array($this->rootid);
+		$this->treeid = ancestry_array($this->rootid, $PEDIGREE_GENERATIONS);
 		$this->treesize = pow(2, (int)($this->PEDIGREE_GENERATIONS))-1;
 
 		//-- ancestry_array puts everyone at $i+1
