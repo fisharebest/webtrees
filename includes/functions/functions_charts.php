@@ -408,37 +408,34 @@ function print_sosa_family($famid, $childid, $sosa, $label="", $parid="", $gpari
  * will occupy ($i*2)+1
  *
  * @param string  $rootid
- * @param integer $maxgen
+ * @param integer $generations
  *
- * @return array $treeid
+ * @return string[] $treeid
  */
-function ancestry_array($rootid, $maxgen=0) {
-	global $PEDIGREE_GENERATIONS;
-	// -- maximum size of the id array
-	if ($maxgen==0) $maxgen = $PEDIGREE_GENERATIONS;
-	$treesize = pow(2, ($maxgen));
+function ancestry_array($rootid, $generations) {
+	$ancestors = array(
+		1 => $rootid
+	);
 
-	$treeid = array();
-	$treeid[0] = "";
-	$treeid[1] = $rootid;
-	// -- fill in the id array
-	for ($i = 1; $i < ($treesize / 2); $i++) {
-		$treeid[($i * 2)] = false; // -- father
-		$treeid[($i * 2) + 1] = false; // -- mother
-		$person = WT_Individual::getInstance($treeid[$i]);
+	$max = pow(2, $generations - 1);
+	for ($i = 1; $i < $max; $i++) {
+		$ancestors[$i * 2] = null;
+		$ancestors[$i * 2 + 1] = null;
+		$person = WT_Individual::getInstance($ancestors[$i]);
 		if ($person) {
 			$family = $person->getPrimaryChildFamily();
 			if ($family) {
 				if ($family->getHusband()) {
-					$treeid[$i*2]=$family->getHusband()->getXref();
+					$ancestors[$i * 2] = $family->getHusband()->getXref();
 				}
 				if ($family->getWife()) {
-					$treeid[$i*2+1]=$family->getWife()->getXref();
+					$ancestors[$i * 2 + 1] = $family->getWife()->getXref();
 				}
 			}
 		}
 	}
-	return $treeid;
+
+	return $ancestors;
 }
 
 /**
