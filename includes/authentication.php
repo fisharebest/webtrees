@@ -45,26 +45,6 @@ function getUserFullName($user_id) {
 }
 
 /**
- * Log a search query
- *
- * @param string    $log_message
- * @param integer[] $geds
- */
-function AddToSearchLog($log_message, $geds) {
-	global $WT_REQUEST;
-	foreach (WT_Tree::getAll() as $tree) {
-		WT_DB::prepare(
-			"INSERT INTO `##log` (log_type, log_message, ip_address, user_id, gedcom_id) VALUES ('search', ?, ?, ?, ?)"
-		)->execute(array(
-			(count(WT_Tree::getAll()) == count($geds) ? 'Global search: ' : 'Gedcom search: ') . $log_message,
-			$WT_REQUEST->getClientIp(),
-			WT_USER_ID ? WT_USER_ID : null,
-			$tree->tree_id
-		));
-	}
-}
-
-/**
  * Add a message to a user's inbox
  *
  * @param string[] $message

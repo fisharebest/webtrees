@@ -512,15 +512,15 @@ function search_fams($query, $geds, $match) {
 			$GED_ID=$row->gedcom_id;
 		}
 		// SQL may have matched on private data or gedcom tags, so check again against privatized data.
-		$record=WT_Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+		$record = WT_Family::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 		// Ignore non-genealogical data
-		$gedrec=preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|REFN|RESN) .*/', '', $record->getGedcom());
+		$gedrec = preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|REFN|RESN) .*/', '', $record->getGedcom());
 		// Ignore links and tags
-		$gedrec=preg_replace('/\n\d '.WT_REGEX_TAG.'( @'.WT_REGEX_XREF.'@)?/', '', $gedrec);
+		$gedrec = preg_replace('/\n\d '.WT_REGEX_TAG.'( @'.WT_REGEX_XREF.'@)?/', '', $gedrec);
 		// Ignore tags
-		$gedrec=preg_replace('/\n\d '.WT_REGEX_TAG.' ?/', '', $gedrec);
+		$gedrec = preg_replace('/\n\d '.WT_REGEX_TAG.' ?/', '', $gedrec);
 		// Re-apply the filtering
-		$gedrec=WT_I18N::strtoupper($gedrec);
+		$gedrec = WT_I18N::strtoupper($gedrec);
 		foreach ($queryregex as $regex) {
 			if (!preg_match('/'.$regex.'/', $gedrec)) {
 				continue 2;
@@ -630,9 +630,9 @@ function search_sources($query, $geds, $match) {
 			$GED_ID=$row->gedcom_id;
 		}
 		// SQL may have matched on private data or gedcom tags, so check again against privatized data.
-		$record=WT_Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+		$record = WT_Source::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 		// Ignore non-genealogical data
-		$gedrec=preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|REFN|RESN) .*/', '', $record->getGedcom());
+		$gedrec = preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|REFN|RESN) .*/', '', $record->getGedcom());
 		// Ignore links and tags
 		$gedrec=preg_replace('/\n\d '.WT_REGEX_TAG.'( @'.WT_REGEX_XREF.'@)?/', '', $gedrec);
 		// Ignore tags

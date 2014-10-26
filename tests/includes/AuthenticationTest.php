@@ -32,15 +32,6 @@ class AuthenticationTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * Test that function AddToSearchLog() exists in the global namespace.
-	 *
-	 * @return void
-	 */
-	public function testFunctionAddToSearchLogExists() {
-		$this->assertEquals(function_exists('\\AddToSearchLog'), true);
-	}
-
-	/**
 	 * Test that function addMessage() exists in the global namespace.
 	 *
 	 * @return void

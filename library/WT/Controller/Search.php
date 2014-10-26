@@ -60,7 +60,10 @@ class WT_Controller_Search extends WT_Controller_Page {
 	var $lastname = '';
 	var $place = '';
 	var $year = '';
-	var $sgeds = array();
+
+	/** @var WT_Tree[] A list of trees to search */
+	var $search_trees = array();
+
 	var $myindilist = array();
 	var $mysourcelist = array();
 	var $myfamlist = array();
@@ -74,6 +77,8 @@ class WT_Controller_Search extends WT_Controller_Page {
 	var $printplace = array();
 
 	function __construct() {
+		global $WT_TREE;
+
 		parent::__construct();
 
 		// $action comes from GET (menus) or POST (form submission)
@@ -115,15 +120,15 @@ class WT_Controller_Search extends WT_Controller_Page {
 
 		// Retrieve the gedcoms to search in
 		if (count(WT_Tree::getAll()) > 1 && WT_Site::getPreference('ALLOW_CHANGE_GEDCOM')) {
-			foreach (WT_Tree::getAll() as $tree) {
-				$str = str_replace(array(".", "-", " "), array("_", "_", "_"), $tree->tree_name);
+			foreach (WT_Tree::getAll() as $search_tree) {
+				$str = str_replace(array(".", "-", " "), array("_", "_", "_"), $search_tree->tree_name);
 				if (isset ($_REQUEST["$str"]) || $topsearch) {
-					$this->sgeds[$tree->tree_id] = $tree->tree_name;
-					$_REQUEST["$str"]            = 'yes';
+					$this->search_trees[$search_tree->tree_id] = $search_tree;
+					$_REQUEST["$str"]                   = 'yes';
 				}
 			}
 		} else {
-			$this->sgeds[WT_GED_ID] = WT_GEDCOM;
+			$this->search_trees[WT_GED_ID] = $WT_TREE;
 		}
 
 		// vars use for soundex search
@@ -285,14 +290,14 @@ class WT_Controller_Search extends WT_Controller_Page {
 		}
 
 		//-- perform the search
-		if ($query_terms && $this->sgeds) {
+		if ($query_terms && $this->search_trees) {
 			// Write a log entry
 			$logstring = "Type: General\nQuery: " . $this->query;
-			AddToSearchlog($logstring, $this->sgeds);
+			Log::AddSearchlog($logstring, $this->search_trees);
 
 			// Search the individuals
 			if (isset ($this->srindi)) {
-				$this->myindilist = search_indis($query_terms, array_keys($this->sgeds), 'AND');
+				$this->myindilist = search_indis($query_terms, array_keys($this->search_trees), 'AND');
 			} else {
 				$this->myindilist = array();
 			}
@@ -300,8 +305,8 @@ class WT_Controller_Search extends WT_Controller_Page {
 			// Search the fams
 			if (isset ($this->srfams)) {
 				$this->myfamlist = array_merge(
-					search_fams($query_terms, array_keys($this->sgeds), 'AND'),
-					search_fams_names($query_terms, array_keys($this->sgeds), 'AND')
+					search_fams($query_terms, array_keys($this->search_trees), 'AND'),
+					search_fams_names($query_terms, array_keys($this->search_trees), 'AND')
 				);
 				$this->myfamlist = array_unique($this->myfamlist);
 			} else {
@@ -311,7 +316,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 			// Search the sources
 			if (isset ($this->srsour)) {
 				if (!empty ($this->query)) {
-					$this->mysourcelist = search_sources($query_terms, array_keys($this->sgeds), 'AND');
+					$this->mysourcelist = search_sources($query_terms, array_keys($this->search_trees), 'AND');
 				}
 			} else {
 				$this->mysourcelist = array();
@@ -320,7 +325,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 			// Search the notes
 			if (isset ($this->srnote)) {
 				if (!empty ($this->query)) {
-					$this->mynotelist = search_notes($query_terms, array_keys($this->sgeds), 'AND');
+					$this->mynotelist = search_notes($query_terms, array_keys($this->search_trees), 'AND');
 				}
 			} else {
 				$this->mynotelist = array();
@@ -369,7 +374,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 	private function searchAndReplace() {
 		global $STANDARD_NAME_FACTS, $ADVANCED_NAME_FACTS;
 
-		$this->sgeds  = array(WT_GED_ID => WT_GEDCOM);
+		$this->search_trees  = array(WT_GED_ID => WT_GEDCOM);
 		$this->srindi = 'yes';
 		$this->srfams = 'yes';
 		$this->srsour = 'yes';
@@ -502,7 +507,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 	 *
 	 */
 	private function soundexSearch() {
-		if (((!empty ($this->lastname)) || (!empty ($this->firstname)) || (!empty ($this->place))) && (count($this->sgeds) > 0)) {
+		if (((!empty ($this->lastname)) || (!empty ($this->firstname)) || (!empty ($this->place))) && (count($this->search_trees) > 0)) {
 			$logstring = "Type: Soundex\n";
 			if (!empty ($this->lastname)) {
 				$logstring .= "Last name: " . $this->lastname . "\n";
@@ -516,10 +521,10 @@ class WT_Controller_Search extends WT_Controller_Page {
 			if (!empty ($this->year)) {
 				$logstring .= "Year: " . $this->year . "\n";
 			}
-			AddToSearchlog($logstring, $this->sgeds);
+			Log::AddToSearchlog($logstring, $this->search_trees);
 
-			if ($this->sgeds) {
-				$this->myindilist = search_indis_soundex($this->soundex, $this->lastname, $this->firstname, $this->place, array_keys($this->sgeds));
+			if ($this->search_trees) {
+				$this->myindilist = search_indis_soundex($this->soundex, $this->lastname, $this->firstname, $this->place, array_keys($this->search_trees));
 			} else {
 				$this->myindilist = array();
 			}
@@ -587,19 +592,19 @@ class WT_Controller_Search extends WT_Controller_Page {
 				echo '<div id="searchAccordion-indi">';
 				// Split individuals by tree
 				$trees = WT_Tree::getAll();
-				foreach ($this->sgeds as $ged_id => $gedcom) {
+				foreach ($this->search_trees as $search_tree) {
 					$datalist = array();
 					foreach ($this->myindilist as $individual) {
-						if ($individual->getGedcomId() == $ged_id) {
+						if ($individual->getGedcomId() === $search_tree->tree_id) {
 							$datalist[] = $individual;
 						}
 					}
 					if ($datalist) {
 						$somethingPrinted = true;
 						usort($datalist, array('WT_GedcomRecord', 'compare'));
-						$GEDCOM = $gedcom;
-						load_gedcom_settings($ged_id);
-						echo '<h3 class="indi-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $trees[$ged_id]->tree_title_html, '</span></a></h3>
+						$GEDCOM = $search_tree->tree_name;
+						load_gedcom_settings($search_tree->tree_id);
+						echo '<h3 class="indi-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $search_tree->tree_title_html, '</span></a></h3>
 							<div class="indi-acc_content">',
 						format_indi_table($datalist);
 						echo '</div>';//indi-acc_content
@@ -611,19 +616,19 @@ class WT_Controller_Search extends WT_Controller_Page {
 				// family results
 				echo '<div id="searchAccordion-fam">';
 				// Split families by gedcom
-				foreach ($this->sgeds as $ged_id => $gedcom) {
+				foreach ($this->search_trees as $search_tree) {
 					$datalist = array();
 					foreach ($this->myfamlist as $family) {
-						if ($family->getGedcomId() == $ged_id) {
+						if ($family->getGedcomId() === $search_tree->tree_id) {
 							$datalist[] = $family;
 						}
 					}
 					if ($datalist) {
 						$somethingPrinted = true;
 						usort($datalist, array('WT_GedcomRecord', 'compare'));
-						$GEDCOM = $gedcom;
-						load_gedcom_settings($ged_id);
-						echo '<h3 class="fam-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $trees[$ged_id]->tree_title_html, '</span></a></h3>
+						$GEDCOM = $search_tree->tree_name;
+						load_gedcom_settings($search_tree->tree_id);
+						echo '<h3 class="fam-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $search_tree->tree_title_html, '</span></a></h3>
 							<div class="fam-acc_content">',
 						format_fam_table($datalist);
 						echo '</div>';//fam-acc_content
@@ -635,19 +640,19 @@ class WT_Controller_Search extends WT_Controller_Page {
 				// source results
 				echo '<div id="searchAccordion-source">';
 				// Split sources by gedcom
-				foreach ($this->sgeds as $ged_id => $gedcom) {
+				foreach ($this->search_trees as $search_tree) {
 					$datalist = array();
 					foreach ($this->mysourcelist as $source) {
-						if ($source->getGedcomId() == $ged_id) {
+						if ($source->getGedcomId() === $search_tree->tree_id) {
 							$datalist[] = $source;
 						}
 					}
 					if ($datalist) {
 						$somethingPrinted = true;
 						usort($datalist, array('WT_GedcomRecord', 'compare'));
-						$GEDCOM = $gedcom;
-						load_gedcom_settings($ged_id);
-						echo '<h3 class="source-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $trees[$ged_id]->tree_title_html, '</span></a></h3>
+						$GEDCOM = $search_tree->tree_name;
+						load_gedcom_settings($search_tree->tree_id);
+						echo '<h3 class="source-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $search_tree->tree_title_html, '</span></a></h3>
 							<div class="source-acc_content">',
 						format_sour_table($datalist);
 						echo '</div>';//fam-acc_content
@@ -659,19 +664,19 @@ class WT_Controller_Search extends WT_Controller_Page {
 				// note results
 				echo '<div id="searchAccordion-note">';
 				// Split notes by gedcom
-				foreach ($this->sgeds as $ged_id => $gedcom) {
+				foreach ($this->search_trees as $search_tree) {
 					$datalist = array();
 					foreach ($this->mynotelist as $note) {
-						if ($note->getGedcomId() == $ged_id) {
+						if ($note->getGedcomId() === $search_tree->tree_id) {
 							$datalist[] = $note;
 						}
 					}
 					if ($datalist) {
 						$somethingPrinted = true;
 						usort($datalist, array('WT_GedcomRecord', 'compare'));
-						$GEDCOM = $gedcom;
-						load_gedcom_settings($ged_id);
-						echo '<h3 class="note-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $trees[$ged_id]->tree_title_html, '</span></a></h3>
+						$GEDCOM = $search_tree->tree_name;
+						load_gedcom_settings($search_tree->tree_id);
+						echo '<h3 class="note-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $search_tree->tree_title_html, '</span></a></h3>
 							<div class="note-acc_content">',
 						format_note_table($datalist);
 						echo '</div>';//note-acc_content
