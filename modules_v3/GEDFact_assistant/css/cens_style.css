@@ -284,3 +284,14 @@ textarea#NOTE {
 	width: 160px;
 }
 
+.linka {
+	display: block;
+}
+
+#edit_interface-page .linkcell span {
+	margin: 0;
+}
+
+#edit_interface-page .clist {
+	margin: 0;
+}
