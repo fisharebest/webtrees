@@ -287,8 +287,6 @@ if (file_exists(WT_ROOT . 'data/config.ini.php')) {
 
 $WT_REQUEST = new Zend_Controller_Request_Http();
 
-require WT_ROOT . 'includes/authentication.php';
-
 // Connect to the database
 try {
 	WT_DB::createInstance($dbconfig['dbhost'], $dbconfig['dbport'], $dbconfig['dbname'], $dbconfig['dbuser'], $dbconfig['dbpass']);
