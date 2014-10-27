@@ -153,6 +153,45 @@ if (version_compare(PHP_VERSION, '5.4', '<') && get_magic_quotes_gpc()) {
 	unset($process);
 }
 
+////////////////////////////////////////////////////////////////////////////////
+// The ircmaxell/password-compat library does not support unpatched versions of
+// PHP older than PHP5.3.6.  These versions of PHP have no secure crypt library.
+////////////////////////////////////////////////////////////////////////////////
+$hash = '$2y$04$usesomesillystringfore7hnbRJHxXVLeakoG8K30oukPsA.ztMG';
+if (!defined('PASSWORD_BCRYPT') && crypt("password", $hash) !== $hash) {
+	define('PASSWORD_BCRYPT', 1);
+	define('PASSWORD_DEFAULT', 1);
+	/**
+	 * @param string  $password
+	 * @param integer $algo
+	 *
+	 * @return string
+	 */
+	function password_hash($password, $algo) {
+		return crypt($password);
+	}
+
+	/**
+	 * @param string  $hash
+	 * @param integer $algo
+	 *
+	 * @return boolean
+	 */
+	function password_needs_rehash($hash, $algo) {
+		return false;
+	}
+
+	/**
+	 * @param string  $password
+	 * @param integer $hash
+	 *
+	 * @return boolean
+	 */
+	function password_verify($password, $hash) {
+		return crypt($password, $hash) === $hash;
+	}
+}
+
 require WT_ROOT . 'library/autoload.php';
 
 // PHP requires a time zone to be set in php.ini
