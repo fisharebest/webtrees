@@ -93,8 +93,7 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 	// If we are at the start position, do some tidying up
 	if ($first_time) {
 		$keep_media=WT_Filter::getBool('keep_media'.$gedcom_id);
-		// Delete any existing genealogical data
-		empty_database($gedcom_id, $keep_media);
+		WT_Tree::get($gedcom_id)->deleteGenealogyData($keep_media);
 		WT_Tree::get($gedcom_id)->setPreference('imported', false);
 		// Remove any byte-order-mark
 		WT_DB::prepare(
