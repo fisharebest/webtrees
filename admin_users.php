@@ -633,7 +633,7 @@ default:
 			});
 
 			/* When clicking on the +/- icon, we expand/collapse the details block */
-			jQuery("#list").on("click", "tr td:first-child", function () {
+			jQuery("#list").on("click", ".icon-open, .icon-close", function () {
 				var self = jQuery(this),
 					aData,
 					oTable = self.parents("table").dataTable();
