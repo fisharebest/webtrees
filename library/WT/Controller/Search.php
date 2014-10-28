@@ -372,9 +372,9 @@ class WT_Controller_Search extends WT_Controller_Page {
 	 *  Preforms a search and replace
 	 */
 	private function searchAndReplace() {
-		global $STANDARD_NAME_FACTS, $ADVANCED_NAME_FACTS;
+		global $STANDARD_NAME_FACTS, $ADVANCED_NAME_FACTS, $WT_TREE;
 
-		$this->search_trees  = array(WT_GED_ID => WT_GEDCOM);
+		$this->search_trees  = array(WT_GED_ID => $WT_TREE);
 		$this->srindi = 'yes';
 		$this->srfams = 'yes';
 		$this->srsour = 'yes';
