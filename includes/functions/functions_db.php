@@ -697,15 +697,15 @@ function search_notes($query, $geds, $match) {
 			$GED_ID=$row->gedcom_id;
 		}
 		// SQL may have matched on private data or gedcom tags, so check again against privatized data.
-		$record=WT_Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+		$record = WT_Note::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 		// Ignore non-genealogical data
-		$gedrec=preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|REFN|RESN) .*/', '', $record->getGedcom());
+		$gedrec = preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|REFN|RESN) .*/', '', $record->getGedcom());
 		// Ignore links and tags
-		$gedrec=preg_replace('/\n\d '.WT_REGEX_TAG.'( @'.WT_REGEX_XREF.'@)?/', '', $gedrec);
+		$gedrec = preg_replace('/\n\d '.WT_REGEX_TAG.'( @'.WT_REGEX_XREF.'@)?/', '', $gedrec);
 		// Ignore tags
-		$gedrec=preg_replace('/\n\d '.WT_REGEX_TAG.' ?/', '', $gedrec);
+		$gedrec = preg_replace('/\n\d '.WT_REGEX_TAG.' ?/', '', $gedrec);
 		// Re-apply the filtering
-		$gedrec=WT_I18N::strtoupper($gedrec);
+		$gedrec = WT_I18N::strtoupper($gedrec);
 		foreach ($queryregex as $regex) {
 			if (!preg_match('/'.$regex.'/', $gedrec)) {
 				continue 2;
@@ -740,46 +740,46 @@ function search_repos($query, $geds, $match) {
 	}
 
 	// Convert the query into a SQL expression
-	$querysql=array();
+	$querysql = array();
 	// Convert the query into a regular expression
-	$queryregex=array();
+	$queryregex = array();
 
 	foreach ($query as $q) {
-		$queryregex[]=preg_quote(WT_I18N::strtoupper($q), '/');
-		$querysql[]="o_gedcom LIKE ".WT_DB::quote("%{$q}%")." COLLATE '".WT_I18N::$collation."'";
+		$queryregex[] = preg_quote(WT_I18N::strtoupper($q), '/');
+		$querysql[]   = "o_gedcom LIKE " . WT_DB::quote("%{$q}%") . " COLLATE '" . WT_I18N::$collation . "'";
 	}
 
-	$sql="SELECT o_id AS xref, o_file AS gedcom_id, o_gedcom AS gedcom FROM `##other` WHERE (".implode(" {$match} ", $querysql).") AND o_type='REPO' AND o_file IN (".implode(',', $geds).')';
+	$sql = "SELECT o_id AS xref, o_file AS gedcom_id, o_gedcom AS gedcom FROM `##other` WHERE (".implode(" {$match} ", $querysql).") AND o_type='REPO' AND o_file IN (".implode(',', $geds).')';
 
 	// Group results by gedcom, to minimise switching between privacy files
-	$sql.=' ORDER BY gedcom_id';
+	$sql .= ' ORDER BY gedcom_id';
 
-	$list=array();
-	$rows=WT_DB::prepare($sql)->fetchAll();
-	$GED_ID=WT_GED_ID;
+	$list   = array();
+	$rows   = WT_DB::prepare($sql)->fetchAll();
+	$GED_ID = WT_GED_ID;
 	foreach ($rows as $row) {
 		// Switch privacy file if necessary
 		if ($row->gedcom_id!=$GED_ID) {
-			$GEDCOM=get_gedcom_from_id($row->gedcom_id);
+			$GEDCOM = get_gedcom_from_id($row->gedcom_id);
 			load_gedcom_settings($row->gedcom_id);
-			$GED_ID=$row->gedcom_id;
+			$GED_ID = $row->gedcom_id;
 		}
 		// SQL may have matched on private data or gedcom tags, so check again against privatized data.
-		$record=WT_Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+		$record = WT_Repository::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 		// Ignore non-genealogical data
-		$gedrec=preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|REFN|RESN) .*/', '', $record->getGedcom());
+		$gedrec = preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|REFN|RESN) .*/', '', $record->getGedcom());
 		// Ignore links and tags
-		$gedrec=preg_replace('/\n\d '.WT_REGEX_TAG.'( @'.WT_REGEX_XREF.'@)?/', '', $gedrec);
+		$gedrec = preg_replace('/\n\d '.WT_REGEX_TAG.'( @'.WT_REGEX_XREF.'@)?/', '', $gedrec);
 		// Ignore tags
-		$gedrec=preg_replace('/\n\d '.WT_REGEX_TAG.' ?/', '', $gedrec);
+		$gedrec = preg_replace('/\n\d '.WT_REGEX_TAG.' ?/', '', $gedrec);
 		// Re-apply the filtering
-		$gedrec=WT_I18N::strtoupper($gedrec);
+		$gedrec = WT_I18N::strtoupper($gedrec);
 		foreach ($queryregex as $regex) {
 			if (!preg_match('/'.$regex.'/', $gedrec)) {
 				continue 2;
 			}
 		}
-		$list[]=$record;
+		$list[] = $record;
 	}
 	// Switch privacy file if necessary
 	if ($GED_ID!=WT_GED_ID) {
