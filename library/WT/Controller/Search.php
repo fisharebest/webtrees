@@ -591,7 +591,6 @@ class WT_Controller_Search extends WT_Controller_Page {
 				// individual results
 				echo '<div id="searchAccordion-indi">';
 				// Split individuals by tree
-				$trees = WT_Tree::getAll();
 				foreach ($this->search_trees as $search_tree) {
 					$datalist = array();
 					foreach ($this->myindilist as $individual) {
@@ -610,7 +609,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 						echo '</div>';//indi-acc_content
 					}
 				}
-				echo '</div>';//#searchAccordion-indi
+				echo '</div>';
 				$this->addInlineJavascript('jQuery("#searchAccordion-indi").accordion({heightStyle: "content", collapsible: true});');
 
 				// family results
