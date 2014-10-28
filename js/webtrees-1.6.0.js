@@ -994,7 +994,7 @@ function cal_updateCalendar(dateFieldId, dateDivId) {
 		return false;
 	}
 
-	var month = parseInt(monthSel.options[monthSel.selectedIndex].value);
+	var month = parseInt(monthSel.options[monthSel.selectedIndex].value, 10);
 	month = month-1;
 
 	var date = new Date(yearInput.value, month, dateSel.options[dateSel.selectedIndex].value);
@@ -1316,7 +1316,7 @@ jQuery ('body').on ('click', '.iconz', function (e) {
 	function toggleExpanded() {
 		wrapper.toggleClass(function(){
 			return basestyle + " " + basestyle + "-expanded";
-		})
+		});
 	}
 
 	if (!inout.text().length) {
