@@ -37,8 +37,6 @@ class WT_Report_Base_Element {
 	 * @return integer
 	 */
 	function render($renderer) {
-		//print "Nothing rendered.  Something bad happened";
-		//debug_print_backtrace();
 		//-- to be implemented in inherited classes
 		return 0;
 	}

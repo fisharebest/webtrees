@@ -26,6 +26,27 @@ class WT_Note extends WT_GedcomRecord {
 	const URL_PREFIX = 'note.php?nid=';
 
 	/**
+	 * Get an instance of a note object.  For single records,
+	 * we just receive the XREF.  For bulk records (such as lists
+	 * and search results) we can receive the GEDCOM data as well.
+	 *
+	 * @param string       $xref
+	 * @param integer|null $gedcom_id
+	 * @param string|null  $gedcom
+	 *
+	 * @return WT_Note|null
+	 */
+	public static function getInstance($xref, $gedcom_id = WT_GED_ID, $gedcom = null) {
+		$record = parent::getInstance($xref, $gedcom_id, $gedcom);
+
+		if ($record instanceof WT_Note) {
+			return $record;
+		} else {
+			return null;
+		}
+	}
+
+	/**
 	 * Get the text contents of the note
 	 *
 	 * @return string|null
@@ -97,7 +118,7 @@ class WT_Note extends WT_GedcomRecord {
 			}
 
 			list($text) = explode("\n", $text);
-			$this->_addName('NOTE', strlen($text) > 100 ? mb_substr($text, 0, 100) . WT_I18N::translate('…') : $text, $this->getGedcom());
+			$this->addName('NOTE', strlen($text) > 100 ? mb_substr($text, 0, 100) . WT_I18N::translate('…') : $text, $this->getGedcom());
 		}
 	}
 }

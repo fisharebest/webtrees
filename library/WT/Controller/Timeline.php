@@ -130,27 +130,6 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 		$this->topyear += 5;
 	}
 
-	/**
-	 * check the privacy of the incoming people to make sure they can be shown
-	 */
-	function checkPrivacy() {
-		$printed = false;
-		for ($i = 0; $i < count($this->people); $i++) {
-			if (!is_null($this->people[$i])) {
-				if (!$this->people[$i]->canShow()) {
-					if ($this->people[$i]->canShowName()) {
-						echo "&nbsp;<a href=\"" . $this->people[$i]->getHtmlUrl() . "\">" . $this->people[$i]->getFullName() . "</a>";
-						echo '<div class="error">', WT_I18N::translate('This information is private and cannot be shown.'), '</div>';
-						echo "<br>";
-						$printed = true;
-					} elseif (!$printed) {
-						echo '<div class="error">', WT_I18N::translate('This information is private and cannot be shown.'), '</div>';
-					}
-				}
-			}
-		}
-	}
-
 	function print_time_fact(WT_Fact $event) {
 		global $basexoffset, $baseyoffset, $factcount, $TEXT_DIRECTION, $WT_IMAGES, $placements;
 

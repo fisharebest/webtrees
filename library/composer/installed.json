@@ -1,5 +1,58 @@
 [
     {
+        "name": "bombayworks/zendframework1",
+        "version": "v1.12.9",
+        "version_normalized": "1.12.9.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/bombayworks/zendframework1.git",
+            "reference": "4bce65c9427866dc62e9ea9ab511f0edffa49f85"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/bombayworks/zendframework1/zipball/4bce65c9427866dc62e9ea9ab511f0edffa49f85",
+            "reference": "4bce65c9427866dc62e9ea9ab511f0edffa49f85",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.2.11"
+        },
+        "require-dev": {
+            "phpunit/dbunit": "1.3.*",
+            "phpunit/phpunit": "3.7.*"
+        },
+        "time": "2014-09-17 15:01:24",
+        "bin": [
+            "bin/zf.sh",
+            "bin/zf.php"
+        ],
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.12.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Zend_": "library/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "include-path": [
+            "library/"
+        ],
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "description": "Zend Framework 1",
+        "homepage": "http://framework.zend.com/",
+        "keywords": [
+            "ZF1",
+            "framework"
+        ]
+    },
+    {
         "name": "ezyang/htmlpurifier",
         "version": "v4.6.0",
         "version_normalized": "4.6.0.0",
@@ -47,6 +100,66 @@
         ]
     },
     {
+        "name": "fisharebest/ext-calendar",
+        "version": "1.2.0",
+        "version_normalized": "1.2.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/fisharebest/ext-calendar.git",
+            "reference": "e73e382d347440c9ea6ac8abc658cc4405c9250d"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/fisharebest/ext-calendar/zipball/e73e382d347440c9ea6ac8abc658cc4405c9250d",
+            "reference": "e73e382d347440c9ea6ac8abc658cc4405c9250d",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "*",
+            "satooshi/php-coveralls": "dev-master"
+        },
+        "time": "2014-09-27 08:43:30",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Fisharebest\\ExtCalendar\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-3.0+"
+        ],
+        "authors": [
+            {
+                "name": "Greg Roach",
+                "email": "fisharebest@gmail.com",
+                "role": "Developer"
+            }
+        ],
+        "description": "Implementation of the Arabic (Hijri), French, Gregorian, Jewish, Julian and Persian (Jalali) calendars.  PHP shims for the ext/calendar extension.",
+        "homepage": "https://github.com/fisharebest/ext-calendar",
+        "keywords": [
+            "Jalali",
+            "arabic",
+            "calendar",
+            "ext-calendar",
+            "french",
+            "gregorian",
+            "hebrew",
+            "hijri",
+            "jewish",
+            "julian",
+            "julian day",
+            "julian day number",
+            "persian",
+            "shamsi"
+        ]
+    },
+    {
         "name": "ircmaxell/password-compat",
         "version": "1.0.3",
         "version_normalized": "1.0.3.0",
@@ -76,7 +189,7 @@
         "authors": [
             {
                 "name": "Anthony Ferrara",
-                "email": "ircmaxell@php.net",
+                "email": "ircmaxell@ircmaxell.com",
                 "homepage": "http://blog.ircmaxell.com"
             }
         ],
@@ -138,6 +251,129 @@
         "homepage": "http://michelf.ca/projects/php-markdown/",
         "keywords": [
             "markdown"
+        ]
+    },
+    {
+        "name": "patchwork/utf8",
+        "version": "v1.1.25",
+        "version_normalized": "1.1.25.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/nicolas-grekas/Patchwork-UTF8.git",
+            "reference": "2d43bd047b120279511d45e76e61c5a9812d9a83"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/nicolas-grekas/Patchwork-UTF8/zipball/2d43bd047b120279511d45e76e61c5a9812d9a83",
+            "reference": "2d43bd047b120279511d45e76e61c5a9812d9a83",
+            "shasum": ""
+        },
+        "require": {
+            "lib-pcre": ">=7.3",
+            "php": ">=5.3.0"
+        },
+        "suggest": {
+            "ext-iconv": "Use iconv for best performance",
+            "ext-intl": "Use Intl for best performance",
+            "ext-mbstring": "Use Mbstring for best performance"
+        },
+        "time": "2014-08-05 08:00:32",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.1-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Patchwork": "class/",
+                "Normalizer": "class/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "(Apache-2.0 or GPL-2.0)"
+        ],
+        "authors": [
+            {
+                "name": "Nicolas Grekas",
+                "email": "p@tchwork.com",
+                "role": "Developer"
+            }
+        ],
+        "description": "Extensive, portable and performant handling of UTF-8 and grapheme clusters for PHP",
+        "homepage": "https://github.com/nicolas-grekas/Patchwork-UTF8",
+        "keywords": [
+            "i18n",
+            "unicode",
+            "utf-8",
+            "utf8"
+        ]
+    },
+    {
+        "name": "tecnick.com/tcpdf",
+        "version": "6.0.097",
+        "version_normalized": "6.0.097.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/tecnickcom/TCPDF.git",
+            "reference": "73b436e180d91cb0e9897242ccfb4b49fc498901"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/73b436e180d91cb0e9897242ccfb4b49fc498901",
+            "reference": "73b436e180d91cb0e9897242ccfb4b49fc498901",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "time": "2014-10-20 20:02:38",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "fonts",
+                "config",
+                "include",
+                "tcpdf.php",
+                "tcpdf_parser.php",
+                "tcpdf_import.php",
+                "tcpdf_barcodes_1d.php",
+                "tcpdf_barcodes_2d.php",
+                "include/tcpdf_colors.php",
+                "include/tcpdf_filters.php",
+                "include/tcpdf_font_data.php",
+                "include/tcpdf_fonts.php",
+                "include/tcpdf_images.php",
+                "include/tcpdf_static.php",
+                "include/barcodes/datamatrix.php",
+                "include/barcodes/pdf417.php",
+                "include/barcodes/qrcode.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "LGPLv3"
+        ],
+        "authors": [
+            {
+                "name": "Nicola Asuni",
+                "email": "info@tecnick.com",
+                "homepage": "http://nicolaasuni.tecnick.com"
+            }
+        ],
+        "description": "TCPDF is a PHP class for generating PDF documents and barcodes.",
+        "homepage": "http://www.tcpdf.org/",
+        "keywords": [
+            "PDFD32000-2008",
+            "TCPDF",
+            "barcodes",
+            "datamatrix",
+            "pdf",
+            "pdf417",
+            "qrcode"
         ]
     },
     {
@@ -206,242 +442,6 @@
             "guid",
             "identifier",
             "uuid"
-        ]
-    },
-    {
-        "name": "patchwork/utf8",
-        "version": "v1.1.25",
-        "version_normalized": "1.1.25.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/nicolas-grekas/Patchwork-UTF8.git",
-            "reference": "2d43bd047b120279511d45e76e61c5a9812d9a83"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/nicolas-grekas/Patchwork-UTF8/zipball/2d43bd047b120279511d45e76e61c5a9812d9a83",
-            "reference": "2d43bd047b120279511d45e76e61c5a9812d9a83",
-            "shasum": ""
-        },
-        "require": {
-            "lib-pcre": ">=7.3",
-            "php": ">=5.3.0"
-        },
-        "suggest": {
-            "ext-iconv": "Use iconv for best performance",
-            "ext-intl": "Use Intl for best performance",
-            "ext-mbstring": "Use Mbstring for best performance"
-        },
-        "time": "2014-08-05 08:00:32",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.1-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Patchwork": "class/",
-                "Normalizer": "class/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "(Apache-2.0 or GPL-2.0)"
-        ],
-        "authors": [
-            {
-                "name": "Nicolas Grekas",
-                "email": "p@tchwork.com",
-                "role": "Developer"
-            }
-        ],
-        "description": "Extensive, portable and performant handling of UTF-8 and grapheme clusters for PHP",
-        "homepage": "https://github.com/nicolas-grekas/Patchwork-UTF8",
-        "keywords": [
-            "i18n",
-            "unicode",
-            "utf-8",
-            "utf8"
-        ]
-    },
-    {
-        "name": "tecnick.com/tcpdf",
-        "version": "6.0.093",
-        "version_normalized": "6.0.093.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/tecnickcom/TCPDF.git",
-            "reference": "8ec040b3ccedc2a0150a7b6b46c18c59d932ad59"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/8ec040b3ccedc2a0150a7b6b46c18c59d932ad59",
-            "reference": "8ec040b3ccedc2a0150a7b6b46c18c59d932ad59",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.0"
-        },
-        "time": "2014-09-02 19:31:33",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "classmap": [
-                "fonts",
-                "config",
-                "include",
-                "tcpdf.php",
-                "tcpdf_parser.php",
-                "tcpdf_import.php",
-                "tcpdf_barcodes_1d.php",
-                "tcpdf_barcodes_2d.php",
-                "include/tcpdf_colors.php",
-                "include/tcpdf_filters.php",
-                "include/tcpdf_font_data.php",
-                "include/tcpdf_fonts.php",
-                "include/tcpdf_images.php",
-                "include/tcpdf_static.php",
-                "include/barcodes/datamatrix.php",
-                "include/barcodes/pdf417.php",
-                "include/barcodes/qrcode.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "LGPLv3"
-        ],
-        "authors": [
-            {
-                "name": "Nicola Asuni",
-                "email": "info@tecnick.com",
-                "homepage": "http://nicolaasuni.tecnick.com"
-            }
-        ],
-        "description": "TCPDF is a PHP class for generating PDF documents and barcodes.",
-        "homepage": "http://www.tcpdf.org/",
-        "keywords": [
-            "PDFD32000-2008",
-            "TCPDF",
-            "barcodes",
-            "datamatrix",
-            "pdf",
-            "pdf417",
-            "qrcode"
-        ]
-    },
-    {
-        "name": "bombayworks/zendframework1",
-        "version": "v1.12.9",
-        "version_normalized": "1.12.9.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/bombayworks/zendframework1.git",
-            "reference": "4bce65c9427866dc62e9ea9ab511f0edffa49f85"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/bombayworks/zendframework1/zipball/4bce65c9427866dc62e9ea9ab511f0edffa49f85",
-            "reference": "4bce65c9427866dc62e9ea9ab511f0edffa49f85",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.2.11"
-        },
-        "require-dev": {
-            "phpunit/dbunit": "1.3.*",
-            "phpunit/phpunit": "3.7.*"
-        },
-        "time": "2014-09-17 15:01:24",
-        "bin": [
-            "bin/zf.sh",
-            "bin/zf.php"
-        ],
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.12.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Zend_": "library/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "include-path": [
-            "library/"
-        ],
-        "license": [
-            "BSD-3-Clause"
-        ],
-        "description": "Zend Framework 1",
-        "homepage": "http://framework.zend.com/",
-        "keywords": [
-            "ZF1",
-            "framework"
-        ]
-    },
-    {
-        "name": "fisharebest/ext-calendar",
-        "version": "1.2.0",
-        "version_normalized": "1.2.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/fisharebest/ext-calendar.git",
-            "reference": "e73e382d347440c9ea6ac8abc658cc4405c9250d"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/fisharebest/ext-calendar/zipball/e73e382d347440c9ea6ac8abc658cc4405c9250d",
-            "reference": "e73e382d347440c9ea6ac8abc658cc4405c9250d",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.0"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "*",
-            "satooshi/php-coveralls": "dev-master"
-        },
-        "time": "2014-09-27 08:43:30",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Fisharebest\\ExtCalendar\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "GPL-3.0+"
-        ],
-        "authors": [
-            {
-                "name": "Greg Roach",
-                "email": "fisharebest@gmail.com",
-                "role": "Developer"
-            }
-        ],
-        "description": "Implementation of the Arabic (Hijri), French, Gregorian, Jewish, Julian and Persian (Jalali) calendars.  PHP shims for the ext/calendar extension.",
-        "homepage": "https://github.com/fisharebest/ext-calendar",
-        "keywords": [
-            "Jalali",
-            "arabic",
-            "calendar",
-            "ext-calendar",
-            "french",
-            "gregorian",
-            "hebrew",
-            "hijri",
-            "jewish",
-            "julian",
-            "julian day",
-            "julian day number",
-            "persian",
-            "shamsi"
         ]
     }
 ]

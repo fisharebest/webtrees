@@ -35,7 +35,7 @@ class WT_Report_HTML_Cell extends WT_Report_Base_Cell {
 		if (strpos($this->text, "{{:ptp:}}") !== false) {
 			return;
 		}
-		$temptext = str_replace("#PAGENUM#", $html->PageNo(), $this->text);
+		$temptext = str_replace("#PAGENUM#", $html->pageNo(), $this->text);
 		// underline «title» part of Source item
 		$temptext = str_replace(array('«', '»'), array('<u>', '</u>'), $temptext);
 
@@ -49,15 +49,15 @@ class WT_Report_HTML_Cell extends WT_Report_Base_Cell {
 
 		// Adjust the positions
 		if ($this->left == ".") {
-			$this->left = $html->GetX();
+			$this->left = $html->getX();
 		} else {
-			$html->SetX($this->left);
+			$html->setX($this->left);
 		}
 
 		if ($this->top == ".") {
-			$this->top = $html->GetY();
+			$this->top = $html->getY();
 		} else {
-			$html->SetY($this->top);
+			$html->setY($this->top);
 		}
 
 		// Start collecting the HTML code
@@ -184,16 +184,16 @@ class WT_Report_HTML_Cell extends WT_Report_Base_Cell {
 		// Where to place the next position
 		// -> Next to this cell in the same line
 		if ($this->newline == 0) {
-			$html->SetXY($this->left + $this->width, $this->top);
+			$html->setXy($this->left + $this->width, $this->top);
 			$html->lastCellHeight = $this->height;
 		} // -> On a new line at the margin - Default
 		elseif ($this->newline == 1) {
-			$html->SetXY(0, $html->GetY() + $this->height + ($cP * 2));
+			$html->setXy(0, $html->getY() + $this->height + ($cP * 2));
 			// Reset the last cell height for the next line
 			$html->lastCellHeight = 0;
 		} // -> On a new line at the end of this cell
 		elseif ($this->newline == 2) {
-			$html->SetXY($html->GetX() + $this->width, $html->GetY() + $this->height + ($cP * 2));
+			$html->setXy($html->getX() + $this->width, $html->getY() + $this->height + ($cP * 2));
 			// Reset the last cell height for the next line
 			$html->lastCellHeight = 0;
 		}

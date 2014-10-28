@@ -86,7 +86,6 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		}
 		//-- spouse and children --------------------------------------------------
 		foreach ($controller->record->getSpouseFamilies() as $family) {
-//			$this->drawFamily($family, WT_I18N::translate('Immediate Family'));
 			$this->drawFamily($family, $controller->record->getSpouseFamilyLabel($family));
 		}
 		//-- step children ----------------------------------------------------------------

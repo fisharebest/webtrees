@@ -131,7 +131,7 @@ class WT_Report_PDF extends WT_Report_Base {
 	 *
 	 */
 	function run() {
-		$this->pdf->Body();
+		$this->pdf->body();
 		header('Expires:');
 		header('Pragma:');
 		header('Cache-control:');
@@ -360,12 +360,12 @@ class PDF extends TCPDF {
 	/**
 	 * PDF Header -PDF
 	 */
-	function Header() {
+	function header() {
 		foreach ($this->headerElements as $element) {
 			if (is_object($element)) {
 				$element->render($this);
 			} elseif (is_string($element) && $element == "footnotetexts") {
-				$this->Footnotes();
+				$this->footnotes();
 			} elseif (is_string($element) && $element == "addpage") {
 				$this->newPage();
 			}
@@ -374,7 +374,7 @@ class PDF extends TCPDF {
 			if (is_object($element)) {
 				$element->render($this);
 			} elseif (is_string($element) && $element == "footnotetexts") {
-				$this->Footnotes();
+				$this->footnotes();
 			} elseif (is_string($element) && $element == "addpage") {
 				$this->newPage();
 			}
@@ -384,13 +384,13 @@ class PDF extends TCPDF {
 	/**
 	 * PDF Body -PDF
 	 */
-	function Body() {
+	function body() {
 		$this->AddPage();
 		foreach ($this->bodyElements as $key => $element) {
 			if (is_object($element)) {
 				$element->render($this);
 			} elseif (is_string($element) && $element == "footnotetexts") {
-				$this->Footnotes();
+				$this->footnotes();
 			} elseif (is_string($element) && $element == "addpage") {
 				$this->newPage();
 			}
@@ -402,7 +402,7 @@ class PDF extends TCPDF {
 	/**
 	 * PDF Footnotes -PDF
 	 */
-	function Footnotes() {
+	function footnotes() {
 		foreach ($this->printedfootnotes as $element) {
 			if (($this->GetY() + $element->getFootnoteHeight($this)) > $this->getPageHeight()) {
 				$this->AddPage();
@@ -417,12 +417,12 @@ class PDF extends TCPDF {
 	/**
 	 * PDF Footer -PDF
 	 */
-	function Footer() {
+	function footer() {
 		foreach ($this->footerElements as $element) {
 			if (is_object($element)) {
 				$element->render($this);
 			} elseif (is_string($element) && $element == "footnotetexts") {
-				$this->Footnotes();
+				$this->footnotes();
 			} elseif (is_string($element) && $element == "addpage") {
 				$this->newPage();
 			}

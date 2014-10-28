@@ -180,20 +180,20 @@ class WT_Date {
 	/**
 	 * Convert a date to the preferred format and calendar(s) display.
 	 *
-	 * @param boolean|null $url             Wrap the date in a link to calendar.php
-	 * @param string|null  $date_format     Override the default date format
-	 * @param boolean|null $calendar_format Convert the date into other calendars
+	 * @param boolean|null $url               Wrap the date in a link to calendar.php
+	 * @param string|null  $date_format       Override the default date format
+	 * @param boolean|null $convert_calendars Convert the date into other calendars
 	 *
 	 * @return string
 	 */
-	function display($url = false, $date_format = null, $calendar_format = true) {
+	function display($url = false, $date_format = null, $convert_calendars = true) {
 		global $TEXT_DIRECTION, $DATE_FORMAT, $CALENDAR_FORMAT;
 
-		// Convert dates to given calendars and given formats
 		if ($date_format === null) {
 			$date_format = $DATE_FORMAT;
 		}
-		if ($calendar_format === null) {
+
+		if ($convert_calendars) {
 			$calendar_format = explode('_and_', $CALENDAR_FORMAT);
 		} else {
 			$calendar_format = array();
@@ -457,7 +457,7 @@ class WT_Date {
 	 *
 	 * @return string
 	 */
-	static function GetAgeGedcom($d1, $d2 = null, $warn_on_negative = true) {
+	static function GetAgeGedcom(WT_Date $d1, WT_Date $d2 = null, $warn_on_negative = true) {
 		if (is_null($d2)) {
 			return $d1->date1->GetAge(true, WT_CLIENT_JD, $warn_on_negative);
 		} else {

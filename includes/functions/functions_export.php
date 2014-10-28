@@ -21,20 +21,18 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-// Tidy up a gedcom record on export, for compatibility/portability
+/**
+ * Tidy up a gedcom record on export, for compatibility/portability.
+ *
+ * @param string $rec
+ *
+ * @return string
+ */
 function reformat_record_export($rec) {
 	global $WORD_WRAPPED_NOTES;
 
 	$newrec='';
 	foreach (preg_split('/[\r\n]+/', $rec, -1, PREG_SPLIT_NO_EMPTY) as $line) {
-		// Escape @ characters
-		// TODO:
-		// Need to replace “@” with “@@”, unless it is either
-		// a) an xref, such as @I123@
-		// b) an escape, such as @#D FRENCH R@
-		if (false) {
-			$line=str_replace('@', '@@', $line);
-		}
 		// Split long lines
 		// The total length of a GEDCOM line, including level number, cross-reference number,
 		// tag, value, delimiters, and terminator, must not exceed 255 (wide) characters.
@@ -77,7 +75,13 @@ function reformat_record_export($rec) {
 	return $newrec;
 }
 
-//Create a header for a (newly-created or already-imported) gedcom file.
+/**
+ * Create a header for a (newly-created or already-imported) gedcom file.
+ *
+ * @param string $gedfile
+ *
+ * @return string
+ */
 function gedcom_header($gedfile) {
 	$ged_id = get_id_from_gedcom($gedfile);
 
@@ -128,7 +132,14 @@ function gedcom_header($gedfile) {
 	return $HEAD . $SOUR . $DEST . $DATE . $GEDC . $CHAR . $FILE . $COPR . $LANG . $PLAC . $SUBN . $SUBM . "\n";
 }
 
-// Prepend the GEDCOM_MEDIA_PATH to media filenames
+/**
+ * Prepend the GEDCOM_MEDIA_PATH to media filenames.
+ *
+ * @param string $rec
+ * @param string $path
+ *
+ * @return string
+ */
 function convert_media_path($rec, $path) {
 	if ($path && preg_match('/\n1 FILE (.+)/', $rec, $match)) {
 		$old_file_name=$match[1];
@@ -146,20 +157,21 @@ function convert_media_path($rec, $path) {
 			$rec=str_replace("\n1 FILE ".$old_file_name, "\n1 FILE ".$new_file_name, $rec);
 		}
 	}
+
 	return $rec;
 }
 
-/*
+/**
  * Export the database in GEDCOM format
  *
- *  input parameters:
- * $gedcom:         GEDCOM to be exported
- * $gedout:         Handle of output file
- * $exportOptions:  array of options for this Export operation as follows:
- *  'privatize':    which Privacy rules apply?  (none, visitor, user, manager)
- *  'toANSI':       should the output be produced in ANSI instead of UTF-8?  (yes, no)
- *  'path':         what constant should prefix all media file paths?  (eg: media/  or c:\my pictures\my family
- *  'slashes':      what folder separators apply to media file paths?  (forward, backward)
+ * @param string   $gedcom
+ * @param resource $gedout        Handle to a writable stream
+ * @param string[] $exportOptions Export options are as follows:
+ *                                'privatize':    which Privacy rules apply?  (none, visitor, user, manager)
+ *                                'toANSI':       should the output be produced in ANSI instead of UTF-8?  (yes, no)
+ *                                'path':         what constant should prefix all media file paths?  (eg: media/  or c:\my pictures\my family
+ *                                'slashes':      what folder separators apply to media file paths?  (forward, backward)
+ *
  */
 function export_gedcom($gedcom, $gedout, $exportOptions) {
 	global $GEDCOM;

@@ -152,7 +152,7 @@ class Auth {
 	/**
 	 * The authenticated user, from the current session.
 	 *
-	 * @return User|null
+	 * @return User
 	 */
 	public static function user() {
 		$user = User::find(Auth::id());

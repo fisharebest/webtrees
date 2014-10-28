@@ -20,17 +20,7 @@
 
 use WT\Auth;
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
-if (!WT_USER_GEDCOM_ADMIN) {
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'module.php?mod=batch_update');
-	exit;
-}
-
-require WT_ROOT.'includes/functions/functions_edit.php';
+require_once WT_ROOT . 'includes/functions/functions_edit.php';
 
 class batch_update {
 	var $plugin   =null; // Form parameter: chosen plugin
@@ -344,7 +334,7 @@ class base_plugin {
 		$old_lines=preg_split('/[\n]+/', $record->getGedcom());
 		$new_lines=preg_split('/[\n]+/', $this->updateRecord($record->getXref(), $record->getGedcom()));
 		// Find matching lines using longest-common-subsequence algorithm.
-		$lcs=self::LCS($old_lines, $new_lines, 0, count($old_lines)-1, 0, count($new_lines)-1);
+		$lcs=self::LongestCommonSubsequence($old_lines, $new_lines, 0, count($old_lines)-1, 0, count($new_lines)-1);
 
 		$diff_lines=array();
 		$last_old=-1;
@@ -372,22 +362,22 @@ class base_plugin {
 	}
 
 	// Longest Common Subsequence.
-	static function LCS($X, $Y, $x1, $x2, $y1, $y2) {
+	private static function LongestCommonSubsequence($X, $Y, $x1, $x2, $y1, $y2) {
 		if ($x2-$x1>=0 && $y2-$y1>=0) {
 			if ($X[$x1]==$Y[$y1]) {
 				// Match at start of sequence
-				$tmp=self::LCS($X, $Y, $x1+1, $x2, $y1+1, $y2);
+				$tmp=self::LongestCommonSubsequence($X, $Y, $x1+1, $x2, $y1+1, $y2);
 				array_unshift($tmp, array($x1, $y1));
 				return $tmp;
 			} elseif ($X[$x2]==$Y[$y2]) {
 				// Match at end of sequence
-				$tmp=self::LCS($X, $Y, $x1, $x2-1, $y1, $y2-1);
+				$tmp=self::LongestCommonSubsequence($X, $Y, $x1, $x2-1, $y1, $y2-1);
 				array_push($tmp, array($x2, $y2));
 				return $tmp;
 			} else {
 				// No match.  Look for subsequences
-				$tmp1=self::LCS($X, $Y, $x1, $x2, $y1, $y2-1);
-				$tmp2=self::LCS($X, $Y, $x1, $x2-1, $y1, $y2);
+				$tmp1=self::LongestCommonSubsequence($X, $Y, $x1, $x2, $y1, $y2-1);
+				$tmp2=self::LongestCommonSubsequence($X, $Y, $x1, $x2-1, $y1, $y2);
 				return count($tmp1) > count($tmp2) ? $tmp1 : $tmp2;
 			}
 		} else {

@@ -34,6 +34,27 @@ class WT_Individual extends WT_GedcomRecord {
 	private $_getEstimatedDeathDate = null;
 
 	/**
+	 * Get an instance of an individual object.  For single records,
+	 * we just receive the XREF.  For bulk records (such as lists
+	 * and search results) we can receive the GEDCOM data as well.
+	 *
+	 * @param string       $xref
+	 * @param integer|null $gedcom_id
+	 * @param string|null  $gedcom
+	 *
+	 * @return WT_Individual|null
+	 */
+	public static function getInstance($xref, $gedcom_id = WT_GED_ID, $gedcom = null) {
+		$record = parent::getInstance($xref, $gedcom_id, $gedcom);
+
+		if ($record instanceof WT_Individual) {
+			return $record;
+		} else {
+			return null;
+		}
+	}
+
+	/**
 	 * Can the name of this record be shown?
 	 *
 	 * {@inheritdoc}
@@ -213,7 +234,7 @@ class WT_Individual extends WT_GedcomRecord {
 	 *
 	 * @return integer
 	 */
-	static function CompareBirtDate(WT_Individual $x, WT_Individual $y) {
+	public static function compareBirthDate(WT_Individual $x, WT_Individual $y) {
 		return WT_Date::Compare($x->getEstimatedBirthDate(), $y->getEstimatedBirthDate());
 	}
 
@@ -225,7 +246,7 @@ class WT_Individual extends WT_GedcomRecord {
 	 *
 	 * @return integer
 	 */
-	static function CompareDeatDate(WT_Individual $x, WT_Individual $y) {
+	public static function compareDeathDate(WT_Individual $x, WT_Individual $y) {
 		return WT_Date::Compare($x->getEstimatedDeathDate(), $y->getEstimatedDeathDate());
 	}
 
@@ -1072,7 +1093,7 @@ class WT_Individual extends WT_GedcomRecord {
 	 * @param string $full
 	 * @param string $gedcom
 	 */
-	protected function _addName($type, $full, $gedcom) {
+	protected function addName($type, $full, $gedcom) {
 		global $UNKNOWN_NN, $UNKNOWN_PN;
 
 		////////////////////////////////////////////////////////////////////////////
@@ -1171,7 +1192,7 @@ class WT_Individual extends WT_GedcomRecord {
 		if ($NICK) {
 			// NICK field found.  Add localised quotation marks.
 
-			// GREG 28/Jan/12 - these localised quotation marks apparantly cause problems with LTR names on RTL
+			// GREG 28/Jan/12 - these localised quotation marks apparently cause problems with LTR names on RTL
 			// pages and vice-versa.  Just use straight ASCII quotes.  Keep the old code, so that we keep the
 			// translations.
 			if (false) {
@@ -1253,7 +1274,7 @@ class WT_Individual extends WT_GedcomRecord {
 	 *
 	 * @return string
 	 */
-	function format_list_details() {
+	function formatListDetails() {
 		return
 			$this->format_first_major_fact(WT_EVENTS_BIRT, 1) .
 			$this->format_first_major_fact(WT_EVENTS_DEAT, 1);

@@ -97,11 +97,9 @@ if (!defined('WT_WEBTREES')) {
 
 	function changeYear(cenyear) {
 
-		var cenctry=document.getElementById('censCtry').value;
-			// alert("Set Date is in the "+TheCenCtry+" --- "+"Now in "+cenctry);
-
+		var cenctry = document.getElementById('censCtry').value;
 		var tbl = document.getElementById('tblSample');
-		if (tbl.rows.length==0) {
+		if (tbl.rows.length === 0) {
 			create_header();
 		}
 		// Change Date field -----------------------------------------------------
@@ -383,10 +381,8 @@ if (!defined('WT_WEBTREES')) {
 	function changeAge(cenyear) {
 		var base1901 = "<?php echo $censyear; ?>";
 		var prevyr = document.getElementById('prevYear');
-		if (prevyr.value !="") {
+		if (prevyr.value != "") {
 			var prevcenyear=prevyr.value;
-		} else {
-			// alert("cenyear = "+cenyear+" ... prevcenyear = base_"+base1901);
 		}
 
 		var cendate = getCenDate(cenyear);

@@ -34,26 +34,25 @@ if (!defined('WT_WEBTREES')) {
  * @global array $elementHandler
  */
 $elementHandler = array();
-$elementHandler["Report"]["start"]   ="ReportSHandler";
-$elementHandler["var"]["start"]      ="varSHandler";
-$elementHandler["Title"]["start"]    ="TitleSHandler";
-$elementHandler["Title"]["end"]      ="TitleEHandler";
-$elementHandler["Description"]["end"]="DescriptionEHandler";
-$elementHandler["Input"]["start"]    ="InputSHandler";
-$elementHandler["Input"]["end"]      ="InputEHandler";
+$elementHandler["Report"]["start"]   ="reportStartHandler";
+$elementHandler["var"]["start"]      ="varStartHandler";
+$elementHandler["Title"]["start"]    ="titleStartHandler";
+$elementHandler["Title"]["end"]      ="titleEndHandler";
+$elementHandler["Description"]["end"]="descriptionEndHandler";
+$elementHandler["Input"]["start"]    ="inputStartHandler";
+$elementHandler["Input"]["end"]      ="inputEndHandler";
 
 $text = "";
 $report_array = array();
-
-
 
 /**
  * xml start element handler
  *
  * this function is called whenever a starting element is reached
+
  * @param resource $parser the resource handler for the xml parser
- * @param string $name the name of the xml element parsed
- * @param array $attrs an array of key value pairs for the attributes
+ * @param string   $name the name of the xml element parsed
+ * @param string[] $attrs an array of key value pairs for the attributes
  */
 function startElement($parser, $name, $attrs) {
 	global $elementHandler, $processIfs;
@@ -73,8 +72,6 @@ function startElement($parser, $name, $attrs) {
  * @param string $name the name of the xml element parsed
  */
 function endElement($parser, $name) {
-	// @deprecated
-	// global $elementHandler, $processIfs, $processGedcoms, $processRepeats;
 	global $elementHandler, $processIfs;
 
 	if (($processIfs==0) || ($name=="if")) {
@@ -98,7 +95,10 @@ function characterData($parser, $data) {
 	$text .= $data;
 }
 
-function ReportSHandler($attrs) {
+/**
+ * @param string[] $attrs
+ */
+function reportStartHandler($attrs) {
 	global $report_array;
 
 	$access = WT_PRIV_PUBLIC;
@@ -116,7 +116,10 @@ function ReportSHandler($attrs) {
 	}
 }
 
-function varSHandler($attrs) {
+/**
+ * @param string[] $attrs
+ */
+function varStartHandler($attrs) {
 	global $text, $fact, $desc, $type;
 
 	$var = $attrs["var"];
@@ -133,27 +136,30 @@ function varSHandler($attrs) {
 	}
 }
 
-function TitleSHandler() {
+function titleStartHandler() {
 	global $text;
 
 	$text = "";
 }
 
-function TitleEHandler() {
+function titleEndHandler() {
 	global $report_array, $text;
 
 	$report_array["title"] = $text;
 	$text = "";
 }
 
-function DescriptionEHandler() {
+function descriptionEndHandler() {
 	global $report_array, $text;
 
 	$report_array["description"] = $text;
 	$text = "";
 }
 
-function InputSHandler($attrs) {
+/**
+ * @param string[] $attrs
+ */
+function inputStartHandler($attrs) {
 	global $input, $text;
 
 	$text ="";
@@ -194,7 +200,7 @@ function InputSHandler($attrs) {
 	}
 }
 
-function InputEHandler() {
+function inputEndHandler() {
 	global $report_array, $text, $input;
 
 	$input["value"] = $text;

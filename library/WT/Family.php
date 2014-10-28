@@ -52,6 +52,27 @@ class WT_Family extends WT_GedcomRecord {
 	}
 
 	/**
+	 * Get an instance of a family object.  For single records,
+	 * we just receive the XREF.  For bulk records (such as lists
+	 * and search results) we can receive the GEDCOM data as well.
+	 *
+	 * @param string       $xref
+	 * @param integer|null $gedcom_id
+	 * @param string|null  $gedcom
+	 *
+	 * @return WT_Family|null
+	 */
+	public static function getInstance($xref, $gedcom_id = WT_GED_ID, $gedcom = null) {
+		$record = parent::getInstance($xref, $gedcom_id, $gedcom);
+
+		if ($record instanceof WT_Family) {
+			return $record;
+		} else {
+			return null;
+		}
+	}
+
+	/**
 	 * {@inheritdoc}
 	 */
 	protected function createPrivateGedcomRecord($access_level) {
@@ -372,7 +393,7 @@ class WT_Family extends WT_GedcomRecord {
 	/**
 	 * {@inheritdoc}
 	 */
-	function format_list_details() {
+	function formatListDetails() {
 		return
 			$this->format_first_major_fact(WT_EVENTS_MARR, 1) .
 			$this->format_first_major_fact(WT_EVENTS_DIV, 1);

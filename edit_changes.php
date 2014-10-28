@@ -183,9 +183,9 @@ if ($changed_gedcoms) {
 		$output .= '<td class="list_value">';
 		foreach ($record->getFacts() as $fact) {
 			if ($fact->getTag() != 'CHAN') {
-				if ($fact->isNew()) {
+				if ($fact->isPendingAddition()) {
 					$output .= '<div class="new" title="' . strip_tags($fact->summary()) . '">' .$fact->getLabel() . '</div>';
-				} elseif ($fact->isOld()) {
+				} elseif ($fact->isPendingDeletion()) {
 					$output .= '<div class="old" title="' . strip_tags($fact->summary()) . '">' .$fact->getLabel() . '</div>';
 				}
 			}

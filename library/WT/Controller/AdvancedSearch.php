@@ -319,7 +319,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 						$bind[]=$value;
 						break;
 					case 'SDX_STD':
-						$sdx = WT_Soundex::soundex_std($value);
+						$sdx = WT_Soundex::russell($value);
 						if ($sdx) {
 							$sdx = explode(':', $sdx);
 							foreach ($sdx as $k=>$v) {
@@ -335,7 +335,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 						break;
 					case 'SDX': // SDX uses DM by default.
 					case 'SDX_DM':
-						$sdx = WT_Soundex::soundex_dm($value);
+						$sdx = WT_Soundex::daitchMokotoff($value);
 						if ($sdx) {
 							$sdx = explode(':', $sdx);
 							foreach ($sdx as $k=>$v) {
@@ -366,7 +366,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 						$bind[]=$value;
 						break;
 					case 'SDX_STD':
-						$sdx = WT_Soundex::soundex_std($value);
+						$sdx = WT_Soundex::russell($value);
 						if ($sdx) {
 							$sdx = explode(':', $sdx);
 							foreach ($sdx as $k=>$v) {
@@ -382,7 +382,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 						break;
 					case 'SDX': // SDX uses DM by default.
 					case 'SDX_DM':
-						$sdx = WT_Soundex::soundex_dm($value);
+						$sdx = WT_Soundex::daitchMokotoff($value);
 						if ($sdx) {
 							$sdx = explode(':', $sdx);
 							foreach ($sdx as $k=>$v) {
@@ -416,7 +416,6 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 					else $jd2 = $date->date1->maxJD;
 					if (!empty($this->plusminus[$i])) {
 						$adjd = $this->plusminus[$i]*365;
-						//echo $jd1.":".$jd2.":".$adjd;
 						$jd1 = $jd1 - $adjd;
 						$jd2 = $jd2 + $adjd;
 					}
@@ -434,7 +433,6 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 					else $jd2 = $date->date1->maxJD;
 					if (!empty($this->plusminus[$i])) {
 						$adjd = $this->plusminus[$i]*365;
-						//echo $jd1.":".$jd2.":".$adjd;
 						$jd1 = $jd1 - $adjd;
 						$jd2 = $jd2 + $adjd;
 					}
@@ -447,7 +445,6 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 				// *:PLAC
 				// SQL can only link a place to a person/family, not to an event.
 				$sql.=" AND i_p.place LIKE CONCAT('%', ?, '%')";
-				//$sql.=" AND i_p.p_place=?";
 				$bind[]=$value;
 			} elseif ($parts[0]=='FAMS' && $parts[2]=='PLAC') {
 				// FAMS:*:PLAC
@@ -473,7 +470,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 						$bind[]=$value;
 						break;
 					case 'SDX_STD':
-						$sdx = WT_Soundex::soundex_std($value);
+						$sdx = WT_Soundex::russell($value);
 						if ($sdx) {
 							$sdx = explode(':', $sdx);
 							foreach ($sdx as $k=>$v) {
@@ -489,7 +486,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 						break;
 					case 'SDX': // SDX uses DM by default.
 					case 'SDX_DM':
-						$sdx = WT_Soundex::soundex_dm($value);
+						$sdx = WT_Soundex::daitchMokotoff($value);
 						if ($sdx) {
 							$sdx = explode(':', $sdx);
 							foreach ($sdx as $k=>$v) {
@@ -520,7 +517,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 						$bind[]=$value;
 						break;
 					case 'SDX_STD':
-						$sdx = WT_Soundex::soundex_std($value);
+						$sdx = WT_Soundex::russell($value);
 						if ($sdx) {
 							$sdx = explode(':', $sdx);
 							foreach ($sdx as $k=>$v) {
@@ -536,7 +533,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 						break;
 					case 'SDX': // SDX uses DM by default.
 					case 'SDX_DM':
-						$sdx = WT_Soundex::soundex_dm($value);
+						$sdx = WT_Soundex::daitchMokotoff($value);
 						if ($sdx) {
 							$sdx = explode(':', $sdx);
 							foreach ($sdx as $k=>$v) {
@@ -581,7 +578,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 		}
 	}
 
-	function PrintResults() {
+	function printResults() {
 		require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 		if ($this->myindilist) {
 			uasort($this->myindilist, array('WT_GedcomRecord', 'compare'));

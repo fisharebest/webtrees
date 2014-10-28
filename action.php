@@ -213,7 +213,7 @@ case 'unlink-media':
 		$sources[] = $source;
 		foreach ($sources as $source) {
 			foreach ($source->getFacts() as $fact) {
-				if (!$fact->isOld()) {
+				if (!$fact->isPendingDeletion()) {
 					if ($fact->getValue() == '@' . $target . '@') {
 						// Level 1 links
 						$source->deleteFact($fact->getFactId(), true);

@@ -85,7 +85,6 @@ $controller
 			oldMy = msY;
 		}
 		i = document.getElementById("topInner");
-		//alert(i.style.top);
 		movei1 = i;
 		i = document.getElementById("inner");
 		movei2 = i;

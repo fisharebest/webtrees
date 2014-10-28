@@ -186,9 +186,6 @@ class WT_Report_PDF_TextBox extends WT_Report_Base_TextBox {
 				// For anything else but text (images), get the height
 				$eH += $this->elements[$i]->getHeight($pdf);
 			}
-			//else {
-			//$h += $pdf->getFootnotesHeight();
-			//}
 		}
 
 		// Add up what’s the final height
@@ -257,7 +254,6 @@ class WT_Report_PDF_TextBox extends WT_Report_Base_TextBox {
 			} else {
 				$cXM = ($pdf->getPageWidth()) - $cX - $cW;
 			}
-			//echo "<br>cX=".$cX."  cXM=".$cXM."  cW=".$cW."  LW=".$pdf->getPageWidth()."  RW=".$pdf->getRemainingWidthPDF()."  MLW=".$pdf->getMaxLineWidth();
 			$pdf->Rect($cXM, $cY, $cW, $cH, $cS);
 		}
 		// Add cell padding if set and if any text (element) exist
@@ -304,7 +300,7 @@ class WT_Report_PDF_TextBox extends WT_Report_Base_TextBox {
 			if (is_object($element)) {
 				$element->render($pdf);
 			} elseif (is_string($element) && $element == 'footnotetexts') {
-				$pdf->Footnotes();
+				$pdf->footnotes();
 			} elseif (is_string($element) && $element == 'addpage') {
 				$pdf->newPage();
 			}

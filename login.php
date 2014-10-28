@@ -345,30 +345,30 @@ case 'register':
 
 			// Send user message by email only
 			WT_Mail::send(
-				// From:
+				// “From:” header
 				$WT_TREE,
-				// To:
+				// “To:” header
 				$mail2_to,
 				$mail2_to,
-				// Reply-To:
+				// “Reply-To:” header
 				$mail2_from,
 				$mail2_from,
-				// Message
+				// Message body
 				$mail2_subject,
 				$mail2_body
 			);
 
 			// Send admin message by email and/or internal messaging
 			WT_Mail::send(
-				// From:
+				// “From:” header
 				$WT_TREE,
-				// To:
+				// “To:” header
 				$webmaster->getEmail(),
 				$webmaster->getRealName(),
-				// Reply-To:
+				// “Reply-To:” header
 				$WEBTREES_EMAIL,
 				$WEBTREES_EMAIL,
-				// Message
+				// Message body
 				$mail1_subject,
 				$mail1_body
 			);
@@ -532,15 +532,15 @@ case 'verify_hash':
 	if ($user) {
 		if ($user->checkPassword($user_password) && $user->getPreference('reg_hashcode') == $user_hashcode) {
 			WT_Mail::send(
-				// From:
+			// “From:” header
 				$WT_TREE,
-				// To:
+				// “To:” header
 				$webmaster->getEmail(),
 				$webmaster->getRealName(),
-				// Reply-To:
+				// “Reply-To:” header
 				$WEBTREES_EMAIL,
 				$WEBTREES_EMAIL,
-				// Message
+				// Message body
 				$mail1_subject,
 				$mail1_body
 			);

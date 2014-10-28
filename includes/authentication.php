@@ -35,6 +35,10 @@ use WT\User;
  * Used in custom theme headers...
  *
  * @deprecated
+ *
+ * @param $user_id
+ *
+ * @return string
  */
 function getUserFullName($user_id) {
 	return User::find($user_id)->getRealName();
@@ -107,14 +111,16 @@ function addMessage($message) {
 			$copy_email = WT_I18N::translate('You sent the following message to a webtrees administrator:') . WT_Mail::EOL . WT_Mail::EOL . WT_Mail::EOL . $copy_email;
 		}
 
-		$success = $success && WT_Mail::send(// From:
-				$WT_TREE, // To:
+		$success = $success && WT_Mail::send(
+			// “From:” header
+			$WT_TREE,
+			// “To:” header
 			$sender_email,
 			$sender_real_name,
-			// Reply-To:
+			// “Reply-To:” header
 			WT_Site::getPreference('SMTP_FROM_NAME'),
 			$WT_TREE->getPreference('title'),
-			// Message
+			// Message body
 			WT_I18N::translate('webtrees message') . ' - ' . $message['subject'],
 			$copy_email
 		);
@@ -168,14 +174,16 @@ function addMessage($message) {
 		}
 		$original_email .= WT_Mail::EOL . WT_Mail::EOL . $message['body'];
 
-		$success = $success && WT_Mail::send(// From:
-				$WT_TREE, // To:
+		$success = $success && WT_Mail::send(
+			// “From:” header
+			$WT_TREE,
+			// “To:” header
 			$recipient->getEmail(),
 			$recipient->getRealName(),
-			// Reply-To:
+			// “Reply-To:” header
 			$sender_email,
 			$sender_real_name,
-			// Message
+			// Message body
 			WT_I18N::translate('webtrees message') . ' - ' . $message['subject'],
 			$original_email
 		);
@@ -186,115 +194,25 @@ function addMessage($message) {
 	return $success;
 }
 
-//-- deletes a message in the database
+/**
+ * Deletes a message in the database.
+ *
+ * @param integer $message_id
+ */
 function deleteMessage($message_id) {
 	WT_DB::prepare("DELETE FROM `##message` WHERE message_id=?")->execute(array($message_id));
 }
 
-//-- Return an array of a users messages
+/**
+ * Return an array of a users messages.
+ *
+ * @param integer $user_id
+ *
+ * @return stdClass[]
+ */
 function getUserMessages($user_id) {
 	return
 		WT_DB::prepare("SELECT message_id, sender, subject, body, UNIX_TIMESTAMP(created) AS created FROM `##message` WHERE user_id=? ORDER BY message_id DESC")
 		->execute(array($user_id))
 		->fetchAll();
-}
-
-/**
- * Adds a news item to the database
- *
- * This function adds a news item represented by the $news array to the database.
- * If the $news array has an ['id'] field then the function assumes that it is
- * as update of an older news item.
- *
- * @param array $news a news item array
- */
-function addNews($news) {
-	if (array_key_exists('id', $news)) {
-		WT_DB::prepare("UPDATE `##news` SET subject=?, body=?, updated=FROM_UNIXTIME(?) WHERE news_id=?")
-		->execute(array($news['title'], $news['text'], $news['date'], $news['id']));
-	} else {
-		WT_DB::prepare("INSERT INTO `##news` (user_id, gedcom_id, subject, body) VALUES (NULLIF(?, ''), NULLIF(?, '') ,? ,?)")
-		->execute(array($news['user_id'], $news['gedcom_id'],  $news['title'], $news['text']));
-	}
-}
-
-/**
- * Deletes a news item from the database
- *
- * @param integer $news_id the id number of the news item to delete
- *
- * @return boolean
- */
-function deleteNews($news_id) {
-	return (bool)WT_DB::prepare("DELETE FROM `##news` WHERE news_id=?")->execute(array($news_id));
-}
-
-// Gets the news items for the given user or gedcom
-function getUserNews($user_id) {
-	$rows =
-		WT_DB::prepare("SELECT SQL_CACHE news_id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) AS updated, subject, body FROM `##news` WHERE user_id=? ORDER BY updated DESC")
-		->execute(array($user_id))
-		->fetchAll();
-
-	$news = array();
-	foreach ($rows as $row) {
-		$news[$row->news_id] = array(
-			'id' => $row->news_id,
-			'user_id' => $row->user_id,
-			'gedcom_id' => $row->gedcom_id,
-			'date' => $row->updated,
-			'title' => $row->subject,
-			'text' => $row->body,
-		);
-	}
-
-	return $news;
-}
-
-function getGedcomNews($gedcom_id) {
-	$rows=
-		WT_DB::prepare("SELECT SQL_CACHE news_id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) AS updated, subject, body FROM `##news` WHERE gedcom_id=? ORDER BY updated DESC")
-		->execute(array($gedcom_id))
-		->fetchAll();
-
-	$news = array();
-	foreach ($rows as $row) {
-		$news[$row->news_id] = array(
-			'id' => $row->news_id,
-			'user_id' => $row->user_id,
-			'gedcom_id' => $row->gedcom_id,
-			'date' => $row->updated,
-			'title' => $row->subject,
-			'text' => $row->body,
-		);
-	}
-
-	return $news;
-}
-
-/**
- * Gets the news item for the given news id
- *
- * @param integer $news_id the id of the news entry to get
- *
- * @return array|null
- */
-function getNewsItem($news_id) {
-	$row =
-		WT_DB::prepare("SELECT SQL_CACHE news_id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) AS updated, subject, body FROM `##news` WHERE news_id=?")
-		->execute(array($news_id))
-		->fetchOneRow();
-
-	if ($row) {
-		return array(
-			'id' => $row->news_id,
-			'user_id' => $row->user_id,
-			'gedcom_id' => $row->gedcom_id,
-			'date' => $row->updated,
-			'title' => $row->subject,
-			'text' => $row->body,
-		);
-	} else {
-		return null;
-	}
 }

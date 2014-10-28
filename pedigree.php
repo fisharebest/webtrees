@@ -149,9 +149,6 @@ for ($i = ($controller->treesize - 1); $i >= 0; $i--) {
 
 	printf(BOX_WRAPPER, $posn, $xoffset, $yoffset, $controller->pbwidth, $controller->pbheight);
 
-	if (!isset($controller->treeid[$i])) {
-		$controller->treeid[$i] = false;
-	}
 	print_pedigree_person(WT_Individual::getInstance($controller->treeid[$i]));
 	if ($can_go_back) {
 		$did = 1;
@@ -223,7 +220,7 @@ if (count($famids) > 0) {
 	//-- echo the siblings
 	foreach ($cfamids as $family) {
 		if ($family != null) {
-			$siblings = array_filter($family->getChildren(), function ($item) use ($controller) {
+			$siblings = array_filter($family->getChildren(), function (WT_Individual $item) use ($controller) {
 				return $controller->rootid != $item->getXref();
 			});
 			$num      = count($siblings);

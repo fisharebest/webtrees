@@ -187,7 +187,7 @@
             "authors": [
                 {
                     "name": "Anthony Ferrara",
-                    "email": "ircmaxell@php.net",
+                    "email": "ircmaxell@ircmaxell.com",
                     "homepage": "http://blog.ircmaxell.com"
                 }
             ],
@@ -374,16 +374,16 @@
         },
         {
             "name": "tecnick.com/tcpdf",
-            "version": "6.0.094",
+            "version": "6.0.097",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tecnickcom/TCPDF.git",
-                "reference": "89d007897e20471d4990d4bd0456272dece03a26"
+                "reference": "73b436e180d91cb0e9897242ccfb4b49fc498901"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/89d007897e20471d4990d4bd0456272dece03a26",
-                "reference": "89d007897e20471d4990d4bd0456272dece03a26",
+                "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/73b436e180d91cb0e9897242ccfb4b49fc498901",
+                "reference": "73b436e180d91cb0e9897242ccfb4b49fc498901",
                 "shasum": ""
             },
             "require": {
@@ -433,24 +433,14 @@
                 "pdf417",
                 "qrcode"
             ],
-            "time": "2014-09-30 17:01:15"
+            "time": "2014-10-20 20:02:38"
         }
     ],
-    "packages-dev": [
-
-    ],
-    "aliases": [
-
-    ],
+    "packages-dev": [],
+    "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [
-
-    ],
+    "stability-flags": [],
     "prefer-stable": false,
-    "platform": [
-
-    ],
-    "platform-dev": [
-
-    ]
+    "platform": [],
+    "platform-dev": []
 }
