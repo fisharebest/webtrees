@@ -45,7 +45,7 @@ class WT_Controller_Compact extends WT_Controller_Chart {
 		$this->treeid = $this->sosaAncestors(5);
 	}
 
-	function sosa_person($n) {
+	public function sosaIndividual($n) {
 		global $SHOW_HIGHLIGHT_IMAGES;
 
 		$indi = $this->treeid[$n];
@@ -91,7 +91,7 @@ class WT_Controller_Compact extends WT_Controller_Chart {
 		}
 	}
 
-	function sosa_arrow($n, $arrow_dir) {
+	public function sosaArrow($n, $arrow_dir) {
 		global $TEXT_DIRECTION;
 
 		$indi = $this->treeid[$n];

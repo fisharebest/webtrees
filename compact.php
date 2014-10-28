@@ -63,99 +63,99 @@ $controller
 	<div id="compact_chart">
 		<table width="100%" style="text-align:center;">
 			<tr>
-				<?php echo $controller->sosa_person(16); ?>
+				<?php echo $controller->sosaIndividual(16); ?>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
-				<?php echo $controller->sosa_person(18); ?>
+				<?php echo $controller->sosaIndividual(18); ?>
 				<td>&nbsp;</td>
-				<?php echo $controller->sosa_person(24); ?>
+				<?php echo $controller->sosaIndividual(24); ?>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
-				<?php echo $controller->sosa_person(26); ?>
+				<?php echo $controller->sosaIndividual(26); ?>
 			</tr>
 			<tr>
-				<td><?php echo $controller->sosa_arrow(16, 'up'); ?></td>
+				<td><?php echo $controller->sosaArrow(16, 'up'); ?></td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
-				<td><?php echo $controller->sosa_arrow(18, 'up'); ?></td>
+				<td><?php echo $controller->sosaArrow(18, 'up'); ?></td>
 				<td>&nbsp;</td>
-				<td><?php echo $controller->sosa_arrow(24, 'up'); ?></td>
+				<td><?php echo $controller->sosaArrow(24, 'up'); ?></td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
-				<td><?php echo $controller->sosa_arrow(26, 'up'); ?></td>
+				<td><?php echo $controller->sosaArrow(26, 'up'); ?></td>
 			</tr>
 			<tr>
-				<?php echo $controller->sosa_person(8); ?>
-				<td><?php echo $controller->sosa_arrow(8, 'left'); ?></td>
-				<?php echo $controller->sosa_person(4); ?>
-				<td><?php echo $controller->sosa_arrow(9, 'right'); ?></td>
-				<?php echo $controller->sosa_person(9); ?>
+				<?php echo $controller->sosaIndividual(8); ?>
+				<td><?php echo $controller->sosaArrow(8, 'left'); ?></td>
+				<?php echo $controller->sosaIndividual(4); ?>
+				<td><?php echo $controller->sosaArrow(9, 'right'); ?></td>
+				<?php echo $controller->sosaIndividual(9); ?>
 				<td>&nbsp;</td>
-				<?php echo $controller->sosa_person(12); ?>
-				<td><?php echo $controller->sosa_arrow(12, 'left'); ?></td>
-				<?php echo $controller->sosa_person(6); ?>
-				<td><?php  echo $controller->sosa_arrow(13, 'right'); ?></td>
-				<?php echo $controller->sosa_person(13); ?>
+				<?php echo $controller->sosaIndividual(12); ?>
+				<td><?php echo $controller->sosaArrow(12, 'left'); ?></td>
+				<?php echo $controller->sosaIndividual(6); ?>
+				<td><?php  echo $controller->sosaArrow(13, 'right'); ?></td>
+				<?php echo $controller->sosaIndividual(13); ?>
 			</tr>
 			<tr>
-				<td><?php echo $controller->sosa_arrow(17, 'down'); ?></td>
+				<td><?php echo $controller->sosaArrow(17, 'down'); ?></td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
-				<td><?php echo $controller->sosa_arrow(19, 'down'); ?></td>
+				<td><?php echo $controller->sosaArrow(19, 'down'); ?></td>
 				<td>&nbsp;</td>
-				<td><?php echo $controller->sosa_arrow(25, 'down'); ?></td>
+				<td><?php echo $controller->sosaArrow(25, 'down'); ?></td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
-				<td><?php echo $controller->sosa_arrow(27, 'down'); ?></td>
+				<td><?php echo $controller->sosaArrow(27, 'down'); ?></td>
 			</tr>
 			<tr>
-				<?php echo $controller->sosa_person(17); ?>
+				<?php echo $controller->sosaIndividual(17); ?>
 				<td>&nbsp;</td>
-				<td><?php echo $controller->sosa_arrow(4, 'up'); ?></td>
+				<td><?php echo $controller->sosaArrow(4, 'up'); ?></td>
 				<td>&nbsp;</td>
-				<?php echo $controller->sosa_person(19); ?>
+				<?php echo $controller->sosaIndividual(19); ?>
 				<td>&nbsp;</td>
-				<?php echo $controller->sosa_person(25); ?>
+				<?php echo $controller->sosaIndividual(25); ?>
 				<td>&nbsp;</td>
-				<td><?php echo $controller->sosa_arrow(6, 'up'); ?></td>
+				<td><?php echo $controller->sosaArrow(6, 'up'); ?></td>
 				<td>&nbsp;</td>
-				<?php echo $controller->sosa_person(27); ?>
-			</tr>
-			<tr>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
+				<?php echo $controller->sosaIndividual(27); ?>
 			</tr>
 			<tr>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
-				<?php echo $controller->sosa_person(2); ?>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<?php echo $controller->sosaIndividual(2); ?>
 				<td>&nbsp;</td>
 				<td colspan="3">
 					<table width="100%">
 						<tr>
-							<td width='25%'><?php echo $controller->sosa_arrow(2, 'left'); ?></td>
-							<?php echo $controller->sosa_person(1); ?>
-							<td width='25%'><?php echo $controller->sosa_arrow(3, 'right'); ?></td>
+							<td width='25%'><?php echo $controller->sosaArrow(2, 'left'); ?></td>
+							<?php echo $controller->sosaIndividual(1); ?>
+							<td width='25%'><?php echo $controller->sosaArrow(3, 'right'); ?></td>
 						</tr>
 					</table>
 				</td>
 				<td>&nbsp;</td>
-				<?php echo $controller->sosa_person(3); ?>
+				<?php echo $controller->sosaIndividual(3); ?>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
 			</tr>
@@ -173,69 +173,69 @@ $controller
 				<td>&nbsp;</td>
 			</tr>
 			<tr>
-				<?php echo $controller->sosa_person(20); ?>
+				<?php echo $controller->sosaIndividual(20); ?>
 				<td>&nbsp;</td>
-				<td><?php echo $controller->sosa_arrow(5, 'down'); ?></td>
+				<td><?php echo $controller->sosaArrow(5, 'down'); ?></td>
 				<td>&nbsp;</td>
-				<?php echo $controller->sosa_person(22); ?>
+				<?php echo $controller->sosaIndividual(22); ?>
 				<td>&nbsp;</td>
-				<?php echo $controller->sosa_person(28); ?>
+				<?php echo $controller->sosaIndividual(28); ?>
 				<td>&nbsp;</td>
-				<td><?php echo $controller->sosa_arrow(7, 'down'); ?></td>
+				<td><?php echo $controller->sosaArrow(7, 'down'); ?></td>
 				<td>&nbsp;</td>
-				<?php echo $controller->sosa_person(30); ?>
+				<?php echo $controller->sosaIndividual(30); ?>
 			</tr>
 			<tr>
-				<td><?php echo $controller->sosa_arrow(20, 'up'); ?></td>
+				<td><?php echo $controller->sosaArrow(20, 'up'); ?></td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
-				<td><?php echo $controller->sosa_arrow(22, 'up'); ?></td>
+				<td><?php echo $controller->sosaArrow(22, 'up'); ?></td>
 				<td>&nbsp;</td>
-				<td><?php echo $controller->sosa_arrow(28, 'up'); ?></td>
+				<td><?php echo $controller->sosaArrow(28, 'up'); ?></td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
-				<td><?php echo $controller->sosa_arrow(30, 'up'); ?></td>
+				<td><?php echo $controller->sosaArrow(30, 'up'); ?></td>
 			</tr>
 			<tr>
-				<?php echo $controller->sosa_person(10); ?>
-				<td><?php echo $controller->sosa_arrow(10, 'left'); ?></td>
-				<?php echo $controller->sosa_person(5); ?>
-				<td><?php echo $controller->sosa_arrow(11, 'right'); ?></td>
-				<?php echo $controller->sosa_person(11); ?>
+				<?php echo $controller->sosaIndividual(10); ?>
+				<td><?php echo $controller->sosaArrow(10, 'left'); ?></td>
+				<?php echo $controller->sosaIndividual(5); ?>
+				<td><?php echo $controller->sosaArrow(11, 'right'); ?></td>
+				<?php echo $controller->sosaIndividual(11); ?>
 				<td>&nbsp;</td>
-				<?php echo $controller->sosa_person(14); ?>
-				<td><?php echo $controller->sosa_arrow(14, 'left'); ?></td>
-				<?php echo $controller->sosa_person(7); ?>
-				<td><?php echo $controller->sosa_arrow(15, 'right'); ?></td>
-				<?php echo $controller->sosa_person(15); ?>
+				<?php echo $controller->sosaIndividual(14); ?>
+				<td><?php echo $controller->sosaArrow(14, 'left'); ?></td>
+				<?php echo $controller->sosaIndividual(7); ?>
+				<td><?php echo $controller->sosaArrow(15, 'right'); ?></td>
+				<?php echo $controller->sosaIndividual(15); ?>
 			</tr>
 			<tr>
-				<td><?php echo $controller->sosa_arrow(21, 'down'); ?></td>
+				<td><?php echo $controller->sosaArrow(21, 'down'); ?></td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
-				<td><?php echo $controller->sosa_arrow(23, 'down'); ?></td>
+				<td><?php echo $controller->sosaArrow(23, 'down'); ?></td>
 				<td>&nbsp;</td>
-				<td><?php echo $controller->sosa_arrow(29, 'down'); ?></td>
+				<td><?php echo $controller->sosaArrow(29, 'down'); ?></td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
-				<td><?php echo $controller->sosa_arrow(31, 'down'); ?></td>
+				<td><?php echo $controller->sosaArrow(31, 'down'); ?></td>
 			</tr>
 			<tr>
-				<?php echo $controller->sosa_person(21); ?>
+				<?php echo $controller->sosaIndividual(21); ?>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
-				<?php echo $controller->sosa_person(23); ?>
+				<?php echo $controller->sosaIndividual(23); ?>
 				<td>&nbsp;</td>
-				<?php echo $controller->sosa_person(29); ?>
+				<?php echo $controller->sosaIndividual(29); ?>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
-				<?php echo $controller->sosa_person(31); ?>
+				<?php echo $controller->sosaIndividual(31); ?>
 			</tr>
 		</table>
 	</div>

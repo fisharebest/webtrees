@@ -143,7 +143,7 @@ case 0:
 	// List
 	$pidarr=array();
 	echo '<ul id="ancestry_chart">';
-	$controller->print_child_ascendancy($controller->root, 1, $OLD_PGENS-1);
+	$controller->printChildAscendancy($controller->root, 1, $OLD_PGENS-1);
 	echo '</ul>';
 	echo '<br>';
 	break;
