@@ -30,7 +30,7 @@ class WT_Controller_Pedigree extends WT_Controller_Chart {
 	var $PEDIGREE_GENERATIONS;
 	var $pbwidth;
 	var $pbheight;
-	var $treeid;
+	var $ancestors;
 	var $treesize;
 	var $curgen;
 	var $yoffset;
@@ -101,12 +101,12 @@ class WT_Controller_Pedigree extends WT_Controller_Chart {
 		$this->pbwidth = $bwidth+6;
 		$this->pbheight = $bheight+5;
 
-		$this->treeid = ancestry_array($this->rootid, $PEDIGREE_GENERATIONS);
+		$this->ancestors = $this->sosaAncestors($PEDIGREE_GENERATIONS);
 		$this->treesize = pow(2, (int)($this->PEDIGREE_GENERATIONS))-1;
 
-		//-- ancestry_array puts everyone at $i+1
+		// sosaAncestors() puts everyone at $i+1
 		for ($i=0; $i<$this->treesize; $i++) {
-			$this->treeid[$i] = $this->treeid[$i+1];
+			$this->ancestors[$i] = $this->ancestors[$i+1];
 		}
 
 		if (!$this->show_full) {
@@ -220,7 +220,7 @@ class WT_Controller_Pedigree extends WT_Controller_Chart {
 
 		//-- calculate the smallest yoffset and adjust the tree to that offset
 		$minyoffset = 0;
-		for ($i=0; $i<count($this->treeid); $i++) {
+		for ($i=0; $i<count($this->ancestors); $i++) {
 			if (!empty($offsetarray[$i])) {
 				if (($minyoffset==0)||($minyoffset>$this->offsetarray[$i]["y"]))  $minyoffset = $this->offsetarray[$i]["y"];
 			}

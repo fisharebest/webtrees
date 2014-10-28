@@ -142,12 +142,12 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 	 * @return string
 	 */
 	public function generateFanChart($what, $fanChart) {
-		$treeid = ancestry_array($this->root->getXref(), $this->generations);
+		$treeid = $this->sosaAncestors($this->generations);
 		$fanw   = 640 * $this->fan_width / 100;
 		$fandeg = 90 * $this->fan_style;
 		$html   = '';
 
-		$treesize = count($treeid);
+		$treesize = count($treeid) + 1;
 
 		// generations count
 		$gen = log($treesize) / log(2) - 1;
@@ -207,8 +207,7 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 
 			// draw each cell
 			while ($sosa >= $p2) {
-				$pid    = $treeid[$sosa];
-				$person = WT_Individual::getInstance($pid);
+				$person = $treeid[$sosa];
 				if ($person) {
 					$name    = $person->getFullName();
 					$addname = $person->getAddName();
@@ -305,6 +304,7 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 					$ty  = round($cy - $mr * -sin($rad));
 					$imagemap .= "$tx,$ty";
 					// add action url
+					$pid = $person->getXref();
 					$imagemap .= '" href="#' . $pid . '"';
 					$tempURL = 'fanchart.php?rootid=' . $pid . '&amp;generations=' . $this->generations . '&amp;fan_width=' . $this->fan_width . '&amp;fan_style=' . $this->fan_style . '&amp;ged=' . WT_GEDURL;
 					$html .= '<div id="' . $pid . '" class="fan_chart_menu">';
@@ -379,7 +379,7 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 
 		switch ($what) {
 		case 'html':
-			return $html . $imagemap . '<div id="fan_chart_img"><img src="' . WT_SCRIPT_NAME . '?rootid=' . $this->rootid . '&amp;fan_style=' . $this->fan_style . '&amp;generations=' . $this->generations . '&amp;fan_width=' . $this->fan_width.'&amp;img=1" width="' . $fanw . '" height="' . $fanh . '" alt="' . WT_I18N::translate('Fan chart of %s', strip_tags($person->getFullName())) . '" usemap="#fanmap"></div>';
+			return $html . $imagemap . '<div id="fan_chart_img"><img src="' . WT_SCRIPT_NAME . '?rootid=' . $this->root->getXref() . '&amp;fan_style=' . $this->fan_style . '&amp;generations=' . $this->generations . '&amp;fan_width=' . $this->fan_width.'&amp;img=1" width="' . $fanw . '" height="' . $fanh . '" alt="' . WT_I18N::translate('Fan chart of %s', strip_tags($person->getFullName())) . '" usemap="#fanmap"></div>';
 
 		case 'png':
 			ImageStringUp($image, 1, $fanw - 10, $fanh / 3, WT_SERVER_NAME . WT_SCRIPT_PATH, $color);

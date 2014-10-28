@@ -2836,9 +2836,6 @@ function relativesEndHandler() {
 
 	// Check if there is any relatives
 	if (count($list) > 0) {
-
-		// @deprecated
-		//$line = xml_get_current_line_number($parser)-1;
 		$lineoffset = 0;
 		foreach ($repeatsStack as $rep) {
 			$lineoffset += $rep[1];

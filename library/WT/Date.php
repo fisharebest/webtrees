@@ -56,14 +56,14 @@ class WT_Date {
 		}
 		if (preg_match('/^(FROM|BET) (.+) (AND|TO) (.+)/', $date, $match)) {
 			$this->qual1 = $match[1];
-			$this->date1 = $this->ParseDate($match[2]);
+			$this->date1 = $this->parseDate($match[2]);
 			$this->qual2 = $match[3];
-			$this->date2 = $this->ParseDate($match[4]);
+			$this->date2 = $this->parseDate($match[4]);
 		} elseif (preg_match('/^(FROM|BET|TO|AND|BEF|AFT|CAL|EST|INT|ABT) (.+)/', $date, $match)) {
 			$this->qual1 = $match[1];
-			$this->date1 = $this->ParseDate($match[2]);
+			$this->date1 = $this->parseDate($match[2]);
 		} else {
-			$this->date1 = $this->ParseDate($date);
+			$this->date1 = $this->parseDate($date);
 		}
 	}
 
@@ -88,7 +88,7 @@ class WT_Date {
 	 * @return WT_Date_Calendar
 	 * @throws Exception
 	 */
-	static function ParseDate($date) {
+	static function parseDate($date) {
 		// Valid calendar escape specified? - use it
 		if (preg_match('/^(@#D(?:GREGORIAN|JULIAN|HEBREW|HIJRI|JALALI|FRENCH R|ROMAN|JALALI)+@) ?(.*)/', $date, $match)) {
 			$cal  = $match[1];

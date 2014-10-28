@@ -434,51 +434,68 @@ class WT_Tree {
 		self::$trees = null;
 	}
 
-	// Delete everything relating to a tree
-	public static function delete($tree_id) {
-		// If this is the default tree, then unset
-		if (WT_Site::getPreference('DEFAULT_GEDCOM') == self::getNameFromId($tree_id)) {
+	/**
+	 * Delete all the genealogy data from a tree - in preparation for importing
+	 * new data.  Optionally retain the media data, for when the user has been
+	 * editing their data offline using an application which deletes (or does not
+	 * support) media data.
+	 *
+	 * @param bool $keep_media
+	 */
+	public function deleteGenealogyData($keep_media) {
+		WT_DB::prepare("DELETE FROM `##individuals` WHERE i_file   =?")->execute(array($this->tree_id));
+		WT_DB::prepare("DELETE FROM `##families`    WHERE f_file   =?")->execute(array($this->tree_id));
+		WT_DB::prepare("DELETE FROM `##sources`     WHERE s_file   =?")->execute(array($this->tree_id));
+		WT_DB::prepare("DELETE FROM `##other`       WHERE o_file   =?")->execute(array($this->tree_id));
+		WT_DB::prepare("DELETE FROM `##places`      WHERE p_file   =?")->execute(array($this->tree_id));
+		WT_DB::prepare("DELETE FROM `##placelinks`  WHERE pl_file  =?")->execute(array($this->tree_id));
+		WT_DB::prepare("DELETE FROM `##name`        WHERE n_file   =?")->execute(array($this->tree_id));
+		WT_DB::prepare("DELETE FROM `##dates`       WHERE d_file   =?")->execute(array($this->tree_id));
+		WT_DB::prepare("DELETE FROM `##change`      WHERE gedcom_id=?")->execute(array($this->tree_id));
+
+		if ($keep_media) {
+			WT_DB::prepare("DELETE FROM `##link` WHERE l_file =? AND l_type<>'OBJE'")->execute(array($this->tree_id));
+		} else {
+			WT_DB::prepare("DELETE FROM `##link`  WHERE l_file =?")->execute(array($this->tree_id));
+			WT_DB::prepare("DELETE FROM `##media` WHERE m_file =?")->execute(array($this->tree_id));
+		}
+	}
+
+	/**
+	 * Delete everything relating to a tree
+	 */
+	public function delete() {
+		// If this is the default tree, then unset it
+		if (WT_Site::getPreference('DEFAULT_GEDCOM') === self::getNameFromId($this->tree_id)) {
 			WT_Site::setPreference('DEFAULT_GEDCOM', '');
 		}
-		// Don't delete the logs.
-		WT_DB::prepare("UPDATE `##log` SET gedcom_id = NULL WHERE gedcom_id = ?")->execute(array($tree_id));
 
-		WT_DB::prepare("DELETE `##block_setting` FROM `##block_setting` JOIN `##block` USING (block_id) WHERE gedcom_id=?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##block`               WHERE gedcom_id = ?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##dates`               WHERE d_file    = ?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##families`            WHERE f_file    = ?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##user_gedcom_setting` WHERE gedcom_id = ?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##gedcom_setting`      WHERE gedcom_id = ?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##individuals`         WHERE i_file    = ?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##link`                WHERE l_file    = ?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##media`               WHERE m_file    = ?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##module_privacy`      WHERE gedcom_id = ?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##name`                WHERE n_file    = ?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##next_id`             WHERE gedcom_id = ?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##other`               WHERE o_file    = ?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##placelinks`          WHERE pl_file   = ?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##places`              WHERE p_file    = ?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##sources`             WHERE s_file    = ?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##hit_counter`         WHERE gedcom_id = ?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##change`              WHERE gedcom_id = ?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##default_resn`        WHERE gedcom_id = ?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##gedcom_chunk`        WHERE gedcom_id = ?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##log`                 WHERE gedcom_id = ?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##gedcom`              WHERE gedcom_id = ?")->execute(array($tree_id));
+		$this->deleteGenealogyData(false);
+
+		WT_DB::prepare("DELETE `##block_setting` FROM `##block_setting` JOIN `##block` USING (block_id) WHERE gedcom_id=?")->execute(array($this->tree_id));
+		WT_DB::prepare("DELETE FROM `##block`               WHERE gedcom_id = ?")->execute(array($this->tree_id));
+		WT_DB::prepare("DELETE FROM `##user_gedcom_setting` WHERE gedcom_id = ?")->execute(array($this->tree_id));
+		WT_DB::prepare("DELETE FROM `##gedcom_setting`      WHERE gedcom_id = ?")->execute(array($this->tree_id));
+		WT_DB::prepare("DELETE FROM `##module_privacy`      WHERE gedcom_id = ?")->execute(array($this->tree_id));
+		WT_DB::prepare("DELETE FROM `##next_id`             WHERE gedcom_id = ?")->execute(array($this->tree_id));
+		WT_DB::prepare("DELETE FROM `##hit_counter`         WHERE gedcom_id = ?")->execute(array($this->tree_id));
+		WT_DB::prepare("DELETE FROM `##default_resn`        WHERE gedcom_id = ?")->execute(array($this->tree_id));
+		WT_DB::prepare("DELETE FROM `##gedcom_chunk`        WHERE gedcom_id = ?")->execute(array($this->tree_id));
+		WT_DB::prepare("DELETE FROM `##log`                 WHERE gedcom_id = ?")->execute(array($this->tree_id));
+		WT_DB::prepare("DELETE FROM `##gedcom`              WHERE gedcom_id = ?")->execute(array($this->tree_id));
 
 		// After updating the database, we need to fetch a new (sorted) copy
 		self::$trees = null;
 	}
 
-	//////////////////////////////////////////////////////////////////////////////
-	//
-	// Export the tree to a GEDCOM file
-	//
-	//////////////////////////////////////////////////////////////////////////////
-
+	/**
+	 * Export the tree to a GEDCOM file
+	 *
+	 * @param $gedcom_file
+	 *
+	 * @return bool
+	 */
 	public function exportGedcom($gedcom_file) {
-
-		// TODO: these functions need to be moved to the GedcomRecord(?) class
 		require_once WT_ROOT . 'includes/functions/functions_export.php';
 
 		// To avoid partial trees on timeout/diskspace/etc, write to a temporary file first

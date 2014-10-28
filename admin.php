@@ -638,5 +638,7 @@ function old_paths() {
 		WT_ROOT.'themes/minimal/css-1.5.3',
 		WT_ROOT.'themes/webtrees/css-1.5.3',
 		WT_ROOT.'themes/xenea/css-1.5.3',
+		// Removed in 1.6.1
+		WT_ROOT.'includes/authentication.php',
 	);
 }

@@ -19,26 +19,28 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 class WT_Controller_Chart extends WT_Controller_Page {
+	/** @var WT_Individual Who is chart about? */
 	public $root;
-	public $rootid;
-	public $error_message=null;
 
+	/** @var string An error message, in case we cannot construct the chart */
+	public $error_message;
+
+	/**
+	 *
+	 */
 	public function __construct() {
 		parent::__construct();
 
-		$this->rootid = WT_Filter::get('rootid', WT_REGEX_XREF);
-		if ($this->rootid) {
-			$this->root = WT_Individual::getInstance($this->rootid);
-		} else {
-			// Missing rootid parameter?  Do something.
+		$rootid = WT_Filter::get('rootid', WT_REGEX_XREF);
+		$this->root = WT_Individual::getInstance($rootid);
+		if (!$this->root) {
+			// Missing root individual?  Show the chart for someone.
 			$this->root   = $this->getSignificantIndividual();
-			$this->rootid = $this->root->getXref();
 		}
 
 		if (!$this->root || !$this->root->canShowName()) {
 			header($_SERVER['SERVER_PROTOCOL'].' 403 Forbidden');
-			$this->error_message=WT_I18N::translate('This individual does not exist or you do not have permission to view it.');
-			$this->rootid=null;
+			$this->error_message = WT_I18N::translate('This individual does not exist or you do not have permission to view it.');
 		}
 	}
 
@@ -48,5 +50,40 @@ class WT_Controller_Chart extends WT_Controller_Page {
 		} else {
 			return parent::getSignificantIndividual();
 		}
+	}
+
+	/**
+	 * Find the direct-line ancestors of an individual.  Array indexes are SOSA numbers.
+	 *
+	 * @param integer $generations
+	 *
+	 * @return WT_Individual[]
+	 */
+	public function sosaAncestors($generations) {
+		$ancestors = array(
+			1 => $this->root
+		);
+
+		// Subtract one generation, as this algorithm includes parents.
+		$max = pow(2, $generations - 1);
+
+		for ($i = 1; $i < $max; $i++) {
+			$ancestors[$i * 2] = null;
+			$ancestors[$i * 2 + 1] = null;
+			$person = $ancestors[$i];
+			if ($person) {
+				$family = $person->getPrimaryChildFamily();
+				if ($family) {
+					if ($family->getHusband()) {
+						$ancestors[$i * 2] = $family->getHusband();
+					}
+					if ($family->getWife()) {
+						$ancestors[$i * 2 + 1] = $family->getWife();
+					}
+				}
+			}
+		}
+
+		return $ancestors;
 	}
 }

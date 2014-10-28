@@ -300,12 +300,12 @@ if ($type == 'specialchar') {
 	<p><select id="language_filter" name="language_filter" onchange="submit();">
 	<option value="">', WT_I18N::translate('Change language'), '</option>';
 	$language_options = '';
-	foreach ($specialchar_languages as $key=>$value) {
+	foreach ($specialchar_languages as $key=>$special_character) {
 		$language_options.= '<option value="'.$key.'"';
 		if ($key==$language_filter) {
 			$language_options.=' selected="selected"';
 		}
-		$language_options.='>'.$value.'</option>';
+		$language_options.='>'.$special_character.'</option>';
 	}
 	echo $language_options,
 	'</select>
@@ -682,18 +682,18 @@ if ($action=="filter") {
 	if ($type == "specialchar") {
 		echo '<div id="find-output-special"><p>';
 		// lower case special characters
-		foreach ($lcspecialchars as $key=>$value) {
-			echo '<a class="largechars" href="#" onclick="return window.opener.paste_char(\'', $value, '\');">', $key, '</a> ';
+		foreach ($lcspecialchars as $special_character) {
+			echo '<a class="largechars" href="#" onclick="return window.opener.paste_char(\'', $special_character, '\');">', $special_character, '</a> ';
 		}
 		echo '</p><p>';
 		//upper case special characters
-		foreach ($ucspecialchars as $key=>$value) {
-			echo '<a class="largechars" href="#" onclick="return window.opener.paste_char(\'', $value, '\');">', $key, '</a> ';
+		foreach ($ucspecialchars as $special_character) {
+			echo '<a class="largechars" href="#" onclick="return window.opener.paste_char(\'', $special_character, '\');">', $special_character, '</a> ';
 		}
 		echo '</p><p>';
 		// other special characters (not letters)
-		foreach ($otherspecialchars as $key=>$value) {
-			echo '<a class="largechars" href="#" onclick="return window.opener.paste_char(\'', $value, '\');">', $key, '</a> ';
+		foreach ($otherspecialchars as $special_character) {
+			echo '<a class="largechars" href="#" onclick="return window.opener.paste_char(\'', $special_character, '\');">', $special_character, '</a> ';
 		}
 		echo '</p></div>';
 	}
