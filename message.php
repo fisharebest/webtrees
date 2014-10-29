@@ -40,56 +40,50 @@ $to         = WT_Filter::post('to', null, WT_Filter::get('to'));
 $method     = WT_Filter::post('method', 'messaging|messaging2|messaging3|mailto|none', WT_Filter::get('method', 'messaging|messaging2|messaging3|mailto|none', 'messaging2'));
 $url        = WT_Filter::postUrl('url', WT_Filter::getUrl('url'));
 
-$controller = new WT_Controller_Simple();
-$controller->setPageTitle(WT_I18N::translate('webtrees message'));
-
 $to_user = User::findByIdentifier($to);
 
-// Only admins can send broadcast messages
-if (!$to_user || ($to=='all' || $to=='last_6mo' || $to=='never_logged') && !Auth::isAdmin()) {
-	// TODO, what if we have a user called "all" or "last_6mo" or "never_logged" ???
-	$controller->pageHeader();
-	$controller->addInlineJavascript('window.opener.location.reload(); window.close();');
-	exit;
-}
+$controller = new WT_Controller_Simple();
+$controller
+	->restrictAccess($to_user || Auth::isAdmin() && ($to === 'all' || $to === 'last_6mo' || $to === 'never_logged'))
+	->setPageTitle(WT_I18N::translate('webtrees message'));
 
-$errors='';
+$errors = '';
 
 // Is this message from a member or a visitor?
 if (WT_USER_ID) {
-	$from=WT_USER_NAME;
+	$from = WT_USER_NAME;
 } else {
 	// Visitors must provide a valid email address
-	if ($from_email && (!preg_match("/(.+)@(.+)/", $from_email, $match) || function_exists('checkdnsrr') && checkdnsrr($match[2])===false)) {
-		$errors.='<p class="ui-state-error">'.WT_I18N::translate('Please enter a valid email address.').'</p>';
-		$action='compose';
+	if ($from_email && (!preg_match("/(.+)@(.+)/", $from_email, $match) || function_exists('checkdnsrr') && checkdnsrr($match[2]) === false)) {
+		$errors .= '<p class="ui-state-error">' . WT_I18N::translate('Please enter a valid email address.') . '</p>';
+		$action = 'compose';
 	}
 
 	// Do not allow anonymous visitors to include links to external sites
-	if (preg_match('/(?!'.preg_quote(WT_SERVER_NAME, '/').')(((?:ftp|http|https):\/\/)[a-zA-Z0-9.-]+)/', $subject.$body, $match)) {
-		$errors.=
-			'<p class="ui-state-error">'.WT_I18N::translate('You are not allowed to send messages that contain external links.').'</p>'.
-			'<p class="ui-state-highlight">'./* I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’ */ WT_I18N::translate('You should delete the “%1$s” from “%2$s” and try again.', $match[2], $match[1]).'</p>'.
-			Log::addAuthenticationLog('Possible spam message from "'.$from_name.'"/"'.$from_email.'", subject="'.$subject.'", body="'.$body.'"');
-		$action='compose';
+	if (preg_match('/(?!' . preg_quote(WT_SERVER_NAME, '/') . ')(((?:ftp|http|https):\/\/)[a-zA-Z0-9.-]+)/', $subject . $body, $match)) {
+		$errors .=
+			'<p class="ui-state-error">' . WT_I18N::translate('You are not allowed to send messages that contain external links.') . '</p>' .
+			'<p class="ui-state-highlight">' . /* I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’ */ WT_I18N::translate('You should delete the “%1$s” from “%2$s” and try again.', $match[2], $match[1]) . '</p>' .
+			Log::addAuthenticationLog('Possible spam message from "' . $from_name . '"/"' . $from_email . '", subject="' . $subject . '", body="' . $body . '"');
+		$action = 'compose';
 	}
-	$from=$from_email;
+	$from = $from_email;
 }
 
 // Ensure the user always visits this page twice - once to compose it and again to send it.
 // This makes it harder for spammers.
 switch ($action) {
 case 'compose':
-	$WT_SESSION->good_to_send=true;
+	$WT_SESSION->good_to_send = true;
 	break;
 case 'send':
 	// Only send messages if we've come straight from the compose page.
 	if (!$WT_SESSION->good_to_send) {
 		Log::addAuthenticationLog('Attempt to send a message without visiting the compose page.  Spam attack?');
-		$action='compose';
+		$action = 'compose';
 	}
 	if (!WT_Filter::checkCsrf()) {
-		$action='compose';
+		$action = 'compose';
 	}
 	unset($WT_SESSION->good_to_send);
 	break;
@@ -101,13 +95,13 @@ case 'compose':
 		->pageHeader()
 		->addInlineJavascript('
 		function checkForm(frm) {
-			if (frm.subject.value=="") {
-				alert("'.WT_I18N::translate('Please enter a message subject.').'");
+			if (frm.subject.value === "") {
+				alert("' . WT_I18N::translate('Please enter a message subject.') . '");
 				document.messageform.subject.focus();
 				return false;
 			}
-			if (frm.body.value=="") {
-				alert("'.WT_I18N::translate('Please enter some message text before sending.').'");
+			if (frm.body.value === "") {
+				alert("' . WT_I18N::translate('Please enter some message text before sending.') . '");
 				document.messageform.body.focus();
 				return false;
 			}
@@ -123,7 +117,7 @@ case 'compose':
 	echo '<br><form name="messageform" method="post" action="message.php" onsubmit="t = new Date(); document.messageform.time.value=t.toUTCString(); return checkForm(this);">';
 	echo WT_Filter::getCsrf();
 	echo '<table>';
-	if ($to != 'all' && $to != 'last_6mo' && $to != 'never_logged') {
+	if ($to !== 'all' && $to !== 'last_6mo' && $to !== 'never_logged') {
 		echo '<tr><td></td><td>', WT_I18N::translate('This message will be sent to %s', '<b>' . WT_Filter::escapeHtml($to_user->getRealName()) . '</b>'), '</td></tr>';
 	}
 	if (!WT_USER_ID) {
@@ -142,7 +136,7 @@ case 'compose':
 	echo '<tr><td></td><td><input type="submit" value="', WT_I18N::translate('Send'), '"></td></tr>';
 	echo '</table>';
 	echo '</form>';
-	if ($method=='messaging2') {
+	if ($method === 'messaging2') {
 		echo WT_I18N::translate('When you send this message you will receive a copy sent via email to the address you provided.');
 	}
 	echo
@@ -158,13 +152,13 @@ case 'send':
 	}
 
 	$toarray = array($to);
-	if ($to == 'all') {
+	if ($to === 'all') {
 		$toarray = array();
 		foreach (User::all() as $user) {
 			$toarray[$user->getUserId()] = $user->getUserName();
 		}
 	}
-	if ($to == 'never_logged') {
+	if ($to === 'never_logged') {
 		$toarray = array();
 		foreach (User::all() as $user) {
 			if ($user->getPreference('verified_by_admin') && $user->getPreference('reg_timestamp') > $user->getPreference('sessiontime')) {
@@ -172,11 +166,11 @@ case 'send':
 			}
 		}
 	}
-	if ($to == 'last_6mo') {
+	if ($to === 'last_6mo') {
 		$toarray = array();
-		$sixmos = 60*60*24*30*6; //-- timestamp for six months
+		$sixmos  = 60 * 60 * 24 * 30 * 6; //-- timestamp for six months
 		foreach (User::all() as $user) {
-			if ($user->getPreference('sessiontime')>0 && (WT_TIMESTAMP - $user->getPreference('sessiontime') > $sixmos)) {
+			if ($user->getPreference('sessiontime') > 0 && (WT_TIMESTAMP - $user->getPreference('sessiontime') > $sixmos)) {
 				$toarray[$user->getUserId()] = $user->getUserName();
 			} elseif (!$user->getPreference('verified_by_admin') && (WT_TIMESTAMP - $user->getPreference('reg_timestamp') > $sixmos)) {
 				//-- not verified by registration past 6 months
@@ -186,24 +180,26 @@ case 'send':
 	}
 	$i = 0;
 	foreach ($toarray as $indexval => $to) {
-		$message = array();
-		$message['to']=$to;
-		$message['from']=$from;
+		$message         = array();
+		$message['to']   = $to;
+		$message['from'] = $from;
 		if (!empty($from_name)) {
-			$message['from_name'] = $from_name;
+			$message['from_name']  = $from_name;
 			$message['from_email'] = $from_email;
 		}
 		$message['subject'] = $subject;
-		$message['body'] = $body;
+		$message['body']    = $body;
 		$message['created'] = WT_TIMESTAMP;
-		$message['method'] = $method;
-		$message['url'] = $url;
-		if ($i>0) $message['no_from'] = true;
+		$message['method']  = $method;
+		$message['url']     = $url;
+		if ($i > 0) {
+			$message['no_from'] = true;
+		}
 		if (addMessage($message)) {
 			WT_FlashMessages::addMessage(WT_I18N::translate('Message successfully sent to %s', WT_Filter::escapeHtml($to)));
 		} else {
 			WT_FlashMessages::addMessage(WT_I18N::translate('Message was not sent'));
-			Log::addErrorLog('Unable to send a message.  FROM:'.$from.' TO:'.$to.' (failed to send)');
+			Log::addErrorLog('Unable to send a message.  FROM:' . $from . ' TO:' . $to . ' (failed to send)');
 		}
 		$i++;
 	}
@@ -238,7 +234,7 @@ function addMessage($message) {
 	}
 
 	// Send a copy of the copy message back to the sender.
-	if ($message['method'] != 'messaging') {
+	if ($message['method'] !== 'messaging') {
 		// Switch to the sender’s language.
 		if ($sender) {
 			WT_I18N::init($sender->getPreference('language'));
@@ -299,7 +295,7 @@ function addMessage($message) {
 		$message['created'] = gmdate("D, d M Y H:i:s T");
 	}
 
-	if ($message['method'] != 'messaging3' && $message['method'] != 'mailto' && $message['method'] != 'none') {
+	if ($message['method'] !== 'messaging3' && $message['method'] !== 'mailto' && $message['method'] !== 'none') {
 		WT_DB::prepare("INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)")
 			->execute(array(
 				$message['from'],
@@ -309,7 +305,7 @@ function addMessage($message) {
 				str_replace('<br>', '', $message['body']) // Remove the <br> that we added for the external email.  TODO: create different messages
 			));
 	}
-	if ($message['method'] != 'messaging') {
+	if ($message['method'] !== 'messaging') {
 		if ($sender) {
 			$original_email = WT_I18N::translate('The following message has been sent to your webtrees user account from ');
 			$original_email .= $sender->getRealName();
