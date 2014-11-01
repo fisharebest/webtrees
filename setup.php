@@ -32,7 +32,6 @@ require 'library/autoload.php';
 define('WT_WEBTREES',    'webtrees');
 define('WT_SERVER_NAME', '');
 define('WT_SCRIPT_PATH', '');
-require 'includes/authentication.php';
 require 'includes/functions/functions_db.php'; // for get/setSiteSetting()
 define('WT_DATA_DIR',    'data/');
 define('WT_DEBUG_SQL',   false);

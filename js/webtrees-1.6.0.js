@@ -158,7 +158,7 @@ function edit_note(xref) {
 function add_record(xref, fact_field) {
 	var fact = jQuery('#' + fact_field).val();
 	if (fact) {
-		if (fact == "OBJE") {
+		if (fact === "OBJE") {
 			window.open('addmedia.php?action=showmediaform&linkid=' + encodeURIComponent(xref) + '&ged=' + encodeURIComponent(WT_GEDCOM), '_blank', edit_window_specs);
 		} else {
 			return add_fact(xref, fact);
@@ -298,7 +298,7 @@ function delete_family(message, xref, gedcom) {
 		jQuery.post('action.php', {
 			action:   'delete-family',
 			xref:      xref,
-			ged:       typeof gedcom == 'undefined' ? WT_GEDCOM : gedcom,
+			ged:       typeof gedcom === 'undefined' ? WT_GEDCOM : gedcom,
 			csrf:      WT_CSRF_TOKEN
 		},
 		function(){
@@ -314,7 +314,7 @@ function delete_individual(message, xref, gedcom) {
 		jQuery.post('action.php', {
 			action:   'delete-individual',
 			xref:      xref,
-			ged:       typeof gedcom == 'undefined' ? WT_GEDCOM : gedcom,
+			ged:       typeof gedcom === 'undefined' ? WT_GEDCOM : gedcom,
 			csrf:      WT_CSRF_TOKEN
 		},
 		function(){
@@ -330,7 +330,7 @@ function delete_media(message, xref, gedcom) {
 		jQuery.post('action.php', {
 			action:   'delete-media',
 			xref:      xref,
-			ged:       typeof gedcom == 'undefined' ? WT_GEDCOM : gedcom,
+			ged:       typeof gedcom === 'undefined' ? WT_GEDCOM : gedcom,
 			csrf:      WT_CSRF_TOKEN
 		},
 		function(){
@@ -346,7 +346,7 @@ function delete_note(message, xref, gedcom) {
 		jQuery.post('action.php', {
 			action:   'delete-note',
 			xref:      xref,
-			ged:       typeof gedcom == 'undefined' ? WT_GEDCOM : gedcom,
+			ged:       typeof gedcom === 'undefined' ? WT_GEDCOM : gedcom,
 			csrf:      WT_CSRF_TOKEN
 		},
 		function(){
@@ -362,7 +362,7 @@ function delete_repository(message, xref, gedcom) {
 		jQuery.post('action.php', {
 			action:   'delete-repository',
 			xref:      xref,
-			ged:       typeof gedcom == 'undefined' ? WT_GEDCOM : gedcom,
+			ged:       typeof gedcom === 'undefined' ? WT_GEDCOM : gedcom,
 			csrf:      WT_CSRF_TOKEN
 		},
 		function(){
@@ -378,7 +378,7 @@ function delete_source(message, xref, gedcom) {
 		jQuery.post('action.php', {
 			action:   'delete-source',
 			xref:      xref,
-			ged:       typeof gedcom == 'undefined' ? WT_GEDCOM : gedcom,
+			ged:       typeof gedcom === 'undefined' ? WT_GEDCOM : gedcom,
 			csrf:      WT_CSRF_TOKEN
 		},
 		function(){
@@ -599,7 +599,7 @@ function valid_date(datefield) {
 		var f3=parseInt(RegExp.$4, 10);
 		var f4=RegExp.$5;
 		var dmy='DMY';
-		if (typeof(locale_date_format)!='undefined') {
+		if (typeof(locale_date_format) !== 'undefined') {
 			if (locale_date_format === 'MDY' || locale_date_format === 'YMD') {
 				dmy = locale_date_format;
 			}
@@ -607,7 +607,7 @@ function valid_date(datefield) {
 		var yyyy=new Date().getFullYear();
 		var yy=yyyy % 100;
 		var cc=yyyy - yy;
-		if (dmy=='DMY' && f1<=31 && f2<=12 || f1>13 && f1<=31 && f2<=12 && f3>31) {
+		if (dmy === 'DMY' && f1<=31 && f2<=12 || f1>13 && f1<=31 && f2<=12 && f3>31) {
 				datestr = f0 + f1 + " " + months[f2 - 1] + " " + (f3 >= 100 ? f3 : (f3 <= yy ? f3 + cc : f3 + cc - 100));
 		} else {
 			if (dmy === 'MDY' && f1 <= 12 && f2 <= 31 || f2 > 13 && f2 <= 31 && f1 <= 12 && f3 > 31) {
@@ -706,7 +706,7 @@ function show_submenu(elementid, parentid, dir) {
 			element.style.width = maxwidth+"px";
 		}
 		var pelement, boxright;
-		if (dir=="down") {
+		if (dir === "down") {
 			pelement = document.getElementById(parentid);
 			if (pelement) {
 				element.style.left=pelement.style.left;
@@ -716,7 +716,7 @@ function show_submenu(elementid, parentid, dir) {
 					element.style.left = menuleft + "px";
 				}
 			}
-		} else if (dir=="right") {
+		} else if (dir === "right") {
 			pelement = document.getElementById(parentid);
 			if (pelement) {
 				if (textDirection === "rtl") {
@@ -860,11 +860,11 @@ function cal_toggleDate(dateDivId, dateFieldId) {
 		return false;
 	}
 
-	if (dateDiv.style.visibility=='visible') {
+	if (dateDiv.style.visibility === 'visible') {
 		dateDiv.style.visibility = 'hidden';
 		return false;
 	}
-	if (dateDiv.style.visibility=='show') {
+	if (dateDiv.style.visibility === 'show') {
 		dateDiv.style.visibility = 'hide';
 		return false;
 	}
@@ -884,11 +884,11 @@ function cal_toggleDate(dateDivId, dateFieldId) {
 	}
 
 	dateDiv.innerHTML = cal_generateSelectorContent(dateFieldId, dateDivId, date);
-	if (dateDiv.style.visibility=='hidden') {
+	if (dateDiv.style.visibility === 'hidden') {
 		dateDiv.style.visibility = 'visible';
 		return false;
 	}
-	if (dateDiv.style.visibility=='hide') {
+	if (dateDiv.style.visibility === 'hide') {
 		dateDiv.style.visibility = 'show';
 		return false;
 	}
@@ -900,7 +900,7 @@ function cal_generateSelectorContent(dateFieldId, dateDivId, date) {
 	content += '<td><select name="'+dateFieldId+'_daySelect" id="'+dateFieldId+'_daySelect" onchange="return cal_updateCalendar(\''+dateFieldId+'\', \''+dateDivId+'\');">';
 	for (i=1; i<32; i++) {
 		content += '<option value="'+i+'"';
-		if (date.getDate()==i) {
+		if (date.getDate() === i) {
 			content += ' selected="selected"';
 		}
 		content += '>'+i+'</option>';
@@ -909,7 +909,7 @@ function cal_generateSelectorContent(dateFieldId, dateDivId, date) {
 	content += '<td><select name="'+dateFieldId+'_monSelect" id="'+dateFieldId+'_monSelect" onchange="return cal_updateCalendar(\''+dateFieldId+'\', \''+dateDivId+'\');">';
 	for (i=1; i<13; i++) {
 		content += '<option value="'+i+'"';
-		if (date.getMonth()+1==i) {
+		if (date.getMonth() + 1 === i) {
 			content += ' selected="selected"';
 		}
 		content += '>'+monthLabels[i]+'</option>';
@@ -944,8 +944,8 @@ function cal_generateSelectorContent(dateFieldId, dateDivId, date) {
 		content += '<tr>';
 		for (i=0; i<7; i++) {
 			content += '<td ';
-			if (tdate.getMonth()==date.getMonth()) {
-				if (tdate.getDate()==date.getDate()) {
+			if (tdate.getMonth() === date.getMonth()) {
+				if (tdate.getDate() === date.getDate()) {
 					content += 'class="descriptionbox"';
 				} else {
 					content += 'class="optionbox"';
@@ -994,7 +994,7 @@ function cal_updateCalendar(dateFieldId, dateDivId) {
 		return false;
 	}
 
-	var month = parseInt(monthSel.options[monthSel.selectedIndex].value);
+	var month = parseInt(monthSel.options[monthSel.selectedIndex].value, 10);
 	month = month-1;
 
 	var date = new Date(yearInput.value, month, dateSel.options[dateSel.selectedIndex].value);
@@ -1106,7 +1106,7 @@ function paste_char(value) {
 		pastefield.value += value;
 	}
 
-	if (pastefield.id=="NPFX" || pastefield.id=="GIVN" || pastefield.id=="SPFX" || pastefield.id=="SURN" || pastefield.id=="NSFX") {
+	if (pastefield.id === "NPFX" || pastefield.id === "GIVN" || pastefield.id === "SPFX" || pastefield.id === "SURN" || pastefield.id === "NSFX") {
 		updatewholename();
 	}
 }
@@ -1143,7 +1143,7 @@ function valid_lati_long(field, pos, neg) {
 	// 0.5698W ==> W0.5698
 	txt=txt.replace(/(.*)([N|S|E|W]+)$/g, '$2$1');
 	// 17.1234 ==> N17.1234
-	if (txt && txt.charAt(0)!=neg && txt.charAt(0)!=pos) {
+	if (txt && txt.charAt(0)!=neg && txt.charAt(0) !== pos) {
 			txt = pos + txt;
 	}
 	field.value = txt;
@@ -1259,7 +1259,7 @@ jQuery.widget( "ui.dialog", jQuery.ui.dialog, {
 		}
 
 		// address interaction issues with general iframes with the dialog
-		if ( event.target.ownerDocument != this.document[ 0 ] ) {
+		if ( event.target.ownerDocument !== this.document[ 0 ] ) {
 			return true;
 		}
 
@@ -1316,7 +1316,7 @@ jQuery ('body').on ('click', '.iconz', function (e) {
 	function toggleExpanded() {
 		wrapper.toggleClass(function(){
 			return basestyle + " " + basestyle + "-expanded";
-		})
+		});
 	}
 
 	if (!inout.text().length) {

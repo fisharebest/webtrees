@@ -77,15 +77,6 @@ class FunctionsImportTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * Test that function empty_database() exists in the global namespace.
-	 *
-	 * @return void
-	 */
-	public function testFunctionEmptyDatabaseExists() {
-		$this->assertEquals(function_exists('\\empty_database'), true);
-	}
-
-	/**
 	 * Test that function accept_all_changes() exists in the global namespace.
 	 *
 	 * @return void

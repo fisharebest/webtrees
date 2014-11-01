@@ -79,7 +79,7 @@ define('WT_DEBUG_SQL', false);
 define('WT_ERROR_LEVEL', 2); // 0=none, 1=minimal, 2=full
 
 // Required version of database tables/columns/indexes/etc.
-define('WT_SCHEMA_VERSION', 27);
+define('WT_SCHEMA_VERSION', 29);
 
 // Regular expressions for validating user input, etc.
 define('WT_MINIMUM_PASSWORD_LENGTH', 6);
@@ -151,6 +151,45 @@ if (version_compare(PHP_VERSION, '5.4', '<') && get_magic_quotes_gpc()) {
 		}
 	}
 	unset($process);
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// The ircmaxell/password-compat library does not support unpatched versions of
+// PHP older than PHP5.3.6.  These versions of PHP have no secure crypt library.
+////////////////////////////////////////////////////////////////////////////////
+$hash = '$2y$04$usesomesillystringfore7hnbRJHxXVLeakoG8K30oukPsA.ztMG';
+if (!defined('PASSWORD_BCRYPT') && crypt("password", $hash) !== $hash) {
+	define('PASSWORD_BCRYPT', 1);
+	define('PASSWORD_DEFAULT', 1);
+	/**
+	 * @param string  $password
+	 * @param integer $algo
+	 *
+	 * @return string
+	 */
+	function password_hash($password, $algo) {
+		return crypt($password);
+	}
+
+	/**
+	 * @param string  $hash
+	 * @param integer $algo
+	 *
+	 * @return boolean
+	 */
+	function password_needs_rehash($hash, $algo) {
+		return false;
+	}
+
+	/**
+	 * @param string  $password
+	 * @param integer $hash
+	 *
+	 * @return boolean
+	 */
+	function password_verify($password, $hash) {
+		return crypt($password, $hash) === $hash;
+	}
 }
 
 require WT_ROOT . 'library/autoload.php';
@@ -286,8 +325,6 @@ if (file_exists(WT_ROOT . 'data/config.ini.php')) {
 }
 
 $WT_REQUEST = new Zend_Controller_Request_Http();
-
-require WT_ROOT . 'includes/authentication.php';
 
 // Connect to the database
 try {

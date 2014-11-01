@@ -87,7 +87,7 @@ class WT_Controller_Ancestry extends WT_Controller_Chart {
 	 * @param integer $sosa  child sosa number
 	 * @param integer $depth the ascendancy depth to show
 	 */
-	function print_child_ascendancy($person, $sosa, $depth) {
+	public function printChildAscendancy($person, $sosa, $depth) {
 		global $OLD_PGENS, $WT_IMAGES, $Dindent, $pidarr, $box_width;
 
 		if ($person) {
@@ -144,8 +144,8 @@ class WT_Controller_Ancestry extends WT_Controller_Chart {
 			echo '</span>';
 			// display parents recursively - or show empty boxes
 			echo '<ul style="list-style: none; display: block;" id="sosa_', $sosa, '">';
-			$this->print_child_ascendancy($family->getHusband(), $sosa*2, $depth-1);
-			$this->print_child_ascendancy($family->getWife(), $sosa*2+1, $depth-1);
+			$this->printChildAscendancy($family->getHusband(), $sosa*2, $depth-1);
+			$this->printChildAscendancy($family->getWife(), $sosa*2+1, $depth-1);
 			echo '</ul>';
 		}
 		echo '</li>';

@@ -5902,7 +5902,11 @@ class WT_Stats {
 	 * @return string
 	 */
 	public function totalUserMessages() {
-		return WT_I18N::number(count(getUserMessages(WT_USER_NAME)));
+		$total = (int)WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##message` WHERE user_id = ?")
+			->execute(array(WT_USER_ID))
+			->fetchOne();
+
+		return WT_I18N::number($total);
 	}
 
 	/**

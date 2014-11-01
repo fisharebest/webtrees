@@ -42,10 +42,10 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 
 		// Block actions
 		$action     = WT_Filter::post('action');
-		$message_id = WT_Filter::postArray('message_id');
+		$message_ids = WT_Filter::postArray('message_id');
 		if ($action=='deletemessage') {
-			foreach ($message_id as $msg_id) {
-				deleteMessage($msg_id);
+			foreach ($message_ids as $message_id) {
+				WT_DB::prepare("DELETE FROM `##message` WHERE message_id=?")->execute(array($message_id));
 			}
 		}
 		$block=get_block_setting($block_id, 'block', true);
@@ -56,7 +56,9 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 				}
 			}
 		}
-		$messages = getUserMessages(WT_USER_ID);
+		$messages = WT_DB::prepare("SELECT message_id, sender, subject, body, UNIX_TIMESTAMP(created) AS created FROM `##message` WHERE user_id=? ORDER BY message_id DESC")
+			->execute(array(WT_USER_ID))
+			->fetchAll();
 
 		$id=$this->getName().$block_id;
 		$class=$this->getName().'_block';

@@ -104,16 +104,16 @@
         },
         {
             "name": "fisharebest/ext-calendar",
-            "version": "1.2.0",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fisharebest/ext-calendar.git",
-                "reference": "e73e382d347440c9ea6ac8abc658cc4405c9250d"
+                "reference": "1498941b9b83222312bb957b5a425df075421443"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fisharebest/ext-calendar/zipball/e73e382d347440c9ea6ac8abc658cc4405c9250d",
-                "reference": "e73e382d347440c9ea6ac8abc658cc4405c9250d",
+                "url": "https://api.github.com/repos/fisharebest/ext-calendar/zipball/1498941b9b83222312bb957b5a425df075421443",
+                "reference": "1498941b9b83222312bb957b5a425df075421443",
                 "shasum": ""
             },
             "require": {
@@ -121,7 +121,7 @@
             },
             "require-dev": {
                 "phpunit/phpunit": "*",
-                "satooshi/php-coveralls": "dev-master"
+                "satooshi/php-coveralls": "*"
             },
             "type": "library",
             "autoload": {
@@ -140,7 +140,7 @@
                     "role": "Developer"
                 }
             ],
-            "description": "Implementation of the Arabic (Hijri), French, Gregorian, Jewish, Julian and Persian (Jalali) calendars.  PHP shims for the ext/calendar extension.",
+            "description": "Implementation of the Arabic (Hijri), French, Gregorian, Jewish, Julian and Persian (Jalali) calendars.  Optional PHP shims for servers without the ext/calendar extension.",
             "homepage": "https://github.com/fisharebest/ext-calendar",
             "keywords": [
                 "Jalali",
@@ -158,7 +158,7 @@
                 "persian",
                 "shamsi"
             ],
-            "time": "2014-09-27 08:43:30"
+            "time": "2014-10-31 19:49:13"
         },
         {
             "name": "ircmaxell/password-compat",
@@ -308,16 +308,16 @@
         },
         {
             "name": "rhumsaa/uuid",
-            "version": "2.7.3",
+            "version": "2.7.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramsey/uuid.git",
-                "reference": "b976326ca5977d7333f34e3c828ae7c22a49a65a"
+                "reference": "eb1d371067aa8c2b83d6691837ee4896a6f76a44"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramsey/uuid/zipball/b976326ca5977d7333f34e3c828ae7c22a49a65a",
-                "reference": "b976326ca5977d7333f34e3c828ae7c22a49a65a",
+                "url": "https://api.github.com/repos/ramsey/uuid/zipball/eb1d371067aa8c2b83d6691837ee4896a6f76a44",
+                "reference": "eb1d371067aa8c2b83d6691837ee4896a6f76a44",
                 "shasum": ""
             },
             "require": {
@@ -370,7 +370,7 @@
                 "identifier",
                 "uuid"
             ],
-            "time": "2014-08-27 22:39:41"
+            "time": "2014-10-30 03:36:49"
         },
         {
             "name": "tecnick.com/tcpdf",

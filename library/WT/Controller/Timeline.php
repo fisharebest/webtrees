@@ -115,7 +115,7 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 			}
 		}
 		$scale = WT_Filter::getInteger('scale', 0, 200);
-		if ($scale == 0) {
+		if ($scale === 0) {
 			$this->scale = (int)(($this->topyear - $this->baseyear) / 20 * count($this->indifacts) / 4);
 			if ($this->scale < 6) {
 				$this->scale = 6;
@@ -132,8 +132,6 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 
 	function print_time_fact(WT_Fact $event) {
 		global $basexoffset, $baseyoffset, $factcount, $TEXT_DIRECTION, $WT_IMAGES, $placements;
-
-		static $col = 0;
 
 		$desc = $event->getValue();
 		// check if this is a family fact
@@ -153,7 +151,7 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 		$j        = 0;
 		$tyoffset = 0;
 		while (isset($placements[$place])) {
-			if ($i == $j) {
+			if ($i === $j) {
 				$tyoffset = $this->bheight * $i;
 				$i++;
 			} else {
@@ -175,7 +173,7 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 			echo 'right: 3px;">';
 		}
 
-		$col = $col++ % 6;
+		$col = array_search($event->getParent(), $this->people) % 6;
 		echo '</td><td valign="top" class="person' . $col . '">';
 		if (count($this->pids) > 6) {
 			echo $event->getParent()->getFullName() . ' — ';
@@ -215,7 +213,7 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 		}
 		echo '</td></tr></table>';
 		echo '</div>';
-		if ($TEXT_DIRECTION == 'ltr') {
+		if ($TEXT_DIRECTION === 'ltr') {
 			$img  = 'dline2';
 			$ypos = '0%';
 		} else {
@@ -225,7 +223,7 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 		$dyoffset = ($yoffset - $tyoffset) + $this->bheight / 3;
 		if ($tyoffset < 0) {
 			$dyoffset = $yoffset + $this->bheight / 3;
-			if ($TEXT_DIRECTION == 'ltr') {
+			if ($TEXT_DIRECTION === 'ltr') {
 				$img  = 'dline';
 				$ypos = '100%';
 			} else {
