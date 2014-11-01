@@ -311,7 +311,7 @@ class PDF extends TCPDF {
 	/** @var WT_Report_Base_Element[] Array of elements in the body */
 	public $bodyElements = array();
 
-	/** @var WT_Report_Base_Element[] Array of elements in the footer notes */
+	/** @var WT_Report_Base_Footnote[] Array of elements in the footer notes */
 	public $printedfootnotes = array();
 
 	/** @var string Currently used style name */
