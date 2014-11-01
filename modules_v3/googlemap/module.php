@@ -781,7 +781,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		for ($i=0; $i<($controller->treesize); $i++) {
 			// -- check to see if we have moved to the next generation
 			if ($i+1 >= pow(2, $curgen)) {$curgen++;}
-			$person = WT_Individual::getInstance($controller->ancestors[$i]);
+			$person = $controller->ancestors[$i];
 			if (!empty($person)) {
 				$name = $person->getFullName();
 				if ($name == WT_I18N::translate('Private')) $priv++;
@@ -1268,19 +1268,25 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		// create the map bounds
 		'var bounds = new google.maps.LatLngBounds();';
 		// add the points
-		$curgen=1;
-		$count=0;
-		$colored_line = array('1'=>'#FF0000','2'=>'#0000FF','3'=>'#00FF00',
-						'4'=>'#FFFF00','5'=>'#00FFFF','6'=>'#FF00FF',
-						'7'=>'#C0C0FF','8'=>'#808000');
-
-		$lat = array();
-		$lon = array();
+		$curgen       = 1;
+		$count        = 0;
+		$colored_line = array(
+			'1' => '#FF0000',
+			'2' => '#0000FF',
+			'3' => '#00FF00',
+			'4' => '#FFFF00',
+			'5' => '#00FFFF',
+			'6' => '#FF00FF',
+			'7' => '#C0C0FF',
+			'8' => '#808000',
+		);
+		$lat        = array();
+		$lon        = array();
 		$latlongval = array();
-		$flags = array();
+		$flags      = array();
 		for ($i = 0; $i < $controller->treesize; $i++) {
 			// moved up to grab the sex of the individuals
-			$person = WT_Individual::getInstance($controller->treeid[$i]);
+			$person = $controller->ancestors[$i];
 			if ($person) {
 				$name = $person->getFullName();
 
@@ -1316,38 +1322,47 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 							$ffile = substr($ffile,1, strpos($ffile, '.')-1);
 							if (empty($flags[$ffile])) {
 								$flags[$ffile] = $i; // Only generate the flag once
-								$js.= 'var point = new google.maps.LatLng(' . $lat[$i] . ',' . $lon[$i]. ');';
-								$js.= 'var Marker1_0_flag = new google.maps.MarkerImage();';
-								$js.= 'Marker1_0_flag.image = "'.WT_STATIC_URL.WT_MODULES_DIR.'googlemap/'.$flags[$i].'";';
-								$js.= 'Marker1_0_flag.shadow = "'.WT_STATIC_URL.WT_MODULES_DIR.'googlemap/images/flag_shadow.png";';
-								$js.= 'Marker1_0_flag.iconSize = new google.maps.Size(25, 15);';
-								$js.= 'Marker1_0_flag.shadowSize = new google.maps.Size(35, 45);';
-								$js.= 'Marker1_0_flag.iconAnchor = new google.maps.Point(1, 45);';
-								$js.= 'var Marker1_0 = new google.maps.LatLng(point, {icon:Marker1_0_flag});';
+								$js .= 'var point = new google.maps.LatLng(' . $lat[$i] . ',' . $lon[$i] . ');';
+								$js .= 'var Marker1_0_flag = new google.maps.MarkerImage();';
+								$js .= 'Marker1_0_flag.image = "' . WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/' . $flags[$i] . '";';
+								$js .= 'Marker1_0_flag.shadow = "' . WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/images/flag_shadow.png";';
+								$js .= 'Marker1_0_flag.iconSize = new google.maps.Size(25, 15);';
+								$js .= 'Marker1_0_flag.shadowSize = new google.maps.Size(35, 45);';
+								$js .= 'Marker1_0_flag.iconAnchor = new google.maps.Point(1, 45);';
+								$js .= 'var Marker1_0 = new google.maps.LatLng(point, {icon:Marker1_0_flag});';
 							}
 						}
 						$marker_number = $curgen;
-						$dups=0;
-						for ($k=0; $k<$i; $k++) {
+						$dups          = 0;
+						for ($k = 0; $k < $i; $k++) {
 							if ($latlongval[$i] == $latlongval[$k]) {
 								$dups++;
-								switch($dups) {
-									case 1: $marker_number = $curgen . 'L'; break;
-									case 2: $marker_number = $curgen . 'R'; break;
-									case 3: $marker_number = $curgen . 'Ls'; break;
-									case 4: $marker_number = $curgen . 'Rs'; break;
-									case 5: //adjust position where markers have same coodinates
-									default: $marker_number = $curgen;
-										$lon[$i] = $lon[$i]+0.0025;
-										$lat[$i] = $lat[$i]+0.0025;
-										break;
+								switch ($dups) {
+								case 1:
+									$marker_number = $curgen . 'L';
+									break;
+								case 2:
+									$marker_number = $curgen . 'R';
+									break;
+								case 3:
+									$marker_number = $curgen . 'Ls';
+									break;
+								case 4:
+									$marker_number = $curgen . 'Rs';
+									break;
+								case 5: //adjust position where markers have same coodinates
+								default:
+									$marker_number = $curgen;
+									$lon[$i]       = $lon[$i] + 0.0025;
+									$lat[$i]       = $lat[$i] + 0.0025;
+									break;
 								}
 							}
 						}
-						$js.= 'var point = new google.maps.LatLng('.$lat[$i].','.$lon[$i].');';
-						$js.= "var marker = createMarker(point, \"".WT_Filter::escapeJs($name)."\",\"<div>".$dataleft.$datamid.$dataright."</div>\", \"";
-						$js.= "<div class='iwstyle'>";
-						$js.= "<a href='module.php?ged=".WT_GEDURL."&amp;mod=googlemap&amp;mod_action=pedigree_map&amp;rootid=" . $person->getXref() . "&amp;PEDIGREE_GENERATIONS={$PEDIGREE_GENERATIONS}";
+						$js .= 'var point = new google.maps.LatLng(' . $lat[$i] . ',' . $lon[$i] . ');';
+						$js .= "var marker = createMarker(point, \"" . WT_Filter::escapeJs($name) . "\",\"<div>" . $dataleft . $datamid . $dataright . "</div>\", \"";
+						$js .= "<div class='iwstyle'>";
+						$js .= "<a href='module.php?ged=" . WT_GEDURL . "&amp;mod=googlemap&amp;mod_action=pedigree_map&amp;rootid=" . $person->getXref() . "&amp;PEDIGREE_GENERATIONS={$PEDIGREE_GENERATIONS}";
 						if ($hideflags) {
 							$js .= '&amp;hideflags=1';
 						}
