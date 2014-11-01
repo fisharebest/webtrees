@@ -173,7 +173,16 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 			echo 'right: 3px;">';
 		}
 
-		$col = array_search($event->getParent(), $this->people) % 6;
+		$col = array_search($event->getParent(), $this->people);
+		if ($col === false) {
+			// Marriage event - use the color of the husband
+			$col = array_search($event->getParent()->getHusband(), $this->people);
+		}
+		if ($col === false) {
+			// Marriage event - use the color of the wife
+			$col = array_search($event->getParent()->getWife(), $this->people);
+		}
+		$col = $col % 6;
 		echo '</td><td valign="top" class="person' . $col . '">';
 		if (count($this->pids) > 6) {
 			echo $event->getParent()->getFullName() . ' — ';
