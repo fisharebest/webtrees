@@ -956,7 +956,11 @@ function totalPagesStartHandler() {
 }
 
 /**
+ * Called at the start of an element.
+ *
  * @param array $attrs an array of key value pairs for the attributes
+ *
+ * @return void
  */
 function gedcomStartHandler($attrs) {
 	global $vars, $gedrec, $gedrecStack, $processGedcoms, $fact, $desc, $ged_level;
@@ -1019,6 +1023,11 @@ function gedcomStartHandler($attrs) {
 	}
 }
 
+/**
+ * Called at the end of an element.
+ *
+ * @return void
+ */
 function gedcomEndHandler() {
 	global $gedrec, $gedrecStack, $processGedcoms, $fact, $desc;
 
@@ -1038,7 +1047,7 @@ function gedcomEndHandler() {
  * @param array $attrs an array of key value pairs for the attributes
  */
 function textBoxStartHandler($attrs) {
-	global $printData, $printDataStack, $wt_report, $currentElement, $wt_reportStack, $ReportRoot;
+	global $printData, $printDataStack, $wt_report, $wt_reportStack, $ReportRoot;
 
 	// string Background color code
 	$bgcolor = "";
@@ -1525,7 +1534,7 @@ function varStartHandler($attrs) {
 	// @deprecated
 	global $currentElement, $type, $parser;
 	// Retrievable variables
-	global $desc, $fact, $language_settings, $vars;
+	global $desc, $fact, $vars;
 
 	if (empty($attrs['var'])) {
 		die("<strong>REPORT ERROR var: </strong> The attribute \"var=\" is missing or not set in the XML file on line: " . xml_get_current_line_number(
@@ -1701,7 +1710,7 @@ function factsEndHandler() {
  * @param array $attrs an array of key value pairs for the attributes
  */
 function setVarStartHandler($attrs) {
-	global $vars, $gedrec, $fact, $desc, $type, $generation;
+	global $vars, $gedrec, $fact, $desc, $generation;
 
 	if (empty($attrs['name'])) {
 		die("<strong>REPORT ERROR var: </strong> The attribute \"name=\" is missing or not set in the XML file");
@@ -1901,7 +1910,7 @@ function footnoteTextsStartHandler() {
  */
 function ageAtDeathStartHandler() {
 	// TODO: This duplicates functionality in format_fact_date()
-	global $currentElement, $gedrec, $fact, $desc;
+	global $currentElement, $gedrec;
 
 	$match = array();
 	if (preg_match("/0 @(.+)@/", $gedrec, $match)) {

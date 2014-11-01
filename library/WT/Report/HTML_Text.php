@@ -25,19 +25,19 @@
 
 class WT_Report_HTML_Text extends WT_Report_Base_Text {
 	/**
-	 * @param WT_Report_HTML $html
+	 * @param WT_Report_HTML $renderer
 	 * @param integer        $curx
 	 * @param boolean        $attrib Is is called from a different element?
 	 *
 	 * @return void
 	 */
-	function render($html, $curx = 0, $attrib = true) {
+	function render($renderer, $curx = 0, $attrib = true) {
 
 		// Setup the style name
-		if ($html->getCurrentStyle() != $this->styleName) {
-			$html->setCurrentStyle($this->styleName);
+		if ($renderer->getCurrentStyle() != $this->styleName) {
+			$renderer->setCurrentStyle($this->styleName);
 		}
-		$temptext = str_replace("#PAGENUM#", $html->pageNo(), $this->text);
+		$temptext = str_replace("#PAGENUM#", $renderer->pageNo(), $this->text);
 		// underline «title» part of Source item
 		$temptext = str_replace(array('«', '»'), array('<u>', '</u>'), $temptext);
 
@@ -45,30 +45,30 @@ class WT_Report_HTML_Text extends WT_Report_Base_Text {
 		if (!empty($temptext)) {
 			// If called by an other element
 			if (!$attrib) {
-				$html->write($temptext, $this->color);
+				$renderer->write($temptext, $this->color);
 			} else {
 				// Save the start positions
-				$startX = $html->getX();
-				$startY = $html->getY();
-				$width = $html->getRemainingWidth();
+				$startX = $renderer->getX();
+				$startY = $renderer->getY();
+				$width = $renderer->getRemainingWidth();
 				// If text is wider then page width then wrap it
-				if ($html->GetStringWidth($temptext) > $width) {
+				if ($renderer->GetStringWidth($temptext) > $width) {
 					$lines = explode("\n", $temptext);
 					foreach ($lines as $line) {
-						echo "<div style=\"position:absolute;top:", $startY, "pt;", $html->alignRTL, ":", $startX, "pt;width:", $width, "pt;\">";
-						$line = $html->textWrap($line, $width);
-						$startY += $html->getTextCellHeight($line);
-						$html->setY($startY);
-						$html->write($line, $this->color);
+						echo "<div style=\"position:absolute;top:", $startY, "pt;", $renderer->alignRTL, ":", $startX, "pt;width:", $width, "pt;\">";
+						$line = $renderer->textWrap($line, $width);
+						$startY += $renderer->getTextCellHeight($line);
+						$renderer->setY($startY);
+						$renderer->write($line, $this->color);
 						echo "</div>\n";
 					}
 				} else {
-					echo "<div style=\"position:absolute;top:", $startY, "pt;", $html->alignRTL, ":", $startX, "pt;width:", $width, "pt;\">";
-					$html->write($temptext, $this->color);
+					echo "<div style=\"position:absolute;top:", $startY, "pt;", $renderer->alignRTL, ":", $startX, "pt;width:", $width, "pt;\">";
+					$renderer->write($temptext, $this->color);
 					echo "</div>\n";
-					$html->setX($startX + $html->GetStringWidth($temptext));
-					if ($html->countLines($temptext) != 1) {
-						$html->setXy(0, ($startY + $html->getTextCellHeight($temptext)));
+					$renderer->setX($startX + $renderer->GetStringWidth($temptext));
+					if ($renderer->countLines($temptext) != 1) {
+						$renderer->setXy(0, ($startY + $renderer->getTextCellHeight($temptext)));
 					}
 				}
 			}

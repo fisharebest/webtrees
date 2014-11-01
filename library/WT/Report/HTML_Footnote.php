@@ -30,14 +30,14 @@ class WT_Report_HTML_Footnote extends WT_Report_Base_Footnote {
 	/**
 	 * HTML Footnotes number renderer
 	 *
-	 * @param WT_Report_HTML $html
+	 * @param WT_Report_HTML $renderer
 	 *
 	 * @return void
 	 */
-	function render($html) {
-		$html->setCurrentStyle("footnotenum");
+	function render($renderer) {
+		$renderer->setCurrentStyle("footnotenum");
 		echo "<a href=\"#footnote", $this->num, "\"><sup>";
-		$html->write($html->entityRTL . $this->num);
+		$renderer->write($renderer->entityRTL . $this->num);
 		echo "</sup></a>\n";
 	}
 

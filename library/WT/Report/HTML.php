@@ -119,12 +119,20 @@ class WT_Report_HTML extends WT_Report_Base {
 	 */
 	public $maxY = 0;
 
+	/** @var WT_Report_Base_Element[] Array of elements in the header */
 	public $headerElements = array();
-	public $pageHeaderElements = array();
-	public $footerElements = array();
-	public $bodyElements = array();
-	public $printedfootnotes = array();
 
+	/** @var WT_Report_Base_Element[] Array of elements in the page header */
+	public $pageHeaderElements = array();
+
+	/** @var WT_Report_Base_Element[] Array of elements in the footer */
+	public $footerElements = array();
+
+	/** @var WT_Report_Base_Element[] Array of elements in the body */
+	public $bodyElements = array();
+
+	/** @var WT_Report_Base_Element[] Array of elements in the footer notes */
+	public $printedfootnotes = array();
 
 	/**
 	 * HTML Setup - WT_Report_HTML

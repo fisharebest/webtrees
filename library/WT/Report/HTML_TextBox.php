@@ -25,11 +25,11 @@
 
 class WT_Report_HTML_TextBox extends WT_Report_Base_TextBox {
 	/**
-	 * @param $html
+	 * @param WT_Report_HTML $renderer
 	 *
 	 * @return void
 	 */
-	function render($html) {
+	function render($renderer) {
 		// checkFootnote
 		$newelements = array();
 		$lastelement = array();
@@ -62,7 +62,7 @@ class WT_Report_HTML_TextBox extends WT_Report_Base_TextBox {
 				} // Collect the Footnote links
 				elseif ($element instanceof WT_Report_Base_Footnote) {
 					// Check if the Footnote has been set with it’s link number
-					$html->checkFootnote($element);
+					$renderer->checkFootnote($element);
 					// Save first the last element if any
 					if (!empty($lastelement)) {
 						$newelements[] = $lastelement;
@@ -115,29 +115,29 @@ class WT_Report_HTML_TextBox extends WT_Report_Base_TextBox {
 		$cP = 0; // Class Padding
 
 		// Used with line breaks and cell height calculation within this box only
-		$html->largestFontHeight = 0;
+		$renderer->largestFontHeight = 0;
 
 		// Current position
 		if ($this->left == ".") {
-			$cX = $html->GetX();
+			$cX = $renderer->GetX();
 		} else {
 			$cX = $this->left;
-			$html->SetX($cX);
+			$renderer->SetX($cX);
 		}
 		// Current position (top)
 		if ($this->top == ".") {
-			$this->top = $html->GetY();
+			$this->top = $renderer->GetY();
 		} else {
-			$html->SetY($this->top);
+			$renderer->SetY($this->top);
 		}
 
 		// Check the width if set to page wide OR set by xml to larger then page wide
-		if ($this->width == 0 || $this->width > $html->getRemainingWidth()) {
-			$this->width = $html->getRemainingWidth();
+		if ($this->width == 0 || $this->width > $renderer->getRemainingWidth()) {
+			$this->width = $renderer->getRemainingWidth();
 		}
 		// Setup the CellPadding
 		if ($this->padding) {
-			$cP = $html->cPadding;
+			$cP = $renderer->cPadding;
 		}
 
 		// For padding, we have to use less wrap width
@@ -163,7 +163,7 @@ class WT_Report_HTML_TextBox extends WT_Report_Base_TextBox {
 				$ew = $this->elements[$i]->setWrapWidth($cW - $w - 2, $cW);
 				if ($ew == $cW)
 					$w = 0;
-				$lw = $this->elements[$i]->getWidth($html);
+				$lw = $this->elements[$i]->getWidth($renderer);
 				// Text is already gets the # LF
 				$cHT += $lw[2];
 				if ($lw[1] == 1) {
@@ -177,9 +177,9 @@ class WT_Report_HTML_TextBox extends WT_Report_Base_TextBox {
 					$w = $lw[0];
 				}
 				// For anything else but text (images), get the height
-				$eH += $this->elements[$i]->getHeight($html);
+				$eH += $this->elements[$i]->getHeight($renderer);
 			} else {
-				$fH += abs($html->getFootnotesHeight($cW));
+				$fH += abs($renderer->getFootnotesHeight($cW));
 			}
 		}
 		// Add up what’s the final height
@@ -189,9 +189,9 @@ class WT_Report_HTML_TextBox extends WT_Report_Base_TextBox {
 			// Check if this is text or some other element, like images
 			if ($eH == 0) {
 				// Number of LF but at least one line
-				$cHT = ($cHT + 1) * $html->cellHeightRatio;
+				$cHT = ($cHT + 1) * $renderer->cellHeightRatio;
 				// Calculate the cell hight with the largest font size used
-				$cHT = $cHT * $html->largestFontHeight;
+				$cHT = $cHT * $renderer->largestFontHeight;
 				if ($cH < $cHT) {
 					$cH = $cHT;
 				}
@@ -208,17 +208,17 @@ class WT_Report_HTML_TextBox extends WT_Report_Base_TextBox {
 		unset($lw, $cHT, $fH, $w);
 
 		// Finaly, check the last cells height
-		if ($cH < $html->lastCellHeight) {
-			$cH = $html->lastCellHeight;
+		if ($cH < $renderer->lastCellHeight) {
+			$cH = $renderer->lastCellHeight;
 		}
 		// Update max Y incase of a pagebreak
 		// We don't want to over write any images or other stuff
-		$html->addMaxY($this->top + $cH);
+		$renderer->addMaxY($this->top + $cH);
 
 		// Start to print HTML
 		echo "<div style=\"position:absolute;top:", $this->top, "pt;";
 		// LTR (left) or RTL (right)
-		echo $html->alignRTL, ":", $cX, "pt;";
+		echo $renderer->alignRTL, ":", $cX, "pt;";
 		// Background color
 		if ($this->fill) {
 			if (!empty($this->bgcolor)) {
@@ -241,35 +241,35 @@ class WT_Report_HTML_TextBox extends WT_Report_Base_TextBox {
 
 		// Do a little "margin" trick before print
 		// to get the correct current position => "."
-		$cXT = $html->GetX();
-		$cYT = $html->GetY();
-		$html->SetXY(0, 0);
+		$cXT = $renderer->GetX();
+		$cYT = $renderer->GetY();
+		$renderer->SetXY(0, 0);
 
 		// Print the text elements
 		foreach ($this->elements as $element) {
 			if (is_object($element)) {
-				$element->render($html, $cX, false);
+				$element->render($renderer, $cX, false);
 			} elseif (is_string($element) && $element == "footnotetexts") {
-				$html->Footnotes();
+				$renderer->Footnotes();
 			} elseif (is_string($element) && $element == "addpage") {
-				$html->AddPage();
+				$renderer->AddPage();
 			}
 		}
 		echo "</div>\n";
 
 		// Reset "margins"
-		$html->SetXY($cXT, $cYT);
+		$renderer->SetXY($cXT, $cYT);
 		// This will be mostly used to trick the multiple images last height
 		if ($this->reseth) {
 			$cH = 0;
 		}
 		// New line and some clean up
 		if (!$this->newline) {
-			$html->SetXY($cX + $this->width, $this->top);
-			$html->lastCellHeight = $cH;
+			$renderer->SetXY($cX + $this->width, $this->top);
+			$renderer->lastCellHeight = $cH;
 		} else {
-			$html->SetXY(0, $this->top + $cH + ($cP * 2));
-			$html->lastCellHeight = 0;
+			$renderer->SetXY(0, $this->top + $cH + ($cP * 2));
+			$renderer->lastCellHeight = 0;
 		}
 	}
 }

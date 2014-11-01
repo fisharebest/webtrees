@@ -299,60 +299,31 @@ class WT_Report_PDF extends WT_Report_Base {
  * This class inherits from the TCPDF class and is used to generate the PDF document
  */
 class PDF extends TCPDF {
-	/**
-	 * Array of elements in the header
-	 *
-	 * @var array
-	 */
+	/** @var WT_Report_Base_Element[] Array of elements in the header */
 	public $headerElements = array();
-	/**
-	 * Array of elements in the page header
-	 *
-	 * @var array
-	 */
+
+	/** @var WT_Report_Base_Element[] Array of elements in the page header */
 	public $pageHeaderElements = array();
-	/**
-	 * Array of elements in the footer
-	 *
-	 * @var array
-	 */
+
+	/** @var WT_Report_Base_Element[] Array of elements in the footer */
 	public $footerElements = array();
-	/**
-	 * Array of elements in the body
-	 *
-	 * @var array
-	 */
+
+	/** @var WT_Report_Base_Element[] Array of elements in the body */
 	public $bodyElements = array();
-	/**
-	 * Array of elements in the footer notes
-	 *
-	 * @var array
-	 */
+
+	/** @var WT_Report_Base_Element[] Array of elements in the footer notes */
 	public $printedfootnotes = array();
-	/**
-	 * Currently used style name
-	 *
-	 * @var string
-	 */
+
+	/** @var string Currently used style name */
 	public $currentStyle;
-	/**
-	 * The last cell height
-	 *
-	 * @var int
-	 */
+
+	/** @var int The last cell height */
 	public $lastCellHeight = 0;
-	/**
-	 * The largest font size within a TextBox
-	 * to calculate the height
-	 *
-	 * @var int
-	 */
+
+	/** @var int The largest font size within a TextBox to calculate the height */
 	public $largestFontHeight = 0;
-	/**
-	 * The last pictures page number
-	 *
-	 * @var int
-	 */
+
+	/** @var int The last pictures page number */
 	public $lastpicpage = 0;
 
 	public $wt_report;
