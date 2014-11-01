@@ -28,17 +28,17 @@ class WT_Report_PDF_Cell extends WT_Report_Base_Cell {
 	/**
 	 * PDF Cell renderer
 	 *
-	 * @param PDF $pdf
+	 * @param PDF $renderer
 	 *
 	 * @return void
 	 */
-	function render($pdf) {
+	function render($renderer) {
 
 		// Set up the text style
-		if (($pdf->getCurrentStyle()) != ($this->styleName)) {
-			$pdf->setCurrentStyle($this->styleName);
+		if (($renderer->getCurrentStyle()) != ($this->styleName)) {
+			$renderer->setCurrentStyle($this->styleName);
 		}
-		$temptext = str_replace("#PAGENUM#", $pdf->PageNo(), $this->text);
+		$temptext = str_replace("#PAGENUM#", $renderer->PageNo(), $this->text);
 		// underline «title» part of Source item
 		$temptext = str_replace(array('«', '»'), array('<u>', '</u>'), $temptext);
 		$match = array();
@@ -50,7 +50,7 @@ class WT_Report_PDF_Cell extends WT_Report_Base_Cell {
 					$r = hexdec($match[1]);
 					$g = hexdec($match[2]);
 					$b = hexdec($match[3]);
-					$pdf->SetFillColor($r, $g, $b);
+					$renderer->SetFillColor($r, $g, $b);
 				}
 			} // If no color set then don't fill
 			else {
@@ -64,7 +64,7 @@ class WT_Report_PDF_Cell extends WT_Report_Base_Cell {
 				$r = hexdec($match[1]);
 				$g = hexdec($match[2]);
 				$b = hexdec($match[3]);
-				$pdf->SetDrawColor($r, $g, $b);
+				$renderer->SetDrawColor($r, $g, $b);
 			}
 		}
 		// Paint the text color or they might use inherited colors by the previous function
@@ -72,39 +72,39 @@ class WT_Report_PDF_Cell extends WT_Report_Base_Cell {
 			$r = hexdec($match[1]);
 			$g = hexdec($match[2]);
 			$b = hexdec($match[3]);
-			$pdf->SetTextColor($r, $g, $b);
+			$renderer->SetTextColor($r, $g, $b);
 		} else {
-			$pdf->SetTextColor(0, 0, 0);
+			$renderer->SetTextColor(0, 0, 0);
 		}
 
 		// If current position (left)
 		if ($this->left == ".") {
-			$cX = $pdf->GetX();
+			$cX = $renderer->GetX();
 		} // For static position add margin (also updates X)
 		else {
-			$cX = $pdf->addMarginX($this->left);
+			$cX = $renderer->addMarginX($this->left);
 		}
 
 		// Check the width if set to page wide OR set by xml to larger then page wide
-		if ($this->width == 0 || $this->width > $pdf->getRemainingWidthPDF()) {
-			$this->width = $pdf->getRemainingWidthPDF();
+		if ($this->width == 0 || $this->width > $renderer->getRemainingWidthPDF()) {
+			$this->width = $renderer->getRemainingWidthPDF();
 		}
 		// For current position
 		if ($this->top == ".") {
-			$this->top = $pdf->GetY();
+			$this->top = $renderer->GetY();
 		} else {
-			$pdf->SetY($this->top);
+			$renderer->SetY($this->top);
 		}
 
 		// Check the last cell height and adjust the current cell height if needed
-		if ($pdf->lastCellHeight > $this->height) {
-			$this->height = $pdf->lastCellHeight;
+		if ($renderer->lastCellHeight > $this->height) {
+			$this->height = $renderer->lastCellHeight;
 		}
 		// Check for pagebreak
 		if (!empty($temptext)) {
-			$cHT = $pdf->getNumLines($temptext, $this->width);
-			$cHT = $cHT * $pdf->getCellHeightRatio() * $pdf->getCurrentStyleHeight();
-			$cM = $pdf->getMargins();
+			$cHT = $renderer->getNumLines($temptext, $this->width);
+			$cHT = $cHT * $renderer->getCellHeightRatio() * $renderer->getCurrentStyleHeight();
+			$cM = $renderer->getMargins();
 			// Add padding
 			if (is_array($cM['cell'])) {
 				$cHT += ($cM['padding_bottom'] + $cM['padding_top']);
@@ -112,13 +112,13 @@ class WT_Report_PDF_Cell extends WT_Report_Base_Cell {
 				$cHT += ($cM['cell'] * 2);
 			}
 			// Add a new page if needed
-			if ($pdf->checkPageBreakPDF($cHT)) {
-				$this->top = $pdf->GetY();
+			if ($renderer->checkPageBreakPDF($cHT)) {
+				$this->top = $renderer->GetY();
 			}
 			$temptext = spanLTRRTL($temptext, "BOTH");
 		}
 		// HTML ready - last value is true
-		$pdf->MultiCell(
+		$renderer->MultiCell(
 			$this->width,
 			$this->height,
 			$temptext,
@@ -134,18 +134,18 @@ class WT_Report_PDF_Cell extends WT_Report_Base_Cell {
 		);
 		// Reset the last cell height for the next line
 		if ($this->newline >= 1) {
-			$pdf->lastCellHeight = 0;
+			$renderer->lastCellHeight = 0;
 		} // OR save the last height if heigher then before
-		elseif ($pdf->lastCellHeight < $pdf->getLastH()) {
-			$pdf->lastCellHeight = $pdf->getLastH();
+		elseif ($renderer->lastCellHeight < $renderer->getLastH()) {
+			$renderer->lastCellHeight = $renderer->getLastH();
 		}
 
 		// Set up the url link if exists ontop of the cell
 		if (!empty($this->url)) {
-			$pdf->Link($cX, $this->top, $this->width, $this->height, $this->url);
+			$renderer->Link($cX, $this->top, $this->width, $this->height, $this->url);
 		}
 		// Reset the border and the text color to black or they will be inherited
-		$pdf->SetDrawColor(0, 0, 0);
-		$pdf->SetTextColor(0, 0, 0);
+		$renderer->SetDrawColor(0, 0, 0);
+		$renderer->SetTextColor(0, 0, 0);
 	}
 }

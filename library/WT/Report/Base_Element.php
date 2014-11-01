@@ -32,35 +32,34 @@ class WT_Report_Base_Element {
 	/**
 	 * Element renderer
 	 *
-	 * @param $renderer
+	 * @param WT_Report_HTML|PDF $renderer
 	 *
-	 * @return integer
+	 * @return void
 	 */
 	function render($renderer) {
 		//-- to be implemented in inherited classes
-		return 0;
 	}
 
 	/**
-	 * @param $renderer
+	 * @param WT_Report_HTML|PDF $renderer
 	 *
-	 * @return integer
+	 * @return float
 	 */
 	function getHeight($renderer) {
-		return 0;
+		return 0.0;
 	}
 
 	/**
-	 * @param $renderer
+	 * @param WT_Report_HTML|PDF $renderer
 	 *
-	 * @return integer
+	 * @return float
 	 */
 	function getWidth($renderer) {
-		return 0;
+		return 0.0;
 	}
 
 	/**
-	 * @param $t
+	 * @param string $t
 	 *
 	 * @return integer
 	 */
@@ -112,21 +111,18 @@ class WT_Report_Base_Element {
 	/**
 	 * @param $renderer
 	 *
-	 * @return boolean
+	 * @return void
 	 */
 	function renderFootnote($renderer) {
-		return false;
-		//-- to be implemented in inherited classes
+		// To be implemented in inherited classes
 	}
 
 	/**
 	 * @param $text
 	 *
-	 * @return integer
+	 * @return void
 	 */
 	function setText($text) {
 		$this->text = $text;
-
-		return 0;
 	}
 }

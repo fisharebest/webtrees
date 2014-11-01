@@ -27,16 +27,16 @@ class WT_Report_PDF_Text extends WT_Report_Base_Text {
 	/**
 	 * PDF Text renderer
 	 *
-	 * @param PDF $pdf
+	 * @param PDF $renderer
 	 *
 	 * @return void
 	 */
-	function render($pdf) {
+	function render($renderer) {
 		// Set up the style
-		if ($pdf->getCurrentStyle() != $this->styleName) {
-			$pdf->setCurrentStyle($this->styleName);
+		if ($renderer->getCurrentStyle() != $this->styleName) {
+			$renderer->setCurrentStyle($this->styleName);
 		}
-		$temptext = str_replace("#PAGENUM#", $pdf->PageNo(), $this->text);
+		$temptext = str_replace("#PAGENUM#", $renderer->PageNo(), $this->text);
 		// underline «title» part of Source item
 		$temptext = str_replace(array('«', '»'), array('<u>', '</u>'), $temptext);
 
@@ -46,9 +46,9 @@ class WT_Report_PDF_Text extends WT_Report_Base_Text {
 			$r = hexdec($match[1]);
 			$g = hexdec($match[2]);
 			$b = hexdec($match[3]);
-			$pdf->SetTextColor($r, $g, $b);
+			$renderer->SetTextColor($r, $g, $b);
 		} else {
-			$pdf->SetTextColor(0, 0, 0);
+			$renderer->SetTextColor(0, 0, 0);
 		}
 		$temptext = spanLTRRTL($temptext, "BOTH");
 		$temptext = str_replace(
@@ -56,7 +56,7 @@ class WT_Report_PDF_Text extends WT_Report_Base_Text {
 			array('<span dir="rtl" ><br>', '<span dir="ltr" ><br>', '>&nbsp;', '&nbsp;<'),
 			$temptext
 		);
-		$pdf->writeHTML(
+		$renderer->writeHTML(
 			$temptext,
 			false,
 			false,
@@ -65,7 +65,7 @@ class WT_Report_PDF_Text extends WT_Report_Base_Text {
 			""
 		); //change height - line break etc. - the form is mirror on rtl pages
 		// Reset the text color to black or it will be inherited
-		$pdf->SetTextColor(0, 0, 0);
+		$renderer->SetTextColor(0, 0, 0);
 	}
 
 	/**

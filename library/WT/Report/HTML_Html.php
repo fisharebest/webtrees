@@ -25,26 +25,25 @@
 
 class WT_Report_HTML_Html extends WT_Report_Base_Html {
 	/**
-	 * @param string  $html
-	 * @param boolean $sub
-	 * @param boolean $inat
+	 * @param WT_Report_HTML $renderer
+	 * @param boolean        $sub
+	 * @param boolean        $inat
 	 *
 	 * @return string
 	 */
-	function render($html, $sub = false, $inat = true) {
-
-		if (!empty($this->attrs["wt_style"])) $html->setCurrentStyle($this->attrs["wt_style"]);
+	function render($renderer, $sub = false, $inat = true) {
+		if (!empty($this->attrs["wt_style"])) $renderer->setCurrentStyle($this->attrs["wt_style"]);
 
 		$this->text = $this->getStart() . $this->text;
 		foreach ($this->elements as $element) {
 			if (is_string($element) && $element == "footnotetexts") {
-				$html->Footnotes();
+				$renderer->Footnotes();
 			} elseif (is_string($element) && $element == "addpage") {
-				$html->AddPage();
+				$renderer->AddPage();
 			} elseif ($element instanceof WT_Report_Base_Html) {
-				$this->text .= $element->render($html, true, false);
+				$this->text .= $element->render($renderer, true, false);
 			} else {
-				$element->render($html);
+				$element->render($renderer);
 			}
 		}
 		$this->text .= $this->getEnd();
@@ -52,12 +51,12 @@ class WT_Report_HTML_Html extends WT_Report_Base_Html {
 
 		// If not called by an other attribute
 		if ($inat) {
-			$startX = $html->GetX();
-			$startY = $html->GetY();
-			$width = $html->getRemainingWidth();
-			echo "<div style=\"position: absolute;top: ", $startY, "pt;", $html->alignRTL, ": ", $startX, "pt;width: ", $width, "pt;\">";
-			$startY += $html->getCurrentStyleHeight() + 2;
-			$html->SetY($startY);
+			$startX = $renderer->GetX();
+			$startY = $renderer->GetY();
+			$width = $renderer->getRemainingWidth();
+			echo "<div style=\"position: absolute;top: ", $startY, "pt;", $renderer->alignRTL, ": ", $startX, "pt;width: ", $width, "pt;\">";
+			$startY += $renderer->getCurrentStyleHeight() + 2;
+			$renderer->SetY($startY);
 		}
 
 		echo $this->text;

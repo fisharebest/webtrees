@@ -30,14 +30,14 @@ class WT_Report_PDF_PageHeader extends WT_Report_Base_PageHeader {
 	/**
 	 * PageHeader element renderer
 	 *
-	 * @param PDF $pdf
+	 * @param PDF $renderer
 	 *
 	 * @return void
 	 */
-	function render($pdf) {
-		$pdf->clearPageHeader();
+	function render($renderer) {
+		$renderer->clearPageHeader();
 		foreach ($this->elements as $element) {
-			$pdf->addPageHeader($element);
+			$renderer->addPageHeader($element);
 		}
 	}
 }

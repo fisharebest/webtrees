@@ -27,27 +27,27 @@ class WT_Report_PDF_Line extends WT_Report_Base_Line {
 	/**
 	 * PDF line renderer
 	 *
-	 * @param PDF $pdf
+	 * @param PDF $renderer
 	 *
 	 * @return void
 	 */
-	function render($pdf) {
+	function render($renderer) {
 		if ($this->x1 == ".") {
-			$this->x1 = $pdf->GetX();
+			$this->x1 = $renderer->GetX();
 		}
 		if ($this->y1 == ".") {
-			$this->y1 = $pdf->GetY();
+			$this->y1 = $renderer->GetY();
 		}
 		if ($this->x2 == ".") {
-			$this->x2 = $pdf->getMaxLineWidth();
+			$this->x2 = $renderer->getMaxLineWidth();
 		}
 		if ($this->y2 == ".") {
-			$this->y2 = $pdf->GetY();
+			$this->y2 = $renderer->GetY();
 		}
-		if ($pdf->getRTL()) {
-			$pdf->Line($pdf->getPageWidth() - $this->x1, $this->y1, $pdf->getPageWidth() - $this->x2, $this->y2);
+		if ($renderer->getRTL()) {
+			$renderer->Line($renderer->getPageWidth() - $this->x1, $this->y1, $renderer->getPageWidth() - $this->x2, $this->y2);
 		} else {
-			$pdf->Line($this->x1, $this->y1, $this->x2, $this->y2);
+			$renderer->Line($this->x1, $this->y1, $this->x2, $this->y2);
 		}
 	}
 }

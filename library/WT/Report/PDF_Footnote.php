@@ -27,13 +27,13 @@ class WT_Report_PDF_Footnote extends WT_Report_Base_Footnote {
 	/**
 	 * PDF Footnotes number renderer
 	 *
-	 * @param PDF $pdf
+	 * @param PDF $renderer
 	 *
 	 * @return void
 	 */
-	function render($pdf) {
-		$pdf->setCurrentStyle("footnotenum");
-		$pdf->Write($pdf->getCurrentStyleHeight(), $this->numText, $this->addlink); //source link numbers after name
+	function render($renderer) {
+		$renderer->setCurrentStyle("footnotenum");
+		$renderer->Write($renderer->getCurrentStyleHeight(), $this->numText, $this->addlink); //source link numbers after name
 	}
 
 	/**
@@ -66,11 +66,11 @@ class WT_Report_PDF_Footnote extends WT_Report_Base_Footnote {
 	/**
 	 * Returns the height in points of the Footnote element
 	 *
-	 * @param PDF $pdf
+	 * @param PDF $renderer
 	 *
 	 * @return float $h
 	 */
-	function getFootnoteHeight($pdf) {
+	function getFootnoteHeight($renderer) {
 		return 0;
 	}
 

@@ -581,6 +581,9 @@ function add_simple_tag(
 	global $tags, $emptyfacts, $main_fact, $FILE_FORM_accept, $xref, $bdm, $action;
 	global $QUICK_REQUIRED_FACTS, $QUICK_REQUIRED_FAMFACTS, $PREFER_LEVEL2_SOURCES;
 
+	// Keep track of SOUR fields, so we can reference them in subsequent PAGE fields.
+	static $source_element_id;
+
 	$subnamefacts = array("NPFX", "GIVN", "SPFX", "SURN", "NSFX", "_MARNM_SURN");
 	preg_match('/^(?:(\d+) ('.WT_REGEX_TAG.') ?(.*))/', $tag, $match);
 	list(, $level, $fact, $value) = $match;
@@ -821,6 +824,10 @@ function add_simple_tag(
 
 			// Extra markup for specific fact types
 			switch ($fact) {
+			case 'ASSO':
+			case '_ASSO':
+				echo ' data-autocomplete-type="ASSO"';
+				break;
 			case 'DATE':
 				echo " onblur=\"valid_date(this);\" onmouseout=\"valid_date(this);\"";
 				break;
@@ -840,6 +847,9 @@ function add_simple_tag(
 			case 'OBJE':
 				echo ' data-autocomplete-type="OBJE"';
 				break;
+			case 'PAGE':
+				echo ' data-autocomplete-type="PAGE" data-autocomplete-sour="' . $source_element_id . '"';
+				break;
 			case 'PLAC':
 				echo ' data-autocomplete-type="PLAC"';
 				break;
@@ -847,6 +857,7 @@ function add_simple_tag(
 				echo ' data-autocomplete-type="REPO"';
 				break;
 			case 'SOUR':
+				$source_element_id = $element_id;
 				echo ' data-autocomplete-type="SOUR"';
 				break;
 			case 'SURN':

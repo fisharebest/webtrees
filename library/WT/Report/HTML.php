@@ -44,16 +44,16 @@ class WT_Report_HTML extends WT_Report_Base {
 	/**
 	 * Current horizontal position
 	 *
-	 * @var int
+	 * @var float
 	 */
-	public $X = 0;
+	public $X = 0.0;
 
 	/**
 	 * Current vertical position
 	 *
-	 * @var int
+	 * @var float
 	 */
-	public $Y = 0;
+	public $Y = 0.0;
 
 	/**
 	 * Currently used style name
@@ -74,16 +74,16 @@ class WT_Report_HTML extends WT_Report_Base {
 	 *
 	 * In HTML, we don't need this
 	 *
-	 * @var int
+	 * @var float
 	 */
-	public $noMarginWidth = 0;
+	public $noMarginWidth = 0.0;
 
 	/**
 	 * Last cell height
 	 *
-	 * @var int
+	 * @var float
 	 */
-	public $lastCellHeight = 0;
+	public $lastCellHeight = 0.0;
 
 	/**
 	 * LTR or RTL alignement; "left" on LTR, "right" on RTL
@@ -119,12 +119,20 @@ class WT_Report_HTML extends WT_Report_Base {
 	 */
 	public $maxY = 0;
 
+	/** @var WT_Report_Base_Element[] Array of elements in the header */
 	public $headerElements = array();
-	public $pageHeaderElements = array();
-	public $footerElements = array();
-	public $bodyElements = array();
-	public $printedfootnotes = array();
 
+	/** @var WT_Report_Base_Element[] Array of elements in the page header */
+	public $pageHeaderElements = array();
+
+	/** @var WT_Report_Base_Element[] Array of elements in the footer */
+	public $footerElements = array();
+
+	/** @var WT_Report_Base_Element[] Array of elements in the body */
+	public $bodyElements = array();
+
+	/** @var WT_Report_Base_Footnote[] Array of elements in the footer notes */
+	public $printedfootnotes = array();
 
 	/**
 	 * HTML Setup - WT_Report_HTML
@@ -540,7 +548,7 @@ class WT_Report_HTML extends WT_Report_Base {
 	 * @return float
 	 */
 	function getRemainingWidth() {
-		return (int)($this->noMarginWidth - $this->X);
+		return $this->noMarginWidth - $this->X;
 	}
 
 	/**
