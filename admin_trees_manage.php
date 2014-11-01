@@ -78,7 +78,7 @@ switch (WT_Filter::post('action')) {
 case 'delete':
 	$gedcom_id = WT_Filter::postInteger('gedcom_id');
 	if (WT_Filter::checkCsrf() && $gedcom_id) {
-		WT_Tree::delete($gedcom_id);
+		WT_Tree::get($gedcom_id)->delete();
 	}
 	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME);
 	break;

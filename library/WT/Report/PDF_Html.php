@@ -25,14 +25,14 @@
 
 class WT_Report_PDF_Html extends WT_Report_Base_Html {
 	/**
-	 * @param         $pdf
+	 * @param         $renderer
 	 * @param boolean $sub
 	 *
 	 * @return integer|string
 	 */
-	function render($pdf, $sub = false) {
+	function render($renderer, $sub = false) {
 		if (!empty($this->attrs['style'])) {
-			$pdf->setCurrentStyle($this->attrs['style']);
+			$renderer->setCurrentStyle($this->attrs['style']);
 		}
 		if (!empty($this->attrs['width'])) {
 			$this->attrs['width'] *= 3.9;
@@ -41,20 +41,20 @@ class WT_Report_PDF_Html extends WT_Report_Base_Html {
 		$this->text = $this->getStart() . $this->text;
 		foreach ($this->elements as $element) {
 			if (is_string($element) && $element == "footnotetexts") {
-				$pdf->Footnotes();
+				$renderer->Footnotes();
 			} elseif (is_string($element) && $element == "addpage") {
-				$pdf->newPage();
+				$renderer->newPage();
 			} elseif ($element instanceof WT_Report_Base_Html) {
-				$this->text .= $element->render($pdf, true);
+				$this->text .= $element->render($renderer, true);
 			} else {
-				$element->render($pdf);
+				$element->render($renderer);
 			}
 		}
 		$this->text .= $this->getEnd();
 		if ($sub) {
 			return $this->text;
 		}
-		$pdf->writeHTML($this->text); //prints 2 empty cells in the Expanded Relatives report
+		$renderer->writeHTML($this->text); //prints 2 empty cells in the Expanded Relatives report
 		return 0;
 	}
 }

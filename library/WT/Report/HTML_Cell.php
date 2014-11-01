@@ -27,37 +27,37 @@ class WT_Report_HTML_Cell extends WT_Report_Base_Cell {
 	/**
 	 * HTML Cell renderer
 	 *
-	 * @param WT_Report_HTML $html
+	 * @param WT_Report_HTML $renderer
 	 *
 	 * @return void
 	 */
-	function render($html) {
+	function render($renderer) {
 		if (strpos($this->text, "{{:ptp:}}") !== false) {
 			return;
 		}
-		$temptext = str_replace("#PAGENUM#", $html->pageNo(), $this->text);
+		$temptext = str_replace("#PAGENUM#", $renderer->pageNo(), $this->text);
 		// underline «title» part of Source item
 		$temptext = str_replace(array('«', '»'), array('<u>', '</u>'), $temptext);
 
 		// Setup the style name
-		if ($html->getCurrentStyle() != $this->styleName) {
-			$html->setCurrentStyle($this->styleName);
+		if ($renderer->getCurrentStyle() != $this->styleName) {
+			$renderer->setCurrentStyle($this->styleName);
 		}
 
 		// If (Future-feature-enable/disable cell padding)
-		$cP = $html->cPadding;
+		$cP = $renderer->cPadding;
 
 		// Adjust the positions
 		if ($this->left == ".") {
-			$this->left = $html->getX();
+			$this->left = $renderer->getX();
 		} else {
-			$html->setX($this->left);
+			$renderer->setX($this->left);
 		}
 
 		if ($this->top == ".") {
-			$this->top = $html->getY();
+			$this->top = $renderer->getY();
 		} else {
-			$html->setY($this->top);
+			$renderer->setY($this->top);
 		}
 
 		// Start collecting the HTML code
@@ -65,7 +65,7 @@ class WT_Report_HTML_Cell extends WT_Report_Base_Cell {
 		// Use Cell around padding to support RTL also
 		echo "padding:", $cP, "pt;";
 		// LTR (left) or RTL (right)
-		echo $html->alignRTL, ":", $this->left, "pt;";
+		echo $renderer->alignRTL, ":", $this->left, "pt;";
 		// Background color
 		if (!empty($this->bgcolor)) {
 			echo "background-color:", $this->bgcolor, ";";
@@ -129,8 +129,8 @@ class WT_Report_HTML_Cell extends WT_Report_Base_Cell {
 			}
 		}
 		// Check the width if set to page wide OR set by xml to larger then page wide
-		if ($this->width == 0 || $this->width > $html->getRemainingWidth()) {
-			$this->width = $html->getRemainingWidth();
+		if ($this->width == 0 || $this->width > $renderer->getRemainingWidth()) {
+			$this->width = $renderer->getRemainingWidth();
 		}
 		// We have to calculate a different width for the padding, counting on both side
 		$cW = $this->width - ($cP * 2);
@@ -138,8 +138,8 @@ class WT_Report_HTML_Cell extends WT_Report_Base_Cell {
 		// If there is any text
 		if (!empty($temptext)) {
 			// Wrap the text
-			$temptext = $html->textWrap($temptext, $cW);
-			$tmph = $html->getTextCellHeight($temptext);
+			$temptext = $renderer->textWrap($temptext, $cW);
+			$tmph = $renderer->getTextCellHeight($temptext);
 			// Add some cell padding
 			$this->height += $cP;
 			if ($tmph > $this->height) {
@@ -147,8 +147,8 @@ class WT_Report_HTML_Cell extends WT_Report_Base_Cell {
 			}
 		}
 		// Check the last cell height and ajust with the current cell height
-		if ($html->lastCellHeight > $this->height) {
-			$this->height = $html->lastCellHeight;
+		if ($renderer->lastCellHeight > $this->height) {
+			$this->height = $renderer->lastCellHeight;
 		}
 		echo " width:", $cW - $bpixX, "pt;height:", $this->height - $bpixY, "pt;";
 
@@ -174,7 +174,7 @@ class WT_Report_HTML_Cell extends WT_Report_Base_Cell {
 		}
 		// Print any text if exists
 		if (!empty($temptext)) {
-			$html->write($temptext, $this->tcolor, false);
+			$renderer->write($temptext, $this->tcolor, false);
 		}
 		if (!empty($this->url)) {
 			echo "</a>";
@@ -184,18 +184,18 @@ class WT_Report_HTML_Cell extends WT_Report_Base_Cell {
 		// Where to place the next position
 		// -> Next to this cell in the same line
 		if ($this->newline == 0) {
-			$html->setXy($this->left + $this->width, $this->top);
-			$html->lastCellHeight = $this->height;
+			$renderer->setXy($this->left + $this->width, $this->top);
+			$renderer->lastCellHeight = $this->height;
 		} // -> On a new line at the margin - Default
 		elseif ($this->newline == 1) {
-			$html->setXy(0, $html->getY() + $this->height + ($cP * 2));
+			$renderer->setXy(0, $renderer->getY() + $this->height + ($cP * 2));
 			// Reset the last cell height for the next line
-			$html->lastCellHeight = 0;
+			$renderer->lastCellHeight = 0;
 		} // -> On a new line at the end of this cell
 		elseif ($this->newline == 2) {
-			$html->setXy($html->getX() + $this->width, $html->getY() + $this->height + ($cP * 2));
+			$renderer->setXy($renderer->getX() + $this->width, $renderer->getY() + $this->height + ($cP * 2));
 			// Reset the last cell height for the next line
-			$html->lastCellHeight = 0;
+			$renderer->lastCellHeight = 0;
 		}
 	}
 }

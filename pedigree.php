@@ -64,7 +64,7 @@ $controller
 			<tr>
 				<td class="optionbox">
 					<input class="pedigree_form" data-autocomplete-type="INDI" type="text" id="rootid" name="rootid"
-					       size="3" value="<?php echo $controller->rootid; ?>">
+					       size="3" value="<?php echo $controller->root->getXref(); ?>">
 					<?php echo print_findindi_link('rootid'); ?>
 				</td>
 				<td class="optionbox center">
@@ -124,7 +124,7 @@ for ($i = ($controller->treesize - 1); $i >= 0; $i--) {
 		$maxyoffset = $yoffset;
 	}
 	// Can we go back to an earlier generation?
-	$can_go_back = $curgen == 1 && WT_Individual::getInstance($controller->treeid[$i]) && WT_Individual::getInstance($controller->treeid[$i])->getChildFamilies();
+	$can_go_back = $curgen == 1 && $controller->ancestors[$i] && $controller->ancestors[$i]->getChildFamilies();
 
 	if ($talloffset == 2) { // oldest at top
 		if ($can_go_back) {
@@ -133,7 +133,7 @@ for ($i = ($controller->treesize - 1); $i >= 0; $i--) {
 			if ($i > (int)($controller->treesize / 2) + (int)($controller->treesize / 4)) {
 				$did++;
 			}
-			printf(MENU_ITEM, $controller->treeid[$did], $controller->show_full, $controller->PEDIGREE_GENERATIONS, $talloffset, 'icon-uarrow noprint', '');
+			printf(MENU_ITEM, $controller->ancestors[$did]->getXref(), $controller->show_full, $controller->PEDIGREE_GENERATIONS, $talloffset, 'icon-uarrow noprint', '');
 			echo '</div>';
 		}
 	}
@@ -149,7 +149,7 @@ for ($i = ($controller->treesize - 1); $i >= 0; $i--) {
 
 	printf(BOX_WRAPPER, $posn, $xoffset, $yoffset, $controller->pbwidth, $controller->pbheight);
 
-	print_pedigree_person(WT_Individual::getInstance($controller->treeid[$i]));
+	print_pedigree_person($controller->ancestors[$i]);
 	if ($can_go_back) {
 		$did = 1;
 		if ($i > (int)($controller->treesize / 2) + (int)($controller->treesize / 4)) {
@@ -162,11 +162,11 @@ for ($i = ($controller->treesize - 1); $i >= 0; $i--) {
 		}
 		if ($talloffset == 3) {
 			printf(ARROW_WRAPPER, $posn, $controller->pbwidth / 2, $controller->pbheight+5);
-			printf(MENU_ITEM, $controller->treeid[$did], $controller->show_full, $controller->PEDIGREE_GENERATIONS, $talloffset, 'icon-darrow noprint', '');
+			printf(MENU_ITEM, $controller->ancestors[$did]->getXref(), $controller->show_full, $controller->PEDIGREE_GENERATIONS, $talloffset, 'icon-darrow noprint', '');
 			echo '</div>';
 		} elseif ($talloffset < 2) {
 			printf(ARROW_WRAPPER, $posn, $controller->pbwidth +5, $controller->pbheight / 2 - 10);
-			printf(MENU_ITEM, $controller->treeid[$did], $controller->show_full, $controller->PEDIGREE_GENERATIONS, $talloffset, "$arrow noprint", '');
+			printf(MENU_ITEM, $controller->ancestors[$did]->getXref(), $controller->show_full, $controller->PEDIGREE_GENERATIONS, $talloffset, "$arrow noprint", '');
 			echo '</div>';
 		}
 	}

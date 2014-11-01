@@ -30,55 +30,55 @@ class WT_Report_HTML_Image extends WT_Report_Base_Image {
 	/**
 	 * Image renderer
 	 *
-	 * @param WT_Report_HTML $html
+	 * @param WT_Report_HTML $renderer
 	 *
 	 * @return void
 	 */
-	function render($html) {
+	function render($renderer) {
 		global $lastpicbottom, $lastpicpage, $lastpicleft, $lastpicright;
 
 		// Get the current positions
 		if ($this->x == ".") {
-			$this->x = $html->getX();
+			$this->x = $renderer->getX();
 		}
 		if ($this->y == ".") {
 			//-- first check for a collision with the last picture
 			if (isset($lastpicbottom)) {
-				if (($html->pageNo() == $lastpicpage) && ($lastpicbottom >= $html->getY()) && ($this->x >= $lastpicleft) && ($this->x <= $lastpicright)) {
-					$html->setY($lastpicbottom + ($html->cPadding * 2));
+				if (($renderer->pageNo() == $lastpicpage) && ($lastpicbottom >= $renderer->getY()) && ($this->x >= $lastpicleft) && ($this->x <= $lastpicright)) {
+					$renderer->setY($lastpicbottom + ($renderer->cPadding * 2));
 				}
 			}
-			$this->y = $html->getY();
+			$this->y = $renderer->getY();
 		}
 
 		// Image alignment
 		switch ($this->align) {
 		case "L":
-			echo "<div style=\"position:absolute;top:", $this->y, "pt;left:0pt;width:", $html->getRemainingWidth(), "pt;text-align:left;\">\n";
+			echo "<div style=\"position:absolute;top:", $this->y, "pt;left:0pt;width:", $renderer->getRemainingWidth(), "pt;text-align:left;\">\n";
 			echo "<img src=\"", $this->file, "\" style=\"width:", $this->width, "pt;height:", $this->height, "pt;\" alt=\"\">\n</div>\n";
 			break;
 		case "C":
-			echo "<div style=\"position:absolute;top:", $this->y, "pt;left:0pt;width:", $html->getRemainingWidth(), "pt;text-align:center;\">\n";
+			echo "<div style=\"position:absolute;top:", $this->y, "pt;left:0pt;width:", $renderer->getRemainingWidth(), "pt;text-align:center;\">\n";
 			echo "<img src=\"", $this->file, "\" style=\"width:", $this->width, "pt;height:", $this->height, "pt;\" alt=\"\">\n</div>\n";
 			break;
 		case "R":
-			echo "<div style=\"position:absolute;top:", $this->y, "pt;left:0pt;width:", $html->getRemainingWidth(), "pt;text-align:right;\">\n";
+			echo "<div style=\"position:absolute;top:", $this->y, "pt;left:0pt;width:", $renderer->getRemainingWidth(), "pt;text-align:right;\">\n";
 			echo "<img src=\"", $this->file, "\" style=\"width:", $this->width, "pt;height:", $this->height, "pt;\" alt=\"\">\n</div>\n";
 			break;
 		default:
-			echo "<img src=\"", $this->file, "\" style=\"position:absolute;", $html->alignRTL, ":", $this->x, "pt;top:", $this->y, "pt;width:", $this->width, "pt;height:", $this->height, "pt;\" alt=\"\">\n";
+			echo "<img src=\"", $this->file, "\" style=\"position:absolute;", $renderer->alignRTL, ":", $this->x, "pt;top:", $this->y, "pt;width:", $this->width, "pt;height:", $this->height, "pt;\" alt=\"\">\n";
 		}
 
-		$lastpicpage = $html->pageNo();
+		$lastpicpage = $renderer->pageNo();
 		$lastpicleft = $this->x;
 		$lastpicright = $this->x + $this->width;
 		$lastpicbottom = $this->y + $this->height;
 		// Setup for the next line
 		if ($this->line == "N") {
-			$html->setY($lastpicbottom);
+			$renderer->setY($lastpicbottom);
 		}
 		// Keep max Y updated
-		$html->addMaxY($lastpicbottom);
+		$renderer->addMaxY($lastpicbottom);
 	}
 
 	/**

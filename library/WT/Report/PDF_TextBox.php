@@ -27,11 +27,11 @@ class WT_Report_PDF_TextBox extends WT_Report_Base_TextBox {
 	/**
 	 * PDF Text Box renderer
 	 *
-	 * @param PDF $pdf
+	 * @param PDF $renderer
 	 *
 	 * @return boolean|integer
 	 */
-	function render($pdf) {
+	function render($renderer) {
 
 		$newelements = array();
 		$lastelement = "";
@@ -64,7 +64,7 @@ class WT_Report_PDF_TextBox extends WT_Report_Base_TextBox {
 				} // Collect the Footnote links
 				elseif ($element instanceof WT_Report_Base_Footnote) {
 					// Check if the Footnote has been set with it’s link number
-					$pdf->checkFootnote($element);
+					$renderer->checkFootnote($element);
 					// Save first the last element if any
 					if (!empty($lastelement)) {
 						$newelements[] = $lastelement;
@@ -115,33 +115,33 @@ class WT_Report_PDF_TextBox extends WT_Report_Base_TextBox {
 		unset($footnote_element, $lastelement, $links, $newelements);
 
 		// Used with line breaks and cell height calculation within this box
-		$pdf->largestFontHeight = 0;
+		$renderer->largestFontHeight = 0;
 
 		// If current position (left)
 		if ($this->left == ".") {
-			$cX = $pdf->GetX();
+			$cX = $renderer->GetX();
 		} else {
 			// For static position add margin (returns and updates X)
-			$cX = $pdf->addMarginX($this->left);
+			$cX = $renderer->addMarginX($this->left);
 		}
 
 		// If current position (top)
 		if ($this->top == ".") {
-			$cY = $pdf->GetY();
+			$cY = $renderer->GetY();
 		} else {
 			$cY = $this->top;
-			$pdf->SetY($cY);
+			$renderer->SetY($cY);
 		}
 
 		// Check the width if set to page wide OR set by xml to larger then page width (margin)
-		if ($this->width == 0 || $this->width > $pdf->getRemainingWidthPDF()) {
-			$cW = $pdf->getRemainingWidthPDF();
+		if ($this->width == 0 || $this->width > $renderer->getRemainingWidthPDF()) {
+			$cW = $renderer->getRemainingWidthPDF();
 		} else {
 			$cW = $this->width;
 		}
 
 		// Save the original margins
-		$cM = $pdf->getMargins();
+		$cM = $renderer->getMargins();
 		// Use cell padding to wrap the width
 		// Temp Width with cell padding
 		if (is_array($cM['cell'])) {
@@ -168,7 +168,7 @@ class WT_Report_PDF_TextBox extends WT_Report_Base_TextBox {
 				if ($ew == $cWT) {
 					$w = 0;
 				}
-				$lw = $this->elements[$i]->getWidth($pdf);
+				$lw = $this->elements[$i]->getWidth($renderer);
 				// Text is already gets the # LF
 				$cHT += $lw[2];
 				if ($lw[1] == 1) {
@@ -184,7 +184,7 @@ class WT_Report_PDF_TextBox extends WT_Report_Base_TextBox {
 				// Footnote is at the bottom of the page. No need to calculate it’s height or wrap the text!
 				// We are changing the margins anyway!
 				// For anything else but text (images), get the height
-				$eH += $this->elements[$i]->getHeight($pdf);
+				$eH += $this->elements[$i]->getHeight($renderer);
 			}
 		}
 
@@ -195,9 +195,9 @@ class WT_Report_PDF_TextBox extends WT_Report_Base_TextBox {
 			// Check if this is text or some other element, like images
 			if ($eH == 0) {
 				// This is text elements. Number of LF but at least one line
-				$cHT = ($cHT + 1) * $pdf->getCellHeightRatio();
+				$cHT = ($cHT + 1) * $renderer->getCellHeightRatio();
 				// Calculate the cell hight with the largest font size used within this Box
-				$cHT = $cHT * $pdf->largestFontHeight;
+				$cHT = $cHT * $renderer->largestFontHeight;
 				// Add cell padding
 				if ($this->padding) {
 					if (is_array($cM['cell'])) {
@@ -215,15 +215,15 @@ class WT_Report_PDF_TextBox extends WT_Report_Base_TextBox {
 			}
 		}
 		// Finaly, check the last cells height
-		if ($cH < $pdf->lastCellHeight) {
-			$cH = $pdf->lastCellHeight;
+		if ($cH < $renderer->lastCellHeight) {
+			$cH = $renderer->lastCellHeight;
 		}
 		// Add a new page if needed
 		if ($this->pagecheck) {
 			// Reset last cell height or Header/Footer will inherit it, in case of pagebreak
-			$pdf->lastCellHeight = 0;
-			if ($pdf->checkPageBreakPDF($cH)) {
-				$cY = $pdf->GetY();
+			$renderer->lastCellHeight = 0;
+			if ($renderer->checkPageBreakPDF($cH)) {
+				$cY = $renderer->GetY();
 			}
 		}
 
@@ -241,7 +241,7 @@ class WT_Report_PDF_TextBox extends WT_Report_Base_TextBox {
 					$r = hexdec($match[1]);
 					$g = hexdec($match[2]);
 					$b = hexdec($match[3]);
-					$pdf->SetFillColor($r, $g, $b);
+					$renderer->SetFillColor($r, $g, $b);
 				}
 			}
 		}
@@ -249,83 +249,83 @@ class WT_Report_PDF_TextBox extends WT_Report_Base_TextBox {
 		unset($lw, $w, $match, $cE, $eH);
 		// Draw the border
 		if (!empty($cS)) {
-			if (!$pdf->getRTL()) {
+			if (!$renderer->getRTL()) {
 				$cXM = $cX;
 			} else {
-				$cXM = ($pdf->getPageWidth()) - $cX - $cW;
+				$cXM = ($renderer->getPageWidth()) - $cX - $cW;
 			}
-			$pdf->Rect($cXM, $cY, $cW, $cH, $cS);
+			$renderer->Rect($cXM, $cY, $cW, $cH, $cS);
 		}
 		// Add cell padding if set and if any text (element) exist
 		if ($this->padding) {
 			if ($cHT > 0) {
 				if (is_array($cM['cell'])) {
-					$pdf->SetY($cY + $cM['padding_top']);
+					$renderer->SetY($cY + $cM['padding_top']);
 				} else {
-					$pdf->SetY($cY + $cM['cell']);
+					$renderer->SetY($cY + $cM['cell']);
 				}
 			}
 		}
 		// Change the margins X, Width
-		if (!$pdf->getRTL()) {
+		if (!$renderer->getRTL()) {
 			if ($this->padding) {
 				if (is_array($cM['cell'])) {
-					$pdf->SetLeftMargin($cX + $cM['padding_left']);
+					$renderer->SetLeftMargin($cX + $cM['padding_left']);
 				} else {
-					$pdf->SetLeftMargin($cX + $cM['cell']);
+					$renderer->SetLeftMargin($cX + $cM['cell']);
 				}
-				$pdf->SetRightMargin($pdf->getRemainingWidthPDF() - $cW + $cM['right']);
+				$renderer->SetRightMargin($renderer->getRemainingWidthPDF() - $cW + $cM['right']);
 			} else {
-				$pdf->SetLeftMargin($cX);
-				$pdf->SetRightMargin($pdf->getRemainingWidthPDF() - $cW + $cM['right']);
+				$renderer->SetLeftMargin($cX);
+				$renderer->SetRightMargin($renderer->getRemainingWidthPDF() - $cW + $cM['right']);
 			}
 		} else {
 			if ($this->padding) {
 				if (is_array($cM['cell'])) {
-					$pdf->SetRightMargin($cX + $cM['padding_right']);
+					$renderer->SetRightMargin($cX + $cM['padding_right']);
 				} else {
-					$pdf->SetRightMargin($cX + $cM['cell']);
+					$renderer->SetRightMargin($cX + $cM['cell']);
 				}
-				$pdf->SetLeftMargin($pdf->getRemainingWidthPDF() - $cW + $cM['left']);
+				$renderer->SetLeftMargin($renderer->getRemainingWidthPDF() - $cW + $cM['left']);
 			} else {
-				$pdf->SetRightMargin($cX);
-				$pdf->SetLeftMargin($pdf->getRemainingWidthPDF() - $cW + $cM['left']);
+				$renderer->SetRightMargin($cX);
+				$renderer->SetLeftMargin($renderer->getRemainingWidthPDF() - $cW + $cM['left']);
 			}
 		}
 		// Save the current page number
-		$cPN = $pdf->getPage();
+		$cPN = $renderer->getPage();
 
 		// Render the elements (write text, print picture...)
 		foreach ($this->elements as $element) {
 			if (is_object($element)) {
-				$element->render($pdf);
+				$element->render($renderer);
 			} elseif (is_string($element) && $element == 'footnotetexts') {
-				$pdf->footnotes();
+				$renderer->footnotes();
 			} elseif (is_string($element) && $element == 'addpage') {
-				$pdf->newPage();
+				$renderer->newPage();
 			}
 		}
 		// Restore the margins
-		$pdf->SetLeftMargin($cM['left']);
-		$pdf->SetRightMargin($cM['right']);
+		$renderer->SetLeftMargin($cM['left']);
+		$renderer->SetRightMargin($cM['right']);
 
 		// This will be mostly used to trick the multiple images last height
 		if ($this->reseth) {
 			$cH = 0;
 			// This can only happen with multiple images and with pagebreak
-			if ($cPN != $pdf->getPage()) {
-				$pdf->setPage($cPN);
+			if ($cPN != $renderer->getPage()) {
+				$renderer->setPage($cPN);
 			}
 		}
 		// New line and some clean up
 		if (!$this->newline) {
-			$pdf->SetXY(($cX + $cW), $cY);
-			$pdf->lastCellHeight = $cH;
+			$renderer->SetXY(($cX + $cW), $cY);
+			$renderer->lastCellHeight = $cH;
 		} else {
 			// addMarginX() also updates X
-			$pdf->addMarginX(0);
-			$pdf->SetY($cY + $cH);
-			$pdf->lastCellHeight = 0;
+			$renderer->addMarginX(0);
+			$renderer->SetY($cY + $cH);
+			$renderer->lastCellHeight = 0;
 		}
 
 		return true;

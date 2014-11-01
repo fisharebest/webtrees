@@ -43,7 +43,7 @@ $controller
 					<?php	echo WT_I18N::translate('Individual'); ?>
 				</td>
 				<td class="optionbox">
-					<input class="pedigree_form" data-autocomplete-type="INDI" type="text" id="rootid" name="rootid" size="3" value="<?php echo $controller->rootid; ?>">
+					<input class="pedigree_form" data-autocomplete-type="INDI" type="text" id="rootid" name="rootid" size="3" value="<?php echo $controller->root->getXref(); ?>">
 					<?php echo print_findindi_link('rootid'); ?>
 				</td>
 				<td class="descriptionbox">
@@ -97,21 +97,21 @@ if ($controller->error_message) {
 	switch ($controller->chart_style) {
 	case 0: // List
 		echo '<ul style="list-style: none; display: block;" id="descendancy_chart">';
-		$controller->print_child_descendancy($controller->root, $controller->generations);
+		$controller->printChildDescendancy($controller->root, $controller->generations);
 		echo '</ul>';
 		break;
 	case 1: // Booklet
 		$show_cousins = true;
 		echo '<div id="descendancy_chart">';
-		$controller->print_child_family($controller->root, $controller->generations);
+		$controller->printChildFamily($controller->root, $controller->generations);
 		echo '</div>';
 		break;
 	case 2: // Individual list
-		$descendants = $controller->indi_desc($controller->root, $controller->generations, array());
+		$descendants = $controller->individualDescendancy($controller->root, $controller->generations, array());
 		echo '<div id="descendancy-list">', format_indi_table($descendants), '</div>';
 		break;
 	case 3: // Family list
-		$descendants = $controller->fam_desc($controller->root, $controller->generations, array());
+		$descendants = $controller->familyDescendancy($controller->root, $controller->generations, array());
 		echo '<div id="descendancy-list">', format_fam_table($descendants), '</div>';
 		break;
 	}

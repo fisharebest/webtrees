@@ -298,22 +298,8 @@ function format_indi_table($datalist, $option = '') {
 
 	$d100y = new WT_Date(date('Y') - 100);  // 100 years ago
 	$unique_indis = array(); // Don't double-count indis with multiple names.
-	foreach ($datalist as $key => $value) {
-		if (is_object($value)) { // Array of objects
-			$person = $value;
-		} elseif (!is_array($value)) { // Array of IDs
-			$person = WT_Individual::getInstance($value);
-		} else { // Array of search results
-			$gid = $key;
-			if (isset($value['gid'])) {
-				$gid = $value['gid'];
-			} // from indilist
-			if (isset($value[4])) {
-				$gid = $value[4];
-			} // from indilist ALL
-			$person = WT_Individual::getInstance($gid);
-		}
-		if (!$person || !$person->canShowName()) {
+	foreach ($datalist as $key => $person) {
+		if (!$person->canShowName()) {
 			continue;
 		}
 		if ($person->isPendingAddtion()) {

@@ -1025,33 +1025,6 @@ function create_media_object($level, $gedrec, $ged_id) {
 }
 
 /**
- * delete a gedcom from the database
- *
- * deletes all of the imported data about a gedcom from the database
- *
- * @param string  $ged_id    the gedcom to remove from the database
- * @param boolean $keepmedia Whether or not to keep media and media links in the tables
- */
-function empty_database($ged_id, $keepmedia) {
-	WT_DB::prepare("DELETE FROM `##individuals` WHERE i_file   =?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM `##families`    WHERE f_file   =?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM `##sources`     WHERE s_file   =?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM `##other`       WHERE o_file   =?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM `##places`      WHERE p_file   =?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM `##placelinks`  WHERE pl_file  =?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM `##name`        WHERE n_file   =?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM `##dates`       WHERE d_file   =?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM `##change`      WHERE gedcom_id=?")->execute(array($ged_id));
-
-	if ($keepmedia) {
-		WT_DB::prepare("DELETE FROM `##link`          WHERE l_file =? AND l_type<>'OBJE'")->execute(array($ged_id));
-	} else {
-		WT_DB::prepare("DELETE FROM `##link`          WHERE l_file =?")->execute(array($ged_id));
-		WT_DB::prepare("DELETE FROM `##media`         WHERE m_file =?")->execute(array($ged_id));
-	}
-}
-
-/**
  * Accept all pending changes for a specified record.
  *
  * @param string  $xref

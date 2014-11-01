@@ -366,8 +366,8 @@ case 'register':
 				$webmaster->getEmail(),
 				$webmaster->getRealName(),
 				// “Reply-To:” header
-				$WEBTREES_EMAIL,
-				$WEBTREES_EMAIL,
+				$user->getEmail(),
+				$user->getRealName(),
 				// Message body
 				$mail1_subject,
 				$mail1_body

@@ -33,26 +33,26 @@ class WT_Report_PDF extends WT_Report_Base {
 	 *
 	 * @var boolean const
 	 */
-	const compression = true;
+	const COMPRESSION = true;
 	/**
 	 * If TRUE reduce the RAM memory usage by caching temporary data on filesystem (slower).
 	 *
 	 * @var boolean const
 	 */
-	const diskcache = false;
+	const DISK_CACHE = false;
 	/**
 	 * TRUE means that the input text is unicode (PDF)
 	 *
 	 * @var boolean const
 	 */
-	const unicode = true;
+	const UNICODE = true;
 	/**
 	 * FALSE means that the full font is embedded, TRUE means only the used chars
 	 * in TCPDF v5.9 font subsetting is a very slow process, this leads to larger files
 	 *
 	 * @var boolean const
 	 */
-	const subsetting = false;
+	const SUBSETTING = false;
 	/**
 	 * A new object of the PDF class
 	 *
@@ -70,7 +70,7 @@ class WT_Report_PDF extends WT_Report_Base {
 		$this->pdf = new PDF($this->orientation, parent::UNITS, array(
 			$this->pagew,
 			$this->pageh
-		), self::unicode, "UTF-8", self::diskcache);
+		), self::UNICODE, "UTF-8", self::DISK_CACHE);
 
 		// Setup the PDF margins
 		$this->pdf->setMargins($this->leftmargin, $this->topmargin, $this->rightmargin);
@@ -79,9 +79,9 @@ class WT_Report_PDF extends WT_Report_Base {
 		//Set auto page breaks
 		$this->pdf->SetAutoPageBreak(true, $this->bottommargin);
 		// Set font subsetting
-		$this->pdf->setFontSubsetting(self::subsetting);
+		$this->pdf->setFontSubsetting(self::SUBSETTING);
 		// Setup PDF compression
-		$this->pdf->SetCompression(self::compression);
+		$this->pdf->SetCompression(self::COMPRESSION);
 		// Setup RTL support
 		$this->pdf->setRTL($this->rtl);
 		// Set the document information
@@ -299,60 +299,31 @@ class WT_Report_PDF extends WT_Report_Base {
  * This class inherits from the TCPDF class and is used to generate the PDF document
  */
 class PDF extends TCPDF {
-	/**
-	 * Array of elements in the header
-	 *
-	 * @var array
-	 */
+	/** @var WT_Report_Base_Element[] Array of elements in the header */
 	public $headerElements = array();
-	/**
-	 * Array of elements in the page header
-	 *
-	 * @var array
-	 */
+
+	/** @var WT_Report_Base_Element[] Array of elements in the page header */
 	public $pageHeaderElements = array();
-	/**
-	 * Array of elements in the footer
-	 *
-	 * @var array
-	 */
+
+	/** @var WT_Report_Base_Element[] Array of elements in the footer */
 	public $footerElements = array();
-	/**
-	 * Array of elements in the body
-	 *
-	 * @var array
-	 */
+
+	/** @var WT_Report_Base_Element[] Array of elements in the body */
 	public $bodyElements = array();
-	/**
-	 * Array of elements in the footer notes
-	 *
-	 * @var array
-	 */
+
+	/** @var WT_Report_Base_Footnote[] Array of elements in the footer notes */
 	public $printedfootnotes = array();
-	/**
-	 * Currently used style name
-	 *
-	 * @var string
-	 */
+
+	/** @var string Currently used style name */
 	public $currentStyle;
-	/**
-	 * The last cell height
-	 *
-	 * @var int
-	 */
+
+	/** @var int The last cell height */
 	public $lastCellHeight = 0;
-	/**
-	 * The largest font size within a TextBox
-	 * to calculate the height
-	 *
-	 * @var int
-	 */
+
+	/** @var int The largest font size within a TextBox to calculate the height */
 	public $largestFontHeight = 0;
-	/**
-	 * The last pictures page number
-	 *
-	 * @var int
-	 */
+
+	/** @var int The last pictures page number */
 	public $lastpicpage = 0;
 
 	public $wt_report;
