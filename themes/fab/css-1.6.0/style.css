@@ -34,6 +34,10 @@ body {
 	margin: 0;
 }
 
+:focus {
+	outline-style: none;
+}
+
 .submenu {
 	background-color: #eee;
 	border: thin solid #aaa;
@@ -867,6 +871,14 @@ li .person_boxF {
 	margin: 3px 0 3px 0;
 }
 
+#descendancy_chart span.details1 div[class^="fact_"] {
+	display: inline-block;
+}
+
+#descendancy_chart td.details1 {
+	padding-top: 5px;
+}
+
 /*-- descendancy chart rtl specific stylesheets --*/
 [dir=rtl] #descendancy_chart ul {
 	background-position: right top;
@@ -911,6 +923,10 @@ li .person_boxF {
 	background-position: right top;
 	margin: 0 15px 0 0;
 	left: auto;
+}
+
+#ancestry_chart span.details1 div[class^="fact_"] {
+   	display: inline-block;
 }
 
 [dir=rtl] #ancestry_chart li {
@@ -2853,7 +2869,7 @@ fieldset {
 [class^="icon-"],
 [class*=" icon-"] {
 	display: inline-block;
-	vertical-align: text-bottom;
+	vertical-align: middle;
 	background-repeat: no-repeat;
 }
 

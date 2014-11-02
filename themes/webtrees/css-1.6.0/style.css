@@ -757,10 +757,18 @@ a:hover .nameZoom {
 
 #descendancy_chart li {
 	list-style: none;
-	margin: 0 0 0 -15px;
+	margin: 5px 0 0 -15px;
 	padding-top: 0;
 	padding-right: 0;
 	padding-bottom: 0;
+}
+
+#descendancy_chart span.details1 div[class^="fact_"] {
+	display: inline-block;
+}
+
+#descendancy_chart td.details1 {
+	padding-top: 5px;
 }
 
 [dir=rtl] #descendancy_chart ul {
@@ -803,6 +811,10 @@ a:hover .nameZoom {
 	background-position: right top;
 	margin: 0 15px 0 0;
 	left: auto;
+}
+
+#ancestry_chart span.details1 div[class^="fact_"] {
+   	display: inline-block;
 }
 
 [dir=rtl] #ancestry_chart li {
