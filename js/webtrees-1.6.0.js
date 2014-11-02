@@ -1214,8 +1214,7 @@ function autocomplete(selector) {
 
 	jQuery(selector).each(function() {
 		var type = $(this).data("autocomplete-type"); // What type of field
-		var ged  = $(this).data("autocomplete-ged");  // Which family tree
-
+		var ged  = $(this).data("autocomplete-ged"); // Which family tree
 		if (typeof(type) === "undefined") {
 			alert("Missing data-autocomplete-type attribute");
 		}
@@ -1229,9 +1228,16 @@ function autocomplete(selector) {
 		self.autocomplete({
 			// Cannot use a simple URL, as the data-autocomplete-xxxx parameters may change.
 			source: function(request, response) {
+				// Find the corresponding SOUR for a PAGE
+				var sid  = null; // Which SOUR (for PAGE fields)
+				if (type === "PAGE") {
+					sid = $("#" + self.data("autocomplete-sour")).val();
+				}
+
 				jQuery.getJSON("autocomplete.php", {
 					field: self.data("autocomplete-type"),
 					ged:   self.data("autocomplete-ged"),
+					sid:   sid,
 					term:  request.term
 				}, response);
 			},

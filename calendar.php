@@ -31,22 +31,30 @@ $controller = new WT_Controller_Page();
 $controller->setPageTitle(WT_I18N::translate('Anniversary calendar'));
 $controller->pageHeader();
 
-$cal      = WT_Filter::get('cal',      '@#D[A-Z ]+@');
-$day      = WT_Filter::get('day',      '\d\d?');
-$month    = WT_Filter::get('month',    '[A-Z]{3,5}');
-$year     = WT_Filter::get('year',     '\d{1,4}(?: B\.C\.)?|\d\d\d\d\/\d\d|\d+(-\d+|[?]+)?');
-$action   = WT_Filter::get('action',   'year|today|calendar', 'today');
+$cal      = WT_Filter::get('cal', '@#D[A-Z ]+@');
+$day      = WT_Filter::get('day', '\d\d?');
+$month    = WT_Filter::get('month', '[A-Z]{3,5}');
+$year     = WT_Filter::get('year', '\d{1,4}(?: B\.C\.)?|\d\d\d\d\/\d\d|\d+(-\d+|[?]+)?');
+$action   = WT_Filter::get('action', 'year|today|calendar', 'today');
 $filterev = WT_Filter::get('filterev', 'all|bdm|' . WT_REGEX_TAG, 'bdm');
 $filterof = WT_Filter::get('filterof', 'all|living|recent', 'all');
 $filtersx = WT_Filter::get('filtersx', '[MF]');
 
-if ($cal.$day.$month.$year=='') {
+if ($cal . $day . $month . $year == '') {
 	// No date specified?  Use the most likely calendar
 	switch (WT_LOCALE) {
-	case 'fa': $cal='@#DJALALI@';    break;
-	case 'ar': $cal='@#DHIJRI@';     break;
-	case 'he': $cal='@#DHEBREW@';    break;
-	default:   $cal='@#DGREGORIAN@'; break;
+	case 'fa':
+		$cal = '@#DJALALI@';
+		break;
+	case 'ar':
+		$cal = '@#DHIJRI@';
+		break;
+	case 'he':
+		$cal = '@#DHEBREW@';
+		break;
+	default:
+		$cal = '@#DGREGORIAN@';
+		break;
 	}
 }
 
@@ -54,44 +62,50 @@ if ($cal.$day.$month.$year=='') {
 
 // We cannot display new-style/old-style years, so convert to new style
 if (preg_match('/^(\d\d)\d\d\/(\d\d)$/', $year, $match)) {
-	$year=$match[1].$match[2];
+	$year = $match[1] . $match[2];
 }
 
 // advanced-year "year range"
 if (preg_match('/^(\d+)-(\d+)$/', $year, $match)) {
 	if (strlen($match[1]) > strlen($match[2])) {
-		$match[2]=substr($match[1], 0, strlen($match[1])-strlen($match[2])).$match[2];
+		$match[2] = substr($match[1], 0, strlen($match[1]) - strlen($match[2])) . $match[2];
 	}
-	$ged_date=new WT_Date("FROM {$cal} {$match[1]} TO {$cal} {$match[2]}");
-	$action='year';
+	$ged_date = new WT_Date("FROM {$cal} {$match[1]} TO {$cal} {$match[2]}");
+	$action   = 'year';
 } else {
 	// advanced-year "decade/century wildcard"
 	if (preg_match('/^(\d+)(\?+)$/', $year, $match)) {
-		$y1=$match[1].str_replace('?', '0', $match[2]);
-		$y2=$match[1].str_replace('?', '9', $match[2]);
-		$ged_date=new WT_Date("FROM {$cal} {$y1} TO {$cal} {$y2}");
-		$action='year';
+		$y1       = $match[1] . str_replace('?', '0', $match[2]);
+		$y2       = $match[1] . str_replace('?', '9', $match[2]);
+		$ged_date = new WT_Date("FROM {$cal} {$y1} TO {$cal} {$y2}");
+		$action   = 'year';
 	} else {
-		if ($year<0)
-			$year=(-$year)." B.C."; // need BC to parse date
-		$ged_date=new WT_Date("{$cal} {$day} {$month} {$year}");
-		$year=$ged_date->date1->y; // need negative year for year entry field.
+		if ($year < 0) {
+			$year = (-$year) . " B.C.";
+		} // need BC to parse date
+		$ged_date = new WT_Date("{$cal} {$day} {$month} {$year}");
+		$year     = $ged_date->date1->y; // need negative year for year entry field.
 	}
 }
-$cal_date=&$ged_date->date1;
-
-// Invalid month?  Pick a sensible one.
-if ($cal_date instanceof WT_Date_Jewish && $cal_date->m==7 && $cal_date->y!=0 && !$cal_date->isLeapYear())
-	$cal_date->m=6;
+$cal_date = &$ged_date->date1;
 
 // Fill in any missing bits with todays date
-$today=$cal_date->today();
-if ($cal_date->d==0) $cal_date->d=$today->d;
-if ($cal_date->m==0) $cal_date->m=$today->m;
-if ($cal_date->y==0) $cal_date->y=$today->y;
+$today = $cal_date->today();
+if ($cal_date->d === 0) {
+	$cal_date->d = $today->d;
+}
+if ($cal_date->m === 0) {
+	$cal_date->m = $today->m;
+}
+if ($cal_date->y === 0) {
+	$cal_date->y = $today->y;
+}
+
 $cal_date->setJdFromYmd();
-if ($year==0)
+
+if ($year === 0) {
 	$year=$cal_date->y;
+}
 
 // Extract values from date
 $days_in_month=$cal_date->daysInMonth();
@@ -156,9 +170,13 @@ echo '<td class="optionbox" colspan="3">';
 for ($n = 1, $months_in_year = $cal_date->monthsInYear(); $n <= $months_in_year; ++$n) {
 	$month_name = $cal_date->monthNameNominativeCase($n, $cal_date->isLeapYear());
 	$m = array_search($n, $cal_date::$MONTH_ABBREV);
-	if ($m == 'ADS' && $cal_date instanceof WT_Date_Jewish && !$cal_date->isLeapYear()) {
-		// No month 7 in Jewish leap years.
+	if ($n == 6 && $cal_date instanceof WT_Date_Jewish && !$cal_date->isLeapYear()) {
+		// No month 6 in Jewish non-leap years.
 		continue;
+	}
+	if ($n == 7 && $cal_date instanceof WT_Date_Jewish && !$cal_date->isLeapYear()) {
+		// Month 7 is ADR in Jewish non-leap years.
+		$m = 'ADR';
 	}
 	if ($n == $cal_date->m) {
 		$month_name = '<span class="error">' . $month_name . '</span>';

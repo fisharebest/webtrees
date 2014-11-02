@@ -1,13 +1,16 @@
 <?php
-// PDF Report Generator
+// Update the database schema from version 28-29
+// - earlier versions used the wrong month number for Adar in non-leap years
 //
-// used by the SAX parser to generate PDF reports from the XML report file.
+// The script should assume that it can be interrupted at
+// any point, and be able to continue by re-running the script.
+// Fatal errors, however, should be allowed to throw exceptions,
+// which will be caught by the framework.
+// It shouldn't do anything that might take more than a few
+// seconds, for systems with low timeout values.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
-//
-// Derived from PhpGedView
-// Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.
+// Copyright (C) 2014 Greg Roach
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -23,21 +26,10 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-/**
- * PageHeader element
- */
-class WT_Report_PDF_PageHeader extends WT_Report_Base_PageHeader {
-	/**
-	 * PageHeader element renderer
-	 *
-	 * @param PDF $renderer
-	 *
-	 * @return void
-	 */
-	function render($renderer) {
-		$renderer->clearPageHeader();
-		foreach ($this->elements as $element) {
-			$renderer->addPageHeader($element);
-		}
-	}
-}
+// Update incorrect Adar month number
+WT_DB::exec(
+	"UPDATE `##dates` SET d_mon = 7 WHERE d_mon = 6 && d_type = '@#DHEBREW@' AND MOD(7 * d_year + 1, 19) >= 7"
+);
+
+// Update the version to indicate success
+WT_Site::setPreference($schema_name, $next_version);

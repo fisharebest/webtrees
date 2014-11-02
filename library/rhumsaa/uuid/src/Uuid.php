@@ -93,7 +93,7 @@ final class Uuid
     /**
      * Version of the Rhumsaa\Uuid package
      */
-    const VERSION = '2.7.3';
+    const VERSION = '2.7.4';
 
     /**
      * For testing, 64-bit system override; if true, treat the system as 32-bit
@@ -1225,7 +1225,7 @@ final class Uuid
         }
 
         $bytes = '';
-        foreach (range(1, $length) as $i) {
+        for ($i = 1; $i <= $length; $i++) {
             $bytes = chr(mt_rand(0, 255)) . $bytes;
         }
 

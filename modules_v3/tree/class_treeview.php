@@ -97,6 +97,8 @@ class TreeView {
 				$f = WT_Family::getInstance($fid);
 				if ($f->getHusband()) {
 					$r[] = $this->drawPerson($f->getHusband(), 0, 1, $f, $order);
+				} elseif ($f->getWife()) {
+					$r[] = $this->drawPerson($f->getWife(), 0, 1, $f, $order);
 				}
 				break;
 			}
@@ -256,6 +258,8 @@ class TreeView {
 						$spouse_parents = $spouse->getPrimaryChildFamily();
 						if ($spouse_parents && $spouse_parents->getHusband()) {
 							$fop[] = array($spouse_parents->getHusband(), $spouse_parents);
+						} elseif ($spouse_parents && $spouse_parents->getWife()) {
+							$fop[] = array($spouse_parents->getHWife(), $spouse_parents);
 						}
 						$html .= $this->drawPersonName($spouse, $dashed);
 						if ($this->all_partners !== 'true') {

@@ -112,13 +112,13 @@ class WT_Date_Jewish extends WT_Date_Calendar {
 		case 5:
 			return /* I18N: a month in the Jewish calendar */ WT_I18N::translate_c('NOMINATIVE', 'Shevat');
 		case 6:
+			return /* I18N: a month in the Jewish calendar */ WT_I18N::translate_c('NOMINATIVE', 'Adar I');
+		case 7:
 			if ($leap_year) {
-				return /* I18N: a month in the Jewish calendar */ WT_I18N::translate_c('NOMINATIVE', 'Adar I');
+				return /* I18N: a month in the Jewish calendar */ WT_I18N::translate_c('NOMINATIVE', 'Adar II');
 			} else {
 				return /* I18N: a month in the Jewish calendar */ WT_I18N::translate_c('NOMINATIVE', 'Adar');
 			}
-		case 7:
-			return /* I18N: a month in the Jewish calendar */ WT_I18N::translate_c('NOMINATIVE', 'Adar II');
 		case 8:
 			return /* I18N: a month in the Jewish calendar */ WT_I18N::translate_c('NOMINATIVE', 'Nissan');
 		case 9:
@@ -152,13 +152,13 @@ class WT_Date_Jewish extends WT_Date_Calendar {
 		case 5:
 			return /* I18N: a month in the Jewish calendar */ WT_I18N::translate_c('GENITIVE', 'Shevat');
 		case 6:
+			return /* I18N: a month in the Jewish calendar */ WT_I18N::translate_c('GENITIVE', 'Adar I');
+		case 7:
 			if ($leap_year) {
-				return /* I18N: a month in the Jewish calendar */ WT_I18N::translate_c('GENITIVE', 'Adar I');
+				return /* I18N: a month in the Jewish calendar */ WT_I18N::translate_c('GENITIVE', 'Adar II');
 			} else {
 				return /* I18N: a month in the Jewish calendar */ WT_I18N::translate_c('GENITIVE', 'Adar');
 			}
-		case 7:
-			return /* I18N: a month in the Jewish calendar */ WT_I18N::translate_c('GENITIVE', 'Adar II');
 		case 8:
 			return /* I18N: a month in the Jewish calendar */ WT_I18N::translate_c('GENITIVE', 'Nissan');
 		case 9:
@@ -192,13 +192,13 @@ class WT_Date_Jewish extends WT_Date_Calendar {
 		case 5:
 			return /* I18N: a month in the Jewish calendar */ WT_I18N::translate_c('LOCATIVE', 'Shevat');
 		case 6:
+			return /* I18N: a month in the Jewish calendar */ WT_I18N::translate_c('LOCATIVE', 'Adar I');
+		case 7:
 			if ($leap_year) {
-				return /* I18N: a month in the Jewish calendar */ WT_I18N::translate_c('LOCATIVE', 'Adar I');
+				return /* I18N: a month in the Jewish calendar */ WT_I18N::translate_c('LOCATIVE', 'Adar II');
 			} else {
 				return /* I18N: a month in the Jewish calendar */ WT_I18N::translate_c('LOCATIVE', 'Adar');
 			}
-		case 7:
-			return /* I18N: a month in the Jewish calendar */ WT_I18N::translate_c('LOCATIVE', 'Adar II');
 		case 8:
 			return /* I18N: a month in the Jewish calendar */ WT_I18N::translate_c('LOCATIVE', 'Nissan');
 		case 9:
@@ -232,13 +232,13 @@ class WT_Date_Jewish extends WT_Date_Calendar {
 		case 5:
 			return /* I18N: a month in the Jewish calendar */ WT_I18N::translate_c('INSTRUMENTAL', 'Shevat');
 		case 6:
+			return /* I18N: a month in the Jewish calendar */ WT_I18N::translate_c('INSTRUMENTAL', 'Adar I');
+		case 7:
 			if ($leap_year) {
-				return /* I18N: a month in the Jewish calendar */ WT_I18N::translate_c('INSTRUMENTAL', 'Adar I');
+				return /* I18N: a month in the Jewish calendar */ WT_I18N::translate_c('INSTRUMENTAL', 'Adar II');
 			} else {
 				return /* I18N: a month in the Jewish calendar */ WT_I18N::translate_c('INSTRUMENTAL', 'Adar');
 			}
-		case 7:
-			return /* I18N: a month in the Jewish calendar */ WT_I18N::translate_c('INSTRUMENTAL', 'Adar II');
 		case 8:
 			return /* I18N: a month in the Jewish calendar */ WT_I18N::translate_c('INSTRUMENTAL', 'Nissan');
 		case 9:

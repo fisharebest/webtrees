@@ -893,7 +893,7 @@ function get_anniversary_events($jd, $facts='', $ged_id=WT_GED_ID) {
 		// SIMPLE CASES:
 		// a) Non-hebrew anniversaries
 		// b) Hebrew months TVT, SHV, IYR, SVN, TMZ, AAV, ELL
-		if (!$anniv instanceof WT_Date_Jewish || in_array($anniv->m, array(1, 5, 9, 10, 11, 12, 13))) {
+		if (!$anniv instanceof WT_Date_Jewish || in_array($anniv->m, array(1, 5, 6, 9, 10, 11, 12, 13))) {
 			// Dates without days go on the first day of the month
 			// Dates with invalid days go on the last day of the month
 			if ($anniv->d==1) {
@@ -954,20 +954,6 @@ function get_anniversary_events($jd, $facts='', $ged_id=WT_GED_ID) {
 					} else {
 						$where.=" AND d_day={$anniv->d} AND d_mon=4";
 					}
-				break;
-			case 6: // ADR (non-leap) includes ADS (leap)
-				if ($anniv->d==1) {
-					$where.=" AND d_day<=1";
-				} elseif ($anniv->d==$anniv->daysInMonth()) {
-					$where.=" AND d_day>={$anniv->d}";
-				} else {
-					$where.=" AND d_day={$anniv->d}";
-				}
-				if ($anniv->isLeapYear()) {
-					$where.=" AND (d_mon=6 AND MOD(7*d_year+1, 19)<7)";
-				} else {
-					$where.=" AND (d_mon=6 OR d_mon=7)";
-				}
 				break;
 			case 7: // ADS includes ADR (non-leap)
 				if ($anniv->d==1) {
