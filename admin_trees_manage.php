@@ -118,7 +118,9 @@ case 'replace_import':
 	exit;
 }
 
-$controller->pageHeader();
+$controller
+	->addExternalJavascript(WT_JQUERY_JEDITABLE_URL)
+	->pageHeader();
 
 // Process GET actions
 switch (WT_Filter::get('action')) {
@@ -185,7 +187,7 @@ foreach (WT_Tree::GetAll() as $tree) {
 			'<tr><th>', WT_I18N::translate('Family tree'),
 			'</th><th><a class="accepted" href="index.php?ctype=gedcom&amp;ged=', $tree->tree_name_url, '" dir="auto">',
 			$tree->tree_title_html, '</a>',
-			'</th></tr><tr><th class="accepted">', $tree->tree_name_html,
+			'</th></tr><tr><th class="accepted">' . edit_field_inline('tree-tree_name-' . $tree->tree_id, $tree->tree_name_html, $controller) .
 			'</th><td>';
 
 		// The third row shows an optional progress bar and a list of maintenance options

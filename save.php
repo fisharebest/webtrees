@@ -305,6 +305,20 @@ case 'module':
 		fail();
 	}
 
+case 'tree':
+	// Authorisation
+	if (!Auth::isAdmin()) {
+		fail();
+	}
+	switch ($id1) {
+	case 'tree_name':
+		WT_DB::prepare("UPDATE `##gedcom` SET gedcom_name=? WHERE gedcom_id=?")
+		     ->execute(array($value, $id2));
+		ok();
+	default:
+		fail();
+	}
+
 default:
 	// An unrecognized table
 	fail();
