@@ -1111,15 +1111,14 @@ function paste_char(value) {
 	}
 }
 
-
 function ilinkitem(mediaid, type, ged) {
-	ged = (typeof ged === 'undefined') ? WT_GEDCOM : ged;
-	window.open('inverselink.php?mediaid=' + encodeURIComponent(mediaid) + '&linkto=' + encodeURIComponent(type) + '&ged=' + encodeURIComponent(ged), '_blank', find_window_specs);
+	ged = (typeof ged === "undefined") ? WT_GEDCOM : ged;
+	window.open("inverselink.php?mediaid=" + encodeURIComponent(mediaid) + "&linkto=" + encodeURIComponent(type) + "&ged=" + encodeURIComponent(ged), "_blank", find_window_specs);
 	return false;
 }
 
 function message(username, method, url) {
-	window.open('message.php?to=' + encodeURIComponent(username) + '&method=' + encodeURIComponent(method) + '&url=' + encodeURIComponent(url), '_blank', mesg_window_specs);
+	window.open("message.php?to=" + encodeURIComponent(username) + "&method=" + encodeURIComponent(method) + "&url=" + encodeURIComponent(url), "_blank", mesg_window_specs);
 	return false;
 }
 
@@ -1205,7 +1204,6 @@ function activate_colorbox(config) {
 	});
 }
 
-
 // Initialize autocomplete elements.
 function autocomplete(selector) {
 	if (typeof(selector) === "undefined") {
@@ -1228,16 +1226,16 @@ function autocomplete(selector) {
 		self.autocomplete({
 			// Cannot use a simple URL, as the data-autocomplete-xxxx parameters may change.
 			source: function(request, response) {
-				// Find the corresponding SOUR for a PAGE
-				var sid  = null; // Which SOUR (for PAGE fields)
-				if (type === "PAGE") {
-					sid = $("#" + self.data("autocomplete-sour")).val();
+				// Some autocomplete fields require the current value of an earlier field
+				var extra  = null;
+				if (self.data("autocomplete-extra")) {
+					extra = $("#" + self.data("autocomplete-extra")).val();
 				}
 
 				jQuery.getJSON("autocomplete.php", {
 					field: self.data("autocomplete-type"),
 					ged:   self.data("autocomplete-ged"),
-					sid:   sid,
+					extra: extra,
 					term:  request.term
 				}, response);
 			},
@@ -1253,6 +1251,7 @@ jQuery.extend($.ui.accordion.prototype.options, {
 		activeHeader: "ui-icon-triangle-1-s"
 	}
 });
+
 jQuery.widget( "ui.dialog", jQuery.ui.dialog, {
 	/*! jQuery UI - v1.10.2 - 2013-12-12
 	 *  http://bugs.jqueryui.com/ticket/9087#comment:27 - bugfix
