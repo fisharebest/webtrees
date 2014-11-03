@@ -1330,6 +1330,10 @@ ul {
 	margin-left: 10px;
 }
 
+#ancestry_chart span.details1 div[class^="fact_"] {
+   	display: inline-block;
+}
+
 #ancestry_chart table div p {
 	font-size: 90%;
 	margin: 0;
@@ -1392,10 +1396,18 @@ ul {
 
 #descendancy_chart li {
 	list-style: none;
-	margin: 0 0 0 -15px;
+	margin: 5px 0 0 -15px;
 	padding-bottom: 0;
 	padding-right: 0;
 	padding-top: 0;
+}
+
+#descendancy_chart span.details1 div[class^="fact_"] {
+	display: inline-block;
+}
+
+#descendancy_chart td.details1 {
+	padding-top: 5px;
 }
 
 [dir=rtl] #descendancy_chart ul {

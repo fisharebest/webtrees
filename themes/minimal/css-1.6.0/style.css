@@ -1025,10 +1025,18 @@ img.block {
 
 #descendancy_chart li {
 	list-style: none;
-	margin: 0 0 0 -14px;
+	margin: 5px 0 0 -14px;
 	padding-top: 0;
 	padding-right: 0;
 	padding-bottom: 0;
+}
+
+#descendancy_chart span.details1 div[class^="fact_"] {
+	display: inline-block;
+}
+
+#descendancy_chart td.details1 {
+	padding-top: 5px;
 }
 
 /*-- descendancy chart rtl specific stylesheets --*/
@@ -1061,6 +1069,10 @@ img.block {
 
 #ancestry_chart li table {
 	margin: 5px 0;
+}
+
+#ancestry_chart span.details1 div[class^="fact_"] {
+   	display: inline-block;
 }
 
 /*-- ancestry chart rtl specific stylesheets --*/
