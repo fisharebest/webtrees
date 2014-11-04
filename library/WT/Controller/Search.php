@@ -521,7 +521,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 			if (!empty ($this->year)) {
 				$logstring .= "Year: " . $this->year . "\n";
 			}
-			Log::AddToSearchlog($logstring, $this->search_trees);
+			Log::addSearchLog($logstring, $this->search_trees);
 
 			if ($this->search_trees) {
 				$this->myindilist = search_indis_soundex($this->soundex, $this->lastname, $this->firstname, $this->place, array_keys($this->search_trees));
