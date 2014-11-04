@@ -22,6 +22,7 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 use Rhumsaa\Uuid\Uuid;
+use WT\Auth;
 
 class todo_WT_Module extends WT_Module implements WT_Module_Block {
 	// Extend class WT_Module
@@ -50,14 +51,14 @@ class todo_WT_Module extends WT_Module implements WT_Module_Block {
 			}
 		}
 
-		$id=$this->getName().$block_id;
-		$class=$this->getName().'_block';
-		if ($ctype=='gedcom' && WT_USER_GEDCOM_ADMIN || $ctype=='user' && WT_USER_ID) {
-			$title='<i class="icon-admin" title="'.WT_I18N::translate('Configure').'" onclick="modalDialog(\'block_edit.php?block_id='.$block_id.'\', \''.$this->getTitle().'\');"></i>';
+		$id    = $this->getName() . $block_id;
+		$class = $this->getName() . '_block';
+		if ($ctype === 'gedcom' && WT_USER_GEDCOM_ADMIN || $ctype === 'user' && Auth::check()) {
+			$title = '<i class="icon-admin" title="'.WT_I18N::translate('Configure').'" onclick="modalDialog(\'block_edit.php?block_id='.$block_id.'\', \''.$this->getTitle().'\');"></i>';
 		} else {
-			$title='';
+			$title = '';
 		}
-		$title.=$this->getTitle().help_link('todo', $this->getName());
+		$title .= $this->getTitle().help_link('todo', $this->getName());
 
 		$table_id = Uuid::uuid4(); // create a unique ID
 
@@ -103,7 +104,7 @@ class todo_WT_Module extends WT_Module implements WT_Module_Block {
 		foreach (get_calendar_events(0, $end_jd, '_TODO', WT_GED_ID) as $fact) {
 			$record = $fact->getParent();
 			$user_name = $fact->getAttribute('_WT_USER');
-			if ($user_name==WT_USER_NAME || !$user_name && $show_unassigned || $user_name && $show_other) {
+			if ($user_name === Auth::user()->getUserName() || !$user_name && $show_unassigned || $user_name && $show_other) {
 				$content.='<tr>';
 				//-- Event date (sortable)
 				$content .= '<td>'; //hidden by datables code

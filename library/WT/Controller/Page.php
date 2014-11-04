@@ -18,6 +18,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+
 class WT_Controller_Page extends WT_Controller_Base {
 	// Page header information
 	const     DOCTYPE = '<!DOCTYPE html>';  // HTML5
@@ -128,7 +130,6 @@ class WT_Controller_Page extends WT_Controller_Base {
 			var WT_MODULES_DIR = "' . WT_Filter::escapeJs(WT_MODULES_DIR) . '";
 			var WT_GEDCOM      = "' . WT_Filter::escapeJs(WT_GEDCOM) . '";
 			var WT_GED_ID      = "' . WT_Filter::escapeJs(WT_GED_ID) . '";
-			var WT_USER_ID     = "' . WT_Filter::escapeJs(WT_USER_ID) . '";
 			var textDirection  = "' . WT_Filter::escapeJs($TEXT_DIRECTION) . '";
 			var WT_SCRIPT_NAME = "' . WT_Filter::escapeJs(WT_SCRIPT_NAME) . '";
 			var WT_LOCALE      = "' . WT_Filter::escapeJs(WT_LOCALE) . '";

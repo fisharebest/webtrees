@@ -21,6 +21,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+
 class top10_givnnames_WT_Module extends WT_Module implements WT_Module_Block {
 	// Extend class WT_Module
 	public function getTitle() {
@@ -49,14 +51,14 @@ class top10_givnnames_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$stats=new WT_Stats(WT_GEDCOM);
 
-		$id=$this->getName().$block_id;
-		$class=$this->getName().'_block';
-		if ($ctype=='gedcom' && WT_USER_GEDCOM_ADMIN || $ctype=='user' && WT_USER_ID) {
-			$title='<i class="icon-admin" title="'.WT_I18N::translate('Configure').'" onclick="modalDialog(\'block_edit.php?block_id='.$block_id.'\', \''.$this->getTitle().'\');"></i>';
+		$id    = $this->getName() . $block_id;
+		$class = $this->getName() . '_block';
+		if ($ctype === 'gedcom' && WT_USER_GEDCOM_ADMIN || $ctype === 'user' && Auth::check()) {
+			$title = '<i class="icon-admin" title="'.WT_I18N::translate('Configure').'" onclick="modalDialog(\'block_edit.php?block_id='.$block_id.'\', \''.$this->getTitle().'\');"></i>';
 		} else {
-			$title='';
+			$title = '';
 		}
-		if ($num==1) {
+		if ($num == 1) {
 			// I18N: i.e. most popular given name.
 			$title.=WT_I18N::translate('Top given name');
 		} else {

@@ -224,7 +224,7 @@ class WT_MenuBar {
 					);
 					if (array_key_exists('user_favorites', WT_Module::getActiveModules())) {
 						// Add a submenu showing relationship from this person to each of our favorites
-						foreach (user_favorites_WT_Module::getFavorites(WT_USER_ID) as $favorite) {
+						foreach (user_favorites_WT_Module::getFavorites(Auth::id()) as $favorite) {
 							if ($favorite['type']=='INDI' && $favorite['gedcom_id']==WT_GED_ID) {
 								$person=WT_Individual::getInstance($favorite['gid']);
 								if ($person instanceof WT_Individual) {
@@ -436,17 +436,17 @@ class WT_MenuBar {
 	public static function getFavoritesMenu() {
 		global $REQUIRE_AUTHENTICATION, $controller, $SEARCH_SPIDER;
 
-		$show_user_favs=WT_USER_ID               && array_key_exists('user_favorites',   WT_Module::getActiveModules());
-		$show_gedc_favs=!$REQUIRE_AUTHENTICATION && array_key_exists('gedcom_favorites', WT_Module::getActiveModules());
+		$show_user_favs = Auth::check() && array_key_exists('user_favorites',   WT_Module::getActiveModules());
+		$show_gedc_favs = !$REQUIRE_AUTHENTICATION && array_key_exists('gedcom_favorites', WT_Module::getActiveModules());
 
 		if ($show_user_favs && !$SEARCH_SPIDER) {
 			if ($show_gedc_favs && !$SEARCH_SPIDER) {
 				$favorites=array_merge(
 					gedcom_favorites_WT_Module::getFavorites(WT_GED_ID),
-					user_favorites_WT_Module::getFavorites(WT_USER_ID)
+					user_favorites_WT_Module::getFavorites(Auth::id())
 				);
 			} else {
-				$favorites=user_favorites_WT_Module::getFavorites(WT_USER_ID);
+				$favorites=user_favorites_WT_Module::getFavorites(Auth::id());
 			}
 		} else {
 			if ($show_gedc_favs && !$SEARCH_SPIDER) {

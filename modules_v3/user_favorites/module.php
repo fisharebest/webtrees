@@ -21,6 +21,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
@@ -65,9 +67,9 @@ class user_favorites_WT_Module extends gedcom_favorites_WT_Module {
 		case 'menu-add-favorite':
 			// Process the "add to user favorites" menu item on indi/fam/etc. pages
 			$record = WT_GedcomRecord::getInstance(WT_Filter::post('xref', WT_REGEX_XREF));
-			if (WT_USER_ID && $record->canShowName()) {
+			if (Auth::check() && $record->canShowName()) {
 				self::addFavorite(array(
-					'user_id'   => WT_USER_ID,
+					'user_id'   => Auth::id(),
 					'gedcom_id' => $record->getGedcomId(),
 					'gid'       => $record->getXref(),
 					'type'      => $record::RECORD_TYPE,

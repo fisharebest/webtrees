@@ -22,6 +22,7 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 use Rhumsaa\Uuid\Uuid;
+use WT\Auth;
 
 /**
  * Create an edit control for inline editing using jeditable.
@@ -1761,7 +1762,7 @@ function insert_missing_subtags($level1tag, $add_date=false) {
 			} elseif ($level1tag=='_TODO' && $key=='DATE') {
 				add_simple_tag('2 '.$key.' '.strtoupper(date('d M Y')), $level1tag);
 			} elseif ($level1tag=='_TODO' && $key=='_WT_USER') {
-				add_simple_tag('2 '.$key.' '.WT_USER_NAME, $level1tag);
+				add_simple_tag('2 '.$key.' '.Auth::user()->getUserName(), $level1tag);
 			} else if ($level1tag=='TITL' && strstr($ADVANCED_NAME_FACTS, $key)!==false) {
 				add_simple_tag('2 '.$key, $level1tag);
 			} else if ($level1tag=='NAME' && strstr($ADVANCED_NAME_FACTS, $key)!==false) {

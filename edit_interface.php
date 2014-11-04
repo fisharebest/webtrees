@@ -2260,7 +2260,7 @@ function keep_chan(WT_GedcomRecord $record=null) {
 		if ($record) {
 			$details =
 				WT_Gedcom_Tag::getLabelValue('DATE', $record->lastChangeTimestamp()) .
-				WT_Gedcom_Tag::getLabelValue('_WT_USER', $record->lastChangeUser());
+				WT_Gedcom_Tag::getLabelValue('_WT_USER', WT_Filter::escapeHtml($record->lastChangeUser()));
 		} else {
 			$details = '';
 		}

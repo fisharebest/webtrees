@@ -40,7 +40,6 @@ define('WT_REQUIRED_PHP_VERSION',   '5.3.2');
 define('WT_MODULES_DIR', 'modules_v3/');
 define('WT_ROOT', '');
 define('WT_GED_ID', null);
-define('WT_USER_ID', 0);
 define('WT_PRIV_PUBLIC', 2);
 define('WT_PRIV_USER',   1);
 define('WT_PRIV_NONE',   0);

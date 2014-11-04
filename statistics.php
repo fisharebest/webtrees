@@ -24,6 +24,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+
 define('WT_SCRIPT_NAME', 'statistics.php');
 require './includes/session.php';
 
@@ -168,7 +170,7 @@ if (!$ajax) {
 			</tr>
 		</table>
 		<br>';
-		if (WT_USER_ID) {
+		if (Auth::check()) {
 			echo '<b>', WT_I18N::translate('Oldest living individuals'), '</b>
 			<table class="facts_table">
 				<tr>

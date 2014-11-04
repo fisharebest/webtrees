@@ -21,6 +21,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+
 class charts_WT_Module extends WT_Module implements WT_Module_Block {
 	// Extend class WT_Module
 	public function getTitle() {
@@ -40,7 +42,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$details = get_block_setting($block_id, 'details', false);
 		$type    = get_block_setting($block_id, 'type', 'pedigree');
-		$pid     = get_block_setting($block_id, 'pid', WT_USER_ID ? (WT_USER_GEDCOM_ID ? WT_USER_GEDCOM_ID : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
+		$pid     = get_block_setting($block_id, 'pid', Auth::check() ? (WT_USER_GEDCOM_ID ? WT_USER_GEDCOM_ID : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
 		if ($cfg) {
 			foreach (array('details', 'type', 'pid', 'block') as $name) {
 				if (array_key_exists($name, $cfg)) {
@@ -75,7 +77,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$id=$this->getName().$block_id;
 		$class=$this->getName().'_block';
-		if ($ctype=='gedcom' && WT_USER_GEDCOM_ADMIN || $ctype=='user' && WT_USER_ID) {
+		if ($ctype=='gedcom' && WT_USER_GEDCOM_ADMIN || $ctype=='user' && Auth::check()) {
 			$title='<i class="icon-admin" title="'.WT_I18N::translate('Configure').'" onclick="modalDialog(\'block_edit.php?block_id='.$block_id.'\', \''.$this->getTitle().'\');"></i>';
 		} else {
 			$title='';
@@ -169,7 +171,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 	public function configureBlock($block_id) {
 		global $WT_TREE, $ctype, $controller;
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
-		
+
 		$PEDIGREE_ROOT_ID = $WT_TREE->getPreference('PEDIGREE_ROOT_ID');
 
 		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
@@ -181,7 +183,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$details = get_block_setting($block_id, 'details', false);
 		$type    = get_block_setting($block_id, 'type', 'pedigree');
-		$pid     = get_block_setting($block_id, 'pid', WT_USER_ID ? (WT_USER_GEDCOM_ID ? WT_USER_GEDCOM_ID : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
+		$pid     = get_block_setting($block_id, 'pid', Auth::check() ? (WT_USER_GEDCOM_ID ? WT_USER_GEDCOM_ID : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
 
 		$controller
 			->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')

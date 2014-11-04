@@ -21,6 +21,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+
 class upcoming_events_WT_Module extends WT_Module implements WT_Module_Block {
 	// Extend class WT_Module
 	public function getTitle() {
@@ -55,9 +57,9 @@ class upcoming_events_WT_Module extends WT_Module implements WT_Module_Block {
 		$startjd = WT_CLIENT_JD + 1;
 		$endjd   = WT_CLIENT_JD + $days;
 
-		$id = $this->getName().$block_id;
-		$class = $this->getName().'_block';
-		if ($ctype == 'gedcom' && WT_USER_GEDCOM_ADMIN || $ctype=='user' && WT_USER_ID) {
+		$id    = $this->getName() . $block_id;
+		$class = $this->getName() . '_block';
+		if ($ctype === 'gedcom' && WT_USER_GEDCOM_ADMIN || $ctype === 'user' && Auth::check()) {
 			$title = '<i class="icon-admin" title="' . WT_I18N::translate('Configure') . '" onclick="modalDialog(\'block_edit.php?block_id=' . $block_id . '\', \'' . $this->getTitle() . '\');"></i>';
 		} else {
 			$title = '';

@@ -22,6 +22,7 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 use Rhumsaa\Uuid\Uuid;
+use WT\Auth;
 
 // Note that the user favorites module simply extends this module, so ensure that the
 // logic works for both.
@@ -60,7 +61,7 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 				$record = WT_GedcomRecord::getInstance($gid);
 				if ($record && $record->canShow()) {
 					self::addFavorite(array(
-						'user_id'   => $ctype=='user' ? WT_USER_ID : null,
+						'user_id'   => $ctype === 'user' ? Auth::id() : null,
 						'gedcom_id' => WT_GED_ID,
 						'gid'       => $record->getXref(),
 						'type'      => $record::RECORD_TYPE,
@@ -71,7 +72,7 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 				}
 			} elseif ($url) {
 				self::addFavorite(array(
-					'user_id'   => $ctype=='user' ? WT_USER_ID : null,
+					'user_id'   => $ctype === 'user' ? Auth::id() : null,
 					'gedcom_id' => WT_GED_ID,
 					'gid'       => null,
 					'type'      => 'URL',
@@ -83,11 +84,11 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 			break;
 		}
 
-		$block=get_block_setting($block_id, 'block', false);
+		$block = get_block_setting($block_id, 'block', false);
 		if ($cfg) {
 			foreach (array('block') as $name) {
 				if (array_key_exists($name, $cfg)) {
-					$$name=$cfg[$name];
+					$$name = $cfg[$name];
 				}
 			}
 		}
@@ -98,14 +99,16 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 		$show_full = 1;
 		$PEDIGREE_FULL_DETAILS = 1;
 
-		$userfavs = $this->getFavorites($ctype=='user' ? WT_USER_ID : WT_GED_ID);
-		if (!is_array($userfavs)) $userfavs = array();
+		$userfavs = $this->getFavorites($ctype === 'user' ? Auth::id() : WT_GED_ID);
+		if (!is_array($userfavs)) {
+			$userfavs = array();
+		}
 
 		$id=$this->getName().$block_id;
 		$class=$this->getName().'_block';
 		$title=$this->getTitle();
 
-		if (WT_USER_ID) {
+		if (Auth::check()) {
 			$controller
 				->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
 				->addInlineJavascript('autocomplete();');

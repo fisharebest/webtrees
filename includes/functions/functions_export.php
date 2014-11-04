@@ -20,6 +20,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+use WT\Auth;
 
 /**
  * Tidy up a gedcom record on export, for compatibility/portability.
@@ -97,7 +98,7 @@ function gedcom_header($gedfile) {
 	$PLAC = "\n1 PLAC\n2 FORM City, County, State/Province, Country";
 	$COPR = "";
 	$SUBN = "";
-	$SUBM = "\n1 SUBM @SUBM@\n0 @SUBM@ SUBM\n1 NAME " . WT_USER_NAME; // The SUBM record is mandatory
+	$SUBM = "\n1 SUBM @SUBM@\n0 @SUBM@ SUBM\n1 NAME " . Auth::user()->getUserName(); // The SUBM record is mandatory
 
 	// Preserve some values from the original header
 	$record = WT_GedcomRecord::getInstance('HEAD');
