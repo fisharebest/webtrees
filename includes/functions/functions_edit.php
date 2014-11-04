@@ -147,19 +147,20 @@ function select_edit_control_inline($name, $values, $empty, $selected, WT_Contro
  * @param string   $name      The ID for the form element
  * @param string[] $values    Array of value=>display items
  * @param string   $selected  The currently selected item
+ * @param string   $extra     Additional markup for the label
  *
  * @return string
  */
-function radio_buttons($name, $values, $selected) {
-	$html='';
-	foreach ($values as $key=>$value) {
-		$uniqueID = Uuid::uuid4();
-		$html.='<input type="radio" name="'.$name.'" id="'.$uniqueID.'" value="'.WT_Filter::escapeHtml($key).'"';
-		if ((string)$key===(string)$selected) { // Beware PHP array keys are cast to integers!  Cast them back
-			$html.=' checked';
+function radio_buttons($name, $values, $selected, $extra = '') {
+	$html = '';
+	foreach ($values as $key => $value) {
+		$html .= '<label ' . $extra . '><input type="radio" name="' . $name . '" value="' . WT_Filter::escapeHtml($key) . '"';
+		if ((string)$key === (string)$selected) { // Beware PHP array keys are cast to integers!  Cast them back
+			$html .= ' checked';
 		}
-		$html.='><label for="'.$uniqueID.'">'.WT_Filter::escapeHtml($value).'</label>';
+		$html .= '>' . WT_Filter::escapeHtml($value) . '</label>';
 	}
+
 	return $html;
 }
 
@@ -583,8 +584,6 @@ function add_simple_tag(
 
 	// Keep track of SOUR fields, so we can reference them in subsequent PAGE fields.
 	static $source_element_id;
-	// Keep track of DATE fields, so we can reference them in subsequent ASSO fields.
-	static $date_element_id;
 
 	$subnamefacts = array("NPFX", "GIVN", "SPFX", "SURN", "NSFX", "_MARNM_SURN");
 	preg_match('/^(?:(\d+) ('.WT_REGEX_TAG.') ?(.*))/', $tag, $match);
@@ -828,10 +827,9 @@ function add_simple_tag(
 			switch ($fact) {
 			case 'ASSO':
 			case '_ASSO':
-				echo ' data-autocomplete-type="ASSO" data-autocomplete-extra="' . $date_element_id . '"';
+				echo ' data-autocomplete-type="ASSO"';
 				break;
 			case 'DATE':
-				$date_element_id = $element_id;
 				echo " onblur=\"valid_date(this);\" onmouseout=\"valid_date(this);\"";
 				break;
 			case 'GIVN':
@@ -851,7 +849,7 @@ function add_simple_tag(
 				echo ' data-autocomplete-type="OBJE"';
 				break;
 			case 'PAGE':
-				echo ' data-autocomplete-type="PAGE" data-autocomplete-extra="' . $source_element_id . '"';
+				echo ' data-autocomplete-type="PAGE" data-autocomplete-sour="' . $source_element_id . '"';
 				break;
 			case 'PLAC':
 				echo ' data-autocomplete-type="PLAC"';
