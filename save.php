@@ -178,7 +178,7 @@ case 'user':
 	$user = User::find($id2);
 
 	// Authorisation
-	if (!Auth::isAdmin() && WT::currentUser() != $user) {
+	if (!Auth::isAdmin() && Auth::id() != $user) {
 		fail();
 	}
 
