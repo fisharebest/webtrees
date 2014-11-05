@@ -1214,7 +1214,7 @@ case 'export_gedcom':
 		WT_I18N::translate('This option will save the family tree to a GEDCOM file on the server.') .
 		'</p><p>' .
 		/* I18N: %s is a folder name */
-		WT_I18N::translate('GEDCOM files are stored in the %s folder.', '<b style="dir:auto;">' . WT_DATA_DIR . '</b>') .
+		WT_I18N::translate('GEDCOM files are stored in the %s folder.', '<b dir="auto">' . WT_DATA_DIR . '</b>') .
 		'</p>';
 	break;
 
@@ -1260,7 +1260,7 @@ case 'import_gedcom':
 		WT_I18N::translate('This option deletes all the genealogy data in your family tree and replaces it with data from a GEDCOM file on the server.') .
 		'</p><p>' .
 		/* I18N: %s is a folder name */
-		WT_I18N::translate('GEDCOM files are stored in the %s folder.', '<b style="dir:auto;">' . WT_DATA_DIR . '</b>') .
+		WT_I18N::translate('GEDCOM files are stored in the %s folder.', '<b dir="auto">' . WT_DATA_DIR . '</b>') .
 		'</p>';
 	break;
 
