@@ -5265,18 +5265,12 @@ table.table-census-assistant th {
 	margin: 0 4px;
 }
 
-.btn-group button:first-child {
+.btn-group button:first-child,
+[dir=rtl] .btn-group button:last-child {
 	border-radius: 3px 0 0 3px;
 }
 
+.btn-group button:last-child,
 [dir=rtl] .btn-group button:first-child {
 	border-radius: 0 3px 3px 0;
-}
-
-.btn-group button:last-child {
-	border-radius: 0 3px 3px 0;
-}
-
-[dir=rtl] .btn-group button:first-child {
-	border-radius: 3px 0 0 3px;
 }
