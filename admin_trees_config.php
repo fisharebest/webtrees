@@ -427,7 +427,7 @@ $controller
 							if ($WEBMASTER_USER_ID == $user->getUserId()) {
 								echo ' selected="selected"';
 							}
-							echo '>' . $user->getRealName() . ' - ' . $user->getUserName() . '</option>';
+							echo '>' . WT_Filter::escapeHtml($user->getRealName()) . ' - ' . WT_Filter::escapeHtml($user->getUserName()) . '</option>';
 						}
 					?>
 					</select>

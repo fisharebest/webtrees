@@ -460,7 +460,7 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 				if (!$arec) {
 					$arec = $fact->getAttribute('ASSO');
 				}
-				if ($arec) {
+				if ($arec && trim($arec, '@') === $person->getXref()) {
 					// Extract the important details from the fact
 					$factrec='1 '.$fact->getTag();
 					if (preg_match('/\n2 DATE .*/', $fact->getGedcom(), $match)) {

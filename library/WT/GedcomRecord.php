@@ -1175,7 +1175,7 @@ class WT_GedcomRecord {
 			}
 		}
 		if ($update_chan) {
-			$new_gedcom .= "\n1 CHAN\n2 DATE " . date('d M Y') . "\n3 TIME " . date('H:i:s') . "\n2 _WT_USER " . WT_USER_NAME;
+			$new_gedcom .= "\n1 CHAN\n2 DATE " . date('d M Y') . "\n3 TIME " . date('H:i:s') . "\n2 _WT_USER " . Auth::user()->getUserName();
 		}
 
 		// Adding a new fact
@@ -1192,7 +1192,7 @@ class WT_GedcomRecord {
 				$this->xref,
 				$old_gedcom,
 				$new_gedcom,
-				WT_USER_ID
+				Auth::id()
 			));
 
 			$this->pending = $new_gedcom;
@@ -1235,7 +1235,7 @@ class WT_GedcomRecord {
 
 		// Create a change record, if not already present
 		if (!preg_match('/\n1 CHAN/', $gedcom)) {
-			$gedcom .= "\n1 CHAN\n2 DATE " . date('d M Y') . "\n3 TIME " . date('H:i:s') . "\n2 _WT_USER " . WT_USER_NAME;
+			$gedcom .= "\n1 CHAN\n2 DATE " . date('d M Y') . "\n3 TIME " . date('H:i:s') . "\n2 _WT_USER " . Auth::user()->getUserName();
 		}
 
 		// Create a pending change
@@ -1245,7 +1245,7 @@ class WT_GedcomRecord {
 			$gedcom_id,
 			$xref,
 			$gedcom,
-			WT_USER_ID
+			Auth::id()
 		));
 
 		// Accept this pending change
@@ -1276,7 +1276,7 @@ class WT_GedcomRecord {
 		// Update the CHAN record
 		if ($update_chan) {
 			$gedcom = preg_replace('/\n1 CHAN(\n[2-9].*)*/', '', $gedcom);
-			$gedcom .= "\n1 CHAN\n2 DATE " . date('d M Y') . "\n3 TIME " . date('H:i:s') . "\n2 _WT_USER " . WT_USER_NAME;
+			$gedcom .= "\n1 CHAN\n2 DATE " . date('d M Y') . "\n3 TIME " . date('H:i:s') . "\n2 _WT_USER " . Auth::user()->getUserName();
 		}
 
 		// Create a pending change
@@ -1287,7 +1287,7 @@ class WT_GedcomRecord {
 			$this->xref,
 			$this->getGedcom(),
 			$gedcom,
-			WT_USER_ID
+			Auth::id()
 		));
 
 		// Clear the cache

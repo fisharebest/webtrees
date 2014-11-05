@@ -196,6 +196,8 @@ case 'load_json':
 		$datum[2] = '<a href="gedrecord.php?pid='.$datum[2] . '&ged='.$datum[6] . '" target="_blank">' . $datum[2] . '</a>';
 		$datum[3] = '<pre>' . WT_Filter::escapeHtml($datum[3]) . '</pre>';
 		$datum[4] = '<pre>' . WT_Filter::escapeHtml($datum[4]) . '</pre>';
+		$datum[5] = WT_Filter::escapeHtml($datum[5]);
+		$datum[6] = WT_Filter::escapeHtml($datum[6]);
 	}
 
 	// Total filtered/unfiltered rows

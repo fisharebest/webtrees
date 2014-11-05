@@ -42,80 +42,34 @@ case 'ASSO': // Associates of an individuals, whose name contains the search ter
 		)
 		->execute(array($term, $term, WT_GED_ID))
 		->fetchAll();
-	// Filter for privacy - and whether they could be alive at the right time
-	$pid        = WT_Filter::get('pid', WT_REGEX_XREF);
-	$event_date = WT_Filter::get('event_date');
-	$record     = WT_GedcomRecord::getInstance($pid); // INDI or FAM
-	$tmp        = new WT_Date($event_date);
-	$event_jd   = $tmp->JD();
-	// INDI
-	$indi_birth_jd = 0;
-	if ($record instanceof WT_Individual) {
-		$indi_birth_jd = $record->getEstimatedBirthDate()->minJD();
-	}
-	// HUSB & WIFE
-	$husb_birth_jd = 0;
-	$wife_birth_jd = 0;
-	if ($record instanceof WT_Family) {
-		$husb = $record->getHusband();
-		if ($husb) {
-			$husb_birth_jd = $husb->getEstimatedBirthDate()->minJD();
-		}
-		$wife = $record->getWife();
-		if ($wife) {
-			$wife_birth_jd = $wife->getEstimatedBirthDate()->minJD();
-		}
-	}
+
+	// Filter for privacy and whether they could be alive at the right time
+	$event_date = WT_Filter::get('extra');
+	$date       = new WT_Date($event_date);
+	$event_jd   = $date->JD();
 	foreach ($rows as $row) {
 		$person = WT_Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
-		if ($person->canShowName()) {
-			// filter ASSOciate
+		if ($person->canShow()) {
 			if ($event_jd) {
-				// no self-ASSOciate
-				if ($pid && $person->getXref() == $pid) {
+				// Exclude individuals who were born after the event.
+				$person_birth_jd = $person->getEstimatedBirthDate()->minJD();
+				if ($person_birth_jd && $person_birth_jd > $event_jd) {
 					continue;
 				}
-				// filter by birth date
-				$person_birth_jd = $person->getEstimatedBirthDate()->minJD();
-				if ($person_birth_jd) {
-					// born after event or not a contemporary
-					if ($event_jd && $person_birth_jd > $event_jd) {
-						continue;
-					} elseif ($indi_birth_jd && abs($indi_birth_jd - $person_birth_jd) > $WT_TREE->getPreference('MAX_ALIVE_AGE') * 365) {
-						continue;
-					} elseif ($husb_birth_jd && $wife_birth_jd && abs($husb_birth_jd - $person_birth_jd) > $WT_TREE->getPreference('MAX_ALIVE_AGE') * 365 && abs($wife_birth_jd - $person_birth_jd) > $WT_TREE->getPreference('MAX_ALIVE_AGE') * 365) {
-						continue;
-					} elseif ($husb_birth_jd && abs($husb_birth_jd - $person_birth_jd) > $WT_TREE->getPreference('MAX_ALIVE_AGE') * 365) {
-						continue;
-					} elseif ($wife_birth_jd && abs($wife_birth_jd - $person_birth_jd) > $WT_TREE->getPreference('MAX_ALIVE_AGE') * 365) {
-						continue;
-					}
-				}
-				// filter by death date
+				// Exclude individuals who died before the event.
 				$person_death_jd = $person->getEstimatedDeathDate()->MaxJD();
-				if ($person_death_jd) {
-					// dead before event or not a contemporary
-					if ($event_jd && $person_death_jd < $event_jd) {
-						continue;
-					} elseif ($indi_birth_jd && $person_death_jd < $indi_birth_jd) {
-						continue;
-					} elseif ($husb_birth_jd && $wife_birth_jd && $person_death_jd < $husb_birth_jd && $person_death_jd < $wife_birth_jd) {
-						continue;
-					} elseif ($husb_birth_jd && $person_death_jd < $husb_birth_jd) {
-						continue;
-					} elseif ($wife_birth_jd && $person_death_jd < $wife_birth_jd) {
-						continue;
-					}
+				if ($person_death_jd && $person_death_jd < $event_jd) {
+					continue;
 				}
 			}
-			// display
-			$label = str_replace(array('@N.N.', '@P.N.'), array($UNKNOWN_NN, $UNKNOWN_PN), $row->n_full);
+			// Add the age (if we have it) or the lifespan (if we do not).
+			$label = $person->getFullName();
 			if ($event_jd && $person->getBirthDate()->isOK()) {
-				$label .= ", <span class=\"age\">(" . WT_I18N::translate('Age') . " " . $person->getBirthDate()->MinDate()->getAge(false, $event_jd) . ")</span>";
+				$label .= ', <span class="age">(' . WT_I18N::translate('Age') . ' ' . $person->getBirthDate()->MinDate()->getAge(false, $event_jd) . ')</span>';
 			} else {
 				$label .= ', <i>' . $person->getLifeSpan() . '</i>';
 			}
-			$data[] = array('value' => $row->xref, 'label' => $label);
+			$data[$row->xref] = array('value' => $row->xref, 'label' => $label);
 		}
 	}
 	echo json_encode($data);
@@ -327,7 +281,7 @@ case 'SOUR': // Sources, that include the search terms
 
 case 'PAGE': // Citation details, for a given source, that contain the search term
 	$data = array();
-	$sid  = WT_Filter::get('sid', WT_REGEX_XREF);
+	$sid  = WT_Filter::get('extra', WT_REGEX_XREF);
 	// Fetch all data, regardless of privacy
 	$rows =
 		WT_DB::prepare(

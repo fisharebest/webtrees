@@ -306,11 +306,11 @@ function whoisonline() {
 	}
 	$content .= '</div>';
 	$content .= '<div class="logged_in_list">';
-	if (WT_USER_ID) {
+	if (Auth::check()) {
 		foreach ($loggedusers as $user) {
 			$content .= '<div class="logged_in_name">';
 			$content .= WT_Filter::escapeHtml($user->getRealName()) . ' - ' . WT_Filter::escapeHtml($user->getUserName());
-			if (WT_USER_ID != $user->getUserId() && $user->getPreference('contactmethod') != 'none') {
+			if (Auth::id() != $user->getUserId() && $user->getPreference('contactmethod') != 'none') {
 				$content .= ' <a class="icon-email" href="#" onclick="return message(\'' . WT_Filter::escapeJs($user->getUserName()) . '\', \'\', \'' . WT_Filter::escapeJs(get_query_url()) . '\');" title="' . WT_I18N::translate('Send a message').'"></a>';
 			}
 			$content .= '</div>';

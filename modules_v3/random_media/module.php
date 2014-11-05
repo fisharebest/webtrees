@@ -21,6 +21,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+
 class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 	// Extend class WT_Module
 	public function getTitle() {
@@ -91,9 +93,9 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 				// Check if it is linked to a suitable individual
 				foreach ($media->linkedIndividuals('OBJE') as $indi) {
 					if (
-						$filter=='all' ||
-						$filter=='indi'  && strpos($indi->getGedcom(), "\n1 OBJE @" . $media->getXref() . '@') !==false ||
-						$filter=='event' && strpos($indi->getGedcom(), "\n2 OBJE @" . $media->getXref() . '@') !==false
+						$filter === 'all' ||
+						$filter === 'indi'  && strpos($indi->getGedcom(), "\n1 OBJE @" . $media->getXref() . '@') !==false ||
+						$filter === 'event' && strpos($indi->getGedcom(), "\n2 OBJE @" . $media->getXref() . '@') !==false
 					) {
 						// Found one :-)
 						$random_media=$media;
@@ -106,7 +108,7 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$id=$this->getName().$block_id;
 		$class=$this->getName().'_block';
-		if ($ctype=='gedcom' && WT_USER_GEDCOM_ADMIN || $ctype=='user' && WT_USER_ID) {
+		if ($ctype === 'gedcom' && WT_USER_GEDCOM_ADMIN || $ctype === 'user' && Auth::check()) {
 			$title='<i class="icon-admin" title="'.WT_I18N::translate('Configure').'" onclick="modalDialog(\'block_edit.php?block_id='.$block_id.'\', \''.$this->getTitle().'\');"></i>';
 		} else {
 			$title='';

@@ -167,6 +167,8 @@ case 'load_json':
 	$data = WT_DB::prepare($SELECT1.$WHERE.$ORDER_BY.$LIMIT)->execute($args)->fetchAll(PDO::FETCH_NUM);
 	foreach ($data as &$datum) {
 		$datum[2] = WT_Filter::escapeHtml($datum[2]);
+		$datum[4] = WT_Filter::escapeHtml($datum[4]);
+		$datum[5] = WT_Filter::escapeHtml($datum[5]);
 	}
 
 	// Total filtered/unfiltered rows

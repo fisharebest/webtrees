@@ -67,7 +67,7 @@ if ($view!='simple') {
 	echo '<div id="header-title" dir="auto">', WT_TREE_TITLE, '</div>';
 	echo '<div id="header-user-links">';
 	echo '<ul class="makeMenu">';
-	if (WT_USER_ID) {
+	if (Auth::check()) {
 		echo '<li><a href="edituser.php">', WT_Filter::escapeHtml(Auth::user()->getRealName()), '</a></li> <li>', logout_link(), '</li>';
 		if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
 			echo ' <li><a href="#" onclick="window.open(\'edit_changes.php\',\'_blank\',chan_window_specs); return false;" style="color:red;">', WT_I18N::translate('Pending changes'), '</a></li>';
