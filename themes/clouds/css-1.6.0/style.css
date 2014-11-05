@@ -203,7 +203,8 @@ td {
 
 /* Mainmenu Icons*/
 #main-menu > li {
-	background: url(images/sprites-top-menu.png) no-repeat;
+	background-image: url(images/sprites-top-menu.png);
+	background-repeat: no-repeat;
 	width: 22px;
 	height: 22px;
 	line-height: 22px;
@@ -217,7 +218,8 @@ td {
 
 /* Submenu Icons */
 #main-menu li ul li {
-	background: url(images/sprites-sub-menu.png) no-repeat;
+	background-image: url(images/sprites-sub-menu.png);
+	background-repeat: no-repeat;
 	height: 22px;
 	line-height: 15px;
 	margin: 2px 0;

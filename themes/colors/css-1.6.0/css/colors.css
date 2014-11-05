@@ -345,7 +345,8 @@ span.title {
 
 /* Menu icons */
 #main-menu > li {
-	background: url(../images/sprites-top-menu.png) no-repeat;
+	background-image: url(../images/sprites-top-menu.png);
+	background-repeat: no-repeat;
 	height: 40px;
 	line-height: 40px;
 	margin: 4px 0 0 16px;
@@ -354,7 +355,8 @@ span.title {
 }
 
 #main-menu li ul li {
-	background: url(../images/sprites-sub-menu.png) no-repeat;
+	background-image: url(../images/sprites-sub-menu.png);
+	background-repeat: no-repeat;
 	height: 28px;
 	left: auto;
 	line-height: 25px;

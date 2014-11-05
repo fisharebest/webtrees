@@ -2200,7 +2200,8 @@ div.faq_body {
 
 /* Menu icons */
 #main-menu > li {
-	background: url(images/large_menu_sprite.png) no-repeat;
+	background-image: url(images/large_menu_sprite.png);
+	background-repeat: no-repeat;
 	min-width: 80px;
 	height: 64px;
 	padding: 0 5px;
@@ -2208,7 +2209,8 @@ div.faq_body {
 }
 
 #main-menu li li {
-	background: url(images/small_menu_sprite.png) no-repeat;
+	background-image: url(images/small_menu_sprite.png);
+	background-repeat: no-repeat;
 	height: 24px;
 	left: auto;
 	line-height: 24px;

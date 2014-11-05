@@ -368,7 +368,8 @@ textarea:required:invalid {
 
 /* Menu icons */
 #main-menu > li {
-	background: url(images/sprites-top-menu.png) no-repeat;
+	background-image: url(images/sprites-top-menu.png);
+	background-repeat: no-repeat;
 	width: 80px;
 	text-align: center;
 	height: 28px;
@@ -377,7 +378,8 @@ textarea:required:invalid {
 }
 
 #main-menu li li {
-	background: url(images/sprites-sub-menu.png) no-repeat;
+	background-image: url(images/sprites-sub-menu.png);
+	background-repeat: no-repeat;
 	height: 23px;
 	left: auto;
 	line-height: 23px;
