@@ -116,7 +116,7 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 	private function generateFile($ged_id, $rec_type, $volume) {
 		// Check the cache
 		$timestamp = $this->getSetting('sitemap-' . $ged_id . '-' . $rec_type . '-' . $volume . '.timestamp');
-		if ($timestamp > WT_TIMESTAMP - self::CACHE_LIFE && !WT_USER_ID) {
+		if ($timestamp > WT_TIMESTAMP - self::CACHE_LIFE && !Auth::check()) {
 			$data = $this->getSetting('sitemap-' . $ged_id . '-' . $rec_type . '-' . $volume . '.xml');
 		} else {
 			$tree = WT_Tree::get($ged_id);
@@ -201,7 +201,7 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 			$data = '<' . '?xml version="1.0" encoding="UTF-8" ?' . '>' . PHP_EOL . '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">' . PHP_EOL . $data . '</urlset>' . PHP_EOL;
 			// Cache this data - but only for visitors, as we don’t want
 			// visitors to see data created by logged-in users.
-			if (!WT_USER_ID) {
+			if (!Auth::check()) {
 				$this->setSetting('sitemap-' . $ged_id . '-' . $rec_type . '-' . $volume . '.xml', $data);
 				$this->setSetting('sitemap-' . $ged_id . '-' . $rec_type . '-' . $volume . '.timestamp', WT_TIMESTAMP);
 			}

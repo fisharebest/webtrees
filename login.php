@@ -21,17 +21,17 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-define('WT_SCRIPT_NAME', 'login.php');
-require './includes/session.php';
-require WT_ROOT.'includes/functions/functions_edit.php';
 use Rhumsaa\Uuid\Uuid;
 use WT\Auth;
 use WT\Log;
 use WT\User;
 
+define('WT_SCRIPT_NAME', 'login.php');
+require './includes/session.php';
+require WT_ROOT.'includes/functions/functions_edit.php';
 // If we are already logged in, then go to the “Home page”
-if (WT_USER_ID && WT_GED_ID) {
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
+if (Auth::check() && WT_GED_ID) {
+	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH);
 	exit;
 }
 
@@ -239,9 +239,9 @@ case 'requestpw':
 			$WT_TREE,
 			$user,
 			WT_I18N::translate('Lost password request'),
-			WT_I18N::translate('Hello %s…', $user->getRealName()) . WT_Mail::EOL . WT_Mail::EOL .
+			WT_I18N::translate('Hello %s…', WT_Filter::escapeHtml($user->getRealName())) . WT_Mail::EOL . WT_Mail::EOL .
 			WT_I18N::translate('A new password was requested for your user name.') . WT_Mail::EOL . WT_Mail::EOL .
-			WT_I18N::translate('Username') . ": " . $user->getUserName() . WT_Mail::EOL .
+			WT_I18N::translate('Username') . ": " . WT_Filter::escapeHtml($user->getUserName()) . WT_Mail::EOL .
 			WT_I18N::translate('Password') . ": " . $user_new_pw  . WT_Mail::EOL . WT_Mail::EOL .
 			WT_I18N::translate('After you have logged in, select the “My account” link under the “My page” menu and fill in the password fields to change your password.') . WT_Mail::EOL . WT_Mail::EOL .
 			'<a href="' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'login.php?ged=' . WT_GEDURL . '">' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'login.php?ged=' . WT_GEDURL . '</a>'
@@ -332,10 +332,10 @@ case 'register':
 				WT_I18N::translate('You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s.', WT_SERVER_NAME . WT_SCRIPT_PATH . ' ' . $WT_TREE->tree_title_html, $user->getEmail()) . '  '.
 				WT_I18N::translate('Information about the request is shown under the link below.') . WT_Mail::EOL .
 				WT_I18N::translate('Please click on the following link and fill in the requested data to confirm your request and email address.') . WT_Mail::EOL . WT_Mail::EOL .
-				'<a href="' . WT_LOGIN_URL . "?user_name=".urlencode($user->getUserName())."&amp;user_hashcode=".urlencode($user->getPreference('reg_hashcode')) . '&amp;action=userverify">' .
-				WT_LOGIN_URL . "?user_name=".urlencode($user->getUserName())."&user_hashcode=".urlencode($user->getPreference('reg_hashcode'))."&action=userverify" .
+				'<a href="' . WT_LOGIN_URL . "?user_name=".WT_Filter::escapeUrl($user->getUserName())."&amp;user_hashcode=".$user->getPreference('reg_hashcode') . '&amp;action=userverify">' .
+				WT_LOGIN_URL . "?user_name=".WT_Filter::escapeUrl($user->getUserName())."&user_hashcode=".urlencode($user->getPreference('reg_hashcode'))."&action=userverify" .
 				'</a>' . WT_Mail::EOL . WT_Mail::EOL .
-				WT_I18N::translate('Username') . " " . $user->getUserName() . WT_Mail::EOL .
+				WT_I18N::translate('Username') . " " . WT_Filter::escapeHtml($user->getUserName()) . WT_Mail::EOL .
 				WT_I18N::translate('Verification code:') . " " . $user->getPreference('reg_hashcode') . WT_Mail::EOL .
 				WT_I18N::translate('Comments').": " . $user->getPreference('comment') . WT_Mail::EOL .
 				WT_I18N::translate('If you didn’t request an account, you can just delete this message.') . WT_Mail::EOL;
@@ -512,8 +512,8 @@ case 'verify_hash':
 	}
 	$mail1_body .=
 		WT_Mail::EOL .
-		'<a href="'. WT_SERVER_NAME.WT_SCRIPT_PATH."admin_users.php?filter=" . rawurlencode($user->getUserName()) . '">' .
-		WT_SERVER_NAME.WT_SCRIPT_PATH."admin_users.php?filter=" . rawurlencode($user->getUserName()) .
+		'<a href="'. WT_SERVER_NAME.WT_SCRIPT_PATH."admin_users.php?filter=" . WT_Filter::escapeUrl($user->getUserName()) . '">' .
+		WT_SERVER_NAME.WT_SCRIPT_PATH."admin_users.php?filter=" . WT_Filter::escapeUrl($user->getUserName()) .
 		'</a>' .
 		WT_Mail::auditFooter();
 

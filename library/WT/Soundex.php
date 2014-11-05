@@ -75,7 +75,7 @@ class WT_Soundex {
 	 * @return null|string
 	 */
 	public static function russell($text) {
-		$words = explode(' ', $text);
+		$words         = preg_split('/\s/', $text, PREG_SPLIT_NO_EMPTY);
 		$soundex_array = array();
 		foreach ($words as $word) {
 			$soundex = soundex($word);
@@ -106,12 +106,10 @@ class WT_Soundex {
 	 * @return null|string
 	 */
 	public static function daitchMokotoff($text) {
-		$words         = explode(' ', $text);
+		$words         = preg_split('/\s/', $text, PREG_SPLIT_NO_EMPTY);
 		$soundex_array = array();
 		foreach ($words as $word) {
-			if ($word) {
-				$soundex_array = array_merge($soundex_array, self::daitchMokotoffWord($word));
-			}
+			$soundex_array = array_merge($soundex_array, self::daitchMokotoffWord($word));
 		}
 		// Combine words, e.g. “New York” as “Newyork”
 		if (count($words) > 1) {

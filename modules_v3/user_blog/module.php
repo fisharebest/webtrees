@@ -95,9 +95,7 @@ class user_blog_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= '<a href="index.php?action=deletenews&amp;news_id=' . $news->news_id . '&amp;ctype=' . $ctype .'" onclick="return confirm(\'' . WT_I18N::translate('Are you sure you want to delete this journal entry?') . "');\">" . WT_I18N::translate('Delete') . '</a><br>';
 			$content .= "</div><br>";
 		}
-		if (WT_USER_ID) {
-			$content .= "<br><a href=\"#\" onclick=\"window.open('editnews.php?user_id='+WT_USER_ID, '_blank', indx_window_specs); return false;\">" . WT_I18N::translate('Add a new journal entry') . "</a>";
-		}
+		$content .= '<br><a href="#" onclick="window.open(\'editnews.php?user_id=' . Auth::id() . '\', \'_blank\', indx_window_specs); return false;">' . WT_I18N::translate('Add a new journal entry') . '</a>';
 
 		if ($template) {
 			if ($block) {

@@ -142,7 +142,7 @@ case 'loadrows':
 		$datum[3]=edit_field_inline('user-real_name-'.$user_id, $datum[3]);
 		$datum[4]=edit_field_inline('user-email-'.    $user_id, $datum[4]);
 		// $aData[5] is a link to an email icon
-		if ($user_id != WT_USER_ID) {
+		if ($user_id != Auth::id()) {
 			$datum[5]='<i class="icon-email" onclick="return message(\''.$user_name.'\', \'\', \'\');"></i>';
 		}
 		$datum[6]=edit_field_language_inline('user_setting-'.$user_id.'-language', $datum[6]);
@@ -160,7 +160,7 @@ case 'loadrows':
 		$datum[11]=edit_field_yes_no_inline('user_setting-'.$user_id.'-verified-',          $datum[11]);
 		$datum[12]=edit_field_yes_no_inline('user_setting-'.$user_id.'-verified_by_admin-', $datum[12]);
 		// Add extra column for "delete" action
-		if ($user_id != WT_USER_ID) {
+		if ($user_id != Auth::id()) {
 			$datum[13]='<div class="icon-delete" onclick="delete_user(\'' . WT_I18N::translate('Are you sure you want to delete “%s”?', WT_Filter::escapeJs($user_name)) . '\', \'' . WT_Filter::escapeJs($user_id) . '\');"></div>';
 		} else {
 			// Do not delete ourself!
@@ -298,7 +298,7 @@ case 'createuser':
 		}
 		Log::addAuthenticationLog("User ->{$username}<- created");
 		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME);
-		WT_Session::writeClose();
+		Zend_Session::writeClose();
 		exit;
 	}
 }

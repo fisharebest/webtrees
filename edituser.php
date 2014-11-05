@@ -63,7 +63,7 @@ if ($form_action=='update' && WT_Filter::checkCsrf()) {
 		WT_FlashMessages::addMessage(WT_I18N::translate('Duplicate email address.  A user with that email already exists.'));
 	} else {
 		// Change username
-		if ($form_username != WT_USER_NAME) {
+		if ($form_username != Auth::user()->getUserName()) {
 			Log::addAuthenticationLog('User ' . Auth::user()->getUserName() . ' renamed to ' . $form_username);
 			Auth::user()->setUserName($form_username);
 		}

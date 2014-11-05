@@ -50,8 +50,8 @@ $controller
 $errors = '';
 
 // Is this message from a member or a visitor?
-if (WT_USER_ID) {
-	$from = WT_USER_NAME;
+if (Auth::check()) {
+	$from = Auth::user()->getUserName();
 } else {
 	// Visitors must provide a valid email address
 	if ($from_email && (!preg_match("/(.+)@(.+)/", $from_email, $match) || function_exists('checkdnsrr') && checkdnsrr($match[2]) === false)) {
@@ -111,7 +111,7 @@ case 'compose':
 	echo '<span class="subheaders">', WT_I18N::translate('Send a message'), '</span>';
 	echo $errors;
 
-	if (!WT_USER_ID) {
+	if (!Auth::check()) {
 		echo '<br><br>', WT_I18N::translate('<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogical data, please include the sources where you obtained the data.');
 	}
 	echo '<br><form name="messageform" method="post" action="message.php" onsubmit="t = new Date(); document.messageform.time.value=t.toUTCString(); return checkForm(this);">';
@@ -120,7 +120,7 @@ case 'compose':
 	if ($to !== 'all' && $to !== 'last_6mo' && $to !== 'never_logged') {
 		echo '<tr><td></td><td>', WT_I18N::translate('This message will be sent to %s', '<b>' . WT_Filter::escapeHtml($to_user->getRealName()) . '</b>'), '</td></tr>';
 	}
-	if (!WT_USER_ID) {
+	if (!Auth::check()) {
 		echo '<tr><td valign="top" width="15%" align="right">', WT_I18N::translate('Your name:'), '</td>';
 		echo '<td><input type="text" name="from_name" size="40" value="', WT_Filter::escapeHtml($from_name), '"></td></tr><tr><td valign="top" align="right">', WT_I18N::translate('Email address:'), '</td><td><input type="email" name="from_email" size="40" value="', WT_Filter::escapeHtml($from_email), '"><br>', WT_I18N::translate('Please provide your email address so that we may contact you in response to this message.  If you do not provide your email address we will not be able to respond to your inquiry.  Your email address will not be used in any other way besides responding to this inquiry.'), '<br><br></td></tr>';
 	}

@@ -298,7 +298,7 @@ class WT_Tree {
 		$tree->setPreference('COMMON_NAMES_ADD', '');
 		$tree->setPreference('COMMON_NAMES_REMOVE', '');
 		$tree->setPreference('COMMON_NAMES_THRESHOLD', '40');
-		$tree->setPreference('CONTACT_USER_ID', WT_USER_ID);
+		$tree->setPreference('CONTACT_USER_ID', Auth::id());
 		$tree->setPreference('DEFAULT_PEDIGREE_GENERATIONS', '4');
 		$tree->setPreference('EXPAND_RELATIVES_EVENTS', '0');
 		$tree->setPreference('EXPAND_SOURCES', '0');
@@ -396,7 +396,7 @@ class WT_Tree {
 		$tree->setPreference('USE_RIN', '0');
 		$tree->setPreference('USE_SILHOUETTE', '1');
 		$tree->setPreference('WATERMARK_THUMB', '0');
-		$tree->setPreference('WEBMASTER_USER_ID', WT_USER_ID);
+		$tree->setPreference('WEBMASTER_USER_ID', Auth::id());
 		$tree->setPreference('WEBTREES_EMAIL', '');
 		$tree->setPreference('WORD_WRAPPED_NOTES', '0');
 		$tree->setPreference('imported', 0);

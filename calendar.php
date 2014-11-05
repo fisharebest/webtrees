@@ -23,6 +23,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+
 define('WT_SCRIPT_NAME', 'calendar.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
@@ -206,7 +208,7 @@ echo '<select class="list_value" name="filterof" onchange="document.dateform.sub
 echo '<option value="all"';
 if ($filterof == "all") echo ' selected="selected"';
 echo '>', WT_I18N::translate('All individuals'), '</option>';
-if (!$HIDE_LIVE_PEOPLE || WT_USER_ID) {
+if (!$HIDE_LIVE_PEOPLE || Auth::check()) {
 	echo '<option value="living"';
 if ($filterof == "living") echo ' selected="selected"';
 	echo '>', WT_I18N::translate('Living individuals'), '</option>';

@@ -62,7 +62,7 @@ echo
 if ($view != 'simple') { // Use “simple” headers for popup windows
 	echo '<div id="header" class="block">';
 	echo '<div id="header-user-links"><ul class="makeMenu">';
-	if (WT_USER_ID) {
+	if (Auth::check()) {
 		echo '<li><a href="edituser.php">', WT_Filter::escapeHtml(Auth::user()->getRealName()), '</a></li> <li>', logout_link(), '</li>';
 		if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
 			echo ' <li><a href="#" onclick="window.open(\'edit_changes.php\',\'_blank\',chan_window_specs); return false;" style="color:red;">', WT_I18N::translate('Pending changes'), '</a></li>';

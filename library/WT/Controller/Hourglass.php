@@ -279,7 +279,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 							echo "<td style='vertical-align:top'><img alt='' class='bvertline' id='vline_$chil' src='{$WT_IMAGES["vline"]}' width='3'></td>";
 						} else {
 							// Middle child
-							echo "<td style=\"background: url('{$WT_IMAGES["vline"]}');\"><img src='{$WT_IMAGES["spacer"]}' width='3' alt=''></td>";
+							echo '<td style="background: url(\'' . $WT_IMAGES['vline'] . '\');"><img src=\'' . $WT_IMAGES['spacer'] . '\' width="3" alt=""></td>';
 						}
 					}
 					echo '</tr>';
