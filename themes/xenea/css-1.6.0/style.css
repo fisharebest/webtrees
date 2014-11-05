@@ -62,16 +62,12 @@ a.link:hover {
 
 input:required:valid,
 textarea:required:valid {
-	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAONJREFUeNpi/P//PwMlgImBQjDwBrCgCzDOF2Zg+Adk/AOGDRvQfHZGoDWMxgyMDMb/Q1/NIt0F/xk8gIbNZPj7P41YL4AUGsM1//rfkuyeYMzw8z9xXgBqgNm0nuHnv0D/IH/juavmngV6oYY4F3z7y2DqY2oMpANB9MYl684yfP9Xw3Dzzw7sXgQmJGTM0MbjwdDKc0b2vt5/EM2QwunBoMyCVS1YPYYAMOwZ7FmiGLLYzjBYsSQD+QpALAjErNgMYERPyoyMjMxAih+IOYD4LxD/hOJfQLV/MaJ9NC8wAAQYAPbPfH2KJKx/AAAAAElFTkSuQmCC);
-	background-position: right top;
-	background-repeat: no-repeat;
+	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAONJREFUeNpi/P//PwMlgImBQjDwBrCgCzDOF2Zg+Adk/AOGDRvQfHZGoDWMxgyMDMb/Q1/NIt0F/xk8gIbNZPj7P41YL4AUGsM1//rfkuyeYMzw8z9xXgBqgNm0nuHnv0D/IH/juavmngV6oYY4F3z7y2DqY2oMpANB9MYl684yfP9Xw3Dzzw7sXgQmJGTM0MbjwdDKc0b2vt5/EM2QwunBoMyCVS1YPYYAMOwZ7FmiGLLYzjBYsSQD+QpALAjErNgMYERPyoyMjMxAih+IOYD4LxD/hOJfQLV/MaJ9NC8wAAQYAPbPfH2KJKx/AAAAAElFTkSuQmCC) no-repeat right top;
 }
 
 input:required:invalid,
 textarea:required:invalid {
-	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAMpJREFUeNpi/P//PwMlgImBQjAMDGBBF1jFyOgBpFqAuOYPA8MOoAI4P+z//x0YJoBiARkvYWA486+k5D+IBuJqZD66WnAMogvMA9o4F6j4R3Lyf2R6IQODMVEGTAW6CoirgfjMB2/v/yB6CgNDYQ8W14IwRiB+A7rgOwNDYLChofGcrVvPgugfDAzR/yFhwUAwDJqBNj6Ulf0PooEhV4jMx+YCRvSknAeMBWDotwgwMKRzMTCcfQW0GcQHxkbNJCyxwDiaFxgAAgwAYy67YIOQ//cAAAAASUVORK5CYII=);
-	background-position: right top;
-	background-repeat: no-repeat;
+	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAMpJREFUeNpi/P//PwMlgImBQjAMDGBBF1jFyOgBpFqAuOYPA8MOoAI4P+z//x0YJoBiARkvYWA486+k5D+IBuJqZD66WnAMogvMA9o4F6j4R3Lyf2R6IQODMVEGTAW6CoirgfjMB2/v/yB6CgNDYQ8W14IwRiB+A7rgOwNDYLChofGcrVvPgugfDAzR/yFhwUAwDJqBNj6Ulf0PooEhV4jMx+YCRvSknAeMBWDotwgwMKRzMTCcfQW0GcQHxkbNJCyxwDiaFxgAAgwAYy67YIOQ//cAAAAASUVORK5CYII=) no-repeat right top;
 }
 
 [dir=rtl] input:required:valid,
@@ -84,9 +80,7 @@ textarea:required:invalid {
 /* Header Layout */
 #header {
 	height: 40px;
-	background: #039;
-	background-image: url(images/cabeza.png);
-	background-position: left top;
+	background: #039 url(images/cabeza.png) left top;
 }
 
 .title {
@@ -110,8 +104,7 @@ textarea:required:invalid {
 
 /* LTR to RTL Translation */
 [dir=rtl] #header {
-	background-position: right top;
-	background-image: url(images/cabeza_rtl.png);
+	background: url(images/cabeza_rtl.png) right top;
 }
 
 [dir=rtl] .title {
@@ -145,8 +138,7 @@ textarea:required:invalid {
 
 /* Options Menu Layout */
 #optionsmenu {
-	background: #84beff;
-	background-image: url(images/barra.png);
+	background: #84beff url(images/barra.png);
 	width: 100%;
 	color: #fff;
 	font-weight: bold;
@@ -376,8 +368,7 @@ textarea:required:invalid {
 
 /* Menu icons */
 #main-menu > li {
-	background-image: url(images/sprites-top-menu.png);
-	background-repeat: no-repeat;
+	background: url(images/sprites-top-menu.png) no-repeat;
 	width: 80px;
 	text-align: center;
 	height: 28px;
@@ -386,8 +377,7 @@ textarea:required:invalid {
 }
 
 #main-menu li li {
-	background-image: url(images/sprites-sub-menu.png);
-	background-repeat: no-repeat;
+	background: url(images/sprites-sub-menu.png) no-repeat;
 	height: 23px;
 	left: auto;
 	line-height: 23px;
@@ -1148,7 +1138,7 @@ textarea:required:invalid {
 /* Header end */
 
 fieldset {
-	margin: 8px 8px 4px 8px;
+	margin: 8px 8px 4px;
 	text-align: left;
 }
 
@@ -1161,7 +1151,7 @@ legend {
 }
 
 img {
-	border: none;
+	border: 0;
 }
 
 ul {
@@ -1219,7 +1209,7 @@ th {
 #relatives_content .person_box > .person_box,
 #relatives_content .person_boxF > .person_boxF,
 #relatives_content .person_boxNN > .person_boxNN {
-	border: none;
+	border: 0;
 	min-height: 50px;
 }
 
@@ -1388,7 +1378,7 @@ a:hover .nameZoom {
 .gender_image {
 	padding-left: 3px;
 	padding-right: 3px;
-	border: none;
+	border: 0;
 	vertical-align: middle;
 }
 
@@ -1402,7 +1392,7 @@ a:hover .nameZoom {
 }
 
 .icon {
-	border: none;
+	border: 0;
 	padding-left: 0;
 	padding-right: 5px;
 }
@@ -1652,7 +1642,7 @@ a:hover .nameZoom {
 }
 
 img.block {
-	border: none;
+	border: 0;
 	height: 20px;
 	vertical-align: middle;
 }
@@ -1717,7 +1707,7 @@ img.block {
 #link_change_blocks {
 	clear: both;
 	margin: 0 auto;
-	padding: 25px 0 0 0;
+	padding: 25px 0 0;
 	text-align: center;
 	width: 400px;
 }
@@ -1781,7 +1771,7 @@ img.block {
 }
 
 #relationship_chart {
-	margin: 0 20px 0;
+	margin: 0 20px;
 }
 
 .tdtop {
@@ -1888,9 +1878,7 @@ img.block {
 }
 
 #descendancy_chart ul {
-	background-image: url(images/vline.png);
-	background-repeat: repeat-y;
-	background-position: left top;
+	background: url(images/vline.png) repeat-y left top;
 	list-style: none;
 	margin: 0 0 5px 15px; /* top right bottom left */
 	padding-top: 0;
@@ -1923,9 +1911,7 @@ img.block {
 
 /*-- ancestry chart specific stylesheets --*/
 #ancestry_chart ul {
-	background-image: url(images/vline.png);
-	background-repeat: repeat-y;
-	background-position: left top;
+	background: url(images/vline.png) repeat-y left top;
 	list-style: none;
 	display: block;
 	margin: 0 0 0 15px; /* top right bottom left */
@@ -1947,7 +1933,7 @@ img.block {
 }
 
 #ancestry_chart span.details1 div[class^="fact_"] {
-   	display: inline-block;
+	display: inline-block;
 }
 
 /*-- ancestry chart rtl specific stylesheets --*/
@@ -1973,8 +1959,8 @@ img.block {
 
 .fan_chart_menu {
 	position: absolute;
-	display:  none;
-	z-index:  100;
+	display: none;
+	z-index: 100;
 }
 
 #fan_chart ul {
@@ -2054,8 +2040,7 @@ textarea {
 }
 
 select {
-	border-color: #84beff;
-	border-width: 1px;
+	border: 1px #84beff;
 	font-family: inherit;
 	font-size: 12px;
 }
@@ -2312,8 +2297,7 @@ a.showit:hover > span {
 	border: 1px solid #000;
 	background-color: #fff;
 	z-index: 99999;
-	list-style-position: outside;
-	list-style: none;
+	list-style: none outside none;
 	margin: 0;
 	max-height: 200px;
 	overflow-y: auto;
@@ -2457,7 +2441,7 @@ dt {
 }
 
 .add_fav_head i {
-	margin: 0 5px 1px 5px;
+	margin: 0 5px 1px;
 }
 
 .add_fav_ref label {
@@ -2494,7 +2478,7 @@ dt {
 
 .box-style0-expanded,
 .box-style1-expanded {
-	width: 300px!important;
+	width: 300px !important;
 }
 
 .person_box_template {
@@ -2691,7 +2675,7 @@ dt {
 #verify-form {
 	background-color: #c3dfff;
 	display: inline-block;
-	margin: 10px auto 0 auto;
+	margin: 10px auto 0;
 	padding: 5px;
 }
 
@@ -3018,13 +3002,13 @@ span.link_text {
 	margin: 0 0 5px;
 	padding: 10px 0;
 	background: #e8f5f8; /* Old browsers */
-	background: -moz-linear-gradient(top,  #e8f5f8 0%, #f5fafb 60%, #fefefe 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e8f5f8), color-stop(60%,#f5fafb), color-stop(100%,#fefefe)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  #e8f5f8 0%,#f5fafb 60%,#fefefe 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  #e8f5f8 0%,#f5fafb 60%,#fefefe 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  #e8f5f8 0%,#f5fafb 60%,#fefefe 100%); /* IE10+ */
-	background: linear-gradient(to bottom,  #e8f5f8 0%,#f5fafb 60%,#fefefe 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e8f5f8', endColorstr='#fefefe',GradientType=0 ); /* IE6-9 */
+	background: -moz-linear-gradient(top, #e8f5f8 0%, #f5fafb 60%, #fefefe 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e8f5f8), color-stop(60%, #f5fafb), color-stop(100%, #fefefe)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #e8f5f8 0%, #f5fafb 60%, #fefefe 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #e8f5f8 0%, #f5fafb 60%, #fefefe 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #e8f5f8 0%, #f5fafb 60%, #fefefe 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #e8f5f8 0%, #f5fafb 60%, #fefefe 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e8f5f8', endColorstr='#fefefe', GradientType=0); /* IE6-9 */
 }
 
 #indi_header h3 {
@@ -3117,7 +3101,7 @@ span.link_text {
 }
 
 #indi_note {
-	margin: 0 0 5px 0;
+	margin: 0 0 5px;
 }
 
 #indi_note .fact_NOTE {
@@ -3374,7 +3358,7 @@ dd .deletelink {
 }
 
 .ui-tabs .ui-tabs-nav {
-	padding: .3em .3em 0 .3em;
+	padding: .3em .3em 0;
 	border-color: #888;
 }
 
@@ -3530,7 +3514,7 @@ dd .deletelink {
 
 .upcoming_events_block .dataTables_info,
 .todays_events_block .dataTables_info {
-	padding: 2px 0 0 0;
+	padding: 2px 0 0;
 }
 
 .upcoming_events_block button,
@@ -3827,28 +3811,28 @@ dd .deletelink {
 }
 
 #separator {
-	display:          table-cell;
-	width:            2.5em;
-	position:         relative;
+	display: table-cell;
+	width: 2.5em;
+	position: relative;
 	background-color: transparent;
 	overflow: hidden;
 }
 
 #separator:after {
-	position:                absolute;
-	top:                     0;
-	left:                    auto;
-	right:                   0;
-	width:                   10px;
-	height:                  99999px;
-	content:                 "";
-	border:                  1px solid #81a9cb;
-	border-top-left-radius:  3px;
+	position: absolute;
+	top: 0;
+	left: auto;
+	right: 0;
+	width: 10px;
+	height: 99999px;
+	content: "";
+	border: 1px solid #81a9cb;
+	border-top-left-radius: 3px;
 	border-top-right-radius: 3px;
 }
 
 [dir=rtl] #separator:after {
-	left:  0;
+	left: 0;
 	right: auto;
 }
 
@@ -4118,14 +4102,14 @@ dd .deletelink {
 
 #find-output .find-media-details p {
 	border: 0;
-	padding: 0 5px 2px 5px;
+	padding: 0 5px 2px;
 	font-weight: normal;
 	text-align: left;
 }
 
 #find-output .find-media-details div span {
 	font-weight: normal;
-	padding: 0 5px 2px 5px;
+	padding: 0 5px 2px;
 }
 
 #find-output p.find-media-title {
@@ -4134,7 +4118,7 @@ dd .deletelink {
 
 #find-output .find-media-details ul {
 	padding: 0;
-	margin: 0 20px 10px 20px;
+	margin: 0 20px 10px;
 	list-style-type: none;
 }
 
@@ -4232,7 +4216,7 @@ dd .deletelink {
 
 /* ======= Who is online block ========== */
 .logged_in_list {
-	margin: 5px 0 0 0;
+	margin: 5px 0 0;
 	padding: 0;
 	line-height: 20px;
 }
@@ -4285,7 +4269,7 @@ dd .deletelink {
 		width: auto;
 		height: auto;
 		overflow: visible;
-		border: none;
+		border: 0;
 	}
 
 	.lifespan_people {
@@ -4871,9 +4855,7 @@ a.icon-uarrow:hover {
 [class^="icon-mime-"],
 [class*=" icon-mime-"] {
 	display: inline-block;
-	background-image: url(images/icon-mime-sprite.png);
-	background-color: transparent;
-	background-repeat: no-repeat;
+	background: transparent url(images/icon-mime-sprite.png) no-repeat;
 	width: 48px;
 	height: 48px;
 }
