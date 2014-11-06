@@ -298,7 +298,7 @@ case 'createuser':
 		}
 		Log::addAuthenticationLog("User ->{$username}<- created");
 		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME);
-		WT_Session::writeClose();
+		Zend_Session::writeClose();
 		exit;
 	}
 }

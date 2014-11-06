@@ -4848,14 +4848,12 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					#mapCanvas {
 						width: 520px;
 						height: 350px;
-						margin: 0 auto;
-						margin-top: -10px;
+						margin: -10px auto 0;
 						border:1px solid black;
 					}
 					#infoPanel {
 						display: none;
-						margin: 0 auto;
-						margin-top: 5px;
+						margin: 5px auto 0;
 					}
 					#infoPanel div {
 						display: none;
