@@ -94,9 +94,8 @@ img.block,
 input,
 button,
 textarea {
-	border: 1px #fff;
-	border-right-color: #555;
-	border-bottom-color: #555;
+	border-width: 1px;
+	border-top-color: #fff #555 #555 #fff;
 	font-size: 12px;
 }
 
