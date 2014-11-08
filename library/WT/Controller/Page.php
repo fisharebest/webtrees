@@ -1,6 +1,4 @@
 <?php
-// Controller for full-page, themed HTML responses
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -18,8 +16,9 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-use WT\Auth;
-
+/**
+ * Class WT_Controller_Page Controller for full-page, themed HTML responses
+ */
 class WT_Controller_Page extends WT_Controller_Base {
 	// Page header information
 	const     DOCTYPE = '<!DOCTYPE html>';  // HTML5
@@ -27,7 +26,9 @@ class WT_Controller_Page extends WT_Controller_Base {
 	private $meta_robots = 'noindex,nofollow'; // Most pages are not intended for robots
 	private $page_title = WT_WEBTREES;        // <head><title> $page_title </title></head>
 
-	// Startup activity
+	/**
+	 * Startup activity
+	 */
 	public function __construct() {
 		parent::__construct();
 		// Every page uses these scripts
@@ -37,7 +38,9 @@ class WT_Controller_Page extends WT_Controller_Base {
 			->addExternalJavascript(WT_WEBTREES_JS_URL);
 	}
 
-	// Shutdown activity
+	/**
+	 * Shutdown activity
+	 */
 	public function __destruct() {
 		// If we printed a header, automatically print a footer
 		if ($this->page_header) {
@@ -45,19 +48,35 @@ class WT_Controller_Page extends WT_Controller_Base {
 		}
 	}
 
-	// What should this page show in the browser’s title bar?
+	/**
+	 * What should this page show in the browser’s title bar?
+	 *
+	 * @param string  $page_title
+	 *
+	 * @return WT_Controller_Page
+	 */
 	public function setPageTitle($page_title) {
 		$this->page_title = $page_title;
 
 		return $this;
 	}
 
-	// Some pages will want to display this as <h2> $page_title </h2>
+	/**
+	 * Some pages will want to display this as <h2> $page_title </h2>
+	 *
+	 * @return string
+	 */
 	public function getPageTitle() {
 		return $this->page_title;
 	}
 
-	// What is the preferred URL for this page?
+	/**
+	 * What is the preferred URL for this page?
+	 *
+	 * @param $canonical_url
+	 *
+	 * @return $this
+	 */
 	public function setCanonicalUrl($canonical_url) {
 		$this->canonical_url = $canonical_url;
 
