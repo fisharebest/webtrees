@@ -1,6 +1,4 @@
 <?php
-//	Controller for the familybook chart
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -21,6 +19,9 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class WT_Controller_Familybook - Controller for the familybook chart
+ */
 class WT_Controller_Familybook extends WT_Controller_Chart {
 	// Data for the view
 	public $pid = null;
@@ -34,6 +35,9 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 	// Data for the controller
 	private $dgenerations = null;
 
+	/**
+	 * Create a family-book controller
+	 */
 	public function __construct() {
 		global $WT_TREE;
 

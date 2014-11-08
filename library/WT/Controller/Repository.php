@@ -1,6 +1,4 @@
 <?php
-// Controller for the repository page
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -25,7 +23,13 @@ use WT\Auth;
 
 require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 
+/**
+ * Class WT_Controller_Repository - Controller for the repository page
+ */
 class WT_Controller_Repository extends WT_Controller_GedcomRecord {
+	/**
+	 * Startup activity
+	 */
 	public function __construct() {
 		$xref         = WT_Filter::get('rid', WT_REGEX_XREF);
 		$this->record = WT_Repository::getInstance($xref);

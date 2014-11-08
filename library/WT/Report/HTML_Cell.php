@@ -1,8 +1,4 @@
 <?php
-// HTML Report Generator
-//
-// used by the SAX parser to generate HTML reports from the XML report file.
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -23,6 +19,10 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class WT_Report_HTML_Cell - Base Report Generator, used by the SAX
+ * parser to generate reports from the XML report file.
+ */
 class WT_Report_HTML_Cell extends WT_Report_Base_Cell {
 	/**
 	 * HTML Cell renderer

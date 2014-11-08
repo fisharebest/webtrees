@@ -1,6 +1,4 @@
 <?php
-//	Controller for the compact chart
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -21,6 +19,9 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class WT_Controller_Compact - Controller for the compact chart
+ */
 class WT_Controller_Compact extends WT_Controller_Chart {
 	// Data for the view
 	public $show_thumbs=false;
@@ -28,6 +29,9 @@ class WT_Controller_Compact extends WT_Controller_Chart {
 	// Date for the controller
 	private $treeid=array();
 
+	/**
+	 * Startup activity
+	 */
 	public function __construct() {
 		parent::__construct();
 
@@ -45,6 +49,11 @@ class WT_Controller_Compact extends WT_Controller_Chart {
 		$this->treeid = $this->sosaAncestors(5);
 	}
 
+	/**
+	 * @param integer $n
+	 *
+	 * @return string
+	 */
 	public function sosaIndividual($n) {
 		global $SHOW_HIGHLIGHT_IMAGES;
 
@@ -91,6 +100,12 @@ class WT_Controller_Compact extends WT_Controller_Chart {
 		}
 	}
 
+	/**
+	 * @param integer $n
+	 * @param string  $arrow_dir
+	 *
+	 * @return string
+	 */
 	public function sosaArrow($n, $arrow_dir) {
 		global $TEXT_DIRECTION;
 

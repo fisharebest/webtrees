@@ -1,6 +1,4 @@
 <?php
-//	Controller for the pedigree chart
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -21,6 +19,9 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class WT_Controller_Pedigree - Controller for the pedigree chart
+ */
 class WT_Controller_Pedigree extends WT_Controller_Chart {
 	var $rootid;
 	var $name;
@@ -39,6 +40,9 @@ class WT_Controller_Pedigree extends WT_Controller_Chart {
 	var $offsetarray;
 	var $minyoffset;
 
+	/**
+	 * Create a pedigree controller
+	 */
 	public function __construct() {
 		global $PEDIGREE_FULL_DETAILS, $PEDIGREE_LAYOUT, $MAX_PEDIGREE_GENERATIONS;
 		global $DEFAULT_PEDIGREE_GENERATIONS;

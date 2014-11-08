@@ -1,6 +1,4 @@
 <?php
-// Class that defines a media object
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -23,6 +21,9 @@
 
 use WT\Log;
 
+/**
+ * Class WT_Media - Class that defines a media object
+ */
 class WT_Media extends WT_GedcomRecord {
 	const RECORD_TYPE = 'OBJE';
 	const URL_PREFIX = 'mediaviewer.php?mid=';
@@ -242,7 +243,10 @@ class WT_Media extends WT_GedcomRecord {
 		return @file_exists($this->getServerFilename($which));
 	}
 
-	// determine if the file is an external url
+	/**
+	 * Determine if the file is an external url
+	 * @return bool
+	 */
 	public function isExternal() {
 		return strpos($this->file, '://') !== false;
 	}

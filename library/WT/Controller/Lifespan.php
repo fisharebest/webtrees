@@ -1,6 +1,4 @@
 <?php
-// Controller for the timeline chart
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -23,6 +21,9 @@
 
 use Fisharebest\ExtCalendar\GregorianCalendar;
 
+/**
+ * Class WT_Controller_Lifespan - Controller for the timeline chart
+ */
 class WT_Controller_Lifespan extends WT_Controller_Page {
 	var $pids = array();
 	var $people = array();
@@ -62,6 +63,9 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 		'FAMS', 'FAMC', 'MAY', 'BLOB', 'OBJE', 'SEX', 'NAME', 'SOUR', 'NOTE', 'BAPL', 'ENDL', 'SLGC', 'SLGS', '_TODO', '_WT_OBJE_SORT', 'CHAN', 'HUSB', 'WIFE', 'CHIL', 'BIRT', 'DEAT', 'BURI'
 	);
 
+	/**
+	 * Startup activity
+	 */
 	function __construct() {
 		global $WT_SESSION;
 

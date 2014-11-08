@@ -1,6 +1,4 @@
 <?php
-// Class file for a Repository (REPO) object
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -21,6 +19,9 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class WT_Repository - Class file for a Repository (REPO) object
+ */
 class WT_Repository extends WT_GedcomRecord {
 	const RECORD_TYPE = 'REPO';
 	const URL_PREFIX = 'repo.php?rid=';

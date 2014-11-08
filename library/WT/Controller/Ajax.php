@@ -18,6 +18,17 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class WT_Controller_Ajax
+ */
+
+/**
+ * Class WT_Controller_Ajax
+ */
+
+/**
+ * Class WT_Controller_Ajax
+ */
 class WT_Controller_Ajax extends WT_Controller_Base {
 
 	/**

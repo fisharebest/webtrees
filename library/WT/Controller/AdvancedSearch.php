@@ -1,6 +1,4 @@
 <?php
-// Controller for the advanced search page
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -21,12 +19,18 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class WT_Controller_AdvancedSearch - Controller for the advanced search page
+ */
 class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 	var $fields = array();
 	var $values = array();
 	var $plusminus = array();
 	var $errors = array();
 
+	/**
+	 * Startup activity
+	 */
 	function __construct() {
 		parent::__construct();
 
@@ -67,6 +71,11 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 		}
 	}
 
+	/**
+	 * A list of additional fields that can be added.
+	 *
+	 * @return string[]
+	 */
 	function getOtherFields() {
 		global $WT_TREE;
 
@@ -133,6 +142,14 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 		return $fields;
 	}
 
+	/**
+	 * Compare two tags, for sorting
+	 *
+	 * @param string $x
+	 * @param string $y
+	 *
+	 * @return int
+	 */
 	public static function tagSort($x, $y) {
 		list($x1)=explode(':', $x.':');
 		list($y1)=explode(':', $y.':');
@@ -144,26 +161,52 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 		}
 	}
 
+	/**
+	 * @param integer $i
+	 *
+	 * @return string
+	 */
 	function getValue($i) {
-		$val = "";
+		$val = '';
 		if (isset($this->values[$i])) $val = $this->values[$i];
 		return $val;
 	}
 
+	/**
+	 * @param integer $i
+	 *
+	 * @return string
+	 */
 	function getField($i) {
-		$val = "";
-		if (isset($this->fields[$i])) $val = htmlentities($this->fields[$i]);
+		$val = '';
+		if (isset($this->fields[$i])) {
+			$val = htmlentities($this->fields[$i]);
+		}
+
 		return $val;
 	}
 
+	/**
+	 * @param string $field
+	 *
+	 * @return integer
+	 */
 	function getIndex($field) {
 		return array_search($field, $this->fields);
 	}
 
+	/**
+	 * @param string $tag
+	 *
+	 * @return string
+	 */
 	function getLabel($tag) {
 		return WT_Gedcom_Tag::getLabel(preg_replace('/:(SDX|BEGINS|EXACT|CONTAINS)$/', '', $tag));
 	}
 
+	/**
+	 * Set the field order
+	 */
 	function reorderFields() {
 		$i = 0;
 		$newfields = array();
@@ -189,6 +232,11 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 		}
 	}
 
+	/**
+	 * Perform the search
+	 *
+	 * @return void
+	 */
 	function advancedSearch() {
 		$this->myindilist = array ();
 		$fct = count($this->fields);
@@ -575,6 +623,9 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 		}
 	}
 
+	/**
+	 * @return bool
+	 */
 	function printResults() {
 		require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 		if ($this->myindilist) {

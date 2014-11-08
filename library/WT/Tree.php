@@ -1,6 +1,4 @@
 <?php
-// Provide an interface to the wt_gedcom table
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team
 //
@@ -22,6 +20,9 @@ use WT\Auth;
 use WT\Log;
 use WT\User;
 
+/**
+ * Class WT_Tree - Provide an interface to the wt_gedcom table
+ */
 class WT_Tree {
 	// Tree attributes
 	public $tree_id; // The "gedcom ID" number
@@ -41,8 +42,15 @@ class WT_Tree {
 	/** @var string[][] Cached copy of the wt_user_gedcom_setting table. */
 	private $user_preferences = array();
 
-	// Create a tree object.  This is a private constructor - it can only
-	// be called from WT_Tree::getAll() to ensure proper initialisation.
+	/**
+	 * Create a tree object.  This is a private constructor - it can only
+	 * be called from WT_Tree::getAll() to ensure proper initialisation.
+	 *
+	 * @param $tree_id
+	 * @param $tree_name
+	 * @param $tree_title
+	 * @param $imported
+	 */
 	private function __construct($tree_id, $tree_name, $tree_title, $imported) {
 		$this->tree_id         = $tree_id;
 		$this->tree_name       = $tree_name;
@@ -153,7 +161,13 @@ class WT_Tree {
 		return $this;
 	}
 
-	// Can a user accept changes for this tree?
+	/**
+	 * Can a user accept changes for this tree?
+	 *
+	 * @param User $user
+	 *
+	 * @return boolean
+	 */
 	public function canAcceptChanges(User $user) {
 		return Auth::isModerator($this, $user);
 	}
