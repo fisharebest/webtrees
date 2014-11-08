@@ -1,8 +1,4 @@
 <?php
-//
-// Class file for the database access.  Extend PHP's native PDO and
-// PDOStatement classes to provide database access with logging, etc.
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -23,6 +19,10 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class WT_DB Class - Extend PHP's native PDO and PDOStatement classes
+ * to provide database access with logging, etc.
+ */
 class WT_DB {
 	/** @var WT_DB Implement the singleton pattern */
 	private static $instance;
@@ -33,17 +33,27 @@ class WT_DB {
 	/** @var array Keep a log of all the SQL statements that we execute */
 	private static $log;
 
-	// Prevent instantiation via new WT_DB
+	/**
+	 * Prevent instantiation via new WT_DB
+	 */
 	private final function __construct() {
 		self::$log = array();
 	}
 
-	// Prevent instantiation via clone()
+	/**
+	 * Prevent instantiation via clone()
+	 *
+	 * @throws Exception
+	 */
 	public final function __clone() {
 		throw new Exception('WT_DB::clone() is not allowed.');
 	}
 
-	// Prevent instantiation via serialize()
+	/**
+	 * Prevent instantiation via serialize()
+	 *
+	 * @throws Exception
+	 */
 	public final function __wakeup() {
 		throw new Exception('WT_DB::unserialize() is not allowed.');
 	}

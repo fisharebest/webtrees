@@ -1,6 +1,4 @@
 <?php
-// System for generating menus.
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -21,6 +19,9 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class WT_Menu - System for generating menus.
+ */
 class WT_Menu {
 	var $label = ' ';
 	var $labelpos = 'right';

@@ -24,7 +24,7 @@ use WT\User;
 define('WT_SCRIPT_NAME', 'admin.php');
 
 require './includes/session.php';
-require WT_ROOT.'includes/functions/functions_edit.php';
+require WT_ROOT . 'includes/functions/functions_edit.php';
 
 $controller = new WT_Controller_Page();
 $controller
@@ -37,12 +37,12 @@ $controller
 	->pageHeader();
 
 // Check for updates
-$latest_version_txt=fetch_latest_version();
+$latest_version_txt = fetch_latest_version();
 if (preg_match('/^[0-9.]+\|[0-9.]+\|/', $latest_version_txt)) {
-	list($latest_version, $earliest_version, $download_url)=explode('|', $latest_version_txt);
+	list($latest_version, $earliest_version, $download_url) = explode('|', $latest_version_txt);
 } else {
 	// Cannot determine the latest version
-	$latest_version='';
+	$latest_version = '';
 }
 
 // Delete old files (if we can).
@@ -77,12 +77,12 @@ $total_managers = WT_DB::prepare(
 
 // Number of users who have not verified their email address
 $unverified = WT_DB::prepare(
-	"SELECT COUNT(*) FROM `##user_setting` WHERE setting_name='verified' AND setting_value=0"
+	"SELECT COUNT(*) FROM `##user_setting` WHERE setting_name = 'verified' AND setting_value = 0"
 )->fetchOne();
 
 // Number of users whose accounts are not approved by an administrator
 $unapproved = WT_DB::prepare(
-	"SELECT COUNT(*) FROM `##user_setting` WHERE setting_name='verified_by_admin' AND setting_value=0"
+	"SELECT COUNT(*) FROM `##user_setting` WHERE setting_name = 'verified_by_admin' AND setting_value = 0"
 )->fetchOne();
 
 // Number of users of each language
@@ -106,7 +106,7 @@ $stats = new WT_Stats(WT_GEDCOM);
 			<p>
 				<?php echo /* I18N: %s is a URL/link to the project website */ WT_I18N::translate('Support and documentation can be found at %s.', ' <a class="current" href="http://webtrees.net/">webtrees.net</a>'); ?>
 			</p>
-			<?php if (Auth::isAdmin() && $latest_version && version_compare(WT_VERSION, $latest_version)<0) { ?>
+			<?php if (Auth::isAdmin() && $latest_version && version_compare(WT_VERSION, $latest_version) < 0) { ?>
 			<p>
 				<?php echo WT_I18N::translate('A new version of webtrees is available.'); ?>
 				<a href="admin_site_upgrade.php" class="error">
@@ -143,9 +143,9 @@ $stats = new WT_Stats(WT_GEDCOM);
 						<td><?php echo $total_administrators; ?></td>
 					</tr>
 					<tr>
-					<td colspan="2"><?php echo WT_I18N::translate('Managers'); ?></td>
+						<td colspan="2"><?php echo WT_I18N::translate('Managers'); ?></td>
 					</tr>
-					<?php foreach ($total_managers as $gedcom_title=>$n) { ?>
+					<?php foreach ($total_managers as $gedcom_title => $n) { ?>
 					<tr>
 						<td>&nbsp;&nbsp;<?php echo WT_Filter::escapeHtml($gedcom_title); ?></td>
 						<td><?php echo $n; ?></td>
@@ -162,7 +162,7 @@ $stats = new WT_Stats(WT_GEDCOM);
 					<tr>
 						<td colspan="2"><?php echo WT_I18N::translate('Users’ languages'); ?></td>
 					</tr>
-					<?php foreach ($user_languages as $language=>$n) { ?>
+					<?php foreach ($user_languages as $language => $n) { ?>
 					<tr>
 						<td>&nbsp;&nbsp;<?php echo WT_I18N::languageName($language); ?></td>
 						<td><?php echo $n; ?></td>
@@ -284,9 +284,13 @@ $stats = new WT_Stats(WT_GEDCOM);
 
 <?php
 
-// This is a list of old files and directories, from earlier versions of webtrees, that can be deleted
-// It was generated with the help of a command like this
-// git diff 1.4.3..master --name-status | grep ^D
+/**
+ * This is a list of old files and directories, from earlier versions of webtrees, that can be deleted.
+ * It was generated with the help of a command like this:
+ * git diff 1.6.0..master --name-status | grep ^D
+ *
+ * @return string[]
+ */
 function old_paths() {
 	return array(
 		// Removed in 1.0.2

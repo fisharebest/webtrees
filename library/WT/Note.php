@@ -1,6 +1,4 @@
 <?php
-// Class file for a Shared Note (NOTE) object
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -21,6 +19,9 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class WT_Note - Class file for a Shared Note (NOTE) object
+ */
 class WT_Note extends WT_GedcomRecord {
 	const RECORD_TYPE = 'NOTE';
 	const URL_PREFIX = 'note.php?nid=';

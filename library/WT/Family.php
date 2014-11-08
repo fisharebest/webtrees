@@ -1,6 +1,4 @@
 <?php
-// Class file for a Family
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -21,6 +19,9 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class WT_Family - Class file for a Family
+ */
 class WT_Family extends WT_GedcomRecord {
 	const RECORD_TYPE = 'FAM';
 	const URL_PREFIX = 'family.php?famid=';

@@ -1,8 +1,4 @@
 <?php
-// Base Report Generator
-//
-// used by the SAX parser to generate reports from the XML report file.
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -23,6 +19,10 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class WT_Report_Base_Cell - Base Report Generator, used by the SAX
+ * parser to generate reports from the XML report file.
+ */
 class WT_Report_Base_Cell extends WT_Report_Base_Element {
 	/**
 	 * Allows to center or align the text. Possible values are:<ul><li>left or empty string: left align</li><li>center: center align</li><li>right: right align</li><li>justify: justification (default value when $ishtml=false)</li></ul>

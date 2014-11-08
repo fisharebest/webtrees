@@ -1,6 +1,4 @@
 <?php
-// Controller for the individual page
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -26,12 +24,18 @@ use WT\User;
 
 require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 
+/**
+ * Class WT_Controller_Individual - Controller for the individual page
+ */
 class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 	public $name_count = 0;
 	public $total_names = 0;
 
 	public $tabs;
 
+	/**
+	 * Startup activity
+	 */
 	function __construct() {
 		global $USE_RIN;
 
@@ -53,14 +57,25 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 		}
 	}
 
-	// Get significant information from this page, to allow other pages such as
-	// charts and reports to initialise with the same records
+	/**
+	 * Get significant information from this page, to allow other pages such as
+	 * charts and reports to initialise with the same records
+	 *
+	 * @return WT_Individual
+	 */
 	public function getSignificantIndividual() {
 		if ($this->record) {
 			return $this->record;
 		}
 		return parent::getSignificantIndividual();
 	}
+
+	/**
+	 * Get significant information from this page, to allow other pages such as
+	 * charts and reports to initialise with the same records
+	 *
+	 * @return WT_Family
+	 */
 	public function getSignificantFamily() {
 		if ($this->record) {
 			foreach ($this->record->getChildFamilies() as $family) {
@@ -73,7 +88,9 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 		return parent::getSignificantFamily();
 	}
 
-	// Handle AJAX requests - to generate the tab content
+	/**
+	 * Handle AJAX requests - to generate the tab content
+	 */
 	public function ajaxRequest() {
 		global $SEARCH_SPIDER;
 
@@ -352,8 +369,12 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 		return $class;
 	}
 
-	// Get significant information from this page, to allow other pages such as
-	// charts and reports to initialise with the same records
+	/**
+	 * Get significant information from this page, to allow other pages such as
+	 * charts and reports to initialise with the same records
+	 *
+	 * @return string
+	 */
 	public function getSignificantSurname() {
 		if ($this->record) {
 			list($surn) = explode(',', $this->record->getSortname());
@@ -363,8 +384,11 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 		}
 	}
 
-	// Get the contents of sidebar.
-	// TODO?? - only load one block immediately - load the others by AJAX.
+	/**
+	 * Get the contents of sidebar.
+	 *
+	 * @return string
+	 */
 	public function getSideBarContent() {
 		global $controller;
 

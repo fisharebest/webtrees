@@ -1,6 +1,4 @@
 <?php
-// Base class for all gedcom records
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -24,6 +22,9 @@
 use WT\Auth;
 use WT\Log;
 
+/**
+ * Class WT_GedcomRecord - Base class for all gedcom records
+ */
 class WT_GedcomRecord {
 	const RECORD_TYPE = 'UNKNOWN';
 	const URL_PREFIX  = 'gedrecord.php?pid=';

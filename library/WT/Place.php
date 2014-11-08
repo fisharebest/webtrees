@@ -1,6 +1,4 @@
 <?php
-// Gedcom Place functionality.
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -18,11 +16,18 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class WT_Place - Gedcom Place functionality.
+ */
 class WT_Place {
 	const GEDCOM_SEPARATOR = ', ';
 	private $gedcom_place;  // e.g. array("Westminster", "London", "England")
 	private $gedcom_id;     // We may have the same place in different trees
 
+	/**
+	 * @param string  $gedcom_place
+	 * @param integer $gedcom_id
+	 */
 	public function __construct($gedcom_place, $gedcom_id) {
 		if ($gedcom_place) {
 			$this->gedcom_place=explode(self::GEDCOM_SEPARATOR, $gedcom_place);
@@ -33,62 +38,89 @@ class WT_Place {
 		$this->gedcom_id=$gedcom_id;
 	}
 
+	/**
+	 * @return integer
+	 */
 	public function getPlaceId() {
-		$place_id=0;
+		$place_id = 0;
 		foreach (array_reverse($this->gedcom_place) as $place) {
-			$place_id=
-				WT_DB::prepare("SELECT SQL_CACHE p_id FROM `##places` WHERE p_parent_id=? AND p_place=? AND p_file=?")
-				->execute(array($place_id, $place, $this->gedcom_id))
-				->fetchOne();
+			$place_id = WT_DB::prepare(
+				"SELECT SQL_CACHE p_id FROM `##places` WHERE p_parent_id=? AND p_place=? AND p_file=?"
+			)->execute(array($place_id, $place, $this->gedcom_id))->fetchOne();
 		}
+
 		return $place_id;
 	}
 
+	/**
+	 * @return WT_Place
+	 */
 	public function getParentPlace() {
 		return new WT_Place(implode(self::GEDCOM_SEPARATOR, array_slice($this->gedcom_place, 1)), $this->gedcom_id);
 	}
 
+	/**
+	 * @return WT_Place[]
+	 */
 	public function getChildPlaces() {
-		$children=array();
+		$children = array();
 		if ($this->getPlaceId()) {
-			$parent_text=self::GEDCOM_SEPARATOR . $this->getGedcomName();
+			$parent_text = self::GEDCOM_SEPARATOR . $this->getGedcomName();
 		} else {
-			$parent_text='';
+			$parent_text = '';
 		}
 
-		$rows=
+		$rows =
 			WT_DB::prepare("SELECT SQL_CACHE p_place FROM `##places` WHERE p_parent_id=? AND p_file=? ORDER BY p_place COLLATE '".WT_I18N::$collation."'")
 			->execute(array($this->getPlaceId(), $this->gedcom_id))
 			->fetchOneColumn();
 		foreach ($rows as $row) {
-			$children[]=new WT_Place($row . $parent_text, $this->gedcom_id);
+			$children[] = new WT_Place($row . $parent_text, $this->gedcom_id);
 		}
+
 		return $children;
 	}
 
+	/**
+	 * @return string
+	 */
 	public function getURL() {
-		$url='placelist.php';
-		foreach (array_reverse($this->gedcom_place) as $n=>$place) {
-			$url.=$n ? '&amp;' : '?';
-			$url.='parent%5B%5D='.rawurlencode($place);
+		$url = 'placelist.php';
+		foreach (array_reverse($this->gedcom_place) as $n => $place) {
+			$url .= $n ? '&amp;' : '?';
+			$url .= 'parent%5B%5D=' . rawurlencode($place);
 		}
-		$url.='&amp;ged='.rawurlencode(get_gedcom_from_id($this->gedcom_id));
+		$url .= '&amp;ged=' . rawurlencode(get_gedcom_from_id($this->gedcom_id));
+
 		return $url;
 	}
 
+	/**
+	 * @return string
+	 */
 	public function getGedcomName() {
 		return implode(self::GEDCOM_SEPARATOR, $this->gedcom_place);
 	}
 
+	/**
+	 * @return string
+	 */
 	public function getPlaceName() {
-		$place=reset($this->gedcom_place);
-		return $place ? '<span dir="auto">'.WT_Filter::escapeHtml($place).'</span>' : WT_I18N::translate('unknown');
+		$place = reset($this->gedcom_place);
+
+		return $place ? '<span dir="auto">' . WT_Filter::escapeHtml($place) . '</span>' : WT_I18N::translate('unknown');
 	}
 
+	/**
+	 * @return bool
+	 */
 	public function isEmpty() {
 		return empty($this->gedcom_place);
 	}
 
+	/**
+	 * @return string
+	 */
 	public function getFullName() {
 		if (true) {
 			// If a place hierarchy is a single entity
@@ -104,7 +136,11 @@ class WT_Place {
 		}
 	}
 
-	// For lists and charts, where the full name won’t fit.
+	/**
+	 * For lists and charts, where the full name won’t fit.
+	 *
+	 * @return string
+	 */
 	public function getShortName() {
 		global $SHOW_PEDIGREE_PLACES, $SHOW_PEDIGREE_PLACES_SUFFIX;
 
@@ -125,15 +161,25 @@ class WT_Place {
 		}
 	}
 
-	// For the "view all" option of placelist.php and find.php
+	/**
+	 * For the "view all" option of placelist.php and find.php
+	 *
+	 * @return string
+	 */
 	public function getReverseName() {
-		$tmp=array();
+		$tmp = array();
 		foreach (array_reverse($this->gedcom_place) as $place) {
-			$tmp[]='<span dir="auto">' . WT_Filter::escapeHtml($place) . '</span>';
+			$tmp[] = '<span dir="auto">' . WT_Filter::escapeHtml($place) . '</span>';
 		}
+
 		return implode(WT_I18N::$list_separator, $tmp);
 	}
 
+	/**
+	 * @param integer $gedcom_id
+	 *
+	 * @return string[]
+	 */
 	public static function allPlaces($gedcom_id) {
 		$places=array();
 		$rows=
@@ -159,6 +205,12 @@ class WT_Place {
 		return $places;
 	}
 
+	/**
+	 * @param string  $filter
+	 * @param integer $gedcom_id
+	 *
+	 * @return WT_Place[]
+	 */
 	public static function findPlaces($filter, $gedcom_id) {
 		$places=array();
 		$rows=
