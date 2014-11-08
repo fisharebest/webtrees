@@ -49,7 +49,7 @@ class WT_Controller_Base {
 	 *
 	 * @param string $script_name
 	 *
-	 * @return WT_Controller_Base
+	 * @return $this
 	 */
 	public function addExternalJavascript($script_name) {
 		$this->external_javascript[$script_name] = true;
@@ -65,7 +65,7 @@ class WT_Controller_Base {
 	 * @param string  $script
 	 * @param integer $priority
 	 *
-	 * @return WT_Controller_Base
+	 * @return $this
 	 */
 	public function addInlineJavascript($script, $priority = self::JS_PRIORITY_NORMAL) {
 		if (WT_DEBUG) {
@@ -125,7 +125,7 @@ class WT_Controller_Base {
 	/**
 	 * Print the page header, using the theme
 	 *
-	 * @return WT_Controller_Base
+	 * @return $this
 	 */
 	public function pageHeader() {
 		// Once we've displayed the header, we should no longer write session data.

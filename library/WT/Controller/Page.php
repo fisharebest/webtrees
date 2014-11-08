@@ -53,7 +53,7 @@ class WT_Controller_Page extends WT_Controller_Base {
 	 *
 	 * @param string  $page_title
 	 *
-	 * @return WT_Controller_Page
+	 * @return $this
 	 */
 	public function setPageTitle($page_title) {
 		$this->page_title = $page_title;
@@ -88,7 +88,7 @@ class WT_Controller_Page extends WT_Controller_Base {
 	 *
 	 * @param string $meta_robots
 	 *
-	 * @return WT_Controller_Page
+	 * @return $this
 	 */
 	public function setMetaRobots($meta_robots) {
 		$this->meta_robots = $meta_robots;
@@ -101,7 +101,7 @@ class WT_Controller_Page extends WT_Controller_Base {
 	 *
 	 * @param boolean $condition
 	 *
-	 * @return WT_Controller_Page
+	 * @return $this
 	 */
 	public function restrictAccess($condition) {
 		if ($condition !== true) {
@@ -115,7 +115,7 @@ class WT_Controller_Page extends WT_Controller_Base {
 	/**
 	 * Print the page header, using the theme
 	 *
-	 * @return WT_Controller_Page
+	 * @return $this
 	 */
 	public function pageHeader() {
 		// Import global variables into the local scope, for the theme’s header.php
@@ -185,7 +185,7 @@ class WT_Controller_Page extends WT_Controller_Base {
 	/**
 	 * Print the page footer, using the theme
 	 *
-	 * @return WT_Controller_Page
+	 * @return $this
 	 */
 	protected function pageFooter() {
 		global $footerfile, $WT_TREE, $TEXT_DIRECTION, $view;
