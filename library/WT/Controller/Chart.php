@@ -27,7 +27,7 @@ class WT_Controller_Chart extends WT_Controller_Page {
 	public $error_message;
 
 	/**
-	 *
+	 * Create the chart controller
 	 */
 	public function __construct() {
 		parent::__construct();

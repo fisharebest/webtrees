@@ -209,7 +209,7 @@ class WT_Place {
 	 * @param string  $filter
 	 * @param integer $gedcom_id
 	 *
-	 * @return string[]
+	 * @return WT_Place[]
 	 */
 	public static function findPlaces($filter, $gedcom_id) {
 		$places=array();
