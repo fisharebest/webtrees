@@ -2487,7 +2487,7 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 			// Mother gives her surname to her children
 			switch ($nextaction) {
 			case 'add_child_to_family_action':
-				if (preg_match('/\/((?:[a-z]{2,3} )*)(.*)\//i', $mother, $match)) {
+				if (preg_match('/\/((?:[a-z]{2,3} )*)(.*)\//i', $mother_name, $match)) {
 					$name_fields['SURN']=$match[2];
 					$name_fields['SPFX']=trim($match[1]);
 					$name_fields['NAME']="/{$match[1]}{$match[2]}/";
