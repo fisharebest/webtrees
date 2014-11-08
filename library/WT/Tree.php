@@ -413,7 +413,7 @@ class WT_Tree {
 		$tree->setPreference('WEBMASTER_USER_ID', Auth::id());
 		$tree->setPreference('WEBTREES_EMAIL', '');
 		$tree->setPreference('WORD_WRAPPED_NOTES', '0');
-		$tree->setPreference('imported', 0);
+		$tree->setPreference('imported', '0');
 		$tree->setPreference('title',                        /* I18N: Default title for new family trees */ WT_I18N::translate('My family tree'));
 
 		// Default restriction settings

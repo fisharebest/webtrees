@@ -28,8 +28,8 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 	var $pids = array();
 	var $people = array();
 	var $place = '';
-	var $beginYear = '';
-	var $endYear = '';
+	var $beginYear = 0;
+	var $endYear = 0;
 	var $scale = 2;
 	var $YrowLoc = 125;
 	var $minYear = 0;
