@@ -1910,7 +1910,7 @@ function footnoteTextsStartHandler() {
  */
 function ageAtDeathStartHandler() {
 	// TODO: This duplicates functionality in format_fact_date()
-	global $currentElement, $gedrec;
+	global $currentElement, $gedrec, $factrec;
 
 	$match = array();
 	if (preg_match("/0 @(.+)@/", $gedrec, $match)) {
