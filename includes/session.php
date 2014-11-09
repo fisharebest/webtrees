@@ -40,7 +40,7 @@ global $controller;
 
 // Identify ourself
 define('WT_WEBTREES', 'webtrees');
-define('WT_VERSION',  '1.6.1-dev');
+define('WT_VERSION',  '1.6.1');
 
 // External URLs
 define('WT_WEBTREES_URL',  'http://www.webtrees.net/');
