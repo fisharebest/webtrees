@@ -34,6 +34,10 @@ body {
 	margin: 0;
 }
 
+:focus {
+	outline-style: none;
+}
+
 .submenu {
 	background-color: #eee;
 	border: thin solid #aaa;
@@ -75,7 +79,7 @@ fieldset,
 }
 
 img.block {
-	border: none;
+	border: 0;
 	height: 20px;
 	vertical-align: middle;
 }
@@ -126,16 +130,12 @@ a.gallery img {
 
 input:required:valid,
 textarea:required:valid {
-	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAONJREFUeNpi/P//PwMlgImBQjDwBrCgCzDOF2Zg+Adk/AOGDRvQfHZGoDWMxgyMDMb/Q1/NIt0F/xk8gIbNZPj7P41YL4AUGsM1//rfkuyeYMzw8z9xXgBqgNm0nuHnv0D/IH/juavmngV6oYY4F3z7y2DqY2oMpANB9MYl684yfP9Xw3Dzzw7sXgQmJGTM0MbjwdDKc0b2vt5/EM2QwunBoMyCVS1YPYYAMOwZ7FmiGLLYzjBYsSQD+QpALAjErNgMYERPyoyMjMxAih+IOYD4LxD/hOJfQLV/MaJ9NC8wAAQYAPbPfH2KJKx/AAAAAElFTkSuQmCC);
-	background-position: right top;
-	background-repeat: no-repeat;
+	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAONJREFUeNpi/P//PwMlgImBQjDwBrCgCzDOF2Zg+Adk/AOGDRvQfHZGoDWMxgyMDMb/Q1/NIt0F/xk8gIbNZPj7P41YL4AUGsM1//rfkuyeYMzw8z9xXgBqgNm0nuHnv0D/IH/juavmngV6oYY4F3z7y2DqY2oMpANB9MYl684yfP9Xw3Dzzw7sXgQmJGTM0MbjwdDKc0b2vt5/EM2QwunBoMyCVS1YPYYAMOwZ7FmiGLLYzjBYsSQD+QpALAjErNgMYERPyoyMjMxAih+IOYD4LxD/hOJfQLV/MaJ9NC8wAAQYAPbPfH2KJKx/AAAAAElFTkSuQmCC) no-repeat right top;
 }
 
 input:required:invalid,
 textarea:required:invalid {
-	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAMpJREFUeNpi/P//PwMlgImBQjAMDGBBF1jFyOgBpFqAuOYPA8MOoAI4P+z//x0YJoBiARkvYWA486+k5D+IBuJqZD66WnAMogvMA9o4F6j4R3Lyf2R6IQODMVEGTAW6CoirgfjMB2/v/yB6CgNDYQ8W14IwRiB+A7rgOwNDYLChofGcrVvPgugfDAzR/yFhwUAwDJqBNj6Ulf0PooEhV4jMx+YCRvSknAeMBWDotwgwMKRzMTCcfQW0GcQHxkbNJCyxwDiaFxgAAgwAYy67YIOQ//cAAAAASUVORK5CYII=);
-	background-position: right top;
-	background-repeat: no-repeat;
+	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAMpJREFUeNpi/P//PwMlgImBQjAMDGBBF1jFyOgBpFqAuOYPA8MOoAI4P+z//x0YJoBiARkvYWA486+k5D+IBuJqZD66WnAMogvMA9o4F6j4R3Lyf2R6IQODMVEGTAW6CoirgfjMB2/v/yB6CgNDYQ8W14IwRiB+A7rgOwNDYLChofGcrVvPgugfDAzR/yFhwUAwDJqBNj6Ulf0PooEhV4jMx+YCRvSknAeMBWDotwgwMKRzMTCcfQW0GcQHxkbNJCyxwDiaFxgAAgwAYy67YIOQ//cAAAAASUVORK5CYII=) no-repeat right top;
 }
 
 [dir=rtl] input:required:valid,
@@ -227,7 +227,7 @@ textarea:required:invalid {
 #link_change_blocks {
 	clear: both;
 	margin: 0 auto;
-	padding: 25px 0 0 0;
+	padding: 25px 0 0;
 	text-align: center;
 	width: 400px;
 }
@@ -390,7 +390,7 @@ textarea:required:invalid {
 #relatives_content .person_box > .person_box,
 #relatives_content .person_boxF > .person_boxF,
 #relatives_content .person_boxNN > .person_boxNN {
-	border: none;
+	border: 0;
 	min-height: 50px;
 }
 
@@ -571,9 +571,9 @@ div.fact_SHARED_NOTE {
 	text-align: center;
 }
 
-#familybook_chart .person_box, 
-	#familybook_chart .person_boxF, 
-	#familybook_chart .person_boxNN {
+#familybook_chart .person_box,
+#familybook_chart .person_boxF,
+#familybook_chart .person_boxNN {
 	padding: 3px;
 }
 
@@ -582,7 +582,7 @@ div.fact_SHARED_NOTE {
 }
 
 #relationship_chart {
-	margin: 0 20px 0;
+	margin: 0 20px;
 }
 
 .tdtop {
@@ -713,8 +713,7 @@ div.fact_SHARED_NOTE {
 	border: thin solid #aaa;
 	background-color: #fff;
 	z-index: 99999;
-	list-style-position: outside;
-	list-style: none;
+	list-style: none outside none;
 	margin: 0;
 	max-height: 200px;
 	overflow-y: auto;
@@ -843,15 +842,10 @@ div.fact_SHARED_NOTE {
 }
 
 #descendancy_chart ul {
-	background-image: url(images/vline.png);
-	background-repeat: repeat-y;
-	background-position: left top;
+	background: url(images/vline.png) repeat-y left top;
 	list-style: none;
 	margin: 0 0 5px 15px;
-	padding-top: 0;
-	padding-right: 15px;
-	padding-bottom: 0;
-	padding-left: 15px;
+	padding: 0 15px;
 }
 
 #descendancy_chart li {
@@ -864,7 +858,15 @@ div.fact_SHARED_NOTE {
 
 li .person_box,
 li .person_boxF {
-	margin: 3px 0 3px 0;
+	margin: 3px 0;
+}
+
+#descendancy_chart span.details1 div[class^="fact_"] {
+	display: inline-block;
+}
+
+#descendancy_chart td.details1 {
+	padding-top: 5px;
 }
 
 /*-- descendancy chart rtl specific stylesheets --*/
@@ -882,16 +884,11 @@ li .person_boxF {
 
 /*-- ancestry chart specific stylesheets --*/
 #ancestry_chart ul {
-	background-image: url(images/vline.png);
-	background-repeat: repeat-y;
-	background-position: left top;
+	background: url(images/vline.png) repeat-y left top;
 	list-style: none;
 	display: block;
 	margin: 0 0 0 15px;
-	padding-top: 0;
-	padding-right: 15px;
-	padding-bottom: 0;
-	padding-left: 15px;
+	padding: 0 15px;
 }
 
 #ancestry_chart li {
@@ -913,6 +910,10 @@ li .person_boxF {
 	left: auto;
 }
 
+#ancestry_chart span.details1 div[class^="fact_"] {
+	display: inline-block;
+}
+
 [dir=rtl] #ancestry_chart li {
 	margin: 0 -13px 0 0;
 	padding: 0 2px 0 0;
@@ -929,8 +930,8 @@ li .person_boxF {
 
 .fan_chart_menu {
 	position: absolute;
-	display:  none;
-	z-index:  100;
+	display: none;
+	z-index: 100;
 }
 
 #fan_chart ul {
@@ -1207,7 +1208,7 @@ dt {
 
 .box-style0-expanded,
 .box-style1-expanded {
-	width: 300px!important;
+	width: 300px !important;
 }
 
 .person_box_template {
@@ -1383,7 +1384,7 @@ dt {
 	border: 1px solid #aaa;
 	border-radius: 4px;
 	display: inline-block;
-	margin: 10px auto 0 auto;
+	margin: 10px auto 0;
 	padding: 5px;
 }
 
@@ -1532,7 +1533,7 @@ dt {
 }
 
 .add_fav_head i {
-	margin: 0 5px 1px 5px;
+	margin: 0 5px 1px;
 }
 
 .add_fav_ref label {
@@ -1718,7 +1719,6 @@ div.faq_body {
 	float: left;
 }
 
-
 ul.clist {
 	list-style-image: none;
 	text-decoration: none;
@@ -1825,7 +1825,7 @@ span.link_text {
 }
 
 #indi_note {
-	margin: 0 0 5px 0;
+	margin: 0 0 5px;
 }
 
 #indi_note .fact_NOTE {
@@ -1975,7 +1975,6 @@ dd .deletelink {
 	margin: 5px 3px 5px 0;
 	clear: both;
 }
-
 
 .facts_table .field em {
 	margin-top: 0;
@@ -2148,7 +2147,7 @@ dd .deletelink {
 
 .upcoming_events_block .dataTables_info,
 .todays_events_block .dataTables_info {
-	padding: 2px 0 0 0;
+	padding: 2px 0 0;
 }
 
 .upcoming_events_block button,
@@ -2408,7 +2407,7 @@ dd .deletelink {
 #main {
 	min-width: 600px;
 	width: 100%;
-	padding: 3px 0 0 0;
+	padding: 3px 0 0;
 	display: table;
 	table-layout: fixed;
 }
@@ -2435,28 +2434,28 @@ dd .deletelink {
 }
 
 #separator {
-	display:          table-cell;
-	width:            2.5em;
-	position:         relative;
+	display: table-cell;
+	width: 2.5em;
+	position: relative;
 	background-color: transparent;
 	overflow: hidden;
 }
 
 #separator:after {
-	position:                absolute;
-	top:                     0;
-	left:                    auto;
-	right:                   0;
-	width:                   10px;
-	height:                  99999px;
-	content:                 "";
+	position: absolute;
+	top: 0;
+	left: auto;
+	right: 0;
+	width: 10px;
+	height: 99999px;
+	content: "";
 	border: 1px solid #aaa;
 	border-top-left-radius: 4px;
 	border-top-right-radius: 4px;
 }
 
 [dir=rtl] #separator:after {
-	left:  0;
+	left: 0;
 	right: auto;
 }
 
@@ -2727,14 +2726,14 @@ fieldset {
 
 #find-output .find-media-details p {
 	border: 0;
-	padding: 0 5px 2px 5px;
+	padding: 0 5px 2px;
 	font-weight: normal;
 	text-align: left;
 }
 
 #find-output .find-media-details div span {
 	font-weight: normal;
-	padding: 0 5px 2px 5px;
+	padding: 0 5px 2px;
 }
 
 #find-output p.find-media-title {
@@ -2743,7 +2742,7 @@ fieldset {
 
 #find-output .find-media-details ul {
 	padding: 0;
-	margin: 0 20px 10px 20px;
+	margin: 0 20px 10px;
 	list-style-type: none;
 }
 
@@ -2844,7 +2843,7 @@ fieldset {
 
 /* ======= Who is online block ========== */
 .logged_in_list {
-	margin: 5px 0 0 0;
+	margin: 5px 0 0;
 	padding: 0;
 	line-height: 20px;
 }
@@ -2853,7 +2852,7 @@ fieldset {
 [class^="icon-"],
 [class*=" icon-"] {
 	display: inline-block;
-	vertical-align: text-bottom;
+	vertical-align: middle;
 	background-repeat: no-repeat;
 }
 
@@ -3437,9 +3436,7 @@ a.icon-uarrow:hover {
 [class^="icon-mime-"],
 [class*=" icon-mime-"] {
 	display: inline-block;
-	background-image: url(images/icon-mime-sprite.png);
-	background-color: transparent;
-	background-repeat: no-repeat;
+	background: transparent url(images/icon-mime-sprite.png) no-repeat;
 	width: 48px;
 	height: 48px;
 }

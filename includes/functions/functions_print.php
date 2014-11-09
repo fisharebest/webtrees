@@ -7,7 +7,7 @@
 // Copyright (C) 2014 webtrees development team.
 //
 // Derived from PhpGedView
-// Copyright (C) 2002 to 2010 PGV Development Team.  All rights reserved.
+// Copyright (C) 2002 to 2010 PGV Development Team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -306,11 +306,11 @@ function whoisonline() {
 	}
 	$content .= '</div>';
 	$content .= '<div class="logged_in_list">';
-	if (WT_USER_ID) {
+	if (Auth::check()) {
 		foreach ($loggedusers as $user) {
 			$content .= '<div class="logged_in_name">';
 			$content .= WT_Filter::escapeHtml($user->getRealName()) . ' - ' . WT_Filter::escapeHtml($user->getUserName());
-			if (WT_USER_ID != $user->getUserId() && $user->getPreference('contactmethod') != 'none') {
+			if (Auth::id() != $user->getUserId() && $user->getPreference('contactmethod') != 'none') {
 				$content .= ' <a class="icon-email" href="#" onclick="return message(\'' . WT_Filter::escapeJs($user->getUserName()) . '\', \'\', \'' . WT_Filter::escapeJs(get_query_url()) . '\');" title="' . WT_I18N::translate('Send a message').'"></a>';
 			}
 			$content .= '</div>';
@@ -1078,7 +1078,7 @@ function print_findindi_link($element_id, $indiname='', $ged=WT_GEDCOM) {
  * @return string
  */
 function print_findplace_link($element_id) {
-	return '<a href="#" onclick="findPlace(document.getElementById(\''.$element_id.'\'), \''.WT_GEDURL.'\'); return false;" class="icon-button_place" title="'.WT_I18N::translate('Find a place').'"></a>';
+	return '<a href="#" onclick="findPlace(document.getElementById(\''.$element_id.'\'), WT_GEDCOM); return false;" class="icon-button_place" title="'.WT_I18N::translate('Find a place').'"></a>';
 }
 
 /**
@@ -1087,7 +1087,7 @@ function print_findplace_link($element_id) {
  * @return string
  */
 function print_findfamily_link($element_id) {
-	return '<a href="#" onclick="findFamily(document.getElementById(\''.$element_id.'\'), \''.WT_GEDURL.'\'); return false;" class="icon-button_family" title="'.WT_I18N::translate('Find a family').'"></a>';
+	return '<a href="#" onclick="findFamily(document.getElementById(\''.$element_id.'\'), WT_GEDCOM); return false;" class="icon-button_family" title="'.WT_I18N::translate('Find a family').'"></a>';
 }
 
 /**
@@ -1120,7 +1120,7 @@ function print_autopaste_link($element_id, $choices) {
  * @return string
  */
 function print_findsource_link($element_id, $sourcename='') {
-	return '<a href="#" onclick="findSource(document.getElementById(\''.$element_id.'\'), document.getElementById(\''.$sourcename.'\'), \''.WT_GEDURL.'\'); return false;" class="icon-button_source" title="'.WT_I18N::translate('Find a source').'"></a>';
+	return '<a href="#" onclick="findSource(document.getElementById(\''.$element_id.'\'), document.getElementById(\''.$sourcename.'\'), WT_GEDCOM); return false;" class="icon-button_source" title="'.WT_I18N::translate('Find a source').'"></a>';
 }
 
 /**
@@ -1130,7 +1130,7 @@ function print_findsource_link($element_id, $sourcename='') {
  * @return string
  */
 function print_findnote_link($element_id, $notename='') {
-	return '<a href="#" onclick="findnote(document.getElementById(\''.$element_id.'\'), document.getElementById(\''.$notename.'\'), \''.WT_GEDURL.'\'); return false;" class="icon-button_note" title="'.WT_I18N::translate('Find a shared note').'"></a>';
+	return '<a href="#" onclick="findnote(document.getElementById(\''.$element_id.'\'), document.getElementById(\''.$notename.'\'), \'WT_GEDCOM\'); return false;" class="icon-button_note" title="'.WT_I18N::translate('Find a shared note').'"></a>';
 }
 
 /**
@@ -1139,7 +1139,7 @@ function print_findnote_link($element_id, $notename='') {
  * @return string
  */
 function print_findrepository_link($element_id) {
-	return '<a href="#" onclick="findRepository(document.getElementById(\''.$element_id.'\'), \''.WT_GEDURL.'\'); return false;" class="icon-button_repository" title="'.WT_I18N::translate('Find a repository').'"></a>';
+	return '<a href="#" onclick="findRepository(document.getElementById(\''.$element_id.'\'), WT_GEDCOM); return false;" class="icon-button_repository" title="'.WT_I18N::translate('Find a repository').'"></a>';
 }
 
 /**
@@ -1149,7 +1149,7 @@ function print_findrepository_link($element_id) {
  * @return string
  */
 function print_findmedia_link($element_id, $choose='') {
-	return '<a href="#" onclick="findMedia(document.getElementById(\''.$element_id.'\'), \''.$choose.'\', \''.WT_GEDURL.'\'); return false;" class="icon-button_media" title="'.WT_I18N::translate('Find a media object').'"></a>';
+	return '<a href="#" onclick="findMedia(document.getElementById(\''.$element_id.'\'), \''.$choose.'\', WT_GEDCOM); return false;" class="icon-button_media" title="'.WT_I18N::translate('Find a media object').'"></a>';
 }
 
 /**
@@ -1158,7 +1158,7 @@ function print_findmedia_link($element_id, $choose='') {
  * @return string
  */
 function print_findfact_link($element_id) {
-	return '<a href="#" onclick="findFact(document.getElementById(\''.$element_id.'\'), \''.WT_GEDURL.'\'); return false;" class="icon-button_find_facts" title="'.WT_I18N::translate('Find a fact or event').'"></a>';
+	return '<a href="#" onclick="findFact(document.getElementById(\''.$element_id.'\'), WT_GEDCOM); return false;" class="icon-button_find_facts" title="'.WT_I18N::translate('Find a fact or event').'"></a>';
 }
 
 /**

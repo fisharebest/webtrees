@@ -1,6 +1,4 @@
 <?php
-// Send mail messages
-//
 // webtrees: Web based Family History software
 // Copyright (c) 2014 webtrees development team
 //
@@ -21,6 +19,9 @@
 use WT\Log;
 use WT\User;
 
+/**
+ * Class WT_Mail - Send mail messages
+ */
 class WT_Mail {
 	const EOL = "<br>\r\n"; // End-of-line that works for both TEXT and HTML messages
 

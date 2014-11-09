@@ -8,7 +8,7 @@
 // Copyright (C) 2014 webtrees development team.
 //
 // Derived from PhpGedView
-// Copyright (C) 2002 to 2010 PGV Development Team.  All rights reserved.
+// Copyright (C) 2002 to 2010 PGV Development Team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -23,6 +23,8 @@
 // You should have received a copy of the GNU General Public License
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+
+use WT\Auth;
 
 define('WT_SCRIPT_NAME', 'statistics.php');
 require './includes/session.php';
@@ -168,7 +170,7 @@ if (!$ajax) {
 			</tr>
 		</table>
 		<br>';
-		if (WT_USER_ID) {
+		if (Auth::check()) {
 			echo '<b>', WT_I18N::translate('Oldest living individuals'), '</b>
 			<table class="facts_table">
 				<tr>

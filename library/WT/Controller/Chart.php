@@ -1,6 +1,4 @@
 <?php
-// Base controller for all chart pages
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -18,6 +16,9 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class WT_Controller_Chart - Base controller for all chart pages
+ */
 class WT_Controller_Chart extends WT_Controller_Page {
 	/** @var WT_Individual Who is chart about? */
 	public $root;
@@ -26,7 +27,7 @@ class WT_Controller_Chart extends WT_Controller_Page {
 	public $error_message;
 
 	/**
-	 *
+	 * Create the chart controller
 	 */
 	public function __construct() {
 		parent::__construct();
@@ -44,6 +45,12 @@ class WT_Controller_Chart extends WT_Controller_Page {
 		}
 	}
 
+	/**
+	 * Get significant information from this page, to allow other pages such as
+	 * charts and reports to initialise with the same records
+	 *
+	 * @return WT_Individual
+	 */
 	public function getSignificantIndividual() {
 		if ($this->root) {
 			return $this->root;

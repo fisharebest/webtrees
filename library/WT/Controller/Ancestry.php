@@ -1,6 +1,4 @@
 <?php
-// Controller for the ancestry chart
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -21,6 +19,9 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class WT_Controller_Ancestry - Controller for the ancestry chart
+ */
 class WT_Controller_Ancestry extends WT_Controller_Chart {
 	var $pid = '';
 	var $user = false;
@@ -33,6 +34,9 @@ class WT_Controller_Ancestry extends WT_Controller_Chart {
 	var $show_full;
 	var $cellwidth;
 
+	/**
+	 * Startup activity
+	 */
 	function __construct() {
 		global $bwidth, $bheight, $cbwidth, $cbheight, $pbwidth, $pbheight, $PEDIGREE_FULL_DETAILS;
 		global $DEFAULT_PEDIGREE_GENERATIONS, $PEDIGREE_GENERATIONS, $MAX_PEDIGREE_GENERATIONS, $OLD_PGENS, $box_width, $Dbwidth, $Dbheight;

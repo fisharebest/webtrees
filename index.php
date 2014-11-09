@@ -6,7 +6,7 @@
 // Copyright (C) 2014 webtrees development team.
 //
 // Derived from PhpGedView
-// Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.
+// Copyright (C) 2002 to 2009 PGV Development Team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -39,7 +39,7 @@ if (Auth::check()) {
 
 // Get the blocks list
 if ($ctype === 'user') {
-	$blocks = get_user_blocks(WT_USER_ID);
+	$blocks = get_user_blocks(Auth::id());
 } else {
 	$blocks = get_gedcom_blocks(WT_GED_ID);
 }
@@ -143,7 +143,7 @@ if ($blocks['side']) {
 echo '<div id="link_change_blocks">';
 
 if ($ctype === 'user') {
-	echo '<a href="#" onclick="return modalDialog(\'index_edit.php?user_id=' . WT_USER_ID . '\', \'', WT_I18N::translate('Change the blocks on this page'), '\');">', WT_I18N::translate('Change the blocks on this page'), '</a>';
+	echo '<a href="#" onclick="return modalDialog(\'index_edit.php?user_id=' . Auth::id() . '\', \'', WT_I18N::translate('Change the blocks on this page'), '\');">', WT_I18N::translate('Change the blocks on this page'), '</a>';
 } elseif ($ctype === 'gedcom' && WT_USER_GEDCOM_ADMIN) {
 	echo '<a href="#" onclick="return modalDialog(\'index_edit.php?gedcom_id=' . WT_GED_ID . '\', \'', WT_I18N::translate('Change the blocks on this page'), '\');">', WT_I18N::translate('Change the blocks on this page'), '</a>';
 }

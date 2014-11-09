@@ -5,7 +5,7 @@
 // Copyright (C) 2014 webtrees development team.
 //
 // Derived from PhpGedView
-// Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.
+// Copyright (C) 2002 to 2009 PGV Development Team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -22,6 +22,7 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 use Rhumsaa\Uuid\Uuid;
+use WT\Auth;
 
 /**
  * Create an edit control for inline editing using jeditable.
@@ -147,19 +148,20 @@ function select_edit_control_inline($name, $values, $empty, $selected, WT_Contro
  * @param string   $name      The ID for the form element
  * @param string[] $values    Array of value=>display items
  * @param string   $selected  The currently selected item
+ * @param string   $extra     Additional markup for the label
  *
  * @return string
  */
-function radio_buttons($name, $values, $selected) {
-	$html='';
-	foreach ($values as $key=>$value) {
-		$uniqueID = Uuid::uuid4();
-		$html.='<input type="radio" name="'.$name.'" id="'.$uniqueID.'" value="'.WT_Filter::escapeHtml($key).'"';
-		if ((string)$key===(string)$selected) { // Beware PHP array keys are cast to integers!  Cast them back
-			$html.=' checked';
+function radio_buttons($name, $values, $selected, $extra = '') {
+	$html = '';
+	foreach ($values as $key => $value) {
+		$html .= '<label ' . $extra . '><input type="radio" name="' . $name . '" value="' . WT_Filter::escapeHtml($key) . '"';
+		if ((string)$key === (string)$selected) { // Beware PHP array keys are cast to integers!  Cast them back
+			$html .= ' checked';
 		}
-		$html.='><label for="'.$uniqueID.'">'.WT_Filter::escapeHtml($value).'</label>';
+		$html .= '>' . WT_Filter::escapeHtml($value) . '</label>';
 	}
+
 	return $html;
 }
 
@@ -1760,7 +1762,7 @@ function insert_missing_subtags($level1tag, $add_date=false) {
 			} elseif ($level1tag=='_TODO' && $key=='DATE') {
 				add_simple_tag('2 '.$key.' '.strtoupper(date('d M Y')), $level1tag);
 			} elseif ($level1tag=='_TODO' && $key=='_WT_USER') {
-				add_simple_tag('2 '.$key.' '.WT_USER_NAME, $level1tag);
+				add_simple_tag('2 '.$key.' '.Auth::user()->getUserName(), $level1tag);
 			} else if ($level1tag=='TITL' && strstr($ADVANCED_NAME_FACTS, $key)!==false) {
 				add_simple_tag('2 '.$key, $level1tag);
 			} else if ($level1tag=='NAME' && strstr($ADVANCED_NAME_FACTS, $key)!==false) {

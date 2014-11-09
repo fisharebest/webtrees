@@ -21,6 +21,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+
 class charts_WT_Module extends WT_Module implements WT_Module_Block {
 	// Extend class WT_Module
 	public function getTitle() {
@@ -40,8 +42,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$details = get_block_setting($block_id, 'details', false);
 		$type    = get_block_setting($block_id, 'type', 'pedigree');
-		$pid     = get_block_setting($block_id, 'pid', WT_USER_ID ? (WT_USER_GEDCOM_ID ? WT_USER_GEDCOM_ID : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
-		$block   = get_block_setting($block_id, 'block');
+		$pid     = get_block_setting($block_id, 'pid', Auth::check() ? (WT_USER_GEDCOM_ID ? WT_USER_GEDCOM_ID : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
 		if ($cfg) {
 			foreach (array('details', 'type', 'pid', 'block') as $name) {
 				if (array_key_exists($name, $cfg)) {
@@ -76,7 +77,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$id=$this->getName().$block_id;
 		$class=$this->getName().'_block';
-		if ($ctype=='gedcom' && WT_USER_GEDCOM_ADMIN || $ctype=='user' && WT_USER_ID) {
+		if ($ctype=='gedcom' && WT_USER_GEDCOM_ADMIN || $ctype=='user' && Auth::check()) {
 			$title='<i class="icon-admin" title="'.WT_I18N::translate('Configure').'" onclick="modalDialog(\'block_edit.php?block_id='.$block_id.'\', \''.$this->getTitle().'\');"></i>';
 		} else {
 			$title='';
@@ -140,11 +141,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 
 		if ($template) {
-			if ($block) {
-				require WT_THEME_DIR.'templates/block_small_temp.php';
-			} else {
-				require WT_THEME_DIR.'templates/block_main_temp.php';
-			}
+			require WT_THEME_DIR.'templates/block_main_temp.php';
 		} else {
 			return $content;
 		}
@@ -173,6 +170,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 	// Implement class WT_Module_Block
 	public function configureBlock($block_id) {
 		global $WT_TREE, $ctype, $controller;
+		require_once WT_ROOT.'includes/functions/functions_edit.php';
 
 		$PEDIGREE_ROOT_ID = $WT_TREE->getPreference('PEDIGREE_ROOT_ID');
 
@@ -183,9 +181,9 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 			exit;
 		}
 
-		$details=get_block_setting($block_id, 'details', false);
-		$type   =get_block_setting($block_id, 'type',    'pedigree');
-		$pid    =get_block_setting($block_id, 'pid', WT_USER_ID ? (WT_USER_GEDCOM_ID ? WT_USER_GEDCOM_ID : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
+		$details = get_block_setting($block_id, 'details', false);
+		$type    = get_block_setting($block_id, 'type', 'pedigree');
+		$pid     = get_block_setting($block_id, 'pid', Auth::check() ? (WT_USER_GEDCOM_ID ? WT_USER_GEDCOM_ID : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
 
 		$controller
 			->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
@@ -193,20 +191,18 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 	?>
 		<tr><td class="descriptionbox wrap width33"><?php echo WT_I18N::translate('Chart type'); ?></td>
 		<td class="optionbox">
-			<select name="type">
-				<option value="pedigree"<?php if ($type=="pedigree") echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('Pedigree'); ?></option>
-				<option value="descendants"<?php if ($type=="descendants") echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('Descendants'); ?></option>
-				<option value="hourglass"<?php if ($type=="hourglass") echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('Hourglass chart'); ?></option>
-				<option value="treenav"<?php if ($type=="treenav") echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('Interactive tree'); ?></option>
-			</select>
+			<?php echo select_edit_control('type',
+			array(
+				'pedigree'    => WT_I18N::translate('Pedigree'),
+				'descendants' => WT_I18N::translate('Descendants'),
+				'hourglass'   => WT_I18N::translate('Hourglass chart'),
+				'treenav'     => WT_I18N::translate('Interactive tree')),
+			null, $type); ?>
 		</td></tr>
 		<tr>
 			<td class="descriptionbox wrap width33"><?php echo WT_I18N::translate('Show details'); ?></td>
 		<td class="optionbox">
-			<select name="details">
-					<option value="no" <?php if (!$details) echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('no'); ?></option>
-					<option value="yes" <?php if ($details) echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('yes'); ?></option>
-			</select>
+			<?php echo edit_field_yes_no('details', $details); ?>
 			</td>
 		</tr>
 		<tr>
@@ -223,14 +219,5 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 			</td>
 		</tr>
 		<?php
-
-		require_once WT_ROOT.'includes/functions/functions_edit.php';
-
-		$block=get_block_setting($block_id, 'block', false);
-		echo '<tr><td class="descriptionbox wrap width33">';
-		echo /* I18N: label for a yes/no option */ WT_I18N::translate('Add a scrollbar when block contents grow');
-		echo '</td><td class="optionbox">';
-		echo edit_field_yes_no('block', $block);
-		echo '</td></tr>';
 	}
 }

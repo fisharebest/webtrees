@@ -5,7 +5,7 @@
 // Copyright (C) 2014 webtrees development team.
 //
 // Derived from PhpGedView
-// Copyright (C) 2002 to 2011 PGV Development Team.  All rights reserved.
+// Copyright (C) 2002 to 2011 PGV Development Team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -40,7 +40,7 @@ global $controller;
 
 // Identify ourself
 define('WT_WEBTREES', 'webtrees');
-define('WT_VERSION',  '1.6.1-dev');
+define('WT_VERSION',  '1.6.2-dev');
 
 // External URLs
 define('WT_WEBTREES_URL',  'http://www.webtrees.net/');
@@ -467,8 +467,9 @@ if (!$SEARCH_SPIDER && !$WT_SESSION->initiated) {
 	// An existing session
 }
 
-// Who are we?
-define('WT_USER_ID',   Auth::id());
+/** @deprecated Will be removed in 1.7.0 */
+define('WT_USER_ID', Auth::id());
+/** @deprecated Will be removed in 1.7.0 */
 define('WT_USER_NAME', Auth::id() ? Auth::user()->getUserName() : '');
 
 // Set the active GEDCOM
@@ -548,7 +549,7 @@ define('WT_TIMESTAMP', (int)WT_DB::prepare("SELECT UNIX_TIMESTAMP()")->fetchOne(
 // Server timezone is defined in php.ini
 define('WT_SERVER_TIMESTAMP', WT_TIMESTAMP + (int)date('Z'));
 
-if (WT_USER_ID) {
+if (Auth::check()) {
 	define('WT_CLIENT_TIMESTAMP', WT_TIMESTAMP - $WT_SESSION->timediff);
 } else {
 	define('WT_CLIENT_TIMESTAMP', WT_SERVER_TIMESTAMP);

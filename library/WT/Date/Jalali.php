@@ -1,12 +1,4 @@
 <?php
-// Classes for Gedcom Date/Calendar functionality.
-//
-// Definitions for the Jalali calendar
-//
-// NOTE: Since different calendars start their days at different times, (civil
-// midnight, solar midnight, sunset, sunrise, etc.), we convert on the basis of
-// midday.
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 Greg Roach
 //
@@ -26,6 +18,9 @@
 
 use Fisharebest\ExtCalendar\PersianCalendar;
 
+/**
+ * Class WT_Date_Jalali - Definitions for the Jalali calendar
+ */
 class WT_Date_Jalali extends WT_Date_Calendar {
 	const CALENDAR_ESCAPE = '@#DJALALI@';
 	const CAL_START_JD = 1948321;

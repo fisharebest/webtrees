@@ -1,6 +1,4 @@
 <?php
-// Controller for the timeline chart
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -21,6 +19,9 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class WT_Controller_Timeline - Controller for the timeline chart
+ */
 class WT_Controller_Timeline extends WT_Controller_Page {
 	var $bheight = 30;
 	var $placements = array();
@@ -38,6 +39,9 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 	// GEDCOM elements that may have DATE data, but should not be displayed
 	private $nonfacts = array('BAPL', 'ENDL', 'SLGC', 'SLGS', '_TODO', 'CHAN');
 
+	/**
+	 * Startup activity
+	 */
 	function __construct() {
 		parent::__construct();
 
@@ -130,6 +134,9 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 		$this->topyear += 5;
 	}
 
+	/**
+	 * @param WT_Fact $event
+	 */
 	function print_time_fact(WT_Fact $event) {
 		global $basexoffset, $baseyoffset, $factcount, $TEXT_DIRECTION, $WT_IMAGES, $placements;
 
@@ -173,7 +180,16 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 			echo 'right: 3px;">';
 		}
 
-		$col = array_search($event->getParent(), $this->people) % 6;
+		$col = array_search($event->getParent(), $this->people);
+		if ($col === false) {
+			// Marriage event - use the color of the husband
+			$col = array_search($event->getParent()->getHusband(), $this->people);
+		}
+		if ($col === false) {
+			// Marriage event - use the color of the wife
+			$col = array_search($event->getParent()->getWife(), $this->people);
+		}
+		$col = $col % 6;
 		echo '</td><td valign="top" class="person' . $col . '">';
 		if (count($this->pids) > 6) {
 			echo $event->getParent()->getFullName() . ' — ';
@@ -238,6 +254,12 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 		echo '</div>';
 	}
 
+	/**
+	 * Get significant information from this page, to allow other pages such as
+	 * charts and reports to initialise with the same records
+	 *
+	 * @return WT_Individual
+	 */
 	public function getSignificantIndividual() {
 		if ($this->pids) {
 			return WT_Individual::getInstance($this->pids[0]);

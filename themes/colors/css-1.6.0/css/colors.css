@@ -6,7 +6,7 @@
 *
 * Derived from PhpGedView Cloudy theme
 * Original author w.a. bastein http://genealogy.bastein.biz
-* Copyright (C) 2010 PGV Development Team.  All rights reserved.
+* Copyright (C) 2010 PGV Development Team.
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -125,16 +125,12 @@ td {
 
 input:required:valid,
 textarea:required:valid {
-	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAONJREFUeNpi/P//PwMlgImBQjDwBrCgCzDOF2Zg+Adk/AOGDRvQfHZGoDWMxgyMDMb/Q1/NIt0F/xk8gIbNZPj7P41YL4AUGsM1//rfkuyeYMzw8z9xXgBqgNm0nuHnv0D/IH/juavmngV6oYY4F3z7y2DqY2oMpANB9MYl684yfP9Xw3Dzzw7sXgQmJGTM0MbjwdDKc0b2vt5/EM2QwunBoMyCVS1YPYYAMOwZ7FmiGLLYzjBYsSQD+QpALAjErNgMYERPyoyMjMxAih+IOYD4LxD/hOJfQLV/MaJ9NC8wAAQYAPbPfH2KJKx/AAAAAElFTkSuQmCC);
-	background-position: right top;
-	background-repeat: no-repeat;
+	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAONJREFUeNpi/P//PwMlgImBQjDwBrCgCzDOF2Zg+Adk/AOGDRvQfHZGoDWMxgyMDMb/Q1/NIt0F/xk8gIbNZPj7P41YL4AUGsM1//rfkuyeYMzw8z9xXgBqgNm0nuHnv0D/IH/juavmngV6oYY4F3z7y2DqY2oMpANB9MYl684yfP9Xw3Dzzw7sXgQmJGTM0MbjwdDKc0b2vt5/EM2QwunBoMyCVS1YPYYAMOwZ7FmiGLLYzjBYsSQD+QpALAjErNgMYERPyoyMjMxAih+IOYD4LxD/hOJfQLV/MaJ9NC8wAAQYAPbPfH2KJKx/AAAAAElFTkSuQmCC) no-repeat right top;
 }
 
 input:required:invalid,
 textarea:required:invalid {
-	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAMpJREFUeNpi/P//PwMlgImBQjAMDGBBF1jFyOgBpFqAuOYPA8MOoAI4P+z//x0YJoBiARkvYWA486+k5D+IBuJqZD66WnAMogvMA9o4F6j4R3Lyf2R6IQODMVEGTAW6CoirgfjMB2/v/yB6CgNDYQ8W14IwRiB+A7rgOwNDYLChofGcrVvPgugfDAzR/yFhwUAwDJqBNj6Ulf0PooEhV4jMx+YCRvSknAeMBWDotwgwMKRzMTCcfQW0GcQHxkbNJCyxwDiaFxgAAgwAYy67YIOQ//cAAAAASUVORK5CYII=);
-	background-position: right top;
-	background-repeat: no-repeat;
+	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAMpJREFUeNpi/P//PwMlgImBQjAMDGBBF1jFyOgBpFqAuOYPA8MOoAI4P+z//x0YJoBiARkvYWA486+k5D+IBuJqZD66WnAMogvMA9o4F6j4R3Lyf2R6IQODMVEGTAW6CoirgfjMB2/v/yB6CgNDYQ8W14IwRiB+A7rgOwNDYLChofGcrVvPgugfDAzR/yFhwUAwDJqBNj6Ulf0PooEhV4jMx+YCRvSknAeMBWDotwgwMKRzMTCcfQW0GcQHxkbNJCyxwDiaFxgAAgwAYy67YIOQ//cAAAAASUVORK5CYII=) no-repeat right top;
 }
 
 [dir=rtl] input:required:valid,
@@ -324,7 +320,7 @@ span.title {
 #main-menu ul li:hover a,
 #main-menu li:hover li a {
 	background: none;
-	border: none;
+	border: 0;
 }
 
 #main-menu li:hover > ul {
@@ -1110,7 +1106,7 @@ span.title {
 /* families */
 #content {
 	clear: both;
-	padding: 10px 10px 0 10px;
+	padding: 10px 10px 0;
 }
 
 #content .center a {
@@ -1119,7 +1115,7 @@ span.title {
 
 .center, .alpha_index {
 	margin: 12px 0;
-	}
+}
 
 #content .center a.warning,
 #login-box span.error,
@@ -1240,24 +1236,21 @@ ul {
 }
 
 .blockh1 {
-	background-image: url(../images/left1B.png);
-	background-repeat: no-repeat;
+	background: url(../images/left1B.png) no-repeat;
 	height: 24px;
 	width: 26px;
 	padding: 0;
 }
 
 .blockh2 {
-	background-image: url(../images/left2.png);
-	background-repeat: repeat-x;
+	background: url(../images/left2.png) repeat-x;
 	font-size: 13px;
 	font-weight: 700;
 	padding: 0;
 }
 
 .blockh3 {
-	background-image: url(../images/left3.png);
-	background-repeat: no-repeat;
+	background: url(../images/left3.png) no-repeat;
 	height: 24px;
 	width: 8px;
 	padding: 0;
@@ -1312,7 +1305,7 @@ ul {
 #link_change_blocks {
 	clear: both;
 	margin: 0 auto;
-	padding: 25px 0 0 0;
+	padding: 25px 0 0;
 	text-align: center;
 	width: 400px;
 }
@@ -1330,15 +1323,17 @@ ul {
 	margin-left: 10px;
 }
 
+#ancestry_chart span.details1 div[class^="fact_"] {
+	display: inline-block;
+}
+
 #ancestry_chart table div p {
 	font-size: 90%;
 	margin: 0;
 }
 
 #ancestry_chart ul {
-	background-image: url(../images/vline.png);
-	background-position: left top;
-	background-repeat: repeat-y;
+	background: url(../images/vline.png) repeat-y left top;
 	display: block;
 	list-style: none;
 	margin: 0 0 0 15px;
@@ -1380,9 +1375,7 @@ ul {
 }
 
 #descendancy_chart ul {
-	background-image: url(../images/vline.png);
-	background-position: left top;
-	background-repeat: repeat-y;
+	background: url(../images/vline.png) repeat-y left top;
 	list-style: none;
 	margin: 0 0 5px 15px;
 	padding-bottom: 0;
@@ -1392,10 +1385,18 @@ ul {
 
 #descendancy_chart li {
 	list-style: none;
-	margin: 0 0 0 -15px;
+	margin: 5px 0 0 -15px;
 	padding-bottom: 0;
 	padding-right: 0;
 	padding-top: 0;
+}
+
+#descendancy_chart span.details1 div[class^="fact_"] {
+	display: inline-block;
+}
+
+#descendancy_chart td.details1 {
+	padding-top: 5px;
 }
 
 [dir=rtl] #descendancy_chart ul {
@@ -1447,7 +1448,7 @@ ul {
 }
 
 #relationship_chart {
-	margin: 0 20px 0;
+	margin: 0 20px;
 }
 
 .tdtop {
@@ -1571,8 +1572,8 @@ ul {
 
 .fan_chart_menu {
 	position: absolute;
-	display:  none;
-	z-index:  100;
+	display: none;
+	z-index: 100;
 }
 
 #fan_chart ul {
@@ -1630,7 +1631,7 @@ ul {
 #relatives_content .person_box > .person_box,
 #relatives_content .person_boxF > .person_boxF,
 #relatives_content .person_boxNN > .person_boxNN {
-	border: none;
+	border: 0;
 	min-height: 50px;
 }
 
@@ -1824,7 +1825,7 @@ a:hover .nameZoom {
 }
 
 .gender_image {
-	border: none;
+	border: 0;
 	padding-left: 3px;
 	padding-right: 3px;
 	vertical-align: middle;
@@ -1913,7 +1914,7 @@ a:hover .nameZoom {
 
 .source_citations {
 	display: none;
-}	
+}
 
 .subheaders {
 	font-size: 16px;
@@ -1942,8 +1943,7 @@ a:hover .nameZoom {
 
 .theme_form {
 	font-size: 14px;
-	margin: 3px;
-	margin-top: 0;
+	margin: 0 3px 3px;
 }
 
 .thumbnail {
@@ -2046,7 +2046,7 @@ textarea {
 }
 
 .sex_image {
-	border: none;
+	border: 0;
 	height: 9px;
 	padding-left: 3px;
 	padding-right: 3px;
@@ -2155,10 +2155,8 @@ a.showit:hover {
 
 a.showit:hover > span {
 	background: #444;
-	border-bottom: 2px solid #000;
-	border-left: 15px outset #000;
-	border-right: 2px solid #000;
-	border-top: 2px solid #000;
+	border: 2px solid #000;
+	border-left: 15px outset;
 	color: #fff;
 	display: block;
 	font-size: 15px;
@@ -2221,8 +2219,7 @@ a.showit:hover > span {
 	border: 1px solid #000;
 	padding: 0;
 	z-index: 99999;
-	list-style: none;
-	list-style-position: outside;
+	list-style: none outside none;
 	margin: 0;
 	max-height: 200px;
 	overflow-y: auto;
@@ -2359,7 +2356,7 @@ a.showit > span {
 
 .box-style0-expanded,
 .box-style1-expanded {
-	width: 300px!important;
+	width: 300px !important;
 }
 
 .person_box_template {
@@ -2463,7 +2460,7 @@ a.showit > span {
 }
 
 .add_fav_head i {
-	margin: 0 5px 1px 5px;
+	margin: 0 5px 1px;
 }
 
 .add_fav_ref p {
@@ -3128,8 +3125,7 @@ dd .deletelink {
 .editicon,
 .copyicon,
 .deleteicon {
-	background: url(../images/general_sprite.png) no-repeat left 0;
-	background-color: transparent;
+	background: transparent url(../images/general_sprite.png) no-repeat left 0;
 	display: block;
 }
 
@@ -3669,7 +3665,7 @@ span.link_text {
 #main {
 	min-width: 600px;
 	width: 100%;
-	padding: 5px 2px 0 2px;
+	padding: 5px 2px 0;
 	display: table;
 	table-layout: fixed;
 }
@@ -3692,43 +3688,39 @@ span.link_text {
 }
 
 #separator {
-	display:          table-cell;
-	width:            2.5em;
-	position:         relative;
+	display: table-cell;
+	width: 2.5em;
+	position: relative;
 	background-color: transparent;
 	overflow: hidden;
 }
 
 #separator:after {
-	position:                absolute;
-	top:                     0;
-	left:                    auto;
-	right:                   0;
-	width:                   10px;
-	height:                  99999px;
-	content:                 "";
+	position: absolute;
+	top: 0;
+	left: auto;
+	right: 0;
+	width: 10px;
+	height: 99999px;
+	content: "";
 	border: 1px solid #999;
 	border-top-left-radius: 3px;
 	border-top-right-radius: 3px;
 }
 
 [dir=rtl] #separator:after {
-	left:  0;
+	left: 0;
 	right: auto;
 }
 
 .separator-hidden:after,
 [dir=rtl] .separator-visible:after {
-	background-image: url(../images/general_sprite.png);
-	background-position: -26px 100px;
-	background-repeat: no-repeat;
+	background: url(../images/general_sprite.png) no-repeat -26px 100px;
 }
 
 .separator-visible:after,
 [dir=rtl] .separator-hidden:after {
-	background-image: url(../images/general_sprite.png);
-	background-position: -1px 100px;
-	background-repeat: no-repeat;
+	background: url(../images/general_sprite.png) no-repeat -1px 100px;
 }
 
 /* Sidebar content items */
@@ -4118,7 +4110,7 @@ span.link_text {
 		width: auto;
 		height: auto;
 		overflow: visible;
-		border: none;
+		border: 0;
 	}
 
 	.lifespan_people {
@@ -4688,9 +4680,7 @@ a.icon-uarrow:hover {
 [class^="icon-mime-"],
 [class*=" icon-mime-"] {
 	display: inline-block;
-	background-image: url(../images/icon-mime-sprite.png);
-	background-color: transparent;
-	background-repeat: no-repeat;
+	background: transparent url(../images/icon-mime-sprite.png) no-repeat;
 	width: 48px;
 	height: 48px;
 }

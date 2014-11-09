@@ -1,6 +1,4 @@
 <?php
-// Base controller for all other controllers
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -18,6 +16,9 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class WT_Controller_Base - Base controller for all other controllers
+ */
 class WT_Controller_Base {
 	// The controller accumulates Javascript (inline and external), and renders it in the footer
 	const JS_PRIORITY_HIGH = 0;
@@ -32,11 +33,15 @@ class WT_Controller_Base {
 
 	protected $page_header = false;        // Have we printed a page header?
 
-	// Startup activity
+	/**
+	 * Startup activity
+	 */
 	public function __construct() {
 	}
 
-	// Shutdown activity
+	/**
+	 * Shutdown activity
+	 */
 	public function __destruct() {
 		// If we printed a header, automatically print a footer
 		if ($this->page_header) {
@@ -49,7 +54,7 @@ class WT_Controller_Base {
 	 *
 	 * @param string $script_name
 	 *
-	 * @return WT_Controller_Base
+	 * @return $this
 	 */
 	public function addExternalJavascript($script_name) {
 		$this->external_javascript[$script_name] = true;
@@ -65,7 +70,7 @@ class WT_Controller_Base {
 	 * @param string  $script
 	 * @param integer $priority
 	 *
-	 * @return WT_Controller_Base
+	 * @return $this
 	 */
 	public function addInlineJavascript($script, $priority = self::JS_PRIORITY_NORMAL) {
 		if (WT_DEBUG) {
@@ -125,7 +130,7 @@ class WT_Controller_Base {
 	/**
 	 * Print the page header, using the theme
 	 *
-	 * @return WT_Controller_Base
+	 * @return $this
 	 */
 	public function pageHeader() {
 		// Once we've displayed the header, we should no longer write session data.

@@ -1,6 +1,4 @@
 <?php
-// Class that defines an event details object
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -21,6 +19,9 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class WT_Fact - Class that defines an event details object
+ */
 class WT_Fact {
 	/** @var string Unique identifier for this fact (currently implemented as a hash of the raw data). */
 	private $fact_id;

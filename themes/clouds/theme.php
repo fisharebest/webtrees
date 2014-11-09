@@ -6,7 +6,7 @@
 //
 // Derived from PhpGedView Cloudy theme
 // Original author w.a. bastein http://genealogy.bastein.biz
-// Copyright (C) 2010 PGV Development Team.  All rights reserved.
+// Copyright (C) 2010 PGV Development Team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by

@@ -1,12 +1,4 @@
 <?php
-// Classes for Gedcom Date/Calendar functionality.
-//
-// Definitions for the Jewish calendar
-//
-// NOTE: Since different calendars start their days at different times, (civil
-// midnight, solar midnight, sunset, sunrise, etc.), we convert on the basis of
-// midday.
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 Greg Roach
 //
@@ -26,6 +18,9 @@
 
 use Fisharebest\ExtCalendar\JewishCalendar;
 
+/**
+ * Class WT_Date_Jewish - Definitions for the Jewish calendar
+ */
 class WT_Date_Jewish extends WT_Date_Calendar {
 	const CALENDAR_ESCAPE = '@#DHEBREW@';
 	const MONTHS_IN_YEAR = 13;

@@ -8,7 +8,7 @@
 // Copyright (C) 2014 webtrees development team.
 //
 // Derived from PhpGedView
-// Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.
+// Copyright (C) 2002 to 2009 PGV Development Team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -1764,7 +1764,7 @@ function print_changes_list($change_ids, $sort) {
 				$html .= '<a href="' . $value['record']->getHtmlUrl() . '" class="list_item">' . $value['record']->getAddName() . '</a>';
 			}
 		}
-		$html .= /* I18N: [a record was] Changed on <date/time> by <user> */ WT_I18N::translate('Changed on %1$s by %2$s', $value['record']->lastChangeTimestamp(), $value['record']->lastChangeUser());
+		$html .= /* I18N: [a record was] Changed on <date/time> by <user> */ WT_I18N::translate('Changed on %1$s by %2$s', $value['record']->lastChangeTimestamp(), WT_Filter::escapeHtml($value['record']->lastChangeUser()));
 		$html .= '</div>';
 	}
 
@@ -1877,13 +1877,13 @@ function print_changes_table($change_ids, $sort) {
 		}
 		$html .= "</td>";
 		//-- Last change date/time
-		$html .= "<td class='wrap'>" . $record->lastChangeTimestamp() . "</td>";
+		$html .= '<td class="wrap">' . $record->lastChangeTimestamp() . '</td>';
 		//-- Last change user
-		$html .= "<td class='wrap'>" . $record->lastChangeUser() . "</td>";
+		$html .= '<td class="wrap">' . WT_Filter::escapeHtml($record->lastChangeUser()) . '</td>';
 		//-- change date (sortable) hidden by datatables code
-		$html .= "<td>" . $record->lastChangeTimestamp(true) . "</td>";
+		$html .= '<td>' . $record->lastChangeTimestamp(true) . '</td>';
 		//-- names (sortable) hidden by datatables code
-		$html .= "<td>" . $record->getSortName() . "</td></tr>";
+		$html .= '<td>' . $record->getSortName() . '</td></tr>';
 	}
 
 	$html .= '</tbody></table>';

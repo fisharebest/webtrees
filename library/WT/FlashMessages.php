@@ -1,7 +1,4 @@
 <?php
-// Flash messages allow us to generate messages in one context, and
-// display them in another.
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 Greg Roach
 //
@@ -19,6 +16,10 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class WT_FlashMessages - Flash messages allow us to generate messages
+ * in one context, and display them in another.
+ */
 class WT_FlashMessages {
 	/**
 	 * Add a new message to the session storage.

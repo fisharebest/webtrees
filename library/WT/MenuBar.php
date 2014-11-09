@@ -1,6 +1,4 @@
 <?php
-// System for generating menus.
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -23,7 +21,13 @@
 
 use WT\Auth;
 
+/**
+ * Class WT_MenuBar - System for generating menus.
+ */
 class WT_MenuBar {
+	/**
+	 * @return WT_Menu
+	 */
 	public static function getGedcomMenu() {
 		$menu = new WT_Menu(WT_I18N::translate('Home page'), 'index.php?ctype=gedcom&amp;ged='.WT_GEDURL, 'menu-tree');
 		$ALLOW_CHANGE_GEDCOM=WT_Site::getPreference('ALLOW_CHANGE_GEDCOM') && count(WT_Tree::getAll())>1;
@@ -40,6 +44,9 @@ class WT_MenuBar {
 		return $menu;
 	}
 
+	/**
+	 * @return WT_Menu
+	 */
 	public static function getMyPageMenu() {
 		global $PEDIGREE_FULL_DETAILS, $PEDIGREE_LAYOUT;
 
@@ -81,6 +88,9 @@ class WT_MenuBar {
 		return $menu;
 	}
 
+	/**
+	 * @return WT_Menu
+	 */
 	public static function getChartsMenu() {
 		global $SEARCH_SPIDER, $controller;
 
@@ -224,7 +234,7 @@ class WT_MenuBar {
 					);
 					if (array_key_exists('user_favorites', WT_Module::getActiveModules())) {
 						// Add a submenu showing relationship from this person to each of our favorites
-						foreach (user_favorites_WT_Module::getFavorites(WT_USER_ID) as $favorite) {
+						foreach (user_favorites_WT_Module::getFavorites(Auth::id()) as $favorite) {
 							if ($favorite['type']=='INDI' && $favorite['gedcom_id']==WT_GED_ID) {
 								$person=WT_Individual::getInstance($favorite['gid']);
 								if ($person instanceof WT_Individual) {
@@ -270,6 +280,10 @@ class WT_MenuBar {
 		return $menu;
 	}
 
+	/**
+	 * @return WT_Menu
+	 * @throws Exception
+	 */
 	public static function getListsMenu() {
 		global $SEARCH_SPIDER, $controller;
 
@@ -316,6 +330,9 @@ class WT_MenuBar {
 		return $menu;
 	}
 
+	/**
+	 * @return WT_Menu
+	 */
 	public static function getCalendarMenu() {
 		global $SEARCH_SPIDER;
 
@@ -360,6 +377,9 @@ class WT_MenuBar {
 		return $menu;
 	}
 
+	/**
+	 * @return WT_Menu
+	 */
 	public static function getSearchMenu() {
 		global $SEARCH_SPIDER;
 
@@ -385,6 +405,9 @@ class WT_MenuBar {
 		return $menu;
 	}
 
+	/**
+	 * @return WT_Menu[]
+	 */
 	public static function getModuleMenus() {
 		$menus=array();
 		foreach (WT_Module::getActiveMenus() as $module) {
@@ -396,6 +419,10 @@ class WT_MenuBar {
 		return $menus;
 	}
 
+	/**
+	 * @return null|WT_Menu
+	 * @throws Exception
+	 */
 	public static function getThemeMenu() {
 		global $SEARCH_SPIDER, $WT_TREE;
 
@@ -412,6 +439,9 @@ class WT_MenuBar {
 		}
 	}
 
+	/**
+	 * @return null|WT_Menu
+	 */
 	public static function getLanguageMenu() {
 		global $SEARCH_SPIDER;
 
@@ -433,20 +463,24 @@ class WT_MenuBar {
 		}
 	}
 
+	/**
+	 * @return WT_Menu
+	 * @throws Exception
+	 */
 	public static function getFavoritesMenu() {
 		global $REQUIRE_AUTHENTICATION, $controller, $SEARCH_SPIDER;
 
-		$show_user_favs=WT_USER_ID               && array_key_exists('user_favorites',   WT_Module::getActiveModules());
-		$show_gedc_favs=!$REQUIRE_AUTHENTICATION && array_key_exists('gedcom_favorites', WT_Module::getActiveModules());
+		$show_user_favs = Auth::check() && array_key_exists('user_favorites',   WT_Module::getActiveModules());
+		$show_gedc_favs = !$REQUIRE_AUTHENTICATION && array_key_exists('gedcom_favorites', WT_Module::getActiveModules());
 
 		if ($show_user_favs && !$SEARCH_SPIDER) {
 			if ($show_gedc_favs && !$SEARCH_SPIDER) {
 				$favorites=array_merge(
 					gedcom_favorites_WT_Module::getFavorites(WT_GED_ID),
-					user_favorites_WT_Module::getFavorites(WT_USER_ID)
+					user_favorites_WT_Module::getFavorites(Auth::id())
 				);
 			} else {
-				$favorites=user_favorites_WT_Module::getFavorites(WT_USER_ID);
+				$favorites=user_favorites_WT_Module::getFavorites(Auth::id());
 			}
 		} else {
 			if ($show_gedc_favs && !$SEARCH_SPIDER) {

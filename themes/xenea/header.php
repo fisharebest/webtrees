@@ -5,7 +5,7 @@
 // Copyright (C) 2014 webtrees development team.
 //
 // Derived from PhpGedView
-// Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.
+// Copyright (C) 2002 to 2009 PGV Development Team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -98,7 +98,7 @@ if ($view!='simple') { // Use "simple" headers for popup windows
 		'</div>',
 		'<div id="login-menu">',
 			'<ul class="makeMenu">';
-				if (WT_USER_ID) {
+				if (Auth::check()) {
 					echo '<li><a href="edituser.php">', WT_Filter::escapeHtml(Auth::user()->getRealName()), '</a></li> <li>', logout_link(), '</li>';
 					if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
 						echo ' <li><a href="#" onclick="window.open(\'edit_changes.php\', \'_blank\', chan_window_specs); return false;" style="color:red;">', WT_I18N::translate('Pending changes'), '</a></li>';

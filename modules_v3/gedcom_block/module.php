@@ -21,6 +21,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+
 class gedcom_block_WT_Module extends WT_Module implements WT_Module_Block {
 	// Extend class WT_Module
 	public function getTitle() {
@@ -43,7 +45,7 @@ class gedcom_block_WT_Module extends WT_Module implements WT_Module_Block {
 		$content = '<table><tr>';
 		$content .= '<td><a href="pedigree.php?rootid='.$indi_xref.'&amp;ged='.WT_GEDURL.'"><i class="icon-pedigree"></i><br>'.WT_I18N::translate('Default chart').'</a></td>';
 		$content .= '<td><a href="individual.php?pid='.$indi_xref.'&amp;ged='.WT_GEDURL.'"><i class="icon-indis"></i><br>'.WT_I18N::translate('Default individual').'</a></td>';
-		if (WT_Site::getPreference('USE_REGISTRATION_MODULE') && WT_USER_ID==false) {
+		if (WT_Site::getPreference('USE_REGISTRATION_MODULE') && !Auth::check()) {
 			$content .= '<td><a href="'.WT_LOGIN_URL.'?action=register"><i class="icon-user_add"></i><br>'.WT_I18N::translate('Request new user account').'</a></td>';
 		}
 		$content .= "</tr>";

@@ -61,7 +61,7 @@ $row=WT_DB::prepare(
 )->execute(array($gedcom_id))->fetchOneRow();
 
 if ($row->import_offset==$row->import_total) {
-	WT_Tree::get($gedcom_id)->setPreference('imported', true);
+	WT_Tree::get($gedcom_id)->setPreference('imported', '1');
 	// Finished?  Show the maintenance links, similar to admin_trees_manage.php
 	WT_DB::exec("COMMIT");
 	$controller->addInlineJavascript(
@@ -77,13 +77,13 @@ $status=WT_I18N::translate('Loading data from GEDCOM file: %.1f%%', $percent);
 
 echo '<div id="progressbar', $gedcom_id, '"><div style="position:absolute;">', $status, '</div></div>';
 $controller->addInlineJavascript(
-	'jQuery("#progressbar'.$gedcom_id.'").progressbar({value: '.round($percent, 1).'});'
+	'jQuery("#progressbar' . $gedcom_id . '").progressbar({value: ' . round($percent, 1) . '});'
 );
 
-$first_time=($row->import_offset==0);
+$first_time = ($row->import_offset == 0);
 // Run for one second.  This keeps the resource requirements low.
-for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
-	$data=WT_DB::prepare(
+for ($end_time = microtime(true) + 1.0; microtime(true) < $end_time;) {
+	$data = WT_DB::prepare(
 		"SELECT gedcom_chunk_id, REPLACE(chunk_data, '\r', '\n') AS chunk_data".
 		" FROM `##gedcom_chunk`".
 		" WHERE gedcom_id=? AND NOT imported".
@@ -92,9 +92,9 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 	)->execute(array($gedcom_id))->fetchOneRow();
 	// If we are at the start position, do some tidying up
 	if ($first_time) {
-		$keep_media=WT_Filter::getBool('keep_media'.$gedcom_id);
+		$keep_media = WT_Filter::getBool('keep_media'.$gedcom_id);
 		WT_Tree::get($gedcom_id)->deleteGenealogyData($keep_media);
-		WT_Tree::get($gedcom_id)->setPreference('imported', false);
+		WT_Tree::get($gedcom_id)->setPreference('imported', '0');
 		// Remove any byte-order-mark
 		WT_DB::prepare(
 			"UPDATE `##gedcom_chunk`".
@@ -102,7 +102,7 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 			" WHERE gedcom_chunk_id=?"
 		)->execute(array(WT_UTF8_BOM, $data->gedcom_chunk_id));
 		// Re-fetch the data, now that we have removed the BOM
-		$data=WT_DB::prepare(
+		$data = WT_DB::prepare(
 			"SELECT gedcom_chunk_id, REPLACE(chunk_data, '\r', '\n') AS chunk_data".
 			" FROM `##gedcom_chunk`".
 			" WHERE gedcom_chunk_id=?"
@@ -115,9 +115,9 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 		}
 		// What character set is this?  Need to convert it to UTF8
 		if (preg_match('/\n[ \t]*1 CHAR(?:ACTER)? (.+)/', $data->chunk_data, $match)) {
-			$charset=strtoupper($match[1]);
+			$charset = strtoupper($match[1]);
 		} else {
-			$charset='ASCII';
+			$charset = 'ASCII';
 		}
 		// MySQL supports a wide range of collation conversions.  These are ones that
 		// have been encountered "in the wild".
@@ -214,14 +214,14 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 		)->execute(array($data->gedcom_chunk_id));
 	} catch (PDOException $ex) {
 		WT_DB::exec("ROLLBACK");
-		if ($ex->getCode()=='40001') {
+		if ($ex->getCode() === '40001') {
 			// "SQLSTATE[40001]: Serialization failure: 1213 Deadlock found when trying to get lock; try restarting transaction"
 			// The documentation says that if you get this error, wait and try again.....
-			$controller->addInlineJavascript('jQuery("#import'.$gedcom_id.'").load("import.php?gedcom_id='.$gedcom_id.'&u='.uniqid().'");');
+			$controller->addInlineJavascript('jQuery("#import' . $gedcom_id . '").load("import.php?gedcom_id=' . $gedcom_id . '&u=' . uniqid() . '");');
 		} else {
 			// A fatal error.  Nothing we can do?
 			echo '<span class="error">', $ex->getMessage(), '</span>';
-			$controller->addInlineJavascript('jQuery("#actions'.$gedcom_id.'").toggle();');
+			$controller->addInlineJavascript('jQuery("#actions' . $gedcom_id . '").toggle();');
 		}
 		exit;
 	}
@@ -231,4 +231,4 @@ WT_DB::exec("COMMIT");
 
 // Reload.....
 // Use uniqid() to prevent jQuery caching the previous response.
-$controller->addInlineJavascript('jQuery("#import'.$gedcom_id.'").load("import.php?gedcom_id='.$gedcom_id.'&u='.uniqid().'");');
+$controller->addInlineJavascript('jQuery("#import' . $gedcom_id . '").load("import.php?gedcom_id=' . $gedcom_id . '&u=' . uniqid() . '");');

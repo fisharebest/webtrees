@@ -5,7 +5,7 @@
 // Copyright (C) 2014 webtrees development team.
 //
 // Derived from PhpGedView
-// Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.
+// Copyright (C) 2002 to 2009 PGV Development Team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -2260,7 +2260,7 @@ function keep_chan(WT_GedcomRecord $record=null) {
 		if ($record) {
 			$details =
 				WT_Gedcom_Tag::getLabelValue('DATE', $record->lastChangeTimestamp()) .
-				WT_Gedcom_Tag::getLabelValue('_WT_USER', $record->lastChangeUser());
+				WT_Gedcom_Tag::getLabelValue('_WT_USER', WT_Filter::escapeHtml($record->lastChangeUser()));
 		} else {
 			$details = '';
 		}
@@ -2487,7 +2487,7 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 			// Mother gives her surname to her children
 			switch ($nextaction) {
 			case 'add_child_to_family_action':
-				if (preg_match('/\/((?:[a-z]{2,3} )*)(.*)\//i', $mother, $match)) {
+				if (preg_match('/\/((?:[a-z]{2,3} )*)(.*)\//i', $mother_name, $match)) {
 					$name_fields['SURN']=$match[2];
 					$name_fields['SPFX']=trim($match[1]);
 					$name_fields['NAME']="/{$match[1]}{$match[2]}/";

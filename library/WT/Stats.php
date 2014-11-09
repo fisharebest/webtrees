@@ -5352,7 +5352,7 @@ class WT_Stats {
 				} else {
 					$content .= WT_Filter::escapeHtml($user->getRealName()) . ' - ' . WT_Filter::escapeHtml($user->getUserName());
 				}
-				if (WT_USER_ID != $user->getUserId() && $user->getPreference('contactmethod') != 'none') {
+				if (Auth::id() != $user->getUserId() && $user->getPreference('contactmethod') != 'none') {
 					if ($type == 'list') {
 						$content .= '<br><a class="icon-email" href="#" onclick="return message(\'' . $user->getUserId() . '\', \'\', \'' . WT_Filter::escapeJs(get_query_url()) . '\');" title="' . WT_I18N::translate('Send a message') . '"></a>';
 					} else {
@@ -5824,7 +5824,7 @@ class WT_Stats {
 	 * @return string
 	 */
 	public function userFavorites() {
-		if (WT_USER_ID && array_key_exists('user_favorites', WT_Module::getActiveModules())) {
+		if (Auth::check() && array_key_exists('user_favorites', WT_Module::getActiveModules())) {
 			$block = new user_favorites_WT_Module;
 
 			return $block->getBlock(0, false);
@@ -5849,7 +5849,7 @@ class WT_Stats {
 	 */
 	public function totalUserFavorites() {
 		if (array_key_exists('user_favorites', WT_Module::getActiveModules())) {
-			return count(user_favorites_WT_Module::getFavorites(WT_USER_ID));
+			return count(user_favorites_WT_Module::getFavorites(Auth::id()));
 		} else {
 			return 0;
 		}
@@ -5903,7 +5903,7 @@ class WT_Stats {
 	 */
 	public function totalUserMessages() {
 		$total = (int)WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##message` WHERE user_id = ?")
-			->execute(array(WT_USER_ID))
+			->execute(array(Auth::id()))
 			->fetchOne();
 
 		return WT_I18N::number($total);

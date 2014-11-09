@@ -1,13 +1,4 @@
 <?php
-// Classes for Gedcom Date/Calendar functionality.
-//
-// Definitions for the Hijri calendar.  Note that these are "theoretical" dates.
-// "True" dates are based on local lunar observations, and can be a +/- one day.
-//
-// NOTE: Since different calendars start their days at different times, (civil
-// midnight, solar midnight, sunset, sunrise, etc.), we convert on the basis of
-// midday.
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 Greg Roach
 //
@@ -27,6 +18,11 @@
 
 use Fisharebest\ExtCalendar\ArabicCalendar;
 
+/**
+ * Class WT_Date_Hijri - Definitions for the Hijri calendar.
+ * Note that these are "theoretical" dates.
+ * "True" dates are based on local lunar observations, and can be a +/- one day.
+ */
 class WT_Date_Hijri extends WT_Date_Calendar {
 	const CALENDAR_ESCAPE = '@#DHIJRI@';
 	const CAL_START_JD = 1948440; // @#DHIJRI@ 1 MUHAR 0001 = @#JULIAN@ 16 JUL 0622

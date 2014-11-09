@@ -1,6 +1,4 @@
 <?php
-// Controller for the descendancy chart
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -22,6 +20,10 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 use Rhumsaa\Uuid\Uuid;
+
+/**
+ * Class WT_Controller_Descendancy - Controller for the descendancy chart
+ */
 class WT_Controller_Descendancy extends WT_Controller_Chart {
 	var $descPerson = null;
 
@@ -46,6 +48,9 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 	var $cellwidth;
 	var $show_cousins;
 
+	/**
+	 * Create the descendancy controller
+	 */
 	function __construct() {
 		global $bwidth, $bheight, $cbwidth, $cbheight, $pbwidth, $pbheight, $PEDIGREE_FULL_DETAILS, $MAX_DESCENDANCY_GENERATIONS, $DEFAULT_PEDIGREE_GENERATIONS, $show_full;
 

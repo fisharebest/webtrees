@@ -1,6 +1,4 @@
 <?php
-// Controller for the search page
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -23,6 +21,9 @@
 
 use WT\Log;
 
+/**
+ * Class WT_Controller_Search - Controller for the search page
+ */
 class WT_Controller_Search extends WT_Controller_Page {
 	public $action;
 	// TODO: decide if these variables are public/private/protected (or unused)
@@ -76,6 +77,9 @@ class WT_Controller_Search extends WT_Controller_Page {
 	var $replacePlacesWord = false;
 	var $printplace = array();
 
+	/**
+	 * Startup activity
+	 */
 	function __construct() {
 		global $WT_TREE;
 
@@ -521,7 +525,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 			if (!empty ($this->year)) {
 				$logstring .= "Year: " . $this->year . "\n";
 			}
-			Log::AddToSearchlog($logstring, $this->search_trees);
+			Log::addSearchLog($logstring, $this->search_trees);
 
 			if ($this->search_trees) {
 				$this->myindilist = search_indis_soundex($this->soundex, $this->lastname, $this->firstname, $this->place, array_keys($this->search_trees));
@@ -560,6 +564,9 @@ class WT_Controller_Search extends WT_Controller_Page {
 		usort($this->myfamlist, array('WT_GedcomRecord', 'compare'));
 	}
 
+	/**
+	 * @return bool
+	 */
 	function printResults() {
 		require_once WT_ROOT . 'includes/functions/functions_print_lists.php';
 		global $GEDCOM;

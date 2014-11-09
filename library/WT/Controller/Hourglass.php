@@ -1,6 +1,4 @@
 <?php
-// Controller for the hourglass chart
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -21,6 +19,9 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class WT_Controller_Hourglass - Controller for the hourglass chart
+ */
 class WT_Controller_Hourglass extends WT_Controller_Chart {
 	var $pid = "";
 
@@ -45,6 +46,11 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 	CONST LINK = "<a class='%s' href='%s' data-parms='%s-%s-%s-%s'></a>";
 	CONST SWITCH_LINK = "<a href='hourglass.php?rootid=%s&amp;show_spouse=%s&amp;show_full=%s&amp;generations=%s&amp;box_width=%s' class='name1'>%s</a>";
 
+	/**
+	 * @param string  $rootid
+	 * @param integer $show_full
+	 * @param boolean $loadJS
+	 */
 	function __construct($rootid = '', $show_full = 1, $loadJS = true) {
 		global $bheight, $bwidth, $cbwidth, $cbheight, $PEDIGREE_FULL_DETAILS, $MAX_DESCENDANCY_GENERATIONS;
 		global $TEXT_DIRECTION, $show_full;
@@ -279,7 +285,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 							echo "<td style='vertical-align:top'><img alt='' class='bvertline' id='vline_$chil' src='{$WT_IMAGES["vline"]}' width='3'></td>";
 						} else {
 							// Middle child
-							echo "<td style=\"background: url('{$WT_IMAGES["vline"]}');\"><img src='{$WT_IMAGES["spacer"]}' width='3' alt=''></td>";
+							echo '<td style="background: url(\'' . $WT_IMAGES['vline'] . '\');"><img src=\'' . $WT_IMAGES['spacer'] . '\' width="3" alt=""></td>';
 						}
 					}
 					echo '</tr>';
