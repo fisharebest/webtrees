@@ -1,6 +1,4 @@
 <?php
-// Controller for the family page
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -25,7 +23,13 @@ use WT\Auth;
 
 require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 
+/**
+ * Class WT_Controller_Family - Controller for the family page
+ */
 class WT_Controller_Family extends WT_Controller_GedcomRecord {
+	/**
+	 * Startup activity
+	 */
 	public function __construct() {
 		global $Dbwidth, $bwidth, $pbwidth, $pbheight, $bheight;
 		$bwidth   = $Dbwidth;
@@ -38,8 +42,12 @@ class WT_Controller_Family extends WT_Controller_GedcomRecord {
 		parent::__construct();
 	}
 
-	// Get significant information from this page, to allow other pages such as
-	// charts and reports to initialise with the same records
+	/**
+	 * Get significant information from this page, to allow other pages such as
+	 * charts and reports to initialise with the same records
+	 *
+	 * @return WT_Individual
+	 */
 	public function getSignificantIndividual() {
 		if ($this->record) {
 			foreach ($this->record->getSpouses() as $individual) {
@@ -51,6 +59,13 @@ class WT_Controller_Family extends WT_Controller_GedcomRecord {
 		}
 		return parent::getSignificantIndividual();
 	}
+
+	/**
+	 * Get significant information from this page, to allow other pages such as
+	 * charts and reports to initialise with the same records
+	 *
+	 * @return WT_Family
+	 */
 	public function getSignificantFamily() {
 		if ($this->record) {
 			return $this->record;
@@ -58,7 +73,11 @@ class WT_Controller_Family extends WT_Controller_GedcomRecord {
 		return parent::getSignificantFamily();
 	}
 
-	// $tags is an array of HUSB/WIFE/CHIL
+	/**
+	 * @param string[] $tags an array of HUSB/WIFE/CHIL
+	 *
+	 * @return string
+	 */
 	function getTimelineIndis($tags) {
 		preg_match_all('/\n1 (?:'.implode('|', $tags).') @('.WT_REGEX_XREF.')@/', $this->record->getGedcom(), $matches);
 		foreach ($matches[1] as &$match) {
@@ -135,8 +154,12 @@ class WT_Controller_Family extends WT_Controller_GedcomRecord {
 		return $menu;
 	}
 
-	// Get significant information from this page, to allow other pages such as
-	// charts and reports to initialise with the same records
+	/**
+	 * Get significant information from this page, to allow other pages such as
+	 * charts and reports to initialise with the same records
+	 *
+	 * @return string
+	 */
 	public function getSignificantSurname() {
 		if ($this->record && $this->record->getHusband()) {
 			list($surn) = explode(',', $this->record->getHusband()->getSortname());
@@ -146,7 +169,9 @@ class WT_Controller_Family extends WT_Controller_GedcomRecord {
 		}
 	}
 
-	// Print the facts
+	/**
+	 * Print the facts
+	 */
 	public function printFamilyFacts() {
 		global $linkToID, $WT_TREE;
 

@@ -258,7 +258,7 @@ abstract class WT_Module {
 	 * @param integer $tree_id
 	 * @param integer $access_level
 	 *
-	 * @return WT_Module[]
+	 * @return WT_Module_Block[]
 	 */
 	public static function getActiveBlocks($tree_id = WT_GED_ID, $access_level = WT_USER_ACCESS_LEVEL) {
 		static $blocks = null;
@@ -276,7 +276,7 @@ abstract class WT_Module {
 	 * @param integer $tree_id
 	 * @param integer $access_level
 	 *
-	 * @return WT_Module[]
+	 * @return WT_Module_Chart[]
 	 */
 	public static function getActiveCharts($tree_id = WT_GED_ID, $access_level = WT_USER_ACCESS_LEVEL) {
 		static $charts = null;
@@ -294,7 +294,7 @@ abstract class WT_Module {
 	 * @param integer $tree_id
 	 * @param integer $access_level
 	 *
-	 * @return WT_Module[]
+	 * @return WT_Module_Menu[]
 	 */
 	public static function getActiveMenus($tree_id = WT_GED_ID, $access_level = WT_USER_ACCESS_LEVEL) {
 		static $menus = null;
@@ -312,7 +312,7 @@ abstract class WT_Module {
 	 * @param integer $tree_id
 	 * @param integer $access_level
 	 *
-	 * @return WT_Module[]
+	 * @return WT_Module_Report[]
 	 */
 	public static function getActiveReports($tree_id = WT_GED_ID, $access_level = WT_USER_ACCESS_LEVEL) {
 		static $reports = null;
@@ -330,7 +330,7 @@ abstract class WT_Module {
 	 * @param integer $tree_id
 	 * @param integer $access_level
 	 *
-	 * @return WT_Module[]
+	 * @return WT_Module_Sidebar[]
 	 */
 	public static function getActiveSidebars($tree_id = WT_GED_ID, $access_level = WT_USER_ACCESS_LEVEL) {
 		static $sidebars = null;
@@ -348,7 +348,7 @@ abstract class WT_Module {
 	 * @param integer $tree_id
 	 * @param integer $access_level
 	 *
-	 * @return WT_Module[]
+	 * @return WT_Module_Tab[]
 	 */
 	public static function getActiveTabs($tree_id = WT_GED_ID, $access_level = WT_USER_ACCESS_LEVEL) {
 		static $tabs = null;
@@ -366,7 +366,7 @@ abstract class WT_Module {
 	 * @param integer $tree_id
 	 * @param integer $access_level
 	 *
-	 * @return WT_Module[]
+	 * @return WT_Module_Theme[]
 	 */
 	public static function getActiveThemes($tree_id = WT_GED_ID, $access_level = WT_USER_ACCESS_LEVEL) {
 		static $themes = null;

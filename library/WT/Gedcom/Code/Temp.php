@@ -1,6 +1,4 @@
 <?php
-// Functions and logic for GEDCOM "TEMP" codes
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 Greg Roach
 //
@@ -18,6 +16,9 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class WT_Gedcom_Code_Temp - Functions and logic for GEDCOM "TEMP" codes
+ */
 class WT_Gedcom_Code_Temp {
 	/**
 	 * A list of GEDCOM tags that require a TEMP subtag

@@ -1,15 +1,4 @@
 <?php
-// Classes for Gedcom Date/Calendar functionality.
-//
-// Definitions for the Roman calendar
-// TODO The 5.5.1 gedcom spec mentions this calendar, but gives no details of
-// how it is to be represented....  This class is just a place holder so that
-// webtrees won’t compain if it receives one.
-//
-// NOTE: Since different calendars start their days at different times, (civil
-// midnight, solar midnight, sunset, sunrise, etc.), we convert on the basis of
-// midday.
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 Greg Roach
 //
@@ -27,6 +16,13 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class WT_Date_Roman - Definitions for the Roman calendar
+ *
+ * The 5.5.1 gedcom spec mentions this calendar, but gives no details of
+ * how it is to be represented....  This class is just a place holder so that
+ * webtrees won’t compain if it receives one.
+ */
 class WT_Date_Roman extends WT_Date_Calendar {
 	const CALENDAR_ESCAPE = '@#DROMAN@';
 

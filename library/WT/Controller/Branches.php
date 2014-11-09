@@ -1,6 +1,4 @@
 <?php
-// Controller for the branches list
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -18,6 +16,9 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class WT_Controller_Branches - Controller for the branches list
+ */
 class WT_Controller_Branches extends WT_Controller_Page {
 	/** @var string Generate the branches for this surname */
 	private $surname;
@@ -34,6 +35,9 @@ class WT_Controller_Branches extends WT_Controller_Page {
 	/** @var WT_Individual[] Ancestors of the root person - for SOSA numbers */
 	private $ancestors = array();
 
+	/**
+	 * Create a branches list controller
+	 */
 	public function __construct() {
 		parent::__construct();
 

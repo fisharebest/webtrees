@@ -1,6 +1,4 @@
 <?php
-// Class file for an individual
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -23,6 +21,9 @@
 
 use Fisharebest\ExtCalendar\GregorianCalendar;
 
+/**
+ * Class WT_Individual - Class file for an individual
+ */
 class WT_Individual extends WT_GedcomRecord {
 	const RECORD_TYPE = 'INDI';
 	const URL_PREFIX = 'individual.php?pid=';

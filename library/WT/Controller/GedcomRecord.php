@@ -1,6 +1,4 @@
 <?php
-// Base controller for all GedcomRecord controllers
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -18,9 +16,15 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class WT_Controller_GedcomRecord - Base controller for all GedcomRecord controllers
+ */
 class WT_Controller_GedcomRecord extends WT_Controller_Page {
 	public $record; // individual, source, repository, etc.
 
+	/**
+	 * Startup activity
+	 */
 	public function __construct() {
 		// Automatically fix broken links
 		if ($this->record && $this->record->canEdit()) {

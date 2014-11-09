@@ -1,6 +1,4 @@
 <?php
-// Controller for the shared note page
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -23,7 +21,13 @@
 
 require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 
+/**
+ * Class WT_Controller_Note - Controller for the shared note page
+ */
 class WT_Controller_Note extends WT_Controller_GedcomRecord {
+	/**
+	 * Startup activity
+	 */
 	public function __construct() {
 		$xref         = WT_Filter::get('nid', WT_REGEX_XREF);
 		$this->record = WT_Note::getInstance($xref);
