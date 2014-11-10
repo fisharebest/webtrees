@@ -209,7 +209,7 @@ function spanLTRRTL($inputText, $direction = 'BOTH', $class = '') {
 			// Determine the directionality of the current UTF-8 character
 			$newState = $currentState;
 			while (true) {
-				if (WT_I18N::scriptDirection(WT_I18N::languageScript($currentLetter)) == 'rtl') {
+				if (WT_I18N::scriptDirection(WT_I18N::textScript($currentLetter)) === 'rtl') {
 					if ($currentState == '') {
 						$newState = 'RTL';
 						break;
@@ -226,7 +226,7 @@ function spanLTRRTL($inputText, $direction = 'BOTH', $class = '') {
 						$nextLen       = $nextCharArray['length'];
 						$tempText      = substr($tempText, $nextLen);
 
-						if (WT_I18N::scriptDirection(WT_I18N::languageScript($nextLetter)) == 'rtl') {
+						if (WT_I18N::scriptDirection(WT_I18N::textScript($nextLetter)) === 'rtl') {
 							$newState = 'RTL';
 							break 2;
 						}
