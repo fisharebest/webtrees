@@ -4699,6 +4699,11 @@ a.icon-udarrow:hover {
 	background-image: url(images/w_button.png);
 }
 
+/* ios on click workaround */
+.iconz {
+	cursor: pointer;
+}
+
 .icon-zoomin {
 	width: 25px;
 	height: 25px;

@@ -1086,6 +1086,12 @@ table#list {
 	width: 100%;
 }
 
+/* ios on click workaround */
+#list .icon-open,
+#list .icon-close {
+	cursor: pointer;
+}
+
 #list img {
 	padding-left: 15px;
 	width: 25px;
