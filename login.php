@@ -94,9 +94,12 @@ case 'login':
 		Auth::login($user);
 		Log::addAuthenticationLog('Login: ' . Auth::user()->getUserName() . '/' . Auth::user()->getRealName());
 
-		$WT_SESSION->timediff  = $timediff;
-		$WT_SESSION->locale    = Auth::user()->getPreference('language');
-		$WT_SESSION->theme_dir = Auth::user()->getPreference('theme');
+		$WT_SESSION->timediff      = $timediff;
+		$WT_SESSION->locale        = Auth::user()->getPreference('language');
+		$WT_SESSION->theme_dir     = Auth::user()->getPreference('theme');
+		$WT_SESSION->activity_time = WT_TIMESTAMP;
+
+		Auth::user()->setPreference('sessiontime', WT_TIMESTAMP);
 
 		// If we’ve clicked login from the login page, we don’t want to go back there.
 		if (strpos($url, WT_SCRIPT_NAME) === 0) {
