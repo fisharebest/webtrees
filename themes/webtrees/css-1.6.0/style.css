@@ -3404,7 +3404,7 @@ dd .deletelink {
 	width: auto;
 }
 
-.album-list-item a:hover {
+.album-list-item a:hover div {
 	outline: thin solid #bdb071;
 }
 
