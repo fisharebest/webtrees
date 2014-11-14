@@ -3,21 +3,20 @@ msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2014-10-10 13:52+0100\n"
-"PO-Revision-Date: 2013-07-27 20:59+0000\n"
-"Last-Translator: meliza <Unknown>\n"
+"PO-Revision-Date: 2014-11-14 06:06+0100\n"
+"Last-Translator: jacoline <Unknown>\n"
 "Language-Team: \n"
-"Language: \n"
+"Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Launchpad-Export-Date: 2013-08-04 19:02+0000\n"
-"X-Generator: Launchpad (build 16718)\n"
-"X-Poedit-Language: Danish\n"
+"X-Generator: Poedit 1.6.10\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-SearchPath-0: .\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
 
 #: modules_v3/ahnentafel_report/report.xml:157
 #: modules_v3/ahnentafel_report/report.xml:185
@@ -100,13 +99,13 @@ msgstr "%1$d × %2$s"
 #: includes/functions/functions.php:1698
 #, php-format
 msgid "%1$s %2$d times removed ascending"
-msgstr ""
+msgstr "Antal %1$s %2$d stigende sortering fjernet"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$d>=4
 #: includes/functions/functions.php:1701
 #, php-format
 msgid "%1$s %2$d times removed descending"
-msgstr ""
+msgstr "Antal %1$s %2$d faldende sortering fjernet"
 
 #. I18N: The placeholders are GEDCOM XREFs and tags.  e.g. “INDI I123 contains a FAMC link to F234.”
 #: admin_trees_check.php:201
@@ -363,25 +362,25 @@ msgstr[1] "%s sekunder siden"
 #: includes/functions/functions.php:1690
 #, php-format
 msgid "%s three times removed ascending"
-msgstr ""
+msgstr "3x %s stigende sortering fjernet"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: includes/functions/functions.php:1693
 #, php-format
 msgid "%s three times removed descending"
-msgstr ""
+msgstr "3x %s faldende sortering fjernet"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: includes/functions/functions.php:1682
 #, php-format
 msgid "%s twice removed ascending"
-msgstr ""
+msgstr "2x %s stigende sortering fjernet"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: includes/functions/functions.php:1685
 #, php-format
 msgid "%s twice removed descending"
-msgstr ""
+msgstr "2x %s faldende sortering fjernet"
 
 #. I18N: Part of an age string. e.g. 7 weeks and 3 days
 #: includes/functions/functions_date.php:48 library/WT/I18N.php:468
@@ -735,7 +734,7 @@ msgstr "(%1$s) har anmodet om brugerkontoen (%2$s) og verificeret e-mailadressen
 
 #: admin.php:111 admin_site_upgrade.php:85
 msgid "A new version of webtrees is available."
-msgstr ""
+msgstr "En ny version er frigivet"
 
 #. I18N: Description of the “Journal” module
 #: modules_v3/user_blog/module.php:45
@@ -904,7 +903,7 @@ msgstr "En bruger kan ikke logge ind før felterne “E-mail verificeret” og �
 
 #: help_text.php:1025
 msgid "A watermark is text that is added to an image, to discourage others from copying it without permission."
-msgstr ""
+msgstr "Et vandmærke er en tekst skrevet på et billede, for at beskytte billedet fra kopiering"
 
 #. I18N: time format “%A” - between 00:00:01 and 11:59:59
 #: includes/functions/functions_date.php:110
@@ -1318,7 +1317,7 @@ msgstr "Indsæt et mellemrum, hvor linier er delt"
 #: admin_trees_download.php:131 modules_v3/clippings/module.php:208
 #: modules_v3/clippings/module.php:586
 msgid "Add the GEDCOM media path to filenames"
-msgstr ""
+msgstr "Opret GEDCOM medie sti til filenavne"
 
 #: modules_v3/clippings/module.php:104 modules_v3/clippings/module.php:510
 msgid "Add this individual and his direct line ancestors."
@@ -1414,7 +1413,7 @@ msgstr "Administration"
 
 #: admin_trees_places.php:81
 msgid "Administration - place edit"
-msgstr ""
+msgstr "Administration - redigér stednavne"
 
 #: admin_users.php:192 admin_users.php:372 help_text.php:1397
 msgid "Administrator"
@@ -1738,7 +1737,7 @@ msgstr "Alle eksisterende PGV-brugere skal have forskellige email-adresser"
 
 #: admin_trees_config.php:1155 help_text.php:505
 msgid "All family facts"
-msgstr ""
+msgstr "Alle familie faktum"
 
 #: login.php:409
 msgid "All fields must be completed."
@@ -1746,11 +1745,11 @@ msgstr "Alle felter skal være udfyldt."
 
 #: admin_site_upgrade.php:399
 msgid "All files have read and write permission."
-msgstr ""
+msgstr "Alle filer har læse og skrive adgang"
 
 #: admin_trees_config.php:1118 help_text.php:592
 msgid "All individual facts"
-msgstr ""
+msgstr "Alle individuelle faktum"
 
 #: calendar.php:189 calendar.php:203 calendar.php:204 calendar.php:207
 #: calendar.php:208 calendar.php:441
@@ -1759,11 +1758,11 @@ msgstr "Alle personer"
 
 #: admin_trees_config.php:1221 help_text.php:798
 msgid "All repository facts"
-msgstr ""
+msgstr "Alle opbevaringsfaktum"
 
 #: admin_trees_config.php:1192 help_text.php:909
 msgid "All source facts"
-msgstr ""
+msgstr "Alle kilde faktum"
 
 #. I18N: Description of the “CKEditor” module.  WYSIWYG = “what you see is what you get”
 #: modules_v3/ckeditor/module.php:34
@@ -1834,11 +1833,11 @@ msgstr "En alternativ metode til at vælge et nyt tema"
 
 #: help_text.php:65
 msgid "An associate is another individual who was involved with this fact or event, such as a witness or a priest."
-msgstr ""
+msgstr "En relation er et andet individ som er relateret til et faktum eller en begivende, såsom et vidne eller en præst."
 
 #: help_text.php:60
 msgid "An associate is another individual who was involved with this individual, such as a friend or an employer."
-msgstr ""
+msgstr "En relation er et andet individ som er relateret til et faktum eller en begivende, såsom et ven eller en arbejdsgiver."
 
 #. I18N: Description of the “Edit” module
 #: modules_v3/page_menu/module.php:32
@@ -1848,7 +1847,7 @@ msgstr "Et redigeringsmodul for individer, familier, kilder, osv."
 #: admin_site_upgrade.php:341 admin_site_upgrade.php:361
 #: admin_site_upgrade.php:370 admin_site_upgrade.php:447
 msgid "An error occurred when unzipping the file."
-msgstr ""
+msgstr "Der opstod en fejl ved udpakning af filen"
 
 #. I18N: Description of the “Interactive tree” module
 #: modules_v3/tree/module.php:33
@@ -2038,7 +2037,7 @@ msgstr "Er du sikker på at du ønsker at slette “%s”?"
 
 #: modules_v3/lightbox/module.php:171
 msgid "Are you sure you want to remove links to this media object?"
-msgstr ""
+msgstr "Er du sikker på du ønsker at slette link til medie filen?"
 
 #: modules_v3/gedcom_favorites/module.php:119
 msgid "Are you sure you want to remove this item from your list of favorites?"
@@ -2046,7 +2045,7 @@ msgstr "Er du sikker på at du vil fjerne denne person fra din liste med favorit
 
 #: edit_changes.php:227
 msgid "Are you sure you want to undo all the changes to this family tree?"
-msgstr ""
+msgstr "Er du sikker på du ønsker at fortryde alle ændrigner?"
 
 #: library/WT/Stats.php:4777
 msgid "Argentina"
@@ -3232,15 +3231,15 @@ msgstr "Årsag for dødsfald"
 
 #: admin_trees_renumber.php:278
 msgid "Caution!  This may take a long time.  Be patient."
-msgstr ""
+msgstr "Advarsel! Dette kan tage noget tid. Vær tålmodig."
 
 #: admin_site_upgrade.php:204
 msgid "Caution: old modules may not work, or they may prevent webtrees from working."
-msgstr ""
+msgstr "Advarsel: Tidligere moduler virker måske ikke eller vil forhindre webtrees i at virke."
 
 #: admin_site_upgrade.php:267
 msgid "Caution: old themes may not work, or they may prevent webtrees from working."
-msgstr ""
+msgstr "Advarsel: Tidligere temaer virker måske ikke eller vil forhindre webtrees i at virke."
 
 #: library/WT/Stats.php:4828
 msgid "Cayman Islands"
@@ -3886,7 +3885,7 @@ msgstr "Kopier"
 #: admin_trees_merge.php:182
 #, php-format
 msgid "Copy all the records from %1$s into %2$s."
-msgstr ""
+msgstr "Kopier alle poster fra %1$s til %2$s."
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:422
@@ -4900,7 +4899,7 @@ msgstr "Denver, Colorado"
 
 #: admin_site_upgrade.php:86
 msgid "Depending on your server configuration, you may be able to upgrade automatically."
-msgstr ""
+msgstr "Afhængig af din server opsætning, vil du være i stand til automatisk opgradering"
 
 #: help_text.php:1222
 msgid "Descendant generations"
@@ -7352,7 +7351,7 @@ msgstr "Importér familietræ"
 #: admin_trees_renumber.php:260
 #: admin_trees_merge.php:73
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
-msgstr ""
+msgstr "I et familietræ har hver post et intern nummersystem (kaldet en \"XREF\") som feks “F123” eller “R14”."
 
 #: help_text.php:348
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet.  This might be of use with Japanese names, where three different alphabets may occur."
@@ -8890,7 +8889,7 @@ msgstr "Kviksølv"
 
 #: admin_trees_merge.php:30 themes/_administration/header.php:122
 msgid "Merge family trees"
-msgstr ""
+msgstr "Flet familie træer"
 
 #: admin_site_merge.php:266
 msgid "Merge from ID:"
@@ -10470,7 +10469,7 @@ msgstr "Foto"
 
 #: admin_pgv_to_wt.php:147
 msgid "PhpGedView might be installed in one of these folders:"
-msgstr ""
+msgstr "Systemet kan være installeret i een af disse mapper:"
 
 #: admin_pgv_to_wt.php:65
 msgid "PhpGedView must use the same database as webtrees."
@@ -11331,7 +11330,7 @@ msgstr "Reno, Nevada"
 #: admin_trees_merge.php:87 admin_trees_merge.php:92
 #: admin_trees_renumber.php:29
 msgid "Renumber family tree"
-msgstr ""
+msgstr "Gen-nummerer familietræet"
 
 #: admin_trees_places.php:101 search.php:119
 msgid "Replace with"
@@ -11920,7 +11919,7 @@ msgstr "Servernavn"
 #. I18N: The local time on the server
 #: themes/_administration/header.php:83
 msgid "Server time"
-msgstr ""
+msgstr "Server tid"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:90 help_text.php:728
@@ -12533,7 +12532,6 @@ msgstr "Viser %1$s til %2$s af %3$s"
 
 #: library/WT/Controller/Fanchart.php:349
 #: library/WT/Controller/Hourglass.php:398 pedigree.php:228
-#, fuzzy
 msgid "Sibling"
 msgstr "Søskende"
 
@@ -12552,7 +12550,7 @@ msgstr "Sidepanel"
 
 #: admin_module_sidebar.php:30
 msgid "Sidebars"
-msgstr ""
+msgstr "Sidepaneler"
 
 #: library/WT/Stats.php:4979
 msgid "Sierra Leone"
@@ -13262,7 +13260,7 @@ msgstr "Denne persons oplysninger er private."
 
 #: admin_trees_merge.php:176
 msgid "The family trees were merged successfully."
-msgstr ""
+msgstr "Familietræerne flettet uden fejl"
 
 #. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
 #: action.php:160
@@ -13464,7 +13462,7 @@ msgstr "Det er valgfrit at bruge præfiks, men anbefalet. Ved at give tabellen e
 #: admin_trees_renumber.php:237
 #, php-format
 msgid "The record %1$s was renamed to %2$s."
-msgstr ""
+msgstr "Posten %1$s er omdøbt til %2$s."
 
 #: action.php:100
 msgid "The record was copied to the clipboard."
@@ -13480,7 +13478,7 @@ msgstr "Serverens konfiguraion er OK."
 
 #: admin_trees_renumber.php:252
 msgid "The server’s time limit was reached."
-msgstr ""
+msgstr "Serverhukommelse er overskredet"
 
 #: site-offline.php:78
 msgid "The site is down for maintenance.  You should <a href=\"index.php\">try again</a> in a few minutes."
@@ -13525,8 +13523,8 @@ msgstr "Tiden i sekunder som en webtrees session må være aktiv før der atter 
 #, php-format
 msgid "The two family trees have %1$s record which use the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "De to familietræer er posten %1$s oprettet med den samme “XREF”."
+msgstr[1] "De to familietræer er posterne %1$s oprettet med den samme “XREF”."
 
 #: admin_site_upgrade.php:490
 msgid "The upgrade is complete."
@@ -13726,8 +13724,8 @@ msgstr "Denne familie forblev barnløs"
 #, php-format
 msgid "This family tree has %s record which uses the same “XREF” as another family tree."
 msgid_plural "This family tree has %s records which use the same “XREF” as another family tree."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Familietræet har posten %1$s som bruger den samme “XREF” i det andet træ."
+msgstr[1] "Familietræet har posterne %1$s som bruger de samme “XREF” i det andet træ."
 
 #: modules_v3/random_media/module.php:189
 msgid "This family tree has no images to display."
@@ -15599,11 +15597,11 @@ msgstr "Du kan gen-aktivere disse temaer efer opgraderingen."
 
 #: admin_trees_renumber.php:261
 msgid "You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree."
-msgstr ""
+msgstr "Du kan re-nummerere posterne i træet for at undgå dobl. referencer fra det andet familietræ"
 
 #: admin_trees_renumber.php:274
 msgid "You can renumber this family tree."
-msgstr ""
+msgstr "Du kan re-nummerere posterne i træet"
 
 #: help_text.php:643 help_text.php:682
 msgid "You can request a higher or lower limit, although the server may ignore this request."
@@ -15700,7 +15698,7 @@ msgstr "You skal indtaste en kildetitel"
 
 #: admin_trees_merge.php:83
 msgid "You must renumber the records in one of the trees before you can merge them."
-msgstr ""
+msgstr "Du er nødt til at re-nummerere posterne det ene af træerne, før du kan flette dem"
 
 #: modules_v3/charts/module.php:139
 msgid "You must select an individual and chart type in the block configuration settings."
@@ -16819,7 +16817,7 @@ msgstr "mand/kvinde"
 #. I18N: button label
 #: admin_trees_renumber.php:275
 msgid "go"
-msgstr ""
+msgstr "Kør"
 
 #. I18N: button label
 #: edit_interface.php:2740
