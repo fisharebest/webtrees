@@ -3404,7 +3404,7 @@ dd .deletelink {
 	width: auto;
 }
 
-.album-list-item a:hover {
+.album-list-item a:hover div {
 	outline: thin solid #bdb071;
 }
 
@@ -4697,6 +4697,11 @@ a.icon-udarrow:hover {
 	width: 16px;
 	height: 16px;
 	background-image: url(images/w_button.png);
+}
+
+/* ios on click workaround */
+.iconz {
+	cursor: pointer;
 }
 
 .icon-zoomin {
