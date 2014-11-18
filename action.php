@@ -242,11 +242,11 @@ case 'reject-changes':
 
 case 'theme':
 	// Change the current theme
-	$theme_dir=WT_Filter::post('theme');
-	if (WT_Site::getPreference('ALLOW_USER_THEMES') && in_array($theme_dir, get_theme_names())) {
-		$WT_SESSION->theme_dir=$theme_dir;
+	$theme = WT_Filter::post('theme');
+	if (WT_Site::getPreference('ALLOW_USER_THEMES') && in_array($theme, get_theme_names())) {
+		$WT_SESSION->theme_dir = $theme;
 		// Remember our selection
-		Auth::user()->setPreference('theme', $theme_dir);
+		Auth::user()->setPreference('theme', $theme);
 	} else {
 		// Request for a non-existant theme.
 		header('HTTP/1.0 406 Not Acceptable');

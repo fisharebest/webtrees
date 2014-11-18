@@ -75,7 +75,7 @@ class WT_Soundex {
 	 * @return null|string
 	 */
 	public static function russell($text) {
-		$words         = preg_split('/\s/', $text, PREG_SPLIT_NO_EMPTY);
+		$words         = preg_split('/\s/', $text, -1, PREG_SPLIT_NO_EMPTY);
 		$soundex_array = array();
 		foreach ($words as $word) {
 			$soundex = soundex($word);
@@ -106,7 +106,7 @@ class WT_Soundex {
 	 * @return null|string
 	 */
 	public static function daitchMokotoff($text) {
-		$words         = preg_split('/\s/', $text, PREG_SPLIT_NO_EMPTY);
+		$words         = preg_split('/\s/', $text, -1, PREG_SPLIT_NO_EMPTY);
 		$soundex_array = array();
 		foreach ($words as $word) {
 			$soundex_array = array_merge($soundex_array, self::daitchMokotoffWord($word));

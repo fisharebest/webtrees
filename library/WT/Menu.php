@@ -23,76 +23,59 @@
  * Class WT_Menu - System for generating menus.
  */
 class WT_Menu {
+	/** @var string The text to be displayed in the mneu */
 	var $label = ' ';
-	var $labelpos = 'right';
+
+	/** @var string The target URL or href*/
 	var $link = '#';
-	var $onclick = null;
-	var $flyout = 'down';
-	var $class = '';
+
+	/** @var string The CSS ID to be used for this menu item */
 	var $id = null;
-	var $submenuclass = '';
-	var $iconclass = '';
-	var $parentmenu = null;
+
+	/** @var string An onclick action, typically used with a link of "#" */
+	var $onclick = null;
 
 	/** @var WT_Menu[] */
 	var $submenus;
 
+	/** @var string Used internally to create javascript menus */
+	var $parentmenu = null;
+
+	/** @var string Used to format javascript menus */
+	var $submenuclass = '';
+
+	/** @var string Used to format javascript menus */
+	var $iconclass = '';
+
+	/** @var string Used to format javascript menus */
+	var $class = '';
+
 	/**
 	 * Constructor for the menu class
 	 *
-	 * @param string $label    The label for the menu item (usually a wt_lang variable)
-	 * @param string $link     The link that the user should be taken to when clicking on the menuitem
-	 * @param string $id       An optional CSS ID
-	 * @param string $labelpos The position of the label relative to the icon (right, left, top, bottom)
-	 * @param string $flyout   The direction where any submenus should appear relative to the menu item (right, down)
+	 * @param string    $label    The label for the menu item
+	 * @param string    $link     The target URL
+	 * @param string    $id       An CSS identifier
+	 * @param string    $onclick  A javascript onclick handler
+	 * @param WT_Menu[] $submenus Any submenus
 	 */
-	function __construct($label = ' ', $link = '#', $id = '', $labelpos = 'right', $flyout = 'down') {
-		$this->label = $label;
-		$this->labelpos = $labelpos;
-		$this->link = $link;
-		$this->id = $id;
-		$this->flyout = $flyout;
-		$this->submenus = array();
+	function __construct($label = ' ', $link = '#', $id = '', $onclick = '', $submenus = array()) {
+		$this
+			->setLabel($label)
+			->setLink($link)
+			->setId($id)
+			->setOnClick($onclick)
+			->setSubmenus($submenus);
 	}
 
 	/**
-	 * Add a label to this menu.
+	 * Convert this menu to an HTML list, for easy rendering of
+	 * lists of menus/nulls.
 	 *
-	 * @param string $label
-	 * @param string $pos
+	 * @return string
 	 */
-	function addLabel($label = ' ', $pos = 'right') {
-		if ($label) {
-			$this->label = $label;
-		}
-		$this->labelpos = $pos;
-	}
-
-	/**
-	 * Add a URL/link to this menu.
-	 *
-	 * @param string $link
-	 */
-	function addLink($link = '#') {
-		$this->link = $link;
-	}
-
-	/**
-	 * Add an onclick event to this menu.
-	 *
-	 * @param $onclick
-	 */
-	function addOnclick($onclick) {
-		$this->onclick = $onclick;
-	}
-
-	/**
-	 * Set the submenu direction for this menu.
-	 *
-	 * @param string $flyout
-	 */
-	function addFlyout($flyout = 'down') {
-		$this->flyout = $flyout;
+	public function __toString() {
+		return $this->getMenuAsList();
 	}
 
 	/**
@@ -109,6 +92,114 @@ class WT_Menu {
 	}
 
 	/**
+	 * @return string
+	 */
+	public function getId() {
+		return $this->id;
+	}
+
+	/**
+	 * @param string $id
+	 *
+	 * @return $this
+	 */
+	public function setId($id) {
+		$this->id = $id;
+
+		return $this;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getLabel() {
+		return $this->label;
+	}
+
+	/**
+	 * @param string $label
+	 *
+	 * @return $this;
+	 */
+	public function setLabel($label) {
+		$this->label = $label;
+
+		return $this;
+	}
+
+	/**
+	 * Add a label to this menu.
+	 *
+	 * @deprecated
+	 *
+	 * @param string $label
+	 * @param string $pos
+	 */
+	function addLabel($label = ' ') {
+		if ($label) {
+			$this->label = $label;
+		}
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getLink() {
+		return $this->link;
+	}
+
+	/**
+	 * @param string $link
+	 *
+	 * @return $this
+	 */
+	public function setLink($link) {
+		$this->link = $link;
+
+		return $this;
+	}
+
+	/**
+	 * Add a URL/link to this menu.
+	 *
+	 * @deprecated
+	 *
+	 * @param string $link
+	 */
+	function addLink($link = '#') {
+		$this->link = $link;
+	}
+
+	/**
+	 * @return null
+	 */
+	public function getOnclick() {
+		return $this->onclick;
+	}
+
+	/**
+	 * @param string $onclick
+	 *
+	 * @return $this
+	 */
+	public function setOnclick($onclick) {
+		$this->onclick = $onclick;
+
+		return $this;
+	}
+
+	/**
+	 * Add an onclick event to this menu.
+	 *
+	 * @deprecated
+	 *
+	 * @param $onclick
+	 */
+	function addOnclick($onclick) {
+		$this->onclick = $onclick;
+	}
+
+	/**
 	 * Add a submenu to this menu
 	 *
 	 * @param WT_Menu []
@@ -118,13 +209,55 @@ class WT_Menu {
 	}
 
 	/**
-	 * Convert this menu to an HTML list, for easy rendering of
-	 * lists of menus/nulls.
+	 * Render this menu using javascript popups..
 	 *
 	 * @return string
 	 */
-	public function __toString() {
-		return $this->getMenuAsList();
+	function getMenu() {
+		global $menucount, $TEXT_DIRECTION;
+
+		if (!isset($menucount)) {
+			$menucount = 0;
+		} else {
+			$menucount++;
+		}
+		$id = $menucount . rand();
+		$c = count($this->submenus);
+		$output = "<div id=\"menu{$id}\" class=\"{$this->class}\">";
+		$link = "<a href=\"{$this->link}\" onmouseover=\"";
+		if ($c >= 0) {
+			$link .= "show_submenu('menu{$id}_subs', 'menu{$id}');";
+		}
+		$link .= '" onmouseout="';
+		if ($c >= 0) {
+			$link .= "timeout_submenu('menu{$id}_subs');";
+		}
+		if ($this->onclick !== null) {
+			$link .= "\" onclick=\"{$this->onclick}";
+		}
+		$link .= "\">";
+		$output .= $link;
+		$output .= $this->label;
+		$output .= "</a>";
+
+		if ($c > 0) {
+			$submenuid = "menu{$id}_subs";
+			if ($TEXT_DIRECTION == 'ltr') {
+				$output .= '<div style="text-align: left;">';
+			} else {
+				$output .= '<div style="text-align: right;">';
+			}
+			$output .= "<div id=\"menu{$id}_subs\" class=\"{$this->submenuclass}\" style=\"position: absolute; visibility: hidden; z-index: 100;";
+			$output .= "\" onmouseover=\"show_submenu('{$this->parentmenu}'); show_submenu('{$submenuid}');\" onmouseout=\"timeout_submenu('menu{$id}_subs');\">";
+			foreach ($this->submenus as $submenu) {
+				$submenu->parentmenu = $submenuid;
+				$output .= $submenu->getMenu();
+			}
+			$output .= "</div></div>";
+		}
+		$output .= "</div>";
+
+		return $output;
 	}
 
 	/**
@@ -166,70 +299,20 @@ class WT_Menu {
 	}
 
 	/**
-	 * Render this menu using javascript popups..
-	 *
-	 * @return string
+	 * @return WT_Menu[]
 	 */
-	function getMenu() {
-		global $menucount, $TEXT_DIRECTION;
-
-		if (!isset($menucount)) {
-			$menucount = 0;
-		} else {
-			$menucount++;
-		}
-		$id = $menucount . rand();
-		$c = count($this->submenus);
-		$output = "<div id=\"menu{$id}\" class=\"{$this->class}\">";
-		$link = "<a href=\"{$this->link}\" onmouseover=\"";
-		if ($c >= 0) {
-			$link .= "show_submenu('menu{$id}_subs', 'menu{$id}', '{$this->flyout}');";
-		}
-		$link .= '" onmouseout="';
-		if ($c >= 0) {
-			$link .= "timeout_submenu('menu{$id}_subs');";
-		}
-		if ($this->onclick !== null) {
-			$link .= "\" onclick=\"{$this->onclick}";
-		}
-		$link .= "\">";
-		$output .= $link;
-		$output .= $this->label;
-		$output .= "</a>";
-
-		if ($c > 0) {
-			$submenuid = "menu{$id}_subs";
-			if ($TEXT_DIRECTION == 'ltr') {
-				$output .= '<div style="text-align: left;">';
-			} else {
-				$output .= '<div style="text-align: right;">';
-			}
-			$output .= "<div id=\"menu{$id}_subs\" class=\"{$this->submenuclass}\" style=\"position: absolute; visibility: hidden; z-index: 100;";
-			if ($this->flyout == 'right') {
-				if ($TEXT_DIRECTION == 'ltr') {
-					$output .= ' left: 80px;';
-				} else {
-					$output .= ' right: 50px;';
-				}
-			}
-			$output .= "\" onmouseover=\"show_submenu('{$this->parentmenu}'); show_submenu('{$submenuid}');\" onmouseout=\"timeout_submenu('menu{$id}_subs');\">";
-			foreach ($this->submenus as $submenu) {
-				$submenu->parentmenu = $submenuid;
-				$output .= $submenu->getMenu();
-			}
-			$output .= "</div></div>";
-		}
-		$output .= "</div>";
-
-		return $output;
+	public function getSubmenus() {
+		return $this->submenus;
 	}
 
 	/**
-	 * returns the number of submenus in this menu
+	 * @param WT_Menu[] $submenus
 	 *
-	 * @return integer
+	 * @return $this
 	 */
-	function subCount() {
-		return count($this->submenus);
+	public function setSubmenus(array $submenus) {
+		$this->submenus = $submenus;
+
+		return $this;
 	}
 }
