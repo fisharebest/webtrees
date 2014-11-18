@@ -459,7 +459,6 @@ abstract class WT_Module {
 				}
 			}
 		}
-		uasort($modules, create_function('$x,$y', 'return WT_I18N::strcasecmp((string)$x, (string)$y);'));
 
 		return $modules;
 	}
