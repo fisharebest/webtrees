@@ -105,12 +105,12 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Tab {
 				// Notes Tooltip ----------------------------------------------------
 				$submenu->setOnclick("modalNotes('". WT_Filter::escapeJs($notes) . "','". WT_I18N::translate('View notes') . "'); return false;");
 				$submenu->addClass("submenuitem");
-				$menu->addSubMenu($submenu);
+				$menu->addSubmenu($submenu);
 			}
 			//View Details
 			$submenu = new WT_Menu(WT_I18N::translate('View details'), $media->getHtmlUrl());
 			$submenu->addClass("submenuitem");
-			$menu->addSubMenu($submenu);
+			$menu->addSubmenu($submenu);
 
 			//View Sources
 			foreach ($media->getFacts('SOUR') as $source_fact) {
@@ -118,7 +118,7 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Tab {
 				if ($source && $source->canShow()) {
 					$submenu = new WT_Menu(WT_I18N::translate('Source') . ' – ' . $source->getFullName(), $source->getHtmlUrl());
 					$submenu->addClass('submenuitem');
-					$menu->addSubMenu($submenu);
+					$menu->addSubmenu($submenu);
 				}
 			}
 
@@ -127,33 +127,33 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Tab {
 				$submenu = new WT_Menu(WT_I18N::translate('Edit media'));
 				$submenu->setOnclick("return window.open('addmedia.php?action=editmedia&amp;pid=".$media->getXref()."', '_blank', edit_window_specs);");
 				$submenu->addClass("submenuitem");
-				$menu->addSubMenu($submenu);
+				$menu->addSubmenu($submenu);
 				if (Auth::isAdmin()) {
 					if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
 						$submenu = new WT_Menu(WT_I18N::translate('Manage links'));
 						$submenu->setOnclick("return window.open('inverselink.php?mediaid=".$media->getXref()."&amp;linkto=manage', '_blank', find_window_specs);");
 						$submenu->addClass("submenuitem");
-						$menu->addSubMenu($submenu);
+						$menu->addSubmenu($submenu);
 					} else {
 						$submenu = new WT_Menu(WT_I18N::translate('Link this media object to an individual'), '#', 'menu-obje-link-indi');
 						$submenu->setOnclick("return ilinkitem('" . $media->getXref() . "','person');");
 						$submenu->addClass('submenuitem');
-						$menu->addSubMenu($submenu);
+						$menu->addSubmenu($submenu);
 
 						$submenu = new WT_Menu(WT_I18N::translate('Link this media object to a family'), '#', 'menu-obje-link-fam');
 						$submenu->setOnclick("return ilinkitem('" . $media->getXref() . "','family');");
 						$submenu->addClass('submenuitem');
-						$menu->addSubMenu($submenu);
+						$menu->addSubmenu($submenu);
 
 						$submenu = new WT_Menu(WT_I18N::translate('Link this media object to a source'), '#', 'menu-obje-link-sour');
 						$submenu->setOnclick("return ilinkitem('" . $media->getXref() . "','source');");
 						$submenu->addClass('submenuitem');
-						$menu->addSubMenu($submenu);
+						$menu->addSubmenu($submenu);
 					}
 					$submenu = new WT_Menu(WT_I18N::translate('Unlink media'));
 					$submenu->setOnclick("return unlink_media('" . WT_I18N::translate('Are you sure you want to remove links to this media object?') . "', '" . $controller->record->getXref() . "', '" . $media->getXref() . "');");
 					$submenu->addClass("submenuitem");
-					$menu->addSubMenu($submenu);
+					$menu->addSubmenu($submenu);
 				}
 			}
 			$html .= '<li class="album-list-item">';

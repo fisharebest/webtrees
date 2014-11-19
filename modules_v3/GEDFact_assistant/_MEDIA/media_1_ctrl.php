@@ -124,7 +124,7 @@ if ($pid=="") {
 					print_pedigree_person_nav_media($people["husb"]->getXref());
 					$slabel = $parentlinks;
 					$submenu = new WT_Menu($slabel);
-					$menu->addSubMenu($submenu);
+					$menu->addSubmenu($submenu);
 
 
 					echo '<tr>';
@@ -161,7 +161,7 @@ if ($pid=="") {
 					print_pedigree_person_nav_media($people["wife"]->getXref());
 					$slabel = $parentlinks;
 					$submenu = new WT_Menu($slabel);
-					$menu->addSubMenu($submenu);
+					$menu->addSubmenu($submenu);
 					?>
 					<tr>
 						<td class="facts_value">
@@ -198,7 +198,7 @@ if ($pid=="") {
 						print_pedigree_person_nav_media($child->getXref());
 						$slabel = $spouselinks;
 						$submenu = new WT_Menu($slabel);
-						$menu->addSubMenu($submenu);
+						$menu->addSubmenu($submenu);
 
 						if ($child->getXref()==$pid) {
 							//Only print Head of Family in Immediate Family Block
@@ -257,7 +257,7 @@ if ($pid=="") {
 					print_pedigree_person_nav_media($people["husb"]->getXref());
 					$slabel = $parentlinks;
 					$submenu = new WT_Menu($slabel);
-					$menu->addSubMenu($submenu);
+					$menu->addSubmenu($submenu);
 					if ($people["husb"]->getDeathYear() == 0) { $DeathYr = ""; } else { $DeathYr = $people["husb"]->getDeathYear(); }
 					if ($people["husb"]->getBirthYear() == 0) { $BirthYr = ""; } else { $BirthYr = $people["husb"]->getBirthYear(); }
 					?>
@@ -295,7 +295,7 @@ if ($pid=="") {
 					print_pedigree_person_nav_media($people["wife"]->getXref());
 					$slabel = $parentlinks;
 					$submenu = new WT_Menu($slabel);
-					$menu->addSubMenu($submenu);
+					$menu->addSubmenu($submenu);
 					if ($people["wife"]->getDeathYear() == 0) { $DeathYr = ""; } else { $DeathYr = $people["wife"]->getDeathYear(); }
 					if ($people["wife"]->getBirthYear() == 0) { $BirthYr = ""; } else { $BirthYr = $people["wife"]->getBirthYear(); }
 					?>
@@ -335,7 +335,7 @@ if ($pid=="") {
 						print_pedigree_person_nav_media($child->getXref());
 						$slabel = $spouselinks;
 						$submenu = new WT_Menu($slabel);
-						$menu->addSubMenu($submenu); if ($child->getDeathYear() == 0) { $DeathYr = ""; } else { $DeathYr = $child->getDeathYear(); }
+						$menu->addSubmenu($submenu); if ($child->getDeathYear() == 0) { $DeathYr = ""; } else { $DeathYr = $child->getDeathYear(); }
 						if ($child->getBirthYear() == 0) { $BirthYr = ""; } else { $BirthYr = $child->getBirthYear(); }
 						?>
 						<tr>
@@ -388,7 +388,7 @@ if ($pid=="") {
 					print_pedigree_person_nav_media($people["husb"]->getXref());
 					$slabel = $parentlinks;
 					$submenu = new WT_Menu($slabel);
-					$menu->addSubMenu($submenu);
+					$menu->addSubmenu($submenu);
 					if ($people["husb"]->getDeathYear() == 0) { $DeathYr = ""; } else { $DeathYr = $people["husb"]->getDeathYear(); }
 					if ($people["husb"]->getBirthYear() == 0) { $BirthYr = ""; } else { $BirthYr = $people["husb"]->getBirthYear(); }
 					?>
@@ -427,7 +427,7 @@ if ($pid=="") {
 					print_pedigree_person_nav_media($people["wife"]->getXref());
 					$slabel = $parentlinks;
 					$submenu = new WT_Menu($slabel);
-					$menu->addSubMenu($submenu);
+					$menu->addSubmenu($submenu);
 					if ($people["wife"]->getDeathYear() == 0) { $DeathYr = ""; } else { $DeathYr = $people["wife"]->getDeathYear(); }
 					if ($people["wife"]->getBirthYear() == 0) { $BirthYr = ""; } else { $BirthYr = $people["wife"]->getBirthYear(); }
 					?>

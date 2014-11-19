@@ -119,26 +119,12 @@ class WT_Menu {
 	/**
 	 * @param string $label
 	 *
-	 * @return $this;
+	 * @return $this
 	 */
 	public function setLabel($label) {
 		$this->label = $label;
 
 		return $this;
-	}
-
-	/**
-	 * Add a label to this menu.
-	 *
-	 * @deprecated
-	 *
-	 * @param string $label
-	 * @param string $pos
-	 */
-	function addLabel($label = ' ') {
-		if ($label) {
-			$this->label = $label;
-		}
 	}
 
 	/**
@@ -160,17 +146,6 @@ class WT_Menu {
 	}
 
 	/**
-	 * Add a URL/link to this menu.
-	 *
-	 * @deprecated
-	 *
-	 * @param string $link
-	 */
-	function addLink($link = '#') {
-		$this->link = $link;
-	}
-
-	/**
 	 * @return null
 	 */
 	public function getOnclick() {
@@ -189,22 +164,11 @@ class WT_Menu {
 	}
 
 	/**
-	 * Add an onclick event to this menu.
-	 *
-	 * @deprecated
-	 *
-	 * @param $onclick
-	 */
-	function addOnclick($onclick) {
-		$this->onclick = $onclick;
-	}
-
-	/**
 	 * Add a submenu to this menu
 	 *
 	 * @param WT_Menu []
 	 */
-	function addSubMenu($obj) {
+	function addSubmenu($obj) {
 		$this->submenus[] = $obj;
 	}
 

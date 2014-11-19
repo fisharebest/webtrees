@@ -431,7 +431,7 @@ class WT_MenuBar {
 			foreach (get_theme_names() as $themename=>$themedir) {
 				$submenu=new WT_Menu($themename, get_query_url(array('theme'=>$themedir), '&amp;'), 'menu-theme-'.$themedir);
 				if (WT_THEME_DIR == 'themes/'.$themedir.'/') {$submenu->addClass('','','theme-active');}
-				$menu->addSubMenu($submenu);
+				$menu->addSubmenu($submenu);
 			}
 			return $menu;
 		} else {
@@ -453,7 +453,7 @@ class WT_MenuBar {
 			foreach (WT_I18N::installed_languages() as $lang=>$name) {
 				$submenu=new WT_Menu($name, get_query_url(array('lang'=>$lang), '&amp;'), 'menu-language-'.$lang);
 				if (WT_LOCALE == $lang) {$submenu->addClass('','','lang-active');}
-				$menu->addSubMenu($submenu);
+				$menu->addSubmenu($submenu);
 			}
 			if (count($menu->submenus)>1) {
 				return $menu;
@@ -497,7 +497,7 @@ class WT_MenuBar {
 			switch($favorite['type']) {
 			case 'URL':
 				$submenu=new WT_Menu($favorite['title'], $favorite['url']);
-				$menu->addSubMenu($submenu);
+				$menu->addSubmenu($submenu);
 				break;
 			case 'INDI':
 			case 'FAM':
@@ -507,7 +507,7 @@ class WT_MenuBar {
 				$obj=WT_GedcomRecord::getInstance($favorite['gid']);
 				if ($obj && $obj->canShowName()) {
 					$submenu=new WT_Menu($obj->getFullName(), $obj->getHtmlUrl());
-					$menu->addSubMenu($submenu);
+					$menu->addSubmenu($submenu);
 				}
 				break;
 			}
@@ -517,7 +517,7 @@ class WT_MenuBar {
 			if (isset($controller->record) && $controller->record instanceof WT_GedcomRecord) {
 				$submenu=new WT_Menu(WT_I18N::translate('Add to favorites'), '#');
 				$submenu->setOnclick("jQuery.post('module.php?mod=user_favorites&amp;mod_action=menu-add-favorite',{xref:'".$controller->record->getXref()."'},function(){location.reload();})");
-				$menu->addSubMenu($submenu);
+				$menu->addSubmenu($submenu);
 			}
 		}
 		return $menu;
