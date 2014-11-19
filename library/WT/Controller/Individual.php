@@ -276,40 +276,39 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 		}
 		// edit menu
 		$menu = new WT_Menu(WT_I18N::translate('Edit'), '#', 'menu-indi');
-		$menu->addLabel($menu->label, 'down');
 
 		// What behaviour shall we give the main menu?  If we leave it blank, the framework
 		// will copy the first submenu - which may be edit-raw or delete.
 		// As a temporary solution, make it edit the name
-		$menu->addOnclick("return false;");
+		$menu->setOnclick("return false;");
 		if (WT_USER_CAN_EDIT) {
 			foreach ($this->record->getFacts() as $fact) {
 				if ($fact->getTag()=='NAME' && $fact->canEdit())
-					$menu->addOnclick("return edit_name('".$this->record->getXref() . "', '" . $fact->getFactId() . "');");
+					$menu->setOnclick("return edit_name('".$this->record->getXref() . "', '" . $fact->getFactId() . "');");
 					break;
 			}
 
 			$submenu = new WT_Menu(WT_I18N::translate('Add a new name'), '#', 'menu-indi-addname');
-			$submenu->addOnclick("return add_name('".$this->record->getXref()."');");
+			$submenu->setOnclick("return add_name('".$this->record->getXref()."');");
 			$menu->addSubmenu($submenu);
 
 			$has_sex_record = false;
 			$submenu = new WT_Menu(WT_I18N::translate('Edit gender'), '#', 'menu-indi-editsex');
 			foreach ($this->record->getFacts() as $fact) {
 				if ($fact->getTag()=='SEX' && $fact->canEdit()) {
-					$submenu->addOnclick("return edit_record('" . $this->record->getXref() . "', '" . $fact->getFactId() . "');");
+					$submenu->setOnclick("return edit_record('" . $this->record->getXref() . "', '" . $fact->getFactId() . "');");
 					$has_sex_record = true;
 					break;
 				}
 			}
 			if (!$has_sex_record) {
-				$submenu->addOnclick("return add_new_record('" . $this->record->getXref() . "', 'SEX');");
+				$submenu->setOnclick("return add_new_record('" . $this->record->getXref() . "', 'SEX');");
 			}
 			$menu->addSubmenu($submenu);
 
 			if (count($this->record->getSpouseFamilies())>1) {
 				$submenu = new WT_Menu(WT_I18N::translate('Re-order families'), '#', 'menu-indi-orderfam');
-				$submenu->addOnclick("return reorder_families('".$this->record->getXref()."');");
+				$submenu->setOnclick("return reorder_families('".$this->record->getXref()."');");
 				$menu->addSubmenu($submenu);
 			}
 		}
@@ -317,14 +316,14 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 		// delete
 		if (WT_USER_CAN_EDIT) {
 			$submenu = new WT_Menu(WT_I18N::translate('Delete'), '#', 'menu-indi-del');
-			$submenu->addOnclick("return delete_individual('".WT_I18N::translate('Are you sure you want to delete “%s”?', WT_Filter::escapeJs(strip_tags($this->record->getFullName())))."', '".$this->record->getXref()."');");
+			$submenu->setOnclick("return delete_individual('".WT_I18N::translate('Are you sure you want to delete “%s”?', WT_Filter::escapeJs(strip_tags($this->record->getFullName())))."', '".$this->record->getXref()."');");
 			$menu->addSubmenu($submenu);
 		}
 
 		// edit raw
 		if (Auth::isAdmin() || WT_USER_CAN_EDIT && $SHOW_GEDCOM_RECORD) {
 			$submenu = new WT_Menu(WT_I18N::translate('Edit raw GEDCOM'), '#', 'menu-indi-editraw');
-			$submenu->addOnclick("return edit_raw('" . $this->record->getXref() . "');");
+			$submenu->setOnclick("return edit_raw('" . $this->record->getXref() . "');");
 			$menu->addSubmenu($submenu);
 		}
 
@@ -335,7 +334,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 				'#',
 				'menu-indi-addfav'
 			);
-			$submenu->addOnclick("jQuery.post('module.php?mod=user_favorites&amp;mod_action=menu-add-favorite',{xref:'".$this->record->getXref()."'},function(){location.reload();})");
+			$submenu->setOnclick("jQuery.post('module.php?mod=user_favorites&amp;mod_action=menu-add-favorite',{xref:'".$this->record->getXref()."'},function(){location.reload();})");
 			$menu->addSubmenu($submenu);
 		}
 

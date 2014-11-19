@@ -68,9 +68,6 @@ if ($action === 'ajax') {
 		$module     = new $class_name;
 		$module->getBlock($block_id);
 	}
-	if (WT_DEBUG) {
-		echo execution_stats();
-	}
 	if (WT_DEBUG_SQL) {
 		echo WT_DB::getQueryLog();
 	}

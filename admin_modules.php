@@ -71,8 +71,6 @@ case 'delete_module':
 	WT_DB::prepare("DELETE FROM `##module_setting` WHERE module_name=?")->execute(array($module_name));
 	WT_DB::prepare("DELETE FROM `##module_privacy` WHERE module_name=?")->execute(array($module_name));
 	WT_DB::prepare("DELETE FROM `##module`         WHERE module_name=?")->execute(array($module_name));
-	unset($modules[$module_name]);
-	unset($module_status[$module_name]);
 
 	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'admin_modules.php');
 	exit;
