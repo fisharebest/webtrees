@@ -233,8 +233,12 @@ case 'setup':
 			foreach ($options as $option) {
 				$opt = explode('=>', $option);
 				list($value, $display) = $opt;
-				if (substr($display, 0, 18) == 'WT_I18N::translate' || substr($display, 0, 15) == 'WT_I18N::number' || substr($display, 0, 23) == 'WT_Gedcom_Tag::getLabel') {
-					eval("\$display=$display;");
+				if (preg_match('/^WT_I18N::number\((.+)\)$/', $display, $match)) {
+					$display = WT_I18N::number($match[1]);
+				} elseif (preg_match('/^WT_I18N::translate\(\'(.+)\'\)$/', $display, $match)) {
+					$display = WT_I18N::translate($match[1]);
+				} elseif (preg_match('/^WT_I18N::translate_c\(\'(.+)\', *\'(.+)\'\)$/', $display, $match)) {
+					$display = WT_I18N::translate_c($match[1], $match[2]);
 				}
 				echo '<option value="', WT_Filter::escapeHtml($value), '"';
 				if ($opt[0] == $input['default']) {
