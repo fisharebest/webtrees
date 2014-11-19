@@ -516,7 +516,7 @@ class WT_MenuBar {
 		if ($show_user_favs) {
 			if (isset($controller->record) && $controller->record instanceof WT_GedcomRecord) {
 				$submenu=new WT_Menu(WT_I18N::translate('Add to favorites'), '#');
-				$submenu->addOnclick("jQuery.post('module.php?mod=user_favorites&amp;mod_action=menu-add-favorite',{xref:'".$controller->record->getXref()."'},function(){location.reload();})");
+				$submenu->setOnclick("jQuery.post('module.php?mod=user_favorites&amp;mod_action=menu-add-favorite',{xref:'".$controller->record->getXref()."'},function(){location.reload();})");
 				$menu->addSubMenu($submenu);
 			}
 		}

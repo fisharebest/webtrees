@@ -59,7 +59,7 @@ class WT_Menu {
 	 * @param string    $onclick  A javascript onclick handler
 	 * @param WT_Menu[] $submenus Any submenus
 	 */
-	function __construct($label = ' ', $link = '#', $id = '', $onclick = '', $submenus = array()) {
+	function __construct($label, $link = '#', $id = '', $onclick = '', $submenus = array()) {
 		$this
 			->setLabel($label)
 			->setLink($link)
@@ -232,7 +232,7 @@ class WT_Menu {
 		if ($c >= 0) {
 			$link .= "timeout_submenu('menu{$id}_subs');";
 		}
-		if ($this->onclick !== null) {
+		if ($this->onclick) {
 			$link .= "\" onclick=\"{$this->onclick}";
 		}
 		$link .= "\">";
@@ -261,41 +261,41 @@ class WT_Menu {
 	}
 
 	/**
-	 * Render this menu as an HTML list - for accessible interfaces, search engines and CSS menus
+	 * Render this menu as an HTML list
 	 *
 	 * @return string
 	 */
 	function getMenuAsList() {
-		$link = '';
-		if ($this->link) {
-			if ($this->link == '#') {
-				if ($this->onclick !== null) {
-					$link .= ' onclick="' . $this->onclick . '"';
-				}
-				$html = '<a class="' . $this->iconclass . '" href="' . $this->link . '"' . $link . '>' . $this->label . '</a>';
-			} else {
-				$html = '<a class="' . $this->iconclass . '" href="' . $this->link . '"' . $link . '>' . $this->label . '</a>';
-			}
+		if ($this->iconclass) {
+			$class = ' class="' . $this->iconclass . '"';
 		} else {
-			$html = $this->label;
+			$class = '';
 		}
+		if ($this->onclick) {
+			$onclick = ' onclick="' . $this->onclick . '"';
+		} else {
+			$onclick = '';
+		}
+		if ($this->link) {
+			$link = ' href="' . $this->link . '"';
+		} else {
+			$link = '';
+		}
+		if ($this->id) {
+			$id = ' id="' . $this->id . '"';
+		} else {
+			$id = '';
+		}
+		$html = '<a' . $link . $class . $onclick . '>' . $this->label . '</a>';
 		if ($this->submenus) {
 			$html .= '<ul>';
 			foreach ($this->submenus as $submenu) {
-				if ($submenu) {
-					if ($submenu->submenus) {
-						$submenu->iconclass .= ' icon_arrow';
-					}
-					$html .= $submenu->getMenuAsList();
-				}
+				$html .= $submenu->getMenuAsList();
 			}
 			$html .= '</ul>';
 		}
-		if ($this->id) {
-			return '<li id="' . $this->id . '">' . $html . '</li>';
-		} else {
-			return '<li>' . $html . '</li>';
-		}
+
+		return '<li' . $id . '>' . $html . '</li>';
 	}
 
 	/**
