@@ -65,15 +65,15 @@ class WT_Controller_Media extends WT_Controller_GedcomRecord {
 			} else {
 				$submenu = new WT_Menu(WT_I18N::translate('Link this media object to an individual'), '#', 'menu-obje-link-indi');
 				$submenu->setOnclick("return ilinkitem('" . $this->record->getXref() . "','person');");
-				$menu->addSubMenu($submenu);
+				$menu->addSubmenu($submenu);
 
 				$submenu = new WT_Menu(WT_I18N::translate('Link this media object to a family'), '#', 'menu-obje-link-fam');
 				$submenu->setOnclick("return ilinkitem('" . $this->record->getXref() . "','family');");
-				$menu->addSubMenu($submenu);
+				$menu->addSubmenu($submenu);
 
 				$submenu = new WT_Menu(WT_I18N::translate('Link this media object to a source'), '#', 'menu-obje-link-sour');
 				$submenu->setOnclick("return ilinkitem('" . $this->record->getXref() . "','source');");
-				$menu->addSubMenu($submenu);
+				$menu->addSubmenu($submenu);
 			}
 		}
 
@@ -155,13 +155,13 @@ class WT_Controller_Media extends WT_Controller_GedcomRecord {
 		$menu->setOnclick("return ilinkitem('" . $mediaobject->getXref() . "','person')");
 		$submenu = new WT_Menu(WT_I18N::translate('Link this media object to an individual'), '#');
 		$submenu->setOnclick("return ilinkitem('" . $mediaobject->getXref() . "','person')");
-		$menu->addSubMenu($submenu);
+		$menu->addSubmenu($submenu);
 		$submenu = new WT_Menu(WT_I18N::translate('Link this media object to a family'), '#');
 		$submenu->setOnclick("return ilinkitem('" . $mediaobject->getXref() . "','family')");
-		$menu->addSubMenu($submenu);
+		$menu->addSubmenu($submenu);
 		$submenu = new WT_Menu(WT_I18N::translate('Link this media object to a source'), '#');
 		$submenu->setOnclick("return ilinkitem('" . $mediaobject->getXref() . "','source')");
-		$menu->addSubMenu($submenu);
+		$menu->addSubmenu($submenu);
 		$html .= $menu->getMenuAsList();
 		$menu = new WT_Menu(WT_I18N::translate('View details'), $mediaobject->getHtmlUrl());
 		$menu->addClass('', '', 'lb-image_view');

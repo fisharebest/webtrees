@@ -1018,7 +1018,7 @@ class WT_GedcomRecord {
 	/**
 	 * Get the first (i.e. prefered) WT_Fact for the given fact type
 	 *
-	 * @param $tag
+	 * @param string $tag
 	 *
 	 * @return null|WT_Fact
 	 */
