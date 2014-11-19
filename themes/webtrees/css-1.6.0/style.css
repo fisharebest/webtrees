@@ -2808,11 +2808,11 @@ div.faq_body {
 }
 
 #menu-obje-link-indi {
-	background-position: left -300px;
+	background-position: left -120px;
 }
 
 [dir=rtl] #menu-obje-link-indi {
-	background-position: right -300px;
+	background-position: right -120px;
 }
 
 #menu-obje-link-sour {

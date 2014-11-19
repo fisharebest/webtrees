@@ -512,17 +512,17 @@ function mediaObjectInfo(WT_Media $media) {
 		$submenu = new WT_Menu(WT_I18N::translate('Link this media object to an individual'));
 		$submenu->addClass("submenuitem".$classSuffix);
 		$submenu->setOnclick("return ilinkitem('$xref', 'person', '$gedcom')");
-		$menu->addSubMenu($submenu);
+		$menu->addSubmenu($submenu);
 
 		$submenu = new WT_Menu(WT_I18N::translate('Link this media object to a family'));
 		$submenu->addClass("submenuitem".$classSuffix);
 		$submenu->setOnclick("return ilinkitem('$xref', 'family', '$gedcom')");
-		$menu->addSubMenu($submenu);
+		$menu->addSubmenu($submenu);
 
 		$submenu = new WT_Menu(WT_I18N::translate('Link this media object to a source'));
 		$submenu->addClass("submenuitem".$classSuffix);
 		$submenu->setOnclick("return ilinkitem('$xref', 'source', '$gedcom')");
-		$menu->addSubMenu($submenu);
+		$menu->addSubmenu($submenu);
 		$html .= '<div style="display:inline-block;">' . $menu->getMenu() . '</div>';
 	}
 	$html .= '<br><br>';

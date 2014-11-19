@@ -115,7 +115,11 @@ class I18NTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testUnknownLanguageName() {
-		$this->assertSame('English (India)', WT_I18N::languageName('en-IN'));
+		if (class_exists('\Locale')) {
+			$this->assertSame('English (India)', WT_I18N::languageName('en-IN'));
+		} else {
+			$this->assertSame('en-IN', WT_I18N::languageName('en-IN'));
+		}
 	}
 
 	/**
