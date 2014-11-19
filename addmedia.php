@@ -624,55 +624,62 @@ if ($gedrec == '') {
 add_simple_tag("1 $gedprim");
 
 //-- print out editing fields for any other data in the media record
-$sourceSOUR = '';
+$sourceLevel = 0;
+$sourceSOUR  = '';
+$sourcePAGE  = '';
+$sourceTEXT  = '';
+$sourceDATE  = '';
+$sourceQUAY  = '';
 if (!empty($gedrec)) {
 	preg_match_all('/\n(1 (?!FILE|FORM|TYPE|TITL|_PRIM|_THUM|CHAN|DATA).*(\n[2-9] .*)*)/', $gedrec, $matches);
 	foreach ($matches[1] as $subrec) {
 		$pieces = explode("\n", $subrec);
 		foreach ($pieces as $piece) {
 			$ft = preg_match("/(\d) (\w+)(.*)/", $piece, $match);
-			if ($ft == 0) continue;
-			$subLevel = $match[1];
-			$fact = trim($match[2]);
-			$event = trim($match[3]);
-			if ($fact=='NOTE' || $fact=='TEXT') {
-				$event .= get_cont(($subLevel +1), $subrec);
+			if ($ft == 0) {
+				continue;
 			}
-			if ($sourceSOUR!='' && $subLevel<=$sourceLevel) {
+			$subLevel = $match[1];
+			$fact     = trim($match[2]);
+			$event    = trim($match[3]);
+			if ($fact === 'NOTE' || $fact === 'TEXT') {
+				$event .= get_cont($subLevel + 1, $subrec);
+			}
+			if ($sourceSOUR !== '' && $subLevel <= $sourceLevel) {
 				// Get rid of all saved Source data
-				add_simple_tag($sourceLevel .' SOUR '. $sourceSOUR);
-				add_simple_tag(($sourceLevel+1) .' PAGE '. $sourcePAGE);
-				add_simple_tag(($sourceLevel+2) .' TEXT '. $sourceTEXT);
-				add_simple_tag(($sourceLevel+2) .' DATE '. $sourceDATE, '', WT_Gedcom_Tag::getLabel('DATA:DATE'));
-				add_simple_tag(($sourceLevel+1) .' QUAY '. $sourceQUAY);
+				add_simple_tag($sourceLevel . ' SOUR ' . $sourceSOUR);
+				add_simple_tag(($sourceLevel + 1) . ' PAGE ' . $sourcePAGE);
+				add_simple_tag(($sourceLevel + 2) . ' TEXT ' . $sourceTEXT);
+				add_simple_tag(($sourceLevel + 2) . ' DATE ' . $sourceDATE, '', WT_Gedcom_Tag::getLabel('DATA:DATE'));
+				add_simple_tag(($sourceLevel + 1) . ' QUAY ' . $sourceQUAY);
 				$sourceSOUR = '';
 			}
 
-			if ($fact=='SOUR') {
+			if ($fact === 'SOUR') {
 				$sourceLevel = $subLevel;
-				$sourceSOUR = $event;
-				$sourcePAGE = '';
-				$sourceTEXT = '';
-				$sourceDATE = '';
-				$sourceQUAY = '';
+				$sourceSOUR  = $event;
+				$sourcePAGE  = '';
+				$sourceTEXT  = '';
+				$sourceDATE  = '';
+				$sourceQUAY  = '';
 				continue;
 			}
 
 			// Save all incoming data about this source reference
-			if ($sourceSOUR!='') {
-				if ($fact=='PAGE') {
+			if ($sourceSOUR !== '') {
+				if ($fact === 'PAGE') {
 					$sourcePAGE = $event;
 					continue;
 				}
-				if ($fact=='TEXT') {
+				if ($fact === 'TEXT') {
 					$sourceTEXT = $event;
 					continue;
 				}
-				if ($fact=='DATE') {
+				if ($fact === 'DATE') {
 					$sourceDATE = $event;
 					continue;
 				}
-				if ($fact=='QUAY') {
+				if ($fact === 'QUAY') {
 					$sourceQUAY = $event;
 					continue;
 				}
@@ -680,19 +687,19 @@ if (!empty($gedrec)) {
 			}
 
 			// Output anything that isn’t part of a source reference
-			if (!empty($fact) && $fact != 'CONC' && $fact != 'CONT' && $fact != 'DATA') {
-				add_simple_tag($subLevel .' '. $fact .' '. $event);
+			if (!empty($fact) && $fact !== 'CONC' && $fact !== 'CONT' && $fact !== 'DATA') {
+				add_simple_tag($subLevel . ' ' . $fact . ' ' . $event);
 			}
 		}
 	}
 
-	if ($sourceSOUR!='') {
+	if ($sourceSOUR !== '') {
 		// Get rid of all saved Source data
-		add_simple_tag($sourceLevel .' SOUR '. $sourceSOUR);
-		add_simple_tag(($sourceLevel+1) .' PAGE '. $sourcePAGE);
-		add_simple_tag(($sourceLevel+2) .' TEXT '. $sourceTEXT);
-		add_simple_tag(($sourceLevel+2) .' DATE '. $sourceDATE, '', WT_Gedcom_Tag::getLabel('DATA:DATE'));
-		add_simple_tag(($sourceLevel+1) .' QUAY '. $sourceQUAY);
+		add_simple_tag($sourceLevel . ' SOUR ' . $sourceSOUR);
+		add_simple_tag(($sourceLevel + 1) . ' PAGE ' . $sourcePAGE);
+		add_simple_tag(($sourceLevel + 2) . ' TEXT ' . $sourceTEXT);
+		add_simple_tag(($sourceLevel + 2) . ' DATE ' . $sourceDATE, '', WT_Gedcom_Tag::getLabel('DATA:DATE'));
+		add_simple_tag(($sourceLevel + 1) . ' QUAY ' . $sourceQUAY);
 	}
 }
 if (Auth::isAdmin()) {
@@ -707,11 +714,11 @@ if (Auth::isAdmin()) {
 	echo '</td></tr>';
 }
 echo '</table>';
-			print_add_layer('SOUR', 1);
-			print_add_layer('NOTE', 1);
-			print_add_layer('SHARED_NOTE', 1);
-			print_add_layer('RESN', 1);
-		?>
+print_add_layer('SOUR', 1);
+print_add_layer('NOTE', 1);
+print_add_layer('SHARED_NOTE', 1);
+print_add_layer('RESN', 1);
+?>
 		<p id="save-cancel">
 			<input type="submit" class="save" value="<?php echo WT_I18N::translate('save'); ?>">
 			<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
@@ -721,12 +728,11 @@ echo '</table>';
 
 <?php
 
-
 // Legacy/deprecated functions.  TODO: refactor these away....
 function get_first_tag($level, $tag, $gedrec, $num=1) {
 	$temp = get_sub_record($level, $level." ".$tag, $gedrec, $num)."\n";
 	$length = strpos($temp, "\n");
-	if ($length===false) {
+	if ($length === false) {
 		$length = strlen($temp);
 	}
 	return substr($temp, 2, $length-2);
