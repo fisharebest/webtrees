@@ -250,7 +250,7 @@ case 'user_setting':
 		}
 		break;
 	case 'verified_by_admin':
-		// Approving for the first time?  Send a confirmation email
+		// Approving for the first time?  Send a confirmation email and set default blocks
 		if ($value && !$user->getPreference('verified_by_admin') && $user->getPreference('sessiontime')==0) {
 			WT_I18N::init($user->getPreference('language'));
 			WT_Mail::systemMessage(
@@ -259,6 +259,9 @@ case 'user_setting':
 				WT_I18N::translate('Approval of account at %s', WT_SERVER_NAME.WT_SCRIPT_PATH),
 				WT_I18N::translate('The administrator at the webtrees site %s has approved your application for an account.  You may now login by accessing the following link: %s', WT_SERVER_NAME.WT_SCRIPT_PATH, WT_SERVER_NAME.WT_SCRIPT_PATH)
 			);
+			WT_DB::prepare("INSERT INTO `##block` (`user_id`, `location`, `block_order`, `module_name`)
+							SELECT ?, `location`, `block_order`, `module_name` FROM `##block` WHERE `user_id` = ?")
+			     ->execute(array($id1, -1));
 		}
 		break;
 	case 'auto_accept':
