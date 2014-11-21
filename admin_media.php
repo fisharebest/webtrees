@@ -507,23 +507,22 @@ function mediaObjectInfo(WT_Media $media) {
 		global $TEXT_DIRECTION;
 		$classSuffix = $TEXT_DIRECTION=='rtl' ? '_rtl' : '';
 
-		$menu = new WT_Menu();
-		$menu->addLabel(WT_I18N::translate('Set link'));
+		$menu = new WT_Menu(WT_I18N::translate('Manage links'));
 		$menu->addClass('', 'submenu');
-		$submenu = new WT_Menu(WT_I18N::translate('To individual'));
+		$submenu = new WT_Menu(WT_I18N::translate('Link this media object to an individual'));
 		$submenu->addClass("submenuitem".$classSuffix);
-		$submenu->addOnClick("return ilinkitem('$xref', 'person', '$gedcom')");
-		$menu->addSubMenu($submenu);
+		$submenu->setOnclick("return ilinkitem('$xref', 'person', '$gedcom')");
+		$menu->addSubmenu($submenu);
 
-		$submenu = new WT_Menu(WT_I18N::translate('To family'));
+		$submenu = new WT_Menu(WT_I18N::translate('Link this media object to a family'));
 		$submenu->addClass("submenuitem".$classSuffix);
-		$submenu->addOnClick("return ilinkitem('$xref', 'family', '$gedcom')");
-		$menu->addSubMenu($submenu);
+		$submenu->setOnclick("return ilinkitem('$xref', 'family', '$gedcom')");
+		$menu->addSubmenu($submenu);
 
-		$submenu = new WT_Menu(WT_I18N::translate('To source'));
+		$submenu = new WT_Menu(WT_I18N::translate('Link this media object to a source'));
 		$submenu->addClass("submenuitem".$classSuffix);
-		$submenu->addOnClick("return ilinkitem('$xref', 'source', '$gedcom')");
-		$menu->addSubMenu($submenu);
+		$submenu->setOnclick("return ilinkitem('$xref', 'source', '$gedcom')");
+		$menu->addSubmenu($submenu);
 		$html .= '<div style="display:inline-block;">' . $menu->getMenu() . '</div>';
 	}
 	$html .= '<br><br>';

@@ -679,7 +679,7 @@ function valid_date(datefield) {
 
 var menutimeouts = [];
 
-function show_submenu(elementid, parentid, dir) {
+function show_submenu(elementid, parentid) {
 	var pagewidth = document.body.scrollWidth+document.documentElement.scrollLeft;
 	var element = document.getElementById(elementid);
 
@@ -706,31 +706,13 @@ function show_submenu(elementid, parentid, dir) {
 			element.style.width = maxwidth+"px";
 		}
 		var pelement, boxright;
-		if (dir === "down") {
-			pelement = document.getElementById(parentid);
-			if (pelement) {
-				element.style.left=pelement.style.left;
-				boxright = element.offsetLeft+element.offsetWidth+10;
-				if (boxright > pagewidth) {
-					var menuleft = pagewidth-element.offsetWidth;
-					element.style.left = menuleft + "px";
-				}
-			}
-		} else if (dir === "right") {
-			pelement = document.getElementById(parentid);
-			if (pelement) {
-				if (textDirection === "rtl") {
-					element.style.left = (pelement.offsetLeft - element.offsetWidth) + "px";
-				} else {
-					var boxleft = pelement.offsetLeft + pelement.offsetWidth - 40;
-					boxright = boxleft + element.offsetWidth + 10;
-					if (boxright > pagewidth) {
-						element.style.right = pelement.offsetLeft + "px";
-					} else {
-						element.style.left = boxleft + "px";
-					}
-				}
-				element.style.top = pelement.offsetTop+"px";
+		pelement = document.getElementById(parentid);
+		if (pelement) {
+			element.style.left=pelement.style.left;
+			boxright = element.offsetLeft+element.offsetWidth+10;
+			if (boxright > pagewidth) {
+				var menuleft = pagewidth-element.offsetWidth;
+				element.style.left = menuleft + "px";
 			}
 		}
 

@@ -52,53 +52,53 @@ if (
 $action = WT_Filter::get('action');
 
 if (isset($_REQUEST['main'])) {
-	$main=$_REQUEST['main'];
+	$main = $_REQUEST['main'];
 } else {
-	$main=array();
+	$main = array();
 }
 if (isset($_REQUEST['right'])) {
-	$right=$_REQUEST['right'];
+	$right = $_REQUEST['right'];
 } else {
-	$right=array();
+	$right = array();
 }
 
 // Define all the icons we're going to use
 $IconUarrow = 'icon-uarrow';
 $IconDarrow = 'icon-darrow';
-if($TEXT_DIRECTION=='ltr') {
-	$IconRarrow = 'icon-rarrow';
-	$IconLarrow = 'icon-larrow';
+if ($TEXT_DIRECTION === 'ltr') {
+	$IconRarrow  = 'icon-rarrow';
+	$IconLarrow  = 'icon-larrow';
 	$IconRDarrow = 'icon-rdarrow';
 	$IconLDarrow = 'icon-ldarrow';
 } else {
-	$IconRarrow = 'icon-larrow';
-	$IconLarrow = 'icon-rarrow';
+	$IconRarrow  = 'icon-larrow';
+	$IconLarrow  = 'icon-rarrow';
 	$IconRDarrow = 'icon-ldarrow';
 	$IconLDarrow = 'icon-rdarrow';
 }
 
-$all_blocks=array();
-foreach (WT_Module::getActiveBlocks() as $name=>$block) {
+$all_blocks = array();
+foreach (WT_Module::getActiveBlocks() as $name => $block) {
 	if ($user_id && $block->isUserBlock() || $gedcom_id && $block->isGedcomBlock()) {
-		$all_blocks[$name]=$block;
+		$all_blocks[$name] = $block;
 	}
 }
 
 if ($user_id) {
-	$blocks=get_user_blocks($user_id);
-} elseif ($gedcom_id) {
-	$blocks=get_gedcom_blocks($gedcom_id);
+	$blocks = get_user_blocks($user_id);
+} else {
+	$blocks = get_gedcom_blocks($gedcom_id);
 }
 
-if ($action=='update') {
+if ($action === 'update') {
 	Zend_Session::writeClose();
 	foreach (array('main', 'side') as $location) {
-		if ($location=='main') {
-			$new_blocks=$main;
+		if ($location === 'main') {
+			$new_blocks = $main;
 		} else {
-			$new_blocks=$right;
+			$new_blocks = $right;
 		}
-		foreach ($new_blocks as $order=>$block_name) {
+		foreach ($new_blocks as $order => $block_name) {
 			if (is_numeric($block_name)) {
 				// existing block
 				WT_DB::prepare("UPDATE `##block` SET block_order=? WHERE block_id=?")->execute(array($order, $block_name));
@@ -245,7 +245,7 @@ $controller
 
 
 	// Load Block Description array for use by javascript
-	foreach ($all_blocks as $block_name=>$block) {
+	foreach ($all_blocks as $block_name => $block) {
 		$controller->addInlineJavascript(
 			'block_descr["'.$block_name.'"] = "'.WT_Filter::escapeJs($block->getDescription()).'";'
 		);

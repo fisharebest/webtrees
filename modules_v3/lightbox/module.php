@@ -103,74 +103,57 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Tab {
 			if (strpos($media->getGedcom(), "\n1 NOTE")) {
 				$submenu = new WT_Menu(WT_I18N::translate('View notes'));
 				// Notes Tooltip ----------------------------------------------------
-				$submenu->addOnclick("modalNotes('". WT_Filter::escapeJs($notes) . "','". WT_I18N::translate('View notes') . "'); return false;");
+				$submenu->setOnclick("modalNotes('". WT_Filter::escapeJs($notes) . "','". WT_I18N::translate('View notes') . "'); return false;");
 				$submenu->addClass("submenuitem");
-				$menu->addSubMenu($submenu);
+				$menu->addSubmenu($submenu);
 			}
 			//View Details
 			$submenu = new WT_Menu(WT_I18N::translate('View details'), $media->getHtmlUrl());
 			$submenu->addClass("submenuitem");
-			$menu->addSubMenu($submenu);
+			$menu->addSubmenu($submenu);
 
 			//View Sources
-			$source_menu = null;
 			foreach ($media->getFacts('SOUR') as $source_fact) {
 				$source = $source_fact->getTarget();
 				if ($source && $source->canShow()) {
-					if (!$source_menu) {
-						// Group sources under a top level menu
-						$source_menu = new WT_Menu(WT_I18N::translate('Sources'), '#', null, 'right', 'right');
-						$source_menu->addClass('submenuitem', 'submenu');
-					}
-					//now add a link to the actual source as a submenu
-					$submenu = new WT_Menu($source->getFullName(), $source->getHtmlUrl());
-					$submenu->addClass('submenuitem', 'submenu');
-					$source_menu->addSubMenu($submenu);
+					$submenu = new WT_Menu(WT_I18N::translate('Source') . ' – ' . $source->getFullName(), $source->getHtmlUrl());
+					$submenu->addClass('submenuitem');
+					$menu->addSubmenu($submenu);
 				}
-			}
-			if ($source_menu) {
-				$menu->addSubMenu($source_menu);
 			}
 
 			if (WT_USER_CAN_EDIT) {
 				// Edit Media
 				$submenu = new WT_Menu(WT_I18N::translate('Edit media'));
-				$submenu->addOnclick("return window.open('addmedia.php?action=editmedia&amp;pid=".$media->getXref()."', '_blank', edit_window_specs);");
+				$submenu->setOnclick("return window.open('addmedia.php?action=editmedia&amp;pid=".$media->getXref()."', '_blank', edit_window_specs);");
 				$submenu->addClass("submenuitem");
-				$menu->addSubMenu($submenu);
+				$menu->addSubmenu($submenu);
 				if (Auth::isAdmin()) {
-					// Manage Links
 					if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
 						$submenu = new WT_Menu(WT_I18N::translate('Manage links'));
-						$submenu->addOnclick("return window.open('inverselink.php?mediaid=".$media->getXref()."&amp;linkto=manage', '_blank', find_window_specs);");
+						$submenu->setOnclick("return window.open('inverselink.php?mediaid=".$media->getXref()."&amp;linkto=manage', '_blank', find_window_specs);");
 						$submenu->addClass("submenuitem");
-						$menu->addSubMenu($submenu);
+						$menu->addSubmenu($submenu);
 					} else {
-						$submenu = new WT_Menu(WT_I18N::translate('Set link'), '#', null, 'right', 'right');
-						$submenu->addClass('submenuitem', 'submenu');
+						$submenu = new WT_Menu(WT_I18N::translate('Link this media object to an individual'), '#', 'menu-obje-link-indi');
+						$submenu->setOnclick("return ilinkitem('" . $media->getXref() . "','person');");
+						$submenu->addClass('submenuitem');
+						$menu->addSubmenu($submenu);
 
-						$ssubmenu = new WT_Menu(WT_I18N::translate('To individual'));
-						$ssubmenu->addOnclick("return window.open('inverselink.php?mediaid=".$media->getXref()."&amp;linkto=person', '_blank', find_window_specs);");
-						$ssubmenu->addClass('submenuitem', 'submenu');
-						$submenu->addSubMenu($ssubmenu);
+						$submenu = new WT_Menu(WT_I18N::translate('Link this media object to a family'), '#', 'menu-obje-link-fam');
+						$submenu->setOnclick("return ilinkitem('" . $media->getXref() . "','family');");
+						$submenu->addClass('submenuitem');
+						$menu->addSubmenu($submenu);
 
-						$ssubmenu = new WT_Menu(WT_I18N::translate('To family'));
-						$ssubmenu->addOnclick("return window.open('inverselink.php?mediaid=".$media->getXref()."&amp;linkto=family', '_blank', find_window_specs);");
-						$ssubmenu->addClass('submenuitem', 'submenu');
-						$submenu->addSubMenu($ssubmenu);
-
-						$ssubmenu = new WT_Menu(WT_I18N::translate('To source'));
-						$ssubmenu->addOnclick("return window.open('inverselink.php?mediaid=".$media->getXref()."&amp;linkto=source', '_blank', find_window_specs);");
-						$ssubmenu->addClass('submenuitem', 'submenu');
-						$submenu->addSubMenu($ssubmenu);
-
-						$menu->addSubMenu($submenu);
+						$submenu = new WT_Menu(WT_I18N::translate('Link this media object to a source'), '#', 'menu-obje-link-sour');
+						$submenu->setOnclick("return ilinkitem('" . $media->getXref() . "','source');");
+						$submenu->addClass('submenuitem');
+						$menu->addSubmenu($submenu);
 					}
-					// Unlink media
 					$submenu = new WT_Menu(WT_I18N::translate('Unlink media'));
-					$submenu->addOnclick("return unlink_media('" . WT_I18N::translate('Are you sure you want to remove links to this media object?') . "', '" . $controller->record->getXref() . "', '" . $media->getXref() . "');");
+					$submenu->setOnclick("return unlink_media('" . WT_I18N::translate('Are you sure you want to remove links to this media object?') . "', '" . $controller->record->getXref() . "', '" . $media->getXref() . "');");
 					$submenu->addClass("submenuitem");
-					$menu->addSubMenu($submenu);
+					$menu->addSubmenu($submenu);
 				}
 			}
 			$html .= '<li class="album-list-item">';

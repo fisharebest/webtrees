@@ -133,7 +133,7 @@ if (!defined('WT_WEBTREES')) {
 							$menu = new WT_Menu($label);
 							print_pedigree_person_nav_cens($gparent->getXref(), $label, $censdate);
 							$submenu = new WT_Menu($parentlinks);
-							$menu->addSubMenu($submenu);
+							$menu->addSubmenu($submenu);
 
 							?>
 							<tr>
@@ -254,7 +254,7 @@ if (!defined('WT_WEBTREES')) {
 							$menu = new WT_Menu($label);
 							print_pedigree_person_nav_cens($gparent->getXref(), $label, $censyear);
 							$submenu = new WT_Menu($parentlinks);
-							$menu->addSubMenu($submenu);
+							$menu->addSubmenu($submenu);
 							?>
 							<tr>
 								<td align="left" class="linkcell optionbox">
@@ -379,7 +379,7 @@ if (!defined('WT_WEBTREES')) {
 							$menu = new WT_Menu($label);
 							print_pedigree_person_nav_cens($child->getXref(), $label, $censyear);
 							$submenu = new WT_Menu($spouselinks);
-							$menu->addSubMenu($submenu);
+							$menu->addSubmenu($submenu);
 
 							?>
 							<tr>
@@ -517,7 +517,7 @@ if (!defined('WT_WEBTREES')) {
 							$menu = new WT_Menu($label);
 							print_pedigree_person_nav_cens($gparent->getXref(), $label, $censyear);
 							$submenu = new WT_Menu($parentlinks);
-							$menu->addSubMenu($submenu);
+							$menu->addSubmenu($submenu);
 							if ($gparent->getDeathYear() == 0) { $DeathYr = ""; } else { $DeathYr = $gparent->getDeathYear(); }
 							if ($gparent->getBirthYear() == 0) { $BirthYr = ""; } else { $BirthYr = $gparent->getBirthYear(); }
 							?>
@@ -639,7 +639,7 @@ if (!defined('WT_WEBTREES')) {
 							$menu = new WT_Menu($label);
 							print_pedigree_person_nav_cens($gparent->getXref(), $label, $censyear);
 							$submenu = new WT_Menu($parentlinks);
-							$menu->addSubMenu($submenu);
+							$menu->addSubmenu($submenu);
 							if ($gparent->getDeathYear() == 0) { $DeathYr = ""; } else { $DeathYr = $gparent->getDeathYear(); }
 							if ($gparent->getBirthYear() == 0) { $BirthYr = ""; } else { $BirthYr = $gparent->getBirthYear(); }
 							?>
@@ -757,7 +757,7 @@ if (!defined('WT_WEBTREES')) {
 							$menu = new WT_Menu($label);
 							print_pedigree_person_nav_cens($child->getXref(), $label, $censyear);
 							$submenu = new WT_Menu($spouselinks);
-							$menu->addSubMenu($submenu);
+							$menu->addSubmenu($submenu);
 							if ($child->getDeathYear() == 0) { $DeathYr = ""; } else { $DeathYr = $child->getDeathYear(); }
 							if ($child->getBirthYear() == 0) { $BirthYr = ""; } else { $BirthYr = $child->getBirthYear(); }
 							?>
@@ -892,7 +892,7 @@ if (!defined('WT_WEBTREES')) {
 							$menu = new WT_Menu($label);
 							print_pedigree_person_nav_cens($gparent->getXref(), $label, $censyear);
 							$submenu = new WT_Menu($parentlinks);
-							$menu->addSubMenu($submenu);
+							$menu->addSubmenu($submenu);
 							if ($gparent->getDeathYear() == 0) { $DeathYr = ""; } else { $DeathYr = $gparent->getDeathYear(); }
 							if ($gparent->getBirthYear() == 0) { $BirthYr = ""; } else { $BirthYr = $gparent->getBirthYear(); }
 							?>
@@ -1014,7 +1014,7 @@ if (!defined('WT_WEBTREES')) {
 							$menu = new WT_Menu($label);
 							print_pedigree_person_nav_cens($gparent->getXref(), $label, $censyear);
 							$submenu = new WT_Menu($parentlinks);
-							$menu->addSubMenu($submenu);
+							$menu->addSubmenu($submenu);
 							if ($gparent->getDeathYear() == 0) { $DeathYr = ""; } else { $DeathYr = $gparent->getDeathYear(); }
 							if ($gparent->getBirthYear() == 0) { $BirthYr = ""; } else { $BirthYr = $gparent->getBirthYear(); }
 							?>

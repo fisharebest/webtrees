@@ -54,42 +54,40 @@ class WT_Controller_Media extends WT_Controller_GedcomRecord {
 
 		if (WT_USER_CAN_EDIT) {
 			$submenu = new WT_Menu(WT_I18N::translate('Edit media object'), '#', 'menu-obje-edit');
-			$submenu->addOnclick("window.open('addmedia.php?action=editmedia&pid={$this->record->getXref()}', '_blank', edit_window_specs)");
+			$submenu->setOnclick("window.open('addmedia.php?action=editmedia&pid={$this->record->getXref()}', '_blank', edit_window_specs)");
 			$menu->addSubmenu($submenu);
 
 			// main link displayed on page
 			if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
 				$submenu = new WT_Menu(WT_I18N::translate('Manage links'), '#', 'menu-obje-link');
-				$submenu->addOnclick("return ilinkitem('" . $this->record->getXref() . "','manage');");
+				$submenu->setOnclick("return ilinkitem('" . $this->record->getXref() . "','manage');");
+				$menu->addSubmenu($submenu);
 			} else {
-				$submenu = new WT_Menu(WT_I18N::translate('Set link'), '#', 'menu-obje-link');
-				$ssubmenu = new WT_Menu(WT_I18N::translate('To individual'), '#', 'menu-obje-link-indi');
-				$ssubmenu->addOnclick("return ilinkitem('" . $this->record->getXref() . "','person');");
-				$submenu->addSubMenu($ssubmenu);
+				$submenu = new WT_Menu(WT_I18N::translate('Link this media object to an individual'), '#', 'menu-obje-link-indi');
+				$submenu->setOnclick("return ilinkitem('" . $this->record->getXref() . "','person');");
+				$menu->addSubmenu($submenu);
 
-				$ssubmenu = new WT_Menu(WT_I18N::translate('To family'), '#', 'menu-obje-link-fam');
-				$ssubmenu->addOnclick("return ilinkitem('" . $this->record->getXref() . "','family');");
-				$submenu->addSubMenu($ssubmenu);
+				$submenu = new WT_Menu(WT_I18N::translate('Link this media object to a family'), '#', 'menu-obje-link-fam');
+				$submenu->setOnclick("return ilinkitem('" . $this->record->getXref() . "','family');");
+				$menu->addSubmenu($submenu);
 
-				$ssubmenu = new WT_Menu(WT_I18N::translate('To source'), '#', 'menu-obje-link-sour');
-				$ssubmenu->addOnclick("return ilinkitem('" . $this->record->getXref() . "','source');");
-				$submenu->addSubMenu($ssubmenu);
+				$submenu = new WT_Menu(WT_I18N::translate('Link this media object to a source'), '#', 'menu-obje-link-sour');
+				$submenu->setOnclick("return ilinkitem('" . $this->record->getXref() . "','source');");
+				$menu->addSubmenu($submenu);
 			}
-
-			$menu->addSubmenu($submenu);
 		}
 
 		// delete
 		if (WT_USER_CAN_EDIT) {
 			$submenu = new WT_Menu(WT_I18N::translate('Delete'), '#', 'menu-obje-del');
-			$submenu->addOnclick("return delete_media('" . WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($this->record->getFullName())) . "', '" . $this->record->getXref() . "');");
+			$submenu->setOnclick("return delete_media('" . WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($this->record->getFullName())) . "', '" . $this->record->getXref() . "');");
 			$menu->addSubmenu($submenu);
 		}
 
 		// edit raw
 		if (Auth::isAdmin() || WT_USER_CAN_EDIT && $SHOW_GEDCOM_RECORD) {
 			$submenu = new WT_Menu(WT_I18N::translate('Edit raw GEDCOM'), '#', 'menu-obje-editraw');
-			$submenu->addOnclick("return edit_raw('" . $this->record->getXref() . "');");
+			$submenu->setOnclick("return edit_raw('" . $this->record->getXref() . "');");
 			$menu->addSubmenu($submenu);
 		}
 
@@ -101,14 +99,15 @@ class WT_Controller_Media extends WT_Controller_GedcomRecord {
 				'#',
 				'menu-obje-addfav'
 			);
-			$submenu->addOnclick("jQuery.post('module.php?mod=user_favorites&amp;mod_action=menu-add-favorite',{xref:'" . $this->record->getXref() . "'},function(){location.reload();})");
+			$submenu->setOnclick("jQuery.post('module.php?mod=user_favorites&amp;mod_action=menu-add-favorite',{xref:'" . $this->record->getXref() . "'},function(){location.reload();})");
 			$menu->addSubmenu($submenu);
 		}
 
-		//-- get the link for the first submenu and set it as the link for the main menu
-		if (isset($menu->submenus[0])) {
-			$link = $menu->submenus[0]->onclick;
-			$menu->addOnclick($link);
+		// Get the link for the first submenu and set it as the link for the main menu
+		if ($menu->getSubmenus()) {
+			$submenus = $menu->getSubmenus();
+			$menu->setLink($submenus[0]->getLink());
+			$menu->setOnClick($submenus[0]->getOnClick());
 		}
 
 		return $menu;
@@ -149,20 +148,20 @@ class WT_Controller_Media extends WT_Controller_GedcomRecord {
 		$html = '<div class="lightbox-menu"><ul class="makeMenu lb-menu">';
 		$menu = new WT_Menu(WT_I18N::translate('Edit details'));
 		$menu->addClass('', '', 'lb-image_edit');
-		$menu->addOnclick("return window.open('addmedia.php?action=editmedia&amp;pid=" . $mediaobject->getXref() . "', '_blank', edit_window_specs);");
+		$menu->setOnclick("return window.open('addmedia.php?action=editmedia&amp;pid=" . $mediaobject->getXref() . "', '_blank', edit_window_specs);");
 		$html .= $menu->getMenuAsList();
-		$menu = new WT_Menu(WT_I18N::translate('Set link'));
+		$menu = new WT_Menu(WT_I18N::translate('Manage links'));
 		$menu->addClass('', '', 'lb-image_link');
-		$menu->addOnclick("return ilinkitem('" . $mediaobject->getXref() . "','person')");
-		$submenu = new WT_Menu(WT_I18N::translate('To individual'), '#');
-		$submenu->addOnclick("return ilinkitem('" . $mediaobject->getXref() . "','person')");
-		$menu->addSubMenu($submenu);
-		$submenu = new WT_Menu(WT_I18N::translate('To family'), '#');
-		$submenu->addOnclick("return ilinkitem('" . $mediaobject->getXref() . "','family')");
-		$menu->addSubMenu($submenu);
-		$submenu = new WT_Menu(WT_I18N::translate('To source'), '#');
-		$submenu->addOnclick("return ilinkitem('" . $mediaobject->getXref() . "','source')");
-		$menu->addSubMenu($submenu);
+		$menu->setOnclick("return ilinkitem('" . $mediaobject->getXref() . "','person')");
+		$submenu = new WT_Menu(WT_I18N::translate('Link this media object to an individual'), '#');
+		$submenu->setOnclick("return ilinkitem('" . $mediaobject->getXref() . "','person')");
+		$menu->addSubmenu($submenu);
+		$submenu = new WT_Menu(WT_I18N::translate('Link this media object to a family'), '#');
+		$submenu->setOnclick("return ilinkitem('" . $mediaobject->getXref() . "','family')");
+		$menu->addSubmenu($submenu);
+		$submenu = new WT_Menu(WT_I18N::translate('Link this media object to a source'), '#');
+		$submenu->setOnclick("return ilinkitem('" . $mediaobject->getXref() . "','source')");
+		$menu->addSubmenu($submenu);
 		$html .= $menu->getMenuAsList();
 		$menu = new WT_Menu(WT_I18N::translate('View details'), $mediaobject->getHtmlUrl());
 		$menu->addClass('', '', 'lb-image_view');

@@ -32,18 +32,16 @@ class WT_Family extends WT_GedcomRecord {
 	/** @var WT_Individual|null The wife (or second spouse for same-sex couples) */
 	private $wife = null;
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	function __construct($xref, $gedcom, $pending, $gedcom_id) {
 		parent::__construct($xref, $gedcom, $pending, $gedcom_id);
 
 		// Fetch husband and wife
 		if (preg_match('/^1 HUSB @(.+)@/m', $gedcom . $pending, $match)) {
-			$this->husb = WT_Individual::getInstance($match[1]);
+			$this->husb = WT_Individual::getInstance($match[1], $gedcom_id);
 		}
 		if (preg_match('/^1 WIFE @(.+)@/m', $gedcom . $pending, $match)) {
-			$this->wife = WT_Individual::getInstance($match[1]);
+			$this->wife = WT_Individual::getInstance($match[1], $gedcom_id);
 		}
 
 		// Make sure husb/wife are the right way round.
@@ -73,9 +71,7 @@ class WT_Family extends WT_GedcomRecord {
 		}
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	protected function createPrivateGedcomRecord($access_level) {
 		global $SHOW_PRIVATE_RELATIONSHIPS;
 
@@ -92,9 +88,7 @@ class WT_Family extends WT_GedcomRecord {
 		return $rec;
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	protected static function fetchGedcomRecord($xref, $gedcom_id) {
 		static $statement = null;
 
@@ -131,9 +125,7 @@ class WT_Family extends WT_GedcomRecord {
 		}
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	protected function canShowByType($access_level) {
 		// Hide a family if any member is private
 		preg_match_all('/\n1 (?:CHIL|HUSB|WIFE) @(' . WT_REGEX_XREF . ')@/', $this->gedcom, $matches);
@@ -147,9 +139,7 @@ class WT_Family extends WT_GedcomRecord {
 		return true;
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	public function canShowName($access_level = WT_USER_ACCESS_LEVEL) {
 		// We can always see the name (Husband-name + Wife-name), however,
 		// the name will often be "private + private"
@@ -324,9 +314,7 @@ class WT_Family extends WT_GedcomRecord {
 		return array();
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	public function getAllNames() {
 		global $UNKNOWN_NN, $UNKNOWN_PN;
 
@@ -391,9 +379,7 @@ class WT_Family extends WT_GedcomRecord {
 		return $this->_getAllNames;
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	function formatListDetails() {
 		return
 			$this->format_first_major_fact(WT_EVENTS_MARR, 1) .

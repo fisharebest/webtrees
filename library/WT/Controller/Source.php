@@ -57,10 +57,10 @@ class WT_Controller_Source extends WT_Controller_GedcomRecord {
 			$submenu = new WT_Menu(WT_I18N::translate('Edit source'), '#', 'menu-sour-edit');
 			if ($fact) {
 				// Edit existing name
-				$submenu->addOnclick('return edit_record(\''.$this->record->getXref().'\', \'' . $fact->getFactId() . '\');');
+				$submenu->setOnclick('return edit_record(\''.$this->record->getXref().'\', \'' . $fact->getFactId() . '\');');
 			} else {
 				// Add new name
-				$submenu->addOnclick('return add_fact(\''.$this->record->getXref().'\', \'TITL\');');
+				$submenu->setOnclick('return add_fact(\''.$this->record->getXref().'\', \'TITL\');');
 			}
 			$menu->addSubmenu($submenu);
 		}
@@ -68,14 +68,14 @@ class WT_Controller_Source extends WT_Controller_GedcomRecord {
 		// delete
 		if (WT_USER_CAN_EDIT) {
 			$submenu = new WT_Menu(WT_I18N::translate('Delete'), '#', 'menu-sour-del');
-			$submenu->addOnclick("return delete_source('".WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($this->record->getFullName()))."', '".$this->record->getXref()."');");
+			$submenu->setOnclick("return delete_source('".WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($this->record->getFullName()))."', '".$this->record->getXref()."');");
 			$menu->addSubmenu($submenu);
 		}
 
 		// edit raw
 		if (Auth::isAdmin() || WT_USER_CAN_EDIT && $SHOW_GEDCOM_RECORD) {
 			$submenu = new WT_Menu(WT_I18N::translate('Edit raw GEDCOM'), '#', 'menu-sour-editraw');
-			$submenu->addOnclick("return edit_raw('" . $this->record->getXref() . "');");
+			$submenu->setOnclick("return edit_raw('" . $this->record->getXref() . "');");
 			$menu->addSubmenu($submenu);
 		}
 
@@ -86,15 +86,17 @@ class WT_Controller_Source extends WT_Controller_GedcomRecord {
 				'#',
 				'menu-sour-addfav'
 			);
-			$submenu->addOnclick("jQuery.post('module.php?mod=user_favorites&amp;mod_action=menu-add-favorite',{xref:'".$this->record->getXref()."'},function(){location.reload();})");
+			$submenu->setOnclick("jQuery.post('module.php?mod=user_favorites&amp;mod_action=menu-add-favorite',{xref:'".$this->record->getXref()."'},function(){location.reload();})");
 			$menu->addSubmenu($submenu);
 		}
 
-		//-- get the link for the first submenu and set it as the link for the main menu
-		if (isset($menu->submenus[0])) {
-			$link = $menu->submenus[0]->onclick;
-			$menu->addOnclick($link);
+		// Get the link for the first submenu and set it as the link for the main menu
+		if ($menu->getSubmenus()) {
+			$submenus = $menu->getSubmenus();
+			$menu->setLink($submenus[0]->getLink());
+			$menu->setOnClick($submenus[0]->getOnClick());
 		}
+
 		return $menu;
 	}
 }

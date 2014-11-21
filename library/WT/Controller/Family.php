@@ -100,23 +100,22 @@ class WT_Controller_Family extends WT_Controller_GedcomRecord {
 
 		// edit menu
 		$menu = new WT_Menu(WT_I18N::translate('Edit'), '#', 'menu-fam');
-		$menu->addLabel($menu->label, 'down');
 
 		if (WT_USER_CAN_EDIT) {
 			// edit_fam / members
 			$submenu = new WT_Menu(WT_I18N::translate('Change family members'), '#', 'menu-fam-change');
-			$submenu->addOnclick("return change_family_members('".$this->record->getXref()."');");
+			$submenu->setOnclick("return change_family_members('".$this->record->getXref()."');");
 			$menu->addSubmenu($submenu);
 
 			// edit_fam / add child
 			$submenu = new WT_Menu(WT_I18N::translate('Add a child to this family'), '#', 'menu-fam-addchil');
-			$submenu->addOnclick("return add_child_to_family('".$this->record->getXref()."', 'U');");
+			$submenu->setOnclick("return add_child_to_family('".$this->record->getXref()."', 'U');");
 			$menu->addSubmenu($submenu);
 
 			// edit_fam / reorder_children
 			if ($this->record->getNumberOfChildren() > 1) {
 				$submenu = new WT_Menu(WT_I18N::translate('Re-order children'), '#', 'menu-fam-orderchil');
-				$submenu->addOnclick("return reorder_children('".$this->record->getXref()."');");
+				$submenu->setOnclick("return reorder_children('".$this->record->getXref()."');");
 				$menu->addSubmenu($submenu);
 			}
 		}
@@ -124,14 +123,14 @@ class WT_Controller_Family extends WT_Controller_GedcomRecord {
 		// delete
 		if (WT_USER_CAN_EDIT) {
 			$submenu = new WT_Menu(WT_I18N::translate('Delete'), '#', 'menu-fam-del');
-			$submenu->addOnclick("return delete_family('" . WT_I18N::translate('Deleting the family will unlink all of the individuals from each other but will leave the individuals in place.  Are you sure you want to delete this family?') . "', '".$this->record->getXref()."');");
+			$submenu->setOnclick("return delete_family('" . WT_I18N::translate('Deleting the family will unlink all of the individuals from each other but will leave the individuals in place.  Are you sure you want to delete this family?') . "', '".$this->record->getXref()."');");
 			$menu->addSubmenu($submenu);
 		}
 
 		// edit raw
 		if (Auth::isAdmin() || WT_USER_CAN_EDIT && $SHOW_GEDCOM_RECORD) {
 			$submenu = new WT_Menu(WT_I18N::translate('Edit raw GEDCOM'), '#', 'menu-fam-editraw');
-			$submenu->addOnclick("return edit_raw('" . $this->record->getXref() . "');");
+			$submenu->setOnclick("return edit_raw('" . $this->record->getXref() . "');");
 			$menu->addSubmenu($submenu);
 		}
 
@@ -142,15 +141,17 @@ class WT_Controller_Family extends WT_Controller_GedcomRecord {
 				'#',
 				'menu-fam-addfav'
 			);
-			$submenu->addOnclick("jQuery.post('module.php?mod=user_favorites&amp;mod_action=menu-add-favorite',{xref:'".$this->record->getXref()."'},function(){location.reload();})");
+			$submenu->setOnclick("jQuery.post('module.php?mod=user_favorites&amp;mod_action=menu-add-favorite',{xref:'".$this->record->getXref()."'},function(){location.reload();})");
 			$menu->addSubmenu($submenu);
 		}
 
-		//-- get the link for the first submenu and set it as the link for the main menu
-		if (isset($menu->submenus[0])) {
-			$link = $menu->submenus[0]->onclick;
-			$menu->addOnclick($link);
+		// Get the link for the first submenu and set it as the link for the main menu
+		if ($menu->getSubmenus()) {
+			$submenus = $menu->getSubmenus();
+			$menu->setLink($submenus[0]->getLink());
+			$menu->setOnClick($submenus[0]->getOnClick());
 		}
+
 		return $menu;
 	}
 

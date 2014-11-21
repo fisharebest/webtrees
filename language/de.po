@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2014-10-10 13:52+0100\n"
-"PO-Revision-Date: 2014-02-09 18:25+0100\n"
+"PO-Revision-Date: 2014-11-18 12:21+0100\n"
 "Last-Translator: Bogie\n"
 "Language-Team: \n"
 "Language: de\n"
@@ -2234,7 +2234,7 @@ msgstr "Verfügbare Blöcke"
 
 #: includes/functions/functions_print_lists.php:2066 library/WT/Stats.php:2873
 msgid "Average age"
-msgstr "Durchschnitt Todesalter"
+msgstr "Durchschnittsalter"
 
 #: library/WT/Stats.php:1904 modules_v3/gedcom_stats/module.php:157
 #: modules_v3/gedcom_stats/module.php:334 modules_v3/html/module.php:235
@@ -13513,7 +13513,7 @@ msgstr "Das Vorschaubild %s ist nicht vorhanden."
 #. I18N: Help text for the “Session timeout” site configuration setting
 #: help_text.php:729
 msgid "The time in seconds that a webtrees session remains active before requiring a login.  The default is 7200, which is 2 hours."
-msgstr "Die Zeit, nach der man sich für eine webtrees-Sitzung erneut anmelden muss. Der Standardwert ist 2 Stunden."
+msgstr "Die Zeit in Sekunden, nach der man sich für eine webtrees-Sitzung erneut anmelden muss. Der Standardwert ist 7200, was 2 Stunden entspricht."
 
 #. I18N: An XREF is the identification number used in GEDCOM files.
 #: admin_trees_merge.php:77
