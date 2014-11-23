@@ -2,11 +2,10 @@
 // Template for drawing person boxes
 // This template expects that the following variables will be set
 //  $pid, $boxID, $icons, $GEDCOM, $style,
-// $name, $classfacts, $genderImage, $BirthDeath, $isF, $outBoxAdd,
-// $addname, $showid, $float
+// $name, $outBoxAdd, $addname
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2014 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2010  PGV Development Team.  All rights reserved.
@@ -23,38 +22,26 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with this program; if not, write to the Free Software
-// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 //
-// $Id: compactbox_template.php 13642 2012-03-24 13:06:08Z greg $
-// @version: p_$Revision: 74 $ $Date: 2013-11-23 11:50:07 +0000 (Sat 23 Nov 2013) $
-// $HeadURL: http://subversion.assembla.com/svn/webtrees-geneajaubart/trunk/themes/rural/templates/compactbox_template.php $
+// @author Jonathan Jaubart <dev@jaubart.com>
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
-echo '<div id="out-', $boxID ,'" ', $outBoxAdd, '>
+echo
+'<div data-pid="'. $pid . '"' , $outBoxAdd, '>
 	<div class="compact_view">',
 		$thumbnail,
-		'<a onclick="event.cancelBubble=true;" href="individual.php?pid=', $pid, '&amp;ged=', rawurlencode($GEDCOM), '" title="',strip_tags($name.$addname),'">
-			<span id="namedef-',$boxID, '" class="name',$style,' ',$classfacts,'">', $shortname, '</span>
+		'<a href="individual.php?pid=', $pid, '&amp;ged=', rawurlencode($GEDCOM), '" title="',strip_tags($name.$addname),'">
+			<span class="namedef name',$style,'">', $shortname, '</span>
 		</a>
-		<p>', $person->getLifeSpan(), '</p>
-		<p>', $birthplace, '</p>
-	</div>';
-	//	details for zoom view
-		echo '<div id="fontdef-',$boxID,'" class="details',$style,'" style="display:none;">
-			<br><hr>
-				<a onclick="event.cancelBubble=true;" href="individual.php?pid=', $pid, '&amp;ged=', rawurlencode($GEDCOM), '">',
-					'<span id="namedef-',$boxID, '.2" class="name',$style,' ',$classfacts,'">', $name.$addname, '</span>
-					<span class="name',$style,'">',$genderImage,'</span>';
-		echo 		'</a>',
-			$BirthDeath,
-		'</div>
-		<div id="inout-',$boxID,'" style="display:none;">
-			<div id="LOADING-inout-',$boxID,'">',WT_I18N::translate('Loading…'),'</div>
-		</div>';
-	// end of zoom view
-echo '</div>';
-?>
+	</div>
+	<div class="inout2 details',$style,'">',
+		$person->getLifeSpan(), '
+	</div>
+	<div class="inout"></div>
+</div>';
+

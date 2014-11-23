@@ -2,7 +2,7 @@
 // Footer for webtrees theme
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2013 webtrees development team.
+// Copyright (C) 2014 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -19,11 +19,9 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with this program; if not, write to the Free Software
-// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 //
-// $Id: footer.php 13642 2012-03-24 13:06:08Z greg $
-// @version p_$Revision: 74 $ $Date: 2013-11-23 11:50:07 +0000 (Sat 23 Nov 2013) $
-// $HeadURL: http://subversion.assembla.com/svn/webtrees-geneajaubart/trunk/themes/rural/footer.php $
+// @author Jonathan Jaubart <dev@jaubart.com>
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -45,11 +43,11 @@ if (!defined('WT_WEBTREES')) {
 				?>
 				
 				<p class="logo">
-					<a href="<?php echo WT_WEBTREES_URL; ?>" target="_blank" class="icon-webtrees" title="<?php echo WT_WEBTREES.' '.WT_VERSION_TEXT; ?>"></a>
+					<a href="<?php echo WT_WEBTREES_URL; ?>" target="_blank" class="icon-webtrees" title="<?php echo WT_WEBTREES.' '.WT_VERSION; ?>"></a>
 				</p>
 				
 				<?php 
-				if (WT_DEBUG || get_gedcom_setting(WT_GED_ID, 'SHOW_STATS')) {
+				if ($WT_TREE && $WT_TREE->getPreference('SHOW_STATS')) {
 					echo execution_stats();
 				}
 				if (exists_pending_change()) { ?>
