@@ -7092,7 +7092,7 @@ msgid "Highest population"
 msgstr "Didžiausia populiacija"
 
 #: index_edit.php:254 index_edit.php:339
-msgid "Highlight a  block name and then click on one of the arrow icons to move that highlighted block in the indicated direction."
+msgid "Highlight a block name and then click on one of the arrow icons to move that highlighted block in the indicated direction."
 msgstr "Paryškinti lango pavadinimą, tada spustelėkite vieną iš rodyklių piktogramų judėti, kad išryškintas langas judėtų nurodyta kryptimi."
 
 #. I18N: gedcom tag _PRIM

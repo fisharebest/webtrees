@@ -7040,7 +7040,7 @@ msgid "Highest population"
 msgstr "En yüksek nüfus"
 
 #: index_edit.php:254 index_edit.php:339
-msgid "Highlight a  block name and then click on one of the arrow icons to move that highlighted block in the indicated direction."
+msgid "Highlight a block name and then click on one of the arrow icons to move that highlighted block in the indicated direction."
 msgstr "Bir blok adı vurgulayın ve vurgulanan bu blok belirtilen yönde taşımak için ok simgelerden birini tıklatın."
 
 #. I18N: gedcom tag _PRIM

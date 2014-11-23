@@ -7117,7 +7117,7 @@ msgid "Highest population"
 msgstr "Največja populacija"
 
 #: index_edit.php:254 index_edit.php:339
-msgid "Highlight a  block name and then click on one of the arrow icons to move that highlighted block in the indicated direction."
+msgid "Highlight a block name and then click on one of the arrow icons to move that highlighted block in the indicated direction."
 msgstr "Označi ime sklopa in klikni na eno od puščičnih podob za prenos označenega sklopa v želeno smer."
 
 #. I18N: gedcom tag _PRIM

@@ -7068,7 +7068,7 @@ msgid "Highest population"
 msgstr "Υψηλότερος πληθυσμός"
 
 #: index_edit.php:254 index_edit.php:339
-msgid "Highlight a  block name and then click on one of the arrow icons to move that highlighted block in the indicated direction."
+msgid "Highlight a block name and then click on one of the arrow icons to move that highlighted block in the indicated direction."
 msgstr "Επιλέξτε ένα πλαίσιο ονόματος και μετά κάντε κλικ σε ένα από τα εικονίδια με τα βέλη για να μετακινήσετε το επιλεγμένο πλαίσιο στην ενδεικνυόμενη κατεύθυνση."
 
 #. I18N: gedcom tag _PRIM
