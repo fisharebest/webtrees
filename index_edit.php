@@ -32,10 +32,10 @@ $controller = new WT_Controller_Ajax();
 $user_id = WT_Filter::get('user_id', WT_REGEX_INTEGER, WT_Filter::post('user_id', WT_REGEX_INTEGER));
 if ($user_id) {
 	$gedcom_id = null;
-	$canReset = $user_id > -1;
+	$can_reset = $user_id > 0;
 } else {
 	$gedcom_id = WT_Filter::get('gedcom_id', WT_REGEX_INTEGER, WT_Filter::post('gedcom_id', WT_REGEX_INTEGER));
-	$canReset = $gedcom_id > -1;
+	$can_reset = $gedcom_id > 0;
 }
 
 // Only an admin can edit the "default" page
@@ -53,7 +53,7 @@ if (
 
 $action = WT_Filter::get('action');
 
-if ($canReset && isset($_REQUEST['default'])) {
+if ($can_reset && WT_Filter::post('default') === '1') {
 	if ($user_id) {
 		$defaults = get_user_blocks(-1);
 	} else {
@@ -350,9 +350,9 @@ echo '</tr>';
 echo '<tr><td class="descriptionbox wrap" colspan="7"><div id="instructions">';
 echo WT_I18N::translate('Highlight a  block name and then click on one of the arrow icons to move that highlighted block in the indicated direction.');
 echo '</div></td></tr>';
-if ($canReset) {
+if ($can_reset) {
 	echo '<tr><td class="topbottombar" colspan="4">';
-	echo '<input type="checkbox" name="default" value="0">', WT_I18N::translate('Reset to defaults'), '</td>';
+	echo '<input type="checkbox" name="default" value="1">', WT_I18N::translate('Restore the default block layout'), '</td>';
 	echo '<td class="topbottombar" colspan="3">';
 } else {
 	echo '<td class="topbottombar" colspan="7">';
