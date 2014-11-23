@@ -127,14 +127,20 @@ class User {
 	 */
 	public static function create($user_name, $real_name, $email, $password) {
 		WT_DB::prepare(
-			"INSERT INTO `##user` (user_name, real_name, email, password) VALUES (?, ?, ?, ?)"
-		)->execute(array($user_name, $real_name, $email, password_hash($password, PASSWORD_DEFAULT)));
+			"INSERT INTO `##user` (user_name, real_name, email, password) VALUES (:user_name, :real_name, :email, :password)"
+		)->execute(array(
+			'user_name' => $user_name,
+			'real_name' => $real_name,
+			'email'     => $email,
+			'password'  => password_hash($password, PASSWORD_DEFAULT),
+		));
 
 		// Set default blocks for this user
 		$user = User::findByIdentifier($user_name);
-		WT_DB::prepare("INSERT INTO `##block` (`user_id`, `location`, `block_order`, `module_name`)
-							SELECT ? , `location`, `block_order`, `module_name` FROM `##block` WHERE `user_id` = ?")
-		     ->execute(array($user->getUserId(), -1));
+		WT_DB::prepare(
+			"INSERT INTO `##block` (`user_id`, `location`, `block_order`, `module_name`)" .
+			" SELECT :user_id , `location`, `block_order`, `module_name` FROM `##block` WHERE `user_id` = -1"
+		)->execute(array('user_id' => $user->getUserId()));
 		return $user;
 	}
 
