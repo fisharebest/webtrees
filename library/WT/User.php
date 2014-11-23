@@ -130,7 +130,12 @@ class User {
 			"INSERT INTO `##user` (user_name, real_name, email, password) VALUES (?, ?, ?, ?)"
 		)->execute(array($user_name, $real_name, $email, password_hash($password, PASSWORD_DEFAULT)));
 
-		return User::findByIdentifier($user_name);
+		// Set default blocks for this user
+		$user = User::findByIdentifier($user_name);
+		WT_DB::prepare("INSERT INTO `##block` (`user_id`, `location`, `block_order`, `module_name`)
+							SELECT ? , `location`, `block_order`, `module_name` FROM `##block` WHERE `user_id` = ?")
+		     ->execute(array($user->getUserId(), -1));
+		return $user;
 	}
 
 	/**
