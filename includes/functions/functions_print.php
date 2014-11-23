@@ -620,7 +620,7 @@ function format_asso_rela_record(WT_Fact $event) {
 
 			// Use same markup as WT_Gedcom_Tag::getLabelValue()
 			$asso = WT_I18N::translate('<span class="label">%1$s:</span> <span class="field" dir="auto">%2$s</span>', $label, $value);
-		} elseif (Auth::isEditor()) {
+		} elseif (!$person && Auth::isEditor()) {
 			$asso = WT_Gedcom_Tag::getLabelValue('ASSO', '<span class="error">' . $amatch[1] . '</span>');
 		} else {
 			$asso = '';
