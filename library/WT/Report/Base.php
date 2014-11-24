@@ -1554,8 +1554,12 @@ function varStartHandler($attrs) {
 			$tfact = $type;
 		}
 		$var = str_replace(array("@fact", "@desc"), array(WT_Gedcom_Tag::getLabel($tfact), $desc), $var);
-		if (substr($var, 0, 18) == 'WT_I18N::translate' || substr($var, 0, 15) == 'WT_I18N::number') {
-			eval("\$var=$var;");
+		if (preg_match('/^WT_I18N::number\((.+)\)$/', $var, $match)) {
+			$var = WT_I18N::number($match[1]);
+		} elseif (preg_match('/^WT_I18N::translate\(\'(.+)\'\)$/', $var, $match)) {
+			$var = WT_I18N::translate($match[1]);
+		} elseif (preg_match('/^WT_I18N::translate_c\(\'(.+)\', *\'(.+)\'\)$/', $var, $match)) {
+			$var = WT_I18N::translate_c($match[1], $match[2]);
 		}
 	}
 	// Check if variable is set as a date and reformat the date
@@ -1746,8 +1750,12 @@ function setVarStartHandler($attrs) {
 		$value = preg_replace("/\\$" . $match[$i][1] . "/", $t, $value, 1);
 		$i++;
 	}
-	if (substr($value, 0, 18) == 'WT_I18N::translate' || substr($value, 0, 15) == 'WT_I18N::number') {
-		eval("\$value = $value;");
+	if (preg_match('/^WT_I18N::number\((.+)\)$/', $value, $match)) {
+		$value = WT_I18N::number($match[1]);
+	} elseif (preg_match('/^WT_I18N::translate\(\'(.+)\'\)$/', $value, $match)) {
+		$value = WT_I18N::translate($match[1]);
+	} elseif (preg_match('/^WT_I18N::translate_c\(\'(.+)\', *\'(.+)\'\)$/', $value, $match)) {
+		$value = WT_I18N::translate_c($match[1], $match[2]);
 	}
 	// Arithmetic functions
 	if (preg_match("/(\d+)\s*([\-\+\*\/])\s*(\d+)/", $value, $match)) {

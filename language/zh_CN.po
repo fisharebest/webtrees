@@ -7045,7 +7045,7 @@ msgid "Highest population"
 msgstr "最高人口"
 
 #: index_edit.php:254 index_edit.php:339
-msgid "Highlight a  block name and then click on one of the arrow icons to move that highlighted block in the indicated direction."
+msgid "Highlight a block name and then click on one of the arrow icons to move that highlighted block in the indicated direction."
 msgstr "选中一个块名称,然后点击一个箭头图标移动那选中块到箭头方向。"
 
 #. I18N: gedcom tag _PRIM

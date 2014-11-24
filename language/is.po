@@ -7069,7 +7069,7 @@ msgid "Highest population"
 msgstr "Mesti íbúafjöldi"
 
 #: index_edit.php:254 index_edit.php:339
-msgid "Highlight a  block name and then click on one of the arrow icons to move that highlighted block in the indicated direction."
+msgid "Highlight a block name and then click on one of the arrow icons to move that highlighted block in the indicated direction."
 msgstr "Áherslumerkið kassaheiti og smellið síðan á eina af örvartáknunum til að færa þennan áherslumerkta kassa í þá átt sem gefin er til kynna."
 
 #. I18N: gedcom tag _PRIM

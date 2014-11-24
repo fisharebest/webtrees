@@ -3233,7 +3233,7 @@ msgstr "Causa della morte"
 
 #: admin_trees_renumber.php:278
 msgid "Caution!  This may take a long time.  Be patient."
-msgstr ""
+msgstr "Attenzione!  Questa operazione potrebbe richiedere parecchio tempo.  Portare pazienza."
 
 #: admin_site_upgrade.php:204
 msgid "Caution: old modules may not work, or they may prevent webtrees from working."
@@ -3887,7 +3887,7 @@ msgstr "Copia"
 #: admin_trees_merge.php:182
 #, php-format
 msgid "Copy all the records from %1$s into %2$s."
-msgstr ""
+msgstr "Copia tutti i record da %1$s a %2$s."
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:422
@@ -7070,7 +7070,7 @@ msgid "Highest population"
 msgstr "Popolazione più alta"
 
 #: index_edit.php:254 index_edit.php:339
-msgid "Highlight a  block name and then click on one of the arrow icons to move that highlighted block in the indicated direction."
+msgid "Highlight a block name and then click on one of the arrow icons to move that highlighted block in the indicated direction."
 msgstr "Evidenziare un  riquadro con un nome e quindi cliccare una delle frecce per spostare il riquadro selezionato nella relativa direzione."
 
 #. I18N: gedcom tag _PRIM
@@ -7353,7 +7353,7 @@ msgstr "Importa albero genealogico"
 #: admin_trees_renumber.php:260
 #: admin_trees_merge.php:73
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
-msgstr ""
+msgstr "Tutti i record degli alberi genealogici hanno un numero di riferimento interno (chiamato “XREF”), come ad esempio “F123” o “R14”."
 
 #: help_text.php:348
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet.  This might be of use with Japanese names, where three different alphabets may occur."
@@ -8891,7 +8891,7 @@ msgstr "Mercury"
 
 #: admin_trees_merge.php:30 themes/_administration/header.php:122
 msgid "Merge family trees"
-msgstr ""
+msgstr "Unisci alberi genealogici"
 
 #: admin_site_merge.php:266
 msgid "Merge from ID:"
@@ -10471,7 +10471,7 @@ msgstr "Foto"
 
 #: admin_pgv_to_wt.php:147
 msgid "PhpGedView might be installed in one of these folders:"
-msgstr ""
+msgstr "PhpGedView potrebbe essere installato in una di queste cartelle:"
 
 #: admin_pgv_to_wt.php:65
 msgid "PhpGedView must use the same database as webtrees."
@@ -11332,7 +11332,7 @@ msgstr "Reno, Nevada"
 #: admin_trees_merge.php:87 admin_trees_merge.php:92
 #: admin_trees_renumber.php:29
 msgid "Renumber family tree"
-msgstr ""
+msgstr "Ricrea numerazione albero genealogico"
 
 #: admin_trees_places.php:101 search.php:119
 msgid "Replace with"
@@ -12552,7 +12552,7 @@ msgstr "Barra laterale"
 
 #: admin_module_sidebar.php:30
 msgid "Sidebars"
-msgstr ""
+msgstr "Barre laterali"
 
 #: library/WT/Stats.php:4979
 msgid "Sierra Leone"
@@ -13262,7 +13262,7 @@ msgstr "I dettagli su questa persona sono confidenziali."
 
 #: admin_trees_merge.php:176
 msgid "The family trees were merged successfully."
-msgstr ""
+msgstr "Gli alberi genealogici sono stati riuniti correttamente."
 
 #. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
 #: action.php:160
@@ -13464,7 +13464,7 @@ msgstr "Non è necessario inserire un prefisso; tuttavia è consigliato in quant
 #: admin_trees_renumber.php:237
 #, php-format
 msgid "The record %1$s was renamed to %2$s."
-msgstr ""
+msgstr "Il record %1$s è stato rinominato in %2$s."
 
 #: action.php:100
 msgid "The record was copied to the clipboard."
@@ -13480,7 +13480,7 @@ msgstr "La configurazione del server è corretta."
 
 #: admin_trees_renumber.php:252
 msgid "The server’s time limit was reached."
-msgstr ""
+msgstr "È stata raggiunta la durata massima di esecuzione sul server."
 
 #: site-offline.php:78
 msgid "The site is down for maintenance.  You should <a href=\"index.php\">try again</a> in a few minutes."
@@ -13525,8 +13525,8 @@ msgstr "Il tempo (in secondi) che una sessione di webtrees rimane attiva prima c
 #, php-format
 msgid "The two family trees have %1$s record which use the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "I due alberi genealogici hanno %1$s record che usa lo stesso “XREF”."
+msgstr[1] "I due alberi genealogici hanno %1$s record che usano lo stesso “XREF”."
 
 #: admin_site_upgrade.php:490
 msgid "The upgrade is complete."
@@ -13726,8 +13726,8 @@ msgstr "Questa famiglia è rimasta senza figli"
 #, php-format
 msgid "This family tree has %s record which uses the same “XREF” as another family tree."
 msgid_plural "This family tree has %s records which use the same “XREF” as another family tree."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Questo albero genealogico ha %s record che usa lo stesso “XREF” di un altro albero genealogico."
+msgstr[1] "Questo albero genealogico ha %s record che usano lo stesso “XREF” di un altro albero genealogico."
 
 #: modules_v3/random_media/module.php:189
 msgid "This family tree has no images to display."
@@ -15599,11 +15599,11 @@ msgstr "È possibile abilitare nuovamente questi temi dopo l’aggiornamento."
 
 #: admin_trees_renumber.php:261
 msgid "You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree."
-msgstr ""
+msgstr "È possibile ricreare la numerazione dei record in un albero genealogico, in modo che questi numeri di riferimento interno non siano duplicati in un altro albero genealogico."
 
 #: admin_trees_renumber.php:274
 msgid "You can renumber this family tree."
-msgstr ""
+msgstr "È possibile ricreare la numerazione di questo albero genealogico."
 
 #: help_text.php:643 help_text.php:682
 msgid "You can request a higher or lower limit, although the server may ignore this request."
@@ -15700,7 +15700,7 @@ msgstr "È necessario assegnare un titolo alla fonte"
 
 #: admin_trees_merge.php:83
 msgid "You must renumber the records in one of the trees before you can merge them."
-msgstr ""
+msgstr "È necessario ricreare la numerazione dei record di uno degli alberi genealogici prima di riunirli."
 
 #: modules_v3/charts/module.php:139
 msgid "You must select an individual and chart type in the block configuration settings."
@@ -16819,7 +16819,7 @@ msgstr "maschio/femmina"
 #. I18N: button label
 #: admin_trees_renumber.php:275
 msgid "go"
-msgstr ""
+msgstr "vai"
 
 #. I18N: button label
 #: edit_interface.php:2740

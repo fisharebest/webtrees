@@ -156,11 +156,10 @@ case 1:
 	print_pedigree_person($controller->root);
 	// process the tree
 	$ancestors = $controller->sosaAncestors($PEDIGREE_GENERATIONS-1);
+	$ancestors = array_filter($ancestors); // The SOSA array includes empty placeholders
 	foreach ($ancestors as $sosa => $individual) {
-		if ($individual) {
-			foreach ($individual->getChildFamilies() as $family) {
-				print_sosa_family($family->getXref(), $individual, $sosa);
-			}
+		foreach ($individual->getChildFamilies() as $family) {
+			print_sosa_family($family->getXref(), $individual, $sosa);
 		}
 	}
 	echo '</div>';
@@ -168,17 +167,17 @@ case 1:
 case 2:
 	// Individual list
 	$ancestors = $controller->sosaAncestors($PEDIGREE_GENERATIONS);
+	$ancestors = array_filter($ancestors); // The SOSA array includes empty placeholders
 	echo '<div id="ancestry-list">', format_indi_table($ancestors, 'sosa'), '</div>';
 	break;
 case 3:
 	// Family list
 	$ancestors = $controller->sosaAncestors($PEDIGREE_GENERATIONS-1);
+	$ancestors = array_filter($ancestors); // The SOSA array includes empty placeholders
 	$families = array();
 	foreach ($ancestors as $individual) {
-		if ($individual) {
-			foreach ($individual->getChildFamilies() as $family) {
-				$families[$family->getXref()] = $family;
-			}
+		foreach ($individual->getChildFamilies() as $family) {
+			$families[$family->getXref()] = $family;
 		}
 	}
 	echo '<div id="ancestry-list">', format_fam_table($families), '</div>';

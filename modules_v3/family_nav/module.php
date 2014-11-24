@@ -123,7 +123,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			if ($this->isPerson($spouse)) {
 				$menu = new WT_Menu(get_close_relationship_name($controller->record, $spouse));
 				$menu->addClass('', 'submenu flyout');
-				$menu->addSubMenu(new WT_Menu($this->getParents($spouse)));
+				$menu->addSubmenu(new WT_Menu($this->getParents($spouse)));
 				?>
 				<tr>
 					<td class="facts_label">
@@ -147,7 +147,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			if ($this->isPerson($child)) {
 				$menu = new WT_Menu(get_close_relationship_name($controller->record, $child));
 				$menu->addClass('', 'submenu flyout');
-				$menu->addSubMenu(new WT_Menu($this->getFamily($child)));
+				$menu->addSubmenu(new WT_Menu($this->getFamily($child)));
 				?>
 				<tr>
 					<td class="facts_label">
