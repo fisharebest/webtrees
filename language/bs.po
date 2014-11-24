@@ -3354,8 +3354,8 @@ msgstr "Izmjene"
 
 #. I18N: title for list of recent changes
 #: modules_v3/recent_changes/module.php:70
-#, php-format
-msgid "Changes in the last day"
+#, fuzzy, php-format
+msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
 msgstr[0] "Promjene u zadnjem danu"
 msgstr[1] "Promjene u zadnjim danima"

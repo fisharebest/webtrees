@@ -3336,8 +3336,8 @@ msgstr "שינויים"
 
 #. I18N: title for list of recent changes
 #: modules_v3/recent_changes/module.php:70
-#, php-format
-msgid "Changes in the last day"
+#, fuzzy, php-format
+msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
 msgstr[0] "השינויים ביממה האחרונה"
 msgstr[1] "השינויים ב-%s הימים האחרונים"
