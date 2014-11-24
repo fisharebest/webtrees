@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2014-10-10 13:52+0100\n"
-"PO-Revision-Date: 2014-10-15 10:37+1000\n"
+"PO-Revision-Date: 2014-11-24 15:23+1000\n"
 "Last-Translator: Vytautas Krivickas <vytautas.krivickas@gmail.com>\n"
 "Language-Team: \n"
 "Language: lt\n"
@@ -1247,7 +1247,7 @@ msgstr "Pridėti naujieną"
 #: modules_v3/upcoming_events/module.php:162
 #: modules_v3/user_messages/module.php:154 modules_v3/yahrzeit/module.php:273
 msgid "Add a scrollbar when block contents grow"
-msgstr "Pridėti slinktis kai lauko turinys perauga lauko matmenis"
+msgstr "Pridėti slinktis kai bloko turinys perauga bloko matmenis"
 
 #: modules_v3/stories/module.php:122 modules_v3/stories/module.php:206
 #: modules_v3/stories/module.php:329
@@ -2794,7 +2794,7 @@ msgstr "Palaiminimas"
 
 #: admin_module_blocks.php:58 admin_modules.php:132
 msgid "Block"
-msgstr "Langas"
+msgstr "Blokas"
 
 #: admin_module_blocks.php:30 themes/_administration/header.php:151
 msgid "Blocks"
@@ -7093,7 +7093,7 @@ msgstr "Didžiausia populiacija"
 
 #: index_edit.php:254 index_edit.php:339
 msgid "Highlight a block name and then click on one of the arrow icons to move that highlighted block in the indicated direction."
-msgstr "Paryškinti lango pavadinimą, tada spustelėkite vieną iš rodyklių piktogramų judėti, kad išryškintas langas judėtų nurodyta kryptimi."
+msgstr "Paryškinkite bloko pavadinimą, tada spustelėkite vieną iš rodyklių piktogramų, kad išryškintas blokas judėtų nurodyta kryptimi."
 
 #. I18N: gedcom tag _PRIM
 #: library/WT/Gedcom/Tag.php:730
@@ -7316,7 +7316,7 @@ msgstr ""
 
 #: modules_v3/recent_changes/module.php:169
 msgid "If you hide an empty block, you will not be able to change its configuration until it becomes visible by no longer being empty."
-msgstr "Jei paslėpsite tuščia lauką, jūs negalėsite pakeisti jo konfigūracijos, kol jis netaps matomas pasidarydamas netuščias."
+msgstr "Jei paslėpsite tuščia bloką, jūs negalėsite pakeisti jo konfigūracijos, kol jis nebus matomas kai taps netuščias."
 
 #: help_text.php:645 help_text.php:684
 msgid "If you leave this setting empty, the default value will be used."
@@ -10419,7 +10419,7 @@ msgstr "%s kilmės medis"
 
 #: modules_v3/review_changes/help_text.php:31
 msgid "Pending Changes block"
-msgstr "Laukiančių peržiūros pakeitimų langas"
+msgstr "Laukiančių peržiūros pakeitimų blokas"
 
 #. I18N: Name of a module
 #: admin_site_upgrade.php:105 edit_changes.php:33 edit_changes.php:47
@@ -11801,7 +11801,7 @@ msgstr "Pasirinkite norimą potarpį"
 
 #: modules_v3/gedcom_stats/module.php:285
 msgid "Select the stats to show in this block"
-msgstr "Pasirinkti kokius duomenis rodyti šiame lange"
+msgstr "Pasirinkti kokius duomenis rodyti šiame bloke"
 
 #: help_text.php:1499
 msgid "Select this option as to save your clippings in a ZIP file.  For more information about ZIP files, please visit <a href=\"http://www.winzip.com\" target=\"_blank\">http://www.winzip.com</a>."
@@ -12190,7 +12190,7 @@ msgstr "Trumpiausios trukmės šeimyninis gyvenimas"
 
 #: modules_v3/recent_changes/module.php:164
 msgid "Should this block be hidden when it is empty?"
-msgstr "Ar šis laukas turi būti paslėptas jei jis yra tuščias?"
+msgstr "Ar šis blokas turi būti paslėptas jei jis yra tuščias?"
 
 #: calendar.php:183
 msgid "Show"
@@ -12509,7 +12509,7 @@ msgstr "Rodo vietas ir įvykius naudojant Google Maps™ servisą."
 #: modules_v3/faq/module.php:170 modules_v3/html/module.php:320
 #: modules_v3/stories/module.php:236
 msgid "Show this block for which languages?"
-msgstr "Kokiomis kalbomis rodyti šį langą?"
+msgstr "Kokiomis kalbomis rodyti šį bloką?"
 
 #: admin_trees_config.php:40 admin_trees_config.php:669
 #: includes/functions/functions_edit.php:217
@@ -13286,7 +13286,7 @@ msgstr "Šio asmens duomenys yra privatūs."
 
 #: admin_trees_merge.php:176
 msgid "The family trees were merged successfully."
-msgstr ""
+msgstr "Šeimos medžiai buvo sėkmingai sujungti."
 
 #. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
 #: action.php:160
@@ -13504,7 +13504,7 @@ msgstr "Serverio nustatymai yra geri."
 
 #: admin_trees_renumber.php:252
 msgid "The server’s time limit was reached."
-msgstr ""
+msgstr "Serverio laiko limitas buvo pasiektas."
 
 #: site-offline.php:78
 msgid "The site is down for maintenance.  You should <a href=\"index.php\">try again</a> in a few minutes."
@@ -13691,11 +13691,11 @@ msgstr "Ši paskyra nebuvo patvirtinta.  Prašome pasitikrinti el. paštą dėl 
 
 #: modules_v3/charts/help_text.php:32
 msgid "This block allows a pedigree, descendancy, or hourglass chart to appear on your “My page” or the “Home page”.  Because of space limitations, the charts should be placed only on the left side of the page.<br><br>When this block appears on the “Home page”, the root individual and the type of chart to be displayed are determined by the administrator.  When this block appears on the user’s “My page”, these options are determined by the user.<br><br>The behavior of these charts is identical to their behavior when they are called up from the menus.  Click on the box of an individual to see more details about them."
-msgstr "Šis laukas leidžia kilmės, palikuonių arba laikrodžio diagramas Tituliniame arba Mano puslapyje. Dėl erdvės apribojimų, grafikai turi būti pateikiami tik kairėje puslapio pusėje.<br><br>Kai šis laukas pasirodys Tituliniame puslapyje, šakninis asmuo ir diagramos tipas, kuris bus rodomas yra nustatomas administratoriaus. Kai šis laukas pasirodo vartotojo asmeniniams Mano puslapis šie duomenys yra nustatomi naudotojo.<br><br>Šių diagramų elgesys yra tapatus savo elgesiui, kai jie yra pašaukti iš meniu. Spauskite ant asmens norėdami matyti daugiau informacijos apie juos lauke."
+msgstr "Šis blokas leidžia kilmės, palikuonių arba laikrodžio diagramas Tituliniame arba Mano puslapyje. Dėl erdvės apribojimų, grafikai turi būti pateikiami tik kairėje puslapio pusėje.<br><br>Kai šis blokas pasirodys Tituliniame puslapyje, šakninis asmuo ir diagramos tipas, kuris bus rodomas yra nustatomas administratoriaus. Kai šis blokas pasirodo vartotojo asmeniniams Mano puslapis šie duomenys yra nustatomi naudotojo.<br><br>Šių diagramų elgesys yra tapatus savo elgesiui, kai jie yra pašaukti iš meniu. Spauskite ant asmens norėdami matyti daugiau informacijos apie juos."
 
 #: modules_v3/review_changes/help_text.php:32
 msgid "This block will show editors a list of records with pending changes that need to be approved by a moderator.  It also generates daily emails to moderators whenever pending changes exist."
-msgstr "Šis langas bus rodomas redaktoriams su įrašais, kuriuos reikia patvirtinti moderatoriui. Jis taip pat sukuria kasdienius laiškus moderatoriams, kai tik atsiranda pakeitimai."
+msgstr "Šis blokas bus rodomas redaktoriams su įrašais, kuriuos reikia patvirtinti moderatoriui. Jis taip pat sukuria kasdienius laiškus moderatoriams, kai tik atsiranda pakeitimai."
 
 #: help_text.php:1479
 msgid "This checkbox controls your visibility to other users while you’re online.  It also controls your ability to see other online users who are configured to be visible.<br><br>When this box is unchecked, you will be completely invisible to others, and you will also not be able to see other online users.  When this box is checked, exactly the opposite is true.  You will be visible to others, and you will also be able to see others who are configured to be visible."
@@ -14410,7 +14410,7 @@ msgstr "Antraštė"
 
 #: modules_v3/html/help_text.php:37
 msgid "To assist you in getting started with this block, we have created several standard templates.  When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
-msgstr "Norėdami padėti jums pradėti dirbti su šiuo langu, mes sukūrėme keletą standartinių šablonų. Kai pasirenkate vieną iš šių šablonų, teksto srityje bus pateikta įrašas, kurį galite pakeisti, kad atiktų jūsų svetainės reikalavimus."
+msgstr "Norėdami padėti jums pradėti dirbti su šiuo bloku, mes sukūrėme keletą standartinių šablonų. Kai pasirenkate vieną iš šių šablonų, teksto srityje bus pateiktas įrašas, kurį galite pakeisti, kad atiktų jūsų svetainės reikalavimams."
 
 #: admin_site_upgrade.php:391
 msgid "To complete the upgrade, you should install the files manually."
@@ -15733,7 +15733,7 @@ msgstr "Jūs turite pernumeruoti įrašus viename iš šių šeimos medžių pri
 
 #: modules_v3/charts/module.php:139
 msgid "You must select an individual and chart type in the block configuration settings."
-msgstr "Turite pasirinkti asmenį ir diagramos tipą nustatymų lauke."
+msgstr "Turite pasirinkti asmenį ir diagramos tipą nustatymų bloke."
 
 #: admin_users.php:355
 msgid "You must specify an individual record before you can restrict the user to their immediate family."
