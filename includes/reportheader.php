@@ -129,8 +129,12 @@ function varStartHandler($attrs) {
 			$tfact = $type;
 		}
 		$var = str_replace(array("@fact", "@desc"), array($tfact, $desc), $var);
-		if (substr($var, 0, 18)=='WT_I18N::translate' || substr($var, 0, 23)=='WT_Gedcom_Tag::getLabel') {
-			eval("\$var=$var;");
+		if (preg_match('/^WT_I18N::number\((.+)\)$/', $var, $match)) {
+			$var = WT_I18N::number($match[1]);
+		} elseif (preg_match('/^WT_I18N::translate\(\'(.+)\'\)$/', $var, $match)) {
+			$var = WT_I18N::translate($match[1]);
+		} elseif (preg_match('/^WT_I18N::translate_c\(\'(.+)\', *\'(.+)\'\)$/', $var, $match)) {
+			$var = WT_I18N::translate_c($match[1], $match[2]);
 		}
 		$text .= $var;
 	}

@@ -3358,8 +3358,8 @@ msgstr "Promjene"
 
 #. I18N: title for list of recent changes
 #: modules_v3/recent_changes/module.php:70
-#, php-format
-msgid "Changes in the last day"
+#, fuzzy, php-format
+msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
 msgstr[0] "Današnje promjene"
 msgstr[1] "Promjene u zadnja %s dana"
@@ -7092,7 +7092,7 @@ msgid "Highest population"
 msgstr "Najveća populacija"
 
 #: index_edit.php:254 index_edit.php:339
-msgid "Highlight a  block name and then click on one of the arrow icons to move that highlighted block in the indicated direction."
+msgid "Highlight a block name and then click on one of the arrow icons to move that highlighted block in the indicated direction."
 msgstr "Označite blok i onda kliknite na neku od strelica kako bi ga pomicali u tom smjeru."
 
 #. I18N: gedcom tag _PRIM
