@@ -590,7 +590,7 @@ function format_asso_rela_record(WT_Fact $event) {
 	// For each ASSO record
 	foreach (array_merge($amatches1, $amatches2) as $amatch) {
 		$person = WT_Individual::getInstance($amatch[1]);
-		if ($person) {
+		if ($person && $person->canShowName()) {
 			// Is there a "RELA" tag
 			if (preg_match('/\n[23] RELA (.+)/', $amatch[2], $rmatch)) {
 				// Use the supplied relationship as a label
@@ -620,8 +620,10 @@ function format_asso_rela_record(WT_Fact $event) {
 
 			// Use same markup as WT_Gedcom_Tag::getLabelValue()
 			$asso = WT_I18N::translate('<span class="label">%1$s:</span> <span class="field" dir="auto">%2$s</span>', $label, $value);
-		} else {
+		} elseif (!$person && Auth::isEditor()) {
 			$asso = WT_Gedcom_Tag::getLabelValue('ASSO', '<span class="error">' . $amatch[1] . '</span>');
+		} else {
+			$asso = '';
 		}
 		$html .= '<div class="fact_ASSO">' . $asso . '</div>';
 	}
