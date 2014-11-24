@@ -3335,8 +3335,8 @@ msgstr "Αλλαγές"
 
 #. I18N: title for list of recent changes
 #: modules_v3/recent_changes/module.php:70
-#, php-format
-msgid "Changes in the last day"
+#, fuzzy, php-format
+msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
 msgstr[0] "Αλλαγές την τελευταία ημέρα"
 msgstr[1] "Αλλαγές τις τελευταίες %s ημέρες"

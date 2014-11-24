@@ -69,7 +69,7 @@ class recent_changes_WT_Module extends WT_Module implements WT_Module_Block {
 		} else {
 			$title = '';
 		}
-		$title .= /* I18N: title for list of recent changes */ WT_I18N::plural('Changes in the last day', 'Changes in the last %s days', $days, WT_I18N::number($days));
+		$title .= /* I18N: title for list of recent changes */ WT_I18N::plural('Changes in the last %s day', 'Changes in the last %s days', $days, WT_I18N::number($days));
 
 		$content = '';
 		// Print block content

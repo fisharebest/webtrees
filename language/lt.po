@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2014-10-10 13:52+0100\n"
-"PO-Revision-Date: 2014-11-24 15:23+1000\n"
+"PO-Revision-Date: 2014-11-24 22:24+1000\n"
 "Last-Translator: Vytautas Krivickas <vytautas.krivickas@gmail.com>\n"
 "Language-Team: \n"
 "Language: lt\n"
@@ -3359,11 +3359,11 @@ msgstr "Pakeitimai"
 #. I18N: title for list of recent changes
 #: modules_v3/recent_changes/module.php:70
 #, php-format
-msgid "Changes in the last day"
+msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
-msgstr[0] "Paskutinės dienos pakeitimai"
-msgstr[1] "Paskutinių %s dienų pakeitimai"
-msgstr[2] "Paskutinių %s dienų pakeitimai"
+msgstr[0] "Pastarosios %s dienos pakeitimai"
+msgstr[1] "Pastarūjų %s dienų pakeitimai"
+msgstr[2] "Pastarūjų %s dienų pakeitimai"
 
 #: themes/_administration/header.php:126
 msgid "Changes log"
