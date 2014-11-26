@@ -96,12 +96,20 @@ class WT_Tree {
 			// Update the database
 			if ($setting_value === null) {
 				WT_DB::prepare(
-					"DELETE FROM `##gedcom_setting` WHERE gedcom_id = ? AND setting_name = ?"
-				)->execute(array($this->tree_id, $setting_name));
+					"DELETE FROM `##gedcom_setting` WHERE gedcom_id = :gedcom_id AND setting_name = :setting_name"
+				)->execute(array(
+					'gedcom_id'    => $this->tree_id,
+					'setting_name' => $setting_name,
+				));
 			} else {
 				WT_DB::prepare(
-					"REPLACE INTO `##gedcom_setting` (gedcom_id, setting_name, setting_value) VALUES (?, ?, LEFT(?, 255))"
-				)->execute(array($this->tree_id, $setting_name, $setting_value));
+					"REPLACE INTO `##gedcom_setting` (gedcom_id, setting_name, setting_value)" .
+					" VALUES (:gedcom_id, :setting_name, LEFT(:setting_value, 255))"
+				)->execute(array(
+					'gedcom_id'     => $this->tree_id,
+					'setting_name'  => $setting_name,
+					'setting_value' => $setting_value,
+				));
 			}
 			// Update our cache
 			$this->preferences[$setting_name] = $setting_value;
