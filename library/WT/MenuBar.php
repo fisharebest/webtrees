@@ -300,7 +300,7 @@ class WT_MenuBar {
 		)->execute(array(WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID))->fetchOneRow();
 
 		// Build a list of submenu items and then sort it in localized name order
-		$surname_url = '&surname=' . rawurlencode($controller->getSignificantSurname()) . '&amp;ged=' . WT_GEDURL;
+		$surname_url = '&amp;surname=' . rawurlencode($controller->getSignificantSurname()) . '&amp;ged=' . WT_GEDURL;
 
 		$menulist = array(
 			new WT_Menu(WT_I18N::translate('Individuals'), 'indilist.php?ged=' . WT_GEDURL . $surname_url, 'menu-list-indi'),
