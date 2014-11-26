@@ -65,10 +65,18 @@ class WT_Controller_Search extends WT_Controller_Page {
 	/** @var WT_Tree[] A list of trees to search */
 	var $search_trees = array();
 
+	/** @var WT_Individual[] Individual search results */
 	var $myindilist = array();
+
+	/** @var WT_Source[] Source search results */
 	var $mysourcelist = array();
+
+	/** @var WT_Family[] Family search results */
 	var $myfamlist = array();
+
+	/** @var WT_Note[] Note search results */
 	var $mynotelist = array();
+
 	var $inputFieldNames = array();
 	var $replace = '';
 	var $replaceNames = false;
@@ -571,8 +579,6 @@ class WT_Controller_Search extends WT_Controller_Page {
 		require_once WT_ROOT . 'includes/functions/functions_print_lists.php';
 		global $GEDCOM;
 
-		$somethingPrinted = false; // whether anything printed
-		// ---- section to search and display results on a general keyword search
 		if ($this->action == "general" || $this->action == "soundex" || $this->action == "replace") {
 			if ($this->myindilist || $this->myfamlist || $this->mysourcelist || $this->mynotelist) {
 				$this->addInlineJavascript('jQuery("#search-result-tabs").tabs();');
@@ -606,7 +612,6 @@ class WT_Controller_Search extends WT_Controller_Page {
 						}
 					}
 					if ($datalist) {
-						$somethingPrinted = true;
 						usort($datalist, array('WT_GedcomRecord', 'compare'));
 						$GEDCOM = $search_tree->tree_name;
 						load_gedcom_settings($search_tree->tree_id);
@@ -630,7 +635,6 @@ class WT_Controller_Search extends WT_Controller_Page {
 						}
 					}
 					if ($datalist) {
-						$somethingPrinted = true;
 						usort($datalist, array('WT_GedcomRecord', 'compare'));
 						$GEDCOM = $search_tree->tree_name;
 						load_gedcom_settings($search_tree->tree_id);
@@ -654,7 +658,6 @@ class WT_Controller_Search extends WT_Controller_Page {
 						}
 					}
 					if ($datalist) {
-						$somethingPrinted = true;
 						usort($datalist, array('WT_GedcomRecord', 'compare'));
 						$GEDCOM = $search_tree->tree_name;
 						load_gedcom_settings($search_tree->tree_id);
@@ -678,7 +681,6 @@ class WT_Controller_Search extends WT_Controller_Page {
 						}
 					}
 					if ($datalist) {
-						$somethingPrinted = true;
 						usort($datalist, array('WT_GedcomRecord', 'compare'));
 						$GEDCOM = $search_tree->tree_name;
 						load_gedcom_settings($search_tree->tree_id);
@@ -694,15 +696,10 @@ class WT_Controller_Search extends WT_Controller_Page {
 				$GEDCOM = WT_GEDCOM;
 				load_gedcom_settings(WT_GED_ID);
 				echo '</div>'; //#search-result-tabs
-			} elseif (isset ($this->query)) {
-				echo '<br><div class="warning center"><em>' . WT_I18N::translate('No results found.') . '</em><br>';
-				if (!isset ($this->srindi) && !isset ($this->srfams) && !isset ($this->srsour) && !isset ($this->srnote)) {
-					echo '<em>' . WT_I18N::translate('Be sure to select an option to search for.') . '</em><br>';
-				}
-				echo '</div>';
+			} elseif ($this->query || $this->firstname || $this->lastname || $this->place || $this->year) {
+				// One or more search terms were specified, but no results were found.
+				echo '<div class="warning center">' . WT_I18N::translate('No results found.') . '</div>';
 			}
 		}
-
-		return $somethingPrinted; // whether anything printed
 	}
 }

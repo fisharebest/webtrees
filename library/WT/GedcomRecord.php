@@ -1102,14 +1102,15 @@ class WT_GedcomRecord {
 		$chan = $this->getFirstFact('CHAN');
 
 		if ($chan === null) {
-			return '&nbsp;';
+			return WT_I18N::translate('Unknown');
+		} else {
+			$chan_user = $chan->getAttribute('_WT_USER');
+			if ($chan_user === null) {
+				return WT_I18N::translate('Unknown');
+			} else {
+				return $chan_user;
+			}
 		}
-
-		$chan_user = $chan->getAttribute('_WT_USER');
-		if (empty($chan_user)) {
-			return '&nbsp;';
-		}
-		return $chan_user;
 	}
 
 	/**
