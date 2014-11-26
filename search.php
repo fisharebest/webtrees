@@ -215,19 +215,19 @@ echo '<div id="search-page">
 			echo '<div class="label">' , WT_I18N::translate('Other searches'), '</div>
 				<div class="value">';
 				if ($controller->action == "general") {
-					echo '<a href="?action=soundex">', WT_I18N::translate('Phonetic search'), '</a>&nbsp;|&nbsp;<a href="search_advanced.php">', WT_I18N::translate('Advanced search'), '</a>';
+					echo '<a href="?action=soundex">', WT_I18N::translate('Phonetic search'), '</a> | <a href="search_advanced.php">', WT_I18N::translate('Advanced search'), '</a>';
 					if (WT_USER_CAN_EDIT) {
-						echo '&nbsp;|&nbsp;<a href="?action=replace">', WT_I18N::translate('Search and replace'), '</a>';
+						echo ' | <a href="?action=replace">', WT_I18N::translate('Search and replace'), '</a>';
 					}
 				} elseif ($controller->action == "replace") {
-					echo '<a href="?action=general">', WT_I18N::translate('General search'), '</a>&nbsp;|&nbsp;',
+					echo '<a href="?action=general">', WT_I18N::translate('General search'), '</a> | ',
 						'<a href="?action=soundex">', WT_I18N::translate('Phonetic search'), '</a>',
-						'&nbsp;|&nbsp;<a href="search_advanced.php">', WT_I18N::translate('Advanced search'), '</a>';
+						' | <a href="search_advanced.php">', WT_I18N::translate('Advanced search'), '</a>';
 				} elseif ($controller->action == "soundex") {
 					echo '<a href="?action=general">', WT_I18N::translate('General search'), '</a>',
-						'&nbsp;|&nbsp;<a href="search_advanced.php">', WT_I18N::translate('Advanced search'), '</a>';
+						' | <a href="search_advanced.php">', WT_I18N::translate('Advanced search'), '</a>';
 					if (WT_USER_CAN_EDIT) {
-						echo '&nbsp;|<a href="?action=replace">', WT_I18N::translate('Search and replace'), '</a>';
+						echo ' | <a href="?action=replace">', WT_I18N::translate('Search and replace'), '</a>';
 					}
 				}
 			echo '</div>
@@ -244,5 +244,5 @@ echo '<div id="search-page">
 			}
 		echo '</div>';  // close div id="search_submit"
 	echo '</form>';
-	$somethingPrinted = $controller->printResults();
+	$controller->printResults();
 echo '</div>'; // close div id "search-page"
