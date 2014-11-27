@@ -113,7 +113,7 @@ if (!isset($_POST['lang'])) {
 
 	// Mandatory functions
 	$disable_functions=preg_split('/ *, */', ini_get('disable_functions'));
-	foreach (array('ini_set', 'parse_ini_file') as $function) {
+	foreach (array('parse_ini_file') as $function) {
 		if (in_array($function, $disable_functions)) {
 			echo '<p class="bad">', /* I18N: %s is a PHP function/module/setting */ WT_I18N::translate('%s is disabled on this server.  You cannot install webtrees until it is enabled.  Please ask your server’s administrator to enable it.', $function.'()'), '</p>';
 			$errors=true;

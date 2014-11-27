@@ -358,7 +358,7 @@ if ($SERVER_URL && $SERVER_URL != WT_SERVER_NAME . WT_SCRIPT_PATH) {
 // Request more resources - if we can/want to
 if (!ini_get('safe_mode')) {
 	$memory_limit = WT_Site::getPreference('MEMORY_LIMIT');
-	if ($memory_limit) {
+	if ($memory_limit && strpos(ini_get('disable_functions'), 'ini_set') === false) {
 		ini_set('memory_limit', $memory_limit);
 	}
 	$max_execution_time = WT_Site::getPreference('MAX_EXECUTION_TIME');
