@@ -32,8 +32,10 @@ $controller = new WT_Controller_Ajax();
 $user_id = WT_Filter::get('user_id', WT_REGEX_INTEGER, WT_Filter::post('user_id', WT_REGEX_INTEGER));
 if ($user_id) {
 	$gedcom_id = null;
+	$can_reset = $user_id > 0;
 } else {
 	$gedcom_id = WT_Filter::get('gedcom_id', WT_REGEX_INTEGER, WT_Filter::post('gedcom_id', WT_REGEX_INTEGER));
+	$can_reset = $gedcom_id > 0;
 }
 
 // Only an admin can edit the "default" page
@@ -51,54 +53,64 @@ if (
 
 $action = WT_Filter::get('action');
 
-if (isset($_REQUEST['main'])) {
-	$main=$_REQUEST['main'];
+if ($can_reset && WT_Filter::post('default') === '1') {
+	if ($user_id) {
+		$defaults = get_user_blocks(-1);
+	} else {
+		$defaults = get_gedcom_blocks(-1);
+	}
+	$main  = $defaults['main'];
+	$right = $defaults['side'];
 } else {
-	$main=array();
-}
-if (isset($_REQUEST['right'])) {
-	$right=$_REQUEST['right'];
-} else {
-	$right=array();
-}
+	if (isset($_REQUEST['main'])) {
+		$main = $_REQUEST['main'];
+	} else {
+		$main = array();
+	}
 
+	if (isset($_REQUEST['right'])) {
+		$right = $_REQUEST['right'];
+	} else {
+		$right = array();
+	}
+}
 // Define all the icons we're going to use
 $IconUarrow = 'icon-uarrow';
 $IconDarrow = 'icon-darrow';
-if($TEXT_DIRECTION=='ltr') {
-	$IconRarrow = 'icon-rarrow';
-	$IconLarrow = 'icon-larrow';
+if ($TEXT_DIRECTION === 'ltr') {
+	$IconRarrow  = 'icon-rarrow';
+	$IconLarrow  = 'icon-larrow';
 	$IconRDarrow = 'icon-rdarrow';
 	$IconLDarrow = 'icon-ldarrow';
 } else {
-	$IconRarrow = 'icon-larrow';
-	$IconLarrow = 'icon-rarrow';
+	$IconRarrow  = 'icon-larrow';
+	$IconLarrow  = 'icon-rarrow';
 	$IconRDarrow = 'icon-ldarrow';
 	$IconLDarrow = 'icon-rdarrow';
 }
 
-$all_blocks=array();
-foreach (WT_Module::getActiveBlocks() as $name=>$block) {
+$all_blocks = array();
+foreach (WT_Module::getActiveBlocks() as $name => $block) {
 	if ($user_id && $block->isUserBlock() || $gedcom_id && $block->isGedcomBlock()) {
-		$all_blocks[$name]=$block;
+		$all_blocks[$name] = $block;
 	}
 }
 
 if ($user_id) {
-	$blocks=get_user_blocks($user_id);
-} elseif ($gedcom_id) {
-	$blocks=get_gedcom_blocks($gedcom_id);
+	$blocks = get_user_blocks($user_id);
+} else {
+	$blocks = get_gedcom_blocks($gedcom_id);
 }
 
-if ($action=='update') {
+if ($action === 'update') {
 	Zend_Session::writeClose();
 	foreach (array('main', 'side') as $location) {
-		if ($location=='main') {
-			$new_blocks=$main;
+		if ($location === 'main') {
+			$new_blocks = $main;
 		} else {
-			$new_blocks=$right;
+			$new_blocks = $right;
 		}
-		foreach ($new_blocks as $order=>$block_name) {
+		foreach ($new_blocks as $order => $block_name) {
 			if (is_numeric($block_name)) {
 				// existing block
 				WT_DB::prepare("UPDATE `##block` SET block_order=? WHERE block_id=?")->execute(array($order, $block_name));
@@ -245,13 +257,13 @@ $controller
 
 
 	// Load Block Description array for use by javascript
-	foreach ($all_blocks as $block_name=>$block) {
+	foreach ($all_blocks as $block_name => $block) {
 		$controller->addInlineJavascript(
 			'block_descr["'.$block_name.'"] = "'.WT_Filter::escapeJs($block->getDescription()).'";'
 		);
 	}
 	$controller->addInlineJavascript(
-		'block_descr["advice1"] = "'.WT_I18N::translate('Highlight a  block name and then click on one of the arrow icons to move that highlighted block in the indicated direction.').'";'
+		'block_descr["advice1"] = "'.WT_I18N::translate('Highlight a block name and then click on one of the arrow icons to move that highlighted block in the indicated direction.').'";'
 	);
 
 ?>
@@ -336,9 +348,15 @@ echo '</td>';
 echo '</tr>';
 // NOTE: Row 3 columns 1-7: Summary description of currently selected block
 echo '<tr><td class="descriptionbox wrap" colspan="7"><div id="instructions">';
-echo WT_I18N::translate('Highlight a  block name and then click on one of the arrow icons to move that highlighted block in the indicated direction.');
+echo WT_I18N::translate('Highlight a block name and then click on one of the arrow icons to move that highlighted block in the indicated direction.');
 echo '</div></td></tr>';
-echo '<tr><td class="topbottombar" colspan="7">';
+if ($can_reset) {
+	echo '<tr><td class="topbottombar" colspan="4">';
+	echo '<input type="checkbox" name="default" value="1">', WT_I18N::translate('Restore the default block layout'), '</td>';
+	echo '<td class="topbottombar" colspan="3">';
+} else {
+	echo '<td class="topbottombar" colspan="7">';
+}
 echo '<input type="submit" value="', WT_I18N::translate('save'), '">';
 echo '</td></tr></table>';
 echo '</form>';

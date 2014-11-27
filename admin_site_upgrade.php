@@ -339,6 +339,7 @@ $archive = new PclZip($zip_file);
 $res = $archive->properties();
 if (!is_array($res) || $res['status'] != 'ok') {
 	echo '<br>', WT_I18N::translate('An error occurred when unzipping the file.'), $icon_failure;
+	echo '<br>', $archive->errorInfo(true);
 	echo '</li></ul></form>';
 	exit;
 }

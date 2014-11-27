@@ -129,8 +129,7 @@ echo '</script>';
 ?>
 <div id="search-page">
 <h2 class="center"><?php echo $controller->getPageTitle(); ?></h2>
-<?php $somethingPrinted = $controller->printResults(); ?>
-<!-- /*************************************************** Search Form Outer Table **************************************************/ -->
+<?php $controller->printResults(); ?>
 <form method="post" name="searchform" onsubmit="return checknames(this);" action="search_advanced.php">
 <input type="hidden" name="action" value="<?php echo $controller->action; ?>">
 <input type="hidden" name="isPostBack" value="true">
