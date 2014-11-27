@@ -67,9 +67,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Confi
 		}
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	public function getConfigLink() {
 		return 'module.php?mod=' . $this->getName() . '&amp;mod_action=admin_config';
 	}
