@@ -2410,7 +2410,6 @@ function get_new_xref($type = 'INDI', $ged_id = WT_GED_ID) {
 		'NOTE' => 'NOTE_ID_PREFIX',
 		'SOUR' => 'SOURCE_ID_PREFIX',
 		'REPO' => 'REPO_ID_PREFIX',
-		'REPO' => 'REPO_ID_PREFIX',
 	);
 
 	if (array_key_exists($type, $type_to_preference)) {
