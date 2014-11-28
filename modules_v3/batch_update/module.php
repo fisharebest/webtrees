@@ -21,17 +21,17 @@
 use WT\Auth;
 
 class batch_update_WT_Module extends WT_Module implements WT_Module_Config{
-	// Extend WT_Module
+	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module */ WT_I18N::translate('Batch update');
 	}
 
-	// Extend WT_Module
+	/** {@inheritdoc} */
 	public function getDescription() {
 		return /* I18N: Description of the “Batch update” module */ WT_I18N::translate('Apply automatic corrections to your genealogy data.');
 	}
 
-	// Extend WT_Module
+	/** {@inheritdoc} */
 	public function modAction($mod_action) {
 		switch($mod_action) {
 		case 'admin_batch_update':
@@ -51,7 +51,7 @@ class batch_update_WT_Module extends WT_Module implements WT_Module_Config{
 		}
 	}
 
-	// Implement WT_Module_Config
+	/** {@inheritdoc} */
 	public function getConfigLink() {
 		return 'module.php?mod='.$this->getName().'&amp;mod_action=admin_batch_update';
 	}

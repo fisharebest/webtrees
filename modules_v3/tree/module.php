@@ -23,22 +23,22 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 	var $headers; // CSS and script to include in the top of <head> section, before theme’s CSS
 	var $js; // the TreeViewHandler javascript
 
-	// Extend WT_Module. This title should be normalized when this module will be added officially
+	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module */ WT_I18N::translate('Interactive tree');
 	}
 
-	// Extend WT_Module
+	/** {@inheritdoc} */
 	public function getDescription() {
 		return /* I18N: Description of the “Interactive tree” module */ WT_I18N::translate('An interactive tree, showing all the ancestors and descendants of an individual.');
 	}
 
-	// Implement WT_Module_Tab
+	/** {@inheritdoc} */
 	public function defaultTabOrder() {
 		return 68;
 	}
 
-	// Implement WT_Module_Tab
+	/** {@inheritdoc} */
 	public function getTabContent() {
 		global $controller;
 
@@ -51,24 +51,24 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 			$html;
 	}
 
-	// Implement WT_Module_Tab
+	/** {@inheritdoc} */
 	public function hasTabContent() {
 		global $SEARCH_SPIDER;
 
 		return !$SEARCH_SPIDER;
 	}
 
-	// Implement WT_Module_Tab
+	/** {@inheritdoc} */
 	public function isGrayedOut() {
 		return false;
 	}
 
-	// Implement WT_Module_Tab
+	/** {@inheritdoc} */
 	public function canLoadAjax() {
 		return true;
 	}
 
-	// Implement WT_Module_Tab
+	/** {@inheritdoc} */
 	public function getPreLoadContent() {
 		// We cannot use jQuery("head").append(<link rel="stylesheet" ...as jQuery is not loaded at this time
 		return
@@ -85,13 +85,7 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 			</script>';
 	}
 
-	// Extend WT_Module
-	// We define here actions to proceed when called, either by Ajax or not
-	/**
-	 * @param string $mod_action
-	 *
-	 * @throws Exception
-	 */
+	/** {@inheritdoc} */
 	public function modAction($mod_action) {
 		require_once WT_MODULES_DIR . $this->getName() . '/class_treeview.php';
 		switch ($mod_action) {

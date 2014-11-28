@@ -96,7 +96,7 @@ case 'login':
 
 		$WT_SESSION->timediff      = $timediff;
 		$WT_SESSION->locale        = Auth::user()->getPreference('language');
-		$WT_SESSION->theme_dir     = Auth::user()->getPreference('theme');
+		$WT_SESSION->theme         = Auth::user()->getPreference('theme');
 		$WT_SESSION->activity_time = WT_TIMESTAMP;
 
 		Auth::user()->setPreference('sessiontime', WT_TIMESTAMP);

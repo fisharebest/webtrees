@@ -24,17 +24,17 @@
 use WT\Auth;
 
 class charts_WT_Module extends WT_Module implements WT_Module_Block {
-	// Extend class WT_Module
+	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module/block */ WT_I18N::translate('Charts');
 	}
 
-	// Extend class WT_Module
+	/** {@inheritdoc} */
 	public function getDescription() {
 		return /* I18N: Description of the “Charts” module */ WT_I18N::translate('An alternative way to display charts.');
 	}
 
-	// Implement class WT_Module_Block
+	/** {@inheritdoc} */
 	public function getBlock($block_id, $template=true, $cfg=null) {
 		global $WT_TREE, $ctype, $PEDIGREE_FULL_DETAILS, $show_full, $bwidth, $bheight, $controller;
 
@@ -140,34 +140,36 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 			$content=WT_I18N::translate('You must select an individual and chart type in the block configuration settings.');
 		}
 
+		// Restore GEDCOM configuration
+		unset($show_full);
+		if (isset($saveShowFull)) {
+			$show_full = $saveShowFull;
+		}
+		$PEDIGREE_FULL_DETAILS = $savePedigreeFullDetails;
+
 		if ($template) {
 			require WT_THEME_DIR.'templates/block_main_temp.php';
 		} else {
 			return $content;
 		}
-
-		// Restore GEDCOM configuration
-		unset($show_full);
-		if (isset($saveShowFull)) $show_full = $saveShowFull;
-		$PEDIGREE_FULL_DETAILS = $savePedigreeFullDetails;
 	}
 
-	// Implement class WT_Module_Block
+	/** {@inheritdoc} */
 	public function loadAjax() {
 		return true;
 	}
 
-	// Implement class WT_Module_Block
+	/** {@inheritdoc} */
 	public function isUserBlock() {
 		return true;
 	}
 
-	// Implement class WT_Module_Block
+	/** {@inheritdoc} */
 	public function isGedcomBlock() {
 		return true;
 	}
 
-	// Implement class WT_Module_Block
+	/** {@inheritdoc} */
 	public function configureBlock($block_id) {
 		global $WT_TREE, $ctype, $controller;
 		require_once WT_ROOT.'includes/functions/functions_edit.php';

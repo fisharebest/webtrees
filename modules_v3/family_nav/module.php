@@ -27,34 +27,34 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	CONST LNK = "<div class='flyout3' data-href='%s'>%s</div>";
 	CONST MSG = "<div class='flyout4'>(%s)</div>"; // class flyout4 not used in standard themes
 
-	// Extend WT_Module
+	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module/sidebar */ WT_I18N::translate('Family navigator');
 	}
 
-	// Extend WT_Module
+	/** {@inheritdoc} */
 	public function getDescription() {
 		return /* I18N: Description of the “Family navigator” module */ WT_I18N::translate('A sidebar showing an individual’s close families and relatives.');
 	}
 
-	// Implement WT_Module_Sidebar
+	/** {@inheritdoc} */
 	public function defaultSidebarOrder() {
 		return 20;
 	}
 
-	// Implement WT_Module_Sidebar
+	/** {@inheritdoc} */
 	public function hasSidebarContent() {
 		global $SEARCH_SPIDER;
 
 		return !$SEARCH_SPIDER;
 	}
 
-	// Implement WT_Module_Sidebar
+	/** {@inheritdoc} */
 	public function getSidebarAjaxContent() {
 		return '';
 	}
 
-	// Implement WT_Module_Sidebar
+	/** {@inheritdoc} */
 	public function getSidebarContent() {
 		global $controller;
 
