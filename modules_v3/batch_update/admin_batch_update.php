@@ -99,7 +99,7 @@ class batch_update {
 	}
 
 	// Constructor - initialise variables and validate user-input
-	function __construct() {
+	public function __construct() {
 		$this->plugins=self::getPluginList();    // List of available plugins
 		$this->plugin =WT_Filter::get('plugin'); // User parameters
 		$this->xref   =WT_Filter::get('xref', WT_REGEX_XREF);

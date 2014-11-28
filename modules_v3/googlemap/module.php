@@ -73,17 +73,17 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		}
 	}
 
-	// Extend WT_Module
+	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: The name of a module.  Google Maps™ is a trademark.  Do not translate it? http://en.wikipedia.org/wiki/Google_maps */ WT_I18N::translate('Google Maps™');
 	}
 
-	// Extend WT_Module
+	/** {@inheritdoc} */
 	public function getDescription() {
 		return /* I18N: Description of the “Google Maps™” module */ WT_I18N::translate('Show the location of places and events using the Google Maps™ mapping service.');
 	}
 
-	// Extend WT_Module
+	/** {@inheritdoc} */
 	public function modAction($mod_action) {
 		switch($mod_action) {
 		case 'admin_config':
@@ -113,17 +113,17 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		}
 	}
 
-	// Implement WT_Module_Config
+	/** {@inheritdoc} */
 	public function getConfigLink() {
 		return 'module.php?mod='.$this->getName().'&amp;mod_action=admin_config';
 	}
 
-	// Implement WT_Module_Tab
+	/** {@inheritdoc} */
 	public function defaultTabOrder() {
 		return 80;
 	}
 
-	// Implement WT_Module_Tab
+	/** {@inheritdoc} */
 	public function getPreLoadContent() {
 		ob_start();
 		?>
@@ -137,12 +137,12 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		return ob_get_clean();
 	}
 
-	// Implement WT_Module_Tab
+	/** {@inheritdoc} */
 	public function canLoadAjax() {
 		return true;
 	}
 
-	// Implement WT_Module_Tab
+	/** {@inheritdoc} */
 	public function getTabContent() {
 		global $WT_IMAGES, $controller;
 
@@ -208,18 +208,21 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		}
 	}
 
-	// Implement WT_Module_Tab
+	/** {@inheritdoc} */
 	public function hasTabContent() {
 		global $SEARCH_SPIDER;
 
 		return !$SEARCH_SPIDER && (array_key_exists('googlemap', WT_Module::getActiveModules()) || Auth::isAdmin());
 	}
 
-	// Implement WT_Module_Tab
+	/** {@inheritdoc} */
 	public function isGrayedOut() {
 		return false;
 	}
 
+	/**
+	 * A form to edit the module configuration.
+	 */
 	private function config() {
 		require WT_ROOT.'includes/functions/functions_edit.php';
 

@@ -27,17 +27,17 @@ use WT\Auth;
 // Note that the user favorites module simply extends this module, so ensure that the
 // logic works for both.
 class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
-	// Extend class WT_Module
+	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module */ WT_I18N::translate('Favorites');
 	}
 
-	// Extend class WT_Module
+	/** {@inheritdoc} */
 	public function getDescription() {
 		return /* I18N: Description of the “Favorites” module */ WT_I18N::translate('Display and manage a family tree’s favorite pages.');
 	}
 
-	// Implement class WT_Module_Block
+	/** {@inheritdoc} */
 	public function getBlock($block_id, $template=true, $cfg=null) {
 		global $ctype, $show_full, $PEDIGREE_FULL_DETAILS, $controller;
 
@@ -193,6 +193,13 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= '</form></div>';
 		}
 
+		// Restore GEDCOM configuration
+		unset($show_full);
+		if (isset($saveShowFull)) {
+			$show_full = $saveShowFull;
+		}
+		$PEDIGREE_FULL_DETAILS = $savePedigreeFullDetails;
+
 		if ($template) {
 			if ($block) {
 				require WT_THEME_DIR.'templates/block_small_temp.php';
@@ -202,28 +209,24 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 		} else {
 			return $content;
 		}
-		// Restore GEDCOM configuration
-		unset($show_full);
-		if (isset($saveShowFull)) $show_full = $saveShowFull;
-		$PEDIGREE_FULL_DETAILS = $savePedigreeFullDetails;
 	}
 
-	// Implement class WT_Module_Block
+	/** {@inheritdoc} */
 	public function loadAjax() {
 		return false;
 	}
 
-	// Implement class WT_Module_Block
+	/** {@inheritdoc} */
 	public function isUserBlock() {
 		return false;
 	}
 
-	// Implement class WT_Module_Block
+	/** {@inheritdoc} */
 	public function isGedcomBlock() {
 		return true;
 	}
 
-	// Implement class WT_Module_Block
+	/** {@inheritdoc} */
 	public function configureBlock($block_id) {
 		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
 			set_block_setting($block_id, 'block',  WT_Filter::postBool('block'));

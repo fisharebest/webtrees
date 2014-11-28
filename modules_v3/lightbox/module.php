@@ -26,37 +26,37 @@ use WT\Auth;
 class lightbox_WT_Module extends WT_Module implements WT_Module_Tab {
 	private $media_list;
 
-	// Extend WT_Module
+	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module */ WT_I18N::translate('Album');
 	}
 
-	// Extend WT_Module
+	/** {@inheritdoc} */
 	public function getDescription() {
 		return /* I18N: Description of the “Album” module */ WT_I18N::translate('An alternative to the “media” tab, and an enhanced image viewer.');
 	}
 
-	// Implement WT_Module_Tab
+	/** {@inheritdoc} */
 	public function defaultTabOrder() {
 		return 60;
 	}
 
-	// Implement WT_Module_Tab
+	/** {@inheritdoc} */
 	public function hasTabContent() {
 		return WT_USER_CAN_EDIT || $this->get_media();
 	}
 
 
-	// Implement WT_Module_Tab
+	/** {@inheritdoc} */
 	public function isGrayedOut() {
 		return !$this->get_media();
 	}
 
-	// Implement WT_Module_Tab
+	/** {@inheritdoc} */
 	public function getTabContent() {
 		global $WT_TREE, $controller;
 
-		$html='<div id="'.$this->getName().'_content">';
+		$html='<div id="' . $this->getName() . '_content">';
 		//Show Lightbox-Album header Links
 		if (WT_USER_CAN_EDIT) {
 			$html.='<table class="facts_table"><tr><td class="descriptionbox rela">';
@@ -205,14 +205,14 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Tab {
 		return $this->media_list;
 	}
 
-	// Implement WT_Module_Tab
+	/** {@inheritdoc} */
 	public function canLoadAjax() {
 		global $SEARCH_SPIDER;
 
 		return !$SEARCH_SPIDER; // Search engines cannot use AJAX
 	}
 
-	// Implement WT_Module_Tab
+	/** {@inheritdoc} */
 	public function getPreLoadContent() {
 		return '';
 	}

@@ -24,17 +24,17 @@
 use WT\Auth;
 
 class user_welcome_WT_Module extends WT_Module implements WT_Module_Block {
-	// Extend class WT_Module
+	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module */ WT_I18N::translate('My page');
 	}
 
-	// Extend class WT_Module
+	/** {@inheritdoc} */
 	public function getDescription() {
 		return /* I18N: Description of the “My page” module */ WT_I18N::translate('A greeting message and useful links for a user.');
 	}
 
-	// Implement class WT_Module_Block
+	/** {@inheritdoc} */
 	public function getBlock($block_id, $template=true, $cfg=null) {
 		$id=$this->getName().$block_id;
 		$class=$this->getName().'_block';
@@ -56,22 +56,22 @@ class user_welcome_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 	}
 
-	// Implement class WT_Module_Block
+	/** {@inheritdoc} */
 	public function loadAjax() {
 		return false;
 	}
 
-	// Implement class WT_Module_Block
+	/** {@inheritdoc} */
 	public function isUserBlock() {
 		return true;
 	}
 
-	// Implement class WT_Module_Block
+	/** {@inheritdoc} */
 	public function isGedcomBlock() {
 		return false;
 	}
 
-	// Implement class WT_Module_Block
+	/** {@inheritdoc} */
 	public function configureBlock($block_id) {
 	}
 }
