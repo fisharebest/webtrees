@@ -361,7 +361,7 @@ class WT_Tree {
 		$tree->setPreference('PREFER_LEVEL2_SOURCES', '1');
 		$tree->setPreference('QUICK_REQUIRED_FACTS', 'BIRT,DEAT');
 		$tree->setPreference('QUICK_REQUIRED_FAMFACTS', 'MARR');
-		$tree->setPreference('REPO_FACTS_ADD', 'PHON,EMAIL,FAX,WWW,NOTE,SHARED_NOTE,RESN');
+		$tree->setPreference('REPO_FACTS_ADD', 'PHON,EMAIL,FAX,WWW,RESN');
 		$tree->setPreference('REPO_FACTS_QUICK', '');
 		$tree->setPreference('REPO_FACTS_UNIQUE', 'NAME,ADDR');
 		$tree->setPreference('REPO_ID_PREFIX', 'R');
