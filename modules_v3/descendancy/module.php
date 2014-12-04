@@ -22,19 +22,19 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
-	// Extend WT_Module
+	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module/sidebar */
 			WT_I18N::translate('Descendants');
 	}
 
-	// Extend WT_Module
+	/** {@inheritdoc} */
 	public function getDescription() {
 		return /* I18N: Description of the “Descendants” module */
 			WT_I18N::translate('A sidebar showing the descendants of an individual.');
 	}
 
-	// Implement WT_Module
+	/** {@inheritdoc} */
 	public function modAction($modAction) {
 		Zend_Session::writeClose();
 		header('Content-Type: text/html; charset=UTF-8');
@@ -57,24 +57,24 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		exit;
 	}
 
-	// Implement WT_Module_Sidebar
+	/** {@inheritdoc} */
 	public function defaultSidebarOrder() {
 		return 30;
 	}
 
-	// Implement WT_Module_Sidebar
+	/** {@inheritdoc} */
 	public function hasSidebarContent() {
 		global $SEARCH_SPIDER;
 
 		return !$SEARCH_SPIDER;
 	}
 
-	// Implement WT_Module_Sidebar
+	/** {@inheritdoc} */
 	public function getSidebarAjaxContent() {
 		return '';
 	}
 
-	// Implement WT_Module_Sidebar
+	/** {@inheritdoc} */
 	public function getSidebarContent() {
 		global $controller;
 

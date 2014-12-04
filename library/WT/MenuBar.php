@@ -232,22 +232,6 @@ class WT_MenuBar {
 						'relationship.php?pid1='.$pid1.'&amp;pid2='.$pid2.'&amp;ged='.WT_GEDURL,
 						'menu-chart-relationship'
 					);
-					if (array_key_exists('user_favorites', WT_Module::getActiveModules())) {
-						// Add a submenu showing relationship from this person to each of our favorites
-						foreach (user_favorites_WT_Module::getFavorites(Auth::id()) as $favorite) {
-							if ($favorite['type']=='INDI' && $favorite['gedcom_id']==WT_GED_ID) {
-								$person=WT_Individual::getInstance($favorite['gid']);
-								if ($person instanceof WT_Individual) {
-									$subsubmenu = new WT_Menu(
-										$person->getFullName(),
-										'relationship.php?pid1='.$person->getXref().'&amp;pid2='.$pid2.'&amp;ged='.WT_GEDURL,
-										'menu-chart-relationship-'.$person->getXref().'-'.$pid2 // We don't use these, but a custom theme might
-									);
-									$submenu->addSubmenu($subsubmenu);
-								}
-							}
-						}
-					}
 				} else {
 					// Regular pages - from me, to somebody
 					$pid1=WT_USER_GEDCOM_ID ? WT_USER_GEDCOM_ID : WT_USER_ROOT_ID;
@@ -300,7 +284,7 @@ class WT_MenuBar {
 		)->execute(array(WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID))->fetchOneRow();
 
 		// Build a list of submenu items and then sort it in localized name order
-		$surname_url = '&surname=' . rawurlencode($controller->getSignificantSurname()) . '&amp;ged=' . WT_GEDURL;
+		$surname_url = '&amp;surname=' . rawurlencode($controller->getSignificantSurname()) . '&amp;ged=' . WT_GEDURL;
 
 		$menulist = array(
 			new WT_Menu(WT_I18N::translate('Individuals'), 'indilist.php?ged=' . WT_GEDURL . $surname_url, 'menu-list-indi'),

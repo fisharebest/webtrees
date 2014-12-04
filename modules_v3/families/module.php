@@ -22,17 +22,17 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
-	// Extend class WT_Module
+	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module/sidebar */ WT_I18N::translate('Family list');
 	}
 
-	// Extend class WT_Module
+	/** {@inheritdoc} */
 	public function getDescription() {
 		return /* I18N: Description of the “Families” module */ WT_I18N::translate('A sidebar showing an alphabetic list of all the families in the family tree.');
 	}
 
-	// Implement WT_Module
+	/** {@inheritdoc} */
 	public function modAction($modAction) {
 		switch ($modAction) {
 		case 'ajax':
@@ -47,19 +47,19 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		exit;
 	}
 
-	// Implement WT_Module_Sidebar
+	/** {@inheritdoc} */
 	public function defaultSidebarOrder() {
 		return 50;
 	}
 
-	// Implement WT_Module_Sidebar
+	/** {@inheritdoc} */
 	public function hasSidebarContent() {
 		global $SEARCH_SPIDER;
 
 		return !$SEARCH_SPIDER;
 	}
 
-	// Implement WT_Module_Sidebar
+	/** {@inheritdoc} */
 	public function getSidebarAjaxContent() {
 		$alpha   = WT_Filter::get('alpha'); // All surnames beginning with this letter where "@"=unknown and ","=none
 		$surname = WT_Filter::get('surname'); // All indis with this surname.
@@ -76,7 +76,7 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		}
 	}
 
-	// Implement WT_Module_Sidebar
+	/** {@inheritdoc} */
 	public function getSidebarContent() {
 		global $WT_IMAGES, $UNKNOWN_NN, $controller;
 

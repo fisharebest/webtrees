@@ -26,4 +26,11 @@ interface WT_Module_Menu {
 	 * @return integer
 	 */
 	public function defaultMenuOrder();
+
+	/**
+	 * A menu, to be added to the main application menu.
+	 *
+	 * @return WT_Menu|null
+	 */
+	public function getMenu();
 }

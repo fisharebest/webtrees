@@ -96,7 +96,7 @@ case 'login':
 
 		$WT_SESSION->timediff      = $timediff;
 		$WT_SESSION->locale        = Auth::user()->getPreference('language');
-		$WT_SESSION->theme_dir     = Auth::user()->getPreference('theme');
+		$WT_SESSION->theme         = Auth::user()->getPreference('theme');
 		$WT_SESSION->activity_time = WT_TIMESTAMP;
 
 		Auth::user()->setPreference('sessiontime', WT_TIMESTAMP);
@@ -559,7 +559,7 @@ case 'verify_hash':
 				->deletePreference('reg_hashcode');
 
 			if (!$REQUIRE_ADMIN_AUTH_REGISTRATION) {
-				set_user_setting($user_id, 'verified_by_admin', 1);
+				$user->setPreference('verified_by_admin', '1');
 			}
 			Log::addAuthenticationLog('User ' . $user_name . ' verified their email address');
 

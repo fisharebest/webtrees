@@ -168,8 +168,8 @@ class WT_Menu {
 	 *
 	 * @param WT_Menu []
 	 */
-	function addSubmenu($obj) {
-		$this->submenus[] = $obj;
+	function addSubmenu($menu) {
+		$this->submenus[] = $menu;
 	}
 
 	/**

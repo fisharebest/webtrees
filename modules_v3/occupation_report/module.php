@@ -22,24 +22,24 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 class occupation_report_WT_Module extends WT_Module implements WT_Module_Report {
-	// Extend class WT_Module
+	/** {@inheritdoc} */
 	public function getTitle() {
 		// This text also appears in the .XML file - update both together
 		return /* I18N: Name of a report */ WT_I18N::translate('Occupations');
 	}
 
-	// Extend class WT_Module
+	/** {@inheritdoc} */
 	public function getDescription() {
 		// This text also appears in the .XML file - update both together
 		return /* I18N: Description of the “Occupations” module */ WT_I18N::translate('A report of individuals who had a given occupation.');
 	}
 
-	// Extend class WT_Module
+	/** {@inheritdoc} */
 	public function defaultAccessLevel() {
 		return WT_PRIV_USER;
 	}
 
-	// Implement WT_Module_Report - a module can provide many reports
+	/** {@inheritdoc} */
 	public function getReportMenus() {
 		$menus=array();
 		$menu=new WT_Menu(

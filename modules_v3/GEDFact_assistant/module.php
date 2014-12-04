@@ -22,17 +22,17 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 class GEDFact_assistant_WT_Module extends WT_Module {
-	// Extend WT_Module
+	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module */ WT_I18N::translate('Census assistant');
 	}
 
-	// Extend WT_Module
+	/** {@inheritdoc} */
 	public function getDescription() {
 		return /* I18N: Description of the “Census assistant” module */ WT_I18N::translate('An alternative way to enter census transcripts and link them to individuals.');
 	}
 
-	// Extend WT_Module
+	/** {@inheritdoc} */
 	public function modAction($mod_action) {
 		switch($mod_action) {
 		case '_CENS/census_3_find':

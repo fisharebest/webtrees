@@ -62,9 +62,21 @@ class WT_Site {
 	public static function setPreference($setting_name, $setting_value) {
 		// Only need to update the database if the setting has actually changed.
 		if (self::getPreference($setting_name) != $setting_value) {
-			WT_DB::prepare(
-				"REPLACE INTO `##site_setting` (setting_name, setting_value) VALUES (?, LEFT(?, 255))"
-			)->execute(array($setting_name, $setting_value));
+			if ($setting_value === null) {
+				WT_DB::prepare(
+					"DELETE FROM `##site_setting` WHERE setting_name = :setting_name"
+				)->execute(array(
+					'setting_name' => $setting_name
+				));
+			} else {
+				WT_DB::prepare(
+					"REPLACE INTO `##site_setting` (setting_name, setting_value)" .
+					" VALUES (:setting_name, LEFT(:setting_value, 255))"
+				)->execute(array(
+					'setting_name'  => $setting_name,
+					'setting_value' => $setting_value,
+				));
+			}
 
 			self::$setting[$setting_name] = $setting_value;
 

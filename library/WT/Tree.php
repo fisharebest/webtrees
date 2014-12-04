@@ -96,12 +96,20 @@ class WT_Tree {
 			// Update the database
 			if ($setting_value === null) {
 				WT_DB::prepare(
-					"DELETE FROM `##gedcom_setting` WHERE gedcom_id = ? AND setting_name = ?"
-				)->execute(array($this->tree_id, $setting_name));
+					"DELETE FROM `##gedcom_setting` WHERE gedcom_id = :gedcom_id AND setting_name = :setting_name"
+				)->execute(array(
+					'gedcom_id'    => $this->tree_id,
+					'setting_name' => $setting_name,
+				));
 			} else {
 				WT_DB::prepare(
-					"REPLACE INTO `##gedcom_setting` (gedcom_id, setting_name, setting_value) VALUES (?, ?, LEFT(?, 255))"
-				)->execute(array($this->tree_id, $setting_name, $setting_value));
+					"REPLACE INTO `##gedcom_setting` (gedcom_id, setting_name, setting_value)" .
+					" VALUES (:gedcom_id, :setting_name, LEFT(:setting_value, 255))"
+				)->execute(array(
+					'gedcom_id'     => $this->tree_id,
+					'setting_name'  => $setting_name,
+					'setting_value' => $setting_value,
+				));
 			}
 			// Update our cache
 			$this->preferences[$setting_name] = $setting_value;
@@ -353,7 +361,7 @@ class WT_Tree {
 		$tree->setPreference('PREFER_LEVEL2_SOURCES', '1');
 		$tree->setPreference('QUICK_REQUIRED_FACTS', 'BIRT,DEAT');
 		$tree->setPreference('QUICK_REQUIRED_FAMFACTS', 'MARR');
-		$tree->setPreference('REPO_FACTS_ADD', 'PHON,EMAIL,FAX,WWW,NOTE,SHARED_NOTE,RESN');
+		$tree->setPreference('REPO_FACTS_ADD', 'PHON,EMAIL,FAX,WWW,RESN');
 		$tree->setPreference('REPO_FACTS_QUICK', '');
 		$tree->setPreference('REPO_FACTS_UNIQUE', 'NAME,ADDR');
 		$tree->setPreference('REPO_ID_PREFIX', 'R');

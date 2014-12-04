@@ -358,7 +358,7 @@ if ($SERVER_URL && $SERVER_URL != WT_SERVER_NAME . WT_SCRIPT_PATH) {
 // Request more resources - if we can/want to
 if (!ini_get('safe_mode')) {
 	$memory_limit = WT_Site::getPreference('MEMORY_LIMIT');
-	if ($memory_limit) {
+	if ($memory_limit && strpos(ini_get('disable_functions'), 'ini_set') === false) {
 		ini_set('memory_limit', $memory_limit);
 	}
 	$max_execution_time = WT_Site::getPreference('MAX_EXECUTION_TIME');
@@ -597,8 +597,8 @@ if (substr(WT_SCRIPT_NAME, 0, 5) == 'admin' || WT_SCRIPT_NAME == 'module.php' &&
 			$THEME_DIR = '';
 		}
 		// Last theme used?
-		if (!$THEME_DIR && in_array($WT_SESSION->theme_dir, get_theme_names())) {
-			$THEME_DIR = $WT_SESSION->theme_dir;
+		if (!$THEME_DIR && in_array($WT_SESSION->theme, get_theme_names())) {
+			$THEME_DIR = $WT_SESSION->theme;
 		}
 	} else {
 		$THEME_DIR = '';
@@ -625,7 +625,7 @@ if (substr(WT_SCRIPT_NAME, 0, 5) == 'admin' || WT_SCRIPT_NAME == 'module.php' &&
 	define('WT_THEME_DIR', WT_THEMES_DIR . $THEME_DIR . '/');
 	// Remember this setting
 	if (WT_THEME_DIR != WT_THEMES_DIR . '_administration/') {
-		$WT_SESSION->theme_dir = $THEME_DIR;
+		$WT_SESSION->theme = $THEME_DIR;
 	}
 }
 // If we have specified a CDN, use it for static theme resources

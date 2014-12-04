@@ -22,22 +22,22 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Sidebar {
-	// Extend class WT_Module
+	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module */ WT_I18N::translate('Clippings cart');
 	}
 
-	// Extend class WT_Module
+	/** {@inheritdoc} */
 	public function getDescription() {
 		return /* I18N: Description of the “Clippings cart” module */ WT_I18N::translate('Select records from your family tree and save them as a GEDCOM file.');
 	}
 
-	// Extend class WT_Module
+	/** {@inheritdoc} */
 	public function defaultAccessLevel() {
 		return WT_PRIV_USER;
 	}
 
-	// Extend WT_Module
+	/** {@inheritdoc} */
 	public function modAction($mod_action) {
 		switch($mod_action) {
 		case 'ajax':
@@ -295,12 +295,12 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 		}
 	}
 
-	// Implement WT_Module_Menu
+	/** {@inheritdoc} */
 	public function defaultMenuOrder() {
 		return 20;
 	}
 
-	// Implement WT_Module_Menu
+	/** {@inheritdoc} */
 	public function getMenu() {
 		global $SEARCH_SPIDER, $controller;
 
@@ -320,12 +320,12 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 		return $menu;
 	}
 
-	// Implement WT_Module_Sidebar
+	/** {@inheritdoc} */
 	public function defaultSidebarOrder() {
 		return 60;
 	}
 
-	// Impelement WT_Module_Sidebar
+	/** {@inheritdoc} */
 	public function hasSidebarContent() {
 		global $SEARCH_SPIDER;
 
@@ -341,7 +341,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 		}
 	}
 
-	// Impelement WT_Module_Sidebar
+	/** {@inheritdoc} */
 	public function getSidebarContent() {
 		global $controller;
 
@@ -355,7 +355,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 		return '<div id="sb_clippings_content">' .  $this->getCartList() .  '</div>';
 	}
 
-	// Impelement WT_Module_Sidebar
+	/** {@inheritdoc} */
 	public function getSidebarAjaxContent() {
 		require_once WT_ROOT.WT_MODULES_DIR.'clippings/clippings_ctrl.php';
 

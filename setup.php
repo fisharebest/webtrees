@@ -113,7 +113,7 @@ if (!isset($_POST['lang'])) {
 
 	// Mandatory functions
 	$disable_functions=preg_split('/ *, */', ini_get('disable_functions'));
-	foreach (array('ini_set', 'parse_ini_file') as $function) {
+	foreach (array('parse_ini_file') as $function) {
 		if (in_array($function, $disable_functions)) {
 			echo '<p class="bad">', /* I18N: %s is a PHP function/module/setting */ WT_I18N::translate('%s is disabled on this server.  You cannot install webtrees until it is enabled.  Please ask your server’s administrator to enable it.', $function.'()'), '</p>';
 			$errors=true;
@@ -155,17 +155,14 @@ if (!isset($_POST['lang'])) {
 	// Now, we just show the default values.  These can (hopefully!) be changed using the
 	// site settings page.
 	$memory_limit = ini_get('memory_limit');
-	switch (strtoupper(substr($memory_limit, -1))) {
-	case 'K':
-		$maxmem = (int)(substr($memory_limit, 0, strlen($memory_limit)-1)/1024);
-	case 'M':
-		$maxmem = (int)(substr($memory_limit, 0, strlen($memory_limit)-1));
-	case 'G':
-		$maxmem = (int)(1024*substr($memory_limit, 0, strlen($memory_limit)-1));
-	default:
-		$maxmem = $memory_limit;
+	if (substr_compare($memory_limit, 'M', -1) === 0) {
+		$memory_limit = substr($memory_limit, 0, -1);
+	} elseif (substr_compare($memory_limit, 'K', -1) === 0) {
+		$memory_limit = substr($memory_limit, 0, -1) / 1024;
+	} elseif (substr_compare($memory_limit, 'G', -1) === 0) {
+		$memory_limit = substr($memory_limit, 0, -1) * 1024;
 	}
-	$maxcpu=ini_get('max_execution_time');
+	$max_execution_time = ini_get('max_execution_time');
 	echo
 		'<p>',
 		WT_I18N::translate('The memory and CPU time requirements depend on the number of individuals in your family tree.'),
@@ -178,25 +175,19 @@ if (!isset($_POST['lang'])) {
 		'<br>',
 		WT_I18N::translate('Large systems (50,000 individuals): 64–128 MB, 40–80 seconds'),
 		'</p>',
-		($maxmem<32 || $maxcpu<20) ? '<p class="bad">' : '<p class="good">',
-		WT_I18N::translate('This server’s memory limit is %d MB and its CPU time limit is %d seconds.', $maxmem, $maxcpu),
+		($memory_limit < 32 || $max_execution_time > 0 && $max_execution_time < 20) ? '<p class="bad">' : '<p class="good">',
+		WT_I18N::translate('This server’s memory limit is %d MB and its CPU time limit is %d seconds.', $memory_limit, $max_execution_time),
 		'</p><p>',
 		WT_I18N::translate('If you try to exceed these limits, you may experience server time-outs and blank pages.'),
 		'</p><p>',
 		WT_I18N::translate('If your server’s security policy permits it, you will be able to request increased memory or CPU time using the webtrees administration page.  Otherwise, you will need to contact your server’s administrator.'),
 		'</p>';
 	if (!$errors) {
-		echo '<input type="hidden" name="maxcpu" value="', $maxcpu, '">';
-		echo '<input type="hidden" name="maxmem" value="', $maxmem, '">';
 		echo '<br><hr><input type="submit" id="btncontinue" value="', /* I18N: button label */ WT_I18N::translate('continue'), '">';
 
 	}
 	echo '</form></body></html>';
 	exit;
-} else {
-	// Copy these values through to the next step
-	echo '<input type="hidden" name="maxcpu" value="', $_POST['maxcpu'], '">';
-	echo '<input type="hidden" name="maxmem" value="', $_POST['maxmem'], '">';
 }
 
 ////////////////////////////////////////////////////////////////////////////////

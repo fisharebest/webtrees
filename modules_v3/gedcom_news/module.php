@@ -37,17 +37,17 @@ try {
 }
 
 class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
-	// Extend class WT_Module
+	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module */ WT_I18N::translate('News');
 	}
 
-	// Extend class WT_Module
+	/** {@inheritdoc} */
 	public function getDescription() {
 		return /* I18N: Description of the “GEDCOM News” module */ WT_I18N::translate('Family news and site announcements.');
 	}
 
-	// Implement class WT_Module_Block
+	/** {@inheritdoc} */
 	public function getBlock($block_id, $template = true, $cfg = null) {
 		global $ctype;
 
@@ -59,7 +59,6 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 			}
 			break;
 		}
-		$block = get_block_setting($block_id, 'block', true);
 
 		if (isset($_REQUEST['gedcom_news_archive'])) {
 			$limit = 'nolimit';
@@ -142,22 +141,22 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 	}
 
-	// Implement class WT_Module_Block
+	/** {@inheritdoc} */
 	public function loadAjax() {
 		return false;
 	}
 
-	// Implement class WT_Module_Block
+	/** {@inheritdoc} */
 	public function isUserBlock() {
 		return false;
 	}
 
-	// Implement class WT_Module_Block
+	/** {@inheritdoc} */
 	public function isGedcomBlock() {
 		return true;
 	}
 
-	// Implement class WT_Module_Block
+	/** {@inheritdoc} */
 	public function configureBlock($block_id) {
 		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
 			set_block_setting($block_id, 'limit', WT_Filter::post('limit'));

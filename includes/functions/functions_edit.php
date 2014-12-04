@@ -703,7 +703,7 @@ function add_simple_tag(
 		case 'TEMP':
 		case 'TEXT':
 		case 'TIME':
-		case 'URL':
+		case 'WWW':
 		case '_HEB':
 		case '_PRIM':
 			echo help_link($fact);
@@ -850,7 +850,7 @@ function add_simple_tag(
 				echo ' data-autocomplete-type="OBJE"';
 				break;
 			case 'PAGE':
-				echo ' data-autocomplete-type="PAGE" data-autocomplete-sour="' . $source_element_id . '"';
+				echo ' data-autocomplete-type="PAGE" data-autocomplete-extra="' . $source_element_id . '"';
 				break;
 			case 'PLAC':
 				echo ' data-autocomplete-type="PLAC"';
