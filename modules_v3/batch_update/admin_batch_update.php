@@ -35,7 +35,11 @@ class batch_update {
 	var $next_xref=null; // The next xref to process
 	var $record   =null; // A GedcomRecord object corresponding to $curr_xref
 
-	// Main entry point - called by the webtrees framework in response to module.php?mod=batch_update
+	/**
+	 * Main entry point - called by the webtrees framework in response to module.php?mod=batch_update
+	 *
+	 * @return string
+	 */
 	function main() {
 		// HTML common to all pages
 		$html=
@@ -95,10 +99,13 @@ class batch_update {
 			}
 		}
 		$html.='</table></form>';
+
 		return $html;
 	}
 
-	// Constructor - initialise variables and validate user-input
+	/**
+	 * Constructor - initialise variables and validate user-input
+	 */
 	public function __construct() {
 		$this->plugins=self::getPluginList();    // List of available plugins
 		$this->plugin =WT_Filter::get('plugin'); // User parameters
@@ -170,7 +177,13 @@ class batch_update {
 		}
 	}
 
-	// Find the next record that needs to be updated
+	/**
+	 * Find the next record that needs to be updated.
+	 *
+	 * @param string $xref
+	 *
+	 * @return string|null
+	 */
 	function findNextXref($xref) {
 		foreach (array_keys($this->all_xrefs) as $key) {
 			if ($key>$xref) {
@@ -183,7 +196,13 @@ class batch_update {
 		return null;
 	}
 
-	// Find the previous record that needs to be updated
+	/**
+	 * Find the previous record that needs to be updated.
+	 *
+	 * @param string $xref
+	 *
+	 * @return string|null
+	 */
 	function findPrevXref($xref) {
 		foreach (array_reverse(array_keys($this->all_xrefs)) as $key) {
 			if ($key<$xref) {
@@ -196,6 +215,9 @@ class batch_update {
 		return null;
 	}
 
+	/**
+	 * Generate a list of all XREFs.
+	 */
 	function getAllXrefs() {
 		$sql=array();
 		$vars=array();
@@ -231,7 +253,11 @@ class batch_update {
 			->fetchAssoc();
 	}
 
-	// Scan the plugin folder for a list of plugins
+	/**
+	 * Scan the plugin folder for a list of plugins
+	 *
+	 * @return base_plugin[]
+	 */
 	static function getPluginList() {
 		$array=array();
 		$dir=dirname(__FILE__).'/plugins/';
@@ -244,10 +270,15 @@ class batch_update {
 			}
 		}
 		closedir($dir_handle);
+
 		return $array;
 	}
 
-	// Javascript that gets included on every page
+	/**
+	 * Javascript that gets included on every page
+	 *
+	 * @return string
+	 */
 	static function getJavascript() {
 		return
 			'<script>'.
@@ -261,7 +292,16 @@ class batch_update {
 		;
 	}
 
-	// Create a submit button for our form
+	/**
+	 * Create a submit button for our form
+	 *
+	 * @param string $text
+	 * @param string $xref
+	 * @param string $action
+	 * @param string $data
+	 *
+	 * @return string
+	 */
 	static function createSubmitButton($text, $xref, $action='', $data='') {
 		return
 			'<input type="submit" value="'.$text.'" onclick="'.
@@ -272,40 +312,67 @@ class batch_update {
 			($xref ? '' : ' disabled').'>';
 	}
 
-	// Get the current view of a record, allowing for pending changes
+	/**
+	 * Get the current view of a record, allowing for pending changes
+	 *
+	 * @param string $xref
+	 * @param string $type
+	 *
+	 * @return string
+	 */
 	static function getLatestRecord($xref, $type) {
 		switch ($type) {
-		case 'INDI': return WT_Individual::getInstance($xref)->getGedcom();
-		case 'FAM':  return WT_Family::getInstance($xref)->getGedcom();
-		case 'SOUR': return WT_Source::getInstance($xref)->getGedcom();
-		case 'REPO': return WT_Repository::getInstance($xref)->getGedcom();
-		case 'OBJE': return WT_Media::getInstance($xref)->getGedcom();
-		case 'NOTE': return WT_Note::getInstance($xref)->getGedcom();
-		default:     return WT_GedcomRecord::getInstance($xref)->getGedcom();
+		case 'INDI':
+			return WT_Individual::getInstance($xref)->getGedcom();
+		case 'FAM':
+			return WT_Family::getInstance($xref)->getGedcom();
+		case 'SOUR':
+			return WT_Source::getInstance($xref)->getGedcom();
+		case 'REPO':
+			return WT_Repository::getInstance($xref)->getGedcom();
+		case 'OBJE':
+			return WT_Media::getInstance($xref)->getGedcom();
+		case 'NOTE':
+			return WT_Note::getInstance($xref)->getGedcom();
+		default:
+			return WT_GedcomRecord::getInstance($xref)->getGedcom();
 		}
 	}
 }
 
-// Each plugin should extend the base_plugin class, and implement these
-// two functions:
-//
-//  bool doesRecordNeedUpdate($xref, $gedrec)
-//  string updateRecord($xref, $gedrec)
-//
+/**
+ * Class base_plugin
+ *
+ * Each plugin should extend the base_plugin class, and implement these
+ * two functions:
+ *
+ * bool doesRecordNeedUpdate($xref, $gedrec)
+ * string updateRecord($xref, $gedrec)
+ */
 class base_plugin {
 	var $chan=false; // User option; update change record
 
-	// Default is to operate on INDI records
+	/**
+	 * Default is to operate on INDI records
+	 *
+	 * @return string[]
+	 */
 	function getRecordTypesToUpdate() {
 		return array('INDI');
 	}
 
-	// Default option is just the "don't update CHAN record"
+	/**
+	 * Default option is just the "don't update CHAN record"
+	 */
 	function getOptions() {
 		$this->chan=WT_Filter::getBool('chan');
 	}
 
-	// Default option is just the "don't update CHAN record"
+	/**
+	 * Default option is just the "don't update CHAN record"
+	 *
+	 * @return string
+	 */
 	function getOptionsForm() {
 		return
 			'<tr><th>'.WT_I18N::translate('Do not update the “last change” record').'</th>'.
@@ -315,7 +382,13 @@ class base_plugin {
 			'</select></td></tr>';
 	}
 
-	// Default buttons are update and update_all
+	/**
+	 * Default buttons are update and update_all
+	 *
+	 * @param string $xref
+	 *
+	 * @return string[]
+	 */
 	function getActionButtons($xref) {
 		if (Auth::user()->getPreference('auto_accept')) {
 			return array(
@@ -329,7 +402,13 @@ class base_plugin {
 		}
 	}
 
-	// Default previewer for plugins with no custom preview.
+	/**
+	 * Default previewer for plugins with no custom preview.
+	 *
+	 * @param WT_GedcomRecord $record
+	 *
+	 * @return string
+	 */
 	function getActionPreview(WT_GedcomRecord $record) {
 		$old_lines=preg_split('/[\n]+/', $record->getGedcom());
 		$new_lines=preg_split('/[\n]+/', $this->updateRecord($record->getXref(), $record->getGedcom()));
@@ -361,7 +440,18 @@ class base_plugin {
 		return '<pre>'.self::createEditLinks(implode("\n", $diff_lines)).'</pre>';
 	}
 
-	// Longest Common Subsequence.
+	/**
+	 * Longest Common Subsequence.
+	 *
+	 * @param string[] $X
+	 * @param string[] $Y
+	 * @param integer  $x1
+	 * @param integer  $x2
+	 * @param integer  $y1
+	 * @param integer  $y2
+	 *
+	 * @return array
+	 */
 	private static function LongestCommonSubsequence($X, $Y, $x1, $x2, $y1, $y2) {
 		if ($x2-$x1>=0 && $y2-$y1>=0) {
 			if ($X[$x1]==$Y[$y1]) {
@@ -386,16 +476,35 @@ class base_plugin {
 		}
 	}
 
-	// Decorate inserted/deleted text
+	/**
+	 * Decorate inserted text
+	 *
+	 * @param string $text
+	 *
+	 * @return string
+	 */
 	static function decorateInsertedText($text) {
 		return '<span class="added_text">'.$text.'</span>';
 	}
 
+	/**
+	 * Decorate deleted text
+	 *
+	 * @param string $text
+	 *
+	 * @return string
+	 */
 	static function decorateDeletedText($text) {
 		return '<span class="deleted_text">'.$text.'</span>';
 	}
 
-	// Converted gedcom links into editable links
+	/**
+	 * Converted gedcom links into editable links
+	 *
+	 * @param string $gedrec
+	 *
+	 * @return string
+	 */
 	static function createEditLinks($gedrec) {
 		return preg_replace(
 			"/@([^#@\n]+)@/m",

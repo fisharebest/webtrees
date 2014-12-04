@@ -156,9 +156,16 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		$out .= '</p>';
 		$out .= '<div id="sb_indi_content">';
 		$out .= '</div></form>';
+
 		return $out;
 	}
 
+	/**
+	 * @param string $alpha
+	 * @param string $surname1
+	 *
+	 * @return string
+	 */
 	public function getAlphaSurnames($alpha, $surname1='') {
 		$surnames = WT_Query_Name::surnames('', $alpha, true, false, WT_GED_ID);
 		$out = '<ul>';
@@ -174,9 +181,16 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			$out .= '</li>';
 		}
 		$out .= '</ul>';
+
 		return $out;
 	}
 
+	/**
+	 * @param string $alpha
+	 * @param string $surname
+	 *
+	 * @return string
+	 */
 	public function getSurnameIndis($alpha, $surname) {
 		$indis=WT_Query_Name::individuals($surname, $alpha, '', true, false, WT_GED_ID);
 		$out = '<ul>';
@@ -193,9 +207,15 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			}
 		}
 		$out .= '</ul>';
+
 		return $out;
 	}
 
+	/**
+	 * @param string $query
+	 *
+	 * @return string
+	 */
 	public function search($query) {
 		if (strlen($query)<2) {
 			return '';
@@ -225,6 +245,7 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			}
 		}
 		$out .= '</ul>';
+
 		return $out;
 	}
 }

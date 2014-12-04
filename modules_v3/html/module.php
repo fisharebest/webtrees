@@ -157,7 +157,7 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 
 			WT_I18N::translate('Statistics')=>
 			'<div class="gedcom_stats">
-				<span style="font-weight: bold"><a href="index.php?command=gedcom">#gedcomTitle#</a></span><br>
+				<span style="font-weight: bold;"><a href="index.php?command=gedcom">#gedcomTitle#</a></span><br>
 				' . WT_I18N::translate('This family tree was last updated on %s.', '#gedcomUpdated#') . '
 				<table id="keywords">
 					<tr>
@@ -244,7 +244,7 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 									<td class="facts_value">#largestFamily#</td>
 								</tr>
 								<tr>
-									<td class="facts_label">'.WT_I18N::translate('Average number of children per family').'</td>
+									<td class="facts_label">'.WT_I18N::translate('Average number of children per family'). '</td>
 									<td class="facts_value" align="right">#averageChildren#</td>
 									<td class="facts_value"></td>
 								</tr>
@@ -252,7 +252,7 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 						</td>
 					</tr>
 				</table><br>
-				<span style="font-weight: bold">'.WT_I18N::translate('Most common surnames').'</span><br>
+				<span style="font-weight: bold;">' .WT_I18N::translate('Most common surnames').'</span><br>
 				#commonSurnames#
 			</div>'
 		);

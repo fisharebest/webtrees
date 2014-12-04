@@ -72,7 +72,9 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Confi
 		return 'module.php?mod=' . $this->getName() . '&amp;mod_action=admin_config';
 	}
 
-	// Action from the configuration page
+	/**
+	 * Action from the configuration page
+	 */
 	private function edit() {
 		require_once WT_ROOT . 'includes/functions/functions_edit.php';
 
