@@ -36,7 +36,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 
 	/** {@inheritdoc} */
 	public function getBlock($block_id, $template=true, $cfg=null) {
-		global $WT_TREE, $ctype, $PEDIGREE_FULL_DETAILS, $show_full, $bwidth, $bheight, $controller;
+		global $WT_TREE, $ctype, $PEDIGREE_FULL_DETAILS, $show_full, $controller;
 
 		$PEDIGREE_ROOT_ID = $WT_TREE->getPreference('PEDIGREE_ROOT_ID');
 
@@ -52,7 +52,9 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 
 		// Override GEDCOM configuration temporarily
-		if (isset($show_full)) $saveShowFull = $show_full;
+		if (isset($show_full)) {
+			$saveShowFull = $show_full;
+		}
 		$savePedigreeFullDetails = $PEDIGREE_FULL_DETAILS;
 		if (!$details) {
 			$show_full = 0;
@@ -171,7 +173,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 
 	/** {@inheritdoc} */
 	public function configureBlock($block_id) {
-		global $WT_TREE, $ctype, $controller;
+		global $WT_TREE, $controller;
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
 
 		$PEDIGREE_ROOT_ID = $WT_TREE->getPreference('PEDIGREE_ROOT_ID');

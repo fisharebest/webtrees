@@ -37,7 +37,7 @@ class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 
 	/** {@inheritdoc} */
 	public function getBlock($block_id, $template=true, $cfg=null) {
-		global $ctype, $WEBTREES_EMAIL;
+		global $ctype;
 
 		$changes=WT_DB::prepare(
 			"SELECT 1".

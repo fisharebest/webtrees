@@ -2285,10 +2285,6 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			}
 
 			function loadMap() {
-				<?php
-					global $PEDIGREE_GENERATIONS, $MAX_PEDIGREE_GENERATIONS, $SHOW_HIGHLIGHT_IMAGES;
-				?>
-
 				// Create the map and mapOptions
 				var mapOptions = {
 					zoom: 7,

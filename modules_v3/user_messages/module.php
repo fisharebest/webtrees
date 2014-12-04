@@ -37,8 +37,6 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 
 	/** {@inheritdoc} */
 	public function getBlock($block_id, $template=true, $cfg=null) {
-		global $ctype;
-
 		require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 
 		// Block actions

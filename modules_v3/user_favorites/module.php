@@ -61,8 +61,6 @@ class user_favorites_WT_Module extends gedcom_favorites_WT_Module {
 
 	/** {@inheritdoc} */
 	public function modAction($modAction) {
-		global $controller;
-
 		switch($modAction) {
 		case 'menu-add-favorite':
 			// Process the "add to user favorites" menu item on indi/fam/etc. pages

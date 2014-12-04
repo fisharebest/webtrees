@@ -53,7 +53,7 @@ class WT_Controller_Clippings {
 	var $level3; // number of levels of descendents
 
 	public function __construct() {
-		global $WT_TREE, $SCRIPT_NAME, $MEDIA_DIRECTORY, $WT_SESSION;
+		global $WT_TREE, $MEDIA_DIRECTORY, $WT_SESSION;
 
 		// Our cart is an array of items in the session
 		if (!is_array($WT_SESSION->cart)) {

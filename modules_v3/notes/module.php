@@ -51,7 +51,7 @@ class notes_WT_Module extends WT_Module implements WT_Module_Tab {
 
 	/** {@inheritdoc} */
 	public function getTabContent() {
-		global $SHOW_LEVEL2_NOTES, $NAV_NOTES, $controller;
+		global $SHOW_LEVEL2_NOTES, $controller;
 
 		ob_start();
 		echo '<table class="facts_table">';
