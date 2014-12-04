@@ -703,7 +703,7 @@ function add_simple_tag(
 		case 'TEMP':
 		case 'TEXT':
 		case 'TIME':
-		case 'URL':
+		case 'WWW':
 		case '_HEB':
 		case '_PRIM':
 			echo help_link($fact);

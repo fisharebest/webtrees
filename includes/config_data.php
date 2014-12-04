@@ -398,7 +398,7 @@ $level2_tags=array(
 		'OCCU',
 		'RESI',
 	),
-	'URL'=>array(
+	'WWW'=>array(
 		'OCCU',
 		'RESI',
 	),
