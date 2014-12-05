@@ -42,8 +42,8 @@ class WT_Controller_Clippings {
 	var $media_list = array();
 	var $addCount = 0;
 	var $privCount = 0;
-	var $type="";
-	var $id="";
+	var $type;
+	var $id;
 	var $IncludeMedia;
 	var $conv_path;
 	var $privatize_export;
@@ -60,10 +60,10 @@ class WT_Controller_Clippings {
 
 		// Our cart is an array of items in the session
 		if (!is_array($WT_SESSION->cart)) {
-			$WT_SESSION->cart=array();
+			$WT_SESSION->cart = array();
 		}
 		if (!array_key_exists(WT_GED_ID, $WT_SESSION->cart)) {
-			$WT_SESSION->cart[WT_GED_ID]=array();
+			$WT_SESSION->cart[WT_GED_ID] = array();
 		}
 
 		$this->action           = WT_Filter::get('action');
@@ -79,33 +79,35 @@ class WT_Controller_Clippings {
 		$others                 = WT_Filter::get('others');
 		$this->type             = WT_Filter::get('type');
 
-		if (($this->privatize_export=='none' || $this->privatize_export=='none') && !WT_USER_GEDCOM_ADMIN) {
-			$this->privatize_export='visitor';
+		if (($this->privatize_export === 'none' || $this->privatize_export === 'none') && !WT_USER_GEDCOM_ADMIN) {
+			$this->privatize_export = 'visitor';
 		}
-		if ($this->privatize_export=='user' && !WT_USER_CAN_ACCESS) {
-			$this->privatize_export='visitor';
+		if ($this->privatize_export === 'user' && !WT_USER_CAN_ACCESS) {
+			$this->privatize_export = 'visitor';
 		}
 
-		if ($this->action == 'add') {
+		if ($this->action === 'add') {
 			if (empty($this->type) && !empty($this->id)) {
-				$this->type="";
 				$obj = WT_GedcomRecord::getInstance($this->id);
-				if (is_null($obj)) {
-					$this->id="";
-					$this->action="";
+				if ($obj) {
+					$this->type = $obj::RECORD_TYPE;
+				} else {
+					$this->type   = '';
+					$this->id     = '';
+					$this->action = '';
 				}
-				else $this->type = strtolower($obj::RECORD_TYPE);
+			} elseif (empty($this->id)) {
+				$this->action = '';
 			}
-			else if (empty($this->id)) $this->action="";
-			if (!empty($this->id) && $this->type != 'fam' && $this->type != 'indi' && $this->type != 'sour')
+			if (!empty($this->id) && $this->type != 'FAM' && $this->type != 'INDI' && $this->type != 'SOUR')
 			$this->action = 'add1';
 		}
 
 		if ($this->action == 'add1') {
 			$obj = WT_GedcomRecord::getInstance($this->id);
 			$this->addClipping($obj);
-			if ($this->type == 'sour') {
-				if ($others == 'linked') {
+			if ($this->type === 'SOUR') {
+				if ($others === 'linked') {
 					foreach ($obj->linkedIndividuals('SOUR') as $indi) {
 						$this->addClipping($indi);
 					}
@@ -114,7 +116,7 @@ class WT_Controller_Clippings {
 					}
 				}
 			}
-			if ($this->type == 'fam') {
+			if ($this->type === 'FAM') {
 				if ($others == 'parents') {
 					$this->addClipping($obj->getHusband());
 					$this->addClipping($obj->getWife());
@@ -123,7 +125,7 @@ class WT_Controller_Clippings {
 				} elseif ($others == "descendants") {
 					$this->addFamilyDescendancy(WT_Family::getInstance($this->id));
 				}
-			} elseif ($this->type == 'indi') {
+			} elseif ($this->type === 'INDI') {
 				if ($others == 'parents') {
 					foreach (WT_Individual::getInstance($this->id)->getChildFamilies() as $family) {
 						$this->addFamilyMembers($family);
@@ -149,18 +151,18 @@ class WT_Controller_Clippings {
 		} elseif ($this->action == 'empty') {
 			$WT_SESSION->cart[WT_GED_ID]=array();
 		} elseif ($this->action == 'download') {
-			$media = array ();
+			$media      = array ();
 			$mediacount = 0;
-			$filetext = gedcom_header(WT_GEDCOM);
+			$filetext   = gedcom_header(WT_GEDCOM);
 			// Include SUBM/SUBN records, if they exist
-			$subn=
+			$subn =
 				WT_DB::prepare("SELECT o_gedcom FROM `##other` WHERE o_type=? AND o_file=?")
 				->execute(array('SUBN', WT_GED_ID))
 				->fetchOne();
 			if ($subn) {
 				$filetext .= $subn."\n";
 			}
-			$subm=
+			$subm =
 				WT_DB::prepare("SELECT o_gedcom FROM `##other` WHERE o_type=? AND o_file=?")
 				->execute(array('SUBM', WT_GED_ID))
 				->fetchOne();
@@ -174,46 +176,46 @@ class WT_Controller_Clippings {
 
 			switch($this->privatize_export) {
 			case 'gedadmin':
-				$access_level=WT_PRIV_NONE;
+				$access_level = WT_PRIV_NONE;
 				break;
 			case 'user':
-				$access_level=WT_PRIV_USER;
+				$access_level = WT_PRIV_USER;
 				break;
 			case 'visitor':
-				$access_level=WT_PRIV_PUBLIC;
+				$access_level = WT_PRIV_PUBLIC;
 				break;
 			case 'none':
-				$access_level=WT_PRIV_HIDE;
+				$access_level = WT_PRIV_HIDE;
 				break;
 			}
 
 			foreach (array_keys($WT_SESSION->cart[WT_GED_ID]) as $xref) {
-				$object=WT_GedcomRecord::getInstance($xref);
+				$object = WT_GedcomRecord::getInstance($xref);
 				if ($object) { // The object may have been deleted since we added it to the cart....
 					$record = $object->privatizeGedcom($access_level);
 					// Remove links to objects that aren't in the cart
 					preg_match_all('/\n1 '.WT_REGEX_TAG.' @('.WT_REGEX_XREF.')@(\n[2-9].*)*/', $record, $matches, PREG_SET_ORDER);
 					foreach ($matches as $match) {
 						if (!array_key_exists($match[1], $WT_SESSION->cart[WT_GED_ID])) {
-							$record=str_replace($match[0], '', $record);
+							$record = str_replace($match[0], '', $record);
 						}
 					}
 					preg_match_all('/\n2 '.WT_REGEX_TAG.' @('.WT_REGEX_XREF.')@(\n[3-9].*)*/', $record, $matches, PREG_SET_ORDER);
 					foreach ($matches as $match) {
 						if (!array_key_exists($match[1], $WT_SESSION->cart[WT_GED_ID])) {
-							$record=str_replace($match[0], '', $record);
+							$record = str_replace($match[0], '', $record);
 						}
 					}
 					preg_match_all('/\n3 '.WT_REGEX_TAG.' @('.WT_REGEX_XREF.')@(\n[4-9].*)*/', $record, $matches, PREG_SET_ORDER);
 					foreach ($matches as $match) {
 						if (!array_key_exists($match[1], $WT_SESSION->cart[WT_GED_ID])) {
-							$record=str_replace($match[0], '', $record);
+							$record = str_replace($match[0], '', $record);
 						}
 					}
 					$record = convert_media_path($record, $this->conv_path);
 					$savedRecord = $record; // Save this for the "does this file exist" check
-					if ($convert=='yes') {
-						$record=utf8_decode($record);
+					if ($convert === 'yes') {
+						$record = utf8_decode($record);
 					}
 					switch ($object::RECORD_TYPE) {
 					case 'INDI':
