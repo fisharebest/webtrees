@@ -1,6 +1,4 @@
 <?php
-// Classes and libraries for module system
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -21,6 +19,9 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class GEDFact_assistant_WT_Module
+ */
 class GEDFact_assistant_WT_Module extends WT_Module {
 	/** {@inheritdoc} */
 	public function getTitle() {
@@ -51,6 +52,9 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 		}
 	}
 
+	/**
+	 * ...
+	 */
 	private static function media_3_find() {
 		$controller = new WT_Controller_Simple();
 		$filter     = WT_Filter::get('filter');
@@ -154,6 +158,9 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 		echo '</div>';
 	}
 
+	/**
+	 * ...
+	 */
 	private static function media_query_3a() {
 		$iid2 = WT_Filter::get('iid', WT_REGEX_XREF);
 
@@ -199,7 +206,13 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 		<?php
 	}
 
-	// Convert custom markup into HTML
+	/**
+	 * Convert custom markup into HTML
+	 *
+	 * @param WT_Note $note
+	 *
+	 * @return string
+	 */
 	public static function formatCensusNote(WT_Note $note) {
 		global $WT_TREE;
 
@@ -294,7 +307,15 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 		}
 	}
 
-	// Modify the “add shared note” field, to create a note using the assistant
+	/**
+	 * Modify the “add shared note” field, to create a note using the assistant
+	 *
+	 * @param string $element_id
+	 * @param string $xref
+	 * @param string $action
+	 *
+	 * @return string
+	 */
 	static function print_addnewnote_assisted_link($element_id, $xref, $action) {
 		global $controller;
 
@@ -330,7 +351,15 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 			'</a>';
 	}
 
-	// Add a selector containing UK/US/FR census dates
+	/**
+	 * Add a selector containing UK/US/FR census dates
+	 *
+	 * @param string $action
+	 * @param string $tag
+	 * @param string $element_id
+	 *
+	 * @return string
+	 */
 	public static function censusDateSelector($action, $tag, $element_id) {
 		global $controller;
 

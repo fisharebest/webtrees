@@ -1,6 +1,4 @@
 <?php
-// Batch update module
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 Greg Roach
 //
@@ -22,6 +20,9 @@ use WT\Auth;
 
 require_once WT_ROOT . 'includes/functions/functions_edit.php';
 
+/**
+ * Class batch_update
+ */
 class batch_update {
 	var $plugin   =null; // Form parameter: chosen plugin
 	var $xref     =null; // Form parameter: record to update
@@ -34,6 +35,15 @@ class batch_update {
 	var $curr_xref=null; // The xref to process
 	var $next_xref=null; // The next xref to process
 	var $record   =null; // A GedcomRecord object corresponding to $curr_xref
+
+	/**
+	 * What is the name of this plugin?
+	 *
+	 * @return string
+	 */
+	public function getName() {
+		return '';
+	}
 
 	/**
 	 * Main entry point - called by the webtrees framework in response to module.php?mod=batch_update

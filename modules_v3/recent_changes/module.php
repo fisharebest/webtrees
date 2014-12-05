@@ -1,7 +1,4 @@
 <?php
-
-// Classes and libraries for module system
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -24,6 +21,9 @@
 
 use WT\Auth;
 
+/**
+ * Class recent_changes_WT_Module
+ */
 class recent_changes_WT_Module extends WT_Module implements WT_Module_Block {
 	const DEFAULT_DAYS = 7;
 	const MAX_DAYS = 90;

@@ -1,6 +1,4 @@
 <?php
-// Classes and libraries for module system
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -23,6 +21,9 @@
 
 use WT\Auth;
 
+/**
+ * Class lightbox_WT_Module
+ */
 class lightbox_WT_Module extends WT_Module implements WT_Module_Tab {
 	private $media_list;
 
@@ -166,7 +167,11 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Tab {
 		return $html;
 	}
 
-	// Get all facts containing media links for this person and their spouse-family records
+	/**
+	 * Get all facts containing media links for this person and their spouse-family records
+	 *
+	 * @return WT_Fact[]
+	 */
 	private function get_media() {
 		global $controller;
 

@@ -1,6 +1,4 @@
 <?php
-// Classes and libraries for module system
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -21,6 +19,9 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class clippings_WT_Module
+ */
 class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Sidebar {
 	/** {@inheritdoc} */
 	public function getTitle() {
@@ -414,7 +415,11 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 		return $this->getCartList();
 	}
 
-	// A list for the side bar.
+	/**
+	 * A list for the side bar.
+	 *
+	 * @return string
+	 */
 	public function getCartList() {
 		global $WT_SESSION;
 
@@ -469,8 +474,15 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 		}
 		return $out;
 	}
-	public function askAddOptions($person) {
+
+	/**
+	 * @param WT_Individual $person
+	 *
+	 * @return string
+	 */
+	public function askAddOptions(WT_Individual $person) {
 		global $MAX_PEDIGREE_GENERATIONS;
+
 		$out = '<h3><a href="'.$person->getHtmlUrl().'">'.$person->getFullName().'</a></h3>';
 		$out .= '<script>';
 		$out .= 'function radAncestors(elementid) {var radFamilies=document.getElementById(elementid);radFamilies.checked=true;}
@@ -536,7 +548,12 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 		return $out;
 	}
 
-	public function downloadForm($clip_ctrl) {
+	/**
+	 * @param WT_Controller_Clippings $clip_ctrl
+	 *
+	 * @return string
+	 */
+	public function downloadForm(WT_Controller_Clippings $clip_ctrl) {
 		global $GEDCOM_MEDIA_PATH;
 		$pid=WT_Filter::get('pid', WT_REGEX_XREF);
 

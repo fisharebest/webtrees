@@ -52,6 +52,9 @@ class WT_Controller_Clippings {
 	var $level2;
 	var $level3; // number of levels of descendents
 
+	/**
+	 * Create the clippings controller
+	 */
 	public function __construct() {
 		global $WT_TREE, $MEDIA_DIRECTORY, $WT_SESSION;
 
@@ -261,7 +264,9 @@ class WT_Controller_Clippings {
 		}
 	}
 
-	// Loads everything in the clippings cart into a zip file.
+	/**
+	 * Loads everything in the clippings cart into a zip file.
+	 */
 	function zipCart() {
 		$tempFileName = 'clipping'.rand().'.ged';
 		$fp = fopen(WT_DATA_DIR.$tempFileName, "wb");
@@ -291,8 +296,10 @@ class WT_Controller_Clippings {
 		}
 	}
 
-	// Brings up the download dialog box and allows the user to download the file
-	// based on the options he or she selected
+	/**
+	 * Brings up the download dialog box and allows the user to download the file
+	 * based on the options he or she selected.
+	 */
 	function downloadClipping() {
 		Zend_Session::writeClose();
 
@@ -310,7 +317,11 @@ class WT_Controller_Clippings {
 		exit;
 	}
 
-	// Inserts a clipping into the clipping cart
+	/**
+	 * Inserts a clipping into the clipping cart
+	 *
+	 * @param WT_GedcomRecord $record
+	 */
 	function addClipping(WT_GedcomRecord $record) {
 		global $WT_SESSION;
 
@@ -324,7 +335,12 @@ class WT_Controller_Clippings {
 		}
 	}
 
-	// Recursive function to traverse the tree
+	/**
+	 * Recursive function to traverse the tree
+	 *
+	 * @param WT_Family|null $family
+	 * @param integer        $level
+	 */
 	function addFamilyDescendancy(WT_Family $family = null, $level = PHP_INT_MAX) {
 		if (!$family) {
 			return;
@@ -343,7 +359,11 @@ class WT_Controller_Clippings {
 		}
 	}
 
-	// Add a family, and all its members
+	/**
+	 * Add a family, and all its members
+	 *
+	 * @param WT_Family|null $family
+	 */
 	function addFamilyMembers(WT_Family $family = null) {
 		if (!$family) {
 			return;
@@ -357,8 +377,13 @@ class WT_Controller_Clippings {
 		}
 	}
 
-	// Recursively add direct-line ancestors to cart
-	function addAncestorsToCart(WT_Individual $person = null, $level = null) {
+	/**
+	 * Recursively add direct-line ancestors to cart
+	 *
+	 * @param WT_Individual|null $person
+	 * @param integer            $level
+	 */
+	function addAncestorsToCart(WT_Individual $person = null, $level = 0) {
 		if (!$person) {
 			return;
 		}
@@ -372,8 +397,13 @@ class WT_Controller_Clippings {
 		}
 	}
 
-	// Recursively adds direct-line ancestors and their families to the cart
-	function addAncestorsToCartFamilies(WT_Individual $person = null, $level = null) {
+	/**
+	 * Recursively adds direct-line ancestors and their families to the cart
+	 *
+	 * @param WT_Individual|null $person
+	 * @param integer            $level
+	 */
+	function addAncestorsToCartFamilies(WT_Individual $person = null, $level = 0) {
 		if (!$person) {
 			return;
 		}
@@ -386,7 +416,14 @@ class WT_Controller_Clippings {
 		}
 	}
 
-	// Helper function to sort records by type/name
+	/**
+	 * Helper function to sort records by type/name
+	 *
+	 * @param string $a
+	 * @param string $b
+	 *
+	 * @return integer
+	 */
 	static function compareClippings($a, $b) {
 		$a=WT_GedcomRecord::getInstance($a);
 		$b=WT_GedcomRecord::getInstance($b);

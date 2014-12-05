@@ -1,8 +1,4 @@
 <?php
-// TreeView module class
-//
-// Tip : you could change the number of generations loaded before ajax calls both in individual page and in treeview page to optimize speed and server load
-//
 // Copyright (C) 2014 webtrees development team
 //
 // This program is free software; you can redistribute it and/or modify
@@ -19,6 +15,10 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class tree_WT_Module
+ * Tip : you could change the number of generations loaded before ajax calls both in individual page and in treeview page to optimize speed and server load
+ */
 class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 	var $headers; // CSS and script to include in the top of <head> section, before theme’s CSS
 	var $js; // the TreeViewHandler javascript
@@ -141,10 +141,16 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 		}
 	}
 
+	/**
+	 * @return string
+	 */
 	public function css() {
 		return WT_STATIC_URL . WT_MODULES_DIR . $this->getName() . '/css/treeview.css';
 	}
 
+	/**
+	 * @return string
+	 */
 	public function js() {
 		return WT_STATIC_URL . WT_MODULES_DIR . $this->getName() . '/js/treeview.js';
 	}
