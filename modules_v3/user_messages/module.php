@@ -1,6 +1,4 @@
 <?php
-// Classes and libraries for module system
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -24,6 +22,9 @@
 use WT\Auth;
 use WT\User;
 
+/**
+ * Class user_messages_WT_Module
+ */
 class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 	/** {@inheritdoc} */
 	public function getTitle() {
@@ -37,8 +38,6 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 
 	/** {@inheritdoc} */
 	public function getBlock($block_id, $template=true, $cfg=null) {
-		global $ctype;
-
 		require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 
 		// Block actions

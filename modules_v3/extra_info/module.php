@@ -1,6 +1,4 @@
 <?php
-// A sidebar to show extra/non-genealogical information about an individual
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -18,6 +16,10 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class extra_info_WT_Module
+ * A sidebar to show non-genealogical information about an individual
+ */
 class extra_info_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	/** {@inheritdoc} */
 	public function getTitle() {
@@ -72,7 +74,13 @@ class extra_info_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		return '';
 	}
 
-	// Does this module display a particular fact
+	/**
+	 * Does this module display a particular fact
+	 *
+	 * @param WT_Fact $fact
+	 *
+	 * @return boolean
+	 */
 	public static function showFact(WT_Fact $fact) {
 		switch ($fact->getTag()) {
 		case 'AFN':

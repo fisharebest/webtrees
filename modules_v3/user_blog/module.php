@@ -1,6 +1,4 @@
 <?php
-// Classes and libraries for module system
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -23,11 +21,6 @@
 
 use \WT\Auth;
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 // Create tables, if not already present
 try {
 	WT_DB::updateSchema(WT_MODULES_DIR . 'user_blog/db_schema/', 'NB_SCHEMA_VERSION', 3);
@@ -36,6 +29,9 @@ try {
 	die($ex);
 }
 
+/**
+ * Class user_blog_WT_Module
+ */
 class user_blog_WT_Module extends WT_Module implements WT_Module_Block {
 	/** {@inheritdoc} */
 	public function getTitle() {

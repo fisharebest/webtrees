@@ -1,6 +1,4 @@
 <?php
-// Classes and libraries for module system
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -24,8 +22,12 @@
 use Rhumsaa\Uuid\Uuid;
 use WT\Auth;
 
-// Note that the user favorites module simply extends this module, so ensure that the
-// logic works for both.
+/**
+ * Class gedcom_favorites_WT_Module
+ *
+ * Note that the user favorites module simply extends this module, so ensure that the
+ * logic works for both.
+ */
 class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 	/** {@inheritdoc} */
 	public function getTitle() {
@@ -243,14 +245,26 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 		echo '</td></tr>';
 	}
 
-	// Delete a favorite from the database
+	/**
+	 * Delete a favorite from the database
+	 *
+	 * @param $favorite_id
+	 *
+	 * @return boolean
+	 */
 	public static function deleteFavorite($favorite_id) {
 		return (bool)
 			WT_DB::prepare("DELETE FROM `##favorite` WHERE favorite_id=?")
 			->execute(array($favorite_id));
 	}
 
-	// Store a new favorite in the database
+	/**
+	 * Store a new favorite in the database
+	 *
+	 * @param $favorite
+	 *
+	 * @return boolean
+	 */
 	public static function addFavorite($favorite) {
 		// -- make sure a favorite is added
 		if (empty($favorite['gid']) && empty($favorite['url'])) {
@@ -285,7 +299,13 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 				->execute(array($favorite['user_id'], $favorite['gedcom_id'], $favorite['gid'], $favorite['type'], $favorite['url'], $favorite['title'], $favorite['note']));
 	}
 
-	// Get favorites for a user or family tree
+	/**
+	 * Get favorites for a user or family tree
+	 *
+	 * @param $gedcom_id
+	 *
+	 * @return string[][]
+	 */
 	public static function getFavorites($gedcom_id) {
 		self::updateSchema(); // make sure the favorites table has been created
 
@@ -297,6 +317,9 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 			->fetchAll(PDO::FETCH_ASSOC);
 	}
 
+	/**
+	 * Make sure the database structure is up-to-date.
+	 */
 	protected static function updateSchema() {
 		// Create tables, if not already present
 		try {
