@@ -170,7 +170,7 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Tab {
 	/**
 	 * Get all facts containing media links for this person and their spouse-family records
 	 *
-	 * @return WT_Fact[]
+	 * @return WT_Media[]
 	 */
 	private function get_media() {
 		global $controller;

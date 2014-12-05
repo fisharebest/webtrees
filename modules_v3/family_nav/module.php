@@ -206,8 +206,8 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		$html = sprintf(self::TTL, WT_I18N::translate('Parents'));
 		$family = $person->getPrimaryChildFamily();
 		if (!$SEARCH_SPIDER && $person->canShowName() && $family !== null) {
-			$father = $family->getHusband($person);
-			$mother = $family->getWife($person);
+			$father = $family->getHusband();
+			$mother = $family->getWife();
 			$html .= $this->getHTML($father) .
 					 $this->getHTML($mother);
 
@@ -216,9 +216,9 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				$stepParents = '';
 				foreach ($person->getChildStepFamilies() as $family) {
 					if (!$this->isPerson($father)) {
-						$stepParents .= $this->getHTML($family->getHusband($person));
+						$stepParents .= $this->getHTML($family->getHusband());
 					} else {
-						$stepParents .= $this->getHTML($family->getWife($person));
+						$stepParents .= $this->getHTML($family->getWife());
 					}
 				}
 				if($stepParents) {
@@ -230,7 +230,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			}
 		}
 		if(!($this->isPerson($father) || $this->isPerson($mother))) {
-			$html .= sprintf(self::MSG,  WT_I18N::translate_c('unknown family', 'unknown'));
+			$html .= sprintf(self::MSG, WT_I18N::translate_c('unknown family', 'unknown'));
 		}
 		return $html;
 	}
