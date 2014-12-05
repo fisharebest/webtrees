@@ -39,8 +39,9 @@ function getMenuAsCustomList($menu) {
 		$tmp = new WT_Menu(strip_tags($menu->label), '');
 
 		// Insert the label into the submenu
-		$submenu = $menu->getSubmenus();
-		array_unshift($menu->submenus, $tmp);
+	$submenus = $menu->getSubmenus();
+	array_unshift($submenus, $tmp);
+	$menu->setSubmenus($submenus);
 
 		// Neutralise the top-level menu
 		$menu->setLabel('');
