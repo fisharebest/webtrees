@@ -27,20 +27,25 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-// Convert a menu into our theme-specific format
+/**
+ * Convert a menu into our theme-specific format
+ *
+ * @param WT_Menu $menu
+ *
+ * @return string
+ */
 function getMenuAsCustomList($menu) {
 		// Create an inert menu - to use as a label
-		$tmp=new WT_Menu(strip_tags($menu->label), '');
+		$tmp = new WT_Menu(strip_tags($menu->label), '');
+
 		// Insert the label into the submenu
-		if (is_array($menu->submenus)) {
-			array_unshift($menu->submenus, $tmp);
-		} else {
-			$menu->addSubmenu($tmp);
-		}
+		$submenu = $menu->getSubmenus();
+		array_unshift($menu->submenus, $tmp);
+
 		// Neutralise the top-level menu
-		$menu->label='';
-		$menu->onclick='';
-		$menu->iconclass='';
+		$menu->setLabel('');
+		$menu->setOnclick('');
+
 		return $menu->getMenuAsList();
 }
 

@@ -64,7 +64,7 @@ class WT_Menu {
 			->setLabel($label)
 			->setLink($link)
 			->setId($id)
-			->setOnClick($onclick)
+			->setOnclick($onclick)
 			->setSubmenus($submenus);
 	}
 
