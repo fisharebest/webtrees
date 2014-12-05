@@ -34,8 +34,13 @@ $controller
 // with an incomplete transaction.
 ignore_user_abort(true);
 
-// $path is the full path to the (possibly temporary) file.
-// $filename is the actual filename (no folder).
+/**
+ * @param integer $gedcom_id
+ * @param string  $path      the full path to the (possibly temporary) file.
+ * @param string  $filename  the actual filename (no folder).
+ *
+ * @throws Exception
+ */
 function import_gedcom_file($gedcom_id, $path, $filename) {
 	// Read the file in blocks of roughly 64K.  Ensure that each block
 	// contains complete gedcom records.  This will ensure we don’t split
