@@ -517,7 +517,7 @@ function fill_ydata($z, $x, $val) {
  * @param string      $xtitle
  * @param integer[][] $ydata
  * @param string      $ytitle
- * @param string      $legend
+ * @param string[]    $legend
  */
 function myplot($mytitle, $xdata, $xtitle, $ydata, $ytitle, $legend) {
 	global $percentage, $male_female;
@@ -717,7 +717,7 @@ function calc_axis($xas_grenzen) {
 }
 
 /**
- * @param integer[] $grenzen_zas
+ * @param string $grenzen_zas
  */
 function calc_legend($grenzen_zas) {
 	global $legend, $zmax, $zgrenzen;
