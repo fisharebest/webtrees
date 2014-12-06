@@ -2245,8 +2245,14 @@ case 'reorder_fams_update':
 	break;
 }
 
-// Keep the existing CHAN record when editing
-function keep_chan(WT_GedcomRecord $record=null) {
+/**
+ * Show an option to preserve the existing CHAN record when editing.
+ *
+ * @param WT_GedcomRecord $record
+ *
+ * @return string
+ */
+function keep_chan(WT_GedcomRecord $record = null) {
 	global $NO_UPDATE_CHAN;
 
 	if (Auth::isAdmin()) {
@@ -2274,8 +2280,17 @@ function keep_chan(WT_GedcomRecord $record=null) {
 	}
 }
 
-// prints a form to add an individual or edit an individual’s name
-function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $family=null, WT_Fact $name_fact=null, $famtag='CHIL', $gender='U') {
+/**
+ * Print a form to add an individual or edit an individual’s name
+ *
+ * @param string        $nextaction
+ * @param WT_Individual $person
+ * @param WT_Family     $family
+ * @param WT_Fact       $name_fact
+ * @param string        $famtag
+ * @param string        $gender
+ */
+function print_indi_form($nextaction, WT_Individual $person = null, WT_Family $family = null, WT_Fact $name_fact = null, $famtag = 'CHIL', $gender = 'U') {
 	global $WT_TREE, $WORD_WRAPPED_NOTES, $NPFX_accept, $SHOW_GEDCOM_RECORD, $bdm, $STANDARD_NAME_FACTS, $ADVANCED_NAME_FACTS;
 	global $QUICK_REQUIRED_FACTS, $QUICK_REQUIRED_FAMFACTS, $controller;
 
@@ -2899,8 +2914,12 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 	echo '</div>';
 }
 
-// Can we edit a WT_GedcomRecord object
-function check_record_access(WT_GedcomRecord $object=null) {
+/**
+ * Can we edit a WT_GedcomRecord object
+ *
+ * @param WT_GedcomRecord $object
+ */
+function check_record_access(WT_GedcomRecord $object = null) {
 	global $controller;
 
 	if (!$object || !$object->canShow() || !$object->canEdit()) {

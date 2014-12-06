@@ -1,9 +1,9 @@
 <?php
 //============================================================+
 // File name   : tcpdf.php
-// Version     : 6.0.097
+// Version     : 6.0.099
 // Begin       : 2002-08-03
-// Last Update : 2014-10-20
+// Last Update : 2014-11-15
 // Author      : Nicola Asuni - Tecnick.com LTD - www.tecnick.com - info@tecnick.com
 // License     : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
 // -------------------------------------------------------------------
@@ -104,7 +104,7 @@
  * Tools to encode your unicode fonts are on fonts/utils directory.</p>
  * @package com.tecnick.tcpdf
  * @author Nicola Asuni
- * @version 6.0.097
+ * @version 6.0.099
  */
 
 // TCPDF configuration
@@ -128,7 +128,7 @@ require_once(dirname(__FILE__).'/include/tcpdf_static.php');
  * TCPDF project (http://www.tcpdf.org) has been originally derived in 2002 from the Public Domain FPDF class by Olivier Plathey (http://www.fpdf.org), but now is almost entirely rewritten.<br>
  * @package com.tecnick.tcpdf
  * @brief PHP class for generating PDF documents without requiring external extensions.
- * @version 6.0.097
+ * @version 6.0.099
  * @author Nicola Asuni - info@tecnick.com
  */
 class TCPDF {
@@ -340,6 +340,12 @@ class TCPDF {
 	 * @protected
 	 */
 	protected $images = array();
+
+	/**
+	 * Depth of the svg tag, to keep track if the svg tag is a subtag or the root tag.
+	 * @protected
+	 */
+	protected $svg_tag_depth = 0;
 
 	/**
 	 * Array of cached files.
@@ -4580,8 +4586,14 @@ class TCPDF {
 	 * @since 5.9.186 (2012-09-13)
 	 */
 	public function getCharBBox($char) {
-		if (isset($this->CurrentFont['cbbox'][$char])) {
-			return array_map(array($this,'getAbsFontMeasure'), $this->CurrentFont['cbbox'][intval($char)]);
+		$c = intval($char);
+		if (isset($this->CurrentFont['cw'][$c])) {
+			// glyph is defined ... use zero width & height for glyphs without outlines
+			$result = array(0,0,0,0);
+			if (isset($this->CurrentFont['cbbox'][$c])) {
+				$result = $this->CurrentFont['cbbox'][$c];
+			}
+			return array_map(array($this,'getAbsFontMeasure'), $result);
 		}
 		return false;
 	}
@@ -22888,7 +22900,7 @@ Putting 1 is equivalent to putting 0 and calling Ln() just after. Default value:
 		if ($this->state != 2) {
 			 return;
 		}
-		// reseet SVG vars
+		// reset SVG vars
 		$this->svggradients = array();
 		$this->svggradientid = 0;
 		$this->svgdefsmode = false;
@@ -23487,6 +23499,14 @@ Putting 1 is equivalent to putting 0 and calling Ln() just after. Default value:
 				$font_style .= 'B';
 				break;
 			}
+			case 'normal': {
+				if ((substr($font_family, -1) == 'I') AND (substr($font_family, -2, 1) == 'B')) {
+					$font_family = substr($font_family, 0, -2).'I';
+				} elseif (substr($font_family, -1) == 'B') {
+					$font_family = substr($font_family, 0, -1);
+				}
+				break;
+			}
 		}
 		switch ($svgstyle['text-decoration']) {
 			case 'underline': {
@@ -23883,6 +23903,19 @@ Putting 1 is equivalent to putting 0 and calling Ln() just after. Default value:
 	}
 
 	/**
+	 * Return the tag name without the namespace
+	 * @param $name (string) Tag name
+	 * @protected
+	 */
+	protected function removeTagNamespace($name) {
+		if(strpos($name, ':') !== false) {
+			$parts = explode(':', $name);
+			return $parts[(sizeof($parts) - 1)];
+		}
+		return $name;
+	}
+		
+	/**
 	 * Sets the opening SVG element handler function for the XML parser. (*** TO BE COMPLETED ***)
 	 * @param $parser (resource) The first parameter, parser, is a reference to the XML parser calling the handler.
 	 * @param $name (string) The second parameter, name, contains the name of the element for which this handler is called. If case-folding is in effect for this parser, the element name will be in uppercase letters.
@@ -23893,6 +23926,7 @@ Putting 1 is equivalent to putting 0 and calling Ln() just after. Default value:
 	 * @protected
 	 */
 	protected function startSVGElementHandler($parser, $name, $attribs, $ctm=array()) {
+		$name = $this->removeTagNamespace($name);
 		// check if we are in clip mode
 		if ($this->svgclipmode) {
 			$this->svgclippaths[$this->svgclipid][] = array('name' => $name, 'attribs' => $attribs, 'tm' => $this->svgcliptm[$this->svgclipid]);
@@ -23991,6 +24025,80 @@ Putting 1 is equivalent to putting 0 and calling Ln() just after. Default value:
 			}
 			case 'svg': {
 				// start of SVG object
+				if(++$this->svg_tag_depth <= 1) {
+					break;
+				}
+				// inner SVG
+				array_push($this->svgstyles, $svgstyle);
+				$this->StartTransform();
+				$svgX = (isset($attribs['x'])?$attribs['x']:0);
+				$svgY = (isset($attribs['y'])?$attribs['y']:0);
+				$svgW = (isset($attribs['width'])?$attribs['width']:0);
+				$svgH = (isset($attribs['height'])?$attribs['height']:0);
+				// set x, y position using transform matrix
+				$tm = TCPDF_STATIC::getTransformationMatrixProduct($tm, array( 1, 0, 0, 1, $svgX, $svgY));
+				$this->SVGTransform($tm);
+				// set clipping for width and height
+				$x = 0;
+				$y = 0;
+				$w = (isset($attribs['width'])?$this->getHTMLUnitToUnits($attribs['width'], 0, $this->svgunit, false):$this->w);
+				$h = (isset($attribs['height'])?$this->getHTMLUnitToUnits($attribs['height'], 0, $this->svgunit, false):$this->h);
+				// draw clipping rect
+				$this->Rect($x, $y, $w, $h, 'CNZ', array(), array());
+				// parse viewbox, calculate extra transformation matrix
+				if (isset($attribs['viewBox'])) {
+					$tmp = array();
+					preg_match_all("/[0-9]+/", $attribs['viewBox'], $tmp);
+					$tmp = $tmp[0];
+					if (sizeof($tmp) == 4) {
+						$vx = $tmp[0];
+						$vy = $tmp[1];
+						$vw = $tmp[2];
+						$vh = $tmp[3];
+						// get aspect ratio
+						$tmp = array();
+						$aspectX = 'xMid';
+						$aspectY = 'YMid';
+						$fit = 'meet';
+						if (isset($attribs['preserveAspectRatio'])) {
+							if($attribs['preserveAspectRatio'] == 'none') {
+								$fit = 'none';
+							} else {
+								preg_match_all('/[a-zA-Z]+/', $attribs['preserveAspectRatio'], $tmp);
+								$tmp = $tmp[0];
+								if ((sizeof($tmp) == 2) AND (strlen($tmp[0]) == 8) AND (in_array($tmp[1], array('meet', 'slice', 'none')))) {
+									$aspectX = substr($tmp[0], 0, 4);
+									$aspectY = substr($tmp[0], 4, 4);
+									$fit = $tmp[1];
+								}
+							}
+						}
+						$wr = ($svgW / $vw);
+						$hr = ($svgH / $vh);
+						$ax = $ay = 0;
+						if ((($fit == 'meet') AND ($hr < $wr)) OR (($fit == 'slice') AND ($hr > $wr))) {
+							if ($aspectX == 'xMax') {
+								$ax = (($vw * ($wr / $hr)) - $vw);
+							}
+							if ($aspectX == 'xMid') {
+								$ax = ((($vw * ($wr / $hr)) - $vw) / 2);
+							}
+							$wr = $hr;
+						} elseif ((($fit == 'meet') AND ($hr > $wr)) OR (($fit == 'slice') AND ($hr < $wr))) {
+							if ($aspectY == 'YMax') {
+								$ay = (($vh * ($hr / $wr)) - $vh);
+							}
+							if ($aspectY == 'YMid') {
+								$ay = ((($vh * ($hr / $wr)) - $vh) / 2);
+							}
+							$hr = $wr;
+						}
+						$newtm = array($wr, 0, 0, $hr, (($wr * ($ax - $vx)) - $svgX), (($hr * ($ay - $vy)) - $svgY));
+						$tm = TCPDF_STATIC::getTransformationMatrixProduct($tm, $newtm);
+						$this->SVGTransform($tm);
+					}
+				}
+				$this->setSVGStyles($svgstyle, $prev_svgstyle);
 				break;
 			}
 			case 'g': {
@@ -24333,7 +24441,29 @@ Putting 1 is equivalent to putting 0 and calling Ln() just after. Default value:
 					if (($imgtype == 'eps') OR ($imgtype == 'ai')) {
 						$this->ImageEps($img, $x, $y, $w, $h);
 					} elseif ($imgtype == 'svg') {
+						// store SVG vars
+						$svggradients = $this->svggradients;
+						$svggradientid = $this->svggradientid;
+						$svgdefsmode = $this->svgdefsmode;
+						$svgdefs = $this->svgdefs;
+						$svgclipmode = $this->svgclipmode;
+						$svgclippaths = $this->svgclippaths;
+						$svgcliptm = $this->svgcliptm;
+						$svgclipid = $this->svgclipid;
+						$svgtext = $this->svgtext;
+						$svgtextmode = $this->svgtextmode;
 						$this->ImageSVG($img, $x, $y, $w, $h);
+						// restore SVG vars
+						$this->svggradients = $svggradients;
+						$this->svggradientid = $svggradientid;
+						$this->svgdefsmode = $svgdefsmode;
+						$this->svgdefs = $svgdefs;
+						$this->svgclipmode = $svgclipmode;
+						$this->svgclippaths = $svgclippaths;
+						$this->svgcliptm = $svgcliptm;
+						$this->svgclipid = $svgclipid;
+						$this->svgtext = $svgtext;
+						$this->svgtextmode = $svgtextmode;
 					} else {
 						$this->Image($img, $x, $y, $w, $h);
 					}
@@ -24344,6 +24474,9 @@ Putting 1 is equivalent to putting 0 and calling Ln() just after. Default value:
 			// text
 			case 'text':
 			case 'tspan': {
+				if (isset($this->svgtextmode['text-anchor']) AND !empty($this->svgtext)) {
+					// @TODO: unsupported feature
+				}
 				// only basic support - advanced features must be implemented
 				$this->svgtextmode['invisible'] = $invisible;
 				if ($invisible) {
@@ -24460,6 +24593,7 @@ Putting 1 is equivalent to putting 0 and calling Ln() just after. Default value:
 	 * @protected
 	 */
 	protected function endSVGElementHandler($parser, $name) {
+		$name = $this->removeTagNamespace($name);
 		if ($this->svgdefsmode AND !in_array($name, array('defs', 'clipPath', 'linearGradient', 'radialGradient', 'stop'))) {;
 			if (end($this->svgdefs) !== FALSE) {
 				$last_svgdefs_id = key($this->svgdefs);
@@ -24487,6 +24621,11 @@ Putting 1 is equivalent to putting 0 and calling Ln() just after. Default value:
 			case 'clipPath': {
 				$this->svgclipmode = false;
 				break;
+			}
+			case 'svg': {
+				if (--$this->svg_tag_depth <= 0) {
+					break;
+				}
 			}
 			case 'g': {
 				// ungroup: remove last style from array
@@ -24529,6 +24668,7 @@ Putting 1 is equivalent to putting 0 and calling Ln() just after. Default value:
 					$tmpx = $this->x;
 					$tmpy = $this->y;
 				}
+				// print the text
 				$this->Cell($textlen, 0, $text, 0, 0, '', false, '', 0, false, 'L', 'T');
 				if ($name == 'text') {
 					// restore coordinates

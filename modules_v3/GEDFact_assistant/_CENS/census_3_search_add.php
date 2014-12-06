@@ -1249,17 +1249,9 @@ if (!defined('WT_WEBTREES')) {
  * @return void
  */
 function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
-	global $PEDIGREE_FULL_DETAILS;
-	global $TEXT_DIRECTION, $DEFAULT_PEDIGREE_GENERATIONS, $OLD_PGENS, $talloffset, $PEDIGREE_LAYOUT;
-	global $show_full;
+	global $TEXT_DIRECTION;
 	global $spouselinks, $parentlinks, $step_parentlinks, $persons, $person_step, $person_parent;
 	global $natdad, $natmom, $censyear;
-
-	if (empty($show_full)) $show_full = 0;
-	if (empty($PEDIGREE_FULL_DETAILS)) $PEDIGREE_FULL_DETAILS = 0;
-
-	if (!isset($OLD_PGENS)) $OLD_PGENS = $DEFAULT_PEDIGREE_GENERATIONS;
-	if (!isset($talloffset)) $talloffset = $PEDIGREE_LAYOUT;
 
 	$person=WT_Individual::getInstance($pid);
 

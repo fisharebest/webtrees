@@ -1,6 +1,4 @@
 <?php
-// Classes and libraries for module system
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -24,6 +22,9 @@
 use Rhumsaa\Uuid\Uuid;
 use WT\Auth;
 
+/**
+ * Class todo_WT_Module
+ */
 class todo_WT_Module extends WT_Module implements WT_Module_Block {
 	/** {@inheritdoc} */
 	public function getTitle() {

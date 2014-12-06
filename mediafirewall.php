@@ -36,11 +36,11 @@ $media = WT_Media::getInstance($mid);
 function send404AndExit() {
 	$error = WT_I18N::translate('The media file was not found in this family tree');
 
-	$width = (mb_strlen($error)) * 6.5 + 50;
+	$width  = (mb_strlen($error)) * 6.5 + 50;
 	$height = 60;
-	$im  = imagecreatetruecolor($width, $height);  /* Create a black image */
-	$bgc = imagecolorallocate($im, 255, 255, 255); /* set background color */
-	imagefilledrectangle($im, 2, 2, $width-4, $height-4, $bgc); /* create a rectangle, leaving 2 px border */
+	$im     = imagecreatetruecolor($width, $height);  /* Create a black image */
+	$bgc    = imagecolorallocate($im, 255, 255, 255); /* set background color */
+	imagefilledrectangle($im, 2, 2, $width - 4, $height - 4, $bgc); /* create a rectangle, leaving 2 px border */
 
 	embedText($im, $error, 100, "255, 0, 0", "", "top", "left");
 
@@ -52,37 +52,52 @@ function send404AndExit() {
 	exit;
 }
 
-// the media firewall passes in an image
-// this function can manipulate the image however it wants
-// before returning it back to the media firewall
+/**
+ * The media firewall passes in an image
+ * this function can manipulate the image however it wants
+ * before returning it back to the media firewall
+ *
+ * @param resource $im
+ *
+ * @return resource
+ */
 function applyWatermark($im) {
 	// text to watermark with
-	$word1_text   = WT_TREE_TITLE;
+	$word1_text = WT_TREE_TITLE;
 	// maximum font size for “word1” ; will be automaticaly reduced to fit in the image
 	$word1_maxsize = 100;
 	// rgb color codes for text
-	$word1_color  = "0, 0, 0";
+	$word1_color = "0, 0, 0";
 	// ttf font file to use. must exist in the includes/fonts/ folder
-	$word1_font   = "";
+	$word1_font = "";
 	// vertical position for the text to past; possible values are: top, middle or bottom, across
-	$word1_vpos   = "across";
+	$word1_vpos = "across";
 	// horizontal position for the text to past in media file; possible values are: left, right, top2bottom, bottom2top
 	// this value is used only if $word1_vpos=across
-	$word1_hpos   = "left";
+	$word1_hpos = "left";
 
-	$word2_text   = $_SERVER["HTTP_HOST"];
+	$word2_text    = $_SERVER["HTTP_HOST"];
 	$word2_maxsize = 20;
-	$word2_color  = "0, 0, 0";
-	$word2_font   = "";
-	$word2_vpos   = "top";
-	$word2_hpos   = "top2bottom";
+	$word2_color   = "0, 0, 0";
+	$word2_font    = "";
+	$word2_vpos    = "top";
+	$word2_hpos    = "top2bottom";
 
 	embedText($im, $word1_text, $word1_maxsize, $word1_color, $word1_font, $word1_vpos, $word1_hpos);
 	embedText($im, $word2_text, $word2_maxsize, $word2_color, $word2_font, $word2_vpos, $word2_hpos);
 
-	return ($im);
+	return $im;
 }
 
+/**
+ * @param resource $im
+ * @param string   $text
+ * @param integer  $maxsize
+ * @param string   $color
+ * @param string   $font
+ * @param integer  $vpos
+ * @param integer  $hpos
+ */
 function embedText($im, $text, $maxsize, $color, $font, $vpos, $hpos) {
 	global $useTTF;
 
@@ -91,95 +106,93 @@ function embedText($im, $text, $maxsize, $color, $font, $vpos, $hpos) {
 	// (fall back) if that is not available, you can insert basic monospaced text
 	if ($useTTF) {
 		// imagettftext is available, make sure the requested font exists
-		if (!isset($font)||($font=='')||!file_exists(WT_ROOT.'includes/fonts/'.$font)) {
+		if (!isset($font) || ($font == '') || !file_exists(WT_ROOT . 'includes/fonts/' . $font)) {
 			$font = 'DejaVuSans.ttf'; // this font ships with webtrees
-			if (!file_exists(WT_ROOT.'includes/fonts/'.$font)) {
+			if (!file_exists(WT_ROOT . 'includes/fonts/' . $font)) {
 				$useTTF = false;
 			}
 		}
 	}
 
-	# no errors if an invalid color string was passed in, just strange colors
-	$col=explode(",", $color);
+	// no errors if an invalid color string was passed in, just strange colors
+	$col       = explode(",", $color);
 	$textcolor = @imagecolorallocate($im, $col[0], $col[1], $col[2]);
-
-	// paranoia is good!  make sure all variables have a value
-	if (!isset($vpos) || ($vpos!="top" && $vpos!="middle" && $vpos!="bottom" && $vpos!="across")) $vpos = "middle";
-	if (($vpos=="across") && (!isset($hpos) || ($hpos!="left" && $hpos!="right" && $hpos!="top2bottom" && $hpos!="bottom2top"))) $hpos = "left";
 
 	// make adjustments to settings that imagestring and imagestringup can’t handle
 	if (!$useTTF) {
 		// imagestringup only writes up, can’t use top2bottom
-		if ($hpos=="top2bottom") $hpos = "bottom2top";
+		if ($hpos === 'top2bottom') {
+			$hpos = 'bottom2top';
+		}
 	}
 
-	$text = WT_I18N::reverseText($text);
-	$height = imagesy($im);
-	$width  = imagesx($im);
-	$calc_angle=rad2deg(atan($height/$width));
-	$hypoth=$height/sin(deg2rad($calc_angle));
+	$text       = WT_I18N::reverseText($text);
+	$height     = imagesy($im);
+	$width      = imagesx($im);
+	$calc_angle = rad2deg(atan($height / $width));
+	$hypoth     = $height / sin(deg2rad($calc_angle));
 
 	// vertical and horizontal position of the text
 	switch ($vpos) {
-		case "top":
-			$taille=textlength($maxsize, $width, $text);
-			$pos_y=$height*0.15+$taille;
-			$pos_x=$width*0.15;
-			$rotation=0;
+	case 'top':
+		$taille   = textlength($maxsize, $width, $text);
+		$pos_y    = $height * 0.15 + $taille;
+		$pos_x    = $width * 0.15;
+		$rotation = 0;
+		break;
+	case 'middle':
+		$taille   = textlength($maxsize, $width, $text);
+		$pos_y    = ($height + $taille) / 2;
+		$pos_x    = $width * 0.15;
+		$rotation = 0;
+		break;
+	case 'bottom':
+		$taille   = textlength($maxsize, $width, $text);
+		$pos_y    = ($height * .85 - $taille);
+		$pos_x    = $width * 0.15;
+		$rotation = 0;
+		break;
+	case 'across':
+		switch ($hpos) {
+		case 'left':
+			$taille   = textlength($maxsize, $hypoth, $text);
+			$pos_y    = ($height * .85 - $taille);
+			$pos_x    = $width * 0.15;
+			$rotation = $calc_angle;
 			break;
-		case "middle":
-			$taille=textlength($maxsize, $width, $text);
-			$pos_y=($height+$taille)/2;
-			$pos_x=$width*0.15;
-			$rotation=0;
+		case 'right':
+			$taille   = textlength($maxsize, $hypoth, $text);
+			$pos_y    = ($height * .15 - $taille);
+			$pos_x    = $width * 0.85;
+			$rotation = $calc_angle + 180;
 			break;
-		case "bottom":
-			$taille=textlength($maxsize, $width, $text);
-			$pos_y=($height*.85-$taille);
-			$pos_x=$width*0.15;
-			$rotation=0;
+		case 'top2bottom':
+			$taille   = textlength($maxsize, $height, $text);
+			$pos_y    = ($height * .15 - $taille);
+			$pos_x    = ($width * .90 - $taille);
+			$rotation = -90;
 			break;
-		case "across":
-			switch ($hpos) {
-				case "left":
-				$taille=textlength($maxsize, $hypoth, $text);
-				$pos_y=($height*.85-$taille);
-				$pos_x=$width*0.15;
-				$rotation=$calc_angle;
-				break;
-				case "right":
-				$taille=textlength($maxsize, $hypoth, $text);
-				$pos_y=($height*.15-$taille);
-				$pos_x=$width*0.85;
-				$rotation=$calc_angle+180;
-				break;
-				case "top2bottom":
-				$taille=textlength($maxsize, $height, $text);
-				$pos_y=($height*.15-$taille);
-				$pos_x=($width*.90-$taille);
-				$rotation=-90;
-				break;
-				case "bottom2top":
-				$taille=textlength($maxsize, $height, $text);
-				$pos_y = $height*0.85;
-				$pos_x = $width*0.15;
-				$rotation=90;
-				break;
-			}
+		case 'bottom2top':
+			$taille   = textlength($maxsize, $height, $text);
+			$pos_y    = $height * 0.85;
+			$pos_x    = $width * 0.15;
+			$rotation = 90;
 			break;
-		default:
+		}
+		break;
+	default:
 	}
 
 	// apply the text
 	if ($useTTF) {
 		// if imagettftext throws errors, catch them with a custom error handler
-		set_error_handler("imagettftextErrorHandler");
-		imagettftext($im, $taille, $rotation, $pos_x, $pos_y, $textcolor, 'includes/fonts/'.$font, $text);
+		set_error_handler('imagettftextErrorHandler');
+		imagettftext($im, $taille, $rotation, $pos_x, $pos_y, $textcolor, 'includes/fonts/' . $font, $text);
 		restore_error_handler();
 	}
 	// Don’t use an ‘else’ here since imagettftextErrorHandler may have changed the value of $useTTF from true to false
 	if (!$useTTF) {
-		if ($rotation!=90) {
+		if ($rotation != 90) {
 			imagestring($im, 5, $pos_x, $pos_y, $text, $textcolor);
 		} else {
 			imagestringup($im, 5, $pos_x, $pos_y, $text, $textcolor);
@@ -188,42 +201,68 @@ function embedText($im, $text, $maxsize, $color, $font, $vpos, $hpos) {
 
 }
 
+/**
+ * @param integer $t
+ * @param integer $mxl
+ * @param string  $text
+ *
+ * @return mixed
+ */
 function textlength($t, $mxl, $text) {
 	$taille_c = $t;
-	$len = mb_strlen($text);
-	while (($taille_c-2)*($len) > $mxl) {
+	$len      = mb_strlen($text);
+	while (($taille_c - 2) * $len > $mxl) {
 		$taille_c--;
-		if ($taille_c == 2) break;
+		if ($taille_c == 2) {
+			break;
+		}
 	}
-	return ($taille_c);
+
+	return $taille_c;
 }
 
-// imagettftext is the function that is most likely to throw an error
-// use this custom error handler to catch and log it
+/**
+ * imagettftext is the function that is most likely to throw an error
+ * use this custom error handler to catch and log it
+ *
+ * @param integer $errno
+ * @param string  $errstr
+ *
+ * @return boolean
+ */
 function imagettftextErrorHandler($errno, $errstr) {
 	global $useTTF, $serverFilename;
 	// log the error
-	Log::addErrorLog("Media Firewall error: >" . $errno . '/' . $errstr . "< while processing file >" . $serverFilename . "<");
+	Log::addErrorLog('Media Firewall error: >' . $errno . '/' . $errstr . '< while processing file >' . $serverFilename . '<');
 
 	// change value of useTTF to false so the fallback watermarking can be used.
 	$useTTF = false;
+
 	return true;
 }
 
-// pass in an image type and this will determine if your system supports editing of that image type
+/**
+ * Determine if the system supports editing of that image type
+ *
+ * @param string $reqtype
+ *
+ * @return string|false
+ */
 function isImageTypeSupported($reqtype) {
-	$supportByGD = array('jpg'=>'jpeg', 'jpeg'=>'jpeg', 'gif'=>'gif', 'png'=>'png');
-	$reqtype = strtolower($reqtype);
+	$supportByGD = array('jpg' => 'jpeg', 'jpeg' => 'jpeg', 'gif' => 'gif', 'png' => 'png');
+	$reqtype     = strtolower($reqtype);
 
-	if (empty($supportByGD[$reqtype])) return false;
+	if (empty($supportByGD[$reqtype])) {
+		return false;
+	}
 	$type = $supportByGD[$reqtype];
 
-	if (function_exists('imagecreatefrom'.$type) && function_exists('image'.$type)) return $type;
-	// Here we could check for image types that are supported by other than the GD library
+	if (function_exists('imagecreatefrom' . $type) && function_exists('image' . $type)) {
+		return $type;
+	}
+
 	return false;
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 // this needs to be a global variable so imagettftextErrorHandler can set it
 $useTTF = function_exists('imagettftext');
@@ -248,22 +287,24 @@ if (!file_exists($serverFilename)) {
 
 $mimetype = $media->mimeType();
 
-$imgsize = $media->getImageAttributes($which);
-$protocol = $_SERVER["SERVER_PROTOCOL"];  // determine if we are using HTTP/1.0 or HTTP/1.1
-$filetime = $media->getFiletime($which);
-$filetimeHeader = gmdate("D, d M Y H:i:s", $filetime).' GMT';
-$expireOffset = 3600 * 24;  // tell browser to cache this image for 24 hours
-if (WT_Filter::get('cb')) $expireOffset = $expireOffset * 7; // if cb parameter was sent, cache for 7 days
-$expireHeader = gmdate("D, d M Y H:i:s", WT_TIMESTAMP + $expireOffset) . " GMT";
+$imgsize        = $media->getImageAttributes($which);
+$protocol       = $_SERVER['SERVER_PROTOCOL'];  // determine if we are using HTTP/1.0 or HTTP/1.1
+$filetime       = $media->getFiletime($which);
+$filetimeHeader = gmdate('D, d M Y H:i:s', $filetime) . ' GMT';
+$expireOffset   = 3600 * 24;  // tell browser to cache this image for 24 hours
+if (WT_Filter::get('cb')) {
+	$expireOffset = $expireOffset * 7;
+} // if cb parameter was sent, cache for 7 days
+$expireHeader = gmdate('D, d M Y H:i:s', WT_TIMESTAMP + $expireOffset) . ' GMT';
 
-$type = isImageTypeSupported($imgsize['ext']);
+$type         = isImageTypeSupported($imgsize['ext']);
 $usewatermark = false;
 // if this image supports watermarks and the watermark module is intalled...
 if ($type) {
 	// if this is not a thumbnail, or WATERMARK_THUMB is true
-	if (($which=='main') || $WATERMARK_THUMB ) {
+	if (($which == 'main') || $WATERMARK_THUMB) {
 		// if the user’s priv’s justify it...
-		if (WT_USER_ACCESS_LEVEL > $SHOW_NO_WATERMARK ) {
+		if (WT_USER_ACCESS_LEVEL > $SHOW_NO_WATERMARK) {
 			// add a watermark
 			$usewatermark = true;
 		}
@@ -278,11 +319,11 @@ if ($usewatermark) {
 	}
 }
 
-$watermarkfile = "";
+$watermarkfile     = '';
 $generatewatermark = false;
 
 if ($usewatermark) {
-	if ($which=='thumb') {
+	if ($which == 'thumb') {
 		$watermarkfile = WT_DATA_DIR . $MEDIA_DIRECTORY . 'watermark/' . WT_GEDCOM . '/thumb/' . $media->getFilename();
 	} else {
 		$watermarkfile = WT_DATA_DIR . $MEDIA_DIRECTORY . 'watermark/' . WT_GEDCOM . '/' . $media->getFilename();
@@ -306,28 +347,28 @@ $etag = $media->getEtag($which);
 
 // parse IF_MODIFIED_SINCE header from client
 $if_modified_since = 'x';
-if (@$_SERVER["HTTP_IF_MODIFIED_SINCE"]) {
-	$if_modified_since = preg_replace('/;.*$/', '', $_SERVER["HTTP_IF_MODIFIED_SINCE"]);
+if (@$_SERVER['HTTP_IF_MODIFIED_SINCE']) {
+	$if_modified_since = preg_replace('/;.*$/', '', $_SERVER['HTTP_IF_MODIFIED_SINCE']);
 }
 
 // parse IF_NONE_MATCH header from client
 $if_none_match = 'x';
-if (@$_SERVER["HTTP_IF_NONE_MATCH"]) {
-	$if_none_match = str_replace("\"", "", $_SERVER["HTTP_IF_NONE_MATCH"]);
+if (@$_SERVER['HTTP_IF_NONE_MATCH']) {
+	$if_none_match = str_replace('"', '', $_SERVER['HTTP_IF_NONE_MATCH']);
 }
 
 // add caching headers.  allow browser to cache file, but not proxy
-header("Last-Modified: " . $filetimeHeader);
-header('ETag: "'.$etag.'"');
-header("Expires: ".$expireHeader);
-header("Cache-Control: max-age=".$expireOffset.", s-maxage=0, proxy-revalidate");
+header('Last-Modified: ' . $filetimeHeader);
+header('ETag: "' . $etag . '"');
+header('Expires: ' . $expireHeader);
+header('Cache-Control: max-age=' . $expireOffset . ', s-maxage=0, proxy-revalidate');
 
 // if this file is already in the user’s cache, don’t resend it
 // first check if the if_modified_since param matches
 if (($if_modified_since == $filetimeHeader)) {
 	// then check if the etag matches
 	if ($if_none_match == $etag) {
-		header($protocol." 304 Not Modified");
+		header($protocol . ' 304 Not Modified');
 		exit;
 	}
 }
@@ -338,15 +379,15 @@ header('Content-Disposition: filename="' . addslashes(basename($media->file)) . 
 
 if ($generatewatermark) {
 	// generate the watermarked image
-	$imCreateFunc = 'imagecreatefrom'.$type;
-	$im = @$imCreateFunc($serverFilename);
+	$imCreateFunc = 'imagecreatefrom' . $type;
+	$im           = @$imCreateFunc($serverFilename);
 
 	if ($im) {
 		$im = applyWatermark($im);
 
-		$imSendFunc = 'image'.$type;
+		$imSendFunc = 'image' . $type;
 		// save the image, if preferences allow
-		if ((($which=='thumb') && $SAVE_WATERMARK_THUMB) || (($which=='main') && $SAVE_WATERMARK_IMAGE)) {
+		if ((($which == 'thumb') && $SAVE_WATERMARK_THUMB) || (($which == 'main') && $SAVE_WATERMARK_IMAGE)) {
 			// make sure the folder exists
 			WT_File::mkdir(dirname($watermarkfile));
 			// save the image
@@ -361,7 +402,7 @@ if ($generatewatermark) {
 
 	} else {
 		// this image is defective.  log it
-		Log::addMediaLog("Media Firewall error: >" . WT_I18N::translate('This media file is broken and cannot be watermarked') . "< in file >" . $serverFilename . "< memory used: " . memory_get_usage());
+		Log::addMediaLog('Media Firewall error: >' . WT_I18N::translate('This media file is broken and cannot be watermarked') . '< in file >' . $serverFilename . '< memory used: ' . memory_get_usage());
 
 		// set usewatermark to false so image will simply be passed through below
 		$usewatermark = false;
@@ -379,13 +420,13 @@ if ($usewatermark) {
 $filesize = filesize($serverFilename);
 
 // set content-length header, send file
-header("Content-Length: " . $filesize);
+header('Content-Length: ' . $filesize);
 
 // Some servers disable fpassthru() and readfile()
 if (function_exists('readfile')) {
 	readfile($serverFilename);
 } else {
-	$fp=fopen($serverFilename, 'rb');
+	$fp = fopen($serverFilename, 'rb');
 	if (function_exists('fpassthru')) {
 		fpassthru($fp);
 	} else {

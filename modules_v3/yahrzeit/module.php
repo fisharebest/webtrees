@@ -1,6 +1,4 @@
 <?php
-// Classes and libraries for module system
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -25,6 +23,9 @@ use Fisharebest\ExtCalendar\JewishCalendar;
 use Rhumsaa\Uuid\Uuid;
 use WT\Auth;
 
+/**
+ * Class yahrzeit_WT_Module
+ */
 class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 	/** {@inheritdoc} */
 	public function getTitle() {

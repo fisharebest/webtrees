@@ -1,6 +1,4 @@
 <?php
-// Classes and libraries for module system
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -21,6 +19,9 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class descendancy_WT_Module
+ */
 class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	/** {@inheritdoc} */
 	public function getTitle() {
@@ -127,6 +128,12 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			'</div>';
 	}
 
+	/**
+	 * @param WT_Individual $person
+	 * @param integer       $generations
+	 *
+	 * @return string
+	 */
 	public function getPersonLi(WT_Individual $person, $generations = 0) {
 		$icon = $generations > 0 ? 'icon-minus' : 'icon-plus';
 		$lifespan = $person->canShow() ? '(' . $person->getLifeSpan() . ')' : '';
@@ -139,6 +146,13 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		                </li>', $this->getName(), $person->getXref(), $icon, $person->getSexImage(), $person->getFullName(), $lifespan, $person->getHtmlUrl(), '', $spouses);
 	}
 
+	/**
+	 * @param WT_Family     $family
+	 * @param WT_Individual $person
+	 * @param integer       $generations
+	 *
+	 * @return string
+	 */
 	public function getFamilyLi(WT_Family $family, WT_Individual $person, $generations = 0) {
 		$marryear = $family->getMarriageYear();
 		$marr = $marryear ? '<i class="icon-rings"></i>' . $marryear : '';
@@ -152,6 +166,11 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		                </li>', $person->getSexImage(), $person->getFullName(), $marr, $person->getHtmlUrl(), $fam, $kids);
 	}
 
+	/**
+	 * @param string $query
+	 *
+	 * @return string
+	 */
 	public function search($query) {
 		if (strlen($query) < 2) {
 			return '';
@@ -180,6 +199,12 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		}
 	}
 
+	/**
+	 * @param WT_Individual $person
+	 * @param integer       $generations
+	 *
+	 * @return string
+	 */
 	public function loadSpouses(WT_Individual $person, $generations) {
 		$out = '';
 		if ($person && $person->canShow()) {
@@ -200,6 +225,12 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		}
 	}
 
+	/**
+	 * @param WT_Family $family
+	 * @param integer   $generations
+	 *
+	 * @return string
+	 */
 	public function loadChildren(WT_Family $family, $generations) {
 		$out = '';
 		if ($family->canShow()) {

@@ -1,6 +1,4 @@
 <?php
-// Classes and libraries for module system
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -21,6 +19,9 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class family_nav_WT_Module
+ */
 class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 	CONST TTL = "<div class='flyout2'>%s</div>";
@@ -100,10 +101,19 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		return ob_get_clean();
 	}
 
+	/**
+	 * @param $person
+	 *
+	 * @return bool
+	 */
 	private function isPerson($person) {
 		return $person instanceof WT_Individual;
 	}
 
+	/**
+	 * @param WT_Family $family
+	 * @param string    $title
+	 */
 	private function drawFamily(WT_Family $family, $title) {
 		global $controller, $SHOW_PRIVATE_RELATIONSHIPS;
 
@@ -167,6 +177,12 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		}
 	}
 
+	/**
+	 * @param         $person
+	 * @param boolean $showUnknown
+	 *
+	 * @return string
+	 */
 	private function getHTML($person, $showUnknown=false) {
 		if ($this->isPerson($person)) {
 			return sprintf(self::LNK, $person->getHtmlUrl(), $person->getFullName());
@@ -177,7 +193,12 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		}
 	}
 
-	private function getParents($person) {
+	/**
+	 * @param WT_Individual $person
+	 *
+	 * @return string
+	 */
+	private function getParents(WT_Individual $person) {
 		global $SEARCH_SPIDER;
 
 		$father = null;
@@ -185,8 +206,8 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		$html = sprintf(self::TTL, WT_I18N::translate('Parents'));
 		$family = $person->getPrimaryChildFamily();
 		if (!$SEARCH_SPIDER && $person->canShowName() && $family !== null) {
-			$father = $family->getHusband($person);
-			$mother = $family->getWife($person);
+			$father = $family->getHusband();
+			$mother = $family->getWife();
 			$html .= $this->getHTML($father) .
 					 $this->getHTML($mother);
 
@@ -195,9 +216,9 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				$stepParents = '';
 				foreach ($person->getChildStepFamilies() as $family) {
 					if (!$this->isPerson($father)) {
-						$stepParents .= $this->getHTML($family->getHusband($person));
+						$stepParents .= $this->getHTML($family->getHusband());
 					} else {
-						$stepParents .= $this->getHTML($family->getWife($person));
+						$stepParents .= $this->getHTML($family->getWife());
 					}
 				}
 				if($stepParents) {
@@ -209,12 +230,17 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			}
 		}
 		if(!($this->isPerson($father) || $this->isPerson($mother))) {
-			$html .= sprintf(self::MSG,  WT_I18N::translate_c('unknown family', 'unknown'));
+			$html .= sprintf(self::MSG, WT_I18N::translate_c('unknown family', 'unknown'));
 		}
 		return $html;
 	}
 
-	private function getFamily($person) {
+	/**
+	 * @param WT_Individual $person
+	 *
+	 * @return string
+	 */
+	private function getFamily(WT_Individual $person) {
 		global $SEARCH_SPIDER;
 
 		$html = '';

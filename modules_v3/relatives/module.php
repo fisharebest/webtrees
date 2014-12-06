@@ -1,6 +1,4 @@
 <?php
-// Classes and libraries for module system
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -21,6 +19,9 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class relatives_WT_Module
+ */
 class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 	/** {@inheritdoc} */
 	public function getTitle() {
@@ -37,6 +38,13 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		return 20;
 	}
 
+	/**
+	 * @param WT_Date $prev
+	 * @param WT_Date $next
+	 * @param integer $child_number
+	 *
+	 * @return string
+	 */
 	static function ageDifference(WT_Date $prev, WT_Date $next, $child_number=0) {
 		if ($prev->isOK() && $next->isOK()) {
 			$days = $next->MaxJD() - $prev->MinJD();
@@ -64,6 +72,11 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 	}
 
 	// print parents informations
+	/**
+	 * @param WT_Family $family
+	 * @param string    $type
+	 * @param string    $label
+	 */
 	function printFamily(WT_Family $family, $type, $label) {
 		global $controller;
 		global $SHOW_PRIVATE_RELATIONSHIPS;

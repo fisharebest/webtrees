@@ -1,6 +1,4 @@
 <?php
-// Classes and libraries for module system
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -21,6 +19,9 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class personal_facts_WT_Module
+ */
 class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 	/** {@inheritdoc} */
 	public function getTitle() {
@@ -202,6 +203,16 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 		return $facts;
 	}
 
+	/**
+	 * Get the events of children and grandchildren.
+	 *
+	 * @param WT_Individual $person
+	 * @param WT_Family     $family
+	 * @param string        $option
+	 * @param string        $relation
+	 *
+	 * @return WT_Fact[]
+	 */
 	private static function childFacts(WT_Individual $person, WT_Family $family, $option, $relation) {
 		global $controller, $SHOW_RELATIVES_EVENTS;
 
@@ -325,6 +336,14 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 		return $facts;
 	}
 
+	/**
+	 * Get the events of parents and grandparents.
+	 *
+	 * @param WT_Individual $person
+	 * @param integer       $sosa
+	 *
+	 * @return WT_Fact[]
+	 */
 	private static function parentFacts(WT_Individual $person, $sosa) {
 		global $controller, $SHOW_RELATIVES_EVENTS;
 
@@ -416,6 +435,13 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 		return $facts;
 	}
 
+	/**
+	 * Get any historical events.
+	 *
+	 * @param WT_Individual $person
+	 *
+	 * @return WT_Fact[]
+	 */
 	private static function historicalFacts(WT_Individual $person) {
 		global $SHOW_RELATIVES_EVENTS;
 
@@ -445,6 +471,13 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 		return $facts;
 	}
 
+	/**
+	 * Get the events of associates.
+	 *
+	 * @param WT_Individual $person
+	 *
+	 * @return WT_Fact[]
+	 */
 	private static function associateFacts(WT_Individual $person) {
 		$facts = array();
 

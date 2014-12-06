@@ -1,15 +1,14 @@
 {
     "name": "patchwork/utf8",
     "type": "library",
-    "description": "Extensive, portable and performant handling of UTF-8 and grapheme clusters for PHP",
-    "keywords": ["utf8","utf-8","unicode","i18n"],
-    "homepage": "https://github.com/nicolas-grekas/Patchwork-UTF8",
+    "description": "Portable and performant UTF-8, Unicode and Grapheme Clusters for PHP",
+    "keywords": ["utf8","utf-8","unicode","i18n","grapheme"],
+    "homepage": "https://github.com/tchwork/utf8",
     "license": "(Apache-2.0 or GPL-2.0)",
     "authors": [
         {
             "name": "Nicolas Grekas",
-            "email": "p@tchwork.com",
-            "role": "Developer"
+            "email": "p@tchwork.com"
         }
     ],
     "require": {
