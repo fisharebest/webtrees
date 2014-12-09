@@ -278,49 +278,6 @@ function logout_link() {
 }
 
 /**
- * Generate Who is online list.
- *
- * @return string
- */
-function whoisonline() {
-	$NumAnonymous = 0;
-	$loggedusers = array ();
-	$content='';
-	foreach (User::allLoggedIn() as $user) {
-		if (Auth::isAdmin() || $user->getPreference('visibleonline')) {
-			$loggedusers[] = $user;
-		} else {
-			$NumAnonymous++;
-		}
-	}
-	$LoginUsers=count($loggedusers);
-	$content .= '<div class="logged_in_count">';
-	if ($NumAnonymous) {
-		$content .= WT_I18N::plural('%d anonymous logged-in user', '%d anonymous logged-in users', $NumAnonymous, $NumAnonymous);
-		if ($LoginUsers) {
-			$content .=  '&nbsp;|&nbsp;';
-		}
-	}
-	if ($LoginUsers) {
-		$content .= WT_I18N::plural('%d logged-in user', '%d logged-in users', $LoginUsers, $LoginUsers);
-	}
-	$content .= '</div>';
-	$content .= '<div class="logged_in_list">';
-	if (Auth::check()) {
-		foreach ($loggedusers as $user) {
-			$content .= '<div class="logged_in_name">';
-			$content .= WT_Filter::escapeHtml($user->getRealName()) . ' - ' . WT_Filter::escapeHtml($user->getUserName());
-			if (Auth::id() != $user->getUserId() && $user->getPreference('contactmethod') != 'none') {
-				$content .= ' <a class="icon-email" href="#" onclick="return message(\'' . WT_Filter::escapeJs($user->getUserName()) . '\', \'\', \'' . WT_Filter::escapeJs(get_query_url()) . '\');" title="' . WT_I18N::translate('Send a message').'"></a>';
-			}
-			$content .= '</div>';
-		}
-	}
-	$content .= '</div>';
-	return $content;
-}
-
-/**
  * Print a link to allow email/messaging contact with a user
  * Optionally specify a method (used for webmaster/genealogy contacts)
  *
