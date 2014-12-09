@@ -399,7 +399,7 @@ $controller
 					<td>
 						<?php echo WT_I18N::translate('Genealogy contact'), help_link('CONTACT_USER_ID'); ?>
 					</td>
-					<td><select name="CONTACT_USER_ID">
+					<td><select name="CONTACT_USER_ID"><option value=""></option>
 					<?php
 						$CONTACT_USER_ID = $WT_TREE->getPreference('CONTACT_USER_ID');
 						foreach (User::all() as $user) {
@@ -419,7 +419,7 @@ $controller
 					<td>
 						<?php echo WT_I18N::translate('Technical help contact'), help_link('WEBMASTER_USER_ID'); ?>
 					</td>
-					<td><select name="WEBMASTER_USER_ID">
+					<td><select name="WEBMASTER_USER_ID"><option value=""></option>
 					<?php
 						$WEBMASTER_USER_ID = $WT_TREE->getPreference('WEBMASTER_USER_ID');
 						foreach (User::all() as $user) {
