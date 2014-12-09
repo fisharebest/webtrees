@@ -403,10 +403,10 @@ $controller
 					<?php
 						$CONTACT_USER_ID = $WT_TREE->getPreference('CONTACT_USER_ID');
 						foreach (User::all() as $user) {
-							if ($user->getPreference('verified_by_admin')) {
-								echo "<option value=\"" . $user->getUserId() . "\"";
-								if ($CONTACT_USER_ID == $user->getUserId()) {
-									echo " selected=\"selected\"";
+							if (Auth::isMember($WT_TREE, $user)) {
+								echo '<option value="' . $user->getUserId() . '"';
+								if ($CONTACT_USER_ID === $user->getUserId()) {
+									echo ' selected="selected"';
 								}
 								echo '>' . WT_Filter::escapeHtml($user->getRealName()) . ' - ' . WT_Filter::escapeHtml($user->getUserName()) . '</option>';
 							}
@@ -422,12 +422,14 @@ $controller
 					<td><select name="WEBMASTER_USER_ID">
 					<?php
 						$WEBMASTER_USER_ID = $WT_TREE->getPreference('WEBMASTER_USER_ID');
-						foreach (User::allAdmins() as $user) {
-							echo '<option value="' . $user->getUserId() . '"';
-							if ($WEBMASTER_USER_ID == $user->getUserId()) {
-								echo ' selected="selected"';
+						foreach (User::all() as $user) {
+							if (Auth::isMember($WT_TREE, $user)) {
+								echo '<option value="' . $user->getUserId() . '"';
+								if ($WEBMASTER_USER_ID === $user->getUserId()) {
+									echo ' selected="selected"';
+								}
+								echo '>' . WT_Filter::escapeHtml($user->getRealName()) . ' - ' . WT_Filter::escapeHtml($user->getUserName()) . '</option>';
 							}
-							echo '>' . WT_Filter::escapeHtml($user->getRealName()) . ' - ' . WT_Filter::escapeHtml($user->getUserName()) . '</option>';
 						}
 					?>
 					</select>
