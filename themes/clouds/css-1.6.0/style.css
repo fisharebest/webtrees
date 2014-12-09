@@ -120,85 +120,81 @@ td {
 	padding: 0;
 }
 
+#main-menu ul {
+	padding: 0;
+	margin: 0;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	list-style-type: none;
+	position: absolute;
+	visibility: hidden;
+	opacity: 0;
+	background: #fff;
+}
+
 #main-menu li {
+	display: block;
 	position: relative;
 	float: left;
 	list-style: none;
+	width: 100%;
 }
 
 #main-menu li a {
 	display: block;
-	font-size: 14px;
-	padding: 5px 0 5px 10px;
 }
 
-[dir=rtl] #main-menu li {
-	float: right;
-}
-
-[dir=rtl] #main-menu li a {
-	padding: 5px 10px 5px 0;
-}
-
-/* Subnavigation */
-#main-menu ul {
+#main-menu li > ul {
+	display: block;
 	position: absolute;
-	top: 22px;
+	top: 0;
+	white-space: no wrap;
+	left: 100%;
+	right: auto;
+}
+
+#main-menu > li > a {
+	height: 37px;
+	width: 27px;
+}
+
+#main-menu > li > ul {
 	left: 0;
 	right: auto;
-	background: #fff;
-	border: 1px solid #ccc;
-	display: none;
+	top: 22px;
 }
 
-#main-menu ul li {
+#main-menu a {
+	text-decoration: none;
+	padding: 0 10px;
+	margin: 0;
 	white-space: nowrap;
 }
 
-#main-menu ul li a {
+#main-menu ul li:hover a,
+#main-menu li:hover li a {
+	background: none;
+	border: 0;
+}
+
+#main-menu li:hover > ul {
+	visibility: visible;
+	opacity: 1;
+}
+
+/* First row submenu style*/
+#main-menu > li > ul > li:first-child {
+	text-indent: 0;
+	min-width: 100px;
+	width: 100%;
+	background: none;
+	font-weight: bold;
+	white-space: nowrap;
 	font-size: 12px;
-	padding: 5px;
-	text-align: left;
-}
-
-[dir=rtl] #main-menu ul {
-	right: 0;
-	left: auto;
-	text-align: right;
-}
-
-[dir=rtl] #main-menu ul li a {
-	text-align: right;
-	padding-right: 30px;
-}
-
-/* Submenu horizontal */
-#main-menu #menu-chart li ul,
-#main-menu #menu-obje li ul {
-	display: none;
-}
-
-/* Set up hover layout and style */
-#main-menu li:hover ul {
-	display: block;
-}
-
-#main-menu li:hover li {
-	float: none;
-}
-
-/* fix second level submenus */
-#main-menu #menu-chart li:hover ul,
-#main-menu #menu-obje li:hover ul {
-	display: block;
-	margin-left: 100%;
-	margin-top: -35px;
-	position: absolute;
-}
-
-[dir=rtl] #main-menu ul li:hover ul {
-	margin-left: auto;
-	margin-right: 100%;
+	text-align: center;
+	height: 22px;
+	line-height: 1.5;
+	border-bottom: solid #ddd 1px;
 }
 
 /* Mainmenu Icons*/
@@ -211,11 +207,6 @@ td {
 	margin: 5px 0 0 10px;
 }
 
-[dir=rtl] #main-menu > li {
-	margin: 5px 10px 0 0;
-	left: auto;
-}
-
 /* Submenu Icons */
 #main-menu li ul li {
 	background-image: url(images/sprites-sub-menu.png);
@@ -226,29 +217,34 @@ td {
 	text-indent: 22px;
 }
 
-[dir=rtl] #main-menu li ul li {
-	text-indent: 0;
+[dir=rtl] #main-menu > li {
+	margin: 4px 16px 0 0;
 }
 
-/* Delete tag from mainmenu icons */
-#main-menu > li > a {
-	color: #2a2b2d;
-	height: 17px;
-	line-height: 60px;
-	overflow: hidden;
-	width: 17px;
+[dir=rtl] #main-menu li {
+	float: right;
 }
 
-#main-menu > li > ul > li:first-child {
-	background: none;
-	color: #333;
-	font-weight: 700;
+[dir=rtl] #main-menu li:hover > ul {
+	right: 100%;
+	left: auto;
+}
+
+[dir=rtl] #main-menu > li:hover > ul {
+	left: auto;
+	right: 0;
+}
+
+[dir=rtl] #main-menu li li {
+	text-align: right;
+}
+
+[dir=rtl] #main-menu li li a {
+	display: block;
+}
+
+[dir=rtl] #main-menu > li > ul > li:first-child {
 	text-align: center;
-	text-indent: 0;
-	padding: 5px;
-	line-height: 1;
-	border-bottom: 1px solid #ddd;
-	height: auto;
 }
 
 /********************Menu Top Row Icons **********************/

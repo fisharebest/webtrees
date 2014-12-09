@@ -1,6 +1,4 @@
 <?php
-// Classes and libraries for module system
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -21,6 +19,9 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class notes_WT_Module
+ */
 class notes_WT_Module extends WT_Module implements WT_Module_Tab {
 	private $facts;
 
@@ -51,7 +52,7 @@ class notes_WT_Module extends WT_Module implements WT_Module_Tab {
 
 	/** {@inheritdoc} */
 	public function getTabContent() {
-		global $SHOW_LEVEL2_NOTES, $NAV_NOTES, $controller;
+		global $SHOW_LEVEL2_NOTES, $controller;
 
 		ob_start();
 		echo '<table class="facts_table">';

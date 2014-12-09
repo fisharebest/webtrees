@@ -1,6 +1,4 @@
 <?php
-// Classes and libraries for module system
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -20,6 +18,9 @@
 
 use WT\Auth;
 
+/**
+ * Class sitemap_WT_Module
+ */
 class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 	const RECORDS_PER_VOLUME = 500;    // Keep sitemap files small, for memory, CPU and max_allowed_packet limits.
 	const CACHE_LIFE = 1209600; // Two weeks
@@ -49,6 +50,9 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 		}
 	}
 
+	/**
+	 * @param string $file
+	 */
 	private function generate($file) {
 		if ($file == 'sitemap.xml') {
 			$this->generateIndex();
@@ -59,8 +63,10 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 		}
 	}
 
-	// The index file contains references to all the other files.
-	// These files are the same for visitors/users/admins.
+	/**
+	 * The index file contains references to all the other files.
+	 * These files are the same for visitors/users/admins.
+	 */
 	private function generateIndex() {
 		// Check the cache
 		$timestamp = $this->getSetting('sitemap.timestamp');
@@ -111,8 +117,14 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 		echo $data;
 	}
 
-	// A separate file for each family tree and each record type.
-	// These files depend on access levels, so only cache for visitors.
+	/**
+	 * A separate file for each family tree and each record type.
+	 * These files depend on access levels, so only cache for visitors.
+	 *
+	 * @param integer $ged_id
+	 * @param string $rec_type
+	 * @param string $volume
+	 */
 	private function generateFile($ged_id, $rec_type, $volume) {
 		// Check the cache
 		$timestamp = $this->getSetting('sitemap-' . $ged_id . '-' . $rec_type . '-' . $volume . '.timestamp');
@@ -211,6 +223,9 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 		echo $data;
 	}
 
+	/**
+	 * Edit the configuration
+	 */
 	private function admin() {
 		$controller = new WT_Controller_Page();
 		$controller

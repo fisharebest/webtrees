@@ -68,15 +68,6 @@ class FunctionsPrintTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * Test that function whoisonline() exists in the global namespace.
-	 *
-	 * @return void
-	 */
-	public function testFunctionWhoisonlineExists() {
-		$this->assertEquals(function_exists('\\whoisonline'), true);
-	}
-
-	/**
 	 * Test that function user_contact_link() exists in the global namespace.
 	 *
 	 * @return void

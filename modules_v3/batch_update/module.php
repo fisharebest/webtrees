@@ -1,6 +1,4 @@
 <?php
-// Classes and libraries for module system
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 Greg Roach
 //
@@ -20,6 +18,9 @@
 
 use WT\Auth;
 
+/**
+ * Class batch_update_WT_Module
+ */
 class batch_update_WT_Module extends WT_Module implements WT_Module_Config{
 	/** {@inheritdoc} */
 	public function getTitle() {

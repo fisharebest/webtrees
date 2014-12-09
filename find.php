@@ -39,23 +39,6 @@ $subclick  = WT_Filter::get('subclick');
 $choose    = WT_Filter::get('choose', '[a-zA-Z0-9_]+', '0all');
 $qs        = WT_Filter::get('tags');
 
-// Retrives the currently selected tags in the opener window (reading curTags value of the query string)
-// $preselDefault will be set to the array of DEFAULT preselected tags
-// $preselCustom will be set to the array of CUSTOM preselected tags
-function getPreselectedTags(&$preselDefault, &$preselCustom) {
-	global $qs;
-	$all = strlen($qs) ? explode(',', strtoupper($qs)) : array();
-	$preselDefault = array();
-	$preselCustom = array();
-	foreach ($all as $one) {
-		if (WT_Gedcom_Tag::isTag($one)) {
-			$preselDefault[] = $one;
-		} else {
-			$preselCustom[] = $one;
-		}
-	}
-}
-
 if ($subclick=='all') {
 	$all=true;
 }
@@ -321,7 +304,18 @@ if ($type == "facts") {
 	<input type="hidden" name="callback" value="', $callback, '">
 	<table class="list_table width100" border="0">
 	<tr><td class="list_label" style="padding: 5px; font-weight: normal; white-space: normal;">' ;
-	getPreselectedTags($preselDefault, $preselCustom);
+
+	$all = strlen($qs) ? explode(',', strtoupper($qs)) : array();
+	$preselDefault = array();
+	$preselCustom = array();
+	foreach ($all as $one) {
+		if (WT_Gedcom_Tag::isTag($one)) {
+			$preselDefault[] = $one;
+		} else {
+			$preselCustom[] = $one;
+		}
+	}
+
 	echo '<script>'; ?>
 	// A class representing a default tag
 	function DefaultTag(id, name, selected) {
