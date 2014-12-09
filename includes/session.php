@@ -597,8 +597,8 @@ if (substr(WT_SCRIPT_NAME, 0, 5) == 'admin' || WT_SCRIPT_NAME == 'module.php' &&
 			$THEME_DIR = '';
 		}
 		// Last theme used?
-		if (!$THEME_DIR && in_array($WT_SESSION->theme, get_theme_names())) {
-			$THEME_DIR = $WT_SESSION->theme;
+		if (!$THEME_DIR && in_array($WT_SESSION->theme_id, get_theme_names())) {
+			$THEME_DIR = $WT_SESSION->theme_id;
 		}
 	} else {
 		$THEME_DIR = '';
@@ -625,7 +625,7 @@ if (substr(WT_SCRIPT_NAME, 0, 5) == 'admin' || WT_SCRIPT_NAME == 'module.php' &&
 	define('WT_THEME_DIR', WT_THEMES_DIR . $THEME_DIR . '/');
 	// Remember this setting
 	if (WT_THEME_DIR != WT_THEMES_DIR . '_administration/') {
-		$WT_SESSION->theme = $THEME_DIR;
+		$WT_SESSION->theme_id = $THEME_DIR;
 	}
 }
 // If we have specified a CDN, use it for static theme resources

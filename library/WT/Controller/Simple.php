@@ -32,7 +32,7 @@ class WT_Controller_Simple extends WT_Controller_Page {
 	/**
 	 * Simple (i.e. popup) windows are deprecated.
 	 *
-	 * @return WT_Controller_Simple
+	 * @return $this
 	 */
 	public function pageHeader() {
 		global $view;
@@ -48,7 +48,7 @@ class WT_Controller_Simple extends WT_Controller_Page {
 	 *
 	 * @param boolean $condition
 	 *
-	 * @return WT_Controller_Simple
+	 * @return $this
 	 */
 	public function restrictAccess($condition) {
 		if ($condition !== true) {

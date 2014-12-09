@@ -1020,11 +1020,11 @@ class WT_GedcomRecord {
 	 *
 	 * @param string $tag
 	 *
-	 * @return null|WT_Fact
+	 * @return WT_Fact|null
 	 */
 	public function getFirstFact($tag) {
 		foreach ($this->getFacts() as $fact) {
-			if ($fact->getTag() == $tag) {
+			if ($fact->getTag() === $tag) {
 				return $fact;
 			}
 		}

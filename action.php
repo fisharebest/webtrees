@@ -244,7 +244,7 @@ case 'theme':
 	// Change the current theme
 	$theme = WT_Filter::post('theme');
 	if (WT_Site::getPreference('ALLOW_USER_THEMES') && in_array($theme, get_theme_names())) {
-		$WT_SESSION->theme = $theme;
+		$WT_SESSION->theme_id = $theme;
 		// Remember our selection
 		Auth::user()->setPreference('theme', $theme);
 	} else {
