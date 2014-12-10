@@ -59,7 +59,7 @@ if (WT_USE_GOOGLE_API) {
 	define('WT_JQUERY_URL',        WT_STATIC_URL . 'js/jquery-1.11.1.js');
 	define('WT_JQUERYUI_URL',      WT_STATIC_URL . 'js/jquery-ui-1.10.4.js');
 }
-define('WT_JQUERY_COLORBOX_URL',   WT_STATIC_URL . 'js/jquery.colorbox-1.5.9.js');
+define('WT_JQUERY_COLORBOX_URL',   WT_STATIC_URL . 'js/jquery.colorbox-1.5.14.js');
 define('WT_JQUERY_COOKIE_URL',     WT_STATIC_URL . 'js/jquery.cookie-1.4.1.js');
 define('WT_JQUERY_DATATABLES_URL', WT_STATIC_URL . 'js/jquery.datatables-1.10.3.js');
 define('WT_JQUERY_JEDITABLE_URL',  WT_STATIC_URL . 'js/jquery.jeditable-1.7.3.js');
@@ -597,8 +597,8 @@ if (substr(WT_SCRIPT_NAME, 0, 5) == 'admin' || WT_SCRIPT_NAME == 'module.php' &&
 			$THEME_DIR = '';
 		}
 		// Last theme used?
-		if (!$THEME_DIR && in_array($WT_SESSION->theme, get_theme_names())) {
-			$THEME_DIR = $WT_SESSION->theme;
+		if (!$THEME_DIR && in_array($WT_SESSION->theme_id, get_theme_names())) {
+			$THEME_DIR = $WT_SESSION->theme_id;
 		}
 	} else {
 		$THEME_DIR = '';
@@ -625,7 +625,7 @@ if (substr(WT_SCRIPT_NAME, 0, 5) == 'admin' || WT_SCRIPT_NAME == 'module.php' &&
 	define('WT_THEME_DIR', WT_THEMES_DIR . $THEME_DIR . '/');
 	// Remember this setting
 	if (WT_THEME_DIR != WT_THEMES_DIR . '_administration/') {
-		$WT_SESSION->theme = $THEME_DIR;
+		$WT_SESSION->theme_id = $THEME_DIR;
 	}
 }
 // If we have specified a CDN, use it for static theme resources

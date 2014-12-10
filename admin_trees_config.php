@@ -399,14 +399,14 @@ $controller
 					<td>
 						<?php echo WT_I18N::translate('Genealogy contact'), help_link('CONTACT_USER_ID'); ?>
 					</td>
-					<td><select name="CONTACT_USER_ID">
+					<td><select name="CONTACT_USER_ID"><option value=""></option>
 					<?php
 						$CONTACT_USER_ID = $WT_TREE->getPreference('CONTACT_USER_ID');
 						foreach (User::all() as $user) {
-							if ($user->getPreference('verified_by_admin')) {
-								echo "<option value=\"" . $user->getUserId() . "\"";
-								if ($CONTACT_USER_ID == $user->getUserId()) {
-									echo " selected=\"selected\"";
+							if (Auth::isMember($WT_TREE, $user)) {
+								echo '<option value="' . $user->getUserId() . '"';
+								if ($CONTACT_USER_ID === $user->getUserId()) {
+									echo ' selected="selected"';
 								}
 								echo '>' . WT_Filter::escapeHtml($user->getRealName()) . ' - ' . WT_Filter::escapeHtml($user->getUserName()) . '</option>';
 							}
@@ -419,15 +419,17 @@ $controller
 					<td>
 						<?php echo WT_I18N::translate('Technical help contact'), help_link('WEBMASTER_USER_ID'); ?>
 					</td>
-					<td><select name="WEBMASTER_USER_ID">
+					<td><select name="WEBMASTER_USER_ID"><option value=""></option>
 					<?php
 						$WEBMASTER_USER_ID = $WT_TREE->getPreference('WEBMASTER_USER_ID');
-						foreach (User::allAdmins() as $user) {
-							echo '<option value="' . $user->getUserId() . '"';
-							if ($WEBMASTER_USER_ID == $user->getUserId()) {
-								echo ' selected="selected"';
+						foreach (User::all() as $user) {
+							if (Auth::isMember($WT_TREE, $user)) {
+								echo '<option value="' . $user->getUserId() . '"';
+								if ($WEBMASTER_USER_ID === $user->getUserId()) {
+									echo ' selected="selected"';
+								}
+								echo '>' . WT_Filter::escapeHtml($user->getRealName()) . ' - ' . WT_Filter::escapeHtml($user->getUserName()) . '</option>';
 							}
-							echo '>' . WT_Filter::escapeHtml($user->getRealName()) . ' - ' . WT_Filter::escapeHtml($user->getUserName()) . '</option>';
 						}
 					?>
 					</select>
@@ -477,13 +479,13 @@ $controller
 						<select name="THEME_DIR">
 							<?php
 								echo '<option value="">', WT_Filter::escapeHtml(WT_I18N::translate('<default theme>')), '</option>';
-								$current_themedir=$WT_TREE->getPreference('THEME_DIR');
-								foreach (get_theme_names() as $themename=>$themedir) {
-									echo '<option value="', $themedir, '"';
-									if ($themedir==$current_themedir) {
+								$current_theme_id = $WT_TREE->getPreference('THEME_DIR');
+								foreach (get_theme_names() as $theme_name => $theme_id) {
+									echo '<option value="', $theme_id, '"';
+									if ($theme_id === $current_theme_id) {
 										echo ' selected="selected"';
 									}
-									echo '>', $themename, '</option>';
+									echo '>', $theme_name, '</option>';
 								}
 							?>
 						</select>

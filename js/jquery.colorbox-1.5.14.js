@@ -1,8 +1,7 @@
 /*!
-	Colorbox v1.5.9 - 2014-04-25
-	jQuery lightbox and modal window plugin
-	(c) 2014 Jack Moore - http://www.jacklmoore.com/colorbox
-	license: http://www.opensource.org/licenses/mit-license.php
+	Colorbox 1.5.14
+	license: MIT
+	http://www.jacklmoore.com/colorbox
 */
 (function ($, document, window) {
 	var
@@ -88,7 +87,6 @@
 			return this.title;
 		}
 	},
-
 
 	// Abstracting the HTML and event identifiers for easy rebranding
 	colorbox = 'colorbox',
@@ -242,7 +240,7 @@
 	function getRelated(rel) {
 		index = 0;
 		
-		if (rel && rel !== false) {
+		if (rel && rel !== false && rel !== 'nofollow') {
 			$related = $('.' + boxElement).filter(function () {
 				var options = $.data(this, colorbox);
 				var settings = new Settings(this, options);
@@ -353,7 +351,7 @@
 
 		if (!closing) {
 
-			options = $(element).data('colorbox');
+			options = $(element).data(colorbox);
 
 			settings = new Settings(element, options);
 			
@@ -416,8 +414,9 @@
 				}
 			}
 
+			var opacity = parseFloat(settings.get('opacity'));
 			$overlay.css({
-				opacity: parseFloat(settings.get('opacity')) || '',
+				opacity: opacity === opacity ? opacity : '',
 				cursor: settings.get('overlayClose') ? 'pointer' : '',
 				visibility: 'visible'
 			}).show();
@@ -435,7 +434,7 @@
 	// Colorbox's markup needs to be added to the DOM prior to being called
 	// so that the browser will go ahead and load the CSS background images.
 	function appendHTML() {
-		if (!$box && document.body) {
+		if (!$box) {
 			init = false;
 			$window = $(window);
 			$box = $tag(div).attr({
@@ -479,7 +478,8 @@
 			$loadingBay = $tag(div, false, 'position:absolute; width:9999px; visibility:hidden; display:none; max-width:none;');
 			
 			$groupControls = $next.add($prev).add($current).add($slideshow);
-
+		}
+		if (document.body && !$box.parent().length) {
 			$(document.body).append($overlay, $box.append($wrap, $loadingBay));
 		}
 	}
@@ -549,7 +549,7 @@
 	}
 
 	// Don't do anything if Colorbox already exists.
-	if ($.colorbox) {
+	if ($[colorbox]) {
 		return;
 	}
 
@@ -697,7 +697,7 @@
 					}, 1);
 				}
 
-				if (loadedCallback) {
+				if ($.isFunction(loadedCallback)) {
 					loadedCallback();
 				}
 			},
@@ -996,16 +996,12 @@
 					if (settings.h) {
 						photo.style.marginTop = Math.max(settings.mh - photo.height, 0) / 2 + 'px';
 					}
-					
-					if ($related[1] && (settings.get('loop') || $related[index + 1])) {
-						photo.style.cursor = 'pointer';
-						photo.onclick = function () {
-							publicMethod.next();
-						};
-					}
 
 					photo.style.width = photo.width + 'px';
 					photo.style.height = photo.height + 'px';
+					var vertpadding = (settings.h - photo.height) / 2;
+					var horizpadding = (settings.w - photo.width) / 2;
+					photo.style.padding = vertpadding + 'px ' + horizpadding + 'px';
 					prep(photo);
 				}, 1);
 			});
@@ -1067,8 +1063,8 @@
 		if (!$box) { return; }
 
 		$box.stop();
-		$.colorbox.close();
-		$box.stop().remove();
+		$[colorbox].close();
+		$box.stop(false, true).remove();
 		$overlay.remove();
 		closing = false;
 		$box = null;
@@ -1076,7 +1072,7 @@
 			.removeData(colorbox)
 			.removeClass(boxElement);
 
-		$(document).unbind('click.'+prefix);
+		$(document).unbind('click.'+prefix).unbind('keydown.'+prefix);
 	};
 
 	// A method for fetching the current element Colorbox is referencing.
