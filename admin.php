@@ -644,5 +644,24 @@ function old_paths() {
 		WT_ROOT.'themes/xenea/css-1.5.3',
 		// Removed in 1.6.1
 		WT_ROOT.'includes/authentication.php',
+		// Removed in 1.6.2
+		WT_ROOT.'js/jquery.colorbox-1.5.9.js',
+		WT_ROOT.'js/jquery-ui-1.10.4.js',
+		WT_ROOT.'themes/_administration/css-1.6.0',
+		WT_ROOT.'themes/_administration/jquery-ui-1.10.3',
+		WT_ROOT.'themes/clouds/css-1.6.0',
+		WT_ROOT.'themes/clouds/jquery-ui-1.10.3',
+		WT_ROOT.'themes/colors/css-1.6.0',
+		WT_ROOT.'themes/colors/jquery-ui-1.10.3',
+		WT_ROOT.'themes/fab/css-1.6.0',
+		WT_ROOT.'themes/fab/jquery-ui-1.10.3',
+		WT_ROOT.'themes/minimal/css-1.6.0',
+		WT_ROOT.'themes/minimal/jquery-ui-1.10.3',
+		WT_ROOT.'themes/webtrees/css-1.6.0',
+		WT_ROOT.'themes/webtrees/jquery-ui-1.10.3',
+		WT_ROOT.'themes/xenea/css-1.6.0',
+		WT_ROOT.'themes/xenea/jquery-ui-1.10.3',
+		WT_ROOT.'themes/_administration/css-1.6.0',
+		WT_ROOT.'themes/_administration/jquery-ui-1.10.3',
 	);
 }

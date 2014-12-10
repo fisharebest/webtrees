@@ -30,7 +30,7 @@ if (!defined('WT_WEBTREES')) {
 $theme_name = "minimal"; /* I18N: Name of a theme. */ WT_I18N::translate('minimal');
 
 // A version number in the path prevents browser-cache problems during upgrade
-define('WT_CSS_URL', WT_THEME_URL . 'css-1.6.0/');
+define('WT_CSS_URL', WT_THEME_URL . 'css-1.6.2/');
 
 $headerfile = WT_THEME_DIR.'header.php';
 $footerfile = WT_THEME_DIR.'footer.php';
