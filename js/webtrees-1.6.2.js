@@ -1115,8 +1115,8 @@ function valid_lati_long(field, pos, neg) {
 	txt=txt.replace(/-/g, neg); // -0.5698 ==> W0.5698
 	txt=txt.replace(/,/g, '.'); // 0,5698 ==> 0.5698
 	// 0°34'11 ==> 0:34:11
-	txt=txt.replace(/\uB0/g, ':'); // °
-	txt=txt.replace(/\u27/g, ':'); // '
+	txt=txt.replace(/\u00b0/g, ':'); // °
+	txt=txt.replace(/\u0027/g, ':'); // '
 	// 0:34:11.2W ==> W0.5698
 	txt=txt.replace(/^([0-9]+):([0-9]+):([0-9.]+)(.*)/g, function($0, $1, $2, $3, $4) { var n=parseFloat($1); n+=($2/60); n+=($3/3600); n=Math.round(n*1E4)/1E4; return $4+n; });
 	// 0:34W ==> W0.5667

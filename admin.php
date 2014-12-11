@@ -647,6 +647,7 @@ function old_paths() {
 		// Removed in 1.6.2
 		WT_ROOT.'js/jquery.colorbox-1.5.9.js',
 		WT_ROOT.'js/jquery-ui-1.10.4.js',
+		WT_ROOT.'js/webtrees-1.6.0.js',
 		WT_ROOT.'themes/_administration/css-1.6.0',
 		WT_ROOT.'themes/_administration/jquery-ui-1.10.3',
 		WT_ROOT.'themes/clouds/css-1.6.0',
