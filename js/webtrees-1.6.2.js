@@ -547,11 +547,11 @@ function addmedia_links(field, iid, iname) {
 }
 
 function valid_date(datefield) {
-	var months        = new Array("JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC");
-	var hijri_months  = new Array("MUHAR","SAFAR","RABIA","RABIT","JUMAA","JUMAT","RAJAB","SHAAB","RAMAD","SHAWW","DHUAQ","DHUAH");
-	var hebrew_months = new Array("TSH","CSH","KSL","TVT","SHV","ADR","ADS","NSN","IYR","SVN","TMZ","AAV","ELL");
-	var french_months = new Array("VEND","BRUM","FRIM","NIVO","PLUV","VENT","GERM","FLOR","PRAI","MESS","THER","FRUC","COMP");
-	var jalali_months = new Array("FARVA","ORDIB","KHORD","TIR","MORDA","SHAHR","MEHR","ABAN","AZAR","DEY","BAHMA","ESFAN");
+	var months        = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
+	var hijri_months  = ["MUHAR","SAFAR","RABIA","RABIT","JUMAA","JUMAT","RAJAB","SHAAB","RAMAD","SHAWW","DHUAQ","DHUAH"];
+	var hebrew_months = ["TSH","CSH","KSL","TVT","SHV","ADR","ADS","NSN","IYR","SVN","TMZ","AAV","ELL"];
+	var french_months = ["VEND","BRUM","FRIM","NIVO","PLUV","VENT","GERM","FLOR","PRAI","MESS","THER","FRUC","COMP"];
+	var jalali_months = ["FARVA","ORDIB","KHORD","TIR","MORDA","SHAHR","MEHR","ABAN","AZAR","DEY","BAHMA","ESFAN"];
 
 	var datestr=datefield.value;
 	// if a date has a date phrase marked by () this has to be excluded from altering
@@ -862,38 +862,39 @@ function cal_toggleDate(dateDivId, dateFieldId) {
 }
 
 function cal_generateSelectorContent(dateFieldId, dateDivId, date) {
+	var i, j;
 	var content = '<table border="1"><tr>';
-	content += '<td><select name="'+dateFieldId+'_daySelect" id="'+dateFieldId+'_daySelect" onchange="return cal_updateCalendar(\''+dateFieldId+'\', \''+dateDivId+'\');">';
-	for (i=1; i<32; i++) {
-		content += '<option value="'+i+'"';
+	content += '<td><select name="' + dateFieldId + '_daySelect" id="' + dateFieldId + '_daySelect" onchange="return cal_updateCalendar(\'' + dateFieldId + '\', \'' + dateDivId + '\');">';
+	for (i = 1; i < 32; i++) {
+		content += '<option value="' + i + '"';
 		if (date.getDate() === i) {
 			content += ' selected="selected"';
 		}
-		content += '>'+i+'</option>';
+		content += '>' + i + '</option>';
 	}
 	content += '</select></td>';
-	content += '<td><select name="'+dateFieldId+'_monSelect" id="'+dateFieldId+'_monSelect" onchange="return cal_updateCalendar(\''+dateFieldId+'\', \''+dateDivId+'\');">';
-	for (i=1; i<13; i++) {
-		content += '<option value="'+i+'"';
+	content += '<td><select name="' + dateFieldId + '_monSelect" id="' + dateFieldId + '_monSelect" onchange="return cal_updateCalendar(\'' + dateFieldId + '\', \'' + dateDivId + '\');">';
+	for (i = 1; i < 13; i++) {
+		content += '<option value="' + i + '"';
 		if (date.getMonth() + 1 === i) {
 			content += ' selected="selected"';
 		}
 		content += '>'+monthLabels[i]+'</option>';
 	}
 	content += '</select></td>';
-	content += '<td><input type="text" name="'+dateFieldId+'_yearInput" id="'+dateFieldId+'_yearInput" size="5" value="'+date.getFullYear()+'" onchange="return cal_updateCalendar(\''+dateFieldId+'\', \''+dateDivId+'\');" /></td></tr>';
+	content += '<td><input type="text" name="' + dateFieldId + '_yearInput" id="' + dateFieldId + '_yearInput" size="5" value="' + date.getFullYear() + '" onchange="return cal_updateCalendar(\'' + dateFieldId + '\', \'' + dateDivId + '\');" /></td></tr>';
 	content += '<tr><td colspan="3">';
 	content += '<table width="100%">';
 	content += '<tr>';
 	j = weekStart;
-	for (i=0; i<7; i++) {
+	for (i = 0; i < 7; i++) {
 		content += '<td ';
 		content += 'class="descriptionbox"';
 		content += '>';
 		content += daysOfWeek[j];
 		content += '</td>';
 		j++;
-		if (j>6) {
+		if (j > 6) {
 			j = 0;
 		}
 	}
@@ -902,13 +903,13 @@ function cal_generateSelectorContent(dateFieldId, dateDivId, date) {
 	var tdate = new Date(date.getFullYear(), date.getMonth(), 1);
 	var day = tdate.getDay();
 	day = day - weekStart;
-	var daymilli = (1000*60*60*24);
-	tdate = tdate.getTime() - (day*daymilli) + (daymilli/2);
+	var daymilli = 1000 * 60 * 60 * 24;
+	tdate = tdate.getTime() - (day * daymilli) + (daymilli / 2);
 	tdate = new Date(tdate);
 
-	for (j=0; j<6; j++) {
+	for (j = 0; j < 6; j++) {
 		content += '<tr>';
-		for (i=0; i<7; i++) {
+		for (i = 0; i < 7; i++) {
 			content += '<td ';
 			if (tdate.getMonth() === date.getMonth()) {
 				if (tdate.getDate() === date.getDate()) {
@@ -919,7 +920,7 @@ function cal_generateSelectorContent(dateFieldId, dateDivId, date) {
 			} else {
 				content += 'style="background-color:#EAEAEA; border: solid #AAAAAA 1px;"';
 			}
-			content += '><a href="#" onclick="return cal_dateClicked(\''+dateFieldId+'\', \''+dateDivId+'\', '+tdate.getFullYear()+', '+tdate.getMonth()+', '+tdate.getDate()+');">';
+			content += '><a href="#" onclick="return cal_dateClicked(\'' + dateFieldId + '\', \'' + dateDivId + '\', ' + tdate.getFullYear() + ', ' + tdate.getMonth() + ', ' + tdate.getDate() + ');">';
 			content += tdate.getDate();
 			content += '</a></td>';
 			var datemilli = tdate.getTime() + daymilli;
@@ -939,10 +940,10 @@ function cal_setDateField(dateFieldId, year, month, day) {
 	if (!dateField) {
 		return false;
 	}
-	if (day<10) {
+	if (day < 10) {
 		day = "0" + day;
 	}
-	dateField.value = day+' '+monthShort[month+1]+' '+year;
+	dateField.value = day + ' ' + monthShort[month + 1] + ' ' + year;
 	return false;
 }
 
@@ -1058,8 +1059,7 @@ function paste_char(value) {
 	if (document.selection) {
 		// IE
 		pastefield.focus();
-		sel = document.selection.createRange();
-		sel.text = value;
+		document.selection.createRange().text = value;
 	} else if (pastefield.selectionStart || pastefield.selectionStart === 0) {
 		// Mozilla/Chrome/Safari
 		pastefield.value =
