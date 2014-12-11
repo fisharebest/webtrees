@@ -36,12 +36,6 @@ if (!Auth::id() || !Auth::user()->getPreference('editaccount')) {
 	exit;
 }
 
-// Valid values for form variables
-$ALL_THEMES_DIRS=array();
-foreach (get_theme_names() as $themename=>$themedir) {
-	$ALL_THEME_DIRS[]=$themedir;
-}
-
 // Extract form variables
 $form_action         = WT_Filter::post('form_action');
 $form_username       = WT_Filter::post('form_username');
@@ -50,7 +44,7 @@ $form_pass1          = WT_Filter::post('form_pass1', WT_REGEX_PASSWORD);
 $form_pass2          = WT_Filter::post('form_pass2', WT_REGEX_PASSWORD);
 $form_email          = WT_Filter::postEmail('form_email');
 $form_rootid         = WT_Filter::post('form_rootid', WT_REGEX_XREF);
-$form_theme          = WT_Filter::post('form_theme', implode('|', $ALL_THEME_DIRS));
+$form_theme          = WT_Filter::post('form_theme', implode('|', get_theme_names()));
 $form_language       = WT_Filter::post('form_language', implode('|', array_keys(WT_I18N::installed_languages())), WT_LOCALE);
 $form_contact_method = WT_Filter::post('form_contact_method');
 $form_visible_online = WT_Filter::postBool('form_visible_online');
@@ -167,12 +161,12 @@ echo '<div id="edituser-page">
 		<div class="value">
 			<select name="form_theme">
 			<option value="">', WT_Filter::escapeHtml(/* I18N: default option in list of themes */ WT_I18N::translate('<default theme>')), '</option>';
-			foreach (get_theme_names() as $themename=>$themedir) {
-				echo '<option value="', $themedir, '"';
-				if ($themedir == Auth::user()->getPreference('theme')) {
+			foreach (get_theme_names() as $theme_name => $theme_id) {
+				echo '<option value="', $theme_id, '"';
+				if ($theme_id === Auth::user()->getPreference('theme')) {
 					echo ' selected="selected"';
 				}
-				echo '>', $themename, '</option>';
+				echo '>', $theme_name, '</option>';
 			}
 			echo '</select>
 		</div>

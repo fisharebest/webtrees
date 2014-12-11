@@ -54,18 +54,18 @@ define('WT_STATIC_URL', ''); // For example, http://my.cdn.com/webtrees-static-1
 define ('WT_USE_GOOGLE_API', false);
 if (WT_USE_GOOGLE_API) {
 	define('WT_JQUERY_URL',        'https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js');
-	define('WT_JQUERYUI_URL',      'https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js');
+	define('WT_JQUERYUI_URL',      'https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js');
 } else {
 	define('WT_JQUERY_URL',        WT_STATIC_URL . 'js/jquery-1.11.1.js');
-	define('WT_JQUERYUI_URL',      WT_STATIC_URL . 'js/jquery-ui-1.10.4.js');
+	define('WT_JQUERYUI_URL',      WT_STATIC_URL . 'js/jquery-ui-1.11.2.js');
 }
-define('WT_JQUERY_COLORBOX_URL',   WT_STATIC_URL . 'js/jquery.colorbox-1.5.9.js');
+define('WT_JQUERY_COLORBOX_URL',   WT_STATIC_URL . 'js/jquery.colorbox-1.5.14.js');
 define('WT_JQUERY_COOKIE_URL',     WT_STATIC_URL . 'js/jquery.cookie-1.4.1.js');
 define('WT_JQUERY_DATATABLES_URL', WT_STATIC_URL . 'js/jquery.datatables-1.10.3.js');
 define('WT_JQUERY_JEDITABLE_URL',  WT_STATIC_URL . 'js/jquery.jeditable-1.7.3.js');
 define('WT_JQUERY_WHEELZOOM_URL',  WT_STATIC_URL . 'js/jquery.wheelzoom-2.0.0.js');
 define('WT_MODERNIZR_URL',         WT_STATIC_URL . 'js/modernizr.custom-2.6.2.js');
-define('WT_WEBTREES_JS_URL',       WT_STATIC_URL . 'js/webtrees-1.6.0.js');
+define('WT_WEBTREES_JS_URL',       WT_STATIC_URL . 'js/webtrees-1.6.2.js');
 
 // Location of our modules and themes.  These are used as URLs and folder paths.
 define('WT_MODULES_DIR', 'modules_v3/'); // Update setup.php and build/Makefile when this changes
@@ -597,8 +597,8 @@ if (substr(WT_SCRIPT_NAME, 0, 5) == 'admin' || WT_SCRIPT_NAME == 'module.php' &&
 			$THEME_DIR = '';
 		}
 		// Last theme used?
-		if (!$THEME_DIR && in_array($WT_SESSION->theme, get_theme_names())) {
-			$THEME_DIR = $WT_SESSION->theme;
+		if (!$THEME_DIR && in_array($WT_SESSION->theme_id, get_theme_names())) {
+			$THEME_DIR = $WT_SESSION->theme_id;
 		}
 	} else {
 		$THEME_DIR = '';
@@ -625,7 +625,7 @@ if (substr(WT_SCRIPT_NAME, 0, 5) == 'admin' || WT_SCRIPT_NAME == 'module.php' &&
 	define('WT_THEME_DIR', WT_THEMES_DIR . $THEME_DIR . '/');
 	// Remember this setting
 	if (WT_THEME_DIR != WT_THEMES_DIR . '_administration/') {
-		$WT_SESSION->theme = $THEME_DIR;
+		$WT_SESSION->theme_id = $THEME_DIR;
 	}
 }
 // If we have specified a CDN, use it for static theme resources

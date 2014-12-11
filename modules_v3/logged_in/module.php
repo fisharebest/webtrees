@@ -19,6 +19,9 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+use WT\User;
+
 /**
  * Class logged_in_WT_Module
  */
@@ -35,12 +38,47 @@ class logged_in_WT_Module extends WT_Module implements WT_Module_Block {
 
 	/** {@inheritdoc} */
 	public function getBlock($block_id, $template=true, $cfg=null) {
-		$id=$this->getName().$block_id;
-		$class=$this->getName().'_block';
-		$title=$this->getTitle();
-		$content  = '<div>';
-		$content .= whoisonline();
-		$content .= "</div>";
+		$id        = $this->getName() . $block_id;
+		$class     = $this->getName() . '_block';
+		$title     = $this->getTitle();
+		$anonymous = 0;
+		$logged_in = array();
+		$content   = '';
+		foreach (User::allLoggedIn() as $user) {
+			if (Auth::isAdmin() || $user->getPreference('visibleonline')) {
+				$logged_in[] = $user;
+			} else {
+				$anonymous++;
+			}
+		}
+		$count_logged_in = count($logged_in);
+		$content .= '<div class="logged_in_count">';
+		if ($anonymous) {
+			$content .= WT_I18N::plural('%d anonymous logged-in user', '%d anonymous logged-in users', $anonymous, $anonymous);
+			if ($count_logged_in) {
+				$content .=  '&nbsp;|&nbsp;';
+			}
+		}
+		if ($count_logged_in) {
+			$content .= WT_I18N::plural('%d logged-in user', '%d logged-in users', $count_logged_in, $count_logged_in);
+		}
+		$content .= '</div>';
+		$content .= '<div class="logged_in_list">';
+		if (Auth::check()) {
+			foreach ($logged_in as $user) {
+				$content .= '<div class="logged_in_name">';
+				$content .= WT_Filter::escapeHtml($user->getRealName()) . ' - ' . WT_Filter::escapeHtml($user->getUserName());
+				if (Auth::id() != $user->getUserId() && $user->getPreference('contactmethod') != 'none') {
+					$content .= ' <a class="icon-email" href="#" onclick="return message(\'' . WT_Filter::escapeJs($user->getUserName()) . '\', \'\', \'' . WT_Filter::escapeJs(get_query_url()) . '\');" title="' . WT_I18N::translate('Send a message').'"></a>';
+				}
+				$content .= '</div>';
+			}
+		}
+		$content .= '</div>';
+
+		if ($anonymous === 0 && $count_logged_in === 0) {
+			return '';
+		}
 
 		if ($template) {
 			require WT_THEME_DIR.'templates/block_main_temp.php';

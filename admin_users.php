@@ -36,10 +36,6 @@ $controller
 require_once WT_ROOT.'includes/functions/functions_edit.php';
 
 // Valid values for form variables
-$ALL_THEMES_DIRS=array();
-foreach (get_theme_names() as $themename=>$themedir) {
-	$ALL_THEME_DIRS[]=$themedir;
-}
 $ALL_EDIT_OPTIONS=array(
 	'none'  => /* I18N: Listbox entry; name of a role */ WT_I18N::translate('Visitor'),
 	'access'=> /* I18N: Listbox entry; name of a role */ WT_I18N::translate('Member'),
@@ -60,7 +56,7 @@ $realname           = WT_Filter::post('realname'   );
 $pass1              = WT_Filter::post('pass1',        WT_REGEX_PASSWORD);
 $pass2              = WT_Filter::post('pass2',        WT_REGEX_PASSWORD);
 $emailaddress       = WT_Filter::postEmail('emailaddress');
-$user_theme         = WT_Filter::post('user_theme',               implode('|', $ALL_THEME_DIRS));
+$user_theme         = WT_Filter::post('user_theme',               implode('|', get_theme_names()));
 $user_language      = WT_Filter::post('user_language',            implode('|', array_keys(WT_I18N::installed_languages())), WT_LOCALE);
 $new_contact_method = WT_Filter::post('new_contact_method');
 $new_comment        = WT_Filter::post('new_comment');
@@ -413,8 +409,8 @@ case 'createform':
 					<td>
 						<select name="new_user_theme">
 						<option value="" selected="selected">', WT_Filter::escapeHtml(WT_I18N::translate('<default theme>')), '</option>';
-							foreach (get_theme_names() as $themename=>$themedir) {
-								echo '<option value="', $themedir, '">', $themename, '</option>';
+							foreach (get_theme_names() as $theme_name => $theme_id) {
+								echo '<option value="', $theme_id, '">', $theme_name, '</option>';
 							}
 						echo '</select>
 					</td>';

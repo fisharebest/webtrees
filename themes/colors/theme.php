@@ -134,7 +134,7 @@ if (!array_key_exists($subColor, $COLOR_THEME_LIST)) {
 $theme_name = "colors"; /* I18N: Name of a theme. */ WT_I18N::translate('colors');
 
 // A version number in the path prevents browser-cache problems during upgrade
-define('WT_CSS_URL', WT_THEME_URL . 'css-1.6.0/');
+define('WT_CSS_URL', WT_THEME_URL . 'css-1.6.2/');
 
 $footerfile = WT_THEME_DIR . 'footer.php';
 $headerfile = WT_THEME_DIR . 'header.php';
