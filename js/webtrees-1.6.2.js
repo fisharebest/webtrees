@@ -635,7 +635,6 @@ function valid_date(datefield) {
 	}
 
 	// Convert full months to short months
-	// TODO: also convert long/short months in other languages
 	datestr=datestr.replace(/(JANUARY)/,   "JAN");
 	datestr=datestr.replace(/(FEBRUARY)/,  "FEB");
 	datestr=datestr.replace(/(MARCH)/,     "MAR");
@@ -1166,9 +1165,6 @@ function activate_colorbox(config) {
 			// Add wheelzoom to the displayed image
 			onComplete:    function() {
 				jQuery('.cboxPhoto').wheelzoom();
-				// Drag events cause the slideshow to advance.  Prevent this.
-				// TODO - only when the click was the end of a drag..
-				jQuery('.cboxPhoto img').on('click', function(e) {e.preventDefault();});
 			}
 		});
 
