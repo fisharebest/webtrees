@@ -93,7 +93,7 @@ function modalDialogSubmitAjax(form) {
 		type:    'POST',
 		url:     jQuery(form).attr('action'),
 		data:    jQuery(form).serialize(),
-		success: function(response) { window.location.reload(); }
+		success: function() { window.location.reload(); }
 	});
 	return false;
 }
@@ -593,20 +593,19 @@ function valid_date(datefield) {
 	// e.g. 17.11.1860, 03/04/2005 or 1999-12-31.  Use locale settings where DMY order is ambiguous.
 	var qsearch = /^([^\d]*)(\d+)[^\d](\d+)[^\d](\d+)$/i;
 	if (qsearch.exec(datestr)) {
-		var f0=RegExp.$1;
-		var f1=parseInt(RegExp.$2, 10);
-		var f2=parseInt(RegExp.$3, 10);
-		var f3=parseInt(RegExp.$4, 10);
-		var f4=RegExp.$5;
-		var dmy='DMY';
+		var f0 = RegExp.$1;
+		var f1 = parseInt(RegExp.$2, 10);
+		var f2 = parseInt(RegExp.$3, 10);
+		var f3 = parseInt(RegExp.$4, 10);
+		var dmy = 'DMY';
 		if (typeof(locale_date_format) !== 'undefined') {
 			if (locale_date_format === 'MDY' || locale_date_format === 'YMD') {
 				dmy = locale_date_format;
 			}
 		}
-		var yyyy=new Date().getFullYear();
-		var yy=yyyy % 100;
-		var cc=yyyy - yy;
+		var yyyy = new Date().getFullYear();
+		var yy = yyyy % 100;
+		var cc = yyyy - yy;
 		if (dmy === 'DMY' && f1<=31 && f2<=12 || f1>13 && f1<=31 && f2<=12 && f3>31) {
 				datestr = f0 + f1 + " " + months[f2 - 1] + " " + (f3 >= 100 ? f3 : (f3 <= yy ? f3 + cc : f3 + cc - 100));
 		} else {
@@ -630,9 +629,6 @@ function valid_date(datefield) {
 	datestr=datestr.replace(/^[#]([\w ]+)$/, "CAL $1");
 	datestr=datestr.replace(/^([\w ]+) ?- ?([\w ]+)$/, "BET $1 AND $2");
 	datestr=datestr.replace(/^([\w ]+) ?~ ?([\w ]+)$/, "FROM $1 TO $2");
-	if (datestr.match(/^=([\d ()\/+*-]+)$/)) {
-		datestr = eval(RegExp.$1);
-	}
 
 	// Convert full months to short months
 	datestr=datestr.replace(/(JANUARY)/,   "JAN");
@@ -650,18 +646,7 @@ function valid_date(datefield) {
 
 	// Americans frequently enter dates as SEP 20, 1999
 	// No need to internationalise this, as this is an english-language issue
-	datestr=datestr.replace(/(JAN) (\d\d?)[, ]+(\d\d\d\d)/, "$2 $1 $3");
-	datestr=datestr.replace(/(FEB) (\d\d?)[, ]+(\d\d\d\d)/, "$2 $1 $3");
-	datestr=datestr.replace(/(MAR) (\d\d?)[, ]+(\d\d\d\d)/, "$2 $1 $3");
-	datestr=datestr.replace(/(APR) (\d\d?)[, ]+(\d\d\d\d)/, "$2 $1 $3");
-	datestr=datestr.replace(/(MAY) (\d\d?)[, ]+(\d\d\d\d)/, "$2 $1 $3");
-	datestr=datestr.replace(/(JUN) (\d\d?)[, ]+(\d\d\d\d)/, "$2 $1 $3");
-	datestr=datestr.replace(/(JUL) (\d\d?)[, ]+(\d\d\d\d)/, "$2 $1 $3");
-	datestr=datestr.replace(/(AUG) (\d\d?)[, ]+(\d\d\d\d)/, "$2 $1 $3");
-	datestr=datestr.replace(/(SEP) (\d\d?)[, ]+(\d\d\d\d)/, "$2 $1 $3");
-	datestr=datestr.replace(/(OCT) (\d\d?)[, ]+(\d\d\d\d)/, "$2 $1 $3");
-	datestr=datestr.replace(/(NOV) (\d\d?)[, ]+(\d\d\d\d)/, "$2 $1 $3");
-	datestr=datestr.replace(/(DEC) (\d\d?)[, ]+(\d\d\d\d)/, "$2 $1 $3");
+	datestr=datestr.replace(/(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC) (\d\d?)[, ]+(\d\d\d\d)/, "$2 $1 $3");
 
 	// Apply leading zero to day numbers
 	datestr=datestr.replace(/(^| )(\d [A-Z]{3,5} \d{4})/, "$10$2");
@@ -1148,7 +1133,7 @@ function activate_colorbox(config) {
 	}
 
 	// Trigger an event when we click on an (any) image
-	jQuery('body').on('click', 'a.gallery', function(event) {
+	jQuery('body').on('click', 'a.gallery', function() {
 		// Remove colorbox from hidden media (e.g. on other tabs)
 		// (not needed unless we add :visible to our selectors - which may not
 		// work on all browsers?)
