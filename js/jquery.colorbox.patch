@@ -1,4 +1,7 @@
-999,1005d998
+996,1006d995
+< 					if (settings.h) {
+< 						photo.style.marginTop = Math.max(settings.mh - photo.height, 0) / 2 + 'px';
+< 					}
 < 					
 < 					if ($related[1] && (settings.get('loop') || $related[index + 1])) {
 < 						photo.style.cursor = 'pointer';
@@ -6,7 +9,8 @@
 < 							publicMethod.next();
 < 						};
 < 					}
-1008a1002,1004
+< 
+1008a998,1000
 > 					var vertpadding = (settings.h - photo.height) / 2;
 > 					var horizpadding = (settings.w - photo.width) / 2;
 > 					photo.style.padding = vertpadding + 'px ' + horizpadding + 'px';
