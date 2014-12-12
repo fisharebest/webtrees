@@ -993,10 +993,6 @@
 						}
 					}
 					
-					if (settings.h) {
-						photo.style.marginTop = Math.max(settings.mh - photo.height, 0) / 2 + 'px';
-					}
-
 					photo.style.width = photo.width + 'px';
 					photo.style.height = photo.height + 'px';
 					var vertpadding = (settings.h - photo.height) / 2;
