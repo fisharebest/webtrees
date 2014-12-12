@@ -46,7 +46,6 @@ $this
 	<title><?php echo WT_Filter::escapeHtml($title); ?></title>
 	<link rel="icon" href="<?php echo WT_CSS_URL; ?>favicon.png" type="image/png">
 	<link rel="stylesheet" type="text/css" href="<?php echo WT_THEME_URL; ?>jquery-ui-1.11.2/jquery-ui.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo WT_THEME_URL; ?>jquery-ui-1.11.2/jquery-ui.theme.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo WT_CSS_URL; ?>style.css">
 	<!--[if IE]>
 	<link rel="stylesheet" type="text/css" href="<?php echo WT_CSS_URL; ?>msie.css">

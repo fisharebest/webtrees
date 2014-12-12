@@ -217,11 +217,25 @@ if (!ini_get('date.timezone')) {
 // WT_SCRIPT_PATH  = /path/to/   (begins and ends with /)
 // WT_SCRIPT_NAME  = script.php  (already defined in the calling script)
 
-$https = !empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off';
+if (isset($_SERVER['HTTP_X_FORWARDED_PROTO'])) {
+	$protocol = $_SERVER['HTTP_X_FORWARDED_PROTO'];
+} elseif (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') {
+	$protocol = 'https';
+} else {
+	$protocol = 'http';
+}
+if (isset($_SERVER['HTTP_X_FORWARDED_PORT'])) {
+	$port = $_SERVER['HTTP_X_FORWARDED_PORT'];
+} elseif (isset($_SERVER['SERVER_PORT'])) {
+	$port = $_SERVER['SERVER_PORT'];
+} else {
+	$port = '80';
+}
+
 define('WT_SERVER_NAME',
-	($https ? 'https://' : 'http://') .
+	$protocol . '://' .
 	(empty($_SERVER['SERVER_NAME']) ? '' : $_SERVER['SERVER_NAME']) .
-	(empty($_SERVER['SERVER_PORT']) || (!$https && $_SERVER['SERVER_PORT'] == 80) || ($https && $_SERVER['SERVER_PORT'] == 443) ? '' : ':' . $_SERVER['SERVER_PORT'])
+	($protocol === 'http' && $port === '80' || $protocol === 'https' && $port === '443' ? '' : ':' . $port)
 );
 
 // REDIRECT_URL should be set in the case of Apache following a RedirectRule

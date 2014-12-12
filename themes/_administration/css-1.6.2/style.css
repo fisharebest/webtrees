@@ -50,7 +50,7 @@ input[type="submit"],
 input[type="reset"],
 input[type="button"],
 input[type="file"] {
-	background: url(../jquery-ui-1.10.3/images/ui-bg_fine-grain_10_f8f7f6_60x60.png) 50% 50% #f8f7f6;
+	background: url(../jquery-ui-1.11.2/images/ui-bg_fine-grain_10_f8f7f6_60x60.png) 50% 50% #f8f7f6;
 	border: 1px solid #cbc7bd;
 	color: #654b24;
 	font-weight: 700;
@@ -63,7 +63,7 @@ input[type="submit"]:hover,
 input[type="reset"]:hover,
 input[type="button"]:hover,
 input[type="file"]:hover {
-	background: url(../jquery-ui-1.10.3/images/ui-bg_fine-grain_65_654b24_60x60.png) 50% 50% #654b24;
+	background: url(../jquery-ui-1.11.2/images/ui-bg_fine-grain_65_654b24_60x60.png) 50% 50% #654b24;
 	border: 1px solid #654b24;
 	color: #fff;
 	font-weight: 700;
@@ -372,7 +372,7 @@ select {
 	position: absolute;
 	left: 0;
 	top: 1.2em;
-	background: url("../jquery-ui-1.10.3/images/ui-bg_fine-grain_10_eceadf_60x60.png") repeat scroll 50% 50% #eceadf;
+	background: url("../jquery-ui-1.11.2/images/ui-bg_fine-grain_10_eceadf_60x60.png") repeat scroll 50% 50% #eceadf;
 	border: 1px solid #d9d6c4;
 	z-index: 999;
 }
