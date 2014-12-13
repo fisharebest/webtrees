@@ -2820,7 +2820,7 @@ function print_indi_form($nextaction, WT_Individual $person = null, WT_Family $f
 		var romn = "";
 		var heb = "";
 		for (var i = 0; i < ip.length; i++) {
-			var val = ip[i].value;
+			var val = trim(ip[i].value);
 			if (ip[i].id.indexOf("_HEB") === 0)
 				heb = val;
 			if (ip[i].id.indexOf("ROMN") === 0)
