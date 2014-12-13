@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2014-10-10 13:52+0100\n"
-"PO-Revision-Date: 2014-10-11 12:45+0200\n"
+"PO-Revision-Date: 2014-11-24 21:34+0200\n"
 "Last-Translator: Meliza <meliza@amitys.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -11,7 +11,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Launchpad-Export-Date: 2013-08-04 19:03+0000\n"
-"X-Generator: Poedit 1.5.7\n"
+"X-Generator: Poedit 1.6.10\n"
+"Language: fi\n"
 
 #: modules_v3/ahnentafel_report/report.xml:157
 #: modules_v3/ahnentafel_report/report.xml:185
@@ -211,20 +212,20 @@ msgstr[1] "%d vuotta"
 #, php-format
 msgctxt "FEMALE"
 msgid "%d × cousin"
-msgstr "serkku %d. polvessa"
+msgstr "%d. serkku"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: includes/functions/functions.php:614
 #, php-format
 msgctxt "MALE"
 msgid "%d × cousin"
-msgstr "serkku %d. polvessa"
+msgstr "%d. serkku"
 
 #: includes/functions/functions.php:652
 #, php-format
 msgctxt "MALE/FEMALE"
 msgid "%d × cousin"
-msgstr "serkku %d. polvessa"
+msgstr "%d. serkku"
 
 #. I18N: This is the format string for full dates.  See http://php.net/date for codes
 #: library/WT/I18N.php:207
@@ -2391,7 +2392,7 @@ msgstr "Velipuolen kastetilaisuus"
 
 #: library/WT/Gedcom/Tag.php:410
 msgid "Baptism of a half-sibling"
-msgstr "Sisarpuolen kaste"
+msgstr "Sisar- tai velipuolen kaste"
 
 #: library/WT/Gedcom/Tag.php:409
 msgid "Baptism of a half-sister"
@@ -2716,7 +2717,7 @@ msgstr "Velipuolen syntymä"
 
 #: library/WT/Gedcom/Tag.php:447
 msgid "Birth of a half-sibling"
-msgstr "Sisarpuolen syntymä"
+msgstr "Sisar- tai velipuolen syntymä"
 
 #: library/WT/Gedcom/Tag.php:446
 msgid "Birth of a half-sister"
@@ -3022,7 +3023,7 @@ msgstr "Velipuolen hautajaiset"
 
 #: library/WT/Gedcom/Tag.php:504
 msgid "Burial of a half-sibling"
-msgstr "Sisarpuolen hautajaiset"
+msgstr "Sisar- tai velipuolen hautajaiset"
 
 #: library/WT/Gedcom/Tag.php:503
 msgid "Burial of a half-sister"
@@ -3034,11 +3035,11 @@ msgstr "Aviomiehen hautajaiset"
 
 #: library/WT/Gedcom/Tag.php:496
 msgid "Burial of a maternal grandfather"
-msgstr "Äidinisän (isoisän) hautajaiset"
+msgstr "Isoisän hautajaiset"
 
 #: library/WT/Gedcom/Tag.php:497
 msgid "Burial of a maternal grandmother"
-msgstr "Äidinäidin (isoäidin) hautajaiset"
+msgstr "Isoäidin hautajaiset"
 
 #: library/WT/Gedcom/Tag.php:498
 msgid "Burial of a maternal grandparent"
@@ -3054,11 +3055,11 @@ msgstr "Vanhemman hautajaiset"
 
 #: library/WT/Gedcom/Tag.php:490
 msgid "Burial of a paternal grandfather"
-msgstr "Isänisän (isoisän) hautajaiset"
+msgstr "Isoisän hautajaiset"
 
 #: library/WT/Gedcom/Tag.php:491
 msgid "Burial of a paternal grandmother"
-msgstr "Isänäidin (isoäidin) hautajaiset"
+msgstr "Isoäidin hautajaiset"
 
 #: library/WT/Gedcom/Tag.php:492
 msgid "Burial of a paternal grandparent"
@@ -3330,7 +3331,7 @@ msgstr "Muutokset"
 
 #. I18N: title for list of recent changes
 #: modules_v3/recent_changes/module.php:70
-#, fuzzy, php-format
+#, php-format
 msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
 msgstr[0] "Muutokset viime vuorokaudessa"
@@ -3561,7 +3562,7 @@ msgstr "Velipuolen ristiäiset"
 
 #: library/WT/Gedcom/Tag.php:552
 msgid "Christening of a half-sibling"
-msgstr "Sisarpuolen ristiäiset"
+msgstr "Sisar- tai velipuolen ristiäiset"
 
 #: library/WT/Gedcom/Tag.php:551
 msgid "Christening of a half-sister"
@@ -4078,7 +4079,7 @@ msgstr "Velipuolen polttohautaus"
 
 #: library/WT/Gedcom/Tag.php:607
 msgid "Cremation of a half-sibling"
-msgstr "Sisarpuolen polttohautaus"
+msgstr "Sisar- tai velipuolen polttohautaus"
 
 #: library/WT/Gedcom/Tag.php:606
 msgid "Cremation of a half-sister"
@@ -4646,7 +4647,7 @@ msgstr "Velipuolen kuolema"
 
 #: library/WT/Gedcom/Tag.php:674
 msgid "Death of a half-sibling"
-msgstr "Sisarpuolen kuolema"
+msgstr "Sisar- tai velipuolen kuolema"
 
 #: library/WT/Gedcom/Tag.php:673
 msgid "Death of a half-sister"
@@ -5218,7 +5219,7 @@ msgstr "Sähköpostiosoite ”From:” jota webtrees käyttää luodessaan autom
 
 #: help_text.php:1175
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided.  The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>.  The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source.  For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
-msgstr "Lähdetiedoissa kuvataan tietoja ajan ja paikan suhteen. Esimerkiksi väestölaskenta kuvaa väestönlaskennan tiedot ja kirkonkirjat kuvaavat syntymä-, avioliitto- ja kuolematiedot.<br><br>Valitse tapahtumat jotka voi saada tästä tiedonlähteestä. Aika tulisi kuvata ajanjaksona <i>FROM 1900 TO 1910</i> eli alkaen - asti. Paikkatiedolla ilmoitetaan, mikä alue on kyseessä. Esimerkiksi Oulun maakunta-arkistosta saatuja tietoja koskien Oulua olisi paikkatietona ”Oulu, Oulu, FIN” (pitäjä, lääni, maa) tai esim. tieto Yhdysvalloista ”Oneida, Idaho, USA” (city, state, country)."
+msgstr "Lähdetiedoissa kuvataan tietoja ajan ja paikan suhteen. Esimerkiksi väestölaskenta kuvaa väestönlaskennan tiedot ja kirkonkirjat kuvaavat syntymä-, avioliitto- ja kuolematiedot.<br><br>Valitse tapahtumat jotka voi saada tästä tiedonlähteestä. Aika tulisi kuvata ajanjaksona <i>FROM 1900 TO 1910</i> eli alkaen - asti. Paikkatiedolla ilmoitetaan, mikä alue on kyseessä. Esimerkiksi Oulun maakunta-arkistosta saatuja tietoja koskien Oulua olisi paikkatietona ”Oulu, Oulu, FIN” (pitäjä, l??äni, maa) tai esim. tieto Yhdysvalloista ”Oneida, Idaho, USA” (city, state, country)."
 
 #: help_text.php:1340
 msgid "Each user account has an option to “automatically accept changes”.  When this is enabled, any changes made by that user are saved immediately.  Many administrators enable this for their own user account."
@@ -8582,7 +8583,7 @@ msgstr "Velipuolen avioliitto"
 
 #: library/WT/Gedcom/Tag.php:762
 msgid "Marriage of a half-sibling"
-msgstr "Sisarpuolen avioliitto"
+msgstr "Sisar- tai velipuolen avioliitto"
 
 #: library/WT/Gedcom/Tag.php:761
 msgid "Marriage of a half-sister"
@@ -15591,7 +15592,6 @@ msgid "You can re-enable these themes after the upgrade."
 msgstr "Voit ottaa uudelleen käyttöön nämä teemat päivityksen jälkeen."
 
 #: admin_trees_renumber.php:261
-#, fuzzy
 msgid "You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree."
 msgstr "Voit numeroida sukupuun tietueet uudelleen, niin että nämä sisäiset tunnistenumerot eivät esiinny missään muussa sukupuussa."
 
@@ -15977,7 +15977,7 @@ msgstr "-"
 #: includes/functions/functions.php:949
 msgctxt "father’s brother’s wife"
 msgid "aunt"
-msgstr "isän veljenvaimo (käly)"
+msgstr "täti"
 
 #: includes/functions/functions.php:834
 msgctxt "father’s sister"
@@ -15987,7 +15987,7 @@ msgstr "täti"
 #: includes/functions/functions.php:980
 msgctxt "mother’s brother’s wife"
 msgid "aunt"
-msgstr "äidin veljenvaimo"
+msgstr "enon vaimo"
 
 #: includes/functions/functions.php:853
 msgctxt "mother’s sister"
@@ -15997,7 +15997,7 @@ msgstr "täti"
 #: includes/functions/functions.php:1006
 msgctxt "parent’s brother’s wife"
 msgid "aunt"
-msgstr "puolisoveljenvaimo"
+msgstr "enon/sedän vaimo"
 
 #: includes/functions/functions.php:862
 msgctxt "parent’s sister"
@@ -16078,72 +16078,72 @@ msgstr "veli"
 #: includes/functions/functions.php:918
 msgctxt "brother’s wife’s brother"
 msgid "brother-in-law"
-msgstr "veljen vaimonveli / veljen lanko / kälyn veli"
+msgstr "kälyn veli"
 
 #: includes/functions/functions.php:837
 msgctxt "husband’s brother"
 msgid "brother-in-law"
-msgstr "miehenveli, lanko"
+msgstr "lanko"
 
 #: includes/functions/functions.php:976
 msgctxt "husband’s sister’s husband"
 msgid "brother-in-law"
-msgstr "miehen siskonmies / kälyn mies"
+msgstr "lanko"
 
 #: includes/functions/functions.php:871
 msgctxt "sister’s husband"
 msgid "brother-in-law"
-msgstr "siskonmies, lanko"
+msgstr "lanko"
 
 #: includes/functions/functions.php:1053
 msgctxt "sister’s husband’s brother"
 msgid "brother-in-law"
-msgstr "siskon miehenveli / siskon lanko"
+msgstr "sisaren lanko"
 
 #: includes/functions/functions.php:877
 msgctxt "spouse’s brother"
 msgid "brother-in-law"
-msgstr "puolison veli, lanko"
+msgstr "lanko"
 
 #: includes/functions/functions.php:886
 msgctxt "wife’s brother"
 msgid "brother-in-law"
-msgstr "vaimonveli, lanko"
+msgstr "lanko"
 
 #: includes/functions/functions.php:1078
 msgctxt "wife’s sister’s husband"
 msgid "brother-in-law"
-msgstr "vaimon siskonmies / kälyn mies"
+msgstr "kälyn mies"
 
 #: includes/functions/functions.php:919
 msgctxt "brother’s wife’s sibling"
 msgid "brother/sister-in-law"
-msgstr "veljen vaimonsisarus / kälyn sisarus"
+msgstr "kälyn sisarus"
 
 #: includes/functions/functions.php:842
 msgctxt "husband’s sibling"
 msgid "brother/sister-in-law"
-msgstr "Miehensisarus / lanko, käly"
+msgstr "lanko/käly"
 
 #: includes/functions/functions.php:868
 msgctxt "sibling’s spouse"
 msgid "brother/sister-in-law"
-msgstr "sisarenpuoliso / lanko, käly"
+msgstr "lanko/käly"
 
 #: includes/functions/functions.php:1054
 msgctxt "sister’s husband’s sibling"
 msgid "brother/sister-in-law"
-msgstr "siskon miehensisarus / siskon lanko/käly"
+msgstr "sisaren lanko/käly"
 
 #: includes/functions/functions.php:885
 msgctxt "spouse’s sibling"
 msgid "brother/sister-in-law"
-msgstr "puolison sisarus, lanko/käly"
+msgstr "lanko/käly"
 
 #: includes/functions/functions.php:891
 msgctxt "wife’s sibling"
 msgid "brother/sister-in-law"
-msgstr "vaimonsisarus, lanko/käly"
+msgstr "lanko/käly"
 
 #: modules_v3/top10_surnames/module.php:157
 msgid "bullet list"
@@ -16272,27 +16272,27 @@ msgstr "vanhemmat:"
 #: includes/functions/functions.php:822
 msgctxt "child’s wife"
 msgid "daughter-in-law"
-msgstr "pojanvaimo, miniä"
+msgstr "miniä"
 
 #: includes/functions/functions.php:876
 msgctxt "son’s wife"
 msgid "daughter-in-law"
-msgstr "pojanvaimo, miniä"
+msgstr "miniä"
 
 #: includes/functions/functions.php:1074
 msgctxt "son’s wife’s father"
 msgid "daughter-in-law’s father"
-msgstr "pojan vaimon isä / miniän isä"
+msgstr "miniän isä"
 
 #: includes/functions/functions.php:1075
 msgctxt "son’s wife’s mother"
 msgid "daughter-in-law’s mother"
-msgstr "pojan vaimon äiti / miniän äiti"
+msgstr "miniän äiti"
 
 #: includes/functions/functions.php:1076
 msgctxt "son’s wife’s parent"
 msgid "daughter-in-law’s parent"
-msgstr "miniän isä/äiti"
+msgstr "miniän vanhempi"
 
 #: library/WT/Stats.php:2061
 msgid "death"
@@ -16428,17 +16428,17 @@ msgstr "isä"
 #: includes/functions/functions.php:840
 msgctxt "husband’s father"
 msgid "father-in-law"
-msgstr "miehen isä, appi"
+msgstr "appi"
 
 #: includes/functions/functions.php:880
 msgctxt "spouse’s father"
 msgid "father-in-law"
-msgstr "puolison isä, appi"
+msgstr "appi"
 
 #: includes/functions/functions.php:889
 msgctxt "wife’s father"
 msgid "father-in-law"
-msgstr "vaimon isä, appi"
+msgstr "appi"
 
 #: admin_site_merge.php:215
 msgid "favorites updated."
@@ -16629,12 +16629,12 @@ msgstr "isänisänsisarenlapsi"
 #: includes/functions/functions.php:1111
 msgctxt "father’s father’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr "isänisänsiskontytär"
+msgstr "isänisänsisarentytär"
 
 #: includes/functions/functions.php:1112
 msgctxt "father’s father’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr "isänisänsiskontytär"
+msgstr "isänisänsisarentytär"
 
 #: includes/functions/functions.php:1116
 msgctxt "father’s mother’s brother’s child"
@@ -16654,17 +16654,17 @@ msgstr "isänäidinveljenpoika"
 #: includes/functions/functions.php:1119
 msgctxt "father’s mother’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr "isänäidinsiskonlapsi"
+msgstr "isänäidinsisarenlapsi"
 
 #: includes/functions/functions.php:1117
 msgctxt "father’s mother’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr "isänäidinsiskontytär"
+msgstr "isänäidinsisarentytär"
 
 #: includes/functions/functions.php:1118
 msgctxt "father’s mother’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr "isänäidinsiskonpoika"
+msgstr "isänäidinsisarenpoika"
 
 #: includes/functions/functions.php:1122
 msgctxt "mother’s father’s brother’s child"
@@ -16684,17 +16684,17 @@ msgstr "äidinisänveljenpoika"
 #: includes/functions/functions.php:1125
 msgctxt "mother’s father’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr "äidinisänsiskonlapsi"
+msgstr "äidinisänsisarenlapsi"
 
 #: includes/functions/functions.php:1123
 msgctxt "mother’s father’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr "äidinisänsiskontytär"
+msgstr "äidinisänsisarentytär"
 
 #: includes/functions/functions.php:1124
 msgctxt "mother’s father’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr "äidinisänsiskonpoika"
+msgstr "äidinisänsisarenpoika"
 
 #: includes/functions/functions.php:1128
 msgctxt "mother’s mother’s brother’s child"
@@ -16714,17 +16714,17 @@ msgstr "äidinäidinveljenpoika"
 #: includes/functions/functions.php:1131
 msgctxt "mother’s mother’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr "äidinäidinsiskonlapsi"
+msgstr "äidinäidinsisarenlapsi"
 
 #: includes/functions/functions.php:1129
 msgctxt "mother’s mother’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr "äidinäidinsiskontytär"
+msgstr "äidinäidinsisarentytär"
 
 #: includes/functions/functions.php:1130
 msgctxt "mother’s mother’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr "äidinäidinsiskonpoika"
+msgstr "äidinäidinsisarenpoika"
 
 #: includes/functions/functions.php:631
 msgctxt "FEMALE"
@@ -16925,12 +16925,12 @@ msgstr "täti/setä ×%d polven takaa"
 #: includes/functions/functions.php:1613 includes/functions/functions.php:1626
 #, php-format
 msgid "great ×%d grandchild"
-msgstr "lapsenlapsi ×%d+3:nnessä sukupolvessa"
+msgstr "lapsenlapsi ×%d:nnessä sukupolvessa"
 
 #: includes/functions/functions.php:1612 includes/functions/functions.php:1625
 #, php-format
 msgid "great ×%d granddaughter"
-msgstr "lapsentytär ×%d+3:nnessä sukupolvessa"
+msgstr "lapsentytär ×%d:nnessä sukupolvessa"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1516 includes/functions/functions.php:1523
@@ -16952,13 +16952,13 @@ msgstr "isoäiti ×%d polven takaa"
 #: includes/functions/functions.php:1550
 #, php-format
 msgid "great ×%d grandparent"
-msgstr "isovanhemmat ×%d polven takaa"
+msgstr "isovanhempi ×%d polven takaa"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1611 includes/functions/functions.php:1624
 #, php-format
 msgid "great ×%d grandson"
-msgstr "lapsenpoika ×%d+3:nnessä sukupolvessa"
+msgstr "lapsenpoika ×%d:nnessä sukupolvessa"
 
 #. I18N: if you need a different number for %d, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1444 includes/functions/functions.php:1455
@@ -17064,11 +17064,11 @@ msgstr "täti/setä 4 polven takaa"
 
 #: includes/functions/functions.php:1577
 msgid "great ×4 grandchild"
-msgstr "lapsenlapsi 7:nnessä sukupolvessa"
+msgstr "lapsenlapsi 4:nnessä sukupolvessa"
 
 #: includes/functions/functions.php:1576
 msgid "great ×4 granddaughter"
-msgstr "lapsentytär 7:nnessä sukupolvessa"
+msgstr "lapsentytär 4:nnessä sukupolvessa"
 
 #: includes/functions/functions.php:1482
 msgid "great ×4 grandfather"
@@ -17080,11 +17080,11 @@ msgstr "isoäiti 4 polven takaa"
 
 #: includes/functions/functions.php:1484
 msgid "great ×4 grandparent"
-msgstr "isovanhemmat 4 polven takaa"
+msgstr "isovanhempi 4 polven takaa"
 
 #: includes/functions/functions.php:1575
 msgid "great ×4 grandson"
-msgstr "lapsenlapsi 7:nnessä sukupolvessa"
+msgstr "lapsenlapsi 4:nnessä sukupolvessa"
 
 #: includes/functions/functions.php:1360
 msgctxt "(a man’s) brother’s great-great-great-grandson"
@@ -17156,11 +17156,11 @@ msgstr "täti/setä 5 polven takaa"
 
 #: includes/functions/functions.php:1584
 msgid "great ×5 grandchild"
-msgstr "lapsenlapsi 8:nnessä sukupolvessa"
+msgstr "lapsenlapsi 5:nnessä sukupolvessa"
 
 #: includes/functions/functions.php:1583
 msgid "great ×5 granddaughter"
-msgstr "lapsentytär 8:nnessä sukupolvessa"
+msgstr "lapsentytär 5:nnessä sukupolvessa"
 
 #: includes/functions/functions.php:1489
 msgid "great ×5 grandfather"
@@ -17172,11 +17172,11 @@ msgstr "isoäiti 5 polven takaa"
 
 #: includes/functions/functions.php:1491
 msgid "great ×5 grandparent"
-msgstr "isovanhemmat 5 polven takaa"
+msgstr "isovanhempi 5 polven takaa"
 
 #: includes/functions/functions.php:1582
 msgid "great ×5 grandson"
-msgstr "lapsenpoika 8:nnessä sukupolvessa"
+msgstr "lapsenpoika 5:nnessä sukupolvessa"
 
 #: includes/functions/functions.php:1387
 msgctxt "(a man’s) brother’s great ×4 grandson"
@@ -17248,11 +17248,11 @@ msgstr "täti/setä 6 polven takaa"
 
 #: includes/functions/functions.php:1591
 msgid "great ×6 grandchild"
-msgstr "lapsenlapsi 9:nnessä sukupolvessa"
+msgstr "lapsenlapsi 6:nnessä sukupolvessa"
 
 #: includes/functions/functions.php:1590
 msgid "great ×6 granddaughter"
-msgstr "lapsentytär 9:nnessä sukupolvessa"
+msgstr "lapsentytär 6:nnessä sukupolvessa"
 
 #: includes/functions/functions.php:1496
 msgid "great ×6 grandfather"
@@ -17264,11 +17264,11 @@ msgstr "isoäiti 6 polven takaa"
 
 #: includes/functions/functions.php:1498
 msgid "great ×6 grandparent"
-msgstr "isovanhemmat 6 polven takaa"
+msgstr "isovanhempi 6 polven takaa"
 
 #: includes/functions/functions.php:1589
 msgid "great ×6 grandson"
-msgstr "lapsenpoika 9:nnessä sukupolvessa"
+msgstr "lapsenpoika 6:nnessä sukupolvessa"
 
 #: includes/functions/functions.php:1245
 msgctxt "great ×5 grandfather’s brother"
@@ -17295,11 +17295,11 @@ msgstr "täti/setä 7 polven takaa"
 
 #: includes/functions/functions.php:1598
 msgid "great ×7 grandchild"
-msgstr "lapsenlapsi 10:nnessä sukupolvessa"
+msgstr "lapsenlapsi 7:nnessä sukupolvessa"
 
 #: includes/functions/functions.php:1597
 msgid "great ×7 granddaughter"
-msgstr "lapsentytär 10:nnessä sukupolvessa"
+msgstr "lapsentytär 7:nnessä sukupolvessa"
 
 #: includes/functions/functions.php:1503
 msgid "great ×7 grandfather"
@@ -17311,11 +17311,11 @@ msgstr "isoäiti 7 polven takaa"
 
 #: includes/functions/functions.php:1505
 msgid "great ×7 grandparent"
-msgstr "isovanhemmat 7 polven takaa"
+msgstr "isovanhempi 7 polven takaa"
 
 #: includes/functions/functions.php:1596
 msgid "great ×7 grandson"
-msgstr "lapsenpoika 10:nnessä sukupolvessa"
+msgstr "lapsenpoika 7:nnessä sukupolvessa"
 
 #: includes/functions/functions.php:1255
 msgctxt "great ×6 grandfather’s brother"
@@ -17385,7 +17385,7 @@ msgstr "isotäti"
 #: includes/functions/functions.php:1096
 msgctxt "mother’s parent’s brother’s wife"
 msgid "great-aunt"
-msgstr "äidinäidin/-isän veljenvaimo"
+msgstr "äidinvanhemman veljenvaimo"
 
 #: includes/functions/functions.php:1001
 msgctxt "mother’s parent’s sister"
@@ -17415,7 +17415,7 @@ msgstr "isotäti"
 #: includes/functions/functions.php:1105
 msgctxt "parent’s parent’s brother’s wife"
 msgid "great-aunt"
-msgstr "isoisän/-äidin veljenvaimo"
+msgstr "isovanhemman veljenvaimo"
 
 #: includes/functions/functions.php:1024
 msgctxt "parent’s parent’s sister"
@@ -17430,7 +17430,7 @@ msgstr "isosetä/-täti"
 #: includes/functions/functions.php:1082
 msgctxt "father’s father’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "isänisän sisaren aviopuoliso"
+msgstr "isoisän sisaruksen aviopuoliso"
 
 #: includes/functions/functions.php:960
 msgctxt "father’s mother’s sibling"
@@ -17440,7 +17440,7 @@ msgstr "isosetä/-täti"
 #: includes/functions/functions.php:1085
 msgctxt "father’s mother’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "isänäidin sisaren aviopuoliso"
+msgstr "isoäidin sisaruksen aviopuoliso"
 
 #: includes/functions/functions.php:966
 msgctxt "father’s parent’s sibling"
@@ -17450,7 +17450,7 @@ msgstr "isosetä/-täti"
 #: includes/functions/functions.php:1088
 msgctxt "father’s parent’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "isoisän sisaren aviopuoliso"
+msgstr "isovanhemman sisaruksen aviopuoliso"
 
 #: includes/functions/functions.php:985
 msgctxt "mother’s father’s sibling"
@@ -17460,7 +17460,7 @@ msgstr "isosetä/-täti"
 #: includes/functions/functions.php:1091
 msgctxt "mother’s father’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "äidinisän sisaren aviopuoliso"
+msgstr "isoisän sisaruksen aviopuoliso"
 
 #: includes/functions/functions.php:994
 msgctxt "mother’s mother’s sibling"
@@ -17470,7 +17470,7 @@ msgstr "isoeno/-täti"
 #: includes/functions/functions.php:1094
 msgctxt "mother’s mother’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "äidinäidin sisaren aviopuoliso"
+msgstr "isoäidin sisaruksen aviopuoliso"
 
 #: includes/functions/functions.php:1000
 msgctxt "mother’s parent’s sibling"
@@ -17480,7 +17480,7 @@ msgstr "isoeno/-täti"
 #: includes/functions/functions.php:1097
 msgctxt "mother’s parent’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "äidinäidin/-isän sisaren aviopuoliso"
+msgstr "isovanhemman sisaruksen aviopuoliso"
 
 #: includes/functions/functions.php:1011
 msgctxt "parent’s father’s sibling"
@@ -17490,7 +17490,7 @@ msgstr "isosetä/-täti"
 #: includes/functions/functions.php:1100
 msgctxt "parent’s father’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "isoisän sisaren aviopuoliso"
+msgstr "isoisän sisaruksen aviopuoliso"
 
 #: includes/functions/functions.php:1017
 msgctxt "parent’s mother’s sibling"
@@ -17500,7 +17500,7 @@ msgstr "isosetä/-täti"
 #: includes/functions/functions.php:1103
 msgctxt "parent’s mother’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "isoäidin sisaren aviopuoliso"
+msgstr "isoäidin sisaruksen aviopuoliso"
 
 #: includes/functions/functions.php:1023
 msgctxt "parent’s parent’s sibling"
@@ -17510,277 +17510,277 @@ msgstr "isosetä/-täti"
 #: includes/functions/functions.php:1106
 msgctxt "parent’s parent’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "isoisän/-äidin sisarenvaimo"
+msgstr "isovanhemman sisaruksen puoliso"
 
 #: includes/functions/functions.php:921
 msgctxt "child’s child’s child"
 msgid "great-grandchild"
-msgstr "Lapsenlapsen lapsi"
+msgstr "lapsenlapsen lapsi"
 
 #: includes/functions/functions.php:924
 msgctxt "child’s daughter’s child"
 msgid "great-grandchild"
-msgstr "Lapsentyttären lapsi"
+msgstr "lapsentyttären lapsi"
 
 #: includes/functions/functions.php:928
 msgctxt "child’s son’s child"
 msgid "great-grandchild"
-msgstr "Lapsenpojan lapsi"
+msgstr "lapsenpojan lapsi"
 
 #: includes/functions/functions.php:932
 msgctxt "daughter’s child’s child"
 msgid "great-grandchild"
-msgstr "Tyttärenlapsen lapsi"
+msgstr "tyttärenlapsen lapsi"
 
 #: includes/functions/functions.php:935
 msgctxt "daughter’s daughter’s child"
 msgid "great-grandchild"
-msgstr "Tyttärentyttären lapsi"
+msgstr "tyttärentyttären lapsi"
 
 #: includes/functions/functions.php:942
 msgctxt "daughter’s son’s child"
 msgid "great-grandchild"
-msgstr "Tyttärenpojanlapsi"
+msgstr "tyttärenpojanlapsi"
 
 #: includes/functions/functions.php:1063
 msgctxt "son’s child’s child"
 msgid "great-grandchild"
-msgstr "Pojanlapsen lapsi"
+msgstr "pojanlapsen lapsi"
 
 #: includes/functions/functions.php:1066
 msgctxt "son’s daughter’s child"
 msgid "great-grandchild"
-msgstr "Pojantyttären lapsi"
+msgstr "pojantyttären lapsi"
 
 #: includes/functions/functions.php:1070
 msgctxt "son’s son’s child"
 msgid "great-grandchild"
-msgstr "Pojanpojan lapsi"
+msgstr "pojanpojan lapsi"
 
 #: includes/functions/functions.php:922
 msgctxt "child’s child’s daughter"
 msgid "great-granddaughter"
-msgstr "Lapsenlapsen tytär"
+msgstr "lapsenlapsen tytär"
 
 #: includes/functions/functions.php:925
 msgctxt "child’s daughter’s daughter"
 msgid "great-granddaughter"
-msgstr "Lapsentyttären tytär"
+msgstr "lapsentyttären tytär"
 
 #: includes/functions/functions.php:929
 msgctxt "child’s son’s daughter"
 msgid "great-granddaughter"
-msgstr "Lapsenpojantytär"
+msgstr "lapsenpojantytär"
 
 #: includes/functions/functions.php:933
 msgctxt "daughter’s child’s daughter"
 msgid "great-granddaughter"
-msgstr "Tyttärenlapsen tytär"
+msgstr "tyttärenlapsen tytär"
 
 #: includes/functions/functions.php:936
 msgctxt "daughter’s daughter’s daughter"
 msgid "great-granddaughter"
-msgstr "Tyttärentyttärentytär"
+msgstr "tyttärentyttärentytär"
 
 #: includes/functions/functions.php:943
 msgctxt "daughter’s son’s daughter"
 msgid "great-granddaughter"
-msgstr "Tyttärenpojantytär"
+msgstr "tyttärenpojantytär"
 
 #: includes/functions/functions.php:1064
 msgctxt "son’s child’s daughter"
 msgid "great-granddaughter"
-msgstr "Pojanlapsen tytär"
+msgstr "pojanlapsen tytär"
 
 #: includes/functions/functions.php:1067
 msgctxt "son’s daughter’s daughter"
 msgid "great-granddaughter"
-msgstr "Pojantyttärentytär"
+msgstr "pojantyttärentytär"
 
 #: includes/functions/functions.php:1071
 msgctxt "son’s son’s daughter"
 msgid "great-granddaughter"
-msgstr "Pojanpojantytär"
+msgstr "pojanpojantytär"
 
 #: includes/functions/functions.php:951
 msgctxt "father’s father’s father"
 msgid "great-grandfather"
-msgstr "Isän isänisä (isoisän isä)"
+msgstr "isoisän isä"
 
 #: includes/functions/functions.php:957
 msgctxt "father’s mother’s father"
 msgid "great-grandfather"
-msgstr "Isän isoisä/äidinisä"
+msgstr "isän isoisä/äidinisä"
 
 #: includes/functions/functions.php:963
 msgctxt "father’s parent’s father"
 msgid "great-grandfather"
-msgstr "Isän isoisä"
+msgstr "isän isoisä"
 
 #: includes/functions/functions.php:982
 msgctxt "mother’s father’s father"
 msgid "great-grandfather"
-msgstr "Äidin isoisä/isänisä"
+msgstr "äidin isoisä/isänisä"
 
 #: includes/functions/functions.php:991
 msgctxt "mother’s mother’s father"
 msgid "great-grandfather"
-msgstr "Isoisoisä"
+msgstr "isoisoisä"
 
 #: includes/functions/functions.php:997
 msgctxt "mother’s parent’s father"
 msgid "great-grandfather"
-msgstr "Äidin isoisä"
+msgstr "äidin isoisä"
 
 #: includes/functions/functions.php:1008
 msgctxt "parent’s father’s father"
 msgid "great-grandfather"
-msgstr "Isoisoisä"
+msgstr "isoisoisä"
 
 #: includes/functions/functions.php:1014
 msgctxt "parent’s mother’s father"
 msgid "great-grandfather"
-msgstr "Isän tai äidin äidinisä/isoisä"
+msgstr "isän tai äidin äidinisä/isoisä"
 
 #: includes/functions/functions.php:1020
 msgctxt "parent’s parent’s father"
 msgid "great-grandfather"
-msgstr "Isoisoisä"
+msgstr "isoisoisä"
 
 #: includes/functions/functions.php:952
 msgctxt "father’s father’s mother"
 msgid "great-grandmother"
-msgstr "Isän isänäiti (isoisän äiti)"
+msgstr "isoisän äiti"
 
 #: includes/functions/functions.php:958
 msgctxt "father’s mother’s mother"
 msgid "great-grandmother"
-msgstr "Isän isoäiti/äidinäiti"
+msgstr "isän isoäiti"
 
 #: includes/functions/functions.php:964
 msgctxt "father’s parent’s mother"
 msgid "great-grandmother"
-msgstr "Isän isoäiti"
+msgstr "isän isoäiti"
 
 #: includes/functions/functions.php:983
 msgctxt "mother’s father’s mother"
 msgid "great-grandmother"
-msgstr "Äidin isoäiti/isänäiti"
+msgstr "äidin isoäiti"
 
 #: includes/functions/functions.php:992
 msgctxt "mother’s mother’s mother"
 msgid "great-grandmother"
-msgstr "Isoisoäiti"
+msgstr "isoisoäiti"
 
 #: includes/functions/functions.php:998
 msgctxt "mother’s parent’s mother"
 msgid "great-grandmother"
-msgstr "Äidin isoäiti"
+msgstr "äidin isoäiti"
 
 #: includes/functions/functions.php:1009
 msgctxt "parent’s father’s mother"
 msgid "great-grandmother"
-msgstr "Isoisoäiti"
+msgstr "isoisoäiti"
 
 #: includes/functions/functions.php:1015
 msgctxt "parent’s mother’s mother"
 msgid "great-grandmother"
-msgstr "Isän tai äidin äidinäiti/isoäiti"
+msgstr "isän tai äidin äidinäiti/isoäiti"
 
 #: includes/functions/functions.php:1021
 msgctxt "parent’s parent’s mother"
 msgid "great-grandmother"
-msgstr "Isän tai äidin isoäiti"
+msgstr "isän tai äidin isoäiti"
 
 #: includes/functions/functions.php:953
 msgctxt "father’s father’s parent"
 msgid "great-grandparent"
-msgstr "Isänisän (isoisän) isä tai äiti"
+msgstr "isoisän vanhempi"
 
 #: includes/functions/functions.php:959
 msgctxt "father’s mother’s parent"
 msgid "great-grandparent"
-msgstr "Isän äidinisä/-äiti"
+msgstr "isoäidin vanhempi"
 
 #: includes/functions/functions.php:965
 msgctxt "father’s parent’s parent"
 msgid "great-grandparent"
-msgstr "Isän isoisä/isoäiti"
+msgstr "isän isovanhempi"
 
 #: includes/functions/functions.php:984
 msgctxt "mother’s father’s parent"
 msgid "great-grandparent"
-msgstr "Äidin isänisä/-äiti"
+msgstr "isoisän vanhempi"
 
 #: includes/functions/functions.php:993
 msgctxt "mother’s mother’s parent"
 msgid "great-grandparent"
-msgstr "Äidin äidinisä/-äiti"
+msgstr "isoäidin vanhempi"
 
 #: includes/functions/functions.php:999
 msgctxt "mother’s parent’s parent"
 msgid "great-grandparent"
-msgstr "Äidin isoisä/isoäiti"
+msgstr "äidin isovanhempi"
 
 #: includes/functions/functions.php:1010
 msgctxt "parent’s father’s parent"
 msgid "great-grandparent"
-msgstr "Isoisän isä/äiti"
+msgstr "isoisän vanhempi"
 
 #: includes/functions/functions.php:1016
 msgctxt "parent’s mother’s parent"
 msgid "great-grandparent"
-msgstr "Isoäidin isä/äiti"
+msgstr "isoäidin vanhempi"
 
 #: includes/functions/functions.php:1022
 msgctxt "parent’s parent’s parent"
 msgid "great-grandparent"
-msgstr "Isovanhempien isä/äiti"
+msgstr "isovanhemman vanhempi"
 
 #: includes/functions/functions.php:923
 msgctxt "child’s child’s son"
 msgid "great-grandson"
-msgstr "Lapsenlapsen poika"
+msgstr "lapsenlapsen poika"
 
 #: includes/functions/functions.php:927
 msgctxt "child’s daughter’s son"
 msgid "great-grandson"
-msgstr "Lapsentyttären poika"
+msgstr "lapsentyttären poika"
 
 #: includes/functions/functions.php:930
 msgctxt "child’s son’s son"
 msgid "great-grandson"
-msgstr "Lapsenpojan poika"
+msgstr "lapsenpojan poika"
 
 #: includes/functions/functions.php:934
 msgctxt "daughter’s child’s son"
 msgid "great-grandson"
-msgstr "Tyttärenlapsen poika"
+msgstr "tyttärenlapsen poika"
 
 #: includes/functions/functions.php:938
 msgctxt "daughter’s daughter’s son"
 msgid "great-grandson"
-msgstr "Tyttärentyttärenpoika"
+msgstr "tyttärentyttärenpoika"
 
 #: includes/functions/functions.php:944
 msgctxt "daughter’s son’s son"
 msgid "great-grandson"
-msgstr "Tyttärenpojanpoika"
+msgstr "tyttärenpojanpoika"
 
 #: includes/functions/functions.php:1065
 msgctxt "son’s child’s son"
 msgid "great-grandson"
-msgstr "Pojanlapsen poika"
+msgstr "pojanlapsen poika"
 
 #: includes/functions/functions.php:1069
 msgctxt "son’s daughter’s son"
 msgid "great-grandson"
-msgstr "Pojantyttärenpoika"
+msgstr "pojantyttärenpoika"
 
 #: includes/functions/functions.php:1072
 msgctxt "son’s son’s son"
 msgid "great-grandson"
-msgstr "Pojanpojanpoika"
+msgstr "pojanpojanpoika"
 
 #: includes/functions/functions.php:1208
 msgid "great-great-aunt"
@@ -17792,27 +17792,27 @@ msgstr "isoisotäti/-setä/-eno"
 
 #: includes/functions/functions.php:1563
 msgid "great-great-grandchild"
-msgstr "Lapsen lapsen lapsenlapsi"
+msgstr "lapsen lapsen lapsenlapsi"
 
 #: includes/functions/functions.php:1562
 msgid "great-great-granddaughter"
-msgstr "Lapsen lapsen lapsentytär"
+msgstr "lapsen lapsen lapsentytär"
 
 #: includes/functions/functions.php:1468
 msgid "great-great-grandfather"
-msgstr "Isoisoisoisä"
+msgstr "isoisoisoisä"
 
 #: includes/functions/functions.php:1469
 msgid "great-great-grandmother"
-msgstr "Isoisoisoäiti"
+msgstr "isoisoisoäiti"
 
 #: includes/functions/functions.php:1470
 msgid "great-great-grandparent"
-msgstr "Isoisoisoisä/-äiti"
+msgstr "isoisoisoisä/-äiti"
 
 #: includes/functions/functions.php:1561
 msgid "great-great-grandson"
-msgstr "Lapsen lapsen lapsenpoika"
+msgstr "lapsen lapsen lapsenpoika"
 
 #: includes/functions/functions.php:1218
 msgid "great-great-great-aunt"
@@ -17824,32 +17824,32 @@ msgstr "isoisoisotäti/-setä/-eno"
 
 #: includes/functions/functions.php:1570
 msgid "great-great-great-grandchild"
-msgstr "Lapsen lapsen lapsen lapsenlapsi"
+msgstr "lapsen lapsen lapsen lapsenlapsi"
 
 #: includes/functions/functions.php:1569
 msgid "great-great-great-granddaughter"
-msgstr "Lapsen lapsen lapsen lapsentytär"
+msgstr "lapsen lapsen lapsen lapsentytär"
 
 #: includes/functions/functions.php:1475
 msgid "great-great-great-grandfather"
-msgstr "Isoisoisoisoisä"
+msgstr "isoisoisoisoisä"
 
 #: includes/functions/functions.php:1476
 msgid "great-great-great-grandmother"
-msgstr "Isoisoisoisoäiti"
+msgstr "isoisoisoisoäiti"
 
 #: includes/functions/functions.php:1477
 msgid "great-great-great-grandparent"
-msgstr "Isoisoisoisoisä/-äiti"
+msgstr "isoisoisoisoisä/-äiti"
 
 #: includes/functions/functions.php:1568
 msgid "great-great-great-grandson"
-msgstr "Lapsen lapsen lapsen lapsenpoika"
+msgstr "lapsen lapsen lapsen lapsenpoika"
 
 #: includes/functions/functions.php:1333
 msgctxt "(a man’s) brother’s great-great-grandson"
 msgid "great-great-great-nephew"
-msgstr "sisarenlapsenlapsenlapsenpoika"
+msgstr "veljenlapsenlapsenlapsenpoika"
 
 #: includes/functions/functions.php:1335
 msgctxt "(a man’s) sister’s great-great-grandson"
@@ -17864,12 +17864,12 @@ msgstr "sisarenlapsenlapsenlapsenpoika"
 #: includes/functions/functions.php:1349
 msgctxt "(a man’s) brother’s great-great-grandchild"
 msgid "great-great-great-nephew/niece"
-msgstr "sisarenlapsenlapsenlapsentytär/-poika"
+msgstr "veljenlapsenlapsenlapsenlapsi"
 
 #: includes/functions/functions.php:1351
 msgctxt "(a man’s) sister’s great-great-grandchild"
 msgid "great-great-great-nephew/niece"
-msgstr "sisarenlapsenlapsenlapsentytär/-poika"
+msgstr "sisarenlapsenlapsenlapsenlapsi"
 
 #: includes/functions/functions.php:1353
 msgctxt "(a woman’s) great-great-great-nephew/niece"
@@ -17879,7 +17879,7 @@ msgstr "sisarenlapsenlapsenlapsentytär/-poika"
 #: includes/functions/functions.php:1341
 msgctxt "(a man’s) brother’s great-great-granddaughter"
 msgid "great-great-great-niece"
-msgstr "sisarenlapsenlapsenlapsentytär"
+msgstr "veljenlapsenlapsenlapsentytär"
 
 #: includes/functions/functions.php:1343
 msgctxt "(a man’s) sister’s great-great-granddaughter"
@@ -17894,12 +17894,12 @@ msgstr "sisarenlapsenlapsenlapsentytär"
 #: includes/functions/functions.php:1215
 msgctxt "great-great-grandfather’s brother"
 msgid "great-great-great-uncle"
-msgstr "isoisoisosetä/-eno"
+msgstr "isoisoisosetä"
 
 #: includes/functions/functions.php:1216
 msgctxt "great-great-grandmother’s brother"
 msgid "great-great-great-uncle"
-msgstr "isoisoisosetä/-eno"
+msgstr "isoisoisoeno"
 
 #: includes/functions/functions.php:1217
 msgctxt "great-great-grandparent’s brother"
@@ -17909,7 +17909,7 @@ msgstr "isoisoisosetä/-eno"
 #: includes/functions/functions.php:1306
 msgctxt "(a man’s) brother’s great-grandson"
 msgid "great-great-nephew"
-msgstr "sisarenlapsenlapsenpoika"
+msgstr "veljenlapsenlapsenpoika"
 
 #: includes/functions/functions.php:1308
 msgctxt "(a man’s) sister’s great-grandson"
@@ -17924,7 +17924,7 @@ msgstr "sisarenlapsenlapsenpoika"
 #: includes/functions/functions.php:1322
 msgctxt "(a man’s) brother’s great-grandchild"
 msgid "great-great-nephew/niece"
-msgstr "sisarenlapsenlapsentytär/-poika"
+msgstr "veljenlapsenlapsenlapsi"
 
 #: includes/functions/functions.php:1324
 msgctxt "(a man’s) sister’s great-grandchild"
@@ -17934,12 +17934,12 @@ msgstr "sisarenlapsenlapsentytär/-poika"
 #: includes/functions/functions.php:1326
 msgctxt "(a woman’s) great-great-nephew/niece"
 msgid "great-great-nephew/niece"
-msgstr "sisarenlapsenlapsentytär/-poika"
+msgstr "sisarenlapsenlapsenlapsi"
 
 #: includes/functions/functions.php:1314
 msgctxt "(a man’s) brother’s great-granddaughter"
 msgid "great-great-niece"
-msgstr "sisarenlapsenlapsentytär"
+msgstr "veljenlapsenlapsentytär"
 
 #: includes/functions/functions.php:1316
 msgctxt "(a man’s) sister’s great-granddaughter"
@@ -17954,12 +17954,12 @@ msgstr "sisarenlapsenlapsentytär"
 #: includes/functions/functions.php:1205
 msgctxt "great-grandfather’s brother"
 msgid "great-great-uncle"
-msgstr "isoisosetä/-eno"
+msgstr "isoisosetä"
 
 #: includes/functions/functions.php:1206
 msgctxt "great-grandmother’s brother"
 msgid "great-great-uncle"
-msgstr "isoisosetä/-eno"
+msgstr "isoisoeno"
 
 #: includes/functions/functions.php:1207
 msgctxt "great-grandparent’s brother"
@@ -17984,17 +17984,17 @@ msgstr "veljenpojanpoika"
 #: includes/functions/functions.php:1044
 msgctxt "(a man’s) sister’s child’s son"
 msgid "great-nephew"
-msgstr "siskonlapsenpoika"
+msgstr "sisarenlapsenpoika"
 
 #: includes/functions/functions.php:1051
 msgctxt "(a man’s) sister’s daughter’s son"
 msgid "great-nephew"
-msgstr "siskontyttärenpoika"
+msgstr "sisarentyttärenpoika"
 
 #: includes/functions/functions.php:1060
 msgctxt "(a man’s) sister’s son’s son"
 msgid "great-nephew"
-msgstr "siskonpojanpoika"
+msgstr "sisarenpojanpoika"
 
 #: includes/functions/functions.php:903
 msgctxt "(a woman’s) brother’s child’s son"
@@ -18014,32 +18014,32 @@ msgstr "veljenpojanpoika"
 #: includes/functions/functions.php:1045
 msgctxt "(a woman’s) sister’s child’s son"
 msgid "great-nephew"
-msgstr "siskonlapsenpoika"
+msgstr "sisarenlapsenpoika"
 
 #: includes/functions/functions.php:1052
 msgctxt "(a woman’s) sister’s daughter’s son"
 msgid "great-nephew"
-msgstr "siskontyttärenpoika"
+msgstr "sisarentyttärenpoika"
 
 #: includes/functions/functions.php:1061
 msgctxt "(a woman’s) sister’s son’s son"
 msgid "great-nephew"
-msgstr "siskonpojanpoika"
+msgstr "sisarenpojanpoika"
 
 #: includes/functions/functions.php:1031
 msgctxt "sibling’s child’s son"
 msgid "great-nephew"
-msgstr "sisaren lapsenpoika"
+msgstr "sisaruksen lapsenpoika"
 
 #: includes/functions/functions.php:1035
 msgctxt "sibling’s daughter’s son"
 msgid "great-nephew"
-msgstr "sisarentyttärenpoika"
+msgstr "sisaruksen tyttärenpoika"
 
 #: includes/functions/functions.php:1038
 msgctxt "sibling’s son’s son"
 msgid "great-nephew"
-msgstr "sisarenpojanpoika"
+msgstr "sisaruksen pojanpoika"
 
 #: includes/functions/functions.php:898
 msgctxt "(a man’s) brother’s child’s child"
@@ -18059,17 +18059,17 @@ msgstr "veljenpojanlapsi"
 #: includes/functions/functions.php:1040
 msgctxt "(a man’s) sister’s child’s child"
 msgid "great-nephew/niece"
-msgstr "siskonlapsenlapsi"
+msgstr "sisarenlapsenlapsi"
 
 #: includes/functions/functions.php:1046
 msgctxt "(a man’s) sister’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr "siskontyttärenlapsi"
+msgstr "sisarentyttärenlapsi"
 
 #: includes/functions/functions.php:1056
 msgctxt "(a man’s) sister’s son’s child"
 msgid "great-nephew/niece"
-msgstr "siskonpojanlapsi"
+msgstr "sisarenpojanlapsi"
 
 #: includes/functions/functions.php:899
 msgctxt "(a woman’s) brother’s child’s child"
@@ -18089,32 +18089,32 @@ msgstr "veljenpojanlapsi"
 #: includes/functions/functions.php:1041
 msgctxt "(a woman’s) sister’s child’s child"
 msgid "great-nephew/niece"
-msgstr "siskonlapsenlapsi"
+msgstr "sisarenlapsenlapsi"
 
 #: includes/functions/functions.php:1047
 msgctxt "(a woman’s) sister’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr "siskontyttärenlapsi"
+msgstr "sisarentyttärenlapsi"
 
 #: includes/functions/functions.php:1057
 msgctxt "(a woman’s) sister’s son’s child"
 msgid "great-nephew/niece"
-msgstr "siskonpojanlapsi"
+msgstr "sisarenpojanlapsi"
 
 #: includes/functions/functions.php:1029
 msgctxt "sibling’s child’s child"
 msgid "great-nephew/niece"
-msgstr "sisaren lapsenlapsi"
+msgstr "sisaruksen lapsenlapsi"
 
 #: includes/functions/functions.php:1032
 msgctxt "sibling’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr "sisaren tyttärenlapsi"
+msgstr "sisaruksen tyttärenlapsi"
 
 #: includes/functions/functions.php:1036
 msgctxt "sibling’s son’s child"
 msgid "great-nephew/niece"
-msgstr "sisaren pojanlapsi"
+msgstr "sisaruksen pojanlapsi"
 
 #: includes/functions/functions.php:900
 msgctxt "(a man’s) brother’s child’s daughter"
@@ -18134,17 +18134,17 @@ msgstr "veljenpojantytär"
 #: includes/functions/functions.php:1042
 msgctxt "(a man’s) sister’s child’s daughter"
 msgid "great-niece"
-msgstr "siskonlapsentytär"
+msgstr "sisarenlapsentytär"
 
 #: includes/functions/functions.php:1048
 msgctxt "(a man’s) sister’s daughter’s daughter"
 msgid "great-niece"
-msgstr "siskontyttärentytär"
+msgstr "sisarentyttärentytär"
 
 #: includes/functions/functions.php:1058
 msgctxt "(a man’s) sister’s son’s daughter"
 msgid "great-niece"
-msgstr "siskonpojantytär"
+msgstr "sisarenpojantytär"
 
 #: includes/functions/functions.php:901
 msgctxt "(a woman’s) brother’s child’s daughter"
@@ -18164,32 +18164,32 @@ msgstr "veljenpojantytär"
 #: includes/functions/functions.php:1043
 msgctxt "(a woman’s) sister’s child’s daughter"
 msgid "great-niece"
-msgstr "siskonlapsentytär"
+msgstr "sisarenlapsentytär"
 
 #: includes/functions/functions.php:1049
 msgctxt "(a woman’s) sister’s daughter’s daughter"
 msgid "great-niece"
-msgstr "siskontyttärentytär"
+msgstr "sisarentyttärentytär"
 
 #: includes/functions/functions.php:1059
 msgctxt "(a woman’s) sister’s son’s daughter"
 msgid "great-niece"
-msgstr "siskonpojantytär"
+msgstr "sisarenpojantytär"
 
 #: includes/functions/functions.php:1030
 msgctxt "sibling’s child’s daughter"
 msgid "great-niece"
-msgstr "sisaren lapsentytär"
+msgstr "sisaruksen lapsentytär"
 
 #: includes/functions/functions.php:1033
 msgctxt "sibling’s daughter’s daughter"
 msgid "great-niece"
-msgstr "sisaren tyttärentytär"
+msgstr "sisaruksen tyttärentytär"
 
 #: includes/functions/functions.php:1037
 msgctxt "sibling’s son’s daughter"
 msgid "great-niece"
-msgstr "sisaren pojantytär"
+msgstr "sisaruksen pojantytär"
 
 #: includes/functions/functions.php:950
 msgctxt "father’s father’s brother"
@@ -18199,7 +18199,7 @@ msgstr "isosetä"
 #: includes/functions/functions.php:1083
 msgctxt "father’s father’s sister’s husband"
 msgid "great-uncle"
-msgstr "isänisän siskonmies"
+msgstr "isänisän sisarenmies"
 
 #: includes/functions/functions.php:956
 msgctxt "father’s mother’s brother"
@@ -18209,7 +18209,7 @@ msgstr "isosetä"
 #: includes/functions/functions.php:1086
 msgctxt "father’s mother’s sister’s husband"
 msgid "great-uncle"
-msgstr "isänäidin siskonmies"
+msgstr "isänäidin sisarenmies"
 
 #: includes/functions/functions.php:962
 msgctxt "father’s parent’s brother"
@@ -18219,7 +18219,7 @@ msgstr "isosetä"
 #: includes/functions/functions.php:1089
 msgctxt "father’s parent’s sister’s husband"
 msgid "great-uncle"
-msgstr "isoisän siskonmies"
+msgstr "isoisän sisarenmies"
 
 #: includes/functions/functions.php:981
 msgctxt "mother’s father’s brother"
@@ -18229,7 +18229,7 @@ msgstr "isosetä"
 #: includes/functions/functions.php:1092
 msgctxt "mother’s father’s sister’s husband"
 msgid "great-uncle"
-msgstr "äidinisän siskonmies"
+msgstr "äidinisän sisarenmies"
 
 #: includes/functions/functions.php:990
 msgctxt "mother’s mother’s brother"
@@ -18239,7 +18239,7 @@ msgstr "isoeno"
 #: includes/functions/functions.php:1095
 msgctxt "mother’s mother’s sister’s husband"
 msgid "great-uncle"
-msgstr "äidinäidin siskonmies"
+msgstr "äidinäidin sisarenmies"
 
 #: includes/functions/functions.php:996
 msgctxt "mother’s parent’s brother"
@@ -18249,7 +18249,7 @@ msgstr "isosetä/-eno"
 #: includes/functions/functions.php:1098
 msgctxt "mother’s parent’s sister’s husband"
 msgid "great-uncle"
-msgstr "äidinäidin/-isän siskonmies"
+msgstr "äidinäidin/-isän sisarenmies"
 
 #: includes/functions/functions.php:1007
 msgctxt "parent’s father’s brother"
@@ -18259,7 +18259,7 @@ msgstr "isosetä"
 #: includes/functions/functions.php:1101
 msgctxt "parent’s father’s sister’s husband"
 msgid "great-uncle"
-msgstr "isoisän siskonmies"
+msgstr "isoisän sisarenmies"
 
 #: includes/functions/functions.php:1013
 msgctxt "parent’s mother’s brother"
@@ -18269,7 +18269,7 @@ msgstr "isoeno"
 #: includes/functions/functions.php:1104
 msgctxt "parent’s mother’s sister’s husband"
 msgid "great-uncle"
-msgstr "isoäidin siskonmies"
+msgstr "isoäidin sisarenmies"
 
 #: includes/functions/functions.php:1019
 msgctxt "parent’s parent’s brother"
@@ -18279,7 +18279,7 @@ msgstr "isosetä"
 #: includes/functions/functions.php:1107
 msgctxt "parent’s parent’s sister’s husband"
 msgid "great-uncle"
-msgstr "isoisän/-äidin siskonmies"
+msgstr "isovanhemman sisarenmies"
 
 #. I18N: layout option for the fan chart
 #: library/WT/Controller/Fanchart.php:61
@@ -18304,17 +18304,17 @@ msgstr "velipuoli"
 #: includes/functions/functions.php:828
 msgctxt "father’s child"
 msgid "half-sibling"
-msgstr "sisarpuoli"
+msgstr "sisar- tai velipuoli"
 
 #: includes/functions/functions.php:846
 msgctxt "mother’s child"
 msgid "half-sibling"
-msgstr "sisarpuoli"
+msgstr "sisar- tai velipuoli"
 
 #: includes/functions/functions.php:856
 msgctxt "parent’s child"
 msgid "half-sibling"
-msgstr "sisarpuoli"
+msgstr "sisar- tai velipuoli"
 
 #: includes/functions/functions.php:829
 msgctxt "father’s daughter"
@@ -18488,12 +18488,12 @@ msgstr "tekeydy"
 #: includes/functions/functions.php:848
 msgctxt "mother’s father"
 msgid "maternal grandfather"
-msgstr "Äidinisä (isoisä)"
+msgstr "isoisä"
 
 #: includes/functions/functions.php:850
 msgctxt "mother’s mother"
 msgid "maternal grandmother"
-msgstr "Äidinäiti (isoäiti)"
+msgstr "isoäiti"
 
 #: includes/functions/functions.php:851
 msgctxt "mother’s parent"
@@ -18552,17 +18552,17 @@ msgstr "äiti"
 #: includes/functions/functions.php:841
 msgctxt "husband’s mother"
 msgid "mother-in-law"
-msgstr "miehenäiti, anoppi"
+msgstr "anoppi"
 
 #: includes/functions/functions.php:881
 msgctxt "spouse’s mother"
 msgid "mother-in-law"
-msgstr "puolison äiti, anoppi"
+msgstr "anoppi"
 
 #: includes/functions/functions.php:890
 msgctxt "wife’s mother"
 msgid "mother-in-law"
-msgstr "vaimonäiti, anoppi"
+msgstr "anoppi"
 
 #: includes/functions/functions.php:884
 msgctxt "spouse’s parent"
@@ -18577,27 +18577,27 @@ msgstr "veljenpoika"
 #: includes/functions/functions.php:867
 msgctxt "sibling’s son"
 msgid "nephew"
-msgstr "sisarenpoika"
+msgstr "sisaruksen poika"
 
 #: includes/functions/functions.php:872
 msgctxt "sister’s son"
 msgid "nephew"
-msgstr "siskonpoika"
+msgstr "sisarenpoika"
 
 #: includes/functions/functions.php:908
 msgctxt "brother’s daughter’s husband"
 msgid "nephew-in-law"
-msgstr "veljentyttärenmies"
+msgstr "veljen vävy"
 
 #: includes/functions/functions.php:1034
 msgctxt "sibling’s daughter’s husband"
 msgid "nephew-in-law"
-msgstr "sisaren tyttärenmies"
+msgstr "sisaruksen vävy"
 
 #: includes/functions/functions.php:1050
 msgctxt "sisters’s daughter’s husband"
 msgid "nephew-in-law"
-msgstr "siskon tyttärenmies"
+msgstr "sisaren vävy"
 
 #: includes/functions/functions.php:813
 msgctxt "brother’s child"
@@ -18607,12 +18607,12 @@ msgstr "veljenlapsi"
 #: includes/functions/functions.php:865
 msgctxt "sibling’s child"
 msgid "nephew/niece"
-msgstr "sisaren lapsi"
+msgstr "sisaruksen lapsi"
 
 #: includes/functions/functions.php:869
 msgctxt "sister’s child"
 msgid "nephew/niece"
-msgstr "siskon lapsi"
+msgstr "sisarenlapsi"
 
 #. I18N: button label, next page
 #: admin_pgv_to_wt.php:157 admin_site_merge.php:287 library/WT/I18N.php:974
@@ -18628,27 +18628,27 @@ msgstr "veljentytär"
 #: includes/functions/functions.php:866
 msgctxt "sibling’s daughter"
 msgid "niece"
-msgstr "sisarentytär"
+msgstr "sisaruksen tytär"
 
 #: includes/functions/functions.php:870
 msgctxt "sister’s daughter"
 msgid "niece"
-msgstr "siskontytär"
+msgstr "sisarentytär"
 
 #: includes/functions/functions.php:917
 msgctxt "brother’s son’s wife"
 msgid "niece-in-law"
-msgstr "veljenpojanvaimo"
+msgstr "veljenpojan vaimo"
 
 #: includes/functions/functions.php:1039
 msgctxt "sibling’s son’s wife"
 msgid "niece-in-law"
-msgstr "sisaren pojanvaimo"
+msgstr "sisaruksen pojanvaimo"
 
 #: includes/functions/functions.php:1062
 msgctxt "sisters’s son’s wife"
 msgid "niece-in-law"
-msgstr "siskon pojanvaimo"
+msgstr "sisarenpojan vaimo"
 
 #: includes/functions/functions.php:626
 msgctxt "FEMALE"
@@ -18743,7 +18743,7 @@ msgstr "iltapäivällä"
 
 #: includes/functions/functions.php:723
 msgid "parent"
-msgstr "isä/äiti"
+msgstr "vanhempi"
 
 #: includes/functions/functions.php:742
 msgctxt "FEMALE"
@@ -18768,12 +18768,12 @@ msgstr "isän nimen mukaan"
 #: includes/functions/functions.php:830
 msgctxt "father’s father"
 msgid "paternal grandfather"
-msgstr "Isänisä (isoisä)"
+msgstr "isoisä"
 
 #: includes/functions/functions.php:831
 msgctxt "father’s mother"
 msgid "paternal grandmother"
-msgstr "Isänäiti (isoäiti)"
+msgstr "isoäiti"
 
 #: includes/functions/functions.php:832
 msgctxt "father’s parent"
@@ -19126,42 +19126,42 @@ msgstr "sisko"
 #: includes/functions/functions.php:816
 msgctxt "brother’s wife"
 msgid "sister-in-law"
-msgstr "veljenvaimo, käly"
+msgstr "käly"
 
 #: includes/functions/functions.php:920
 msgctxt "brother’s wife’s sister"
 msgid "sister-in-law"
-msgstr "veljen vaimonsisko / kälyn sisko"
+msgstr "kälyn sisko"
 
 #: includes/functions/functions.php:975
 msgctxt "husband’s brother’s wife"
 msgid "sister-in-law"
-msgstr "miehen veljenvaimo / langon vaimo"
+msgstr "langon vaimo"
 
 #: includes/functions/functions.php:843
 msgctxt "husband’s sister"
 msgid "sister-in-law"
-msgstr "miehensisko, käly"
+msgstr "käly"
 
 #: includes/functions/functions.php:1055
 msgctxt "sister’s husband’s sister"
 msgid "sister-in-law"
-msgstr "siskon miehensisko / siskon käly"
+msgstr "sisaren käly"
 
 #: includes/functions/functions.php:882
 msgctxt "spouse’s sister"
 msgid "sister-in-law"
-msgstr "puolison sisko, käly"
+msgstr "käly"
 
 #: includes/functions/functions.php:1077
 msgctxt "wife’s brother’s wife"
 msgid "sister-in-law"
-msgstr "vaimon veljen vaimo / langon vaimo"
+msgstr "langon vaimo"
 
 #: includes/functions/functions.php:892
 msgctxt "wife’s sister"
 msgid "sister-in-law"
-msgstr "vaimonsisko, käly"
+msgstr "käly"
 
 #: includes/functions/functions.php:623
 msgctxt "FEMALE"
@@ -19192,22 +19192,22 @@ msgstr "vanhemmat:"
 #: includes/functions/functions.php:819
 msgctxt "child’s husband"
 msgid "son-in-law"
-msgstr "tyttärenmies, vävy"
+msgstr "vävy"
 
 #: includes/functions/functions.php:825
 msgctxt "daughter’s husband"
 msgid "son-in-law"
-msgstr "tyttärenmies, vävy"
+msgstr "vävy"
 
 #: includes/functions/functions.php:939
 msgctxt "daughter’s husband’s father"
 msgid "son-in-law’s father"
-msgstr "tyttären miehen isä / tyttären appi"
+msgstr "tyttären appi"
 
 #: includes/functions/functions.php:940
 msgctxt "daughter’s husband’s mother"
 msgid "son-in-law’s mother"
-msgstr "tyttären miehen äiti / tyttären anoppi"
+msgstr "tyttären anoppi"
 
 #: includes/functions/functions.php:941
 msgctxt "daughter’s husband’s parent"
@@ -19217,7 +19217,7 @@ msgstr "tyttären appi/anoppi"
 #: includes/functions/functions.php:821
 msgctxt "child’s spouse"
 msgid "son/daughter-in-law"
-msgstr "lapsen puoliso / vävy, miniä"
+msgstr "vävy/miniä"
 
 #. I18N: An option in a list-box
 #: modules_v3/change_report/report.xml:7
@@ -19306,7 +19306,7 @@ msgstr "velipuoli"
 #: includes/functions/functions.php:989
 msgctxt "mother’s husband’s son"
 msgid "step-brother"
-msgstr "Velipuoli"
+msgstr "velipuoli"
 
 #: includes/functions/functions.php:1028
 msgctxt "parent’s spouse’s son"
@@ -19361,17 +19361,17 @@ msgstr "isä-/äitipuoli"
 #: includes/functions/functions.php:972
 msgctxt "father’s wife’s child"
 msgid "step-sibling"
-msgstr "sisarpuoli"
+msgstr "sisar- tai velipuoli"
 
 #: includes/functions/functions.php:987
 msgctxt "mother’s husband’s child"
 msgid "step-sibling"
-msgstr "sisarpuoli"
+msgstr "sisar- tai velipuoli"
 
 #: includes/functions/functions.php:1026
 msgctxt "parent’s spouse’s child"
 msgid "step-sibling"
-msgstr "sisarpuoli"
+msgstr "sisar- tai velipuoli"
 
 #: includes/functions/functions.php:973
 msgctxt "father’s wife’s daughter"
@@ -19548,7 +19548,7 @@ msgstr "setä"
 #: includes/functions/functions.php:970
 msgctxt "father’s sister’s husband"
 msgid "uncle"
-msgstr "isän siskonmies"
+msgstr "isän sisarenmies"
 
 #: includes/functions/functions.php:845
 msgctxt "mother’s brother"
@@ -19558,7 +19558,7 @@ msgstr "eno"
 #: includes/functions/functions.php:1004
 msgctxt "mother’s sister’s husband"
 msgid "uncle"
-msgstr "äidin siskonmies"
+msgstr "äidin sisarenmies"
 
 #: includes/functions/functions.php:855
 msgctxt "parent’s brother"
@@ -19568,7 +19568,7 @@ msgstr "setä/eno"
 #: includes/functions/functions.php:1025
 msgctxt "parent’s sister’s husband"
 msgid "uncle"
-msgstr "isän tai äidin siskonmies"
+msgstr "isän tai äidin sisarenmies"
 
 #: library/WT/Controller/Pedigree.php:235 library/WT/Place.php:85
 #: modules_v3/GEDFact_assistant/_CENS/census_1_ctrl.php:52
@@ -20127,7 +20127,7 @@ msgstr "…"
 #~ msgstr "Palvelin"
 
 #~ msgid "Should the GeoNames database be used to provide more suggestions for place names?<br><br>When this option is set to <b>Yes</b>, the GeoNames database will be queried to supply suggestions for the place name being entered.  When set to <b>No</b>, only the current genealogical database will be searched.  As you enter more of the place name, the suggestion will become more precise.  This option can slow down data entry, particularly if your Internet connection is slow.<br><br>The GeoNames geographical database is accessible free of charge. It currently contains over 8,000,000 geographical names."
-#~ msgstr "Pitäisikö käyttää GeoNames tietokantaa, joka tarjoaa ehdotuksia paikan nimeksi?<br><br>Valitsemalla <b>Kyllä</b>, GeoNames tietokannasta etsitään ehdotuksia. Valitsemalla <b>Ei</b>, käytetään vain käytössä olevaa tietokantaa. Sitä mukaa kun kirjoitetaan, tarkentuvat ehdotukset. Tämä vaihtoehto voi hidastaa tietojen syöttöä, varsinkin jos internet yhteys on hidas.<br><br>GeoNames maantieteellisen tietokannan käyttäminen on ilmaista. Siellä on yli 8 miljoonaa maantieteellistä paikannimeä."
+#~ msgstr "Pitäisikö käyttää GeoNames tietokantaa, joka tarjoaa ehdotuksia paikan nimeksi?<br><br>Valitsemalla <b>Kyllä</b>, GeoNames tietokannasta etsitään ehdotuksia. Valitsemalla <b>Ei</b>, käytetään vain käytössä olevaa tietokantaa. Sitä mukaa kun kirjoitetaan, tarkentuvat ehdotukset. Tämä vaihtoehto voi hidastaa tietojen syöttöä, varsinkin jos internet yhteys on hidas.<br><br>GeoNames maantieteellisen tietokannan käyttäminen on ilmaista. Siellä on yli 8 miljoonaa maantieteellist?? paikannimeä."
 
 #~ msgid "Show link to Statistics charts?"
 #~ msgstr "Näytä linkki tilastotietokaavioihin?"

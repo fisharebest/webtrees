@@ -1550,7 +1550,7 @@ msgstr "אימוץ של אח-למחצה"
 
 #: library/WT/Gedcom/Tag.php:354
 msgid "Adoption of a half-sibling"
-msgstr "אמוץ אח/ות למחצה"
+msgstr "אמוץ אח/ות-למחצה"
 
 #: library/WT/Gedcom/Tag.php:353
 msgid "Adoption of a half-sister"
@@ -2396,7 +2396,7 @@ msgstr "טבילת אח-למחצה"
 
 #: library/WT/Gedcom/Tag.php:410
 msgid "Baptism of a half-sibling"
-msgstr "טבילת אח/ות למחצה"
+msgstr "טבילת אח/ות-למחצה"
 
 #: library/WT/Gedcom/Tag.php:409
 msgid "Baptism of a half-sister"
@@ -2722,7 +2722,7 @@ msgstr "לידה של אח-למחצה"
 
 #: library/WT/Gedcom/Tag.php:447
 msgid "Birth of a half-sibling"
-msgstr "לידת אח/ות למחצה"
+msgstr "לידת אח/ות-למחצה"
 
 #: library/WT/Gedcom/Tag.php:446
 msgid "Birth of a half-sister"
@@ -2898,7 +2898,7 @@ msgstr "ברית מילה של נכד"
 
 #: library/WT/Gedcom/Tag.php:819
 msgid "Brit milah of a half-brother"
-msgstr "ברית מילה של אח למחצה"
+msgstr "ברית מילה של אח-למחצה"
 
 #: library/WT/Gedcom/Tag.php:815
 msgid "Brit milah of a son"
@@ -3028,7 +3028,7 @@ msgstr "קבורה של אח-למחצה"
 
 #: library/WT/Gedcom/Tag.php:504
 msgid "Burial of a half-sibling"
-msgstr "קבורת אח/ות למחצה"
+msgstr "קבורת אח/ות-למחצה"
 
 #: library/WT/Gedcom/Tag.php:503
 msgid "Burial of a half-sister"
@@ -3336,7 +3336,7 @@ msgstr "שינויים"
 
 #. I18N: title for list of recent changes
 #: modules_v3/recent_changes/module.php:70
-#, fuzzy, php-format
+#, php-format
 msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
 msgstr[0] "השינויים ביממה האחרונה"
@@ -3567,7 +3567,7 @@ msgstr "הטבלת אח-למחצה"
 
 #: library/WT/Gedcom/Tag.php:552
 msgid "Christening of a half-sibling"
-msgstr "הטבלת אח/ות למחצה"
+msgstr "הטבלת אח/ות-למחצה"
 
 #: library/WT/Gedcom/Tag.php:551
 msgid "Christening of a half-sister"
@@ -15597,7 +15597,6 @@ msgid "You can re-enable these themes after the upgrade."
 msgstr "תוכל להפעיל עיצובים אלה מחדש לאחר השדרוג."
 
 #: admin_trees_renumber.php:261
-#, fuzzy
 msgid "You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree."
 msgstr "תוכל למספר מחדש את הרשומות בעץ משפחה, כך שמספרי הזיהוי הפנימיים האלה אינם משוכפלים באף עץ משפחה אחר."
 
