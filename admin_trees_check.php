@@ -209,8 +209,7 @@ foreach ($all_links as $xref1 => $links) {
  */
 function link_message($type1, $xref1, $type2, $xref2) {
 	return
-		/* I18N: The placeholders are GEDCOM XREFs and tags.  e.g. “INDI I123 contains a FAMC link to F234.” */
-		WT_I18N::translate(
+		/* I18N: The placeholders are GEDCOM XREFs and tags.  e.g. “INDI I123 contains a FAMC link to F234.” */ WT_I18N::translate(
 			'%1$s %2$s has a %3$s link to %4$s.',
 			format_type($type1),
 			format_link($xref1),

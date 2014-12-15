@@ -161,7 +161,7 @@ if ($error || !$PGV_PATH) {
 }
 
 // Run in a transaction
-WT_DB::exec("START TRANSACTION");
+WT_DB::beginTransaction();
 
 // Delete the existing user accounts, and any information associated with it
 WT_DB::exec("UPDATE `##log` SET user_id=NULL");
@@ -1045,7 +1045,7 @@ WT_DB::prepare(
 
 ////////////////////////////////////////////////////////////////////////////////
 
-WT_DB::exec("COMMIT");
+WT_DB::commit();
 
 echo '<hr>';
 echo '<p>', WT_I18N::translate('You need to login again, using your PhpGedView username and password.'), '</p>';

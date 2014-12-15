@@ -220,8 +220,8 @@ echo '</li>'; flush();
 echo '<li>', /* I18N: The system is about to [...] */ WT_I18N::translate('Check for custom themes…');
 
 $custom_themes = false;
-foreach (get_theme_names() as $theme_name => $theme_folder) {
-	switch($theme_folder) {
+foreach (get_theme_names() as $theme_name => $theme_id) {
+	switch($theme_id) {
 	case 'clouds':
 	case 'colors':
 	case 'fab':
@@ -234,25 +234,25 @@ foreach (get_theme_names() as $theme_name => $theme_folder) {
 			"SELECT EXISTS (SELECT 1 FROM `##site_setting`   WHERE setting_name='THEME_DIR' AND setting_value=?)" .
 			" OR    EXISTS (SELECT 1 FROM `##gedcom_setting` WHERE setting_name='THEME_DIR' AND setting_value=?)" .
 			" OR    EXISTS (SELECT 1 FROM `##user_setting`   WHERE setting_name='theme'     AND setting_value=?)"
-		)->execute(array($theme_folder, $theme_folder, $theme_folder))->fetchOne();
+		)->execute(array($theme_id, $theme_id, $theme_id))->fetchOne();
 		if ($theme_used) {
 			switch ($themes_action) {
 			case 'disable':
 				WT_DB::prepare(
 					"DELETE FROM `##site_setting`   WHERE setting_name = 'THEME_DIR' AND setting_value = ?"
-				)->execute(array($theme_folder));
+				)->execute(array($theme_id));
 				WT_DB::prepare(
 					"DELETE FROM `##gedcom_setting` WHERE setting_name = 'THEME_DIR' AND setting_value = ?"
-				)->execute(array($theme_folder));
+				)->execute(array($theme_id));
 				WT_DB::prepare(
 					"DELETE FROM `##user_setting`   WHERE setting_name = 'theme'     AND setting_value = ?"
-				)->execute(array($theme_folder));
+				)->execute(array($theme_id));
 				break;
 			case 'ignore':
-				echo '<br>', WT_I18N::translate('Custom theme'), ' — ', $theme_folder , ' — ', $theme_name, $icon_success;
+				echo '<br>', WT_I18N::translate('Custom theme'), ' — ', $theme_id , ' — ', $theme_name, $icon_success;
 				break;
 			default:
-				echo '<br>', WT_I18N::translate('Custom theme'), ' — ', $theme_folder , ' — ', $theme_name, $icon_failure;
+				echo '<br>', WT_I18N::translate('Custom theme'), ' — ', $theme_id , ' — ', $theme_name, $icon_failure;
 				$custom_themes = true;
 				break;
 			}

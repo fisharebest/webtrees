@@ -47,7 +47,7 @@ $gedcom_id = WT_Filter::getInteger('gedcom_id');
 ignore_user_abort(true);
 
 // Run in a transaction
-WT_DB::exec("START TRANSACTION");
+WT_DB::beginTransaction();
 
 // Only allow one process to import each gedcom at a time
 WT_DB::prepare("SELECT * FROM `##gedcom_chunk` WHERE gedcom_id=? FOR UPDATE")->execute(array($gedcom_id));
@@ -63,7 +63,7 @@ $row=WT_DB::prepare(
 if ($row->import_offset==$row->import_total) {
 	WT_Tree::get($gedcom_id)->setPreference('imported', '1');
 	// Finished?  Show the maintenance links, similar to admin_trees_manage.php
-	WT_DB::exec("COMMIT");
+	WT_DB::commit();
 	$controller->addInlineJavascript(
 		'jQuery("#import'. $gedcom_id.'").toggle();'.
 		'jQuery("#actions'.$gedcom_id.'").toggle();'
@@ -108,7 +108,7 @@ for ($end_time = microtime(true) + 1.0; microtime(true) < $end_time;) {
 			" WHERE gedcom_chunk_id=?"
 		)->execute(array($data->gedcom_chunk_id))->fetchOneRow();
 		if (substr($data->chunk_data, 0, 6)!='0 HEAD') {
-			WT_DB::exec("ROLLBACK");
+			WT_DB::rollBack();
 			echo WT_I18N::translate('Invalid GEDCOM file - no header record found.');
 			$controller->addInlineJavascript('jQuery("#actions'.$gedcom_id.'").toggle();');
 			exit;
@@ -185,7 +185,7 @@ for ($end_time = microtime(true) + 1.0; microtime(true) < $end_time;) {
 		case 'ANSEL':
 			// TODO: fisharebest has written a mysql stored procedure that converts ANSEL to UTF-8
 		default:
-			WT_DB::exec("ROLLBACK");
+			WT_DB::rollBack();
 			echo '<span class="error">',  WT_I18N::translate('Error: converting GEDCOM files from %s encoding to UTF-8 encoding not currently supported.', $charset), '</span>';
 			$controller->addInlineJavascript('jQuery("#actions'.$gedcom_id.'").toggle();');
 			exit;
@@ -213,7 +213,7 @@ for ($end_time = microtime(true) + 1.0; microtime(true) < $end_time;) {
 			"UPDATE `##gedcom_chunk` SET imported=TRUE WHERE gedcom_chunk_id=?"
 		)->execute(array($data->gedcom_chunk_id));
 	} catch (PDOException $ex) {
-		WT_DB::exec("ROLLBACK");
+		WT_DB::rollBack();
 		if ($ex->getCode() === '40001') {
 			// "SQLSTATE[40001]: Serialization failure: 1213 Deadlock found when trying to get lock; try restarting transaction"
 			// The documentation says that if you get this error, wait and try again.....
@@ -227,7 +227,7 @@ for ($end_time = microtime(true) + 1.0; microtime(true) < $end_time;) {
 	}
 }
 
-WT_DB::exec("COMMIT");
+WT_DB::commit();
 
 // Reload.....
 // Use uniqid() to prevent jQuery caching the previous response.

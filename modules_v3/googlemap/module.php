@@ -4706,7 +4706,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 			var imageNum = Math.round(bearing/22.5) % 16;
 
-			var image = new google.maps.MarkerImage('<?php echo WT_SCRIPT_PATH . WT_MODULES_DIR; ?>/googlemap/images/panda-icons/panda-' + imageNum + '.png',
+			var image = new google.maps.MarkerImage('<?php echo WT_SCRIPT_PATH . WT_MODULES_DIR; ?>googlemap/images/panda-icons/panda-' + imageNum + '.png',
 				// This marker is 50 pixels wide by 50 pixels tall.
 				new google.maps.Size(50, 50),
 				// The origin for this image is 0,0.
