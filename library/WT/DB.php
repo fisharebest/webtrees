@@ -59,6 +59,24 @@ class WT_DB {
 	}
 
 	/**
+	 * Begin a transaction.
+	 *
+	 * @return bool
+	 */
+	public static function beginTransaction() {
+		return self::$pdo->beginTransaction();
+	}
+
+	/**
+	 * Commit this transaction.
+	 *
+	 * @return bool
+	 */
+	public static function commit() {
+		return self::$pdo->commit();
+	}
+
+	/**
 	 * Disconnect from the server, so we can connect to another one
 	 *
 	 * @return void
@@ -267,6 +285,15 @@ class WT_DB {
 		$sql = str_replace('##', WT_TBLPREFIX, $sql);
 
 		return new WT_DBStatement(self::$pdo->prepare($sql));
+	}
+
+	/**
+	 * Roll back this transaction.
+	 *
+	 * @return bool
+	 */
+	public static function rollBack() {
+		return self::$pdo->rollBack();
 	}
 
 	/**
