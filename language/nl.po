@@ -15017,7 +15017,7 @@ msgstr "Gebruikersnamen zijn hoofdletterongevoelig en geaccentueerde letters wor
 #: help_text.php:1488
 #, php-format
 msgid "Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;"
-msgstr "Gebruikersnamen mogen niet de volgende characters bevatten: &lt; &gt; %% { } ;"
+msgstr "Gebruikersnamen mogen niet de volgende characters bevatten: &lt; &gt; &quot; %% { } ;"
 
 #: admin.php:133 themes/_administration/header.php:133
 msgid "Users"

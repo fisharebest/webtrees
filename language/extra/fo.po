@@ -19815,9 +19815,3 @@ msgstr ""
 msgctxt "Unknown surname"
 msgid "…"
 msgstr ""
-
-#~ msgid "Click here to continue"
-#~ msgstr "Trýst her til at halda á"
-
-#~ msgid "Download Now"
-#~ msgstr "Tak niður nú"

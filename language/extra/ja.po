@@ -19783,39 +19783,3 @@ msgstr ""
 msgctxt "Unknown surname"
 msgid "…"
 msgstr ""
-
-#~ msgid "Date not known"
-#~ msgstr "日付不明"
-
-#~ msgid "Default value for top-level"
-#~ msgstr "トップレベルでのデフォルト値"
-
-#~ msgid "Enter Family ID"
-#~ msgstr "家族IDの入力"
-
-#~ msgid "Here the default level for the highest level in the place-hierarchy can be defined. If a place cannot be found this name is added as the highest level (country) and the database is searched again."
-#~ msgstr "これは、階層が定義可能な場所での最高のレベルでのデフォルトのレベルです。もし場所が見つからないと、この名前が最高レベル（カントリー）として追加され、データベースが再度検索されます。"
-
-#~ msgid "Immediate Family"
-#~ msgstr "直近の家族"
-
-#~ msgid "Individual information"
-#~ msgstr "個人の情報"
-
-#~ msgid "Most Viewed Items"
-#~ msgstr "一番多く見られた項目"
-
-#~ msgid "Regular expressions are an advanced pattern matching technique.  See <a href=\"http://php.net/manual/en/regexp.reference.php\" target=\"_new\">php.net/manual/en/regexp.reference.php</a> for futher details."
-#~ msgstr "正規表現は高度なパターンマッチング技法です。詳細は　<a href=\"http://php.net/manual/en/regexp.reference.php\" target=\"_new\">php.net/manual/en/regexp.reference.php</a> 　を参照。"
-
-#~ msgid "Root"
-#~ msgstr "ルート"
-
-#~ msgid "Search and/or replace data in your GEDCOM using simple searches or advanced pattern matching."
-#~ msgstr "簡単な検索か高度なパターンマッチングを使って、貴方のGEDCOMのデータの検索　及び／または　置換"
-
-#~ msgid "This block will show the 10 records that have been viewed the most.  This block requires that hit counters be enabled in the GEDCOM configuration settings."
-#~ msgstr "このブロックで、一番多く見られた上位１０のレコードを表示します。このブロックではGEDCOM設定でヒットカウンタが有効にされている必要があります。"
-
-#~ msgid "Update the CHAN record"
-#~ msgstr "CHAN　レコードの更新"

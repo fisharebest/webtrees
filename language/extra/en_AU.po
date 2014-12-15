@@ -15014,7 +15014,7 @@ msgstr "Usernames are case-insensitive and ignore accented letters, so that ‘c
 #: help_text.php:1488
 #, php-format
 msgid "Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;"
-msgstr "Usernames may not contain the following characters: &lt; &gt; \" %% { } ;"
+msgstr "Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;"
 
 #: admin.php:133 themes/_administration/header.php:133
 msgid "Users"
@@ -19814,12 +19814,3 @@ msgstr ""
 msgctxt "Unknown surname"
 msgid "…"
 msgstr ""
-
-#~ msgid "Load all your family trees from disk, by using the “import” function for each one."
-#~ msgstr "Load all your family trees from disk, by using the ‘import’ function for each one."
-
-#~ msgid "Save all your family trees to disk, by using the “export” function for each one."
-#~ msgstr "Save all your family trees to disk, by using the ‘export’ function for each one."
-
-#~ msgid "You won’t get any more email from this site, because the account request will be deleted automatically after seven days."
-#~ msgstr "You won’t get any more e-mail from this site, because the account request will be deleted automatically after seven days."

@@ -19783,9 +19783,3 @@ msgstr ""
 msgctxt "Unknown surname"
 msgid "…"
 msgstr ""
-
-#~ msgid "Most Viewed Items"
-#~ msgstr "많이 본 아이템"
-
-#~ msgid "This block will show the 10 records that have been viewed the most.  This block requires that hit counters be enabled in the GEDCOM configuration settings."
-#~ msgstr "이 블록은 가장을 본 한 10 기록을 보여줍니다. 이 블록은 히트 카운터가 GEDCOM 구성 설정에서 사용할 수 있어야합니다."

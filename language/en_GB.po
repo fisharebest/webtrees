@@ -15018,7 +15018,7 @@ msgstr "Usernames are case-insensitive and ignore accented letters, so that ‘c
 #: help_text.php:1488
 #, php-format
 msgid "Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;"
-msgstr "Usernames may not contain the following characters: &lt; &gt; \" %% { } ;"
+msgstr "Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;"
 
 #: admin.php:133 themes/_administration/header.php:133
 msgid "Users"

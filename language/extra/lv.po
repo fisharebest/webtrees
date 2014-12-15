@@ -19852,21 +19852,3 @@ msgstr ""
 msgctxt "Unknown surname"
 msgid "…"
 msgstr ""
-
-#~ msgid "GEDCOM statistics"
-#~ msgstr "GEDCOM statistika"
-
-#~ msgid "Immediate Family"
-#~ msgstr "Tuvākie radinieki"
-
-#~ msgid "Most Viewed Items"
-#~ msgstr "Visvairāk skatītās vienības"
-
-#~ msgid "Not in DB"
-#~ msgstr "Nav datubāzē"
-
-#~ msgid "Root"
-#~ msgstr "Sakne"
-
-#~ msgid "Update the CHAN record"
-#~ msgstr "Atjaunojiet CHAN ierakstu"
