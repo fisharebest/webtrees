@@ -3389,17 +3389,17 @@ msgstr "Tarkista tämän kansion käyttöoikeudet."
 
 #: admin_site_upgrade.php:383
 msgid "Check file permissions…"
-msgstr "Tarkista tiedostojen oikeudet..."
+msgstr "Tarkista tiedostojen oikeudet…"
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:118
 msgid "Check for custom modules…"
-msgstr "Tarkista omat moduulit..."
+msgstr "Tarkista omat moduulit…"
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:220
 msgid "Check for custom themes…"
-msgstr "Tarkista omat teemat..."
+msgstr "Tarkista omat teemat…"
 
 #: admin_trees_check.php:30 themes/_administration/header.php:125
 msgid "Check for errors"
@@ -4883,7 +4883,7 @@ msgstr "Poista merkityt viestit"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:474
 msgid "Delete temporary files…"
-msgstr "Poista väliaikaiset tiedostot..."
+msgstr "Poista väliaikaiset tiedostot…"
 
 #: library/WT/Controller/Individual.php:170
 msgid "Delete this name"
@@ -5728,7 +5728,7 @@ msgstr "Siirrä"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:283
 msgid "Export all family trees to GEDCOM files…"
-msgstr "Siirrä kaikki sukupuut GEDCOM-tiedostoihin..."
+msgstr "Siirrä kaikki sukupuut GEDCOM-tiedostoihin…"
 
 #: help_text.php:1211
 msgid "Export family tree"
@@ -10741,12 +10741,12 @@ msgstr "Asuinpaikan paikkakunta"
 #: admin_site_upgrade.php:409
 #, php-format
 msgid "Place the site offline, by creating the file %s…"
-msgstr "Aseta sivusto offline-tilaan luomalla tiedosto %s..."
+msgstr "Aseta sivusto offline-tilaan luomalla tiedosto %s…"
 
 #: admin_site_upgrade.php:460
 #, php-format
 msgid "Place the site online, by deleting the file %s…"
-msgstr "Aseta sivusto online-tilaan poistamalla tiedosto %s..."
+msgstr "Aseta sivusto online-tilaan poistamalla tiedosto %s…"
 
 #: admin_trees_config.php:916 statistics.php:405
 msgid "Places"

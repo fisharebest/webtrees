@@ -3393,17 +3393,17 @@ msgstr "בדוק הרשאות גישה לתיקיה הזו."
 
 #: admin_site_upgrade.php:383
 msgid "Check file permissions…"
-msgstr "בדוק ההרשאות של קבצים..."
+msgstr "בדוק ההרשאות של קבצים…"
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:118
 msgid "Check for custom modules…"
-msgstr "בדוק קיום מודולים מותאמים אישית..."
+msgstr "בדוק קיום מודולים מותאמים אישית…"
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:220
 msgid "Check for custom themes…"
-msgstr "בדוק קיום עיצובים מותאמים אישית..."
+msgstr "בדוק קיום עיצובים מותאמים אישית…"
 
 #: admin_trees_check.php:30 themes/_administration/header.php:125
 msgid "Check for errors"
@@ -3412,7 +3412,7 @@ msgstr "בדוק שגיאות"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:99
 msgid "Check for pending changes…"
-msgstr "בדוק קיום שינויים ממתינים..."
+msgstr "בדוק קיום שינויים ממתינים…"
 
 #: help_text.php:460 relationship.php:138
 msgid "Check relationships by marriage"
@@ -3908,7 +3908,7 @@ msgstr "העתק את כל הרשומות מ-%1$s ל-%2$s."
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:424
 msgid "Copy files…"
-msgstr "העתק קבצים..."
+msgstr "העתק קבצים…"
 
 #: admin_site_upgrade.php:395
 #, php-format
@@ -4887,7 +4887,7 @@ msgstr "בטל את ההודעות הנבחרות"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:474
 msgid "Delete temporary files…"
-msgstr "מחק קבצים זמניים..."
+msgstr "מחק קבצים זמניים…"
 
 #: library/WT/Controller/Individual.php:170
 msgid "Delete this name"
@@ -5732,7 +5732,7 @@ msgstr "ייצא"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:283
 msgid "Export all family trees to GEDCOM files…"
-msgstr "ייצא את כל עצי המשפחה לקבצי GEDCOM..."
+msgstr "ייצא את כל עצי המשפחה לקבצי GEDCOM…"
 
 #: help_text.php:1211
 msgid "Export family tree"
@@ -10745,12 +10745,12 @@ msgstr "מקום מגורים"
 #: admin_site_upgrade.php:409
 #, php-format
 msgid "Place the site offline, by creating the file %s…"
-msgstr "העבר את האתר למצב לא מקוון, על-ידי יצירת הקובץ %s..."
+msgstr "העבר את האתר למצב לא מקוון, על-ידי יצירת הקובץ %s…"
 
 #: admin_site_upgrade.php:460
 #, php-format
 msgid "Place the site online, by deleting the file %s…"
-msgstr "העבר את האתר למצב מקוון, על-ידי מחיקת הקובץ %s..."
+msgstr "העבר את האתר למצב מקוון, על-ידי מחיקת הקובץ %s…"
 
 #: admin_trees_config.php:916 statistics.php:405
 msgid "Places"
@@ -14934,7 +14934,7 @@ msgstr "קבצים שאינם בשימוש"
 #: admin_site_upgrade.php:332
 #, php-format
 msgid "Unzip %s to a temporary folder…"
-msgstr "פתח %s לתיקייה זמנית..."
+msgstr "פתח %s לתיקייה זמנית…"
 
 #. I18N: Name of a module
 #: modules_v3/upcoming_events/module.php:30

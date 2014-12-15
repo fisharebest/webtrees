@@ -3393,17 +3393,17 @@ msgstr "Verifique os direitos de acesso deste diretório"
 
 #: admin_site_upgrade.php:383
 msgid "Check file permissions…"
-msgstr "Verificar permissões do arquivo..."
+msgstr "Verificar permissões do arquivo…"
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:118
 msgid "Check for custom modules…"
-msgstr "Verificar módulos customizados..."
+msgstr "Verificar módulos customizados…"
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:220
 msgid "Check for custom themes…"
-msgstr "Verificar temas customizados..."
+msgstr "Verificar temas customizados…"
 
 #: admin_trees_check.php:30 themes/_administration/header.php:125
 msgid "Check for errors"
@@ -3412,7 +3412,7 @@ msgstr "Procurar erros"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:99
 msgid "Check for pending changes…"
-msgstr "Verificar alterações pendentes..."
+msgstr "Verificar alterações pendentes…"
 
 #: help_text.php:460 relationship.php:138
 msgid "Check relationships by marriage"
@@ -3908,7 +3908,7 @@ msgstr ""
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:424
 msgid "Copy files…"
-msgstr "Copiar arquivos..."
+msgstr "Copiar arquivos…"
 
 #: admin_site_upgrade.php:395
 #, php-format
@@ -4887,7 +4887,7 @@ msgstr "Excluir Mensagens Selecionadas"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:474
 msgid "Delete temporary files…"
-msgstr "Excluir arquivos temporários..."
+msgstr "Excluir arquivos temporários…"
 
 #: library/WT/Controller/Individual.php:170
 msgid "Delete this name"
@@ -5203,7 +5203,7 @@ msgstr "Baixar"
 #: admin_site_upgrade.php:302
 #, php-format
 msgid "Download %s…"
-msgstr "Baixando %s..."
+msgstr "Baixando %s…"
 
 #: admin_trees_download.php:32
 msgid "Download GEDCOM"
@@ -5732,7 +5732,7 @@ msgstr "Exportar"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:283
 msgid "Export all family trees to GEDCOM files…"
-msgstr "Exportar todas as árvores genealógicas para arquivos GEDCOM..."
+msgstr "Exportar todas as árvores genealógicas para arquivos GEDCOM…"
 
 #: help_text.php:1211
 msgid "Export family tree"
@@ -10745,12 +10745,12 @@ msgstr "Local da Residência"
 #: admin_site_upgrade.php:409
 #, php-format
 msgid "Place the site offline, by creating the file %s…"
-msgstr "Deixar o site offline, criando o arquivo %s..."
+msgstr "Deixar o site offline, criando o arquivo %s…"
 
 #: admin_site_upgrade.php:460
 #, php-format
 msgid "Place the site online, by deleting the file %s…"
-msgstr "Deixar o site online, excluíndo o arquivo %s..."
+msgstr "Deixar o site online, excluíndo o arquivo %s…"
 
 #: admin_trees_config.php:916 statistics.php:405
 msgid "Places"
@@ -14934,7 +14934,7 @@ msgstr "Arquivos não utilizados"
 #: admin_site_upgrade.php:332
 #, php-format
 msgid "Unzip %s to a temporary folder…"
-msgstr "Descompactar %s para uma pasta temporária..."
+msgstr "Descompactar %s para uma pasta temporária…"
 
 #. I18N: Name of a module
 #: modules_v3/upcoming_events/module.php:30

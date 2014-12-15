@@ -3908,7 +3908,7 @@ msgstr "Kopier alle poster fra %1$s til %2$s."
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:424
 msgid "Copy files…"
-msgstr "Kopiere filer..."
+msgstr "Kopiere filer…"
 
 #: admin_site_upgrade.php:395
 #, php-format
@@ -4887,7 +4887,7 @@ msgstr "Slet valgte beskeder"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:474
 msgid "Delete temporary files…"
-msgstr "Slet midlertidige filer..."
+msgstr "Slet midlertidige filer…"
 
 #: library/WT/Controller/Individual.php:170
 msgid "Delete this name"
@@ -10745,12 +10745,12 @@ msgstr "Bopæl"
 #: admin_site_upgrade.php:409
 #, php-format
 msgid "Place the site offline, by creating the file %s…"
-msgstr "Sæt din side offline, ved at oprette filen %s..."
+msgstr "Sæt din side offline, ved at oprette filen %s…"
 
 #: admin_site_upgrade.php:460
 #, php-format
 msgid "Place the site online, by deleting the file %s…"
-msgstr "Sæt din side online, ved at slette filen %s..."
+msgstr "Sæt din side online, ved at slette filen %s…"
 
 #: admin_trees_config.php:916 statistics.php:405
 msgid "Places"
@@ -14934,7 +14934,7 @@ msgstr "Ubrugte filer"
 #: admin_site_upgrade.php:332
 #, php-format
 msgid "Unzip %s to a temporary folder…"
-msgstr "Udpak %s til midlertidig mappe..."
+msgstr "Udpak %s til midlertidig mappe…"
 
 #. I18N: Name of a module
 #: modules_v3/upcoming_events/module.php:30

@@ -3420,17 +3420,17 @@ msgstr "Zkontrolujte přístupová práva k této složce."
 
 #: admin_site_upgrade.php:383
 msgid "Check file permissions…"
-msgstr "Kontroluji přístupová práva..."
+msgstr "Kontroluji přístupová práva…"
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:118
 msgid "Check for custom modules…"
-msgstr "Kontroluji vlastní moduly..."
+msgstr "Kontroluji vlastní moduly…"
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:220
 msgid "Check for custom themes…"
-msgstr "Kontroluji vlastní témata..."
+msgstr "Kontroluji vlastní témata…"
 
 #: admin_trees_check.php:30 themes/_administration/header.php:125
 msgid "Check for errors"
@@ -3439,7 +3439,7 @@ msgstr "Vyhledat chyby"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:99
 msgid "Check for pending changes…"
-msgstr "Kontroluji změny ke schválení..."
+msgstr "Kontroluji změny ke schválení…"
 
 #: help_text.php:460 relationship.php:138
 msgid "Check relationships by marriage"
@@ -3935,7 +3935,7 @@ msgstr ""
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:424
 msgid "Copy files…"
-msgstr "Kopíruji soubory..."
+msgstr "Kopíruji soubory…"
 
 #: admin_site_upgrade.php:395
 #, php-format
@@ -4914,7 +4914,7 @@ msgstr "Smazat vybrané zprávy"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:474
 msgid "Delete temporary files…"
-msgstr "Mažu dočasné soubory..."
+msgstr "Mažu dočasné soubory…"
 
 #: library/WT/Controller/Individual.php:170
 msgid "Delete this name"
@@ -5230,7 +5230,7 @@ msgstr "Stáhnout"
 #: admin_site_upgrade.php:302
 #, php-format
 msgid "Download %s…"
-msgstr "Stahuji %s..."
+msgstr "Stahuji %s…"
 
 #: admin_trees_download.php:32
 msgid "Download GEDCOM"
@@ -5759,7 +5759,7 @@ msgstr "Export"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:283
 msgid "Export all family trees to GEDCOM files…"
-msgstr "Exportuji celý rodokmen do souborů GEDCOM..."
+msgstr "Exportuji celý rodokmen do souborů GEDCOM…"
 
 #: help_text.php:1211
 msgid "Export family tree"
@@ -10775,12 +10775,12 @@ msgstr "Místo bydliště"
 #: admin_site_upgrade.php:409
 #, php-format
 msgid "Place the site offline, by creating the file %s…"
-msgstr "Shazuji web vytvořením souboru %s..."
+msgstr "Shazuji web vytvořením souboru %s…"
 
 #: admin_site_upgrade.php:460
 #, php-format
 msgid "Place the site online, by deleting the file %s…"
-msgstr "Nahazuji web smazáním souboru %s..."
+msgstr "Nahazuji web smazáním souboru %s…"
 
 #: admin_trees_config.php:916 statistics.php:405
 msgid "Places"
@@ -14968,7 +14968,7 @@ msgstr "Nepoužité soubory"
 #: admin_site_upgrade.php:332
 #, php-format
 msgid "Unzip %s to a temporary folder…"
-msgstr "Rozbaluji %s do dočasné složky..."
+msgstr "Rozbaluji %s do dočasné složky…"
 
 #. I18N: Name of a module
 #: modules_v3/upcoming_events/module.php:30

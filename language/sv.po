@@ -3393,17 +3393,17 @@ msgstr "Kontrollera åtkomsträttigheter för mappen."
 
 #: admin_site_upgrade.php:383
 msgid "Check file permissions…"
-msgstr "Kontrollera filrättigheterna..."
+msgstr "Kontrollera filrättigheterna…"
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:118
 msgid "Check for custom modules…"
-msgstr "Kolla för anpassade moduler..."
+msgstr "Kolla för anpassade moduler…"
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:220
 msgid "Check for custom themes…"
-msgstr "Kolla för anpassade teman..."
+msgstr "Kolla för anpassade teman…"
 
 #: admin_trees_check.php:30 themes/_administration/header.php:125
 msgid "Check for errors"
@@ -3908,7 +3908,7 @@ msgstr "Kopiera alla poster från %1$s till %2$s."
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:424
 msgid "Copy files…"
-msgstr "Kopiera filerna..."
+msgstr "Kopiera filerna…"
 
 #: admin_site_upgrade.php:395
 #, php-format
@@ -4887,7 +4887,7 @@ msgstr "Radera markerade meddelande"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:474
 msgid "Delete temporary files…"
-msgstr "Ta bort temporära filer..."
+msgstr "Ta bort temporära filer…"
 
 #: library/WT/Controller/Individual.php:170
 msgid "Delete this name"
@@ -5203,7 +5203,7 @@ msgstr "Nedladda"
 #: admin_site_upgrade.php:302
 #, php-format
 msgid "Download %s…"
-msgstr "Nedladda %s..."
+msgstr "Nedladda %s…"
 
 #: admin_trees_download.php:32
 msgid "Download GEDCOM"
@@ -5732,7 +5732,7 @@ msgstr "Exportera"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:283
 msgid "Export all family trees to GEDCOM files…"
-msgstr "Exportera alla släktträd till GEDCOM-filer..."
+msgstr "Exportera alla släktträd till GEDCOM-filer…"
 
 #: help_text.php:1211
 msgid "Export family tree"
@@ -10745,7 +10745,7 @@ msgstr "Hemort"
 #: admin_site_upgrade.php:409
 #, php-format
 msgid "Place the site offline, by creating the file %s…"
-msgstr "Placera webbplatsen offline genom att skapa filen %s..."
+msgstr "Placera webbplatsen offline genom att skapa filen %s…"
 
 #: admin_site_upgrade.php:460
 #, php-format
