@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2014-10-10 13:52+0100\n"
-"PO-Revision-Date: 2014-10-21 10:13+0300\n"
+"PO-Revision-Date: 2014-12-14 15:26+0300\n"
 "Last-Translator: HRN\n"
 "Language-Team: \n"
 "Language: nn\n"
@@ -3335,7 +3335,7 @@ msgstr "Endringar"
 
 #. I18N: title for list of recent changes
 #: modules_v3/recent_changes/module.php:70
-#, fuzzy, php-format
+#, php-format
 msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
 msgstr[0] "Endringar siste dag"
@@ -4776,7 +4776,7 @@ msgstr "Standardval"
 
 #: modules_v3/gedcom_block/module.php:44
 msgid "Default chart"
-msgstr "Standarddiagram"
+msgstr "Standard diagram"
 
 #: admin_trees_manage.php:250 help_text.php:1113
 msgid "Default family tree"
@@ -4785,7 +4785,7 @@ msgstr "Standard slektstre"
 #: admin_trees_config.php:258 admin_users.php:234 admin_users.php:436
 #: edituser.php:146 help_text.php:1118 modules_v3/gedcom_block/module.php:45
 msgid "Default individual"
-msgstr "Standardperson"
+msgstr "Standard person"
 
 #: modules_v3/googlemap/module.php:295
 msgid "Default map type"
@@ -7222,7 +7222,7 @@ msgstr "Om ein person har to separate etternamn, bør begge settasts mellom skr�
 #: help_text.php:289
 #, php-format
 msgid "If an individual was known by a nickname which is not part of their formal name, it should be enclosed by quotation marks.  For example, <%s>John &quot;Nobby&quot; /Clark/<%s>."
-msgstr "Om ein person var kjend under eit kallenamn som ikkje er del av det formelle namnet, settast det i hermeteikn: <%s>Nils \"Kroknase\" /Olsson/<%s>."
+msgstr "Om ein person var kjend under eit kallenamn som ikkje er del av det formelle namnet, settast det i hermeteikn: <%s>Nils &quot;Kroknase&quot; /Olsson/<%s>."
 
 #: help_text.php:287
 #, php-format
@@ -7348,8 +7348,7 @@ msgstr "Importer alle stadnamn frå eit slektstre"
 msgid "Import family tree"
 msgstr "Importer slektstre"
 
-#: admin_trees_renumber.php:260
-#: admin_trees_merge.php:73
+#: admin_trees_renumber.php:260 admin_trees_merge.php:73
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
 msgstr "Kvar post i eit slektstre har eit internt referansenummer (ein \"XREF\"), som t.d. \"F123\" eller \"R14\"."
 
@@ -15018,7 +15017,7 @@ msgstr "Brukarnamn skil ikkje mellom store og små bokstavar, og eventuelle akse
 #: help_text.php:1488
 #, php-format
 msgid "Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;"
-msgstr "Brukarnamn kan ikkje innehalde følgjande teikn: &lt; &gt; \" %% { } ;"
+msgstr "Brukarnamn kan ikkje innehalde følgjande teikn: &lt; &gt; &quot; %% { } ;"
 
 #: admin.php:133 themes/_administration/header.php:133
 msgid "Users"

@@ -3,16 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2014-10-10 13:52+0100\n"
-"PO-Revision-Date: 2014-10-20 17:35+0100\n"
-"Last-Translator: Eyolf Østrem <eyolf@oestrem.com>\n"
-"Language-Team: Norwegian Bokmal <nb@li.org>\n"
+"PO-Revision-Date: 2014-12-14 12:03+0300\n"
+"Last-Translator: HRN\n"
+"Language-Team: Norwegian Bokmal\n"
 "Language: nb\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Launchpad-Export-Date: 2013-08-04 19:02+0000\n"
-"X-Generator: Poedit 1.6.9\n"
+"X-Generator: Poedit 1.5.7\n"
 
 #: modules_v3/ahnentafel_report/report.xml:157
 #: modules_v3/ahnentafel_report/report.xml:185
@@ -2339,76 +2339,76 @@ msgstr "Bangladesh"
 #. I18N: gedcom tag BAPM
 #: library/WT/Gedcom/Tag.php:114 modules_v3/missing_facts_report/report.xml:13
 msgid "Baptism"
-msgstr "Døpt på bekjennelse"
+msgstr "Bekjennelsesdåp"
 
 #: library/WT/Gedcom/Tag.php:414
 msgid "Baptism of a brother"
-msgstr "Dåp av bror"
+msgstr "Brors bekjennelsesdåp"
 
 #: library/WT/Gedcom/Tag.php:386
 msgid "Baptism of a child"
-msgstr "Dåp av et barn"
+msgstr "Barns bekjennelsesdåp"
 
 #: library/WT/Gedcom/Tag.php:385
 msgid "Baptism of a daughter"
-msgstr "Baptistdåp av datter"
+msgstr "Datters bekjennelsesdåp"
 
 #: library/WT/Gedcom/Tag.php:392 library/WT/Gedcom/Tag.php:398
 #: library/WT/Gedcom/Tag.php:404
 msgid "Baptism of a grandchild"
-msgstr "Dåp av et barnebarn"
+msgstr "Barnebarns bekjennelsesdåp"
 
 #: library/WT/Gedcom/Tag.php:391
 msgid "Baptism of a granddaughter"
-msgstr "Baptistdåp av barnebarn"
+msgstr "Barnebarns bekjennelsesdåp"
 
 #: library/WT/Gedcom/Tag.php:397
 msgctxt "daughter’s daughter"
 msgid "Baptism of a granddaughter"
-msgstr "Baptistdåp av barnebarn"
+msgstr "Barnebarns bekjennelsesdåp"
 
 #: library/WT/Gedcom/Tag.php:403
 msgctxt "son’s daughter"
 msgid "Baptism of a granddaughter"
-msgstr "Baptistdåp av barnebarn"
+msgstr "Barnebarns bekjennelsesdåp"
 
 #: library/WT/Gedcom/Tag.php:390
 msgid "Baptism of a grandson"
-msgstr "Dåp av barnebarn"
+msgstr "Barnebarns bekjennelsesdåp"
 
 #: library/WT/Gedcom/Tag.php:396
 msgctxt "daughter’s son"
 msgid "Baptism of a grandson"
-msgstr "Baptistdåp av barnebarn"
+msgstr "Barnebarns bekjennelsesdåp"
 
 #: library/WT/Gedcom/Tag.php:402
 msgctxt "son’s son"
 msgid "Baptism of a grandson"
-msgstr "Baptistdåp av barnebarn"
+msgstr "Barnebarns bekjennelsesdåp"
 
 #: library/WT/Gedcom/Tag.php:408
 msgid "Baptism of a half-brother"
-msgstr "Dåp av halvbror"
+msgstr "Halvbrors bekjennelsesdåp"
 
 #: library/WT/Gedcom/Tag.php:410
 msgid "Baptism of a half-sibling"
-msgstr "Dåp av et halvsøsken"
+msgstr "Halvsøskens bekjennelsesdåp"
 
 #: library/WT/Gedcom/Tag.php:409
 msgid "Baptism of a half-sister"
-msgstr "Baptistdåp av halvsøster"
+msgstr "Halvsøsters bekjennelsesdåp"
 
 #: library/WT/Gedcom/Tag.php:416
 msgid "Baptism of a sibling"
-msgstr "Dåp av et søsken"
+msgstr "Søskens bekjennelsesdåp"
 
 #: library/WT/Gedcom/Tag.php:415
 msgid "Baptism of a sister"
-msgstr "Baptistdåp av søster"
+msgstr "Søsters bekjennelsesdåp"
 
 #: library/WT/Gedcom/Tag.php:384
 msgid "Baptism of a son"
-msgstr "Sønns dåp"
+msgstr "Sønns bekjennelsesdåp"
 
 #. I18N: gedcom tag BARM
 #: library/WT/Gedcom/Tag.php:117 modules_v3/missing_facts_report/report.xml:14
@@ -2672,7 +2672,7 @@ msgstr "Brors fødsel"
 
 #: library/WT/Gedcom/Tag.php:423
 msgid "Birth of a child"
-msgstr "Fødsel til et barn"
+msgstr "Barns fødsel"
 
 #: library/WT/Gedcom/Tag.php:422
 msgid "Birth of a daughter"
@@ -2681,7 +2681,7 @@ msgstr "Datters fødsel"
 #: library/WT/Gedcom/Tag.php:429 library/WT/Gedcom/Tag.php:435
 #: library/WT/Gedcom/Tag.php:441
 msgid "Birth of a grandchild"
-msgstr "Fødsel til et barnebarn"
+msgstr "Barnebarns fødsel"
 
 #: library/WT/Gedcom/Tag.php:428
 msgid "Birth of a granddaughter"
@@ -2717,7 +2717,7 @@ msgstr "Halvbrors fødsel"
 
 #: library/WT/Gedcom/Tag.php:447
 msgid "Birth of a half-sibling"
-msgstr "Fødsel til et halvsøsken"
+msgstr "Halvsøskens fødsel"
 
 #: library/WT/Gedcom/Tag.php:446
 msgid "Birth of a half-sister"
@@ -2725,7 +2725,7 @@ msgstr "Halvsøsters fødsel"
 
 #: library/WT/Gedcom/Tag.php:453
 msgid "Birth of a sibling"
-msgstr "Fødsel til et søsken"
+msgstr "Søskens fødsel"
 
 #: library/WT/Gedcom/Tag.php:452
 msgid "Birth of a sister"
@@ -2954,11 +2954,11 @@ msgstr "Bulgaria"
 #: modules_v3/family_group_report/report.xml:1037
 #: modules_v3/missing_facts_report/report.xml:22
 msgid "Burial"
-msgstr "Gravlagt"
+msgstr "Begravelse"
 
 #: library/WT/Gedcom/Tag.php:514
 msgid "Burial of a brother"
-msgstr "Begravelse av bror"
+msgstr "Brors begravelse"
 
 #: library/WT/Gedcom/Tag.php:462
 msgid "Burial of a child"
@@ -2966,38 +2966,38 @@ msgstr "Begravelse av et barn"
 
 #: library/WT/Gedcom/Tag.php:461
 msgid "Burial of a daughter"
-msgstr "Begravelse av datter"
+msgstr "Datters begravelse"
 
 #: library/WT/Gedcom/Tag.php:508
 msgid "Burial of a father"
-msgstr "Farens begravelse"
+msgstr "Fars begravelse"
 
 #: library/WT/Gedcom/Tag.php:468 library/WT/Gedcom/Tag.php:474
 #: library/WT/Gedcom/Tag.php:480
 msgid "Burial of a grandchild"
-msgstr "Begravelse av et barnebarn"
+msgstr "Barnebarns begravelse"
 
 #: library/WT/Gedcom/Tag.php:467
 msgid "Burial of a granddaughter"
-msgstr "Begravelse av barnebarn"
+msgstr "Barnebarns begravelse"
 
 #: library/WT/Gedcom/Tag.php:473
 msgctxt "daughter’s daughter"
 msgid "Burial of a granddaughter"
-msgstr "Begravelse av barnebarn"
+msgstr "Barnebarns begravelse"
 
 #: library/WT/Gedcom/Tag.php:479
 msgctxt "son’s daughter"
 msgid "Burial of a granddaughter"
-msgstr "Begravelse av barnebarn"
+msgstr "Barnebarns begravelse"
 
 #: library/WT/Gedcom/Tag.php:484
 msgid "Burial of a grandfather"
-msgstr "Begravelse av bestefar"
+msgstr "Bestefars begravelse"
 
 #: library/WT/Gedcom/Tag.php:485
 msgid "Burial of a grandmother"
-msgstr "Begravelse av bestemor"
+msgstr "Bestemors begravelse"
 
 #: library/WT/Gedcom/Tag.php:486
 msgid "Burial of a grandparent"
@@ -3005,49 +3005,49 @@ msgstr "Besteforelders begravelse"
 
 #: library/WT/Gedcom/Tag.php:466
 msgid "Burial of a grandson"
-msgstr "Begravelse av barnebarn"
+msgstr "Barnebarns begravelse"
 
 #: library/WT/Gedcom/Tag.php:472
 msgctxt "daughter’s son"
 msgid "Burial of a grandson"
-msgstr "Begravelse av barnebarn"
+msgstr "Barnebarns begravelse"
 
 #: library/WT/Gedcom/Tag.php:478
 msgctxt "son’s son"
 msgid "Burial of a grandson"
-msgstr "Begravelse av barnebarn"
+msgstr "Barnebarns begravelse"
 
 #: library/WT/Gedcom/Tag.php:502
 msgid "Burial of a half-brother"
-msgstr "Begravelse av halvbror"
+msgstr "Halvbrors begravelse"
 
 #: library/WT/Gedcom/Tag.php:504
 msgid "Burial of a half-sibling"
-msgstr "Begravelse av et halvsøsken"
+msgstr "Halvsøskens begravelse"
 
 #: library/WT/Gedcom/Tag.php:503
 msgid "Burial of a half-sister"
-msgstr "Begravelse av halvsøster"
+msgstr "Halvsøsters begravelse"
 
 #: library/WT/Gedcom/Tag.php:520
 msgid "Burial of a husband"
-msgstr "Begravelse av ektemann"
+msgstr "Ektemanns begravelse"
 
 #: library/WT/Gedcom/Tag.php:496
 msgid "Burial of a maternal grandfather"
-msgstr "Begravelse av morfar"
+msgstr "Morfars begravelse"
 
 #: library/WT/Gedcom/Tag.php:497
 msgid "Burial of a maternal grandmother"
-msgstr "Begravelse av mormor"
+msgstr "Mormors begravelse"
 
 #: library/WT/Gedcom/Tag.php:498
 msgid "Burial of a maternal grandparent"
-msgstr "Begravelse av besteforelder på morssiden"
+msgstr "Besteforelders begravelse"
 
 #: library/WT/Gedcom/Tag.php:509
 msgid "Burial of a mother"
-msgstr "Morens begravelse"
+msgstr "Mors begravelse"
 
 #: library/WT/Gedcom/Tag.php:510
 msgid "Burial of a parent"
@@ -3055,35 +3055,35 @@ msgstr "Forelders begravelse"
 
 #: library/WT/Gedcom/Tag.php:490
 msgid "Burial of a paternal grandfather"
-msgstr "Begravelse av farfar"
+msgstr "Farfars begravelse"
 
 #: library/WT/Gedcom/Tag.php:491
 msgid "Burial of a paternal grandmother"
-msgstr "Begravelse av farmor"
+msgstr "Farmors begravelse"
 
 #: library/WT/Gedcom/Tag.php:492
 msgid "Burial of a paternal grandparent"
-msgstr "Begravelse av besteforelder på farssiden"
+msgstr "Besteforelders begravelse"
 
 #: library/WT/Gedcom/Tag.php:516
 msgid "Burial of a sibling"
-msgstr "Begravelse av et søsken"
+msgstr "Søskens begravelse"
 
 #: library/WT/Gedcom/Tag.php:515
 msgid "Burial of a sister"
-msgstr "Begravelse av søster"
+msgstr "Søsters begravelse"
 
 #: library/WT/Gedcom/Tag.php:460
 msgid "Burial of a son"
-msgstr "Begravelse av sønn"
+msgstr "Sønns begravelse"
 
 #: library/WT/Gedcom/Tag.php:522
 msgid "Burial of a spouse"
-msgstr "Begravelse til ektefelle"
+msgstr "Ektefellses begravelse"
 
 #: library/WT/Gedcom/Tag.php:521
 msgid "Burial of a wife"
-msgstr "Begravelse av hustru"
+msgstr "Hustrus begravelse"
 
 #: modules_v3/cemetery_report/report.xml:5
 msgid "Burial place contains"
@@ -3331,7 +3331,7 @@ msgstr "Endringer"
 
 #. I18N: title for list of recent changes
 #: modules_v3/recent_changes/module.php:70
-#, fuzzy, php-format
+#, php-format
 msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
 msgstr[0] "Endringer siste dag"
@@ -3513,11 +3513,11 @@ msgstr "Dåp"
 
 #: library/WT/Gedcom/Tag.php:556
 msgid "Christening of a brother"
-msgstr "Dåp av bror"
+msgstr "Brors dåp"
 
 #: library/WT/Gedcom/Tag.php:528
 msgid "Christening of a child"
-msgstr "Dåp av et barn"
+msgstr "Barns dåp"
 
 #: library/WT/Gedcom/Tag.php:527
 msgid "Christening of a daughter"
@@ -3526,7 +3526,7 @@ msgstr "Datters dåp"
 #: library/WT/Gedcom/Tag.php:534 library/WT/Gedcom/Tag.php:540
 #: library/WT/Gedcom/Tag.php:546
 msgid "Christening of a grandchild"
-msgstr "Dåp av et barnebarn"
+msgstr "Barnebarns dåp"
 
 #: library/WT/Gedcom/Tag.php:533
 msgid "Christening of a granddaughter"
@@ -3535,34 +3535,34 @@ msgstr "Barnebarns dåp"
 #: library/WT/Gedcom/Tag.php:539
 msgctxt "daughter’s daughter"
 msgid "Christening of a granddaughter"
-msgstr "Dåp av barnebarn"
+msgstr "Barnebarns dåp"
 
 #: library/WT/Gedcom/Tag.php:545
 msgctxt "son’s daughter"
 msgid "Christening of a granddaughter"
-msgstr "Dåp av barnebarn"
+msgstr "Barnebarns dåp"
 
 #: library/WT/Gedcom/Tag.php:532
 msgid "Christening of a grandson"
-msgstr "Dåp av barnebarn"
+msgstr "Barnebarns dåp"
 
 #: library/WT/Gedcom/Tag.php:538
 msgctxt "daughter’s son"
 msgid "Christening of a grandson"
-msgstr "Dåp av barnebarn"
+msgstr "Barnebarns dåp"
 
 #: library/WT/Gedcom/Tag.php:544
 msgctxt "son’s son"
 msgid "Christening of a grandson"
-msgstr "Dåp av barnebarn"
+msgstr "Barnebarns dåp"
 
 #: library/WT/Gedcom/Tag.php:550
 msgid "Christening of a half-brother"
-msgstr "Dåp av halvbror"
+msgstr "Halvbrors dåp"
 
 #: library/WT/Gedcom/Tag.php:552
 msgid "Christening of a half-sibling"
-msgstr "Dåp av et halvsøsken"
+msgstr "Halvsøskens dåp"
 
 #: library/WT/Gedcom/Tag.php:551
 msgid "Christening of a half-sister"
@@ -3570,7 +3570,7 @@ msgstr "Halvsøsters dåp"
 
 #: library/WT/Gedcom/Tag.php:558
 msgid "Christening of a sibling"
-msgstr "Dåp av søsken"
+msgstr "Søskens dåp"
 
 #: library/WT/Gedcom/Tag.php:557
 msgid "Christening of a sister"
@@ -3817,7 +3817,7 @@ msgstr "Bekreft passord"
 #. I18N: gedcom tag CONF
 #: library/WT/Gedcom/Tag.php:154 modules_v3/missing_facts_report/report.xml:16
 msgid "Confirmation"
-msgstr "Konfirmert"
+msgstr "Konfirmasjon"
 
 #: library/WT/Stats.php:4819
 msgid "Congo (Brazzaville)"
@@ -4321,7 +4321,7 @@ msgstr "Dato for kremering"
 #: modules_v3/fact_sources/report.xml:271
 #: modules_v3/missing_facts_report/report.xml:501
 msgid "Date of death"
-msgstr "Dato for dødsfall"
+msgstr "Dato for død"
 
 #: library/WT/Gedcom/Tag.php:201
 msgid "Date of divorce"
@@ -4581,130 +4581,130 @@ msgstr "Tidligste dødsdato"
 
 #: library/WT/Gedcom/Tag.php:684
 msgid "Death of a brother"
-msgstr "Brors dødsfall"
+msgstr "Brors død"
 
 #: library/WT/Gedcom/Tag.php:632
 msgid "Death of a child"
-msgstr "Dødsfall til et barn"
+msgstr "Barns død"
 
 #: library/WT/Gedcom/Tag.php:631
 msgid "Death of a daughter"
-msgstr "Datters dødsfall"
+msgstr "Datters død"
 
 #: library/WT/Gedcom/Tag.php:678
 msgid "Death of a father"
-msgstr "Farens dødsfall"
+msgstr "Fars død"
 
 #: library/WT/Gedcom/Tag.php:656 library/WT/Gedcom/Tag.php:662
 #: library/WT/Gedcom/Tag.php:668
 msgid "Death of a grand-parent"
-msgstr "Dødsfall til en besteforelder"
+msgstr "Besteforelders død"
 
 #: library/WT/Gedcom/Tag.php:638 library/WT/Gedcom/Tag.php:644
 #: library/WT/Gedcom/Tag.php:650
 msgid "Death of a grandchild"
-msgstr "Dødsfall til et barnebarn"
+msgstr "Barnebarns død"
 
 #: library/WT/Gedcom/Tag.php:637
 msgid "Death of a granddaughter"
-msgstr "Barnebarns dødsfall"
+msgstr "Barnebarns død"
 
 #: library/WT/Gedcom/Tag.php:643
 msgctxt "daughter’s daughter"
 msgid "Death of a granddaughter"
-msgstr "Barnebarns dødsfall"
+msgstr "Barnebarns død"
 
 #: library/WT/Gedcom/Tag.php:649
 msgctxt "son’s daughter"
 msgid "Death of a granddaughter"
-msgstr "Barnebarns dødsfall"
+msgstr "Barnebarns død"
 
 #: library/WT/Gedcom/Tag.php:654
 msgid "Death of a grandfather"
-msgstr "Bestefars dødsfall"
+msgstr "Bestefars død"
 
 #: library/WT/Gedcom/Tag.php:655
 msgid "Death of a grandmother"
-msgstr "Bestemors dødsfall"
+msgstr "Bestemors død"
 
 #: library/WT/Gedcom/Tag.php:636
 msgid "Death of a grandson"
-msgstr "Barnebarns dødsfall"
+msgstr "Barnebarns død"
 
 #: library/WT/Gedcom/Tag.php:642
 msgctxt "daughter’s son"
 msgid "Death of a grandson"
-msgstr "Barnebarns dødsfall"
+msgstr "Barnebarns død"
 
 #: library/WT/Gedcom/Tag.php:648
 msgctxt "son’s son"
 msgid "Death of a grandson"
-msgstr "Barnebarns dødsfall"
+msgstr "Barnebarns død"
 
 #: library/WT/Gedcom/Tag.php:672
 msgid "Death of a half-brother"
-msgstr "Halvbrors dødsfall"
+msgstr "Halvbrors død"
 
 #: library/WT/Gedcom/Tag.php:674
 msgid "Death of a half-sibling"
-msgstr "Dødsfall til et halvsøsken"
+msgstr "Halvsøskens død"
 
 #: library/WT/Gedcom/Tag.php:673
 msgid "Death of a half-sister"
-msgstr "Halvsøsters dødsfall"
+msgstr "Halvsøsters død"
 
 #: library/WT/Gedcom/Tag.php:690
 msgid "Death of a husband"
-msgstr "Ektemanns dødsfall"
+msgstr "Ektemanns død"
 
 #: library/WT/Gedcom/Tag.php:666
 msgid "Death of a maternal grandfather"
-msgstr "Morfars dødsfall"
+msgstr "Morfars død"
 
 #: library/WT/Gedcom/Tag.php:667
 msgid "Death of a maternal grandmother"
-msgstr "Mormors dødsfall"
+msgstr "Mormors død"
 
 #: library/WT/Gedcom/Tag.php:679
 msgid "Death of a mother"
-msgstr "Morens dødsfall"
+msgstr "Mors død"
 
 #: library/WT/Gedcom/Tag.php:680
 msgid "Death of a parent"
-msgstr "Dødsfall til en forelder"
+msgstr "Forelders død"
 
 #: library/WT/Gedcom/Tag.php:660
 msgid "Death of a paternal grandfather"
-msgstr "Farfars dødsfall"
+msgstr "Farfars død"
 
 #: library/WT/Gedcom/Tag.php:661
 msgid "Death of a paternal grandmother"
-msgstr "Farmors dødsfall"
+msgstr "Farmors død"
 
 #: library/WT/Gedcom/Tag.php:686
 msgid "Death of a sibling"
-msgstr "Dødsfall til et søsken"
+msgstr "Søskens død"
 
 #: library/WT/Gedcom/Tag.php:685
 msgid "Death of a sister"
-msgstr "Søsters dødsfall"
+msgstr "Søsters død"
 
 #: library/WT/Gedcom/Tag.php:630
 msgid "Death of a son"
-msgstr "Sønns dødsfall"
+msgstr "Sønns død"
 
 #: library/WT/Gedcom/Tag.php:692
 msgid "Death of a spouse"
-msgstr "Dødsfall til ektefelle"
+msgstr "Ektefellses død"
 
 #: library/WT/Gedcom/Tag.php:691
 msgid "Death of a wife"
-msgstr "Hustrus dødsfall"
+msgstr "Hustrus død"
 
 #. I18N: gedcom tag _DETS
 #: library/WT/Gedcom/Tag.php:695
 msgid "Death of one spouse"
-msgstr "Dødsfall til en ektefelle"
+msgstr "Ektefelles død"
 
 #: modules_v3/death_report/report.xml:6
 msgid "Death place contains"
@@ -4772,7 +4772,7 @@ msgstr "Standardvalg"
 
 #: modules_v3/gedcom_block/module.php:44
 msgid "Default chart"
-msgstr "Standarddiagram"
+msgstr "Standard diagram"
 
 #: admin_trees_manage.php:250 help_text.php:1113
 msgid "Default family tree"
@@ -4781,7 +4781,7 @@ msgstr "Standardslektstre"
 #: admin_trees_config.php:258 admin_users.php:234 admin_users.php:436
 #: edituser.php:146 help_text.php:1118 modules_v3/gedcom_block/module.php:45
 msgid "Default individual"
-msgstr "Standardperson"
+msgstr "Standard person"
 
 #: modules_v3/googlemap/module.php:295
 msgid "Default map type"
@@ -7218,7 +7218,7 @@ msgstr "Hvis en person har to separate etternavn, bør begge settes mellom skrå
 #: help_text.php:289
 #, php-format
 msgid "If an individual was known by a nickname which is not part of their formal name, it should be enclosed by quotation marks.  For example, <%s>John &quot;Nobby&quot; /Clark/<%s>."
-msgstr "Hvis en person var kjent under et kallenavn som ikke er del av det formelle navnet, settes det i anførselstegn: <%s>Nils \"Kroknese\" /Olsen/<%s>."
+msgstr "Hvis en person var kjent under et kallenavn som ikke er del av det formelle navnet, settes det i anførselstegn: <%s>Nils &quot;Kroknese&quot; /Olsen/<%s>."
 
 #: help_text.php:287
 #, php-format
@@ -7344,8 +7344,7 @@ msgstr "Importer alle stedsnavn fra et slektstre."
 msgid "Import family tree"
 msgstr "Importer slektstre"
 
-#: admin_trees_renumber.php:260
-#: admin_trees_merge.php:73
+#: admin_trees_renumber.php:260 admin_trees_merge.php:73
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
 msgstr "Hver post i et slektstre har et internt referansenummer (en \"XREF\"), som f.eks. \"F123\" eller \"R14\"."
 
@@ -7550,7 +7549,7 @@ msgstr "Interne beskjeder med kopi til epost"
 #. I18N: gedcom tag _INTE
 #: library/WT/Gedcom/Tag.php:725
 msgid "Interred"
-msgstr "Urnenedsettelse/Gravlagt"
+msgstr "Urnenedsettelse/Begravelse"
 
 #. I18N: gedcom tag _INTE
 #: library/WT/Gedcom/Tag.php:724
@@ -8474,7 +8473,7 @@ msgstr "Markdown er et enkelt system for å markere formatering av ren tekst, so
 #: modules_v3/pedigree_report/report.xml:1313
 #: modules_v3/pedigree_report/report.xml:1351
 msgid "Marriage"
-msgstr "Gift"
+msgstr "Vielse"
 
 #: modules_v3/marriage_report/report.xml:8
 msgid "Marriage Date range end"
@@ -8529,92 +8528,92 @@ msgstr "Ekteskapslisens"
 
 #: library/WT/Gedcom/Tag.php:772
 msgid "Marriage of a brother"
-msgstr "Vielse av bror"
+msgstr "Brors vielse"
 
 #: library/WT/Gedcom/Tag.php:736
 msgid "Marriage of a child"
-msgstr "Vielse av barn"
+msgstr "Barns vielse"
 
 #: library/WT/Gedcom/Tag.php:735
 msgid "Marriage of a daughter"
-msgstr "Vielse av datter"
+msgstr "Datters vielse"
 
 #. I18N: ...to another spouse
 #: library/WT/Gedcom/Tag.php:766
 msgid "Marriage of a father"
-msgstr "Vielse av far"
+msgstr "Fars vielse"
 
 #: library/WT/Gedcom/Tag.php:744 library/WT/Gedcom/Tag.php:750
 #: library/WT/Gedcom/Tag.php:756
 msgid "Marriage of a grandchild"
-msgstr "Vielse av barnebarn"
+msgstr "Barnebarns vielse"
 
 #: library/WT/Gedcom/Tag.php:743
 msgid "Marriage of a granddaughter"
-msgstr "Vielse av barnebarn"
+msgstr "Barnebarns vielse"
 
 #: library/WT/Gedcom/Tag.php:749
 msgctxt "daughter’s daughter"
 msgid "Marriage of a granddaughter"
-msgstr "Vielse av barnebarn"
+msgstr "Barnebarns vielse"
 
 #: library/WT/Gedcom/Tag.php:755
 msgctxt "son’s daughter"
 msgid "Marriage of a granddaughter"
-msgstr "Vielse av barnebarn"
+msgstr "Barnebarns vielse"
 
 #: library/WT/Gedcom/Tag.php:742
 msgid "Marriage of a grandson"
-msgstr "Vielse av barnebarn"
+msgstr "Barnebarns vielse"
 
 #: library/WT/Gedcom/Tag.php:748
 msgctxt "daughter’s son"
 msgid "Marriage of a grandson"
-msgstr "Vielse av barnebarn"
+msgstr "Barnebarns vielse"
 
 #: library/WT/Gedcom/Tag.php:754
 msgctxt "son’s son"
 msgid "Marriage of a grandson"
-msgstr "Vielse av barnebarn"
+msgstr "Barnebarns vielse"
 
 #: library/WT/Gedcom/Tag.php:760
 msgid "Marriage of a half-brother"
-msgstr "Vielse av halvbror"
+msgstr "Halvbrors vielse"
 
 #: library/WT/Gedcom/Tag.php:762
 msgid "Marriage of a half-sibling"
-msgstr "Vielse av halvsøsken"
+msgstr "Halvsøskens vielse"
 
 #: library/WT/Gedcom/Tag.php:761
 msgid "Marriage of a half-sister"
-msgstr "Vielse av halvsøster"
+msgstr "Halvsøsters vielse"
 
 #. I18N: ...to another spouse
 #: library/WT/Gedcom/Tag.php:767
 msgid "Marriage of a mother"
-msgstr "Vielse av mor"
+msgstr "Mors vielse"
 
 #. I18N: ...to another spouse
 #: library/WT/Gedcom/Tag.php:768
 msgid "Marriage of a parent"
-msgstr "Vielse av en forelder"
+msgstr "Forelders vielse"
 
 #: library/WT/Gedcom/Tag.php:774
 msgid "Marriage of a sibling"
-msgstr "Vielse av søsken"
+msgstr "Søskens vielse"
 
 #: library/WT/Gedcom/Tag.php:773
 msgid "Marriage of a sister"
-msgstr "Vielse av søster"
+msgstr "Søsters vielse"
 
 #: library/WT/Gedcom/Tag.php:734
 msgid "Marriage of a son"
-msgstr "Vielse av sønn"
+msgstr "Sønns vielse"
 
 #. I18N: ...to each other
 #: library/WT/Gedcom/Tag.php:739
 msgid "Marriage of parents"
-msgstr "Vielse av foreldre"
+msgstr "Foreldres vielse"
 
 #: statistics.php:412
 msgid "Marriage places"
@@ -8639,7 +8638,7 @@ msgstr "Vielsetype ukjent"
 #: modules_v3/marriage_report/report.xml:3
 #: modules_v3/marriage_report/report.xml:27
 msgid "Marriages"
-msgstr "Giftemål"
+msgstr "Vielser"
 
 #: library/WT/Stats.php:2588 statistics.php:217
 msgid "Marriages by century"
@@ -9466,7 +9465,7 @@ msgstr "New Zealand"
 
 #: admin_site_change.php:277 admin_site_change.php:305
 msgid "New data"
-msgstr "Ny data"
+msgstr "Nye data"
 
 #. I18N: %s is a server name/URL
 #: login.php:323
@@ -12528,7 +12527,6 @@ msgstr "Viser %1$s til %2$s av %3$s"
 
 #: library/WT/Controller/Fanchart.php:349
 #: library/WT/Controller/Hourglass.php:398 pedigree.php:228
-#, fuzzy
 msgid "Sibling"
 msgstr "Søsken"
 
@@ -15015,7 +15013,7 @@ msgstr "Brukernavn skjelner ikke mellom store og små bokstaver, og eventuelle a
 #: help_text.php:1488
 #, php-format
 msgid "Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;"
-msgstr "Brukernavn kan ikke inneholde følgende tegn: &lt; &gt; \" %% { } ;"
+msgstr "Brukernavn kan ikke inneholde følgende tegn: &lt; &gt; &quot; %% { } ;"
 
 #: admin.php:133 themes/_administration/header.php:133
 msgid "Users"
@@ -16965,7 +16963,7 @@ msgstr "%d× tip-oldebarn"
 #: includes/functions/functions.php:1444 includes/functions/functions.php:1455
 #, php-format
 msgid "great ×%d nephew"
-msgstr ""
+msgstr "%d× grandnevø"
 
 #: includes/functions/functions.php:1420
 #, php-format
@@ -16988,25 +16986,25 @@ msgstr "%d× grandnevø"
 #: includes/functions/functions.php:1446 includes/functions/functions.php:1457
 #, php-format
 msgid "great ×%d nephew/niece"
-msgstr ""
+msgstr "%d× grandnevø/-niese"
 
 #: includes/functions/functions.php:1435
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%d-1) grandchild"
 msgid "great ×%d nephew/niece"
-msgstr ""
+msgstr "%d× grandnevø/-niese"
 
 #: includes/functions/functions.php:1437
 #, php-format
 msgctxt "(a man’s) sister’s great ×(%d-1) grandchild"
 msgid "great ×%d nephew/niece"
-msgstr ""
+msgstr "%d× grandnevø/-niese"
 
 #: includes/functions/functions.php:1439
 #, php-format
 msgctxt "(a woman’s) great ×%d nephew/niece"
 msgid "great ×%d nephew/niece"
-msgstr ""
+msgstr "%d× grandnevø/-niese"
 
 #: includes/functions/functions.php:1445 includes/functions/functions.php:1456
 #, php-format
