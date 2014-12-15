@@ -6,13 +6,13 @@ msgstr ""
 "PO-Revision-Date: 2013-03-17 18:33+0000\n"
 "Last-Translator: Adem GENÇ <Unknown>\n"
 "Language-Team: Adem GENÇ <tutastes@gmail.com>\n"
-"Language: \n"
+"Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Launchpad-Export-Date: 2013-08-04 19:01+0000\n"
-"X-Generator: Launchpad (build 16718)\n"
+"X-Generator: Poedit 1.7.1\n"
 
 #: modules_v3/ahnentafel_report/report.xml:157
 #: modules_v3/ahnentafel_report/report.xml:185
@@ -73,33 +73,33 @@ msgstr[0] "%1$d kişinin doğum yerinin harita koordinatları eksik: %2$s."
 #, php-format
 msgctxt "FEMALE"
 msgid "%1$d × %2$s"
-msgstr ""
+msgstr "%1$d × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:784
 #, php-format
 msgctxt "MALE"
 msgid "%1$d × %2$s"
-msgstr ""
+msgstr "%1$d × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:814
 #, php-format
 msgctxt "MALE/FEMALE"
 msgid "%1$d × %2$s"
-msgstr ""
+msgstr "%1$d × %2$s"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$d>=4
 #: includes/functions/functions.php:2286
 #, php-format
 msgid "%1$s %2$d times removed ascending"
-msgstr ""
+msgstr "%1$s %2$d kez çıkarıldı (artan)"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$d>=4
 #: includes/functions/functions.php:2289
 #, php-format
 msgid "%1$s %2$d times removed descending"
-msgstr ""
+msgstr "%1$s %2$d kez çıkarıldı (azalan)"
 
 #. I18N: The placeholders are GEDCOM XREFs and tags.  e.g. “INDI I123 contains a FAMC link to F234.”
 #: admin_trees_check.php:213
@@ -110,12 +110,12 @@ msgstr "%1$s %2$s ile %4$s arasında bir %3$s bağlantısı var."
 #: includes/functions/functions_print_lists.php:1629
 #, php-format
 msgid "%1$s (%2$d)"
-msgstr ""
+msgstr "%1$s (%2$d)"
 
 #: library/WT/Controller/Individual.php:198 library/WT/Date.php:303
 #, php-format
 msgid "%1$s (%2$s)"
-msgstr ""
+msgstr "%1$s (%2$s)"
 
 #. I18N: %1$s is a number of KB, %2$s is a (fractional) number of seconds
 #: admin_site_upgrade.php:314
@@ -321,13 +321,13 @@ msgstr "%s uygulanmadı"
 #: includes/functions/functions.php:2262
 #, php-format
 msgid "%s once removed ascending"
-msgstr ""
+msgstr "%s yukardan bir çıkarıldı"
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: includes/functions/functions.php:2265
 #, php-format
 msgid "%s once removed descending"
-msgstr ""
+msgstr "%s alttan bir çıkarıldı"
 
 #: library/WT/I18N.php:605
 #, php-format
@@ -339,25 +339,25 @@ msgstr[0] "%s saniye önce"
 #: includes/functions/functions.php:2278
 #, php-format
 msgid "%s three times removed ascending"
-msgstr ""
+msgstr "%s  üç kez çıkarıldı (artan)"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: includes/functions/functions.php:2281
 #, php-format
 msgid "%s three times removed descending"
-msgstr ""
+msgstr "%s  üç kez çıkarıldı (azalan)"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: includes/functions/functions.php:2270
 #, php-format
 msgid "%s twice removed ascending"
-msgstr ""
+msgstr "%s  iki kez çıkarıldı (artan)"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: includes/functions/functions.php:2273
 #, php-format
 msgid "%s twice removed descending"
-msgstr ""
+msgstr "%s  iki kez çıkarıldı (azalan)"
 
 #. I18N: Part of an age string. e.g. 7 weeks and 3 days
 #: includes/functions/functions_date.php:54 library/WT/I18N.php:546
@@ -451,7 +451,7 @@ msgstr "(ölü doğdu)"
 #. I18N: This punctuation is used to separate lists of items.
 #: library/WT/I18N.php:305
 msgid ", "
-msgstr ""
+msgstr ", "
 
 #: library/WT/Stats.php:6316
 msgctxt "CENTURY"
@@ -560,7 +560,7 @@ msgstr "9."
 
 #: help_text.php:559
 msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM file originates.  The goal of the Family History Center is to have a central repository of genealogical data and expose it through web services.  This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM file with anyone else, you do not need to let webtrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM file."
-msgstr ""
+msgstr "<b> GUID </ b> Bu bağlamda \"genel benzersiz ID\" için kullanılan bir kısaltmadır. <br> GUID, tekrarlanabilir bir şekilde her bireyin belirlemenize yardımcı olmak için tasarlanmıştır, böylece örneğin Salt Lake şehrindeki LDS kilisesi Aile Tarihi Merkezi yada kendi sunucularınızda çalışan uygun uygulamalarla, GEDCOM dosyası kaynaklandığının neresi olduğunun bir önemi olmadan bilginin aynı kişi ile ilgili olup olmadığı belirlenir. Aile Tarihi Merkezi'nin amacı soy verilerinin merkezi bir depoda toplayıp, web servisleri aracılığıyla ortaya koymaktır . Böylece herhangibir uygulamanın bu veriye erişip güncellenmesine olanak sağlanmış olur. <br>Eğer GEDCOM dosyasını herhangi birisi ile paylaşmak niyetinde değilseniz, webtrees'in bu GUID 'leri oluşturması gerekmez; Ancak, bunu yapmak GEDCOM dosyasının boyutunu artırmak dışında hiçbir zararı yoktur."
 
 #: help_text.php:1318
 msgid "<b>Important note:</b> The transfer wizard is not able to assist with moving media items.  You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
@@ -883,7 +883,7 @@ msgstr "Filigran, diğer kişileri izinsiz kopyalardan vazgeçirmek için resiml
 #. I18N: time format “%A” - between 00:00:01 and 11:59:59
 #: includes/functions/functions_date.php:100
 msgid "A.M."
-msgstr ""
+msgstr "öğleden önce"
 
 #: modules_v3/ahnentafel_report/report.xml:13
 #: modules_v3/bdm_report/report.xml:12 modules_v3/birth_report/report.xml:10
@@ -901,7 +901,7 @@ msgstr ""
 #: modules_v3/relative_ext_report/report.xml:8
 msgctxt "paper size"
 msgid "A3"
-msgstr ""
+msgstr "A3"
 
 #: modules_v3/ahnentafel_report/report.xml:13
 #: modules_v3/bdm_report/report.xml:12 modules_v3/birth_report/report.xml:10
@@ -919,7 +919,7 @@ msgstr ""
 #: modules_v3/relative_ext_report/report.xml:8
 msgctxt "paper size"
 msgid "A4"
-msgstr ""
+msgstr "A4"
 
 #: library/WT/I18N.php:293
 msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
@@ -1015,7 +1015,7 @@ msgstr "Adar"
 #: library/WT/Date/Jewish.php:115
 msgctxt "NOMINATIVE"
 msgid "Adar"
-msgstr ""
+msgstr "Adar"
 
 #. I18N: a month in the Jewish calendar
 #: library/WT/Date/Jewish.php:150
@@ -1039,7 +1039,7 @@ msgstr "Adar I"
 #: library/WT/Date/Jewish.php:110
 msgctxt "NOMINATIVE"
 msgid "Adar I"
-msgstr ""
+msgstr "Adar I"
 
 #. I18N: a month in the Jewish calendar
 #: library/WT/Date/Jewish.php:153
@@ -1051,7 +1051,7 @@ msgstr "Adar II"
 #: library/WT/Date/Jewish.php:233
 msgctxt "INSTRUMENTAL"
 msgid "Adar II"
-msgstr ""
+msgstr "Adar II"
 
 #. I18N: a month in the Jewish calendar
 #: library/WT/Date/Jewish.php:193
@@ -1063,7 +1063,7 @@ msgstr "Adar II"
 #: library/WT/Date/Jewish.php:113
 msgctxt "NOMINATIVE"
 msgid "Adar II"
-msgstr ""
+msgstr "Adar II"
 
 #: admin_trees_config.php:602 edit_interface.php:2022
 #: includes/functions/functions_print.php:921
@@ -2055,7 +2055,7 @@ msgstr "Arjantin"
 #: modules_v3/relative_ext_report/report.xml:9
 msgctxt "font name"
 msgid "Arial"
-msgstr ""
+msgstr "Arial"
 
 #: library/WT/Stats.php:6021
 msgid "Armenia"
@@ -2204,19 +2204,19 @@ msgstr "Otomatikman kaynakları genişlet"
 #: library/WT/Date/Jewish.php:166
 msgctxt "GENITIVE"
 msgid "Av"
-msgstr ""
+msgstr "Av"
 
 #. I18N: a month in the Jewish calendar
 #: library/WT/Date/Jewish.php:246
 msgctxt "INSTRUMENTAL"
 msgid "Av"
-msgstr ""
+msgstr "Av"
 
 #. I18N: a month in the Jewish calendar
 #: library/WT/Date/Jewish.php:206
 msgctxt "LOCATIVE"
 msgid "Av"
-msgstr ""
+msgstr "Av"
 
 #. I18N: a month in the Jewish calendar
 #: library/WT/Date/Jewish.php:126
@@ -2294,7 +2294,7 @@ msgstr "Azor Adaları"
 #: library/WT/Date/Jalali.php:207
 msgctxt "Abbreviation for Persian month: Bahman"
 msgid "Bah"
-msgstr ""
+msgstr "Bah"
 
 #: library/WT/Stats.php:6037
 msgid "Bahamas"
@@ -2339,7 +2339,7 @@ msgstr "Vaftiz"
 
 #: library/WT/Gedcom/Tag.php:1018
 msgid "Baptism of a brother"
-msgstr ""
+msgstr "Kardeşin vaftizi"
 
 #: library/WT/Gedcom/Tag.php:977
 msgid "Baptism of a child"
@@ -2422,7 +2422,7 @@ msgstr "Temel"
 #. I18N: gedcom tag BASM
 #: library/WT/Gedcom/Tag.php:199 modules_v3/missing_facts_report/report.xml:15
 msgid "Bat mitzvah"
-msgstr ""
+msgstr "Bat mitzvah"
 
 #. I18N: Name of a module
 #: modules_v3/batch_update/admin_batch_update.php:66
@@ -2502,7 +2502,7 @@ msgstr "İkili Veri Öğesi"
 
 #: includes/functions/functions_print.php:828
 msgid "Bing Maps™"
-msgstr ""
+msgstr "Bing Maps™"
 
 #: library/WT/Gedcom/Code/Temp.php:98
 msgid "Birmingham, Alabama"
@@ -2912,25 +2912,25 @@ msgstr "Erkek kardeş"
 #: library/WT/Date/French.php:91
 msgctxt "GENITIVE"
 msgid "Brumaire"
-msgstr ""
+msgstr "Brumaire"
 
 #. I18N: a month in the French republican calendar
 #: library/WT/Date/French.php:163
 msgctxt "INSTRUMENTAL"
 msgid "Brumaire"
-msgstr ""
+msgstr "Brumaire"
 
 #. I18N: a month in the French republican calendar
 #: library/WT/Date/French.php:127
 msgctxt "LOCATIVE"
 msgid "Brumaire"
-msgstr ""
+msgstr "Brumaire"
 
 #. I18N: a month in the French republican calendar
 #: library/WT/Date/French.php:55
 msgctxt "NOMINATIVE"
 msgid "Brumaire"
-msgstr ""
+msgstr "Brumaire"
 
 #: library/WT/Stats.php:6045
 msgid "Brunei Darussalam"
@@ -3124,7 +3124,7 @@ msgstr "Varsayılan olarak bu listede sadece aile ağacında bulunan yerler list
 #, php-format
 msgid "By default, your server allows scripts to run for %s second."
 msgid_plural "By default, your server allows scripts to run for %s seconds."
-msgstr[0] "Varsayılan olarak sunucunuz script 'lerin %s saniye çalışmasına izin veriyor.Varsayılan olarak sunucunuz script 'lerin %s saniye çalışmasına izin veriyor."
+msgstr[0] "Varsayılan olarak sunucunuz script 'lerin %s saniye çalışmasına izin veriyor."
 
 #. I18N: %s is an amount of memory, such as 32MB
 #: help_text.php:680
@@ -3222,7 +3222,7 @@ msgstr "Ölüm nedeni"
 
 #: admin_trees_renumber.php:278
 msgid "Caution!  This may take a long time.  Be patient."
-msgstr ""
+msgstr "Dikkat! Bu uzun zaman alabilir. Sabırlı olun."
 
 #: admin_site_upgrade.php:204
 msgid "Caution: old modules may not work, or they may prevent webtrees from working."
@@ -3491,7 +3491,7 @@ msgstr "Yüklemek istediğiniz önizleme resmini seçiniz. Resimler için önizl
 
 #: admin_site_config.php:50
 msgid "Choose user defined welcome text typed below"
-msgstr "Aşağıda kulanıcı tanımlı hoş geldiniz yazılmış metin seçin"
+msgstr "Aşağıda yazılı Özel Hoş Geldiniz metnini seç"
 
 #: addmedia.php:502 admin_media_upload.php:216
 msgid "Choose: "
@@ -3875,7 +3875,7 @@ msgstr "Kopyala"
 #: admin_trees_merge.php:182
 #, php-format
 msgid "Copy all the records from %1$s into %2$s."
-msgstr ""
+msgstr "%1$s daki bütün kayıtları %2$s. ya kopyala"
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:424
@@ -4760,7 +4760,7 @@ msgstr "Aralık"
 #. I18N: a day in the French republican calendar
 #: library/WT/Date/French.php:222
 msgid "Decidi"
-msgstr ""
+msgstr "Decidi"
 
 #: modules_v3/html/module.php:296
 msgid "Default"
@@ -4818,7 +4818,7 @@ msgstr "Derece"
 #: modules_v3/relative_ext_report/report.xml:9
 msgctxt "font name"
 msgid "DejaVu"
-msgstr ""
+msgstr "DejaVu"
 
 #: admin_site_access.php:288 admin_site_change.php:291 admin_site_clean.php:92
 #: admin_site_logs.php:249 admin_trees_config.php:634
@@ -5200,7 +5200,7 @@ msgstr "Coğrafi verileri indir"
 #. I18N: a day in the French republican calendar
 #: library/WT/Date/French.php:206
 msgid "Duodi"
-msgstr ""
+msgstr "Duodi"
 
 #: admin_users.php:263 edituser.php:57 login.php:279
 msgid "Duplicate email address.  A user with that email already exists."
@@ -5381,19 +5381,19 @@ msgstr "Yükselti"
 #: library/WT/Date/Jewish.php:168
 msgctxt "GENITIVE"
 msgid "Elul"
-msgstr ""
+msgstr "Elul"
 
 #. I18N: a month in the Jewish calendar
 #: library/WT/Date/Jewish.php:248
 msgctxt "INSTRUMENTAL"
 msgid "Elul"
-msgstr ""
+msgstr "Elul"
 
 #. I18N: a month in the Jewish calendar
 #: library/WT/Date/Jewish.php:208
 msgctxt "LOCATIVE"
 msgid "Elul"
-msgstr ""
+msgstr "Elul"
 
 #. I18N: a month in the Jewish calendar
 #: library/WT/Date/Jewish.php:128
@@ -5586,7 +5586,7 @@ msgstr "Hata: GEDCOM dosyaları dönüştürme %s kodlamadan UTF-8 kodlamayı ş
 #: library/WT/Date/Jalali.php:209
 msgctxt "Abbreviation for Persian month: Esfand"
 msgid "Esf"
-msgstr ""
+msgstr "Esf"
 
 #. I18N: 12th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:107
@@ -5737,7 +5737,7 @@ msgstr "Göz rengi"
 #. I18N: Name of a theme.
 #: themes/fab/theme.php:29
 msgid "F.A.B."
-msgstr ""
+msgstr "F.A.B."
 
 #. I18N: Name of a module.  Abbreviation for “Frequently Asked Questions”
 #: modules_v3/faq/module.php:30 modules_v3/faq/module.php:423
@@ -6060,7 +6060,7 @@ msgstr "%s için Daire Çizelgesi"
 #: library/WT/Date/Jalali.php:187
 msgctxt "Abbreviation for Persian month: Farvardin"
 msgid "Far"
-msgstr ""
+msgstr "Far"
 
 #. I18N:  1st month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:85
@@ -6308,25 +6308,25 @@ msgstr "Flandra"
 #: library/WT/Date/French.php:103
 msgctxt "GENITIVE"
 msgid "Floréal"
-msgstr ""
+msgstr "Floréal"
 
 #. I18N: a month in the French republican calendar
 #: library/WT/Date/French.php:175
 msgctxt "INSTRUMENTAL"
 msgid "Floréal"
-msgstr ""
+msgstr "Floréal"
 
 #. I18N: a month in the French republican calendar
 #: library/WT/Date/French.php:139
 msgctxt "LOCATIVE"
 msgid "Floréal"
-msgstr ""
+msgstr "Floréal"
 
 #. I18N: a month in the French republican calendar
 #: library/WT/Date/French.php:67
 msgctxt "NOMINATIVE"
 msgid "Floréal"
-msgstr ""
+msgstr "Floréal"
 
 #: medialist.php:79
 msgid "Folder"
@@ -6491,25 +6491,25 @@ msgstr "Arkadaş"
 #: library/WT/Date/French.php:93
 msgctxt "GENITIVE"
 msgid "Frimaire"
-msgstr ""
+msgstr "Frimaire"
 
 #. I18N: a month in the French republican calendar
 #: library/WT/Date/French.php:165
 msgctxt "INSTRUMENTAL"
 msgid "Frimaire"
-msgstr ""
+msgstr "Frimaire"
 
 #. I18N: a month in the French republican calendar
 #: library/WT/Date/French.php:129
 msgctxt "LOCATIVE"
 msgid "Frimaire"
-msgstr ""
+msgstr "Frimaire"
 
 #. I18N: a month in the French republican calendar
 #: library/WT/Date/French.php:57
 msgctxt "NOMINATIVE"
 msgid "Frimaire"
-msgstr ""
+msgstr "Frimaire"
 
 #. I18N: %s are both user-input date fields
 #: admin_site_change.php:266 admin_site_logs.php:227
@@ -6521,25 +6521,25 @@ msgstr "Buradan %s buraya %s"
 #: library/WT/Date/French.php:111
 msgctxt "GENITIVE"
 msgid "Fructidor"
-msgstr ""
+msgstr "Fructidor"
 
 #. I18N: a month in the French republican calendar
 #: library/WT/Date/French.php:183
 msgctxt "INSTRUMENTAL"
 msgid "Fructidor"
-msgstr ""
+msgstr "Fructidor"
 
 #. I18N: a month in the French republican calendar
 #: library/WT/Date/French.php:147
 msgctxt "LOCATIVE"
 msgid "Fructidor"
-msgstr ""
+msgstr "Fructidor"
 
 #. I18N: a month in the French republican calendar
 #: library/WT/Date/French.php:75
 msgctxt "NOMINATIVE"
 msgid "Fructidor"
-msgstr ""
+msgstr "Fructidor"
 
 #: library/WT/Gedcom/Code/Temp.php:152
 msgid "Fukuoka, Japan"
@@ -6671,25 +6671,25 @@ msgstr "Almanya"
 #: library/WT/Date/French.php:101
 msgctxt "GENITIVE"
 msgid "Germinal"
-msgstr ""
+msgstr "Germinal"
 
 #. I18N: a month in the French republican calendar
 #: library/WT/Date/French.php:173
 msgctxt "INSTRUMENTAL"
 msgid "Germinal"
-msgstr ""
+msgstr "Germinal"
 
 #. I18N: a month in the French republican calendar
 #: library/WT/Date/French.php:137
 msgctxt "LOCATIVE"
 msgid "Germinal"
-msgstr ""
+msgstr "Germinal"
 
 #. I18N: a month in the French republican calendar
 #: library/WT/Date/French.php:65
 msgctxt "NOMINATIVE"
 msgid "Germinal"
-msgstr ""
+msgstr "Germinal"
 
 #: library/WT/Stats.php:6100
 msgid "Ghana"
@@ -6992,7 +6992,7 @@ msgstr "Helsinki, Finlandiya"
 #: modules_v3/relative_ext_report/report.xml:9
 msgctxt "font name"
 msgid "Helvetica"
-msgstr ""
+msgstr "Helvetica"
 
 #: modules_v3/ahnentafel_report/report.xml:193
 msgid "Her occupation was"
@@ -7025,6 +7025,41 @@ msgstr "Buradan hiyerarşik yer ismini göstermek için iki seçenekten birisini
 #: help_text.php:1045
 msgid "Here you can choose text to appear on the login screen.  You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.</div><br></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
 msgstr ""
+"Burada giriş ekranında görünmesini istediğiniz metni seçebilirsiniz. Sizin "
+"için en uygun önceden tanımlanmış olan metni belirlemeniz "
+"gerekir.<br><br>İsterseniz size özel Hoşgeldin mesajını belirleyebilirsiniz. "
+"Daha fazla bilgi için <b>Özel Hoş Geldiniz metni</b> alanına ilişkin yardım "
+"metnine bakabilirsiniz.<br><br>Önceden tanımlanmış "
+"metinler:<ul><li><b>Önceden tanımlanmış tüm kullanıcılara üye olabileceğini "
+"söyleyen metin:</br><div class=\"list_value_wrap\"><center><b>Soyağacı Web "
+"Sitesine Hoş Geldiniz</b></center><br>Bu siteye erişim için kullanıcı hesabı "
+"olan her ziyaretçiye izin verilmektedir.<br><br>Eğer bir kullanıcı hesabınız "
+"varsa bu sayfada giriş yapabilirsiniz. Eğer bir kullanıcı hesabınız yok ise "
+"aşağıdaki uygun bağlantıyı tıklayarak kayıt başvurusu "
+"yapabilirsiniz.<br><br>Kayıt sonrası mail adresinize gönderilen doğrulama "
+"maili aracılığı ile hesabınızı doğruladıktan sonra kullanıcı hesabınız "
+"yönetici tarafından onaylayacaktır. Başvurunuz kabul edildiğinde "
+"bilgilendirme mesajı mail adresinize gönderilecektir.</div><br></li><li><b>Ziy"
+"aretçiye üye olduğunda admin onayı gerektirdiğini söyleyen önceden "
+"tanımlanmış metin:</b><div class=\"list_value_wrap\"><center><b>Soyağacı Web "
+"Sitesine Hoş Geldiniz</b></center><br>Bu soyağacı web sitesine sadece "
+"<u>kayıtlı</u> kullanıcıların erişmesine izin verilmektedir.<br><br>Eğer bir "
+"kullanıcı hesabına sahip iseniz bu sayfadan giriş yapabilirsiniz.<br><br>Eğer "
+"bir kullanıcı hesabınız yok ise aşağıdaki uygun bağlantıya tıklayarak kayıt "
+"olabilirsiniz.<br><br>Kayıt sonrası mail adresine gönderilen doğrulama maili "
+"aracılığı ile hesabınızı doğruladıktan sonra kullanıcı hesabınız yönetici "
+"tarafından onaylayacak veya reddedecektir. Başvurunuz kabul edildiğinde "
+"bilgilendirme mesajı mail adresinize gönderilecektir.</div><br></li><li><b>Sad"
+"ece aile üyelerinin üyeliklerine izin verildiğin söyleyen önceden tanımlanmış "
+"metin:</b><div class=\"list_value_wrap\"><center><b>Soyağacı Web Sitesine Hoş "
+"Geldiniz.</b></center><br>Bu siteye erişim için sadece <u>aile fertlerine</u> "
+"izin verilmektedir.<br><br>Eğer bir kullanıcı hesabınız varsa bu sayfada "
+"giriş yapabilirsiniz. Eğer bir kullanıcı hesabınız yok ise aşağıdaki uygun "
+"bağlantıyı tıklayarak kayıt başvurusu yapabilirsiniz.<br><br>Kayıt sonrası "
+"mail adresinize gönderilen doğrulama maili aracılığı ile hesabınızı "
+"doğruladıktan sonra kullanıcı hesabınız yönetici tarafından onaylayacak veya "
+"reddedecektir. Başvurunuz kabul edildiğinde bilgilendirme mesajı mail "
+"adresinize gönderilecektir.</div></li></ul>"
 
 #: modules_v3/googlemap/help_text.php:54
 msgid "Here you can enter the precision.  Based on this setting the number of digits that will be used in the latitude and longitude is determined."
@@ -7038,25 +7073,25 @@ msgstr "Hermosillo, Meksika"
 #: library/WT/Date/Jewish.php:142
 msgctxt "GENITIVE"
 msgid "Heshvan"
-msgstr ""
+msgstr "Heshvan"
 
 #. I18N: a month in the Jewish calendar
 #: library/WT/Date/Jewish.php:222
 msgctxt "INSTRUMENTAL"
 msgid "Heshvan"
-msgstr ""
+msgstr "Heshvan"
 
 #. I18N: a month in the Jewish calendar
 #: library/WT/Date/Jewish.php:182
 msgctxt "LOCATIVE"
 msgid "Heshvan"
-msgstr ""
+msgstr "Heshvan"
 
 #. I18N: a month in the Jewish calendar
 #: library/WT/Date/Jewish.php:102
 msgctxt "NOMINATIVE"
 msgid "Heshvan"
-msgstr ""
+msgstr "Heshvan"
 
 #: admin_trees_config.php:230
 msgid "Hide &amp; show"
@@ -7223,7 +7258,7 @@ msgstr "Kimlik Numara"
 
 #: help_text.php:613
 msgid "If a visitor to the site has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines."
-msgstr ""
+msgstr "Eğer ziyaretçi tarayıcı ayarlarında bir dil belirtmemiş ise yada belirtilen dil desteklenmeyen bir dil ise bu dil kullanılacaktır. Genellikle, bu ayar arama motorları için de geçerlidir."
 
 #: help_text.php:1470
 msgid "If an administrator creates a user account, the verification email is not sent, and the email must be verified manually."
@@ -7252,10 +7287,23 @@ msgstr "Eğer birey verilen ilk ismi ile bilinmiyor ise, tercih edilen isim aste
 #: help_text.php:466
 msgid "If the number of times that a certain surname occurs is lower than the threshold, it will not appear in the list.  It can be added here manually.  If more than one surname is entered, they must be separated by a comma.  <b>Surnames are case-sensitive.</b>"
 msgstr ""
+"Belirli bir soyadı belirlenen eşik değerinden daha az tekrarlıyor ise, bu "
+"listede görünmez. Eğer bu soyadının listede görünmesini istenirse buradan el "
+"ile eklenebilir. Birden fazla soyadı girmek için virgül ile ayrılmalıdır. "
+"<b>Soyadlar büyük/küçük harf duyarlıdır.</b>"
 
 #: help_text.php:819
 msgid "If the option <b>Allow visitors to request account registration</b> is enabled this setting controls whether the admin must approve the registration.<br><br>Setting this to <b>Yes</b> will require that all new users first verify themselves and then be approved by an admin before they can login.  With this setting on <b>No</b>, the “Approved by administrator” checkbox will be checked automatically when users verify their account, thus allowing an immediate login afterwards without admin intervention."
 msgstr ""
+"Eğer <b>Ziyaretçilerin kayıt olmasına izin ver</b> seçeneği aktif ise, bu "
+"secenek yöneticinin kaydı onaylamasının gerekili olup olmadığını bu ayar "
+"belirler.<br><b>Bu seçenek <b>Evet</b> olarak seçildiğinde, yeni "
+"kullanıcıların giriş yapabilmesi için önce kendilerini onaylamaları, daha "
+"sonra ise yöneticinin bu kullanıcıyı onaylaması gereklidir. Bu seçenek "
+"<b>Hayır</b> olarak seçildiğinde ise, kullanıcı kendisini onayladığında "
+"\"Yönetici tarafından onaylandı\" onay kutusun otomatik olarak seçilir. Bu "
+"kullanıcı kendisini onayladıktan sonra yöneticinin onayını beklemeden "
+"doğrudan giriş yapabilmesini sağlar."
 
 #: help_text.php:281
 #, php-format
@@ -7631,25 +7679,25 @@ msgstr "İtalya"
 #: library/WT/Date/Jewish.php:160
 msgctxt "GENITIVE"
 msgid "Iyar"
-msgstr ""
+msgstr "Iyar"
 
 #. I18N: a month in the Jewish calendar
 #: library/WT/Date/Jewish.php:240
 msgctxt "INSTRUMENTAL"
 msgid "Iyar"
-msgstr ""
+msgstr "Iyar"
 
 #. I18N: a month in the Jewish calendar
 #: library/WT/Date/Jewish.php:200
 msgctxt "LOCATIVE"
 msgid "Iyar"
-msgstr ""
+msgstr "Iyar"
 
 #. I18N: a month in the Jewish calendar
 #: library/WT/Date/Jewish.php:120
 msgctxt "NOMINATIVE"
 msgid "Iyar"
-msgstr ""
+msgstr "Iyar"
 
 #. I18N: The Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:42
@@ -7844,7 +7892,7 @@ msgstr "Kelime Örnekleri"
 #: library/WT/Date/Jalali.php:191
 msgctxt "Abbreviation for Persian month: Khordad"
 msgid "Khor"
-msgstr ""
+msgstr "Khor"
 
 #. I18N:  3rd month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:89
@@ -7882,25 +7930,25 @@ msgstr "Kırıbatı"
 #: library/WT/Date/Jewish.php:144
 msgctxt "GENITIVE"
 msgid "Kislev"
-msgstr ""
+msgstr "Kislev"
 
 #. I18N: a month in the Jewish calendar
 #: library/WT/Date/Jewish.php:224
 msgctxt "INSTRUMENTAL"
 msgid "Kislev"
-msgstr ""
+msgstr "Kislev"
 
 #. I18N: a month in the Jewish calendar
 #: library/WT/Date/Jewish.php:184
 msgctxt "LOCATIVE"
 msgid "Kislev"
-msgstr ""
+msgstr "Kislev"
 
 #. I18N: a month in the Jewish calendar
 #: library/WT/Date/Jewish.php:104
 msgctxt "NOMINATIVE"
 msgid "Kislev"
-msgstr ""
+msgstr "Kislev"
 
 #: library/WT/Gedcom/Code/Temp.php:184
 msgid "Kona, Hawaii"
@@ -8079,7 +8127,7 @@ msgstr "Lübnan"
 #: modules_v3/relative_ext_report/report.xml:8
 msgctxt "paper size"
 msgid "Legal"
-msgstr ""
+msgstr "Legal"
 
 #. I18N: gedcom tag LEGA
 #: library/WT/Gedcom/Tag.php:545
@@ -8410,11 +8458,11 @@ msgstr "Link yönetimi"
 #: admin_trees_download.php:118 admin_users.php:44 help_text.php:1393
 #: modules_v3/clippings/module.php:193 modules_v3/clippings/module.php:583
 msgid "Manager"
-msgstr "Yönetici"
+msgstr "İdareci"
 
 #: admin.php:146
 msgid "Managers"
-msgstr "Yönetilecekler"
+msgstr "İdareciler"
 
 #: library/WT/Gedcom/Code/Temp.php:202
 msgid "Manila, Philippines"
@@ -8934,11 +8982,11 @@ msgstr "Cıva"
 
 #: admin_trees_merge.php:30 themes/_administration/header.php:122
 msgid "Merge family trees"
-msgstr ""
+msgstr "Aile ağaçlarını birleştir."
 
 #: admin_site_merge.php:266
 msgid "Merge from ID:"
-msgstr "Kimden Birleşecek ID:"
+msgstr "Kaynak ID:"
 
 #: admin_site_merge.php:35 admin_site_merge.php:80 admin_site_merge.php:147
 #: admin_site_merge.php:239 help_text.php:1169
@@ -8948,7 +8996,7 @@ msgstr "Kayıtları birleştir"
 
 #: admin_site_merge.php:245
 msgid "Merge to ID:"
-msgstr "Kimle Birleşecek ID:"
+msgstr "Hedef ID:"
 
 #: library/WT/Gedcom/Code/Temp.php:212
 msgid "Merida, Mexico"
@@ -8982,25 +9030,25 @@ msgstr "Mesaj"
 #: library/WT/Date/French.php:107
 msgctxt "GENITIVE"
 msgid "Messidor"
-msgstr ""
+msgstr "Messidor"
 
 #. I18N: a month in the French republican calendar
 #: library/WT/Date/French.php:179
 msgctxt "INSTRUMENTAL"
 msgid "Messidor"
-msgstr ""
+msgstr "Messidor"
 
 #. I18N: a month in the French republican calendar
 #: library/WT/Date/French.php:143
 msgctxt "LOCATIVE"
 msgid "Messidor"
-msgstr ""
+msgstr "Messidor"
 
 #. I18N: a month in the French republican calendar
 #: library/WT/Date/French.php:71
 msgctxt "NOMINATIVE"
 msgid "Messidor"
-msgstr ""
+msgstr "Messidor"
 
 #: library/WT/Stats.php:6158
 msgid "Mexico"
@@ -9168,7 +9216,7 @@ msgstr "Montserrat"
 #: library/WT/Date/Jalali.php:195
 msgctxt "Abbreviation for Persian month: Mordad"
 msgid "Mor"
-msgstr ""
+msgstr "Mor"
 
 #. I18N:  5th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:93
@@ -9205,7 +9253,7 @@ msgstr "Çoğu SMTP sunucuları bir şifre gerektirir."
 
 #: modules_v3/gedcom_stats/module.php:190 modules_v3/html/module.php:256
 msgid "Most common surnames"
-msgstr "Ençok Ortak Soyadılar"
+msgstr "En çok Ortak Soyadları"
 
 #. I18N: Help text for the "Secure connection" site configuration setting
 #: help_text.php:774
@@ -9582,13 +9630,13 @@ msgstr "Nissan"
 #: library/WT/Date/Jewish.php:238
 msgctxt "INSTRUMENTAL"
 msgid "Nissan"
-msgstr ""
+msgstr "Nissan"
 
 #. I18N: a month in the Jewish calendar
 #: library/WT/Date/Jewish.php:198
 msgctxt "LOCATIVE"
 msgid "Nissan"
-msgstr ""
+msgstr "Nissan"
 
 #. I18N: a month in the Jewish calendar
 #: library/WT/Date/Jewish.php:118
@@ -9604,25 +9652,25 @@ msgstr "Niue Adaları"
 #: library/WT/Date/French.php:95
 msgctxt "GENITIVE"
 msgid "Nivôse"
-msgstr ""
+msgstr "Nivôse"
 
 #. I18N: a month in the French republican calendar
 #: library/WT/Date/French.php:167
 msgctxt "INSTRUMENTAL"
 msgid "Nivôse"
-msgstr ""
+msgstr "Nivôse"
 
 #. I18N: a month in the French republican calendar
 #: library/WT/Date/French.php:131
 msgctxt "LOCATIVE"
 msgid "Nivôse"
-msgstr ""
+msgstr "Nivôse"
 
 #. I18N: a month in the French republican calendar
 #: library/WT/Date/French.php:59
 msgctxt "NOMINATIVE"
 msgid "Nivôse"
-msgstr ""
+msgstr "Nivôse"
 
 #: admin_users.php:470 includes/functions/functions_print_facts.php:290
 msgid "No"
@@ -9800,7 +9848,7 @@ msgstr "Hiçbiri"
 #. I18N: a day in the French republican calendar
 #: library/WT/Date/French.php:220
 msgid "Nonidi"
-msgstr ""
+msgstr "Nonidi"
 
 #. I18N: time format “%A” - exactly 12:00:00
 #: includes/functions/functions_date.php:102
@@ -9885,7 +9933,7 @@ msgstr "Kullanıcı hesabi aile ağacındaki bir kişi ile ilişkilendirildiğin
 
 #: help_text.php:724
 msgid "Note: longer path lengths require a lot of calculation, which can make your site run slowly for these users."
-msgstr ""
+msgstr "Not: yüksek yol uzunluğu belirtmeniz çok fazla miktarda hesaplama gerektirdiğinden sitenizin ilgili kullanıcılar için yavaş çalışmasına neden olabilir."
 
 #: help_text.php:571
 #, php-format
@@ -10033,7 +10081,7 @@ msgstr "Eki"
 #. I18N: a day in the French republican calendar
 #: library/WT/Date/French.php:218
 msgid "Octidi"
-msgstr ""
+msgstr "Octidi"
 
 #: library/WT/Date/Calendar.php:234
 msgctxt "GENITIVE"
@@ -10128,7 +10176,7 @@ msgstr "Bugünkü hadiseler …"
 #: includes/functions/functions_print_facts.php:738
 #: includes/functions/functions_print_facts.php:1002
 msgid "Only managers can edit"
-msgstr "Sadece yöneticiler düzenleyebilir"
+msgstr "Sadece idareciler düzenleyebilir"
 
 #: site-unavailable.php:64
 msgid "Oops!  The webserver is unable to connect to the database server.  It could be busy, undergoing maintenance, or simply broken.  You should <a href=\"index.php\">try again</a> in a few minutes or contact the website administrator."
@@ -10140,7 +10188,7 @@ msgstr "Hoppalaaa!  webtrees bu klasöre dosya oluşturamıyor."
 
 #: includes/functions/functions_print.php:829
 msgid "OpenStreetMap™"
-msgstr ""
+msgstr "OpenStreetMap™"
 
 #: modules_v3/googlemap/help_text.php:41 modules_v3/googlemap/module.php:402
 msgid "Optional prefixes and suffixes"
@@ -10153,7 +10201,7 @@ msgstr "Seçenekler:"
 #: library/WT/Date/Jalali.php:189
 msgctxt "Abbreviation for Persian month: Ordibehesht"
 msgid "Ord"
-msgstr ""
+msgstr "Ord"
 
 #: admin_module_menus.php:78 admin_module_sidebar.php:78
 #: admin_module_tabs.php:78
@@ -10257,7 +10305,7 @@ msgstr "Sahibi"
 #. I18N: time format “%A” - between 12:00:01 and 23:59:59
 #: includes/functions/functions_date.php:104
 msgid "P.M."
-msgstr "Ö.S."
+msgstr "öğleden sonra"
 
 #: help_text.php:1308
 msgid "PGV must be version 4.2.3, or any SVN up to #6973"
@@ -10528,7 +10576,7 @@ msgstr "Fotoğraf"
 
 #: admin_pgv_to_wt.php:147
 msgid "PhpGedView might be installed in one of these folders:"
-msgstr ""
+msgstr "PhpGedView bu klasörlerden birine kurulmalı:"
 
 #: admin_pgv_to_wt.php:65
 msgid "PhpGedView must use the same database as webtrees."
@@ -10596,7 +10644,7 @@ msgstr "Konum isimleri genellikle grafik yada listelere sığamayacak kadar uzun
 
 #: library/WT/Gedcom/Tag.php:179
 msgid "Place of LDS baptism"
-msgstr ""
+msgstr "LDS vaftiz yeri"
 
 #: library/WT/Gedcom/Tag.php:777
 msgid "Place of LDS child sealing"
@@ -10622,12 +10670,12 @@ msgstr ""
 #: library/WT/Gedcom/Tag.php:195
 #: modules_v3/missing_facts_report/report.xml:219
 msgid "Place of bar mitzvah"
-msgstr ""
+msgstr "Bar mitzvah yeri"
 
 #: library/WT/Gedcom/Tag.php:203
 #: modules_v3/missing_facts_report/report.xml:260
 msgid "Place of bat mitzvah"
-msgstr ""
+msgstr "Bat mitzvah yeri"
 
 #: library/WT/Gedcom/Tag.php:211 modules_v3/fact_sources/report.xml:270
 #: modules_v3/missing_facts_report/report.xml:89
@@ -10636,11 +10684,11 @@ msgstr "Doğum yeri"
 
 #: library/WT/Gedcom/Tag.php:219
 msgid "Place of blessing"
-msgstr ""
+msgstr "Kutsanma yeri"
 
 #: library/WT/Gedcom/Tag.php:1089
 msgid "Place of brit milah"
-msgstr ""
+msgstr "Brit milah yeri"
 
 #: library/WT/Gedcom/Tag.php:231
 #: modules_v3/missing_facts_report/report.xml:553
@@ -10779,25 +10827,25 @@ msgstr "Lütfen bu mesajınıza cevap verebilmemiz için email adresinizi girin.
 #: library/WT/Date/French.php:97
 msgctxt "GENITIVE"
 msgid "Pluviôse"
-msgstr ""
+msgstr "Pluviôse"
 
 #. I18N: a month in the French republican calendar
 #: library/WT/Date/French.php:169
 msgctxt "INSTRUMENTAL"
 msgid "Pluviôse"
-msgstr ""
+msgstr "Pluviôse"
 
 #. I18N: a month in the French republican calendar
 #: library/WT/Date/French.php:133
 msgctxt "LOCATIVE"
 msgid "Pluviôse"
-msgstr ""
+msgstr "Pluviôse"
 
 #. I18N: a month in the French republican calendar
 #: library/WT/Date/French.php:61
 msgctxt "NOMINATIVE"
 msgid "Pluviôse"
-msgstr ""
+msgstr "Pluviôse"
 
 #: library/WT/Stats.php:6197
 msgid "Poland"
@@ -10848,25 +10896,25 @@ msgstr "Posta kodu"
 #: library/WT/Date/French.php:105
 msgctxt "GENITIVE"
 msgid "Prairial"
-msgstr ""
+msgstr "Prairial"
 
 #. I18N: a month in the French republican calendar
 #: library/WT/Date/French.php:177
 msgctxt "INSTRUMENTAL"
 msgid "Prairial"
-msgstr ""
+msgstr "Prairial"
 
 #. I18N: a month in the French republican calendar
 #: library/WT/Date/French.php:141
 msgctxt "LOCATIVE"
 msgid "Prairial"
-msgstr ""
+msgstr "Prairial"
 
 #. I18N: a month in the French republican calendar
 #: library/WT/Date/French.php:69
 msgctxt "NOMINATIVE"
 msgid "Prairial"
-msgstr ""
+msgstr "Prairial"
 
 #: modules_v3/googlemap/module.php:3966
 msgid "Precision"
@@ -10878,15 +10926,19 @@ msgstr "Enlem ve boylam hassasiyeti"
 
 #: admin_site_config.php:48
 msgid "Predefined text that states admin will decide on each request for a user account"
-msgstr "Önceden tanımlanmış ziyaretçiye üye olduğunda admin onayı gerektirdiğini söyleyen metin"
+msgstr ""
+"Ziyaretçiye üye olduğunda admin onayı gerektirdiğini söyleyen önceden "
+"tanımlanmış metin"
 
 #: admin_site_config.php:47
 msgid "Predefined text that states all users can request a user account"
-msgstr "Önceden tanımlanmış tüm kullanıcılara üye olabileceğini söyleyen metin"
+msgstr "Tüm kullanıcılara üye olabileceğini söyleyen önceden tanımlanmış metin"
 
 #: admin_site_config.php:49
 msgid "Predefined text that states only family members can request a user account"
-msgstr "Önceden tanımlanmış sadece aile üyelerinin üyeliklerine izin verildiğin söyleyen metin"
+msgstr ""
+"Sadece aile üyelerinin üyeliklerine izin verildiğin söyleyen önceden "
+"tanımlanmış metin"
 
 #: admin_users.php:194 admin_users.php:395 edituser.php:173 help_text.php:1179
 msgid "Preferred contact method"
@@ -10925,7 +10977,7 @@ msgstr "Papaz"
 #. I18N: a day in the French republican calendar
 #: library/WT/Date/French.php:204
 msgid "Primidi"
-msgstr ""
+msgstr "Primidi"
 
 #: modules_v3/family_group_report/report.xml:10
 msgid "Print basic events when blank?"
@@ -11015,7 +11067,7 @@ msgstr "Verinin Kalitesi"
 #. I18N: a day in the French republican calendar
 #: library/WT/Date/French.php:210
 msgid "Quartidi"
-msgstr ""
+msgstr "Quartidi"
 
 #: modules_v3/faq/module.php:147
 msgid "Question"
@@ -11040,7 +11092,7 @@ msgstr "Hızlı Kaynak Olguları"
 #. I18N: a day in the French republican calendar
 #: library/WT/Date/French.php:212
 msgid "Quintidi"
-msgstr ""
+msgstr "Quintidi"
 
 #. I18N: When replying to an email, the subject becomes “RE: <subject>”
 #: modules_v3/user_messages/module.php:106
@@ -11107,7 +11159,7 @@ msgstr "Rebiülahir"
 #. I18N: This is an Arabic word, pronounced “ra DAH”.  It is child-to-parent pedigree, established by wet-nursing.
 #: library/WT/Gedcom/Code/Pedi.php:90
 msgid "Rada"
-msgstr ""
+msgstr "Rada"
 
 #. I18N: http://en.wikipedia.org/wiki/Rajab
 #: library/WT/Date/Hijri.php:99
@@ -11278,7 +11330,7 @@ msgstr "Düzenli ifade"
 #. I18N: http://en.wikipedia.org/wiki/Regular_expression
 #: modules_v3/batch_update/plugins/search_replace.php:126
 msgid "Regular expressions are an advanced pattern matching technique."
-msgstr ""
+msgstr "Regular expression lar ileri düzey desen eşleştirme teknikleridir."
 
 #. I18N: Name of a module/report
 #: modules_v3/individual_ext_report/module.php:29
@@ -11400,7 +11452,7 @@ msgstr "Reno, Nevada"
 #: admin_trees_merge.php:87 admin_trees_merge.php:92
 #: admin_trees_renumber.php:29
 msgid "Renumber family tree"
-msgstr ""
+msgstr "soyağacını yeniden numaralandır."
 
 #: admin_trees_places.php:101 search.php:119
 msgid "Replace with"
@@ -11616,7 +11668,7 @@ msgstr "Safer"
 #. I18N: The name of a colour-scheme
 #: themes/colors/theme.php:101
 msgid "Sage"
-msgstr ""
+msgstr "Sage"
 
 #: library/WT/Stats.php:6218
 msgid "Saint Helena"
@@ -11960,7 +12012,7 @@ msgstr "Eylül"
 #. I18N: a day in the French republican calendar
 #: library/WT/Date/French.php:216
 msgid "Septidi"
-msgstr ""
+msgstr "Septidi"
 
 #: library/WT/Stats.php:6215
 msgid "Serbia"
@@ -12058,7 +12110,7 @@ msgstr "webtrees için kurulum sihirbazı"
 #. I18N: a day in the French republican calendar
 #: library/WT/Date/French.php:214
 msgid "Sextidi"
-msgstr ""
+msgstr "Sextidi"
 
 #: library/WT/Stats.php:6235
 msgid "Seychelles"
@@ -12067,7 +12119,7 @@ msgstr "Seyşel Adaları"
 #: library/WT/Date/Jalali.php:197
 msgctxt "Abbreviation for Persian month: Shahrivar"
 msgid "Shah"
-msgstr ""
+msgstr "Shah"
 
 #. I18N:  6th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:95
@@ -12211,19 +12263,19 @@ msgstr "Shevat"
 #: library/WT/Date/Jewish.php:228
 msgctxt "INSTRUMENTAL"
 msgid "Shevat"
-msgstr ""
+msgstr "Shevat"
 
 #. I18N: a month in the Jewish calendar
 #: library/WT/Date/Jewish.php:188
 msgctxt "LOCATIVE"
 msgid "Shevat"
-msgstr ""
+msgstr "Shevat"
 
 #. I18N: a month in the Jewish calendar
 #: library/WT/Date/Jewish.php:108
 msgctxt "NOMINATIVE"
 msgid "Shevat"
-msgstr ""
+msgstr "Shevat"
 
 #. I18N: The name of a colour-scheme
 #: themes/colors/theme.php:102
@@ -12574,7 +12626,7 @@ msgstr "Bu blok hangi lisanlar ile gösterilsin?"
 #: includes/functions/functions_print_facts.php:735
 #: includes/functions/functions_print_facts.php:999
 msgid "Show to managers"
-msgstr "Yöneticilere göster"
+msgstr "İdarecilere göster"
 
 #: admin_trees_config.php:39 admin_trees_config.php:670
 #: includes/functions/functions_edit.php:287
@@ -12632,7 +12684,7 @@ msgstr "Kenar çubuğu"
 
 #: admin_module_sidebar.php:30
 msgid "Sidebars"
-msgstr ""
+msgstr "Kenar çubukları"
 
 #: library/WT/Stats.php:6222
 msgid "Sierra Leone"
@@ -12682,19 +12734,19 @@ msgstr "Site Haritaları, taranabilir sayfalar hakkında bir Web sitesinde arama
 #: library/WT/Date/Jewish.php:162
 msgctxt "GENITIVE"
 msgid "Sivan"
-msgstr ""
+msgstr "Sivan"
 
 #. I18N: a month in the Jewish calendar
 #: library/WT/Date/Jewish.php:242
 msgctxt "INSTRUMENTAL"
 msgid "Sivan"
-msgstr ""
+msgstr "Sivan"
 
 #. I18N: a month in the Jewish calendar
 #: library/WT/Date/Jewish.php:202
 msgctxt "LOCATIVE"
 msgid "Sivan"
-msgstr ""
+msgstr "Sivan"
 
 #. I18N: a month in the Jewish calendar
 #: library/WT/Date/Jewish.php:122
@@ -12804,7 +12856,7 @@ msgstr "Göre sırala"
 #: library/WT/Controller/Branches.php:201
 #: library/WT/Controller/Branches.php:237
 msgid "Sosa"
-msgstr ""
+msgstr "Sosa"
 
 #: search_advanced.php:159 search_advanced.php:221 search_advanced.php:236
 #: search_advanced.php:258 search_advanced.php:273
@@ -13196,19 +13248,19 @@ msgstr "Tampico, Meksika"
 #: library/WT/Date/Jewish.php:164
 msgctxt "GENITIVE"
 msgid "Tamuz"
-msgstr ""
+msgstr "Tamuz"
 
 #. I18N: a month in the Jewish calendar
 #: library/WT/Date/Jewish.php:244
 msgctxt "INSTRUMENTAL"
 msgid "Tamuz"
-msgstr ""
+msgstr "Tamuz"
 
 #. I18N: a month in the Jewish calendar
 #: library/WT/Date/Jewish.php:204
 msgctxt "LOCATIVE"
 msgid "Tamuz"
-msgstr ""
+msgstr "Tamuz"
 
 #. I18N: a month in the Jewish calendar
 #: library/WT/Date/Jewish.php:124
@@ -13246,25 +13298,25 @@ msgstr "Topografik"
 #: library/WT/Date/Jewish.php:146
 msgctxt "GENITIVE"
 msgid "Tevet"
-msgstr ""
+msgstr "Tevet"
 
 #. I18N: a month in the Jewish calendar
 #: library/WT/Date/Jewish.php:226
 msgctxt "INSTRUMENTAL"
 msgid "Tevet"
-msgstr ""
+msgstr "Tevet"
 
 #. I18N: a month in the Jewish calendar
 #: library/WT/Date/Jewish.php:186
 msgctxt "LOCATIVE"
 msgid "Tevet"
-msgstr ""
+msgstr "Tevet"
 
 #. I18N: a month in the Jewish calendar
 #: library/WT/Date/Jewish.php:106
 msgctxt "NOMINATIVE"
 msgid "Tevet"
-msgstr ""
+msgstr "Tevet"
 
 #. I18N: gedcom tag TEXT
 #: library/WT/Gedcom/Tag.php:823
@@ -13355,7 +13407,7 @@ msgstr "Bu bireyin ayrıntıları hususidir."
 
 #: admin_trees_merge.php:176
 msgid "The family trees were merged successfully."
-msgstr ""
+msgstr "Soyağaçları başarıyla birleştirildi."
 
 #. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
 #: action.php:160
@@ -13528,7 +13580,7 @@ msgstr "Aile ağacınızın bireylerin sayısı sunucunuzun hafiza ve ve CPU zam
 #: admin_site_upgrade.php:394
 #, php-format
 msgid "The new files are currently located in the folder %s."
-msgstr ""
+msgstr "Yeni dosyalar %s klasöründe."
 
 #: help_text.php:1248
 msgid "The number of occurrences of the specified name will be shown on the map.  If you leave this field empty, the most common surname will be used."
@@ -13557,7 +13609,7 @@ msgstr "Önek isteğe bağlıdır. ancak önerilir. Benzersiz tablolar vererek b
 #: admin_trees_renumber.php:237
 #, php-format
 msgid "The record %1$s was renamed to %2$s."
-msgstr ""
+msgstr "%1$s kaydı %2$s olarak değiştirildi."
 
 #: action.php:100
 msgid "The record was copied to the clipboard."
@@ -13573,7 +13625,7 @@ msgstr "Sunucu yapılandırması Tamam."
 
 #: admin_trees_renumber.php:252
 msgid "The server’s time limit was reached."
-msgstr ""
+msgstr "Sunucunun zaman aşım sınırına ulaşıldı."
 
 #: site-offline.php:77
 msgid "The site is down for maintenance.  You should <a href=\"index.php\">try again</a> in a few minutes."
@@ -13618,7 +13670,7 @@ msgstr "Saniye olarak webtrees in tekrar otutum açmak gerekmeden oturumu açık
 #, php-format
 msgid "The two family trees have %1$s record which use the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
-msgstr[0] ""
+msgstr[0] "Her iki soy ağacında aynı “XREF” değerini taşıyan %1$s kayıt var. "
 
 #: admin_site_upgrade.php:492
 msgid "The upgrade is complete."
@@ -13676,6 +13728,11 @@ msgstr "Tema değiştirmek için açılır menü seçicide"
 #: help_text.php:987
 msgid "Themes can be selected at three levels: user, GEDCOM, and site.  User settings take priority over GEDCOM settings, which in turn take priority over the site setting.  Selecting “default theme” at user level will give the setting for the current GEDCOM.  Selecting “default theme” at GEDCOM level will give the site setting."
 msgstr ""
+"Temalar üç düzeyde seçilebilir: kullanıcı, GEDCOM ve site. Kullanıcı ayarının "
+"GEDCOM üzerine önceliği, GEDCOM ayarının site ayarı üzerine önceliği vardır. "
+"Kullanıcı düzeyinde \"Varsayılan Tema\" seçilmesi mevcut GEDCOM ayarını "
+"verecektir. GEDCOM düzeyinde \"Varsayılan Tema\" seçilmesi site ayarını "
+"verecektir."
 
 #: modules_v3/extra_info/module.php:58
 #: modules_v3/personal_facts/module.php:118
@@ -13692,7 +13749,7 @@ msgstr "Bu birey için hiçbir Not mevcut değil."
 
 #: admin_site_upgrade.php:109
 msgid "There are no pending changes."
-msgstr ""
+msgstr "Onaylanmayı bekleyen değişiklik bulunmuyor."
 
 #: modules_v3/todo/module.php:128
 msgid "There are no research tasks in this family tree."
@@ -13722,25 +13779,25 @@ msgstr "Dosyanız yüklenirken bir hata oluştu."
 #: library/WT/Date/French.php:109
 msgctxt "GENITIVE"
 msgid "Thermidor"
-msgstr ""
+msgstr "Thermidor"
 
 #. I18N: a month in the French republican calendar
 #: library/WT/Date/French.php:181
 msgctxt "INSTRUMENTAL"
 msgid "Thermidor"
-msgstr ""
+msgstr "Thermidor"
 
 #. I18N: a month in the French republican calendar
 #: library/WT/Date/French.php:145
 msgctxt "LOCATIVE"
 msgid "Thermidor"
-msgstr ""
+msgstr "Thermidor"
 
 #. I18N: a month in the French republican calendar
 #: library/WT/Date/French.php:73
 msgctxt "NOMINATIVE"
 msgid "Thermidor"
-msgstr ""
+msgstr "Thermidor"
 
 #: admin.php:104
 msgid "These pages provide access to all the configuration settings and management tools for this webtrees site."
@@ -13763,14 +13820,32 @@ msgstr "Bu hesabınızı doğrulamadınız.<br><br>Hesabı doğrulamak için lü
 #: modules_v3/charts/help_text.php:32
 msgid "This block allows a pedigree, descendancy, or hourglass chart to appear on your “My page” or the “Home page”.  Because of space limitations, the charts should be placed only on the left side of the page.<br><br>When this block appears on the “Home page”, the root individual and the type of chart to be displayed are determined by the administrator.  When this block appears on the user’s “My page”, these options are determined by the user.<br><br>The behavior of these charts is identical to their behavior when they are called up from the menus.  Click on the box of an individual to see more details about them."
 msgstr ""
+"Bu blok, \"Benim Sayfam\" yada \"Ana Sayfa\" sayfalarında, soy, torunlar, ya "
+"da kum saati grafiklerinin görünmesini sağlar. Alan sınırlamaları yüzünden, "
+"grafikler sadece sayfanın sol tarafına konulmalıdır.<br><br> Bu blok \"Ana "
+"Sayfa\" da görüntülendiğinde, kök bireyi ve grafik türünü yönetici belirler. "
+"Bu blok kullanıcının \"Benim Sayfam\" da görüntülendiğinde, bu seçenekler "
+"kullanıcı tarafından belirlenir.<br><br> Bu grafiklerin davranışları menüden "
+"açıldıklarındaki davranışları ile aynıdır. Onlar hakkında daha fazla ayrıntı "
+"görmek için bireyin kutusuna tıklayın."
 
 #: modules_v3/review_changes/help_text.php:32
 msgid "This block will show editors a list of records with pending changes that need to be approved by a moderator.  It also generates daily emails to moderators whenever pending changes exist."
 msgstr ""
+"Bu blok moderator tarafından onaylanmayı bekleyen değişikliklerin listesini "
+"gösterir. Ayrıca bekleyen değişiklik olduğu sürece moderatorlere günlük mail "
+"gönderir."
 
 #: help_text.php:1479
 msgid "This checkbox controls your visibility to other users while you’re online.  It also controls your ability to see other online users who are configured to be visible.<br><br>When this box is unchecked, you will be completely invisible to others, and you will also not be able to see other online users.  When this box is checked, exactly the opposite is true.  You will be visible to others, and you will also be able to see others who are configured to be visible."
 msgstr ""
+"Bu işaret kutusu çevrim içi olduğunuzda diğer kullanıcılara görünür olmanızı "
+"belirler. Aynı zamanda baska kullanıcıların çevrimiçi olup olmadıklarını "
+"görebilmenizi sağlar.<br><br>Bu kutunun işareti kaldırıldığında, diğer "
+"kullanıcılara tamamen görünmez olacak aynı zamanda diğer çevrim içi "
+"kullanıcıları göremeyeceksiniz. Bu kutu işaretlendiğinde ise bunun tamamen "
+"tersi geçerli olacaktır. Başkalarına görünür olacak ve aynı zamanda kendisini "
+"görünür olarak ayarlayan diğer kullanıcıları da görebileceksiniz."
 
 #: setup.php:327 setup.php:338
 msgid "This database and table-prefix appear to be used by another application.  If you have an existing PhpGedView system, you should create a new webtrees system.  You can import your PhpGedView data and settings later."
@@ -13822,7 +13897,7 @@ msgstr "Bu aile çocuksuz kaldı"
 #, php-format
 msgid "This family tree has %s record which uses the same “XREF” as another family tree."
 msgid_plural "This family tree has %s records which use the same “XREF” as another family tree."
-msgstr[0] ""
+msgstr[0] "Bu soy ağacında bulunan %1$s kayıt başka bir soy ağacında bulunan “XREF” değerini taşıyor. "
 
 #: modules_v3/random_media/module.php:192
 msgid "This family tree has no images to display."
@@ -13858,7 +13933,7 @@ msgstr ""
 
 #: help_text.php:657
 msgid "This folder will be used to store the media files for this family tree."
-msgstr ""
+msgstr "Bu soy ağacında kullanılan medya dosyaları bu klasörde saklanacak."
 
 #: library/WT/Filter.php:457
 msgid "This form has expired.  Try again."
@@ -13911,18 +13986,33 @@ msgstr ""
 #: help_text.php:407
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets."
 msgstr ""
+"Ekleme/düzenleme formunda gösterilecek GEDCOM etiketleri listesi virgülle "
+"ayrılmış burada belirtilmelidir. İbranice, Yunanca, Kiril, Arapça gibi Latin "
+"olmayan alfabeleri kullanıyorsanız, farklı alfabelerdeki isimleri saklamak "
+"için _HEB, ROMN, FONE vb. etiketler eklemek isteyebilirsiniz."
 
 #: help_text.php:794
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new family.  For example, if MARR is in the list, then fields for marriage date and marriage place will be shown on the form."
 msgstr ""
+"Yeni aile ekleme formunda gösterilecek GEDCOM etiketleri listesi virgülle "
+"ayrılmış burada belirtilmelidir. Örneğin <b>MARR</b> bu listede mevcut ise, "
+"evlilik tarihi ve evlilik yeri alanları formda gösterilecektir."
 
 #: help_text.php:789
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new individual.  For example, if BIRT is in the list, fields for birth date and birth place will be shown on the form."
 msgstr ""
+"Yeni bir birey ekleme formunda gösterilecek GEDCOM etiketleri listesi "
+"virgülle ayrılmış burada belirtilmelidir. Örneğin <b>BIRT</b> bu listede "
+"mevcut ise, doğum tarihi ve doğum yeri alanları formda gösterilecektir."
 
 #: help_text.php:412
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
 msgstr ""
+"Yerleşim yeri ekleme/düzenleme formunda gösterilecek GEDCOM etiketleri "
+"listesi virgülle ayrılmış burada belirtilmelidir. İbranice, Yunanca, Kiril, "
+"Arapça gibi Latin olmayan alfabeleri kullanıyorsanız, farklı alfabelerdeki "
+"isimleri saklamak için _HEB, ROMN, FONE vb. etiketler eklemek "
+"isteyebilirsiniz."
 
 #: help_text.php:1202
 msgid "This is a link to your own record in the family tree.  If this is the wrong individual, contact an administrator."
@@ -13935,6 +14025,8 @@ msgstr "Multimedya objesinin dosya formatının belirtilebileceği opsiyonel bir
 #: help_text.php:368
 msgid "This is an optional status field and is used mostly for LDS ordinances as they are run through the TempleReady program."
 msgstr ""
+"Bu isteğe bağlı bir durum alandır ve TempleReady program aracılığıyla "
+"çalıştırılan LDS yönetmeliklerde çoğunlukla kullanılır."
 
 #: setup.php:267 setup.php:271
 msgid "This is case sensitive."
@@ -13956,34 +14048,74 @@ msgstr "webtrees 'in en son sürümünü kullanıyorsunuz. Her hangi bir güncel
 #: help_text.php:506
 msgid "This is the list of GEDCOM facts that your users can add to families.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the “Unique family facts” list."
 msgstr ""
+"Kullanıcıların \"Aile\" kayıtlarına ekleyebileceği GEDCOM olgu/hadise listesi "
+"burada belirtilmelidir. Size özel belirleyebileceğiniz olgu/hadise isimleri "
+"de dahil olmak üzere, ihtiyacınıza göre olgu/hadise isimlerini listeye "
+"ekleyebilir yada çıkarabilirsiniz. Bu listede belirtilen olgu/hadise "
+"isimlerinin \"Benzersiz Aile Olguları\" listesinde bulunmamalıdır."
 
 #: help_text.php:593
 msgid "This is the list of GEDCOM facts that your users can add to individuals.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the “Unique individual facts” list."
 msgstr ""
+"Kullanıcıların birey kayıtlarına ekleyebileceği GEDCOM olgu/hadise listesi "
+"burada belirtilmelidir. Size özel belirleyebileceğiniz olgu/hadise isimleri "
+"de dahil olmak üzere, ihtiyacınıza göre olgu/hadise isimlerini listeye "
+"ekleyebilir yada çıkarabilirsiniz. Bu listede belirtilen olgu/hadise "
+"isimlerinin \"Benzersiz Aile Olguları\" listesinde bulunmamalıdır."
 
 #: help_text.php:799
 msgid "This is the list of GEDCOM facts that your users can add to repositories.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the “Unique repository facts” list."
 msgstr ""
+"Kullanıcıların \"Depo\" kayıtlarına ekleyebileceği GEDCOM olgu/hadise listesi "
+"burada belirtilmelidir. Size özel belirleyebileceğiniz olgu/hadise isimleri "
+"de dahil olmak üzere, ihtiyacınıza göre olgu/hadise isimlerini listeye "
+"ekleyebilir yada çıkarabilirsiniz. Bu listede belirtilen olgu/hadise "
+"isimlerinin \"Benzersiz Aile Olguları\" listesinde bulunmamalıdır."
 
 #: help_text.php:910
 msgid "This is the list of GEDCOM facts that your users can add to sources.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the “Unique source facts” list."
 msgstr ""
+"Kullanıcıların \"Kaynak\" kayıtlarına ekleyebileceği GEDCOM olgu/hadise "
+"listesi burada belirtilmelidir. Size özel belirleyebileceğiniz olgu/hadise "
+"isimleri de dahil olmak üzere, ihtiyacınıza göre olgu/hadise isimlerini "
+"listeye ekleyebilir yada çıkarabilirsiniz. Bu listede belirtilen olgu/hadise "
+"isimlerinin \"Benzersiz Aile Olguları\" listesinde bulunmamalıdır."
 
 #: help_text.php:516
 msgid "This is the list of GEDCOM facts that your users can only add once to families.  For example, if MARR is in this list, users will not be able to add more than one MARR record to a family.  Fact names that appear in this list must not also appear in the “All family facts” list."
 msgstr ""
+"Kullanıcıların \"Aile\" kayıtlarına sadece bir tane ekleyebileceği GEDCOM "
+"olgu/hadise listesi burada belirtilmelidir. Örneğin <b>MARR</b> bu listede "
+"mevcut ise, kullanıcılar alile evlilik kaydına sadece bir adet MARR kaydı "
+"ekleyebilecekler. Bu listede belirtilen olgu/hadise isimlerinin \"Tüm aile "
+"olguları\" listesinde bulunmamalıdır."
 
 #: help_text.php:603
 msgid "This is the list of GEDCOM facts that your users can only add once to individuals.  For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual.  Fact names that appear in this list must not also appear in the “All individual facts” list."
 msgstr ""
+"Kullanıcıların \"Birey\" kayıtlarına sadece bir tane ekleyebileceği GEDCOM "
+"olgu/hadise listesi burada belirtilmelidir. Örneğin <b>BIRT</b> bu listede "
+"mevcut ise, kullanıcılar alile evlilik kaydına sadece bir adet BIRT kaydı "
+"ekleyebilecekler. Bu listede belirtilen olgu/hadise isimlerinin \"Tüm aile "
+"olguları\" listesinde bulunmamalıdır."
 
 #: help_text.php:809
 msgid "This is the list of GEDCOM facts that your users can only add once to repositories.  For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository.  Fact names that appear in this list must not also appear in the “All repository facts” list."
 msgstr ""
+"Kullanıcıların \"Depo\" kayıtlarına sadece bir tane ekleyebileceği GEDCOM "
+"olgu/hadise listesi burada belirtilmelidir. Örneğin <b>NAME</b> bu listede "
+"mevcut ise, kullanıcılar alile evlilik kaydına sadece bir adet NAME kaydı "
+"ekleyebilecekler. Bu listede belirtilen olgu/hadise isimlerinin \"Tüm aile "
+"olguları\" listesinde bulunmamalıdır."
 
 #: help_text.php:920
 msgid "This is the list of GEDCOM facts that your users can only add once to sources.  For example, if TITL is in this list, users will not be able to add more than one TITL record to a source.  Fact names that appear in this list must not also appear in the “All source facts” list."
 msgstr ""
+"Kullanıcıların \"Kaynak\" kayıtlarına sadece bir tane ekleyebileceği GEDCOM "
+"olgu/hadise listesi burada belirtilmelidir. Örneğin <b>TITL</b> bu listede "
+"mevcut ise, kullanıcılar alile evlilik kaydına sadece bir adet TITL kaydı "
+"ekleyebilecekler. Bu listede belirtilen olgu/hadise isimlerinin \"Tüm aile "
+"olguları\" listesinde bulunmamalıdır."
 
 #. I18N: Help text for the “Server name” site configuration setting
 #: help_text.php:764
@@ -13993,22 +14125,32 @@ msgstr "Bu SMTP sunucusu adıdır. 'localhost' email servisi web sunucusu olarak
 #: help_text.php:476
 msgid "This is the number of times that a surname must occur before it shows up in the Common Surname list on the “Home page”."
 msgstr ""
+"Bir soyadının \"Ana Sayfa\" da bulunan \"En çok ortak soy adlerı\" listesinde "
+"listelenebilmesi için gerekli olan tekrar sayısı."
 
 #: help_text.php:511
 msgid "This is the short list of GEDCOM family facts that appears next to the full list and can be added with a single click."
 msgstr ""
+"Bu tam listenin yanında görünen ve tek bir tıklama ile eklenebilen GEDCOM "
+"\"Aile\" olgu/hadise 'lerinin kısa listesidir."
 
 #: help_text.php:598
 msgid "This is the short list of GEDCOM individual facts that appears next to the full list and can be added with a single click."
-msgstr "Bu birey sayfasında GEDCOMun Olgular ve Hadiseler tam listenin altında yeni olgu ekleme yanında tek tıklama ile olgu eklemeyi sağlar."
+msgstr ""
+"Bu tam listenin yanında görünen ve tek bir tıklama ile eklenebilen GEDCOM "
+"\"Birey\" olgu/hadise 'lerinin kısa listesidir."
 
 #: help_text.php:804
 msgid "This is the short list of GEDCOM repository facts that appears next to the full list and can be added with a single click."
 msgstr ""
+"Bu tam listenin yanında görünen ve tek bir tıklama ile eklenebilen GEDCOM "
+"\"Depo\" olgu/hadise 'lerinin kısa listesidir."
 
 #: help_text.php:915
 msgid "This is the short list of GEDCOM source facts that appears next to the full list and can be added with a single click."
 msgstr ""
+"Bu tam listenin yanında görünen ve tek bir tıklama ile eklenebilen GEDCOM "
+"\"Kaynak\" olgu/hadise 'lerinin kısa listesidir."
 
 #: help_text.php:992
 msgid "This is the width (in pixels) that the program will use when automatically generating thumbnails.  The default setting is 100."
@@ -14164,10 +14306,15 @@ msgstr "Bu seçenek soyağacı grafiğinin dikey yada yatay modda oluşturulmas�
 #: help_text.php:1188
 msgid "This option is like webtrees internal messaging, with one addition.  As an extra, a copy of the message will also be sent to the email address you configured on your Account page.  This is the default contact method."
 msgstr ""
+"Bu seçenek bir özelliği dışımnda webtrees dahili mesajlaşma özelliği gibidir. "
+"Bu durumda kişisel hesap sayfasında belirtilen mail adresine mesajın bir "
+"kopyası gönderilecektir."
 
 #: help_text.php:1114
 msgid "This option selects the family tree that is shown to visitors when they first arrive at the site."
 msgstr ""
+"Bu seçenek ziyaretçilerin siteye ilk eriştiklerinde görünen varsayılan soy "
+"ağacını belirler."
 
 #: help_text.php:1124
 msgid "This option will download the family tree to a GEDCOM file on your computer."
@@ -14176,6 +14323,9 @@ msgstr "Bu seçenek bilgisayarınıza aile ağacın GEDCOM dosyasını indirmeni
 #: help_text.php:569
 msgid "This option will enable all privacy settings and hide the details of living individuals, as defined or modified on the Privacy tab of each GEDCOM’s configuration page."
 msgstr ""
+"Bu seçenek bütün gizlilik ayarlarını etkin hale getirir ve herbir GEDCOM "
+"dosyasının gizlilik ayarlarında belirtildiği şekilde yaşayan bireylerin "
+"bilgilerini gizler."
 
 #: modules_v3/faq/help_text.php:50
 msgid "This option will let you delete an item from the FAQ page"
@@ -14188,18 +14338,33 @@ msgstr "Bu seçenek SSS sayfasında size bölümleri düzenletecek."
 #: modules_v3/faq/help_text.php:60
 msgid "This option will let you move an item downwards on the FAQ page.<br><br>Each time you use this option, the FAQ position number of this item is increased by one.  You can achieve the same effect by editing the item in question and changing the FAQ position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
 msgstr ""
+"Bu seçenek SSS sayfasındaki bir öğeyi aşağı taşımanızı sağlar.<br><br>Bu "
+"seçeneği her kullandığınızda, bu maddenin SSS pozisyonu sayısı bir artar. Söz "
+"konusu maddenin SSS pozisyon alanını değiştirerek aynı etkiyi elde "
+"edebilirsiniz. Birden fazla SSS öğesinin aynı pozisyon numarası varsa, bu "
+"öğelerin bir tanesi görünür olacaktır."
 
 #: modules_v3/faq/help_text.php:65
 msgid "This option will let you move an item upwards on the FAQ page.<br><br>Each time you use this option, the FAQ position number of this item is reduced by one.  You can achieve the same effect by editing the item in question and changing the FAQ position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
 msgstr ""
+"Bu seçenek SSS sayfasındaki bir öğeyi yukarı taşımanızı sağlar.<br><br>Bu "
+"seçeneği her kullandığınızda, bu maddenin SSS pozisyonu sayısı bir azalır. "
+"Söz konusu maddenin SSS pozisyon alanını değiştirerek aynı etkiyi elde "
+"edebilirsiniz. Birden fazla SSS öğesinin aynı pozisyon numarası varsa, bu "
+"öğelerin bir tanesi görünür olacaktır."
 
 #: help_text.php:1099
 msgid "This option will remove private data from the downloaded GEDCOM file.  The file will be filtered according to the privacy settings that apply to each access level.  Privacy settings are specified on the GEDCOM configuration page."
 msgstr ""
+"Bu seçenek indirilen GEDCOM dosyasıdaki gizli (mahrem) bilgileri "
+"çıkaracaktır. Dosya erişim seviyesine göre belirlenmiş gizlilik ayarlarına "
+"göre filtelenecektir. Gizlilik ayarları GEDCOM ayarları sayfasında belirtilir."
 
 #: help_text.php:890
 msgid "This option will retain family links in private records.  This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals."
 msgstr ""
+"Bu seçenek aile ilişkilerini (mahrem) gizli tutar. Bu durumda soy ağacı "
+"grafiklerinde gizli kişilere ait boş (gizlenmiş) kutucuklar göreceksiniz."
 
 #: help_text.php:1214
 msgid "This option will save the family tree to a GEDCOM file on the server."
@@ -14208,22 +14373,51 @@ msgstr "Bu seçenek aile ağacının GEDCOM dosyasını sunucuya yedeklemeyi sa�
 #: help_text.php:869
 msgid "This option will show the names (but no other details) of private individuals.  Individuals are private if they are still alive or if a privacy restriction has been added to their individual record.  To hide a specific name, add a privacy restriction to that name record."
 msgstr ""
+"Bu seçenek, özel kişilerin isimlerini (ancak başka ayrıntıları hariç) "
+"gösterecektir. Kişiler hala hayatta olduğu sürece ayrıca kişini kayıtlarında "
+"bir gizlilik kısıtlaması olup olmadığı durumuna göre (mahrem) gizlidir. "
+"Belirli bir bireyin adını gizlemek için, bu isim kaydına bir gizlilik "
+"kısıtlaması ekleyin."
 
 #: modules_v3/googlemap/help_text.php:47
 msgid "This options sets whether latitude and longitude are displayed on the pop-up window attached to map markers."
 msgstr ""
+"Bu seçenek haritaya bağlı pop-up penceresinde enlem ve boylam değerlerinin "
+"görüntülenir olup olmadığını belirler."
 
 #: help_text.php:1163
 msgid "This page allows you to bypass the usual forms, and edit the underlying data directly.  It is an advanced option, and you should not use it unless you understand the GEDCOM format.  If you make a mistake here, it can be difficult to fix."
 msgstr ""
+"Bu sayfa her zamanki formları atlayarak ve doğrudan temel verileri "
+"düzenlemanize izin verir. Bu gelişmiş bir seçenektir ve GEDCOM biçimini "
+"anlamadığınız sürece bunu kullanmamanız gerekir. Burada bir hata yaparsanız, "
+"bunu düzeltmek çok zor olabilir."
 
 #: help_text.php:1324
 msgid "This page provides extensive information about the server on which webtrees is being hosted.  Many configuration details about the server’s software, as it relates to PHP and webtrees, can be viewed."
 msgstr ""
+"Bu sayfa webtrees 'in bulunduğu sunucu hakkında geniş bilgi sağlar. Webtrees "
+"ilgili olarak, sunucunun yazılım ve PHP hakkında birçok konfigürasyon "
+"bilgileri görülebilir."
 
 #: help_text.php:1170
 msgid "This page will allow you to merge two GEDCOM records from the same GEDCOM file.<br><br>This is useful for individuals who have merged GEDCOMs and now have many individuals, families, and sources that are the same.<br><br>The page consists of three steps.<br><ol><li>You enter two GEDCOM IDs.  The IDs <u>must</u> be of the same type.  You cannot merge an individual and a family or family and source, for example.<br>In the <b>Merge To ID:</b> field enter the ID of the record you want to be the new record after the merge is complete.<br>In the <b>Merge From ID:</b> field enter the ID of the record whose information will be merged into the Merge To ID: record.  This record will be deleted after the Merge.</li><li>You select what facts you want to keep from the two records when they are merged.  Just click the checkboxes next to the ones you want to keep.</li><li>You inspect the results of the merge, just like with all other changes made online.</li></ol>Someone with Accept rights will have to authorize your changes to make them permanent."
 msgstr ""
+"Bu sayfa aynı GEDCOM dosyasından iki GEDCOM kaydını birleştirnizi "
+"sağlayacaktır.<br><br>Bu işlem GEDCOM lar birleştirildiğinde oluşan "
+"birbirinin aynı olan birçok kişi, aile ve kaynakların olduğu durumlarda "
+"oldukça faydalıdır.<br><br>Sayfa üç aşamadan oluşur.<br><ol><li>İki GEDCOM ID "
+"numarası girin. ID 'ler <u>aynı</u> tipte olmalıdır. Bir birey ile bir aileyi "
+"yada bir aile ile bir kaynak bilgisini birleştiremezsiniz.<br>Örneğin,<br><b>H"
+"edef ID:</b> alanına Birleştirme işleminden sonra yeni kayıt olmasını "
+"istediğiniz kaydın ID numarasını girin.<br><b>Kaynak ID:</b> alanına içerdiği "
+"bilgilerin Hedef ID de belirtilen kayda birleştirilmesini istediğiniz kaydın "
+"ID numarasını giriniz. Bu kayıt birleştirme sonrası "
+"silinecektir.</li><li>Birleştirme sonrası tutulmasını istediğiniz "
+"olgu/hadiseleri seçin. Bunun için istediğiniz kayıtların yanındaki kutucuğu "
+"işaretleyin.</li><li>Yapılan diğer değişikliklerde olduğu gibi<li></ol> "
+"yetkili birisinin birleştirme sonrası oluşacak değişikliği onaylaması "
+"gerekmektedir."
 
 #: modules_v3/googlemap/module.php:2820
 msgid "This place has no coordinates"
@@ -14232,6 +14426,9 @@ msgstr "Bu yer için hiçbir koordinatlar yok"
 #: help_text.php:1333
 msgid "This process allows the site’s owner to ensure that the new information follows the site’s standards and conventions, has proper source attributions, etc."
 msgstr ""
+"Bu süreç, site sahibinin yeni bilgilerin sitenin standartları ve kurallarına "
+"(verinin uygun kaynak ve diğer gerekli bigileri icermesi v.b.) uygun "
+"girildiğinden emin olmasını sağlar. "
 
 #: repo.php:73
 msgid "This repository does not exist or you do not have permission to view it."
@@ -14260,22 +14457,35 @@ msgstr "Bu havuz düzenlendi. Değişiklikleri gözden geçirdikten sonra %1$s v
 #: help_text.php:1390
 msgid "This role has all the permissions of the editor role, plus permission to approve/reject changes made by other users."
 msgstr ""
+"Bu rol, editör rolünün tüm yetkilerine ilave olarak, diğer kullanıcıların "
+"yaptığı değişiklikleri onaylama veya reddetme yetkisine sahiptir."
 
 #: help_text.php:1398
 msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the site, users, and modules."
 msgstr ""
+"Bu rol, tüm aile ağaçlarındaki idareci rolünün yetkilerine ilave olarak, site "
+"ayarları, kullanıcı ve modül ayarlarını değiştirme yetkisine sahiptir."
 
 #: help_text.php:1386
 msgid "This role has all the permissions of the member role, plus permission to add/change/delete data.  Any changes will need to be approved by a moderator, unless the user has the “automatically accept changes” option enabled."
 msgstr ""
+"Bu rol, üye rolünün tüm yetkilerine ilave olarak verilerde ekleme, çıkarma ve "
+"değiştirme yatkisine sahiptir. Eğer kullanıcı için \"Değişiklikleri otomatik "
+"olarak onayla\" seçeneği işaretli değil ise yapılan bütün değişikliklerin "
+"moderatör tarafından onaylanması gerekmektedir."
 
 #: help_text.php:1394
 msgid "This role has all the permissions of the moderator role, plus any additional access granted by the family tree configuration, plus permission to change the settings/configuration of a family tree."
 msgstr ""
+"Bu rol, moderatör rolünün bütün yetkilerine ilave olarak, soyağacı "
+"konfigürasyonunun izin verdiği yetkiler ve ilgili soy ağacı ayarlarında "
+"değişiklik yapma yetkisine sahiptir."
 
 #: help_text.php:1382
 msgid "This role has all the permissions of the visitor role, plus any additional access granted by the family tree configuration."
 msgstr ""
+"Bu rol, ziyaretçi yetkilerine ilave olarak, ilgili soy ağacı ayarlarının izin "
+"verdiği yetkilere sahiptir."
 
 #: help_text.php:1144
 msgid "This section allows you to add a new note to the fact that you are currently editing.  Notes are free-form text and will appear in the Fact Details section of the page."
@@ -14297,11 +14507,16 @@ msgstr "Bu sunucunun bellek sınırı %dMB ve CPU zaman sınırı %d saniyedir."
 
 #: help_text.php:553
 msgid "This setting is only used when you read or write GEDCOM files."
-msgstr ""
+msgstr "Bu ayar sadece GEDCOM dosyalarını okuma ve yazman sırasında kullanılır."
 
 #: help_text.php:456
 msgid "This should be a comma or space separated list of facts, in addition to birth and death, that you want to appear in chart boxes such as the pedigree chart.  This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard.  For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
 msgstr ""
+"Bu, soy ağacı şeması gibi grafik kutularında görünmesini istediğiniz, doğum "
+"ve ölüm 'e ek olarak bir virgül veya boşluk ayrılmış olgu/hadise listesi "
+"olmalıdır. Bu listede GEDCOM 5.5.1 standardında tanımlanan olgu etiketleri "
+"kullanılmalıdır. Örneğin bireyin iş/meslek bilgisini göstermek için bu alana "
+"\"occu\" eklemelisiniz."
 
 #: admin_site_upgrade.php:43
 msgid "This site is being upgraded.  Try again in a few minutes."
@@ -14334,6 +14549,10 @@ msgstr "Bu kaynak düzenlendi. Değişiklikleri gözden geçirdikten sonra %1$s 
 #: modules_v3/googlemap/help_text.php:37
 msgid "This specifies the precision of the different levels when entering new geographic locations.  For example a country will be specified with precision 0 (=0 digits after the decimal point), while a town needs 3 or 4 digits."
 msgstr ""
+"Bu değer, yeni coğrafi konumlar girilirken farklı düzeylerde konum "
+"hassasiyetini belirtir. Örneğin bir ülke lokasyonu için 0 basamak hassasiyet "
+"(virgülden sonraki basamak sayısı) yeterli olurken, bir kasaba için 3 veya 4 "
+"basamak gerekebilir."
 
 #: help_text.php:694
 msgid "This text will be appended to each page title.  It will be shown in the browser’s title bar, bookmarks, etc."
@@ -14367,6 +14586,9 @@ msgstr "Bu, seçilen GEDCOM dosyasından tüm yerleri listeler. Varsayılan ayar
 #: admin_trees_places.php:92
 msgid "This will update the highest-level part or parts of the place name.  For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."
 msgstr ""
+"Bu, yerleşim yeri isminin en üst seviye parçasını güncelleyecek. Örneğin, "
+"“Mexico”, “Quintana Roo, Mexico” ile eşleşecek fakat “Santa Fe, New Mexico” "
+"ile eşleşmeyecektir."
 
 #: includes/functions/functions_print.php:1013
 #: library/WT/Date/Calendar.php:409
@@ -14445,25 +14667,25 @@ msgstr "Tir"
 #: library/WT/Date/Jewish.php:140
 msgctxt "GENITIVE"
 msgid "Tishrei"
-msgstr ""
+msgstr "Tishrei"
 
 #. I18N: a month in the Jewish calendar
 #: library/WT/Date/Jewish.php:220
 msgctxt "INSTRUMENTAL"
 msgid "Tishrei"
-msgstr ""
+msgstr "Tishrei"
 
 #. I18N: a month in the Jewish calendar
 #: library/WT/Date/Jewish.php:180
 msgctxt "LOCATIVE"
 msgid "Tishrei"
-msgstr ""
+msgstr "Tishrei"
 
 #. I18N: a month in the Jewish calendar
 #: library/WT/Date/Jewish.php:100
 msgctxt "NOMINATIVE"
 msgid "Tishrei"
-msgstr ""
+msgstr "Tishrei"
 
 #. I18N: gedcom tag TITL
 #: library/WT/Gedcom/Tag.php:831
@@ -14495,16 +14717,29 @@ msgstr "Yeni bir araştırma görevi oluşturmak için, öncelikle aile soyağac
 #: help_text.php:528
 msgid "To ensure compatibility with other genealogy applications, notes, text, and transcripts should be recorded in simple, unformatted text.  However, formatting is often desirable to aid presentation, comprehension, etc."
 msgstr ""
+"Diğer soy ağacı uygulamaları ile uyumluluğu sağlamak için; notlar, metin ve "
+"transkript 'ler basit ve biçimlendirilmemiş olarak kayıt altına alınmalıdır. "
+"Ancak, biçimlendirme sunum, anlama, vb katkı sağlaması bakımından çoğu zaman "
+"arzu edilir."
 
 #: admin_site_upgrade.php:396
 #, php-format
 msgid "To prevent visitors from accessing the site while you are in the middle of copying files, you can temporarily create a file %s on the server.  If it contains a message, it will be displayed to visitors."
 msgstr ""
+"Eğer dosyaların kopyalama sırasında siteye ziyaretçilerin erişimini önlemek "
+"istiyorsanız, geçici olarak sunucu üzerinde bir dosya ( %s ) "
+"oluşturabilirsiniz. Bu dosya bir mesaj içeriyorsa, bu mesaj ziyaretçilere "
+"gösterilecektir."
 
 #. I18N: “Apache” is a software program.
 #: help_text.php:583
 msgid "To protect this private data, webtrees uses an Apache configuration file (.htaccess) which blocks all access to this folder.  If your web-server does not support .htaccess files, and you cannot restrict access to this folder, then you can select another folder, away from your web documents."
 msgstr ""
+"Buradaki özel verilerinizi korumak için, webtrees bu klasöre her türlü "
+"erişimi sınırlayan Apache  yapılandırma dosyasını (.htaccess) kullanır. Eğer "
+"web sunucunuz .htaccess dosyalarını destekleiyor ise ve bu klasöre erişimi "
+"kısıtlayamıyorsanız, web dosyalarınınzın bulundugu kalasörün dışında, web "
+"erişimi olmayan başka bir klasör seçebilirsiniz."
 
 #: help_text.php:1233
 msgid "To reduce the height of the News block, the administrator has hidden some articles.  You can reveal these hidden articles by clicking the <b>View archive</b> link."
@@ -14696,7 +14931,7 @@ msgstr "Toplam kullanıcı"
 #. I18N: gedcom tag TRLR
 #: library/WT/Gedcom/Tag.php:841
 msgid "Trailer"
-msgstr ""
+msgstr "Trailer"
 
 #: library/WT/Stats.php:6246
 msgid "Transylvania"
@@ -14705,7 +14940,7 @@ msgstr "Transilvanya"
 #. I18N: a day in the French republican calendar
 #: library/WT/Date/French.php:208
 msgid "Tridi"
-msgstr ""
+msgstr "Tridi"
 
 #: library/WT/Stats.php:6247
 msgid "Trinidad and Tobago"
@@ -14774,7 +15009,7 @@ msgstr "Hata türleri"
 #: admin_trees_config.php:246 library/WT/Gedcom/Tag.php:849
 #: library/WT/Gedcom/Tag.php:865 library/WT/Gedcom/Tag.php:1752
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: library/WT/Stats.php:6255
 msgid "US Minor Outlying Islands"
@@ -14795,7 +15030,7 @@ msgstr "SSCB"
 #. I18N: Timezone - http://en.wikipedia.org/wiki/UTC
 #: admin_site_upgrade.php:43 themes/_administration/header.php:89
 msgid "UTC"
-msgstr ""
+msgstr "UTC"
 
 #: library/WT/Stats.php:6253
 msgid "Uganda"
@@ -15025,6 +15260,10 @@ msgstr "Akrabalık mahremiyetini kullan"
 #: help_text.php:1017
 msgid "Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the gender of the individual in question.<br><br><table><tr><td style=\"vertical-align:middle\">This image might be used when the gender of the individual is unknown:"
 msgstr ""
+"Vurgulanan resim belirtilmeyen bireyler için silüet resim kullan. Bireyin "
+"cinsiyetine göre farklı silüet resmi kullanılır.<br><br><table><tr><td "
+"style=\"vertical-align:middle\">Bireyin cinsiyeti bilinmeyen durumlarda bu "
+"resim kullanılabilir:"
 
 #: admin_trees_config.php:695 help_text.php:1016
 msgid "Use silhouettes"
@@ -15141,25 +15380,25 @@ msgstr "Vatikan"
 #: library/WT/Date/French.php:89
 msgctxt "GENITIVE"
 msgid "Vendémiaire"
-msgstr ""
+msgstr "Vendémiaire"
 
 #. I18N: a month in the French republican calendar
 #: library/WT/Date/French.php:161
 msgctxt "INSTRUMENTAL"
 msgid "Vendémiaire"
-msgstr ""
+msgstr "Vendémiaire"
 
 #. I18N: a month in the French republican calendar
 #: library/WT/Date/French.php:125
 msgctxt "LOCATIVE"
 msgid "Vendémiaire"
-msgstr ""
+msgstr "Vendémiaire"
 
 #. I18N: a month in the French republican calendar
 #: library/WT/Date/French.php:53
 msgctxt "NOMINATIVE"
 msgid "Vendémiaire"
-msgstr ""
+msgstr "Vendémiaire"
 
 #: library/WT/Stats.php:6261
 msgid "Venezuela"
@@ -15169,25 +15408,25 @@ msgstr "Venezüella"
 #: library/WT/Date/French.php:99
 msgctxt "GENITIVE"
 msgid "Ventôse"
-msgstr ""
+msgstr "Ventôse"
 
 #. I18N: a month in the French republican calendar
 #: library/WT/Date/French.php:171
 msgctxt "INSTRUMENTAL"
 msgid "Ventôse"
-msgstr ""
+msgstr "Ventôse"
 
 #. I18N: a month in the French republican calendar
 #: library/WT/Date/French.php:135
 msgctxt "LOCATIVE"
 msgid "Ventôse"
-msgstr ""
+msgstr "Ventôse"
 
 #. I18N: a month in the French republican calendar
 #: library/WT/Date/French.php:63
 msgctxt "NOMINATIVE"
 msgid "Ventôse"
-msgstr ""
+msgstr "Ventôse"
 
 #: library/WT/Gedcom/Code/Temp.php:328
 msgid "Veracruz, Mexico"
@@ -15354,6 +15593,9 @@ msgstr "Filigranlar opsiyoneldir ve normalde sadece ziyaretçilere gösterilir."
 #: help_text.php:1029
 msgid "Watermarks can be slow to generate for large images.  Busy sites may prefer to generate them once and store the watermarked image on the server."
 msgstr ""
+"Filigranlar büyük resim dosyalarının oluşturulmasını yavaşlatabilir. Yoğun "
+"kullanımda olan sitelerde filigranların oluşturularak, resim dosyalarının "
+"filigranlı olarak sunucuda tutulması önerilir."
 
 #: login.php:386
 #, php-format
@@ -15412,30 +15654,46 @@ msgstr "Batı Sahra"
 #: help_text.php:521
 msgid "When a new family record is added online in webtrees, a new ID for that family will be generated automatically.  The family ID will have this prefix."
 msgstr ""
+"Yeni bir Aile kaydı eklendiğinde, bu kaynak için yeni bir kimlik ID otomatik "
+"olarak oluşturulur. Bu önek Aile ID nosu önüne eklenecektir."
 
 #: help_text.php:540
 msgid "When a new individual record is added online in webtrees, a new ID for that individual will be generated automatically.  The individual ID will have this prefix."
 msgstr ""
+"Yeni bir Birey kaydı eklendiğinde, bu kaynak için yeni bir kimlik ID otomatik "
+"olarak oluşturulur. Bu önek Birey ID nosu önüne eklenecektir."
 
 #: help_text.php:667
 msgid "When a new media record is added online in webtrees, a new ID for that media will be generated automatically.  The media ID will have this prefix."
 msgstr ""
+"Yeni bir Medya kaydı eklendiğinde, bu kaynak için yeni bir kimlik ID otomatik "
+"olarak oluşturulur. Bu önek Medya ID nosu önüne eklenecektir."
 
 #: help_text.php:699
 msgid "When a new note record is added online in webtrees, a new ID for that note will be generated automatically.  The note ID will have this prefix."
 msgstr ""
+"Yeni bir Not kaydı eklendiğinde, bu kaynak için yeni bir kimlik ID otomatik "
+"olarak oluşturulur. Bu önek Not ID nosu önüne eklenecektir."
 
 #: help_text.php:814
 msgid "When a new repository record is added online in webtrees, a new ID for that repository will be generated automatically.  The repository ID will have this prefix."
 msgstr ""
+"Yeni bir Havuz kaydı eklendiğinde, bu kaynak için yeni bir kimlik ID otomatik "
+"olarak oluşturulur. Bu önek Havuz ID nosu önüne eklenecektir."
 
 #: help_text.php:905
 msgid "When a new source record is added online in webtrees, a new ID for that source will be generated automatically.  The source ID will have this prefix."
 msgstr ""
+"Yeni bir kaynak kayıt eklendiğinde, bu kaynak için yeni bir kimlik ID "
+"otomatik olarak oluşturulur. Bu önek kaynak ID nosu önüne eklenecektir."
 
 #: help_text.php:1468
 msgid "When a user registers for an account, an email is sent to their email address with a verification link.  When they click this link, we know the email address is correct, and the “email verified” option is selected automatically."
 msgstr ""
+"Yeni bir kullanıcı kayıt olduğunda, belirtilen mail adresine bir onaylama "
+"maili gnderilir. Kullanıcı mailde bulunan onaylama linkine tıkladığında "
+"belirtilen mail adresinin doğru olduğu onaylanmış olur ve \"Mail Onaylı\" "
+"seçeneği otomatik olarak seçilir."
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:48
 msgid "When adding a link, the ID field cannot be empty."
@@ -15444,6 +15702,9 @@ msgstr "Bir link eklenirken ID alanı boş geçilemez."
 #: help_text.php:784
 msgid "When adding new close relatives, you can add source citations to the records (e.g. INDI, FAM) or the facts (BIRT, MARR, DEAT).  This option controls which checkboxes are ticked by default."
 msgstr ""
+"Yeni yakın akraba kaydı eklerken, kaynak kayıtlarına atıf (örn INDI, FAM) "
+"veya olay/olgu (BIRT, BIRT, DEAT) ekleyebilirsiniz. Bu seçenek, onay "
+"kutularının varsayılan olarak işaretli olmalarını kontrol eder."
 
 #: help_text.php:461
 msgid "When calculating relationships, this option controls whether webtrees will include spouses/partners as well as blood relatives."
@@ -15452,6 +15713,14 @@ msgstr "Bu seçenek ile akrabalıklar hesaplanırken kan bağı olan akrabalarla
 #: help_text.php:895
 msgid "When set to <b>Yes</b>, the following message will appear above the input fields on the “Request new user account” page:<div class=\"list_value_wrap\"><div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div></div>"
 msgstr ""
+"<b>Evet</b> seçildiğinde, \"yeni bir kullanıcı hesabı oluştur\" sayfasındaki "
+"giriş alanları üzerinde aşağıdaki mesaj görüntülenecektir: <div class = "
+"\"list_value_wrap\"><div class=\"largeError\">Uyarı:</div><div "
+"class=\"error\">Bu formu doldurup göndererek sitemizde listelenen yaşayan "
+"kişilerin mahremiyetini korumayı kabul etmiş sayılırsınız.<ul><li>Aşağıdaki "
+"metin kutusuna kendiniz hakkında detaylı açıklama yapın veya sitemizde "
+"kayıtlı, sizin hakkınızda bilgi alabileceğimiz referans kişiyi "
+"giriniz.</li></ul></div></div>"
 
 #: help_text.php:1289
 msgid "When this check box is checked, the chart will be printed with oldest individuals at the top.  When it is unchecked, youngest individuals will appear at the top."
@@ -15492,6 +15761,11 @@ msgstr "Bu mesajı gönderdiğinizde verdiğiniz email adresine bir kopyası gö
 #: help_text.php:720
 msgid "Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations.  You specify the number of relationship steps that the user is allowed to see."
 msgstr ""
+"Bir kullanıcı, bir soy ağacı bireysel kaydı ile ilişkilendirildiğinde, bu "
+"kişiye üye, editör yada moderatör rolü vererek, bu kişiyle yakınlığı olmayan "
+"yaşayan kişilerin detaylarına erişmesini engelleyebilirsiniz. Kullanıcının "
+"görebilecegi akrabalıklarını yakınlık basamak sayısı beirtebilirterek "
+"sınırlayabilirsiniz."
 
 #: admin_pgv_to_wt.php:135
 msgid "Where is your PhpGedView installation?"
@@ -15624,7 +15898,7 @@ msgstr "Yahrzeit"
 #. I18N: Name of a module.  Yahrzeiten (the plural of Yahrzeit) are special anniversaries of deaths in the Hebrew faith/calendar.
 #: modules_v3/yahrzeit/module.php:32
 msgid "Yahrzeiten"
-msgstr ""
+msgstr "Yahrzeiten"
 
 #: calendar.php:194 library/WT/MenuBar.php:335
 #: modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:1021
@@ -15648,7 +15922,7 @@ msgstr "Yemen"
 #: login.php:335
 #, php-format
 msgid "You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s."
-msgstr "%1$s web sitede %2$s e-posta adresi kullanarak üyelik isteğinde bulunmuşsunuz."
+msgstr "Siz yada sizin adınıza bir başkası %2$s e-posta adresi kullanarak %1$s web sitesinden  üyelik isteğinde bulundu."
 
 #: login.php:282 message.php:65
 msgid "You are not allowed to send messages that contain external links."
@@ -15692,10 +15966,12 @@ msgstr "Güncellemeden sonra bu temaları tekrar aktif hale getirebilirsiniz."
 #: admin_trees_renumber.php:261
 msgid "You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree."
 msgstr ""
+"Soy ağacındaki bu kayıdı yeniden numaralandırabilirsiniz, böylece bu dahili "
+"referans numarası diğer bir soyağacı ile çakışmayacaktır."
 
 #: admin_trees_renumber.php:274
 msgid "You can renumber this family tree."
-msgstr ""
+msgstr "Bu soy ağacını yeniden numaralandırabilirsiniz."
 
 #: help_text.php:643 help_text.php:682
 msgid "You can request a higher or lower limit, although the server may ignore this request."
@@ -15793,6 +16069,7 @@ msgstr "Bir kaynak adı girmelisiniz"
 #: admin_trees_merge.php:83
 msgid "You must renumber the records in one of the trees before you can merge them."
 msgstr ""
+"Soy ağaçlarını birleştirmeden önce bir tanesini yeniden numaralandırmalısınız."
 
 #: modules_v3/charts/module.php:143
 msgid "You must select an individual and chart type in the block configuration settings."
@@ -16323,12 +16600,12 @@ msgstr "kapat"
 #. I18N: Name of a theme.
 #: themes/clouds/theme.php:54
 msgid "clouds"
-msgstr ""
+msgstr "clouds"
 
 #. I18N: Name of a theme.
 #: themes/colors/theme.php:134
 msgid "colors"
-msgstr ""
+msgstr "colors"
 
 #: modules_v3/top10_surnames/module.php:165
 msgid "compact list"
@@ -16910,7 +17187,7 @@ msgstr "cinsiyet"
 #. I18N: button label
 #: admin_trees_renumber.php:275
 msgid "go"
-msgstr ""
+msgstr "Git"
 
 #. I18N: button label
 #: edit_interface.php:2748
@@ -18492,25 +18769,25 @@ msgstr "seçimi tersine çevir"
 #: library/WT/Date/French.php:113
 msgctxt "GENITIVE"
 msgid "jours complémentaires"
-msgstr ""
+msgstr "jours complémentaires"
 
 #. I18N: a month in the French republican calendar
 #: library/WT/Date/French.php:185
 msgctxt "INSTRUMENTAL"
 msgid "jours complémentaires"
-msgstr ""
+msgstr "jours complémentaires"
 
 #. I18N: a month in the French republican calendar
 #: library/WT/Date/French.php:149
 msgctxt "LOCATIVE"
 msgid "jours complémentaires"
-msgstr ""
+msgstr "jours complémentaires"
 
 #. I18N: a month in the French republican calendar
 #: library/WT/Date/French.php:77
 msgctxt "NOMINATIVE"
 msgid "jours complémentaires"
-msgstr ""
+msgstr "jours complémentaires"
 
 #. I18N: button label, last page
 #: library/WT/I18N.php:929
@@ -18547,7 +18824,7 @@ msgstr "kızlık adı"
 #. I18N: https://en.wikipedia.org/wiki/Markdown
 #: admin_trees_config.php:968
 msgid "markdown"
-msgstr ""
+msgstr "markdown"
 
 #: library/WT/Stats.php:2590
 msgid "marriage"
@@ -18625,7 +18902,7 @@ msgstr "geceyarısı"
 #. I18N: Name of a theme.
 #: themes/minimal/theme.php:30
 msgid "minimal"
-msgstr ""
+msgstr "minimal"
 
 #: modules_v3/googlemap/module.php:326
 msgid "minimum"
@@ -19815,7 +20092,7 @@ msgstr "webtrees cevaplama adresi"
 #: includes/functions/functions_edit.php:328
 #: includes/functions/functions_edit.php:349
 msgid "webtrees sends emails with no storage"
-msgstr "webtrees sunucuya kaydetmeden emailleri gönderir"
+msgstr "webtrees e-mailleri sunucuya kaydetmeden gönderir"
 
 #: includes/functions/functions_print.php:488
 msgid "webtrees wiki"
@@ -19823,7 +20100,7 @@ msgstr "webtrees wiki"
 
 #: help_text.php:1306
 msgid "webtrees’ database must be on the same server as PGV’s"
-msgstr "webrees veritabanı PGV veritabani ile aynı sunucuda olmalıdır"
+msgstr "webrees veritabanı PGV veritabanı ile aynı sunucuda olmalıdır"
 
 #: modules_v3/googlemap/module.php:4017
 msgid "west"
@@ -19837,7 +20114,7 @@ msgstr "hanım"
 #. I18N: Name of a theme.
 #: themes/xenea/theme.php:30
 msgid "xenea"
-msgstr ""
+msgstr "xenea"
 
 #: timeline.php:128
 msgid "years"
@@ -19865,7 +20142,7 @@ msgstr "evet"
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:80
 msgid "you can connect to the database using other applications, such as phpmyadmin"
-msgstr "phpmyadmin olarak diğer uygulamalar kullanarak veritabanına bağlanabilirsiniz"
+msgstr "phpmyadmin v.b. diğer uygulamalar kullanarak veritabanına bağlanabilirsiniz"
 
 #: includes/functions/functions.php:912
 msgid "younger brother"
