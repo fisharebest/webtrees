@@ -24,7 +24,7 @@ use WT\Log;
  */
 abstract class WT_Module {
 	/** @var string A user-friendly, localized name for this module */
-	private $_title = null;
+	private $_title;
 
 	/** @var string[] A cached copy of the module settings */
 	private $settings;

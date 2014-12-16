@@ -28,8 +28,12 @@ class WT_Media extends WT_GedcomRecord {
 	const RECORD_TYPE = 'OBJE';
 	const URL_PREFIX = 'mediaviewer.php?mid=';
 
-	public $title = null; // TODO: these should be private, with getTitle() and getFilename() functions
-	public $file = null;
+	// TODO: these should be private, with getTitle() and getFilename() functions
+	/** @var string The "TITL" value from the GEDCOM */
+	public $title;
+
+	/** @var string The "FILE" value from the GEDCOM */
+	public $file;
 
 	/**
 	 * {@inheritdoc}

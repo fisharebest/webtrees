@@ -25,9 +25,9 @@ use Rhumsaa\Uuid\Uuid;
  * Class WT_Controller_Descendancy - Controller for the descendancy chart
  */
 class WT_Controller_Descendancy extends WT_Controller_Chart {
-	var $descPerson = null;
+	var $descPerson;
 
-	var $diffindi = null;
+	var $diffindi;
 	var $NAME_LINENUM = 1;
 	var $canedit = false;
 	var $name_count = 0;
