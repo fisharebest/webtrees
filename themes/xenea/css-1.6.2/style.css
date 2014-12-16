@@ -137,7 +137,7 @@ textarea:required:invalid {
 }
 
 /* Options Menu Layout */
-#optionsmenu {
+#header-user-links {
 	background: #84beff url(images/barra.png);
 	width: 100%;
 	color: #fff;
@@ -4227,7 +4227,7 @@ dd .deletelink {
 @media print {
 	#topMenu,
 	#header,
-	#optionsmenu,
+	#header-user-links,
 	#header select,
 	#header input,
 	#footer select,

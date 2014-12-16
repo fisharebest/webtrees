@@ -30,9 +30,11 @@ class WT_Individual extends WT_GedcomRecord {
 
 	var $generation; // used in some lists to keep track of this individual’s generation in that list
 
-	// Cached results from various functions.
-	private $_getEstimatedBirthDate = null;
-	private $_getEstimatedDeathDate = null;
+	/** @var WT_Date The estimated date of birth */
+	private $_getEstimatedBirthDate;
+
+	/** @var WT_Date The estimated date of death */
+	private $_getEstimatedDeathDate;
 
 	/**
 	 * Get an instance of an individual object.  For single records,

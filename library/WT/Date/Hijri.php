@@ -48,136 +48,108 @@ class WT_Date_Hijri extends WT_Date_Calendar {
 	 * {@inheritdoc}
 	 */
 	public static function monthNameNominativeCase($month_number, $leap_year) {
-		switch ($month_number) {
-		case 1:
-			return /* I18N: http://en.wikipedia.org/wiki/Muharram                     */ WT_I18N::translate_c('NOMINATIVE', 'Muharram');
-		case 2:
-			return /* I18N: http://en.wikipedia.org/wiki/Safar                        */ WT_I18N::translate_c('NOMINATIVE', 'Safar');
-		case 3:
-			return /* I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal             */ WT_I18N::translate_c('NOMINATIVE', 'Rabi’ al-awwal');
-		case 4:
-			return /* I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani             */ WT_I18N::translate_c('NOMINATIVE', 'Rabi’ al-thani');
-		case 5:
-			return /* I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal              */ WT_I18N::translate_c('NOMINATIVE', 'Jumada al-awwal');
-		case 6:
-			return /* I18N: http://en.wikipedia.org/wiki/Jumada_al-thani              */ WT_I18N::translate_c('NOMINATIVE', 'Jumada al-thani');
-		case 7:
-			return /* I18N: http://en.wikipedia.org/wiki/Rajab                        */ WT_I18N::translate_c('NOMINATIVE', 'Rajab');
-		case 8:
-			return /* I18N: http://en.wikipedia.org/wiki/Sha%27aban                   */ WT_I18N::translate_c('NOMINATIVE', 'Sha’aban');
-		case 9:
-			return /* I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29 */ WT_I18N::translate_c('NOMINATIVE', 'Ramadan');
-		case 10:
-			return /* I18N: http://en.wikipedia.org/wiki/Shawwal                      */ WT_I18N::translate_c('NOMINATIVE', 'Shawwal');
-		case 11:
-			return /* I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah              */ WT_I18N::translate_c('NOMINATIVE', 'Dhu al-Qi’dah');
-		case 12:
-			return /* I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah                */ WT_I18N::translate_c('NOMINATIVE', 'Dhu al-Hijjah');
-		default:
-			return '';
+		static $translated_month_names;
+
+		if ($translated_month_names === null) {
+			$translated_month_names = array(
+				0  => '',
+				1  => /* I18N: http://en.wikipedia.org/wiki/Muharram                     */ WT_I18N::translate_c('NOMINATIVE', 'Muharram'),
+				2  => /* I18N: http://en.wikipedia.org/wiki/Safar                        */ WT_I18N::translate_c('NOMINATIVE', 'Safar'),
+				3  => /* I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal             */ WT_I18N::translate_c('NOMINATIVE', 'Rabi’ al-awwal'),
+				4  => /* I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani             */ WT_I18N::translate_c('NOMINATIVE', 'Rabi’ al-thani'),
+				5  => /* I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal              */ WT_I18N::translate_c('NOMINATIVE', 'Jumada al-awwal'),
+				6  => /* I18N: http://en.wikipedia.org/wiki/Jumada_al-thani              */ WT_I18N::translate_c('NOMINATIVE', 'Jumada al-thani'),
+				7  => /* I18N: http://en.wikipedia.org/wiki/Rajab                        */ WT_I18N::translate_c('NOMINATIVE', 'Rajab'),
+				8  => /* I18N: http://en.wikipedia.org/wiki/Sha%27aban                   */ WT_I18N::translate_c('NOMINATIVE', 'Sha’aban'),
+				9  => /* I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29 */ WT_I18N::translate_c('NOMINATIVE', 'Ramadan'),
+				10 => /* I18N: http://en.wikipedia.org/wiki/Shawwal                      */ WT_I18N::translate_c('NOMINATIVE', 'Shawwal'),
+				11 => /* I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah              */ WT_I18N::translate_c('NOMINATIVE', 'Dhu al-Qi’dah'),
+				12 => /* I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah                */ WT_I18N::translate_c('NOMINATIVE', 'Dhu al-Hijjah'),
+			);
 		}
+
+		return $translated_month_names[$month_number];
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
 	static function monthNameGenitiveCase($month_number, $leap_year) {
-		switch ($month_number) {
-		case 1:
-			return /* I18N: http://en.wikipedia.org/wiki/Muharram                     */ WT_I18N::translate_c('GENITIVE', 'Muharram');
-		case 2:
-			return /* I18N: http://en.wikipedia.org/wiki/Safar                        */ WT_I18N::translate_c('GENITIVE', 'Safar');
-		case 3:
-			return /* I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal             */ WT_I18N::translate_c('GENITIVE', 'Rabi’ al-awwal');
-		case 4:
-			return /* I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani             */ WT_I18N::translate_c('GENITIVE', 'Rabi’ al-thani');
-		case 5:
-			return /* I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal              */ WT_I18N::translate_c('GENITIVE', 'Jumada al-awwal');
-		case 6:
-			return /* I18N: http://en.wikipedia.org/wiki/Jumada_al-thani              */ WT_I18N::translate_c('GENITIVE', 'Jumada al-thani');
-		case 7:
-			return /* I18N: http://en.wikipedia.org/wiki/Rajab                        */ WT_I18N::translate_c('GENITIVE', 'Rajab');
-		case 8:
-			return /* I18N: http://en.wikipedia.org/wiki/Sha%27aban                   */ WT_I18N::translate_c('GENITIVE', 'Sha’aban');
-		case 9:
-			return /* I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29 */ WT_I18N::translate_c('GENITIVE', 'Ramadan');
-		case 10:
-			return /* I18N: http://en.wikipedia.org/wiki/Shawwal                      */ WT_I18N::translate_c('GENITIVE', 'Shawwal');
-		case 11:
-			return /* I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah              */ WT_I18N::translate_c('GENITIVE', 'Dhu al-Qi’dah');
-		case 12:
-			return /* I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah                */ WT_I18N::translate_c('GENITIVE', 'Dhu al-Hijjah');
-		default:
-			return '';
+		static $translated_month_names;
+
+		if ($translated_month_names === null) {
+			$translated_month_names = array(
+				0  => '',
+				1  => /* I18N: http://en.wikipedia.org/wiki/Muharram                     */ WT_I18N::translate_c('GENITIVE', 'Muharram'),
+				2  => /* I18N: http://en.wikipedia.org/wiki/Safar                        */ WT_I18N::translate_c('GENITIVE', 'Safar'),
+				3  => /* I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal             */ WT_I18N::translate_c('GENITIVE', 'Rabi’ al-awwal'),
+				4  => /* I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani             */ WT_I18N::translate_c('GENITIVE', 'Rabi’ al-thani'),
+				5  => /* I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal              */ WT_I18N::translate_c('GENITIVE', 'Jumada al-awwal'),
+				6  => /* I18N: http://en.wikipedia.org/wiki/Jumada_al-thani              */ WT_I18N::translate_c('GENITIVE', 'Jumada al-thani'),
+				7  => /* I18N: http://en.wikipedia.org/wiki/Rajab                        */ WT_I18N::translate_c('GENITIVE', 'Rajab'),
+				8  => /* I18N: http://en.wikipedia.org/wiki/Sha%27aban                   */ WT_I18N::translate_c('GENITIVE', 'Sha’aban'),
+				9  => /* I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29 */ WT_I18N::translate_c('GENITIVE', 'Ramadan'),
+				10 => /* I18N: http://en.wikipedia.org/wiki/Shawwal                      */ WT_I18N::translate_c('GENITIVE', 'Shawwal'),
+				11 => /* I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah              */ WT_I18N::translate_c('GENITIVE', 'Dhu al-Qi’dah'),
+				12 => /* I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah                */ WT_I18N::translate_c('GENITIVE', 'Dhu al-Hijjah'),
+			);
 		}
+
+		return $translated_month_names[$month_number];
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
 	static function monthNameLocativeCase($month_number, $leap_year) {
-		switch ($month_number) {
-		case 1:
-			return /* I18N: http://en.wikipedia.org/wiki/Muharram                     */ WT_I18N::translate_c('LOCATIVE', 'Muharram');
-		case 2:
-			return /* I18N: http://en.wikipedia.org/wiki/Safar                        */ WT_I18N::translate_c('LOCATIVE', 'Safar');
-		case 3:
-			return /* I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal             */ WT_I18N::translate_c('LOCATIVE', 'Rabi’ al-awwal');
-		case 4:
-			return /* I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani             */ WT_I18N::translate_c('LOCATIVE', 'Rabi’ al-thani');
-		case 5:
-			return /* I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal              */ WT_I18N::translate_c('LOCATIVE', 'Jumada al-awwal');
-		case 6:
-			return /* I18N: http://en.wikipedia.org/wiki/Jumada_al-thani              */ WT_I18N::translate_c('LOCATIVE', 'Jumada al-thani');
-		case 7:
-			return /* I18N: http://en.wikipedia.org/wiki/Rajab                        */ WT_I18N::translate_c('LOCATIVE', 'Rajab');
-		case 8:
-			return /* I18N: http://en.wikipedia.org/wiki/Sha%27aban                   */ WT_I18N::translate_c('LOCATIVE', 'Sha’aban');
-		case 9:
-			return /* I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29 */ WT_I18N::translate_c('LOCATIVE', 'Ramadan');
-		case 10:
-			return /* I18N: http://en.wikipedia.org/wiki/Shawwal                      */ WT_I18N::translate_c('LOCATIVE', 'Shawwal');
-		case 11:
-			return /* I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah              */ WT_I18N::translate_c('LOCATIVE', 'Dhu al-Qi’dah');
-		case 12:
-			return /* I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah                */ WT_I18N::translate_c('LOCATIVE', 'Dhu al-Hijjah');
-		default:
-			return '';
+		static $translated_month_names;
+
+		if ($translated_month_names === null) {
+			$translated_month_names = array(
+				0  => '',
+				1  => /* I18N: http://en.wikipedia.org/wiki/Muharram                     */ WT_I18N::translate_c('LOCATIVE', 'Muharram'),
+				2  => /* I18N: http://en.wikipedia.org/wiki/Safar                        */ WT_I18N::translate_c('LOCATIVE', 'Safar'),
+				3  => /* I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal             */ WT_I18N::translate_c('LOCATIVE', 'Rabi’ al-awwal'),
+				4  => /* I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani             */ WT_I18N::translate_c('LOCATIVE', 'Rabi’ al-thani'),
+				5  => /* I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal              */ WT_I18N::translate_c('LOCATIVE', 'Jumada al-awwal'),
+				6  => /* I18N: http://en.wikipedia.org/wiki/Jumada_al-thani              */ WT_I18N::translate_c('LOCATIVE', 'Jumada al-thani'),
+				7  => /* I18N: http://en.wikipedia.org/wiki/Rajab                        */ WT_I18N::translate_c('LOCATIVE', 'Rajab'),
+				8  => /* I18N: http://en.wikipedia.org/wiki/Sha%27aban                   */ WT_I18N::translate_c('LOCATIVE', 'Sha’aban'),
+				9  => /* I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29 */ WT_I18N::translate_c('LOCATIVE', 'Ramadan'),
+				10 => /* I18N: http://en.wikipedia.org/wiki/Shawwal                      */ WT_I18N::translate_c('LOCATIVE', 'Shawwal'),
+				11 => /* I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah              */ WT_I18N::translate_c('LOCATIVE', 'Dhu al-Qi’dah'),
+				12 => /* I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah                */ WT_I18N::translate_c('LOCATIVE', 'Dhu al-Hijjah'),
+			);
 		}
+
+		return $translated_month_names[$month_number];
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
 	static function monthNameInstrumentalCase($month_number, $leap_year) {
-		switch ($month_number) {
-		case 1:
-			return /* I18N: http://en.wikipedia.org/wiki/Muharram                     */ WT_I18N::translate_c('INSTRUMENTAL', 'Muharram');
-		case 2:
-			return /* I18N: http://en.wikipedia.org/wiki/Safar                        */ WT_I18N::translate_c('INSTRUMENTAL', 'Safar');
-		case 3:
-			return /* I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal             */ WT_I18N::translate_c('INSTRUMENTAL', 'Rabi’ al-awwal');
-		case 4:
-			return /* I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani             */ WT_I18N::translate_c('INSTRUMENTAL', 'Rabi’ al-thani');
-		case 5:
-			return /* I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal              */ WT_I18N::translate_c('INSTRUMENTAL', 'Jumada al-awwal');
-		case 6:
-			return /* I18N: http://en.wikipedia.org/wiki/Jumada_al-thani              */ WT_I18N::translate_c('INSTRUMENTAL', 'Jumada al-thani');
-		case 7:
-			return /* I18N: http://en.wikipedia.org/wiki/Rajab                        */ WT_I18N::translate_c('INSTRUMENTAL', 'Rajab');
-		case 8:
-			return /* I18N: http://en.wikipedia.org/wiki/Sha%27aban                   */ WT_I18N::translate_c('INSTRUMENTAL', 'Sha’aban');
-		case 9:
-			return /* I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29 */ WT_I18N::translate_c('INSTRUMENTAL', 'Ramadan');
-		case 10:
-			return /* I18N: http://en.wikipedia.org/wiki/Shawwal                      */ WT_I18N::translate_c('INSTRUMENTAL', 'Shawwal');
-		case 11:
-			return /* I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah              */ WT_I18N::translate_c('INSTRUMENTAL', 'Dhu al-Qi’dah');
-		case 12:
-			return /* I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah                */ WT_I18N::translate_c('INSTRUMENTAL', 'Dhu al-Hijjah');
-		default:
-			return '';
+		static $translated_month_names;
+
+		if ($translated_month_names === null) {
+			$translated_month_names = array(
+				0  => '',
+				1  => /* I18N: http://en.wikipedia.org/wiki/Muharram                     */ WT_I18N::translate_c('INSTRUMENTAL', 'Muharram'),
+				2  => /* I18N: http://en.wikipedia.org/wiki/Safar                        */ WT_I18N::translate_c('INSTRUMENTAL', 'Safar'),
+				3  => /* I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal             */ WT_I18N::translate_c('INSTRUMENTAL', 'Rabi’ al-awwal'),
+				4  => /* I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani             */ WT_I18N::translate_c('INSTRUMENTAL', 'Rabi’ al-thani'),
+				5  => /* I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal              */ WT_I18N::translate_c('INSTRUMENTAL', 'Jumada al-awwal'),
+				6  => /* I18N: http://en.wikipedia.org/wiki/Jumada_al-thani              */ WT_I18N::translate_c('INSTRUMENTAL', 'Jumada al-thani'),
+				7  => /* I18N: http://en.wikipedia.org/wiki/Rajab                        */ WT_I18N::translate_c('INSTRUMENTAL', 'Rajab'),
+				8  => /* I18N: http://en.wikipedia.org/wiki/Sha%27aban                   */ WT_I18N::translate_c('INSTRUMENTAL', 'Sha’aban'),
+				9  => /* I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29 */ WT_I18N::translate_c('INSTRUMENTAL', 'Ramadan'),
+				10 => /* I18N: http://en.wikipedia.org/wiki/Shawwal                      */ WT_I18N::translate_c('INSTRUMENTAL', 'Shawwal'),
+				11 => /* I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah              */ WT_I18N::translate_c('INSTRUMENTAL', 'Dhu al-Qi’dah'),
+				12 => /* I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah                */ WT_I18N::translate_c('INSTRUMENTAL', 'Dhu al-Hijjah'),
+			);
 		}
+
+		return $translated_month_names[$month_number];
 	}
 
 	/**
