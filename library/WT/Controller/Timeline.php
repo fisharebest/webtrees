@@ -23,18 +23,38 @@
  * Class WT_Controller_Timeline - Controller for the timeline chart
  */
 class WT_Controller_Timeline extends WT_Controller_Page {
-	var $bheight = 30;
-	var $placements = array();
-	var $indifacts = array(); // array to store the fact records in for sorting and displaying
-	var $birthyears = array();
-	var $birthmonths = array();
-	var $birthdays = array();
-	var $baseyear = 0;
-	var $topyear = 0;
-	var $pids = array();
-	var $people = array();
-	var $pidlinks = '';
-	var $scale = 2;
+	/** @var integer Height of the age box */
+	public $bheight = 30;
+
+	/** @var WT_Fact[] The facts to display on the chart */
+	public $indifacts = array(); // array to store the fact records in for sorting and displaying
+
+	/** @var integer[] Numeric birth years of each individual */
+	public $birthyears = array();
+
+	/** @var integer[] Numeric birth months of each individual */
+	public $birthmonths = array();
+
+	/** @var integer[] Numeric birth days of each individual */
+	public $birthdays = array();
+
+	/** @var integer[] Lowest year to display */
+	public $baseyear = 0;
+
+	/** @var integer[] Highest year to display */
+	public $topyear = 0;
+
+	/** @var string[] List of individual XREFs to display */
+	private $pids = array();
+
+	/** @var WT_Individual[] List of individuals to display */
+	public $people = array();
+
+	/** @var string URL-encoded list of XREFs */
+	public $pidlinks = '';
+
+	/** @var integer Vertical scale */
+	public $scale = 2;
 
 	// GEDCOM elements that may have DATE data, but should not be displayed
 	private $nonfacts = array('BAPL', 'ENDL', 'SLGC', 'SLGS', '_TODO', 'CHAN');
