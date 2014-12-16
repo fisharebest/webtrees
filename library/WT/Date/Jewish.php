@@ -29,27 +29,22 @@ class WT_Date_Jewish extends WT_Date_Calendar {
 	const GERSH = '׳';
 	const ALAFIM = 'אלפים';
 
-	static $MONTH_ABBREV = array('' => 0, 'TSH' => 1, 'CSH' => 2, 'KSL' => 3, 'TVT' => 4, 'SHV' => 5, 'ADR' => 6, 'ADS' => 7, 'NSN' => 8, 'IYR' => 9, 'SVN' => 10, 'TMZ' => 11, 'AAV' => 12, 'ELL' => 13);
+	/** {@inheritdoc} */
+	public static $MONTH_ABBREV = array('' => 0, 'TSH' => 1, 'CSH' => 2, 'KSL' => 3, 'TVT' => 4, 'SHV' => 5, 'ADR' => 6, 'ADS' => 7, 'NSN' => 8, 'IYR' => 9, 'SVN' => 10, 'TMZ' => 11, 'AAV' => 12, 'ELL' => 13);
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	public function __construct($date) {
 		$this->calendar = new JewishCalendar;
 		parent::__construct($date);
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	public static function calendarName() {
 		return /* I18N: The Hebrew/Jewish calendar */
 			WT_I18N::translate('Jewish');
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	function formatDayZeros() {
 		if (WT_LOCALE == 'he') {
 			return $this->numberToHebrewNumerals($this->d);
@@ -58,9 +53,7 @@ class WT_Date_Jewish extends WT_Date_Calendar {
 		}
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	function formatDay() {
 		if (WT_LOCALE == 'he') {
 			return $this->numberToHebrewNumerals($this->d);
@@ -69,9 +62,7 @@ class WT_Date_Jewish extends WT_Date_Calendar {
 		}
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	function formatShortYear() {
 		if (WT_LOCALE == 'he') {
 			return $this->numberToHebrewNumerals($this->y % 1000);
@@ -80,9 +71,7 @@ class WT_Date_Jewish extends WT_Date_Calendar {
 		}
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	function formatLongYear() {
 		if (WT_LOCALE == 'he') {
 			return $this->numberToHebrewNumerals($this->y);
@@ -91,9 +80,7 @@ class WT_Date_Jewish extends WT_Date_Calendar {
 		}
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	public static function monthNameNominativeCase($month_number, $leap_year) {
 		static $translated_month_names;
 
@@ -124,9 +111,7 @@ class WT_Date_Jewish extends WT_Date_Calendar {
 		}
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	static function monthNameGenitiveCase($month_number, $leap_year) {
 		static $translated_month_names;
 
@@ -157,9 +142,7 @@ class WT_Date_Jewish extends WT_Date_Calendar {
 		}
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	protected static function monthNameLocativeCase($month_number, $leap_year) {
 		static $translated_month_names;
 
@@ -190,9 +173,7 @@ class WT_Date_Jewish extends WT_Date_Calendar {
 		}
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	protected static function monthNameInstrumentalCase($month_number, $leap_year) {
 		static $translated_month_names;
 
@@ -223,16 +204,12 @@ class WT_Date_Jewish extends WT_Date_Calendar {
 		}
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	protected static function monthNameAbbreviated($month_number, $leap_year) {
 		return self::monthNameNominativeCase($month_number, $leap_year);
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	protected function nextMonth() {
 		if ($this->m == 6 && !$this->isLeapYear()) {
 			return array($this->y, 8);

@@ -187,9 +187,7 @@ class WT_Individual extends WT_GedcomRecord {
 		return false;
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	protected function createPrivateGedcomRecord($access_level) {
 		global $SHOW_PRIVATE_RELATIONSHIPS, $SHOW_LIVING_NAMES;
 
@@ -216,9 +214,7 @@ class WT_Individual extends WT_GedcomRecord {
 		return $rec;
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	protected static function fetchGedcomRecord($xref, $gedcom_id) {
 		static $statement = null;
 
@@ -1059,9 +1055,7 @@ class WT_Individual extends WT_GedcomRecord {
 		return $txt;
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	function getFallBackName() {
 		return '@P.N. /@N.N./';
 	}

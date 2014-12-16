@@ -35,9 +35,7 @@ class WT_Media extends WT_GedcomRecord {
 	/** @var string The "FILE" value from the GEDCOM */
 	public $file;
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	public function __construct($xref, $gedcom, $pending, $gedcom_id) {
 		parent::__construct($xref, $gedcom, $pending, $gedcom_id);
 
@@ -75,9 +73,7 @@ class WT_Media extends WT_GedcomRecord {
 		}
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	protected function canShowByType($access_level) {
 		// Hide media objects if they are attached to private records
 		$linked_ids = WT_DB::prepare(
@@ -94,9 +90,7 @@ class WT_Media extends WT_GedcomRecord {
 		return parent::canShowByType($access_level);
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	protected static function fetchGedcomRecord($xref, $gedcom_id) {
 		static $statement = null;
 
@@ -564,9 +558,7 @@ class WT_Media extends WT_GedcomRecord {
 			'>' . $image . '</a>';
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	public function getFallBackName() {
 		if ($this->canShow()) {
 			return basename($this->file);
@@ -575,9 +567,7 @@ class WT_Media extends WT_GedcomRecord {
 		}
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	public function extractNames() {
 		// Earlier gedcom versions had level 1 titles
 		// Later gedcom versions had level 2 titles
@@ -585,9 +575,7 @@ class WT_Media extends WT_GedcomRecord {
 		$this->_extractNames(1, 'TITL', $this->getFacts('TITL'));
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	public function formatListDetails() {
 		require_once WT_ROOT . 'includes/functions/functions_print_facts.php';
 		ob_start();

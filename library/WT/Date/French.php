@@ -27,26 +27,22 @@ class WT_Date_French extends WT_Date_Calendar {
 	const CAL_START_JD = 2375840; // 22 SEP 1792 = 01 VEND 0001
 	const CAL_END_JD = 2380687; // 31 DEC 1805 = 10 NIVO 0014
 	const DAYS_IN_WEEK = 10; // A metric week of 10 unimaginatively named days.
-	static $MONTH_ABBREV = array('' => 0, 'VEND' => 1, 'BRUM' => 2, 'FRIM' => 3, 'NIVO' => 4, 'PLUV' => 5, 'VENT' => 6, 'GERM' => 7, 'FLOR' => 8, 'PRAI' => 9, 'MESS' => 10, 'THER' => 11, 'FRUC' => 12, 'COMP' => 13);
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
+	public static $MONTH_ABBREV = array('' => 0, 'VEND' => 1, 'BRUM' => 2, 'FRIM' => 3, 'NIVO' => 4, 'PLUV' => 5, 'VENT' => 6, 'GERM' => 7, 'FLOR' => 8, 'PRAI' => 9, 'MESS' => 10, 'THER' => 11, 'FRUC' => 12, 'COMP' => 13);
+
+	/** {@inheritdoc} */
 	public function __construct($date) {
 		$this->calendar = new FrenchCalendar;
 		parent::__construct($date);
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	public static function calendarName() {
 		return /* I18N: The French calendar */ WT_I18N::translate('French');
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	public static function monthNameNominativeCase($month_number, $leap_year) {
 		static $translated_month_names;
 
@@ -72,9 +68,7 @@ class WT_Date_French extends WT_Date_Calendar {
 		return $translated_month_names[$month_number];
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	static function monthNameGenitiveCase($month_number, $leap_year) {
 		static $translated_month_names;
 
@@ -100,9 +94,7 @@ class WT_Date_French extends WT_Date_Calendar {
 		return $translated_month_names[$month_number];
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	static function monthNameLocativeCase($month_number, $leap_year) {
 		static $translated_month_names;
 
@@ -128,9 +120,7 @@ class WT_Date_French extends WT_Date_Calendar {
 		return $translated_month_names[$month_number];
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	static function monthNameInstrumentalCase($month_number, $leap_year) {
 		static $translated_month_names;
 
@@ -156,16 +146,12 @@ class WT_Date_French extends WT_Date_Calendar {
 		return $translated_month_names[$month_number];
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	protected static function monthNameAbbreviated($month_number, $leap_year) {
 		return self::monthNameNominativeCase($month_number, $leap_year);
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	public static function dayNames($day_number) {
 		static $translated_day_names;
 
@@ -187,18 +173,12 @@ class WT_Date_French extends WT_Date_Calendar {
 		return $translated_day_names[$day_number];
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	protected static function dayNamesAbbreviated($day_number) {
 		return self::dayNames($day_number);
 	}
 
-	/**
-	 * Years were written using roman numerals
-	 *
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	protected function formatLongYear() {
 		return $this->numberToRomanNumerals($this->y);
 	}
