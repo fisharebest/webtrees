@@ -109,7 +109,7 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 	echo
 	'</ul>';
 	echo
-	'<div id="menu-right">',
+	'<div id="header-user-links">',
 	'<ul class="makeMenu">';
 	if (Auth::check()) {
 		echo '<li><a href="edituser.php" class="link">', WT_Filter::escapeHtml(Auth::user()->getRealName()), '</a></li><li>', logout_link(), '</li>';

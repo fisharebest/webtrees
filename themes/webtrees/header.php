@@ -57,7 +57,8 @@ $this
 		<div class="header_img">
 			<img src="<?php echo WT_CSS_URL; ?>images/webtrees.png" width="242" height="50" alt="<?php echo WT_WEBTREES; ?>">
 		</div>
-		<ul id="extra-menu" class="makeMenu">
+		<div id="header-user-links">
+		<ul class="makeMenu">
 			<li>
 				<?php
 				if (Auth::check()) {
@@ -71,6 +72,7 @@ $this
 			<?php echo WT_MenuBar::getThemeMenu(); ?>
 			<?php echo WT_MenuBar::getLanguageMenu(); ?>
 		</ul>
+		</div>
 		<div class="title" dir="auto">
 			<?php echo  WT_TREE_TITLE; ?>
 		</div>

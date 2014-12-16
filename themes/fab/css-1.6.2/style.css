@@ -193,10 +193,9 @@ textarea:required:invalid {
 	clear: right;
 }
 
-#header-menu {
+#topMenu {
 	clear: both;
 	text-align: center;
-	padding-top: 12px;
 }
 
 #content {
@@ -266,7 +265,7 @@ textarea:required:invalid {
 
 }
 
-/* Use CSS menus based on nested <ul> */
+/* User Link Menus */
 .makeMenu li {
 	background: none !important;
 	display: inline;
@@ -339,6 +338,95 @@ textarea:required:invalid {
 }
 
 .makeMenu ul li a:hover {
+	background-color: #369;
+	color: #fff;
+	text-decoration: none;
+}
+
+/* Main menus */
+
+#topMenu {
+	padding-top: 12px;
+}
+
+#main-menu {
+	margin: 0px;
+}
+
+#main-menu li {
+	background: none !important;
+	display: inline;
+	position: relative;
+	white-space: nowrap;
+}
+
+#main-menu li:before {
+	content: " | ";
+}
+
+#main-menu li ul li:before {
+	content: "";
+}
+
+#main-menu li:first-child:before {
+	content: "";
+}
+
+#main-menu li ul {
+	display: none;
+	position: absolute;
+	left: 0;
+	top: 15px;
+	background-color: #eee;
+	border: thin solid #aaa;
+}
+
+[dir=rtl] #main-menu li ul {
+	left: auto;
+	right: 0;
+}
+
+/* position sub-sub-menus */
+
+#main-menu ul ul {
+	top: 0;
+	left: 100px;
+}
+
+[dir=rtl] #main-menu ul ul {
+	top: 0;
+	left: auto;
+	right: 100px;
+}
+
+#main-menu li ul li {
+	display: block;
+	text-align: left;
+}
+
+[dir=rtl] #main-menu li ul li {
+	text-align: right;
+}
+
+#main-menu,
+#main-menu li ul {
+	list-style: none;
+	padding: 1px;
+}
+
+#main-menu li:hover > ul {
+	display: block;
+
+}
+
+#main-menu ul li a {
+	background-color: #eee;
+	padding: 2px 5px;
+	display: block;
+
+}
+
+#main-menu ul li a:hover {
 	background-color: #369;
 	color: #fff;
 	text-decoration: none;

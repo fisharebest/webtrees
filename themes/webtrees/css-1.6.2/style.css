@@ -2954,18 +2954,18 @@ div.faq_body {
 }
 
 /* ========= Login|Favorites|Theme|Language menu items ========== */
-#extra-menu {
+#header-user-links {
 	float: right;
 	white-space: nowrap;
 	margin: 20px 10px 0 0;
 }
 
-#extra-menu.makeMenu li ul {
+.makeMenu li ul {
 	left: auto;
 	right: 0;
 }
 
-#extra-menu a {
+.makeMenu a {
 	background: none;
 	display: inline;
 }
@@ -3019,12 +3019,12 @@ div.faq_body {
 	font-weight: 900;
 }
 
-[dir=rtl] #extra-menu {
+[dir=rtl] #header-user-links {
 	float: left;
 	margin: 20px 0 0 10px;
 }
 
-[dir=rtl] #extra-menu.makeMenu li ul {
+[dir=rtl] #header-user-links.makeMenu li ul {
 	left: 0;
 	right: auto;
 }

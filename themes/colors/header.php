@@ -78,6 +78,7 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 
 	// Top row right
 	echo
+	'<div id="header-user-links">',
 	'<ul class="makeMenu">';
 
 	if (Auth::check()) {
@@ -118,6 +119,7 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 			'</form>',
 		'</li>',
 	'</ul>',
+	'</div>',
 '</div>';
 
 	// Second Row menu and palette selection
@@ -137,7 +139,7 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 
 	// Print the menu bar
 	echo
-
+		'<div id="topMenu">',
 		'<ul id="main-menu">';
 		foreach ($menu_items as $menu) {
 			if ($menu) {
@@ -146,7 +148,7 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 		}
 	unset($menu_items, $menu);
 	echo
-		'</ul>';
+		'</ul></div>';
 }
 // Remove list from home when only 1 gedcom
 $this->addInlineJavaScript(

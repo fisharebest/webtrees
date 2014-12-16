@@ -80,7 +80,7 @@ td {
 	padding-top: 5px;
 }
 
-#menu-right {
+#header-user-links {
 	float: right;
 	margin-right: 20px;
 }
@@ -95,7 +95,7 @@ td {
 	padding-left: 10px;
 }
 
-[dir=rtl] #menu-right {
+[dir=rtl] #header-user-links {
 	float: left;
 	margin-left: 20px;
 }
@@ -954,9 +954,9 @@ td {
 }
 
 /* ===== */
-/* Right Options Menu */
+/* User Links Menu */
 
-#menu-right {
+#header-user-links {
 	float: right;
 	margin: 10px 10px 4px 0;
 }
@@ -975,7 +975,7 @@ td {
 	background-color: #eee;
 	border: thin solid #aaa;
 	display: none;
-	left: 10px;
+	left: 0px;
 	position: absolute;
 	top: 1.1em !important;
 }
@@ -1040,7 +1040,7 @@ li a.link {
 
 [dir=rtl] .makeMenu li ul {
 	left: auto;
-	right: -10px !important;
+	right: -20px !important;
 }
 
 [dir=rtl] .makeMenu li ul li {
