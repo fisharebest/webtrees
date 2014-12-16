@@ -218,6 +218,7 @@ class WT_Report_HTML extends WT_Report_Base {
 
 		// Setting up the styles
 		echo '<style type="text/css">';
+		echo 'body { font: 10px sans-serif;}';
 		foreach ($this->Styles as $class => $style) {
 			echo '.', $class, ' { ';
 			if ($style["font"] == "dejavusans") {
