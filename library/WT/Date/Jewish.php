@@ -276,7 +276,7 @@ class WT_Date_Jewish extends WT_Date_Calendar {
 	 *
 	 * @return string
 	 */
-	private static function numberToHebrewNumerals($num) {
+	protected static function numberToHebrewNumerals($num) {
 		$DISPLAY_JEWISH_THOUSANDS = false;
 
 		static $jHundreds = array("", "ק", "ר", "ש", "ת", "תק", "תר", "תש", "תת", "תתק");
