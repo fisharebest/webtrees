@@ -170,34 +170,27 @@ class WT_Date_Calendar {
 	 * @return string
 	 */
 	public static function monthNameNominativeCase($month_number, $leap_year) {
-		switch ($month_number) {
-		case 1:
-			return WT_I18N::translate_c('NOMINATIVE', 'January');
-		case 2:
-			return WT_I18N::translate_c('NOMINATIVE', 'February');
-		case 3:
-			return WT_I18N::translate_c('NOMINATIVE', 'March');
-		case 4:
-			return WT_I18N::translate_c('NOMINATIVE', 'April');
-		case 5:
-			return WT_I18N::translate_c('NOMINATIVE', 'May');
-		case 6:
-			return WT_I18N::translate_c('NOMINATIVE', 'June');
-		case 7:
-			return WT_I18N::translate_c('NOMINATIVE', 'July');
-		case 8:
-			return WT_I18N::translate_c('NOMINATIVE', 'August');
-		case 9:
-			return WT_I18N::translate_c('NOMINATIVE', 'September');
-		case 10:
-			return WT_I18N::translate_c('NOMINATIVE', 'October');
-		case 11:
-			return WT_I18N::translate_c('NOMINATIVE', 'November');
-		case 12:
-			return WT_I18N::translate_c('NOMINATIVE', 'December');
-		default:
-			return '';
+		static $translated_month_names;
+
+		if ($translated_month_names === null) {
+			$translated_month_names = array(
+				0  => '',
+				1  => WT_I18N::translate_c('NOMINATIVE', 'January'),
+				2  => WT_I18N::translate_c('NOMINATIVE', 'February'),
+				3  => WT_I18N::translate_c('NOMINATIVE', 'March'),
+				4  => WT_I18N::translate_c('NOMINATIVE', 'April'),
+				5  => WT_I18N::translate_c('NOMINATIVE', 'May'),
+				6  => WT_I18N::translate_c('NOMINATIVE', 'June'),
+				7  => WT_I18N::translate_c('NOMINATIVE', 'July'),
+				8  => WT_I18N::translate_c('NOMINATIVE', 'August'),
+				9  => WT_I18N::translate_c('NOMINATIVE', 'September'),
+				10 => WT_I18N::translate_c('NOMINATIVE', 'October'),
+				11 => WT_I18N::translate_c('NOMINATIVE', 'November'),
+				12 => WT_I18N::translate_c('NOMINATIVE', 'December'),
+			);
 		}
+
+		return $translated_month_names[$month_number];
 	}
 
 	/**
@@ -211,34 +204,27 @@ class WT_Date_Calendar {
 	 * @return string
 	 */
 	protected static function monthNameGenitiveCase($month_number, $leap_year) {
-		switch ($month_number) {
-		case 1:
-			return WT_I18N::translate_c('GENITIVE', 'January');
-		case 2:
-			return WT_I18N::translate_c('GENITIVE', 'February');
-		case 3:
-			return WT_I18N::translate_c('GENITIVE', 'March');
-		case 4:
-			return WT_I18N::translate_c('GENITIVE', 'April');
-		case 5:
-			return WT_I18N::translate_c('GENITIVE', 'May');
-		case 6:
-			return WT_I18N::translate_c('GENITIVE', 'June');
-		case 7:
-			return WT_I18N::translate_c('GENITIVE', 'July');
-		case 8:
-			return WT_I18N::translate_c('GENITIVE', 'August');
-		case 9:
-			return WT_I18N::translate_c('GENITIVE', 'September');
-		case 10:
-			return WT_I18N::translate_c('GENITIVE', 'October');
-		case 11:
-			return WT_I18N::translate_c('GENITIVE', 'November');
-		case 12:
-			return WT_I18N::translate_c('GENITIVE', 'December');
-		default:
-			return '';
+		static $translated_month_names;
+
+		if ($translated_month_names === null) {
+			$translated_month_names = array(
+				0  => '',
+				1  => WT_I18N::translate_c('GENITIVE', 'January'),
+				2  => WT_I18N::translate_c('GENITIVE', 'February'),
+				3  => WT_I18N::translate_c('GENITIVE', 'March'),
+				4  => WT_I18N::translate_c('GENITIVE', 'April'),
+				5  => WT_I18N::translate_c('GENITIVE', 'May'),
+				6  => WT_I18N::translate_c('GENITIVE', 'June'),
+				7  => WT_I18N::translate_c('GENITIVE', 'July'),
+				8  => WT_I18N::translate_c('GENITIVE', 'August'),
+				9  => WT_I18N::translate_c('GENITIVE', 'September'),
+				10 => WT_I18N::translate_c('GENITIVE', 'October'),
+				11 => WT_I18N::translate_c('GENITIVE', 'November'),
+				12 => WT_I18N::translate_c('GENITIVE', 'December'),
+			);
 		}
+
+		return $translated_month_names[$month_number];
 	}
 
 	/**
@@ -252,34 +238,27 @@ class WT_Date_Calendar {
 	 * @return string
 	 */
 	protected static function monthNameLocativeCase($month_number, $leap_year) {
-		switch ($month_number) {
-		case 1:
-			return WT_I18N::translate_c('LOCATIVE', 'January');
-		case 2:
-			return WT_I18N::translate_c('LOCATIVE', 'February');
-		case 3:
-			return WT_I18N::translate_c('LOCATIVE', 'March');
-		case 4:
-			return WT_I18N::translate_c('LOCATIVE', 'April');
-		case 5:
-			return WT_I18N::translate_c('LOCATIVE', 'May');
-		case 6:
-			return WT_I18N::translate_c('LOCATIVE', 'June');
-		case 7:
-			return WT_I18N::translate_c('LOCATIVE', 'July');
-		case 8:
-			return WT_I18N::translate_c('LOCATIVE', 'August');
-		case 9:
-			return WT_I18N::translate_c('LOCATIVE', 'September');
-		case 10:
-			return WT_I18N::translate_c('LOCATIVE', 'October');
-		case 11:
-			return WT_I18N::translate_c('LOCATIVE', 'November');
-		case 12:
-			return WT_I18N::translate_c('LOCATIVE', 'December');
-		default:
-			return '';
+		static $translated_month_names;
+
+		if ($translated_month_names === null) {
+			$translated_month_names = array(
+				0  => '',
+				1  => WT_I18N::translate_c('LOCATIVE', 'January'),
+				2  => WT_I18N::translate_c('LOCATIVE', 'February'),
+				3  => WT_I18N::translate_c('LOCATIVE', 'March'),
+				4  => WT_I18N::translate_c('LOCATIVE', 'April'),
+				5  => WT_I18N::translate_c('LOCATIVE', 'May'),
+				6  => WT_I18N::translate_c('LOCATIVE', 'June'),
+				7  => WT_I18N::translate_c('LOCATIVE', 'July'),
+				8  => WT_I18N::translate_c('LOCATIVE', 'August'),
+				9  => WT_I18N::translate_c('LOCATIVE', 'September'),
+				10 => WT_I18N::translate_c('LOCATIVE', 'October'),
+				11 => WT_I18N::translate_c('LOCATIVE', 'November'),
+				12 => WT_I18N::translate_c('LOCATIVE', 'December'),
+			);
 		}
+
+		return $translated_month_names[$month_number];
 	}
 
 	/**
@@ -293,34 +272,27 @@ class WT_Date_Calendar {
 	 * @return string
 	 */
 	protected static function monthNameInstrumentalCase($month_number, $leap_year) {
-		switch ($month_number) {
-		case 1:
-			return WT_I18N::translate_c('INSTRUMENTAL', 'January');
-		case 2:
-			return WT_I18N::translate_c('INSTRUMENTAL', 'February');
-		case 3:
-			return WT_I18N::translate_c('INSTRUMENTAL', 'March');
-		case 4:
-			return WT_I18N::translate_c('INSTRUMENTAL', 'April');
-		case 5:
-			return WT_I18N::translate_c('INSTRUMENTAL', 'May');
-		case 6:
-			return WT_I18N::translate_c('INSTRUMENTAL', 'June');
-		case 7:
-			return WT_I18N::translate_c('INSTRUMENTAL', 'July');
-		case 8:
-			return WT_I18N::translate_c('INSTRUMENTAL', 'August');
-		case 9:
-			return WT_I18N::translate_c('INSTRUMENTAL', 'September');
-		case 10:
-			return WT_I18N::translate_c('INSTRUMENTAL', 'October');
-		case 11:
-			return WT_I18N::translate_c('INSTRUMENTAL', 'November');
-		case 12:
-			return WT_I18N::translate_c('INSTRUMENTAL', 'December');
-		default:
-			return '';
+		static $translated_month_names;
+
+		if ($translated_month_names === null) {
+			$translated_month_names = array(
+				0  => '',
+				1  => WT_I18N::translate_c('INSTRUMENTAL', 'January'),
+				2  => WT_I18N::translate_c('INSTRUMENTAL', 'February'),
+				3  => WT_I18N::translate_c('INSTRUMENTAL', 'March'),
+				4  => WT_I18N::translate_c('INSTRUMENTAL', 'April'),
+				5  => WT_I18N::translate_c('INSTRUMENTAL', 'May'),
+				6  => WT_I18N::translate_c('INSTRUMENTAL', 'June'),
+				7  => WT_I18N::translate_c('INSTRUMENTAL', 'July'),
+				8  => WT_I18N::translate_c('INSTRUMENTAL', 'August'),
+				9  => WT_I18N::translate_c('INSTRUMENTAL', 'September'),
+				10 => WT_I18N::translate_c('INSTRUMENTAL', 'October'),
+				11 => WT_I18N::translate_c('INSTRUMENTAL', 'November'),
+				12 => WT_I18N::translate_c('INSTRUMENTAL', 'December'),
+			);
 		}
+
+		return $translated_month_names[$month_number];
 	}
 
 	/**
@@ -332,34 +304,27 @@ class WT_Date_Calendar {
 	 * @return string
 	 */
 	protected static function monthNameAbbreviated($month_number, $leap_year) {
-		switch ($month_number) {
-		case 1:
-			return WT_I18N::translate_c('Abbreviation for January', 'Jan');
-		case 2:
-			return WT_I18N::translate_c('Abbreviation for February', 'Feb');
-		case 3:
-			return WT_I18N::translate_c('Abbreviation for March', 'Mar');
-		case 4:
-			return WT_I18N::translate_c('Abbreviation for April', 'Apr');
-		case 5:
-			return WT_I18N::translate_c('Abbreviation for May', 'May');
-		case 6:
-			return WT_I18N::translate_c('Abbreviation for June', 'Jun');
-		case 7:
-			return WT_I18N::translate_c('Abbreviation for July', 'Jul');
-		case 8:
-			return WT_I18N::translate_c('Abbreviation for August', 'Aug');
-		case 9:
-			return WT_I18N::translate_c('Abbreviation for September', 'Sep');
-		case 10:
-			return WT_I18N::translate_c('Abbreviation for October', 'Oct');
-		case 11:
-			return WT_I18N::translate_c('Abbreviation for November', 'Nov');
-		case 12:
-			return WT_I18N::translate_c('Abbreviation for December', 'Dec');
-		default:
-			return '';
+		static $translated_month_names;
+
+		if ($translated_month_names === null) {
+			$translated_month_names = array(
+				0  => '',
+				1  => WT_I18N::translate_c('Abbreviation for January', 'Jan'),
+				2  => WT_I18N::translate_c('Abbreviation for February', 'Feb'),
+				3  => WT_I18N::translate_c('Abbreviation for March', 'Mar'),
+				4  => WT_I18N::translate_c('Abbreviation for April', 'Apr'),
+				5  => WT_I18N::translate_c('Abbreviation for May', 'May'),
+				6  => WT_I18N::translate_c('Abbreviation for June', 'Jun'),
+				7  => WT_I18N::translate_c('Abbreviation for July', 'Jul'),
+				8  => WT_I18N::translate_c('Abbreviation for August', 'Aug'),
+				9  => WT_I18N::translate_c('Abbreviation for September', 'Sep'),
+				10 => WT_I18N::translate_c('Abbreviation for October', 'Oct'),
+				11 => WT_I18N::translate_c('Abbreviation for November', 'Nov'),
+				12 => WT_I18N::translate_c('Abbreviation for December', 'Dec'),
+			);
 		}
+
+		return $translated_month_names[$month_number];
 	}
 
 	/**
@@ -370,24 +335,21 @@ class WT_Date_Calendar {
 	 * @return string
 	 */
 	public static function dayNames($day_number) {
-		switch ($day_number) {
-		case 0:
-			return WT_I18N::translate('Monday');
-		case 1:
-			return WT_I18N::translate('Tuesday');
-		case 2:
-			return WT_I18N::translate('Wednesday');
-		case 3:
-			return WT_I18N::translate('Thursday');
-		case 4:
-			return WT_I18N::translate('Friday');
-		case 5:
-			return WT_I18N::translate('Saturday');
-		case 6:
-			return WT_I18N::translate('Sunday');
-		default:
-			throw new InvalidArgumentException($day_number);
+		static $translated_day_names;
+
+		if ($translated_day_names === null) {
+			$translated_day_names = array(
+				0  => WT_I18N::translate('Monday'),
+				1  => WT_I18N::translate('Tuesday'),
+				2  => WT_I18N::translate('Wednesday'),
+				3  => WT_I18N::translate('Thursday'),
+				4  => WT_I18N::translate('Friday'),
+				5  => WT_I18N::translate('Saturday'),
+				6  => WT_I18N::translate('Sunday'),
+			);
 		}
+
+		return $translated_day_names[$day_number];
 	}
 
 	/**
@@ -398,24 +360,21 @@ class WT_Date_Calendar {
 	 * @return string
 	 */
 	protected static function dayNamesAbbreviated($day_number) {
-		switch ($day_number) {
-		case 0:
-			return WT_I18N::translate('Mon');
-		case 1:
-			return WT_I18N::translate('Tue');
-		case 2:
-			return WT_I18N::translate('Wed');
-		case 3:
-			return WT_I18N::translate('Thu');
-		case 4:
-			return WT_I18N::translate('Fri');
-		case 5:
-			return WT_I18N::translate('Sat');
-		case 6:
-			return WT_I18N::translate('Sun');
-		default:
-			throw new InvalidArgumentException($day_number);
+		static $translated_day_names;
+
+		if ($translated_day_names === null) {
+			$translated_day_names = array(
+				0  => /* I18N: abbreviation for Monday    */ WT_I18N::translate('Mon'),
+				1  => /* I18N: abbreviation for Tuesday   */ WT_I18N::translate('Tue'),
+				2  => /* I18N: abbreviation for Wednesday */ WT_I18N::translate('Wed'),
+				3  => /* I18N: abbreviation for Thursday  */ WT_I18N::translate('Thu'),
+				4  => /* I18N: abbreviation for Friday    */ WT_I18N::translate('Fri'),
+				5  => /* I18N: abbreviation for Saturday  */ WT_I18N::translate('Sat'),
+				6  => /* I18N: abbreviation for Sunday    */ WT_I18N::translate('Sun'),
+			);
 		}
+
+		return $translated_day_names[$day_number];
 	}
 
 	/**
