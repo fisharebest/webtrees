@@ -2419,43 +2419,52 @@ function get_new_xref($type = 'INDI', $ged_id = WT_GED_ID) {
 		$prefix = substr(trim($type, '_'), 0, 1);
 	}
 
-	$num = WT_DB::prepare("SELECT next_id FROM `##next_id` WHERE record_type=? AND gedcom_id=?")
-		->execute(array($type, $ged_id))
-		->fetchOne();
+	do {
+		// Use LAST_INSERT_ID(expr) to provide a transaction-safe sequence.  See
+		// http://dev.mysql.com/doc/refman/5.6/en/information-functions.html#function_last-insert-id
+		$statement = WT_DB::prepare(
+			"UPDATE `##next_id` SET next_id = LAST_INSERT_ID(next_id + 1) WHERE record_type = :record_type AND gedcom_id = :gedcom_id"
+		);
+		$statement->execute(array(
+			'record_type' => $type,
+			'gedcom_id'   => $ged_id,
+		));
 
-	// TODO?  If a gedcom file contains *both* inline and object based media, then
-	// we could be generating an XREF that we will find later.  Need to scan the
-	// entire gedcom for them?
+		if ($statement->rowCount() === 0) {
+			// First time we've used this record type.
+			WT_DB::prepare(
+				"INSERT INTO `##next_id` (gedcom_id, record_type, next_id) VALUES(:gedcom_id, :record_type, 1)"
+			)->execute(array(
+				'record_type' => $type,
+				'gedcom_id'   => $ged_id,
+			));
+			$num = 1;
+		} else {
+			$num = WT_DB::prepare("SELECT LAST_INSERT_ID()")->fetchOne();
+		}
 
-	if (is_null($num)) {
-		$num = 1;
-		WT_DB::prepare("INSERT INTO `##next_id` (gedcom_id, record_type, next_id) VALUES(?, ?, 1)")
-			->execute(array($ged_id, $type));
-	}
-
-	$statement = WT_DB::prepare(
-		"SELECT i_id FROM `##individuals` WHERE i_id = ?" .
-		" UNION ALL " .
-		"SELECT f_id FROM `##families` WHERE f_id = ?" .
-		" UNION ALL " .
-		"SELECT s_id FROM `##sources` WHERE s_id = ?" .
-		" UNION ALL " .
-		"SELECT m_id FROM `##media` WHERE m_id = ?" .
-		" UNION ALL " .
-		"SELECT o_id FROM `##other` WHERE o_id = ?" .
-		" UNION ALL " .
-		"SELECT xref FROM `##change` WHERE xref = ?"
-	);
-
-	while ($statement->execute(array_fill(0, 6, $prefix . $num))->fetchOne()) {
-		// Applications such as ancestry.com generate XREFs with numbers larger than
-		// PHP’s signed integer.  MySQL can handle large integers.
-		$num = WT_DB::prepare("SELECT 1+?")->execute(array($num))->fetchOne();
-	}
-
-	//-- update the next id number in the DB table
-	WT_DB::prepare("UPDATE `##next_id` SET next_id=? WHERE record_type=? AND gedcom_id=?")
-		->execute(array($num + 1, $type, $ged_id));
+		// Records may already exist with this sequence number.
+		$already_used = WT_DB::prepare(
+			"SELECT i_id FROM `##individuals` WHERE i_id = :i_id" .
+			" UNION ALL " .
+			"SELECT f_id FROM `##families` WHERE f_id = :f_id" .
+			" UNION ALL " .
+			"SELECT s_id FROM `##sources` WHERE s_id = :s_id" .
+			" UNION ALL " .
+			"SELECT m_id FROM `##media` WHERE m_id = :m_id" .
+			" UNION ALL " .
+			"SELECT o_id FROM `##other` WHERE o_id = :o_id" .
+			" UNION ALL " .
+			"SELECT xref FROM `##change` WHERE xref = :xref"
+		)->execute(array(
+			'i_id' => $prefix . $num,
+			'f_id' => $prefix . $num,
+			's_id' => $prefix . $num,
+			'm_id' => $prefix . $num,
+			'o_id' => $prefix . $num,
+			'xref' => $prefix . $num,
+		))->fetchOne();
+	} while ($already_used);
 
 	return $prefix . $num;
 }
