@@ -248,7 +248,7 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 	/**
 	 * Delete a favorite from the database
 	 *
-	 * @param $favorite_id
+	 * @param integer $favorite_id
 	 *
 	 * @return boolean
 	 */
@@ -302,7 +302,7 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 	/**
 	 * Get favorites for a user or family tree
 	 *
-	 * @param $gedcom_id
+	 * @param integer $gedcom_id
 	 *
 	 * @return string[][]
 	 */

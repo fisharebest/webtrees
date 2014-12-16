@@ -38,10 +38,10 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 	/** @var integer[] Numeric birth days of each individual */
 	public $birthdays = array();
 
-	/** @var integer[] Lowest year to display */
+	/** @var integer Lowest year to display */
 	public $baseyear = 0;
 
-	/** @var integer[] Highest year to display */
+	/** @var integer Highest year to display */
 	public $topyear = 0;
 
 	/** @var string[] List of individual XREFs to display */
