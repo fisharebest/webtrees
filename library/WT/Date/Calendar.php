@@ -47,8 +47,20 @@ class WT_Date_Calendar {
 	/** @var CalendarInterface The calendar system used to represent this date */
 	protected $calendar;
 
-	public $y, $m, $d;     // Numeric year/month/day
-	public $minJD, $maxJD; // Julian Day numbers
+	/** @var integer Year number  */
+	public $y;
+
+	/** @var integer Month number  */
+	public $m;
+
+	/** @var integer Day number  */
+	public $d;
+
+	/** @var integer Earliest Julian day number (start of month/year for imprecise dates) */
+	public $minJD;
+
+	/** @var integer Latest Julian day number (end of month/year for imprecise dates) */
+	public $maxJD;
 
 	/**
 	 * Create a date from either:
