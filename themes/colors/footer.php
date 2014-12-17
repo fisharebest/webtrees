@@ -26,9 +26,9 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-echo '</div>'; // <div id="content">
+echo '</main>';
 if ($view!='simple') {
-	echo '<div id="footer" class="', $TEXT_DIRECTION, '">';
+	echo '<footer class="', $TEXT_DIRECTION, '">';
 	echo '<br>';
 	echo contact_links();
 	echo '<br>';
@@ -43,5 +43,5 @@ if ($view!='simple') {
 		echo '<p class="error center">', WT_I18N::translate('There are pending changes for you to moderate.'), '</p>';
 		echo '</a>';
 	}
-	echo '</div>'; // <div id="footer">
+	echo '</footer>';
 }
