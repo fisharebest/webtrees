@@ -53,31 +53,31 @@ $this
 </head>
 <body id="body">
 	<?php if ($view!='simple') { ?>
-	<div id="header">
+	<header>
 		<div class="header_img">
 			<img src="<?php echo WT_CSS_URL; ?>images/webtrees.png" width="242" height="50" alt="<?php echo WT_WEBTREES; ?>">
 		</div>
 		<div id="header-user-links">
-		<ul class="makeMenu">
-			<li>
-				<?php
-				if (Auth::check()) {
-					echo '<a href="edituser.php">', WT_I18N::translate('Logged in as '), ' ', WT_Filter::escapeHtml(Auth::user()->getRealName()), '</a></li> <li>', logout_link();
-				} else {
-					echo login_link();
-				}
-				?>
-			</li>
-			<?php echo WT_MenuBar::getFavoritesMenu(); ?>
-			<?php echo WT_MenuBar::getThemeMenu(); ?>
-			<?php echo WT_MenuBar::getLanguageMenu(); ?>
-		</ul>
+			<ul class="makeMenu" role="menubar">
+				<li>
+					<?php
+					if (Auth::check()) {
+						echo '<a href="edituser.php">', WT_I18N::translate('Logged in as '), ' ', WT_Filter::escapeHtml(Auth::user()->getRealName()), '</a></li> <li>', logout_link();
+					} else {
+						echo login_link();
+					}
+					?>
+				</li>
+				<?php echo WT_MenuBar::getFavoritesMenu(); ?>
+				<?php echo WT_MenuBar::getThemeMenu(); ?>
+				<?php echo WT_MenuBar::getLanguageMenu(); ?>
+			</ul>
 		</div>
 		<div class="title" dir="auto">
-			<?php echo  WT_TREE_TITLE; ?>
+			<?php echo WT_TREE_TITLE; ?>
 		</div>
 		<div class="header_search">
-			<form action="search.php" method="post">
+			<form action="search.php" method="post" role="search">
 				<input type="hidden" name="action" value="general">
 				<input type="hidden" name="ged" value="<?php echo WT_GEDCOM; ?>">
 				<input type="hidden" name="topsearch" value="yes">
@@ -85,8 +85,8 @@ $this
 				<input type="image" class="image" src="<?php echo $WT_IMAGES['search']; ?>" alt="<?php echo WT_I18N::translate('Search'); ?>" title="<?php echo WT_I18N::translate('Search'); ?>">
 			</form>
 		</div>
-		<div id="topMenu">
-			<ul id="main-menu">
+		<nav>
+			<ul id="main-menu" role="menubar">
 				<?php echo WT_MenuBar::getGedcomMenu();   ?>
 				<?php echo WT_MenuBar::getMyPageMenu();   ?>
 				<?php echo WT_MenuBar::getChartsMenu();   ?>
@@ -96,9 +96,9 @@ $this
 				<?php echo WT_MenuBar::getSearchMenu();   ?>
 				<?php echo implode('', WT_MenuBar::getModuleMenus()); ?>
 			</ul>
-		</div>
-	</div>
+		</nav>
+	</header>
 	<?php } ?>
 	<?php echo $javascript; ?>
 	<?php echo WT_FlashMessages::getHtmlMessages(); ?>
-	<div id="content">
+	<main id="content">
