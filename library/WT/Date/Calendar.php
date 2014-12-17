@@ -37,16 +37,30 @@ class WT_Date_Calendar {
 	const CAL_START_JD = 0; // @#DJULIAN@ 01 JAN 4713B.C.
 	const CAL_END_JD = 99999999;
 	const DAYS_IN_WEEK = 7;
-	static $MONTH_ABBREV = array('' => 0, 'JAN' => 1, 'FEB' => 2, 'MAR' => 3, 'APR' => 4, 'MAY' => 5, 'JUN' => 6, 'JUL' => 7, 'AUG' => 8, 'SEP' => 9, 'OCT' => 10, 'NOV' => 11, 'DEC' => 12);
+
+	/** @var integer[] Convert GEDCOM month names to month numbers  */
+	public static $MONTH_ABBREV = array('' => 0, 'JAN' => 1, 'FEB' => 2, 'MAR' => 3, 'APR' => 4, 'MAY' => 5, 'JUN' => 6, 'JUL' => 7, 'AUG' => 8, 'SEP' => 9, 'OCT' => 10, 'NOV' => 11, 'DEC' => 12);
 
 	/** @var string[] Convert numbers to/from roman numerals */
-	protected static $roman_numerals = array(1000 => 'M', 900 => 'CM', 500 => 'D', 400 => 'CD', 100 => 'C', 90 => 'XC', 50 => 'L', 40 => 'XL', 10 => 'X', 9 => 'IX', 5 => 'V', 4 => 'IV', 1 => 'I');
+	private static $roman_numerals = array(1000 => 'M', 900 => 'CM', 500 => 'D', 400 => 'CD', 100 => 'C', 90 => 'XC', 50 => 'L', 40 => 'XL', 10 => 'X', 9 => 'IX', 5 => 'V', 4 => 'IV', 1 => 'I');
 
 	/** @var CalendarInterface The calendar system used to represent this date */
 	protected $calendar;
 
-	public $y, $m, $d;     // Numeric year/month/day
-	public $minJD, $maxJD; // Julian Day numbers
+	/** @var integer Year number  */
+	public $y;
+
+	/** @var integer Month number  */
+	public $m;
+
+	/** @var integer Day number  */
+	public $d;
+
+	/** @var integer Earliest Julian day number (start of month/year for imprecise dates) */
+	public $minJD;
+
+	/** @var integer Latest Julian day number (end of month/year for imprecise dates) */
+	public $maxJD;
 
 	/**
 	 * Create a date from either:

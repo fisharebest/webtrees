@@ -3157,19 +3157,28 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 	 *
 	 * @return array[]
 	 */
-	private function getPlaceListLocation($parent_id, $inactive=false) {
+	private function getPlaceListLocation($parent_id, $inactive = false) {
 		if ($inactive) {
-			$rows=
-				WT_DB::prepare("SELECT pl_id, pl_place, pl_lati, pl_long, pl_zoom, pl_icon FROM `##placelocation` WHERE pl_parent_id=? ORDER BY pl_place COLLATE ".WT_I18N::$collation)
-				->execute(array($parent_id))
-				->fetchAll();
+			$rows = WT_DB::prepare(
+					"SELECT pl_id, pl_place, pl_lati, pl_long, pl_zoom, pl_icon" .
+					" FROM `##placelocation`" .
+					" WHERE pl_parent_id = :parent_id" .
+					" ORDER BY pl_place COLLATE :collation"
+				)->execute(array(
+					'parent_id' => $parent_id,
+					'collation' => WT_I18N::$collation,
+				))->fetchAll();
 		} else {
 			$rows = WT_DB::prepare(
 				"SELECT DISTINCT pl_id, pl_place, pl_lati, pl_long, pl_zoom, pl_icon".
 				" FROM `##placelocation`".
 				" INNER JOIN `##places` ON `##placelocation`.pl_place=`##places`.p_place".
-				" WHERE pl_parent_id=? ORDER BY pl_place COLLATE " . WT_I18N::$collation
-			)->execute(array($parent_id))->fetchAll();
+				" WHERE pl_parent_id = :parent_id" .
+				" ORDER BY pl_place COLLATE :collation"
+			)->execute(array(
+				'parent_id' => $parent_id,
+				'collation' => WT_I18N::$collation,
+			))->fetchAll();
 		}
 
 		$placelist = array();

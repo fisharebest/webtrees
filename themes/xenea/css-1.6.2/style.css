@@ -291,7 +291,7 @@ textarea:required:invalid {
 }
 
 /* ======= Main menu items ========== */
-#topMenu {
+header nav {
 	border-bottom: 2px solid #0073cf;
 	float: left;
 	height: 40px;
@@ -4225,28 +4225,15 @@ dd .deletelink {
 }
 
 @media print {
-	#topMenu,
-	#header,
-	#header-user-links,
-	#header select,
-	#header input,
-	#footer select,
+	header,
+	footer,
 	#backprint,
 	#sidebar,
-	#separator {
-		display: none;
-	}
-
-	#header,
-	#footer,
+	#separator,
+	form,
+	#CB_All,
 	.noprint {
 		display: none !important;
-	}
-
-	form,
-	button,
-	input {
-		display: none;
 	}
 
 	#pedigree_chart {
@@ -4281,10 +4268,6 @@ dd .deletelink {
 		left: -10px;
 		top: -60px;
 		z-index: 1;
-	}
-
-	#CB_All {
-		display: none;
 	}
 }
 

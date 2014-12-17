@@ -26,9 +26,9 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-echo '</div>'; // <div id="content">
-if ($view!='simple') {
-	echo '<div id="footer">';
+echo '</main>';
+if ($view !== 'simple') {
+	echo '<footer>';
 	echo contact_links();
 	echo '<p class="logo">';
 	echo '<a href="', WT_WEBTREES_URL, '" target="_blank" class="icon-webtrees" title="', WT_WEBTREES, ' ', WT_VERSION, '"></a>';
@@ -42,5 +42,5 @@ if ($view!='simple') {
 		echo '<p class="error center">', WT_I18N::translate('There are pending changes for you to moderate.'), '</p>';
 		echo '</a>';
 	}
-	echo '</div>'; // <div id="footer">
+	echo '</footer>';
 }

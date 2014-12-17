@@ -265,13 +265,7 @@ document.onmouseup = function () {
 				<td class="person<?php echo $col; ?>" style="padding: 5px;">
 					<?php
 					if ($indi && $indi->canShow()) {
-						if ($indi->getSex() === 'M') {
-							echo $indi->getSexImage('large', '', WT_I18N::translate('Male'));
-						} elseif ($indi->getSex() === 'F') {
-							echo $indi->getSexImage('large', '', WT_I18N::translate('Female'));
-						} else {
-							echo $indi->getSexImage('large', '', WT_I18N::translate_c('unknown gender', 'Unknown'));
-						}
+						echo $indi->getSexImage('large');
 						?>
 						<a href="<?php echo $indi->getHtmlUrl(); ?>">&nbsp;<?php echo $indi->getFullName(); ?><br>
 							<?php echo $indi->getAddName(); ?><br>

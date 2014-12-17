@@ -42,113 +42,81 @@ $this
 			}
 		});
 	');
-echo
-	'<!DOCTYPE html>',
-	'<html ', WT_I18N::html_markup(), '>',
-	'<head>',
-	'<meta charset="UTF-8">',
-	'<meta http-equiv="X-UA-Compatible" content="IE=edge">',
-	header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL),
-	'<title>', WT_Filter::escapeHtml($title), '</title>',
-	'<link rel="icon" href="', WT_CSS_URL, 'favicon.png" type="image/png">',
-	'<link rel="stylesheet" type="text/css" href="', WT_THEME_URL, 'jquery-ui-1.11.2/jquery-ui.css">',
-	'<link rel="stylesheet" type="text/css" href="', WT_CSS_URL, 'style.css">',
-	'<!--[if IE]>',
-	'<link type="text/css" rel="stylesheet" href="', WT_CSS_URL, 'msie.css">',
-	'<![endif]-->';
-
-echo
-	'</head>',
-	'<body id="body">';
-
-if ($view!='simple') { // Use "simple" headers for popup windows
-	echo
-	'<div id="header">',
-		'<span class="title" dir="auto">', WT_TREE_TITLE, '</span>',
-		'<div class="hsearch">';
-	echo
-			'<form action="search.php" method="post">',
-			'<input type="hidden" name="action" value="general">',
-			'<input type="hidden" name="ged" value="', WT_GEDCOM, '">',
-			'<input type="hidden" name="topsearch" value="yes">',
-			'<input type="search" name="query" size="12" placeholder="', WT_I18N::translate('Search'), '">',
-			'<input type="submit" name="search" value="&gt;">',
-			'</form>',
-		'</div>',
-	'</div>'; // <div id="header">
-	echo
-	'<div id="header-user-links">',
-		'<div id="theme-menu">',
-			'<ul class="makeMenu">';
-				$menu=WT_MenuBar::getThemeMenu();
-				if ($menu) {
-					echo $menu->getMenuAsList();
-				}
-	echo
-			'</ul>',
-		'</div>',
-		'<div id="fav-menu">',
-			'<ul class="makeMenu">';
-				$menu=WT_MenuBar::getFavoritesMenu();
-				if ($menu) {
-					echo $menu->getMenuAsList();
-				}
-	echo
-			'</ul>',
-		'</div>',
-		'<div id="login-menu">',
-			'<ul class="makeMenu">';
-				if (Auth::check()) {
-					echo '<li><a href="edituser.php">', WT_Filter::escapeHtml(Auth::user()->getRealName()), '</a></li> <li>', logout_link(), '</li>';
-					if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
-						echo ' <li><a href="#" onclick="window.open(\'edit_changes.php\', \'_blank\', chan_window_specs); return false;" style="color:red;">', WT_I18N::translate('Pending changes'), '</a></li>';
+?>
+<!DOCTYPE html>
+<html <?php echo WT_I18N::html_markup(); ?>>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<?php echo header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL); ?>
+	<title><?php echo WT_Filter::escapeHtml($title); ?></title>
+	<link rel="icon" href="<?php echo WT_CSS_URL; ?>favicon.png" type="image/png">
+	<link rel="stylesheet" type="text/css" href="<?php echo WT_THEME_URL; ?>jquery-ui-1.11.2/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo WT_CSS_URL; ?>style.css">
+	<!--[if IE]>
+	<link rel="stylesheet" type="text/css" href="<?php echo WT_CSS_URL; ?>msie.css">
+	<![endif]-->
+</head>
+<body id="body">
+	<?php if ($view!='simple') { ?>
+	<header>
+		<div id="header">
+			<span class="title" dir="auto"><?php echo WT_TREE_TITLE; ?></span>
+			<div class="hsearch">
+				<form action="search.php" method="post" role="search">
+					<input type="hidden" name="action" value="general">
+					<input type="hidden" name="ged" value="<?php echo WT_GEDCOM; ?>">
+					<input type="hidden" name="topsearch" value="yes">
+					<input type="search" name="query" size="12" placeholder="<?php echo WT_I18N::translate('Search'); ?>">
+					<input type="submit" name="search" value="&gt;">
+				</form>
+			</div>
+		</div>
+		<div id="header-user-links">
+			<div id="theme-menu">
+				<ul class="makeMenu">
+					<?php echo WT_MenuBar::getThemeMenu(); ?>
+				</ul>
+			</div>
+			<div id="fav-menu">
+				<ul class="makeMenu">
+					<?php echo WT_MenuBar::getFavoritesMenu(); ?>
+				</ul>
+			</div>
+			<div id="login-menu">
+				<ul class="makeMenu">
+					<?php
+					if (Auth::check()) {
+						echo '<li><a href="edituser.php">', WT_Filter::escapeHtml(Auth::user()->getRealName()), '</a></li> <li>', logout_link(), '</li>';
+						if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
+							echo ' <li><a href="#" onclick="window.open(\'edit_changes.php\', \'_blank\', chan_window_specs); return false;" style="color:red;">', WT_I18N::translate('Pending changes'), '</a></li>';
+						}
+					} else {
+						echo '<li>', login_link(), '</li> ';
 					}
-				} else {
-					echo '<li>', login_link(), '</li> ';
-				}
-	echo
-			'</ul>',
-		'</div>';
-	echo
-		'<div id="lang-menu" class="makeMenu">',
-			'<ul class="makeMenu">';
-				$menu=WT_MenuBar::getLanguageMenu();
-				if ($menu) {
-					echo $menu->getMenuAsList();
-				}
-	echo
-			'</ul>',
-		'</div>',
-	'</div>';
-// Menu
-		$menu_items=array(
-			WT_MenuBar::getGedcomMenu(),
-			WT_MenuBar::getMyPageMenu(),
-			WT_MenuBar::getChartsMenu(),
-			WT_MenuBar::getListsMenu(),
-			WT_MenuBar::getCalendarMenu(),
-			WT_MenuBar::getReportsMenu(),
-			WT_MenuBar::getSearchMenu(),
-		);
-		foreach (WT_MenuBar::getModuleMenus() as $menu) {
-			$menu_items[]=$menu;
-		}
-
-	// Print the menu bar
-	echo
-		'<div id="topMenu">',
-			'<ul id="main-menu">';
-				foreach ($menu_items as $menu) {
-					if ($menu) {
-						echo $menu->getMenuAsList();
-					}
-				}
-				unset($menu_items, $menu);
-	echo
-		'</ul>',  // <ul id="main-menu">
-		'</div>'; // <div id="topMenu">
-}
-echo
-	$javascript,
-	WT_FlashMessages::getHtmlMessages(), // Feedback from asynchronous actions
-	'<div id="content">';
+					?>
+				</ul>
+			</div>
+			<div id="lang-menu" class="makeMenu">
+				<ul class="makeMenu">
+					<?php echo WT_MenuBar::getLanguageMenu(); ?>
+				</ul>
+			</div>
+		</div>
+		<nav>
+			<ul id="main-menu" role="menubar">
+				<?php echo WT_MenuBar::getGedcomMenu();   ?>
+				<?php echo WT_MenuBar::getMyPageMenu();   ?>
+				<?php echo WT_MenuBar::getChartsMenu();   ?>
+				<?php echo WT_MenuBar::getListsMenu();    ?>
+				<?php echo WT_MenuBar::getCalendarMenu(); ?>
+				<?php echo WT_MenuBar::getReportsMenu();  ?>
+				<?php echo WT_MenuBar::getSearchMenu();   ?>
+				<?php echo implode('', WT_MenuBar::getModuleMenus()); ?>
+			</ul>
+		</nav>
+	</header>
+	<?php } ?>
+	<?php echo $javascript; ?>
+	<?php echo WT_FlashMessages::getHtmlMessages(); ?>
+	<main id="content">

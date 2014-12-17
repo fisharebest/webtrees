@@ -858,14 +858,28 @@ function get_top_surnames($ged_id, $min, $max) {
 	$max=(int)$max;
 	if ($max==0) {
 		return
-			WT_DB::prepare("SELECT SQL_CACHE n_surn, COUNT(n_surn) FROM `##name` WHERE n_file=? AND n_type!=? AND n_surn NOT IN (?, ?, ?, ?) GROUP BY n_surn HAVING COUNT(n_surn)>=? ORDER BY 2 DESC")
-			->execute(array($ged_id, '_MARNM', '@N.N.', '', '?', 'UNKNOWN', $min))
-			->fetchAssoc();
+			WT_DB::prepare(
+				"SELECT SQL_CACHE n_surn, COUNT(n_surn) FROM `##name`" .
+				" WHERE n_file = :tree_id AND n_type != '_MARNM' AND n_surn NOT IN ('@N.N.', '', '?', 'UNKNOWN')" .
+				" GROUP BY n_surn HAVING COUNT(n_surn) >= :min" .
+				" ORDER BY 2 DESC"
+			)->execute(array(
+				'tree_id' => $ged_id,
+				'min'     => $min,
+			))->fetchAssoc();
 	} else {
 		return
-			WT_DB::prepare("SELECT SQL_CACHE n_surn, COUNT(n_surn) FROM `##name` WHERE n_file=? AND n_type!=? AND n_surn NOT IN (?, ?, ?, ?) GROUP BY n_surn HAVING COUNT(n_surn)>=? ORDER BY 2 DESC LIMIT ".$max)
-			->execute(array($ged_id, '_MARNM', '@N.N.', '', '?', 'UNKNOWN', $min))
-			->fetchAssoc();
+			WT_DB::prepare(
+				"SELECT SQL_CACHE n_surn, COUNT(n_surn) FROM `##name`" .
+				" WHERE n_file = :tree_id AND n_type != '_MARNM' AND n_surn NOT IN ('@N.N.', '', '?', 'UNKNOWN')" .
+				" GROUP BY n_surn HAVING COUNT(n_surn) >= :min" .
+				" ORDER BY 2 DESC" .
+				" LIMIT :limit"
+			)->execute(array(
+				'tree_id' => $ged_id,
+				'min'     => $min,
+				'limit'   => $max,
+			))->fetchAssoc();
 	}
 }
 

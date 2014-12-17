@@ -174,11 +174,11 @@ textarea:required:invalid {
 	height: 15px;
 }
 
-#content {
+main {
 	clear: both;
 }
 
-#footer {
+footer {
 	clear: both;
 	font-size: 12px;
 	padding-top: 10px;
@@ -2127,7 +2127,7 @@ div.faq_body {
 	z-index: 210;
 }
 
-#topMenu {
+header nav {
 	border-top: 2px solid #81a9cb;
 	border-bottom: 2px solid #81a9cb;
 	margin: 8px auto;
@@ -4027,12 +4027,11 @@ Families */
 
 @media print {
 	#backprint,
-	#separator {
-		display: none;
-	}
-
-	#header,
-	#footer,
+	#separator,
+	header,
+	footer,
+	form,
+	#CB_All
 	.noprint {
 		display: none !important;
 	}
@@ -4048,12 +4047,6 @@ Families */
 	[dir=rtl] #pedigree_chart {
 		left: auto;
 		right: -80px;
-	}
-
-	form,
-	button,
-	input {
-		display: none;
 	}
 
 	#familybook_chart h3 {
@@ -4076,9 +4069,6 @@ Families */
 		z-index: 1;
 	}
 
-	#CB_All {
-		display: none;
-	}
 }
 
 /* Icons */

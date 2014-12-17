@@ -26,27 +26,23 @@ use Fisharebest\ExtCalendar\ArabicCalendar;
 class WT_Date_Hijri extends WT_Date_Calendar {
 	const CALENDAR_ESCAPE = '@#DHIJRI@';
 	const CAL_START_JD = 1948440; // @#DHIJRI@ 1 MUHAR 0001 = @#JULIAN@ 16 JUL 0622
-	static $MONTH_ABBREV = array('' => 0, 'MUHAR' => 1, 'SAFAR' => 2, 'RABIA' => 3, 'RABIT' => 4, 'JUMAA' => 5, 'JUMAT' => 6, 'RAJAB' => 7, 'SHAAB' => 8, 'RAMAD' => 9, 'SHAWW' => 10, 'DHUAQ' => 11, 'DHUAH' => 12);
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
+	public static $MONTH_ABBREV = array('' => 0, 'MUHAR' => 1, 'SAFAR' => 2, 'RABIA' => 3, 'RABIT' => 4, 'JUMAA' => 5, 'JUMAT' => 6, 'RAJAB' => 7, 'SHAAB' => 8, 'RAMAD' => 9, 'SHAWW' => 10, 'DHUAQ' => 11, 'DHUAH' => 12);
+
+	/** {@inheritdoc} */
 	public function __construct($date) {
 		$this->calendar = new ArabicCalendar;
 		parent::__construct($date);
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	public static function calendarName() {
 		return /* I18N: The Arabic/Hijri calendar */
 			WT_I18N::translate('Hijri');
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	public static function monthNameNominativeCase($month_number, $leap_year) {
 		static $translated_month_names;
 
@@ -71,9 +67,7 @@ class WT_Date_Hijri extends WT_Date_Calendar {
 		return $translated_month_names[$month_number];
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	static function monthNameGenitiveCase($month_number, $leap_year) {
 		static $translated_month_names;
 
@@ -98,9 +92,7 @@ class WT_Date_Hijri extends WT_Date_Calendar {
 		return $translated_month_names[$month_number];
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	static function monthNameLocativeCase($month_number, $leap_year) {
 		static $translated_month_names;
 
@@ -125,9 +117,7 @@ class WT_Date_Hijri extends WT_Date_Calendar {
 		return $translated_month_names[$month_number];
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	static function monthNameInstrumentalCase($month_number, $leap_year) {
 		static $translated_month_names;
 
@@ -152,9 +142,7 @@ class WT_Date_Hijri extends WT_Date_Calendar {
 		return $translated_month_names[$month_number];
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	static function monthNameAbbreviated($month_number, $leap_year) {
 		return self::monthNameNominativeCase($month_number, $leap_year);
 	}
