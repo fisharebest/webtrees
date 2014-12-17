@@ -33,13 +33,13 @@ body {
 	font: 12px tahoma, arial, helvetica, sans-serif;
 }
 
-#clouds-container {
+header {
 	background-color: #fff;
 	border: 1px solid #039;
 	margin: 10px;
 }
 
-#content {
+main {
 	padding: 10px;
 }
 
@@ -1205,7 +1205,7 @@ td.descriptionbox div div div a {
 	background: #ffc;
 }
 
-#footer {
+footer {
 	clear: both;
 	width: 99%;
 }
@@ -4257,16 +4257,17 @@ span.link_text {
 }
 
 @media print {
-	#clouds-container {
-		border: 0;
-	}
-
 	#content {
 		padding: 0;
 	}
 
-	#header,
-	#footer,
+	#backprint,
+	#sidebar,
+	#CB_All,
+	#separator,
+	header,
+	footer,
+	form,
 	.noprint {
 		display: none !important;
 	}
@@ -4282,20 +4283,6 @@ span.link_text {
 	[dir=rtl] #pedigree_chart {
 		left: auto;
 		right: -80px;
-	}
-
-	#topMenu,
-	#header select,
-	#header input,
-	#footer select,
-	#backprint,
-	#sidebar,
-	form,
-	button,
-	input,
-	#CB_All,
-	#separator {
-		display: none;
 	}
 
 	#familybook_chart h3 {
