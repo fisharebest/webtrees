@@ -52,7 +52,7 @@ $this
 	<![endif]-->
 </head>
 <body id="body">
-	<?php if ($view!='simple') { ?>
+	<?php if ($view !== 'simple') { ?>
 	<header>
 		<div class="header_img">
 			<img src="<?php echo WT_CSS_URL; ?>images/webtrees.png" width="242" height="50" alt="<?php echo WT_WEBTREES; ?>">

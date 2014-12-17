@@ -86,7 +86,7 @@ foreach (WT_MenuBar::getModuleMenus() as $menu) {
 	<?php } ?>
 </head>
 <body id="body">
-	<?php if ($view!='simple') { ?>
+	<?php if ($view !== 'simple') { ?>
 	<header>
 		<div id="header">
 			<span class="title" dir="auto">

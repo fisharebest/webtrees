@@ -58,7 +58,7 @@ $this
 	<![endif]-->
 </head>
 <body id="body">
-	<?php if ($view!='simple') { ?>
+	<?php if ($view !== 'simple') { ?>
 	<header class="block">
 		<div id="header-user-links">
 			<ul class="makeMenu">
