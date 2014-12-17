@@ -25,27 +25,22 @@ use Fisharebest\ExtCalendar\JulianCalendar;
 class WT_Date_Julian extends WT_Date_Calendar {
 	const CALENDAR_ESCAPE = '@#DJULIAN@';
 
-	var $new_old_style = false;
+	/** @var boolean True for dates recorded in new-style/old-style format, e.g. 2 FEB 1743/44 */
+	private $new_old_style = false;
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	public function __construct($date) {
 		$this->calendar = new JulianCalendar;
 		parent::__construct($date);
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	public static function calendarName() {
 		return /* I18N: The julian calendar */
 			WT_I18N::translate('Julian');
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	protected static function nextYear($year) {
 		if ($year == -1) {
 			return 1;
@@ -71,9 +66,7 @@ class WT_Date_Julian extends WT_Date_Calendar {
 		}
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	protected function formatLongYear() {
 		if ($this->y < 0) {
 			return /*  I18N: BCE=Before the Common Era, for Julian years < 0.  See http://en.wikipedia.org/wiki/Common_Era */
@@ -88,9 +81,7 @@ class WT_Date_Julian extends WT_Date_Calendar {
 		}
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	protected function formatGedcomYear() {
 		if ($this->y < 0) {
 			return sprintf('%04d B.C.', -$this->y);

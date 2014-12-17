@@ -37,7 +37,7 @@ if (!defined('WT_WEBTREES')) {
  */
 function getMenuAsCustomList($menu) {
 	// Create an inert menu - to use as a label
-	$tmp = new WT_Menu(strip_tags($menu->label), '');
+	$tmp = new WT_Menu(strip_tags($menu->getLabel()), '');
 
 	// Insert the label into the submenu
 	$submenus = $menu->getSubmenus();

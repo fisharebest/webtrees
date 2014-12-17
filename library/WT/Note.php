@@ -60,9 +60,7 @@ class WT_Note extends WT_GedcomRecord {
 		}
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	protected function canShowByType($access_level) {
 		// Hide notes if they are attached to private records
 		$linked_ids = WT_DB::prepare(
@@ -79,16 +77,12 @@ class WT_Note extends WT_GedcomRecord {
 		return parent::canShowByType($access_level);
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	protected function createPrivateGedcomRecord($access_level) {
 		return '0 @' . $this->xref . '@ NOTE ' . WT_I18N::translate('Private');
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	protected static function fetchGedcomRecord($xref, $gedcom_id) {
 		static $statement = null;
 

@@ -23,10 +23,14 @@
  * Class WT_Controller_Fanchart Controller for the fan chart
  */
 class WT_Controller_Fanchart extends WT_Controller_Chart {
-	// Variables for the view
-	public $fan_style = null;
-	public $fan_width = null;
-	public $generations = null;
+	/** @var int Style of fanchart */
+	public $fan_style;
+
+	/** @var int Width of fanchart (a percentage)  */
+	public $fan_width;
+
+	/** @var int Number of generations to display */
+	public $generations;
 
 	/**
 	 * Create the controller

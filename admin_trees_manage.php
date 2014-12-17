@@ -50,7 +50,7 @@ function import_gedcom_file($gedcom_id, $path, $filename) {
 	$file_data='';
 	$fp=fopen($path, 'rb');
 
-	WT_DB::exec("START TRANSACTION");
+	WT_DB::beginTransaction();
 	WT_DB::prepare("DELETE FROM `##gedcom_chunk` WHERE gedcom_id=?")->execute(array($gedcom_id));
 
 	while (!feof($fp)) {
@@ -74,7 +74,7 @@ function import_gedcom_file($gedcom_id, $path, $filename) {
 	)->execute(array($gedcom_id, $file_data));
 
 	WT_Tree::get($gedcom_id)->setPreference('gedcom_filename', $filename);
-	WT_DB::exec("COMMIT");
+	WT_DB::commit();
 	fclose($fp);
 }
 

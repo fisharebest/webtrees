@@ -30,9 +30,11 @@ class WT_Individual extends WT_GedcomRecord {
 
 	var $generation; // used in some lists to keep track of this individual’s generation in that list
 
-	// Cached results from various functions.
-	private $_getEstimatedBirthDate = null;
-	private $_getEstimatedDeathDate = null;
+	/** @var WT_Date The estimated date of birth */
+	private $_getEstimatedBirthDate;
+
+	/** @var WT_Date The estimated date of death */
+	private $_getEstimatedDeathDate;
 
 	/**
 	 * Get an instance of an individual object.  For single records,
@@ -185,9 +187,7 @@ class WT_Individual extends WT_GedcomRecord {
 		return false;
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	protected function createPrivateGedcomRecord($access_level) {
 		global $SHOW_PRIVATE_RELATIONSHIPS, $SHOW_LIVING_NAMES;
 
@@ -214,9 +214,7 @@ class WT_Individual extends WT_GedcomRecord {
 		return $rec;
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	protected static function fetchGedcomRecord($xref, $gedcom_id) {
 		static $statement = null;
 
@@ -516,8 +514,7 @@ class WT_Individual extends WT_GedcomRecord {
 	 */
 	public function getLifeSpan() {
 		return
-			/* I18N: A range of years, e.g. “1870–”, “1870–1920”, “–1920” */
-			WT_I18N::translate(
+			/* I18N: A range of years, e.g. “1870–”, “1870–1920”, “–1920” */ WT_I18N::translate(
 				'%1$s–%2$s',
 				'<span title="' . strip_tags($this->getBirthDate()->display()) . '">' . $this->getBirthDate()->MinDate()->format('%Y') . '</span>',
 				'<span title="' . strip_tags($this->getDeathDate()->display()) . '">' . $this->getDeathDate()->MinDate()->format('%Y') . '</span>'
@@ -1058,9 +1055,7 @@ class WT_Individual extends WT_GedcomRecord {
 		return $txt;
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	function getFallBackName() {
 		return '@P.N. /@N.N./';
 	}

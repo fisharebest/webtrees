@@ -1009,7 +1009,8 @@ img.block {
 }
 
 #descendancy_chart ul {
-	background: url(images/vline.png) repeat-y left top;
+	background-image:url(images/vline.png);
+	background-position:left top;background-repeat:repeat-y;
 	list-style: none;
 	margin: 0 0 5px 15px;
 	padding-top: 0;
@@ -1042,7 +1043,8 @@ img.block {
 
 /*-- ancestry chart specific stylesheets --*/
 #ancestry_chart ul {
-	background: url(images/vline.png) repeat-y left top;
+	background-image:url(images/vline.png);
+	background-position:left top;background-repeat:repeat-y;
 	list-style: none;
 	display: block;
 	margin: 0 0 0 15px;

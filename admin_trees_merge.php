@@ -93,7 +93,7 @@ if ($tree1_id && $tree2_id != $tree1_id) {
 			'</a>',
 			'</p>';
 	} else {
-		WT_DB::exec("START TRANSACTION");
+		WT_DB::beginTransaction();
 		WT_DB::exec(
 			"LOCK TABLE" .
 			" `##individuals` WRITE," .
@@ -172,7 +172,7 @@ if ($tree1_id && $tree2_id != $tree1_id) {
 			" SELECT ?, page_name, page_parameter, page_count FROM `##hit_counter` AS hit_counter2 WHERE gedcom_id = ? AND page_name <> 'index.php'"
 		)->execute(array($tree2_id, $tree1_id));
 		WT_DB::exec("UNLOCK TABLES");
-		WT_DB::exec("COMMIT");
+		WT_DB::commit();
 		echo '<p>', WT_I18N::translate('The family trees were merged successfully.'), '</p>';
 	}
 } else {

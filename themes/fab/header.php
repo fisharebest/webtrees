@@ -106,7 +106,7 @@ if ($view != 'simple') { // Use “simple” headers for popup windows
 	echo '<div id="header-title" dir="auto">', WT_TREE_TITLE, '</div>';
 
 	// Print the menu bar
-	echo '<div id="header-menu"><ul class="makeMenu">';
+	echo '<div id="topMenu"><ul id="main-menu">';
 	foreach ($menu_items as $menu) {
 		if ($menu) {
 			echo $menu->getMenuAsList();

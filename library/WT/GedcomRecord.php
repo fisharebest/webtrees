@@ -29,22 +29,38 @@ class WT_GedcomRecord {
 	const RECORD_TYPE = 'UNKNOWN';
 	const URL_PREFIX  = 'gedrecord.php?pid=';
 
-	protected $xref        = null;  // The record identifier
-	protected $gedcom_id   = null;  // The gedcom file
-	protected $gedcom      = null;  // GEDCOM data (before any pending edits)
-	protected $pending     = null;  // GEDCOM data (after any pending edits)
+	/** @var string The record identifier */
+	protected $xref;
+
+	/** @var int  The gedcom file */
+	protected $gedcom_id;
+
+	/** @var string  GEDCOM data (before any pending edits) */
+	protected $gedcom;
+
+	/** @var string|null  GEDCOM data (after any pending edits) */
+	protected $pending;
 
 	/** @var WT_Fact[] facts extracted from $gedcom/$pending */
-	protected $facts       = null;
+	protected $facts;
 
-	private   $disp_public = null;  // Can we display details of this record to WT_PRIV_PUBLIC
-	private   $disp_user   = null;  // Can we display details of this record to WT_PRIV_USER
-	private   $disp_none   = null;  // Can we display details of this record to WT_PRIV_NONE
+	/** @var bool Can we display details of this record to WT_PRIV_PUBLIC */
+	private   $disp_public;
 
-	// Cached results from various functions.
-	protected $_getAllNames      = null;
-	protected $_getPrimaryName   = null;
-	protected $_getSecondaryName = null;
+	/** @var bool Can we display details of this record to WT_PRIV_USER */
+	private   $disp_user;
+
+	/** @var bool Can we display details of this record to WT_PRIV_NONE */
+	private   $disp_none;
+
+	/** @var string[][] All the names of this individual */
+	protected $_getAllNames;
+
+	/** @var int Cached result */
+	protected $_getPrimaryName;
+
+	/** @var int Cached result */
+	protected $_getSecondaryName;
 
 	// Allow getInstance() to return references to existing objects
 	private static $gedcom_record_cache;

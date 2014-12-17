@@ -37,11 +37,20 @@ use Fisharebest\ExtCalendar\GregorianCalendar;
  * Class WT_Date - a representation of GEDCOM dates
  */
 class WT_Date {
-	var $qual1 = null; // Optional qualifier, such as BEF, FROM, ABT
-	var $date1 = null; // The first (or only) date
-	var $qual2 = null; // Optional qualifier, such as TO, AND
-	var $date2 = null; // Optional second date
-	var $text = null; // Optional text, as included with an INTerpreted date
+	/** @var string Optional qualifier, such as BEF, FROM, ABT */
+	var $qual1;
+
+	/** @var WT_Date_Calendar  The first (or only) date */
+	var $date1;
+
+	/** @var string  Optional qualifier, such as TO, AND*/
+	var $qual2;
+
+	/** @var WT_Date_Calendar Optional second date */
+	var $date2;
+
+	/** @var string ptional text, as included with an INTerpreted date */
+	var $text;
 
 	/**
 	 * Create a date, from GEDCOM data.
