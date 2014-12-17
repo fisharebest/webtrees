@@ -3473,7 +3473,7 @@ msgstr "Yüklemek istediğiniz önizleme resmini seçiniz. Resimler için önizl
 
 #: admin_site_config.php:50
 msgid "Choose user defined welcome text typed below"
-msgstr "Aşağıda kulanıcı tanımlı hoş geldiniz yazılmış metin seçin"
+msgstr "Aşağıda yazılı Özel Hoş Geldiniz metnini seç"
 
 #: addmedia.php:510 admin_media_upload.php:216
 msgid "Choose: "
@@ -6981,6 +6981,41 @@ msgstr "Buradan hiyerarşik yer ismini göstermek için iki seçenekten birisini
 #: help_text.php:1045
 msgid "Here you can choose text to appear on the login screen.  You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.</div><br></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
 msgstr ""
+"Burada giriş ekranında görünmesini istediğiniz metni seçebilirsiniz. Sizin "
+"için en uygun önceden tanımlanmış olan metni belirlemeniz "
+"gerekir.<br><br>İsterseniz size özel Hoşgeldin mesajını belirleyebilirsiniz. "
+"Daha fazla bilgi için <b>Özel Hoş Geldiniz metni</b> alanına ilişkin yardım "
+"metnine bakabilirsiniz.<br><br>Önceden tanımlanmış "
+"metinler:<ul><li><b>Önceden tanımlanmış tüm kullanıcılara üye olabileceğini "
+"söyleyen metin:</br><div class=\"list_value_wrap\"><center><b>Soyağacı Web "
+"Sitesine Hoş Geldiniz</b></center><br>Bu siteye erişim için kullanıcı hesabı "
+"olan her ziyaretçiye izin verilmektedir.<br><br>Eğer bir kullanıcı hesabınız "
+"varsa bu sayfada giriş yapabilirsiniz. Eğer bir kullanıcı hesabınız yok ise "
+"aşağıdaki uygun bağlantıyı tıklayarak kayıt başvurusu "
+"yapabilirsiniz.<br><br>Kayıt sonrası mail adresinize gönderilen doğrulama "
+"maili aracılığı ile hesabınızı doğruladıktan sonra kullanıcı hesabınız "
+"yönetici tarafından onaylayacaktır. Başvurunuz kabul edildiğinde "
+"bilgilendirme mesajı mail adresinize gönderilecektir.</div><br></li><li><b>Ziy"
+"aretçiye üye olduğunda admin onayı gerektirdiğini söyleyen önceden "
+"tanımlanmış metin:</b><div class=\"list_value_wrap\"><center><b>Soyağacı Web "
+"Sitesine Hoş Geldiniz</b></center><br>Bu soyağacı web sitesine sadece "
+"<u>kayıtlı</u> kullanıcıların erişmesine izin verilmektedir.<br><br>Eğer bir "
+"kullanıcı hesabına sahip iseniz bu sayfadan giriş yapabilirsiniz.<br><br>Eğer "
+"bir kullanıcı hesabınız yok ise aşağıdaki uygun bağlantıya tıklayarak kayıt "
+"olabilirsiniz.<br><br>Kayıt sonrası mail adresine gönderilen doğrulama maili "
+"aracılığı ile hesabınızı doğruladıktan sonra kullanıcı hesabınız yönetici "
+"tarafından onaylayacak veya reddedecektir. Başvurunuz kabul edildiğinde "
+"bilgilendirme mesajı mail adresinize gönderilecektir.</div><br></li><li><b>Sad"
+"ece aile üyelerinin üyeliklerine izin verildiğin söyleyen önceden tanımlanmış "
+"metin:</b><div class=\"list_value_wrap\"><center><b>Soyağacı Web Sitesine Hoş "
+"Geldiniz.</b></center><br>Bu siteye erişim için sadece <u>aile fertlerine</u> "
+"izin verilmektedir.<br><br>Eğer bir kullanıcı hesabınız varsa bu sayfada "
+"giriş yapabilirsiniz. Eğer bir kullanıcı hesabınız yok ise aşağıdaki uygun "
+"bağlantıyı tıklayarak kayıt başvurusu yapabilirsiniz.<br><br>Kayıt sonrası "
+"mail adresinize gönderilen doğrulama maili aracılığı ile hesabınızı "
+"doğruladıktan sonra kullanıcı hesabınız yönetici tarafından onaylayacak veya "
+"reddedecektir. Başvurunuz kabul edildiğinde bilgilendirme mesajı mail "
+"adresinize gönderilecektir.</div></li></ul>"
 
 #: modules_v3/googlemap/help_text.php:54
 msgid "Here you can enter the precision.  Based on this setting the number of digits that will be used in the latitude and longitude is determined."
@@ -7204,10 +7239,23 @@ msgstr "Eğer birey verilen ilk ismi ile bilinmiyor ise, tercih edilen isim aste
 #: help_text.php:466
 msgid "If the number of times that a certain surname occurs is lower than the threshold, it will not appear in the list.  It can be added here manually.  If more than one surname is entered, they must be separated by a comma.  <b>Surnames are case-sensitive.</b>"
 msgstr ""
+"Belirli bir soyadı belirlenen eşik değerinden daha az tekrarlıyor ise, bu "
+"listede görünmez. Eğer bu soyadının listede görünmesini istenirse buradan el "
+"ile eklenebilir. Birden fazla soyadı girmek için virgül ile ayrılmalıdır. "
+"<b>Soyadlar büyük/küçük harf duyarlıdır.</b>"
 
 #: help_text.php:819
 msgid "If the option <b>Allow visitors to request account registration</b> is enabled this setting controls whether the admin must approve the registration.<br><br>Setting this to <b>Yes</b> will require that all new users first verify themselves and then be approved by an admin before they can login.  With this setting on <b>No</b>, the “Approved by administrator” checkbox will be checked automatically when users verify their account, thus allowing an immediate login afterwards without admin intervention."
 msgstr ""
+"Eğer <b>Ziyaretçilerin kayıt olmasına izin ver</b> seçeneği aktif ise, bu "
+"secenek yöneticinin kaydı onaylamasının gerekili olup olmadığını bu ayar "
+"belirler.<br><b>Bu seçenek <b>Evet</b> olarak seçildiğinde, yeni "
+"kullanıcıların giriş yapabilmesi için önce kendilerini onaylamaları, daha "
+"sonra ise yöneticinin bu kullanıcıyı onaylaması gereklidir. Bu seçenek "
+"<b>Hayır</b> olarak seçildiğinde ise, kullanıcı kendisini onayladığında "
+"\"Yönetici tarafından onaylandı\" onay kutusun otomatik olarak seçilir. Bu "
+"kullanıcı kendisini onayladıktan sonra yöneticinin onayını beklemeden "
+"doğrudan giriş yapabilmesini sağlar."
 
 #: help_text.php:281
 #, php-format
@@ -9126,7 +9174,7 @@ msgstr "Çoğu SMTP sunucuları bir şifre gerektirir."
 
 #: modules_v3/gedcom_stats/module.php:187 modules_v3/html/module.php:253
 msgid "Most common surnames"
-msgstr "Ençok Ortak Soyadılar"
+msgstr "En çok Ortak Soyadları"
 
 #. I18N: Help text for the "Secure connection" site configuration setting
 #: help_text.php:774
@@ -10779,15 +10827,19 @@ msgstr "Enlem ve boylam hassasiyeti"
 
 #: admin_site_config.php:48
 msgid "Predefined text that states admin will decide on each request for a user account"
-msgstr "Önceden tanımlanmış ziyaretçiye üye olduğunda admin onayı gerektirdiğini söyleyen metin"
+msgstr ""
+"Ziyaretçiye üye olduğunda admin onayı gerektirdiğini söyleyen önceden "
+"tanımlanmış metin"
 
 #: admin_site_config.php:47
 msgid "Predefined text that states all users can request a user account"
-msgstr "Önceden tanımlanmış tüm kullanıcılara üye olabileceğini söyleyen metin"
+msgstr "Tüm kullanıcılara üye olabileceğini söyleyen önceden tanımlanmış metin"
 
 #: admin_site_config.php:49
 msgid "Predefined text that states only family members can request a user account"
-msgstr "Önceden tanımlanmış sadece aile üyelerinin üyeliklerine izin verildiğin söyleyen metin"
+msgstr ""
+"Sadece aile üyelerinin üyeliklerine izin verildiğin söyleyen önceden "
+"tanımlanmış metin"
 
 #: admin_users.php:198 admin_users.php:398 edituser.php:174 help_text.php:1179
 msgid "Preferred contact method"
@@ -13549,6 +13601,11 @@ msgstr "Tema değiştirmek için açılır menü seçicide"
 #: help_text.php:987
 msgid "Themes can be selected at three levels: user, GEDCOM, and site.  User settings take priority over GEDCOM settings, which in turn take priority over the site setting.  Selecting “default theme” at user level will give the setting for the current GEDCOM.  Selecting “default theme” at GEDCOM level will give the site setting."
 msgstr ""
+"Temalar üç düzeyde seçilebilir: kullanıcı, GEDCOM ve site. Kullanıcı ayarının "
+"GEDCOM üzerine önceliği, GEDCOM ayarının site ayarı üzerine önceliği vardır. "
+"Kullanıcı düzeyinde \"Varsayılan Tema\" seçilmesi mevcut GEDCOM ayarını "
+"verecektir. GEDCOM düzeyinde \"Varsayılan Tema\" seçilmesi site ayarını "
+"verecektir."
 
 #: modules_v3/extra_info/module.php:56
 #: modules_v3/personal_facts/module.php:117
@@ -13632,14 +13689,32 @@ msgstr "Bu hesabınızı doğrulamadınız.<br><br>Hesabı doğrulamak için lü
 #: modules_v3/charts/help_text.php:32
 msgid "This block allows a pedigree, descendancy, or hourglass chart to appear on your “My page” or the “Home page”.  Because of space limitations, the charts should be placed only on the left side of the page.<br><br>When this block appears on the “Home page”, the root individual and the type of chart to be displayed are determined by the administrator.  When this block appears on the user’s “My page”, these options are determined by the user.<br><br>The behavior of these charts is identical to their behavior when they are called up from the menus.  Click on the box of an individual to see more details about them."
 msgstr ""
+"Bu blok, \"Benim Sayfam\" yada \"Ana Sayfa\" sayfalarında, soy, torunlar, ya "
+"da kum saati grafiklerinin görünmesini sağlar. Alan sınırlamaları yüzünden, "
+"grafikler sadece sayfanın sol tarafına konulmalıdır.<br><br> Bu blok \"Ana "
+"Sayfa\" da görüntülendiğinde, kök bireyi ve grafik türünü yönetici belirler. "
+"Bu blok kullanıcının \"Benim Sayfam\" da görüntülendiğinde, bu seçenekler "
+"kullanıcı tarafından belirlenir.<br><br> Bu grafiklerin davranışları menüden "
+"açıldıklarındaki davranışları ile aynıdır. Onlar hakkında daha fazla ayrıntı "
+"görmek için bireyin kutusuna tıklayın."
 
 #: modules_v3/review_changes/help_text.php:32
 msgid "This block will show editors a list of records with pending changes that need to be approved by a moderator.  It also generates daily emails to moderators whenever pending changes exist."
 msgstr ""
+"Bu blok moderator tarafından onaylanmayı bekleyen değişikliklerin listesini "
+"gösterir. Ayrıca bekleyen değişiklik olduğu sürece moderatorlere günlük mail "
+"gönderir."
 
 #: help_text.php:1479
 msgid "This checkbox controls your visibility to other users while you’re online.  It also controls your ability to see other online users who are configured to be visible.<br><br>When this box is unchecked, you will be completely invisible to others, and you will also not be able to see other online users.  When this box is checked, exactly the opposite is true.  You will be visible to others, and you will also be able to see others who are configured to be visible."
 msgstr ""
+"Bu işaret kutusu çevrim içi olduğunuzda diğer kullanıcılara görünür olmanızı "
+"belirler. Aynı zamanda baska kullanıcıların çevrimiçi olup olmadıklarını "
+"görebilmenizi sağlar.<br><br>Bu kutunun işareti kaldırıldığında, diğer "
+"kullanıcılara tamamen görünmez olacak aynı zamanda diğer çevrim içi "
+"kullanıcıları göremeyeceksiniz. Bu kutu işaretlendiğinde ise bunun tamamen "
+"tersi geçerli olacaktır. Başkalarına görünür olacak ve aynı zamanda kendisini "
+"görünür olarak ayarlayan diğer kullanıcıları da görebileceksiniz."
 
 #: setup.php:335 setup.php:346
 msgid "This database and table-prefix appear to be used by another application.  If you have an existing PhpGedView system, you should create a new webtrees system.  You can import your PhpGedView data and settings later."
@@ -13782,18 +13857,33 @@ msgstr ""
 #: help_text.php:407
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets."
 msgstr ""
+"Ekleme/düzenleme formunda gösterilecek GEDCOM etiketleri listesi virgülle "
+"ayrılmış burada belirtilmelidir. İbranice, Yunanca, Kiril, Arapça gibi Latin "
+"olmayan alfabeleri kullanıyorsanız, farklı alfabelerdeki isimleri saklamak "
+"için _HEB, ROMN, FONE vb. etiketler eklemek isteyebilirsiniz."
 
 #: help_text.php:794
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new family.  For example, if MARR is in the list, then fields for marriage date and marriage place will be shown on the form."
 msgstr ""
+"Yeni aile ekleme formunda gösterilecek GEDCOM etiketleri listesi virgülle "
+"ayrılmış burada belirtilmelidir. Örneğin <b>MARR</b> bu listede mevcut ise, "
+"evlilik tarihi ve evlilik yeri alanları formda gösterilecektir."
 
 #: help_text.php:789
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new individual.  For example, if BIRT is in the list, fields for birth date and birth place will be shown on the form."
 msgstr ""
+"Yeni bir birey ekleme formunda gösterilecek GEDCOM etiketleri listesi "
+"virgülle ayrılmış burada belirtilmelidir. Örneğin <b>BIRT</b> bu listede "
+"mevcut ise, doğum tarihi ve doğum yeri alanları formda gösterilecektir."
 
 #: help_text.php:412
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
 msgstr ""
+"Yerleşim yeri ekleme/düzenleme formunda gösterilecek GEDCOM etiketleri "
+"listesi virgülle ayrılmış burada belirtilmelidir. İbranice, Yunanca, Kiril, "
+"Arapça gibi Latin olmayan alfabeleri kullanıyorsanız, farklı alfabelerdeki "
+"isimleri saklamak için _HEB, ROMN, FONE vb. etiketler eklemek "
+"isteyebilirsiniz."
 
 #: help_text.php:1202
 msgid "This is a link to your own record in the family tree.  If this is the wrong individual, contact an administrator."
@@ -13806,6 +13896,8 @@ msgstr "Multimedya objesinin dosya formatının belirtilebileceği opsiyonel bir
 #: help_text.php:368
 msgid "This is an optional status field and is used mostly for LDS ordinances as they are run through the TempleReady program."
 msgstr ""
+"Bu isteğe bağlı bir durum alandır ve TempleReady program aracılığıyla "
+"çalıştırılan LDS yönetmeliklerde çoğunlukla kullanılır."
 
 #: setup.php:275 setup.php:279
 msgid "This is case sensitive."
@@ -13827,34 +13919,74 @@ msgstr "webtrees 'in en son sürümünü kullanıyorsunuz. Her hangi bir güncel
 #: help_text.php:506
 msgid "This is the list of GEDCOM facts that your users can add to families.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the “Unique family facts” list."
 msgstr ""
+"Kullanıcıların \"Aile\" kayıtlarına ekleyebileceği GEDCOM olgu/hadise listesi "
+"burada belirtilmelidir. Size özel belirleyebileceğiniz olgu/hadise isimleri "
+"de dahil olmak üzere, ihtiyacınıza göre olgu/hadise isimlerini listeye "
+"ekleyebilir yada çıkarabilirsiniz. Bu listede belirtilen olgu/hadise "
+"isimlerinin \"Benzersiz Aile Olguları\" listesinde bulunmamalıdır."
 
 #: help_text.php:593
 msgid "This is the list of GEDCOM facts that your users can add to individuals.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the “Unique individual facts” list."
 msgstr ""
+"Kullanıcıların birey kayıtlarına ekleyebileceği GEDCOM olgu/hadise listesi "
+"burada belirtilmelidir. Size özel belirleyebileceğiniz olgu/hadise isimleri "
+"de dahil olmak üzere, ihtiyacınıza göre olgu/hadise isimlerini listeye "
+"ekleyebilir yada çıkarabilirsiniz. Bu listede belirtilen olgu/hadise "
+"isimlerinin \"Benzersiz Aile Olguları\" listesinde bulunmamalıdır."
 
 #: help_text.php:799
 msgid "This is the list of GEDCOM facts that your users can add to repositories.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the “Unique repository facts” list."
 msgstr ""
+"Kullanıcıların \"Depo\" kayıtlarına ekleyebileceği GEDCOM olgu/hadise listesi "
+"burada belirtilmelidir. Size özel belirleyebileceğiniz olgu/hadise isimleri "
+"de dahil olmak üzere, ihtiyacınıza göre olgu/hadise isimlerini listeye "
+"ekleyebilir yada çıkarabilirsiniz. Bu listede belirtilen olgu/hadise "
+"isimlerinin \"Benzersiz Aile Olguları\" listesinde bulunmamalıdır."
 
 #: help_text.php:910
 msgid "This is the list of GEDCOM facts that your users can add to sources.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the “Unique source facts” list."
 msgstr ""
+"Kullanıcıların \"Kaynak\" kayıtlarına ekleyebileceği GEDCOM olgu/hadise "
+"listesi burada belirtilmelidir. Size özel belirleyebileceğiniz olgu/hadise "
+"isimleri de dahil olmak üzere, ihtiyacınıza göre olgu/hadise isimlerini "
+"listeye ekleyebilir yada çıkarabilirsiniz. Bu listede belirtilen olgu/hadise "
+"isimlerinin \"Benzersiz Aile Olguları\" listesinde bulunmamalıdır."
 
 #: help_text.php:516
 msgid "This is the list of GEDCOM facts that your users can only add once to families.  For example, if MARR is in this list, users will not be able to add more than one MARR record to a family.  Fact names that appear in this list must not also appear in the “All family facts” list."
 msgstr ""
+"Kullanıcıların \"Aile\" kayıtlarına sadece bir tane ekleyebileceği GEDCOM "
+"olgu/hadise listesi burada belirtilmelidir. Örneğin <b>MARR</b> bu listede "
+"mevcut ise, kullanıcılar alile evlilik kaydına sadece bir adet MARR kaydı "
+"ekleyebilecekler. Bu listede belirtilen olgu/hadise isimlerinin \"Tüm aile "
+"olguları\" listesinde bulunmamalıdır."
 
 #: help_text.php:603
 msgid "This is the list of GEDCOM facts that your users can only add once to individuals.  For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual.  Fact names that appear in this list must not also appear in the “All individual facts” list."
 msgstr ""
+"Kullanıcıların \"Birey\" kayıtlarına sadece bir tane ekleyebileceği GEDCOM "
+"olgu/hadise listesi burada belirtilmelidir. Örneğin <b>BIRT</b> bu listede "
+"mevcut ise, kullanıcılar alile evlilik kaydına sadece bir adet BIRT kaydı "
+"ekleyebilecekler. Bu listede belirtilen olgu/hadise isimlerinin \"Tüm aile "
+"olguları\" listesinde bulunmamalıdır."
 
 #: help_text.php:809
 msgid "This is the list of GEDCOM facts that your users can only add once to repositories.  For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository.  Fact names that appear in this list must not also appear in the “All repository facts” list."
 msgstr ""
+"Kullanıcıların \"Depo\" kayıtlarına sadece bir tane ekleyebileceği GEDCOM "
+"olgu/hadise listesi burada belirtilmelidir. Örneğin <b>NAME</b> bu listede "
+"mevcut ise, kullanıcılar alile evlilik kaydına sadece bir adet NAME kaydı "
+"ekleyebilecekler. Bu listede belirtilen olgu/hadise isimlerinin \"Tüm aile "
+"olguları\" listesinde bulunmamalıdır."
 
 #: help_text.php:920
 msgid "This is the list of GEDCOM facts that your users can only add once to sources.  For example, if TITL is in this list, users will not be able to add more than one TITL record to a source.  Fact names that appear in this list must not also appear in the “All source facts” list."
 msgstr ""
+"Kullanıcıların \"Kaynak\" kayıtlarına sadece bir tane ekleyebileceği GEDCOM "
+"olgu/hadise listesi burada belirtilmelidir. Örneğin <b>TITL</b> bu listede "
+"mevcut ise, kullanıcılar alile evlilik kaydına sadece bir adet TITL kaydı "
+"ekleyebilecekler. Bu listede belirtilen olgu/hadise isimlerinin \"Tüm aile "
+"olguları\" listesinde bulunmamalıdır."
 
 #. I18N: Help text for the “Server name” site configuration setting
 #: help_text.php:764
@@ -13864,22 +13996,32 @@ msgstr "Bu SMTP sunucusu adıdır. 'localhost' email servisi web sunucusu olarak
 #: help_text.php:476
 msgid "This is the number of times that a surname must occur before it shows up in the Common Surname list on the “Home page”."
 msgstr ""
+"Bir soyadının \"Ana Sayfa\" da bulunan \"En çok ortak soy adlerı\" listesinde "
+"listelenebilmesi için gerekli olan tekrar sayısı."
 
 #: help_text.php:511
 msgid "This is the short list of GEDCOM family facts that appears next to the full list and can be added with a single click."
 msgstr ""
+"Bu tam listenin yanında görünen ve tek bir tıklama ile eklenebilen GEDCOM "
+"\"Aile\" olgu/hadise 'lerinin kısa listesidir."
 
 #: help_text.php:598
 msgid "This is the short list of GEDCOM individual facts that appears next to the full list and can be added with a single click."
-msgstr "Bu birey sayfasında GEDCOMun Olgular ve Hadiseler tam listenin altında yeni olgu ekleme yanında tek tıklama ile olgu eklemeyi sağlar."
+msgstr ""
+"Bu tam listenin yanında görünen ve tek bir tıklama ile eklenebilen GEDCOM "
+"\"Birey\" olgu/hadise 'lerinin kısa listesidir."
 
 #: help_text.php:804
 msgid "This is the short list of GEDCOM repository facts that appears next to the full list and can be added with a single click."
 msgstr ""
+"Bu tam listenin yanında görünen ve tek bir tıklama ile eklenebilen GEDCOM "
+"\"Depo\" olgu/hadise 'lerinin kısa listesidir."
 
 #: help_text.php:915
 msgid "This is the short list of GEDCOM source facts that appears next to the full list and can be added with a single click."
 msgstr ""
+"Bu tam listenin yanında görünen ve tek bir tıklama ile eklenebilen GEDCOM "
+"\"Kaynak\" olgu/hadise 'lerinin kısa listesidir."
 
 #: help_text.php:992
 msgid "This is the width (in pixels) that the program will use when automatically generating thumbnails.  The default setting is 100."
