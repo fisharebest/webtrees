@@ -194,19 +194,19 @@ footer {
 }
 
 .person_box {
-	background-color: #edf7fd;
+	background: #edf7fd;
 	border: solid #81a9cb 1px;
 	padding: 3px;
 }
 
 .person_boxF {
-	background-color: #e9daf1;
+	background: #e9daf1;
 	border: 1px solid #ff2080;
 	padding: 3px;
 }
 
 .person_boxNN {
-	background-color: #fff;
+	background: #fff;
 	border: dashed #81a9cb 1px;
 	padding: 3px;
 }

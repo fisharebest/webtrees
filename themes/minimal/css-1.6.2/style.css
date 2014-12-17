@@ -374,19 +374,19 @@ textarea {
 }
 
 .person_box {
-	background-color: #fff;
+	background: #fff;
 	border: solid #555 1px;
 	padding: 3px;
 }
 
 .person_boxF {
-	background-color: #fff;
+	background: #fff;
 	border: solid #555 1px;
 	padding: 3px;
 }
 
 .person_boxNN {
-	background-color: #fff;
+	background: #fff;
 	border: 1px dashed #808080;
 	padding: 3px;
 }
