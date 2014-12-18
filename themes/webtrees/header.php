@@ -47,9 +47,8 @@ $this
 	<link rel="icon" href="<?php echo WT_CSS_URL; ?>favicon.png" type="image/png">
 	<link rel="stylesheet" type="text/css" href="<?php echo WT_THEME_URL; ?>jquery-ui-1.11.2/jquery-ui.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo WT_CSS_URL; ?>style.css">
-	<!--[if IE]>
-	<script src="<?php echo WT_MODERNIZR_URL; ?>"></script>
-	<link rel="stylesheet" type="text/css" href="<?php echo WT_CSS_URL; ?>msie.css">
+	<!--[if IE 8]>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
 	<![endif]-->
 </head>
 <body id="body">
