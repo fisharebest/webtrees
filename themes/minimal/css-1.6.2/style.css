@@ -86,20 +86,21 @@ textarea:required:invalid {
 }
 
 /* Row one */
-#header-title {
+header h1 {
 	float: left;
 	clear: left;
 	font-size: 26px;
 	font-weight: 900;
+	margin: 0;
+}
+
+[dir=rtl] header h1 {
+	float: right;
+	clear: right;
 }
 
 #header-user-links {
 	float: right;
-}
-
-[dir=rtl] #header-title {
-	float: right;
-	clear: right;
 }
 
 [dir=rtl] #header-user-links {
