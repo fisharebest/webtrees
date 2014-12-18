@@ -55,7 +55,6 @@ echo
 	'<![endif]-->';
 
 echo
-	$javascript,
 	'</head>',
 	'<body id="body">',
 // Header

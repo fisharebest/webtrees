@@ -70,6 +70,7 @@ foreach (WT_MenuBar::getModuleMenus() as $menu) {
 	<link rel="stylesheet" type="text/css" href="<?php echo WT_THEME_URL; ?>jquery-ui-1.11.2/jquery-ui.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo WT_CSS_URL; ?>style.css">
 	<!--[if IE]>
+	<script src="<?php echo WT_MODERNIZR_URL; ?>"></script>
 	<link rel="stylesheet" type="text/css" href="<?php echo WT_CSS_URL; ?>msie.css">
 	<![endif]-->
 </head>
@@ -122,6 +123,5 @@ foreach (WT_MenuBar::getModuleMenus() as $menu) {
 		</div>
 	</header>
 	<?php } ?>
-	<?php echo $javascript; ?>
 	<?php echo WT_FlashMessages::getHtmlMessages(); ?>
 	<main id="content">
