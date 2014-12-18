@@ -61,7 +61,7 @@ $this
 	<?php if ($view !== 'simple') { ?>
 	<header>
 		<div id="header">
-			<span class="title" dir="auto"><?php echo WT_TREE_TITLE; ?></span>
+			<h1><?php echo WT_TREE_TITLE; ?></h1>
 			<div class="hsearch">
 				<form action="search.php" method="post" role="search">
 					<input type="hidden" name="action" value="general">

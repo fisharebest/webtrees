@@ -73,9 +73,7 @@ $this
 				<?php echo WT_MenuBar::getLanguageMenu(); ?>
 			</ul>
 		</div>
-		<div class="title" dir="auto">
-			<?php echo WT_TREE_TITLE; ?>
-		</div>
+		<h1><?php echo WT_TREE_TITLE; ?></h1>
 		<div class="header_search">
 			<form action="search.php" method="post" role="search">
 				<input type="hidden" name="action" value="general">
