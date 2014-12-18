@@ -1180,19 +1180,19 @@ th {
 }
 
 .person_box {
-	background-color: #f0f9ff;
+	background: #f0f9ff;
 	border: 1px solid #84beff;
 	padding: 3px;
 }
 
 .person_boxF {
-	background-color: #fff0f0;
+	background: #fff0f0;
 	border: 1px solid #ff2080;
 	padding: 3px;
 }
 
 .person_boxNN {
-	background-color: #fff;
+	background: #fff;
 	border: dashed #008080 1px;
 	padding: 3px;
 }

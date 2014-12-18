@@ -45,7 +45,7 @@ $this
 		});
 	');
 
-$menu_items=array(
+$menu_items = array(
 	WT_MenuBar::getGedcomMenu(),
 	WT_MenuBar::getMyPageMenu(),
 	WT_MenuBar::getChartsMenu(),
@@ -55,7 +55,7 @@ $menu_items=array(
 	WT_MenuBar::getSearchMenu(),
 );
 foreach (WT_MenuBar::getModuleMenus() as $menu) {
-	$menu_items[]=$menu;
+	$menu_items[] = $menu;
 }
 
 ?>
@@ -74,7 +74,7 @@ foreach (WT_MenuBar::getModuleMenus() as $menu) {
 	<![endif]-->
 </head>
 <body id="body">
-	<?php if ($view!='simple') { ?>
+	<?php if ($view !== 'simple') { ?>
 	<header>
 		<div id="header">
 			<div class="header">
@@ -96,10 +96,8 @@ foreach (WT_MenuBar::getModuleMenus() as $menu) {
 			<nav>
 				<ul id="main-menu">
 					<?php
-					foreach ($menu_items as $menu) {
-						if ($menu) {
-							echo getMenuAsCustomList($menu);
-						}
+					foreach (array_filter($menu_items) as $menu) {
+						echo getMenuAsCustomList($menu);
 					}
 					?>
 				</ul>

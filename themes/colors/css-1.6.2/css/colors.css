@@ -1104,12 +1104,12 @@ span.title {
 }
 
 /* families */
-#content {
+main {
 	clear: both;
 	padding: 10px 10px 0;
 }
 
-#content .center a {
+main .center a {
 	font-size: 13px;
 }
 
@@ -1117,7 +1117,7 @@ span.title {
 	margin: 12px 0;
 }
 
-#content .center a.warning,
+main .center a.warning,
 #login-box span.error,
 #calendar-page span.error {
 	color: #f50;
@@ -1148,7 +1148,7 @@ div.error {
 	color: #333;
 }
 
-#footer {
+footer {
 	clear: both;
 	width: 99%;
 }
@@ -4064,30 +4064,17 @@ span.link_text {
 
 @media print {
 	form,
-	button,
-	input {
-		display: none;
-	}
-
-	#header select,
-	#header input,
-	#footer select,
 	#backprint,
 	#sidebar,
 	#main-menu,
-	#separator {
-		display: none;
-	}
-
-	#header,
-	#footer,
+	#separator,
+	header,
+	footer,
+	#CB_All,
 	.noprint {
 		display: none !important;
 	}
 
-	#CB_All {
-		display: none;
-	}
 
 	#familybook_chart h3 {
 		margin-bottom: 10px;
