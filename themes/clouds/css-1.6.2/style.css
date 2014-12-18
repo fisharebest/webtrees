@@ -63,14 +63,16 @@ td {
 	z-index: 210;
 }
 
-.title {
+header h1 {
 	color: #039;
 	float: left;
 	font-size: 20px;
-	margin-left: 12px;
-	margin-top: 5px;
-	vertical-align: middle;
-	width: 70%;
+	font-weight: normal;
+	margin: 5px 12px 0;
+}
+
+[dir=rtl] header h1 {
+	float: right;
 }
 
 .hsearch {
@@ -83,11 +85,6 @@ td {
 #header-user-links {
 	float: right;
 	margin-right: 20px;
-}
-
-[dir=rtl] .title {
-	float: right;
-	margin-right: 12px;
 }
 
 [dir=rtl] .hsearch {
