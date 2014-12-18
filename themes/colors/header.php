@@ -81,9 +81,10 @@ foreach (WT_MenuBar::getModuleMenus() as $menu) {
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.8, maximum-scale=2.0" />
 	<link type="text/css" rel="stylesheet" href="<?php echo WT_CSS_URL; ?>ipad.css">
 	<?php } elseif (stristr($_SERVER['HTTP_USER_AGENT'], 'MSIE') || stristr($_SERVER['HTTP_USER_AGENT'], 'Trident')) { ?>
-	<!-- This is needed for all versions of IE, so we cannot use conditional comments. -->
-	<link type="text/css" rel="stylesheet" href="<?php echo WT_CSS_URL; ?>msie.css">
-	<?php } ?>
+		<!--[if IE 8]>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+		<![endif]-->
+#	<?php } ?>
 </head>
 <body id="body">
 	<?php if ($view !== 'simple') { ?>
@@ -131,6 +132,5 @@ foreach (WT_MenuBar::getModuleMenus() as $menu) {
 		</nav>
 	</header>
 	<?php } ?>
-	<?php echo $javascript; ?>
 	<?php echo WT_FlashMessages::getHtmlMessages(); ?>
 	<main id="content">
