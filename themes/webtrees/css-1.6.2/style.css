@@ -3024,7 +3024,7 @@ header nav {
 	margin: 20px 0 0 10px;
 }
 
-[dir=rtl] #header-user-links.makeMenu li ul {
+[dir=rtl] #header-user-links .makeMenu li ul {
 	left: 0;
 	right: auto;
 }
