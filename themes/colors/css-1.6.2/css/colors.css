@@ -1764,12 +1764,14 @@ div.fact_SHARED_NOTE {
 .name2 {
 	font-weight: 700;
 	overflow: hidden;
+	font-size: 12px;
 }
 
 a:hover .name1,
 a:hover .name2 {
 	color: #f00;
 	font-weight: 700;
+	font-size: 12px;
 }
 
 .nameZoom {
