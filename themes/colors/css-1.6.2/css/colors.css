@@ -151,15 +151,16 @@ textarea:required:invalid {
 	height: 50px;
 }
 
-span.title {
+header h1 {
 	float: left;
 	font-size: 24px;
-	margin: 16px 0 3px 12px;
+	font-weight: normal;
+	margin: 16px 12px 3px;
 }
 
-[dir=rtl] span.title {
+[dir=rtl] header h1 {
 	float: right;
-	margin: 16px 12px 3px 3px;
+	margin: 16px 12px 3px;
 }
 
 /* Options Menu */
