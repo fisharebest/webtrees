@@ -169,7 +169,7 @@ textarea:required:invalid {
 }
 
 /* Elements used on every page */
-#header {
+header {
 	color: #888;
 	text-align: center;
 }
@@ -193,17 +193,12 @@ textarea:required:invalid {
 	clear: right;
 }
 
-#topMenu {
-	clear: both;
-	text-align: center;
-}
-
 #content {
 	margin-top: 12px;
 	margin-bottom: 12px;
 }
 
-#footer {
+footer {
 	clear: both;
 	text-align: center;
 	width: 99%;
@@ -344,8 +339,9 @@ textarea:required:invalid {
 }
 
 /* Main menus */
-
-#topMenu {
+header nav {
+	clear: both;
+	text-align: center;
 	padding-top: 12px;
 }
 
@@ -448,15 +444,15 @@ textarea:required:invalid {
 /* person boxes are used in various charts */
 
 .person_box {
-	background-color: #ddf;
+	background: #ddf;
 }
 
 .person_boxF {
-	background-color: #fdd;
+	background: #fdd;
 }
 
 .person_boxNN {
-	background-color: #dfd;
+	background: #dfd;
 }
 
 .person_box,
@@ -707,24 +703,18 @@ div.fact_SHARED_NOTE {
 		width: 510px !important;
 	}
 
+	header,
+	footer,
+	form,
+	#pedigree-page #people,
+	#CB_ALL, label,
+	#separator,
 	.noprint {
 		display: none !important;
 	}
 
-	#header,
-	#footer,
-	#pedigree-page #people,
-	#CB_ALL, label,
-	#separator {
-		display: none;
-	}
-
 	#familybook_chart h3 {
 		margin-bottom: 10px;
-	}
-
-	form, button, input {
-		display: none;
 	}
 }
 

@@ -174,11 +174,11 @@ textarea:required:invalid {
 	height: 15px;
 }
 
-#content {
+main {
 	clear: both;
 }
 
-#footer {
+footer {
 	clear: both;
 	font-size: 12px;
 	padding-top: 10px;
@@ -194,19 +194,19 @@ textarea:required:invalid {
 }
 
 .person_box {
-	background-color: #edf7fd;
+	background: #edf7fd;
 	border: solid #81a9cb 1px;
 	padding: 3px;
 }
 
 .person_boxF {
-	background-color: #e9daf1;
+	background: #e9daf1;
 	border: 1px solid #ff2080;
 	padding: 3px;
 }
 
 .person_boxNN {
-	background-color: #fff;
+	background: #fff;
 	border: dashed #81a9cb 1px;
 	padding: 3px;
 }
@@ -905,17 +905,16 @@ a:hover .nameZoom {
 	font-weight: 600;
 }
 
-.title {
+header h1 {
 	clear: both;
 	font-size: 20px;
+	font-weight: normal;
 	float: left;
-	padding-left: 10px;
-	margin-bottom: 5px;
+	margin: 0 10px 5px;
 }
 
-[dir=rtl] .title {
+[dir=rtl] header h1 {
 	float: right;
-	padding-right: 10px;
 }
 
 .header_img {
@@ -2127,7 +2126,7 @@ div.faq_body {
 	z-index: 210;
 }
 
-#topMenu {
+header nav {
 	border-top: 2px solid #81a9cb;
 	border-bottom: 2px solid #81a9cb;
 	margin: 8px auto;
@@ -3024,7 +3023,7 @@ div.faq_body {
 	margin: 20px 0 0 10px;
 }
 
-[dir=rtl] #header-user-links.makeMenu li ul {
+[dir=rtl] #header-user-links .makeMenu li ul {
 	left: 0;
 	right: auto;
 }
@@ -4027,12 +4026,11 @@ Families */
 
 @media print {
 	#backprint,
-	#separator {
-		display: none;
-	}
-
-	#header,
-	#footer,
+	#separator,
+	header,
+	footer,
+	form,
+	#CB_All
 	.noprint {
 		display: none !important;
 	}
@@ -4048,12 +4046,6 @@ Families */
 	[dir=rtl] #pedigree_chart {
 		left: auto;
 		right: -80px;
-	}
-
-	form,
-	button,
-	input {
-		display: none;
 	}
 
 	#familybook_chart h3 {
@@ -4076,9 +4068,6 @@ Families */
 		z-index: 1;
 	}
 
-	#CB_All {
-		display: none;
-	}
 }
 
 /* Icons */
