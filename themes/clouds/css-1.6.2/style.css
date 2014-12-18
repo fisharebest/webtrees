@@ -1204,7 +1204,7 @@ td.descriptionbox div div div a {
 
 footer {
 	clear: both;
-	width: 99%;
+	text-align: center;
 }
 
 /* ======= Block styles ========== */
@@ -1936,13 +1936,8 @@ a:hover .nameZoom {
 	display: none;
 }
 
-.footer {
-	width: 99%;
-	direction: ltr;
-	text-align: center;
-}
-
 .contact_links {
+	margin: 15px 0;
 	text-align: center;
 }
 

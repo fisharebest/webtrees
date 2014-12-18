@@ -27,11 +27,9 @@ if (!defined('WT_WEBTREES')) {
 }
 
 echo '</main>';
-if ($view!='simple') {
-	echo '<footer class="', $TEXT_DIRECTION, '">';
-	echo '<br>';
+if ($view !== 'simple') {
+	echo '<footer>';
 	echo contact_links();
-	echo '<br>';
 	echo '<p class="logo">';
 	echo '<a href="', WT_WEBTREES_URL, '" target="_blank" class="icon-webtrees" title="', WT_WEBTREES, ' ', WT_VERSION, '"></a>';
 	echo '</p>';
