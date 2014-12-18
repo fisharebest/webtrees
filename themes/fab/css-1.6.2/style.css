@@ -182,15 +182,17 @@ header {
 	float: left;
 }
 
-#header-title {
-	font-size: x-large;
-	float: left;
+header h1 {
 	clear: left;
+	float: left;
+	font-size: x-large;
+	font-weight: normal;
+	margin: 0;
 }
 
-[dir=rtl] #header-title {
-	float: right;
+[dir=rtl] header h1 {
 	clear: right;
+	float: right;
 }
 
 #content {

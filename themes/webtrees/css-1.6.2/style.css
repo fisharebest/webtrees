@@ -905,17 +905,16 @@ a:hover .nameZoom {
 	font-weight: 600;
 }
 
-.title {
+header h1 {
 	clear: both;
 	font-size: 20px;
+	font-weight: normal;
 	float: left;
-	padding-left: 10px;
-	margin-bottom: 5px;
+	margin: 0 10px 5px;
 }
 
-[dir=rtl] .title {
+[dir=rtl] header h1 {
 	float: right;
-	padding-right: 10px;
 }
 
 .header_img {

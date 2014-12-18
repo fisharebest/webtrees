@@ -83,16 +83,16 @@ textarea:required:invalid {
 	background: #039 url(images/cabeza.png) left top;
 }
 
-.title {
+header h1 {
 	display: block;
 	float: left;
-	margin-top: 10px;
-	margin-left: 12px;
+	margin: 10px 12px;
 	font-size: 24px;
+	font-weight: normal;
 }
 
-.title a:hover {
-	color: #fff;
+[dir=rtl] header h1 {
+	float: right;
 }
 
 .hsearch {
@@ -107,11 +107,6 @@ textarea:required:invalid {
 	background: url(images/cabeza_rtl.png) right top;
 }
 
-[dir=rtl] .title {
-	float: right;
-	margin-right: 12px;
-}
-
 [dir=rtl] .hsearch {
 	float: left;
 	padding-left: 10px;
@@ -121,8 +116,7 @@ textarea:required:invalid {
 	margin: 0;
 }
 
-#header,
-.gedcomtitle {
+#header {
 	color: #fff;
 }
 

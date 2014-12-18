@@ -60,9 +60,7 @@ $this
 <body id="body">
 	<?php if ($view !== 'simple') { ?>
 	<header>
-		<div id="header-title" dir="auto">
-			<?php echo WT_TREE_TITLE; ?>
-		</div>
+		<h1><?php echo WT_TREE_TITLE; ?></h1>
 		<div id="header-user-links">
 			<ul class="makeMenu">
 				<?php

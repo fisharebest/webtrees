@@ -78,9 +78,7 @@ foreach (WT_MenuBar::getModuleMenus() as $menu) {
 	<header>
 		<div id="header">
 			<div class="header">
-				<span class="title" dir="auto">
-					<?php echo WT_TREE_TITLE; ?>
-				</span>
+				<h1><?php echo WT_TREE_TITLE; ?></h1>
 				<div class="hsearch">
 					<form style="display:inline;" action="search.php" method="post" role="search">
 						<input type="hidden" name="action" value="general">

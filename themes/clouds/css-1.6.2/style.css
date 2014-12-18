@@ -63,14 +63,16 @@ td {
 	z-index: 210;
 }
 
-.title {
+header h1 {
 	color: #039;
 	float: left;
 	font-size: 20px;
-	margin-left: 12px;
-	margin-top: 5px;
-	vertical-align: middle;
-	width: 70%;
+	font-weight: normal;
+	margin: 5px 12px 0;
+}
+
+[dir=rtl] header h1 {
+	float: right;
 }
 
 .hsearch {
@@ -83,11 +85,6 @@ td {
 #header-user-links {
 	float: right;
 	margin-right: 20px;
-}
-
-[dir=rtl] .title {
-	float: right;
-	margin-right: 12px;
 }
 
 [dir=rtl] .hsearch {
@@ -1808,16 +1805,30 @@ div.fact_SHARED_NOTE {
 }
 
 .name1,
-.name2,
-.nameZoom {
-	font-weight: bold;
+.name2 {
+	font-weight: 700;
+	overflow: hidden;
+	font-size: 12px;
 }
 
 a:hover .name1,
-a:hover.name2,
-a:hover .nameZoom {
+a:hover .name2 {
 	color: #f00;
-	font-weight: bold;
+	font-weight: 700;
+	font-size: 12px;
+}
+
+.nameZoom {
+	font-size: 14px;
+	text-decoration: none;
+	font-weight: 700;
+	overflow: hidden;
+}
+
+a:hover .nameZoom {
+	font-size: 14px;
+	color: #f00;
+	font-weight: 700;
 }
 
 .details0,
