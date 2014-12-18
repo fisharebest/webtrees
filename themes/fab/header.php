@@ -85,9 +85,7 @@ $this
 				</li>
 			</ul>
 		</div>
-		<div id="header-title" dir="auto">
-			<?php echo WT_TREE_TITLE; ?>
-		</div>
+		<h1><?php echo WT_TREE_TITLE; ?></h1>
 		<nav>
 			<ul id="main-menu" role="menubar">
 				<?php echo WT_MenuBar::getGedcomMenu();   ?>
