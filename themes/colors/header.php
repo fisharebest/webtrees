@@ -71,6 +71,7 @@ foreach (WT_MenuBar::getModuleMenus() as $menu) {
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<?php echo header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL); ?>
 	<title><?php echo WT_Filter::escapeHtml($title); ?></title>
 	<link rel="icon" href="<?php echo WT_CSS_URL; ?>favicon.png" type="image/png">
@@ -78,13 +79,11 @@ foreach (WT_MenuBar::getModuleMenus() as $menu) {
 	<link rel="stylesheet" type="text/css" href="<?php echo WT_CSS_URL; ?>css/colors.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo WT_CSS_URL; ?>css/<?php echo $subColor; ?>.css">
 	<?php if (stristr($_SERVER['HTTP_USER_AGENT'], 'iPad')) { ?>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.8, maximum-scale=2.0" />
 	<link type="text/css" rel="stylesheet" href="<?php echo WT_CSS_URL; ?>ipad.css">
-	<?php } elseif (stristr($_SERVER['HTTP_USER_AGENT'], 'MSIE') || stristr($_SERVER['HTTP_USER_AGENT'], 'Trident')) { ?>
-		<!--[if IE 8]>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
-		<![endif]-->
-#	<?php } ?>
+	<?php } ?>
+	<!--[if IE 8]>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+	<![endif]-->
 </head>
 <body id="body">
 	<?php if ($view !== 'simple') { ?>
