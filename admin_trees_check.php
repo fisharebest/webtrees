@@ -228,7 +228,7 @@ function format_link($xref) {
 }
 
 /**
- * @param $type
+ * @param string $type
  *
  * @return string
  */

@@ -47,9 +47,7 @@ class WT_Repository extends WT_GedcomRecord {
 		}
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	protected static function fetchGedcomRecord($xref, $gedcom_id) {
 		static $statement = null;
 
@@ -60,16 +58,12 @@ class WT_Repository extends WT_GedcomRecord {
 		return $statement->execute(array($xref, $gedcom_id))->fetchOne();
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	protected function createPrivateGedcomRecord($access_level) {
 		return '0 @' . $this->xref . "@ REPO\n1 NAME " . WT_I18N::translate('Private');
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	public function extractNames() {
 		parent::_extractNames(1, 'NAME', $this->getFacts('NAME'));
 	}

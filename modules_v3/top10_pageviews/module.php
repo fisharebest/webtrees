@@ -64,9 +64,12 @@ class top10_pageviews_WT_Module extends WT_Module implements WT_Module_Block {
 		$top10=WT_DB::prepare(
 			"SELECT page_parameter, page_count".
 			" FROM `##hit_counter`".
-			" WHERE gedcom_id=? AND page_name IN ('individual.php','family.php','source.php','repo.php','note.php','mediaviewer.php')".
-			" ORDER BY page_count DESC LIMIT ".$num
-		)->execute(array(WT_GED_ID))->FetchAssoc();
+			" WHERE gedcom_id = :tree_id AND page_name IN ('individual.php','family.php','source.php','repo.php','note.php','mediaviewer.php')".
+			" ORDER BY page_count DESC LIMIT :limit"
+		)->execute(array(
+			'tree_id' => WT_GED_ID,
+			'limit'   => $num,
+		))->FetchAssoc();
 
 
 		if ($block) {

@@ -33,13 +33,13 @@ body {
 	font: 12px tahoma, arial, helvetica, sans-serif;
 }
 
-#clouds-container {
+header {
 	background-color: #fff;
 	border: 1px solid #039;
 	margin: 10px;
 }
 
-#content {
+main {
 	padding: 10px;
 }
 
@@ -63,14 +63,16 @@ td {
 	z-index: 210;
 }
 
-.title {
+header h1 {
 	color: #039;
 	float: left;
 	font-size: 20px;
-	margin-left: 12px;
-	margin-top: 5px;
-	vertical-align: middle;
-	width: 70%;
+	font-weight: normal;
+	margin: 5px 12px 0;
+}
+
+[dir=rtl] header h1 {
+	float: right;
 }
 
 .hsearch {
@@ -80,14 +82,9 @@ td {
 	padding-top: 5px;
 }
 
-#menu-right {
+#header-user-links {
 	float: right;
 	margin-right: 20px;
-}
-
-[dir=rtl] .title {
-	float: right;
-	margin-right: 12px;
 }
 
 [dir=rtl] .hsearch {
@@ -95,7 +92,7 @@ td {
 	padding-left: 10px;
 }
 
-[dir=rtl] #menu-right {
+[dir=rtl] #header-user-links {
 	float: left;
 	margin-left: 20px;
 }
@@ -148,7 +145,7 @@ td {
 	display: block;
 	position: absolute;
 	top: 0;
-	white-space: no wrap;
+	white-space: nowrap;
 	left: 100%;
 	right: auto;
 }
@@ -954,9 +951,9 @@ td {
 }
 
 /* ===== */
-/* Right Options Menu */
+/* User Links Menu */
 
-#menu-right {
+#header-user-links {
 	float: right;
 	margin: 10px 10px 4px 0;
 }
@@ -975,7 +972,7 @@ td {
 	background-color: #eee;
 	border: thin solid #aaa;
 	display: none;
-	left: 10px;
+	left: 0;
 	position: absolute;
 	top: 1.1em !important;
 }
@@ -1040,7 +1037,7 @@ li a.link {
 
 [dir=rtl] .makeMenu li ul {
 	left: auto;
-	right: -10px !important;
+	right: -20px !important;
 }
 
 [dir=rtl] .makeMenu li ul li {
@@ -1205,9 +1202,9 @@ td.descriptionbox div div div a {
 	background: #ffc;
 }
 
-#footer {
+footer {
 	clear: both;
-	width: 99%;
+	text-align: center;
 }
 
 /* ======= Block styles ========== */
@@ -1808,16 +1805,30 @@ div.fact_SHARED_NOTE {
 }
 
 .name1,
-.name2,
-.nameZoom {
-	font-weight: bold;
+.name2 {
+	font-weight: 700;
+	overflow: hidden;
+	font-size: 12px;
 }
 
 a:hover .name1,
-a:hover.name2,
-a:hover .nameZoom {
+a:hover .name2 {
 	color: #f00;
-	font-weight: bold;
+	font-weight: 700;
+	font-size: 12px;
+}
+
+.nameZoom {
+	font-size: 14px;
+	text-decoration: none;
+	font-weight: 700;
+	overflow: hidden;
+}
+
+a:hover .nameZoom {
+	font-size: 14px;
+	color: #f00;
+	font-weight: 700;
 }
 
 .details0,
@@ -1925,13 +1936,8 @@ a:hover .nameZoom {
 	display: none;
 }
 
-.footer {
-	width: 99%;
-	direction: ltr;
-	text-align: center;
-}
-
 .contact_links {
+	margin: 15px 0;
 	text-align: center;
 }
 
@@ -4257,16 +4263,17 @@ span.link_text {
 }
 
 @media print {
-	#clouds-container {
-		border: 0;
-	}
-
 	#content {
 		padding: 0;
 	}
 
-	#header,
-	#footer,
+	#backprint,
+	#sidebar,
+	#CB_All,
+	#separator,
+	header,
+	footer,
+	form,
 	.noprint {
 		display: none !important;
 	}
@@ -4282,20 +4289,6 @@ span.link_text {
 	[dir=rtl] #pedigree_chart {
 		left: auto;
 		right: -80px;
-	}
-
-	#topMenu,
-	#header select,
-	#header input,
-	#footer select,
-	#backprint,
-	#sidebar,
-	form,
-	button,
-	input,
-	#CB_All,
-	#separator {
-		display: none;
 	}
 
 	#familybook_chart h3 {

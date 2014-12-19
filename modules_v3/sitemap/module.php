@@ -77,29 +77,39 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 			$lastmod = '<lastmod>' . date('Y-m-d') . '</lastmod>';
 			foreach (WT_Tree::getAll() as $tree) {
 				if ($tree->getPreference('include_in_sitemap')) {
-					$n = WT_DB::prepare("SELECT COUNT(*) FROM `##individuals` WHERE i_file=?")->execute(array($tree->tree_id))->fetchOne();
+					$n = WT_DB::prepare(
+						"SELECT COUNT(*) FROM `##individuals` WHERE i_file = :tree_id"
+					)->execute(array('tree_id' => $tree->tree_id))->fetchOne();
 					for ($i = 0; $i <= $n / self::RECORDS_PER_VOLUME; ++$i) {
 						$data .= '<sitemap><loc>' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'module.php?mod=' . $this->getName() . '&amp;mod_action=generate&amp;file=sitemap-' . $tree->tree_id . '-i-' . $i . '.xml</loc>' . $lastmod . '</sitemap>' . PHP_EOL;
 					}
-					$n = WT_DB::prepare("SELECT COUNT(*) FROM `##sources` WHERE s_file=?")->execute(array($tree->tree_id))->fetchOne();
+					$n = WT_DB::prepare(
+						"SELECT COUNT(*) FROM `##sources` WHERE s_file = :tree_id"
+					)->execute(array('tree_id' => $tree->tree_id))->fetchOne();
 					if ($n) {
 						for ($i = 0; $i <= $n / self::RECORDS_PER_VOLUME; ++$i) {
 							$data .= '<sitemap><loc>' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'module.php?mod=' . $this->getName() . '&amp;mod_action=generate&amp;file=sitemap-' . $tree->tree_id . '-s-' . $i . '.xml</loc>' . $lastmod . '</sitemap>' . PHP_EOL;
 						}
 					}
-					$n = WT_DB::prepare("SELECT COUNT(*) FROM `##other` WHERE o_file=? AND o_type='REPO'")->execute(array($tree->tree_id))->fetchOne();
+					$n = WT_DB::prepare(
+						"SELECT COUNT(*) FROM `##other` WHERE o_file = :tree_id AND o_type = 'REPO'"
+					)->execute(array('tree_id' => $tree->tree_id))->fetchOne();
 					if ($n) {
 						for ($i = 0; $i <= $n / self::RECORDS_PER_VOLUME; ++$i) {
 							$data .= '<sitemap><loc>' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'module.php?mod=' . $this->getName() . '&amp;mod_action=generate&amp;file=sitemap-' . $tree->tree_id . '-r-' . $i . '.xml</loc>' . $lastmod . '</sitemap>' . PHP_EOL;
 						}
 					}
-					$n = WT_DB::prepare("SELECT COUNT(*) FROM `##other` WHERE o_file=? AND o_type='NOTE'")->execute(array($tree->tree_id))->fetchOne();
+					$n = WT_DB::prepare(
+						"SELECT COUNT(*) FROM `##other` WHERE o_file = :tree_id AND o_type = 'NOTE'"
+					)->execute(array('tree_id' => $tree->tree_id))->fetchOne();
 					if ($n) {
 						for ($i = 0; $i <= $n / self::RECORDS_PER_VOLUME; ++$i) {
 							$data .= '<sitemap><loc>' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'module.php?mod=' . $this->getName() . '&amp;mod_action=generate&amp;file=sitemap-' . $tree->tree_id . '-n-' . $i . '.xml</loc>' . $lastmod . '</sitemap>' . PHP_EOL;
 						}
 					}
-					$n = WT_DB::prepare("SELECT COUNT(*) FROM `##media` WHERE m_file=?")->execute(array($tree->tree_id))->fetchOne();
+					$n = WT_DB::prepare(
+						"SELECT COUNT(*) FROM `##media` WHERE m_file = :tree_id"
+					)->execute(array('tree_id' => $tree->tree_id))->fetchOne();
 					if ($n) {
 						for ($i = 0; $i <= $n / self::RECORDS_PER_VOLUME; ++$i) {
 							$data .= '<sitemap><loc>' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'module.php?mod=' . $this->getName() . '&amp;mod_action=generate&amp;file=sitemap-' . $tree->tree_id . '-m-' . $i . '.xml</loc>' . $lastmod . '</sitemap>' . PHP_EOL;
@@ -139,10 +149,14 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 				$rows = WT_DB::prepare(
 					"SELECT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom" .
 					" FROM `##individuals`" .
-					" WHERE i_file=?" .
+					" WHERE i_file = :tree_id" .
 					" ORDER BY i_id" .
-					" LIMIT " . self::RECORDS_PER_VOLUME . " OFFSET " . ($volume * self::RECORDS_PER_VOLUME)
-				)->execute(array($ged_id))->fetchAll();
+					" LIMIT :limit OFFSET :offset"
+				)->execute(array(
+					'tree_id' => $ged_id,
+					'limit'   => self::RECORDS_PER_VOLUME,
+					'offset'  => self::RECORDS_PER_VOLUME * $volume,
+				))->fetchAll();
 				foreach ($rows as $row) {
 					$records[] = WT_Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 				}
@@ -151,10 +165,14 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 				$rows = WT_DB::prepare(
 					"SELECT s_id AS xref, s_file AS gedcom_id, s_gedcom AS gedcom" .
 					" FROM `##sources`" .
-					" WHERE s_file=?" .
+					" WHERE s_file = :tree_id" .
 					" ORDER BY s_id" .
-					" LIMIT " . self::RECORDS_PER_VOLUME . " OFFSET " . ($volume * self::RECORDS_PER_VOLUME)
-				)->execute(array($ged_id))->fetchAll();
+					" LIMIT :limit OFFSET :offset"
+				)->execute(array(
+					'tree_id' => $ged_id,
+					'limit'   => self::RECORDS_PER_VOLUME,
+					'offset'  => self::RECORDS_PER_VOLUME * $volume,
+				))->fetchAll();
 				foreach ($rows as $row) {
 					$records[] = WT_Source::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 				}
@@ -163,10 +181,14 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 				$rows = WT_DB::prepare(
 					"SELECT o_id AS xref, o_file AS gedcom_id, o_gedcom AS gedcom" .
 					" FROM `##other`" .
-					" WHERE o_file=? AND o_type='REPO'" .
+					" WHERE o_file = :tree_id AND o_type = 'REPO'" .
 					" ORDER BY o_id" .
-					" LIMIT " . self::RECORDS_PER_VOLUME . " OFFSET " . ($volume * self::RECORDS_PER_VOLUME)
-				)->execute(array($ged_id))->fetchAll();
+					" LIMIT :limit OFFSET :offset"
+				)->execute(array(
+					'tree_id' => $ged_id,
+					'limit'   => self::RECORDS_PER_VOLUME,
+					'offset'  => self::RECORDS_PER_VOLUME * $volume,
+				))->fetchAll();
 				foreach ($rows as $row) {
 					$records[] = WT_Repository::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 				}
@@ -175,10 +197,14 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 				$rows = WT_DB::prepare(
 					"SELECT o_id AS xref, o_file AS gedcom_id, o_gedcom AS gedcom" .
 					" FROM `##other`" .
-					" WHERE o_file=? AND o_type='NOTE'" .
+					" WHERE o_file = :tree_id AND o_type = 'NOTE'" .
 					" ORDER BY o_id" .
-					" LIMIT " . self::RECORDS_PER_VOLUME . " OFFSET " . ($volume * self::RECORDS_PER_VOLUME)
-				)->execute(array($ged_id))->fetchAll();
+					" LIMIT :limit OFFSET :offset"
+				)->execute(array(
+					'tree_id' => $ged_id,
+					'limit'   => self::RECORDS_PER_VOLUME,
+					'offset'  => self::RECORDS_PER_VOLUME * $volume,
+				))->fetchAll();
 				foreach ($rows as $row) {
 					$records[] = WT_Note::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 				}
@@ -187,10 +213,14 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 				$rows = WT_DB::prepare(
 					"SELECT m_id AS xref, m_file AS gedcom_id, m_gedcom AS gedcom" .
 					" FROM `##media`" .
-					" WHERE m_file=?" .
+					" WHERE m_file = :tree_id" .
 					" ORDER BY m_id" .
-					" LIMIT " . self::RECORDS_PER_VOLUME . " OFFSET " . ($volume * self::RECORDS_PER_VOLUME)
-				)->execute(array($ged_id))->fetchAll();
+					" LIMIT :limit OFFSET :offset"
+				)->execute(array(
+					'tree_id' => $ged_id,
+					'limit'   => self::RECORDS_PER_VOLUME,
+					'offset'  => self::RECORDS_PER_VOLUME * $volume,
+				))->fetchAll();
 				foreach ($rows as $row) {
 					$records[] = WT_Media::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 				}

@@ -45,8 +45,12 @@ class WT_Place {
 		$place_id = 0;
 		foreach (array_reverse($this->gedcom_place) as $place) {
 			$place_id = WT_DB::prepare(
-				"SELECT SQL_CACHE p_id FROM `##places` WHERE p_parent_id=? AND p_place=? AND p_file=?"
-			)->execute(array($place_id, $place, $this->gedcom_id))->fetchOne();
+				"SELECT SQL_CACHE p_id FROM `##places` WHERE p_parent_id = :parent_id AND p_place = :place AND p_file = :tree_id"
+			)->execute(array(
+				'parent_id' => $place_id,
+				'place'     => $place,
+				'tree_id'   => $this->gedcom_id,
+			))->fetchOne();
 		}
 
 		return $place_id;
@@ -70,10 +74,15 @@ class WT_Place {
 			$parent_text = '';
 		}
 
-		$rows =
-			WT_DB::prepare("SELECT SQL_CACHE p_place FROM `##places` WHERE p_parent_id=? AND p_file=? ORDER BY p_place COLLATE '".WT_I18N::$collation."'")
-			->execute(array($this->getPlaceId(), $this->gedcom_id))
-			->fetchOneColumn();
+		$rows = WT_DB::prepare(
+			"SELECT SQL_CACHE p_place FROM `##places`" .
+			" WHERE p_parent_id = :parent_id AND p_file = :tree_id" .
+			" ORDER BY p_place COLLATE :collation"
+		)->execute(array(
+			'parent_id' => $this->getPlaceId(),
+			'tree_id'   => $this->gedcom_id,
+			'collation' => WT_I18N::$collation,
+		))->fetchOneColumn();
 		foreach ($rows as $row) {
 			$children[] = new WT_Place($row . $parent_text, $this->gedcom_id);
 		}

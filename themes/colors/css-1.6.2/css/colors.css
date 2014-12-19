@@ -151,21 +151,23 @@ textarea:required:invalid {
 	height: 50px;
 }
 
-span.title {
+header h1 {
 	float: left;
 	font-size: 24px;
-	margin: 16px 0 3px 12px;
+	font-weight: normal;
+	margin: 16px 12px 3px;
 }
 
-[dir=rtl] span.title {
+[dir=rtl] header h1 {
 	float: right;
-	margin: 16px 12px 3px 3px;
+	margin: 16px 12px 3px;
 }
 
 /* Options Menu */
 .makeMenu {
 	float: right;
 	margin: 21px 10px 0 0;
+	white-space: nowrap;
 }
 
 .makeMenu ul {
@@ -1104,12 +1106,12 @@ span.title {
 }
 
 /* families */
-#content {
+main {
 	clear: both;
 	padding: 10px 10px 0;
 }
 
-#content .center a {
+main .center a {
 	font-size: 13px;
 }
 
@@ -1117,7 +1119,7 @@ span.title {
 	margin: 12px 0;
 }
 
-#content .center a.warning,
+main .center a.warning,
 #login-box span.error,
 #calendar-page span.error {
 	color: #f50;
@@ -1148,9 +1150,9 @@ div.error {
 	color: #333;
 }
 
-#footer {
+footer {
 	clear: both;
-	width: 99%;
+	text-align: center;
 }
 
 #index .user_messages td {
@@ -1764,12 +1766,14 @@ div.fact_SHARED_NOTE {
 .name2 {
 	font-weight: 700;
 	overflow: hidden;
+	font-size: 12px;
 }
 
 a:hover .name1,
 a:hover .name2 {
 	color: #f00;
 	font-weight: 700;
+	font-size: 12px;
 }
 
 .nameZoom {
@@ -1808,6 +1812,7 @@ a:hover .nameZoom {
 }
 
 .contact_links {
+	margin: 30px 0 15px;
 	text-align: center;
 }
 
@@ -1818,12 +1823,6 @@ a:hover .nameZoom {
 
 .date {
 	color: #333;
-}
-
-.footer {
-	direction: ltr;
-	text-align: center;
-	width: 99%;
 }
 
 .gender_image {
@@ -2004,13 +2003,13 @@ button,
 textarea {
 	border-color: #fff #494949 #494949 #fff;
 	border-width: 1px;
-	font-size: 12px;
+	font-size: 13px;
 	font-family: inherit;
 }
 
 input,
 textarea {
-	padding: 0 3px;
+	padding: 3px;
 }
 
 .optionbox {
@@ -4064,30 +4063,17 @@ span.link_text {
 
 @media print {
 	form,
-	button,
-	input {
-		display: none;
-	}
-
-	#header select,
-	#header input,
-	#footer select,
 	#backprint,
 	#sidebar,
 	#main-menu,
-	#separator {
-		display: none;
-	}
-
-	#header,
-	#footer,
+	#separator,
+	header,
+	footer,
+	#CB_All,
 	.noprint {
 		display: none !important;
 	}
 
-	#CB_All {
-		display: none;
-	}
 
 	#familybook_chart h3 {
 		margin-bottom: 10px;

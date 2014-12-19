@@ -26,7 +26,7 @@ msgstr ""
 #: modules_v3/ahnentafel_report/report.xml:333
 #: modules_v3/ahnentafel_report/report.xml:364
 msgid " but the details are unknown"
-msgstr ""
+msgstr " aga detailid on teadmata"
 
 #: modules_v3/ahnentafel_report/report.xml:156
 #: modules_v3/ahnentafel_report/report.xml:184
@@ -43,7 +43,7 @@ msgstr ""
 #: modules_v3/descendancy_report/report.xml:421
 #: modules_v3/descendancy_report/report.xml:452
 msgid " in "
-msgstr ""
+msgstr "selles"
 
 #: statisticsplot.php:825
 msgid " per gender"
@@ -64,16 +64,17 @@ msgstr "#%s"
 #, php-format
 msgid "%1$d individual displayed, out of the normal total of %2$d, from %3$d generations."
 msgid_plural "%1$d individuals displayed, out of the normal total of %2$d, from %3$d generations."
-msgstr[0] ""
+msgstr[0] "%1$d isik kuvatud, kõigist võimalikest %2$d, seda %3$d põlvkonnast."
 msgstr[1] ""
+"%1$d isikut kuvatud, kõigist võimalikest %2$d, seda %3$d põlvkonnast."
 
 #. I18N: %1$d is a count of individuals, %2$s is a list of their names
 #: modules_v3/googlemap/module.php:882
 #, php-format
 msgid "%1$d individual is missing birthplace map coordinates: %2$s."
 msgid_plural "%1$d individuals are missing birthplace map coordinates: %2$s."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1$d isikul on sünnikoht määramata: %2$s."
+msgstr[1] "%1$d isikul on sünnikoht määramata: %2$s."
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:799
@@ -166,7 +167,7 @@ msgstr ""
 #: admin_media.php:466 library/WT/Media.php:377
 #, php-format
 msgid "%1$s × %2$s pixels"
-msgstr ""
+msgstr "%1$s × %2$s pikslit"
 
 #. I18N: A range of years, e.g. “1870–”, “1870–1920”, “–1920”
 #: library/WT/Individual.php:520
@@ -254,37 +255,37 @@ msgstr ""
 #, php-format
 msgid "%s child"
 msgid_plural "%s children"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s laps"
+msgstr[1] "%s lapsi"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: includes/functions/functions_date.php:56 library/WT/I18N.php:550
 #, php-format
 msgid "%s day"
 msgid_plural "%s days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s päev"
+msgstr[1] "%s päeva"
 
 #: library/WT/I18N.php:597
 #, php-format
 msgid "%s day ago"
 msgid_plural "%s days ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s päev tagasi"
+msgstr[1] "%s päeva tagasi"
 
 #: library/WT/Stats.php:4711 library/WT/Stats.php:4715
 #, php-format
 msgid "%s grandchild"
 msgid_plural "%s grandchildren"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s lapselaps"
+msgstr[1] "%s lapselast"
 
 #: library/WT/I18N.php:600
 #, php-format
 msgid "%s hour ago"
 msgid_plural "%s hours ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s tund tagasi"
+msgstr[1] "%s tundi tagasi"
 
 #: lifespan.php:197
 #, php-format
@@ -311,29 +312,29 @@ msgstr ""
 msgid "%s message"
 msgid_plural "%s messages"
 msgstr[0] "%s sõnum"
-msgstr[1] "%s sõnumid"
+msgstr[1] "%s sõnumit"
 
 #: library/WT/I18N.php:603
 #, php-format
 msgid "%s minute ago"
 msgid_plural "%s minutes ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s minut tagasi"
+msgstr[1] "%s minutit tagasi"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: includes/functions/functions_date.php:52 library/WT/I18N.php:542
 #, php-format
 msgid "%s month"
 msgid_plural "%s months"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s kuu"
+msgstr[1] "%s kuud"
 
 #: library/WT/I18N.php:594
 #, php-format
 msgid "%s month ago"
 msgid_plural "%s months ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s kuu tagasi"
+msgstr[1] "%s kuud tagasi"
 
 #: statisticsplot.php:768
 #, php-format
@@ -356,8 +357,8 @@ msgstr ""
 #, php-format
 msgid "%s second ago"
 msgid_plural "%s seconds ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s sekund tagasi"
+msgstr[1] "%s sekundit tagasi"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: includes/functions/functions.php:2278
@@ -388,46 +389,46 @@ msgstr ""
 #, php-format
 msgid "%s week"
 msgid_plural "%s weeks"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s nädal"
+msgstr[1] "%s nädalat"
 
 #: includes/functions/functions_date.php:47 library/WT/I18N.php:536
 #, php-format
 msgid "%s year"
 msgid_plural "%s years"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s aasta"
+msgstr[1] "%s aastat"
 
 #: library/WT/I18N.php:591
 #, php-format
 msgid "%s year ago"
 msgid_plural "%s years ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s aasta tagasi"
+msgstr[1] "%s aastat tagasi"
 
 #: calendar.php:660 includes/functions/functions_print_lists.php:2108
 #: modules_v3/yahrzeit/module.php:118
 #, php-format
 msgid "%s year anniversary"
-msgstr "%s. aastapäev"
+msgstr "%s aastapäev"
 
 #. I18N: This is a percentage, such as “32.5%”. “%s” is the number, “%%” is the percent symbol.  Some languages require a (non-breaking) space between the two, or a different symbol.
 #: library/WT/I18N.php:439
 #, php-format
 msgid "%s%%"
-msgstr ""
+msgstr "%s%%"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0.  See http://en.wikipedia.org/wiki/Common_Era
 #: library/WT/Date/Julian.php:80
 #, php-format
 msgid "%s&nbsp;BCE"
-msgstr ""
+msgstr "%s&nbsp;BCE"
 
 #. I18N: CE=Common Era, for Julian years > 0.  See http://en.wikipedia.org/wiki/Common_Era
 #: library/WT/Date/Julian.php:83 library/WT/Date/Julian.php:86
 #, php-format
 msgid "%s&nbsp;CE"
-msgstr ""
+msgstr "%s&nbsp;CE"
 
 #. I18N: first/default option in a drop-down listbox
 #: includes/functions/functions_print.php:971
@@ -458,7 +459,7 @@ msgstr "(vanem kui %s)"
 #: library/WT/I18N.php:936
 #, php-format
 msgid "(filtered from %s total entries)"
-msgstr ""
+msgstr "(filtreeritud %s ridadest)"
 
 #. I18N: Description of an individual’s age at an event.  For example, Died 14 Jan 1900 (in childhood)
 #: library/WT/I18N.php:530
@@ -478,112 +479,112 @@ msgstr "(surnult sündinud)"
 #. I18N: This punctuation is used to separate lists of items.
 #: library/WT/I18N.php:305
 msgid ", "
-msgstr ""
+msgstr ","
 
 #: library/WT/Stats.php:6316
 msgctxt "CENTURY"
 msgid "10th"
-msgstr ""
+msgstr "10's"
 
 #: library/WT/Stats.php:6314
 msgctxt "CENTURY"
 msgid "11th"
-msgstr ""
+msgstr "11's"
 
 #: library/WT/Stats.php:6312
 msgctxt "CENTURY"
 msgid "12th"
-msgstr ""
+msgstr "12's"
 
 #: library/WT/Stats.php:6310
 msgctxt "CENTURY"
 msgid "13th"
-msgstr ""
+msgstr "13's"
 
 #: library/WT/Stats.php:6308
 msgctxt "CENTURY"
 msgid "14th"
-msgstr ""
+msgstr "14's"
 
 #: library/WT/Stats.php:6306
 msgctxt "CENTURY"
 msgid "15th"
-msgstr ""
+msgstr "15's"
 
 #: library/WT/Stats.php:6304
 msgctxt "CENTURY"
 msgid "16th"
-msgstr ""
+msgstr "16's"
 
 #: library/WT/Stats.php:6302
 msgctxt "CENTURY"
 msgid "17th"
-msgstr ""
+msgstr "17's"
 
 #: library/WT/Stats.php:6300
 msgctxt "CENTURY"
 msgid "18th"
-msgstr ""
+msgstr "18's"
 
 #: library/WT/Stats.php:6298
 msgctxt "CENTURY"
 msgid "19th"
-msgstr ""
+msgstr "19's"
 
 #: library/WT/Stats.php:6334
 msgctxt "CENTURY"
 msgid "1st"
-msgstr ""
+msgstr "1'ne"
 
 #: library/WT/Stats.php:6296
 msgctxt "CENTURY"
 msgid "20th"
-msgstr ""
+msgstr "20's"
 
 #: library/WT/Stats.php:6294
 msgctxt "CENTURY"
 msgid "21st"
-msgstr ""
+msgstr "21's"
 
 #: library/WT/Stats.php:6332
 msgctxt "CENTURY"
 msgid "2nd"
-msgstr ""
+msgstr "2'ne"
 
 #: library/WT/Stats.php:6330
 msgctxt "CENTURY"
 msgid "3rd"
-msgstr ""
+msgstr "3'ne"
 
 #: library/WT/Stats.php:6328
 msgctxt "CENTURY"
 msgid "4th"
-msgstr ""
+msgstr "4'ne"
 
 #: library/WT/Stats.php:6326
 msgctxt "CENTURY"
 msgid "5th"
-msgstr ""
+msgstr "5'ne"
 
 #: library/WT/Stats.php:6324
 msgctxt "CENTURY"
 msgid "6th"
-msgstr ""
+msgstr "6'ne"
 
 #: library/WT/Stats.php:6322
 msgctxt "CENTURY"
 msgid "7th"
-msgstr ""
+msgstr "7'ne"
 
 #: library/WT/Stats.php:6320
 msgctxt "CENTURY"
 msgid "8th"
-msgstr ""
+msgstr "8'ne"
 
 #: library/WT/Stats.php:6318
 msgctxt "CENTURY"
 msgid "9th"
-msgstr ""
+msgstr "9'ne"
 
 #: help_text.php:559
 msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM file originates.  The goal of the Family History Center is to have a central repository of genealogical data and expose it through web services.  This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM file with anyone else, you do not need to let webtrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM file."
@@ -617,7 +618,7 @@ msgstr "<center><b>Tere tulemast sellele Genealoogia veebilehele</b></center><br
 #: admin_trees_config.php:481 admin_users.php:204 admin_users.php:411
 #: edituser.php:163
 msgid "<default theme>"
-msgstr ""
+msgstr "<vaiketeema>"
 
 #: login.php:406
 msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div>"
@@ -753,81 +754,81 @@ msgstr ""
 #: modules_v3/pedigree_report/module.php:35
 #: modules_v3/pedigree_report/report.xml:4
 msgid "A report of an individual’s ancestors, formatted as a tree."
-msgstr ""
+msgstr "Väljavõte isiku esivanematest, näidatuna puu vaates."
 
 #. I18N: Description of the “Ancestors” module
 #: modules_v3/ahnentafel_report/module.php:35
 #: modules_v3/ahnentafel_report/report.xml:5
 msgid "A report of an individual’s ancestors, in a narrative style."
-msgstr ""
+msgstr "Väljavõte isiku esivanematest jutustavas laadis."
 
 #. I18N: Description of the “Descendants” module
 #: modules_v3/descendancy_report/module.php:35
 #: modules_v3/descendancy_report/report.xml:4
 msgid "A report of an individual’s descendants, in a narrative style."
-msgstr ""
+msgstr "Väljavõte isiku järeltulijatest jutustavas laadis."
 
 #. I18N: Description of the “Individual” module
 #: modules_v3/individual_report/module.php:35
 #: modules_v3/individual_report/report.xml:4
 msgid "A report of an individual’s details."
-msgstr ""
+msgstr "Väljavõte isiku detailidest."
 
 #: modules_v3/fact_sources/report.xml:4
 msgid "A report of facts which are supported by a given source."
-msgstr ""
+msgstr "Väljavõte faktidest etteantud andmete põhjal"
 
 #. I18N: Description of the “Family” module
 #: modules_v3/family_group_report/module.php:35
 #: modules_v3/family_group_report/report.xml:4
 msgid "A report of family members and their details."
-msgstr "Pereliikmete raport koos andmetega."
+msgstr "Pereliikmete väljavõte koos andmetega."
 
 #. I18N: Description of the “Deaths” module
 #: modules_v3/death_report/module.php:37 modules_v3/death_report/report.xml:4
 msgid "A report of individuals who died in a given time or place."
-msgstr ""
+msgstr "Väljavõte isikutest kes surid ette antud ajal või kohas."
 
 #. I18N: Description of the “Occupations” module
 #: modules_v3/occupation_report/module.php:35
 #: modules_v3/occupation_report/report.xml:4
 msgid "A report of individuals who had a given occupation."
-msgstr ""
+msgstr "Väljavõte isikutest kellel oli amet."
 
 #. I18N: Description of the “Births” module
 #: modules_v3/birth_report/module.php:35 modules_v3/birth_report/report.xml:4
 msgid "A report of individuals who were born in a given time or place."
-msgstr "Antud ajal või kohas sündinud isikute raport"
+msgstr "Väljavõte isikutest kes sündisid ette antud ajal või kohas."
 
 #. I18N: Description of the “Cemeteries” module
 #: modules_v3/cemetery_report/module.php:35
 #: modules_v3/cemetery_report/report.xml:4
 msgid "A report of individuals who were buried in a given place."
-msgstr ""
+msgstr "Väljavõte isikutest kes on maetud ette antud kohas."
 
 #. I18N: Description of the “Marriages” module
 #: modules_v3/marriage_report/module.php:35
 #: modules_v3/marriage_report/report.xml:4
 msgid "A report of individuals who were married in a given time or place."
-msgstr ""
+msgstr "Väljavõte isikutest kes abiellusid ette antud ajal või kohas."
 
 #. I18N: Description of the “Changes” module
 #: modules_v3/change_report/module.php:35
 #: modules_v3/change_report/report.xml:4
 msgid "A report of recent and pending changes."
-msgstr ""
+msgstr "Väljavõte hiljutistest või ootel muutustest."
 
 #. I18N: Description of the “Related families”
 #: modules_v3/individual_ext_report/module.php:35
 #: modules_v3/individual_ext_report/report.xml:4
 msgid "A report of the families that are closely related to an individual."
-msgstr ""
+msgstr "Väljavõte perekondadest kes on lähedases suguluses valitud isikuga."
 
 #. I18N: Description of the “Related individuals” module
 #: modules_v3/relative_ext_report/module.php:35
 #: modules_v3/relative_ext_report/report.xml:4
 msgid "A report of the individuals that are closely related to an individual."
-msgstr ""
+msgstr "Väljavõte isikutest kes on lähedas suguluses teise isikuga."
 
 #. I18N: Description of the “Source” module
 #: modules_v3/fact_sources/module.php:35
@@ -838,12 +839,12 @@ msgstr ""
 #: modules_v3/missing_facts_report/module.php:35
 #: modules_v3/missing_facts_report/report.xml:4
 msgid "A report of the information that is missing for an individual and their relatives."
-msgstr ""
+msgstr "Väljavõte infost mis on puudulik ühe isiku või tema sugulaste osas."
 
 #. I18N: Description of the “Vital records” module. “Vital records” are life events - birth/marriage/death
 #: modules_v3/bdm_report/module.php:35 modules_v3/bdm_report/report.xml:4
 msgid "A report of vital records for a given date or place."
-msgstr ""
+msgstr "Väljavõte erinevatest kirjetest ette antud ajal või kohas."
 
 #: help_text.php:1374
 msgid "A role is a set of access rights, which give permission to view data, change configuration settings, etc.  Access rights are assigned to roles, and roles are granted to users.  Each family tree can assign different access to each role, and users can have a different role in each family tree."
@@ -1112,7 +1113,7 @@ msgstr ""
 #: modules_v3/clippings/module.php:471
 #, php-format
 msgid "Add %s to the clippings cart"
-msgstr ""
+msgstr "Lisa %s väljalõigete lehele"
 
 #: edit_interface.php:561 modules_v3/relatives/module.php:375
 msgid "Add a child to create a one-parent family"
@@ -1175,7 +1176,7 @@ msgstr "Lisa uus kanne päevikusse"
 #: modules_v3/lightbox/module.php:68 modules_v3/media/module.php:80
 #: repo.php:137 source.php:154
 msgid "Add a new media object"
-msgstr ""
+msgstr "Lisa uus meediafail"
 
 #: edit_interface.php:638 family.php:110 modules_v3/relatives/module.php:302
 msgid "Add a new mother"
@@ -1199,7 +1200,7 @@ msgstr ""
 #: includes/functions/functions_edit.php:1139
 #: library/WT/Controller/Family.php:204 modules_v3/notes/module.php:101
 msgid "Add a new shared note"
-msgstr ""
+msgstr "Lisa uus jagatud märkus"
 
 #: modules_v3/relatives/module.php:253
 msgid "Add a new son or daughter"
@@ -1261,7 +1262,7 @@ msgstr ""
 
 #: lifespan.php:144 timeline.php:302
 msgid "Add another individual to the chart"
-msgstr ""
+msgstr "Lis mõni muu isik graafikule"
 
 #: modules_v3/clippings/help_text.php:31
 msgid "Add by ID"
@@ -1363,7 +1364,7 @@ msgstr ""
 
 #: modules_v3/clippings/module.php:317
 msgid "Add to clippings cart"
-msgstr ""
+msgstr "Lisa väljalõigete lehele"
 
 #. I18N: Menu option.  Add [the current page] to the list of favorites
 #: library/WT/Controller/Family.php:140
@@ -1371,7 +1372,7 @@ msgstr ""
 #: library/WT/Controller/Note.php:65 library/WT/Controller/Repository.php:85
 #: library/WT/Controller/Source.php:85 library/WT/MenuBar.php:502
 msgid "Add to favorites"
-msgstr ""
+msgstr "Lisa lemmikutesse"
 
 #: admin_site_other.php:33 admin_site_other.php:39
 #: themes/_administration/header.php:123
@@ -1585,7 +1586,7 @@ msgstr "Poja lapsendamine"
 #. I18N: gedcom tag CHRA
 #: library/WT/Gedcom/Tag.php:287
 msgid "Adult christening"
-msgstr ""
+msgstr "Täiskasvanu ristimine"
 
 #: modules_v3/googlemap/module.php:294
 msgid "Advanced"
@@ -1606,7 +1607,7 @@ msgstr "Täpsemad kohanimede faktid"
 #: library/WT/Controller/AdvancedSearch.php:37 library/WT/MenuBar.php:382
 #: search.php:218 search.php:225 search.php:228
 msgid "Advanced search"
-msgstr ""
+msgstr "Täpsem otsing"
 
 #: library/WT/Stats.php:6012
 msgid "Afghanistan"
@@ -1718,7 +1719,7 @@ msgstr "Alias"
 
 #: includes/functions/functions_print_lists.php:181
 msgid "Alive"
-msgstr ""
+msgstr "Elus"
 
 #. I18N: listbox option, e.g. “10,25,50,100,all”
 #: calendar.php:263 famlist.php:64 famlist.php:70 famlist.php:76
@@ -1879,27 +1880,27 @@ msgstr "Juhtus ootamatu andmebaasi viga."
 #: modules_v3/ahnentafel_report/module.php:29
 #: modules_v3/ahnentafel_report/report.xml:4
 msgid "Ancestors"
-msgstr ""
+msgstr "Esivanemad"
 
 #. I18N: gedcom tag ANCI
 #: library/WT/Gedcom/Tag.php:159
 msgid "Ancestors interest"
-msgstr ""
+msgstr "Esivanemate huvid"
 
 #: modules_v3/ahnentafel_report/report.xml:52
 msgid "Ancestors of "
-msgstr ""
+msgstr "Esivanemad isikule"
 
 #. I18N: %s is an individual’s name
 #: library/WT/Controller/Ancestry.php:77 library/WT/Controller/Ancestry.php:99
 #, php-format
 msgid "Ancestors of %s"
-msgstr ""
+msgstr "Esivanemad isikule %s"
 
 #. I18N: gedcom tag AFN
 #: library/WT/Gedcom/Tag.php:139
 msgid "Ancestral file number"
-msgstr ""
+msgstr "Sugupuu faili number"
 
 #: library/WT/Gedcom/Code/Temp.php:86
 msgid "Anchorage, Alaska"
@@ -2273,7 +2274,7 @@ msgstr "Abiellunute keskmine vanus sajandi lõikes"
 
 #: library/WT/Stats.php:2315 library/WT/Stats.php:2327
 msgid "Average age related to death century"
-msgstr ""
+msgstr "Keskmine vanus suremise järgi sajandi lõikes"
 
 #: library/WT/Stats.php:4420 modules_v3/gedcom_stats/module.php:176
 #: modules_v3/gedcom_stats/module.php:353 modules_v3/html/module.php:248
@@ -2362,28 +2363,28 @@ msgstr "Bangladesh"
 #. I18N: gedcom tag BAPM
 #: library/WT/Gedcom/Tag.php:183 modules_v3/missing_facts_report/report.xml:13
 msgid "Baptism"
-msgstr "Ristimine"
+msgstr "Baptistlik ristimine"
 
 #: library/WT/Gedcom/Tag.php:1018
 msgid "Baptism of a brother"
-msgstr "Venna ristimine"
+msgstr "Baptistlik venna ristimine"
 
 #: library/WT/Gedcom/Tag.php:977
 msgid "Baptism of a child"
-msgstr "Lapse ristimine"
+msgstr "Baptistlik lapse ristimine"
 
 #: library/WT/Gedcom/Tag.php:975
 msgid "Baptism of a daughter"
-msgstr "Tütre ristimine"
+msgstr "Baptistlik tütre ristimine"
 
 #: library/WT/Gedcom/Tag.php:986 library/WT/Gedcom/Tag.php:995
 #: library/WT/Gedcom/Tag.php:1004
 msgid "Baptism of a grandchild"
-msgstr "Lapselapse ristimine"
+msgstr "Baptistlik lapselapse ristimine"
 
 #: library/WT/Gedcom/Tag.php:984
 msgid "Baptism of a granddaughter"
-msgstr "Lapselapse ristimine"
+msgstr "Baptistlik lapselapse (tütar) ristimine"
 
 #: library/WT/Gedcom/Tag.php:993
 msgctxt "daughter’s daughter"
@@ -2397,7 +2398,7 @@ msgstr ""
 
 #: library/WT/Gedcom/Tag.php:982
 msgid "Baptism of a grandson"
-msgstr "Lapselapse ristimine"
+msgstr "Baptistlik lapselapse (poeg) ristimine"
 
 #: library/WT/Gedcom/Tag.php:991
 msgctxt "daughter’s son"
@@ -2411,27 +2412,27 @@ msgstr ""
 
 #: library/WT/Gedcom/Tag.php:1009
 msgid "Baptism of a half-brother"
-msgstr "Poolvenna ristimine"
+msgstr "Baptistlik poolvenna ristimine"
 
 #: library/WT/Gedcom/Tag.php:1013
 msgid "Baptism of a half-sibling"
-msgstr "Poolõe/-venna ristimine"
+msgstr "Baptistlik poolõe/-venna ristimine"
 
 #: library/WT/Gedcom/Tag.php:1011
 msgid "Baptism of a half-sister"
-msgstr "Poolõe ristimine"
+msgstr "Baptistlik poolõe ristimine"
 
 #: library/WT/Gedcom/Tag.php:1022
 msgid "Baptism of a sibling"
-msgstr "Õe/venna ristimine"
+msgstr "Baptistlik õe/venna ristimine"
 
 #: library/WT/Gedcom/Tag.php:1020
 msgid "Baptism of a sister"
-msgstr "Õe ristimine"
+msgstr "Baptistlik õe ristimine"
 
 #: library/WT/Gedcom/Tag.php:973
 msgid "Baptism of a son"
-msgstr "Poja ristimine"
+msgstr "Baptistlik poja ristimine"
 
 #. I18N: gedcom tag BARM
 #: library/WT/Gedcom/Tag.php:191 modules_v3/missing_facts_report/report.xml:14
@@ -2764,7 +2765,7 @@ msgstr "Sündinud:"
 
 #: modules_v3/birth_report/report.xml:6
 msgid "Birthplace contains"
-msgstr ""
+msgstr "Sünnikoht sisaldab"
 
 #. I18N: Name of a module/report
 #: modules_v3/birth_report/module.php:29 modules_v3/birth_report/report.xml:3
@@ -2842,11 +2843,11 @@ msgstr "Boston, Massachusetts"
 
 #: includes/functions/functions_print_lists.php:635
 msgid "Both alive"
-msgstr ""
+msgstr "Mõlemad elus"
 
 #: includes/functions/functions_print_lists.php:662
 msgid "Both dead"
-msgstr ""
+msgstr "Mõlemad surnud"
 
 #: library/WT/Stats.php:6048
 msgid "Botswana"
@@ -2873,7 +2874,7 @@ msgstr "Harud"
 #: library/WT/Controller/Branches.php:50
 #, php-format
 msgid "Branches of the %s family"
-msgstr ""
+msgstr "Foneetiline otsing %s'le"
 
 #: library/WT/Stats.php:6043
 msgid "Brazil"
@@ -3110,7 +3111,7 @@ msgstr "Naise matus"
 
 #: modules_v3/cemetery_report/report.xml:5
 msgid "Burial place contains"
-msgstr ""
+msgstr "Matmiskoht sisaldab"
 
 #: library/WT/Stats.php:6033
 msgid "Burkina Faso"
@@ -3163,20 +3164,20 @@ msgstr ""
 #. I18N: Name of a module.  CKEditor is a trademark.  Do not translate it?  http://ckeditor.com
 #: modules_v3/ckeditor/module.php:30
 msgid "CKEditor™"
-msgstr ""
+msgstr "CKEditor™"
 
 #: library/WT/MenuBar.php:327 modules_v3/yahrzeit/module.php:265
 msgid "Calendar"
-msgstr ""
+msgstr "Kalender"
 
 #: admin_trees_config.php:275 help_text.php:434
 msgid "Calendar conversion"
-msgstr ""
+msgstr "Kalendri konverteerimine"
 
 #. I18N: gedcom tag CALN
 #: library/WT/Gedcom/Tag.php:235
 msgid "Call number"
-msgstr ""
+msgstr "Helistamise number"
 
 #: library/WT/Stats.php:6136
 msgid "Cambodia"
@@ -3229,7 +3230,7 @@ msgstr "Tõstutundetu"
 #. I18N: gedcom tag CAST
 #: library/WT/Gedcom/Tag.php:239
 msgid "Caste"
-msgstr ""
+msgstr "Seisus"
 
 #: library/WT/Stats.php:6053
 msgid "Catalonia"
@@ -3269,7 +3270,7 @@ msgstr "Islas Caimán"
 #: modules_v3/cemetery_report/report.xml:3
 #: modules_v3/cemetery_report/report.xml:32
 msgid "Cemeteries"
-msgstr ""
+msgstr "Kalmistud"
 
 #. I18N: gedcom tag CEME
 #: library/WT/Gedcom/Tag.php:247 modules_v3/cemetery_report/report.xml:51
@@ -3350,19 +3351,19 @@ msgstr ""
 #: modules_v3/change_report/report.xml:3
 #: modules_v3/change_report/report.xml:41
 msgid "Changes"
-msgstr ""
+msgstr "Muutused"
 
 #. I18N: title for list of recent changes
 #: modules_v3/recent_changes/module.php:72
 #, fuzzy, php-format
 msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
-msgstr[0] "Viimase päeva muudatused"
-msgstr[1] "Viimase %s päeva muudatused"
+msgstr[0] "Viimase %s päeva muudatused"
+msgstr[1] "Viimaste %s päevade muudatused"
 
 #: themes/_administration/header.php:126
 msgid "Changes log"
-msgstr ""
+msgstr "Muutuste logi"
 
 #: library/WT/Stats.php:6056
 msgid "Channel Islands"
@@ -3449,7 +3450,7 @@ msgstr ""
 #: modules_v3/tree/class_treeview.php:345
 #, php-format
 msgid "Child of %s"
-msgstr ""
+msgstr "%s laps"
 
 #: includes/functions/functions_print_lists.php:265
 #: includes/functions/functions_print_lists.php:752
@@ -3502,13 +3503,13 @@ msgstr "Hiina"
 
 #: reportengine.php:113 reportengine.php:121
 msgid "Choose a report to run"
-msgstr "Vali raport"
+msgstr "Vali väljavõte mida käivitada"
 
 #: modules_v3/individual_ext_report/report.xml:6
 #: modules_v3/missing_facts_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:6
 msgid "Choose relatives"
-msgstr ""
+msgstr "Vali sugulasi"
 
 #: help_text.php:353
 msgid "Choose the appropriate gender from the drop-down list.  The <b>unknown</b> option indicates that the gender is unknown."
@@ -3532,7 +3533,7 @@ msgstr "Vali: "
 #: modules_v3/family_group_report/report.xml:892
 #: modules_v3/missing_facts_report/report.xml:13
 msgid "Christening"
-msgstr ""
+msgstr "Ristimine"
 
 #: library/WT/Gedcom/Tag.php:1237
 msgid "Christening of a brother"
@@ -3674,7 +3675,7 @@ msgstr "Vajuta %s et valida isik Perekonnapeaks."
 
 #: edit_interface.php:1700
 msgid "Click a row, then drag-and-drop to re-order media "
-msgstr ""
+msgstr "Kliki reale ja siis sikuta et meediafaile järjestada"
 
 #: admin_trees_manage.php:291
 msgid "Click here for PhpGedView to webtrees transfer wizard"
@@ -3721,7 +3722,7 @@ msgstr ""
 #. I18N: Name of a module
 #: modules_v3/clippings/module.php:28
 msgid "Clippings cart"
-msgstr ""
+msgstr "Väljalõiked"
 
 #: library/WT/Gedcom/Tag.php:1864
 msgid "Coat of arms"
@@ -3767,7 +3768,7 @@ msgstr "Columbus, Ohio"
 
 #: medialist.php:134
 msgid "Columns per page"
-msgstr ""
+msgstr "Tulpade arv lehel"
 
 #. I18N: gedcom tag COMM
 #: admin_site_access.php:287 library/WT/Gedcom/Tag.php:299
@@ -3782,7 +3783,7 @@ msgstr "Märkused"
 #. I18N: gedcom tag _COML
 #: library/WT/Gedcom/Tag.php:1246
 msgid "Common law marriage"
-msgstr ""
+msgstr "Ametlik abielu"
 
 #. I18N: Description of the “Messages” module
 #: modules_v3/user_messages/module.php:36
@@ -3797,13 +3798,13 @@ msgstr "Comoras"
 #: library/WT/Controller/Compact.php:47 library/WT/Controller/Fanchart.php:327
 #: library/WT/MenuBar.php:110
 msgid "Compact tree"
-msgstr ""
+msgstr "Kompaktne puu"
 
 #. I18N: %s is an individual’s name
 #: library/WT/Controller/Compact.php:44 library/WT/Controller/Compact.php:124
 #, php-format
 msgid "Compact tree of %s"
-msgstr ""
+msgstr "Kompaktne vaade isikule %s"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: library/WT/Gedcom/Code/Stat.php:97
@@ -3872,7 +3873,7 @@ msgstr ""
 #: modules_v3/clippings/module.php:528 modules_v3/clippings/module.php:541
 #: modules_v3/googlemap/module.php:4275
 msgid "Continue adding"
-msgstr "Jätka Lisamist"
+msgstr "Jätka lisamist"
 
 #. I18N: gedcom tag CONT
 #: library/WT/Gedcom/Tag.php:307
@@ -4003,7 +4004,7 @@ msgstr "Loo uus reegel"
 #: edit_interface.php:1314 edit_interface.php:1350
 #: includes/functions/functions_edit.php:539
 msgid "Create a new shared note"
-msgstr "Loo uus Jagatud viide"
+msgstr "Loo uus jagatud märkus"
 
 #: edit_interface.php:1373 modules_v3/GEDFact_assistant/CENS_ctrl.php:32
 #: modules_v3/GEDFact_assistant/module.php:350
@@ -4178,7 +4179,7 @@ msgstr "Kohandatud sündmus"
 
 #: includes/functions/functions_print.php:976
 msgid "Custom fact"
-msgstr ""
+msgstr "Muu fakt"
 
 #: admin_site_upgrade.php:192 admin_site_upgrade.php:195
 msgid "Custom module"
@@ -4194,7 +4195,7 @@ msgstr ""
 
 #: admin_site_config.php:159 help_text.php:1039
 msgid "Custom welcome text"
-msgstr ""
+msgstr "Oma tervitustekst"
 
 #: library/WT/Stats.php:6072
 msgid "Cyprus"
@@ -4299,12 +4300,12 @@ msgstr "Ristimise kuupäev"
 #: library/WT/Gedcom/Tag.php:193
 #: modules_v3/missing_facts_report/report.xml:208
 msgid "Date of bar mitzvah"
-msgstr ""
+msgstr "Bar mitzvah kuupäev"
 
 #: library/WT/Gedcom/Tag.php:201
 #: modules_v3/missing_facts_report/report.xml:249
 msgid "Date of bat mitzvah"
-msgstr ""
+msgstr "Bat mitzvah kuupäev"
 
 #: library/WT/Gedcom/Tag.php:209 modules_v3/fact_sources/report.xml:65
 #: modules_v3/fact_sources/report.xml:269
@@ -4315,21 +4316,21 @@ msgstr "Sünnikuupäev"
 
 #: library/WT/Gedcom/Tag.php:217
 msgid "Date of blessing"
-msgstr ""
+msgstr "Õnnistamise kuupäev"
 
 #: library/WT/Gedcom/Tag.php:1087
 msgid "Date of brit milah"
-msgstr ""
+msgstr "Brit milah kuupäev"
 
 #: library/WT/Gedcom/Tag.php:229
 #: modules_v3/missing_facts_report/report.xml:542
 msgid "Date of burial"
-msgstr ""
+msgstr "Matmiskuupäev"
 
 #: library/WT/Gedcom/Tag.php:281
 #: modules_v3/missing_facts_report/report.xml:166
 msgid "Date of christening"
-msgstr ""
+msgstr "Ristimiskuupäev"
 
 #: library/WT/Gedcom/Tag.php:313
 #: modules_v3/missing_facts_report/report.xml:290
@@ -4338,26 +4339,26 @@ msgstr "Leeri kuupäev"
 
 #: library/WT/Gedcom/Tag.php:333
 msgid "Date of cremation"
-msgstr ""
+msgstr "Kremeerimiskuupäev"
 
 #: library/WT/Gedcom/Tag.php:357 modules_v3/cemetery_report/report.xml:44
 #: modules_v3/fact_sources/report.xml:271
 #: modules_v3/missing_facts_report/report.xml:501
 msgid "Date of death"
-msgstr ""
+msgstr "Surma kuupäev"
 
 #: library/WT/Gedcom/Tag.php:459
 msgid "Date of divorce"
-msgstr ""
+msgstr "Lahutamise kuupäev"
 
 #: library/WT/Gedcom/Tag.php:407
 msgid "Date of emigration"
-msgstr ""
+msgstr "Emigreerumiskuupäev"
 
 #: library/WT/Gedcom/Tag.php:423
 #: modules_v3/missing_facts_report/report.xml:332
 msgid "Date of engagement"
-msgstr ""
+msgstr "Kaasamiskuupäev"
 
 #: library/WT/Gedcom/Tag.php:345
 msgid "Date of entry in original source"
@@ -4365,21 +4366,21 @@ msgstr "Originaalallika sissekande kuupäev"
 
 #: library/WT/Gedcom/Tag.php:431
 msgid "Date of event"
-msgstr ""
+msgstr "Sündmuse kuupäev"
 
 #: library/WT/Gedcom/Tag.php:479
 #: modules_v3/missing_facts_report/report.xml:374
 msgid "Date of first communion"
-msgstr ""
+msgstr "Osaduse kuupäev"
 
 #: library/WT/Gedcom/Tag.php:523
 msgid "Date of immigration"
-msgstr ""
+msgstr "Immigreerumiskuupäev"
 
 #. I18N: gedcom tag CHAN:DATE
 #: library/WT/Gedcom/Tag.php:263
 msgid "Date of last change"
-msgstr ""
+msgstr "Viimase muutuse kuupäev"
 
 #: library/WT/Gedcom/Tag.php:461 library/WT/Gedcom/Tag.php:575
 #: modules_v3/fact_sources/report.xml:316
@@ -4394,19 +4395,19 @@ msgstr ""
 
 #: library/WT/Gedcom/Tag.php:617
 msgid "Date of naturalization"
-msgstr ""
+msgstr "Kodakondsuse päev"
 
 #: library/WT/Gedcom/Tag.php:665
 msgid "Date of ordination"
-msgstr ""
+msgstr "Kooskõlastamise kuupäev"
 
 #: library/WT/Gedcom/Tag.php:731
 msgid "Date of residence"
-msgstr ""
+msgstr "Resideerumiskuupäev"
 
 #: help_text.php:198
 msgid "Date period"
-msgstr ""
+msgstr "Kuupäeva periood"
 
 #: help_text.php:196
 msgid "Date periods are used to indicate that a fact, such as an occupation, continued for a period of time."
@@ -4414,7 +4415,7 @@ msgstr ""
 
 #: help_text.php:187 statistics.php:699
 msgid "Date range"
-msgstr ""
+msgstr "Kuupäeva vahemik"
 
 #: help_text.php:185
 msgid "Date ranges are used to indicate that an event, such as a birth, happened on an unknown date within a possible range."
@@ -4448,7 +4449,7 @@ msgstr "Tütar"
 #: modules_v3/tree/class_treeview.php:339
 #, php-format
 msgid "Daughter of %s"
-msgstr ""
+msgstr "%s tütar"
 
 #: admin.php:234 calendar.php:155 library/WT/MenuBar.php:329
 msgid "Day"
@@ -4731,7 +4732,7 @@ msgstr ""
 
 #: modules_v3/death_report/report.xml:6
 msgid "Death place contains"
-msgstr ""
+msgstr "Surma koht sisaldab"
 
 #: statistics.php:409
 msgid "Death places"
@@ -4741,7 +4742,7 @@ msgstr "Surmapaigad"
 #: modules_v3/death_report/module.php:31 modules_v3/death_report/report.xml:3
 #: modules_v3/death_report/report.xml:29
 msgid "Deaths"
-msgstr ""
+msgstr "Surmad"
 
 #: library/WT/Stats.php:1820 statistics.php:120
 msgid "Deaths by century"
@@ -4797,7 +4798,7 @@ msgstr ""
 
 #: modules_v3/gedcom_block/module.php:47
 msgid "Default chart"
-msgstr ""
+msgstr "Vaikediagramm"
 
 #: admin_trees_manage.php:255 help_text.php:1113
 msgid "Default family tree"
@@ -4806,7 +4807,7 @@ msgstr ""
 #: admin_trees_config.php:258 admin_users.php:230 admin_users.php:433
 #: edituser.php:145 help_text.php:1118 modules_v3/gedcom_block/module.php:48
 msgid "Default individual"
-msgstr ""
+msgstr "Vaikimisi isik"
 
 #: modules_v3/googlemap/module.php:300
 msgid "Default map type"
@@ -4875,7 +4876,7 @@ msgstr ""
 
 #: modules_v3/googlemap/module.php:4263
 msgid "Delete all existing geographic data before importing the file."
-msgstr ""
+msgstr "Kustuta kõik geograafilised andmed enne importimist."
 
 #: themes/_administration/header.php:138
 msgid "Delete inactive users"
@@ -4892,7 +4893,7 @@ msgstr ""
 
 #: library/WT/Controller/Individual.php:170
 msgid "Delete this name"
-msgstr ""
+msgstr "Kustuta see nimi"
 
 #: admin_site_clean.php:60
 msgid "Deleted files:"
@@ -4955,7 +4956,7 @@ msgstr ""
 #: library/WT/Controller/Descendancy.php:95 modules_v3/charts/module.php:95
 #, php-format
 msgid "Descendants of %s"
-msgstr ""
+msgstr "%s järeltulijad"
 
 #: familybook.php:82
 msgid "Descent steps"
@@ -5094,13 +5095,13 @@ msgstr ""
 #: modules_v3/missing_facts_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:6
 msgid "Direct line ancestors"
-msgstr ""
+msgstr "Esivanemad liinipidi"
 
 #: modules_v3/individual_ext_report/report.xml:6
 #: modules_v3/missing_facts_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:6
 msgid "Direct line ancestors and their families"
-msgstr ""
+msgstr "Esivanemad liini pidi ja nende perekonnad"
 
 #: admin_site_upgrade.php:203
 msgid "Disable these modules"
@@ -5114,7 +5115,7 @@ msgstr ""
 #: library/WT/I18N.php:885
 #, php-format
 msgid "Display %s"
-msgstr ""
+msgstr "Näita %s"
 
 #: find.php:203 find.php:220 find.php:237 find.php:255 find.php:272
 msgid "Display all"
@@ -5224,7 +5225,7 @@ msgstr "Lae Fail Alla"
 
 #: modules_v3/googlemap/module.php:4593
 msgid "Download geographic data"
-msgstr ""
+msgstr "Lae geograafilised andmed alla"
 
 #. I18N: a day in the French republican calendar
 #: library/WT/Date/French.php:206
@@ -5319,7 +5320,7 @@ msgstr "Üksikasjade Muutmine"
 
 #: library/WT/Controller/Individual.php:296
 msgid "Edit gender"
-msgstr ""
+msgstr "Muuda sugu"
 
 #: modules_v3/lightbox/module.php:128
 msgid "Edit media"
@@ -5357,7 +5358,7 @@ msgstr ""
 #: edit_interface.php:1425 edit_interface.php:1471
 #: includes/functions/functions_edit.php:548
 msgid "Edit shared note"
-msgstr "Muuda Jagatud Märget"
+msgstr "Muuda jagatud märget"
 
 #: library/WT/Controller/Source.php:57
 msgid "Edit source"
@@ -5495,7 +5496,7 @@ msgstr "Tööandja"
 #: modules_v3/clippings/help_text.php:36 modules_v3/clippings/module.php:250
 #: modules_v3/clippings/module.php:462
 msgid "Empty the clippings cart"
-msgstr ""
+msgstr "Tühjenda väljalõigete leht"
 
 #: admin_modules.php:124
 msgid "Enabled"
@@ -5516,7 +5517,7 @@ msgstr "Lõpuaasta"
 
 #: modules_v3/change_report/report.xml:6
 msgid "Ending range of change dates"
-msgstr ""
+msgstr "Muusatuste kuupäeva vahemiku lõpp"
 
 #. I18N: http://en.wikipedia.org/wiki/Endowment_house
 #: library/WT/Gedcom/Code/Temp.php:144
@@ -5557,7 +5558,7 @@ msgstr "täpne sisestamine"
 
 #: reportengine.php:168
 msgid "Enter report values"
-msgstr "Tee valikud raporti käivitamiseks"
+msgstr "Tee valikud väljavõtte käivitamiseks"
 
 #: help_text.php:263
 msgid "Enter the FAX number including the country and area code.<br><br>Leave this field blank if you do not want to include a FAX number.  For example, a number in Germany might be +49 25859 56 76 89 and a number in USA or Canada might be +1 888 555-1212."
@@ -5756,7 +5757,7 @@ msgstr ""
 #. I18N: Name of a module/sidebar
 #: modules_v3/extra_info/module.php:26
 msgid "Extra information"
-msgstr ""
+msgstr "Lisainfo"
 
 #. I18N: gedcom tag _EYEC
 #: library/WT/Gedcom/Tag.php:1468
@@ -5766,7 +5767,7 @@ msgstr "Silmavärv"
 #. I18N: Name of a theme.
 #: themes/fab/theme.php:29
 msgid "F.A.B."
-msgstr ""
+msgstr "F.A.B."
 
 #. I18N: Name of a module.  Abbreviation for “Frequently Asked Questions”
 #: modules_v3/faq/module.php:30 modules_v3/faq/module.php:423
@@ -5848,7 +5849,7 @@ msgstr ""
 
 #: includes/functions/functions_print.php:966
 msgid "Fact or event"
-msgstr ""
+msgstr "Fakt või sündmus"
 
 #. I18N: Name of a module/tab on the individual page.
 #: modules_v3/individual_ext_report/report.xml:150
@@ -5905,11 +5906,11 @@ msgstr "Islas Malvinas"
 #: note.php:125 placelist.php:228 search.php:97 source.php:100
 #: statistics.php:69 statisticsplot.php:803
 msgid "Families"
-msgstr "Perekondi"
+msgstr "Perekonnad"
 
 #: library/WT/Stats.php:466 statistics.php:392
 msgid "Families with sources"
-msgstr "Perekondi allikatega"
+msgstr "Perekonnad allikatega"
 
 #. I18N: gedcom tag FAM
 #. I18N: Name of a module/report
@@ -5944,13 +5945,13 @@ msgstr "Perekond abielus"
 
 #: library/WT/Controller/Familybook.php:74 library/WT/MenuBar.php:112
 msgid "Family book"
-msgstr ""
+msgstr "Perekonna raamat"
 
 #. I18N: %s is an individual’s name
 #: library/WT/Controller/Familybook.php:71
 #, php-format
 msgid "Family book of %s"
-msgstr ""
+msgstr "Perekonna raamat isikule: %s"
 
 #. I18N: gedcom tag FAMF
 #: library/WT/Gedcom/Tag.php:449
@@ -5964,7 +5965,7 @@ msgstr "Info perekonna kohta"
 #. I18N: Name of a module/sidebar
 #: modules_v3/families/module.php:28
 msgid "Family list"
-msgstr ""
+msgstr "Perekonna nimekiri"
 
 #. I18N: Name of a module/sidebar
 #: edit_interface.php:1398
@@ -5974,7 +5975,7 @@ msgstr ""
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:45
 #: modules_v3/family_nav/module.php:33
 msgid "Family navigator"
-msgstr "Pere navigeerija"
+msgstr "Pere"
 
 #. I18N: Description of the “GEDCOM News” module
 #: modules_v3/gedcom_news/module.php:43
@@ -5985,7 +5986,7 @@ msgstr ""
 #: library/WT/Controller/Familybook.php:404
 #, php-format
 msgid "Family of %s"
-msgstr ""
+msgstr "%s perekond"
 
 #: admin_site_change.php:285 admin_site_change.php:309 admin_site_logs.php:243
 #: admin_site_logs.php:266 admin_trees_manage.php:190
@@ -6077,14 +6078,14 @@ msgstr "Perekond naisega"
 #: library/WT/Controller/Fanchart.php:52
 #: library/WT/Controller/Fanchart.php:328 library/WT/MenuBar.php:119
 msgid "Fan chart"
-msgstr ""
+msgstr "Ringdiagramm"
 
 #. I18N: http://en.wikipedia.org/wiki/Family_tree#Fan_chart - %s is an individual’s name
 #: library/WT/Controller/Fanchart.php:49
 #: library/WT/Controller/Fanchart.php:382
 #, php-format
 msgid "Fan chart of %s"
-msgstr ""
+msgstr "Ringdiagramm kasutajale %s"
 
 #: library/WT/Date/Jalali.php:187
 msgctxt "Abbreviation for Persian month: Farvardin"
@@ -6132,7 +6133,7 @@ msgstr ""
 
 #: includes/functions/functions_print.php:623
 msgid "Father’s age"
-msgstr ""
+msgstr "Isa vanus"
 
 #. I18N: A step-family.  %s is an individual’s name
 #: library/WT/Individual.php:965
@@ -6209,7 +6210,7 @@ msgstr ""
 
 #: library/WT/Gedcom/Tag.php:1784
 msgid "File size"
-msgstr ""
+msgstr "Faili maht"
 
 #: includes/functions/functions.php:63
 msgid "File successfully uploaded"
@@ -6253,42 +6254,42 @@ msgstr ""
 #: find.php:202 find.php:219 find.php:236 find.php:254 find.php:271
 #: find.php:462 library/WT/I18N.php:942 modules_v3/random_media/module.php:296
 msgid "Filter"
-msgstr "Leia"
+msgstr "Filtreeri"
 
 #: find.php:90 includes/functions/functions_print.php:1118
 msgid "Find a fact or event"
-msgstr ""
+msgstr "Leia fakt või sündmus"
 
 #: admin_site_merge.php:263 admin_site_merge.php:284 find.php:59
 #: includes/functions/functions_print.php:1047
 msgid "Find a family"
-msgstr ""
+msgstr "Leia perekond"
 
 #: find.php:62 includes/functions/functions_print.php:1109
 msgid "Find a media object"
-msgstr ""
+msgstr "Leia meediafail"
 
 #: find.php:65 includes/functions/functions_print.php:1038
 msgid "Find a place"
-msgstr ""
+msgstr "Leia asukoht"
 
 #: find.php:68 includes/functions/functions_print.php:1099
 msgid "Find a repository"
-msgstr ""
+msgstr "Leia andmehoidlast"
 
 #: find.php:71 includes/functions/functions_print.php:1090
 msgid "Find a shared note"
-msgstr ""
+msgstr "Leia jagatud teave"
 
 #: admin_site_merge.php:264 admin_site_merge.php:285 find.php:74
 #: includes/functions/functions_print.php:1080
 #: modules_v3/fact_sources/report.xml:5
 msgid "Find a source"
-msgstr ""
+msgstr "Leia algallikas"
 
 #: find.php:77 includes/functions/functions_print.php:1056
 msgid "Find a special character"
-msgstr ""
+msgstr "Leia eriline täht"
 
 #: admin_site_merge.php:262 admin_site_merge.php:283 find.php:56
 #: includes/functions/functions_print.php:1029
@@ -6296,7 +6297,7 @@ msgstr ""
 #: modules_v3/GEDFact_assistant/_CENS/census_3_find.php:64
 #: modules_v3/GEDFact_assistant/module.php:64
 msgid "Find an individual"
-msgstr ""
+msgstr "Leia isik"
 
 #: relationship.php:147
 msgid "Find next path"
@@ -6304,16 +6305,16 @@ msgstr "Leia järgmine seos"
 
 #: help_text.php:1278
 msgid "Find the next relationship path"
-msgstr ""
+msgstr "Leia järgmine seos"
 
 #: library/WT/Stats.php:6089
 msgid "Finland"
-msgstr "Finlandia"
+msgstr "Soome"
 
 #. I18N: gedcom tag FCOM
 #: library/WT/Gedcom/Tag.php:477 modules_v3/missing_facts_report/report.xml:18
 msgid "First communion"
-msgstr ""
+msgstr "Esimene osalus"
 
 #: statistics.php:367
 msgid "First event"
@@ -6327,11 +6328,11 @@ msgstr "Paranda nime kaldjooned ja tühikud"
 #: modules_v3/googlemap/module.php:446 modules_v3/googlemap/module.php:4027
 #: modules_v3/googlemap/module.php:4035
 msgid "Flag"
-msgstr ""
+msgstr "Lipp"
 
 #: library/WT/Stats.php:6091
 msgid "Flanders"
-msgstr "Flandes"
+msgstr "Flandria"
 
 #. I18N: a month in the French republican calendar
 #: library/WT/Date/French.php:103
@@ -6359,11 +6360,11 @@ msgstr ""
 
 #: medialist.php:79
 msgid "Folder"
-msgstr ""
+msgstr "Kataloog"
 
 #: addmedia.php:495 admin_media_upload.php:210 help_text.php:1438
 msgid "Folder name on server"
-msgstr ""
+msgstr "Kataloogi nimi serveris"
 
 #: modules_v3/ahnentafel_report/report.xml:14
 #: modules_v3/bdm_report/report.xml:13 modules_v3/birth_report/report.xml:11
@@ -6381,7 +6382,7 @@ msgstr ""
 #: modules_v3/pedigree_report/report.xml:8
 #: modules_v3/relative_ext_report/report.xml:9
 msgid "Font"
-msgstr ""
+msgstr "Font"
 
 #: help_text.php:373
 msgid "For LDS ordinances, this field records the temple where it was performed."
@@ -6416,7 +6417,7 @@ msgstr "Tehnilise abi saamiseks võta ühendust"
 
 #: includes/functions/functions_print.php:334
 msgid "For technical support or genealogy questions, please contact"
-msgstr "Tehnilistes või genealoogilistes küsimustes annab abi"
+msgstr "Küsimuste korral võtke ühendust "
 
 #. I18N: gedcom tag FORM
 #: help_text.php:175 help_text.php:187 help_text.php:198 help_text.php:205
@@ -6640,7 +6641,7 @@ msgstr "Üldine"
 #: library/WT/Controller/Search.php:230 library/WT/MenuBar.php:376
 #: search.php:223 search.php:227
 msgid "General search"
-msgstr ""
+msgstr "Tavaotsing"
 
 #. I18N: Description of the “Sitemaps” module
 #: modules_v3/sitemap/module.php:35
@@ -6660,7 +6661,7 @@ msgstr "Põlvkond"
 #: modules_v3/ahnentafel_report/report.xml:75
 #: modules_v3/descendancy_report/report.xml:52
 msgid "Generation "
-msgstr ""
+msgstr "Põlvkond"
 
 #: ancestry.php:110 descendancy.php:78 familybook.php:60 fanchart.php:101
 #: hourglass.php:66 modules_v3/ahnentafel_report/report.xml:7
@@ -6669,12 +6670,12 @@ msgstr ""
 #: modules_v3/individual_ext_report/report.xml:7
 #: modules_v3/missing_facts_report/report.xml:7 pedigree.php:52
 msgid "Generations"
-msgstr "põlvkonnad"
+msgstr "Põlvkonnad"
 
 #. I18N: gedcom tag ANCE
 #: library/WT/Gedcom/Tag.php:155
 msgid "Generations of ancestors"
-msgstr ""
+msgstr "Esivanemate põlvkonnad"
 
 #: modules_v3/googlemap/module.php:164 modules_v3/googlemap/module.php:278
 #: modules_v3/googlemap/module.php:844 modules_v3/googlemap/module.php:1515
@@ -6682,7 +6683,7 @@ msgstr ""
 #: modules_v3/googlemap/module.php:2822 modules_v3/googlemap/module.php:3255
 #: modules_v3/googlemap/module.php:4106
 msgid "Geographic data"
-msgstr ""
+msgstr "Geograafilised andmed"
 
 #: statistics.php:668
 msgid "Geographical area"
@@ -6752,7 +6753,7 @@ msgstr ""
 #. I18N: gedcom tag _UID
 #: library/WT/Gedcom/Tag.php:1748
 msgid "Globally unique identifier"
-msgstr ""
+msgstr "Globaalne identifitseerimistunnus"
 
 #: library/WT/Gedcom/Code/Rela.php:151
 msgid "Godchild"
@@ -6792,7 +6793,7 @@ msgstr "Google Maps™"
 #: modules_v3/googlemap/module.php:1511 modules_v3/googlemap/module.php:2623
 #: modules_v3/googlemap/module.php:4101
 msgid "Google Maps™ preferences"
-msgstr ""
+msgstr "Google Maps™ seaded"
 
 #. I18N: http://en.wikipedia.org/wiki/Google_street_view
 #: modules_v3/googlemap/module.php:311 modules_v3/googlemap/module.php:2392
@@ -7025,7 +7026,7 @@ msgstr ""
 
 #: modules_v3/ahnentafel_report/report.xml:193
 msgid "Her occupation was"
-msgstr ""
+msgstr "cemeteries"
 
 #: modules_v3/googlemap/help_text.php:64
 msgid "Here an icon can be set or removed.  Using this link a flag can be selected.  When this geographic location is shown, this flag will be displayed."
@@ -7125,7 +7126,7 @@ msgstr ""
 #: modules_v3/individual_ext_report/report.xml:11
 #: modules_v3/individual_report/report.xml:8
 msgid "Highlighted image"
-msgstr ""
+msgstr "Esiletõstetud pilt"
 
 #. I18N: The Arabic/Hijri calendar
 #: help_text.php:225 library/WT/Date/Hijri.php:44
@@ -7134,7 +7135,7 @@ msgstr "Hidžra"
 
 #: modules_v3/ahnentafel_report/report.xml:192
 msgid "His occupation was"
-msgstr ""
+msgstr "Tema amet oli"
 
 #: modules_v3/personal_facts/module.php:131
 msgid "Historical facts"
@@ -7177,7 +7178,7 @@ msgstr "Liivakella puu"
 #: library/WT/Controller/Hourglass.php:113 modules_v3/charts/module.php:98
 #, php-format
 msgid "Hourglass chart of %s"
-msgstr ""
+msgstr "Liivakella skeem kasutajale %s"
 
 #: modules_v3/googlemap/module.php:382 modules_v3/googlemap/module.php:3996
 msgid "House"
@@ -7248,7 +7249,7 @@ msgstr "Idaho Falls, Idaho"
 #. I18N: gedcom tag IDNO
 #: library/WT/Gedcom/Tag.php:517
 msgid "Identification number"
-msgstr ""
+msgstr "Identifitseerimisnumber"
 
 #: help_text.php:613
 msgid "If a visitor to the site has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines."
@@ -7374,7 +7375,7 @@ msgstr ""
 
 #: library/WT/Gedcom/Tag.php:1786
 msgid "Image dimensions"
-msgstr ""
+msgstr "Pildi mõõdud"
 
 #: admin_trees_config.php:740
 msgid "Images without watermarks"
@@ -7440,7 +7441,7 @@ msgstr ""
 #: famlist.php:174 indilist.php:174
 #, php-format
 msgid "Include individuals with “%s” as a married name"
-msgstr ""
+msgstr "Kaasa ka isikud, kelle abielu-nimi algab “%s” sõna või sõnaosaga"
 
 #: help_text.php:1268 modules_v3/clippings/module.php:186
 #: modules_v3/clippings/module.php:574
@@ -7450,11 +7451,11 @@ msgstr ""
 #. I18N: Label for check-box
 #: admin_media.php:638 medialist.php:106
 msgid "Include subfolders"
-msgstr ""
+msgstr "Kaasa alamkataloogid"
 
 #: lifespan.php:150
 msgid "Include the individual’s immediate family?"
-msgstr ""
+msgstr "Kaasa isiku otsene perekond?"
 
 #: library/WT/Stats.php:6121
 msgid "India"
@@ -7504,7 +7505,7 @@ msgstr "Isikute jagunemise tabel"
 #. I18N: Name of a module
 #: modules_v3/individuals/module.php:28
 msgid "Individual list"
-msgstr ""
+msgstr "Isikute nimekiri"
 
 #: admin_trees_config.php:863 admin_trees_config.php:1028
 msgid "Individual pages"
@@ -7535,7 +7536,7 @@ msgstr "Kõige pikaealisem isik"
 #: note.php:118 placelist.php:225 search.php:92 search.php:143 source.php:97
 #: statistics.php:67 statisticsplot.php:807
 msgid "Individuals"
-msgstr "Isikuid"
+msgstr "Isikud"
 
 #: library/WT/Stats.php:389 statistics.php:391
 msgid "Individuals with sources"
@@ -7582,22 +7583,22 @@ msgstr "Paigaldamise kataloog"
 #: library/WT/Controller/Fanchart.php:331 library/WT/MenuBar.php:123
 #: modules_v3/charts/module.php:204 modules_v3/tree/module.php:28
 msgid "Interactive tree"
-msgstr ""
+msgstr "Interaktiivne puu"
 
 #: modules_v3/charts/module.php:101 modules_v3/tree/class_treeview.php:62
 #: modules_v3/tree/class_treeview.php:139 modules_v3/tree/module.php:103
 #, php-format
 msgid "Interactive tree of %s"
-msgstr ""
+msgstr "Interaktiivne puu isikule %s"
 
 #: help_text.php:1182
 msgid "Internal messaging"
-msgstr ""
+msgstr "Sisemine teadete süsteem"
 
 #: help_text.php:1186 includes/functions/functions_edit.php:327
 #: includes/functions/functions_edit.php:348
 msgid "Internal messaging with emails"
-msgstr ""
+msgstr "Sisemine teadete süsteem emailide saatmisega"
 
 #. I18N: gedcom tag _INTE
 #: library/WT/Gedcom/Tag.php:1544
@@ -7950,12 +7951,12 @@ msgstr "Kõrgõstan"
 #. I18N: gedcom tag BAPL
 #: library/WT/Gedcom/Tag.php:175
 msgid "LDS baptism"
-msgstr "LDS ristimine"
+msgstr "LDS baptismi ristimine"
 
 #. I18N: gedcom tag SLGC
 #: library/WT/Gedcom/Tag.php:773
 msgid "LDS child sealing"
-msgstr ""
+msgstr "LDS lapse katmine"
 
 #. I18N: gedcom tag CONL
 #: library/WT/Gedcom/Tag.php:319
@@ -7965,7 +7966,7 @@ msgstr "LDS leer"
 #. I18N: gedcom tag ENDL
 #: library/WT/Gedcom/Tag.php:413
 msgid "LDS endowment"
-msgstr ""
+msgstr "LDS asutamine"
 
 #: admin_trees_config.php:1012 help_text.php:858
 msgid "LDS ordinance codes in chart boxes"
@@ -8086,7 +8087,7 @@ msgstr ""
 #: includes/functions/functions_print_lists.php:248
 #: includes/functions/functions_print_lists.php:682
 msgid "Leaves"
-msgstr ""
+msgstr "Võsud"
 
 #: library/WT/Stats.php:6142
 msgid "Lebanon"
@@ -8165,7 +8166,7 @@ msgstr "Eluiga"
 #: help_text.php:1273 library/WT/Controller/Lifespan.php:73
 #: library/WT/MenuBar.php:114 lifespan.php:135
 msgid "Lifespans"
-msgstr ""
+msgstr "Eluead"
 
 #: library/WT/Gedcom/Code/Temp.php:188
 msgid "Lima, Peru"
@@ -8205,7 +8206,7 @@ msgstr ""
 #: modules_v3/lightbox/module.php:72 modules_v3/lightbox/module.php:73
 #: modules_v3/media/module.php:85 repo.php:140 source.php:157
 msgid "Link to an existing media object"
-msgstr "Link olemasolevale meediumile"
+msgstr "Link olemasolevale meediafailile"
 
 #. I18N: gedcom tag _DBID
 #: library/WT/Gedcom/Tag.php:1349
@@ -8386,7 +8387,7 @@ msgstr ""
 #: help_text.php:1190 includes/functions/functions_edit.php:329
 #: includes/functions/functions_edit.php:350
 msgid "Mailto link"
-msgstr ""
+msgstr "Mailto link"
 
 #: index_edit.php:278
 msgid "Main section blocks"
@@ -8556,15 +8557,15 @@ msgstr "Abiellunud"
 
 #: modules_v3/marriage_report/report.xml:8
 msgid "Marriage Date range end"
-msgstr ""
+msgstr "Abiellumise kuupäeva vahemiku lõpp"
 
 #: modules_v3/marriage_report/report.xml:7
 msgid "Marriage Date range start"
-msgstr ""
+msgstr "Abiellumise kuupäeva vahemiku algus"
 
 #: modules_v3/marriage_report/report.xml:6
 msgid "Marriage Place contains"
-msgstr ""
+msgstr "Abiellumise koht sisaldab"
 
 #. I18N: gedcom tag MARB
 #: library/WT/Gedcom/Tag.php:557 modules_v3/missing_facts_report/report.xml:19
@@ -8717,7 +8718,7 @@ msgstr "Abielu tüüp teadmata"
 #: modules_v3/marriage_report/report.xml:3
 #: modules_v3/marriage_report/report.xml:27
 msgid "Marriages"
-msgstr ""
+msgstr "Abiellumised"
 
 #: library/WT/Stats.php:3179 statistics.php:221
 msgid "Marriages by century"
@@ -8821,7 +8822,7 @@ msgstr "Medford, Oregon"
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:76
 #: modules_v3/media/module.php:30 themes/_administration/header.php:141
 msgid "Media"
-msgstr "Meedia"
+msgstr "Meediafailid"
 
 #: admin_trees_config.php:375 help_text.php:666
 msgid "Media ID prefix"
@@ -8833,28 +8834,28 @@ msgstr "Media sisaldab:"
 
 #: admin_media.php:660 admin_media_upload.php:182
 msgid "Media file"
-msgstr ""
+msgstr "Meediafail"
 
 #: addmedia.php:439 admin_media_upload.php:184
 msgid "Media file to upload"
-msgstr ""
+msgstr "Meediafail üles laadimiseks"
 
 #: admin_media.php:599 admin_trees_config.php:663
 msgid "Media files"
-msgstr ""
+msgstr "Meediafailid"
 
 #: admin_trees_config.php:648 help_text.php:654
 msgid "Media folder"
-msgstr ""
+msgstr "Meediafailide kataloog"
 
 #: admin_media.php:600 admin_trees_config.php:644
 msgid "Media folders"
-msgstr ""
+msgstr "Meediafailide kataloogid"
 
 #. I18N: gedcom tag OBJE
 #: admin_media.php:662 library/WT/Gedcom/Tag.php:647
 msgid "Media object"
-msgstr ""
+msgstr "Meediafail"
 
 #: admin.php:211 admin.php:265
 #: includes/functions/functions_print_lists.php:1089
@@ -8865,21 +8866,21 @@ msgstr ""
 #: note.php:132 source.php:103 statistics.php:350 statistics.php:377
 #: statistics.php:380
 msgid "Media objects"
-msgstr "Meedia objekte"
+msgstr "Meediafailid"
 
 #: medialist.php:169
 msgid "Media objects found"
-msgstr "Meedia objekti leitud"
+msgstr "Leitud meediafaile"
 
 #: medialist.php:112
 msgid "Media objects per page"
-msgstr "media objects per page"
+msgstr "Meediafaile lehe kohta"
 
 #. I18N: gedcom tag MEDI
 #. I18N: gedcom tag _TYPE
 #: library/WT/Gedcom/Tag.php:593 library/WT/Gedcom/Tag.php:1744
 msgid "Media type"
-msgstr "Meedia tüüp"
+msgstr "Meediafaili tüüp"
 
 #. I18N: gedcom tag _MDCL
 #: library/WT/Gedcom/Tag.php:1644
@@ -8889,7 +8890,7 @@ msgstr "Meditsiiniline"
 #. I18N: gedcom tag _MEDC
 #: library/WT/Gedcom/Tag.php:1648
 msgid "Medical condition"
-msgstr "Tervis"
+msgstr "Tervislik seisund"
 
 #. I18N: The name of a colour-scheme
 #: themes/colors/theme.php:96
@@ -9088,7 +9089,7 @@ msgstr ""
 #: modules_v3/missing_facts_report/report.xml:3
 #: modules_v3/missing_facts_report/report.xml:49
 msgid "Missing data"
-msgstr ""
+msgstr "Puuduvad andmed"
 
 #: edit_changes.php:194
 msgid "Moderate pending changes"
@@ -9346,7 +9347,7 @@ msgstr ""
 
 #: includes/functions/functions_print_lists.php:729
 msgid "Multiple marriages"
-msgstr ""
+msgstr "Mitu abielu"
 
 #: edituser.php:130 library/WT/MenuBar.php:68
 #: modules_v3/user_welcome/module.php:45
@@ -9475,7 +9476,7 @@ msgstr "Kodakondsus"
 #. I18N: gedcom tag NATU
 #: library/WT/Gedcom/Tag.php:615
 msgid "Naturalization"
-msgstr ""
+msgstr "Kodakondsus"
 
 #: library/WT/Stats.php:6186
 msgid "Nauru"
@@ -9664,7 +9665,7 @@ msgstr ""
 
 #: modules_v3/googlemap/module.php:879
 msgid "No ancestors in the database."
-msgstr ""
+msgstr "Andmebaasist esivanemaid ei leitud."
 
 #: admin_trees_config.php:285 admin_trees_config.php:305
 msgid "No calendar conversion"
@@ -9679,7 +9680,7 @@ msgstr "Lapsi pole sisestatud"
 #: includes/functions/functions_edit.php:330
 #: includes/functions/functions_edit.php:351
 msgid "No contact"
-msgstr ""
+msgstr "Ilma kontakteerumiseta"
 
 #: help_text.php:1194
 msgid "No contact method"
@@ -9732,7 +9733,7 @@ msgstr "Homme pole pole ühtegi sündmust elava inimese kohta."
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
-msgstr[0] ""
+msgstr[0] "Ei leitud sündmusi elavate isikute kohta järgmiseks %s päevaks."
 msgstr[1] ""
 
 #: library/WT/Controller/Family.php:188
@@ -10051,7 +10052,7 @@ msgstr "Amet"
 #: modules_v3/occupation_report/report.xml:3
 #: modules_v3/occupation_report/report.xml:34
 msgid "Occupations"
-msgstr ""
+msgstr "Ametid"
 
 #: library/WT/Stats.php:6202
 msgid "Occupied Palestinian Territory"
@@ -10224,7 +10225,7 @@ msgstr ""
 #. I18N: gedcom tag ORDN
 #: library/WT/Gedcom/Tag.php:661
 msgid "Ordination"
-msgstr ""
+msgstr "Kooskõlastamine"
 
 #: modules_v3/change_report/report.xml:10
 #: modules_v3/pedigree_report/report.xml:6
@@ -10246,11 +10247,11 @@ msgstr "Teisi fakte mida tabelites näidata"
 
 #: addmedia.php:504 admin_media_upload.php:217
 msgid "Other folder… please type in"
-msgstr ""
+msgstr "Teises kataloogis... palun trüki"
 
 #: modules_v3/gedcom_stats/module.php:342
 msgid "Other records"
-msgstr "Muid"
+msgstr "Muud kirjed"
 
 #: search.php:215
 msgid "Other searches"
@@ -10262,7 +10263,7 @@ msgstr "Muud seaded"
 
 #: statistics.php:71
 msgid "Others"
-msgstr "Muid"
+msgstr "Muud"
 
 #: modules_v3/googlemap/module.php:4271
 msgid "Overwrite existing coordinates."
@@ -10349,7 +10350,7 @@ msgstr "Lk"
 #: medialist.php:206
 #, php-format
 msgid "Page %s of %s"
-msgstr ""
+msgstr "Leht %s - %s 'st"
 
 #: modules_v3/ahnentafel_report/report.xml:13
 #: modules_v3/bdm_report/report.xml:12 modules_v3/birth_report/report.xml:10
@@ -10420,7 +10421,7 @@ msgstr "Vanemad:"
 #: modules_v3/missing_facts_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:6
 msgid "Parents and siblings"
-msgstr ""
+msgstr "Vanemad ja õed-vennad"
 
 #: includes/functions/functions_print.php:627
 msgid "Parent’s age"
@@ -10463,18 +10464,18 @@ msgstr "Esivanemate puu"
 #: library/WT/Controller/Fanchart.php:320 library/WT/MenuBar.php:126
 #: modules_v3/googlemap/module.php:1383
 msgid "Pedigree map"
-msgstr ""
+msgstr "Sugupuu kaart"
 
 #. I18N: %s is an individual’s name
 #: modules_v3/googlemap/module.php:705
 #, php-format
 msgid "Pedigree map of %s"
-msgstr ""
+msgstr "Sugupuu kaart isikule %s"
 
 #: modules_v3/charts/module.php:92
 #, php-format
 msgid "Pedigree of %s"
-msgstr ""
+msgstr "%s sugupuu"
 
 #. I18N: %s is an individual’s name
 #: library/WT/Controller/Pedigree.php:88
@@ -10599,7 +10600,7 @@ msgstr "Koht"
 #: modules_v3/googlemap/module.php:847 modules_v3/googlemap/module.php:1520
 #: modules_v3/googlemap/module.php:2627 modules_v3/googlemap/module.php:4111
 msgid "Place check"
-msgstr "kohakontroll"
+msgstr "Asukohakontroll"
 
 #: find.php:215
 msgid "Place contains:"
@@ -10612,7 +10613,7 @@ msgstr ""
 #: library/WT/MenuBar.php:296 modules_v3/googlemap/module.php:295
 #: placelist.php:38 placelist.php:40 placelist.php:146
 msgid "Place hierarchy"
-msgstr "Kohtade hierahia"
+msgstr "Kohanimede loend"
 
 #: library/WT/Gedcom/Tag.php:689
 msgid "Place in Hebrew"
@@ -10654,12 +10655,12 @@ msgstr "Ristimise koht"
 #: library/WT/Gedcom/Tag.php:195
 #: modules_v3/missing_facts_report/report.xml:219
 msgid "Place of bar mitzvah"
-msgstr ""
+msgstr "Bar mitzvah asukoht"
 
 #: library/WT/Gedcom/Tag.php:203
 #: modules_v3/missing_facts_report/report.xml:260
 msgid "Place of bat mitzvah"
-msgstr ""
+msgstr "Bat mitzvah asukoht"
 
 #: library/WT/Gedcom/Tag.php:211 modules_v3/fact_sources/report.xml:270
 #: modules_v3/missing_facts_report/report.xml:89
@@ -10668,21 +10669,21 @@ msgstr "Sünnikoht"
 
 #: library/WT/Gedcom/Tag.php:219
 msgid "Place of blessing"
-msgstr ""
+msgstr "Õnnistamise koht"
 
 #: library/WT/Gedcom/Tag.php:1089
 msgid "Place of brit milah"
-msgstr ""
+msgstr "Brit milah asukoht"
 
 #: library/WT/Gedcom/Tag.php:231
 #: modules_v3/missing_facts_report/report.xml:553
 msgid "Place of burial"
-msgstr ""
+msgstr "Matmiskoht"
 
 #: library/WT/Gedcom/Tag.php:283
 #: modules_v3/missing_facts_report/report.xml:177
 msgid "Place of christening"
-msgstr ""
+msgstr "Ristimiskoht"
 
 #: library/WT/Gedcom/Tag.php:315
 #: modules_v3/missing_facts_report/report.xml:301
@@ -10691,16 +10692,16 @@ msgstr "Leeri koht"
 
 #: library/WT/Gedcom/Tag.php:335
 msgid "Place of cremation"
-msgstr ""
+msgstr "Kremeerimiskoht"
 
 #: library/WT/Gedcom/Tag.php:359 modules_v3/fact_sources/report.xml:272
 #: modules_v3/missing_facts_report/report.xml:512
 msgid "Place of death"
-msgstr ""
+msgstr "Surmakoht"
 
 #: library/WT/Gedcom/Tag.php:409
 msgid "Place of emigration"
-msgstr ""
+msgstr "Emigreerumiskoht"
 
 #: library/WT/Gedcom/Tag.php:425
 #: modules_v3/missing_facts_report/report.xml:343
@@ -10709,7 +10710,7 @@ msgstr ""
 
 #: library/WT/Gedcom/Tag.php:433
 msgid "Place of event"
-msgstr ""
+msgstr "sündmuse koht"
 
 #: library/WT/Gedcom/Tag.php:481
 #: modules_v3/missing_facts_report/report.xml:385
@@ -10718,13 +10719,13 @@ msgstr ""
 
 #: library/WT/Gedcom/Tag.php:525
 msgid "Place of immigration"
-msgstr ""
+msgstr "Immigreerumiskoht"
 
 #: library/WT/Gedcom/Tag.php:463 library/WT/Gedcom/Tag.php:577
 #: modules_v3/fact_sources/report.xml:318
 #: modules_v3/missing_facts_report/report.xml:470
 msgid "Place of marriage"
-msgstr ""
+msgstr "Abiellumise koht"
 
 #: library/WT/Gedcom/Tag.php:561
 #: modules_v3/missing_facts_report/report.xml:427
@@ -10733,15 +10734,15 @@ msgstr ""
 
 #: library/WT/Gedcom/Tag.php:619
 msgid "Place of naturalization"
-msgstr ""
+msgstr "Kodakondsuse riik"
 
 #: library/WT/Gedcom/Tag.php:667
 msgid "Place of ordination"
-msgstr ""
+msgstr "Kooskõlastamise koht"
 
 #: library/WT/Gedcom/Tag.php:733
 msgid "Place of residence"
-msgstr ""
+msgstr "Residentsuse koht"
 
 #: admin_site_upgrade.php:409
 #, php-format
@@ -10874,7 +10875,7 @@ msgstr ""
 #. I18N: gedcom tag POST
 #: library/WT/Gedcom/Tag.php:693
 msgid "Postal code"
-msgstr ""
+msgstr "Sihtnumber"
 
 #. I18N: a month in the French republican calendar
 #: library/WT/Date/French.php:105
@@ -10961,7 +10962,7 @@ msgstr ""
 
 #: modules_v3/family_group_report/report.xml:10
 msgid "Print basic events when blank?"
-msgstr ""
+msgstr "Trüki tavalised sündmused kui on tühi?"
 
 #: admin_trees_config.php:227
 msgid "Privacy"
@@ -11011,12 +11012,12 @@ msgstr "Privaatne"
 #. I18N: gedcom tag PROB
 #: library/WT/Gedcom/Tag.php:697
 msgid "Probate"
-msgstr ""
+msgstr "Testamendi kinnitamine"
 
 #. I18N: gedcom tag PROP
 #: library/WT/Gedcom/Tag.php:701
 msgid "Property"
-msgstr ""
+msgstr "Kinnisvara"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_4_text.php:36
 msgid "Proposed census text&nbsp;&nbsp;"
@@ -11201,20 +11202,20 @@ msgstr "Suvalised pildid sellest perepuust"
 #: edit_interface.php:1785 edit_interface.php:1858
 #: library/WT/Controller/Family.php:117 modules_v3/relatives/module.php:261
 msgid "Re-order children"
-msgstr "Muuda laste järjestust"
+msgstr "Taasjärjesta lapsed"
 
 #: edit_interface.php:2169 edit_interface.php:2220
 #: library/WT/Controller/Individual.php:310
 #: modules_v3/relatives/module.php:340
 msgid "Re-order families"
-msgstr ""
+msgstr "Taasjärjesta perekonnad"
 
 #. I18N: gedcom tag _WT_OBJE_SORT
 #: edit_interface.php:1653 edit_interface.php:1750
 #: library/WT/Gedcom/Tag.php:1764 modules_v3/lightbox/module.php:79
 #: modules_v3/lightbox/module.php:80
 msgid "Re-order media"
-msgstr ""
+msgstr "Taasjärjesta meediafailid"
 
 #: admin_users.php:367 admin_users.php:569 edituser.php:137 help_text.php:1352
 #: login.php:315 login.php:414
@@ -11274,7 +11275,7 @@ msgstr "Redlands, Kalifornia"
 #: modules_v3/googlemap/module.php:935 modules_v3/googlemap/module.php:2289
 #: modules_v3/googlemap/module.php:3670
 msgid "Redraw map"
-msgstr ""
+msgstr "Joonista kaart uuesti"
 
 #. I18N: gedcom tag REFN
 #: library/WT/Gedcom/Tag.php:713
@@ -11317,14 +11318,14 @@ msgstr ""
 #: modules_v3/individual_ext_report/report.xml:3
 #: modules_v3/individual_ext_report/report.xml:88
 msgid "Related families"
-msgstr ""
+msgstr "Seotud perekonnad"
 
 #. I18N: Name of a report
 #: modules_v3/relative_ext_report/module.php:29
 #: modules_v3/relative_ext_report/report.xml:3
 #: modules_v3/relative_ext_report/report.xml:40
 msgid "Related individuals"
-msgstr ""
+msgstr "Seotud isikud"
 
 #. I18N: gedcom tag RELA
 #: library/WT/Gedcom/Tag.php:717
@@ -11360,7 +11361,7 @@ msgstr ""
 #: library/WT/MenuBar.php:231 library/WT/MenuBar.php:240 relationship.php:71
 #: relationship.php:86
 msgid "Relationships"
-msgstr ""
+msgstr "Sugulus"
 
 #. I18N: %s are individual’s names
 #: relationship.php:60
@@ -11418,7 +11419,7 @@ msgstr ""
 
 #: help_text.php:1367 timeline.php:281 timeline.php:296
 msgid "Remove person"
-msgstr ""
+msgstr "Eemalda isik"
 
 #: modules_v3/googlemap/module.php:4468
 msgid "Remove this location?"
@@ -11449,19 +11450,19 @@ msgstr "Vasta"
 #: admin_module_reports.php:58 admin_modules.php:132 admin_modules.php:150
 #: reportengine.php:122 reportengine.php:169
 msgid "Report"
-msgstr "Raport"
+msgstr "Väljavõte"
 
 #: admin_module_reports.php:30 library/WT/MenuBar.php:353
 #: themes/_administration/header.php:153
 msgid "Reports"
-msgstr "Raportid"
+msgstr "Väljavõtted"
 
 #: admin.php:208 admin.php:259 library/WT/MenuBar.php:301 mediaviewer.php:143
 #: modules_v3/gedcom_stats/module.php:106
 #: modules_v3/gedcom_stats/module.php:334 modules_v3/html/module.php:196
 #: repolist.php:29 repolist.php:33 statistics.php:353
 msgid "Repositories"
-msgstr "Hoidlate nimekiri"
+msgstr "Hoidlate nimekirju"
 
 #: find.php:619
 msgid "Repositories found"
@@ -11557,7 +11558,7 @@ msgstr ""
 #. I18N: gedcom tag RETI
 #: library/WT/Gedcom/Tag.php:741
 msgid "Retirement"
-msgstr ""
+msgstr "Pensionile jäämine"
 
 #: library/WT/Stats.php:6205
 msgid "Reunion"
@@ -11593,7 +11594,7 @@ msgstr ""
 #: includes/functions/functions_print_lists.php:239
 #: includes/functions/functions_print_lists.php:673
 msgid "Roots"
-msgstr ""
+msgstr "Juured"
 
 #. I18N: noun
 #: admin_site_access.php:286
@@ -11798,7 +11799,7 @@ msgstr ""
 
 #: medialist.php:128
 msgid "Search filters"
-msgstr ""
+msgstr "Otsingufiltrid"
 
 #: admin_trees_places.php:99 search.php:83 search.php:117
 msgid "Search for"
@@ -11874,11 +11875,11 @@ msgstr ""
 
 #: statistics.php:619 statistics.php:630 statistics.php:639
 msgid "Select the desired age interval"
-msgstr ""
+msgstr "Vali soovitud vanuse intervall"
 
 #: statistics.php:648
 msgid "Select the desired count interval"
-msgstr ""
+msgstr "Vali soovitud kokkulugemise intervall"
 
 #: modules_v3/gedcom_stats/module.php:288
 msgid "Select the stats to show in this block"
@@ -11966,7 +11967,7 @@ msgstr ""
 #. I18N: gedcom tag _SEPR
 #: library/WT/Gedcom/Tag.php:1724
 msgid "Separated"
-msgstr ""
+msgstr "Lahutatud"
 
 #: library/WT/Date/Calendar.php:232
 msgctxt "GENITIVE"
@@ -12128,24 +12129,27 @@ msgstr ""
 #: edit_interface.php:1330 edit_interface.php:1438 inverselink.php:138
 #: library/WT/Gedcom/Tag.php:769 note.php:150 note.php:160
 msgid "Shared note"
-msgstr "Jagatud viide"
+msgstr "Jagatud märkused"
 
 #: find.php:250
 msgid "Shared note contains:"
-msgstr "Jagatud Märge sisaldab:"
+msgstr "Jagatud märge sisaldab:"
 
 #: includes/functions/functions_print_lists.php:1091
 #: library/WT/MenuBar.php:307 notelist.php:29 notelist.php:33 search.php:107
 msgid "Shared notes"
-msgstr "Jagatud Märkmed"
+msgstr "Jagatud märkmed"
 
 #: help_text.php:358
 msgid "Shared notes are free-form text and will appear in the Fact Details section of the page.<br><br>Each shared note can be linked to more than one individual, family, source, or event."
-msgstr "Jagatud Märkmed on vabavormis tekst ja ilmuvad lehe Faktidetailid osasse.<br><br>Kõiki jagatud märkmeid saab seostada enam kui ühe isiku, perekonna, allika või sündmusega."
+msgstr ""
+"Jagatud märkmed on vabavormis tekst ja ilmuvad lehe Faktidetailid "
+"osasse.<br><br>Kõiki jagatud märkmeid saab seostada enam kui ühe isiku, "
+"perekonna, allika või sündmusega."
 
 #: find.php:642
 msgid "Shared notes found"
-msgstr "Jagatud Märkmeid leitud"
+msgstr "Jagatud märkmeid leitud"
 
 #: help_text.php:1149
 msgid "Shared notes, like regular notes, are free-form text.  Unlike regular notes, each shared note can be linked to more than one individual, family, source, or fact.<br><br>By clicking the appropriate icon, you can establish a link to an existing shared note or create a new shared note and at the same time link to it.  If a link to an existing shared note has already been established, you can also edit that note’s contents.<br><ul><li><b>Link to an existing shared note</b><div style=\"padding-left:20px;\">If you already know the ID number of the desired shared note, you can enter that number directly into the field.<br><br>When you click the <b>Find shared note</b> icon, you will be able to search the text of all existing shared notes and then choose one of them.  The ID number of the chosen note will be entered into the field automatically.<br><br>You must click the <b>Add</b> button to update the original record.</div><br></li><li><b>Create a new shared note</b><div style=\"padding-left:20px;\">When you click the <b>Create a new shared note</b> icon, a new window will open.  You can enter the text of the new note as you wish.  As with regular notes, you can enter URLs.<br><br>When you click the <b>Save</b> button, you will see a message with the ID number of the newly created shared note.  You should click on this message to close the editing window and also copy that new ID number directly into the ID number field.  If you just close the window, the newly created ID number will not be copied automatically.<br><br>You must click the <b>Add</b> button to update the original record.</div><br></li><li><b>Edit an existing shared note</b><div style=\"padding-left:20px;\">When you click the <b>Edit shared note</b> icon, a new window will open.  You can change the text of the existing shared note as you wish.  As with regular notes, you can enter URLs.<br><br>When you click the <b>Save</b> button, the text of the shared note will be updated.  You can close the window and then click the <b>Save</b> button again.<br><br>When you change the text of a shared note, your change will be reflected in all places to which that shared note is currently linked.  New links that you establish after having made your change will also use the updated text.</div></li></ul>"
@@ -12301,7 +12305,7 @@ msgstr "Näita kõiki märkmeid ja allikate viiteid märkmete ja allikate kaarti
 
 #: placelist.php:242
 msgid "Show all places in a list"
-msgstr "Näita nimekirjas kõik kohad"
+msgstr "Näita nimekirja kõiki kohti"
 
 #: help_text.php:1408 modules_v3/sources_tab/module.php:63
 msgid "Show all sources"
@@ -12309,7 +12313,7 @@ msgstr "Näita kõiki allikaid"
 
 #: modules_v3/tree/class_treeview.php:55
 msgid "Show all spouses and ancestors"
-msgstr ""
+msgstr "Näita kõiki abikaasasid ja esivanemaid"
 
 #: find.php:458
 msgid "Show all tags"
@@ -12318,7 +12322,7 @@ msgstr ""
 #. I18N: an age indicator, which can be dragged around the screen
 #: timeline.php:284
 msgid "Show an age cursor?"
-msgstr ""
+msgstr "Näita vanuse kursorit?"
 
 #. I18N: A site configuration setting
 #: admin_trees_config.php:988 help_text.php:703
@@ -12327,7 +12331,7 @@ msgstr ""
 
 #: modules_v3/ahnentafel_report/report.xml:12
 msgid "Show children of ancestors?"
-msgstr ""
+msgstr "Näita laste esivanemaid?"
 
 #: library/WT/MenuBar.php:174
 msgid "Show children on timeline chart"
@@ -12447,22 +12451,22 @@ msgstr ""
 
 #: timeline.php:322
 msgid "Show lifespans"
-msgstr ""
+msgstr "Näita eluiga"
 
 #: admin_site_config.php:87 help_text.php:416
 msgid "Show list of family trees"
-msgstr ""
+msgstr "Näita sugupuude nimekirja"
 
 #: modules_v3/ahnentafel_report/report.xml:9
 #: modules_v3/family_group_report/report.xml:8
 #: modules_v3/individual_ext_report/report.xml:10
 #: modules_v3/individual_report/report.xml:7
 msgid "Show notes?"
-msgstr ""
+msgstr "Näita märkusi?"
 
 #: modules_v3/ahnentafel_report/report.xml:10
 msgid "Show occupations?"
-msgstr ""
+msgstr "Näita ameteid?"
 
 #: help_text.php:1288 relationship.php:116
 msgid "Show oldest top"
@@ -12480,7 +12484,7 @@ msgstr "Näita ainult elavate inimeste sündmusi"
 
 #: includes/functions/functions_print_lists.php:158
 msgid "Show only females."
-msgstr ""
+msgstr "Näita ainult naisterahvaid."
 
 #: includes/functions/functions_print_lists.php:167
 msgid "Show only individuals for whom the gender is not known."
@@ -12492,11 +12496,11 @@ msgstr "Näita ainult isikuid, sündmusi või kõiki?"
 
 #: includes/functions/functions_print_lists.php:149
 msgid "Show only males."
-msgstr ""
+msgstr "Näita ainult meesterahvaid."
 
 #: find.php:457
 msgid "Show only the selected tags"
-msgstr ""
+msgstr "Näita ainult valitud võtmesõnu"
 
 #: includes/functions/functions_print_lists.php:287
 #: includes/functions/functions_print_lists.php:767
@@ -12509,13 +12513,13 @@ msgstr "Näita käiku"
 
 #: modules_v3/change_report/report.xml:8
 msgid "Show pending changes"
-msgstr ""
+msgstr "Näita ootel muudatusi"
 
 #: modules_v3/family_group_report/report.xml:9
 #: modules_v3/individual_ext_report/report.xml:11
 #: modules_v3/individual_report/report.xml:8
 msgid "Show photos?"
-msgstr ""
+msgstr "Näita pilte?"
 
 #: placelist.php:80
 msgid "Show places in hierarchy"
@@ -12523,7 +12527,7 @@ msgstr "Näita kohad hierarhias"
 
 #: admin_trees_config.php:547 help_text.php:889
 msgid "Show private relationships"
-msgstr ""
+msgstr "Näita privaatseid sugulussidemeid"
 
 #: search.php:112 search.php:179
 msgid "Show related individuals/families"
@@ -12543,7 +12547,7 @@ msgstr ""
 
 #: modules_v3/ahnentafel_report/report.xml:11
 msgid "Show residences?"
-msgstr ""
+msgstr "Näita residentsust?"
 
 #: help_text.php:900
 msgid "Show runtime statistics and database queries at the bottom of every page."
@@ -12568,7 +12572,7 @@ msgstr "Näita abikaasasid"
 #: includes/functions/functions_print_lists.php:290
 #: includes/functions/functions_print_lists.php:770
 msgid "Show statistics charts"
-msgstr ""
+msgstr "Näita statistilist väljavõtet"
 
 #. I18N: The placeholders are edit controls.  Show the [first/last] [1/2/3/4/5] parts of a place name
 #: admin_trees_config.php:926
@@ -12582,7 +12586,7 @@ msgstr ""
 
 #: famlist.php:179 indilist.php:179
 msgid "Show the list of individuals"
-msgstr ""
+msgstr "Näita isikute nimekirja"
 
 #: famlist.php:181 indilist.php:181
 msgid "Show the list of surnames"
@@ -12641,7 +12645,7 @@ msgstr ""
 #: library/WT/I18N.php:934 library/WT/I18N.php:935
 #, php-format
 msgid "Showing %1$s to %2$s of %3$s"
-msgstr ""
+msgstr "Näidatakse alates %1$s kuni %2$s Kokku kirjeid: %3$s"
 
 #: library/WT/Controller/Fanchart.php:355
 #: library/WT/Controller/Hourglass.php:398 pedigree.php:229
@@ -12815,7 +12819,7 @@ msgstr "Poeg"
 #: modules_v3/tree/class_treeview.php:333
 #, php-format
 msgid "Son of %s"
-msgstr ""
+msgstr "%s poeg"
 
 #: medialist.php:87 modules_v3/bdm_report/report.xml:11
 #: modules_v3/birth_report/report.xml:9
@@ -12830,7 +12834,7 @@ msgstr ""
 #: modules_v3/todays_events/module.php:144
 #: modules_v3/upcoming_events/module.php:155
 msgid "Sort order"
-msgstr ""
+msgstr "Sorteerimise järjekord"
 
 #. I18N: Abbreviation for “Sosa-Stradonitz number”.  This is an individual’s surname, so may need transliterating into non-latin alphabets.
 #: includes/functions/functions_print_lists.php:259
@@ -12907,7 +12911,7 @@ msgstr "Allikaid"
 
 #: modules_v3/missing_facts_report/report.xml:11
 msgid "Sources to the events"
-msgstr ""
+msgstr "Sündmuste algallikas"
 
 #: library/WT/Stats.php:6272
 msgid "South Africa"
@@ -12960,13 +12964,13 @@ msgstr ""
 
 #: includes/functions/functions_print_lists.php:1536
 msgid "Spouses"
-msgstr ""
+msgstr "Abikaasasid"
 
 #: modules_v3/individual_ext_report/report.xml:6
 #: modules_v3/missing_facts_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:6
 msgid "Spouses and children"
-msgstr ""
+msgstr "Abikaasad ja lapsed"
 
 #: library/WT/Stats.php:6147
 msgid "Sri Lanka"
@@ -13004,13 +13008,13 @@ msgstr "Alusta slaidiseansiga lehe laadimisel?"
 
 #: modules_v3/change_report/report.xml:5
 msgid "Starting range of change dates"
-msgstr ""
+msgstr "Muusatuste kuupäeva vahemiku algus"
 
 #. I18N: gedcom tag STAE
 #: library/WT/Gedcom/Tag.php:797 modules_v3/googlemap/module.php:357
 #: modules_v3/googlemap/module.php:3990 modules_v3/googlemap/module.php:4078
 msgid "State"
-msgstr ""
+msgstr "Osariik"
 
 #. I18N: Name of a module
 #: library/WT/MenuBar.php:116 modules_v3/gedcom_stats/module.php:30
@@ -13437,7 +13441,7 @@ msgstr ""
 #: medialist.php:277 mediaviewer.php:111
 #, php-format
 msgid "The file “%s” does not exist."
-msgstr ""
+msgstr "Faili “%s” ei leitud."
 
 #: admin_site_upgrade.php:480
 #, php-format
@@ -13677,12 +13681,12 @@ msgstr ""
 #: admin_pgv_to_wt.php:76
 #, php-format
 msgid "The version of %s is too new."
-msgstr ""
+msgstr "Versioon %s'st on liiga uus."
 
 #: admin_pgv_to_wt.php:74
 #, php-format
 msgid "The version of %s is too old."
-msgstr ""
+msgstr "Versioon %s'st on liiga vana."
 
 #: help_text.php:997
 msgid "The website www.geonames.org provides a large database of place names.  This can be searched when entering new places.  To use this feature, you must register for a free account at www.geonames.org and provide the username."
@@ -14596,7 +14600,7 @@ msgstr[1] "Top %s perekonnanime"
 #. I18N: i.e. most popular given name.
 #: modules_v3/top10_givnnames/module.php:64
 msgid "Top given name"
-msgstr ""
+msgstr "Enimkasutatud eesnimi"
 
 #. I18N: Name of a module.  Top=Most common
 #: modules_v3/top10_givnnames/module.php:30 statistics.php:199
@@ -14611,7 +14615,7 @@ msgstr "Kõrgeimale tasemele"
 #. I18N: i.e. most popular surname.
 #: modules_v3/top10_surnames/module.php:90
 msgid "Top surname"
-msgstr ""
+msgstr "Enimkasutatud perekonnanimi"
 
 #. I18N: Name of a module.  Top=Most common
 #: modules_v3/top10_surnames/module.php:30 statistics.php:198
@@ -14624,7 +14628,7 @@ msgstr "Toronto, Ontario, Kanada"
 
 #: modules_v3/change_report/report.xml:124
 msgid "Total accepted changes: "
-msgstr ""
+msgstr "Aktsepteeritud muudatusi kokku:"
 
 #: statistics.php:111
 msgid "Total births"
@@ -14654,12 +14658,12 @@ msgstr "Sündmusi"
 #: modules_v3/fact_sources/report.xml:351
 #: modules_v3/marriage_report/report.xml:111
 msgid "Total families"
-msgstr "Kokku perekondi"
+msgstr "Perekondi kokku"
 
 #: calendar.php:507 find.php:513 statistics.php:209
 #, php-format
 msgid "Total families: %s"
-msgstr ""
+msgstr "Perekondi kokku: %s"
 
 #: statistics.php:92
 msgid "Total females"
@@ -14686,7 +14690,7 @@ msgstr "Kokku isikuid"
 #: statistics.php:88
 #, php-format
 msgid "Total individuals: %s"
-msgstr ""
+msgstr "Isikuid kokku: %s"
 
 #: statistics.php:93
 msgid "Total living"
@@ -14698,7 +14702,7 @@ msgstr "Kokku mehi"
 
 #: statistics.php:213
 msgid "Total marriages"
-msgstr "Erinevaid abielusid"
+msgstr "Abielude arv"
 
 #: admin.php:138
 msgid "Total number of users"
@@ -14706,18 +14710,18 @@ msgstr "Kasutajate arv kokku"
 
 #: modules_v3/change_report/report.xml:84
 msgid "Total pending changes: "
-msgstr ""
+msgstr "Ootel muudatusi kokku:"
 
 #. I18N: A count of places
 #: modules_v3/googlemap/module.php:1767
 #, php-format
 msgid "Total places: %s"
-msgstr ""
+msgstr "Asukohti kokku: %s"
 
 #: find.php:667
 #, php-format
 msgid "Total sources: %s"
-msgstr ""
+msgstr "Allikaid kokku: %s"
 
 #: modules_v3/gedcom_stats/module.php:94
 #: modules_v3/gedcom_stats/module.php:302 modules_v3/html/module.php:180
@@ -14803,7 +14807,7 @@ msgstr "Kirjuta oma parool uuesti välistamaks trükivead."
 
 #: admin_trees_check.php:129
 msgid "Types of error"
-msgstr ""
+msgstr "Vigade tüübid"
 
 #. I18N: gedcom tag URL (A web address / URL)
 #. I18N: gedcom tag WWW (A web address / URL)
@@ -14811,7 +14815,7 @@ msgstr ""
 #: admin_trees_config.php:246 library/WT/Gedcom/Tag.php:849
 #: library/WT/Gedcom/Tag.php:865 library/WT/Gedcom/Tag.php:1752
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: library/WT/Stats.php:6255
 msgid "US Minor Outlying Islands"
@@ -14991,7 +14995,7 @@ msgstr ""
 
 #: modules_v3/googlemap/module.php:4580
 msgid "Upload geographic data"
-msgstr ""
+msgstr "Lae geograafilised andmed üles"
 
 #: admin_media_upload.php:34 admin_media_upload.php:177 help_text.php:1428
 #: themes/_administration/header.php:143
@@ -15042,11 +15046,11 @@ msgstr[1] ""
 #: modules_v3/family_group_report/report.xml:13
 #: modules_v3/individual_ext_report/report.xml:14
 msgid "Use colors"
-msgstr ""
+msgstr "Kasuta värve"
 
 #: modules_v3/tree/class_treeview.php:52
 msgid "Use compact layout"
-msgstr ""
+msgstr "Kasuta kompaktsemat vaadet"
 
 #: admin_trees_config.php:1281 help_text.php:534
 msgid "Use full source citations"
@@ -15347,7 +15351,7 @@ msgstr "Külastaja"
 #: calendar.php:258 modules_v3/bdm_report/module.php:29
 #: modules_v3/bdm_report/report.xml:3 modules_v3/bdm_report/report.xml:31
 msgid "Vital records"
-msgstr ""
+msgstr "Tähtsad kirjed"
 
 #. I18N: This is the first day of the week on calendars. 0=Sunday, 1=Monday...
 #: library/WT/I18N.php:296
@@ -15433,11 +15437,11 @@ msgstr "Kaal"
 #: modules_v3/user_welcome/module.php:42
 #, php-format
 msgid "Welcome %s"
-msgstr ""
+msgstr "Tere päevast, %s!"
 
 #: admin_site_config.php:156 help_text.php:1044
 msgid "Welcome text on login page"
-msgstr ""
+msgstr "Sisse logimise lehe tervitusteade"
 
 #: library/WT/Stats.php:6266
 msgid "West Africa"
@@ -15566,11 +15570,11 @@ msgstr "Ainult terved sõnad"
 
 #: includes/functions/functions_print_lists.php:653
 msgid "Widow"
-msgstr ""
+msgstr "Lesk (naine)"
 
 #: includes/functions/functions_print_lists.php:644
 msgid "Widower"
-msgstr ""
+msgstr "Lesk (mees)"
 
 #: fanchart.php:109 help_text.php:1227 modules_v3/googlemap/module.php:317
 #: modules_v3/googlemap/module.php:435
@@ -15921,7 +15925,7 @@ msgstr "Noorim ema"
 
 #: modules_v3/clippings/module.php:168 modules_v3/clippings/module.php:429
 msgid "Your clippings cart is empty."
-msgstr ""
+msgstr "Sinu väljalõigete legt on tühi."
 
 #: setup.php:394
 msgid "Your name"
@@ -16361,12 +16365,12 @@ msgstr "sulge"
 #. I18N: Name of a theme.
 #: themes/clouds/theme.php:54
 msgid "clouds"
-msgstr ""
+msgstr "pilved"
 
 #. I18N: Name of a theme.
 #: themes/colors/theme.php:134
 msgid "colors"
-msgstr ""
+msgstr "värvid"
 
 #: modules_v3/top10_surnames/module.php:165
 msgid "compact list"
@@ -16379,7 +16383,7 @@ msgstr ""
 #: reportengine.php:128 reportengine.php:283 setup.php:186 setup.php:206
 #: setup.php:275 setup.php:360 setup.php:416
 msgid "continue"
-msgstr ""
+msgstr "jätka"
 
 #. I18N: a program feature
 #: setup.php:131
@@ -16922,8 +16926,8 @@ msgstr "alates"
 #, php-format
 msgid "from %1$s interval %2$s year"
 msgid_plural "from %1$s interval %2$s years"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "alates %1$s intervalliga %2$s aasta"
+msgstr[1] "alates %1$s intervalliga %2$s aastat"
 
 #. I18N: Gedcom FROM dates
 #: library/WT/Date.php:287
@@ -18513,8 +18517,8 @@ msgstr ""
 #, php-format
 msgid "interval %s year"
 msgid_plural "interval %s years"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "intervalliga %s aasta"
+msgstr[1] "intervalliga %s aastat"
 
 #: statistics.php:650
 msgid "interval one child"
@@ -18555,12 +18559,12 @@ msgstr ""
 #. I18N: button label, last page
 #: library/WT/I18N.php:929
 msgid "last"
-msgstr ""
+msgstr "viimane"
 
 #: admin_trees_config.php:930
 msgctxt "Show the [first/last] [N] parts of a place name."
 msgid "last"
-msgstr ""
+msgstr "viimane"
 
 #: statisticsplot.php:687
 msgid "less than"
@@ -18666,7 +18670,7 @@ msgstr ""
 #. I18N: Name of a theme.
 #: themes/minimal/theme.php:30
 msgid "minimal"
-msgstr ""
+msgstr "minimaalne"
 
 #: modules_v3/googlemap/module.php:326
 msgid "minimum"
@@ -18866,7 +18870,7 @@ msgstr "/"
 
 #: includes/functions/functions_print.php:719
 msgid "on the date of death"
-msgstr ""
+msgstr "surmapäeval"
 
 #: statisticsplot.php:685 statisticsplot.php:711
 msgid "over"
@@ -19007,7 +19011,7 @@ msgstr "lähtesta"
 
 #: statistics.php:716
 msgid "results:"
-msgstr "tulemused:"
+msgstr "Tulemused:"
 
 #. I18N: http://en.wikipedia.org/wiki/Web_crawler
 #: admin_site_access.php:113 admin_site_access.php:307
@@ -19213,12 +19217,12 @@ msgstr ""
 #. I18N: select all (of the family trees)
 #: search.php:190
 msgid "select all"
-msgstr ""
+msgstr "vali kõik"
 
 #. I18N: select none (of the family trees)
 #: search.php:191
 msgid "select none"
-msgstr ""
+msgstr "ära vali midagi"
 
 #: includes/functions/functions.php:365 includes/functions/functions.php:385
 #: includes/functions/functions.php:848
@@ -19364,7 +19368,7 @@ msgstr ""
 #: modules_v3/todays_events/module.php:148
 #: modules_v3/upcoming_events/module.php:159
 msgid "sort by date"
-msgstr ""
+msgstr "sorteeri kuupäeva järgi"
 
 #. I18N: An option in a list-box
 #: edit_interface.php:1835 modules_v3/bdm_report/report.xml:11
@@ -19374,35 +19378,35 @@ msgstr ""
 #: modules_v3/occupation_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:7 reportengine.php:495
 msgid "sort by date of birth"
-msgstr ""
+msgstr "sorteeri sünnikuupäeva järgi"
 
 #. I18N: An option in a list-box
 #: modules_v3/bdm_report/report.xml:11 modules_v3/cemetery_report/report.xml:6
 #: modules_v3/death_report/report.xml:9
 #: modules_v3/relative_ext_report/report.xml:7 reportengine.php:499
 msgid "sort by date of death"
-msgstr ""
+msgstr "sorteeri surma kuupäeva järgi"
 
 #. I18N: An option in a list-box
 #: edit_interface.php:2197 modules_v3/marriage_report/report.xml:9
 #: reportengine.php:497
 msgid "sort by date of marriage"
-msgstr ""
+msgstr "sorteeri abiellumise kupäeva järgi"
 
 #. I18N: An option in a list-box
 #: modules_v3/recent_changes/module.php:153
 msgid "sort by date, newest first"
-msgstr ""
+msgstr "sorteeri kuupäeva järgi, uuemad enne"
 
 #. I18N: An option in a list-box
 #: modules_v3/recent_changes/module.php:152
 msgid "sort by date, oldest first"
-msgstr ""
+msgstr "sorteeri kuupäeva järgi, vanemad enne"
 
 #. I18N: An option in a list-box
 #: medialist.php:94
 msgid "sort by filename"
-msgstr ""
+msgstr "sorteeri failinime järgi"
 
 #. I18N: An option in a list-box
 #: modules_v3/bdm_report/report.xml:11 modules_v3/birth_report/report.xml:9
@@ -19417,12 +19421,12 @@ msgstr ""
 #: modules_v3/todays_events/module.php:147
 #: modules_v3/upcoming_events/module.php:158
 msgid "sort by name"
-msgstr ""
+msgstr "sorteeri nime järgi"
 
 #. I18N: An option in a list-box
 #: medialist.php:91
 msgid "sort by title"
-msgstr ""
+msgstr "sorteeri pealkirja järgi"
 
 #: modules_v3/googlemap/module.php:4007
 msgid "south"
@@ -19554,7 +19558,7 @@ msgstr "tabel"
 
 #: admin_trees_config.php:793 modules_v3/top10_surnames/module.php:165
 msgid "tag cloud"
-msgstr ""
+msgstr "märksõnapilv"
 
 #: includes/functions/functions.php:707
 msgctxt "FEMALE"
@@ -19650,7 +19654,7 @@ msgstr "tls"
 #: library/WT/Date.php:290
 #, php-format
 msgid "to %s"
-msgstr ""
+msgstr "%s'le"
 
 #: includes/functions/functions.php:711
 msgctxt "FEMALE"
@@ -19833,7 +19837,7 @@ msgstr ""
 #: includes/functions/functions_edit.php:326
 #: includes/functions/functions_edit.php:347
 msgid "webtrees internal messaging"
-msgstr ""
+msgstr "webtrees sisemine teadete süsteem"
 
 #: message.php:48 message.php:269 message.php:332
 msgid "webtrees message"
@@ -19856,7 +19860,7 @@ msgstr "webtrees vastamise aadress"
 #: includes/functions/functions_edit.php:328
 #: includes/functions/functions_edit.php:349
 msgid "webtrees sends emails with no storage"
-msgstr ""
+msgstr "webtrees saadab emaili ilma kohaliku salvestamiseta"
 
 #: includes/functions/functions_print.php:488
 msgid "webtrees wiki"
@@ -19878,7 +19882,7 @@ msgstr "naine"
 #. I18N: Name of a theme.
 #: themes/xenea/theme.php:30
 msgid "xenea"
-msgstr ""
+msgstr "xenea"
 
 #: timeline.php:128
 msgid "years"
@@ -19925,20 +19929,20 @@ msgstr "noorem õde"
 #, php-format
 msgid "±%d year"
 msgid_plural "±%d years"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "±%d aasta"
+msgstr[1] "±%d aastat"
 
 #. I18N: Place a nickname in quotation marks
 #: library/WT/Individual.php:1201
 #, php-format
 msgid "“%s”"
-msgstr ""
+msgstr "“%s”"
 
 #. I18N: %s is the name of an individual, source or other record
 #: modules_v3/user_favorites/module.php:80
 #, php-format
 msgid "“%s” has been added to your favorites."
-msgstr ""
+msgstr "“%s” on lisatud sinu lemmikutesse."
 
 #: includes/functions/functions_print.php:406 library/WT/Note.php:122
 msgid "…"

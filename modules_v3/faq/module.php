@@ -23,23 +23,17 @@
  * Class faq_WT_Module
  */
 class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Config {
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module.  Abbreviation for “Frequently Asked Questions” */ WT_I18N::translate('FAQ');
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	public function getDescription() {
 		return /* I18N: Description of the “FAQ” module */ WT_I18N::translate('A list of frequently asked questions and answers.');
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	public function modAction($mod_action) {
 		switch ($mod_action) {
 		case 'admin_config':
@@ -395,16 +389,12 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Confi
 		}
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	public function defaultMenuOrder() {
 		return 40;
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	public function getMenu() {
 		global $SEARCH_SPIDER;
 

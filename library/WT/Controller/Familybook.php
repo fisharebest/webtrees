@@ -24,16 +24,25 @@
  */
 class WT_Controller_Familybook extends WT_Controller_Chart {
 	// Data for the view
-	public $pid = null;
-	public $show_full = null;
-	public $show_spouse = null;
-	public $descent = null;
-	public $generations = null;
-	public $box_width = null;
-	public $rootid = null;
+	public $pid;
 
-	// Data for the controller
-	private $dgenerations = null;
+	/** @var int Whether to show full details in the individual boxes */
+	public $show_full;
+
+	/** @var int Whether to show spouse details */
+	public $show_spouse;
+
+	/** @var int Number of descendancy generations to show */
+	public $descent;
+
+	/** @var int Number of ascendancy generations to show */
+	public $generations;
+
+	/** @var int Size of boxes (percentage) */
+	public $box_width;
+
+	/** @var int Number of descendancy generations that exist */
+	private $dgenerations;
 
 	/**
 	 * Create a family-book controller

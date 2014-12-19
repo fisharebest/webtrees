@@ -163,9 +163,9 @@ class WT_Stats {
 	/**
 	 * Embed tags in text
 	 *
-	 * @param $text
+	 * @param string $text
 	 *
-	 * @return mixed
+	 * @return string
 	 */
 	public function embedTags($text) {
 		if (strpos($text, '#') !== false) {
@@ -1648,11 +1648,11 @@ class WT_Stats {
 	}
 
 	/**
-	 * @param boolean $simple
-	 * @param boolean $sex
-	 * @param integer $year1
-	 * @param integer $year2
-	 * @param array   $params
+	 * @param boolean  $simple
+	 * @param boolean  $sex
+	 * @param integer  $year1
+	 * @param integer  $year2
+	 * @param string[] $params
 	 *
 	 * @return array|string
 	 */
@@ -1736,11 +1736,11 @@ class WT_Stats {
 	}
 
 	/**
-	 * @param boolean $simple
-	 * @param boolean $sex
-	 * @param integer $year1
-	 * @param integer $year2
-	 * @param array   $params
+	 * @param boolean  $simple
+	 * @param boolean  $sex
+	 * @param integer  $year1
+	 * @param integer  $year2
+	 * @param string[] $params
 	 *
 	 * @return array|string
 	 */
@@ -4357,11 +4357,11 @@ class WT_Stats {
 	}
 
 	/**
-	 * @param boolean $simple
-	 * @param string  $sex
-	 * @param integer $year1
-	 * @param integer $year2
-	 * @param array   $params
+	 * @param boolean  $simple
+	 * @param string   $sex
+	 * @param integer  $year1
+	 * @param integer  $year2
+	 * @param string[] $params
 	 *
 	 * @return string|string[][]
 	 */
@@ -4525,10 +4525,9 @@ class WT_Stats {
 	}
 
 	/**
-	 * @param array $params
+	 * @param string[] $params
 	 *
-	 * @return array|mixed|string
-	 * @throws Exception
+	 * @return string
 	 */
 	public function noChildrenFamiliesList($params = array()) {
 		global $TEXT_DIRECTION;
