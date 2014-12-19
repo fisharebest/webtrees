@@ -167,6 +167,7 @@ header h1 {
 .makeMenu {
 	float: right;
 	margin: 21px 10px 0 0;
+	white-space: nowrap;
 }
 
 .makeMenu ul {
