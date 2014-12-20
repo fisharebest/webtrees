@@ -262,6 +262,10 @@ footer {
 
 }
 
+.makeMenu {
+	white-space: nowrap;
+}
+
 /* User Link Menus */
 .makeMenu li {
 	background: none !important;
