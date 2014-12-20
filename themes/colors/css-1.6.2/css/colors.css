@@ -167,6 +167,7 @@ header h1 {
 .makeMenu {
 	float: right;
 	margin: 21px 10px 0 0;
+	white-space: nowrap;
 }
 
 .makeMenu ul {
@@ -1151,7 +1152,7 @@ div.error {
 
 footer {
 	clear: both;
-	width: 99%;
+	text-align: center;
 }
 
 #index .user_messages td {
@@ -1811,6 +1812,7 @@ a:hover .nameZoom {
 }
 
 .contact_links {
+	margin: 30px 0 15px;
 	text-align: center;
 }
 
@@ -1821,12 +1823,6 @@ a:hover .nameZoom {
 
 .date {
 	color: #333;
-}
-
-.footer {
-	direction: ltr;
-	text-align: center;
-	width: 99%;
 }
 
 .gender_image {

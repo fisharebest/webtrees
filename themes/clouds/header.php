@@ -64,6 +64,7 @@ foreach (WT_MenuBar::getModuleMenus() as $menu) {
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<?php echo header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL); ?>
 	<title><?php echo WT_Filter::escapeHtml($title); ?></title>
 	<link rel="icon" href="<?php echo WT_CSS_URL; ?>favicon.png" type="image/png">
@@ -77,17 +78,15 @@ foreach (WT_MenuBar::getModuleMenus() as $menu) {
 	<?php if ($view !== 'simple') { ?>
 	<header>
 		<div id="header">
-			<div class="header">
-				<h1><?php echo WT_TREE_TITLE; ?></h1>
-				<div class="hsearch">
-					<form style="display:inline;" action="search.php" method="post" role="search">
-						<input type="hidden" name="action" value="general">
-						<input type="hidden" name="ged" value="<?php echo WT_GEDCOM; ?>">
-						<input type="hidden" name="topsearch" value="yes">
-						<input type="search" name="query" size="15" placeholder="<?php echo $WT_IMAGES['search']; ?>">
-						<input class="search-icon" type="image" src="<?php echo $WT_IMAGES['search']; ?>" alt="<?php echo WT_I18N::translate('Search'); ?>" title="<?php echo WT_I18N::translate('Search'); ?>">
-					</form>
-				</div>
+			<h1><?php echo WT_TREE_TITLE; ?></h1>
+			<div class="hsearch">
+				<form style="display:inline;" action="search.php" method="post" role="search">
+					<input type="hidden" name="action" value="general">
+					<input type="hidden" name="ged" value="<?php echo WT_GEDCOM; ?>">
+					<input type="hidden" name="topsearch" value="yes">
+					<input type="search" name="query" size="15" placeholder="<?php echo WT_I18N::translate('Search'); ?>">
+					<input class="search-icon" type="image" src="<?php echo $WT_IMAGES['search']; ?>" alt="<?php echo WT_I18N::translate('Search'); ?>" title="<?php echo WT_I18N::translate('Search'); ?>">
+				</form>
 			</div>
 		</div>
 		<div id="topMenu">

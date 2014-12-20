@@ -262,6 +262,10 @@ footer {
 
 }
 
+.makeMenu {
+	white-space: nowrap;
+}
+
 /* User Link Menus */
 .makeMenu li {
 	background: none !important;
@@ -348,7 +352,7 @@ header nav {
 }
 
 #main-menu {
-	margin: 0px;
+	margin: 0;
 }
 
 #main-menu li {
