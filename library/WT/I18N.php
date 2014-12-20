@@ -26,7 +26,6 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 use Patchwork\TurkishUtf8;
-use WT\Auth;
 
 /**
  * Class WT_I18N - library of useful functions for locales and translation
@@ -575,8 +574,6 @@ class WT_I18N {
 	 * @param integer $seconds
 	 *
 	 * @return string
-	 *
-	 * @todo Does Nesbot\Carbon do this for us?
 	 */
 	public static function timeAgo($seconds) {
 		$minute = 60;
