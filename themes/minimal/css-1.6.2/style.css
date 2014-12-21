@@ -86,20 +86,21 @@ textarea:required:invalid {
 }
 
 /* Row one */
-#header-title {
+header h1 {
 	float: left;
 	clear: left;
 	font-size: 26px;
 	font-weight: 900;
+	margin: 0;
+}
+
+[dir=rtl] header h1 {
+	float: right;
+	clear: right;
 }
 
 #header-user-links {
 	float: right;
-}
-
-[dir=rtl] #header-title {
-	float: right;
-	clear: right;
 }
 
 [dir=rtl] #header-user-links {
@@ -374,19 +375,19 @@ textarea {
 }
 
 .person_box {
-	background-color: #fff;
+	background: #fff;
 	border: solid #555 1px;
 	padding: 3px;
 }
 
 .person_boxF {
-	background-color: #fff;
+	background: #fff;
 	border: solid #555 1px;
 	padding: 3px;
 }
 
 .person_boxNN {
-	background-color: #fff;
+	background: #fff;
 	border: 1px dashed #808080;
 	padding: 3px;
 }
@@ -709,7 +710,7 @@ a .name1:hover {
 	margin-left: 1px;
 }
 
-#footer {
+footer {
 	clear: both;
 	color: #555;
 	font-size: 12px;
@@ -1009,7 +1010,8 @@ img.block {
 }
 
 #descendancy_chart ul {
-	background: url(images/vline.png) repeat-y left top;
+	background-image:url(images/vline.png);
+	background-position:left top;background-repeat:repeat-y;
 	list-style: none;
 	margin: 0 0 5px 15px;
 	padding-top: 0;
@@ -1042,7 +1044,8 @@ img.block {
 
 /*-- ancestry chart specific stylesheets --*/
 #ancestry_chart ul {
-	background: url(images/vline.png) repeat-y left top;
+	background-image:url(images/vline.png);
+	background-position:left top;background-repeat:repeat-y;
 	list-style: none;
 	display: block;
 	margin: 0 0 0 15px;
@@ -3246,11 +3249,15 @@ dd .deletelink {
 
 @media print {
 	#backprint,
-	#header,
-	#topMenu,
-	#separator {
-		display: none;
+	#separator,
+	header,
+	footer,
+	form,
+	#CB_All,
+	.noprint {
+		display: none !important;
 	}
+
 
 	#pedigree_chart {
 		left: -80px;
@@ -3265,20 +3272,8 @@ dd .deletelink {
 		right: -80px;
 	}
 
-	#header,
-	#footer,
-	.noprint {
-		display: none !important;
-	}
-
 	#familybook_chart h3 {
 		margin-bottom: 10px;
-	}
-
-	form,
-	button,
-	input {
-		display: none;
 	}
 
 	/* buttons and input are used out of forms in sortable tables*/
@@ -3296,10 +3291,6 @@ dd .deletelink {
 		left: -10px;
 		top: -60px;
 		z-index: 1;
-	}
-
-	#CB_All {
-		display: none;
 	}
 }
 

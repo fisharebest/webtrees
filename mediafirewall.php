@@ -206,7 +206,7 @@ function embedText($im, $text, $maxsize, $color, $font, $vpos, $hpos) {
  * @param integer $mxl
  * @param string  $text
  *
- * @return mixed
+ * @return integer
  */
 function textlength($t, $mxl, $text) {
 	$taille_c = $t;

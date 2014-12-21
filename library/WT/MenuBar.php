@@ -307,9 +307,9 @@ class WT_MenuBar {
 				$menulist[] = new WT_Menu(WT_I18N::translate('Shared notes'), 'notelist.php?ged=' . WT_GEDURL, 'menu-list-note');
 			}
 		}
-		uasort($menulist, function(WT_Menu $x, WT_Menu $y) { return WT_I18N::strcasecmp($x->label, $y->label); });
+		uasort($menulist, function(WT_Menu $x, WT_Menu $y) { return WT_I18N::strcasecmp($x->getLabel(), $y->getLabel()); });
 
-		$menu->submenus = $menulist;
+		$menu->setSubmenus($menulist);
 
 		return $menu;
 	}
@@ -439,7 +439,7 @@ class WT_MenuBar {
 				if (WT_LOCALE == $lang) {$submenu->addClass('','','lang-active');}
 				$menu->addSubmenu($submenu);
 			}
-			if (count($menu->submenus)>1) {
+			if (count($menu->getSubmenus())>1) {
 				return $menu;
 			} else {
 				return null;

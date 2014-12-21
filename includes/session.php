@@ -40,7 +40,7 @@ global $controller;
 
 // Identify ourself
 define('WT_WEBTREES', 'webtrees');
-define('WT_VERSION',  '1.6.2-dev');
+define('WT_VERSION',  '1.6.3-dev');
 
 // External URLs
 define('WT_WEBTREES_URL',  'http://www.webtrees.net/');
@@ -64,7 +64,6 @@ define('WT_JQUERY_COOKIE_URL',     WT_STATIC_URL . 'js/jquery.cookie-1.4.1.js');
 define('WT_JQUERY_DATATABLES_URL', WT_STATIC_URL . 'js/jquery.datatables-1.10.3.js');
 define('WT_JQUERY_JEDITABLE_URL',  WT_STATIC_URL . 'js/jquery.jeditable-1.7.3.js');
 define('WT_JQUERY_WHEELZOOM_URL',  WT_STATIC_URL . 'js/jquery.wheelzoom-2.0.0.js');
-define('WT_MODERNIZR_URL',         WT_STATIC_URL . 'js/modernizr.custom-2.6.2.js');
 define('WT_WEBTREES_JS_URL',       WT_STATIC_URL . 'js/webtrees-1.6.2.js');
 
 // Location of our modules and themes.  These are used as URLs and folder paths.

@@ -26,9 +26,9 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-echo '</div>'; // <div id="content">
+echo '</main>';
 if ($view!='simple') {
-	echo '<div id="footer" class="', $TEXT_DIRECTION, ' width99 center">';
+	echo '<footer>';
 	echo contact_links();
 	echo '<p class="logo">';
 	echo '<a href="', WT_WEBTREES_URL, '" target="_blank" title="', WT_WEBTREES, ' ', WT_VERSION, '">webtrees</a>';
@@ -36,5 +36,5 @@ if ($view!='simple') {
 	if ($WT_TREE && $WT_TREE->getPreference('SHOW_STATS')) {
 		echo execution_stats();
 	}
-	echo '</div>'; // <div id="footer">
+	echo '</footer>';
 }

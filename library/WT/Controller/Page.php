@@ -138,10 +138,6 @@ class WT_Controller_Page extends WT_Controller_Base {
 			$title .= ' - ' . $META_TITLE;
 		}
 
-		// This javascript needs to be loaded in the header, *before* the CSS.
-		// All other javascript should be defered until the end of the page
-		$javascript = '<script src="' . WT_MODERNIZR_URL . '"></script>';
-
 		// Give Javascript access to some PHP constants
 		$this->addInlineJavascript('
 			var WT_STATIC_URL  = "' . WT_Filter::escapeJs(WT_STATIC_URL) . '";

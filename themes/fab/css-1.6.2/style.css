@@ -169,7 +169,7 @@ textarea:required:invalid {
 }
 
 /* Elements used on every page */
-#header {
+header {
 	color: #888;
 	text-align: center;
 }
@@ -182,21 +182,17 @@ textarea:required:invalid {
 	float: left;
 }
 
-#header-title {
-	font-size: x-large;
-	float: left;
+header h1 {
 	clear: left;
+	float: left;
+	font-size: x-large;
+	font-weight: normal;
+	margin: 0;
 }
 
-[dir=rtl] #header-title {
-	float: right;
+[dir=rtl] header h1 {
 	clear: right;
-}
-
-#header-menu {
-	clear: both;
-	text-align: center;
-	padding-top: 12px;
+	float: right;
 }
 
 #content {
@@ -204,7 +200,7 @@ textarea:required:invalid {
 	margin-bottom: 12px;
 }
 
-#footer {
+footer {
 	clear: both;
 	text-align: center;
 	width: 99%;
@@ -266,7 +262,11 @@ textarea:required:invalid {
 
 }
 
-/* Use CSS menus based on nested <ul> */
+.makeMenu {
+	white-space: nowrap;
+}
+
+/* User Link Menus */
 .makeMenu li {
 	background: none !important;
 	display: inline;
@@ -339,6 +339,96 @@ textarea:required:invalid {
 }
 
 .makeMenu ul li a:hover {
+	background-color: #369;
+	color: #fff;
+	text-decoration: none;
+}
+
+/* Main menus */
+header nav {
+	clear: both;
+	text-align: center;
+	padding-top: 12px;
+}
+
+#main-menu {
+	margin: 0;
+}
+
+#main-menu li {
+	background: none !important;
+	display: inline;
+	position: relative;
+	white-space: nowrap;
+}
+
+#main-menu li:before {
+	content: " | ";
+}
+
+#main-menu li ul li:before {
+	content: "";
+}
+
+#main-menu li:first-child:before {
+	content: "";
+}
+
+#main-menu li ul {
+	display: none;
+	position: absolute;
+	left: 0;
+	top: 15px;
+	background-color: #eee;
+	border: thin solid #aaa;
+}
+
+[dir=rtl] #main-menu li ul {
+	left: auto;
+	right: 0;
+}
+
+/* position sub-sub-menus */
+
+#main-menu ul ul {
+	top: 0;
+	left: 100px;
+}
+
+[dir=rtl] #main-menu ul ul {
+	top: 0;
+	left: auto;
+	right: 100px;
+}
+
+#main-menu li ul li {
+	display: block;
+	text-align: left;
+}
+
+[dir=rtl] #main-menu li ul li {
+	text-align: right;
+}
+
+#main-menu,
+#main-menu li ul {
+	list-style: none;
+	padding: 1px;
+}
+
+#main-menu li:hover > ul {
+	display: block;
+
+}
+
+#main-menu ul li a {
+	background-color: #eee;
+	padding: 2px 5px;
+	display: block;
+
+}
+
+#main-menu ul li a:hover {
 	background-color: #369;
 	color: #fff;
 	text-decoration: none;
@@ -619,24 +709,18 @@ div.fact_SHARED_NOTE {
 		width: 510px !important;
 	}
 
+	header,
+	footer,
+	form,
+	#pedigree-page #people,
+	#CB_ALL, label,
+	#separator,
 	.noprint {
 		display: none !important;
 	}
 
-	#header,
-	#footer,
-	#pedigree-page #people,
-	#CB_ALL, label,
-	#separator {
-		display: none;
-	}
-
 	#familybook_chart h3 {
 		margin-bottom: 10px;
-	}
-
-	form, button, input {
-		display: none;
 	}
 }
 
@@ -842,7 +926,8 @@ div.fact_SHARED_NOTE {
 }
 
 #descendancy_chart ul {
-	background: url(images/vline.png) repeat-y left top;
+	background-image:url(images/vline.png);
+	background-position:left top;background-repeat:repeat-y;
 	list-style: none;
 	margin: 0 0 5px 15px;
 	padding: 0 15px;
@@ -884,7 +969,8 @@ li .person_boxF {
 
 /*-- ancestry chart specific stylesheets --*/
 #ancestry_chart ul {
-	background: url(images/vline.png) repeat-y left top;
+	background-image:url(images/vline.png);
+	background-position:left top;background-repeat:repeat-y;
 	list-style: none;
 	display: block;
 	margin: 0 0 0 15px;

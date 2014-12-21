@@ -35,9 +35,9 @@ if (!defined('WT_WEBTREES')) {
  *
  * @return string
  */
-function getMenuAsCustomList($menu) {
+function getMenuAsCustomList(WT_Menu $menu) {
 	// Create an inert menu - to use as a label
-	$tmp = new WT_Menu(strip_tags($menu->label), '');
+	$tmp = new WT_Menu(strip_tags($menu->getLabel()), '');
 
 	// Insert the label into the submenu
 	$submenus = $menu->getSubmenus();
@@ -58,23 +58,24 @@ function getMenuAsCustomList($menu) {
  */
 function color_theme_dropdown() {
 	global $COLOR_THEME_LIST, $WT_SESSION, $subColor;
-	$menu=new WT_Menu(/* I18N: A colour scheme */ WT_I18N::translate('Palette'), '#', 'menu-color');
+	$menu = new WT_Menu(/* I18N: A colour scheme */ WT_I18N::translate('Palette'), '#', 'menu-color');
 	uasort($COLOR_THEME_LIST, array('WT_I18N', 'strcasecmp'));
-	foreach ($COLOR_THEME_LIST as $colorChoice=>$colorName) {
-		$submenu=new WT_Menu($colorName, get_query_url(array('themecolor'=>$colorChoice), '&amp;'), 'menu-color-'.$colorChoice);
+	foreach ($COLOR_THEME_LIST as $colorChoice => $colorName) {
+		$submenu = new WT_Menu($colorName, get_query_url(array('themecolor' => $colorChoice), '&amp;'), 'menu-color-' . $colorChoice);
 		if (isset($WT_SESSION->subColor)) {
-			if ($WT_SESSION->subColor == $colorChoice) {
-				$submenu->addClass('','','theme-active');
+			if ($WT_SESSION->subColor === $colorChoice) {
+				$submenu->addClass('', '', 'theme-active');
 			}
-		} elseif  (WT_Site::getPreference('DEFAULT_COLOR_PALETTE') == $colorChoice) { /* here when visitor changes palette from default */
-			$submenu->addClass('','','theme-active');
-		} elseif ($subColor=='ash') { /* here when site has different theme as default and user switches to colors */
-			if ($subColor == $colorChoice) {
-				$submenu->addClass('','','theme-active');
+		} elseif (WT_Site::getPreference('DEFAULT_COLOR_PALETTE') === $colorChoice) { /* here when visitor changes palette from default */
+			$submenu->addClass('', '', 'theme-active');
+		} elseif ($subColor === 'ash') { /* here when site has different theme as default and user switches to colors */
+			if ($subColor === $colorChoice) {
+				$submenu->addClass('', '', 'theme-active');
 			}
 		}
 		$menu->addSubMenu($submenu);
 	}
+
 	return $menu->getMenuAsList();
 }
 
@@ -84,7 +85,7 @@ function color_theme_dropdown() {
  *
  */
 
-$COLOR_THEME_LIST=array(
+$COLOR_THEME_LIST = array(
 	'aquamarine'      => /* I18N: The name of a colour-scheme */ WT_I18N::translate('Aqua Marine'),
 	'ash'             => /* I18N: The name of a colour-scheme */ WT_I18N::translate('Ash'),
 	'belgianchocolate'=> /* I18N: The name of a colour-scheme */ WT_I18N::translate('Belgian Chocolate'),
@@ -113,7 +114,7 @@ if (isset($_GET['themecolor']) && array_key_exists($_GET['themecolor'], $COLOR_T
 	}
 	unset($_GET['themecolor']);
 	// Rember that we have selected a value
-	$WT_SESSION->subColor=$subColor;
+	$WT_SESSION->subColor = $subColor;
 }
 // If we are logged in, use our preference
 $subColor = Auth::user()->getPreference('themecolor');
@@ -139,7 +140,7 @@ define('WT_CSS_URL', WT_THEME_URL . 'css-1.6.2/');
 $footerfile = WT_THEME_DIR . 'footer.php';
 $headerfile = WT_THEME_DIR . 'header.php';
 
-$WT_IMAGES=array(
+$WT_IMAGES = array(
 	// used to draw charts
 	'dline'  => WT_CSS_URL . 'images/dline.png',
 	'dline2' => WT_CSS_URL . 'images/dline2.png',
@@ -186,12 +187,12 @@ $shadowoffsetX = 0;   // shadowOffsetX for joining lines
 $shadowoffsetY = 0;   // shadowOffsetY for joining lines
 
 // Other settings that should not be touched
-$Dbxspacing    = 5;   // position vertical line between boxes in relationship chart
-$Dbyspacing    = 10;  // position vertical spacing between boxes in relationship chart
-$Dbwidth       = 250; // horizontal spacing between boxes in all charts
-$Dbheight      = 80;  // horizontal spacing between boxes in all charts
-$Dindent       = 15;  // width to indent ancestry and descendancy charts boxes
-$Darrowwidth   = 300; // not used that I can see ***
+$Dbxspacing  = 5;   // position vertical line between boxes in relationship chart
+$Dbyspacing  = 10;  // position vertical spacing between boxes in relationship chart
+$Dbwidth     = 250; // horizontal spacing between boxes in all charts
+$Dbheight    = 80;  // horizontal spacing between boxes in all charts
+$Dindent     = 15;  // width to indent ancestry and descendancy charts boxes
+$Darrowwidth = 300; // not used that I can see ***
 
 // Dimensions for compact version of chart displays
 $cbwidth  = 240;
@@ -203,8 +204,8 @@ $WT_STATS_S_CHART_Y = 125;
 $WT_STATS_L_CHART_X = 900;
 
 // For map charts, the maximum size is 440 pixels wide by 220 pixels high
-$WT_STATS_MAP_X = 440;
-$WT_STATS_MAP_Y = 220;
+$WT_STATS_MAP_X        = 440;
+$WT_STATS_MAP_Y        = 220;
 $WT_STATS_CHART_COLOR1 = 'ffffff';
 $WT_STATS_CHART_COLOR2 = '95b8e0';
 $WT_STATS_CHART_COLOR3 = 'c8e7ff';
