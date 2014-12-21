@@ -450,15 +450,15 @@ header nav {
 /* person boxes are used in various charts */
 
 .person_box {
-	background: #ddf;
+	background-color: #ddf;
 }
 
 .person_boxF {
-	background: #fdd;
+	background-color: #fdd;
 }
 
 .person_boxNN {
-	background: #dfd;
+	background-color: #dfd;
 }
 
 .person_box,
