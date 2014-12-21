@@ -95,7 +95,7 @@ input,
 button,
 textarea {
 	border-width: 1px;
-	border-top-color: #fff #555 #555 #fff;
+	border-color: #fff #555 #555 #fff;
 	font-size: 12px;
 }
 

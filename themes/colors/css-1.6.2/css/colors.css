@@ -151,21 +151,23 @@ textarea:required:invalid {
 	height: 50px;
 }
 
-span.title {
+header h1 {
 	float: left;
 	font-size: 24px;
-	margin: 16px 0 3px 12px;
+	font-weight: normal;
+	margin: 16px 12px 3px;
 }
 
-[dir=rtl] span.title {
+[dir=rtl] header h1 {
 	float: right;
-	margin: 16px 12px 3px 3px;
+	margin: 16px 12px 3px;
 }
 
 /* Options Menu */
 .makeMenu {
 	float: right;
 	margin: 21px 10px 0 0;
+	white-space: nowrap;
 }
 
 .makeMenu ul {
@@ -1150,7 +1152,7 @@ div.error {
 
 footer {
 	clear: both;
-	width: 99%;
+	text-align: center;
 }
 
 #index .user_messages td {
@@ -1764,12 +1766,14 @@ div.fact_SHARED_NOTE {
 .name2 {
 	font-weight: 700;
 	overflow: hidden;
+	font-size: 12px;
 }
 
 a:hover .name1,
 a:hover .name2 {
 	color: #f00;
 	font-weight: 700;
+	font-size: 12px;
 }
 
 .nameZoom {
@@ -1808,6 +1812,7 @@ a:hover .nameZoom {
 }
 
 .contact_links {
+	margin: 30px 0 15px;
 	text-align: center;
 }
 
@@ -1818,12 +1823,6 @@ a:hover .nameZoom {
 
 .date {
 	color: #333;
-}
-
-.footer {
-	direction: ltr;
-	text-align: center;
-	width: 99%;
 }
 
 .gender_image {

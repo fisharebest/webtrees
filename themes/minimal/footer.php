@@ -28,7 +28,7 @@ if (!defined('WT_WEBTREES')) {
 
 echo '</main>';
 if ($view!='simple') {
-	echo '<footer class="', $TEXT_DIRECTION, ' width99 center">';
+	echo '<footer>';
 	echo contact_links();
 	echo '<p class="logo">';
 	echo '<a href="', WT_WEBTREES_URL, '" target="_blank" title="', WT_WEBTREES, ' ', WT_VERSION, '">webtrees</a>';

@@ -182,15 +182,17 @@ header {
 	float: left;
 }
 
-#header-title {
-	font-size: x-large;
-	float: left;
+header h1 {
 	clear: left;
+	float: left;
+	font-size: x-large;
+	font-weight: normal;
+	margin: 0;
 }
 
-[dir=rtl] #header-title {
-	float: right;
+[dir=rtl] header h1 {
 	clear: right;
+	float: right;
 }
 
 #content {
@@ -258,6 +260,10 @@ footer {
 #main-menu ul {
 	z-index: 210;
 
+}
+
+.makeMenu {
+	white-space: nowrap;
 }
 
 /* User Link Menus */
@@ -346,7 +352,7 @@ header nav {
 }
 
 #main-menu {
-	margin: 0px;
+	margin: 0;
 }
 
 #main-menu li {
@@ -444,15 +450,15 @@ header nav {
 /* person boxes are used in various charts */
 
 .person_box {
-	background: #ddf;
+	background-color: #ddf;
 }
 
 .person_boxF {
-	background: #fdd;
+	background-color: #fdd;
 }
 
 .person_boxNN {
-	background: #dfd;
+	background-color: #dfd;
 }
 
 .person_box,
