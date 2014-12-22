@@ -34,6 +34,10 @@ body {
 	margin: 0;
 }
 
+main {
+	display: block;
+}
+
 :focus {
 	outline-style: none;
 }

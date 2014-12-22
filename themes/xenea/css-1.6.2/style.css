@@ -34,6 +34,10 @@ body {
 	margin: 1px;
 }
 
+main {
+	display: block;
+}
+
 a {
 	color: #00f;
 	text-decoration: none;
