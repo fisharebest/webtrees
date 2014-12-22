@@ -4263,7 +4263,7 @@ span.link_text {
 }
 
 @media print {
-	#content {
+	main {
 		padding: 0;
 	}
 
