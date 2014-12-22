@@ -27,4 +27,7 @@
 	url = https://github.com/JustCarmen/justlight_theme_options.git
 [submodule "modules_v3/fancy_branches"]
 	path = modules_v3/fancy_branches
-	url = ../fancy_branches
+	url = https://github.com/JustCarmen/fancy_branches.git
+[submodule "modules_v3/fancy_gendex"]
+	path = modules_v3/fancy_gendex
+	url = https://github.com/JustCarmen/fancy_gendex.git
