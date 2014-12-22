@@ -119,4 +119,4 @@ $this
 	</header>
 	<?php } ?>
 	<?php echo WT_FlashMessages::getHtmlMessages(); ?>
-	<main id="content">
+	<main>

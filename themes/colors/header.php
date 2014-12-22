@@ -130,4 +130,4 @@ foreach (WT_MenuBar::getModuleMenus() as $menu) {
 	</header>
 	<?php } ?>
 	<?php echo WT_FlashMessages::getHtmlMessages(); ?>
-	<main id="content">
+	<main>
