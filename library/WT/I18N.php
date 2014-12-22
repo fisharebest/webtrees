@@ -26,7 +26,6 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 use Patchwork\TurkishUtf8;
-use WT\Auth;
 
 /**
  * Class WT_I18N - library of useful functions for locales and translation
@@ -185,7 +184,7 @@ class WT_I18N {
 	 *
 	 * @return string $string
 	 */
-	public static function init($locale=null) {
+	public static function init($locale = null) {
 		global $WT_SESSION, $WT_TREE;
 
 		// The translation libraries only work with a cache.
@@ -197,7 +196,7 @@ class WT_I18N {
 		if (ini_get('apc.enabled')) {
 			self::$cache = Zend_Cache::factory('Core', 'Apc', $cache_options, array());
 		} elseif (WT_File::mkdir(WT_DATA_DIR . 'cache')) {
-			self::$cache = Zend_Cache::factory('Core', 'File', $cache_options, array('cache_dir'=>WT_DATA_DIR . 'cache'));
+			self::$cache = Zend_Cache::factory('Core', 'File', $cache_options, array('cache_dir' => WT_DATA_DIR . 'cache'));
 		} else {
 			self::$cache = Zend_Cache::factory('Core', 'Zend_Cache_Backend_BlackHole', $cache_options, array(), false, true);
 		}
@@ -205,50 +204,49 @@ class WT_I18N {
 		Zend_Locale::setCache(self::$cache);
 		Zend_Translate::setCache(self::$cache);
 
-		$installed_languages=self::installed_languages();
+		$installed_languages = self::installed_languages();
 		if (is_null($locale) || !array_key_exists($locale, $installed_languages)) {
 			// Automatic locale selection.
-			$locale = WT_Filter::get('lang');
-			if ($locale && array_key_exists($locale, $installed_languages)) {
+			if (array_key_exists(WT_Filter::get('lang'), $installed_languages)) {
 				// Requested in the URL?
-				Auth::user()->setPreference('language', $locale);
+				$locale = WT_Filter::get('lang');
 			} elseif (array_key_exists($WT_SESSION->locale, $installed_languages)) {
 				// Rembered from a previous visit?
 				$locale = $WT_SESSION->locale;
 			} else {
 				// Browser preference takes priority over gedcom default
-				if (!empty($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
-					$prefs = explode(',', str_replace(' ', '', $_SERVER['HTTP_ACCEPT_LANGUAGE']));
-				} else {
+				if (empty($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
 					$prefs = array();
+				} else {
+					$prefs = explode(',', str_replace(' ', '', $_SERVER['HTTP_ACCEPT_LANGUAGE']));
 				}
-				if (WT_GED_ID) {
+				if ($WT_TREE) {
 					// Add the tree’s default language as a low-priority
-					$locale = $WT_TREE->getPreference('LANGUAGE');
-					$prefs[] = $locale.';q=0.2';
+					$locale  = $WT_TREE->getPreference('LANGUAGE');
+					$prefs[] = $locale . ';q=0.2';
 				}
-				$prefs2=array();
+				$prefs2 = array();
 				foreach ($prefs as $pref) {
 					list($l, $q)=explode(';q=', $pref.';q=1.0');
-					$l=preg_replace_callback(
+					$l = preg_replace_callback(
 						'/_[a-z][a-z]$/',
 						function($x) { return strtoupper($x[0]); },
 						str_replace('-', '_', $l)
 					); // en-gb => en_GB
 					if (array_key_exists($l, $prefs2)) {
-						$prefs2[$l]=max((float)$q, $prefs2[$l]);
+						$prefs2[$l] = max((float)$q, $prefs2[$l]);
 					} else {
-						$prefs2[$l]=(float)$q;
+						$prefs2[$l] = (float)$q;
 					}
 				}
 				// Ensure there is a fallback.
 				if (!array_key_exists('en_US', $prefs2)) {
-					$prefs2['en_US']=0.01;
+					$prefs2['en_US'] = 0.01;
 				}
 				arsort($prefs2);
 				foreach (array_keys($prefs2) as $pref) {
 					if (array_key_exists($pref, $installed_languages)) {
-						$locale=$pref;
+						$locale = $pref;
 						break;
 					}
 				}
@@ -256,7 +254,7 @@ class WT_I18N {
 		}
 
 		// Load the translation file
-		self::$translation_adapter = new Zend_Translate('gettext', WT_ROOT.'language/'.$locale.'.mo', $locale);
+		self::$translation_adapter = new Zend_Translate('gettext', WT_ROOT . 'language/' . $locale . '.mo', $locale);
 
 		// Deprecated - some custom modules use this to add translations
 		Zend_Registry::set('Zend_Translate', self::$translation_adapter);
@@ -282,10 +280,10 @@ class WT_I18N {
 
 		// Extract language settings from the translation file
 		global $DATE_FORMAT; // I18N: This is the format string for full dates.  See http://php.net/date for codes
-		$DATE_FORMAT=self::noop('%j %F %Y');
+		$DATE_FORMAT = self::noop('%j %F %Y');
 
 		global $TIME_FORMAT; // I18N: This is the format string for the time-of-day.  See http://php.net/date for codes
-		$TIME_FORMAT=self::noop('%H:%i:%s');
+		$TIME_FORMAT = self::noop('%H:%i:%s');
 
 		// Alphabetic sorting sequence (upper-case letters), used by webtrees to sort strings
 		list(, self::$alphabet_upper) = explode('=', self::noop('ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ'));
@@ -298,14 +296,14 @@ class WT_I18N {
 		global $TEXT_DIRECTION;
 		$TEXT_DIRECTION = self::scriptDirection(self::languageScript($locale));
 
-		self::$locale=$locale;
-		self::$dir=$TEXT_DIRECTION;
+		self::$locale = $locale;
+		self::$dir    = $TEXT_DIRECTION;
 
 		// I18N: This punctuation is used to separate lists of items.
-		self::$list_separator=self::translate(', ');
+		self::$list_separator = self::translate(', ');
 
 		// I18N: This is the name of the MySQL collation that applies to your language.  A list is available at http://dev.mysql.com/doc/refman/5.0/en/charset-unicode-sets.html
-		self::$collation=self::translate('utf8_unicode_ci');
+		self::$collation = self::translate('utf8_unicode_ci');
 
 		// Non-latin numbers may require non-latin digits
 		try {
@@ -576,8 +574,6 @@ class WT_I18N {
 	 * @param integer $seconds
 	 *
 	 * @return string
-	 *
-	 * @todo Does Nesbot\Carbon do this for us?
 	 */
 	public static function timeAgo($seconds) {
 		$minute = 60;
