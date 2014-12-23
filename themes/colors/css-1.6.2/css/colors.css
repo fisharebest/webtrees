@@ -2031,10 +2031,10 @@ textarea {
 
 .descriptionbox {
 	border: 1px solid #999;
+	font-size: 12px;
 	border-radius: 3px;
 	padding: 3px;
 	vertical-align: top;
-	white-space: nowrap;
 }
 
 .formField {
@@ -3049,6 +3049,7 @@ span.link_text {
 .markdown th {
 	border: solid thin #000;
 	padding: 3px;
+	font-size: .98em;
 }
 
 .markdown ol,

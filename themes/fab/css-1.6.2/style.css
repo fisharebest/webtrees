@@ -736,7 +736,6 @@ div.fact_SHARED_NOTE {
 	font-weight: bold;
 	background-color: #ccc;
 	vertical-align: top;
-	white-space: nowrap;
 }
 
 .optionbox {
@@ -1941,6 +1940,7 @@ span.link_text {
 .markdown th {
 	border: solid thin #000;
 	padding: 3px;
+	font-size: 10px;
 }
 
 .indi_table {
