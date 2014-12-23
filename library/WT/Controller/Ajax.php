@@ -1,6 +1,6 @@
 <?php
 // webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// Copyright (C) 2015 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -34,12 +34,11 @@ class WT_Controller_Ajax extends WT_Controller_Base {
 	}
 
 	/**
-	 * @return $this
+	 * @return string
 	 */
 	public function pageFooter() {
 		// Ajax responses may have Javascript
-		echo $this->getJavascript();
-		return $this;
+		return $this->getJavascript();
 	}
 
 	/**

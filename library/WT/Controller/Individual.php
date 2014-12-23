@@ -224,7 +224,9 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 	 */
 	public function printSexRecord(WT_Fact $event) {
 		$sex = $event->getValue();
-		if (empty($sex)) $sex = 'U';
+		if (empty($sex)) {
+			$sex = 'U';
+		}
 		echo '<span id="sex" class="';
 		if ($event->isPendingDeletion()) {
 			echo 'old ';
@@ -283,9 +285,10 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 		$menu->setOnclick("return false;");
 		if (WT_USER_CAN_EDIT) {
 			foreach ($this->record->getFacts() as $fact) {
-				if ($fact->getTag()=='NAME' && $fact->canEdit())
+				if ($fact->getTag() === 'NAME' && $fact->canEdit()) {
 					$menu->setOnclick("return edit_name('".$this->record->getXref() . "', '" . $fact->getFactId() . "');");
 					break;
+				}
 			}
 
 			$submenu = new WT_Menu(WT_I18N::translate('Add a new name'), '#', 'menu-indi-addname');

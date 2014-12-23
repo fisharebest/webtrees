@@ -28,6 +28,7 @@ require_once WT_ROOT . 'includes/functions/functions_print_lists.php';
 
 use Rhumsaa\Uuid\Uuid;
 use WT\Auth;
+use WT\Theme;
 use WT\User;
 
 /**
@@ -360,7 +361,10 @@ class WT_Stats {
 	 * @return string
 	 */
 	public function chartIndisWithSources($params = array()) {
-		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
+		$WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
+		$WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
+		$WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
+		$WT_STATS_S_CHART_Y    = Theme::theme()->parameter('stats-small-chart-y');
 
 		if (isset($params[0]) && $params[0] != '') {
 			$size = strtolower($params[0]);
@@ -437,7 +441,11 @@ class WT_Stats {
 	 * @return string
 	 */
 	public function chartFamsWithSources($params = array()) {
-		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
+		$WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
+		$WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
+		$WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
+		$WT_STATS_S_CHART_Y    = Theme::theme()->parameter('stats-small-chart-y');
+
 
 		if (isset($params[0]) && $params[0] != '') {
 			$size = strtolower($params[0]);
@@ -1139,7 +1147,10 @@ class WT_Stats {
 	 * @return string
 	 */
 	public function chartMedia($params = array()) {
-		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
+		$WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
+		$WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
+		$WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
+		$WT_STATS_S_CHART_Y    = Theme::theme()->parameter('stats-small-chart-y');
 
 		if (isset($params[0]) && $params[0] != '') {
 			$size = strtolower($params[0]);
@@ -1391,7 +1402,11 @@ class WT_Stats {
 	 * @return string
 	 */
 	public function chartDistribution($params = array()) {
-		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_CHART_COLOR3, $WT_STATS_MAP_X, $WT_STATS_MAP_Y;
+		$WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
+		$WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
+		$WT_STATS_CHART_COLOR3 = Theme::theme()->parameter('distribution-chart-low-values');
+		$WT_STATS_MAP_X        = Theme::theme()->parameter('distribution-chart-x');
+		$WT_STATS_MAP_Y        = Theme::theme()->parameter('distribution-chart-y');
 
 		if (isset($params[0])) {
 			$chart_shows = $params[0];
@@ -1657,7 +1672,11 @@ class WT_Stats {
 	 * @return array|string
 	 */
 	public function statsBirthQuery($simple = true, $sex = false, $year1 = -1, $year2 = -1, $params = array()) {
-		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
+		$WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
+		$WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
+		$WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
+		$WT_STATS_S_CHART_Y    = Theme::theme()->parameter('stats-small-chart-y');
+
 
 		if ($simple) {
 			$sql =
@@ -1745,7 +1764,11 @@ class WT_Stats {
 	 * @return array|string
 	 */
 	public function statsDeathQuery($simple = true, $sex = false, $year1 = -1, $year2 = -1, $params = array()) {
-		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
+		$WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
+		$WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
+		$WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
+		$WT_STATS_S_CHART_Y    = Theme::theme()->parameter('stats-small-chart-y');
+
 
 		if ($simple) {
 			$sql =
@@ -3100,7 +3123,11 @@ class WT_Stats {
 	 * @return string|array
 	 */
 	public function statsMarrQuery($simple = true, $first = false, $year1 = -1, $year2 = -1, $params = array()) {
-		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
+		$WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
+		$WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
+		$WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
+		$WT_STATS_S_CHART_Y    = Theme::theme()->parameter('stats-small-chart-y');
+
 
 		if ($simple) {
 			$sql =
@@ -3191,7 +3218,11 @@ class WT_Stats {
 	 * @return string|array
 	 */
 	private function statsDivQuery($simple = true, $first = false, $year1 = -1, $year2 = -1, $params = array()) {
-		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
+		$WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
+		$WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
+		$WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
+		$WT_STATS_S_CHART_Y    = Theme::theme()->parameter('stats-small-chart-y');
+
 
 		if ($simple) {
 			$sql =
@@ -4114,7 +4145,11 @@ class WT_Stats {
 	 * @return string|string[][]
 	 */
 	public function monthFirstChildQuery($simple = true, $sex = false, $year1 = -1, $year2 = -1, $params = array()) {
-		global $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y, $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2;
+		$WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
+		$WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
+		$WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
+		$WT_STATS_S_CHART_Y    = Theme::theme()->parameter('stats-small-chart-y');
+
 
 		if ($year1 >= 0 && $year2 >= 0) {
 			$sql_years = " AND (d_year BETWEEN '{$year1}' AND '{$year2}')";
@@ -4281,7 +4316,10 @@ class WT_Stats {
 	 * @return string
 	 */
 	public function chartLargestFamilies($params = array()) {
-		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_L_CHART_X, $WT_STATS_S_CHART_Y;
+		$WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
+		$WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
+		$WT_STATS_L_CHART_X    = Theme::theme()->parameter('stats-large-chart-x');
+		$WT_STATS_S_CHART_Y    = Theme::theme()->parameter('stats-small-chart-y');
 
 		if (isset($params[0]) && $params[0] != '') {
 			$size = strtolower($params[0]);
@@ -4850,7 +4888,11 @@ class WT_Stats {
 	 * @return string
 	 */
 	public function chartCommonSurnames($params = array()) {
-		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
+		$WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
+		$WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
+		$WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
+		$WT_STATS_S_CHART_Y    = Theme::theme()->parameter('stats-small-chart-y');
+
 
 		if (isset($params[0]) && $params[0] != '') {
 			$size = strtolower($params[0]);
@@ -5247,7 +5289,11 @@ class WT_Stats {
 	 * @return string
 	 */
 	public function chartCommonGiven($params = array()) {
-		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
+		$WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
+		$WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
+		$WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
+		$WT_STATS_S_CHART_Y    = Theme::theme()->parameter('stats-small-chart-y');
+
 
 		if (isset($params[0]) && $params[0] != '') {
 			$size = strtolower($params[0]);
@@ -5562,14 +5608,26 @@ class WT_Stats {
 	 * @return string
 	 */
 	public function contactWebmaster() {
-		return user_contact_link($this->tree->getPreference('WEBMASTER_USER_ID'));
+		$user_id = $this->tree->getPreference('WEBMASTER_USER_ID');
+		$user = User::find($user_id);
+		if ($user) {
+			return Theme::theme()->contactLink($user);
+		} else {
+			return $user_id;
+		}
 	}
 
 	/**
 	 * @return string
 	 */
 	public function contactGedcom() {
-		return user_contact_link($this->tree->getPreference('CONTACT_USER_ID'));
+		$user_id = $this->tree->getPreference('CONTACT_USER_ID');
+		$user = User::find($user_id);
+		if ($user) {
+			return Theme::theme()->contactLink($user);
+		} else {
+			return $user_id;
+		}
 	}
 
 	/**

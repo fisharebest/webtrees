@@ -13642,7 +13642,7 @@ msgstr ""
 #. I18N: An XREF is the identification number used in GEDCOM files.
 #: admin_trees_merge.php:77
 #, php-format
-msgid "The two family trees have %1$s record which use the same “XREF”."
+msgid "The two family trees have %1$s record which uses the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
 msgstr[0] ""
 msgstr[1] ""
@@ -14385,7 +14385,7 @@ msgstr ""
 
 #: admin_trees_manage.php:137
 #, php-format
-msgid "This will delete all the genealogical data from <b>%s</b> and replace it with data from another GEDCOM."
+msgid "This will delete all the genealogical data from <b>%s</b> and replace it with data from another GEDCOM file."
 msgstr ""
 
 #: modules_v3/googlemap/module.php:1772

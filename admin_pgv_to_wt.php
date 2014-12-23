@@ -2,7 +2,7 @@
 // PGV to webtrees transfer wizard
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// Copyright (C) 2015 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -577,7 +577,7 @@ $GEDCOMS=WT_DB::prepare(
 foreach ($GEDCOMS as $GEDCOM=>$GED_DATA) {
 	$config=$GED_DATA['config'];
 	if ($PGV_SCHEMA_VERSION>=12) {
-	$config=str_replace('${INDEX_DIRECTORY}', $INDEX_DIRECTORY.DIRECTORY_SEPARATOR, $config);
+		$config=str_replace('${INDEX_DIRECTORY}', $INDEX_DIRECTORY.DIRECTORY_SEPARATOR, $config);
 	} else {
 		$config=str_replace($INDEX_DIRECTORY, $INDEX_DIRECTORY.DIRECTORY_SEPARATOR, $config);
 	}

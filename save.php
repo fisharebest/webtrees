@@ -2,7 +2,7 @@
 // Callback function for inline editing.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// Copyright (C) 2015 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -57,90 +57,6 @@ $value=WT_Filter::post('value');
 // Every switch must have a default case, and every case must end in ok() or fail()
 
 switch ($table) {
-case 'site_setting':
-	//////////////////////////////////////////////////////////////////////////////
-	// Table name: WT_SITE_SETTING
-	// ID format:  site_setting-{setting_name}
-	//////////////////////////////////////////////////////////////////////////////
-
-	// Authorisation
-	if (!Auth::isAdmin()) {
-		fail();
-	}
-
-	// Validation
-	switch ($id1) {
-	case 'MAX_EXECUTION_TIME':
-		if ($value=='') {
-			// Delete the existing value
-			$value=null;
-		} elseif (!is_numeric($value)) {
-			fail();
-		}
-		break;
-	case 'SESSION_TIME':
-	case 'SMTP_PORT':
-		if (!is_numeric($value)) {
-			fail();
-		}
-		break;
-	case 'INDEX_DIRECTORY':
-		if (!is_dir($value) || substr($value, -1)!='/') {
-			fail();
-		}
-		break;
-	case 'MEMORY_LIMIT':
-		if ($value=='') {
-			// Delete the existing value
-			$value=null;
-		} elseif (!preg_match('/^[0-9]+[KMG]$/', $value)) {
-			// A number must be followed by K, M or G.
-			fail();
-		}
-		break;
-	case 'USE_REGISTRATION_MODULE':
-	case 'REQUIRE_ADMIN_AUTH_REGISTRATION':
-	case 'ALLOW_USER_THEMES':
-	case 'ALLOW_CHANGE_GEDCOM':
-	case 'SMTP_AUTH':
-	case 'SHOW_REGISTER_CAUTION':
-		$value=(int)$value;
-		break;
-	case 'WELCOME_TEXT_AUTH_MODE_4':
-		// Save a different version of this for each language.
-		$id1 = 'WELCOME_TEXT_AUTH_MODE_' . WT_LOCALE;
-		break;
-	case 'LOGIN_URL':
-		if ($value && !preg_match('/^https?:\/\//', $value)) {
-			fail();
-		}
-		break;
-	case 'THEME_DIR':
-	case 'SERVER_URL':
-	case 'SMTP_ACTIVE':
-	case 'SMTP_AUTH_USER':
-	case 'SMTP_FROM_NAME':
-	case 'SMTP_HELO':
-	case 'SMTP_HOST':
-	case 'SMTP_SSL':
-	case 'WELCOME_TEXT_AUTH_MODE':
-		break;
-	case 'SMTP_AUTH_PASS':
-		// The password will be displayed as "click to edit" on screen.
-		// Accept the update, but pretend to fail.  This will leave the "click to edit" on screen
-		if ($value) {
-			WT_Site::setPreference($id1, $value);
-		}
-		fail();
-	default:
-		// An unrecognized setting
-		fail();
-	}
-
-	// Authorised and valid - make update
-	WT_Site::setPreference($id1, $value);
-	ok();
-
 case 'site_access_rule':
 	//////////////////////////////////////////////////////////////////////////////
 	// Table name: WT_SITE_ACCESS_RULE
@@ -281,29 +197,6 @@ case 'user_setting':
 	// Authorised and valid - make update
 	$user->setPreference($id2, $value);
 	ok();
-
-case 'module':
-	//////////////////////////////////////////////////////////////////////////////
-	// Table name: WT_MODULE
-	// ID format:  module-{column}-{module_name}
-	//////////////////////////////////////////////////////////////////////////////
-
-	// Authorisation
-	if (!Auth::isAdmin()) {
-		fail();
-	}
-
-	switch($id1) {
-	case 'status':
-	case 'tab_order':
-	case 'menu_order':
-	case 'sidebar_order':
-		WT_DB::prepare("UPDATE `##module` SET {$id1}=? WHERE module_name=?")
-			->execute(array($value, $id2));
-		ok();
-	default:
-		fail();
-	}
 
 default:
 	// An unrecognized table

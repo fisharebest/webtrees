@@ -477,10 +477,11 @@ if ($gedfile == 'FILE') {
 	echo '<td class="optionbox wrap wrap">';
 	if (WT_USER_GEDCOM_ADMIN) {
 		echo '<input name="filename" type="text" value="' . WT_Filter::escapeHtml($fileName) . '" size="40"';
-		if ($isExternal)
+		if ($isExternal) {
 			echo '>';
-		else
+		} else {
 			echo '><p class="sub">' . WT_I18N::translate('Do not change to keep original filename.') . '</p>';
+		}
 	} else {
 		echo $fileName;
 		echo '<input name="filename" type="hidden" value="' . WT_Filter::escapeHtml($fileName) . '" size="40">';
@@ -498,15 +499,18 @@ if (!$isExternal) {
 		$mediaFolders = WT_Query_Media::folderList();
 		echo '<span dir="ltr"><select name="folder_list" onchange="document.newmedia.folder.value=this.options[this.selectedIndex].value;">';
 		echo '<option';
-		if ($folder == '') echo ' selected="selected"';
+		if ($folder == '') {
+			echo ' selected="selected"';
+		}
 		echo ' value=""> ', WT_I18N::translate('Choose: '), ' </option>';
 		if (Auth::isAdmin()) {
 			echo '<option value="other" disabled>', WT_I18N::translate('Other folder… please type in'), "</option>";
 		}
 		foreach ($mediaFolders as $f) {
 			echo '<option value="', $f, '"';
-			if ($folder == $f)
+			if ($folder == $f) {
 				echo ' selected="selected"';
+			}
 			echo '>', $f, "</option>";
 		}
 		echo '</select></span>';

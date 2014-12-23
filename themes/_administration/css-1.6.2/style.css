@@ -19,86 +19,49 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
-/* Add a permanent scrollbar, to prevent "flickering" when hover effects lengthen page */
-html {
-	overflow-y: scroll;
+/* Some menus (e.g. languages) can be longer than a page */
+.dropdown-menu {
+	max-height: 320px;
+	overflow-x: hidden;
 }
 
-/* general styles */
+/* Provide visual feedback for invalid and missing fields */
+[pattern]:valid,
+[required]:valid {
+	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAONJREFUeNpi/P//PwMlgImBQjDwBrCgCzDOF2Zg+Adk/AOGDRvQfHZGoDWMxgyMDMb/Q1/NIt0F/xk8gIbNZPj7P41YL4AUGsM1//rfkuyeYMzw8z9xXgBqgNm0nuHnv0D/IH/juavmngV6oYY4F3z7y2DqY2oMpANB9MYl684yfP9Xw3Dzzw7sXgQmJGTM0MbjwdDKc0b2vt5/EM2QwunBoMyCVS1YPYYAMOwZ7FmiGLLYzjBYsSQD+QpALAjErNgMYERPyoyMjMxAih+IOYD4LxD/hOJfQLV/MaJ9NC8wAAQYAPbPfH2KJKx/AAAAAElFTkSuQmCC) no-repeat right center;
+}
+
+[pattern]:invalid,
+[required]:invalid {
+	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAMpJREFUeNpi/P//PwMlgImBQjAMDGBBF1jFyOgBpFqAuOYPA8MOoAI4P+z//x0YJoBiARkvYWA486+k5D+IBuJqZD66WnAMogvMA9o4F6j4R3Lyf2R6IQODMVEGTAW6CoirgfjMB2/v/yB6CgNDYQ8W14IwRiB+A7rgOwNDYLChofGcrVvPgugfDAzR/yFhwUAwDJqBNj6Ulf0PooEhV4jMx+YCRvSknAeMBWDotwgwMKRzMTCcfQW0GcQHxkbNJCyxwDiaFxgAAgwAYy67YIOQ//cAAAAASUVORK5CYII=) no-repeat right center;
+}
+
+[dir=rtl] [pattern]:invalid,
+[dir=rtl] [required]:invalid,
+[dir=rtl] [pattern]:invalid,
+[dir=rtl] [required]:invalid {
+	background-position: left center;
+}
+
+/* Drag-n-drop sort handles for modules, etc. */
+.sortme {
+	cursor: move;
+}
+
+/* http://www.subtlepatterns.com */
 body {
-	font-family: "Trebuchet MS", Tahoma, Verdana, Arial, sans-serif;
-	font-size: 12px;
-	margin: 10px;
-	min-width: 800px;
+	background: url(paper_fibers.png);
+}
+@media (min-device-pixel-ratio: 2) {
+	body {
+		background: url(paper_fibers_@2X.png);
+	}
 }
 
-input.ui-button {
-	padding: 1px 3px;
-}
+/* http://bootstrapdesigntools.com */
 
-input,
-textarea,
-select {
-	border: 1px solid grey;
-	color: #000;
-	font: inherit;
-	padding: 0 3px;
-}
 
-button,
-input[type="submit"],
-input[type="reset"],
-input[type="button"],
-input[type="file"] {
-	background: url(../jquery-ui-1.11.2/images/ui-bg_fine-grain_10_f8f7f6_60x60.png) 50% 50% #f8f7f6;
-	border: 1px solid #cbc7bd;
-	color: #654b24;
-	font-weight: 700;
-	border-radius: 3px;
-	margin: 0.3em;
-}
 
-button:hover,
-input[type="submit"]:hover,
-input[type="reset"]:hover,
-input[type="button"]:hover,
-input[type="file"]:hover {
-	background: url(../jquery-ui-1.11.2/images/ui-bg_fine-grain_65_654b24_60x60.png) 50% 50% #654b24;
-	border: 1px solid #654b24;
-	color: #fff;
-	font-weight: 700;
-	border-radius: 3px;
-}
-
-fieldset {
-	margin: 8px 8px 4px;
-}
-
-legend {
-	font-style: italic;
-	font-weight: bold;
-	padding: 0 5px 5px;
-	vertical-align: top;
-}
-
-img {
-	border: 0;
-	vertical-align: middle;
-}
-
-h3 {
-	margin: 0;
-}
-
-h4 {
-	margin: 5px 3px;
-	font-weight: normal;
-	font-style: italic;
-}
-
-td {
-	vertical-align: top;
-}
 
 .icon {
 	border: 0;
@@ -135,163 +98,11 @@ a.accepted {
 	padding-right: 15px;
 }
 
-.parentdeath {
-	border: thin solid #f00;
-	padding: 1px;
-}
 
-.submenu {
-	background-color: #eee;
-	border: thin solid #aaa;
-	padding: 3px;
-}
-
-.rela {
-	opacity: 0.4;
-}
-
-/* jQuery styling over-rides */
-.ui-widget-content a {
-	text-decoration: none;
-}
-
-.ui-widget-content a.current {
-	color: #e17009;
-	font-weight: bold;
-}
-
-.ui-widget-content a:hover,
-.DataTables_sort_wrapper:hover {
-	color: #f00;
-	cursor: pointer;
-}
-
-.ui-widget-header {
-	padding: 5px;
-}
-
-.ui-progressbar-value {
-	height: 60% !important;
-	background: #d3d3d3 !important;
-}
-
-.ui-accordion .ui-accordion-content-active {
-	display: block;
-}
-
-.css_right {
-	float: right;
-}
-
-[dir=rtl] .css_right {
-	float: left;
-}
 
 [dir=rtl] input {
 	padding-right: 3px;
 	padding-left: 0;
-}
-
-[dir=rtl] .ui-tabs .ui-tabs-nav li {
-	float: right;
-}
-
-/* jEditable styling over-rides */
-.editable:hover {
-	color: #f00;
-	cursor: pointer;
-}
-
-/* both cursors needed for cross-browser support */
-.editable input,
-select {
-	padding: 0;
-}
-
-.editable input {
-	font-size: 90%;
-	height: 18px !important;
-}
-
-.editable button {
-	font-size: 85%;
-	padding: 0;
-}
-
-/* jQuery.datatable styling over-rides */
-.odd {
-	background-color: #dfd;
-}
-
-.even {
-	background-color: #efe;
-}
-
-.fg-button {
-	padding: 2px 6px;
-}
-
-.dataTables_paginate {
-	float: left;
-}
-
-.dataTables_processing {
-    float: left;
-    margin-top: 5px;
-    padding-left: 5px;
-}
-
-.dataTables_filter {
-	float: right;
-}
-
-.dataTables_info {
-	float: left;
-	margin-top: 5px;
-	font-weight: normal;
-}
-
-.dataTables_length {
-	float: right;
-}
-
-.dataTables_length select,
-.dataTables_filter input {
-	font-size: 11px;
-	padding: 1px;
-}
-
-.dataTables_wrapper th {
-	white-space: nowrap;
-}
-
-.dt-clear {
-	clear: both;
-}
-
-[dir=rtl] .dataTables_paginate {
-	float: right;
-}
-
-[dir=rtl] .dataTables_processing {
-	float: right;
-}
-
-[dir=rtl] .dataTables_filter {
-	float: left;
-}
-
-[dir=rtl] .dataTables_info {
-	float: right;
-}
-
-[dir=rtl] .dataTables_length {
-	float: left;
-}
-
-/* Drag-n-drop sorting for modules, etc. */
-.sortme {
-	cursor: move;
 }
 
 /* Find special characters */
@@ -316,100 +127,6 @@ select {
 	margin: -5px;
 	padding: 0;
 	width: 24px;
-}
-
-/* HEADER */
-#admin_head {
-	position: relative;
-	height: 70px;
-	margin-bottom: 10px;
-	min-width: 970px;
-	z-index: 1000;
-}
-
-#title {
-	position: absolute;
-	left: 47%;
-	top: 20px;
-	font-size: 18px;
-	font-weight: bold;
-}
-
-#info {
-	position: absolute;
-	right: 10px;
-	bottom: 0;
-	text-align: right;
-}
-
-[dir=rtl] #info {
-	right: auto;
-	left: 10px;
-	text-align: left;
-}
-
-#links {
-	position: absolute;
-	left: 10px;
-	bottom: 0;
-	display: inline;
-	margin-bottom: 5px;
-	white-space: nowrap;
-}
-
-[dir=rtl] #links {
-	left: auto;
-	right: 10px;
-}
-
-#links li {
-	display: inline;
-	position: relative;
-}
-
-#links li ul {
-	display: none;
-	position: absolute;
-	left: 0;
-	top: 1.2em;
-	background: url("../jquery-ui-1.11.2/images/ui-bg_fine-grain_10_eceadf_60x60.png") repeat scroll 50% 50% #eceadf;
-	border: 1px solid #d9d6c4;
-	z-index: 999;
-}
-
-[dir=rtl] #links li ul {
-	left: auto;
-	right: 0;
-}
-
-#links li ul li {
-	display: block;
-	padding: 0 5px;
-	text-align: left;
-}
-
-[dir=rtl] #links li ul li {
-	text-align: right;
-}
-
-#links,
-#links li ul {
-	list-style: none;
-	margin: 0;
-	padding: 1px;
-}
-
-#links li:hover > ul {
-	display: block;
-}
-
-.ui-widget-content a.lang-active {
-	color: #008000;
-}
-
-#links .langmenu {
-	display: inline;
-	padding: 0;
 }
 
 /* SIDE and CONTENT panels */
@@ -1280,23 +997,6 @@ table#adduser2 {
 
 #adduser2 td + td + td + td {
 	text-align: center;
-}
-
-input:required:valid,
-textarea:required:valid {
-    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAONJREFUeNpi/P//PwMlgImBQjDwBrCgCzDOF2Zg+Adk/AOGDRvQfHZGoDWMxgyMDMb/Q1/NIt0F/xk8gIbNZPj7P41YL4AUGsM1//rfkuyeYMzw8z9xXgBqgNm0nuHnv0D/IH/juavmngV6oYY4F3z7y2DqY2oMpANB9MYl684yfP9Xw3Dzzw7sXgQmJGTM0MbjwdDKc0b2vt5/EM2QwunBoMyCVS1YPYYAMOwZ7FmiGLLYzjBYsSQD+QpALAjErNgMYERPyoyMjMxAih+IOYD4LxD/hOJfQLV/MaJ9NC8wAAQYAPbPfH2KJKx/AAAAAElFTkSuQmCC) no-repeat right top;
-}
-
-input:required:invalid,
-textarea:required:invalid {
-    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAMpJREFUeNpi/P//PwMlgImBQjAMDGBBF1jFyOgBpFqAuOYPA8MOoAI4P+z//x0YJoBiARkvYWA486+k5D+IBuJqZD66WnAMogvMA9o4F6j4R3Lyf2R6IQODMVEGTAW6CoirgfjMB2/v/yB6CgNDYQ8W14IwRiB+A7rgOwNDYLChofGcrVvPgugfDAzR/yFhwUAwDJqBNj6Ulf0PooEhV4jMx+YCRvSknAeMBWDotwgwMKRzMTCcfQW0GcQHxkbNJCyxwDiaFxgAAgwAYy67YIOQ//cAAAAASUVORK5CYII=) no-repeat right top;
-}
-
-[dir=rtl] input:required:valid,
-[dir=rtl] textarea:required:valid,
-[dir=rtl] input:required:invalid,
-[dir=rtl] textarea:required:invalid {
-	background-position: left top;
 }
 
 /* BROADCAST MESSAGES */
