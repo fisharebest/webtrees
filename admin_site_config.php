@@ -19,6 +19,7 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 use WT\Auth;
+use WT\Theme;
 
 define('WT_SCRIPT_NAME', 'admin_site_config.php');
 require './includes/session.php';
@@ -82,7 +83,7 @@ $WELCOME_TEXT_AUTH_MODE_OPTIONS = array(
 							<dd><?php echo edit_field_yes_no_inline('site_setting-ALLOW_USER_THEMES', WT_Site::getPreference('ALLOW_USER_THEMES'), $controller); ?></dd>
 
 							<dt><?php echo WT_I18N::translate('Default theme'), help_link('THEME'); ?></dt>
-							<dd><?php echo select_edit_control_inline('site_setting-THEME_DIR', array_flip(get_theme_names()), null, WT_Site::getPreference('THEME_DIR'), $controller); ?></dd>
+							<dd><?php echo select_edit_control_inline('site_setting-THEME_DIR', Theme::themeNames(), null, WT_Site::getPreference('THEME_DIR'), $controller); ?></dd>
 
 							<dt><?php echo WT_I18N::translate('Show list of family trees'), help_link('ALLOW_CHANGE_GEDCOM'); ?></dt>
 							<dd><?php echo edit_field_yes_no_inline('site_setting-ALLOW_CHANGE_GEDCOM', WT_Site::getPreference('ALLOW_CHANGE_GEDCOM'), $controller); ?></dd>

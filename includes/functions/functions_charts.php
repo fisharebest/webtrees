@@ -20,6 +20,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+use WT\Theme;
 
 /**
  * print a table cell with sosa number
@@ -67,7 +68,7 @@ function print_sosa_number($sosa, $pid = "", $arrowDirection = "up") {
  * @param string    $gparid gd-parent ID (descendancy booklet)
  */
 function print_family_parents(WT_Family $family, $sosa=0, $label='', $parid='', $gparid='') {
-	global $pbwidth, $pbheight, $WT_IMAGES;
+	global $pbwidth, $pbheight;
 
 	$husb = $family->getHusband();
 	if ($husb) {
@@ -113,8 +114,8 @@ function print_family_parents(WT_Family $family, $sosa=0, $label='', $parid='', 
 	// husband’s parents
 	$hfam = $husb->getPrimaryChildFamily();
 	if ($hfam) { // remove the|| test for $sosa
-		echo "<td rowspan=\"2\"><img src=\"".$WT_IMAGES["hline"]."\" alt=\"\"></td><td rowspan=\"2\"><img src=\"".$WT_IMAGES["vline"]."\" width=\"3\" height=\"" . ($pbheight+9) . "\" alt=\"\"></td>";
-		echo "<td><img class=\"line5\" src=\"".$WT_IMAGES["hline"]."\" alt=\"\"></td><td>";
+		echo "<td rowspan=\"2\"><img src=\"" . Theme::theme()->parameter('image-hline') ."\" alt=\"\"></td><td rowspan=\"2\"><img src=\"" . Theme::theme()->parameter('image-vline') . "\" width=\"3\" height=\"" . ($pbheight+9) . "\" alt=\"\"></td>";
+		echo "<td><img class=\"line5\" src=\"" . Theme::theme()->parameter('image-hline') . "\" alt=\"\"></td><td>";
 		// husband’s father
 		if ($hfam && $hfam->getHusband()) {
 			echo "<table style=\"width: " . ($pbwidth) . "px; height: " . $pbheight . "px;\" border=\"0\"><tr>";
@@ -138,7 +139,7 @@ function print_family_parents(WT_Family $family, $sosa=0, $label='', $parid='', 
 	}
 	if ($hfam) { // remove the|| test for $sosa
 		// husband’s mother
-		echo "</tr><tr><td><img src=\"".$WT_IMAGES["hline"]."\" alt=\"\"></td><td>";
+		echo "</tr><tr><td><img src=\"" . Theme::theme()->parameter('image-hline') . "\" alt=\"\"></td><td>";
 		if ($hfam && $hfam->getWife()) {
 			echo "<table style=\"width: " . ($pbwidth) . "px; height: " . $pbheight . "px;\" border=\"0\"><tr>";
 			if ($sosa > 0) print_sosa_number($sosa * 4 + 1, $hfam->getWife()->getXref(), "down");
@@ -193,8 +194,8 @@ function print_family_parents(WT_Family $family, $sosa=0, $label='', $parid='', 
 	$hfam = $wife->getPrimaryChildFamily();
 
 	if ($hfam) { // remove the|| test for $sosa
-		echo "<td rowspan=\"2\"><img src=\"".$WT_IMAGES["hline"]."\" alt=\"\"></td><td rowspan=\"2\"><img src=\"".$WT_IMAGES["vline"]."\" width=\"3\" height=\"" . ($pbheight+9) . "\" alt=\"\"></td>";
-		echo "<td><img class=\"line5\" src=\"".$WT_IMAGES["hline"]."\" alt=\"\"></td><td>";
+		echo "<td rowspan=\"2\"><img src=\"" . Theme::theme()->parameter('image-hline') . "\" alt=\"\"></td><td rowspan=\"2\"><img src=\"" . Theme::theme()->parameter('image-vline') . "\" width=\"3\" height=\"" . ($pbheight+9) . "\" alt=\"\"></td>";
+		echo "<td><img class=\"line5\" src=\"" . Theme::theme()->parameter('image-hline') . "\" alt=\"\"></td><td>";
 		// wife’s father
 		if ($hfam && $hfam->getHusband()) {
 			echo "<table style=\"width: " . ($pbwidth) . "px; height: " . $pbheight . "px;\"><tr>";
@@ -218,7 +219,7 @@ function print_family_parents(WT_Family $family, $sosa=0, $label='', $parid='', 
 	}
 	if ($hfam) {  // remove the|| test for $sosa
 		// wife’s mother
-		echo "</tr><tr><td><img src=\"".$WT_IMAGES["hline"]."\" alt=\"\"></td><td>";
+		echo "</tr><tr><td><img src=\"" . Theme::theme()->parameter('image-hline') . "\" alt=\"\"></td><td>";
 		if ($hfam && $hfam->getWife()) {
 			echo "<table style=\"width: " . ($pbwidth) . "px; height: " . $pbheight . "px;\"><tr>";
 			if ($sosa > 0) print_sosa_number($sosa * 4 + 3, $hfam->getWife()->getXref(), "down");
@@ -246,7 +247,7 @@ function print_family_parents(WT_Family $family, $sosa=0, $label='', $parid='', 
  * @param string    $label   indi label (descendancy booklet)
  */
 function print_family_children(WT_Family $family, $childid = '', $sosa = 0, $label = '') {
-	global $bheight, $pbheight, $cbheight, $show_cousins, $WT_IMAGES, $TEXT_DIRECTION;
+	global $bheight, $pbheight, $show_cousins, $TEXT_DIRECTION;
 
 	$children = $family->getChildren();
 	$numchil = count($children);
@@ -317,18 +318,18 @@ function print_family_children(WT_Family $family, $childid = '', $sosa = 0, $lab
 						//find out how many cousins there are to establish vertical line on second families
 						$fchildren=$famids[$f]->getChildren();
 						$kids = count($fchildren);
-						$Pheader = ($cbheight*$kids)-$bheight;
+						$Pheader = Theme::theme()->parameter('compact-chart-box-y') * $kids - $bheight;
 						$PBadj = 6;	// default
-						if ($show_cousins>0) {
-							if (($cbheight * $kids) > $bheight) {
-								$PBadj = ($Pheader/2+$kids*4.5);
+						if ($show_cousins > 0) {
+							if (Theme::theme()->parameter('compact-chart-box-y') * $kids > $bheight) {
+								$PBadj = $Pheader / 2 + $kids * 4.5;
 							}
 						}
 
 						if ($PBadj<0) $PBadj=0;
 						if ($f==$maxfam) echo "<img height=\"".( (($bheight/2))+$PBadj)."px\"";
 						else echo "<img height=\"".$pbheight."px\"";
-						echo " width=\"3\" src=\"".$WT_IMAGES["vline"]."\" alt=\"\">";
+						echo " width=\"3\" src=\"" . Theme::theme()->parameter('image-vline') . "\" alt=\"\">";
 						echo "</td>";
 					}
 					echo "<td class=\"details1\" valign=\"middle\" align=\"center\">";
@@ -344,7 +345,7 @@ function print_family_children(WT_Family $family, $childid = '', $sosa = 0, $lab
 							echo '–', $div->getDate()->minDate()->format('%Y');
 						}
 					}
-					echo "<br><img width=\"100%\" class=\"line5\" height=\"3\" src=\"".$WT_IMAGES["hline"]."\" alt=\"\">";
+					echo "<br><img width=\"100%\" class=\"line5\" height=\"3\" src=\"" . Theme::theme()->parameter('image-hline') . "\" alt=\"\">";
 					echo "</td>";
 					// spouse information
 					echo "<td style=\"vertical-align: center;";
@@ -453,7 +454,7 @@ function get_sosa_name($sosa) {
  * @param string $famid family ID
  */
 function print_cousins($famid) {
-	global $show_full, $bheight, $bwidth, $cbheight, $cbwidth, $WT_IMAGES, $TEXT_DIRECTION;
+	global $show_full, $bheight, $bwidth, $TEXT_DIRECTION;
 
 	$family=WT_Family::getInstance($famid);
 	$fchildren=$family->getChildren();
@@ -463,15 +464,15 @@ function print_cousins($famid) {
 	$sbheight = $bheight;
 	$sbwidth = $bwidth;
 	if ($save_show_full) {
-		$bheight = $cbheight;
-		$bwidth  = $cbwidth;
+		$bheight = Theme::theme()->parameter('compact-chart-box-y');
+		$bwidth  = Theme::theme()->parameter('compact-chart-box-x');
 	}
 
 	$show_full = false;
 	echo '<td valign="middle" height="100%">';
 	if ($kids) {
 		echo '<table cellspacing="0" cellpadding="0" border="0" ><tr valign="middle">';
-		if ($kids>1) echo '<td rowspan="', $kids, '" valign="middle" align="right"><img width="3px" height="', (($bheight+9)*($kids-1)), 'px" src="', $WT_IMAGES["vline"], '" alt=""></td>';
+		if ($kids>1) echo '<td rowspan="', $kids, '" valign="middle" align="right"><img width="3px" height="', (($bheight+9)*($kids-1)), 'px" src="', Theme::theme()->parameter('image-vline'), '" alt=""></td>';
 		$ctkids = count($fchildren);
 		$i = 1;
 		foreach ($fchildren as $fchil) {
@@ -485,7 +486,7 @@ function print_cousins($famid) {
 			} else {
 				echo ' style="padding-left: 2px;"';
 			}
-			echo ' src="', $WT_IMAGES['hline'], '" alt=""></td><td>';
+			echo ' src="', Theme::theme()->parameter('image-hline'), '" alt=""></td><td>';
 			print_pedigree_person($fchil);
 			echo '</td></tr>';
 			if ($i < $ctkids) {

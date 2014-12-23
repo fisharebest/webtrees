@@ -20,6 +20,7 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 use Rhumsaa\Uuid\Uuid;
+use WT\Theme;
 
 /**
  * Class WT_Controller_Descendancy - Controller for the descendancy chart
@@ -52,7 +53,7 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 	 * Create the descendancy controller
 	 */
 	function __construct() {
-		global $bwidth, $bheight, $cbwidth, $cbheight, $pbwidth, $pbheight, $PEDIGREE_FULL_DETAILS, $MAX_DESCENDANCY_GENERATIONS, $DEFAULT_PEDIGREE_GENERATIONS, $show_full;
+		global $bwidth, $bheight, $pbwidth, $pbheight, $PEDIGREE_FULL_DETAILS, $MAX_DESCENDANCY_GENERATIONS, $DEFAULT_PEDIGREE_GENERATIONS, $show_full;
 
 		parent::__construct();
 
@@ -75,8 +76,8 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 
 		// -- adjust size of the compact box
 		if (!$this->show_full) {
-			$bwidth  = $cbwidth;
-			$bheight = $cbheight;
+			$bwidth  = Theme::theme()->parameter('compact-chart-box-x');
+			$bheight = Theme::theme()->parameter('compact-chart-box-y');
 		}
 
 		$pbwidth  = $bwidth+12;
@@ -130,14 +131,12 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 	 * @return void
 	 */
 	public function printChildDescendancy(WT_Individual $person, $depth) {
-		global $WT_IMAGES, $Dindent;
-
 		echo "<li>";
 		echo "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td>";
-		if ($depth==$this->generations) echo "<img src=\"".$WT_IMAGES["spacer"]."\" height=\"3\" width=\"$Dindent\" alt=\"\"></td><td>";
+		if ($depth==$this->generations) echo "<img src=\"" . Theme::theme()->parameter('image-spacer') ."\" height=\"3\" width=\"", Theme::theme()->parameter('chart-descendancy-indent'), "\" alt=\"\"></td><td>";
 		else {
-			echo "<img src=\"".$WT_IMAGES["spacer"]."\" height=\"3\" width=\"3\" alt=\"\">";
-			echo "<img src=\"".$WT_IMAGES["hline"]."\" height=\"3\" width=\"".($Dindent-3)."\" alt=\"\"></td><td>";
+			echo "<img src=\"" . Theme::theme()->parameter('image-spacer') . "\" height=\"3\" width=\"3\" alt=\"\">";
+			echo "<img src=\"" . Theme::theme()->parameter('image-hline') . "\" height=\"3\" width=\"", Theme::theme()->parameter('chart-descendancy-indent') - 3, "\" alt=\"\"></td><td>";
 		}
 		print_pedigree_person($person);
 		echo '</td>';
@@ -189,12 +188,10 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 	 * @return void
 	 */
 	private function printFamilyDescendancy(WT_Individual $person, WT_Family $family, $depth) {
-		global $WT_IMAGES, $Dindent;
-
 		$uid = Uuid::uuid4(); // create a unique ID
 		// print marriage info
 		echo '<li>';
-		echo '<img src="', $WT_IMAGES['spacer'], '" height="2" width="', ($Dindent+4), '" alt="">';
+		echo '<img src="', Theme::theme()->parameter('image-spacer'), '" height="2" width="', Theme::theme()->parameter('chart-descendancy-indent') + 4, '" alt="">';
 		echo '<span class="details1" style="white-space:nowrap;">';
 		echo "<a href=\"#\" onclick=\"expand_layer('".$uid."'); return false;\" class=\"top\"><i id=\"".$uid."_img\" class=\"icon-minus\" title=\"".WT_I18N::translate('View family')."\"></i></a>";
 		if ($family->canShow()) {

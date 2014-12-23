@@ -23,6 +23,7 @@
 
 use WT\Auth;
 use WT\Log;
+use WT\Theme;
 use WT\User;
 
 define('WT_SCRIPT_NAME', 'admin_users.php');
@@ -56,7 +57,7 @@ $realname           = WT_Filter::post('realname'   );
 $pass1              = WT_Filter::post('pass1',        WT_REGEX_PASSWORD);
 $pass2              = WT_Filter::post('pass2',        WT_REGEX_PASSWORD);
 $emailaddress       = WT_Filter::postEmail('emailaddress');
-$user_theme         = WT_Filter::post('user_theme',               implode('|', get_theme_names()));
+$user_theme         = WT_Filter::post('user_theme',               implode('|', array_keys(Theme::installedThemes())));
 $user_language      = WT_Filter::post('user_language',            implode('|', array_keys(WT_I18N::installed_languages())), WT_LOCALE);
 $new_contact_method = WT_Filter::post('new_contact_method');
 $new_comment        = WT_Filter::post('new_comment');
@@ -201,7 +202,7 @@ case 'load1row':
 	echo '<dd>', edit_field_yes_no_inline('user_setting-'.$user_id.'-auto_accept', $user->getPreference('auto_accept')), '</dd>';
 
 	echo '<dt>', WT_I18N::translate('Theme'), '</dt>';
-	echo '<dd>', select_edit_control_inline('user_setting-'.$user_id.'-theme', array_flip(get_theme_names()), WT_I18N::translate('<default theme>'), $user->getPreference('theme')), '</dd>';
+	echo '<dd>', select_edit_control_inline('user_setting-'.$user_id.'-theme', Theme::themeNames(), WT_I18N::translate('<default theme>'), $user->getPreference('theme')), '</dd>';
 
 	echo '<dt>', WT_I18N::translate('Visible to other users when online'), '</dt>';
 	echo '<dd>', edit_field_yes_no_inline('user_setting-'.$user_id.'-visibleonline', $user->getPreference('visibleonline')), '</dd>';
@@ -409,7 +410,7 @@ case 'createform':
 					<td>
 						<select name="new_user_theme">
 						<option value="" selected="selected">', WT_Filter::escapeHtml(WT_I18N::translate('<default theme>')), '</option>';
-							foreach (get_theme_names() as $theme_name => $theme_id) {
+							foreach (Theme::themeNames() as $theme_id => $theme_name) {
 								echo '<option value="', $theme_id, '">', $theme_name, '</option>';
 							}
 						echo '</select>

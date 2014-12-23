@@ -45,7 +45,7 @@ class WT_Controller_Base {
 	public function __destruct() {
 		// If we printed a header, automatically print a footer
 		if ($this->page_header) {
-			$this->pageFooter();
+			echo $this->pageFooter();
 		}
 	}
 

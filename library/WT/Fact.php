@@ -18,6 +18,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+use WT\Theme;
 
 /**
  * Class WT_Fact - Class that defines an event details object
@@ -403,25 +404,6 @@ class WT_Fact {
 			return '<div class="old">' . $html . '</div>';
 		} else {
 			return $html;
-		}
-	}
-
-	/**
-	 * Display an icon for this fact.
-	 * Icons are held in a theme subfolder.  Not all themes provide icons.
-	 *
-	 * @return string
-	 */
-	public function icon() {
-		$icon = 'images/facts/' . $this->getTag() . '.png';
-		$dir  = substr(WT_CSS_URL, strlen(WT_STATIC_URL));
-		if (file_exists($dir . $icon)) {
-			return '<img src="' . WT_CSS_URL . $icon . '" title="' . WT_Gedcom_Tag::getLabel($this->getTag()) . '">';
-		} elseif (file_exists($dir . 'images/facts/NULL.png')) {
-			// Spacer image - for alignment - until we move to a sprite.
-			return '<img src="' . WT_CSS_URL . 'images/facts/NULL.png">';
-		} else {
-			return '';
 		}
 	}
 

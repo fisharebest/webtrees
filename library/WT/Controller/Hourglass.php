@@ -18,6 +18,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+use WT\Theme;
 
 /**
  * Class WT_Controller_Hourglass - Controller for the hourglass chart
@@ -52,7 +53,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 	 * @param boolean $loadJS
 	 */
 	function __construct($rootid = '', $show_full = 1, $loadJS = true) {
-		global $bheight, $bwidth, $cbwidth, $cbheight, $PEDIGREE_FULL_DETAILS, $MAX_DESCENDANCY_GENERATIONS;
+		global $bheight, $bwidth, $PEDIGREE_FULL_DETAILS, $MAX_DESCENDANCY_GENERATIONS;
 		global $TEXT_DIRECTION, $show_full;
 
 		parent::__construct();
@@ -89,8 +90,8 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 
 		// -- adjust size of the compact box
 		if (!$this->show_full) {
-			$bwidth = $this->box_width * $cbwidth / 100;
-			$bheight = $cbheight;
+			$bwidth = $this->box_width * Theme::theme()->parameter('compact-chart-box-x') / 100;
+			$bheight = Theme::theme()->parameter('compact-chart-box-y');
 		}
 
 		$this->bhalfheight = (int)($bheight / 2);
@@ -120,7 +121,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 	 * @param integer       $count  generation count, so it recursively calls itself
 	 */
 	public function printPersonPedigree(WT_Individual $person, $count) {
-		global $WT_IMAGES, $bheight, $bwidth;
+		global $bheight, $bwidth;
 
 		if ($count >= $this->generations) {
 			return;
@@ -143,11 +144,11 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 			echo '</td><td></tr></table>';
 		}
 		foreach ($person->getChildFamilies() as $family) {
-			echo "<table class='hourglassChart'>";
-			echo "<tr>";
-			echo "<td style='vertical-align:bottom'><img class='line3 pvline' src='{$WT_IMAGES["vline"]}' width='3' alt=''></td>";
-			echo "<td><img class='line4' src='{$WT_IMAGES["hline"]}' width='7' height='3' alt=''></td>";
-			echo "<td>";
+			echo '<table class="hourglassChart">';
+			echo '<tr>';
+			echo '<td style="vertical-align:bottom;"><img class="line3 pvline" src="' . Theme::theme()->parameter('image-vline') . '" width="3"></td>';
+			echo '<td><img class="line4" src="' . Theme::theme()->parameter('image-hline') . '" width="7" height="3"></td>';
+			echo '<td>';
 			//-- print the father box
 			print_pedigree_person($family->getHusband());
 			echo "</td>";
@@ -177,8 +178,8 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 			}
 			echo
 			'</tr><tr>',
-			"<td style='vertical-align:top'><img class='pvline' src='{$WT_IMAGES["vline"]}' width='3' alt=''></td>",
-				'<td><img class="line4" src="' . $WT_IMAGES["hline"] . '" width="7" height="3" alt=""></td>',
+			"<td style='vertical-align:top'><img class='pvline' src='" . Theme::theme()->parameter('image-vline') . "' width='3' alt=''></td>",
+				'<td><img class="line4" src="' . Theme::theme()->parameter('image-hline') . '" width="7" height="3" alt=""></td>',
 			'<td>';
 			//-- print the mother box
 			print_pedigree_person($family->getWife());
@@ -226,7 +227,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 	 * @return integer
 	 */
 	public function printDescendency($person, $count, $showNav = true) {
-		global $TEXT_DIRECTION, $WT_IMAGES, $bheight, $bwidth, $lastGenSecondFam;
+		global $TEXT_DIRECTION, $bheight, $bwidth, $lastGenSecondFam;
 
 		if ($count > $this->dgenerations) {
 			return;
@@ -279,13 +280,13 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 					if ($ct > 1) {
 						if ($i == 0) {
 							// First child
-							echo "<td style='vertical-align:bottom'><img alt='' class='line1 tvertline' id='vline_$chil' src='{$WT_IMAGES["vline"]}' width='3'></td>";
+							echo "<td style='vertical-align:bottom'><img alt='' class='line1 tvertline' id='vline_$chil' src='" . Theme::theme()->parameter('image-vline') . "' width='3'></td>";
 						} elseif ($i == $ct - 1) {
 							// Last child
-							echo "<td style='vertical-align:top'><img alt='' class='bvertline' id='vline_$chil' src='{$WT_IMAGES["vline"]}' width='3'></td>";
+							echo "<td style='vertical-align:top'><img alt='' class='bvertline' id='vline_$chil' src='" . Theme::theme()->parameter('image-vline') . "' width='3'></td>";
 						} else {
 							// Middle child
-							echo '<td style="background: url(\'' . $WT_IMAGES['vline'] . '\');"><img src=\'' . $WT_IMAGES['spacer'] . '\' width="3" alt=""></td>';
+							echo '<td style="background: url(\'' . Theme::theme()->parameter('image-vline') . '\');"><img src=\'' . Theme::theme()->parameter('image-spacer') . '\' width="3" alt=""></td>';
 						}
 					}
 					echo '</tr>';
@@ -319,9 +320,9 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 			}
 		}
 
-		echo "<table id='table2_$pid'><tr><td>";
+		echo '<table id="table2_' . $pid . '"><tr><td>';
 		print_pedigree_person($person);
-		echo "</td><td><img class='line2' src='{$WT_IMAGES["hline"]}' width='7' height='3' alt=''>";
+		echo '</td><td><img class="line2" src="' . Theme::theme()->parameter('image-hline') . '" width="7" height="3">';
 
 		//----- Print the spouse
 		if ($this->show_spouse) {

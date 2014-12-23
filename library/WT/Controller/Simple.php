@@ -34,13 +34,8 @@ class WT_Controller_Simple extends WT_Controller_Page {
 	 *
 	 * @return $this
 	 */
-	public function pageHeader() {
-		global $view;
-
-		$view = 'simple';
-		parent::pageHeader();
-
-		return $this;
+	public function pageHeader($view = 'simple') {
+		return parent::pageHeader($view);
 	}
 
 	/**

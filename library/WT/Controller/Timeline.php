@@ -18,6 +18,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+use WT\Theme;
 
 /**
  * Class WT_Controller_Timeline - Controller for the timeline chart
@@ -158,7 +159,7 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 	 * @param WT_Fact $event
 	 */
 	function print_time_fact(WT_Fact $event) {
-		global $basexoffset, $baseyoffset, $factcount, $TEXT_DIRECTION, $WT_IMAGES, $placements;
+		global $basexoffset, $baseyoffset, $factcount, $TEXT_DIRECTION, $placements;
 
 		$desc = $event->getValue();
 		// check if this is a family fact
@@ -193,7 +194,7 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 
 		echo "<div id=\"fact$factcount\" style=\"position:absolute; " . ($TEXT_DIRECTION == "ltr" ? "left: " . ($xoffset) : "right: " . ($xoffset)) . "px; top:" . ($yoffset) . "px; font-size: 8pt; height: " . ($this->bheight) . "px;\" onmousedown=\"factMouseDown(this, '" . $factcount . "', " . ($yoffset - $tyoffset) . ");\">";
 		echo "<table cellspacing=\"0\" cellpadding=\"0\" border=\"0\" style=\"cursor: hand;\"><tr><td>";
-		echo "<img src=\"" . $WT_IMAGES["hline"] . "\" name=\"boxline$factcount\" id=\"boxline$factcount\" height=\"3\" align=\"left\" width=\"10\" alt=\"\" style=\"padding-";
+		echo "<img src=\"" . Theme::theme()->parameter('image-hline') . "\" name=\"boxline$factcount\" id=\"boxline$factcount\" height=\"3\" align=\"left\" width=\"10\" alt=\"\" style=\"padding-";
 		if ($TEXT_DIRECTION == 'ltr') {
 			echo 'left: 3px;">';
 		} else {
@@ -250,26 +251,26 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 		echo '</td></tr></table>';
 		echo '</div>';
 		if ($TEXT_DIRECTION === 'ltr') {
-			$img  = 'dline2';
+			$img  = 'image-dline2';
 			$ypos = '0%';
 		} else {
-			$img  = 'dline';
+			$img  = 'image-dline';
 			$ypos = '100%';
 		}
 		$dyoffset = ($yoffset - $tyoffset) + $this->bheight / 3;
 		if ($tyoffset < 0) {
 			$dyoffset = $yoffset + $this->bheight / 3;
 			if ($TEXT_DIRECTION === 'ltr') {
-				$img  = 'dline';
+				$img  = 'image-dline';
 				$ypos = '100%';
 			} else {
-				$img  = 'dline2';
+				$img  = 'image-dline2';
 				$ypos = '0%';
 			}
 		}
 		// Print the diagonal line
 		echo '<div id="dbox' . $factcount . '" style="position:absolute; ' . ($TEXT_DIRECTION == 'ltr' ? 'left: ' . ($basexoffset + 25) : 'right: ' . ($basexoffset + 25)) . 'px; top:' . ($dyoffset) . 'px; font-size: 8pt; height: ' . abs($tyoffset) . 'px; width: ' . abs($tyoffset) . 'px;';
-		echo ' background-image: url(\'' . $WT_IMAGES[$img] . '\');';
+		echo ' background-image: url(\'' . Theme::theme()->parameter($img) . '\');';
 		echo ' background-position: 0% ' . $ypos . ';">';
 		echo '</div>';
 	}

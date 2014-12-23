@@ -19,6 +19,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Theme;
+
 /**
  * Class theme_select_WT_Module
  */
@@ -35,15 +37,17 @@ class theme_select_WT_Module extends WT_Module implements WT_Module_Block {
 
 	/** {@inheritdoc} */
 	public function getBlock($block_id, $template=true, $cfg=null) {
+		/** @var \WT\Theme\BaseTheme */
 		$id=$this->getName().$block_id;
 		$class=$this->getName().'_block';
 		$title=$this->getTitle();
-		$menu=WT_MenuBar::getThemeMenu();
+		$menu=Theme::theme()->menuThemes();
+
 		if ($menu) {
-			$content='<div class="center theme_form">'.WT_MenuBar::getThemeMenu().'</div><br>';
+			$content='<div class="center theme_form">' . $menu . '</div><br>';
 
 			if ($template) {
-				require WT_THEME_DIR.'templates/block_main_temp.php';
+				return Theme::theme()->formatBlock($id, $title, $class, $content);
 			} else {
 				return $content;
 			}

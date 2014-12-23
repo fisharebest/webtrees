@@ -20,6 +20,7 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 use WT\Auth;
+use WT\Theme;
 
 /**
  * Class html_WT_Module
@@ -105,10 +106,9 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 
 		if ($template) {
 			if (get_block_setting($block_id, 'block', false)) {
-				require WT_THEME_DIR.'templates/block_small_temp.php';
-			} else {
-				require WT_THEME_DIR.'templates/block_main_temp.php';
+				$class .= ' small_inner_block';
 			}
+			return Theme::theme()->formatBlock($id, $title, $class, $content);
 		} else {
 			return $content;
 		}
