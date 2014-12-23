@@ -4204,14 +4204,7 @@ header h1 {
 	display: block;
 }
 
-.secondary-menu li li a.lang-active,
-.secondary-menu li li a.theme-active {
-	color: #006;
-	font-weight: 900;
-}
-
-.lang-active,
-.theme-active {
+.secondary-menu .active {
 	color: #006;
 	font-weight: 900;
 }

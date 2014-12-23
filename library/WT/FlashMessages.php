@@ -24,9 +24,13 @@ class WT_FlashMessages {
 	/**
 	 * Add a new message to the session storage.
 	 *
-	 * @param string $message
+	 * @param string $text
+	 * @param string $status "success", "info", "warning" or "danger"
 	 */
-	public static function addMessage($message) {
+	public static function addMessage($text, $status='info') {
+		$message         = new stdClass;
+		$message->text   = $text;
+		$message->status = $status;
 		$flash_messenger = Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger');
 
 		$flash_messenger->addMessage($message);
@@ -54,24 +58,5 @@ class WT_FlashMessages {
 		$flash_messenger->clearCurrentMessages();
 
 		return $messages;
-	}
-
-	/**
-	 * Most theres will want a simple block of HTML to display
-	 *
-	 * @return string
-	 */
-	public static function getHtmlMessages() {
-		$html = '';
-
-		foreach (self::getMessages() as $message) {
-			$html .= '<p class="ui-state-highlight">' . $message . '</p>';
-		}
-
-		if ($html) {
-			$html = '<div id="flash-messages">' . $html . '</div>';
-		}
-
-		return $html;
 	}
 }

@@ -23,6 +23,7 @@
 
 use WT\Auth;
 use WT\Log;
+use WT\Theme;
 use WT\User;
 
 define('WT_SCRIPT_NAME', 'admin_users.php');
@@ -56,7 +57,7 @@ $realname           = WT_Filter::post('realname'   );
 $pass1              = WT_Filter::post('pass1',        WT_REGEX_PASSWORD);
 $pass2              = WT_Filter::post('pass2',        WT_REGEX_PASSWORD);
 $emailaddress       = WT_Filter::postEmail('emailaddress');
-$user_theme         = WT_Filter::post('user_theme',               implode('|', get_theme_names()));
+$user_theme         = WT_Filter::post('user_theme',               implode('|', array_keys(Theme::installedThemes())));
 $user_language      = WT_Filter::post('user_language',            implode('|', array_keys(WT_I18N::installed_languages())), WT_LOCALE);
 $new_contact_method = WT_Filter::post('new_contact_method');
 $new_comment        = WT_Filter::post('new_comment');
@@ -130,7 +131,7 @@ case 'loadrows':
 
 	// Reformat various columns for display
 	foreach ($data as &$datum) {
-		$datum[0]='<a href="#" title="'.WT_I18N::translate('Details').'">&nbsp;</a>';
+		$datum[0]='<button class="btn btn-success" title="'.WT_I18N::translate('Show details').'"><i class="fa fa-plus"></i><i class="fa fa-minus hidden"></i></button>';
 		// $aData[1] is the user ID
 		$user_id  =$datum[1];
 		$user_name=$datum[2];
@@ -139,7 +140,7 @@ case 'loadrows':
 		$datum[4]=edit_field_inline('user-email-'.    $user_id, $datum[4]);
 		// $aData[5] is a link to an email icon
 		if ($user_id != Auth::id()) {
-			$datum[5]='<i class="icon-email" onclick="return message(\''.$user_name.'\', \'\', \'\');"></i>';
+			$datum[5]='<button class="btn" onclick="return message(\''.$user_name.'\', \'\', \'\');"><i class="fa fa-envelope-o"></i></button>';
 		}
 		$datum[6]=edit_field_language_inline('user_setting-'.$user_id.'-language', $datum[6]);
 		// $aData[7] is the sortable registration timestamp
@@ -156,8 +157,8 @@ case 'loadrows':
 		$datum[11]=edit_field_yes_no_inline('user_setting-'.$user_id.'-verified-',          $datum[11]);
 		$datum[12]=edit_field_yes_no_inline('user_setting-'.$user_id.'-verified_by_admin-', $datum[12]);
 		// Add extra column for "delete" action
-		if ($user_id != Auth::id()) {
-			$datum[13]='<div class="icon-delete" onclick="delete_user(\'' . WT_I18N::translate('Are you sure you want to delete “%s”?', WT_Filter::escapeJs($user_name)) . '\', \'' . WT_Filter::escapeJs($user_id) . '\');"></div>';
+		if ($user_id != Auth::id) {
+			$datum[13]='<button class="btn btn-danger btn-sm" onclick="delete_user(\'' . WT_I18N::translate('Are you sure you want to delete “%s”?', WT_Filter::escapeJs($user_name)) . '\', \'' . WT_Filter::escapeJs($user_id) . '\');" title="' . WT_I18N::translate('Delete') . '"><i class="fa fa-trash-o"></i></button>';
 		} else {
 			// Do not delete ourself!
 			$datum[13]='';
@@ -183,8 +184,8 @@ case 'load1row':
 	$user = User::find($user_id);
 	Zend_Session::writeClose();
 	header('Content-type: text/html; charset=UTF-8');
-	echo '<h2>', WT_I18N::translate('Details'), '</h2>';
-	echo '<dl>';
+
+	echo '<dl class="dl-horizontal">';
 	echo '<dt>', WT_I18N::translate('Administrator'), '</dt>';
 	echo '<dd>', edit_field_yes_no_inline('user_setting-'.$user_id.'-canadmin', $user->getPreference('canadmin')), '</dd>';
 
@@ -201,7 +202,7 @@ case 'load1row':
 	echo '<dd>', edit_field_yes_no_inline('user_setting-'.$user_id.'-auto_accept', $user->getPreference('auto_accept')), '</dd>';
 
 	echo '<dt>', WT_I18N::translate('Theme'), '</dt>';
-	echo '<dd>', select_edit_control_inline('user_setting-'.$user_id.'-theme', array_flip(get_theme_names()), WT_I18N::translate('<default theme>'), $user->getPreference('theme')), '</dd>';
+	echo '<dd>', select_edit_control_inline('user_setting-'.$user_id.'-theme', Theme::themeNames(), WT_I18N::translate('<default theme>'), $user->getPreference('theme')), '</dd>';
 
 	echo '<dt>', WT_I18N::translate('Visible to other users when online'), '</dt>';
 	echo '<dd>', edit_field_yes_no_inline('user_setting-'.$user_id.'-visibleonline', $user->getPreference('visibleonline')), '</dd>';
@@ -215,23 +216,20 @@ case 'load1row':
 	// Masquerade as others users - but not other administrators
 	if (!Auth::isAdmin($user)) {
 		echo '<dt>', /* I18N: Pretend to be another user, by logging in as them */ WT_I18N::translate('Masquerade as this user'), '</dt>';
-		echo '<dd><a href="#" onclick="return masquerade(', $user_id, ')">', /* I18N: verb: pretend to be someone else */ WT_I18N::translate('masquerade'), '</a></dd>';
+		echo '<dd><a href="#" onclick="return masquerade(', $user_id, ')">', /* I18N: Button label: pretend to be someone else */ WT_I18N::translate('masquerade'), '</a></dd>';
 	}
 
-	echo '</dl>';
-
-	// Column One - details
-
 	echo
-		'<div id="access">',
-		'<h2>', WT_I18N::translate('Family tree access and settings'), '</h2>',
-		'<table><tr>',
-		'<th>', WT_I18N::translate('Family tree'), '</th>',
-		'<th>', WT_I18N::translate('Default individual'), help_link('default_individual'), '</th>',
-		'<th>', WT_I18N::translate('Individual record'), help_link('useradmin_gedcomid'), '</th>',
-		'<th>', WT_I18N::translate('Role'), help_link('role'), '</th>',
-		'<th>', WT_I18N::translate('Restrict to immediate family'), help_link('RELATIONSHIP_PATH_LENGTH'), '</th>',
-		'</tr>';
+	'</dl>',
+	'<div id="access">',
+	'<h3>', WT_I18N::translate('Family tree access and settings'), '</h3>',
+	'<table class="table table-bordered table-condensed"><tr>',
+	'<th>', WT_I18N::translate('Family tree'), '</th>',
+	'<th>', WT_I18N::translate('Default individual'), help_link('default_individual'), '</th>',
+	'<th>', WT_I18N::translate('Individual record'), help_link('useradmin_gedcomid'), '</th>',
+	'<th>', WT_I18N::translate('Role'), help_link('role'), '</th>',
+	'<th>', WT_I18N::translate('Restrict to immediate family'), help_link('RELATIONSHIP_PATH_LENGTH'), '</th>',
+	'</tr>';
 
 	foreach (WT_Tree::getAll() as $tree) {
 		echo
@@ -359,48 +357,213 @@ case 'createform':
 		}
 	');
 
-	echo '
-	<form name="newform" method="post" action="admin_users.php?action=createuser" onsubmit="return checkform(this);" autocomplete="off">
-		', WT_Filter::getCsrf(), '
-		<table id="adduser">
-			<tr>
-				<td>', WT_I18N::translate('Real name'), help_link('real_name'), '</td>
-				<td><input type="text" name="realname" style="width:95%;" required maxlength="64" value="', WT_Filter::escapeHtml($realname), '" autofocus></td>
-				<td>', WT_I18N::translate('Administrator'), help_link('role'), '</td>
-				<td><input type="checkbox" name="canadmin" value="1"></td>
-			</tr>
-			<tr>
-				<td>', WT_I18N::translate('Username'), help_link('username'), '</td>
-				<td><input type="text" name="username" style="width:95%;" required maxlength="32" value="', WT_Filter::escapeHtml($username), '"></td>
-				<td>', WT_I18N::translate('Approved by administrator'), help_link('useradmin_verification'), '</td>
-				<td><input type="checkbox" name="verified_by_admin" value="1" checked="checked"></td>
-			</tr>
-			<tr>
-				<td>', WT_I18N::translate('Email address'), help_link('email'), '</td>
-				<td><input type="email" name="emailaddress" style="width:95%;" required maxlength="64" value="', WT_Filter::escapeHtml($emailaddress), '"></td>
-				<td>', WT_I18N::translate('Email verified'), help_link('useradmin_verification'), '</td>
-				<td><input type="checkbox" name="verified" value="1" checked="checked"></td>
-			</tr>
-			<tr>
-				<td>', WT_I18N::translate('Password'), help_link('password'), '</td>
-				<td><input type="password" name="pass1" style="width:95%;" value="', WT_Filter::escapeHtml($pass1), '" required placeholder="',  WT_I18N::plural('Use at least %s character.', 'Use at least %s characters.', WT_MINIMUM_PASSWORD_LENGTH, WT_I18N::number(WT_MINIMUM_PASSWORD_LENGTH)), '" pattern="', WT_REGEX_PASSWORD, '" onchange="form.pass2.pattern = regex_quote(this.value);"></td>
-				<td>', WT_I18N::translate('Automatically approve changes made by this user'), help_link('useradmin_auto_accept'), '</td>
-				<td><input type="checkbox" name="new_auto_accept" value="1"></td>
-			</tr>
-				<td>', WT_I18N::translate('Confirm password'), help_link('password_confirm'), '</td>
-				<td><input type="password" name="pass2" style="width:95%;" value="', WT_Filter::escapeHtml($pass2), '" required placeholder="', WT_I18N::translate('Type the password again.'), '" pattern="', WT_REGEX_PASSWORD, '"></td>
-				<td>', WT_I18N::translate('Allow this user to edit his account information'), help_link('useradmin_editaccount'), '</td>
-				<td><input type="checkbox" name="editaccount" value="1" checked="checked"></td>
-			<tr>
-				<td>', WT_I18N::translate('Preferred contact method'), '</td>
-				<td>';
-					echo edit_field_contact('new_contact_method', $new_contact_method);
-				echo '</td>
-				<td>', WT_I18N::translate('Visible to other users when online'), help_link('useradmin_visibleonline'), '</td>
-				<td><input type="checkbox" name="visibleonline" value="1" checked="checked"></td>
-			</tr>
-			<tr>
-			</tr>
+?>
+<h2>
+	<?php echo WT_I18N::translate('Add a new user'); ?>
+</h2>
+<form class="form-horizontal" name="newform" method="post" role="form" action="?action=createuser" onsubmit="return checkform(this);" autocomplete="off">
+	<?php echo WT_Filter::getCsrf(); ?>
+	<!-- REAL NAME -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="realname">
+			<?php echo WT_I18N::translate('Real name'); ?>
+		</label>
+		<div class="col-sm-9">
+			<input class="form-control" type="text" id="realname" name="realname" required maxlength="64" value="<?php echo WT_Filter::escapeHtml($realname); ?>" autofocus>
+			<p class="small text-muted">
+				<?php echo WT_I18N::translate('This is your real name, as you would like it displayed on screen.'); ?>
+			</p>
+		</div>
+	</div>
+
+	<!-- REAL NAME -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="username">
+			<?php echo WT_I18N::translate('Username'); ?>
+		</label>
+		<div class="col-sm-9">
+			<input class="form-control" type="text" id="username" name="username" required maxlength="32" value="<?php echo WT_Filter::escapeHtml($username); ?>">
+			<p class="small text-muted">
+				<?php echo WT_I18N::translate('Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same.'), ' ', WT_I18N::translate('Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;'); ?>
+			</p>
+		</div>
+	</div>
+
+	<!-- PASSWORD -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="pass1">
+			<?php echo WT_I18N::translate('Password'); ?>
+		</label>
+		<div class="col-sm-9">
+			<input class="form-control" type="passwword" id="pass1" name="pass1" pattern = "<?php echo WT_REGEX_PASSWORD; ?>" placeholder="<?php echo WT_I18N::plural('Use at least %s character.', 'Use at least %s characters.', WT_MINIMUM_PASSWORD_LENGTH, WT_I18N::number(WT_MINIMUM_PASSWORD_LENGTH)); ?>" required onchange="form.pass2.pattern = regex_quote(this.value);">
+			<p class="small text-muted">
+				<?php echo 'Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different to “SECRET”.'; ?>
+			</p>
+		</div>
+	</div>
+
+	<!-- CONFIRM PASSWORD -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="pass2">
+			<?php echo WT_I18N::translate('Confirm password'); ?>
+		</label>
+		<div class="col-sm-9">
+			<input class="form-control" type="passwword" id="pass2" name="pass2" pattern = "<?php echo WT_REGEX_PASSWORD; ?>" placeholder="<?php echo WT_I18N::translate('Type the password again.'); ?>" required>
+		</div>
+	</div>
+
+	<!-- EMAIL ADDRESS -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="emailaddress">
+			<?php echo WT_I18N::translate('Email address'); ?>
+		</label>
+		<div class="col-sm-9">
+			<input class="form-control" type="email" id="emailaddress" name="emailaddress" required maxlength="64" value="<?php echo WT_Filter::escapeHtml($emailaddress); ?>">
+		</div>
+	</div>
+
+	<!-- EMAIL VERIFIED -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="verified">
+		</label>
+		<div class="col-sm-9">
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" name="verified" value="1" checked="checked">
+					<?php echo WT_I18N::translate('Email verified'); ?>
+				</label>
+				<p class="small text-muted">
+					<?php echo help_link('useradmin_verification'); ?>
+				</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- CONTACT METHOD -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="new_contact_method">
+			<?php echo WT_I18N::translate('Preferred contact method'); ?>
+		</label>
+		<div class="col-sm-9">
+			<?php echo select_edit_control('new_contact_method', WT_I18N::installed_languages(), null, $user_language, 'class="form-control"'); ?>
+			<input class="form-control" type="passwword" id="pass2" name="pass2" pattern = "<?php echo WT_REGEX_PASSWORD; ?>" placeholder="<?php echo WT_I18N::translate('Type the password again.'); ?>" required>
+			<p class="small text-muted">
+				<?php echo help_link('password_confirm'); ?>
+			</p>
+		</div>
+	</div>
+
+	<!-- LANGUAGE -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="user_language">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Language'); ?>
+		</label>
+		<div class="col-sm-9">
+			<?php echo select_edit_control('user_language', WT_I18N::installed_languages(), null, $user_language, 'class="form-control"'); ?>
+		</div>
+	</div>
+
+	<!-- ADMINISTRATOR -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="canadmin">
+		</label>
+		<div class="col-sm-9">
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" name="canadmin" value="1">
+					<?php echo WT_I18N::translate('Administrator'); ?>
+				</label>
+				<p class="small text-muted">
+					<?php echo help_link('role'); ?>
+				</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- ACCOUNT APPROVED -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="verified_by_admin">
+		</label>
+		<div class="col-sm-9">
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" name="verified_by_admin" value="1" checked="checked">
+					<?php echo WT_I18N::translate('Approved by administrator'); ?>
+				</label>
+				<p class="small text-muted">
+					<?php echo help_link('useradmin_verification'); ?>
+				</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- AUTO ACCEPT -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="new_auto_accept">
+		</label>
+		<div class="col-sm-9">
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" name="new_auto_accept" value="1">
+					<?php echo WT_I18N::translate('Automatically approve changes made by this user'); ?>
+				</label>
+				<p class="small text-muted">
+					<?php echo help_link('useradmin_auto_accept'); ?>
+				</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- EDIT ACCOUNT -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="editaccount">
+		</label>
+		<div class="col-sm-9">
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" name="editaccount" value="1">
+					<?php echo WT_I18N::translate('Allow this user to edit his account information'); ?>
+				</label>
+				<p class="small text-muted">
+					<?php echo help_link('useradmin_editaccount'); ?>
+				</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- EDIT ACCOUNT -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="editaccount">
+		</label>
+		<div class="col-sm-9">
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" name="editaccount" value="1">
+					<?php echo WT_I18N::translate('Allow this user to edit his account information'); ?>
+				</label>
+				<p class="small text-muted">
+					<?php echo help_link('useradmin_editaccount'); ?>
+				</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- VISIBLE ONLINE -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="visibleonline">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Visible to other users when online'); ?>
+		</label>
+		<div class="col-sm-9">
+			<?php echo edit_field_contact('visibleonline', $new_contact_method); ?>
+			<p class="small text-muted">
+				<?php echo help_link('useradmin_visibleonline'); ?>
+			</p>
+		</div>
+	</div>
+
+	<!-- THEME -->
+
+	<table>
 			<tr>
 				<td>', WT_I18N::translate('Language'), '</td>
 				<td>', edit_field_language('user_language', $user_language), '</td>';
@@ -409,7 +572,7 @@ case 'createform':
 					<td>
 						<select name="new_user_theme">
 						<option value="" selected="selected">', WT_Filter::escapeHtml(WT_I18N::translate('<default theme>')), '</option>';
-							foreach (get_theme_names() as $theme_name => $theme_id) {
+							foreach (Theme::themeNames() as $theme_id => $theme_name) {
 								echo '<option value="', $theme_id, '">', $theme_name, '</option>';
 							}
 						echo '</select>
@@ -560,23 +723,24 @@ case 'cleanup2':
 case 'listusers':
 default:
 	echo
-		'<table id="list">',
+		'<h2>', $controller->getPageTitle() ,'</h2>',
+		'<table class="table table-condensed table-bordered table-user-list">',
 			'<thead>',
 				'<tr>',
-					'<th style="margin:0 -2px 1px 1px; padding:6px 0 5px;"> </th>',
-					'<th> user-id </th>',
+					'<th>', WT_I18N::translate('Details'), '</th>',
+					'<th>user-id</th>',
 					'<th>', WT_I18N::translate('Username'), '</th>',
 					'<th>', WT_I18N::translate('Real name'), '</th>',
-					'<th>', WT_I18N::translate('Email'), '</th>',
-					'<th> </th>', /* COLSPAN does not work? */
+					'<th>', WT_I18N::translate('Email address'), '</th>',
+					'<th> </th>',
 					'<th>', WT_I18N::translate('Language'), '</th>',
-					'<th> date_registered </th>',
+					'<th>date_registered</th>',
 					'<th>', WT_I18N::translate('Date registered'), '</th>',
-					'<th> last_login </th>',
+					'<th>last_login</th>',
 					'<th>', WT_I18N::translate('Last logged in'), '</th>',
 					'<th>', WT_I18N::translate('Verified'), '</th>',
 					'<th>', WT_I18N::translate('Approved'), '</th>',
-					'<th style="margin:0 -2px 1px 1px; padding:3px 0 4px;"> </th>',
+					'<th>', WT_I18N::translate('Delete'), '</th>',
 				'</tr>',
 			'</thead>',
 			'<tbody>',
@@ -587,19 +751,12 @@ default:
 		->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 		->addExternalJavascript(WT_JQUERY_JEDITABLE_URL)
 		->addInlineJavascript('
-			jQuery("#list").dataTable({
-				dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
+			jQuery(".table-user-list").dataTable({
+				dom: "pftil",
 				' . WT_I18N::datatablesI18N() . ',
 				processing: true,
 				serverSide: true,
-				ajax: {
-					"url": "' . WT_SCRIPT_NAME . '?action=loadrows",
-					"type": "POST"
-				},
-				search: {
-					search: "' . WT_Filter::escapeJs(WT_Filter::get('filter')) . '"
-				},
-				jQueryUI: true,
+				ajax: "' . WT_SCRIPT_NAME . '?action=loadrows",
 				autoWidth: false,
 				pageLength: ' . Auth::user()->getPreference('admin_users_page_size', 10) . ',
 				pagingType: "full_numbers",
@@ -622,28 +779,28 @@ default:
 				],
 				"drawCallback": function() {
 					// Our JSON responses include Javascript as well as HTML.  This does not get executed automatically…
-					jQuery("#list script").each(function() {
+					jQuery(".table-user-list script").each(function() {
 						eval(this.text);
 					});
 				}
-			});
+			})
+			.fnFilter("' . WT_Filter::get('filter') . '"); // View details of a newly created user
 
-			/* When clicking on the +/- icon, we expand/collapse the details block */
-			jQuery("#list").on("click", ".icon-open, .icon-close", function () {
-				var self = jQuery(this),
-					aData,
-					oTable = self.parents("table").dataTable();
-				    nTr=self.parent();
-
-				if(self.hasClass("icon-open")) {
-					aData=oTable.fnGetData(nTr);
-					jQuery.get("'.WT_SCRIPT_NAME.'?action=load1row&user_id="+aData[1], function(data) {
-						oTable.fnOpen(nTr, data, "details");
+			/* Show/hide the user’s details */
+			jQuery(".table-user-list tbody").on("click", "td:first-child button", function () {
+				var button    = jQuery(this);
+				var row       = button.closest("tr");
+				var dataTable = row.closest("table").dataTable();
+				button.toggleClass("active");
+				jQuery("i.fa", button).toggleClass("hidden");
+				if (jQuery(this).hasClass("active")) {
+					var rowData = dataTable.fnGetData(row);
+					jQuery.get("?action=load1row&user_id=" + rowData[1], function(data) {
+						dataTable.fnOpen(button.closest("tr"), data, "details");
 					});
 				} else {
-					oTable.fnClose(nTr);
+					dataTable.fnClose(row);
 				}
-				jQuery(this).toggleClass("icon-open icon-close");
 			});
 		');
 	break;

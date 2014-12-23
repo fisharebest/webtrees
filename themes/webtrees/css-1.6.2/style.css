@@ -4139,8 +4139,7 @@ header h1 {
 	display: block;
 }
 
-.lang-active,
-.theme-active {
+.secondary-menu .active.theme-active {
 	color: #006;
 	font-weight: 900;
 }

@@ -4272,8 +4272,7 @@ header {
 	content: "";
 }
 
-.lang-active,
-.theme-active {
+.secondary-menu .active {
 	font-weight: 900;
 }
 

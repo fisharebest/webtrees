@@ -24,6 +24,7 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 use Rhumsaa\Uuid\Uuid;
+use WT\Theme;
 use WT\User;
 
 /**
@@ -149,7 +150,7 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 	echo '<td class="descriptionbox width20">';
 
 	if ($SHOW_FACT_ICONS) {
-		echo $fact->icon(), ' ';
+		echo Theme::theme()->icon($fact), ' ';
 	}
 
 	if ($fact->getFactId()!='histo' && $fact->canEdit()) {

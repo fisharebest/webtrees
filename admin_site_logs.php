@@ -189,14 +189,13 @@ $controller
 	->pageHeader()
 	->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 	->addInlineJavascript('
-		jQuery("#log_list").dataTable( {
-			dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
+		jQuery(".table-site-logs").dataTable( {
+			dom: "pftil",
+			paginationType: "bs_two_button",
 			processing: true,
 			serverSide: true,
 			ajax: "'.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME.'?action=load_json&from='.$from.'&to='.$to.'&type='.$type.'&text='.rawurlencode($text).'&ip='.rawurlencode($ip).'&user='.rawurlencode($user).'&gedc='.rawurlencode($gedc).'",
 			'.WT_I18N::datatablesI18N(array(10,20,50,100,500,1000,-1)).',
-			jQueryUI: true,
-			autoWidth: false,
 			sorting: [[ 0, "desc" ]],
 			pageLength: ' . Auth::user()->getPreference('admin_site_log_page_size', 20) . ',
 			pagingType: "full_numbers"
@@ -218,9 +217,9 @@ foreach (User::all() as $tmp_user) {
 }
 
 echo
-	'<form name="logs" method="get" action="'.WT_SCRIPT_NAME.'">',
+	'<form name="logs" method="get">',
 		'<input type="hidden" name="action" value="show">',
-		'<table class="site_logs">',
+		'<table class="table-site-logs-options">',
 			'<tr>',
 				'<td colspan="6">',
 					// I18N: %s are both user-input date fields
@@ -252,21 +251,19 @@ echo
 		'</table>',
 	'</form>';
 
-if ($action) {
-	echo
-		'<br>',
-		'<table id="log_list">',
-			'<thead>',
-				'<tr>',
-					'<th>', WT_I18N::translate('Timestamp'), '</th>',
-					'<th>', WT_I18N::translate('Type'), '</th>',
-					'<th>', WT_I18N::translate('Message'), '</th>',
-					'<th>', WT_I18N::translate('IP address'), '</th>',
-					'<th>', WT_I18N::translate('User'), '</th>',
-					'<th>', WT_I18N::translate('Family tree'), '</th>',
-				'</tr>',
-			'</thead>',
-			'<tbody>',
-	 	'</tbody>',
-		'</table>';
-}
+if ($action) : ?>
+	<table class="table table-bordered table-condensed table-hover table-striped table-site-logs">
+		<thead>
+			<tr>
+				<th><?php echo WT_I18N::translate('Timestamp'); ?></th>
+				<th><?php echo WT_I18N::translate('Type'); ?></th>
+				<th><?php echo WT_I18N::translate('Message'); ?></th>
+				<th><?php echo WT_I18N::translate('IP address'); ?></th>
+				<th><?php echo WT_I18N::translate('User'); ?></th>
+				<th><?php echo WT_I18N::translate('Family tree'); ?></th>
+			</tr>
+		</thead>
+		<tbody>
+		</tbody>
+	</table>
+<?php endif; ?>

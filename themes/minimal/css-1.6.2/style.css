@@ -4220,8 +4220,7 @@ header nav {
 	display: block;
 }
 
-.lang-active,
-.theme-active {
+.secondary-menu .active {
 	font-weight: 900;
 }
 

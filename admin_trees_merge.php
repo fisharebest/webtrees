@@ -74,7 +74,7 @@ if ($tree1_id && $tree2_id != $tree1_id) {
 			'<p>',
 			WT_I18N::plural(
 				/* I18N: An XREF is the identification number used in GEDCOM files. */
-				'The two family trees have %1$s record which use the same “XREF”.',
+				'The two family trees have %1$s record which uses the same “XREF”.',
 				'The two family trees have %1$s records which use the same “XREF”.',
 				count($xrefs), count($xrefs)
 			),

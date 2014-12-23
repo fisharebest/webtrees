@@ -22,6 +22,7 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 use WT\Auth;
+use WT\Theme;
 
 define('WT_SCRIPT_NAME', 'edit_interface.php');
 require './includes/session.php';
@@ -1820,7 +1821,7 @@ case 'reorder_children':
 					echo '<li style="cursor:move; margin-bottom:2px; position:relative;"';
 					if (!in_array($id, $ids)) echo ' class="facts_value new"';
 					echo ' id="li_',$id,'">';
-					print_pedigree_person(WT_Individual::getInstance($id), 2);
+					echo Theme::theme()->individualBoxLarge(WT_Individual::getInstance($id));
 					echo '<input type="hidden" name="order[',$id,']" value="',$i,'">';
 					echo '</li>';
 					$i++;

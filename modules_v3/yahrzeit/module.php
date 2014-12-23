@@ -22,6 +22,7 @@
 use Fisharebest\ExtCalendar\JewishCalendar;
 use Rhumsaa\Uuid\Uuid;
 use WT\Auth;
+use WT\Theme;
 
 /**
  * Class yahrzeit_WT_Module
@@ -209,10 +210,9 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 
 		if ($template) {
 			if ($block) {
-				require WT_THEME_DIR.'templates/block_small_temp.php';
-			} else {
-				require WT_THEME_DIR.'templates/block_main_temp.php';
+				$class .= ' small_inner_block';
 			}
+			return Theme::theme()->formatBlock($id, $title, $class, $content);
 		} else {
 			return $content;
 		}

@@ -18,6 +18,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+use WT\Theme;
 
 /**
  * Class WT_Controller_Pedigree - Controller for the pedigree chart
@@ -46,18 +47,16 @@ class WT_Controller_Pedigree extends WT_Controller_Chart {
 	public function __construct() {
 		global $PEDIGREE_FULL_DETAILS, $PEDIGREE_LAYOUT, $MAX_PEDIGREE_GENERATIONS;
 		global $DEFAULT_PEDIGREE_GENERATIONS;
-		global $bwidth, $bheight, $cbwidth, $cbheight, $baseyoffset, $basexoffset, $byspacing, $bxspacing;
-		global $linewidth, $shadowcolor, $shadowblur, $shadowoffsetX, $shadowoffsetY;
+		global $bwidth, $bheight, $baseyoffset, $basexoffset, $byspacing, $bxspacing;
 
 		global $show_full, $talloffset;
 
 		parent::__construct();
-
-		$this->linewidth = $linewidth;
-		$this->shadowcolor = $shadowcolor;
-		$this->shadowblur = $shadowblur;
-		$this->shadowoffsetX = $shadowoffsetX;
-		$this->shadowoffsetY = $shadowoffsetY;
+		$this->linewidth     = Theme::theme()->parameter('line-width');
+		$this->shadowcolor   = Theme::theme()->parameter('shadow-color');
+		$this->shadowblur    = Theme::theme()->parameter('shadow-blur');
+		$this->shadowoffsetX = Theme::theme()->parameter('shadow-offset-x');
+		$this->shadowoffsetY = Theme::theme()->parameter('shadow-offset-y');
 
 		$this->show_full            = WT_Filter::getInteger('show_full', 0, 1, $PEDIGREE_FULL_DETAILS);
 		$this->talloffset           = WT_Filter::getInteger('talloffset', 0, 3, $PEDIGREE_LAYOUT);
@@ -91,19 +90,20 @@ class WT_Controller_Pedigree extends WT_Controller_Chart {
 			$this->setPageTitle(WT_I18N::translate('Pedigree'));
 		}
 
-		// -- adjust size of the compact box
-		if (!$this->show_full) {
-			$bwidth = $cbwidth;
-			$bheight = $cbheight;
+		if ($this->show_full) {
+			$this->pbwidth  = Theme::theme()->parameter('chart-box-x') + 6;
+			$this->pbheight = Theme::theme()->parameter('chart-box-y') + 5;
+		} else {
+			$this->pbwidth  = Theme::theme()->parameter('compact-chart-box-x') + 6;
+			$this->pbheight = Theme::theme()->parameter('compact-chart-box-y') + 5;
 		}
+
 		//-- adjustments for portrait mode
 		if ($this->talloffset==0) {
 			$bxspacing+=12;
 			$baseyoffset -= 20*($this->PEDIGREE_GENERATIONS-1);
 		}
 
-		$this->pbwidth = $bwidth+6;
-		$this->pbheight = $bheight+5;
 
 		$this->ancestors = $this->sosaAncestors($PEDIGREE_GENERATIONS);
 		$this->treesize = pow(2, (int)($this->PEDIGREE_GENERATIONS))-1;

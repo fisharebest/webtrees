@@ -28,6 +28,7 @@ $controller = new WT_Controller_Page();
 $controller
 	->restrictAccess(Auth::isAdmin())
 	->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
+	->addExternalJavascript(WT_DATATABLES_BOOTSTRAP_JS_URL)
 	->addExternalJavascript(WT_JQUERY_JEDITABLE_URL)
 	->setPageTitle(WT_I18N::translate('Site access rules'));
 
@@ -113,7 +114,7 @@ case 'load_rules':
 			'robot' => /* I18N: http://en.wikipedia.org/wiki/Web_crawler */  WT_I18N::translate('robot'),
 		), null, $datum[5]);
 		$datum[6] = edit_field_inline('site_access_rule-comment-'.$site_access_rule_id, $datum[6]);
-		$datum[7] = '<i class="icon-delete" onclick="if (confirm(\'' . WT_Filter::escapeHtml(WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($user_agent))).'\')) { document.location=\'' . WT_SCRIPT_NAME . '?action=delete&amp;site_access_rule_id=' . $site_access_rule_id . '\'; }"></i>';
+		$datum[7] = '<button class="btn btn-danger" onclick="if (confirm(\'' . WT_Filter::escapeHtml(WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($user_agent))).'\')) { document.location=\'' . WT_SCRIPT_NAME . '?action=delete&amp;site_access_rule_id=' . $site_access_rule_id . '\'; }"><i class="fa fa-trash-o"></i></button>';
 	}
 
 	// Total filtered/unfiltered rows
@@ -183,9 +184,9 @@ case 'load_unknown':
 	// Reformat the data for display
 	foreach ($data as &$datum) {
 		$site_access_rule_id=$datum[4];
-		$datum[4] = '<i class="icon-yes" onclick="document.location=\'' . WT_SCRIPT_NAME . '?action=allow&amp;site_access_rule_id=' . $site_access_rule_id . '\';"></i>';
-		$datum[5] = '<i class="icon-yes" onclick="document.location=\'' . WT_SCRIPT_NAME .  '?action=deny&amp;site_access_rule_id=' . $site_access_rule_id . '\';"></i>';
-		$datum[6] = '<i class="icon-yes" onclick="document.location=\'' . WT_SCRIPT_NAME . '?action=robot&amp;site_access_rule_id=' . $site_access_rule_id . '\';"></i>';
+		$datum[4] = '<button class="btn btn-primary" onclick="document.location=\'' . WT_SCRIPT_NAME . '?action=allow&amp;site_access_rule_id=' . $site_access_rule_id . '\';"><i class="fa fa-check"></i></button>';
+		$datum[5] = '<button class="btn btn-primary" onclick="document.location=\'' . WT_SCRIPT_NAME .  '?action=deny&amp;site_access_rule_id=' . $site_access_rule_id . '\';"><i class="fa fa-ban"></i></button>';
+		$datum[6] = '<button class="btn btn-primary" onclick="document.location=\'' . WT_SCRIPT_NAME . '?action=robot&amp;site_access_rule_id=' . $site_access_rule_id . '\';"><i class="fa fa-android"></i></button>';
 	}
 
 	// Total filtered/unfiltered rows
@@ -207,15 +208,11 @@ $controller
 	->addInlineJavascript('
 		jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
 		jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
-		jQuery("#site_access_rules").dataTable({
-			dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
-			ajax: "'.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME.'?action=load_rules",
+		jQuery(".table-site-access-rules").dataTable({
+			ajax: "' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=load_rules",
 			serverSide: true,
 			'.WT_I18N::datatablesI18N().',
-			jQueryUI: true,
-			autoWidth: false,
 			processing: true,
-			pagingType: "full_numbers",
 			stateSave: true,
 			stateDuration: 180,
 			columns: [
@@ -228,25 +225,15 @@ $controller
 				/* 6 rule                    */ { },
 				/* 7 <delete>                */ { sortable: false, class: "center" }
 			],
-			fnDrawCallback: function() {
-				// Our JSON responses include Javascript as well as HTML.  This does not get
-				// executed, So extract it, and execute it
-				jQuery("#site_access_rules script").each(function() {
-					eval(this.text);
-				});
-			}
 		});
-		jQuery("#unknown_site_visitors").dataTable({
-			dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
-			ajax: "'.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME.'?action=load_unknown",
+
+		jQuery(".table-unknown-site-visitors").dataTable({
+			ajax: "' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=load_unknown",
 			serverSide: true,
 			'.WT_I18N::datatablesI18N().',
-			jQueryUI: true,
-			autoWidth: false,
 			processing: true,
 			stateSave: true,
 			stateDuration: 180,
-			pagingType: "full_numbers",
 			columns: [
 				/* 0 ip_address         */ { dataSort: 1, class: "ip_address" },
 				/* 0 ip_address (sort)  */ { type: "num", visible: false },
@@ -275,7 +262,7 @@ WT_DB::exec(
 
 <p><?php echo WT_I18N::translate('The following rules are used to decide whether a visitor is a human being (allow full access), a search-engine robot (allow restricted access) or an unwanted crawler (deny all access).'); ?></p>
 
-<table id="site_access_rules" style="width:100%;">
+<table class="table table-hover table-condensed table-bordered table-site-access-rules">
 	<thead>
 		<tr>
 			<th><?php echo /* I18N [...] of a range of addresses */ WT_I18N::translate('Start IP address'); ?></th>
@@ -292,7 +279,7 @@ WT_DB::exec(
 
 <p><?php echo WT_I18N::translate('The following visitors were not recognized, and were assumed to be search engines.'); ?></p>
 
-<table id="unknown_site_visitors" style="width:100%;">
+<table class="table table-hover table-condensed table-bordered table-unknown-site-visitors">
 	<thead>
 		<tr>
 			<th rowspan="2"><?php /* I18N: http://en.wikipedia.org/wiki/IP_address */ echo WT_I18N::translate('IP address'); ?></th>

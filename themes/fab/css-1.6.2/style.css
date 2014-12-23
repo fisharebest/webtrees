@@ -4185,8 +4185,7 @@ header h1 {
 	display: block;
 }
 
-.lang-active,
-.theme-active {
+.secondary-menu .active {
 	font-weight: 900;
 }
 

@@ -96,7 +96,7 @@ $user_languages = WT_DB::prepare(
 $stats = new WT_Stats(WT_GEDCOM);
 
 ?>
-<div id="content_container" style="visibility: hidden;">
+<div>
 	<div id="x">
 		<h2><?php echo WT_WEBTREES, ' ', WT_VERSION; ?></h2>
 		<div id="about">
@@ -668,5 +668,7 @@ function old_paths() {
 		// Removed in 1.6.3
 		WT_ROOT.'js/jquery-1.11.1.js',
 		WT_ROOT.'js/jquery.datatables-1.10.3.js',
+		// Removed in 1.7.0
+		WT_ROOT.'library/WT/MenuBar.php',
 	);
 }
