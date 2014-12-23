@@ -30,7 +30,7 @@ $controller = new WT_Controller_Fanchart();
 if (WT_Filter::getBool('img')) {
 	Zend_Session::writeClose();
 	header('Content-Type: image/png');
-	echo $controller->generateFanChart('png', $fanChart); // $fanChart comes from the theme
+	echo $controller->generateFanChart('png');
 	return;
 }
 
@@ -123,6 +123,6 @@ if ($controller->error_message) {
 }
 
 if ($controller->root) {
-	echo '<div id="fan_chart">', $controller->generateFanChart('html', $fanChart), '</div>';
+	echo '<div id="fan_chart">', $controller->generateFanChart('html'), '</div>';
 }
 echo '</div>';

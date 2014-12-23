@@ -13645,7 +13645,7 @@ msgstr "Le temps en secondes que la session webtrees reste active avant d’exig
 #. I18N: An XREF is the identification number used in GEDCOM files.
 #: admin_trees_merge.php:77
 #, php-format
-msgid "The two family trees have %1$s record which use the same “XREF”."
+msgid "The two family trees have %1$s record which uses the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
 msgstr[0] "Les deux arbres généalogiques ont %1$s enregistrement qui utilise le même code (“XREF”)."
 msgstr[1] "Les deux arbres généalogiques ont %1$s enregistrements qui utilisent le même identifiant (“XREF”)."
@@ -14388,7 +14388,7 @@ msgstr "Ce site est momentanément indisponible"
 
 #: admin_trees_manage.php:137
 #, php-format
-msgid "This will delete all the genealogical data from <b>%s</b> and replace it with data from another GEDCOM."
+msgid "This will delete all the genealogical data from <b>%s</b> and replace it with data from another GEDCOM file."
 msgstr "Toutes les données généalogiques de <b>%s</b> seront effacées, elles seront remplacées par les données provenant d’un autre GEDCOM."
 
 #: modules_v3/googlemap/module.php:1772

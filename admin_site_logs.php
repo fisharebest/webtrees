@@ -188,18 +188,15 @@ case 'load_json':
 $controller
 	->pageHeader()
 	->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
+	->addExternalJavascript(WT_DATATABLES_BOOTSTRAP_JS_URL)
 	->addInlineJavascript('
-		jQuery("#log_list").dataTable( {
-			dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
+		jQuery(".table-site-logs").dataTable( {
 			processing: true,
 			serverSide: true,
 			ajax: "'.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME.'?action=load_json&from='.$from.'&to='.$to.'&type='.$type.'&text='.rawurlencode($text).'&ip='.rawurlencode($ip).'&user='.rawurlencode($user).'&gedc='.rawurlencode($gedc).'",
 			'.WT_I18N::datatablesI18N(array(10,20,50,100,500,1000,-1)).',
-			jQueryUI: true,
-			autoWidth: false,
 			sorting: [[ 0, "desc" ]],
-			pageLength: ' . Auth::user()->getPreference('admin_site_log_page_size', 20) . ',
-			pagingType: "full_numbers"
+			pageLength: ' . Auth::user()->getPreference('admin_site_log_page_size', 20) . '
 		});
 	');
 
@@ -217,56 +214,77 @@ foreach (User::all() as $tmp_user) {
 	$users_array[$tmp_user->getUserName()] = $tmp_user->getUserName();
 }
 
-echo
-	'<form name="logs" method="get" action="'.WT_SCRIPT_NAME.'">',
-		'<input type="hidden" name="action" value="show">',
-		'<table class="site_logs">',
-			'<tr>',
-				'<td colspan="6">',
-					// I18N: %s are both user-input date fields
-					WT_I18N::translate('From %s to %s', '<input class="log-date" name="from" value="'.WT_Filter::escapeHtml($from).'">', '<input class="log-date" name="to" value="'.WT_Filter::escapeHtml($to).'">'),
-				'</td>',
-			'</tr><tr>',
-				'<td>',
-					WT_I18N::translate('Type'), '<br>', select_edit_control('type', array(''=>'', 'auth'=>'auth','config'=>'config','debug'=>'debug','edit'=>'edit','error'=>'error','media'=>'media','search'=>'search'), null, $type, ''),
-				'</td>',
-				'<td>',
-					WT_I18N::translate('Message'), '<br><input class="log-filter" name="text" value="', WT_Filter::escapeHtml($text), '"> ',
-				'</td>',
-				'<td>',
-					WT_I18N::translate('IP address'), '<br><input class="log-filter" name="ip" value="', WT_Filter::escapeHtml($ip), '"> ',
-				'</td>',
-				'<td>',
-					WT_I18N::translate('User'), '<br>', select_edit_control('user', $users_array, '', $user, ''),
-				'</td>',
-				'<td>',
-					WT_I18N::translate('Family tree'), '<br>',  select_edit_control('gedc', WT_Tree::getNameList(), '', $gedc, Auth::isAdmin() ? '' : 'disabled'),
-				'</td>',
-			'</tr><tr>',
-				'<td colspan="6">',
-					'<input type="submit" value="', WT_I18N::translate('Filter'), '">',
-					'<input type="submit" value="', WT_I18N::translate('Export'), '" onclick="document.logs.action.value=\'export\';return true;" ', ($action=='show' ? '' : 'disabled="disabled"'),'>',
-					'<input type="submit" value="', WT_I18N::translate('Delete'), '" onclick="if (confirm(\'', WT_Filter::escapeHtml(WT_I18N::translate('Permanently delete these records?')) , '\')) {document.logs.action.value=\'delete\';return true;} else {return false;}" ', ($action=='show' ? '' : 'disabled="disabled"'),'>',
-				'</td>',
-			'</tr>',
-		'</table>',
-	'</form>';
+?>
+<ol class="breadcrumb small">
+	<li><a href="admin.php"><?php echo WT_I18N::translate('Administration'); ?></a></li>
+<li class="active"><?php echo $controller->getPageTitle(); ?></li>
+</ol>
+<h2><?php echo $controller->getPageTitle(); ?></h2>
 
-if ($action) {
-	echo
-		'<br>',
-		'<table id="log_list">',
-			'<thead>',
-				'<tr>',
-					'<th>', WT_I18N::translate('Timestamp'), '</th>',
-					'<th>', WT_I18N::translate('Type'), '</th>',
-					'<th>', WT_I18N::translate('Message'), '</th>',
-					'<th>', WT_I18N::translate('IP address'), '</th>',
-					'<th>', WT_I18N::translate('User'), '</th>',
-					'<th>', WT_I18N::translate('Family tree'), '</th>',
-				'</tr>',
-			'</thead>',
-			'<tbody>',
-	 	'</tbody>',
-		'</table>';
-}
+<form name="logs">
+	<input type="hidden" name="action" value="show">
+	<table class="table table-site-logs-options">
+		<tbody>
+			<tr>
+				<td colspan="6">
+					<?php echo /* I18N: %s are both user-input date fields */ WT_I18N::translate('From %s to %s', '<input class="log-date" name="from" value="'.WT_Filter::escapeHtml($from).'">', '<input class="log-date" name="to" value="'.WT_Filter::escapeHtml($to).'">'); ?>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<?php echo WT_I18N::translate('Type'), '<br>', select_edit_control('type', array(''=>'', 'auth'=>'auth','config'=>'config','debug'=>'debug','edit'=>'edit','error'=>'error','media'=>'media','search'=>'search'), null, $type, ''); ?>
+				</td>
+				<td>
+					<?php echo WT_I18N::translate('Message'); ?>
+					<br>
+					<input class="log-filter" name="text" value="<?php echo WT_Filter::escapeHtml($text); ?>">
+				</td>
+				<td>
+					<?php echo WT_I18N::translate('IP address'); ?>
+					<br>
+					<input class="log-filter" name="ip" value="<?php WT_Filter::escapeHtml($ip); ?>">
+				</td>
+				<td>
+					<?php echo WT_I18N::translate('User'); ?>
+					<br>
+					<?php echo select_edit_control('user', $users_array, '', $user, ''); ?>
+				</td>
+				<td>
+					<?php echo WT_I18N::translate('Family tree'); ?>
+					<br>
+					<?php echo select_edit_control('gedc', WT_Tree::getNameList(), '', $gedc, Auth::isAdmin() ? '' : 'disabled'); ?>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="6">
+					<button type="submit" class="btn btn-primary">
+							<?php echo WT_I18N::translate('Filter'); ?>
+					</button>
+					<button type="button" class="btn btn-primary" onclick="document.logs.action.value='export';return true;" <?php echo $action === 'show' ? '' : 'disabled'; ?>>
+						<?php echo WT_I18N::translate('Export'); ?>
+					</button>
+					<button type="button" class="btn btn-primary" onclick="if (confirm('<?php echo WT_I18N::translate('Permanently delete these records?'); ?>')) {document.logs.action.value='delete'; return true;} else {return false;}" <?php echo $action === 'show' ? '' : 'disabled'; ?>>
+						<?php echo WT_I18N::translate('Delete'); ?>
+					</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</form>
+
+<?php if ($action): ?>
+<table class="table table-bordered table-condensed table-hover table-striped table-site-logs">
+	<thead>
+		<tr>
+			<th><?php echo WT_I18N::translate('Timestamp'); ?></th>
+			<th><?php echo WT_I18N::translate('Type'); ?></th>
+			<th><?php echo WT_I18N::translate('Message'); ?></th>
+			<th><?php echo WT_I18N::translate('IP address'); ?></th>
+			<th><?php echo WT_I18N::translate('User'); ?></th>
+			<th><?php echo WT_I18N::translate('Family tree'); ?></th>
+		</tr>
+	</thead>
+	<tbody>
+	</tbody>
+</table>
+<?php endif; ?>

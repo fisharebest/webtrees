@@ -203,6 +203,29 @@ class User {
 	}
 
 	/**
+	 * Get a list of all verified uses.
+	 *
+	 * @return User[]
+	 */
+	public static function allVerified() {
+		$rows = WT_DB::prepare(
+			"SELECT SQL_CACHE user_id, user_name, real_name, email" .
+			" FROM `##user`" .
+			" JOIN `##user_setting` USING (user_id)" .
+			" WHERE user_id > 0" .
+			"   AND setting_name = 'verified'" .
+			"   AND setting_value = '1'"
+		)->fetchAll();
+
+		$users = array();
+		foreach ($rows as $row) {
+			$users[] = new User($row);
+		}
+
+		return $users;
+	}
+
+	/**
 	 * Get a list of all users who are currently logged in.
 	 *
 	 * @return User[]

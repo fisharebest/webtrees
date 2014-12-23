@@ -407,25 +407,6 @@ class WT_Fact {
 	}
 
 	/**
-	 * Display an icon for this fact.
-	 * Icons are held in a theme subfolder.  Not all themes provide icons.
-	 *
-	 * @return string
-	 */
-	public function icon() {
-		$icon = 'images/facts/' . $this->getTag() . '.png';
-		$dir  = substr(WT_CSS_URL, strlen(WT_STATIC_URL));
-		if (file_exists($dir . $icon)) {
-			return '<img src="' . WT_CSS_URL . $icon . '" title="' . WT_Gedcom_Tag::getLabel($this->getTag()) . '">';
-		} elseif (file_exists($dir . 'images/facts/NULL.png')) {
-			// Spacer image - for alignment - until we move to a sprite.
-			return '<img src="' . WT_CSS_URL . 'images/facts/NULL.png">';
-		} else {
-			return '';
-		}
-	}
-
-	/**
 	 * Static Helper functions to sort events
 	 *
 	 * @param WT_Fact $a Fact one

@@ -30,16 +30,6 @@ $controller
 	->setPageTitle(WT_I18N::translate('Check for errors'))
 	->pageHeader();
 
-echo '<form method="get" action="', WT_SCRIPT_NAME, '">';
-echo '<input type="hidden" name="go" value="1">';
-echo select_edit_control('ged', WT_Tree::getNameList(), null, WT_GEDCOM);
-echo '<input type="submit" value="', $controller->getPageTitle(), '">';
-echo '</form>';
-
-if (!WT_Filter::get('go')) {
-	exit;
-}
-
 // We need to work with raw GEDCOM data, as we are looking for errors
 // which may prevent the WT_GedcomRecord objects from working...
 

@@ -21,6 +21,7 @@
 
 use WT\Auth;
 use WT\Log;
+use WT\Theme;
 
 /**
  * Class googlemap_WT_Module
@@ -146,7 +147,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 	/** {@inheritdoc} */
 	public function getTabContent() {
-		global $WT_IMAGES, $controller;
+		global $controller;
 
 		if ($this->checkMapData()) {
 			ob_start();
@@ -192,7 +193,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			echo '</td>';
 			echo '</tr></table>';
 			// start
-			echo '<img src="', $WT_IMAGES['spacer'], '" id="marker6" width="1" height="1" alt="">';
+			echo '<img src="', Theme::theme()->parameter('image-spacer'), '" id="marker6" width="1" height="1" alt="">';
 			// end
 			echo '</td></tr></table>';
 			echo '<script>loadMap();</script>';
@@ -1933,7 +1934,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 						'class'        => 'optionbox',
 						'date'         => $fact->getDate()->display(true),
 						'fact_label'   => $fact->getLabel(),
-						'image'        => $spouse ? $spouse->displayImage() : $fact->icon(),
+						'image'        => $spouse ? $spouse->displayImage() : Theme::theme()->icon($fact),
 						'info'         => $fact->getValue(),
 						'lat'          => str_replace(array('N', 'S', ','), array('', '-', '.') , $match1[1]),
 						'lng'          => str_replace(array('E', 'W', ','), array('', '-', '.') , $match2[1]),
@@ -1955,7 +1956,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 							'class'        => 'optionbox',
 							'date'         => $fact->getDate()->display(true),
 							'fact_label'   => $fact->getLabel(),
-							'image'        => $spouse ? $spouse->displayImage() : $fact->icon(),
+							'image'        => $spouse ? $spouse->displayImage() : Theme::theme()->icon($fact),
 							'info'         => $fact->getValue(),
 							'lat'          => str_replace(array('N', 'S', ','), array('', '-', '.'), $latlongval->pl_lati),
 							'lng'          => str_replace(array('E', 'W', ','), array('', '-', '.'), $latlongval->pl_long),

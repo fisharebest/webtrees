@@ -30,7 +30,14 @@ $controller
 	->setPageTitle(WT_I18N::translate('Merge family trees'))
 	->pageHeader();
 
-echo '<h2>', $controller->getPageTitle(), '</h2>';
+?>
+<ol class="breadcrumb small">
+	<li><a href="admin.php"><?php echo WT_I18N::translate('Administration'); ?></a></li>
+	<li><a href="admin_trees_manage.php"><?php echo WT_I18N::translate('Manage family trees'); ?></a></li>
+	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
+</ol>
+<h2><?php echo $controller->getPageTitle(); ?></h2>
+<?php
 
 $tree1_id = WT_Filter::post('tree1_id');
 $tree2_id = WT_Filter::post('tree2_id');
@@ -74,7 +81,7 @@ if ($tree1_id && $tree2_id != $tree1_id) {
 			'<p>',
 			WT_I18N::plural(
 				/* I18N: An XREF is the identification number used in GEDCOM files. */
-				'The two family trees have %1$s record which use the same “XREF”.',
+				'The two family trees have %1$s record which uses the same “XREF”.',
 				'The two family trees have %1$s records which use the same “XREF”.',
 				count($xrefs), count($xrefs)
 			),

@@ -217,6 +217,7 @@ case 'load_json':
 $controller
 	->pageHeader()
 	->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
+	->addExternalJavascript(WT_DATATABLES_BOOTSTRAP_JS_URL)
 	->addInlineJavascript('
 		jQuery("#log_list").dataTable( {
 			"dom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',

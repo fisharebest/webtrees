@@ -65,20 +65,29 @@ if ($row->import_offset==$row->import_total) {
 	// Finished?  Show the maintenance links, similar to admin_trees_manage.php
 	WT_DB::commit();
 	$controller->addInlineJavascript(
-		'jQuery("#import'. $gedcom_id.'").toggle();'.
-		'jQuery("#actions'.$gedcom_id.'").toggle();'
+		'jQuery("#import'. $gedcom_id.'").addClass("hidden");'.
+		'jQuery("#actions'.$gedcom_id.'").removeClass("hidden");'
 	);
 	exit;
 }
 
 // Calculate progress so far
-$percent=100*(($row->import_offset) / $row->import_total);
-$status=WT_I18N::translate('Loading data from GEDCOM file: %.1f%%', $percent);
+$progress = $row->import_offset / $row->import_total;
 
-echo '<div id="progressbar', $gedcom_id, '"><div style="position:absolute;">', $status, '</div></div>';
-$controller->addInlineJavascript(
-	'jQuery("#progressbar' . $gedcom_id . '").progressbar({value: ' . round($percent, 1) . '});'
-);
+?>
+<div class="progress" id="progress<?php echo $gedcom_id; ?>">
+	<div
+		class="progress-bar"
+		role="progressbar"
+		aria-valuenow="<?php echo $progress * 100; ?>"
+		aria-valuemin="0"
+		aria-valuemax="100"
+		style="width: <?php echo $progress * 100; ?>%; min-width: 40px;"
+	>
+		<?php echo WT_I18N::percentage($progress, 1); ?>
+	</div>
+</div>
+<?php
 
 $first_time = ($row->import_offset == 0);
 // Run for one second.  This keeps the resource requirements low.
@@ -110,7 +119,7 @@ for ($end_time = microtime(true) + 1.0; microtime(true) < $end_time;) {
 		if (substr($data->chunk_data, 0, 6)!='0 HEAD') {
 			WT_DB::rollBack();
 			echo WT_I18N::translate('Invalid GEDCOM file - no header record found.');
-			$controller->addInlineJavascript('jQuery("#actions'.$gedcom_id.'").toggle();');
+			$controller->addInlineJavascript('jQuery("#actions'.$gedcom_id.'").removeClass("hidden");');
 			exit;
 		}
 		// What character set is this?  Need to convert it to UTF8
@@ -143,7 +152,7 @@ for ($end_time = microtime(true) + 1.0; microtime(true) < $end_time;) {
 			break;
 		case 'ANSI': // ANSI could be anything.  Most applications seem to treat it as latin1.
 			$controller->addInlineJavascript(
-				'alert("'. /* I18N: %1$s and %2$s are the names of character encodings, such as ISO-8859-1 or ASCII */ WT_I18N::translate('This GEDCOM file is encoded using %1$s.  Assume this to mean %2$s.', $charset, 'ISO-8859-1'). '");'
+				'alert("'. /* I18N: %1$s and %2$s are the names of character encodings, such as ISO-8859-1 or ASCII */ WT_I18N::translate('This GEDCOM is encoded using %1$s.  Assume this to mean %2$s.', $charset, 'ISO-8859-1'). '");'
 			);
 		case 'WINDOWS':
 		case 'CP1252':
@@ -187,7 +196,7 @@ for ($end_time = microtime(true) + 1.0; microtime(true) < $end_time;) {
 		default:
 			WT_DB::rollBack();
 			echo '<span class="error">',  WT_I18N::translate('Error: converting GEDCOM files from %s encoding to UTF-8 encoding not currently supported.', $charset), '</span>';
-			$controller->addInlineJavascript('jQuery("#actions'.$gedcom_id.'").toggle();');
+			$controller->addInlineJavascript('jQuery("#actions'.$gedcom_id.'").removeClass("hidden");');
 			exit;
 		}
 		$first_time=false;
@@ -221,7 +230,7 @@ for ($end_time = microtime(true) + 1.0; microtime(true) < $end_time;) {
 		} else {
 			// A fatal error.  Nothing we can do?
 			echo '<span class="error">', $ex->getMessage(), '</span>';
-			$controller->addInlineJavascript('jQuery("#actions' . $gedcom_id . '").toggle();');
+			$controller->addInlineJavascript('jQuery("#actions' . $gedcom_id . '").removeClass("hidden");');
 		}
 		exit;
 	}

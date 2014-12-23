@@ -158,15 +158,6 @@ class FunctionsTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * Test that function get_theme_names() exists in the global namespace.
-	 *
-	 * @return void
-	 */
-	public function testFunctionGetThemeNamesExists() {
-		$this->assertEquals(function_exists('\\get_theme_names'), true);
-	}
-
-	/**
 	 * Test that function get_query_url() exists in the global namespace.
 	 *
 	 * @return void

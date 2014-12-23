@@ -15,13 +15,13 @@
 // You should have received a copy of the GNU General Public License
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+use WT\Theme;
 
 /**
  * Class WT_Controller_Page Controller for full-page, themed HTML responses
  */
 class WT_Controller_Page extends WT_Controller_Base {
 	// Page header information
-	const     DOCTYPE = '<!DOCTYPE html>';  // HTML5
 	private $canonical_url = '';
 	private $meta_robots = 'noindex,nofollow'; // Most pages are not intended for robots
 	private $page_title = WT_WEBTREES;        // <head><title> $page_title </title></head>
@@ -44,7 +44,7 @@ class WT_Controller_Page extends WT_Controller_Base {
 	public function __destruct() {
 		// If we printed a header, automatically print a footer
 		if ($this->page_header) {
-			$this->pageFooter();
+			echo $this->pageFooter();
 		}
 	}
 
@@ -84,6 +84,15 @@ class WT_Controller_Page extends WT_Controller_Base {
 	}
 
 	/**
+	 * What is the preferred URL for this page?
+	 *
+	 * @return string
+	 */
+	public function getCanonicalUrl() {
+		return $this->canonical_url;
+	}
+
+	/**
 	 * Should robots index this page?
 	 *
 	 * @param string $meta_robots
@@ -94,6 +103,15 @@ class WT_Controller_Page extends WT_Controller_Base {
 		$this->meta_robots = $meta_robots;
 
 		return $this;
+	}
+
+	/**
+	 * Should robots index this page?
+	 *
+	 * @return string
+	 */
+	public function getMetaRobots() {
+		return $this->meta_robots;
 	}
 
 	/**
@@ -113,35 +131,38 @@ class WT_Controller_Page extends WT_Controller_Base {
 	}
 
 	/**
+	 * Print the page footer, using the theme
+	 *
+	 * @return string
+	 */
+	protected function pageFooter() {
+		global $start_time;
+
+		return
+			Theme::theme()->footerContainer() .
+			$this->getJavascript() .
+			Theme::theme()->hookFooterExtraJavascript() .
+			'</body>' .
+			'</html>' . PHP_EOL .
+			'<!-- webtrees: ' .  WT_VERSION . ' -->' .
+			'<!-- Execution time: ' .  WT_I18N::number(microtime(true) - $start_time, 3) . ' seconds -->' .
+			'<!-- Memory: ' .  WT_I18N::number(memory_get_peak_usage(true)/1024) . ' KB -->' .
+			'<!-- SQL queries: ' .  WT_I18N::number(WT_DB::getQueryCount()) . ' -->';
+	}
+
+	/**
 	 * Print the page header, using the theme
+	 *
+	 * @param string $view 'simple' or ''
 	 *
 	 * @return $this
 	 */
-	public function pageHeader() {
-		// Import global variables into the local scope, for the theme’s header.php
-		global $WT_TREE, $SEARCH_SPIDER, $TEXT_DIRECTION, $REQUIRE_AUTHENTICATION, $headerfile, $view;
-
-		// The title often includes the names of records, which may have markup
-		// that cannot be used in the page title.
-		$title = html_entity_decode(strip_tags($this->page_title), ENT_QUOTES, 'UTF-8');
-
-		// Initialise variables for the theme’s header.php
-		$LINK_CANONICAL = $this->canonical_url;
-		$META_ROBOTS = $this->meta_robots;
-		$META_DESCRIPTION = $WT_TREE ? $WT_TREE->getPreference('META_DESCRIPTION') : '';
-		if (!$META_DESCRIPTION) {
-			$META_DESCRIPTION = strip_tags(WT_TREE_TITLE);
-		}
-		$META_GENERATOR = WT_WEBTREES . ' ' . WT_VERSION . ' - ' . WT_WEBTREES_URL;
-		$META_TITLE = $WT_TREE ? $WT_TREE->getPreference('META_TITLE') : '';
-		if ($META_TITLE) {
-			$title .= ' - ' . $META_TITLE;
-		}
+	public function pageHeader($view = '') {
+		global $TEXT_DIRECTION;
 
 		// Give Javascript access to some PHP constants
 		$this->addInlineJavascript('
 			var WT_STATIC_URL  = "' . WT_Filter::escapeJs(WT_STATIC_URL) . '";
-			var WT_THEME_DIR   = "' . WT_Filter::escapeJs(WT_THEME_DIR) . '";
 			var WT_MODULES_DIR = "' . WT_Filter::escapeJs(WT_MODULES_DIR) . '";
 			var WT_GEDCOM      = "' . WT_Filter::escapeJs(WT_GEDCOM) . '";
 			var WT_GED_ID      = "' . WT_Filter::escapeJs(WT_GED_ID) . '";
@@ -158,35 +179,32 @@ class WT_Controller_Page extends WT_Controller_Base {
 			}
 		');
 
-		header('Content-Type: text/html; charset=UTF-8');
-		require WT_ROOT . $headerfile;
+		Theme::theme()->sendHeaders();
+		echo Theme::theme()->doctype();
+		echo Theme::theme()->html();
+		echo Theme::theme()->head($this);
+
+		switch ($view) {
+		case 'simple':
+			echo Theme::theme()->bodyHeaderPopupWindow();
+			break;
+		default:
+			echo Theme::theme()->bodyHeader();
+			break;
+		}
+
+		// Flush the output, so the browser can render the header and load javascript
+		// while we are preparing data for the page
+		if (ini_get('output_buffering')) {
+			ob_flush();
+		}
+		flush();
 
 		// Once we've displayed the header, we should no longer write session data.
 		Zend_Session::writeClose();
 
 		// We've displayed the header - display the footer automatically
 		$this->page_header = true;
-
-		return $this;
-	}
-
-	/**
-	 * Print the page footer, using the theme
-	 *
-	 * @return $this
-	 */
-	protected function pageFooter() {
-		global $footerfile, $WT_TREE, $TEXT_DIRECTION, $view;
-
-		if (WT_GED_ID) {
-			require WT_ROOT . $footerfile;
-		}
-
-		if (WT_DEBUG_SQL) {
-			echo WT_DB::getQueryLog();
-		}
-		echo $this->getJavascript();
-		echo '</body></html>';
 
 		return $this;
 	}

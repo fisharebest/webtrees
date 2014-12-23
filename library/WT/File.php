@@ -121,7 +121,7 @@ class WT_File {
 		if (is_dir($path)) {
 			return true;
 		} else {
-			if (!is_dir(dirname($path))) {
+			if (dirname($path) && !is_dir(dirname($path))) {
 				WT_File::mkdir(dirname($path));
 			}
 			@mkdir($path);

@@ -20,6 +20,7 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 use WT\Auth;
+use WT\Theme;
 
 /**
  * Class random_media_WT_Module
@@ -192,7 +193,7 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 			$content = WT_I18N::translate('This family tree has no images to display.');
 		}
 		if ($template) {
-			require WT_THEME_DIR.'templates/block_main_temp.php';
+			echo Theme::theme()->formatBlock($id, $title, $class, $content);
 		} else {
 			return $content;
 		}

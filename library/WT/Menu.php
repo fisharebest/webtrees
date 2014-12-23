@@ -59,7 +59,7 @@ class WT_Menu {
 	 * @param string    $onclick  A javascript onclick handler
 	 * @param WT_Menu[] $submenus Any submenus
 	 */
-	function __construct($label, $link = '#', $id = '', $onclick = '', $submenus = array()) {
+	public function __construct($label, $link = '#', $id = '', $onclick = '', $submenus = array()) {
 		$this
 			->setLabel($label)
 			->setLink($link)
@@ -79,13 +79,56 @@ class WT_Menu {
 	}
 
 	/**
+	 * Render this menu using Bootstrap markup
+	 *
+	 * @return string
+	 */
+	public function bootstrap() {
+		if ($this->iconclass) {
+			$class = ' class="' . $this->iconclass . '"';
+		} else {
+			$class = '';
+		}
+		if ($this->id) {
+			$id = ' id="' . $this->id . '"';
+		} else {
+			$id = '';
+		}
+
+		if ($this->submenus) {
+			$submenus = '';
+			foreach ($this->submenus as $submenu) {
+				$submenus .= $submenu->bootstrap();
+			}
+
+			return
+				'<li' . $id . ' class="dropdown">' .
+				'<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">' .
+				$this->label .
+				' <span class="caret"></span></a>' .
+				'<ul class="dropdown-menu" role="menu">' .
+				$submenus .
+				'</ul>' .
+				'</li>';
+		} else {
+			if ($this->onclick) {
+				$onclick = ' onclick="' . $this->onclick . '"';
+			} else {
+				$onclick = '';
+			}
+
+			return '<li' . $id . $class . '><a href="' . $this->link . '"' . $onclick . '>' . $this->label . '</a></li>';
+		}
+	}
+
+	/**
 	 * Set the CSS classes for this menu
 	 *
 	 * @param string $class
 	 * @param string $submenuclass
 	 * @param string $iconclass
 	 */
-	function addClass($class, $submenuclass = '', $iconclass = 'icon_general') {
+	public function addClass($class, $submenuclass = '', $iconclass = '') {
 		$this->class = $class;
 		$this->submenuclass = $submenuclass;
 		$this->iconclass = $iconclass;
@@ -168,7 +211,7 @@ class WT_Menu {
 	 *
 	 * @param WT_Menu[]
 	 */
-	function addSubmenu($menu) {
+	public function addSubmenu($menu) {
 		$this->submenus[] = $menu;
 	}
 
@@ -177,7 +220,7 @@ class WT_Menu {
 	 *
 	 * @return string
 	 */
-	function getMenu() {
+	public function getMenu() {
 		global $menucount, $TEXT_DIRECTION;
 
 		if (!isset($menucount)) {
@@ -229,7 +272,7 @@ class WT_Menu {
 	 *
 	 * @return string
 	 */
-	function getMenuAsList() {
+	public function getMenuAsList() {
 		if ($this->iconclass) {
 			$class = ' class="' . $this->iconclass . '"';
 		} else {

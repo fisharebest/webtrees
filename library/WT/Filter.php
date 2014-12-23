@@ -454,9 +454,11 @@ class WT_Filter {
 		if (WT_Filter::post('csrf') !== WT_Filter::getCsrfToken()) {
 			// Oops.  Something is not quite right
 			Log::addAuthenticationLog('CSRF mismatch - session expired or malicious attack');
-			WT_FlashMessages::addMessage(WT_I18N::translate('This form has expired.  Try again.'));
+			WT_FlashMessages::addMessage(WT_I18N::translate('This form has expired.  Try again.'), 'error');
+
 			return false;
 		}
+
 		return true;
 	}
 }

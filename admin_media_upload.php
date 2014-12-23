@@ -171,6 +171,15 @@ $mediaFolders = WT_Query_Media::folderListAll();
 $filesize = ini_get('upload_max_filesize');
 if (empty($filesize)) $filesize = "2M";
 
+?>
+<ol class="breadcrumb small">
+	<li><a href="admin.php"><?php echo WT_I18N::translate('Administration'); ?></a></li>
+	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
+</ol>
+<h2><?php echo $controller->getPageTitle(); ?></h2>
+<?php
+
+
 // Print the form
 echo '<form name="uploadmedia" enctype="multipart/form-data" method="post" action="', WT_SCRIPT_NAME, '">';
 echo '<input type="hidden" name="action" value="upload">';

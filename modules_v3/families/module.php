@@ -19,6 +19,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Theme;
+
 /**
  * Class families_WT_Module
  */
@@ -79,7 +81,7 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 	/** {@inheritdoc} */
 	public function getSidebarContent() {
-		global $WT_IMAGES, $UNKNOWN_NN, $controller;
+		global $UNKNOWN_NN, $controller;
 
 		// Fetch a list of the initial letters of all surnames in the database
 		$initials = WT_Query_Name::surnameAlpha(true, false, WT_GED_ID, false);
@@ -114,7 +116,7 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 					  success: function(html) {
 					    jQuery("#sb_fam_"+surname+" div").html(html);
 					    jQuery("#sb_fam_"+surname+" div").show();
-					    jQuery("#sb_fam_"+surname).css("list-style-image", "url('.$WT_IMAGES['minus'].')");
+					    jQuery("#sb_fam_"+surname).css("list-style-image", "url(' . Theme::theme()->parameter('image-minus') . ')");
 					    famloadedNames[surname]=2;
 					  }
 					});
@@ -122,12 +124,12 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				else if (famloadedNames[surname]==1) {
 					famloadedNames[surname]=2;
 					jQuery("#sb_fam_"+surname+" div").show();
-					jQuery("#sb_fam_"+surname).css("list-style-image", "url('.$WT_IMAGES['minus'].')");
+					jQuery("#sb_fam_"+surname).css("list-style-image", "url(' . Theme::theme()->parameter('image-minus') . ')");
 				}
 				else {
 					famloadedNames[surname]=1;
 					jQuery("#sb_fam_"+surname+" div").hide();
-					jQuery("#sb_fam_"+surname).css("list-style-image", "url('.$WT_IMAGES['plus'].')");
+					jQuery("#sb_fam_"+surname).css("list-style-image", "url(' . Theme::theme()->parameter('image-plus') . ')");
 				}
 				return false;
 			});

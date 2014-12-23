@@ -169,11 +169,7 @@ if ($action == 'choose' && $paramok) {
 	echo '<input type="text" data-autocomplete-type="IFS" name="gid" id="gid" size="6" value="">';
 	echo '</td><td style="padding-bottom: 2px; vertical-align: middle;">';
 	echo '&nbsp;';
-	if (isset($WT_IMAGES["add"])) {
-		echo '<img style="border-style:none;" src="', $WT_IMAGES["add"], '" alt="', WT_I18N::translate('Add'), ' " title="', WT_I18N::translate('Add'), '" align="middle" name="addLink" value="" onclick="blankwin(); return false;">';
-	} else {
-		echo '<button name="addLink" value="" type="button" onclick="blankwin(); return false;">', WT_I18N::translate('Add'), '</button>';
-	}
+	echo '<img style="border-style:none;" src="', Theme::theme()->parameter('add'), '" alt="', WT_I18N::translate('Add'), ' " title="', WT_I18N::translate('Add'), '" align="middle" name="addLink" value="" onclick="blankwin(); return false;">';
 	echo ' ', print_findindi_link('gid');
 	echo ' ', print_findfamily_link('gid');
 	echo ' ', print_findsource_link('gid');
@@ -209,8 +205,8 @@ if ($action == 'choose' && $paramok) {
 	var ifamily = "<?php echo WT_I18N::translate('Family navigator'); ?>";
 	var remove = "<?php echo WT_I18N::translate('Remove'); ?>";
 	/* ===icons === */
-	var removeLinkIcon = "<?php echo $WT_IMAGES['remove']; ?>";
-	var familyNavIcon = "<?php echo $WT_IMAGES['button_family']; ?>";
+	var removeLinkIcon = "<?php echo Theme::theme()->parameter('remove'); ?>";
+	var familyNavIcon = "<?php echo Theme::theme()->parameter('button_family'); ?>";
 
 
 var INPUT_NAME_PREFIX = 'InputCell_'; // this is being set via script

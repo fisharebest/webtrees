@@ -570,6 +570,7 @@ $controller
 	->restrictAccess(Auth::isAdmin())
 	->setPageTitle(WT_I18N::translate('Media'))
 	->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
+	->addExternalJavascript(WT_DATATABLES_BOOTSTRAP_JS_URL)
 	->pageHeader()
 	->addInlineJavascript('
 	jQuery("#media-table-' . $table_id . '").dataTable({
@@ -591,7 +592,13 @@ $controller
 		]
 	});
 	');
+
 ?>
+<ol class="breadcrumb small">
+	<li><a href="admin.php"><?php echo WT_I18N::translate('Administration'); ?></a></li>
+	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
+</ol>
+<h2><?php echo $controller->getPageTitle(); ?></h2>
 
 <form method="get" action="<?php echo WT_SCRIPT_NAME; ?>">
 	<table class="media_items">
