@@ -82,13 +82,18 @@ textarea:required:invalid {
 }
 
 /* Header Layout */
-#header {
+.header-upper {
+	color: #fff;
 	height: 40px;
 	background: #039 url(images/cabeza.png) left top;
 }
 
+/* LTR to RTL Translation */
+[dir=rtl] .header-upper {
+	background: url(images/cabeza_rtl.png) right top;
+}
+
 header h1 {
-	display: block;
 	float: left;
 	margin: 10px 12px;
 	font-size: 24px;
@@ -99,19 +104,14 @@ header h1 {
 	float: right;
 }
 
-.hsearch {
+.header-search {
 	display: block;
 	float: right;
 	margin-top: 10px;
 	margin-right: 5px;
 }
 
-/* LTR to RTL Translation */
-[dir=rtl] #header {
-	background: url(images/cabeza_rtl.png) right top;
-}
-
-[dir=rtl] .hsearch {
+[dir=rtl] .header-search {
 	float: left;
 	padding-left: 10px;
 }
@@ -120,59 +120,52 @@ header h1 {
 	margin: 0;
 }
 
-#header {
-	color: #fff;
-}
-
 #flash-messages {
 	clear: both;
 }
 
 /* Set stack level for top two header menu rows */
-.makeMenu ul,
-#main-menu ul {
+.header-menu ul,
+.main-menu ul {
 	z-index: 210;
 }
 
 /* Options Menu Layout */
-#header-user-links {
+.header-lower {
 	background: #84beff url(images/barra.png);
 	width: 100%;
 	color: #fff;
 	font-weight: bold;
-	font-size: 11px;
 	height: 40px;
 	position: relative;
 }
 
-#theme-menu {
-	position: absolute;
-	margin-left: 10px;
-	margin-top: 5px;
+#menu-theme,
+#menu-favorites {
+	float: left;
 }
 
-#fav-menu {
-	position: absolute;
-	left: 80px;
-	top: 5px;
-}
-
-#login-menu {
-	position: absolute;
-	left: 50%;
-	top: 15px;
-}
-
-#lang-menu {
+[dir=rtl] #menu-theme,
+[dir=rtl] #menu-favorites {
 	float: right;
-	margin-right: 10px;
-	margin-top: 5px;
-	text-align: right;
 }
 
-#lang-menu .makeMenu li ul {
+#menu-language {
+	float: right;
+}
+
+[dir=rtl] #menu-language {
+	float: left;
+}
+
+#menu-language ul {
 	left: auto;
 	right: 0;
+}
+
+[dir=rtl] #menu-language ul {
+	left: 0;
+	right: auto;
 }
 
 .lang-active,
@@ -181,50 +174,31 @@ header h1 {
 	font-weight: 900;
 }
 
-/* LTR to RTL Translation */
-[dir=rtl] #theme-menu {
-	position: absolute;
-	margin-right: 10px;
+.header-menu {
+	clear: both;
+	text-align: center;
+	margin: 0;
+	list-style: none;
 }
 
-[dir=rtl] #fav-menu {
-	position: absolute;
-	right: 80px;
-}
-
-[dir=rtl] #login-menu {
-	position: absolute;
-	left: auto;
-	right: 50%;
-}
-
-[dir=rtl] #lang-menu {
-	float: left;
-	margin-left: 10px;
-	text-align: left;
-}
-
-[dir=rtl] #lang-menu .makeMenu li ul {
-	right: auto;
-	left: 0;
-}
-
-.makeMenu li {
-	display: inline;
+.header-menu li {
+	display: inline-block;
 	position: relative;
 	white-space: nowrap;
+	padding: 5px;
 }
 
-.makeMenu a {
+.header-menu a {
 	color: #fff;
 	font-weight: bold;
 }
 
-.makeMenu a:hover {
+.header-menu a:hover {
 	color: #f00;
 }
 
-.makeMenu li ul {
+.header-menu ul {
+	list-style: none;
 	display: none;
 	position: absolute;
 	left: 0;
@@ -232,60 +206,45 @@ header h1 {
 	top: 1.1em;
 	background-color: #fff;
 	border: thin solid #c3dfff;
+	padding: 1px;
 }
 
-.makeMenu li ul li {
+[dir=rtl] .header-menu ul {
+	left: auto;
+	right: 0;
+}
+
+.header-menu li li {
 	padding: 2px;
 	display: block;
 	text-align: left;
 }
 
-.makeMenu li ul li a {
+[dir=rtl] .header-menu li li {
+	text-align: right;
+}
+
+[dir=rtl] li li {
+	text-align: right;
+}
+
+.header-menu li li a {
 	color: #000;
 	font-weight: normal;
 }
 
-.makeMenu li ul li a:hover {
+.header-menu li li a:hover {
 	color: #f00;;
 }
 
-.makeMenu,
-.makeMenu li ul {
-	list-style: none;
-	margin: 0;
-	padding: 1px;
-}
-
-.makeMenu li:hover > ul {
+.header-menu li:hover ul {
 	display: block;
 }
 
-.makeMenu li ul li a.lang-active,
-.makeMenu li ul li a.theme-active {
+.header-menu li li a.lang-active,
+.header-menu li li a.theme-active {
 	color: #006;
 	font-weight: 900;
-}
-
-[dir=rtl] li ul li {
-	text-align: right;
-}
-
-[dir=rtl] .makeMenu li ul {
-	left: auto;
-	right: 0;
-}
-
-[dir=rtl] .makeMenu li ul li {
-	text-align: right !important;
-}
-
-[dir=rtl] #extra-menu {
-	text-align: left;
-}
-
-[dir=rtl] #extra-menu.makeMenu li ul {
-	left: 0;
-	right: auto;
 }
 
 /* ======= Main menu items ========== */
@@ -300,27 +259,27 @@ header nav {
 	clear: both;
 }
 
-#main-menu {
+.main-menu {
 	margin: 0 auto;
 	display: table;
 }
 
-#main-menu,
-#main-menu ul {
+.main-menu,
+.main-menu ul {
 	padding: 0;
 	list-style-type: none;
 }
 
-#main-menu li {
+.main-menu li {
 	float: left;
 	position: relative;
 }
 
-#main-menu li li {
+.main-menu li li {
 	clear: both;
 }
 
-#main-menu li:hover > ul {
+.main-menu li:hover > ul {
 	display: block;
 	position: absolute;
 	top: 0;
@@ -329,19 +288,19 @@ header nav {
 	margin-top: 0;
 }
 
-#main-menu > li:hover > ul {
+.main-menu > li:hover > ul {
 	left: 0;
 	right: auto;
 	top: 42px;
 }
 
-#main-menu a {
+.main-menu a {
 	display: block;
 	white-space: nowrap;
 	overflow: hidden;
 }
 
-#main-menu ul {
+.main-menu ul {
 	position: absolute;
 	display: none;
 	background: #fff;
@@ -349,13 +308,13 @@ header nav {
 	padding: 0;
 }
 
-#main-menu li a {
+.main-menu li a {
 	margin: auto;
 	padding-top: 22px;
 	width: 100%;
 }
 
-#main-menu li li a {
+.main-menu li li a {
 	display: block;
 	position: relative;
 	float: left;
@@ -365,7 +324,7 @@ header nav {
 }
 
 /* Menu icons */
-#main-menu > li {
+.main-menu > li {
 	background-image: url(images/sprites-top-menu.png);
 	background-repeat: no-repeat;
 	width: 80px;
@@ -375,7 +334,7 @@ header nav {
 	text-indent: 0;
 }
 
-#main-menu li li {
+.main-menu li li {
 	background-image: url(images/sprites-sub-menu.png);
 	background-repeat: no-repeat;
 	height: 23px;
@@ -387,25 +346,25 @@ header nav {
 }
 
 /* Reverse left and right on RTL pages */
-[dir=rtl] #main-menu li {
+[dir=rtl] .main-menu li {
 	float: right;
 }
 
-[dir=rtl] #main-menu li:hover > ul {
+[dir=rtl] .main-menu li:hover > ul {
 	right: 100%;
 	left: auto;
 }
 
-[dir=rtl] #main-menu > li:hover > ul {
+[dir=rtl] .main-menu > li:hover > ul {
 	left: auto;
 	right: 0;
 }
 
-[dir=rtl] #main-menu li li {
+[dir=rtl] .main-menu li li {
 	text-align: right;
 }
 
-[dir=rtl] #main-menu li li a {
+[dir=rtl] .main-menu li li a {
 	float: right;
 	padding: 1px 5px 1px 10px;
 }

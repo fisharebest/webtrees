@@ -23,6 +23,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Theme;
+
 define('WT_SCRIPT_NAME', 'timeline.php');
 require './includes/session.php';
 
@@ -183,20 +185,20 @@ document.onmousemove = function (e) {
 
 		if (newy < boxmean) {
 			if (textDirection === 'rtl') {
-				dbox.style.backgroundImage = "url('<?php echo $WT_IMAGES["dline2"]; ?>')";
+				dbox.style.backgroundImage = "url('<?php echo Theme::theme()->parameter('image-dline2'); ?>')";
 				dbox.style.backgroundPosition = "0% 0%";
 			} else {
-				dbox.style.backgroundImage = "url('<?php echo $WT_IMAGES["dline"]; ?>')";
+				dbox.style.backgroundImage = "url('<?php echo Theme::theme()->parameter('image-dline'); ?>')";
 				dbox.style.backgroundPosition = "0% 100%";
 			}
 			dy = -dy;
 			dbox.style.top = (newy + bheight / 3) + "px";
 		} else {
 			if (textDirection === 'rtl') {
-				dbox.style.backgroundImage = "url('<?php echo $WT_IMAGES["dline"]; ?>')";
+				dbox.style.backgroundImage = "url('<?php echo Theme::theme()->parameter('image-dline'); ?>')";
 				dbox.style.backgroundPosition = "0% 100%";
 			} else {
-				dbox.style.backgroundImage = "url('<?php echo $WT_IMAGES["dline2"]; ?>')";
+				dbox.style.backgroundImage = "url('<?php echo Theme::theme()->parameter('image-dline2'); ?>')";
 				dbox.style.backgroundPosition = "0% 0%";
 			}
 
@@ -321,7 +323,7 @@ if (count($controller->people) > 0) {
 	<div id="timeline_chart">
 		<!-- print the timeline line image -->
 		<div id="line" style="position:absolute; <?php echo $TEXT_DIRECTION =="ltr"?"left: ".($basexoffset + 22):"right: ".($basexoffset + 22); ?>px; top: <?php echo $baseyoffset; ?>px;">
-		<img src="<?php echo $WT_IMAGES["vline"]; ?>" width="3" height="<?php echo ($baseyoffset + (($controller->topyear-$controller->baseyear)*$controller->scale)); ?>" alt="">
+		<img src="<?php echo Theme::theme()->parameter('image-vline'); ?>" width="3" height="<?php echo ($baseyoffset + (($controller->topyear-$controller->baseyear)*$controller->scale)); ?>" alt="">
 		</div>
 		<!-- print divs for the grid -->
 		<div id="scale<?php echo $controller->baseyear; ?>" style="position:absolute; <?php echo ($TEXT_DIRECTION =="ltr"?"left: $basexoffset":"right: $basexoffset"); ?>px; top: <?php echo ($baseyoffset-5); ?>px; font-size: 7pt; text-align: <?php echo ($TEXT_DIRECTION =="ltr"?"left":"right"); ?>;">
@@ -360,7 +362,7 @@ if (count($controller->people) > 0) {
 				<table cellspacing="0" cellpadding="0">
 					<tr>
 						<td>
-							<img src="<?php echo $WT_IMAGES["hline"]; ?>" name="ageline<?php echo $p; ?>" id="ageline<?php echo $p; ?>" align="left" width="25" height="3" alt="">
+							<img src="<?php echo Theme::theme()->parameter('image-hline'); ?>" name="ageline<?php echo $p; ?>" id="ageline<?php echo $p; ?>" align="left" width="25" height="3" alt="">
 						</td>
 						<td valign="top">
 							<?php

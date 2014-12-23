@@ -33,10 +33,60 @@ body {
 	font: 12px tahoma, arial, helvetica, sans-serif;
 }
 
+/* The header and its components */
 header {
-	background-color: #fff;
+	background: #acf url(images/clouds.png) repeat-x;
 	border: 1px solid #039;
 	margin: 10px;
+	height: 63px;
+	position: relative;
+}
+
+.header-search {
+	position: absolute;
+	top: 5px;
+	right: 10px;
+}
+
+[dir=rtl] .header-search {
+	left: 10px;
+	right: auto;
+}
+
+header h1 {
+	position: absolute;
+	left: 10px;
+	top: 5px;
+	color: #039;
+	font-size: 20px;
+	font-weight: normal;
+}
+
+[dir=rtl] header h1 {
+	right: 10px;
+	left: auto;
+}
+
+.main-menu {
+	position: absolute;
+	bottom: 0;
+	left: -20px;
+}
+
+[dir=rtl] .main-menu {
+	right: -20px;
+	left: auto;
+}
+
+.header-menu {
+	position: absolute;
+	bottom: 0;
+	right: 10px;
+}
+
+[dir=rtl] .header-menu {
+	left: 10px;
+	right: auto;
 }
 
 main {
@@ -53,49 +103,11 @@ td {
 }
 
 /* ================= Header Layout */
-#header {
-	background-image: url(images/clouds.png);
-	height: 30px;
-}
 
 /* Set stack level for top menu row */
-.makeMenu ul,
-#main-menu ul {
+.header-menu ul,
+.main-menu ul {
 	z-index: 210;
-}
-
-header h1 {
-	color: #039;
-	float: left;
-	font-size: 20px;
-	font-weight: normal;
-	margin: 5px 12px 0;
-}
-
-[dir=rtl] header h1 {
-	float: right;
-}
-
-.hsearch {
-	display: block;
-	float: right;
-	padding-right: 10px;
-	padding-top: 5px;
-}
-
-#header-user-links {
-	float: right;
-	margin-right: 20px;
-}
-
-[dir=rtl] .hsearch {
-	float: left;
-	padding-left: 10px;
-}
-
-[dir=rtl] #header-user-links {
-	float: left;
-	margin-left: 20px;
 }
 
 #bodydiv .title {
@@ -118,7 +130,7 @@ header h1 {
 	padding: 0;
 }
 
-#main-menu ul {
+.main-menu ul {
 	padding: 0;
 	margin: 0;
 	border: 1px solid #ddd;
@@ -130,7 +142,7 @@ header h1 {
 	background: #fff;
 }
 
-#main-menu li {
+.main-menu li {
 	display: block;
 	position: relative;
 	float: left;
@@ -138,11 +150,11 @@ header h1 {
 	width: 100%;
 }
 
-#main-menu li a {
+.main-menu li a {
 	display: block;
 }
 
-#main-menu li > ul {
+.main-menu li > ul {
 	display: block;
 	position: absolute;
 	top: 0;
@@ -151,37 +163,37 @@ header h1 {
 	right: auto;
 }
 
-#main-menu > li > a {
+.main-menu > li > a {
 	height: 37px;
 	width: 27px;
 }
 
-#main-menu > li > ul {
+.main-menu > li > ul {
 	left: 0;
 	right: auto;
 	top: 22px;
 }
 
-#main-menu a {
+.main-menu a {
 	text-decoration: none;
 	padding: 0 10px;
 	margin: 0;
 	white-space: nowrap;
 }
 
-#main-menu ul li:hover a,
-#main-menu li:hover li a {
+.main-menu ul li:hover a,
+.main-menu li:hover li a {
 	background: none;
 	border: 0;
 }
 
-#main-menu li:hover > ul {
+.main-menu li:hover > ul {
 	visibility: visible;
 	opacity: 1;
 }
 
 /* First row submenu style*/
-#main-menu > li > ul > li:first-child {
+.main-menu > li > ul > li:first-child {
 	text-indent: 0;
 	min-width: 100px;
 	width: 100%;
@@ -196,7 +208,7 @@ header h1 {
 }
 
 /* Mainmenu Icons*/
-#main-menu > li {
+.main-menu > li {
 	background-image: url(images/sprites-top-menu.png);
 	background-repeat: no-repeat;
 	width: 22px;
@@ -206,7 +218,7 @@ header h1 {
 }
 
 /* Submenu Icons */
-#main-menu li ul li {
+.main-menu ul li {
 	background-image: url(images/sprites-sub-menu.png);
 	background-repeat: no-repeat;
 	height: 22px;
@@ -215,33 +227,33 @@ header h1 {
 	text-indent: 22px;
 }
 
-[dir=rtl] #main-menu > li {
+[dir=rtl] .main-menu > li {
 	margin: 4px 16px 0 0;
 }
 
-[dir=rtl] #main-menu li {
+[dir=rtl] .main-menu li {
 	float: right;
 }
 
-[dir=rtl] #main-menu li:hover > ul {
+[dir=rtl] .main-menu li:hover > ul {
 	right: 100%;
 	left: auto;
 }
 
-[dir=rtl] #main-menu > li:hover > ul {
+[dir=rtl] .main-menu > li:hover > ul {
 	left: auto;
 	right: 0;
 }
 
-[dir=rtl] #main-menu li li {
+[dir=rtl] .main-menu li li {
 	text-align: right;
 }
 
-[dir=rtl] #main-menu li li a {
+[dir=rtl] .main-menu li li a {
 	display: block;
 }
 
-[dir=rtl] #main-menu > li > ul > li:first-child {
+[dir=rtl] .main-menu > li > ul > li:first-child {
 	text-align: center;
 }
 
@@ -938,67 +950,66 @@ header h1 {
 /* ===== */
 /* User Links Menu */
 
-#header-user-links {
-	float: right;
-	margin: 10px 10px 4px 0;
-}
-
-.makeMenu li {
+.header-menu li {
 	display: inline;
 	position: relative;
 	white-space: nowrap;
 }
 
-.makeMenu li:before {
+.header-menu li:before {
 	content: " | ";
 }
 
-.makeMenu li ul {
+.header-menu ul {
 	background-color: #eee;
 	border: thin solid #aaa;
 	display: none;
 	left: 0;
 	position: absolute;
-	top: 1.1em !important;
 }
 
-.makeMenu li ul li {
+.header-menu ul li {
 	display: block;
 	text-align: left;
 }
 
-.makeMenu li ul li a {
+.header-menu ul li a {
 	color: #333;
 	padding: 2px 5px 2px 2px !important;
 }
 
-.makeMenu,
-.makeMenu li ul {
+.header-menu {
+	list-style: none;
+	margin-left: 0 !important;
+	padding: 1px;
+}
+
+.header-menu ul {
 	list-style: none;
 	margin-left: 0 !important;
 	padding: 1px;
 	top: 5px;
 }
 
-.makeMenu li:hover > ul {
+.header-menu li:hover > ul {
 	display: block;
 }
 
-.makeMenu li a {
+.header-menu li a {
 	color: #039;
 }
 
-.makeMenu li a:hover {
+.header-menu li a:hover {
 	color: #f5003d;
 }
 
-.makeMenu ul li a {
+.header-menu ul li a {
 	background-color: #fff;
 	display: block;
 	padding: 0 5px !important;
 }
 
-.makeMenu ul li a:hover {
+.header-menu ul li a:hover {
 	background: #c8e7ff;
 	color: #000;
 }
@@ -1009,8 +1020,8 @@ li a.link {
 	margin-right: 5px;
 }
 
-.makeMenu li ul li:before,
-.makeMenu li:first-child:before {
+.header-menu ul li:before,
+.header-menu li:first-child:before {
 	content: "";
 }
 
@@ -1020,12 +1031,12 @@ li a.link {
 	font-weight: 900;
 }
 
-[dir=rtl] .makeMenu li ul {
+[dir=rtl] .header-menu ul {
 	left: auto;
 	right: -20px !important;
 }
 
-[dir=rtl] .makeMenu li ul li {
+[dir=rtl] .header-menu ul li {
 	text-align: right;
 }
 
@@ -2695,7 +2706,7 @@ dt {
 	padding: 1px 10px 1px 5px;
 }
 
-.makeMenu.lb-menu li:before {
+.header-menu.lb-menu li:before {
 	content: "";
 }
 

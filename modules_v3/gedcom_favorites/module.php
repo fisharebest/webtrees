@@ -21,6 +21,7 @@
 
 use Rhumsaa\Uuid\Uuid;
 use WT\Auth;
+use WT\Theme;
 
 /**
  * Class gedcom_favorites_WT_Module
@@ -117,7 +118,6 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 
 		$content = '';
-		$style = 2; // 1 means "regular box", 2 means "wide box"
 		if ($userfavs) {
 			foreach ($userfavs as $key=>$favorite) {
 				if (isset($favorite['id'])) $key=$favorite['id'];
@@ -145,9 +145,7 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 							}
 							$content .= '">';
 							if ($ctype=="user" || WT_USER_GEDCOM_ADMIN) $content .= $removeFavourite;
-							ob_start();
-							print_pedigree_person($record, $style);
-							$content .= ob_get_clean();
+							$content .= Theme::theme()->individualBoxLarge($record);
 							$content .= $favorite['note'];
 							$content .= '</div>';
 						} else {
@@ -204,10 +202,9 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 
 		if ($template) {
 			if ($block) {
-				require WT_THEME_DIR.'templates/block_small_temp.php';
-			} else {
-				require WT_THEME_DIR.'templates/block_main_temp.php';
+				$class .= ' small_inner_block';
 			}
+			return Theme::theme()->formatBlock($id, $title, $class, $content);
 		} else {
 			return $content;
 		}

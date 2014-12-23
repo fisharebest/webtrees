@@ -66,7 +66,7 @@ if ($action === 'ajax') {
 	if (array_key_exists($module_name, $all_blocks)) {
 		$class_name = $module_name . '_WT_Module';
 		$module     = new $class_name;
-		$module->getBlock($block_id);
+		echo $module->getBlock($block_id);
 	}
 	if (WT_DEBUG_SQL) {
 		echo WT_DB::getQueryLog();
@@ -103,7 +103,7 @@ if ($blocks['main']) {
 		$module     = new $class_name;
 		if ($SEARCH_SPIDER || !$module->loadAjax()) {
 			// Load the block directly
-			$module->getBlock($block_id);
+			echo $module->getBlock($block_id);
 		} else {
 			// Load the block asynchronously
 			echo '<div id="block_', $block_id, '"><div class="loading-image">&nbsp;</div></div>';
@@ -125,7 +125,7 @@ if ($blocks['side']) {
 		$module     = new $class_name;
 		if ($SEARCH_SPIDER || !$module->loadAjax()) {
 			// Load the block directly
-			$module->getBlock($block_id);
+			echo $module->getBlock($block_id);
 		} else {
 			// Load the block asynchronously
 			echo '<div id="block_', $block_id, '"><div class="loading-image">&nbsp;</div></div>';

@@ -18,6 +18,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+use WT\Theme;
 
 /**
  * Class WT_Controller_Fanchart Controller for the fan chart
@@ -141,11 +142,10 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 	 * HTTP requests.
 	 *
 	 * @param string   $what     "png" or "html"
-	 * @param string[] $fanChart Presentation parameters, provided by the theme.
 	 *
 	 * @return string
 	 */
-	public function generateFanChart($what, $fanChart) {
+	public function generateFanChart($what) {
 		$treeid = $this->sosaAncestors($this->generations);
 		$fanw   = 640 * $this->fan_width / 100;
 		$fandeg = 90 * $this->fan_style;
@@ -182,10 +182,29 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 		ImageFilledRectangle($image, 0, 0, $fanw, $fanh, $white);
 		ImageColorTransparent($image, $white);
 
-		$color = ImageColorAllocate($image, hexdec(substr($fanChart['color'],1,2)), hexdec(substr($fanChart['color'],3,2)), hexdec(substr($fanChart['color'],5,2)));
-		$bgcolor = ImageColorAllocate($image, hexdec(substr($fanChart['bgColor'],1,2)), hexdec(substr($fanChart['bgColor'],3,2)), hexdec(substr($fanChart['bgColor'],5,2)));
-		$bgcolorM = ImageColorAllocate($image, hexdec(substr($fanChart['bgMColor'],1,2)), hexdec(substr($fanChart['bgMColor'],3,2)), hexdec(substr($fanChart['bgMColor'],5,2)));
-		$bgcolorF = ImageColorAllocate($image, hexdec(substr($fanChart['bgFColor'],1,2)), hexdec(substr($fanChart['bgFColor'],3,2)), hexdec(substr($fanChart['bgFColor'],5,2)));
+		$color    = ImageColorAllocate(
+			$image,
+			hexdec(substr(Theme::theme()->parameter('chart-font-color'), 0, 2)),
+			hexdec(substr(Theme::theme()->parameter('chart-font-color'), 2, 2)),
+			hexdec(substr(Theme::theme()->parameter('chart-font-color'), 4, 2)));
+		$bgcolor  = ImageColorAllocate(
+			$image,
+			hexdec(substr(Theme::theme()->parameter('chart-background-u'), 0, 2)),
+			hexdec(substr(Theme::theme()->parameter('chart-background-u'), 2, 2)),
+			hexdec(substr(Theme::theme()->parameter('chart-background-u'), 4, 2))
+		);
+		$bgcolorM = ImageColorAllocate(
+			$image,
+			hexdec(substr(Theme::theme()->parameter('chart-background-m'), 0, 2)),
+			hexdec(substr(Theme::theme()->parameter('chart-background-m'), 2, 2)),
+			hexdec(substr(Theme::theme()->parameter('chart-background-m'), 4, 2))
+		);
+		$bgcolorF = ImageColorAllocate(
+			$image,
+			hexdec(substr(Theme::theme()->parameter('chart-background-f'), 0, 2)),
+			hexdec(substr(Theme::theme()->parameter('chart-background-f'), 2, 2)),
+			hexdec(substr(Theme::theme()->parameter('chart-background-f'), 4, 2))
+		);
 
 		// imagemap
 		$imagemap = '<map id="fanmap" name="fanmap">';
@@ -238,7 +257,7 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 					ImageFilledArc($image, $cx, $cy, $rx, $rx, $deg1, $deg2, $bg, IMG_ARC_PIE);
 
 					// split and center text by lines
-					$wmax = (int)($angle * 7 / $fanChart['size'] * $scale);
+					$wmax = (int)($angle * 7 / Theme::theme()->parameter('chart-font-size') * $scale);
 					$wmax = min($wmax, 35 * $scale);
 					if ($gen == 0) {
 						$wmax = min($wmax, 17 * $scale);
@@ -277,7 +296,13 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 					}
 
 					// print text
-					ImageTtfText($image, (double)$fanChart['size'], $tangle, $tx, $ty, $color, $fanChart['font'], $text);
+					ImageTtfText(
+						$image,
+						Theme::theme()->parameter('chart-font-size'),
+						$tangle, $tx, $ty,
+						$color, Theme::theme()->parameter('chart-font-name'),
+						$text
+					);
 
 					$imagemap .= '<area shape="poly" coords="';
 					// plot upper points

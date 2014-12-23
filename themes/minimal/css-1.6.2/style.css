@@ -83,13 +83,6 @@ textarea:required:invalid {
 
 /* ======= Layout for top header ======= */
 
-/* Set stack level for top two header menu rows */
-.makeMenu ul,
-#main-menu ul {
-	z-index: 210;
-}
-
-/* Row one */
 header h1 {
 	float: left;
 	clear: left;
@@ -103,104 +96,7 @@ header h1 {
 	clear: right;
 }
 
-#header-user-links {
-	float: right;
-}
-
-[dir=rtl] #header-user-links {
-	float: left;
-	clear: left;
-}
-
-/* Row two */
-.makeMenu {
-	font-size: 14px;
-}
-
-.makeMenu li {
-	background: none !important;
-	border: 1px solid #999;
-	display: inline;
-	float: left;
-	line-height: 26px;
-	position: relative;
-	white-space: nowrap;
-}
-
-.makeMenu li a {
-	padding: 5px 8px;
-}
-
-.makeMenu li ul {
-	display: none;
-	font-weight: normal;
-	font-size: 12px;
-	position: absolute;
-	left: 0;
-	right: auto;
-	top: 26px;
-	background-color: #fff;
-	border: 1px solid #999;
-}
-
-/* position sub-menus */
-.makeMenu ul ul {
-	background: #eee;
-	top: 0;
-	left: 100px;
-}
-
-.makeMenu li ul li {
-	border: 0;
-	clear: both;
-	display: block;
-	line-height: 2;
-	text-align: left;
-}
-
-.makeMenu,
-.makeMenu li ul {
-	list-style: none;
-	margin: 0;
-	padding: 1px;
-}
-
-.makeMenu li:hover > ul {
-	display: block;
-}
-
-.makeMenu ul li a {
-	padding: 0 5px 0 2px;
-	display: block;
-}
-
-.lang-active,
-.theme-active {
-	font-weight: 900;
-}
-
-/* --- RTL --- */
-[dir=rtl] .makeMenu li {
-	float: right;
-}
-
-[dir=rtl] .makeMenu li ul {
-	left: auto;
-	right: 0;
-}
-
-[dir=rtl] .makeMenu ul ul {
-	top: 0;
-	left: auto;
-	right: 100px;
-}
-
-[dir=rtl] .makeMenu li ul li {
-	text-align: right;
-}
-
-/* set up container for menu */
-#topMenu {
+header nav {
 	position: relative;
 	float: left;
 	width: 100%;
@@ -209,14 +105,46 @@ header h1 {
 	margin-bottom: 10px;
 }
 
-#topMenu ul {
+[dir=rtl] header nav {
+	float: right;
+}
+
+.header-menu {
+	float: right;
+	font-size: 14px;
+}
+
+[dir=rtl] .header-menu {
+	float: left;
+}
+
+.main-menu {
 	position: relative;
 	float: right;
 	right: 50%;
 	list-style: none;
 }
 
-#topMenu ul li {
+[dir=rtl] .main-menu {
+	right: auto;
+	float: left;
+	left: 50%;
+}
+
+.header-menu li {
+	position: relative;
+	float: left;
+	border: 1px solid #999;
+	display: inline;
+	line-height: 26px;
+	white-space: nowrap;
+}
+
+[dir=rtl] .header-menu li {
+	float: right;
+}
+
+.main-menu li {
 	position: relative;
 	float: left;
 	left: 50%;
@@ -226,7 +154,17 @@ header h1 {
 	border: 1px solid #999;
 }
 
-#topMenu ul li a {
+[dir=rtl] .main-menu li {
+	float: right;
+	clear: left;
+	right: 50%;
+}
+
+.header-menu li a {
+	padding: 5px 8px;
+}
+
+.main-menu li a {
 	display: block;
 	font-size: 14px;
 	text-align: center;
@@ -234,8 +172,25 @@ header h1 {
 	background-color: #fff;
 }
 
-/* Subnavigation section */
-#topMenu ul li ul {
+.header-menu ul {
+	position: absolute;
+	top: 26px;
+	left: 0;
+	right: auto;
+	display: none;
+	font-weight: normal;
+	font-size: 12px;
+	background: #fff;
+	border: 1px solid #999;
+	z-index: 210;
+}
+
+[dir=rtl] .header-menu ul {
+	left: auto;
+	right: 0;
+}
+
+.main-menu ul {
 	position: absolute;
 	top: 27px;
 	left: 0;
@@ -244,16 +199,28 @@ header h1 {
 	background: #fff;
 	white-space: nowrap;
 	border: 1px solid #999;
+	list-style: none;
+	z-index: 210;
 }
 
-/* sub-sub-menus */
-#topMenu ul ul ul {
-	top: 0;
-	left: 96px;
-	border: 1px solid #999;
+[dir=rtl] .main-menu ul {
+	right: 0;
+	left: auto;
 }
 
-#topMenu ul ul li {
+.header-menu ul li {
+	border: 0;
+	clear: both;
+	display: block;
+	line-height: 2;
+	text-align: left;
+}
+
+[dir=rtl] .header-menu ul li {
+	text-align: right;
+}
+
+.main-menu ul li {
 	float: left;
 	width: 100%;
 	border: 0;
@@ -263,14 +230,25 @@ header h1 {
 	clear: left;
 }
 
-#topMenu ul ul li a {
-	padding: 5px;
-	text-align: left;
-	font-size: 12px;
+[dir=rtl] .main-menu ul li {
+	right: auto; /*resets the right:50% on the parent li */
+	clear: right;
+	float: right;
+	width: 100%;
 }
 
-/* header hover */
-#topMenu ul li:hover > ul {
+.header-menu,
+.header-menu ul {
+	list-style: none;
+	margin: 0;
+	padding: 1px;
+}
+
+.header-menu li:hover ul {
+	display: block;
+}
+
+.main-menu li:hover ul {
 	position: absolute;
 	margin: 0;
 	display: block;
@@ -278,61 +256,28 @@ header h1 {
 	padding: 0;
 }
 
-#topMenu ul #menu-chart li:hover ul,
-#topMenu ul #menu-obje li:hover ul {
-	position: absolute;
+[dir=rtl] .main-menu li:hover ul {
+	text-align: right;
+}
+
+.header-menu ul li a {
+	padding: 0 5px 0 2px;
 	display: block;
-	margin-left: 100%;
-	left: 0;
 }
 
-/* --- RTL --- */
-[dir=rtl] #topMenu {
-	float: right;
+.lang-active,
+.theme-active {
+	font-weight: 900;
 }
 
-[dir=rtl] #topMenu ul {
-	right: auto;
-	float: left;
-	left: 50%;
+.main-menu ul li a {
+	padding: 5px;
+	text-align: left;
+	font-size: 12px;
 }
 
-[dir=rtl] #topMenu ul li {
-	float: right;
-	clear: left;
-	right: 50%;
-}
-
-[dir=rtl] #topMenu ul ul {
-	right: 0;
-	left: auto;
-}
-
-[dir=rtl] #topMenu ul ul li {
-	right: auto; /*resets the right:50% on the parent li */
-	clear: right;
-	float: right;
-	width: 100%;
-}
-
-[dir=rtl] #topMenu ul ul li a {
+[dir=rtl] .main-menu ul li a {
 	text-align: right;
-}
-
-[dir=rtl] #topMenu ul li:hover > ul {
-	text-align: right;
-}
-
-[dir=rtl] #topMenu ul #menu-chart li:hover ul {
-	margin-right: 100%;
-	right: 0;
-	left: auto;
-}
-
-[dir=rtl] #topMenu ul #menu-obje li:hover ul {
-	margin-right: 100%;
-	right: 0;
-	left: auto;
 }
 
 #flash-messages {

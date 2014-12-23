@@ -23,6 +23,7 @@
 
 use WT\Auth;
 use WT\Log;
+use WT\Theme;
 
 // WT_SCRIPT_NAME is defined in each script that the user is permitted to load.
 if (!defined('WT_SCRIPT_NAME')) {
@@ -33,8 +34,6 @@ if (!defined('WT_SCRIPT_NAME')) {
 // To embed webtrees code in other applications, we must explicitly declare any global variables that we create.
 // session.php
 global $start_time, $WT_REQUEST, $WT_SESSION, $WT_TREE, $GEDCOM, $SEARCH_SPIDER, $TEXT_DIRECTION;
-// theme.php
-global $headerfile, $footerfile, $WT_IMAGES, $fanchart, $bwidth, $bheight, $baseyoffset, $basexoffset, $bxspacing, $byspacing, $linewidth, $shadowcolor, $shadowblur, $shadowoffsetX, $shadowoffsetY, $Dbaseyoffset, $Dbasexoffset, $Dbxspacing, $Dbyspacing, $Dbwidth, $Dbheight, $Dindent, $Darrowwidth, $cbwidth, $cbheight, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y, $WT_STATS_L_CHART_X, $WT_STATS_MAP_X, $WT_STATS_MAP_Y, $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_CHART_COLOR3;
 // most pages
 global $controller;
 
@@ -592,50 +591,46 @@ if (WT_TIMESTAMP - $WT_SESSION->activity_time > 300) {
 // Set the theme
 if (substr(WT_SCRIPT_NAME, 0, 5) == 'admin' || WT_SCRIPT_NAME == 'module.php' && substr(WT_Filter::get('mod_action'), 0, 5) == 'admin') {
 	// Administration scripts begin with “admin” and use a special administration theme
-	define('WT_THEME_DIR', WT_THEMES_DIR . '_administration/');
+	Theme::theme(new \WT\Theme\Administration)->init($WT_TREE, $WT_SESSION, $SEARCH_SPIDER);
 } else {
 	if (WT_Site::getPreference('ALLOW_USER_THEMES')) {
 		// Requested change of theme?
-		$THEME_DIR = WT_Filter::get('theme');
-		if (!in_array($THEME_DIR, get_theme_names())) {
-			$THEME_DIR = '';
+		$theme_id = WT_Filter::get('theme');
+		if (!array_key_exists($theme_id, Theme::themeNames())) {
+			$theme_id = '';
 		}
 		// Last theme used?
-		if (!$THEME_DIR && in_array($WT_SESSION->theme_id, get_theme_names())) {
-			$THEME_DIR = $WT_SESSION->theme_id;
+		if (!$theme_id && array_key_exists($WT_SESSION->theme_id, Theme::themeNames())) {
+			$theme_id = $WT_SESSION->theme_id;
 		}
 	} else {
-		$THEME_DIR = '';
+		$theme_id = '';
 	}
-	if (!$THEME_DIR) {
+	if (!$theme_id) {
 		// User cannot choose (or has not chosen) a theme.
 		// 1) gedcom setting
 		// 2) site setting
 		// 3) webtrees
 		// 4) first one found
 		if (WT_GED_ID) {
-			$THEME_DIR = $WT_TREE->getPreference('THEME_DIR');
+			$theme_id = $WT_TREE->getPreference('THEME_DIR');
 		}
-		if (!in_array($THEME_DIR, get_theme_names())) {
-			$THEME_DIR = WT_Site::getPreference('THEME_DIR');
+		if (!array_key_exists($theme_id, Theme::themeNames())) {
+			$theme_id = WT_Site::getPreference('THEME_DIR');
 		}
-		if (!in_array($THEME_DIR, get_theme_names())) {
-			$THEME_DIR = 'webtrees';
-		}
-		if (!in_array($THEME_DIR, get_theme_names())) {
-			list($THEME_DIR) = get_theme_names();
+		if (!array_key_exists($theme_id, Theme::themeNames())) {
+			$theme_id = 'webtrees';
 		}
 	}
-	define('WT_THEME_DIR', WT_THEMES_DIR . $THEME_DIR . '/');
-	// Remember this setting
-	if (WT_THEME_DIR != WT_THEMES_DIR . '_administration/') {
-		$WT_SESSION->theme_id = $THEME_DIR;
+	foreach (Theme::installedThemes() as $theme) {
+		if ($theme->themeId() === $theme_id) {
+			Theme::theme($theme)->init($WT_TREE, $WT_SESSION, $SEARCH_SPIDER);
+		}
 	}
-}
-// If we have specified a CDN, use it for static theme resources
-define('WT_THEME_URL', WT_STATIC_URL . WT_THEME_DIR);
 
-require WT_ROOT . WT_THEME_DIR . 'theme.php';
+	// Remember this setting
+	$WT_SESSION->theme_id = $theme_id;
+}
 
 // Page hit counter - load after theme, as we need theme formatting
 if ($WT_TREE && $WT_TREE->getPreference('SHOW_COUNTER') && !$SEARCH_SPIDER) {
@@ -656,3 +651,13 @@ if ($SEARCH_SPIDER && !in_array(WT_SCRIPT_NAME, array(
 	echo '<p class="ui-state-error">', WT_I18N::translate('You do not have permission to view this page.'), '</p>';
 	exit;
 }
+
+// These theme globals are horribly abused.
+$bwidth       = Theme::theme()->parameter('chart-box-x');
+$bheight      = Theme::theme()->parameter('chart-box-y');
+$basexoffset  = Theme::theme()->parameter('chart-offset-x');
+$baseyoffset  = Theme::theme()->parameter('chart-offset-y');
+$bxspacing    = Theme::theme()->parameter('chart-spacing-x');
+$byspacing    = Theme::theme()->parameter('chart-spacing-y');
+$Dbwidth      = Theme::theme()->parameter('chart-descendancy-box-x');
+$Dbheight     = Theme::theme()->parameter('chart-descendancy-box-y');

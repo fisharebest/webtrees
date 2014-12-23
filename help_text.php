@@ -27,6 +27,7 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 use WT\Auth;
+use WT\Theme;
 
 define('WT_SCRIPT_NAME', 'help_text.php');
 require './includes/session.php';
@@ -1015,7 +1016,7 @@ case 'USE_RIN':
 case 'USE_SILHOUETTE':
 	$title=WT_I18N::translate('Use silhouettes');
 	$text=WT_I18N::translate('Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the gender of the individual in question.<br><br><table><tr><td style="vertical-align:middle">This image might be used when the gender of the individual is unknown:')
-	." </td><td><img src=\"" . $WT_IMAGES["default_image_U"] . "\" width=\"40\" alt=\"\" title=\"\" /></td></tr></table>";
+	." </td><td><img src=\"" . Theme::theme()->parameter('image-default_image_U') . "\" width=\"40\" alt=\"\" title=\"\" /></td></tr></table>";
 	break;
 
 case 'Watermarks':
