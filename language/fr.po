@@ -8186,17 +8186,17 @@ msgstr "Relier cette personne comme enfant d’une famille existante"
 #: admin_media.php:517 library/WT/Controller/Media.php:70
 #: library/WT/Controller/Media.php:159 modules_v3/lightbox/module.php:144
 msgid "Link this media object to a family"
-msgstr ""
+msgstr "Relier cet objet média à une famille"
 
 #: admin_media.php:522 library/WT/Controller/Media.php:74
 #: library/WT/Controller/Media.php:162 modules_v3/lightbox/module.php:149
 msgid "Link this media object to a source"
-msgstr ""
+msgstr "Relier cet objet média à une source"
 
 #: admin_media.php:512 library/WT/Controller/Media.php:66
 #: library/WT/Controller/Media.php:156 modules_v3/lightbox/module.php:139
 msgid "Link this media object to an individual"
-msgstr ""
+msgstr "Relier cet objet média à un individu"
 
 #: inverselink.php:35 inverselink.php:68 library/WT/Controller/Family.php:215
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:75
@@ -11503,7 +11503,7 @@ msgstr "Authentification obligatoire"
 #. I18N: gedcom tag _TODO
 #: library/WT/Gedcom/Tag.php:1740
 msgid "Research task"
-msgstr "Tâche de recherche"
+msgstr "Tâche à faire"
 
 #. I18N: Name of a module.  Tasks that need further research.
 #: modules_v3/todo/help_text.php:31 modules_v3/todo/module.php:31
@@ -11516,7 +11516,7 @@ msgstr "Les tâches à faire sont des événements spéciaux ajoutés aux indivi
 
 #: modules_v3/todo/help_text.php:36
 msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”.  Other genealogy applications may not recognize this tag."
-msgstr "Les tâches de recherche sont stockées sous la balise GEDCOM standard «&nbsp;_TODO&nbsp;». Il est possible que d’autres logiciels de généalogie ne reconnaissent pas cette balise."
+msgstr "Les tâches à faire sont stockées sous la balise GEDCOM standard «&nbsp;_TODO&nbsp;». Il est possible que d’autres logiciels de généalogie ne reconnaissent pas cette balise."
 
 #: medialist.php:153 modules_v3/googlemap/module.php:4900
 msgid "Reset"
@@ -11529,7 +11529,7 @@ msgstr "Domicile"
 
 #: index_edit.php:355
 msgid "Restore the default block layout"
-msgstr ""
+msgstr "Restaurer la mise en page des blocs par défaut"
 
 #. I18N: http://en.wikipedia.org/wiki/User_agent
 #: admin_site_access.php:274
@@ -14523,7 +14523,7 @@ msgstr "Pour terminer la mise à jour, vous devez installer manuellement les fic
 
 #: modules_v3/todo/help_text.php:34
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
-msgstr "Pour créer des nouvelles tâches à faire, vous devez premièrement ajouter «&nbsp;tâche à faire&nbsp;» à la liste des faits et des événements dans les préférences de votre arbre généalogique."
+msgstr "Pour créer des nouvelles tâches à faire, vous devez premièrement ajouter la balise _TODO à la liste des faits et des événements dans les options de votre arbre généalogique."
 
 #: help_text.php:528
 msgid "To ensure compatibility with other genealogy applications, notes, text, and transcripts should be recorded in simple, unformatted text.  However, formatting is often desirable to aid presentation, comprehension, etc."
