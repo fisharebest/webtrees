@@ -175,6 +175,7 @@ textarea:required:invalid {
 }
 
 main {
+	display: block;
 	clear: both;
 }
 

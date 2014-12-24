@@ -1107,6 +1107,7 @@ header h1 {
 
 /* families */
 main {
+	display: block;
 	clear: both;
 	padding: 10px 10px 0;
 }

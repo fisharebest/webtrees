@@ -249,11 +249,11 @@ echo '<canvas id="pedigree_canvas" width="' . (int)($canvaswidth) . '" height="'
 echo '</div>'; //close #pedigree_chart
 echo '</div>'; //close #pedigree-page
 
-// Expand <div id="content"> to include the absolutely-positioned elements.
+// Expand <div id="pedigree-page"> to include the absolutely-positioned elements.
 $controller->addInlineJavascript('
 	var WT_PEDIGREE_CHART = (function() {
 	jQuery("html").css("overflow","visible"); // workaround for chrome v37 canvas bugs
-	jQuery("#content").css("height", "' . ($maxyoffset + 30) . '");
+	jQuery("#pedigree-page").css("height", "' . ($maxyoffset + 30) . '");
 
 	// Draw joining lines in <canvas>
 	// Set variables
