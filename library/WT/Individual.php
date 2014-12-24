@@ -516,8 +516,8 @@ class WT_Individual extends WT_GedcomRecord {
 		return
 			/* I18N: A range of years, e.g. “1870–”, “1870–1920”, “–1920” */ WT_I18N::translate(
 				'%1$s–%2$s',
-				'<span title="' . strip_tags($this->getBirthDate()->display()) . '">' . $this->getBirthDate()->MinDate()->format('%Y') . '</span>',
-				'<span title="' . strip_tags($this->getDeathDate()->display()) . '">' . $this->getDeathDate()->MinDate()->format('%Y') . '</span>'
+				'<span itemprop="birthDate" title="' . strip_tags($this->getBirthDate()->display()) . '">' . $this->getBirthDate()->MinDate()->format('%Y') . '</span>',
+				'<span itemprop="deathDate" title="' . strip_tags($this->getDeathDate()->display()) . '">' . $this->getDeathDate()->MinDate()->format('%Y') . '</span>'
 			);
 	}
 
@@ -1228,7 +1228,7 @@ class WT_Individual extends WT_GedcomRecord {
 		if (strpos($full, '@P.N.') !== false) {
 			$full = str_replace('@P.N.', $UNKNOWN_PN, $full);
 		}
-		$full = '<span class="NAME" dir="auto" translate="no">' . preg_replace('/\/([^\/]*)\//', '<span class="SURN">$1</span>', WT_Filter::escapeHtml($full)) . '</span>';
+		$full = '<span class="NAME" dir="auto" translate="no" itemprop="name">' . preg_replace('/\/([^\/]*)\//', '<span class="SURN" itemprop="familyName">$1</span>', WT_Filter::escapeHtml($full)) . '</span>';
 
 		// The standards say you should use a suffix of '*' for preferred name
 		$full = preg_replace('/([^ >]*)\*/', '<span class="starredname">\\1</span>', $full);

@@ -28,10 +28,13 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
+define('WT_GOOGLE_SOCIALTRACKING',  './js/ga_social_tracking.js');
+
 global $WT_IMAGES;
 
 // This theme uses the jQuery “colorbox” plugin to display images
 $this
+	->addExternalJavascript(WT_GOOGLE_SOCIALTRACKING)
 	->addExternalJavascript(WT_JQUERY_COLORBOX_URL)
 	->addExternalJavascript(WT_JQUERY_WHEELZOOM_URL)
 	->addInlineJavascript('activate_colorbox();')
@@ -42,6 +45,7 @@ $this
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<?php include(WT_ROOT."/keywords.php"); ?>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<?php echo header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL); ?>
 	<title><?php echo WT_Filter::escapeHtml($title); ?></title>
@@ -56,7 +60,7 @@ $this
 	<?php if ($view !== 'simple') { ?>
 	<header>
 		<div class="header_img">
-			<img src="<?php echo WT_CSS_URL; ?>images/webtrees.png" width="242" height="50" alt="<?php echo WT_WEBTREES; ?>">
+			<img src="<?php echo WT_CSS_URL; ?>images/Soyagaci_30x30.png" width="50px" height="50px" alt="<?php echo WT_WEBTREES; ?>">
 		</div>
 		<div id="header-user-links">
 			<ul class="makeMenu" role="menubar">
@@ -73,6 +77,7 @@ $this
 				<?php echo WT_MenuBar::getThemeMenu(); ?>
 				<?php echo WT_MenuBar::getLanguageMenu(); ?>
 			</ul>
+			<div style="margin:auto;padding:10px;width:300px;"><div class="g-follow" data-annotation="bubble" data-height="20" data-href="//plus.google.com/u/0/106237023746635567418" data-rel="publisher"></div></div>
 		</div>
 		<h1><?php echo WT_TREE_TITLE; ?></h1>
 		<div class="header_search">

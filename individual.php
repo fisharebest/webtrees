@@ -169,7 +169,7 @@ echo
 if ($controller->record->canShow()) {
 	// Highlight image or silhouette
 	echo '<div id="indi_mainimage">', $controller->record->displayImage(), '</div>';
-	echo '<div id="header_accordion1">'; // contain accordions for names
+	echo '<div id="header_accordion1" itemscope itemtype="http://schema.org/Person">'; // contain accordions for names
 	echo '<h3 class="name_one ', $controller->getPersonStyle($controller->record), '"><span>', $controller->record->getFullName(), '</span>'; // First name accordion header
 	$bdate=$controller->record->getBirthDate();
 	$ddate=$controller->record->getDeathDate();
@@ -235,6 +235,9 @@ foreach ($controller->tabs as $tab) {
 		}
 	}
 }
+echo '<p class="error center">';
+include(WT_ROOT."adsense_soyagaci-468-15.php");
+echo '</p>';
 echo
 	'</div>', // close #tabs
 	'</div>'; //close indi_left

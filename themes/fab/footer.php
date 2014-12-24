@@ -29,6 +29,23 @@ if (!defined('WT_WEBTREES')) {
 echo '</main>';
 if ($view!='simple') {
 	echo '<footer><div class="block">', contact_links();
+    echo '<div style="width: 500px; margin:auto; padding:10px;">';
+    include(WT_ROOT."/addthis.php"); 
+    echo '</div>';    
+    echo '<br>';
+    echo '<p class="contact_links">';
+    if (WT_LOCALE=='tr') {
+        echo '<a href="/privacypolicy.html" target="_blank" class="', $TEXT_DIRECTION, '">Gizlilik Politikasi</a>';        
+    } else {
+        echo '<a href="/privacypolicy.html" target="_blank" class="', $TEXT_DIRECTION, '">Privacy policy</a>';        
+    }
+    echo '</p>';
+    echo contact_links();
+    echo '<br>';
+    echo '<p class="error center">';
+    include(WT_ROOT."/adsense.php");
+    echo '</p>';
+    echo '<br>';
 	if ($WT_TREE && $WT_TREE->getPreference('SHOW_STATS')) {
 		echo execution_stats();
 	}

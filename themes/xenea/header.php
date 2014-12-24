@@ -28,8 +28,11 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
+define('WT_GOOGLE_SOCIALTRACKING',  './js/ga_social_tracking.js');
+    
 // This theme uses the jQuery “colorbox” plugin to display images
 $this
+	->addExternalJavascript(WT_GOOGLE_SOCIALTRACKING)
 	->addExternalJavascript(WT_JQUERY_COLORBOX_URL)
 	->addExternalJavascript(WT_JQUERY_WHEELZOOM_URL)
 	->addInlineJavascript('activate_colorbox();')
@@ -49,6 +52,7 @@ $this
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<?php include(WT_ROOT."/keywords.php"); ?>
 	<?php echo header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL); ?>
 	<title><?php echo WT_Filter::escapeHtml($title); ?></title>
 	<link rel="icon" href="<?php echo WT_CSS_URL; ?>favicon.png" type="image/png">
@@ -72,6 +76,7 @@ $this
 					<input type="submit" name="search" value="&gt;">
 				</form>
 			</div>
+			<div style="margin:auto;padding:10px;width:300px;"><div class="g-follow" data-annotation="bubble" data-height="20" data-href="//plus.google.com/u/0/106237023746635567418" data-rel="publisher"></div></div>
 		</div>
 		<div id="header-user-links">
 			<div id="theme-menu">

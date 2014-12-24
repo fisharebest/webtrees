@@ -29,9 +29,11 @@ if (!defined('WT_WEBTREES')) {
 }
 
 global $WT_IMAGES;
+define('WT_GOOGLE_SOCIALTRACKING',  './js/ga_social_tracking.js');
 
 // This theme uses the jQuery “colorbox” plugin to display images
 $this
+	->addExternalJavascript(WT_GOOGLE_SOCIALTRACKING)
 	->addExternalJavascript(WT_JQUERY_COLORBOX_URL)
 	->addExternalJavascript(WT_JQUERY_WHEELZOOM_URL)
 	->addInlineJavascript('activate_colorbox();')
@@ -64,6 +66,7 @@ foreach (WT_MenuBar::getModuleMenus() as $menu) {
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<?php include(WT_ROOT."/keywords.php");?>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<?php echo header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL); ?>
 	<title><?php echo WT_Filter::escapeHtml($title); ?></title>
@@ -88,6 +91,7 @@ foreach (WT_MenuBar::getModuleMenus() as $menu) {
 					<input class="search-icon" type="image" src="<?php echo $WT_IMAGES['search']; ?>" alt="<?php echo WT_I18N::translate('Search'); ?>" title="<?php echo WT_I18N::translate('Search'); ?>">
 				</form>
 			</div>
+		<div style="margin:auto;padding:10px;width:300px;"><div class="g-follow" data-annotation="bubble" data-height="20" data-href="//plus.google.com/u/0/106237023746635567418" data-rel="publisher"></div></div>
 		</div>
 		<div id="topMenu">
 			<nav>

@@ -29,7 +29,26 @@ if (!defined('WT_WEBTREES')) {
 echo '</main>';
 if ($view !== 'simple') {
 	echo '<footer>';
+	echo '<div style="width: 500px; margin:auto; padding:10px;">';
+    include(WT_ROOT."/addthis.php"); 
+    echo '</div>';
+    echo '<br>';
+    echo '<p class="contact_links">';
+    if (WT_LOCALE=='tr') {
+        //echo 'Bizi Takip Edin: <a href="https://plus.google.com/106237023746635567418" rel="publisher">Google+</a><br)';
+        echo '<a href="/privacypolicy.html" target="_blank" class="', $TEXT_DIRECTION, '">Gizlilik Politikasi</a>';        
+    } else {
+        //echo 'Follow Us: <a href="https://plus.google.com/106237023746635567418" rel="publisher">Google+</a><br>';
+        echo '<a href="/privacypolicy.html" target="_blank" class="', $TEXT_DIRECTION, '">Privacy policy</a>';        
+    }
+    echo '</p>';
+    echo '<br>';
 	echo contact_links();
+    echo '<br>';
+    echo '<p class="error center">';
+    include(WT_ROOT."/adsense.php");
+    echo '</p>';
+	echo '<br>';
 	echo '<p class="logo">';
 	echo '<a href="', WT_WEBTREES_URL, '" target="_blank" class="icon-webtrees" title="', WT_WEBTREES, ' ', WT_VERSION, '"></a>';
 	echo '</p>';
