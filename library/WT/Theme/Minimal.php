@@ -60,15 +60,6 @@ class Minimal extends BaseTheme {
 	}
 
 	/** {@inheritdoc} */
-	protected function headContents(WT_Controller_Page $controller) {
-		return
-			parent::headContents($controller) .
-			'<!--[if IE]>' .
-			'<link type="text/css" rel="stylesheet" href="' . $this->cssUrl() . 'msie.css">' .
-			'<![endif]-->';
-	}
-
-	/** {@inheritdoc} */
 	protected function headerContent() {
 		return
 			'<div id="header-title">' .

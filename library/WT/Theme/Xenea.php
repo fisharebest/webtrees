@@ -40,19 +40,6 @@ class Xenea extends BaseTheme {
 			'<input type="submit" name="search" value="&gt;">';
 	}
 
-	/**
-	 * Add some additional markup to the <head> element.
-	 *
-	 * {@inheritdoc}
-	 */
-	protected function headContents(WT_Controller_Page $controller) {
-		return
-			parent::headContents($controller) .
-			'<!--[if IE]>' .
-			'<link type="text/css" rel="stylesheet" href="' . $this->cssUrl() . 'msie.css">' .
-			'<![endif]-->';
-	}
-
 	/** {@inheritdoc} */
 	protected function headerContent() {
 		return

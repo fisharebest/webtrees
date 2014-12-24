@@ -41,19 +41,6 @@ class Administration extends BaseTheme {
 		return '<link rel="icon" href="favicon.ico" type="image/x-icon">';
 	}
 
-	/**
-	 * Add some additional markup to the <head> element.
-	 *
-	 * {@inheritdoc}
-	 */
-	protected function headContents(WT_Controller_Page $controller) {
-		return
-			parent::headContents($controller) .
-			'<!--[if IE]>' .
-			'<link type="text/css" rel="stylesheet" href="' . $this->cssUrl() . 'msie.css">' .
-			'<![endif]-->';
-	}
-
 	/** {@inheritdoc} */
 	public function hookFooterExtraJavascript() {
 		return

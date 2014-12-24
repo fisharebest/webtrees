@@ -101,13 +101,7 @@ class Colors extends BaseTheme {
 		$html = parent::headContents($controller);
 
 		if (stristr($_SERVER['HTTP_USER_AGENT'], 'iPad')) {
-			$html .= '<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.8, maximum-scale=2.0" />';
 			$html .= '<link type="text/css" rel="stylesheet" href="' . $this->cssUrl() . 'ipad.css">';
-		}
-
-		// This is needed for all versions of IE.
-		if (stristr($_SERVER['HTTP_USER_AGENT'], 'MSIE') || stristr($_SERVER['HTTP_USER_AGENT'], 'Trident')) {
-			$html .= '<link type="text/css" rel="stylesheet" href="' . $this->cssUrl() . 'msie.css">';
 		}
 
 		return $html;

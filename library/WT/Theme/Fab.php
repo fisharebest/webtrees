@@ -58,19 +58,6 @@ class Fab extends BaseTheme {
 			'<input type="search" name="query" size="20" placeholder="' . WT_I18N::translate('Search') . '">';
 	}
 
-	/**
-	 * Add some additional markup to the <head> element.
-	 *
-	 * {@inheritdoc}
-	 */
-	protected function headContents(WT_Controller_Page $controller) {
-		return
-			parent::headContents($controller) .
-			'<!--[if IE]>' .
-			'<link type="text/css" rel="stylesheet" href="' . $this->cssUrl() . 'msie.css">' .
-			'<![endif]-->';
-	}
-
 	/** {@inheritdoc} */
 	public function hookFooterExtraJavascript() {
 		return
