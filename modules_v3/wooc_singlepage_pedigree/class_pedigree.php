@@ -23,11 +23,6 @@
  *
  */
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 /**
  *
  * @todo 
@@ -287,67 +282,73 @@ class ReportPedigree /*{ //*/  extends TCPDF {
    * @param int $child=-1		  which child of family (-1 ancestor of first person)
    * @return $position or null if $position of father and mother are not set
    */
-  protected function calcChildPos($famNr, $father, $mother, $child=-1) {
+protected function calcChildPos($famNr, $father, $mother, $child=-1) {
 	global $SHOW_EMPTY_BOXES;
 	
 	if (isset($this->positions[$father]) && isset($this->positions[$mother])) {
-	  if ($this->showSiblings && isset($this->children) && isset($this->children[$famNr]) && count($this->children[$famNr])>2) {
-	$nrSibl=(count($this->children[$famNr])-1);
-	$diffParents=$this->positions[$mother] - $this->positions[$father];
-	if ($child == -1) {
-	  $nr=$this->children[$famNr][$nrSibl];
-	} else {						// if ($child == -1) {
-	  $nr=$child;
-	}							   // else if ($child == -1) {
-
-	if ($diffParents > 1.01) {
-	  foreach ($this->scaleSameGen as $type=>$size) {
-		$space=$size;
-		if (($diffParents - (1-$size)) > ($nrSibl-.5)*$size) {
-		  $this->displaySiblings[$famNr]=$type;
-		  $offset=($diffParents-$space*($nrSibl-1)-(1-$size))*0.5;
-		  if ($nr == $this->children[$famNr][$nrSibl]) {
-		$offset+=(1-$size)/2;
-		  }						 // if ($nr == $this->children[$famNr][$nrSibl]) {
-		  if ($nr > $this->children[$famNr][$nrSibl]) {
-		$offset+=(1-$size);
-		  }						 // if ($nr > $this->children[$famNr][$nrSibl]) {
-		  return  $this->positions[$father] + $space*($nr) +$offset;
-		}						   // if (($diffParents-(1-$size))>($nrSibl-1)*$size){
-	  }							 // foreach ($this->scaleSameGen as $type=>$size) {	  
-	}							   // if ($diffParents > 1) {
-	$this->displaySiblings[$famNr]=false;
-	$space=($diffParents-2*$this->addSpaceSiblings)/($nrSibl+2);
-	if ($space > $this->maxSpaceNoDisplay){
-	  $space=$this->maxSpaceNoDisplay;
-	}							   // if ($space > $this->maxSpaceNoDisplay){
-	if ($nr==$this->children[$famNr][$nrSibl]) {
-	  $add=$this->addSpaceSiblings;
-	} elseif ($nr < $this->children[$famNr][$nrSibl]) { // if ($nr == ...
-	  $add=0;//-$this->addSpaceSiblings;
-	} else {						// elseif ($nr < ...
-	  $add=2*$this->addSpaceSiblings;
-	}							   // else elseif ($nr < ...
-	return $this->positions[$father] + $space*$nr +
-	  ($diffParents-$space*($nrSibl-1)-2*$this->addSpaceSiblings)*0.5+$add;
-      } else {                          // if ($this->showSiblings &&  ...
-	return ($this->positions[$father] + $this->positions[$mother])/2;
-      }                                 // else if ($this->showSiblings && ...
-    } elseif (isset($this->positions[$father])){//if(isset($this->positions[$father])&&...
-      if ($this->compress=='none') {
-	$g=$this->genShow-floor(log($famNr)/log(2))-2;
-	return $this->positions[$father]+.5*(1<<$g);
-      }                                 // if ($this->compress=='none') {
-	  return $this->positions[$father];
+		if ($this->showSiblings && isset($this->children) && isset($this->children[$famNr]) && count($this->children[$famNr])>2) {
+			$nrSibl=(count($this->children[$famNr])-1);
+			$diffParents=$this->positions[$mother] - $this->positions[$father];
+			if ($child == -1) {
+				$nr=$this->children[$famNr][$nrSibl];
+			} else {						// if ($child == -1) {
+				$nr=$child;
+			}							   // else if ($child == -1) {
+			if ($diffParents > 1.01) {
+				foreach ($this->scaleSameGen as $type=>$size) {
+					$space=$size;
+					if (($diffParents - (1-$size)) > ($nrSibl-.5)*$size) {
+						$this->displaySiblings[$famNr]=$type;
+						$offset=($diffParents-$space*($nrSibl-1)-(1-$size))*0.5;
+						if ($nr == $this->children[$famNr][$nrSibl]) {
+							$offset+=(1-$size)/2;
+						}						 // if ($nr == $this->children[$famNr][$nrSibl]) {
+						if ($nr > $this->children[$famNr][$nrSibl]) {
+							$offset+=(1-$size);
+						}						 // if ($nr > $this->children[$famNr][$nrSibl]) {
+						return  $this->positions[$father] + $space*($nr) +$offset;
+					}						   // if (($diffParents-(1-$size))>($nrSibl-1)*$size){
+				}							 // foreach ($this->scaleSameGen as $type=>$size) {	  
+			}							   // if ($diffParents > 1) {
+			$this->displaySiblings[$famNr]=false;
+			$space=($diffParents-2*$this->addSpaceSiblings)/($nrSibl+2);
+			if ($space > $this->maxSpaceNoDisplay){
+				$space=$this->maxSpaceNoDisplay;
+			}							   // if ($space > $this->maxSpaceNoDisplay){
+			if ($nr==$this->children[$famNr][$nrSibl]) {
+				$add=$this->addSpaceSiblings;
+			} elseif ($nr < $this->children[$famNr][$nrSibl]) { // if ($nr == ...
+				$add=0;//-$this->addSpaceSiblings;
+			} else {						// elseif ($nr < ...
+				$add=2*$this->addSpaceSiblings;
+			}							   // else elseif ($nr < ...
+			return $this->positions[$father] + $space*$nr + ($diffParents-$space*($nrSibl-1)-2*$this->addSpaceSiblings)*0.5+$add;
+		} else {                          // if ($this->showSiblings &&  ...
+			return ($this->positions[$father] + $this->positions[$mother])/2;
+		}                                 // else if ($this->showSiblings && ...
+	} elseif (isset($this->positions[$father])){//if(isset($this->positions[$father])&&...
+		if ($this->compress=='none') {
+			$g=$this->genShow-floor(log($famNr)/log(2))-2;
+			return $this->positions[$father]+.5*(1<<$g);
+		}                                 // if ($this->compress=='none') {
+		return $this->positions[$father];
 	} else {							// elseif (isset($this->positions[$father]))
-	  if ($this->compress=='none') {
-	$g=$this->genShow-floor(log($famNr)/log(2))-2;
-	return $this->positions[$mother]-.5*(1<<$g);
-	  }								 // if ($
-	  return $this->positions[$mother];
+		if ($this->compress=='none') {
+			$g=$this->genShow-floor(log($famNr)/log(2))-2;
+			if (isset($this->positions[$mother])) {
+				return $this->positions[$mother]-.5*(1<<$g);
+			} else {
+				return ($mother-1)/2-.5*(1<<$g);
+			}
+		}								 // if ($this->compress=='none') {
+		if (isset($this->positions[$mother])) {
+			return $this->positions[$mother];
+		} else {
+			return ($mother-1)/2;
+		}
 	}								   // else elseif (isset($this->positions[$mother]))
 	return null;
-  }									 // function calcChildPos(
+ }									 // function calcChildPos(
   /* ************************************************************************ */
   /**
    * Calculate the positions of persons with no ancestors (leaves)
@@ -420,7 +421,7 @@ class ReportPedigree /*{ //*/  extends TCPDF {
   protected function calcnoLeavesPositions () {
 	for ($i=(1<<($this->genShow))/2 -1 ;$i>=0; --$i ) {
 	  if ($this->isInPedigree($i, false) && !preg_match('/^REFTO_/', $this->ancestors[$i]) && !isset($this->positions[$i])) {
-	$this->positions[$i]=$this->calcChildPos($i, 2*$i, 2*$i+1); 
+		$this->positions[$i]=$this->calcChildPos($i, 2*$i, 2*$i+1);
 	  }								 // if ($this->isInPedigree($i, false) && ...
 	}								   // for ($i=(1<<($showGen))/2 -1 ;$i>=0; --$i ) {
   }									 // function function calcnoLeavesPositions () {
@@ -730,7 +731,7 @@ class ReportPedigree /*{ //*/  extends TCPDF {
 	} else {							// if ($output == 'PDF') {
 	  echo $this->getEventImg('all', null) .'<br>';
 	  echo timestamp_to_gedcom_date(mktime(0,0,0,date("m"),date("d"),date("Y")))->Display(). '<br>';
-	  echo '<p><a href="#" onclick="window.close();">', WT_I18N::translate('Close Window'), '</a></p>';
+	  echo '<p><a href="#" onclick="window.close();">', WT_I18N::translate('close'), '</a></p>';
 	}								   // else if ($output == 'PDF') {
   }									 // function displayEventInfo () {
   /* ************************************************************************ */
@@ -1700,6 +1701,10 @@ class ReportPedigree /*{ //*/  extends TCPDF {
 	  } else {                    // if ($this->families[$i]->getWife()->getXref()) {
 		$this->ancestors[$i*2+1]=null;
 	  }                           // else if ($this->families[$i]->getWife()->getXref()) {
+	  if (!$this->families[$i]->getHusband() && !$this->families[$i]->getWife()) {
+		$this->leaves[$i]=floor(log($i)/log(2))+1;
+		$this->leavesSort[]= ($i*(1<<($maxgen-$this->leaves[$i])));
+	  }
 	  if ($this->showSiblings) {
 		$children_array=array();
 		foreach ($this->families[$i]->getChildren() as $child) {

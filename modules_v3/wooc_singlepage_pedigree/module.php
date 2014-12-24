@@ -19,11 +19,6 @@
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 class wooc_singlepage_pedigree_WT_Module extends WT_Module implements WT_Module_Report {
 
 	public function __construct() {
