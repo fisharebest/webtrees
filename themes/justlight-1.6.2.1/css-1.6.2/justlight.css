@@ -1,0 +1,358 @@
+/* 
+ * Color stylesheet for the JustLight theme
+ *
+ * webtrees: Web based Family History software
+ * Copyright (C) 2014 webtrees development team.
+ * Copyright (C) 2014 JustCarmen.
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+ */
+
+/* bootstrap navbar */
+.navbar-fixed-top {
+	border-top: 5px solid #377BB5;
+}
+
+.navbar-default .navbar-brand {
+	color: #428bca;
+}
+
+@media (max-width: 767px) {
+	.nav-pills > li.active > a {
+		background:none;
+		color: #428bca;
+	}
+
+	.nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+		background:#eee;
+		color: #428bca;
+	}
+}
+
+/* footer */
+footer {
+	color: #999999;
+}
+
+footer .top {
+    background-color: #e5e5e5;
+}
+
+/* titles */
+#my-page h1 {
+	border-bottom: 1px solid #eee;
+}
+
+/* sidebar */
+#index_small_blocks {
+	border-left: 1px solid #eee;
+}
+
+/* Favorites block */
+.gedcom_favorites_block .person_box,
+.user_favorites_block .person_box,
+.gedcom_favorites_block .person_boxF,
+.user_favorites_block .person_boxF,
+.gedcom_favorites_block .person_boxNN,
+.user_favorites_block .person_boxNN {
+	background: transparent;
+}
+
+.gedcom_favorites_block .person_boxNN,
+.user_favorites_block .person_boxNN {
+	border: none;
+}
+
+#index_main_blocks .gedcom_favorites_block > .person_box:nth-child(odd),
+#index_main_blocks .user_favorites_block > .person_box:nth-child(odd) {
+	background-color: #eee;
+}
+
+/* Personboxes */
+.person_box {
+	background-color: #D7EAF9;
+}
+
+.person_boxF {
+	background-color: #FFF0F5;
+}
+
+.person_boxNN {
+	background: #f5f5f5;
+}
+
+/* jQuery.datatable list styles */
+.table {
+	border: 1px solid #b2c7d7;
+}
+
+.table tr.odd {
+	background-color: #f5f5f5;
+}
+
+.dataTable a {
+	color: #428bca;
+}
+
+.source-list .ui-widget-header,
+.note-list .ui-widget-header,
+.repo-list .ui-widget-header,
+.media-list .ui-widget-header,
+.indi-list .ui-widget-header,
+.fam-list .ui-widget-header,
+#story_table_wrapper .ui-widget-header {
+	background: #f8f8f8;
+	border: 1px solid #b2c7d7;
+}
+
+#statistics_chart .ui-tabs-nav {
+	border-bottom: 1px solid #b2c7d7;
+}
+
+.table-census-assistant,
+.markdown table,
+.ui-tabs-panel .facts_table .optionbox .table-census-assistant {
+	background: #fff;
+}
+
+/* jQuery headers */
+.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active,
+.header_accordion1 .name_one.person_box,
+.header_accordion1 .name_one.person_boxF,
+.header_accordion1 .name_one.person_boxNN {
+	background-image: -webkit-linear-gradient(top, #428bca 0%, #2d6ca2 100%);
+	background-image:      -o-linear-gradient(top, #428bca 0%, #2d6ca2 100%);
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#428bca), to(#2d6ca2));
+	background-image:         linear-gradient(to bottom, #428bca 0%, #2d6ca2 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff428bca', endColorstr='#ff2d6ca2', GradientType=0);
+	filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+	background-repeat: repeat-x;
+	border-color: #2b669a;
+	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15) inset, 0 1px 1px rgba(0, 0, 0, 0.075);
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+	color: #fff;
+}
+
+#indi_header h3,
+#indi_header h3 .label {
+	color: #0b5b98;
+}
+
+#indi_header h3.ui-state-active,
+#indi_header h3.ui-state-active .label {
+	color: #fff;
+}
+
+.indi_name_details {
+	border-left: 1px solid #b2c7d7;
+	border-right: 1px solid #b2c7d7;
+	border-bottom: 1px solid #b2c7d7;	
+}
+
+.ui-state-active a,
+.ui-state-active a:link,
+.ui-state-active a:visited {
+	color: #fff;
+}
+
+/* Individual page */
+.ui-tabs-panel .facts_table {
+	border: 1px solid #ccc;
+}
+
+.ui-tabs-panel .facts_table .descriptionbox,
+.ui-tabs-panel .facts_table .facts_label {
+	background-color: #E5E5E5;
+}
+
+.ui-tabs-panel .facts_table .optionbox,
+.ui-tabs-panel .facts_table .person_box,
+.ui-tabs-panel .facts_table .person_boxF,
+.ui-tabs-panel .facts_table .personboxNN,
+.ui-tabs-panel .facts_table .facts_value {
+	background-color: #f9f9f9;
+}
+
+#personal_facts_content .facts_table tbody > tr:first-child,
+#relatives_content .facts_table tbody > tr:first-child,
+#sources_tab_content .facts_table tbody > tr:first-child,
+#notes_content .facts_table tbody > tr:first-child,
+#lightbox_content .rela,
+#stories .news_title,
+.table-census-assistant tbody > tr:first-child td,
+.markdown .table tbody > tr:first-child td {
+	text-shadow: 0 1px 0 #fff;
+	background-image: -webkit-linear-gradient(top, #fff 0%, #e0e0e0 100%);
+	background-image: -o-linear-gradient(top, #fff 0%, #e0e0e0 100%);
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#e0e0e0));
+	background-image: linear-gradient(to bottom, #fff 0%, #e0e0e0 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe0e0e0', GradientType=0);
+	filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+	background-repeat: repeat-x;
+}
+
+#personal_facts_content table:first-child tr:first-child td,
+#relatives_content table:first-child tr:first-child td,
+#sources_tab_content table:first-child tr:first-child td,
+#notes_content table:first-child tr:first-child td {
+	background: transparent;
+}
+
+#stories {
+	border: 1px solid #ccc;
+}
+
+.ui-tabs-panel .facts_table tr:not([class="old"]):not([class="new"]),
+#stories .news_title {
+	border-bottom: 1px solid #ccc;
+}
+
+#relatives_content .facts_table:not(:first-child):not(:nth-child(2)) {
+	border-top: 1px solid #ccc;
+}
+
+/* family page */
+#family-page .facts_table {
+	border: 1px solid #ccc;
+}
+
+#family-page .facts_table tr {
+	border-bottom: 1px solid #ccc;
+}
+
+#family-page .facts_table .descriptionbox {
+	background-color: #E5E5E5;
+}
+
+#family-page .facts_table .optionbox {
+	background-color: #f9f9f9;
+}
+
+/* icon colors (other then #333)*/
+.icon-button_place:before,
+.icon-help:before,
+.icon-wiki:before {
+	color: #428bca;
+}
+
+.deleteicon:before,
+.icon-remove:before,
+.icon-rings:before, 
+.icon-target:before {
+	color: #B80000;
+}
+
+.icon-warning:before {
+	color: #f0ad4e;
+}
+
+.icon-selected:before,
+.icon-button_addsource:before,
+.icon-button_addmedia:before,
+.icon-button_addnote:before,
+.icon-button_addrepository:before {
+	color: #70D62C;
+}
+
+.icon-button_head:before {
+	color: #999;
+}
+
+/* pedigree chart childbox */
+#pedigree_chart #childbox {
+	border: 1px solid #b2c7d7;
+}
+
+/* compact chart - non clickable arrows */
+#compact_chart i.icon-darrow:before,
+#compact_chart i.icon-larrow:before,
+#compact_chart i.icon-rarrow:before,
+#compact_chart i.icon-uarrow:before {	
+	color: #aaa;
+}
+
+/* familybook_chart horizontal lines */
+#familybook_chart hr {
+	border: 1px solid #ccc;
+}
+
+/* submenu */
+.submenu {
+    background-color: #fff;
+    border: 2px solid #428bca;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* media links submenu */
+#flyoutPar,
+#flyoutFam,
+#flyoutStep {
+	background-color: #fff;
+    border: 2px solid #428bca;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+#media-links #flyoutPar.table,
+#media-links #flyoutFam.table,
+#media-links #flyoutStep.table {
+	background-color: #fff;
+}
+
+/* popup forms. */
+#edit_interface-page .facts_table,
+#addmedia-page .facts_table,
+.medialink .table,
+#media-links .table {
+	background: #f9f9f9;
+}
+
+#edit_interface-page div[id^="caldiv"] .table td {
+	border: 1px solid #b2c7d7;
+}
+
+/* census assistant module */
+.census-assistant #navenclose {
+	background: #fff;
+	border: 1px solid #ddd;
+}
+
+.census-assistant .cens_data {
+	border-top: 1px solid #ccc;
+}
+
+/* errors - use same template as ui-state-error */
+.error {
+	background: url("../jquery-ui-1.11.2/images/ui-bg_glass_95_fef1ec_1x400.png");   
+    color: #cd0a0a;
+}
+
+div.error {
+	border: 1px solid #cd0a0a;
+}
+
+/* Colorbox */
+#cboxTitle {
+	color: #333;
+}
+
+#cboxTitle a {
+	color: #428bca;
+}
+
+#cboxTitle a:hover {
+	color: #2a6496;
+}
