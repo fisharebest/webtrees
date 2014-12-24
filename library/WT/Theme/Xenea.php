@@ -34,32 +34,6 @@ class Xenea extends BaseTheme {
 	}
 
 	/** {@inheritdoc} */
-	protected function formatUserMenu() {
-		return
-			'<div class="header-menu-container">' .
-			'<ul class="header-menu header-menu-a" role="menubar">' .
-			implode('', array_filter(array(
-				$this->menuThemes(),
-				$this->menuFavorites(),
-			))) .
-			'</ul>' .
-			'<ul class="header-menu header-menu-b" role="menubar">' .
-			implode('', array_filter(array(
-				$this->menuLanguages(),
-			))) .
-			'</ul>' .
-			'<ul class="header-menu header-menu-c" role="menubar">' .
-			implode('', array_filter(array(
-				$this->menuLogin(),
-				$this->menuMyAccount(),
-				$this->menuLogout(),
-				$this->menuPendingChanges(),
-			))) .
-			'</ul>' .
-			'</div>';
-	}
-
-	/** {@inheritdoc} */
 	protected function formQuickSearchFields() {
 		return
 			'<input type="search" name="query" size="12" placeholder="' . WT_I18N::translate('Search') . '">' .
@@ -77,6 +51,18 @@ class Xenea extends BaseTheme {
 			'<!--[if IE]>' .
 			'<link type="text/css" rel="stylesheet" href="' . $this->cssUrl() . 'msie.css">' .
 			'<![endif]-->';
+	}
+
+	/** {@inheritdoc} */
+	protected function headerContent() {
+		return
+			'<div class="header-upper">' .
+			$this->formatTreeTitle() .
+			$this->formQuickSearch() .
+		'</div>' .
+		'<div class="header-lower">' .
+			$this->formatUserMenu() .
+		'</div>';
 	}
 
 	/** {@inheritdoc} */
