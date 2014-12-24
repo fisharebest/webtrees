@@ -155,7 +155,6 @@ class WT_Controller_Page extends WT_Controller_Base {
 		$this->addInlineJavascript('
 			if(navigator.userAgent.match(/Android|PlayBook/i)) {
 				jQuery("#main-menu > li > a").attr("href", "#");
-				jQuery("a.icon_arrow").attr("href", "#");
 			}
 		');
 

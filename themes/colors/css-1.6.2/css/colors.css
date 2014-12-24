@@ -556,14 +556,6 @@ header h1 {
 	background-position: right -260px;
 }
 
-#menu-chart-relationship li {
-	background-position: left -260px;
-}
-
-[dir=rtl] #menu-chart-relationship li {
-	background-position: right -260px;
-}
-
 #menu-chart-statistics {
 	background-position: left -286px;
 }
@@ -577,14 +569,6 @@ header h1 {
 }
 
 [dir=rtl] #menu-chart-timeline {
-	background-position: right -312px;
-}
-
-#menu-chart-timeline li {
-	background-position: left -312px;
-}
-
-[dir=rtl] #menu-chart-timeline li {
 	background-position: right -312px;
 }
 
@@ -3166,10 +3150,6 @@ dd .deletelink {
 	background-position: -100px 4px;
 	width: 24px;
 	height: 30px;
-}
-
-.icon_arrow:after {
-	content: " »";
 }
 
 /* Indi tabs */
