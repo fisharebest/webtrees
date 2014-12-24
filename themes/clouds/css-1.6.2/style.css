@@ -40,6 +40,7 @@ header {
 }
 
 main {
+	display: block;
 	padding: 10px;
 }
 
@@ -400,14 +401,6 @@ header h1 {
 	background-position: right -230px;
 }
 
-#menu-chart-relationship li {
-	background-position: left -230px;
-}
-
-[dir=rtl] #menu-chart-relationship li {
-	background-position: right -230px;
-}
-
 #menu-chart-statistics {
 	background-position: left -253px;
 }
@@ -421,14 +414,6 @@ header h1 {
 }
 
 [dir=rtl] #menu-chart-timeline {
-	background-position: right -276px;
-}
-
-#menu-chart-timeline li {
-	background-position: left -276px;
-}
-
-[dir=rtl] #menu-chart-timeline li {
 	background-position: right -276px;
 }
 
@@ -2148,7 +2133,6 @@ select {
 .descriptionbox {
 	border: 1px solid #9be;
 	vertical-align: top;
-	white-space: nowrap;
 	padding: 3px;
 }
 

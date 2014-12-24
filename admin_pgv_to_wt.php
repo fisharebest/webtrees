@@ -174,9 +174,7 @@ WT_DB::exec("DELETE FROM `##user_setting`        WHERE user_id>0");
 WT_DB::exec("DELETE FROM `##user`                WHERE user_id>0");
 
 ////////////////////////////////////////////////////////////////////////////////
-if (ob_get_level() == 0) ob_start();
 echo '<p>', $INDEX_DIRECTORY, DIRECTORY_SEPARATOR, 'config.php => wt_site_setting ...</p>';
-flush();
 
 // TODO May need to set 'DATA_DIRECTORY' to $INDEX_DIRECTORY when dealing with media??
 @WT_Site::setPreference('USE_REGISTRATION_MODULE',         $USE_REGISTRATION_MODULE);
@@ -197,7 +195,6 @@ flush();
 ////////////////////////////////////////////////////////////////////////////////
 
 echo '<p>pgv_site_setting => wt_site_setting ...</p>';
-flush();
 
 WT_DB::prepare(
 	"REPLACE INTO `##site_setting` (setting_name, setting_value)".
@@ -209,7 +206,6 @@ WT_DB::prepare(
 
 if ($PGV_SCHEMA_VERSION>=12) {
 	echo '<p>pgv_gedcom => wt_gedcom ...</p>';
-	flush();
 
 	WT_DB::prepare(
 		"INSERT INTO `##gedcom` (gedcom_id, gedcom_name)".
@@ -217,7 +213,6 @@ if ($PGV_SCHEMA_VERSION>=12) {
 	)->execute();
 
 	echo '<p>pgv_gedcom_setting => wt_gedcom_setting ...</p>';
-	flush();
 
 	WT_DB::prepare(
 		"INSERT INTO `##gedcom_setting` (gedcom_id, setting_name, setting_value)".
@@ -266,7 +261,6 @@ if ($PGV_SCHEMA_VERSION>=12) {
 	)->execute();
 
 	echo '<p>pgv_user => wt_user ...</p>';
-	flush();
 
 	try {
 		// "INSERT IGNORE" is needed to allow for PGV users with duplicate emails.  Only the first will be imported.
@@ -285,7 +279,6 @@ if ($PGV_SCHEMA_VERSION>=12) {
 	}
 
 	echo '<p>pgv_user_setting => wt_user_setting ...</p>';
-	flush();
 
 	WT_DB::prepare(
 		"INSERT INTO `##user_setting` (user_id, setting_name, setting_value)".
@@ -337,7 +330,6 @@ if ($PGV_SCHEMA_VERSION>=12) {
 	)->execute();
 
 	echo '<p>pgv_user_gedcom_setting => wt_user_gedcom_setting ...</p>';
-	flush();
 
 	WT_DB::prepare(
 		"INSERT INTO `##user_gedcom_setting` (user_id, gedcom_id, setting_name, setting_value)".
@@ -351,7 +343,6 @@ if ($PGV_SCHEMA_VERSION>=12) {
 		require_once "{$INDEX_DIRECTORY}/gedcoms.php";
 		$file=$INDEX_DIRECTORY.'/gedcoms.php';
 		echo '<p>', $file, ' => wt_gedcom ...</p>';
-		flush();
 
 		if (isset($GEDCOMS) && is_array($GEDCOMS)) {
 			foreach ($GEDCOMS as $array) {
@@ -378,7 +369,6 @@ if ($PGV_SCHEMA_VERSION>=12) {
 
 	// Migrate the data from pgv_users into pgv_user/pgv_user_setting/pgv_user_gedcom_setting
 	echo '<p>pgv_users => wt_user ...</p>';
-	flush();
 
 	try {
 		// "INSERT IGNORE" is needed to allow for PGV users with duplicate emails.  Only the first will be imported.
@@ -392,7 +382,6 @@ if ($PGV_SCHEMA_VERSION>=12) {
 		// b) it doesn't exist (new install)
 	}
 	echo '<p>pgv_users => wt_user_setting ...</p>';
-	flush();
 
 	try {
 		WT_DB::prepare(
@@ -512,7 +501,6 @@ if ($PGV_SCHEMA_VERSION>=12) {
 		"UPDATE `##user_setting` SET setting_value=CAST(setting_value AS UNSIGNED) WHERE setting_name='reg_timestamp'"
 	)->execute();
 	echo '<p>pgv_users => wt_user_gedcom_setting ...</p>';
-	flush();
 
 	$user_gedcom_settings=
 		WT_DB::prepare(
@@ -816,7 +804,6 @@ WT_DB::prepare(
 //
 if ($PGV_SCHEMA_VERSION>=13) {
 	echo '<p>pgv_hit_counter => wt_hit_counter ...</p>';
-	flush();
 
 	WT_DB::prepare(
 		"REPLACE INTO `##hit_counter` (gedcom_id, page_name, page_parameter, page_count)".
@@ -830,7 +817,6 @@ if ($PGV_SCHEMA_VERSION>=13) {
 		// Caution these files might be quite large...
 		$file=$INDEX_DIRECTORY.'/'.$GEDCOM.'pgv_counters.txt';
 		echo '<p>', $file, ' => wt_hit_counter ...</p>';
-		flush();
 
 		if (file_exists($file)) {
 			foreach (file($file) as $line) {
@@ -857,7 +843,6 @@ if ($PGV_SCHEMA_VERSION>=13) {
 
 if ($PGV_SCHEMA_VERSION>=14) {
 	echo '<p>pgv_ip_address => wt_ip_address ...</p>';
-	flush();
 
 	WT_DB::prepare(
 		"INSERT IGNORE INTO `##ip_address` (ip_address, category, comment)".
@@ -867,7 +852,6 @@ if ($PGV_SCHEMA_VERSION>=14) {
 	// Copied from PGV's db_schema_13_14
 	$statement=WT_DB::prepare("REPLACE INTO `##ip_address` (ip_address, category, comment) VALUES (?, ?, ?)");
 	echo '<p>', $INDEX_DIRECTORY, DIRECTORY_SEPARATOR, 'banned.php => wt_ip_address ...</p>';
-	flush();
 
 	if (is_readable($INDEX_DIRECTORY.'/banned.php')) {
 		@require $INDEX_DIRECTORY.'/banned.php';
@@ -888,7 +872,6 @@ if ($PGV_SCHEMA_VERSION>=14) {
 		}
 	}
 	echo '<p>', $INDEX_DIRECTORY, DIRECTORY_SEPARATOR, 'search_engines.php => wt_ip_address ...</p>';
-	flush();
 
 	if (is_readable($INDEX_DIRECTORY.'/search_engines.php')) {
 		@require $INDEX_DIRECTORY.'/search_engines.php';
@@ -917,7 +900,6 @@ foreach ($GEDCOMS as $GED_DATA) {
 }
 
 echo '<p>pgv_site_setting => wt_module_setting ...</p>';
-flush();
 
 WT_DB::prepare(
 	"REPLACE INTO `##module_setting` (module_name, setting_name, setting_value)".
@@ -933,7 +915,6 @@ WT_DB::prepare(
 ////////////////////////////////////////////////////////////////////////////////
 
 echo '<p>pgv_favorites => wt_favorite ...</p>';
-flush();
 
 try {
 	WT_DB::prepare(
@@ -950,7 +931,6 @@ try {
 ////////////////////////////////////////////////////////////////////////////////
 
 echo '<p>pgv_news => wt_news ...</p>';
-flush();
 
 try {
 	WT_DB::prepare(
@@ -967,7 +947,6 @@ try {
 ////////////////////////////////////////////////////////////////////////////////
 
 echo '<p>pgv_nextid => wt_next_id ...</p>';
-flush();
 
 WT_DB::prepare(
 	"REPLACE INTO `##next_id` (gedcom_id, record_type, next_id)".
@@ -980,7 +959,6 @@ WT_DB::prepare(
 ////////////////////////////////////////////////////////////////////////////////
 
 echo '<p>pgv_messages => wt_message ...</p>';
-flush();
 
 WT_DB::prepare(
 	"REPLACE INTO `##message` (message_id, sender, ip_address, user_id, subject, body, created)".
@@ -993,7 +971,6 @@ WT_DB::prepare(
 
 try {
 	echo '<p>pgv_placelocation => wt_placelocation ...</p>';
-	flush();
 
 	WT_DB::prepare(
 		"REPLACE INTO `##placelocation` (pl_id, pl_parent_id, pl_level, pl_place, pl_long, pl_lati, pl_zoom, pl_icon)".
@@ -1006,7 +983,6 @@ try {
 ////////////////////////////////////////////////////////////////////////////////
 
 echo '<p>Genealogy records ...</p>';
-flush();
 
 WT_DB::prepare(
 	"INSERT INTO `##gedcom_chunk` (gedcom_id, chunk_data, imported)" .

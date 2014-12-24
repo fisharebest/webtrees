@@ -175,6 +175,7 @@ textarea:required:invalid {
 }
 
 main {
+	display: block;
 	clear: both;
 }
 
@@ -2430,14 +2431,6 @@ header nav {
 	background-position: right -540px;
 }
 
-#menu-chart-relationship li {
-	background-position: left -540px;
-}
-
-[dir=rtl] #menu-chart-relationship li {
-	background-position: right -540px;
-}
-
 #menu-chart-statistics {
 	background-position: left -630px;
 }
@@ -2451,14 +2444,6 @@ header nav {
 }
 
 [dir=rtl] #menu-chart-timeline {
-	background-position: right -660px;
-}
-
-#menu-chart-timeline li {
-	background-position: left -660px;
-}
-
-[dir=rtl] #menu-chart-timeline li {
 	background-position: right -660px;
 }
 
@@ -3329,19 +3314,6 @@ dd .deletelink {
 	background-position: -100px -32px;
 	width: 24px;
 	height: 16px;
-}
-
-.icon_arrow {
-	display: block;
-	background: url(images/small_menu_sprite.png) no-repeat left 0;
-}
-
-.icon_arrow {
-	background-position: 90% -1166px;
-}
-
-[dir=rtl] .icon_arrow {
-	background-position: 10% -1184px;
 }
 
 /* =========== Indi tabs ================== */
