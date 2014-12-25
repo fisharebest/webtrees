@@ -141,14 +141,14 @@ textarea:required:invalid {
 }
 
 /* Set stack level for top two header menu rows */
-.makeMenu ul,
-#main-menu ul {
+.header-menu ul,
+.main-menu ul {
 	z-index: 210;
 }
 
 /* Title Line */
-#header {
-	height: 50px;
+.header-search {
+	display: inline;
 }
 
 header h1 {
@@ -164,33 +164,33 @@ header h1 {
 }
 
 /* Options Menu */
-.makeMenu {
+.header-menu {
 	float: right;
-	margin: 21px 10px 0 0;
+	margin: 21px 10px 4px 0;
 	white-space: nowrap;
 }
 
-.makeMenu ul {
+.header-menu ul {
 	border-radius: 5px;
 }
 
-.makeMenu li {
+.header-menu li {
 	display: inline;
 	position: relative;
 	white-space: nowrap;
 }
 
-.makeMenu li:before {
+.header-menu li:before {
 	content: " | ";
 }
 
-.makeMenu li a.link {
+.header-menu li a.link {
 	font-size: 13px;
 	margin-left: 5px;
 	margin-right: 5px;
 }
 
-.makeMenu li ul {
+.header-menu li ul {
 	background-color: #eee;
 	border: thin solid #aaa;
 	display: none;
@@ -198,45 +198,44 @@ header h1 {
 	position: absolute;
 }
 
-.makeMenu li ul li {
+.header-menu li ul li {
 	display: block;
 	text-align: left;
 }
 
-.makeMenu li ul li a {
+.header-menu li ul li a {
 	color: #333;
 }
 
-.makeMenu,
-.makeMenu li ul {
+.header-menu,
+.header-menu li ul {
 	color: #fff;
 	list-style: none;
-	margin-left: 0;
 	padding: 1px;
 	top: 5px;
 }
 
 /*set position of dropdown */
-.makeMenu li:hover > ul {
+.header-menu li:hover > ul {
 	display: block;
 }
 
-.makeMenu li a:hover {
+.header-menu li a:hover {
 	color: #f5003d;
 }
 
-.makeMenu ul li a {
+.header-menu ul li a {
 	background-color: #fff;
 	display: block;
 	padding: 2px 5px 2px 2px;
 }
 
-.makeMenu ul li a:hover {
+.header-menu ul li a:hover {
 	color: #000;
 }
 
-.makeMenu li ul li:before,
-.makeMenu li:first-child:before {
+.header-menu li ul li:before,
+.header-menu li:first-child:before {
 	content: "";
 }
 
@@ -245,23 +244,23 @@ header h1 {
 	font-weight: 900;
 }
 
-[dir=rtl] .makeMenu {
+[dir=rtl] .header-menu {
 	display: block;
 	float: left;
 	margin: 21px 0 0 10px;
 }
 
-[dir=rtl] .makeMenu li ul {
+[dir=rtl] .header-menu li ul {
 	left: auto;
 	right: 0;
 }
 
-[dir=rtl] .makeMenu li ul li {
+[dir=rtl] .header-menu li ul li {
 	text-align: right;
 }
 
 /* Menu setup */
-#main-menu {
+.main-menu {
 	display: inline-block;
 	width: 100%;
 	margin: 0;
@@ -269,7 +268,7 @@ header h1 {
 	height: 48px;
 }
 
-#main-menu ul {
+.main-menu ul {
 	padding: 0;
 	margin: 0;
 	border: 1px solid #ddd;
@@ -281,18 +280,18 @@ header h1 {
 	background: #fff;
 }
 
-#main-menu li {
+.main-menu li {
 	display: block;
 	position: relative;
 	float: left;
 	list-style: none;
 }
 
-#main-menu li a {
+.main-menu li a {
 	display: block;
 }
 
-#main-menu li > ul {
+.main-menu li > ul {
 	display: block;
 	position: absolute;
 	top: 0;
@@ -300,18 +299,18 @@ header h1 {
 	right: auto;
 }
 
-#main-menu > li > a {
+.main-menu > li > a {
 	height: 37px;
 	width: 27px;
 }
 
-#main-menu > li > ul {
+.main-menu > li > ul {
 	left: 0;
 	right: auto;
 	top: 40px;
 }
 
-#main-menu a {
+.main-menu a {
 	display: block;
 	text-decoration: none;
 	padding: 0 10px;
@@ -319,19 +318,19 @@ header h1 {
 	white-space: nowrap;
 }
 
-#main-menu ul li:hover a,
-#main-menu li:hover li a {
+.main-menu ul li:hover a,
+.main-menu li:hover li a {
 	background: none;
 	border: 0;
 }
 
-#main-menu li:hover > ul {
+.main-menu li:hover > ul {
 	visibility: visible;
 	opacity: 1;
 }
 
 /* First row submenu style*/
-#main-menu > li > ul > li:first-child {
+.main-menu > li > ul > li:first-child {
 	text-indent: 0;
 	min-width: 100px;
 	width: 100%;
@@ -346,7 +345,7 @@ header h1 {
 }
 
 /* Menu icons */
-#main-menu > li {
+.main-menu > li {
 	background-image: url(images/sprites-top-menu.png);
 	background-repeat: no-repeat;
 	height: 40px;
@@ -356,7 +355,7 @@ header h1 {
 	width: 40px;
 }
 
-#main-menu li ul li {
+.main-menu li ul li {
 	background-image: url(images/sprites-sub-menu.png);
 	background-repeat: no-repeat;
 	height: 28px;
@@ -367,34 +366,34 @@ header h1 {
 	width: 100%;
 }
 
-[dir=rtl] #main-menu > li {
+[dir=rtl] .main-menu > li {
 	margin: 4px 16px 0 0;
 }
 
-[dir=rtl] #main-menu li {
+[dir=rtl] .main-menu li {
 	float: right;
 }
 
-[dir=rtl] #main-menu li:hover > ul {
+[dir=rtl] .main-menu li:hover > ul {
 	right: 100%;
 	left: auto;
 }
 
-[dir=rtl] #main-menu > li:hover > ul {
+[dir=rtl] .main-menu > li:hover > ul {
 	left: auto;
 	right: 0;
 }
 
-[dir=rtl] #main-menu li li {
+[dir=rtl] .main-menu li li {
 	text-align: right;
 }
 
-[dir=rtl] #main-menu li li a {
+[dir=rtl] .main-menu li li a {
 	display: block;
 	float: right;
 }
 
-[dir=rtl] #main-menu > li > ul > li:first-child {
+[dir=rtl] .main-menu > li > ul > li:first-child {
 	text-align: center;
 }
 
@@ -2527,7 +2526,7 @@ a.showit > span {
 	content: "";
 }
 
-.makeMenu.lb-menu li a {
+.header-menu.lb-menu li a {
 	color: #000;
 }
 
@@ -4047,7 +4046,7 @@ span.link_text {
 	form,
 	#backprint,
 	#sidebar,
-	#main-menu,
+	.main-menu,
 	#separator,
 	header,
 	footer,

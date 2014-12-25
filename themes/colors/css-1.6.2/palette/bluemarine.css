@@ -25,7 +25,7 @@
 /* Bluemarine Palette */
 
 /* Header */
-#header {
+header {
 	background: #6598cb;
 	color: #fff;
 }
@@ -52,7 +52,7 @@
 }
 
 /* Top Menu  */
-#main-menu {
+.main-menu {
 	background: #98badd;
 
 }
@@ -60,7 +60,7 @@
 /* Base */
 #indi_header h3,
 .blockcontent, #search, #search-page-table .value, #edituser-table .value,
-.makeMenu ul li a:hover, .ui-widget-header, #save-cancel,
+.header-menu ul li a:hover, .ui-widget-header, #save-cancel,
 .optionbox, #indi_header .ui-state-active a:link,
 .list_value, .list_value_wrap, .list_value_wrap a,
 #login-form, #new_passwd_form, #register-form, .facts_value  {
@@ -73,7 +73,7 @@
 }
 
 /* Light Text */
-.makeMenu li a {
+.header-menu li a {
 	color: #fff;
 }
 

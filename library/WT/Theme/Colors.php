@@ -55,19 +55,6 @@ class Colors extends BaseTheme {
 	}
 
 	/** {@inheritdoc} */
-	protected function formatMainMenu() {
-		return
-			'<ul id="main-menu" role="menubar">' .
-			parent::formatMainMenu() .
-			'</ul>';
-	}
-
-	/** {@inheritdoc} */
-	protected function footerContent() {
-		return '<div id="footer">' . parent::footerContent() . '</div>';
-	}
-
-	/** {@inheritdoc} */
 	protected function formatMainMenuItem(WT_Menu $menu) {
 		// Create an inert menu - to use as a label
 		$tmp = new WT_Menu(strip_tags($menu->getLabel()), '');
@@ -83,6 +70,23 @@ class Colors extends BaseTheme {
 		$menu->setOnclick('');
 
 		return $menu->getMenuAsList();
+	}
+
+	/** {@inheritdoc} */
+	protected function formatUserMenu() {
+		return
+			'<ul class="header-menu" role="menubar">' .
+			implode('', $this->menuBarUser()) .
+			'<li>' .
+			$this->formQuickSearch() .
+			'</li>' .
+			'</ul>';
+	}
+	/** {@inheritdoc} */
+	protected function headerContent() {
+		return
+			$this->formatTreeTitle() .
+			$this->formatUserMenu();
 	}
 
 	/** {@inheritdoc} */
@@ -105,22 +109,6 @@ class Colors extends BaseTheme {
 		}
 
 		return $html;
-	}
-
-	/** {@inheritdoc} */
-	protected function headerContent() {
-		return
-			'<div id="header">' .
-			'<span class="title">' .
-			$this->formatTreeTitle() .
-			'</span>' .
-			'<ul class="makeMenu" role="menubar">' .
-			$this->formatUserMenu() .
-			'<li>' .
-			$this->formQuickSearch() .
-			'</li>' .
-			'</ul>' .
-			'</div>';
 	}
 
 	/**
@@ -258,8 +246,8 @@ class Colors extends BaseTheme {
 	protected function stylesheets() {
 		return array(
 			'themes/colors/jquery-ui-1.11.2/jquery-ui.css',
-			$this->cssUrl() . 'css/colors.css',
-			$this->cssUrl() . 'css/' . $this->sub_color . '.css',
+			$this->cssUrl() . 'style.css',
+			$this->cssUrl() . 'palette/' . $this->sub_color . '.css',
 		);
 	}
 
