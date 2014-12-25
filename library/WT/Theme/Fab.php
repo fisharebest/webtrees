@@ -35,6 +35,23 @@ class Fab extends BaseTheme {
 	}
 
 	/** {@inheritdoc} */
+	protected function formatUserMenu() {
+		return
+			'<ul class="header-menu" role="menubar">' .
+			implode('', $this->menuBarUser()) .
+			'<li>' .
+			$this->formQuickSearch() .
+			'</li>' .
+			'</ul>';
+	}
+	/** {@inheritdoc} */
+	protected function headerContent() {
+		return
+			$this->formatTreeTitle() .
+			$this->formatUserMenu();
+	}
+
+	/** {@inheritdoc} */
 	protected function logoPoweredBy() {
 		return
 			'<a style="font-size:150%; color:#888;" href="' . WT_WEBTREES_URL . '" title="' . WT_WEBTREES . ' - ' . WT_VERSION . '">' .
