@@ -566,14 +566,6 @@ header nav {
 	background-position: right -230px;
 }
 
-#menu-chart-relationship li {
-	background-position: left -230px;
-}
-
-[dir=rtl] #menu-chart-relationship li {
-	background-position: right -230px;
-}
-
 #menu-chart-statistics {
 	background-position: left -253px;
 }
@@ -587,14 +579,6 @@ header nav {
 }
 
 [dir=rtl] #menu-chart-timeline {
-	background-position: right -276px;
-}
-
-#menu-chart-timeline li {
-	background-position: left -276px;
-}
-
-[dir=rtl] #menu-chart-timeline li {
 	background-position: right -276px;
 }
 
