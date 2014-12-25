@@ -76,8 +76,8 @@ foreach (WT_MenuBar::getModuleMenus() as $menu) {
 	<title><?php echo WT_Filter::escapeHtml($title); ?></title>
 	<link rel="icon" href="<?php echo WT_CSS_URL; ?>favicon.png" type="image/png">
 	<link rel="stylesheet" type="text/css" href="<?php echo WT_THEME_URL; ?>jquery-ui-1.11.2/jquery-ui.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo WT_CSS_URL; ?>css/colors.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo WT_CSS_URL; ?>css/<?php echo $subColor; ?>.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo WT_CSS_URL; ?>style.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo WT_CSS_URL; ?>palette/<?php echo $subColor; ?>.css">
 	<?php if (stristr($_SERVER['HTTP_USER_AGENT'], 'iPad')) { ?>
 	<link type="text/css" rel="stylesheet" href="<?php echo WT_CSS_URL; ?>ipad.css">
 	<?php } ?>
