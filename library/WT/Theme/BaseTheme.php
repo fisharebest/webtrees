@@ -876,8 +876,8 @@ abstract class BaseTheme {
 			$this->menuMyAccount(),
 			$this->menuLogout(),
 			$this->menuFavorites(),
-			$this->menuThemes(),
 			$this->menuLanguages(),
+			$this->menuThemes(),
 		));
 	}
 
