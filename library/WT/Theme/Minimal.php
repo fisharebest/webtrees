@@ -34,45 +34,31 @@ class Minimal extends BaseTheme {
 	}
 
 	/** {@inheritdoc} */
-	protected function footerContent() {
-		return '<div id="footer">' . parent::footerContent() . '</div>';
-	}
-
-	/** {@inheritdoc} */
-	protected function formatMainMenu() {
-		return
-			'<div id="topMenu">' .
-			'<ul id="main-menu" role="menubar">' .
-			parent::formatMainMenu() .
-			'</ul>' .
-			'</div>';
-	}
-
-	/** {@inheritdoc} */
 	protected function formQuickSearchFields() {
 		return
 			'<input type="search" name="query" size="20" placeholder="' . WT_I18N::translate('Search') . '">';
 	}
 
 	/** {@inheritdoc} */
-	protected function logoPoweredBy() {
-		return '<p class="logo"><a href="' . WT_WEBTREES_URL . '" title="' . WT_WEBTREES . ' ' . WT_VERSION . '">' . WT_WEBTREES . '</a></p>';
-	}
-
-	/** {@inheritdoc} */
-	protected function headerContent() {
+	protected function formatUserMenu() {
 		return
-			'<div id="header-title">' .
-			$this->formatTreeTitle() .
-			'</div>' .
-			'<div id="header-user-links">' .
-			'<ul class="makeMenu" role="menubar">' .
-			$this->formatUserMenu() .
+			'<ul class="header-menu" role="menubar">' .
+			implode('', $this->menuBarUser()) .
 			'<li>' .
 			$this->formQuickSearch() .
 			'</li>' .
-			'</ul>' .
-			'</div>';
+			'</ul>';
+	}
+	/** {@inheritdoc} */
+	protected function headerContent() {
+		return
+			$this->formatTreeTitle() .
+			$this->formatUserMenu();
+	}
+
+	/** {@inheritdoc} */
+	protected function logoPoweredBy() {
+		return '<p class="logo"><a href="' . WT_WEBTREES_URL . '" title="' . WT_WEBTREES . ' ' . WT_VERSION . '">' . WT_WEBTREES . '</a></p>';
 	}
 
 	/** {@inheritdoc} */
