@@ -4287,9 +4287,10 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			exit;
 		}
 
-		if ($action=='ImportFile2') {
-			$country_names=array();
-			foreach (WT_Stats::iso3166() as $key=>$value) {
+		if ($action === 'ImportFile2') {
+			$country_names = array();
+			$stats = new WT_Stats(WT_GEDCOM);
+			foreach ($stats->iso3166() as $key=>$value) {
 				$country_names[$key]=WT_I18N::translate($key);
 			}
 			if (isset($_POST['cleardatabase'])) {
@@ -4301,7 +4302,9 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				$lines = file(WT_MODULES_DIR.'googlemap/extra'.$_REQUEST['localfile']);
 			}
 			// Strip BYTE-ORDER-MARK, if present
-			if (!empty($lines[0]) && substr($lines[0], 0, 3)==WT_UTF8_BOM) $lines[0]=substr($lines[0], 3);
+			if (!empty($lines[0]) && substr($lines[0], 0, 3) === WT_UTF8_BOM) {
+				$lines[0] = substr($lines[0], 3);
+			}
 			asort($lines);
 			$highestIndex = $this->getHighestIndex();
 			$placelist = array();
