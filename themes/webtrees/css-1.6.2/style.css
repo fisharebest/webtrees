@@ -1382,6 +1382,22 @@ td.descriptionbox a {
 }
 
 /* ============== medialist.php ======================= */
+.makeMenu li ul {
+	border: thin solid #AAA;
+	position: absolute;
+	margin: 0;
+}
+
+.makeMenu, .makeMenu li ul {
+	padding: 1px;
+}
+
+.makeMenu li {
+	display: inline;
+	position: relative;
+	white-space: nowrap;
+}
+
 .lb-menu {
 	display: inline-block;
 	margin: 0;
@@ -1390,6 +1406,7 @@ td.descriptionbox a {
 .lb-menu ul {
 	display: block;
 	list-style-type: none;
+	margin: 0;
 }
 
 .lb-menu > li {
@@ -1416,14 +1433,16 @@ td.descriptionbox a {
 }
 
 .lb-menu li a {
-	padding-top: 24px;
+	padding: 24px 10px 1px 5px;
 }
 
 .lb-menu li li a {
-	padding: 1px 10px 1px 5px;
+	padding: 0;
+	background-color: #fff;
+	padding: 5px 10px 5px 5px;
 }
 
-.secondary-menu.lb-menu li {
+.lb-menu li {
 	border: 0;
 }
 

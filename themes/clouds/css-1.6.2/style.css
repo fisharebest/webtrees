@@ -320,7 +320,7 @@ td {
 }
 
 #menu-story {
-	background-position: 0 -435px;
+	background-position: 0 -436px;
 }
 
 /**** Menu submenu Icons ****/
@@ -2669,20 +2669,41 @@ dt {
 	margin: 10px;
 }
 
-/* ============== medialist.php ======================= */
+/* ============== medialist.php ====Webtrees=================== */
+.makeMenu li ul {
+	border: thin solid #AAA;
+	position: absolute;
+}
+
+.makeMenu, .makeMenu li ul {
+	padding: 1px;
+}
+
+.makeMenu li {
+	display: inline;
+	position: relative;
+	white-space: nowrap;
+}
+
 .lb-menu {
 	display: inline-block;
 	margin: 0;
 }
 
 .lb-menu ul {
+	display: block;
 	list-style-type: none;
+	margin: 0;
 }
 
 .lb-menu > li {
 	font-weight: normal;
 	float: left;
 	top: 0;
+}
+
+.lb-menu li:first-child {
+	padding-left: 0;
 }
 
 .lb-menu > li ul {
@@ -2698,40 +2719,37 @@ dt {
 	display: block;
 }
 
+.lb-menu a {
+	display: block;
+}
+
 .lb-menu li a {
-	padding-top: 24px;
+	padding: 24px 10px 1px 5px;
 }
 
 .lb-menu li li a {
-	padding: 1px 10px 1px 5px;
+	padding: 0;
+	background-color: #fff;
+	padding: 5px 10px 5px 5px;
 }
 
-.secondary-menu.lb-menu li:before {
-	content: "";
-}
-
-.lb-image_edit,
-.lb-image_link {
-	padding-right: 5px;
-}
-
-.lb-menu > li:hover > ul {
-	top: 28px !important;
+.lb-menu li {
+	border: 0;
 }
 
 [dir=rtl] .lb-menu > li {
 	float: right;
 }
 
-.lb-image_edit {
+.list_value_wrap .lb-image_edit {
 	background: url(images/image_edit.png) no-repeat 50% 20%;
 }
 
-.lb-image_link {
+.list_value_wrap .lb-image_link {
 	background: url(images/image_link.png) no-repeat 50% 20%;
 }
 
-.lb-image_view {
+.list_value_wrap .lb-image_view {
 	background: url(images/image_view.png) no-repeat 50% 20%;
 }
 

@@ -1582,25 +1582,36 @@ dt {
 }
 
 /* ============== medialist.php ======================= */
+.makeMenu li ul {
+	border: thin solid #AAA;
+	position: absolute;
+	margin:0;
+}
+
+.makeMenu, .makeMenu li ul {
+	padding: 1px;
+}
+
+.makeMenu li {
+	display: inline;
+	position: relative;
+	white-space: nowrap;
+}
+
 .lb-menu {
 	display: inline-block;
 	margin: 0;
+	list-style: none;
 }
 
 .lb-menu ul {
-	display: block;
 	list-style-type: none;
 }
 
 .lb-menu > li {
 	font-weight: normal;
 	float: left;
-	margin-right: 2px;
 	top: 0;
-}
-
-.lb-menu li:first-child {
-	padding-left: 0;
 }
 
 .lb-menu > li ul {
@@ -1609,11 +1620,24 @@ dt {
 
 .lb-menu > li:hover ul {
 	display: block;
-	top: 36px;
+}
+
+.lb-menu li a {
+	padding-top: 24px;
 }
 
 .lb-menu li li a {
-	padding: 1px 10px 1px 5px;
+	padding: 5px 10px 5px 5px;
+	display: block;
+	background-color: #fff;
+}
+
+.secondary-menu.lb-menu li:before {
+	content: "";
+}
+
+.lb-image_edit, .lb-image_link {
+	padding-right: 5px;
 }
 
 [dir=rtl] .lb-menu > li {

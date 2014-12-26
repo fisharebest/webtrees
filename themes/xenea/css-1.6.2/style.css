@@ -2491,7 +2491,22 @@ dt {
 	text-align: center;
 }
 
-/* ============== medialist.php ======================= */
+/* ============== medialist.php ====Webtrees=================== */
+.makeMenu li ul {
+	border: thin solid #AAA;
+	position: absolute;
+}
+
+.makeMenu, .makeMenu li ul {
+	padding: 1px;
+}
+
+.makeMenu li {
+	display: inline;
+	position: relative;
+	white-space: nowrap;
+}
+
 .lb-menu {
 	display: inline-block;
 	margin: 0;
@@ -2500,6 +2515,7 @@ dt {
 .lb-menu ul {
 	display: block;
 	list-style-type: none;
+	margin: 0;
 }
 
 .lb-menu > li {
@@ -2526,38 +2542,32 @@ dt {
 }
 
 .lb-menu li a {
-	color: #00f;
-	font-weight: normal;
-	padding-top: 24px;
-}
-
-.lb-menu li a:hover {
-	color: #f00;
-	font-weight: normal;
+	padding: 24px 10px 1px 5px;
 }
 
 .lb-menu li li a {
-	padding: 1px 10px 1px 5px;
+	padding: 0;
+	background-color: #fff;
+	padding: 5px 10px 5px 5px;
 }
 
-.lb-image_edit,
-.lb-image_link {
-	padding-right: 5px;
+.lb-menu li {
+	border: 0;
 }
 
 [dir=rtl] .lb-menu > li {
 	float: right;
 }
 
-.lb-image_edit {
+.list_value_wrap .lb-image_edit {
 	background: url(images/image_edit.png) no-repeat 50% 20%;
 }
 
-.lb-image_link {
+.list_value_wrap .lb-image_link {
 	background: url(images/image_link.png) no-repeat 50% 20%;
 }
 
-.lb-image_view {
+.list_value_wrap .lb-image_view {
 	background: url(images/image_view.png) no-repeat 50% 20%;
 }
 

@@ -147,6 +147,10 @@ textarea:required:invalid {
 }
 
 /* Title Line */
+header {
+	height: 98px;
+}
+
 .header-search {
 	display: inline;
 }
@@ -463,7 +467,7 @@ header h1 {
 }
 
 #menu-story {
-	background-position: center -616px;
+	background-position: center -615px;
 }
 
 /* Submenu Icons */
@@ -1145,6 +1149,11 @@ footer {
 }
 
 /* Block styles */
+
+#home-page {
+	margin-top: 3px;
+}
+
 ul {
 	margin: 8px;
 	padding-left: 15px;
@@ -2481,20 +2490,42 @@ a.showit > span {
 	min-width: 100px;
 }
 
-/* ============== medialist.php ======================= */
+/* ============== medialist.php ====Webtrees=================== */
+
+.makeMenu li ul {
+	border: thin solid #AAA;
+	position: absolute;
+}
+
+.makeMenu, .makeMenu li ul {
+	padding: 1px;
+}
+
+.makeMenu li {
+	display: inline;
+	position: relative;
+	white-space: nowrap;
+}
+
 .lb-menu {
 	display: inline-block;
 	margin: 0;
 }
 
 .lb-menu ul {
+	display: block;
 	list-style-type: none;
+	margin: 0;
 }
 
 .lb-menu > li {
 	font-weight: normal;
 	float: left;
 	top: 0;
+}
+
+.lb-menu li:first-child {
+	padding-left: 0;
 }
 
 .lb-menu > li ul {
@@ -2511,32 +2542,17 @@ a.showit > span {
 }
 
 .lb-menu li a {
-	padding-top: 24px;
+	padding: 24px 10px 1px 5px;
 }
 
 .lb-menu li li a {
-	padding: 1px 10px 1px 5px;
+	padding: 0;
+	background-color: #fff;
+	padding: 5px 10px 5px 5px;
 }
 
-.lb-menu {
-	float: none;
-}
-
-.lb-menu li:before {
-	content: "";
-}
-
-.secondary-menu.lb-menu li a {
-	color: #000;
-}
-
-.lb-image_edit,
-.lb-image_link {
-	padding-right: 5px;
-}
-
-.lb-menu > li:hover > ul {
-	top: 28px !important;
+.lb-menu li {
+	border: 0;
 }
 
 [dir=rtl] .lb-menu > li {
