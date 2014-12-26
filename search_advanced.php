@@ -239,7 +239,7 @@ echo '</script>';
 					</tr>
 					<!--  mother -->
 					<?php $j++; ?>
-					<tr><td colspan="2">&nbsp;</td></tr>
+					<tr><td colspan="2"></td></tr>
 					<tr>
 						<td colspan="2" class="facts_label03" style="text-align:center;">
 							<?php echo WT_I18N::translate('Mother'); ?>

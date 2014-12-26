@@ -306,7 +306,7 @@ function print_family_children(WT_Family $family, $childid = '', $sosa = 0, $lab
 					$famid_child = $famids[$f]->getXref();
 					// multiple marriages
 					if ($f > 0) {
-						echo '</tr><tr><td>&nbsp;</td>';
+						echo '</tr><tr><td></td>';
 						echo '<td valign="top"';
 						if ($TEXT_DIRECTION == 'rtl') {
 							echo ' align="left">';
