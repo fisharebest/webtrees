@@ -18,7 +18,6 @@
 
 use WT\Auth;
 use WT\Theme;
-use WT_Controller_Page;
 use WT_I18N;
 use WT_Menu;
 use WT_Site;
