@@ -41,6 +41,11 @@ class Administration extends BaseTheme {
 	}
 
 	/** {@inheritdoc} */
+	protected function footerContent() {
+		return '';
+	}
+
+	/** {@inheritdoc} */
 	public function hookFooterExtraJavascript() {
 		return
 			'<script src="' . WT_JQUERY_COLORBOX_URL . '"></script>' .

@@ -1531,13 +1531,6 @@ a:hover .nameZoom {
 	margin-left: 1px;
 }
 
-#footer {
-	clear: both;
-	color: #006;
-	font-size: 12px;
-	width: 99%;
-}
-
 /*-- index.php specific style sheets -- */
 .small_inner_block {
 	max-height: 190px;
