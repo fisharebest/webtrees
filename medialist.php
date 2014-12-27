@@ -96,8 +96,8 @@ $medialist = WT_Query_Media::mediaList(
 				echo '</select>';
 				echo '</td>';
 			} else {
-				echo '<td class="descriptionbox wrap width25">&nbsp;</td>';
-				echo '<td class="optionbox wrap width25">&nbsp;</td>';
+				echo '<td class="descriptionbox wrap width25"></td>';
+				echo '<td class="optionbox wrap width25"></td>';
 			}
 			?>
 		</tr>
@@ -152,8 +152,8 @@ $medialist = WT_Query_Media::mediaList(
 				<input type="submit" name="apply_filter" value="<?php echo WT_I18N::translate('Search'); ?>">
 				<input type="submit" name="reset" value="<?php echo WT_I18N::translate('Reset'); ?>">
 			</td>
-			<td class="descriptionbox wrap width25">&nbsp;</td>
-			<td class="optionbox wrap width25">&nbsp;</td>
+			<td class="descriptionbox wrap width25"></td>
+			<td class="optionbox wrap width25"></td>
 		</tr>
 	</table>
 </form>
@@ -300,7 +300,7 @@ if ($search) {
 
 		// An odd number of media objects in two columns requires an empty cell
 		if ($columns == 2 && $n%2 == 1) {
-			echo '<td>&nbsp;</td>';
+			echo '<td></td>';
 		}
 
 		echo '</tr></tbody>';

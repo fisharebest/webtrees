@@ -64,28 +64,28 @@ $controller
 		<table width="100%" style="text-align:center;">
 			<tr>
 				<?php echo $controller->sosaIndividual(16); ?>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
+				<td></td>
+				<td></td>
+				<td></td>
 				<?php echo $controller->sosaIndividual(18); ?>
-				<td>&nbsp;</td>
+				<td></td>
 				<?php echo $controller->sosaIndividual(24); ?>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
+				<td></td>
+				<td></td>
+				<td></td>
 				<?php echo $controller->sosaIndividual(26); ?>
 			</tr>
 			<tr>
 				<td><?php echo $controller->sosaArrow(16, 'up'); ?></td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
+				<td></td>
+				<td></td>
+				<td></td>
 				<td><?php echo $controller->sosaArrow(18, 'up'); ?></td>
-				<td>&nbsp;</td>
+				<td></td>
 				<td><?php echo $controller->sosaArrow(24, 'up'); ?></td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
+				<td></td>
+				<td></td>
+				<td></td>
 				<td><?php echo $controller->sosaArrow(26, 'up'); ?></td>
 			</tr>
 			<tr>
@@ -94,7 +94,7 @@ $controller
 				<?php echo $controller->sosaIndividual(4); ?>
 				<td><?php echo $controller->sosaArrow(9, 'right'); ?></td>
 				<?php echo $controller->sosaIndividual(9); ?>
-				<td>&nbsp;</td>
+				<td></td>
 				<?php echo $controller->sosaIndividual(12); ?>
 				<td><?php echo $controller->sosaArrow(12, 'left'); ?></td>
 				<?php echo $controller->sosaIndividual(6); ?>
@@ -103,48 +103,48 @@ $controller
 			</tr>
 			<tr>
 				<td><?php echo $controller->sosaArrow(17, 'down'); ?></td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
+				<td></td>
+				<td></td>
+				<td></td>
 				<td><?php echo $controller->sosaArrow(19, 'down'); ?></td>
-				<td>&nbsp;</td>
+				<td></td>
 				<td><?php echo $controller->sosaArrow(25, 'down'); ?></td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
+				<td></td>
+				<td></td>
+				<td></td>
 				<td><?php echo $controller->sosaArrow(27, 'down'); ?></td>
 			</tr>
 			<tr>
 				<?php echo $controller->sosaIndividual(17); ?>
-				<td>&nbsp;</td>
+				<td></td>
 				<td><?php echo $controller->sosaArrow(4, 'up'); ?></td>
-				<td>&nbsp;</td>
+				<td></td>
 				<?php echo $controller->sosaIndividual(19); ?>
-				<td>&nbsp;</td>
+				<td></td>
 				<?php echo $controller->sosaIndividual(25); ?>
-				<td>&nbsp;</td>
+				<td></td>
 				<td><?php echo $controller->sosaArrow(6, 'up'); ?></td>
-				<td>&nbsp;</td>
+				<td></td>
 				<?php echo $controller->sosaIndividual(27); ?>
 			</tr>
 			<tr>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
 			</tr>
 			<tr>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
+				<td></td>
+				<td></td>
 				<?php echo $controller->sosaIndividual(2); ?>
-				<td>&nbsp;</td>
+				<td></td>
 				<td colspan="3">
 					<table width="100%">
 						<tr>
@@ -154,48 +154,48 @@ $controller
 						</tr>
 					</table>
 				</td>
-				<td>&nbsp;</td>
+				<td></td>
 				<?php echo $controller->sosaIndividual(3); ?>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
+				<td></td>
+				<td></td>
 			</tr>
 			<tr>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
 			</tr>
 			<tr>
 				<?php echo $controller->sosaIndividual(20); ?>
-				<td>&nbsp;</td>
+				<td></td>
 				<td><?php echo $controller->sosaArrow(5, 'down'); ?></td>
-				<td>&nbsp;</td>
+				<td></td>
 				<?php echo $controller->sosaIndividual(22); ?>
-				<td>&nbsp;</td>
+				<td></td>
 				<?php echo $controller->sosaIndividual(28); ?>
-				<td>&nbsp;</td>
+				<td></td>
 				<td><?php echo $controller->sosaArrow(7, 'down'); ?></td>
-				<td>&nbsp;</td>
+				<td></td>
 				<?php echo $controller->sosaIndividual(30); ?>
 			</tr>
 			<tr>
 				<td><?php echo $controller->sosaArrow(20, 'up'); ?></td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
+				<td></td>
+				<td></td>
+				<td></td>
 				<td><?php echo $controller->sosaArrow(22, 'up'); ?></td>
-				<td>&nbsp;</td>
+				<td></td>
 				<td><?php echo $controller->sosaArrow(28, 'up'); ?></td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
+				<td></td>
+				<td></td>
+				<td></td>
 				<td><?php echo $controller->sosaArrow(30, 'up'); ?></td>
 			</tr>
 			<tr>
@@ -204,7 +204,7 @@ $controller
 				<?php echo $controller->sosaIndividual(5); ?>
 				<td><?php echo $controller->sosaArrow(11, 'right'); ?></td>
 				<?php echo $controller->sosaIndividual(11); ?>
-				<td>&nbsp;</td>
+				<td></td>
 				<?php echo $controller->sosaIndividual(14); ?>
 				<td><?php echo $controller->sosaArrow(14, 'left'); ?></td>
 				<?php echo $controller->sosaIndividual(7); ?>
@@ -213,28 +213,28 @@ $controller
 			</tr>
 			<tr>
 				<td><?php echo $controller->sosaArrow(21, 'down'); ?></td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
+				<td></td>
+				<td></td>
+				<td></td>
 				<td><?php echo $controller->sosaArrow(23, 'down'); ?></td>
-				<td>&nbsp;</td>
+				<td></td>
 				<td><?php echo $controller->sosaArrow(29, 'down'); ?></td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
+				<td></td>
+				<td></td>
+				<td></td>
 				<td><?php echo $controller->sosaArrow(31, 'down'); ?></td>
 			</tr>
 			<tr>
 				<?php echo $controller->sosaIndividual(21); ?>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
+				<td></td>
+				<td></td>
+				<td></td>
 				<?php echo $controller->sosaIndividual(23); ?>
-				<td>&nbsp;</td>
+				<td></td>
 				<?php echo $controller->sosaIndividual(29); ?>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
+				<td></td>
+				<td></td>
+				<td></td>
 				<?php echo $controller->sosaIndividual(31); ?>
 			</tr>
 		</table>

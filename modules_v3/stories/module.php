@@ -319,8 +319,8 @@ class stories_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Co
 				echo '<thead><tr>
 					<th>', WT_I18N::translate('Story title'), '</th>
 					<th>', WT_I18N::translate('Individual'), '</th>
-					<th>&nbsp;</th>
-					<th>&nbsp;</th>
+					<th></th>
+					<th></th>
 					</tr></thead>';
 			}
 			echo '<tbody>';
