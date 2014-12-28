@@ -3414,6 +3414,7 @@ dd .deletelink {
 
 /* ========= jquery-ui.css changes ============ */
 .ui-accordion .ui-accordion-content {
+	position: relative;
 	padding: 0 5px;
 }
 
