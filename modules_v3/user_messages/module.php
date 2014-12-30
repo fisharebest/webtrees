@@ -60,26 +60,26 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 			->execute(array(Auth::id()))
 			->fetchAll();
 
-		$msgCount = count($messages);
-		$id      = $this->getName() . $block_id;
-		$class   = $this->getName() . '_block';
-		$title   = WT_I18N::plural('%s message', '%s messages', $msgCount, WT_I18N::number($msgCount));
-		$validUsers = array_filter(User::all(), function($user){
+		$count = count($messages);
+		$id    = $this->getName() . $block_id;
+		$class = $this->getName() . '_block';
+		$title = WT_I18N::plural('%s message', '%s messages', $count, WT_I18N::number($count));
+		$users = array_filter(User::all(), function($user){
 			return $user->getUserId() !== Auth::id() && $user->getPreference('verified_by_admin') && $user->getPreference('contactmethod') !== 'none';
 		});
 
 		$content = '<form name="messageform" method="post" onsubmit="return confirm(\'' . WT_I18N::translate('Are you sure you want to delete this message?  It cannot be retrieved later.') . '\');">';
-		if (count($validUsers) > 0) {
+		if ($users) {
 			$content .= '<label for="touser">' . WT_I18N::translate('Send a message') . '</label>';
 			$content .= '<select id="touser" name="touser">';
 			$content .= '<option value="">' . WT_I18N::translate('&lt;select&gt;') . '</option>';
-			foreach ($validUsers as $user) {
+			foreach ($users as $user) {
 				$content .= sprintf('<option value="%1$s">%2$s - %1$s</option>', WT_Filter::escapeHtml($user->getUserName()), WT_Filter::escapeHtml($user->getRealName()));
 			}
 			$content .= '</select>';
 			$content .= '<input type="button" value="' . WT_I18N::translate('Send') . '" onclick="message(document.messageform.touser.options[document.messageform.touser.selectedIndex].value, \'messaging2\', \'\'); return false;"><br><br>';
 		}
-		if ($msgCount > 0) {
+		if ($messages) {
 			$content .= '<input type="hidden" name="action" value="deletemessage">';
 			$content .= '<table class="list_table"><tr>';
 			$content .= '<th class="list_label">' . WT_I18N::translate('Delete') . '<br><a href="#" onclick="jQuery(\'#' . $this->getName() . $block_id . ' :checkbox\').prop(\'checked\', true); return false;">' . WT_I18N::translate('All') . '</a></th>';
@@ -110,7 +110,7 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 				if ($user) {
 					$content .= '<a href="#" onclick="reply(\'' . WT_Filter::escapeJs($message->sender) . '\', \'' . WT_Filter::escapeJs($message->subject) . '\'); return false;">' . WT_I18N::translate('Reply') . '</a> | ';
 				}
-				$content .= '<a href="' . WT_Filter::escapeUrl("index.php?action=deletemessage&amp;message_id[]=' . $message->message_id . '") . '" onclick="return confirm(\'' . WT_I18N::translate('Are you sure you want to delete this message?  It cannot be retrieved later.') . '\');">' . WT_I18N::translate('Delete') . '</a></div></td></tr>';
+				$content .= '<a href="index.php?action=deletemessage&amp;message_id%5B%5D=' . $message->message_id . '" onclick="return confirm(\'' . WT_I18N::translate('Are you sure you want to delete this message?  It cannot be retrieved later.') . '\');">' . WT_I18N::translate('Delete') . '</a></div></td></tr>';
 			}
 			$content .= '</table>';
 			$content .= '<input type="submit" value="' . WT_I18N::translate('Delete selected messages') . '"><br>';
