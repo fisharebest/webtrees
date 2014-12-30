@@ -3300,11 +3300,6 @@ span.link_text {
 	font-weight: 400;
 }
 
-.ui-state-default .ui-icon,
-.ui-state-active .ui-icon {
-	background-image: url(../../jquery-ui-1.11.2/images/ui-icons_222222_256x240.png);
-}
-
 .ui-state-hover a,
 .ui-state-hover a:hover,
 .ui-state-default a:link {
