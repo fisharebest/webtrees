@@ -175,7 +175,7 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 		if ($stat_avg_chil) {
 			$content .= '<tr><td class="facts_label">'.WT_I18N::translate('Average number of children per family').'</td><td class="facts_value stats_value">'.$stats->averageChildren().'</td>';
 			if (!$block) {
-				$content .= '<td class="facts_value">&nbsp;</td>';
+				$content .= '<td class="facts_value"></td>';
 			}
 			$content .= '</tr>';
 		}
@@ -356,7 +356,7 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 			<td><input type="checkbox" value="yes" name="stat_users"
 			<?php if ($stat_users) echo ' checked="checked"'; ?>>
 			<?php echo WT_I18N::translate('Total users'); ?></td>
-			<td>&nbsp;</td>
+			<td></td>
 		</tr>
 	</table>
 	</td>

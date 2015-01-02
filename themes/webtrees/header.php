@@ -20,18 +20,13 @@
 // You should have received a copy of the GNU General Public License
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
-
 use WT\Auth;
-
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
-
 define('WT_GOOGLE_SOCIALTRACKING',  './js/ga_social_tracking.js');
-
 global $WT_IMAGES;
-
 // This theme uses the jQuery “colorbox” plugin to display images
 $this
 	->addExternalJavascript(WT_GOOGLE_SOCIALTRACKING)
@@ -45,8 +40,8 @@ $this
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<?php include(WT_ROOT."/keywords.php"); ?>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<?php include(WT_ROOT."/keywords.php"); ?>
 	<?php echo header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL); ?>
 	<title><?php echo WT_Filter::escapeHtml($title); ?></title>
 	<link rel="icon" href="<?php echo WT_CSS_URL; ?>favicon.png" type="image/png">
@@ -56,42 +51,35 @@ $this
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
 	<![endif]-->
 </head>
-<body id="body">
+<body>
 	<?php if ($view !== 'simple') { ?>
 	<header>
-		<div class="header_img">
-			<img src="<?php echo WT_CSS_URL; ?>images/Soyagaci_30x30.png" width="50px" height="50px" alt="<?php echo WT_WEBTREES; ?>">
-		</div>
-		<div id="header-user-links">
-			<ul class="makeMenu" role="menubar">
-				<li>
-					<?php
-					if (Auth::check()) {
-						echo '<a href="edituser.php">', WT_I18N::translate('Logged in as '), ' ', WT_Filter::escapeHtml(Auth::user()->getRealName()), '</a></li> <li>', logout_link();
-					} else {
-						echo login_link();
-					}
-					?>
-				</li>
-				<?php echo WT_MenuBar::getFavoritesMenu(); ?>
-				<?php echo WT_MenuBar::getThemeMenu(); ?>
-				<?php echo WT_MenuBar::getLanguageMenu(); ?>
+		<div class="header-logo"></div>
+		<ul class="secondary-menu" role="menubar">
+			<li>
+				<?php
+				if (Auth::check()) {
+					echo '<a href="edituser.php">', WT_I18N::translate('Logged in as '), ' ', WT_Filter::escapeHtml(Auth::user()->getRealName()), '</a></li> <li>', logout_link();
+				} else {
+					echo login_link();
+				}
+				?>
+			</li>
+			<?php echo WT_MenuBar::getFavoritesMenu(); ?>
+			<?php echo WT_MenuBar::getThemeMenu(); ?>
+			<?php echo WT_MenuBar::getLanguageMenu(); ?>
 			</ul>
-			
-		</div>
-		<div style="margin:auto;padding:10px;width:300px;"><div class="g-follow" data-annotation="bubble" data-height="20" data-href="//plus.google.com/u/0/106237023746635567418" data-rel="publisher"></div></div>
+			<div style="margin:auto;padding:10px;width:300px;"><div class="g-follow" data-annotation="bubble" data-height="20" data-href="//plus.google.com/u/0/106237023746635567418" data-rel="publisher"></div></div>
 		<h1><?php echo WT_TREE_TITLE; ?></h1>
-		<div class="header_search">
-			<form action="search.php" method="post" role="search">
-				<input type="hidden" name="action" value="general">
-				<input type="hidden" name="ged" value="<?php echo WT_GEDCOM; ?>">
-				<input type="hidden" name="topsearch" value="yes">
-				<input type="search" name="query" size="25" placeholder="<?php echo WT_I18N::translate('Search'); ?>">
-				<input type="image" class="image" src="<?php echo $WT_IMAGES['search']; ?>" alt="<?php echo WT_I18N::translate('Search'); ?>" title="<?php echo WT_I18N::translate('Search'); ?>">
-			</form>
-		</div>
+		<form class="header-search" action="search.php" method="post" role="search">
+			<input type="hidden" name="action" value="general">
+			<input type="hidden" name="ged" value="<?php echo WT_GEDCOM; ?>">
+			<input type="hidden" name="topsearch" value="yes">
+			<input type="search" name="query" size="25" placeholder="<?php echo WT_I18N::translate('Search'); ?>">
+			<input type="image" class="image" src="<?php echo $WT_IMAGES['search']; ?>" alt="<?php echo WT_I18N::translate('Search'); ?>" title="<?php echo WT_I18N::translate('Search'); ?>">
+		</form>
 		<nav>
-			<ul id="main-menu" role="menubar">
+			<ul class="primary-menu" role="menubar">
 				<?php echo WT_MenuBar::getGedcomMenu();   ?>
 				<?php echo WT_MenuBar::getMyPageMenu();   ?>
 				<?php echo WT_MenuBar::getChartsMenu();   ?>

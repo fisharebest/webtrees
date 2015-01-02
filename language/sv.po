@@ -1041,7 +1041,7 @@ msgstr "adar"
 #: library/WT/Date/Jewish.php:115
 msgctxt "NOMINATIVE"
 msgid "Adar"
-msgstr "Adar"
+msgstr "adar"
 
 #. I18N: a month in the Jewish calendar
 #: library/WT/Date/Jewish.php:150
@@ -1065,7 +1065,7 @@ msgstr "adar I"
 #: library/WT/Date/Jewish.php:110
 msgctxt "NOMINATIVE"
 msgid "Adar I"
-msgstr "Adar I"
+msgstr "adar I"
 
 #. I18N: a month in the Jewish calendar
 #: library/WT/Date/Jewish.php:153
@@ -1089,7 +1089,7 @@ msgstr "adar II"
 #: library/WT/Date/Jewish.php:113
 msgctxt "NOMINATIVE"
 msgid "Adar II"
-msgstr "Adar II"
+msgstr "adar II"
 
 #: admin_trees_config.php:602 edit_interface.php:2022
 #: includes/functions/functions_print.php:921
@@ -2000,7 +2000,7 @@ msgstr "april"
 #: includes/functions/functions_print.php:998 library/WT/Date/Calendar.php:181
 msgctxt "NOMINATIVE"
 msgid "April"
-msgstr "April"
+msgstr "april"
 
 #. I18N: The name of a colour-scheme
 #: themes/colors/theme.php:88
@@ -2186,7 +2186,7 @@ msgstr "augusti"
 #: library/WT/Date/Calendar.php:189
 msgctxt "NOMINATIVE"
 msgid "August"
-msgstr "Augusti"
+msgstr "augusti"
 
 #: library/WT/Stats.php:6026
 msgid "Australia"
@@ -2248,7 +2248,7 @@ msgstr "av"
 #: library/WT/Date/Jewish.php:126
 msgctxt "NOMINATIVE"
 msgid "Av"
-msgstr "Av"
+msgstr "av"
 
 #: index_edit.php:281
 msgid "Available blocks"
@@ -4783,7 +4783,7 @@ msgstr "december"
 #: library/WT/Date/Calendar.php:197
 msgctxt "NOMINATIVE"
 msgid "December"
-msgstr "December"
+msgstr "december"
 
 #. I18N: a day in the French republican calendar
 #: library/WT/Date/French.php:222
@@ -5427,7 +5427,7 @@ msgstr "elul"
 #: library/WT/Date/Jewish.php:128
 msgctxt "NOMINATIVE"
 msgid "Elul"
-msgstr "Elul"
+msgstr "elul"
 
 #: admin_users.php:570
 msgid "Email"
@@ -6178,7 +6178,7 @@ msgstr "februari"
 #: includes/functions/functions_print.php:996 library/WT/Date/Calendar.php:177
 msgctxt "NOMINATIVE"
 msgid "February"
-msgstr "Februari"
+msgstr "februari"
 
 #: calendar.php:694 includes/functions/functions_edit.php:787
 #: library/WT/Controller/Individual.php:248
@@ -7084,7 +7084,7 @@ msgstr "heshvan"
 #: library/WT/Date/Jewish.php:102
 msgctxt "NOMINATIVE"
 msgid "Heshvan"
-msgstr "Heshvan"
+msgstr "heshvan"
 
 #: admin_trees_config.php:230
 msgid "Hide &amp; show"
@@ -7677,7 +7677,7 @@ msgstr "ijar"
 #: library/WT/Date/Jewish.php:120
 msgctxt "NOMINATIVE"
 msgid "Iyar"
-msgstr "Ijar"
+msgstr "ijar"
 
 #. I18N: The Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:42
@@ -7711,7 +7711,7 @@ msgstr "januari"
 #: includes/functions/functions_print.php:995 library/WT/Date/Calendar.php:175
 msgctxt "NOMINATIVE"
 msgid "January"
-msgstr "Januari"
+msgstr "januari"
 
 #: library/WT/Stats.php:6132
 msgid "Japan"
@@ -7773,7 +7773,7 @@ msgstr "juli"
 #: library/WT/Date/Calendar.php:187
 msgctxt "NOMINATIVE"
 msgid "July"
-msgstr "Juli"
+msgstr "juli"
 
 #. I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal
 #: library/WT/Date/Hijri.php:95
@@ -7847,7 +7847,7 @@ msgstr "juni"
 #: library/WT/Date/Calendar.php:185
 msgctxt "NOMINATIVE"
 msgid "June"
-msgstr "Juni"
+msgstr "juni"
 
 #: library/WT/Stats.php:6133
 msgid "Kazakhstan"
@@ -7928,7 +7928,7 @@ msgstr "kislev"
 #: library/WT/Date/Jewish.php:104
 msgctxt "NOMINATIVE"
 msgid "Kislev"
-msgstr "Kislev"
+msgstr "kislev"
 
 #: library/WT/Gedcom/Code/Temp.php:184
 msgid "Kona, Hawaii"
@@ -8494,7 +8494,7 @@ msgstr "mars"
 #: includes/functions/functions_print.php:997 library/WT/Date/Calendar.php:179
 msgctxt "NOMINATIVE"
 msgid "March"
-msgstr "Mars"
+msgstr "mars"
 
 #: help_text.php:530
 msgid "Markdown is a simple system of formatting, used on websites such as Wikipedia.  It uses unobtrusive punctuation characters to create headings and sub-headings, bold and italic text, lists, tables, etc."
@@ -8804,7 +8804,7 @@ msgstr "maj"
 #: includes/functions/functions_print.php:999 library/WT/Date/Calendar.php:183
 msgctxt "NOMINATIVE"
 msgid "May"
-msgstr "Maj"
+msgstr "maj"
 
 #: library/WT/Stats.php:6174
 msgid "Mayotte"
@@ -9622,7 +9622,7 @@ msgstr "nisan"
 #: library/WT/Date/Jewish.php:118
 msgctxt "NOMINATIVE"
 msgid "Nissan"
-msgstr "Nisan"
+msgstr "nisan"
 
 #: library/WT/Stats.php:6182
 msgid "Niue"
@@ -9970,7 +9970,7 @@ msgstr "november"
 #: library/WT/Date/Calendar.php:195
 msgctxt "NOMINATIVE"
 msgid "November"
-msgstr "November"
+msgstr "november"
 
 #: library/WT/Gedcom/Code/Temp.php:234
 msgid "Nuku’Alofa, Tonga"
@@ -10085,7 +10085,7 @@ msgstr "oktober"
 #: library/WT/Date/Calendar.php:193
 msgctxt "NOMINATIVE"
 msgid "October"
-msgstr "Oktober"
+msgstr "oktober"
 
 #: library/WT/Gedcom/Code/Temp.php:244
 msgid "Ogden, Utah"
@@ -11986,7 +11986,7 @@ msgstr "september"
 #: library/WT/Date/Calendar.php:191
 msgctxt "NOMINATIVE"
 msgid "September"
-msgstr "September"
+msgstr "september"
 
 #. I18N: a day in the French republican calendar
 #: library/WT/Date/French.php:216
@@ -12254,7 +12254,7 @@ msgstr "shvat"
 #: library/WT/Date/Jewish.php:108
 msgctxt "NOMINATIVE"
 msgid "Shevat"
-msgstr "Shvat"
+msgstr "shvat"
 
 #. I18N: The name of a colour-scheme
 #: themes/colors/theme.php:102
@@ -12731,7 +12731,7 @@ msgstr "sivan"
 #: library/WT/Date/Jewish.php:122
 msgctxt "NOMINATIVE"
 msgid "Sivan"
-msgstr "Sivan"
+msgstr "sivan"
 
 #: modules_v3/googlemap/module.php:315 modules_v3/googlemap/module.php:433
 msgid "Size of map (in pixels)"
@@ -13245,7 +13245,7 @@ msgstr "tamuz"
 #: library/WT/Date/Jewish.php:124
 msgctxt "NOMINATIVE"
 msgid "Tamuz"
-msgstr "Tamuz"
+msgstr "tamuz"
 
 #: library/WT/Stats.php:6252
 msgid "Tanzania"
@@ -13295,7 +13295,7 @@ msgstr "tevet"
 #: library/WT/Date/Jewish.php:106
 msgctxt "NOMINATIVE"
 msgid "Tevet"
-msgstr "Tevet"
+msgstr "tevet"
 
 #. I18N: gedcom tag TEXT
 #: library/WT/Gedcom/Tag.php:823
@@ -14496,7 +14496,7 @@ msgstr "tishrei"
 #: library/WT/Date/Jewish.php:100
 msgctxt "NOMINATIVE"
 msgid "Tishrei"
-msgstr "Tishrei"
+msgstr "tishrei"
 
 #. I18N: gedcom tag TITL
 #: library/WT/Gedcom/Tag.php:831

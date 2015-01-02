@@ -143,7 +143,7 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 		echo '</td>';
 
 		// check if child has parents and add an arrow
-		echo '<td>&nbsp;</td>';
+		echo '<td></td>';
 		echo '<td>';
 		foreach ($person->getChildFamilies() as $cfamily) {
 			foreach ($cfamily->getSpouses() as $parent) {
@@ -213,7 +213,7 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 		echo '</td>';
 
 		// check if spouse has parents and add an arrow
-		echo '<td>&nbsp;</td>';
+		echo '<td></td>';
 		echo '<td>';
 		if ($spouse) {
 			foreach ($spouse->getChildFamilies() as $cfamily) {

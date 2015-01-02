@@ -154,7 +154,7 @@ class WT_Controller_Page extends WT_Controller_Base {
 		// Temporary fix for access to main menu hover elements on android/blackberry touch devices
 		$this->addInlineJavascript('
 			if(navigator.userAgent.match(/Android|PlayBook/i)) {
-				jQuery("#main-menu > li > a").attr("href", "#");
+				jQuery(".primary-menu > li > a").attr("href", "#");
 			}
 		');
 

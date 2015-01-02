@@ -141,14 +141,18 @@ textarea:required:invalid {
 }
 
 /* Set stack level for top two header menu rows */
-.makeMenu ul,
-#main-menu ul {
+.secondary-menu ul,
+.primary-menu ul {
 	z-index: 210;
 }
 
 /* Title Line */
-#header {
-	height: 50px;
+header {
+	height: 98px;
+}
+
+.header-search {
+	display: inline;
 }
 
 header h1 {
@@ -164,33 +168,33 @@ header h1 {
 }
 
 /* Options Menu */
-.makeMenu {
+.secondary-menu {
 	float: right;
-	margin: 21px 10px 0 0;
+	margin: 21px 10px 4px 0;
 	white-space: nowrap;
 }
 
-.makeMenu ul {
+.secondary-menu ul {
 	border-radius: 5px;
 }
 
-.makeMenu li {
+.secondary-menu li {
 	display: inline;
 	position: relative;
 	white-space: nowrap;
 }
 
-.makeMenu li:before {
+.secondary-menu li:before {
 	content: " | ";
 }
 
-.makeMenu li a.link {
+.secondary-menu li a.link {
 	font-size: 13px;
 	margin-left: 5px;
 	margin-right: 5px;
 }
 
-.makeMenu li ul {
+.secondary-menu li ul {
 	background-color: #eee;
 	border: thin solid #aaa;
 	display: none;
@@ -198,45 +202,44 @@ header h1 {
 	position: absolute;
 }
 
-.makeMenu li ul li {
+.secondary-menu li ul li {
 	display: block;
 	text-align: left;
 }
 
-.makeMenu li ul li a {
+.secondary-menu li ul li a {
 	color: #333;
 }
 
-.makeMenu,
-.makeMenu li ul {
+.secondary-menu,
+.secondary-menu li ul {
 	color: #fff;
 	list-style: none;
-	margin-left: 0;
 	padding: 1px;
 	top: 5px;
 }
 
 /*set position of dropdown */
-.makeMenu li:hover > ul {
+.secondary-menu li:hover > ul {
 	display: block;
 }
 
-.makeMenu li a:hover {
+.secondary-menu li a:hover {
 	color: #f5003d;
 }
 
-.makeMenu ul li a {
+.secondary-menu ul li a {
 	background-color: #fff;
 	display: block;
 	padding: 2px 5px 2px 2px;
 }
 
-.makeMenu ul li a:hover {
+.secondary-menu ul li a:hover {
 	color: #000;
 }
 
-.makeMenu li ul li:before,
-.makeMenu li:first-child:before {
+.secondary-menu li ul li:before,
+.secondary-menu li:first-child:before {
 	content: "";
 }
 
@@ -245,23 +248,23 @@ header h1 {
 	font-weight: 900;
 }
 
-[dir=rtl] .makeMenu {
+[dir=rtl] .secondary-menu {
 	display: block;
 	float: left;
 	margin: 21px 0 0 10px;
 }
 
-[dir=rtl] .makeMenu li ul {
+[dir=rtl] .secondary-menu li ul {
 	left: auto;
 	right: 0;
 }
 
-[dir=rtl] .makeMenu li ul li {
+[dir=rtl] .secondary-menu li ul li {
 	text-align: right;
 }
 
 /* Menu setup */
-#main-menu {
+.primary-menu {
 	display: inline-block;
 	width: 100%;
 	margin: 0;
@@ -269,7 +272,7 @@ header h1 {
 	height: 48px;
 }
 
-#main-menu ul {
+.primary-menu ul {
 	padding: 0;
 	margin: 0;
 	border: 1px solid #ddd;
@@ -281,18 +284,18 @@ header h1 {
 	background: #fff;
 }
 
-#main-menu li {
+.primary-menu li {
 	display: block;
 	position: relative;
 	float: left;
 	list-style: none;
 }
 
-#main-menu li a {
+.primary-menu li a {
 	display: block;
 }
 
-#main-menu li > ul {
+.primary-menu li > ul {
 	display: block;
 	position: absolute;
 	top: 0;
@@ -300,18 +303,18 @@ header h1 {
 	right: auto;
 }
 
-#main-menu > li > a {
+.primary-menu > li > a {
 	height: 37px;
 	width: 27px;
 }
 
-#main-menu > li > ul {
+.primary-menu > li > ul {
 	left: 0;
 	right: auto;
 	top: 40px;
 }
 
-#main-menu a {
+.primary-menu a {
 	display: block;
 	text-decoration: none;
 	padding: 0 10px;
@@ -319,19 +322,19 @@ header h1 {
 	white-space: nowrap;
 }
 
-#main-menu ul li:hover a,
-#main-menu li:hover li a {
+.primary-menu ul li:hover a,
+.primary-menu li:hover li a {
 	background: none;
 	border: 0;
 }
 
-#main-menu li:hover > ul {
+.primary-menu li:hover > ul {
 	visibility: visible;
 	opacity: 1;
 }
 
 /* First row submenu style*/
-#main-menu > li > ul > li:first-child {
+.primary-menu > li > ul > li:first-child {
 	text-indent: 0;
 	min-width: 100px;
 	width: 100%;
@@ -346,8 +349,8 @@ header h1 {
 }
 
 /* Menu icons */
-#main-menu > li {
-	background-image: url(../images/sprites-top-menu.png);
+.primary-menu > li {
+	background-image: url(images/sprites-top-menu.png);
 	background-repeat: no-repeat;
 	height: 40px;
 	line-height: 40px;
@@ -356,8 +359,8 @@ header h1 {
 	width: 40px;
 }
 
-#main-menu li ul li {
-	background-image: url(../images/sprites-sub-menu.png);
+.primary-menu li ul li {
+	background-image: url(images/sprites-sub-menu.png);
 	background-repeat: no-repeat;
 	height: 28px;
 	left: auto;
@@ -367,34 +370,34 @@ header h1 {
 	width: 100%;
 }
 
-[dir=rtl] #main-menu > li {
+[dir=rtl] .primary-menu > li {
 	margin: 4px 16px 0 0;
 }
 
-[dir=rtl] #main-menu li {
+[dir=rtl] .primary-menu li {
 	float: right;
 }
 
-[dir=rtl] #main-menu li:hover > ul {
+[dir=rtl] .primary-menu li:hover > ul {
 	right: 100%;
 	left: auto;
 }
 
-[dir=rtl] #main-menu > li:hover > ul {
+[dir=rtl] .primary-menu > li:hover > ul {
 	left: auto;
 	right: 0;
 }
 
-[dir=rtl] #main-menu li li {
+[dir=rtl] .primary-menu li li {
 	text-align: right;
 }
 
-[dir=rtl] #main-menu li li a {
+[dir=rtl] .primary-menu li li a {
 	display: block;
 	float: right;
 }
 
-[dir=rtl] #main-menu > li > ul > li:first-child {
+[dir=rtl] .primary-menu > li > ul > li:first-child {
 	text-align: center;
 }
 
@@ -464,7 +467,7 @@ header h1 {
 }
 
 #menu-story {
-	background-position: center -616px;
+	background-position: center -615px;
 }
 
 /* Submenu Icons */
@@ -1146,6 +1149,11 @@ footer {
 }
 
 /* Block styles */
+
+#home-page {
+	margin-top: 3px;
+}
+
 ul {
 	margin: 8px;
 	padding-left: 15px;
@@ -1223,21 +1231,21 @@ ul {
 }
 
 .blockh1 {
-	background: url(../images/left1B.png) no-repeat;
+	background: url(images/left1B.png) no-repeat;
 	height: 24px;
 	width: 26px;
 	padding: 0;
 }
 
 .blockh2 {
-	background: url(../images/left2.png) repeat-x;
+	background: url(images/left2.png) repeat-x;
 	font-size: 13px;
 	font-weight: 700;
 	padding: 0;
 }
 
 .blockh3 {
-	background: url(../images/left3.png) no-repeat;
+	background: url(images/left3.png) no-repeat;
 	height: 24px;
 	width: 8px;
 	padding: 0;
@@ -1252,11 +1260,11 @@ ul {
 }
 
 [dir=rtl] .blockh1 {
-	background-image: url(../images/right1B.png);
+	background-image: url(images/right1B.png);
 }
 
 [dir=rtl] .blockh3 {
-	background-image: url(../images/right3.png);
+	background-image: url(images/right3.png);
 }
 
 [dir=rtl] .blockhc {
@@ -1320,7 +1328,7 @@ ul {
 }
 
 #ancestry_chart ul {
-	background-image:url(../images/vline.png);
+	background-image:url(images/vline.png);
 	background-position:left top;background-repeat:repeat-y;
 	display: block;
 	list-style: none;
@@ -1363,7 +1371,7 @@ ul {
 }
 
 #descendancy_chart ul {
-	background-image:url(../images/vline.png);
+	background-image:url(images/vline.png);
 	background-position:left top;background-repeat:repeat-y;
 	list-style: none;
 	margin: 0 0 5px 15px;
@@ -2222,7 +2230,7 @@ a.showit:hover > span {
 }
 
 .ui-autocomplete-loading {
-	background: #fff url(../images/indicator.gif) right center no-repeat;
+	background: #fff url(images/indicator.gif) right center no-repeat;
 }
 
 .ui-autocomplete li:nth-child(odd) {
@@ -2333,11 +2341,11 @@ a.showit > span {
 	2 normal view - large box
 */
 .box-style0 {
-	cursor: url(../images/zoomin.png), n-resize;
+	cursor: url(images/zoomin.png), n-resize;
 }
 
 .box-style0-expanded {
-	cursor: url(../images/zoomout.png), n-resize;
+	cursor: url(images/zoomout.png), n-resize;
 }
 
 .box-style0-expanded,
@@ -2483,19 +2491,41 @@ a.showit > span {
 }
 
 /* ============== medialist.php ======================= */
+
+.makeMenu li ul {
+	border: thin solid #AAA;
+	position: absolute;
+}
+
+.makeMenu, .makeMenu li ul {
+	padding: 1px;
+}
+
+.makeMenu li {
+	display: inline;
+	position: relative;
+	white-space: nowrap;
+}
+
 .lb-menu {
 	display: inline-block;
 	margin: 0;
 }
 
 .lb-menu ul {
+	display: block;
 	list-style-type: none;
+	margin: 0;
 }
 
 .lb-menu > li {
 	font-weight: normal;
 	float: left;
 	top: 0;
+}
+
+.lb-menu li:first-child {
+	padding-left: 0;
 }
 
 .lb-menu > li ul {
@@ -2512,32 +2542,17 @@ a.showit > span {
 }
 
 .lb-menu li a {
-	padding-top: 24px;
+	padding: 24px 10px 1px 5px;
 }
 
 .lb-menu li li a {
-	padding: 1px 10px 1px 5px;
+	padding: 0;
+	background-color: #fff;
+	padding: 5px 10px 5px 5px;
 }
 
-.lb-menu {
-	float: none;
-}
-
-.lb-menu li:before {
-	content: "";
-}
-
-.makeMenu.lb-menu li a {
-	color: #000;
-}
-
-.lb-image_edit,
-.lb-image_link {
-	padding-right: 5px;
-}
-
-.lb-menu > li:hover > ul {
-	top: 28px !important;
+.lb-menu li {
+	border: 0;
 }
 
 [dir=rtl] .lb-menu > li {
@@ -2545,15 +2560,15 @@ a.showit > span {
 }
 
 .list_value_wrap .lb-image_edit {
-	background: url(../images/image_edit.png) no-repeat 50% 20%;
+	background: url(images/image_edit.png) no-repeat 50% 20%;
 }
 
 .list_value_wrap .lb-image_link {
-	background: url(../images/image_link.png) no-repeat 50% 20%;
+	background: url(images/image_link.png) no-repeat 50% 20%;
 }
 
 .list_value_wrap .lb-image_view {
-	background: url(../images/image_view.png) no-repeat 50% 20%;
+	background: url(images/image_view.png) no-repeat 50% 20%;
 }
 
 /* ============== login.php ======================= */
@@ -3112,7 +3127,7 @@ dd .deletelink {
 .editicon,
 .copyicon,
 .deleteicon {
-	background: transparent url(../images/general_sprite.png) no-repeat left 0;
+	background: transparent url(images/general_sprite.png) no-repeat left 0;
 	display: block;
 }
 
@@ -3283,11 +3298,6 @@ span.link_text {
 .ui-widget-header {
 	border: 1px solid #fff;
 	font-weight: 400;
-}
-
-.ui-state-default .ui-icon,
-.ui-state-active .ui-icon {
-	background-image: url(../../jquery-ui-1.11.2/images/ui-icons_222222_256x240.png);
 }
 
 .ui-state-hover a,
@@ -3588,7 +3598,7 @@ span.link_text {
 }
 
 .loading-image {
-	background: transparent url(../images/loading.gif) 50% 50% no-repeat;
+	background: transparent url(images/loading.gif) 50% 50% no-repeat;
 	height: 50px;
 	margin: 50px;
 }
@@ -3697,12 +3707,12 @@ span.link_text {
 
 .separator-hidden:after,
 [dir=rtl] .separator-visible:after {
-	background: url(../images/general_sprite.png) no-repeat -26px 100px;
+	background: url(images/general_sprite.png) no-repeat -26px 100px;
 }
 
 .separator-visible:after,
 [dir=rtl] .separator-hidden:after {
-	background: url(../images/general_sprite.png) no-repeat -1px 100px;
+	background: url(images/general_sprite.png) no-repeat -1px 100px;
 }
 
 /* Sidebar content items */
@@ -3784,7 +3794,7 @@ span.link_text {
 
 .sb_indi_surname_li,
 .sb_fam_surname_li {
-	list-style-image: url(../images/plus.png);
+	list-style-image: url(images/plus.png);
 }
 
 /* Extra Info */
@@ -4047,7 +4057,7 @@ span.link_text {
 	form,
 	#backprint,
 	#sidebar,
-	#main-menu,
+	.primary-menu,
 	#separator,
 	header,
 	footer,
@@ -4102,536 +4112,536 @@ span.link_text {
 .icon-add {
 	width: 14px;
 	height: 15px;
-	background-image: url(../images/add.png);
+	background-image: url(images/add.png);
 }
 
 .icon-admin {
 	width: 22px;
 	height: 22px;
-	background-image: url(../images/admin.png);
+	background-image: url(images/admin.png);
 }
 
 .icon-bing {
 	width: 16px;
 	height: 16px;
-	background-image: url(../images/bing.png);
+	background-image: url(images/bing.png);
 }
 
 .icon-button_addmedia {
 	width: 18px;
 	height: 16px;
-	background-image: url(../images/buttons/addmedia.png);
+	background-image: url(images/buttons/addmedia.png);
 }
 
 .icon-button_addnote {
 	width: 17px;
 	height: 15px;
-	background-image: url(../images/buttons/addnote.png);
+	background-image: url(images/buttons/addnote.png);
 }
 
 .icon-button_addrepository {
 	width: 15px;
 	height: 15px;
-	background-image: url(../images/buttons/addrepository.png);
+	background-image: url(images/buttons/addrepository.png);
 }
 
 .icon-button_addsource {
 	width: 18px;
 	height: 16px;
-	background-image: url(../images/buttons/addsource.png);
+	background-image: url(images/buttons/addsource.png);
 }
 
 .icon-button_calendar {
 	width: 19px;
 	height: 15px;
-	background-image: url(../images/buttons/calendar.png);
+	background-image: url(images/buttons/calendar.png);
 }
 
 .icon-button_family {
 	width: 14px;
 	height: 15px;
-	background-image: url(../images/buttons/family.png);
+	background-image: url(images/buttons/family.png);
 }
 
 .icon-button_find_facts {
 	width: 20px;
 	height: 20px;
-	background-image: url(../images/buttons/find_facts.png);
+	background-image: url(images/buttons/find_facts.png);
 }
 
 .icon-button_head {
 	width: 12px;
 	height: 18px;
-	background-image: url(../images/buttons/head.png);
+	background-image: url(images/buttons/head.png);
 }
 
 .icon-button_indi {
 	width: 11px;
 	height: 15px;
-	background-image: url(../images/buttons/indi.png);
+	background-image: url(images/buttons/indi.png);
 }
 
 .icon-button_keyboard {
 	width: 30px;
 	height: 15px;
-	background-image: url(../images/buttons/keyboard.png);
+	background-image: url(images/buttons/keyboard.png);
 }
 
 .icon-button_media {
 	width: 18px;
 	height: 16px;
-	background-image: url(../images/buttons/media.png);
+	background-image: url(images/buttons/media.png);
 }
 
 .icon-button_note {
 	width: 17px;
 	height: 15px;
-	background-image: url(../images/buttons/note.png);
+	background-image: url(images/buttons/note.png);
 }
 
 .icon-button_place {
 	width: 15px;
 	height: 15px;
-	background-image: url(../images/buttons/place.png);
+	background-image: url(images/buttons/place.png);
 }
 
 .icon-button_repository {
 	width: 15px;
 	height: 15px;
-	background-image: url(../images/buttons/repository.png);
+	background-image: url(images/buttons/repository.png);
 }
 
 .icon-button_source {
 	width: 18px;
 	height: 16px;
-	background-image: url(../images/buttons/source.png);
+	background-image: url(images/buttons/source.png);
 }
 
 .icon-cfamily {
 	width: 32px;
 	height: 32px;
-	background-image: url(../images/cfamily.png);
+	background-image: url(images/cfamily.png);
 }
 
 .icon-childless {
 	width: 25px;
 	height: 25px;
-	background-image: url(../images/childless.png);
+	background-image: url(images/childless.png);
 }
 
 .icon-children {
 	width: 16px;
 	height: 16px;
-	background-image: url(../images/children.png);
+	background-image: url(images/children.png);
 }
 
 .icon-clippings {
 	width: 32px;
 	height: 32px;
-	background-image: url(../images/clippings.png);
+	background-image: url(images/clippings.png);
 }
 
 .icon-darrow {
 	width: 20px;
 	height: 20px;
-	background-image: url(../images/darrow.png);
+	background-image: url(images/darrow.png);
 }
 
 a.icon-darrow:hover {
 	width: 20px;
 	height: 20px;
-	background-image: url(../images/darrow2.png);
+	background-image: url(images/darrow2.png);
 }
 
 .icon-ddarrow {
 	width: 20px;
 	height: 20px;
-	background-image: url(../images/ddarrow.png);
+	background-image: url(images/ddarrow.png);
 }
 
 .icon-edit_indi {
 	width: 22px;
 	height: 22px;
-	background-image: url(../images/edit_indi.png);
+	background-image: url(images/edit_indi.png);
 }
 
 .icon-fam-list {
 	width: 32px;
 	height: 32px;
-	background-image: url(../images/sfamily.png);
+	background-image: url(images/sfamily.png);
 }
 
 .icon-googlemaps {
 	width: 16px;
 	height: 16px;
-	background-image: url(../images/googlemaps.png);
+	background-image: url(images/googlemaps.png);
 }
 
 .icon-help {
 	cursor: help;
 	width: 15px;
 	height: 15px;
-	background-image: url(../images/help.png);
+	background-image: url(images/help.png);
 }
 
 .icon-indi-list {
 	width: 32px;
 	height: 32px;
-	background-image: url(../images/indis.png);
+	background-image: url(images/indis.png);
 }
 
 .icon-indis {
 	width: 22px;
 	height: 25px;
-	background-image: url(../images/mypage.png);
+	background-image: url(images/mypage.png);
 }
 
 .icon-larrow {
 	width: 20px;
 	height: 20px;
-	background-image: url(../images/larrow.png);
+	background-image: url(images/larrow.png);
 }
 
 a.icon-larrow:hover {
 	width: 20px;
 	height: 20px;
-	background-image: url(../images/larrow2.png);
+	background-image: url(images/larrow2.png);
 }
 
 .icon-ldarrow {
 	width: 20px;
 	height: 20px;
-	background-image: url(../images/ldarrow.png);
+	background-image: url(images/ldarrow.png);
 }
 
 .icon-lifespan-chunk {
 	width: 50px;
 	height: 37px;
-	background-image: url(../images/lifespan-chunk.png);
+	background-image: url(images/lifespan-chunk.png);
 }
 
 .icon-loading-small {
 	width: 16px;
 	height: 16px;
-	background-image: url(../images/indicator.gif);
+	background-image: url(images/indicator.gif);
 }
 
 .icon-loading-large {
 	width: 32px;
 	height: 32px;
-	background-image: url(../images/loading.gif);
+	background-image: url(images/loading.gif);
 }
 
 .icon-lsdnarrow {
 	width: 48px;
 	height: 48px;
-	background-image: url(../images/lifespan-down.png);
+	background-image: url(images/lifespan-down.png);
 }
 
 .icon-lsltarrow {
 	width: 48px;
 	height: 48px;
-	background-image: url(../images/lifespan-left.png);
+	background-image: url(images/lifespan-left.png);
 }
 
 .icon-lsrtarrow {
 	width: 48px;
 	height: 48px;
-	background-image: url(../images/lifespan-right.png);
+	background-image: url(images/lifespan-right.png);
 }
 
 .icon-lsuparrow {
 	width: 48px;
 	height: 48px;
-	background-image: url(../images/lifespan-up.png);
+	background-image: url(images/lifespan-up.png);
 }
 
 .icon-media {
 	width: 32px;
 	height: 32px;
-	background-image: url(../images/media.png);
+	background-image: url(images/media.png);
 }
 
 .icon-media-list {
 	width: 32px;
 	height: 32px;
-	background-image: url(../images/media.png);
+	background-image: url(images/media.png);
 }
 
 .icon-media-next {
 	width: 20px;
 	height: 20px;
-	background-image: url(../images/rdarrow.png);
+	background-image: url(images/rdarrow.png);
 }
 
 .icon-media-play {
 	width: 20px;
 	height: 20px;
-	background-image: url(../images/rarrow.png);
+	background-image: url(images/rarrow.png);
 }
 
 .icon-media-prev {
 	width: 20px;
 	height: 20px;
-	background-image: url(../images/ldarrow.png);
+	background-image: url(images/ldarrow.png);
 }
 
 .icon-media-shuffle {
 	width: 10px;
 	height: 10px;
-	background-image: url(../images/reorder.png);
+	background-image: url(images/reorder.png);
 }
 
 .icon-media-stop {
 	width: 20px;
 	height: 20px;
-	background-image: url(../images/stop.png);
+	background-image: url(images/stop.png);
 }
 
 .icon-minus {
 	width: 11px;
 	height: 11px;
-	background-image: url(../images/minus.png);
+	background-image: url(images/minus.png);
 }
 
 .icon-mypage {
 	width: 22px;
 	height: 25px;
-	background-image: url(../images/mypage.png);
+	background-image: url(images/mypage.png);
 }
 
 .icon-note {
 	width: 33px;
 	height: 35px;
-	background-image: url(../images/notes.png);
+	background-image: url(images/notes.png);
 }
 
 .icon-note-list {
 	width: 33px;
 	height: 35px;
-	background-image: url(../images/notes.png);
+	background-image: url(images/notes.png);
 }
 
 .icon-osm {
 	width: 16px;
 	height: 16px;
-	background-image: url(../images/osm.png);
+	background-image: url(images/osm.png);
 }
 
 .icon-patriarch {
 	width: 32px;
 	height: 32px;
-	background-image: url(../images/patriarch.png);
+	background-image: url(images/patriarch.png);
 }
 
 .icon-pedigree {
 	width: 22px;
 	height: 25px;
-	background-image: url(../images/icon-pedigree.png);
+	background-image: url(images/icon-pedigree.png);
 }
 
 .icon-place {
 	width: 32px;
 	height: 17px;
-	background-image: url(../images/place.png);
+	background-image: url(images/place.png);
 }
 
 .icon-plus {
 	width: 11px;
 	height: 11px;
-	background-image: url(../images/plus.png);
+	background-image: url(images/plus.png);
 }
 
 .icon-rarrow {
 	width: 20px;
 	height: 20px;
-	background-image: url(../images/rarrow.png);
+	background-image: url(images/rarrow.png);
 }
 
 a.icon-rarrow:hover {
 	width: 20px;
 	height: 20px;
-	background-image: url(../images/rarrow2.png);
+	background-image: url(images/rarrow2.png);
 }
 
 .icon-rdarrow {
 	width: 20px;
 	height: 20px;
-	background-image: url(../images/rdarrow.png);
+	background-image: url(images/rdarrow.png);
 }
 
 .icon-reminder {
 	width: 15px;
 	height: 12px;
-	background-image: url(../images/reminder.png);
+	background-image: url(images/reminder.png);
 }
 
 .icon-remove {
 	width: 16px;
 	height: 16px;
-	background-image: url(../images/delete.png);
+	background-image: url(images/delete.png);
 }
 
 .icon-repo-list {
 	width: 22px;
 	height: 22px;
-	background-image: url(../images/repository.png);
+	background-image: url(images/repository.png);
 }
 
 .icon-repository {
 	width: 22px;
 	height: 22px;
-	background-image: url(../images/repository.png);
+	background-image: url(images/repository.png);
 }
 
 .icon-resn-confidential {
 	width: 16px;
 	height: 16px;
-	background-image: url(../images/resn_confidential.png);
+	background-image: url(images/resn_confidential.png);
 }
 
 .icon-resn-locked {
 	width: 16px;
 	height: 16px;
-	background-image: url(../images/resn_locked.png);
+	background-image: url(images/resn_locked.png);
 }
 
 .icon-resn-none {
 	width: 16px;
 	height: 16px;
-	background-image: url(../images/resn_none.png);
+	background-image: url(images/resn_none.png);
 }
 
 .icon-resn-privacy {
 	width: 16px;
 	height: 16px;
-	background-image: url(../images/resn_privacy.png);
+	background-image: url(images/resn_privacy.png);
 }
 
 .icon-rings {
 	width: 9px;
 	height: 11px;
-	background-image: url(../images/rings.png);
+	background-image: url(images/rings.png);
 }
 
 .icon-search {
 	width: 16px;
 	height: 16px;
-	background-image: url(../images/go.png);
+	background-image: url(images/go.png);
 }
 
 .icon-selected {
 	width: 12px;
 	height: 12px;
-	background-image: url(../images/selected.png);
+	background-image: url(images/selected.png);
 }
 
 .icon-sex_f_15x15 {
 	width: 15px;
 	height: 15px;
-	background-image: url(../images/sex_f_15x15.png);
+	background-image: url(images/sex_f_15x15.png);
 }
 
 .icon-sex_f_9x9 {
 	width: 9px;
 	height: 9px;
-	background-image: url(../images/sex_f_9x9.png);
+	background-image: url(images/sex_f_9x9.png);
 }
 
 .icon-sex_m_15x15 {
 	width: 15px;
 	height: 15px;
-	background-image: url(../images/sex_m_15x15.png);
+	background-image: url(images/sex_m_15x15.png);
 }
 
 .icon-sex_m_9x9 {
 	width: 9px;
 	height: 9px;
-	background-image: url(../images/sex_m_9x9.png);
+	background-image: url(images/sex_m_9x9.png);
 }
 
 .icon-sex_u_15x15 {
 	width: 15px;
 	height: 15px;
-	background-image: url(../images/sex_u_15x15.png);
+	background-image: url(images/sex_u_15x15.png);
 }
 
 .icon-sex_u_9x9 {
 	width: 9px;
 	height: 9px;
-	background-image: url(../images/sex_u_9x9.png);
+	background-image: url(images/sex_u_9x9.png);
 }
 
 .icon-sfamily {
 	width: 22px;
 	height: 22px;
-	background-image: url(../images/icon-sfamily.png);
+	background-image: url(images/icon-sfamily.png);
 }
 
 .icon-source {
 	width: 32px;
 	height: 32px;
-	background-image: url(../images/source.png);
+	background-image: url(images/source.png);
 }
 
 .icon-source-list {
 	width: 32px;
 	height: 32px;
-	background-image: url(../images/source.png);
+	background-image: url(images/source.png);
 }
 
 .icon-target {
 	width: 15px;
 	height: 15px;
-	background-image: url(../images/buttons/target.png);
+	background-image: url(images/buttons/target.png);
 }
 
 .icon-tree {
 	width: 20px;
 	height: 20px;
-	background-image: url(../images/gedcom.png);
+	background-image: url(images/gedcom.png);
 }
 
 .icon-uarrow {
 	width: 20px;
 	height: 20px;
-	background-image: url(../images/uarrow.png);
+	background-image: url(images/uarrow.png);
 }
 
 a.icon-uarrow:hover {
 	width: 20px;
 	height: 20px;
-	background-image: url(../images/uarrow2.png);
+	background-image: url(images/uarrow2.png);
 }
 
 .icon-udarrow {
 	width: 20px;
 	height: 20px;
-	background-image: url(../images/udarrow.png);
+	background-image: url(images/udarrow.png);
 }
 
 .icon-user_add {
 	width: 22px;
 	height: 25px;
-	background-image: url(../images/user_add.png);
+	background-image: url(images/user_add.png);
 }
 
 .icon-warning {
 	width: 17px;
 	height: 17px;
-	background-image: url(../images/warning.png);
+	background-image: url(images/warning.png);
 }
 
 .icon-webtrees {
 	width: 100px;
 	height: 21px;
-	background-image: url(../images/webtrees.png);
+	background-image: url(images/webtrees.png);
 }
 
 .icon-wiki {
 	width: 16px;
 	height: 16px;
-	background-image: url(../images/w_button.png);
+	background-image: url(images/w_button.png);
 }
 
 /* ios on click workaround */
@@ -4642,19 +4652,19 @@ a.icon-uarrow:hover {
 .icon-zoomin {
 	width: 25px;
 	height: 25px;
-	background-image: url(../images/zoomin.png);
+	background-image: url(images/zoomin.png);
 }
 
 .icon-zoomout {
 	width: 25px;
 	height: 25px;
-	background-image: url(../images/zoomout.png);
+	background-image: url(images/zoomout.png);
 }
 
 [class^="icon-mime-"],
 [class*=" icon-mime-"] {
 	display: inline-block;
-	background: transparent url(../images/icon-mime-sprite.png) no-repeat;
+	background: transparent url(images/icon-mime-sprite.png) no-repeat;
 	width: 48px;
 	height: 48px;
 }
@@ -4779,38 +4789,38 @@ a.icon-uarrow:hover {
 .icon-silhouette-F {
 	width: 37px;
 	height: 45px;
-	background-image: url(../images/silhouette_female_small.png);
+	background-image: url(images/silhouette_female_small.png);
 }
 
 .icon-silhouette-M {
 	width: 37px;
 	height: 45px;
-	background-image: url(../images/silhouette_male_small.png);
+	background-image: url(images/silhouette_male_small.png);
 }
 
 .icon-silhouette-U {
 	width: 37px;
 	height: 45px;
-	background-image: url(../images/silhouette_unknown_small.png);
+	background-image: url(images/silhouette_unknown_small.png);
 }
 
 /* Silhouettes on individual pages */
 #indi_mainimage .icon-silhouette-F {
 	width: 99px;
 	height: 106px;
-	background-image: url(../images/silhouette_female.png);
+	background-image: url(images/silhouette_female.png);
 }
 
 #indi_mainimage .icon-silhouette-M {
 	width: 99px;
 	height: 99px;
-	background-image: url(../images/silhouette_male.png);
+	background-image: url(images/silhouette_male.png);
 }
 
 #indi_mainimage .icon-silhouette-U {
 	width: 100px;
 	height: 97px;
-	background-image: url(../images/silhouette_unknown.png);
+	background-image: url(images/silhouette_unknown.png);
 }
 
 /* Edit interface pop-ups*/
@@ -5081,7 +5091,7 @@ a.icon-uarrow:hover {
 	position: absolute;
 	bottom: 0;
 	left: 0;
-	background: url(../images/controls.png) no-repeat -75px 0;
+	background: url(images/controls.png) no-repeat -75px 0;
 	width: 25px;
 	height: 25px;
 	text-indent: -9999px;
@@ -5097,7 +5107,7 @@ a.icon-uarrow:hover {
 	position: absolute;
 	bottom: 0;
 	left: 27px;
-	background: url(../images/controls.png) no-repeat -50px 0;
+	background: url(images/controls.png) no-repeat -50px 0;
 	width: 25px;
 	height: 25px;
 	text-indent: -9999px;
@@ -5128,7 +5138,7 @@ a.icon-uarrow:hover {
 	position: absolute;
 	bottom: 0;
 	right: 0;
-	background: url(../images/controls.png) no-repeat -25px 0;
+	background: url(images/controls.png) no-repeat -25px 0;
 	width: 25px;
 	height: 25px;
 	text-indent: -9999px;

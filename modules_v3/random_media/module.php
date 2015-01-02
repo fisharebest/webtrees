@@ -339,8 +339,8 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 			<td class="width33"><input type="checkbox" value="yes"
 				name="filter_wav"
 				<?php if ($filters['wav']) echo " checked=\"checked\""; ?>>&nbsp;&nbsp;wav&nbsp;&nbsp;</td>
-					<td class="width33">&nbsp;</td>
-					<td class="width33">&nbsp;</td>
+					<td class="width33"></td>
+					<td class="width33"></td>
 				</tr>
 			</table>
 			<br>

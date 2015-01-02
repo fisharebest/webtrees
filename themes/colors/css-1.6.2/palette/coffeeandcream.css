@@ -22,17 +22,17 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
-/* Ash Palette */
+/* Coffeeandcream Palette */
 
 /* Header */
-#header {
-	background: #5d6779;
-	color: #fff;
+header {
+	background: #d4c7a7;
+	color: #553e2f;
 }
 
 .title {
 	text-decoration: none;
-	color: #fff;
+	color: #553e2f;
 }
 
 /* Tbls and menus  */
@@ -43,28 +43,28 @@
 #lightbox_content span a, #lightbox_content span a:hover,
 #separator:after, #family_nav,
 .ui-state-active a:link, .ui-state-active a:visited {
-	background-color: #9da5b4;
+	background-color: #93724f;
 	color: #fff;
 }
 
 .ui-state-active, .ui-widget-content .ui-state-active {
-	background: none repeat scroll 0 0 #9da5b4;
+	background: none repeat scroll 0 0 #93724f;
 }
 
 /* Top Menu  */
-#main-menu {
-	background: #2a2b2d;
+.primary-menu {
+	background: #93724f;
 
 }
 
 /* Base */
 #indi_header h3,
 .blockcontent, #search, #search-page-table .value, #edituser-table .value,
-.makeMenu ul li a:hover, .ui-widget-header, #save-cancel,
+.secondary-menu ul li a:hover, .ui-widget-header, #save-cancel,
 .optionbox, #indi_header .ui-state-active a:link,
 .list_value, .list_value_wrap, .list_value_wrap a,
 #login-form, #new_passwd_form, #register-form, .facts_value  {
-	background: #ededee;
+	background: #f4ead1;
 }
 
 /* Alerts */
@@ -73,8 +73,8 @@
 }
 
 /* Light Text */
-.makeMenu li a {
-	color: #fff;
+.secondary-menu li a {
+	color: #553e2f;
 }
 
 .subheaders {

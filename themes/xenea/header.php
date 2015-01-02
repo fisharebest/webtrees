@@ -62,12 +62,12 @@ $this
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
 	<![endif]-->
 </head>
-<body id="body">
+<body>
 	<?php if ($view !== 'simple') { ?>
 	<header>
-		<div id="header">
+		<div class="header-upper">
 			<h1><?php echo WT_TREE_TITLE; ?></h1>
-			<div class="hsearch">
+			<div class="header-search">
 				<form action="search.php" method="post" role="search">
 					<input type="hidden" name="action" value="general">
 					<input type="hidden" name="ged" value="<?php echo WT_GEDCOM; ?>">
@@ -78,39 +78,25 @@ $this
 			</div>
 			<div style="margin:auto;padding:10px;width:300px;"><div class="g-follow" data-annotation="bubble" data-height="20" data-href="//plus.google.com/u/0/106237023746635567418" data-rel="publisher"></div></div>
 		</div>
-		<div id="header-user-links">
-			<div id="theme-menu">
-				<ul class="makeMenu">
-					<?php echo WT_MenuBar::getThemeMenu(); ?>
-				</ul>
-			</div>
-			<div id="fav-menu">
-				<ul class="makeMenu">
-					<?php echo WT_MenuBar::getFavoritesMenu(); ?>
-				</ul>
-			</div>
-			<div id="login-menu">
-				<ul class="makeMenu">
-					<?php
-					if (Auth::check()) {
-						echo '<li><a href="edituser.php">', WT_Filter::escapeHtml(Auth::user()->getRealName()), '</a></li> <li>', logout_link(), '</li>';
-						if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
-							echo ' <li><a href="#" onclick="window.open(\'edit_changes.php\', \'_blank\', chan_window_specs); return false;" style="color:red;">', WT_I18N::translate('Pending changes'), '</a></li>';
-						}
-					} else {
-						echo '<li>', login_link(), '</li> ';
+		<div class="header-lower">
+			<ul class="secondary-menu" role="menubar">
+				<?php echo WT_MenuBar::getFavoritesMenu(); ?>
+				<?php echo WT_MenuBar::getThemeMenu(); ?>
+				<?php
+				if (Auth::check()) {
+					echo '<li><a href="edituser.php">', WT_Filter::escapeHtml(Auth::user()->getRealName()), '</a></li> <li>', logout_link(), '</li>';
+					if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
+						echo ' <li><a href="#" onclick="window.open(\'edit_changes.php\', \'_blank\', chan_window_specs); return false;" style="color:red;">', WT_I18N::translate('Pending changes'), '</a></li>';
 					}
-					?>
-				</ul>
-			</div>
-			<div id="lang-menu" class="makeMenu">
-				<ul class="makeMenu">
-					<?php echo WT_MenuBar::getLanguageMenu(); ?>
-				</ul>
-			</div>
+				} else {
+					echo '<li>', login_link(), '</li> ';
+				}
+				?>
+				<?php echo WT_MenuBar::getLanguageMenu(); ?>
+			</ul>
 		</div>
 		<nav>
-			<ul id="main-menu" role="menubar">
+			<ul class="primary-menu" role="menubar">
 				<?php echo WT_MenuBar::getGedcomMenu();   ?>
 				<?php echo WT_MenuBar::getMyPageMenu();   ?>
 				<?php echo WT_MenuBar::getChartsMenu();   ?>

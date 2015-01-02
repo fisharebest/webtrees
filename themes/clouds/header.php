@@ -77,50 +77,43 @@ foreach (WT_MenuBar::getModuleMenus() as $menu) {
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
 	<![endif]-->
 </head>
-<body id="body">
+<body>
 	<?php if ($view !== 'simple') { ?>
 	<header>
-		<div id="header">
-			<h1><?php echo WT_TREE_TITLE; ?></h1>
-			<div class="hsearch">
-				<form style="display:inline;" action="search.php" method="post" role="search">
-					<input type="hidden" name="action" value="general">
-					<input type="hidden" name="ged" value="<?php echo WT_GEDCOM; ?>">
-					<input type="hidden" name="topsearch" value="yes">
-					<input type="search" name="query" size="15" placeholder="<?php echo WT_I18N::translate('Search'); ?>">
-					<input class="search-icon" type="image" src="<?php echo $WT_IMAGES['search']; ?>" alt="<?php echo WT_I18N::translate('Search'); ?>" title="<?php echo WT_I18N::translate('Search'); ?>">
-				</form>
-			</div>
+		<div class="header-logo"></div>
+		<form class="header-search" style="display:inline;" action="search.php" method="post" role="search">
+			<input type="hidden" name="action" value="general">
+			<input type="hidden" name="ged" value="<?php echo WT_GEDCOM; ?>">
+			<input type="hidden" name="topsearch" value="yes">
+			<input type="search" name="query" size="15" placeholder="<?php echo WT_I18N::translate('Search'); ?>">
+			<input class="search-icon" type="image" src="<?php echo $WT_IMAGES['search']; ?>" alt="<?php echo WT_I18N::translate('Search'); ?>" title="<?php echo WT_I18N::translate('Search'); ?>">
+		</form>
+		<ul class="secondary-menu">
 		<div style="margin:auto;padding:10px;width:300px;"><div class="g-follow" data-annotation="bubble" data-height="20" data-href="//plus.google.com/u/0/106237023746635567418" data-rel="publisher"></div></div>
-		</div>
-		<div id="topMenu">
-			<nav>
-				<ul id="main-menu">
-					<?php
-					foreach (array_filter($menu_items) as $menu) {
-						echo getMenuAsCustomList($menu);
-					}
-					?>
-				</ul>
-			</nav>
-			<div id="header-user-links">
-				<ul class="makeMenu">
-					<?php
-					if (Auth::check()) {
-						echo '<li><a href="edituser.php" class="link">', WT_Filter::escapeHtml(Auth::user()->getRealName()), '</a></li><li>', logout_link(), '</li>';
-						if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
-							echo ' <li><a href="#" onclick="window.open(\'edit_changes.php\',\'_blank\', chan_window_specs); return false;" style="color:red;">', WT_I18N::translate('Pending changes'), '</a></li>';
-						}
-					} else {
-						echo '<li>', login_link(),'</li>';
-					}
-					?>
-					<?php echo WT_MenuBar::getFavoritesMenu(); ?>
-					<?php echo WT_MenuBar::getLanguageMenu(); ?>
-					<?php echo WT_MenuBar::getThemeMenu(); ?>
-				</ul>
-			</div>
-		</div>
+			<?php
+			if (Auth::check()) {
+				echo '<li><a href="edituser.php" class="link">', WT_Filter::escapeHtml(Auth::user()->getRealName()), '</a></li><li>', logout_link(), '</li>';
+				if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
+					echo ' <li><a href="#" onclick="window.open(\'edit_changes.php\',\'_blank\', chan_window_specs); return false;" style="color:red;">', WT_I18N::translate('Pending changes'), '</a></li>';
+				}
+			} else {
+				echo '<li>', login_link(),'</li>';
+			}
+			?>
+			<?php echo WT_MenuBar::getFavoritesMenu(); ?>
+			<?php echo WT_MenuBar::getLanguageMenu(); ?>
+			<?php echo WT_MenuBar::getThemeMenu(); ?>
+		</ul>
+		<h1><?php echo WT_TREE_TITLE; ?></h1>
+		<nav>
+			<ul class="primary-menu">
+				<?php
+				foreach (array_filter($menu_items) as $menu) {
+					echo getMenuAsCustomList($menu);
+				}
+				?>
+			</ul>
+		</nav>
 	</header>
 	<?php } ?>
 	<?php echo WT_FlashMessages::getHtmlMessages(); ?>

@@ -445,7 +445,7 @@ if ($type == "facts") {
 	<?php echo '</script>';
 	echo '<div id="layDefinedTags"><table id="tabDefinedTags">
 		<thead><tr>
-			<th>&nbsp;</th>
+			<th></th>
 			<th>', WT_I18N::translate('Tag'), '</th>
 			<th>', WT_I18N::translate('Description'), '</th>
 		</tr></thead>

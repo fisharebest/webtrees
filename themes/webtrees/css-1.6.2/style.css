@@ -918,19 +918,25 @@ header h1 {
 	float: right;
 }
 
-.header_img {
+.header-logo {
 	float: left;
+	width: 242px;
+	height: 50px;
 }
 
-[dir=rtl] .header_img {
+.header-logo:after {
+	content: url(images/webtrees.png);
+}
+
+[dir=rtl] .header-logo {
 	float: right;
 }
 
-.header_search {
+.header-search {
 	float: right;
 }
 
-[dir=rtl] .header_search {
+[dir=rtl] .header-search {
 	float: left;
 }
 
@@ -1376,6 +1382,22 @@ td.descriptionbox a {
 }
 
 /* ============== medialist.php ======================= */
+.makeMenu li ul {
+	border: thin solid #AAA;
+	position: absolute;
+	margin: 0;
+}
+
+.makeMenu, .makeMenu li ul {
+	padding: 1px;
+}
+
+.makeMenu li {
+	display: inline;
+	position: relative;
+	white-space: nowrap;
+}
+
 .lb-menu {
 	display: inline-block;
 	margin: 0;
@@ -1384,6 +1406,7 @@ td.descriptionbox a {
 .lb-menu ul {
 	display: block;
 	list-style-type: none;
+	margin: 0;
 }
 
 .lb-menu > li {
@@ -1410,14 +1433,16 @@ td.descriptionbox a {
 }
 
 .lb-menu li a {
-	padding-top: 24px;
+	padding: 24px 10px 1px 5px;
 }
 
 .lb-menu li li a {
-	padding: 1px 10px 1px 5px;
+	padding: 0;
+	background-color: #fff;
+	padding: 5px 10px 5px 5px;
 }
 
-.makeMenu.lb-menu li {
+.lb-menu li {
 	border: 0;
 }
 
@@ -2122,8 +2147,8 @@ div.faq_body {
 /* ======= Header menu styles ========== */
 
 /* Set stack level for top two header menu rows */
-.makeMenu ul,
-#main-menu ul {
+.secondary-menu ul,
+.primary-menu ul {
 	z-index: 210;
 }
 
@@ -2136,27 +2161,27 @@ header nav {
 	clear: both;
 }
 
-#main-menu,
-#main-menu ul {
+.primary-menu,
+.primary-menu ul {
 	margin: 0;
 	list-style-type: none;
 }
 
-#main-menu {
+.primary-menu {
 	margin: 0 auto;
 	display: table;
 }
 
-#main-menu li {
+.primary-menu li {
 	float: left;
 	position: relative;
 }
 
-#main-menu li li {
+.primary-menu li li {
 	clear: both;
 }
 
-#main-menu li:hover > ul {
+.primary-menu li:hover > ul {
 	display: block;
 	position: absolute;
 	top: 0;
@@ -2164,19 +2189,19 @@ header nav {
 	right: auto;
 }
 
-#main-menu > li:hover > ul {
+.primary-menu > li:hover > ul {
 	left: 0;
 	right: auto;
 	top: 66px;
 }
 
-#main-menu a {
+.primary-menu a {
 	display: block;
 	white-space: nowrap;
 	overflow: hidden;
 }
 
-#main-menu ul {
+.primary-menu ul {
 	position: absolute;
 	display: none;
 	background: #fff;
@@ -2184,13 +2209,13 @@ header nav {
 	padding: 5px 0;
 }
 
-#main-menu li a {
+.primary-menu li a {
 	margin: auto;
 	padding-top: 52px;
 	width: 100%;
 }
 
-#main-menu li li a {
+.primary-menu li li a {
 	display: block;
 	position: relative;
 	float: left;
@@ -2200,7 +2225,7 @@ header nav {
 }
 
 /* Menu icons */
-#main-menu > li {
+.primary-menu > li {
 	background-image: url(images/large_menu_sprite.png);
 	background-repeat: no-repeat;
 	min-width: 80px;
@@ -2209,7 +2234,7 @@ header nav {
 	text-align: center;
 }
 
-#main-menu li li {
+.primary-menu li li {
 	background-image: url(images/small_menu_sprite.png);
 	background-repeat: no-repeat;
 	height: 24px;
@@ -2222,25 +2247,25 @@ header nav {
 
 /* Reverse left and right on RTL pages */
 
-[dir=rtl] #main-menu li {
+[dir=rtl] .primary-menu li {
 	float: right;
 }
 
-[dir=rtl] #main-menu li:hover > ul {
+[dir=rtl] .primary-menu li:hover > ul {
 	right: 100%;
 	left: auto;
 }
 
-[dir=rtl] #main-menu > li:hover > ul {
+[dir=rtl] .primary-menu > li:hover > ul {
 	left: auto;
 	right: 0;
 }
 
-[dir=rtl] #main-menu li li {
+[dir=rtl] .primary-menu li li {
 	text-align: right;
 }
 
-[dir=rtl] #main-menu li li a {
+[dir=rtl] .primary-menu li li a {
 	float: right;
 	padding: 1px 5px 1px 10px;
 }
@@ -2938,62 +2963,59 @@ header nav {
 }
 
 /* ========= Login|Favorites|Theme|Language menu items ========== */
-#header-user-links {
-	float: right;
-	white-space: nowrap;
-	margin: 20px 10px 0 0;
-}
-
-.makeMenu li ul {
+.secondary-menu li ul {
 	left: auto;
 	right: 0;
 }
 
-.makeMenu a {
+.secondary-menu a {
 	background: none;
 	display: inline;
 }
 
-.makeMenu {
+.secondary-menu {
+	float: right;
+	white-space: nowrap;
+	margin: 20px 10px 0 0;
 	font-weight: bold;
 }
 
-.makeMenu li {
+.secondary-menu li {
 	display: inline;
 	position: relative;
 	white-space: nowrap;
-	border-left: 2px solid;
+	border-left: 2px solid #ccc;
 	padding: 0 5px;
 }
 
-.makeMenu li:first-child,
-.makeMenu li ul li {
+.secondary-menu li:first-child,
+.secondary-menu li ul li {
 	border: 0;
 }
 
-.makeMenu li ul {
+.secondary-menu li ul {
 	display: none;
 	font-weight: normal;
 	position: absolute;
 	top: 1.1em;
 	background-color: #fff;
 	border: thin solid #aaa;
+	margin: 0;
 }
 
-.makeMenu li ul li {
+.secondary-menu li ul li {
 	padding: 2px;
 	display: block;
 	text-align: left;
 }
 
-.makeMenu,
-.makeMenu li ul {
+.secondary-menu,
+.secondary-menu li ul {
 	list-style: none;
-	margin: 0;
 	padding: 1px;
 }
 
-.makeMenu li:hover > ul {
+.secondary-menu li:hover > ul {
 	display: block;
 }
 
@@ -3008,27 +3030,27 @@ header nav {
 	margin: 20px 0 0 10px;
 }
 
-[dir=rtl] #header-user-links .makeMenu li ul {
+[dir=rtl] #header-user-links .secondary-menu li ul {
 	left: 0;
 	right: auto;
 }
 
-[dir=rtl] .makeMenu li ul {
+[dir=rtl] .secondary-menu li ul {
 	left: auto;
 	right: 0;
 }
 
-[dir=rtl] .makeMenu li ul li {
+[dir=rtl] .secondary-menu li ul li {
 	text-align: right;
 }
 
-[dir=rtl] .makeMenu li {
+[dir=rtl] .secondary-menu li {
 	border-left: none;
 	border-right: 2px solid;
 }
 
-[dir=rtl] .makeMenu li:first-child,
-[dir=rtl] .makeMenu li ul li {
+[dir=rtl] .secondary-menu li:first-child,
+[dir=rtl] .secondary-menu li ul li {
 	border: 0;
 }
 
@@ -3392,6 +3414,7 @@ dd .deletelink {
 
 /* ========= jquery-ui.css changes ============ */
 .ui-accordion .ui-accordion-content {
+	position: relative;
 	padding: 0 5px;
 }
 

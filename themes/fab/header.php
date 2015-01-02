@@ -62,38 +62,36 @@ $this
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
 	<![endif]-->
 </head>
-<body id="body">
+<body>
 	<?php if ($view !== 'simple') { ?>
-	<header class="block">
-		<div id="header-user-links">
-			<ul class="makeMenu">
-				<?php
-				if (Auth::check()) {
-					echo '<li><a href="edituser.php">', WT_Filter::escapeHtml(Auth::user()->getRealName()), '</a></li> <li>', logout_link(), '</li>';
-					if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
-						echo ' <li><a href="#" onclick="window.open(\'edit_changes.php\',\'_blank\',chan_window_specs); return false;" style="color:red;">', WT_I18N::translate('Pending changes'), '</a></li>';
-					}
-				} else {
-					echo '<li>', login_link(), '</li> ';
+	<header>
+		<ul class="secondary-menu">
+			<?php
+			if (Auth::check()) {
+				echo '<li><a href="edituser.php">', WT_Filter::escapeHtml(Auth::user()->getRealName()), '</a></li> <li>', logout_link(), '</li>';
+				if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
+					echo ' <li><a href="#" onclick="window.open(\'edit_changes.php\',\'_blank\',chan_window_specs); return false;" style="color:red;">', WT_I18N::translate('Pending changes'), '</a></li>';
 				}
-				?>
-				<?php echo WT_MenuBar::getFavoritesMenu(); ?>
-				<?php echo WT_MenuBar::getLanguageMenu(); ?>
-				<?php echo WT_MenuBar::getThemeMenu(); ?>
-				<li>
-					<form style="display:inline;" action="search.php" method="post" role="search">
-						<input type="hidden" name="action" value="general">
-						<input type="hidden" name="ged" value="<?php echo WT_GEDCOM; ?>">
-						<input type="hidden" name="topsearch" value="yes">
-						<input type="search" name="query" size="20" placeholder="<?php echo WT_I18N::translate('Search'); ?>">
-					</form>
-				</li>
-			</ul>
-		</div>
+			} else {
+				echo '<li>', login_link(), '</li> ';
+			}
+			?>
+			<?php echo WT_MenuBar::getFavoritesMenu(); ?>
+			<?php echo WT_MenuBar::getLanguageMenu(); ?>
+			<?php echo WT_MenuBar::getThemeMenu(); ?>
+			<li>
+				<form style="display:inline;" action="search.php" method="post" role="search">
+					<input type="hidden" name="action" value="general">
+					<input type="hidden" name="ged" value="<?php echo WT_GEDCOM; ?>">
+					<input type="hidden" name="topsearch" value="yes">
+					<input type="search" name="query" size="20" placeholder="<?php echo WT_I18N::translate('Search'); ?>">
+				</form>
+			</li>
+		</ul>
 		<h1><?php echo WT_TREE_TITLE; ?></h1>
 		<div style="margin:auto;padding:10px;width:300px;"><div class="g-follow" data-annotation="bubble" data-height="20" data-href="//plus.google.com/u/0/106237023746635567418" data-rel="publisher"></div></div>
 		<nav>
-			<ul id="main-menu" role="menubar">
+			<ul class="primary-menu" role="menubar">
 				<?php echo WT_MenuBar::getGedcomMenu();   ?>
 				<?php echo WT_MenuBar::getMyPageMenu();   ?>
 				<?php echo WT_MenuBar::getChartsMenu();   ?>

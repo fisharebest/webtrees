@@ -79,51 +79,44 @@ foreach (WT_MenuBar::getModuleMenus() as $menu) {
 	<title><?php echo WT_Filter::escapeHtml($title); ?></title>
 	<link rel="icon" href="<?php echo WT_CSS_URL; ?>favicon.png" type="image/png">
 	<link rel="stylesheet" type="text/css" href="<?php echo WT_THEME_URL; ?>jquery-ui-1.11.2/jquery-ui.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo WT_CSS_URL; ?>css/colors.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo WT_CSS_URL; ?>css/<?php echo $subColor; ?>.css">
-	<?php if (stristr($_SERVER['HTTP_USER_AGENT'], 'iPad')) { ?>
-	<link type="text/css" rel="stylesheet" href="<?php echo WT_CSS_URL; ?>ipad.css">
-	<?php } ?>
+	<link rel="stylesheet" type="text/css" href="<?php echo WT_CSS_URL; ?>style.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo WT_CSS_URL; ?>palette/<?php echo $subColor; ?>.css">
 	<!--[if IE 8]>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
 	<![endif]-->
 </head>
-<body id="body">
+<body>
 	<?php if ($view !== 'simple') { ?>
 	<header>
-		<div id="header">
-			<h1><?php echo WT_TREE_TITLE; ?></h1>
-			<div id="header-user-links">
-				<ul class="makeMenu">
-					<?php
-					if (Auth::check()) {
-						echo '<li><a href="edituser.php" class="link">', WT_Filter::escapeHtml(Auth::user()->getRealName()), '</a></li><li>', logout_link(), '</li>';
-						if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
-							echo ' <li><a href="#" onclick="window.open(\'edit_changes.php\', \'_blank\', chan_window_specs); return false;" style="color:red;">', WT_I18N::translate('Pending changes'), '</a></li>';
-						}
-					} else {
-						echo '<li>', login_link(),'</li>';
-					}
-					?>
-					<?php echo WT_MenuBar::getFavoritesMenu(); ?>
-					<?php echo WT_MenuBar::getLanguageMenu(); ?>
-					<?php echo WT_MenuBar::getThemeMenu(); ?>
-					<?php if (WT_MenuBar::getThemeMenu()) { echo color_theme_dropdown(); } ?>
-					<li>
-						<form style="display:inline;" action="search.php" method="post">
-							<input type="hidden" name="action" value="general">
-							<input type="hidden" name="ged" value="<?php echo WT_GEDCOM; ?>">
-							<input type="hidden" name="topsearch" value="yes">
-							<input type="search" name="query" size="15" placeholder="<?php echo WT_I18N::translate('Search'); ?>">
-							<input class="search-icon" type="image" src="<?php echo $WT_IMAGES['search']; ?>" alt="<?php echo WT_I18N::translate('Search'); ?>" title="<?php echo WT_I18N::translate('Search'); ?>">
-						</form>
-					</li>
-				</ul>
+		<h1><?php echo WT_TREE_TITLE; ?></h1>
+		<ul class="secondary-menu" role="menubar">
+			<?php
+			if (Auth::check()) {
+				echo '<li><a href="edituser.php" class="link">', WT_Filter::escapeHtml(Auth::user()->getRealName()), '</a></li><li>', logout_link(), '</li>';
+				if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
+					echo ' <li><a href="#" onclick="window.open(\'edit_changes.php\', \'_blank\', chan_window_specs); return false;" style="color:red;">', WT_I18N::translate('Pending changes'), '</a></li>';
+				}
+			} else {
+				echo '<li>', login_link(),'</li>';
+			}
+			?>
+			<?php echo WT_MenuBar::getFavoritesMenu(); ?>
+			<?php echo WT_MenuBar::getLanguageMenu(); ?>
+			<?php echo WT_MenuBar::getThemeMenu(); ?>
+			<?php if (WT_MenuBar::getThemeMenu()) { echo color_theme_dropdown(); } ?>
+			<li>
+				<form style="display:inline;" action="search.php" method="post">
+					<input type="hidden" name="action" value="general">
+					<input type="hidden" name="ged" value="<?php echo WT_GEDCOM; ?>">
+					<input type="hidden" name="topsearch" value="yes">
+					<input type="search" name="query" size="15" placeholder="<?php echo WT_I18N::translate('Search'); ?>">
+					<input class="search-icon" type="image" src="<?php echo $WT_IMAGES['search']; ?>" alt="<?php echo WT_I18N::translate('Search'); ?>" title="<?php echo WT_I18N::translate('Search'); ?>">
+				</form>
+			</li>
+		</ul>
 				<div style="vertical-align: bottom;margin:auto;padding:10px;width:300px;"><div class="g-follow" data-annotation="bubble" data-height="20" data-href="//plus.google.com/u/0/106237023746635567418" data-rel="publisher"></div></div>
-			</div>
-		</div>
 		<nav>
-			<ul id="main-menu">
+			<ul class="primary-menu" role="menubar">
 				<?php
 				foreach (array_filter($menu_items) as $menu) {
 					echo getMenuAsCustomList($menu);
