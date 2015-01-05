@@ -4197,9 +4197,14 @@ header h1 {
 	right: auto;
 }
 
+[dir=rtl] .secondary-menu {
+	float: left;
+	margin: 20px 0 0 10px;
+}
+
 [dir=rtl] .secondary-menu li ul {
-	left: auto;
-	right: 0;
+	left: 0;
+	right: auto;
 }
 
 [dir=rtl] .secondary-menu li ul li {
@@ -4235,14 +4240,6 @@ textarea {
 header input,
 textarea {
 	padding: 0 3px;
-}
-
-#menu-language li {
-	text-align: left; /* The language menu is always LTR, even on RTL pages */
-}
-
-#menu-theme li {
-	text-align: left; /* The theme menu is always LTR, even on RTL pages */
 }
 
 /* ====== Primary menu ========= */
@@ -5193,6 +5190,7 @@ footer .error {
 
 	#pedigree_chart {
 		left: -80px;
+		top:  -260px;
 	}
 
 	#header_accordion1 {
@@ -5201,7 +5199,7 @@ footer .error {
 
 	[dir=rtl] #pedigree_chart {
 		left: auto;
-		right: -80px;
+		right: -20px;
 	}
 
 	#familybook_chart h3 {
