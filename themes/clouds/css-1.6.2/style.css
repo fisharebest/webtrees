@@ -1376,81 +1376,61 @@ img.block {
 
 /*-- charts layout --*/
 
-#ancestry_chart table div p {
-	font-size: 90%;
-	margin: 0;
+#compact_chart,
+#fan_chart,
+.chart_common,
+#ancestry_booklet,
+#descendancy_booklet,
+#familybook_chart,
+#hourglass_chart {
+	margin: 20px;
 }
 
-#ancestry_chart span.details1 div[class^="fact_"] {
-	display: inline-block;
-}
-
-#ancestry_chart ul {
-	background-image:url(images/vline.png);
-	background-position:left top;background-repeat:repeat-y;
-	display: block;
+/*-- ancestry and descendancy chart common styles --*/
+.chart_common li {
 	list-style: none;
-	margin: 0 0 0 15px;
-	padding-bottom: 0;
-	padding-right: 0;
-	padding-top: 3px;
 }
 
-#ancestry_chart li {
-	list-style: none;
-	margin: 0 0 2px -13px;
-	padding-bottom: 0;
-	padding-right: 0;
-	padding-top: 0;
+.chart_common .generation {
+	background: transparent url(images/vline.png) left top repeat-y;
+	margin:     0 0 0 15px;
+	padding:    0;
+	display:    block;
 }
 
-#ancestry_chart li table {
+[dir='rtl'] .chart_common .generation {
+	margin:              0 15px 0 0;
+	background-position: right top;
+}
+
+.chart_common .generation > li {
 	margin: 5px 0;
 }
 
-[dir=rtl] #ancestry_chart ul {
-	background-position: right top;
-	margin: 0 15px 0 0;
-	left: auto;
+.chart_common table {
+	padding:         0;
+	border-spacing:  0;
+	border-collapse: collapse;
+	margin:          5px 0;
 }
 
-[dir=rtl] #ancestry_chart li {
-	margin: 0;
-	padding: 0 2px 0 0;
-	left: auto;
+.chart_common td {
+	border:  0;
+	padding: 0;
 }
 
-#descendancy_chart ul {
-	background-image:url(images/vline.png);
-	background-position:left top;background-repeat:repeat-y;
-	list-style: none;
-	margin: 0 0 5px 20px;
-	padding-top: 0;
-	padding-right: 0;
-	padding-bottom: 0;
-}
-
-#descendancy_chart li {
-	list-style: none;
-	margin: 5px 0 0 -15px;
-	padding-top: 0;
-	padding-right: 0;
-	padding-bottom: 0;
-}
-
-#descendancy_chart span.details1 div[class^="fact_"] {
+.chart_common span.details1 div[class^="fact_"] {
 	display: inline-block;
 }
 
-#descendancy_chart td.details1 {
-	padding-top: 5px;
+.chart_common span.details1 .date {
+	color: inherit;
 }
 
-[dir=rtl] #descendancy_chart ul {
-	background-position: right top;
-	margin: 0 15px 0 0;
-	left: auto;
+.chart_common li > span.details1 {
+	white-space: nowrap;
 }
+
 
 #familybook_chart {
 	margin-left: 10px;
@@ -1604,14 +1584,6 @@ img.block {
 	position: relative;
 	top: 50px;
 	left: 0;
-}
-
-#compact_chart,
-#fan_chart,
-#ancestry_chart,
-#familybook_chart,
-#hourglass_chart {
-	margin: 20px;
 }
 
 .fan_chart_menu {
@@ -2899,61 +2871,38 @@ dt {
 	margin: 20px auto;
 }
 
-.block .itr,
-#family-table .itr,
-#ancestry_chart .itr,
-#descendancy_chart .itr,
-#familybook_chart .itr,
-#hourglass_chart .itr,
-#relatives_content .itr {
-	position: relative;
-	top: 0;
-}
-
+/* Popup menu used in boxes on charts etc. */
 .itr {
+	position: relative;
 	line-height: 1.5;
-	position: absolute;
-}
-
-.itr:hover .popup {
-	display: block;
-	position: absolute;
-	right: 0;
-	width: 12em;
-	z-index: 9999;
 }
 
 .popup {
 	display: none;
+	position: absolute;
+	top: 20px;
+	right: 0;
+	left: auto;
 }
 
 .popup ul {
-	background-image: none !important;
-	font-size: 9px;
+	white-space: nowrap;
+	font-size: smaller;
 	list-style: none;
 	margin: 0;
 	padding: 0 10px;
 }
 
-.popup li {
-	padding: 1px 5px;
+.popup > ul {
+	padding: 2px 10px;
 }
 
-.popup li span {
+.popup li .NAME {
 	padding: 0 5px;
-}
-
-.popup li ul,
-.popup li ul li,
-.popup li span span {
-	padding: 0;
 }
 
 .itr:hover .popup {
 	display: block;
-	position: absolute;
-	width: 12em;
-	right: 0;
 	z-index: 9999;
 }
 
