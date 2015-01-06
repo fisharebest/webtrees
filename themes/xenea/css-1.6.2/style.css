@@ -101,6 +101,22 @@ a:hover {
 	clear: both;
 }
 
+dl {
+	margin: 0;
+}
+
+dt {
+	float: left;
+	font-weight: bold;
+	margin-right: 10px;
+}
+
+[dir=rtl] dt {
+	float: right;
+	margin-right: auto;
+	margin-left: 10px;
+}
+
 h2 {
 	color: #006;
 	font-size: 18px;
@@ -889,18 +905,6 @@ a.showit:hover > span {
 	border: solid #81a9cb 1px;
 }
 
-dt {
-	float: left;
-	font-weight: bold;
-	margin-right: 10px;
-}
-
-[dir=rtl] dt {
-	float: right;
-	margin-right: auto;
-	margin-left: 10px;
-}
-
 /* ---Find special characters--- */
 .largechars {
 	font-family: monospace;
@@ -1103,15 +1107,15 @@ td.descriptionbox a {
 	float: right;
 }
 
-.list_value_wrap .lb-image_edit {
+.lb-image_edit {
 	background: url(images/image_edit.png) no-repeat 50% 20%;
 }
 
-.list_value_wrap .lb-image_link {
+.lb-image_link {
 	background: url(images/image_link.png) no-repeat 50% 20%;
 }
 
-.list_value_wrap .lb-image_view {
+.lb-image_view {
 	background: url(images/image_view.png) no-repeat 50% 20%;
 }
 
@@ -1652,7 +1656,6 @@ td.descriptionbox a {
 	text-align: center;
 	vertical-align: top;
 }
-
 
 /* Random picture block */
 #random_picture {
@@ -2457,8 +2460,7 @@ dd .deletelink {
 	margin-left: 0;
 }
 
-/* Individuals,
-Families */
+/* Individuals and Families */
 #sb_content_individuals,
 #sb_content_families {
 	margin-top: 5px;
@@ -3138,11 +3140,13 @@ table.table-census-assistant th {
 }
 
 /* ====== Charts Styles ======== */
-#compact_chart,
-#fan_chart,
 #ancestry_chart,
+#compact_chart,
+#descendancy_chart,
 #familybook_chart,
-#hourglass_chart {
+#fan_chart,
+#hourglass_chart,
+#relationship_chart {
 	margin: 20px;
 }
 
