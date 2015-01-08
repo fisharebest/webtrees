@@ -1993,6 +1993,12 @@ dd .deletelink {
 	float: left;
 }
 
+.hit-counter {
+	background: #000;
+	color: #fff;
+	font-weight: bold;
+}
+
 /* ======= General sprite ==== */
 .male_gender,
 .female_gender,
@@ -4376,12 +4382,6 @@ header nav {
 .execution_stats {
 	padding-top: 12px;
 	text-align: center;
-}
-
-.hit-counter {
-	background: #000;
-	color: #fff;
-	font-weight: bold;
 }
 
 .logo {
