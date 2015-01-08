@@ -1442,13 +1442,6 @@ td.descriptionbox a {
 	visibility: hidden;
 }
 
-.recent_changes_block,
-.upcoming_events_block,
-.todays_events_block,
-.todo_block {
-	width: 99%;
-}
-
 .surname-list,
 .givn-list {
 	margin: 5px auto;
