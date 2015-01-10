@@ -35,11 +35,8 @@ $controller
 	->pageHeader();
 
 ob_start();
-
 phpinfo();
-$php_info = ob_get_contents();
-
-ob_end_clean();
+$php_info = ob_get_clean();
 
 $php_info    = str_replace(" width=\"600\"", " width=\"\"", $php_info);
 $php_info    = str_replace("</body></html>", "", $php_info);

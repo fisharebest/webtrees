@@ -4919,7 +4919,6 @@ class WT_Stats {
 			}
 			$per = round(100 * $count_per / $tot_indi, 0);
 			$chd .= $this->arrayToExtendedEncoding(array($per));
-			//ToDo: RTL names are often printed LTR when also LTR names are present
 			$chl[] = $top_name . ' - ' . WT_I18N::number($count_per);
 
 		}
@@ -5293,7 +5292,6 @@ class WT_Stats {
 				$per = round(100 * $count / $tot_indi, 0);
 			}
 			$chd .= $this->arrayToExtendedEncoding(array($per));
-			//ToDo: RTL names are often printed LTR when also LTR names are present
 			$chl[] = $givn . ' - ' . WT_I18N::number($count);
 		}
 		$per = round(100 * ($tot_indi - $tot) / $tot_indi, 0);

@@ -173,14 +173,14 @@ case 'DATE':
 		'<p>'.WT_I18N::translate('Dates are stored using English abbreviations and keywords.  Shortcuts are available as alternatives to these abbreviations and keywords.').'</p>'.
 		'<table border="1">'.
 		'<tr><th>'.WT_I18N::translate('Date').'</th><th>'.WT_I18N::translate('Format').'</th><th>'.WT_I18N::translate('Shortcut').'</th></tr>'.
-		'<tr><td>'.$dates['1900'].'</td><td><tt dir="ltr" lang="en">1900</tt></td><td>&nbsp;</td></tr>'.
-		'<tr><td>'.$dates['JAN 1900'].'<br>'.$dates['FEB 1900'].'<br>'.$dates['MAR 1900'].'<br>'.$dates['APR 1900'].'<br>'.$dates['MAY 1900'].'<br>'.$dates['JUN 1900'].'<br>'.$dates['JUL 1900'].'<br>'.$dates['AUG 1900'].'<br>'.$dates['SEP 1900'].'<br>'.$dates['OCT 1900'].'<br>'.$dates['NOV 1900'].'<br>'.$dates['DEC 1900'].'</td><td><tt dir="ltr" lang="en">JAN 1900<br>FEB 1900<br>MAR 1900<br>APR 1900<br>MAY 1900<br>JUN 1900<br>JUL 1900<br>AUG 1900<br>SEP 1900<br>OCT 1900<br>NOV 1900<br>DEC 1900</tt></td><td>&nbsp;</td></tr>'.
+		'<tr><td>'.$dates['1900'].'</td><td><tt dir="ltr" lang="en">1900</tt></td><td></td></tr>'.
+		'<tr><td>'.$dates['JAN 1900'].'<br>'.$dates['FEB 1900'].'<br>'.$dates['MAR 1900'].'<br>'.$dates['APR 1900'].'<br>'.$dates['MAY 1900'].'<br>'.$dates['JUN 1900'].'<br>'.$dates['JUL 1900'].'<br>'.$dates['AUG 1900'].'<br>'.$dates['SEP 1900'].'<br>'.$dates['OCT 1900'].'<br>'.$dates['NOV 1900'].'<br>'.$dates['DEC 1900'].'</td><td><tt dir="ltr" lang="en">JAN 1900<br>FEB 1900<br>MAR 1900<br>APR 1900<br>MAY 1900<br>JUN 1900<br>JUL 1900<br>AUG 1900<br>SEP 1900<br>OCT 1900<br>NOV 1900<br>DEC 1900</tt></td><td></td></tr>'.
 		'<tr><td>'.$dates['11 DEC 1913'].'</td><td><tt dir="ltr" lang="en">11 DEC 1913</tt></td><td><tt dir="ltr" lang="en">'.$example1.'</tt></td></tr>'.
 		'<tr><td>'.$dates['01 FEB 2003'].'</td><td><tt dir="ltr" lang="en">01 FEB 2003</tt></td><td><tt dir="ltr" lang="en">'.$example2.'</tt></td></tr>'.
 		'<tr><td>'.$dates['ABT 1900'].'</td><td><tt dir="ltr" lang="en">ABT 1900</tt></td><td><tt dir="ltr" lang="en">~1900</tt></td></tr>'.
 		'<tr><td>'.$dates['EST 1900'].'</td><td><tt dir="ltr" lang="en">EST 1900</tt></td><td><tt dir="ltr" lang="en">*1900</tt></td></tr>'.
 		'<tr><td>'.$dates['CAL 1900'].'</td><td><tt dir="ltr" lang="en">CAL 1900</tt></td><td><tt dir="ltr" lang="en">#1900</tt></td></tr>'.
-		'<tr><td>'.$dates['INT 1900 (...)'].'</td><td><tt dir="ltr" lang="en">INT 1900 (...)</tt></td><td>&nbsp;</td></tr>'.
+		'<tr><td>'.$dates['INT 1900 (...)'].'</td><td><tt dir="ltr" lang="en">INT 1900 (...)</tt></td><td></td></tr>'.
 		'</table>'.
 		'<p>'.WT_I18N::translate('Date ranges are used to indicate that an event, such as a birth, happened on an unknown date within a possible range.').'</p>'.
 		'<table border="1">'.

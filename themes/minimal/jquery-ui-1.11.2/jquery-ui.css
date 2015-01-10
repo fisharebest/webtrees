@@ -812,7 +812,7 @@ button.ui-button::-moz-focus-inner {
 .ui-tabs .ui-tabs-panel {
 	display: block;
 	border-width: 0;
-	padding: 1em 1.4em;
+	padding: 1em .4em;
 	background: none;
 }
 .ui-tooltip {
@@ -830,7 +830,7 @@ body .ui-tooltip {
 /* Component containers
 ----------------------------------*/
 .ui-widget {
-	font-family: Verdana,Arial,sans-serif;
+	font-family: inherit;
 	font-size: 1.1em;
 }
 .ui-widget .ui-widget {
@@ -840,7 +840,7 @@ body .ui-tooltip {
 .ui-widget select,
 .ui-widget textarea,
 .ui-widget button {
-	font-family: Verdana,Arial,sans-serif;
+	font-family: inherit;
 	font-size: 1em;
 }
 .ui-widget-content {

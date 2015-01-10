@@ -37,22 +37,22 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 	}
 
 	/** {@inheritdoc} */
-	public function getBlock($block_id, $template=true, $cfg=null) {
-		require_once WT_ROOT.'includes/functions/functions_print_facts.php';
+	public function getBlock($block_id, $template = true, $cfg = null) {
+		require_once WT_ROOT . 'includes/functions/functions_print_facts.php';
 
 		// Block actions
-		$action     = WT_Filter::post('action');
+		$action      = WT_Filter::post('action');
 		$message_ids = WT_Filter::postArray('message_id');
-		if ($action=='deletemessage') {
+		if ($action === 'deletemessage') {
 			foreach ($message_ids as $message_id) {
 				WT_DB::prepare("DELETE FROM `##message` WHERE message_id=?")->execute(array($message_id));
 			}
 		}
-		$block=get_block_setting($block_id, 'block', true);
+		$block = get_block_setting($block_id, 'block', true);
 		if ($cfg) {
 			foreach (array('block') as $name) {
 				if (array_key_exists($name, $cfg)) {
-					$$name=$cfg[$name];
+					$$name = $cfg[$name];
 				}
 			}
 		}
@@ -60,67 +60,68 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 			->execute(array(Auth::id()))
 			->fetchAll();
 
-		$id=$this->getName().$block_id;
-		$class=$this->getName().'_block';
-		$title=WT_I18N::plural('%s message', '%s messages',count($messages), WT_I18N::number(count($messages)));
-		$content='<form name="messageform" method="post" onsubmit="return confirm(\''.WT_I18N::translate('Are you sure you want to delete this message?  It cannot be retrieved later.').'\');">';
-		if (count(User::all()) > 1) {
-			$content.='<br>'.WT_I18N::translate('Send a message')." <select name=\"touser\">";
-			$content.='<option value="">' . WT_I18N::translate('&lt;select&gt;') . '</option>';
-			foreach (User::all() as $user) {
-				if ($user->getUserId() !== Auth::id() && $user->getPreference('verified_by_admin') && $user->getPreference('contactmethod') !== 'none') {
-					$content.='<option value="' . WT_Filter::escapeHtml($user->getUserName()) . '">';
-					$content.='<span dir="auto">'.WT_Filter::escapeHtml($user->getRealName()).'</span> - <span dir="auto">' . WT_Filter::escapeHtml($user->getUserName()) . '</span>';
-					$content.='</option>';
-				}
+		$count = count($messages);
+		$id    = $this->getName() . $block_id;
+		$class = $this->getName() . '_block';
+		$title = WT_I18N::plural('%s message', '%s messages', $count, WT_I18N::number($count));
+		$users = array_filter(User::all(), function($user){
+			return $user->getUserId() !== Auth::id() && $user->getPreference('verified_by_admin') && $user->getPreference('contactmethod') !== 'none';
+		});
+
+		$content = '<form name="messageform" method="post" onsubmit="return confirm(\'' . WT_I18N::translate('Are you sure you want to delete this message?  It cannot be retrieved later.') . '\');">';
+		if ($users) {
+			$content .= '<label for="touser">' . WT_I18N::translate('Send a message') . '</label>';
+			$content .= '<select id="touser" name="touser">';
+			$content .= '<option value="">' . WT_I18N::translate('&lt;select&gt;') . '</option>';
+			foreach ($users as $user) {
+				$content .= sprintf('<option value="%1$s">%2$s - %1$s</option>', WT_Filter::escapeHtml($user->getUserName()), WT_Filter::escapeHtml($user->getRealName()));
 			}
-			$content.='</select> <input type="button" value="'.WT_I18N::translate('Send').'" onclick="message(document.messageform.touser.options[document.messageform.touser.selectedIndex].value, \'messaging2\', \'\'); return false;"><br><br>';
+			$content .= '</select>';
+			$content .= '<input type="button" value="' . WT_I18N::translate('Send') . '" onclick="message(document.messageform.touser.options[document.messageform.touser.selectedIndex].value, \'messaging2\', \'\'); return false;"><br><br>';
 		}
-		if (count($messages)==0) {
-			$content.=WT_I18N::translate('You have no pending messages.')."<br>";
-		} else {
-			$content.='<input type="hidden" name="action" value="deletemessage">';
-			$content.='<table class="list_table"><tr>';
-			$content.='<td class="list_label">'.WT_I18N::translate('Delete').'<br><a href="#" onclick="jQuery(\'#' . $this->getName() . $block_id . ' :checkbox\').prop(\'checked\', true); return false;">'.WT_I18N::translate('All').'</a></td>';
-			$content.='<td class="list_label">'.WT_I18N::translate('Subject:').'</td>';
-			$content.='<td class="list_label">'.WT_I18N::translate('Date sent:').'</td>';
-			$content.='<td class="list_label">'.WT_I18N::translate('Email address:').'</td>';
-			$content.='</tr>';
+		if ($messages) {
+			$content .= '<input type="hidden" name="action" value="deletemessage">';
+			$content .= '<table class="list_table"><tr>';
+			$content .= '<th class="list_label">' . WT_I18N::translate('Delete') . '<br><a href="#" onclick="jQuery(\'#' . $this->getName() . $block_id . ' :checkbox\').prop(\'checked\', true); return false;">' . WT_I18N::translate('All') . '</a></th>';
+			$content .= '<th class="list_label">' . WT_I18N::translate('Subject:') . '</th>';
+			$content .= '<th class="list_label">' . WT_I18N::translate('Date sent:') . '</th>';
+			$content .= '<th class="list_label">' . WT_I18N::translate('Email address:') . '</th>';
+			$content .= '</tr>';
 			foreach ($messages as $message) {
-				$content.='<tr>';
-				$content.='<td class="list_value_wrap"><input type="checkbox" id="cb_message'.$message->message_id.'" name="message_id[]" value="'.$message->message_id.'"></td>';
-				$content.='<td class="list_value_wrap"><a href="#" onclick="return expand_layer(\'message'.$message->message_id.'\');"><i id="message'.$message->message_id.'_img" class="icon-plus"></i> <b dir="auto">'.WT_Filter::escapeHtml($message->subject).'</b></a></td>';
-				$content.='<td class="list_value_wrap">'.format_timestamp($message->created).'</td>';
-				$content.='<td class="list_value_wrap">';
+				$content .= '<tr>';
+				$content .= '<td class="list_value_wrap"><input type="checkbox" id="cb_message' . $message->message_id . '" name="message_id[]" value="' . $message->message_id . '"></td>';
+				$content .= '<td class="list_value_wrap"><a href="#" onclick="return expand_layer(\'message' . $message->message_id . '\');"><i id="message' . $message->message_id . '_img" class="icon-plus"></i> <b dir="auto">' . WT_Filter::escapeHtml($message->subject) . '</b></a></td>';
+				$content .= '<td class="list_value_wrap">' . format_timestamp($message->created) . '</td>';
+				$content .= '<td class="list_value_wrap">';
 				$user = User::findByIdentifier($message->sender);
 				if ($user) {
-					$content.='<span dir="auto">' . $user->getRealName() . '</span>';
-					$content.='  - <span dir="auto">' . $user->getEmail() . '</span>';
+					$content .= '<span dir="auto">' . $user->getRealName() . '</span>';
+					$content .= '  - <span dir="auto">' . $user->getEmail() . '</span>';
 				} else {
-					$content.='<a href="mailto:'.WT_Filter::escapeHtml($message->sender).'">'.WT_Filter::escapeHtml($message->sender).'</a>';
+					$content .= '<a href="mailto:' . WT_Filter::escapeHtml($message->sender) . '">' . WT_Filter::escapeHtml($message->sender) . '</a>';
 				}
-				$content.='</td>';
-				$content.='</tr>';
-				$content.='<tr><td class="list_value_wrap" colspan="5"><div id="message'.$message->message_id.'" style="display:none;">';
-				$content.='<div dir="auto" style="white-space: pre-wrap;">' . WT_Filter::expandUrls($message->body) . '</div><br>';
+				$content .= '</td>';
+				$content .= '</tr>';
+				$content .= '<tr><td class="list_value_wrap" colspan="4"><div id="message' . $message->message_id . '" style="display:none;">';
+				$content .= '<div dir="auto" style="white-space: pre-wrap;">' . WT_Filter::expandUrls($message->body) . '</div><br>';
 				if (strpos($message->subject, /* I18N: When replying to an email, the subject becomes “RE: <subject>” */ WT_I18N::translate('RE: '))!==0) {
-					$message->subject= WT_I18N::translate('RE: ').$message->subject;
+					$message->subject = WT_I18N::translate('RE: ') . $message->subject;
 				}
 				if ($user) {
-					$content.='<a href="#" onclick="reply(\''.WT_Filter::escapeJs($message->sender).'\', \''.WT_Filter::escapeJs($message->subject).'\'); return false;">'.WT_I18N::translate('Reply').'</a> | ';
+					$content .= '<a href="#" onclick="reply(\'' . WT_Filter::escapeJs($message->sender) . '\', \'' . WT_Filter::escapeJs($message->subject) . '\'); return false;">' . WT_I18N::translate('Reply') . '</a> | ';
 				}
-				$content.='<a href="index.php?action=deletemessage&amp;message_id[]='.$message->message_id.'" onclick="return confirm(\''.WT_I18N::translate('Are you sure you want to delete this message?  It cannot be retrieved later.').'\');">'.WT_I18N::translate('Delete').'</a></div></td></tr>';
+				$content .= '<a href="index.php?action=deletemessage&amp;message_id%5B%5D=' . $message->message_id . '" onclick="return confirm(\'' . WT_I18N::translate('Are you sure you want to delete this message?  It cannot be retrieved later.') . '\');">' . WT_I18N::translate('Delete') . '</a></div></td></tr>';
 			}
-			$content.='</table>';
-			$content.='<input type="submit" value="'.WT_I18N::translate('Delete selected messages').'"><br>';
+			$content .= '</table>';
+			$content .= '<input type="submit" value="' . WT_I18N::translate('Delete selected messages') . '"><br>';
 		}
-		$content.='</form>';
+		$content .= '</form>';
 
 		if ($template) {
 			if ($block) {
-				require WT_THEME_DIR.'templates/block_small_temp.php';
+				require WT_THEME_DIR . 'templates/block_small_temp.php';
 			} else {
-				require WT_THEME_DIR.'templates/block_main_temp.php';
+				require WT_THEME_DIR . 'templates/block_main_temp.php';
 			}
 		} else {
 			return $content;
@@ -145,13 +146,13 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 	/** {@inheritdoc} */
 	public function configureBlock($block_id) {
 		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
-			set_block_setting($block_id, 'block',  WT_Filter::postBool('block'));
+			set_block_setting($block_id, 'block', WT_Filter::postBool('block'));
 			exit;
 		}
 
-		require_once WT_ROOT.'includes/functions/functions_edit.php';
+		require_once WT_ROOT . 'includes/functions/functions_edit.php';
 
-		$block=get_block_setting($block_id, 'block', true);
+		$block = get_block_setting($block_id, 'block', true);
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo /* I18N: label for a yes/no option */ WT_I18N::translate('Add a scrollbar when block contents grow');
 		echo '</td><td class="optionbox">';

@@ -397,12 +397,12 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 									</tr>
 								</table>
 							</td>
-							<td>&nbsp;</td>
+							<td></td>
 						</tr>
 							<th class="gm_prefix" colspan="3"><?php echo WT_I18N::translate('Optional prefixes and suffixes'), help_link('GM_NAME_PREFIX_SUFFIX','googlemap');?></th>
 						</tr>
 						<tr id="gm_level_titles">
-							<th>&nbsp;</th>
+							<th></th>
 							<th><?php echo WT_I18N::translate('Prefixes'); ?></th>
 							<th><?php echo WT_I18N::translate('Suffixes'); ?></th>
 						<?php for ($level=1; $level < 10; $level++) { ?>
@@ -848,7 +848,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			echo '</td></tr>';
 			echo '</table>';
 		}
-		echo '</td><td width="15px">&nbsp;</td>';
+		echo '</td><td width="15px"></td>';
 		echo '<td width="310px" valign="top">';
 		echo '<div id="side_bar" style="width:300px; font-size:0.9em; overflow:auto; overflow-x:hidden; overflow-y:auto; height:', $this->getSetting('GM_YSIZE'), 'px;"></div></td>';
 		echo '</tr>';
@@ -1754,7 +1754,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 							echo $lati[$z];
 							echo $long[$z];
 						} else {
-							echo '<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>';
+							echo '<td></td><td></td><td></td>';
 						}
 						$z++;
 					}
@@ -4287,9 +4287,10 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			exit;
 		}
 
-		if ($action=='ImportFile2') {
-			$country_names=array();
-			foreach (WT_Stats::iso3166() as $key=>$value) {
+		if ($action === 'ImportFile2') {
+			$country_names = array();
+			$stats = new WT_Stats(WT_GEDCOM);
+			foreach ($stats->iso3166() as $key=>$value) {
 				$country_names[$key]=WT_I18N::translate($key);
 			}
 			if (isset($_POST['cleardatabase'])) {
@@ -4301,7 +4302,9 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				$lines = file(WT_MODULES_DIR.'googlemap/extra'.$_REQUEST['localfile']);
 			}
 			// Strip BYTE-ORDER-MARK, if present
-			if (!empty($lines[0]) && substr($lines[0], 0, 3)==WT_UTF8_BOM) $lines[0]=substr($lines[0], 3);
+			if (!empty($lines[0]) && substr($lines[0], 0, 3) === WT_UTF8_BOM) {
+				$lines[0] = substr($lines[0], 3);
+			}
 			asort($lines);
 			$highestIndex = $this->getHighestIndex();
 			$placelist = array();

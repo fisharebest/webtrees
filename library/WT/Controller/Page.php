@@ -154,20 +154,12 @@ class WT_Controller_Page extends WT_Controller_Base {
 		// Temporary fix for access to main menu hover elements on android/blackberry touch devices
 		$this->addInlineJavascript('
 			if(navigator.userAgent.match(/Android|PlayBook/i)) {
-				jQuery("#main-menu > li > a").attr("href", "#");
-				jQuery("a.icon_arrow").attr("href", "#");
+				jQuery(".primary-menu > li > a").attr("href", "#");
 			}
 		');
 
 		header('Content-Type: text/html; charset=UTF-8');
 		require WT_ROOT . $headerfile;
-
-		// Flush the output, so the browser can render the header and load javascript
-		// while we are preparing data for the page
-		if (ini_get('output_buffering')) {
-			ob_flush();
-		}
-		flush();
 
 		// Once we've displayed the header, we should no longer write session data.
 		Zend_Session::writeClose();
