@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2014-12-15 10:38+0000\n"
-"PO-Revision-Date: 2014-07-20 16:11+0100\n"
-"Last-Translator: Mic <mic@ergraf.eu>\n"
+"PO-Revision-Date: 2015-01-10 16:09+0100\n"
+"Last-Translator: Mic50 <mic@ergraf.eu>\n"
 "Language-Team: \n"
 "Language: hr\n"
 "MIME-Version: 1.0\n"
@@ -1128,7 +1128,7 @@ msgstr "Dodaj"
 
 #: modules_v3/googlemap/module.php:4555
 msgid "Add  a new geographic location"
-msgstr ""
+msgstr "Dodaj novu zemljopisnu lokaciju"
 
 #: modules_v3/clippings/module.php:471
 #, php-format
@@ -3272,7 +3272,7 @@ msgstr "Uzrok smrti"
 
 #: admin_trees_renumber.php:278
 msgid "Caution!  This may take a long time.  Be patient."
-msgstr ""
+msgstr "Oprez! Ovo može trajati duže vrijeme. Budite strpljivi."
 
 #: admin_site_upgrade.php:204
 msgid "Caution: old modules may not work, or they may prevent webtrees from working."
@@ -3376,10 +3376,10 @@ msgstr "Promjene"
 
 #. I18N: title for list of recent changes
 #: modules_v3/recent_changes/module.php:72
-#, fuzzy, php-format
+#, php-format
 msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
-msgstr[0] "Današnje promjene"
+msgstr[0] "Promjene u zadnjih %s dan"
 msgstr[1] "Promjene u zadnja %s dana"
 msgstr[2] "Promjene u zadnjih %s dana"
 
@@ -3927,7 +3927,7 @@ msgstr "Kopiraj"
 #: admin_trees_merge.php:182
 #, php-format
 msgid "Copy all the records from %1$s into %2$s."
-msgstr ""
+msgstr "Kopiraj sve zapise iz %1$s u %2$s."
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:424
@@ -5544,7 +5544,7 @@ msgstr "Uređivanje raspona promjena datuma"
 #. I18N: http://en.wikipedia.org/wiki/Endowment_house
 #: library/WT/Gedcom/Code/Temp.php:144
 msgid "Endowment House"
-msgstr ""
+msgstr "Zakladna kuća"
 
 #. I18N: gedcom tag ENGA
 #: library/WT/Gedcom/Tag.php:421 modules_v3/missing_facts_report/report.xml:17
@@ -6808,7 +6808,7 @@ msgstr "Kumče"
 #: modules_v3/googlemap/module.php:1504 modules_v3/googlemap/module.php:4093
 #: modules_v3/googlemap/module.php:4862 modules_v3/googlemap/module.php:4899
 msgid "Google Maps™"
-msgstr ""
+msgstr "Google Maps™"
 
 #: modules_v3/googlemap/module.php:161 modules_v3/googlemap/module.php:206
 #: modules_v3/googlemap/module.php:273 modules_v3/googlemap/module.php:841
@@ -6821,7 +6821,7 @@ msgstr "Google Maps™ postavke"
 #: modules_v3/googlemap/module.php:311 modules_v3/googlemap/module.php:2392
 #: modules_v3/googlemap/module.php:4865
 msgid "Google Street View™"
-msgstr ""
+msgstr "Google Street View™"
 
 #. I18N: gedcom tag GRAD
 #: library/WT/Gedcom/Tag.php:505
@@ -6919,7 +6919,7 @@ msgstr ""
 #. I18N: Name of a module
 #: modules_v3/html/module.php:30
 msgid "HTML"
-msgstr ""
+msgstr "HTML"
 
 #. I18N: gedcom tag _HAIR
 #: library/WT/Gedcom/Tag.php:1514
@@ -6997,7 +6997,7 @@ msgstr "Hebrejski"
 #. I18N: gedcom tag _HNM
 #: library/WT/Gedcom/Tag.php:1526
 msgid "Hebrew name"
-msgstr ""
+msgstr "Hebrejsko ime"
 
 #. I18N: gedcom tag _HEIG
 #: library/WT/Gedcom/Tag.php:1522 modules_v3/googlemap/module.php:319
@@ -7044,7 +7044,7 @@ msgstr ""
 #: modules_v3/relative_ext_report/report.xml:9
 msgctxt "font name"
 msgid "Helvetica"
-msgstr ""
+msgstr "Helvetica"
 
 #: modules_v3/ahnentafel_report/report.xml:193
 msgid "Her occupation was"
@@ -7422,7 +7422,7 @@ msgstr "Učitaj obiteljsko stablo"
 
 #: admin_trees_merge.php:73 admin_trees_renumber.php:260
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
-msgstr ""
+msgstr "U obiteljskom stablu, svaki zapis ima interni referentni broj (nazvan “XREF”) kao što je “F123” ili “R14”."
 
 #: help_text.php:348
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet.  This might be of use with Japanese names, where three different alphabets may occur."
@@ -8131,7 +8131,7 @@ msgstr ""
 #: modules_v3/relative_ext_report/report.xml:8
 msgctxt "paper size"
 msgid "Legal"
-msgstr ""
+msgstr "Legal"
 
 #. I18N: gedcom tag LEGA
 #: library/WT/Gedcom/Tag.php:545
@@ -8162,7 +8162,7 @@ msgstr ""
 #: modules_v3/relative_ext_report/report.xml:8
 msgctxt "paper size"
 msgid "Letter"
-msgstr ""
+msgstr "Letter"
 
 #: modules_v3/googlemap/module.php:415 modules_v3/googlemap/module.php:1653
 #: modules_v3/googlemap/module.php:4077
@@ -8986,7 +8986,7 @@ msgstr "Mercury"
 
 #: admin_trees_merge.php:30 themes/_administration/header.php:122
 msgid "Merge family trees"
-msgstr ""
+msgstr "Spoji obiteljska stabla"
 
 #: admin_site_merge.php:266
 msgid "Merge from ID:"
@@ -10198,7 +10198,7 @@ msgstr "Ups! webtrees ne može kreirati datoteke u ovoj mapi."
 
 #: includes/functions/functions_print.php:829
 msgid "OpenStreetMap™"
-msgstr ""
+msgstr "OpenStreetMap™"
 
 #: modules_v3/googlemap/help_text.php:41 modules_v3/googlemap/module.php:402
 msgid "Optional prefixes and suffixes"
@@ -10586,7 +10586,7 @@ msgstr "Fotografija"
 
 #: admin_pgv_to_wt.php:147
 msgid "PhpGedView might be installed in one of these folders:"
-msgstr ""
+msgstr "PhpGedView može biti instaliran u jedan od ovih mapa:"
 
 #: admin_pgv_to_wt.php:65
 msgid "PhpGedView must use the same database as webtrees."
@@ -11556,7 +11556,7 @@ msgstr "Prebivalište"
 
 #: index_edit.php:355
 msgid "Restore the default block layout"
-msgstr ""
+msgstr "Vrati zadani blok izgleda"
 
 #. I18N: http://en.wikipedia.org/wiki/User_agent
 #: admin_site_access.php:274
@@ -13413,7 +13413,7 @@ msgstr "Detalji ovog pojedinca su privatni."
 
 #: admin_trees_merge.php:176
 msgid "The family trees were merged successfully."
-msgstr ""
+msgstr "Obiteljska stabla su spojena uspješno."
 
 #. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
 #: action.php:160
@@ -13615,7 +13615,7 @@ msgstr "Prefiks je opcionalan, ali preporučen. Davanjem prefiksa imenima tablic
 #: admin_trees_renumber.php:237
 #, php-format
 msgid "The record %1$s was renamed to %2$s."
-msgstr ""
+msgstr "Zapis %1$s je preimenovan u %2$s."
 
 #: action.php:100
 msgid "The record was copied to the clipboard."
@@ -13631,7 +13631,7 @@ msgstr "Konfiguracija servera je u redu."
 
 #: admin_trees_renumber.php:252
 msgid "The server’s time limit was reached."
-msgstr ""
+msgstr "Dosegnuto je vremensko ograničenje servera."
 
 #: site-offline.php:77
 msgid "The site is down for maintenance.  You should <a href=\"index.php\">try again</a> in a few minutes."
@@ -13676,9 +13676,9 @@ msgstr "Vrijeme u sekundama u kojem webtrees drži aktivnu prijavu prije nego za
 #, php-format
 msgid "The two family trees have %1$s record which use the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Obiteljska stabla imaju %1$s zapis koji koristi isti “XREF”."
+msgstr[1] "Obiteljska stabla imaju %1$s zapisa koji koriste isti “XREF”."
+msgstr[2] "Obiteljska stabla imaju %1$s zapisa koji koriste isti “XREF”."
 
 #: admin_site_upgrade.php:492
 msgid "The upgrade is complete."
@@ -13882,9 +13882,9 @@ msgstr "Ova obitelj nije imala djece"
 #, php-format
 msgid "This family tree has %s record which uses the same “XREF” as another family tree."
 msgid_plural "This family tree has %s records which use the same “XREF” as another family tree."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Obiteljsko stablo ima %s zapis koji koristi isti “XREF” kao drugo obiteljsko stablo."
+msgstr[1] "Obiteljsko stablo ima %s zapisa koji koriste isti “XREF” kao drugo obiteljsko stablo."
+msgstr[2] "Obiteljsko stablo ima %s zapisa koji koriste isti “XREF” kao drugo obiteljsko stablo."
 
 #: modules_v3/random_media/module.php:192
 msgid "This family tree has no images to display."
@@ -14841,7 +14841,7 @@ msgstr "Vrsta greške"
 #: admin_trees_config.php:246 library/WT/Gedcom/Tag.php:849
 #: library/WT/Gedcom/Tag.php:865 library/WT/Gedcom/Tag.php:1752
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: library/WT/Stats.php:6255
 msgid "US Minor Outlying Islands"
@@ -14853,16 +14853,16 @@ msgstr ""
 
 #: library/WT/Stats.php:6257
 msgid "USA"
-msgstr ""
+msgstr "USA"
 
 #: library/WT/Stats.php:6229
 msgid "USSR"
-msgstr ""
+msgstr "USSR"
 
 #. I18N: Timezone - http://en.wikipedia.org/wiki/UTC
 #: admin_site_upgrade.php:43 themes/_administration/header.php:89
 msgid "UTC"
-msgstr ""
+msgstr "UTC"
 
 #: library/WT/Stats.php:6253
 msgid "Uganda"
@@ -15761,11 +15761,11 @@ msgstr "Možete ponovo uključiti ove teme nakon nadogradnje."
 
 #: admin_trees_renumber.php:261
 msgid "You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree."
-msgstr ""
+msgstr "Možete renumerirati zapise u obiteljskom stablu, tako da interni referentni brojevi ne budu duplicirani u drugom obiteljskom stablu."
 
 #: admin_trees_renumber.php:274
 msgid "You can renumber this family tree."
-msgstr ""
+msgstr "Možete renumerirati ovo obiteljsko stablo."
 
 #: help_text.php:643 help_text.php:682
 msgid "You can request a higher or lower limit, although the server may ignore this request."
@@ -15862,7 +15862,7 @@ msgstr "Morate priložiti naziv izvora"
 
 #: admin_trees_merge.php:83
 msgid "You must renumber the records in one of the trees before you can merge them."
-msgstr ""
+msgstr "Morate renumerirati zapise u jednom obiteljskom stablu prije nego ih spojite."
 
 #: modules_v3/charts/module.php:143
 msgid "You must select an individual and chart type in the block configuration settings."
@@ -16982,7 +16982,7 @@ msgstr "spol"
 #. I18N: button label
 #: admin_trees_renumber.php:275
 msgid "go"
-msgstr ""
+msgstr "kreni"
 
 #. I18N: button label
 #: edit_interface.php:2748
@@ -19047,7 +19047,7 @@ msgstr "rezultati:"
 #. I18N: http://en.wikipedia.org/wiki/Web_crawler
 #: admin_site_access.php:113 admin_site_access.php:307
 msgid "robot"
-msgstr ""
+msgstr "robot"
 
 #. I18N: button label
 #: addmedia.php:694 admin_module_blocks.php:95 admin_module_menus.php:116
@@ -19471,7 +19471,7 @@ msgstr "supružnik"
 #. I18N: Secure Sockets Layer - a secure communications protocol
 #: admin_site_config.php:38
 msgid "ssl"
-msgstr ""
+msgstr "ssl"
 
 #: includes/functions/functions.php:1291
 msgctxt "father’s wife’s son"
@@ -19679,7 +19679,7 @@ msgstr "tri četvrtine kruga"
 #. I18N: Transport Layer Security - a secure communications protocol
 #: admin_site_config.php:39
 msgid "tls"
-msgstr ""
+msgstr "tls"
 
 #. I18N: Gedcom TO dates
 #: library/WT/Date.php:290
@@ -19837,7 +19837,7 @@ msgstr "ažuriraj"
 #. I18N: This is the name of the MySQL collation that applies to your language.  A list is available at http://dev.mysql.com/doc/refman/5.0/en/charset-unicode-sets.html
 #: library/WT/I18N.php:308
 msgid "utf8_unicode_ci"
-msgstr ""
+msgstr "utf8_unicode_ci"
 
 #: modules_v3/ahnentafel_report/report.xml:138
 #: modules_v3/descendancy_report/report.xml:104
@@ -19895,7 +19895,7 @@ msgstr "webtrees šalje e-poštu bez čuvanja kopije"
 
 #: includes/functions/functions_print.php:488
 msgid "webtrees wiki"
-msgstr ""
+msgstr "webtrees wiki"
 
 #: help_text.php:1306
 msgid "webtrees’ database must be on the same server as PGV’s"
