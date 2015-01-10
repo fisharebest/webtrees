@@ -1,6 +1,4 @@
 <?php
-// File manipulation utilities
-//
 // webtrees: Web based Family History software
 // Copyright (c) 2014 webtrees development team
 //
@@ -18,6 +16,9 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class WT_File - File manipulation utilities
+ */
 class WT_File {
 	/**
 	 * Fetch a remote file
@@ -87,7 +88,7 @@ class WT_File {
 	 *
 	 * @param string $path
 	 *
-	 * @return bool Was the file deleted
+	 * @return boolean Was the file deleted
 	 */
 	public static function delete($path) {
 		// In case the file is marked read-only
@@ -114,7 +115,7 @@ class WT_File {
 	 *
 	 * @param string $path
 	 *
-	 * @return bool Does the folder now exist
+	 * @return boolean Does the folder now exist
 	 */
 	public static function mkdir($path) {
 		if (is_dir($path)) {

@@ -25,19 +25,15 @@ div.infowindow {
 }
 
 #iwhead {
-	background: #ffffff;
-	border-bottom: 1px solid #bbbbbb;
-	border-left: 0 solid #bbbbbb;
-	border-right: 0 solid #bbbbbb;
-	border-top: 1px solid #bbbbbb;
+	background: #fff;
+	border: 1px solid #bbb;
+	border-right-width: 0;
+	border-left-width: 0;
 	font-size: 10px;
 	margin-left: -2px;
 	margin-right: 0;
 	margin-top: -1px;
-	padding-bottom: .3em;
-	padding-left: .2em;
-	padding-right: .2em;
-	padding-top: .3em;
+	padding: .3em .2em;
 	text-align: center;
 	white-space: normal;
 	width: 300px;
@@ -48,7 +44,7 @@ div.infowindow {
 }
 
 #iwcontent {
-	border: 1px solid #bbbbbb;
+	border: 1px solid #bbb;
 	margin-right: 0;
 }
 
@@ -57,7 +53,7 @@ div.infowindow {
 }
 
 #iwhead a {
-	color: #0000cc;
+	color: #00c;
 }
 
 #iwcontent a:hover {
@@ -65,7 +61,7 @@ div.infowindow {
 }
 
 #gmtabs {
-	background-color: #eeeeee;
+	background-color: #eee;
 }
 
 #gmtabs ul {
@@ -78,45 +74,45 @@ h4 {
 
 #txt {
 	width: 300px;
- 	background: #ffffcc;
- 	margin-left: -8px;
- 	margin-top: -8px;
- 	text-align: center;
+	background: #ffc;
+	margin-left: -8px;
+	margin-top: -8px;
+	text-align: center;
 }
 
 #pano {
 	width: 297px;
- 	border-top: 1px solid #aaaaaa;
- 	height: 216px;
- 	margin-left: 0;
- 	margin-top: 0;
+	border-top: 1px solid #aaa;
+	height: 216px;
+	margin-left: 0;
+	margin-top: 0;
 }
 
 .highlt_img {
-	background-color: #eeeeee;
- 	text-align: center;
+	background-color: #eee;
+	text-align: center;
 }
 
 .highlt_img img {
- 	border: none;
+	border: none;
 	float: none;
 }
 
 /* root element for tabs */
 ul.tabs {
 	margin: 0 !important;
- 	background: #ddeeff;
- 	border: 1px solid #666;
- 	height: 20px;
- 	padding: 0;
+	background: #def;
+	border: 1px solid #666;
+	height: 20px;
+	padding: 0;
 }
 
 /* single tab */
 ul.tabs li {
 	float: left;
- 	list-style-type: none;
- 	margin: 0;
- 	padding: 0;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
 }
 
 /* link inside the tab. uses a background image */
@@ -132,33 +128,33 @@ ul.tabs a {
 	position: relative;
 	text-decoration: none;
 	top: 1px;
- 	display: block;
- 	font-size: 13px;
- 	padding: 0 10px;
+	display: block;
+	font-size: 13px;
+	padding: 0 10px;
 }
 
 ul.tabs a:hover {
-	background-color: #ffffff;
- 	color: #333;
-} 
+	background-color: #fff;
+	color: #333;
+}
 
 /* selected tab */
 ul.tabs a.current {
 	background-color: #fff;
- 	border-bottom: 1px solid #ddd;
- 	color: #000;
- 	cursor: default;
+	border-bottom: 1px solid #ddd;
+	color: #000;
+	cursor: default;
 }
 
 /* tabs */
 #EV {
-	background: #ffffff;
- 	padding-bottom: 1px;
+	background: #fff;
+	padding-bottom: 1px;
 }
 
 #SV {
-	background: #cccccc;
- 	padding-bottom: 0;
+	background: #ccc;
+	padding-bottom: 0;
 }
 
 /* tab panes */
@@ -173,7 +169,7 @@ ul.tabs a.current {
 /* view_type */
 #view_type {
 	display: block;
- 	margin-top: -12px;
+	margin-top: -12px;
 }
 
 #view_type td {
@@ -181,17 +177,17 @@ ul.tabs a.current {
 }
 
 #view_type form {
- 	text-align: center;
+	text-align: center;
 	width: 360px;
 }
 
 /* places_edit */
 #gname {
 	vertical-align: middle;
- 	height: 60px;
- 	margin-top: 0;
- 	white-space: pre-wrap;
- 	width: 200px;
+	height: 60px;
+	margin-top: 0;
+	white-space: pre-wrap;
+	width: 200px;
 }
 
 #namelink {
@@ -199,10 +195,10 @@ ul.tabs a.current {
 }
 
 #iwcontent_edit {
-	background-color: #eeeeee;
- 	border: 1px solid #bbbbbb;
- 	height: 60px;
- 	margin-right: 0;
+	background-color: #eee;
+	border: 1px solid #bbb;
+	height: 60px;
+	margin-right: 0;
 }
 
 #iwcontent_edit a {
@@ -259,7 +255,19 @@ ul.tabs a.current {
 #pedigreemap_chart {
 	margin: 20px;
 }
-#side_bar .NAME {padding-left:5px;}
-#side_bar img {padding-right:5px;}
-[dir=rtl] #side_bar .NAME {padding-right:5px;}
-[dir=rtl] #side_bar img {padding-left:5px;}
+
+#side_bar .NAME {
+	padding-left: 5px;
+}
+
+#side_bar img {
+	padding-right: 5px;
+}
+
+[dir=rtl] #side_bar .NAME {
+	padding-right: 5px;
+}
+
+[dir=rtl] #side_bar img {
+	padding-left: 5px;
+}

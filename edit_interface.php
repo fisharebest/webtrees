@@ -5,7 +5,7 @@
 // Copyright (C) 2014 webtrees development team.
 //
 // Derived from PhpGedView
-// Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.
+// Copyright (C) 2002 to 2009 PGV Development Team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -65,7 +65,7 @@ case 'editraw':
 			<?php echo WT_Filter::getCsrf(); ?>
 			<ul id="raw-gedcom-list">
 				<?php foreach ($record->getFacts() as $fact) { ?>
-					<?php if (!$fact->isOld()) { ?>
+					<?php if (!$fact->isPendingDeletion()) { ?>
 					<li>
 						<div style="cursor:move;">
 							<?php echo $fact->summary(); ?>
@@ -274,44 +274,39 @@ case 'edit':
 
 	$level1type = $edit_fact->getTag();
 	switch ($record::RECORD_TYPE) {
-	case 'OBJE':
-	case 'NOTE':
-		// OBJE and NOTE facts are all special, and none can take lower-level links
-		break;
-	case 'SOUR':
 	case 'REPO':
-		// SOUR and REPO facts may only take a NOTE
-		if ($level1type!='NOTE') {
+		// REPO:NAME facts may take a NOTE (but the REPO record may not).
+		if ($level1type === 'NAME') {
 			print_add_layer('NOTE');
+			print_add_layer('SHARED_NOTE');
 		}
 		break;
 	case 'FAM':
 	case 'INDI':
 		// FAM and INDI records have real facts.  They can take NOTE/SOUR/OBJE/etc.
-		if ($level1type!='SEX') {
-			if ($level1type!='SOUR' && $level1type!='REPO') {
+		if ($level1type !== 'SEX' && $level1type !== 'NOTE') {
+			if ($level1type !== 'SOUR') {
 				print_add_layer('SOUR');
 			}
-			if ($level1type!='OBJE' && $level1type!='REPO') {
+			if ($level1type !== 'OBJE') {
 				print_add_layer('OBJE');
 			}
-			if ($level1type!='NOTE') {
-				print_add_layer('NOTE');
-			}
-			// Shared Note addition ------------
-			if ($level1type!='SHARED_NOTE' && $level1type!='NOTE') {
-				print_add_layer('SHARED_NOTE');
-			}
-			if ($level1type!='ASSO' && $level1type!='REPO' && $level1type!='NOTE') {
+			print_add_layer('NOTE');
+			print_add_layer('SHARED_NOTE');
+			if ($level1type !== 'ASSO' && $level1type !== 'NOTE' && $level1type !== 'SOUR') {
 				print_add_layer('ASSO');
 			}
 			// allow to add godfather and godmother for CHR fact or best man and bridesmaid  for MARR fact in one window
-			if ($level1type=='CHR' || $level1type=='MARR') {
+			if ($level1type === 'CHR' || $level1type === 'MARR') {
 				print_add_layer('ASSO2');
 			}
-			// RESN can be added to all level 1 tags
-			print_add_layer('RESN');
+			if ($level1type !== 'SOUR') {
+				print_add_layer('RESN');
+			}
 		}
+		break;
+	default:
+		// Other types of record do not have these lower-level records
 		break;
 	}
 	if (Auth::isAdmin() || $SHOW_GEDCOM_RECORD) {
@@ -365,7 +360,7 @@ case 'add':
 	// Genealogical facts (e.g. for INDI and FAM records) can have 2 SOUR/NOTE/OBJE/ASSO/RESN ...
 	if ($level0type=='INDI' || $level0type=='FAM') {
 		// ... but not facts which are simply links to other records
-		if ($fact!='OBJE' && $fact!='SHARED_NOTE' && $fact!='OBJE' && $fact!='REPO' && $fact!='SOUR' && $fact!='ASSO') {
+		if ($fact!='OBJE' && $fact!='NOTE' && $fact!='SHARED_NOTE' && $fact!='OBJE' && $fact!='REPO' && $fact!='SOUR' && $fact!='ASSO') {
 			print_add_layer('SOUR');
 			print_add_layer('OBJE');
 			// Don’t add notes to notes!
@@ -1687,7 +1682,7 @@ case 'reorder_media':
 	foreach ($record_list as $record) {
 		if ($record->canShow()) {
 			foreach ($record->getFacts() as $fact) {
-				if (!$fact->isOld()) {
+				if (!$fact->isPendingDeletion()) {
 					preg_match_all('/(?:^1|\n\d) OBJE @(' . WT_REGEX_XREF . ')@/', $fact->getGedcom(), $matches);
 					foreach ($matches[1] as $match) {
 						$media = WT_Media::getInstance($match);
@@ -2051,8 +2046,6 @@ case 'changefamily_update':
 		exit;
 	}
 
-	//TODO use CHIL[] instead of CHIL<n>
-	//$CHIL      = WT_Filter::postArray('CHIL', WT_REGEX_XREF);
 	$CHIL = array();
 	for ($i=0; ;++$i) {
 		if (isset($_POST['CHIL'.$i])) {
@@ -2252,8 +2245,14 @@ case 'reorder_fams_update':
 	break;
 }
 
-// Keep the existing CHAN record when editing
-function keep_chan(WT_GedcomRecord $record=null) {
+/**
+ * Show an option to preserve the existing CHAN record when editing.
+ *
+ * @param WT_GedcomRecord $record
+ *
+ * @return string
+ */
+function keep_chan(WT_GedcomRecord $record = null) {
 	global $NO_UPDATE_CHAN;
 
 	if (Auth::isAdmin()) {
@@ -2262,7 +2261,7 @@ function keep_chan(WT_GedcomRecord $record=null) {
 		if ($record) {
 			$details =
 				WT_Gedcom_Tag::getLabelValue('DATE', $record->lastChangeTimestamp()) .
-				WT_Gedcom_Tag::getLabelValue('_WT_USER', $record->lastChangeUser());
+				WT_Gedcom_Tag::getLabelValue('_WT_USER', WT_Filter::escapeHtml($record->lastChangeUser()));
 		} else {
 			$details = '';
 		}
@@ -2281,8 +2280,17 @@ function keep_chan(WT_GedcomRecord $record=null) {
 	}
 }
 
-// prints a form to add an individual or edit an individual’s name
-function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $family=null, WT_Fact $name_fact=null, $famtag='CHIL', $gender='U') {
+/**
+ * Print a form to add an individual or edit an individual’s name
+ *
+ * @param string        $nextaction
+ * @param WT_Individual $person
+ * @param WT_Family     $family
+ * @param WT_Fact       $name_fact
+ * @param string        $famtag
+ * @param string        $gender
+ */
+function print_indi_form($nextaction, WT_Individual $person = null, WT_Family $family = null, WT_Fact $name_fact = null, $famtag = 'CHIL', $gender = 'U') {
 	global $WT_TREE, $WORD_WRAPPED_NOTES, $NPFX_accept, $SHOW_GEDCOM_RECORD, $bdm, $STANDARD_NAME_FACTS, $ADVANCED_NAME_FACTS;
 	global $QUICK_REQUIRED_FACTS, $QUICK_REQUIRED_FAMFACTS, $controller;
 
@@ -2489,7 +2497,7 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 			// Mother gives her surname to her children
 			switch ($nextaction) {
 			case 'add_child_to_family_action':
-				if (preg_match('/\/((?:[a-z]{2,3} )*)(.*)\//i', $mother, $match)) {
+				if (preg_match('/\/((?:[a-z]{2,3} )*)(.*)\//i', $mother_name, $match)) {
 					$name_fields['SURN']=$match[2];
 					$name_fields['SPFX']=trim($match[1]);
 					$name_fields['NAME']="/{$match[1]}{$match[2]}/";
@@ -2812,7 +2820,7 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 		var romn = "";
 		var heb = "";
 		for (var i = 0; i < ip.length; i++) {
-			var val = ip[i].value;
+			var val = trim(ip[i].value);
 			if (ip[i].id.indexOf("_HEB") === 0)
 				heb = val;
 			if (ip[i].id.indexOf("ROMN") === 0)
@@ -2906,8 +2914,12 @@ function print_indi_form($nextaction, WT_Individual $person=null, WT_Family $fam
 	echo '</div>';
 }
 
-// Can we edit a WT_GedcomRecord object
-function check_record_access(WT_GedcomRecord $object=null) {
+/**
+ * Can we edit a WT_GedcomRecord object
+ *
+ * @param WT_GedcomRecord $object
+ */
+function check_record_access(WT_GedcomRecord $object = null) {
 	global $controller;
 
 	if (!$object || !$object->canShow() || !$object->canEdit()) {

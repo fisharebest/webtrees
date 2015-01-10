@@ -45,29 +45,34 @@
 			function loaded() {
 				var width = $img.width(),
 					height = $img.height(),
+					innerWidth = $img.innerWidth(),
+					innerHeight = $img.innerHeight(),
+					PosX = (innerWidth - width)/2,
+					PosY = (innerHeight - height)/2,
 					bgWidth = width,
 					bgHeight = height,
-					bgPosX = 0,
-					bgPosY = 0;
+					bgPosX = PosX,
+					bgPosY = PosY;
 
 				function reset() {
 					bgWidth = width;
 					bgHeight = height;
-					bgPosX = bgPosY = 0;
+					bgPosX = PosX;
+					bgPosY = PosY;
 					updateBgStyle();
 				}
 
 				function updateBgStyle() {
-					if (bgPosX > 0) {
-						bgPosX = 0;
-					} else if (bgPosX < width - bgWidth) {
-						bgPosX = width - bgWidth;
+					if (bgPosX > PosX) {
+						bgPosX = PosX;
+					} else if (bgPosX < width + PosX - bgWidth) {
+						bgPosX = width + PosX - bgWidth;
 					}
 
-					if (bgPosY > 0) {
-						bgPosY = 0;
-					} else if (bgPosY < height - bgHeight) {
-						bgPosY = height - bgHeight;
+					if (bgPosY > PosY) {
+						bgPosY = PosY;
+					} else if (bgPosY < height + PosY - bgHeight) {
+						bgPosY = height + PosY - bgHeight;
 					}
 
 					img.style.backgroundSize = bgWidth+'px '+bgHeight+'px';
@@ -78,7 +83,7 @@
 
 				$img.css({
 					backgroundSize: width+'px '+height+'px',
-					backgroundPosition: '0 0'
+					backgroundPosition: PosX + 'px ' + PosY + 'px'
 				}).bind('wheelzoom.reset', reset);
 
 				img[wheel] = function (e) {

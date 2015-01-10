@@ -1,6 +1,4 @@
 <?php
-// Classes and libraries for module system
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -21,18 +19,23 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+
+/**
+ * Class gedcom_block_WT_Module
+ */
 class gedcom_block_WT_Module extends WT_Module implements WT_Module_Block {
-	// Extend class WT_Module
+	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module */ WT_I18N::translate('Home page');
 	}
 
-	// Extend class WT_Module
+	/** {@inheritdoc} */
 	public function getDescription() {
 		return /* I18N: Description of the “Home page” module */ WT_I18N::translate('A greeting message for site visitors.');
 	}
 
-	// Implement class WT_Module_Block
+	/** {@inheritdoc} */
 	public function getBlock($block_id, $template=true, $cfg=null) {
 		global $controller;
 
@@ -43,7 +46,7 @@ class gedcom_block_WT_Module extends WT_Module implements WT_Module_Block {
 		$content = '<table><tr>';
 		$content .= '<td><a href="pedigree.php?rootid='.$indi_xref.'&amp;ged='.WT_GEDURL.'"><i class="icon-pedigree"></i><br>'.WT_I18N::translate('Default chart').'</a></td>';
 		$content .= '<td><a href="individual.php?pid='.$indi_xref.'&amp;ged='.WT_GEDURL.'"><i class="icon-indis"></i><br>'.WT_I18N::translate('Default individual').'</a></td>';
-		if (WT_Site::getPreference('USE_REGISTRATION_MODULE') && WT_USER_ID==false) {
+		if (WT_Site::getPreference('USE_REGISTRATION_MODULE') && !Auth::check()) {
 			$content .= '<td><a href="'.WT_LOGIN_URL.'?action=register"><i class="icon-user_add"></i><br>'.WT_I18N::translate('Request new user account').'</a></td>';
 		}
 		$content .= "</tr>";
@@ -56,22 +59,22 @@ class gedcom_block_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 	}
 
-	// Implement class WT_Module_Block
+	/** {@inheritdoc} */
 	public function loadAjax() {
 		return false;
 	}
 
-	// Implement class WT_Module_Block
+	/** {@inheritdoc} */
 	public function isUserBlock() {
 		return false;
 	}
 
-	// Implement class WT_Module_Block
+	/** {@inheritdoc} */
 	public function isGedcomBlock() {
 		return true;
 	}
 
-	// Implement class WT_Module_Block
+	/** {@inheritdoc} */
 	public function configureBlock($block_id) {
 	}
 }

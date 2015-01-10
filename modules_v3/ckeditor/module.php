@@ -1,6 +1,4 @@
 <?php
-// Classes and libraries for module system
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -21,15 +19,18 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class ckeditor_WT_Module
+ */
 class ckeditor_WT_Module extends WT_Module {
 	const VERSION = 'ckeditor-4.4.1-custom';
 
-	// Extend WT_Module
+	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module.  CKEditor is a trademark.  Do not translate it?  http://ckeditor.com */ WT_I18N::translate('CKEditor™');
 	}
 
-	// Extend WT_Module
+	/** {@inheritdoc} */
 	public function getDescription() {
 		return /* I18N: Description of the “CKEditor” module.  WYSIWYG = “what you see is what you get” */ WT_I18N::translate('Allow other modules to edit text using a “WYSIWYG” editor, instead of using HTML codes.');
 	}

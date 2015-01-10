@@ -5,7 +5,7 @@
 // Copyright (C) 2014 webtrees development team.
 //
 // Derived from PhpGedView
-// Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.
+// Copyright (C) 2002 to 2009 PGV Development Team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -38,23 +38,6 @@ $all       = WT_Filter::getBool('all');
 $subclick  = WT_Filter::get('subclick');
 $choose    = WT_Filter::get('choose', '[a-zA-Z0-9_]+', '0all');
 $qs        = WT_Filter::get('tags');
-
-// Retrives the currently selected tags in the opener window (reading curTags value of the query string)
-// $preselDefault will be set to the array of DEFAULT preselected tags
-// $preselCustom will be set to the array of CUSTOM preselected tags
-function getPreselectedTags(&$preselDefault, &$preselCustom) {
-	global $qs;
-	$all = strlen($qs) ? explode(',', strtoupper($qs)) : array();
-	$preselDefault = array();
-	$preselCustom = array();
-	foreach ($all as $one) {
-		if (WT_Gedcom_Tag::isTag($one)) {
-			$preselDefault[] = $one;
-		} else {
-			$preselCustom[] = $one;
-		}
-	}
-}
 
 if ($subclick=='all') {
 	$all=true;
@@ -300,12 +283,12 @@ if ($type == 'specialchar') {
 	<p><select id="language_filter" name="language_filter" onchange="submit();">
 	<option value="">', WT_I18N::translate('Change language'), '</option>';
 	$language_options = '';
-	foreach ($specialchar_languages as $key=>$value) {
+	foreach ($specialchar_languages as $key=>$special_character) {
 		$language_options.= '<option value="'.$key.'"';
 		if ($key==$language_filter) {
 			$language_options.=' selected="selected"';
 		}
-		$language_options.='>'.$value.'</option>';
+		$language_options.='>'.$special_character.'</option>';
 	}
 	echo $language_options,
 	'</select>
@@ -321,7 +304,18 @@ if ($type == "facts") {
 	<input type="hidden" name="callback" value="', $callback, '">
 	<table class="list_table width100" border="0">
 	<tr><td class="list_label" style="padding: 5px; font-weight: normal; white-space: normal;">' ;
-	getPreselectedTags($preselDefault, $preselCustom);
+
+	$all = strlen($qs) ? explode(',', strtoupper($qs)) : array();
+	$preselDefault = array();
+	$preselCustom = array();
+	foreach ($all as $one) {
+		if (WT_Gedcom_Tag::isTag($one)) {
+			$preselDefault[] = $one;
+		} else {
+			$preselCustom[] = $one;
+		}
+	}
+
 	echo '<script>'; ?>
 	// A class representing a default tag
 	function DefaultTag(id, name, selected) {
@@ -451,7 +445,7 @@ if ($type == "facts") {
 	<?php echo '</script>';
 	echo '<div id="layDefinedTags"><table id="tabDefinedTags">
 		<thead><tr>
-			<th>&nbsp;</th>
+			<th></th>
 			<th>', WT_I18N::translate('Tag'), '</th>
 			<th>', WT_I18N::translate('Description'), '</th>
 		</tr></thead>
@@ -682,18 +676,18 @@ if ($action=="filter") {
 	if ($type == "specialchar") {
 		echo '<div id="find-output-special"><p>';
 		// lower case special characters
-		foreach ($lcspecialchars as $key=>$value) {
-			echo '<a class="largechars" href="#" onclick="return window.opener.paste_char(\'', $value, '\');">', $key, '</a> ';
+		foreach ($lcspecialchars as $special_character) {
+			echo '<a class="largechars" href="#" onclick="return window.opener.paste_char(\'', $special_character, '\');">', $special_character, '</a> ';
 		}
 		echo '</p><p>';
 		//upper case special characters
-		foreach ($ucspecialchars as $key=>$value) {
-			echo '<a class="largechars" href="#" onclick="return window.opener.paste_char(\'', $value, '\');">', $key, '</a> ';
+		foreach ($ucspecialchars as $special_character) {
+			echo '<a class="largechars" href="#" onclick="return window.opener.paste_char(\'', $special_character, '\');">', $special_character, '</a> ';
 		}
 		echo '</p><p>';
 		// other special characters (not letters)
-		foreach ($otherspecialchars as $key=>$value) {
-			echo '<a class="largechars" href="#" onclick="return window.opener.paste_char(\'', $value, '\');">', $key, '</a> ';
+		foreach ($otherspecialchars as $special_character) {
+			echo '<a class="largechars" href="#" onclick="return window.opener.paste_char(\'', $special_character, '\');">', $special_character, '</a> ';
 		}
 		echo '</p></div>';
 	}

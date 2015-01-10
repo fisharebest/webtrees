@@ -1,8 +1,4 @@
 <?php
-//
-// Class file for the database access.  Extend PHP's native PDO and
-// PDOStatement classes to provide database access with logging, etc.
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -23,6 +19,10 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class WT_DB Class - Extend PHP's native PDO and PDOStatement classes
+ * to provide database access with logging, etc.
+ */
 class WT_DB {
 	/** @var WT_DB Implement the singleton pattern */
 	private static $instance;
@@ -33,19 +33,47 @@ class WT_DB {
 	/** @var array Keep a log of all the SQL statements that we execute */
 	private static $log;
 
-	// Prevent instantiation via new WT_DB
+	/**
+	 * Prevent instantiation via new WT_DB
+	 */
 	private final function __construct() {
 		self::$log = array();
 	}
 
-	// Prevent instantiation via clone()
+	/**
+	 * Prevent instantiation via clone()
+	 *
+	 * @throws Exception
+	 */
 	public final function __clone() {
 		throw new Exception('WT_DB::clone() is not allowed.');
 	}
 
-	// Prevent instantiation via serialize()
+	/**
+	 * Prevent instantiation via serialize()
+	 *
+	 * @throws Exception
+	 */
 	public final function __wakeup() {
 		throw new Exception('WT_DB::unserialize() is not allowed.');
+	}
+
+	/**
+	 * Begin a transaction.
+	 *
+	 * @return bool
+	 */
+	public static function beginTransaction() {
+		return self::$pdo->beginTransaction();
+	}
+
+	/**
+	 * Commit this transaction.
+	 *
+	 * @return bool
+	 */
+	public static function commit() {
+		return self::$pdo->commit();
 	}
 
 	/**
@@ -109,7 +137,7 @@ class WT_DB {
 	/**
 	 * Are we currently connected to a database?
 	 *
-	 * @return bool
+	 * @return boolean
 	 */
 	public static function isConnected() {
 		return self::$pdo instanceof PDO;
@@ -119,7 +147,7 @@ class WT_DB {
 	 * Log the details of a query, for debugging and analysis.
 	 *
 	 * @param string   $query
-	 * @param int      $rows
+	 * @param integer  $rows
 	 * @param double   $microtime
 	 * @param string[] $bind_variables
 	 *
@@ -179,7 +207,7 @@ class WT_DB {
 	/**
 	 * Determine the number of queries executed, for the page statistics.
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	public static function getQueryCount() {
 		return count(self::$log);
@@ -230,7 +258,7 @@ class WT_DB {
 	 *
 	 * @param string $sql The SQL statement to execute
 	 *
-	 * @return int The number of rows affected by this SQL query
+	 * @return integer The number of rows affected by this SQL query
 	 */
 	public static function exec($sql) {
 		$sql = str_replace('##', WT_TBLPREFIX, $sql);
@@ -260,11 +288,20 @@ class WT_DB {
 	}
 
 	/**
+	 * Roll back this transaction.
+	 *
+	 * @return bool
+	 */
+	public static function rollBack() {
+		return self::$pdo->rollBack();
+	}
+
+	/**
 	 * Run a series of scripts to bring the database schema up to date.
 	 *
-	 * @param string $schema_dir
-	 * @param string $schema_name
-	 * @param int    $target_version
+	 * @param string  $schema_dir
+	 * @param string  $schema_name
+	 * @param integer $target_version
 	 *
 	 * @return void
 	 * @throws Exception

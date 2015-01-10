@@ -1,8 +1,4 @@
 <?php
-// Base Report Generator
-//
-// used by the SAX parser to generate reports from the XML report file.
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -23,6 +19,10 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class WT_Report_Base_Footnote - Base Report Generator, used by the SAX
+ * parser to generate reports from the XML report file.
+ */
 class WT_Report_Base_Footnote extends WT_Report_Base_Element {
 	/**
 	 * The name of the style for this element
@@ -78,7 +78,7 @@ class WT_Report_Base_Footnote extends WT_Report_Base_Element {
 	/**
 	 * @param $t
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	function addText($t) {
 		$t = trim($t, "\r\n\t");
@@ -110,7 +110,7 @@ class WT_Report_Base_Footnote extends WT_Report_Base_Element {
 	/**
 	 * @param $n
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	function setNum($n) {
 		$this->num = $n;
@@ -122,7 +122,7 @@ class WT_Report_Base_Footnote extends WT_Report_Base_Element {
 	/**
 	 * @param $a
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	function setAddlink($a) {
 		$this->addlink = $a;

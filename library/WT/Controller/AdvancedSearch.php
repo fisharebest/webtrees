@@ -1,6 +1,4 @@
 <?php
-// Controller for the advanced search page
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -21,12 +19,18 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class WT_Controller_AdvancedSearch - Controller for the advanced search page
+ */
 class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 	var $fields = array();
 	var $values = array();
 	var $plusminus = array();
 	var $errors = array();
 
+	/**
+	 * Startup activity
+	 */
 	function __construct() {
 		parent::__construct();
 
@@ -67,6 +71,11 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 		}
 	}
 
+	/**
+	 * A list of additional fields that can be added.
+	 *
+	 * @return string[]
+	 */
 	function getOtherFields() {
 		global $WT_TREE;
 
@@ -133,6 +142,14 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 		return $fields;
 	}
 
+	/**
+	 * Compare two tags, for sorting
+	 *
+	 * @param string $x
+	 * @param string $y
+	 *
+	 * @return int
+	 */
 	public static function tagSort($x, $y) {
 		list($x1)=explode(':', $x.':');
 		list($y1)=explode(':', $y.':');
@@ -144,26 +161,52 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 		}
 	}
 
+	/**
+	 * @param integer $i
+	 *
+	 * @return string
+	 */
 	function getValue($i) {
-		$val = "";
+		$val = '';
 		if (isset($this->values[$i])) $val = $this->values[$i];
 		return $val;
 	}
 
+	/**
+	 * @param integer $i
+	 *
+	 * @return string
+	 */
 	function getField($i) {
-		$val = "";
-		if (isset($this->fields[$i])) $val = htmlentities($this->fields[$i]);
+		$val = '';
+		if (isset($this->fields[$i])) {
+			$val = htmlentities($this->fields[$i]);
+		}
+
 		return $val;
 	}
 
+	/**
+	 * @param string $field
+	 *
+	 * @return integer
+	 */
 	function getIndex($field) {
 		return array_search($field, $this->fields);
 	}
 
+	/**
+	 * @param string $tag
+	 *
+	 * @return string
+	 */
 	function getLabel($tag) {
 		return WT_Gedcom_Tag::getLabel(preg_replace('/:(SDX|BEGINS|EXACT|CONTAINS)$/', '', $tag));
 	}
 
+	/**
+	 * Set the field order
+	 */
 	function reorderFields() {
 		$i = 0;
 		$newfields = array();
@@ -189,6 +232,11 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 		}
 	}
 
+	/**
+	 * Perform the search
+	 *
+	 * @return void
+	 */
 	function advancedSearch() {
 		$this->myindilist = array ();
 		$fct = count($this->fields);
@@ -317,7 +365,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 						$bind[]=$value;
 						break;
 					case 'SDX_STD':
-						$sdx = WT_Soundex::soundex_std($value);
+						$sdx = WT_Soundex::russell($value);
 						if ($sdx) {
 							$sdx = explode(':', $sdx);
 							foreach ($sdx as $k=>$v) {
@@ -333,7 +381,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 						break;
 					case 'SDX': // SDX uses DM by default.
 					case 'SDX_DM':
-						$sdx = WT_Soundex::soundex_dm($value);
+						$sdx = WT_Soundex::daitchMokotoff($value);
 						if ($sdx) {
 							$sdx = explode(':', $sdx);
 							foreach ($sdx as $k=>$v) {
@@ -364,7 +412,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 						$bind[]=$value;
 						break;
 					case 'SDX_STD':
-						$sdx = WT_Soundex::soundex_std($value);
+						$sdx = WT_Soundex::russell($value);
 						if ($sdx) {
 							$sdx = explode(':', $sdx);
 							foreach ($sdx as $k=>$v) {
@@ -380,7 +428,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 						break;
 					case 'SDX': // SDX uses DM by default.
 					case 'SDX_DM':
-						$sdx = WT_Soundex::soundex_dm($value);
+						$sdx = WT_Soundex::daitchMokotoff($value);
 						if ($sdx) {
 							$sdx = explode(':', $sdx);
 							foreach ($sdx as $k=>$v) {
@@ -414,7 +462,6 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 					else $jd2 = $date->date1->maxJD;
 					if (!empty($this->plusminus[$i])) {
 						$adjd = $this->plusminus[$i]*365;
-						//echo $jd1.":".$jd2.":".$adjd;
 						$jd1 = $jd1 - $adjd;
 						$jd2 = $jd2 + $adjd;
 					}
@@ -432,7 +479,6 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 					else $jd2 = $date->date1->maxJD;
 					if (!empty($this->plusminus[$i])) {
 						$adjd = $this->plusminus[$i]*365;
-						//echo $jd1.":".$jd2.":".$adjd;
 						$jd1 = $jd1 - $adjd;
 						$jd2 = $jd2 + $adjd;
 					}
@@ -445,7 +491,6 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 				// *:PLAC
 				// SQL can only link a place to a person/family, not to an event.
 				$sql.=" AND i_p.place LIKE CONCAT('%', ?, '%')";
-				//$sql.=" AND i_p.p_place=?";
 				$bind[]=$value;
 			} elseif ($parts[0]=='FAMS' && $parts[2]=='PLAC') {
 				// FAMS:*:PLAC
@@ -471,7 +516,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 						$bind[]=$value;
 						break;
 					case 'SDX_STD':
-						$sdx = WT_Soundex::soundex_std($value);
+						$sdx = WT_Soundex::russell($value);
 						if ($sdx) {
 							$sdx = explode(':', $sdx);
 							foreach ($sdx as $k=>$v) {
@@ -487,7 +532,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 						break;
 					case 'SDX': // SDX uses DM by default.
 					case 'SDX_DM':
-						$sdx = WT_Soundex::soundex_dm($value);
+						$sdx = WT_Soundex::daitchMokotoff($value);
 						if ($sdx) {
 							$sdx = explode(':', $sdx);
 							foreach ($sdx as $k=>$v) {
@@ -518,7 +563,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 						$bind[]=$value;
 						break;
 					case 'SDX_STD':
-						$sdx = WT_Soundex::soundex_std($value);
+						$sdx = WT_Soundex::russell($value);
 						if ($sdx) {
 							$sdx = explode(':', $sdx);
 							foreach ($sdx as $k=>$v) {
@@ -534,7 +579,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 						break;
 					case 'SDX': // SDX uses DM by default.
 					case 'SDX_DM':
-						$sdx = WT_Soundex::soundex_dm($value);
+						$sdx = WT_Soundex::daitchMokotoff($value);
 						if ($sdx) {
 							$sdx = explode(':', $sdx);
 							foreach ($sdx as $k=>$v) {
@@ -578,7 +623,10 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 		}
 	}
 
-	function PrintResults() {
+	/**
+	 * @return bool
+	 */
+	function printResults() {
 		require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 		if ($this->myindilist) {
 			uasort($this->myindilist, array('WT_GedcomRecord', 'compare'));

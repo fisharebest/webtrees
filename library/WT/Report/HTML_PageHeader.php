@@ -28,14 +28,14 @@
  */
 class WT_Report_HTML_PageHeader extends WT_Report_Base_PageHeader {
 	/**
-	 * @param $html
+	 * @param WT_Report_HTML $renderer
 	 *
 	 * @return void
 	 */
-	function render($html) {
-		$html->clearPageHeader();
+	function render($renderer) {
+		$renderer->clearPageHeader();
 		foreach ($this->elements as $element) {
-			$html->addPageHeader($element);
+			$renderer->addPageHeader($element);
 		}
 	}
 }

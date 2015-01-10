@@ -62,7 +62,7 @@ $xrefs = WT_DB::prepare(
 echo '<h2>', $controller->getPageTitle(), ' — ', $WT_TREE->tree_title_html, '</h2>';
 if (WT_Filter::get('go')) {
 	foreach ($xrefs as $old_xref=>$type) {
-		WT_DB::exec("START TRANSACTION");
+		WT_DB::beginTransaction();
 		WT_DB::exec(
 			"LOCK TABLE `##individuals` WRITE," .
 			" `##families` WRITE," .
@@ -237,7 +237,7 @@ if (WT_Filter::get('go')) {
 		echo '<p>', WT_I18N::translate('The record %1$s was renamed to %2$s.', $old_xref, $new_xref), '</p>';
 		unset($xrefs[$old_xref]);
 		WT_DB::exec("UNLOCK TABLES");
-		WT_DB::exec("COMMIT");
+		WT_DB::commit();
 
 		try {
 			WT_DB::prepare(

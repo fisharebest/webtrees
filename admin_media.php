@@ -135,21 +135,21 @@ case 'load_json':
 		} else {
 			$LIMIT = "";
 		}
-		$order = WT_Filter::get('order');
+		$order = WT_Filter::getArray('order');
 		if ($order) {
 			$ORDER_BY = " ORDER BY ";
-			for ($i = 0; $i < count($order); ++$i) {
-				if ($i > 0) {
+			foreach ($order as $key => $value) {
+				if ($key > 0) {
 					$ORDER_BY .= ',';
 				}
 				// Datatables numbers columns 0, 1, 2, ...
 				// MySQL numbers columns 1, 2, 3, ...
-				switch ($order[$i]['dir']) {
+				switch ($value['dir']) {
 				case 'asc':
-					$ORDER_BY .= (1 + $order[$i]['column']) . ' ASC ';
+					$ORDER_BY .= (1 + $value['column']) . ' ASC ';
 					break;
 				case 'desc':
-					$ORDER_BY .= (1 + $order[$i]['column']) . ' DESC ';
+					$ORDER_BY .= (1 + $value['column']) . ' DESC ';
 					break;
 				}
 			}
@@ -196,21 +196,21 @@ case 'load_json':
 		} else {
 			$LIMIT = "";
 		}
-		$order = WT_Filter::get('order');
+		$order = WT_Filter::getArray('order');
 		if ($order) {
 			$ORDER_BY = " ORDER BY ";
-			for ($i=0; $i < count($order); ++$i) {
-				if ($i > 0) {
+			foreach ($order as $key => $value) {
+				if ($key > 0) {
 					$ORDER_BY .= ',';
 				}
 				// Datatables numbers columns 0, 1, 2, ...
 				// MySQL numbers columns 1, 2, 3, ...
-				switch ($order[$i]['dir']) {
+				switch ($value['dir']) {
 				case 'asc':
-					$ORDER_BY .= (1 + $order[$i]['column']).' ASC ';
+					$ORDER_BY .= (1 + $value['column']).' ASC ';
 					break;
 				case 'desc':
-					$ORDER_BY .= (1 + $order[$i]['column']).' DESC ';
+					$ORDER_BY .= (1 + $value['column']).' DESC ';
 					break;
 				}
 			}
@@ -370,7 +370,7 @@ function media_paths($media_folder) {
  * @param boolean $recursive
  * @param string  $filter
  *
- * @return array
+ * @return string[]
  */
 function scan_dirs($dir, $recursive, $filter) {
 	$files = array();
@@ -401,7 +401,7 @@ function scan_dirs($dir, $recursive, $filter) {
  * @param string $subfolders   Include or exclude subfolders
  * @param string $filter       Filter files whose name contains this test
  *
- * @return array
+ * @return string[]
  */
 function all_disk_files($media_folder, $media_path, $subfolders, $filter) {
 	return scan_dirs(WT_DATA_DIR . $media_folder . $media_path, $subfolders=='include', $filter);
@@ -507,23 +507,22 @@ function mediaObjectInfo(WT_Media $media) {
 		global $TEXT_DIRECTION;
 		$classSuffix = $TEXT_DIRECTION=='rtl' ? '_rtl' : '';
 
-		$menu = new WT_Menu();
-		$menu->addLabel(WT_I18N::translate('Set link'));
+		$menu = new WT_Menu(WT_I18N::translate('Manage links'));
 		$menu->addClass('', 'submenu');
-		$submenu = new WT_Menu(WT_I18N::translate('To individual'));
+		$submenu = new WT_Menu(WT_I18N::translate('Link this media object to an individual'));
 		$submenu->addClass("submenuitem".$classSuffix);
-		$submenu->addOnClick("return ilinkitem('$xref', 'person', '$gedcom')");
-		$menu->addSubMenu($submenu);
+		$submenu->setOnclick("return ilinkitem('$xref', 'person', '$gedcom')");
+		$menu->addSubmenu($submenu);
 
-		$submenu = new WT_Menu(WT_I18N::translate('To family'));
+		$submenu = new WT_Menu(WT_I18N::translate('Link this media object to a family'));
 		$submenu->addClass("submenuitem".$classSuffix);
-		$submenu->addOnClick("return ilinkitem('$xref', 'family', '$gedcom')");
-		$menu->addSubMenu($submenu);
+		$submenu->setOnclick("return ilinkitem('$xref', 'family', '$gedcom')");
+		$menu->addSubmenu($submenu);
 
-		$submenu = new WT_Menu(WT_I18N::translate('To source'));
+		$submenu = new WT_Menu(WT_I18N::translate('Link this media object to a source'));
 		$submenu->addClass("submenuitem".$classSuffix);
-		$submenu->addOnClick("return ilinkitem('$xref', 'source', '$gedcom')");
-		$menu->addSubMenu($submenu);
+		$submenu->setOnclick("return ilinkitem('$xref', 'source', '$gedcom')");
+		$menu->addSubmenu($submenu);
 		$html .= '<div style="display:inline-block;">' . $menu->getMenu() . '</div>';
 	}
 	$html .= '<br><br>';

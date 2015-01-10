@@ -213,12 +213,12 @@ class WT_Query_Name {
 	/**
 	 * Get a list of initial surname letters for indilist.php and famlist.php
 	 *
-	 * @param bool $marnm   if set, include married names
-	 * @param bool $fams    if set, only consider individuals with FAMS records
-	 * @param int  $ged_id  only consider individuals from this tree
-	 * @param bool $totals  if set, count the number of names beginning with each letter
+	 * @param boolean $marnm   if set, include married names
+	 * @param boolean $fams    if set, only consider individuals with FAMS records
+	 * @param integer $ged_id  only consider individuals from this tree
+	 * @param boolean $totals  if set, count the number of names beginning with each letter
 	 *
-	 * @return int[]
+	 * @return integer[]
 	 */
 	public static function surnameAlpha($marnm, $fams, $ged_id, $totals = true) {
 		$alphas = array();
@@ -277,13 +277,13 @@ class WT_Query_Name {
 	/**
 	 * Get a list of initial given name letters for indilist.php and famlist.php
 	 *
-	 * @param string $surn   if set, only consider people with this surname
-	 * @param string $salpha if set, only consider surnames starting with this letter
-	 * @param bool   $marnm  if set, include married names
-	 * @param bool   $fams   if set, only consider individuals with FAMS records
-	 * @param int    $ged_id only consider individuals from this tree
+	 * @param string  $surn   if set, only consider people with this surname
+	 * @param string  $salpha if set, only consider surnames starting with this letter
+	 * @param boolean $marnm  if set, include married names
+	 * @param boolean $fams   if set, only consider individuals with FAMS records
+	 * @param integer $ged_id only consider individuals from this tree
 	 *
-	 * @return int[]
+	 * @return integer[]
 	 */
 	public static function givenAlpha($surn, $salpha, $marnm, $fams, $ged_id) {
 		$alphas=array();
@@ -352,11 +352,11 @@ class WT_Query_Name {
 	/**
 	 * Get a list of actual surnames and variants, based on a "root" surname.
 	 *
-	 * @param string $surn   if set, only fetch people with this surname
-	 * @param string $salpha if set, only consider surnames starting with this letter
-	 * @param bool   $marnm  if set, include married names
-	 * @param bool   $fams   if set, only consider individuals with FAMS records
-	 * @param int    $ged_id only consider individuals from this gedcom
+	 * @param string  $surn   if set, only fetch people with this surname
+	 * @param string  $salpha if set, only consider surnames starting with this letter
+	 * @param boolean $marnm  if set, include married names
+	 * @param boolean $fams   if set, only consider individuals with FAMS records
+	 * @param integer $ged_id only consider individuals from this gedcom
 	 *
 	 * @return array
 	 */
@@ -399,12 +399,12 @@ class WT_Query_Name {
 	 * To search for unknown names, use $surn="@N.N.", $salpha="@" or $galpha="@"
 	 * To search for names with no surnames, use $salpha=","
 	 *
-	 * @param string $surn   if set, only fetch people with this surname
-	 * @param string $salpha if set, only fetch surnames starting with this letter
-	 * @param string $galpha if set, only fetch given names starting with this letter
-	 * @param bool   $marnm  if set, include married names
-	 * @param bool   $fams   if set, only fetch individuals with FAMS records
-	 * @param int    $ged_id if set, only fetch individuals from this gedcom
+	 * @param string  $surn   if set, only fetch people with this surname
+	 * @param string  $salpha if set, only fetch surnames starting with this letter
+	 * @param string  $galpha if set, only fetch given names starting with this letter
+	 * @param boolean $marnm  if set, include married names
+	 * @param boolean $fams   if set, only fetch individuals with FAMS records
+	 * @param integer $ged_id if set, only fetch individuals from this gedcom
 	 *
 	 * @return WT_Individual[]
 	 */
@@ -460,11 +460,11 @@ class WT_Query_Name {
 	 * To search for unknown names, use $surn="@N.N.", $salpha="@" or $galpha="@"
 	 * To search for names with no surnames, use $salpha=","
 	 *
-	 * @param string $surn   if set, only fetch people with this surname
-	 * @param string $salpha if set, only fetch surnames starting with this letter
-	 * @param string $galpha if set, only fetch given names starting with this letter
-	 * @param bool   $marnm  if set, include married names
-	 * @param int    $ged_id if set, only fetch individuals from this gedcom
+	 * @param string  $surn   if set, only fetch people with this surname
+	 * @param string  $salpha if set, only fetch surnames starting with this letter
+	 * @param string  $galpha if set, only fetch given names starting with this letter
+	 * @param boolean $marnm  if set, include married names
+	 * @param integer $ged_id if set, only fetch individuals from this gedcom
 	 *
 	 * @return WT_Family[]
 	 */

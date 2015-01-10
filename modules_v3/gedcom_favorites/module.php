@@ -1,6 +1,4 @@
 <?php
-// Classes and libraries for module system
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -22,21 +20,26 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 use Rhumsaa\Uuid\Uuid;
+use WT\Auth;
 
-// Note that the user favorites module simply extends this module, so ensure that the
-// logic works for both.
+/**
+ * Class gedcom_favorites_WT_Module
+ *
+ * Note that the user favorites module simply extends this module, so ensure that the
+ * logic works for both.
+ */
 class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
-	// Extend class WT_Module
+	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module */ WT_I18N::translate('Favorites');
 	}
 
-	// Extend class WT_Module
+	/** {@inheritdoc} */
 	public function getDescription() {
 		return /* I18N: Description of the “Favorites” module */ WT_I18N::translate('Display and manage a family tree’s favorite pages.');
 	}
 
-	// Implement class WT_Module_Block
+	/** {@inheritdoc} */
 	public function getBlock($block_id, $template=true, $cfg=null) {
 		global $ctype, $show_full, $PEDIGREE_FULL_DETAILS, $controller;
 
@@ -60,7 +63,7 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 				$record = WT_GedcomRecord::getInstance($gid);
 				if ($record && $record->canShow()) {
 					self::addFavorite(array(
-						'user_id'   => $ctype=='user' ? WT_USER_ID : null,
+						'user_id'   => $ctype === 'user' ? Auth::id() : null,
 						'gedcom_id' => WT_GED_ID,
 						'gid'       => $record->getXref(),
 						'type'      => $record::RECORD_TYPE,
@@ -71,7 +74,7 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 				}
 			} elseif ($url) {
 				self::addFavorite(array(
-					'user_id'   => $ctype=='user' ? WT_USER_ID : null,
+					'user_id'   => $ctype === 'user' ? Auth::id() : null,
 					'gedcom_id' => WT_GED_ID,
 					'gid'       => null,
 					'type'      => 'URL',
@@ -83,11 +86,11 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 			break;
 		}
 
-		$block=get_block_setting($block_id, 'block', false);
+		$block = get_block_setting($block_id, 'block', false);
 		if ($cfg) {
 			foreach (array('block') as $name) {
 				if (array_key_exists($name, $cfg)) {
-					$$name=$cfg[$name];
+					$$name = $cfg[$name];
 				}
 			}
 		}
@@ -98,14 +101,16 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 		$show_full = 1;
 		$PEDIGREE_FULL_DETAILS = 1;
 
-		$userfavs = $this->getFavorites($ctype=='user' ? WT_USER_ID : WT_GED_ID);
-		if (!is_array($userfavs)) $userfavs = array();
+		$userfavs = $this->getFavorites($ctype === 'user' ? Auth::id() : WT_GED_ID);
+		if (!is_array($userfavs)) {
+			$userfavs = array();
+		}
 
 		$id=$this->getName().$block_id;
 		$class=$this->getName().'_block';
 		$title=$this->getTitle();
 
-		if (WT_USER_ID) {
+		if (Auth::check()) {
 			$controller
 				->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
 				->addInlineJavascript('autocomplete();');
@@ -190,6 +195,13 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= '</form></div>';
 		}
 
+		// Restore GEDCOM configuration
+		unset($show_full);
+		if (isset($saveShowFull)) {
+			$show_full = $saveShowFull;
+		}
+		$PEDIGREE_FULL_DETAILS = $savePedigreeFullDetails;
+
 		if ($template) {
 			if ($block) {
 				require WT_THEME_DIR.'templates/block_small_temp.php';
@@ -199,28 +211,24 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 		} else {
 			return $content;
 		}
-		// Restore GEDCOM configuration
-		unset($show_full);
-		if (isset($saveShowFull)) $show_full = $saveShowFull;
-		$PEDIGREE_FULL_DETAILS = $savePedigreeFullDetails;
 	}
 
-	// Implement class WT_Module_Block
+	/** {@inheritdoc} */
 	public function loadAjax() {
 		return false;
 	}
 
-	// Implement class WT_Module_Block
+	/** {@inheritdoc} */
 	public function isUserBlock() {
 		return false;
 	}
 
-	// Implement class WT_Module_Block
+	/** {@inheritdoc} */
 	public function isGedcomBlock() {
 		return true;
 	}
 
-	// Implement class WT_Module_Block
+	/** {@inheritdoc} */
 	public function configureBlock($block_id) {
 		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
 			set_block_setting($block_id, 'block',  WT_Filter::postBool('block'));
@@ -237,14 +245,26 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 		echo '</td></tr>';
 	}
 
-	// Delete a favorite from the database
+	/**
+	 * Delete a favorite from the database
+	 *
+	 * @param integer $favorite_id
+	 *
+	 * @return boolean
+	 */
 	public static function deleteFavorite($favorite_id) {
 		return (bool)
 			WT_DB::prepare("DELETE FROM `##favorite` WHERE favorite_id=?")
 			->execute(array($favorite_id));
 	}
 
-	// Store a new favorite in the database
+	/**
+	 * Store a new favorite in the database
+	 *
+	 * @param $favorite
+	 *
+	 * @return boolean
+	 */
 	public static function addFavorite($favorite) {
 		// -- make sure a favorite is added
 		if (empty($favorite['gid']) && empty($favorite['url'])) {
@@ -279,7 +299,13 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 				->execute(array($favorite['user_id'], $favorite['gedcom_id'], $favorite['gid'], $favorite['type'], $favorite['url'], $favorite['title'], $favorite['note']));
 	}
 
-	// Get favorites for a user or family tree
+	/**
+	 * Get favorites for a user or family tree
+	 *
+	 * @param integer $gedcom_id
+	 *
+	 * @return string[][]
+	 */
 	public static function getFavorites($gedcom_id) {
 		self::updateSchema(); // make sure the favorites table has been created
 
@@ -291,6 +317,9 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 			->fetchAll(PDO::FETCH_ASSOC);
 	}
 
+	/**
+	 * Make sure the database structure is up-to-date.
+	 */
 	protected static function updateSchema() {
 		// Create tables, if not already present
 		try {

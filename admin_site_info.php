@@ -7,7 +7,7 @@
 // Copyright (C) 2014 webtrees development team.
 //
 // Derived from PhpGedView
-// Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.
+// Copyright (C) 2002 to 2009 PGV Development Team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -35,11 +35,8 @@ $controller
 	->pageHeader();
 
 ob_start();
-
 phpinfo();
-$php_info = ob_get_contents();
-
-ob_end_clean();
+$php_info = ob_get_clean();
 
 $php_info    = str_replace(" width=\"600\"", " width=\"\"", $php_info);
 $php_info    = str_replace("</body></html>", "", $php_info);

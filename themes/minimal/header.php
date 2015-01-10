@@ -5,7 +5,7 @@
 // Copyright (C) 2014 webtrees development team.
 //
 // Derived from PhpGedView
-// Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.
+// Copyright (C) 2002 to 2009 PGV Development Team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -42,87 +42,62 @@ $this
 			}
 		});
 	');
-echo
-	'<!DOCTYPE html>',
-	'<html ', WT_I18N::html_markup(), '>',
-	'<head>',
-	'<meta charset="UTF-8">',
-	'<meta http-equiv="X-UA-Compatible" content="IE=edge">',
-	header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL),
-	'<title>', WT_Filter::escapeHtml($title), '</title>',
-	'<link rel="icon" href="', WT_CSS_URL, 'favicon.png" type="image/png">',
-	'<link rel="stylesheet" type="text/css" href="', WT_THEME_URL, 'jquery-ui-1.10.3/jquery-ui-1.10.3.custom.css">',
-	'<link rel="stylesheet" type="text/css" href="', WT_CSS_URL, 'style.css">',
-	'<!--[if IE]>',
-	'<link type="text/css" rel="stylesheet" href="', WT_CSS_URL, 'msie.css">',
-	'<![endif]-->';
-
-echo
-	'</head>',
-	'<body id="body">';
-
-// begin header section
-if ($view!='simple') {
-	echo '<div id="header">';
-	echo '<div id="header-title" dir="auto">', WT_TREE_TITLE, '</div>';
-	echo '<div id="header-user-links">';
-	echo '<ul class="makeMenu">';
-	if (WT_USER_ID) {
-		echo '<li><a href="edituser.php">', WT_Filter::escapeHtml(Auth::user()->getRealName()), '</a></li> <li>', logout_link(), '</li>';
-		if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
-			echo ' <li><a href="#" onclick="window.open(\'edit_changes.php\',\'_blank\',chan_window_specs); return false;" style="color:red;">', WT_I18N::translate('Pending changes'), '</a></li>';
-		}
-	} else {
-		echo '<li>', login_link(), '</li> ';
-	}
-	$menu=WT_MenuBar::getFavoritesMenu();
-	if ($menu) {
-		echo $menu->getMenuAsList();
-	}
-	$menu=WT_MenuBar::getLanguageMenu();
-	if ($menu) {
-		echo $menu->getMenuAsList();
-	}
-	$menu=WT_MenuBar::getThemeMenu();
-	if ($menu) {
-		echo $menu->getMenuAsList();
-	}
-	echo
-		'<li><form style="display:inline;" action="search.php" method="post">',
-		'<input type="hidden" name="action" value="general">',
-		'<input type="hidden" name="ged" value="', WT_GEDCOM, '">',
-		'<input type="hidden" name="topsearch" value="yes">',
-		'<input type="search" name="query" size="20" placeholder="', WT_I18N::translate('Search'), '">',
-		'</form></li></ul></div>';
-
-	$menu_items=array(
-		WT_MenuBar::getGedcomMenu(),
-		WT_MenuBar::getMyPageMenu(),
-		WT_MenuBar::getChartsMenu(),
-		WT_MenuBar::getListsMenu(),
-		WT_MenuBar::getCalendarMenu(),
-		WT_MenuBar::getReportsMenu(),
-		WT_MenuBar::getSearchMenu(),
-	);
-	foreach (WT_MenuBar::getModuleMenus() as $menu) {
-		$menu_items[]=$menu;
-	}
-	// Print the menu bar
-	echo
-		'<div id="topMenu">',
-		'<ul id="main-menu">';
-	foreach ($menu_items as $menu) {
-		if ($menu) {
-			echo $menu->getMenuAsList();
-		}
-	}
-	unset($menu_items, $menu);
-	echo
-		'</ul>',  // <ul id="main-menu">
-		'</div>', // <div id="topMenu">
-		'</div>'; // <div id="header">
-}
-echo
-	$javascript,
-	WT_FlashMessages::getHtmlMessages(), // Feedback from asynchronous actions
-	'<div id="content">';
+?>
+<!DOCTYPE html>
+<html <?php echo WT_I18N::html_markup(); ?>>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<?php echo header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL); ?>
+	<title><?php echo WT_Filter::escapeHtml($title); ?></title>
+	<link rel="icon" href="<?php echo WT_CSS_URL; ?>favicon.png" type="image/png">
+	<link rel="stylesheet" type="text/css" href="<?php echo WT_THEME_URL; ?>jquery-ui-1.11.2/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo WT_CSS_URL; ?>style.css">
+	<!--[if IE 8]>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+	<?php if ($view !== 'simple') { ?>
+	<header>
+		<h1><?php echo WT_TREE_TITLE; ?></h1>
+		<ul class="secondary-menu">
+			<?php
+			if (Auth::check()) {
+				echo '<li><a href="edituser.php">', WT_Filter::escapeHtml(Auth::user()->getRealName()), '</a></li> <li>', logout_link(), '</li>';
+				if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
+					echo ' <li><a href="#" onclick="window.open(\'edit_changes.php\',\'_blank\',chan_window_specs); return false;" style="color:red;">', WT_I18N::translate('Pending changes'), '</a></li>';
+				}
+			} else {
+				echo '<li>', login_link(), '</li> ';
+			}
+			?>
+			<?php echo WT_MenuBar::getFavoritesMenu(); ?>
+			<?php echo WT_MenuBar::getLanguageMenu(); ?>
+			<?php echo WT_MenuBar::getThemeMenu(); ?>
+			<li>
+				<form style="display:inline;" action="search.php" method="post">
+					<input type="hidden" name="action" value="general">
+					<input type="hidden" name="ged" value="<?php echo WT_GEDCOM; ?>">
+					<input type="hidden" name="topsearch" value="yes">
+					<input type="search" name="query" size="20" placeholder="<?php echo WT_I18N::translate('Search'); ?>">
+				</form>
+			</li>
+		</ul>
+		<nav>
+			<ul class="primary-menu" role="menubar">
+				<?php echo WT_MenuBar::getGedcomMenu();   ?>
+				<?php echo WT_MenuBar::getMyPageMenu();   ?>
+				<?php echo WT_MenuBar::getChartsMenu();   ?>
+				<?php echo WT_MenuBar::getListsMenu();    ?>
+				<?php echo WT_MenuBar::getCalendarMenu(); ?>
+				<?php echo WT_MenuBar::getReportsMenu();  ?>
+				<?php echo WT_MenuBar::getSearchMenu();   ?>
+				<?php echo implode('', WT_MenuBar::getModuleMenus()); ?>
+			</ul>
+		</nav>
+	</header>
+	<?php } ?>
+	<?php echo WT_FlashMessages::getHtmlMessages(); ?>
+	<main id="content">

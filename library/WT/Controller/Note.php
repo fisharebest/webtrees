@@ -1,6 +1,4 @@
 <?php
-// Controller for the shared note page
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -23,7 +21,13 @@
 
 require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 
+/**
+ * Class WT_Controller_Note - Controller for the shared note page
+ */
 class WT_Controller_Note extends WT_Controller_GedcomRecord {
+	/**
+	 * Startup activity
+	 */
 	public function __construct() {
 		$xref         = WT_Filter::get('nid', WT_REGEX_XREF);
 		$this->record = WT_Note::getInstance($xref);
@@ -35,7 +39,7 @@ class WT_Controller_Note extends WT_Controller_GedcomRecord {
 	 * get edit menu
 	 */
 	function getEditMenu() {
-		if (!$this->record || $this->record->isOld()) {
+		if (!$this->record || $this->record->isPendingDeletion()) {
 			return null;
 		}
 
@@ -44,14 +48,14 @@ class WT_Controller_Note extends WT_Controller_GedcomRecord {
 
 		if (WT_USER_CAN_EDIT) {
 			$submenu = new WT_Menu(WT_I18N::translate('Edit note'), '#', 'menu-note-edit');
-			$submenu->addOnclick('return edit_note(\''.$this->record->getXref().'\');');
+			$submenu->setOnclick('return edit_note(\''.$this->record->getXref().'\');');
 			$menu->addSubmenu($submenu);
 		}
 
 		// delete
 		if (WT_USER_CAN_EDIT) {
 			$submenu = new WT_Menu(WT_I18N::translate('Delete'), '#', 'menu-note-del');
-			$submenu->addOnclick("return delete_note('" . WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($this->record->getFullName())) . "', '" . $this->record->getXref() . "');");
+			$submenu->setOnclick("return delete_note('" . WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($this->record->getFullName())) . "', '" . $this->record->getXref() . "');");
 			$menu->addSubmenu($submenu);
 		}
 
@@ -62,15 +66,17 @@ class WT_Controller_Note extends WT_Controller_GedcomRecord {
 				'#',
 				'menu-note-addfav'
 			);
-			$submenu->addOnclick("jQuery.post('module.php?mod=user_favorites&amp;mod_action=menu-add-favorite',{xref:'".$this->record->getXref()."'},function(){location.reload();})");
+			$submenu->setOnclick("jQuery.post('module.php?mod=user_favorites&amp;mod_action=menu-add-favorite',{xref:'".$this->record->getXref()."'},function(){location.reload();})");
 			$menu->addSubmenu($submenu);
 		}
 
-		//-- get the link for the first submenu and set it as the link for the main menu
-		if (isset($menu->submenus[0])) {
-			$link = $menu->submenus[0]->onclick;
-			$menu->addOnclick($link);
+		// Get the link for the first submenu and set it as the link for the main menu
+		if ($menu->getSubmenus()) {
+			$submenus = $menu->getSubmenus();
+			$menu->setLink($submenus[0]->getLink());
+			$menu->setOnClick($submenus[0]->getOnClick());
 		}
+
 		return $menu;
 	}
 }

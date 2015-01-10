@@ -159,28 +159,28 @@ case 'load_json':
 	} else {
 		$LIMIT = "";
 	}
-	$order = WT_Filter::get('order');
+	$order = WT_Filter::getArray('order');
 	if ($order) {
 		$ORDER_BY = ' ORDER BY ';
-		for ($i = 0; $i < count($order); ++$i) {
-			if ($i > 0) {
+		foreach ($order as $key => $value) {
+			if ($key > 0) {
 				$ORDER_BY.=',';
 			}
 			// Datatables numbers columns 0, 1, 2, ...
 			// MySQL numbers columns 1, 2, 3, ...
-			switch ($order[$i]['dir']) {
+			switch ($value['dir']) {
 			case 'asc':
-				if (WT_Filter::getInteger('iSortCol_'.$i)==0) {
+				if (WT_Filter::getInteger('iSortCol_'.$key)==0) {
 					$ORDER_BY .= 'change_id ASC '; // column 0 is "timestamp", using change_id gives the correct order for events in the same second
 				} else {
-					$ORDER_BY .= (1 + $order[$i]['column']) . ' ASC ';
+					$ORDER_BY .= (1 + $value['column']) . ' ASC ';
 				}
 				break;
 			case 'desc':
-				if (WT_Filter::getInteger('iSortCol_'.$i)==0) {
+				if (WT_Filter::getInteger('iSortCol_'.$key)==0) {
 					$ORDER_BY .= 'change_id DESC ';
 				} else {
-					$ORDER_BY .= (1 + $order[$i]['column']) . ' DESC ';
+					$ORDER_BY .= (1 + $value['column']) . ' DESC ';
 				}
 				break;
 			}
@@ -196,6 +196,8 @@ case 'load_json':
 		$datum[2] = '<a href="gedrecord.php?pid='.$datum[2] . '&ged='.$datum[6] . '" target="_blank">' . $datum[2] . '</a>';
 		$datum[3] = '<pre>' . WT_Filter::escapeHtml($datum[3]) . '</pre>';
 		$datum[4] = '<pre>' . WT_Filter::escapeHtml($datum[4]) . '</pre>';
+		$datum[5] = WT_Filter::escapeHtml($datum[5]);
+		$datum[6] = WT_Filter::escapeHtml($datum[6]);
 	}
 
 	// Total filtered/unfiltered rows

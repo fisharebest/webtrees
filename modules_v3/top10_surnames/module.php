@@ -1,6 +1,4 @@
 <?php
-// Classes and libraries for module system
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -21,24 +19,23 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+
+/**
+ * Class top10_surnames_WT_Module
+ */
 class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module.  Top=Most common */ WT_I18N::translate('Top surnames');
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	public function getDescription() {
 		return /* I18N: Description of the “Top surnames” module */ WT_I18N::translate('A list of the most popular surnames.');
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	public function getBlock($block_id, $template = true, $cfg = null) {
 		global $WT_TREE, $ctype;
 
@@ -82,7 +79,7 @@ class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 		$id    = $this->getName() . $block_id;
 		$class = $this->getName() . '_block';
-		if ($ctype == 'gedcom' && WT_USER_GEDCOM_ADMIN || $ctype == 'user' && WT_USER_ID) {
+		if ($ctype === 'gedcom' && WT_USER_GEDCOM_ADMIN || $ctype === 'user' && Auth::check()) {
 			$title = '<i class="icon-admin" title="' . WT_I18N::translate('Configure') . '" onclick="modalDialog(\'block_edit.php?block_id=' . $block_id . '\', \'' . $this->getTitle() . '\');"></i>';
 		} else {
 			$title = '';
@@ -102,16 +99,16 @@ class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
 			$content = format_surname_tagcloud($all_surnames, 'indilist.php', true);
 			break;
 		case 'list':
-			uasort($all_surnames, array('top10_surnames_WT_Module', 'top_surname_sort'));
+			uasort($all_surnames, array('top10_surnames_WT_Module', 'surnameCountSort'));
 			$content = format_surname_list($all_surnames, '1', true, 'indilist.php');
 			break;
 		case 'array':
-			uasort($all_surnames, array('top10_surnames_WT_Module', 'top_surname_sort'));
+			uasort($all_surnames, array('top10_surnames_WT_Module', 'surnameCountSort'));
 			$content = format_surname_list($all_surnames, '2', true, 'indilist.php');
 			break;
 		case 'table':
 		default:
-			uasort($all_surnames, array('top10_surnames_WT_Module', 'top_surname_sort'));
+			uasort($all_surnames, array('top10_surnames_WT_Module', 'surnameCountSort'));
 			$content = format_surname_table($all_surnames, 'indilist.php');
 			break;
 		}
@@ -128,30 +125,22 @@ class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	public function loadAjax() {
 		return true;
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	public function isUserBlock() {
 		return true;
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	public function isGedcomBlock() {
 		return true;
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	public function configureBlock($block_id) {
 		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
 			set_block_setting($block_id, 'num', WT_Filter::postInteger('num', 1, 10000, 10));
@@ -190,9 +179,9 @@ class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
 	 * @param string[] $a
 	 * @param string[] $b
 	 *
-	 * @return int
+	 * @return integer
 	 */
-	private static function top_surname_sort($a, $b) {
+	private static function surnameCountSort($a, $b) {
 		$counta = 0;
 		foreach ($a as $x) {
 			$counta += count($x);

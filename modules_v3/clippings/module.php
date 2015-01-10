@@ -1,6 +1,4 @@
 <?php
-// Classes and libraries for module system
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -21,23 +19,26 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class clippings_WT_Module
+ */
 class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Sidebar {
-	// Extend class WT_Module
+	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module */ WT_I18N::translate('Clippings cart');
 	}
 
-	// Extend class WT_Module
+	/** {@inheritdoc} */
 	public function getDescription() {
 		return /* I18N: Description of the “Clippings cart” module */ WT_I18N::translate('Select records from your family tree and save them as a GEDCOM file.');
 	}
 
-	// Extend class WT_Module
+	/** {@inheritdoc} */
 	public function defaultAccessLevel() {
 		return WT_PRIV_USER;
 	}
 
-	// Extend WT_Module
+	/** {@inheritdoc} */
 	public function modAction($mod_action) {
 		switch($mod_action) {
 		case 'ajax':
@@ -72,7 +73,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 			if ($clip_ctrl->action=='add') {
 				$person = WT_GedcomRecord::getInstance($clip_ctrl->id);
 				echo '<h3><a href="', $person->getHtmlUrl(), '">'.$person->getFullName(), '</a></h3>';
-				if ($clip_ctrl->type=='fam') { ?>
+				if ($clip_ctrl->type === 'FAM') { ?>
 					<form action="module.php" method="get">
 					<input type="hidden" name="mod" value="clippings">
 					<input type="hidden" name="mod_action" value="index">
@@ -89,8 +90,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 
 					</table>
 					</form>
-				<?php }
-				else if ($clip_ctrl->type=='indi') { ?>
+				<?php } elseif ($clip_ctrl->type === 'INDI') { ?>
 					<form action="module.php" method="get">
 					<input type="hidden" name="mod" value="clippings">
 					<input type="hidden" name="mod_action" value="index">
@@ -111,7 +111,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 						<tr><td class="topbottombar"><input type="submit" value="<?php echo WT_I18N::translate('Continue adding'); ?>">
 					</table>
 					</form>
-				<?php } else if ($clip_ctrl->type=='sour')  { ?>
+				<?php } elseif ($clip_ctrl->type === 'SOUR')  { ?>
 					<form action="module.php" method="get">
 					<input type="hidden" name="mod" value="clippings">
 					<input type="hidden" name="mod_action" value="index">
@@ -295,12 +295,12 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 		}
 	}
 
-	// Implement WT_Module_Menu
+	/** {@inheritdoc} */
 	public function defaultMenuOrder() {
 		return 20;
 	}
 
-	// Implement WT_Module_Menu
+	/** {@inheritdoc} */
 	public function getMenu() {
 		global $SEARCH_SPIDER, $controller;
 
@@ -320,12 +320,12 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 		return $menu;
 	}
 
-	// Implement WT_Module_Sidebar
+	/** {@inheritdoc} */
 	public function defaultSidebarOrder() {
 		return 60;
 	}
 
-	// Impelement WT_Module_Sidebar
+	/** {@inheritdoc} */
 	public function hasSidebarContent() {
 		global $SEARCH_SPIDER;
 
@@ -341,7 +341,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 		}
 	}
 
-	// Impelement WT_Module_Sidebar
+	/** {@inheritdoc} */
 	public function getSidebarContent() {
 		global $controller;
 
@@ -355,7 +355,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 		return '<div id="sb_clippings_content">' .  $this->getCartList() .  '</div>';
 	}
 
-	// Impelement WT_Module_Sidebar
+	/** {@inheritdoc} */
 	public function getSidebarAjaxContent() {
 		require_once WT_ROOT.WT_MODULES_DIR.'clippings/clippings_ctrl.php';
 
@@ -370,19 +370,18 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 		$clip_ctrl->level1 = WT_Filter::get('level1');
 		$clip_ctrl->level2 = WT_Filter::get('level2');
 		$clip_ctrl->level3 = WT_Filter::get('level3');
-		if (!empty($add)) {
+		if ($add) {
 			$record = WT_GedcomRecord::getInstance($add);
 			if ($record) {
-				$clip_ctrl->id=$record->getXref();
-				$clip_ctrl->type=$record::RECORD_TYPE;
-				$ret = $clip_ctrl->addClipping($record);
-				if ($ret) return $this->askAddOptions($record);
+				$clip_ctrl->id   = $record->getXref();
+				$clip_ctrl->type = $record::RECORD_TYPE;
+				$clip_ctrl->addClipping($record);
 			}
-		} elseif (!empty($add1)) {
+		} elseif ($add1) {
 			$record = WT_Individual::getInstance($add1);
 			if ($record) {
-				$clip_ctrl->id=$record->getXref();
-				$clip_ctrl->type=strtolower($record::RECORD_TYPE);
+				$clip_ctrl->id = $record->getXref();
+				$clip_ctrl->type = $record::RECORD_TYPE;
 				if ($others == 'parents') {
 					foreach ($record->getChildFamilies() as $family) {
 						$clip_ctrl->addClipping($family);
@@ -414,7 +413,11 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 		return $this->getCartList();
 	}
 
-	// A list for the side bar.
+	/**
+	 * A list for the side bar.
+	 *
+	 * @return string
+	 */
 	public function getCartList() {
 		global $WT_SESSION;
 
@@ -469,8 +472,15 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 		}
 		return $out;
 	}
-	public function askAddOptions($person) {
+
+	/**
+	 * @param WT_Individual $person
+	 *
+	 * @return string
+	 */
+	public function askAddOptions(WT_Individual $person) {
 		global $MAX_PEDIGREE_GENERATIONS;
+
 		$out = '<h3><a href="'.$person->getHtmlUrl().'">'.$person->getFullName().'</a></h3>';
 		$out .= '<script>';
 		$out .= 'function radAncestors(elementid) {var radFamilies=document.getElementById(elementid);radFamilies.checked=true;}
@@ -536,7 +546,12 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 		return $out;
 	}
 
-	public function downloadForm($clip_ctrl) {
+	/**
+	 * @param WT_Controller_Clippings $clip_ctrl
+	 *
+	 * @return string
+	 */
+	public function downloadForm(WT_Controller_Clippings $clip_ctrl) {
 		global $GEDCOM_MEDIA_PATH;
 		$pid=WT_Filter::get('pid', WT_REGEX_XREF);
 

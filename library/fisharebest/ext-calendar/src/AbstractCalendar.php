@@ -6,20 +6,20 @@ use InvalidArgumentException;
 /**
  * class AbstractCalendar - generic base class for specific calendars.
  *
- * @author    Greg Roach <fisharebest@gmail.com>
+ * @author        Greg Roach <fisharebest@gmail.com>
  * @copyright (c) 2014 Greg Roach
- * @license   This program is free software: you can redistribute it and/or modify
- *            it under the terms of the GNU General Public License as published by
- *            the Free Software Foundation, either version 3 of the License, or
- *            (at your option) any later version.
+ * @license       This program is free software: you can redistribute it and/or modify
+ *                it under the terms of the GNU General Public License as published by
+ *                the Free Software Foundation, either version 3 of the License, or
+ *                (at your option) any later version.
  *
- *            This program is distributed in the hope that it will be useful,
- *            but WITHOUT ANY WARRANTY; without even the implied warranty of
- *            MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *            GNU General Public License for more details.
+ *                This program is distributed in the hope that it will be useful,
+ *                but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *                MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *                GNU General Public License for more details.
  *
- *            You should have received a copy of the GNU General Public License
- *            along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *                You should have received a copy of the GNU General Public License
+ *                along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 abstract class AbstractCalendar {
 	/** See the GEDCOM specification */
@@ -37,14 +37,25 @@ abstract class AbstractCalendar {
 	/** Does the calendar start at year 1, or are we allowed negative (BCE) years. */
 	const NEGATIVE_YEARS_ALLOWED = false;
 
+	/** @var mixed[] special behaviour for this calendar */
+	protected $options = array();
+
+	/**
+	 * Some calendars have options that change their behaviour.
+	 *
+	 * @param mixed[] $options
+	 */
+	public function __construct($options = array()) {
+		$this->options = array_merge($this->options, $options);
+	}
+
 	/**
 	 * Calculate the number of days in a month.
 	 *
-	 * @param  int $year
-	 * @param  int $month
+	 * @param integer $year
+	 * @param integer $month
 	 *
-	 * @return int
-	 *
+	 * @return integer
 	 * @throws InvalidArgumentException
 	 */
 	public function daysInMonth($year, $month) {

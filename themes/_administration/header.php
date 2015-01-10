@@ -48,14 +48,13 @@ echo
 	'<meta name="robots" content="noindex,nofollow">',
 	'<title>', htmlspecialchars($title), '</title>',
 	'<link rel="icon" href="', WT_CSS_URL, 'favicon.png" type="image/png">',
-	'<link rel="stylesheet" href="', WT_THEME_URL, 'jquery-ui-1.10.3/jquery-ui-1.10.3.custom.css" type="text/css">',
+	'<link rel="stylesheet" href="', WT_THEME_URL, 'jquery-ui-1.11.2/jquery-ui.css" type="text/css">',
 	'<link rel="stylesheet" href="', WT_CSS_URL, 'style.css" type="text/css">',
-	'<!--[if IE]>',
-	'<link type="text/css" rel="stylesheet" href="', WT_CSS_URL, 'msie.css">',
+	'<!--[if IE 8]>',
+	'<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>',
 	'<![endif]-->';
 
 echo
-	$javascript,
 	'</head>',
 	'<body id="body">',
 // Header

@@ -1,6 +1,4 @@
 <?php
-// A sidebar to show extra/non-genealogical information about an individual
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -18,28 +16,32 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class extra_info_WT_Module
+ * A sidebar to show non-genealogical information about an individual
+ */
 class extra_info_WT_Module extends WT_Module implements WT_Module_Sidebar {
-	// Extend WT_Module
+	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module/sidebar */ WT_I18N::translate('Extra information');
 	}
 
-	// Extend WT_Module
+	/** {@inheritdoc} */
 	public function getDescription() {
 		return /* I18N: Description of the “Extra information” module */ WT_I18N::translate('A sidebar showing non-genealogical information about an individual.');
 	}
 
-	// Implement WT_Module_Sidebar
+	/** {@inheritdoc} */
 	public function defaultSidebarOrder() {
 		return 10;
 	}
 
-	// Implement WT_Module_Sidebar
+	/** {@inheritdoc} */
 	public function hasSidebarContent() {
 		return true;
 	}
 
-	// Implement WT_Module_Sidebar
+	/** {@inheritdoc} */
 	public function getSidebarContent() {
 		global $WT_TREE, $controller;
 
@@ -67,12 +69,18 @@ class extra_info_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		return strip_tags(ob_get_clean(), '<a><div><span>');
 	}
 
-	// Implement WT_Module_Sidebar
+	/** {@inheritdoc} */
 	public function getSidebarAjaxContent() {
 		return '';
 	}
 
-	// Does this module display a particular fact
+	/**
+	 * Does this module display a particular fact
+	 *
+	 * @param WT_Fact $fact
+	 *
+	 * @return boolean
+	 */
 	public static function showFact(WT_Fact $fact) {
 		switch ($fact->getTag()) {
 		case 'AFN':

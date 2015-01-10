@@ -1,6 +1,4 @@
 <?php
-// Classes and libraries for module system
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -21,20 +19,25 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+
+/**
+ * Class random_media_WT_Module
+ */
 class random_media_WT_Module extends WT_Module implements WT_Module_Block {
-	// Extend class WT_Module
+	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module */WT_I18N::translate('Slide show');
 	}
 
-	// Extend class WT_Module
+	/** {@inheritdoc} */
 	public function getDescription() {
 		return /* I18N: Description of the “Slide show” module */ WT_I18N::translate('Random images from the current family tree.');
 	}
 
-	// Implement class WT_Module_Block
+	/** {@inheritdoc} */
 	public function getBlock($block_id, $template=true, $cfg=null) {
-		global $ctype, $foundlist;
+		global $ctype;
 
 		$filter  =get_block_setting($block_id, 'filter',   'all');
 		$controls=get_block_setting($block_id, 'controls', true);
@@ -91,9 +94,9 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 				// Check if it is linked to a suitable individual
 				foreach ($media->linkedIndividuals('OBJE') as $indi) {
 					if (
-						$filter=='all' ||
-						$filter=='indi'  && strpos($indi->getGedcom(), "\n1 OBJE @" . $media->getXref() . '@') !==false ||
-						$filter=='event' && strpos($indi->getGedcom(), "\n2 OBJE @" . $media->getXref() . '@') !==false
+						$filter === 'all' ||
+						$filter === 'indi'  && strpos($indi->getGedcom(), "\n1 OBJE @" . $media->getXref() . '@') !==false ||
+						$filter === 'event' && strpos($indi->getGedcom(), "\n2 OBJE @" . $media->getXref() . '@') !==false
 					) {
 						// Found one :-)
 						$random_media=$media;
@@ -106,7 +109,7 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$id=$this->getName().$block_id;
 		$class=$this->getName().'_block';
-		if ($ctype=='gedcom' && WT_USER_GEDCOM_ADMIN || $ctype=='user' && WT_USER_ID) {
+		if ($ctype === 'gedcom' && WT_USER_GEDCOM_ADMIN || $ctype === 'user' && Auth::check()) {
 			$title='<i class="icon-admin" title="'.WT_I18N::translate('Configure').'" onclick="modalDialog(\'block_edit.php?block_id='.$block_id.'\', \''.$this->getTitle().'\');"></i>';
 		} else {
 			$title='';
@@ -195,22 +198,22 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 	}
 
-	// Implement class WT_Module_Block
+	/** {@inheritdoc} */
 	public function loadAjax() {
 		return true;
 	}
 
-	// Implement class WT_Module_Block
+	/** {@inheritdoc} */
 	public function isUserBlock() {
 		return true;
 	}
 
-	// Implement class WT_Module_Block
+	/** {@inheritdoc} */
 	public function isGedcomBlock() {
 		return true;
 	}
 
-	// Implement class WT_Module_Block
+	/** {@inheritdoc} */
 	public function configureBlock($block_id) {
 		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
 			set_block_setting($block_id, 'filter',             WT_Filter::post('filter', 'indi|event|all', 'all'));
@@ -336,8 +339,8 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 			<td class="width33"><input type="checkbox" value="yes"
 				name="filter_wav"
 				<?php if ($filters['wav']) echo " checked=\"checked\""; ?>>&nbsp;&nbsp;wav&nbsp;&nbsp;</td>
-					<td class="width33">&nbsp;</td>
-					<td class="width33">&nbsp;</td>
+					<td class="width33"></td>
+					<td class="width33"></td>
 				</tr>
 			</table>
 			<br>

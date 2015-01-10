@@ -1,16 +1,4 @@
 <?php
-// Classes for Gedcom Date/Calendar functionality.
-//
-// WT_Date_Calendar is a base class for classes such as WT_Date_Gregorian, etc.
-//
-// + All supported calendars have non-zero days/months/years.
-// + We store dates as both Y/M/D and Julian Days.
-// + For imprecise dates such as "JAN 2000" we store the start/end julian day.
-//
-// NOTE: Since different calendars start their days at different times, (civil
-// midnight, solar midnight, sunset, sunrise, etc.), we convert on the basis of
-// midday.
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 Greg Roach
 //
@@ -29,27 +17,50 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 use FishareBest\ExtCalendar\CalendarInterface;
+use FishareBest\ExtCalendar\JewishCalendar;
 
+/**
+ * Class WT_Date_Calendar - Classes for Gedcom Date/Calendar functionality.
+ *
+ * WT_Date_Calendar is a base class for classes such as WT_Date_Gregorian, etc.
+ * + All supported calendars have non-zero days/months/years.
+ * + We store dates as both Y/M/D and Julian Days.
+ * + For imprecise dates such as "JAN 2000" we store the start/end julian day.
+ *
+ * NOTE: Since different calendars start their days at different times, (civil
+ * midnight, solar midnight, sunset, sunrise, etc.), we convert on the basis of
+ * midday.
+ */
 class WT_Date_Calendar {
 	const CALENDAR_ESCAPE = '@#DUNKNOWN@';
 	const MONTHS_IN_YEAR = 12;
 	const CAL_START_JD = 0; // @#DJULIAN@ 01 JAN 4713B.C.
 	const CAL_END_JD = 99999999;
 	const DAYS_IN_WEEK = 7;
-	static $MONTH_ABBREV = array('' => 0, 'JAN' => 1, 'FEB' => 2, 'MAR' => 3, 'APR' => 4, 'MAY' => 5, 'JUN' => 6, 'JUL' => 7, 'AUG' => 8, 'SEP' => 9, 'OCT' => 10, 'NOV' => 11, 'DEC' => 12);
+
+	/** @var integer[] Convert GEDCOM month names to month numbers  */
+	public static $MONTH_ABBREV = array('' => 0, 'JAN' => 1, 'FEB' => 2, 'MAR' => 3, 'APR' => 4, 'MAY' => 5, 'JUN' => 6, 'JUL' => 7, 'AUG' => 8, 'SEP' => 9, 'OCT' => 10, 'NOV' => 11, 'DEC' => 12);
 
 	/** @var string[] Convert numbers to/from roman numerals */
 	private static $roman_numerals = array(1000 => 'M', 900 => 'CM', 500 => 'D', 400 => 'CD', 100 => 'C', 90 => 'XC', 50 => 'L', 40 => 'XL', 10 => 'X', 9 => 'IX', 5 => 'V', 4 => 'IV', 1 => 'I');
 
-	/**
-	 * The calendar system used to represent this date
-	 *
-	 * @var CalendarInterface
-	 */
+	/** @var CalendarInterface The calendar system used to represent this date */
 	protected $calendar;
 
-	public $y, $m, $d;     // Numeric year/month/day
-	public $minJD, $maxJD; // Julian Day numbers
+	/** @var integer Year number  */
+	public $y;
+
+	/** @var integer Month number  */
+	public $m;
+
+	/** @var integer Day number  */
+	public $d;
+
+	/** @var integer Earliest Julian day number (start of month/year for imprecise dates) */
+	public $minJD;
+
+	/** @var integer Latest Julian day number (end of month/year for imprecise dates) */
+	public $maxJD;
 
 	/**
 	 * Create a date from either:
@@ -61,7 +72,7 @@ class WT_Date_Calendar {
 	 */
 	public function __construct($date) {
 		// Construct from an integer (a julian day number)
-		if (is_numeric($date)) {
+		if (is_integer($date)) {
 			$this->minJD = $date;
 			$this->maxJD = $date;
 			list($this->y, $this->m, $this->d) = $this->calendar->jdToYmd($date);
@@ -79,6 +90,12 @@ class WT_Date_Calendar {
 				$this->d = 0;
 			}
 			$this->y = $this->extractYear($date[0]);
+
+			// Our simple lookup table above does not take into account Adar and leap-years.
+			if ($this->m === 6 && $this->calendar instanceof JewishCalendar && !$this->calendar->isLeapYear($this->y)) {
+				$this->m = 7;
+			}
+
 			$this->setJdFromYmd();
 
 			return;
@@ -130,7 +147,7 @@ class WT_Date_Calendar {
 	/**
 	 * Is the current year a leap year?
 	 *
-	 * @return bool
+	 * @return boolean
 	 */
 	function isLeapYear() {
 		return $this->calendar->isLeapYear($this->y);
@@ -161,40 +178,33 @@ class WT_Date_Calendar {
 	 *
 	 * We put these in the base class, to save duplicating it in the Julian and Gregorian calendars.
 	 *
-	 * @param int  $month_number
-	 * @param bool $leap_year    Some calendars use leap months
+	 * @param integer $month_number
+	 * @param boolean $leap_year    Some calendars use leap months
 	 *
 	 * @return string
 	 */
 	public static function monthNameNominativeCase($month_number, $leap_year) {
-		switch ($month_number) {
-		case 1:
-			return WT_I18N::translate_c('NOMINATIVE', 'January');
-		case 2:
-			return WT_I18N::translate_c('NOMINATIVE', 'February');
-		case 3:
-			return WT_I18N::translate_c('NOMINATIVE', 'March');
-		case 4:
-			return WT_I18N::translate_c('NOMINATIVE', 'April');
-		case 5:
-			return WT_I18N::translate_c('NOMINATIVE', 'May');
-		case 6:
-			return WT_I18N::translate_c('NOMINATIVE', 'June');
-		case 7:
-			return WT_I18N::translate_c('NOMINATIVE', 'July');
-		case 8:
-			return WT_I18N::translate_c('NOMINATIVE', 'August');
-		case 9:
-			return WT_I18N::translate_c('NOMINATIVE', 'September');
-		case 10:
-			return WT_I18N::translate_c('NOMINATIVE', 'October');
-		case 11:
-			return WT_I18N::translate_c('NOMINATIVE', 'November');
-		case 12:
-			return WT_I18N::translate_c('NOMINATIVE', 'December');
-		default:
-			return '';
+		static $translated_month_names;
+
+		if ($translated_month_names === null) {
+			$translated_month_names = array(
+				0  => '',
+				1  => WT_I18N::translate_c('NOMINATIVE', 'January'),
+				2  => WT_I18N::translate_c('NOMINATIVE', 'February'),
+				3  => WT_I18N::translate_c('NOMINATIVE', 'March'),
+				4  => WT_I18N::translate_c('NOMINATIVE', 'April'),
+				5  => WT_I18N::translate_c('NOMINATIVE', 'May'),
+				6  => WT_I18N::translate_c('NOMINATIVE', 'June'),
+				7  => WT_I18N::translate_c('NOMINATIVE', 'July'),
+				8  => WT_I18N::translate_c('NOMINATIVE', 'August'),
+				9  => WT_I18N::translate_c('NOMINATIVE', 'September'),
+				10 => WT_I18N::translate_c('NOMINATIVE', 'October'),
+				11 => WT_I18N::translate_c('NOMINATIVE', 'November'),
+				12 => WT_I18N::translate_c('NOMINATIVE', 'December'),
+			);
 		}
+
+		return $translated_month_names[$month_number];
 	}
 
 	/**
@@ -202,40 +212,33 @@ class WT_Date_Calendar {
 	 *
 	 * We put these in the base class, to save duplicating it in the Julian and Gregorian calendars.
 	 *
-	 * @param int  $month_number
-	 * @param bool $leap_year    Some calendars use leap months
+	 * @param integer $month_number
+	 * @param boolean $leap_year    Some calendars use leap months
 	 *
 	 * @return string
 	 */
 	protected static function monthNameGenitiveCase($month_number, $leap_year) {
-		switch ($month_number) {
-		case 1:
-			return WT_I18N::translate_c('GENITIVE', 'January');
-		case 2:
-			return WT_I18N::translate_c('GENITIVE', 'February');
-		case 3:
-			return WT_I18N::translate_c('GENITIVE', 'March');
-		case 4:
-			return WT_I18N::translate_c('GENITIVE', 'April');
-		case 5:
-			return WT_I18N::translate_c('GENITIVE', 'May');
-		case 6:
-			return WT_I18N::translate_c('GENITIVE', 'June');
-		case 7:
-			return WT_I18N::translate_c('GENITIVE', 'July');
-		case 8:
-			return WT_I18N::translate_c('GENITIVE', 'August');
-		case 9:
-			return WT_I18N::translate_c('GENITIVE', 'September');
-		case 10:
-			return WT_I18N::translate_c('GENITIVE', 'October');
-		case 11:
-			return WT_I18N::translate_c('GENITIVE', 'November');
-		case 12:
-			return WT_I18N::translate_c('GENITIVE', 'December');
-		default:
-			return '';
+		static $translated_month_names;
+
+		if ($translated_month_names === null) {
+			$translated_month_names = array(
+				0  => '',
+				1  => WT_I18N::translate_c('GENITIVE', 'January'),
+				2  => WT_I18N::translate_c('GENITIVE', 'February'),
+				3  => WT_I18N::translate_c('GENITIVE', 'March'),
+				4  => WT_I18N::translate_c('GENITIVE', 'April'),
+				5  => WT_I18N::translate_c('GENITIVE', 'May'),
+				6  => WT_I18N::translate_c('GENITIVE', 'June'),
+				7  => WT_I18N::translate_c('GENITIVE', 'July'),
+				8  => WT_I18N::translate_c('GENITIVE', 'August'),
+				9  => WT_I18N::translate_c('GENITIVE', 'September'),
+				10 => WT_I18N::translate_c('GENITIVE', 'October'),
+				11 => WT_I18N::translate_c('GENITIVE', 'November'),
+				12 => WT_I18N::translate_c('GENITIVE', 'December'),
+			);
 		}
+
+		return $translated_month_names[$month_number];
 	}
 
 	/**
@@ -243,40 +246,33 @@ class WT_Date_Calendar {
 	 *
 	 * We put these in the base class, to save duplicating it in the Julian and Gregorian calendars.
 	 *
-	 * @param int  $month_number
-	 * @param bool $leap_year    Some calendars use leap months
+	 * @param integer $month_number
+	 * @param boolean $leap_year    Some calendars use leap months
 	 *
 	 * @return string
 	 */
 	protected static function monthNameLocativeCase($month_number, $leap_year) {
-		switch ($month_number) {
-		case 1:
-			return WT_I18N::translate_c('LOCATIVE', 'January');
-		case 2:
-			return WT_I18N::translate_c('LOCATIVE', 'February');
-		case 3:
-			return WT_I18N::translate_c('LOCATIVE', 'March');
-		case 4:
-			return WT_I18N::translate_c('LOCATIVE', 'April');
-		case 5:
-			return WT_I18N::translate_c('LOCATIVE', 'May');
-		case 6:
-			return WT_I18N::translate_c('LOCATIVE', 'June');
-		case 7:
-			return WT_I18N::translate_c('LOCATIVE', 'July');
-		case 8:
-			return WT_I18N::translate_c('LOCATIVE', 'August');
-		case 9:
-			return WT_I18N::translate_c('LOCATIVE', 'September');
-		case 10:
-			return WT_I18N::translate_c('LOCATIVE', 'October');
-		case 11:
-			return WT_I18N::translate_c('LOCATIVE', 'November');
-		case 12:
-			return WT_I18N::translate_c('LOCATIVE', 'December');
-		default:
-			return '';
+		static $translated_month_names;
+
+		if ($translated_month_names === null) {
+			$translated_month_names = array(
+				0  => '',
+				1  => WT_I18N::translate_c('LOCATIVE', 'January'),
+				2  => WT_I18N::translate_c('LOCATIVE', 'February'),
+				3  => WT_I18N::translate_c('LOCATIVE', 'March'),
+				4  => WT_I18N::translate_c('LOCATIVE', 'April'),
+				5  => WT_I18N::translate_c('LOCATIVE', 'May'),
+				6  => WT_I18N::translate_c('LOCATIVE', 'June'),
+				7  => WT_I18N::translate_c('LOCATIVE', 'July'),
+				8  => WT_I18N::translate_c('LOCATIVE', 'August'),
+				9  => WT_I18N::translate_c('LOCATIVE', 'September'),
+				10 => WT_I18N::translate_c('LOCATIVE', 'October'),
+				11 => WT_I18N::translate_c('LOCATIVE', 'November'),
+				12 => WT_I18N::translate_c('LOCATIVE', 'December'),
+			);
 		}
+
+		return $translated_month_names[$month_number];
 	}
 
 	/**
@@ -284,143 +280,123 @@ class WT_Date_Calendar {
 	 *
 	 * We put these in the base class, to save duplicating it in the Julian and Gregorian calendars.
 	 *
-	 * @param int  $month_number
-	 * @param bool $leap_year    Some calendars use leap months
+	 * @param integer $month_number
+	 * @param boolean $leap_year    Some calendars use leap months
 	 *
 	 * @return string
 	 */
 	protected static function monthNameInstrumentalCase($month_number, $leap_year) {
-		switch ($month_number) {
-		case 1:
-			return WT_I18N::translate_c('INSTRUMENTAL', 'January');
-		case 2:
-			return WT_I18N::translate_c('INSTRUMENTAL', 'February');
-		case 3:
-			return WT_I18N::translate_c('INSTRUMENTAL', 'March');
-		case 4:
-			return WT_I18N::translate_c('INSTRUMENTAL', 'April');
-		case 5:
-			return WT_I18N::translate_c('INSTRUMENTAL', 'May');
-		case 6:
-			return WT_I18N::translate_c('INSTRUMENTAL', 'June');
-		case 7:
-			return WT_I18N::translate_c('INSTRUMENTAL', 'July');
-		case 8:
-			return WT_I18N::translate_c('INSTRUMENTAL', 'August');
-		case 9:
-			return WT_I18N::translate_c('INSTRUMENTAL', 'September');
-		case 10:
-			return WT_I18N::translate_c('INSTRUMENTAL', 'October');
-		case 11:
-			return WT_I18N::translate_c('INSTRUMENTAL', 'November');
-		case 12:
-			return WT_I18N::translate_c('INSTRUMENTAL', 'December');
-		default:
-			return '';
+		static $translated_month_names;
+
+		if ($translated_month_names === null) {
+			$translated_month_names = array(
+				0  => '',
+				1  => WT_I18N::translate_c('INSTRUMENTAL', 'January'),
+				2  => WT_I18N::translate_c('INSTRUMENTAL', 'February'),
+				3  => WT_I18N::translate_c('INSTRUMENTAL', 'March'),
+				4  => WT_I18N::translate_c('INSTRUMENTAL', 'April'),
+				5  => WT_I18N::translate_c('INSTRUMENTAL', 'May'),
+				6  => WT_I18N::translate_c('INSTRUMENTAL', 'June'),
+				7  => WT_I18N::translate_c('INSTRUMENTAL', 'July'),
+				8  => WT_I18N::translate_c('INSTRUMENTAL', 'August'),
+				9  => WT_I18N::translate_c('INSTRUMENTAL', 'September'),
+				10 => WT_I18N::translate_c('INSTRUMENTAL', 'October'),
+				11 => WT_I18N::translate_c('INSTRUMENTAL', 'November'),
+				12 => WT_I18N::translate_c('INSTRUMENTAL', 'December'),
+			);
 		}
+
+		return $translated_month_names[$month_number];
 	}
 
 	/**
 	 * Abbreviated month name
 	 *
-	 * @param int  $month_number
-	 * @param bool $leap_year    Some calendars use leap months
+	 * @param integer $month_number
+	 * @param boolean $leap_year    Some calendars use leap months
 	 *
 	 * @return string
 	 */
 	protected static function monthNameAbbreviated($month_number, $leap_year) {
-		switch ($month_number) {
-		case 1:
-			return WT_I18N::translate_c('Abbreviation for January', 'Jan');
-		case 2:
-			return WT_I18N::translate_c('Abbreviation for February', 'Feb');
-		case 3:
-			return WT_I18N::translate_c('Abbreviation for March', 'Mar');
-		case 4:
-			return WT_I18N::translate_c('Abbreviation for April', 'Apr');
-		case 5:
-			return WT_I18N::translate_c('Abbreviation for May', 'May');
-		case 6:
-			return WT_I18N::translate_c('Abbreviation for June', 'Jun');
-		case 7:
-			return WT_I18N::translate_c('Abbreviation for July', 'Jul');
-		case 8:
-			return WT_I18N::translate_c('Abbreviation for August', 'Aug');
-		case 9:
-			return WT_I18N::translate_c('Abbreviation for September', 'Sep');
-		case 10:
-			return WT_I18N::translate_c('Abbreviation for October', 'Oct');
-		case 11:
-			return WT_I18N::translate_c('Abbreviation for November', 'Nov');
-		case 12:
-			return WT_I18N::translate_c('Abbreviation for December', 'Dec');
-		default:
-			return '';
+		static $translated_month_names;
+
+		if ($translated_month_names === null) {
+			$translated_month_names = array(
+				0  => '',
+				1  => WT_I18N::translate_c('Abbreviation for January', 'Jan'),
+				2  => WT_I18N::translate_c('Abbreviation for February', 'Feb'),
+				3  => WT_I18N::translate_c('Abbreviation for March', 'Mar'),
+				4  => WT_I18N::translate_c('Abbreviation for April', 'Apr'),
+				5  => WT_I18N::translate_c('Abbreviation for May', 'May'),
+				6  => WT_I18N::translate_c('Abbreviation for June', 'Jun'),
+				7  => WT_I18N::translate_c('Abbreviation for July', 'Jul'),
+				8  => WT_I18N::translate_c('Abbreviation for August', 'Aug'),
+				9  => WT_I18N::translate_c('Abbreviation for September', 'Sep'),
+				10 => WT_I18N::translate_c('Abbreviation for October', 'Oct'),
+				11 => WT_I18N::translate_c('Abbreviation for November', 'Nov'),
+				12 => WT_I18N::translate_c('Abbreviation for December', 'Dec'),
+			);
 		}
+
+		return $translated_month_names[$month_number];
 	}
 
 	/**
 	 * Full day of th eweek
 	 *
-	 * @param int $day_number
+	 * @param integer $day_number
 	 *
 	 * @return string
 	 */
 	public static function dayNames($day_number) {
-		switch ($day_number) {
-		case 0:
-			return WT_I18N::translate('Monday');
-		case 1:
-			return WT_I18N::translate('Tuesday');
-		case 2:
-			return WT_I18N::translate('Wednesday');
-		case 3:
-			return WT_I18N::translate('Thursday');
-		case 4:
-			return WT_I18N::translate('Friday');
-		case 5:
-			return WT_I18N::translate('Saturday');
-		case 6:
-			return WT_I18N::translate('Sunday');
-		default:
-			throw new InvalidArgumentException($day_number);
+		static $translated_day_names;
+
+		if ($translated_day_names === null) {
+			$translated_day_names = array(
+				0  => WT_I18N::translate('Monday'),
+				1  => WT_I18N::translate('Tuesday'),
+				2  => WT_I18N::translate('Wednesday'),
+				3  => WT_I18N::translate('Thursday'),
+				4  => WT_I18N::translate('Friday'),
+				5  => WT_I18N::translate('Saturday'),
+				6  => WT_I18N::translate('Sunday'),
+			);
 		}
+
+		return $translated_day_names[$day_number];
 	}
 
 	/**
 	 * Abbreviated day of the week
 	 *
-	 * @param int $day_number
+	 * @param integer $day_number
 	 *
 	 * @return string
 	 */
-	private static function dayNamesAbbreviated($day_number) {
-		switch ($day_number) {
-		case 0:
-			return WT_I18N::translate('Mon');
-		case 1:
-			return WT_I18N::translate('Tue');
-		case 2:
-			return WT_I18N::translate('Wed');
-		case 3:
-			return WT_I18N::translate('Thu');
-		case 4:
-			return WT_I18N::translate('Fri');
-		case 5:
-			return WT_I18N::translate('Sat');
-		case 6:
-			return WT_I18N::translate('Sun');
-		default:
-			throw new InvalidArgumentException($day_number);
+	protected static function dayNamesAbbreviated($day_number) {
+		static $translated_day_names;
+
+		if ($translated_day_names === null) {
+			$translated_day_names = array(
+				0  => /* I18N: abbreviation for Monday    */ WT_I18N::translate('Mon'),
+				1  => /* I18N: abbreviation for Tuesday   */ WT_I18N::translate('Tue'),
+				2  => /* I18N: abbreviation for Wednesday */ WT_I18N::translate('Wed'),
+				3  => /* I18N: abbreviation for Thursday  */ WT_I18N::translate('Thu'),
+				4  => /* I18N: abbreviation for Friday    */ WT_I18N::translate('Fri'),
+				5  => /* I18N: abbreviation for Saturday  */ WT_I18N::translate('Sat'),
+				6  => /* I18N: abbreviation for Sunday    */ WT_I18N::translate('Sun'),
+			);
 		}
+
+		return $translated_day_names[$day_number];
 	}
 
 	/**
 	 * Most years are 1 more than the previous, but not always (e.g. 1BC->1AD)
 	 *
-	 * @param int $year
+	 * @param integer $year
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	protected static function nextYear($year) {
 		return $year + 1;
@@ -431,7 +407,7 @@ class WT_Date_Calendar {
 	 *
 	 * @param string $year
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	protected function extractYear($year) {
 		return (int)$year;
@@ -443,7 +419,7 @@ class WT_Date_Calendar {
 	 * @param WT_Date_Calendar $d1
 	 * @param WT_Date_Calendar $d2
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	public static function compare(WT_Date_Calendar $d1, WT_Date_Calendar $d2) {
 		if ($d1->maxJD < $d2->minJD) {
@@ -462,9 +438,9 @@ class WT_Date_Calendar {
 	 *
 	 * @todo WT_Date_Jewish needs to redefine this to cope with leap months
 	 *
-	 * @param bool $full             true=gedcom style, false=just years
-	 * @param int  $jd               date for calculation
-	 * @param bool $warn_on_negative show a warning triangle for negative ages
+	 * @param boolean $full             true=gedcom style, false=just years
+	 * @param integer $jd               date for calculation
+	 * @param boolean $warn_on_negative show a warning triangle for negative ages
 	 *
 	 * @return string
 	 */
@@ -539,7 +515,7 @@ class WT_Date_Calendar {
 	/**
 	 * Is this date within the valid range of the calendar
 	 *
-	 * @return bool
+	 * @return boolean
 	 */
 	public function inValidRange() {
 		return $this->minJD >= static::CAL_START_JD && $this->maxJD <= static::CAL_END_JD;
@@ -548,7 +524,7 @@ class WT_Date_Calendar {
 	/**
 	 * How many months in a year
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	public function monthsInYear() {
 		return static::MONTHS_IN_YEAR;
@@ -557,7 +533,7 @@ class WT_Date_Calendar {
 	/**
 	 * How many days in the current month
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	public function daysInMonth() {
 		try {
@@ -572,7 +548,7 @@ class WT_Date_Calendar {
 	/**
 	 * How many days in the current week
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	public function daysInWeek() {
 		return static::DAYS_IN_WEEK;
@@ -867,7 +843,12 @@ class WT_Date_Calendar {
 	 * @return string
 	 */
 	protected function formatGedcomMonth() {
-		return array_search($this->m, static::$MONTH_ABBREV);
+		// Our simple lookup table doesn't work correctly for Adar on leap years
+		if ($this->m == 7 && $this->calendar instanceof JewishCalendar && !$this->calendar->isLeapYear($this->y)) {
+			return 'ADR';
+		} else {
+			return array_search($this->m, static::$MONTH_ABBREV);
+		}
 	}
 
 	/**
@@ -895,7 +876,7 @@ class WT_Date_Calendar {
 	/**
 	 * Which months follows this one?  Calendars with leap-months should provide their own implementation.
 	 *
-	 * @return int[]
+	 * @return integer[]
 	 */
 	protected function nextMonth() {
 		return array($this->m == static::MONTHS_IN_YEAR ? $this->nextYear($this->y) : $this->y, ($this->m % static::MONTHS_IN_YEAR) + 1);
@@ -904,7 +885,7 @@ class WT_Date_Calendar {
 	/**
 	 * Convert a decimal number to roman numerals
 	 *
-	 * @param int $number
+	 * @param integer $number
 	 *
 	 * @return string
 	 */
@@ -929,7 +910,7 @@ class WT_Date_Calendar {
 	 *
 	 * @param string $roman
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	protected static function romanNumeralsToNumber($roman) {
 		$num = 0;
@@ -946,7 +927,7 @@ class WT_Date_Calendar {
 	/**
 	 * Get today’s date in the current calendar.
 	 *
-	 * @return int[]
+	 * @return integer[]
 	 */
 	public function todayYmd() {
 		return $this->calendar->jdToYmd(unixtojd());

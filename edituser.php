@@ -5,7 +5,7 @@
 // Copyright (C) 2014 webtrees development team.
 //
 // Derived from PhpGedView
-// Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.
+// Copyright (C) 2002 to 2009 PGV Development Team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -36,12 +36,6 @@ if (!Auth::id() || !Auth::user()->getPreference('editaccount')) {
 	exit;
 }
 
-// Valid values for form variables
-$ALL_THEMES_DIRS=array();
-foreach (get_theme_names() as $themename=>$themedir) {
-	$ALL_THEME_DIRS[]=$themedir;
-}
-
 // Extract form variables
 $form_action         = WT_Filter::post('form_action');
 $form_username       = WT_Filter::post('form_username');
@@ -50,7 +44,7 @@ $form_pass1          = WT_Filter::post('form_pass1', WT_REGEX_PASSWORD);
 $form_pass2          = WT_Filter::post('form_pass2', WT_REGEX_PASSWORD);
 $form_email          = WT_Filter::postEmail('form_email');
 $form_rootid         = WT_Filter::post('form_rootid', WT_REGEX_XREF);
-$form_theme          = WT_Filter::post('form_theme', implode('|', $ALL_THEME_DIRS));
+$form_theme          = WT_Filter::post('form_theme', implode('|', get_theme_names()));
 $form_language       = WT_Filter::post('form_language', implode('|', array_keys(WT_I18N::installed_languages())), WT_LOCALE);
 $form_contact_method = WT_Filter::post('form_contact_method');
 $form_visible_online = WT_Filter::postBool('form_visible_online');
@@ -63,7 +57,7 @@ if ($form_action=='update' && WT_Filter::checkCsrf()) {
 		WT_FlashMessages::addMessage(WT_I18N::translate('Duplicate email address.  A user with that email already exists.'));
 	} else {
 		// Change username
-		if ($form_username != WT_USER_NAME) {
+		if ($form_username != Auth::user()->getUserName()) {
 			Log::addAuthenticationLog('User ' . Auth::user()->getUserName() . ' renamed to ' . $form_username);
 			Auth::user()->setUserName($form_username);
 		}
@@ -77,10 +71,15 @@ if ($form_action=='update' && WT_Filter::checkCsrf()) {
 		Auth::user()
 			->setRealName($form_realname)
 			->setEmail($form_email)
-			->setPreference('theme',         $form_theme)
 			->setPreference('language',      $form_language)
 			->setPreference('contactmethod', $form_contact_method)
-			->setPreference('visibleonline', $form_visible_online);
+			->setPreference('visibleonline', $form_visible_online ? '1' : '0');
+
+		if ($form_theme === null) {
+			Auth::user()->deletePreference('theme');
+		} else {
+			Auth::user()->setPreference('theme', $form_theme);
+		}
 
 		$WT_TREE->setUserPreference(Auth::user(), 'rootid', $form_rootid);
 
@@ -162,12 +161,12 @@ echo '<div id="edituser-page">
 		<div class="value">
 			<select name="form_theme">
 			<option value="">', WT_Filter::escapeHtml(/* I18N: default option in list of themes */ WT_I18N::translate('<default theme>')), '</option>';
-			foreach (get_theme_names() as $themename=>$themedir) {
-				echo '<option value="', $themedir, '"';
-				if ($themedir == Auth::user()->getPreference('theme')) {
+			foreach (get_theme_names() as $theme_name => $theme_id) {
+				echo '<option value="', $theme_id, '"';
+				if ($theme_id === Auth::user()->getPreference('theme')) {
 					echo ' selected="selected"';
 				}
-				echo '>', $themename, '</option>';
+				echo '>', $theme_name, '</option>';
 			}
 			echo '</select>
 		</div>

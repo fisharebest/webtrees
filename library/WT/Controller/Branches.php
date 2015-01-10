@@ -1,6 +1,4 @@
 <?php
-// Controller for the branches list
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -18,6 +16,9 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class WT_Controller_Branches - Controller for the branches list
+ */
 class WT_Controller_Branches extends WT_Controller_Page {
 	/** @var string Generate the branches for this surname */
 	private $surname;
@@ -34,26 +35,34 @@ class WT_Controller_Branches extends WT_Controller_Page {
 	/** @var WT_Individual[] Ancestors of the root person - for SOSA numbers */
 	private $ancestors = array();
 
+	/**
+	 * Create a branches list controller
+	 */
 	public function __construct() {
 		parent::__construct();
 
-		$this->surname = WT_Filter::get('surname');
+		$this->surname     = WT_Filter::get('surname');
 		$this->soundex_std = WT_Filter::getBool('soundex_std');
-		$this->soundex_dm = WT_Filter::getBool('soundex_dm');
+		$this->soundex_dm  = WT_Filter::getBool('soundex_dm');
 
 		if ($this->surname) {
-			$this->setPageTitle(/* I18N: %s is a surname */ WT_I18N::translate('Branches of the %s family', WT_Filter::escapeHtml($this->surname)));
+			$this->setPageTitle(/* I18N: %s is a surname */
+				WT_I18N::translate('Branches of the %s family', WT_Filter::escapeHtml($this->surname)));
 			$this->loadIndividuals();
 			$self = WT_Individual::getInstance(WT_USER_GEDCOM_ID);
 			if ($self) {
-				$this->loadAncestors(WT_Individual::getInstance(WT_USER_GEDCOM_ID), 1);
+				$this->loadAncestors($self, 1);
 			}
 		} else {
 			$this->setPageTitle(/* I18N: Branches of a family tree */ WT_I18N::translate('Branches'));
 		}
 	}
 
-	// Page parameters
+	/**
+	 * The surname to be used on this page.
+	 *
+	 * @return null|string
+	 */
 	public function getSurname() {
 		return $this->surname;
 	}
@@ -61,7 +70,7 @@ class WT_Controller_Branches extends WT_Controller_Page {
 	/**
 	 * Should we use Standard phonetic matching
 	 *
-	 * @return bool
+	 * @return boolean
 	 */
 	public function getSoundexStd() {
 		return $this->soundex_std;
@@ -70,7 +79,7 @@ class WT_Controller_Branches extends WT_Controller_Page {
 	/**
 	 * Should we use Daitch-Mokotov phonetic matching
 	 *
-	 * @return bool
+	 * @return boolean
 	 */
 	public function getSoundexDm() {
 		return $this->soundex_dm;
@@ -84,12 +93,12 @@ class WT_Controller_Branches extends WT_Controller_Page {
 			"SELECT DISTINCT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom" .
 			" FROM `##individuals`" .
 			" JOIN `##name` ON (i_id=n_id AND i_file=n_file)" .
-			" WHERE n_file=?" .
-			" AND n_type!=?" .
-			" AND (n_surn=? OR n_surname=?";
+			" WHERE n_file = ?" .
+			" AND n_type != ?" .
+			" AND (n_surn = ? OR n_surname = ?";
 		$args = array(WT_GED_ID, '_MARNM', $this->surname, $this->surname);
 		if ($this->soundex_std) {
-			$sdx = WT_Soundex::soundex_std($this->surname);
+			$sdx = WT_Soundex::russell($this->surname);
 			if ($sdx) {
 				foreach (explode(':', $sdx) as $value) {
 					$sql .= " OR n_soundex_surn_std LIKE CONCAT('%', ?, '%')";
@@ -98,7 +107,7 @@ class WT_Controller_Branches extends WT_Controller_Page {
 			}
 		}
 		if ($this->soundex_dm) {
-			$sdx = WT_Soundex::soundex_dm($this->surname);
+			$sdx = WT_Soundex::daitchMokotoff($this->surname);
 			if ($sdx) {
 				foreach (explode(':', $sdx) as $value) {
 					$sql .= " OR n_soundex_surn_dm LIKE CONCAT('%', ?, '%')";
@@ -107,20 +116,20 @@ class WT_Controller_Branches extends WT_Controller_Page {
 			}
 		}
 		$sql .= ')';
-		$rows = WT_DB::prepare($sql)->execute($args)->fetchAll();
+		$rows              = WT_DB::prepare($sql)->execute($args)->fetchAll();
 		$this->individuals = array();
 		foreach ($rows as $row) {
 			$this->individuals[] = WT_Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 		}
 		// Sort by birth date, oldest first
-		usort($this->individuals, array('WT_Individual', 'CompareBirtDate'));
+		usort($this->individuals, array('WT_Individual', 'compareBirthDate'));
 	}
 
 	/**
 	 * Load the ancestors of an individual, so we can highlight them in the list
 	 *
 	 * @param WT_Individual $ancestor
-	 * @param int           $sosa
+	 * @param integer       $sosa
 	 */
 	private function loadAncestors(WT_Individual $ancestor, $sosa) {
 		if ($ancestor) {
@@ -168,13 +177,12 @@ class WT_Controller_Branches extends WT_Controller_Page {
 		$person_name = '';
 		foreach ($individual->getAllNames() as $name) {
 			list($surn1) = explode(",", $name['sort']);
-			if (
-				// one name is a substring of the other
+			if (// one name is a substring of the other
 				stripos($surn1, $this->surname) !== false ||
 				stripos($this->surname, $surn1) !== false ||
 				// one name sounds like the other
-				$this->soundex_std && WT_Soundex::compare(WT_Soundex::soundex_std($surn1), WT_Soundex::soundex_std($this->surname)) ||
-				$this->soundex_dm && WT_Soundex::compare(WT_Soundex::soundex_dm($surn1), WT_Soundex::soundex_dm($this->surname))
+				$this->soundex_std && WT_Soundex::compare(WT_Soundex::russell($surn1), WT_Soundex::russell($this->surname)) ||
+				$this->soundex_dm && WT_Soundex::compare(WT_Soundex::daitchMokotoff($surn1), WT_Soundex::daitchMokotoff($this->surname))
 			) {
 				$person_name = $name['full'];
 				break;
@@ -190,10 +198,10 @@ class WT_Controller_Branches extends WT_Controller_Page {
 		$sosa = array_search($individual, $this->ancestors, true);
 		if ($sosa) {
 			$sosa_class = 'search_hit';
-			$sosa_html = ' <a class="details1 ' . $individual->getBoxStyle() . '" title="' . WT_I18N::translate('Sosa') . '" href="relationship.php?pid2=' . WT_USER_ROOT_ID . '&amp;pid1=' . $individual->getXref() . '">' . $sosa . '</a>' . self::sosaGeneration($sosa);
+			$sosa_html  = ' <a class="details1 ' . $individual->getBoxStyle() . '" title="' . WT_I18N::translate('Sosa') . '" href="relationship.php?pid2=' . WT_USER_ROOT_ID . '&amp;pid1=' . $individual->getXref() . '">' . $sosa . '</a>' . self::sosaGeneration($sosa);
 		} else {
 			$sosa_class = '';
-			$sosa_html = '';
+			$sosa_html  = '';
 		}
 
 		// Generate HTML for this individual, and all their descendants
@@ -226,10 +234,10 @@ class WT_Controller_Branches extends WT_Controller_Page {
 					$sosa = array_search($spouse, $this->ancestors, true);
 					if ($sosa) {
 						$sosa_class = 'search_hit';
-						$sosa_html = ' <a class="details1 ' . $spouse->getBoxStyle() . '" title="' . WT_I18N::translate('Sosa') . '" href="relationship.php?pid2=' . WT_USER_ROOT_ID . '&amp;pid1=' . $spouse->getXref() . '"> ' . $sosa . ' </a>' . self::sosaGeneration($sosa);
+						$sosa_html  = ' <a class="details1 ' . $spouse->getBoxStyle() . '" title="' . WT_I18N::translate('Sosa') . '" href="relationship.php?pid2=' . WT_USER_ROOT_ID . '&amp;pid1=' . $spouse->getXref() . '"> ' . $sosa . ' </a>' . self::sosaGeneration($sosa);
 					} else {
 						$sosa_class = '';
-						$sosa_html = '';
+						$sosa_html  = '';
 					}
 					$marriage_year = $family->getMarriageYear();
 					if ($marriage_year) {
@@ -259,7 +267,7 @@ class WT_Controller_Branches extends WT_Controller_Page {
 	/**
 	 * Convert a SOSA number into a generation number.  e.g. 8 = great-grandfather = 3 generations
 	 *
-	 * @param int $sosa
+	 * @param integer $sosa
 	 *
 	 * @return string
 	 */

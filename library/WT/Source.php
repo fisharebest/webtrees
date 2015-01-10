@@ -1,6 +1,4 @@
 <?php
-// Class file for a Source (SOUR) object
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -21,13 +19,35 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class WT_Source - A GEDCOM source (SOUR) object
+ */
 class WT_Source extends WT_GedcomRecord {
 	const RECORD_TYPE = 'SOUR';
 	const URL_PREFIX = 'source.php?sid=';
 
 	/**
-	 * {@inheritdoc}
+	 * Get an instance of a source object.  For single records,
+	 * we just receive the XREF.  For bulk records (such as lists
+	 * and search results) we can receive the GEDCOM data as well.
+	 *
+	 * @param string       $xref
+	 * @param integer|null $gedcom_id
+	 * @param string|null  $gedcom
+	 *
+	 * @return WT_Source|null
 	 */
+	public static function getInstance($xref, $gedcom_id = WT_GED_ID, $gedcom = null) {
+		$record = parent::getInstance($xref, $gedcom_id, $gedcom);
+
+		if ($record instanceof WT_Source) {
+			return $record;
+		} else {
+			return null;
+		}
+	}
+
+	/** {@inheritdoc} */
 	protected function canShowByType($access_level) {
 		// Hide sources if they are attached to private repositories ...
 		preg_match_all('/\n1 REPO @(.+)@/', $this->gedcom, $matches);
@@ -42,16 +62,12 @@ class WT_Source extends WT_GedcomRecord {
 		return parent::canShowByType($access_level);
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	protected function createPrivateGedcomRecord($access_level) {
 		return '0 @' . $this->xref . "@ SOUR\n1 TITL " . WT_I18N::translate('Private');
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	protected static function fetchGedcomRecord($xref, $gedcom_id) {
 		static $statement = null;
 
@@ -62,9 +78,7 @@ class WT_Source extends WT_GedcomRecord {
 		return $statement->execute(array($xref, $gedcom_id))->fetchOne();
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	public function extractNames() {
 		parent::_extractNames(1, 'TITL', $this->getFacts('TITL'));
 	}

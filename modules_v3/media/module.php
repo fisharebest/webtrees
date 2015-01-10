@@ -1,6 +1,4 @@
 <?php
-// Classes and libraries for module system
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -21,35 +19,38 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class media_WT_Module
+ */
 class media_WT_Module extends WT_Module implements WT_Module_Tab {
 	private $facts;
 
-	// Extend WT_Module
+	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module */ WT_I18N::translate('Media');
 	}
 
-	// Extend WT_Module
+	/** {@inheritdoc} */
 	public function getDescription() {
 		return /* I18N: Description of the “Media” module */ WT_I18N::translate('A tab showing the media objects linked to an individual.');
 	}
 
-	// Implement WT_Module_Tab
+	/** {@inheritdoc} */
 	public function defaultTabOrder() {
 		return 50;
 	}
 
-	// Implement WT_Module_Tab
+	/** {@inheritdoc} */
 	public function hasTabContent() {
 		return WT_USER_CAN_EDIT || $this->getFactsWithMedia();
 	}
 
-	// Implement WT_Module_Tab
+	/** {@inheritdoc} */
 	public function isGrayedOut() {
 		return !$this->getFactsWithMedia();
 	}
 
-	// Implement WT_Module_Tab
+	/** {@inheritdoc} */
 	public function getTabContent() {
 		global $WT_TREE, $controller;
 
@@ -122,14 +123,14 @@ class media_WT_Module extends WT_Module implements WT_Module_Tab {
 		return $this->facts;
 	}
 
-	// Implement WT_Module_Tab
+	/** {@inheritdoc} */
 	public function canLoadAjax() {
 		global $SEARCH_SPIDER;
 
 		return !$SEARCH_SPIDER; // Search engines cannot use AJAX
 	}
 
-	// Implement WT_Module_Tab
+	/** {@inheritdoc} */
 	public function getPreLoadContent() {
 		return '';
 	}

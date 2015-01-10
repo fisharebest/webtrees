@@ -1,6 +1,4 @@
 <?php
-//	Controller for the fan chart
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -21,14 +19,22 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class WT_Controller_Fanchart Controller for the fan chart
+ */
 class WT_Controller_Fanchart extends WT_Controller_Chart {
-	// Variables for the view
-	public $fan_style      =null;
-	public $fan_width      =null;
-	public $generations    =null;
-	public $max_generations=null;
-	public $chart_html     =null;
+	/** @var int Style of fanchart */
+	public $fan_style;
 
+	/** @var int Width of fanchart (a percentage)  */
+	public $fan_width;
+
+	/** @var int Number of generations to display */
+	public $generations;
+
+	/**
+	 * Create the controller
+	 */
 	public function __construct() {
 		global $WT_TREE;
 
@@ -67,12 +73,12 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 	/**
 	 * split and center text by lines
 	 *
-	 * @param string $data input string
-	 * @param int    $maxlen max length of each line
+	 * @param string  $data input string
+	 * @param integer $maxlen max length of each line
 	 *
 	 * @return string $text output string
 	 */
-	public function split_align_text($data, $maxlen) {
+	public function splitAlignText($data, $maxlen) {
 		$RTLOrd = array(215,216,217,218,219);
 
 		$lines = explode("\n", $data);
@@ -80,7 +86,7 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 		if (count($lines)>1) {
 			$text = '';
 			foreach ($lines as $line) {
-				$text .= $this->split_align_text($line, $maxlen)."\n";
+				$text .= $this->splitAlignText($line, $maxlen)."\n";
 			}
 			return $text;
 		}
@@ -139,13 +145,13 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 	 *
 	 * @return string
 	 */
-	public function generate_fan_chart($what, $fanChart) {
-		$treeid = ancestry_array($this->root->getXref(), $this->generations);
+	public function generateFanChart($what, $fanChart) {
+		$treeid = $this->sosaAncestors($this->generations);
 		$fanw   = 640 * $this->fan_width / 100;
 		$fandeg = 90 * $this->fan_style;
 		$html   = '';
 
-		$treesize = count($treeid);
+		$treesize = count($treeid) + 1;
 
 		// generations count
 		$gen = log($treesize) / log(2) - 1;
@@ -193,10 +199,10 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 			$rx -= 3;
 
 			// calculate new angle
-			$p2 = pow(2, $gen);
+			$p2    = pow(2, $gen);
 			$angle = $fandeg / $p2;
-			$deg2 = 360 + ($fandeg - 180) / 2;
-			$deg1 = $deg2 - $angle;
+			$deg2  = 360 + ($fandeg - 180) / 2;
+			$deg1  = $deg2 - $angle;
 			// special case for rootid cell
 			if ($gen == 0) {
 				$deg1 = 90;
@@ -205,8 +211,7 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 
 			// draw each cell
 			while ($sosa >= $p2) {
-				$pid = $treeid[$sosa];
-				$person = WT_Individual::getInstance($pid);
+				$person = $treeid[$sosa];
 				if ($person) {
 					$name    = $person->getFullName();
 					$addname = $person->getAddName();
@@ -225,7 +230,7 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 					case 'F':
 						$bg = $bgcolorF;
 						break;
-						default:
+					default:
 						$bg = $bgcolor;
 						break;
 					}
@@ -238,11 +243,13 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 					if ($gen == 0) {
 						$wmax = min($wmax, 17 * $scale);
 					}
-					$text = $this->split_align_text($text, $wmax);
+					$text = $this->splitAlignText($text, $wmax);
 
 					// text angle
-					$tangle = 270-($deg1+$angle/2);
-					if ($gen==0) $tangle=0;
+					$tangle = 270 - ($deg1 + $angle / 2);
+					if ($gen == 0) {
+						$tangle = 0;
+					}
 
 					// calculate text position
 					$deg = $deg1 + 0.44;
@@ -259,12 +266,12 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 						$deg = 180;
 					}
 					$rad = deg2rad($deg);
-					$mr = ($rx - $rw / 4) / 2;
+					$mr  = ($rx - $rw / 4) / 2;
 					if ($gen > 0 && $deg2 - $deg1 > 80) {
 						$mr = $rx / 2;
 					}
-					$tx=$cx + $mr * cos($rad);
-					$ty=$cy - $mr * -sin($rad);
+					$tx = $cx + $mr * cos($rad);
+					$ty = $cy - $mr * -sin($rad);
 					if ($sosa == 1) {
 						$ty -= $mr / 2;
 					}
@@ -274,35 +281,36 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 
 					$imagemap .= '<area shape="poly" coords="';
 					// plot upper points
-					$mr=$rx / 2;
+					$mr  = $rx / 2;
 					$deg = $deg1;
 					while ($deg <= $deg2) {
 						$rad = deg2rad($deg);
-						$tx = round($cx + $mr * cos($rad));
-						$ty = round($cy - $mr * -sin($rad));
+						$tx  = round($cx + $mr * cos($rad));
+						$ty  = round($cy - $mr * -sin($rad));
 						$imagemap .= "$tx,$ty,";
 						$deg += ($deg2 - $deg1) / 6;
 					}
 					// plot lower points
-					$mr = ($rx - $rw) / 2;
+					$mr  = ($rx - $rw) / 2;
 					$deg = $deg2;
 					while ($deg >= $deg1) {
 						$rad = deg2rad($deg);
-						$tx = round($cx + $mr * cos($rad));
-						$ty = round($cy - $mr * -sin($rad));
+						$tx  = round($cx + $mr * cos($rad));
+						$ty  = round($cy - $mr * -sin($rad));
 						$imagemap .= "$tx,$ty,";
-						$deg -= ($deg2 - $deg1)/6;
+						$deg -= ($deg2 - $deg1) / 6;
 					}
 					// join first point
-					$mr = $rx / 2;
+					$mr  = $rx / 2;
 					$deg = $deg1;
 					$rad = deg2rad($deg);
-					$tx = round($cx + $mr * cos($rad));
-					$ty = round($cy - $mr * -sin($rad));
+					$tx  = round($cx + $mr * cos($rad));
+					$ty  = round($cy - $mr * -sin($rad));
 					$imagemap .= "$tx,$ty";
 					// add action url
+					$pid = $person->getXref();
 					$imagemap .= '" href="#' . $pid . '"';
-					$tempURL = 'fanchart.php?rootid='.$pid.'&amp;generations='.$this->generations.'&amp;fan_width='.$this->fan_width.'&amp;fan_style='.$this->fan_style.'&amp;ged='.WT_GEDURL;
+					$tempURL = 'fanchart.php?rootid=' . $pid . '&amp;generations=' . $this->generations . '&amp;fan_width=' . $this->fan_width . '&amp;fan_style=' . $this->fan_style . '&amp;ged=' . WT_GEDURL;
 					$html .= '<div id="' . $pid . '" class="fan_chart_menu">';
 					$html .= '<div class="person_box"><div class="details1">';
 					$html .= '<a href="' . $person->getHtmlUrl() . '" class="name1">' . $name;
@@ -311,18 +319,18 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 					}
 					$html .= '</a>';
 					$html .= '<ul class="charts">';
-					$html.= "<li><a href=\"pedigree.php?rootid=$pid&amp;amp;ged=".WT_GEDURL."\" >".WT_I18N::translate('Pedigree')."</a></li>";
+					$html.= '<li><a href="pedigree.php?rootid=' . $pid . '&amp;ged=' . WT_GEDURL . '" >' . WT_I18N::translate('Pedigree') . '</a></li>';
 					if (array_key_exists('googlemap', WT_Module::getActiveModules())) {
-						$html.= "<li><a href=\"module.php?mod=googlemap&amp;mod_action=pedigree_map&amp;rootid=".$pid."&amp;ged=".WT_GEDURL."\">".WT_I18N::translate('Pedigree map')."</a></li>";
+						$html.= '<li><a href="module.php?mod=googlemap&amp;mod_action=pedigree_map&amp;rootid=' . $pid . '&amp;ged=' . WT_GEDURL . '">' . WT_I18N::translate('Pedigree map') . '</a></li>';
 					}
-					if (WT_USER_GEDCOM_ID && WT_USER_GEDCOM_ID!=$pid) {
-						$html.= "<li><a href=\"relationship.php?pid1=".WT_USER_GEDCOM_ID."&amp;pid2={$pid}&amp;ged=".WT_GEDURL."\">".WT_I18N::translate('Relationship to me')."</a></li>";
+					if (WT_USER_GEDCOM_ID && WT_USER_GEDCOM_ID != $pid) {
+						$html.= '<li><a href="relationship.php?pid1=' . WT_USER_GEDCOM_ID . '&amp;pid2=' . $pid . '&amp;ged=' . WT_GEDURL . '">' . WT_I18N::translate('Relationship to me').'</a></li>';
 					}
-					$html.= "<li><a href=\"descendancy.php?rootid=$pid&amp;ged=".WT_GEDURL."\" >".WT_I18N::translate('Descendants')."</a></li>";
-					$html.= "<li><a href=\"ancestry.php?rootid=$pid&amp;ged=".WT_GEDURL."\">".WT_I18N::translate('Ancestors')."</a></li>";
-					$html.= "<li><a href=\"compact.php?rootid=$pid&amp;ged=".WT_GEDURL."\">".WT_I18N::translate('Compact tree')."</a></li>";
-					$html.= "<li><a href=\"".$tempURL."\">".WT_I18N::translate('Fan chart')."</a></li>";
-					$html.= "<li><a href=\"hourglass.php?rootid=$pid&amp;ged=".WT_GEDURL."\">".WT_I18N::translate('Hourglass chart')."</a></li>";
+					$html.= '<li><a href="descendancy.php?rootid=' . $pid . '&amp;ged='.WT_GEDURL.'" >' . WT_I18N::translate('Descendants') . '</a></li>';
+					$html.= '<li><a href="ancestry.php?rootid=' . $pid . '&amp;ged='.WT_GEDURL . '">' . WT_I18N::translate('Ancestors') . '</a></li>';
+					$html.= '<li><a href="compact.php?rootid=' . $pid . '&amp;ged='.WT_GEDURL . '">' . WT_I18N::translate('Compact tree') . '</a></li>';
+					$html.= '<li><a href="' . $tempURL . '">' . WT_I18N::translate('Fan chart') . '</a></li>';
+					$html.= '<li><a href="hourglass.php?rootid=' . $pid . '&amp;ged=' . WT_GEDURL . '">' . WT_I18N::translate('Hourglass chart') . '</a></li>';
 					if (array_key_exists('tree', WT_Module::getActiveModules())) {
 						$html .= '<li><a href="module.php?mod=tree&amp;mod_action=treeview&amp;ged=' . WT_GEDURL . '&amp;rootid=' . $pid . '">' . WT_I18N::translate('Interactive tree') . '</a></li>';
 					}
@@ -375,13 +383,18 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 
 		switch ($what) {
 		case 'html':
-			$image_title=WT_I18N::translate('Fan chart of %s', strip_tags($person->getFullName()));
-			return $html . $imagemap . '<div id="fan_chart_img"><img src="' . WT_SCRIPT_NAME . '?rootid=' . $this->rootid . '&amp;fan_style=' . $this->fan_style . '&amp;generations=' . $this->generations . '&amp;fan_width=' . $this->fan_width.'&amp;img=1" width="' . $fanw . '" height="' . $fanh . '" alt="' . $image_title . '" title="' . $image_title . '" usemap="#fanmap"></div>';
+			return $html . $imagemap . '<div id="fan_chart_img"><img src="' . WT_SCRIPT_NAME . '?rootid=' . $this->root->getXref() . '&amp;fan_style=' . $this->fan_style . '&amp;generations=' . $this->generations . '&amp;fan_width=' . $this->fan_width.'&amp;img=1" width="' . $fanw . '" height="' . $fanh . '" alt="' . WT_I18N::translate('Fan chart of %s', strip_tags($person->getFullName())) . '" usemap="#fanmap"></div>';
+
 		case 'png':
-			header('Content-Type: image/png');
 			ImageStringUp($image, 1, $fanw - 10, $fanh / 3, WT_SERVER_NAME . WT_SCRIPT_PATH, $color);
+			ob_start();
 			ImagePng($image);
 			ImageDestroy($image);
+
+			return ob_get_clean();
+
+		default:
+			throw new InvalidArgumentException(__METHOD__ . ' ' . $what);
 		}
 	}
 }

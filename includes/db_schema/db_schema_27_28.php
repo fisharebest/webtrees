@@ -54,7 +54,7 @@ try {
 		" ADD        INDEX `##site_access_rule_ix2` (rule)"
 	);
 } catch (Exception $ex) {
-	// Already done?git
+	// Already done?
 }
 
 // Update the version to indicate success

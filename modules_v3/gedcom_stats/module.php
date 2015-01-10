@@ -1,6 +1,4 @@
 <?php
-// Classes and libraries for module system
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -21,20 +19,25 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+
+/**
+ * Class gedcom_stats_WT_Module
+ */
 class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
-	// Extend class WT_Module
+	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module */ WT_I18N::translate('Statistics');
 	}
 
-	// Extend class WT_Module
+	/** {@inheritdoc} */
 	public function getDescription() {
 		return /* I18N: Description of “Statistics” module */ WT_I18N::translate('The size of the family tree, earliest and latest events, common names, etc.');
 	}
 
-	// Implement class WT_Module_Block
+	/** {@inheritdoc} */
 	public function getBlock($block_id, $template=true, $cfg=null) {
-		global $WT_TREE, $ctype, $top10_block_present;
+		global $WT_TREE, $ctype;
 
 		$show_last_update    =get_block_setting($block_id, 'show_last_update',     true);
 		$show_common_surnames=get_block_setting($block_id, 'show_common_surnames', true);
@@ -66,7 +69,7 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$id=$this->getName().$block_id;
 		$class=$this->getName().'_block';
-		if ($ctype=='gedcom' && WT_USER_GEDCOM_ADMIN || $ctype=='user' && WT_USER_ID) {
+		if ($ctype === 'gedcom' && WT_USER_GEDCOM_ADMIN || $ctype === 'user' && Auth::check()) {
 			$title='<i class="icon-admin" title="'.WT_I18N::translate('Configure').'" onclick="modalDialog(\'block_edit.php?block_id='.$block_id.'\', \''.$this->getTitle().'\');"></i>';
 		} else {
 			$title='';
@@ -172,7 +175,7 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 		if ($stat_avg_chil) {
 			$content .= '<tr><td class="facts_label">'.WT_I18N::translate('Average number of children per family').'</td><td class="facts_value stats_value">'.$stats->averageChildren().'</td>';
 			if (!$block) {
-				$content .= '<td class="facts_value">&nbsp;</td>';
+				$content .= '<td class="facts_value"></td>';
 			}
 			$content .= '</tr>';
 		}
@@ -207,22 +210,22 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 	}
 
-	// Implement class WT_Module_Block
+	/** {@inheritdoc} */
 	public function loadAjax() {
 		return true;
 	}
 
-	// Implement class WT_Module_Block
+	/** {@inheritdoc} */
 	public function isUserBlock() {
 		return true;
 	}
 
-	// Implement class WT_Module_Block
+	/** {@inheritdoc} */
 	public function isGedcomBlock() {
 		return true;
 	}
 
-	// Implement class WT_Module_Block
+	/** {@inheritdoc} */
 	public function configureBlock($block_id) {
 		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
 			set_block_setting($block_id, 'show_last_update',     WT_Filter::postBool('show_last_update'));
@@ -353,7 +356,7 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 			<td><input type="checkbox" value="yes" name="stat_users"
 			<?php if ($stat_users) echo ' checked="checked"'; ?>>
 			<?php echo WT_I18N::translate('Total users'); ?></td>
-			<td>&nbsp;</td>
+			<td></td>
 		</tr>
 	</table>
 	</td>

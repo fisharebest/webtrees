@@ -7,7 +7,7 @@
 // Copyright (C) 2014 webtrees development team.
 //
 // Derived from PhpGedView
-// Copyright (C) 2002 to 2010 PGV Development Team.  All rights reserved.
+// Copyright (C) 2002 to 2010 PGV Development Team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -30,7 +30,7 @@ $controller = new WT_Controller_Family();
 
 if ($controller->record && $controller->record->canShow()) {
 	$controller->pageHeader();
-	if ($controller->record->isOld()) {
+	if ($controller->record->isPendingDeletion()) {
 		if (WT_USER_CAN_ACCEPT) {
 			echo
 				'<p class="ui-state-highlight">',
@@ -48,7 +48,7 @@ if ($controller->record && $controller->record->canShow()) {
 				' ', help_link('pending_changes'),
 				'</p>';
 		}
-	} elseif ($controller->record->isNew()) {
+	} elseif ($controller->record->isPendingAddtion()) {
 		if (WT_USER_CAN_ACCEPT) {
 			echo
 				'<p class="ui-state-highlight">',

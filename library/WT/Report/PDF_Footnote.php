@@ -1,8 +1,4 @@
 <?php
-// PDF Report Generator
-//
-// used by the SAX parser to generate PDF reports from the XML report file.
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -23,17 +19,21 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class WT_Report_PDF_Footnote - Base Report Generator, used by the SAX
+ * parser to generate reports from the XML report file.
+ */
 class WT_Report_PDF_Footnote extends WT_Report_Base_Footnote {
 	/**
 	 * PDF Footnotes number renderer
 	 *
-	 * @param PDF $pdf
+	 * @param PDF $renderer
 	 *
 	 * @return void
 	 */
-	function render($pdf) {
-		$pdf->setCurrentStyle("footnotenum");
-		$pdf->Write($pdf->getCurrentStyleHeight(), $this->numText, $this->addlink); //source link numbers after name
+	function render($renderer) {
+		$renderer->setCurrentStyle("footnotenum");
+		$renderer->Write($renderer->getCurrentStyleHeight(), $this->numText, $this->addlink); //source link numbers after name
 	}
 
 	/**
@@ -66,18 +66,11 @@ class WT_Report_PDF_Footnote extends WT_Report_Base_Footnote {
 	/**
 	 * Returns the height in points of the Footnote element
 	 *
-	 * @param PDF $pdf
+	 * @param PDF $renderer
 	 *
 	 * @return float $h
 	 */
-	function getFootnoteHeight($pdf) {
-		//$style = $pdf->getStyle($this->styleName);
-		//$ct = substr_count($this->numText, "\n");
-		//if ($ct > 0) {
-		//$ct += 1;
-		//}
-		//$h = ($style['size'] * $ct);
-		//return $h;
+	function getFootnoteHeight($renderer) {
 		return 0;
 	}
 

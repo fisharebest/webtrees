@@ -1,6 +1,4 @@
 <?php
-// Functions and logic for GEDCOM "NAME" codes
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 Greg Roach
 //
@@ -18,6 +16,9 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class WT_Gedcom_Code_Name - Functions and logic for GEDCOM "NAME" codes
+ */
 class WT_Gedcom_Code_Name {
 	/** @var string[] A list of possible types of name */
 	private static $TYPES = array('adopted', 'aka', 'birth', 'change', 'estate', 'immigrant', 'maiden', 'married', 'religious');

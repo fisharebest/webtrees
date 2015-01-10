@@ -5,7 +5,7 @@
 // Copyright (C) 2014 webtrees development team.
 //
 // Derived from PhpGedView
-// Copyright (C) 2002 to 2010 PGV Development Team.  All rights reserved.
+// Copyright (C) 2002 to 2010 PGV Development Team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -24,9 +24,9 @@
 /**
  * print a table cell with sosa number
  *
- * @param int $sosa
- * @param string $pid optional pid
- * @param string $arrowDirection   direction of link arrow
+ * @param integer $sosa
+ * @param string  $pid optional pid
+ * @param string  $arrowDirection   direction of link arrow
  */
 function print_sosa_number($sosa, $pid = "", $arrowDirection = "up") {
 	if (substr($sosa,-1,1)==".") {
@@ -61,7 +61,7 @@ function print_sosa_number($sosa, $pid = "", $arrowDirection = "up") {
  * print the parents table for a family
  *
  * @param WT_Family $family family gedcom ID
- * @param int       $sosa   child sosa number
+ * @param integer   $sosa   child sosa number
  * @param string    $label  indi label (descendancy booklet)
  * @param string    $parid  parent ID (descendancy booklet)
  * @param string    $gparid gd-parent ID (descendancy booklet)
@@ -100,9 +100,9 @@ function print_family_parents(WT_Family $family, $sosa=0, $label='', $parid='', 
 	} elseif ($sosa) {
 		print_sosa_number($sosa * 2);
 	}
-	if ($husb->isNew()) {
+	if ($husb->isPendingAddtion()) {
 		echo '<td valign="top" class="facts_value new">';
-	} elseif ($husb->isOld()) {
+	} elseif ($husb->isPendingDeletion()) {
 		echo '<td valign="top" class="facts_value old">';
 	} else {
 		echo '<td valign="top">';
@@ -179,9 +179,9 @@ function print_family_parents(WT_Family $family, $sosa=0, $label='', $parid='', 
 	} elseif ($sosa) {
 		print_sosa_number($sosa * 2 + 1);
 	}
-	if ($wife->isNew()) {
+	if ($wife->isPendingAddtion()) {
 		echo '<td valign="top" class="facts_value new">';
-	} elseif ($wife->isOld()) {
+	} elseif ($wife->isPendingDeletion()) {
 		echo '<td valign="top" class="facts_value old">';
 	} else {
 		echo '<td valign="top">';
@@ -242,7 +242,7 @@ function print_family_parents(WT_Family $family, $sosa=0, $label='', $parid='', 
  *
  * @param WT_Family $family  family
  * @param string    $childid child ID
- * @param int       $sosa    child sosa number
+ * @param integer   $sosa    child sosa number
  * @param string    $label   indi label (descendancy booklet)
  */
 function print_family_children(WT_Family $family, $childid = '', $sosa = 0, $label = '') {
@@ -287,9 +287,9 @@ function print_family_children(WT_Family $family, $childid = '', $sosa = 0, $lab
 					print_sosa_number($label.($nchi++).".");
 				}
 			}
-			if ($child->isNew()) {
+			if ($child->isPendingAddtion()) {
 				echo '<td valign="middle" class="new">';
-			} elseif ($child->isOld()) {
+			} elseif ($child->isPendingDeletion()) {
 				echo '<td valign="middle" class="old">';
 			} else {
 				echo '<td valign="middle">';
@@ -302,16 +302,17 @@ function print_family_children(WT_Family $family, $childid = '', $sosa = 0, $lab
 
 
 				$maxfam = count($famids)-1;
-				for ($f=0; $f<=$maxfam; $f++) {
+				for ($f = 0; $f <= $maxfam; $f++) {
 					$famid_child = $famids[$f]->getXref();
 					// multiple marriages
-					if ($f>0) {
-						echo "</tr><tr><td>&nbsp;</td>";
-						echo "<td valign=\"top\"";
-						if ($TEXT_DIRECTION == "rtl") echo " align=\"left\">";
-						else echo " align=\"right\">";
-						//if ($f==$maxfam) echo "<img height=\"50%\"";
-						//else echo "<img height=\"100%\"";
+					if ($f > 0) {
+						echo '</tr><tr><td></td>';
+						echo '<td valign="top"';
+						if ($TEXT_DIRECTION == 'rtl') {
+							echo ' align="left">';
+						} else {
+							echo ' align="right">';
+						}
 
 						//find out how many cousins there are to establish vertical line on second families
 						$fchildren=$famids[$f]->getChildren();
@@ -400,52 +401,11 @@ function print_sosa_family($famid, $childid, $sosa, $label="", $parid="", $gpari
 }
 
 /**
- * creates an array with all of the individual ids to be displayed on an ascendancy chart
- *
- * the id in position 1 is the root person.  The other positions are filled according to the following algorithm
- * if an individual is at position $i then individual $i’s father will occupy position ($i*2) and $i’s mother
- * will occupy ($i*2)+1
- *
- * @param string $rootid
- * @param int    $maxgen
- *
- * @return array $treeid
- */
-function ancestry_array($rootid, $maxgen=0) {
-	global $PEDIGREE_GENERATIONS;
-	// -- maximum size of the id array
-	if ($maxgen==0) $maxgen = $PEDIGREE_GENERATIONS;
-	$treesize = pow(2, ($maxgen));
-
-	$treeid = array();
-	$treeid[0] = "";
-	$treeid[1] = $rootid;
-	// -- fill in the id array
-	for ($i = 1; $i < ($treesize / 2); $i++) {
-		$treeid[($i * 2)] = false; // -- father
-		$treeid[($i * 2) + 1] = false; // -- mother
-		$person = WT_Individual::getInstance($treeid[$i]);
-		if ($person) {
-			$family = $person->getPrimaryChildFamily();
-			if ($family) {
-				if ($family->getHusband()) {
-					$treeid[$i*2]=$family->getHusband()->getXref();
-				}
-				if ($family->getWife()) {
-					$treeid[$i*2+1]=$family->getWife()->getXref();
-				}
-			}
-		}
-	}
-	return $treeid;
-}
-
-/**
  * print an arrow to a new url
  *
- * @param string $url   target url
- * @param string $label arrow label
- * @param int    $dir   arrow direction 0=left 1=right 2=up 3=down (default=2)
+ * @param string  $url   target url
+ * @param string  $label arrow label
+ * @param integer $dir   arrow direction 0=left 1=right 2=up 3=down (default=2)
  */
 function print_url_arrow($url, $label, $dir=2) {
 	global $TEXT_DIRECTION;

@@ -1,6 +1,4 @@
 <?php
-// Classes and libraries for module system
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -18,11 +16,14 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Interface WT_Module_Sidebar - Classes and libraries for module system
+ */
 interface WT_Module_Sidebar {
 	/**
 	 * The user can change the order of sidebars.  Until they do this, they are shown in this order.
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	public function defaultSidebarOrder();
 
@@ -42,7 +43,7 @@ interface WT_Module_Sidebar {
 	/**
 	 * Does this sidebar have anything to display for this individual?
 	 *
-	 * @return bool
+	 * @return boolean
 	 */
 	public function hasSidebarContent();
 }

@@ -37,11 +37,20 @@ use Fisharebest\ExtCalendar\GregorianCalendar;
  * Class WT_Date - a representation of GEDCOM dates
  */
 class WT_Date {
-	var $qual1 = null; // Optional qualifier, such as BEF, FROM, ABT
-	var $date1 = null; // The first (or only) date
-	var $qual2 = null; // Optional qualifier, such as TO, AND
-	var $date2 = null; // Optional second date
-	var $text = null; // Optional text, as included with an INTerpreted date
+	/** @var string Optional qualifier, such as BEF, FROM, ABT */
+	var $qual1;
+
+	/** @var WT_Date_Calendar  The first (or only) date */
+	var $date1;
+
+	/** @var string  Optional qualifier, such as TO, AND*/
+	var $qual2;
+
+	/** @var WT_Date_Calendar Optional second date */
+	var $date2;
+
+	/** @var string ptional text, as included with an INTerpreted date */
+	var $text;
 
 	/**
 	 * Create a date, from GEDCOM data.
@@ -56,14 +65,14 @@ class WT_Date {
 		}
 		if (preg_match('/^(FROM|BET) (.+) (AND|TO) (.+)/', $date, $match)) {
 			$this->qual1 = $match[1];
-			$this->date1 = $this->ParseDate($match[2]);
+			$this->date1 = $this->parseDate($match[2]);
 			$this->qual2 = $match[3];
-			$this->date2 = $this->ParseDate($match[4]);
+			$this->date2 = $this->parseDate($match[4]);
 		} elseif (preg_match('/^(FROM|BET|TO|AND|BEF|AFT|CAL|EST|INT|ABT) (.+)/', $date, $match)) {
 			$this->qual1 = $match[1];
-			$this->date1 = $this->ParseDate($match[2]);
+			$this->date1 = $this->parseDate($match[2]);
 		} else {
-			$this->date1 = $this->ParseDate($date);
+			$this->date1 = $this->parseDate($date);
 		}
 	}
 
@@ -88,7 +97,7 @@ class WT_Date {
 	 * @return WT_Date_Calendar
 	 * @throws Exception
 	 */
-	static function ParseDate($date) {
+	static function parseDate($date) {
 		// Valid calendar escape specified? - use it
 		if (preg_match('/^(@#D(?:GREGORIAN|JULIAN|HEBREW|HIJRI|JALALI|FRENCH R|ROMAN|JALALI)+@) ?(.*)/', $date, $match)) {
 			$cal  = $match[1];
@@ -180,20 +189,20 @@ class WT_Date {
 	/**
 	 * Convert a date to the preferred format and calendar(s) display.
 	 *
-	 * @param boolean|null $url             Wrap the date in a link to calendar.php
-	 * @param string|null  $date_format     Override the default date format
-	 * @param boolean|null $calendar_format Convert the date into other calendars
+	 * @param boolean|null $url               Wrap the date in a link to calendar.php
+	 * @param string|null  $date_format       Override the default date format
+	 * @param boolean|null $convert_calendars Convert the date into other calendars
 	 *
 	 * @return string
 	 */
-	function display($url = false, $date_format = null, $calendar_format = true) {
+	function display($url = false, $date_format = null, $convert_calendars = true) {
 		global $TEXT_DIRECTION, $DATE_FORMAT, $CALENDAR_FORMAT;
 
-		// Convert dates to given calendars and given formats
 		if ($date_format === null) {
 			$date_format = $DATE_FORMAT;
 		}
-		if ($calendar_format === null) {
+
+		if ($convert_calendars) {
 			$calendar_format = explode('_and_', $CALENDAR_FORMAT);
 		} else {
 			$calendar_format = array();
@@ -365,7 +374,7 @@ class WT_Date {
 	 * For a month-only date, this would be somewhere around the 16 day.
 	 * For a year-only date, this would be somewhere around 1st July.
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	function JD() {
 		return (int)(($this->MinJD() + $this->MaxJD()) / 2);
@@ -400,9 +409,9 @@ class WT_Date {
 	 *
 	 * @param WT_Date $d1
 	 * @param WT_Date $d2
-	 * @param int     $format
+	 * @param integer $format
 	 *
-	 * @return int|string
+	 * @return integer|string
 	 */
 	static function getAge(WT_Date $d1, WT_Date $d2 = null, $format = 0) {
 		if ($d2) {
@@ -457,7 +466,7 @@ class WT_Date {
 	 *
 	 * @return string
 	 */
-	static function GetAgeGedcom($d1, $d2 = null, $warn_on_negative = true) {
+	static function GetAgeGedcom(WT_Date $d1, WT_Date $d2 = null, $warn_on_negative = true) {
 		if (is_null($d2)) {
 			return $d1->date1->GetAge(true, WT_CLIENT_JD, $warn_on_negative);
 		} else {
@@ -483,7 +492,7 @@ class WT_Date {
 	 * @param WT_Date $a
 	 * @param WT_Date $b
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	static function Compare(WT_Date $a, WT_Date $b) {
 		// Get min/max JD for each date.
@@ -534,7 +543,7 @@ class WT_Date {
 	 * An incomplete date such as "12 AUG" would be invalid, as
 	 * we cannot sort it.
 	 *
-	 * @return bool
+	 * @return boolean
 	 */
 	function isOK() {
 		return $this->MinJD() && $this->MaxJD();
@@ -546,7 +555,7 @@ class WT_Date {
 	 * jewish/arabic users.  This is only for interfacing with external entities,
 	 * such as the ancestry.com search interface or the dated fact icons.
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	function gregorianYear() {
 		if ($this->isOK()) {

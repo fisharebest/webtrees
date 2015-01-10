@@ -30,43 +30,43 @@ class WT_Report_PDF_Image extends WT_Report_Base_Image {
 	/**
 	 * PDF image renderer
 	 *
-	 * @param PDF $pdf
+	 * @param PDF $renderer
 	 *
 	 * @return void
 	 */
-	function render($pdf) {
+	function render($renderer) {
 		global $lastpicbottom, $lastpicpage, $lastpicleft, $lastpicright;
 
 		// Check for a pagebreak first
-		if ($pdf->checkPageBreakPDF($this->height + 5)) {
-			$this->y = $pdf->GetY();
+		if ($renderer->checkPageBreakPDF($this->height + 5)) {
+			$this->y = $renderer->GetY();
 		}
 
-		$curx = $pdf->GetX();
+		$curx = $renderer->GetX();
 		// If current position (left)set "."
 		if ($this->x == ".") {
-			$this->x = $pdf->GetX();
+			$this->x = $renderer->GetX();
 		} // For static position add margin
 		else {
-			$this->x = $pdf->addMarginX($this->x);
-			$pdf->SetX($curx);
+			$this->x = $renderer->addMarginX($this->x);
+			$renderer->SetX($curx);
 		}
 		if ($this->y == ".") {
 			//-- first check for a collision with the last picture
 			if (isset($lastpicbottom)) {
-				if (($pdf->PageNo() == $lastpicpage) && ($lastpicbottom >= $pdf->GetY()) && ($this->x >= $lastpicleft) && ($this->x <= $lastpicright)
+				if (($renderer->PageNo() == $lastpicpage) && ($lastpicbottom >= $renderer->GetY()) && ($this->x >= $lastpicleft) && ($this->x <= $lastpicright)
 				) {
-					$pdf->SetY($lastpicbottom + 5);
+					$renderer->SetY($lastpicbottom + 5);
 				}
 			}
-			$this->y = $pdf->GetY();
+			$this->y = $renderer->GetY();
 		} else {
-			$pdf->SetY($this->y);
+			$renderer->SetY($this->y);
 		}
-		if ($pdf->getRTL()) {
-			$pdf->Image(
+		if ($renderer->getRTL()) {
+			$renderer->Image(
 				$this->file,
-				$pdf->getPageWidth() - $this->x,
+				$renderer->getPageWidth() - $this->x,
 				$this->y,
 				$this->width,
 				$this->height,
@@ -78,7 +78,7 @@ class WT_Report_PDF_Image extends WT_Report_Base_Image {
 				$this->align
 			);
 		} else {
-			$pdf->Image(
+			$renderer->Image(
 				$this->file,
 				$this->x,
 				$this->y,
@@ -92,14 +92,14 @@ class WT_Report_PDF_Image extends WT_Report_Base_Image {
 				$this->align
 			);
 		}
-		$lastpicpage = $pdf->PageNo();
-		$pdf->lastpicpage = $pdf->getPage();
+		$lastpicpage = $renderer->PageNo();
+		$renderer->lastpicpage = $renderer->getPage();
 		$lastpicleft = $this->x;
 		$lastpicright = $this->x + $this->width;
 		$lastpicbottom = $this->y + $this->height;
 		// Setup for the next line
 		if ($this->line == "N") {
-			$pdf->SetY($lastpicbottom);
+			$renderer->SetY($lastpicbottom);
 		}
 	}
 

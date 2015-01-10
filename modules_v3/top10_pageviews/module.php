@@ -1,6 +1,4 @@
 <?php
-// Classes and libraries for module system
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -21,18 +19,23 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+
+/**
+ * Class top10_pageviews_WT_Module
+ */
 class top10_pageviews_WT_Module extends WT_Module implements WT_Module_Block {
-	// Extend class WT_Module
+	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module */ WT_I18N::translate('Most viewed pages');
 	}
 
-	// Extend class WT_Module
+	/** {@inheritdoc} */
 	public function getDescription() {
 		return /* I18N: Description of the “Most visited pages” module */ WT_I18N::translate('A list of the pages that have been viewed the most number of times.');
 	}
 
-	// Implement class WT_Module_Block
+	/** {@inheritdoc} */
 	public function getBlock($block_id, $template=true, $cfg=null) {
 		global $ctype;
 
@@ -47,23 +50,26 @@ class top10_pageviews_WT_Module extends WT_Module implements WT_Module_Block {
 			}
 		}
 
-		$id=$this->getName().$block_id;
-		$class=$this->getName().'_block';
-		if ($ctype=='gedcom' && WT_USER_GEDCOM_ADMIN || $ctype=='user' && WT_USER_ID) {
-			$title='<i class="icon-admin" title="'.WT_I18N::translate('Configure').'" onclick="modalDialog(\'block_edit.php?block_id='.$block_id.'\', \''.$this->getTitle().'\');"></i>';
+		$id    = $this->getName() . $block_id;
+		$class = $this->getName() . '_block';
+		if ($ctype === 'gedcom' && WT_USER_GEDCOM_ADMIN || $ctype === 'user' && Auth::check()) {
+			$title = '<i class="icon-admin" title="'.WT_I18N::translate('Configure').'" onclick="modalDialog(\'block_edit.php?block_id='.$block_id.'\', \''.$this->getTitle().'\');"></i>';
 		} else {
-			$title='';
+			$title = '';
 		}
-		$title.=$this->getTitle();
+		$title .= $this->getTitle();
 
 		$content = "";
 		// load the lines from the file
 		$top10=WT_DB::prepare(
 			"SELECT page_parameter, page_count".
 			" FROM `##hit_counter`".
-			" WHERE gedcom_id=? AND page_name IN ('individual.php','family.php','source.php','repo.php','note.php','mediaviewer.php')".
-			" ORDER BY page_count DESC LIMIT ".$num
-		)->execute(array(WT_GED_ID))->FetchAssoc();
+			" WHERE gedcom_id = :tree_id AND page_name IN ('individual.php','family.php','source.php','repo.php','note.php','mediaviewer.php')".
+			" ORDER BY page_count DESC LIMIT :limit"
+		)->execute(array(
+			'tree_id' => WT_GED_ID,
+			'limit'   => $num,
+		))->FetchAssoc();
 
 
 		if ($block) {
@@ -98,22 +104,22 @@ class top10_pageviews_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 	}
 
-	// Implement class WT_Module_Block
+	/** {@inheritdoc} */
 	public function loadAjax() {
 		return true;
 	}
 
-	// Implement class WT_Module_Block
+	/** {@inheritdoc} */
 	public function isUserBlock() {
 		return false;
 	}
 
-	// Implement class WT_Module_Block
+	/** {@inheritdoc} */
 	public function isGedcomBlock() {
 		return true;
 	}
 
-	// Implement class WT_Module_Block
+	/** {@inheritdoc} */
 	public function configureBlock($block_id) {
 		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
 			set_block_setting($block_id, 'num',             WT_Filter::postInteger('num', 1, 10000, 10));

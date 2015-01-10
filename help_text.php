@@ -173,14 +173,14 @@ case 'DATE':
 		'<p>'.WT_I18N::translate('Dates are stored using English abbreviations and keywords.  Shortcuts are available as alternatives to these abbreviations and keywords.').'</p>'.
 		'<table border="1">'.
 		'<tr><th>'.WT_I18N::translate('Date').'</th><th>'.WT_I18N::translate('Format').'</th><th>'.WT_I18N::translate('Shortcut').'</th></tr>'.
-		'<tr><td>'.$dates['1900'].'</td><td><tt dir="ltr" lang="en">1900</tt></td><td>&nbsp;</td></tr>'.
-		'<tr><td>'.$dates['JAN 1900'].'<br>'.$dates['FEB 1900'].'<br>'.$dates['MAR 1900'].'<br>'.$dates['APR 1900'].'<br>'.$dates['MAY 1900'].'<br>'.$dates['JUN 1900'].'<br>'.$dates['JUL 1900'].'<br>'.$dates['AUG 1900'].'<br>'.$dates['SEP 1900'].'<br>'.$dates['OCT 1900'].'<br>'.$dates['NOV 1900'].'<br>'.$dates['DEC 1900'].'</td><td><tt dir="ltr" lang="en">JAN 1900<br>FEB 1900<br>MAR 1900<br>APR 1900<br>MAY 1900<br>JUN 1900<br>JUL 1900<br>AUG 1900<br>SEP 1900<br>OCT 1900<br>NOV 1900<br>DEC 1900</tt></td><td>&nbsp;</td></tr>'.
+		'<tr><td>'.$dates['1900'].'</td><td><tt dir="ltr" lang="en">1900</tt></td><td></td></tr>'.
+		'<tr><td>'.$dates['JAN 1900'].'<br>'.$dates['FEB 1900'].'<br>'.$dates['MAR 1900'].'<br>'.$dates['APR 1900'].'<br>'.$dates['MAY 1900'].'<br>'.$dates['JUN 1900'].'<br>'.$dates['JUL 1900'].'<br>'.$dates['AUG 1900'].'<br>'.$dates['SEP 1900'].'<br>'.$dates['OCT 1900'].'<br>'.$dates['NOV 1900'].'<br>'.$dates['DEC 1900'].'</td><td><tt dir="ltr" lang="en">JAN 1900<br>FEB 1900<br>MAR 1900<br>APR 1900<br>MAY 1900<br>JUN 1900<br>JUL 1900<br>AUG 1900<br>SEP 1900<br>OCT 1900<br>NOV 1900<br>DEC 1900</tt></td><td></td></tr>'.
 		'<tr><td>'.$dates['11 DEC 1913'].'</td><td><tt dir="ltr" lang="en">11 DEC 1913</tt></td><td><tt dir="ltr" lang="en">'.$example1.'</tt></td></tr>'.
 		'<tr><td>'.$dates['01 FEB 2003'].'</td><td><tt dir="ltr" lang="en">01 FEB 2003</tt></td><td><tt dir="ltr" lang="en">'.$example2.'</tt></td></tr>'.
 		'<tr><td>'.$dates['ABT 1900'].'</td><td><tt dir="ltr" lang="en">ABT 1900</tt></td><td><tt dir="ltr" lang="en">~1900</tt></td></tr>'.
 		'<tr><td>'.$dates['EST 1900'].'</td><td><tt dir="ltr" lang="en">EST 1900</tt></td><td><tt dir="ltr" lang="en">*1900</tt></td></tr>'.
 		'<tr><td>'.$dates['CAL 1900'].'</td><td><tt dir="ltr" lang="en">CAL 1900</tt></td><td><tt dir="ltr" lang="en">#1900</tt></td></tr>'.
-		'<tr><td>'.$dates['INT 1900 (...)'].'</td><td><tt dir="ltr" lang="en">INT 1900 (...)</tt></td><td>&nbsp;</td></tr>'.
+		'<tr><td>'.$dates['INT 1900 (...)'].'</td><td><tt dir="ltr" lang="en">INT 1900 (...)</tt></td><td></td></tr>'.
 		'</table>'.
 		'<p>'.WT_I18N::translate('Date ranges are used to indicate that an event, such as a birth, happened on an unknown date within a possible range.').'</p>'.
 		'<table border="1">'.
@@ -383,8 +383,8 @@ case 'TIME':
 	$text=WT_I18N::translate('Enter the time for this event in 24-hour format with leading zeroes.  Midnight is 00:00.  Examples: 04:50 13:00 20:30.');
 	break;
 
-case 'URL':
-	$title=WT_Gedcom_Tag::getLabel('URL');
+case 'WWW':
+	$title=WT_Gedcom_Tag::getLabel('WWW');
 	$text=WT_I18N::translate('Enter the URL address including the http://.<br><br>An example URL looks like this: <b>http://www.webtrees.net/</b>.  Leave this field blank if you do not want to include a URL.');
 	break;
 
@@ -1214,7 +1214,7 @@ case 'export_gedcom':
 		WT_I18N::translate('This option will save the family tree to a GEDCOM file on the server.') .
 		'</p><p>' .
 		/* I18N: %s is a folder name */
-		WT_I18N::translate('GEDCOM files are stored in the %s folder.', '<b style="dir:auto;">' . WT_DATA_DIR . '</b>') .
+		WT_I18N::translate('GEDCOM files are stored in the %s folder.', '<b dir="auto">' . WT_DATA_DIR . '</b>') .
 		'</p>';
 	break;
 
@@ -1260,7 +1260,7 @@ case 'import_gedcom':
 		WT_I18N::translate('This option deletes all the genealogy data in your family tree and replaces it with data from a GEDCOM file on the server.') .
 		'</p><p>' .
 		/* I18N: %s is a folder name */
-		WT_I18N::translate('GEDCOM files are stored in the %s folder.', '<b style="dir:auto;">' . WT_DATA_DIR . '</b>') .
+		WT_I18N::translate('GEDCOM files are stored in the %s folder.', '<b dir="auto">' . WT_DATA_DIR . '</b>') .
 		'</p>';
 	break;
 
@@ -1500,16 +1500,16 @@ case 'zip':
 	break;
 
 default:
-	$title=WT_I18N::translate('Help');
-	$text=WT_I18N::translate('The help text has not been written for this item.');
+	$title = WT_I18N::translate('Help');
+	$text  = WT_I18N::translate('The help text has not been written for this item.');
 	// If we've been called from a module, allow the module to provide the help text
 	$mod = WT_Filter::get('mod', '[A-Za-z0-9_]+');
-	if (file_exists(WT_ROOT.WT_MODULES_DIR.$mod.'/help_text.php')) {
-		require WT_ROOT.WT_MODULES_DIR.$mod.'/help_text.php';
+	if (array_key_exists($mod, WT_Module::getActiveModules()) && file_exists(WT_ROOT.WT_MODULES_DIR.$mod.'/help_text.php')) {
+		require WT_ROOT . WT_MODULES_DIR . $mod . '/help_text.php';
 	}
 	break;
 }
 // This file is called by a getJSON call so return the data
 // in correct format
 header('Content-Type: application/json');
-echo json_encode(array('title'=>$title,'content'=>$text));
+echo json_encode(array('title' => $title, 'content' => $text));

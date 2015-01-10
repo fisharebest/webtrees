@@ -1,6 +1,4 @@
 <?php
-// Provide an interface to the wt_gedcom table
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team
 //
@@ -22,6 +20,9 @@ use WT\Auth;
 use WT\Log;
 use WT\User;
 
+/**
+ * Class WT_Tree - Provide an interface to the wt_gedcom table
+ */
 class WT_Tree {
 	// Tree attributes
 	public $tree_id; // The "gedcom ID" number
@@ -41,13 +42,16 @@ class WT_Tree {
 	/** @var string[][] Cached copy of the wt_user_gedcom_setting table. */
 	private $user_preferences = array();
 
-	// Create a tree object.  This is a private constructor - it can only
-	// be called from WT_Tree::getAll() to ensure proper initialisation.
+	/**
+	 * Create a tree object.  This is a private constructor - it can only
+	 * be called from WT_Tree::getAll() to ensure proper initialisation.
+	 *
+	 * @param $tree_id
+	 * @param $tree_name
+	 * @param $tree_title
+	 * @param $imported
+	 */
 	private function __construct($tree_id, $tree_name, $tree_title, $imported) {
-		if (strpos($tree_title, '%') === false) {
-			// Allow users to translate tree titles.
-			//$tree_title=WT_I18N::Translate($tree_title);
-		}
 		$this->tree_id         = $tree_id;
 		$this->tree_name       = $tree_name;
 		$this->tree_name_url   = rawurlencode($tree_name);
@@ -92,12 +96,20 @@ class WT_Tree {
 			// Update the database
 			if ($setting_value === null) {
 				WT_DB::prepare(
-					"DELETE FROM `##gedcom_setting` WHERE gedcom_id = ? AND setting_name = ?"
-				)->execute(array($this->tree_id, $setting_name));
+					"DELETE FROM `##gedcom_setting` WHERE gedcom_id = :gedcom_id AND setting_name = :setting_name"
+				)->execute(array(
+					'gedcom_id'    => $this->tree_id,
+					'setting_name' => $setting_name,
+				));
 			} else {
 				WT_DB::prepare(
-					"REPLACE INTO `##gedcom_setting` (gedcom_id, setting_name, setting_value) VALUES (?, ?, LEFT(?, 255))"
-				)->execute(array($this->tree_id, $setting_name, $setting_value));
+					"REPLACE INTO `##gedcom_setting` (gedcom_id, setting_name, setting_value)" .
+					" VALUES (:gedcom_id, :setting_name, LEFT(:setting_value, 255))"
+				)->execute(array(
+					'gedcom_id'     => $this->tree_id,
+					'setting_name'  => $setting_name,
+					'setting_value' => $setting_value,
+				));
 			}
 			// Update our cache
 			$this->preferences[$setting_name] = $setting_value;
@@ -142,7 +154,7 @@ class WT_Tree {
 	 *
 	 * @return $this
 	 */
-	public function setUserPreference($user, $setting_name, $setting_value) {
+	public function setUserPreference(User $user, $setting_name, $setting_value) {
 		if ($this->getUserPreference($user, $setting_name) !== $setting_value) {
 			// Update the database
 			WT_DB::prepare(
@@ -157,7 +169,13 @@ class WT_Tree {
 		return $this;
 	}
 
-	// Can a user accept changes for this tree?
+	/**
+	 * Can a user accept changes for this tree?
+	 *
+	 * @param User $user
+	 *
+	 * @return boolean
+	 */
 	public function canAcceptChanges(User $user) {
 		return Auth::isModerator($this, $user);
 	}
@@ -200,7 +218,7 @@ class WT_Tree {
 	 * Get the tree with a specific ID.  TODO - is this function needed long-term, or just while
 	 * we integrate this class into the rest of the code?
 	 *
-	 * @param int $tree_id
+	 * @param integer $tree_id
 	 *
 	 * @return WT_Tree
 	 */
@@ -243,9 +261,9 @@ class WT_Tree {
 	/**
 	 * Find the ID number for a tree name
 	 *
-	 * @param int $tree_name
+	 * @param integer $tree_name
 	 *
-	 * @return int|null
+	 * @return integer|null
 	 */
 	public static function getIdFromName($tree_name) {
 		foreach (self::getAll() as $tree_id => $tree) {
@@ -259,7 +277,7 @@ class WT_Tree {
 
 	/**
 	 * Find the tree name from a numeric ID.
-	 * @param int $tree_id
+	 * @param integer $tree_id
 	 *
 	 * @return string
 	 */
@@ -296,27 +314,27 @@ class WT_Tree {
 		// Gedcom and privacy settings
 		$tree->setPreference('ADVANCED_NAME_FACTS', 'NICK,_AKA');
 		$tree->setPreference('ADVANCED_PLAC_FACTS', '');
-		$tree->setPreference('ALLOW_THEME_DROPDOWN', true);
+		$tree->setPreference('ALLOW_THEME_DROPDOWN', '1');
 		$tree->setPreference('CALENDAR_FORMAT', 'gregorian');
 		$tree->setPreference('CHART_BOX_TAGS', '');
 		$tree->setPreference('COMMON_NAMES_ADD', '');
 		$tree->setPreference('COMMON_NAMES_REMOVE', '');
 		$tree->setPreference('COMMON_NAMES_THRESHOLD', '40');
-		$tree->setPreference('CONTACT_USER_ID', WT_USER_ID);
+		$tree->setPreference('CONTACT_USER_ID', Auth::id());
 		$tree->setPreference('DEFAULT_PEDIGREE_GENERATIONS', '4');
-		$tree->setPreference('EXPAND_RELATIVES_EVENTS', false);
-		$tree->setPreference('EXPAND_SOURCES', false);
+		$tree->setPreference('EXPAND_RELATIVES_EVENTS', '0');
+		$tree->setPreference('EXPAND_SOURCES', '0');
 		$tree->setPreference('FAM_FACTS_ADD', 'CENS,MARR,RESI,SLGS,MARR_CIVIL,MARR_RELIGIOUS,MARR_PARTNERS,RESN');
 		$tree->setPreference('FAM_FACTS_QUICK', 'MARR,DIV,_NMR');
 		$tree->setPreference('FAM_FACTS_UNIQUE', 'NCHI,MARL,DIV,ANUL,DIVF,ENGA,MARB,MARC,MARS');
 		$tree->setPreference('FAM_ID_PREFIX', 'F');
 		$tree->setPreference('FORMAT_TEXT', 'markdown');
-		$tree->setPreference('FULL_SOURCES', false);
+		$tree->setPreference('FULL_SOURCES', '0');
 		$tree->setPreference('GEDCOM_ID_PREFIX', 'I');
 		$tree->setPreference('GEDCOM_MEDIA_PATH', '');
-		$tree->setPreference('GENERATE_UIDS', false);
-		$tree->setPreference('HIDE_GEDCOM_ERRORS', true);
-		$tree->setPreference('HIDE_LIVE_PEOPLE', true);
+		$tree->setPreference('GENERATE_UIDS', '0');
+		$tree->setPreference('HIDE_GEDCOM_ERRORS', '1');
+		$tree->setPreference('HIDE_LIVE_PEOPLE', '1');
 		$tree->setPreference('INDI_FACTS_ADD', 'AFN,BIRT,DEAT,BURI,CREM,ADOP,BAPM,BARM,BASM,BLES,CHRA,CONF,FCOM,ORDN,NATU,EMIG,IMMI,CENS,PROB,WILL,GRAD,RETI,DSCR,EDUC,IDNO,NATI,NCHI,NMR,OCCU,PROP,RELI,RESI,SSN,TITL,BAPL,CONL,ENDL,SLGC,_MILI,ASSO,RESN');
 		$tree->setPreference('INDI_FACTS_QUICK', 'BIRT,BURI,BAPM,CENS,DEAT,OCCU,RESI');
 		$tree->setPreference('INDI_FACTS_UNIQUE', '');
@@ -335,39 +353,39 @@ class WT_Tree {
 		$tree->setPreference('NOTE_FACTS_QUICK', '');
 		$tree->setPreference('NOTE_FACTS_UNIQUE', '');
 		$tree->setPreference('NOTE_ID_PREFIX', 'N');
-		$tree->setPreference('NO_UPDATE_CHAN', false);
-		$tree->setPreference('PEDIGREE_FULL_DETAILS', true);
-		$tree->setPreference('PEDIGREE_LAYOUT', true);
+		$tree->setPreference('NO_UPDATE_CHAN', '0');
+		$tree->setPreference('PEDIGREE_FULL_DETAILS', '1');
+		$tree->setPreference('PEDIGREE_LAYOUT', '1');
 		$tree->setPreference('PEDIGREE_ROOT_ID', '');
-		$tree->setPreference('PEDIGREE_SHOW_GENDER', false);
+		$tree->setPreference('PEDIGREE_SHOW_GENDER', '0');
 		$tree->setPreference('PREFER_LEVEL2_SOURCES', '1');
 		$tree->setPreference('QUICK_REQUIRED_FACTS', 'BIRT,DEAT');
 		$tree->setPreference('QUICK_REQUIRED_FAMFACTS', 'MARR');
-		$tree->setPreference('REPO_FACTS_ADD', 'PHON,EMAIL,FAX,WWW,NOTE,SHARED_NOTE,RESN');
+		$tree->setPreference('REPO_FACTS_ADD', 'PHON,EMAIL,FAX,WWW,RESN');
 		$tree->setPreference('REPO_FACTS_QUICK', '');
 		$tree->setPreference('REPO_FACTS_UNIQUE', 'NAME,ADDR');
 		$tree->setPreference('REPO_ID_PREFIX', 'R');
-		$tree->setPreference('REQUIRE_AUTHENTICATION', false);
-		$tree->setPreference('SAVE_WATERMARK_IMAGE', false);
-		$tree->setPreference('SAVE_WATERMARK_THUMB', false);
-		$tree->setPreference('SHOW_AGE_DIFF', false);
-		$tree->setPreference('SHOW_COUNTER', true);
+		$tree->setPreference('REQUIRE_AUTHENTICATION', '0');
+		$tree->setPreference('SAVE_WATERMARK_IMAGE', '0');
+		$tree->setPreference('SAVE_WATERMARK_THUMB', '0');
+		$tree->setPreference('SHOW_AGE_DIFF', '0');
+		$tree->setPreference('SHOW_COUNTER', '1');
 		$tree->setPreference('SHOW_DEAD_PEOPLE', WT_PRIV_PUBLIC);
-		$tree->setPreference('SHOW_EST_LIST_DATES', false);
-		$tree->setPreference('SHOW_FACT_ICONS', true);
-		$tree->setPreference('SHOW_GEDCOM_RECORD', false);
-		$tree->setPreference('SHOW_HIGHLIGHT_IMAGES', true);
-		$tree->setPreference('SHOW_LDS_AT_GLANCE', false);
-		$tree->setPreference('SHOW_LEVEL2_NOTES', true);
+		$tree->setPreference('SHOW_EST_LIST_DATES', '0');
+		$tree->setPreference('SHOW_FACT_ICONS', '1');
+		$tree->setPreference('SHOW_GEDCOM_RECORD', '0');
+		$tree->setPreference('SHOW_HIGHLIGHT_IMAGES', '1');
+		$tree->setPreference('SHOW_LDS_AT_GLANCE', '0');
+		$tree->setPreference('SHOW_LEVEL2_NOTES', '1');
 		$tree->setPreference('SHOW_LIVING_NAMES', WT_PRIV_USER);
-		$tree->setPreference('SHOW_MEDIA_DOWNLOAD', false);
+		$tree->setPreference('SHOW_MEDIA_DOWNLOAD', '0');
 		$tree->setPreference('SHOW_NO_WATERMARK', WT_PRIV_USER);
-		$tree->setPreference('SHOW_PARENTS_AGE', true);
+		$tree->setPreference('SHOW_PARENTS_AGE', '1');
 		$tree->setPreference('SHOW_PEDIGREE_PLACES', '9');
-		$tree->setPreference('SHOW_PEDIGREE_PLACES_SUFFIX', false);
-		$tree->setPreference('SHOW_PRIVATE_RELATIONSHIPS', true);
+		$tree->setPreference('SHOW_PEDIGREE_PLACES_SUFFIX', '0');
+		$tree->setPreference('SHOW_PRIVATE_RELATIONSHIPS', '1');
 		$tree->setPreference('SHOW_RELATIVES_EVENTS', '_BIRT_CHIL,_BIRT_SIBL,_MARR_CHIL,_MARR_PARE,_DEAT_CHIL,_DEAT_PARE,_DEAT_GPAR,_DEAT_SIBL,_DEAT_SPOU');
-		$tree->setPreference('SHOW_STATS', false);
+		$tree->setPreference('SHOW_STATS', '0');
 		$tree->setPreference('SOURCE_ID_PREFIX', 'S');
 		$tree->setPreference('SOUR_FACTS_ADD', 'NOTE,REPO,SHARED_NOTE,RESN');
 		$tree->setPreference('SOUR_FACTS_QUICK', 'TEXT,NOTE,REPO');
@@ -397,13 +415,13 @@ class WT_Tree {
 		}
 		$tree->setPreference('THEME_DIR', 'webtrees');
 		$tree->setPreference('THUMBNAIL_WIDTH', '100');
-		$tree->setPreference('USE_RIN', false);
-		$tree->setPreference('USE_SILHOUETTE', true);
-		$tree->setPreference('WATERMARK_THUMB', false);
-		$tree->setPreference('WEBMASTER_USER_ID', WT_USER_ID);
+		$tree->setPreference('USE_RIN', '0');
+		$tree->setPreference('USE_SILHOUETTE', '1');
+		$tree->setPreference('WATERMARK_THUMB', '0');
+		$tree->setPreference('WEBMASTER_USER_ID', Auth::id());
 		$tree->setPreference('WEBTREES_EMAIL', '');
-		$tree->setPreference('WORD_WRAPPED_NOTES', false);
-		$tree->setPreference('imported', 0);
+		$tree->setPreference('WORD_WRAPPED_NOTES', '0');
+		$tree->setPreference('imported', '0');
 		$tree->setPreference('title',                        /* I18N: Default title for new family trees */ WT_I18N::translate('My family tree'));
 
 		// Default restriction settings
@@ -438,51 +456,68 @@ class WT_Tree {
 		self::$trees = null;
 	}
 
-	// Delete everything relating to a tree
-	public static function delete($tree_id) {
-		// If this is the default tree, then unset
-		if (WT_Site::getPreference('DEFAULT_GEDCOM') == self::getNameFromId($tree_id)) {
+	/**
+	 * Delete all the genealogy data from a tree - in preparation for importing
+	 * new data.  Optionally retain the media data, for when the user has been
+	 * editing their data offline using an application which deletes (or does not
+	 * support) media data.
+	 *
+	 * @param bool $keep_media
+	 */
+	public function deleteGenealogyData($keep_media) {
+		WT_DB::prepare("DELETE FROM `##individuals` WHERE i_file   =?")->execute(array($this->tree_id));
+		WT_DB::prepare("DELETE FROM `##families`    WHERE f_file   =?")->execute(array($this->tree_id));
+		WT_DB::prepare("DELETE FROM `##sources`     WHERE s_file   =?")->execute(array($this->tree_id));
+		WT_DB::prepare("DELETE FROM `##other`       WHERE o_file   =?")->execute(array($this->tree_id));
+		WT_DB::prepare("DELETE FROM `##places`      WHERE p_file   =?")->execute(array($this->tree_id));
+		WT_DB::prepare("DELETE FROM `##placelinks`  WHERE pl_file  =?")->execute(array($this->tree_id));
+		WT_DB::prepare("DELETE FROM `##name`        WHERE n_file   =?")->execute(array($this->tree_id));
+		WT_DB::prepare("DELETE FROM `##dates`       WHERE d_file   =?")->execute(array($this->tree_id));
+		WT_DB::prepare("DELETE FROM `##change`      WHERE gedcom_id=?")->execute(array($this->tree_id));
+
+		if ($keep_media) {
+			WT_DB::prepare("DELETE FROM `##link` WHERE l_file =? AND l_type<>'OBJE'")->execute(array($this->tree_id));
+		} else {
+			WT_DB::prepare("DELETE FROM `##link`  WHERE l_file =?")->execute(array($this->tree_id));
+			WT_DB::prepare("DELETE FROM `##media` WHERE m_file =?")->execute(array($this->tree_id));
+		}
+	}
+
+	/**
+	 * Delete everything relating to a tree
+	 */
+	public function delete() {
+		// If this is the default tree, then unset it
+		if (WT_Site::getPreference('DEFAULT_GEDCOM') === self::getNameFromId($this->tree_id)) {
 			WT_Site::setPreference('DEFAULT_GEDCOM', '');
 		}
-		// Don't delete the logs.
-		WT_DB::prepare("UPDATE `##log` SET gedcom_id = NULL WHERE gedcom_id = ?")->execute(array($tree_id));
 
-		WT_DB::prepare("DELETE `##block_setting` FROM `##block_setting` JOIN `##block` USING (block_id) WHERE gedcom_id=?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##block`               WHERE gedcom_id = ?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##dates`               WHERE d_file    = ?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##families`            WHERE f_file    = ?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##user_gedcom_setting` WHERE gedcom_id = ?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##gedcom_setting`      WHERE gedcom_id = ?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##individuals`         WHERE i_file    = ?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##link`                WHERE l_file    = ?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##media`               WHERE m_file    = ?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##module_privacy`      WHERE gedcom_id = ?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##name`                WHERE n_file    = ?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##next_id`             WHERE gedcom_id = ?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##other`               WHERE o_file    = ?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##placelinks`          WHERE pl_file   = ?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##places`              WHERE p_file    = ?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##sources`             WHERE s_file    = ?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##hit_counter`         WHERE gedcom_id = ?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##change`              WHERE gedcom_id = ?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##default_resn`        WHERE gedcom_id = ?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##gedcom_chunk`        WHERE gedcom_id = ?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##log`                 WHERE gedcom_id = ?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##gedcom`              WHERE gedcom_id = ?")->execute(array($tree_id));
+		$this->deleteGenealogyData(false);
+
+		WT_DB::prepare("DELETE `##block_setting` FROM `##block_setting` JOIN `##block` USING (block_id) WHERE gedcom_id=?")->execute(array($this->tree_id));
+		WT_DB::prepare("DELETE FROM `##block`               WHERE gedcom_id = ?")->execute(array($this->tree_id));
+		WT_DB::prepare("DELETE FROM `##user_gedcom_setting` WHERE gedcom_id = ?")->execute(array($this->tree_id));
+		WT_DB::prepare("DELETE FROM `##gedcom_setting`      WHERE gedcom_id = ?")->execute(array($this->tree_id));
+		WT_DB::prepare("DELETE FROM `##module_privacy`      WHERE gedcom_id = ?")->execute(array($this->tree_id));
+		WT_DB::prepare("DELETE FROM `##next_id`             WHERE gedcom_id = ?")->execute(array($this->tree_id));
+		WT_DB::prepare("DELETE FROM `##hit_counter`         WHERE gedcom_id = ?")->execute(array($this->tree_id));
+		WT_DB::prepare("DELETE FROM `##default_resn`        WHERE gedcom_id = ?")->execute(array($this->tree_id));
+		WT_DB::prepare("DELETE FROM `##gedcom_chunk`        WHERE gedcom_id = ?")->execute(array($this->tree_id));
+		WT_DB::prepare("DELETE FROM `##log`                 WHERE gedcom_id = ?")->execute(array($this->tree_id));
+		WT_DB::prepare("DELETE FROM `##gedcom`              WHERE gedcom_id = ?")->execute(array($this->tree_id));
 
 		// After updating the database, we need to fetch a new (sorted) copy
 		self::$trees = null;
 	}
 
-	//////////////////////////////////////////////////////////////////////////////
-	//
-	// Export the tree to a GEDCOM file
-	//
-	//////////////////////////////////////////////////////////////////////////////
-
+	/**
+	 * Export the tree to a GEDCOM file
+	 *
+	 * @param $gedcom_file
+	 *
+	 * @return bool
+	 */
 	public function exportGedcom($gedcom_file) {
-
-		// TODO: these functions need to be moved to the GedcomRecord(?) class
 		require_once WT_ROOT . 'includes/functions/functions_export.php';
 
 		// To avoid partial trees on timeout/diskspace/etc, write to a temporary file first

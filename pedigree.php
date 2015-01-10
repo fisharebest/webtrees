@@ -5,7 +5,7 @@
 // Copyright (C) 2014 webtrees development team.
 //
 // Derived from PhpGedView
-// Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.
+// Copyright (C) 2002 to 2009 PGV Development Team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -64,7 +64,7 @@ $controller
 			<tr>
 				<td class="optionbox">
 					<input class="pedigree_form" data-autocomplete-type="INDI" type="text" id="rootid" name="rootid"
-					       size="3" value="<?php echo $controller->rootid; ?>">
+					       size="3" value="<?php echo $controller->root->getXref(); ?>">
 					<?php echo print_findindi_link('rootid'); ?>
 				</td>
 				<td class="optionbox center">
@@ -124,7 +124,7 @@ for ($i = ($controller->treesize - 1); $i >= 0; $i--) {
 		$maxyoffset = $yoffset;
 	}
 	// Can we go back to an earlier generation?
-	$can_go_back = $curgen == 1 && WT_Individual::getInstance($controller->treeid[$i]) && WT_Individual::getInstance($controller->treeid[$i])->getChildFamilies();
+	$can_go_back = $curgen == 1 && $controller->ancestors[$i] && $controller->ancestors[$i]->getChildFamilies();
 
 	if ($talloffset == 2) { // oldest at top
 		if ($can_go_back) {
@@ -133,7 +133,7 @@ for ($i = ($controller->treesize - 1); $i >= 0; $i--) {
 			if ($i > (int)($controller->treesize / 2) + (int)($controller->treesize / 4)) {
 				$did++;
 			}
-			printf(MENU_ITEM, $controller->treeid[$did], $controller->show_full, $controller->PEDIGREE_GENERATIONS, $talloffset, 'icon-uarrow noprint', '');
+			printf(MENU_ITEM, $controller->ancestors[$did]->getXref(), $controller->show_full, $controller->PEDIGREE_GENERATIONS, $talloffset, 'icon-uarrow noprint', '');
 			echo '</div>';
 		}
 	}
@@ -149,10 +149,7 @@ for ($i = ($controller->treesize - 1); $i >= 0; $i--) {
 
 	printf(BOX_WRAPPER, $posn, $xoffset, $yoffset, $controller->pbwidth, $controller->pbheight);
 
-	if (!isset($controller->treeid[$i])) {
-		$controller->treeid[$i] = false;
-	}
-	print_pedigree_person(WT_Individual::getInstance($controller->treeid[$i]));
+	print_pedigree_person($controller->ancestors[$i]);
 	if ($can_go_back) {
 		$did = 1;
 		if ($i > (int)($controller->treesize / 2) + (int)($controller->treesize / 4)) {
@@ -165,11 +162,11 @@ for ($i = ($controller->treesize - 1); $i >= 0; $i--) {
 		}
 		if ($talloffset == 3) {
 			printf(ARROW_WRAPPER, $posn, $controller->pbwidth / 2, $controller->pbheight+5);
-			printf(MENU_ITEM, $controller->treeid[$did], $controller->show_full, $controller->PEDIGREE_GENERATIONS, $talloffset, 'icon-darrow noprint', '');
+			printf(MENU_ITEM, $controller->ancestors[$did]->getXref(), $controller->show_full, $controller->PEDIGREE_GENERATIONS, $talloffset, 'icon-darrow noprint', '');
 			echo '</div>';
 		} elseif ($talloffset < 2) {
 			printf(ARROW_WRAPPER, $posn, $controller->pbwidth +5, $controller->pbheight / 2 - 10);
-			printf(MENU_ITEM, $controller->treeid[$did], $controller->show_full, $controller->PEDIGREE_GENERATIONS, $talloffset, "$arrow noprint", '');
+			printf(MENU_ITEM, $controller->ancestors[$did]->getXref(), $controller->show_full, $controller->PEDIGREE_GENERATIONS, $talloffset, "$arrow noprint", '');
 			echo '</div>';
 		}
 	}
@@ -223,7 +220,7 @@ if (count($famids) > 0) {
 	//-- echo the siblings
 	foreach ($cfamids as $family) {
 		if ($family != null) {
-			$siblings = array_filter($family->getChildren(), function ($item) use ($controller) {
+			$siblings = array_filter($family->getChildren(), function (WT_Individual $item) use ($controller) {
 				return $controller->rootid != $item->getXref();
 			});
 			$num      = count($siblings);
@@ -248,15 +245,15 @@ if ($talloffset < 2) {
 } else {
 	$canvaswidth = pow(2, $PEDIGREE_GENERATIONS - 1) * ($controller->pbwidth + 20);
 }
-echo '<canvas id="pedigree_canvas" width="' . (int)($canvaswidth) . '" height="' . (int)($maxyoffset) . '"><p>No lines between boxes? Unfortunately your browser does not support he HTML5 canvas feature.</p></canvas>';
+echo '<canvas id="pedigree_canvas" width="' . (int)($canvaswidth) . '" height="' . (int)($maxyoffset) . '"><p>No lines between boxes? Unfortunately your browser does not support the HTML5 canvas feature.</p></canvas>';
 echo '</div>'; //close #pedigree_chart
 echo '</div>'; //close #pedigree-page
 
-// Expand <div id="content"> to include the absolutely-positioned elements.
+// Expand <div id="pedigree-page"> to include the absolutely-positioned elements.
 $controller->addInlineJavascript('
 	var WT_PEDIGREE_CHART = (function() {
 	jQuery("html").css("overflow","visible"); // workaround for chrome v37 canvas bugs
-	jQuery("#content").css("height", "' . ($maxyoffset + 30) . '");
+	jQuery("#pedigree-page").css("height", "' . ($maxyoffset + 30) . '");
 
 	// Draw joining lines in <canvas>
 	// Set variables

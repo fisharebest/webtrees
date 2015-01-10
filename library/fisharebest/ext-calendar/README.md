@@ -125,4 +125,5 @@ library, given version numbers, unit tests, etc.
 Future plans
 ============
 
-It is hoped to extend the French calendar to allow it to be used for modern times.
+* Support alternate leap-year schemes for the French calendar (true equinox, Romme, 128-year cycle) as well as the 4-year cycle.
+* Support other calendars, such as Ethiopian, Hindu, Chinese, etc.

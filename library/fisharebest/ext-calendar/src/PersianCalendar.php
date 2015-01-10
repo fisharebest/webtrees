@@ -4,20 +4,20 @@ namespace Fisharebest\ExtCalendar;
 /**
  * Class PersianCalendar - calculations for the Persian (Jalali) calendar.
  *
- * @author    Greg Roach <fisharebest@gmail.com>
+ * @author        Greg Roach <fisharebest@gmail.com>
  * @copyright (c) 2014 Greg Roach
- * @license   This program is free software: you can redistribute it and/or modify
- *            it under the terms of the GNU General Public License as published by
- *            the Free Software Foundation, either version 3 of the License, or
- *            (at your option) any later version.
+ * @license       This program is free software: you can redistribute it and/or modify
+ *                it under the terms of the GNU General Public License as published by
+ *                the Free Software Foundation, either version 3 of the License, or
+ *                (at your option) any later version.
  *
- *            This program is distributed in the hope that it will be useful,
- *            but WITHOUT ANY WARRANTY; without even the implied warranty of
- *            MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *            GNU General Public License for more details.
+ *                This program is distributed in the hope that it will be useful,
+ *                but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *                MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *                GNU General Public License for more details.
  *
- *            You should have received a copy of the GNU General Public License
- *            along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *                You should have received a copy of the GNU General Public License
+ *                along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 class PersianCalendar extends AbstractCalendar implements CalendarInterface {
 	/** See the GEDCOM specification */
@@ -29,7 +29,7 @@ class PersianCalendar extends AbstractCalendar implements CalendarInterface {
 	/**
 	 * Month lengths for regular years and leap-years.
 	 *
-	 * @var int[][]
+	 * @var integer[][]
 	 */
 	protected static $DAYS_IN_MONTH = array(
 		0 => array(1 => 31, 31, 31, 31, 31, 31, 30, 30, 30, 30, 30, 29),
@@ -39,7 +39,7 @@ class PersianCalendar extends AbstractCalendar implements CalendarInterface {
 	/**
 	 * In each 128 year cycle, the following years are leap years.
 	 *
-	 * @var int[]
+	 * @var integer[]
 	 */
 	private static $LEAP_YEAR_CYCLE = array(
 		0, 5, 9, 13, 17, 21, 25, 29, 34, 38, 42, 46, 50, 54, 58, 62, 67, 71, 75, 79, 83, 87, 91, 95, 100, 104, 108, 112, 116, 120, 124
@@ -48,8 +48,9 @@ class PersianCalendar extends AbstractCalendar implements CalendarInterface {
 	/**
 	 * Determine whether a year is a leap year.
 	 *
-	 * @param  int  $year
-	 * @return bool
+	 * @param integer $year
+	 *
+	 * @return boolean
 	 */
 	public function isLeapYear($year) {
 		return in_array((($year + 2346) % 2820) % 128, self::$LEAP_YEAR_CYCLE);
@@ -58,9 +59,9 @@ class PersianCalendar extends AbstractCalendar implements CalendarInterface {
 	/**
 	 * Convert a Julian day number into a year/month/day.
 	 *
-	 * @param $julian_day
+	 * @param integer $julian_day
 	 *
-	 * @return int[];
+	 * @return integer[]
 	 */
 	public function jdToYmd($julian_day) {
 		$depoch = $julian_day - 2121447;
@@ -86,11 +87,11 @@ class PersianCalendar extends AbstractCalendar implements CalendarInterface {
 	/**
 	 * Convert a year/month/day into a Julian day number
 	 *
-	 * @param int $year
-	 * @param int $month
-	 * @param int $day
+	 * @param integer $year
+	 * @param integer $month
+	 * @param integer $day
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	public function ymdToJd($year, $month, $day) {
 		$epbase = $year - (($year >= 0) ? 474 : 473);

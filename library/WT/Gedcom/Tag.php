@@ -1,6 +1,4 @@
 <?php
-// Static GEDCOM data for Tags
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 Greg Roach
 //
@@ -20,6 +18,9 @@
 
 use Rhumsaa\Uuid\Uuid;
 
+/**
+ * Class WT_Gedcom_Tag - Static GEDCOM data for Tags
+ */
 class WT_Gedcom_Tag {
 	/** @var string[] All tags that webtrees knows how to translate - including special/internal tags */
 	private static $ALL_TAGS = array(

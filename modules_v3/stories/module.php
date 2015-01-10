@@ -1,6 +1,4 @@
 <?php
-// Classes and libraries for module system
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -21,24 +19,21 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class stories_WT_Module
+ */
 class stories_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Config, WT_Module_Menu {
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module */ WT_I18N::translate('Stories');
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	public function getDescription() {
 		return /* I18N: Description of the “Stories” module */ WT_I18N::translate('Add narrative stories to individuals in the family tree.');
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	public function modAction($mod_action) {
 		switch ($mod_action) {
 		case 'admin_edit':
@@ -59,23 +54,17 @@ class stories_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Co
 		}
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	public function getConfigLink() {
 		return 'module.php?mod=' . $this->getName() . '&amp;mod_action=admin_config';
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	public function defaultTabOrder() {
 		return 55;
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	public function getTabContent() {
 		global $controller;
 
@@ -114,16 +103,12 @@ class stories_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Co
 		return $html;
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	public function hasTabContent() {
 		return $this->getTabContent() <> '';
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	public function isGrayedOut() {
 		global $controller;
 
@@ -143,16 +128,12 @@ class stories_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Co
 		return $count_of_stories == 0;
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	public function canLoadAjax() {
 		return false;
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	public function getPreLoadContent() {
 		return '';
 	}
@@ -338,8 +319,8 @@ class stories_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Co
 				echo '<thead><tr>
 					<th>', WT_I18N::translate('Story title'), '</th>
 					<th>', WT_I18N::translate('Individual'), '</th>
-					<th>&nbsp;</th>
-					<th>&nbsp;</th>
+					<th></th>
+					<th></th>
 					</tr></thead>';
 			}
 			echo '<tbody>';
@@ -427,23 +408,17 @@ class stories_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Co
 		}
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	public function defaultMenuOrder() {
 		return 30;
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	public function defaultAccessLevel() {
 		return WT_PRIV_HIDE;
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	public function getMenu() {
 		global $SEARCH_SPIDER;
 

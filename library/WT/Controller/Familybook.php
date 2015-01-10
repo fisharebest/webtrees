@@ -1,6 +1,4 @@
 <?php
-//	Controller for the familybook chart
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -21,19 +19,34 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class WT_Controller_Familybook - Controller for the familybook chart
+ */
 class WT_Controller_Familybook extends WT_Controller_Chart {
 	// Data for the view
-	public $pid = null;
-	public $show_full = null;
-	public $show_spouse = null;
-	public $descent = null;
-	public $generations = null;
-	public $box_width = null;
-	public $rootid = null;
+	public $pid;
 
-	// Data for the controller
-	private $dgenerations = null;
+	/** @var int Whether to show full details in the individual boxes */
+	public $show_full;
 
+	/** @var int Whether to show spouse details */
+	public $show_spouse;
+
+	/** @var int Number of descendancy generations to show */
+	public $descent;
+
+	/** @var int Number of ascendancy generations to show */
+	public $generations;
+
+	/** @var int Size of boxes (percentage) */
+	public $box_width;
+
+	/** @var int Number of descendancy generations that exist */
+	private $dgenerations;
+
+	/**
+	 * Create a family-book controller
+	 */
 	public function __construct() {
 		global $WT_TREE;
 
@@ -52,7 +65,6 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 		// Box sizes are set globally in the theme.  Modify them here.
 		global $bwidth, $bheight, $cbwidth, $cbheight, $Dbwidth, $bhalfheight, $Dbheight;
 		$Dbwidth = $this->box_width * $bwidth / 100;
-		//$Dbheight=$this->box_width * $bheight / 100;
 		$bwidth = $Dbwidth;
 		$bheight = $Dbheight;
 
@@ -64,7 +76,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 		$bhalfheight = $bheight / 2;
 		if ($this->root && $this->root->canShowName()) {
 			$this->setPageTitle(
-			/* I18N: %s is an individual’s name */
+				/* I18N: %s is an individual’s name */
 				WT_I18N::translate('Family book of %s', $this->root->getFullName())
 			);
 		} else {
@@ -81,9 +93,9 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 	 * Prints descendency of passed in person
 	 *
 	 * @param WT_Individual|null $person
-	 * @param int                $count
+	 * @param integer            $count
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	private function printDescendency(WT_Individual $person = null, $count) {
 		global $WT_IMAGES, $bwidth, $bheight, $show_full, $box_width; // print_pedigree_person() requires these globals.
@@ -189,7 +201,6 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 					$tempw = $bwidth;
 					$temph = $bheight;
 					$bwidth -= 5;
-					//$bheight -= 5;
 					print_pedigree_person($spouse);
 					$bwidth = $tempw;
 					$bheight = $temph;
@@ -209,7 +220,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 	 * Prints pedigree of the person passed in
 	 *
 	 * @param WT_Individual $person
-	 * @param int           $count
+	 * @param integer       $count
 	 */
 	private function printPersonPedigree($person, $count) {
 		global $WT_IMAGES, $bheight, $bwidth, $bhalfheight;
@@ -339,10 +350,10 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 	/**
 	 * Calculates number of generations a person has
 	 *
-	 * @param string $pid
-	 * @param int    $depth
+	 * @param string  $pid
+	 * @param integer $depth
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	private function maxDescendencyGenerations($pid, $depth) {
 		if ($depth > $this->generations) {
@@ -375,8 +386,8 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 	/**
 	 * Print empty box
 	 *
-	 * @param int $bwidth
-	 * @param int $bheight
+	 * @param integer $bwidth
+	 * @param integer $bheight
 	 */
 	private function printEmptyBox($bwidth, $bheight) {
 		echo '<tr><td><div style="width:', $bwidth + 16, 'px; height:', $bheight + 8, 'px;"></div></td><td>';
@@ -386,7 +397,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 	 * Print a “Family Book” for an individual
 	 *
 	 * @param WT_Individual $person
-	 * @param int           $descent_steps
+	 * @param integer       $descent_steps
 	 */
 	public function printFamilyBook(WT_Individual $person, $descent_steps) {
 		global $first_run;

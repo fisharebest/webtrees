@@ -1,6 +1,4 @@
 <?php
-// Controller for the timeline chart
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -21,29 +19,55 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class WT_Controller_Timeline - Controller for the timeline chart
+ */
 class WT_Controller_Timeline extends WT_Controller_Page {
-	var $bheight = 30;
-	var $placements = array();
-	var $indifacts = array(); // array to store the fact records in for sorting and displaying
-	var $birthyears = array();
-	var $birthmonths = array();
-	var $birthdays = array();
-	var $baseyear = 0;
-	var $topyear = 0;
-	var $pids = array();
-	var $people = array();
-	var $pidlinks = "";
-	var $scale = 2;
+	/** @var integer Height of the age box */
+	public $bheight = 30;
+
+	/** @var WT_Fact[] The facts to display on the chart */
+	public $indifacts = array(); // array to store the fact records in for sorting and displaying
+
+	/** @var integer[] Numeric birth years of each individual */
+	public $birthyears = array();
+
+	/** @var integer[] Numeric birth months of each individual */
+	public $birthmonths = array();
+
+	/** @var integer[] Numeric birth days of each individual */
+	public $birthdays = array();
+
+	/** @var integer Lowest year to display */
+	public $baseyear = 0;
+
+	/** @var integer Highest year to display */
+	public $topyear = 0;
+
+	/** @var string[] List of individual XREFs to display */
+	private $pids = array();
+
+	/** @var WT_Individual[] List of individuals to display */
+	public $people = array();
+
+	/** @var string URL-encoded list of XREFs */
+	public $pidlinks = '';
+
+	/** @var integer Vertical scale */
+	public $scale = 2;
 
 	// GEDCOM elements that may have DATE data, but should not be displayed
 	private $nonfacts = array('BAPL', 'ENDL', 'SLGC', 'SLGS', '_TODO', 'CHAN');
 
+	/**
+	 * Startup activity
+	 */
 	function __construct() {
 		parent::__construct();
 
 		$this->setPageTitle(WT_I18N::translate('Timeline'));
 
-		$this->baseyear = date("Y");
+		$this->baseyear = (int)date('Y');
 		// new pid
 		$newpid = WT_Filter::get('newpid', WT_REGEX_XREF);
 
@@ -63,22 +87,22 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 		foreach ($this->pids as $value) {
 			if ($value != $remove) {
 				$newpids[] = $value;
-				$person = WT_Individual::getInstance($value);
+				$person    = WT_Individual::getInstance($value);
 				if ($person) {
 					$this->people[] = $person;
 				}
 			}
 		}
-		$this->pids = $newpids;
-		$this->pidlinks = "";
+		$this->pids     = $newpids;
+		$this->pidlinks = '';
 
 		foreach ($this->people as $indi) {
 			if (!is_null($indi) && $indi->canShow()) {
 				// setup string of valid pids for links
-				$this->pidlinks .= "pids%5B%5D=" . $indi->getXref() . "&amp;";
+				$this->pidlinks .= 'pids%5B%5D=' . $indi->getXref() . '&amp;';
 				$bdate = $indi->getBirthDate();
 				if ($bdate->isOK()) {
-					$date = new WT_Date_Gregorian($bdate->MinDate()->minJD);
+					$date                                = new WT_Date_Gregorian($bdate->MinDate()->minJD);
 					$this->birthyears [$indi->getXref()] = $date->y;
 					$this->birthmonths[$indi->getXref()] = max(1, $date->m);
 					$this->birthdays  [$indi->getXref()] = max(1, $date->d);
@@ -97,12 +121,12 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 						// check for a date
 						$date = $event->getDate();
 						if ($date->isOK()) {
-							$date = new WT_Date_Gregorian($date->MinDate()->minJD);
+							$date           = new WT_Date_Gregorian($date->MinDate()->minJD);
 							$this->baseyear = min($this->baseyear, $date->y);
-							$this->topyear = max($this->topyear, $date->y);
+							$this->topyear  = max($this->topyear, $date->y);
 
 							if (!$indi->isDead()) {
-								$this->topyear = max($this->topyear, date('Y'));
+								$this->topyear = max($this->topyear, (int)date('Y'));
 							}
 
 							// do not add the same fact twice (prevents marriages from being added multiple times)
@@ -115,8 +139,8 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 			}
 		}
 		$scale = WT_Filter::getInteger('scale', 0, 200);
-		if ($scale == 0) {
-			$this->scale = round(($this->topyear - $this->baseyear) / 20 * count($this->indifacts) / 4);
+		if ($scale === 0) {
+			$this->scale = (int)(($this->topyear - $this->baseyear) / 20 * count($this->indifacts) / 4);
 			if ($this->scale < 6) {
 				$this->scale = 6;
 			}
@@ -131,50 +155,30 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 	}
 
 	/**
-	 * check the privacy of the incoming people to make sure they can be shown
+	 * @param WT_Fact $event
 	 */
-	function checkPrivacy() {
-		$printed = false;
-		for ($i = 0; $i < count($this->people); $i++) {
-			if (!is_null($this->people[$i])) {
-				if (!$this->people[$i]->canShow()) {
-					if ($this->people[$i]->canShowName()) {
-						echo "&nbsp;<a href=\"" . $this->people[$i]->getHtmlUrl() . "\">" . $this->people[$i]->getFullName() . "</a>";
-						echo '<div class="error">', WT_I18N::translate('This information is private and cannot be shown.'), '</div>';
-						echo "<br>";
-						$printed = true;
-					} elseif (!$printed) {
-						echo '<div class="error">', WT_I18N::translate('This information is private and cannot be shown.'), '</div>';
-					}
-				}
-			}
-		}
-	}
-
 	function print_time_fact(WT_Fact $event) {
 		global $basexoffset, $baseyoffset, $factcount, $TEXT_DIRECTION, $WT_IMAGES, $placements;
 
-		static $col = 0;
-
 		$desc = $event->getValue();
 		// check if this is a family fact
-		$gdate = $event->getDate();
-		$date = $gdate->MinDate();
-		$date = $date->convertToCalendar('gregorian');
-		$year = $date->y;
-		$month = max(1, $date->m);
-		$day = max(1, $date->d);
-		$xoffset = $basexoffset + 22;
-		$yoffset = $baseyoffset + (($year - $this->baseyear) * $this->scale) - ($this->scale);
-		$yoffset = $yoffset + (($month / 12) * $this->scale);
-		$yoffset = $yoffset + (($day / 30) * ($this->scale / 12));
-		$yoffset = (int)($yoffset);
-		$place = (int)($yoffset / $this->bheight);
-		$i = 1;
-		$j = 0;
+		$gdate    = $event->getDate();
+		$date     = $gdate->MinDate();
+		$date     = $date->convertToCalendar('gregorian');
+		$year     = $date->y;
+		$month    = max(1, $date->m);
+		$day      = max(1, $date->d);
+		$xoffset  = $basexoffset + 22;
+		$yoffset  = $baseyoffset + (($year - $this->baseyear) * $this->scale) - ($this->scale);
+		$yoffset  = $yoffset + (($month / 12) * $this->scale);
+		$yoffset  = $yoffset + (($day / 30) * ($this->scale / 12));
+		$yoffset  = (int)($yoffset);
+		$place    = (int)($yoffset / $this->bheight);
+		$i        = 1;
+		$j        = 0;
 		$tyoffset = 0;
 		while (isset($placements[$place])) {
-			if ($i == $j) {
+			if ($i === $j) {
 				$tyoffset = $this->bheight * $i;
 				$i++;
 			} else {
@@ -196,7 +200,16 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 			echo 'right: 3px;">';
 		}
 
-		$col = $col++ % 6;
+		$col = array_search($event->getParent(), $this->people);
+		if ($col === false) {
+			// Marriage event - use the color of the husband
+			$col = array_search($event->getParent()->getHusband(), $this->people);
+		}
+		if ($col === false) {
+			// Marriage event - use the color of the wife
+			$col = array_search($event->getParent()->getWife(), $this->people);
+		}
+		$col = $col % 6;
 		echo '</td><td valign="top" class="person' . $col . '">';
 		if (count($this->pids) > 6) {
 			echo $event->getParent()->getFullName() . ' — ';
@@ -236,21 +249,21 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 		}
 		echo '</td></tr></table>';
 		echo '</div>';
-		if ($TEXT_DIRECTION == 'ltr') {
-			$img = 'dline2';
+		if ($TEXT_DIRECTION === 'ltr') {
+			$img  = 'dline2';
 			$ypos = '0%';
 		} else {
-			$img = 'dline';
+			$img  = 'dline';
 			$ypos = '100%';
 		}
 		$dyoffset = ($yoffset - $tyoffset) + $this->bheight / 3;
 		if ($tyoffset < 0) {
 			$dyoffset = $yoffset + $this->bheight / 3;
-			if ($TEXT_DIRECTION == 'ltr') {
-				$img = 'dline';
+			if ($TEXT_DIRECTION === 'ltr') {
+				$img  = 'dline';
 				$ypos = '100%';
 			} else {
-				$img = 'dline2';
+				$img  = 'dline2';
 				$ypos = '0%';
 			}
 		}
@@ -261,6 +274,12 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 		echo '</div>';
 	}
 
+	/**
+	 * Get significant information from this page, to allow other pages such as
+	 * charts and reports to initialise with the same records
+	 *
+	 * @return WT_Individual
+	 */
 	public function getSignificantIndividual() {
 		if ($this->pids) {
 			return WT_Individual::getInstance($this->pids[0]);

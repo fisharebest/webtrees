@@ -5,7 +5,7 @@
 // Copyright (C) 2014 webtrees development team.
 //
 // Derived from PhpGedView
-// Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.
+// Copyright (C) 2002 to 2009 PGV Development Team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -30,7 +30,7 @@ if (!defined('WT_WEBTREES')) {
 $theme_name = "_administration";
 
 // A version number in the path prevents browser-cache problems during upgrade
-define('WT_CSS_URL', WT_THEME_URL . 'css-1.6.0/');
+define('WT_CSS_URL', WT_THEME_URL . 'css-1.6.2/');
 
 $headerfile = WT_THEME_DIR . 'header.php';
 $footerfile = WT_THEME_DIR . 'footer.php';

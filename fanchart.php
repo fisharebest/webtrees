@@ -5,7 +5,7 @@
 // Copyright (C) 2014 webtrees development team.
 //
 // Derived from PhpGedView
-// Copyright (C) 2002 to 2010 PGV Development Team.  All rights reserved.
+// Copyright (C) 2002 to 2010 PGV Development Team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -29,8 +29,9 @@ $controller = new WT_Controller_Fanchart();
 
 if (WT_Filter::getBool('img')) {
 	Zend_Session::writeClose();
-	$controller->generate_fan_chart('png', $fanChart); // $fanChart comes from the theme
-	exit;
+	header('Content-Type: image/png');
+	echo $controller->generateFanChart('png', $fanChart); // $fanChart comes from the theme
+	return;
 }
 
 $controller
@@ -79,7 +80,7 @@ $controller
 					</label>
 				</td>
 				<td class="optionbox">
-					<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="rootid" id="rootid" size="3" value="<?php echo $controller->rootid; ?>">
+					<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="rootid" id="rootid" size="3" value="<?php echo $controller->root->getXref(); ?>">
 					<?php echo print_findindi_link('rootid'); ?>
 				</td>
 				<td class="descriptionbox">
@@ -122,6 +123,6 @@ if ($controller->error_message) {
 }
 
 if ($controller->root) {
-	echo '<div id="fan_chart">', $controller->generate_fan_chart('html', $fanChart), '</div>';
+	echo '<div id="fan_chart">', $controller->generateFanChart('html', $fanChart), '</div>';
 }
 echo '</div>';

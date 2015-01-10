@@ -1,6 +1,4 @@
 <?php
-// Class that defines a media object
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -23,16 +21,21 @@
 
 use WT\Log;
 
+/**
+ * Class WT_Media - Class that defines a media object
+ */
 class WT_Media extends WT_GedcomRecord {
 	const RECORD_TYPE = 'OBJE';
 	const URL_PREFIX = 'mediaviewer.php?mid=';
 
-	public $title = null; // TODO: these should be private, with getTitle() and getFilename() functions
-	public $file = null;
+	// TODO: these should be private, with getTitle() and getFilename() functions
+	/** @var string The "TITL" value from the GEDCOM */
+	public $title;
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** @var string The "FILE" value from the GEDCOM */
+	public $file;
+
+	/** {@inheritdoc} */
 	public function __construct($xref, $gedcom, $pending, $gedcom_id) {
 		parent::__construct($xref, $gedcom, $pending, $gedcom_id);
 
@@ -50,8 +53,27 @@ class WT_Media extends WT_GedcomRecord {
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * Get an instance of a media object.  For single records,
+	 * we just receive the XREF.  For bulk records (such as lists
+	 * and search results) we can receive the GEDCOM data as well.
+	 *
+	 * @param string       $xref
+	 * @param integer|null $gedcom_id
+	 * @param string|null  $gedcom
+	 *
+	 * @return WT_Media|null
 	 */
+	public static function getInstance($xref, $gedcom_id = WT_GED_ID, $gedcom = null) {
+		$record = parent::getInstance($xref, $gedcom_id, $gedcom);
+
+		if ($record instanceof WT_Media) {
+			return $record;
+		} else {
+			return null;
+		}
+	}
+
+	/** {@inheritdoc} */
 	protected function canShowByType($access_level) {
 		// Hide media objects if they are attached to private records
 		$linked_ids = WT_DB::prepare(
@@ -68,9 +90,7 @@ class WT_Media extends WT_GedcomRecord {
 		return parent::canShowByType($access_level);
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	protected static function fetchGedcomRecord($xref, $gedcom_id) {
 		static $statement = null;
 
@@ -90,7 +110,7 @@ class WT_Media extends WT_GedcomRecord {
 		$note = $this->getFirstFact('NOTE');
 		if ($note) {
 			$text = $note->getValue();
-			if (preg_match('/@' . WT_REGEX_XREF . '@/', $text)) {
+			if (preg_match('/^@' . WT_REGEX_XREF . '@$/', $text)) {
 				$text = $note->getTarget()->getNote();
 			}
 
@@ -221,7 +241,10 @@ class WT_Media extends WT_GedcomRecord {
 		return @file_exists($this->getServerFilename($which));
 	}
 
-	// determine if the file is an external url
+	/**
+	 * Determine if the file is an external url
+	 * @return bool
+	 */
 	public function isExternal() {
 		return strpos($this->file, '://') !== false;
 	}
@@ -247,7 +270,7 @@ class WT_Media extends WT_GedcomRecord {
 	 *
 	 * @param string $which specify either 'main' or 'thumb'
 	 *
-	 * @return number
+	 * @return integer
 	 */
 	public function getFilesizeraw($which = 'main') {
 		if ($this->fileExists($which)) {
@@ -262,7 +285,7 @@ class WT_Media extends WT_GedcomRecord {
 	 *
 	 * @param string $which specify either 'main' or 'thumb'
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	public function getFiletime($which = 'main') {
 		if ($this->fileExists($which)) {
@@ -323,9 +346,9 @@ class WT_Media extends WT_GedcomRecord {
 	/**
 	 * get image properties
 	 *
-	 * @param string $which     specify either 'main' or 'thumb'
-	 * @param int    $addWidth  amount to add to width
-	 * @param int    $addHeight amount to add to height
+	 * @param string  $which     specify either 'main' or 'thumb'
+	 * @param integer $addWidth  amount to add to width
+	 * @param integer $addHeight amount to add to height
 	 *
 	 * @return array
 	 */
@@ -404,8 +427,8 @@ class WT_Media extends WT_GedcomRecord {
 	/**
 	 * Generate a URL directly to the media file
 	 *
-	 * @param string $which
-	 * @param bool   $download
+	 * @param string  $which
+	 * @param boolean $download
 	 *
 	 * @return string
 	 */
@@ -535,9 +558,7 @@ class WT_Media extends WT_GedcomRecord {
 			'>' . $image . '</a>';
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	public function getFallBackName() {
 		if ($this->canShow()) {
 			return basename($this->file);
@@ -546,9 +567,7 @@ class WT_Media extends WT_GedcomRecord {
 		}
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	public function extractNames() {
 		// Earlier gedcom versions had level 1 titles
 		// Later gedcom versions had level 2 titles
@@ -556,10 +575,8 @@ class WT_Media extends WT_GedcomRecord {
 		$this->_extractNames(1, 'TITL', $this->getFacts('TITL'));
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
-	public function format_list_details() {
+	/** {@inheritdoc} */
+	public function formatListDetails() {
 		require_once WT_ROOT . 'includes/functions/functions_print_facts.php';
 		ob_start();
 		print_media_links('1 OBJE @' . $this->getXref() . '@', 1);

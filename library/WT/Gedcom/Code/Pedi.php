@@ -1,6 +1,4 @@
 <?php
-// Functions and logic for GEDCOM "PEDI" codes
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 Greg Roach
 //
@@ -18,6 +16,9 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class WT_Gedcom_Code_Pedi - Functions and logic for GEDCOM "PEDI" codes
+ */
 class WT_Gedcom_Code_Pedi {
 	/** @var string[] Possible values for pedigree field */
 	private static $TYPES = array('adopted', 'birth', 'foster', 'rada', 'sealing');
@@ -97,7 +98,7 @@ class WT_Gedcom_Code_Pedi {
 	 *
 	 * @param WT_GedcomRecord|null $record
 	 *
-	 * @return array
+	 * @return string[]
 	 */
 	public static function getValues(WT_GedcomRecord $record = null) {
 		$values = array();

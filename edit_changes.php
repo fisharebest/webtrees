@@ -5,7 +5,7 @@
 // Copyright (C) 2014 webtrees development team.
 //
 // Derived from PhpGedView
-// Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.
+// Copyright (C) 2002 to 2009 PGV Development Team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -183,9 +183,9 @@ if ($changed_gedcoms) {
 		$output .= '<td class="list_value">';
 		foreach ($record->getFacts() as $fact) {
 			if ($fact->getTag() != 'CHAN') {
-				if ($fact->isNew()) {
+				if ($fact->isPendingAddition()) {
 					$output .= '<div class="new" title="' . strip_tags($fact->summary()) . '">' .$fact->getLabel() . '</div>';
-				} elseif ($fact->isOld()) {
+				} elseif ($fact->isPendingDeletion()) {
 					$output .= '<div class="old" title="' . strip_tags($fact->summary()) . '">' .$fact->getLabel() . '</div>';
 				}
 			}

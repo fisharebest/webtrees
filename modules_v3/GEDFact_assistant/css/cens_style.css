@@ -21,7 +21,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
- 
+
 .cens_header {
 	text-align: left;
 	margin: 5px;
@@ -270,8 +270,7 @@ textarea#NOTE {
 .headimg2 {
 	height: 17px;
 	border-style: none;
-	margin: -3px;
-	margin-left: 0;
+	margin: -3px -3px -3px 0;
 }
 
 [dir=rtl] .headimg2 {
@@ -279,8 +278,18 @@ textarea#NOTE {
 	margin-right: 0;
 }
 
-
 #edit_interface-page input#personid {
 	width: 160px;
 }
 
+.linka {
+	display: block;
+}
+
+#edit_interface-page .linkcell span {
+	margin: 0;
+}
+
+#edit_interface-page .clist {
+	margin: 0;
+}

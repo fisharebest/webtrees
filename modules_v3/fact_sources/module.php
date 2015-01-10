@@ -1,6 +1,4 @@
 <?php
-// Classes and libraries for module system
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -21,25 +19,28 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class fact_sources_WT_Module
+ */
 class fact_sources_WT_Module extends WT_Module implements WT_Module_Report {
-	// Extend class WT_Module
+	/** {@inheritdoc} */
 	public function getTitle() {
 		// This text also appears in the .XML file - update both together
 		return /* I18N: Name of a module/report */ WT_I18N::translate('Source');
 	}
 
-	// Extend class WT_Module
+	/** {@inheritdoc} */
 	public function getDescription() {
 		// This text also appears in the .XML file - update both together
 		return /* I18N: Description of the “Source” module */ WT_I18N::translate('A report of the information provided by a source.');
 	}
 
-	// Extend class WT_Module
+	/** {@inheritdoc} */
 	public function defaultAccessLevel() {
 		return WT_PRIV_USER;
 	}
 
-	// Implement WT_Module_Report - a module can provide many reports
+	/** {@inheritdoc} */
 	public function getReportMenus() {
 		$menus=array();
 		$menu=new WT_Menu(

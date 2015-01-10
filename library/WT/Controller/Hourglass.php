@@ -1,6 +1,4 @@
 <?php
-// Controller for the hourglass chart
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -21,6 +19,9 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class WT_Controller_Hourglass - Controller for the hourglass chart
+ */
 class WT_Controller_Hourglass extends WT_Controller_Chart {
 	var $pid = "";
 
@@ -45,6 +46,11 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 	CONST LINK = "<a class='%s' href='%s' data-parms='%s-%s-%s-%s'></a>";
 	CONST SWITCH_LINK = "<a href='hourglass.php?rootid=%s&amp;show_spouse=%s&amp;show_full=%s&amp;generations=%s&amp;box_width=%s' class='name1'>%s</a>";
 
+	/**
+	 * @param string  $rootid
+	 * @param integer $show_full
+	 * @param boolean $loadJS
+	 */
 	function __construct($rootid = '', $show_full = 1, $loadJS = true) {
 		global $bheight, $bwidth, $cbwidth, $cbheight, $PEDIGREE_FULL_DETAILS, $MAX_DESCENDANCY_GENERATIONS;
 		global $TEXT_DIRECTION, $show_full;
@@ -111,7 +117,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 	 * Prints pedigree of the person passed in. Which is the descendancy
 	 *
 	 * @param WT_Individual $person ID of person to print the pedigree for
-	 * @param int           $count  generation count, so it recursively calls itself
+	 * @param integer       $count  generation count, so it recursively calls itself
 	 */
 	public function printPersonPedigree(WT_Individual $person, $count) {
 		global $WT_IMAGES, $bheight, $bwidth;
@@ -197,8 +203,8 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 	/**
 	 * Print empty box
 	 *
-	 * @param int $bwidth
-	 * @param int $bheight
+	 * @param integer $bwidth
+	 * @param integer $bheight
 	 *
 	 * @return void
 	 */
@@ -213,11 +219,11 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 	/**
 	 * Prints descendency of passed in person
 	 *
-	 * @param WT_Individual $person person to print descendency for
-	 * @param int           $count  count of generations to print
-	 * @param bool          $showNav
+	 * @param WT_Individual $person  person to print descendency for
+	 * @param integer       $count   count of generations to print
+	 * @param boolean       $showNav
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	public function printDescendency($person, $count, $showNav = true) {
 		global $TEXT_DIRECTION, $WT_IMAGES, $bheight, $bwidth, $lastGenSecondFam;
@@ -279,7 +285,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 							echo "<td style='vertical-align:top'><img alt='' class='bvertline' id='vline_$chil' src='{$WT_IMAGES["vline"]}' width='3'></td>";
 						} else {
 							// Middle child
-							echo "<td style=\"background: url('{$WT_IMAGES["vline"]}');\"><img src='{$WT_IMAGES["spacer"]}' width='3' alt=''></td>";
+							echo '<td style="background: url(\'' . $WT_IMAGES['vline'] . '\');"><img src=\'' . $WT_IMAGES['spacer'] . '\' width="3" alt=""></td>';
 						}
 					}
 					echo '</tr>';
@@ -383,7 +389,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 						}
 
 						// filter out root person from children array so only siblings remain
-						$siblings = array_filter($family->getChildren(), function ($item) use ($pid) {
+						$siblings = array_filter($family->getChildren(), function (WT_Individual $item) use ($pid) {
 							return $item->getXref() != $pid;
 						});
 						$num = count($siblings);
@@ -410,10 +416,10 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 	/**
 	 * Calculates number of generations a person has
 	 *
-	 * @param string $pid   ID of person to see how far down the descendency goes
-	 * @param int    $depth Pass in 0 and it calculates how far down descendency goes
+	 * @param string  $pid   ID of person to see how far down the descendency goes
+	 * @param integer $depth Pass in 0 and it calculates how far down descendency goes
 	 *
-	 * @return int Number of generations the descendency actually goes
+	 * @return integer Number of generations the descendency actually goes
 	 */
 	private function maxDescendencyGenerations($pid, $depth) {
 		if ($depth > $this->generations) {

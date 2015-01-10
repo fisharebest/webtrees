@@ -8,7 +8,7 @@
 // Copyright (C) 2014 webtrees development team.
 //
 // Derived from PhpGedView
-// Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.
+// Copyright (C) 2002 to 2009 PGV Development Team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -298,27 +298,13 @@ function format_indi_table($datalist, $option = '') {
 
 	$d100y = new WT_Date(date('Y') - 100);  // 100 years ago
 	$unique_indis = array(); // Don't double-count indis with multiple names.
-	foreach ($datalist as $key => $value) {
-		if (is_object($value)) { // Array of objects
-			$person = $value;
-		} elseif (!is_array($value)) { // Array of IDs
-			$person = WT_Individual::getInstance($value);
-		} else { // Array of search results
-			$gid = $key;
-			if (isset($value['gid'])) {
-				$gid = $value['gid'];
-			} // from indilist
-			if (isset($value[4])) {
-				$gid = $value[4];
-			} // from indilist ALL
-			$person = WT_Individual::getInstance($gid);
-		}
-		if (!$person || !$person->canShowName()) {
+	foreach ($datalist as $key => $person) {
+		if (!$person->canShowName()) {
 			continue;
 		}
-		if ($person->isNew()) {
+		if ($person->isPendingAddtion()) {
 			$class = ' class="new"';
-		} elseif ($person->isOld()) {
+		} elseif ($person->isPendingDeletion()) {
 			$class = ' class="old"';
 		} else {
 			$class = '';
@@ -357,7 +343,7 @@ function format_indi_table($datalist, $option = '') {
 		if ($option == 'sosa') {
 			$html .= '<td><a href="relationship.php?pid1=' . $datalist[1] . '&amp;pid2=' . $person->getXref() . '" title="' . WT_I18N::translate('Relationships') . '">' . WT_I18N::number($key) . '</a></td><td>' . $key . '</td>';
 		} else {
-			$html .= '<td>&nbsp;</td><td>0</td>';
+			$html .= '<td></td><td>0</td>';
 		}
 		//-- Birth date
 		$html .= '<td>';
@@ -459,13 +445,13 @@ function format_indi_table($datalist, $option = '') {
 		if ($SHOW_LAST_CHANGE) {
 			$html .= '<td>' . $person->lastChangeTimestamp() . '</td>';
 		} else {
-			$html .= '<td>&nbsp;</td>';
+			$html .= '<td></td>';
 		}
 		//-- Last change hidden sort column
 		if ($SHOW_LAST_CHANGE) {
 			$html .= '<td>' . $person->lastChangeTimestamp(true) . '</td>';
 		} else {
-			$html .= '<td>&nbsp;</td>';
+			$html .= '<td></td>';
 		}
 		//-- Sorting by gender
 		$html .= '<td>';
@@ -482,9 +468,9 @@ function format_indi_table($datalist, $option = '') {
 		//-- Filtering by death date
 		$html .= '<td>';
 		// Died in last 100 years?  Died?  Not dead?
-		if (WT_Date::Compare($death_date, $d100y) > 0) {
+		if (WT_Date::Compare($death_dates[0], $d100y) > 0) {
 			$html .= 'Y100';
-		} elseif ($death_date->minJD() || $person->isDead()) {
+		} elseif ($death_dates[0]->minJD() || $person->isDead()) {
 			$html .= 'YES';
 		} else {
 			$html .= 'N';
@@ -804,9 +790,9 @@ function format_fam_table($datalist) {
 		if (!$family->canShow()) {
 			continue;
 		}
-		if ($family->isNew()) {
+		if ($family->isPendingAddtion()) {
 			$class = ' class="new"';
-		} elseif ($family->isOld()) {
+		} elseif ($family->isPendingDeletion()) {
 			$class = ' class="old"';
 		} else {
 			$class = '';
@@ -955,13 +941,13 @@ function format_fam_table($datalist) {
 		if ($SHOW_LAST_CHANGE) {
 			$html .= '<td>' . $family->LastChangeTimestamp() . '</td>';
 		} else {
-			$html .= '<td>&nbsp;</td>';
+			$html .= '<td></td>';
 		}
 		//-- Last change hidden sort column
 		if ($SHOW_LAST_CHANGE) {
 			$html .= '<td>' . $family->LastChangeTimestamp(true) . '</td>';
 		} else {
-			$html .= '<td>&nbsp;</td>';
+			$html .= '<td></td>';
 		}
 		//-- Sorting by marriage date
 		$html .= '<td>';
@@ -1106,7 +1092,7 @@ function format_sour_table($datalist) {
 	$html .= '<th>#NOTE</th>';
 	$html .= '<th' . ($SHOW_LAST_CHANGE ? '' : '') . '>' . WT_Gedcom_Tag::getLabel('CHAN') . '</th>';
 	$html .= '<th' . ($SHOW_LAST_CHANGE ? '' : '') . '>CHAN</th>';
-	$html .= '<th>&nbsp;</th>';//delete
+	$html .= '<th></th>';//delete
 	$html .= '</tr></thead>';
 	//-- table body
 	$html .= '<tbody>';
@@ -1115,9 +1101,9 @@ function format_sour_table($datalist) {
 		if (!$source->canShow()) {
 			continue;
 		}
-		if ($source->isNew()) {
+		if ($source->isPendingAddtion()) {
 			$class = ' class="new"';
-		} elseif ($source->isOld()) {
+		} elseif ($source->isPendingDeletion()) {
 			$class = ' class="old"';
 		} else {
 			$class = '';
@@ -1162,19 +1148,19 @@ function format_sour_table($datalist) {
 		if ($SHOW_LAST_CHANGE) {
 			$html .= '<td>' . $source->LastChangeTimestamp() . '</td>';
 		} else {
-			$html .= '<td>&nbsp;</td>';
+			$html .= '<td></td>';
 		}
 		//-- Last change hidden sort column
 		if ($SHOW_LAST_CHANGE) {
 			$html .= '<td>' . $source->LastChangeTimestamp(true) . '</td>';
 		} else {
-			$html .= '<td>&nbsp;</td>';
+			$html .= '<td></td>';
 		}
 		//-- Delete
 		if (WT_USER_GEDCOM_ADMIN) {
 			$html .= '<td><div title="' . WT_I18N::translate('Delete') . '" class="deleteicon" onclick="return delete_source(\'' . WT_I18N::translate('Are you sure you want to delete “%s”?', WT_Filter::escapeJs(WT_Filter::unescapeHtml($source->getFullName()))) . "', '" . $source->getXref() . '\');"><span class="link_text">' . WT_I18N::translate('Delete') . '</span></div></td>';
 		} else {
-			$html .= '<td>&nbsp;</td>';
+			$html .= '<td></td>';
 		}
 		$html .= '</tr>';
 	}
@@ -1242,7 +1228,7 @@ function format_note_table($datalist) {
 	$html .= '<th>#SOUR</th>';
 	$html .= '<th' . ($SHOW_LAST_CHANGE ? '' : '') . '>' . WT_Gedcom_Tag::getLabel('CHAN') . '</th>';
 	$html .= '<th' . ($SHOW_LAST_CHANGE ? '' : '') . '>CHAN</th>';
-	$html .= '<th>&nbsp;</th>';//delete
+	$html .= '<th></th>';//delete
 	$html .= '</tr></thead>';
 	//-- table body
 	$html .= '<tbody>';
@@ -1250,9 +1236,9 @@ function format_note_table($datalist) {
 		if (!$note->canShow()) {
 			continue;
 		}
-		if ($note->isNew()) {
+		if ($note->isPendingAddtion()) {
 			$class = ' class="new"';
-		} elseif ($note->isOld()) {
+		} elseif ($note->isPendingDeletion()) {
 			$class = ' class="old"';
 		} else {
 			$class = '';
@@ -1282,7 +1268,7 @@ function format_note_table($datalist) {
 		if ($SHOW_LAST_CHANGE) {
 			$html .= '<td>' . $note->LastChangeTimestamp(true) . '</td>';
 		} else {
-			$html .= '<td>&nbsp;</td>';
+			$html .= '<td></td>';
 		}
 		//-- Delete
 		if (WT_USER_GEDCOM_ADMIN) {
@@ -1300,11 +1286,11 @@ function format_note_table($datalist) {
 /**
  * Print a table of repositories
  *
- * @param WT_Repository[] $datalist
+ * @param WT_Repository[] $repositories
  *
  * @return string
  */
-function format_repo_table($repos) {
+function format_repo_table($repositories) {
 	global $SHOW_LAST_CHANGE, $controller;
 
 	$html = '';
@@ -1345,18 +1331,18 @@ function format_repo_table($repos) {
 	$html .= '<th>#SOUR</th>';
 	$html .= '<th' . ($SHOW_LAST_CHANGE ? '' : '') . '>' . WT_Gedcom_Tag::getLabel('CHAN') . '</th>';
 	$html .= '<th' . ($SHOW_LAST_CHANGE ? '' : '') . '>CHAN</th>';
-	$html .= '<th>&nbsp;</th>';//delete
+	$html .= '<th></th>';//delete
 	$html .= '</tr></thead>';
 	//-- table body
 	$html .= '<tbody>';
 
-	foreach ($repos as $repo) {
-		if (!$repo->canShow()) {
+	foreach ($repositories as $repository) {
+		if (!$repository->canShow()) {
 			continue;
 		}
-		if ($repo->isNew()) {
+		if ($repository->isPendingAddtion()) {
 			$class = ' class="new"';
-		} elseif ($repo->isOld()) {
+		} elseif ($repository->isPendingDeletion()) {
 			$class = ' class="old"';
 		} else {
 			$class = '';
@@ -1364,37 +1350,37 @@ function format_repo_table($repos) {
 		$html .= '<tr' . $class . '>';
 		//-- Repository name(s)
 		$html .= '<td>';
-		foreach ($repo->getAllNames() as $n => $name) {
+		foreach ($repository->getAllNames() as $n => $name) {
 			if ($n) {
 				$html .= '<br>';
 			}
-			if ($n == $repo->getPrimaryName()) {
-				$html .= '<a class="name2" href="' . $repo->getHtmlUrl() . '">' . highlight_search_hits($name['full']) . '</a>';
+			if ($n == $repository->getPrimaryName()) {
+				$html .= '<a class="name2" href="' . $repository->getHtmlUrl() . '">' . highlight_search_hits($name['full']) . '</a>';
 			} else {
-				$html .= '<a href="' . $repo->getHtmlUrl() . '">' . highlight_search_hits($name['full']) . '</a>';
+				$html .= '<a href="' . $repository->getHtmlUrl() . '">' . highlight_search_hits($name['full']) . '</a>';
 			}
 		}
 		$html .= '</td>';
 		//-- Linked SOURces
-		$num = count($repo->linkedSources('REPO'));
+		$num = count($repository->linkedSources('REPO'));
 		$html .= '<td>' . WT_I18N::number($num) . '</td><td>' . $num . '</td>';
 		//-- Last change
 		if ($SHOW_LAST_CHANGE) {
-			$html .= '<td>' . $repo->LastChangeTimestamp() . '</td>';
+			$html .= '<td>' . $repository->LastChangeTimestamp() . '</td>';
 		} else {
-			$html .= '<td>&nbsp;</td>';
+			$html .= '<td></td>';
 		}
 		//-- Last change hidden sort column
 		if ($SHOW_LAST_CHANGE) {
-			$html .= '<td>' . $repo->LastChangeTimestamp(true) . '</td>';
+			$html .= '<td>' . $repository->LastChangeTimestamp(true) . '</td>';
 		} else {
-			$html .= '<td>&nbsp;</td>';
+			$html .= '<td></td>';
 		}
 		//-- Delete
 		if (WT_USER_GEDCOM_ADMIN) {
-			$html .= '<td><div title="' . WT_I18N::translate('Delete') . '" class="deleteicon" onclick="return delete_repository(\'' . WT_I18N::translate('Are you sure you want to delete “%s”?', WT_Filter::escapeJs(WT_Filter::unescapeHtml($repo->getFullName()))) . "', '" . $repo->getXref() . '\');"><span class="link_text">' . WT_I18N::translate('Delete') . '</span></div></td>';
+			$html .= '<td><div title="' . WT_I18N::translate('Delete') . '" class="deleteicon" onclick="return delete_repository(\'' . WT_I18N::translate('Are you sure you want to delete “%s”?', WT_Filter::escapeJs(WT_Filter::unescapeHtml($repository->getFullName()))) . "', '" . $repository->getXref() . '\');"><span class="link_text">' . WT_I18N::translate('Delete') . '</span></div></td>';
 		} else {
-			$html .= '<td>&nbsp;</td>';
+			$html .= '<td></td>';
 		}
 		$html .= '</tr>';
 	}
@@ -1406,12 +1392,13 @@ function format_repo_table($repos) {
 /**
  * Print a table of media objects
  *
- * @param WT_Media[] $datalist
+ * @param WT_Media[] $media_objects
  *
  * @return string
  */
-function format_media_table($datalist) {
+function format_media_table($media_objects) {
 	global $SHOW_LAST_CHANGE, $controller;
+
 	$html = '';
 	$table_id = 'table-obje-' . Uuid::uuid4(); // lists requires a unique ID in case there are multiple lists per page
 	$controller
@@ -1463,48 +1450,48 @@ function format_media_table($datalist) {
 	//-- table body
 	$html .= '<tbody>';
 
-	foreach ($datalist as $media) {
-		if ($media->canShow()) {
-			$name = $media->getFullName();
-			if ($media->isNew()) {
+	foreach ($media_objects as $media_object) {
+		if ($media_object->canShow()) {
+			$name = $media_object->getFullName();
+			if ($media_object->isPendingAddtion()) {
 				$class = ' class="new"';
-			} elseif ($media->isOld()) {
+			} elseif ($media_object->isPendingDeletion()) {
 				$class = ' class="old"';
 			} else {
 				$class = '';
 			}
 			$html .= '<tr' . $class . '>';
 			//-- Object thumbnail
-			$html .= '<td>' . $media->displayImage() . '</td>';
+			$html .= '<td>' . $media_object->displayImage() . '</td>';
 			//-- Object name(s)
 			$html .= '<td>';
-			$html .= '<a href="' . $media->getHtmlUrl() . '" class="list_item name2">';
+			$html .= '<a href="' . $media_object->getHtmlUrl() . '" class="list_item name2">';
 			$html .= highlight_search_hits($name) . '</a>';
 			if (WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT) {
-				$html .= '<br><a href="' . $media->getHtmlUrl() . '">' . basename($media->getFilename()) . '</a>';
+				$html .= '<br><a href="' . $media_object->getHtmlUrl() . '">' . basename($media_object->getFilename()) . '</a>';
 			}
 			$html .= '</td>';
 
 			//-- Linked INDIs
-			$num = count($media->linkedIndividuals('OBJE'));
+			$num = count($media_object->linkedIndividuals('OBJE'));
 			$html .= '<td>' . WT_I18N::number($num) . '</td><td>' . $num . '</td>';
 			//-- Linked FAMs
-			$num = count($media->linkedfamilies('OBJE'));
+			$num = count($media_object->linkedfamilies('OBJE'));
 			$html .= '<td>' . WT_I18N::number($num) . '</td><td>' . $num . '</td>';
 			//-- Linked SOURces
-			$num = count($media->linkedSources('OBJE'));
+			$num = count($media_object->linkedSources('OBJE'));
 			$html .= '<td>' . WT_I18N::number($num) . '</td><td>' . $num . '</td>';
 			//-- Last change
 			if ($SHOW_LAST_CHANGE) {
-				$html .= '<td>' . $media->LastChangeTimestamp() . '</td>';
+				$html .= '<td>' . $media_object->LastChangeTimestamp() . '</td>';
 			} else {
-				$html .= '<td>&nbsp;</td>';
+				$html .= '<td></td>';
 			}
 			//-- Last change hidden sort column
 			if ($SHOW_LAST_CHANGE) {
-				$html .= '<td>' . $media->LastChangeTimestamp(true) . '</td>';
+				$html .= '<td>' . $media_object->LastChangeTimestamp(true) . '</td>';
 			} else {
-				$html .= '<td>&nbsp;</td>';
+				$html .= '<td></td>';
 			}
 			$html .= '</tr>';
 		}
@@ -1554,9 +1541,9 @@ function format_surname_table($surnames, $script) {
 	$html .= '<table class="surname-list">' .
 		'<thead><tr>' .
 		'<th>' . WT_Gedcom_Tag::getLabel('SURN') . '</th>' .
-		'<th>&nbsp;</th>' .
+		'<th></th>' .
 		'<th>' . $col_heading . '</th>' .
-		'<th>&nbsp;</th>' .
+		'<th></th>' .
 		'</tr></thead>';
 
 	$html .= '<tbody>';
@@ -1777,7 +1764,7 @@ function print_changes_list($change_ids, $sort) {
 				$html .= '<a href="' . $value['record']->getHtmlUrl() . '" class="list_item">' . $value['record']->getAddName() . '</a>';
 			}
 		}
-		$html .= /* I18N: [a record was] Changed on <date/time> by <user> */ WT_I18N::translate('Changed on %1$s by %2$s', $value['record']->lastChangeTimestamp(), $value['record']->lastChangeUser());
+		$html .= /* I18N: [a record was] Changed on <date/time> by <user> */ WT_I18N::translate('Changed on %1$s by %2$s', $value['record']->lastChangeTimestamp(), WT_Filter::escapeHtml($value['record']->lastChangeUser()));
 		$html .= '</div>';
 	}
 
@@ -1837,7 +1824,7 @@ function print_changes_table($change_ids, $sort) {
 	//-- table header
 	$html .= '<table id="' . $table_id . '" class="width100">';
 	$html .= '<thead><tr>';
-	$html .= '<th>&nbsp;</th>';
+	$html .= '<th></th>';
 	$html .= '<th>' . WT_I18N::translate('Record') . '</th>';
 	$html .= '<th>' . WT_Gedcom_Tag::getLabel('CHAN') . '</th>';
 	$html .= '<th>' . WT_Gedcom_Tag::getLabel('_WT_USER') . '</th>';
@@ -1890,13 +1877,13 @@ function print_changes_table($change_ids, $sort) {
 		}
 		$html .= "</td>";
 		//-- Last change date/time
-		$html .= "<td class='wrap'>" . $record->lastChangeTimestamp() . "</td>";
+		$html .= '<td class="wrap">' . $record->lastChangeTimestamp() . '</td>';
 		//-- Last change user
-		$html .= "<td class='wrap'>" . $record->lastChangeUser() . "</td>";
+		$html .= '<td class="wrap">' . WT_Filter::escapeHtml($record->lastChangeUser()) . '</td>';
 		//-- change date (sortable) hidden by datatables code
-		$html .= "<td>" . $record->lastChangeTimestamp(true) . "</td>";
+		$html .= '<td>' . $record->lastChangeTimestamp(true) . '</td>';
 		//-- names (sortable) hidden by datatables code
-		$html .= "<td>" . $record->getSortName() . "</td></tr>";
+		$html .= '<td>' . $record->getSortName() . '</td></tr>';
 	}
 
 	$html .= '</tbody></table>';
@@ -2103,7 +2090,7 @@ function print_events_list($startjd, $endjd, $events = 'BIRT MARR DEAT', $only_l
 		// Data is already sorted by anniversary date
 		break;
 	case 'alpha':
-		uasort($filtered_events, function ($x, $y) {
+		uasort($filtered_events, function (WT_Fact $x, WT_Fact $y) {
 			return WT_GedcomRecord::compare($x->getParent(), $y->getParent());
 		});
 		break;

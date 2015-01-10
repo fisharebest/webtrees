@@ -33,26 +33,26 @@ class WT_Report_PDF extends WT_Report_Base {
 	 *
 	 * @var boolean const
 	 */
-	const compression = true;
+	const COMPRESSION = true;
 	/**
 	 * If TRUE reduce the RAM memory usage by caching temporary data on filesystem (slower).
 	 *
 	 * @var boolean const
 	 */
-	const diskcache = false;
+	const DISK_CACHE = false;
 	/**
 	 * TRUE means that the input text is unicode (PDF)
 	 *
 	 * @var boolean const
 	 */
-	const unicode = true;
+	const UNICODE = true;
 	/**
 	 * FALSE means that the full font is embedded, TRUE means only the used chars
 	 * in TCPDF v5.9 font subsetting is a very slow process, this leads to larger files
 	 *
 	 * @var boolean const
 	 */
-	const subsetting = false;
+	const SUBSETTING = false;
 	/**
 	 * A new object of the PDF class
 	 *
@@ -70,7 +70,7 @@ class WT_Report_PDF extends WT_Report_Base {
 		$this->pdf = new PDF($this->orientation, parent::UNITS, array(
 			$this->pagew,
 			$this->pageh
-		), self::unicode, "UTF-8", self::diskcache);
+		), self::UNICODE, "UTF-8", self::DISK_CACHE);
 
 		// Setup the PDF margins
 		$this->pdf->setMargins($this->leftmargin, $this->topmargin, $this->rightmargin);
@@ -79,9 +79,9 @@ class WT_Report_PDF extends WT_Report_Base {
 		//Set auto page breaks
 		$this->pdf->SetAutoPageBreak(true, $this->bottommargin);
 		// Set font subsetting
-		$this->pdf->setFontSubsetting(self::subsetting);
+		$this->pdf->setFontSubsetting(self::SUBSETTING);
 		// Setup PDF compression
-		$this->pdf->SetCompression(self::compression);
+		$this->pdf->SetCompression(self::COMPRESSION);
 		// Setup RTL support
 		$this->pdf->setRTL($this->rtl);
 		// Set the document information
@@ -113,7 +113,7 @@ class WT_Report_PDF extends WT_Report_Base {
 	 *
 	 * @param object|string $element Object or string
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	function addElement($element) {
 		if ($this->processing == "B") {
@@ -131,7 +131,7 @@ class WT_Report_PDF extends WT_Report_Base {
 	 *
 	 */
 	function run() {
-		$this->pdf->Body();
+		$this->pdf->body();
 		header('Expires:');
 		header('Pragma:');
 		header('Cache-control:');
@@ -155,17 +155,17 @@ class WT_Report_PDF extends WT_Report_Base {
 	/**
 	 * Create a new Cell object - WT_Report_PDF
 	 *
-	 * @param int     $width   cell width (expressed in points)
-	 * @param int     $height  cell height (expressed in points)
+	 * @param integer $width   cell width (expressed in points)
+	 * @param integer $height  cell height (expressed in points)
 	 * @param mixed   $border  Border style
 	 * @param string  $align   Text alignement
 	 * @param string  $bgcolor Background color code
 	 * @param string  $style   The name of the text style
-	 * @param int     $ln      Indicates where the current position should go after the call
+	 * @param integer $ln      Indicates where the current position should go after the call
 	 * @param mixed   $top     Y-position
 	 * @param mixed   $left    X-position
-	 * @param int     $fill    Indicates if the cell background must be painted (1) or transparent (0). Default value: 1
-	 * @param int     $stretch Stretch carachter mode
+	 * @param integer $fill    Indicates if the cell background must be painted (1) or transparent (0). Default value: 1
+	 * @param integer $stretch Stretch carachter mode
 	 * @param string  $bocolor Border color
 	 * @param string  $tcolor  Text color
 	 * @param boolean $reseth
@@ -237,13 +237,13 @@ class WT_Report_PDF extends WT_Report_Base {
 	/**
 	 * Create a new image object - WT_Report_PDF
 	 *
-	 * @param string $file  Filename
-	 * @param mixed  $x
-	 * @param mixed  $y
-	 * @param int    $w     Image width
-	 * @param int    $h     Image height
-	 * @param string $align L:left, C:center, R:right or empty to use x/y
-	 * @param string $ln    T:same line, N:next line
+	 * @param string  $file  Filename
+	 * @param mixed   $x
+	 * @param mixed   $y
+	 * @param integer $w     Image width
+	 * @param integer $h     Image height
+	 * @param string  $align L:left, C:center, R:right or empty to use x/y
+	 * @param string  $ln    T:same line, N:next line
 	 *
 	 * @return WT_Report_PDF_Image
 	 */
@@ -257,8 +257,8 @@ class WT_Report_PDF extends WT_Report_Base {
 	 * @param WT_Media $mediaobject
 	 * @param mixed    $x
 	 * @param mixed    $y
-	 * @param int      $w           Image width
-	 * @param int      $h           Image height
+	 * @param integer  $w           Image width
+	 * @param integer  $h           Image height
 	 * @param string   $align       L:left, C:center, R:right or empty to use x/y
 	 * @param string   $ln          T:same line, N:next line
 	 *
@@ -299,60 +299,31 @@ class WT_Report_PDF extends WT_Report_Base {
  * This class inherits from the TCPDF class and is used to generate the PDF document
  */
 class PDF extends TCPDF {
-	/**
-	 * Array of elements in the header
-	 *
-	 * @var array
-	 */
+	/** @var WT_Report_Base_Element[] Array of elements in the header */
 	public $headerElements = array();
-	/**
-	 * Array of elements in the page header
-	 *
-	 * @var array
-	 */
+
+	/** @var WT_Report_Base_Element[] Array of elements in the page header */
 	public $pageHeaderElements = array();
-	/**
-	 * Array of elements in the footer
-	 *
-	 * @var array
-	 */
+
+	/** @var WT_Report_Base_Element[] Array of elements in the footer */
 	public $footerElements = array();
-	/**
-	 * Array of elements in the body
-	 *
-	 * @var array
-	 */
+
+	/** @var WT_Report_Base_Element[] Array of elements in the body */
 	public $bodyElements = array();
-	/**
-	 * Array of elements in the footer notes
-	 *
-	 * @var array
-	 */
+
+	/** @var WT_Report_Base_Footnote[] Array of elements in the footer notes */
 	public $printedfootnotes = array();
-	/**
-	 * Currently used style name
-	 *
-	 * @var string
-	 */
+
+	/** @var string Currently used style name */
 	public $currentStyle;
-	/**
-	 * The last cell height
-	 *
-	 * @var int
-	 */
+
+	/** @var int The last cell height */
 	public $lastCellHeight = 0;
-	/**
-	 * The largest font size within a TextBox
-	 * to calculate the height
-	 *
-	 * @var int
-	 */
+
+	/** @var int The largest font size within a TextBox to calculate the height */
 	public $largestFontHeight = 0;
-	/**
-	 * The last pictures page number
-	 *
-	 * @var int
-	 */
+
+	/** @var int The last pictures page number */
 	public $lastpicpage = 0;
 
 	public $wt_report;
@@ -360,12 +331,12 @@ class PDF extends TCPDF {
 	/**
 	 * PDF Header -PDF
 	 */
-	function Header() {
+	function header() {
 		foreach ($this->headerElements as $element) {
 			if (is_object($element)) {
 				$element->render($this);
 			} elseif (is_string($element) && $element == "footnotetexts") {
-				$this->Footnotes();
+				$this->footnotes();
 			} elseif (is_string($element) && $element == "addpage") {
 				$this->newPage();
 			}
@@ -374,7 +345,7 @@ class PDF extends TCPDF {
 			if (is_object($element)) {
 				$element->render($this);
 			} elseif (is_string($element) && $element == "footnotetexts") {
-				$this->Footnotes();
+				$this->footnotes();
 			} elseif (is_string($element) && $element == "addpage") {
 				$this->newPage();
 			}
@@ -384,13 +355,13 @@ class PDF extends TCPDF {
 	/**
 	 * PDF Body -PDF
 	 */
-	function Body() {
+	function body() {
 		$this->AddPage();
 		foreach ($this->bodyElements as $key => $element) {
 			if (is_object($element)) {
 				$element->render($this);
 			} elseif (is_string($element) && $element == "footnotetexts") {
-				$this->Footnotes();
+				$this->footnotes();
 			} elseif (is_string($element) && $element == "addpage") {
 				$this->newPage();
 			}
@@ -402,7 +373,7 @@ class PDF extends TCPDF {
 	/**
 	 * PDF Footnotes -PDF
 	 */
-	function Footnotes() {
+	function footnotes() {
 		foreach ($this->printedfootnotes as $element) {
 			if (($this->GetY() + $element->getFootnoteHeight($this)) > $this->getPageHeight()) {
 				$this->AddPage();
@@ -417,12 +388,12 @@ class PDF extends TCPDF {
 	/**
 	 * PDF Footer -PDF
 	 */
-	function Footer() {
+	function footer() {
 		foreach ($this->footerElements as $element) {
 			if (is_object($element)) {
 				$element->render($this);
 			} elseif (is_string($element) && $element == "footnotetexts") {
-				$this->Footnotes();
+				$this->footnotes();
 			} elseif (is_string($element) && $element == "addpage") {
 				$this->newPage();
 			}
@@ -434,7 +405,7 @@ class PDF extends TCPDF {
 	 *
 	 * @param object|string $element
 	 *
-	 * @return int The number of the Header elements
+	 * @return integer The number of the Header elements
 	 */
 	function addHeader($element) {
 		$this->headerElements[] = $element;
@@ -447,7 +418,7 @@ class PDF extends TCPDF {
 	 *
 	 * @param object|string $element
 	 *
-	 * @return int The number of the Page Header elements
+	 * @return integer The number of the Page Header elements
 	 */
 	function addPageHeader($element) {
 		$this->pageHeaderElements[] = $element;
@@ -460,7 +431,7 @@ class PDF extends TCPDF {
 	 *
 	 * @param object|string $element
 	 *
-	 * @return int The number of the Body elements
+	 * @return integer The number of the Body elements
 	 */
 	function addBody($element) {
 		$this->bodyElements[] = $element;
@@ -473,7 +444,7 @@ class PDF extends TCPDF {
 	 *
 	 * @param object|string $element
 	 *
-	 * @return int The number of the Footer elements
+	 * @return integer The number of the Footer elements
 	 */
 	function addFooter($element) {
 		$this->footerElements[] = $element;
@@ -604,7 +575,7 @@ class PDF extends TCPDF {
 	}
 
 	/**
-	 * @return int
+	 * @return integer
 	 */
 	function getFootnotesHeight() {
 		$h = 0;
@@ -618,7 +589,7 @@ class PDF extends TCPDF {
 	/**
 	 * Returns the the current font size height -PDF
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	function getCurrentStyleHeight() {
 		if (empty($this->currentStyle)) {
@@ -677,7 +648,7 @@ class PDF extends TCPDF {
 	/**
 	 * Add a page if needed -PDF
 	 *
-	 * @param int $height Cell height
+	 * @param integer $height Cell height
 	 *
 	 * @return boolean true in case of page break, false otherwise
 	 */

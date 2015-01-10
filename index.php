@@ -6,7 +6,7 @@
 // Copyright (C) 2014 webtrees development team.
 //
 // Derived from PhpGedView
-// Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.
+// Copyright (C) 2002 to 2009 PGV Development Team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -31,11 +31,15 @@ require './includes/session.php';
 $action = WT_Filter::get('action');
 
 // The default view depends on whether we are logged in
-$ctype = WT_Filter::get('ctype', 'gedcom|user', WT_USER_ID ? 'user' : 'gedcom');
+if (Auth::check()) {
+	$ctype = WT_Filter::get('ctype', 'gedcom|user', 'user');
+} else {
+	$ctype = 'gedcom';
+}
 
 // Get the blocks list
-if (WT_USER_ID && $ctype == 'user') {
-	$blocks = get_user_blocks(WT_USER_ID);
+if ($ctype === 'user') {
+	$blocks = get_user_blocks(Auth::id());
 } else {
 	$blocks = get_gedcom_blocks(WT_GED_ID);
 }
@@ -43,11 +47,10 @@ if (WT_USER_ID && $ctype == 'user') {
 $all_blocks = WT_Module::getActiveBlocks();
 
 // The latest version is shown on the administration page.  This updates it every day.
-// TODO: send an email notification to the admin when new versions are available.
 fetch_latest_version();
 
 // We generate individual blocks using AJAX
-if ($action == 'ajax') {
+if ($action === 'ajax') {
 	$controller = new WT_Controller_Ajax();
 	$controller->pageHeader();
 
@@ -62,11 +65,8 @@ if ($action == 'ajax') {
 	}
 	if (array_key_exists($module_name, $all_blocks)) {
 		$class_name = $module_name . '_WT_Module';
-		$module = new $class_name;
+		$module     = new $class_name;
 		$module->getBlock($block_id);
-	}
-	if (WT_DEBUG) {
-		echo execution_stats();
 	}
 	if (WT_DEBUG_SQL) {
 		echo WT_DB::getQueryLog();
@@ -76,7 +76,7 @@ if ($action == 'ajax') {
 
 $controller = new WT_Controller_Page();
 if ($ctype === 'user') {
-	$controller->restrictAccess(Auth::isMember());
+	$controller->restrictAccess(Auth::check());
 }
 $controller
 	->setPageTitle($ctype === 'user' ? WT_I18N::translate('My page') : WT_TREE_TITLE)
@@ -100,7 +100,7 @@ if ($blocks['main']) {
 	}
 	foreach ($blocks['main'] as $block_id => $module_name) {
 		$class_name = $module_name . '_WT_Module';
-		$module = new $class_name;
+		$module     = new $class_name;
 		if ($SEARCH_SPIDER || !$module->loadAjax()) {
 			// Load the block directly
 			$module->getBlock($block_id);
@@ -122,7 +122,7 @@ if ($blocks['side']) {
 	}
 	foreach ($blocks['side'] as $block_id => $module_name) {
 		$class_name = $module_name . '_WT_Module';
-		$module = new $class_name;
+		$module     = new $class_name;
 		if ($SEARCH_SPIDER || !$module->loadAjax()) {
 			// Load the block directly
 			$module->getBlock($block_id);
@@ -140,7 +140,7 @@ if ($blocks['side']) {
 echo '<div id="link_change_blocks">';
 
 if ($ctype === 'user') {
-	echo '<a href="#" onclick="return modalDialog(\'index_edit.php?user_id=' . WT_USER_ID . '\', \'', WT_I18N::translate('Change the blocks on this page'), '\');">', WT_I18N::translate('Change the blocks on this page'), '</a>';
+	echo '<a href="#" onclick="return modalDialog(\'index_edit.php?user_id=' . Auth::id() . '\', \'', WT_I18N::translate('Change the blocks on this page'), '\');">', WT_I18N::translate('Change the blocks on this page'), '</a>';
 } elseif ($ctype === 'gedcom' && WT_USER_GEDCOM_ADMIN) {
 	echo '<a href="#" onclick="return modalDialog(\'index_edit.php?gedcom_id=' . WT_GED_ID . '\', \'', WT_I18N::translate('Change the blocks on this page'), '\');">', WT_I18N::translate('Change the blocks on this page'), '</a>';
 }

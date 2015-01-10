@@ -1,13 +1,4 @@
 <?php
-// Classes for Gedcom Date/Calendar functionality.
-//
-// Definitions for the Julian Proleptic calendar
-// (Proleptic means we extend it backwards, prior to its introduction in 46BC)
-//
-// NOTE: Since different calendars start their days at different times, (civil
-// midnight, solar midnight, sunset, sunrise, etc.), we convert on the basis of
-// midday.
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 Greg Roach
 //
@@ -27,30 +18,29 @@
 
 use Fisharebest\ExtCalendar\JulianCalendar;
 
+/**
+ * Class WT_Date_Julian - Definitions for the Julian Proleptic calendar
+ * (Proleptic means we extend it backwards, prior to its introduction in 46BC)
+ */
 class WT_Date_Julian extends WT_Date_Calendar {
 	const CALENDAR_ESCAPE = '@#DJULIAN@';
 
-	var $new_old_style = false;
+	/** @var boolean True for dates recorded in new-style/old-style format, e.g. 2 FEB 1743/44 */
+	private $new_old_style = false;
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	public function __construct($date) {
 		$this->calendar = new JulianCalendar;
 		parent::__construct($date);
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	public static function calendarName() {
 		return /* I18N: The julian calendar */
 			WT_I18N::translate('Julian');
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	protected static function nextYear($year) {
 		if ($year == -1) {
 			return 1;
@@ -76,9 +66,7 @@ class WT_Date_Julian extends WT_Date_Calendar {
 		}
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	protected function formatLongYear() {
 		if ($this->y < 0) {
 			return /*  I18N: BCE=Before the Common Era, for Julian years < 0.  See http://en.wikipedia.org/wiki/Common_Era */
@@ -93,9 +81,7 @@ class WT_Date_Julian extends WT_Date_Calendar {
 		}
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
+	/** {@inheritdoc} */
 	protected function formatGedcomYear() {
 		if ($this->y < 0) {
 			return sprintf('%04d B.C.', -$this->y);

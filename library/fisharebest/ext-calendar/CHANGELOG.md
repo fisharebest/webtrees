@@ -1,6 +1,9 @@
 CHANGE LOG
 ==========
 
+## 1.3.0 (2014-10-31)
+ - Only emulate bugs in the shim functions, not when using the calendar classes.
+
 ## 1.2.0 (2014-09-27)
  - Improve coverage of unit tests.
  - Remove dependency on mb_string - generate Hebrew text directly in ISO-8859-8.

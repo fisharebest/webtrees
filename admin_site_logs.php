@@ -141,21 +141,21 @@ case 'load_json':
 		$LIMIT="";
 	}
 
-	$order = WT_Filter::get('order');
+	$order = WT_Filter::getArray('order');
 	if ($order) {
 		$ORDER_BY=' ORDER BY ';
-		for ($i = 0; $i < count($order); ++$i) {
-			if ($i > 0) {
+		foreach ($order as $key => $value) {
+			if ($key > 0) {
 				$ORDER_BY .= ',';
 			}
 			// Datatables numbers columns 0, 1, 2, ...
 			// MySQL numbers columns 1, 2, 3, ...
-			switch ($order[$i]['dir']) {
+			switch ($value['dir']) {
 			case 'asc':
-				$ORDER_BY .= (1 + $order[$i]['column']) . ' ASC ';
+				$ORDER_BY .= (1 + $value['column']) . ' ASC ';
 				break;
 			case 'desc':
-				$ORDER_BY .= (1 + $order[$i]['column']) . ' DESC ';
+				$ORDER_BY .= (1 + $value['column']) . ' DESC ';
 				break;
 			}
 		}
@@ -167,6 +167,8 @@ case 'load_json':
 	$data = WT_DB::prepare($SELECT1.$WHERE.$ORDER_BY.$LIMIT)->execute($args)->fetchAll(PDO::FETCH_NUM);
 	foreach ($data as &$datum) {
 		$datum[2] = WT_Filter::escapeHtml($datum[2]);
+		$datum[4] = WT_Filter::escapeHtml($datum[4]);
+		$datum[5] = WT_Filter::escapeHtml($datum[5]);
 	}
 
 	// Total filtered/unfiltered rows

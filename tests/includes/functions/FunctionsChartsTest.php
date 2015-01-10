@@ -59,15 +59,6 @@ class FunctionsChartsTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * Test that function ancestry_array() exists in the global namespace.
-	 *
-	 * @return void
-	 */
-	public function testFunctionAncestryArrayExists() {
-		$this->assertEquals(function_exists('\\ancestry_array'), true);
-	}
-
-	/**
 	 * Test that function print_url_arrow() exists in the global namespace.
 	 *
 	 * @return void

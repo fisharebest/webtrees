@@ -1,7 +1,4 @@
 <?php
-
-// Classes and libraries for module system
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -22,21 +19,26 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Auth;
+
+/**
+ * Class recent_changes_WT_Module
+ */
 class recent_changes_WT_Module extends WT_Module implements WT_Module_Block {
 	const DEFAULT_DAYS = 7;
 	const MAX_DAYS = 90;
 
-	// Extend class WT_Module
+	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module */ WT_I18N::translate('Recent changes');
 	}
 
-	// Extend class WT_Module
+	/** {@inheritdoc} */
 	public function getDescription() {
 		return /* I18N: Description of the “Recent changes” module */ WT_I18N::translate('A list of records that have been updated recently.');
 	}
 
-	// Implement class WT_Module_Block
+	/** {@inheritdoc} */
 	public function getBlock($block_id, $template=true, $cfg=null) {
 		global $ctype;
 		require_once WT_ROOT.'includes/functions/functions_print_lists.php';
@@ -60,14 +62,14 @@ class recent_changes_WT_Module extends WT_Module implements WT_Module_Block {
 			return '';
 		}
 		// Print block header
-		$id = $this->getName() . $block_id;
-		$class=$this->getName().'_block';
-		if ($ctype=='gedcom' && WT_USER_GEDCOM_ADMIN || $ctype=='user' && WT_USER_ID) {
-			$title='<i class="icon-admin" title="'.WT_I18N::translate('Configure').'" onclick="modalDialog(\'block_edit.php?block_id='.$block_id.'\', \''.$this->getTitle().'\');"></i>';
+		$id    = $this->getName() . $block_id;
+		$class = $this->getName() . '_block';
+		if ($ctype === 'gedcom' && WT_USER_GEDCOM_ADMIN || $ctype === 'user' && Auth::check()) {
+			$title = '<i class="icon-admin" title="'.WT_I18N::translate('Configure').'" onclick="modalDialog(\'block_edit.php?block_id='.$block_id.'\', \''.$this->getTitle().'\');"></i>';
 		} else {
-			$title='';
+			$title = '';
 		}
-		$title.= /* I18N: title for list of recent changes */ WT_I18N::plural('Changes in the last day', 'Changes in the last %s days', $days, WT_I18N::number($days));
+		$title .= /* I18N: title for list of recent changes */ WT_I18N::plural('Changes in the last %s day', 'Changes in the last %s days', $days, WT_I18N::number($days));
 
 		$content = '';
 		// Print block content
@@ -98,22 +100,22 @@ class recent_changes_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 	}
 
-	// Implement class WT_Module_Block
+	/** {@inheritdoc} */
 	public function loadAjax() {
 		return true;
 	}
 
-	// Implement class WT_Module_Block
+	/** {@inheritdoc} */
 	public function isUserBlock() {
 		return true;
 	}
 
-	// Implement class WT_Module_Block
+	/** {@inheritdoc} */
 	public function isGedcomBlock() {
 		return true;
 	}
 
-	// Implement class WT_Module_Block
+	/** {@inheritdoc} */
 	public function configureBlock($block_id) {
 		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
 			set_block_setting($block_id, 'days',       WT_Filter::postInteger('days', 1, self::MAX_DAYS, self::DEFAULT_DAYS));

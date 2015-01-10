@@ -1,6 +1,4 @@
 <?php
-// Classes and libraries for module system
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -21,28 +19,31 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class personal_facts_WT_Module
+ */
 class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
-	// Extend WT_Module
+	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module/tab on the individual page. */ WT_I18N::translate('Facts and events');
 	}
 
-	// Extend WT_Module
+	/** {@inheritdoc} */
 	public function getDescription() {
 		return /* I18N: Description of the “Facts and events” module */ WT_I18N::translate('A tab showing the facts and events of an individual.');
 	}
 
-	// Implement WT_Module_Tab
+	/** {@inheritdoc} */
 	public function defaultTabOrder() {
 		return 10;
 	}
 
-	// Implement WT_Module_Tab
+	/** {@inheritdoc} */
 	public function isGrayedOut() {
 		return false;
 	}
 
-	// Implement WT_Module_Tab
+	/** {@inheritdoc} */
 	public function getTabContent() {
 		global $EXPAND_RELATIVES_EVENTS, $controller;
 		$EXPAND_HISTO_EVENTS = false;
@@ -88,22 +89,22 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 			}
 			$spouse = $family->getSpouse($controller->record);
 			if ($spouse) {
-				foreach (self::spouse_facts($controller->record, $spouse) as $fact) {
+				foreach (self::spouseFacts($controller->record, $spouse) as $fact) {
 					$indifacts[] = $fact;
 				}
 			}
-			foreach (self::child_facts($controller->record, $family, '_CHIL', '') as $fact) {
+			foreach (self::childFacts($controller->record, $family, '_CHIL', '') as $fact) {
 				$indifacts[] = $fact;
 			}
 		}
 
-		foreach (self::parent_facts($controller->record, 1) as $fact) {
+		foreach (self::parentFacts($controller->record, 1) as $fact) {
 			$indifacts[] = $fact;
 		}
-		foreach (self::historical_facts($controller->record) as $fact) {
+		foreach (self::historicalFacts($controller->record) as $fact) {
 			$indifacts[] = $fact;
 		}
-		foreach (self::associate_facts($controller->record) as $fact) {
+		foreach (self::associateFacts($controller->record) as $fact) {
 			$indifacts[] = $fact;
 		}
 
@@ -153,19 +154,19 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 		return '<div id="'.$this->getName().'_content">'.ob_get_clean().'</div>';
 	}
 
-	// Implement WT_Module_Tab
+	/** {@inheritdoc} */
 	public function hasTabContent() {
 		return true;
 	}
 
-	// Implement WT_Module_Tab
+	/** {@inheritdoc} */
 	public function canLoadAjax() {
 		global $SEARCH_SPIDER;
 
 		return !$SEARCH_SPIDER; // Search engines cannot use AJAX
 	}
 
-	// Implement WT_Module_Tab
+	/** {@inheritdoc} */
 	public function getPreLoadContent() {
 		return '';
 	}
@@ -178,7 +179,7 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 	 *
 	 * @return WT_Fact[]
 	 */
-	private static function spouse_facts(WT_Individual $individual, WT_Individual $spouse) {
+	private static function spouseFacts(WT_Individual $individual, WT_Individual $spouse) {
 		global $SHOW_RELATIVES_EVENTS;
 
 		$facts = array();
@@ -202,7 +203,17 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 		return $facts;
 	}
 
-	private static function child_facts(WT_Individual $person, WT_Family $family, $option, $relation) {
+	/**
+	 * Get the events of children and grandchildren.
+	 *
+	 * @param WT_Individual $person
+	 * @param WT_Family     $family
+	 * @param string        $option
+	 * @param string        $relation
+	 *
+	 * @return WT_Fact[]
+	 */
+	private static function childFacts(WT_Individual $person, WT_Family $family, $option, $relation) {
 		global $controller, $SHOW_RELATIVES_EVENTS;
 
 		$facts = array();
@@ -219,17 +230,17 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 				foreach ($child->getSpouseFamilies() as $cfamily) {
 					switch ($child->getSex()) {
 					case 'M':
-						foreach (self::child_facts($person, $cfamily, '_GCHI', 'son') as $fact) {
+						foreach (self::childFacts($person, $cfamily, '_GCHI', 'son') as $fact) {
 							$facts[] = $fact;
 						}
 						break;
 					case 'F':
-						foreach (self::child_facts($person, $cfamily, '_GCHI', 'dau') as $fact) {
+						foreach (self::childFacts($person, $cfamily, '_GCHI', 'dau') as $fact) {
 							$facts[] = $fact;
 						}
 						break;
 					default:
-						foreach (self::child_facts($person, $cfamily, '_GCHI', 'chi') as $fact) {
+						foreach (self::childFacts($person, $cfamily, '_GCHI', 'chi') as $fact) {
 							$facts[] = $fact;
 						}
 						break;
@@ -325,7 +336,15 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 		return $facts;
 	}
 
-	private static function parent_facts(WT_Individual $person, $sosa) {
+	/**
+	 * Get the events of parents and grandparents.
+	 *
+	 * @param WT_Individual $person
+	 * @param integer       $sosa
+	 *
+	 * @return WT_Fact[]
+	 */
+	private static function parentFacts(WT_Individual $person, $sosa) {
 		global $controller, $SHOW_RELATIVES_EVENTS;
 
 		$facts = array();
@@ -337,20 +356,20 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 		if ($sosa == 1) {
 			foreach ($person->getChildFamilies() as $family) {
 				// Add siblings
-				foreach (self::child_facts($person, $family, '_SIBL', '') as $fact) {
+				foreach (self::childFacts($person, $family, '_SIBL', '') as $fact) {
 					$facts[] = $fact;
 				}
 				foreach ($family->getSpouses() as $spouse) {
 					foreach ($spouse->getSpouseFamilies() as $sfamily) {
 						if ($family !== $sfamily) {
 							// Add half-siblings
-							foreach (self::child_facts($person, $sfamily, '_HSIB', '') as $fact) {
+							foreach (self::childFacts($person, $sfamily, '_HSIB', '') as $fact) {
 								$facts[] = $fact;
 							}
 						}
 					}
 					// Add grandparents
-					foreach (self::parent_facts($spouse, $spouse->getSex()=='F' ? 3 : 2) as $fact) {
+					foreach (self::parentFacts($spouse, $spouse->getSex()=='F' ? 3 : 2) as $fact) {
 						$facts[] = $fact;
 					}
 				}
@@ -416,7 +435,14 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 		return $facts;
 	}
 
-	private static function historical_facts(WT_Individual $person) {
+	/**
+	 * Get any historical events.
+	 *
+	 * @param WT_Individual $person
+	 *
+	 * @return WT_Fact[]
+	 */
+	private static function historicalFacts(WT_Individual $person) {
 		global $SHOW_RELATIVES_EVENTS;
 
 		$facts = array();
@@ -445,7 +471,14 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 		return $facts;
 	}
 
-	private static function associate_facts(WT_Individual $person) {
+	/**
+	 * Get the events of associates.
+	 *
+	 * @param WT_Individual $person
+	 *
+	 * @return WT_Fact[]
+	 */
+	private static function associateFacts(WT_Individual $person) {
 		$facts = array();
 
 		$associates=array_merge(
@@ -460,7 +493,7 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 				if (!$arec) {
 					$arec = $fact->getAttribute('ASSO');
 				}
-				if ($arec) {
+				if ($arec && trim($arec, '@') === $person->getXref()) {
 					// Extract the important details from the fact
 					$factrec='1 '.$fact->getTag();
 					if (preg_match('/\n2 DATE .*/', $fact->getGedcom(), $match)) {

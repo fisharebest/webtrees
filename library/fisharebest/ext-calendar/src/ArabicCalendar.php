@@ -4,20 +4,20 @@ namespace Fisharebest\ExtCalendar;
 /**
  * Class ArabicCalendar - calculations for the Arabic (Hijri) calendar.
  *
- * @author    Greg Roach <fisharebest@gmail.com>
+ * @author        Greg Roach <fisharebest@gmail.com>
  * @copyright (c) 2014 Greg Roach
- * @license   This program is free software: you can redistribute it and/or modify
- *            it under the terms of the GNU General Public License as published by
- *            the Free Software Foundation, either version 3 of the License, or
- *            (at your option) any later version.
+ * @license       This program is free software: you can redistribute it and/or modify
+ *                it under the terms of the GNU General Public License as published by
+ *                the Free Software Foundation, either version 3 of the License, or
+ *                (at your option) any later version.
  *
- *            This program is distributed in the hope that it will be useful,
- *            but WITHOUT ANY WARRANTY; without even the implied warranty of
- *            MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *            GNU General Public License for more details.
+ *                This program is distributed in the hope that it will be useful,
+ *                but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *                MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *                GNU General Public License for more details.
  *
- *            You should have received a copy of the GNU General Public License
- *            along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *                You should have received a copy of the GNU General Public License
+ *                along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 class ArabicCalendar extends AbstractCalendar implements CalendarInterface {
 	/** See the GEDCOM specification */
@@ -29,7 +29,7 @@ class ArabicCalendar extends AbstractCalendar implements CalendarInterface {
 	/**
 	 * Month lengths for regular years and leap-years.
 	 *
-	 * @var int[][]
+	 * @var integer[][]
 	 */
 	protected static $DAYS_IN_MONTH = array(
 		0 => array(1 => 30, 28, 30, 29, 30, 29, 30, 29, 30, 29, 30, 29),
@@ -39,8 +39,9 @@ class ArabicCalendar extends AbstractCalendar implements CalendarInterface {
 	/**
 	 * Determine whether a year is a leap year.
 	 *
-	 * @param  int  $year
-	 * @return bool
+	 * @param integer $year
+	 *
+	 * @return boolean
 	 */
 	public function isLeapYear($year) {
 		return ((11 * $year + 14) % 30) < 11;
@@ -49,9 +50,9 @@ class ArabicCalendar extends AbstractCalendar implements CalendarInterface {
 	/**
 	 * Convert a Julian day number into a year/month/day.
 	 *
-	 * @param int $julian_day
+	 * @param integer $julian_day
 	 *
-	 * @return int[];
+	 * @return integer[]
 	 */
 	public function jdToYmd($julian_day) {
 		$year  = (int)((30 * ($julian_day - 1948439) + 10646) / 10631);
@@ -64,11 +65,11 @@ class ArabicCalendar extends AbstractCalendar implements CalendarInterface {
 	/**
 	 * Convert a year/month/day into a Julian day number
 	 *
-	 * @param int $year
-	 * @param int $month
-	 * @param int $day
+	 * @param integer $year
+	 * @param integer $month
+	 * @param integer $day
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	public function ymdToJd($year, $month, $day) {
 		return $day + 29 * ($month - 1) + (int)((6 * $month - 1) / 11) + $year * 354 + (int)((3 + 11 * $year) / 30) + 1948084;

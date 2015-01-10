@@ -1,6 +1,4 @@
 <?php
-// Controller for the family page
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -25,7 +23,13 @@ use WT\Auth;
 
 require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 
+/**
+ * Class WT_Controller_Family - Controller for the family page
+ */
 class WT_Controller_Family extends WT_Controller_GedcomRecord {
+	/**
+	 * Startup activity
+	 */
 	public function __construct() {
 		global $Dbwidth, $bwidth, $pbwidth, $pbheight, $bheight;
 		$bwidth   = $Dbwidth;
@@ -38,8 +42,12 @@ class WT_Controller_Family extends WT_Controller_GedcomRecord {
 		parent::__construct();
 	}
 
-	// Get significant information from this page, to allow other pages such as
-	// charts and reports to initialise with the same records
+	/**
+	 * Get significant information from this page, to allow other pages such as
+	 * charts and reports to initialise with the same records
+	 *
+	 * @return WT_Individual
+	 */
 	public function getSignificantIndividual() {
 		if ($this->record) {
 			foreach ($this->record->getSpouses() as $individual) {
@@ -51,6 +59,13 @@ class WT_Controller_Family extends WT_Controller_GedcomRecord {
 		}
 		return parent::getSignificantIndividual();
 	}
+
+	/**
+	 * Get significant information from this page, to allow other pages such as
+	 * charts and reports to initialise with the same records
+	 *
+	 * @return WT_Family
+	 */
 	public function getSignificantFamily() {
 		if ($this->record) {
 			return $this->record;
@@ -58,7 +73,11 @@ class WT_Controller_Family extends WT_Controller_GedcomRecord {
 		return parent::getSignificantFamily();
 	}
 
-	// $tags is an array of HUSB/WIFE/CHIL
+	/**
+	 * @param string[] $tags an array of HUSB/WIFE/CHIL
+	 *
+	 * @return string
+	 */
 	function getTimelineIndis($tags) {
 		preg_match_all('/\n1 (?:'.implode('|', $tags).') @('.WT_REGEX_XREF.')@/', $this->record->getGedcom(), $matches);
 		foreach ($matches[1] as &$match) {
@@ -75,29 +94,28 @@ class WT_Controller_Family extends WT_Controller_GedcomRecord {
 
 		$SHOW_GEDCOM_RECORD = $WT_TREE->getPreference('SHOW_GEDCOM_RECORD');
 
-		if (!$this->record || $this->record->isOld()) {
+		if (!$this->record || $this->record->isPendingDeletion()) {
 			return null;
 		}
 
 		// edit menu
 		$menu = new WT_Menu(WT_I18N::translate('Edit'), '#', 'menu-fam');
-		$menu->addLabel($menu->label, 'down');
 
 		if (WT_USER_CAN_EDIT) {
 			// edit_fam / members
 			$submenu = new WT_Menu(WT_I18N::translate('Change family members'), '#', 'menu-fam-change');
-			$submenu->addOnclick("return change_family_members('".$this->record->getXref()."');");
+			$submenu->setOnclick("return change_family_members('".$this->record->getXref()."');");
 			$menu->addSubmenu($submenu);
 
 			// edit_fam / add child
 			$submenu = new WT_Menu(WT_I18N::translate('Add a child to this family'), '#', 'menu-fam-addchil');
-			$submenu->addOnclick("return add_child_to_family('".$this->record->getXref()."', 'U');");
+			$submenu->setOnclick("return add_child_to_family('".$this->record->getXref()."', 'U');");
 			$menu->addSubmenu($submenu);
 
 			// edit_fam / reorder_children
 			if ($this->record->getNumberOfChildren() > 1) {
 				$submenu = new WT_Menu(WT_I18N::translate('Re-order children'), '#', 'menu-fam-orderchil');
-				$submenu->addOnclick("return reorder_children('".$this->record->getXref()."');");
+				$submenu->setOnclick("return reorder_children('".$this->record->getXref()."');");
 				$menu->addSubmenu($submenu);
 			}
 		}
@@ -105,14 +123,14 @@ class WT_Controller_Family extends WT_Controller_GedcomRecord {
 		// delete
 		if (WT_USER_CAN_EDIT) {
 			$submenu = new WT_Menu(WT_I18N::translate('Delete'), '#', 'menu-fam-del');
-			$submenu->addOnclick("return delete_family('" . WT_I18N::translate('Deleting the family will unlink all of the individuals from each other but will leave the individuals in place.  Are you sure you want to delete this family?') . "', '".$this->record->getXref()."');");
+			$submenu->setOnclick("return delete_family('" . WT_I18N::translate('Deleting the family will unlink all of the individuals from each other but will leave the individuals in place.  Are you sure you want to delete this family?') . "', '".$this->record->getXref()."');");
 			$menu->addSubmenu($submenu);
 		}
 
 		// edit raw
 		if (Auth::isAdmin() || WT_USER_CAN_EDIT && $SHOW_GEDCOM_RECORD) {
 			$submenu = new WT_Menu(WT_I18N::translate('Edit raw GEDCOM'), '#', 'menu-fam-editraw');
-			$submenu->addOnclick("return edit_raw('" . $this->record->getXref() . "');");
+			$submenu->setOnclick("return edit_raw('" . $this->record->getXref() . "');");
 			$menu->addSubmenu($submenu);
 		}
 
@@ -123,20 +141,26 @@ class WT_Controller_Family extends WT_Controller_GedcomRecord {
 				'#',
 				'menu-fam-addfav'
 			);
-			$submenu->addOnclick("jQuery.post('module.php?mod=user_favorites&amp;mod_action=menu-add-favorite',{xref:'".$this->record->getXref()."'},function(){location.reload();})");
+			$submenu->setOnclick("jQuery.post('module.php?mod=user_favorites&amp;mod_action=menu-add-favorite',{xref:'".$this->record->getXref()."'},function(){location.reload();})");
 			$menu->addSubmenu($submenu);
 		}
 
-		//-- get the link for the first submenu and set it as the link for the main menu
-		if (isset($menu->submenus[0])) {
-			$link = $menu->submenus[0]->onclick;
-			$menu->addOnclick($link);
+		// Get the link for the first submenu and set it as the link for the main menu
+		if ($menu->getSubmenus()) {
+			$submenus = $menu->getSubmenus();
+			$menu->setLink($submenus[0]->getLink());
+			$menu->setOnClick($submenus[0]->getOnClick());
 		}
+
 		return $menu;
 	}
 
-	// Get significant information from this page, to allow other pages such as
-	// charts and reports to initialise with the same records
+	/**
+	 * Get significant information from this page, to allow other pages such as
+	 * charts and reports to initialise with the same records
+	 *
+	 * @return string
+	 */
 	public function getSignificantSurname() {
 		if ($this->record && $this->record->getHusband()) {
 			list($surn) = explode(',', $this->record->getHusband()->getSortname());
@@ -146,7 +170,9 @@ class WT_Controller_Family extends WT_Controller_GedcomRecord {
 		}
 	}
 
-	// Print the facts
+	/**
+	 * Print the facts
+	 */
 	public function printFamilyFacts() {
 		global $linkToID, $WT_TREE;
 

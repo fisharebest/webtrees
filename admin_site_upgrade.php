@@ -57,12 +57,6 @@ $controller
 	->setPageTitle(WT_I18N::translate('Upgrade wizard'))
 	->pageHeader();
 
-// Flush output as it happens - only effective on some webserver configurations.
-ob_implicit_flush(true);
-if (ob_get_level()) {
-	ob_end_flush();
-}
-
 echo '<h2>', $controller->getPageTitle(), '</h2>';
 
 if ($latest_version == '') {
@@ -109,7 +103,7 @@ if ($changes) {
 	echo '<br>', WT_I18N::translate('There are no pending changes.'), $icon_success;
 }
 
-echo '</li>'; flush();
+echo '</li>';
 
 ////////////////////////////////////////////////////////////////////////////////
 // Custom modules may not work with the new version.
@@ -211,7 +205,7 @@ if ($custom_modules) {
 	echo '<input type="hidden" name="modules" value="', WT_Filter::escapeHtml($modules_action), '">';
 }
 
-echo '</li>'; flush();
+echo '</li>';
 
 ////////////////////////////////////////////////////////////////////////////////
 // Custom themes may not work with the new version.
@@ -220,8 +214,8 @@ echo '</li>'; flush();
 echo '<li>', /* I18N: The system is about to [...] */ WT_I18N::translate('Check for custom themes…');
 
 $custom_themes = false;
-foreach (get_theme_names() as $theme_name => $theme_folder) {
-	switch($theme_folder) {
+foreach (get_theme_names() as $theme_name => $theme_id) {
+	switch($theme_id) {
 	case 'clouds':
 	case 'colors':
 	case 'fab':
@@ -234,25 +228,25 @@ foreach (get_theme_names() as $theme_name => $theme_folder) {
 			"SELECT EXISTS (SELECT 1 FROM `##site_setting`   WHERE setting_name='THEME_DIR' AND setting_value=?)" .
 			" OR    EXISTS (SELECT 1 FROM `##gedcom_setting` WHERE setting_name='THEME_DIR' AND setting_value=?)" .
 			" OR    EXISTS (SELECT 1 FROM `##user_setting`   WHERE setting_name='theme'     AND setting_value=?)"
-		)->execute(array($theme_folder, $theme_folder, $theme_folder))->fetchOne();
+		)->execute(array($theme_id, $theme_id, $theme_id))->fetchOne();
 		if ($theme_used) {
 			switch ($themes_action) {
 			case 'disable':
 				WT_DB::prepare(
 					"DELETE FROM `##site_setting`   WHERE setting_name = 'THEME_DIR' AND setting_value = ?"
-				)->execute(array($theme_folder));
+				)->execute(array($theme_id));
 				WT_DB::prepare(
 					"DELETE FROM `##gedcom_setting` WHERE setting_name = 'THEME_DIR' AND setting_value = ?"
-				)->execute(array($theme_folder));
+				)->execute(array($theme_id));
 				WT_DB::prepare(
 					"DELETE FROM `##user_setting`   WHERE setting_name = 'theme'     AND setting_value = ?"
-				)->execute(array($theme_folder));
+				)->execute(array($theme_id));
 				break;
 			case 'ignore':
-				echo '<br>', WT_I18N::translate('Custom theme'), ' — ', $theme_folder , ' — ', $theme_name, $icon_success;
+				echo '<br>', WT_I18N::translate('Custom theme'), ' — ', $theme_id , ' — ', $theme_name, $icon_success;
 				break;
 			default:
-				echo '<br>', WT_I18N::translate('Custom theme'), ' — ', $theme_folder , ' — ', $theme_name, $icon_failure;
+				echo '<br>', WT_I18N::translate('Custom theme'), ' — ', $theme_id , ' — ', $theme_name, $icon_failure;
 				$custom_themes = true;
 				break;
 			}
@@ -274,7 +268,7 @@ if ($custom_themes) {
 	echo '<input type="hidden" name="themes" value="', WT_Filter::escapeHtml($themes_action), '">';
 }
 
-echo '</li>'; flush();
+echo '</li>';
 
 ////////////////////////////////////////////////////////////////////////////////
 // Make a backup of genealogy data
@@ -290,7 +284,6 @@ foreach (WT_Tree::getAll() as $tree) {
 	} else {
 		echo '<br>', WT_I18N::translate('Unable to create %s.  Check the permissions.', '<span dir="ltr">' . $filename . '</span>'), $icon_failure;
 	}
-	flush();
 }
 
 echo '</li>';
@@ -322,7 +315,7 @@ if ($zip_size) {
 	}
 }
 
-echo '</li>'; flush();
+echo '</li>';
 
 ////////////////////////////////////////////////////////////////////////////////
 // Unzip the file - this checks we have enough free disk space, that the .zip
@@ -339,6 +332,7 @@ $archive = new PclZip($zip_file);
 $res = $archive->properties();
 if (!is_array($res) || $res['status'] != 'ok') {
 	echo '<br>', WT_I18N::translate('An error occurred when unzipping the file.'), $icon_failure;
+	echo '<br>', $archive->errorInfo(true);
 	echo '</li></ul></form>';
 	exit;
 }
@@ -373,7 +367,7 @@ if (is_array($res)) {
 	exit;
 }
 
-echo '</li>'; flush();
+echo '</li>';
 
 ////////////////////////////////////////////////////////////////////////////////
 // This is it - take the site offline first
@@ -399,7 +393,7 @@ foreach (new RecursiveIteratorIterator($iterator) as $file) {
 
 echo '<br>', WT_I18N::translate('All files have read and write permission.'), $icon_success;
 
-echo '</li>'; flush();
+echo '</li>';
 
 ////////////////////////////////////////////////////////////////////////////////
 // This is it - take the site offline first
@@ -414,7 +408,7 @@ if (@file_get_contents($lock_file) != $lock_file_text) {
 	echo '<br>', WT_I18N::translate('The file %s was created.', '<span dir="ltr">' . $lock_file . '</span>'), $icon_success;
 }
 
-echo '</li>'; flush();
+echo '</li>';
 
 ////////////////////////////////////////////////////////////////////////////////
 // Copy files
@@ -450,7 +444,7 @@ if (is_array($res)) {
 	exit;
 }
 
-echo '</li>'; flush();
+echo '</li>';
 
 ////////////////////////////////////////////////////////////////////////////////
 // All done - put the site back online
@@ -464,7 +458,7 @@ if (WT_File::delete($lock_file)) {
 	echo '<br>', WT_I18N::translate('The file %s could not be deleted.', '<span dir="ltr">' . $lock_file . '</span>'), $icon_failure;
 }
 
-echo '</li>'; flush();
+echo '</li>';
 
 ////////////////////////////////////////////////////////////////////////////////
 // Clean up

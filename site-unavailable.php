@@ -30,7 +30,6 @@ define('WT_SERVER_NAME', '');
 define('WT_SCRIPT_PATH', '');
 define('WT_ROOT', '');
 define('WT_GED_ID', 0);
-define('WT_USER_ID', 0);
 define('WT_DATA_DIR', realpath('data').DIRECTORY_SEPARATOR);
 $WT_SESSION=new stdClass();
 $WT_SESSION->locale='';

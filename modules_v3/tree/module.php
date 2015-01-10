@@ -1,8 +1,4 @@
 <?php
-// TreeView module class
-//
-// Tip : you could change the number of generations loaded before ajax calls both in individual page and in treeview page to optimize speed and server load
-//
 // Copyright (C) 2014 webtrees development team
 //
 // This program is free software; you can redistribute it and/or modify
@@ -19,26 +15,30 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class tree_WT_Module
+ * Tip : you could change the number of generations loaded before ajax calls both in individual page and in treeview page to optimize speed and server load
+ */
 class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 	var $headers; // CSS and script to include in the top of <head> section, before theme’s CSS
 	var $js; // the TreeViewHandler javascript
 
-	// Extend WT_Module. This title should be normalized when this module will be added officially
+	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module */ WT_I18N::translate('Interactive tree');
 	}
 
-	// Extend WT_Module
+	/** {@inheritdoc} */
 	public function getDescription() {
 		return /* I18N: Description of the “Interactive tree” module */ WT_I18N::translate('An interactive tree, showing all the ancestors and descendants of an individual.');
 	}
 
-	// Implement WT_Module_Tab
+	/** {@inheritdoc} */
 	public function defaultTabOrder() {
 		return 68;
 	}
 
-	// Implement WT_Module_Tab
+	/** {@inheritdoc} */
 	public function getTabContent() {
 		global $controller;
 
@@ -51,24 +51,24 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 			$html;
 	}
 
-	// Implement WT_Module_Tab
+	/** {@inheritdoc} */
 	public function hasTabContent() {
 		global $SEARCH_SPIDER;
 
 		return !$SEARCH_SPIDER;
 	}
 
-	// Implement WT_Module_Tab
+	/** {@inheritdoc} */
 	public function isGrayedOut() {
 		return false;
 	}
 
-	// Implement WT_Module_Tab
+	/** {@inheritdoc} */
 	public function canLoadAjax() {
 		return true;
 	}
 
-	// Implement WT_Module_Tab
+	/** {@inheritdoc} */
 	public function getPreLoadContent() {
 		// We cannot use jQuery("head").append(<link rel="stylesheet" ...as jQuery is not loaded at this time
 		return
@@ -85,13 +85,7 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 			</script>';
 	}
 
-	// Extend WT_Module
-	// We define here actions to proceed when called, either by Ajax or not
-	/**
-	 * @param string $mod_action
-	 *
-	 * @throws Exception
-	 */
+	/** {@inheritdoc} */
 	public function modAction($mod_action) {
 		require_once WT_MODULES_DIR . $this->getName() . '/class_treeview.php';
 		switch ($mod_action) {
@@ -121,8 +115,6 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 			break;
 
 		case 'getDetails':
-			//$controller = new WT_Controller_Ajax();
-			//$controller->pageHeader();
 			Zend_Session::writeClose();
 			header('Content-Type: text/html; charset=UTF-8');
 			$pid = WT_Filter::get('pid', WT_REGEX_XREF);
@@ -135,8 +127,6 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 			break;
 
 		case 'getPersons':
-			//$controller = new WT_Controller_Ajax();
-			//$controller->pageHeader();
 			Zend_Session::writeClose();
 			header('Content-Type: text/html; charset=UTF-8');
 			$q = WT_Filter::get('q');
@@ -151,10 +141,16 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 		}
 	}
 
+	/**
+	 * @return string
+	 */
 	public function css() {
 		return WT_STATIC_URL . WT_MODULES_DIR . $this->getName() . '/css/treeview.css';
 	}
 
+	/**
+	 * @return string
+	 */
 	public function js() {
 		return WT_STATIC_URL . WT_MODULES_DIR . $this->getName() . '/js/treeview.js';
 	}

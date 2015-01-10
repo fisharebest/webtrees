@@ -7,7 +7,7 @@
 // Copyright (C) 2014 webtrees development team.
 //
 // Derived from PhpGedView
-// Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.
+// Copyright (C) 2002 to 2009 PGV Development Team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -45,20 +45,6 @@ if (!is_array($varnames)) {
 }
 if (!is_array($type)) {
 	$type = array();
-}
-
-/**
- * function to get the values for the given tag
- */
-function get_tag_values($tag) {
-	global $tags, $values;
-
-	$indexes = $tags[$tag];
-	$vals = array();
-	foreach ($indexes as $i) {
-		$vals[] = $values[$i];
-	}
-	return $vals;
 }
 
 //-- setup the arrays
@@ -108,8 +94,8 @@ foreach ($varnames as $name) {
 $reports = array();
 foreach (WT_Module::getActiveReports() as $rep) {
 	foreach ($rep->getReportMenus() as $menu) {
-		if (preg_match('/report=(' . preg_quote(WT_MODULES_DIR, '/') . '[a-z0-9_]+\/[a-z0-9_]+\.xml)/', $menu->link, $match)) {
-			$reports[$match[1]] = $menu->label;
+		if (preg_match('/report=(' . preg_quote(WT_MODULES_DIR, '/') . '[a-z0-9_]+\/[a-z0-9_]+\.xml)/', $menu->getLink(), $match)) {
+			$reports[$match[1]] = $menu->getLabel();
 		}
 	}
 }
@@ -247,8 +233,12 @@ case 'setup':
 			foreach ($options as $option) {
 				$opt = explode('=>', $option);
 				list($value, $display) = $opt;
-				if (substr($display, 0, 18) == 'WT_I18N::translate' || substr($display, 0, 15) == 'WT_I18N::number' || substr($display, 0, 23) == 'WT_Gedcom_Tag::getLabel') {
-					eval("\$display=$display;");
+				if (preg_match('/^WT_I18N::number\((.+)\)$/', $display, $match)) {
+					$display = WT_I18N::number($match[1]);
+				} elseif (preg_match('/^WT_I18N::translate\(\'(.+)\'\)$/', $display, $match)) {
+					$display = WT_I18N::translate($match[1]);
+				} elseif (preg_match('/^WT_I18N::translate_c\(\'(.+)\', *\'(.+)\'\)$/', $display, $match)) {
+					$display = WT_I18N::translate_c($match[1], $match[2]);
 				}
 				echo '<option value="', WT_Filter::escapeHtml($value), '"';
 				if ($opt[0] == $input['default']) {
@@ -321,59 +311,59 @@ case 'run':
 	 * @global array $elementHandler
 	 */
 	$elementHandler = array();
-	$elementHandler['AgeAtDeath']['start'] = 'AgeAtDeathSHandler';
-	$elementHandler['br']['start'] = 'brSHandler';
-	$elementHandler['Body']['start'] = 'BodySHandler';
-	$elementHandler['Cell']['end'] = 'CellEHandler';
-	$elementHandler['Cell']['start'] = 'CellSHandler';
-	$elementHandler['Description']['end'] = 'DescriptionEHandler';
-	$elementHandler['Description']['start'] = 'DescriptionSHandler';
-	$elementHandler['Doc']['end'] = 'DocEHandler';
-	$elementHandler['Doc']['start'] = 'DocSHandler';
+	$elementHandler['AgeAtDeath']['start'] = 'ageAtDeathStartHandler';
+	$elementHandler['br']['start'] = 'brStartHandler';
+	$elementHandler['Body']['start'] = 'bodyStartHandler';
+	$elementHandler['Cell']['end'] = 'cellEndHandler';
+	$elementHandler['Cell']['start'] = 'cellStartHandler';
+	$elementHandler['Description']['end'] = 'descriptionEndHandler';
+	$elementHandler['Description']['start'] = 'descriptionStartHandler';
+	$elementHandler['Doc']['end'] = 'docEndHandler';
+	$elementHandler['Doc']['start'] = 'docStartHandler';
 	$elementHandler['Report']['end'] = '';
 	$elementHandler['Report']['start'] = '';
-	$elementHandler['Facts']['end'] = 'FactsEHandler';
-	$elementHandler['Facts']['start'] = 'FactsSHandler';
-	$elementHandler['Footer']['start'] = 'FooterSHandler';
-	$elementHandler['Footnote']['end'] = 'FootnoteEHandler';
-	$elementHandler['Footnote']['start'] = 'FootnoteSHandler';
-	$elementHandler['FootnoteTexts']['start'] = 'FootnoteTextsSHandler';
-	$elementHandler['Gedcom']['end'] = 'GedcomEHandler';
-	$elementHandler['Gedcom']['start'] = 'GedcomSHandler';
-	$elementHandler['GedcomValue']['start'] = 'GedcomValueSHandler';
-	$elementHandler['Generation']['start'] = 'GenerationSHandler';
-	$elementHandler['GetPersonName']['start'] = 'GetPersonNameSHandler';
-	$elementHandler['Header']['start'] = 'HeaderSHandler';
-	$elementHandler['HighlightedImage']['start'] = 'HighlightedImageSHandler';
-	$elementHandler['if']['end'] = 'ifEHandler';
-	$elementHandler['if']['start'] = 'ifSHandler';
-	$elementHandler['Image']['start'] = 'ImageSHandler';
+	$elementHandler['Facts']['end'] = 'factsEndHandler';
+	$elementHandler['Facts']['start'] = 'factsStartHandler';
+	$elementHandler['Footer']['start'] = 'footerStartHandler';
+	$elementHandler['Footnote']['end'] = 'footnoteEndHandler';
+	$elementHandler['Footnote']['start'] = 'footnoteStartHandler';
+	$elementHandler['FootnoteTexts']['start'] = 'footnoteTextsStartHandler';
+	$elementHandler['Gedcom']['end'] = 'gedcomEndHandler';
+	$elementHandler['Gedcom']['start'] = 'gedcomStartHandler';
+	$elementHandler['GedcomValue']['start'] = 'gedcomValueStartHandler';
+	$elementHandler['Generation']['start'] = 'generationStartHandler';
+	$elementHandler['GetPersonName']['start'] = 'getPersonNameStartHandler';
+	$elementHandler['Header']['start'] = 'headerStartHandler';
+	$elementHandler['HighlightedImage']['start'] = 'highlightedImageStartHandler';
+	$elementHandler['if']['end'] = 'ifEndHandler';
+	$elementHandler['if']['start'] = 'ifStartHandler';
+	$elementHandler['Image']['start'] = 'imageStartHandler';
 	$elementHandler['Input']['end'] = '';
 	$elementHandler['Input']['start'] = '';
-	$elementHandler['Line']['start'] = 'LineSHandler';
-	$elementHandler['List']['end'] = 'ListEHandler';
-	$elementHandler['List']['start'] = 'ListSHandler';
-	$elementHandler['ListTotal']['start'] = 'ListTotalSHandler';
-	$elementHandler['NewPage']['start'] = 'NewPageSHandler';
-	$elementHandler['Now']['start'] = 'NowSHandler';
-	$elementHandler['PageHeader']['end'] = 'PageHeaderEHandler';
-	$elementHandler['PageHeader']['start'] = 'PageHeaderSHandler';
-	$elementHandler['PageNum']['start'] = 'PageNumSHandler';
-	$elementHandler['Relatives']['end'] = 'RelativesEHandler';
-	$elementHandler['Relatives']['start'] = 'RelativesSHandler';
-	$elementHandler['RepeatTag']['end'] = 'RepeatTagEHandler';
-	$elementHandler['RepeatTag']['start'] = 'RepeatTagSHandler';
-	$elementHandler['SetVar']['start'] = 'SetVarSHandler';
-	$elementHandler['Style']['start'] = 'StyleSHandler';
-	$elementHandler['Text']['end'] = 'TextEHandler';
-	$elementHandler['Text']['start'] = 'TextSHandler';
-	$elementHandler['TextBox']['end'] = 'TextBoxEHandler';
-	$elementHandler['TextBox']['start'] = 'TextBoxSHandler';
-	$elementHandler['Title']['end'] = 'TitleEHandler';
-	$elementHandler['Title']['start'] = 'TitleSHandler';
-	$elementHandler['TotalPages']['start'] = 'TotalPagesSHandler';
-	$elementHandler['var']['start'] = 'varSHandler';
-	$elementHandler['sp']['start'] = 'spSHandler';
+	$elementHandler['Line']['start'] = 'lineStartHandler';
+	$elementHandler['List']['end'] = 'listEndHandler';
+	$elementHandler['List']['start'] = 'listStartHandler';
+	$elementHandler['ListTotal']['start'] = 'listTotalStartHandler';
+	$elementHandler['NewPage']['start'] = 'newPageStartHandler';
+	$elementHandler['Now']['start'] = 'nowStartHandler';
+	$elementHandler['PageHeader']['end'] = 'pageHeaderEndHandler';
+	$elementHandler['PageHeader']['start'] = 'pageHeaderStartHandler';
+	$elementHandler['PageNum']['start'] = 'pageNumStartHandler';
+	$elementHandler['Relatives']['end'] = 'relativesEndHandler';
+	$elementHandler['Relatives']['start'] = 'relativesStartHandler';
+	$elementHandler['RepeatTag']['end'] = 'repeatTagEndHandler';
+	$elementHandler['RepeatTag']['start'] = 'repeatTagStartHandler';
+	$elementHandler['SetVar']['start'] = 'setVarStartHandler';
+	$elementHandler['Style']['start'] = 'styleStartHandler';
+	$elementHandler['Text']['end'] = 'textEndHandler';
+	$elementHandler['Text']['start'] = 'textStartHandler';
+	$elementHandler['TextBox']['end'] = 'textBoxEndHandler';
+	$elementHandler['TextBox']['start'] = 'textBoxStartHandler';
+	$elementHandler['Title']['end'] = 'titleEndHandler';
+	$elementHandler['Title']['start'] = 'titleStartHandler';
+	$elementHandler['TotalPages']['start'] = 'totalPagesStartHandler';
+	$elementHandler['var']['start'] = 'varStartHandler';
+	$elementHandler['sp']['start'] = 'spStartHandler';
 
 	/**
 	 * A new object of the currently used element class

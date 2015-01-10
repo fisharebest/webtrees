@@ -5,7 +5,7 @@
 // Copyright (C) 2014 webtrees development team.
 //
 // Derived from PhpGedView
-// Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.
+// Copyright (C) 2002 to 2009 PGV Development Team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -26,9 +26,9 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-echo '</div>'; // <div id="content">
+echo '</main>';
 if ($view!='simple') {
-	echo '<div id="footer" class="', $TEXT_DIRECTION, ' width99 center">';
+	echo '<footer>';
 	echo contact_links();
 	echo '<p class="logo">';
 	echo '<a href="', WT_WEBTREES_URL, '" target="_blank" class="icon-webtrees" title="', WT_WEBTREES, ' ', WT_VERSION, '"></a>';
@@ -41,5 +41,5 @@ if ($view!='simple') {
 		echo '<p class="error center">', WT_I18N::translate('There are pending changes for you to moderate.'), '</p>';
 		echo '</a>';
 	}
-	echo '</div>'; // <div id="footer">
+	echo '</footer>';
 }

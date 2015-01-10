@@ -1,6 +1,4 @@
 <?php
-// Base controller for all popup pages
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -18,8 +16,14 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class WT_Controller_Ajax - Base controller for all popup pages
+ */
 class WT_Controller_Ajax extends WT_Controller_Base {
 
+	/**
+	 * @return $this
+	 */
 	public function pageHeader() {
 		// We have finished writing session data, so release the lock
 		Zend_Session::writeClose();
@@ -29,13 +33,22 @@ class WT_Controller_Ajax extends WT_Controller_Base {
 		return $this;
 	}
 
+	/**
+	 * @return $this
+	 */
 	public function pageFooter() {
 		// Ajax responses may have Javascript
 		echo $this->getJavascript();
 		return $this;
 	}
 
-	// Restrict access
+	/**
+	 * Restrict access.
+	 *
+	 * @param boolean $condition
+	 *
+	 * @return $this
+	 */
 	public function restrictAccess($condition) {
 		if ($condition !== true) {
 			header('HTTP/1.0 403 Access Denied');

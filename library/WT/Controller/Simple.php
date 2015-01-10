@@ -1,6 +1,4 @@
 <?php
-// Controller for all popup pages
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -18,6 +16,9 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class WT_Controller_Simple - Controller for all popup pages
+ */
 class WT_Controller_Simple extends WT_Controller_Page {
 	/**
 	 * Create content for a popup window.
@@ -31,7 +32,7 @@ class WT_Controller_Simple extends WT_Controller_Page {
 	/**
 	 * Simple (i.e. popup) windows are deprecated.
 	 *
-	 * @return WT_Controller_Simple
+	 * @return $this
 	 */
 	public function pageHeader() {
 		global $view;
@@ -45,9 +46,9 @@ class WT_Controller_Simple extends WT_Controller_Page {
 	/**
 	 * Restrict access
 	 *
-	 * @param bool $condition
+	 * @param boolean $condition
 	 *
-	 * @return WT_Controller_Simple
+	 * @return $this
 	 */
 	public function restrictAccess($condition) {
 		if ($condition !== true) {

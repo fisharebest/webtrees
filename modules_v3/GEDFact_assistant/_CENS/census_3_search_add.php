@@ -7,7 +7,7 @@
 // Copyright (C) 2014 webtrees development team.
 //
 // Derived from PhpGedView
-// Copyright (C) 2007 to 2010 PGV Development Team.  All rights reserved.
+// Copyright (C) 2007 to 2010 PGV Development Team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -133,7 +133,7 @@ if (!defined('WT_WEBTREES')) {
 							$menu = new WT_Menu($label);
 							print_pedigree_person_nav_cens($gparent->getXref(), $label, $censdate);
 							$submenu = new WT_Menu($parentlinks);
-							$menu->addSubMenu($submenu);
+							$menu->addSubmenu($submenu);
 
 							?>
 							<tr>
@@ -254,7 +254,7 @@ if (!defined('WT_WEBTREES')) {
 							$menu = new WT_Menu($label);
 							print_pedigree_person_nav_cens($gparent->getXref(), $label, $censyear);
 							$submenu = new WT_Menu($parentlinks);
-							$menu->addSubMenu($submenu);
+							$menu->addSubmenu($submenu);
 							?>
 							<tr>
 								<td align="left" class="linkcell optionbox">
@@ -379,7 +379,7 @@ if (!defined('WT_WEBTREES')) {
 							$menu = new WT_Menu($label);
 							print_pedigree_person_nav_cens($child->getXref(), $label, $censyear);
 							$submenu = new WT_Menu($spouselinks);
-							$menu->addSubMenu($submenu);
+							$menu->addSubmenu($submenu);
 
 							?>
 							<tr>
@@ -517,7 +517,7 @@ if (!defined('WT_WEBTREES')) {
 							$menu = new WT_Menu($label);
 							print_pedigree_person_nav_cens($gparent->getXref(), $label, $censyear);
 							$submenu = new WT_Menu($parentlinks);
-							$menu->addSubMenu($submenu);
+							$menu->addSubmenu($submenu);
 							if ($gparent->getDeathYear() == 0) { $DeathYr = ""; } else { $DeathYr = $gparent->getDeathYear(); }
 							if ($gparent->getBirthYear() == 0) { $BirthYr = ""; } else { $BirthYr = $gparent->getBirthYear(); }
 							?>
@@ -639,7 +639,7 @@ if (!defined('WT_WEBTREES')) {
 							$menu = new WT_Menu($label);
 							print_pedigree_person_nav_cens($gparent->getXref(), $label, $censyear);
 							$submenu = new WT_Menu($parentlinks);
-							$menu->addSubMenu($submenu);
+							$menu->addSubmenu($submenu);
 							if ($gparent->getDeathYear() == 0) { $DeathYr = ""; } else { $DeathYr = $gparent->getDeathYear(); }
 							if ($gparent->getBirthYear() == 0) { $BirthYr = ""; } else { $BirthYr = $gparent->getBirthYear(); }
 							?>
@@ -757,7 +757,7 @@ if (!defined('WT_WEBTREES')) {
 							$menu = new WT_Menu($label);
 							print_pedigree_person_nav_cens($child->getXref(), $label, $censyear);
 							$submenu = new WT_Menu($spouselinks);
-							$menu->addSubMenu($submenu);
+							$menu->addSubmenu($submenu);
 							if ($child->getDeathYear() == 0) { $DeathYr = ""; } else { $DeathYr = $child->getDeathYear(); }
 							if ($child->getBirthYear() == 0) { $BirthYr = ""; } else { $BirthYr = $child->getBirthYear(); }
 							?>
@@ -892,7 +892,7 @@ if (!defined('WT_WEBTREES')) {
 							$menu = new WT_Menu($label);
 							print_pedigree_person_nav_cens($gparent->getXref(), $label, $censyear);
 							$submenu = new WT_Menu($parentlinks);
-							$menu->addSubMenu($submenu);
+							$menu->addSubmenu($submenu);
 							if ($gparent->getDeathYear() == 0) { $DeathYr = ""; } else { $DeathYr = $gparent->getDeathYear(); }
 							if ($gparent->getBirthYear() == 0) { $BirthYr = ""; } else { $BirthYr = $gparent->getBirthYear(); }
 							?>
@@ -990,7 +990,6 @@ if (!defined('WT_WEBTREES')) {
 							$married = WT_Date::Compare($censdate, $marrdate);
 							$nam     = $gparent->getAllNames();
 							$fulln   = rtrim($nam[0]['givn'],'*') . ' ' . $nam[0]['surname'];
-							//$fulln   = str_replace('"', '\"', $fulln);
 							$fulln   = str_replace("@N.N.", "(".WT_I18N::translate('unknown').")", $fulln);
 							$fulln   = str_replace("@P.N.", "(".WT_I18N::translate('unknown').")", $fulln);
 							$givn    = rtrim($nam[0]['givn'],'*');
@@ -1015,7 +1014,7 @@ if (!defined('WT_WEBTREES')) {
 							$menu = new WT_Menu($label);
 							print_pedigree_person_nav_cens($gparent->getXref(), $label, $censyear);
 							$submenu = new WT_Menu($parentlinks);
-							$menu->addSubMenu($submenu);
+							$menu->addSubmenu($submenu);
 							if ($gparent->getDeathYear() == 0) { $DeathYr = ""; } else { $DeathYr = $gparent->getDeathYear(); }
 							if ($gparent->getBirthYear() == 0) { $BirthYr = ""; } else { $BirthYr = $gparent->getBirthYear(); }
 							?>
@@ -1250,17 +1249,9 @@ if (!defined('WT_WEBTREES')) {
  * @return void
  */
 function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
-	global $PEDIGREE_FULL_DETAILS;
-	global $TEXT_DIRECTION, $DEFAULT_PEDIGREE_GENERATIONS, $OLD_PGENS, $talloffset, $PEDIGREE_LAYOUT;
-	global $show_full;
+	global $TEXT_DIRECTION;
 	global $spouselinks, $parentlinks, $step_parentlinks, $persons, $person_step, $person_parent;
 	global $natdad, $natmom, $censyear;
-
-	if (empty($show_full)) $show_full = 0;
-	if (empty($PEDIGREE_FULL_DETAILS)) $PEDIGREE_FULL_DETAILS = 0;
-
-	if (!isset($OLD_PGENS)) $OLD_PGENS = $DEFAULT_PEDIGREE_GENERATIONS;
-	if (!isset($talloffset)) $talloffset = $PEDIGREE_LAYOUT;
 
 	$person=WT_Individual::getInstance($pid);
 

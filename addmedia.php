@@ -6,7 +6,7 @@
 // Copyright (C) 2014 webtrees development team.
 //
 // Derived from PhpGedView
-// Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.
+// Copyright (C) 2002 to 2009 PGV Development Team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -217,15 +217,15 @@ case 'create': // Save the information from the “showcreateform” action
 
 	$newged  = handle_updates($newged);
 
-	$media = WT_GedcomRecord::createRecord($newged, WT_GED_ID);
+	$new_media = WT_GedcomRecord::createRecord($newged, WT_GED_ID);
 	if ($linktoid) {
 		$record = WT_GedcomRecord::getInstance($linktoid);
-		$record->createFact('1 OBJE @' . $media->getXref() . '@', true);
-		Log::addEditLog('Media ID '.$media->getXref()." successfully added to $linktoid.");
+		$record->createFact('1 OBJE @' . $new_media->getXref() . '@', true);
+		Log::addEditLog('Media ID '.$new_media->getXref()." successfully added to $linktoid.");
 		$controller->addInlineJavascript('closePopupAndReloadParent();');
 	} else {
-		Log::addEditLog('Media ID '.$media->getXref().' successfully added.');
-		$controller->addInlineJavascript('openerpasteid("' . $media->getXref() . '");');
+		Log::addEditLog('Media ID '.$new_media->getXref().' successfully added.');
+		$controller->addInlineJavascript('openerpasteid("' . $new_media->getXref() . '");');
 	}
 	echo '<button onclick="closePopupAndReloadParent();">', WT_I18N::translate('close'), '</button>';
 	exit;
@@ -420,27 +420,19 @@ if (!$linktoid && $action == 'create') {
 	echo '<p class="sub">', WT_I18N::translate('Enter or search for the ID of the individual, family, or source to which this media item should be linked.'), '</p></td></tr>';
 }
 
-$tmp = WT_Media::getInstance($pid);
-if ($tmp) {
-	$gedrec = $tmp->getGedcom();
+if ($media) {
+	$gedrec = $media->getGedcom();
 } else {
 	$gedrec = '';
 }
 
-// 0 OBJE
 // 1 FILE
-if ($gedrec == '') {
-	$gedfile = 'FILE';
-	if ($filename != '')
-		$gedfile = 'FILE ' . $filename;
+if (preg_match('/\n\d (FILE.*)/', $gedrec, $match)) {
+	$gedfile = $match[1];
 } else {
-	$gedfile = get_first_tag(1, 'FILE', $gedrec);
-	if (empty($gedfile))
-		$gedfile = 'FILE';
+	$gedfile = 'FILE';
 }
-if ($gedfile != 'FILE') {
-	$gedfile = 'FILE ' . substr($gedfile, 5);
-}
+
 if ($gedfile == 'FILE') {
 	// Box for user to choose to upload file from local computer
 	echo '<tr><td class="descriptionbox wrap width25">';
@@ -464,17 +456,17 @@ if ($gedfile == 'FILE') {
 		);
 	}
 	$fileName = '';
-	$folder = '';
+	$folder   = '';
 } else {
 	if ($isExternal) {
 		$fileName = substr($gedfile, 5);
-		$folder = '';
+		$folder   = '';
 	} else {
-		$tmp=substr($gedfile, 5);
+		$tmp      = substr($gedfile, 5);
 		$fileName = basename($tmp);
-		$folder = dirname($tmp);
-		if ($folder=='.') {
-			$folder='';
+		$folder   = dirname($tmp);
+		if ($folder === '.') {
+			$folder = '';
 		}
 	}
 
@@ -502,7 +494,7 @@ if (!$isExternal) {
 	echo '<tr><td class="descriptionbox wrap width25">';
 	echo WT_I18N::translate('Folder name on server'), help_link('upload_server_folder'), '</td><td class="optionbox wrap">';
 	//-- don’t let regular users change the location of media items
-	if ($action!='update' || WT_USER_GEDCOM_ADMIN) {
+	if ($action !== 'update' || WT_USER_GEDCOM_ADMIN) {
 		$mediaFolders = WT_Query_Media::folderList();
 		echo '<span dir="ltr"><select name="folder_list" onchange="document.newmedia.folder.value=this.options[this.selectedIndex].value;">';
 		echo '<option';
@@ -523,7 +515,7 @@ if (!$isExternal) {
 	}
 	if (Auth::isAdmin()) {
 		echo '<br><span dir="ltr"><input type="text" name="folder" size="40" value="', $folder, '"></span>';
-		if ($gedfile == 'FILE') {
+		if ($gedfile === 'FILE') {
 			echo '<p class="sub">', WT_I18N::translate('This entry is ignored if you have entered a URL into the filename field.'), '</p>';
 		}
 	} else {
@@ -533,15 +525,14 @@ if (!$isExternal) {
 } else {
 	echo '<input name="folder" type="hidden" value="">';
 }
-// 2 FORM
-if ($gedrec == '')
-	$gedform = 'FORM';
-else {
-	$gedform = get_first_tag(2, 'FORM', $gedrec);
-	if (empty($gedform))
-		$gedform = 'FORM';
+
+// 1 FILE / 2 FORM
+if (preg_match('/\n(2 FORM .*)/', $gedrec, $match)) {
+	$gedform = $match[1];
+} else {
+	$gedform = '2 FORM';
 }
-$formid = add_simple_tag("2 $gedform");
+$formid = add_simple_tag($gedform);
 
 // automatically set the format field from the filename
 $controller->addInlineJavascript('
@@ -559,120 +550,107 @@ $controller->addInlineJavascript('
 	}
 ');
 
-// 3 TYPE
-if ($gedrec == '')
-	$gedtype = 'TYPE photo'; // default to ‘Photo’ unless told otherwise
-else {
-	$temp = str_replace("\r\n", "\n", $gedrec) . "\n";
-	$types = preg_match("/3 TYPE(.*)\n/", $temp, $matches);
-	if (empty($matches[0]))
-		$gedtype = 'TYPE photo'; // default to ‘Photo’ unless told otherwise
-	else
-		$gedtype = 'TYPE ' . trim($matches[1]);
-}
-add_simple_tag("3 $gedtype");
-
-// 2 TITL
-if ($gedrec == '') {
-	$gedtitl = 'TITL';
+// 1 FILE / 2 FORM / 3 TYPE
+if (preg_match('/\n(3 TYPE .*)/', $gedrec, $match)) {
+	$gedtype = $match[1];
 } else {
-	$gedtitl = get_first_tag(2, 'TITL', $gedrec);
-	if (empty($gedtitl)) {
-		$gedtitl = get_first_tag(1, 'TITL', $gedrec);
-	}
-	if (empty($gedtitl)) {
-		$gedtitl = 'TITL';
-	}
+	$gedtype = '3 TYPE photo'; // default to ‘Photo’
 }
-add_simple_tag("2 $gedtitl");
+add_simple_tag($gedtype);
 
-if (strstr($ADVANCED_NAME_FACTS, '_HEB')!==false) {
-	// 3 _HEB
-	if ($gedrec == '') {
-		$gedtitl = '_HEB';
-	} else {
-		$gedtitl = get_first_tag(3, '_HEB', $gedrec);
-		if (empty($gedtitl)) {
-			$gedtitl = '_HEB';
-		}
-	}
-	add_simple_tag("3 $gedtitl");
-}
-
-if (strstr($ADVANCED_NAME_FACTS, 'ROMN')!==false) {
-	// 3 ROMN
-	if ($gedrec == '') {
-		$gedtitl = 'ROMN';
-	} else {
-		$gedtitl = get_first_tag(3, 'ROMN', $gedrec);
-		if (empty($gedtitl)) {
-			$gedtitl = 'ROMN';
-		}
-	}
-	add_simple_tag("3 $gedtitl");
-}
-
-// 2 _PRIM
-if ($gedrec == '') {
-	$gedprim = '_PRIM';
+// 1 FILE / 2 TITL
+if (preg_match('/\n(2 TITL .*)/', $gedrec, $match)) {
+	$gedtitl = $match[1];
 } else {
-	$gedprim = get_first_tag(1, '_PRIM', $gedrec);
-	if (empty($gedprim)) {
-		$gedprim = '_PRIM';
-	}
+	$gedtitl = '2 TITL';
 }
-add_simple_tag("1 $gedprim");
+add_simple_tag($gedtitl);
+
+// 1 FILE / 2 TITL / 3 _HEB
+if (strstr($ADVANCED_NAME_FACTS, '_HEB') !== false) {
+	if (preg_match('/\n(3 _HEB .*)/', $gedrec, $match)) {
+		$gedtitl = $match[1];
+	} else {
+		$gedtitl = '3 _HEB';
+	}
+	add_simple_tag($gedtitl);
+}
+
+// 1 FILE / 2 TITL / 3 ROMN
+if (strstr($ADVANCED_NAME_FACTS, 'ROMN') !== false) {
+	if (preg_match('/\n(3 ROMN .*)/', $gedrec, $match)) {
+		$gedtitl = $match[1];
+	} else {
+		$gedtitl = '3 ROMN';
+	}
+	add_simple_tag($gedtitl);
+}
+
+// 1 _PRIM
+if (preg_match('/\n(1 _PRIM .*)/', $gedrec, $match)) {
+	$gedprim = $match[1];
+} else {
+	$gedprim = '1 _PRIM';
+}
+add_simple_tag($gedprim);
 
 //-- print out editing fields for any other data in the media record
-$sourceSOUR = '';
+$sourceLevel = 0;
+$sourceSOUR  = '';
+$sourcePAGE  = '';
+$sourceTEXT  = '';
+$sourceDATE  = '';
+$sourceQUAY  = '';
 if (!empty($gedrec)) {
 	preg_match_all('/\n(1 (?!FILE|FORM|TYPE|TITL|_PRIM|_THUM|CHAN|DATA).*(\n[2-9] .*)*)/', $gedrec, $matches);
 	foreach ($matches[1] as $subrec) {
 		$pieces = explode("\n", $subrec);
 		foreach ($pieces as $piece) {
 			$ft = preg_match("/(\d) (\w+)(.*)/", $piece, $match);
-			if ($ft == 0) continue;
-			$subLevel = $match[1];
-			$fact = trim($match[2]);
-			$event = trim($match[3]);
-			if ($fact=='NOTE' || $fact=='TEXT') {
-				$event .= get_cont(($subLevel +1), $subrec);
+			if ($ft == 0) {
+				continue;
 			}
-			if ($sourceSOUR!='' && $subLevel<=$sourceLevel) {
+			$subLevel = $match[1];
+			$fact     = trim($match[2]);
+			$event    = trim($match[3]);
+			if ($fact === 'NOTE' || $fact === 'TEXT') {
+				$event .= get_cont($subLevel + 1, $subrec);
+			}
+			if ($sourceSOUR !== '' && $subLevel <= $sourceLevel) {
 				// Get rid of all saved Source data
-				add_simple_tag($sourceLevel .' SOUR '. $sourceSOUR);
-				add_simple_tag(($sourceLevel+1) .' PAGE '. $sourcePAGE);
-				add_simple_tag(($sourceLevel+2) .' TEXT '. $sourceTEXT);
-				add_simple_tag(($sourceLevel+2) .' DATE '. $sourceDATE, '', WT_Gedcom_Tag::getLabel('DATA:DATE'));
-				add_simple_tag(($sourceLevel+1) .' QUAY '. $sourceQUAY);
+				add_simple_tag($sourceLevel . ' SOUR ' . $sourceSOUR);
+				add_simple_tag(($sourceLevel + 1) . ' PAGE ' . $sourcePAGE);
+				add_simple_tag(($sourceLevel + 2) . ' TEXT ' . $sourceTEXT);
+				add_simple_tag(($sourceLevel + 2) . ' DATE ' . $sourceDATE, '', WT_Gedcom_Tag::getLabel('DATA:DATE'));
+				add_simple_tag(($sourceLevel + 1) . ' QUAY ' . $sourceQUAY);
 				$sourceSOUR = '';
 			}
 
-			if ($fact=='SOUR') {
+			if ($fact === 'SOUR') {
 				$sourceLevel = $subLevel;
-				$sourceSOUR = $event;
-				$sourcePAGE = '';
-				$sourceTEXT = '';
-				$sourceDATE = '';
-				$sourceQUAY = '';
+				$sourceSOUR  = $event;
+				$sourcePAGE  = '';
+				$sourceTEXT  = '';
+				$sourceDATE  = '';
+				$sourceQUAY  = '';
 				continue;
 			}
 
 			// Save all incoming data about this source reference
-			if ($sourceSOUR!='') {
-				if ($fact=='PAGE') {
+			if ($sourceSOUR !== '') {
+				if ($fact === 'PAGE') {
 					$sourcePAGE = $event;
 					continue;
 				}
-				if ($fact=='TEXT') {
+				if ($fact === 'TEXT') {
 					$sourceTEXT = $event;
 					continue;
 				}
-				if ($fact=='DATE') {
+				if ($fact === 'DATE') {
 					$sourceDATE = $event;
 					continue;
 				}
-				if ($fact=='QUAY') {
+				if ($fact === 'QUAY') {
 					$sourceQUAY = $event;
 					continue;
 				}
@@ -680,19 +658,19 @@ if (!empty($gedrec)) {
 			}
 
 			// Output anything that isn’t part of a source reference
-			if (!empty($fact) && $fact != 'CONC' && $fact != 'CONT' && $fact != 'DATA') {
-				add_simple_tag($subLevel .' '. $fact .' '. $event);
+			if (!empty($fact) && $fact !== 'CONC' && $fact !== 'CONT' && $fact !== 'DATA') {
+				add_simple_tag($subLevel . ' ' . $fact . ' ' . $event);
 			}
 		}
 	}
 
-	if ($sourceSOUR!='') {
+	if ($sourceSOUR !== '') {
 		// Get rid of all saved Source data
-		add_simple_tag($sourceLevel .' SOUR '. $sourceSOUR);
-		add_simple_tag(($sourceLevel+1) .' PAGE '. $sourcePAGE);
-		add_simple_tag(($sourceLevel+2) .' TEXT '. $sourceTEXT);
-		add_simple_tag(($sourceLevel+2) .' DATE '. $sourceDATE, '', WT_Gedcom_Tag::getLabel('DATA:DATE'));
-		add_simple_tag(($sourceLevel+1) .' QUAY '. $sourceQUAY);
+		add_simple_tag($sourceLevel . ' SOUR ' . $sourceSOUR);
+		add_simple_tag(($sourceLevel + 1) . ' PAGE ' . $sourcePAGE);
+		add_simple_tag(($sourceLevel + 2) . ' TEXT ' . $sourceTEXT);
+		add_simple_tag(($sourceLevel + 2) . ' DATE ' . $sourceDATE, '', WT_Gedcom_Tag::getLabel('DATA:DATE'));
+		add_simple_tag(($sourceLevel + 1) . ' QUAY ' . $sourceQUAY);
 	}
 }
 if (Auth::isAdmin()) {
@@ -707,27 +685,14 @@ if (Auth::isAdmin()) {
 	echo '</td></tr>';
 }
 echo '</table>';
-			print_add_layer('SOUR', 1);
-			print_add_layer('NOTE', 1);
-			print_add_layer('SHARED_NOTE', 1);
-			print_add_layer('RESN', 1);
-		?>
+print_add_layer('SOUR', 1);
+print_add_layer('NOTE', 1);
+print_add_layer('SHARED_NOTE', 1);
+print_add_layer('RESN', 1);
+?>
 		<p id="save-cancel">
 			<input type="submit" class="save" value="<?php echo WT_I18N::translate('save'); ?>">
 			<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
 		</p>
 	</form>
 </div>
-
-<?php
-
-
-// Legacy/deprecated functions.  TODO: refactor these away....
-function get_first_tag($level, $tag, $gedrec, $num=1) {
-	$temp = get_sub_record($level, $level." ".$tag, $gedrec, $num)."\n";
-	$length = strpos($temp, "\n");
-	if ($length===false) {
-		$length = strlen($temp);
-	}
-	return substr($temp, 2, $length-2);
-}

@@ -1,6 +1,4 @@
 <?php
-// Controller for the ancestry chart
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -21,6 +19,9 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class WT_Controller_Ancestry - Controller for the ancestry chart
+ */
 class WT_Controller_Ancestry extends WT_Controller_Chart {
 	var $pid = '';
 	var $user = false;
@@ -33,6 +34,9 @@ class WT_Controller_Ancestry extends WT_Controller_Chart {
 	var $show_full;
 	var $cellwidth;
 
+	/**
+	 * Startup activity
+	 */
 	function __construct() {
 		global $bwidth, $bheight, $cbwidth, $cbheight, $pbwidth, $pbheight, $PEDIGREE_FULL_DETAILS;
 		global $DEFAULT_PEDIGREE_GENERATIONS, $PEDIGREE_GENERATIONS, $MAX_PEDIGREE_GENERATIONS, $OLD_PGENS, $box_width, $Dbwidth, $Dbheight;
@@ -83,11 +87,11 @@ class WT_Controller_Ancestry extends WT_Controller_Chart {
 	/**
 	 * print a child ascendancy
 	 *
-	 * @param     $person
-	 * @param int $sosa  child sosa number
-	 * @param int $depth the ascendancy depth to show
+	 * @param         $person
+	 * @param integer $sosa  child sosa number
+	 * @param integer $depth the ascendancy depth to show
 	 */
-	function print_child_ascendancy($person, $sosa, $depth) {
+	public function printChildAscendancy($person, $sosa, $depth) {
 		global $OLD_PGENS, $WT_IMAGES, $Dindent, $pidarr, $box_width;
 
 		if ($person) {
@@ -144,8 +148,8 @@ class WT_Controller_Ancestry extends WT_Controller_Chart {
 			echo '</span>';
 			// display parents recursively - or show empty boxes
 			echo '<ul style="list-style: none; display: block;" id="sosa_', $sosa, '">';
-			$this->print_child_ascendancy($family->getHusband(), $sosa*2, $depth-1);
-			$this->print_child_ascendancy($family->getWife(), $sosa*2+1, $depth-1);
+			$this->printChildAscendancy($family->getHusband(), $sosa*2, $depth-1);
+			$this->printChildAscendancy($family->getWife(), $sosa*2+1, $depth-1);
 			echo '</ul>';
 		}
 		echo '</li>';

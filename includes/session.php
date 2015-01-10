@@ -5,7 +5,7 @@
 // Copyright (C) 2014 webtrees development team.
 //
 // Derived from PhpGedView
-// Copyright (C) 2002 to 2011 PGV Development Team.  All rights reserved.
+// Copyright (C) 2002 to 2011 PGV Development Team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -40,32 +40,22 @@ global $controller;
 
 // Identify ourself
 define('WT_WEBTREES', 'webtrees');
-define('WT_VERSION',  '1.6.1-dev');
+define('WT_VERSION',  '1.6.3-dev');
 
 // External URLs
 define('WT_WEBTREES_URL',  'http://www.webtrees.net/');
 define('WT_WEBTREES_WIKI', 'http://wiki.webtrees.net/');
 
 // Optionally, specify a CDN server for static content (e.g. CSS, JS, PNG)
-// For example, http://my.cdn.com/webtrees-static-1.3.1/
-define('WT_STATIC_URL', ''); // For example, http://my.cdn.com/webtrees-static-1.3.1/
-
-// Optionally, load major JS libraries from Google’s public CDN
-define ('WT_USE_GOOGLE_API', false);
-if (WT_USE_GOOGLE_API) {
-	define('WT_JQUERY_URL',        'https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js');
-	define('WT_JQUERYUI_URL',      'https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js');
-} else {
-	define('WT_JQUERY_URL',        WT_STATIC_URL . 'js/jquery-1.11.1.js');
-	define('WT_JQUERYUI_URL',      WT_STATIC_URL . 'js/jquery-ui-1.10.4.js');
-}
-define('WT_JQUERY_COLORBOX_URL',   WT_STATIC_URL . 'js/jquery.colorbox-1.5.9.js');
+define('WT_STATIC_URL',            ''); // For example, http://my.cdn.com/webtrees-static-1.3.1/
+define('WT_JQUERY_URL',            WT_STATIC_URL . 'js/jquery-1.11.2.js');
+define('WT_JQUERYUI_URL',          WT_STATIC_URL . 'js/jquery-ui-1.11.2.js');
+define('WT_JQUERY_COLORBOX_URL',   WT_STATIC_URL . 'js/jquery.colorbox-1.5.14.js');
 define('WT_JQUERY_COOKIE_URL',     WT_STATIC_URL . 'js/jquery.cookie-1.4.1.js');
-define('WT_JQUERY_DATATABLES_URL', WT_STATIC_URL . 'js/jquery.datatables-1.10.3.js');
+define('WT_JQUERY_DATATABLES_URL', WT_STATIC_URL . 'js/jquery.datatables-1.10.4.js');
 define('WT_JQUERY_JEDITABLE_URL',  WT_STATIC_URL . 'js/jquery.jeditable-1.7.3.js');
 define('WT_JQUERY_WHEELZOOM_URL',  WT_STATIC_URL . 'js/jquery.wheelzoom-2.0.0.js');
-define('WT_MODERNIZR_URL',         WT_STATIC_URL . 'js/modernizr.custom-2.6.2.js');
-define('WT_WEBTREES_JS_URL',       WT_STATIC_URL . 'js/webtrees-1.6.0.js');
+define('WT_WEBTREES_JS_URL',       WT_STATIC_URL . 'js/webtrees-1.6.2.js');
 
 // Location of our modules and themes.  These are used as URLs and folder paths.
 define('WT_MODULES_DIR', 'modules_v3/'); // Update setup.php and build/Makefile when this changes
@@ -79,7 +69,7 @@ define('WT_DEBUG_SQL', false);
 define('WT_ERROR_LEVEL', 2); // 0=none, 1=minimal, 2=full
 
 // Required version of database tables/columns/indexes/etc.
-define('WT_SCHEMA_VERSION', 27);
+define('WT_SCHEMA_VERSION', 29);
 
 // Regular expressions for validating user input, etc.
 define('WT_MINIMUM_PASSWORD_LENGTH', 6);
@@ -135,65 +125,6 @@ $start_time = microtime(true);
 // We want to know about all PHP errors
 error_reporting(E_ALL | E_STRICT);
 
-////////////////////////////////////////////////////////////////////////////////
-// Provide password functions for PHP5.4 and earlier
-////////////////////////////////////////////////////////////////////////////////
-if (!function_exists('password_hash')) {
-	// The compatibility library requires the $2$y salt prefix, which is available
-	// in PHP5.3.7 and *some* earlier/patched versions.
-	$hash = '$2y$04$usesomesillystringfore7hnbRJHxXVLeakoG8K30oukPsA.ztMG';
-	if (crypt("password", $hash) === $hash) {
-		require WT_ROOT . 'library/ircmaxell/password-compat/lib/password.php';
-	} else {
-		/**
-		 * There is no secure password facility on this server.
-		 * Simply implement something that won't crash...
-		 *
-		 * @param string  $password
-		 * @param integer $algo
-		 *
-		 * @return string
-		 */
-		function password_hash($password, $algo) {
-			$salt = '$2a$12$';
-			$salt_chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789./';
-			for ($i = 0; $i < 22; ++$i) {
-				$salt .= substr($salt_chars, mt_rand(0, 63), 1);
-			}
-
-			return crypt($password, $salt);
-		}
-
-		/**
-		 * There is no secure password facility on this server.
-		 * Simply implement something that won't crash...
-		 *
-		 * @param string  $hash
-		 * @param integer $algo
-		 *
-		 * @return boolean
-		 */
-		function password_needs_rehash($hash, $algo) {
-			return false;
-		}
-
-		/**
-		 * There is no secure password facility on this server.
-		 * Simply implement something that won't crash...
-		 *
-		 * @param string  $password
-		 * @param integer $hash
-		 *
-		 * @return boolean
-		 */
-		function password_verify($password, $hash) {
-			return crypt($password, $hash) === $hash;
-		}
-
-		define('PASSWORD_DEFAULT', 1);
-	}
-}
-
 // PHP5.3 may be using magic-quotes :-(
 if (version_compare(PHP_VERSION, '5.4', '<') && get_magic_quotes_gpc()) {
 	// http://php.net/manual/en/security.magicquotes.disabling.php
@@ -210,6 +141,45 @@ if (version_compare(PHP_VERSION, '5.4', '<') && get_magic_quotes_gpc()) {
 		}
 	}
 	unset($process);
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// The ircmaxell/password-compat library does not support unpatched versions of
+// PHP older than PHP5.3.6.  These versions of PHP have no secure crypt library.
+////////////////////////////////////////////////////////////////////////////////
+$hash = '$2y$04$usesomesillystringfore7hnbRJHxXVLeakoG8K30oukPsA.ztMG';
+if (!defined('PASSWORD_BCRYPT') && crypt("password", $hash) !== $hash) {
+	define('PASSWORD_BCRYPT', 1);
+	define('PASSWORD_DEFAULT', 1);
+	/**
+	 * @param string  $password
+	 * @param integer $algo
+	 *
+	 * @return string
+	 */
+	function password_hash($password, $algo) {
+		return crypt($password);
+	}
+
+	/**
+	 * @param string  $hash
+	 * @param integer $algo
+	 *
+	 * @return boolean
+	 */
+	function password_needs_rehash($hash, $algo) {
+		return false;
+	}
+
+	/**
+	 * @param string  $password
+	 * @param integer $hash
+	 *
+	 * @return boolean
+	 */
+	function password_verify($password, $hash) {
+		return crypt($password, $hash) === $hash;
+	}
 }
 
 require WT_ROOT . 'library/autoload.php';
@@ -237,11 +207,25 @@ if (!ini_get('date.timezone')) {
 // WT_SCRIPT_PATH  = /path/to/   (begins and ends with /)
 // WT_SCRIPT_NAME  = script.php  (already defined in the calling script)
 
-$https = !empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off';
+if (isset($_SERVER['HTTP_X_FORWARDED_PROTO'])) {
+	$protocol = $_SERVER['HTTP_X_FORWARDED_PROTO'];
+} elseif (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') {
+	$protocol = 'https';
+} else {
+	$protocol = 'http';
+}
+if (isset($_SERVER['HTTP_X_FORWARDED_PORT'])) {
+	$port = $_SERVER['HTTP_X_FORWARDED_PORT'];
+} elseif (isset($_SERVER['SERVER_PORT'])) {
+	$port = $_SERVER['SERVER_PORT'];
+} else {
+	$port = '80';
+}
+
 define('WT_SERVER_NAME',
-	($https ? 'https://' : 'http://') .
+	$protocol . '://' .
 	(empty($_SERVER['SERVER_NAME']) ? '' : $_SERVER['SERVER_NAME']) .
-	(empty($_SERVER['SERVER_PORT']) || (!$https && $_SERVER['SERVER_PORT'] == 80) || ($https && $_SERVER['SERVER_PORT'] == 443) ? '' : ':' . $_SERVER['SERVER_PORT'])
+	($protocol === 'http' && $port === '80' || $protocol === 'https' && $port === '443' ? '' : ':' . $port)
 );
 
 // REDIRECT_URL should be set in the case of Apache following a RedirectRule
@@ -346,8 +330,6 @@ if (file_exists(WT_ROOT . 'data/config.ini.php')) {
 
 $WT_REQUEST = new Zend_Controller_Request_Http();
 
-require WT_ROOT . 'includes/authentication.php';
-
 // Connect to the database
 try {
 	WT_DB::createInstance($dbconfig['dbhost'], $dbconfig['dbport'], $dbconfig['dbname'], $dbconfig['dbuser'], $dbconfig['dbpass']);
@@ -380,7 +362,7 @@ if ($SERVER_URL && $SERVER_URL != WT_SERVER_NAME . WT_SCRIPT_PATH) {
 // Request more resources - if we can/want to
 if (!ini_get('safe_mode')) {
 	$memory_limit = WT_Site::getPreference('MEMORY_LIMIT');
-	if ($memory_limit) {
+	if ($memory_limit && strpos(ini_get('disable_functions'), 'ini_set') === false) {
 		ini_set('memory_limit', $memory_limit);
 	}
 	$max_execution_time = WT_Site::getPreference('MAX_EXECUTION_TIME');
@@ -489,8 +471,9 @@ if (!$SEARCH_SPIDER && !$WT_SESSION->initiated) {
 	// An existing session
 }
 
-// Who are we?
-define('WT_USER_ID',   Auth::id());
+/** @deprecated Will be removed in 1.7.0 */
+define('WT_USER_ID', Auth::id());
+/** @deprecated Will be removed in 1.7.0 */
 define('WT_USER_NAME', Auth::id() ? Auth::user()->getUserName() : '');
 
 // Set the active GEDCOM
@@ -570,7 +553,7 @@ define('WT_TIMESTAMP', (int)WT_DB::prepare("SELECT UNIX_TIMESTAMP()")->fetchOne(
 // Server timezone is defined in php.ini
 define('WT_SERVER_TIMESTAMP', WT_TIMESTAMP + (int)date('Z'));
 
-if (WT_USER_ID) {
+if (Auth::check()) {
 	define('WT_CLIENT_TIMESTAMP', WT_TIMESTAMP - $WT_SESSION->timediff);
 } else {
 	define('WT_CLIENT_TIMESTAMP', WT_SERVER_TIMESTAMP);
@@ -618,8 +601,8 @@ if (substr(WT_SCRIPT_NAME, 0, 5) == 'admin' || WT_SCRIPT_NAME == 'module.php' &&
 			$THEME_DIR = '';
 		}
 		// Last theme used?
-		if (!$THEME_DIR && in_array($WT_SESSION->theme_dir, get_theme_names())) {
-			$THEME_DIR = $WT_SESSION->theme_dir;
+		if (!$THEME_DIR && in_array($WT_SESSION->theme_id, get_theme_names())) {
+			$THEME_DIR = $WT_SESSION->theme_id;
 		}
 	} else {
 		$THEME_DIR = '';
@@ -646,7 +629,7 @@ if (substr(WT_SCRIPT_NAME, 0, 5) == 'admin' || WT_SCRIPT_NAME == 'module.php' &&
 	define('WT_THEME_DIR', WT_THEMES_DIR . $THEME_DIR . '/');
 	// Remember this setting
 	if (WT_THEME_DIR != WT_THEMES_DIR . '_administration/') {
-		$WT_SESSION->theme_dir = $THEME_DIR;
+		$WT_SESSION->theme_id = $THEME_DIR;
 	}
 }
 // If we have specified a CDN, use it for static theme resources

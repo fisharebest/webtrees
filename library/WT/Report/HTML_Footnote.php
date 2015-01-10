@@ -30,14 +30,14 @@ class WT_Report_HTML_Footnote extends WT_Report_Base_Footnote {
 	/**
 	 * HTML Footnotes number renderer
 	 *
-	 * @param WT_Report_HTML $html
+	 * @param WT_Report_HTML $renderer
 	 *
 	 * @return void
 	 */
-	function render($html) {
-		$html->setCurrentStyle("footnotenum");
+	function render($renderer) {
+		$renderer->setCurrentStyle("footnotenum");
 		echo "<a href=\"#footnote", $this->num, "\"><sup>";
-		$html->write($html->entityRTL . $this->num);
+		$renderer->write($renderer->entityRTL . $this->num);
 		echo "</sup></a>\n";
 	}
 
@@ -56,23 +56,23 @@ class WT_Report_HTML_Footnote extends WT_Report_Base_Footnote {
 			$html->setCurrentStyle($this->styleName);
 		}
 
-		$temptext = str_replace("#PAGENUM#", $html->PageNo(), $this->text);
+		$temptext = str_replace("#PAGENUM#", $html->pageNo(), $this->text);
 		// underline «title» part of Source item
 		$temptext = str_replace(array('«', '»'), array('<u>', '</u>'), $temptext);
 		echo "\n<div><a name=\"footnote", $this->num, "\"></a>";
 		$html->write($this->num . ". " . $temptext);
 		echo "</div>";
 
-		$html->SetXY(0, $html->GetY() + $this->getFootnoteHeight($html));
+		$html->setXy(0, $html->getY() + $this->getFootnoteHeight($html));
 	}
 
 	/**
 	 * Calculates the Footnotes height
 	 *
 	 * @param WT_Report_HTML $html
-	 * @param int            $cellWidth The width of the cell to use it for text wraping
+	 * @param integer        $cellWidth The width of the cell to use it for text wraping
 	 *
-	 * @return int           Footnote height in points
+	 * @return integer       Footnote height in points
 	 */
 	function getFootnoteHeight($html, $cellWidth = 0) {
 		if ($html->getCurrentStyle() != $this->styleName) {

@@ -1,6 +1,4 @@
 <?php
-// Classes and libraries for module system
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -21,18 +19,21 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class families_WT_Module
+ */
 class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
-	// Extend class WT_Module
+	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module/sidebar */ WT_I18N::translate('Family list');
 	}
 
-	// Extend class WT_Module
+	/** {@inheritdoc} */
 	public function getDescription() {
 		return /* I18N: Description of the “Families” module */ WT_I18N::translate('A sidebar showing an alphabetic list of all the families in the family tree.');
 	}
 
-	// Implement WT_Module
+	/** {@inheritdoc} */
 	public function modAction($modAction) {
 		switch ($modAction) {
 		case 'ajax':
@@ -47,19 +48,19 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		exit;
 	}
 
-	// Implement WT_Module_Sidebar
+	/** {@inheritdoc} */
 	public function defaultSidebarOrder() {
 		return 50;
 	}
 
-	// Implement WT_Module_Sidebar
+	/** {@inheritdoc} */
 	public function hasSidebarContent() {
 		global $SEARCH_SPIDER;
 
 		return !$SEARCH_SPIDER;
 	}
 
-	// Implement WT_Module_Sidebar
+	/** {@inheritdoc} */
 	public function getSidebarAjaxContent() {
 		$alpha   = WT_Filter::get('alpha'); // All surnames beginning with this letter where "@"=unknown and ","=none
 		$surname = WT_Filter::get('surname'); // All indis with this surname.
@@ -76,7 +77,7 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		}
 	}
 
-	// Implement WT_Module_Sidebar
+	/** {@inheritdoc} */
 	public function getSidebarContent() {
 		global $WT_IMAGES, $UNKNOWN_NN, $controller;
 
@@ -160,6 +161,12 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		return $out;
 	}
 
+	/**
+	 * @param string $alpha
+	 * @param string $surname1
+	 *
+	 * @return string
+	 */
 	public function getAlphaSurnames($alpha, $surname1='') {
 		$surnames = WT_Query_Name::surnames('', $alpha, true, true, WT_GED_ID);
 		$out = '<ul>';
@@ -178,6 +185,12 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		return $out;
 	}
 
+	/**
+	 * @param string $alpha
+	 * @param string $surname
+	 *
+	 * @return string
+	 */
 	public function getSurnameFams($alpha, $surname) {
 		$families=WT_Query_Name::families($surname, $alpha, '', true, WT_GED_ID);
 		$out = '<ul>';
@@ -197,6 +210,11 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		return $out;
 	}
 
+	/**
+	 * @param string $query
+	 *
+	 * @return string
+	 */
 	public function search($query) {
 		if (strlen($query)<2) {
 			return '';

@@ -1,6 +1,4 @@
 <?php
-// Classes and libraries for module system
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
@@ -21,23 +19,26 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+/**
+ * Class page_menu_WT_Module
+ */
 class page_menu_WT_Module extends WT_Module implements WT_Module_Menu {
-	// Extend WT_Module
+	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module/menu */ WT_I18N::translate('Edit');
 	}
 
-	// Extend WT_Module
+	/** {@inheritdoc} */
 	public function getDescription() {
 		return /* I18N: Description of the “Edit” module */ WT_I18N::translate('An edit menu for individuals, families, sources, etc.');
 	}
 
-	// Implement WT_Module_Menu
+	/** {@inheritdoc} */
 	public function defaultMenuOrder() {
 		return 10;
 	}
 
-	// Implement WT_Module_Menu
+	/** {@inheritdoc} */
 	public function getMenu() {
 		global $controller;
 

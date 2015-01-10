@@ -6,7 +6,7 @@
 //
 // Derived from PhpGedView Cloudy theme
 // Original author w.a. bastein http://genealogy.bastein.biz
-// Copyright (C) 2010 PGV Development Team.  All rights reserved.
+// Copyright (C) 2010 PGV Development Team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -27,20 +27,26 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-// Convert a menu into our theme-specific format
-function getMenuAsCustomList($menu) {
+/**
+ * Convert a menu into our theme-specific format
+ *
+ * @param WT_Menu $menu
+ *
+ * @return string
+ */
+function getMenuAsCustomList(WT_Menu $menu) {
 		// Create an inert menu - to use as a label
-		$tmp=new WT_Menu(strip_tags($menu->label), '');
+		$tmp = new WT_Menu(strip_tags($menu->getLabel()), '');
+
 		// Insert the label into the submenu
-		if (is_array($menu->submenus)) {
-			array_unshift($menu->submenus, $tmp);
-		} else {
-			$menu->addSubmenu($tmp);
-		}
+	$submenus = $menu->getSubmenus();
+	array_unshift($submenus, $tmp);
+	$menu->setSubmenus($submenus);
+
 		// Neutralise the top-level menu
-		$menu->label='';
-		$menu->onclick='';
-		$menu->iconclass='';
+		$menu->setLabel('');
+		$menu->setOnclick('');
+
 		return $menu->getMenuAsList();
 }
 
@@ -48,7 +54,7 @@ function getMenuAsCustomList($menu) {
 $theme_name = "clouds"; /* I18N: Name of a theme. */ WT_I18N::translate('clouds');
 
 // A version number in the path prevents browser-cache problems during upgrade
-define('WT_CSS_URL', WT_THEME_URL . 'css-1.6.0/');
+define('WT_CSS_URL', WT_THEME_URL . 'css-1.6.2/');
 
 $headerfile = WT_THEME_DIR . 'header.php';
 $footerfile = WT_THEME_DIR . 'footer.php';

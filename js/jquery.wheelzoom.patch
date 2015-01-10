@@ -1,0 +1,40 @@
+47a48,51
+> 					innerWidth = $img.innerWidth(),
+> 					innerHeight = $img.innerHeight(),
+> 					PosX = (innerWidth - width)/2,
+> 					PosY = (innerHeight - height)/2,
+50,51c54,55
+< 					bgPosX = 0,
+< 					bgPosY = 0;
+---
+> 					bgPosX = PosX,
+> 					bgPosY = PosY;
+56c60,61
+< 					bgPosX = bgPosY = 0;
+---
+> 					bgPosX = PosX;
+> 					bgPosY = PosY;
+61,64c66,69
+< 					if (bgPosX > 0) {
+< 						bgPosX = 0;
+< 					} else if (bgPosX < width - bgWidth) {
+< 						bgPosX = width - bgWidth;
+---
+> 					if (bgPosX > PosX) {
+> 						bgPosX = PosX;
+> 					} else if (bgPosX < width + PosX - bgWidth) {
+> 						bgPosX = width + PosX - bgWidth;
+67,70c72,75
+< 					if (bgPosY > 0) {
+< 						bgPosY = 0;
+< 					} else if (bgPosY < height - bgHeight) {
+< 						bgPosY = height - bgHeight;
+---
+> 					if (bgPosY > PosY) {
+> 						bgPosY = PosY;
+> 					} else if (bgPosY < height + PosY - bgHeight) {
+> 						bgPosY = height + PosY - bgHeight;
+81c86
+< 					backgroundPosition: '0 0'
+---
+> 					backgroundPosition: PosX + 'px ' + PosY + 'px'

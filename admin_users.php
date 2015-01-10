@@ -5,7 +5,7 @@
 // Copyright (C) 2014 webtrees development team.
 //
 // Derived from PhpGedView
-// Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.
+// Copyright (C) 2002 to 2009 PGV Development Team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -36,10 +36,6 @@ $controller
 require_once WT_ROOT.'includes/functions/functions_edit.php';
 
 // Valid values for form variables
-$ALL_THEMES_DIRS=array();
-foreach (get_theme_names() as $themename=>$themedir) {
-	$ALL_THEME_DIRS[]=$themedir;
-}
 $ALL_EDIT_OPTIONS=array(
 	'none'  => /* I18N: Listbox entry; name of a role */ WT_I18N::translate('Visitor'),
 	'access'=> /* I18N: Listbox entry; name of a role */ WT_I18N::translate('Member'),
@@ -60,7 +56,7 @@ $realname           = WT_Filter::post('realname'   );
 $pass1              = WT_Filter::post('pass1',        WT_REGEX_PASSWORD);
 $pass2              = WT_Filter::post('pass2',        WT_REGEX_PASSWORD);
 $emailaddress       = WT_Filter::postEmail('emailaddress');
-$user_theme         = WT_Filter::post('user_theme',               implode('|', $ALL_THEME_DIRS));
+$user_theme         = WT_Filter::post('user_theme',               implode('|', get_theme_names()));
 $user_language      = WT_Filter::post('user_language',            implode('|', array_keys(WT_I18N::installed_languages())), WT_LOCALE);
 $new_contact_method = WT_Filter::post('new_contact_method');
 $new_comment        = WT_Filter::post('new_comment');
@@ -74,20 +70,20 @@ $verified_by_admin  = WT_Filter::postBool('verified_by_admin');
 switch ($action) {
 case 'loadrows':
 	// Generate an AJAX/JSON response for datatables to load a block of rows
-	$search = WT_Filter::get('search');
+	$search = WT_Filter::postArray('search');
 	$search = $search['value'];
-	$start  = WT_Filter::getInteger('start');
-	$length = WT_Filter::getInteger('length');
+	$start  = WT_Filter::postInteger('start');
+	$length = WT_Filter::postInteger('length');
 
-	$WHERE=" WHERE u.user_id>0";
-	$ARGS=array();
+	$WHERE = " WHERE u.user_id > 0";
+	$ARGS  = array();
 	if ($search) {
-		$WHERE.=
+		$WHERE .=
 			" AND (".
 			" user_name LIKE CONCAT('%', ?, '%') OR " .
 			" real_name LIKE CONCAT('%', ?, '%') OR " .
 			" email     LIKE CONCAT('%', ?, '%'))";
-		$ARGS=array($search, $search, $search);
+		$ARGS = array($search, $search, $search);
 	}
 	Auth::user()->setPreference('admin_users_page_size', $length);
 	if ($length > 0) {
@@ -95,21 +91,21 @@ case 'loadrows':
 	} else {
 		$LIMIT = "";
 	}
-	$order = WT_Filter::get('order');
+	$order = WT_Filter::postArray('order');
 	if ($order) {
-		$ORDER_BY=' ORDER BY ';
-		for ($i = 0; $i < count($order); ++$i) {
-			if ($i > 0) {
+		$ORDER_BY = ' ORDER BY ';
+		foreach ($order as $key => $value) {
+			if ($key > 0) {
 				$ORDER_BY .= ',';
 			}
 			// Datatables numbers columns 0, 1, 2, ...
 			// MySQL numbers columns 1, 2, 3, ...
-			switch ($order[$i]['dir']) {
+			switch ($value['dir']) {
 			case 'asc':
-				$ORDER_BY .= (1 + $order[$i]['column']) . ' ASC ';
+				$ORDER_BY .= (1 + $value['column']) . ' ASC ';
 				break;
 			case 'desc':
-				$ORDER_BY .= (1 + $order[$i]['column']) . ' DESC ';
+				$ORDER_BY .= (1 + $value['column']) . ' DESC ';
 				break;
 			}
 		}
@@ -142,7 +138,7 @@ case 'loadrows':
 		$datum[3]=edit_field_inline('user-real_name-'.$user_id, $datum[3]);
 		$datum[4]=edit_field_inline('user-email-'.    $user_id, $datum[4]);
 		// $aData[5] is a link to an email icon
-		if ($user_id != WT_USER_ID) {
+		if ($user_id != Auth::id()) {
 			$datum[5]='<i class="icon-email" onclick="return message(\''.$user_name.'\', \'\', \'\');"></i>';
 		}
 		$datum[6]=edit_field_language_inline('user_setting-'.$user_id.'-language', $datum[6]);
@@ -153,14 +149,14 @@ case 'loadrows':
 		}
 		// $aData[9] is the sortable last-login timestamp
 		if ($datum[9]) {
-			$datum[10]=format_timestamp($datum[9]).'<br>'.WT_I18N::time_ago(WT_TIMESTAMP - $datum[9]);
+			$datum[10]=format_timestamp($datum[9]).'<br>'.WT_I18N::timeAgo(WT_TIMESTAMP - $datum[9]);
 		} else {
 			$datum[10]=WT_I18N::translate('Never');
 		}
 		$datum[11]=edit_field_yes_no_inline('user_setting-'.$user_id.'-verified-',          $datum[11]);
 		$datum[12]=edit_field_yes_no_inline('user_setting-'.$user_id.'-verified_by_admin-', $datum[12]);
 		// Add extra column for "delete" action
-		if ($user_id != WT_USER_ID) {
+		if ($user_id != Auth::id()) {
 			$datum[13]='<div class="icon-delete" onclick="delete_user(\'' . WT_I18N::translate('Are you sure you want to delete “%s”?', WT_Filter::escapeJs($user_name)) . '\', \'' . WT_Filter::escapeJs($user_id) . '\');"></div>';
 		} else {
 			// Do not delete ourself!
@@ -169,7 +165,7 @@ case 'loadrows':
 	}
 
 	// Total filtered/unfiltered rows
-	$recordsFiltered = WT_DB::prepare("SELECT FOUND_ROWS()")->fetchOne();
+	$recordsFiltered = (int) WT_DB::prepare("SELECT FOUND_ROWS()")->fetchOne();
 	$recordsTotal = User::count();
 
 	Zend_Session::writeClose();
@@ -272,18 +268,19 @@ case 'createuser':
 	} else {
 		$user = User::create($username, $realname, $emailaddress, $pass1);
 		$user
-			->setPreference('reg_timestamp', date('U'))
-			->setPreference('sessiontime', '0')
-			->setPreference('theme',                $user_theme)
-			->setPreference('language',             $user_language)
-			->setPreference('contactmethod',        $new_contact_method)
-			->setPreference('comment',              $new_comment)
-			->setPreference('auto_accept',          $new_auto_accept)
-			->setPreference('canadmin',             $canadmin)
-			->setPreference('visibleonline',        $visibleonline)
-			->setPreference('editaccount',          $editaccount)
-			->setPreference('verified',             $verified)
-			->setPreference('verified_by_admin',    $verified_by_admin);
+			->setPreference('reg_timestamp',     date('U'))
+			->setPreference('sessiontime',       '0')
+			->setPreference('theme',             $user_theme)
+			->setPreference('language',          $user_language)
+			->setPreference('contactmethod',     $new_contact_method)
+			->setPreference('comment',           $new_comment)
+			->setPreference('auto_accept',       $new_auto_accept ? '1' : '0')
+			->setPreference('canadmin',          $canadmin ? '1' : '0')
+			->setPreference('visibleonline',     $visibleonline ? '1' : '0')
+			->setPreference('editaccount',       $editaccount ? '1' : '0')
+			->setPreference('verified',          $verified ? '1' : '0')
+			->setPreference('verified_by_admin', $verified_by_admin ? '1' : '0');
+
 		foreach (WT_Tree::getAll() as $tree) {
 			$tree->setUserPreference($user, 'gedcomid', WT_Filter::post('gedcomid'.$tree->tree_id, WT_REGEX_XREF));
 			$tree->setUserPreference($user, 'rootid',   WT_Filter::post('rootid'.$tree->tree_id, WT_REGEX_XREF));
@@ -297,7 +294,7 @@ case 'createuser':
 		}
 		Log::addAuthenticationLog("User ->{$username}<- created");
 		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME);
-		WT_Session::writeClose();
+		Zend_Session::writeClose();
 		exit;
 	}
 }
@@ -412,8 +409,8 @@ case 'createform':
 					<td>
 						<select name="new_user_theme">
 						<option value="" selected="selected">', WT_Filter::escapeHtml(WT_I18N::translate('<default theme>')), '</option>';
-							foreach (get_theme_names() as $themename=>$themedir) {
-								echo '<option value="', $themedir, '">', $themename, '</option>';
+							foreach (get_theme_names() as $theme_name => $theme_id) {
+								echo '<option value="', $theme_id, '">', $theme_name, '</option>';
 							}
 						echo '</select>
 					</td>';
@@ -590,15 +587,21 @@ default:
 		->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 		->addExternalJavascript(WT_JQUERY_JEDITABLE_URL)
 		->addInlineJavascript('
-			var oTable = jQuery("#list").dataTable({
+			jQuery("#list").dataTable({
 				dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
-				'.WT_I18N::datatablesI18N().',
+				' . WT_I18N::datatablesI18N() . ',
 				processing: true,
 				serverSide: true,
-				ajax: "'.WT_SCRIPT_NAME.'?action=loadrows",
+				ajax: {
+					"url": "' . WT_SCRIPT_NAME . '?action=loadrows",
+					"type": "POST"
+				},
+				search: {
+					search: "' . WT_Filter::escapeJs(WT_Filter::get('filter')) . '"
+				},
 				jQueryUI: true,
 				autoWidth: false,
-				pageLength: ' . Auth::user()->getPreference('admin_users_page_size', 10).',
+				pageLength: ' . Auth::user()->getPreference('admin_users_page_size', 10) . ',
 				pagingType: "full_numbers",
 				sorting: [[2,"asc"]],
 				columns: [
@@ -626,22 +629,22 @@ default:
 			});
 
 			/* When clicking on the +/- icon, we expand/collapse the details block */
-			jQuery("#list tbody").on("click", "td.icon-close", function () {
-				var nTr=this.parentNode;
-				jQuery(this).removeClass("icon-close");
-				oTable.fnClose(nTr);
-				jQuery(this).addClass("icon-open");
+			jQuery("#list").on("click", ".icon-open, .icon-close", function () {
+				var self = jQuery(this),
+					aData,
+					oTable = self.parents("table").dataTable();
+				    nTr=self.parent();
+
+				if(self.hasClass("icon-open")) {
+					aData=oTable.fnGetData(nTr);
+					jQuery.get("'.WT_SCRIPT_NAME.'?action=load1row&user_id="+aData[1], function(data) {
+						oTable.fnOpen(nTr, data, "details");
+					});
+				} else {
+					oTable.fnClose(nTr);
+				}
+				jQuery(this).toggleClass("icon-open icon-close");
 			});
-			jQuery("#list tbody").on("click", "td.icon-open", function () {
-				var nTr=this.parentNode;
-				jQuery(this).removeClass("icon-open");
-				var aData=oTable.fnGetData(nTr);
-				jQuery.get("'.WT_SCRIPT_NAME.'?action=load1row&user_id="+aData[1], function(data) {
-					oTable.fnOpen(nTr, data, "details");
-				});
-				jQuery(this).addClass("icon-close");
-			});
-			oTable.fnFilter("'.WT_Filter::get('filter').'");
 		');
 	break;
 }
