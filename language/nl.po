@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2014-12-15 10:38+0000\n"
-"PO-Revision-Date: 2014-12-06 11:35+0100\n"
+"PO-Revision-Date: 2015-01-10 22:31+0100\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Launchpad-Export-Date: 2013-08-04 19:03+0000\n"
-"X-Generator: Poedit 1.7.1\n"
+"X-Generator: Poedit 1.7.3\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -3356,7 +3356,7 @@ msgstr "Wijzigingen"
 #, php-format
 msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
-msgstr[0] "Wijzigingen van vandaag"
+msgstr[0] "Wijzigingen in de laatste %s dag"
 msgstr[1] "Wijzigingen in de laatste %s dagen"
 
 #: themes/_administration/header.php:126
@@ -8186,17 +8186,17 @@ msgstr "Koppel deze persoon als kind aan een bestaand gezin"
 #: admin_media.php:517 library/WT/Controller/Media.php:70
 #: library/WT/Controller/Media.php:159 modules_v3/lightbox/module.php:144
 msgid "Link this media object to a family"
-msgstr ""
+msgstr "Koppel dit media object aan een gezin"
 
 #: admin_media.php:522 library/WT/Controller/Media.php:74
 #: library/WT/Controller/Media.php:162 modules_v3/lightbox/module.php:149
 msgid "Link this media object to a source"
-msgstr ""
+msgstr "Koppel dit media object aan een bron"
 
 #: admin_media.php:512 library/WT/Controller/Media.php:66
 #: library/WT/Controller/Media.php:156 modules_v3/lightbox/module.php:139
 msgid "Link this media object to an individual"
-msgstr ""
+msgstr "Koppel dit media object aan een persoon"
 
 #: inverselink.php:35 inverselink.php:68 library/WT/Controller/Family.php:215
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:75
@@ -11529,7 +11529,7 @@ msgstr "Woonplaats"
 
 #: index_edit.php:355
 msgid "Restore the default block layout"
-msgstr ""
+msgstr "Herstel de standaard weergave voor blokken"
 
 #. I18N: http://en.wikipedia.org/wiki/User_agent
 #: admin_site_access.php:274
