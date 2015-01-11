@@ -5,7 +5,9 @@
 * Copyright (C) 2014 webtrees development team.
 *
 * Derived from PhpGedView
-* Copyright (C) 2002 to 2010 PGV Development Team. All rights reserved.
+* Copyright (C) 2002 to 2009 PGV Development Team.
+*
+* Mime-type icons from http://gnome-look.org, published under GPL (v2)
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -22,6 +24,8 @@
 * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
+/* ======== Globals ========== */
+
 /* Add a permanent scrollbar, to prevent "flickering" when hover effects lengthen page */
 html {
 	overflow-y: scroll;
@@ -36,18 +40,10 @@ body {
 
 main {
 	display: block;
+	clear: both;
 }
 
-:focus {
-	outline-style: none;
-}
-
-.submenu {
-	background-color: #eee;
-	border: thin solid #aaa;
-}
-
-/* Round corners to block-level elements */
+/* ====== Round Corners ======== */
 input,
 textarea,
 fieldset,
@@ -84,54 +80,9 @@ footer,
 	border-radius: 4px;
 }
 
-img.block {
-	border: 0;
-	height: 20px;
-	vertical-align: middle;
-}
-
-.line1,
-.line2,
-.line3 {
-	vertical-align: middle;
-}
-
-#hourglass_chart img.line4 {
-	vertical-align: middle;
-}
-
-.line5 {
-	vertical-align: top;
-}
-
-legend {
-	font-weight: bold;
-}
-
-/* Indicate that the parent died shortly after the birth */
-.parentdeath {
-	border: 1px solid #000;
-}
-
-/* Hyperlinks: regular and help */
-a {
-	text-decoration: none;
-}
-
-a:link,
-a:visited {
-	color: #369;
-}
-
-a:hover,
-a:active {
-	text-decoration: underline;
-}
-
-a.gallery img {
-	border: 0;
-	border-radius: 4px;
-	margin: 4px;
+/* ios on click workaround */
+.iconz {
+	cursor: pointer;
 }
 
 input:required:valid,
@@ -151,68 +102,55 @@ textarea:required:invalid {
 	background-position: left top;
 }
 
-/* Various text styles */
-.warning,
-.error,
-.largeError {
-	color: #f00;
+a {
+	text-decoration: none;
+}
+
+a:hover,
+a:active {
+	text-decoration: underline;
+}
+
+a:link,
+a:visited {
+	color: #369;
+}
+
+:focus {
+	outline-style: none;
+}
+
+#flash-messages {
+	clear: both;
+}
+
+dl {
+	margin: 0;
+}
+
+dt {
+	float: left;
 	font-weight: bold;
+	margin-right: 10px;
+	clear: both;
 }
 
-/* Fact labels */
-.label {
-	font-weight: bold;
+[dir=rtl] dt {
+	float: right;
+	margin-right: auto;
+	margin-left: 10px;
 }
 
-.quickfacts a {
-	font-size: smaller;
-	padding: 0 3px;
-}
-
-/* Main name on INDI/FAM/etc. pages */
-.name_head {
-	font-size: larger;
-}
-
-/* Elements used on every page */
 header {
 	color: #888;
 	text-align: center;
 }
 
-#header-user-links {
-	float: right;
-}
-
-[dir=rtl] #header-user-links {
-	float: left;
-}
-
-header h1 {
-	clear: left;
-	float: left;
-	font-size: x-large;
-	font-weight: normal;
-	margin: 0;
-}
-
-[dir=rtl] header h1 {
-	clear: right;
-	float: right;
-}
-
 #content {
-	margin-top: 12px;
+	margin-top: 5px;
 	margin-bottom: 12px;
 }
 
-footer {
-	clear: both;
-	text-align: center;
-	width: 99%;
-}
-
-/* Block level objects, such as header, footer, etc. */
 header,
 footer,
 .block {
@@ -220,262 +158,78 @@ footer,
 	clear: none;
 }
 
-.blockheader {
+th {
+	font-weight: 100;
+}
+
+ul {
+	padding-left: 15px;
+	padding-right: 15px;
+	margin: 8px;
+}
+
+img {
+	border: 0;
+}
+
+legend img {
+	height: 20px;
+	vertical-align: middle;
+	width: 20px;
+}
+
+img.block,
+#mycart img {
+	border: 0;
+	height: 25px;
+	vertical-align: middle;
+}
+
+textarea {
+	border-style: inset;
+}
+
+.topbottombar {
+	background-color: #ccc;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 4px;
+	text-align: center;
+}
+
+fieldset {
+	margin: 8px 8px 4px;
+	text-align: left;
+}
+
+[dir=rtl] fieldset {
+	text-align: right;
+}
+
+legend {
 	font-weight: bold;
 }
 
-.charts_block {
-	overflow: auto;
-}
-
-#link_change_blocks {
-	clear: both;
-	margin: 0 auto;
-	padding: 25px 0 0;
-	text-align: center;
-	width: 400px;
-}
-
-#link_change_blocks span {
-	padding: 0 50px;
-}
-
-#link_change_blocks span span {
-	padding: 0 3px;
-}
-
-#random_picture {
-	text-align: center;
-}
-
-#random_picture_box {
-	width: 100%;
-}
-
-/* Pending edits - TODO perhaps show differently in different contexts? */
-.new {
-	border: solid #00f 1px;
-	overflow: hidden;
-}
-
-.old {
-	border: solid #f00 1px;
-	overflow: hidden;
-}
-
-/* Set stack level for top two header menu rows */
-.secondary-menu ul,
-.primary-menu ul {
-	z-index: 210;
-
-}
-
-.secondary-menu {
-	white-space: nowrap;
-	float: right;
-}
-
-[dir=rtl] .secondary-menu {
-	float: left;
-}
-
-/* User Link Menus */
-.secondary-menu li {
-	background: none !important;
-	display: inline;
-	position: relative;
-	white-space: nowrap;
-}
-
-.secondary-menu li:before {
-	content: " | ";
-}
-
-.secondary-menu li ul li:before {
-	content: "";
-}
-
-.secondary-menu li:first-child:before {
-	content: "";
-}
-
-.secondary-menu li ul {
-	display: none;
-	position: absolute;
-	left: 0;
-	top: 15px;
-	background-color: #eee;
-	border: thin solid #aaa;
-}
-
-[dir=rtl] .secondary-menu li ul {
-	left: auto;
-	right: 0;
-}
-
-/* position sub-sub-menus */
-.secondary-menu ul ul {
-	top: 0;
-	left: 100px;
-}
-
-[dir=rtl] .secondary-menu ul ul {
-	top: 0;
-	left: auto;
-	right: 100px;
-}
-
-.secondary-menu li ul li {
-	display: block;
-	text-align: left;
-}
-
-[dir=rtl] .secondary-menu li ul li {
-	text-align: right;
-}
-
-.secondary-menu,
-.secondary-menu li ul {
-	list-style: none;
-	margin: 0;
+select {
+	font-size: 12px;
+	margin: 0 7px;
 	padding: 1px;
 }
 
-.secondary-menu li:hover > ul {
-	display: block;
+header form {
+	font-size: 12px;
 }
 
-.secondary-menu ul li a {
-	background-color: #eee;
-	padding: 2px 5px;
-	display: block;
+#mycart a img {
+	height: 15px;
 }
 
-.secondary-menu ul li a:hover {
-	background-color: #369;
-	color: #fff;
-	text-decoration: none;
+.button {
+	width: 60px;
 }
 
-/* Main menus */
-header nav {
-	clear: both;
-	text-align: center;
-	padding-top: 12px;
-}
-
-.header-search {
-	display: inline-block;
-}
-
-.primary-menu {
-	margin: 0;
-}
-
-.primary-menu li {
-	background: none !important;
-	display: inline;
-	position: relative;
-	white-space: nowrap;
-}
-
-.primary-menu li:before {
-	content: " | ";
-}
-
-.primary-menu li ul li:before {
-	content: "";
-}
-
-.primary-menu li:first-child:before {
-	content: "";
-}
-
-.primary-menu li ul {
-	display: none;
-	position: absolute;
-	left: 0;
-	top: 15px;
-	background-color: #eee;
-	border: thin solid #aaa;
-}
-
-[dir=rtl] .primary-menu li ul {
-	left: auto;
-	right: 0;
-}
-
-/* position sub-sub-menus */
-
-.primary-menu ul ul {
-	top: 0;
-	left: 100px;
-}
-
-[dir=rtl] .primary-menu ul ul {
-	top: 0;
-	left: auto;
-	right: 100px;
-}
-
-.primary-menu li ul li {
-	display: block;
-	text-align: left;
-}
-
-[dir=rtl] .primary-menu li ul li {
-	text-align: right;
-}
-
-.primary-menu,
-.primary-menu li ul {
-	list-style: none;
-	padding: 1px;
-}
-
-.primary-menu li:hover > ul {
-	display: block;
-
-}
-
-.primary-menu ul li a {
-	background-color: #eee;
-	padding: 2px 5px;
-	display: block;
-
-}
-
-.primary-menu ul li a:hover {
-	background-color: #369;
-	color: #fff;
-	text-decoration: none;
-}
-
-.lang-active,
-.theme-active {
-	font-weight: 900;
-}
-
-#menu-language li {
-	text-align: left; /* The language menu is always LTR, even on RTL pages */
-}
-
-#menu-theme li {
-	text-align: left; /* The theme menu is always LTR, even on RTL pages */
-}
-
-/* person boxes are used in various charts */
-
-.person_box {
-	background-color: #ddf;
-}
-
-.person_boxF {
-	background-color: #fdd;
-}
-
-.person_boxNN {
-	background-color: #dfd;
+.alpha_index {
+	color: #999;
 }
 
 .person_box,
@@ -484,9 +238,30 @@ header nav {
 	margin: 1px 0;
 }
 
-.person_box_template .details0,
+.person_box_template .details0, 
 .person_box_template .details1 {
-	font-size: smaller;
+    font-size: smaller;
+}
+
+.person_box {
+	padding: 3px;
+	background-color: #ddf;
+}
+
+.person_boxF {
+	padding: 3px;
+	background-color: #fdd;
+}
+
+.person_boxNN {
+	padding: 3px;
+	background-color: #dfd;
+}
+
+.person_box:target,
+.news_box:target,
+#gedcom_stats:target {
+	background-color: #ffc;
 }
 
 .person_box_lifespan {
@@ -501,56 +276,40 @@ header nav {
 	min-height: 50px;
 }
 
-[dir=rtl] .person_box [dir=rtl] .person_boxF [dir=rtl] .person_boxNN {
-	margin: 0 3px 0 0;
-}
-
-.action_headerF {
-	background: #fdd;
-}
-
-.action_header {
-	background: #ddf;
-}
-
-/* index.php */
-#index_main_blocks {
-	width: 60%;
-	float: left;
-}
-
-#index_small_blocks {
-	width: 40%;
-	float: right;
-}
-
-#index_full_blocks {
-}
-
-[dir=rtl] #index_main_blocks {
-	float: right;
-}
-
-[dir=rtl] #index_small_blocks {
-	float: left;
-}
-
-#main_select,
-#available_select,
-#right_select {
-	min-width: 150px;
-}
-
-.user_welcome_block table,
-.gedcom_block_block table {
-	margin: auto;
-}
-
-.user_welcome_block td,
-.gedcom_block_block td {
-	width: 33%;
+.center {
 	text-align: center;
+}
+
+table.center {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.list_table {
+	margin: 0 auto;
+}
+
+.list_label,
+.list_label_wrap {
+	background-color: #ccc;
+	font-weight: bold;
+	text-align: center;
+}
+
+.list_value,
+.list_value_wrap {
+	background-color: #ddd;
 	vertical-align: top;
+}
+
+.list_label,
+.list_value {
+	white-space: nowrap;
+}
+
+.list_label_wrap,
+.list_value_wrap {
+	white-space: normal;
 }
 
 .facts_table {
@@ -561,37 +320,270 @@ div.fact_SHARED_NOTE {
 	clear: both;
 }
 
-/*-- pedigree chart specific stylesheets --*/
-#pedigree-page table.list_table {
-	margin: 0 auto;
-	width: 500px;
+.facts_label {
+	background-color: #ccc;
+	padding: 4px;
+	width: 20%;
+	text-align: center;
 }
 
-.pedigree_chart_table {
+.facts_label03 {
+	background-color: #ccc;
+	padding: 4px;
+	text-align: center;
+	font-weight: bold;
+}
+
+.facts_value {
+	background-color: #ddd;
+	padding: 4px;
+}
+
+.quickfacts a {
+	padding: 0 3px;
+	font-size: 9px;
+}
+
+.tabs_table {
+	width: 99%;
+}
+
+.name1, .name2 {
+	color: #555;
+}
+
+a:hover .name1, a:hover .name2 {
+	color: #f00;
+}
+
+a:hover .nameZoom {
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.nameZoom {
+	color: #555;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.details_label {
+	font-weight: bold;
+}
+
+.name_head {
+	color: #555;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 2;
+	padding: 0 5px;
+}
+
+.date {
+	color: #337;
+}
+
+.label {
+	font-weight: bold;
+}
+
+.error {
+	color: #f00;
+	font-weight: bold;
+}
+
+.largeError {
+	color: #f00;
+	font-weight: bold;
+}
+
+.warning {
+	color: #f00;
+	font-weight: bold;
+}
+
+.indent {
+	padding-left: 7px;
+}
+
+.image {
+	height: 150px;
+	padding: 5px;
+	margin: 2px;
+}
+
+.gender_image {
+	margin: 0 3px;
 	border: 0;
-	border-collapse: collapse;
-	padding: 0;
-	width: 100%;
+	vertical-align: middle;
 }
 
-#pedigree_chart {
-	position: relative;
-	top: -200px;
-	left: 0;
+.thumbnail {
+	height: auto;
+	padding: 3px;
 }
 
-#pedigree_canvas {
-	color: #aaa;
+
+.sublinks_cell {
+	background-color: #ccc;
+}
+
+.submenu .icon {
+	vertical-align: middle;
+	width: 20px;
+	height: 20px;
+}
+
+.subheaders {
+	font-weight: bold;
+	font-size: 15px;
+	margin-top: 15px;
+	vertical-align: bottom;
+}
+
+.age {
+	font-size: 9px;
+}
+
+.parentdeath {
+	padding: 1px;
+}
+
+.source_citations {
+	display: none;
+}
+
+.selected-option {
+	background-color: #d6e0ea;
+}
+
+.border1 {
+	border: none;
+}
+
+.menuitem {
+	text-decoration: none;
+	font-size: 11px;
+	padding: 1px;
+}
+
+.menuitem_hover {
+	text-decoration: none;
+	font-size: 11px;
+	padding: 1px;
+}
+
+.menuitem .icon, .menuitem_hover .icon {
+	width: 50px;
+	height: 50px;
+}
+
+.submenu {
+	text-decoration: none;
+	font-size: 11px;
+	background-color: #eee;
+	border: thin #aaa;
+	visibility: hidden;
 	position: absolute;
-	top: 200px;
-	z-index: -1000;
+	padding: 5px;
 }
 
-#pedigree_chart #childarrow,
-#pedigree_chart #uparrow,
-#pedigree_chart .shadow,
-.ancestorarrow {
-	position: absolute;
+.submenuitem  {
+	vertical-align: middle;
+	font-size: 11px;
+	height: 20px;
+	text-decoration: none;
+	background-color: #eee;
+	padding: 1px;
+	white-space: nowrap;
+}
+
+.submenuitem_hover {
+	vertical-align: middle;
+	height: 20px;
+	font-size: 11px;
+	background-color: #eee;
+	white-space: nowrap;
+	padding: 1px;
+}
+
+.submenuitem a,
+.submenuitem_hover a {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.journal_box {
+	padding: 3pt;
+	border: thin solid #aaa;
+	overflow: visible;
+}
+
+.news_box {
+	background-color: #ccc;
+	border-top: none;
+}
+
+.news_title {
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.news_date {
+	margin-bottom: 12px;
+}
+
+.current_day {
+	font-weight: bold;
+	font-size: 16px;
+}
+
+.cal_day {
+	float: left;
+	font-weight: bold;
+}
+
+.rtl_cal_day {
+	direction: rtl;
+	float: right;
+	color: #00f;
+	font-weight: bold;
+}
+
+.helpcontent {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.helpcontent dt {
+	clear: both;
+}
+
+#my-page h1 {
+	margin: 0.25em auto 0.6em;
+}
+
+.tdtop {
+	vertical-align: top;
+}
+
+.tdmid {
+	vertical-align: middle;
+}
+
+.tdbot,
+.tvertline {
+	vertical-align: bottom;
+}
+
+.line1,
+.line2,
+.line3 {
+	vertical-align: middle;
+}
+
+.line5 {
+	vertical-align: top;
 }
 
 #childbox {
@@ -620,477 +612,48 @@ div.fact_SHARED_NOTE {
 	margin-left: 5px;
 }
 
-#hourglass_chart table,
-.charts_block table {
-	border-collapse: collapse;
-}
-
-#hourglass_chart td,
-.charts_block td {
-	padding: 0;
-	empty-cells: show;
-}
-
-#pedigree_chart #childbox {
-	border: 1px solid;
-	background-color: #fff;
-}
-
-.thumbnail {
-	height: auto;
-	padding: 5px;
-}
-
-#familybook_chart {
-	margin-left: 10px;
-}
-
-#familybook_chart table {
-	border-collapse: collapse;
-	empty-cells: show;
-}
-
-#familybook_chart td {
-	margin: 0;
-	padding: 0;
-}
-
-#familybook_chart h2 {
-	text-align: center;
-}
-
-#familybook_chart .line3,
-#familybook_chart .pvline,
-#familybook_chart .spacer {
-	width: 3px;
-}
-
-#familybook_chart .line4 {
-	width: 7px;
-	vertical-align: middle;
-}
-
-[ID^="vline"] {
-	width: 3px;
-}
-
-#familybook_chart h3 {
-	text-align: center;
-}
-
-#familybook_chart .person_box,
-#familybook_chart .person_boxF,
-#familybook_chart .person_boxNN {
-	padding: 3px;
-}
-
-#relationship-page h3 {
-	margin: 20px 0 0 20px;
-}
-
-#relationship_chart {
-	margin: 0 20px;
-}
-
-.tdtop {
-	vertical-align: top;
-}
-
-.tdmid {
-	vertical-align: middle;
-}
-
-.tdbot,
-.tvertline {
-	vertical-align: bottom;
-}
-
-[dir=rtl] #familybook_chart {
-	margin-right: 10px;
-}
-
-/*-- pedigree chart rtl specific stylesheets --*/
-[dir=rtl] #pedigree_chart {
-	left: auto;
-	right: 0;
-}
-
-/* Printer friendliness */
-@media print {
-	.person_box, .person_boxF, .person_boxNN {
-		border: solid #888 1px;
-		background: #fff;
-	}
-
-	#header_accordion1 {
-		width: 510px !important;
-	}
-
-	header,
-	footer,
-	form,
-	#pedigree-page #people,
-	#CB_ALL, label,
-	#separator,
-	.noprint {
-		display: none !important;
-	}
-
-	#familybook_chart h3 {
-		margin-bottom: 10px;
-	}
-}
-
-/* Tabular data */
-.list_table {
-	padding: 3px;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.topbottombar,
-.descriptionbox {
-	font-weight: bold;
-	background-color: #ccc;
-	vertical-align: top;
-}
-
-.optionbox {
-	background-color: #ddd;
-	color: #000;
-	vertical-align: top;
-	white-space: nowrap;
-}
-
-.facts_label,
-.facts_label03 {
-	background-color: #ccc;
-	width: 20%;
-	text-align: center;
-}
-
-.facts_value {
-	background-color: #ddd;
-}
-
-.list_label,
-.list_value {
-	white-space: nowrap;
-}
-
-.list_label_wrap,
-.list_value_wrap {
-	white-space: normal;
-}
-
-.list_label,
-.list_label_wrap {
-	background-color: #ccc;
-}
-
-.list_value,
-.list_value_wrap {
-	background-color: #ddd;
-}
-
-.journal_box {
-	padding: 3pt;
-	border: thin solid #aaa;
-	overflow: visible;
-}
-
-.news_title {
-	font-weight: bold;
-}
-
-/* Autocomplete styles*/
-.ui-autocomplete-input {
-	background-color: #eea;
-}
-
-.ui-autocomplete {
-	padding: 0;
-	border: thin solid #aaa;
-	background-color: #fff;
-	z-index: 99999;
-	list-style: none outside none;
-	margin: 0;
-	max-height: 200px;
-	overflow-y: auto;
-}
-
-.ui-autocomplete li {
-	margin: 0;
-	padding: 2px 5px;
-	cursor: default;
-	display: block;
-	font: menu;
-	line-height: 14px; /* absolute setting required for firefox? */
-	overflow: hidden;
-}
-
-.ui-autocomplete-loading {
-	background: #fff url(images/indicator.gif) right center no-repeat;
-}
-
-.ui-autocomplete li:nth-child(odd) {
-	background-color: #eee;
-}
-
-.ui-autocomplete a.ui-state-focus {
-	background: #369;
-	color: #fff;
-}
-
-.ui-sortable li {
-	list-style-type: none;
-}
-
-.ui-sortable .noprint {
-	display: none;
-}
-
-.center {
-	text-align: center;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.nowrap {
-	white-space: nowrap;
-}
-
-.wrap {
-	white-space: normal;
-}
-
-.tabs_table {
-	width: 99%;
-}
-
-.indent {
-	padding-left: 7px;
-}
-
-.image {
-	height: 150px;
-	padding: 5px;
-	margin: 2px;
-}
-
-.icon {
-	padding-left: 0;
-	padding-right: 5pt;
-}
-
-.subheaders {
-	margin-top: 15px;
-	vertical-align: bottom;
-}
-
-.age {
-	font-size: smaller;
-}
-
-.source_citations {
-	display: none;
-}
-
-.selected-option {
-	background-color: #d6e0ea;
-}
-
-.user_links {
-	white-space: nowrap;
-}
-
-.hit-counter {
-	background: #000;
-	color: #fff;
-	font-weight: bold;
-}
-
-.current_day {
-	font-weight: bold;
-	font-size: larger;
-}
-
-.cal_day {
-	float: left;
-	font-weight: bold;
-}
-
-.rtl_cal_day {
-	direction: rtl;
-	float: right;
-	color: #00f;
-	font-weight: bold;
-}
-
-.helpcontent {
-	margin-left: 10px;
-	margin-right: 10px;
-}
-
-.helpcontent dt {
-	clear: both;
-}
-
-/*-- descendancy chart specific stylesheets --*/
-#descendancy_chart {
-	margin: 20px;
-}
-
-#descendancy_chart ul {
-	background-image:url(images/vline.png);
-	background-position:left top;background-repeat:repeat-y;
-	list-style: none;
-	margin: 0 0 5px 15px;
-	padding: 0 15px;
-}
-
-#descendancy_chart li {
-	list-style: none;
-	margin: 0 0 0 -13px;
-	padding-top: 0;
-	padding-right: 0;
-	padding-bottom: 0;
-}
-
-li .person_box,
-li .person_boxF {
-	margin: 3px 0;
-}
-
-#descendancy_chart span.details1 div[class^="fact_"] {
-	display: inline-block;
-}
-
-#descendancy_chart td.details1 {
-	padding-top: 5px;
-}
-
-/*-- descendancy chart rtl specific stylesheets --*/
-[dir=rtl] #descendancy_chart ul {
-	background-position: right top;
-	left: auto;
-	margin: 0 15px 0 0;
-}
-
-[dir=rtl] #descendancy_chart li {
-	margin: 0 -13px 0 0;
-	padding: 0 2px 0 0;
-	left: auto;
-}
-
-/*-- ancestry chart specific stylesheets --*/
-#ancestry_chart ul {
-	background-image:url(images/vline.png);
-	background-position:left top;background-repeat:repeat-y;
-	list-style: none;
-	display: block;
-	margin: 0 0 0 15px;
-	padding: 0 15px;
-}
-
-#ancestry_chart li {
-	list-style: none;
-	margin: 0 0 2px -13px;
-	padding-top: 0;
-	padding-right: 0;
-	padding-bottom: 0;
-}
-
-#ancestry_chart li table {
-	margin: 5px 0;
-}
-
-/*-- ancestry chart rtl specific stylesheets --*/
-[dir=rtl] #ancestry_chart ul {
-	background-position: right top;
-	margin: 0 15px 0 0;
-	left: auto;
-}
-
-#ancestry_chart span.details1 div[class^="fact_"] {
-	display: inline-block;
-}
-
-[dir=rtl] #ancestry_chart li {
-	margin: 0 -13px 0 0;
-	padding: 0 2px 0 0;
-	left: auto;
-}
-
-#compact_chart,
-#fan_chart,
-#ancestry_chart,
-#familybook_chart,
-#hourglass_chart {
-	margin: 20px;
-}
-
-.fan_chart_menu {
-	position: absolute;
-	display: none;
-	z-index: 100;
-}
-
-#fan_chart ul {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	color: #369;
-}
-
-#fan_chart ul.children li:before {
-	content: "< ";
-	font-weight: bold;
-}
-
-#fan_chart_img {
-	text-align: center;
-}
-
-#timeline_chart {
-	position: relative;
-	top: 0;
-	left: 0;
-}
-
 .person0 {
 	background-color: #aaf;
+	border: none;
 	vertical-align: top;
 }
 
 .person1 {
 	background-color: #afa;
+	border: none;
 	vertical-align: top;
 }
 
 .person2 {
 	background-color: #faa;
+	border: none;
 	vertical-align: top;
 }
 
 .person3 {
 	background-color: #55f;
+	border: none;
 	vertical-align: top;
 }
 
 .person4 {
 	background-color: #f55;
+	border: none;
 	vertical-align: top;
 }
 
 .person5 {
 	background-color: #5f5;
+	border: none;
 	vertical-align: top;
 }
 
 .listlog {
 	line-height: 20pt;
-	color: #555;
+}
+
+.formField {
+	font-size: 12px;
 }
 
 .starredname {
@@ -1105,11 +668,33 @@ li .person_boxF {
 	font-weight: 600;
 }
 
+.topbottombar,
+.descriptionbox {
+	font-weight: bold;
+	background-color: #ccc;
+	vertical-align: top;
+}
+
+.descriptionbox {
+	font-size: 14px;
+	background-color: #ccc;
+	vertical-align: top;
+	padding: 3px;
+}
+
+.optionbox {
+	background-color: #ddd;
+	color: #000;
+	border: none;
+	vertical-align: top;
+	white-space: nowrap;
+	padding: 3px;
+}
+
 .vmiddle {
 	vertical-align: middle;
 }
 
-/* Colors */
 .red {
 	color: #f00;
 }
@@ -1119,7 +704,6 @@ li .person_boxF {
 	opacity: 0.8;
 }
 
-/* Width settings */
 .width10 {
 	width: 10%;
 }
@@ -1176,14 +760,28 @@ li .person_boxF {
 	width: 100%;
 }
 
-/* Font sizes */
 .font9 {
-	font-size: smaller;
+	font-size: 9px;
 }
 
-/* Message box */
+.font11 {
+	font-size: 11px;
+}
+
 .messagebox {
 	background-color: #bce;
+	border: none;
+}
+
+/* ---Pending edits--- */
+.new {
+	border: solid #00f 1px;
+	overflow: hidden;
+}
+
+.old {
+	border: solid #f00 1px;
+	overflow: hidden;
 }
 
 a.showit {
@@ -1209,74 +807,119 @@ a.showit:hover > span {
 	top: 22px;
 	left: 0;
 	width: 225px;
-	border-left: 15px outset #222;
 	border-top: 2px solid #222;
-	border-bottom: 2px solid #000;
 	border-right: 2px solid #000;
+	border-bottom: 2px solid #000;
+	border-left: 15px outset #222;
 	padding: 3px;
 	background: #555;
 	color: #fff;
+	font-size: 15px;
 	text-align: left;
 	opacity: .85;
 	z-index: 5;
 }
 
-.lifespan_people span:first-letter {
-	font-variant: small-caps;
-	padding: 1px;
-}
-
-.lifespan_outer {
-	position: relative;
-	width: 99.5%;
-	height: 600px;
-	overflow: hidden;
-}
-
-.lifespan_outer a {
-	color: #000;
-}
-
-.lifespan_timeline {
-	position: absolute;
-	width: 100%;
-	left: -10px;
-	top: -65px;
-	z-index: 2;
-	background-color: #fff;
-}
-
-.lifespan_people {
-	position: absolute;
-	width: 500px;
-	left: -10px;
-	top: -60px;
-	z-index: 1;
+.tag_cloud {
+	text-align: center;
 }
 
 .tag_cloud a {
 	white-space: nowrap;
 }
 
+/* ---Autocomplete styles--- */
+.ui-autocomplete-input {
+	background-color: #eea;
+}
+
+.ui-autocomplete {
+	padding: 0;
+	border: thin solid #aaa;
+	background-color: #fff;
+	z-index: 99999;
+	list-style: none outside none;
+	margin: 0;
+	max-height: 200px;
+	overflow-y: auto;
+}
+
+.ui-autocomplete li {
+	margin: 0;
+	padding: 2px 5px;
+	font-size: 12px;
+	cursor: default;
+	display: block;
+	/* if width will be 100% horizontal scrollbar will apear when scroll mode will be used */
+	/* width: 100%; */
+	font: menu;
+	/* it is very important, if line-height not setted or setted in relative units scroll will be broken in firefox */
+	line-height: 14px;
+	overflow: hidden;
+}
+
+.ui-autocomplete-loading {
+	background: #fff url(images/indicator.gif) right center no-repeat;
+}
+
+.ui-autocomplete li:nth-child(odd) {
+	background-color: #eee;
+}
+
+.ui-autocomplete a.ui-state-focus {
+	background: #369;
+	color: #fff;
+}
+
+.ui-sortable li {
+	list-style-type: none;
+}
+
+.ui-sortable .noprint {
+	display: none;
+}
+
+/* ---End of Autocomplete styles--- */
+
+.nowrap {
+	white-space: nowrap;
+}
+
+.wrap {
+	white-space: normal;
+}
+
+.statistics-page {
+	text-align: center;
+}
+
+.center2 {
+	text-align: center;
+}
+
+.gchart {
+	border: none;
+}
+
+/* ---Find special characters--- */
+.largechars {
+	font-family: monospace;
+	font-size: 200%;
+}
+
+#facts_content dd {
+	float: left;
+	width: 70%;
+}
+
 .clearfloat {
 	clear: both;
 }
 
-dl {
-	margin: 0;
-}
+/* this keeps the tag color the same when it is a link as when not */
 
-dt {
-	float: left;
-	font-weight: bold;
-	margin-right: 10px;
-	clear: both;
-}
-
-[dir=rtl] dt {
-	float: right;
-	margin-right: auto;
-	margin-left: 10px;
+.place {
+	padding-top: 5px;
 }
 
 #pending h2 {
@@ -1289,6 +932,7 @@ dt {
 	margin-top: 20px;
 }
 
+/* ======== Person box ======= */
 .gedcom_favorites_block,
 .user_favorites_block,
 .person_box_template {
@@ -1317,11 +961,11 @@ dt {
 	height: auto;
 }
 
-.person_box_template .namedef i {
+.person_box_template .namedef i[class^="icon-sex"] {
 	margin-left: 3px;
 }
 
-[dir=rtl] .person_box_template .namedef i {
+[dir=rtl] .person_box_template .namedef i[class^="icon-sex"] {
 	margin-right: 3px;
 }
 
@@ -1348,11 +992,11 @@ dt {
 	overflow: hidden;
 }
 
-.person_box_template a.gallery img {
+.person_box_template img,
+.person_box_template a.gallery {
 	float: left;
 	height: 50px;
-	margin: 0 3px 0 0;
-	padding: 0;
+	margin: 0 4px 0 0;
 	max-width: 80px;
 	width: auto;
 }
@@ -1360,7 +1004,7 @@ dt {
 [dir=rtl] .person_box_template img,
 [dir=rtl] .person_box_template a.gallery {
 	float: right;
-	margin: 0 0 0 3px;
+	margin: 0 0 0 4px;
 }
 
 .person_box_template i[class^="icon-silhouette"] {
@@ -1377,6 +1021,7 @@ dt {
 	margin: 0 auto;
 }
 
+#medialist-page .list_table,
 #medialist-page .list_table_controls {
 	width: 100%;
 }
@@ -1385,8 +1030,7 @@ dt {
 	min-width: 40px;
 	text-align: center;
 }
-
-/* ============== medialist.php ======================= */
+/* ======== medialist.php ==== */
 .makeMenu li ul {
 	border: thin solid #AAA;
 	position: absolute;
@@ -1410,7 +1054,9 @@ dt {
 }
 
 .lb-menu ul {
+	display: block;
 	list-style-type: none;
+	margin: 0;
 }
 
 .lb-menu > li {
@@ -1419,37 +1065,54 @@ dt {
 	top: 0;
 }
 
+.lb-menu li:first-child {
+	padding-left: 0;
+}
+
 .lb-menu > li ul {
 	display: none;
 }
 
 .lb-menu > li:hover ul {
 	display: block;
+	top: 36px;
+}
+
+.lb-menu a {
+	display: block;
 }
 
 .lb-menu li a {
-	padding-top: 24px;
+	padding: 24px 10px 1px 5px;
 }
 
 .lb-menu li li a {
-	padding: 5px 10px 5px 5px;
-	display: block;
+	padding: 0;
 	background-color: #fff;
+	padding: 5px 10px 5px 5px;
 }
 
-.secondary-menu.lb-menu li:before {
-	content: "";
-}
-
-.lb-image_edit, .lb-image_link {
-	padding-right: 5px;
+.lb-menu li {
+	border: 0;
 }
 
 [dir=rtl] .lb-menu > li {
 	float: right;
 }
 
-/* ============== login.php ======================= */
+.lb-image_edit {
+	background: url(images/image_edit.png) no-repeat 50% 20%;
+}
+
+.lb-image_link {
+	background: url(images/image_link.png) no-repeat 50% 20%;
+}
+
+.lb-image_view {
+	background: url(images/image_view.png) no-repeat 50% 20%;
+}
+
+/* login.php */
 #login-register-page h2 {
 	text-align: center;
 }
@@ -1461,6 +1124,7 @@ dt {
 
 #login-register-page .back {
 	font-weight: bold;
+	font-size: 14px;
 	text-align: center;
 }
 
@@ -1472,9 +1136,11 @@ dt {
 
 #login-register-page .confirm p {
 	font-weight: bold;
+	font-size: 14px;
 }
 
 #login-register-page .confirm p + p {
+	font-size: 12px;
 	font-weight: normal;
 }
 
@@ -1544,6 +1210,7 @@ dt {
 #register-form textarea {
 	width: 220px;
 	margin: 0 10px;
+	padding: 3px;
 }
 
 #register-form label select {
@@ -1572,7 +1239,12 @@ dt {
 	text-align: left;
 }
 
-/* ============== reportengine.php ======================= */
+[dir=rtl] #register-form div,
+[dir=rtl] #verify-form div {
+	text-align: left;
+}
+
+/* ======== reportengine.php = */
 #reportengine-page table {
 	margin: 20px auto;
 }
@@ -1591,77 +1263,6 @@ dt {
 #reportengine-page .report-type p {
 	margin: 0;
 	text-align: center;
-}
-
-.gedcom_favorites_block .person_box,
-.gedcom_favorites_block .person_boxF,
-.gedcom_favorites_block .person_boxNN {
-	height: auto;
-}
-
-.user_favorites_block .person_box,
-.user_favorites_block .person_boxF,
-.user_favorites_block .person_boxNN {
-	height: auto;
-}
-
-/* ============= Statistics block ============ */
-.gedcom_stats_block table td {
-	vertical-align: top;
-}
-
-.gedcom_stats_block table td td {
-	vertical-align: middle;
-}
-
-.gedcom_stats_block td .stats_value {
-	text-align: center;
-}
-
-/* ============= Theme select block ============ */
-.theme_form ul {
-	margin: -10px auto;
-}
-
-.theme_form li {
-	visibility: hidden;
-}
-
-.theme_form li ul li {
-	display: inline-block;
-	padding: 10px;
-	visibility: visible;
-}
-
-/* ======= Favourites block ========== */
-.blockcontent .person_box_template .details2 {
-	min-height: 40px;
-}
-
-.blockcontent [class*='box-style2'] {
-	margin: 5px 0;
-}
-
-.add_fav_head {
-	font-weight: 900;
-	margin: 5px 0;
-}
-
-.add_fav_head i {
-	margin: 0 5px 1px;
-}
-
-.add_fav_ref label {
-	display: inline-block;
-	min-width: 100px;
-}
-
-.add_fav_ref label:after {
-	content: ":";
-}
-
-.add_fav_ref input {
-	margin: 0 5px;
 }
 
 .itr {
@@ -1686,8 +1287,8 @@ dt {
 
 .popup ul {
 	background-image: none !important;
-	font-size: smaller;
 	list-style: none;
+	font-size: 9px;
 	margin: 0;
 	padding: 0 10px;
 }
@@ -1787,560 +1388,7 @@ dt {
 	text-align: center;
 }
 
-/* FAQ table styles */
-table.faq {
-	background-color: #ddd;
-	margin: 5px 0 50px 5px;
-	width: 98%;
-}
-
-table.faq tr.odd td {
-	background-color: #eee;
-}
-
-div.faq_title {
-	background-color: #ddd;
-	margin: 12px 0 0 12px;
-	padding: 3px;
-	font-weight: bold;
-	width: 98%;
-}
-
-div.faq_body {
-	clear: both;
-	margin: 12px 0;
-	padding: 12px;
-}
-
-.faq_italic {
-	font-style: italic;
-	font-weight: bold;
-	padding: 0 10px;
-}
-
-.faq_top {
-	float: right;
-}
-
-.faq_edit {
-	float: right;
-}
-
-[dir=rtl] .faq_top {
-	float: left;
-}
-
-[dir=rtl] .faq_edit {
-	float: left;
-}
-
-ul.clist {
-	list-style-image: none;
-	text-decoration: none;
-	color: #000;
-	margin: 0;
-}
-
-/* Find special characters */
-.largechars {
-	font-family: monospace;
-	font-size: xx-large;
-}
-
-/* ========= Positioning edit, copy, delete links ============= */
-/* General use */
-.editfacts {
-	clear: left;
-	padding-top: 15px;
-}
-
-/* a container for the following three links */
-.editfacts a:hover,
-.field a:hover {
-	background-color: transparent !important;
-}
-
-.editlink,
-.copylink,
-.deletelink {
-	float: left;
-}
-
-[dir=rtl] .editlink,
-[dir=rtl] .copylink,
-[dir=rtl] .deletelink {
-	float: right;
-}
-
-span.link_text {
-	display: none;
-}
-
-/* Indi header */
-.field .editlink,
-.field .deletelink,
-.field .copylink {
-	float: right;
-}
-
-[dir=rtl].field .editlink,
-[dir=rtl].field .deletelink {
-	float: left;
-}
-
-/* =========== end edit, copy, delete links ==================== */
-
-/* =========== Indi header ================== */
-
-#indi_header {
-	overflow: hidden;
-	border-radius: 4px;
-	margin: 0 4px 5px;
-	width: 98%;
-}
-
-#indi_header h3 {
-	color: #369;
-	font-weight: bold;
-	margin: 0;
-	padding: 0 10px 0 30px;
-	text-align: left;
-	overflow: hidden;
-	position: relative;
-}
-
-#indi_header .name_one {
-	font-size: larger;
-}
-
-#indi_header h3 .header_age {
-	padding: 5px 0 5px 5px;
-	float: right;
-	font-weight: normal;
-	font-size: smaller;
-}
-
-#indi_mainimage {
-	float: right;
-}
-
-#header_accordion1 {
-	padding: 0 10px;
-	overflow: hidden;
-}
-
-#header_accordion1 .indi_name_details {
-	margin: 0;
-	overflow: hidden;
-	padding: 5px;
-}
-
-.indi_name_details dt:after {
-	content: ":";
-}
-
-#indi_note {
-	margin: 0 0 5px;
-}
-
-#indi_note .fact_NOTE {
-	float: left;
-	margin: 0 10px 0 0;
-}
-
-#indi_note .fact_NOTE,
-#indi_note .fact_SOUR {
-	clear: both;
-}
-
-.markdown p {
-	margin: 0 0 0.5em;
-	white-space: pre-wrap;
-}
-
-.markdown table {
-	border-collapse: collapse;
-}
-
-.markdown th {
-	font-weight: bold;
-}
-
-.markdown td,
-.markdown th {
-	border: solid thin #000;
-	padding: 3px;
-	font-size: 10px;
-}
-
-.indi_table {
-	clear: left;
-}
-
-#sex {
-	float: right;
-}
-
-#dates {
-	color: #369;
-	float: right;
-}
-
-dd .editlink,
-dd .deletelink {
-	float: right;
-}
-
-[dir=rtl] #indi_header {
-	float: right;
-}
-
-[dir=rtl] #indi_header h3 {
-	padding: 0 30px 0 10px;
-	text-align: right;
-}
-
-[dir=rtl] #indi_header h3 .header_age {
-	padding: 5px 5px 5px 0;
-	float: left;
-}
-
-[dir=rtl] #main_name {
-	float: right;
-}
-
-[dir=rtl] #indi_mainimage {
-	float: left;
-}
-
-[dir=rtl] #indi_note .fact_NOTE {
-	float: right;
-	margin: 0 0 0 10px;
-}
-
-[dir=rtl] .indi_table {
-	clear: right;
-}
-
-[dir=rtl] #sex {
-	float: left;
-}
-
-[dir=rtl] #dates {
-	float: left;
-}
-
-[dir=rtl] dd .editlink,
-[dir=rtl] dd .deletelink {
-	float: left;
-}
-
-/* INDI IMAGE SPRITE */
-.male_gender,
-.female_gender,
-.unknown_gender,
-.editicon,
-.copyicon,
-.deleteicon {
-	display: block;
-	background: url(images/indi_sprite.png) no-repeat;
-}
-
-.female_gender {
-	background-position: -45px 3px;
-	width: 24px;
-	height: 30px;
-}
-
-.male_gender {
-	background-position: -72px 3px;
-	width: 24px;
-	height: 30px;
-}
-
-.unknown_gender {
-	background-position: -100px 4px;
-	width: 24px;
-	height: 30px;
-}
-
-.editicon {
-	background-position: -40px -32px;
-	width: 24px;
-	height: 16px;
-}
-
-.copyicon {
-	background-position: -70px -32px;
-	width: 24px;
-	height: 16px;
-}
-
-.deleteicon {
-	background-position: -100px -32px;
-	width: 24px;
-	height: 16px;
-}
-
-/* =========== Indi tabs ================== */
-/* Facts & Events tab */
-#personal_facts_content .fact_NOTE,
-#personal_facts_content .fact_SOUR,
-#family-table .fact_NOTE,
-#family-table .fact_SOUR {
-	margin: 5px 3px 5px 0;
-	clear: both;
-}
-
-.facts_table .field em {
-	margin-top: 0;
-	padding-left: 5px;
-}
-
-.facts_table .field img {
-	vertical-align: middle;
-}
-
-.media-display-image {
-	float: left;
-}
-
-.media-display-title {
-	float: left;
-	font-style: italic;
-	margin: 10px;
-}
-
-[dir=rtl] .media-display-image {
-	float: right;
-}
-
-[dir=rtl] .media-display-title {
-	float: right;
-}
-
-[dir=rtl] .facts_table .field em {
-	padding-right: 5px;
-}
-
-/* Album tab */
-.album-list {
-	list-style-type: none;
-}
-
-.album-list-item {
-	display: inline-block;
-	text-align: center;
-	padding: 0 12px;
-	height: 112px;
-	width: 120px;
-}
-
-.album-list-item a img {
-	max-height: 78px;
-	max-width: 100px;
-	height: auto;
-	width: auto;
-}
-
-.album-list-item a:hover div {
-	outline: thin solid #bdb071;
-}
-
-.album-image {
-	margin: auto;
-}
-
-.album-title {
-	padding-top: 4px;
-	width: 100%;
-}
-
-/* ========= jquery-ui.custom.css changes ============ */
-.ui-tabs .ui-tabs-panel {
-	background-color: #eee;
-	border-radius: 4px;
-	padding: 4px;
-}
-
-.ui-accordion .ui-accordion-header .ui-icon {
-	position: absolute;
-	left: 6px;
-	top: 50%;
-	margin-top: -8px;
-}
-
-.ui-accordion .ui-accordion-content {
-	padding: 12px 1px;
-	border-top: 0;
-	margin-top: 1px;
-	position: relative;
-	top: 1px;
-	margin-bottom: 2px;
-	overflow: visible;
-	display: none;
-}
-
-.ui-accordion .ui-accordion-content-active {
-	display: block;
-}
-
-.ui-accordion .ui-accordion-header a {
-	padding: 6px;
-}
-
-[dir=rtl] .ui-tabs {
-	direction: rtl;
-}
-
-[dir=rtl] .ui-tabs .ui-tabs-nav li.ui-tabs-selected,
-[dir=rtl] .ui-tabs .ui-tabs-nav li.ui-state-default {
-	float: right;
-}
-
-[dir=rtl] .ui-accordion .ui-accordion-header .ui-icon {
-	right: 6px;
-}
-
-[dir=rtl] .ui-dialog-title {
-	float: right;
-}
-
-[dir=rtl] .ui-dialog-titlebar-close {
-	left: 4px;
-	right: auto;
-}
-
-/* ========= jQuery.datatable styling over-rides ============ */
-.odd {
-	background-color: LightGrey;
-}
-
-.even {
-	background-color: #fff;
-}
-
-.css_right {
-	float: left;
-}
-
-.fg-button {
-	padding: 2px 6px;
-}
-
-.fg-toolbar {
-	background: #eee;
-	border-color: #aaa;
-}
-
-.dataTables_paginate {
-	float: left;
-	margin: 5px;
-}
-
-.dataTables_processing {
-	float: left;
-	margin: 5px;
-}
-
-.dataTables_filter {
-	float: right;
-	margin: 4px;
-}
-
-.dataTables_info {
-	float: left;
-	margin: 5px;
-}
-
-.recent_changes_block .dataTables_info,
-.upcoming_events_block .dataTables_info,
-.todays_events_block .dataTables_info,
-.todo_block .dataTables_info,
-.yahrzeit_block .dataTables_info {
-	padding: 0;
-}
-
-.upcoming_events_block .dataTables_info,
-.todays_events_block .dataTables_info {
-	padding: 2px 0 0;
-}
-
-.upcoming_events_block button,
-.todays_events_block button {
-	margin: 5px 20px;
-}
-
-.dataTables_length {
-	float: right;
-	margin: 5px;
-}
-
-.dataTables_length select,
-.dataTables_filter input {
-	padding: 1px;
-}
-
-.ui-widget-header {
-	font-weight: normal;
-}
-
-.dt-clear {
-	clear: both;
-}
-
-#loading {
-	text-align: center;
-}
-
-.DataTables_sort_wrapper {
-	position: relative;
-	margin: 0 20px;
-}
-
-.DataTables_sort_wrapper span {
-	left: 0;
-	margin-left: -20px;
-	margin-top: -8px;
-	position: absolute;
-	top: 50%;
-}
-
-[dir=rtl] .css_right {
-	float: right;
-}
-
-[dir=rtl] .dataTables_paginate {
-	float: right;
-}
-
-[dir=rtl] .dataTables_processing {
-	float: right;
-}
-
-[dir=rtl] .dataTables_filter {
-	float: left;
-}
-
-[dir=rtl] .dataTables_info {
-	float: right;
-}
-
-[dir=rtl] .dataTables_length {
-	float: left;
-}
-
-[dir=rtl] .DataTables_sort_wrapper {
-	margin-right: 20px;
-}
-
-[dir=rtl] .DataTables_sort_wrapper span {
-	left: auto;
-	right: 0;
-	margin-right: -20px;
-}
-
-/* ========= List styles ================= */
+/* ======== List styles ====== */
 .source-list,
 .note-list,
 .repo-list,
@@ -2349,6 +1397,13 @@ dd .deletelink {
 .fam-list {
 	margin: 5px auto;
 	visibility: hidden;
+	width: 98%;
+}
+
+.recent_changes_block,
+.upcoming_events_block,
+.todays_events_block,
+.todo_block {
 	width: 98%;
 }
 
@@ -2373,7 +1428,7 @@ dd .deletelink {
 .indi-list td,
 .fam-list td,
 .recent_changes_block td,
-.upcoming_events_block,
+.upcoming_events_block td,
 .surname-list td,
 .givn-list td {
 	padding: 2px 5px;
@@ -2408,6 +1463,8 @@ dd .deletelink {
 .surname-list th,
 .givn-list th {
 	cursor: pointer;
+	font-weight: 600;
+	padding: 2px 4px;
 	white-space: nowrap;
 }
 
@@ -2477,16 +1534,14 @@ dd .deletelink {
 	margin-bottom: 2px;
 }
 
-.filtersH .ui-state-default,
-.filtersF .ui-state-default {
-	margin: 0 2px;
-	padding: 2px;
-}
-
 .loading-image {
 	background: transparent url(images/loading.gif) 50% 50% no-repeat;
 	height: 50px;
 	margin: 50px;
+}
+
+.list-charts {
+	text-align: center;
 }
 
 #search-result-tabs,
@@ -2519,17 +1574,771 @@ dd .deletelink {
 	margin: 0 1px 1px -2px;
 }
 
-/* ========= Sidebar ============== */
+/* ======== Block styles ===== */
+#index_main_blocks {
+	clear: none;
+	width: 60%;
+	float: left;
+}
+
+#index_small_blocks {
+	clear: none;
+	width: 40%;
+	float: right;
+}
+
+#index_full_blocks {
+	clear: none;
+	width: 100%;
+}
+
+[dir=rtl] #index_main_blocks {
+	float: right;
+}
+
+[dir=rtl] #index_small_blocks {
+	float: left;
+}
+
+.small_inner_block {
+	max-height: 200px;
+	overflow: auto;
+}
+
+.normal_inner_block {
+	overflow: auto;
+}
+
+.block {
+	background-color: #eee;
+	border: none;
+	padding: 3px;
+	vertical-align: top;
+}
+
+.blockcontent {
+	margin: 5px;
+	overflow: auto;
+}
+
+.blockcontent .list_table {
+	border-spacing: 0;
+	border: none;
+	border-right: 0;
+}
+
+.blockcontent .list_value,
+.blockcontent .list_value_wrap {
+	border: none;
+}
+
+.blockheader {
+	font-weight: bold;
+}
+
+/* end Block styles */
+
+#main_select,
+#available_select,
+#right_select {
+	min-width: 150px;
+}
+
+.user_welcome_block table,
+.gedcom_block_block table {
+	margin: auto;
+}
+
+.user_welcome_block td,
+.gedcom_block_block td {
+	width: 33%;
+	text-align: center;
+	vertical-align: top;
+}
+
+/* Random picture block */
+#random_picture {
+	text-align: center;
+}
+
+#random_picture_box {
+	width: 100%;
+}
+
+/* ==== Favourites block ===== */
+.blockcontent .person_box_template .details2 {
+	min-height: 40px;
+}
+
+.blockcontent [class*='box-style2'] {
+	margin: 5px 0;
+}
+
+.add_fav_head {
+	font-weight: 900;
+	margin: 5px 0;
+}
+
+.add_fav_head i {
+	margin: 0 5px 1px;
+}
+
+.add_fav_ref label {
+	display: inline-block;
+	min-width: 100px;
+}
+
+.add_fav_ref label:after {
+	content: ":";
+}
+
+.add_fav_ref input {
+	margin: 0 5px;
+}
+
+/* === Who is online block === */
+.logged_in_list {
+	margin: 5px 0 0;
+	padding: 0;
+	line-height: 20px;
+}
+
+/* Statistics block */
+.gedcom_stats_block table td {
+	vertical-align: top;
+}
+
+.gedcom_stats_block table td td {
+	vertical-align: middle;
+}
+
+.gedcom_stats_block td .stats_value {
+	text-align: center;
+}
+
+/* ==== Theme select block === */
+.theme_form ul {
+	margin: -10px auto;
+}
+
+.theme_form li {
+	visibility: hidden;
+}
+
+.theme_form li ul li {
+	display: inline-block;
+	padding: 10px;
+	visibility: visible;
+}
+
+/* ==== FAQ table styles ===== */
+table.faq {
+	background-color: #ddd;
+	margin: 5px 0 50px 5px;
+	width: 98%;
+}
+
+table.faq tr.odd td {
+	background-color: #eee;
+}
+
+div.faq_title {
+	background-color: #ddd;
+	margin: 1em 0;
+	padding: .25em;
+	font-weight: bold;
+	width: 98%;
+}
+
+div.faq_body {
+	clear: both;
+	padding: 0 1em;
+}
+
+.faq_italic {
+	font-style: italic;
+	font-weight: bold;
+	font-size: 90%;
+	padding: 0 10px;
+}
+
+.faq_top {
+	float: right;
+}
+
+.faq_edit {
+	float: right;
+}
+
+[dir=rtl] .faq_top {
+	float: left;
+}
+
+[dir=rtl] .faq_edit {
+	float: left;
+}
+
+/* === Positioning edit, copy, delete links === */
+/* General use */
+.editfacts {
+	clear: left;
+	padding-top: 15px;
+}
+
+/* a container for the following three links */
+
+.editlink,
+.copylink,
+.deletelink {
+	float: left;
+}
+
+[dir=rtl] .editlink,
+[dir=rtl] .copylink,
+[dir=rtl] .deletelink {
+	float: right;
+}
+
+span.link_text {
+	display: none;
+}
+
+/* ======== Indi header ====== */
+.field .editlink,
+.field .deletelink,
+.field .copylink {
+	float: right;
+}
+
+[dir=rtl].field .editlink,
+[dir=rtl].field .deletelink {
+	float: left;
+}
+
+#indi_header {
+	overflow: hidden;
+	border-radius: 4px;
+	margin: 0 4px 5px;
+	width: 98%;
+}
+
+#indi_header h3 {
+	color: #369;
+	font-size: 90%;
+	font-weight: bold;
+	margin: 0;
+	padding: 0 10px 0 30px;
+	text-align: left;
+	overflow: hidden;
+	position: relative;
+}
+
+#indi_header .name_one {
+	font-size: 1.5em;
+}
+
+#indi_header h3 .details1 {
+	font-size: 1.0em;
+}
+
+#indi_header h3.person_box,
+#indi_header h3.person_boxF,
+#indi_header h3.person_boxNN {
+	border: none;
+}
+
+#indi_header h3 .header_age {
+	padding: 5px 0 5px 5px;
+	float: right;
+	font-weight: normal;
+	font-size: 65%;
+}
+
+#indi_header h3 a {
+	display: inline;
+}
+
+#indi_header a {
+	color: #337;
+	font-size: 0.75em;
+	font-weight: normal;
+}
+
+#indi_header a:hover {
+	color: #f00;
+}
+
+#main_name {
+	float: left;
+	font-size: 2em;
+	margin: 10px;
+	font-weight: bold;
+}
+
+#indi_mainimage {
+	float: left;
+	padding: 0 10px;
+}
+
+#header_accordion1 {
+	padding: 0 10px 0 0;
+	overflow: hidden;
+}
+
+[dir='rtl'] #header_accordion1 {
+	padding: 0 0 0 10px;
+}
+
+#header_accordion1 .indi_name_details {
+	margin: 0;
+	overflow: hidden;
+	padding: 5px;
+}
+
+.indi_name_details dt:after {
+	content: ":";
+}
+
+.indi_name_details .name1 {
+	font-weight: normal;
+	padding-top: 5px;
+	font-size: inherit;
+}
+
+#indi_header a.warning {
+	color: #f00;
+	font-size: 1em;
+}
+
+#indi_note {
+	margin: 0 0 5px;
+}
+
+.indi_table {
+	clear: left;
+}
+
+#sex {
+	float: right;
+}
+
+#dates {
+	color: #369;
+	float: right;
+}
+
+dd .editlink,
+dd .deletelink {
+	float: right;
+}
+
+#indi_note .fact_NOTE {
+	float: left;
+	margin: 0 5px 0 0;
+}
+
+#indi_note .fact_SOUR {
+	margin: 3px 0;
+}
+
+#indi_note .fact_SOUR a {
+	font-size: 100%;
+}
+
+#indi_note .fact_NOTE,
+#indi_note .fact_SOUR {
+	clear: both;
+}
+
+.markdown p {
+	margin: 0 0 0.5em;
+	white-space: pre-wrap;
+}
+
+.markdown table {
+	border-collapse: collapse;
+}
+
+.markdown th {
+	font-weight: bold;
+}
+
+.markdown td,
+.markdown th {
+	border: solid thin #000;
+	padding: 3px;
+}
+
+[dir=rtl] #indi_header h3 {
+	padding: 0 30px 0 10px;
+	text-align: right;
+}
+
+[dir=rtl] #indi_header h3 .header_age {
+	padding: 5px 5px 5px 0;
+	float: left;
+}
+
+[dir=rtl] #main_name {
+	float: right;
+}
+
+[dir=rtl] #indi_mainimage {
+	float: right;
+}
+
+[dir=rtl] #indi_note .fact_NOTE {
+	float: right;
+	margin: 0 0 0 10px;
+}
+
+[dir=rtl] .indi_table {
+	clear: right;
+}
+
+[dir=rtl] #sex {
+	float: left;
+}
+
+[dir=rtl] #dates {
+	float: left;
+}
+
+[dir=rtl] dd .editlink,
+[dir=rtl] dd .deletelink {
+	float: left;
+}
+
+.hit-counter {
+	background: #000;
+	color: #fff;
+	font-weight: bold;
+}
+
+/* ======= General sprite ==== */
+.male_gender,
+.female_gender,
+.unknown_gender,
+.editicon,
+.copyicon,
+.deleteicon {
+	display: block;
+	background: url(images/indi_sprite.png) no-repeat;
+}
+
+.female_gender {
+	background-position: -45px 3px;
+	width: 24px;
+	height: 30px;
+}
+
+.male_gender {
+	background-position: -72px 3px;
+	width: 24px;
+	height: 30px;
+}
+
+.unknown_gender {
+	background-position: -100px 4px;
+	width: 24px;
+	height: 30px;
+}
+
+.editicon {
+	background-position: -40px -32px;
+	width: 24px;
+	height: 16px;
+}
+
+.copyicon {
+	background-position: -70px -32px;
+	width: 24px;
+	height: 16px;
+}
+
+.deleteicon {
+	background-position: -100px -32px;
+	width: 24px;
+	height: 16px;
+}
+
+/* ======== Indi tabs ======== */
+/* Facts & Events tab */
+#personal_facts_content .fact_NOTE,
+#personal_facts_content .fact_SOUR,
+#family-table .fact_NOTE,
+#family-table .fact_SOUR {
+	margin: 5px 3px 5px 0;
+	clear: both;
+}
+
+.facts_table .field em {
+	margin-top: 0;
+	padding-left: 5px;
+}
+
+.facts_table .field img {
+	vertical-align: middle;
+}
+
+.media-display-image {
+	float: left;
+}
+
+.media-display-title {
+	float: left;
+	font-style: italic;
+	margin: 10px;
+}
+
+[dir=rtl] .media-display-image {
+	float: right;
+}
+
+[dir=rtl] .media-display-title {
+	float: right;
+}
+
+[dir=rtl] .facts_table .field em {
+	padding-right: 5px;
+}
+
+/* ======== Album tab =========*/
+.album-list {
+	list-style-type: none;
+}
+
+.album-list-item {
+	display: inline-block;
+	text-align: center;
+	padding: 0 12px;
+	height: 112px;
+	width: 120px;
+}
+
+.album-list-item a img {
+	max-height: 78px;
+	max-width: 100px;
+	height: auto;
+	width: auto;
+}
+
+.album-list-item a:hover div {
+	outline: thin solid #bdb071;
+}
+
+.album-image {
+	margin: auto;
+}
+
+.album-title {
+	padding-top: 4px;
+	width: 100%;
+}
+
+/* === jquery-ui.css changes === */
+.ui-tabs .ui-tabs-panel {
+	background-color: #eee;
+	border-radius: 4px;
+	padding: 4px;
+}
+
+.ui-accordion .ui-accordion-header .ui-icon {
+	position: absolute;
+	left: 6px;
+	top: 50%;
+	margin-top: -8px;
+}
+
+.ui-accordion .ui-accordion-content {
+	padding: 12px 1px;
+	border-top: 0;
+	margin-top: 1px;
+	position: relative;
+	top: 1px;
+	margin-bottom: 2px;
+	overflow: visible;
+	display: none;
+}
+
+.ui-accordion .ui-accordion-content-active {
+	display: block;
+}
+
+.ui-accordion .ui-accordion-header a {
+	padding: 6px;
+}
+
+[dir=rtl] .ui-tabs {
+	direction: rtl;
+}
+
+[dir=rtl] .ui-tabs .ui-tabs-nav li.ui-tabs-selected,
+[dir=rtl] .ui-tabs .ui-tabs-nav li.ui-state-default {
+	float: right;
+}
+
+[dir=rtl] .ui-accordion .ui-accordion-header .ui-icon {
+	right: 6px;
+}
+
+[dir=rtl] .ui-dialog-title {
+	float: right;
+}
+
+[dir=rtl] .ui-dialog-titlebar-close {
+	left: 4px;
+	right: auto;
+}
+
+/* === jQuery.datatable styling general over-rides === */
+.odd {
+	background-color: LightGrey;
+}
+
+.even {
+	background-color: #fff;
+}
+
+.css_right {
+	float: left;
+}
+
+.fg-button {
+	padding: 2px 6px;
+}
+
+.fg-toolbar {
+	background: #eee;
+	border-color: #aaa;
+}
+
+.dataTables_paginate {
+	float: left;
+	margin-bottom: 3px;
+}
+
+.dataTables_processing {
+	float: left;
+}
+
+.dataTables_filter {
+	float: right;
+	font-weight: normal;
+}
+
+.dataTables_info {
+	float: left;
+	font-weight: normal;
+	padding: 4px;
+}
+
+.recent_changes_block .dataTables_info,
+.upcoming_events_block .dataTables_info,
+.todays_events_block .dataTables_info,
+.todo_block .dataTables_info,
+.yahrzeit_block .dataTables_info {
+	padding: 0;
+}
+
+.upcoming_events_block .dataTables_info,
+.todays_events_block .dataTables_info {
+	padding: 2px 0 0;
+}
+
+.upcoming_events_block button,
+.todays_events_block button {
+	margin: 0 20px;
+}
+
+.dataTables_length {
+	float: right;
+	font-weight: normal;
+}
+
+.dataTables_length select,
+.dataTables_filter input {
+	font-size: 11px;
+	padding: 1px;
+}
+
+.dt-clear {
+	clear: both;
+}
+
+#loading {
+	text-align: center;
+}
+
+.DataTables_sort_wrapper {
+	position: relative;
+	margin: 0 20px;
+}
+
+.DataTables_sort_wrapper span {
+	left: 0;
+	margin-left: -20px;
+	margin-top: -8px;
+	position: absolute;
+	top: 50%;
+}
+
+.dataTables_wrapper {
+	margin-bottom: 10px;
+}
+
+[dir=rtl] .css_right {
+	float: right;
+}
+
+[dir=rtl] .dataTables_paginate {
+	float: right;
+}
+
+[dir=rtl] .dataTables_processing {
+	float: right;
+}
+
+[dir=rtl] .dataTables_filter {
+	float: left;
+}
+
+[dir=rtl] .dataTables_info {
+	float: right;
+}
+
+[dir=rtl] .dataTables_length {
+	float: left;
+}
+
+[dir=rtl] .DataTables_sort_wrapper {
+	margin-right: 20px;
+}
+
+[dir=rtl] .DataTables_sort_wrapper span {
+	left: auto;
+	right: 0;
+	margin-right: -20px;
+}
+
+/* ======= Sidebar setup ===== */
 #main {
 	min-width: 600px;
 	width: 100%;
-	padding: 3px 0 0;
 	display: table;
 	table-layout: fixed;
 }
 
 #indi_left {
 	display: table-cell;
+}
+
+#indi_left .ui-tabs-panel {
+	padding: 0;
+}
+
+#indi_left .ui-tabs-nav {
+	margin: 0 2px;
 }
 
 #tabs {
@@ -2543,10 +2352,11 @@ dd .deletelink {
 	float: right;
 }
 
+/* sidebar */
 #sidebar {
+	width: 20%;
 	display: table-cell;
 	vertical-align: top;
-	width: 20%;
 }
 
 #separator {
@@ -2560,19 +2370,19 @@ dd .deletelink {
 #separator:after {
 	position: absolute;
 	top: 0;
-	left: auto;
 	right: 0;
+	left: auto;
 	width: 10px;
 	height: 99999px;
 	content: "";
 	border: 1px solid #aaa;
-	border-top-left-radius: 4px;
-	border-top-right-radius: 4px;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
 }
 
 [dir=rtl] #separator:after {
-	left: 0;
 	right: auto;
+	left: 0;
 }
 
 .separator-hidden:after,
@@ -2593,28 +2403,31 @@ dd .deletelink {
 	text-align: center;
 }
 
-/* ============== Sidebar content items ============== */
+/* Sidebar content items */
 /* Family navigator */
 #sb_content_family_nav {
 	padding: 0;
 }
 
 #sb_family_nav_content {
-	margin-top: 2px;
+	margin-top: 8px;
+}
+
+.nam a:hover {
+	color: #f00;
 }
 
 .nav_content {
 	width: 100%;
-	padding: 10px 0;
-}
-
-.famnav_link div {
 	padding: 0;
-	width: 100%;
 }
 
 .nav_content .facts_label {
 	width: 75px;
+}
+
+#sb_family_nav_content .clist {
+	margin: 0;
 }
 
 .famnav_title {
@@ -2652,10 +2465,14 @@ dd .deletelink {
 	text-decoration: underline;
 }
 
-/* Descendancy */
+/* Sidebar*/
+#sb_content_descendancy {
+	margin-top: 5px;
+}
+
 #sb_desc_content {
-	margin-left: 4px;
-	font-size: smaller;
+	margin-left: 3px;
+	font-size: 0.8em;
 }
 
 #sb_desc_content ul {
@@ -2687,26 +2504,19 @@ dd .deletelink {
 	margin-left: 0;
 }
 
-/* Individuals, Families */
+/* Individuals and Families */
+#sb_content_individuals,
+#sb_content_families {
+	margin-top: 5px;
+}
+
 .sb_indi_surname_li,
 .sb_fam_surname_li {
 	list-style-image: url(images/plus.png);
 }
 
-.name_tree_div li,
-.name_tree_div_visible li {
-	white-space: normal;
-}
-
 .name_tree_div {
 	display: none;
-}
-
-.name_tree_div li,
-.name_tree_div_visible li {
-	list-style: none;
-	margin: 0;
-	padding: 0;
 }
 
 .name_tree_div ul,
@@ -2715,11 +2525,16 @@ dd .deletelink {
 	margin: 0;
 }
 
-/* Clippings */
-#sb_clippings_content li {
+.name_tree_div li,
+.name_tree_div_visible li {
 	list-style: none;
 	margin: 0;
 	padding: 0;
+}
+
+/* Clippings */
+#sb_content_clippings {
+	margin-top: 5px;
 }
 
 #sb_clippings_content ul {
@@ -2727,11 +2542,20 @@ dd .deletelink {
 	margin: 0;
 }
 
+#sb_clippings_content li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	white-space: nowrap;
+}
+
 /* Extra info */
 #sb_content_extra_info {
+	font-size: 80%;
 	font-weight: bold;
+	margin-top: 1px;
 	overflow: hidden;
-	padding: 4px;
+	padding: 5px;
 }
 
 #sb_content_extra_info .editfacts {
@@ -2751,19 +2575,16 @@ dd .deletelink {
 	display: inline;
 }
 
+#sb_content_extra_info #hitcounter {
+	font-weight: bold;
+	padding-top: 5px;
+}
+
 [dir=rtl] #sb_content_extra_info .editfacts {
 	float: left;
 }
 
-fieldset {
-	text-align: left;
-}
-
-[dir=rtl] fieldset {
-	text-align: right;
-}
-
-/* ============== find.php ======================= */
+/* ===== find.php =====  */
 #find-page h3,
 #find-page h4 {
 	margin: 10px;
@@ -2785,14 +2606,14 @@ fieldset {
 }
 
 #find-header span {
-
+	color: #fff;
+	font-weight: bold;
 }
 
 #find-output,
 #find-output-special {
 	background-color: #ddd;
-	border: 1px solid #aaa;
-	border-radius: 4px;
+	border: 1px outset #aaa;
 	margin: 20px 5px;
 	padding: 10px;
 }
@@ -2806,8 +2627,9 @@ fieldset {
 }
 
 #find-media {
-	background-color: #ccc;
-	border: 1px solid #aaa;
+	background-color: #81a9cb;
+	border: 1px outset #81a9cb;
+	color: #fff;
 	padding: 5px;
 	text-align: center;
 }
@@ -2866,7 +2688,7 @@ fieldset {
 	text-align: inherit;
 }
 
-/* ============== search.php ======================= */
+/* ===== search.php ===== */
 #search-page h2,
 #search_submit {
 	margin: 20px;
@@ -2882,9 +2704,9 @@ fieldset {
 }
 
 #search-page-table .label {
+	border-top: 1px solid #ccc;
 	float: left;
 	font-weight: bold;
-	margin: 1px;
 	padding: 5px 10px 0;
 	width: 150px;
 }
@@ -2909,7 +2731,7 @@ fieldset {
 	margin: 0 170px 0 0;
 }
 
-/* ============== edituser.php ======================= */
+/*  edituser.php  */
 #edituser-page h2,
 #edituser_submit {
 	margin: 20px;
@@ -2926,9 +2748,9 @@ fieldset {
 }
 
 #edituser-table .label {
+	border: none;
 	float: left;
 	font-weight: bold;
-	margin: 1px;
 	padding: 5px 10px 0;
 	width: 240px;
 	white-space: nowrap;
@@ -2957,14 +2779,702 @@ fieldset {
 	margin: 0 260px 0 0;
 }
 
-/* ======= Who is online block ========== */
-.logged_in_list {
-	margin: 5px 0 0;
-	padding: 0;
-	line-height: 20px;
+/* ===== Edit interface pop-ups ===== */
+#edit_interface-page h4 {
+	color: #555;
+	margin: 5px;
 }
 
-/* Icons */
+#edit_interface-page .optionbox span {
+	margin: 0 5px;
+}
+
+#edit_interface-page #LATI,
+#edit_interface-page #LONG,
+#edit_interface-page #SPFX,
+#edit_interface-page #NSFX,
+#edit_interface-page #NPFX {
+	line-height: 18px;
+	margin: 0 5px;
+	width: 88px;
+}
+
+#edit_interface-page #GIVN,
+#edit_interface-page #SURN,
+#edit_interface-page #_MARNM {
+	line-height: 18px;
+	margin: 0 5px;
+	width: 180px;
+}
+
+#edit_interface-page input[type="text"],
+#edit_interface-page #NAME_display {
+	line-height: 18px;
+	margin: 0 5px;
+	vertical-align: top;
+	width: 240px;
+}
+
+#edit_interface-page input[type="text"][id*="PAGE"],
+#edit_interface-page input[type="text"][id*="_UID"] {
+	width: 350px;
+}
+
+#edit_interface-page input[type="text"][id*="SOUR"],
+#edit_interface-page input[type="text"][id*="REPO"],
+#edit_interface-page input[type="text"][id*="OBJE"],
+#edit_interface-page input[type="text"][id*="FAMC"],
+#edit_interface-page input[type="text"][id*="ASSO"],
+#edit_interface-page input[type="text"][id^="AGE"],
+#edit_interface-page input[type="text"][id*="SHARED_NOTE"] {
+	width: 250px;
+}
+
+#edit_interface-page input[type="text"][id$="DATE"] {
+	width: 160px;
+}
+
+#edit_interface-page input[type="text"][id^="TIME"] {
+	width: 100px;
+}
+
+#edit_interface-page input[type="text"][id*="OBJE_FILE"] {
+	width: 200px;
+}
+
+#edit_interface-page input[type="text"][id*="SOUR_TITL"] {
+	width: 250px;
+}
+
+#edit_interface-page input[id*="TEXT"] {
+	height: 140px;
+	width: 440px;
+}
+
+#edit_interface-page textarea {
+	margin: 0 5px;
+	width: 440px;
+}
+
+#edit_interface-page textarea[id*="NOTE"] {
+	height: 240px;
+}
+
+#edit_interface-page textarea[id*="TEXT"],
+#edit_interface-page textarea[id*="PUBL"] {
+	height: 140px;
+}
+
+#edit_interface-page textarea[id^="newgedrec"] {
+	line-height: 18px;
+	width: 605px;
+}
+
+#edit_interface-page textarea#gedcom {
+	height: 364px;
+}
+
+#edit_interface-page textarea[id*="ADDR"],
+#edit_interface-page input[id*="ADDR"] {
+	height: 80px;
+	width: 300px;
+}
+
+#edit_interface-page #changefam {
+	padding: 5px;
+}
+
+#edit_interface-page #changefam table {
+	margin: 10px auto;
+	min-width: 400px;
+	max-width: 650px;
+}
+
+#edit_interface-page #changefam span {
+	margin: 0;
+}
+
+#edit_interface-page #changefam td {
+	padding: 5px;
+	white-space: normal;
+}
+
+#edit_interface-page #changefam td.child {
+	text-align: center;
+}
+
+#save-cancel {
+	position: fixed;
+	bottom: 0;
+	background-color: #eee;
+	width: 96.5%;
+	border-radius: 4px;
+	border: solid #999 1px;
+	margin: 0;
+}
+
+#save-cancel input {
+	padding: 2px 8px;
+}
+
+#save-cancel .save {
+	float: left;
+	margin: 5px;
+}
+
+#save-cancel .cancel {
+	float: right;
+	margin: 5px;
+}
+
+[dir=rtl] #save-cancel .save {
+	float: right;
+}
+
+[dir=rtl] #save-cancel .cancel {
+	float: left;
+}
+
+#edit_interface-page,
+#addmedia-page {
+	margin-bottom: 50px;
+}
+
+/* ===== Addmedia pop-ups ===== */
+#addmedia-page input[type="text"] {
+	line-height: 18px;
+	margin: 0 5px;
+	width: 350px;
+}
+
+#addmedia-page .optionbox select {
+	margin: 0 5px;
+}
+
+#addmedia-page .optionbox p.sub {
+	margin: 0 5px;
+	font-size: 11px;
+}
+
+#addmedia-page input[type="text"][id*="PAGE"],
+#addmedia-page input[type="text"][id*="_UID"] {
+	width: 350px;
+}
+
+#addmedia-page input[type="text"][id*="SOUR"],
+#addmedia-page input[type="text"][id*="REPO"],
+#addmedia-page input[type="text"][id*="OBJE"],
+#addmedia-page input[type="text"][id*="FAMC"],
+#addmedia-page input[type="text"][id*="ASSO"],
+#addmedia-page input[type="text"][id^="AGE"],
+#addmedia-page input[type="text"][id*="SHARED_NOTE"] {
+	width: 70px;
+}
+
+#addmedia-page input[id*="TEXT"] {
+	height: 140px;
+	width: 440px;
+}
+
+#addmedia-page textarea {
+	margin: 0 5px;
+	width: 440px;
+}
+
+#addmedia-page textarea[id*="NOTE"] {
+	height: 240px;
+}
+
+#addmedia-page textarea[id*="TEXT"],
+#addmedia-page textarea[id*="PUBL"] {
+	height: 140px;
+}
+
+/* ===== Styling for the jquery.colorbox gallery ===== */
+#colorbox,
+#cboxOverlay,
+#cboxWrapper {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 9999;
+	overflow: hidden;
+}
+
+#colorbox {
+	border: 2px solid #ccc;
+}
+
+#cboxOverlay {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background: #ccc;
+}
+
+#cboxContent {
+	background: #fff;
+	border: 5px solid #888;
+}
+
+#cboxLoadedContent {
+	overflow: auto;
+	background: #fff;
+	margin-bottom: 30px;
+	margin-top: 35px;
+}
+
+#cboxTitle {
+	position: absolute;
+	left: 0;
+	top: 10px;
+	font-size: 14px;
+	color: #888;
+	text-align: center;
+	width: 100%;
+	font-weight: 800;
+}
+
+.cboxPhoto {
+	float: left;
+	margin: auto;
+	border: 0;
+	display: block;
+	max-width: none;
+}
+
+.cboxIframe {
+	width: 100%;
+	height: 100%;
+	display: block;
+	border: 0;
+}
+
+#cboxPrevious {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	background: url(images/controls.png) no-repeat -75px 0;
+	width: 25px;
+	height: 25px;
+	text-indent: -9999px;
+	margin: 10px;
+	border: 0;
+}
+
+#cboxPrevious:hover {
+	background-position: -75px -25px;
+}
+
+#cboxNext {
+	position: absolute;
+	bottom: 0;
+	left: 27px;
+	background: url(images/controls.png) no-repeat -50px 0;
+	width: 25px;
+	height: 25px;
+	text-indent: -9999px;
+	margin: 10px;
+	border: 0;
+}
+
+#cboxNext:hover {
+	background-position: -50px -25px;
+}
+
+#cboxSlideshow {
+	position: absolute;
+	bottom: 5px;
+	font-size: 14px;
+	left: 57px;
+	margin: 10px;
+	border: 0;
+	background: none;
+}
+
+#cboxSlideshow:hover {
+	color: #f00;
+	background: #fff;
+}
+
+#cboxClose {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	background: url(images/controls.png) no-repeat -25px 0;
+	width: 25px;
+	height: 25px;
+	text-indent: -9999px;
+	margin: 10px;
+	border: 0;
+}
+
+#cboxClose:hover {
+	background-position: -25px -25px;
+}
+
+#cboxCurrent {
+	bottom: 4px;
+	color: #888;
+	left: 58px;
+	position: absolute;
+}
+
+[dir=rtl] #cboxPrevious {
+	right: 27px;
+	left: auto;
+}
+
+[dir=rtl] #cboxNext {
+	right: 0;
+	left: auto;
+}
+
+[dir=rtl] #cboxCurrent {
+	right: auto;
+	left: 0;
+}
+
+[dir=rtl] #cboxClose {
+	right: auto;
+	left: 0;
+}
+
+[dir=rtl] #cboxSlideshow {
+	right: 57px;
+	left: auto;
+}
+
+/* ===== Census assistant module ===== */
+table.table-census-assistant th {
+	font-weight: bold;
+	text-align: left;
+}
+
+/* Stories module */
+.story_title {
+	padding-top: 12px;
+	font-size: 13px;
+	height: 32px;
+	font-weight: bold;
+}
+
+.story_body {
+	padding: 20px;
+	white-space: normal;
+}
+
+.story_edit {
+	padding: 12px;
+}
+
+.btn-group {
+	display: inline-block;
+	margin: 0 4px;
+}
+
+.btn-group button:first-child,
+[dir=rtl] .btn-group button:last-child {
+	border-radius: 3px 0 0 3px;
+}
+
+.btn-group button:last-child,
+[dir=rtl] .btn-group button:first-child {
+	border-radius: 0 3px 3px 0;
+}
+
+/* ====== Charts Styles ======== */
+#ancestry_chart,
+#compact_chart,
+#descendancy_chart,
+#familybook_chart,
+#fan_chart,
+#hourglass_chart,
+#relationship_chart {
+	margin: 20px;
+}
+
+/*-- ancestry  --*/
+#ancestry_chart table div p {
+	font-size: 90%;
+	margin: 0;
+}
+
+#rootid, 
+#pid1, 
+#pid2 {
+width: 40px;
+}
+
+/*-- ancestry chart specific stylesheets --*/
+#ancestry_chart ul {
+	background-image:url(images/vline.png);
+	background-position:left top;background-repeat:repeat-y;
+	list-style: none;
+	display: block;
+	margin: 0 0 0 15px;
+	padding-top: 0;
+	padding-right: 0;
+	padding-bottom: 0;
+}
+
+#ancestry_chart li {
+	list-style: none;
+	margin: 0 0 2px -13px;
+	padding-top: 0;
+	padding-right: 0;
+	padding-bottom: 0;
+}
+
+#ancestry_chart li table {
+	margin: 5px 0;
+}
+
+[dir=rtl] #ancestry_chart ul {
+	background-position: right top;
+	margin: 0 15px 0 0;
+	left: auto;
+}
+
+#ancestry_chart span.details1 div[class^="fact_"] {
+	display: inline-block;
+}
+
+[dir=rtl] #ancestry_chart li {
+	margin: 0;
+	padding: 0 2px 0 0;
+	left: auto;
+}
+
+/*-- descendancy  --*/
+#descendancy_chart {
+	margin: 20px;
+}
+
+#descendancy_chart ul {
+	background-image:url(images/vline.png);
+	background-position:left top;background-repeat:repeat-y;
+	list-style: none;
+	margin: 0 0 5px 15px;
+	padding-top: 0;
+	padding-right: 0;
+	padding-bottom: 0;
+}
+
+#descendancy_chart li {
+	list-style: none;
+	margin: 5px 0 0 -15px;
+	padding-top: 0;
+	padding-right: 0;
+	padding-bottom: 0;
+}
+/*
+li .person_box,
+li .person_boxF {
+	margin: 3px 0;
+}
+*/
+#descendancy_chart span.details1 div[class^="fact_"] {
+	display: inline-block;
+}
+
+#descendancy_chart td.details1 {
+	padding-top: 5px;
+}
+
+[dir=rtl] #descendancy_chart ul {
+	background-position: right top;
+	margin: 0 15px 0 0;
+	left: auto;
+}
+
+[dir=rtl] #descendancy_chart li {
+	margin: 5px -15px 0 0;
+	left: auto;
+}
+
+/*-- Family book  --*/
+#familybook_chart {
+	margin-left: 10px;
+}
+
+#familybook_chart table {
+	border-collapse: collapse;
+	empty-cells: show;
+}
+
+#familybook_chart td {
+	margin: 0;
+	padding: 0;
+}
+
+#familybook_chart h2 {
+	text-align: center;
+}
+
+#familybook_chart .line3,
+#familybook_chart .pvline,
+#familybook_chart .spacer {
+	width: 3px;
+}
+
+#familybook_chart .line4 {
+	width: 7px;
+	vertical-align: middle;
+}
+
+[ID^="vline"] {
+	width: 3px;
+}
+
+#familybook_chart h3 {
+	color: #006;
+	font-size: 16px;
+	text-align: center;
+}
+
+[dir=rtl] #familybook_chart {
+	margin-right: 10px;
+}
+
+/*-- Fan chart ---- */
+.fan_chart_menu {
+	position: absolute;
+	display: none;
+	z-index: 100;
+}
+
+#fan_chart ul {
+	list-style-type: none;
+	margin: 0;
+}
+
+#fan_chart ul.children li:before {
+	content: "< ";
+	font-weight: bold;
+}
+
+#fan_chart_img {
+	text-align: center;
+}
+
+/*-- Hourglass ---- */
+#hourglass_chart img.line4 {
+	vertical-align: middle;
+}
+
+#hourglass_chart table,
+.charts_block table {
+	border-collapse: collapse;
+}
+
+#hourglass_chart td,
+.charts_block td {
+	padding: 0;
+	empty-cells: show;
+}
+
+/*-- Lifespan ---- */
+.lifespan_people span:first-letter {
+	font-variant: small-caps;
+	font-size: 16px;
+	padding: 1px;
+}
+
+.lifespan_outer {
+	position: relative;
+	width: 99.5%;
+	height: 600px;
+	overflow: hidden;
+	border: none;
+}
+
+.lifespan_outer a:hover {
+	color: #f00;
+	text-decoration: none;
+}
+
+.lifespan_timeline {
+	position: absolute;
+	width: 100%;
+	left: -10px;
+	top: -65px;
+	z-index: 2;
+	background-color: #fff;
+}
+
+.lifespan_people {
+	position: absolute;
+	width: 500px;
+	left: -10px;
+	top: -60px;
+	z-index: 1;
+}
+
+/*-- Pedigree ---- */
+#pedigree_chart #childbox {
+	border: 1px solid;
+	background-color: #fff;
+}
+
+.pedigree_form {
+	width: 45px;
+}
+
+#pedigree-page table.list_table {
+	margin: 0 auto;
+	width: 500px;
+}
+
+.pedigree_chart_table {
+	border: 0;
+	border-collapse: collapse;
+	padding: 0;
+	width: 100%;
+}
+
+#pedigree_chart {
+	position: relative;
+	top: -200px;
+	left: 0;
+}
+
+[dir=rtl] #pedigree_chart {
+	left: auto;
+	right: 0;
+}
+
+#pedigree_canvas {
+	color: #aaa;
+	position: absolute;
+	top: 200px;
+	z-index: -1000;
+}
+
+#pedigree_chart #childarrow,
+#pedigree_chart #uparrow,
+#pedigree_chart .shadow,
+.ancestorarrow {
+	position: absolute;
+}
+
+/*-- Relationship ---- */
+#relationship-page h3 {
+	margin: 20px 0 0 20px;
+}
+
+#relationship_chart {
+	margin: 0 6px;
+}
+
+/*-- timeline  --*/
+#timeline_chart {
+	position: relative;
+	top: 0;
+	left: 0;
+}
+
+/* ====== Common Icons ========= */
 [class^="icon-"],
 [class*=" icon-"] {
 	display: inline-block;
@@ -2994,6 +3504,7 @@ fieldset {
 	width: 18px;
 	height: 16px;
 	background-image: url(images/buttons/addmedia.png);
+	vertical-align: middle;
 }
 
 .icon-button_addnote {
@@ -3018,6 +3529,7 @@ fieldset {
 	width: 19px;
 	height: 15px;
 	background-image: url(images/buttons/calendar.png);
+	vertical-align: middle;
 }
 
 .icon-button_family {
@@ -3048,12 +3560,14 @@ fieldset {
 	width: 30px;
 	height: 15px;
 	background-image: url(images/buttons/keyboard.png);
+	vertical-align: middle;
 }
 
 .icon-button_media {
 	width: 18px;
 	height: 16px;
 	background-image: url(images/buttons/media.png);
+	vertical-align: middle;
 }
 
 .icon-button_note {
@@ -3066,6 +3580,7 @@ fieldset {
 	width: 15px;
 	height: 15px;
 	background-image: url(images/buttons/place.png);
+	vertical-align: middle;
 }
 
 .icon-button_repository {
@@ -3151,12 +3666,6 @@ a.icon-darrow:hover {
 	width: 15px;
 	height: 15px;
 	background-image: url(images/help.png);
-}
-
-.icon-indis {
-	width: 24px;
-	height: 24px;
-	background-image: url(images/indis.png);
 }
 
 .icon-indi-list {
@@ -3297,18 +3806,6 @@ a.icon-larrow:hover {
 	background-image: url(images/osm.png);
 }
 
-.icon-patriarch {
-	width: 24px;
-	height: 24px;
-	background-image: url(images/patriarch.png);
-}
-
-.icon-pedigree {
-	width: 24px;
-	height: 24px;
-	background-image: url(images/pedigree.png);
-}
-
 .icon-pin-in {
 	width: 16px;
 	height: 16px;
@@ -3319,12 +3816,6 @@ a.icon-larrow:hover {
 	width: 16px;
 	height: 16px;
 	background-image: url(images/pin-out.png);
-}
-
-.icon-place {
-	width: 24px;
-	height: 24px;
-	background-image: url(images/place.png);
 }
 
 .icon-plus {
@@ -3363,18 +3854,6 @@ a.icon-rarrow:hover {
 	background-image: url(images/remove.png);
 }
 
-.icon-repository {
-	width: 30px;
-	height: 30px;
-	background-image: url(images/repository.png);
-}
-
-.icon-repo-list {
-	width: 30px;
-	height: 30px;
-	background-image: url(images/repository.png);
-}
-
 .icon-resn-confidential {
 	width: 16px;
 	height: 16px;
@@ -3403,12 +3882,6 @@ a.icon-rarrow:hover {
 	width: 9px;
 	height: 9px;
 	background-image: url(images/rings.png);
-}
-
-.icon-search {
-	width: 24px;
-	height: 24px;
-	background-image: url(images/search.png);
 }
 
 .icon-selected {
@@ -3453,12 +3926,6 @@ a.icon-rarrow:hover {
 	background-image: url(images/sex_u_9x9.png);
 }
 
-.icon-sfamily {
-	width: 24px;
-	height: 24px;
-	background-image: url(images/sfamily.png);
-}
-
 .icon-slide_close {
 	width: 22px;
 	height: 20px;
@@ -3477,22 +3944,11 @@ a.icon-rarrow:hover {
 	background-image: url(images/source.png);
 }
 
-.icon-source-list {
-	width: 24px;
-	height: 24px;
-	background-image: url(images/source.png);
-}
-
 .icon-target {
 	width: 15px;
 	height: 15px;
 	background-image: url(images/buttons/target.png);
-}
-
-.icon-tree {
-	width: 24px;
-	height: 24px;
-	background-image: url(images/gedcom.png);
+	vertical-align: middle;
 }
 
 .icon-uarrow {
@@ -3513,33 +3969,16 @@ a.icon-uarrow:hover {
 	background-image: url(images/udarrow.png);
 }
 
-.icon-user_add {
-	width: 24px;
-	height: 24px;
-	background-image: url(images/user_add.png);
-}
-
 .icon-warning {
 	width: 17px;
 	height: 17px;
 	background-image: url(images/warning.png);
 }
 
-.icon-webtrees {
-	width: 100px;
-	height: 21px;
-	background-image: url(images/webtrees.png);
-}
-
 .icon-wiki {
 	width: 16px;
 	height: 16px;
 	background-image: url(images/w_button.png);
-}
-
-/* ios on click workaround */
-.iconz {
-	cursor: pointer;
 }
 
 .icon-zoomin {
@@ -3554,6 +3993,43 @@ a.icon-uarrow:hover {
 	background-image: url(images/zoomout.png);
 }
 
+/* Silhouettes on charts */
+.icon-silhouette-F {
+	width: 37px;
+	height: 45px;
+	background-image: url(images/silhouette_female_small.png);
+}
+
+.icon-silhouette-M {
+	width: 37px;
+	height: 45px;
+	background-image: url(images/silhouette_male_small.png);
+}
+
+.icon-silhouette-U {
+	width: 37px;
+	height: 45px;
+	background-image: url(images/silhouette_unknown_small.png);
+}
+
+#indi_mainimage .icon-silhouette-F {
+	width: 99px;
+	height: 106px;
+	background-image: url(images/silhouette_female.png);
+}
+
+#indi_mainimage .icon-silhouette-M {
+	width: 99px;
+	height: 99px;
+	background-image: url(images/silhouette_male.png);
+}
+
+#indi_mainimage .icon-silhouette-U {
+	width: 100px;
+	height: 97px;
+	background-image: url(images/silhouette_unknown.png);
+}
+
 [class^="icon-mime-"],
 [class*=" icon-mime-"] {
 	display: inline-block;
@@ -3562,7 +4038,7 @@ a.icon-uarrow:hover {
 	height: 48px;
 }
 
-/* Generic MIME types */
+/* ===== Generic MIME types ===== */
 [class^="icon-mime-"],
 [class*=" icon-mime-"] {
 	background-position: -99px -49px;
@@ -3593,7 +4069,7 @@ a.icon-uarrow:hover {
 	background-position: -148px -147px;
 }
 
-/* Specific MIME types */
+/* ===== Specific MIME types ===== */
 .icon-mime-application-pdf {
 	background-position: -1px -49px;
 }
@@ -3677,440 +4153,357 @@ a.icon-uarrow:hover {
 .icon-mime-video-x-ms-wmv {
 	background-position: -50px -196px;
 }
+/* ====== End Icon styles ====== */
 
-/* Silhouettes on charts */
-.icon-silhouette-F {
-	width: 37px;
-	height: 45px;
-	background-image: url(images/silhouette_female_small.png);
-}
-
-.icon-silhouette-M {
-	width: 37px;
-	height: 45px;
-	background-image: url(images/silhouette_male_small.png);
-}
-
-.icon-silhouette-U {
-	width: 37px;
-	height: 45px;
-	background-image: url(images/silhouette_unknown_small.png);
-}
-
-/* Silhouettes on individual pages */
-#indi_mainimage .icon-silhouette-F {
-	width: 99px;
-	height: 106px;
-	background-image: url(images/silhouette_female.png);
-}
-
-#indi_mainimage .icon-silhouette-M {
-	width: 99px;
-	height: 99px;
-	background-image: url(images/silhouette_male.png);
-}
-
-#indi_mainimage .icon-silhouette-U {
-	width: 100px;
-	height: 97px;
-	background-image: url(images/silhouette_unknown.png);
-}
-
-/* Edit interface pop-ups*/
-#edit_interface-page h4 {
-	color: #555;
-	margin: 5px;
-}
-
-#edit_interface-page .optionbox span {
-	margin: 0 5px;
-}
-
-#edit_interface-page #LATI,
-#edit_interface-page #LONG,
-#edit_interface-page #SPFX,
-#edit_interface-page #NSFX,
-#edit_interface-page #NPFX {
-	line-height: 18px;
-	margin: 0 5px;
-	width: 88px;
-}
-
-#edit_interface-page #GIVN,
-#edit_interface-page #SURN,
-#edit_interface-page #_MARNM {
-	line-height: 18px;
-	margin: 0 5px;
-	width: 180px;
-}
-
-#edit_interface-page input[type="text"],
-#edit_interface-page #NAME_display {
-	line-height: 18px;
-	margin: 0 5px;
-	vertical-align: top;
-	width: 240px;
-}
-
-#edit_interface-page input[type="text"][id*="PAGE"],
-#edit_interface-page input[type="text"][id*="_UID"] {
-	width: 350px;
-}
-
-#edit_interface-page input[type="text"][id*="SOUR"],
-#edit_interface-page input[type="text"][id*="REPO"],
-#edit_interface-page input[type="text"][id*="OBJE"],
-#edit_interface-page input[type="text"][id*="FAMC"],
-#edit_interface-page input[type="text"][id*="ASSO"],
-#edit_interface-page input[type="text"][id^="AGE"],
-#edit_interface-page input[type="text"][id*="SHARED_NOTE"] {
-	width: 250px;
-}
-
-#edit_interface-page input[type="text"][id$="DATE"] {
-	width: 160px;
-}
-
-#edit_interface-page input[type="text"][id^="TIME"] {
-	width: 100px;
-}
-
-#edit_interface-page input[type="text"][id*="OBJE_FILE"] {
-	width: 200px;
-}
-
-#edit_interface-page input[type="text"][id*="SOUR_TITL"] {
-	width: 250px;
-}
-
-#edit_interface-page input[id*="TEXT"] {
-	height: 140px;
-	width: 440px;
-}
-
-#edit_interface-page textarea {
-	margin: 0 5px;
-	width: 440px;
-}
-
-#edit_interface-page textarea[id*="NOTE"] {
-	height: 240px;
-}
-
-#edit_interface-page textarea[id*="TEXT"],
-#edit_interface-page textarea[id*="PUBL"] {
-	height: 140px;
-}
-
-#edit_interface-page textarea[id^="newgedrec"] {
-	line-height: 18px;
-	width: 605px;
-}
-
-#edit_interface-page textarea#gedcom {
-	height: 364px;
-}
-
-#edit_interface-page textarea[id*="ADDR"],
-#edit_interface-page input[id*="ADDR"] {
-	height: 80px;
-	width: 300px;
-}
-
-#edit_interface-page #changefam {
-	padding: 5px;
-}
-
-#edit_interface-page #changefam table {
-	margin: 10px auto;
-	min-width: 400px;
-	max-width: 650px;
-}
-
-#edit_interface-page #changefam span {
+/* ====== Theme Header ========= */
+header h1 {
+	clear: left;
+	float: left;
+	font-size: x-large;
+	font-weight: normal;
 	margin: 0;
 }
 
-#edit_interface-page #changefam td {
-	padding: 5px;
-	white-space: normal;
+[dir=rtl] header h1 {
+	clear: right;
+	float: right;
 }
 
-#edit_interface-page #changefam td.child {
-	text-align: center;
+.header-search {
+	display: inline-block;
 }
 
-#save-cancel {
+/* Set stack level for top two header menu rows */
+.secondary-menu ul,
+.primary-menu ul {
+	z-index: 210;
+}
+
+.secondary-menu {
+	white-space: nowrap;
+	float: right;
+}
+
+[dir=rtl] .secondary-menu {
+	float: left;
+}
+
+.secondary-menu li {
+	background: none !important;
+	display: inline;
+	position: relative;
+	white-space: nowrap;
+}
+
+.secondary-menu li:before {
+	content: " | ";
+}
+
+.secondary-menu li ul li:before {
+	content: "";
+}
+
+.secondary-menu li:first-child:before {
+	content: "";
+}
+
+.secondary-menu li ul {
+	display: none;
+	position: absolute;
+	left: 0;
+	top: 15px;
 	background-color: #eee;
-	border-radius: 4px;
-	border: solid #999 1px;
-	bottom: 0;
-	margin: 0;
-	position: fixed;
-	width: 96.5%;
+	border: thin solid #aaa;
 }
 
-#save-cancel input {
-	padding: 2px 8px;
+.secondary-menu.lb-menu li:before {
+	content: "";
 }
 
-#save-cancel .save {
-	float: left;
-	margin: 5px;
+[dir=rtl] .secondary-menu li ul {
+	left: auto;
+	right: 0;
 }
 
-#save-cancel .cancel {
-	float: right;
-	margin: 5px;
-}
-
-[dir=rtl] #save-cancel .save {
-	float: right;
-}
-
-[dir=rtl] #save-cancel .cancel {
-	float: left;
-}
-
-#edit_interface-page,
-#addmedia-page {
-	margin-bottom: 50px;
-}
-
-/* Addmedia pop-ups*/
-#addmedia-page input[type="text"] {
-	line-height: 18px;
-	margin: 0 5px;
-	width: 350px;
-}
-
-#addmedia-page .optionbox select {
-	margin: 0 5px;
-}
-
-#addmedia-page .optionbox p.sub {
-	font-size: smaller;
-	margin: 0 5px;
-}
-
-#addmedia-page input[type="text"][id*="PAGE"],
-#addmedia-page input[type="text"][id*="_UID"] {
-	width: 350px;
-}
-
-#addmedia-page input[type="text"][id*="SOUR"],
-#addmedia-page input[type="text"][id*="REPO"],
-#addmedia-page input[type="text"][id*="OBJE"],
-#addmedia-page input[type="text"][id*="FAMC"],
-#addmedia-page input[type="text"][id*="ASSO"],
-#addmedia-page input[type="text"][id^="AGE"],
-#addmedia-page input[type="text"][id*="SHARED_NOTE"] {
-	width: 70px;
-}
-
-#addmedia-page input[id*="TEXT"] {
-	height: 140px;
-	width: 440px;
-}
-
-#addmedia-page textarea {
-	margin: 0 5px;
-	width: 440px;
-}
-
-#addmedia-page textarea[id*="NOTE"] {
-	height: 240px;
-}
-
-/* Styling for the jquery.colorbox gallery */
-#colorbox,
-#cboxOverlay,
-#cboxWrapper {
-	position: absolute;
+/* position sub-sub-menus */
+.secondary-menu ul ul {
 	top: 0;
-	left: 0;
-	z-index: 9999;
-	overflow: hidden;
+	left: 100px;
 }
 
-#colorbox {
-	border: 2px solid #ccc;
+[dir=rtl] .secondary-menu ul ul {
+	top: 0;
+	left: auto;
+	right: 100px;
 }
 
-#cboxOverlay {
-	position: fixed;
-	width: 100%;
-	height: 100%;
-	background: #ccc;
-}
-
-#cboxContent {
-	background: #fff;
-	border: 5px solid #888;
-}
-
-#cboxLoadedContent {
-	overflow: auto;
-	background: #fff;
-	margin-bottom: 30px;
-	margin-top: 35px;
-}
-
-#cboxTitle {
-	position: absolute;
-	left: 0;
-	top: 10px;
-	color: #888;
-	text-align: center;
-	width: 100%;
-	font-weight: 800;
-}
-
-.cboxPhoto {
-	float: left;
-	margin: auto;
-	border: 0;
+.secondary-menu li ul li {
 	display: block;
-	max-width: none;
-}
-
-.cboxIframe {
-	width: 100%;
-	height: 100%;
-	display: block;
-	border: 0;
-}
-
-#cboxPrevious {
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	background: url(images/controls.png) no-repeat -75px 0;
-	width: 25px;
-	height: 25px;
-	text-indent: -9999px;
-	margin: 10px;
-	border: 0;
-}
-
-#cboxPrevious:hover {
-	background-position: -75px -25px;
-}
-
-#cboxNext {
-	position: absolute;
-	bottom: 0;
-	left: 27px;
-	background: url(images/controls.png) no-repeat -50px 0;
-	width: 25px;
-	height: 25px;
-	text-indent: -9999px;
-	margin: 10px;
-	border: 0;
-}
-
-#cboxNext:hover {
-	background-position: -50px -25px;
-}
-
-#cboxSlideshow {
-	position: absolute;
-	bottom: 5px;
-	left: 57px;
-	margin: 10px;
-	border: 0;
-	background: none;
-}
-
-#cboxSlideshow:hover {
-	color: #f00;
-	background: #fff;
-}
-
-#cboxClose {
-	position: absolute;
-	bottom: 0;
-	right: 0;
-	background: url(images/controls.png) no-repeat -25px 0;
-	width: 25px;
-	height: 25px;
-	text-indent: -9999px;
-	margin: 10px;
-	border: 0;
-}
-
-#cboxClose:hover {
-	background-position: -25px -25px;
-}
-
-#cboxCurrent {
-	bottom: 4px;
-	color: #888;
-	left: 58px;
-	position: absolute;
-}
-
-[dir=rtl] #cboxPrevious {
-	right: 27px;
-	left: auto;
-}
-
-[dir=rtl] #cboxNext {
-	right: 0;
-	left: auto;
-}
-
-[dir=rtl] #cboxCurrent {
-	right: auto;
-	left: 0;
-}
-
-[dir=rtl] #cboxClose {
-	right: auto;
-	left: 0;
-}
-
-[dir=rtl] #cboxSlideshow {
-	right: 57px;
-	left: auto;
-}
-
-/* Census assistant module */
-table.table-census-assistant th {
-	font-weight: bold;
 	text-align: left;
 }
 
-/* Stories module */
-.story_title {
+[dir=rtl] .secondary-menu li ul li {
+	text-align: right;
+}
+
+.secondary-menu,
+.secondary-menu li ul {
+	list-style: none;
+	margin: 0;
+	padding: 1px;
+}
+
+.secondary-menu li:hover > ul {
+	display: block;
+}
+
+.lang-active,
+.theme-active {
+	font-weight: 900;
+}
+
+#menu-language li {
+	text-align: left; /* The language menu is always LTR, even on RTL pages */
+}
+
+#menu-theme li {
+	text-align: left; /* The theme menu is always LTR, even on RTL pages */
+}
+
+#header-user-links {
+	float: right;
+}
+
+[dir=rtl] #header-user-links {
+	float: left;
+}
+
+.secondary-menu ul li a {
+	background-color: #eee;
+	padding: 2px 5px;
+	display: block;
+}
+
+.secondary-menu ul li a:hover {
+	background-color: #369;
+	color: #fff;
+	text-decoration: none;
+}
+
+/* ====== Primary menu ========= */
+header nav {
+	clear: both;
+	text-align: center;
 	padding-top: 12px;
-	height: 32px;
-	font-size: 13px;
-	font-weight: 700;
 }
 
-.story_body {
-	padding: 20px;
-	white-space: normal;
+.primary-menu {
+	margin: 0;
 }
 
-.story_edit {
-	padding: 12px;
+.primary-menu li {
+	background: none !important;
+	display: inline;
+	position: relative;
+	white-space: nowrap;
 }
 
-/* User content in stories tab */
-#stories h2,
-#stories h3,
-#stories h4,
-#stories h5 {
-	padding-top: 20px;
+.primary-menu li:before {
+	content: " | ";
 }
 
-#stories p {
-	padding-top: 8px;
+.primary-menu li ul li:before {
+	content: "";
 }
 
-.btn-group {
-	display: inline-block;
-	margin: 0 4px;
+.primary-menu li:first-child:before {
+	content: "";
+}
+
+.primary-menu li ul {
+	display: none;
+	position: absolute;
+	left: 0;
+	top: 7px;
+	background-color: #eee;
+	border: thin solid #aaa;
+}
+
+[dir=rtl] .primary-menu li ul {
+	left: auto;
+	right: 0;
+}
+
+/* position sub-sub-menus */
+
+.primary-menu ul ul {
+	top: 0;
+	left: 100px;
+}
+
+[dir=rtl] .primary-menu ul ul {
+	top: 0;
+	left: auto;
+	right: 100px;
+}
+
+.primary-menu li ul li {
+	display: block;
+	text-align: left;
+}
+
+[dir=rtl] .primary-menu li ul li {
+	text-align: right;
+}
+
+.primary-menu,
+.primary-menu li ul {
+	list-style: none;
+	padding: 1px;
+}
+
+.primary-menu li:hover > ul {
+	display: block;
+
+}
+
+.primary-menu ul li a {
+	background-color: #eee;
+	padding: 2px 5px;
+	display: block;
+
+}
+
+.primary-menu ul li a:hover {
+	background-color: #369;
+	color: #fff;
+	text-decoration: none;
+}
+
+/* ====== End Theme Header ===== */
+/* ====== Theme Footer ========= */
+footer {
+	clear: both;
+	text-align: center;
+	width: 99%;
+}
+
+.user_links {
+	white-space: nowrap;
+}
+
+#link_change_blocks {
+	clear: both;
+	margin: 0 auto;
+	padding: 25px 0 0;
+	text-align: center;
+	width: 400px;
+}
+
+#link_change_blocks span {
+	padding: 0 50px;
+}
+
+#link_change_blocks span span {
+	padding: 0 3px;
+}
+
+/* ====== End Theme Footer ===== */
+
+/* ====== Theme Icons ========== */
+.icon-indis {
+	width: 24px;
+	height: 24px;
+	background-image: url(images/indis.png);
+}
+
+.icon-patriarch {
+	width: 24px;
+	height: 24px;
+	background-image: url(images/patriarch.png);
+}
+
+.icon-pedigree {
+	width: 24px;
+	height: 24px;
+	background-image: url(images/pedigree.png);
+}
+
+.icon-place {
+	width: 24px;
+	height: 24px;
+	background-image: url(images/place.png);
+}
+
+.icon-repo-list {
+	width: 30px;
+	height: 30px;
+	background-image: url(images/repository.png);
+}
+
+.icon-repository {
+	width: 30px;
+	height: 30px;
+	background-image: url(images/repository.png);
+}
+
+.icon-search {
+	width: 24px;
+	height: 24px;
+	background-image: url(images/search.png);
+}
+
+.icon-sfamily {
+	width: 24px;
+	height: 24px;
+	background-image: url(images/sfamily.png);
+}
+
+.icon-source-list {
+	width: 24px;
+	height: 24px;
+	background-image: url(images/source.png);
+}
+
+.icon-tree {
+	width: 24px;
+	height: 24px;
+	background-image: url(images/gedcom.png);
+}
+
+.icon-user_add {
+	width: 24px;
+	height: 24px;
+	background-image: url(images/user_add.png);
+}
+
+.icon-webtrees {
+	width: 100px;
+	height: 21px;
+	background-image: url(images/webtrees.png);
+}
+
+@media print {
+	.person_box, .person_boxF, .person_boxNN {
+		border: solid #888 1px;
+		background: #fff;
+	}
+
+	#header_accordion1 {
+		width: 510px !important;
+	}
+
+	header,
+	footer,
+	form,
+	#pedigree-page #people,
+	#CB_ALL, label,
+	#separator,
+	.noprint {
+		display: none !important;
+	}
+
+	#familybook_chart h3 {
+		margin-bottom: 10px;
+	}
 }
