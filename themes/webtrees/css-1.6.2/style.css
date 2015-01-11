@@ -1026,7 +1026,7 @@ td.descriptionbox a {
 .makeMenu li ul {
 	border: thin solid #AAA;
 	position: absolute;
-	margin: 0;
+	margin:0;
 }
 
 .makeMenu, .makeMenu li ul {
@@ -2897,7 +2897,7 @@ dd .deletelink {
 	margin: 0 5px;
 }
 
-#addmedia-page .optionbox p.sub{
+#addmedia-page .optionbox p.sub {
 	margin: 0 5px;
 	font-size: 11px;
 }
@@ -2970,7 +2970,7 @@ dd .deletelink {
 	margin-top: 35px;
 }
 
-#cboxTitle  {
+#cboxTitle {
 	position: absolute;
 	left: 0;
 	top: 10px;
@@ -3219,6 +3219,11 @@ table.table-census-assistant th {
 [dir=rtl] #descendancy_chart ul {
 	background-position: right top;
 	margin: 0 15px 0 0;
+	left: auto;
+}
+
+[dir=rtl] #descendancy_chart li {
+	margin: 5px -15px 0 0;
 	left: auto;
 }
 
