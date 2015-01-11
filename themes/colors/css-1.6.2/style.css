@@ -98,7 +98,7 @@ footer,
 
 input:required:valid,
 textarea:required:valid {
-	background-color: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAONJREFUeNpi/P//PwMlgImBQjDwBrCgCzDOF2Zg+Adk/AOGDRvQfHZGoDWMxgyMDMb/Q1/NIt0F/xk8gIbNZPj7P41YL4AUGsM1//rfkuyeYMzw8z9xXgBqgNm0nuHnv0D/IH/juavmngV6oYY4F3z7y2DqY2oMpANB9MYl684yfP9Xw3Dzzw7sXgQmJGTM0MbjwdDKc0b2vt5/EM2QwunBoMyCVS1YPYYAMOwZ7FmiGLLYzjBYsSQD+QpALAjErNgMYERPyoyMjMxAih+IOYD4LxD/hOJfQLV/MaJ9NC8wAAQYAPbPfH2KJKx/AAAAAElFTkSuQmCC) no-repeat right top;
+	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAONJREFUeNpi/P//PwMlgImBQjDwBrCgCzDOF2Zg+Adk/AOGDRvQfHZGoDWMxgyMDMb/Q1/NIt0F/xk8gIbNZPj7P41YL4AUGsM1//rfkuyeYMzw8z9xXgBqgNm0nuHnv0D/IH/juavmngV6oYY4F3z7y2DqY2oMpANB9MYl684yfP9Xw3Dzzw7sXgQmJGTM0MbjwdDKc0b2vt5/EM2QwunBoMyCVS1YPYYAMOwZ7FmiGLLYzjBYsSQD+QpALAjErNgMYERPyoyMjMxAih+IOYD4LxD/hOJfQLV/MaJ9NC8wAAQYAPbPfH2KJKx/AAAAAElFTkSuQmCC) no-repeat right top;
 }
 
 input:required:invalid,
@@ -193,7 +193,6 @@ textarea {
 	border-width: 1px;
 	border-color: #fff #494949 #494949 #fff;
 	font-size: 13px;
-	font-family: inherit;
 }
 
 input,
@@ -1082,7 +1081,7 @@ td.descriptionbox a {
 .makeMenu li ul {
 	border: thin solid #AAA;
 	position: absolute;
-	margin: 0;
+	margin:0;
 }
 
 .makeMenu, .makeMenu li ul {
@@ -1288,7 +1287,7 @@ td.descriptionbox a {
 	text-align: left;
 }
 
-/* ======== reportengine.php = */
+/* --- reportengine.php --- */
 #reportengine-page table {
 	margin: 20px auto;
 }
@@ -1440,6 +1439,13 @@ td.descriptionbox a {
 .indi-list,
 .fam-list {
 	visibility: hidden;
+}
+
+.recent_changes_block,
+.upcoming_events_block,
+.todays_events_block,
+.todo_block {
+	width: 98%;
 }
 
 .surname-list,
@@ -1969,7 +1975,12 @@ span.link_text {
 }
 
 #header_accordion1 {
+	padding: 0 10px 0 0;
 	overflow: hidden;
+}
+
+[dir='rtl'] #header_accordion1 {
+	padding: 0 0 0 10px;
 }
 
 #header_accordion1 .indi_name_details {
@@ -2691,7 +2702,8 @@ dd .deletelink {
 }
 
 #find-media {
-	border: 1px outset #999;
+	background-color: #81a9cb;
+	border: 1px outset #81a9cb;
 	color: #fff;
 	padding: 5px;
 	text-align: center;
@@ -3001,14 +3013,14 @@ dd .deletelink {
 #addmedia-page input[type="text"] {
 	line-height: 18px;
 	margin: 0 5px;
-	width: 300px;
+	width: 350px;
 }
 
 #addmedia-page .optionbox select {
 	margin: 0 5px;
 }
 
-#addmedia-page .optionbox p.sub{
+#addmedia-page .optionbox p.sub {
 	margin: 0 5px;
 	font-size: 11px;
 }
@@ -3081,7 +3093,7 @@ dd .deletelink {
 	margin-top: 35px;
 }
 
-#cboxTitle  {
+#cboxTitle {
 	position: absolute;
 	left: 0;
 	top: 10px;
@@ -3330,6 +3342,11 @@ table.table-census-assistant th {
 [dir=rtl] #descendancy_chart ul {
 	background-position: right top;
 	margin: 0 15px 0 0;
+	left: auto;
+}
+
+[dir=rtl] #descendancy_chart li {
+	margin: 5px -15px 0 0;
 	left: auto;
 }
 
@@ -3932,7 +3949,7 @@ a.icon-rdarrow:hover {
 
 .icon-rings {
 	width: 9px;
-	height: 11px;
+	height: 9px;
 	background-image: url(images/rings.png);
 }
 
@@ -4203,6 +4220,7 @@ a.icon-udarrow:hover {
 
 /* ====== Theme Header ========= */
 header h1 {
+	clear: left;
 	float: left;
 	font-size: 24px;
 	font-weight: normal;
@@ -4355,9 +4373,9 @@ header nav {
 }
 
 .primary-menu li {
-	display: block;
-	position: relative;
 	float: left;
+	position: relative;
+	display: block;
 	list-style: none;
 }
 
@@ -4488,7 +4506,6 @@ header nav {
 }
 
 footer .center {
-	clear: both;
 	text-align: center;
 }
 

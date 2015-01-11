@@ -174,8 +174,8 @@ textarea {
 }
 
 .topbottombar {
-	color: #fff;
 	background-color: #c3dfff;
+	color: #fff;
 	font-size: 12px;
 	font-weight: bold;
 	padding: 4px;
@@ -1042,7 +1042,7 @@ td.descriptionbox a {
 .makeMenu li ul {
 	border: thin solid #AAA;
 	position: absolute;
-	margin: 0;
+	margin:0;
 }
 
 .makeMenu, .makeMenu li ul {
@@ -1249,7 +1249,7 @@ td.descriptionbox a {
 	text-align: left;
 }
 
-/* ======== reportengine.php = */
+/* --- reportengine.php --- */
 #reportengine-page table {
 	margin: 20px auto;
 }
@@ -1407,7 +1407,7 @@ td.descriptionbox a {
 .upcoming_events_block,
 .todays_events_block,
 .todo_block {
-	width: 99%;
+	width: 98%;
 }
 
 .surname-list,
@@ -2986,7 +2986,7 @@ dd .deletelink {
 	margin-top: 35px;
 }
 
-#cboxTitle  {
+#cboxTitle {
 	position: absolute;
 	left: 0;
 	top: 10px;
@@ -3235,6 +3235,11 @@ table.table-census-assistant th {
 [dir=rtl] #descendancy_chart ul {
 	background-position: right top;
 	margin: 0 15px 0 0;
+	left: auto;
+}
+
+[dir=rtl] #descendancy_chart li {
+	margin: 5px -15px 0 0;
 	left: auto;
 }
 
@@ -4104,11 +4109,11 @@ a.icon-udarrow:hover {
 
 /* ====== Theme Header ========= */
 header h1 {
-	clear: both;
+	clear: left;
+	float: left;
 	font-size: 24px;
 	font-weight: normal;
 	height: 20px;
-	float: left;
 	margin: 10px 12px;
 }
 
@@ -4182,12 +4187,6 @@ header h1 {
 	right: auto;
 }
 
-.lang-active,
-.theme-active {
-	color: #006;
-	font-weight: 900;
-}
-
 .secondary-menu {
 	clear: both;
 	text-align: center;
@@ -4257,6 +4256,12 @@ header h1 {
 
 .secondary-menu li li a.lang-active,
 .secondary-menu li li a.theme-active {
+	color: #006;
+	font-weight: 900;
+}
+
+.lang-active,
+.theme-active {
 	color: #006;
 	font-weight: 900;
 }
@@ -5096,7 +5101,6 @@ footer .error {
 [dir=rtl] #menu-sour-editraw {
 	background-position: right -667px;
 }
-/* #menu-story-sub missing */
 
 ---------------------------------------------
 

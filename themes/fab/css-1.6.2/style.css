@@ -132,7 +132,6 @@ dt {
 	float: left;
 	font-weight: bold;
 	margin-right: 10px;
-	clear: both;
 }
 
 [dir=rtl] dt {
@@ -147,8 +146,7 @@ header {
 }
 
 #content {
-	margin-top: 5px;
-	margin-bottom: 12px;
+	margin: 5px 5px 12px 5px;
 }
 
 header,
@@ -458,7 +456,7 @@ a:hover .nameZoom {
 }
 
 .border1 {
-	border: none;
+	border: 0;
 }
 
 .menuitem {
@@ -614,46 +612,36 @@ a:hover .nameZoom {
 
 .person0 {
 	background-color: #aaf;
-	border: none;
 	vertical-align: top;
 }
 
 .person1 {
 	background-color: #afa;
-	border: none;
 	vertical-align: top;
 }
 
 .person2 {
 	background-color: #faa;
-	border: none;
 	vertical-align: top;
 }
 
 .person3 {
 	background-color: #55f;
-	border: none;
 	vertical-align: top;
 }
 
 .person4 {
 	background-color: #f55;
-	border: none;
 	vertical-align: top;
 }
 
 .person5 {
 	background-color: #5f5;
-	border: none;
 	vertical-align: top;
 }
 
 .listlog {
 	line-height: 20pt;
-}
-
-.formField {
-	font-size: 12px;
 }
 
 .starredname {
@@ -685,7 +673,6 @@ a:hover .nameZoom {
 .optionbox {
 	background-color: #ddd;
 	color: #000;
-	border: none;
 	vertical-align: top;
 	white-space: nowrap;
 	padding: 3px;
@@ -770,7 +757,6 @@ a:hover .nameZoom {
 
 .messagebox {
 	background-color: #bce;
-	border: none;
 }
 
 /* ---Pending edits--- */
@@ -898,7 +884,7 @@ a.showit:hover > span {
 }
 
 .gchart {
-	border: none;
+	border: 0;
 }
 
 /* ---Find special characters--- */
@@ -1174,7 +1160,6 @@ a.showit:hover > span {
 #new_passwd_form div,
 #register-form div,
 #verify-form div {
-	font-weight: bold;
 	margin: auto;
 	padding: 5px;
 	text-align: center;
@@ -1244,7 +1229,7 @@ a.showit:hover > span {
 	text-align: left;
 }
 
-/* ======== reportengine.php = */
+/* --- reportengine.php --- */
 #reportengine-page table {
 	margin: 20px auto;
 }
@@ -1310,7 +1295,7 @@ a.showit:hover > span {
 .itr:hover .popup {
 	display: block;
 	position: absolute;
-	width: 160px;
+	width: 10em;
 	right: 0;
 	z-index: 9999;
 }
@@ -1611,7 +1596,6 @@ a.showit:hover > span {
 
 .block {
 	background-color: #eee;
-	border: none;
 	padding: 3px;
 	vertical-align: top;
 }
@@ -1623,13 +1607,12 @@ a.showit:hover > span {
 
 .blockcontent .list_table {
 	border-spacing: 0;
-	border: none;
 	border-right: 0;
 }
 
 .blockcontent .list_value,
 .blockcontent .list_value_wrap {
-	border: none;
+	border: 0;
 }
 
 .blockheader {
@@ -1844,7 +1827,7 @@ span.link_text {
 #indi_header h3.person_box,
 #indi_header h3.person_boxF,
 #indi_header h3.person_boxNN {
-	border: none;
+	border: 0;
 }
 
 #indi_header h3 .header_age {
@@ -2143,6 +2126,10 @@ dd .deletelink {
 	padding: 4px;
 }
 
+.ui-widget {
+    font-size: 1em;
+}
+
 .ui-accordion .ui-accordion-header .ui-icon {
 	position: absolute;
 	left: 6px;
@@ -2187,7 +2174,7 @@ dd .deletelink {
 }
 
 [dir=rtl] .ui-dialog-titlebar-close {
-	left: 4px;
+	left: .3em;
 	right: auto;
 }
 
@@ -2258,7 +2245,6 @@ dd .deletelink {
 
 .dataTables_length select,
 .dataTables_filter input {
-	font-size: 11px;
 	padding: 1px;
 }
 
@@ -2342,10 +2328,10 @@ dd .deletelink {
 }
 
 #tabs {
-	width: 98%;
-	overflow: visible;
 	padding-bottom: 0;
 	margin-bottom: 0;
+	width: 98%;
+	overflow: visible;
 }
 
 [dir=rtl] #tabs {
@@ -2453,7 +2439,7 @@ dd .deletelink {
 }
 
 .flyout2 {
-	font-weight: 700;
+	font-weight: bold;
 }
 
 .flyout3 {
@@ -2748,7 +2734,6 @@ dd .deletelink {
 }
 
 #edituser-table .label {
-	border: none;
 	float: left;
 	font-weight: bold;
 	padding: 5px 10px 0;
@@ -3386,7 +3371,6 @@ li .person_boxF {
 	width: 99.5%;
 	height: 600px;
 	overflow: hidden;
-	border: none;
 }
 
 .lifespan_outer a:hover {
@@ -3663,6 +3647,7 @@ a.icon-darrow:hover {
 
 .icon-help {
 	cursor: help;
+	margin: 0 5px;
 	width: 15px;
 	height: 15px;
 	background-image: url(images/help.png);
@@ -3840,6 +3825,12 @@ a.icon-rarrow:hover {
 	width: 20px;
 	height: 20px;
 	background-image: url(images/rdarrow.png);
+}
+
+a.icon-rdarrow:hover {
+	width: 20px;
+	height: 20px;
+	background-image: url(images/rdarrow2.png);
 }
 
 .icon-reminder {
@@ -4188,6 +4179,7 @@ header h1 {
 	float: left;
 }
 
+/* ====== Secondary menu ======= */
 .secondary-menu li {
 	background: none !important;
 	display: inline;
@@ -4225,7 +4217,6 @@ header h1 {
 	right: 0;
 }
 
-/* position sub-sub-menus */
 .secondary-menu ul ul {
 	top: 0;
 	left: 100px;
@@ -4381,6 +4372,7 @@ header nav {
 }
 
 /* ====== End Theme Header ===== */
+
 /* ====== Theme Footer ========= */
 footer {
 	clear: both;

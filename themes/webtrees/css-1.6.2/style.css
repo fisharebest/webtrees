@@ -819,7 +819,7 @@ a.showit:hover > span {
 
 /* ---Autocomplete styles--- */
 .ui-autocomplete-input {
-	background-color: #eee8aa;
+	background-color: #eea;
 }
 
 .ui-autocomplete {
@@ -1233,7 +1233,7 @@ td.descriptionbox a {
 	text-align: left;
 }
 
-/* ======== reportengine.php = */
+/* --- reportengine.php --- */
 #reportengine-page table {
 	margin: 20px auto;
 }
@@ -1391,7 +1391,7 @@ td.descriptionbox a {
 .upcoming_events_block,
 .todays_events_block,
 .todo_block {
-	width: 99%;
+	width: 98%;
 }
 
 .surname-list,
@@ -2890,7 +2890,7 @@ dd .deletelink {
 #addmedia-page input[type="text"] {
 	line-height: 18px;
 	margin: 0 5px;
-	width: 300px;
+	width: 350px;
 }
 
 #addmedia-page .optionbox select {
@@ -4093,10 +4093,10 @@ a.icon-udarrow:hover {
 
 /* ====== Theme Header ========= */
 header h1 {
-	clear: both;
+	clear: left;
+	float: left;
 	font-size: 20px;
 	font-weight: normal;
-	float: left;
 	margin: 0 10px 5px;
 }
 
