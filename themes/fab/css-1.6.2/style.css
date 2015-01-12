@@ -3232,10 +3232,6 @@ width: 40px;
 }
 
 /*-- descendancy  --*/
-#descendancy_chart {
-	margin: 20px;
-}
-
 #descendancy_chart ul {
 	background-image:url(images/vline.png);
 	background-position:left top;background-repeat:repeat-y;
