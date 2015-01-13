@@ -1077,6 +1077,7 @@ td.descriptionbox a {
 	min-width: 40px;
 	text-align: center;
 }
+
 /* ======== medialist.php ==== */
 .makeMenu li ul {
 	border: thin solid #AAA;
@@ -1716,7 +1717,7 @@ td.descriptionbox a {
 }
 
 [dir=rtl] .blockh1 {
-	background: url(images/right1B.png);
+	background-image: url(images/right1B.png);
 }
 
 [dir=rtl] .blockh3 {
