@@ -54,6 +54,9 @@ function modalDialog(url, title, width) {
 				jQuery('.ui-widget-overlay').on('click', function () {
 					jQuery(self).dialog('close');
 				});
+			},
+			close: function() {
+					jQuery(this).dialog ('destroy').remove ();
 			}
 		});
 
