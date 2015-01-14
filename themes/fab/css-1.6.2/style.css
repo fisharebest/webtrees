@@ -4470,6 +4470,15 @@ footer {
 }
 
 @media print {
+	header,
+	footer,
+	form,
+	#sidebar,
+	#separator,
+	.noprint {
+		display: none !important;
+	}
+
 	.person_box, .person_boxF, .person_boxNN {
 		border: solid #888 1px;
 		background: #fff;
@@ -4477,15 +4486,6 @@ footer {
 
 	#header_accordion1 {
 		width: 510px !important;
-	}
-
-	header,
-	footer,
-	form,
-	#pedigree-page #people,
-	#separator,
-	.noprint {
-		display: none !important;
 	}
 
 	#familybook_chart h3 {

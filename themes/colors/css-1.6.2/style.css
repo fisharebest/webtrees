@@ -5293,14 +5293,11 @@ footer .error {
 	header,
 	footer,
 	form,
-	#backprint,
 	#sidebar,
-	.primary-menu,
 	#separator,
 	.noprint {
 		display: none !important;
 	}
-
 
 	#familybook_chart h3 {
 		margin-bottom: 10px;

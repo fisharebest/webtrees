@@ -5298,18 +5298,17 @@ footer .error {
 }
 
 @media print {
-	#content {
-		padding: 0;
-	}
-
 	header,
 	footer,
 	form,
-	#backprint,
 	#sidebar,
 	#separator,
 	.noprint {
 		display: none !important;
+	}
+
+	#content {
+		padding: 0;
 	}
 
 	#pedigree_chart {

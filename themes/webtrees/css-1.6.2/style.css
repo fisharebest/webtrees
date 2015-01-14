@@ -5178,7 +5178,7 @@ footer .error {
 	header,
 	footer,
 	form,
-	#backprint,
+	#sidebar,
 	#separator,
 	.noprint {
 		display: none !important;
