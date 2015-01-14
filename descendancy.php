@@ -96,13 +96,13 @@ if ($controller->error_message) {
 } else {
 	switch ($controller->chart_style) {
 	case 0: // List
-		echo '<ul style="list-style: none; display: block;" id="descendancy_chart">';
+		echo '<ul id="descendancy_chart" class="chart_common">';
 		$controller->printChildDescendancy($controller->root, $controller->generations);
 		echo '</ul>';
 		break;
 	case 1: // Booklet
 		$show_cousins = true;
-		echo '<div id="descendancy_chart">';
+		echo '<div id="descendancy_booklet">';
 		$controller->printChildFamily($controller->root, $controller->generations);
 		echo '</div>';
 		break;
