@@ -731,7 +731,7 @@ a.showit:hover > span {
 	top: 22px;
 	left: 0;
 	width: 225px;
-	border: 2px solid #1f1f1f;
+	border-top: 2px solid #1f1f1f;
 	border-right: 2px solid #555;
 	border-bottom: 2px solid #555;
 	border-left: 15px outset #1f1f1f;

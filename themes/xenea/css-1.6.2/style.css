@@ -1094,7 +1094,6 @@ td.descriptionbox a {
 }
 
 .lb-menu li li a {
-	padding: 0;
 	background-color: #fff;
 	padding: 5px 10px 5px 5px;
 }
@@ -4194,7 +4193,7 @@ header h1 {
 	display: inline-block;
 	position: relative;
 	white-space: nowrap;
-	padding: 12px 10px 0px 5px;
+	padding: 12px 10px 0 5px;
 }
 
 .secondary-menu a {

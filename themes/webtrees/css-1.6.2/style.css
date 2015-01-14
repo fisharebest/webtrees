@@ -1078,7 +1078,6 @@ td.descriptionbox a {
 }
 
 .lb-menu li li a {
-	padding: 0;
 	background-color: #fff;
 	padding: 5px 10px 5px 5px;
 }
@@ -4423,7 +4422,7 @@ footer .error {
 /* ====== Theme Icons ========== */
 /* ***** Header icons **** */
 #menu-tree {
-	background-position:center 0
+	background-position:center 0;
 }
 
 #menu-mymenu {

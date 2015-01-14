@@ -1090,7 +1090,6 @@ td.descriptionbox a {
 }
 
 .lb-menu li li a {
-	padding: 0;
 	background-color: #fff;
 	padding: 5px 10px 5px 5px;
 }
@@ -1890,7 +1889,7 @@ span.link_text {
 #indi_header h3.person_boxF,
 #indi_header h3.person_boxNN {
 	background-color: #acf;
-	border: 1px solid ##84BSFF;
+	border: 1px solid #8fbcff;
 }
 
 #indi_header h3 .header_age {
@@ -4452,7 +4451,6 @@ header h1 {
 .primary-menu > li {
 	background-image: url(images/sprites-top-menu.png);
 	background-repeat: no-repeat;
-	height: 22px;
 	line-height: 22px;
 	margin: 5px 0 0 10px;
 	width: 22px;
