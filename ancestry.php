@@ -142,7 +142,7 @@ switch ($controller->chart_style) {
 case 0:
 	// List
 	$pidarr=array();
-	echo '<ul id="ancestry_chart">';
+	echo '<ul id="ancestry_chart" class="chart_common">';
 	$controller->printChildAscendancy($controller->root, 1, $OLD_PGENS-1);
 	echo '</ul>';
 	echo '<br>';
@@ -150,7 +150,7 @@ case 0:
 case 1:
 	// TODO: this should be a parameter to a function, not a global
 	$show_cousins = $controller->show_cousins;
-	echo '<div id="ancestry_chart">';
+	echo '<div id="ancestry_booklet">';
 	// Booklet
 	// first page : show indi facts
 	print_pedigree_person($controller->root);

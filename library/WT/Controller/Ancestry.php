@@ -103,7 +103,7 @@ class WT_Controller_Ancestry extends WT_Controller_Chart {
 		}
 		// child
 		echo '<li>';
-		echo '<table border="0" cellpadding="0" cellspacing="0"><tr><td><a name="sosa', $sosa, '"></a>';
+		echo '<table><tr><td>';
 		if ($sosa==1) {
 			echo '<img src="', $WT_IMAGES['spacer'], '" height="3" width="', $Dindent, '" alt=""></td><td>';
 		} else {
@@ -136,8 +136,8 @@ class WT_Controller_Ancestry extends WT_Controller_Chart {
 
 		if ($family && $new && $depth>0) {
 			// print marriage info
-			echo '<span class="details1" style="white-space: nowrap;" >';
-			echo '<img src="', $WT_IMAGES['spacer'], '" height="2" width="', $Dindent, '" align="middle" alt=""><a href="#" onclick="return expand_layer(\'sosa_', $sosa, '\');" class="top"><i id="sosa_', $sosa, '_img" class="icon-minus" title="', WT_I18N::translate('View family'), '"></i></a>';
+			echo '<span class="details1">';
+			echo '<img src="', $WT_IMAGES['spacer'], '" height="2" width="', $Dindent, '" alt=""><a href="#" onclick="return expand_layer(\'sosa_', $sosa, '\');" class="top"><i id="sosa_', $sosa, '_img" class="icon-minus" title="', WT_I18N::translate('View family'), '"></i></a>';
 			echo '&nbsp;<span dir="ltr" class="person_box">&nbsp;', ($sosa*2), '&nbsp;</span>&nbsp;', WT_I18N::translate('and');
 			echo '&nbsp;<span dir="ltr" class="person_boxF">&nbsp;', ($sosa*2+1), '&nbsp;</span>&nbsp;';
 			if ($family->canShow()) {
@@ -147,7 +147,7 @@ class WT_Controller_Ancestry extends WT_Controller_Chart {
 			}
 			echo '</span>';
 			// display parents recursively - or show empty boxes
-			echo '<ul style="list-style: none; display: block;" id="sosa_', $sosa, '">';
+			echo '<ul id="sosa_', $sosa, '" class="generation">';
 			$this->printChildAscendancy($family->getHusband(), $sosa*2, $depth-1);
 			$this->printChildAscendancy($family->getWife(), $sosa*2+1, $depth-1);
 			echo '</ul>';
