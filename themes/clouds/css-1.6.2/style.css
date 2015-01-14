@@ -1281,9 +1281,9 @@ background-color: #fff;
 	opacity: 0;
 	transition: visibility 0s ease .25s,opacity .25s ease;
 	z-index: 9999;
-/*	-webkit-box-shadow: 5px 5px 5px 0 rgba(0,0,0,.4);
+	-webkit-box-shadow: 5px 5px 5px 0 rgba(0,0,0,.4);
 	-moz-box-shadow: 5px 5px 5px 0 rgba(0,0,0,.4);
-	box-shadow: 5px 5px 5px 0 rgba(0,0,0,.4);*/
+	box-shadow: 5px 5px 5px 0 rgba(0,0,0,.4);
 }
 
 [dir=rtl] .popup {
