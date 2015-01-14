@@ -83,6 +83,8 @@ fieldset,
 .person3,
 .person4,
 .person5,
+.primary-menu ul,
+.secondary-menu li ul,
 footer,
 #indi_main_blocks,
 #tabs,
@@ -4271,7 +4273,7 @@ header {
 	background-color: #eee;
 	border: thin solid #aaa;
 	display: none;
-	left: 10px;
+	left: 0;
 	position: absolute;
 }
 

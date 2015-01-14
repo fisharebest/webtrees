@@ -68,6 +68,8 @@ main {
 .person3,
 .person4,
 .person5,
+.primary-menu ul,
+.secondary-menu li ul,
 #sidebar,
 .topbottombar,
 #save-cancel {
@@ -113,10 +115,6 @@ a.link:hover {
 
 #flash-messages {
 	clear: both;
-}
-
-td {
-	padding: 0;
 }
 
 dl {
@@ -173,7 +171,7 @@ textarea {
 
 input,
 textarea {
-	padding: 0 3px;
+	padding: 3px;
 }
 
 textarea {
@@ -232,6 +230,7 @@ header form {
 
 hr {
 	margin-top: 5px;
+	border-color: #006;
 }
 
 h2 {
@@ -242,7 +241,7 @@ h2 {
 .person_box,
 .person_boxF,
 .person_boxNN {
-	border: 1px solid #aaa;
+	border: 1px solid #8bf;
 	padding: 3px;
 }
 
@@ -1165,6 +1164,7 @@ td.descriptionbox a {
 #new_passwd_form,
 #register-form,
 #verify-form {
+	background-color: #95b8e0;
 	border: 1px solid #999;
 	display: inline-block;
 	margin: 10px auto 0;
@@ -1209,6 +1209,7 @@ td.descriptionbox a {
 #register-form label input,
 #register-form label select,
 #register-form textarea {
+background-color: #fff;
 	width: 220px;
 	margin: 0 10px;
 	padding: 3px;
@@ -1889,7 +1890,7 @@ span.link_text {
 #indi_header h3.person_boxF,
 #indi_header h3.person_boxNN {
 	background-color: #acf;
-	border: 1px solid #999;
+	border: 1px solid ##84BSFF;
 }
 
 #indi_header h3 .header_age {
@@ -4267,14 +4268,13 @@ header {
 	position: absolute;
 }
 
-.secondary-menu ul li {
+.secondary-menu li ul li {
 	display: block;
 	text-align: left;
 }
 
-.secondary-menu ul li a {
+.secondary-menu li ul li a {
 	color: #333;
-	padding: 2px 5px 2px 2px;
 }
 
 .secondary-menu {
@@ -4306,7 +4306,7 @@ header {
 .secondary-menu ul li a {
 	background-color: #fff;
 	display: block;
-	padding: 0 5px;
+	padding: 2px 5px 2px 2px;
 }
 
 .secondary-menu ul li a:hover {
