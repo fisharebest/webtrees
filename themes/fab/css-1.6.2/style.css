@@ -135,7 +135,7 @@ dt {
 }
 
 [dir=rtl] dt {
-	float: right;
+	float: left;
 	margin-right: auto;
 	margin-left: 10px;
 }
@@ -1859,8 +1859,7 @@ span.link_text {
 }
 
 #indi_mainimage {
-	float: left;
-	padding: 0 10px;
+	float: right;
 }
 
 #header_accordion1 {
@@ -1967,7 +1966,7 @@ dd .deletelink {
 }
 
 [dir=rtl] #indi_mainimage {
-	float: right;
+	float: left;
 }
 
 [dir=rtl] #indi_note .fact_NOTE {
