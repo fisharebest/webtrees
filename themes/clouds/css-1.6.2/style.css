@@ -5302,13 +5302,12 @@ footer .error {
 		padding: 0;
 	}
 
-	#backprint,
-	#sidebar,
-	#CB_All,
-	#separator,
 	header,
 	footer,
 	form,
+	#backprint,
+	#sidebar,
+	#separator,
 	.noprint {
 		display: none !important;
 	}

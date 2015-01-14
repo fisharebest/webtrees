@@ -5175,12 +5175,11 @@ footer .error {
 }
 
 @media print {
-	#backprint,
-	#separator,
 	header,
 	footer,
 	form,
-	#CB_All
+	#backprint,
+	#separator,
 	.noprint {
 		display: none !important;
 	}

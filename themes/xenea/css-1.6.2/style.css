@@ -5180,11 +5180,10 @@ footer .error {
 @media print {
 	header,
 	footer,
+	form,
 	#backprint,
 	#sidebar,
 	#separator,
-	form,
-	#CB_All,
 	.noprint {
 		display: none !important;
 	}

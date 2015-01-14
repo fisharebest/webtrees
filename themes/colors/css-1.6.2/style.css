@@ -5290,14 +5290,13 @@ footer .error {
 }
 
 @media print {
+	header,
+	footer,
 	form,
 	#backprint,
 	#sidebar,
 	.primary-menu,
 	#separator,
-	header,
-	footer,
-	#CB_All,
 	.noprint {
 		display: none !important;
 	}
