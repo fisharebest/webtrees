@@ -3485,6 +3485,12 @@ table.table-census-assistant th {
 	background-image: url(images/family.png);
 }
 
+.icon-button_find {
+	width: 17px;
+	height: 15px;
+	background-image: url(images/find.png);
+}
+
 .icon-button_find_facts {
 	width: 20px;
 	height: 20px;

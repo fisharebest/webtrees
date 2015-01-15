@@ -3511,6 +3511,12 @@ table.table-census-assistant th {
 	background-image: url(images/buttons/family.png);
 }
 
+.icon-button_find {
+	width: 17px;
+	height: 15px;
+	background-image: url(images/buttons/find.png);
+}
+
 .icon-button_find_facts {
 	width: 20px;
 	height: 20px;
