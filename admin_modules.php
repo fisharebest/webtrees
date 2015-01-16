@@ -22,7 +22,7 @@ use WT\Auth;
 
 define('WT_SCRIPT_NAME', 'admin_modules.php');
 require 'includes/session.php';
-require WT_ROOT.'includes/functions/functions_edit.php';
+require WT_ROOT . 'includes/functions/functions_edit.php';
 
 $controller = new WT_Controller_Page();
 $controller
@@ -57,16 +57,16 @@ if (WT_Filter::post('action') === 'update_mods' && WT_Filter::checkCsrf()) {
 if (WT_Filter::post('action') === 'delete' && WT_Filter::checkCsrf()) {
 	$module_name = WT_Filter::post('module_name');
 	WT_DB::prepare(
-		"DELETE `##block_setting`".
-		" FROM `##block_setting`".
-		" JOIN `##block` USING (block_id)".
-		" JOIN `##module` USING (module_name)".
+		"DELETE `##block_setting`" .
+		" FROM `##block_setting`" .
+		" JOIN `##block` USING (block_id)" .
+		" JOIN `##module` USING (module_name)" .
 		" WHERE module_name=?"
 	)->execute(array($module_name));
 	WT_DB::prepare(
-		"DELETE `##block`".
-		" FROM `##block`".
-		" JOIN `##module` USING (module_name)".
+		"DELETE `##block`" .
+		" FROM `##block`" .
+		" JOIN `##module` USING (module_name)" .
 		" WHERE module_name=?"
 	)->execute(array($module_name));
 	WT_DB::prepare("DELETE FROM `##module_setting` WHERE module_name=?")->execute(array($module_name));
@@ -107,7 +107,7 @@ $controller
 	  }
 		jQuery("#installed_table").dataTable( {
 			paging: false,
-			'.WT_I18N::datatablesI18N().',
+			'.WT_I18N::datatablesI18N() . ',
 			sorting: [[ 1, "asc" ]],
 			columns : [
 				{ sortable: false, class: "center" },
@@ -158,7 +158,7 @@ $controller
 					'<tr><td class="text-center">', two_state_checkbox('status-' . $module_name, $status === 'enabled'), '</td>',
 					'<td>';
 				if ($module instanceof WT_Module_Config) {
-					echo '<a href="', $module->getConfigLink() ,'">';
+					echo '<a href="', $module->getConfigLink(), '">';
 				}
 				echo $module->getTitle();
 				if ($module instanceof WT_Module_Config) {
@@ -167,13 +167,13 @@ $controller
 				echo
 					'</td>',
 					'<td>', $module->getDescription(), '</td>',
-					'<td class="hidden-xs">', $module instanceof WT_Module_Menu    ? WT_I18N::translate('Menu') : '-', '</td>',
-					'<td class="hidden-xs">', $module instanceof WT_Module_Tab     ? WT_I18N::translate('Tab') : '-', '</td>',
+					'<td class="hidden-xs">', $module instanceof WT_Module_Menu ? WT_I18N::translate('Menu') : '-', '</td>',
+					'<td class="hidden-xs">', $module instanceof WT_Module_Tab ? WT_I18N::translate('Tab') : '-', '</td>',
 					'<td class="hidden-xs">', $module instanceof WT_Module_Sidebar ? WT_I18N::translate('Sidebar') : '-', '</td>',
-					'<td class="hidden-xs">', $module instanceof WT_Module_Block   ? (($module->isUserBlock() ? '<div>'.WT_I18N::translate('My page').'</div>' : '').($module->isGedcomBlock() ? '<div>'.WT_I18N::translate('Home page').'</div>' : '')) : '-', '</td>',
-					'<td class="hidden">', $module instanceof WT_Module_Chart   ? WT_I18N::translate('Chart') : '-', '</td>',
-					'<td class="hidden-xs">', $module instanceof WT_Module_Report  ? WT_I18N::translate('Report') : '-', '</td>',
-					'<td class="hidden">', $module instanceof WT_Module_Theme   ? WT_I18N::translate('Theme') : '-', '</td>',
+					'<td class="hidden-xs">', $module instanceof WT_Module_Block ? (($module->isUserBlock() ? '<div>' . WT_I18N::translate('My page') . '</div>' : '') . ($module->isGedcomBlock() ? '<div>' . WT_I18N::translate('Home page') . '</div>' : '')) : '-', '</td>',
+					'<td class="hidden">', $module instanceof WT_Module_Chart ? WT_I18N::translate('Chart') : '-', '</td>',
+					'<td class="hidden-xs">', $module instanceof WT_Module_Report ? WT_I18N::translate('Report') : '-', '</td>',
+					'<td class="hidden">', $module instanceof WT_Module_Theme ? WT_I18N::translate('Theme') : '-', '</td>',
 					'</tr>';
 			}
 		}

@@ -35,7 +35,7 @@ $controller
 	->pageHeader();
 
 $variables = WT_DB::prepare("SHOW VARIABLES")->fetchAssoc();
-array_walk($variables, function (&$x) { $x = str_replace(',', ', ', $x); });
+array_walk($variables, function(&$x) { $x = str_replace(',', ', ', $x); });
 
 ob_start();
 phpinfo();

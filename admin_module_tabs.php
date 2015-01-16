@@ -22,7 +22,7 @@ use WT\Auth;
 
 define('WT_SCRIPT_NAME', 'admin_module_tabs.php');
 require 'includes/session.php';
-require WT_ROOT.'includes/functions/functions_edit.php';
+require WT_ROOT . 'includes/functions/functions_edit.php';
 
 $controller = new WT_Controller_Page();
 $controller
@@ -95,7 +95,7 @@ $controller
 						<?php
 						foreach (WT_Tree::getAll() as $tree) {
 							$varname = 'access-' . $module->getName() . '-' . $tree->tree_id;
-							$access_level=WT_DB::prepare(
+							$access_level = WT_DB::prepare(
 								"SELECT access_level FROM `##module_privacy` WHERE gedcom_id = ? AND module_name = ? AND component = 'tab'"
 							)->execute(array($tree->tree_id, $module->getName()))->fetchOne();
 							if ($access_level === null) {

@@ -60,9 +60,9 @@ $do_not_delete = array('index.php', 'config.ini.php');
 
 // If we are storing the media in the data folder (this is the default), then don’t delete it.
 foreach (WT_Tree::getAll() as $tree) {
-	$MEDIA_DIRECTORY=$tree->getPreference('MEDIA_DIRECTORY');
+	$MEDIA_DIRECTORY = $tree->getPreference('MEDIA_DIRECTORY');
 
-	if (substr($MEDIA_DIRECTORY, 0, 3) !='../') {
+	if (substr($MEDIA_DIRECTORY, 0, 3) != '../') {
 		// Just need to add the first part of the path
 		$tmp = explode('/', $MEDIA_DIRECTORY);
 		$do_not_delete[] = $tmp[0];

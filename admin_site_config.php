@@ -23,7 +23,7 @@ use WT\Theme;
 
 define('WT_SCRIPT_NAME', 'admin_site_config.php');
 require './includes/session.php';
-require WT_ROOT.'includes/functions/functions_edit.php';
+require WT_ROOT . 'includes/functions/functions_edit.php';
 
 $controller = new WT_Controller_Page();
 $controller->restrictAccess(Auth::isAdmin());
@@ -46,7 +46,7 @@ $WELCOME_TEXT_AUTH_MODE_OPTIONS = array(
 	4 => WT_I18N::translate('Choose user defined welcome text typed below'),
 );
 
-switch(WT_Filter::post('section')) {
+switch (WT_Filter::post('section')) {
 case 'site':
 	if (WT_Filter::checkCsrf()) {
 		$INDEX_DIRECTORY = WT_Filter::post('INDEX_DIRECTORY');

@@ -22,7 +22,7 @@ use WT\Auth;
 
 define('WT_SCRIPT_NAME', 'admin_site_access.php');
 require './includes/session.php';
-require WT_ROOT.'includes/functions/functions_edit.php';
+require WT_ROOT . 'includes/functions/functions_edit.php';
 
 $controller = new WT_Controller_Page();
 $controller
@@ -52,25 +52,25 @@ case 'load_rules':
 	$start  = WT_Filter::getInteger('start');
 	$length = WT_Filter::getInteger('length');
 
-	$sql=
-		"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS".
-		" INET_NTOA(ip_address_start), ip_address_start, INET_NTOA(ip_address_end), ip_address_end, user_agent_pattern, rule, comment, site_access_rule_id".
-		" FROM `##site_access_rule`".
+	$sql =
+		"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS" .
+		" INET_NTOA(ip_address_start), ip_address_start, INET_NTOA(ip_address_end), ip_address_end, user_agent_pattern, rule, comment, site_access_rule_id" .
+		" FROM `##site_access_rule`" .
 		" WHERE rule<>'unknown'";
-	$args=array();
+	$args = array();
 
 	if ($search) {
-		$sql.=
-			" AND (INET_ATON(?) BETWEEN ip_address_start AND ip_address_end".
-			" OR INET_NTOA(ip_address_start) LIKE CONCAT('%', ?, '%')".
-			" OR INET_NTOA(ip_address_end) LIKE CONCAT('%', ?, '%')".
-			" OR user_agent_pattern LIKE CONCAT('%', ?, '%')".
+		$sql .=
+			" AND (INET_ATON(?) BETWEEN ip_address_start AND ip_address_end" .
+			" OR INET_NTOA(ip_address_start) LIKE CONCAT('%', ?, '%')" .
+			" OR INET_NTOA(ip_address_end) LIKE CONCAT('%', ?, '%')" .
+			" OR user_agent_pattern LIKE CONCAT('%', ?, '%')" .
 			" OR comment LIKE CONCAT('%', ?, '%'))";
-		$args[]=$search;
-		$args[]=$search;
-		$args[]=$search;
-		$args[]=$search;
-		$args[]=$search;
+		$args[] = $search;
+		$args[] = $search;
+		$args[] = $search;
+		$args[] = $search;
+		$args[] = $search;
 	}
 
 	$order = WT_Filter::getArray('order');
@@ -95,8 +95,8 @@ case 'load_rules':
 		$sql .= 'ORDER BY 1 ASC';
 	}
 
-	if ($length>0) {
-		$sql.=" LIMIT " . $start . ',' . $length;
+	if ($length > 0) {
+		$sql .= " LIMIT " . $start . ',' . $length;
 	}
 
 	// This becomes a JSON list, not a JSON array, so we need numeric keys.
@@ -113,8 +113,8 @@ case 'load_rules':
 			'deny'  => /* I18N: An access rule - deny access to the site */  WT_I18N::translate('deny'),
 			'robot' => /* I18N: http://en.wikipedia.org/wiki/Web_crawler */  WT_I18N::translate('robot'),
 		), null, $datum[5]);
-		$datum[6] = edit_field_inline('site_access_rule-comment-'.$site_access_rule_id, $datum[6]);
-		$datum[7] = '<button class="btn btn-danger" onclick="if (confirm(\'' . WT_Filter::escapeHtml(WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($user_agent))).'\')) { document.location=\'' . WT_SCRIPT_NAME . '?action=delete&amp;site_access_rule_id=' . $site_access_rule_id . '\'; }"><i class="fa fa-trash-o"></i></button>';
+		$datum[6] = edit_field_inline('site_access_rule-comment-' . $site_access_rule_id, $datum[6]);
+		$datum[7] = '<button class="btn btn-danger" onclick="if (confirm(\'' . WT_Filter::escapeHtml(WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($user_agent))) . '\')) { document.location=\'' . WT_SCRIPT_NAME . '?action=delete&amp;site_access_rule_id=' . $site_access_rule_id . '\'; }"><i class="fa fa-trash-o"></i></button>';
 	}
 
 	// Total filtered/unfiltered rows
@@ -137,16 +137,16 @@ case 'load_unknown':
 	$start  = WT_Filter::getInteger('start');
 	$length = WT_Filter::getInteger('length');
 
-	$sql=
-		"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS".
-		" INET_NTOA(ip_address_start), ip_address_start, user_agent_pattern, DATE(updated) AS updated, site_access_rule_id".
-		" FROM `##site_access_rule`".
+	$sql =
+		"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS" .
+		" INET_NTOA(ip_address_start), ip_address_start, user_agent_pattern, DATE(updated) AS updated, site_access_rule_id" .
+		" FROM `##site_access_rule`" .
 		" WHERE rule='unknown'";
 	$args = array();
 
 	if ($search) {
 		$sql .=
-			" AND (INET_ATON(ip_address_start) LIKE CONCAT('%', ?, '%')".
+			" AND (INET_ATON(ip_address_start) LIKE CONCAT('%', ?, '%')" .
 			" OR user_agent_pattern LIKE CONCAT('%', ?, '%'))";
 		$args[] = $search;
 		$args[] = $search;
@@ -175,7 +175,7 @@ case 'load_unknown':
 	}
 
 
-	if ($length>0) {
+	if ($length > 0) {
 		$sql .= " LIMIT " . $start . ',' . $length;
 	}
 
@@ -183,9 +183,9 @@ case 'load_unknown':
 	$data = WT_DB::prepare($sql)->execute($args)->fetchAll(PDO::FETCH_NUM);
 	// Reformat the data for display
 	foreach ($data as &$datum) {
-		$site_access_rule_id=$datum[4];
+		$site_access_rule_id = $datum[4];
 		$datum[4] = '<button class="btn btn-primary" onclick="document.location=\'' . WT_SCRIPT_NAME . '?action=allow&amp;site_access_rule_id=' . $site_access_rule_id . '\';"><i class="fa fa-check"></i></button>';
-		$datum[5] = '<button class="btn btn-primary" onclick="document.location=\'' . WT_SCRIPT_NAME .  '?action=deny&amp;site_access_rule_id=' . $site_access_rule_id . '\';"><i class="fa fa-ban"></i></button>';
+		$datum[5] = '<button class="btn btn-primary" onclick="document.location=\'' . WT_SCRIPT_NAME . '?action=deny&amp;site_access_rule_id=' . $site_access_rule_id . '\';"><i class="fa fa-ban"></i></button>';
 		$datum[6] = '<button class="btn btn-primary" onclick="document.location=\'' . WT_SCRIPT_NAME . '?action=robot&amp;site_access_rule_id=' . $site_access_rule_id . '\';"><i class="fa fa-android"></i></button>';
 	}
 
@@ -211,7 +211,7 @@ $controller
 		jQuery(".table-site-access-rules").dataTable({
 			ajax: "' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=load_rules",
 			serverSide: true,
-			'.WT_I18N::datatablesI18N().',
+			'.WT_I18N::datatablesI18N() . ',
 			processing: true,
 			stateSave: true,
 			stateDuration: 180,
@@ -230,7 +230,7 @@ $controller
 		jQuery(".table-unknown-site-visitors").dataTable({
 			ajax: "' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=load_unknown",
 			serverSide: true,
-			'.WT_I18N::datatablesI18N().',
+			'.WT_I18N::datatablesI18N() . ',
 			processing: true,
 			stateSave: true,
 			stateDuration: 180,
@@ -249,10 +249,10 @@ $controller
 // Delete any "unknown" visitors that are now "known".
 // This could happen every time we create/update a rule.
 WT_DB::exec(
-	"DELETE unknown".
-	" FROM `##site_access_rule` AS unknown".
-	" JOIN `##site_access_rule` AS known ON (unknown.user_agent_pattern LIKE known.user_agent_pattern)".
-	" WHERE unknown.rule='unknown' AND known.rule<>'unknown'".
+	"DELETE unknown" .
+	" FROM `##site_access_rule` AS unknown" .
+	" JOIN `##site_access_rule` AS known ON (unknown.user_agent_pattern LIKE known.user_agent_pattern)" .
+	" WHERE unknown.rule='unknown' AND known.rule<>'unknown'" .
 	" AND unknown.ip_address_start BETWEEN known.ip_address_start AND known.ip_address_end"
 );
 
