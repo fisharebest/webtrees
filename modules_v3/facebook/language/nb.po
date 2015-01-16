@@ -1,0 +1,310 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Facebook login\n"
+"POT-Creation-Date: 2014-02-05 21:40+0100\n"
+"PO-Revision-Date: 2014-02-22 16:41+0100\n"
+"Last-Translator: Thomas Rindal <thomas@rindal.net>\n"
+"Language-Team: Thomas Rindal <thomas@rindal.net>\n"
+"Language: Norsk bokmål\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;translate;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: admin.php:19
+msgid ""
+"Facebook usernames can only contain alphanumeric characters (A-Z, 0-9) or a "
+"period"
+msgstr ""
+"Facebook brukernavn kan kun bestå av av bokstaver (A-Z), tall (0-9) og et "
+"punktum"
+
+#: admin.php:25
+msgid "Facebook API"
+msgstr "Facebook-API"
+
+#: admin.php:28
+#, php-format
+msgid "The App ID and secret can be setup at %s."
+msgstr "The App ID and secret can be setup at %s."
+
+#: admin.php:30
+msgid "App ID:"
+msgstr "Applikasjons-ID: "
+
+#: admin.php:34
+msgid "App Secret:"
+msgstr "App Secret:"
+
+#: admin.php:38
+msgid ""
+"NOTE: New user registration is disabled in Site configuration so only "
+"existing users will be able to login."
+msgstr ""
+"VIKTIG: Nye brukerregistreringer er avslått i nettstedkonfigurasjonen slik "
+"at kun eksisterende brukere kan logge inn. "
+
+#: admin.php:43
+msgid "Require verified Facebook accounts"
+msgstr "Krev bekreftet Facebook-konto"
+
+#: admin.php:44
+msgid "Only disable for testing"
+msgstr "Slå av kun for testing"
+
+#: admin.php:50
+msgid "Hide regular log-in and registration forms"
+msgstr "Skjul ordinær innlogging og registreringsskjema"
+
+#: admin.php:53 admin.php:107
+msgid "Save"
+msgstr "Lagre"
+
+#: admin.php:58
+msgid "Linked users"
+msgstr "Knyttede brukere"
+
+#: admin.php:61
+msgid "Associate a webtrees user with a Facebook account."
+msgstr "Knytt en webtrees-bruker med en Facebook-konto "
+
+#: admin.php:65
+msgid "webtrees Username"
+msgstr "webtrees brukernavn"
+
+#: admin.php:66
+msgid "Real name"
+msgstr "Virkelig navn"
+
+#: admin.php:67 admin.php:111
+msgid "Facebook Account"
+msgstr "Facebook-konto"
+
+#: admin.php:68
+msgid "Unlink"
+msgstr "Fjern knytning"
+
+#: admin.php:90
+msgid "Add"
+msgstr "Legg til"
+
+#: admin.php:98
+msgid "Pre-approve users"
+msgstr "Forhåndsgodkjente brukere"
+
+#: admin.php:101
+msgid ""
+"If you know a user's Facebook username but they don't have an account in "
+"webtrees, you can pre-approve one so they can login immediately the first "
+"time they visit."
+msgstr ""
+"Hvis du kjenner Facebook-brukernavnet til en person som ikke har konto i "
+"webtrees kan du forhåndsgodkjenne dem slik at de kan logge inn umiddelbart "
+"ved første besøk. "
+
+#: admin.php:104
+msgid "Import from your Facebook friends"
+msgstr "Importer fra dine Facebook-venner"
+
+#: admin.php:125
+msgid "Default individual"
+msgstr "Standardperson"
+
+#: admin.php:126
+msgid "Individual record"
+msgstr "Personoppføring"
+
+#: admin.php:127 module.php:405
+msgid "Role"
+msgstr "Rolle"
+
+#: module.php:55
+msgid "Facebook"
+msgstr "Facebook"
+
+#: module.php:60
+msgid "Allow users to login with Facebook."
+msgstr "Tillat brukere å logge inn med Facebook"
+
+#: module.php:82
+msgid "Visitor"
+msgstr "Gjest"
+
+#: module.php:83
+msgid "Member"
+msgstr "Medlem"
+
+#: module.php:84
+msgid "Editor"
+msgstr "Redigerer"
+
+#: module.php:85
+msgid "Moderator"
+msgstr "Moderator"
+
+#: module.php:86
+msgid "Manager"
+msgstr "Administrator"
+
+#: module.php:100
+msgid "Settings saved"
+msgstr "Innstillingene er lagret"
+
+#: module.php:112
+#, php-format
+msgid "User %1$s linked to Facebook user %2$s"
+msgstr "Bruker %1$s koblet til Facebook bruker %2$s"
+
+#: module.php:114
+msgid "The user could not be linked"
+msgstr "Brukeren kunne ikke kobles"
+
+#: module.php:121
+msgid "User unlinked"
+msgstr "Kobling til bruker fjernet"
+
+#: module.php:123
+msgid "The link could not be deleted"
+msgstr "Knytningen kunne ikke slettes"
+
+#: module.php:133
+#, php-format
+msgid "Pre-approved user \"%s\" added"
+msgstr "Forhåndsgodkjent bruker \"%s\" lagt til"
+
+#: module.php:142
+msgid "Changes to pre-approved users saved"
+msgstr "Endring av forhåndsgodkjent bruker er lagret"
+
+#: module.php:149
+#, php-format
+msgid "Pre-approved user \"%s\" deleted"
+msgstr "Forhåndsgodkjent bruker \"%s\" er slettet"
+
+#: module.php:151
+#, php-format
+msgid "The pre-approved user \"%s\" could not be deleted"
+msgstr "Forhåndsgodkjent bruker \"%s\" kunne ikke slettes"
+
+#: module.php:181
+msgid "Missing Facebook username"
+msgstr "Mangler Facebook brukernavn"
+
+#: module.php:185
+msgid "User is already registered"
+msgstr "Bruker er allerede registrert"
+
+#: module.php:230
+msgid "Facebook logins have not been setup by the administrator."
+msgstr "Facbookinnlogging er ikke konfigurert av administrator"
+
+#: module.php:239
+msgid ""
+"You must allow access to your Facebook account in order to login with "
+"Facebook."
+msgstr ""
+"Du må gi tilgang til din Facebook-konto for å kunne logge inn med Facebook"
+
+#: module.php:241
+msgid "An error occurred trying to log you in with Facebook."
+msgstr "En feil oppsto når du forsøkte å logge inn med Facebook"
+
+#: module.php:245
+msgid "This form has expired.  Try again."
+msgstr "Skjemaet har utløpt. Forsøk igjen"
+
+#: module.php:285
+msgid ""
+"Your Facebook code is invalid. This can happen if you hit back in your "
+"browser after login or if Facebook logins have been setup incorrectly by the "
+"administrator."
+msgstr ""
+"Facebook-koden din er ugyldig. Dette kan skje hvis du bruker tilbake-knappen "
+"i nettleseren etter innlogging eller hvis Facebookinnlogging er feil satt "
+"opp av administrator"
+
+#: module.php:296
+msgid "Could not fetch your information from Facebook. Please try again."
+msgstr "Kunne ikke hente informasjon fra Facebook. Vennligst forsøk igjen."
+
+#: module.php:301
+msgid "The state does not match. You may been tricked to load this page."
+msgstr ""
+"Tilstanden matcher ikke. Kan kan ha bliltt lurt til å laste denne siden."
+
+#: module.php:368
+msgid "Users successfully imported from Facebook"
+msgstr "Vellykket import av brukere fra Facebook"
+
+#: module.php:374
+#, php-format
+msgid ""
+"You must <a href='%s'>login to the site via Facebook</a> in order to import "
+"friends from Facebook"
+msgstr ""
+"Du må <a href='%s'> logge inn med Facebook</a> for å kunne importere venner "
+"fra Facebook"
+
+#: module.php:380
+msgid "Could not fetch your friends from Facebook."
+msgstr "Kunne ikke hente vennene dine fra Facebook."
+
+#: module.php:390
+msgid "No friend data"
+msgstr "Ingen vennedata"
+
+#: module.php:463
+msgid ""
+"Only verified Facebook accounts are authorized. Please verify your account "
+"on Facebook and then try again"
+msgstr ""
+"Kun bekreftede Facebook-konti er autorisert. Vennligst bekreft din konto på "
+"Facebook og forsøk igjen"
+
+#: module.php:480
+msgid ""
+"This account has not been verified.  Please check your email for a "
+"verification message."
+msgstr ""
+"Denne kontoen er ikke bekreftet. Vennligst sjekk din epostkonto og se etter "
+"bekreftelse."
+
+#: module.php:483
+msgid ""
+"This account has not been approved.  Please wait for an administrator to "
+"approve it."
+msgstr ""
+"Denne kontoen er ikke godkjent enda. Vennligst vent på godkjennelse fra "
+"administrator."
+
+#: module.php:495
+msgid "The administrator has disabled registrations."
+msgstr "Administratoren har slått av registreriinger."
+
+#: module.php:575
+msgid ""
+"There was an error verifying your account. Contact the site administrator if "
+"you are unable to access the site."
+msgstr ""
+"Det oppsto en feil ved verifisering av din konto. Kontakt administratoren "
+"for nettstedet hvis du ikke kankomme inn på siden."
+
+#: module.php:588
+msgid "Unable to create your account.  Please try again."
+msgstr "Kunne ikke opprette kontoen. Vennligst forsøk igjen."
+
+#: module.php:589
+msgid "Back"
+msgstr "Tilbake"
+
+#: module.php:619
+msgid "Find an individual"
+msgstr "Søk etter person"
+
+#: module.php:651
+msgid "Login with Facebook"
+msgstr "Logg inn med Facebook"

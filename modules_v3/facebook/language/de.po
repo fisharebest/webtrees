@@ -1,0 +1,333 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: facebook\n"
+"POT-Creation-Date: 2014-02-21 20:14+0100\n"
+"PO-Revision-Date: 2014-02-21 20:28+0100\n"
+"Last-Translator: Hermann Hartenthaler <hermann@hartenthaler.de>\n"
+"Language-Team: Hermann Hartenthaler <hermann@hartenthaler.de>\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.4\n"
+"X-Poedit-KeywordsList: translate;noop;plural:1,2;translate_c:2,1c\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: \\\\NETZLAUFWERK2\\web"
+"\\webtrees_15\\modules_v3\\facebook\n"
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/module.php:55
+msgid "Facebook"
+msgstr "Facebook"
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/module.php:60
+msgid "Allow users to login with Facebook."
+msgstr "Erlaubt den Nutzern die Anmeldung über Facebook."
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/module.php:82
+msgid "Visitor"
+msgstr ""
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/module.php:83
+msgid "Member"
+msgstr ""
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/module.php:84
+msgid "Editor"
+msgstr ""
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/module.php:85
+msgid "Moderator"
+msgstr ""
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/module.php:86
+msgid "Manager"
+msgstr ""
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/module.php:100
+msgid "Settings saved"
+msgstr "Einstellungen wurden gespeichert"
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/module.php:112
+#, php-format
+msgid "User %1$s linked to Facebook user %2$s"
+msgstr "Nutzer %1$s wurde mit dem Facebook-Nutzer %2$s verbunden"
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/module.php:114
+msgid "The user could not be linked"
+msgstr "Nutzer kann nicht verbunden werden"
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/module.php:121
+msgid "User unlinked"
+msgstr "Nutzer unverbunden"
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/module.php:123
+msgid "The link could not be deleted"
+msgstr "Die Verbindung kann nicht gelöscht werden"
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/module.php:133
+#, php-format
+msgid "Pre-approved user \"%s\" added"
+msgstr "Vorangemeldeter Nutzer \"%s\" wurde hinzugefügt"
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/module.php:142
+msgid "Changes to pre-approved users saved"
+msgstr "Änderungen bei den vorangemeldeten Nutzern wurden gespeichert"
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/module.php:149
+#, php-format
+msgid "Pre-approved user \"%s\" deleted"
+msgstr "Vorangemeldeter Nutzer \"%s\" wurde gelöscht"
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/module.php:151
+#, php-format
+msgid "The pre-approved user \"%s\" could not be deleted"
+msgstr "Der vorangemeldete Nutzer \"%s\" kann nicht gelöscht werden"
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/module.php:181
+msgid "Missing Facebook username"
+msgstr "Fehlender Facebook Nutzername"
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/module.php:185
+msgid "User is already registered"
+msgstr "Nutzer ist bereits registriert"
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/module.php:230
+msgid "Facebook logins have not been setup by the administrator."
+msgstr ""
+"Facebook-Anmeldeinformationen wurden bislang vom Administrator nicht "
+"angelegt."
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/module.php:239
+msgid ""
+"You must allow access to your Facebook account in order to login with "
+"Facebook."
+msgstr ""
+"Wenn Sie sich über Facebook anmelden möchten, dann müssen Sie den Zugriff "
+"auf Ihr Facebook-Konto gewähren."
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/module.php:241
+msgid "An error occurred trying to log you in with Facebook."
+msgstr "Bei der Anmeldung über Facebook ist ein Fehler aufgetaucht."
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/module.php:245
+msgid "This form has expired.  Try again."
+msgstr "Dieses Formular ist abgelaufen. Bitte versuchen Sie es erneut."
+
+# tbd
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/module.php:285
+msgid ""
+"Your Facebook code is invalid. This can happen if you hit back in your "
+"browser after login or if Facebook logins have been setup incorrectly by the "
+"administrator."
+msgstr ""
+"Ihr Facebook-Zugangscode ist ungülitg. Dies kann passieren, wenn Sie im "
+"Browser auf \"zurück\" klicken nachdem Sie sich angemeldet haben oder falls "
+"die Anmeldung über Facebook vom Administrator falsch aufgesetzt worden ist."
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/module.php:296
+msgid "Could not fetch your information from Facebook. Please try again."
+msgstr ""
+"Auf Ihre Facebook-Informationen konnte nicht zugegriffen werden. Bitte "
+"versuchen Sie es noch einmal."
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/module.php:301
+msgid "The state does not match. You may been tricked to load this page."
+msgstr ""
+"Der Status passt nicht. Vielleicht wurde etwas manipuliert um diese Seite zu "
+"laden."
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/module.php:368
+msgid "Users successfully imported from Facebook"
+msgstr "Nutzer wurden erfolgreich aus Facebook importiert"
+
+# tbd
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/module.php:374
+#, php-format
+msgid ""
+"You must <a href='%s'>login to the site via Facebook</a> in order to import "
+"friends from Facebook"
+msgstr ""
+"Bitte nutzen Sie die <a href='%s'>Anmeldung zu dieser Seite über Facebook</"
+"a>, um Freunde aus Facebook zu importieren"
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/module.php:380
+msgid "Could not fetch your friends from Facebook."
+msgstr ""
+"Auf die Liste Ihrer Freunde bei Facebook konnte nicht zugegriffen werden."
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/module.php:390
+msgid "No friend data"
+msgstr "Keine Informationen zu den Freunden"
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/module.php:405
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/templates/admin.php:127
+msgid "Role"
+msgstr "Rolle"
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/module.php:463
+msgid ""
+"Only verified Facebook accounts are authorized. Please verify your account "
+"on Facebook and then try again"
+msgstr ""
+"Nur bereits verifizierte Facebook-Konten werden zugelassen. Bitte "
+"verifizieren Sie Ihr Facbook-Konto zuerst und versuchen Sie es dann erneut "
+"sich hier anzumelden."
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/module.php:480
+msgid ""
+"This account has not been verified.  Please check your email for a "
+"verification message."
+msgstr ""
+"Diese Kennung wurde noch nicht verifiziert.  Bitte prüfen Sie Ihren E-Mail-"
+"Eingang bezüglich einer Verifikations-Nachricht."
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/module.php:483
+msgid ""
+"This account has not been approved.  Please wait for an administrator to "
+"approve it."
+msgstr ""
+"Dieses Nutzerkonto wurde noch nicht bestätigt. Bitte warten Sie, bis es von "
+"einem Administrator freigegeben worden ist."
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/module.php:495
+msgid "The administrator has disabled registrations."
+msgstr "Der Administrator hat Anmeldungen ausgeschaltet."
+
+# tbd
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/module.php:575
+msgid ""
+"There was an error verifying your account. Contact the site administrator if "
+"you are unable to access the site."
+msgstr ""
+"Bei der Verifikation Ihres Kontos gab es einen Fehler. Bitte kontaktieren "
+"Sie den Webseiten-Administrator, falls Sie keinen Zugang zu dieser Seite "
+"haben."
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/module.php:588
+msgid "Unable to create your account.  Please try again."
+msgstr ""
+"Es ist nicht möglich ihr Konto anzulegen. Bitte versuchen Sie es erneut."
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/module.php:589
+msgid "Back"
+msgstr "Zurück"
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/module.php:619
+msgid "Find an individual"
+msgstr "Suche eine Person"
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/module.php:651
+msgid "Login with Facebook"
+msgstr "Anmeldung über Facebook"
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/templates/admin.php:19
+msgid ""
+"Facebook usernames can only contain alphanumeric characters (A-Z, 0-9) or a "
+"period"
+msgstr ""
+"Nutzernamen können bei Facebook nur alphanumerische Zeichen (A-Z, 0-9) und "
+"Punkte enthalten"
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/templates/admin.php:25
+msgid "Facebook API"
+msgstr "Facebook-API"
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/templates/admin.php:28
+#, php-format
+msgid "The App ID and secret can be setup at %s."
+msgstr "Die App-ID und das App-Geheimnis können unter %s eingestellt werden."
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/templates/admin.php:30
+msgid "App ID:"
+msgstr "App-ID:"
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/templates/admin.php:34
+msgid "App Secret:"
+msgstr "App-Geheimnis:"
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/templates/admin.php:38
+msgid ""
+"NOTE: New user registration is disabled in Site configuration so only "
+"existing users will be able to login."
+msgstr ""
+"ACHTUNG: Die Registrierung neuer Nutzer ist in der webtrees "
+"Systemkonfiguration ausgeschaltet, so dass sich nur bereits existierende "
+"Nutzer anmelden können."
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/templates/admin.php:43
+msgid "Require verified Facebook accounts"
+msgstr "Nur bereits verifizierte Facebook-Konten werden zugelassen"
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/templates/admin.php:44
+msgid "Only disable for testing"
+msgstr "Nur für Testzwecke abwählen"
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/templates/admin.php:50
+msgid "Hide regular log-in and registration forms"
+msgstr "Verberge reguläre Anmelde- und Registrierungsfelder"
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/templates/admin.php:53
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/templates/admin.php:107
+msgid "Save"
+msgstr "Speichern"
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/templates/admin.php:58
+msgid "Linked users"
+msgstr "Verknüpfte Nutzer"
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/templates/admin.php:61
+msgid "Associate a webtrees user with a Facebook account."
+msgstr "Ordne einen webtrees-Nutzer einem Facebook-Konto zu."
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/templates/admin.php:65
+msgid "webtrees Username"
+msgstr "webtrees Nutzername"
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/templates/admin.php:66
+msgid "Real name"
+msgstr "Wirklicher Name"
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/templates/admin.php:67
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/templates/admin.php:111
+msgid "Facebook Account"
+msgstr "Facebook-Konto"
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/templates/admin.php:68
+msgid "Unlink"
+msgstr "Löschen"
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/templates/admin.php:90
+msgid "Add"
+msgstr "Hinzufügen"
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/templates/admin.php:98
+msgid "Pre-approve users"
+msgstr "Vorangemeldete Nutzer"
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/templates/admin.php:101
+msgid ""
+"If you know a user's Facebook username but they don't have an account in "
+"webtrees, you can pre-approve one so they can login immediately the first "
+"time they visit."
+msgstr ""
+"Wenn Sie von einem potentiellen Nutzer, der noch kein webtrees-Konto "
+"besitzt, den Facebook-Namen kennen, dann können Sie ihn hier voranmelden, so "
+"dass er sich bereits beim ersten Besuch der webtrees-Seite direkt anmelden "
+"kann. Das webtrees-Konto wird dann automatisch angelegt."
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/templates/admin.php:104
+msgid "Import from your Facebook friends"
+msgstr "Auswahl zum Import der Freunde aus Facebook"
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/templates/admin.php:125
+msgid "Default individual"
+msgstr "Standardperson"
+
+#: \\NETZLAUFWERK2\web\webtrees_15\modules_v3\facebook/templates/admin.php:126
+msgid "Individual record"
+msgstr "Datensatz zu einer Person"
+
+#~ msgid "User linked"
+#~ msgstr "Nutzer verbunden"

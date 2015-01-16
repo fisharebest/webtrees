@@ -1,0 +1,102 @@
+/*
+  Facebook Module for webtrees
+
+  Copyright (C) 2012 Matthew N.
+
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program. If not, see <http://www.gnu.org/licenses/>.
+*/
+
+/* administration pages */
+
+#admin_content #updateBanner {
+  padding: 2px;
+  transition: opacity 1s;
+}
+
+#admin_content #updateBanner:empty {
+  opacity: 0;
+}
+
+#admin_content td {
+    vertical-align: middle;
+}
+
+#admin_content button {
+    border:none;
+}
+
+.icon-delete:hover {
+    background-position: -40px -154px;
+}
+
+#admin_content [class^="icon-delete"],
+#admin_content [class*=" icon-delete"] {
+    background: url(images/icon_delete.png) 50% 50%;
+}
+
+#admin_content [class^="icon-delete"]:hover,
+#admin_content [class*=" icon-delete"]:hover {
+    opacity: 0.6;
+}
+
+#admin_content tr.preapproved_row_add:not(:last-of-type) td {
+    border-bottom: 1px solid black;
+}
+
+#admin_content #preapproved {
+    font-size: 11px;
+}
+
+#admin_content #preapproved th {
+    font-size: 10px;
+}
+
+#admin_content #preapproved td:not(:first-of-type) {
+    text-align:center;
+}
+
+#admin_content #preapproved input:not(:active):not(:focus) + a.icon-button_indi:not(:active):not(:focus),
+#admin_content #preapproved .icon-help {
+    display: none;
+}
+
+#admin_content #preapproved option {
+    padding-right: 3px;
+}
+
+#admin_content #facebook_friend_list label {
+    display: block;
+}
+
+/* login and registration pages */
+
+#login-form,
+#register-form {
+    vertical-align: middle;
+}
+
+
+#facebook-login-box {
+    display: inline-block;
+    padding-right: 1em;
+}
+
+#facebook-login-button {
+    background-image: url(images/f_logo.png);
+    background-position: 0.5em 50%;
+    background-repeat: no-repeat;
+    background-size: 2em;
+    padding: 0.5em;
+    padding-left: 3em;
+}
