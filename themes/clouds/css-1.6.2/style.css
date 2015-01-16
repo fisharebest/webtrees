@@ -134,6 +134,10 @@ dt {
 	margin-left: 10px;
 }
 
+h2 {
+	font-size: 18px;
+	font-weight: bold;
+}
 
 h4 {
 	font-weight: bold;
@@ -144,13 +148,13 @@ th {
 }
 
 ul {
-	margin: 8px;
 	padding-left: 15px;
 	padding-right: 15px;
+	margin: 8px;
 }
 
 img {
-	border: 0 none;
+	border: 0;
 }
 
 img.block,
@@ -166,7 +170,6 @@ textarea {
 	border-width: 1px;
 	border-color: #fff #006 #006 #fff;
 	font-size: 12px;
-	font-family: inherit;
 }
 
 input,
@@ -185,23 +188,12 @@ textarea {
 }
 
 fieldset {
-	padding: 30px;
 	margin: 8px 8px 4px;
 	text-align: left;
 }
 
 [dir=rtl] fieldset {
 	text-align: right;
-}
-
-fieldset ol,
-fieldset li {
-	margin: 2px 0 0 5px;
-}
-
-[dir=rtl] fieldset ol,
-fieldset li {
-	margin: 2px 5px 0 0;
 }
 
 legend {
@@ -1603,9 +1595,7 @@ background-color: #fff;
 
 .blockcontent {
 	border: solid #999 1px;
-	margin-bottom: 10px;
-	margin-left: auto;
-	margin-right: 2px;
+	margin:  0 2px 10px 0;
 	overflow: auto;
 	padding: 5px;
 
