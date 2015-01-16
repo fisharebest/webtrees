@@ -819,7 +819,7 @@ a.showit:hover > span {
 
 /* ---Autocomplete styles--- */
 .ui-autocomplete-input {
-	background-color: #eee8aa;
+	background-color: #eea;
 }
 
 .ui-autocomplete {
@@ -1078,7 +1078,6 @@ td.descriptionbox a {
 }
 
 .lb-menu li li a {
-	padding: 0;
 	background-color: #fff;
 	padding: 5px 10px 5px 5px;
 }
@@ -1233,7 +1232,7 @@ td.descriptionbox a {
 	text-align: left;
 }
 
-/* ======== reportengine.php = */
+/* --- reportengine.php --- */
 #reportengine-page table {
 	margin: 20px auto;
 }
@@ -1254,59 +1253,51 @@ td.descriptionbox a {
 	text-align: center;
 }
 
+/* styles for popup menus */
 .itr {
-	position: absolute;
+	position: relative;
 	line-height: 1.5;
 }
 
-.block .itr,
-#family-table .itr,
-#ancestry_chart .itr,
-#descendancy_chart .itr,
-#familybook_chart .itr,
-#hourglass_chart .itr,
-#relatives_content .itr {
-	position: relative;
-	top: 0;
+.popup {
+	position: absolute;
+	top: 20px;
+	right: 0;
+	left: auto;
+	visibility: hidden;
+	opacity: 0;
+	transition: visibility 0s ease .25s,opacity .25s ease;
+	z-index: 9999;
+	-webkit-box-shadow: 5px 5px 5px 0 rgba(0,0,0,.4);
+	-moz-box-shadow: 5px 5px 5px 0 rgba(0,0,0,.4);
+	box-shadow: 5px 5px 5px 0 rgba(0,0,0,.4);
 }
 
-.popup {
-	display: none;
+[dir=rtl] .popup {
+	left: 0;
+	right: auto;
 }
 
 .popup ul {
-	background-image: none !important;
+	white-space: nowrap;
 	list-style: none;
-	font-size: 9px;
 	margin: 0;
 	padding: 0 10px;
+	font-size: smaller;
 }
 
-.popup li {
-	padding: 1px 5px;
+.popup > ul {
+	padding: 2px 10px;
 }
 
-.popup li span {
+.popup li .NAME {
 	padding: 0 5px;
 }
 
-.popup li ul,
-.popup li ul li,
-.popup li span span {
-	padding: 0;
-}
-
 .itr:hover .popup {
-	display: block;
-	position: absolute;
-	width: 12em;
-	right: 0;
-	z-index: 9999;
-}
-
-[dir=rtl] .itr:hover .popup {
-	left: 0;
-	right: auto;
+	visibility: visible;
+	opacity: 1;
+	transition-delay: 0s;
 }
 
 /* styles for FindFacts pop-up */
@@ -1391,7 +1382,7 @@ td.descriptionbox a {
 .upcoming_events_block,
 .todays_events_block,
 .todo_block {
-	width: 99%;
+	width: 98%;
 }
 
 .surname-list,
@@ -2890,7 +2881,7 @@ dd .deletelink {
 #addmedia-page input[type="text"] {
 	line-height: 18px;
 	margin: 0 5px;
-	width: 300px;
+	width: 350px;
 }
 
 #addmedia-page .optionbox select {
@@ -3130,101 +3121,60 @@ table.table-census-assistant th {
 }
 
 /* ====== Charts Styles ======== */
-#ancestry_chart,
 #compact_chart,
-#descendancy_chart,
-#familybook_chart,
 #fan_chart,
-#hourglass_chart,
-#relationship_chart {
+.chart_common,
+#ancestry_booklet,
+#descendancy_booklet,
+#familybook_chart,
+#hourglass_chart {
 	margin: 20px;
 }
 
-/*-- ancestry  --*/
-#ancestry_chart table div p {
-	font-size: 90%;
-	margin: 0;
+/* styles for vertical lines in ancestry and descendancy charts */
+.chart_common li {
+	list-style: none;
 }
 
-#ancestry_chart ul {
-	background-image:url(images/vline.png);
-	background-position:left top;background-repeat:repeat-y;
-	list-style: none;
-	display: block;
+.chart_common li > span.details1 {
+	white-space: nowrap;
+}
+
+.chart_common .generation {
+	background: transparent url(images/vline.png) left top repeat-y;
 	margin: 0 0 0 15px;
-	padding-top: 0;
-	padding-right: 0;
-	padding-bottom: 0;
+	padding: 0;
+	display: block;
 }
 
-#ancestry_chart li {
-	list-style: none;
-	margin: 0 0 2px -13px;
-	padding-top: 0;
-	padding-right: 0;
-	padding-bottom: 0;
+[dir=rtl] .chart_common .generation {
+	margin: 0 15px 0 0;
+	background-position: right top
+;
 }
 
-#ancestry_chart li table {
+.chart_common .generation > li {
 	margin: 5px 0;
 }
 
-[dir=rtl] #ancestry_chart ul {
-	background-position: right top;
-	margin: 0 15px 0 0;
-	left: auto;
+.chart_common table {
+	padding: 0;
+	border-spacing: 0;
+	border-collapse: collapse;
+	margin: 5px 0;
 }
 
-#ancestry_chart span.details1 div[class^="fact_"] {
+.chart_common td {
+	border: 0;
+	padding: 0;
+}
+
+.chart_common span.details1 div[class^=fact_] {
 	display: inline-block;
 }
 
-[dir=rtl] #ancestry_chart li {
-	margin: 0;
-	padding: 0 2px 0 0;
-	left: auto;
-}
-
-/*-- descendancy  --*/
-#descendancy_chart {
-	margin: 20px;
-}
-
-#descendancy_chart ul {
-	background-image:url(images/vline.png);
-	background-position:left top;background-repeat:repeat-y;
-	list-style: none;
-	margin: 0 0 5px 15px;
-	padding-top: 0;
-	padding-right: 0;
-	padding-bottom: 0;
-}
-
-#descendancy_chart li {
-	list-style: none;
-	margin: 5px 0 0 -15px;
-	padding-top: 0;
-	padding-right: 0;
-	padding-bottom: 0;
-}
-
-#descendancy_chart span.details1 div[class^="fact_"] {
-	display: inline-block;
-}
-
-#descendancy_chart td.details1 {
-	padding-top: 5px;
-}
-
-[dir=rtl] #descendancy_chart ul {
-	background-position: right top;
-	margin: 0 15px 0 0;
-	left: auto;
-}
-
-[dir=rtl] #descendancy_chart li {
-	margin: 5px -15px 0 0;
-	left: auto;
+.chart_common span.details1 .date {
+	color: inherit;
 }
 
 /*-- Family book  --*/
@@ -3471,6 +3421,12 @@ table.table-census-assistant th {
 	width: 14px;
 	height: 15px;
 	background-image: url(images/buttons/family.png);
+}
+
+.icon-button_find {
+	width: 17px;
+	height: 15px;
+	background-image: url(images/buttons/find.png);
 }
 
 .icon-button_find_facts {
@@ -4093,10 +4049,10 @@ a.icon-udarrow:hover {
 
 /* ====== Theme Header ========= */
 header h1 {
-	clear: both;
+	clear: left;
+	float: left;
 	font-size: 20px;
 	font-weight: normal;
-	float: left;
 	margin: 0 10px 5px;
 }
 
@@ -4427,7 +4383,7 @@ footer .error {
 /* ====== Theme Icons ========== */
 /* ***** Header icons **** */
 #menu-tree {
-	background-position:center 0
+	background-position:center 0;
 }
 
 #menu-mymenu {
@@ -5180,12 +5136,11 @@ footer .error {
 }
 
 @media print {
-	#backprint,
-	#separator,
 	header,
 	footer,
 	form,
-	#CB_All
+	#sidebar,
+	#separator,
 	.noprint {
 		display: none !important;
 	}

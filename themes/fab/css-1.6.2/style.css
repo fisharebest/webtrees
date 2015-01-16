@@ -132,11 +132,10 @@ dt {
 	float: left;
 	font-weight: bold;
 	margin-right: 10px;
-	clear: both;
 }
 
 [dir=rtl] dt {
-	float: right;
+	float: left;
 	margin-right: auto;
 	margin-left: 10px;
 }
@@ -147,8 +146,7 @@ header {
 }
 
 #content {
-	margin-top: 5px;
-	margin-bottom: 12px;
+	margin: 5px 5px 12px 5px;
 }
 
 header,
@@ -458,7 +456,7 @@ a:hover .nameZoom {
 }
 
 .border1 {
-	border: none;
+	border: 0;
 }
 
 .menuitem {
@@ -614,46 +612,36 @@ a:hover .nameZoom {
 
 .person0 {
 	background-color: #aaf;
-	border: none;
 	vertical-align: top;
 }
 
 .person1 {
 	background-color: #afa;
-	border: none;
 	vertical-align: top;
 }
 
 .person2 {
 	background-color: #faa;
-	border: none;
 	vertical-align: top;
 }
 
 .person3 {
 	background-color: #55f;
-	border: none;
 	vertical-align: top;
 }
 
 .person4 {
 	background-color: #f55;
-	border: none;
 	vertical-align: top;
 }
 
 .person5 {
 	background-color: #5f5;
-	border: none;
 	vertical-align: top;
 }
 
 .listlog {
 	line-height: 20pt;
-}
-
-.formField {
-	font-size: 12px;
 }
 
 .starredname {
@@ -685,7 +673,6 @@ a:hover .nameZoom {
 .optionbox {
 	background-color: #ddd;
 	color: #000;
-	border: none;
 	vertical-align: top;
 	white-space: nowrap;
 	padding: 3px;
@@ -770,7 +757,6 @@ a:hover .nameZoom {
 
 .messagebox {
 	background-color: #bce;
-	border: none;
 }
 
 /* ---Pending edits--- */
@@ -898,7 +884,7 @@ a.showit:hover > span {
 }
 
 .gchart {
-	border: none;
+	border: 0;
 }
 
 /* ---Find special characters--- */
@@ -1087,7 +1073,6 @@ a.showit:hover > span {
 }
 
 .lb-menu li li a {
-	padding: 0;
 	background-color: #fff;
 	padding: 5px 10px 5px 5px;
 }
@@ -1174,7 +1159,6 @@ a.showit:hover > span {
 #new_passwd_form div,
 #register-form div,
 #verify-form div {
-	font-weight: bold;
 	margin: auto;
 	padding: 5px;
 	text-align: center;
@@ -1244,7 +1228,7 @@ a.showit:hover > span {
 	text-align: left;
 }
 
-/* ======== reportengine.php = */
+/* --- reportengine.php --- */
 #reportengine-page table {
 	margin: 20px auto;
 }
@@ -1265,59 +1249,51 @@ a.showit:hover > span {
 	text-align: center;
 }
 
+/* styles for popup menus */
 .itr {
-	position: absolute;
+	position: relative;
 	line-height: 1.5;
 }
 
-.block .itr,
-#family-table .itr,
-#ancestry_chart .itr,
-#descendancy_chart .itr,
-#familybook_chart .itr,
-#hourglass_chart .itr,
-#relatives_content .itr {
-	position: relative;
-	top: 0;
+.popup {
+	position: absolute;
+	top: 20px;
+	right: 0;
+	left: auto;
+	visibility: hidden;
+	opacity: 0;
+	transition: visibility 0s ease .25s,opacity .25s ease;
+	z-index: 9999;
+	-webkit-box-shadow: 5px 5px 5px 0 rgba(0,0,0,.4);
+	-moz-box-shadow: 5px 5px 5px 0 rgba(0,0,0,.4);
+	box-shadow: 5px 5px 5px 0 rgba(0,0,0,.4);
 }
 
-.popup {
-	display: none;
+[dir=rtl] .popup {
+	left: 0;
+	right: auto;
 }
 
 .popup ul {
-	background-image: none !important;
+	white-space: nowrap;
 	list-style: none;
-	font-size: 9px;
 	margin: 0;
 	padding: 0 10px;
+	font-size: smaller;
 }
 
-.popup li {
-	padding: 1px 5px;
+.popup > ul {
+	padding: 2px 10px;
 }
 
-.popup li span {
+.popup li .NAME {
 	padding: 0 5px;
 }
 
-.popup li ul,
-.popup li ul li,
-.popup li span span {
-	padding: 0;
-}
-
 .itr:hover .popup {
-	display: block;
-	position: absolute;
-	width: 160px;
-	right: 0;
-	z-index: 9999;
-}
-
-[dir=rtl] .itr:hover .popup {
-	left: 0;
-	right: auto;
+	visibility: visible;
+	opacity: 1;
+	transition-delay: 0s;
 }
 
 /* styles for FindFacts pop-up */
@@ -1611,7 +1587,6 @@ a.showit:hover > span {
 
 .block {
 	background-color: #eee;
-	border: none;
 	padding: 3px;
 	vertical-align: top;
 }
@@ -1623,13 +1598,12 @@ a.showit:hover > span {
 
 .blockcontent .list_table {
 	border-spacing: 0;
-	border: none;
 	border-right: 0;
 }
 
 .blockcontent .list_value,
 .blockcontent .list_value_wrap {
-	border: none;
+	border: 0;
 }
 
 .blockheader {
@@ -1844,7 +1818,7 @@ span.link_text {
 #indi_header h3.person_box,
 #indi_header h3.person_boxF,
 #indi_header h3.person_boxNN {
-	border: none;
+	border: 0;
 }
 
 #indi_header h3 .header_age {
@@ -1876,8 +1850,7 @@ span.link_text {
 }
 
 #indi_mainimage {
-	float: left;
-	padding: 0 10px;
+	float: right;
 }
 
 #header_accordion1 {
@@ -1984,7 +1957,7 @@ dd .deletelink {
 }
 
 [dir=rtl] #indi_mainimage {
-	float: right;
+	float: left;
 }
 
 [dir=rtl] #indi_note .fact_NOTE {
@@ -2143,6 +2116,10 @@ dd .deletelink {
 	padding: 4px;
 }
 
+.ui-widget {
+    font-size: 1em;
+}
+
 .ui-accordion .ui-accordion-header .ui-icon {
 	position: absolute;
 	left: 6px;
@@ -2187,7 +2164,7 @@ dd .deletelink {
 }
 
 [dir=rtl] .ui-dialog-titlebar-close {
-	left: 4px;
+	left: .3em;
 	right: auto;
 }
 
@@ -2258,7 +2235,6 @@ dd .deletelink {
 
 .dataTables_length select,
 .dataTables_filter input {
-	font-size: 11px;
 	padding: 1px;
 }
 
@@ -2342,10 +2318,10 @@ dd .deletelink {
 }
 
 #tabs {
-	width: 98%;
-	overflow: visible;
 	padding-bottom: 0;
 	margin-bottom: 0;
+	width: 98%;
+	overflow: visible;
 }
 
 [dir=rtl] #tabs {
@@ -2453,7 +2429,7 @@ dd .deletelink {
 }
 
 .flyout2 {
-	font-weight: 700;
+	font-weight: bold;
 }
 
 .flyout3 {
@@ -2748,7 +2724,6 @@ dd .deletelink {
 }
 
 #edituser-table .label {
-	border: none;
 	float: left;
 	font-weight: bold;
 	padding: 5px 10px 0;
@@ -3184,113 +3159,60 @@ table.table-census-assistant th {
 }
 
 /* ====== Charts Styles ======== */
-#ancestry_chart,
 #compact_chart,
-#descendancy_chart,
-#familybook_chart,
 #fan_chart,
-#hourglass_chart,
-#relationship_chart {
+.chart_common,
+#ancestry_booklet,
+#descendancy_booklet,
+#familybook_chart,
+#hourglass_chart {
 	margin: 20px;
 }
 
-/*-- ancestry  --*/
-#ancestry_chart table div p {
-	font-size: 90%;
-	margin: 0;
-}
-
-#rootid, 
-#pid1, 
-#pid2 {
-width: 40px;
-}
-
-/*-- ancestry chart specific stylesheets --*/
-#ancestry_chart ul {
-	background-image:url(images/vline.png);
-	background-position:left top;background-repeat:repeat-y;
+/* styles for vertical lines in ancestry and descendancy charts */
+.chart_common li {
 	list-style: none;
-	display: block;
+}
+
+.chart_common li > span.details1 {
+	white-space: nowrap;
+}
+
+.chart_common .generation {
+	background: transparent url(images/vline.png) left top repeat-y;
 	margin: 0 0 0 15px;
-	padding-top: 0;
-	padding-right: 0;
-	padding-bottom: 0;
+	padding: 0;
+	display: block;
 }
 
-#ancestry_chart li {
-	list-style: none;
-	margin: 0 0 2px -13px;
-	padding-top: 0;
-	padding-right: 0;
-	padding-bottom: 0;
+[dir=rtl] .chart_common .generation {
+	margin: 0 15px 0 0;
+	background-position: right top
+;
 }
 
-#ancestry_chart li table {
+.chart_common .generation > li {
 	margin: 5px 0;
 }
 
-[dir=rtl] #ancestry_chart ul {
-	background-position: right top;
-	margin: 0 15px 0 0;
-	left: auto;
+.chart_common table {
+	padding: 0;
+	border-spacing: 0;
+	border-collapse: collapse;
+	margin: 5px 0;
 }
 
-#ancestry_chart span.details1 div[class^="fact_"] {
+.chart_common td {
+	border: 0;
+	padding: 0;
+}
+
+.chart_common span.details1 div[class^=fact_] {
 	display: inline-block;
 }
 
-[dir=rtl] #ancestry_chart li {
-	margin: 0;
-	padding: 0 2px 0 0;
-	left: auto;
-}
-
-/*-- descendancy  --*/
-#descendancy_chart {
-	margin: 20px;
-}
-
-#descendancy_chart ul {
-	background-image:url(images/vline.png);
-	background-position:left top;background-repeat:repeat-y;
-	list-style: none;
-	margin: 0 0 5px 15px;
-	padding-top: 0;
-	padding-right: 0;
-	padding-bottom: 0;
-}
-
-#descendancy_chart li {
-	list-style: none;
-	margin: 5px 0 0 -15px;
-	padding-top: 0;
-	padding-right: 0;
-	padding-bottom: 0;
-}
-/*
-li .person_box,
-li .person_boxF {
-	margin: 3px 0;
-}
-*/
-#descendancy_chart span.details1 div[class^="fact_"] {
-	display: inline-block;
-}
-
-#descendancy_chart td.details1 {
-	padding-top: 5px;
-}
-
-[dir=rtl] #descendancy_chart ul {
-	background-position: right top;
-	margin: 0 15px 0 0;
-	left: auto;
-}
-
-[dir=rtl] #descendancy_chart li {
-	margin: 5px -15px 0 0;
-	left: auto;
+.chart_common span.details1 .date {
+	color: inherit;
 }
 
 /*-- Family book  --*/
@@ -3386,7 +3308,6 @@ li .person_boxF {
 	width: 99.5%;
 	height: 600px;
 	overflow: hidden;
-	border: none;
 }
 
 .lifespan_outer a:hover {
@@ -3538,6 +3459,12 @@ li .person_boxF {
 	background-image: url(images/buttons/family.png);
 }
 
+.icon-button_find {
+	width: 17px;
+	height: 15px;
+	background-image: url(images/buttons/find.png);
+}
+
 .icon-button_find_facts {
 	width: 20px;
 	height: 20px;
@@ -3663,6 +3590,7 @@ a.icon-darrow:hover {
 
 .icon-help {
 	cursor: help;
+	margin: 0 5px;
 	width: 15px;
 	height: 15px;
 	background-image: url(images/help.png);
@@ -3840,6 +3768,12 @@ a.icon-rarrow:hover {
 	width: 20px;
 	height: 20px;
 	background-image: url(images/rdarrow.png);
+}
+
+a.icon-rdarrow:hover {
+	width: 20px;
+	height: 20px;
+	background-image: url(images/rdarrow2.png);
 }
 
 .icon-reminder {
@@ -4188,6 +4122,7 @@ header h1 {
 	float: left;
 }
 
+/* ====== Secondary menu ======= */
 .secondary-menu li {
 	background: none !important;
 	display: inline;
@@ -4225,7 +4160,6 @@ header h1 {
 	right: 0;
 }
 
-/* position sub-sub-menus */
 .secondary-menu ul ul {
 	top: 0;
 	left: 100px;
@@ -4381,6 +4315,7 @@ header nav {
 }
 
 /* ====== End Theme Header ===== */
+
 /* ====== Theme Footer ========= */
 footer {
 	clear: both;
@@ -4484,6 +4419,15 @@ footer {
 }
 
 @media print {
+	header,
+	footer,
+	form,
+	#sidebar,
+	#separator,
+	.noprint {
+		display: none !important;
+	}
+
 	.person_box, .person_boxF, .person_boxNN {
 		border: solid #888 1px;
 		background: #fff;
@@ -4491,16 +4435,6 @@ footer {
 
 	#header_accordion1 {
 		width: 510px !important;
-	}
-
-	header,
-	footer,
-	form,
-	#pedigree-page #people,
-	#CB_ALL, label,
-	#separator,
-	.noprint {
-		display: none !important;
 	}
 
 	#familybook_chart h3 {

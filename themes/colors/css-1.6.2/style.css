@@ -83,6 +83,8 @@ fieldset,
 .person3,
 .person4,
 .person5,
+.primary-menu ul,
+.secondary-menu li ul,
 footer,
 #indi_main_blocks,
 #tabs,
@@ -98,12 +100,12 @@ footer,
 
 input:required:valid,
 textarea:required:valid {
-	background-color: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAONJREFUeNpi/P//PwMlgImBQjDwBrCgCzDOF2Zg+Adk/AOGDRvQfHZGoDWMxgyMDMb/Q1/NIt0F/xk8gIbNZPj7P41YL4AUGsM1//rfkuyeYMzw8z9xXgBqgNm0nuHnv0D/IH/juavmngV6oYY4F3z7y2DqY2oMpANB9MYl684yfP9Xw3Dzzw7sXgQmJGTM0MbjwdDKc0b2vt5/EM2QwunBoMyCVS1YPYYAMOwZ7FmiGLLYzjBYsSQD+QpALAjErNgMYERPyoyMjMxAih+IOYD4LxD/hOJfQLV/MaJ9NC8wAAQYAPbPfH2KJKx/AAAAAElFTkSuQmCC) no-repeat right top;
+	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAONJREFUeNpi/P//PwMlgImBQjDwBrCgCzDOF2Zg+Adk/AOGDRvQfHZGoDWMxgyMDMb/Q1/NIt0F/xk8gIbNZPj7P41YL4AUGsM1//rfkuyeYMzw8z9xXgBqgNm0nuHnv0D/IH/juavmngV6oYY4F3z7y2DqY2oMpANB9MYl684yfP9Xw3Dzzw7sXgQmJGTM0MbjwdDKc0b2vt5/EM2QwunBoMyCVS1YPYYAMOwZ7FmiGLLYzjBYsSQD+QpALAjErNgMYERPyoyMjMxAih+IOYD4LxD/hOJfQLV/MaJ9NC8wAAQYAPbPfH2KJKx/AAAAAElFTkSuQmCC) no-repeat right top;
 }
 
 input:required:invalid,
 textarea:required:invalid {
-	background-color: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAMpJREFUeNpi/P//PwMlgImBQjAMDGBBF1jFyOgBpFqAuOYPA8MOoAI4P+z//x0YJoBiARkvYWA486+k5D+IBuJqZD66WnAMogvMA9o4F6j4R3Lyf2R6IQODMVEGTAW6CoirgfjMB2/v/yB6CgNDYQ8W14IwRiB+A7rgOwNDYLChofGcrVvPgugfDAzR/yFhwUAwDJqBNj6Ulf0PooEhV4jMx+YCRvSknAeMBWDotwgwMKRzMTCcfQW0GcQHxkbNJCyxwDiaFxgAAgwAYy67YIOQ//cAAAAASUVORK5CYII=) no-repeat right top;
+	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAMpJREFUeNpi/P//PwMlgImBQjAMDGBBF1jFyOgBpFqAuOYPA8MOoAI4P+z//x0YJoBiARkvYWA486+k5D+IBuJqZD66WnAMogvMA9o4F6j4R3Lyf2R6IQODMVEGTAW6CoirgfjMB2/v/yB6CgNDYQ8W14IwRiB+A7rgOwNDYLChofGcrVvPgugfDAzR/yFhwUAwDJqBNj6Ulf0PooEhV4jMx+YCRvSknAeMBWDotwgwMKRzMTCcfQW0GcQHxkbNJCyxwDiaFxgAAgwAYy67YIOQ//cAAAAASUVORK5CYII=) no-repeat right top;
 }
 
 [dir=rtl] input:required:valid,
@@ -151,7 +153,7 @@ h2 {
 	color: #333;
 	font-size: 18px;
 	font-weight: bold;
-	margin: 14px 0px;
+	margin: 14px 0;
 }
 
 h4 {
@@ -193,7 +195,6 @@ textarea {
 	border-width: 1px;
 	border-color: #fff #494949 #494949 #fff;
 	font-size: 13px;
-	font-family: inherit;
 }
 
 input,
@@ -577,13 +578,11 @@ a:hover .nameZoom {
 }
 
 .news_title {
-	color: #000;
 	font-weight: bold;
 	font-size: 14px;
 }
 
 .news_date {
-	color: #000;
 	margin-bottom: 12px;
 }
 
@@ -1078,11 +1077,12 @@ td.descriptionbox a {
 	min-width: 40px;
 	text-align: center;
 }
+
 /* ======== medialist.php ==== */
 .makeMenu li ul {
 	border: thin solid #AAA;
 	position: absolute;
-	margin: 0;
+	margin:0;
 }
 
 .makeMenu, .makeMenu li ul {
@@ -1134,7 +1134,6 @@ td.descriptionbox a {
 }
 
 .lb-menu li li a {
-	padding: 0;
 	background-color: #fff;
 	padding: 5px 10px 5px 5px;
 }
@@ -1288,7 +1287,7 @@ td.descriptionbox a {
 	text-align: left;
 }
 
-/* ======== reportengine.php = */
+/* --- reportengine.php --- */
 #reportengine-page table {
 	margin: 20px auto;
 }
@@ -1309,59 +1308,51 @@ td.descriptionbox a {
 	text-align: center;
 }
 
+/* styles for popup menus */
 .itr {
-	position: absolute;
+	position: relative;
 	line-height: 1.5;
 }
 
-.block .itr,
-#family-table .itr,
-#ancestry_chart .itr,
-#descendancy_chart .itr,
-#familybook_chart .itr,
-#hourglass_chart .itr,
-#relatives_content .itr {
-	position: relative;
-	top: 0;
+.popup {
+	position: absolute;
+	top: 20px;
+	right: 0;
+	left: auto;
+	visibility: hidden;
+	opacity: 0;
+	transition: visibility 0s ease .25s,opacity .25s ease;
+	z-index: 9999;
+	-webkit-box-shadow: 5px 5px 5px 0 rgba(0,0,0,.4);
+	-moz-box-shadow: 5px 5px 5px 0 rgba(0,0,0,.4);
+	box-shadow: 5px 5px 5px 0 rgba(0,0,0,.4);
 }
 
-.popup {
-	display: none;
+[dir=rtl] .popup {
+	left: 0;
+	right: auto;
 }
 
 .popup ul {
-	background-image: none !important;
+	white-space: nowrap;
 	list-style: none;
-	font-size: 9px;
 	margin: 0;
 	padding: 0 10px;
+	font-size: smaller;
 }
 
-.popup li {
-	padding: 1px 5px;
+.popup > ul {
+	padding: 2px 10px;
 }
 
-.popup li span {
+.popup li .NAME {
 	padding: 0 5px;
 }
 
-.popup li ul,
-.popup li ul li,
-.popup li span span {
-	padding: 0;
-}
-
 .itr:hover .popup {
-	display: block;
-	position: absolute;
-	width: 12em;
-	right: 0;
-	z-index: 9999;
-}
-
-[dir=rtl] .itr:hover .popup {
-	left: 0;
-	right: auto;
+	visibility: visible;
+	opacity: 1;
+	transition-delay: 0s;
 }
 
 /* styles for FindFacts pop-up */
@@ -1652,12 +1643,9 @@ td.descriptionbox a {
 
 .blockcontent {
 	border: solid #999 1px;
-	margin-bottom: 10px;
-	margin-left: auto;
-	margin-right: 2px;
+	margin:  0 2px 10px 0;
 	overflow: auto;
 	padding: 5px;
-
 }
 
 .blockcontent .list_table {
@@ -1710,7 +1698,7 @@ td.descriptionbox a {
 }
 
 [dir=rtl] .blockh1 {
-	background: url(images/right1B.png);
+	background-image: url(images/right1B.png);
 }
 
 [dir=rtl] .blockh3 {
@@ -1969,7 +1957,12 @@ span.link_text {
 }
 
 #header_accordion1 {
+	padding: 0 10px 0 0;
 	overflow: hidden;
+}
+
+[dir='rtl'] #header_accordion1 {
+	padding: 0 0 0 10px;
 }
 
 #header_accordion1 .indi_name_details {
@@ -2105,7 +2098,7 @@ dd .deletelink {
 .copyicon,
 .deleteicon {
 	display: block;
-	background: transparent url(images/general_sprite.png) no-repeat left 0;
+	background: url(images/general_sprite.png) no-repeat left 0;
 }
 
 .female_gender {
@@ -2691,7 +2684,8 @@ dd .deletelink {
 }
 
 #find-media {
-	border: 1px outset #999;
+	background-color: #81a9cb;
+	border: 1px outset #81a9cb;
 	color: #fff;
 	padding: 5px;
 	text-align: center;
@@ -3001,14 +2995,14 @@ dd .deletelink {
 #addmedia-page input[type="text"] {
 	line-height: 18px;
 	margin: 0 5px;
-	width: 300px;
+	width: 350px;
 }
 
 #addmedia-page .optionbox select {
 	margin: 0 5px;
 }
 
-#addmedia-page .optionbox p.sub{
+#addmedia-page .optionbox p.sub {
 	margin: 0 5px;
 	font-size: 11px;
 }
@@ -3081,7 +3075,7 @@ dd .deletelink {
 	margin-top: 35px;
 }
 
-#cboxTitle  {
+#cboxTitle {
 	position: absolute;
 	left: 0;
 	top: 10px;
@@ -3241,96 +3235,60 @@ table.table-census-assistant th {
 }
 
 /* ====== Charts Styles ======== */
-#ancestry_chart,
 #compact_chart,
-#descendancy_chart,
-#familybook_chart,
 #fan_chart,
-#hourglass_chart,
-#relationship_chart {
+.chart_common,
+#ancestry_booklet,
+#descendancy_booklet,
+#familybook_chart,
+#hourglass_chart {
 	margin: 20px;
 }
 
-/*-- ancestry  --*/
-#ancestry_chart table div p {
-	font-size: 90%;
-	margin: 0;
+/* styles for vertical lines in ancestry and descendancy charts */
+.chart_common li {
+	list-style: none;
 }
 
-#ancestry_chart ul {
-	background-image:url(images/vline.png);
-	background-position:left top;background-repeat:repeat-y;
-	list-style: none;
-	display: block;
+.chart_common li > span.details1 {
+	white-space: nowrap;
+}
+
+.chart_common .generation {
+	background: transparent url(images/vline.png) left top repeat-y;
 	margin: 0 0 0 15px;
-	padding-top: 0;
-	padding-right: 0;
-	padding-bottom: 0;
+	padding: 0;
+	display: block;
 }
 
-#ancestry_chart li {
-	list-style: none;
-	margin: 0 0 2px -13px;
-	padding-top: 0;
-	padding-right: 0;
-	padding-bottom: 0;
+[dir=rtl] .chart_common .generation {
+	margin: 0 15px 0 0;
+	background-position: right top
+;
 }
 
-#ancestry_chart li table {
+.chart_common .generation > li {
 	margin: 5px 0;
 }
 
-[dir=rtl] #ancestry_chart ul {
-	background-position: right top;
-	margin: 0 15px 0 0;
-	left: auto;
+.chart_common table {
+	padding: 0;
+	border-spacing: 0;
+	border-collapse: collapse;
+	margin: 5px 0;
 }
 
-#ancestry_chart span.details1 div[class^="fact_"] {
+.chart_common td {
+	border: 0;
+	padding: 0;
+}
+
+.chart_common span.details1 div[class^=fact_] {
 	display: inline-block;
 }
 
-[dir=rtl] #ancestry_chart li {
-	margin: 0;
-	padding: 0 2px 0 0;
-	left: auto;
-}
-
-/*-- descendancy  --*/
-#descendancy_chart {
-	margin: 20px;
-}
-
-#descendancy_chart ul {
-	background-image:url(images/vline.png);
-	background-position:left top;background-repeat:repeat-y;
-	list-style: none;
-	margin: 0 0 5px 15px;
-	padding-top: 0;
-	padding-right: 0;
-	padding-bottom: 0;
-}
-
-#descendancy_chart li {
-	list-style: none;
-	margin: 5px 0 0 -15px;
-	padding-top: 0;
-	padding-right: 0;
-	padding-bottom: 0;
-}
-
-#descendancy_chart span.details1 div[class^="fact_"] {
-	display: inline-block;
-}
-
-#descendancy_chart td.details1 {
-	padding-top: 5px;
-}
-
-[dir=rtl] #descendancy_chart ul {
-	background-position: right top;
-	margin: 0 15px 0 0;
-	left: auto;
+.chart_common span.details1 .date {
+	color: inherit;
 }
 
 /*-- Family book  --*/
@@ -3523,7 +3481,7 @@ table.table-census-assistant th {
 [class^="icon-"],
 [class*=" icon-"] {
 	display: inline-block;
-	vertical-align: text-bottom;
+	vertical-align: middle;
 	background-repeat: no-repeat;
 }
 
@@ -3581,6 +3539,12 @@ table.table-census-assistant th {
 	width: 14px;
 	height: 15px;
 	background-image: url(images/buttons/family.png);
+}
+
+.icon-button_find {
+	width: 17px;
+	height: 15px;
+	background-image: url(images/buttons/find.png);
 }
 
 .icon-button_find_facts {
@@ -3932,7 +3896,7 @@ a.icon-rdarrow:hover {
 
 .icon-rings {
 	width: 9px;
-	height: 11px;
+	height: 9px;
 	background-image: url(images/rings.png);
 }
 
@@ -4203,6 +4167,7 @@ a.icon-udarrow:hover {
 
 /* ====== Theme Header ========= */
 header h1 {
+	clear: left;
 	float: left;
 	font-size: 24px;
 	font-weight: normal;
@@ -4256,7 +4221,7 @@ header {
 	background-color: #eee;
 	border: thin solid #aaa;
 	display: none;
-	left: 10px;
+	left: 0;
 	position: absolute;
 }
 
@@ -4355,9 +4320,9 @@ header nav {
 }
 
 .primary-menu li {
-	display: block;
-	position: relative;
 	float: left;
+	position: relative;
+	display: block;
 	list-style: none;
 }
 
@@ -4488,7 +4453,6 @@ header nav {
 }
 
 footer .center {
-	clear: both;
 	text-align: center;
 }
 
@@ -5275,18 +5239,14 @@ footer .error {
 }
 
 @media print {
-	form,
-	#backprint,
-	#sidebar,
-	.primary-menu,
-	#separator,
 	header,
 	footer,
-	#CB_All,
+	form,
+	#sidebar,
+	#separator,
 	.noprint {
 		display: none !important;
 	}
-
 
 	#familybook_chart h3 {
 		margin-bottom: 10px;
