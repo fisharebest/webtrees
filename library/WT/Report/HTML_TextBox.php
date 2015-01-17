@@ -161,8 +161,9 @@ class WT_Report_HTML_TextBox extends WT_Report_Base_TextBox {
 		for ($i = 0; $i < $cE; $i++) {
 			if (is_object($this->elements[$i])) {
 				$ew = $this->elements[$i]->setWrapWidth($cW - $w - 2, $cW);
-				if ($ew == $cW)
-					$w = 0;
+				if ($ew == $cW) {
+									$w = 0;
+				}
 				$lw = $this->elements[$i]->getWidth($renderer);
 				// Text is already gets the # LF
 				$cHT += $lw[2];

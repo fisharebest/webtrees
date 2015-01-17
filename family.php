@@ -106,7 +106,7 @@ $show_full = '1';
 								echo '<a href="#" onclick="return add_spouse_to_family(\'', $controller->record->getXref(), '\', \'HUSB\');">', WT_I18N::translate('Add a new father'), '</a><br>';
 							}
 							$wife=$controller->record->getWife();
-							if (!$wife)  {
+							if (!$wife) {
 								echo '<a href="#" onclick="return add_spouse_to_family(\'', $controller->record->getXref(), '\', \'WIFE\');">', WT_I18N::translate('Add a new mother'), '</a><br>';
 							}
 						}

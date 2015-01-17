@@ -81,8 +81,11 @@ class WT_Controller_Ancestry extends WT_Controller_Chart {
 			$this->setPageTitle(WT_I18N::translate('Ancestors'));
 		}
 
-		if (strlen($this->name)<30) $this->cellwidth="420";
-		else $this->cellwidth=(strlen($this->name)*14);
+		if (strlen($this->name)<30) {
+			$this->cellwidth="420";
+		} else {
+			$this->cellwidth=(strlen($this->name)*14);
+		}
 	}
 
 	/**
@@ -122,8 +125,11 @@ class WT_Controller_Ancestry extends WT_Controller_Chart {
 		echo '</td><td class="details1">';
 		$relation ='';
 		$new=($pid=='' or !isset($pidarr[$pid]));
-		if (!$new) $relation = '<br>[=<a href="#sosa'.$pidarr[$pid].'">'.$pidarr[$pid].'</a> - '.get_sosa_name($pidarr[$pid]).']';
-		else $pidarr[$pid]=$sosa;
+		if (!$new) {
+			$relation = '<br>[=<a href="#sosa'.$pidarr[$pid].'">'.$pidarr[$pid].'</a> - '.get_sosa_name($pidarr[$pid]).']';
+		} else {
+			$pidarr[$pid]=$sosa;
+		}
 		echo get_sosa_name($sosa).$relation;
 		echo '</td>';
 		echo '</tr></table>';

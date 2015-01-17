@@ -212,7 +212,9 @@ if ($changed_gedcoms) {
 	$output2 .= '<tr><td class="list_value">';
 	$count = 0;
 	foreach ($changed_gedcoms as $gedcom_name) {
-		if ($count!=0) $output2.='<br>';
+		if ($count!=0) {
+			$output2.='<br>';
+		}
 		$output2 .= '<a href="edit_changes.php?action=acceptall&amp;ged='.rawurlencode($gedcom_name).'">'.$gedcom_name.' - '.WT_I18N::translate('Approve all changes').'</a>';
 		$count ++;
 	}
