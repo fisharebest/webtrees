@@ -169,7 +169,9 @@ $mediaFolders = WT_Query_Media::folderListAll();
 // Determine file size limit
 // TODO: do we need to check post_max_size size too?
 $filesize = ini_get('upload_max_filesize');
-if (empty($filesize)) $filesize = "2M";
+if (empty($filesize)) {
+	$filesize = "2M";
+}
 
 ?>
 <ol class="breadcrumb small">
@@ -208,7 +210,9 @@ for ($i=1; $i<6; $i++) {
 		echo '</td>';
 		echo '<td>';
 		echo '<input name="filename', $i, '" type="text" size="40">';
-		if ($i==1) echo "<br><sub>", WT_I18N::translate('Do not change to keep original filename.'), "</sub>";
+		if ($i==1) {
+			echo "<br><sub>", WT_I18N::translate('Do not change to keep original filename.'), "</sub>";
+		}
 		echo '</td></tr>';
 	} else {
 		echo '<tr style="display:none;"><td><input type="hidden" name="filename', $i, '" value=""></td></tr>';
@@ -223,7 +227,9 @@ for ($i=1; $i<6; $i++) {
 		echo '<span dir="ltr"><select name="folder_list', $i, '" onchange="document.uploadmedia.folder', $i, '.value=this.options[this.selectedIndex].value;">';
 		echo '<option';
 		echo ' value="/"> ', WT_I18N::translate('Choose: '), ' </option>';
-		if (Auth::isAdmin()) echo '<option value="other" disabled>', WT_I18N::translate('Other folder… please type in'), "</option>";
+		if (Auth::isAdmin()) {
+			echo '<option value="other" disabled>', WT_I18N::translate('Other folder… please type in'), "</option>";
+		}
 		foreach ($mediaFolders as $f) {
 			echo '<option value="', WT_Filter::escapeHtml($f), '">', WT_Filter::escapeHtml($f), "</option>";
 		}

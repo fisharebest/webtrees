@@ -50,7 +50,9 @@ if ($linkto=='manage' && array_key_exists('GEDFact_assistant', WT_Module::getAct
 
 	//-- check for admin
 	$paramok =  true;
-	if (!empty($linktoid)) $paramok = WT_GedcomRecord::getInstance($linktoid)->canShow();
+	if (!empty($linktoid)) {
+		$paramok = WT_GedcomRecord::getInstance($linktoid)->canShow();
+	}
 
 	if ($action == "choose" && $paramok) {
 		echo '<form name="link" method="get" action="inverselink.php">';
@@ -85,7 +87,9 @@ if ($linkto=='manage' && array_key_exists('GEDFact_assistant', WT_Module::getAct
 			echo "</td></tr>";
 		}
 
-		if (!isset($linktoid)) $linktoid = "";
+		if (!isset($linktoid)) {
+			$linktoid = "";
+		}
 		echo '<tr><td class="descriptionbox">';
 
 		if ($linkto == "person") {

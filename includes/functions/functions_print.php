@@ -136,10 +136,14 @@ function print_fact_notes($factrec, $level, $textOnly=false) {
 	for ($j=0; $j<$ct; $j++) {
 		$spos1 = strpos($factrec, $match[$j][0], $previous_spos);
 		$spos2 = strpos($factrec."\n$level", "\n$level", $spos1+1);
-		if (!$spos2) $spos2 = strlen($factrec);
+		if (!$spos2) {
+			$spos2 = strlen($factrec);
+		}
 		$previous_spos = $spos2;
 		$nrec = substr($factrec, $spos1, $spos2-$spos1);
-		if (!isset($match[$j][1])) $match[$j][1]="";
+		if (!isset($match[$j][1])) {
+			$match[$j][1]="";
+		}
 		if (!preg_match("/@(.*)@/", $match[$j][1], $nmatch)) {
 			$data .= print_note_record($match[$j][1], $nlevel, $nrec, $textOnly);
 		} else {
@@ -570,10 +574,13 @@ function CheckFactUnique($uniquefacts, $recfacts, $type) {
 		if (is_object($factarray)) {
 			/* @var $factarray Event */
 			$fact = $factarray->getTag();
-		}
-		else {
-			if (($type == "SOUR") || ($type == "REPO")) $factrec = $factarray[0];
-			if (($type == "FAM") || ($type == "INDI")) $factrec = $factarray[1];
+		} else {
+			if (($type == "SOUR") || ($type == "REPO")) {
+				$factrec = $factarray[0];
+			}
+			if (($type == "FAM") || ($type == "INDI")) {
+				$factrec = $factarray[1];
+			}
 
 		$ft = preg_match("/1 (\w+)(.*)/", $factrec, $match);
 		if ($ft>0) {
@@ -582,7 +589,9 @@ function CheckFactUnique($uniquefacts, $recfacts, $type) {
 		}
 		if ($fact!==false) {
 			$key = array_search($fact, $uniquefacts);
-			if ($key !== false) unset($uniquefacts[$key]);
+			if ($key !== false) {
+				unset($uniquefacts[$key]);
+			}
 		}
 	}
 	return $uniquefacts;
@@ -685,7 +694,9 @@ function print_add_new_fact($id, $usedfacts, $type) {
 	echo '</select>';
 	echo '<input type="button" value="', WT_I18N::translate('Add'), '" onclick="add_record(\''.$id.'\', \'newfact\');">';
 	echo '<span class="quickfacts">';
-	foreach ($quickfacts as $fact) echo '<a href="#" onclick="add_new_record(\''.$id.'\', \''.$fact.'\');return false;">', WT_Gedcom_Tag::getLabel($fact), '</a>';
+	foreach ($quickfacts as $fact) {
+		echo '<a href="#" onclick="add_new_record(\''.$id.'\', \''.$fact.'\');return false;">', WT_Gedcom_Tag::getLabel($fact), '</a>';
+	}
 	echo '</span></form>';
 	echo '</td></tr>';
 }

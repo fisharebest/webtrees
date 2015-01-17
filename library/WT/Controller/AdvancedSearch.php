@@ -168,7 +168,9 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 	 */
 	function getValue($i) {
 		$val = '';
-		if (isset($this->values[$i])) $val = $this->values[$i];
+		if (isset($this->values[$i])) {
+			$val = $this->values[$i];
+		}
 		return $val;
 	}
 
@@ -219,8 +221,12 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 				continue;
 			}
 			$newfields[$i] = $this->fields[$j];
-			if (isset($this->values[$j])) $newvalues[$i] = $this->values[$j];
-			if (isset($this->plusminus[$j])) $newplus[$i] = $this->plusminus[$j];
+			if (isset($this->values[$j])) {
+				$newvalues[$i] = $this->values[$j];
+			}
+			if (isset($this->plusminus[$j])) {
+				$newplus[$i] = $this->plusminus[$j];
+			}
 			$i++;
 		}
 		$this->fields = $newfields;
@@ -345,7 +351,9 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 		for ($i=0; $i<$fct; $i++) {
 			$field = $this->fields[$i];
 			$value = $this->values[$i];
-			if ($value==='') continue;
+			if ($value==='') {
+				continue;
+			}
 			$parts = preg_split("/:/", $field.'::::');
 			if ($parts[0]=='NAME') {
 				// NAME:*
@@ -458,8 +466,11 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 				$date = new WT_Date($value);
 				if ($date->isOK()) {
 					$jd1 = $date->date1->minJD;
-					if ($date->date2) $jd2 = $date->date2->maxJD;
-					else $jd2 = $date->date1->maxJD;
+					if ($date->date2) {
+						$jd2 = $date->date2->maxJD;
+					} else {
+						$jd2 = $date->date1->maxJD;
+					}
 					if (!empty($this->plusminus[$i])) {
 						$adjd = $this->plusminus[$i]*365;
 						$jd1 = $jd1 - $adjd;
@@ -475,8 +486,11 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 				$date = new WT_Date($value);
 				if ($date->isOK()) {
 					$jd1 = $date->date1->minJD;
-					if ($date->date2) $jd2 = $date->date2->maxJD;
-					else $jd2 = $date->date1->maxJD;
+					if ($date->date2) {
+						$jd2 = $date->date2->maxJD;
+					} else {
+						$jd2 = $date->date1->maxJD;
+					}
 					if (!empty($this->plusminus[$i])) {
 						$adjd = $this->plusminus[$i]*365;
 						$jd1 = $jd1 - $adjd;

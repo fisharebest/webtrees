@@ -99,7 +99,9 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 		// do not split hebrew line
 		$found = false;
 		foreach ($RTLOrd as $ord) {
-			if (strpos($data, chr($ord)) !== false) $found=true;
+			if (strpos($data, chr($ord)) !== false) {
+				$found=true;
+			}
 		}
 		if ($found) {
 			$line=$data;
@@ -108,7 +110,9 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 				$len = strlen($line);
 				$wlen = strlen($word);
 				if (($len+$wlen)<$maxlen) {
-					if (!empty($line)) $line .= " ";
+					if (!empty($line)) {
+						$line .= " ";
+					}
 					$line .= "$word";
 				} else {
 					$p = max(0,(int)(($maxlen-$len)/2));

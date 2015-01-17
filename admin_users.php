@@ -572,7 +572,9 @@ case 'cleanup':
 	echo "<td><select onchange=\"document.location=options[selectedIndex].value;\">";
 	for ($i=1; $i<=12; $i++) {
 		echo "<option value=\"admin_users.php?action=cleanup&amp;month=$i\"";
-		if ($i == $month) echo " selected=\"selected\"";
+		if ($i == $month) {
+			echo " selected=\"selected\"";
+		}
 		echo ">", $i, "</option>";
 	}
 	echo "</select></td></tr>";

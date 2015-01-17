@@ -998,7 +998,7 @@ function format_fam_table($datalist) {
 			$html .= 'R';
 		} elseif (!$husb->isDead() && !$wife->isDead() && $family->getNumberOfChildren() < 1) {
 			$html .= 'L';
-		}  else {
+		} else {
 			$html .= '&nbsp;';
 		}
 		$html .= '</td>

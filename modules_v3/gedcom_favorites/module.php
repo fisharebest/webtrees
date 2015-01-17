@@ -97,7 +97,9 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 
 		// Override GEDCOM configuration temporarily
-		if (isset($show_full)) $saveShowFull = $show_full;
+		if (isset($show_full)) {
+			$saveShowFull = $show_full;
+		}
 		$savePedigreeFullDetails = $PEDIGREE_FULL_DETAILS;
 		$show_full = 1;
 		$PEDIGREE_FULL_DETAILS = 1;
@@ -120,11 +122,15 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 		$content = '';
 		if ($userfavs) {
 			foreach ($userfavs as $key=>$favorite) {
-				if (isset($favorite['id'])) $key=$favorite['id'];
+				if (isset($favorite['id'])) {
+					$key=$favorite['id'];
+				}
 				$removeFavourite = '<a class="font9" href="index.php?ctype='.$ctype.'&amp;action=deletefav&amp;favorite_id='.$key.'" onclick="return confirm(\''.WT_I18N::translate('Are you sure you want to remove this item from your list of favorites?').'\');">'.WT_I18N::translate('Remove').'</a> ';
 				if ($favorite['type']=='URL') {
 					$content .= '<div id="boxurl'.$key.'.0" class="person_box">';
-					if ($ctype=='user' || WT_USER_GEDCOM_ADMIN) $content .= $removeFavourite;
+					if ($ctype=='user' || WT_USER_GEDCOM_ADMIN) {
+						$content .= $removeFavourite;
+					}
 					$content .= '<a href="'.$favorite['url'].'"><b>'.$favorite['title'].'</b></a>';
 					$content .= '<br>'.$favorite['note'];
 					$content .= '</div>';
@@ -144,7 +150,9 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 								break;
 							}
 							$content .= '">';
-							if ($ctype=="user" || WT_USER_GEDCOM_ADMIN) $content .= $removeFavourite;
+							if ($ctype=="user" || WT_USER_GEDCOM_ADMIN) {
+								$content .= $removeFavourite;
+							}
 							$content .= Theme::theme()->individualBoxLarge($record);
 							$content .= $favorite['note'];
 							$content .= '</div>';

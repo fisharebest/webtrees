@@ -66,7 +66,9 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 		// This is passed as a global.  A parameter would be better...
 		$show_full=$this->show_full;
 
-		if (!isset($this->personcount)) $this->personcount = 1;
+		if (!isset($this->personcount)) {
+			$this->personcount = 1;
+		}
 
 		// -- size of the detailed boxes based upon optional width parameter
 		$Dbwidth  = ($this->box_width*$bwidth)/100;
@@ -112,7 +114,9 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 	 */
 	public function printChildFamily(WT_Individual $person, $depth, $label='1.', $gpid='') {
 
-		if ($depth<2) return;
+		if ($depth<2) {
+			return;
+		}
 		foreach ($person->getSpouseFamilies() as $family) {
 			print_sosa_family($family->getXref(), '', -1, $label, $person->getXref(), $gpid);
 			$i=1;
@@ -133,8 +137,9 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 	public function printChildDescendancy(WT_Individual $person, $depth) {
 		echo "<li>";
 		echo "<table><tr><td>";
-		if ($depth==$this->generations) echo "<img src=\"".Theme::theme()->parameter('image-spacer')."\" height=\"3\" width=\"", Theme::theme()->parameter('chart-descendancy-indent'), "\" alt=\"\"></td><td>";
-		else {
+		if ($depth==$this->generations) {
+			echo "<img src=\"".Theme::theme()->parameter('image-spacer')."\" height=\"3\" width=\"", Theme::theme()->parameter('chart-descendancy-indent'), "\" alt=\"\"></td><td>";
+		} else {
 			echo "<img src=\"" . Theme::theme()->parameter('image-spacer') . "\" height=\"3\" width=\"3\" alt=\"\">";
 			echo "<img src=\"" . Theme::theme()->parameter('image-hline') . "\" height=\"3\" width=\"", Theme::theme()->parameter('chart-descendancy-indent') - 3, "\" alt=\"\"></td><td>";
 		}
@@ -154,18 +159,28 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 
 		// d'Aboville child number
 		$level =$this->generations-$depth;
-		if ($this->show_full) echo '<br><br>&nbsp;';
+		if ($this->show_full) {
+			echo '<br><br>&nbsp;';
+		}
 		echo '<span dir="ltr">'; //needed so that RTL languages will display this properly
-		if (!isset($this->dabo_num[$level])) $this->dabo_num[$level]=0;
+		if (!isset($this->dabo_num[$level])) {
+			$this->dabo_num[$level]=0;
+		}
 		$this->dabo_num[$level]++;
 		$this->dabo_num[$level+1]=0;
 		$this->dabo_sex[$level]=$person->getSex();
 		for ($i=0; $i<=$level;$i++) {
 			$isf=$this->dabo_sex[$i];
-			if ($isf=="M") $isf="";
-			if ($isf=="U") $isf="NN";
+			if ($isf=="M") {
+				$isf="";
+			}
+			if ($isf=="U") {
+				$isf="NN";
+			}
 			echo "<span class=\"person_box".$isf."\">&nbsp;".$this->dabo_num[$i]."&nbsp;</span>";
-			if ($i<$level) echo ".";
+			if ($i<$level) {
+				echo ".";
+			}
 		}
 		echo "</span>";
 		echo "</td></tr>";
@@ -221,7 +236,9 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 				}
 			}
 		}
-		if ($this->show_full) echo '<br><br>&nbsp;';
+		if ($this->show_full) {
+			echo '<br><br>&nbsp;';
+		}
 		echo '</td></tr>';
 
 		// children
@@ -240,8 +257,10 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 		}
 		echo '</td></tr></table>';
 		echo '</li>';
-		if ($depth>1) foreach ($children as $child) {
+		if ($depth>1) {
+			foreach ($children as $child) {
 			$this->printChildDescendancy($child, $depth-1);
+		}
 		}
 		echo '</ul>';
 		echo '</li>';
