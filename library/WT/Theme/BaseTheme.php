@@ -397,8 +397,10 @@ abstract class BaseTheme {
 			// Modernizr needs to be loaded before the <body> to avoid FOUC in IE8
 			'<!--[if IE 8]><script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script><![endif]-->' .
 			$this->metaCharset() .
-			$this->metaRobots($controller->getMetaRobots()) .
 			$this->title($title) .
+			$this->metaViewport() .
+			$this->metaRobots($controller->getMetaRobots()) .
+			$this->metaUaCompatible() .
 			$this->metaGenerator(WT_WEBTREES . ' ' . WT_VERSION . ' - ' . WT_WEBTREES_URL) .
 			$this->metaCanonicalUrl($controller->getCanonicalUrl());
 
@@ -1483,6 +1485,15 @@ abstract class BaseTheme {
 	 */
 	protected function metaUaCompatible() {
 		return '<meta http-equiv="X-UA-Compatible" content="IE=edge">';
+	}
+
+	/**
+	 * Create the <meta name="viewport" content="width=device-width, initial-scale=1"> tag.
+	 *
+	 * @return string
+	 */
+	protected function metaViewport() {
+		return '<meta name="viewport" content="width=device-width, initial-scale=1">';
 	}
 
 	/**
