@@ -205,7 +205,8 @@ case 'load_json':
 	$recordsTotal = WT_DB::prepare($SELECT2.$WHERE)->execute($args)->fetchOne();
 
 	header('Content-type: application/json');
-	echo json_encode(array( // See http://www.datatables.net/usage/server-side
+	// See http://www.datatables.net/usage/server-side
+	echo json_encode(array( 
 		'draw'            => WT_Filter::getInteger('draw'), // Always an integer
 		'recordsTotal'    => $recordsTotal,
 		'recordsFiltered' => $recordsFiltered,

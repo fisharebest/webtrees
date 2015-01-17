@@ -55,9 +55,9 @@ $xrefs = WT_DB::prepare(
 	" SELECT o_id AS xref FROM `##other` WHERE o_file <> ? AND o_type NOT IN ('HEAD', 'TRLR')" .
 	") AS other_trees USING (xref)"
 )->execute(array(
-		WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID,
-		WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID
-	))->fetchAssoc();
+	WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID,
+	WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID
+))->fetchAssoc();
 
 echo '<h2>', $controller->getPageTitle(), ' — ', $WT_TREE->tree_title_html, '</h2>';
 if (WT_Filter::get('go')) {

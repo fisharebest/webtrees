@@ -384,30 +384,29 @@ case 'general':
 }
 
 switch (WT_Filter::get('action')) {
-	case 'privacy':
-		$controller
-			->setPageTitle(WT_Filter::escapeHtml($WT_TREE->tree_title) . ' — ' . WT_I18N::translate('Privacy'))
-			->addInlineJavascript('
-				jQuery("#default-resn input[type=checkbox]").on("click", function() {
-					if ($(this).prop("checked")) {
-						jQuery($(this).closest("tr").addClass("text-muted"));
-					} else {
-						jQuery($(this).closest("tr").removeClass("text-muted"));
-					}
-				});
-				jQuery("#add-resn").on("click", function() {
-					jQuery("#default-resn tbody").prepend(jQuery("#new-resn-template").html()); autocomplete();
-				});
-			');
-		break;
-	case 'general':
-		$controller
-			->setPageTitle(WT_Filter::escapeHtml($WT_TREE->tree_title) . ' — ' . WT_I18N::translate('Preferences'))	;
-		break;
-	default:
-		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'admin.php');
+case 'privacy':
+	$controller
+		->setPageTitle(WT_Filter::escapeHtml($WT_TREE->tree_title) . ' — ' . WT_I18N::translate('Privacy'))
+		->addInlineJavascript('
+			jQuery("#default-resn input[type=checkbox]").on("click", function() {
+				if ($(this).prop("checked")) {
+					jQuery($(this).closest("tr").addClass("text-muted"));
+				} else {
+					jQuery($(this).closest("tr").removeClass("text-muted"));
+				}
+			});
+			jQuery("#add-resn").on("click", function() {
+				jQuery("#default-resn tbody").prepend(jQuery("#new-resn-template").html()); autocomplete();
+			});
+		');
+	break;
+case 'general':
+	$controller>setPageTitle(WT_Filter::escapeHtml($WT_TREE->tree_title) . ' — ' . WT_I18N::translate('Preferences'))	;
+	break;
+default:
+	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'admin.php');
 
-		return;
+	return;
 }
 
 $controller
@@ -624,7 +623,7 @@ $controller
 	<!-- TREE TITLE -->
 	<div class="form-group">
 		<label class="control-label col-sm-3" for="title">
-						<?php echo WT_I18N::translate('Family tree title'); ?>
+			<?php echo WT_I18N::translate('Family tree title'); ?>
 		</label>
 		<div class="col-sm-9">
 			<input
@@ -642,7 +641,7 @@ $controller
 	<!-- TREE URL / FILENAME -->
 	<div class="form-group">
 		<label class="control-label col-sm-3" for="gedcom">
-						<?php echo WT_I18N::translate('URL'); ?>
+			<?php echo WT_I18N::translate('URL'); ?>
 		</label>
 		<div class="col-sm-9">
 			<div class="input-group">
@@ -697,14 +696,14 @@ $controller
 					value="<?php echo $WT_TREE->getPreference('PEDIGREE_ROOT_ID'); ?>"
 				>
 				<span class="input-group-addon">
-						<?php
-							$person=WT_Individual::getInstance($WT_TREE->getPreference('PEDIGREE_ROOT_ID'));
-							if ($person) {
+					<?php
+					$person=WT_Individual::getInstance($WT_TREE->getPreference('PEDIGREE_ROOT_ID'));
+					if ($person) {
 						echo $person->getFullName(), ' ', $person->getLifeSpan();
-							} else {
+					} else {
 						echo WT_I18N::translate('Unable to find record with ID');
-							}
-						?>
+					}
+					?>
 				</span>
 			</div>
 			<p class="small text-muted">
@@ -890,7 +889,7 @@ $controller
 							name="NOTE_ID_PREFIX"
 							type="text"
 							value="<?php echo $WT_TREE->getPreference('NOTE_ID_PREFIX'); ?>"
-							>
+						>
 					</div>
 				</div>
 			</div>
@@ -933,7 +932,7 @@ $controller
 				<?php foreach (User::all() as $user): ?>
 					<?php if (Auth::isMember($WT_TREE, $user)): ?>
 						<option value="<?php echo $user->getUserId(); ?>" selected="<?php echo $WT_TREE->getPreference('CONTACT_USER_ID') === $user->getUserId() ? 'selected' : ''; ?>">
-						<?php echo WT_Filter::escapeHtml($user->getRealName()) . ' - ' . WT_Filter::escapeHtml($user->getUserName()); ?>
+							<?php echo WT_Filter::escapeHtml($user->getRealName()) . ' - ' . WT_Filter::escapeHtml($user->getUserName()); ?>
 						</option>
 					<?php endif; ?>
 				<?php endforeach; ?>
@@ -955,7 +954,7 @@ $controller
 				<?php foreach (User::all() as $user): ?>
 					<?php if (Auth::isMember($WT_TREE, $user)): ?>
 						<option value="<?php echo $user->getUserId(); ?>" selected="<?php echo $WT_TREE->getPreference('WEBMASTER_USER_ID') === $user->getUserId() ? 'selected' : ''; ?>">
-						<?php echo WT_Filter::escapeHtml($user->getRealName()) . ' - ' . WT_Filter::escapeHtml($user->getUserName()); ?>
+							<?php echo WT_Filter::escapeHtml($user->getRealName()) . ' - ' . WT_Filter::escapeHtml($user->getUserName()); ?>
 						</option>
 					<?php endif; ?>
 				<?php endforeach; ?>
@@ -1166,7 +1165,7 @@ $controller
 	<!-- SHOW_HIGHLIGHT_IMAGES -->
 	<fieldset class="form-group">
 		<legend class="control-label col-sm-3">
-						<?php echo WT_I18N::translate('Show highlight images in individual boxes'); ?>
+			<?php echo WT_I18N::translate('Show highlight images in individual boxes'); ?>
 		</legend>
 		<div class="col-sm-9">
 			<?php echo radio_buttons('SHOW_HIGHLIGHT_IMAGES', $no_yes, $WT_TREE->getPreference('SHOW_HIGHLIGHT_IMAGES'), 'class="radio-inline"'); ?>
@@ -1216,7 +1215,7 @@ $controller
 	<!-- SHOW_NO_WATERMARK -->
 	<div class="form-group">
 		<label class="control-label col-sm-3" for="SHOW_NO_WATERMARK">
-						<?php echo WT_I18N::translate('Images without watermarks'); ?>
+			<?php echo WT_I18N::translate('Images without watermarks'); ?>
 		</label>
 		<div class="col-sm-9">
 			<?php echo select_edit_control('SHOW_NO_WATERMARK', $privacy, null, $WT_TREE->getPreference('MEDIA_UPLOAD'), 'class="form-control"'); ?>
@@ -1296,7 +1295,7 @@ $controller
 	<!-- SURNAME_LIST_STYLE -->
 	<div class="form-group">
 		<label class="control-label col-sm-3" for="SURNAME_LIST_STYLE">
-						<?php echo WT_I18N::translate('Surname list style'); ?>
+			<?php echo WT_I18N::translate('Surname list style'); ?>
 		</label>
 		<div class="col-sm-9">
 			<?php echo select_edit_control('SURNAME_LIST_STYLE', $surname_list_styles, null, $WT_TREE->getPreference('SURNAME_LIST_STYLE'), 'class="form-control"'); ?>
@@ -1444,7 +1443,7 @@ $controller
 	<!-- SHOW_RELATIVES_EVENTS -->
 	<fieldset class="form-group">
 		<legend class="control-label col-sm-3">
-						<?php echo WT_I18N::translate('Show events of close relatives on individual page'); ?>
+			<?php echo WT_I18N::translate('Show events of close relatives on individual page'); ?>
 		</legend>
 		<div class="col-sm-3">
 			<div class="checkbox">
@@ -1548,19 +1547,15 @@ $controller
 		</legend>
 		<div class="col-sm-9">
 			<?php echo /* I18N: The placeholders are edit controls.  Show the [first/last] [1/2/3/4/5] parts of a place name */ WT_I18N::translate(
-							'Show the %1$s %2$s parts of a place name.',
+				'Show the %1$s %2$s parts of a place name.',
 				select_edit_control('SHOW_PEDIGREE_PLACES_SUFFIX',
-								array(
-									false=>WT_I18N::translate_c('Show the [first/last] [N] parts of a place name.', 'first'),
-									true =>WT_I18N::translate_c('Show the [first/last] [N] parts of a place name.', 'last')
-								),
-								null,
-								$WT_TREE->getPreference('SHOW_PEDIGREE_PLACES_SUFFIX')
-							),
-				select_edit_control('SHOW_PEDIGREE_PLACES', $one_to_nine, null, $WT_TREE->getPreference('SHOW_PEDIGREE_PLACES')
-							)
-						);
-						?>
+					array(
+						false=>WT_I18N::translate_c('Show the [first/last] [N] parts of a place name.', 'first'),
+						true =>WT_I18N::translate_c('Show the [first/last] [N] parts of a place name.', 'last')
+					), null, $WT_TREE->getPreference('SHOW_PEDIGREE_PLACES_SUFFIX')
+				),
+				select_edit_control('SHOW_PEDIGREE_PLACES', $one_to_nine, null, $WT_TREE->getPreference('SHOW_PEDIGREE_PLACES'))
+			); ?>
 			<p class="small text-muted">
 				<?php echo /* I18N: Help text for the “Abbreviate place names” configuration setting */ WT_I18N::translate('Place names are frequently too long to fit on charts, lists, etc.  They can be abbreviated by showing just the first few parts of the name, such as <i>village, county</i>, or the last few part of it, such as <i>region, country</i>.'); ?>
 			</p>

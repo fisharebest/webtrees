@@ -577,7 +577,7 @@ $GEDCOMS=WT_DB::prepare(
 foreach ($GEDCOMS as $GEDCOM=>$GED_DATA) {
 	$config=$GED_DATA['config'];
 	if ($PGV_SCHEMA_VERSION>=12) {
-	$config=str_replace('${INDEX_DIRECTORY}', $INDEX_DIRECTORY.DIRECTORY_SEPARATOR, $config);
+		$config=str_replace('${INDEX_DIRECTORY}', $INDEX_DIRECTORY.DIRECTORY_SEPARATOR, $config);
 	} else {
 		$config=str_replace($INDEX_DIRECTORY, $INDEX_DIRECTORY.DIRECTORY_SEPARATOR, $config);
 	}

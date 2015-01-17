@@ -96,7 +96,7 @@ $controller
 					<?php if ($module instanceof WT_Module_Config): ?>
 					<a href="<?php echo $module->getConfigLink(); ?>"><?php echo $module->getTitle(); ?> <i class="fa fa-cogs"></i></a>
 					<?php else: ?>
-						<?php echo $module->getTitle(); ?>
+					<?php echo $module->getTitle(); ?>
 					<?php endif; ?>
 				</td>
 				<td class="col-xs-5"><?php echo $module->getDescription(); ?></td>

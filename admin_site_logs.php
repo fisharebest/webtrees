@@ -176,7 +176,8 @@ case 'load_json':
 	$recordsTotal=WT_DB::prepare($SELECT2.$WHERE)->execute($args)->fetchOne();
 
 	header('Content-type: application/json');
-	echo json_encode(array( // See http://www.datatables.net/usage/server-side
+	// See http://www.datatables.net/usage/server-side
+	echo json_encode(array(
 		'sEcho'           => WT_Filter::getInteger('sEcho'), // Always an integer
 		'recordsTotal'    => $recordsTotal,
 		'recordsFiltered' => $recordsFiltered,
@@ -217,7 +218,7 @@ foreach (User::all() as $tmp_user) {
 ?>
 <ol class="breadcrumb small">
 	<li><a href="admin.php"><?php echo WT_I18N::translate('Administration'); ?></a></li>
-<li class="active"><?php echo $controller->getPageTitle(); ?></li>
+	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
 </ol>
 <h2><?php echo $controller->getPageTitle(); ?></h2>
 

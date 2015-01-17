@@ -69,8 +69,8 @@ if ($tree1_id && $tree2_id != $tree1_id) {
 		" SELECT o_id AS xref FROM `##other` WHERE o_file = ? AND o_type NOT IN ('HEAD', 'TRLR')" .
 		") AS other_trees USING (xref)"
 	)->execute(array(
-			$tree1_id, $tree1_id, $tree1_id, $tree1_id, $tree1_id,
-			$tree2_id, $tree2_id, $tree2_id, $tree2_id, $tree2_id, $tree2_id
+		$tree1_id, $tree1_id, $tree1_id, $tree1_id, $tree1_id,
+		$tree2_id, $tree2_id, $tree2_id, $tree2_id, $tree2_id, $tree2_id
 	))->fetchAssoc();
 
 	if ($xrefs) {

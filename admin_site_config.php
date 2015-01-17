@@ -131,7 +131,7 @@ $controller->pageHeader();
 	<?php echo WT_Filter::getCsrf(); ?>
 
 	<?php if (WT_Filter::get('action') === 'site'): ?>
-		<input type="hidden" name="action" value="site">
+	<input type="hidden" name="action" value="site">
 
 	<!-- INDEX_DIRECTORY -->
 	<div class="form-group">
@@ -384,7 +384,7 @@ $controller->pageHeader();
 		<div class="form-group">
 			<div class="col-sm-offset-3 col-sm-9">
 				<p class="alert alert-info">
-				<?php echo WT_I18N::translate('To use a Google mail account, use the following settings: server=smtp.gmail.com, port=587, security=tls, username=xxxxx@gmail.com, password=[your gmail password]'); ?>
+					<?php echo WT_I18N::translate('To use a Google mail account, use the following settings: server=smtp.gmail.com, port=587, security=tls, username=xxxxx@gmail.com, password=[your gmail password]'); ?>
 				</p>
 			</div>
 		</div>
