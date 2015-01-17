@@ -2,7 +2,7 @@
 // UI for online updating of the GEDCOM config file.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// Copyright (C) 2015 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010 PGV Development Team.
@@ -26,13 +26,14 @@ use WT\User;
 
 define('WT_SCRIPT_NAME', 'admin_trees_config.php');
 
+// Temporary
+if (!function_exists('with')) { function with($x) { return $x; } }
+
 require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
 $controller = new WT_Controller_Page();
-$controller
-	->restrictAccess(Auth::isManager())
-	->setPageTitle(WT_I18N::translate('Family tree configuration'));
+$controller->restrictAccess(Auth::isManager());
 
 $PRIVACY_CONSTANTS = array(
 	'none'         => WT_I18N::translate('Show to visitors'),
@@ -41,40 +42,214 @@ $PRIVACY_CONSTANTS = array(
 	'hidden'       => WT_I18N::translate('Hide from everyone')
 );
 
+$calendars = array(
+	'none'      => WT_I18N::translate('No calendar conversion'),
+	'gregorian' => WT_Date_Gregorian::calendarName(),
+	'julian'    => WT_Date_Julian::calendarName(),
+	'french'    => WT_Date_French::calendarName(),
+	'jewish'    => WT_Date_Jewish::calendarName(),
+	'hijri'     => WT_Date_Hijri::calendarName(),
+	'jalali'    => WT_Date_Jalali::calendarName(),
+);
+
+$no_yes = array(
+	0 => WT_I18N::translate('no'),
+	1 => WT_I18N::translate('yes'),
+);
+
+$hide_show = array(
+	0 => WT_I18N::translate('hide'),
+	1 => WT_I18N::translate('show'),
+);
+
+$privacy = array(
+	WT_PRIV_PUBLIC => WT_I18N::translate('Show to public'),
+	WT_PRIV_USER   => WT_I18N::translate('Show to members'),
+	WT_PRIV_NONE   => WT_I18N::translate('Show to managers'),
+	WT_PRIV_HIDE   => WT_I18N::translate('Hide from everyone'),
+);
+
+$surname_list_styles = array(
+	'style1' => /* I18N: Layout option for lists of surnames */ WT_I18N::translate('list'),
+	'style2' => /* I18N: Layout option for lists of surnames */ WT_I18N::translate('table'),
+	'style3' => /* I18N: Layout option for lists of surnames */ WT_I18N::translate('tag cloud'),
+);
+
+$layouts = array(
+	0 => /* I18N: page orientation */ WT_I18N::translate('Portrait'),
+	1 => /* I18N: page orientation */ WT_I18N::translate('Landscape'),
+);
+
+$first_last = array(
+	'first' => /* I18N: The first entry in a list */ WT_I18N::translate('first'),
+	'last'  => /* I18N: The last entry in a list */ WT_I18N::translate('last'),
+);
+
+$one_to_nine = array();
+for ($n=1; $n<=9; ++$n) {
+	$one_to_nine[] = WT_I18N::number($n);
+}
+
+$formats = array(
+	''         => /* I18N: None of the other options */ WT_I18N::translate('none'),
+	'markdown' => /* I18N: https://en.wikipedia.org/wiki/Markdown */ WT_I18N::translate('markdown')
+);
+
+$surname_traditions = array(
+	'paternal' =>
+		WT_I18N::translate_c('Surname tradition', 'paternal') .
+		' — ' . /* I18N: In the paternal surname tradition, ... */ WT_I18N::translate('Children take their father’s surname.') .
+		' ' . /* I18N: In the paternal surname tradition, ... */ WT_I18N::translate('Wives take their husband’s surname.'),
+	/* I18N: A system where children take their father’s surname */ 'patrilineal' =>
+		WT_I18N::translate('patrilineal') .
+		' — ' . /* I18N: In the patrilineal surname tradition, ... */ WT_I18N::translate('Children take their father’s surname.'),
+	/* I18N: A system where children take their mother’s surname */ 'matrilineal' =>
+		WT_I18N::translate('matrilineal') .
+		' — ' . /* I18N: In the matrilineal surname tradition, ... */ WT_I18N::translate('Children take their mother’s surname.'),
+	'spanish' =>
+		WT_I18N::translate_c('Surname tradition', 'Spanish') .
+		' — ' . /* I18N: In the Spanish surname tradition, ... */ WT_I18N::translate('Children take one surname from the father and one surname from the mother.'),
+	'portuguese' =>
+		WT_I18N::translate_c('Surname tradition', 'Portuguese') .
+		' — ' . /* I18N: In the Portuguese surname tradition, ... */ WT_I18N::translate('Children take one surname from the mother and one surname from the father.'),
+	'icelandic' =>
+		WT_I18N::translate_c('Surname tradition', 'Icelandic') .
+		' — ' . /* I18N: In the Icelandic surname tradition, ... */ WT_I18N::translate('Children take a patronym instead of a surname.'),
+	'polish' =>
+		WT_I18N::translate_c('Surname tradition', 'Polish') .
+		' — ' . /* I18N: In the Polish surname tradition, ... */ WT_I18N::translate('Children take
+their father’s surname.') .
+		' ' . /* I18N: In the Polish surname tradition, ... */ WT_I18N::translate('Wives take their husband’s surname.') .
+		' ' . /* I18N: In the Polish surname tradition, ... */ WT_I18N::translate('Surnames are inflected to indicate an individual’s gender.'),
+	'lithuanian' =>
+		WT_I18N::translate_c('Surname tradition', 'Lithuanian') .
+		' — ' . /* I18N: In the Lithuanian surname tradition, ... */ WT_I18N::translate('Children take their father’s surname.') .
+		' ' . /* I18N: In the Lithuanian surname tradition, ... */ WT_I18N::translate('Wives take their husband’s surname.') .
+		' ' . /* I18N: In the Lithuanian surname tradition, ... */ WT_I18N::translate('Surnames are inflected to indicate an individual’s gender and marital status.'),
+	'none' =>
+		WT_I18N::translate_c('Surname tradition', 'none')
+);
+
+$source_types = array(
+	0 => WT_I18N::translate('none'),
+	1 => WT_I18N::translate('facts'),
+	2 => WT_I18N::translate('records'),
+);
+
+$no_yes = array(
+	0 => WT_I18N::translate('no'),
+	1 => WT_I18N::translate('yes'),
+);
+
+$disable_enable = array(
+	0 => WT_I18N::translate('disable'),
+	1 => WT_I18N::translate('enable'),
+);
+
+$PRIVACY_CONSTANTS = array(
+	'none'         => WT_I18N::translate('Show to visitors'),
+	'privacy'      => WT_I18N::translate('Show to members'),
+	'confidential' => WT_I18N::translate('Show to managers'),
+	'hidden'       => WT_I18N::translate('Hide from everyone')
+);
+
+$privacy = array(
+	WT_PRIV_PUBLIC => WT_I18N::translate('Show to public'),
+	WT_PRIV_USER   => WT_I18N::translate('Show to members'),
+	WT_PRIV_NONE   => WT_I18N::translate('Show to managers'),
+	WT_PRIV_HIDE   => WT_I18N::translate('Hide from everyone'),
+);
+
+$tags = array_unique(array_merge(
+	explode(',', $WT_TREE->getPreference('INDI_FACTS_ADD')), explode(',', $WT_TREE->getPreference('INDI_FACTS_UNIQUE')),
+	explode(',', $WT_TREE->getPreference('FAM_FACTS_ADD' )), explode(',', $WT_TREE->getPreference('FAM_FACTS_UNIQUE' )),
+	explode(',', $WT_TREE->getPreference('NOTE_FACTS_ADD')), explode(',', $WT_TREE->getPreference('NOTE_FACTS_UNIQUE')),
+	explode(',', $WT_TREE->getPreference('SOUR_FACTS_ADD')), explode(',', $WT_TREE->getPreference('SOUR_FACTS_UNIQUE')),
+	explode(',', $WT_TREE->getPreference('REPO_FACTS_ADD')), explode(',', $WT_TREE->getPreference('REPO_FACTS_UNIQUE')),
+	array('SOUR', 'REPO', 'OBJE', '_PRIM', 'NOTE', 'SUBM', 'SUBN', '_UID', 'CHAN')
+));
+
+$all_tags = array();
+foreach ($tags as $tag) {
+	if ($tag) {
+		$all_tags[$tag] = WT_Gedcom_Tag::getLabel($tag);
+	}
+}
+
+uasort($all_tags, array('WT_I18N', 'strcasecmp'));
+
+$resns = WT_DB::prepare(
+	"SELECT default_resn_id, tag_type, xref, resn".
+	" FROM `##default_resn`".
+	" LEFT JOIN `##name` ON (gedcom_id=n_file AND xref=n_id AND n_num=0)".
+	" WHERE gedcom_id=?".
+	" ORDER BY xref IS NULL, n_sort, xref, tag_type"
+)->execute(array(WT_GED_ID))->fetchAll();
+
+foreach ($resns as $resn) {
+	$resn->record = WT_GedcomRecord::getInstance($resn->xref);
+	if ($resn->tag_type) {
+		$resn->tag_label = WT_Gedcom_Tag::getLabel($resn->tag_type);
+	} else {
+		$resn->tag_label = '&nbsp;';
+	}
+}
+
+// We have two fields in one
+$CALENDAR_FORMATS = explode('_and_', $WT_TREE->getPreference('CALENDAR_FORMAT') . '_and_');
+
+// Split into separate fields
+$relatives_events = explode(',', $WT_TREE->getPreference('SHOW_RELATIVES_EVENTS'));
+
 switch (WT_Filter::post('action')) {
-case 'delete':
-	if (!WT_Filter::checkCsrf()) {
-		break;
-	}
-	WT_DB::prepare(
-		"DELETE FROM `##default_resn` WHERE default_resn_id=?"
-	)->execute(array(WT_Filter::post('default_resn_id')));
-	// Reload the page, so that the new privacy restrictions are reflected in the header
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME.'#privacy');
-	exit;
-case 'add':
-	if (!WT_Filter::checkCsrf()) {
-		break;
-	}
-	if ((WT_Filter::post('xref') || WT_Filter::post('tag_type')) && WT_Filter::post('resn')) {
-		if (WT_Filter::post('xref')=='') {
-			WT_DB::prepare(
-				"DELETE FROM `##default_resn` WHERE gedcom_id=? AND tag_type=? AND xref IS NULL"
-			)->execute(array(WT_GED_ID, WT_Filter::post('tag_type')));
-		}
-		if (WT_Filter::post('tag_type')=='') {
-			WT_DB::prepare(
-				"DELETE FROM `##default_resn` WHERE gedcom_id=? AND xref=? AND tag_type IS NULL"
-			)->execute(array(WT_GED_ID, WT_Filter::post('xref')));
-		}
+case 'privacy':
+	foreach (WT_Filter::postArray('delete', WT_REGEX_INTEGER) as $delete_resn) {
 		WT_DB::prepare(
-			"REPLACE INTO `##default_resn` (gedcom_id, xref, tag_type, resn) VALUES (?, NULLIF(?, ''), NULLIF(?, ''), ?)"
-		)->execute(array(WT_GED_ID, WT_Filter::post('xref', WT_REGEX_XREF), WT_Filter::post('tag_type'), WT_Filter::post('resn')));
+			"DELETE FROM `##default_resn` WHERE default_resn_id=?"
+		)->execute(array($delete_resn));
 	}
-	// Reload the page, so that the new privacy restrictions are reflected in the header
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME.'#privacy');
-	exit;
-case 'update':
+
+	$xrefs     = WT_Filter::postArray('xref', WT_REGEX_XREF);
+	$tag_types = WT_Filter::postArray('tag_type', WT_REGEX_TAG);
+	$resns     = WT_Filter::postArray('resn');
+
+	foreach ($xrefs as $n => $xref) {
+		$tag_type = $tag_types[$n];
+		$resn     = $resns[$n];
+
+		if ($tag_type || $xref) {
+			// Delete any existing data
+			if ($xref === '') {
+				WT_DB::prepare(
+					"DELETE FROM `##default_resn` WHERE gedcom_id=? AND tag_type=? AND xref IS NULL"
+				)->execute(array(WT_GED_ID, $tag_type));
+			}
+			if ($tag_type === '') {
+				WT_DB::prepare(
+					"DELETE FROM `##default_resn` WHERE gedcom_id=? AND xref=? AND tag_type IS NULL"
+				)->execute(array(WT_GED_ID, $xref));
+			}
+			// Add (or update) the new data
+			WT_DB::prepare(
+				"REPLACE INTO `##default_resn` (gedcom_id, xref, tag_type, resn) VALUES (?, NULLIF(?, ''), NULLIF(?, ''), ?)"
+			)->execute(array(WT_GED_ID, $xref, $tag_type, $resn));
+		}
+	}
+
+	$WT_TREE->setPreference('HIDE_LIVE_PEOPLE',           WT_Filter::postBool('HIDE_LIVE_PEOPLE'));
+	$WT_TREE->setPreference('KEEP_ALIVE_YEARS_BIRTH',     WT_Filter::post('KEEP_ALIVE_YEARS_BIRTH', WT_REGEX_INTEGER, 0));
+	$WT_TREE->setPreference('KEEP_ALIVE_YEARS_DEATH',     WT_Filter::post('KEEP_ALIVE_YEARS_DEATH', WT_REGEX_INTEGER, 0));
+	$WT_TREE->setPreference('MAX_ALIVE_AGE',              WT_Filter::post('MAX_ALIVE_AGE', WT_REGEX_INTEGER, 100));
+	$WT_TREE->setPreference('REQUIRE_AUTHENTICATION',     WT_Filter::postBool('REQUIRE_AUTHENTICATION'));
+	$WT_TREE->setPreference('SHOW_DEAD_PEOPLE',           WT_Filter::post('SHOW_DEAD_PEOPLE'));
+	$WT_TREE->setPreference('SHOW_LIVING_NAMES',          WT_Filter::post('SHOW_LIVING_NAMES'));
+	$WT_TREE->setPreference('SHOW_PRIVATE_RELATIONSHIPS', WT_Filter::post('SHOW_PRIVATE_RELATIONSHIPS'));
+
+	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'admin_trees_manage.php?ged=' . $WT_TREE->tree_name);
+
+	return;
+
+case 'general':
 	if (!WT_Filter::checkCsrf()) {
 		break;
 	}
@@ -154,7 +329,7 @@ case 'update':
 	$WT_TREE->setPreference('SHOW_PEDIGREE_PLACES',         WT_Filter::post('SHOW_PEDIGREE_PLACES'));
 	$WT_TREE->setPreference('SHOW_PEDIGREE_PLACES_SUFFIX',  WT_Filter::postBool('SHOW_PEDIGREE_PLACES_SUFFIX'));
 	$WT_TREE->setPreference('SHOW_PRIVATE_RELATIONSHIPS',   WT_Filter::post('SHOW_PRIVATE_RELATIONSHIPS'));
-	$WT_TREE->setPreference('SHOW_RELATIVES_EVENTS',        WT_Filter::post('SHOW_RELATIVES_EVENTS'));
+	$WT_TREE->setPreference('SHOW_RELATIVES_EVENTS',        implode(',', WT_Filter::post('SHOW_RELATIVES_EVENTS')));
 	$WT_TREE->setPreference('SHOW_STATS',                   WT_Filter::postBool('SHOW_STATS'));
 	$WT_TREE->setPreference('SOURCE_ID_PREFIX',             WT_Filter::post('SOURCE_ID_PREFIX'));
 	$WT_TREE->setPreference('SOUR_FACTS_ADD',               str_replace(' ', '', WT_Filter::post('SOUR_FACTS_ADD')));
@@ -202,1116 +377,1971 @@ case 'update':
 		}
 	}
 
-	// Reload the page, so that the settings take effect immediately.
 	Zend_Session::writeClose();
-	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?ged=' . $gedcom);
-	exit;
+	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'admin_trees_manage.php');
+
+	return;
+}
+
+switch (WT_Filter::get('action')) {
+case 'privacy':
+	$controller
+		->setPageTitle(WT_Filter::escapeHtml($WT_TREE->tree_title) . ' — ' . WT_I18N::translate('Privacy'))
+		->addInlineJavascript('
+			jQuery("#default-resn input[type=checkbox]").on("click", function() {
+				if ($(this).prop("checked")) {
+					jQuery($(this).closest("tr").addClass("text-muted"));
+				} else {
+					jQuery($(this).closest("tr").removeClass("text-muted"));
+				}
+			});
+			jQuery("#add-resn").on("click", function() {
+				jQuery("#default-resn tbody").prepend(jQuery("#new-resn-template").html()); autocomplete();
+			});
+		');
+	break;
+case 'general':
+	$controller->setPageTitle(WT_Filter::escapeHtml($WT_TREE->tree_title) . ' — ' . WT_I18N::translate('Preferences'));
+	break;
+default:
+	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'admin.php');
+
+	return;
 }
 
 $controller
 	->pageHeader()
-	->addInlineJavascript('jQuery("#tabs").tabs(); jQuery("#tabs").css("display", "inline");')
 	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
 	->addInlineJavascript('autocomplete();');
 
-
 ?>
-<form enctype="multipart/form-data" method="post" id="configform" name="configform" action="<?php echo WT_SCRIPT_NAME; ?>">
+<ol class="breadcrumb small">
+	<li><a href="admin.php"><?php echo WT_I18N::translate('Administration'); ?></a></li>
+	<li><a href="admin_trees_manage.php"><?php echo WT_I18N::translate('Manage family trees'); ?></a></li>
+	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
+</ol>
+<h2><?php echo $controller->getPageTitle(); ?></h2>
+
+<form class="form-horizontal" method="POST" role="form">
 	<?php echo WT_Filter::getCsrf(); ?>
-	<input type="hidden" name="action" value="update">
 	<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>">
 
-	<div id="tabs">
-		<ul>
-			<li><a href="#file-options"><span><?php echo WT_I18N::translate('General'); ?></span></a></li>
-			<li><a href="#privacy"><span><?php echo WT_I18N::translate('Privacy'); ?></span></a></li>
-			<li><a href="#config-media"><span><?php echo WT_I18N::translate('Media'); ?></span></a></li>
-			<li><a href="#layout-options"><span><?php echo WT_I18N::translate('Layout'); ?></span></a></li>
-			<li><a href="#hide-show"><span><?php echo WT_I18N::translate('Hide &amp; show'); ?></span></a></li>
-			<li><a href="#edit-options"><span><?php echo WT_I18N::translate('Edit options'); ?></span></a></li>
-		</ul>
-		<!-- GENERAL -->
-		<div id="file-options">
-			<table>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Family tree title'); ?>
-					</td>
-					<td>
-						<input type="text" name="gedcom_title" dir="ltr" value="<?php echo WT_Filter::escapeHtml($WT_TREE->getPreference('title')); ?>" size="50" maxlength="255">
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('URL'); ?>
-					</td>
-					<td>
-						<?php echo WT_SERVER_NAME, WT_SCRIPT_PATH ?>index.php?ged=<input type="text" name="gedcom" dir="ltr" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>" size="20" maxlength="255">
-					</td>
-				</tr>
-				<tr>
-					<td><?php echo WT_I18N::translate('Language'), help_link('LANGUAGE'); ?></td>
-					<td><?php echo edit_field_language('GEDCOMLANG', $WT_TREE->getPreference('LANGUAGE')); ?></td>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Default individual'), help_link('default_individual'); ?>
-					</td>
-					<td class="wrap">
-						<input data-autocomplete-type="INDI" type="text" name="PEDIGREE_ROOT_ID" id="PEDIGREE_ROOT_ID" value="<?php echo $WT_TREE->getPreference('PEDIGREE_ROOT_ID'); ?>" size="5" maxlength="20">
-						<?php
-							echo print_findindi_link('PEDIGREE_ROOT_ID');
-							$person=WT_Individual::getInstance($WT_TREE->getPreference('PEDIGREE_ROOT_ID'));
-							if ($person) {
-								echo ' <span class="list_item">', $person->getFullName(), ' ', $person->format_first_major_fact(WT_EVENTS_BIRT, 1), '</span>';
-							} else {
-								echo ' <span class="error">', WT_I18N::translate('Unable to find record with ID'), '</span>';
-							}
-						?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Calendar conversion'), help_link('CALENDAR_FORMAT'); ?>
-					</td>
-					<td>
-						<select id="CALENDAR_FORMAT0" name="CALENDAR_FORMAT0">
-						<?php
-						$CALENDAR_FORMATS=explode('_and_', $CALENDAR_FORMAT);
-						if (count($CALENDAR_FORMATS)==1) {
-							$CALENDAR_FORMATS[]='none';
-						}
-						foreach (array(
-							'none'     =>WT_I18N::translate('No calendar conversion'),
-							'gregorian'=>WT_Date_Gregorian::calendarName(),
-							'julian'   =>WT_Date_Julian::calendarName(),
-							'french'   =>WT_Date_French::calendarName(),
-							'jewish'   =>WT_Date_Jewish::calendarName(),
-							'hijri'    =>WT_Date_Hijri::calendarName(),
-							'jalali'   =>WT_Date_Jalali::calendarName(),
-						) as $cal=>$name) {
-							echo '<option value="', $cal, '"';
-							if ($CALENDAR_FORMATS[0]==$cal) {
-								echo ' selected="selected"';
-							}
-							echo '>', $name, '</option>';
-						}
-						?>
-					</select>
+	<?php if (WT_Filter::get('action') === 'privacy'): ?>
 
-					<select id="CALENDAR_FORMAT1" name="CALENDAR_FORMAT1">
-						<?php
-						foreach (array(
-							'none'     =>WT_I18N::translate('No calendar conversion'),
-							'gregorian'=>WT_Date_Gregorian::calendarName(),
-							'julian'   =>WT_Date_Julian::calendarName(),
-							'french'   =>WT_Date_French::calendarName(),
-							'jewish'   =>WT_Date_Jewish::calendarName(),
-							'hijri'    =>WT_Date_Hijri::calendarName(),
-							'jalali'   =>WT_Date_Jalali::calendarName(),
-						) as $cal=>$name) {
-							echo '<option value="', $cal, '"';
-							if ($CALENDAR_FORMATS[1]==$cal) {
-								echo ' selected="selected"';
-							}
-							echo '>', $name, '</option>';
-						}
-						?>
-					</select></td>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Use RIN number instead of GEDCOM ID'), help_link('USE_RIN'); ?>
-					</td>
-					<td>
-						<?php echo edit_field_yes_no('USE_RIN', $WT_TREE->getPreference('USE_RIN')); ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Automatically create globally unique IDs'), help_link('GENERATE_GUID'); ?>
-					</td>
-					<td>
-						<?php echo edit_field_yes_no('GENERATE_UIDS', $WT_TREE->getPreference('GENERATE_UIDS')); ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Add spaces where notes were wrapped'), help_link('WORD_WRAPPED_NOTES'); ?>
-					</td>
-					<td>
-						<?php echo edit_field_yes_no('WORD_WRAPPED_NOTES', $WT_TREE->getPreference('WORD_WRAPPED_NOTES')); ?>
-					</td>
-				</tr>
-			</table>
-			<table>
-				<tr>
-					<th colspan="6"><?php echo WT_I18N::translate('ID settings'); ?></th>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Individual ID prefix'), help_link('GEDCOM_ID_PREFIX'); ?>
-					</td>
-					<td>
-						<input type="text" name="GEDCOM_ID_PREFIX" dir="ltr" value="<?php echo $WT_TREE->getPreference('GEDCOM_ID_PREFIX'); ?>" size="5" maxlength="20">
-					</td>
-					<td>
-						<?php echo WT_I18N::translate('Family ID prefix'), help_link('FAM_ID_PREFIX'); ?>
-					</td>
-					<td>
-						<input type="text" name="FAM_ID_PREFIX" dir="ltr" value="<?php echo $WT_TREE->getPreference('FAM_ID_PREFIX'); ?>" size="5" maxlength="20">
-					</td>
-					<td>
-						<?php echo WT_I18N::translate('Source ID prefix'), help_link('SOURCE_ID_PREFIX'); ?>
-					</td>
-					<td>
-						<input type="text" name="SOURCE_ID_PREFIX" dir="ltr" value="<?php echo $WT_TREE->getPreference('SOURCE_ID_PREFIX'); ?>" size="5" maxlength="20">
-					</td>
-				</tr>
-				<tr>
-					<td><?php echo WT_I18N::translate('Repository ID prefix'), help_link('REPO_ID_PREFIX'); ?></td>
-					<td><input type="text" name="REPO_ID_PREFIX" dir="ltr" value="<?php echo $WT_TREE->getPreference('REPO_ID_PREFIX'); ?>" size="5" maxlength="20">
-					</td>
-					<td><?php echo WT_I18N::translate('Media ID prefix'), help_link('MEDIA_ID_PREFIX'); ?></td>
-					<td><input type="text" name="MEDIA_ID_PREFIX" dir="ltr" value="<?php echo $WT_TREE->getPreference('MEDIA_ID_PREFIX'); ?>" size="5" maxlength="20">
-					</td>
-					<td><?php echo WT_I18N::translate('Note ID prefix'), help_link('NOTE_ID_PREFIX'); ?></td>
-					<td><input type="text" name="NOTE_ID_PREFIX" dir="ltr" value="<?php echo $WT_TREE->getPreference('NOTE_ID_PREFIX'); ?>" size="5" maxlength="20">
-					</td>
-				</tr>
-			</table>
-			<table>
-				<tr>
-					<th colspan="2"><?php echo WT_I18N::translate('Contact information'); ?></th>
-				</tr>
-				<tr>
-					<?php
-					if (empty($WEBTREES_EMAIL)) {
-						$WEBTREES_EMAIL = "webtrees-noreply@".preg_replace("/^www\./i", "", $_SERVER["SERVER_NAME"]);
-					}
-					?>
-					<td>
-						<?php echo WT_I18N::translate('webtrees reply address'), help_link('WEBTREES_EMAIL'); ?>
-					</td>
-					<td><input type="text" name="WEBTREES_EMAIL" value="<?php echo $WEBTREES_EMAIL; ?>" size="50" maxlength="255" dir="ltr"></td>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Genealogy contact'), help_link('CONTACT_USER_ID'); ?>
-					</td>
-					<td><select name="CONTACT_USER_ID"><option value=""></option>
-					<?php
-						$CONTACT_USER_ID = $WT_TREE->getPreference('CONTACT_USER_ID');
-						foreach (User::all() as $user) {
-							if (Auth::isMember($WT_TREE, $user)) {
-								echo '<option value="' . $user->getUserId() . '"';
-								if ($CONTACT_USER_ID === $user->getUserId()) {
-									echo ' selected="selected"';
-								}
-								echo '>' . WT_Filter::escapeHtml($user->getRealName()) . ' - ' . WT_Filter::escapeHtml($user->getUserName()) . '</option>';
-							}
-						}
-					?>
-					</select>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Technical help contact'), help_link('WEBMASTER_USER_ID'); ?>
-					</td>
-					<td><select name="WEBMASTER_USER_ID"><option value=""></option>
-					<?php
-						$WEBMASTER_USER_ID = $WT_TREE->getPreference('WEBMASTER_USER_ID');
-						foreach (User::all() as $user) {
-							if (Auth::isMember($WT_TREE, $user)) {
-								echo '<option value="' . $user->getUserId() . '"';
-								if ($WEBMASTER_USER_ID === $user->getUserId()) {
-									echo ' selected="selected"';
-								}
-								echo '>' . WT_Filter::escapeHtml($user->getRealName()) . ' - ' . WT_Filter::escapeHtml($user->getUserName()) . '</option>';
-							}
-						}
-					?>
-					</select>
-					</td>
-				</tr>
-			</table>
-			<table>
-				<tr>
-					<th colspan="2"><?php echo WT_I18N::translate('Web site and META tag settings'); ?></th>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Add to TITLE header tag'), help_link('META_TITLE'); ?>
-					</td>
-					<td>
-						<input type="text" dir="ltr" name="META_TITLE" value="<?php echo WT_Filter::escapeHtml($WT_TREE->getPreference('META_TITLE')); ?>" size="40" maxlength="255">
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Description META tag'), help_link('META_DESCRIPTION'); ?>
-					</td>
-					<td>
-						<input type="text" dir="ltr" name="META_DESCRIPTION" value="<?php echo $WT_TREE->getPreference('META_DESCRIPTION'); ?>" size="40" maxlength="255">
-						<br>
-						<?php echo WT_I18N::translate('Leave this field empty to use the name of the family tree.'); ?>
-					</td>
-				</tr>
-				<tr>
-					<th colspan="2">
-						<?php echo WT_I18N::translate('User options'); ?>
-					</th>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Theme dropdown selector for theme changes'), help_link('ALLOW_THEME_DROPDOWN'); ?>
-					</td>
-					<td>
-						<?php echo radio_buttons('ALLOW_THEME_DROPDOWN', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $WT_TREE->getPreference('ALLOW_THEME_DROPDOWN')); ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Default theme'), help_link('THEME'); ?>
-					</td>
-					<td>
-						<select name="THEME_DIR">
-							<?php
-								echo '<option value="">', WT_Filter::escapeHtml(WT_I18N::translate('<default theme>')), '</option>';
-								$current_theme_id = $WT_TREE->getPreference('THEME_DIR');
-								foreach (get_theme_names() as $theme_name => $theme_id) {
-									echo '<option value="', $theme_id, '"';
-									if ($theme_id === $current_theme_id) {
-										echo ' selected="selected"';
-									}
-									echo '>', $theme_name, '</option>';
-								}
-							?>
-						</select>
-					</td>
-				</tr>
-			</table>
-		</div>
-		<!-- PRIVACY OPTIONS -->
-		<div id="privacy">
-			<table>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Require visitor authentication'), help_link('REQUIRE_AUTHENTICATION'); ?>
-					</td>
-					<td>
-						<?php echo edit_field_yes_no('REQUIRE_AUTHENTICATION', $WT_TREE->getPreference('REQUIRE_AUTHENTICATION')); ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Privacy options'), help_link('HIDE_LIVE_PEOPLE'); ?>
-					</td>
-					<td>
-						<?php  echo radio_buttons('HIDE_LIVE_PEOPLE', array(false=>WT_I18N::translate('disable'), true=>WT_I18N::translate('enable')), $WT_TREE->getPreference('HIDE_LIVE_PEOPLE')); ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Show dead individuals'), help_link('SHOW_DEAD_PEOPLE'); ?>
-					</td>
-					<td>
-						<?php echo edit_field_access_level("SHOW_DEAD_PEOPLE", $WT_TREE->getPreference('SHOW_DEAD_PEOPLE')); ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php /* I18N: ... [who were] born in the last XX years or died in the last YY years */ echo WT_I18N::translate('Extend privacy to dead individuals'), help_link('KEEP_ALIVE'); ?>
-					</td>
-					<td>
-						<?php
-						echo
-							/* I18N: Extend privacy to dead people [who were] ... */ WT_I18N::translate(
-								'born in the last %1$s years or died in the last %2$s years',
-								'<input type="text" name="KEEP_ALIVE_YEARS_BIRTH" value="'.$WT_TREE->getPreference('KEEP_ALIVE_YEARS_BIRTH').'" size="5" maxlength="3">',
-								'<input type="text" name="KEEP_ALIVE_YEARS_DEATH" value="'.$WT_TREE->getPreference('KEEP_ALIVE_YEARS_DEATH').'" size="5" maxlength="3">'
-							); ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Names of private individuals'), help_link('SHOW_LIVING_NAMES'); ?>
-					</td>
-					<td>
-						<?php echo edit_field_access_level("SHOW_LIVING_NAMES", $WT_TREE->getPreference('SHOW_LIVING_NAMES')); ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Show private relationships'), help_link('SHOW_PRIVATE_RELATIONSHIPS'); ?>
-					</td>
-					<td>
-						<?php  echo edit_field_yes_no('SHOW_PRIVATE_RELATIONSHIPS', $WT_TREE->getPreference('SHOW_PRIVATE_RELATIONSHIPS')); ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Age at which to assume an individual is dead'), help_link('MAX_ALIVE_AGE'); ?>
-					</td>
-					<td>
-						<input type="text" name="MAX_ALIVE_AGE" value="<?php echo $WT_TREE->getPreference('MAX_ALIVE_AGE'); ?>" size="5" maxlength="3">
-					</td>
-				</tr>
-			</table>
-			<br>
-			<table>
-				<tr>
-					<th colspan="4">
-						<?php echo WT_I18N::translate('Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag'); ?>
-					</th>
-				</tr>
-		<?php
+	<input type="hidden" name="action" value="privacy">
 
-		$all_tags=array();
-		$tags=array_unique(array_merge(
-			explode(',', $WT_TREE->getPreference('INDI_FACTS_ADD')), explode(',', $WT_TREE->getPreference('INDI_FACTS_UNIQUE')),
-			explode(',', $WT_TREE->getPreference('FAM_FACTS_ADD' )), explode(',', $WT_TREE->getPreference('FAM_FACTS_UNIQUE' )),
-			explode(',', $WT_TREE->getPreference('NOTE_FACTS_ADD')), explode(',', $WT_TREE->getPreference('NOTE_FACTS_UNIQUE')),
-			explode(',', $WT_TREE->getPreference('SOUR_FACTS_ADD')), explode(',', $WT_TREE->getPreference('SOUR_FACTS_UNIQUE')),
-			explode(',', $WT_TREE->getPreference('REPO_FACTS_ADD')), explode(',', $WT_TREE->getPreference('REPO_FACTS_UNIQUE')),
-			array('SOUR', 'REPO', 'OBJE', '_PRIM', 'NOTE', 'SUBM', 'SUBN', '_UID', 'CHAN')
-		));
+	<!-- REQUIRE_AUTHENTICATION -->
+	<fieldset class="form-group">
+		<legend class="control-label col-sm-3">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Require visitor authentication'); ?>
+		</legend>
+		<div class="col-sm-9">
+			<?php echo radio_buttons('REQUIRE_AUTHENTICATION', $no_yes, $WT_TREE->getPreference('REQUIRE_AUTHENTICATION'), 'class="radio-inline"'); ?>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Require visitor authentication” configuration setting */ WT_I18N::translate('Enabling this option will force all visitors to login before they can view any data on the site.'); ?>
+			</p>
+		</div>
+	</fieldset>
 
-		foreach ($tags as $tag) {
-			if ($tag) {
-				$all_tags[$tag]=WT_Gedcom_Tag::getLabel($tag);
-			}
-		}
+	<!-- HIDE_LIVE_PEOPLE -->
+	<fieldset class="form-group">
+		<legend class="control-label col-sm-3">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Privacy options'); ?>
+		</legend>
+		<div class="col-sm-9">
+			<?php echo radio_buttons('HIDE_LIVE_PEOPLE', $disable_enable, $WT_TREE->getPreference('HIDE_LIVE_PEOPLE'), 'class="radio-inline"'); ?>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Privacy options” configuration setting */ WT_I18N::translate('This option will enable all privacy settings and hide the details of living individuals, as defined or modified on the Privacy tab of each GEDCOM’s configuration page.'); ?>
+			</p>
+		</div>
+	</fieldset>
 
-		uasort($all_tags, array('WT_I18N', 'strcasecmp'));
-
-		echo '<tr><td>';
-		echo '<input type="text" class="pedigree_form" name="xref" id="xref" size="6" maxlength="20">';
-		echo ' ', print_findindi_link('xref');
-		echo ' ', print_findfamily_link('xref');
-		echo ' ', print_findsource_link('xref');
-		echo ' ', print_findrepository_link('xref');
-		echo ' ', print_findnote_link('xref');
-		echo ' ', print_findmedia_link('xref', '1media');
-		echo '</td><td>';
-		echo select_edit_control('tag_type', $all_tags, '', null, null);
-		echo '</td><td>';
-		echo select_edit_control('resn', $PRIVACY_CONSTANTS, null, 'privacy', null);
-		echo '</td><td>';
-		echo '<input type="button" value="', WT_I18N::translate('Add'), '" onClick="document.configform.elements[\'action\'].value=\'add\';document.configform.submit();">';
-		echo '<input type="hidden" name="default_resn_id" value="">'; // value set by JS
-		echo '</td></tr>';
-		$rows=WT_DB::prepare(
-			"SELECT default_resn_id, tag_type, xref, resn".
-			" FROM `##default_resn`".
-			" LEFT JOIN `##name` ON (gedcom_id=n_file AND xref=n_id AND n_num=0)".
-			" WHERE gedcom_id=?".
-			" ORDER BY xref IS NULL, n_sort, xref, tag_type"
-		)->execute(array(WT_GED_ID))->fetchAll();
-		foreach ($rows as $row) {
-			echo '<tr><td>';
-			if ($row->xref) {
-				$record=WT_GedcomRecord::getInstance($row->xref);
-				if ($record) {
-					echo '<a href="', $record->getHtmlUrl(), '">', $record->getFullName(), '</a>';
-				} else {
-					echo WT_I18N::translate('this record does not exist');
-				}
-			} else {
-				echo '&nbsp;';
-			}
-			echo '</td><td>';
-			if ($row->tag_type) {
-				// I18N: e.g. Marriage (MARR)
-				echo WT_Gedcom_Tag::getLabel($row->tag_type);
-			} else {
-				echo '&nbsp;';
-			}
-			echo '</td><td>';
-			echo $PRIVACY_CONSTANTS[$row->resn];
-			echo '</td><td>';
-			echo '<input type="button" value="', WT_I18N::translate('Delete'), '" onClick="document.configform.elements[\'action\'].value=\'delete\';document.configform.elements[\'default_resn_id\'].value=\''.$row->default_resn_id.'\';document.configform.submit();">';
-			echo '</td></tr>';
-		}
-		echo '</table>';
-		?>
-		</div>
-		<!--  MULTIMEDIA -->
-		<div id="config-media">
-			<table>
-				<tr>
-					<th colspan="2"><?php echo WT_I18N::translate('Media folders'); ?></th>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Media folder'), help_link('MEDIA_DIRECTORY'); ?>
-					</td>
-					<td>
-						<?php echo WT_DATA_DIR; ?><input type="text" name="MEDIA_DIRECTORY" value="<?php echo $WT_TREE->getPreference('MEDIA_DIRECTORY'); ?>" dir="ltr" size="15" maxlength="255">
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php echo /* I18N: A media path (e.g. c:\aaa\bbb\ccc\ddd.jpeg) in a GEDCOM file */ WT_I18N::translate('GEDCOM media path'), help_link('GEDCOM_MEDIA_PATH'); ?>
-					</td>
-					<td>
-						<input type="text" name="GEDCOM_MEDIA_PATH" value="<?php echo $WT_TREE->getPreference('GEDCOM_MEDIA_PATH'); ?>" dir="ltr" size="30" maxlength="255">
-					</td>
-				</tr>
-				<tr>
-					<th colspan="2"><?php echo WT_I18N::translate('Media files'); ?></th>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Who can upload new media files?'), help_link('MEDIA_UPLOAD'); ?>
-					</td>
-					<td>
-						<?php echo select_edit_control('MEDIA_UPLOAD', array(WT_PRIV_USER=>WT_I18N::translate('Show to members'),
-	 WT_PRIV_NONE=>WT_I18N::translate('Show to managers'), WT_PRIV_HIDE=>WT_I18N::translate('Hide from everyone')), null, $WT_TREE->getPreference('MEDIA_UPLOAD')); ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Show download link in media viewer'), help_link('SHOW_MEDIA_DOWNLOAD'); ?>
-					</td>
-					<td>
-						<?php echo edit_field_yes_no('SHOW_MEDIA_DOWNLOAD', $WT_TREE->getPreference('SHOW_MEDIA_DOWNLOAD')); ?>
-					</td>
-				</tr>
-				<tr>
-					<th colspan="2"><?php echo /* I18N: Small versions of images */ WT_I18N::translate('Thumbnail images'); ?></th>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Width of generated thumbnails'), help_link('THUMBNAIL_WIDTH'); ?>
-					</td>
-					<td>
-						<input type="text" name="THUMBNAIL_WIDTH" value="<?php echo $WT_TREE->getPreference('THUMBNAIL_WIDTH'); ?>" size="5" maxlength="4">
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Use silhouettes'), help_link('USE_SILHOUETTE'); ?>
-					</td>
-					<td>
-						<?php echo edit_field_yes_no('USE_SILHOUETTE', $WT_TREE->getPreference('USE_SILHOUETTE')); ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Show highlight images in individual boxes'); ?>
-					</td>
-					<td>
-						<?php echo edit_field_yes_no('SHOW_HIGHLIGHT_IMAGES', $WT_TREE->getPreference('SHOW_HIGHLIGHT_IMAGES')); ?>
-					</td>
-				</tr>
-				<tr>
-					<th colspan="2">
-						<?php echo /* I18N: Copyright messages, added to images */ WT_I18N::translate('Watermarks'), help_link('Watermarks'); ?>
-					</th>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Add watermarks to thumbnails?'); ?>
-					</td>
-					<td>
-						<?php echo edit_field_yes_no('WATERMARK_THUMB', $WT_TREE->getPreference('WATERMARK_THUMB')); ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Store watermarked full size images on server?'); ?>
-					</td>
-					<td>
-						<?php echo edit_field_yes_no('SAVE_WATERMARK_IMAGE', $WT_TREE->getPreference('SAVE_WATERMARK_IMAGE')); ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Store watermarked thumbnails on server?'); ?>
-					</td>
-					<td>
-						<?php echo edit_field_yes_no('SAVE_WATERMARK_THUMB', $WT_TREE->getPreference('SAVE_WATERMARK_THUMB')); ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Images without watermarks'); ?>
-					</td>
-					<td>
-						<?php echo edit_field_access_level("SHOW_NO_WATERMARK", $WT_TREE->getPreference('SHOW_NO_WATERMARK')); ?>
-					</td>
-				</tr>
-			</table>
-		</div>
-		<!-- LAYOUT -->
-		<div id="layout-options">
-			<table>
-				<tr>
-					<th colspan="2">
-						<?php echo WT_I18N::translate('Names'); ?>
-					</th>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Min. no. of occurrences to be a “common surname”'), help_link('COMMON_NAMES_THRESHOLD'); ?>
-					</td>
-					<td>
-						<input type="text" name="COMMON_NAMES_THRESHOLD" value="<?php echo $WT_TREE->getPreference('COMMON_NAMES_THRESHOLD'); ?>" size="5" maxlength="5">
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Names to add to common surnames (comma separated)'), help_link('COMMON_NAMES_ADD'); ?>
-					</td>
-					<td>
-						<input type="text" name="COMMON_NAMES_ADD" dir="ltr" value="<?php echo $WT_TREE->getPreference('COMMON_NAMES_ADD'); ?>" size="50" maxlength="255">
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Names to remove from common surnames (comma separated)'), help_link('COMMON_NAMES_REMOVE'); ?>
-					</td>
-					<td>
-						<input type="text" name="COMMON_NAMES_REMOVE" dir="ltr" value="<?php echo $WT_TREE->getPreference('COMMON_NAMES_REMOVE'); ?>" size="50" maxlength="255">
-					</td>
-				</tr>
-				<tr>
-					<th colspan="2">
-						<?php echo WT_I18N::translate('Lists'); ?>
-					</th>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Surname list style'); ?>
-					</td>
-					<td>
-						<select name="SURNAME_LIST_STYLE">
-							<option value="style1" <?php if ($WT_TREE->getPreference('SURNAME_LIST_STYLE') == 'style1') echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('list'); ?></option>
-							<option value="style2" <?php if ($WT_TREE->getPreference('SURNAME_LIST_STYLE') === 'style2') echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('table'); ?></option>
-							<option value="style3" <?php if ($WT_TREE->getPreference('SURNAME_LIST_STYLE') === 'style3') echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('tag cloud'); ?></option>
-						</select>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Maximum number of surnames on individual list'), help_link('SUBLIST_TRIGGER_I'); ?>
-					</td>
-					<td>
-						<input type="text" name="SUBLIST_TRIGGER_I" value="<?php echo $WT_TREE->getPreference('SUBLIST_TRIGGER_I'); ?>" size="5" maxlength="5">
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Estimated dates for birth and death'), help_link('SHOW_EST_LIST_DATES'); ?>
-					</td>
-					<td>
-						<?php echo radio_buttons('SHOW_EST_LIST_DATES', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $WT_TREE->getPreference('SHOW_EST_LIST_DATES')); ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('The date and time of the last update'); ?>
-					</td>
-					<td>
-						<?php echo radio_buttons('SHOW_LAST_CHANGE', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $WT_TREE->getPreference('SHOW_LAST_CHANGE')); ?>
-					</td>
-				</tr>
-				<tr>
-					<th colspan="2">
-						<?php echo WT_I18N::translate('Charts'); ?>
-					</th>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Default pedigree chart layout'), help_link('PEDIGREE_LAYOUT'); ?>
-					</td>
-					<td>
-						<select name="PEDIGREE_LAYOUT">
-							<option value="yes" <?php if ($WT_TREE->getPreference('PEDIGREE_LAYOUT')) echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('Landscape'); ?></option>
-							<option value="no" <?php if (!$WT_TREE->getPreference('PEDIGREE_LAYOUT')) echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('Portrait'); ?></option>
-						</select>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Default pedigree generations'), help_link('DEFAULT_PEDIGREE_GENERATIONS'); ?>
-					</td>
-					<td>
-						<input type="text" name="DEFAULT_PEDIGREE_GENERATIONS" value="<?php echo $WT_TREE->getPreference('DEFAULT_PEDIGREE_GENERATIONS'); ?>" size="5" maxlength="3">
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Maximum pedigree generations'), help_link('MAX_PEDIGREE_GENERATIONS'); ?>
-					</td>
-					<td>
-						<input type="text" name="MAX_PEDIGREE_GENERATIONS" value="<?php echo $WT_TREE->getPreference('MAX_PEDIGREE_GENERATIONS'); ?>" size="5" maxlength="3">
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Maximum descendancy generations'), help_link('MAX_DESCENDANCY_GENERATIONS'); ?>
-					</td>
-					<td>
-						<input type="text" name="MAX_DESCENDANCY_GENERATIONS" value="<?php echo $WT_TREE->getPreference('MAX_DESCENDANCY_GENERATIONS'); ?>" size="5" maxlength="3">
-					</td>
-				</tr>
-				<tr>
-					<th colspan="2">
-						<?php echo WT_I18N::translate('Individual pages'); ?>
-					</th>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Automatically expand list of events of close relatives'), help_link('EXPAND_RELATIVES_EVENTS'); ?>
-					</td>
-					<td>
-						<?php echo edit_field_yes_no('EXPAND_RELATIVES_EVENTS', $WT_TREE->getPreference('EXPAND_RELATIVES_EVENTS')); ?>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<?php echo WT_I18N::translate('Show events of close relatives on individual page'); ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<input type="hidden" name="SHOW_RELATIVES_EVENTS" value="<?php echo $WT_TREE->getPreference('SHOW_RELATIVES_EVENTS'); ?>">
-						<table id="relatives">
-							<?php
-							$rel_events=array(
-								array('_BIRT_GCHI', '_MARR_GCHI', '_DEAT_GCHI'),
-								array('_BIRT_CHIL', '_MARR_CHIL', '_DEAT_CHIL'),
-								array('_BIRT_SIBL', '_MARR_SIBL', '_DEAT_SIBL'),
-								array(null,         null,         '_DEAT_SPOU'),
-								array(null,         '_MARR_PARE', '_DEAT_PARE'),
-								array(null,         null,         '_DEAT_GPAR'),
-							);
-							foreach ($rel_events as $row) {
-								echo '<tr>';
-								foreach ($row as $col) {
-									echo '<td>';
-									if (is_null($col)) {
-										echo '&nbsp;';
-									} else {
-										echo "<input type=\"checkbox\" name=\"SHOW_RELATIVES_EVENTS_checkbox\" value=\"".$col."\"";
-										if (strstr($WT_TREE->getPreference('SHOW_RELATIVES_EVENTS'), $col)) {
-											echo " checked=\"checked\"";
-										}
-										echo " onchange=\"var old=document.configform.SHOW_RELATIVES_EVENTS.value; if (this.checked) old+=','+this.value; else old=old.replace(/".$col."/g,''); old=old.replace(/[,]+/gi,','); old=old.replace(/^[,]/gi,''); old=old.replace(/[,]$/gi,''); document.configform.SHOW_RELATIVES_EVENTS.value=old\"> ";
-										echo WT_Gedcom_Tag::getLabel($col);
-									}
-									echo '</td>';
-								}
-								echo '</tr>';
-							}
-							?>
-						</table>
-					</td>
-				</tr>
-				<tr>
-					<th colspan="2">
-						<?php echo WT_I18N::translate('Places'); ?>
-					</th>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Abbreviate place names'), help_link('SHOW_PEDIGREE_PLACES'); ?>
-					</td>
-					<td>
-						<?php
-						echo /* I18N: The placeholders are edit controls.  Show the [first/last] [1/2/3/4/5] parts of a place name */ WT_I18N::translate(
-							'Show the %1$s %2$s parts of a place name.',
-							select_edit_control('SHOW_PEDIGREE_PLACES_SUFFIX',
-								array(
-									false=>WT_I18N::translate_c('Show the [first/last] [N] parts of a place name.', 'first'),
-									true =>WT_I18N::translate_c('Show the [first/last] [N] parts of a place name.', 'last')
-								),
-								null,
-								$WT_TREE->getPreference('SHOW_PEDIGREE_PLACES_SUFFIX')
-							),
-							select_edit_control('SHOW_PEDIGREE_PLACES',
-								array(
-									1=>WT_I18N::number(1),
-									2=>WT_I18N::number(2),
-									3=>WT_I18N::number(3),
-									4=>WT_I18N::number(4),
-									5=>WT_I18N::number(5),
-									6=>WT_I18N::number(6),
-									7=>WT_I18N::number(7),
-									8=>WT_I18N::number(8),
-									9=>WT_I18N::number(9),
-								),
-								null,
-								$WT_TREE->getPreference('SHOW_PEDIGREE_PLACES')
-							)
-						);
-						?>
-					</td>
-				</tr>
-				<tr>
-					<th colspan="2">
-						<?php echo WT_Gedcom_Tag::getLabel('TEXT'); ?>
-					</th>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Format text and notes'), help_link('FORMAT_TEXT'); ?>
-					</td>
-					<td>
-						<?php
-						echo select_edit_control('FORMAT_TEXT',
-								array(
-									''         => WT_I18N::translate('none'),
-									'markdown' => /* I18N: https://en.wikipedia.org/wiki/Markdown */ WT_I18N::translate('markdown')
-								),
-								null,
-								$WT_TREE->getPreference('FORMAT_TEXT')
-							);
-						?>
-					</td>
-				</tr>
-			</table>
-		</div>
-		<!-- HIDE & SHOW -->
-		<div id="hide-show">
-			<table>
-				<tr>
-					<th colspan="2">
-						<?php echo WT_I18N::translate('Charts'); ?>
-					</th>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Show chart details by default'), help_link('PEDIGREE_FULL_DETAILS'); ?>
-					</td>
-					<td>
-						<?php echo edit_field_yes_no('PEDIGREE_FULL_DETAILS', $WT_TREE->getPreference('PEDIGREE_FULL_DETAILS')); ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Gender icon on charts'), help_link('PEDIGREE_SHOW_GENDER'); ?>
-					</td>
-					<td>
-						<?php echo radio_buttons('PEDIGREE_SHOW_GENDER', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $WT_TREE->getPreference('PEDIGREE_SHOW_GENDER')); ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Age of parents next to child’s birthdate'), help_link('SHOW_PARENTS_AGE'); ?>
-					</td>
-					<td>
-						<?php echo radio_buttons('SHOW_PARENTS_AGE', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $WT_TREE->getPreference('SHOW_PARENTS_AGE')); ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('LDS ordinance codes in chart boxes'), help_link('SHOW_LDS_AT_GLANCE'); ?>
-					</td>
-					<td>
-						<?php echo radio_buttons('SHOW_LDS_AT_GLANCE', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $WT_TREE->getPreference('SHOW_LDS_AT_GLANCE')); ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Other facts to show in charts'), help_link('CHART_BOX_TAGS'); ?>
-					</td>
-					<td>
-						<input type="text" id="CHART_BOX_TAGS" name="CHART_BOX_TAGS" value="<?php echo $WT_TREE->getPreference('CHART_BOX_TAGS'); ?>" dir="ltr" size="50" maxlength="255"><?php echo print_findfact_link('CHART_BOX_TAGS'); ?>
-					</td>
-				</tr>
-				<tr>
-					<th colspan="2">
-						<?php echo WT_I18N::translate('Individual pages'); ?>
-					</th>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Fact icons'), help_link('SHOW_FACT_ICONS'); ?>
-					</td>
-					<td>
-						<?php echo radio_buttons('SHOW_FACT_ICONS', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $WT_TREE->getPreference('SHOW_FACT_ICONS')); ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Automatically expand notes'), help_link('EXPAND_NOTES'); ?>
-					</td>
-					<td>
-						<?php echo edit_field_yes_no('EXPAND_NOTES', $WT_TREE->getPreference('EXPAND_NOTES')); ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Automatically expand sources'), help_link('EXPAND_SOURCES'); ?>
-					</td>
-					<td>
-						<?php echo edit_field_yes_no('EXPAND_SOURCES', $WT_TREE->getPreference('EXPAND_SOURCES')); ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Show all notes and source references on notes and sources tabs'), help_link('SHOW_LEVEL2_NOTES'); ?>
-					</td>
-					<td>
-						<?php echo edit_field_yes_no('SHOW_LEVEL2_NOTES', $WT_TREE->getPreference('SHOW_LEVEL2_NOTES')); ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Date differences'), help_link('SHOW_AGE_DIFF'); ?>
-					</td>
-					<td>
-						<?php echo radio_buttons('SHOW_AGE_DIFF', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $WT_TREE->getPreference('SHOW_AGE_DIFF')); ?>
-					</td>
-				</tr>
-				<tr>
-					<th colspan="2">
-						<?php echo WT_I18N::translate('General'); ?>
-					</th>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Allow users to see raw GEDCOM records'), help_link('SHOW_GEDCOM_RECORD'); ?>
-					</td>
-					<td>
-						<?php echo edit_field_yes_no('SHOW_GEDCOM_RECORD', $WT_TREE->getPreference('SHOW_GEDCOM_RECORD')); ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('GEDCOM errors'), help_link('HIDE_GEDCOM_ERRORS'); ?>
-					</td>
-					<td>
-						<?php echo radio_buttons('HIDE_GEDCOM_ERRORS', array(true=>WT_I18N::translate('hide'), false=>WT_I18N::translate('show')), $WT_TREE->getPreference('HIDE_GEDCOM_ERRORS')); /* Note: name of object is reverse of description */ ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Hit counters'), help_link('SHOW_COUNTER'); ?>
-					</td>
-					<td>
-						<?php echo radio_buttons('SHOW_COUNTER', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $WT_TREE->getPreference('SHOW_COUNTER')); ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Execution statistics'), help_link('SHOW_STATS'); ?>
-					</td>
-					<td>
-						<?php echo radio_buttons('SHOW_STATS', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $WT_TREE->getPreference('SHOW_STATS')); ?>
-					</td>
-				</tr>
-			</table>
-		</div>
-		<!-- EDIT -->
-		<div id="edit-options">
-			<table>
-			<tr>
-				<th colspan="2">
-					<?php echo WT_I18N::translate('Facts for individual records'); ?>
-				</th>
-			</tr>
-			<tr>
-				<td>
-					<?php echo WT_I18N::translate('All individual facts'), help_link('INDI_FACTS_ADD'); ?>
-				</td>
-				<td>
-					<input type="text" id="INDI_FACTS_ADD" name="INDI_FACTS_ADD" value="<?php echo $WT_TREE->getPreference('INDI_FACTS_ADD'); ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('INDI_FACTS_ADD'); ?>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<?php echo WT_I18N::translate('Unique individual facts'), help_link('INDI_FACTS_UNIQUE'); ?>
-				</td>
-				<td>
-					<input type="text" id="INDI_FACTS_UNIQUE" name="INDI_FACTS_UNIQUE" value="<?php echo $WT_TREE->getPreference('INDI_FACTS_UNIQUE'); ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('INDI_FACTS_UNIQUE'); ?>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<?php echo WT_I18N::translate('Facts for new individuals'), help_link('QUICK_REQUIRED_FACTS'); ?>
-				</td>
-				<td>
-					<input type="text" id="QUICK_REQUIRED_FACTS" name="QUICK_REQUIRED_FACTS" value="<?php echo $WT_TREE->getPreference('QUICK_REQUIRED_FACTS'); ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('QUICK_REQUIRED_FACTS'); ?>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<?php echo WT_I18N::translate('Quick individual facts'), help_link('INDI_FACTS_QUICK'); ?>
-				</td>
-				<td>
-					<input type="text" id="INDI_FACTS_QUICK" name="INDI_FACTS_QUICK" value="<?php echo $WT_TREE->getPreference('INDI_FACTS_QUICK'); ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('INDI_FACTS_QUICK'); ?>
-				</td>
-			</tr>
-			<tr>
-				<th colspan="2">
-					<?php echo WT_I18N::translate('Facts for family records'); ?>
-				</th>
-			</tr>
-			<tr>
-				<td>
-					<?php echo WT_I18N::translate('All family facts'), help_link('FAM_FACTS_ADD'); ?>
-				</td>
-				<td>
-					<input type="text" id="FAM_FACTS_ADD" name="FAM_FACTS_ADD" value="<?php echo $WT_TREE->getPreference('FAM_FACTS_ADD'); ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('FAM_FACTS_ADD'); ?>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<?php echo WT_I18N::translate('Unique family facts'), help_link('FAM_FACTS_UNIQUE'); ?>
-				</td>
-				<td>
-					<input type="text" id="FAM_FACTS_UNIQUE" name="FAM_FACTS_UNIQUE" value="<?php echo $WT_TREE->getPreference('FAM_FACTS_UNIQUE'); ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('FAM_FACTS_UNIQUE'); ?>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<?php echo WT_I18N::translate('Facts for new families'), help_link('QUICK_REQUIRED_FAMFACTS'); ?>
-				</td>
-				<td>
-					<input type="text" id="QUICK_REQUIRED_FAMFACTS" name="QUICK_REQUIRED_FAMFACTS" value="<?php echo $WT_TREE->getPreference('QUICK_REQUIRED_FAMFACTS'); ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('QUICK_REQUIRED_FAMFACTS'); ?>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<?php echo WT_I18N::translate('Quick family facts'), help_link('FAM_FACTS_QUICK'); ?>
-				</td>
-				<td>
-					<input type="text" id="FAM_FACTS_QUICK" name="FAM_FACTS_QUICK" value="<?php echo $WT_TREE->getPreference('FAM_FACTS_QUICK'); ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('FAM_FACTS_QUICK'); ?>
-				</td>
-			</tr>
-			<tr>
-				<th colspan="2">
-					<?php echo WT_I18N::translate('Facts for source records'); ?>
-				</th>
-			</tr>
-			<tr>
-				<td>
-					<?php echo WT_I18N::translate('All source facts'), help_link('SOUR_FACTS_ADD'); ?>
-				</td>
-				<td>
-					<input type="text" id="SOUR_FACTS_ADD" name="SOUR_FACTS_ADD" value="<?php echo $WT_TREE->getPreference('SOUR_FACTS_ADD'); ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('SOUR_FACTS_ADD'); ?>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<?php echo WT_I18N::translate('Unique source facts'), help_link('SOUR_FACTS_UNIQUE'); ?>
-				</td>
-				<td>
-					<input type="text" id="SOUR_FACTS_UNIQUE" name="SOUR_FACTS_UNIQUE" value="<?php echo $WT_TREE->getPreference('SOUR_FACTS_UNIQUE'); ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('SOUR_FACTS_UNIQUE'); ?>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<?php echo WT_I18N::translate('Quick source facts'), help_link('SOUR_FACTS_QUICK'); ?>
-				</td>
-				<td>
-					<input type="text" id="SOUR_FACTS_QUICK" name="SOUR_FACTS_QUICK" value="<?php echo $WT_TREE->getPreference('SOUR_FACTS_QUICK'); ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('SOUR_FACTS_QUICK'); ?>
-				</td>
-			</tr>
-			<tr>
-				<th colspan="2">
-					<?php echo WT_I18N::translate('Facts for repository records'); ?>
-				</th>
-			</tr>
-			<tr>
-				<td>
-					<?php echo WT_I18N::translate('All repository facts'), help_link('REPO_FACTS_ADD'); ?>
-				</td>
-				<td>
-					<input type="text" id="REPO_FACTS_ADD" name="REPO_FACTS_ADD" value="<?php echo $WT_TREE->getPreference('REPO_FACTS_ADD'); ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('REPO_FACTS_ADD'); ?>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<?php echo WT_I18N::translate('Unique repository facts'), help_link('REPO_FACTS_UNIQUE'); ?>
-				</td>
-				<td>
-					<input type="text" id="REPO_FACTS_UNIQUE" name="REPO_FACTS_UNIQUE" value="<?php echo $WT_TREE->getPreference('REPO_FACTS_UNIQUE'); ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('REPO_FACTS_UNIQUE'); ?>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<?php echo WT_I18N::translate('Quick repository facts'), help_link('REPO_FACTS_QUICK'); ?>
-				</td>
-				<td>
-					<input type="text" id="REPO_FACTS_QUICK" name="REPO_FACTS_QUICK" value="<?php echo $WT_TREE->getPreference('REPO_FACTS_QUICK'); ?>" size="60" maxlength="255" dir="ltr"><?php echo print_findfact_link('REPO_FACTS_QUICK'); ?>
-				</td>
-			</tr>
-			<tr>
-				<th colspan="2">
-					<?php echo WT_I18N::translate('Advanced fact settings'); ?>
-				</th>
-			</tr>
-			<tr>
-				<td>
-					<?php echo WT_I18N::translate('Advanced name facts'), help_link('ADVANCED_NAME_FACTS'); ?>
-				</td>
-				<td>
-					<input type="text" id="ADVANCED_NAME_FACTS" name="ADVANCED_NAME_FACTS" value="<?php echo $WT_TREE->getPreference('ADVANCED_NAME_FACTS'); ?>" size="40" maxlength="255" dir="ltr"><?php echo print_findfact_link('ADVANCED_NAME_FACTS'); ?>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<?php echo WT_I18N::translate('Advanced place name facts'), help_link('ADVANCED_PLAC_FACTS'); ?>
-				</td>
-				<td>
-					<input type="text" id="ADVANCED_PLAC_FACTS" name="ADVANCED_PLAC_FACTS" value="<?php echo $WT_TREE->getPreference('ADVANCED_PLAC_FACTS'); ?>" size="40" maxlength="255" dir="ltr"><?php echo print_findfact_link('ADVANCED_PLAC_FACTS'); ?>
-				</td>
-			</tr>
-			<tr>
-				<th colspan="2">
-					<?php echo WT_I18N::translate('Other settings'); ?>
-				</th>
-			</tr>
-			<tr>
-				<td>
-					<?php echo WT_I18N::translate('Surname tradition'), help_link('SURNAME_TRADITION'); ?>
-				</td>
-				<td>
-					<?php echo select_edit_control('SURNAME_TRADITION', array('paternal'=>WT_I18N::translate_c('Surname tradition', 'paternal'), 'patrilineal'=>WT_I18N::translate('patrilineal'), 'matrilineal'=>WT_I18N::translate('matrilineal'), 'spanish'=>WT_I18N::translate_c('Surname tradition', 'Spanish'), 'portuguese'=>WT_I18N::translate_c('Surname tradition', 'Portuguese'), 'icelandic'=>WT_I18N::translate_c('Surname tradition', 'Icelandic'), 'polish'=>WT_I18N::translate_c('Surname tradition', 'Polish'), 'lithuanian'=>WT_I18N::translate_c('Surname tradition', 'Lithuanian'), 'none'=>WT_I18N::translate_c('Surname tradition', 'none')), null, $WT_TREE->getPreference('SURNAME_TRADITION')); ?>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<?php echo WT_I18N::translate('Use full source citations'), help_link('FULL_SOURCES'); ?>
-				</td>
-				<td>
-					<?php echo edit_field_yes_no('FULL_SOURCES', $WT_TREE->getPreference('FULL_SOURCES')); ?>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<?php echo WT_I18N::translate('Source type'), help_link('PREFER_LEVEL2_SOURCES'); ?>
-				</td>
-				<td>
-					<?php echo select_edit_control('PREFER_LEVEL2_SOURCES', array(0=>WT_I18N::translate('none'), 1=>WT_I18N::translate('facts'), 2=>WT_I18N::translate('records')), null, $WT_TREE->getPreference('PREFER_LEVEL2_SOURCES')); ?>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<?php echo /* I18N: GeoNames is the www.geonames.org website */ WT_I18N::translate('Use the GeoNames database for autocomplete on places'), help_link('GEONAMES_ACCOUNT'); ?>
-				</td>
-				<td>
-					<input type="text" id="GEONAMES_ACCOUNT" name="GEONAMES_ACCOUNT" value="<?php echo WT_Filter::escapeHtml($WT_TREE->getPreference('GEONAMES_ACCOUNT')); ?>" size="40" maxlength="255" dir="ltr" placeholder="<?php echo WT_I18N::translate('Username'); ?>">
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<?php echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN'); ?>
-				</td>
-				<td>
-					<?php echo edit_field_yes_no('NO_UPDATE_CHAN', $WT_TREE->getPreference('NO_UPDATE_CHAN')); ?>
-				</td>
-			</tr>
-			</table>
+	<!-- SHOW_DEAD_PEOPLE -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="SHOW_DEAD_PEOPLE">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Show dead individuals'); ?>
+		</label>
+		<div class="col-sm-9">
+			<?php echo select_edit_control('SHOW_DEAD_PEOPLE', $privacy, null, $WT_TREE->getPreference('SHOW_DEAD_PEOPLE'), 'class="form-control"'); ?>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Show dead individuals” configuration setting */ WT_I18N::translate('Set the privacy access level for all dead individuals.'); ?>
+			</p>
 		</div>
 	</div>
-	<p>
-		<input type="submit" value="<?php echo WT_I18N::translate('save'); ?>">
+
+	<!-- KEEP_ALIVE_YEARS_BIRTH / KEEP_ALIVE_YEARS_DEATH -->
+	<fieldset class="form-group">
+		<legend class="control-label col-sm-3">
+			<?php echo /* I18N: A configuration setting.  ... [who were] born in the last XX years or died in the last YY years */ WT_I18N::translate('Extend privacy to dead individuals'); ?>
+		</legend>
+		<div class="col-sm-9">
+			<?php
+			echo
+				/* I18N: Extend privacy to dead people [who were] ... */ WT_I18N::translate(
+				'born in the last %1$s years or died in the last %2$s years',
+				'<input type="text" name="KEEP_ALIVE_YEARS_BIRTH" value="'.$WT_TREE->getPreference('KEEP_ALIVE_YEARS_BIRTH').'" size="5" maxlength="3">',
+				'<input type="text" name="KEEP_ALIVE_YEARS_DEATH" value="'.$WT_TREE->getPreference('KEEP_ALIVE_YEARS_DEATH').'" size="5" maxlength="3">'
+			); ?>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Extend privacy to dead individuals” configuration setting */ WT_I18N::translate('In some countries, privacy laws apply not only to living individuals, but also to those who have died recently.  This option will allow you to extend the privacy rules for living individuals to those who were born or died within a specified number of years.  Leave these values empty to disable this feature.'); ?>
+			</p>
+		</div>
+	</fieldset>
+
+	<!-- SHOW_LIVING_NAMES -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="SHOW_LIVING_NAMES">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Names of private individuals'); ?>
+		</label>
+		<div class="col-sm-9">
+			<?php echo select_edit_control('SHOW_LIVING_NAMES', $privacy, null, $WT_TREE->getPreference('SHOW_LIVING_NAMES'), 'class="form-control"'); ?>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Names of private individuals” configuration setting */ WT_I18N::translate('This option will show the names (but no other details) of private individuals.  Individuals are private if they are still alive or if a privacy restriction has been added to their individual record.  To hide a specific name, add a privacy restriction to that name record.'); ?>
+			</p>
+		</div>
+	</div>
+
+	<!-- SHOW_PRIVATE_RELATIONSHIPS -->
+	<fieldset class="form-group">
+		<legend class="control-label col-sm-3">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Show private relationships'); ?>
+		</legend>
+		<div class="col-sm-9">
+			<?php echo radio_buttons('SHOW_PRIVATE_RELATIONSHIPS', $disable_enable, $WT_TREE->getPreference('SHOW_PRIVATE_RELATIONSHIPS'), 'class="radio-inline"'); ?>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Show private relationships” configuration setting */ WT_I18N::translate('This option will retain family links in private records.  This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals.'); ?>
+			</p>
+		</div>
+	</fieldset>
+
+	<!-- MAX_ALIVE_AGE -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="MAX_ALIVE_AGE">
+			<?php echo WT_I18N::translate('Age at which to assume an individual is dead'); ?>
+		</label>
+		<div class="col-sm-9">
+			<input
+				class="form-control"
+				id="MAX_ALIVE_AGE"
+				maxlength="5"
+				name="MAX_ALIVE_AGE"
+				type="text"
+				value="<?php echo WT_Filter::escapeHtml($WT_TREE->getPreference('MAX_ALIVE_AGE')); ?>"
+				>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Age at which to assume an individual is dead” configuration setting */ WT_I18N::translate('If this individual has any events other than death, burial, or cremation more recent than this number of years, he is considered to be “alive”.  Children’s birth dates are considered to be such events for this purpose.'); ?>
+			</p>
+		</div>
+	</div>
+
+	<h2><?php echo WT_I18N::translate('Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag'); ?></h2>
+
+	<script id="new-resn-template" type="text/html">
+		<tr>
+			<td>
+				<input data-autocomplete-type="IFSRO" id="xref" maxlength="20" name="xref[]" type="text">
+			</td>
+			<td>
+				<?php echo select_edit_control('tag_type[]', $all_tags, '', null, null); ?>
+			</td>
+			<td>
+				<?php echo select_edit_control('resn[]', $PRIVACY_CONSTANTS, null, 'privacy', null); ?>
+			</td>
+			<td>
+				&nbsp;
+			</td>
+		</tr>
+	</script>
+
+	<table class="table table-bordered table-hover" id="default-resn">
+		<caption class="sr-only">
+			<?php echo WT_I18N::translate('Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag'); ?>
+		</caption>
+		<thead>
+		<tr>
+			<th>
+				<?php echo WT_I18N::translate('Record'); ?>
+			</th>
+			<th>
+				<?php echo WT_I18N::translate('Fact or event'); ?>
+			</th>
+			<th>
+				<?php echo WT_I18N::translate('Access level'); ?>
+			</th>
+			<th>
+				<button class="btn btn-primary" id="add-resn" type="button">
+					<?php echo WT_I18N::translate('Add'); ?>
+				</button>
+			</th>
+		</tr>
+		</thead>
+		<tfoot>
+		<tr>
+			<td colspan="3">
+				&nbsp;
+			</td>
+			<td>
+				<button type="submit" class="btn btn-primary"><?php echo WT_I18N::translate('save'); ?></button>
+			</td>
+		</tr>
+		</tfoot>
+		<tbody>
+		<?php foreach ($resns as $resn): ?>
+			<tr>
+				<td>
+					<?php if ($resn->record): ?>
+						<a href="<?php echo $resn->record->getHtmlUrl(); ?>"><?php echo $resn->record->getFullName(); ?></a>
+					<?php elseif ($resn->xref): ?>
+						<?php echo $resn->xref , ' — ', WT_I18N::translate('this record does not exist'); ?>
+					<?php else: ?>
+						&nbsp;
+					<?php endif; ?>
+				</td>
+				<td>
+					<?php echo $resn->tag_label; ?>
+				</td>
+				<td>
+					<?php echo $PRIVACY_CONSTANTS[$resn->resn]; ?>
+				</td>
+				<td>
+					<label for="delete-<?php echo $resn->default_resn_id; ?>">
+						<?php echo WT_I18N::translate('Delete'); ?>
+						<input id="delete-<?php echo $resn->default_resn_id; ?>" name="delete[]" type="checkbox" value="<?php echo $resn->default_resn_id; ?>">
+					</label>
+				</td>
+			</tr>
+		<?php endforeach; ?>
+		</tbody>
+	</table>
+
+	<?php elseif (WT_Filter::get('action') === 'general'): ?>
+
+	<input type="hidden" name="action" value="general">
+
+	<h3><?php echo WT_I18N::translate('General'); ?></h3>
+
+	<!-- TREE TITLE -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="title">
+			<?php echo WT_I18N::translate('Family tree title'); ?>
+		</label>
+		<div class="col-sm-9">
+			<input
+				class="form-control"
+				id="title"
+				maxlength="255"
+				name="title"
+				required
+				type="text"
+				value="<?php echo WT_Filter::escapeHtml($WT_TREE->getPreference('title')); ?>"
+				>
+		</div>
+	</div>
+
+	<!-- TREE URL / FILENAME -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="gedcom">
+			<?php echo WT_I18N::translate('URL'); ?>
+		</label>
+		<div class="col-sm-9">
+			<div class="input-group">
+				<span class="input-group-addon">
+					<?php echo WT_SERVER_NAME, WT_SCRIPT_PATH; ?>?ged=
+				</span>
+				<input
+					class="form-control"
+					dir="ltr"
+					id="gedcom"
+					maxlength="255"
+					name="gedcom"
+					required
+					type="text"
+					value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>"
+					>
+			</div>
+			<p class="small text-muted">
+				<?php echo WT_I18N::translate('Avoid spaces and puncutation.  A surname might be a good choice.'); ?>
+			</p>
+		</div>
+	</div>
+
+	<!-- LANGUAGE -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="LANGUAGE">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Language'); ?>
+		</label>
+		<div class="col-sm-9">
+			<?php echo select_edit_control('LANGUAGE', WT_I18N::installed_languages(), null, $WT_TREE->getPreference('LANGUAGE'), 'class="form-control"'); ?>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Language” configuration setting */ WT_I18N::translate('If a visitor to the site has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines.'); ?>
+			</p>
+		</div>
+	</div>
+
+	<!-- PEDIGREE_ROOT_ID -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="PEDIGREE_ROOT_ID">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Default individual'); ?>
+		</label>
+		<div class="col-sm-9">
+			<div class="input-group">
+				<input
+					class="form-control"
+					data-autocomplete-type="INDI"
+					dir="ltr"
+					id="PEDIGREE_ROOT_ID"
+					maxlength="20"
+					name="PEDIGREE_ROOT_ID"
+					type="text"
+					value="<?php echo $WT_TREE->getPreference('PEDIGREE_ROOT_ID'); ?>"
+				>
+				<span class="input-group-addon">
+					<?php
+					$person=WT_Individual::getInstance($WT_TREE->getPreference('PEDIGREE_ROOT_ID'));
+					if ($person) {
+						echo $person->getFullName(), ' ', $person->getLifeSpan();
+					} else {
+						echo WT_I18N::translate('Unable to find record with ID');
+					}
+					?>
+				</span>
+			</div>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Default individual” configuration setting */ WT_I18N::translate('This individual will be selected by default when viewing charts and reports.'); ?>
+			</p>
+		</div>
+	</div>
+
+	<!-- CALENDAR_FORMAT -->
+	<fieldset class="form-group">
+		<legend class="control-label col-sm-3">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Calendar conversion') ?>
+			<label class="sr-only" for="CALENDAR_FORMAT0">
+				<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Calendar conversion'); ?> 1
+			</label>
+			<label class="sr-only" for="CALENDAR_FORMAT1">
+				<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Calendar conversion'); ?> 2
+			</label>
+		</legend>
+		<div class="col-sm-9">
+			<div class=row">
+				<div class="col-sm-6" style="padding-left: 0;">
+					<?php echo select_edit_control('CALENDAR_FORMAT0', $calendars, null, $CALENDAR_FORMATS[0], 'class="form-control"'); ?>
+				</div>
+				<div class="col-sm-6" style="padding-right: 0;">
+					<?php echo select_edit_control('CALENDAR_FORMAT1', $calendars, null, $CALENDAR_FORMATS[1], 'class="form-control"'); ?>
+				</div>
+			</div>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Calendar conversion” configuration setting */ WT_I18N::translate('Different calendar systems are used in different parts of the world, and many other calendar systems have been used in the past.  Where possible, you should enter dates using the calendar in which the event was originally recorded.  You can then specify a conversion, to show these dates in a more familiar calendar.  If you regularly use two calendars, you can specify two conversions and dates will be converted to both the selected calendars.'); ?>
+			</p>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Calendar conversion” configuration setting */ WT_I18N::translate('Dates are only converted if they are valid for the calendar.  For example, only dates between %1$s and %2$s will be converted to the French calendar and only dates after %3$s will be converted to the Gregorian calendar.', with(new WT_Date('22 SEP 1792'))->Display(false, null, array()), with(new WT_Date('31 DEC 1805'))->Display(false, null, array()), with(new WT_Date('15 OCT 1582'))->Display(false, null, array())); ?>
+			</p>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Calendar conversion” configuration setting */ WT_I18N::translate('In some calendars, days start at midnight.  In other calendars, days start at sunset.  The conversion process does not take account of the time, so for any event that occurs between sunset and midnight, the conversion between these types of calendar will be one day out.'); ?>
+			</p>
+		</div>
+	</fieldset>
+
+	<!-- USE_RIN -->
+	<fieldset class="form-group">
+		<legend class="control-label col-sm-3">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Use RIN number instead of GEDCOM ID'); ?>
+		</legend>
+		<div class="col-sm-9">
+			<?php echo radio_buttons('USE_RIN', $no_yes, $WT_TREE->getPreference('USE_RIN'), 'class="radio-inline"'); ?>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Use RIN number instead of GEDCOM ID” configuration setting */ WT_I18N::translate('Set to <b>Yes</b> to use the RIN number instead of the GEDCOM ID when asked for individual IDs in configuration files, user settings, and charts.  This is useful for genealogy programs that do not consistently export GEDCOMs with the same ID assigned to each individual but always use the same RIN.'); ?>
+			</p>
+		</div>
+	</fieldset>
+
+	<!-- GENERATE_UIDS -->
+	<fieldset class="form-group">
+		<legend class="control-label col-sm-3">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Automatically create globally unique IDs'); ?>
+		</legend>
+		<div class="col-sm-9">
+			<?php echo radio_buttons('GENERATE_UIDS', $no_yes, $WT_TREE->getPreference('GENERATE_UIDS'), 'class="radio-inline"'); ?>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Automatically create globally unique IDs” configuration setting */ WT_I18N::translate('<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM originates.  The goal of the Family History Center is to have a central repository of genealogical data and expose it through web services. This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM with anyone else, you do not need to let webtrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM.'); ?>
+			</p>
+		</div>
+	</fieldset>
+
+	<!-- WORD_WRAPPED_NOTES -->
+	<fieldset class="form-group">
+		<legend class="control-label col-sm-3">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Add spaces where notes were wrapped'); ?>
+		</legend>
+		<div class="col-sm-9">
+			<?php echo radio_buttons('WORD_WRAPPED_NOTES', $no_yes, $WT_TREE->getPreference('WORD_WRAPPED_NOTES'), 'class="radio-inline"'); ?>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Add spaces where notes were wrapped” configuration setting */ WT_I18N::translate('Some genealogy programs wrap notes at word boundaries while others wrap notes anywhere.  This can cause webtrees to run words together.  Setting this to <b>Yes</b> will add a space between words where they are wrapped in the original GEDCOM during the import process. If you have already imported the file you will need to re-import it.'); ?>
+			</p>
+		</div>
+	</fieldset>
+
+	<!-- XXXXX_ID_PREFIX -->
+	<fieldset class="form-group">
+		<legend class="control-label col-sm-3">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('ID settings'); ?>
+		</legend>
+		<div class="col-sm-9">
+			<div class="row">
+				<!-- GEDCOM_ID_PREFIX -->
+				<div class="col-sm-4">
+					<div class="input-group">
+						<label class="input-group-addon" for="GEDCOM_ID_PREFIX">
+							<?php echo WT_I18N::translate('Individual ID prefix'); ?>
+						</label>
+						<input
+							class="form-control"
+							dir="ltr"
+							id="GEDCOM_ID_PREFIX"
+							maxlength="10"
+							name="GEDCOM_ID_PREFIX"
+							type="text"
+							value="<?php echo $WT_TREE->getPreference('GEDCOM_ID_PREFIX'); ?>"
+							>
+					</div>
+				</div>
+				<!-- FAM_ID_PREFIX -->
+				<div class="col-sm-4">
+					<div class="input-group">
+						<label class="input-group-addon" for="FAM_ID_PREFIX">
+							<?php echo WT_I18N::translate('Family ID prefix'); ?>
+						</label>
+						<input
+							class="form-control"
+							dir="ltr"
+							id="FAM_ID_PREFIX"
+							maxlength="10"
+							name="FAM_ID_PREFIX"
+							type="text"
+							value="<?php echo $WT_TREE->getPreference('FAM_ID_PREFIX'); ?>"
+							>
+					</div>
+				</div>
+				<!-- SOURCE_ID_PREFIX -->
+				<div class="col-sm-4">
+					<div class="input-group">
+						<label class="input-group-addon" for="SOURCE_ID_PREFIX">
+							<?php echo WT_I18N::translate('Source ID prefix'); ?>
+						</label>
+						<input
+							class="form-control"
+							dir="ltr"
+							id="SOURCE_ID_PREFIX"
+							maxlength="10"
+							name="SOURCE_ID_PREFIX"
+							type="text"
+							value="<?php echo $WT_TREE->getPreference('SOURCE_ID_PREFIX'); ?>"
+							>
+					</div>
+				</div>
+				<!-- REPO_ID_PREFIX -->
+				<div class="col-sm-4">
+					<div class="input-group">
+						<label class="input-group-addon" for="REPO_ID_PREFIX">
+							<?php echo WT_I18N::translate('Repository ID prefix'); ?>
+						</label>
+						<input
+							class="form-control"
+							dir="ltr"
+							id="REPO_ID_PREFIX"
+							maxlength="10"
+							name="REPO_ID_PREFIX"
+							type="text"
+							value="<?php echo $WT_TREE->getPreference('REPO_ID_PREFIX'); ?>"
+							>
+					</div>
+				</div>
+				<!-- MEDIA_ID_PREFIX -->
+				<div class="col-sm-4">
+					<div class="input-group">
+						<label class="input-group-addon" for="MEDIA_ID_PREFIX">
+							<?php echo WT_I18N::translate('Media ID prefix'); ?>
+						</label>
+						<input
+							class="form-control"
+							dir="ltr"
+							id="MEDIA_ID_PREFIX"
+							maxlength="10"
+							name="MEDIA_ID_PREFIX"
+							type="text"
+							value="<?php echo $WT_TREE->getPreference('MEDIA_ID_PREFIX'); ?>"
+							>
+					</div>
+				</div>
+				<!-- NOTE_ID_PREFIX -->
+				<div class="col-sm-4">
+					<div class="input-group">
+						<label class="input-group-addon" for="NOTE_ID_PREFIX">
+							<?php echo WT_I18N::translate('Note ID prefix'); ?>
+						</label>
+						<input
+							class="form-control"
+							dir="ltr"
+							id="NOTE_ID_PREFIX"
+							maxlength="10"
+							name="NOTE_ID_PREFIX"
+							type="text"
+							value="<?php echo $WT_TREE->getPreference('NOTE_ID_PREFIX'); ?>"
+						>
+					</div>
+				</div>
+			</div>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “ID settings” configuration setting */ WT_I18N::translate('When new records are created, they are given an internal ID number.  You can specify the prefix used for each type of record.'); ?>
+			</p>
+		</div>
+	</fieldset>
+
+	<h3><?php echo WT_I18N::translate('Contact information'); ?></h3>
+
+	<!-- WEBTREES_EMAIL -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="WEBTREES_EMAIL">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('webtrees reply address'); ?>
+		</label>
+		<div class="col-sm-9">
+			<input
+				class="form-control"
+				id="WEBTREES_EMAIL"
+				maxlength="255"
+				name="WEBTREES_EMAIL"
+				type="text"
+				value="<?php echo WT_Filter::escapeHtml($WT_TREE->getPreference('WEBTREES_EMAIL')); ?>"
+				>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “webtrees reply address” configuration setting */ WT_I18N::translate('E-mail address to be used in the “From:” field of e-mails that webtrees creates automatically.<br><br>webtrees can automatically create e-mails to notify administrators of changes that need to be reviewed.  webtrees also sends notification e-mails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created e-mails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the e-mail is required.  To guard against spam or other e-mail abuse, some e-mail systems require each message’s “From:” field to reflect a valid e-mail account and will not accept messages that are apparently from account <i>webtrees-noreply</i>.'); ?>
+			</p>
+		</div>
+	</div>
+
+	<!-- CONTACT_USER_ID -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="CONTACT_USER_ID">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Genealogy contact'); ?>
+		</label>
+		<div class="col-sm-9">
+			<select id="CONTACT_USER_ID" name="CONTACT_USER_ID" class="form-control">
+				<option value=""></option>
+				<?php foreach (User::all() as $user): ?>
+					<?php if (Auth::isMember($WT_TREE, $user)): ?>
+						<option value="<?php echo $user->getUserId(); ?>" selected="<?php echo $WT_TREE->getPreference('CONTACT_USER_ID') === $user->getUserId() ? 'selected' : ''; ?>">
+							<?php echo WT_Filter::escapeHtml($user->getRealName()) . ' - ' . WT_Filter::escapeHtml($user->getUserName()); ?>
+						</option>
+					<?php endif; ?>
+				<?php endforeach; ?>
+			</select>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Genealogy contact” configuration setting */ WT_I18N::translate('The individual to contact about the genealogical data on this site.'); ?>
+			</p>
+		</div>
+	</div>
+
+	<!-- WEBMASTER_USER_ID -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="WEBMASTER_USER_ID">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Technical help contact'); ?>
+		</label>
+		<div class="col-sm-9">
+			<select id="WEBMASTER_USER_ID" name="WEBMASTER_USER_ID" class="form-control">
+				<option value=""></option>
+				<?php foreach (User::all() as $user): ?>
+					<?php if (Auth::isMember($WT_TREE, $user)): ?>
+						<option value="<?php echo $user->getUserId(); ?>" selected="<?php echo $WT_TREE->getPreference('WEBMASTER_USER_ID') === $user->getUserId() ? 'selected' : ''; ?>">
+							<?php echo WT_Filter::escapeHtml($user->getRealName()) . ' - ' . WT_Filter::escapeHtml($user->getUserName()); ?>
+						</option>
+					<?php endif; ?>
+				<?php endforeach; ?>
+			</select>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Technical help contact” configuration setting */ WT_I18N::translate('The individual to be contacted about technical questions or errors encountered on your site.'); ?>
+			</p>
+		</div>
+	</div>
+
+	<h3><?php echo WT_I18N::translate('Web site and META tag settings'); ?></h3>
+
+	<!-- META_TITLE -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="META_TITLE">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Add to TITLE header tag'); ?>
+		</label>
+		<div class="col-sm-9">
+			<input
+				class="form-control"
+				id="META_TITLE"
+				maxlength="255"
+				name="META_TITLE"
+				type="text"
+				value="<?php echo WT_Filter::escapeHtml($WT_TREE->getPreference('META_TITLE')); ?>"
+				>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Add to TITLE header tag” configuration setting */ WT_I18N::translate('This text will be appended to each page title.  It will be shown in the browser’s title bar, bookmarks, etc.'); ?>
+			</p>
+		</div>
+	</div>
+
+	<!-- META_DESCRIPTION -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="META_DESCRIPTION">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Description META tag'); ?>
+		</label>
+		<div class="col-sm-9">
+			<input
+				class="form-control"
+				id="META_DESCRIPTION"
+				maxlength="255"
+				name="META_DESCRIPTION"
+				type="text"
+				value="<?php echo WT_Filter::escapeHtml($WT_TREE->getPreference('META_DESCRIPTION')); ?>"
+				>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Description META tag” configuration setting */ WT_I18N::translate('The value to place in the “meta description” tag in the HTML page header.  Leave this field empty to use the name of the family tree.'); ?>
+			</p>
+		</div>
+	</div>
+
+	<h3><?php echo WT_I18N::translate('User options'); ?></h3>
+	<!-- ALLOW_THEME_DROPDOWN -->
+	<fieldset class="form-group">
+		<legend class="control-label col-sm-3">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Theme dropdown selector for theme changes'); ?>
+		</legend>
+		<div class="col-sm-9">
+			<?php echo radio_buttons('ALLOW_THEME_DROPDOWN', $hide_show, $WT_TREE->getPreference('ALLOW_THEME_DROPDOWN'), 'class="radio-inline"'); ?>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Theme dropdown selector for theme changes” configuration setting */ WT_I18N::translate('Gives users the option of selecting their own theme from a menu.<br><br>Even with this option set, the theme currently in effect may not provide for such a menu.  To be effective, this option requires the <b>Allow users to select their own theme</b> option to be set as well.'); ?>
+			</p>
+		</div>
+	</fieldset>
+
+	<!-- THEME_DIR -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="THEME_DIR">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Default theme'); ?>
+		</label>
+		<div class="col-sm-9">
+			<?php echo select_edit_control('THEME_DIR', get_theme_names(), WT_I18N::translate('<default theme>'), $WT_TREE->getPreference('THEME_DIR'), 'class="form-control"'); ?>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Default theme” configuration setting */ WT_I18N::translate('You can change the appearance of webtrees using “themes”.  Each theme has a different style, layout, color scheme, etc.'); ?>
+			</p>
+		</div>
+	</div>
+
+	<h3><?php echo WT_I18N::translate('Media'); ?></h3>
+	<h3><?php echo WT_I18N::translate('Media folders'); ?></h3>
+
+	<!-- MEDIA_DIRECTORY -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="MEDIA_DIRECTORY">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Media folder'); ?>
+		</label>
+		<div class="col-sm-9">
+			<div class="input-group">
+				<span class="input-group-addon">
+					<?php echo WT_DATA_DIR; ?>
+				</span>
+				<input
+					class="form-control"
+					dir="ltr"
+					id="MEDIA_DIRECTORY"
+					maxlength="255"
+					name="MEDIA_DIRECTORY"
+					type="text"
+					value="<?php echo WT_Filter::escapeHtml($WT_TREE->getPreference('MEDIA_DIRECTORY')); ?>"
+				>
+			</div>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Media folder” configuration setting */ WT_I18N::translate('This folder will be used to store the media files for this family tree.'); ?>
+				<?php echo /* I18N: Help text for the “Media folder” configuration setting */ WT_I18N::translate('If you select a different folder, you must also move any media files from the existing folder to the new one.'); ?>
+				<?php echo /* I18N: Help text for the “Media folder” configuration setting */ WT_I18N::translate('If two family trees use the same media folder, then they will be able to share media files.  If they use different media folders, then their media files will be kept separate.'); ?>
+			</p>
+		</div>
+	</div>
+
+	<!-- GEDCOM_MEDIA_PATH -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="GEDCOM_MEDIA_PATH">
+			<?php echo /* I18N: /* I18N: A configuration setting.  A media path (e.g. c:\aaa\bbb\ccc\ddd.jpeg) in a GEDCOM file */ WT_I18N::translate('GEDCOM media path'); ?>
+		</label>
+		<div class="col-sm-9">
+			<input
+				class="form-control"
+				dir="ltr"
+				id="GEDCOM_MEDIA_PATH"
+				maxlength="255"
+				name="GEDCOM_MEDIA_PATH"
+				type="text"
+				value="<?php echo WT_Filter::escapeHtml($WT_TREE->getPreference('GEDCOM_MEDIA_PATH')); ?>"
+				>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “GEDCOM media path” configuration setting. A “path” is something like “C:\Documents\My_User\Genealogy\Photos\Gravestones\John_Smith.jpeg” */ WT_I18N::translate('Some genealogy applications create GEDCOM files that contain media filenames with full paths.  These paths will not exist on the web-server.  To allow webtrees to find the file, the first part of the path must be removed.'); ?>
+			</p>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “GEDCOM media path” configuration setting. %s are all folder names; “GEDCOM media path” is a configuration setting */ WT_I18N::translate('For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then the GEDCOM media path would be %3$s.', '<span class="filename">/home/fab/documents/family/photo.jpeg</span>', '<span class="filename">family/photo.jpeg</span>', '<span class="filename">/home/fab/documents/</span>'); ?>
+			</p>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “GEDCOM media path” configuration setting */ WT_I18N::translate('This setting is only used when you read or write GEDCOM files.'); ?>
+			</p>
+		</div>
+	</div>
+
+	<h3><?php echo WT_I18N::translate('Media files'); ?></h3>
+
+	<!-- MEDIA_UPLOAD -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="MEDIA_UPLOAD">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Who can upload new media files'); ?>
+		</label>
+		<div class="col-sm-9">
+			<?php echo select_edit_control('MEDIA_UPLOAD', array(WT_PRIV_USER=>WT_I18N::translate('Show to members'),
+				WT_PRIV_NONE=>WT_I18N::translate('Show to managers'), WT_PRIV_HIDE=>WT_I18N::translate('Hide from everyone')), null, $WT_TREE->getPreference('MEDIA_UPLOAD'), 'class="form-control"'); ?>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Who can upload new media files” configuration setting */ WT_I18N::translate('If you are concerned that users might upload inappropriate images, you can restrict media uploads to managers only.'); ?>
+			</p>
+		</div>
+	</div>
+
+	<!-- SHOW_MEDIA_DOWNLOAD -->
+	<fieldset class="form-group">
+		<legend class="control-label col-sm-3">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Show download link in media viewer'); ?>
+		</legend>
+		<div class="col-sm-9">
+			<?php echo radio_buttons('SHOW_MEDIA_DOWNLOAD', $no_yes, $WT_TREE->getPreference('SHOW_MEDIA_DOWNLOAD'), 'class="radio-inline"'); ?>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Show download link in media viewer” configuration setting */ WT_I18N::translate('The Media Viewer can show a link which, when clicked, will download the media file to the local PC.<br><br>You may want to hide the download link for security reasons.'); ?>
+			</p>
+		</div>
+	</fieldset>
+
+	<h3><?php echo WT_I18N::translate('Thumbnail images'); ?></h3>
+
+	<!-- THUMBNAIL_WIDTH -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="THUMBNAIL_WIDTH">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Width of generated thumbnails'); ?>
+		</label>
+		<div class="col-sm-9">
+			<div class="input-group">
+				<input
+					class="form-control"
+					id="THUMBNAIL_WIDTH"
+					maxlength="4"
+					name="THUMBNAIL_WIDTH"
+					required
+					type="text"
+					value="<?php echo WT_Filter::escapeHtml($WT_TREE->getPreference('THUMBNAIL_WIDTH')); ?>"
+					>
+				<span class="input-group-addon">
+					<?php echo /* Image sizes are measured in pixels */ WT_I18N::translate('pixels'); ?>
+				</span>
+			</div>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Width of generated thumbnails” configuration setting */ WT_I18N::translate('This is the width (in pixels) that the program will use when automatically generating thumbnails.  The default setting is 100.'); ?>
+			</p>
+		</div>
+	</div>
+
+	<!-- USE_SILHOUETTE -->
+	<fieldset class="form-group">
+		<legend class="control-label col-sm-3">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Use silhouettes'); ?>
+		</legend>
+		<div class="col-sm-9">
+			<?php echo radio_buttons('USE_SILHOUETTE', $no_yes, $WT_TREE->getPreference('USE_SILHOUETTE'), 'class="radio-inline"'); ?>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Use silhouettes” configuration setting */ WT_I18N::translate('Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the gender of the individual in question.'); ?>
+			</p>
+		</div>
+	</fieldset>
+
+	<!-- SHOW_HIGHLIGHT_IMAGES -->
+	<fieldset class="form-group">
+		<legend class="control-label col-sm-3">
+			<?php echo WT_I18N::translate('Show highlight images in individual boxes'); ?>
+		</legend>
+		<div class="col-sm-9">
+			<?php echo radio_buttons('SHOW_HIGHLIGHT_IMAGES', $no_yes, $WT_TREE->getPreference('SHOW_HIGHLIGHT_IMAGES'), 'class="radio-inline"'); ?>
+			<p class="small text-muted">
+			</p>
+		</div>
+	</fieldset>
+
+	<h3><?php echo WT_I18N::translate('Watermarks'); ?></h3>
+
+	<!-- WATERMARK_THUMB -->
+	<fieldset class="form-group">
+		<legend class="control-label col-sm-3">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Add watermarks to thumbnails'); ?>
+		</legend>
+		<div class="col-sm-9">
+			<?php echo radio_buttons('WATERMARK_THUMB', $no_yes, $WT_TREE->getPreference('WATERMARK_THUMB'), 'class="radio-inline"'); ?>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Add watermarks to thumbnails” configuration setting */ WT_I18N::translate('A watermark is text that is added to an image, to discourage others from copying it without permission.'); ?>
+			</p>
+		</div>
+	</fieldset>
+
+	<!-- SAVE_WATERMARK_IMAGE -->
+	<fieldset class="form-group">
+		<legend class="control-label col-sm-3">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Store watermarked full size images on server'); ?>
+		</legend>
+		<div class="col-sm-9">
+			<?php echo radio_buttons('SAVE_WATERMARK_IMAGE', $no_yes, $WT_TREE->getPreference('SAVE_WATERMARK_IMAGE'), 'class="radio-inline"'); ?>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Store watermarked full size images on server” configuration setting */ WT_I18N::translate('Watermarks can be slow to generate for large images.  Busy sites may prefer to generate them once and store the watermarked image on the server.'); ?>
+			</p>
+		</div>
+	</fieldset>
+
+	<!-- SAVE_WATERMARK_THUMB -->
+	<fieldset class="form-group">
+		<legend class="control-label col-sm-3">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Store watermarked thumbnails on server'); ?>
+		</legend>
+		<div class="col-sm-9">
+			<?php echo radio_buttons('SAVE_WATERMARK_THUMB', $no_yes, $WT_TREE->getPreference('SAVE_WATERMARK_THUMB'), 'class="radio-inline"'); ?>
+		</div>
+	</fieldset>
+
+	<!-- SHOW_NO_WATERMARK -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="SHOW_NO_WATERMARK">
+			<?php echo WT_I18N::translate('Images without watermarks'); ?>
+		</label>
+		<div class="col-sm-9">
+			<?php echo select_edit_control('SHOW_NO_WATERMARK', $privacy, null, $WT_TREE->getPreference('MEDIA_UPLOAD'), 'class="form-control"'); ?>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Images without watermarks” configuration setting */ WT_I18N::translate('Watermarks are optional and normally shown just to visitors.'); ?>
+			</p>
+		</div>
+	</div>
+
+	<h3><?php echo WT_I18N::translate('Layout'); ?></h3>
+
+	<h3><?php echo WT_I18N::translate('Names'); ?></h3>
+
+	<!-- COMMON_NAMES_THRESHOLD -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="COMMON_NAMES_THRESHOLD">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Min. no. of occurrences to be a “common surname”'); ?>
+		</label>
+		<div class="col-sm-9">
+			<input
+				class="form-control"
+				id="COMMON_NAMES_THRESHOLD"
+				maxlength="5"
+				name="COMMON_NAMES_THRESHOLD"
+				required
+				type="text"
+				value="<?php echo WT_Filter::escapeHtml($WT_TREE->getPreference('COMMON_NAMES_THRESHOLD')); ?>"
+				>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Min. no. of occurrences to be a ‘common surname’” configuration setting */ WT_I18N::translate('This is the number of times that a surname must occur before it shows up in the Common Surname list on the “Home page”.'); ?>
+			</p>
+		</div>
+	</div>
+
+	<!-- COMMON_NAMES_ADD -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="COMMON_NAMES_ADD">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Names to add to common surnames (comma separated)'); ?>
+		</label>
+		<div class="col-sm-9">
+			<input
+				class="form-control"
+				id="COMMON_NAMES_ADD"
+				maxlength="5"
+				name="COMMON_NAMES_ADD"
+				type="text"
+				value="<?php echo WT_Filter::escapeHtml($WT_TREE->getPreference('COMMON_NAMES_ADD')); ?>"
+				>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Names to add to common surnames (comma separated)” configuration setting */ WT_I18N::translate('If the number of times that a certain surname occurs is lower than the threshold, it will not appear in the list.  It can be added here manually.  If more than one surname is entered, they must be separated by a comma.  Surnames are case-sensitive.'); ?>
+			</p>
+		</div>
+	</div>
+
+	<!-- COMMON_NAMES_REMOVE -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="COMMON_NAMES_REMOVE">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Names to remove from common surnames (comma separated)'); ?>
+		</label>
+		<div class="col-sm-9">
+			<input
+				class="form-control"
+				id="COMMON_NAMES_REMOVE"
+				maxlength="5"
+				name="COMMON_NAMES_REMOVE"
+				type="text"
+				value="<?php echo WT_Filter::escapeHtml($WT_TREE->getPreference('COMMON_NAMES_REMOVE')); ?>"
+				>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Names to remove from common surnames (comma separated)” configuration setting */ WT_I18N::translate('If you want to remove a surname from the Common Surname list without increasing the threshold value, you can do that by entering the surname here.  If more than one surname is entered, they must be separated by a comma.  Surnames are case-sensitive.  Surnames entered here will also be removed from the “Top surnames” list on the “Home page”.'); ?>
+			</p>
+		</div>
+	</div>
+
+	<h3><?php echo WT_I18N::translate('Lists'); ?></h3>
+
+	<!-- SURNAME_LIST_STYLE -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="SURNAME_LIST_STYLE">
+			<?php echo WT_I18N::translate('Surname list style'); ?>
+		</label>
+		<div class="col-sm-9">
+			<?php echo select_edit_control('SURNAME_LIST_STYLE', $surname_list_styles, null, $WT_TREE->getPreference('SURNAME_LIST_STYLE'), 'class="form-control"'); ?>
+			<p class="small text-muted">
+			</p>
+		</div>
+	</div>
+
+	<!-- SUBLIST_TRIGGER_I -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="SUBLIST_TRIGGER_I">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Maximum number of surnames on individual list'); ?>
+		</label>
+		<div class="col-sm-9">
+			<input
+				class="form-control"
+				id="SUBLIST_TRIGGER_I"
+				maxlength="5"
+				name="SUBLIST_TRIGGER_I"
+				required
+				type="text"
+				value="<?php echo WT_Filter::escapeHtml($WT_TREE->getPreference('SUBLIST_TRIGGER_I')); ?>"
+				>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Maximum number of surnames on individual list” configuration setting */ WT_I18N::translate('Long lists of individuals with the same surname can be broken into smaller sub-lists according to the first letter of the individual’s given name.<br><br>This option determines when sub-listing of surnames will occur.  To disable sub-listing completely, set this option to zero.'); ?>
+			</p>
+		</div>
+	</div>
+
+	<!-- SHOW_EST_LIST_DATES -->
+	<fieldset class="form-group">
+		<legend class="control-label col-sm-3">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Estimated dates for birth and death'); ?>
+		</legend>
+		<div class="col-sm-9">
+			<?php echo radio_buttons('SHOW_EST_LIST_DATES', $hide_show, $WT_TREE->getPreference('SHOW_EST_LIST_DATES'), 'class="radio-inline"'); ?>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Estimated dates for birth and death” configuration setting */ WT_I18N::translate('This option controls whether or not to show estimated dates for birth and death instead of leaving blanks on individual lists and charts for individuals whose dates are not known.'); ?>
+			</p>
+		</div>
+	</fieldset>
+
+	<!-- SHOW_LAST_CHANGE -->
+	<fieldset class="form-group">
+		<legend class="control-label col-sm-3">
+						<?php echo WT_I18N::translate('The date and time of the last update'); ?>
+		</legend>
+		<div class="col-sm-9">
+			<?php echo radio_buttons('SHOW_LAST_CHANGE', $hide_show, $WT_TREE->getPreference('SHOW_LAST_CHANGE'), 'class="radio-inline"'); ?>
+			<p class="small text-muted">
+			</p>
+		</div>
+	</fieldset>
+
+	<h3><?php echo WT_I18N::translate('Charts'); ?></h3>
+
+	<!-- PEDIGREE_LAYOUT -->
+	<fieldset class="form-group">
+		<legend class="control-label col-sm-3">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Default pedigree chart layout'); ?>
+		</legend>
+		<div class="col-sm-9">
+			<?php echo radio_buttons('PEDIGREE_LAYOUT', $layouts, $WT_TREE->getPreference('PEDIGREE_LAYOUT'), 'class="radio-inline"'); ?>
+			<p class="small text-muted">
+			</p>
+		</div>
+	</fieldset>
+
+	<!-- DEFAULT_PEDIGREE_GENERATIONS -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="DEFAULT_PEDIGREE_GENERATIONS">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Default pedigree generations'); ?>
+		</label>
+		<div class="col-sm-9">
+			<input
+				class="form-control"
+				id="DEFAULT_PEDIGREE_GENERATIONS"
+				maxlength="5"
+				name="DEFAULT_PEDIGREE_GENERATIONS"
+				required
+				type="text"
+				value="<?php echo WT_Filter::escapeHtml($WT_TREE->getPreference('DEFAULT_PEDIGREE_GENERATIONS')); ?>"
+				>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Default pedigree generations” configuration setting */ WT_I18N::translate('Set the maximum number of generations to display on pedigree charts.'); ?>
+			</p>
+		</div>
+	</div>
+
+	<!-- MAX_PEDIGREE_GENERATIONS -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="MAX_PEDIGREE_GENERATIONS">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Maximum pedigree generations'); ?>
+		</label>
+		<div class="col-sm-9">
+			<input
+				class="form-control"
+				id="MAX_PEDIGREE_GENERATIONS"
+				maxlength="5"
+				name="MAX_PEDIGREE_GENERATIONS"
+				type="text"
+				value="<?php echo WT_Filter::escapeHtml($WT_TREE->getPreference('MAX_PEDIGREE_GENERATIONS')); ?>"
+				>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Maximum pedigree generations” configuration setting */ WT_I18N::translate('Set the maximum number of generations to display on descendancy charts.'); ?>
+			</p>
+		</div>
+	</div>
+
+	<!-- MAX_DESCENDANCY_GENERATIONS -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="MAX_DESCENDANCY_GENERATIONS">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Maximum descendancy generations'); ?>
+		</label>
+		<div class="col-sm-9">
+			<input
+				class="form-control"
+				id="MAX_DESCENDANCY_GENERATIONS"
+				maxlength="5"
+				name="MAX_DESCENDANCY_GENERATIONS"
+				type="text"
+				value="<?php echo WT_Filter::escapeHtml($WT_TREE->getPreference('MAX_DESCENDANCY_GENERATIONS')); ?>"
+				>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Maximum descendancy generations” configuration setting */ WT_I18N::translate('Set the maximum number of generations to display on descendancy charts.'); ?>
+			</p>
+		</div>
+	</div>
+
+	<h3><?php echo WT_I18N::translate('Individual pages'); ?></h3>
+
+	<!-- EXPAND_RELATIVES_EVENTS -->
+	<fieldset class="form-group">
+		<legend class="control-label col-sm-3">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Automatically expand list of events of close relatives'); ?>
+		</legend>
+		<div class="col-sm-9">
+			<?php echo radio_buttons('EXPAND_RELATIVES_EVENTS', $no_yes, $WT_TREE->getPreference('EXPAND_RELATIVES_EVENTS'), 'class="radio-inline"'); ?>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Automatically expand list of events of close relatives” configuration setting */ WT_I18N::translate('This option controls whether or not to automatically expand the <i>Events of close relatives</i> list.'); ?>
+			</p>
+		</div>
+	</fieldset>
+
+	<!-- SHOW_RELATIVES_EVENTS -->
+	<fieldset class="form-group">
+		<legend class="control-label col-sm-3">
+			<?php echo WT_I18N::translate('Show events of close relatives on individual page'); ?>
+		</legend>
+		<div class="col-sm-3">
+			<div class="checkbox">
+				<label for="_BIRT_GCHI">
+					<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_BIRT_GCHI" value="_BIRT_GCHI" <?php echo in_array('_BIRT_GCHI', $relatives_events) ? ' checked="checked"' : ''; ?>>
+					<?php echo WT_Gedcom_Tag::getLabel('_BIRT_GCHI'); ?>
+				</label>
+			</div>
+			<div class="checkbox">
+				<label for="_BIRT_CHIL">
+					<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_BIRT_CHIL" value="_BIRT_CHIL" <?php echo in_array('_BIRT_CHIL', $relatives_events) ? ' checked="checked"' : ''; ?>>
+					<?php echo WT_Gedcom_Tag::getLabel('_BIRT_CHIL'); ?>
+				</label>
+			</div>
+			<div class="checkbox">
+				<label for="_BIRT_SIBL">
+					<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_BIRT_SIBL" value="_BIRT_SIBL" <?php echo in_array('_BIRT_SIBL', $relatives_events) ? ' checked="checked"' : ''; ?>>
+					<?php echo WT_Gedcom_Tag::getLabel('_BIRT_SIBL'); ?>
+				</label>
+			</div>
+		</div>
+		<div class="col-sm-3">
+			<div class="checkbox">
+				<label for="_MARR_GCHI">
+					<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_MARR_GCHI" value="_MARR_GCHI" <?php echo in_array('_MARR_GCHI', $relatives_events) ? ' checked="checked"' : ''; ?>>
+					<?php echo WT_Gedcom_Tag::getLabel('_MARR_GCHI'); ?>
+				</label>
+			</div>
+			<div class="checkbox">
+				<label for="_MARR_CHIL">
+					<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_MARR_CHIL" value="_MARR_CHIL" <?php echo in_array('_MARR_CHIL', $relatives_events) ? ' checked="checked"' : ''; ?>>
+					<?php echo WT_Gedcom_Tag::getLabel('_MARR_CHIL'); ?>
+				</label>
+			</div>
+			<div class="checkbox">
+				<label for="_MARR_SIBL">
+					<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_MARR_SIBL" value="_MARR_SIBL" <?php echo in_array('_MARR_SIBL', $relatives_events) ? ' checked="checked"' : ''; ?>>
+					<?php echo WT_Gedcom_Tag::getLabel('_MARR_SIBL'); ?>
+				</label>
+			</div>
+			<div class="checkbox">
+				<label for="_MARR_PARE">
+					<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_MARR_PARE" value="_MARR_PARE" <?php echo in_array('_MARR_PARE', $relatives_events) ? ' checked="checked"' : ''; ?>>
+					<?php echo WT_Gedcom_Tag::getLabel('_MARR_PARE'); ?>
+				</label>
+			</div>
+		</div>
+		<div class="col-sm-3">
+			<div class="checkbox">
+				<label for="_DEAT_GCHI">
+					<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_DEAT_GCHI" value="_DEAT_GCHI" <?php echo in_array('_DEAT_GCHI', $relatives_events) ? ' checked="checked"' : ''; ?>>
+					<?php echo WT_Gedcom_Tag::getLabel('_DEAT_GCHI'); ?>
+				</label>
+			</div>
+			<div class="checkbox">
+				<label for="_DEAT_CHIL">
+					<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_DEAT_CHIL" value="_DEAT_CHIL" <?php echo in_array('_DEAT_CHIL', $relatives_events) ? ' checked="checked"' : ''; ?>>
+					<?php echo WT_Gedcom_Tag::getLabel('_DEAT_CHIL'); ?>
+				</label>
+			</div>
+			<div class="checkbox">
+				<label for="_DEAT_SIBL">
+					<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_DEAT_SIBL" value="_DEAT_SIBL" <?php echo in_array('_DEAT_SIBL', $relatives_events) ? ' checked="checked"' : ''; ?>>
+					<?php echo WT_Gedcom_Tag::getLabel('_DEAT_SIBL'); ?>
+				</label>
+			</div>
+			<div class="checkbox">
+				<label for="_DEAT_PARE">
+					<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_DEAT_PARE" value="_DEAT_PARE" <?php echo in_array('_DEAT_PARE', $relatives_events) ? ' checked="checked"' : ''; ?>>
+					<?php echo WT_Gedcom_Tag::getLabel('_DEAT_PARE'); ?>
+				</label>
+			</div>
+			<div class="checkbox">
+				<label for="_DEAT_SPOU">
+					<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_DEAT_SPOU" value="_DEAT_SPOU" <?php echo in_array('_DEAT_SPOU', $relatives_events) ? ' checked="checked"' : ''; ?>>
+					<?php echo WT_Gedcom_Tag::getLabel('_DEAT_SPOU'); ?>
+				</label>
+			</div>
+			<div class="checkbox">
+				<label for="_DEAT_GPAR">
+					<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_DEAT_GPAR" value="_DEAT_GPAR" <?php echo in_array('_DEAT_GPAR', $relatives_events) ? ' checked="checked"' : ''; ?>>
+					<?php echo WT_Gedcom_Tag::getLabel('_DEAT_GPAR'); ?>
+				</label>
+			</div>
+		</div>
+	</fieldset>
+
+	<h3><?php echo WT_I18N::translate('Places'); ?></h3>
+
+	<!-- SHOW_PEDIGREE_PLACES -->
+	<fieldset class="form-group">
+		<legend class="control-label col-sm-3">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Abbreviate place names'); ?>
+			<label class="sr-only" for="SHOW_PEDIGREE_PLACES_SUFFIX">
+				<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Abbreviate place names'); ?>
+				<?php echo WT_I18N::translate('first'); ?> /<?php echo WT_I18N::translate('last'); ?>
+			</label>
+			<label class="sr-only" for="SHOW_PEDIGREE_PLACES">
+				<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Abbreviate place names'); ?>
+			</label>
+		</legend>
+		<div class="col-sm-9">
+			<?php echo /* I18N: The placeholders are edit controls.  Show the [first/last] [1/2/3/4/5] parts of a place name */ WT_I18N::translate(
+				'Show the %1$s %2$s parts of a place name.',
+				select_edit_control('SHOW_PEDIGREE_PLACES_SUFFIX',
+					array(
+						false=>WT_I18N::translate_c('Show the [first/last] [N] parts of a place name.', 'first'),
+						true =>WT_I18N::translate_c('Show the [first/last] [N] parts of a place name.', 'last')
+					), null, $WT_TREE->getPreference('SHOW_PEDIGREE_PLACES_SUFFIX')
+				),
+				select_edit_control('SHOW_PEDIGREE_PLACES', $one_to_nine, null, $WT_TREE->getPreference('SHOW_PEDIGREE_PLACES'))
+			); ?>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Abbreviate place names” configuration setting */ WT_I18N::translate('Place names are frequently too long to fit on charts, lists, etc.  They can be abbreviated by showing just the first few parts of the name, such as <i>village, county</i>, or the last few part of it, such as <i>region, country</i>.'); ?>
+			</p>
+		</div>
+	</fieldset>
+
+	<h3><?php echo WT_Gedcom_Tag::getLabel('TEXT'); ?></h3>
+
+	<!-- FORMAT_TEXT -->
+	<fieldset class="form-group">
+		<legend class="control-label col-sm-3">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Format text and notes'); ?>
+		</legend>
+		<div class="col-sm-9">
+			<?php echo radio_buttons('FORMAT_TEXT', $formats, $WT_TREE->getPreference('FORMAT_TEXT'), 'class="radio-inline"'); ?>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Format text and notes” configuration setting */ WT_I18N::translate('To ensure compatibility with other genealogy applications, notes, text, and transcripts should be recorded in simple, unformatted text.  However, formatting is often desirable to aid presentation, comprehension, etc.'); ?>
+			</p>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Format text and notes” configuration setting */ WT_I18N::translate('Markdown is a simple system of formatting, used on websites such as Wikipedia.  It uses unobtrusive punctuation characters to create headings and sub-headings, bold and italic text, lists, tables, etc.'); ?>
+			</p>
+		</div>
+	</fieldset>
+
+	<h3><?php echo WT_I18N::translate('Hide &amp; show'); ?></h3>
+
+	<h3><?php echo WT_I18N::translate('Charts'); ?></h3>
+
+	<!-- PEDIGREE_FULL_DETAILS -->
+	<fieldset class="form-group">
+		<legend class="control-label col-sm-3">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Show chart details by default'); ?>
+		</legend>
+		<div class="col-sm-9">
+			<?php echo radio_buttons('PEDIGREE_FULL_DETAILS', $no_yes, $WT_TREE->getPreference('PEDIGREE_FULL_DETAILS'), 'class="radio-inline"'); ?>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Show chart details by default” configuration setting */ WT_I18N::translate('This is the initial setting for the “show details” option on the charts.'); ?>
+			</p>
+		</div>
+	</fieldset>
+
+	<!-- PEDIGREE_SHOW_GENDER -->
+	<fieldset class="form-group">
+		<legend class="control-label col-sm-3">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Gender icon on charts'); ?>
+		</legend>
+		<div class="col-sm-9">
+			<?php echo radio_buttons('PEDIGREE_SHOW_GENDER', $hide_show, $WT_TREE->getPreference('PEDIGREE_SHOW_GENDER'), 'class="radio-inline"'); ?>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Gender icon on charts” configuration setting */ WT_I18N::translate('This option controls whether or not to show the individual’s gender icon on charts.<br><br>Since the gender is also indicated by the color of the box, this option doesn’t conceal the gender. The option simply removes some duplicate information from the box.'); ?>
+			</p>
+	</div>
+	</fieldset>
+
+	<!-- SHOW_PARENTS_AGE -->
+	<fieldset class="form-group">
+		<legend class="control-label col-sm-3">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Age of parents next to child’s birthdate'); ?>
+		</legend>
+		<div class="col-sm-9">
+			<?php echo radio_buttons('SHOW_PARENTS_AGE', $hide_show, $WT_TREE->getPreference('SHOW_PARENTS_AGE'), 'class="radio-inline"'); ?>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Age of parents next to child’s birthdate” configuration setting */ WT_I18N::translate('This option controls whether or not to show age of father and mother next to child’s birthdate on charts.'); ?>
 	</p>
+		</div>
+	</fieldset>
+
+	<!-- SHOW_LDS_AT_GLANCE -->
+	<fieldset class="form-group">
+		<legend class="control-label col-sm-3">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('LDS ordinance codes in chart boxes'); ?>
+		</legend>
+		<div class="col-sm-9">
+			<?php echo radio_buttons('SHOW_LDS_AT_GLANCE', $hide_show, $WT_TREE->getPreference('SHOW_LDS_AT_GLANCE'), 'class="radio-inline"'); ?>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “LDS ordinance codes in chart boxes” configuration setting */ WT_I18N::translate('Setting this option to <b>Yes</b> will show status codes for LDS ordinances in chart boxes.<ul><li><b>B</b> - Baptism</li><li><b>E</b> - Endowed</li><li><b>S</b> - Sealed to spouse</li><li><b>P</b> - Sealed to parents</li></ul>An individual who has all of the ordinances done will have <b>BESP</b> printed after their name.  Missing ordinances are indicated by <b>_</b> in place of the corresponding letter code.  For example, <b>BE__</b> indicates missing <b>S</b> and <b>P</b> ordinances.'); ?>
+			</p>
+		</div>
+	</fieldset>
+
+	<!-- CHART_BOX_TAGS -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="CHART_BOX_TAGS">
+			<?php echo WT_I18N::translate('Other facts to show in charts'); ?>
+		</label>
+		<div class="col-sm-9">
+			<div class="input-group">
+				<input
+					class="form-control"
+					dir="ltr"
+					id="CHART_BOX_TAGS"
+					maxlength="255"
+					name="CHART_BOX_TAGS"
+					type="text"
+					value="<?php echo WT_Filter::escapeHtml($WT_TREE->getPreference('CHART_BOX_TAGS')); ?>"
+					>
+				<div class="input-group-btn">
+					<a class="btn btn-default" onclick="return findFact(document.getElementById('CHART_BOX_TAGS'), '<?php echo WT_GEDCOM ?>');">
+						<i class="fa fa-pencil"></i>
+						<?php echo /* I18N: button label */ WT_I18N::translate('edit'); ?>
+					</a>
+				</div>
+			</div>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Other facts to show in charts” configuration setting */ WT_I18N::translate('This should be a comma or space separated list of facts, in addition to birth and death, that you want to appear in chart boxes such as the pedigree chart.  This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard.  For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field.'); ?>
+			</p>
+		</div>
+	</div>
+
+	<h3><?php echo WT_I18N::translate('Individual pages'); ?></h3>
+
+	<!-- SHOW_FACT_ICONS -->
+	<fieldset class="form-group">
+		<legend class="control-label col-sm-3">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Fact icons'); ?>
+		</legend>
+		<div class="col-sm-9">
+			<?php echo radio_buttons('SHOW_FACT_ICONS', $hide_show, $WT_TREE->getPreference('SHOW_FACT_ICONS'), 'class="radio-inline"'); ?>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Fact icons” configuration setting */ WT_I18N::translate('Set this to <b>Yes</b> to display icons near Fact names on the Personal Facts and Details page.  Fact icons will be displayed only if they exist in the <i>images/facts</i> directory of the current theme.'); ?>
+			</p>
+		</div>
+	</fieldset>
+
+	<!-- EXPAND_NOTES -->
+	<fieldset class="form-group">
+		<legend class="control-label col-sm-3">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Automatically expand notes'); ?>
+		</legend>
+		<div class="col-sm-9">
+			<?php echo radio_buttons('EXPAND_NOTES', $no_yes, $WT_TREE->getPreference('EXPAND_NOTES'), 'class="radio-inline"'); ?>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Automatically expand notes” configuration setting */ WT_I18N::translate('This option controls whether or not to automatically display content of a <i>Note</i> record on the Individual page.'); ?>
+			</p>
+		</div>
+	</fieldset>
+
+	<!-- EXPAND_SOURCES -->
+	<fieldset class="form-group">
+		<legend class="control-label col-sm-3">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Automatically expand sources'); ?>
+		</legend>
+		<div class="col-sm-9">
+			<?php echo radio_buttons('EXPAND_SOURCES', $no_yes, $WT_TREE->getPreference('EXPAND_SOURCES'), 'class="radio-inline"'); ?>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Automatically expand sources” configuration setting */ WT_I18N::translate('This option controls whether or not to automatically display content of a <i>Source</i> record on the Individual page.'); ?>
+			</p>
+		</div>
+	</fieldset>
+
+	<!-- SHOW_LEVEL2_NOTES -->
+	<fieldset class="form-group">
+		<legend class="control-label col-sm-3">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Show all notes and source references on notes and sources tabs'); ?>
+		</legend>
+		<div class="col-sm-9">
+			<?php echo radio_buttons('SHOW_LEVEL2_NOTES', $no_yes, $WT_TREE->getPreference('SHOW_LEVEL2_NOTES'), 'class="radio-inline"'); ?>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Show all notes and source references on notes and sources tabs” configuration setting */ WT_I18N::translate('This option controls whether Notes and Source references that are attached to Facts should be shown on the Notes and Sources tabs of the Individual page.<br><br>Ordinarily, the Notes and Sources tabs show only Notes and Source references that are attached directly to the individual’s database record.  These are <i>level 1</i> Notes and Source references.<br><br>The <b>Yes</b> option causes these tabs to also show Notes and Source references that are part of the various Facts in the individual’s database record.  These are <i>level 2</i> Notes and Source references because the various Facts are at level 1.'); ?>
+			</p>
+		</div>
+	</fieldset>
+
+	<!-- SHOW_AGE_DIFF -->
+	<fieldset class="form-group">
+		<legend class="control-label col-sm-3">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Date differences'); ?>
+		</legend>
+		<div class="col-sm-9">
+			<?php echo radio_buttons('SHOW_AGE_DIFF', $hide_show, $WT_TREE->getPreference('SHOW_AGE_DIFF'), 'class="radio-inline"'); ?>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Date differences” configuration setting */ WT_I18N::translate('When this option is selected, webtrees will calculate the age differences between siblings, children, spouses, etc.'); ?>
+			</p>
+		</div>
+	</fieldset>
+
+	<h3><?php echo WT_I18N::translate('General'); ?></h3>
+
+	<!-- SHOW_GEDCOM_RECORD -->
+	<fieldset class="form-group">
+		<legend class="control-label col-sm-3">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Allow users to see raw GEDCOM records'); ?>
+		</legend>
+		<div class="col-sm-9">
+			<?php echo radio_buttons('SHOW_GEDCOM_RECORD', $no_yes, $WT_TREE->getPreference('SHOW_GEDCOM_RECORD'), 'class="radio-inline"'); ?>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting */ WT_I18N::translate('Setting this to <b>Yes</b> will place links on individuals, sources, and families to let users bring up another window containing the raw data taken right out of the GEDCOM file.'); ?>
+			</p>
+		</div>
+	</fieldset>
+
+	<!-- HIDE_GEDCOM_ERRORS -->
+	<fieldset class="form-group">
+		<legend class="control-label col-sm-3">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('GEDCOM errors'); ?>
+		</legend>
+		<div class="col-sm-9">
+			<?php echo radio_buttons('HIDE_GEDCOM_ERRORS', $hide_show, $WT_TREE->getPreference('HIDE_GEDCOM_ERRORS'), 'class="radio-inline"'); ?>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “GEDCOM errors” configuration setting */ WT_I18N::translate('Many genealogy programs create GEDCOM files with custom tags, and webtrees understands most of them.  When unrecognized tags are found, this option lets you choose whether to ignore them or display a warning message.'); ?>
+			</p>
+		</div>
+	</fieldset>
+
+	<!-- SHOW_COUNTER -->
+	<fieldset class="form-group">
+		<legend class="control-label col-sm-3">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Hit counters'); ?>
+		</legend>
+		<div class="col-sm-9">
+			<?php echo radio_buttons('SHOW_COUNTER', $hide_show, $WT_TREE->getPreference('SHOW_COUNTER'), 'class="radio-inline"'); ?>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Hit counters” configuration setting */ WT_I18N::translate('Show hit counters on portal and individual pages'); ?>
+			</p>
+		</div>
+	</fieldset>
+
+	<!-- SHOW_STATS -->
+	<fieldset class="form-group">
+		<legend class="control-label col-sm-3">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Execution statistics'); ?>
+		</legend>
+		<div class="col-sm-9">
+			<?php echo radio_buttons('SHOW_STATS', $hide_show, $WT_TREE->getPreference('SHOW_STATS'), 'class="radio-inline"'); ?>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Execution statistics” configuration setting */ WT_I18N::translate('Show runtime statistics and database queries at the bottom of every page.'); ?>
+			</p>
+		</div>
+	</fieldset>
+
+	<h3><?php echo WT_I18N::translate('Edit options'); ?></h3>
+
+	<h3><?php echo WT_I18N::translate('Facts for individual records'); ?></h3>
+
+	<!-- INDI_FACTS_ADD -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="INDI_FACTS_ADD">
+			<?php echo WT_I18N::translate('All individual facts'); ?>
+		</label>
+		<div class="col-sm-9">
+			<div class="input-group">
+				<input
+					class="form-control"
+					dir="ltr"
+					id="INDI_FACTS_ADD"
+					maxlength="255"
+					name="INDI_FACTS_ADD"
+					type="text"
+					value="<?php echo WT_Filter::escapeHtml($WT_TREE->getPreference('INDI_FACTS_ADD')); ?>"
+					>
+				<div class="input-group-btn">
+					<a class="btn btn-default" onclick="return findFact(document.getElementById('INDI_FACTS_ADD'), '<?php echo WT_GEDCOM ?>');">
+						<i class="fa fa-pencil"></i>
+						<?php echo WT_I18N::translate('edit'); ?>
+					</a>
+				</div>
+			</div>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “All individual facts” configuration setting */ WT_I18N::translate('This is the list of GEDCOM facts that your users can add to individuals.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the “Unique individual facts” list.'); ?>
+			</p>
+		</div>
+	</div>
+
+	<!-- INDI_FACTS_UNIQUE -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="INDI_FACTS_UNIQUE">
+			<?php echo WT_I18N::translate('Unique individual facts'); ?>
+		</label>
+		<div class="col-sm-9">
+			<div class="input-group">
+				<input
+					class="form-control"
+					dir="ltr"
+					id="INDI_FACTS_UNIQUE"
+					maxlength="255"
+					name="INDI_FACTS_UNIQUE"
+					type="text"
+					value="<?php echo WT_Filter::escapeHtml($WT_TREE->getPreference('INDI_FACTS_UNIQUE')); ?>"
+					>
+				<div class="input-group-btn">
+					<a class="btn btn-default" onclick="return findFact(document.getElementById('INDI_FACTS_UNIQUE'), '<?php echo WT_GEDCOM ?>');">
+						<i class="fa fa-pencil"></i>
+						<?php echo WT_I18N::translate('edit'); ?>
+					</a>
+				</div>
+			</div>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Unique individual facts” configuration setting */ WT_I18N::translate('This is the list of GEDCOM facts that your users can only add once to individuals.  For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual.  Fact names that appear in this list must not also appear in the “All individual facts” list.'); ?>
+			</p>
+		</div>
+	</div>
+
+	<!-- QUICK_REQUIRED_FACTS -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="QUICK_REQUIRED_FACTS">
+			<?php echo WT_I18N::translate('Facts for new individuals'); ?>
+		</label>
+		<div class="col-sm-9">
+			<div class="input-group">
+				<input
+					class="form-control"
+					dir="ltr"
+					id="QUICK_REQUIRED_FACTS"
+					maxlength="255"
+					name="QUICK_REQUIRED_FACTS"
+					type="text"
+					value="<?php echo WT_Filter::escapeHtml($WT_TREE->getPreference('QUICK_REQUIRED_FACTS')); ?>"
+					>
+				<div class="input-group-btn">
+					<a class="btn btn-default" onclick="return findFact(document.getElementById('QUICK_REQUIRED_FACTS'), '<?php echo WT_GEDCOM ?>');">
+						<i class="fa fa-pencil"></i>
+						<?php echo WT_I18N::translate('edit'); ?>
+					</a>
+				</div>
+			</div>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Facts for new individuals” configuration setting */ WT_I18N::translate('This is a comma separated list of GEDCOM fact tags that will be shown when adding a new individual.  For example, if BIRT is in the list, fields for birth date and birth place will be shown on the form.'); ?>
+			</p>
+		</div>
+	</div>
+
+	<!-- INDI_FACTS_QUICK -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="INDI_FACTS_QUICK">
+			<?php echo WT_I18N::translate('Quick individual facts'); ?>
+		</label>
+		<div class="col-sm-9">
+			<div class="input-group">
+				<input
+					class="form-control"
+					dir="ltr"
+					id="INDI_FACTS_QUICK"
+					maxlength="255"
+					name="INDI_FACTS_QUICK"
+					type="text"
+					value="<?php echo WT_Filter::escapeHtml($WT_TREE->getPreference('INDI_FACTS_QUICK')); ?>"
+					>
+				<div class="input-group-btn">
+					<a class="btn btn-default" onclick="return findFact(document.getElementById('INDI_FACTS_QUICK'), '<?php echo WT_GEDCOM ?>');">
+						<i class="fa fa-pencil"></i>
+						<?php echo WT_I18N::translate('edit'); ?>
+					</a>
+				</div>
+			</div>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Quick individual facts” configuration setting */ WT_I18N::translate('This is the short list of GEDCOM individual facts that appears next to the full list and can be added with a single click.'); ?>
+			</p>
+		</div>
+	</div>
+
+	<h3><?php echo WT_I18N::translate('Facts for family records'); ?></h3>
+
+	<!-- FAM_FACTS_ADD -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="FAM_FACTS_ADD">
+			<?php echo WT_I18N::translate('All family facts'); ?>
+		</label>
+		<div class="col-sm-9">
+			<div class="input-group">
+				<input
+					class="form-control"
+					dir="ltr"
+					id="FAM_FACTS_ADD"
+					maxlength="255"
+					name="FAM_FACTS_ADD"
+					type="text"
+					value="<?php echo WT_Filter::escapeHtml($WT_TREE->getPreference('FAM_FACTS_ADD')); ?>"
+					>
+				<div class="input-group-btn">
+					<a class="btn btn-default" onclick="return findFact(document.getElementById('FAM_FACTS_ADD'), '<?php echo WT_GEDCOM ?>');">
+						<i class="fa fa-pencil"></i>
+						<?php echo WT_I18N::translate('edit'); ?>
+					</a>
+				</div>
+			</div>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “All family facts” configuration setting */ WT_I18N::translate('This is the list of GEDCOM facts that your users can add to families.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the “Unique family facts” list.'); ?>
+			</p>
+		</div>
+	</div>
+
+	<!-- FAM_FACTS_UNIQUE -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="FAM_FACTS_UNIQUE">
+			<?php echo WT_I18N::translate('Unique family facts'); ?>
+		</label>
+		<div class="col-sm-9">
+			<div class="input-group">
+				<input
+					class="form-control"
+					dir="ltr"
+					id="FAM_FACTS_UNIQUE"
+					maxlength="255"
+					name="FAM_FACTS_UNIQUE"
+					type="text"
+					value="<?php echo WT_Filter::escapeHtml($WT_TREE->getPreference('FAM_FACTS_UNIQUE')); ?>"
+					>
+				<div class="input-group-btn">
+					<a class="btn btn-default" onclick="return findFact(document.getElementById('FAM_FACTS_UNIQUE'), '<?php echo WT_GEDCOM ?>');">
+						<i class="fa fa-pencil"></i>
+						<?php echo WT_I18N::translate('edit'); ?>
+					</a>
+				</div>
+			</div>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Unique family facts” configuration setting */ WT_I18N::translate('This is the list of GEDCOM facts that your users can only add once to families.  For example, if MARR is in this list, users will not be able to add more than one MARR record to a family.  Fact names that appear in this list must not also appear in the “All family facts” list.'); ?>
+			</p>
+		</div>
+	</div>
+
+	<!-- QUICK_REQUIRED_FAMFACTS -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="QUICK_REQUIRED_FAMFACTS">
+			<?php echo WT_I18N::translate('Facts for new families'); ?>
+		</label>
+		<div class="col-sm-9">
+			<div class="input-group">
+				<input
+					class="form-control"
+					dir="ltr"
+					id="QUICK_REQUIRED_FAMFACTS"
+					maxlength="255"
+					name="QUICK_REQUIRED_FAMFACTS"
+					type="text"
+					value="<?php echo WT_Filter::escapeHtml($WT_TREE->getPreference('QUICK_REQUIRED_FAMFACTS')); ?>"
+					>
+				<div class="input-group-btn">
+					<a class="btn btn-default" onclick="return findFact(document.getElementById('QUICK_REQUIRED_FAMFACTS'), '<?php echo WT_GEDCOM ?>');">
+						<i class="fa fa-pencil"></i>
+						<?php echo WT_I18N::translate('edit'); ?>
+					</a>
+				</div>
+			</div>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Facts for new families” configuration setting */ WT_I18N::translate('This is a comma separated list of GEDCOM fact tags that will be shown when adding a new family.  For example, if MARR is in the list, then fields for marriage date and marriage place will be shown on the form.'); ?>
+			</p>
+		</div>
+	</div>
+
+	<!-- FAM_FACTS_QUICK -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="FAM_FACTS_QUICK">
+			<?php echo WT_I18N::translate('Quick family facts'); ?>
+		</label>
+		<div class="col-sm-9">
+			<div class="input-group">
+				<input
+					class="form-control"
+					dir="ltr"
+					id="FAM_FACTS_QUICK"
+					maxlength="255"
+					name="FAM_FACTS_QUICK"
+					type="text"
+					value="<?php echo WT_Filter::escapeHtml($WT_TREE->getPreference('FAM_FACTS_QUICK')); ?>"
+					>
+				<div class="input-group-btn">
+					<a class="btn btn-default" onclick="return findFact(document.getElementById('FAM_FACTS_QUICK'), '<?php echo WT_GEDCOM ?>');">
+						<i class="fa fa-pencil"></i>
+						<?php echo WT_I18N::translate('edit'); ?>
+					</a>
+				</div>
+			</div>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Quick family facts” configuration setting */ WT_I18N::translate('This is the short list of GEDCOM family facts that appears next to the full list and can be added with a single click.'); ?>
+			</p>
+		</div>
+	</div>
+
+	<h3><?php echo WT_I18N::translate('Facts for source records'); ?></h3>
+
+	<!-- SOUR_FACTS_ADD -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="SOUR_FACTS_ADD">
+			<?php echo WT_I18N::translate('All source facts'); ?>
+		</label>
+		<div class="col-sm-9">
+			<div class="input-group">
+				<input
+					class="form-control"
+					dir="ltr"
+					id="SOUR_FACTS_ADD"
+					maxlength="255"
+					name="SOUR_FACTS_ADD"
+					type="text"
+					value="<?php echo WT_Filter::escapeHtml($WT_TREE->getPreference('SOUR_FACTS_ADD')); ?>"
+					>
+				<div class="input-group-btn">
+					<a class="btn btn-default" onclick="return findFact(document.getElementById('SOUR_FACTS_ADD'), '<?php echo WT_GEDCOM ?>');">
+						<i class="fa fa-pencil"></i>
+						<?php echo WT_I18N::translate('edit'); ?>
+					</a>
+				</div>
+			</div>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “All source facts” configuration setting */ WT_I18N::translate('This is the list of GEDCOM facts that your users can add to sources.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the “Unique source facts” list.'); ?>
+			</p>
+		</div>
+	</div>
+
+	<!-- SOUR_FACTS_UNIQUE -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="SOUR_FACTS_UNIQUE">
+			<?php echo WT_I18N::translate('Unique source facts'); ?>
+		</label>
+		<div class="col-sm-9">
+			<div class="input-group">
+				<input
+					class="form-control"
+					dir="ltr"
+					id="SOUR_FACTS_UNIQUE"
+					maxlength="255"
+					name="SOUR_FACTS_UNIQUE"
+					type="text"
+					value="<?php echo WT_Filter::escapeHtml($WT_TREE->getPreference('SOUR_FACTS_UNIQUE')); ?>"
+					>
+				<div class="input-group-btn">
+					<a class="btn btn-default" onclick="return findFact(document.getElementById('SOUR_FACTS_UNIQUE'), '<?php echo WT_GEDCOM ?>');">
+						<i class="fa fa-pencil"></i>
+						<?php echo WT_I18N::translate('edit'); ?>
+					</a>
+				</div>
+			</div>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Unique source facts” configuration setting */ WT_I18N::translate('This is the list of GEDCOM facts that your users can only add once to sources.  For example, if TITL is in this list, users will not be able to add more than one TITL record to a source.  Fact names that appear in this list must not also appear in the “All source facts” list.'); ?>
+			</p>
+		</div>
+	</div>
+
+	<!-- SOUR_FACTS_QUICK -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="SOUR_FACTS_QUICK">
+			<?php echo WT_I18N::translate('Quick source facts'); ?>
+		</label>
+		<div class="col-sm-9">
+			<div class="input-group">
+				<input
+					class="form-control"
+					dir="ltr"
+					id="SOUR_FACTS_QUICK"
+					maxlength="255"
+					name="SOUR_FACTS_QUICK"
+					type="text"
+					value="<?php echo WT_Filter::escapeHtml($WT_TREE->getPreference('SOUR_FACTS_QUICK')); ?>"
+					>
+				<div class="input-group-btn">
+					<a class="btn btn-default" onclick="return findFact(document.getElementById('SOUR_FACTS_QUICK'), '<?php echo WT_GEDCOM ?>');">
+						<i class="fa fa-pencil"></i>
+						<?php echo WT_I18N::translate('edit'); ?>
+					</a>
+				</div>
+			</div>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Quick source facts” configuration setting */ WT_I18N::translate('This is the short list of GEDCOM source facts that appears next to the full list and can be added with a single click.'); ?>
+			</p>
+		</div>
+	</div>
+
+	<h3><?php echo WT_I18N::translate('Facts for repository records'); ?></h3>
+
+	<!-- REPO_FACTS_ADD -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="REPO_FACTS_ADD">
+			<?php echo WT_I18N::translate('All repository facts'); ?>
+		</label>
+		<div class="col-sm-9">
+			<div class="input-group">
+				<input
+					class="form-control"
+					dir="ltr"
+					id="REPO_FACTS_ADD"
+					maxlength="255"
+					name="REPO_FACTS_ADD"
+					type="text"
+					value="<?php echo WT_Filter::escapeHtml($WT_TREE->getPreference('REPO_FACTS_ADD')); ?>"
+					>
+				<div class="input-group-btn">
+					<a class="btn btn-default" onclick="return findFact(document.getElementById('REPO_FACTS_ADD'), '<?php echo WT_GEDCOM ?>');">
+						<i class="fa fa-pencil"></i>
+						<?php echo WT_I18N::translate('edit'); ?>
+					</a>
+				</div>
+			</div>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “All repository facts” configuration setting */ WT_I18N::translate('This is the list of GEDCOM facts that your users can add to repositories.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the “Unique repository facts” list.'); ?>
+			</p>
+		</div>
+	</div>
+
+	<!-- REPO_FACTS_UNIQUE -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="REPO_FACTS_UNIQUE">
+			<?php echo WT_I18N::translate('Unique repository facts'); ?>
+		</label>
+		<div class="col-sm-9">
+			<div class="input-group">
+				<input
+					class="form-control"
+					dir="ltr"
+					id="REPO_FACTS_UNIQUE"
+					maxlength="255"
+					name="REPO_FACTS_UNIQUE"
+					type="text"
+					value="<?php echo WT_Filter::escapeHtml($WT_TREE->getPreference('REPO_FACTS_UNIQUE')); ?>"
+					>
+				<div class="input-group-btn">
+					<a class="btn btn-default" onclick="return findFact(document.getElementById('REPO_FACTS_UNIQUE'), '<?php echo WT_GEDCOM ?>');">
+						<i class="fa fa-pencil"></i>
+						<?php echo WT_I18N::translate('edit'); ?>
+					</a>
+				</div>
+			</div>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Unique repository facts” configuration setting */ WT_I18N::translate('This is the list of GEDCOM facts that your users can only add once to repositories.  For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository.  Fact names that appear in this list must not also appear in the “All repository facts” list.'); ?>
+			</p>
+		</div>
+	</div>
+
+	<!-- REPO_FACTS_QUICK -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="REPO_FACTS_QUICK">
+			<?php echo WT_I18N::translate('Quick repository facts'); ?>
+		</label>
+		<div class="col-sm-9">
+			<div class="input-group">
+				<input
+					class="form-control"
+					dir="ltr"
+					id="REPO_FACTS_QUICK"
+					maxlength="255"
+					name="REPO_FACTS_QUICK"
+					type="text"
+					value="<?php echo WT_Filter::escapeHtml($WT_TREE->getPreference('REPO_FACTS_QUICK')); ?>"
+					>
+				<div class="input-group-btn">
+					<a class="btn btn-default" onclick="return findFact(document.getElementById('REPO_FACTS_QUICK'), '<?php echo WT_GEDCOM ?>');">
+						<i class="fa fa-pencil"></i>
+						<?php echo WT_I18N::translate('edit'); ?>
+					</a>
+				</div>
+			</div>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Quick repository facts” configuration setting */ WT_I18N::translate('This is the short list of GEDCOM repository facts that appears next to the full list and can be added with a single click.'); ?>
+			</p>
+		</div>
+	</div>
+
+	<h3><?php echo WT_I18N::translate('Advanced fact settings'); ?></h3>
+
+	<!-- ADVANCED_NAME_FACTS -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="ADVANCED_NAME_FACTS">
+			<?php echo WT_I18N::translate('Advanced name facts'); ?>
+		</label>
+		<div class="col-sm-9">
+			<div class="input-group">
+				<input
+					class="form-control"
+					dir="ltr"
+					id="ADVANCED_NAME_FACTS"
+					maxlength="255"
+					name="ADVANCED_NAME_FACTS"
+					type="text"
+					value="<?php echo WT_Filter::escapeHtml($WT_TREE->getPreference('ADVANCED_NAME_FACTS')); ?>"
+					>
+				<div class="input-group-btn">
+					<a class="btn btn-default" onclick="return findFact(document.getElementById('ADVANCED_NAME_FACTS'), '<?php echo WT_GEDCOM ?>');">
+						<i class="fa fa-pencil"></i>
+						<?php echo WT_I18N::translate('edit'); ?>
+					</a>
+				</div>
+			</div>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Advanced name facts” configuration setting */ WT_I18N::translate('This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets.'); ?>
+			</p>
+		</div>
+	</div>
+
+	<!-- ADVANCED_PLAC_FACTS -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="ADVANCED_PLAC_FACTS">
+			<?php echo WT_I18N::translate('Advanced place name facts'); ?>
+		</label>
+		<div class="col-sm-9">
+			<div class="input-group">
+				<input
+					class="form-control"
+					dir="ltr"
+					id="ADVANCED_PLAC_FACTS"
+					maxlength="255"
+					name="ADVANCED_PLAC_FACTS"
+					type="text"
+					value="<?php echo WT_Filter::escapeHtml($WT_TREE->getPreference('ADVANCED_PLAC_FACTS')); ?>"
+					>
+				<div class="input-group-btn">
+					<a class="btn btn-default" onclick="return findFact(document.getElementById('ADVANCED_PLAC_FACTS'), '<?php echo WT_GEDCOM ?>');">
+						<i class="fa fa-pencil"></i>
+						<?php echo WT_I18N::translate('edit'); ?>
+					</a>
+				</div>
+			</div>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Advanced place name facts” configuration setting */ WT_I18N::translate('This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets.'); ?>
+			</p>
+		</div>
+	</div>
+
+	<h3><?php echo WT_I18N::translate('Other settings'); ?></h3>
+
+	<!-- SURNAME_TRADITION -->
+	<fieldset class="form-group">
+		<legend class="control-label col-sm-3">
+			<?php echo WT_I18N::translate('Surname tradition'); ?>
+		</legend>
+		<div class="col-sm-9">
+			<?php echo radio_buttons('SURNAME_TRADITION', $surname_traditions, $WT_TREE->getPreference('SURNAME_TRADITION'), 'class="radio" style="padding-left:20px;font-weight:normal;"'); ?>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Surname tradition” configuration setting */ WT_I18N::translate('When you add a new family member, a default surname can be provided.  This surname will depend on the local tradition.'); ?>
+			</p>
+		</div>
+	</fieldset>
+
+	<!-- FULL_SOURCES -->
+	<fieldset class="form-group">
+		<legend class="control-label col-sm-3">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Use full source citations'); ?>
+		</legend>
+		<div class="col-sm-9">
+			<?php echo radio_buttons('FULL_SOURCES', $no_yes, $WT_TREE->getPreference('FULL_SOURCES'), 'class="radio-inline"'); ?>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Use full source citations” configuration setting */ WT_I18N::translate('Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source.  If you don’t use these fields, you can disable them when creating new source citations.'); ?>
+			</p>
+		</div>
+	</fieldset>
+
+	<!-- PREFER_LEVEL2_SOURCES -->
+	<fieldset class="form-group">
+		<legend class="control-label col-sm-3">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Source type'); ?>
+		</legend>
+		<div class="col-sm-9">
+			<?php echo radio_buttons('PREFER_LEVEL2_SOURCES', $source_types, $WT_TREE->getPreference('PREFER_LEVEL2_SOURCES'), 'class="radio-inline"'); ?>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Source type” configuration setting */ WT_I18N::translate('When adding new close relatives, you can add source citations to the records (e.g. INDI, FAM) or the facts (BIRT, MARR, DEAT).  This option controls which checkboxes are ticked by default.'); ?>
+			</p>
+		</div>
+	</fieldset>
+
+	<!-- GEONAMES_ACCOUNT -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="GEONAMES_ACCOUNT">
+			<?php echo WT_I18N::translate('Use the GeoNames database for autocomplete on places'); ?>
+		</label>
+		<div class="col-sm-9">
+			<input
+				class="form-control"
+				dir="ltr"
+				id="GEONAMES_ACCOUNT"
+				maxlength="255"
+				name="GEONAMES_ACCOUNT"
+				type="text"
+				value="<?php echo WT_Filter::escapeHtml($WT_TREE->getPreference('GEONAMES_ACCOUNT')); ?>"
+				>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Use GeoNames database for autocomplete on places” configuration setting */ WT_I18N::translate('The website www.geonames.org provides a large database of place names.  This can be searched when entering new places.  To use this feature, you must register for a free account at www.geonames.org and provide the username.'); ?>
+			</p>
+		</div>
+	</div>
+
+	<!-- NO_UPDATE_CHAN -->
+	<fieldset class="form-group">
+		<legend class="control-label col-sm-3">
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Do not update the “last change” record'); ?>
+		</legend>
+		<div class="col-sm-9">
+			<?php echo radio_buttons('NO_UPDATE_CHAN', $no_yes, $WT_TREE->getPreference('NO_UPDATE_CHAN'), 'class="radio-inline"'); ?>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Do not update the ‘last change’ record” configuration setting */ WT_I18N::translate('Administrators sometimes need to clean up and correct the data submitted by users.  For example, they might need to correct the PLAC location to include the country.  When administrators make such corrections, information about the original change is normally replaced.  This may not be desirable.<br><br>When this option is selected, webtrees will retain the original change information instead of replacing it with that of the current session.  With this option selected, administrators also have the ability to modify or delete the information associated with the original CHAN tag.'); ?>
+			</p>
+		</div>
+	</fieldset>
+
+	<?php endif; ?>
+
+	<div class="form-group">
+		<div class="col-sm-offset-3 col-sm-9">
+			<button type="submit" class="btn btn-primary"><?php echo WT_I18N::translate('save'); ?></button>
+		</div>
+	</div>
 </form>

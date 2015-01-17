@@ -4,7 +4,7 @@
 // This page will allow you to merge 2 gedcom records
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// Copyright (C) 2015 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010 PGV Development Team.
@@ -61,8 +61,8 @@ if ($action!='choose') {
 			echo '<span class="error">', WT_I18N::translate('Unable to find record with ID'), ':</span> ', $gid2, ', ', $ged2;
 			$action='choose';
 		} elseif ($rec1::RECORD_TYPE != $rec2::RECORD_TYPE) {
-				echo '<span class="error">', WT_I18N::translate('Records are not the same type.  Cannot merge records that are not the same type.'), '</span>';
-				$action='choose';
+			echo '<span class="error">', WT_I18N::translate('Records are not the same type.  Cannot merge records that are not the same type.'), '</span>';
+			$action='choose';
 		} else {
 			$facts1 = array();
 			$facts2 = array();

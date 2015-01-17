@@ -2,7 +2,7 @@
 // Check a family tree for structural errors.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2014 Greg Roach
+// Copyright (C) 2015 Greg Roach
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -29,16 +29,6 @@ $controller
 	->restrictAccess(Auth::isManager())
 	->setPageTitle(WT_I18N::translate('Check for errors'))
 	->pageHeader();
-
-echo '<form method="get" action="', WT_SCRIPT_NAME, '">';
-echo '<input type="hidden" name="go" value="1">';
-echo select_edit_control('ged', WT_Tree::getNameList(), null, WT_GEDCOM);
-echo '<input type="submit" value="', $controller->getPageTitle(), '">';
-echo '</form>';
-
-if (!WT_Filter::get('go')) {
-	exit;
-}
 
 // We need to work with raw GEDCOM data, as we are looking for errors
 // which may prevent the WT_GedcomRecord objects from working...
@@ -208,14 +198,13 @@ foreach ($all_links as $xref1 => $links) {
  * @return string
  */
 function link_message($type1, $xref1, $type2, $xref2) {
-	return
-		/* I18N: The placeholders are GEDCOM XREFs and tags.  e.g. “INDI I123 contains a FAMC link to F234.” */ WT_I18N::translate(
-			'%1$s %2$s has a %3$s link to %4$s.',
-			format_type($type1),
-			format_link($xref1),
-			format_type($type2),
-			format_link($xref2)
-		);
+	return /* I18N: The placeholders are GEDCOM XREFs and tags.  e.g. “INDI I123 contains a FAMC link to F234.” */ WT_I18N::translate(
+		'%1$s %2$s has a %3$s link to %4$s.',
+		format_type($type1),
+		format_link($xref1),
+		format_type($type2),
+		format_link($xref2)
+	);
 }
 
 /**

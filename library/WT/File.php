@@ -1,6 +1,6 @@
 <?php
 // webtrees: Web based Family History software
-// Copyright (c) 2014 webtrees development team
+// Copyright (c) 2015 webtrees development team
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -121,7 +121,7 @@ class WT_File {
 		if (is_dir($path)) {
 			return true;
 		} else {
-			if (!is_dir(dirname($path))) {
+			if (dirname($path) && !is_dir(dirname($path))) {
 				WT_File::mkdir(dirname($path));
 			}
 			@mkdir($path);

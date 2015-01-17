@@ -71,7 +71,9 @@ class WT_Controller_Compact extends WT_Controller_Chart {
 
 			$html .= '<a class="name1" href="'.$indi->getHtmlUrl().'">';
 			$html .= $name;
-			if ($addname) $html .= '<br>' . $addname;
+			if ($addname) {
+				$html .= '<br>' . $addname;
+			}
 			$html .= '</a>';
 			$html .= '<br>';
 			if ($indi->canShow()) {

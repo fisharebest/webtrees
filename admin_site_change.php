@@ -2,7 +2,7 @@
 // Change log viewer.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// Copyright (C) 2015 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -205,7 +205,8 @@ case 'load_json':
 	$recordsTotal = WT_DB::prepare($SELECT2.$WHERE)->execute($args)->fetchOne();
 
 	header('Content-type: application/json');
-	echo json_encode(array( // See http://www.datatables.net/usage/server-side
+	// See http://www.datatables.net/usage/server-side
+	echo json_encode(array( 
 		'draw'            => WT_Filter::getInteger('draw'), // Always an integer
 		'recordsTotal'    => $recordsTotal,
 		'recordsFiltered' => $recordsFiltered,
@@ -217,6 +218,7 @@ case 'load_json':
 $controller
 	->pageHeader()
 	->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
+	->addExternalJavascript(WT_DATATABLES_BOOTSTRAP_JS_URL)
 	->addInlineJavascript('
 		jQuery("#log_list").dataTable( {
 			"dom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',

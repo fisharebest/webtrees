@@ -8,7 +8,7 @@ use WT_Tree;
 /**
  * Class User - Provide an interface to the wt_user table.
  *
- * @copyright (c) 2014 webtrees development team
+ * @copyright (c) 2015 webtrees development team
  * @license   This program is free software: you can redistribute it and/or modify
  *            it under the terms of the GNU General Public License as published by
  *            the Free Software Foundation, either version 2 of the License, or
@@ -191,6 +191,29 @@ class User {
 			" JOIN `##user_setting` USING (user_id)" .
 			" WHERE user_id > 0" .
 			"   AND setting_name = 'canadmin'" .
+			"   AND setting_value = '1'"
+		)->fetchAll();
+
+		$users = array();
+		foreach ($rows as $row) {
+			$users[] = new User($row);
+		}
+
+		return $users;
+	}
+
+	/**
+	 * Get a list of all verified uses.
+	 *
+	 * @return User[]
+	 */
+	public static function allVerified() {
+		$rows = WT_DB::prepare(
+			"SELECT SQL_CACHE user_id, user_name, real_name, email" .
+			" FROM `##user`" .
+			" JOIN `##user_setting` USING (user_id)" .
+			" WHERE user_id > 0" .
+			"   AND setting_name = 'verified'" .
 			"   AND setting_value = '1'"
 		)->fetchAll();
 

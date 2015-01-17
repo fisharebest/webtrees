@@ -20,7 +20,7 @@
 // the correct response for both success/error.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2014 Greg Roach
+// Copyright (C) 2015 Greg Roach
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -38,6 +38,7 @@
 
 use WT\Auth;
 use WT\Log;
+use WT\Theme;
 use WT\User;
 
 define('WT_SCRIPT_NAME', 'action.php');
@@ -243,7 +244,7 @@ case 'reject-changes':
 case 'theme':
 	// Change the current theme
 	$theme = WT_Filter::post('theme');
-	if (WT_Site::getPreference('ALLOW_USER_THEMES') && in_array($theme, get_theme_names())) {
+	if (WT_Site::getPreference('ALLOW_USER_THEMES') && array_key_exists($theme, Theme::themeNames())) {
 		$WT_SESSION->theme_id = $theme;
 		// Remember our selection
 		Auth::user()->setPreference('theme', $theme);

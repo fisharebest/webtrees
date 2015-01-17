@@ -1,6 +1,6 @@
 <?php
 // webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// Copyright (C) 2015 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -92,16 +92,16 @@ case 'load_json':
 	case 'local':
 		// Filtered rows
 		$SELECT1 =
-				"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS TRIM(LEADING ? FROM m_filename) AS media_path, m_id AS xref, m_titl, m_file AS gedcom_id, m_gedcom AS gedcom" .
-				" FROM  `##media`" .
-				" JOIN  `##gedcom_setting` ON (m_file = gedcom_id AND setting_name = 'MEDIA_DIRECTORY')" .
-				" JOIN  `##gedcom` USING (gedcom_id)" .
-				" WHERE setting_value=?" .
-				" AND   m_filename LIKE CONCAT(?, '%')" .
-				" AND   (SUBSTRING_INDEX(m_filename, '/', -1) LIKE CONCAT('%', ?, '%')" .
-				"  OR   m_titl LIKE CONCAT('%', ?, '%'))" .
-				" AND   m_filename NOT LIKE 'http://%'" .
-				" AND   m_filename NOT LIKE 'https://%'";
+			"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS TRIM(LEADING ? FROM m_filename) AS media_path, m_id AS xref, m_titl, m_file AS gedcom_id, m_gedcom AS gedcom" .
+			" FROM  `##media`" .
+			" JOIN  `##gedcom_setting` ON (m_file = gedcom_id AND setting_name = 'MEDIA_DIRECTORY')" .
+			" JOIN  `##gedcom` USING (gedcom_id)" .
+			" WHERE setting_value=?" .
+			" AND   m_filename LIKE CONCAT(?, '%')" .
+			" AND   (SUBSTRING_INDEX(m_filename, '/', -1) LIKE CONCAT('%', ?, '%')" .
+			"  OR   m_titl LIKE CONCAT('%', ?, '%'))" .
+			" AND   m_filename NOT LIKE 'http://%'" .
+			" AND   m_filename NOT LIKE 'https://%'";
 		$ARGS1 = array(
 			$media_path,
 			$media_folder,
@@ -111,13 +111,13 @@ case 'load_json':
 		);
 		// Unfiltered rows
 		$SELECT2 =
-				"SELECT SQL_CACHE COUNT(*)" .
-				" FROM  `##media`" .
-				" JOIN  `##gedcom_setting` ON (m_file = gedcom_id AND setting_name = 'MEDIA_DIRECTORY')" .
-				" WHERE setting_value=?" .
-				" AND   m_filename LIKE CONCAT(?, '%')" .
-				" AND   m_filename NOT LIKE 'http://%'" .
-				" AND   m_filename NOT LIKE 'https://%'";
+			"SELECT SQL_CACHE COUNT(*)" .
+			" FROM  `##media`" .
+			" JOIN  `##gedcom_setting` ON (m_file = gedcom_id AND setting_name = 'MEDIA_DIRECTORY')" .
+			" WHERE setting_value=?" .
+			" AND   m_filename LIKE CONCAT(?, '%')" .
+			" AND   m_filename NOT LIKE 'http://%'" .
+			" AND   m_filename NOT LIKE 'https://%'";
 		$ARGS2 = array(
 			$media_folder,
 			$media_path
@@ -176,19 +176,19 @@ case 'load_json':
 	case 'external':
 		// Filtered rows
 		$SELECT1 =
-				"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS m_filename, m_id AS xref, m_titl, m_file AS gedcom_id, m_gedcom AS gedcom" .
-				" FROM  `##media`" .
-				" WHERE (m_filename LIKE 'http://%' OR m_filename LIKE 'https://%')" .
-				" AND   (m_filename LIKE CONCAT('%', ?, '%') OR m_titl LIKE CONCAT('%', ?, '%'))";
+			"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS m_filename, m_id AS xref, m_titl, m_file AS gedcom_id, m_gedcom AS gedcom" .
+			" FROM  `##media`" .
+			" WHERE (m_filename LIKE 'http://%' OR m_filename LIKE 'https://%')" .
+			" AND   (m_filename LIKE CONCAT('%', ?, '%') OR m_titl LIKE CONCAT('%', ?, '%'))";
 		$ARGS1 = array(
 			WT_Filter::escapeLike($search),
 			WT_Filter::escapeLike($search)
 		);
 		// Unfiltered rows
 		$SELECT2 =
-				"SELECT SQL_CACHE COUNT(*)" .
-				" FROM  `##media`" .
-				" WHERE (m_filename LIKE 'http://%' OR m_filename LIKE 'https://%')";
+			"SELECT SQL_CACHE COUNT(*)" .
+			" FROM  `##media`" .
+			" WHERE (m_filename LIKE 'http://%' OR m_filename LIKE 'https://%')";
 		$ARGS2 = array();
 
 		if ($length>0) {
@@ -228,7 +228,7 @@ case 'load_json':
 		foreach ($rows as $row) {
 			$media = WT_Media::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 			$data[] = array(
-			 	WT_Gedcom_Tag::getLabelValue('URL', $row->m_filename),
+				WT_Gedcom_Tag::getLabelValue('URL', $row->m_filename),
 				$media->displayImage(),
 				mediaObjectInfo($media),
 			);
@@ -312,7 +312,8 @@ case 'load_json':
 	}
 
 	header('Content-type: application/json');
-	echo json_encode(array( // See http://www.datatables.net/usage/server-side
+	// See http://www.datatables.net/usage/server-side
+	echo json_encode(array(
 		'draw'            => WT_Filter::getInteger('draw'), // String, but always an integer
 		'recordsTotal'    => $recordsTotal,
 		'recordsFiltered' => $recordsFiltered,
@@ -492,14 +493,12 @@ function mediaObjectInfo(WT_Media $media) {
 		'<b>' . $name . '</b>' .
 		'<div><i>' . WT_Filter::escapeHtml($media->getNote()) . '</i></div>' .
 		'<br>' .
-		'<a href="' . $media->getHtmlUrl() . '">' . WT_I18N::translate('View') . '</a>';
-
-		$html .=
-			' - ' .
-			'<a onclick="window.open(\'addmedia.php?action=editmedia&amp;pid=' . $xref . '&ged=' . WT_Filter::escapeJs($gedcom) . '\', \'_blank\', edit_window_specs)" href="#">' . WT_I18N::Translate('Edit') . '</a>' .
-			' - ' .
-			'<a onclick="return delete_media(\'' . WT_Filter::escapeJs(WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($media->getFullName()))) . '\', \'' . $media->getXref() . '\', \'' . WT_Filter::escapeJs($gedcom) . '\');" href="#">' . WT_I18N::Translate('Delete') . '</a>' .
-			' - ';
+		'<a href="' . $media->getHtmlUrl() . '">' . WT_I18N::translate('View') . '</a>' .
+		' - ' .
+		'<a onclick="window.open(\'addmedia.php?action=editmedia&amp;pid=' . $xref . '&ged=' . WT_Filter::escapeJs($gedcom) . '\', \'_blank\', edit_window_specs)" href="#">' . WT_I18N::Translate('Edit') . '</a>' .
+		' - ' .
+		'<a onclick="return delete_media(\'' . WT_Filter::escapeJs(WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($media->getFullName()))) . '\', \'' . $media->getXref() . '\', \'' . WT_Filter::escapeJs($gedcom) . '\');" href="#">' . WT_I18N::Translate('Delete') . '</a>' .
+		' - ';
 
 	if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
 		$html .= '<a onclick="return ilinkitem(\'' . $xref . '\', \'manage\', \'' . $gedcom . '\')" href="#">' . WT_I18N::Translate('Manage links') . '</a>';
@@ -537,10 +536,12 @@ function mediaObjectInfo(WT_Media $media) {
 	foreach ($media->linkedSources('OBJE') as $link) {
 		$linked[] = '<a href="' . $link->getHtmlUrl() . '">' . $link->getFullName() . '</a>';
 	}
-	foreach ($media->linkedNotes('OBJE') as $link) { // Invalid GEDCOM - you cannot link a NOTE to an OBJE
+	foreach ($media->linkedNotes('OBJE') as $link) {
+		// Invalid GEDCOM - you cannot link a NOTE to an OBJE
 		$linked[] = '<a href="' . $link->getHtmlUrl() . '">' . $link->getFullName() . '</a>';
 	}
-	foreach ($media->linkedRepositories('OBJE') as $link) { // Invalid GEDCOM - you cannot link a REPO to an OBJE
+	foreach ($media->linkedRepositories('OBJE') as $link) {
+		// Invalid GEDCOM - you cannot link a REPO to an OBJE
 		$linked[] = '<a href="' . $link->getHtmlUrl() . '">' . $link->getFullName() . '</a>';
 	}
 	if ($linked) {
@@ -570,6 +571,7 @@ $controller
 	->restrictAccess(Auth::isAdmin())
 	->setPageTitle(WT_I18N::translate('Media'))
 	->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
+	->addExternalJavascript(WT_DATATABLES_BOOTSTRAP_JS_URL)
 	->pageHeader()
 	->addInlineJavascript('
 	jQuery("#media-table-' . $table_id . '").dataTable({
@@ -591,7 +593,13 @@ $controller
 		]
 	});
 	');
+
 ?>
+<ol class="breadcrumb small">
+	<li><a href="admin.php"><?php echo WT_I18N::translate('Administration'); ?></a></li>
+	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
+</ol>
+<h2><?php echo $controller->getPageTitle(); ?></h2>
 
 <form method="get" action="<?php echo WT_SCRIPT_NAME; ?>">
 	<table class="media_items">
@@ -612,41 +620,40 @@ $controller
 			</td>
 			<td>
 				<?php
-					switch ($files) {
-					case 'local':
-					case 'unused':
-						$extra = 'onchange="this.form.submit();"';
-						echo
-							'<span dir="ltr">', // The full path will be LTR or mixed LTR/RTL.  Force LTR.
-							WT_DATA_DIR;
-						// Don’t show a list of media folders if it just contains one folder
-						if (count($media_folders)>1) {
-							echo '&nbsp;', select_edit_control('media_folder', $media_folders, null, $media_folder, $extra);
-						} else {
-							echo $media_folder, '<input type="hidden" name="media_folder" value="', WT_Filter::escapeHtml($media_folder), '">';
-						}
-						// Don’t show a list of subfolders if it just contains one subfolder
-						if (count($media_paths)>1) {
-							echo '&nbsp;', select_edit_control('media_path', $media_paths, null, $media_path, $extra);
-						} else {
-							echo $media_path, '<input type="hidden" name="media_path" value="', WT_Filter::escapeHtml($media_path), '">';
-						}
-						echo
-							'</span>',
-							'<div>',
-							'<input type="radio" name="subfolders" value="include"', ($subfolders=='include' ? ' checked="checked"' : ''), ' onchange="this.form.submit();">',
-							WT_I18N::translate('Include subfolders'),
-							'<br>',
-							'<input type="radio" name="subfolders" value="exclude"', ($subfolders=='exclude' ? ' checked="checked"' : ''), ' onchange="this.form.submit();">',
-							WT_I18N::translate('Exclude subfolders'),
-							'</div>';
-						break;
-					case 'external':
-						echo WT_I18N::translate('External media files have a URL instead of a filename.');
-						echo '<input type="hidden" name="media_folder" value="', WT_Filter::escapeHtml($media_folder), '">';
-						echo '<input type="hidden" name="media_path" value="',   WT_Filter::escapeHtml($media_path),   '">';
-						break;
+				switch ($files) {
+				case 'local':
+				case 'unused':
+					echo
+						'<span dir="ltr">', // The full path will be LTR or mixed LTR/RTL.  Force LTR.
+						WT_DATA_DIR;
+					// Don’t show a list of media folders if it just contains one folder
+					if (count($media_folders)>1) {
+						echo '&nbsp;', select_edit_control('media_folder', $media_folders, null, $media_folder, 'onchange="this.form.submit();"');
+					} else {
+						echo $media_folder, '<input type="hidden" name="media_folder" value="', WT_Filter::escapeHtml($media_folder), '">';
 					}
+					// Don’t show a list of subfolders if it just contains one subfolder
+					if (count($media_paths) > 1) {
+						echo '&nbsp;', select_edit_control('media_path', $media_paths, null, $media_path, 'onchange="this.form.submit();"');
+					} else {
+						echo $media_path, '<input type="hidden" name="media_path" value="', WT_Filter::escapeHtml($media_path), '">';
+					}
+					echo
+						'</span>',
+						'<div>',
+						'<input type="radio" name="subfolders" value="include"', ($subfolders=='include' ? ' checked="checked"' : ''), ' onchange="this.form.submit();">',
+						WT_I18N::translate('Include subfolders'),
+						'<br>',
+						'<input type="radio" name="subfolders" value="exclude"', ($subfolders=='exclude' ? ' checked="checked"' : ''), ' onchange="this.form.submit();">',
+						WT_I18N::translate('Exclude subfolders'),
+						'</div>';
+					break;
+				case 'external':
+					echo WT_I18N::translate('External media files have a URL instead of a filename.');
+					echo '<input type="hidden" name="media_folder" value="', WT_Filter::escapeHtml($media_folder), '">';
+					echo '<input type="hidden" name="media_path" value="',   WT_Filter::escapeHtml($media_path),   '">';
+					break;
+				}
 				?>
 			</td>
 		</tr>

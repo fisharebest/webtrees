@@ -32,7 +32,9 @@ class WT_Report_HTML_Html extends WT_Report_Base_Html {
 	 * @return string
 	 */
 	function render($renderer, $sub = false, $inat = true) {
-		if (!empty($this->attrs["wt_style"])) $renderer->setCurrentStyle($this->attrs["wt_style"]);
+		if (!empty($this->attrs["wt_style"])) {
+			$renderer->setCurrentStyle($this->attrs["wt_style"]);
+		}
 
 		$this->text = $this->getStart() . $this->text;
 		foreach ($this->elements as $element) {
@@ -47,7 +49,9 @@ class WT_Report_HTML_Html extends WT_Report_Base_Html {
 			}
 		}
 		$this->text .= $this->getEnd();
-		if ($sub) return $this->text;
+		if ($sub) {
+			return $this->text;
+		}
 
 		// If not called by an other attribute
 		if ($inat) {

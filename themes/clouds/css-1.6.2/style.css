@@ -4275,8 +4275,7 @@ li a.link {
 	content: "";
 }
 
-.lang-active,
-.theme-active {
+.secondary-menu .active {
 	color: #006;
 	font-weight: 900;
 }

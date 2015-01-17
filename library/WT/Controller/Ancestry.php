@@ -1,6 +1,6 @@
 <?php
 // webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// Copyright (C) 2015 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.
@@ -18,6 +18,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+use WT\Theme;
 
 /**
  * Class WT_Controller_Ancestry - Controller for the ancestry chart
@@ -38,7 +39,7 @@ class WT_Controller_Ancestry extends WT_Controller_Chart {
 	 * Startup activity
 	 */
 	function __construct() {
-		global $bwidth, $bheight, $cbwidth, $cbheight, $pbwidth, $pbheight, $PEDIGREE_FULL_DETAILS;
+		global $bwidth, $bheight, $pbwidth, $pbheight, $PEDIGREE_FULL_DETAILS;
 		global $DEFAULT_PEDIGREE_GENERATIONS, $PEDIGREE_GENERATIONS, $MAX_PEDIGREE_GENERATIONS, $OLD_PGENS, $box_width, $Dbwidth, $Dbheight;
 		global $show_full;
 
@@ -64,8 +65,8 @@ class WT_Controller_Ancestry extends WT_Controller_Chart {
 
 		// -- adjust size of the compact box
 		if (!$this->show_full) {
-			$bwidth = $cbwidth;
-			$bheight = $cbheight;
+			$bwidth = Theme::theme()->parameter('compact-chart-box-x');
+			$bheight = Theme::theme()->parameter('compact-chart-box-y');
 		}
 
 		$pbwidth = $bwidth+12;
@@ -80,8 +81,11 @@ class WT_Controller_Ancestry extends WT_Controller_Chart {
 			$this->setPageTitle(WT_I18N::translate('Ancestors'));
 		}
 
-		if (strlen($this->name)<30) $this->cellwidth="420";
-		else $this->cellwidth=(strlen($this->name)*14);
+		if (strlen($this->name)<30) {
+			$this->cellwidth="420";
+		} else {
+			$this->cellwidth=(strlen($this->name)*14);
+		}
 	}
 
 	/**
@@ -92,7 +96,7 @@ class WT_Controller_Ancestry extends WT_Controller_Chart {
 	 * @param integer $depth the ascendancy depth to show
 	 */
 	public function printChildAscendancy($person, $sosa, $depth) {
-		global $OLD_PGENS, $WT_IMAGES, $Dindent, $pidarr, $box_width;
+		global $OLD_PGENS, $pidarr, $box_width;
 
 		if ($person) {
 			$pid=$person->getXref();
@@ -105,10 +109,10 @@ class WT_Controller_Ancestry extends WT_Controller_Chart {
 		echo '<li>';
 		echo '<table><tr><td>';
 		if ($sosa==1) {
-			echo '<img src="', $WT_IMAGES['spacer'], '" height="3" width="', $Dindent, '" alt=""></td><td>';
+			echo '<img src="', Theme::theme()->parameter('image-spacer'), '" height="3" width="', Theme::theme()->parameter('chart-descendancy-indent'), '"></td><td>';
 		} else {
-			echo '<img src="', $WT_IMAGES['spacer'], '" height="3" width="2" alt="">';
-			echo '<img src="', $WT_IMAGES['hline'], '" height="3" width="', ($Dindent-2), '" alt=""></td><td>';
+			echo '<img src="', Theme::theme()->parameter('image-spacer'), '" height="3" width="2" alt="">';
+			echo '<img src="', Theme::theme()->parameter('image-hline'), '" height="3" width="', Theme::theme()->parameter('chart-descendancy-indent') - 2, '"></td><td>';
 		}
 		print_pedigree_person($person);
 		echo '</td>';
@@ -120,9 +124,12 @@ class WT_Controller_Ancestry extends WT_Controller_Chart {
 		echo '<td class="details1">&nbsp;<span dir="ltr" class="person_box'. (($sosa==1)?'NN':(($sosa%2)?'F':'')) . '">&nbsp;', $sosa, '&nbsp;</span>&nbsp;';
 		echo '</td><td class="details1">';
 		$relation ='';
-		$new=($pid=='' or !isset($pidarr[$pid]));
-		if (!$new) $relation = '<br>[=<a href="#sosa'.$pidarr[$pid].'">'.$pidarr[$pid].'</a> - '.get_sosa_name($pidarr[$pid]).']';
-		else $pidarr[$pid]=$sosa;
+		$new=($pid=='' || !isset($pidarr[$pid]));
+		if (!$new) {
+			$relation = '<br>[=<a href="#sosa'.$pidarr[$pid].'">'.$pidarr[$pid].'</a> - '.get_sosa_name($pidarr[$pid]).']';
+		} else {
+			$pidarr[$pid]=$sosa;
+		}
 		echo get_sosa_name($sosa).$relation;
 		echo '</td>';
 		echo '</tr></table>';
@@ -137,7 +144,7 @@ class WT_Controller_Ancestry extends WT_Controller_Chart {
 		if ($family && $new && $depth>0) {
 			// print marriage info
 			echo '<span class="details1">';
-			echo '<img src="', $WT_IMAGES['spacer'], '" height="2" width="', $Dindent, '" alt=""><a href="#" onclick="return expand_layer(\'sosa_', $sosa, '\');" class="top"><i id="sosa_', $sosa, '_img" class="icon-minus" title="', WT_I18N::translate('View family'), '"></i></a>';
+			echo '<img src="', Theme::theme()->parameter('image-spacer'), '" height="2" width="', Theme::theme()->parameter('chart-descendancy-indent'), '" alt=""><a href="#" onclick="return expand_layer(\'sosa_', $sosa, '\');" class="top"><i id="sosa_', $sosa, '_img" class="icon-minus" title="', WT_I18N::translate('View family'), '"></i></a>';
 			echo '&nbsp;<span dir="ltr" class="person_box">&nbsp;', ($sosa*2), '&nbsp;</span>&nbsp;', WT_I18N::translate('and');
 			echo '&nbsp;<span dir="ltr" class="person_boxF">&nbsp;', ($sosa*2+1), '&nbsp;</span>&nbsp;';
 			if ($family->canShow()) {
