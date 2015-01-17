@@ -1087,7 +1087,7 @@ function print_findsource_link($element_id, $sourcename='') {
  * @return string
  */
 function print_findnote_link($element_id, $notename='') {
-	return '<a href="#" onclick="findnote(document.getElementById(\''.$element_id.'\'), document.getElementById(\''.$notename.'\'), \'WT_GEDCOM\'); return false;" class="icon-button_note" title="'.WT_I18N::translate('Find a shared note').'"></a>';
+	return '<a href="#" onclick="findnote(document.getElementById(\''.$element_id.'\'), document.getElementById(\''.$notename.'\'), \'WT_GEDCOM\'); return false;" class="icon-button_find" title="'.WT_I18N::translate('Find a shared note').'"></a>';
 }
 
 /**

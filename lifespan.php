@@ -220,9 +220,9 @@ $people = count($controller->people);
 					<td><a href="#" onclick="return false;" onmousedown="startScroll('left')" onmouseup="stopScroll()" class="icon-lsrtarrow"></a></td>
 				</tr>
 				<tr>
-					<td>&nbsp;</td>
+					<td></td>
 					<td align="center"><a href="#" onclick="return false;" onmousedown="startScroll('up')" onmouseup="stopScroll()" class="icon-lsdnarrow"></a></td>
-					<td>&nbsp;</td>
+					<td></td>
 				</tr>
 			</table>
 		</div>

@@ -665,5 +665,8 @@ function old_paths() {
 		WT_ROOT.'themes/xenea/jquery-ui-1.10.3',
 		WT_ROOT.'themes/_administration/css-1.6.0',
 		WT_ROOT.'themes/_administration/jquery-ui-1.10.3',
+		// Removed in 1.6.3
+		WT_ROOT.'js/jquery-1.11.1.js',
+		WT_ROOT.'js/jquery.datatables-1.10.3.js',
 	);
 }

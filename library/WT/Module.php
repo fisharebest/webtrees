@@ -244,8 +244,8 @@ abstract class WT_Module {
 		}
 
 		// The order of some modules is defined by the user.  Others are sorted by name.
-		if ($component != 'menu' && $component != 'sidebar' && $component != 'tab') {
-			uasort($array, function ($x, $y) {
+		if ($component !== 'menu' && $component !== 'sidebar' && $component !== 'tab') {
+			uasort($array, function (WT_Module $x, WT_Module $y) {
 				return WT_I18N::strcasecmp((string)$x, (string)$y);
 			});
 		}
@@ -262,7 +262,7 @@ abstract class WT_Module {
 	 * @return WT_Module_Block[]
 	 */
 	public static function getActiveBlocks($tree_id = WT_GED_ID, $access_level = WT_USER_ACCESS_LEVEL) {
-		static $blocks = null;
+		static $blocks;
 
 		if ($blocks === null) {
 			$blocks = self::getActiveModulesByComponent('block', $tree_id, $access_level);
@@ -280,7 +280,7 @@ abstract class WT_Module {
 	 * @return WT_Module_Chart[]
 	 */
 	public static function getActiveCharts($tree_id = WT_GED_ID, $access_level = WT_USER_ACCESS_LEVEL) {
-		static $charts = null;
+		static $charts;
 
 		if ($charts === null) {
 			$charts = self::getActiveModulesByComponent('chart', $tree_id, $access_level);
@@ -298,7 +298,7 @@ abstract class WT_Module {
 	 * @return WT_Module_Menu[]
 	 */
 	public static function getActiveMenus($tree_id = WT_GED_ID, $access_level = WT_USER_ACCESS_LEVEL) {
-		static $menus = null;
+		static $menus;
 
 		if ($menus === null) {
 			$menus = self::getActiveModulesByComponent('menu', $tree_id, $access_level);
@@ -316,7 +316,7 @@ abstract class WT_Module {
 	 * @return WT_Module_Report[]
 	 */
 	public static function getActiveReports($tree_id = WT_GED_ID, $access_level = WT_USER_ACCESS_LEVEL) {
-		static $reports = null;
+		static $reports;
 
 		if ($reports === null) {
 			$reports = self::getActiveModulesByComponent('report', $tree_id, $access_level);
@@ -334,7 +334,7 @@ abstract class WT_Module {
 	 * @return WT_Module_Sidebar[]
 	 */
 	public static function getActiveSidebars($tree_id = WT_GED_ID, $access_level = WT_USER_ACCESS_LEVEL) {
-		static $sidebars = null;
+		static $sidebars;
 
 		if ($sidebars === null) {
 			$sidebars = self::getActiveModulesByComponent('sidebar', $tree_id, $access_level);
@@ -352,7 +352,7 @@ abstract class WT_Module {
 	 * @return WT_Module_Tab[]
 	 */
 	public static function getActiveTabs($tree_id = WT_GED_ID, $access_level = WT_USER_ACCESS_LEVEL) {
-		static $tabs = null;
+		static $tabs;
 
 		if ($tabs === null) {
 			$tabs = self::getActiveModulesByComponent('tab', $tree_id, $access_level);
@@ -370,7 +370,7 @@ abstract class WT_Module {
 	 * @return WT_Module_Theme[]
 	 */
 	public static function getActiveThemes($tree_id = WT_GED_ID, $access_level = WT_USER_ACCESS_LEVEL) {
-		static $themes = null;
+		static $themes;
 
 		if ($themes === null) {
 			$themes = self::getActiveModulesByComponent('theme', $tree_id, $access_level);

@@ -8182,17 +8182,17 @@ msgstr "Diese Person als Kind mit einer existierenden Familie verbinden"
 #: admin_media.php:517 library/WT/Controller/Media.php:70
 #: library/WT/Controller/Media.php:159 modules_v3/lightbox/module.php:144
 msgid "Link this media object to a family"
-msgstr ""
+msgstr "Verlinke dieses Medienobjekt mit einer Familie"
 
 #: admin_media.php:522 library/WT/Controller/Media.php:74
 #: library/WT/Controller/Media.php:162 modules_v3/lightbox/module.php:149
 msgid "Link this media object to a source"
-msgstr ""
+msgstr "Verlinke dieses Medienobjekt mit einer Quelle"
 
 #: admin_media.php:512 library/WT/Controller/Media.php:66
 #: library/WT/Controller/Media.php:156 modules_v3/lightbox/module.php:139
 msgid "Link this media object to an individual"
-msgstr ""
+msgstr "Verlinke dieses Medienobjekt mit einer Person"
 
 #: inverselink.php:35 inverselink.php:68 library/WT/Controller/Family.php:215
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:75
@@ -11525,7 +11525,7 @@ msgstr "Wohnort"
 
 #: index_edit.php:355
 msgid "Restore the default block layout"
-msgstr ""
+msgstr "Stelle das ursprüngliche Block Layout wieder her"
 
 #. I18N: http://en.wikipedia.org/wiki/User_agent
 #: admin_site_access.php:274

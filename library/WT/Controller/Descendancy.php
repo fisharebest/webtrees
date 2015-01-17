@@ -133,7 +133,7 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 		global $WT_IMAGES, $Dindent;
 
 		echo "<li>";
-		echo "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td>";
+		echo "<table><tr><td>";
 		if ($depth==$this->generations) echo "<img src=\"".$WT_IMAGES["spacer"]."\" height=\"3\" width=\"$Dindent\" alt=\"\"></td><td>";
 		else {
 			echo "<img src=\"".$WT_IMAGES["spacer"]."\" height=\"3\" width=\"3\" alt=\"\">";
@@ -143,7 +143,7 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 		echo '</td>';
 
 		// check if child has parents and add an arrow
-		echo '<td>&nbsp;</td>';
+		echo '<td></td>';
 		echo '<td>';
 		foreach ($person->getChildFamilies() as $cfamily) {
 			foreach ($cfamily->getSpouses() as $parent) {
@@ -195,7 +195,7 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 		// print marriage info
 		echo '<li>';
 		echo '<img src="', $WT_IMAGES['spacer'], '" height="2" width="', ($Dindent+4), '" alt="">';
-		echo '<span class="details1" style="white-space:nowrap;">';
+		echo '<span class="details1">';
 		echo "<a href=\"#\" onclick=\"expand_layer('".$uid."'); return false;\" class=\"top\"><i id=\"".$uid."_img\" class=\"icon-minus\" title=\"".WT_I18N::translate('View family')."\"></i></a>";
 		if ($family->canShow()) {
 			foreach ($family->getFacts(WT_EVENTS_MARR) as $fact) {
@@ -206,14 +206,14 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 
 		// print spouse
 		$spouse=$family->getSpouse($person);
-		echo '<ul style="list-style:none; display:block;" id="'.$uid.'">';
+		echo '<ul id="'.$uid.'" class="generation">';
 		echo '<li>';
-		echo '<table border="0" cellpadding="0" cellspacing="0"><tr><td>';
+		echo '<table><tr><td>';
 		print_pedigree_person($spouse);
 		echo '</td>';
 
 		// check if spouse has parents and add an arrow
-		echo '<td>&nbsp;</td>';
+		echo '<td></td>';
 		echo '<td>';
 		if ($spouse) {
 			foreach ($spouse->getChildFamilies() as $cfamily) {

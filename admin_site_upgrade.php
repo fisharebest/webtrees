@@ -57,12 +57,6 @@ $controller
 	->setPageTitle(WT_I18N::translate('Upgrade wizard'))
 	->pageHeader();
 
-// Flush output as it happens - only effective on some webserver configurations.
-ob_implicit_flush(true);
-if (ob_get_level()) {
-	ob_end_flush();
-}
-
 echo '<h2>', $controller->getPageTitle(), '</h2>';
 
 if ($latest_version == '') {
@@ -109,7 +103,7 @@ if ($changes) {
 	echo '<br>', WT_I18N::translate('There are no pending changes.'), $icon_success;
 }
 
-echo '</li>'; flush();
+echo '</li>';
 
 ////////////////////////////////////////////////////////////////////////////////
 // Custom modules may not work with the new version.
@@ -211,7 +205,7 @@ if ($custom_modules) {
 	echo '<input type="hidden" name="modules" value="', WT_Filter::escapeHtml($modules_action), '">';
 }
 
-echo '</li>'; flush();
+echo '</li>';
 
 ////////////////////////////////////////////////////////////////////////////////
 // Custom themes may not work with the new version.
@@ -274,7 +268,7 @@ if ($custom_themes) {
 	echo '<input type="hidden" name="themes" value="', WT_Filter::escapeHtml($themes_action), '">';
 }
 
-echo '</li>'; flush();
+echo '</li>';
 
 ////////////////////////////////////////////////////////////////////////////////
 // Make a backup of genealogy data
@@ -290,7 +284,6 @@ foreach (WT_Tree::getAll() as $tree) {
 	} else {
 		echo '<br>', WT_I18N::translate('Unable to create %s.  Check the permissions.', '<span dir="ltr">' . $filename . '</span>'), $icon_failure;
 	}
-	flush();
 }
 
 echo '</li>';
@@ -322,7 +315,7 @@ if ($zip_size) {
 	}
 }
 
-echo '</li>'; flush();
+echo '</li>';
 
 ////////////////////////////////////////////////////////////////////////////////
 // Unzip the file - this checks we have enough free disk space, that the .zip
@@ -374,7 +367,7 @@ if (is_array($res)) {
 	exit;
 }
 
-echo '</li>'; flush();
+echo '</li>';
 
 ////////////////////////////////////////////////////////////////////////////////
 // This is it - take the site offline first
@@ -400,7 +393,7 @@ foreach (new RecursiveIteratorIterator($iterator) as $file) {
 
 echo '<br>', WT_I18N::translate('All files have read and write permission.'), $icon_success;
 
-echo '</li>'; flush();
+echo '</li>';
 
 ////////////////////////////////////////////////////////////////////////////////
 // This is it - take the site offline first
@@ -415,7 +408,7 @@ if (@file_get_contents($lock_file) != $lock_file_text) {
 	echo '<br>', WT_I18N::translate('The file %s was created.', '<span dir="ltr">' . $lock_file . '</span>'), $icon_success;
 }
 
-echo '</li>'; flush();
+echo '</li>';
 
 ////////////////////////////////////////////////////////////////////////////////
 // Copy files
@@ -451,7 +444,7 @@ if (is_array($res)) {
 	exit;
 }
 
-echo '</li>'; flush();
+echo '</li>';
 
 ////////////////////////////////////////////////////////////////////////////////
 // All done - put the site back online
@@ -465,7 +458,7 @@ if (WT_File::delete($lock_file)) {
 	echo '<br>', WT_I18N::translate('The file %s could not be deleted.', '<span dir="ltr">' . $lock_file . '</span>'), $icon_failure;
 }
 
-echo '</li>'; flush();
+echo '</li>';
 
 ////////////////////////////////////////////////////////////////////////////////
 // Clean up

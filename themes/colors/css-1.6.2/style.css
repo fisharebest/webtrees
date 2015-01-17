@@ -1,5 +1,5 @@
 /*
-* Style for Standard theme
+* Style for colors theme
 *
 * webtrees: Web based Family History software
 * Copyright (C) 2014 webtrees development team.
@@ -32,11 +32,24 @@ html {
 }
 
 body {
-	color: #555;
+	color: #333;
 	background-color: #fff;
 	font: 12px tahoma, arial, helvetica, sans-serif;
 	margin: 0;
-	padding: 0 8px;
+}
+
+p {
+	margin: 12px 0;
+}
+
+#home-page {
+	padding: 8px 0;
+}
+
+#content {
+	margin-left: 8px;  
+	margin-right: 8px;
+	padding-top: 10px;
 }
 
 main {
@@ -45,6 +58,40 @@ main {
 }
 
 /* ====== Round Corners ======== */
+input,
+textarea,
+fieldset,
+.border1,
+.block,
+.descriptionbox,
+.facts_label,
+.facts_label03,
+.facts_value,
+.lifespan_outer,
+.list_label,
+.list_label_wrap,
+.list_value,
+.list_value_wrap,
+.messagebox,
+.optionbox,
+.person_box,
+.person_boxF,
+.person_boxNN,
+.person0,
+.person1,
+.person2,
+.person3,
+.person4,
+.person5,
+.primary-menu ul,
+.secondary-menu li ul,
+footer,
+#indi_main_blocks,
+#tabs,
+#save-cancel,
+.topbottombar {
+	border-radius: 3px;
+}
 
 /* ios on click workaround */
 .iconz {
@@ -69,7 +116,7 @@ textarea:required:invalid {
 }
 
 a {
-	color: #555;
+	color: #333;
 	text-decoration: none;
 }
 
@@ -103,13 +150,14 @@ dt {
 }
 
 h2 {
-	color: #006;
+	color: #333;
 	font-size: 18px;
 	font-weight: bold;
+	margin: 14px 0;
 }
 
 h4 {
-	color: #006;
+	color: #333;
 	font-size: 12px;
 	font-weight: bold;
 }
@@ -145,13 +193,13 @@ input,
 button,
 textarea {
 	border-width: 1px;
-	border-color: #fff #555 #555 #fff;
-	font-size: 12px;
+	border-color: #fff #494949 #494949 #fff;
+	font-size: 13px;
 }
 
 input,
 textarea {
-	padding: 0 3px;
+	padding: 3px;
 }
 
 textarea {
@@ -159,7 +207,6 @@ textarea {
 }
 
 .topbottombar {
-	background-color: #81a9cb;
 	color: #fff;
 	font-size: 12px;
 	font-weight: bold;
@@ -181,7 +228,7 @@ legend {
 }
 
 select {
-	border: 1px solid #555;
+	border: 1px solid #ccc;
 	font-size: 12px;
 	margin: 0 7px;
 	padding: 1px;
@@ -203,21 +250,25 @@ header form {
 	color: #999;
 }
 
+hr {
+	margin-top: 5px;
+}
+
 .person_box {
-	background: #edf7fd;
-	border: solid #81a9cb 1px;
+	background-color: #ddf;
+	border: 1px solid #aaa;
 	padding: 3px;
 }
 
 .person_boxF {
-	background: #e9daf1;
-	border: 1px solid #ff2080;
+	background-color: #fdd;
+	border: 1px solid #aaa;
 	padding: 3px;
 }
 
 .person_boxNN {
-	background: #fff;
-	border: dashed #81a9cb 1px;
+	background-color: #fff;
+	border: 1px solid #aaa;
 	padding: 3px;
 }
 
@@ -265,7 +316,7 @@ table.center {
 .list_value_wrap {
 	background-color: #edf7f9;
 	font-size: 12px;
-	border: solid #81a9cb 1px;
+	border: solid #999 1px;
 	vertical-align: top;
 }
 
@@ -311,8 +362,13 @@ div.fact_SHARED_NOTE {
 .facts_value {
 	background-color: #edf7fd;
 	font-size: 12px;
-	border: solid #81a9cb 1px;
+	border: solid #999 1px;
 	padding: 4px;
+}
+
+.facts_label .submenu a {
+	background: #fff;
+	color: #000;
 }
 
 .quickfacts a {
@@ -352,7 +408,7 @@ a:hover .nameZoom {
 }
 
 .nameZoom {
-	color: #555;
+	color: #333;
 	font-size: 14px;
 	font-weight: bold;
 }
@@ -362,7 +418,7 @@ a:hover .nameZoom {
 }
 
 .name_head {
-	color: #555;
+	color: #333;
 	font-size: 16px;
 	font-weight: bold;
 	line-height: 2;
@@ -394,7 +450,7 @@ a:hover .nameZoom {
 }
 
 .indent {
-	padding-left: 20px;
+	padding-left: 7px;
 }
 
 .image {
@@ -419,7 +475,7 @@ a:hover .nameZoom {
 }
 
 .sublinks_cell {
-	background-color: #edf7fd;
+	background-color: #9be;
 	font-size: 12px;
 }
 
@@ -477,8 +533,8 @@ a:hover .nameZoom {
 .submenu {
 	text-decoration: none;
 	font-size: 11px;
-	background-color: #edf7fd;
-	border: solid #81a9cb 1px;
+	background-color: #fff;
+	border: solid #ccc 1px;
 	visibility: hidden;
 	position: absolute;
 	padding: 5px;
@@ -489,7 +545,8 @@ a:hover .nameZoom {
 	font-size: 11px;
 	height: 20px;
 	text-decoration: none;
-	background-color: #edf7fd;
+	background-color: #fff;
+	border: 1px solid #ccc;
 	padding: 1px;
 	white-space: nowrap;
 }
@@ -498,7 +555,8 @@ a:hover .nameZoom {
 	vertical-align: middle;
 	height: 20px;
 	font-size: 11px;
-	background-color: #e6f0fa;
+	background-color: #fff;
+	border: 1px solid #ccc;
 	white-space: nowrap;
 	padding: 1px;
 }
@@ -516,8 +574,7 @@ a:hover .nameZoom {
 }
 
 .news_box {
-	background-color: #edf7fd;
-	border-top: solid #81a9cb 1px;
+	border-top: solid #ccc 1px;
 }
 
 .news_title {
@@ -609,8 +666,8 @@ a:hover .nameZoom {
 }
 
 .person0 {
-	background-color: #aaf;
-	border: outset #aaf 1px;
+	background-color: #ddf;
+	border: outset #999 1px;
 	vertical-align: top;
 }
 
@@ -627,7 +684,7 @@ a:hover .nameZoom {
 }
 
 .person3 {
-	background-color: #55f;
+	background-color: #aad;
 	border: outset #55f 1px;
 	vertical-align: top;
 }
@@ -658,6 +715,7 @@ a:hover .nameZoom {
 
 .search_hit {
 	background-color: #ff0;
+	color: #000;
 }
 
 .search_item {
@@ -665,17 +723,15 @@ a:hover .nameZoom {
 }
 
 .descriptionbox {
-	color: #fff;
 	font-size: 12px;
-	background-color: #81a9cb;
+	border: 1px solid #999;
 	vertical-align: top;
 	padding: 3px;
 }
 
 .optionbox {
-	background-color: #d1d9ef;
 	font-size: 12px;
-	border: solid #81a9cb 1px;
+	border: solid #999 1px;
 	vertical-align: top;
 	white-space: nowrap;
 	padding: 3px;
@@ -760,7 +816,7 @@ a:hover .nameZoom {
 
 .messagebox {
 	background-color: #c2ceef;
-	border: solid #81a9cb 1px;
+	border: solid #ccc 1px;
 }
 
 /* ---Pending edits--- */
@@ -777,12 +833,13 @@ a:hover .nameZoom {
 a.showit {
 	position: relative;
 	z-index: 24;
+	color: #000;
 	text-decoration: none;
 }
 
 a.showit:hover {
 	z-index: 25;
-	background-color: #ffff9b;
+	background-color: #ff9;
 	cursor: crosshair;
 }
 
@@ -796,12 +853,10 @@ a.showit:hover > span {
 	top: 22px;
 	left: 0;
 	width: 225px;
-	border: 2px solid #1f1f1f;
-	border-right-color: #000;
-	border-bottom-color: #000;
+	border: 2px solid #000;
 	border-left: 15px outset;
 	padding: 3px;
-	background: #4f4f4f;
+	background-color: #444;
 	color: #fff;
 	font-size: 15px;
 	text-align: left;
@@ -886,7 +941,7 @@ a.showit:hover > span {
 }
 
 .gchart {
-	border: solid #81a9cb 1px;
+	border: 1px solid #999;
 }
 
 /* ---Find special characters--- */
@@ -987,9 +1042,9 @@ td.descriptionbox a {
 .person_box_template img,
 .person_box_template a.gallery {
 	float: left;
-	height: 50px;
-	margin: 0 4px 0 0;
-	max-width: 80px;
+	height: 45px;
+	margin: 0 3px 0 0;
+	max-width: 60px;
 	width: auto;
 }
 
@@ -1022,6 +1077,7 @@ td.descriptionbox a {
 	min-width: 40px;
 	text-align: center;
 }
+
 /* ======== medialist.php ==== */
 .makeMenu li ul {
 	border: thin solid #AAA;
@@ -1151,8 +1207,7 @@ td.descriptionbox a {
 #new_passwd_form,
 #register-form,
 #verify-form {
-	background-color: #edf7fd;
-	border: 1px outset #81a9cb;
+	border: 1px solid #999;
 	display: inline-block;
 	margin: 10px auto 0;
 	padding: 5px;
@@ -1378,13 +1433,6 @@ td.descriptionbox a {
 	visibility: hidden;
 }
 
-.recent_changes_block,
-.upcoming_events_block,
-.todays_events_block,
-.todo_block {
-	width: 98%;
-}
-
 .surname-list,
 .givn-list {
 	margin: 5px auto;
@@ -1573,6 +1621,10 @@ td.descriptionbox a {
 	float: left;
 }
 
+#index_small_blocks .name1 {
+	color: #333;
+}
+
 .small_inner_block {
 	max-height: 200px;
 	overflow: auto;
@@ -1583,33 +1635,82 @@ td.descriptionbox a {
 }
 
 .block {
-	background-color: #edf7fd;
-	border: solid #81a9cb 1px;
-	margin-top: 10px;
-	padding: 3px;
+	color: #000;
+	margin-bottom: 5px;
+	padding: 1px;
 	vertical-align: top;
 }
 
 .blockcontent {
-	margin: 5px;
+	border: solid #999 1px;
+	margin:  0 2px 10px 0;
 	overflow: auto;
+	padding: 5px;
 }
 
 .blockcontent .list_table {
 	border-spacing: 0;
-	border: solid #81a9cb 1px;
+	border: solid #999 1px;
 	border-right: 0;
 }
 
 .blockcontent .list_value,
 .blockcontent .list_value_wrap {
 	border: 0;
-	border-top: solid #81a9cb 1px;
-	border-right: solid #81a9cb 1px;
+	border-top: solid #999 1px;
+	border-right: solid #999 1px;
 }
 
 .blockheader {
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	border-collapse: collapse;
+}
+
+.blockh1 {
+	background: url(images/left1B.png) no-repeat;
+	height: 24px;
+	width: 26px;
+	padding: 0;
+}
+
+.blockh2 {
+	background: url(images/left2.png) repeat-x;
+	font-size: 13px;
 	font-weight: bold;
+	padding: 0;
+}
+
+.blockh3 {
+	background: url(images/left3.png) no-repeat;
+	height: 24px;
+	width: 8px;
+	padding: 0;
+}
+
+.blockhc {
+	padding: 3px 3px 0;
+}
+
+.blockhc img {
+	padding-right: 3px;
+}
+
+[dir=rtl] .blockh1 {
+	background-image: url(images/right1B.png);
+}
+
+[dir=rtl] .blockh3 {
+	background-image: url(images/right3.png);
+}
+
+[dir=rtl] .blockhc {
+	padding: 3px 0 0 3px;
+}
+
+[dir=rtl] .blockhc img {
+	padding-left: 3px;
 }
 
 /* end Block styles */
@@ -1793,13 +1894,11 @@ span.link_text {
 
 #indi_header {
 	overflow: hidden;
-	border-radius: 3px;
-	border: 1px solid #b2c7d7;
 	margin: 0 0 5px;
-	padding: 10px 0;
 }
 
 #indi_header h3 {
+	color: #777;
 	font-size: 90%;
 	font-weight: bold;
 	margin: 0;
@@ -1820,7 +1919,7 @@ span.link_text {
 #indi_header h3.person_box,
 #indi_header h3.person_boxF,
 #indi_header h3.person_boxNN {
-	border: 1px solid #2694e8;
+	border: 1px solid #999;
 }
 
 #indi_header h3 .header_age {
@@ -1845,6 +1944,7 @@ span.link_text {
 }
 
 #main_name {
+	color: #555;
 	float: left;
 	font-size: 2em;
 	margin: 10px;
@@ -2002,7 +2102,7 @@ dd .deletelink {
 }
 
 .female_gender {
-	background-position: -45px 1px;
+	background-position: -45px 3px;
 	width: 24px;
 	height: 30px;
 }
@@ -2115,6 +2215,12 @@ dd .deletelink {
 .ui-accordion .ui-accordion-content {
 	position: relative;
 	padding: 0 5px;
+	overflow: visible;
+}
+
+.ui-tabs,
+.ui-tabs .ui-tabs-nav li a {
+	padding: 0;
 }
 
 #sidebarAccordion .ui-accordion-header {
@@ -2122,11 +2228,27 @@ dd .deletelink {
 }
 
 .ui-widget-header {
+	border: 1px solid #fff;
 	padding: 3px;
 }
 
-[dir=rtl] .ui-tabs .ui-tabs-nav li {
-	float: right;
+.ui-state-hover a,
+.ui-state-hover a:hover,
+.ui-state-default a:link {
+	color: #000;
+}
+
+.ui-menu .ui-menu-item a {
+	font-size: 12px;
+}
+
+.ui-menu .ui-menu-item a.ui-state-hover,
+.ui-menu .ui-menu-item a.ui-state-active {
+	color: #f00;
+}
+
+.ui-helper-reset {
+	line-height: 1.5;
 }
 
 [dir=rtl] .ui-accordion .ui-accordion-header .ui-icon {
@@ -2321,7 +2443,7 @@ dd .deletelink {
 	width: 10px;
 	height: 99999px;
 	content: "";
-	border: 1px solid #81a9cb;
+	border: 1px solid #999;
 	border-top-left-radius: 3px;
 	border-top-right-radius: 3px;
 }
@@ -2333,12 +2455,12 @@ dd .deletelink {
 
 .separator-hidden:after,
 [dir=rtl] .separator-visible:after {
-	background: #99c2ff url(images/general_sprite.png) no-repeat -26px 100px;
+	background: url(images/general_sprite.png) no-repeat -26px 100px;
 }
 
 .separator-visible:after,
 [dir=rtl] .separator-hidden:after {
-	background: #99c2ff url(images/general_sprite.png) no-repeat -1px 100px;
+	background: url(images/general_sprite.png) no-repeat -1px 100px;
 }
 
 /* Sidebar content items */
@@ -2530,8 +2652,7 @@ dd .deletelink {
 }
 
 #find-header {
-	background-color: #81a9cb;
-	border: 1px outset #81a9cb;
+	border: 1px outset #999;
 	margin: 10px auto;
 	padding: 5px 20px;
 	width: 50%;
@@ -2549,14 +2670,13 @@ dd .deletelink {
 
 #find-output,
 #find-output-special {
-	background-color: #edf7f9;
-	border: 1px outset #81a9cb;
+	border: 1px outset #999;
 	margin: 20px 5px;
 	padding: 10px;
 }
 
 #find-output p {
-	border-top: 1px solid #81a9cb;
+	border-top: 1px solid #999;
 	font-weight: bold;
 	margin: 0;
 	padding-top: 10px;
@@ -2579,12 +2699,12 @@ dd .deletelink {
 }
 
 #find-output .find-media-dirs {
-	border-bottom: 1px solid #81a9cb;
+	border-bottom: 1px solid #999;
 	padding: 3px;
 }
 
 #find-output .find-media-media {
-	border: 1px solid #81a9cb;
+	border: 1px solid #999;
 	overflow: hidden;
 	margin: 1px;
 	padding: 2px;
@@ -2633,16 +2753,13 @@ dd .deletelink {
 }
 
 #search-page-table {
-	background-color: #81a9cb;
-	border: 1px outset #ccc;
+	border: 1px solid #999;
 	border-top: 0;
 	margin: 20px auto 0;
 	width: 580px;
 }
 
 #search-page-table .label {
-	border-top: 1px solid #ccc;
-	color: #fff;
 	float: left;
 	font-weight: bold;
 	padding: 5px 10px 0;
@@ -2650,8 +2767,8 @@ dd .deletelink {
 }
 
 #search-page-table .value {
-	background-color: #edf7f9;
-	border-top: 1px solid #ccc;
+	background-color: #ecf5ff;
+	border-top: 1px solid #999;
 	margin: 0 0 0 170px;
 	padding: 5px;
 	white-space: nowrap;
@@ -2677,16 +2794,13 @@ dd .deletelink {
 }
 
 #edituser-table {
-	background-color: #81a9cb;
-	border: 1px outset #ccc;
+	border: 1px solid #999;
 	border-top: 0;
 	margin: 20px auto 0;
 	width: 800px;
 }
 
 #edituser-table .label {
-	border-top: 1px solid #ccc;
-	color: #fff;
 	float: left;
 	font-weight: bold;
 	padding: 5px 10px 0;
@@ -2695,8 +2809,9 @@ dd .deletelink {
 }
 
 #edituser-table .value {
-	background-color: #edf7f9;
-	border-top: 1px solid #ccc;
+	background-color: #ecf5ff;
+	border-top: 1px solid #999;
+	color: #333;
 	margin: 0 0 0 260px;
 	padding: 5px;
 }
@@ -2844,9 +2959,8 @@ dd .deletelink {
 #save-cancel {
 	position: fixed;
 	bottom: 0;
-	background-color: #d1d9ef;
 	width: 98%;
-	border: solid #81a9cb 1px;
+	border: solid #999 1px;
 	margin: 0;
 }
 
@@ -3258,6 +3372,11 @@ table.table-census-assistant th {
 	empty-cells: show;
 }
 
+/*-- Interactive ---- */
+.tv_out {
+	margin-top: 12px;
+}
+
 /*-- Lifespan ---- */
 .lifespan_people span:first-letter {
 	font-variant: small-caps;
@@ -3362,7 +3481,7 @@ table.table-census-assistant th {
 [class^="icon-"],
 [class*=" icon-"] {
 	display: inline-block;
-	vertical-align: text-bottom;
+	vertical-align: middle;
 	background-repeat: no-repeat;
 }
 
@@ -3373,10 +3492,9 @@ table.table-census-assistant th {
 }
 
 .icon-admin {
-	width: 15px;
-	height: 15px;
+	width: 22px;
+	height: 22px;
 	background-image: url(images/admin.png);
-	margin: 0 5px;
 }
 
 .icon-bing {
@@ -3487,9 +3605,9 @@ table.table-census-assistant th {
 }
 
 .icon-cfamily {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/family.png);
+	width: 32px;
+	height: 32px;
+	background-image: url(images/cfamily.png);
 }
 
 .icon-childless {
@@ -3505,8 +3623,8 @@ table.table-census-assistant th {
 }
 
 .icon-clippings {
-	width: 22px;
-	height: 22px;
+	width: 32px;
+	height: 32px;
 	background-image: url(images/clippings.png);
 }
 
@@ -3535,8 +3653,8 @@ a.icon-ddarrow:hover {
 }
 
 .icon-edit_indi {
-	width: 20px;
-	height: 20px;
+	width: 22px;
+	height: 22px;
 	background-image: url(images/edit_indi.png);
 }
 
@@ -3547,9 +3665,9 @@ a.icon-ddarrow:hover {
 }
 
 .icon-fam-list {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/family.png);
+	width: 32px;
+	height: 32px;
+	background-image: url(images/sfamily.png);
 }
 
 .icon-googlemaps {
@@ -3563,12 +3681,12 @@ a.icon-ddarrow:hover {
 	margin: 0 5px;
 	width: 15px;
 	height: 15px;
-	background-image: url(images/help2.png);
+	background-image: url(images/help.png);
 }
 
 .icon-indi-list {
-	width: 20px;
-	height: 20px;
+	width: 32px;
+	height: 32px;
 	background-image: url(images/indis.png);
 }
 
@@ -3639,14 +3757,14 @@ a.icon-ldarrow:hover {
 }
 
 .icon-media {
-	width: 20px;
-	height: 20px;
+	width: 32px;
+	height: 32px;
 	background-image: url(images/media.png);
 }
 
 .icon-media-list {
-	width: 20px;
-	height: 20px;
+	width: 32px;
+	height: 32px;
 	background-image: url(images/media.png);
 }
 
@@ -3687,20 +3805,20 @@ a.icon-ldarrow:hover {
 }
 
 .icon-mypage {
-	width: 24px;
-	height: 24px;
+	width: 22px;
+	height: 25px;
 	background-image: url(images/mypage.png);
 }
 
 .icon-note {
-	width: 20px;
-	height: 20px;
+	width: 33px;
+	height: 35px;
 	background-image: url(images/notes.png);
 }
 
 .icon-note-list {
-	width: 20px;
-	height: 20px;
+	width: 33px;
+	height: 35px;
 	background-image: url(images/notes.png);
 }
 
@@ -3747,9 +3865,9 @@ a.icon-rdarrow:hover {
 }
 
 .icon-remove {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/remove.png);
+	width: 16px;
+	height: 16px;
+	background-image: url(images/delete.png);
 }
 
 .icon-resn-confidential {
@@ -3825,8 +3943,8 @@ a.icon-rdarrow:hover {
 }
 
 .icon-source {
-	width: 20px;
-	height: 20px;
+	width: 32px;
+	height: 32px;
 	background-image: url(images/source.png);
 }
 
@@ -3888,19 +4006,19 @@ a.icon-udarrow:hover {
 /* Silhouettes on charts */
 .icon-silhouette-F {
 	width: 37px;
-	height: 50px;
+	height: 45px;
 	background-image: url(images/silhouette_female_small.png);
 }
 
 .icon-silhouette-M {
 	width: 37px;
-	height: 50px;
+	height: 45px;
 	background-image: url(images/silhouette_male_small.png);
 }
 
 .icon-silhouette-U {
 	width: 37px;
-	height: 50px;
+	height: 45px;
 	background-image: url(images/silhouette_unknown_small.png);
 }
 
@@ -4051,13 +4169,14 @@ a.icon-udarrow:hover {
 header h1 {
 	clear: left;
 	float: left;
-	font-size: 20px;
+	font-size: 24px;
 	font-weight: normal;
-	margin: 0 10px 5px;
+	margin: 16px 12px 3px;
 }
 
 [dir=rtl] header h1 {
 	float: right;
+	margin: 16px 12px 3px;
 }
 
 /* Set stack level for top two header menu rows */
@@ -4066,177 +4185,152 @@ header h1 {
 	z-index: 210;
 }
 
-.header-logo {
-	float: left;
-	width: 242px;
-	height: 50px;
-}
-
-.header-logo:after {
-	content: url(images/webtrees.png);
-}
-
-[dir=rtl] .header-logo {
-	float: right;
+/* Title Line */
+header {
+	height: 98px;
 }
 
 .header-search {
-	float: right;
-}
-
-[dir=rtl] .header-search {
-	float: left;
-}
-
-/* ====== Secondary menu ======= */
-.secondary-menu li ul {
-	left: auto;
-	right: 0;
-}
-
-.secondary-menu a {
-	background: none;
 	display: inline;
 }
 
+/* ====== Secondary menu ======= */
 .secondary-menu {
 	float: right;
+	margin: 21px 10px 4px 0;
 	white-space: nowrap;
-	margin: 20px 10px 0 0;
-	font-weight: bold;
 }
 
 .secondary-menu li {
 	display: inline;
 	position: relative;
 	white-space: nowrap;
-	border-left: 2px solid #ccc;
-	padding: 0 5px;
 }
 
-.secondary-menu li:first-child,
-.secondary-menu li ul li {
-	border: 0;
+.secondary-menu li:before {
+	content: " | ";
+}
+
+.secondary-menu li a.link {
+	font-size: 13px;
+	margin-left: 5px;
+	margin-right: 5px;
 }
 
 .secondary-menu li ul {
-	display: none;
-	font-weight: normal;
-	position: absolute;
-	top: 1.1em;
-	background-color: #fff;
+	background-color: #eee;
 	border: thin solid #aaa;
-	margin: 0;
+	display: none;
+	left: 0;
+	position: absolute;
 }
 
 .secondary-menu li ul li {
-	padding: 2px;
 	display: block;
 	text-align: left;
 }
 
-.secondary-menu,
-.secondary-menu li ul {
-	list-style: none;
-	padding: 1px;
+.secondary-menu li ul li a {
+	color: #333;
 }
 
+.secondary-menu,
+.secondary-menu li ul {
+	color: #fff;
+	list-style: none;
+	padding: 1px;
+	top: 5px;
+}
+
+/*set position of dropdown */
 .secondary-menu li:hover > ul {
 	display: block;
 }
 
+.secondary-menu li a:hover {
+	color: #f5003d;
+}
+
+.secondary-menu ul li a {
+	background-color: #fff;
+	display: block;
+	padding: 2px 5px 2px 2px;
+}
+
+.secondary-menu ul li a:hover {
+	color: #000;
+}
+
+.secondary-menu li ul li:before,
+.secondary-menu li:first-child:before {
+	content: "";
+}
+
 .lang-active,
 .theme-active {
-	color: #006;
 	font-weight: 900;
 }
 
-[dir=rtl] #header-user-links {
-	float: left;
-	margin: 20px 0 0 10px;
-}
-
-[dir=rtl] #header-user-links .secondary-menu li ul {
-	left: 0;
-	right: auto;
+.search-icon {
+	height: 17px;
+	vertical-align: top;
 }
 
 [dir=rtl] .secondary-menu {
+	display: block;
 	float: left;
-	margin: 20px 0 0 10px;
+	margin: 21px 0 0 10px;
 }
 
 [dir=rtl] .secondary-menu li ul {
-	left: 0;
-	right: auto;
+	left: auto;
+	right: 0;
 }
 
 [dir=rtl] .secondary-menu li ul li {
 	text-align: right;
 }
 
-[dir=rtl] .secondary-menu li {
-	border-left: none;
-	border-right: 2px solid;
-}
-
-[dir=rtl] .secondary-menu li:first-child,
-[dir=rtl] .secondary-menu li ul li {
-	border: 0;
-}
-
-header input.image {
-	width: 17px;
-	height: 17px;
-	border: 0;
-	padding: 0;
-	vertical-align: top;
-}
-
-header input,
-button,
-textarea {
-	border-width: 1px;
-	border-color: #fff #555 #555 #fff;
-	font-size: 12px;
-}
-
-header input,
-textarea {
-	padding: 0 3px;
-}
-
 /* ====== Primary menu ========= */
-header nav {
-	border-top: 2px solid #81a9cb;
-	border-bottom: 2px solid #81a9cb;
-	margin: 8px auto;
-	padding: 5px 0;
-	position: relative;
-	clear: both;
-}
 
-.primary-menu,
-.primary-menu ul {
-	margin: 0;
-	list-style-type: none;
+header nav {
+    clear: both;
+    margin: 8px auto;
+    position: relative;
+
 }
 
 .primary-menu {
-	margin: 0 auto;
-	display: table;
+	display: inline-block;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	height: 48px;
+}
+
+.primary-menu ul {
+	padding: 0;
+	margin: 0;
+	border: 1px solid #ddd;
+	list-style-type: none;
+	position: absolute;
+	visibility: hidden;
+	opacity: 0;
+	background-color: #fff;
 }
 
 .primary-menu li {
 	float: left;
 	position: relative;
+	display: block;
+	list-style: none;
 }
 
-.primary-menu li li {
-	clear: both;
+.primary-menu li a {
+	display: block;
 }
 
-.primary-menu li:hover > ul {
+.primary-menu li > ul {
 	display: block;
 	position: absolute;
 	top: 0;
@@ -4244,63 +4338,76 @@ header nav {
 	right: auto;
 }
 
-.primary-menu > li:hover > ul {
+.primary-menu > li > a {
+	height: 37px;
+	width: 27px;
+}
+
+.primary-menu > li > ul {
 	left: 0;
 	right: auto;
-	top: 66px;
+	top: 40px;
 }
 
 .primary-menu a {
 	display: block;
+	text-decoration: none;
+	padding: 0 10px;
+	margin: 0;
 	white-space: nowrap;
-	overflow: hidden;
 }
 
-.primary-menu ul {
-	position: absolute;
-	display: none;
-	background: #fff;
-	border: thin solid #aaa;
-	padding: 5px 0;
+.primary-menu ul li:hover a,
+.primary-menu li:hover li a {
+	background: none;
+	border: 0;
 }
 
-.primary-menu li a {
-	margin: auto;
-	padding-top: 52px;
+.primary-menu li:hover > ul {
+	visibility: visible;
+	opacity: 1;
+}
+
+.primary-menu > li > ul > li:first-child {
+	text-indent: 0;
+	min-width: 100px;
 	width: 100%;
-}
-
-.primary-menu li li a {
-	display: block;
-	position: relative;
-	float: left;
-	font-size: 11px;
+	background: none;
+	font-weight: bold;
+	white-space: nowrap;
+	font-size: 14px;
+	text-align: center;
+	height: 22px;
 	line-height: 1.5;
-	padding: 1px 10px 1px 5px;
+	border-bottom: solid #ddd 1px;
 }
 
 .primary-menu > li {
-	background-image: url(images/large_menu_sprite.png);
+	background-image: url(images/sprites-top-menu.png);
 	background-repeat: no-repeat;
-	min-width: 80px;
-	height: 64px;
-	padding: 0 5px;
-	text-align: center;
+	height: 40px;
+	line-height: 40px;
+	margin: 4px 0 0 16px;
+	text-indent: 32px;
+	width: 40px;
 }
 
-.primary-menu li li {
-	background-image: url(images/small_menu_sprite.png);
+.primary-menu li ul li {
+	background-image: url(images/sprites-sub-menu.png);
 	background-repeat: no-repeat;
-	height: 24px;
+	height: 28px;
 	left: auto;
-	line-height: 24px;
+	line-height: 25px;
 	text-align: left;
-	text-indent: 26px;
+	text-indent: 22px;
 	width: 100%;
 }
 
-
 /* Reverse left and right on RTL pages */
+[dir=rtl] .primary-menu > li {
+	margin: 4px 16px 0 0;
+}
+
 [dir=rtl] .primary-menu li {
 	float: right;
 }
@@ -4320,28 +4427,24 @@ header nav {
 }
 
 [dir=rtl] .primary-menu li li a {
+	display: block;
 	float: right;
-	padding: 1px 5px 1px 10px;
+}
+
+[dir=rtl] .primary-menu > li > ul > li:first-child {
+	text-align: center;
 }
 
 /* ====== End Theme Header ===== */
 
 /* ====== Theme Footer ========= */
-
-#footer {
-	clear: both;
-	font-size: 12px;
-	padding-top: 10px;
-	text-align: center;
-}
-
 .contact_links {
-	margin-top: 15px;
+	margin: 30px 0 15px;
 	text-align: center;
 }
 
 .execution_stats {
-	padding-top: 12px;
+	padding: 12px;
 	text-align: center;
 }
 
@@ -4387,344 +4490,344 @@ footer .error {
 }
 
 #menu-mymenu {
-	background-position:center -70px;
+	background-position:center -287px;
 }
 
 #menu-chart {
-	background-position:center -140px;
+	background-position:center -41px;
 }
 
 #menu-list {
-	background-position:center -210px;
+	background-position: center -82px;
 }
 
 #menu-report {
-	background-position:center -280px;
+	background-position: center -164px;
 }
 
 #menu-calendar {
-	background-position:center -350px;
+	background-position: center -123px;
 }
 
 #menu-search {
-	background-position:center -420px;
+	background-position: center -205px;
 }
 
 #menu-help {
-	background-position:center -490px;
+	background-position: center -246px;
 }
 
 #menu-clippings {
-	background-position:center -560px;
+	background-position: center -328px;
 }
 
 #menu-indi {
-	background-position:center -630px;
+	background-position: center -369px;
 }
 
 #menu-indi-orderfam {
-	background-position: left 0;
+	background-position: left 0; /* error */
 }
 
 [dir=rtl] #menu-indi-orderfam {
-	background-position: right 0;
+	background-position: right 0; /* error */
 }
 
 #menu-sour {
-	background-position:center -700px;
+	background-position: center -451px;
 }
 
 #menu-fam {
-	background-position:center -770px;
+	background-position: center -410px;
 }
 
 #menu-obje {
-	background-position:center -840px;
+	background-position: center -533px;
 }
 
 #menu-note {
-	background-position:center -910px;
+	background-position: center -492px;
 }
 
 #menu-repo {
-	background-position:center -980px;
+	background-position: center -574px;
 }
 
 #menu-story {
-	background-position:center -1045px;
+	background-position: center -615px;
 }
 
 /* Header Sub-menu icons */
 #menu-admin {
-	background-position: left 0;
+	background-position: left -728px;
 }
 
 [dir=rtl] #menu-admin {
-	background-position: right 0;
+	background-position: right -728px;
 }
 
 #menu-branches {
-	background-position: left -450px;
+	background-position: left -468px;
 }
 
 [dir=rtl] #menu-branches {
-	background-position: right -450px;
+	background-position: right -468px;
 }
 
 #menu-calendar-day {
-	background-position: left -60px;
+	background-position: left -572px;
 }
 
 [dir=rtl] #menu-calendar-day {
-	background-position: right -60px;
+	background-position: right -572px;
 }
 
 #menu-calendar-month {
-	background-position: left -60px;
+	background-position: left -572px;
 }
 
 [dir=rtl] #menu-calendar-month {
-	background-position: right -60px;
+	background-position: right -572px;
 }
 
 #menu-calendar-year {
-	background-position: left -60px;
+	background-position: left -572px;
 }
 
 [dir=rtl] #menu-calendar-year {
-	background-position: right -60px;
+	background-position: right -572px;
 }
 
 #menu-chart-ancestry {
-	background-position: left -30px;
+	background-position: left -208px;
 }
 
 [dir=rtl] #menu-chart-ancestry {
-	background-position: right -30px;
+	background-position: right -208px;
 }
 
 #menu-chart-compact {
-	background-position: left -30px;
+	background-position: left -52px;
 }
 
 [dir=rtl] #menu-chart-compact {
-	background-position: right -30px;
+	background-position: right -52px;
 }
 
 #menu-chart-descendancy {
-	background-position: left -150px;
+	background-position: left -0px;
 }
 
 [dir=rtl] #menu-chart-descendancy {
-	background-position: right -150px;
+	background-position: right -0px;
 }
 
 #menu-chart-familybook {
-	background-position: left -180px;
+	background-position: left -104px;
 }
 
 [dir=rtl] #menu-chart-familybook {
-	background-position: right -180px;
+	background-position: right -104px;
 }
 
 #menu-chart-fanchart {
-	background-position: left -210px;
+	background-position: left -26px;
 }
 
 [dir=rtl] #menu-chart-fanchart {
-	background-position: right -210px;
+	background-position: right -26px;
 }
 
 #menu-chart-hourglass {
-	background-position: left -270px;
+	background-position: left -130px;
 }
 
 [dir=rtl] #menu-chart-hourglass {
-	background-position: right -270px;
+	background-position: right -130px;
 }
 
 #menu-chart-lifespan {
-	background-position: left -660px;
+	background-position: left -182px;
 }
 
 [dir=rtl] #menu-chart-lifespan {
-	background-position: right -660px;
+	background-position: right -182px;
 }
 
 #menu-chart-pedigree {
-	background-position: left -480px;
+	background-position: left -208px;
 }
 
 [dir=rtl] #menu-chart-pedigree {
-	background-position: right -480px;
+	background-position: right -208px;
 }
 
 #menu-chart-pedigree_map {
-	background-position: left -720px;
+	background-position: left -234px;
 }
 
 [dir=rtl] #menu-chart-pedigree_map {
-	background-position: right -720px;
+	background-position: right -234px;
 }
 
 #menu-chart-relationship {
-	background-position: left -540px;
+	background-position: left -260px;
 }
 
 [dir=rtl] #menu-chart-relationship {
-	background-position: right -540px;
+	background-position: right -260px;
 }
 
 #menu-chart-statistics {
-	background-position: left -630px;
+	background-position: left -286px;
 }
 
 [dir=rtl] #menu-chart-statistics {
-	background-position: right -630px;
+	background-position: right -286px;
 }
 
 #menu-chart-timeline {
-	background-position: left -660px;
+	background-position: left -312px;
 }
 
 [dir=rtl] #menu-chart-timeline {
-	background-position: right -660px;
+	background-position: right -312px;
 }
 
 #menu-chart-tree {
-	background-position: left -240px;
+	background-position: left -156px;
 }
 
 [dir=rtl] #menu-chart-tree {
-	background-position: right -240px;
+	background-position: right -156px;
 }
 
 #menu-clippingsadd {
-	background-position: left -930px;
+	background-position: left -702px;
 }
 
 [dir=rtl] #menu-clippingsadd {
-	background-position: right -930px;
+	background-position: right -702px;
 }
 
 #menu-clippingscart {
-	background-position: left -900px;
+	background-position: left -702px;
 }
 
 [dir=rtl] #menu-clippingscart {
-	background-position: right -900px;
+	background-position: right -702px;
 }
 
 #menu-fam-addchil {
-	background-position: left -1050px;
+	background-position: left -858px;
 }
 
 [dir=rtl] #menu-fam-addchil {
-	background-position: right -1050px;
+	background-position: right -858px;
 }
 
 #menu-fam-addfav {
-	background-position: left -870px;
+	background-position: left -832px;
 }
 
 [dir=rtl] #menu-fam-addfav {
-	background-position: right -870px;
+	background-position: right -832px;
 }
 
 #menu-fam-change {
-	background-position: left -90px;
+	background-position: left -858px;
 }
 
 [dir=rtl] #menu-fam-change {
-	background-position: right -90px;
+	background-position: right -858px;
 }
 
 #menu-fam-del {
-	background-position: left -840px;
+	background-position: left -936px;
 }
 
 [dir=rtl] #menu-fam-del {
-	background-position: right -840px;
+	background-position: right -936px;
 }
 
 #menu-fam-editraw {
-	background-position: left -90px;
+	background-position: left -754px;
 }
 
 [dir=rtl] #menu-fam-editraw {
-	background-position: right -90px;
+	background-position: right -574px;
 }
 
 #menu-fam-orderchil {
-	background-position: left -1080px;
+	background-position: left -858px;
 }
 
 [dir=rtl] #menu-fam-orderchil {
-	background-position: right -1080px;
+	background-position: right -858px;
 }
 
 #menu-help-contents {
-	background-position: left -300px;
+	background-position: left -624px;
 }
 
 [dir=rtl] #menu-help-contents {
-	background-position: right -300px;
+	background-position: right -624px;
 }
 
 #menu-help-faq {
-	background-position: left -300px;
+	background-position: left -624px;
 }
 
 [dir=rtl] #menu-help-faq {
-	background-position: right -300px;
+	background-position: right -624px;
 }
 
 #menu-help-genealogy {
-	background-position: left -120px;
+	background-position: left -624px;
 }
 
 [dir=rtl] #menu-help-genealogy {
-	background-position: right -120px;
+	background-position: right -624px;
 }
 
 #menu-help-hide {
-	background-position: left -300px;
+	background-position: left -624px;
 }
 
 [dir=rtl] #menu-help-hide {
-	background-position: right -300px;
+	background-position: right -624px;
 }
 
 #menu-help-show {
-	background-position: left -300px;
+	background-position: left -624px;
 }
 
 [dir=rtl] #menu-help-show {
-	background-position: right -300px;
+	background-position: right -624px;
 }
 
 #menu-help-technical {
-	background-position: left -120px;
+	background-position: left -676px;
 }
 
 [dir=rtl] #menu-help-technical {
-	background-position: right -120px;
+	background-position: right -676px;
 }
 
 #menu-help-wiki {
-	background-position: left -690px;
+	background-position: left -650px;
 }
 
 [dir=rtl] #menu-help-wiki {
-	background-position: right -690px;
+	background-position: right -650px;
 }
 
 #menu-indi-addfav {
-	background-position: left -870px;
+	background-position: left -832px;
 }
 
 [dir=rtl] #menu-indi-addfav {
-	background-position: right -870px;
+	background-position: right -832px;
 }
 
 #menu-indi-addname {
@@ -4736,337 +4839,337 @@ footer .error {
 }
 
 #menu-indi-del {
-	background-position: left -840px;
+	background-position: left -806px;
 }
 
 [dir=rtl] #menu-indi-del {
-	background-position: right -840px;
+	background-position: right -806px;
 }
 
 #menu-indi-editraw {
-	background-position: left -750px;
+	background-position: left -754px;
 }
 
 [dir=rtl] #menu-indi-editraw {
-	background-position: right -750px;
+	background-position: right -574px;
 }
 
 #menu-indi-editsex {
-	background-position: left -810px;
+	background-position: left -780px;
 }
 
 [dir=rtl] #menu-indi-editsex {
-	background-position: right -810px;
+	background-position: right -780px;
 }
 
 #menu-list-fam {
-	background-position: left -90px;
+	background-position: left -494px;
 }
 
 [dir=rtl] #menu-list-fam {
-	background-position: right -90px;
+	background-position: right -494px;
 }
 
 #menu-list-indi {
-	background-position: left -120px;
+	background-position: left -520px;
 }
 
 [dir=rtl] #menu-list-indi {
-	background-position: right -120px;
+	background-position: right -520px;
 }
 
 #menu-list-note {
-	background-position: left -420px;
+	background-position: left -416px;
 }
 
 [dir=rtl] #menu-list-note {
-	background-position: right -420px;
+	background-position: right -416px;
 }
 
 #menu-list-obje {
-	background-position: left -330px;
+	background-position: left -338px;
 }
 
 [dir=rtl] #menu-list-obje {
-	background-position: right -330px;
+	background-position: right -338px;
 }
 
 #menu-list-plac {
-	background-position: left -510px;
+	background-position: left -364px;
 }
 
 [dir=rtl] #menu-list-plac {
-	background-position: right -510px;
+	background-position: right -364px;
 }
 
 #menu-list-repo {
-	background-position: left -360px;
+	background-position: left -390px;
 }
 
 [dir=rtl] #menu-list-repo {
-	background-position: right -360px;
+	background-position: right -390px;
 }
 
 #menu-list-sour {
-	background-position: left -180px;
+	background-position: left -442px;
 }
 
 [dir=rtl] #menu-list-sour {
-	background-position: right -180px;
+	background-position: right -442px;
 }
 
 #menu-myaccount {
-	background-position: left -390px;
+	background-position: left -676px;
 }
 
 [dir=rtl] #menu-myaccount {
-	background-position: right -390px;
+	background-position: right -676px;
 }
 
 #menu-mypage {
-	background-position: left -390px;
+	background-position: left -676px;
 }
 
 [dir=rtl] #menu-mypage {
-	background-position: right -390px;
+	background-position: right -676px;
 }
 
 #menu-mypedigree {
-	background-position: left -480px;
+	background-position: left -208px;
 }
 
 [dir=rtl] #menu-mypedigree {
-	background-position: right -480px;
+	background-position: right -208px;
 }
 
 #menu-myrecord {
-	background-position: left -120px;
+	background-position: left -520px;
 }
 
 [dir=rtl] #menu-myrecord {
-	background-position: right -120px;
+	background-position: right -520px;
 }
 
 #menu-note-addfav {
-	background-position: left -870px;
+	background-position: left -832px;
 }
 
-[dir=rtl] #menu-note-addfav {
-	background-position: right -870px;
+[dir=rtl] #menu-note-fav {
+	background-position: right -832px;
 }
 
 #menu-note-del {
-	background-position: left -840px;
+	background-position: left -806px;
 }
 
 [dir=rtl] #menu-note-del {
-	background-position: right -840px;
+	background-position: right -806px;
 }
 
 #menu-note-edit {
-	background-position: left -1020px;
+	background-position: left -910px;
 }
 
 [dir=rtl] #menu-note-edit {
-	background-position: right -1020px;
+	background-position: right -910px;
 }
 
 #menu-note-editraw {
-	background-position: left -1020px;
+	background-position: left -754px;
 }
 
 [dir=rtl] #menu-note-editraw {
-	background-position: right -1020px;
+	background-position: right -574px;
 }
 
 #menu-obje-addfav {
-	background-position: left -870px;
+	background-position: left -832px;
 }
 
 [dir=rtl] #menu-obje-addfav {
-	background-position: right -870px;
+	background-position: right -832px;
 }
 
 #menu-obje-del {
-	background-position: left -840px;
+	background-position: left -1040px;
 }
 
 [dir=rtl] #menu-obje-del {
-	background-position: right -840px;
+	background-position: right -1040px;
 }
 
 #menu-obje-edit {
-	background-position: left -1110px;
+	background-position: left -962px;
 }
 
 [dir=rtl] #menu-obje-edit {
-	background-position: right -1110px;
+	background-position: right -962px;
 }
 
 #menu-obje-editraw {
-	background-position: left -1110px;
+	background-position: left -754px;
 }
 
 [dir=rtl] #menu-obje-editraw {
-	background-position: right -1110px;
+	background-position: right -574px;
 }
 
 #menu-obje-link {
-	background-position: left -1140px;
+	background-position: left -988px;
 }
 
 [dir=rtl] #menu-obje-link {
-	background-position: right -1140px;
+	background-position: right -988px;
 }
 
 #menu-obje-link-fam {
-	background-position: left -90px;
+	background-position: left -494px;
 }
 
 [dir=rtl] #menu-obje-link-fam {
-	background-position: right -90px;
+	background-position: right -494px;
 }
 
 #menu-obje-link-indi {
-	background-position: left -120px;
+	background-position: left -520px;
 }
 
 [dir=rtl] #menu-obje-link-indi {
-	background-position: right -120px;
+	background-position: right -520px;
 }
 
 #menu-obje-link-sour {
-	background-position: left -180px;
+	background-position: left -442px;
 }
 
 [dir=rtl] #menu-obje-link-sour {
-	background-position: right -180px;
+	background-position: right -442px;
 }
 
 #menu-repo-addfav {
-	background-position: left -870px;
+	background-position: left -832px;
 }
 
 [dir=rtl] #menu-repo-addfav {
-	background-position: right -870px;
+	background-position: right -832px;
 }
 
 #menu-repo-del {
-	background-position: left -840px;
+	background-position: left -806px;
 }
 
 [dir=rtl] #menu-repo-del {
-	background-position: right -840px;
+	background-position: right -806px;
 }
 
 #menu-repo-edit {
-	background-position: left -990px;
+	background-position: left -1014px;
 }
 
 [dir=rtl] #menu-repo-edit {
-	background-position: right -990px;
+	background-position: right -1014px;
 }
 
 #menu-repo-editraw {
-	background-position: left -990px;
+	background-position: left -754px;
 }
 
 [dir=rtl] #menu-repo-editraw {
-	background-position: right -990px;
+	background-position: right -574px;
 }
 
 #menu-report li {
-	background-position: left -570px;
+	background-position: left -546px;
 }
 
 [dir=rtl] #menu-report li {
-	background-position: right -570px;
+	background-position: right -546px;
 }
 
 #menu-search-advanced {
-	background-position: left -600px;
+	background-position: left -598px;
 }
 
 [dir=rtl] #menu-search-advanced {
-	background-position: right -600px;
+	background-position: right -598px;
 }
 
 #menu-search-general {
-	background-position: left -600px;
+	background-position: left -598px;
 }
 
 [dir=rtl] #menu-search-general {
-	background-position: right -600px;
+	background-position: right -598px;
 }
 
 #menu-search-replace {
-	background-position: left -600px;
+	background-position: left -598px;
 }
 
 [dir=rtl] #menu-search-replace {
-	background-position: right -600px;
+	background-position: right -598px;
 }
 
 #menu-search-soundex {
-	background-position: left -600px;
+	background-position: left -598px;
 }
 
 [dir=rtl] #menu-search-soundex {
-	background-position: right -600px;
+	background-position: right -598px;
 }
 
 #menu-sour-addfav {
-	background-position: left -870px;
+	background-position: left -832px;
 }
 
 [dir=rtl] #menu-sour-addfav {
-	background-position: right -870px;
+	background-position: right -832px;
 }
 
 #menu-sour-del {
-	background-position: left -840px;
+	background-position: left -1066px;
 }
 
 [dir=rtl] #menu-sour-del {
-	background-position: right -840px;
+	background-position: right -1066px;
 }
 
 #menu-sour-edit {
-	background-position: left -960px;
+	background-position: left -884px;
 }
 
 [dir=rtl] #menu-sour-edit {
-	background-position: right -960px;
+	background-position: right -884px;
 }
 
 #menu-sour-editraw {
-	background-position: left -960px;
+	background-position: left -754px;
 }
 
 [dir=rtl] #menu-sour-editraw {
-	background-position: right -960px;
+	background-position: right -574px;
 }
 
 #menu-story-sub {
-	background-position: left -1208px;
+	background-position: left -1092px;
 }
 
 [dir=rtl] #menu-story-sub {
-	background-position: right -1208px;
+	background-position: right -1040px;
 }
 
 #menu-tree li {
-	background-position: left -240px;
+	background-position: left -754px;
 }
 
 [dir=rtl] #menu-tree li {
-	background-position: right -240px;
+	background-position: right -754px;
 }
 
 .icon-indis {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/indis.png);
+	width: 22px;
+	height: 25px;
+	background-image: url(images/mypage.png);
 }
 
 .icon-patriarch {
@@ -5106,9 +5209,9 @@ footer .error {
 }
 
 .icon-sfamily {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/family.png);
+	width: 22px;
+	height: 22px;
+	background-image: url(images/sfamily.png);
 }
 
 .icon-source-list {
@@ -5132,7 +5235,7 @@ footer .error {
 .icon-webtrees {
 	width: 100px;
 	height: 21px;
-	background-image: url(images/webtrees_s.png);
+	background-image: url(images/webtrees.png);
 }
 
 @media print {
@@ -5145,22 +5248,21 @@ footer .error {
 		display: none !important;
 	}
 
-	#pedigree_chart {
-		left: -80px;
-		top:  -260px;
+	#familybook_chart h3 {
+		margin-bottom: 10px;
 	}
 
 	#header_accordion1 {
 		width: 510px !important;
 	}
 
-	[dir=rtl] #pedigree_chart {
-		left: auto;
-		right: -20px;
+	#pedigree_chart {
+		left: -90px;
 	}
 
-	#familybook_chart h3 {
-		margin-bottom: 10px;
+	[dir=rtl] #pedigree_chart {
+		left: auto;
+		right: -90px;
 	}
 
 	.lifespan_outer {

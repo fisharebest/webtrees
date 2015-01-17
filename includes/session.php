@@ -47,21 +47,12 @@ define('WT_WEBTREES_URL',  'http://www.webtrees.net/');
 define('WT_WEBTREES_WIKI', 'http://wiki.webtrees.net/');
 
 // Optionally, specify a CDN server for static content (e.g. CSS, JS, PNG)
-// For example, http://my.cdn.com/webtrees-static-1.3.1/
-define('WT_STATIC_URL', ''); // For example, http://my.cdn.com/webtrees-static-1.3.1/
-
-// Optionally, load major JS libraries from Google’s public CDN
-define ('WT_USE_GOOGLE_API', false);
-if (WT_USE_GOOGLE_API) {
-	define('WT_JQUERY_URL',        'https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js');
-	define('WT_JQUERYUI_URL',      'https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js');
-} else {
-	define('WT_JQUERY_URL',        WT_STATIC_URL . 'js/jquery-1.11.1.js');
-	define('WT_JQUERYUI_URL',      WT_STATIC_URL . 'js/jquery-ui-1.11.2.js');
-}
+define('WT_STATIC_URL',            ''); // For example, http://my.cdn.com/webtrees-static-1.3.1/
+define('WT_JQUERY_URL',            WT_STATIC_URL . 'js/jquery-1.11.2.js');
+define('WT_JQUERYUI_URL',          WT_STATIC_URL . 'js/jquery-ui-1.11.2.js');
 define('WT_JQUERY_COLORBOX_URL',   WT_STATIC_URL . 'js/jquery.colorbox-1.5.14.js');
 define('WT_JQUERY_COOKIE_URL',     WT_STATIC_URL . 'js/jquery.cookie-1.4.1.js');
-define('WT_JQUERY_DATATABLES_URL', WT_STATIC_URL . 'js/jquery.datatables-1.10.3.js');
+define('WT_JQUERY_DATATABLES_URL', WT_STATIC_URL . 'js/jquery.datatables-1.10.4.js');
 define('WT_JQUERY_JEDITABLE_URL',  WT_STATIC_URL . 'js/jquery.jeditable-1.7.3.js');
 define('WT_JQUERY_WHEELZOOM_URL',  WT_STATIC_URL . 'js/jquery.wheelzoom-2.0.0.js');
 define('WT_WEBTREES_JS_URL',       WT_STATIC_URL . 'js/webtrees-1.6.2.js');
