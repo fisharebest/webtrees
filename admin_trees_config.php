@@ -288,7 +288,7 @@ case 'general':
 	$WT_TREE->setPreference('INDI_FACTS_UNIQUE',            str_replace(' ', '', WT_Filter::post('INDI_FACTS_UNIQUE')));
 	$WT_TREE->setPreference('KEEP_ALIVE_YEARS_BIRTH',       WT_Filter::post('KEEP_ALIVE_YEARS_BIRTH', WT_REGEX_INTEGER, 0));
 	$WT_TREE->setPreference('KEEP_ALIVE_YEARS_DEATH',       WT_Filter::post('KEEP_ALIVE_YEARS_DEATH', WT_REGEX_INTEGER, 0));
-	$WT_TREE->setPreference('LANGUAGE',                     WT_Filter::post('GEDCOMLANG'));
+	$WT_TREE->setPreference('LANGUAGE',                     WT_Filter::post('LANGUAGE'));
 	$WT_TREE->setPreference('MAX_ALIVE_AGE',                WT_Filter::post('MAX_ALIVE_AGE', WT_REGEX_INTEGER, 100));
 	$WT_TREE->setPreference('MAX_DESCENDANCY_GENERATIONS',  WT_Filter::post('MAX_DESCENDANCY_GENERATIONS'));
 	$WT_TREE->setPreference('MAX_PEDIGREE_GENERATIONS',     WT_Filter::post('MAX_PEDIGREE_GENERATIONS'));
@@ -346,9 +346,8 @@ case 'general':
 	$WT_TREE->setPreference('WEBMASTER_USER_ID',            WT_Filter::post('WEBMASTER_USER_ID'));
 	$WT_TREE->setPreference('WEBTREES_EMAIL',               WT_Filter::post('WEBTREES_EMAIL'));
 	$WT_TREE->setPreference('WORD_WRAPPED_NOTES',           WT_Filter::postBool('WORD_WRAPPED_NOTES'));
-	if (WT_Filter::post('gedcom_title')) {
-		$WT_TREE->setPreference('title',                        WT_Filter::post('gedcom_title'));
-	}
+	$WT_TREE->setPreference('title',                        WT_Filter::post('title'));
+
 	// Only accept valid folders for MEDIA_DIRECTORY
 	$MEDIA_DIRECTORY = preg_replace('/[\/\\\\]+/', '/', WT_Filter::post('MEDIA_DIRECTORY') . '/');
 	if (substr($MEDIA_DIRECTORY, 0, 1) == '/') {

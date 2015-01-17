@@ -381,7 +381,7 @@ case 'edit':
 				<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Language'); ?>
 			</label>
 			<div class="col-sm-9">
-				<?php echo select_edit_control('language', WT_I18N::installed_languages(), null, $user->getPreference('language'), 'class="form-control"'); ?>
+				<?php echo select_edit_control('language', WT_I18N::installed_languages(), null, $user->getPreference('language', WT_LOCALE), 'class="form-control"'); ?>
 			</div>
 		</div>
 

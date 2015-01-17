@@ -25,7 +25,7 @@ define('WT_SCRIPT_NAME', 'admin_trees_manage.php');
 require './includes/session.php';
 
 $controller = new WT_Controller_Page();
-$controller->restrictAccess(Auth::isAdmin());
+$controller->restrictAccess(Auth::isManager());
 
 switch (WT_Filter::get('action')) {
 case 'uploadform':
@@ -509,6 +509,7 @@ case 'importform':
 	</div>
 	<?php endif; ?>
 	<?php endforeach; ?>
+	<?php if (Auth::isAdmin()): ?>
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<h3 class="panel-title">
@@ -518,7 +519,6 @@ case 'importform':
 				</a>
 			</h3>
 		</div>
-		<?php if (Auth::isAdmin()): ?>
 		<div id="create-a-new-family-tree" class="panel-collapse collapse<?php echo WT_Tree::getAll() ? '' : ' in'; ?>">
 			<div class="panel-body">
 				<form role="form" class="form-horizontal" method="POST" action="admin_trees_manage.php">
@@ -578,8 +578,8 @@ case 'importform':
 				</form>
 			</div>
 		</div>
-		<?php endif; ?>
 	</div>
+	<?php endif; ?>
 	<!-- display link to PGV-WT transfer wizard on first visit to this page, before any GEDCOM is loaded -->
 	<?php if (count(WT_Tree::GetAll()) === 0 && count(User::all()) === 1): ?>
 	<div class="panel panel-default">
