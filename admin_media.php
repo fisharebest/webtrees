@@ -536,10 +536,12 @@ function mediaObjectInfo(WT_Media $media) {
 	foreach ($media->linkedSources('OBJE') as $link) {
 		$linked[] = '<a href="' . $link->getHtmlUrl() . '">' . $link->getFullName() . '</a>';
 	}
-	foreach ($media->linkedNotes('OBJE') as $link) { // Invalid GEDCOM - you cannot link a NOTE to an OBJE
+	foreach ($media->linkedNotes('OBJE') as $link) {
+		// Invalid GEDCOM - you cannot link a NOTE to an OBJE
 		$linked[] = '<a href="' . $link->getHtmlUrl() . '">' . $link->getFullName() . '</a>';
 	}
-	foreach ($media->linkedRepositories('OBJE') as $link) { // Invalid GEDCOM - you cannot link a REPO to an OBJE
+	foreach ($media->linkedRepositories('OBJE') as $link) {
+		// Invalid GEDCOM - you cannot link a REPO to an OBJE
 		$linked[] = '<a href="' . $link->getHtmlUrl() . '">' . $link->getFullName() . '</a>';
 	}
 	if ($linked) {

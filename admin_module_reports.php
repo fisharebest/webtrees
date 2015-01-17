@@ -70,10 +70,7 @@ $controller
 		</tr>
 		</thead>
 		<tbody>
-		<?php
-		$order = 1;
-		foreach ($modules as $module_name=>$module) {
-			?>
+		<?php foreach ($modules as $module_name => $module): ?>
 			<tr>
 				<td class="col-xs-2">
 					<?php if ($module instanceof WT_Module_Config): ?>
@@ -101,10 +98,7 @@ $controller
 					</table>
 				</td>
 			</tr>
-			<?php
-			$order++;
-		}
-		?>
+		<?php endforeach; ?>
 		</tbody>
 	</table>
 	<button class="btn btn-primary" type="submit"><?php echo WT_I18N::translate('save'); ?></button>

@@ -401,7 +401,7 @@ case 'privacy':
 		');
 	break;
 case 'general':
-	$controller>setPageTitle(WT_Filter::escapeHtml($WT_TREE->tree_title) . ' — ' . WT_I18N::translate('Preferences'))	;
+	$controller>setPageTitle(WT_Filter::escapeHtml($WT_TREE->tree_title) . ' — ' . WT_I18N::translate('Preferences'));
 	break;
 default:
 	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'admin.php');
@@ -1027,7 +1027,7 @@ $controller
 			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Default theme'); ?>
 		</label>
 		<div class="col-sm-9">
-			<?php echo select_edit_control('THEME_DIR', get_theme_names(),WT_I18N::translate('<default theme>'), $WT_TREE->getPreference('THEME_DIR'), 'class="form-control"'); ?>
+			<?php echo select_edit_control('THEME_DIR', get_theme_names(), WT_I18N::translate('<default theme>'), $WT_TREE->getPreference('THEME_DIR'), 'class="form-control"'); ?>
 			<p class="small text-muted">
 				<?php echo /* I18N: Help text for the “Default theme” configuration setting */ WT_I18N::translate('You can change the appearance of webtrees using “themes”.  Each theme has a different style, layout, color scheme, etc.'); ?>
 			</p>

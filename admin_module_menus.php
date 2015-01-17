@@ -53,15 +53,20 @@ if ($action === 'update_mods' && WT_Filter::checkCsrf()) {
 
 $controller
 	->addInlineJavascript('
-	jQuery("#module_table").sortable({items: ".sortme", forceHelperSize: true, forcePlaceholderSize: true, opacity: 0.7, cursor: "move", axis: "y"});
-
-	//-- update the order numbers after drag-n-drop sorting is complete
-	jQuery("#menus_table").bind("sortupdate", function(event, ui) {
-			jQuery("#"+jQuery(this).attr("id")+" input").each(
-				function (index, value) {
-					value.value = index+1;
-				}
-			);
+		jQuery("#module_table").sortable({
+			items: ".sortme",
+			forceHelperSize: true,
+			forcePlaceholderSize: true,
+			opacity: 0.7,
+			cursor: "move",
+			axis: "y",
+			update: function(event, ui) {
+				jQuery("input", jQuery(this)).each(
+					function (index, element) {
+						element.value = index + 1;
+					}
+				);
+			}
 		});
 	')
 	->pageHeader();
@@ -87,10 +92,9 @@ $controller
 		</tr>
 		</thead>
 		<tbody>
-		<?php
-		$order = 1;
-		foreach ($modules as $module_name=>$module) {
-			?>
+		<?php $order = 0; ?>
+		<?php foreach ($modules as $module_name => $module): ?>
+			<?php $order++; ?>
 			<tr class="sortme">
 				<td class="col-xs-1">
 					<?php if ($module instanceof WT_Module_Config): ?>
@@ -119,10 +123,7 @@ $controller
 					</table>
 				</td>
 			</tr>
-			<?php
-			$order++;
-		}
-		?>
+		<?php endforeach; ?>
 		</tbody>
 	</table>
 	<button class="btn btn-primary" type="submit"><?php echo WT_I18N::translate('save'); ?></button>
