@@ -160,6 +160,30 @@ abstract class WT_Module {
 	}
 
 	/**
+	 * Get a the current access level for a module
+	 *
+	 * @param WT_Tree $tree
+	 * @param string $component - tab, block, menu, etc
+	 *
+	 * @return integer
+	 */
+	public function getAccessLevel(WT_Tree $tree, $component) {
+		$access_level = WT_DB::prepare(
+			"SELECT access_level FROM `##module_privacy` WHERE gedcom_id = :gedcom_id AND module_name = :module_name AND component = :component"
+		)->execute(array(
+			'gedcom_id'   => $tree->tree_id,
+			'module_name' => $this->getName(),
+			'component'   => $component,
+		))->fetchOne();
+
+		if ($access_level === null) {
+			return $this->defaultAccessLevel();
+		} else {
+			return (int) $access_level;
+		}
+	}
+
+	/**
 	 * Get a list of all active (enabled) modules.
 	 *
 	 * @param boolean $sort Sort the module by the (localised) name

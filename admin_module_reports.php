@@ -35,7 +35,7 @@ $action  = WT_Filter::post('action');
 if ($action === 'update_mods' && WT_Filter::checkCsrf()) {
 	foreach ($modules as $module) {
 		foreach (WT_Tree::getAll() as $tree) {
-			$access_level = WT_Filter::post('access-' . $module_name. '-' . $tree->tree_id, WT_REGEX_INTEGER, $module->defaultAccessLevel());
+			$access_level = WT_Filter::post('access-' . $module->getName() . '-' . $tree->tree_id, WT_REGEX_INTEGER, $module->defaultAccessLevel());
 			WT_DB::prepare(
 				"REPLACE INTO `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'report', ?)"
 			)->execute(array($module->getName(), $tree->tree_id, $access_level));
@@ -82,19 +82,18 @@ $controller
 				<td class="col-xs-5"><?php echo $module->getDescription(); ?></td>
 				<td class="col-xs-5">
 					<table class="table">
-						<?php
-						foreach (WT_Tree::getAll() as $tree) {
-							$varname = 'access-' . $module->getName() . '-' . $tree->tree_id;
-							$access_level = WT_DB::prepare(
-								"SELECT access_level FROM `##module_privacy` WHERE gedcom_id=? AND module_name=? AND component='report'"
-							)->execute(array($tree->tree_id, $module->getName()))->fetchOne();
-							if ($access_level === null) {
-								$access_level = $module->defaultAccessLevel();
-							}
-							echo '<tr><td>', $tree->tree_title_html, '</td><td>';
-							echo edit_field_access_level($varname, $access_level);
-						}
-						?>
+						<tbody>
+							<?php foreach (WT_Tree::getAll() as $tree): ?>
+								<tr>
+									<td>
+										<?php echo $tree->tree_title_html; ?>
+									</td>
+									<td>
+										<?php echo edit_field_access_level('access-' . $module->getName() . '-' . $tree->tree_id, $module->getAccessLevel($tree, 'report')); ?>
+									</td>
+								</tr>
+							<?php endforeach; ?>
+						</tbody>
 					</table>
 				</td>
 			</tr>
