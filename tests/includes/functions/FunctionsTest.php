@@ -8,7 +8,7 @@ use PHPUnit_Framework_TestCase;
  *
  * @package   webtrees
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2014 webtrees development team
+ * @copyright (c) 2015 webtrees development team
  * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2
  */
 

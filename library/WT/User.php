@@ -8,7 +8,7 @@ use WT_Tree;
 /**
  * Class User - Provide an interface to the wt_user table.
  *
- * @copyright (c) 2014 webtrees development team
+ * @copyright (c) 2015 webtrees development team
  * @license   This program is free software: you can redistribute it and/or modify
  *            it under the terms of the GNU General Public License as published by
  *            the Free Software Foundation, either version 2 of the License, or

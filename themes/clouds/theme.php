@@ -2,11 +2,7 @@
 // Clouds theme
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
-//
-// Derived from PhpGedView Cloudy theme
-// Original author w.a. bastein http://genealogy.bastein.biz
-// Copyright (C) 2010 PGV Development Team.
+// Copyright (C) 2015 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by

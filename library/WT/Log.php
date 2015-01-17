@@ -1,6 +1,4 @@
 <?php
-namespace WT;
-
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team
 //
@@ -17,6 +15,8 @@ namespace WT;
 // You should have received a copy of the GNU General Public License
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+
+namespace WT;
 
 use WT_DB;
 use WT_Tree;
