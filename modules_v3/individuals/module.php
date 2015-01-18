@@ -240,7 +240,9 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				$out .= '<li><a href="'.$person->getHtmlUrl().'">'.$person->getSexImage().' '.$person->getFullName().' ';
 				if ($person->canShow()) {
 					$bd = $person->getLifeSpan();
-					if (!empty($bd)) $out .= ' ('.$bd.')';
+					if (!empty($bd)) {
+						$out .= ' ('.$bd.')';
+					}
 				}
 				$out .= '</a></li>';
 			}

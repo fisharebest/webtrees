@@ -426,21 +426,49 @@ case 'update':
 	}
 
 	$newged = "";
-	if (!empty($_POST['NAME']))   $newged .= "\n1 NAME " . $_POST['NAME'];
-	if (!empty($_POST['TYPE']))   $newged .= "\n2 TYPE " . $_POST['TYPE'];
-	if (!empty($_POST['NPFX']))   $newged .= "\n2 NPFX " . $_POST['NPFX'];
-	if (!empty($_POST['GIVN']))   $newged .= "\n2 GIVN " . $_POST['GIVN'];
-	if (!empty($_POST['NICK']))   $newged .= "\n2 NICK " . $_POST['NICK'];
-	if (!empty($_POST['SPFX']))   $newged .= "\n2 SPFX " . $_POST['SPFX'];
-	if (!empty($_POST['SURN']))   $newged .= "\n2 SURN " . $_POST['SURN'];
-	if (!empty($_POST['NSFX']))   $newged .= "\n2 NSFX " . $_POST['NSFX'];
-	if (!empty($_POST['ROMN']))   $newged .= "\n2 ROMN " . $_POST['ROMN'];
-	if (!empty($_POST['FONE']))   $newged .= "\n2 FONE " . $_POST['FONE'];
-	if (!empty($_POST['_HEB']))   $newged .= "\n2 _HEB " . $_POST['_HEB'];
-	if (!empty($_POST['_AKA']))   $newged .= "\n2 _AKA " . $_POST['_AKA'];
-	if (!empty($_POST['_MARNM'])) $newged .= "\n2 _MARNM " . $_POST['_MARNM'];
+	if (!empty($_POST['NAME'])) {
+		$newged .= "\n1 NAME " . $_POST['NAME'];
+	}
+	if (!empty($_POST['TYPE'])) {
+		$newged .= "\n2 TYPE " . $_POST['TYPE'];
+	}
+	if (!empty($_POST['NPFX'])) {
+		$newged .= "\n2 NPFX " . $_POST['NPFX'];
+	}
+	if (!empty($_POST['GIVN'])) {
+		$newged .= "\n2 GIVN " . $_POST['GIVN'];
+	}
+	if (!empty($_POST['NICK'])) {
+		$newged .= "\n2 NICK " . $_POST['NICK'];
+	}
+	if (!empty($_POST['SPFX'])) {
+		$newged .= "\n2 SPFX " . $_POST['SPFX'];
+	}
+	if (!empty($_POST['SURN'])) {
+		$newged .= "\n2 SURN " . $_POST['SURN'];
+	}
+	if (!empty($_POST['NSFX'])) {
+		$newged .= "\n2 NSFX " . $_POST['NSFX'];
+	}
+	if (!empty($_POST['ROMN'])) {
+		$newged .= "\n2 ROMN " . $_POST['ROMN'];
+	}
+	if (!empty($_POST['FONE'])) {
+		$newged .= "\n2 FONE " . $_POST['FONE'];
+	}
+	if (!empty($_POST['_HEB'])) {
+		$newged .= "\n2 _HEB " . $_POST['_HEB'];
+	}
+	if (!empty($_POST['_AKA'])) {
+		$newged .= "\n2 _AKA " . $_POST['_AKA'];
+	}
+	if (!empty($_POST['_MARNM'])) {
+		$newged .= "\n2 _MARNM " . $_POST['_MARNM'];
+	}
 
-	if (isset($_POST['NOTE'])) $NOTE = $_POST['NOTE'];
+	if (isset($_POST['NOTE'])) {
+		$NOTE = $_POST['NOTE'];
+	}
 	if (!empty($NOTE)) {
 		$tempnote = preg_split('/\r?\n/', trim($NOTE) . "\n"); // make sure only one line ending on the end
 		$title[] = "0 @$xref@ NOTE " . array_shift($tempnote);
@@ -1819,7 +1847,9 @@ case 'reorder_children':
 				$show_full = 1; // Force details to show for each child
 				foreach ($children as $id=>$child) {
 					echo '<li style="cursor:move; margin-bottom:2px; position:relative;"';
-					if (!in_array($id, $ids)) echo ' class="facts_value new"';
+					if (!in_array($id, $ids)) {
+						echo ' class="facts_value new"';
+					}
 					echo ' id="li_', $id, '">';
 					echo Theme::theme()->individualBoxLarge(WT_Individual::getInstance($id));
 					echo '<input type="hidden" name="order[', $id, ']" value="', $i, '">';
@@ -2671,12 +2701,18 @@ function print_indi_form($nextaction, WT_Individual $person = null, WT_Family $f
 			if ($type != 'TYPE' && !isset($name_fields[$type]) && !isset($adv_name_fields[$type])) {
 				$text = '';
 				for ($j = 2; $j < count($fields); $j++) {
-					if ($j > 2) $text .= ' ';
+					if ($j > 2) {
+						$text .= ' ';
+					}
 					$text .= $fields[$j];
 				}
 				while (($i + 1 < count($gedlines)) && (preg_match("/" . ($level + 1) . " (CON[CT]) ?(.*)/", $gedlines[$i + 1], $cmatch) > 0)) {
-					if ($cmatch[1] == "CONT") $text .= "\n";
-					if ($WORD_WRAPPED_NOTES) $text .= ' ';
+					if ($cmatch[1] == "CONT") {
+						$text .= "\n";
+					}
+					if ($WORD_WRAPPED_NOTES) {
+						$text .= ' ';
+					}
 					$text .= $cmatch[2];
 					$i++;
 				}
@@ -2687,7 +2723,9 @@ function print_indi_form($nextaction, WT_Individual $person = null, WT_Family $f
 			if (isset($gedlines[$i])) {
 				$fields = explode(' ', $gedlines[$i]);
 				$level = $fields[0];
-				if (isset($fields[1])) $type = $fields[1];
+				if (isset($fields[1])) {
+					$type = $fields[1];
+				}
 			}
 		} while (($level > $glevel) && ($i < count($gedlines)));
 	}

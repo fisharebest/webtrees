@@ -164,7 +164,9 @@ if ($type == "indi") {
 	<input type="hidden" name="type" value="indi">
 	<span>', WT_I18N::translate('Name contains:'), '&nbsp;</span>
 	<input type="text" name="filter" value="';
-	if ($filter) echo $filter;
+	if ($filter) {
+		echo $filter;
+	}
 	echo '" autofocus>
 	<input type="submit" value="', WT_I18N::translate('Filter'), '">
 	</form></div>';
@@ -179,7 +181,9 @@ if ($type == "fam") {
 	<input type="hidden" name="type" value="fam">
 	<span>', WT_I18N::translate('Name contains:'), '&nbsp;</span>
 	<input type="text" name="filter" value="';
-	if ($filter) echo $filter;
+	if ($filter) {
+		echo $filter;
+	}
 	echo '" autofocus>
 	<input type="submit" value="', WT_I18N::translate('Filter'), '">
 	</form></div>';
@@ -196,7 +200,9 @@ if ($type == 'media') {
 	<input type="hidden" name="subclick">
 	<span>', WT_I18N::translate('Media contains:'), '</span>
 	<input type="text" name="filter" value="';
-	if ($filter) echo $filter;
+	if ($filter) {
+		echo $filter;
+	}
 	echo '" autofocus>',
 	help_link('simple_filter'),
 	'<p><input type="submit" name="search" value="', WT_I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">&nbsp;
@@ -214,7 +220,9 @@ if ($type == "place") {
 	<input type="hidden" name="subclick">
 	<span>', WT_I18N::translate('Place contains:'), '</span>
 	<input type="text" name="filter" value="';
-	if ($filter) echo $filter;
+	if ($filter) {
+		echo $filter;
+	}
 	echo '" autofocus>
 	<p><input type="submit" name="search" value="', WT_I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">&nbsp;
 	<input type="submit" name="all" value="', WT_I18N::translate('Display all'), '" onclick="this.form.subclick.value=this.name">
@@ -231,7 +239,9 @@ if ($type == "repo") {
 	<input type="hidden" name="subclick">
 	<span>', WT_I18N::translate('Repository contains:'), '</span>
 	<input type="text" name="filter" value="';
-	if ($filter) echo $filter;
+	if ($filter) {
+		echo $filter;
+	}
 	echo '" autofocus>
 	<p><input type="submit" name="search" value="', WT_I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">&nbsp;
 	<input type="submit" name="all" value="', WT_I18N::translate('Display all'), '" onclick="this.form.subclick.value=this.name">
@@ -249,7 +259,9 @@ if ($type == "note") {
 	<input type="hidden" name="subclick">
 	<span>', WT_I18N::translate('Shared note contains:'), '</span>
 	<input type="text" name="filter" value="';
-	if ($filter) echo $filter;
+	if ($filter) {
+		echo $filter;
+	}
 	echo '" autofocus>
 	<p><input type="submit" name="search" value="', WT_I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">&nbsp;
 	<input type="submit" name="all" value="', WT_I18N::translate('Display all'), '" onclick="this.form.subclick.value=this.name">
@@ -266,7 +278,9 @@ if ($type == "source") {
 	<input type="hidden" name="subclick">
 	<span>', WT_I18N::translate('Source contains:'), '</span>
 	<input type="text" name="filter" value="';
-	if ($filter) echo $filter;
+	if ($filter) {
+		echo $filter;
+	}
 	echo '" autofocus>
 	<p><input type="submit" name="search" value="', WT_I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">&nbsp;
 	<input type="submit" name="all" value="', WT_I18N::translate('Display all'), '" onclick="this.form.subclick.value=this.name">
@@ -407,8 +421,11 @@ if ($type == "facts") {
 		DefaultTags=[<?php
 		$firstFact = true;
 		foreach (WT_Gedcom_Tag::getPicklistFacts() as $factId => $factName) {
-			if ($firstFact) $firstFact = FALSE;
-			else echo ',';
+			if ($firstFact) {
+				$firstFact = FALSE;
+			} else {
+				echo ',';
+			}
 			echo 'new DefaultTag("' . addslashes($factId) . '","' . addslashes($factName) . '",preselectedDefaultTags.indexOf("\\x01' . addslashes($factId) . '\\x01")>=0)';
 		}
 		?>];
@@ -596,8 +613,7 @@ if ($action == "filter") {
 			}
 			echo '</ul>
 			<p>', WT_I18N::translate('Places found'), '&nbsp;', count($places), '</p>';
-		}
-		else {
+		} else {
 			echo '<p>', WT_I18N::translate('No results found.'), '</p>';
 		}
 		echo '</div>';
@@ -619,8 +635,7 @@ if ($action == "filter") {
 			}
 			echo '</ul>
 			<p>', WT_I18N::translate('Repositories found'), " ", count($repo_list), '</p>';
-		}
-		else {
+		} else {
 			echo '<p>', WT_I18N::translate('No results found.'), '</p>';
 		}
 		echo '</div>';
@@ -642,8 +657,7 @@ if ($action == "filter") {
 			}
 			echo '</ul>
 			<p>', WT_I18N::translate('Shared notes found'), ' ', count($mynotelist), '</p>';
-		}
-		else {
+		} else {
 			echo '<p>', WT_I18N::translate('No results found.'), '</p>';
 		}
 		echo '</div>';
@@ -667,8 +681,7 @@ if ($action == "filter") {
 			}
 			echo '</ul>
 			<p>', WT_I18N::translate('Total sources: %s', count($mysourcelist)), '</p>';
-		}
-		else {
+		} else {
 			echo '<p>', WT_I18N::translate('No results found.'), '</p>';
 		}
 		echo '</div>';
