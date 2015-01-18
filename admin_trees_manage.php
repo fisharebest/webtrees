@@ -594,7 +594,7 @@ case 'importform':
 		<div id="pgv-import-wizard" class="panel-collapse collapse">
 			<div class="panel-body">
 				<p>
-					<?php echo WT_I18N::translate('The PGV to webtrees wizard is an automated process to assist administrators make the move from a PGV installation to a new webtrees one. It will transfer all PGV GEDCOM and other database information directly to your new webtrees database. The following requirements are necessary:'); ?>
+					<?php echo WT_I18N::translate('The PGV to webtrees wizard is an automated process to assist administrators make the move from a PGV installation to a new webtrees one.  It will transfer all PGV GEDCOM and other database information directly to your new webtrees database.  The following requirements are necessary:'); ?>
 				</p>
 				<ul>
 					<li>
@@ -617,7 +617,7 @@ case 'importform':
 					</li>
 				</ul>
 				<p>
-					<?php echo WT_I18N::translate('<b>Important note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished.'); ?>
+					<?php echo WT_I18N::translate('<b>Important note:</b> The transfer wizard is not able to assist with moving media items.  You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished.'); ?>
 				</p>
 				<p>
 					<a href="admin_pgv_to_wt.php">

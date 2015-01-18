@@ -336,8 +336,10 @@ case 'edit':
 		</div>
 
 		<!-- EMAIL VERIFIED -->
+		<!-- ACCOUNT APPROVED -->
 		<div class="form-group">
 			<label class="control-label col-sm-3" for="verified">
+				<?php echo WT_I18N::translate('Account approval and email verification'); ?>
 			</label>
 			<div class="col-sm-9">
 				<div class="checkbox">
@@ -345,16 +347,6 @@ case 'edit':
 						<input type="checkbox" name="verified" value="1" <?php echo $user->getPreference('verified') ? 'checked' : ''?>>
 						<?php echo WT_I18N::translate('Email verified'); ?>
 					</label>
-				</div>
-			</div>
-		</div>
-
-		<!-- ACCOUNT APPROVED -->
-		<div class="form-group">
-			<label class="control-label col-sm-3" for="approved">
-			</label>
-			<div class="col-sm-9">
-				<div class="checkbox">
 					<label>
 						<input type="checkbox" name="approved" value="1" <?php echo $user->getPreference('verified_by_admin') ? 'checked' : '';?>>
 						<?php echo WT_I18N::translate('Approved by administrator'); ?>
@@ -422,6 +414,7 @@ case 'edit':
 		<!-- VISIBLE ONLINE -->
 		<div class="form-group">
 			<label class="control-label col-sm-3" for="edit_account">
+				<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Visible online'); ?>
 			</label>
 			<div class="col-sm-9">
 				<div class="checkbox">
@@ -439,12 +432,12 @@ case 'edit':
 		<!-- CONTACT METHOD -->
 		<div class="form-group">
 			<label class="control-label col-sm-3" for="contactmethod">
-				<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Contact method'); ?>
+				<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Preferred contact method'); ?>
 			</label>
 			<div class="col-sm-9">
 				<?php echo edit_field_contact('contactmethod', $user->getPreference('contact_method')); ?>
 				<p class="small text-muted">
-					<?php echo WT_I18N::translate('Site members can send each other messages.  You can choose to how these messages are sent to you, or choose not receive them at all.'); ?>
+					<?php echo /* I18N: Help text for the “Preferred contact method” configuration setting */WT_I18N::translate('Site members can send each other messages.  You can choose to how these messages are sent to you, or choose not receive them at all.'); ?>
 				</p>
 			</div>
 		</div>

@@ -117,8 +117,7 @@ $surname_traditions = array(
 		' — ' . /* I18N: In the Icelandic surname tradition, ... */ WT_I18N::translate('Children take a patronym instead of a surname.'),
 	'polish' =>
 		WT_I18N::translate_c('Surname tradition', 'Polish') .
-		' — ' . /* I18N: In the Polish surname tradition, ... */ WT_I18N::translate('Children take
-their father’s surname.') .
+		' — ' . /* I18N: In the Polish surname tradition, ... */ WT_I18N::translate('Children take their father’s surname.') .
 		' ' . /* I18N: In the Polish surname tradition, ... */ WT_I18N::translate('Wives take their husband’s surname.') .
 		' ' . /* I18N: In the Polish surname tradition, ... */ WT_I18N::translate('Surnames are inflected to indicate an individual’s gender.'),
 	'lithuanian' =>
@@ -764,7 +763,7 @@ $controller
 		<div class="col-sm-9">
 			<?php echo radio_buttons('GENERATE_UIDS', $no_yes, $WT_TREE->getPreference('GENERATE_UIDS'), 'class="radio-inline"'); ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Automatically create globally unique IDs” configuration setting */ WT_I18N::translate('<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM originates.  The goal of the Family History Center is to have a central repository of genealogical data and expose it through web services. This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM with anyone else, you do not need to let webtrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM.'); ?>
+				<?php echo /* I18N: Help text for the “Automatically create globally unique IDs” configuration setting */ WT_I18N::translate('<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM file originates.  The goal of the Family History Center is to have a central repository of genealogical data and expose it through web services.  This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM file with anyone else, you do not need to let webtrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM file.'); ?>
 			</p>
 		</div>
 	</fieldset>
@@ -1096,13 +1095,13 @@ $controller
 	<!-- MEDIA_UPLOAD -->
 	<div class="form-group">
 		<label class="control-label col-sm-3" for="MEDIA_UPLOAD">
-			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Who can upload new media files'); ?>
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Who can upload new media files?'); ?>
 		</label>
 		<div class="col-sm-9">
 			<?php echo select_edit_control('MEDIA_UPLOAD', array(WT_PRIV_USER=>WT_I18N::translate('Show to members'),
 				WT_PRIV_NONE=>WT_I18N::translate('Show to managers'), WT_PRIV_HIDE=>WT_I18N::translate('Hide from everyone')), null, $WT_TREE->getPreference('MEDIA_UPLOAD'), 'class="form-control"'); ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Who can upload new media files” configuration setting */ WT_I18N::translate('If you are concerned that users might upload inappropriate images, you can restrict media uploads to managers only.'); ?>
+				<?php echo /* I18N: Help text for the “Who can upload new media files?” configuration setting */ WT_I18N::translate('If you are concerned that users might upload inappropriate images, you can restrict media uploads to managers only.'); ?>
 			</p>
 		</div>
 	</div>
@@ -1178,7 +1177,7 @@ $controller
 	<!-- WATERMARK_THUMB -->
 	<fieldset class="form-group">
 		<legend class="control-label col-sm-3">
-			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Add watermarks to thumbnails'); ?>
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Add watermarks to thumbnails?'); ?>
 		</legend>
 		<div class="col-sm-9">
 			<?php echo radio_buttons('WATERMARK_THUMB', $no_yes, $WT_TREE->getPreference('WATERMARK_THUMB'), 'class="radio-inline"'); ?>
@@ -1191,12 +1190,12 @@ $controller
 	<!-- SAVE_WATERMARK_IMAGE -->
 	<fieldset class="form-group">
 		<legend class="control-label col-sm-3">
-			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Store watermarked full size images on server'); ?>
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Store watermarked full size images on server?'); ?>
 		</legend>
 		<div class="col-sm-9">
 			<?php echo radio_buttons('SAVE_WATERMARK_IMAGE', $no_yes, $WT_TREE->getPreference('SAVE_WATERMARK_IMAGE'), 'class="radio-inline"'); ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Store watermarked full size images on server” configuration setting */ WT_I18N::translate('Watermarks can be slow to generate for large images.  Busy sites may prefer to generate them once and store the watermarked image on the server.'); ?>
+				<?php echo /* I18N: Help text for the “Store watermarked full size images on server?” configuration setting */ WT_I18N::translate('Watermarks can be slow to generate for large images.  Busy sites may prefer to generate them once and store the watermarked image on the server.'); ?>
 			</p>
 		</div>
 	</fieldset>
@@ -1204,7 +1203,7 @@ $controller
 	<!-- SAVE_WATERMARK_THUMB -->
 	<fieldset class="form-group">
 		<legend class="control-label col-sm-3">
-			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Store watermarked thumbnails on server'); ?>
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Store watermarked thumbnails on server?'); ?>
 		</legend>
 		<div class="col-sm-9">
 			<?php echo radio_buttons('SAVE_WATERMARK_THUMB', $no_yes, $WT_TREE->getPreference('SAVE_WATERMARK_THUMB'), 'class="radio-inline"'); ?>
@@ -1264,7 +1263,7 @@ $controller
 				value="<?php echo WT_Filter::escapeHtml($WT_TREE->getPreference('COMMON_NAMES_ADD')); ?>"
 				>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Names to add to common surnames (comma separated)” configuration setting */ WT_I18N::translate('If the number of times that a certain surname occurs is lower than the threshold, it will not appear in the list.  It can be added here manually.  If more than one surname is entered, they must be separated by a comma.  Surnames are case-sensitive.'); ?>
+				<?php echo /* I18N: Help text for the “Names to add to common surnames (comma separated)” configuration setting */ WT_I18N::translate('If the number of times that a certain surname occurs is lower than the threshold, it will not appear in the list.  It can be added here manually.  If more than one surname is entered, they must be separated by a comma.  <b>Surnames are case-sensitive.</b>'); ?>
 			</p>
 		</div>
 	</div>
@@ -1284,7 +1283,7 @@ $controller
 				value="<?php echo WT_Filter::escapeHtml($WT_TREE->getPreference('COMMON_NAMES_REMOVE')); ?>"
 				>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Names to remove from common surnames (comma separated)” configuration setting */ WT_I18N::translate('If you want to remove a surname from the Common Surname list without increasing the threshold value, you can do that by entering the surname here.  If more than one surname is entered, they must be separated by a comma.  Surnames are case-sensitive.  Surnames entered here will also be removed from the “Top surnames” list on the “Home page”.'); ?>
+				<?php echo /* I18N: Help text for the “Names to remove from common surnames (comma separated)” configuration setting */ WT_I18N::translate('If you want to remove a surname from the Common Surname list without increasing the threshold value, you can do that by entering the surname here.  If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive</b>.  Surnames entered here will also be removed from the “Top surnames” list on the “Home page”.'); ?>
 			</p>
 		</div>
 	</div>
@@ -1379,7 +1378,7 @@ $controller
 				value="<?php echo WT_Filter::escapeHtml($WT_TREE->getPreference('DEFAULT_PEDIGREE_GENERATIONS')); ?>"
 				>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Default pedigree generations” configuration setting */ WT_I18N::translate('Set the maximum number of generations to display on pedigree charts.'); ?>
+				<?php echo /* I18N: Help text for the “Default pedigree generations” configuration setting */ WT_I18N::translate('Set the default number of generations to display on descendancy and pedigree charts.'); ?>
 			</p>
 		</div>
 	</div>
@@ -1399,7 +1398,7 @@ $controller
 				value="<?php echo WT_Filter::escapeHtml($WT_TREE->getPreference('MAX_PEDIGREE_GENERATIONS')); ?>"
 				>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Maximum pedigree generations” configuration setting */ WT_I18N::translate('Set the maximum number of generations to display on descendancy charts.'); ?>
+				<?php echo /* I18N: Help text for the “Maximum pedigree generations” configuration setting */ WT_I18N::translate('Set the maximum number of generations to display on pedigree charts.'); ?>
 			</p>
 		</div>
 	</div>
@@ -1767,7 +1766,7 @@ $controller
 		<div class="col-sm-9">
 			<?php echo radio_buttons('SHOW_COUNTER', $hide_show, $WT_TREE->getPreference('SHOW_COUNTER'), 'class="radio-inline"'); ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Hit counters” configuration setting */ WT_I18N::translate('Show hit counters on portal and individual pages'); ?>
+				<?php echo /* I18N: Help text for the “Hit counters” configuration setting */ WT_I18N::translate('Show hit counters on Portal and Individual pages.'); ?>
 			</p>
 		</div>
 	</fieldset>
