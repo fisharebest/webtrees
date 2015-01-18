@@ -67,7 +67,7 @@ if (getenv('USE_CDN')) {
 	define('WT_JQUERY_DATATABLES_URL',        WT_STATIC_URL . 'packages/datatables-1.10.4/js/jquery.dataTables.min.js');
 	define('WT_DATATABLES_BOOTSTRAP_JS_URL',  WT_STATIC_URL . 'packages/datatables-1.10.4/plugins/dataTables.bootstrap.js');
 	define('WT_DATATABLES_BOOTSTRAP_CSS_URL', WT_STATIC_URL . 'packages/datatables-1.10.4/plugins/dataTables.bootstrap.css');
-	define('WT_FONT_AWESOME_CSS_URL',         WT_STATIC_URL . 'packages/font-awesome-4.1.0/css/font-awesome.min.css');
+	define('WT_FONT_AWESOME_CSS_URL',         WT_STATIC_URL . 'packages/font-awesome-4.2.0/css/font-awesome.min.css');
 	define('WT_JQUERY_COLORBOX_URL',          WT_STATIC_URL . 'js/jquery.colorbox-1.5.14.js');
 	define('WT_JQUERY_COOKIE_URL',            WT_STATIC_URL . 'js/jquery.cookie-1.4.1.js');
 	define('WT_JQUERY_URL',                   WT_STATIC_URL . 'js/jquery-1.11.2.js');
