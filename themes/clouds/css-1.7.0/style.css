@@ -47,6 +47,10 @@ main {
 }
 
 /* ====== Round Corners ======== */
+input,
+textarea,
+fieldset,
+.border1,
 .block,
 .descriptionbox,
 .facts_label,
@@ -70,9 +74,11 @@ main {
 .person5,
 .primary-menu ul,
 .secondary-menu li ul,
-#sidebar,
-.topbottombar,
-#save-cancel {
+footer,
+#indi_main_blocks,
+#tabs,
+#save-cancel,
+.topbottombar {
 	border-radius: 3px;
 }
 
@@ -103,8 +109,7 @@ a {
 	text-decoration: none;
 }
 
-a:hover,
-a.link:hover {
+a:hover {
 	color: #f00;
 	text-decoration: none;
 }
@@ -125,7 +130,6 @@ dt {
 	float: left;
 	font-weight: bold;
 	margin-right: 10px;
-	clear: both;
 }
 
 [dir=rtl] dt {
@@ -135,11 +139,15 @@ dt {
 }
 
 h2 {
+	color: #006;
 	font-size: 18px;
 	font-weight: bold;
+	margin: 14px 0;
 }
 
 h4 {
+	color: #006;
+	font-size: 12px;
 	font-weight: bold;
 }
 
@@ -155,6 +163,12 @@ ul {
 
 img {
 	border: 0;
+}
+
+legend img {
+	height: 20px;
+	vertical-align: middle;
+	width: 20px;
 }
 
 img.block,
@@ -182,6 +196,7 @@ textarea {
 }
 
 .topbottombar {
+	font-size: 12px;
 	font-weight: bold;
 	padding: 4px;
 	text-align: center;
@@ -202,6 +217,9 @@ legend {
 
 select {
 	border: 1px solid #ccc;
+	font-size: 12px;
+	margin: 0 7px;
+	padding: 1px;
 }
 
 header form {
@@ -217,7 +235,7 @@ header form {
 }
 
 .alpha_index {
-	margin: 12px 0;
+	color: #006;
 }
 
 hr {
@@ -225,28 +243,28 @@ hr {
 	border-color: #006;
 }
 
-h2 {
-	font-size: 18px;
-	font-weight: bold;
-}
-
-.person_box,
-.person_boxF,
-.person_boxNN {
+.person_box {
+	background: #ddf;
 	border: 1px solid #8bf;
 	padding: 3px;
 }
 
-.person_box {
-	background: #ddf;
-}
-
 .person_boxF {
 	background: #fdd;
+	border: 1px solid #8bf;
+	padding: 3px;
 }
 
 .person_boxNN {
 	background: #fff;
+	border: 1px solid #8bf;
+	padding: 3px;
+}
+
+.person_box:target,
+.news_box:target,
+#gedcom_stats:target {
+	background-color: #ffc;
 }
 
 .person_box_lifespan {
@@ -277,18 +295,17 @@ table.center {
 .list_label,
 .list_label_wrap {
 	color: #fff;
-	font-weight: 700;
-	text-align: center;
+	font-size: 12px;
 	border: 1px solid #999;
-	vertical-align: text-top;
-	white-space: normal;
+	font-weight: bold;
+	text-align: center;
 }
 
 .list_value,
 .list_value_wrap {
-	padding: 1px;
-	text-align: left;
-	border: 1px solid #999;
+	background-color: #edf7f9;
+	font-size: 12px;
+	border: solid #999 1px;
 	vertical-align: top;
 }
 
@@ -299,9 +316,6 @@ table.center {
 
 .list_label_wrap,
 .list_value_wrap {
-	background-color: #ecf5ff;
-	border: 1px solid #84beff;
-	color: #006;
 	white-space: normal;
 }
 
@@ -311,7 +325,6 @@ table.center {
 
 .facts_table {
 	width: 100%;
-	padding: 0;
 }
 
 div.fact_SHARED_NOTE {
@@ -326,16 +339,16 @@ div.fact_SHARED_NOTE {
 }
 
 .facts_label03 {
-	font-weight: bold;
 	padding: 4px;
 	text-align: center;
+	font-weight: bold;
 }
 
 .facts_value {
 	background: #fff;
-	border: 1pt solid #999;
+	font-size: 12px;
+	border: solid #999 1px;
 	padding: 4px;
-	color: #039;
 }
 
 .facts_label .submenu a {
@@ -355,10 +368,9 @@ div.fact_SHARED_NOTE {
 	font-size: 12px;
 }
 
-a:hover .name1,
-a:hover .name2 {
+a:hover .name1, a:hover .name2 {
 	color: #f00;
-	font-weight: 700;
+	font-weight: bold;
 	font-size: 12px;
 }
 
@@ -374,12 +386,12 @@ a:hover .nameZoom {
 }
 
 .details2 {
-	font-size: 11px;
 	color: #006;
-	font-weight: bold;
+	font-size: 12px;
 }
 
 .nameZoom {
+	color: #006;
 	font-size: 14px;
 	font-weight: bold;
 }
@@ -451,13 +463,22 @@ a:hover .nameZoom {
 }
 
 .sublinks_cell {
-	background: #9be;
+	background-color: #9be;
+	font-size: 12px;
+}
+
+.submenu .icon {
+	vertical-align: middle;
+	width: 20px;
+	height: 20px;
 }
 
 .subheaders {
-	font-size: 16px;
-    font-weight: bold;
-	color: #006;
+	color: #006
+	font-weight: bold;
+	font-size: 15px;
+	margin-top: 15px;
+	vertical-align: bottom;
 }
 
 .age {
@@ -481,14 +502,41 @@ a:hover .nameZoom {
 	border: solid #000 1px;
 }
 
-.submenuitem {
+.menuitem {
+	text-decoration: none;
+	font-size: 11px;
+	padding: 1px;
+}
+
+.menuitem_hover {
+	text-decoration: none;
+	font-size: 11px;
+	padding: 1px;
+}
+
+.menuitem .icon, .menuitem_hover .icon {
+	width: 50px;
+	height: 50px;
+}
+
+.submenu {
+	text-decoration: none;
+	font-size: 11px;
+	background-color: #fff;
+	border: solid #ccc 1px;
+	visibility: hidden;
+	position: absolute;
+	padding: 5px;
+}
+
+.submenuitem  {
 	vertical-align: middle;
 	font-size: 11px;
 	height: 20px;
-	color: #555;
+	text-decoration: none;
 	background-color: #fff;
 	border: 1px solid #ccc;
-	padding: 3px 3px 0;
+	padding: 1px;
 	white-space: nowrap;
 }
 
@@ -496,9 +544,10 @@ a:hover .nameZoom {
 	vertical-align: middle;
 	height: 20px;
 	font-size: 11px;
+	background-color: #fff;
 	border: 1px solid #ccc;
 	white-space: nowrap;
-	padding: 3px 3px 0;
+	padding: 1px;
 }
 
 .submenuitem a,
@@ -666,6 +715,7 @@ a:hover .nameZoom {
 }
 
 .descriptionbox {
+	font-size: 12px;
 	border: 1px solid #ccc;
 	vertical-align: top;
 	padding: 3px;
@@ -864,10 +914,6 @@ a.showit:hover > span {
 
 .ui-sortable .noprint {
 	display: none;
-}
-
-.sublinks_cell .submenuitem {
-	background-color: #fff;
 }
 
 /* ---End of Autocomplete styles--- */
@@ -1380,9 +1426,7 @@ background-color: #fff;
 .media-list,
 .indi-list,
 .fam-list {
-	margin: 5px auto;
 	visibility: hidden;
-	width: 98%;
 }
 
 .surname-list,
@@ -1598,7 +1642,6 @@ background-color: #fff;
 	margin:  0 2px 10px 0;
 	overflow: auto;
 	padding: 5px;
-
 }
 
 .blockcontent .list_table {
@@ -1764,7 +1807,7 @@ background-color: #fff;
 /* ==== FAQ table styles ===== */
 table.faq {
 	background-color: #eee;
-	margin: 5px 0 15px 5px;
+	margin: 5px 0 50px 5px;
 	width: 98%;
 }
 
@@ -1814,6 +1857,8 @@ div.faq_body {
 	clear: left;
 	padding-top: 15px;
 }
+
+/* a container for the following three links */
 
 .editlink,
 .copylink,
@@ -1909,7 +1954,12 @@ span.link_text {
 }
 
 #header_accordion1 {
+	padding: 0 10px 0 0;
 	overflow: hidden;
+}
+
+[dir='rtl'] #header_accordion1 {
+	padding: 0 0 0 10px;
 }
 
 #header_accordion1 .indi_name_details {
@@ -2008,7 +2058,6 @@ dd .deletelink {
 
 [dir=rtl] #indi_mainimage {
 	float: right;
-	padding: 0 0 0 10px;
 }
 
 [dir=rtl] #indi_note .fact_NOTE {
@@ -2047,9 +2096,8 @@ dd .deletelink {
 .copyicon,
 .deleteicon {
 	display: block;
-	background: transparent url(images/general_sprite.png) no-repeat left 0;
+	background: url(images/general_sprite.png) no-repeat left 0;
 }
-
 
 .female_gender {
 	background-position: -45px 3px;
@@ -2214,9 +2262,6 @@ dd .deletelink {
 	right: auto;
 }
 
-/* --------------------unknown */
-
-
 /* === jQuery.datatable styling general over-rides === */
 .odd {
 	background-color: #d9eaf7;
@@ -2346,7 +2391,6 @@ dd .deletelink {
 #main {
 	min-width: 600px;
 	width: 100%;
-	padding-top: 10px;
 	display: table;
 	table-layout: fixed;
 }
@@ -2357,6 +2401,10 @@ dd .deletelink {
 
 #indi_left .ui-tabs-panel {
 	padding: 0;
+}
+
+#indi_left .ui-tabs-nav {
+	margin: 0 2px;
 }
 
 #tabs {
@@ -2448,9 +2496,6 @@ dd .deletelink {
 
 .flyout {
 	left: 40px;
-	padding: 3px;
-	background-color: #ecf5ff;
-	border: 1px solid #ccc;
 }
 
 [dir=rtl] .flyout {
@@ -3433,7 +3478,7 @@ table.table-census-assistant th {
 /*-- timeline  --*/
 #timeline_chart {
 	position: relative;
-	top: 50px;
+	top: 0;
 	left: 0;
 }
 
@@ -4123,7 +4168,6 @@ a.icon-udarrow:hover {
 .icon-mime-video-x-ms-wmv {
 	background-position: -50px -196px;
 }
-
 /* ====== End Icon styles ====== */
 
 /* ====== Theme Header ========= */
@@ -4275,7 +4319,8 @@ li a.link {
 	content: "";
 }
 
-.secondary-menu .active {
+.lang-active,
+.theme-active {
 	color: #006;
 	font-weight: 900;
 }
@@ -4457,11 +4502,13 @@ header h1 {
 /* ====== Theme Footer ========= */
 
 footer {
+	clear: both;
+	font-size: 12px;
+	padding-top: 10px;
 	text-align: center;
 }
-
-.contact-links {
-	margin: 30px 0 15px;
+.contact_links {
+	margin-top: 15px;
 }
 
 .powered-by-webtrees {
@@ -4473,6 +4520,28 @@ footer {
 
 .powered-by-webtrees:after {
 	content: url(images/powered-by-webtrees.png);
+}
+
+.execution_stats {
+	padding: 12px;
+	text-align: center;
+}
+
+.logo {
+	text-align: center;
+}
+
+footer .center {
+	text-align: center;
+}
+
+footer .error {
+	color: #d00;
+	font-weight: bold;
+}
+
+.user_links {
+	white-space: nowrap;
 }
 
 #link_change_blocks {
@@ -5232,6 +5301,12 @@ footer {
 	width: 22px;
 	height: 22px;
 	background-image: url(images/user_add.png);
+}
+
+.icon-webtrees {
+	width: 100px;
+	height: 21px;
+	background-image: url(images/webtrees.png);
 }
 
 @media print {
