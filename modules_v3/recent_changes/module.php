@@ -75,7 +75,7 @@ class recent_changes_WT_Module extends WT_Module implements WT_Module_Block {
 		$content = '';
 		// Print block content
 		if (count($found_facts) == 0) {
-      $content .= WT_I18N::translate('There have been no changes within the last %s days.', WT_I18N::number($days));
+			$content .= WT_I18N::translate('There have been no changes within the last %s days.', WT_I18N::number($days));
 		} else {
 			ob_start();
 			switch ($infoStyle) {

@@ -39,17 +39,17 @@ $controller
 		}
 	");
 
-$action   =WT_Filter::get('action');
-$change_id=WT_Filter::getInteger('change_id');
-$index    =WT_Filter::get('index');
-$ged      =WT_Filter::getInteger('ged');
+$action    = WT_Filter::get('action');
+$change_id = WT_Filter::getInteger('change_id');
+$index     = WT_Filter::get('index');
+$ged       = WT_Filter::getInteger('ged');
 
 echo '<div id="pending"><h2>', WT_I18N::translate('Pending changes'), '</h2>';
 
 switch ($action) {
 case 'undo':
-	$gedcom_id=WT_DB::prepare("SELECT gedcom_id FROM `##change` WHERE change_id=?")->execute(array($change_id))->fetchOne();
-	$xref     =WT_DB::prepare("SELECT xref      FROM `##change` WHERE change_id=?")->execute(array($change_id))->fetchOne();
+	$gedcom_id = WT_DB::prepare("SELECT gedcom_id FROM `##change` WHERE change_id=?")->execute(array($change_id))->fetchOne();
+	$xref      = WT_DB::prepare("SELECT xref      FROM `##change` WHERE change_id=?")->execute(array($change_id))->fetchOne();
 	// Undo a change, and subsequent changes to the same record
 	WT_DB::prepare(
 		"UPDATE `##change`".

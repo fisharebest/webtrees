@@ -837,11 +837,10 @@ function print_findfact_link($element_id) {
 
 /**
  * Summary of LDS ordinances.
-
  *
-*@param WT_Individual $individual
+ * @param WT_Individual $individual
  *
-*@return string
+ * @return string
  */
 function get_lds_glance(WT_Individual $individual) {
 	$BAPL = $individual->getFacts('BAPL') ? 'B' : '_';

@@ -57,7 +57,7 @@ case 'compose':
 		$news['user_id']   = $user_id;
 		$news['gedcom_id'] = $gedcom_id;
 		$news['date']      = WT_TIMESTAMP;
-		$news['subject']     = '';
+		$news['subject']   = '';
 		$news['body']      = '';
 	}
 	echo '<input type="hidden" name="user_id" value="' . $news['user_id'] . '">';
