@@ -212,7 +212,7 @@ $controller
 		jQuery(".table-site-access-rules").dataTable({
 			ajax: "' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=load_rules",
 			serverSide: true,
-			'.WT_I18N::datatablesI18N() . ',
+			' . WT_I18N::datatablesI18N() . ',
 			processing: true,
 			stateSave: true,
 			stateDuration: 180,
@@ -231,7 +231,7 @@ $controller
 		jQuery(".table-unknown-site-visitors").dataTable({
 			ajax: "' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=load_unknown",
 			serverSide: true,
-			'.WT_I18N::datatablesI18N() . ',
+			' . WT_I18N::datatablesI18N() . ',
 			processing: true,
 			stateSave: true,
 			stateDuration: 180,

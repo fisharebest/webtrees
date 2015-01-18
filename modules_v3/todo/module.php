@@ -69,7 +69,7 @@ class todo_WT_Module extends WT_Module implements WT_Module_Block {
 			->addInlineJavascript('
 			jQuery("#' . $table_id . '").dataTable({
 				dom: \'t\',
-				'.WT_I18N::datatablesI18N().',
+				' . WT_I18N::datatablesI18N().',
 				autoWidth: false,
 				paginate: false,
 				lengthChange: false,

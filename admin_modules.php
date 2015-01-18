@@ -108,7 +108,7 @@ $controller
 	  }
 		jQuery("#installed_table").dataTable( {
 			paging: false,
-			'.WT_I18N::datatablesI18N() . ',
+			' . WT_I18N::datatablesI18N() . ',
 			sorting: [[ 1, "asc" ]],
 			columns : [
 				{ sortable: false, class: "center" },

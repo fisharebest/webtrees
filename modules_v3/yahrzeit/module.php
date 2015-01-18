@@ -110,7 +110,7 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 
 		switch ($infoStyle) {
 		case 'list':
-			foreach ($yahrzeits as $yahrzeit)
+			foreach ($yahrzeits as $yahrzeit) {
 				if ($yahrzeit->jd >= $startjd && $yahrzeit->jd < $startjd + $days) {
 					$ind = $yahrzeit->getParent();
 					$content .= "<a href=\"" . $ind->getHtmlUrl() . "\" class=\"list_item name2\">" . $ind->getFullName() . "</a>" . $ind->getSexImage();
@@ -119,6 +119,7 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 					$content .= ', ' . WT_I18N::translate('%s year anniversary', $yahrzeit->anniv);
 					$content .= "</div>";
 				}
+			}
 			break;
 		case 'table':
 		default:
@@ -128,7 +129,7 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 				->addInlineJavascript('
 					jQuery("#'.$table_id . '").dataTable({
 						dom: \'t\',
-						'.WT_I18N::datatablesI18N() . ',
+						' . WT_I18N::datatablesI18N() . ',
 						autoWidth: false,
 						paginate: false,
 						lengthChange: false,
