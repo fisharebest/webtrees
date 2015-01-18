@@ -36,15 +36,15 @@ class theme_select_WT_Module extends WT_Module implements WT_Module_Block {
 	}
 
 	/** {@inheritdoc} */
-	public function getBlock($block_id, $template=true, $cfg=null) {
+	public function getBlock($block_id, $template = true, $cfg = null) {
 		/** @var \WT\Theme\BaseTheme */
-		$id=$this->getName().$block_id;
-		$class=$this->getName().'_block';
-		$title=$this->getTitle();
-		$menu=Theme::theme()->menuThemes();
+		$id = $this->getName() . $block_id;
+		$class = $this->getName() . '_block';
+		$title = $this->getTitle();
+		$menu = Theme::theme()->menuThemes();
 
 		if ($menu) {
-			$content='<div class="center theme_form">' . $menu . '</div><br>';
+			$content = '<div class="center theme_form">' . $menu . '</div><br>';
 
 			if ($template) {
 				return Theme::theme()->formatBlock($id, $title, $class, $content);

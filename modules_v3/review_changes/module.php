@@ -38,30 +38,30 @@ class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 	}
 
 	/** {@inheritdoc} */
-	public function getBlock($block_id, $template=true, $cfg=null) {
+	public function getBlock($block_id, $template = true, $cfg = null) {
 		global $ctype;
 
-		$changes=WT_DB::prepare(
-			"SELECT 1".
-			" FROM `##change`".
-			" WHERE status='pending'".
+		$changes = WT_DB::prepare(
+			"SELECT 1" .
+			" FROM `##change`" .
+			" WHERE status='pending'" .
 			" LIMIT 1"
 		)->fetchOne();
 
-		$days    =get_block_setting($block_id, 'days',     1);
-		$sendmail=get_block_setting($block_id, 'sendmail', true);
-		$block   =get_block_setting($block_id, 'block',    true);
+		$days    = get_block_setting($block_id, 'days', 1);
+		$sendmail = get_block_setting($block_id, 'sendmail', true);
+		$block   = get_block_setting($block_id, 'block', true);
 		if ($cfg) {
 			foreach (array('days', 'sendmail', 'block') as $name) {
 				if (array_key_exists($name, $cfg)) {
-					$$name=$cfg[$name];
+					$$name = $cfg[$name];
 				}
 			}
 		}
 
-		if ($changes && $sendmail=='yes') {
+		if ($changes && $sendmail == 'yes') {
 			// There are pending changes - tell moderators/managers/administrators about them.
-			if (WT_TIMESTAMP - WT_Site::getPreference('LAST_CHANGE_EMAIL') > (60*60*24*$days)) {
+			if (WT_TIMESTAMP - WT_Site::getPreference('LAST_CHANGE_EMAIL') > (60 * 60 * 24 * $days)) {
 				// Which users have pending changes?
 				foreach (User::all() as $user) {
 					if ($user->getPreference('contactmethod') !== 'none') {
@@ -84,37 +84,37 @@ class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 				WT_Site::setPreference('LAST_CHANGE_EMAIL', WT_TIMESTAMP);
 			}
 			if (WT_USER_CAN_EDIT) {
-				$id=$this->getName().$block_id;
-				$class=$this->getName().'_block';
+				$id = $this->getName() . $block_id;
+				$class = $this->getName() . '_block';
 				if ($ctype === 'gedcom' && WT_USER_GEDCOM_ADMIN || $ctype === 'user' && Auth::check()) {
-					$title='<i class="icon-admin" title="'.WT_I18N::translate('Configure').'" onclick="modalDialog(\'block_edit.php?block_id='.$block_id.'\', \''.$this->getTitle().'\');"></i>';
+					$title = '<i class="icon-admin" title="' . WT_I18N::translate('Configure') . '" onclick="modalDialog(\'block_edit.php?block_id=' . $block_id . '\', \'' . $this->getTitle() . '\');"></i>';
 				} else {
-					$title='';
+					$title = '';
 				}
-				$title.=$this->getTitle().help_link('review_changes', $this->getName());
+				$title .= $this->getTitle() . help_link('review_changes', $this->getName());
 
 				$content = '';
 				if (WT_USER_CAN_ACCEPT) {
-					$content .= "<a href=\"#\" onclick=\"window.open('edit_changes.php','_blank', chan_window_specs); return false;\">".WT_I18N::translate('There are pending changes for you to moderate.')."</a><br>";
+					$content .= "<a href=\"#\" onclick=\"window.open('edit_changes.php','_blank', chan_window_specs); return false;\">" . WT_I18N::translate('There are pending changes for you to moderate.') . "</a><br>";
 				}
-				if ($sendmail=="yes") {
-					$content .= WT_I18N::translate('Last email reminder was sent ').format_timestamp(WT_Site::getPreference('LAST_CHANGE_EMAIL'))."<br>";
-					$content .= WT_I18N::translate('Next email reminder will be sent after ').format_timestamp(WT_Site::getPreference('LAST_CHANGE_EMAIL')+(60*60*24*$days))."<br><br>";
+				if ($sendmail == "yes") {
+					$content .= WT_I18N::translate('Last email reminder was sent ') . format_timestamp(WT_Site::getPreference('LAST_CHANGE_EMAIL')) . "<br>";
+					$content .= WT_I18N::translate('Next email reminder will be sent after ') . format_timestamp(WT_Site::getPreference('LAST_CHANGE_EMAIL') + (60 * 60 * 24 * $days)) . "<br><br>";
 				}
-				$changes=WT_DB::prepare(
-					"SELECT xref".
-					" FROM  `##change`".
-					" WHERE status='pending'".
-					" AND   gedcom_id=?".
+				$changes = WT_DB::prepare(
+					"SELECT xref" .
+					" FROM  `##change`" .
+					" WHERE status='pending'" .
+					" AND   gedcom_id=?" .
 					" GROUP BY xref"
 				)->execute(array(WT_GED_ID))->fetchAll();
 				foreach ($changes as $change) {
-					$record=WT_GedcomRecord::getInstance($change->xref);
+					$record = WT_GedcomRecord::getInstance($change->xref);
 					if ($record->canShow()) {
-						$content.='<b>'.$record->getFullName().'</b>';
-						$content.=$block ? '<br>' : ' ';
-						$content.='<a href="'.$record->getHtmlUrl().'">'.WT_I18N::translate('View the changes').'</a>';
-						$content.='<br>';
+						$content .= '<b>' . $record->getFullName() . '</b>';
+						$content .= $block ? '<br>' : ' ';
+						$content .= '<a href="' . $record->getHtmlUrl() . '">' . WT_I18N::translate('View the changes') . '</a>';
+						$content .= '<br>';
 					}
 				}
 
@@ -148,25 +148,25 @@ class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 	/** {@inheritdoc} */
 	public function configureBlock($block_id) {
 		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
-			set_block_setting($block_id, 'days',     WT_Filter::postInteger('num', 1, 180, 7));
+			set_block_setting($block_id, 'days', WT_Filter::postInteger('num', 1, 180, 7));
 			set_block_setting($block_id, 'sendmail', WT_Filter::postBool('sendmail'));
-			set_block_setting($block_id, 'block',    WT_Filter::postBool('block'));
+			set_block_setting($block_id, 'block', WT_Filter::postBool('block'));
 			exit;
 		}
 
-		require_once WT_ROOT.'includes/functions/functions_edit.php';
+		require_once WT_ROOT . 'includes/functions/functions_edit.php';
 
-		$sendmail=get_block_setting($block_id, 'sendmail', true);
-		$days=get_block_setting($block_id, 'days', 7);
+		$sendmail = get_block_setting($block_id, 'sendmail', true);
+		$days = get_block_setting($block_id, 'days', 7);
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo WT_I18N::translate('Send out reminder emails?');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('sendmail', $sendmail);
 		echo '<br>';
-		echo WT_I18N::translate('Reminder email frequency (days)')."&nbsp;<input type='text' name='days' value='".$days."' size='2'>";
+		echo WT_I18N::translate('Reminder email frequency (days)') . "&nbsp;<input type='text' name='days' value='" . $days . "' size='2'>";
 		echo '</td></tr>';
 
-		$block=get_block_setting($block_id, 'block', true);
+		$block = get_block_setting($block_id, 'block', true);
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo /* I18N: label for a yes/no option */ WT_I18N::translate('Add a scrollbar when block contents grow');
 		echo '</td><td class="optionbox">';
