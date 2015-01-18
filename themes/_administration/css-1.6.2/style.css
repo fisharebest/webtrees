@@ -58,6 +58,30 @@ body {
 	}
 }
 
+/* Make <fieldset class="form-group"> look like <div class="form-group"> so we can use semantic/accessible markup */
+fieldset {
+	margin-bottom: inherit;
+
+}
+
+/* Make <legend class="control-label"> look like <label class="control-label"> so we can use semantic/accessible markup */
+legend {
+	border: inherit;
+	font-size: inherit;
+	font-weight: 700;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 /* http://bootstrapdesigntools.com */
 
 
