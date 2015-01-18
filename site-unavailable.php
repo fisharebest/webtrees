@@ -30,7 +30,7 @@ define('WT_SERVER_NAME', '');
 define('WT_SCRIPT_PATH', '');
 define('WT_ROOT', '');
 define('WT_GED_ID', 0);
-define('WT_DATA_DIR', realpath('data').DIRECTORY_SEPARATOR);
+define('WT_DATA_DIR', realpath('data') . DIRECTORY_SEPARATOR);
 
 $WT_SESSION         = new stdClass;
 $WT_SESSION->locale = '';
@@ -40,7 +40,7 @@ require 'includes/functions/functions.php';
 define('WT_LOCALE', WT_I18N::init());
 
 header('Content-Type: text/html; charset=UTF-8');
-header($_SERVER["SERVER_PROTOCOL"].' 503 Service Temporarily Unavailable');
+header($_SERVER["SERVER_PROTOCOL"] . ' 503 Service Temporarily Unavailable');
 
 echo
 	'<!DOCTYPE html>',
@@ -64,10 +64,10 @@ echo
 	'<div class="content">',
 	'<p>', WT_I18N::translate('Oops!  The webserver is unable to connect to the database server.  It could be busy, undergoing maintenance, or simply broken.  You should <a href="index.php">try again</a> in a few minutes or contact the website administrator.'), '</p>';
 
-$config_ini_php=parse_ini_file('data/config.ini.php');
+$config_ini_php = parse_ini_file('data/config.ini.php');
 if (is_array($config_ini_php) && array_key_exists('dbhost', $config_ini_php) && array_key_exists('dbport', $config_ini_php) && array_key_exists('dbuser', $config_ini_php) && array_key_exists('dbpass', $config_ini_php) && array_key_exists('dbname', $config_ini_php)) {
 	try {
-		$dbh=new PDO('mysql:host='.$config_ini_php['dbhost'].';port='.$config_ini_php['dbport'].';dbname='.$config_ini_php['dbname'], $config_ini_php['dbuser'], $config_ini_php['dbpass'], array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION, PDO::ATTR_DEFAULT_FETCH_MODE=>PDO::FETCH_OBJ, PDO::ATTR_CASE=>PDO::CASE_LOWER, PDO::ATTR_AUTOCOMMIT=>true));
+		$dbh = new PDO('mysql:host=' . $config_ini_php['dbhost'] . ';port=' . $config_ini_php['dbport'] . ';dbname=' . $config_ini_php['dbname'], $config_ini_php['dbuser'], $config_ini_php['dbpass'], array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION, PDO::ATTR_DEFAULT_FETCH_MODE=>PDO::FETCH_OBJ, PDO::ATTR_CASE=>PDO::CASE_LOWER, PDO::ATTR_AUTOCOMMIT=>true));
 	} catch (PDOException $ex) {
 		echo '<p>', WT_I18N::translate('The database reported the following error message:'), '</p>';
 		echo '<blockquote>', $ex->getMessage(), '</blockquote>';
