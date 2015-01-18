@@ -26,7 +26,7 @@ use WT\Log;
 
 define('WT_SCRIPT_NAME', 'admin_media_upload.php');
 require './includes/session.php';
-require_once WT_ROOT.'includes/functions/functions_mediadb.php';
+require_once WT_ROOT . 'includes/functions/functions_mediadb.php';
 
 $controller = new WT_Controller_Page();
 $controller
@@ -36,8 +36,8 @@ $controller
 $action = WT_Filter::post('action');
 
 if ($action == "upload") {
-	for ($i=1; $i<6; $i++) {
-		if (!empty($_FILES['mediafile'.$i]["name"]) || !empty($_FILES['thumbnail'.$i]["name"])) {
+	for ($i = 1; $i < 6; $i++) {
+		if (!empty($_FILES['mediafile' . $i]["name"]) || !empty($_FILES['thumbnail' . $i]["name"])) {
 			$folder = WT_Filter::post('folder' . $i);
 
 			// Validate the media folder
@@ -49,7 +49,7 @@ if ($action == "upload") {
 			if ($folderName) {
 				$folderName .= '/';
 				// Not allowed to use “../”
-				if (strpos('/' . $folderName, '/../')!==false) {
+				if (strpos('/' . $folderName, '/../') !== false) {
 					WT_FlashMessages::addMessage('Folder names are not allowed to include “../”');
 					break;
 				}
@@ -151,7 +151,7 @@ if ($action == "upload") {
 				if (!empty($_FILES['thumbnail' . $i]['name']) && preg_match('/^image\/(png|gif|jpeg)/', $_FILES['thumbnail' . $i]['type'], $match)) {
 					$extension = $match[1];
 					$thumbFile = preg_replace('/\.[a-z0-9]{3,5}$/', '.' . $extension, $fileName);
-					$serverFileName = WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName .  $thumbFile;
+					$serverFileName = WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName . $thumbFile;
 					if (move_uploaded_file($_FILES['thumbnail' . $i]['tmp_name'], $serverFileName)) {
 						WT_FlashMessages::addMessage(WT_I18N::translate('The file %s was uploaded.', '<span class="filename">' . $serverFileName . '</span>'));
 						Log::addMediaLog('Thumbnail file ' . $serverFileName . ' uploaded');
@@ -188,7 +188,7 @@ echo '<input type="hidden" name="action" value="upload">';
 echo '<p>', WT_I18N::translate('Upload media files'), ':&nbsp;&nbsp;', WT_I18N::translate('Maximum upload size: '), '<span class="accepted">', $filesize, '</span></p>';
 
 // Print 5 forms for uploading images
-for ($i=1; $i<6; $i++) {
+for ($i = 1; $i < 6; $i++) {
 	echo '<table class="upload_media">';
 	echo '<tr><th>', WT_I18N::translate('Media file'), ':&nbsp;&nbsp;', $i, '</th></tr>';
 	echo '<tr><td>';

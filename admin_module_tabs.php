@@ -35,7 +35,7 @@ $action  = WT_Filter::post('action');
 if ($action === 'update_mods' && WT_Filter::checkCsrf()) {
 	foreach ($modules as $module) {
 		foreach (WT_Tree::getAll() as $tree) {
-			$access_level = WT_Filter::post('access-' . $module->getName(). '-' . $tree->tree_id, WT_REGEX_INTEGER, $module->defaultAccessLevel());
+			$access_level = WT_Filter::post('access-' . $module->getName() . '-' . $tree->tree_id, WT_REGEX_INTEGER, $module->defaultAccessLevel());
 			WT_DB::prepare(
 				"REPLACE INTO `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'tab', ?)"
 			)->execute(array($module->getName(), $tree->tree_id, $access_level));

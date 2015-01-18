@@ -28,19 +28,19 @@ use WT\User;
 
 define('WT_SCRIPT_NAME', 'edituser.php');
 require './includes/session.php';
-require_once WT_ROOT.'includes/functions/functions_print_lists.php';
-require WT_ROOT.'includes/functions/functions_edit.php';
+require_once WT_ROOT . 'includes/functions/functions_print_lists.php';
+require WT_ROOT . 'includes/functions/functions_edit.php';
 
 // prevent users with editing account disabled from being able to edit their account
 if (!Auth::id() || !Auth::user()->getPreference('editaccount')) {
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
+	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH);
 	exit;
 }
 
 // Extract form variables
 $form_action         = WT_Filter::post('form_action');
 $form_username       = WT_Filter::post('form_username');
-$form_realname       = WT_Filter::post('form_realname' );
+$form_realname       = WT_Filter::post('form_realname');
 $form_pass1          = WT_Filter::post('form_pass1', WT_REGEX_PASSWORD);
 $form_pass2          = WT_Filter::post('form_pass2', WT_REGEX_PASSWORD);
 $form_email          = WT_Filter::postEmail('form_email');
@@ -51,7 +51,7 @@ $form_contact_method = WT_Filter::post('form_contact_method');
 $form_visible_online = WT_Filter::postBool('form_visible_online');
 
 // Respond to form action
-if ($form_action=='update' && WT_Filter::checkCsrf()) {
+if ($form_action == 'update' && WT_Filter::checkCsrf()) {
 	if ($form_username != Auth::user()->getUserName() && User::findByIdentifier($form_username)) {
 		WT_FlashMessages::addMessage(WT_I18N::translate('Duplicate user name.  A user with that user name already exists.  Please choose another user name.'));
 	} elseif ($form_email != Auth::user()->getEmail() && User::findByIdentifier($form_email)) {
@@ -72,7 +72,7 @@ if ($form_action=='update' && WT_Filter::checkCsrf()) {
 		Auth::user()
 			->setRealName($form_realname)
 			->setEmail($form_email)
-			->setPreference('language',      $form_language)
+			->setPreference('language', $form_language)
 			->setPreference('contactmethod', $form_contact_method)
 			->setPreference('visibleonline', $form_visible_online ? '1' : '0');
 

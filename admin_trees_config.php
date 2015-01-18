@@ -30,7 +30,7 @@ define('WT_SCRIPT_NAME', 'admin_trees_config.php');
 if (!function_exists('with')) { function with($x) { return $x; } }
 
 require './includes/session.php';
-require WT_ROOT.'includes/functions/functions_edit.php';
+require WT_ROOT . 'includes/functions/functions_edit.php';
 
 $controller = new WT_Controller_Page();
 $controller->restrictAccess(Auth::isManager());
@@ -86,7 +86,7 @@ $first_last = array(
 );
 
 $one_to_nine = array();
-for ($n=1; $n<=9; ++$n) {
+for ($n = 1; $n <= 9; ++$n) {
 	$one_to_nine[] = WT_I18N::number($n);
 }
 
@@ -161,7 +161,7 @@ $privacy = array(
 
 $tags = array_unique(array_merge(
 	explode(',', $WT_TREE->getPreference('INDI_FACTS_ADD')), explode(',', $WT_TREE->getPreference('INDI_FACTS_UNIQUE')),
-	explode(',', $WT_TREE->getPreference('FAM_FACTS_ADD' )), explode(',', $WT_TREE->getPreference('FAM_FACTS_UNIQUE' )),
+	explode(',', $WT_TREE->getPreference('FAM_FACTS_ADD')), explode(',', $WT_TREE->getPreference('FAM_FACTS_UNIQUE')),
 	explode(',', $WT_TREE->getPreference('NOTE_FACTS_ADD')), explode(',', $WT_TREE->getPreference('NOTE_FACTS_UNIQUE')),
 	explode(',', $WT_TREE->getPreference('SOUR_FACTS_ADD')), explode(',', $WT_TREE->getPreference('SOUR_FACTS_UNIQUE')),
 	explode(',', $WT_TREE->getPreference('REPO_FACTS_ADD')), explode(',', $WT_TREE->getPreference('REPO_FACTS_UNIQUE')),
@@ -178,10 +178,10 @@ foreach ($tags as $tag) {
 uasort($all_tags, array('WT_I18N', 'strcasecmp'));
 
 $resns = WT_DB::prepare(
-	"SELECT default_resn_id, tag_type, xref, resn".
-	" FROM `##default_resn`".
-	" LEFT JOIN `##name` ON (gedcom_id=n_file AND xref=n_id AND n_num=0)".
-	" WHERE gedcom_id=?".
+	"SELECT default_resn_id, tag_type, xref, resn" .
+	" FROM `##default_resn`" .
+	" LEFT JOIN `##name` ON (gedcom_id=n_file AND xref=n_id AND n_num=0)" .
+	" WHERE gedcom_id=?" .
 	" ORDER BY xref IS NULL, n_sort, xref, tag_type"
 )->execute(array(WT_GED_ID))->fetchAll();
 
@@ -235,13 +235,13 @@ case 'privacy':
 		}
 	}
 
-	$WT_TREE->setPreference('HIDE_LIVE_PEOPLE',           WT_Filter::postBool('HIDE_LIVE_PEOPLE'));
-	$WT_TREE->setPreference('KEEP_ALIVE_YEARS_BIRTH',     WT_Filter::post('KEEP_ALIVE_YEARS_BIRTH', WT_REGEX_INTEGER, 0));
-	$WT_TREE->setPreference('KEEP_ALIVE_YEARS_DEATH',     WT_Filter::post('KEEP_ALIVE_YEARS_DEATH', WT_REGEX_INTEGER, 0));
-	$WT_TREE->setPreference('MAX_ALIVE_AGE',              WT_Filter::post('MAX_ALIVE_AGE', WT_REGEX_INTEGER, 100));
-	$WT_TREE->setPreference('REQUIRE_AUTHENTICATION',     WT_Filter::postBool('REQUIRE_AUTHENTICATION'));
-	$WT_TREE->setPreference('SHOW_DEAD_PEOPLE',           WT_Filter::post('SHOW_DEAD_PEOPLE'));
-	$WT_TREE->setPreference('SHOW_LIVING_NAMES',          WT_Filter::post('SHOW_LIVING_NAMES'));
+	$WT_TREE->setPreference('HIDE_LIVE_PEOPLE', WT_Filter::postBool('HIDE_LIVE_PEOPLE'));
+	$WT_TREE->setPreference('KEEP_ALIVE_YEARS_BIRTH', WT_Filter::post('KEEP_ALIVE_YEARS_BIRTH', WT_REGEX_INTEGER, 0));
+	$WT_TREE->setPreference('KEEP_ALIVE_YEARS_DEATH', WT_Filter::post('KEEP_ALIVE_YEARS_DEATH', WT_REGEX_INTEGER, 0));
+	$WT_TREE->setPreference('MAX_ALIVE_AGE', WT_Filter::post('MAX_ALIVE_AGE', WT_REGEX_INTEGER, 100));
+	$WT_TREE->setPreference('REQUIRE_AUTHENTICATION', WT_Filter::postBool('REQUIRE_AUTHENTICATION'));
+	$WT_TREE->setPreference('SHOW_DEAD_PEOPLE', WT_Filter::post('SHOW_DEAD_PEOPLE'));
+	$WT_TREE->setPreference('SHOW_LIVING_NAMES', WT_Filter::post('SHOW_LIVING_NAMES'));
 	$WT_TREE->setPreference('SHOW_PRIVATE_RELATIONSHIPS', WT_Filter::post('SHOW_PRIVATE_RELATIONSHIPS'));
 
 	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'admin_trees_manage.php?ged=' . $WT_TREE->tree_name);
@@ -252,100 +252,100 @@ case 'general':
 	if (!WT_Filter::checkCsrf()) {
 		break;
 	}
-	$WT_TREE->setPreference('ADVANCED_NAME_FACTS',          WT_Filter::post('ADVANCED_NAME_FACTS'));
-	$WT_TREE->setPreference('ADVANCED_PLAC_FACTS',          WT_Filter::post('ADVANCED_PLAC_FACTS'));
-	$WT_TREE->setPreference('ALLOW_THEME_DROPDOWN',         WT_Filter::postBool('ALLOW_THEME_DROPDOWN'));
+	$WT_TREE->setPreference('ADVANCED_NAME_FACTS', WT_Filter::post('ADVANCED_NAME_FACTS'));
+	$WT_TREE->setPreference('ADVANCED_PLAC_FACTS', WT_Filter::post('ADVANCED_PLAC_FACTS'));
+	$WT_TREE->setPreference('ALLOW_THEME_DROPDOWN', WT_Filter::postBool('ALLOW_THEME_DROPDOWN'));
 	// For backwards compatibility with webtrees 1.x we store the two calendar formats in one variable
 	// e.g. "gregorian_and_jewish"
-	$WT_TREE->setPreference('CALENDAR_FORMAT',              implode('_and_', array_unique(array(
+	$WT_TREE->setPreference('CALENDAR_FORMAT', implode('_and_', array_unique(array(
 		WT_Filter::post('CALENDAR_FORMAT0', 'gregorian|julian|french|jewish|hijri|jalali', 'none'),
 		WT_Filter::post('CALENDAR_FORMAT1', 'gregorian|julian|french|jewish|hijri|jalali', 'none')
 	))));
-	$WT_TREE->setPreference('CHART_BOX_TAGS',               WT_Filter::post('CHART_BOX_TAGS'));
-	$WT_TREE->setPreference('COMMON_NAMES_ADD',             str_replace(' ', '', WT_Filter::post('COMMON_NAMES_ADD')));
-	$WT_TREE->setPreference('COMMON_NAMES_REMOVE',          str_replace(' ', '', WT_Filter::post('COMMON_NAMES_REMOVE')));
-	$WT_TREE->setPreference('COMMON_NAMES_THRESHOLD',       WT_Filter::post('COMMON_NAMES_THRESHOLD', WT_REGEX_INTEGER, 40));
-	$WT_TREE->setPreference('CONTACT_USER_ID',              WT_Filter::post('CONTACT_USER_ID'));
+	$WT_TREE->setPreference('CHART_BOX_TAGS', WT_Filter::post('CHART_BOX_TAGS'));
+	$WT_TREE->setPreference('COMMON_NAMES_ADD', str_replace(' ', '', WT_Filter::post('COMMON_NAMES_ADD')));
+	$WT_TREE->setPreference('COMMON_NAMES_REMOVE', str_replace(' ', '', WT_Filter::post('COMMON_NAMES_REMOVE')));
+	$WT_TREE->setPreference('COMMON_NAMES_THRESHOLD', WT_Filter::post('COMMON_NAMES_THRESHOLD', WT_REGEX_INTEGER, 40));
+	$WT_TREE->setPreference('CONTACT_USER_ID', WT_Filter::post('CONTACT_USER_ID'));
 	$WT_TREE->setPreference('DEFAULT_PEDIGREE_GENERATIONS', WT_Filter::post('DEFAULT_PEDIGREE_GENERATIONS'));
-	$WT_TREE->setPreference('EXPAND_NOTES',                 WT_Filter::postBool('EXPAND_NOTES'));
-	$WT_TREE->setPreference('EXPAND_RELATIVES_EVENTS',      WT_Filter::postBool('EXPAND_RELATIVES_EVENTS'));
-	$WT_TREE->setPreference('EXPAND_SOURCES',               WT_Filter::postBool('EXPAND_SOURCES'));
-	$WT_TREE->setPreference('FAM_FACTS_ADD',                str_replace(' ', '', WT_Filter::post('FAM_FACTS_ADD')));
-	$WT_TREE->setPreference('FAM_FACTS_QUICK',              str_replace(' ', '', WT_Filter::post('FAM_FACTS_QUICK')));
-	$WT_TREE->setPreference('FAM_FACTS_UNIQUE',             str_replace(' ', '', WT_Filter::post('FAM_FACTS_UNIQUE')));
-	$WT_TREE->setPreference('FAM_ID_PREFIX',                WT_Filter::post('FAM_ID_PREFIX'));
-	$WT_TREE->setPreference('FULL_SOURCES',                 WT_Filter::postBool('FULL_SOURCES'));
-	$WT_TREE->setPreference('FORMAT_TEXT',                  WT_Filter::post('FORMAT_TEXT'));
-	$WT_TREE->setPreference('GEDCOM_ID_PREFIX',             WT_Filter::post('GEDCOM_ID_PREFIX'));
-	$WT_TREE->setPreference('GEDCOM_MEDIA_PATH',            WT_Filter::post('GEDCOM_MEDIA_PATH'));
-	$WT_TREE->setPreference('GENERATE_UIDS',                WT_Filter::postBool('GENERATE_UIDS'));
-	$WT_TREE->setPreference('GEONAMES_ACCOUNT',             WT_Filter::post('GEONAMES_ACCOUNT'));
-	$WT_TREE->setPreference('HIDE_GEDCOM_ERRORS',           WT_Filter::postBool('HIDE_GEDCOM_ERRORS'));
-	$WT_TREE->setPreference('HIDE_LIVE_PEOPLE',             WT_Filter::postBool('HIDE_LIVE_PEOPLE'));
-	$WT_TREE->setPreference('INDI_FACTS_ADD',               str_replace(' ', '', WT_Filter::post('INDI_FACTS_ADD')));
-	$WT_TREE->setPreference('INDI_FACTS_QUICK',             str_replace(' ', '', WT_Filter::post('INDI_FACTS_QUICK')));
-	$WT_TREE->setPreference('INDI_FACTS_UNIQUE',            str_replace(' ', '', WT_Filter::post('INDI_FACTS_UNIQUE')));
-	$WT_TREE->setPreference('KEEP_ALIVE_YEARS_BIRTH',       WT_Filter::post('KEEP_ALIVE_YEARS_BIRTH', WT_REGEX_INTEGER, 0));
-	$WT_TREE->setPreference('KEEP_ALIVE_YEARS_DEATH',       WT_Filter::post('KEEP_ALIVE_YEARS_DEATH', WT_REGEX_INTEGER, 0));
-	$WT_TREE->setPreference('LANGUAGE',                     WT_Filter::post('LANGUAGE'));
-	$WT_TREE->setPreference('MAX_ALIVE_AGE',                WT_Filter::post('MAX_ALIVE_AGE', WT_REGEX_INTEGER, 100));
-	$WT_TREE->setPreference('MAX_DESCENDANCY_GENERATIONS',  WT_Filter::post('MAX_DESCENDANCY_GENERATIONS'));
-	$WT_TREE->setPreference('MAX_PEDIGREE_GENERATIONS',     WT_Filter::post('MAX_PEDIGREE_GENERATIONS'));
-	$WT_TREE->setPreference('MEDIA_ID_PREFIX',              WT_Filter::post('MEDIA_ID_PREFIX'));
-	$WT_TREE->setPreference('MEDIA_UPLOAD',                 WT_Filter::post('MEDIA_UPLOAD'));
-	$WT_TREE->setPreference('META_DESCRIPTION',             WT_Filter::post('META_DESCRIPTION'));
-	$WT_TREE->setPreference('META_TITLE',                   WT_Filter::post('META_TITLE'));
-	$WT_TREE->setPreference('NOTE_ID_PREFIX',               WT_Filter::post('NOTE_ID_PREFIX'));
-	$WT_TREE->setPreference('NO_UPDATE_CHAN',               WT_Filter::postBool('NO_UPDATE_CHAN'));
-	$WT_TREE->setPreference('PEDIGREE_FULL_DETAILS',        WT_Filter::postBool('PEDIGREE_FULL_DETAILS'));
-	$WT_TREE->setPreference('PEDIGREE_LAYOUT',              WT_Filter::postBool('PEDIGREE_LAYOUT'));
-	$WT_TREE->setPreference('PEDIGREE_ROOT_ID',             WT_Filter::post('PEDIGREE_ROOT_ID', WT_REGEX_XREF));
-	$WT_TREE->setPreference('PEDIGREE_SHOW_GENDER',         WT_Filter::postBool('PEDIGREE_SHOW_GENDER'));
-	$WT_TREE->setPreference('PREFER_LEVEL2_SOURCES',        WT_Filter::post('PREFER_LEVEL2_SOURCES'));
-	$WT_TREE->setPreference('QUICK_REQUIRED_FACTS',         WT_Filter::post('QUICK_REQUIRED_FACTS'));
-	$WT_TREE->setPreference('QUICK_REQUIRED_FAMFACTS',      WT_Filter::post('QUICK_REQUIRED_FAMFACTS'));
-	$WT_TREE->setPreference('REPO_FACTS_ADD',               str_replace(' ', '', WT_Filter::post('REPO_FACTS_ADD')));
-	$WT_TREE->setPreference('REPO_FACTS_QUICK',             str_replace(' ', '', WT_Filter::post('REPO_FACTS_QUICK')));
-	$WT_TREE->setPreference('REPO_FACTS_UNIQUE',            str_replace(' ', '', WT_Filter::post('REPO_FACTS_UNIQUE')));
-	$WT_TREE->setPreference('REPO_ID_PREFIX',               WT_Filter::post('REPO_ID_PREFIX'));
-	$WT_TREE->setPreference('REQUIRE_AUTHENTICATION',       WT_Filter::postBool('REQUIRE_AUTHENTICATION'));
-	$WT_TREE->setPreference('SAVE_WATERMARK_IMAGE',         WT_Filter::postBool('SAVE_WATERMARK_IMAGE'));
-	$WT_TREE->setPreference('SAVE_WATERMARK_THUMB',         WT_Filter::postBool('SAVE_WATERMARK_THUMB'));
-	$WT_TREE->setPreference('SHOW_AGE_DIFF',                WT_Filter::postBool('SHOW_AGE_DIFF'));
-	$WT_TREE->setPreference('SHOW_COUNTER',                 WT_Filter::postBool('SHOW_COUNTER'));
-	$WT_TREE->setPreference('SHOW_DEAD_PEOPLE',             WT_Filter::post('SHOW_DEAD_PEOPLE'));
-	$WT_TREE->setPreference('SHOW_EST_LIST_DATES',          WT_Filter::postBool('SHOW_EST_LIST_DATES'));
-	$WT_TREE->setPreference('SHOW_FACT_ICONS',              WT_Filter::postBool('SHOW_FACT_ICONS'));
-	$WT_TREE->setPreference('SHOW_GEDCOM_RECORD',           WT_Filter::postBool('SHOW_GEDCOM_RECORD'));
-	$WT_TREE->setPreference('SHOW_HIGHLIGHT_IMAGES',        WT_Filter::postBool('SHOW_HIGHLIGHT_IMAGES'));
-	$WT_TREE->setPreference('SHOW_LAST_CHANGE',             WT_Filter::postBool('SHOW_LAST_CHANGE'));
-	$WT_TREE->setPreference('SHOW_LDS_AT_GLANCE',           WT_Filter::postBool('SHOW_LDS_AT_GLANCE'));
-	$WT_TREE->setPreference('SHOW_LEVEL2_NOTES',            WT_Filter::postBool('SHOW_LEVEL2_NOTES'));
-	$WT_TREE->setPreference('SHOW_LIVING_NAMES',            WT_Filter::post('SHOW_LIVING_NAMES'));
-	$WT_TREE->setPreference('SHOW_MEDIA_DOWNLOAD',          WT_Filter::postBool('SHOW_MEDIA_DOWNLOAD'));
-	$WT_TREE->setPreference('SHOW_NO_WATERMARK',            WT_Filter::post('SHOW_NO_WATERMARK'));
-	$WT_TREE->setPreference('SHOW_PARENTS_AGE',             WT_Filter::postBool('SHOW_PARENTS_AGE'));
-	$WT_TREE->setPreference('SHOW_PEDIGREE_PLACES',         WT_Filter::post('SHOW_PEDIGREE_PLACES'));
-	$WT_TREE->setPreference('SHOW_PEDIGREE_PLACES_SUFFIX',  WT_Filter::postBool('SHOW_PEDIGREE_PLACES_SUFFIX'));
-	$WT_TREE->setPreference('SHOW_PRIVATE_RELATIONSHIPS',   WT_Filter::post('SHOW_PRIVATE_RELATIONSHIPS'));
-	$WT_TREE->setPreference('SHOW_RELATIVES_EVENTS',        implode(',', WT_Filter::post('SHOW_RELATIVES_EVENTS')));
-	$WT_TREE->setPreference('SHOW_STATS',                   WT_Filter::postBool('SHOW_STATS'));
-	$WT_TREE->setPreference('SOURCE_ID_PREFIX',             WT_Filter::post('SOURCE_ID_PREFIX'));
-	$WT_TREE->setPreference('SOUR_FACTS_ADD',               str_replace(' ', '', WT_Filter::post('SOUR_FACTS_ADD')));
-	$WT_TREE->setPreference('SOUR_FACTS_QUICK',             str_replace(' ', '', WT_Filter::post('SOUR_FACTS_QUICK')));
-	$WT_TREE->setPreference('SOUR_FACTS_UNIQUE',            str_replace(' ', '', WT_Filter::post('SOUR_FACTS_UNIQUE')));
-	$WT_TREE->setPreference('SUBLIST_TRIGGER_I',            WT_Filter::post('SUBLIST_TRIGGER_I', WT_REGEX_INTEGER, 200));
-	$WT_TREE->setPreference('SURNAME_LIST_STYLE',           WT_Filter::post('SURNAME_LIST_STYLE'));
-	$WT_TREE->setPreference('SURNAME_TRADITION',            WT_Filter::post('SURNAME_TRADITION'));
-	$WT_TREE->setPreference('THEME_DIR',                    WT_Filter::post('THEME_DIR'));
-	$WT_TREE->setPreference('THUMBNAIL_WIDTH',              WT_Filter::post('THUMBNAIL_WIDTH'));
-	$WT_TREE->setPreference('USE_RIN',                      WT_Filter::postBool('USE_RIN'));
-	$WT_TREE->setPreference('USE_SILHOUETTE',               WT_Filter::postBool('USE_SILHOUETTE'));
-	$WT_TREE->setPreference('WATERMARK_THUMB',              WT_Filter::postBool('WATERMARK_THUMB'));
-	$WT_TREE->setPreference('WEBMASTER_USER_ID',            WT_Filter::post('WEBMASTER_USER_ID'));
-	$WT_TREE->setPreference('WEBTREES_EMAIL',               WT_Filter::post('WEBTREES_EMAIL'));
-	$WT_TREE->setPreference('WORD_WRAPPED_NOTES',           WT_Filter::postBool('WORD_WRAPPED_NOTES'));
-	$WT_TREE->setPreference('title',                        WT_Filter::post('title'));
+	$WT_TREE->setPreference('EXPAND_NOTES', WT_Filter::postBool('EXPAND_NOTES'));
+	$WT_TREE->setPreference('EXPAND_RELATIVES_EVENTS', WT_Filter::postBool('EXPAND_RELATIVES_EVENTS'));
+	$WT_TREE->setPreference('EXPAND_SOURCES', WT_Filter::postBool('EXPAND_SOURCES'));
+	$WT_TREE->setPreference('FAM_FACTS_ADD', str_replace(' ', '', WT_Filter::post('FAM_FACTS_ADD')));
+	$WT_TREE->setPreference('FAM_FACTS_QUICK', str_replace(' ', '', WT_Filter::post('FAM_FACTS_QUICK')));
+	$WT_TREE->setPreference('FAM_FACTS_UNIQUE', str_replace(' ', '', WT_Filter::post('FAM_FACTS_UNIQUE')));
+	$WT_TREE->setPreference('FAM_ID_PREFIX', WT_Filter::post('FAM_ID_PREFIX'));
+	$WT_TREE->setPreference('FULL_SOURCES', WT_Filter::postBool('FULL_SOURCES'));
+	$WT_TREE->setPreference('FORMAT_TEXT', WT_Filter::post('FORMAT_TEXT'));
+	$WT_TREE->setPreference('GEDCOM_ID_PREFIX', WT_Filter::post('GEDCOM_ID_PREFIX'));
+	$WT_TREE->setPreference('GEDCOM_MEDIA_PATH', WT_Filter::post('GEDCOM_MEDIA_PATH'));
+	$WT_TREE->setPreference('GENERATE_UIDS', WT_Filter::postBool('GENERATE_UIDS'));
+	$WT_TREE->setPreference('GEONAMES_ACCOUNT', WT_Filter::post('GEONAMES_ACCOUNT'));
+	$WT_TREE->setPreference('HIDE_GEDCOM_ERRORS', WT_Filter::postBool('HIDE_GEDCOM_ERRORS'));
+	$WT_TREE->setPreference('HIDE_LIVE_PEOPLE', WT_Filter::postBool('HIDE_LIVE_PEOPLE'));
+	$WT_TREE->setPreference('INDI_FACTS_ADD', str_replace(' ', '', WT_Filter::post('INDI_FACTS_ADD')));
+	$WT_TREE->setPreference('INDI_FACTS_QUICK', str_replace(' ', '', WT_Filter::post('INDI_FACTS_QUICK')));
+	$WT_TREE->setPreference('INDI_FACTS_UNIQUE', str_replace(' ', '', WT_Filter::post('INDI_FACTS_UNIQUE')));
+	$WT_TREE->setPreference('KEEP_ALIVE_YEARS_BIRTH', WT_Filter::post('KEEP_ALIVE_YEARS_BIRTH', WT_REGEX_INTEGER, 0));
+	$WT_TREE->setPreference('KEEP_ALIVE_YEARS_DEATH', WT_Filter::post('KEEP_ALIVE_YEARS_DEATH', WT_REGEX_INTEGER, 0));
+	$WT_TREE->setPreference('LANGUAGE', WT_Filter::post('LANGUAGE'));
+	$WT_TREE->setPreference('MAX_ALIVE_AGE', WT_Filter::post('MAX_ALIVE_AGE', WT_REGEX_INTEGER, 100));
+	$WT_TREE->setPreference('MAX_DESCENDANCY_GENERATIONS', WT_Filter::post('MAX_DESCENDANCY_GENERATIONS'));
+	$WT_TREE->setPreference('MAX_PEDIGREE_GENERATIONS', WT_Filter::post('MAX_PEDIGREE_GENERATIONS'));
+	$WT_TREE->setPreference('MEDIA_ID_PREFIX', WT_Filter::post('MEDIA_ID_PREFIX'));
+	$WT_TREE->setPreference('MEDIA_UPLOAD', WT_Filter::post('MEDIA_UPLOAD'));
+	$WT_TREE->setPreference('META_DESCRIPTION', WT_Filter::post('META_DESCRIPTION'));
+	$WT_TREE->setPreference('META_TITLE', WT_Filter::post('META_TITLE'));
+	$WT_TREE->setPreference('NOTE_ID_PREFIX', WT_Filter::post('NOTE_ID_PREFIX'));
+	$WT_TREE->setPreference('NO_UPDATE_CHAN', WT_Filter::postBool('NO_UPDATE_CHAN'));
+	$WT_TREE->setPreference('PEDIGREE_FULL_DETAILS', WT_Filter::postBool('PEDIGREE_FULL_DETAILS'));
+	$WT_TREE->setPreference('PEDIGREE_LAYOUT', WT_Filter::postBool('PEDIGREE_LAYOUT'));
+	$WT_TREE->setPreference('PEDIGREE_ROOT_ID', WT_Filter::post('PEDIGREE_ROOT_ID', WT_REGEX_XREF));
+	$WT_TREE->setPreference('PEDIGREE_SHOW_GENDER', WT_Filter::postBool('PEDIGREE_SHOW_GENDER'));
+	$WT_TREE->setPreference('PREFER_LEVEL2_SOURCES', WT_Filter::post('PREFER_LEVEL2_SOURCES'));
+	$WT_TREE->setPreference('QUICK_REQUIRED_FACTS', WT_Filter::post('QUICK_REQUIRED_FACTS'));
+	$WT_TREE->setPreference('QUICK_REQUIRED_FAMFACTS', WT_Filter::post('QUICK_REQUIRED_FAMFACTS'));
+	$WT_TREE->setPreference('REPO_FACTS_ADD', str_replace(' ', '', WT_Filter::post('REPO_FACTS_ADD')));
+	$WT_TREE->setPreference('REPO_FACTS_QUICK', str_replace(' ', '', WT_Filter::post('REPO_FACTS_QUICK')));
+	$WT_TREE->setPreference('REPO_FACTS_UNIQUE', str_replace(' ', '', WT_Filter::post('REPO_FACTS_UNIQUE')));
+	$WT_TREE->setPreference('REPO_ID_PREFIX', WT_Filter::post('REPO_ID_PREFIX'));
+	$WT_TREE->setPreference('REQUIRE_AUTHENTICATION', WT_Filter::postBool('REQUIRE_AUTHENTICATION'));
+	$WT_TREE->setPreference('SAVE_WATERMARK_IMAGE', WT_Filter::postBool('SAVE_WATERMARK_IMAGE'));
+	$WT_TREE->setPreference('SAVE_WATERMARK_THUMB', WT_Filter::postBool('SAVE_WATERMARK_THUMB'));
+	$WT_TREE->setPreference('SHOW_AGE_DIFF', WT_Filter::postBool('SHOW_AGE_DIFF'));
+	$WT_TREE->setPreference('SHOW_COUNTER', WT_Filter::postBool('SHOW_COUNTER'));
+	$WT_TREE->setPreference('SHOW_DEAD_PEOPLE', WT_Filter::post('SHOW_DEAD_PEOPLE'));
+	$WT_TREE->setPreference('SHOW_EST_LIST_DATES', WT_Filter::postBool('SHOW_EST_LIST_DATES'));
+	$WT_TREE->setPreference('SHOW_FACT_ICONS', WT_Filter::postBool('SHOW_FACT_ICONS'));
+	$WT_TREE->setPreference('SHOW_GEDCOM_RECORD', WT_Filter::postBool('SHOW_GEDCOM_RECORD'));
+	$WT_TREE->setPreference('SHOW_HIGHLIGHT_IMAGES', WT_Filter::postBool('SHOW_HIGHLIGHT_IMAGES'));
+	$WT_TREE->setPreference('SHOW_LAST_CHANGE', WT_Filter::postBool('SHOW_LAST_CHANGE'));
+	$WT_TREE->setPreference('SHOW_LDS_AT_GLANCE', WT_Filter::postBool('SHOW_LDS_AT_GLANCE'));
+	$WT_TREE->setPreference('SHOW_LEVEL2_NOTES', WT_Filter::postBool('SHOW_LEVEL2_NOTES'));
+	$WT_TREE->setPreference('SHOW_LIVING_NAMES', WT_Filter::post('SHOW_LIVING_NAMES'));
+	$WT_TREE->setPreference('SHOW_MEDIA_DOWNLOAD', WT_Filter::postBool('SHOW_MEDIA_DOWNLOAD'));
+	$WT_TREE->setPreference('SHOW_NO_WATERMARK', WT_Filter::post('SHOW_NO_WATERMARK'));
+	$WT_TREE->setPreference('SHOW_PARENTS_AGE', WT_Filter::postBool('SHOW_PARENTS_AGE'));
+	$WT_TREE->setPreference('SHOW_PEDIGREE_PLACES', WT_Filter::post('SHOW_PEDIGREE_PLACES'));
+	$WT_TREE->setPreference('SHOW_PEDIGREE_PLACES_SUFFIX', WT_Filter::postBool('SHOW_PEDIGREE_PLACES_SUFFIX'));
+	$WT_TREE->setPreference('SHOW_PRIVATE_RELATIONSHIPS', WT_Filter::post('SHOW_PRIVATE_RELATIONSHIPS'));
+	$WT_TREE->setPreference('SHOW_RELATIVES_EVENTS', implode(',', WT_Filter::post('SHOW_RELATIVES_EVENTS')));
+	$WT_TREE->setPreference('SHOW_STATS', WT_Filter::postBool('SHOW_STATS'));
+	$WT_TREE->setPreference('SOURCE_ID_PREFIX', WT_Filter::post('SOURCE_ID_PREFIX'));
+	$WT_TREE->setPreference('SOUR_FACTS_ADD', str_replace(' ', '', WT_Filter::post('SOUR_FACTS_ADD')));
+	$WT_TREE->setPreference('SOUR_FACTS_QUICK', str_replace(' ', '', WT_Filter::post('SOUR_FACTS_QUICK')));
+	$WT_TREE->setPreference('SOUR_FACTS_UNIQUE', str_replace(' ', '', WT_Filter::post('SOUR_FACTS_UNIQUE')));
+	$WT_TREE->setPreference('SUBLIST_TRIGGER_I', WT_Filter::post('SUBLIST_TRIGGER_I', WT_REGEX_INTEGER, 200));
+	$WT_TREE->setPreference('SURNAME_LIST_STYLE', WT_Filter::post('SURNAME_LIST_STYLE'));
+	$WT_TREE->setPreference('SURNAME_TRADITION', WT_Filter::post('SURNAME_TRADITION'));
+	$WT_TREE->setPreference('THEME_DIR', WT_Filter::post('THEME_DIR'));
+	$WT_TREE->setPreference('THUMBNAIL_WIDTH', WT_Filter::post('THUMBNAIL_WIDTH'));
+	$WT_TREE->setPreference('USE_RIN', WT_Filter::postBool('USE_RIN'));
+	$WT_TREE->setPreference('USE_SILHOUETTE', WT_Filter::postBool('USE_SILHOUETTE'));
+	$WT_TREE->setPreference('WATERMARK_THUMB', WT_Filter::postBool('WATERMARK_THUMB'));
+	$WT_TREE->setPreference('WEBMASTER_USER_ID', WT_Filter::post('WEBMASTER_USER_ID'));
+	$WT_TREE->setPreference('WEBTREES_EMAIL', WT_Filter::post('WEBTREES_EMAIL'));
+	$WT_TREE->setPreference('WORD_WRAPPED_NOTES', WT_Filter::postBool('WORD_WRAPPED_NOTES'));
+	$WT_TREE->setPreference('title', WT_Filter::post('title'));
 
 	// Only accept valid folders for MEDIA_DIRECTORY
 	$MEDIA_DIRECTORY = preg_replace('/[\/\\\\]+/', '/', WT_Filter::post('MEDIA_DIRECTORY') . '/');
@@ -477,8 +477,8 @@ $controller
 			echo
 				/* I18N: Extend privacy to dead people [who were] ... */ WT_I18N::translate(
 				'born in the last %1$s years or died in the last %2$s years',
-				'<input type="text" name="KEEP_ALIVE_YEARS_BIRTH" value="'.$WT_TREE->getPreference('KEEP_ALIVE_YEARS_BIRTH').'" size="5" maxlength="3">',
-				'<input type="text" name="KEEP_ALIVE_YEARS_DEATH" value="'.$WT_TREE->getPreference('KEEP_ALIVE_YEARS_DEATH').'" size="5" maxlength="3">'
+				'<input type="text" name="KEEP_ALIVE_YEARS_BIRTH" value="' . $WT_TREE->getPreference('KEEP_ALIVE_YEARS_BIRTH') . '" size="5" maxlength="3">',
+				'<input type="text" name="KEEP_ALIVE_YEARS_DEATH" value="' . $WT_TREE->getPreference('KEEP_ALIVE_YEARS_DEATH') . '" size="5" maxlength="3">'
 			); ?>
 			<p class="small text-muted">
 				<?php echo /* I18N: Help text for the “Extend privacy to dead individuals” configuration setting */ WT_I18N::translate('In some countries, privacy laws apply not only to living individuals, but also to those who have died recently.  This option will allow you to extend the privacy rules for living individuals to those who were born or died within a specified number of years.  Leave these values empty to disable this feature.'); ?>
@@ -590,7 +590,7 @@ $controller
 					<?php if ($resn->record): ?>
 						<a href="<?php echo $resn->record->getHtmlUrl(); ?>"><?php echo $resn->record->getFullName(); ?></a>
 					<?php elseif ($resn->xref): ?>
-						<?php echo $resn->xref , ' — ', WT_I18N::translate('this record does not exist'); ?>
+						<?php echo $resn->xref, ' — ', WT_I18N::translate('this record does not exist'); ?>
 					<?php else: ?>
 						&nbsp;
 					<?php endif; ?>
@@ -695,7 +695,7 @@ $controller
 				>
 				<span class="input-group-addon">
 					<?php
-					$person=WT_Individual::getInstance($WT_TREE->getPreference('PEDIGREE_ROOT_ID'));
+					$person = WT_Individual::getInstance($WT_TREE->getPreference('PEDIGREE_ROOT_ID'));
 					if ($person) {
 						echo $person->getFullName(), ' ', $person->getLifeSpan();
 					} else {

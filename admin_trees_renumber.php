@@ -41,7 +41,7 @@ $xrefs = WT_DB::prepare(
 	" SELECT m_id AS xref, 'OBJE' AS type FROM `##media` WHERE m_file = ?" .
 	"  UNION " .
 	" SELECT o_id AS xref, o_type AS type FROM `##other` WHERE o_file = ? AND o_type NOT IN ('HEAD', 'TRLR')" .
-	") AS this_tree JOIN (".
+	") AS this_tree JOIN (" .
 	" SELECT xref FROM `##change` WHERE gedcom_id <> ?" .
 	"  UNION " .
 	" SELECT i_id AS xref FROM `##individuals` WHERE i_file <> ?" .
@@ -257,8 +257,8 @@ if (WT_Filter::get('go')) {
 
 	}
 } else {
-	echo '<p>', WT_I18N::translate('In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”.') ,'</p>';
-	echo '<p>', WT_I18N::translate('You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree.') ,'</p>';
+	echo '<p>', WT_I18N::translate('In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”.'), '</p>';
+	echo '<p>', WT_I18N::translate('You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree.'), '</p>';
 }
 
 echo '<p>', WT_I18N::plural(
@@ -272,7 +272,7 @@ if ($xrefs) {
 	// be able to press F5 to continue after a timeout.
 	echo '<form method="GET" action="', WT_SCRIPT_NAME, '">';
 	echo '<p>', WT_I18N::translate('You can renumber this family tree.');
-	echo '<input type="submit" name="go" value="', /* I18N: button label */ WT_I18N::translate('go') ,'"></p>';
+	echo '<input type="submit" name="go" value="', /* I18N: button label */ WT_I18N::translate('go'), '"></p>';
 	echo '<input type="hidden" name="ged" value="', WT_Filter::escapeUrl(WT_GEDCOM), '">';
 	echo '</form>';
 	echo '<p>', WT_I18N::translate('Caution!  This may take a long time.  Be patient.'), '</p>';
