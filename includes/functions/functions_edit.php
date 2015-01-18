@@ -1771,40 +1771,40 @@ function insert_missing_subtags($level1tag, $add_date=false) {
 				add_simple_tag('2 '.$key, $level1tag);
 			}
 			switch ($key) { // Add level 3/4 tags as appropriate
-				case 'PLAC':
-					if (preg_match_all('/('.WT_REGEX_TAG.')/', $ADVANCED_PLAC_FACTS, $match)) {
-						foreach ($match[1] as $tag) {
-							add_simple_tag("3 $tag", '', WT_Gedcom_Tag::getLabel("{$level1tag}:PLAC:{$tag}"));
-						}
+			case 'PLAC':
+				if (preg_match_all('/('.WT_REGEX_TAG.')/', $ADVANCED_PLAC_FACTS, $match)) {
+					foreach ($match[1] as $tag) {
+						add_simple_tag("3 $tag", '', WT_Gedcom_Tag::getLabel("{$level1tag}:PLAC:{$tag}"));
 					}
-					add_simple_tag('3 MAP');
-					add_simple_tag('4 LATI');
-					add_simple_tag('4 LONG');
-					break;
-				case 'FILE':
-					add_simple_tag('3 FORM');
-					break;
-				case 'EVEN':
-					add_simple_tag('3 DATE');
-					add_simple_tag('3 PLAC');
-					break;
-				case 'STAT':
-					if (WT_Gedcom_Code_Temp::isTagLDS($level1tag)) {
-						add_simple_tag('3 DATE', '', WT_Gedcom_Tag::getLabel('STAT:DATE'));
-					}
-					break;
-				case 'DATE':
-					if (in_array($level1tag, $date_and_time))
-						add_simple_tag('3 TIME'); // TIME is NOT a valid 5.5.1 tag
-					break;
-				case 'HUSB':
-				case 'WIFE':
-					add_simple_tag('3 AGE');
-					break;
-				case 'FAMC':
-					if ($level1tag=='ADOP')
-						add_simple_tag('3 ADOP BOTH');
-					break;
+				}
+				add_simple_tag('3 MAP');
+				add_simple_tag('4 LATI');
+				add_simple_tag('4 LONG');
+				break;
+			case 'FILE':
+				add_simple_tag('3 FORM');
+				break;
+			case 'EVEN':
+				add_simple_tag('3 DATE');
+				add_simple_tag('3 PLAC');
+				break;
+			case 'STAT':
+				if (WT_Gedcom_Code_Temp::isTagLDS($level1tag)) {
+					add_simple_tag('3 DATE', '', WT_Gedcom_Tag::getLabel('STAT:DATE'));
+				}
+				break;
+			case 'DATE':
+				if (in_array($level1tag, $date_and_time))
+					add_simple_tag('3 TIME'); // TIME is NOT a valid 5.5.1 tag
+				break;
+			case 'HUSB':
+			case 'WIFE':
+				add_simple_tag('3 AGE');
+				break;
+			case 'FAMC':
+				if ($level1tag=='ADOP')
+					add_simple_tag('3 ADOP BOTH');
+				break;
 			}
 		} elseif ($key=='DATE' && $add_date) {
 			add_simple_tag('2 DATE', $level1tag, WT_Gedcom_Tag::getLabel("{$level1tag}:DATE"));

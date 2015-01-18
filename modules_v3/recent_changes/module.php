@@ -79,13 +79,13 @@ class recent_changes_WT_Module extends WT_Module implements WT_Module_Block {
 		} else {
 			ob_start();
 			switch ($infoStyle) {
-				case 'list':
-					$content .= print_changes_list($found_facts, $sortStyle);
-					break;
-				case 'table':
-					// sortable table
-					$content .= print_changes_table($found_facts, $sortStyle);
-					break;
+			case 'list':
+				$content .= print_changes_list($found_facts, $sortStyle);
+				break;
+			case 'table':
+				// sortable table
+				$content .= print_changes_table($found_facts, $sortStyle);
+				break;
 			}
 			$content .= ob_get_clean();
 		}

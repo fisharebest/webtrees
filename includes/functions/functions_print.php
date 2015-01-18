@@ -103,10 +103,10 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false) {
 			$first_line = '<a href="' . $note->getHtmlUrl() . '">' . $note->getFullName() . '</a>';
 		} else {
 			switch ($WT_TREE->getPreference('FORMAT_TEXT')) {
-				case 'markdown':
-					$text = WT_Filter::markdown($text);
-					$text = html_entity_decode(strip_tags($text, '<a><strong><em>'), ENT_QUOTES, 'UTF-8');
-					break;
+			case 'markdown':
+				$text = WT_Filter::markdown($text);
+				$text = html_entity_decode(strip_tags($text, '<a><strong><em>'), ENT_QUOTES, 'UTF-8');
+				break;
 			}
 			list($text) = explode("\n", $text);
 			$first_line = strlen($text) > 100 ? mb_substr($text, 0, 100) . WT_I18N::translate('…') : $text;
