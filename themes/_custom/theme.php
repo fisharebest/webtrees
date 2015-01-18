@@ -86,7 +86,7 @@ class CustomTheme extends WT\Theme\Webtrees {
 			// Start with the default "Lists" menu.
 			$menu = parent::menuLists();
 			// Remove the "notes" sub-menu.
-			$submenus = array_filter($menu->getSubmenus(), function (WT_Menu $menu) {
+			$submenus = array_filter($menu->getSubmenus(), function(WT_Menu $menu) {
 				return $menu->getId() !== 'menu-list-note';
 			});
 			// Replace the sub-menus
