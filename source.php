@@ -26,7 +26,7 @@ define('WT_SCRIPT_NAME', 'source.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
-$controller = new WT_Controller_Source();
+$controller = new WT_Controller_Source;
 
 if ($controller->record && $controller->record->canShow()) {
 	$controller->pageHeader();

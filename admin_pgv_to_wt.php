@@ -30,7 +30,7 @@ if (WT_GED_ID || count(User::all()) > 1) {
 	exit;
 }
 
-$controller = new WT_Controller_Page();
+$controller = new WT_Controller_Page;
 $controller
 	->restrictAccess(Auth::isAdmin())
 	->setPageTitle(WT_I18N::translate('PhpGedView to webtrees transfer wizard'));

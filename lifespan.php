@@ -26,7 +26,7 @@
 define('WT_SCRIPT_NAME', 'lifespan.php');
 require './includes/session.php';
 
-$controller = new WT_Controller_Lifespan();
+$controller = new WT_Controller_Lifespan;
 $controller
 	->pageHeader()
 	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')

@@ -51,7 +51,7 @@ fetch_latest_version();
 
 // We generate individual blocks using AJAX
 if ($action === 'ajax') {
-	$controller = new WT_Controller_Ajax();
+	$controller = new WT_Controller_Ajax;
 	$controller->pageHeader();
 
 	// Check we’re displaying an allowable block.
@@ -74,7 +74,7 @@ if ($action === 'ajax') {
 	exit;
 }
 
-$controller = new WT_Controller_Page();
+$controller = new WT_Controller_Page;
 if ($ctype === 'user') {
 	$controller->restrictAccess(Auth::check());
 }

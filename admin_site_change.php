@@ -24,7 +24,7 @@ use WT\User;
 define('WT_SCRIPT_NAME', 'admin_site_change.php');
 require './includes/session.php';
 
-$controller = new WT_Controller_Page();
+$controller = new WT_Controller_Page;
 $controller
 	->restrictAccess(Auth::isManager())
 	->setPageTitle(WT_I18N::translate('Changes'));
@@ -32,14 +32,14 @@ $controller
 require WT_ROOT . 'includes/functions/functions_edit.php';
 
 $statuses = array(
-	''        =>'',
-	'accepted'=>/* I18N: the status of an edit accepted/rejected/pending */ WT_I18N::translate('accepted'),
-	'rejected'=>/* I18N: the status of an edit accepted/rejected/pending */ WT_I18N::translate('rejected'),
-	'pending' =>/* I18N: the status of an edit accepted/rejected/pending */ WT_I18N::translate('pending'),
+	''         => '',
+	'accepted' => /* I18N: the status of an edit accepted/rejected/pending */ WT_I18N::translate('accepted'),
+	'rejected' => /* I18N: the status of an edit accepted/rejected/pending */ WT_I18N::translate('rejected'),
+	'pending'  => /* I18N: the status of an edit accepted/rejected/pending */ WT_I18N::translate('pending'),
 );
 
 $earliest = WT_DB::prepare("SELECT DATE(MIN(change_time)) FROM `##change`")->execute(array())->fetchOne();
-$latest  = WT_DB::prepare("SELECT DATE(MAX(change_time)) FROM `##change`")->execute(array())->fetchOne();
+$latest   = WT_DB::prepare("SELECT DATE(MAX(change_time)) FROM `##change`")->execute(array())->fetchOne();
 
 // Filtering
 $action = WT_Filter::get('action');

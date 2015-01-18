@@ -102,7 +102,7 @@ class WT_Mail {
 	public static function transport() {
 		switch (WT_Site::getPreference('SMTP_ACTIVE')) {
 		case 'internal':
-			return new Zend_Mail_Transport_Sendmail();
+			return new Zend_Mail_Transport_Sendmail;
 		case 'external':
 			$config = array(
 				'name' => WT_Site::getPreference('SMTP_HELO'),
@@ -120,7 +120,7 @@ class WT_Mail {
 			return new Zend_Mail_Transport_Smtp(WT_Site::getPreference('SMTP_HOST'), $config);
 		default:
 			// For testing
-			return new Zend_Mail_Transport_File();
+			return new Zend_Mail_Transport_File;
 		}
 	}
 }

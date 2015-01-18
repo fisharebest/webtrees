@@ -35,7 +35,7 @@ if (Auth::check() && WT_GED_ID) {
 	exit;
 }
 
-$controller = new WT_Controller_Page();
+$controller = new WT_Controller_Page;
 
 $REQUIRE_ADMIN_AUTH_REGISTRATION = WT_Site::getPreference('REQUIRE_ADMIN_AUTH_REGISTRATION');
 

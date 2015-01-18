@@ -27,7 +27,7 @@ define('WT_SCRIPT_NAME', 'hourglass.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_edit.php';
 
-$controller = new WT_Controller_Hourglass();
+$controller = new WT_Controller_Hourglass;
 $controller
 	->pageHeader()
 	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')

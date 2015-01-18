@@ -2825,7 +2825,7 @@ function relativesStartHandler($attrs) {
 			foreach ($list as $key => $value) {
 				$generation = $value->generation;
 				if ($generation == $genCounter) {
-					$newarray[$key] = new stdClass();
+					$newarray[$key] = new stdClass;
 					$newarray[$key]->generation = $generation;
 				}
 			}

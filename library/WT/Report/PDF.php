@@ -231,7 +231,7 @@ class WT_Report_PDF extends WT_Report_Base {
 	 * @return WT_Report_PDF_PageHeader
 	 */
 	function createPageHeader() {
-		return new WT_Report_PDF_PageHeader();
+		return new WT_Report_PDF_PageHeader;
 	}
 
 	/**

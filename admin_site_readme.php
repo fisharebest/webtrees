@@ -25,7 +25,7 @@ define('WT_SCRIPT_NAME', 'admin_site_readme.php');
 
 require './includes/session.php';
 
-$controller = new WT_Controller_Page();
+$controller = new WT_Controller_Page;
 $controller
 	->restrictAccess(Auth::isAdmin())
 	->setPageTitle(WT_I18N::translate('README documentation'))

@@ -24,7 +24,7 @@ use WT\User;
 define('WT_SCRIPT_NAME', 'admin_trees_manage.php');
 require './includes/session.php';
 
-$controller = new WT_Controller_Page();
+$controller = new WT_Controller_Page;
 $controller->restrictAccess(Auth::isManager());
 
 switch (WT_Filter::get('action')) {

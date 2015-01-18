@@ -42,7 +42,7 @@ $glevels     = WT_Filter::postArray('glevels', '[0-9]');
 $folder      = WT_Filter::post('folder');
 $update_CHAN = !WT_Filter::postBool('preserve_last_changed');
 
-$controller = new WT_Controller_Simple();
+$controller = new WT_Controller_Simple;
 $controller
 	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
 	->addInlineJavascript('autocomplete();')

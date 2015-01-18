@@ -42,7 +42,7 @@ $url        = WT_Filter::postUrl('url', WT_Filter::getUrl('url'));
 
 $to_user = User::findByIdentifier($to);
 
-$controller = new WT_Controller_Simple();
+$controller = new WT_Controller_Simple;
 $controller
 	->restrictAccess($to_user || Auth::isAdmin() && ($to === 'all' || $to === 'last_6mo' || $to === 'never_logged'))
 	->setPageTitle(WT_I18N::translate('webtrees message'));

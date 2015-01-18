@@ -52,7 +52,7 @@ $continue            = WT_Filter::post('continue', '1') && WT_Filter::checkCsrf(
 $modules_action      = WT_Filter::post('modules', 'ignore|disable');
 $themes_action       = WT_Filter::post('themes', 'ignore|disable');
 
-$controller = new WT_Controller_Page();
+$controller = new WT_Controller_Page;
 $controller
 	->restrictAccess(Auth::isAdmin())
 	->setPageTitle(WT_I18N::translate('Upgrade wizard'))

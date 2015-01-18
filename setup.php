@@ -62,8 +62,8 @@ if (version_compare(PHP_VERSION, WT_REQUIRED_PHP_VERSION)<0) {
 require 'includes/functions/functions.php';
 require 'includes/functions/functions_edit.php';
 
-$WT_REQUEST = new Zend_Controller_Request_Http();
-$WT_SESSION = new stdClass;
+$WT_REQUEST          = new Zend_Controller_Request_Http;
+$WT_SESSION          = new stdClass;
 $WT_SESSION->locale  = null; // Needed for WT_I18N
 $WT_SESSION->wt_user = null; // Needed for WT_Auth
 define('WT_LOCALE', WT_I18N::init(WT_Filter::post('lang', '[@a-zA-Z_]+')));

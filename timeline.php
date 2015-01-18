@@ -28,7 +28,7 @@ use WT\Theme;
 define('WT_SCRIPT_NAME', 'timeline.php');
 require './includes/session.php';
 
-$controller = new WT_Controller_Timeline();
+$controller = new WT_Controller_Timeline;
 $controller
 	->pageHeader()
 	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')

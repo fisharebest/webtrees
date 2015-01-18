@@ -231,7 +231,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 		$action = WT_Filter::post('action');
 
-		$controller = new WT_Controller_Page();
+		$controller = new WT_Controller_Page;
 		$controller
 			->restrictAccess(Auth::isAdmin())
 			->setPageTitle(WT_I18N::translate('Google Maps™'))
@@ -481,7 +481,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 	private function flags() {
 		require WT_ROOT . 'includes/functions/functions_edit.php';
 
-		$controller = new WT_Controller_Simple();
+		$controller = new WT_Controller_Simple;
 		$controller
 			->setPageTitle(WT_I18N::translate('Select flag'))
 			->pageHeader();
@@ -694,7 +694,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		$hideflags = WT_Filter::getBool('hideflags');
 		$hidelines = WT_Filter::getBool('hidelines');
 
-		$controller = new WT_Controller_Pedigree();
+		$controller = new WT_Controller_Pedigree;
 
 		// Start of internal configuration variables
 		// Limit this to match available number of icons.
@@ -1501,7 +1501,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		$state     = WT_Filter::get('state', '.+', 'XYZ');
 		$matching  = WT_Filter::getBool('matching');
 
-		$controller = new WT_Controller_Page();
+		$controller = new WT_Controller_Page;
 		$controller
 			->restrictAccess(Auth::isAdmin())
 			->setPageTitle(WT_I18N::translate('Google Maps™'))
@@ -3261,7 +3261,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		$placeid    = WT_Filter::post('placeid',    null, WT_Filter::get('placeid'));
 		$place_name = WT_Filter::post('place_name', null, WT_Filter::get('place_name'));
 
-		$controller = new WT_Controller_Simple();
+		$controller = new WT_Controller_Simple;
 		$controller
 				->restrictAccess(Auth::isAdmin())
 				->setPageTitle(WT_I18N::translate('Geographic data'))
@@ -4074,7 +4074,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			$parent=0;
 		}
 
-		$controller = new WT_Controller_Page();
+		$controller = new WT_Controller_Page;
 		$controller->restrictAccess(Auth::isAdmin());
 
 		if ($action=='ExportFile' && Auth::isAdmin()) {

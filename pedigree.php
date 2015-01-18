@@ -30,7 +30,7 @@ define("MENU_WRAPPER" , "<div id='childarrow' style='%s:%spx; top:%spx'><div><a 
 define("MENU_ITEM"    , "<a href='pedigree.php?rootid=%s&amp;show_full=%s&amp;PEDIGREE_GENERATIONS=%s&amp;talloffset=%s' class='%s'>%s</a>");
 define("BOX_WRAPPER"  , "<div class='shadow' style='%s:%spx; top:%spx; width:%spx; height:%spx'>");
 
-$controller = new WT_Controller_Pedigree();
+$controller = new WT_Controller_Pedigree;
 $controller
 	->pageHeader()
 	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')

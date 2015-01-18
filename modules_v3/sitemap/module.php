@@ -257,7 +257,7 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 	 * Edit the configuration
 	 */
 	private function admin() {
-		$controller = new WT_Controller_Page();
+		$controller = new WT_Controller_Page;
 		$controller
 			->restrictAccess(Auth::isAdmin())
 			->setPageTitle($this->getTitle())
