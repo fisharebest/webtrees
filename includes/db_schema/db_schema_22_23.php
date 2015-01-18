@@ -35,21 +35,24 @@ $_cfgs = WT_DB::prepare(
 	" WHERE gs1.setting_name = 'MEDIA_DIRECTORY'"
 )->fetchAll();
 
+// The constant WT_DATA_DIR is not defined yet (although it was when this script was originally written).
+$WT_DATA_DIR = realpath('data');
+
 // Check the config for each tree
 foreach ($_cfgs as $_cfg) {
 	if ($_cfg->use_media_firewall) {
 		// We’re using the media firewall.
 		$_mf_dir = realpath($_cfg->media_firewall_rootdir) . DIRECTORY_SEPARATOR;
-		if ($_mf_dir == WT_DATA_DIR) {
+		if ($_mf_dir == $WT_DATA_DIR) {
 			// We’re already storing our media in the data folder - nothing to do.
 		} else {
 			// We’ve chosen a custom location for our media folder - need to update our media-folder to point to it.
 			// We have, for example,
 			// $_mf_dir = /home/fisharebest/my_pictures/
-			// WT_DATA_DIR = /home/fisharebest/public_html/webtrees/data/
+			// $WT_DATA_DIR = /home/fisharebest/public_html/webtrees/data/
 			// Therefore we need to calculate ../../../my_pictures/
 			$_media_dir = '';
-			$_tmp_dir = WT_DATA_DIR;
+			$_tmp_dir = $WT_DATA_DIR;
 			while (strpos($_mf_dir, $_tmp_dir) !== 0) {
 				$_media_dir .= '../';
 				$_tmp_dir = preg_replace('~[^/\\\\]+[/\\\\]$~', '', $_tmp_dir);
@@ -70,13 +73,13 @@ foreach ($_cfgs as $_cfg) {
 		if (
 			file_exists(WT_ROOT . $_cfg->media_directory) &&
 			is_dir(WT_ROOT . $_cfg->media_directory) &&
-			!file_exists(WT_DATA_DIR . $_cfg->media_directory)
+			!file_exists($WT_DATA_DIR . $_cfg->media_directory)
 		) {
-			@rename(WT_ROOT . $_cfg->media_directory, WT_DATA_DIR . $_cfg->media_directory);
-			WT_File::delete(WT_DATA_DIR . $_cfg->media_directory . '.htaccess');
-			WT_File::delete(WT_DATA_DIR . $_cfg->media_directory . 'index.php');
-			WT_File::delete(WT_DATA_DIR . $_cfg->media_directory . 'Mediainfo.txt');
-			WT_File::delete(WT_DATA_DIR . $_cfg->media_directory . 'thumbs/Thumbsinfo.txt');
+			@rename(WT_ROOT . $_cfg->media_directory, $WT_DATA_DIR . $_cfg->media_directory);
+			WT_File::delete($WT_DATA_DIR . $_cfg->media_directory . '.htaccess');
+			WT_File::delete($WT_DATA_DIR . $_cfg->media_directory . 'index.php');
+			WT_File::delete($WT_DATA_DIR . $_cfg->media_directory . 'Mediainfo.txt');
+			WT_File::delete($WT_DATA_DIR . $_cfg->media_directory . 'thumbs/Thumbsinfo.txt');
 		}
 	}
 }
