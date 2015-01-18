@@ -39,8 +39,8 @@ if (
 	exit;
 }
 
-$class_name=$block->module_name.'_WT_Module';
-$block=new $class_name;
+$class_name = $block->module_name . '_WT_Module';
+$block = new $class_name;
 
 $controller = new WT_Controller_Ajax();
 $controller->pageHeader();

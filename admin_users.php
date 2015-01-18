@@ -32,10 +32,10 @@ require './includes/session.php';
 $controller = new WT_Controller_Page();
 $controller->restrictAccess(Auth::isAdmin());
 
-require_once WT_ROOT.'includes/functions/functions_edit.php';
+require_once WT_ROOT . 'includes/functions/functions_edit.php';
 
 // Valid values for form variables
-$ALL_EDIT_OPTIONS=array(
+$ALL_EDIT_OPTIONS = array(
 	'none'  => /* I18N: Listbox entry; name of a role */ WT_I18N::translate('Visitor'),
 	'access'=> /* I18N: Listbox entry; name of a role */ WT_I18N::translate('Member'),
 	'edit'  => /* I18N: Listbox entry; name of a role */ WT_I18N::translate('Editor'),
@@ -213,7 +213,7 @@ case 'loadrows':
 	}
 
 	// Total filtered/unfiltered rows
-	$recordsFiltered = (int)WT_DB::prepare("SELECT FOUND_ROWS()")->fetchOne();
+	$recordsFiltered = (int) WT_DB::prepare("SELECT FOUND_ROWS()")->fetchOne();
 	$recordsTotal    = User::count();
 
 	Zend_Session::writeClose();
@@ -254,7 +254,7 @@ case 'edit':
 				var idNum = fieldIDx.replace("RELATIONSHIP_PATH_LENGTH","");
 				var newIDx = "gedcomid"+idNum;
 				if (jQuery("#"+newIDx).val()=="") {
-					alert("'.WT_I18N::translate('You must specify an individual record before you can restrict the user to their immediate family.').'");
+					alert("'.WT_I18N::translate('You must specify an individual record before you can restrict the user to their immediate family.') . '");
 					jQuery(this).val("");
 				}
 			});
@@ -348,7 +348,7 @@ case 'edit':
 						<?php echo WT_I18N::translate('Email verified'); ?>
 					</label>
 					<label>
-						<input type="checkbox" name="approved" value="1" <?php echo $user->getPreference('verified_by_admin') ? 'checked' : '';?>>
+						<input type="checkbox" name="approved" value="1" <?php echo $user->getPreference('verified_by_admin') ? 'checked' : ''; ?>>
 						<?php echo WT_I18N::translate('Approved by administrator'); ?>
 					</label>
 					<p class="small text-muted">
@@ -384,7 +384,7 @@ case 'edit':
 			<div class="col-sm-9">
 				<div class="checkbox">
 					<label>
-						<input type="checkbox" name="auto_accept" value="1" <?php echo $user->getPreference('auto_accept') ? 'checked' : '';?>>
+						<input type="checkbox" name="auto_accept" value="1" <?php echo $user->getPreference('auto_accept') ? 'checked' : ''; ?>>
 						<?php echo WT_I18N::translate('Automatically approve changes made by this user'); ?>
 					</label>
 					<p class="small text-muted">
@@ -401,7 +401,7 @@ case 'edit':
 			<div class="col-sm-9">
 				<div class="checkbox">
 					<label>
-						<input type="checkbox" name="edit_account" value="1" <?php echo $user->getPreference('edit_account') ? 'checked' : '';?>>
+						<input type="checkbox" name="edit_account" value="1" <?php echo $user->getPreference('edit_account') ? 'checked' : ''; ?>>
 						<?php echo WT_I18N::translate('Allow this user to edit his account information'); ?>
 					</label>
 					<p class="small text-muted">
@@ -419,7 +419,7 @@ case 'edit':
 			<div class="col-sm-9">
 				<div class="checkbox">
 					<label>
-						<input type="checkbox" name="visible_online" value="1" <?php echo $user->getPreference('visible_online') ? 'checked' : '';?>>
+						<input type="checkbox" name="visible_online" value="1" <?php echo $user->getPreference('visible_online') ? 'checked' : ''; ?>>
 						<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Visible to other users when online'); ?>
 					</label>
 					<p class="small text-muted">
@@ -469,7 +469,7 @@ case 'edit':
 			<div class="col-sm-9">
 				<div class="checkbox">
 					<label>
-						<input type="checkbox" name="admin" value="1" <?php echo $user->getPreference('admin') ? 'checked' : '';?>>
+						<input type="checkbox" name="admin" value="1" <?php echo $user->getPreference('admin') ? 'checked' : ''; ?>>
 						<?php echo WT_I18N::translate('Administrator'); ?>
 					</label>
 					<p class="small text-muted">
@@ -536,7 +536,7 @@ case 'edit':
 					</td>
 					<td>
 						<select name="RELATIONSHIP_PATH_LENGTH<?php echo $tree->tree_id; ?>" id="RELATIONSHIP_PATH_LENGTH<?php echo $tree->tree_id; ?>" class="relpath">
-							<?php for ($n=0; $n<=10; ++$n): ?>
+							<?php for ($n = 0; $n <= 10; ++$n): ?>
 							<option value="<?php echo $n; ?>" <?php echo $tree->getUserPreference($user, 'RELATIONSHIP_PATH_LENGTH') === $n ? 'checked' : ''; ?>>
 								<?php echo $n ? $n : WT_I18N::translate('No'); ?>
 							</option>
@@ -591,7 +591,7 @@ case 'cleanup':
 		} else {
 			$datelogin = (int) $user->getPreference('sessiontime');
 		}
-		if (mktime(0, 0, 0, (int) date('m')-$month, (int) date('d'), (int) date('Y')) > $datelogin && $user->getPreference('verified') && $user->getPreference('approved')) {
+		if (mktime(0, 0, 0, (int) date('m') - $month, (int) date('d'), (int) date('Y')) > $datelogin && $user->getPreference('verified') && $user->getPreference('approved')) {
 			$ucnt++;
 			?>
 			<tr>

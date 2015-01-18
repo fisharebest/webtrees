@@ -56,17 +56,17 @@ function import_gedcom_file($gedcom_id, $path, $filename) {
 	// multi-byte characters, as well as simplifying the code to import
 	// each block.
 
-	$file_data='';
-	$fp=fopen($path, 'rb');
+	$file_data = '';
+	$fp = fopen($path, 'rb');
 
 	WT_DB::beginTransaction();
 	WT_DB::prepare("DELETE FROM `##gedcom_chunk` WHERE gedcom_id=?")->execute(array($gedcom_id));
 
 	while (!feof($fp)) {
-		$file_data.=fread($fp, 65536);
+		$file_data .= fread($fp, 65536);
 		// There is no strrpos() function that searches for substrings :-(
-		for ($pos=strlen($file_data)-1; $pos>0; --$pos) {
-			if ($file_data[$pos]=='0' && ($file_data[$pos-1]=="\n" || $file_data[$pos-1]=="\r")) {
+		for ($pos = strlen($file_data) - 1; $pos > 0; --$pos) {
+			if ($file_data[$pos] == '0' && ($file_data[$pos - 1] == "\n" || $file_data[$pos - 1] == "\r")) {
 				// We’ve found the last record boundary in this chunk of data
 				break;
 			}
@@ -75,7 +75,7 @@ function import_gedcom_file($gedcom_id, $path, $filename) {
 			WT_DB::prepare(
 				"INSERT INTO `##gedcom_chunk` (gedcom_id, chunk_data) VALUES (?, ?)"
 			)->execute(array($gedcom_id, substr($file_data, 0, $pos)));
-			$file_data=substr($file_data, $pos);
+			$file_data = substr($file_data, $pos);
 		}
 	}
 	WT_DB::prepare(
@@ -94,7 +94,7 @@ case 'delete':
 	if (WT_Filter::checkCsrf() && $gedcom_id) {
 		WT_Tree::get($gedcom_id)->delete();
 	}
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME);
+	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME);
 	exit;
 case 'setdefault':
 	if (WT_Filter::checkCsrf()) {
@@ -120,7 +120,7 @@ case 'replace_upload':
 		}
 	}
 
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME.'?keep_media'.$gedcom_id.'='.WT_Filter::postBool('keep_media'.$gedcom_id));
+	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?keep_media' . $gedcom_id . '=' . WT_Filter::postBool('keep_media' . $gedcom_id));
 
 	return;
 case 'replace_import':
@@ -128,17 +128,17 @@ case 'replace_import':
 	// Make sure the gedcom still exists
 	if (WT_Filter::checkCsrf() && WT_Tree::get($gedcom_id)) {
 		$tree_name = basename(WT_Filter::post('tree_name'));
-		import_gedcom_file($gedcom_id, WT_DATA_DIR.$tree_name, $tree_name);
+		import_gedcom_file($gedcom_id, WT_DATA_DIR . $tree_name, $tree_name);
 	}
 
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME.'?keep_media'.$gedcom_id.'='.WT_Filter::postBool('keep_media'.$gedcom_id));
+	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?keep_media' . $gedcom_id . '=' . WT_Filter::postBool('keep_media' . $gedcom_id));
 
 	return;
 }
 
 $default_tree_title  = WT_I18N::translate('My family tree');
 $default_tree_name   = 'tree';
-$default_tree_number = 1 ;
+$default_tree_number = 1;
 $existing_trees      = WT_Tree::getNameList();
 while (array_key_exists($default_tree_name . $default_tree_number, $existing_trees)) {
 	$default_tree_number++;
@@ -169,7 +169,7 @@ $controller->pageHeader();
 switch (WT_Filter::get('action')) {
 case 'uploadform':
 case 'importform':
-	$tree=WT_Tree::get(WT_Filter::getInteger('gedcom_id'));
+	$tree = WT_Tree::get(WT_Filter::getInteger('gedcom_id'));
 	// Check it exists
 	if (!$tree) {
 		break;
@@ -180,20 +180,20 @@ case 'importform':
 	echo '<form name="replaceform" method="post" enctype="multipart/form-data" action="', WT_SCRIPT_NAME, '" onsubmit="var newfile = document.replaceform.ged_name.value; newfile = newfile.substr(newfile.lastIndexOf(\'\\\\\')+1); if (newfile!=\'', WT_Filter::escapeHtml($previous_gedcom_filename), '\' && \'\' != \'', WT_Filter::escapeHtml($previous_gedcom_filename), '\') return confirm(\'', WT_Filter::escapeHtml(WT_I18N::translate('You have selected a GEDCOM file with a different name.  Is this correct?')), '\'); else return true;">';
 	echo '<input type="hidden" name="gedcom_id" value="', $tree->tree_id, '">';
 	echo WT_Filter::getCsrf();
-	if (WT_Filter::get('action')=='uploadform') {
+	if (WT_Filter::get('action') == 'uploadform') {
 		echo '<input type="hidden" name="action" value="replace_upload">';
 		echo '<input type="file" name="tree_name">';
 	} else {
 		echo '<input type="hidden" name="action" value="replace_import">';
-		$d=opendir(WT_DATA_DIR);
-		$files=array();
-		while (($f=readdir($d))!==false) {
-			if (!is_dir(WT_DATA_DIR.$f) && is_readable(WT_DATA_DIR.$f)) {
-				$fp=fopen(WT_DATA_DIR.$f, 'rb');
-				$header=fread($fp, 64);
+		$d = opendir(WT_DATA_DIR);
+		$files = array();
+		while (($f = readdir($d)) !== false) {
+			if (!is_dir(WT_DATA_DIR . $f) && is_readable(WT_DATA_DIR . $f)) {
+				$fp = fopen(WT_DATA_DIR . $f, 'rb');
+				$header = fread($fp, 64);
 				fclose($fp);
-				if (preg_match('/^('.WT_UTF8_BOM.')?0 *HEAD/', $header)) {
-					$files[]=$f;
+				if (preg_match('/^(' . WT_UTF8_BOM . ')?0 *HEAD/', $header)) {
+					$files[] = $f;
 				}
 			}
 		}
@@ -202,7 +202,7 @@ case 'importform':
 			echo WT_DATA_DIR, '<select name="tree_name">';
 			foreach ($files as $file) {
 				echo '<option value="', WT_Filter::escapeHtml($file), '"';
-				if ($file==$previous_gedcom_filename) {
+				if ($file == $previous_gedcom_filename) {
 					echo ' selected="selected"';
 				}
 				echo'>', WT_Filter::escapeHtml($file), '</option>';
@@ -250,12 +250,12 @@ case 'importform':
 				?>
 				<div id="import<?php echo $tree->tree_id; ?>" class="col-xs-12">
 					<div class="progress">
-						<?php echo $in_progress? WT_I18N::translate('Calculating…'): WT_I18N::translate('Deleting old genealogy data…'); ?>
+						<?php echo $in_progress ? WT_I18N::translate('Calculating…') : WT_I18N::translate('Deleting old genealogy data…'); ?>
 					</div>
 				</div>
 				<?php
 			$controller->addInlineJavascript(
-				'jQuery("#import'.$tree->tree_id.'").load("import.php?gedcom_id='.$tree->tree_id.'&keep_media'.$tree->tree_id.'='.WT_Filter::get('keep_media'.$tree->tree_id).'");'
+				'jQuery("#import' . $tree->tree_id . '").load("import.php?gedcom_id=' . $tree->tree_id . '&keep_media' . $tree->tree_id . '=' . WT_Filter::get('keep_media' . $tree->tree_id) . '");'
 			);
 		}
 				?>

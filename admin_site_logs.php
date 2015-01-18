@@ -29,15 +29,15 @@ $controller
 	->restrictAccess(Auth::isManager())
 	->setPageTitle(WT_I18N::translate('Logs'));
 
-require WT_ROOT.'includes/functions/functions_edit.php';
+require WT_ROOT . 'includes/functions/functions_edit.php';
 
-$earliest=WT_DB::prepare("SELECT DATE(MIN(log_time)) FROM `##log`")->execute(array())->fetchOne();
-$latest  =WT_DB::prepare("SELECT DATE(MAX(log_time)) FROM `##log`")->execute(array())->fetchOne();
+$earliest = WT_DB::prepare("SELECT DATE(MIN(log_time)) FROM `##log`")->execute(array())->fetchOne();
+$latest  = WT_DB::prepare("SELECT DATE(MAX(log_time)) FROM `##log`")->execute(array())->fetchOne();
 
 // Filtering
 $action = WT_Filter::get('action');
 $from   = WT_Filter::get('from', '\d\d\d\d-\d\d-\d\d', $earliest);
-$to     = WT_Filter::get('to',   '\d\d\d\d-\d\d-\d\d', $latest);
+$to     = WT_Filter::get('to', '\d\d\d\d-\d\d-\d\d', $latest);
 $type   = WT_Filter::get('type', 'auth|change|config|debug|edit|error|media|search');
 $text   = WT_Filter::get('text');
 $ip     = WT_Filter::get('ip');
@@ -54,62 +54,62 @@ if (Auth::isAdmin()) {
 	$gedc = WT_GEDCOM;
 }
 
-$query=array();
-$args =array();
+$query = array();
+$args = array();
 if ($search) {
 	$query[] = "log_message LIKE CONCAT('%', ?, '%')";
 	$args [] = $search;
 }
 if ($from) {
-	$query[]='log_time>=?';
-	$args []=$from;
+	$query[] = 'log_time>=?';
+	$args [] = $from;
 }
 if ($to) {
-	$query[]='log_time<TIMESTAMPADD(DAY, 1 , ?)'; // before end of the day
-	$args []=$to;
+	$query[] = 'log_time<TIMESTAMPADD(DAY, 1 , ?)'; // before end of the day
+	$args [] = $to;
 }
 if ($type) {
-	$query[]='log_type=?';
-	$args []=$type;
+	$query[] = 'log_type=?';
+	$args [] = $type;
 }
 if ($text) {
-	$query[]="log_message LIKE CONCAT('%', ?, '%')";
-	$args []=$text;
+	$query[] = "log_message LIKE CONCAT('%', ?, '%')";
+	$args [] = $text;
 }
 if ($ip) {
-	$query[]="ip_address LIKE CONCAT('%', ?, '%')";
-	$args []=$ip;
+	$query[] = "ip_address LIKE CONCAT('%', ?, '%')";
+	$args [] = $ip;
 }
 if ($user) {
-	$query[]="user_name LIKE CONCAT('%', ?, '%')";
-	$args []=$user;
+	$query[] = "user_name LIKE CONCAT('%', ?, '%')";
+	$args [] = $user;
 }
 if ($gedc) {
-	$query[]="gedcom_name LIKE CONCAT('%', ?, '%')";
-	$args []=$gedc;
+	$query[] = "gedcom_name LIKE CONCAT('%', ?, '%')";
+	$args [] = $gedc;
 }
 
-$SELECT1=
-	"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS log_time, log_type, log_message, ip_address, IFNULL(user_name, '<none>') AS user_name, IFNULL(gedcom_name, '<none>') AS gedcom_name".
-	" FROM `##log`".
-	" LEFT JOIN `##user`   USING (user_id)".   // user may be deleted
+$SELECT1 =
+	"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS log_time, log_type, log_message, ip_address, IFNULL(user_name, '<none>') AS user_name, IFNULL(gedcom_name, '<none>') AS gedcom_name" .
+	" FROM `##log`" .
+	" LEFT JOIN `##user`   USING (user_id)" . // user may be deleted
 	" LEFT JOIN `##gedcom` USING (gedcom_id)"; // gedcom may be deleted
-$SELECT2=
-	"SELECT COUNT(*) FROM `##log`".
-	" LEFT JOIN `##user`   USING (user_id)".   // user may be deleted
+$SELECT2 =
+	"SELECT COUNT(*) FROM `##log`" .
+	" LEFT JOIN `##user`   USING (user_id)" . // user may be deleted
 	" LEFT JOIN `##gedcom` USING (gedcom_id)"; // gedcom may be deleted
 if ($query) {
-	$WHERE=" WHERE ".implode(' AND ', $query);
+	$WHERE = " WHERE " . implode(' AND ', $query);
 } else {
-	$WHERE='';
+	$WHERE = '';
 }
 
-switch($action) {
+switch ($action) {
 case 'delete':
-	$DELETE=
-		"DELETE `##log` FROM `##log`".
-		" LEFT JOIN `##user`   USING (user_id)".   // user may be deleted
-		" LEFT JOIN `##gedcom` USING (gedcom_id)". // gedcom may be deleted
+	$DELETE =
+		"DELETE `##log` FROM `##log`" .
+		" LEFT JOIN `##user`   USING (user_id)" . // user may be deleted
+		" LEFT JOIN `##gedcom` USING (gedcom_id)" . // gedcom may be deleted
 		$WHERE;
 	WT_DB::prepare($DELETE)->execute($args);
 	break;
@@ -117,7 +117,7 @@ case 'export':
 	Zend_Session::writeClose();
 	header('Content-Type: text/csv');
 	header('Content-Disposition: attachment; filename="webtrees-logs.csv"');
-	$rows=WT_DB::prepare($SELECT1.$WHERE.' ORDER BY log_id')->execute($args)->fetchAll();
+	$rows = WT_DB::prepare($SELECT1 . $WHERE . ' ORDER BY log_id')->execute($args)->fetchAll();
 	foreach ($rows as $row) {
 		echo
 			'"', $row->log_time, '",',
@@ -135,15 +135,15 @@ case 'load_json':
 	$length = WT_Filter::getInteger('length');
 	Auth::user()->setPreference('admin_site_log_page_size', $length);
 
-	if ($length>0) {
-		$LIMIT=" LIMIT " . $start . ',' . $length;
+	if ($length > 0) {
+		$LIMIT = " LIMIT " . $start . ',' . $length;
 	} else {
-		$LIMIT="";
+		$LIMIT = "";
 	}
 
 	$order = WT_Filter::getArray('order');
 	if ($order) {
-		$ORDER_BY=' ORDER BY ';
+		$ORDER_BY = ' ORDER BY ';
 		foreach ($order as $key => $value) {
 			if ($key > 0) {
 				$ORDER_BY .= ',';
@@ -164,7 +164,7 @@ case 'load_json':
 	}
 
 	// This becomes a JSON list, not array, so need to fetch with numeric keys.
-	$data = WT_DB::prepare($SELECT1.$WHERE.$ORDER_BY.$LIMIT)->execute($args)->fetchAll(PDO::FETCH_NUM);
+	$data = WT_DB::prepare($SELECT1 . $WHERE . $ORDER_BY . $LIMIT)->execute($args)->fetchAll(PDO::FETCH_NUM);
 	foreach ($data as &$datum) {
 		$datum[2] = WT_Filter::escapeHtml($datum[2]);
 		$datum[4] = WT_Filter::escapeHtml($datum[4]);
@@ -172,8 +172,8 @@ case 'load_json':
 	}
 
 	// Total filtered/unfiltered rows
-	$recordsFiltered=WT_DB::prepare("SELECT FOUND_ROWS()")->fetchOne();
-	$recordsTotal=WT_DB::prepare($SELECT2.$WHERE)->execute($args)->fetchOne();
+	$recordsFiltered = WT_DB::prepare("SELECT FOUND_ROWS()")->fetchOne();
+	$recordsTotal = WT_DB::prepare($SELECT2 . $WHERE)->execute($args)->fetchOne();
 
 	header('Content-type: application/json');
 	// See http://www.datatables.net/usage/server-side
@@ -194,21 +194,21 @@ $controller
 		jQuery(".table-site-logs").dataTable( {
 			processing: true,
 			serverSide: true,
-			ajax: "'.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME.'?action=load_json&from='.$from.'&to='.$to.'&type='.$type.'&text='.rawurlencode($text).'&ip='.rawurlencode($ip).'&user='.rawurlencode($user).'&gedc='.rawurlencode($gedc).'",
-			'.WT_I18N::datatablesI18N(array(10,20,50,100,500,1000,-1)).',
+			ajax: "'.WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=load_json&from=' . $from . '&to=' . $to . '&type=' . $type . '&text=' . rawurlencode($text) . '&ip=' . rawurlencode($ip) . '&user=' . rawurlencode($user) . '&gedc=' . rawurlencode($gedc) . '",
+			'.WT_I18N::datatablesI18N(array(10, 20, 50, 100, 500, 1000, -1)) . ',
 			sorting: [[ 0, "desc" ]],
 			pageLength: ' . Auth::user()->getPreference('admin_site_log_page_size', 20) . '
 		});
 	');
 
-$url=
-	WT_SCRIPT_NAME.'?from='.rawurlencode($from).
-	'&amp;to='.rawurlencode($to).
-	'&amp;type='.rawurlencode($type).
-	'&amp;text='.rawurlencode($text).
-	'&amp;ip='.rawurlencode($ip).
-	'&amp;user='.rawurlencode($user).
-	'&amp;gedc='.rawurlencode($gedc);
+$url =
+	WT_SCRIPT_NAME . '?from=' . rawurlencode($from) .
+	'&amp;to=' . rawurlencode($to) .
+	'&amp;type=' . rawurlencode($type) .
+	'&amp;text=' . rawurlencode($text) .
+	'&amp;ip=' . rawurlencode($ip) .
+	'&amp;user=' . rawurlencode($user) .
+	'&amp;gedc=' . rawurlencode($gedc);
 
 $users_array = array();
 foreach (User::all() as $tmp_user) {
@@ -228,12 +228,12 @@ foreach (User::all() as $tmp_user) {
 		<tbody>
 			<tr>
 				<td colspan="6">
-					<?php echo /* I18N: %s are both user-input date fields */ WT_I18N::translate('From %s to %s', '<input class="log-date" name="from" value="'.WT_Filter::escapeHtml($from).'">', '<input class="log-date" name="to" value="'.WT_Filter::escapeHtml($to).'">'); ?>
+					<?php echo /* I18N: %s are both user-input date fields */ WT_I18N::translate('From %s to %s', '<input class="log-date" name="from" value="' . WT_Filter::escapeHtml($from) . '">', '<input class="log-date" name="to" value="' . WT_Filter::escapeHtml($to) . '">'); ?>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<?php echo WT_I18N::translate('Type'), '<br>', select_edit_control('type', array(''=>'', 'auth'=>'auth','config'=>'config','debug'=>'debug','edit'=>'edit','error'=>'error','media'=>'media','search'=>'search'), null, $type, ''); ?>
+					<?php echo WT_I18N::translate('Type'), '<br>', select_edit_control('type', array(''=>'', 'auth'=>'auth', 'config'=>'config', 'debug'=>'debug', 'edit'=>'edit', 'error'=>'error', 'media'=>'media', 'search'=>'search'), null, $type, ''); ?>
 				</td>
 				<td>
 					<?php echo WT_I18N::translate('Message'); ?>

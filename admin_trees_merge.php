@@ -55,7 +55,7 @@ if ($tree1_id && $tree2_id != $tree1_id) {
 		" SELECT m_id AS xref, 'OBJE' AS type FROM `##media` WHERE m_file = ?" .
 		"  UNION " .
 		" SELECT o_id AS xref, o_type AS type FROM `##other` WHERE o_file = ? AND o_type NOT IN ('HEAD', 'TRLR')" .
-		") AS this_tree JOIN (".
+		") AS this_tree JOIN (" .
 		" SELECT xref FROM `##change` WHERE gedcom_id = ?" .
 		"  UNION " .
 		" SELECT i_id AS xref FROM `##individuals` WHERE i_file = ?" .
@@ -77,7 +77,7 @@ if ($tree1_id && $tree2_id != $tree1_id) {
 		$tree1 = WT_Tree::get($tree1_id);
 		$tree2 = WT_Tree::get($tree2_id);
 		echo
-			'<p>', WT_I18N::translate('In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”.') ,'</p>',
+			'<p>', WT_I18N::translate('In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”.'), '</p>',
 			'<p>',
 			WT_I18N::plural(
 				/* I18N: An XREF is the identification number used in GEDCOM files. */

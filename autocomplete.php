@@ -83,7 +83,7 @@ case 'CEME': // Cemetery fields, that contain the search term
 			"SELECT SQL_CACHE i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom" .
 			" FROM `##individuals`" .
 			" WHERE i_gedcom LIKE '%\n2 CEME %' AND i_file=?" .
-			" ORDER BY SUBSTRING_INDEX(i_gedcom, '\n2 CEME ', -1) COLLATE '".WT_I18N::$collation."'"
+			" ORDER BY SUBSTRING_INDEX(i_gedcom, '\n2 CEME ', -1) COLLATE '" . WT_I18N::$collation . "'"
 		)
 		->execute(array(WT_GED_ID))
 		->fetchAll();
@@ -192,8 +192,8 @@ case 'PLAC': // Place names (with hierarchy), that include the search term
 		// No place found?  Use an external gazetteer
 		$url =
 			"http://api.geonames.org/searchJSON" .
-			"?name_startsWith=".urlencode($term) .
-			"&lang=".WT_LOCALE .
+			"?name_startsWith=" . urlencode($term) .
+			"&lang=" . WT_LOCALE .
 			"&fcode=CMTY&fcode=ADM4&fcode=PPL&fcode=PPLA&fcode=PPLC" .
 			"&style=full" .
 			"&username=" . $WT_TREE->getPreference('GEONAMES_ACCOUNT');
@@ -226,7 +226,7 @@ case 'PLAC2': // Place names (without hierarchy), that include the search term
 			"SELECT SQL_CACHE p_place" .
 			" FROM `##places`" .
 			" WHERE p_place LIKE CONCAT('%', ?, '%') AND p_file=?" .
-			" ORDER BY p_place COLLATE '".WT_I18N::$collation."'"
+			" ORDER BY p_place COLLATE '" . WT_I18N::$collation . "'"
 		)
 		->execute(array($term, WT_GED_ID))
 		->fetchOneColumn()
@@ -334,7 +334,7 @@ case 'SOUR_TITL': // Source titles, that include the search terms
 		WT_DB::prepare(
 			"SELECT s_id AS xref, s_file AS gedcom_id, s_gedcom AS gedcom, s_name" .
 			" FROM `##sources`" .
-			" WHERE s_name LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') AND s_file=? ORDER BY s_name COLLATE '".WT_I18N::$collation."'"
+			" WHERE s_name LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') AND s_file=? ORDER BY s_name COLLATE '" . WT_I18N::$collation . "'"
 		)
 		->execute(array($term, WT_GED_ID))
 		->fetchAll();

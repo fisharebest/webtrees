@@ -41,7 +41,7 @@ $download_url_html   = '<b dir="auto"><a href="' . WT_Filter::escapeHtml($downlo
 // Show a friendly message while the site is being upgraded
 $lock_file           = __DIR__ . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'offline.txt';
 $lock_file_html      = '<span dir="ltr">' . WT_Filter::escapeHtml($lock_file) . '</span>';
-$lock_file_text      = WT_I18N::translate('This site is being upgraded.  Try again in a few minutes.') . PHP_EOL . format_timestamp(WT_TIMESTAMP) .  WT_I18N::translate('UTC');
+$lock_file_text      = WT_I18N::translate('This site is being upgraded.  Try again in a few minutes.') . PHP_EOL . format_timestamp(WT_TIMESTAMP) . WT_I18N::translate('UTC');
 
 // Success/failure indicators
 $icon_success        = '<i class="icon-yes"></i>';
@@ -49,8 +49,8 @@ $icon_failure        = '<i class="icon-failure"></i>';
 
 // Need confirmation for various actions
 $continue            = WT_Filter::post('continue', '1') && WT_Filter::checkCsrf();
-$modules_action      = WT_Filter::post('modules',  'ignore|disable');
-$themes_action       = WT_Filter::post('themes',   'ignore|disable');
+$modules_action      = WT_Filter::post('modules', 'ignore|disable');
+$themes_action       = WT_Filter::post('themes', 'ignore|disable');
 
 $controller = new WT_Controller_Page();
 $controller
@@ -93,7 +93,7 @@ echo '<ul>';
 
 echo '<li>', /* I18N: The system is about to [...] */ WT_I18N::translate('Check for pending changes…');
 
-$changes = WT_DB::prepare( "SELECT 1 FROM `##change` WHERE status='pending' LIMIT 1")->fetchOne();
+$changes = WT_DB::prepare("SELECT 1 FROM `##change` WHERE status='pending' LIMIT 1")->fetchOne();
 
 if ($changes) {
 	echo '<br>', WT_I18N::translate('You should accept or reject all pending changes before upgrading.'), $icon_failure;
@@ -114,7 +114,7 @@ echo '<li>', /* I18N: The system is about to [...] */ WT_I18N::translate('Check 
 
 $custom_modules = false;
 foreach (WT_Module::getActiveModules() as $module) {
-	switch($module->getName()) {
+	switch ($module->getName()) {
 	case 'GEDFact_assistant':
 	case 'ahnentafel_report':
 	case 'batch_update':
@@ -216,7 +216,7 @@ echo '<li>', /* I18N: The system is about to [...] */ WT_I18N::translate('Check 
 
 $custom_themes = false;
 foreach (Theme::themeNames() as $theme_id => $theme_name) {
-	switch($theme_id) {
+	switch ($theme_id) {
 	case 'clouds':
 	case 'colors':
 	case 'fab':
@@ -244,10 +244,10 @@ foreach (Theme::themeNames() as $theme_id => $theme_name) {
 				)->execute(array($theme_id));
 				break;
 			case 'ignore':
-				echo '<br>', WT_I18N::translate('Custom theme'), ' — ', $theme_id , ' — ', $theme_name, $icon_success;
+				echo '<br>', WT_I18N::translate('Custom theme'), ' — ', $theme_id, ' — ', $theme_name, $icon_success;
 				break;
 			default:
-				echo '<br>', WT_I18N::translate('Custom theme'), ' — ', $theme_id , ' — ', $theme_name, $icon_failure;
+				echo '<br>', WT_I18N::translate('Custom theme'), ' — ', $theme_id, ' — ', $theme_name, $icon_failure;
 				$custom_themes = true;
 				break;
 			}
@@ -343,7 +343,7 @@ $num_files = $res['nb'];
 reset_timeout();
 $start_time = microtime(true);
 $res = $archive->extract(
-	PCLZIP_OPT_PATH,         $zip_dir,
+	PCLZIP_OPT_PATH, $zip_dir,
 	PCLZIP_OPT_REMOVE_PATH, 'webtrees',
 	PCLZIP_OPT_REPLACE_NEWER
 );
@@ -425,7 +425,7 @@ echo '<li>', /* I18N: The system is about to [...] */ WT_I18N::translate('Copy f
 reset_timeout();
 $start_time = microtime(true);
 $res = $archive->extract(
-	PCLZIP_OPT_PATH,        WT_ROOT,
+	PCLZIP_OPT_PATH, WT_ROOT,
 	PCLZIP_OPT_REMOVE_PATH, 'webtrees',
 	PCLZIP_OPT_REPLACE_NEWER
 );
@@ -487,7 +487,7 @@ echo '<p>', WT_I18N::translate('The upgrade is complete.'), '</p>';
 
 // Reset the time limit, as timeouts in this script could leave the upgrade incomplete.
 function reset_timeout() {
-	if (!ini_get('safe_mode') && strpos(ini_get('disable_functions'), 'set_time_limit')===false) {
+	if (!ini_get('safe_mode') && strpos(ini_get('disable_functions'), 'set_time_limit') === false) {
 		set_time_limit(ini_get('max_execution_time'));
 	}
 }

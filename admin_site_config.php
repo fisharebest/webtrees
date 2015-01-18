@@ -251,7 +251,7 @@ $controller->pageHeader();
 				<?php echo /* I18N: A site configuration setting */ WT_I18N::translate('Website URL'); ?>
 			</label>
 			<div class="col-sm-9">
-				<?php echo select_edit_control('SERVER_URL', array(WT_SERVER_NAME.WT_SCRIPT_PATH=>WT_SERVER_NAME.WT_SCRIPT_PATH), '', WT_Site::getPreference('SERVER_URL'), 'class="form-control"'); ?>
+				<?php echo select_edit_control('SERVER_URL', array(WT_SERVER_NAME . WT_SCRIPT_PATH=>WT_SERVER_NAME . WT_SCRIPT_PATH), '', WT_Site::getPreference('SERVER_URL'), 'class="form-control"'); ?>
 				<p class="small text-muted">
 					<?php echo /* I18N: Help text for the "Website URL" site configuration setting */ WT_I18N::translate('If your site can be reached using more than one URL, such as <b>http://www.example.com/webtrees/</b> and <b>http://webtrees.example.com/</b>, you can specify the preferred URL.  Requests for the other URLs will be redirected to the preferred one.'); ?>
 					<?php echo WT_I18N::translate('If you leave this setting empty, the default value will be used.'); ?>
