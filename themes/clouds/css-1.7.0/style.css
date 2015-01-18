@@ -4402,6 +4402,7 @@ header h1 {
 .primary-menu > li > a {
 	height: 37px;
 	width: 27px;
+	color: transparent; /* Use class="sr-only" from bootstrap? */
 }
 
 .primary-menu > li > ul {

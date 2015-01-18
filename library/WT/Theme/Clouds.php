@@ -109,11 +109,6 @@ class Clouds extends BaseTheme {
 			array_unshift($submenus, $tmp);
 			$menu->setSubmenus($submenus);
 
-			// Neutralise the top-level menu
-			$menu->setLabel('');
-			$menu->setLink('');
-			$menu->setOnclick('');
-
 			$html .= $menu->getMenuAsList();
 		}
 
