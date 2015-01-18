@@ -178,10 +178,10 @@ $people = count($controller->people);
 								</select>
 							</td>
 							<td>
-								<input type="text" name="beginYear" size="5" value="<?php echo $controller->beginYear==0 ? '' : $controller->beginYear; ?>">
+								<input type="text" name="beginYear" size="5" value="<?php echo $controller->beginYear == 0 ? '' : $controller->beginYear; ?>">
 							</td>
 							<td>
-								<input type="text" name="endYear" size="5" value="<?php echo $controller->endYear==0 ? '' : $controller->endYear; ?>">
+								<input type="text" name="endYear" size="5" value="<?php echo $controller->endYear == 0 ? '' : $controller->endYear; ?>">
 							</td>
 							<td>
 								<input data-autocomplete-type="PLAC" type="text" name="place" size="15" value="<?php echo WT_Filter::escapeHtml($controller->place); ?>">
@@ -201,7 +201,7 @@ $people = count($controller->people);
 	</table>
 	<div dir="ltr" id="lifespan_chart" class="lifespan_outer">
 		<div dir="ltr" id="topInner"  class="lifespan_timeline" onmousedown="pandiv(); return false;">';
-			<?php $controller->printTimeline($controller->timelineMinYear,$controller->timelineMaxYear); ?>
+			<?php $controller->printTimeline($controller->timelineMinYear, $controller->timelineMaxYear); ?>
 		</div>
 		<div id="inner" class="lifespan_people" onmousedown="pandiv(); return false;">
 			<?php $maxY = $controller->fillTimeline($controller->people, $controller->YrowLoc); ?>
@@ -233,4 +233,4 @@ $people = count($controller->people);
 // Sets the boundaries for how far the timeline can move in the up direction
 $controller->addInlineJavascript('var maxY = 80-' . $maxY . ';');
 // Sets the boundaries for how far the timeline can move in the left direction
-$controller->addInlineJavascript('var maxX = ' . (isset($maxX)?$maxX:0) . ';');
+$controller->addInlineJavascript('var maxX = ' . (isset($maxX) ? $maxX : 0) . ';');

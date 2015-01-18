@@ -65,18 +65,18 @@ global $tabno, $linkToID, $SEARCH_SPIDER;
 global $SHOW_AGE_DIFF, $GEDCOM;
 global $show_full, $famid;
 
-$summary=$person->format_first_major_fact(WT_EVENTS_BIRT, 2);
+$summary = $person->format_first_major_fact(WT_EVENTS_BIRT, 2);
 if (!($person->isDead())) {
 	// If alive display age
-	$bdate=$person->getBirthDate();
+	$bdate = $person->getBirthDate();
 	$age = WT_Date::GetAgeGedcom($bdate);
-	if ($age!="") {
-		$summary.= "<span class=\"label\">".WT_I18N::translate('Age').":</span><span class=\"field\"> ".get_age_at_event($age, true)."</span>";
+	if ($age != "") {
+		$summary .= "<span class=\"label\">" . WT_I18N::translate('Age') . ":</span><span class=\"field\"> " . get_age_at_event($age, true) . "</span>";
 	}
 }
-$summary.=$person->format_first_major_fact(WT_EVENTS_DEAT, 2);
+$summary .= $person->format_first_major_fact(WT_EVENTS_DEAT, 2);
 
-require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_CENS/census_1_ctrl.php';
+require WT_ROOT . WT_MODULES_DIR . 'GEDFact_assistant/_CENS/census_1_ctrl.php';
 
 ?>
 		</form>

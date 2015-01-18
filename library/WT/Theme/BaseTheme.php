@@ -523,11 +523,11 @@ abstract class BaseTheme {
 			'</div>' .
 			'<div class="chart_textbox" style="max-height:' . $this->parameter('chart-box-y') . 'px;">' .
 			$thumbnail .
-			'<a href="' . $individual->getHtmlUrl() . '">'.
+			'<a href="' . $individual->getHtmlUrl() . '">' .
 			'<span class="namedef name1">' . $individual->getFullName() . '</span>' .
 			'</a>' .
 			'<div class="namedef name1">' . $individual->getAddName() . '</div>' .
-			'<div class="inout2 details1">' . $this->individualBoxFacts($individual) .'</div>' .
+			'<div class="inout2 details1">' . $this->individualBoxFacts($individual) . '</div>' .
 			'</div>' .
 			'<div class="inout"></div>' .
 			'</div>';
@@ -568,11 +568,11 @@ abstract class BaseTheme {
 			'</div>' .
 			'<div class="chart_textbox" style="max-height:' . $this->parameter('chart-box-y') . 'px;">' .
 			$thumbnail .
-			'<a href="' . $individual->getHtmlUrl() . '">'.
+			'<a href="' . $individual->getHtmlUrl() . '">' .
 			'<span class="namedef name2">' . $individual->getFullName() . '</span>' .
 			'</a>' .
 			'<div class="namedef name2">' . $individual->getAddName() . '</div>' .
-			'<div class="inout2 details2">' . $this->individualBoxFacts($individual) .'</div>' .
+			'<div class="inout2 details2">' . $this->individualBoxFacts($individual) . '</div>' .
 			'</div>' .
 			'<div class="inout"></div>' .
 			'</div>';
@@ -598,10 +598,10 @@ abstract class BaseTheme {
 			'<div data-pid="' . $individual->getXref() . '" class="person_box_template ' . $personBoxClass . ' box-style0" style="width: ' . $this->parameter('compact-chart-box-x') . 'px; min-height: ' . $this->parameter('compact-chart-box-y') . 'px">' .
 			'<div class="compact_view">' .
 			$thumbnail .
-			'<a href="' . $individual->getHtmlUrl() . '">'.
+			'<a href="' . $individual->getHtmlUrl() . '">' .
 			'<span class="namedef name0">' . $individual->getFullName() . '</span>' .
 			'</a>' .
-			'<div class="inout2 details0">' . $individual->getLifeSpan() .'</div>' .
+			'<div class="inout2 details0">' . $individual->getLifeSpan() . '</div>' .
 			'</div>' .
 			'<div class="inout"></div>' .
 			'</div>';
@@ -732,7 +732,7 @@ abstract class BaseTheme {
 			$this->menuChartTimeline($individual),
 		));
 
-		usort($menus, function (WT_Menu $x, WT_Menu $y) {
+		usort($menus, function(WT_Menu $x, WT_Menu $y) {
 			return WT_I18N::strcasecmp($x->getLabel(), $y->getLabel());
 		});
 
@@ -882,7 +882,7 @@ abstract class BaseTheme {
 				$this->menuChartTimeline($individual),
 			));
 
-			usort($submenus, function (WT_Menu $x, WT_Menu $y) {
+			usort($submenus, function(WT_Menu $x, WT_Menu $y) {
 				return WT_I18N::strcasecmp($x->getLabel(), $y->getLabel());
 			});
 
@@ -1197,7 +1197,7 @@ abstract class BaseTheme {
 				$menulist[] = new WT_Menu(WT_I18N::translate('Shared notes'), 'notelist.php?' . $this->tree_url, 'menu-list-note');
 			}
 		}
-		uasort($menulist, function (WT_Menu $x, WT_Menu $y) {
+		uasort($menulist, function(WT_Menu $x, WT_Menu $y) {
 				return WT_I18N::strcasecmp($x->getLabel(), $y->getLabel());
 			});
 

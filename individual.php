@@ -32,13 +32,13 @@ $controller
 	->addExternalJavascript(WT_JQUERY_COOKIE_URL); // We use this to record the sidebar state
 
 if ($controller->record && $controller->record->canShow()) {
-	if (WT_Filter::get('action')=='ajax') {
+	if (WT_Filter::get('action') == 'ajax') {
 		$controller->ajaxRequest();
 		exit;
 	}
 	// Generate the sidebar content *before* we display the page header,
 	// as the clippings cart needs to have write access to the session.
-	$sidebar_html=$controller->getSideBarContent();
+	$sidebar_html = $controller->getSideBarContent();
 
 	$controller->pageHeader();
 	if ($controller->record->isPendingDeletion()) {
@@ -47,8 +47,8 @@ if ($controller->record && $controller->record->canShow()) {
 				'<p class="ui-state-highlight">',
 				/* I18N: %1$s is “accept”, %2$s is “reject”.  These are links. */ WT_I18N::translate(
 					'This individual has been deleted.  You should review the deletion and then %1$s or %2$s it.',
-					'<a href="#" onclick="accept_changes(\''.$controller->record->getXref().'\');">' . WT_I18N::translate_c('You should review the deletion and then accept or reject it.', 'accept') . '</a>',
-					'<a href="#" onclick="reject_changes(\''.$controller->record->getXref().'\');">' . WT_I18N::translate_c('You should review the deletion and then accept or reject it.', 'reject') . '</a>'
+					'<a href="#" onclick="accept_changes(\'' . $controller->record->getXref() . '\');">' . WT_I18N::translate_c('You should review the deletion and then accept or reject it.', 'accept') . '</a>',
+					'<a href="#" onclick="reject_changes(\'' . $controller->record->getXref() . '\');">' . WT_I18N::translate_c('You should review the deletion and then accept or reject it.', 'reject') . '</a>'
 				),
 				' ', help_link('pending_changes'),
 				'</p>';
@@ -65,8 +65,8 @@ if ($controller->record && $controller->record->canShow()) {
 				'<p class="ui-state-highlight">',
 				/* I18N: %1$s is “accept”, %2$s is “reject”.  These are links. */ WT_I18N::translate(
 					'This individual has been edited.  You should review the changes and then %1$s or %2$s them.',
-					'<a href="#" onclick="accept_changes(\''.$controller->record->getXref().'\');">' . WT_I18N::translate_c('You should review the changes and then accept or reject them.', 'accept') . '</a>',
-					'<a href="#" onclick="reject_changes(\''.$controller->record->getXref().'\');">' . WT_I18N::translate_c('You should review the changes and then accept or reject them.', 'reject') . '</a>'
+					'<a href="#" onclick="accept_changes(\'' . $controller->record->getXref() . '\');">' . WT_I18N::translate_c('You should review the changes and then accept or reject them.', 'accept') . '</a>',
+					'<a href="#" onclick="reject_changes(\'' . $controller->record->getXref() . '\');">' . WT_I18N::translate_c('You should review the changes and then accept or reject them.', 'reject') . '</a>'
 				),
 				' ', help_link('pending_changes'),
 				'</p>';
@@ -85,7 +85,7 @@ if ($controller->record && $controller->record->canShow()) {
 	echo '<p class="ui-state-highlight">', WT_I18N::translate('The details of this individual are private.'), '</p>';
 	exit;
 } else {
-	header($_SERVER['SERVER_PROTOCOL'].' 404 Not Found');
+	header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found');
 	$controller->pageHeader();
 	echo '<p class="ui-state-error">', WT_I18N::translate('This individual does not exist or you do not have permission to view it.'), '</p>';
 	exit;
@@ -171,8 +171,8 @@ if ($controller->record->canShow()) {
 	echo '<div id="indi_mainimage">', $controller->record->displayImage(), '</div>';
 	echo '<div id="header_accordion1">'; // contain accordions for names
 	echo '<h3 class="name_one ', $controller->getPersonStyle($controller->record), '"><span>', $controller->record->getFullName(), '</span>'; // First name accordion header
-	$bdate=$controller->record->getBirthDate();
-	$ddate=$controller->record->getDeathDate();
+	$bdate = $controller->record->getBirthDate();
+	$ddate = $controller->record->getDeathDate();
 	echo '<span class="header_age">';
 	if ($bdate->isOK() && !$controller->record->isDead()) {
 		// If living display age
@@ -202,7 +202,7 @@ if ($controller->record->canShow()) {
 
 	echo '</div>'; // close header_accordion1
 }
-echo '</div>';// close #indi_header
+echo '</div>'; // close #indi_header
 // ===================================== main content tabs
 foreach ($controller->tabs as $tab) {
 	echo $tab->getPreLoadContent();
@@ -211,15 +211,15 @@ echo '<div id="tabs">';
 echo '<ul>';
 foreach ($controller->tabs as $tab) {
 	if ($tab->isGrayedOut()) {
-		$greyed_out='rela';
+		$greyed_out = 'rela';
 	} else {
-		$greyed_out='';
+		$greyed_out = '';
 	}
 	if ($tab->hasTabContent()) {
-		echo '<li class="'.$greyed_out.'"><a href="';
+		echo '<li class="' . $greyed_out . '"><a href="';
 		if ($tab->canLoadAjax()) {
 			// AJAX tabs load only when selected
-			echo $controller->record->getHtmlUrl(),'&amp;action=ajax&amp;module=', $tab->getName();
+			echo $controller->record->getHtmlUrl(), '&amp;action=ajax&amp;module=', $tab->getName();
 		} else {
 			// Non-AJAX tabs load immediately
 			echo '#', $tab->getName();
