@@ -140,18 +140,18 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			'<p>';
 		foreach ($initials as $letter=>$count) {
 			switch ($letter) {
-				case '@':
-					$html=$UNKNOWN_NN;
-					break;
-				case ',':
-					$html=WT_I18N::translate('None');
-					break;
-				case ' ':
-					$html='&nbsp;';
-					break;
-				default:
-					$html=$letter;
-					break;
+			case '@':
+				$html=$UNKNOWN_NN;
+				break;
+			case ',':
+				$html=WT_I18N::translate('None');
+				break;
+			case ' ':
+				$html='&nbsp;';
+				break;
+			default:
+				$html=$letter;
+				break;
 			}
 			$html='<a href="module.php?mod='.$this->getName().'&amp;mod_action=ajax&amp;sb_action=families&amp;alpha='.urlencode($letter).'" class="sb_fam_letter">'.$html.'</a>';
 			$out .= $html." ";

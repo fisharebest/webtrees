@@ -353,15 +353,15 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 	 */
 	function getPersonStyle($person) {
 		switch($person->getSex()) {
-			case 'M':
-				$class = 'person_box';
-				break;
-			case 'F':
-				$class = 'person_boxF';
-				break;
-			default:
-				$class = 'person_boxNN';
-				break;
+		case 'M':
+			$class = 'person_box';
+			break;
+		case 'F':
+			$class = 'person_boxF';
+			break;
+		default:
+			$class = 'person_boxNN';
+			break;
 		}
 		if ($person->isPendingDeletion()) {
 			$class .= ' old';

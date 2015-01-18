@@ -185,24 +185,24 @@ if (count($famids) > 0) {
 		$arrow = 'icon-larrow';
 	}
 	switch ($talloffset) {
-		case 0:
-			$offsetx = $PEDIGREE_GENERATIONS < 6 ? $offsetx = 60 * (5 - $PEDIGREE_GENERATIONS) : 0;
-			$offsety = $yoffset;
-			break;
-		case 1:
-			$offsetx = $PEDIGREE_GENERATIONS < 4 ? $basexoffset + 60 : $basexoffset;
-			$offsety = $yoffset;
-			break;
-		case 2:
-			$offsetx = $xoffset - 10 + $controller->pbwidth / 2;
-			$offsety = $yoffset + $controller->pbheight / 2 + 10;
-			$arrow = 'icon-darrow';
-			break;
-		case 3:
-			$offsetx = $xoffset - 10 + $controller->pbwidth / 2;
-			$offsety = $yoffset - $controller->pbheight / 2 - 10;
-			$arrow = 'icon-uarrow';
-			break;
+	case 0:
+		$offsetx = $PEDIGREE_GENERATIONS < 6 ? $offsetx = 60 * (5 - $PEDIGREE_GENERATIONS) : 0;
+		$offsety = $yoffset;
+		break;
+	case 1:
+		$offsetx = $PEDIGREE_GENERATIONS < 4 ? $basexoffset + 60 : $basexoffset;
+		$offsety = $yoffset;
+		break;
+	case 2:
+		$offsetx = $xoffset - 10 + $controller->pbwidth / 2;
+		$offsety = $yoffset + $controller->pbheight / 2 + 10;
+		$arrow = 'icon-darrow';
+		break;
+	case 3:
+		$offsetx = $xoffset - 10 + $controller->pbwidth / 2;
+		$offsety = $yoffset - $controller->pbheight / 2 - 10;
+		$arrow = 'icon-uarrow';
+		break;
 	}
 	printf(MENU_WRAPPER, $posn, $offsetx, $offsety, $arrow);
 

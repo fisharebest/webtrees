@@ -89,18 +89,18 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 
 		if ($person) {
 			switch($type) {
-				case 'pedigree':
-					$title .= WT_I18N::translate('Pedigree of %s', $person->getFullName());
-					break;
-				case 'descendants':
-					$title .= WT_I18N::translate('Descendants of %s', $person->getFullName());
-					break;
-				case 'hourglass':
-					$title .= WT_I18N::translate('Hourglass chart of %s', $person->getFullName());
-					break;
-				case 'treenav':
-					$title .= WT_I18N::translate('Interactive tree of %s', $person->getFullName());
-					break;
+			case 'pedigree':
+				$title .= WT_I18N::translate('Pedigree of %s', $person->getFullName());
+				break;
+			case 'descendants':
+				$title .= WT_I18N::translate('Descendants of %s', $person->getFullName());
+				break;
+			case 'hourglass':
+				$title .= WT_I18N::translate('Hourglass chart of %s', $person->getFullName());
+				break;
+			case 'treenav':
+				$title .= WT_I18N::translate('Interactive tree of %s', $person->getFullName());
+				break;
 			}
 			$title .= help_link('index_charts', $this->getName());
 			$content = '<table cellspacing="0" cellpadding="0" border="0"><tr>';
