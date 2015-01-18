@@ -431,7 +431,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 			$out='<ul>';
 			foreach (array_keys($WT_SESSION->cart[WT_GED_ID]) as $xref) {
 				$record=WT_GedcomRecord::getInstance($xref);
-				if ($record && ($record::RECORD_TYPE=='INDI' || $record::RECORD_TYPE=='FAM')) { // Just show INDI/FAM in the sidbar
+				if ($record && ($record::RECORD_TYPE=='INDI' || $record::RECORD_TYPE=='FAM')) {
 					switch ($record::RECORD_TYPE) {
 					case 'INDI': $icon='icon-indis';  break;
 					case 'FAM': $icon='icon-sfamily'; break;

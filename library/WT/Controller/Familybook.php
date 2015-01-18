@@ -130,14 +130,16 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 			$ct = 0; // set to 0 for empty boxes
 		}
 		if ($count < $this->dgenerations) {
-			if ($ct == 0) { // empty boxes
+			if ($ct == 0) {
+				// empty boxes
 				echo '<table><tr><td>';
 				$person2 = null;
 				$kids = $this->printDescendency($person2, $count + 1);
 				$numkids += $kids;
 				echo '</td></tr></table>';
 			}
-			if ($ct > 0) { // real people
+			if ($ct > 0) {
+				// real people
 				echo '<table>';
 				for ($i = 0; $i < $ct; $i++) {
 					$person2 = $children[$i];
@@ -249,22 +251,22 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 			echo '</td><td></tr></table>';
 		}
 
-		//Empty box section done, now for regular pedigree
+		// Empty box section done, now for regular pedigree
 		foreach ($person->getChildFamilies() as $family) {
 			echo '<table><tr><td class="tdbot">';
-			//
-			//Determine line height for two or more spouces
-			//And then adjust the vertical line for the root person only
-			//
+			// Determine line height for two or more spouces
+			// And then adjust the vertical line for the root person only
 			$sfamilies = $person->getSpouseFamilies();
 			$famcount = 0;
-			if ($this->show_spouse) { // count number of spouses
+			if ($this->show_spouse) {
+				// count number of spouses
 				$famcount += count($sfamilies);
 			}
 			$savlh = $lh; // Save current line height
 			if ($count == 1 && $genoffset <= $famcount) {
 				$linefactor = 0;
-				if ($genoffset > 2) { // genoffset of 2 needs no adjustment
+				// genoffset of 2 needs no adjustment
+				if ($genoffset > 2) {
 					$tblheight = $bheight + 8;
 					if ($genoffset == 3) {
 						if ($famcount == 3) {

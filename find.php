@@ -553,11 +553,13 @@ if ($action=="filter") {
 					echo '<li>', $source->getFullName(), '</li>';
 					$found=true;
 				}
-				foreach ($media->linkedNotes('OBJE') as $note) { // Invalid GEDCOM - you cannot link a NOTE to an OBJE
+				foreach ($media->linkedNotes('OBJE') as $note) {
+					// Invalid GEDCOM - you cannot link a NOTE to an OBJE
 					echo '<li>', $note->getFullName(), '</li>';
 					$found=true;
 				}
-				foreach ($media->linkedRepositories('OBJE') as $repository) { // Invalid GEDCOM - you cannot link a REPO to an OBJE
+				foreach ($media->linkedRepositories('OBJE') as $repository) {
+					// Invalid GEDCOM - you cannot link a REPO to an OBJE
 					echo '<li>', $repository->getFullName(), '</li>';
 					$found=true;
 				}

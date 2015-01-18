@@ -93,8 +93,9 @@ function select_edit_control($name, $values, $empty, $selected, $extra='') {
 	if (empty($values) && empty($html)) {
 		$html='<option value=""></option>';
 	}
-	foreach ($values as $key=>$value) {
-		if ((string)$key===(string)$selected) { // Because "0" != ""
+	foreach ($values as $key => $value) {
+		// PHP array keys are cast to integers!  Cast them back
+		if ((string)$key === (string)$selected) {
 			$html.='<option value="'.WT_Filter::escapeHtml($key).'" selected="selected" dir="auto">'.WT_Filter::escapeHtml($value).'</option>';
 		} else {
 			$html.='<option value="'.WT_Filter::escapeHtml($key).'" dir="auto">'.WT_Filter::escapeHtml($value).'</option>';
@@ -156,7 +157,8 @@ function radio_buttons($name, $values, $selected, $extra = '') {
 	$html = '';
 	foreach ($values as $key => $value) {
 		$html .= '<label ' . $extra . '><input type="radio" name="' . $name . '" value="' . WT_Filter::escapeHtml($key) . '"';
-		if ((string)$key === (string)$selected) { // Beware PHP array keys are cast to integers!  Cast them back
+		// PHP array keys are cast to integers!  Cast them back
+		if ((string)$key === (string)$selected) {
 			$html .= ' checked';
 		}
 		$html .= '>' . WT_Filter::escapeHtml($value) . '</label>';
@@ -1770,7 +1772,8 @@ function insert_missing_subtags($level1tag, $add_date=false) {
 			} else if ($level1tag!='TITL' && $level1tag!='NAME') {
 				add_simple_tag('2 '.$key, $level1tag);
 			}
-			switch ($key) { // Add level 3/4 tags as appropriate
+			// Add level 3/4 tags as appropriate
+			switch ($key) {
 			case 'PLAC':
 				if (preg_match_all('/('.WT_REGEX_TAG.')/', $ADVANCED_PLAC_FACTS, $match)) {
 					foreach ($match[1] as $tag) {

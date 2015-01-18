@@ -112,7 +112,8 @@ for ($i = ($controller->treesize - 1); $i >= 0; $i--) {
 	}
 	$prevxoffset = $xoffset;
 	$prevyoffset = $yoffset;
-	if ($talloffset < 2) { // Portrait 0 Landscape 1 top 2 bottom 3
+	if ($talloffset < 2) {
+		// Portrait 0 Landscape 1 top 2 bottom 3
 		$xoffset = $controller->offsetarray[$i]["x"];
 		$yoffset = $controller->offsetarray[$i]["y"];
 	} else {
@@ -126,7 +127,8 @@ for ($i = ($controller->treesize - 1); $i >= 0; $i--) {
 	// Can we go back to an earlier generation?
 	$can_go_back = $curgen == 1 && $controller->ancestors[$i] && $controller->ancestors[$i]->getChildFamilies();
 
-	if ($talloffset == 2) { // oldest at top
+	if ($talloffset == 2) {
+		// oldest at top
 		if ($can_go_back) {
 			printf(ARROW_WRAPPER, $posn, $xoffset + $controller->pbwidth / 2, $yoffset-22);
 			$did = 1;

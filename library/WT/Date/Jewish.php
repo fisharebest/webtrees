@@ -240,12 +240,14 @@ class WT_Date_Jewish extends WT_Date_Calendar {
 		$thousands       = (int)($num / 1000); //get # thousands
 		$sb              = "";
 		//append thousands to String
-		if ($num % 1000 == 0) { // in year is 5000, 4000 etc
+		if ($num % 1000 == 0) {
+			// in year is 5000, 4000 etc
 			$sb .= $jOnes[$thousands];
 			$sb .= self::GERSH;
 			$sb .= " ";
 			$sb .= self::ALAFIM; //add # of thousands plus word thousand (overide alafim boolean)
-		} else if ($DISPLAY_JEWISH_THOUSANDS) { // if alafim boolean display thousands
+		} elseif ($DISPLAY_JEWISH_THOUSANDS) {
+			// if alafim boolean display thousands
 			$sb .= $jOnes[$thousands];
 			$sb .= self::GERSH; //append thousands quote
 			$sb .= " ";
@@ -254,13 +256,13 @@ class WT_Date_Jewish extends WT_Date_Calendar {
 		$hundreds = (int)($num / 100); // # of hundreds
 		$sb .= $jHundreds[$hundreds]; //add hundreds to String
 		$num = $num % 100; //remove 100s
-		if ($num == 15) { //special case 15
+		if ($num == 15) {
 			$sb .= $tavTaz[0];
-		} else if ($num == 16) { //special case 16
+		} else if ($num == 16) {
 			$sb .= $tavTaz[1];
 		} else {
 			$tens = (int)($num / 10);
-			if ($num % 10 == 0) {                                    // if evenly divisable by 10
+			if ($num % 10 == 0) {
 				if ($singleDigitYear == false) {
 					$sb .= $jTenEnds[$tens]; // use end letters so that for example 5750 will end with an end nun
 				} else {
@@ -273,11 +275,14 @@ class WT_Date_Jewish extends WT_Date_Calendar {
 			}
 		}
 		if ($singleDigitYear == true) {
-			$sb .= self::GERSH; //append single quote
-		} else { // append double quote before last digit
+			// Append single quote
+			$sb .= self::GERSH;
+		} else {
+			// Append double quote before last digit
 			$pos1 = strlen($sb) - 2;
 			$sb   = substr($sb, 0, $pos1) . self::GERSHAYIM . substr($sb, $pos1);
-			$sb   = str_replace(self::GERSHAYIM . self::GERSHAYIM, self::GERSHAYIM, $sb); //replace double gershayim with single instance
+			// Replace double gershayim with single instance
+			$sb   = str_replace(self::GERSHAYIM . self::GERSHAYIM, self::GERSHAYIM, $sb);
 		}
 
 		return $sb;

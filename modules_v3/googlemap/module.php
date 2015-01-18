@@ -808,7 +808,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					$lon[$i] = str_replace(array('E', 'W', ','), array('', '-', '.'), $latlongval[$i]->pl_long);
 					if (($lat[$i] != null) && ($lon[$i] != null)) {
 						$count++;
-					} else { // The place is in the table but has empty values
+					} else {
+						// The place is in the table but has empty values
 						if ($name) {
 							if ($missing) {
 								$missing .= ', ';
@@ -817,7 +818,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 							$miscount++;
 						}
 					}
-				} else { // There was no place, or not listed in the map table
+				} else {
+					// There was no place, or not listed in the map table
 					if ($name) {
 						if ($missing) {
 							$missing .= ', ';

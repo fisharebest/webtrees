@@ -739,7 +739,8 @@ class WT_Soundex {
 			$partialResult   = array();
 			$currPos += strlen($thisEntry);
 
-			if ($state != 1) { // Not at beginning of input string
+			// Not at beginning of input string
+			if ($state != 1) {
 				if ($currPos <= $lastPos) {
 					// Determine whether the next chunk is a vowel
 					$nextEntry = substr($name, $currPos, self::MAXCHAR); // Get maximum length chunk
@@ -761,7 +762,8 @@ class WT_Soundex {
 			}
 
 			while ($state < count($soundTableEntry)) {
-				if ($soundTableEntry[$state] == '') { // empty means 'ignore this sound in this state'
+				// empty means 'ignore this sound in this state'
+				if ($soundTableEntry[$state] == '') {
 					foreach ($workingResult as $workingEntry) {
 						$tempEntry = $workingEntry;
 						$tempEntry[count($tempEntry) - 1] .= '!'; // Prevent false 'doubles'

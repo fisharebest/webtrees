@@ -158,7 +158,8 @@ class WT_Date {
 			if (preg_match('/^(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)$/', $m)) {
 				$cal = '@#DGREGORIAN@';
 			} else {
-				if (preg_match('/^[345]\d\d\d$/', $y)) { // Year 3000-5999
+				if (preg_match('/^[345]\d\d\d$/', $y)) {
+					// Year 3000-5999
 					$cal = '@#DHEBREW@';
 				} else {
 					$cal = '@#DGREGORIAN@';

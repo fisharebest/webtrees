@@ -279,7 +279,7 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 		$totalYears            = $newEndYear - $newStartYear; //length of timeline
 		$timelineTick          = $totalYears / $yearSpan; //calculates the length of the timeline
 
-		for ($i = 0; $i < $timelineTick; $i++) { //prints the timeline
+		for ($i = 0; $i < $timelineTick; $i++) {
 			echo "<div class=\"sublinks_cell\" style=\"text-align: left; position: absolute; top: ", $top, "px; left: ", $leftPosition, "px; width: ", $tickDistance, "px;\">$newStartYear<i class=\"icon-lifespan-chunk\"></i></div>";  //onclick="zoomToggle('100px', '100px', '200px', '200px', this);"
 			$leftPosition += $tickDistance;
 			$newStartYear += $yearSpan;

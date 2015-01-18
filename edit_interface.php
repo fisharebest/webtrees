@@ -2724,7 +2724,8 @@ function print_indi_form($nextaction, WT_Individual $person = null, WT_Family $f
 	}
 	echo keep_chan($person);
 	echo "</table>";
-	if ($nextaction=='update') { // GEDCOM 5.5.1 spec says NAME doesn’t get a OBJE
+	if ($nextaction=='update') {
+		// GEDCOM 5.5.1 spec says NAME doesn’t get a OBJE
 		print_add_layer('SOUR');
 		print_add_layer('NOTE');
 		print_add_layer('SHARED_NOTE');

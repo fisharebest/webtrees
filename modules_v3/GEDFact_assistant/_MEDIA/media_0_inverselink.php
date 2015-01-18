@@ -515,7 +515,8 @@ function parseAddLinks() {
 	var str = document.getElementById('gid').value;
 	// Add in the "keep" IDs.
 	var tbl = document.getElementById('addlinkQueue');
-	for (var i=1; i<tbl.rows.length; i++) { // start at i=1 because we need to avoid header
+	// start at i=1 because we need to avoid header
+	for (var i=1; i<tbl.rows.length; i++) {
 		var tr = tbl.rows[i];
 		if (typeof tr.cells[1].childNodes[0].textContent !== "undefined") {
 			str += (str==''?'':',') + tr.cells[1].childNodes[0].textContent;
@@ -529,7 +530,8 @@ function parseAddLinks() {
 function parseRemLinks() {
 	var remstr = "";
 	var tbl = document.getElementById('existLinkTbl');
-	for (var i=1; i<tbl.rows.length; i++) { // start at i=1 because we need to avoid header
+	// start at i=1 because we need to avoid header
+	for (var i=1; i<tbl.rows.length; i++) {
 		var remtr = tbl.rows[i];
 		if (remtr.cells[4].childNodes[0].checked)  {
 			remstr += (remstr==''?'':',') + remtr.cells[4].childNodes[0].name;
