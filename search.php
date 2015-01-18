@@ -76,8 +76,6 @@ echo '<div id="search-page">
 	//========== Search Form Outer Table //==========
 	echo '<form method="post" name="searchform" onsubmit="return checknames(this);" action="search.php"><input type="hidden" name="action" value="', $controller->action, '"><input type="hidden" name="isPostBack" value="true">
 	<div id="search-page-table">';
-  		?>
-		<?php
 		//========== General search Form ==========
 		if ($controller->action == "general") {
 			echo '<div class="label">' , WT_I18N::translate('Search for'), '</div>

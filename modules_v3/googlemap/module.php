@@ -4198,7 +4198,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 			$default_zoom_level=array(4, 7, 10, 12);
 			foreach ($placelistUniq as $k=>$place) {
-		        $parent=preg_split('/ *, */', $place['place']);
+				$parent=preg_split('/ *, */', $place['place']);
 				$parent=array_reverse($parent);
 				$parent_id=0;
 				for ($i=0; $i<count($parent); $i++) {

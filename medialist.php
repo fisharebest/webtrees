@@ -44,16 +44,16 @@ $apply_filter   = WT_Filter::get('apply_filter');
 $filter         = WT_Filter::get('filter', null, ''); // MySQL needs an empty string, not NULL
 $columns        = WT_Filter::getInteger('columns', 1, 2, 2);
 $subdirs        = WT_Filter::get('subdirs', 'on');
-$currentdironly = ($subdirs=='on') ? false : true;
+$currentdironly = ($subdirs === 'on') ? false : true;
 
 // reset all variables
-if ($reset == 'Reset') {
-	$sortby = 'title';
-	$max = '20';
-	$folder = '';
-	$columns = '2';
+if ($reset === 'Reset') {
+	$sortby         = 'title';
+	$max            = '20';
+	$folder         = '';
+	$columns        = '2';
 	$currentdironly = true;
-	$filter = '';
+	$filter         = '';
 }
 
 // A list of all subfolders used by this tree
@@ -322,7 +322,7 @@ if ($search) {
 		echo '</tr></tbody>';
 		echo '</table>';
 	}
-  echo '</div>';
+	echo '</div>';
 }
 echo '</div>';
 
