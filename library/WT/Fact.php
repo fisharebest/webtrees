@@ -68,7 +68,7 @@ class WT_Fact {
 			$this->fact_id = $fact_id;
 			$this->tag     = $match[1];
 		} else {
-			throw new InvalidArgumentException('Invalid GEDCOM data passed to WT_Fact::_construct('.$gedcom.')');
+			throw new InvalidArgumentException('Invalid GEDCOM data passed to WT_Fact::_construct(' . $gedcom . ')');
 		}
 	}
 

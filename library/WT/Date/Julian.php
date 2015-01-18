@@ -63,7 +63,7 @@ class WT_Date_Julian extends WT_Date_Calendar {
 		} else if (preg_match('/^(\d+) B\.C\.$/', $year, $match)) {
 			return -$match[1];
 		} else {
-			return (int)$year;
+			return (int) $year;
 		}
 	}
 

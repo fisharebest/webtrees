@@ -68,7 +68,7 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 
 		$this->setPageTitle(WT_I18N::translate('Timeline'));
 
-		$this->baseyear = (int)date('Y');
+		$this->baseyear = (int) date('Y');
 		// new pid
 		$newpid = WT_Filter::get('newpid', WT_REGEX_XREF);
 
@@ -127,7 +127,7 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 							$this->topyear  = max($this->topyear, $date->y);
 
 							if (!$indi->isDead()) {
-								$this->topyear = max($this->topyear, (int)date('Y'));
+								$this->topyear = max($this->topyear, (int) date('Y'));
 							}
 
 							// do not add the same fact twice (prevents marriages from being added multiple times)
@@ -141,7 +141,7 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 		}
 		$scale = WT_Filter::getInteger('scale', 0, 200);
 		if ($scale === 0) {
-			$this->scale = (int)(($this->topyear - $this->baseyear) / 20 * count($this->indifacts) / 4);
+			$this->scale = (int) (($this->topyear - $this->baseyear) / 20 * count($this->indifacts) / 4);
 			if ($this->scale < 6) {
 				$this->scale = 6;
 			}
@@ -173,8 +173,8 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 		$yoffset  = $baseyoffset + (($year - $this->baseyear) * $this->scale) - ($this->scale);
 		$yoffset  = $yoffset + (($month / 12) * $this->scale);
 		$yoffset  = $yoffset + (($day / 30) * ($this->scale / 12));
-		$yoffset  = (int)($yoffset);
-		$place    = (int)($yoffset / $this->bheight);
+		$yoffset  = (int) ($yoffset);
+		$place    = (int) ($yoffset / $this->bheight);
 		$i        = 1;
 		$j        = 0;
 		$tyoffset = 0;
@@ -186,7 +186,7 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 				$tyoffset = -1 * $this->bheight * $j;
 				$j++;
 			}
-			$place = (int)(($yoffset + $tyoffset) / ($this->bheight));
+			$place = (int) (($yoffset + $tyoffset) / ($this->bheight));
 		}
 		$yoffset += $tyoffset;
 		$xoffset += abs($tyoffset);

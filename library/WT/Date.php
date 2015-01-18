@@ -378,7 +378,7 @@ class WT_Date {
 	 * @return integer
 	 */
 	function JD() {
-		return (int)(($this->MinJD() + $this->MaxJD()) / 2);
+		return (int) (($this->MinJD() + $this->MaxJD()) / 2);
 	}
 
 	/**

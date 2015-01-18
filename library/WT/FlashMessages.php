@@ -27,7 +27,7 @@ class WT_FlashMessages {
 	 * @param string $text
 	 * @param string $status "success", "info", "warning" or "danger"
 	 */
-	public static function addMessage($text, $status='info') {
+	public static function addMessage($text, $status = 'info') {
 		$message         = new stdClass;
 		$message->text   = $text;
 		$message->status = $status;
