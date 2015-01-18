@@ -39,7 +39,7 @@ global $controller;
 
 // Identify ourself
 define('WT_WEBTREES', 'webtrees');
-define('WT_VERSION',  '1.6.3-dev');
+define('WT_VERSION',  '1.7.0-dev');
 
 // External URLs
 define('WT_WEBTREES_URL',  'http://www.webtrees.net/');
@@ -74,7 +74,7 @@ if (getenv('USE_CDN')) {
 	define('WT_JQUERYUI_URL',                 WT_STATIC_URL . 'js/jquery-ui-1.11.2.js');
 }
 define('WT_JQUERY_WHEELZOOM_URL',           WT_STATIC_URL . 'js/jquery.wheelzoom-2.0.0.js');
-define('WT_WEBTREES_JS_URL',                WT_STATIC_URL . 'js/webtrees-1.6.2.js');
+define('WT_WEBTREES_JS_URL',                WT_STATIC_URL . 'js/webtrees-1.7.0.js');
 
 // Location of our modules and themes.  These are used as URLs and folder paths.
 define('WT_MODULES_DIR', 'modules_v3/'); // Update setup.php and build/Makefile when this changes

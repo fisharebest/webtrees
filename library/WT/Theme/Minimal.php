@@ -26,7 +26,7 @@ use WT_I18N;
 class Minimal extends BaseTheme {
 	/** {@inheritdoc} */
 	public function cssUrl() {
-		return 'themes/minimal/css-1.6.2/';
+		return 'themes/minimal/css-1.7.0/';
 	}
 
 	/** {@inheritdoc} */

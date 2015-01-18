@@ -26,7 +26,7 @@ use WT_I18N;
 class Xenea extends BaseTheme {
 	/** {@inheritdoc} */
 	public function cssUrl() {
-		return 'themes/xenea/css-1.6.2/';
+		return 'themes/xenea/css-1.7.0/';
 	}
 
 	/** {@inheritdoc} */

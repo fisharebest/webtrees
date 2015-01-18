@@ -36,7 +36,7 @@ class Colors extends BaseTheme {
 
 	/** {@inheritdoc} */
 	public function cssUrl() {
-		return 'themes/colors/css-1.6.2/';
+		return 'themes/colors/css-1.7.0/';
 	}
 
 	/** {@inheritdoc} */

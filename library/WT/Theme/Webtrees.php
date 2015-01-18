@@ -27,7 +27,7 @@ use WT_I18N;
 class Webtrees extends BaseTheme {
 	/** {@inheritdoc} */
 	public function cssUrl() {
-		return 'themes/webtrees/css-1.6.2/';
+		return 'themes/webtrees/css-1.7.0/';
 	}
 
 	/** {@inheritdoc} */

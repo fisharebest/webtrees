@@ -38,7 +38,7 @@ class Administration extends BaseTheme {
 
 	/** {@inheritdoc} */
 	public function cssUrl() {
-		return 'themes/_administration/css-1.6.2/';
+		return 'themes/_administration/css-1.7.0/';
 	}
 
 	/** {@inheritdoc} */

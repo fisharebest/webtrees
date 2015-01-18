@@ -28,7 +28,7 @@ use WT_Menu;
 class Clouds extends BaseTheme {
 	/** {@inheritdoc} */
 	public function cssUrl() {
-		return 'themes/clouds/css-1.6.2/';
+		return 'themes/clouds/css-1.7.0/';
 	}
 
 	/** {@inheritdoc} */
