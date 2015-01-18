@@ -1212,7 +1212,7 @@ abstract class BaseTheme {
 	 * @return WT_Menu|null
 	 */
 	protected function menuLogin() {
-		if (Auth::check() || $this->isSearchEngine()) {
+		if (Auth::check() || $this->isSearchEngine() || WT_SCRIPT_NAME === 'login.php') {
 			return null;
 		} else {
 			return new WT_Menu(WT_I18N::translate('Login'), WT_LOGIN_URL . '?url=' . rawurlencode(get_query_url()));
