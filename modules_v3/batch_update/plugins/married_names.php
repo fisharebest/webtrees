@@ -67,22 +67,22 @@ class married_names_bu_plugin extends base_plugin {
 		$SURNAME_TRADITION = $WT_TREE->getPreference('SURNAME_TRADITION');
 
 		preg_match('/^1 NAME (.*)/m', $gedrec, $match);
-		$wife_name=$match[1];
-		$married_names=array();
+		$wife_name = $match[1];
+		$married_names = array();
 		foreach (self::surnamesToAdd($xref, $gedrec) as $surname) {
 			switch ($this->surname) {
 			case 'add':
-				$married_names[]="\n2 _MARNM ".str_replace('/', '', $wife_name).' /'.$surname.'/';
+				$married_names[] = "\n2 _MARNM " . str_replace('/', '', $wife_name) . ' /' . $surname . '/';
 				break;
 			case 'replace':
 				if ($SURNAME_TRADITION === 'polish') {
-					$surname=preg_replace(array('/ski$/','/cki$/','/dzki$/'), array('ska', 'cka', 'dzka'), $surname);
+					$surname = preg_replace(array('/ski$/', '/cki$/', '/dzki$/'), array('ska', 'cka', 'dzka'), $surname);
 				}
-				$married_names[]="\n2 _MARNM ".preg_replace('!/.*/!', '/'.$surname.'/', $wife_name);
+				$married_names[] = "\n2 _MARNM " . preg_replace('!/.*/!', '/' . $surname . '/', $wife_name);
 				break;
 			}
 		}
-		return preg_replace('/(^1 NAME .*([\r\n]+[2-9].*)*)/m', '\\1'.implode('', $married_names), $gedrec, 1);
+		return preg_replace('/(^1 NAME .*([\r\n]+[2-9].*)*)/m', '\\1' . implode('', $married_names), $gedrec, 1);
 	}
 
 	/**
@@ -92,20 +92,20 @@ class married_names_bu_plugin extends base_plugin {
 	 * @return string[]
 	 */
 	private function surnamesToAdd($xref, $gedrec) {
-		$wife_surnames=self::surnames($xref, $gedrec);
-		$husb_surnames=array();
-		$missing_surnames=array();
+		$wife_surnames = self::surnames($xref, $gedrec);
+		$husb_surnames = array();
+		$missing_surnames = array();
 		preg_match_all('/^1 FAMS @(.+)@/m', $gedrec, $fmatch);
 		foreach ($fmatch[1] as $famid) {
-			$famrec=batch_update::getLatestRecord($famid, 'FAM');
+			$famrec = batch_update::getLatestRecord($famid, 'FAM');
 			if (preg_match('/^1 MARR/m', $famrec) && preg_match('/^1 HUSB @(.+)@/m', $famrec, $hmatch)) {
-				$husbrec=batch_update::getLatestRecord($hmatch[1], 'INDI');
-				$husb_surnames=array_unique(array_merge($husb_surnames, self::surnames($hmatch[1], $husbrec)));
+				$husbrec = batch_update::getLatestRecord($hmatch[1], 'INDI');
+				$husb_surnames = array_unique(array_merge($husb_surnames, self::surnames($hmatch[1], $husbrec)));
 			}
 		}
 		foreach ($husb_surnames as $husb_surname) {
 			if (!in_array($husb_surname, $wife_surnames)) {
-				$missing_surnames[]=$husb_surname;
+				$missing_surnames[] = $husb_surname;
 			}
 		}
 
@@ -144,9 +144,9 @@ class married_names_bu_plugin extends base_plugin {
 			parent::getOptionsForm() .
 			'<tr valign="top"><th>' . WT_I18N::translate('Surname option') . '</th>' .
 			'<td class="optionbox"><select name="surname" onchange="reset_reload();"><option value="replace"' .
-			($this->surname=='replace' ? ' selected="selected"' : '') .
+			($this->surname == 'replace' ? ' selected="selected"' : '') .
 			'">' . WT_I18N::translate('Wife’s surname replaced by husband’s surname') . '</option><option value="add"' .
-			($this->surname=='add' ? ' selected="selected"' : '') .
+			($this->surname == 'add' ? ' selected="selected"' : '') .
 			'">' . WT_I18N::translate('Wife’s maiden surname becomes new given name') . '</option></select></td></tr>';
 	}
 }

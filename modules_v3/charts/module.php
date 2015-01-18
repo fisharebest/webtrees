@@ -37,7 +37,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 	}
 
 	/** {@inheritdoc} */
-	public function getBlock($block_id, $template=true, $cfg=null) {
+	public function getBlock($block_id, $template = true, $cfg = null) {
 		global $WT_TREE, $ctype, $PEDIGREE_FULL_DETAILS, $show_full, $controller;
 
 		$PEDIGREE_ROOT_ID = $WT_TREE->getPreference('PEDIGREE_ROOT_ID');
@@ -74,21 +74,21 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 			$person = WT_Individual::getInstance($pid);
 		}
 
-		if ($type!='treenav' && $person) {
+		if ($type != 'treenav' && $person) {
 			$chartController = new WT_Controller_Hourglass($person->getXref(), 0, false);
 			$controller->addInlineJavascript($chartController->setupJavascript());
 		}
 
-		$id=$this->getName().$block_id;
-		$class=$this->getName().'_block';
-		if ($ctype=='gedcom' && WT_USER_GEDCOM_ADMIN || $ctype=='user' && Auth::check()) {
-			$title='<i class="icon-admin" title="'.WT_I18N::translate('Configure').'" onclick="modalDialog(\'block_edit.php?block_id='.$block_id.'\', \''.$this->getTitle().'\');"></i>';
+		$id = $this->getName() . $block_id;
+		$class = $this->getName() . '_block';
+		if ($ctype == 'gedcom' && WT_USER_GEDCOM_ADMIN || $ctype == 'user' && Auth::check()) {
+			$title = '<i class="icon-admin" title="' . WT_I18N::translate('Configure') . '" onclick="modalDialog(\'block_edit.php?block_id=' . $block_id . '\', \'' . $this->getTitle() . '\');"></i>';
 		} else {
-			$title='';
+			$title = '';
 		}
 
 		if ($person) {
-			switch($type) {
+			switch ($type) {
 			case 'pedigree':
 				$title .= WT_I18N::translate('Pedigree of %s', $person->getFullName());
 				break;
@@ -104,16 +104,16 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 			}
 			$title .= help_link('index_charts', $this->getName());
 			$content = '<table cellspacing="0" cellpadding="0" border="0"><tr>';
-			if ($type=='descendants' || $type=='hourglass') {
+			if ($type == 'descendants' || $type == 'hourglass') {
 				$content .= "<td valign=\"middle\">";
 				ob_start();
 				$chartController->printDescendency($person, 1, false);
 				$content .= ob_get_clean();
 				$content .= "</td>";
 			}
-			if ($type=='pedigree' || $type=='hourglass') {
+			if ($type == 'pedigree' || $type == 'hourglass') {
 				//-- print out the root person
-				if ($type!='hourglass') {
+				if ($type != 'hourglass') {
 					$content .= "<td valign=\"middle\">";
 					ob_start();
 					print_pedigree_person($person);
@@ -126,22 +126,22 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 				$content .= ob_get_clean();
 				$content .= "</td>";
 			}
-			if ($type=='treenav') {
-				require_once WT_MODULES_DIR.'tree/module.php';
-				require_once WT_MODULES_DIR.'tree/class_treeview.php';
-				$mod=new tree_WT_Module;
-				$tv=new TreeView;
+			if ($type == 'treenav') {
+				require_once WT_MODULES_DIR . 'tree/module.php';
+				require_once WT_MODULES_DIR . 'tree/class_treeview.php';
+				$mod = new tree_WT_Module;
+				$tv = new TreeView;
 				$content .= '<td>';
 
-				$content .= '<script>jQuery("head").append(\'<link rel="stylesheet" href="'.$mod->css().'" type="text/css" />\');</script>';
-				$content .= '<script src="'.$mod->js().'"></script>';
+				$content .= '<script>jQuery("head").append(\'<link rel="stylesheet" href="' . $mod->css() . '" type="text/css" />\');</script>';
+				$content .= '<script src="' . $mod->js() . '"></script>';
 				list($html, $js) = $tv->drawViewport($person, 2);
-				$content .= $html.'<script>'.$js.'</script>';
+				$content .= $html . '<script>' . $js . '</script>';
 				$content .= '</td>';
 			}
 			$content .= "</tr></table>";
 		} else {
-			$content=WT_I18N::translate('You must select an individual and chart type in the block configuration settings.');
+			$content = WT_I18N::translate('You must select an individual and chart type in the block configuration settings.');
 		}
 
 		// Restore GEDCOM configuration
@@ -176,14 +176,14 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 	/** {@inheritdoc} */
 	public function configureBlock($block_id) {
 		global $WT_TREE, $controller;
-		require_once WT_ROOT.'includes/functions/functions_edit.php';
+		require_once WT_ROOT . 'includes/functions/functions_edit.php';
 
 		$PEDIGREE_ROOT_ID = $WT_TREE->getPreference('PEDIGREE_ROOT_ID');
 
 		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
 			set_block_setting($block_id, 'details', WT_Filter::postBool('details'));
-			set_block_setting($block_id, 'type',    WT_Filter::post('type', 'pedigree|descendants|hourglass|treenav', 'pedigree'));
-			set_block_setting($block_id, 'pid',     WT_Filter::post('pid', WT_REGEX_XREF));
+			set_block_setting($block_id, 'type', WT_Filter::post('type', 'pedigree|descendants|hourglass|treenav', 'pedigree'));
+			set_block_setting($block_id, 'pid', WT_Filter::post('pid', WT_REGEX_XREF));
 			exit;
 		}
 
@@ -217,7 +217,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 				<input data-autocomplete-type="INDI" type="text" name="pid" id="pid" value="<?php echo $pid; ?>" size="5">
 				<?php
 				echo print_findindi_link('pid');
-				$root=WT_Individual::getInstance($pid);
+				$root = WT_Individual::getInstance($pid);
 				if ($root) {
 					echo ' <span class="list_item">', $root->getFullName(), $root->format_first_major_fact(WT_EVENTS_BIRT, 1), '</span>';
 				}

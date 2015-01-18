@@ -123,7 +123,7 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 			echo ' checked="checked"';
 		}
 		echo ' onclick="jQuery(\'tr.rela\').toggle();"><label for="checkbox_rela_facts">', WT_I18N::translate('Events of close relatives'), '</label>';
-		if (file_exists(WT_Site::getPreference('INDEX_DIRECTORY').'histo.'.WT_LOCALE.'.php')) {
+		if (file_exists(WT_Site::getPreference('INDEX_DIRECTORY') . 'histo.' . WT_LOCALE . '.php')) {
 			echo ' <input id="checkbox_histo" type="checkbox"';
 			if ($EXPAND_HISTO_EVENTS) {
 				echo ' checked="checked"';
@@ -151,7 +151,7 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 		}
 
 
-		return '<div id="'.$this->getName().'_content">'.ob_get_clean().'</div>';
+		return '<div id="' . $this->getName() . '_content">' . ob_get_clean() . '</div>';
 	}
 
 	/** {@inheritdoc} */
@@ -191,10 +191,10 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 			foreach ($spouse->getFacts(WT_EVENTS_DEAT) as $fact) {
 
 				$fact_date = $fact->getDate();
-				if ($fact_date->isOK() && WT_Date::Compare($birt_date, $fact_date)<=0 && WT_Date::Compare($fact_date, $deat_date)<=0) {
+				if ($fact_date->isOK() && WT_Date::Compare($birt_date, $fact_date) <= 0 && WT_Date::Compare($fact_date, $deat_date) <= 0) {
 					// Convert the event to a close relatives event.
 					$rela_fact = clone($fact);
-					$rela_fact->setTag('_'.$fact->getTag().'_SPOU');
+					$rela_fact->setTag('_' . $fact->getTag() . '_SPOU');
 					$facts[] = $rela_fact;
 				}
 			}
@@ -252,22 +252,22 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 
 		// For each child in the family
 		foreach ($family->getChildren() as $child) {
-			if ($child->getXref()==$person->getXref()) {
+			if ($child->getXref() == $person->getXref()) {
 				// We are not our own sibling!
 				continue;
 			}
 			// add child’s birth
-			if (strpos($SHOW_RELATIVES_EVENTS, '_BIRT'.str_replace('_HSIB', '_SIBL', $option))!==false) {
+			if (strpos($SHOW_RELATIVES_EVENTS, '_BIRT' . str_replace('_HSIB', '_SIBL', $option)) !== false) {
 				foreach ($child->getFacts(WT_EVENTS_BIRT) as $fact) {
-					$sgdate=$fact->getDate();
+					$sgdate = $fact->getDate();
 					// Always show _BIRT_CHIL, even if the dates are not known
-					if ($option=='_CHIL' || $sgdate->isOK() && WT_Date::Compare($birt_date, $sgdate)<=0 && WT_Date::Compare($sgdate, $deat_date)<=0) {
-						if ($option=='_GCHI' && $relation=='dau') {
+					if ($option == '_CHIL' || $sgdate->isOK() && WT_Date::Compare($birt_date, $sgdate) <= 0 && WT_Date::Compare($sgdate, $deat_date) <= 0) {
+						if ($option == '_GCHI' && $relation == 'dau') {
 							// Convert the event to a close relatives event.
 							$rela_fact = clone($fact);
 							$rela_fact->setTag('_' . $fact->getTag() . '_GCH1');
 							$facts[] = $rela_fact;
-						} elseif ($option=='_GCHI' && $relation=='son') {
+						} elseif ($option == '_GCHI' && $relation == 'son') {
 							// Convert the event to a close relatives event.
 							$rela_fact = clone($fact);
 							$rela_fact->setTag('_' . $fact->getTag() . '_GCH2');
@@ -282,16 +282,16 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 				}
 			}
 			// add child’s death
-			if (strpos($SHOW_RELATIVES_EVENTS, '_DEAT'.str_replace('_HSIB', '_SIBL', $option))!==false) {
+			if (strpos($SHOW_RELATIVES_EVENTS, '_DEAT' . str_replace('_HSIB', '_SIBL', $option)) !== false) {
 				foreach ($child->getFacts(WT_EVENTS_DEAT) as $fact) {
-					$sgdate=$fact->getDate();
-					if ($sgdate->isOK() && WT_Date::Compare($birt_date, $sgdate)<=0 && WT_Date::Compare($sgdate, $deat_date)<=0) {
-						if ($option=='_GCHI' && $relation=='dau') {
+					$sgdate = $fact->getDate();
+					if ($sgdate->isOK() && WT_Date::Compare($birt_date, $sgdate) <= 0 && WT_Date::Compare($sgdate, $deat_date) <= 0) {
+						if ($option == '_GCHI' && $relation == 'dau') {
 							// Convert the event to a close relatives event.
 							$rela_fact = clone($fact);
 							$rela_fact->setTag('_' . $fact->getTag() . '_GCH1');
 							$facts[] = $rela_fact;
-						} elseif ($option=='_GCHI' && $relation=='son') {
+						} elseif ($option == '_GCHI' && $relation == 'son') {
 							// Convert the event to a close relatives event.
 							$rela_fact = clone($fact);
 							$rela_fact->setTag('_' . $fact->getTag() . '_GCH2');
@@ -306,17 +306,17 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 				}
 			}
 			// add child’s marriage
-			if (strstr($SHOW_RELATIVES_EVENTS, '_MARR'.str_replace('_HSIB', '_SIBL', $option))) {
+			if (strstr($SHOW_RELATIVES_EVENTS, '_MARR' . str_replace('_HSIB', '_SIBL', $option))) {
 				foreach ($child->getSpouseFamilies() as $sfamily) {
 					foreach ($sfamily->getFacts(WT_EVENTS_MARR) as $fact) {
-						$sgdate=$fact->getDate();
-						if ($sgdate->isOK() && WT_Date::Compare($birt_date, $sgdate)<=0 && WT_Date::Compare($sgdate, $deat_date)<=0) {
-							if ($option=='_GCHI' && $relation=='dau') {
+						$sgdate = $fact->getDate();
+						if ($sgdate->isOK() && WT_Date::Compare($birt_date, $sgdate) <= 0 && WT_Date::Compare($sgdate, $deat_date) <= 0) {
+							if ($option == '_GCHI' && $relation == 'dau') {
 								// Convert the event to a close relatives event.
 								$rela_fact = clone($fact);
 								$rela_fact->setTag('_' . $fact->getTag() . '_GCH1');
 								$facts[] = $rela_fact;
-							} elseif ($option=='_GCHI' && $relation=='son') {
+							} elseif ($option == '_GCHI' && $relation == 'son') {
 								// Convert the event to a close relatives event.
 								$rela_fact = clone($fact);
 								$rela_fact->setTag('_' . $fact->getTag() . '_GCH2');
@@ -369,7 +369,7 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 						}
 					}
 					// Add grandparents
-					foreach (self::parentFacts($spouse, $spouse->getSex()=='F' ? 3 : 2) as $fact) {
+					foreach (self::parentFacts($spouse, $spouse->getSex() == 'F' ? 3 : 2) as $fact) {
 						$facts[] = $fact;
 					}
 				}
@@ -379,21 +379,21 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 				// add father/mother marriages
 				foreach ($person->getChildFamilies() as $sfamily) {
 					foreach ($sfamily->getFacts(WT_EVENTS_MARR) as $fact) {
-						if ($fact->getDate()->isOK() && WT_Date::Compare($birt_date, $fact->getDate())<=0 && WT_Date::Compare($fact->getDate(), $deat_date)<=0) {
+						if ($fact->getDate()->isOK() && WT_Date::Compare($birt_date, $fact->getDate()) <= 0 && WT_Date::Compare($fact->getDate(), $deat_date) <= 0) {
 							// marriage of parents (to each other)
 							$rela_fact = clone($fact);
-							$rela_fact->setTag('_'.$fact->getTag().'_FAMC');
+							$rela_fact->setTag('_' . $fact->getTag() . '_FAMC');
 							$facts[] = $rela_fact;
 						}
 					}
 				}
 				foreach ($person->getChildStepFamilies() as $sfamily) {
 					foreach ($sfamily->getFacts(WT_EVENTS_MARR) as $fact) {
-						if ($fact->getDate()->isOK() && WT_Date::Compare($birt_date, $fact->getDate())<=0 && WT_Date::Compare($fact->getDate(), $deat_date)<=0) {
+						if ($fact->getDate()->isOK() && WT_Date::Compare($birt_date, $fact->getDate()) <= 0 && WT_Date::Compare($fact->getDate(), $deat_date) <= 0) {
 							// marriage of a parent (to another spouse)
 							// Convert the event to a close relatives event
 							$rela_fact = clone($fact);
-							$rela_fact->setTag('_'.$fact->getTag().'_PARE');
+							$rela_fact->setTag('_' . $fact->getTag() . '_PARE');
 							$facts[] = $rela_fact;
 						}
 					}
@@ -403,26 +403,26 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 
 		foreach ($person->getChildFamilies() as $family) {
 			foreach ($family->getSpouses() as $parent) {
-				if (strstr($SHOW_RELATIVES_EVENTS, '_DEAT'.($sosa==1 ? '_PARE' : '_GPAR'))) {
+				if (strstr($SHOW_RELATIVES_EVENTS, '_DEAT' . ($sosa == 1 ? '_PARE' : '_GPAR'))) {
 					foreach ($parent->getFacts(WT_EVENTS_DEAT) as $fact) {
-						if ($fact->getDate()->isOK() && WT_Date::Compare($birt_date, $fact->getDate())<=0 && WT_Date::Compare($fact->getDate(), $deat_date)<=0) {
+						if ($fact->getDate()->isOK() && WT_Date::Compare($birt_date, $fact->getDate()) <= 0 && WT_Date::Compare($fact->getDate(), $deat_date) <= 0) {
 							switch ($sosa) {
 							case 1:
 								// Convert the event to a close relatives event.
 								$rela_fact = clone($fact);
-								$rela_fact->setTag('_'.$fact->getTag().'_PARE');
+								$rela_fact->setTag('_' . $fact->getTag() . '_PARE');
 								$facts[] = $rela_fact;
 								break;
 							case 2:
 								// Convert the event to a close relatives event
 								$rela_fact = clone($fact);
-								$rela_fact->setTag('_'.$fact->getTag().'_GPA1');
+								$rela_fact->setTag('_' . $fact->getTag() . '_GPA1');
 								$facts[] = $rela_fact;
 								break;
 							case 3:
 								// Convert the event to a close relatives event
 								$rela_fact = clone($fact);
-								$rela_fact->setTag('_'.$fact->getTag().'_GPA2');
+								$rela_fact->setTag('_' . $fact->getTag() . '_GPA2');
 								$facts[] = $rela_fact;
 								break;
 							}
@@ -461,7 +461,7 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 
 					$fact = new WT_Fact($hist, $person, 'histo');
 					$sdate = $fact->getDate();
-					if ($sdate->isOK() && WT_Date::Compare($birt_date, $sdate)<=0 && WT_Date::Compare($sdate, $deat_date)<=0) {
+					if ($sdate->isOK() && WT_Date::Compare($birt_date, $sdate) <= 0 && WT_Date::Compare($sdate, $deat_date) <= 0) {
 						$facts[] = $fact;
 					}
 				}
@@ -481,7 +481,7 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 	private static function associateFacts(WT_Individual $person) {
 		$facts = array();
 
-		$associates=array_merge(
+		$associates = array_merge(
 			$person->linkedIndividuals('ASSO'),
 			$person->linkedIndividuals('_ASSO'),
 			$person->linkedFamilies('ASSO'),
@@ -495,21 +495,21 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 				}
 				if ($arec && trim($arec, '@') === $person->getXref()) {
 					// Extract the important details from the fact
-					$factrec='1 '.$fact->getTag();
+					$factrec = '1 ' . $fact->getTag();
 					if (preg_match('/\n2 DATE .*/', $fact->getGedcom(), $match)) {
-						$factrec.=$match[0];
+						$factrec .= $match[0];
 					}
 					if (preg_match('/\n2 PLAC .*/', $fact->getGedcom(), $match)) {
-						$factrec.=$match[0];
+						$factrec .= $match[0];
 					}
 					if ($associate instanceof WT_Family) {
 						foreach ($associate->getSpouses() as $spouse) {
-							$factrec.="\n2 _ASSO @".$spouse->getXref().'@';
+							$factrec .= "\n2 _ASSO @" . $spouse->getXref() . '@';
 						}
 					} else {
-						$factrec.="\n2 _ASSO @".$associate->getXref().'@';
+						$factrec .= "\n2 _ASSO @" . $associate->getXref() . '@';
 						// CHR/BAPM events are commonly used.  Generate the reverse relationship
-						if (preg_match('/^(?:BAPM|CHR)$/', $fact->getTag()) && preg_match('/2 _?ASSO @('.$person->getXref().')@\n3 RELA god(?:parent|mother|father)/', $fact->getGedcom())) {
+						if (preg_match('/^(?:BAPM|CHR)$/', $fact->getTag()) && preg_match('/2 _?ASSO @(' . $person->getXref() . ')@\n3 RELA god(?:parent|mother|father)/', $fact->getGedcom())) {
 							switch ($associate->getSex()) {
 							case 'M':
 								$factrec .= "\n3 RELA godson";
