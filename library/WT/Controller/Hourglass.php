@@ -94,7 +94,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 			$bheight = Theme::theme()->parameter('compact-chart-box-y');
 		}
 
-		$this->bhalfheight = (int)($bheight / 2);
+		$this->bhalfheight = (int) ($bheight / 2);
 
 		// Validate parameters
 		$this->hourPerson = WT_Individual::getInstance($this->pid);
@@ -127,7 +127,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 			return;
 		}
 
-		$genoffset = $this->generations;  // handle pedigree n generations lines
+		$genoffset = $this->generations; // handle pedigree n generations lines
 
 		//
 		//Prints empty table columns for children w/o parents up to the max generation
@@ -390,7 +390,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 						}
 
 						// filter out root person from children array so only siblings remain
-						$siblings = array_filter($family->getChildren(), function (WT_Individual $item) use ($pid) {
+						$siblings = array_filter($family->getChildren(), function(WT_Individual $item) use ($pid) {
 							return $item->getXref() != $pid;
 						});
 						$num = count($siblings);

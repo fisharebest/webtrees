@@ -152,7 +152,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 					if ($ct > 1) {
 						if ($i == 0) {
 							//-- adjust for the first column on left
-							$h = round(((($bheight) * $kids) + 8) / 2);  // Assumes border = 1 and padding = 3
+							$h = round(((($bheight) * $kids) + 8) / 2); // Assumes border = 1 and padding = 3
 							//-- adjust for other vertical columns
 							if ($kids > 1) {
 								$h = ($kids - 1) * 4 + $h;
@@ -231,7 +231,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 			return;
 		}
 
-		$genoffset = $this->generations;  // handle pedigree n generations lines
+		$genoffset = $this->generations; // handle pedigree n generations lines
 		//-- calculate how tall the lines should be
 		$lh = ($bhalfheight + 4) * pow(2, ($genoffset - $count - 1));
 		//

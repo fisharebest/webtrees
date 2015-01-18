@@ -36,11 +36,11 @@ class WT_Controller_Chart extends WT_Controller_Page {
 		$this->root = WT_Individual::getInstance($rootid);
 		if (!$this->root) {
 			// Missing root individual?  Show the chart for someone.
-			$this->root   = $this->getSignificantIndividual();
+			$this->root = $this->getSignificantIndividual();
 		}
 
 		if (!$this->root || !$this->root->canShowName()) {
-			header($_SERVER['SERVER_PROTOCOL'].' 403 Forbidden');
+			header($_SERVER['SERVER_PROTOCOL'] . ' 403 Forbidden');
 			$this->error_message = WT_I18N::translate('This individual does not exist or you do not have permission to view it.');
 		}
 	}

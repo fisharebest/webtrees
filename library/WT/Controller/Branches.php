@@ -272,7 +272,7 @@ class WT_Controller_Branches extends WT_Controller_Page {
 	 * @return string
 	 */
 	private static function sosaGeneration($sosa) {
-		$generation = (int)log($sosa, 2) + 1;
+		$generation = (int) log($sosa, 2) + 1;
 
 		return '<sup title="' . WT_I18N::translate('Generation') . '">' . $generation . '</sup>';
 	}

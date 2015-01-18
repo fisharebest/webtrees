@@ -43,8 +43,8 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 	var $pbwidth;
 	var $pbheight;
 	// d'Aboville numbering system [ http://www.saintclair.org/numbers/numdob.html ]
-	var $dabo_num=array();
-	var $dabo_sex=array();
+	var $dabo_num = array();
+	var $dabo_sex = array();
 	var $name;
 	var $cellwidth;
 	var $show_cousins;
@@ -58,21 +58,21 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 		parent::__construct();
 
 		// Extract parameters from form
-		$this->show_full   = WT_Filter::getInteger('show_full',   0, 1, $PEDIGREE_FULL_DETAILS);
+		$this->show_full   = WT_Filter::getInteger('show_full', 0, 1, $PEDIGREE_FULL_DETAILS);
 		$this->chart_style = WT_Filter::getInteger('chart_style', 0, 3, 0);
 		$this->generations = WT_Filter::getInteger('generations', 2, $MAX_DESCENDANCY_GENERATIONS, $DEFAULT_PEDIGREE_GENERATIONS);
-		$this->box_width   = WT_Filter::getInteger('box_width',   50, 300, 100);
+		$this->box_width   = WT_Filter::getInteger('box_width', 50, 300, 100);
 
 		// This is passed as a global.  A parameter would be better...
-		$show_full=$this->show_full;
+		$show_full = $this->show_full;
 
 		if (!isset($this->personcount)) {
 			$this->personcount = 1;
 		}
 
 		// -- size of the detailed boxes based upon optional width parameter
-		$Dbwidth  = ($this->box_width*$bwidth)/100;
-		$Dbheight = ($this->box_width*$bheight)/100;
+		$Dbwidth  = ($this->box_width * $bwidth) / 100;
+		$Dbheight = ($this->box_width * $bheight) / 100;
 		$bwidth   = $Dbwidth;
 		$bheight  = $Dbheight;
 
@@ -82,14 +82,14 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 			$bheight = Theme::theme()->parameter('compact-chart-box-y');
 		}
 
-		$pbwidth  = $bwidth+12;
-		$pbheight = $bheight+14;
+		$pbwidth  = $bwidth + 12;
+		$pbheight = $bheight + 14;
 
 		// Validate form variables
-		if (strlen($this->name)<30) {
-			$this->cellwidth=420;
+		if (strlen($this->name) < 30) {
+			$this->cellwidth = 420;
 		} else {
-			$this->cellwidth=(strlen($this->name)*14);
+			$this->cellwidth = (strlen($this->name) * 14);
 		}
 
 		if ($this->root && $this->root->canShowName()) {
@@ -112,16 +112,16 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 	 *
 	 * @return void
 	 */
-	public function printChildFamily(WT_Individual $person, $depth, $label='1.', $gpid='') {
+	public function printChildFamily(WT_Individual $person, $depth, $label = '1.', $gpid = '') {
 
-		if ($depth<2) {
+		if ($depth < 2) {
 			return;
 		}
 		foreach ($person->getSpouseFamilies() as $family) {
 			print_sosa_family($family->getXref(), '', -1, $label, $person->getXref(), $gpid);
-			$i=1;
+			$i = 1;
 			foreach ($family->getChildren() as $child) {
-				$this->printChildFamily($child, $depth-1, $label.($i++).'.', $person->getXref());
+				$this->printChildFamily($child, $depth - 1, $label . ($i++) . '.', $person->getXref());
 			}
 		}
 	}
@@ -137,8 +137,8 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 	public function printChildDescendancy(WT_Individual $person, $depth) {
 		echo "<li>";
 		echo "<table><tr><td>";
-		if ($depth==$this->generations) {
-			echo "<img src=\"".Theme::theme()->parameter('image-spacer')."\" height=\"3\" width=\"", Theme::theme()->parameter('chart-descendancy-indent'), "\" alt=\"\"></td><td>";
+		if ($depth == $this->generations) {
+			echo "<img src=\"" . Theme::theme()->parameter('image-spacer') . "\" height=\"3\" width=\"", Theme::theme()->parameter('chart-descendancy-indent'), "\" alt=\"\"></td><td>";
 		} else {
 			echo "<img src=\"" . Theme::theme()->parameter('image-spacer') . "\" height=\"3\" width=\"3\" alt=\"\">";
 			echo "<img src=\"" . Theme::theme()->parameter('image-hline') . "\" height=\"3\" width=\"", Theme::theme()->parameter('chart-descendancy-indent') - 3, "\" alt=\"\"></td><td>";
@@ -151,24 +151,24 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 		echo '<td>';
 		foreach ($person->getChildFamilies() as $cfamily) {
 			foreach ($cfamily->getSpouses() as $parent) {
-				print_url_arrow('?rootid='.$parent->getXref().'&amp;generations='.$this->generations.'&amp;chart_style='.$this->chart_style.'&amp;show_full='.$this->show_full.'&amp;box_width='.$this->box_width.'&amp;ged='.WT_GEDURL, WT_I18N::translate('Start at parents'), 2);
+				print_url_arrow('?rootid=' . $parent->getXref() . '&amp;generations=' . $this->generations . '&amp;chart_style=' . $this->chart_style . '&amp;show_full=' . $this->show_full . '&amp;box_width=' . $this->box_width . '&amp;ged=' . WT_GEDURL, WT_I18N::translate('Start at parents'), 2);
 				// only show the arrow for one of the parents
 				break;
 			}
 		}
 
 		// d'Aboville child number
-		$level =$this->generations-$depth;
+		$level = $this->generations - $depth;
 		if ($this->show_full) {
 			echo '<br><br>&nbsp;';
 		}
 		echo '<span dir="ltr">'; //needed so that RTL languages will display this properly
 		if (!isset($this->dabo_num[$level])) {
-			$this->dabo_num[$level]=0;
+			$this->dabo_num[$level] = 0;
 		}
 		$this->dabo_num[$level]++;
-		$this->dabo_num[$level+1]=0;
-		$this->dabo_sex[$level]=$person->getSex();
+		$this->dabo_num[$level + 1] = 0;
+		$this->dabo_sex[$level] = $person->getSex();
 		for ($i = 0; $i <= $level; $i++) {
 			$isf = $this->dabo_sex[$i];
 			if ($isf === 'M') {
@@ -177,7 +177,7 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 			if ($isf === 'U') {
 				$isf = 'NN';
 			}
-			echo "<span class=\"person_box".$isf."\">&nbsp;".$this->dabo_num[$i]."&nbsp;</span>";
+			echo "<span class=\"person_box" . $isf . "\">&nbsp;" . $this->dabo_num[$i] . "&nbsp;</span>";
 			if ($i < $level) {
 				echo '.';
 			}
@@ -208,7 +208,7 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 		echo '<li>';
 		echo '<img src="', Theme::theme()->parameter('image-spacer'), '" height="2" width="', Theme::theme()->parameter('chart-descendancy-indent') + 4, '" alt="">';
 		echo '<span class="details1">';
-		echo "<a href=\"#\" onclick=\"expand_layer('".$uid."'); return false;\" class=\"top\"><i id=\"".$uid."_img\" class=\"icon-minus\" title=\"".WT_I18N::translate('View family')."\"></i></a>";
+		echo "<a href=\"#\" onclick=\"expand_layer('" . $uid . "'); return false;\" class=\"top\"><i id=\"" . $uid . "_img\" class=\"icon-minus\" title=\"" . WT_I18N::translate('View family') . "\"></i></a>";
 		if ($family->canShow()) {
 			foreach ($family->getFacts(WT_EVENTS_MARR) as $fact) {
 				echo ' <a href="', $family->getHtmlUrl(), '" class="details1">', $fact->summary(), '</a>';
@@ -217,8 +217,8 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 		echo '</span>';
 
 		// print spouse
-		$spouse=$family->getSpouse($person);
-		echo '<ul id="'.$uid.'" class="generation">';
+		$spouse = $family->getSpouse($person);
+		echo '<ul id="' . $uid . '" class="generation">';
 		echo '<li>';
 		echo '<table><tr><td>';
 		print_pedigree_person($spouse);
@@ -230,7 +230,7 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 		if ($spouse) {
 			foreach ($spouse->getChildFamilies() as $cfamily) {
 				foreach ($cfamily->getSpouses() as $parent) {
-					print_url_arrow('?rootid='.$parent->getXref().'&amp;generations='.$this->generations.'&amp;chart_style='.$this->chart_style.'&amp;show_full='.$this->show_full.'&amp;box_width='.$this->box_width.'&amp;ged='.WT_GEDURL, WT_I18N::translate('Start at parents'), 2);
+					print_url_arrow('?rootid=' . $parent->getXref() . '&amp;generations=' . $this->generations . '&amp;chart_style=' . $this->chart_style . '&amp;show_full=' . $this->show_full . '&amp;box_width=' . $this->box_width . '&amp;ged=' . WT_GEDURL, WT_I18N::translate('Start at parents'), 2);
 					// only show the arrow for one of the parents
 					break;
 				}
@@ -245,12 +245,12 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 		$children = $family->getChildren();
 		echo '<tr><td colspan="3" class="details1" >&nbsp;&nbsp;';
 		if ($children) {
-			echo WT_Gedcom_Tag::getLabel('NCHI').': '.count($children);
+			echo WT_Gedcom_Tag::getLabel('NCHI') . ': ' . count($children);
 		} else {
 			// Distinguish between no children (NCHI 0) and no recorded
 			// children (no CHIL records)
 			if (strpos($family->getGedcom(), '\n1 NCHI 0')) {
-				echo WT_Gedcom_Tag::getLabel('NCHI').': '.count($children);
+				echo WT_Gedcom_Tag::getLabel('NCHI') . ': ' . count($children);
 			} else {
 				echo WT_I18N::translate('No children');
 			}
@@ -259,7 +259,7 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 		echo '</li>';
 		if ($depth > 1) {
 			foreach ($children as $child) {
-				$this->printChildDescendancy($child, $depth-1);
+				$this->printChildDescendancy($child, $depth - 1);
 			}
 		}
 		echo '</ul>';
@@ -279,14 +279,14 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 		if ($n < 1) {
 			return $array;
 		}
-		$array[$person->getXref()]=$person;
+		$array[$person->getXref()] = $person;
 		foreach ($person->getSpouseFamilies() as $family) {
 			$spouse = $family->getSpouse($person);
 			if ($spouse) {
 				$array[$spouse->getXref()] = $spouse;
 			}
 			foreach ($family->getChildren() as $child) {
-				$array = $this->individualDescendancy($child, $n-1, $array);
+				$array = $this->individualDescendancy($child, $n - 1, $array);
 			}
 		}
 		return $array;
@@ -306,9 +306,9 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 			return $array;
 		}
 		foreach ($person->getSpouseFamilies() as $family) {
-			$array[$family->getXref()]=$family;
+			$array[$family->getXref()] = $family;
 			foreach ($family->getChildren() as $child) {
-				$array = $this->familyDescendancy($child, $n-1, $array);
+				$array = $this->familyDescendancy($child, $n - 1, $array);
 			}
 		}
 		return $array;

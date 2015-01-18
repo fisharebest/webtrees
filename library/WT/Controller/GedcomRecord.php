@@ -28,7 +28,7 @@ class WT_Controller_GedcomRecord extends WT_Controller_Page {
 	public function __construct() {
 		// Automatically fix broken links
 		if ($this->record && $this->record->canEdit()) {
-			$broken_links=0;
+			$broken_links = 0;
 			foreach ($this->record->getFacts('HUSB|WIFE|CHIL|FAMS|FAMC|REPO') as $fact) {
 				if (!$fact->isPendingDeletion() && $fact->getTarget() === null) {
 					$this->record->deleteFact($fact->getFactId(), false);

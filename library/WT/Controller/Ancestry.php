@@ -46,22 +46,22 @@ class WT_Controller_Ancestry extends WT_Controller_Chart {
 		parent::__construct();
 
 		// Extract form parameters
-		$this->show_full      = WT_Filter::getInteger('show_full',            0, 1, $PEDIGREE_FULL_DETAILS);
-		$this->show_cousins   = WT_Filter::getInteger('show_cousins',         0, 1);
-		$this->chart_style    = WT_Filter::getInteger('chart_style',          0, 3);
-		$box_width            = WT_Filter::getInteger('box_width',            50, 300, 100);
+		$this->show_full      = WT_Filter::getInteger('show_full', 0, 1, $PEDIGREE_FULL_DETAILS);
+		$this->show_cousins   = WT_Filter::getInteger('show_cousins', 0, 1);
+		$this->chart_style    = WT_Filter::getInteger('chart_style', 0, 3);
+		$box_width            = WT_Filter::getInteger('box_width', 50, 300, 100);
 		$PEDIGREE_GENERATIONS = WT_Filter::getInteger('PEDIGREE_GENERATIONS', 2, $MAX_PEDIGREE_GENERATIONS, $DEFAULT_PEDIGREE_GENERATIONS);
 
 		// This is passed as a global.  A parameter would be better...
-		$show_full=$this->show_full;
+		$show_full = $this->show_full;
 
 		$OLD_PGENS = $PEDIGREE_GENERATIONS;
 
 		// -- size of the detailed boxes based upon optional width parameter
-		$Dbwidth=($box_width*$bwidth)/100;
-		$Dbheight=($box_width*$bheight)/100;
-		$bwidth=$Dbwidth;
-		$bheight=$Dbheight;
+		$Dbwidth = ($box_width * $bwidth) / 100;
+		$Dbheight = ($box_width * $bheight) / 100;
+		$bwidth = $Dbwidth;
+		$bheight = $Dbheight;
 
 		// -- adjust size of the compact box
 		if (!$this->show_full) {
@@ -69,8 +69,8 @@ class WT_Controller_Ancestry extends WT_Controller_Chart {
 			$bheight = Theme::theme()->parameter('compact-chart-box-y');
 		}
 
-		$pbwidth = $bwidth+12;
-		$pbheight = $bheight+14;
+		$pbwidth = $bwidth + 12;
+		$pbheight = $bheight + 14;
 
 		if ($this->root && $this->root->canShowName()) {
 			$this->setPageTitle(
@@ -81,10 +81,10 @@ class WT_Controller_Ancestry extends WT_Controller_Chart {
 			$this->setPageTitle(WT_I18N::translate('Ancestors'));
 		}
 
-		if (strlen($this->name)<30) {
-			$this->cellwidth="420";
+		if (strlen($this->name) < 30) {
+			$this->cellwidth = "420";
 		} else {
-			$this->cellwidth=(strlen($this->name)*14);
+			$this->cellwidth = (strlen($this->name) * 14);
 		}
 	}
 
@@ -99,16 +99,16 @@ class WT_Controller_Ancestry extends WT_Controller_Chart {
 		global $OLD_PGENS, $pidarr, $box_width;
 
 		if ($person) {
-			$pid=$person->getXref();
-			$label=WT_I18N::translate('Ancestors of %s', $person->getFullName());
+			$pid = $person->getXref();
+			$label = WT_I18N::translate('Ancestors of %s', $person->getFullName());
 		} else {
-			$pid='';
-			$label='';
+			$pid = '';
+			$label = '';
 		}
 		// child
 		echo '<li>';
 		echo '<table><tr><td>';
-		if ($sosa==1) {
+		if ($sosa == 1) {
 			echo '<img src="', Theme::theme()->parameter('image-spacer'), '" height="3" width="', Theme::theme()->parameter('chart-descendancy-indent'), '"></td><td>';
 		} else {
 			echo '<img src="', Theme::theme()->parameter('image-spacer'), '" height="3" width="2" alt="">';
@@ -117,20 +117,20 @@ class WT_Controller_Ancestry extends WT_Controller_Chart {
 		print_pedigree_person($person);
 		echo '</td>';
 		echo '<td>';
-		if ($sosa>1) {
-			print_url_arrow('?rootid='.$pid.'&amp;PEDIGREE_GENERATIONS='.$OLD_PGENS.'&amp;show_full='.$this->show_full.'&amp;box_width='.$box_width.'&amp;chart_style='.$this->chart_style.'&amp;ged='.WT_GEDURL, $label, 3);
+		if ($sosa > 1) {
+			print_url_arrow('?rootid=' . $pid . '&amp;PEDIGREE_GENERATIONS=' . $OLD_PGENS . '&amp;show_full=' . $this->show_full . '&amp;box_width=' . $box_width . '&amp;chart_style=' . $this->chart_style . '&amp;ged=' . WT_GEDURL, $label, 3);
 		}
 		echo '</td>';
-		echo '<td class="details1">&nbsp;<span dir="ltr" class="person_box'. (($sosa==1)?'NN':(($sosa%2)?'F':'')) . '">&nbsp;', $sosa, '&nbsp;</span>&nbsp;';
+		echo '<td class="details1">&nbsp;<span dir="ltr" class="person_box' . (($sosa == 1) ? 'NN' : (($sosa % 2) ? 'F' : '')) . '">&nbsp;', $sosa, '&nbsp;</span>&nbsp;';
 		echo '</td><td class="details1">';
-		$relation ='';
-		$new=($pid=='' || !isset($pidarr[$pid]));
+		$relation = '';
+		$new = ($pid == '' || !isset($pidarr[$pid]));
 		if (!$new) {
-			$relation = '<br>[=<a href="#sosa'.$pidarr[$pid].'">'.$pidarr[$pid].'</a> - '.get_sosa_name($pidarr[$pid]).']';
+			$relation = '<br>[=<a href="#sosa' . $pidarr[$pid] . '">' . $pidarr[$pid] . '</a> - ' . get_sosa_name($pidarr[$pid]) . ']';
 		} else {
-			$pidarr[$pid]=$sosa;
+			$pidarr[$pid] = $sosa;
 		}
-		echo get_sosa_name($sosa).$relation;
+		echo get_sosa_name($sosa) . $relation;
 		echo '</td>';
 		echo '</tr></table>';
 
@@ -139,14 +139,14 @@ class WT_Controller_Ancestry extends WT_Controller_Chart {
 			return;
 		}
 		// parents
-		$family=$person->getPrimaryChildFamily();
+		$family = $person->getPrimaryChildFamily();
 
-		if ($family && $new && $depth>0) {
+		if ($family && $new && $depth > 0) {
 			// print marriage info
 			echo '<span class="details1">';
 			echo '<img src="', Theme::theme()->parameter('image-spacer'), '" height="2" width="', Theme::theme()->parameter('chart-descendancy-indent'), '" alt=""><a href="#" onclick="return expand_layer(\'sosa_', $sosa, '\');" class="top"><i id="sosa_', $sosa, '_img" class="icon-minus" title="', WT_I18N::translate('View family'), '"></i></a>';
-			echo '&nbsp;<span dir="ltr" class="person_box">&nbsp;', ($sosa*2), '&nbsp;</span>&nbsp;', WT_I18N::translate('and');
-			echo '&nbsp;<span dir="ltr" class="person_boxF">&nbsp;', ($sosa*2+1), '&nbsp;</span>&nbsp;';
+			echo '&nbsp;<span dir="ltr" class="person_box">&nbsp;', ($sosa * 2), '&nbsp;</span>&nbsp;', WT_I18N::translate('and');
+			echo '&nbsp;<span dir="ltr" class="person_boxF">&nbsp;', ($sosa * 2 + 1), '&nbsp;</span>&nbsp;';
 			if ($family->canShow()) {
 				foreach ($family->getFacts(WT_EVENTS_MARR) as $fact) {
 					echo ' <a href="', $family->getHtmlUrl(), '" class="details1">', $fact->summary(), '</a>';
@@ -155,8 +155,8 @@ class WT_Controller_Ancestry extends WT_Controller_Chart {
 			echo '</span>';
 			// display parents recursively - or show empty boxes
 			echo '<ul id="sosa_', $sosa, '" class="generation">';
-			$this->printChildAscendancy($family->getHusband(), $sosa*2, $depth-1);
-			$this->printChildAscendancy($family->getWife(), $sosa*2+1, $depth-1);
+			$this->printChildAscendancy($family->getHusband(), $sosa * 2, $depth - 1);
+			$this->printChildAscendancy($family->getWife(), $sosa * 2 + 1, $depth - 1);
 			echo '</ul>';
 		}
 		echo '</li>';
