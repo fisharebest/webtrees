@@ -25,7 +25,7 @@
 
 $controller = new WT_Controller_Individual;
 
-echo '<link href="'.WT_STATIC_URL.WT_MODULES_DIR.'GEDFact_assistant/css/gf_styles.css" rel="stylesheet" type="text/css" media="screen">';
+echo '<link href="' . WT_STATIC_URL . WT_MODULES_DIR . 'GEDFact_assistant/css/gf_styles.css" rel="stylesheet" type="text/css" media="screen">';
 
 global $tabno, $linkToID, $SEARCH_SPIDER;
 global $SHOW_AGE_DIFF;
@@ -33,8 +33,8 @@ global $GEDCOM;
 global $show_full;
 global $famid, $censyear, $censdate;
 
-$summary=
-	$controller->record->format_first_major_fact(WT_EVENTS_BIRT, 2).
+$summary =
+	$controller->record->format_first_major_fact(WT_EVENTS_BIRT, 2) .
 	$controller->record->format_first_major_fact(WT_EVENTS_DEAT, 2);
 
-require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_MEDIA/media_1_ctrl.php';
+require WT_ROOT . WT_MODULES_DIR . 'GEDFact_assistant/_MEDIA/media_1_ctrl.php';

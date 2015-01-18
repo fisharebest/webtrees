@@ -370,8 +370,11 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 			foreach (preg_split('/ *, */', $match[2]) as $event) {
 				$events[]=WT_Gedcom_Tag::getLabel($event);
 			}
-			if (count($events)==1) echo WT_Gedcom_Tag::getLabelValue('EVEN', $event);
-			else echo WT_Gedcom_Tag::getLabelValue('EVEN', implode(WT_I18N::$list_separator, $events));
+			if (count($events)==1) {
+				echo WT_Gedcom_Tag::getLabelValue('EVEN', $event);
+			} else {
+				echo WT_Gedcom_Tag::getLabelValue('EVEN', implode(WT_I18N::$list_separator, $events));
+			}
 			if (preg_match('/\n3 DATE (.+)/', $fact->getGedcom(), $date_match)) {
 				$date=new WT_Date($date_match[1]);
 				echo WT_Gedcom_Tag::getLabelValue('DATE', $date->display());
@@ -617,7 +620,9 @@ function print_media_links($factrec, $level) {
 							$famid = trim($match[1]);
 							$family = WT_Family::getInstance($famid);
 							if ($family) {
-								if ($spouse) echo " - ";
+								if ($spouse) {
+									echo " - ";
+								}
 								echo '<a href="', $family->getHtmlUrl(), '">', WT_I18N::translate('View family'), '</a>';
 							}
 						}
@@ -668,15 +673,22 @@ function print_main_sources(WT_Fact $fact, $level) {
 		$sid = trim($match[$j][2], '@');
 		$spos1 = strpos($factrec, $match[$j][1], $spos2);
 		$spos2 = strpos($factrec, "\n$level", $spos1);
-		if (!$spos2) $spos2 = strlen($factrec);
+		if (!$spos2) {
+			$spos2 = strlen($factrec);
+		}
 		$srec = substr($factrec, $spos1, $spos2-$spos1);
 		$source=WT_Source::getInstance($sid);
 		// Allow access to "1 SOUR @non_existent_source@", so it can be corrected/deleted
 		if (!$source || $source->canShow()) {
-			if ($level>1) echo '<tr class="row_sour2">';
-			else echo '<tr>';
+			if ($level>1) {
+				echo '<tr class="row_sour2">';
+			} else {
+				echo '<tr>';
+			}
 			echo '<td class="descriptionbox';
-			if ($level>1) echo ' rela';
+			if ($level>1) {
+				echo ' rela';
+			}
 			echo ' ', $styleadd, ' width20">';
 			$factlines = explode("\n", $factrec); // 1 BIRT Y\n2 SOUR ...
 			$factwords = explode(" ", $factlines[0]); // 1 BIRT Y
@@ -694,7 +706,9 @@ function print_main_sources(WT_Fact $fact, $level) {
 			if ($can_edit) {
 				echo "<a onclick=\"return edit_record('$pid', '$fact_id');\" href=\"#\" title=\"", WT_I18N::translate('Edit'), '">';
 					if ($SHOW_FACT_ICONS) {
-						if ($level==1) echo '<i class="icon-source"></i> ';
+						if ($level==1) {
+							echo '<i class="icon-source"></i> ';
+						}
 					}
 					echo WT_Gedcom_Tag::getLabel($factname, $parent), '</a>';
 					echo '<div class="editfacts">';
@@ -749,7 +763,9 @@ function print_main_sources(WT_Fact $fact, $level) {
 				if ($cs>0) {
 					echo '<br><span class="label">', WT_Gedcom_Tag::getLabel('EVEN'), ' </span><span class="field">', $cmatch[1], '</span>';
 					$cs = preg_match("/".($nlevel+1)." ROLE (.*)/", $srec, $cmatch);
-					if ($cs>0) echo '<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="label">', WT_Gedcom_Tag::getLabel('ROLE'), ' </span><span class="field">', $cmatch[1], '</span>';
+					if ($cs>0) {
+						echo '<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="label">', WT_Gedcom_Tag::getLabel('ROLE'), ' </span><span class="field">', $cmatch[1], '</span>';
+					}
 				}
 				echo printSourceStructure(getSourceStructure($srec));
 				echo '<div class="indent">';
@@ -850,7 +866,9 @@ function getSourceStructure($srec) {
 					$i--;
 					break;
 				}
-				if ($nextTag=='CONT') $text .= "\n";
+				if ($nextTag=='CONT') {
+					$text .= "\n";
+				}
 				$text .= rtrim(substr($subrecords[$i], 7));
 			}
 			if ($tag=='TEXT') {
@@ -1085,7 +1103,9 @@ function print_main_media(WT_Fact $fact, $level) {
 				}
 				echo '<em>';
 				foreach ($media->getAllNames() as $name) {
-					if ($name['type']!='TITL') echo '<br>';
+					if ($name['type']!='TITL') {
+						echo '<br>';
+					}
 					echo $name['full'];
 				}
 				echo '</em>';

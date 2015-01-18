@@ -38,15 +38,15 @@ function return_bytes($val) {
 	switch (substr($val, -1)) {
 	case 'g':
 	case 'G':
-		return (int)$val * 1024 * 1024 * 1024;
+		return (int) $val * 1024 * 1024 * 1024;
 	case 'm':
 	case 'M':
-		return (int)$val * 1024 * 1024;
+		return (int) $val * 1024 * 1024;
 	case 'k':
 	case 'K':
-		return (int)$val * 1024;
+		return (int) $val * 1024;
 	default:
-		return (int)$val;
+		return (int) $val;
 	}
 }
 
@@ -66,7 +66,7 @@ function hasMemoryForImage($serverFilename) {
 	}
 
 	// find out how much memory we are already using
-	$memoryUsed=memory_get_usage();
+	$memoryUsed = memory_get_usage();
 
 	$imgsize = @getimagesize($serverFilename);
 	// find out how much memory this image needs for processing, probably only works for jpegs
@@ -79,8 +79,8 @@ function hasMemoryForImage($serverFilename) {
 			return true;
 		} else {
 			// not enough memory to load this file
-			$image_info =  sprintf('%.2fKB, %d × %d %d bits %d channels', filesize($serverFilename)/1024, $imgsize[0], $imgsize[1], $imgsize['bits'], $imgsize['channels']);
-			Log::addMediaLog('Cannot create thumbnail '.$serverFilename.' ('.$image_info.') memory avail: '.$memoryAvailable.' used: '.$memoryUsed.' needed: '.$memoryNeeded.' spare: '.$memorySpare);
+			$image_info = sprintf('%.2fKB, %d × %d %d bits %d channels', filesize($serverFilename) / 1024, $imgsize[0], $imgsize[1], $imgsize['bits'], $imgsize['channels']);
+			Log::addMediaLog('Cannot create thumbnail ' . $serverFilename . ' (' . $image_info . ') memory avail: ' . $memoryAvailable . ' used: ' . $memoryUsed . ' needed: ' . $memoryNeeded . ' spare: ' . $memorySpare);
 			return false;
 		}
 	} else {

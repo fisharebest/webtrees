@@ -47,7 +47,7 @@ class death_y_bu_plugin extends base_plugin {
 	 * @return boolean
 	 */
 	public function doesRecordNeedUpdate($xref, $gedrec) {
-		return !preg_match('/\n1 ('.WT_EVENTS_DEAT.')/', $gedrec) && WT_Individual::getInstance($xref)->isDead();
+		return !preg_match('/\n1 (' . WT_EVENTS_DEAT . ')/', $gedrec) && WT_Individual::getInstance($xref)->isDead();
 	}
 
 	/**
@@ -59,6 +59,6 @@ class death_y_bu_plugin extends base_plugin {
 	 * @return string
 	 */
 	public function updateRecord($xref, $gedrec) {
-		return $gedrec."\n1 DEAT Y";
+		return $gedrec . "\n1 DEAT Y";
 	}
 }

@@ -193,11 +193,11 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Confi
 		)->execute(array($block_id))->fetchOne();
 
 		$swap_block = WT_DB::prepare(
-			"SELECT block_order, block_id".
-			" FROM `##block`".
-			" WHERE block_order=(".
-			"  SELECT MAX(block_order) FROM `##block` WHERE block_order < ? AND module_name=?".
-			" ) AND module_name=?".
+			"SELECT block_order, block_id" .
+			" FROM `##block`" .
+			" WHERE block_order=(" .
+			"  SELECT MAX(block_order) FROM `##block` WHERE block_order < ? AND module_name=?" .
+			" ) AND module_name=?" .
 			" LIMIT 1"
 		)->execute(array($block_order, $this->getName(), $this->getName()))->fetchOneRow();
 		if ($swap_block) {
@@ -221,11 +221,11 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Confi
 		)->execute(array($block_id))->fetchOne();
 
 		$swap_block = WT_DB::prepare(
-			"SELECT block_order, block_id".
-			" FROM `##block`".
-			" WHERE block_order=(".
-			"  SELECT MIN(block_order) FROM `##block` WHERE block_order>? AND module_name=?".
-			" ) AND module_name=?".
+			"SELECT block_order, block_id" .
+			" FROM `##block`" .
+			" WHERE block_order=(" .
+			"  SELECT MIN(block_order) FROM `##block` WHERE block_order>? AND module_name=?" .
+			" ) AND module_name=?" .
 			" LIMIT 1"
 		)->execute(array($block_order, $this->getName(), $this->getName()))->fetchOneRow();
 		if ($swap_block) {
@@ -330,7 +330,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Confi
 		)->execute(array($this->getName()))->fetchOne();
 
 		echo
-			'<p><form method="get" action="', WT_SCRIPT_NAME ,'">',
+			'<p><form method="get" action="', WT_SCRIPT_NAME, '">',
 			WT_I18N::translate('Family tree'), ' ',
 			'<input type="hidden" name="mod", value="', $this->getName(), '">',
 			'<input type="hidden" name="mod_action", value="admin_config">',
