@@ -78,7 +78,7 @@ class WT_Controller_Pedigree extends WT_Controller_Chart {
 		} elseif ($this->talloffset < 0) {
 			$this->talloffset = 0;
 		}
-		$show_full =  $this->show_full;
+		$show_full  = $this->show_full;
 		$talloffset = $this->talloffset;
 
 		if ($this->root && $this->root->canShowName()) {

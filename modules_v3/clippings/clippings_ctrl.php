@@ -99,11 +99,12 @@ class WT_Controller_Clippings {
 			} elseif (empty($this->id)) {
 				$this->action = '';
 			}
-			if (!empty($this->id) && $this->type != 'FAM' && $this->type != 'INDI' && $this->type != 'SOUR')
-			$this->action = 'add1';
+			if (!empty($this->id) && $this->type !== 'FAM' && $this->type !== 'INDI' && $this->type !== 'SOUR') {
+				$this->action = 'add1';
+			}
 		}
 
-		if ($this->action == 'add1') {
+		if ($this->action === 'add1') {
 			$obj = WT_GedcomRecord::getInstance($this->id);
 			$this->addClipping($obj);
 			if ($this->type === 'SOUR') {
@@ -117,28 +118,28 @@ class WT_Controller_Clippings {
 				}
 			}
 			if ($this->type === 'FAM') {
-				if ($others == 'parents') {
+				if ($others === 'parents') {
 					$this->addClipping($obj->getHusband());
 					$this->addClipping($obj->getWife());
-				} elseif ($others == "members") {
+				} elseif ($others === "members") {
 					$this->addFamilyMembers(WT_Family::getInstance($this->id));
-				} elseif ($others == "descendants") {
+				} elseif ($others === "descendants") {
 					$this->addFamilyDescendancy(WT_Family::getInstance($this->id));
 				}
 			} elseif ($this->type === 'INDI') {
-				if ($others == 'parents') {
+				if ($others === 'parents') {
 					foreach (WT_Individual::getInstance($this->id)->getChildFamilies() as $family) {
 						$this->addFamilyMembers($family);
 					}
-				} elseif ($others == 'ancestors') {
+				} elseif ($others === 'ancestors') {
 					$this->addAncestorsToCart(WT_Individual::getInstance($this->id), $this->level1);
-				} elseif ($others == 'ancestorsfamilies') {
+				} elseif ($others === 'ancestorsfamilies') {
 					$this->addAncestorsToCartFamilies(WT_Individual::getInstance($this->id), $this->level2);
-				} elseif ($others == 'members') {
+				} elseif ($others === 'members') {
 					foreach (WT_Individual::getInstance($this->id)->getSpouseFamilies() as $family) {
 						$this->addFamilyMembers($family);
 					}
-				} elseif ($others == 'descendants') {
+				} elseif ($others === 'descendants') {
 					foreach (WT_Individual::getInstance($this->id)->getSpouseFamilies() as $family) {
 						$this->addClipping($family);
 						$this->addFamilyDescendancy($family, $this->level3);
@@ -146,11 +147,11 @@ class WT_Controller_Clippings {
 				}
 				uksort($WT_SESSION->cart[WT_GED_ID], array('WT_Controller_Clippings', 'compareClippings'));
 			}
-		} elseif ($this->action == 'remove') {
+		} elseif ($this->action === 'remove') {
 			unset ($WT_SESSION->cart[WT_GED_ID][$this->id]);
-		} elseif ($this->action == 'empty') {
+		} elseif ($this->action === 'empty') {
 			$WT_SESSION->cart[WT_GED_ID] = array();
-		} elseif ($this->action == 'download') {
+		} elseif ($this->action === 'download') {
 			$media      = array();
 			$mediacount = 0;
 			$filetext   = gedcom_header(WT_GEDCOM);
@@ -169,7 +170,7 @@ class WT_Controller_Clippings {
 			if ($subm) {
 				$filetext .= $subm . "\n";
 			}
-			if ($convert == "yes") {
+			if ($convert === "yes") {
 				$filetext = str_replace("UTF-8", "ANSI", $filetext);
 				$filetext = utf8_decode($filetext);
 			}
@@ -251,7 +252,7 @@ class WT_Controller_Clippings {
 				}
 			}
 
-			if ($this->IncludeMedia == "yes") {
+			if ($this->IncludeMedia === "yes") {
 				$this->media_list = $media;
 			}
 			$filetext .= "0 @WEBTREES@ SOUR\n1 TITL " . WT_SERVER_NAME . WT_SCRIPT_PATH . "\n";
@@ -306,7 +307,7 @@ class WT_Controller_Clippings {
 	function downloadClipping() {
 		Zend_Session::writeClose();
 
-		if ($this->IncludeMedia == 'yes' || $this->Zip == 'yes') {
+		if ($this->IncludeMedia === 'yes' || $this->Zip === 'yes') {
 			header('Content-Type: application/zip');
 			header('Content-Disposition: attachment; filename="clipping.zip"');
 			$this->zipCart();

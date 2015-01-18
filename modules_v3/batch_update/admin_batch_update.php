@@ -24,17 +24,17 @@ require_once WT_ROOT . 'includes/functions/functions_edit.php';
  * Class batch_update
  */
 class batch_update {
-	var $plugin   = null; // Form parameter: chosen plugin
-	var $xref     = null; // Form parameter: record to update
-	var $action   = null; // Form parameter: how to update record
-	var $data     = null; // Form parameter: additional details for $action
-	var $plugins  = null; // Array of available plugins
-	var $PLUGIN   = null; // An instance of a plugin object
+	var $plugin    = null; // Form parameter: chosen plugin
+	var $xref      = null; // Form parameter: record to update
+	var $action    = null; // Form parameter: how to update record
+	var $data      = null; // Form parameter: additional details for $action
+	var $plugins   = null; // Array of available plugins
+	var $PLUGIN    = null; // An instance of a plugin object
 	var $all_xrefs = null; // An array of all xrefs that might need to be updated
 	var $prev_xref = null; // The previous xref to process
 	var $curr_xref = null; // The xref to process
 	var $next_xref = null; // The next xref to process
-	var $record   = null; // A GedcomRecord object corresponding to $curr_xref
+	var $record    = null; // A GedcomRecord object corresponding to $curr_xref
 
 	/**
 	 * What is the name of this plugin?

@@ -1797,8 +1797,9 @@ function insert_missing_subtags($level1tag, $add_date = false) {
 				}
 				break;
 			case 'DATE':
+				// TIME is NOT a valid 5.5.1 tag
 				if (in_array($level1tag, $date_and_time))
-					add_simple_tag('3 TIME'); // TIME is NOT a valid 5.5.1 tag
+					add_simple_tag('3 TIME');
 				break;
 			case 'HUSB':
 			case 'WIFE':
