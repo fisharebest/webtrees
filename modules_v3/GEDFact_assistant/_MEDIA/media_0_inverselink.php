@@ -38,7 +38,9 @@ $controller
 	->addInlineJavascript('autocomplete();');
 
 $paramok =  true;
-if (!empty($linktoid)) $paramok = WT_GedcomRecord::getInstance($linktoid)->canShow();
+if (!empty($linktoid)) {
+	$paramok = WT_GedcomRecord::getInstance($linktoid)->canShow();
+}
 
 if ($action == 'choose' && $paramok) {
 

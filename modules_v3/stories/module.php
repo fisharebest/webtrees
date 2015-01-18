@@ -70,10 +70,10 @@ class stories_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Co
 
 		$block_ids =
 			WT_DB::prepare(
-				"SELECT block_id".
-				" FROM `##block`".
-				" WHERE module_name=?".
-				" AND xref=?".
+				"SELECT block_id" .
+				" FROM `##block`" .
+				" WHERE module_name=?" .
+				" AND xref=?" .
 				" AND gedcom_id=?"
 			)->execute(array(
 				$this->getName(),
@@ -114,10 +114,10 @@ class stories_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Co
 
 		$count_of_stories =
 			WT_DB::prepare(
-				"SELECT COUNT(block_id)".
-				" FROM `##block`".
-				" WHERE module_name=?".
-				" AND xref=?".
+				"SELECT COUNT(block_id)" .
+				" FROM `##block`" .
+				" WHERE module_name=?" .
+				" AND xref=?" .
 				" AND gedcom_id=?"
 			)->execute(array(
 				$this->getName(),
@@ -297,10 +297,10 @@ class stories_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Co
 				');
 
 			$stories = WT_DB::prepare(
-				"SELECT block_id, xref".
-				" FROM `##block` b".
-				" WHERE module_name=?".
-				" AND gedcom_id=?".
+				"SELECT block_id, xref" .
+				" FROM `##block` b" .
+				" WHERE module_name=?" .
+				" AND gedcom_id=?" .
 				" ORDER BY xref"
 			)->execute(array($this->getName(), WT_GED_ID))->fetchAll();
 
@@ -375,10 +375,10 @@ class stories_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Co
 			');
 
 		$stories = WT_DB::prepare(
-			"SELECT block_id, xref".
-			" FROM `##block` b".
-			" WHERE module_name=?".
-			" AND gedcom_id=?".
+			"SELECT block_id, xref" .
+			" FROM `##block` b" .
+			" WHERE module_name=?" .
+			" AND gedcom_id=?" .
 			" ORDER BY xref"
 		)->execute(array($this->getName(), WT_GED_ID))->fetchAll();
 

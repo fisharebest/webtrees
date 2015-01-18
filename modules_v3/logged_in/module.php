@@ -38,7 +38,7 @@ class logged_in_WT_Module extends WT_Module implements WT_Module_Block {
 	}
 
 	/** {@inheritdoc} */
-	public function getBlock($block_id, $template=true, $cfg=null) {
+	public function getBlock($block_id, $template = true, $cfg = null) {
 		$id        = $this->getName() . $block_id;
 		$class     = $this->getName() . '_block';
 		$title     = $this->getTitle();
@@ -57,7 +57,7 @@ class logged_in_WT_Module extends WT_Module implements WT_Module_Block {
 		if ($anonymous) {
 			$content .= WT_I18N::plural('%d anonymous logged-in user', '%d anonymous logged-in users', $anonymous, $anonymous);
 			if ($count_logged_in) {
-				$content .=  '&nbsp;|&nbsp;';
+				$content .= '&nbsp;|&nbsp;';
 			}
 		}
 		if ($count_logged_in) {
@@ -70,7 +70,7 @@ class logged_in_WT_Module extends WT_Module implements WT_Module_Block {
 				$content .= '<div class="logged_in_name">';
 				$content .= WT_Filter::escapeHtml($user->getRealName()) . ' - ' . WT_Filter::escapeHtml($user->getUserName());
 				if (Auth::id() != $user->getUserId() && $user->getPreference('contactmethod') != 'none') {
-					$content .= ' <a class="icon-email" href="#" onclick="return message(\'' . WT_Filter::escapeJs($user->getUserName()) . '\', \'\', \'' . WT_Filter::escapeJs(get_query_url()) . '\');" title="' . WT_I18N::translate('Send a message').'"></a>';
+					$content .= ' <a class="icon-email" href="#" onclick="return message(\'' . WT_Filter::escapeJs($user->getUserName()) . '\', \'\', \'' . WT_Filter::escapeJs(get_query_url()) . '\');" title="' . WT_I18N::translate('Send a message') . '"></a>';
 				}
 				$content .= '</div>';
 			}

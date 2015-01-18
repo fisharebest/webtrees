@@ -21,19 +21,19 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES') || !defined('WT_SCRIPT_NAME') || WT_SCRIPT_NAME!='help_text.php') {
+if (!defined('WT_WEBTREES') || !defined('WT_SCRIPT_NAME') || WT_SCRIPT_NAME != 'help_text.php') {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
 switch ($help) {
 case 'review_changes':
-	$title=WT_I18N::translate('Pending Changes block');
-	$text=WT_I18N::translate('This block will show editors a list of records with pending changes that need to be approved by a moderator.  It also generates daily emails to moderators whenever pending changes exist.');
+	$title = WT_I18N::translate('Pending Changes block');
+	$text = WT_I18N::translate('This block will show editors a list of records with pending changes that need to be approved by a moderator.  It also generates daily emails to moderators whenever pending changes exist.');
 
 	// TODO: Other options of this block
 
-	$text.='</li></ul>';
+	$text .= '</li></ul>';
 	break;
 }
 

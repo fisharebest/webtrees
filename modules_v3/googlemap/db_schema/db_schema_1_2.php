@@ -32,13 +32,13 @@
 // Create all of the tables needed for this module
 try {
 	WT_DB::exec(
-		"ALTER TABLE `##placelocation` ADD (".
-		" pl_media      VARCHAR(60)     NULL,".
-		" sv_long       FLOAT           NOT NULL DEFAULT 0,".
-		" sv_lati       FLOAT           NOT NULL DEFAULT 0,".
-		" sv_bearing    FLOAT           NOT NULL DEFAULT 0,".
-		" sv_elevation  FLOAT           NOT NULL DEFAULT 0,".
-		" sv_zoom       FLOAT           NOT NULL DEFAULT 1".
+		"ALTER TABLE `##placelocation` ADD (" .
+		" pl_media      VARCHAR(60)     NULL," .
+		" sv_long       FLOAT           NOT NULL DEFAULT 0," .
+		" sv_lati       FLOAT           NOT NULL DEFAULT 0," .
+		" sv_bearing    FLOAT           NOT NULL DEFAULT 0," .
+		" sv_elevation  FLOAT           NOT NULL DEFAULT 0," .
+		" sv_zoom       FLOAT           NOT NULL DEFAULT 1" .
 		")"
 	);
 } catch (PDOException $ex) {

@@ -138,8 +138,12 @@ echo '</script>';
 	<?php
 	$fct = count($controller->fields);
 	for ($i = 0; $i < $fct; $i++) {
-		if (strpos($controller->getField($i), "FAMC:HUSB:NAME") === 0) continue;
-		if (strpos($controller->getField($i), "FAMC:WIFE:NAME") === 0) continue;
+		if (strpos($controller->getField($i), "FAMC:HUSB:NAME") === 0) {
+			continue;
+		}
+		if (strpos($controller->getField($i), "FAMC:WIFE:NAME") === 0) {
+			continue;
+		}
 	?>
 	<tr>
 		<td class="list_label">
