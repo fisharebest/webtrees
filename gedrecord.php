@@ -22,20 +22,20 @@
 define('WT_SCRIPT_NAME', 'gedrecord.php');
 require './includes/session.php';
 
-$controller = new WT_Controller_Page();
+$controller = new WT_Controller_Page;
 
 $obj = WT_GedcomRecord::getInstance(WT_Filter::get('pid', WT_REGEX_XREF));
 
 if (
 	$obj instanceof WT_Individual ||
-	$obj instanceof WT_Family     ||
-	$obj instanceof WT_Source     ||
+	$obj instanceof WT_Family ||
+	$obj instanceof WT_Source ||
 	$obj instanceof WT_Repository ||
-	$obj instanceof WT_Note       ||
+	$obj instanceof WT_Note ||
 	$obj instanceof WT_Media
 ) {
 	Zend_Session::writeClose();
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.$obj->getRawUrl());
+	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . $obj->getRawUrl());
 	exit;
 } elseif (!$obj || !$obj->canShow()) {
 	$controller->pageHeader();
@@ -45,7 +45,7 @@ if (
 	echo
 		'<pre style="white-space:pre-wrap; word-wrap:break-word;">',
 		preg_replace(
-			'/@('.WT_REGEX_XREF.')@/', '@<a href="gedrecord.php?pid=$1">$1</a>@',
+			'/@(' . WT_REGEX_XREF . ')@/', '@<a href="gedrecord.php?pid=$1">$1</a>@',
 			WT_Filter::escapeHtml($obj->getGedcom())
 		),
 		'</pre>';

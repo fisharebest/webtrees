@@ -144,7 +144,8 @@ function gedcom_header($gedfile) {
 function convert_media_path($rec, $path) {
 	if ($path && preg_match('/\n1 FILE (.+)/', $rec, $match)) {
 		$old_file_name=$match[1];
-		if (!preg_match('~^(https?|ftp):~', $old_file_name)) { // Don’t modify external links
+		// Don’t modify external links
+		if (!preg_match('~^(https?|ftp):~', $old_file_name)) {
 			// Adding a windows path?  Convert the slashes.
 			if (strpos($path, '\\')!==false) {
 				$new_file_name=preg_replace('~/+~', '\\', $old_file_name);

@@ -33,7 +33,7 @@ WT_DB::exec(
 
 // Modern versions of Internet Explorer use a different
 WT_DB::exec(
-	"INSERT IGNORE INTO `##site_access_rule` (user_agent_pattern, rule, comment) VALUES".
+	"INSERT IGNORE INTO `##site_access_rule` (user_agent_pattern, rule, comment) VALUES" .
 	" ('Mozilla/% (Windows%; Trident%; rv:%) like Gecko', 'allow', 'Modern Internet Explorer')"
 );
 

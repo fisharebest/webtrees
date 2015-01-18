@@ -191,7 +191,8 @@ class WT_Controller_Clippings {
 
 			foreach (array_keys($WT_SESSION->cart[WT_GED_ID]) as $xref) {
 				$object = WT_GedcomRecord::getInstance($xref);
-				if ($object) { // The object may have been deleted since we added it to the cart....
+				// The object may have been deleted since we added it to the cart....
+				if ($object) {
 					$record = $object->privatizeGedcom($access_level);
 					// Remove links to objects that aren't in the cart
 					preg_match_all('/\n1 '.WT_REGEX_TAG.' @('.WT_REGEX_XREF.')@(\n[2-9].*)*/', $record, $matches, PREG_SET_ORDER);

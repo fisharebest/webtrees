@@ -42,7 +42,7 @@ try {
 		" CHANGE m_file    m_filename VARCHAR(512) COLLATE utf8_unicode_ci DEFAULT NULL," .
 		" CHANGE m_gedfile m_file     INTEGER                              NOT NULL," .
 		" CHANGE m_gedrec  m_gedcom   MEDIUMTEXT   COLLATE utf8_unicode_ci DEFAULT NULL," .
-		" ADD    m_type               VARCHAR(20)  COLLATE utf8_unicode_ci NULL AFTER m_ext,".
+		" ADD    m_type               VARCHAR(20)  COLLATE utf8_unicode_ci NULL AFTER m_ext," .
 		" ADD    PRIMARY KEY     (m_file, m_id)," .
 		" ADD            KEY ix2 (m_ext, m_type)," .
 		" ADD            KEY ix3 (m_titl)"

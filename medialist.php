@@ -26,7 +26,7 @@ require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_edit.php';
 require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 
-$controller = new WT_Controller_Page();
+$controller = new WT_Controller_Page;
 $controller
 	->setPageTitle(WT_I18N::translate('Media objects'))
 	->pageHeader();
@@ -44,16 +44,16 @@ $apply_filter   = WT_Filter::get('apply_filter');
 $filter         = WT_Filter::get('filter', null, ''); // MySQL needs an empty string, not NULL
 $columns        = WT_Filter::getInteger('columns', 1, 2, 2);
 $subdirs        = WT_Filter::get('subdirs', 'on');
-$currentdironly = ($subdirs=='on') ? false : true;
+$currentdironly = ($subdirs === 'on') ? false : true;
 
 // reset all variables
-if ($reset == 'Reset') {
-	$sortby = 'title';
-	$max = '20';
-	$folder = '';
-	$columns = '2';
+if ($reset === 'Reset') {
+	$sortby         = 'title';
+	$max            = '20';
+	$folder         = '';
+	$columns        = '2';
 	$currentdironly = true;
-	$filter = '';
+	$filter         = '';
 }
 
 // A list of all subfolders used by this tree
@@ -116,7 +116,9 @@ $medialist = WT_Query_Media::mediaList(
 					<?php
 					foreach (array('10', '20', '30', '40', '50', '75', '100', '125', '150', '200') as $selectEntry) {
 						echo '<option value="', $selectEntry, '"';
-						if ($selectEntry==$max) echo ' selected="selected"';
+						if ($selectEntry == $max) {
+							echo ' selected="selected"';
+						}
 						echo '>', $selectEntry, '</option>';
 					}
 					?>
@@ -138,7 +140,9 @@ $medialist = WT_Query_Media::mediaList(
 					<?php
 					foreach (array('1', '2') as $selectEntry) {
 						echo '<option value="', $selectEntry, '"';
-						if ($selectEntry==$columns) echo ' selected="selected"';
+						if ($selectEntry == $columns) {
+							echo ' selected="selected"';
+						}
 						echo '>', $selectEntry, '</option>';
 					}
 					?>
@@ -178,14 +182,16 @@ if ($search) {
 			echo '<', $tsection, '><tr><td colspan="2">';
 
 			echo '<table class="list_table_controls"><tr><td>';
-			if ($TEXT_DIRECTION=='ltr') {
+			if ($TEXT_DIRECTION === 'ltr') {
 				if ($ct>$max) {
 					if ($currentPage > 1) {
 						echo '<a href="medialist.php?action=no&amp;search=no&amp;folder=', rawurlencode($folder), '&amp;sortby=', $sortby, '&amp;subdirs=', $subdirs, '&amp;filter=', rawurlencode($filter), '&amp;columns=', $columns, '&amp;apply_filter=', $apply_filter, '&amp;start=0&amp;max=', $max, '" class="icon-ldarrow"></a>';
 					}
-					if ($start>0) {
+					if ($start > 0) {
 						$newstart = $start-$max;
-						if ($start<0) $start = 0;
+						if ($start < 0) {
+							$start = 0;
+						}
 						echo '<a href="medialist.php?action=no&amp;search=no&amp;folder=', rawurlencode($folder), '&amp;sortby=', $sortby, '&amp;subdirs=', $subdirs, '&amp;filter=', rawurlencode($filter), '&amp;;columns=', $columns, '&amp;apply_filter=', $apply_filter, '&amp;start=', $newstart, '&amp;max=', $max, '" class="icon-larrow"></a>';
 					}
 				}
@@ -195,9 +201,11 @@ if ($search) {
 						$lastStart = ((int) ($ct / $max)) * $max;
 						echo '<a href="medialist.php?action=no&amp;search=no&amp;folder=', rawurlencode($folder), '&amp;sortby=', $sortby, '&amp;subdirs=', $subdirs, '&amp;filter=', rawurlencode($filter), '&amp;columns=', $columns, '&amp;apply_filter=', $apply_filter, '&amp;start=', $lastStart, '&amp;max=', $max, '" class="icon-rdarrow"></a>';
 					}
-					if ($start+$max < $ct) {
+					if ($start + $max < $ct) {
 						$newstart = $start+$count;
-						if ($start<0) $start = 0;
+						if ($start < 0) {
+							$start = 0;
+						}
 						echo '<a href="medialist.php?action=no&amp;search=no&amp;folder=', rawurlencode($folder), '&amp;sortby=', $sortby, '&amp;subdirs=', $subdirs, '&amp;filter=', rawurlencode($filter), '&amp;columns=', $columns, '&amp;apply_filter=', $apply_filter, '&amp;start=', $newstart, '&amp;max=', $max, '" class="icon-rarrow"></a>';
 					}
 				}
@@ -205,11 +213,13 @@ if ($search) {
 			echo '</td>';
 			echo '<td>', WT_I18N::translate('Page %s of %s', $currentPage, $lastPage), '</td>';
 			echo '<td>';
-			if ($TEXT_DIRECTION=='ltr') {
+			if ($TEXT_DIRECTION === 'ltr') {
 				if ($ct>$max) {
-					if ($start+$max < $ct) {
-						$newstart = $start+$count;
-						if ($start<0) $start = 0;
+					if ($start + $max < $ct) {
+						$newstart = $start + $count;
+						if ($start < 0) {
+							$start = 0;
+						}
 						echo '<a href="medialist.php?action=no&amp;search=no&amp;folder=', rawurlencode($folder), '&amp;sortby=', $sortby, '&amp;subdirs=', $subdirs, '&amp;filter=', rawurlencode($filter), '&amp;columns=', $columns, '&amp;apply_filter=', $apply_filter, '&amp;start=', $newstart, '&amp;max=', $max, '" class="icon-rarrow"></a>';
 					}
 					if ($currentPage < $lastPage) {
@@ -218,10 +228,12 @@ if ($search) {
 					}
 				}
 			} else {
-				if ($ct>$max) {
-					if ($start>0) {
-						$newstart = $start-$max;
-						if ($start<0) $start = 0;
+				if ($ct > $max) {
+					if ($start > 0) {
+						$newstart = $start - $max;
+						if ($start < 0) {
+							$start = 0;
+						}
 						echo '<a href="medialist.php?action=no&amp;search=no&amp;folder=', rawurlencode($folder), '&amp;sortby=', $sortby, '&amp;subdirs=', $subdirs, '&amp;filter=', rawurlencode($filter), '&amp;columns=', $columns, '&amp;apply_filter=', $apply_filter, '&amp;start=', $newstart, '&amp;max=', $max, '" class="icon-larrow"></a>';
 					}
 					if ($currentPage > 1) {
@@ -239,8 +251,12 @@ if ($search) {
 		for ($i=$start, $n=0; $i<$start+$count; ++$i) {
 			$mediaobject = $medialist[$i];
 
-			if ($columns == '1') echo '<td class="list_value_wrap width80">';
-			if ($columns == '2') echo '<td class="list_value_wrap width50">';
+			if ($columns == '1') {
+				echo '<td class="list_value_wrap width80">';
+			}
+			if ($columns == '2') {
+				echo '<td class="list_value_wrap width50">';
+			}
 
 			echo '<table><tr><td style="vertical-align:top; white-space:normal;">';
 			echo $mediaobject->displayImage();
@@ -306,7 +322,7 @@ if ($search) {
 		echo '</tr></tbody>';
 		echo '</table>';
 	}
-  echo '</div>';
+	echo '</div>';
 }
 echo '</div>';
 

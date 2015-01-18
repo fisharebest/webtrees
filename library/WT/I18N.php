@@ -227,16 +227,16 @@ class WT_I18N {
 				}
 				$prefs2 = array();
 				foreach ($prefs as $pref) {
-					list($l, $q)=explode(';q=', $pref.';q=1.0');
+					list($l, $q) = explode(';q=', $pref . ';q=1.0');
 					$l = preg_replace_callback(
 						'/_[a-z][a-z]$/',
 						function($x) { return strtoupper($x[0]); },
 						str_replace('-', '_', $l)
 					); // en-gb => en_GB
 					if (array_key_exists($l, $prefs2)) {
-						$prefs2[$l] = max((float)$q, $prefs2[$l]);
+						$prefs2[$l] = max((float) $q, $prefs2[$l]);
 					} else {
-						$prefs2[$l] = (float)$q;
+						$prefs2[$l] = (float) $q;
 					}
 				}
 				// Ensure there is a fallback.
@@ -263,10 +263,10 @@ class WT_I18N {
 		if (is_dir(WT_DATA_DIR . 'language')) {
 			if (file_exists(WT_DATA_DIR . 'language/' . $locale . '.mo')) {
 				self::addTranslation(
-					new Zend_Translate('gettext', WT_DATA_DIR.'language/' . $locale . '.mo', $locale)
+					new Zend_Translate('gettext', WT_DATA_DIR . 'language/' . $locale . '.mo', $locale)
 				);
 			}
-			if (file_exists(WT_DATA_DIR.'language/' . $locale . '.php')) {
+			if (file_exists(WT_DATA_DIR . 'language/' . $locale . '.php')) {
 				self::addTranslation(
 					new Zend_Translate('array', WT_DATA_DIR . 'language/' . $locale . '.php', $locale)
 				);
@@ -331,7 +331,7 @@ class WT_I18N {
 	 * @return array
 	 */
 	public static function installed_languages() {
-		$mo_files = glob(WT_ROOT.'language'.DIRECTORY_SEPARATOR.'*.mo');
+		$mo_files = glob(WT_ROOT . 'language' . DIRECTORY_SEPARATOR . '*.mo');
 		$cache_key = md5(serialize($mo_files));
 
 		if (!($installed_languages = self::$cache->load($cache_key))) {
@@ -375,10 +375,10 @@ class WT_I18N {
 	 * @return string
 	 */
 	public static function html_markup() {
-		$localeData=Zend_Locale_Data::getList(self::$locale, 'layout');
-		$dir=$localeData['characterOrder']=='right-to-left' ? 'rtl' : 'ltr';
+		$localeData = Zend_Locale_Data::getList(self::$locale, 'layout');
+		$dir = $localeData['characterOrder'] == 'right-to-left' ? 'rtl' : 'ltr';
 		list($lang) = preg_split('/[-_@]/', self::$locale);
-		return 'lang="'.$lang.'" dir="'.$dir.'"';
+		return 'lang="' . $lang . '" dir="' . $dir . '"';
 	}
 
 	/**
@@ -394,10 +394,10 @@ class WT_I18N {
 	 *
 	 * @return string
 	 */
-	public static function number($n, $precision=0) {
+	public static function number($n, $precision = 0) {
 		// Add "punctuation" and convert digits
-		$n=Zend_Locale_Format::toNumber($n, array('locale'=>WT_LOCALE, 'precision'=>$precision));
-		$n=self::digits($n);
+		$n = Zend_Locale_Format::toNumber($n, array('locale'=>WT_LOCALE, 'precision'=>$precision));
+		$n = self::digits($n);
 		return $n;
 	}
 
@@ -431,10 +431,10 @@ class WT_I18N {
 	 *
 	 * @return string
 	 */
-	public static function percentage($n, $precision=0) {
+	public static function percentage($n, $precision = 0) {
 		return
 			/* I18N: This is a percentage, such as “32.5%”. “%s” is the number, “%%” is the percent symbol.  Some languages require a (non-breaking) space between the two, or a different symbol. */
-			self::translate('%s%%', self::number($n*100.0, $precision));
+			self::translate('%s%%', self::number($n * 100.0, $precision));
 	}
 
 	/**
@@ -527,29 +527,29 @@ class WT_I18N {
 			// I18N: Description of an individual’s age at an event.  For example, Died 14 Jan 1900 (in childhood)
 			return self::translate('(in childhood)');
 		}
-		$age=array();
+		$age = array();
 		if (preg_match('/(\d+)y/', $string, $match)) {
 			// I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
-			$years=$match[1];
-			$age[]=self::plural('%s year', '%s years', $years, self::number($years));
+			$years = $match[1];
+			$age[] = self::plural('%s year', '%s years', $years, self::number($years));
 		} else {
-			$years=-1;
+			$years = -1;
 		}
 		if (preg_match('/(\d+)m/', $string, $match)) {
 			// I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
-			$age[]=self::plural('%s month', '%s months', $match[1], self::number($match[1]));
+			$age[] = self::plural('%s month', '%s months', $match[1], self::number($match[1]));
 		}
 		if (preg_match('/(\d+)w/', $string, $match)) {
 			// I18N: Part of an age string. e.g. 7 weeks and 3 days
-			$age[]=self::plural('%s week', '%s weeks', $match[1], self::number($match[1]));
+			$age[] = self::plural('%s week', '%s weeks', $match[1], self::number($match[1]));
 		}
 		if (preg_match('/(\d+)d/', $string, $match)) {
 			// I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
-			$age[]=self::plural('%s day', '%s days', $match[1], self::number($match[1]));
+			$age[] = self::plural('%s day', '%s days', $match[1], self::number($match[1]));
 		}
 		// If an age is just a number of years, only show the number
-		if (count($age)==1 && $years>=0) {
-			$age=$years;
+		if (count($age) == 1 && $years >= 0) {
+			$age = $years;
 		}
 		if ($age) {
 			if (!substr_compare($string, '<', 0, 1)) {
@@ -582,20 +582,20 @@ class WT_I18N {
 		$month  = 30 * $day;
 		$year   = 365 * $day;
 
-		if ($seconds>$year) {
-			$years=(int)($seconds/$year);
+		if ($seconds > $year) {
+			$years = (int) ($seconds / $year);
 			return self::plural('%s year ago', '%s years ago', $years, self::number($years));
-		} elseif ($seconds>$month) {
-			$months=(int)($seconds/$month);
+		} elseif ($seconds > $month) {
+			$months = (int) ($seconds / $month);
 			return self::plural('%s month ago', '%s months ago', $months, self::number($months));
-		} elseif ($seconds>$day) {
-			$days=(int)($seconds/$day);
+		} elseif ($seconds > $day) {
+			$days = (int) ($seconds / $day);
 			return self::plural('%s day ago', '%s days ago', $days, self::number($days));
-		} elseif ($seconds>$hour) {
-			$hours=(int)($seconds/$hour);
+		} elseif ($seconds > $hour) {
+			$hours = (int) ($seconds / $hour);
 			return self::plural('%s hour ago', '%s hours ago', $hours, self::number($hours));
-		} elseif ($seconds>$minute) {
-			$minutes=(int)($seconds/$minute);
+		} elseif ($seconds > $minute) {
+			$minutes = (int) ($seconds / $minute);
 			return self::plural('%s minute ago', '%s minutes ago', $minutes, self::number($minutes));
 		} else {
 			return self::plural('%s second ago', '%s seconds ago', $seconds, self::number($seconds));
@@ -646,8 +646,8 @@ class WT_I18N {
 	 * @return string
 	 */
 	public static function textScript($string) {
-		$string = strip_tags($string);                               // otherwise HTML tags show up as latin
-		$string = html_entity_decode($string, ENT_QUOTES, 'UTF-8');  // otherwise HTML entities show up as latin
+		$string = strip_tags($string); // otherwise HTML tags show up as latin
+		$string = html_entity_decode($string, ENT_QUOTES, 'UTF-8'); // otherwise HTML entities show up as latin
 		$string = str_replace(array('@N.N.', '@P.N.'), '', $string); // otherwise unknown names show up as latin
 		$pos = 0;
 		$strlen = strlen($string);
@@ -761,16 +761,16 @@ class WT_I18N {
 			$byte1 = ord($string1[$strpos1]);
 			$byte2 = ord($string2[$strpos2]);
 			if (($byte1 & 0xE0) == 0xC0) {
-				$chr1 = $string1[$strpos1++].$string1[$strpos1++];
+				$chr1 = $string1[$strpos1++] . $string1[$strpos1++];
 			} elseif (($byte1 & 0xF0) == 0xE0) {
-				$chr1 = $string1[$strpos1++].$string1[$strpos1++].$string1[$strpos1++];
+				$chr1 = $string1[$strpos1++] . $string1[$strpos1++] . $string1[$strpos1++];
 			} else {
 				$chr1 = $string1[$strpos1++];
 			}
-			if (($byte2 & 0xE0)==0xC0) {
-				$chr2 = $string2[$strpos2++].$string2[$strpos2++];
-			} elseif (($byte2 & 0xF0)==0xE0) {
-				$chr2 = $string2[$strpos2++].$string2[$strpos2++].$string2[$strpos2++];
+			if (($byte2 & 0xE0) == 0xC0) {
+				$chr2 = $string2[$strpos2++] . $string2[$strpos2++];
+			} elseif (($byte2 & 0xF0) == 0xE0) {
+				$chr2 = $string2[$strpos2++] . $string2[$strpos2++] . $string2[$strpos2++];
 			} else {
 				$chr2 = $string2[$strpos2++];
 			}
@@ -865,80 +865,80 @@ class WT_I18N {
 	 *
 	 * @return string
 	 */
-	public static function datatablesI18N(array $lengths=null) {
-		if ($lengths===null) {
-			$lengths=array(10, 20, 30, 50, 100, -1);
+	public static function datatablesI18N(array $lengths = null) {
+		if ($lengths === null) {
+			$lengths = array(10, 20, 30, 50, 100, -1);
 		}
 
-		$length_menu='';
+		$length_menu = '';
 		foreach ($lengths as $length) {
-			$length_menu.=
-				'<option value="'.$length.'">'.
-				($length==-1 ? /* I18N: listbox option, e.g. “10,25,50,100,all” */ self::translate('All') : self::number($length)).
+			$length_menu .=
+				'<option value="' . $length . '">' .
+				($length == -1 ? /* I18N: listbox option, e.g. “10,25,50,100,all” */ self::translate('All') : self::number($length)) .
 				'</option>';
 		}
-		$length_menu='<select>'.$length_menu.'</select>';
-		$length_menu=/* I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options */ self::translate('Display %s', $length_menu);
+		$length_menu = '<select>' . $length_menu . '</select>';
+		$length_menu = /* I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options */ self::translate('Display %s', $length_menu);
 
 		// Which symbol is used for separating numbers into groups
 		$symbols = Zend_Locale_Data::getList(self::$locale, 'symbols');
 		// Which digits are used for numbers
 		$digits = Zend_Locale_Data::getContent(self::$locale, 'numberingsystem', self::$numbering_system);
 
-		if ($digits=='0123456789') {
-			$callback='';
+		if ($digits == '0123456789') {
+			$callback = '';
 		} else {
-			$callback=',
+			$callback = ',
 				"infoCallback": function(oSettings, iStart, iEnd, iMax, iTotal, sPre) {
 					return sPre
-						.replace(/0/g, "'.mb_substr($digits, 0, 1).'")
-						.replace(/1/g, "'.mb_substr($digits, 1, 1).'")
-						.replace(/2/g, "'.mb_substr($digits, 2, 1).'")
-						.replace(/3/g, "'.mb_substr($digits, 3, 1).'")
-						.replace(/4/g, "'.mb_substr($digits, 4, 1).'")
-						.replace(/5/g, "'.mb_substr($digits, 5, 1).'")
-						.replace(/6/g, "'.mb_substr($digits, 6, 1).'")
-						.replace(/7/g, "'.mb_substr($digits, 7, 1).'")
-						.replace(/8/g, "'.mb_substr($digits, 8, 1).'")
-						.replace(/9/g, "'.mb_substr($digits, 9, 1).'");
+						.replace(/0/g, "'.mb_substr($digits, 0, 1) . '")
+						.replace(/1/g, "'.mb_substr($digits, 1, 1) . '")
+						.replace(/2/g, "'.mb_substr($digits, 2, 1) . '")
+						.replace(/3/g, "'.mb_substr($digits, 3, 1) . '")
+						.replace(/4/g, "'.mb_substr($digits, 4, 1) . '")
+						.replace(/5/g, "'.mb_substr($digits, 5, 1) . '")
+						.replace(/6/g, "'.mb_substr($digits, 6, 1) . '")
+						.replace(/7/g, "'.mb_substr($digits, 7, 1) . '")
+						.replace(/8/g, "'.mb_substr($digits, 8, 1) . '")
+						.replace(/9/g, "'.mb_substr($digits, 9, 1) . '");
 				},
 				"formatNumber": function(iIn) {
 					return String(iIn)
-						.replace(/0/g, "'.mb_substr($digits, 0, 1).'")
-						.replace(/1/g, "'.mb_substr($digits, 1, 1).'")
-						.replace(/2/g, "'.mb_substr($digits, 2, 1).'")
-						.replace(/3/g, "'.mb_substr($digits, 3, 1).'")
-						.replace(/4/g, "'.mb_substr($digits, 4, 1).'")
-						.replace(/5/g, "'.mb_substr($digits, 5, 1).'")
-						.replace(/6/g, "'.mb_substr($digits, 6, 1).'")
-						.replace(/7/g, "'.mb_substr($digits, 7, 1).'")
-						.replace(/8/g, "'.mb_substr($digits, 8, 1).'")
-						.replace(/9/g, "'.mb_substr($digits, 9, 1).'");
+						.replace(/0/g, "'.mb_substr($digits, 0, 1) . '")
+						.replace(/1/g, "'.mb_substr($digits, 1, 1) . '")
+						.replace(/2/g, "'.mb_substr($digits, 2, 1) . '")
+						.replace(/3/g, "'.mb_substr($digits, 3, 1) . '")
+						.replace(/4/g, "'.mb_substr($digits, 4, 1) . '")
+						.replace(/5/g, "'.mb_substr($digits, 5, 1) . '")
+						.replace(/6/g, "'.mb_substr($digits, 6, 1) . '")
+						.replace(/7/g, "'.mb_substr($digits, 7, 1) . '")
+						.replace(/8/g, "'.mb_substr($digits, 8, 1) . '")
+						.replace(/9/g, "'.mb_substr($digits, 9, 1) . '");
 				}
 			';
 		}
 
 		return
-			'"language": {'.
-			' "paginate": {'.
-			'  "first":    "'./* I18N: button label, first page    */ self::translate('first').'",'.
-			'  "last":     "'./* I18N: button label, last page     */ self::translate('last').'",'.
-			'  "next":     "'./* I18N: button label, next page     */ self::translate('next').'",'.
-			'  "previous": "'./* I18N: button label, previous page */ self::translate('previous').'"'.
-			' },'.
-			' "emptyTable":     "'.self::translate('No records to display').'",'.
-			' "info":           "'./* I18N: %s are placeholders for numbers */ self::translate('Showing %1$s to %2$s of %3$s', '_START_', '_END_', '_TOTAL_').'",'.
-			' "infoEmpty":      "'.self::translate('Showing %1$s to %2$s of %3$s', 0, 0, 0).'",'.
-			' "infoFiltered":   "'./* I18N: %s is a placeholder for a number */ self::translate('(filtered from %s total entries)', '_MAX_').'",'.
-			' "infoPostfix":    "",'.
-			' "infoThousands":  "'.$symbols['group'].'",'.
-			' "lengthMenu":     "'.WT_Filter::escapeJs($length_menu).'",'.
-			' "loadingRecords": "'.self::translate('Loading…').'",'.
-			' "processing":     "'.self::translate('Loading…').'",'.
-			' "search":         "'.self::translate('Filter').'",'.
-			' "url":            "",'.
-			' "zeroRecords":    "'.self::translate('No records to display').'"'.
-			'}'.
+			'"language": {' .
+			' "paginate": {' .
+			'  "first":    "' . /* I18N: button label, first page    */ self::translate('first') . '",' .
+			'  "last":     "' . /* I18N: button label, last page     */ self::translate('last') . '",' .
+			'  "next":     "' . /* I18N: button label, next page     */ self::translate('next') . '",' .
+			'  "previous": "' . /* I18N: button label, previous page */ self::translate('previous') . '"' .
+			' },' .
+			' "emptyTable":     "' . self::translate('No records to display') . '",' .
+			' "info":           "' . /* I18N: %s are placeholders for numbers */ self::translate('Showing %1$s to %2$s of %3$s', '_START_', '_END_', '_TOTAL_') . '",' .
+			' "infoEmpty":      "' . self::translate('Showing %1$s to %2$s of %3$s', 0, 0, 0) . '",' .
+			' "infoFiltered":   "' . /* I18N: %s is a placeholder for a number */ self::translate('(filtered from %s total entries)', '_MAX_') . '",' .
+			' "infoPostfix":    "",' .
+			' "infoThousands":  "' . $symbols['group'] . '",' .
+			' "lengthMenu":     "' . WT_Filter::escapeJs($length_menu) . '",' .
+			' "loadingRecords": "' . self::translate('Loading…') . '",' .
+			' "processing":     "' . self::translate('Loading…') . '",' .
+			' "search":         "' . self::translate('Filter') . '",' .
+			' "url":            "",' .
+			' "zeroRecords":    "' . self::translate('No records to display') . '"' .
+			'}' .
 			$callback;
 	}
 }

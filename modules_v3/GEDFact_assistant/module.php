@@ -56,7 +56,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 	 * ...
 	 */
 	private static function media_3_find() {
-		$controller = new WT_Controller_Simple();
+		$controller = new WT_Controller_Simple;
 		$filter     = WT_Filter::get('filter');
 		$multiple   = WT_Filter::getBool('multiple');
 
@@ -164,7 +164,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 	private static function media_query_3a() {
 		$iid2 = WT_Filter::get('iid', WT_REGEX_XREF);
 
-		$controller = new WT_Controller_Simple();
+		$controller = new WT_Controller_Simple;
 		$controller
 			->setPageTitle(WT_I18N::translate('Link to an existing media object'))
 			->pageHeader();

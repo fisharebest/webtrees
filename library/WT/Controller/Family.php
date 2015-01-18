@@ -21,7 +21,7 @@
 
 use WT\Auth;
 
-require_once WT_ROOT.'includes/functions/functions_print_facts.php';
+require_once WT_ROOT . 'includes/functions/functions_print_facts.php';
 
 /**
  * Class WT_Controller_Family - Controller for the family page
@@ -79,9 +79,9 @@ class WT_Controller_Family extends WT_Controller_GedcomRecord {
 	 * @return string
 	 */
 	function getTimelineIndis($tags) {
-		preg_match_all('/\n1 (?:'.implode('|', $tags).') @('.WT_REGEX_XREF.')@/', $this->record->getGedcom(), $matches);
+		preg_match_all('/\n1 (?:' . implode('|', $tags) . ') @(' . WT_REGEX_XREF . ')@/', $this->record->getGedcom(), $matches);
 		foreach ($matches[1] as &$match) {
-			$match='pids%5B%5D='.$match;
+			$match = 'pids%5B%5D=' . $match;
 		}
 		return implode('&amp;', $matches[1]);
 	}
@@ -104,18 +104,18 @@ class WT_Controller_Family extends WT_Controller_GedcomRecord {
 		if (WT_USER_CAN_EDIT) {
 			// edit_fam / members
 			$submenu = new WT_Menu(WT_I18N::translate('Change family members'), '#', 'menu-fam-change');
-			$submenu->setOnclick("return change_family_members('".$this->record->getXref()."');");
+			$submenu->setOnclick("return change_family_members('" . $this->record->getXref() . "');");
 			$menu->addSubmenu($submenu);
 
 			// edit_fam / add child
 			$submenu = new WT_Menu(WT_I18N::translate('Add a child to this family'), '#', 'menu-fam-addchil');
-			$submenu->setOnclick("return add_child_to_family('".$this->record->getXref()."', 'U');");
+			$submenu->setOnclick("return add_child_to_family('" . $this->record->getXref() . "', 'U');");
 			$menu->addSubmenu($submenu);
 
 			// edit_fam / reorder_children
 			if ($this->record->getNumberOfChildren() > 1) {
 				$submenu = new WT_Menu(WT_I18N::translate('Re-order children'), '#', 'menu-fam-orderchil');
-				$submenu->setOnclick("return reorder_children('".$this->record->getXref()."');");
+				$submenu->setOnclick("return reorder_children('" . $this->record->getXref() . "');");
 				$menu->addSubmenu($submenu);
 			}
 		}
@@ -123,7 +123,7 @@ class WT_Controller_Family extends WT_Controller_GedcomRecord {
 		// delete
 		if (WT_USER_CAN_EDIT) {
 			$submenu = new WT_Menu(WT_I18N::translate('Delete'), '#', 'menu-fam-del');
-			$submenu->setOnclick("return delete_family('" . WT_I18N::translate('Deleting the family will unlink all of the individuals from each other but will leave the individuals in place.  Are you sure you want to delete this family?') . "', '".$this->record->getXref()."');");
+			$submenu->setOnclick("return delete_family('" . WT_I18N::translate('Deleting the family will unlink all of the individuals from each other but will leave the individuals in place.  Are you sure you want to delete this family?') . "', '" . $this->record->getXref() . "');");
 			$menu->addSubmenu($submenu);
 		}
 
@@ -141,7 +141,7 @@ class WT_Controller_Family extends WT_Controller_GedcomRecord {
 				'#',
 				'menu-fam-addfav'
 			);
-			$submenu->setOnclick("jQuery.post('module.php?mod=user_favorites&amp;mod_action=menu-add-favorite',{xref:'".$this->record->getXref()."'},function(){location.reload();})");
+			$submenu->setOnclick("jQuery.post('module.php?mod=user_favorites&amp;mod_action=menu-add-favorite',{xref:'" . $this->record->getXref() . "'},function(){location.reload();})");
 			$menu->addSubmenu($submenu);
 		}
 
@@ -194,14 +194,14 @@ class WT_Controller_Family extends WT_Controller_GedcomRecord {
 			echo '<tr><td class="descriptionbox">';
 			echo WT_Gedcom_Tag::getLabel('NOTE');
 			echo '</td><td class="optionbox">';
-			echo "<a href=\"#\" onclick=\"return add_new_record('".$this->record->getXref()."','NOTE');\">", WT_I18N::translate('Add a new note'), '</a>';
+			echo "<a href=\"#\" onclick=\"return add_new_record('" . $this->record->getXref() . "','NOTE');\">", WT_I18N::translate('Add a new note'), '</a>';
 			echo help_link('add_note');
 			echo '</td></tr>';
 
 			echo '<tr><td class="descriptionbox">';
 			echo WT_Gedcom_Tag::getLabel('SHARED_NOTE');
 			echo '</td><td class="optionbox">';
-			echo "<a href=\"#\" onclick=\"return add_new_record('".$this->record->getXref()."','SHARED_NOTE');\">", WT_I18N::translate('Add a new shared note'), '</a>';
+			echo "<a href=\"#\" onclick=\"return add_new_record('" . $this->record->getXref() . "','SHARED_NOTE');\">", WT_I18N::translate('Add a new shared note'), '</a>';
 			echo help_link('add_shared_note');
 			echo '</td></tr>';
 
@@ -209,17 +209,17 @@ class WT_Controller_Family extends WT_Controller_GedcomRecord {
 				echo '<tr><td class="descriptionbox">';
 				echo WT_Gedcom_Tag::getLabel('OBJE');
 				echo '</td><td class="optionbox">';
-				echo "<a href=\"#\" onclick=\"window.open('addmedia.php?action=showmediaform&amp;linktoid=".$this->record->getXref()."', '_blank', edit_window_specs); return false;\">", WT_I18N::translate('Add a new media object'), '</a>';
+				echo "<a href=\"#\" onclick=\"window.open('addmedia.php?action=showmediaform&amp;linktoid=" . $this->record->getXref() . "', '_blank', edit_window_specs); return false;\">", WT_I18N::translate('Add a new media object'), '</a>';
 				echo help_link('OBJE');
 				echo '<br>';
-				echo "<a href=\"#\" onclick=\"window.open('inverselink.php?linktoid=".$this->record->getXref()."&amp;linkto=family', '_blank', find_window_specs); return false;\">", WT_I18N::translate('Link to an existing media object'), '</a>';
+				echo "<a href=\"#\" onclick=\"window.open('inverselink.php?linktoid=" . $this->record->getXref() . "&amp;linkto=family', '_blank', find_window_specs); return false;\">", WT_I18N::translate('Link to an existing media object'), '</a>';
 				echo '</td></tr>';
 			}
 
 			echo '<tr><td class="descriptionbox">';
 			echo WT_Gedcom_Tag::getLabel('SOUR');
 			echo '</td><td class="optionbox">';
-			echo "<a href=\"#\" onclick=\"return add_new_record('".$this->record->getXref()."','SOUR');\">", WT_I18N::translate('Add a new source citation'), '</a>';
+			echo "<a href=\"#\" onclick=\"return add_new_record('" . $this->record->getXref() . "','SOUR');\">", WT_I18N::translate('Add a new source citation'), '</a>';
 			echo help_link('add_source');
 			echo '</td></tr>';
 		}

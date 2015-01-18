@@ -2,7 +2,7 @@
 // User Account Edit Interface.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// Copyright (C) 2015 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009 PGV Development Team.
@@ -23,34 +23,35 @@
 
 use WT\Auth;
 use WT\Log;
+use WT\Theme;
 use WT\User;
 
 define('WT_SCRIPT_NAME', 'edituser.php');
 require './includes/session.php';
-require_once WT_ROOT.'includes/functions/functions_print_lists.php';
-require WT_ROOT.'includes/functions/functions_edit.php';
+require_once WT_ROOT . 'includes/functions/functions_print_lists.php';
+require WT_ROOT . 'includes/functions/functions_edit.php';
 
 // prevent users with editing account disabled from being able to edit their account
 if (!Auth::id() || !Auth::user()->getPreference('editaccount')) {
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
+	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH);
 	exit;
 }
 
 // Extract form variables
 $form_action         = WT_Filter::post('form_action');
 $form_username       = WT_Filter::post('form_username');
-$form_realname       = WT_Filter::post('form_realname' );
+$form_realname       = WT_Filter::post('form_realname');
 $form_pass1          = WT_Filter::post('form_pass1', WT_REGEX_PASSWORD);
 $form_pass2          = WT_Filter::post('form_pass2', WT_REGEX_PASSWORD);
 $form_email          = WT_Filter::postEmail('form_email');
 $form_rootid         = WT_Filter::post('form_rootid', WT_REGEX_XREF);
-$form_theme          = WT_Filter::post('form_theme', implode('|', get_theme_names()));
+$form_theme          = WT_Filter::post('form_theme', implode('|', array_keys(Theme::installedThemes())));
 $form_language       = WT_Filter::post('form_language', implode('|', array_keys(WT_I18N::installed_languages())), WT_LOCALE);
 $form_contact_method = WT_Filter::post('form_contact_method');
 $form_visible_online = WT_Filter::postBool('form_visible_online');
 
 // Respond to form action
-if ($form_action=='update' && WT_Filter::checkCsrf()) {
+if ($form_action == 'update' && WT_Filter::checkCsrf()) {
 	if ($form_username != Auth::user()->getUserName() && User::findByIdentifier($form_username)) {
 		WT_FlashMessages::addMessage(WT_I18N::translate('Duplicate user name.  A user with that user name already exists.  Please choose another user name.'));
 	} elseif ($form_email != Auth::user()->getEmail() && User::findByIdentifier($form_email)) {
@@ -71,7 +72,7 @@ if ($form_action=='update' && WT_Filter::checkCsrf()) {
 		Auth::user()
 			->setRealName($form_realname)
 			->setEmail($form_email)
-			->setPreference('language',      $form_language)
+			->setPreference('language', $form_language)
 			->setPreference('contactmethod', $form_contact_method)
 			->setPreference('visibleonline', $form_visible_online ? '1' : '0');
 
@@ -89,7 +90,7 @@ if ($form_action=='update' && WT_Filter::checkCsrf()) {
 	}
 }
 
-$controller = new WT_Controller_Page();
+$controller = new WT_Controller_Page;
 $controller
 	->setPageTitle(WT_I18N::translate('User administration'))
 	->pageHeader()
@@ -161,7 +162,7 @@ echo '<div id="edituser-page">
 		<div class="value">
 			<select name="form_theme">
 			<option value="">', WT_Filter::escapeHtml(/* I18N: default option in list of themes */ WT_I18N::translate('<default theme>')), '</option>';
-			foreach (get_theme_names() as $theme_name => $theme_id) {
+			foreach (Theme::themeNames() as $theme_id => $theme_name) {
 				echo '<option value="', $theme_id, '"';
 				if ($theme_id === Auth::user()->getPreference('theme')) {
 					echo ' selected="selected"';
@@ -170,7 +171,7 @@ echo '<div id="edituser-page">
 			}
 			echo '</select>
 		</div>
-		<div class="label">', WT_I18N::translate('Preferred contact method'), help_link('edituser_contact_meth'), '</div>
+		<div class="label">', WT_I18N::translate('Contact method'), help_link('edituser_contact_meth'), '</div>
 		<div class="value">', edit_field_contact('form_contact_method', Auth::user()->getPreference('contactmethod')), '</div>
 		<div class="label">', WT_I18N::translate('Visible to other users when online'), help_link('useradmin_visibleonline'), '</div>
 		<div class="value">', checkbox('form_visible_online', Auth::user()->getPreference('visibleonline')), '</div>

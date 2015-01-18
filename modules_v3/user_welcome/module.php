@@ -1,6 +1,6 @@
 <?php
 // webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// Copyright (C) 2015 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2010 John Finlay
@@ -20,6 +20,7 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 use WT\Auth;
+use WT\Theme;
 
 /**
  * Class user_welcome_WT_Module
@@ -36,22 +37,22 @@ class user_welcome_WT_Module extends WT_Module implements WT_Module_Block {
 	}
 
 	/** {@inheritdoc} */
-	public function getBlock($block_id, $template=true, $cfg=null) {
-		$id=$this->getName().$block_id;
-		$class=$this->getName().'_block';
+	public function getBlock($block_id, $template = true, $cfg = null) {
+		$id = $this->getName() . $block_id;
+		$class = $this->getName() . '_block';
 		$title = '<span dir="auto">' . /* I18N: A greeting; %s is the user’s name */ WT_I18N::translate('Welcome %s', Auth::user()->getRealName()) . '</span>';
 		$content = '<table><tr>';
 		if (Auth::user()->getPreference('editaccount')) {
-			$content .= '<td><a href="edituser.php"><i class="icon-mypage"></i><br>'.WT_I18N::translate('My account').'</a></td>';
+			$content .= '<td><a href="edituser.php"><i class="icon-mypage"></i><br>' . WT_I18N::translate('My account') . '</a></td>';
 		}
 		if (WT_USER_GEDCOM_ID) {
-			$content .= '<td><a href="pedigree.php?rootid='.WT_USER_GEDCOM_ID.'&amp;ged='.WT_GEDURL.'"><i class="icon-pedigree"></i><br>'.WT_I18N::translate('My pedigree').'</a></td>';
-			$content .= '<td><a href="individual.php?pid='.WT_USER_GEDCOM_ID.'&amp;ged='.WT_GEDURL.'"><i class="icon-indis"></i><br>'.WT_I18N::translate('My individual record').'</a></td>';
+			$content .= '<td><a href="pedigree.php?rootid=' . WT_USER_GEDCOM_ID . '&amp;ged=' . WT_GEDURL . '"><i class="icon-pedigree"></i><br>' . WT_I18N::translate('My pedigree') . '</a></td>';
+			$content .= '<td><a href="individual.php?pid=' . WT_USER_GEDCOM_ID . '&amp;ged=' . WT_GEDURL . '"><i class="icon-indis"></i><br>' . WT_I18N::translate('My individual record') . '</a></td>';
 		}
 		$content .= '</tr></table>';
 
 		if ($template) {
-			require WT_THEME_DIR.'templates/block_main_temp.php';
+			return Theme::theme()->formatBlock($id, $title, $class, $content);
 		} else {
 			return $content;
 		}

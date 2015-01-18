@@ -1,6 +1,6 @@
 <?php
 // webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// Copyright (C) 2015 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2010 John Finlay
@@ -20,6 +20,7 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 use WT\Auth;
+use WT\Theme;
 
 /**
  * Class charts_WT_Module
@@ -88,18 +89,18 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 
 		if ($person) {
 			switch($type) {
-				case 'pedigree':
-					$title .= WT_I18N::translate('Pedigree of %s', $person->getFullName());
-					break;
-				case 'descendants':
-					$title .= WT_I18N::translate('Descendants of %s', $person->getFullName());
-					break;
-				case 'hourglass':
-					$title .= WT_I18N::translate('Hourglass chart of %s', $person->getFullName());
-					break;
-				case 'treenav':
-					$title .= WT_I18N::translate('Interactive tree of %s', $person->getFullName());
-					break;
+			case 'pedigree':
+				$title .= WT_I18N::translate('Pedigree of %s', $person->getFullName());
+				break;
+			case 'descendants':
+				$title .= WT_I18N::translate('Descendants of %s', $person->getFullName());
+				break;
+			case 'hourglass':
+				$title .= WT_I18N::translate('Hourglass chart of %s', $person->getFullName());
+				break;
+			case 'treenav':
+				$title .= WT_I18N::translate('Interactive tree of %s', $person->getFullName());
+				break;
 			}
 			$title .= help_link('index_charts', $this->getName());
 			$content = '<table cellspacing="0" cellpadding="0" border="0"><tr>';
@@ -151,7 +152,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 		$PEDIGREE_FULL_DETAILS = $savePedigreeFullDetails;
 
 		if ($template) {
-			require WT_THEME_DIR.'templates/block_main_temp.php';
+			return Theme::theme()->formatBlock($id, $title, $class, $content);
 		} else {
 			return $content;
 		}

@@ -211,7 +211,7 @@ class WT_Report_HTML extends WT_Report_Base {
 	 *
 	 */
 	function run() {
-		$controller = new WT_Controller_Simple();
+		$controller = new WT_Controller_Simple;
 		$controller
 			->setPageTitle($this->title)
 			->pageHeader();
@@ -360,7 +360,7 @@ class WT_Report_HTML extends WT_Report_Base {
 	 * @return WT_Report_HTML_PageHeader
 	 */
 	function createPageHeader() {
-		return new WT_Report_HTML_PageHeader();
+		return new WT_Report_HTML_PageHeader;
 	}
 
 	/**

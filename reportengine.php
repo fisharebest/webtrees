@@ -27,7 +27,7 @@ define('WT_SCRIPT_NAME', 'reportengine.php');
 require './includes/session.php';
 require WT_ROOT . 'includes/functions/functions_rtl.php';
 
-$controller = new WT_Controller_Page();
+$controller = new WT_Controller_Page;
 
 $famid = WT_Filter::get('famid', WT_REGEX_XREF);
 $pid = WT_Filter::get('pid', WT_REGEX_XREF);
@@ -287,18 +287,18 @@ case 'setup':
 case 'run':
 	if (strstr($report, 'report_singlepage.xml') !== false) {
 		$DEBUG = false;
-		$pedigree = new ReportPedigree();
+		$pedigree = new ReportPedigree;
 		exit;
 	}
 
 	switch ($output) {
 	case 'HTML':
 		header('Content-type: text/html; charset=UTF-8');
-		$wt_report = new WT_Report_HTML();
+		$wt_report = new WT_Report_HTML;
 		$ReportRoot = $wt_report;
 		break;
 	case 'PDF':
-		$wt_report = new WT_Report_PDF();
+		$wt_report = new WT_Report_PDF;
 		$ReportRoot = $wt_report;
 		break;
 	}
@@ -370,7 +370,7 @@ case 'run':
 	 *
 	 * @global object $currentElement
 	 */
-	$currentElement = new WT_Report_Base_Element();
+	$currentElement = new WT_Report_Base_Element;
 
 	/**
 	 * Should character data be printed

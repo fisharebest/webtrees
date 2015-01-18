@@ -61,7 +61,7 @@ class TreeView {
 				</div>
 				<h2 id="tree-title">' . WT_I18N::translate('Interactive tree of %s', $root_person->getFullName()) . '</h2>
 				<div id="' . $this->name . '_in" class="tv_in" dir="ltr">
-					' . $this->drawPerson($root_person, $generations, 0, null, null, true) .'
+					' . $this->drawPerson($root_person, $generations, 0, null, null, true) . '
 				</div>
 			</div>
 		';

@@ -13643,7 +13643,7 @@ msgstr "Aika sekunneissa, miten kauan webtrees sessio / käyttäjän istunto pys
 #. I18N: An XREF is the identification number used in GEDCOM files.
 #: admin_trees_merge.php:77
 #, php-format
-msgid "The two family trees have %1$s record which use the same “XREF”."
+msgid "The two family trees have %1$s record which uses the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
 msgstr[0] "Molemmissa sukupuissa on yksi tietue joilla on sama “XREF”."
 msgstr[1] "Molemmissa sukupuissa on %1$s tietuetta joilla on sama “XREF”."
@@ -14386,7 +14386,7 @@ msgstr "Tämä sivusto on tilapäisesti poissa käytöstä"
 
 #: admin_trees_manage.php:137
 #, php-format
-msgid "This will delete all the genealogical data from <b>%s</b> and replace it with data from another GEDCOM."
+msgid "This will delete all the genealogical data from <b>%s</b> and replace it with data from another GEDCOM file."
 msgstr "Tämä poistaa kaikki sukututkimustiedot <b>%s</b>sta ja korvaa ne toisen GEDCOMin tiedoilla."
 
 #: modules_v3/googlemap/module.php:1772

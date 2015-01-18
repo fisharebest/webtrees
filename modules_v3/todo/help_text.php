@@ -21,19 +21,19 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES') || !defined('WT_SCRIPT_NAME') || WT_SCRIPT_NAME!='help_text.php') {
+if (!defined('WT_WEBTREES') || !defined('WT_SCRIPT_NAME') || WT_SCRIPT_NAME != 'help_text.php') {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
 switch ($help) {
 case 'todo':
-	$title=WT_I18N::translate('Research tasks');
-	$text=WT_I18N::translate('Research tasks are special events, added to individuals in your family tree, which identify the need for further research.  You can use them as a reminder to check facts against more reliable sources, to obtain documents or photographs, to resolve conflicting information, etc.').
-		'</p><p class="ui-state-highlight">'.
-		WT_I18N::translate('To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences.').
-		'</p><p class="ui-state-highlight">'.
-		WT_I18N::translate('Research tasks are stored using the custom GEDCOM tag “_TODO”.  Other genealogy applications may not recognize this tag.').
+	$title = WT_I18N::translate('Research tasks');
+	$text = WT_I18N::translate('Research tasks are special events, added to individuals in your family tree, which identify the need for further research.  You can use them as a reminder to check facts against more reliable sources, to obtain documents or photographs, to resolve conflicting information, etc.') .
+		'</p><p class="ui-state-highlight">' .
+		WT_I18N::translate('To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences.') .
+		'</p><p class="ui-state-highlight">' .
+		WT_I18N::translate('Research tasks are stored using the custom GEDCOM tag “_TODO”.  Other genealogy applications may not recognize this tag.') .
 		'</p>';
 	break;
 }

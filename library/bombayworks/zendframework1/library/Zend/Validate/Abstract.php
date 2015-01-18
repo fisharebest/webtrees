@@ -14,7 +14,7 @@
  *
  * @category   Zend
  * @package    Zend_Validate
- * @copyright  Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
@@ -27,7 +27,7 @@
 /**
  * @category   Zend
  * @package    Zend_Validate
- * @copyright  Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 abstract class Zend_Validate_Abstract implements Zend_Validate_Interface
@@ -345,6 +345,7 @@ abstract class Zend_Validate_Abstract implements Zend_Validate_Interface
      * Set translation object
      *
      * @param  Zend_Translate|Zend_Translate_Adapter|null $translator
+     * @throws Zend_Validate_Exception
      * @return Zend_Validate_Abstract
      */
     public function setTranslator($translator = null)
@@ -392,7 +393,7 @@ abstract class Zend_Validate_Abstract implements Zend_Validate_Interface
      * Set default translation object for all validate objects
      *
      * @param  Zend_Translate|Zend_Translate_Adapter|null $translator
-     * @return void
+     * @throws Zend_Validate_Exception
      */
     public static function setDefaultTranslator($translator = null)
     {

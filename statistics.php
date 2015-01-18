@@ -34,7 +34,7 @@ $tab  = WT_Filter::getInteger('tab', 0, 3);
 $ajax = WT_Filter::getBool('ajax');
 
 if (!$ajax) {
-	$controller = new WT_Controller_Page();
+	$controller = new WT_Controller_Page;
 	$controller->setPageTitle(WT_I18N::translate('Statistics'))
 		->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
 		->addInlineJavascript('
@@ -77,7 +77,7 @@ if (!$ajax) {
 	'</div>', // statistics-page
 	'<br><br>';
 } else {
-	$controller = new WT_Controller_Ajax();
+	$controller = new WT_Controller_Ajax;
 	$controller
 		->pageHeader()
 		->addInlineJavascript('autocomplete();')

@@ -93,8 +93,9 @@ function select_edit_control($name, $values, $empty, $selected, $extra='') {
 	if (empty($values) && empty($html)) {
 		$html='<option value=""></option>';
 	}
-	foreach ($values as $key=>$value) {
-		if ((string)$key===(string)$selected) { // Because "0" != ""
+	foreach ($values as $key => $value) {
+		// PHP array keys are cast to integers!  Cast them back
+		if ((string)$key === (string)$selected) {
 			$html.='<option value="'.WT_Filter::escapeHtml($key).'" selected="selected" dir="auto">'.WT_Filter::escapeHtml($value).'</option>';
 		} else {
 			$html.='<option value="'.WT_Filter::escapeHtml($key).'" dir="auto">'.WT_Filter::escapeHtml($value).'</option>';
@@ -156,7 +157,8 @@ function radio_buttons($name, $values, $selected, $extra = '') {
 	$html = '';
 	foreach ($values as $key => $value) {
 		$html .= '<label ' . $extra . '><input type="radio" name="' . $name . '" value="' . WT_Filter::escapeHtml($key) . '"';
-		if ((string)$key === (string)$selected) { // Beware PHP array keys are cast to integers!  Cast them back
+		// PHP array keys are cast to integers!  Cast them back
+		if ((string)$key === (string)$selected) {
 			$html .= ' checked';
 		}
 		$html .= '>' . WT_Filter::escapeHtml($value) . '</label>';
@@ -323,7 +325,7 @@ function edit_field_resn($name, $selected='', $extra='') {
 function edit_field_contact($name, $selected='', $extra='') {
 	// Different ways to contact the users
 	$CONTACT_METHODS=array(
-		'messaging' =>WT_I18N::translate('webtrees internal messaging'),
+		'messaging' =>WT_I18N::translate('Internal messaging'),
 		'messaging2'=>WT_I18N::translate('Internal messaging with emails'),
 		'messaging3'=>WT_I18N::translate('webtrees sends emails with no storage'),
 		'mailto'    =>WT_I18N::translate('Mailto link'),
@@ -1770,41 +1772,42 @@ function insert_missing_subtags($level1tag, $add_date=false) {
 			} else if ($level1tag!='TITL' && $level1tag!='NAME') {
 				add_simple_tag('2 '.$key, $level1tag);
 			}
-			switch ($key) { // Add level 3/4 tags as appropriate
-				case 'PLAC':
-					if (preg_match_all('/('.WT_REGEX_TAG.')/', $ADVANCED_PLAC_FACTS, $match)) {
-						foreach ($match[1] as $tag) {
-							add_simple_tag("3 $tag", '', WT_Gedcom_Tag::getLabel("{$level1tag}:PLAC:{$tag}"));
-						}
+			// Add level 3/4 tags as appropriate
+			switch ($key) {
+			case 'PLAC':
+				if (preg_match_all('/('.WT_REGEX_TAG.')/', $ADVANCED_PLAC_FACTS, $match)) {
+					foreach ($match[1] as $tag) {
+						add_simple_tag("3 $tag", '', WT_Gedcom_Tag::getLabel("{$level1tag}:PLAC:{$tag}"));
 					}
-					add_simple_tag('3 MAP');
-					add_simple_tag('4 LATI');
-					add_simple_tag('4 LONG');
-					break;
-				case 'FILE':
-					add_simple_tag('3 FORM');
-					break;
-				case 'EVEN':
-					add_simple_tag('3 DATE');
-					add_simple_tag('3 PLAC');
-					break;
-				case 'STAT':
-					if (WT_Gedcom_Code_Temp::isTagLDS($level1tag)) {
-						add_simple_tag('3 DATE', '', WT_Gedcom_Tag::getLabel('STAT:DATE'));
-					}
-					break;
-				case 'DATE':
-					if (in_array($level1tag, $date_and_time))
-						add_simple_tag('3 TIME'); // TIME is NOT a valid 5.5.1 tag
-					break;
-				case 'HUSB':
-				case 'WIFE':
-					add_simple_tag('3 AGE');
-					break;
-				case 'FAMC':
-					if ($level1tag=='ADOP')
-						add_simple_tag('3 ADOP BOTH');
-					break;
+				}
+				add_simple_tag('3 MAP');
+				add_simple_tag('4 LATI');
+				add_simple_tag('4 LONG');
+				break;
+			case 'FILE':
+				add_simple_tag('3 FORM');
+				break;
+			case 'EVEN':
+				add_simple_tag('3 DATE');
+				add_simple_tag('3 PLAC');
+				break;
+			case 'STAT':
+				if (WT_Gedcom_Code_Temp::isTagLDS($level1tag)) {
+					add_simple_tag('3 DATE', '', WT_Gedcom_Tag::getLabel('STAT:DATE'));
+				}
+				break;
+			case 'DATE':
+				if (in_array($level1tag, $date_and_time))
+					add_simple_tag('3 TIME'); // TIME is NOT a valid 5.5.1 tag
+				break;
+			case 'HUSB':
+			case 'WIFE':
+				add_simple_tag('3 AGE');
+				break;
+			case 'FAMC':
+				if ($level1tag=='ADOP')
+					add_simple_tag('3 ADOP BOTH');
+				break;
 			}
 		} elseif ($key=='DATE' && $add_date) {
 			add_simple_tag('2 DATE', $level1tag, WT_Gedcom_Tag::getLabel("{$level1tag}:DATE"));

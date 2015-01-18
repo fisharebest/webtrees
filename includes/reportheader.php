@@ -49,7 +49,7 @@ $report_array = array();
  * xml start element handler
  *
  * this function is called whenever a starting element is reached
-
+ *
  * @param resource $parser the resource handler for the xml parser
  * @param string   $name the name of the xml element parsed
  * @param string[] $attrs an array of key value pairs for the attributes

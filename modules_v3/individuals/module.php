@@ -68,7 +68,7 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 		if ($search) {
 			return $this->search($search);
-		} elseif ($alpha=='@' || $alpha==',' || $surname) {
+		} elseif ($alpha == '@' || $alpha == ',' || $surname) {
 			return $this->getSurnameIndis($alpha, $surname);
 		} elseif ($alpha) {
 			return $this->getAlphaSurnames($alpha, $surname);
@@ -82,7 +82,7 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		global $WT_IMAGES, $UNKNOWN_NN, $controller;
 
 		// Fetch a list of the initial letters of all surnames in the database
-		$initials=WT_Query_Name::surnameAlpha(true, false, WT_GED_ID, false);
+		$initials = WT_Query_Name::surnameAlpha(true, false, WT_GED_ID, false);
 
 		$controller->addInlineJavascript('
 			var loadedNames = new Array();
@@ -134,24 +134,24 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		');
 
 
-		$out='<form method="post" action="module.php?mod='.$this->getName().'&amp;mod_action=ajax" onsubmit="return false;"><input type="search" name="sb_indi_name" id="sb_indi_name" placeholder="'.WT_I18N::translate('Search').'"><p>';
+		$out = '<form method="post" action="module.php?mod=' . $this->getName() . '&amp;mod_action=ajax" onsubmit="return false;"><input type="search" name="sb_indi_name" id="sb_indi_name" placeholder="' . WT_I18N::translate('Search') . '"><p>';
 		foreach ($initials as $letter=>$count) {
 			switch ($letter) {
-				case '@':
-					$html=$UNKNOWN_NN;
-					break;
-				case ',':
-					$html=WT_I18N::translate('None');
-					break;
-				case ' ':
-					$html='&nbsp;';
-					break;
-				default:
-					$html=$letter;
-					break;
+			case '@':
+				$html = $UNKNOWN_NN;
+				break;
+			case ',':
+				$html = WT_I18N::translate('None');
+				break;
+			case ' ':
+				$html = '&nbsp;';
+				break;
+			default:
+				$html = $letter;
+				break;
 			}
-			$html='<a href="module.php?mod='.$this->getName().'&amp;mod_action=ajax&amp;sb_action=individuals&amp;alpha='.urlencode($letter).'" class="sb_indi_letter">'.$html.'</a>';
-			$out .= $html." ";
+			$html = '<a href="module.php?mod=' . $this->getName() . '&amp;mod_action=ajax&amp;sb_action=individuals&amp;alpha=' . urlencode($letter) . '" class="sb_indi_letter">' . $html . '</a>';
+			$out .= $html . " ";
 		}
 
 		$out .= '</p>';
@@ -167,12 +167,12 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	 *
 	 * @return string
 	 */
-	public function getAlphaSurnames($alpha, $surname1='') {
+	public function getAlphaSurnames($alpha, $surname1 = '') {
 		$surnames = WT_Query_Name::surnames('', $alpha, true, false, WT_GED_ID);
 		$out = '<ul>';
 		foreach (array_keys($surnames) as $surname) {
 			$out .= '<li id="sb_indi_' . $surname . '" class="sb_indi_surname_li"><a href="' . $surname . '" title="' . $surname . '" alt="' . $alpha . '" class="sb_indi_surname">' . $surname . '</a>';
-			if (!empty($surname1) && $surname1==$surname) {
+			if (!empty($surname1) && $surname1 == $surname) {
 				$out .= '<div class="name_tree_div_visible">';
 				$out .= $this->getSurnameIndis($alpha, $surname1);
 				$out .= '</div>';
@@ -193,15 +193,15 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	 * @return string
 	 */
 	public function getSurnameIndis($alpha, $surname) {
-		$indis=WT_Query_Name::individuals($surname, $alpha, '', true, false, WT_GED_ID);
+		$indis = WT_Query_Name::individuals($surname, $alpha, '', true, false, WT_GED_ID);
 		$out = '<ul>';
 		foreach ($indis as $person) {
 			if ($person->canShowName()) {
-				$out .= '<li><a href="'.$person->getHtmlUrl().'">'.$person->getSexImage().' '.$person->getFullName().' ';
+				$out .= '<li><a href="' . $person->getHtmlUrl() . '">' . $person->getSexImage() . ' ' . $person->getFullName() . ' ';
 				if ($person->canShow()) {
 					$bd = $person->getLifeSpan();
 					if (!empty($bd)) {
-						$out .= ' ('.$bd.')';
+						$out .= ' (' . $bd . ')';
 					}
 				}
 				$out .= '</a></li>';
@@ -218,16 +218,16 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	 * @return string
 	 */
 	public function search($query) {
-		if (strlen($query)<2) {
+		if (strlen($query) < 2) {
 			return '';
 		}
-		$rows=
+		$rows =
 			WT_DB::prepare(
-				"SELECT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom".
-				" FROM `##individuals`, `##name`".
-				" WHERE (i_id LIKE ? OR n_sort LIKE ?)".
-				" AND i_id=n_id AND i_file=n_file AND i_file=?".
-				" ORDER BY n_sort COLLATE '".WT_I18N::$collation."'".
+				"SELECT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom" .
+				" FROM `##individuals`, `##name`" .
+				" WHERE (i_id LIKE ? OR n_sort LIKE ?)" .
+				" AND i_id=n_id AND i_file=n_file AND i_file=?" .
+				" ORDER BY n_sort COLLATE '" . WT_I18N::$collation . "'" .
 				" LIMIT 50"
 			)
 			->execute(array("%{$query}%", "%{$query}%", WT_GED_ID))
@@ -237,10 +237,12 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		foreach ($rows as $row) {
 			$person = WT_Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 			if ($person->canShowName()) {
-				$out .= '<li><a href="'.$person->getHtmlUrl().'">'.$person->getSexImage().' '.$person->getFullName().' ';
+				$out .= '<li><a href="' . $person->getHtmlUrl() . '">' . $person->getSexImage() . ' ' . $person->getFullName() . ' ';
 				if ($person->canShow()) {
 					$bd = $person->getLifeSpan();
-					if (!empty($bd)) $out .= ' ('.$bd.')';
+					if (!empty($bd)) {
+						$out .= ' (' . $bd . ')';
+					}
 				}
 				$out .= '</a></li>';
 			}

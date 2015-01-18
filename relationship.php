@@ -2,7 +2,7 @@
 // Calculates the relationship between two individuals in the gedcom
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// Copyright (C) 2015 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009 PGV Development Team.
@@ -21,11 +21,13 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Theme;
+
 define('WT_SCRIPT_NAME', 'relationship.php');
 require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
-$controller = new WT_Controller_Page();
+$controller = new WT_Controller_Page;
 
 $pid1         = WT_Filter::get('pid1', WT_REGEX_XREF);
 $pid2         = WT_Filter::get('pid2', WT_REGEX_XREF);
@@ -37,9 +39,9 @@ $asc          = WT_Filter::getBool('asc');
 $asc = $asc ? -1 : 1;
 $Dbwidth=$bwidth;
 if (!$show_full) {
-	$bwidth  = $cbwidth;
-	$bheight = $cbheight;
-	$Dbwidth = $cbwidth;
+	$bwidth  = Theme::theme()->parameter('compact-chart-box-x');
+	$bheight = Theme::theme()->parameter('compact-chart-box-y');
+	$Dbwidth = Theme::theme()->parameter('compact-chart-box-x');
 }
 
 $Dbheight  		= $bheight;
@@ -251,7 +253,7 @@ if ($person1 && $person2) {
 				case 'mother':
 				case 'parent':
 					$arrow_img = $down_arrow;
-					$line = $WT_IMAGES['vline'];
+					$line = Theme::theme()->parameter('image-vline');
 					$liney += $Dbheight;
 					$linex += $Dbwidth/2;
 					$lh = 54;
@@ -263,7 +265,7 @@ if ($person1 && $person2) {
 					$rowNum += $asc;
 					if ($asc==1) {
 						$liney = $yoffset-$lh;
-					}	else {
+					} else {
 						$liney = $yoffset+$Dbheight;
 					}
 					// need to draw a joining line ?
@@ -276,18 +278,19 @@ if ($person1 && $person2) {
 						$linex = $xoffset-$xs/2;
 						if ($asc==-1) {
 							$liney=$yoffset+$Dbheight;
-						}	else {
+						} else {
 							$liney=$yoffset-$lh;
 						}
 						$joinx = $xoffset-$xs;
 						$joiny = $liney-2-($asc-1)/2*$lh;
-						echo "<div id=\"joina", $index, "\" style=\"position:absolute; ", $TEXT_DIRECTION=='ltr'?'left':'right', ':', $joinx + $Dbxspacing, 'px; top:', $joiny + $Dbyspacing, "px;\" align=\"center\"><img src=\"", $WT_IMAGES['hline'], "\" align=\"left\" width=\"", $joinw, "\" height=\"", $joinh, "\" alt=\"\"></div>";
+						echo "<div id=\"joina", $index, "\" style=\"position:absolute; ", $TEXT_DIRECTION=='ltr'?'left':'right', ':', $joinx + $Dbxspacing, 'px; top:', $joiny + $Dbyspacing, "px;\" align=\"center\"><img src=\"", Theme::theme()->parameter('image-hline'), "\" align=\"left\" width=\"", $joinw, "\" height=\"", $joinh, "\" alt=\"\"></div>";
 						$joinw = $xs/2+2;
 						$joinx = $joinx+$xs/2;
 						$joiny = $joiny+$asc*$lh;
-						echo "<div id=\"joinb", $index, "\" style=\"position:absolute; ", $TEXT_DIRECTION=='ltr'?'left':'right', ':', $joinx + $Dbxspacing, 'px; top:', $joiny + $Dbyspacing, "px;\" align=\"center\"><img src=\"", $WT_IMAGES["hline"], "\" align=\"left\" width=\"", $joinw, "\" height=\"", $joinh, "\" alt=\"\"></div>";
+						echo "<div id=\"joinb", $index, "\" style=\"position:absolute; ", $TEXT_DIRECTION=='ltr'?'left':'right', ':', $joinx + $Dbxspacing, 'px; top:', $joiny + $Dbyspacing, "px;\" align=\"center\"><img src=\"", Theme::theme()->parameter('image-hline'), "\" align=\"left\" width=\"", $joinw, "\" height=\"", $joinh, "\" alt=\"\"></div>";
+					} else {
+						$change_count='';
 					}
-					else $change_count='';
 					$previous='parent';
 					break;
 				case 'brother':
@@ -300,7 +303,7 @@ if ($person1 && $person2) {
 					$xoffset += $Dbwidth+$Dbxspacing+70;
 					$colNum ++;
 					//$rowNum is inherited from the box immediately to the left
-					$line = $WT_IMAGES['hline'];
+					$line = Theme::theme()->parameter('image-hline');
 					$linex += $Dbwidth;
 					$liney += $Dbheight/2;
 					$lh = 3;
@@ -314,7 +317,7 @@ if ($person1 && $person2) {
 				case 'daughter':
 				case 'child':
 					$arrow_img = $up_arrow;
-					$line = $WT_IMAGES['vline'];
+					$line = Theme::theme()->parameter('image-vline');
 					$liney += $Dbheight;
 					$linex += $Dbwidth/2;
 					$lh = 54;
@@ -326,7 +329,7 @@ if ($person1 && $person2) {
 					$rowNum -= $asc;
 					if ($asc==-1) {
 						$liney = $yoffset-$lh;
-					}	else {
+					} else {
 						$liney = $yoffset+$Dbheight;
 					}
 					// need to draw a joining line ?
@@ -339,18 +342,19 @@ if ($person1 && $person2) {
 						$linex = $xoffset-$xs/2;
 						if ($asc==1) {
 							$liney=$yoffset+$Dbheight;
-						}	else {
+						} else {
 							$liney=$yoffset-($lh+$Dbyspacing);
 						}
 						$joinx = $xoffset-$xs;
 						$joiny = $liney-2+($asc+1)/2*$lh;
-						echo '<div id="joina', $index, '" style="position:absolute; ', $TEXT_DIRECTION=='ltr'?'left':'right', ':', $joinx+$Dbxspacing, 'px; top:', $joiny+$Dbyspacing, 'px;" align="center"><img src="', $WT_IMAGES['hline'], '" align="left" width="', $joinw, '" height="', $joinh, '" alt=""></div>';
+						echo '<div id="joina', $index, '" style="position:absolute; ', $TEXT_DIRECTION=='ltr'?'left':'right', ':', $joinx+$Dbxspacing, 'px; top:', $joiny+$Dbyspacing, 'px;" align="center"><img src="', Theme::theme()->parameter('image-hline'), '" align="left" width="', $joinw, '" height="', $joinh, '" alt=""></div>';
 						$joinw = $xs/2+2;
 						$joinx = $joinx+$xs/2;
 						$joiny = $joiny-$asc*$lh;
-						echo '<div id="joinb', $index, '" style="position:absolute; ', $TEXT_DIRECTION=='ltr'?'left':'right', ':', $joinx+$Dbxspacing, 'px; top:', $joiny+$Dbyspacing, 'px;" align="center"><img src="', $WT_IMAGES['hline'], '" align="left" width="', $joinw, '" height="', $joinh, '" alt=""></div>';
+						echo '<div id="joinb', $index, '" style="position:absolute; ', $TEXT_DIRECTION=='ltr'?'left':'right', ':', $joinx+$Dbxspacing, 'px; top:', $joiny+$Dbyspacing, 'px;" align="center"><img src="', Theme::theme()->parameter('image-hline'), '" align="left" width="', $joinw, '" height="', $joinh, '" alt=""></div>';
+					} else {
+						$change_count='';
 					}
-					else $change_count='';
 					$previous='child';
 					break;
 				}
@@ -364,7 +368,7 @@ if ($person1 && $person2) {
 				$pyoffset = $yoffset - 2;
 
 				if ($index>0) {
-					if ($TEXT_DIRECTION=='rtl' && $line!=$WT_IMAGES['hline']) {
+					if ($TEXT_DIRECTION === 'rtl' && $line !== Theme::theme()->parameter('image-hline')) {
 						echo '<div id="line', $index, '" style="background:none; position:absolute; right:', $plinex+$Dbxspacing, 'px; top:', $liney+$Dbyspacing, 'px; width:', $lw+$lh*2, 'px;" align="right">';
 						echo '<img src="', $line, '" align="right" width="', $lw, '" height="', $lh, '" alt="">';
 						echo '<br>';

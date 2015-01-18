@@ -1,6 +1,6 @@
 <?php
 // webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// Copyright (C) 2015 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2010 John Finlay
@@ -20,6 +20,7 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 use WT\Auth;
+use WT\Theme;
 
 /**
  * Class recent_changes_WT_Module
@@ -74,27 +75,26 @@ class recent_changes_WT_Module extends WT_Module implements WT_Module_Block {
 		$content = '';
 		// Print block content
 		if (count($found_facts) == 0) {
-      $content .= WT_I18N::translate('There have been no changes within the last %s days.', WT_I18N::number($days));
+			$content .= WT_I18N::translate('There have been no changes within the last %s days.', WT_I18N::number($days));
 		} else {
 			ob_start();
 			switch ($infoStyle) {
-				case 'list':
-					$content .= print_changes_list($found_facts, $sortStyle);
-					break;
-				case 'table':
-					// sortable table
-					$content .= print_changes_table($found_facts, $sortStyle);
-					break;
+			case 'list':
+				$content .= print_changes_list($found_facts, $sortStyle);
+				break;
+			case 'table':
+				// sortable table
+				$content .= print_changes_table($found_facts, $sortStyle);
+				break;
 			}
 			$content .= ob_get_clean();
 		}
 
 		if ($template) {
 			if ($block) {
-				require WT_THEME_DIR . 'templates/block_small_temp.php';
-			} else {
-				require WT_THEME_DIR . 'templates/block_main_temp.php';
+				$class .= ' small_inner_block';
 			}
+			return Theme::theme()->formatBlock($id, $title, $class, $content);
 		} else {
 			return $content;
 		}

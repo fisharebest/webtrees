@@ -25,9 +25,9 @@
 
 define('WT_SCRIPT_NAME', 'hourglass.php');
 require './includes/session.php';
-require_once WT_ROOT.'includes/functions/functions_edit.php';
+require_once WT_ROOT . 'includes/functions/functions_edit.php';
 
-$controller = new WT_Controller_Hourglass();
+$controller = new WT_Controller_Hourglass;
 $controller
 	->pageHeader()
 	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
@@ -72,7 +72,7 @@ $gencount = 0;
 					<?php echo WT_I18N::translate('Show spouses'), help_link('show_spouse'); ?>
 				</td>
 				<td class="optionbox">
-					<input type="checkbox" value="1" name="show_spouse" <?php echo $controller->show_spouse? ' checked="checked"' : ''; ?>>
+					<input type="checkbox" value="1" name="show_spouse" <?php echo $controller->show_spouse ? ' checked="checked"' : ''; ?>>
 				</td>
 			</tr>
 			<tr>

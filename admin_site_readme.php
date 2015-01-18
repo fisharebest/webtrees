@@ -2,7 +2,7 @@
 // UI for online updating of the config file.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// Copyright (C) 2015 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -25,7 +25,7 @@ define('WT_SCRIPT_NAME', 'admin_site_readme.php');
 
 require './includes/session.php';
 
-$controller = new WT_Controller_Page();
+$controller = new WT_Controller_Page;
 $controller
 	->restrictAccess(Auth::isAdmin())
 	->setPageTitle(WT_I18N::translate('README documentation'))
@@ -36,6 +36,12 @@ $readme = file_get_contents('README.md');
 $readme = preg_replace('/.*(?=# webtrees)/s', '', $readme);
 
 ?>
+<ol class="breadcrumb small">
+	<li><a href="admin.php"><?php echo WT_I18N::translate('Administration'); ?></a></li>
+	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
+</ol>
+<h2><?php echo $controller->getPageTitle(); ?></h2>
+
 <div class="markdown" dir="ltr" lang="en">
 	<?php echo MarkdownExtra::defaultTransform($readme); ?>
 </div>

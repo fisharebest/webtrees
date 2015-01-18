@@ -2,7 +2,7 @@
 // Restrict/allow site access based on IP address and user-agent string
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// Copyright (C) 2015 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -22,13 +22,13 @@ use WT\Auth;
 
 define('WT_SCRIPT_NAME', 'admin_site_access.php');
 require './includes/session.php';
-require WT_ROOT.'includes/functions/functions_edit.php';
+require WT_ROOT . 'includes/functions/functions_edit.php';
 
-$controller = new WT_Controller_Page();
+$controller = new WT_Controller_Page;
 $controller
 	->restrictAccess(Auth::isAdmin())
 	->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
-	->addExternalJavascript(WT_JQUERY_JEDITABLE_URL)
+	->addExternalJavascript(WT_DATATABLES_BOOTSTRAP_JS_URL)
 	->setPageTitle(WT_I18N::translate('Site access rules'));
 
 $action = WT_Filter::get('action');
@@ -51,25 +51,25 @@ case 'load_rules':
 	$start  = WT_Filter::getInteger('start');
 	$length = WT_Filter::getInteger('length');
 
-	$sql=
-		"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS".
-		" INET_NTOA(ip_address_start), ip_address_start, INET_NTOA(ip_address_end), ip_address_end, user_agent_pattern, rule, comment, site_access_rule_id".
-		" FROM `##site_access_rule`".
+	$sql =
+		"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS" .
+		" INET_NTOA(ip_address_start), ip_address_start, INET_NTOA(ip_address_end), ip_address_end, user_agent_pattern, rule, comment, site_access_rule_id" .
+		" FROM `##site_access_rule`" .
 		" WHERE rule<>'unknown'";
-	$args=array();
+	$args = array();
 
 	if ($search) {
-		$sql.=
-			" AND (INET_ATON(?) BETWEEN ip_address_start AND ip_address_end".
-			" OR INET_NTOA(ip_address_start) LIKE CONCAT('%', ?, '%')".
-			" OR INET_NTOA(ip_address_end) LIKE CONCAT('%', ?, '%')".
-			" OR user_agent_pattern LIKE CONCAT('%', ?, '%')".
+		$sql .=
+			" AND (INET_ATON(?) BETWEEN ip_address_start AND ip_address_end" .
+			" OR INET_NTOA(ip_address_start) LIKE CONCAT('%', ?, '%')" .
+			" OR INET_NTOA(ip_address_end) LIKE CONCAT('%', ?, '%')" .
+			" OR user_agent_pattern LIKE CONCAT('%', ?, '%')" .
 			" OR comment LIKE CONCAT('%', ?, '%'))";
-		$args[]=$search;
-		$args[]=$search;
-		$args[]=$search;
-		$args[]=$search;
-		$args[]=$search;
+		$args[] = $search;
+		$args[] = $search;
+		$args[] = $search;
+		$args[] = $search;
+		$args[] = $search;
 	}
 
 	$order = WT_Filter::getArray('order');
@@ -94,8 +94,8 @@ case 'load_rules':
 		$sql .= 'ORDER BY 1 ASC';
 	}
 
-	if ($length>0) {
-		$sql.=" LIMIT " . $start . ',' . $length;
+	if ($length > 0) {
+		$sql .= " LIMIT " . $start . ',' . $length;
 	}
 
 	// This becomes a JSON list, not a JSON array, so we need numeric keys.
@@ -112,8 +112,8 @@ case 'load_rules':
 			'deny'  => /* I18N: An access rule - deny access to the site */  WT_I18N::translate('deny'),
 			'robot' => /* I18N: http://en.wikipedia.org/wiki/Web_crawler */  WT_I18N::translate('robot'),
 		), null, $datum[5]);
-		$datum[6] = edit_field_inline('site_access_rule-comment-'.$site_access_rule_id, $datum[6]);
-		$datum[7] = '<i class="icon-delete" onclick="if (confirm(\'' . WT_Filter::escapeHtml(WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($user_agent))).'\')) { document.location=\'' . WT_SCRIPT_NAME . '?action=delete&amp;site_access_rule_id=' . $site_access_rule_id . '\'; }"></i>';
+		$datum[6] = edit_field_inline('site_access_rule-comment-' . $site_access_rule_id, $datum[6]);
+		$datum[7] = '<button class="btn btn-danger" onclick="if (confirm(\'' . WT_Filter::escapeHtml(WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($user_agent))) . '\')) { document.location=\'' . WT_SCRIPT_NAME . '?action=delete&amp;site_access_rule_id=' . $site_access_rule_id . '\'; }"><i class="fa fa-trash-o"></i></button>';
 	}
 
 	// Total filtered/unfiltered rows
@@ -121,7 +121,8 @@ case 'load_rules':
 	$recordsTotal = WT_DB::prepare("SELECT COUNT(*) FROM `##site_access_rule` WHERE rule <> 'unknown'")->fetchOne();
 
 	header('Content-type: application/json');
-	echo json_encode(array( // See http://www.datatables.net/usage/server-side
+	// See http://www.datatables.net/usage/server-side
+	echo json_encode(array(
 		'draw'            => WT_Filter::getInteger('draw'), // Always an integer
 		'recordsTotal'    => $recordsTotal,
 		'recordsFiltered' => $recordsFiltered,
@@ -136,16 +137,16 @@ case 'load_unknown':
 	$start  = WT_Filter::getInteger('start');
 	$length = WT_Filter::getInteger('length');
 
-	$sql=
-		"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS".
-		" INET_NTOA(ip_address_start), ip_address_start, user_agent_pattern, DATE(updated) AS updated, site_access_rule_id".
-		" FROM `##site_access_rule`".
+	$sql =
+		"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS" .
+		" INET_NTOA(ip_address_start), ip_address_start, user_agent_pattern, DATE(updated) AS updated, site_access_rule_id" .
+		" FROM `##site_access_rule`" .
 		" WHERE rule='unknown'";
 	$args = array();
 
 	if ($search) {
 		$sql .=
-			" AND (INET_ATON(ip_address_start) LIKE CONCAT('%', ?, '%')".
+			" AND (INET_ATON(ip_address_start) LIKE CONCAT('%', ?, '%')" .
 			" OR user_agent_pattern LIKE CONCAT('%', ?, '%'))";
 		$args[] = $search;
 		$args[] = $search;
@@ -174,7 +175,7 @@ case 'load_unknown':
 	}
 
 
-	if ($length>0) {
+	if ($length > 0) {
 		$sql .= " LIMIT " . $start . ',' . $length;
 	}
 
@@ -182,10 +183,10 @@ case 'load_unknown':
 	$data = WT_DB::prepare($sql)->execute($args)->fetchAll(PDO::FETCH_NUM);
 	// Reformat the data for display
 	foreach ($data as &$datum) {
-		$site_access_rule_id=$datum[4];
-		$datum[4] = '<i class="icon-yes" onclick="document.location=\'' . WT_SCRIPT_NAME . '?action=allow&amp;site_access_rule_id=' . $site_access_rule_id . '\';"></i>';
-		$datum[5] = '<i class="icon-yes" onclick="document.location=\'' . WT_SCRIPT_NAME .  '?action=deny&amp;site_access_rule_id=' . $site_access_rule_id . '\';"></i>';
-		$datum[6] = '<i class="icon-yes" onclick="document.location=\'' . WT_SCRIPT_NAME . '?action=robot&amp;site_access_rule_id=' . $site_access_rule_id . '\';"></i>';
+		$site_access_rule_id = $datum[4];
+		$datum[4] = '<button class="btn btn-primary" onclick="document.location=\'' . WT_SCRIPT_NAME . '?action=allow&amp;site_access_rule_id=' . $site_access_rule_id . '\';"><i class="fa fa-check"></i></button>';
+		$datum[5] = '<button class="btn btn-primary" onclick="document.location=\'' . WT_SCRIPT_NAME . '?action=deny&amp;site_access_rule_id=' . $site_access_rule_id . '\';"><i class="fa fa-ban"></i></button>';
+		$datum[6] = '<button class="btn btn-primary" onclick="document.location=\'' . WT_SCRIPT_NAME . '?action=robot&amp;site_access_rule_id=' . $site_access_rule_id . '\';"><i class="fa fa-android"></i></button>';
 	}
 
 	// Total filtered/unfiltered rows
@@ -193,7 +194,8 @@ case 'load_unknown':
 	$recordsTotal    = WT_DB::prepare("SELECT COUNT(*) FROM `##site_access_rule` WHERE rule = 'unknown'")->fetchOne();
 
 	header('Content-type: application/json');
-	echo json_encode(array( // See http://www.datatables.net/usage/server-side
+	// See http://www.datatables.net/usage/server-side
+	echo json_encode(array(
 		'draw'            => WT_Filter::getInteger('draw'), // Always an integer
 		'recordsTotal'    => $recordsTotal,
 		'recordsFiltered' => $recordsFiltered,
@@ -207,15 +209,11 @@ $controller
 	->addInlineJavascript('
 		jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
 		jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
-		jQuery("#site_access_rules").dataTable({
-			dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
-			ajax: "'.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME.'?action=load_rules",
+		jQuery(".table-site-access-rules").dataTable({
+			ajax: "' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=load_rules",
 			serverSide: true,
-			'.WT_I18N::datatablesI18N().',
-			jQueryUI: true,
-			autoWidth: false,
+			' . WT_I18N::datatablesI18N() . ',
 			processing: true,
-			pagingType: "full_numbers",
 			stateSave: true,
 			stateDuration: 180,
 			columns: [
@@ -228,25 +226,15 @@ $controller
 				/* 6 rule                    */ { },
 				/* 7 <delete>                */ { sortable: false, class: "center" }
 			],
-			fnDrawCallback: function() {
-				// Our JSON responses include Javascript as well as HTML.  This does not get
-				// executed, So extract it, and execute it
-				jQuery("#site_access_rules script").each(function() {
-					eval(this.text);
-				});
-			}
 		});
-		jQuery("#unknown_site_visitors").dataTable({
-			dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
-			ajax: "'.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME.'?action=load_unknown",
+
+		jQuery(".table-unknown-site-visitors").dataTable({
+			ajax: "' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=load_unknown",
 			serverSide: true,
-			'.WT_I18N::datatablesI18N().',
-			jQueryUI: true,
-			autoWidth: false,
+			' . WT_I18N::datatablesI18N() . ',
 			processing: true,
 			stateSave: true,
 			stateDuration: 180,
-			pagingType: "full_numbers",
 			columns: [
 				/* 0 ip_address         */ { dataSort: 1, class: "ip_address" },
 				/* 0 ip_address (sort)  */ { type: "num", visible: false },
@@ -262,20 +250,25 @@ $controller
 // Delete any "unknown" visitors that are now "known".
 // This could happen every time we create/update a rule.
 WT_DB::exec(
-	"DELETE unknown".
-	" FROM `##site_access_rule` AS unknown".
-	" JOIN `##site_access_rule` AS known ON (unknown.user_agent_pattern LIKE known.user_agent_pattern)".
-	" WHERE unknown.rule='unknown' AND known.rule<>'unknown'".
+	"DELETE unknown" .
+	" FROM `##site_access_rule` AS unknown" .
+	" JOIN `##site_access_rule` AS known ON (unknown.user_agent_pattern LIKE known.user_agent_pattern)" .
+	" WHERE unknown.rule='unknown' AND known.rule<>'unknown'" .
 	" AND unknown.ip_address_start BETWEEN known.ip_address_start AND known.ip_address_end"
 );
 
 ?>
+<ol class="breadcrumb small">
+	<li><a href="admin.php"><?php echo WT_I18N::translate('Administration'); ?></a></li>
+	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
+</ol>
+<h2><?php echo $controller->getPageTitle(); ?></h2>
 
-<h2><?php echo /* I18N: http://en.wikipedia.org/wiki/User_agent */ WT_I18N::translate('Restrict access to the site, using IP addresses and user-agent strings'); ?></h2>
+<p><?php echo /* I18N: http://en.wikipedia.org/wiki/User_agent */ WT_I18N::translate('Restrict access to the site, using IP addresses and user-agent strings'); ?></p>
 
 <p><?php echo WT_I18N::translate('The following rules are used to decide whether a visitor is a human being (allow full access), a search-engine robot (allow restricted access) or an unwanted crawler (deny all access).'); ?></p>
 
-<table id="site_access_rules" style="width:100%;">
+<table class="table table-hover table-condensed table-bordered table-site-access-rules">
 	<thead>
 		<tr>
 			<th><?php echo /* I18N [...] of a range of addresses */ WT_I18N::translate('Start IP address'); ?></th>
@@ -292,7 +285,7 @@ WT_DB::exec(
 
 <p><?php echo WT_I18N::translate('The following visitors were not recognized, and were assumed to be search engines.'); ?></p>
 
-<table id="unknown_site_visitors" style="width:100%;">
+<table class="table table-hover table-condensed table-bordered table-unknown-site-visitors">
 	<thead>
 		<tr>
 			<th rowspan="2"><?php /* I18N: http://en.wikipedia.org/wiki/IP_address */ echo WT_I18N::translate('IP address'); ?></th>

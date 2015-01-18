@@ -21,7 +21,7 @@
 
 use WT\Auth;
 
-require_once WT_ROOT.'includes/functions/functions_print_facts.php';
+require_once WT_ROOT . 'includes/functions/functions_print_facts.php';
 
 /**
  * Class WT_Controller_Repository - Controller for the repository page
@@ -68,7 +68,7 @@ class WT_Controller_Repository extends WT_Controller_GedcomRecord {
 		// delete
 		if (WT_USER_CAN_EDIT) {
 			$submenu = new WT_Menu(WT_I18N::translate('Delete'), '#', 'menu-repo-del');
-			$submenu->setOnclick("return delete_repository('" . WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($this->record->getFullName()))."', '".$this->record->getXref()."');");
+			$submenu->setOnclick("return delete_repository('" . WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($this->record->getFullName())) . "', '" . $this->record->getXref() . "');");
 			$menu->addSubmenu($submenu);
 		}
 
@@ -86,7 +86,7 @@ class WT_Controller_Repository extends WT_Controller_GedcomRecord {
 				'#',
 				'menu-repo-addfav'
 			);
-			$submenu->setOnclick("jQuery.post('module.php?mod=user_favorites&amp;mod_action=menu-add-favorite',{xref:'".$this->record->getXref()."'},function(){location.reload();})");
+			$submenu->setOnclick("jQuery.post('module.php?mod=user_favorites&amp;mod_action=menu-add-favorite',{xref:'" . $this->record->getXref() . "'},function(){location.reload();})");
 			$menu->addSubmenu($submenu);
 		}
 

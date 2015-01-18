@@ -27,7 +27,7 @@ define('WT_SCRIPT_NAME', 'mediaviewer.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
-$controller = new WT_Controller_Media();
+$controller = new WT_Controller_Media;
 
 if ($controller->record && $controller->record->canShow()) {
 	$controller->pageHeader();

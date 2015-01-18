@@ -1,6 +1,6 @@
 <?php
 // webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// Copyright (C) 2015 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2010 John Finlay
@@ -21,6 +21,7 @@
 
 use WT\Auth;
 use WT\Log;
+use WT\Theme;
 
 /**
  * Class googlemap_WT_Module
@@ -146,7 +147,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 	/** {@inheritdoc} */
 	public function getTabContent() {
-		global $WT_IMAGES, $controller;
+		global $controller;
 
 		if ($this->checkMapData()) {
 			ob_start();
@@ -192,7 +193,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			echo '</td>';
 			echo '</tr></table>';
 			// start
-			echo '<img src="', $WT_IMAGES['spacer'], '" id="marker6" width="1" height="1" alt="">';
+			echo '<img src="', Theme::theme()->parameter('image-spacer'), '" id="marker6" width="1" height="1" alt="">';
 			// end
 			echo '</td></tr></table>';
 			echo '<script>loadMap();</script>';
@@ -230,7 +231,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 		$action = WT_Filter::post('action');
 
-		$controller = new WT_Controller_Page();
+		$controller = new WT_Controller_Page;
 		$controller
 			->restrictAccess(Auth::isAdmin())
 			->setPageTitle(WT_I18N::translate('Google Maps™'))
@@ -480,7 +481,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 	private function flags() {
 		require WT_ROOT . 'includes/functions/functions_edit.php';
 
-		$controller = new WT_Controller_Simple();
+		$controller = new WT_Controller_Simple;
 		$controller
 			->setPageTitle(WT_I18N::translate('Select flag'))
 			->pageHeader();
@@ -693,7 +694,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		$hideflags = WT_Filter::getBool('hideflags');
 		$hidelines = WT_Filter::getBool('hidelines');
 
-		$controller = new WT_Controller_Pedigree();
+		$controller = new WT_Controller_Pedigree;
 
 		// Start of internal configuration variables
 		// Limit this to match available number of icons.
@@ -807,7 +808,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					$lon[$i] = str_replace(array('E', 'W', ','), array('', '-', '.'), $latlongval[$i]->pl_long);
 					if (($lat[$i] != null) && ($lon[$i] != null)) {
 						$count++;
-					} else { // The place is in the table but has empty values
+					} else {
+						// The place is in the table but has empty values
 						if ($name) {
 							if ($missing) {
 								$missing .= ', ';
@@ -816,7 +818,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 							$miscount++;
 						}
 					}
-				} else { // There was no place, or not listed in the map table
+				} else {
+					// There was no place, or not listed in the map table
 					if ($name) {
 						if ($missing) {
 							$missing .= ', ';
@@ -1498,7 +1501,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		$state     = WT_Filter::get('state', '.+', 'XYZ');
 		$matching  = WT_Filter::getBool('matching');
 
-		$controller = new WT_Controller_Page();
+		$controller = new WT_Controller_Page;
 		$controller
 			->restrictAccess(Auth::isAdmin())
 			->setPageTitle(WT_I18N::translate('Google Maps™'))
@@ -1933,7 +1936,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 						'class'        => 'optionbox',
 						'date'         => $fact->getDate()->display(true),
 						'fact_label'   => $fact->getLabel(),
-						'image'        => $spouse ? $spouse->displayImage() : $fact->icon(),
+						'image'        => $spouse ? $spouse->displayImage() : Theme::theme()->icon($fact),
 						'info'         => $fact->getValue(),
 						'lat'          => str_replace(array('N', 'S', ','), array('', '-', '.') , $match1[1]),
 						'lng'          => str_replace(array('E', 'W', ','), array('', '-', '.') , $match2[1]),
@@ -1955,7 +1958,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 							'class'        => 'optionbox',
 							'date'         => $fact->getDate()->display(true),
 							'fact_label'   => $fact->getLabel(),
-							'image'        => $spouse ? $spouse->displayImage() : $fact->icon(),
+							'image'        => $spouse ? $spouse->displayImage() : Theme::theme()->icon($fact),
 							'info'         => $fact->getValue(),
 							'lat'          => str_replace(array('N', 'S', ','), array('', '-', '.'), $latlongval->pl_lati),
 							'lng'          => str_replace(array('E', 'W', ','), array('', '-', '.'), $latlongval->pl_long),
@@ -3258,7 +3261,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		$placeid    = WT_Filter::post('placeid',    null, WT_Filter::get('placeid'));
 		$place_name = WT_Filter::post('place_name', null, WT_Filter::get('place_name'));
 
-		$controller = new WT_Controller_Simple();
+		$controller = new WT_Controller_Simple;
 		$controller
 				->restrictAccess(Auth::isAdmin())
 				->setPageTitle(WT_I18N::translate('Geographic data'))
@@ -4071,7 +4074,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			$parent=0;
 		}
 
-		$controller = new WT_Controller_Page();
+		$controller = new WT_Controller_Page;
 		$controller->restrictAccess(Auth::isAdmin());
 
 		if ($action=='ExportFile' && Auth::isAdmin()) {
@@ -4197,7 +4200,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 			$default_zoom_level=array(4, 7, 10, 12);
 			foreach ($placelistUniq as $k=>$place) {
-		        $parent=preg_split('/ *, */', $place['place']);
+				$parent=preg_split('/ *, */', $place['place']);
 				$parent=array_reverse($parent);
 				$parent_id=0;
 				for ($i=0; $i<count($parent); $i++) {

@@ -4,7 +4,7 @@
 // Various printing functions used to print fact records
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// Copyright (C) 2015 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010 PGV Development Team.
@@ -24,6 +24,7 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 use Rhumsaa\Uuid\Uuid;
+use WT\Theme;
 use WT\User;
 
 /**
@@ -149,7 +150,7 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 	echo '<td class="descriptionbox width20">';
 
 	if ($SHOW_FACT_ICONS) {
-		echo $fact->icon(), ' ';
+		echo Theme::theme()->icon($fact), ' ';
 	}
 
 	if ($fact->getFactId()!='histo' && $fact->canEdit()) {
@@ -380,8 +381,8 @@ function print_fact(WT_Fact $fact, WT_GedcomRecord $record) {
 			}
 			break;
 		case 'FAMC': // 0 INDI / 1 ADOP / 2 FAMC / 3 ADOP
-			$family=WT_Family::getInstance(str_replace('@', '', $match[2]));
-			if ($family) { // May be a pointer to a non-existant record
+			$family = WT_Family::getInstance(str_replace('@', '', $match[2]));
+			if ($family) {
 				echo WT_Gedcom_Tag::getLabelValue('FAM', '<a href="'.$family->getHtmlUrl().'">'.$family->getFullName().'</a>');
 				if (preg_match('/\n3 ADOP (HUSB|WIFE|BOTH)/', $fact->getGedcom(), $match)) {
 					echo WT_Gedcom_Tag::getLabelValue('ADOP', WT_Gedcom_Code_Adop::getValue($match[1], $label_person));

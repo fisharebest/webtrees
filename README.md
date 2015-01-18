@@ -38,7 +38,7 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY
 WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
 PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 
-See the GPL.txt included with this software for more detailed licensing
+See the file LICENSE.md included with this software for more detailed licensing
 information.
 
 

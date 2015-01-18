@@ -24,7 +24,7 @@
 define('WT_SCRIPT_NAME', 'familybook.php');
 require './includes/session.php';
 
-$controller = new WT_Controller_Familybook();
+$controller = new WT_Controller_Familybook;
 $controller
 	->pageHeader()
 	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
@@ -62,10 +62,10 @@ $controller
 				<td class="optionbox">
 					<select name="generations">
 						<?php
-						for ($i=2; $i<=$MAX_DESCENDANCY_GENERATIONS; $i++) {
-							echo "<option value=\"".$i."\"" ;
+						for ($i = 2; $i <= $MAX_DESCENDANCY_GENERATIONS; $i++) {
+							echo "<option value=\"" . $i . "\"";
 							if ($i == $controller->generations) echo " selected=\"selected\"";
-							echo ">".WT_I18N::number($i)."</option>";
+							echo ">" . WT_I18N::number($i) . "</option>";
 						}
 						?>
 					</select>

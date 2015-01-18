@@ -1,6 +1,6 @@
 <?php
 // webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// Copyright (C) 2015 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2010 John Finlay
@@ -21,6 +21,7 @@
 
 use Rhumsaa\Uuid\Uuid;
 use WT\Auth;
+use WT\Theme;
 
 /**
  * Class todo_WT_Module
@@ -68,7 +69,7 @@ class todo_WT_Module extends WT_Module implements WT_Module_Block {
 			->addInlineJavascript('
 			jQuery("#' . $table_id . '").dataTable({
 				dom: \'t\',
-				'.WT_I18N::datatablesI18N().',
+				' . WT_I18N::datatablesI18N().',
 				autoWidth: false,
 				paginate: false,
 				lengthChange: false,
@@ -130,10 +131,9 @@ class todo_WT_Module extends WT_Module implements WT_Module_Block {
 
 		if ($template) {
 			if ($block) {
-				require WT_THEME_DIR.'templates/block_small_temp.php';
-			} else {
-				require WT_THEME_DIR.'templates/block_main_temp.php';
+				$class .= ' small_inner_block';
 			}
+			return Theme::theme()->formatBlock($id, $title, $class, $content);
 		} else {
 			return $content;
 		}

@@ -8,7 +8,7 @@ use PHPUnit_Framework_TestCase;
  *
  * @package   webtrees
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2014 webtrees development team
+ * @copyright (c) 2015 webtrees development team
  * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2
  */
 
@@ -32,58 +32,6 @@ class FunctionsPrintTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * Test that function header_links() exists in the global namespace.
-	 *
-	 * @return void
-	 */
-	public function testFunctionHeaderLinksExists() {
-		$this->assertEquals(function_exists('\\header_links'), true);
-	}
-
-	/**
-	 * Test that function execution_statistics() exists in the global namespace.
-	 *
-	 * @return void
-	 */
-	public function testFunctionExecutionStatsExists() {
-		$this->assertEquals(function_exists('\\execution_stats'), true);
-	}
-
-	/**
-	 * Test that function login_link() exists in the global namespace.
-	 *
-	 * @return void
-	 */
-	public function testFunctionLoginLinkExists() {
-		$this->assertEquals(function_exists('\\login_link'), true);
-	}
-
-	/**
-	 * Test that function logout_link() exists in the global namespace.
-	 *
-	 * @return void
-	 */
-	public function testFunctionLogoutLinkExists() {
-		$this->assertEquals(function_exists('\\logout_link'), true);
-	}
-
-	/**
-	 * Test that function user_contact_link() exists in the global namespace.
-	 *
-	 * @return void
-	 */
-	public function testFunctionUserContactLinkExists() {
-		$this->assertEquals(function_exists('\\user_contact_link'), true);
-	}
-
-	/**
-	 * Test that function contact_links() exists in the global namespace.
-	 *
-	 * @return void
-	 */
-	public function testFunctionContactLinksExists() {
-		$this->assertEquals(function_exists('\\contact_links'), true);
-	}
 
 	/**
 	 * Test that function print_note_record() exists in the global namespace.

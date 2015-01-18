@@ -41,8 +41,8 @@ else
         function iconv_strlen($s, $enc = INF) {return s\Iconv::strlen2($s, $enc);};
     }
 
-    function iconv_strpos($s, $needle, $offset = 0, $enc = INF)         {INF === $enc && $enc = s\Iconv::$internal_encoding; return s\Mbstring::mb_strpos($s, $needle, $offset, $enc);};
-    function iconv_strrpos($s, $needle, $enc = INF)                     {INF === $enc && $enc = s\Iconv::$internal_encoding; return s\Mbstring::mb_strrpos($s, $needle, $enc);};
-    function iconv_substr($s, $start, $length = 2147483647, $enc = INF) {INF === $enc && $enc = s\Iconv::$internal_encoding; return s\Mbstring::mb_substr($s, $start, $length, $enc);};
+    function iconv_strpos($s, $needle, $offset = 0, $enc = INF)         {return s\Iconv::iconv_strpos($s, $needle, $offset, $enc);};
+    function iconv_strrpos($s, $needle, $enc = INF)                     {return s\Iconv::iconv_strrpos($s, $needle, $enc);};
+    function iconv_substr($s, $start, $length = 2147483647, $enc = INF) {return s\Iconv::iconv_substr($s, $start, $length, $enc);};
     function iconv_mime_decode($encoded_headers, $mode = 0, $enc = INF) {return s\Iconv::iconv_mime_decode($encoded_headers, $mode, $enc);};
 }

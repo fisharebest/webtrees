@@ -3,7 +3,7 @@
 // to keep bookmarks, see a list of upcoming events, etc.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// Copyright (C) 2015 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009 PGV Development Team.
@@ -51,7 +51,7 @@ fetch_latest_version();
 
 // We generate individual blocks using AJAX
 if ($action === 'ajax') {
-	$controller = new WT_Controller_Ajax();
+	$controller = new WT_Controller_Ajax;
 	$controller->pageHeader();
 
 	// Check we’re displaying an allowable block.
@@ -66,7 +66,7 @@ if ($action === 'ajax') {
 	if (array_key_exists($module_name, $all_blocks)) {
 		$class_name = $module_name . '_WT_Module';
 		$module     = new $class_name;
-		$module->getBlock($block_id);
+		echo $module->getBlock($block_id);
 	}
 	if (WT_DEBUG_SQL) {
 		echo WT_DB::getQueryLog();
@@ -74,7 +74,7 @@ if ($action === 'ajax') {
 	exit;
 }
 
-$controller = new WT_Controller_Page();
+$controller = new WT_Controller_Page;
 if ($ctype === 'user') {
 	$controller->restrictAccess(Auth::check());
 }
@@ -103,7 +103,7 @@ if ($blocks['main']) {
 		$module     = new $class_name;
 		if ($SEARCH_SPIDER || !$module->loadAjax()) {
 			// Load the block directly
-			$module->getBlock($block_id);
+			echo $module->getBlock($block_id);
 		} else {
 			// Load the block asynchronously
 			echo '<div id="block_', $block_id, '"><div class="loading-image">&nbsp;</div></div>';
@@ -125,7 +125,7 @@ if ($blocks['side']) {
 		$module     = new $class_name;
 		if ($SEARCH_SPIDER || !$module->loadAjax()) {
 			// Load the block directly
-			$module->getBlock($block_id);
+			echo $module->getBlock($block_id);
 		} else {
 			// Load the block asynchronously
 			echo '<div id="block_', $block_id, '"><div class="loading-image">&nbsp;</div></div>';

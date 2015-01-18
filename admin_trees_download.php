@@ -25,17 +25,17 @@ use WT\Auth;
 
 define('WT_SCRIPT_NAME', 'admin_trees_download.php');
 require './includes/session.php';
-require WT_ROOT.'includes/functions/functions_export.php';
+require WT_ROOT . 'includes/functions/functions_export.php';
 
-$controller = new WT_Controller_Page();
+$controller = new WT_Controller_Page;
 $controller
 	->setPageTitle(WT_I18N::translate('Download GEDCOM'))
 	->restrictAccess(Auth::isManager());
 
 // Validate user parameters
-$action           = WT_Filter::get('action',           'download');
-$convert          = WT_Filter::get('convert',          'yes|no', 'no');
-$zip              = WT_Filter::get('zip',              'yes|no', 'no');
+$action           = WT_Filter::get('action', 'download');
+$convert          = WT_Filter::get('convert', 'yes|no', 'no');
+$zip              = WT_Filter::get('zip', 'yes|no', 'no');
 $conv_path        = WT_Filter::get('conv_path');
 $privatize_export = WT_Filter::get('privatize_export', 'none|visitor|user|gedadmin');
 
@@ -53,10 +53,10 @@ if ($action == 'download') {
 	}
 
 	if ($zip == "yes") {
-		require WT_ROOT.'library/pclzip.lib.php';
+		require WT_ROOT . 'library/pclzip.lib.php';
 
 		$temp_dir = WT_DATA_DIR . 'tmp-' . WT_GEDCOM . '-' . date("YmdHis") . '/';
-		$zip_file  = $download_filename . ".zip";
+		$zip_file = $download_filename . ".zip";
 
 		if (!WT_File::mkdir($temp_dir)) {
 			echo "Error : Could not create temporary path!";
@@ -77,7 +77,7 @@ if ($action == 'download') {
 		} else {
 			header('Content-Type: application/zip');
 			header('Content-Disposition: attachment; filename="' . $zip_file . '"');
-			header('Content-length: '.filesize($temp_dir . $zip_file));
+			header('Content-length: ' . filesize($temp_dir . $zip_file));
 			readfile($temp_dir . $zip_file);
 			WT_File::delete($temp_dir);
 		}
