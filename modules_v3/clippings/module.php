@@ -541,8 +541,9 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 		<tr><td class="topbottombar"><input type="submit" value="'.WT_I18N::translate('Continue adding') . '">
 		</table>
 		</form>';
+		} else {
+			return $this->getSidebarContent();
 		}
-		else return $this->getSidebarContent();
 		return $out;
 	}
 

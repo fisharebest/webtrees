@@ -38,7 +38,7 @@ use WT\Theme;
 function print_pedigree_person(WT_Individual $person = null, $style = 1) {
 	global $show_full;
 
-	switch ($show_full){
+	switch ($show_full) {
 	case 0:
 		if ($person) {
 		echo Theme::theme()->individualBoxSmall($person);
