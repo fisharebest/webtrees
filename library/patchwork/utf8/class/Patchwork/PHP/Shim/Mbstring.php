@@ -18,8 +18,12 @@ namespace Patchwork\PHP\Shim;
  * - mb_decode_mimeheader    - Decode string in MIME header field
  * - mb_encode_mimeheader    - Encode string for MIME header XXX NATIVE IMPLEMENTATION IS REALLY BUGGED
  * - mb_convert_case         - Perform case folding on a string
+ * - mb_get_info             - Get internal settings of mbstring
+ * - mb_http_input           - Detect HTTP input character encoding
+ * - mb_http_output          - Set/Get HTTP output character encoding
  * - mb_internal_encoding    - Set/Get internal character encoding
  * - mb_list_encodings       - Returns an array of all supported encodings
+ * - mb_output_handler       - Callback function converts character encoding in output buffer
  * - mb_strlen               - Get string length
  * - mb_strpos               - Find position of first occurrence of string in a string
  * - mb_strrpos              - Find position of last occurrence of a string in a string
@@ -33,28 +37,23 @@ namespace Patchwork\PHP\Shim;
  * - mb_strrichr             - Finds the last occurrence of a character in a string within another, case insensitive
  * - mb_strripos             - Finds position of last occurrence of a string within another, case insensitive
  * - mb_strstr               - Finds first occurrence of a string within anothers
+ * - mb_strwidth             - Return width of string
+ * - mb_substr_count         - Count the number of substring occurrences
  *
  * Not implemented:
- * - mb_convert_kana               - Convert "kana" one from another ("zen-kaku", "han-kaku" and more)
- * - mb_convert_variables          - Convert character code in variable(s)
- * - mb_decode_numericentity       - Decode HTML numeric string reference to character
- * - mb_encode_numericentity       - Encode character to HTML numeric string reference
- * - mb_ereg*                      - Regular expression with multibyte support
- * - mb_get_info                   - Get internal settings of mbstring
- * - mb_http_input                 - Detect HTTP input character encoding
- * - mb_http_output                - Set/Get HTTP output character encoding
- * - mb_list_mime_names            - Returns an array or string of all supported mime names
- * - mb_output_handler             - Callback function converts character encoding in output buffer
- * - mb_parse_str                  - Parse GET/POST/COOKIE data and set global variable
- * - mb_preferred_mime_name        - Get MIME charset string
- * - mb_regex_encoding             - Returns current encoding for multibyte regex as string
- * - mb_regex_set_options          - Set/Get the default options for mbregex functions
- * - mb_send_mail                  - Send encoded mail
- * - mb_split                      - Split multibyte string using regular expression
- * - mb_strcut                     - Get part of string
- * - mb_strimwidth                 - Get truncated string with specified width
- * - mb_strwidth                   - Return width of string
- * - mb_substr_count               - Count the number of substring occurrences
+ * - mb_convert_kana         - Convert "kana" one from another ("zen-kaku", "han-kaku" and more)
+ * - mb_convert_variables    - Convert character code in variable(s)
+ * - mb_decode_numericentity - Decode HTML numeric string reference to character
+ * - mb_encode_numericentity - Encode character to HTML numeric string reference
+ * - mb_ereg_*               - Regular expression with multibyte support
+ * - mb_parse_str            - Parse GET/POST/COOKIE data and set global variable
+ * - mb_preferred_mime_name  - Get MIME charset string
+ * - mb_regex_encoding       - Returns current encoding for multibyte regex as string
+ * - mb_regex_set_options    - Set/Get the default options for mbregex functions
+ * - mb_send_mail            - Send encoded mail
+ * - mb_split                - Split multibyte string using regular expression
+ * - mb_strcut               - Get part of string
+ * - mb_strimwidth           - Get truncated string with specified width
  */
 class Mbstring
 {
@@ -299,7 +298,7 @@ class Mbstring
         return iconv_strlen($s, $encoding . '//IGNORE');
     }
 
-    static function mb_strpos ($haystack, $needle, $offset = 0, $encoding = INF)
+    static function mb_strpos($haystack, $needle, $offset = 0, $encoding = INF)
     {
         INF === $encoding && $encoding = self::$internal_encoding;
         if ('' === $needle .= '')
@@ -408,6 +407,68 @@ class Mbstring
         else return substr($haystack, $pos);
     }
 
+    static function mb_get_info($type = 'all')
+    {
+        $info = array(
+            'internal_encoding' => self::$internal_encoding,
+            'http_output' => 'pass',
+            'http_output_conv_mimetypes' => '^(text/|application/xhtml\+xml)',
+            'func_overload' => 0,
+            'func_overload_list' => 'no overload',
+            'mail_charset' => 'UTF-8',
+            'mail_header_encoding' => 'BASE64',
+            'mail_body_encoding' => 'BASE64',
+            'illegal_chars' => 0,
+            'encoding_translation' => 'Off',
+            'language' => self::$language,
+            'detect_order' => self::$encoding_list,
+            'substitute_character' => 'none',
+            'strict_detection' => 'Off',
+        );
+
+        if ('all' === $type) {
+            return $info;
+        } elseif (isset($info[$type])) {
+            return $info[$type];
+        } else {
+            return false;
+        }
+    }
+
+    static function mb_http_input($type = '')
+    {
+        return false;
+    }
+
+    static function mb_http_output($encoding = INF)
+    {
+        return INF !== $encoding ? 'pass' === $encoding : 'pass';
+    }
+
+    static function mb_strwidth($s, $encoding = INF)
+    {
+        $encoding = INF === $encoding ? self::$internal_encoding : strtoupper($encoding);
+
+        if ('UTF-8' !== $encoding && 'UTF8' !== $encoding) {
+            $s = iconv($encoding, 'UTF-8//IGNORE', $s);
+        }
+
+        $s = preg_replace('/[\x00-\x19]/', '', $s);
+
+        preg_replace('/[\x{0020}-\x{1FFF}\x{FF61}-\x{FF9F}]/u', '', $s, -1, $narrow);
+
+        return (iconv_strlen($s, 'UTF-8') << 1) - $narrow;
+    }
+
+    static function mb_substr_count($haystack, $needle, $encoding = INF)
+    {
+        return substr_count($haystack, $needle);
+    }
+
+    static function mb_output_handler($contents, $status)
+    {
+        return $contents;
+    }
 
     protected static function getSubpart($pos, $part, $haystack, $encoding)
     {
@@ -420,7 +481,27 @@ class Mbstring
 
     protected static function html_encoding_callback($m)
     {
-        return htmlentities($m[0], ENT_COMPAT, 'UTF-8');
+        $i = 1;
+        $entities = '';
+        $m = unpack('C*', htmlentities($m[0], ENT_COMPAT, 'UTF-8'));
+
+        while (isset($m[$i])) {
+            if (0x80 > $m[$i]) {
+                $entities .= chr($m[$i++]);
+                continue;
+            }
+            if (0xF0 <= $m[$i]) {
+                $c = (($m[$i++] - 0xF0) << 18) + (($m[$i++] - 0x80) << 12) + (($m[$i++] - 0x80) << 6) + $m[$i++] - 0x80;
+            } elseif (0xE0 <= $m[$i]) {
+                $c = (($m[$i++] - 0xE0) << 12) + (($m[$i++] - 0x80) << 6) + $m[$i++]  - 0x80;
+            } else {
+                $c = (($m[$i++] - 0xC0) << 6) + $m[$i++] - 0x80;
+            }
+
+            $entities .= '&#'.$c.';';
+        }
+
+        return $entities;
     }
 
     protected static function title_case_lower($s)

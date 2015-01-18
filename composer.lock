@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "bombayworks/zendframework1",
-            "version": "v1.12.9",
+            "version": "v1.12.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bombayworks/zendframework1.git",
-                "reference": "4bce65c9427866dc62e9ea9ab511f0edffa49f85"
+                "reference": "8d28b59c8fe820f6ed2683cc4fad6551a4576432"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bombayworks/zendframework1/zipball/4bce65c9427866dc62e9ea9ab511f0edffa49f85",
-                "reference": "4bce65c9427866dc62e9ea9ab511f0edffa49f85",
+                "url": "https://api.github.com/repos/bombayworks/zendframework1/zipball/8d28b59c8fe820f6ed2683cc4fad6551a4576432",
+                "reference": "8d28b59c8fe820f6ed2683cc4fad6551a4576432",
                 "shasum": ""
             },
             "require": {
@@ -55,7 +55,7 @@
                 "ZF1",
                 "framework"
             ],
-            "time": "2014-09-17 15:01:24"
+            "time": "2015-01-14 20:01:12"
         },
         {
             "name": "ezyang/htmlpurifier",
@@ -255,16 +255,16 @@
         },
         {
             "name": "patchwork/utf8",
-            "version": "v1.1.26",
+            "version": "v1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tchwork/utf8.git",
-                "reference": "6b8e46603b49ee87ad6bceb314da94cc04ffcdce"
+                "reference": "9639d28f1aa24add93ca7a0cf2a5cc3169ddb7d5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tchwork/utf8/zipball/6b8e46603b49ee87ad6bceb314da94cc04ffcdce",
-                "reference": "6b8e46603b49ee87ad6bceb314da94cc04ffcdce",
+                "url": "https://api.github.com/repos/tchwork/utf8/zipball/9639d28f1aa24add93ca7a0cf2a5cc3169ddb7d5",
+                "reference": "9639d28f1aa24add93ca7a0cf2a5cc3169ddb7d5",
                 "shasum": ""
             },
             "require": {
@@ -274,12 +274,13 @@
             "suggest": {
                 "ext-iconv": "Use iconv for best performance",
                 "ext-intl": "Use Intl for best performance",
-                "ext-mbstring": "Use Mbstring for best performance"
+                "ext-mbstring": "Use Mbstring for best performance",
+                "ext-wfio": "Use WFIO for UTF-8 filesystem access on Windows"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.1-dev"
+                    "dev-master": "1.2-dev"
                 }
             },
             "autoload": {
@@ -307,7 +308,7 @@
                 "utf-8",
                 "utf8"
             ],
-            "time": "2014-11-08 10:13:25"
+            "time": "2015-01-12 20:01:53"
         },
         {
             "name": "rhumsaa/uuid",
@@ -377,16 +378,16 @@
         },
         {
             "name": "tecnick.com/tcpdf",
-            "version": "6.0.099",
+            "version": "6.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tecnickcom/TCPDF.git",
-                "reference": "75e7ad39458e060d0cae6fcb7d50a2c9f3af1b01"
+                "reference": "ba2afad72c6191bfed735dfa357bcaf3f225f52b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/75e7ad39458e060d0cae6fcb7d50a2c9f3af1b01",
-                "reference": "75e7ad39458e060d0cae6fcb7d50a2c9f3af1b01",
+                "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/ba2afad72c6191bfed735dfa357bcaf3f225f52b",
+                "reference": "ba2afad72c6191bfed735dfa357bcaf3f225f52b",
                 "shasum": ""
             },
             "require": {
@@ -436,7 +437,7 @@
                 "pdf417",
                 "qrcode"
             ],
-            "time": "2014-11-15 12:35:49"
+            "time": "2015-01-08 18:35:22"
         }
     ],
     "packages-dev": [],
@@ -444,6 +445,7 @@
     "minimum-stability": "stable",
     "stability-flags": [],
     "prefer-stable": false,
+    "prefer-lowest": false,
     "platform": [],
     "platform-dev": []
 }
