@@ -58,13 +58,13 @@ class WT_Mail {
 		try {
 			$mail = new Zend_Mail('UTF-8');
 			$mail
-				->setSubject ($subject)
+				->setSubject($subject)
 				->setBodyHtml($message)
 				->setBodyText(WT_Filter::unescapeHtml($message))
-				->setFrom    (WT_Site::getPreference('SMTP_FROM_NAME'), $tree->getPreference('title'))
-				->addTo      ($to_email,                                $to_name)
-				->setReplyTo ($replyto_email,                           $replyto_name)
-				->send       (WT_Mail::transport());
+				->setFrom(WT_Site::getPreference('SMTP_FROM_NAME'), $tree->getPreference('title'))
+				->addTo($to_email, $to_name)
+				->setReplyTo($replyto_email, $replyto_name)
+				->send(WT_Mail::transport());
 		} catch (Exception $ex) {
 			Log::addErrorLog('Mail: ' . $ex->getMessage());
 
@@ -87,7 +87,7 @@ class WT_Mail {
 	public static function systemMessage(WT_Tree $tree, User $user, $subject, $message) {
 		return self::send(
 			$tree,
-			$user->getEmail(),                        $user->getRealName(),
+			$user->getEmail(), $user->getRealName(),
 			WT_Site::getPreference('SMTP_FROM_NAME'), $tree->getPreference('title'),
 			$subject,
 			$message

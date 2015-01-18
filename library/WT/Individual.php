@@ -660,7 +660,7 @@ class WT_Individual extends WT_GedcomRecord {
 				if ($min && $max) {
 					$gregorian_calendar = new GregorianCalendar;
 
-					list($year) = $gregorian_calendar->jdToYmd((int)((max($min) + min($max)) / 2));
+					list($year) = $gregorian_calendar->jdToYmd((int) ((max($min) + min($max)) / 2));
 					$this->_getEstimatedBirthDate = new WT_Date('EST ' . $year);
 				} else {
 					$this->_getEstimatedBirthDate = new WT_Date(''); // always return a date object
@@ -1096,7 +1096,7 @@ class WT_Individual extends WT_GedcomRecord {
 		// Extract the structured name parts - use for "sortable" names and indexes
 		////////////////////////////////////////////////////////////////////////////
 
-		$sublevel = 1 + (int)$gedcom[0];
+		$sublevel = 1 + (int) $gedcom[0];
 		$NPFX = preg_match("/\n{$sublevel} NPFX (.+)/", $gedcom, $match) ? $match[1] : '';
 		$GIVN = preg_match("/\n{$sublevel} GIVN (.+)/", $gedcom, $match) ? $match[1] : '';
 		$SURN = preg_match("/\n{$sublevel} SURN (.+)/", $gedcom, $match) ? $match[1] : '';
@@ -1152,9 +1152,9 @@ class WT_Individual extends WT_GedcomRecord {
 			$GIVN = preg_replace(
 				array(
 					'/ ?\/.*\/ ?/', // remove surname
-					'/ ?".+"/',     // remove nickname
-					'/ {2,}/',      // multiple spaces, caused by the above
-					'/^ | $/',      // leading/trailing spaces, caused by the above
+					'/ ?".+"/', // remove nickname
+					'/ {2,}/', // multiple spaces, caused by the above
+					'/^ | $/', // leading/trailing spaces, caused by the above
 				),
 				array(
 					' ',
@@ -1248,11 +1248,11 @@ class WT_Individual extends WT_GedcomRecord {
 			$this->_getAllNames[] = array(
 				'type'    => $type,
 				'sort'    => $SURN . ',' . $GIVN,
-				'full'    => $full,       // This is used for display
-				'fullNN'  => $fullNN,   // This goes into the database
+				'full'    => $full, // This is used for display
+				'fullNN'  => $fullNN, // This goes into the database
 				'surname' => $surname, // This goes into the database
-				'givn'    => $GIVN,       // This goes into the database
-				'surn'    => $SURN,       // This goes into the database
+				'givn'    => $GIVN, // This goes into the database
+				'surn'    => $SURN, // This goes into the database
 			);
 		}
 	}
