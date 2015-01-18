@@ -34,7 +34,7 @@ $controller = new WT_Controller_Page;
 
 // We show three different lists: initials, surnames and individuals
 // Note that the data may contain special chars, such as surname="<unknown>",
-$alpha    = WT_Filter::get('alpha');  // All surnames beginning with this letter where "@"=unknown and ","=none
+$alpha    = WT_Filter::get('alpha'); // All surnames beginning with this letter where "@"=unknown and ","=none
 $surname  = WT_Filter::get('surname'); // All indis with this surname
 $show_all = WT_Filter::get('show_all', 'no|yes', 'no'); // All indis
 // Long lists can be broken down by given name

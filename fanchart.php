@@ -23,7 +23,7 @@
 
 define('WT_SCRIPT_NAME', 'fanchart.php');
 require './includes/session.php';
-require WT_ROOT.'includes/functions/functions_edit.php';
+require WT_ROOT . 'includes/functions/functions_edit.php';
 
 $controller = new WT_Controller_Fanchart;
 

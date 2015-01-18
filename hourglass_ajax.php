@@ -33,7 +33,7 @@ header('Content-type: text/html; charset=UTF-8');
 Zend_Session::writeClose();
 
 // -- print html header information
-if (WT_Filter::get('type')=='desc') {
+if (WT_Filter::get('type') == 'desc') {
 	$controller->printDescendency(WT_Individual::getInstance($controller->pid), 1, false);
 } else {
 	$controller->printPersonPedigree(WT_Individual::getInstance($controller->pid), 0);

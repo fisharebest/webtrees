@@ -25,7 +25,7 @@ use WT\Auth;
 
 define('WT_SCRIPT_NAME', 'find.php');
 require './includes/session.php';
-require_once WT_ROOT.'includes/functions/functions_print_lists.php';
+require_once WT_ROOT . 'includes/functions/functions_print_lists.php';
 
 $controller = new WT_Controller_Simple;
 
@@ -39,13 +39,13 @@ $subclick  = WT_Filter::get('subclick');
 $choose    = WT_Filter::get('choose', '[a-zA-Z0-9_]+', '0all');
 $qs        = WT_Filter::get('tags');
 
-if ($subclick=='all') {
-	$all=true;
+if ($subclick == 'all') {
+	$all = true;
 }
 
-$embed = substr($choose, 0, 1)=="1";
+$embed = substr($choose, 0, 1) == "1";
 $chooseType = substr($choose, 1);
-if ($chooseType!="media" && $chooseType!="0file") {
+if ($chooseType != "media" && $chooseType != "0file") {
 	$chooseType = "all";
 }
 
@@ -82,8 +82,8 @@ case "specialchar":
 	} else {
 		Auth::user()->setPreference('default_language_filter', $language_filter);
 	}
-	require WT_ROOT.'includes/specialchars.php';
-	$action="filter";
+	require WT_ROOT . 'includes/specialchars.php';
+	$action = "filter";
 	break;
 case "facts":
 	$controller
@@ -135,23 +135,23 @@ echo '<script>';
 echo '</script>';
 
 $options = array();
-$options["option"][]= "findindi";
-$options["option"][]= "findfam";
-$options["option"][]= "findmedia";
-$options["option"][]= "findplace";
-$options["option"][]= "findrepo";
-$options["option"][]= "findnote";
-$options["option"][]= "findsource";
-$options["option"][]= "findspecialchar";
-$options["option"][]= "findfact";
-$options["form"][]= "formindi";
-$options["form"][]= "formfam";
-$options["form"][]= "formmedia";
-$options["form"][]= "formplace";
-$options["form"][]= "formrepo";
-$options["form"][]= "formnote";
-$options["form"][]= "formsource";
-$options["form"][]= "formspecialchar";
+$options["option"][] = "findindi";
+$options["option"][] = "findfam";
+$options["option"][] = "findmedia";
+$options["option"][] = "findplace";
+$options["option"][] = "findrepo";
+$options["option"][] = "findnote";
+$options["option"][] = "findsource";
+$options["option"][] = "findspecialchar";
+$options["option"][] = "findfact";
+$options["form"][] = "formindi";
+$options["form"][] = "formfam";
+$options["form"][] = "formmedia";
+$options["form"][] = "formplace";
+$options["form"][] = "formrepo";
+$options["form"][] = "formnote";
+$options["form"][] = "formsource";
+$options["form"][] = "formspecialchar";
 
 echo '<div id="find-page"><h3>', $controller->getPageTitle(), '</h3>';
 
@@ -159,7 +159,7 @@ echo '<div id="find-page"><h3>', $controller->getPageTitle(), '</h3>';
 if ($type == "indi") {
 	echo '<div id="find-header">
 	<form name="filterindi" method="get" onsubmit="return checknames(this);" action="find.php">
-	<input type="hidden" name="callback" value="'.$callback.'">
+	<input type="hidden" name="callback" value="'.$callback . '">
 	<input type="hidden" name="action" value="filter">
 	<input type="hidden" name="type" value="indi">
 	<span>', WT_I18N::translate('Name contains:'), '&nbsp;</span>
@@ -174,7 +174,7 @@ if ($type == "indi") {
 if ($type == "fam") {
 	echo '<div id="find-header">
 	<form name="filterfam" method="get" onsubmit="return checknames(this);" action="find.php">
-	<input type="hidden" name="callback" value="'.$callback.'">
+	<input type="hidden" name="callback" value="'.$callback . '">
 	<input type="hidden" name="action" value="filter">
 	<input type="hidden" name="type" value="fam">
 	<span>', WT_I18N::translate('Name contains:'), '&nbsp;</span>
@@ -279,16 +279,16 @@ if ($type == 'specialchar') {
 	<form name="filterspecialchar" method="get" action="find.php">
 	<input type="hidden" name="action" value="filter">
 	<input type="hidden" name="type" value="specialchar">
-	<input type="hidden" name="callback" value="'.$callback.'">
+	<input type="hidden" name="callback" value="'.$callback . '">
 	<p><select id="language_filter" name="language_filter" onchange="submit();">
 	<option value="">', WT_I18N::translate('Change language'), '</option>';
 	$language_options = '';
 	foreach ($specialchar_languages as $key=>$special_character) {
-		$language_options.= '<option value="'.$key.'"';
-		if ($key==$language_filter) {
-			$language_options.=' selected="selected"';
+		$language_options .= '<option value="' . $key . '"';
+		if ($key == $language_filter) {
+			$language_options .= ' selected="selected"';
 		}
-		$language_options.='>'.$special_character.'</option>';
+		$language_options .= '>' . $special_character . '</option>';
 	}
 	echo $language_options,
 	'</select>
@@ -405,11 +405,11 @@ if ($type == "facts") {
 		var n,i,j,tmp,preselectedDefaultTags="\x01<?php foreach ($preselDefault as $p) echo addslashes($p), '\\x01'; ?>";
 
 		DefaultTags=[<?php
-		$firstFact=TRUE;
+		$firstFact = TRUE;
 		foreach (WT_Gedcom_Tag::getPicklistFacts() as $factId => $factName) {
-			if ($firstFact) $firstFact=FALSE;
+			if ($firstFact) $firstFact = FALSE;
 			else echo ',';
-			echo 'new DefaultTag("'.addslashes($factId).'","'.addslashes($factName).'",preselectedDefaultTags.indexOf("\\x01'.addslashes($factId).'\\x01")>=0)';
+			echo 'new DefaultTag("' . addslashes($factId) . '","' . addslashes($factName) . '",preselectedDefaultTags.indexOf("\\x01' . addslashes($factId) . '\\x01")>=0)';
 		}
 		?>];
 		TheList=document.getElementById("tbDefinedTags");
@@ -470,14 +470,14 @@ if ($type == "facts") {
 	</form></div>';
 }
 
-if ($action=="filter") {
+if ($action == "filter") {
 	$filter = trim($filter);
-	$filter_array=explode(' ', preg_replace('/ {2,}/', ' ', $filter));
+	$filter_array = explode(' ', preg_replace('/ {2,}/', ' ', $filter));
 
 	// Output Individual
 	if ($type == "indi") {
 		echo '<div id="find-output">';
-		$myindilist=search_indis_names($filter_array, array(WT_GED_ID), 'AND');
+		$myindilist = search_indis_names($filter_array, array(WT_GED_ID), 'AND');
 		if ($myindilist) {
 			echo '<ul>';
 			usort($myindilist, array('WT_GedcomRecord', 'compare'));
@@ -540,28 +540,28 @@ if ($action=="filter") {
 					echo WT_Gedcom_Tag::getLabelValue('__IMAGE_SIZE__', $imgsize['WxH']);
 				}
 				echo '<ul>';
-				$found=false;
+				$found = false;
 				foreach ($media->linkedIndividuals('OBJE') as $indindividual) {
 					echo '<li>', $indindividual->getFullName(), '</li>';
-					$found=true;
+					$found = true;
 				}
 				foreach ($media->linkedFamilies('OBJE') as $family) {
 					echo '<li>', $family->getFullName(), '</li>';
-					$found=true;
+					$found = true;
 				}
 				foreach ($media->linkedSources('OBJE') as $source) {
 					echo '<li>', $source->getFullName(), '</li>';
-					$found=true;
+					$found = true;
 				}
 				foreach ($media->linkedNotes('OBJE') as $note) {
 					// Invalid GEDCOM - you cannot link a NOTE to an OBJE
 					echo '<li>', $note->getFullName(), '</li>';
-					$found=true;
+					$found = true;
 				}
 				foreach ($media->linkedRepositories('OBJE') as $repository) {
 					// Invalid GEDCOM - you cannot link a REPO to an OBJE
 					echo '<li>', $repository->getFullName(), '</li>';
-					$found=true;
+					$found = true;
 				}
 				if (!$found) {
 					echo '<li>', WT_I18N::translate('This media object is not linked to any other record.'), '</li>';
@@ -579,9 +579,9 @@ if ($action=="filter") {
 	if ($type == "place") {
 		echo '<div id="find-output">';
 		if (!$filter || $all) {
-			$places=WT_Place::allPlaces(WT_GED_ID);
+			$places = WT_Place::allPlaces(WT_GED_ID);
 		} else {
-			$places=WT_Place::findPlaces($filter, WT_GED_ID);
+			$places = WT_Place::findPlaces($filter, WT_GED_ID);
 		}
 		if ($places) {
 			echo '<ul>';
@@ -615,7 +615,7 @@ if ($action=="filter") {
 			usort($repo_list, array('WT_GedcomRecord', 'compare'));
 			echo '<ul>';
 			foreach ($repo_list as $repo) {
-				echo '<li><a href="', $repo->getHtmlUrl(), '" onclick="pasteid(\'', $repo->getXref(), '\');"><span class="list_item">', $repo->getFullName(),'</span></a></li>';
+				echo '<li><a href="', $repo->getHtmlUrl(), '" onclick="pasteid(\'', $repo->getXref(), '\');"><span class="list_item">', $repo->getFullName(), '</span></a></li>';
 			}
 			echo '</ul>
 			<p>', WT_I18N::translate('Repositories found'), " ", count($repo_list), '</p>';
@@ -627,7 +627,7 @@ if ($action=="filter") {
 	}
 
 	// Output Shared Notes
-	if ($type=="note") {
+	if ($type == "note") {
 		echo '<div id="find-output">';
 		if ($filter) {
 			$mynotelist = search_notes($filter_array, array(WT_GED_ID), 'AND');
@@ -638,7 +638,7 @@ if ($action=="filter") {
 			usort($mynotelist, array('WT_GedcomRecord', 'compare'));
 			echo '<ul>';
 			foreach ($mynotelist as $note) {
-				echo '<li><a href="', $note->getHtmlUrl(), '" onclick="pasteid(\'', $note->getXref(), '\');"><span class="list_item">', $note->getFullName(),'</span></a></li>';
+				echo '<li><a href="', $note->getHtmlUrl(), '" onclick="pasteid(\'', $note->getXref(), '\');"><span class="list_item">', $note->getFullName(), '</span></a></li>';
 			}
 			echo '</ul>
 			<p>', WT_I18N::translate('Shared notes found'), ' ', count($mynotelist), '</p>';
@@ -650,7 +650,7 @@ if ($action=="filter") {
 	}
 
 	// Output Sources
-	if ($type=="source") {
+	if ($type == "source") {
 		echo '<div id="find-output">';
 		if ($filter) {
 			$mysourcelist = search_sources($filter_array, array(WT_GED_ID), 'AND');
@@ -663,7 +663,7 @@ if ($action=="filter") {
 			foreach ($mysourcelist as $source) {
 				echo '<li><a href="', $source->getHtmlUrl(), '" onclick="pasteid(\'', $source->getXref(), '\', \'',
 					WT_Filter::escapeJs($source->getFullName()), '\');"><span class="list_item">',
-					$source->getFullName(),'</span></a></li>';
+					$source->getFullName(), '</span></a></li>';
 			}
 			echo '</ul>
 			<p>', WT_I18N::translate('Total sources: %s', count($mysourcelist)), '</p>';
