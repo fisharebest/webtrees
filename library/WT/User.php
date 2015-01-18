@@ -150,7 +150,7 @@ class User {
 	 * @return integer
 	 */
 	public static function count() {
-		return (int)WT_DB::prepare(
+		return (int) WT_DB::prepare(
 			"SELECT SQL_CACHE COUNT(*)" .
 			" FROM `##user`" .
 			" WHERE user_id > 0"
@@ -232,8 +232,8 @@ class User {
 	 */
 	public static function allLoggedIn() {
 		$rows = WT_DB::prepare(
-			"SELECT SQL_NO_CACHE DISTINCT user_id, user_name, real_name, email".
-			" FROM `##user`".
+			"SELECT SQL_NO_CACHE DISTINCT user_id, user_name, real_name, email" .
+			" FROM `##user`" .
 			" JOIN `##session` USING (user_id)"
 		)->fetchAll();
 

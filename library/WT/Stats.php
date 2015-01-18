@@ -128,7 +128,7 @@ class WT_Stats {
 		isset($funcs) or $funcs = get_class_methods($this);
 
 		// Extract all tags from the provided text
-		preg_match_all("/#([^#]+)(?=#)/", (string)$text, $match);
+		preg_match_all("/#([^#]+)(?=#)/", (string) $text, $match);
 		$tags       = $match[1];
 		$c          = count($tags);
 		$new_tags   = array(); // tag to replace
@@ -327,7 +327,7 @@ class WT_Stats {
 	 */
 	private function totalIndividualsQuery() {
 		return
-			(int)WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##individuals` WHERE i_file = ?")
+			(int) WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##individuals` WHERE i_file = ?")
 				->execute(array($this->tree->tree_id))
 				->fetchOne();
 	}
@@ -345,7 +345,7 @@ class WT_Stats {
 	private function totalIndisWithSourcesQuery() {
 		$rows = $this->runSql("SELECT SQL_CACHE COUNT(DISTINCT i_id) AS tot FROM `##link`, `##individuals` WHERE i_id=l_from AND i_file=l_file AND l_file=" . $this->tree->tree_id . " AND l_type='SOUR'");
 
-		return (int)$rows[0]['tot'];
+		return (int) $rows[0]['tot'];
 	}
 
 	/**
@@ -407,7 +407,7 @@ class WT_Stats {
 	 */
 	private function totalFamiliesQuery() {
 		return
-			(int)WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##families` WHERE f_file=?")
+			(int) WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##families` WHERE f_file=?")
 				->execute(array($this->tree->tree_id))
 				->fetchOne();
 	}
@@ -425,7 +425,7 @@ class WT_Stats {
 	private function totalFamsWithSourcesQuery() {
 		$rows = $this->runSql("SELECT SQL_CACHE COUNT(DISTINCT f_id) AS tot FROM `##link`, `##families` WHERE f_id=l_from AND f_file=l_file AND l_file=" . $this->tree->tree_id . " AND l_type='SOUR'");
 
-		return (int)$rows[0]['tot'];
+		return (int) $rows[0]['tot'];
 	}
 
 	/**
@@ -488,7 +488,7 @@ class WT_Stats {
 	 */
 	private function totalSourcesQuery() {
 		return
-			(int)WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##sources` WHERE s_file=?")
+			(int) WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##sources` WHERE s_file=?")
 				->execute(array($this->tree->tree_id))
 				->fetchOne();
 	}
@@ -512,7 +512,7 @@ class WT_Stats {
 	 */
 	private function totalNotesQuery() {
 		return
-			(int)WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##other` WHERE o_type='NOTE' AND o_file=?")
+			(int) WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##other` WHERE o_type='NOTE' AND o_file=?")
 				->execute(array($this->tree->tree_id))
 				->fetchOne();
 	}
@@ -536,7 +536,7 @@ class WT_Stats {
 	 */
 	private function totalRepositoriesQuery() {
 		return
-			(Int)WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##other` WHERE o_type='REPO' AND o_file=?")
+			(Int) WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##other` WHERE o_type='REPO' AND o_file=?")
 				->execute(array($this->tree->tree_id))
 				->fetchOne();
 	}
@@ -714,7 +714,7 @@ class WT_Stats {
 	 */
 	private function totalSexMalesQuery() {
 		return
-			(int)WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##individuals` WHERE i_file=? AND i_sex=?")
+			(int) WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##individuals` WHERE i_file=? AND i_sex=?")
 				->execute(array($this->tree->tree_id, 'M'))
 				->fetchOne();
 	}
@@ -738,7 +738,7 @@ class WT_Stats {
 	 */
 	private function totalSexFemalesQuery() {
 		return
-			(int)WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##individuals` WHERE i_file=? AND i_sex=?")
+			(int) WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##individuals` WHERE i_file=? AND i_sex=?")
 				->execute(array($this->tree->tree_id, 'F'))
 				->fetchOne();
 	}
@@ -762,7 +762,7 @@ class WT_Stats {
 	 */
 	private function totalSexUnknownQuery() {
 		return
-			(int)WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##individuals` WHERE i_file=? AND i_sex=?")
+			(int) WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##individuals` WHERE i_file=? AND i_sex=?")
 				->execute(array($this->tree->tree_id, 'U'))
 				->fetchOne();
 	}
@@ -854,7 +854,7 @@ class WT_Stats {
 	 */
 	private function totalLivingQuery() {
 		return
-			(int)WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##individuals` WHERE i_file=? AND i_gedcom NOT REGEXP '\\n1 (" . WT_EVENTS_DEAT . ")'")
+			(int) WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##individuals` WHERE i_file=? AND i_gedcom NOT REGEXP '\\n1 (" . WT_EVENTS_DEAT . ")'")
 				->execute(array($this->tree->tree_id))
 				->fetchOne();
 	}
@@ -878,7 +878,7 @@ class WT_Stats {
 	 */
 	private function totalDeceasedQuery() {
 		return
-			(int)WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##individuals` WHERE i_file=? AND i_gedcom REGEXP '\\n1 (" . WT_EVENTS_DEAT . ")'")
+			(int) WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##individuals` WHERE i_file=? AND i_gedcom REGEXP '\\n1 (" . WT_EVENTS_DEAT . ")'")
 				->execute(array($this->tree->tree_id))
 				->fetchOne();
 	}
@@ -949,7 +949,7 @@ class WT_Stats {
 	 */
 	public function totalUsers($params = array()) {
 		if (isset($params[0])) {
-			$total = count(User::all()) + (int)$params[0];
+			$total = count(User::all()) + (int) $params[0];
 		} else {
 			$total = count(User::all());
 		}
@@ -998,7 +998,7 @@ class WT_Stats {
 			}
 		}
 
-		return (int)WT_DB::prepare($sql)->execute($vars)->fetchOne();
+		return (int) WT_DB::prepare($sql)->execute($vars)->fetchOne();
 	}
 
 	/**
@@ -1384,7 +1384,7 @@ class WT_Stats {
 	 */
 	private function totalPlacesQuery() {
 		return
-			(int)WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##places` WHERE p_file=?")
+			(int) WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##places` WHERE p_file=?")
 				->execute(array($this->tree->tree_id))
 				->fetchOne();
 	}
@@ -1536,7 +1536,7 @@ class WT_Stats {
 		$chart_url .= "&amp;chs=" . $WT_STATS_MAP_X . "x" . $WT_STATS_MAP_Y;
 		$chart_url .= "&amp;chld=" . implode('', array_keys($surn_countries)) . "&amp;chd=s:";
 		foreach ($surn_countries as $count) {
-			$chart_url .= substr(WT_GOOGLE_CHART_ENCODING, (int)($count / max($surn_countries) * 61), 1);
+			$chart_url .= substr(WT_GOOGLE_CHART_ENCODING, (int) ($count / max($surn_countries) * 61), 1);
 		}
 		$chart = '<div id="google_charts" class="center">';
 		$chart .= '<b>' . $chart_title . '</b><br><br>';
@@ -2028,7 +2028,7 @@ class WT_Stats {
 			}
 			break;
 		case 'age':
-			$result = WT_I18N::number((int)($row['age'] / 365.25));
+			$result = WT_I18N::number((int) ($row['age'] / 365.25));
 			break;
 		case 'name':
 			$result = "<a href=\"" . $person->getHtmlUrl() . "\">" . $person->getFullName() . "</a>";
@@ -2055,7 +2055,7 @@ class WT_Stats {
 			$sex_search = '';
 		}
 		if (isset($params[0])) {
-			$total = (int)$params[0];
+			$total = (int) $params[0];
 		} else {
 			$total = 10;
 		}
@@ -2089,10 +2089,10 @@ class WT_Stats {
 		foreach ($rows as $row) {
 			$person = WT_Individual::getInstance($row['deathdate']);
 			$age = $row['age'];
-			if ((int)($age / 365.25) > 0) {
-				$age = (int)($age / 365.25) . 'y';
-			} elseif ((int)($age / 30.4375) > 0) {
-				$age = (int)($age / 30.4375) . 'm';
+			if ((int) ($age / 365.25) > 0) {
+				$age = (int) ($age / 365.25) . 'y';
+			} elseif ((int) ($age / 30.4375) > 0) {
+				$age = (int) ($age / 30.4375) . 'm';
 			} else {
 				$age = $age . 'd';
 			}
@@ -2140,7 +2140,7 @@ class WT_Stats {
 			$sex_search = '';
 		}
 		if (isset($params[0])) {
-			$total = (int)$params[0];
+			$total = (int) $params[0];
 		} else {
 			$total = 10;
 		}
@@ -2167,10 +2167,10 @@ class WT_Stats {
 		foreach ($rows as $row) {
 			$person = WT_Individual::getInstance($row['id']);
 			$age = (WT_CLIENT_JD - $row['age']);
-			if ((int)($age / 365.25) > 0) {
-				$age = (int)($age / 365.25) . 'y';
-			} elseif ((int)($age / 30.4375) > 0) {
-				$age = (int)($age / 30.4375) . 'm';
+			if ((int) ($age / 365.25) > 0) {
+				$age = (int) ($age / 365.25) . 'y';
+			} elseif ((int) ($age / 30.4375) > 0) {
+				$age = (int) ($age / 30.4375) . 'm';
 			} else {
 				$age = $age . 'd';
 			}
@@ -2234,10 +2234,10 @@ class WT_Stats {
 		$row = $rows[0];
 		$age = $row['age'];
 		if ($show_years) {
-			if ((int)($age / 365.25) > 0) {
-				$age = (int)($age / 365.25) . 'y';
-			} elseif ((int)($age / 30.4375) > 0) {
-				$age = (int)($age / 30.4375) . 'm';
+			if ((int) ($age / 365.25) > 0) {
+				$age = (int) ($age / 365.25) . 'y';
+			} elseif ((int) ($age / 30.4375) > 0) {
+				$age = (int) ($age / 30.4375) . 'm';
 			} elseif (!empty($age)) {
 				$age = $age . 'd';
 			}
@@ -2344,7 +2344,7 @@ class WT_Stats {
 				while ($offset = strpos($title, ' ', $offset + 1)) {
 					$counter[] = $offset;
 				}
-				$half = (int)(count($counter) / 2);
+				$half = (int) (count($counter) / 2);
 				$chtt = substr_replace($title, '|', $counter[$half], 1);
 			}
 			return '<img src="' . "https://chart.googleapis.com/chart?cht=bvg&amp;chs={$sizes[0]}x{$sizes[1]}&amp;chm=D,FF0000,2,0,3,1|N*f1*,000000,0,-1,11,1|N*f1*,000000,1,-1,11,1&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chtt=" . rawurlencode($chtt) . "&amp;chd={$chd}&amp;chco=0000FF,FFA0CB,FF0000&amp;chbh=20,3&amp;chxt=x,x,y,y&amp;chxl=" . rawurlencode($chxl) . "&amp;chdl=" . rawurlencode(WT_I18N::translate('Males') . '|' . WT_I18N::translate('Females') . '|' . WT_I18N::translate('Average age at death')) . "\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . WT_I18N::translate('Average age related to death century') . "\" title=\"" . WT_I18N::translate('Average age related to death century') . "\" />";
@@ -2810,16 +2810,16 @@ class WT_Stats {
 		case 'age':
 			$age = $row['age'];
 			if ($show_years) {
-				if ((int)($age / 365.25) > 0) {
-					$age = (int)($age / 365.25) . 'y';
-				} elseif ((int)($age / 30.4375) > 0) {
-					$age = (int)($age / 30.4375) . 'm';
+				if ((int) ($age / 365.25) > 0) {
+					$age = (int) ($age / 365.25) . 'y';
+				} elseif ((int) ($age / 30.4375) > 0) {
+					$age = (int) ($age / 30.4375) . 'm';
 				} else {
 					$age = $age . 'd';
 				}
 				$result = get_age_at_event($age, true);
 			} else {
-				$result = WT_I18N::number((int)($age / 365.25));
+				$result = WT_I18N::number((int) ($age / 365.25));
 			}
 			break;
 		}
@@ -2837,7 +2837,7 @@ class WT_Stats {
 		global $TEXT_DIRECTION;
 
 		if (isset($params[0])) {
-			$total = (int)$params[0];
+			$total = (int) $params[0];
 		} else {
 			$total = 10;
 		}
@@ -2920,10 +2920,10 @@ class WT_Stats {
 			if ($type == 'name') {
 				return $family->format_list('span', false, $family->getFullName());
 			}
-			if ((int)($age / 365.25) > 0) {
-				$age = (int)($age / 365.25) . 'y';
-			} elseif ((int)($age / 30.4375) > 0) {
-				$age = (int)($age / 30.4375) . 'm';
+			if ((int) ($age / 365.25) > 0) {
+				$age = (int) ($age / 365.25) . 'y';
+			} elseif ((int) ($age / 30.4375) > 0) {
+				$age = (int) ($age / 30.4375) . 'm';
 			} else {
 				$age = $age . 'd';
 			}
@@ -2971,7 +2971,7 @@ class WT_Stats {
 		global $TEXT_DIRECTION;
 
 		if (isset($params[0])) {
-			$total = (int)$params[0];
+			$total = (int) $params[0];
 		} else {
 			$total = 10;
 		}
@@ -3007,10 +3007,10 @@ class WT_Stats {
 				break;
 			}
 			$age = $fam['age'];
-			if ((int)($age / 365.25) > 0) {
-				$age = (int)($age / 365.25) . 'y';
-			} elseif ((int)($age / 30.4375) > 0) {
-				$age = (int)($age / 30.4375) . 'm';
+			if ((int) ($age / 365.25) > 0) {
+				$age = (int) ($age / 365.25) . 'y';
+			} elseif ((int) ($age / 30.4375) > 0) {
+				$age = (int) ($age / 30.4375) . 'm';
 			} else {
 				$age = $age . 'd';
 			}
@@ -3097,16 +3097,16 @@ class WT_Stats {
 		case 'age':
 			$age = $row['age'];
 			if ($show_years) {
-				if ((int)($age / 365.25) > 0) {
-					$age = (int)($age / 365.25) . 'y';
-				} elseif ((int)($age / 30.4375) > 0) {
-					$age = (int)($age / 30.4375) . 'm';
+				if ((int) ($age / 365.25) > 0) {
+					$age = (int) ($age / 365.25) . 'y';
+				} elseif ((int) ($age / 30.4375) > 0) {
+					$age = (int) ($age / 30.4375) . 'm';
 				} else {
 					$age = $age . 'd';
 				}
 				$result = get_age_at_event($age, true);
 			} else {
-				$result = (int)($age / 365.25);
+				$result = (int) ($age / 365.25);
 			}
 			break;
 		}
@@ -3559,7 +3559,7 @@ class WT_Stats {
 				while ($offset = strpos(WT_I18N::translate('Average age in century of marriage'), ' ', $offset + 1)) {
 					$counter[] = $offset;
 				}
-				$half = (int)(count($counter) / 2);
+				$half = (int) (count($counter) / 2);
 				$chtt = substr_replace(WT_I18N::translate('Average age in century of marriage'), '|', $counter[$half], 1);
 			}
 			return "<img src=\"" . "https://chart.googleapis.com/chart?cht=bvg&amp;chs={$sizes[0]}x{$sizes[1]}&amp;chm=D,FF0000,2,0,3,1|{$chmm}{$chmf}&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chtt=" . rawurlencode($chtt) . "&amp;chd={$chd}&amp;chco=0000FF,FFA0CB,FF0000&amp;chbh=20,3&amp;chxt=x,x,y,y&amp;chxl=" . rawurlencode($chxl) . "&amp;chdl=" . rawurlencode(WT_I18N::translate('Males') . "|" . WT_I18N::translate('Females') . "|" . WT_I18N::translate('Average age')) . "\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . WT_I18N::translate('Average age in century of marriage') . "\" title=\"" . WT_I18N::translate('Average age in century of marriage') . "\" />";
@@ -3965,7 +3965,7 @@ class WT_Stats {
 		global $TEXT_DIRECTION;
 
 		if (isset($params[0])) {
-			$total = (int)$params[0];
+			$total = (int) $params[0];
 		} else {
 			$total = 10;
 		}
@@ -4022,7 +4022,7 @@ class WT_Stats {
 		global $TEXT_DIRECTION;
 
 		if (isset($params[0])) {
-			$total = (int)$params[0];
+			$total = (int) $params[0];
 		} else {
 			$total = 10;
 		}
@@ -4077,10 +4077,10 @@ class WT_Stats {
 				return $return;
 			}
 			$age = $fam['age'];
-			if ((int)($age / 365.25) > 0) {
-				$age = (int)($age / 365.25) . 'y';
-			} elseif ((int)($age / 30.4375) > 0) {
-				$age = (int)($age / 30.4375) . 'm';
+			if ((int) ($age / 365.25) > 0) {
+				$age = (int) ($age / 365.25) . 'y';
+			} elseif ((int) ($age / 30.4375) > 0) {
+				$age = (int) ($age / 30.4375) . 'm';
 			} else {
 				$age = $age . 'd';
 			}
@@ -4342,7 +4342,7 @@ class WT_Stats {
 			$total = 10;
 		}
 		$sizes = explode('x', $size);
-		$total = (int)$total;
+		$total = (int) $total;
 		$rows = $this->runSql(
 			" SELECT SQL_CACHE f_numchil AS tot, f_id AS id" .
 			" FROM `##families`" .
@@ -4684,13 +4684,13 @@ class WT_Stats {
 		$chm .= 't' . $unknown . ',000000,0,' . $i . ',11,1';
 		$chxl .= WT_I18N::translate_c('unknown century', 'Unknown') . "|1:||" . WT_I18N::translate('century') . "|2:|0|";
 		$step = $max + 1;
-		for ($d = (int)($max + 1); $d > 0; $d--) {
+		for ($d = (int) ($max + 1); $d > 0; $d--) {
 			if (($max + 1) < ($d * 10 + 1) && fmod(($max + 1), $d) == 0) {
 				$step = $d;
 			}
 		}
-		if ($step == (int)($max + 1)) {
-			for ($d = (int)($max); $d > 0; $d--) {
+		if ($step == (int) ($max + 1)) {
+			for ($d = (int) ($max); $d > 0; $d--) {
 				if ($max < ($d * 10 + 1) && fmod($max, $d) == 0) {
 					$step = $d;
 				}
@@ -4713,7 +4713,7 @@ class WT_Stats {
 		global $TEXT_DIRECTION;
 
 		if (isset($params[0])) {
-			$total = (int)$params[0];
+			$total = (int) $params[0];
 		} else {
 			$total = 10;
 		}
@@ -4794,12 +4794,12 @@ class WT_Stats {
 	 */
 	private function commonSurnamesQuery($type = 'list', $show_tot = false, $params = array()) {
 		if (isset($params[0]) && $params[0] > 0) {
-			$threshold = (int)$params[0];
+			$threshold = (int) $params[0];
 		} else {
 			$threshold = $this->tree->getPreference('COMMON_NAMES_THRESHOLD');
 		}
 		if (isset($params[1])) {
-			$maxtoshow = (int)$params[1];
+			$maxtoshow = (int) $params[1];
 		} else {
 			$maxtoshow = 0;
 		}
@@ -4985,12 +4985,12 @@ class WT_Stats {
 		global $GEDCOM;
 
 		if (isset($params[0]) && $params[0] != '' && $params[0] >= 0) {
-			$threshold = (int)$params[0];
+			$threshold = (int) $params[0];
 		} else {
 			$threshold = 1;
 		}
 		if (isset($params[1]) && $params[1] != '' && $params[1] >= 0) {
-			$maxtoshow = (int)$params[1];
+			$maxtoshow = (int) $params[1];
 		} else {
 			$maxtoshow = 10;
 		}
@@ -5817,9 +5817,9 @@ class WT_Stats {
 			if ($value < 0) {
 				$value = 0;
 			}
-			$first = (int)($value / 64);
+			$first = (int) ($value / 64);
 			$second = $value % 64;
-			$encoding .= $xencoding[(int)$first] . $xencoding[(int)$second];
+			$encoding .= $xencoding[(int) $first] . $xencoding[(int) $second];
 		}
 		return $encoding;
 	}
@@ -5957,7 +5957,7 @@ class WT_Stats {
 	 * @return string
 	 */
 	public function totalUserMessages() {
-		$total = (int)WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##message` WHERE user_id = ?")
+		$total = (int) WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##message` WHERE user_id = ?")
 			->execute(array(Auth::id()))
 			->fetchOne();
 
@@ -5971,7 +5971,7 @@ class WT_Stats {
 	 */
 	public function totalUserJournal() {
 		try {
-			$number = (int)WT_DB::prepare("SELECT COUNT(*) FROM `##news` WHERE user_id = ?")
+			$number = (int) WT_DB::prepare("SELECT COUNT(*) FROM `##news` WHERE user_id = ?")
 				->execute(array(Auth::id()))
 				->fetchOne();
 		} catch (PDOException $ex) {
@@ -5989,7 +5989,7 @@ class WT_Stats {
 	 */
 	public function totalGedcomNews() {
 		try {
-			$number = (int)WT_DB::prepare("SELECT COUNT(*) FROM `##news` WHERE gedcom_id = ?")
+			$number = (int) WT_DB::prepare("SELECT COUNT(*) FROM `##news` WHERE gedcom_id = ?")
 				->execute(array($this->tree->tree_id))
 				->fetchOne();
 		} catch (PDOException $ex) {
