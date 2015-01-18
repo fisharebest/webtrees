@@ -31,7 +31,7 @@ class WT_Controller_Base {
 	);
 	private $external_javascript = array();
 
-	protected $page_header = false;        // Have we printed a page header?
+	protected $page_header = false; // Have we printed a page header?
 
 	/**
 	 * Startup activity
@@ -78,7 +78,7 @@ class WT_Controller_Base {
 			$backtrace = debug_backtrace();
 			$script = '/* ' . $backtrace[0]['file'] . ':' . $backtrace[0]['line'] . ' */' . PHP_EOL . $script;
 		}
-		$tmp =& $this->inline_javascript[$priority];
+		$tmp = & $this->inline_javascript[$priority];
 		$tmp[] = $script;
 
 		return $this;

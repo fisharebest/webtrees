@@ -24,10 +24,10 @@
  */
 class WT_Controller_Compact extends WT_Controller_Chart {
 	// Data for the view
-	public $show_thumbs=false;
+	public $show_thumbs = false;
 
 	// Date for the controller
-	private $treeid=array();
+	private $treeid = array();
 
 	/**
 	 * Startup activity
@@ -60,16 +60,16 @@ class WT_Controller_Compact extends WT_Controller_Chart {
 		$indi = $this->treeid[$n];
 
 		if ($indi && $indi->canShowName()) {
-			$name=$indi->getFullName();
-			$addname=$indi->getAddName();
+			$name = $indi->getFullName();
+			$addname = $indi->getAddName();
 
 			if ($this->show_thumbs && $SHOW_HIGHLIGHT_IMAGES) {
-				$html=$indi->displayImage();
+				$html = $indi->displayImage();
 			} else {
-				$html='';
+				$html = '';
 			}
 
-			$html .= '<a class="name1" href="'.$indi->getHtmlUrl().'">';
+			$html .= '<a class="name1" href="' . $indi->getHtmlUrl() . '">';
 			$html .= $name;
 			if ($addname) {
 				$html .= '<br>' . $addname;
@@ -77,7 +77,7 @@ class WT_Controller_Compact extends WT_Controller_Chart {
 			$html .= '</a>';
 			$html .= '<br>';
 			if ($indi->canShow()) {
-				$html.='<div class="details1">'.$indi->getLifeSpan().'</div>';
+				$html .= '<div class="details1">' . $indi->getLifeSpan() . '</div>';
 			}
 		} else {
 			// Empty box
@@ -85,20 +85,20 @@ class WT_Controller_Compact extends WT_Controller_Chart {
 		}
 
 		// -- box color
-		$isF='';
-		if ($n==1) {
-			if ($indi && $indi->getSex()=='F') {
-				$isF='F';
+		$isF = '';
+		if ($n == 1) {
+			if ($indi && $indi->getSex() == 'F') {
+				$isF = 'F';
 			}
-		} elseif ($n%2) {
-			$isF='F';
+		} elseif ($n % 2) {
+			$isF = 'F';
 		}
 
 		// -- box size
-		if ($n==1) {
-			return '<td class="person_box'.$isF.' person_box_template" style="text-align:center; vertical-align:top;">'.$html.'</td>';
+		if ($n == 1) {
+			return '<td class="person_box' . $isF . ' person_box_template" style="text-align:center; vertical-align:top;">' . $html . '</td>';
 		} else {
-			return '<td class="person_box'.$isF.' person_box_template" style="text-align:center; vertical-align:top;" width="15%">'.$html.'</td>';
+			return '<td class="person_box' . $isF . ' person_box_template" style="text-align:center; vertical-align:top;" width="15%">' . $html . '</td>';
 		}
 	}
 
@@ -115,7 +115,7 @@ class WT_Controller_Compact extends WT_Controller_Chart {
 
 		$arrow_dir = substr($arrow_dir, 0, 1);
 		if ($TEXT_DIRECTION == 'rtl') {
-			if ($arrow_dir=='l') {
+			if ($arrow_dir == 'l') {
 				$arrow_dir = 'r';
 			} elseif ($arrow_dir == 'r') {
 				$arrow_dir = 'l';
@@ -126,7 +126,7 @@ class WT_Controller_Compact extends WT_Controller_Chart {
 			$title = WT_I18N::translate('Compact tree of %s', $indi->getFullName());
 			$text = '<a class="icon-' . $arrow_dir . 'arrow" title="' . strip_tags($title) . '" href="?rootid=' . $indi->getXref();
 			if ($this->show_thumbs) {
-				$text .= "&amp;show_thumbs=".$this->show_thumbs;
+				$text .= "&amp;show_thumbs=" . $this->show_thumbs;
 			}
 			$text .= "\"></a>";
 		} else {

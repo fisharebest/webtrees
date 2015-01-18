@@ -124,7 +124,7 @@ class Auth {
 	 *
 	 * @return boolean
 	 */
-	public static function isMember(WT_Tree $tree = null, User $user=null) {
+	public static function isMember(WT_Tree $tree = null, User $user = null) {
 		global $WT_TREE;
 
 		if ($tree === null) {

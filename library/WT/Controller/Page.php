@@ -24,7 +24,7 @@ class WT_Controller_Page extends WT_Controller_Base {
 	// Page header information
 	private $canonical_url = '';
 	private $meta_robots = 'noindex,nofollow'; // Most pages are not intended for robots
-	private $page_title = WT_WEBTREES;        // <head><title> $page_title </title></head>
+	private $page_title = WT_WEBTREES; // <head><title> $page_title </title></head>
 
 	/**
 	 * Startup activity
@@ -144,10 +144,10 @@ class WT_Controller_Page extends WT_Controller_Base {
 			Theme::theme()->hookFooterExtraJavascript() .
 			'</body>' .
 			'</html>' . PHP_EOL .
-			'<!-- webtrees: ' .  WT_VERSION . ' -->' .
-			'<!-- Execution time: ' .  WT_I18N::number(microtime(true) - $start_time, 3) . ' seconds -->' .
-			'<!-- Memory: ' .  WT_I18N::number(memory_get_peak_usage(true)/1024) . ' KB -->' .
-			'<!-- SQL queries: ' .  WT_I18N::number(WT_DB::getQueryCount()) . ' -->';
+			'<!-- webtrees: ' . WT_VERSION . ' -->' .
+			'<!-- Execution time: ' . WT_I18N::number(microtime(true) - $start_time, 3) . ' seconds -->' .
+			'<!-- Memory: ' . WT_I18N::number(memory_get_peak_usage(true) / 1024) . ' KB -->' .
+			'<!-- SQL queries: ' . WT_I18N::number(WT_DB::getQueryCount()) . ' -->';
 	}
 
 	/**
