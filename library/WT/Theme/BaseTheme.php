@@ -436,7 +436,7 @@ abstract class BaseTheme {
 	 */
 	protected function headerSimple() {
 		return
-			WT_FlashMessages::getHtmlMessages() . // Feedback from asynchronous actions
+			$this->flashMessagesContainer(WT_FlashMessages::getMessages()) .
 			'<div id="content">';
 	}
 
@@ -1061,24 +1061,20 @@ abstract class BaseTheme {
 	protected function menuFavorites() {
 		global $controller;
 
-		$show_user_favs = Auth::check() && array_key_exists('user_favorites', WT_Module::getActiveModules());
-		$show_gedc_favs = !$this->tree->getPreference('REQUIRE_AUTHENTICATION') && array_key_exists('gedcom_favorites', WT_Module::getActiveModules());
+		$show_user_favorites = $this->tree && array_key_exists('user_favorites', WT_Module::getActiveModules()) && Auth::check();
+		$show_tree_favorites = $this->tree && array_key_exists('gedcom_favorites', WT_Module::getActiveModules());
 
-		if ($show_user_favs && Auth::check()) {
-			if ($show_gedc_favs && !$this->isSearchEngine()) {
-				$favorites = array_merge(
-					gedcom_favorites_WT_Module::getFavorites(WT_GED_ID),
-					user_favorites_WT_Module::getFavorites(Auth::id())
-				);
-			} else {
-				$favorites = user_favorites_WT_Module::getFavorites(Auth::id());
-			}
+		if ($show_user_favorites && $show_tree_favorites) {
+			$favorites = array_merge(
+				gedcom_favorites_WT_Module::getFavorites(WT_GED_ID),
+				user_favorites_WT_Module::getFavorites(Auth::id())
+			);
+		} elseif ($show_user_favorites) {
+			$favorites = user_favorites_WT_Module::getFavorites(Auth::id());
+		} elseif ($show_tree_favorites) {
+			$favorites = gedcom_favorites_WT_Module::getFavorites(WT_GED_ID);
 		} else {
-			if ($show_gedc_favs && !$this->isSearchEngine()) {
-				$favorites = gedcom_favorites_WT_Module::getFavorites(WT_GED_ID);
-			} else {
-				return null;
-			}
+			return null;
 		}
 
 		$menu = new WT_Menu(WT_I18N::translate('Favorites'), '#', 'menu-favorites');
@@ -1103,7 +1099,7 @@ abstract class BaseTheme {
 			}
 		}
 
-		if ($show_user_favs) {
+		if ($show_user_favorites) {
 			if (isset($controller->record) && $controller->record instanceof WT_GedcomRecord) {
 				$submenu = new WT_Menu(WT_I18N::translate('Add to favorites'), '#');
 				$submenu->setOnclick("jQuery.post('module.php?mod=user_favorites&amp;mod_action=menu-add-favorite',{xref:'" . $controller->record->getXref() . "'},function(){location.reload();})");
@@ -1596,17 +1592,22 @@ abstract class BaseTheme {
 	protected function primaryMenu() {
 		global $controller;
 
-		$individual = $controller->getSignificantIndividual();
+		if ($this->tree) {
+			$individual = $controller->getSignificantIndividual();
 
-		return array_filter(array_merge(array(
-			$this->menuHomePage(),
-			$this->menuMyMenu(),
-			$this->menuChart($individual),
-			$this->menuLists(),
-			$this->menuCalendar(),
-			$this->menuReports(),
-			$this->menuSearch(),
-		), $this->menuModules()));
+			return array_filter(array_merge(array(
+				$this->menuHomePage(),
+				$this->menuMyMenu(),
+				$this->menuChart($individual),
+				$this->menuLists(),
+				$this->menuCalendar(),
+				$this->menuReports(),
+				$this->menuSearch(),
+			), $this->menuModules()));
+		} else {
+			// No public trees?  No genealogy menu!
+			return array();
+		}
 	}
 
 	/**
