@@ -36,7 +36,9 @@ use WT\Theme;
  * @param integer       $style  the style to print the box in, 1 for smaller boxes, 2 for larger boxes
  */
 function print_pedigree_person(WT_Individual $person = null, $style = 1) {
-	switch (WT_Filter::get('show_full')) {
+	global $show_full;
+
+	switch ($show_full){
 	case 0:
 		if ($person) {
 		echo Theme::theme()->individualBoxSmall($person);
