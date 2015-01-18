@@ -28,16 +28,16 @@
 
 // Delete any data that might violate the new constraints
 WT_DB::exec(
-	"DELETE FROM `##news`".
-	" WHERE user_id   NOT IN (SELECT user_id   FROM `##user`  )".
+	"DELETE FROM `##news`" .
+	" WHERE user_id   NOT IN (SELECT user_id   FROM `##user`  )" .
 	" OR    gedcom_id NOT IN (SELECT gedcom_id FROM `##gedcom`)"
 );
 
 // Add the new constraints
 try {
 	WT_DB::exec(
-		"ALTER TABLE `##news`".
-		" ADD FOREIGN KEY news_fk1 (user_id  ) REFERENCES `##user`   (user_id)   ON DELETE CASCADE,".
+		"ALTER TABLE `##news`" .
+		" ADD FOREIGN KEY news_fk1 (user_id  ) REFERENCES `##user`   (user_id)   ON DELETE CASCADE," .
 		" ADD FOREIGN KEY news_fk2 (gedcom_id) REFERENCES `##gedcom` (gedcom_id) ON DELETE CASCADE"
 	);
 } catch (PDOException $ex) {

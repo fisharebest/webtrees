@@ -23,7 +23,7 @@
 
 define('WT_SCRIPT_NAME', 'repolist.php');
 require './includes/session.php';
-require_once WT_ROOT.'includes/functions/functions_print_lists.php';
+require_once WT_ROOT . 'includes/functions/functions_print_lists.php';
 
 $controller = new WT_Controller_Page;
 $controller->setPageTitle(WT_I18N::translate('Repositories'));
