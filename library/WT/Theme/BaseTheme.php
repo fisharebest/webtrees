@@ -277,7 +277,7 @@ abstract class BaseTheme {
 	 */
 	protected function formatContactLinks() {
 		if ($this->tree) {
-			return '<div class="contact_links">' . $this->contactLinks() . '</div>';
+			return '<div class="contact-links">' . $this->contactLinks() . '</div>';
 		} else {
 			return '';
 		}
@@ -823,7 +823,7 @@ abstract class BaseTheme {
 	 * @return string
 	 */
 	protected function logoPoweredBy() {
-		return '<a href="' . WT_WEBTREES_URL . '"><div class="footer-logo"></div></a>';
+		return '<a href="' . WT_WEBTREES_URL . '" class="powered-by-webtrees" title="' . WT_WEBTREES_URL . '"></a>';
 	}
 
 	/**

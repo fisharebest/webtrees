@@ -4316,14 +4316,22 @@ header nav {
 /* ====== End Theme Header ===== */
 
 /* ====== Theme Footer ========= */
+
 footer {
 	clear: both;
 	text-align: center;
 	width: 99%;
 }
 
-.user_links {
-	white-space: nowrap;
+.powered-by-webtrees {
+	display: inline-block;
+	margin-top: 10px;
+	width: 100px;
+	height: 21px;
+}
+
+.powered-by-webtrees:after {
+	content: url(images/powered-by-webtrees.png);
 }
 
 #link_change_blocks {
@@ -4409,12 +4417,6 @@ footer {
 	width: 24px;
 	height: 24px;
 	background-image: url(images/user_add.png);
-}
-
-.icon-webtrees {
-	width: 100px;
-	height: 21px;
-	background-image: url(images/webtrees.png);
 }
 
 @media print {

@@ -4331,37 +4331,18 @@ header nav {
 
 footer {
 	clear: both;
-	color: #555;
 	font-size: 12px;
-}
-
-.contact_links {
-	padding-top: 5px;
+	color: #555;
 	text-align: center;
 }
 
-.execution_stats {
-	padding-top: 5px;
-	text-align: center;
+.contact-links {
+	margin-top: 15px;
 }
 
-.logo {
-    font-size: 16px;
-    font-weight: 900;
-    text-align: center;
-}
-
-footer .center {
-	text-align: center;
-}
-
-footer .error {
-	color: #d00;
-	font-weight: bold;
-}
-
-.user_links {
-	white-space: nowrap;
+.powered-by-webtrees {
+	font-size: 16px;
+	margin-top: 10px;
 }
 
 #link_change_blocks {

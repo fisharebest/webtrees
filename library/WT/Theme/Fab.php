@@ -59,14 +59,6 @@ class Fab extends BaseTheme {
 	}
 
 	/** {@inheritdoc} */
-	protected function logoPoweredBy() {
-		return
-			'<a style="font-size:150%; color:#888;" href="' . WT_WEBTREES_URL . '" title="' . WT_WEBTREES . ' - ' . WT_VERSION . '">' .
-			WT_WEBTREES .
-			'</a>';
-	}
-
-	/** {@inheritdoc} */
 	protected function formatUserMenuItem(WT_Menu $menu) {
 		return $menu->getMenuAsList();
 	}

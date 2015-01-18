@@ -65,7 +65,7 @@ class Minimal extends BaseTheme {
 
 	/** {@inheritdoc} */
 	protected function logoPoweredBy() {
-		return '<p class="logo"><a href="' . WT_WEBTREES_URL . '" title="' . WT_WEBTREES . ' ' . WT_VERSION . '">' . WT_WEBTREES . '</a></p>';
+		return '<a href="' . WT_WEBTREES_URL . '" class="powered-by-webtrees" title="' . WT_WEBTREES_URL . '">' . WT_WEBTREES . '</a>';
 	}
 
 	/** {@inheritdoc} */

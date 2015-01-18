@@ -4437,31 +4437,24 @@ header nav {
 /* ====== End Theme Header ===== */
 
 /* ====== Theme Footer ========= */
-.contact_links {
+
+footer {
+	text-align: center;
+}
+
+.contact-links {
 	margin: 30px 0 15px;
-	text-align: center;
 }
 
-.execution_stats {
-	padding: 12px;
-	text-align: center;
+.powered-by-webtrees {
+	display: inline-block;
+	margin-top: 10px;
+	width: 100px;
+	height: 21px;
 }
 
-.logo {
-	text-align: center;
-}
-
-footer .center {
-	text-align: center;
-}
-
-footer .error {
-	color: #d00;
-	font-weight: bold;
-}
-
-.user_links {
-	white-space: nowrap;
+.powered-by-webtrees:after {
+	content: url(images/powered-by-webtrees.png);
 }
 
 #link_change_blocks {

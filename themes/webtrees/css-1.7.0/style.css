@@ -4327,38 +4327,26 @@ header nav {
 
 /* ====== Theme Footer ========= */
 
-#footer {
+footer {
 	clear: both;
 	font-size: 12px;
 	padding-top: 10px;
 	text-align: center;
 }
 
-.contact_links {
+.contact-links {
 	margin-top: 15px;
-	text-align: center;
 }
 
-.execution_stats {
-	padding-top: 12px;
-	text-align: center;
+.powered-by-webtrees {
+	display: inline-block;
+	margin-top: 10px;
+	width: 100px;
+	height: 21px;
 }
 
-.logo {
-	text-align: center;
-}
-
-footer .center {
-	text-align: center;
-}
-
-footer .error {
-	color: #d00;
-	font-weight: bold;
-}
-
-.user_links {
-	white-space: nowrap;
+.powered-by-webtrees:after {
+	content: url(images/powered-by-webtrees.png);
 }
 
 #link_change_blocks {
@@ -5126,12 +5114,6 @@ footer .error {
 	width: 20px;
 	height: 20px;
 	background-image: url(images/user_add.png);
-}
-
-.icon-webtrees {
-	width: 100px;
-	height: 21px;
-	background-image: url(images/webtrees_s.png);
 }
 
 @media print {
