@@ -28,15 +28,15 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 WT_DB::exec(
-	"CREATE TABLE IF NOT EXISTS `##session` (".
-	" session_id   CHAR(32)    NOT NULL,".
-	" session_time TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,".
-	" user_id      INTEGER     NOT NULL,".
-	" ip_address   VARCHAR(32) NOT NULL,".
-	" session_data MEDIUMBLOB  NOT NULL,".
-	" PRIMARY KEY     (session_id),".
-	"         KEY ix1 (session_time),".
-	"         KEY ix2 (user_id, ip_address)".
+	"CREATE TABLE IF NOT EXISTS `##session` (" .
+	" session_id   CHAR(32)    NOT NULL," .
+	" session_time TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP," .
+	" user_id      INTEGER     NOT NULL," .
+	" ip_address   VARCHAR(32) NOT NULL," .
+	" session_data MEDIUMBLOB  NOT NULL," .
+	" PRIMARY KEY     (session_id)," .
+	"         KEY ix1 (session_time)," .
+	"         KEY ix2 (user_id, ip_address)" .
 	") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 );
 

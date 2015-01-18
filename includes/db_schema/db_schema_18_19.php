@@ -28,13 +28,13 @@
 
 try {
 	WT_DB::exec(
-		"ALTER TABLE `##places`".
-		" DROP       KEY ix1,".
-		" DROP       KEY ix2,".
-		" DROP       KEY ix3,".
-		" DROP       KEY ix4,".
-		" DROP       p_level,".                              // Not needed - implicit from p_parent
-		" ADD        KEY ix1 (p_file, p_place),".            // autocomplete.php, find.php
+		"ALTER TABLE `##places`" .
+		" DROP       KEY ix1," .
+		" DROP       KEY ix2," .
+		" DROP       KEY ix3," .
+		" DROP       KEY ix4," .
+		" DROP       p_level," . // Not needed - implicit from p_parent
+		" ADD        KEY ix1 (p_file, p_place)," . // autocomplete.php, find.php
 		" ADD UNIQUE KEY ux1 (p_parent_id, p_file, p_place)" // placelist.php
 	);
 } catch (PDOException $ex) {

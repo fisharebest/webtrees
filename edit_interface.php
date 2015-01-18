@@ -26,7 +26,7 @@ use WT\Theme;
 
 define('WT_SCRIPT_NAME', 'edit_interface.php');
 require './includes/session.php';
-require WT_ROOT.'includes/functions/functions_edit.php';
+require WT_ROOT . 'includes/functions/functions_edit.php';
 
 $action = WT_Filter::post('action', null, WT_Filter::get('action'));
 
@@ -36,7 +36,7 @@ $controller
 	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
 	->addInlineJavascript('autocomplete();')
 	->addInlineJavascript('
-	var locale_date_format="' . preg_replace('/[^DMY]/', '', str_replace(array('J', 'F'), array('D', 'M'), strtoupper($DATE_FORMAT))). '";
+	var locale_date_format="' . preg_replace('/[^DMY]/', '', str_replace(array('J', 'F'), array('D', 'M'), strtoupper($DATE_FORMAT))) . '";
 ');
 
 switch ($action) {
@@ -127,7 +127,7 @@ case 'updateraw':
 
 	// Cleanup the client’s bad editing?
 	$gedcom = preg_replace('/[\r\n]+/', "\n", $gedcom); // Empty lines
-	$gedcom = trim($gedcom);                            // Leading/trailing spaces
+	$gedcom = trim($gedcom); // Leading/trailing spaces
 
 	$record->updateRecord($gedcom, false);
 
@@ -136,7 +136,7 @@ case 'updateraw':
 
 ////////////////////////////////////////////////////////////////////////////////
 case 'editrawfact':
-	$xref    = WT_Filter::get('xref',    WT_REGEX_XREF);
+	$xref    = WT_Filter::get('xref', WT_REGEX_XREF);
 	$fact_id = WT_Filter::get('fact_id');
 
 	$record = WT_GedcomRecord::getInstance($xref);
@@ -224,7 +224,7 @@ case 'updaterawfact':
 
 	// Cleanup the client’s bad editing?
 	$gedcom = preg_replace('/[\r\n]+/', "\n", $gedcom); // Empty lines
-	$gedcom = trim($gedcom);                            // Leading/trailing spaces
+	$gedcom = trim($gedcom); // Leading/trailing spaces
 
 	$record->updateFact($fact_id, $gedcom, !$keep_chan);
 
@@ -242,7 +242,7 @@ case 'edit':
 	// Find the fact to edit
 	$edit_fact = null;
 	foreach ($record->getFacts() as $fact) {
-		if ($fact->getFactId() == $fact_id  && $fact->canEdit()) {
+		if ($fact->getFactId() == $fact_id && $fact->canEdit()) {
 			$edit_fact = $fact;
 			break;
 		}
@@ -359,19 +359,19 @@ case 'add':
 	echo '</table>';
 
 	// Genealogical facts (e.g. for INDI and FAM records) can have 2 SOUR/NOTE/OBJE/ASSO/RESN ...
-	if ($level0type=='INDI' || $level0type=='FAM') {
+	if ($level0type == 'INDI' || $level0type == 'FAM') {
 		// ... but not facts which are simply links to other records
-		if ($fact!='OBJE' && $fact!='NOTE' && $fact!='SHARED_NOTE' && $fact!='OBJE' && $fact!='REPO' && $fact!='SOUR' && $fact!='ASSO') {
+		if ($fact != 'OBJE' && $fact != 'NOTE' && $fact != 'SHARED_NOTE' && $fact != 'OBJE' && $fact != 'REPO' && $fact != 'SOUR' && $fact != 'ASSO') {
 			print_add_layer('SOUR');
 			print_add_layer('OBJE');
 			// Don’t add notes to notes!
-			if ($fact!='NOTE') {
+			if ($fact != 'NOTE') {
 				print_add_layer('NOTE');
 				print_add_layer('SHARED_NOTE');
 			}
 			print_add_layer('ASSO');
 			// allow to add godfather and godmother for CHR fact or best man and bridesmaid  for MARR fact in one window
-			if ($fact=='CHR' || $fact=='MARR') {
+			if ($fact == 'CHR' || $fact == 'MARR') {
 				print_add_layer('ASSO2');
 			}
 			print_add_layer('RESN');
@@ -416,36 +416,36 @@ case 'update':
 		->pageHeader();
 
 	// If the fact has a DATE or PLAC, then delete any value of Y
-	if ($text[0]=='Y') {
-		for ($n=1; $n<count($tag); ++$n) {
-			if ($glevels[$n]==2 && ($tag[$n]=='DATE' || $tag[$n]=='PLAC') && $text[$n]) {
-				$text[0]='';
+	if ($text[0] == 'Y') {
+		for ($n = 1; $n < count($tag); ++$n) {
+			if ($glevels[$n] == 2 && ($tag[$n] == 'DATE' || $tag[$n] == 'PLAC') && $text[$n]) {
+				$text[0] = '';
 				break;
 			}
 		}
 	}
 
 	$newged = "";
-	if (!empty($_POST['NAME']))   $newged .= "\n1 NAME "   . $_POST['NAME'];
-	if (!empty($_POST['TYPE']))   $newged .= "\n2 TYPE "   . $_POST['TYPE'];
-	if (!empty($_POST['NPFX']))   $newged .= "\n2 NPFX "   . $_POST['NPFX'];
-	if (!empty($_POST['GIVN']))   $newged .= "\n2 GIVN "   . $_POST['GIVN'];
-	if (!empty($_POST['NICK']))   $newged .= "\n2 NICK "   . $_POST['NICK'];
-	if (!empty($_POST['SPFX']))   $newged .= "\n2 SPFX "   . $_POST['SPFX'];
-	if (!empty($_POST['SURN']))   $newged .= "\n2 SURN "   . $_POST['SURN'];
-	if (!empty($_POST['NSFX']))   $newged .= "\n2 NSFX "   . $_POST['NSFX'];
-	if (!empty($_POST['ROMN']))   $newged .= "\n2 ROMN "   . $_POST['ROMN'];
-	if (!empty($_POST['FONE']))   $newged .= "\n2 FONE "   . $_POST['FONE'];
-	if (!empty($_POST['_HEB']))   $newged .= "\n2 _HEB "   . $_POST['_HEB'];
-	if (!empty($_POST['_AKA']))   $newged .= "\n2 _AKA "   . $_POST['_AKA'];
+	if (!empty($_POST['NAME']))   $newged .= "\n1 NAME " . $_POST['NAME'];
+	if (!empty($_POST['TYPE']))   $newged .= "\n2 TYPE " . $_POST['TYPE'];
+	if (!empty($_POST['NPFX']))   $newged .= "\n2 NPFX " . $_POST['NPFX'];
+	if (!empty($_POST['GIVN']))   $newged .= "\n2 GIVN " . $_POST['GIVN'];
+	if (!empty($_POST['NICK']))   $newged .= "\n2 NICK " . $_POST['NICK'];
+	if (!empty($_POST['SPFX']))   $newged .= "\n2 SPFX " . $_POST['SPFX'];
+	if (!empty($_POST['SURN']))   $newged .= "\n2 SURN " . $_POST['SURN'];
+	if (!empty($_POST['NSFX']))   $newged .= "\n2 NSFX " . $_POST['NSFX'];
+	if (!empty($_POST['ROMN']))   $newged .= "\n2 ROMN " . $_POST['ROMN'];
+	if (!empty($_POST['FONE']))   $newged .= "\n2 FONE " . $_POST['FONE'];
+	if (!empty($_POST['_HEB']))   $newged .= "\n2 _HEB " . $_POST['_HEB'];
+	if (!empty($_POST['_AKA']))   $newged .= "\n2 _AKA " . $_POST['_AKA'];
 	if (!empty($_POST['_MARNM'])) $newged .= "\n2 _MARNM " . $_POST['_MARNM'];
 
 	if (isset($_POST['NOTE'])) $NOTE = $_POST['NOTE'];
 	if (!empty($NOTE)) {
 		$tempnote = preg_split('/\r?\n/', trim($NOTE) . "\n"); // make sure only one line ending on the end
 		$title[] = "0 @$xref@ NOTE " . array_shift($tempnote);
-		foreach($tempnote as &$line) {
-			$line = trim("1 CONT " . $line,' ');
+		foreach ($tempnote as &$line) {
+			$line = trim("1 CONT " . $line, ' ');
 		}
 	}
 
@@ -502,21 +502,21 @@ case 'add_child_to_family_action':
 		exit;
 	}
 
-	$family    = WT_Family::getInstance($xref);
+	$family = WT_Family::getInstance($xref);
 	check_record_access($family);
 
 	$controller->pageHeader();
 
 	splitSOUR();
-	$gedrec ="0 @REF@ INDI";
-	$gedrec.=addNewName();
-	$gedrec.=addNewSex ();
+	$gedrec = "0 @REF@ INDI";
+	$gedrec .= addNewName();
+	$gedrec .= addNewSex();
 	if (preg_match_all('/([A-Z0-9_]+)/', $QUICK_REQUIRED_FACTS, $matches)) {
 		foreach ($matches[1] as $match) {
-			$gedrec.=addNewFact($match);
+			$gedrec .= addNewFact($match);
 		}
 	}
-	$gedrec .= "\n".WT_Gedcom_Code_Pedi::createNewFamcPedi($PEDI, $xref);
+	$gedrec .= "\n" . WT_Gedcom_Code_Pedi::createNewFamcPedi($PEDI, $xref);
 	if (WT_Filter::postBool('SOUR_INDI')) {
 		$gedrec = handle_updates($gedrec);
 	} else {
@@ -530,7 +530,7 @@ case 'add_child_to_family_action':
 	$done = false;
 	foreach ($family->getFacts('CHIL') as $fact) {
 		$old_child = $fact->getTarget();
-		if ($old_child && WT_Date::Compare($new_child->getEstimatedBirthDate(), $old_child->getEstimatedBirthDate())<0) {
+		if ($old_child && WT_Date::Compare($new_child->getEstimatedBirthDate(), $old_child->getEstimatedBirthDate()) < 0) {
 			// Insert before this child
 			$family->updateFact($fact->getFactId(), '1 CHIL @' . $new_child->getXref() . "@\n" . $fact->getGedcom(), !$keep_chan);
 			$done = true;
@@ -542,7 +542,7 @@ case 'add_child_to_family_action':
 		$family->createFact('1 CHIL @' . $new_child->getXref() . '@', !$keep_chan);
 	}
 
-	if (WT_Filter::post('goto')=='new') {
+	if (WT_Filter::post('goto') == 'new') {
 		$controller->addInlineJavascript('closePopupAndReloadParent("' . $new_child->getRawUrl() . '");');
 	} else {
 		$controller->addInlineJavascript('closePopupAndReloadParent();');
@@ -579,13 +579,13 @@ case 'add_child_to_individual_action':
 		exit;
 	}
 
-	$person  = WT_Individual::getInstance($xref);
+	$person = WT_Individual::getInstance($xref);
 	check_record_access($person);
 
 	$controller->pageHeader();
 
 	// Create a family
-	if ($person->getSex()=='F') {
+	if ($person->getSex() == 'F') {
 		$gedcom = "0 @NEW@ FAM\n1 WIFE @" . $person->getXref() . "@";
 	} else {
 		$gedcom = "0 @NEW@ FAM\n1 HUSB @" . $person->getXref() . "@";
@@ -600,17 +600,17 @@ case 'add_child_to_individual_action':
 
 	$gedcom = '0 @NEW@ INDI';
 	$gedcom .= addNewName();
-	$gedcom .= addNewSex ();
-	$gedcom .= "\n".WT_Gedcom_Code_Pedi::createNewFamcPedi($PEDI, $family->getXref());
+	$gedcom .= addNewSex();
+	$gedcom .= "\n" . WT_Gedcom_Code_Pedi::createNewFamcPedi($PEDI, $family->getXref());
 	if (preg_match_all('/([A-Z0-9_]+)/', $QUICK_REQUIRED_FACTS, $matches)) {
 		foreach ($matches[1] as $match) {
-			$gedcom.=addNewFact($match);
+			$gedcom .= addNewFact($match);
 		}
 	}
 	if (WT_Filter::postBool('SOUR_INDI')) {
-		$gedcom=handle_updates($gedcom);
+		$gedcom = handle_updates($gedcom);
 	} else {
-		$gedcom=updateRest($gedcom);
+		$gedcom = updateRest($gedcom);
 	}
 
 	$child = WT_GedcomRecord::createRecord($gedcom, WT_GED_ID);
@@ -618,7 +618,7 @@ case 'add_child_to_individual_action':
 	// Link the family to the child
 	$family->createFact('1 CHIL @' . $child->getXref() . '@', true);
 
-	if (WT_Filter::post('goto')=='new') {
+	if (WT_Filter::post('goto') == 'new') {
 		$controller->addInlineJavascript('closePopupAndReloadParent("' . $child->getRawUrl() . '");');
 	} else {
 		$controller->addInlineJavascript('closePopupAndReloadParent();');
@@ -635,7 +635,7 @@ case 'add_parent_to_individual':
 	$individual = WT_Individual::getInstance($xref);
 	check_record_access($individual);
 
-	if ($gender=='F') {
+	if ($gender == 'F') {
 		$controller->setPageTitle(WT_I18N::translate('Add a new mother'));
 		$famtag = 'WIFE';
 	} else {
@@ -679,29 +679,29 @@ case 'add_parent_to_individual_action':
 
 	$gedcom = '0 @NEW@ INDI';
 	$gedcom .= addNewName();
-	$gedcom .= addNewSex ();
+	$gedcom .= addNewSex();
 	if (preg_match_all('/([A-Z0-9_]+)/', $QUICK_REQUIRED_FACTS, $matches)) {
 		foreach ($matches[1] as $match) {
-			$gedcom.=addNewFact($match);
+			$gedcom .= addNewFact($match);
 		}
 	}
 	if (WT_Filter::postBool('SOUR_INDI')) {
-		$gedcom=handle_updates($gedcom);
+		$gedcom = handle_updates($gedcom);
 	} else {
-		$gedcom=updateRest($gedcom);
+		$gedcom = updateRest($gedcom);
 	}
 	$gedcom .= "\n1 FAMS @" . $family->getXref() . "@";
 
 	$parent = WT_GedcomRecord::createRecord($gedcom, WT_GED_ID);
 
 	// Link the family to the child
-	if ($parent->getSex()=='F') {
+	if ($parent->getSex() == 'F') {
 		$family->createFact('1 WIFE @' . $parent->getXref() . '@', true);
 	} else {
 		$family->createFact('1 HUSB @' . $parent->getXref() . '@', true);
 	}
 
-	if (WT_Filter::post('goto')=='new') {
+	if (WT_Filter::post('goto') == 'new') {
 		$controller->addInlineJavascript('closePopupAndReloadParent("' . $parent->getRawUrl() . '");');
 	} else {
 		$controller->addInlineJavascript('closePopupAndReloadParent();');
@@ -737,12 +737,12 @@ case 'add_unlinked_indi_action':
 		->pageHeader();
 
 	splitSOUR();
-	$gedrec ="0 @REF@ INDI";
-	$gedrec.=addNewName();
-	$gedrec.=addNewSex ();
+	$gedrec = "0 @REF@ INDI";
+	$gedrec .= addNewName();
+	$gedrec .= addNewSex();
 	if (preg_match_all('/([A-Z0-9_]+)/', $QUICK_REQUIRED_FACTS, $matches)) {
 		foreach ($matches[1] as $match) {
-			$gedrec.=addNewFact($match);
+			$gedrec .= addNewFact($match);
 		}
 	}
 	if (WT_Filter::postBool('SOUR_INDI')) {
@@ -753,7 +753,7 @@ case 'add_unlinked_indi_action':
 
 	$new_indi = WT_GedcomRecord::createRecord($gedrec, WT_GED_ID);
 
-	if (WT_Filter::post('goto')=='new') {
+	if (WT_Filter::post('goto') == 'new') {
 		$controller->addInlineJavascript('closePopupAndReloadParent("' . $new_indi->getRawUrl() . '");');
 	} else {
 		$controller->addInlineJavascript('closePopupAndReloadParent();');
@@ -770,7 +770,7 @@ case 'add_spouse_to_individual':
 	$individual = WT_Individual::getInstance($xref);
 	check_record_access($individual);
 
-	if ($famtag=='WIFE') {
+	if ($famtag == 'WIFE') {
 		$controller->setPageTitle(WT_I18N::translate('Add a new wife'));
 		$sex = 'F';
 	} else {
@@ -797,7 +797,7 @@ case 'add_spouse_to_individual_action':
 		exit;
 	}
 
-	$person  = WT_Individual::getInstance($xref);
+	$person = WT_Individual::getInstance($xref);
 	check_record_access($person);
 
 	$controller
@@ -806,11 +806,11 @@ case 'add_spouse_to_individual_action':
 
 	splitSOUR();
 	$indi_gedcom = '0 @REF@ INDI';
-	$indi_gedcom.= addNewName();
-	$indi_gedcom.= addNewSex ();
+	$indi_gedcom .= addNewName();
+	$indi_gedcom .= addNewSex();
 	if (preg_match_all('/([A-Z0-9_]+)/', $QUICK_REQUIRED_FACTS, $matches)) {
 		foreach ($matches[1] as $match) {
-			$indi_gedcom.=addNewFact($match);
+			$indi_gedcom .= addNewFact($match);
 		}
 	}
 	if (WT_Filter::postBool('SOUR_INDI')) {
@@ -822,7 +822,7 @@ case 'add_spouse_to_individual_action':
 	$fam_gedcom = '';
 	if (preg_match_all('/([A-Z0-9_]+)/', $QUICK_REQUIRED_FAMFACTS, $matches)) {
 		foreach ($matches[1] as $match) {
-			$fam_gedcom.=addNewFact($match);
+			$fam_gedcom .= addNewFact($match);
 		}
 	}
 	if (WT_Filter::postBool('SOUR_FAM')) {
@@ -843,7 +843,7 @@ case 'add_spouse_to_individual_action':
 	$spouse->createFact('1 FAMS @' . $family->getXref() . '@', true);
 	$person->createFact('1 FAMS @' . $family->getXref() . '@', true);
 
-	if (WT_Filter::post('goto')=='new') {
+	if (WT_Filter::post('goto') == 'new') {
 		$controller->addInlineJavascript('closePopupAndReloadParent("' . $spouse->getRawUrl() . '");');
 	} else {
 		$controller->addInlineJavascript('closePopupAndReloadParent();');
@@ -860,7 +860,7 @@ case 'add_spouse_to_family':
 	$family = WT_Family::getInstance($xref);
 	check_record_access($family);
 
-	if ($famtag=='WIFE') {
+	if ($famtag == 'WIFE') {
 		$controller->setPageTitle(WT_I18N::translate('Add a new wife'));
 		$sex = 'F';
 	} else {
@@ -894,12 +894,12 @@ case 'add_spouse_to_family_action':
 	// Create the new spouse
 	splitSOUR(); // separate SOUR record from the rest
 
-	$gedrec ="0 @REF@ INDI";
-	$gedrec.=addNewName();
-	$gedrec.=addNewSex ();
+	$gedrec = "0 @REF@ INDI";
+	$gedrec .= addNewName();
+	$gedrec .= addNewSex();
 	if (preg_match_all('/([A-Z0-9_]+)/', $QUICK_REQUIRED_FACTS, $matches)) {
 		foreach ($matches[1] as $match) {
-			$gedrec.=addNewFact($match);
+			$gedrec .= addNewFact($match);
 		}
 	}
 
@@ -920,7 +920,7 @@ case 'add_spouse_to_family_action':
 	$famrec = '';
 	if (preg_match_all('/([A-Z0-9_]+)/', $QUICK_REQUIRED_FAMFACTS, $matches)) {
 		foreach ($matches[1] as $match) {
-			$famrec.=addNewFact($match);
+			$famrec .= addNewFact($match);
 		}
 	}
 	if (WT_Filter::postBool('SOUR_FAM')) {
@@ -930,7 +930,7 @@ case 'add_spouse_to_family_action':
 	}
 	$family->createFact(trim($famrec), true); // trim leading \n
 
-	if (WT_Filter::post('goto')=='new') {
+	if (WT_Filter::post('goto') == 'new') {
 		$controller->addInlineJavascript('closePopupAndReloadParent("' . $spouse->getRawUrl() . '");');
 	} else {
 		$controller->addInlineJavascript('closePopupAndReloadParent();');
@@ -989,7 +989,7 @@ case 'addfamlink':
 	break;
 
 case 'linkfamaction':
-	$xref   = WT_Filter::post('xref',  WT_REGEX_XREF);
+	$xref   = WT_Filter::post('xref', WT_REGEX_XREF);
 	$famid  = WT_Filter::post('famid', WT_REGEX_XREF);
 	$PEDI   = WT_Filter::post('PEDI');
 
@@ -1045,7 +1045,7 @@ case 'linkspouse':
 	$person = WT_Individual::getInstance($xref);
 	check_record_access($person);
 
-	if ($person->getSex()=='F') {
+	if ($person->getSex() == 'F') {
 		$controller->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Add a husband using an existing individual'));
 		$label = WT_I18N::translate('Husband');
 	} else {
@@ -1072,13 +1072,13 @@ case 'linkspouse':
 					</td>
 					<td class="facts_value">
 						<input data-autocomplete-type="INDI" id="spouseid" type="text" name="spid" size="8">
-						<?php echo print_findindi_link('spouseid');?>
+						<?php echo print_findindi_link('spouseid'); ?>
 					</td>
 				</tr>
 				<?php add_simple_tag("0 MARR Y"); ?>
 				<?php add_simple_tag("0 DATE", "MARR"); ?>
-				<?php add_simple_tag("0 PLAC", "MARR");?>
-				<?php echo keep_chan($person);?>
+				<?php add_simple_tag("0 PLAC", "MARR"); ?>
+				<?php echo keep_chan($person); ?>
 			</table>
 			<?php print_add_layer("SOUR"); ?>
 			<?php print_add_layer("OBJE"); ?>
@@ -1097,8 +1097,8 @@ case 'linkspouse':
 	break;
 
 case 'linkspouseaction':
-	$xref    = WT_Filter::post('xref',   WT_REGEX_XREF);
-	$spid    = WT_Filter::post('spid',   WT_REGEX_XREF);
+	$xref    = WT_Filter::post('xref', WT_REGEX_XREF);
+	$spid    = WT_Filter::post('spid', WT_REGEX_XREF);
 	$famtag  = WT_Filter::post('famtag', 'HUSB|WIFE');
 	$glevels = WT_Filter::postArray('glevels', '[0-9]');
 	$tag     = WT_Filter::postArray('tag', WT_REGEX_TAG);
@@ -1117,14 +1117,14 @@ case 'linkspouseaction':
 	check_record_access($person);
 	check_record_access($spouse);
 
-	if ($person->getSex()=='F') {
+	if ($person->getSex() == 'F') {
 		$controller->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Add a husband using an existing individual'));
 	} else {
 		$controller->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Add a wife using an existing individual'));
 	}
 	$controller->pageHeader();
 
-	if ($person->getSex()=='M') {
+	if ($person->getSex() == 'M') {
 		$gedcom = "0 @new@ FAM\n1 HUSB @" . $person->getXref() . "@\n1 WIFE @" . $spouse->getXref() . "@";
 	} else {
 		$gedcom = "0 @new@ FAM\n1 HUSB @" . $spouse->getXref() . "@\n1 WIFE @" . $person->getXref() . "@";
@@ -1132,7 +1132,7 @@ case 'linkspouseaction':
 	splitSOUR();
 	$gedcom .= addNewFact('MARR');
 
-	if (WT_Filter::postBool('SOUR_FAM') || count($tagSOUR)>0) {
+	if (WT_Filter::postBool('SOUR_FAM') || count($tagSOUR) > 0) {
 		// before adding 2 SOUR it needs to add 1 MARR Y first
 		if (addNewFact('MARR') == '') {
 			$gedcom .= "\n1 MARR Y";
@@ -1140,15 +1140,15 @@ case 'linkspouseaction':
 		$gedcom = handle_updates($gedcom);
 	} else {
 		// before adding level 2 facts it needs to add 1 MARR Y first
-		if (addNewFact('MARR')=='') {
+		if (addNewFact('MARR') == '') {
 			$gedcom .= "\n1 MARR Y";
 		}
 		$gedcom = updateRest($gedcom);
 	}
 
 	$family = WT_GedcomRecord::createRecord($gedcom, WT_GED_ID);
-	$person->createFact('1 FAMS @' . $family->getXref() .'@', true);
-	$spouse->createFact('1 FAMS @' . $family->getXref() .'@', true);
+	$person->createFact('1 FAMS @' . $family->getXref() . '@', true);
+	$spouse->createFact('1 FAMS @' . $family->getXref() . '@', true);
 
 	$controller->addInlineJavascript('closePopupAndReloadParent();');
 	break;
@@ -1184,11 +1184,11 @@ case 'addnewsource':
 				<td class="optionbox wrap"><input type="text" data-autocomplete-type="SOUR_TITL" name="TITL" id="TITL" value="" size="60"> <?php echo print_specialchar_link('TITL'); ?></td></tr>
 				<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('ABBR'); ?></td>
 				<td class="optionbox wrap"><input type="text" name="ABBR" id="ABBR" value="" size="40" maxlength="255"> <?php echo print_specialchar_link('ABBR'); ?></td></tr>
-				<?php if (strstr($ADVANCED_NAME_FACTS, "_HEB")!==false) { ?>
+				<?php if (strstr($ADVANCED_NAME_FACTS, "_HEB") !== false) { ?>
 				<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('_HEB'), help_link('_HEB'); ?></td>
 				<td class="optionbox wrap"><input type="text" name="_HEB" id="_HEB" value="" size="60"> <?php echo print_specialchar_link('_HEB'); ?></td></tr>
 				<?php } ?>
-				<?php if (strstr($ADVANCED_NAME_FACTS, "ROMN")!==false) { ?>
+				<?php if (strstr($ADVANCED_NAME_FACTS, "ROMN") !== false) { ?>
 				<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('ROMN'), help_link('ROMN'); ?></td>
 				<td class="optionbox wrap"><input  type="text" name="ROMN" id="ROMN" value="" size="60"> <?php echo print_specialchar_link('ROMN'); ?></td></tr>
 				<?php } ?>
@@ -1357,7 +1357,7 @@ case 'addnoteaction':
 		exit;
 	}
 
-	$gedrec  = '0 @XREF@ NOTE ' . preg_replace("/\r?\n/", "\n1 CONT ", WT_Filter::post('NOTE'));
+	$gedrec = '0 @XREF@ NOTE ' . preg_replace("/\r?\n/", "\n1 CONT ", WT_Filter::post('NOTE'));
 
 	$record = WT_GedcomRecord::createRecord($gedrec, WT_GED_ID);
 	$controller->addInlineJavascript('openerpasteid("' . $record->getXref() . '");');
@@ -1365,7 +1365,7 @@ case 'addnoteaction':
 
 ////////////////////////////////////////////////////////////////////////////////
 case 'addnewnote_assisted':
-	require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/CENS_ctrl.php';
+	require WT_ROOT . WT_MODULES_DIR . 'GEDFact_assistant/CENS_ctrl.php';
 break;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -1383,7 +1383,7 @@ case 'addnoteaction_assisted':
 	echo '<div id="edit_interface-page">';
 	echo '<h4>', $controller->getPageTitle(), '</h4>';
 
-	require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_CENS/addnoteaction_assisted.php';
+	require WT_ROOT . WT_MODULES_DIR . 'GEDFact_assistant/_CENS/addnoteaction_assisted.php';
 
 	echo 	'</div>';
 	break;
@@ -1407,7 +1407,7 @@ case 'addmedia_links':
 			<input type="hidden" name="action" value="addmedia_links">
 			<input type="hidden" name="noteid" value="newnote">
 			<?php echo WT_Filter::getCsrf(); ?>
-			<?php require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/MEDIA_ctrl.php'; ?>
+			<?php require WT_ROOT . WT_MODULES_DIR . 'GEDFact_assistant/MEDIA_ctrl.php'; ?>
 		</form>
 	</div>
 	<?php
@@ -1518,11 +1518,11 @@ case 'addnewrepository':
 		<table class="facts_table">
 			<tr><td class="descriptionbox wrap width25"><?php echo WT_I18N::translate('Repository name'); ?></td>
 			<td class="optionbox wrap"><input type="text" name="REPO_NAME" id="REPO_NAME" value="" size="40" maxlength="255"> <?php echo print_specialchar_link('REPO_NAME'); ?></td></tr>
-			<?php if (strstr($ADVANCED_NAME_FACTS, "_HEB")!==false) { ?>
+			<?php if (strstr($ADVANCED_NAME_FACTS, "_HEB") !== false) { ?>
 			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('_HEB'), help_link('_HEB'); ?></td>
 			<td class="optionbox wrap"><input type="text" name="_HEB" id="_HEB" value="" size="40" maxlength="255"> <?php echo print_specialchar_link('_HEB'); ?></td></tr>
 			<?php } ?>
-			<?php if (strstr($ADVANCED_NAME_FACTS, "ROMN")!==false) { ?>
+			<?php if (strstr($ADVANCED_NAME_FACTS, "ROMN") !== false) { ?>
 			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('ROMN'), help_link('ROMN'); ?></td>
 			<td class="optionbox wrap"><input type="text" name="ROMN" id="ROMN" value="" size="40" maxlength="255"> <?php echo print_specialchar_link('ROMN'); ?></td></tr>
 			<?php } ?>
@@ -1800,7 +1800,7 @@ case 'reorder_children':
 				// reorder children in modified families
 				$ids = array();
 				foreach ($family->getChildren() as $child) {
-					$ids[]=$child->getXref();
+					$ids[] = $child->getXref();
 				}
 				$children = array();
 				foreach ($family->getChildren() as $k=>$child) {
@@ -1812,17 +1812,17 @@ case 'reorder_children':
 					}
 					$children[$child->getXref()] = $sortkey;
 				}
-				if ($option=='bybirth') {
+				if ($option == 'bybirth') {
 					asort($children);
 				}
-				$i=0;
+				$i = 0;
 				$show_full = 1; // Force details to show for each child
 				foreach ($children as $id=>$child) {
 					echo '<li style="cursor:move; margin-bottom:2px; position:relative;"';
 					if (!in_array($id, $ids)) echo ' class="facts_value new"';
-					echo ' id="li_',$id,'">';
+					echo ' id="li_', $id, '">';
 					echo Theme::theme()->individualBoxLarge(WT_Individual::getInstance($id));
-					echo '<input type="hidden" name="order[',$id,']" value="',$i,'">';
+					echo '<input type="hidden" name="order[', $id, ']" value="', $i, '">';
 					echo '</li>';
 					$i++;
 				}
@@ -1866,8 +1866,8 @@ case 'reorder_update':
 		// Move children to the end of the record
 		foreach ($order as $child=>$num) {
 			foreach ($facts as $n=>$fact) {
-				if ($fact->getValue() == '@'.$child.'@') {
-					$facts[]=$fact;
+				if ($fact->getValue() == '@' . $child . '@') {
+					$facts[] = $fact;
 					unset($facts[$n]);
 					break;
 				}
@@ -1916,8 +1916,8 @@ case 'changefamily':
 								<?php
 								switch ($father->getSex()) {
 								case 'M': echo WT_I18N::translate('husband'); break;
-								case 'F': echo WT_I18N::translate('wife');    break;
-								default:  echo WT_I18N::translate('spouse');  break;
+								case 'F': echo WT_I18N::translate('wife'); break;
+								default:  echo WT_I18N::translate('spouse'); break;
 								}
 								?>
 							</b>
@@ -1934,7 +1934,7 @@ case 'changefamily':
 						</td>
 					<?php } ?>
 						<td class="optionbox">
-							<a href="#" id="husbrem" style="display: <?php echo is_null($father) ? 'none':'block'; ?>;" onclick="document.changefamform.HUSB.value=''; document.getElementById('HUSBName').innerHTML=''; this.style.display='none'; return false;">
+							<a href="#" id="husbrem" style="display: <?php echo is_null($father) ? 'none' : 'block'; ?>;" onclick="document.changefamform.HUSB.value=''; document.getElementById('HUSBName').innerHTML=''; this.style.display='none'; return false;">
 								<?php echo WT_I18N::translate('Remove'); ?>
 							</a>
 						</td>
@@ -1951,8 +1951,8 @@ case 'changefamily':
 								<?php
 								switch ($mother->getSex()) {
 								case 'M': echo WT_I18N::translate('husband'); break;
-								case 'F': echo WT_I18N::translate('wife');    break;
-								default:  echo WT_I18N::translate('spouse');  break;
+								case 'F': echo WT_I18N::translate('wife'); break;
+								default:  echo WT_I18N::translate('spouse'); break;
 								}
 								?>
 							</b>
@@ -1970,7 +1970,7 @@ case 'changefamily':
 						</td>
 					<?php } ?>
 						<td class="optionbox">
-							<a href="#" id="wiferem" style="display: <?php echo is_null($mother) ? 'none':'block'; ?>;" onclick="document.changefamform.WIFE.value=''; document.getElementById('WIFEName').innerHTML=''; this.style.display='none'; return false;">
+							<a href="#" id="wiferem" style="display: <?php echo is_null($mother) ? 'none' : 'block'; ?>;" onclick="document.changefamform.WIFE.value=''; document.getElementById('WIFEName').innerHTML=''; this.style.display='none'; return false;">
 								<?php echo WT_I18N::translate('Remove'); ?>
 							</a>
 						</td>
@@ -1980,15 +1980,15 @@ case 'changefamily':
 							</a>
 						</td>
 					</tr>
-					<?php $i=0; foreach ($children as $child) { ?>
+					<?php $i = 0; foreach ($children as $child) { ?>
 					<tr>
 						<td class="descriptionbox">
 							<b>
 								<?php
 								switch ($child->getSex()) {
-								case 'M': echo WT_I18N::translate('son');      break;
+								case 'M': echo WT_I18N::translate('son'); break;
 								case 'F': echo WT_I18N::translate('daughter'); break;
-								default:  echo WT_I18N::translate('child');    break;
+								default:  echo WT_I18N::translate('child'); break;
 								}
 								?>
 							</b>
@@ -2048,15 +2048,15 @@ case 'changefamily_update':
 	}
 
 	$CHIL = array();
-	for ($i=0; ;++$i) {
-		if (isset($_POST['CHIL'.$i])) {
-			$CHIL[] = WT_Filter::post('CHIL'.$i, WT_REGEX_XREF);
+	for ($i = 0; ;++$i) {
+		if (isset($_POST['CHIL' . $i])) {
+			$CHIL[] = WT_Filter::post('CHIL' . $i, WT_REGEX_XREF);
 		} else {
 			break;
 		}
 	}
 
-	$family    = WT_Family::getInstance($xref);
+	$family = WT_Family::getInstance($xref);
 	check_record_access($family);
 
 	$controller
@@ -2171,7 +2171,7 @@ case 'reorder_fams':
 		->pageHeader();
 
 	$fams = $person->getSpouseFamilies();
-	if ($option=='bymarriage') {
+	if ($option == 'bymarriage') {
 		usort($fams, array('WT_Family', 'compareMarrDate'));
 	}
 
@@ -2228,8 +2228,8 @@ case 'reorder_fams_update':
 		// Move families to the end of the record
 		foreach ($order as $family=>$num) {
 			foreach ($facts as $n=>$fact) {
-				if ($fact->getValue() == '@'.$family.'@') {
-					$facts[]=$fact;
+				if ($fact->getValue() == '@' . $family . '@') {
+					$facts[] = $fact;
 					unset($facts[$n]);
 					break;
 				}
@@ -2305,14 +2305,14 @@ function print_indi_form($nextaction, WT_Individual $person = null, WT_Family $f
 		$xref = 'new';
 	}
 
-	$name_fields  = array();
+	$name_fields = array();
 	if ($name_fact) {
 		$name_fact_id = $name_fact->getFactId();
 		$name_type    = $name_fact->getAttribute('TYPE');
 		$namerec = $name_fact->getGedcom();
 		// Populate the standard NAME field and subfields
 		foreach ($STANDARD_NAME_FACTS as $tag) {
-			if ($tag=='NAME') {
+			if ($tag == 'NAME') {
 				$name_fields[$tag] = $name_fact->getValue();
 			} else {
 				$name_fields[$tag] = $name_fact->getAttribute($tag);
@@ -2356,7 +2356,7 @@ function print_indi_form($nextaction, WT_Individual $person = null, WT_Family $f
 		break;
 	}
 
-	$new_marnm='';
+	$new_marnm = '';
 	// Inherit surname from parents, spouse or child
 	if (!$namerec) {
 		// We’ll need the parent’s name to set the child’s surname
@@ -2365,7 +2365,7 @@ function print_indi_form($nextaction, WT_Individual $person = null, WT_Family $f
 			if ($father && $father->getFirstFact('NAME')) {
 				$father_name = $father->getFirstFact('NAME')->getValue();
 			} else {
-				$father_name='';
+				$father_name = '';
 			}
 			$mother = $family->getWife();
 			if ($mother && $mother->getFirstFact('NAME')) {
@@ -2393,18 +2393,18 @@ function print_indi_form($nextaction, WT_Individual $person = null, WT_Family $f
 			case 'add_child_to_family_action':
 				if (preg_match('/\/(\S+) \S+\//', $mother_name, $matchm) &&
 						preg_match('/\/(\S+) \S+\//', $father_name, $matchf)) {
-					$name_fields['SURN']=$matchf[1].' '.$matchm[1];
-					$name_fields['NAME']='/'.$name_fields['SURN'].'/';
+					$name_fields['SURN'] = $matchf[1] . ' ' . $matchm[1];
+					$name_fields['NAME'] = '/' . $name_fields['SURN'] . '/';
 				}
 				break;
 			case 'add_parent_to_individual_action':
-				if ($famtag=='HUSB' && preg_match('/\/(\S+) \S+\//', $indi_name, $match)) {
-					$name_fields['SURN']=$match[1];
-					$name_fields['NAME']='/'.$name_fields['SURN'].'/';
+				if ($famtag == 'HUSB' && preg_match('/\/(\S+) \S+\//', $indi_name, $match)) {
+					$name_fields['SURN'] = $match[1];
+					$name_fields['NAME'] = '/' . $name_fields['SURN'] . '/';
 				}
-				if ($famtag=='WIFE' && preg_match('/\/\S+ (\S+)\//', $indi_name, $match)) {
-					$name_fields['SURN']=$match[1];
-					$name_fields['NAME']='/'.$name_fields['SURN'].'/';
+				if ($famtag == 'WIFE' && preg_match('/\/\S+ (\S+)\//', $indi_name, $match)) {
+					$name_fields['SURN'] = $match[1];
+					$name_fields['NAME'] = '/' . $name_fields['SURN'] . '/';
 				}
 				break;
 			case 'add_child_to_individual_action':
@@ -2421,18 +2421,18 @@ function print_indi_form($nextaction, WT_Individual $person = null, WT_Family $f
 			case 'add_child_to_family_action':
 				if (preg_match('/\/\S+\s+(\S+)\//', $mother_name, $matchm) &&
 						preg_match('/\/\S+\s+(\S+)\//', $father_name, $matchf)) {
-					$name_fields['SURN']=$matchf[1].' '.$matchm[1];
-					$name_fields['NAME']='/'.$name_fields['SURN'].'/';
+					$name_fields['SURN'] = $matchf[1] . ' ' . $matchm[1];
+					$name_fields['NAME'] = '/' . $name_fields['SURN'] . '/';
 				}
 				break;
 			case 'add_parent_to_individual_action':
-				if ($famtag=='HUSB' && preg_match('/\/\S+\s+(\S+)\//', $indi_name, $match)) {
-					$name_fields['SURN']=$match[1];
-					$name_fields['NAME']='/'.$name_fields['SURN'].'/';
+				if ($famtag == 'HUSB' && preg_match('/\/\S+\s+(\S+)\//', $indi_name, $match)) {
+					$name_fields['SURN'] = $match[1];
+					$name_fields['NAME'] = '/' . $name_fields['SURN'] . '/';
 				}
-				if ($famtag=='WIFE' && preg_match('/\/(\S+)\s+\S+\//', $indi_name, $match)) {
-					$name_fields['SURN']=$match[1];
-					$name_fields['NAME']='/'.$name_fields['SURN'].'/';
+				if ($famtag == 'WIFE' && preg_match('/\/(\S+)\s+\S+\//', $indi_name, $match)) {
+					$name_fields['SURN'] = $match[1];
+					$name_fields['NAME'] = '/' . $name_fields['SURN'] . '/';
 				}
 				break;
 			case 'add_child_to_individual_action':
@@ -2446,23 +2446,23 @@ function print_indi_form($nextaction, WT_Individual $person = null, WT_Family $f
 			// Daughters get their father’s given name plus “sdottir”
 			switch ($nextaction) {
 			case 'add_child_to_family_action':
-				if ($gender=='M' && preg_match('/(\S+)\s+\/.*\//', $father_name, $match)) {
-					$name_fields['SURN']=preg_replace('/s$/', '', $match[1]).'sson';
-					$name_fields['NAME']='/'.$name_fields['SURN'].'/';
+				if ($gender == 'M' && preg_match('/(\S+)\s+\/.*\//', $father_name, $match)) {
+					$name_fields['SURN'] = preg_replace('/s$/', '', $match[1]) . 'sson';
+					$name_fields['NAME'] = '/' . $name_fields['SURN'] . '/';
 				}
-				if ($gender=='F' && preg_match('/(\S+)\s+\/.*\//', $father_name, $match)) {
-					$name_fields['SURN']=preg_replace('/s$/', '', $match[1]).'sdottir';
-					$name_fields['NAME']='/'.$name_fields['SURN'].'/';
+				if ($gender == 'F' && preg_match('/(\S+)\s+\/.*\//', $father_name, $match)) {
+					$name_fields['SURN'] = preg_replace('/s$/', '', $match[1]) . 'sdottir';
+					$name_fields['NAME'] = '/' . $name_fields['SURN'] . '/';
 				}
 				break;
 			case 'add_parent_to_individual_action':
-				if ($famtag=='HUSB' && preg_match('/(\S+)sson\s+\/.*\//i', $indi_name, $match)) {
-					$name_fields['GIVN']=$match[1];
-					$name_fields['NAME']=$name_fields['GIVN'].' //';
+				if ($famtag == 'HUSB' && preg_match('/(\S+)sson\s+\/.*\//i', $indi_name, $match)) {
+					$name_fields['GIVN'] = $match[1];
+					$name_fields['NAME'] = $name_fields['GIVN'] . ' //';
 				}
-				if ($famtag=='WIFE' && preg_match('/(\S+)sdottir\s+\/.*\//i', $indi_name, $match)) {
-					$name_fields['GIVN']=$match[1];
-					$name_fields['NAME']=$name_fields['GIVN'].' //';
+				if ($famtag == 'WIFE' && preg_match('/(\S+)sdottir\s+\/.*\//i', $indi_name, $match)) {
+					$name_fields['GIVN'] = $match[1];
+					$name_fields['NAME'] = $name_fields['GIVN'] . ' //';
 				}
 				break;
 			case 'add_child_to_individual_action':
@@ -2476,16 +2476,16 @@ function print_indi_form($nextaction, WT_Individual $person = null, WT_Family $f
 			switch ($nextaction) {
 			case 'add_child_to_family_action':
 				if (preg_match('/\/((?:[a-z]{2,3} )*)(.*)\//i', $father_name, $match)) {
-					$name_fields['SURN']=$match[2];
-					$name_fields['SPFX']=trim($match[1]);
-					$name_fields['NAME']="/{$match[1]}{$match[2]}/";
+					$name_fields['SURN'] = $match[2];
+					$name_fields['SPFX'] = trim($match[1]);
+					$name_fields['NAME'] = "/{$match[1]}{$match[2]}/";
 				}
 				break;
 			case 'add_parent_to_individual_action':
-				if ($famtag=='HUSB' && preg_match('/\/((?:[a-z]{2,3} )*)(.*)\//i', $indi_name, $match)) {
-					$name_fields['SURN']=$match[2];
-					$name_fields['SPFX']=trim($match[1]);
-					$name_fields['NAME']="/{$match[1]}{$match[2]}/";
+				if ($famtag == 'HUSB' && preg_match('/\/((?:[a-z]{2,3} )*)(.*)\//i', $indi_name, $match)) {
+					$name_fields['SURN'] = $match[2];
+					$name_fields['SPFX'] = trim($match[1]);
+					$name_fields['NAME'] = "/{$match[1]}{$match[2]}/";
 				}
 				break;
 			case 'add_child_to_individual_action':
@@ -2499,16 +2499,16 @@ function print_indi_form($nextaction, WT_Individual $person = null, WT_Family $f
 			switch ($nextaction) {
 			case 'add_child_to_family_action':
 				if (preg_match('/\/((?:[a-z]{2,3} )*)(.*)\//i', $mother_name, $match)) {
-					$name_fields['SURN']=$match[2];
-					$name_fields['SPFX']=trim($match[1]);
-					$name_fields['NAME']="/{$match[1]}{$match[2]}/";
+					$name_fields['SURN'] = $match[2];
+					$name_fields['SPFX'] = trim($match[1]);
+					$name_fields['NAME'] = "/{$match[1]}{$match[2]}/";
 				}
 				break;
 			case 'add_parent_to_individual_action':
-				if ($famtag=='WIFE' && preg_match('/\/((?:[a-z]{2,3} )*)(.*)\//i', $indi_name, $match)) {
-					$name_fields['SURN']=$match[2];
-					$name_fields['SPFX']=trim($match[1]);
-					$name_fields['NAME']="/{$match[1]}{$match[2]}/";
+				if ($famtag == 'WIFE' && preg_match('/\/((?:[a-z]{2,3} )*)(.*)\//i', $indi_name, $match)) {
+					$name_fields['SURN'] = $match[2];
+					$name_fields['SPFX'] = trim($match[1]);
+					$name_fields['NAME'] = "/{$match[1]}{$match[2]}/";
 				}
 				break;
 			case 'add_child_to_individual_action':
@@ -2523,57 +2523,57 @@ function print_indi_form($nextaction, WT_Individual $person = null, WT_Family $f
 			// Father gives his surname to his wife and children
 			switch ($nextaction) {
 			case 'add_spouse_to_individual_action':
-				if ($famtag=='WIFE' && preg_match('/\/(.*)\//', $indi_name, $match)) {
-					if ($SURNAME_TRADITION=='polish') {
-						$match[1]=preg_replace(array('/ski$/', '/cki$/', '/dzki$/', '/żki$/'), array('ska', 'cka', 'dzka', 'żka'), $match[1]);
-					} elseif ($SURNAME_TRADITION=='lithuanian') {
-						$match[1]=preg_replace(array('/as$/', '/is$/', '/ys$/', '/us$/'), array('ienė', 'ienė', 'ienė', 'ienė'), $match[1]);
+				if ($famtag == 'WIFE' && preg_match('/\/(.*)\//', $indi_name, $match)) {
+					if ($SURNAME_TRADITION == 'polish') {
+						$match[1] = preg_replace(array('/ski$/', '/cki$/', '/dzki$/', '/żki$/'), array('ska', 'cka', 'dzka', 'żka'), $match[1]);
+					} elseif ($SURNAME_TRADITION == 'lithuanian') {
+						$match[1] = preg_replace(array('/as$/', '/is$/', '/ys$/', '/us$/'), array('ienė', 'ienė', 'ienė', 'ienė'), $match[1]);
 					}
-					$new_marnm=$match[1];
+					$new_marnm = $match[1];
 				}
 				break;
 			case 'add_child_to_family_action':
 				if (preg_match('/\/((?:[a-z]{2,3} )*)(.*)\//i', $father_name, $match)) {
-					$name_fields['SURN']=$match[2];
-					if ($SURNAME_TRADITION=='polish' && $gender=='F') {
-						$match[2]=preg_replace(array('/ski$/', '/cki$/', '/dzki$/', '/żki$/'), array('ska', 'cka', 'dzka', 'żka'), $match[2]);
-					} elseif ($SURNAME_TRADITION=='lithuanian' && $gender=='F') {
-						$match[2]=preg_replace(array('/as$/', '/a$/', '/is$/', '/ys$/', '/ius$/', '/us$/'), array('aitė', 'aitė', 'ytė', 'ytė', 'iūtė', 'utė'), $match[2]);
+					$name_fields['SURN'] = $match[2];
+					if ($SURNAME_TRADITION == 'polish' && $gender == 'F') {
+						$match[2] = preg_replace(array('/ski$/', '/cki$/', '/dzki$/', '/żki$/'), array('ska', 'cka', 'dzka', 'żka'), $match[2]);
+					} elseif ($SURNAME_TRADITION == 'lithuanian' && $gender == 'F') {
+						$match[2] = preg_replace(array('/as$/', '/a$/', '/is$/', '/ys$/', '/ius$/', '/us$/'), array('aitė', 'aitė', 'ytė', 'ytė', 'iūtė', 'utė'), $match[2]);
 					}
-					$name_fields['SPFX']=trim($match[1]);
-					$name_fields['NAME']="/{$match[1]}{$match[2]}/";
+					$name_fields['SPFX'] = trim($match[1]);
+					$name_fields['NAME'] = "/{$match[1]}{$match[2]}/";
 				}
 				break;
 			case 'add_child_to_individual_action':
-				if ($person->getSex()=='M' && preg_match('/\/((?:[a-z]{2,3} )*)(.*)\//i', $indi_name, $match)) {
-					$name_fields['SURN']=$match[2];
-					if ($SURNAME_TRADITION=='polish' && $gender=='F') {
-						$match[2]=preg_replace(array('/ski$/', '/cki$/', '/dzki$/', '/żki$/'), array('ska', 'cka', 'dzka', 'żka'), $match[2]);
-					} elseif ($SURNAME_TRADITION=='lithuanian' && $gender=='F') {
-						$match[2]=preg_replace(array('/as$/', '/a$/', '/is$/', '/ys$/', '/ius$/', '/us$/'), array('aitė', 'aitė', 'ytė', 'ytė', 'iūtė', 'utė'), $match[2]);
+				if ($person->getSex() == 'M' && preg_match('/\/((?:[a-z]{2,3} )*)(.*)\//i', $indi_name, $match)) {
+					$name_fields['SURN'] = $match[2];
+					if ($SURNAME_TRADITION == 'polish' && $gender == 'F') {
+						$match[2] = preg_replace(array('/ski$/', '/cki$/', '/dzki$/', '/żki$/'), array('ska', 'cka', 'dzka', 'żka'), $match[2]);
+					} elseif ($SURNAME_TRADITION == 'lithuanian' && $gender == 'F') {
+						$match[2] = preg_replace(array('/as$/', '/a$/', '/is$/', '/ys$/', '/ius$/', '/us$/'), array('aitė', 'aitė', 'ytė', 'ytė', 'iūtė', 'utė'), $match[2]);
 					}
-					$name_fields['SPFX']=trim($match[1]);
-					$name_fields['NAME']="/{$match[1]}{$match[2]}/";
+					$name_fields['SPFX'] = trim($match[1]);
+					$name_fields['NAME'] = "/{$match[1]}{$match[2]}/";
 				}
 				break;
 			case 'add_parent_to_individual_action':
-				if ($famtag=='HUSB' && preg_match('/\/((?:[a-z]{2,3} )*)(.*)\//i', $indi_name, $match)) {
-					if ($SURNAME_TRADITION=='polish' && $gender=='M') {
-						$match[2]=preg_replace(array('/ska$/', '/cka$/', '/dzka$/', '/żka$/'), array('ski', 'cki', 'dzki', 'żki'), $match[2]);
-					} elseif ($SURNAME_TRADITION=='lithuanian') {
+				if ($famtag == 'HUSB' && preg_match('/\/((?:[a-z]{2,3} )*)(.*)\//i', $indi_name, $match)) {
+					if ($SURNAME_TRADITION == 'polish' && $gender == 'M') {
+						$match[2] = preg_replace(array('/ska$/', '/cka$/', '/dzka$/', '/żka$/'), array('ski', 'cki', 'dzki', 'żki'), $match[2]);
+					} elseif ($SURNAME_TRADITION == 'lithuanian') {
 						// not a complete list as the rules are somewhat complicated but will do 95% correctly
-						$match[2]=preg_replace(array('/aitė$/', '/ytė$/', '/iūtė$/', '/utė$/'), array('as', 'is', 'ius', 'us'), $match[2]);
+						$match[2] = preg_replace(array('/aitė$/', '/ytė$/', '/iūtė$/', '/utė$/'), array('as', 'is', 'ius', 'us'), $match[2]);
 					}
-					$name_fields['SPFX']=trim($match[1]);
-					$name_fields['SURN']=$match[2];
-					$name_fields['NAME']="/{$match[1]}{$match[2]}/";
+					$name_fields['SPFX'] = trim($match[1]);
+					$name_fields['SURN'] = $match[2];
+					$name_fields['NAME'] = "/{$match[1]}{$match[2]}/";
 				}
-				if ($famtag=='WIFE' && preg_match('/\/((?:[a-z]{2,3} )*)(.*)\//i', $indi_name, $match)) {
-					if ($SURNAME_TRADITION=='lithuanian') {
-						$match[2]=preg_replace(array('/as$/', '/is$/', '/ys$/', '/us$/'), array('ienė', 'ienė', 'ienė', 'ienė'), $match[2]);
-						$match[2]=preg_replace(array('/aitė$/', '/ytė$/', '/iūtė$/', '/utė$/'), array('ienė', 'ienė', 'ienė', 'ienė'), $match[2]);
+				if ($famtag == 'WIFE' && preg_match('/\/((?:[a-z]{2,3} )*)(.*)\//i', $indi_name, $match)) {
+					if ($SURNAME_TRADITION == 'lithuanian') {
+						$match[2] = preg_replace(array('/as$/', '/is$/', '/ys$/', '/us$/'), array('ienė', 'ienė', 'ienė', 'ienė'), $match[2]);
+						$match[2] = preg_replace(array('/aitė$/', '/ytė$/', '/iūtė$/', '/utė$/'), array('ienė', 'ienė', 'ienė', 'ienė'), $match[2]);
 					}
-					$new_marnm=$match[2];
+					$new_marnm = $match[2];
 				}
 				break;
 			case 'add_spouse_to_family_action':
@@ -2589,23 +2589,23 @@ function print_indi_form($nextaction, WT_Individual $person = null, WT_Family $f
 	}
 
 	// Populate any missing 2 XXXX fields from the 1 NAME field
-	$npfx_accept=implode('|', $NPFX_accept);
-	if (preg_match ("/((($npfx_accept)\.? +)*)([^\n\/\"]*)(\"(.*)\")? *\/(([a-z]{2,3} +)*)(.*)\/ *(.*)/i", $name_fields['NAME'], $name_bits)) {
+	$npfx_accept = implode('|', $NPFX_accept);
+	if (preg_match("/((($npfx_accept)\.? +)*)([^\n\/\"]*)(\"(.*)\")? *\/(([a-z]{2,3} +)*)(.*)\/ *(.*)/i", $name_fields['NAME'], $name_bits)) {
 		if (empty($name_fields['NPFX'])) {
-			$name_fields['NPFX']=$name_bits[1];
+			$name_fields['NPFX'] = $name_bits[1];
 		}
 		if (empty($name_fields['SPFX']) && empty($name_fields['SURN'])) {
-			$name_fields['SPFX']=trim($name_bits[7]);
+			$name_fields['SPFX'] = trim($name_bits[7]);
 			// For names with two surnames, there will be four slashes.
 			// Turn them into a list
-			$name_fields['SURN']=preg_replace('~/[^/]*/~', ',', $name_bits[9]);
+			$name_fields['SURN'] = preg_replace('~/[^/]*/~', ',', $name_bits[9]);
 		}
 		if (empty($name_fields['GIVN'])) {
-			$name_fields['GIVN']=$name_bits[4];
+			$name_fields['GIVN'] = $name_bits[4];
 		}
 		// Don’t automatically create an empty NICK - it is an “advanced” field.
 		if (empty($name_fields['NICK']) && !empty($name_bits[6]) && !preg_match('/^2 NICK/m', $namerec)) {
-			$name_fields['NICK']=$name_bits[6];
+			$name_fields['NICK'] = $name_bits[6];
 		}
 	}
 
@@ -2615,13 +2615,13 @@ function print_indi_form($nextaction, WT_Individual $person = null, WT_Family $f
 	}
 
 	// Get the advanced name fields
-	$adv_name_fields=array();
-	if (preg_match_all('/('.WT_REGEX_TAG.')/', $ADVANCED_NAME_FACTS, $match))
+	$adv_name_fields = array();
+	if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $ADVANCED_NAME_FACTS, $match))
 		foreach ($match[1] as $tag)
-			$adv_name_fields[$tag]='';
+			$adv_name_fields[$tag] = '';
 	// This is a custom tag, but webtrees uses it extensively.
-	if ($SURNAME_TRADITION=='paternal' || $SURNAME_TRADITION=='polish' || $SURNAME_TRADITION=='lithuanian' || (strpos($namerec, '2 _MARNM')!==false)) {
-		$adv_name_fields['_MARNM']='';
+	if ($SURNAME_TRADITION == 'paternal' || $SURNAME_TRADITION == 'polish' || $SURNAME_TRADITION == 'lithuanian' || (strpos($namerec, '2 _MARNM') !== false)) {
+		$adv_name_fields['_MARNM'] = '';
 	}
 	if (isset($adv_name_fields['TYPE'])) {
 		unset($adv_name_fields['TYPE']);
@@ -2630,20 +2630,20 @@ function print_indi_form($nextaction, WT_Individual $person = null, WT_Family $f
 		// Edit existing tags
 		if (preg_match_all("/2 $tag (.+)/", $namerec, $match))
 			foreach ($match[1] as $value) {
-				if ($tag=='_MARNM') {
+				if ($tag == '_MARNM') {
 					$mnsct = preg_match('/\/(.+)\//', $value, $match2);
 					$marnm_surn = '';
-					if ($mnsct>0) $marnm_surn = $match2[1];
-					add_simple_tag("2 _MARNM ".$value);
-					add_simple_tag("2 _MARNM_SURN ".$marnm_surn);
+					if ($mnsct > 0) $marnm_surn = $match2[1];
+					add_simple_tag("2 _MARNM " . $value);
+					add_simple_tag("2 _MARNM_SURN " . $marnm_surn);
 				} else {
 					add_simple_tag("2 $tag $value", '', WT_Gedcom_Tag::getLabel("NAME:{$tag}", $person));
 				}
 			}
 			// Allow a new row to be entered if there was no row provided
-			if (count($match[1])==0 && empty($name_fields[$tag]) || $tag!='_HEB' && $tag!='NICK')
-				if ($tag=='_MARNM') {
-					if (strstr($ADVANCED_NAME_FACTS, '_MARNM')==false) {
+			if (count($match[1]) == 0 && empty($name_fields[$tag]) || $tag != '_HEB' && $tag != 'NICK')
+				if ($tag == '_MARNM') {
+					if (strstr($ADVANCED_NAME_FACTS, '_MARNM') == false) {
 						add_simple_tag("0 _MARNM");
 						add_simple_tag("0 _MARNM_SURN $new_marnm");
 					}
@@ -2659,46 +2659,46 @@ function print_indi_form($nextaction, WT_Individual $person = null, WT_Family $f
 		$glevel = $fields[0];
 		$level = $glevel;
 		$type = trim($fields[1]);
-		$tags=array();
+		$tags = array();
 		$i = 0;
 		do {
-			if ($type!='TYPE' && !isset($name_fields[$type]) && !isset($adv_name_fields[$type])) {
+			if ($type != 'TYPE' && !isset($name_fields[$type]) && !isset($adv_name_fields[$type])) {
 				$text = '';
-				for ($j=2; $j<count($fields); $j++) {
-					if ($j>2) $text .= ' ';
+				for ($j = 2; $j < count($fields); $j++) {
+					if ($j > 2) $text .= ' ';
 					$text .= $fields[$j];
 				}
-				while (($i+1<count($gedlines))&&(preg_match("/".($level+1)." (CON[CT]) ?(.*)/", $gedlines[$i+1], $cmatch)>0)) {
-					if ($cmatch[1]=="CONT") $text.="\n";
+				while (($i + 1 < count($gedlines)) && (preg_match("/" . ($level + 1) . " (CON[CT]) ?(.*)/", $gedlines[$i + 1], $cmatch) > 0)) {
+					if ($cmatch[1] == "CONT") $text .= "\n";
 					if ($WORD_WRAPPED_NOTES) $text .= ' ';
 					$text .= $cmatch[2];
 					$i++;
 				}
-				add_simple_tag($level.' '.$type.' '.$text);
+				add_simple_tag($level . ' ' . $type . ' ' . $text);
 			}
-			$tags[]=$type;
+			$tags[] = $type;
 			$i++;
 			if (isset($gedlines[$i])) {
 				$fields = explode(' ', $gedlines[$i]);
 				$level = $fields[0];
 				if (isset($fields[1])) $type = $fields[1];
 			}
-		} while (($level>$glevel)&&($i<count($gedlines)));
+		} while (($level > $glevel) && ($i < count($gedlines)));
 	}
 
 	// If we are adding a new individual, add the basic details
-	if ($nextaction!='update') {
+	if ($nextaction != 'update') {
 		echo '</table><br><table class="facts_table">';
 		// 1 SEX
-		if ($famtag=="HUSB" || $gender=="M") {
+		if ($famtag == "HUSB" || $gender == "M") {
 			add_simple_tag("0 SEX M");
-		} elseif ($famtag=="WIFE" || $gender=="F") {
+		} elseif ($famtag == "WIFE" || $gender == "F") {
 			add_simple_tag("0 SEX F");
 		} else {
 			add_simple_tag("0 SEX");
 		}
 		$bdm = "BD";
-		if (preg_match_all('/('.WT_REGEX_TAG.')/', $QUICK_REQUIRED_FACTS, $matches)) {
+		if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $QUICK_REQUIRED_FACTS, $matches)) {
 			foreach ($matches[1] as $match) {
 				if (!in_array($match, explode('|', WT_EVENTS_DEAT))) {
 					addSimpleTags($match);
@@ -2706,15 +2706,15 @@ function print_indi_form($nextaction, WT_Individual $person = null, WT_Family $f
 			}
 		}
 		//-- if adding a spouse add the option to add a marriage fact to the new family
-		if ($nextaction=='add_spouse_to_individual_action' || $nextaction=='add_spouse_to_family_action') {
+		if ($nextaction == 'add_spouse_to_individual_action' || $nextaction == 'add_spouse_to_family_action') {
 			$bdm .= "M";
-			if (preg_match_all('/('.WT_REGEX_TAG.')/', $QUICK_REQUIRED_FAMFACTS, $matches)) {
+			if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $QUICK_REQUIRED_FAMFACTS, $matches)) {
 				foreach ($matches[1] as $match) {
 					addSimpleTags($match);
 				}
 			}
 		}
-		if (preg_match_all('/('.WT_REGEX_TAG.')/', $QUICK_REQUIRED_FACTS, $matches)) {
+		if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $QUICK_REQUIRED_FACTS, $matches)) {
 			foreach ($matches[1] as $match) {
 				if (in_array($match, explode('|', WT_EVENTS_DEAT))) {
 					addSimpleTags($match);
@@ -2724,7 +2724,7 @@ function print_indi_form($nextaction, WT_Individual $person = null, WT_Family $f
 	}
 	echo keep_chan($person);
 	echo "</table>";
-	if ($nextaction=='update') {
+	if ($nextaction == 'update') {
 		// GEDCOM 5.5.1 spec says NAME doesn’t get a OBJE
 		print_add_layer('SOUR');
 		print_add_layer('NOTE');
@@ -2753,9 +2753,9 @@ function print_indi_form($nextaction, WT_Individual $person = null, WT_Family $f
 	echo '</p>';
 	echo '</form>';
 	$controller->addInlineJavascript('
-	SURNAME_TRADITION="'.$SURNAME_TRADITION.'";
-	gender="'.$gender.'";
-	famtag="'.$famtag.'";
+	SURNAME_TRADITION="'.$SURNAME_TRADITION . '";
+	gender="'.$gender . '";
+	famtag="'.$famtag . '";
 	function trim(str) {
 		str=str.replace(/\s\s+/g, " ");
 		return str.replace(/(^\s+)|(\s+$)/g, "");
