@@ -48,11 +48,11 @@ if (!WT_Filter::checkCsrf()) {
 // The id must be a valid CSS identifier, so it can be used in HTML.
 // We use "[A-Za-z0-9_]+" separated by "-".
 
-$id=WT_Filter::post('id', '[a-zA-Z0-9_-]+');
-list($table, $id1, $id2, $id3)=explode('-', $id.'---');
+$id = WT_Filter::post('id', '[a-zA-Z0-9_-]+');
+list($table, $id1, $id2, $id3) = explode('-', $id . '---');
 
 // The replacement value.
-$value=WT_Filter::post('value');
+$value = WT_Filter::post('value');
 
 // Every switch must have a default case, and every case must end in ok() or fail()
 
@@ -71,7 +71,7 @@ case 'site_access_rule':
 	case 'ip_address_end':
 		WT_DB::prepare("UPDATE `##site_access_rule` SET {$id1}=INET_ATON(?) WHERE site_access_rule_id=?")
 			->execute(array($value, $id2));
-		$value=WT_DB::prepare(
+		$value = WT_DB::prepare(
 			"SELECT INET_NTOA({$id1}) FROM `##site_access_rule` WHERE site_access_rule_id=?"
 		)->execute(array($id2))->fetchOne();
 		ok();
@@ -129,7 +129,7 @@ case 'user_gedcom_setting':
 	// ID format:  user_gedcom_setting-{user_id}-{gedcom_id}-{setting_name}
 	//////////////////////////////////////////////////////////////////////////////
 
-	switch($id3) {
+	switch ($id3) {
 	case 'rootid':
 	case 'gedcomid':
 	case 'canedit':
@@ -153,7 +153,7 @@ case 'user_setting':
 
 	$user = User::find($id1);
 	// Authorisation
-	if (!(Auth::isAdmin() || $user && $user->getPreference('editaccount') && in_array($id2, array('language','visible_online','contact_method')))) {
+	if (!(Auth::isAdmin() || $user && $user->getPreference('editaccount') && in_array($id2, array('language', 'visible_online', 'contact_method')))) {
 		fail();
 	}
 
@@ -167,13 +167,13 @@ case 'user_setting':
 		break;
 	case 'verified_by_admin':
 		// Approving for the first time?  Send a confirmation email
-		if ($value && !$user->getPreference('verified_by_admin') && $user->getPreference('sessiontime')==0) {
+		if ($value && !$user->getPreference('verified_by_admin') && $user->getPreference('sessiontime') == 0) {
 			WT_I18N::init($user->getPreference('language'));
 			WT_Mail::systemMessage(
 				$WT_TREE,
 				$user,
-				WT_I18N::translate('Approval of account at %s', WT_SERVER_NAME.WT_SCRIPT_PATH),
-				WT_I18N::translate('The administrator at the webtrees site %s has approved your application for an account.  You may now login by accessing the following link: %s', WT_SERVER_NAME.WT_SCRIPT_PATH, WT_SERVER_NAME.WT_SCRIPT_PATH)
+				WT_I18N::translate('Approval of account at %s', WT_SERVER_NAME . WT_SCRIPT_PATH),
+				WT_I18N::translate('The administrator at the webtrees site %s has approved your application for an account.  You may now login by accessing the following link: %s', WT_SERVER_NAME . WT_SCRIPT_PATH, WT_SERVER_NAME . WT_SCRIPT_PATH)
 			);
 		}
 		break;
@@ -182,7 +182,7 @@ case 'user_setting':
 	case 'verified':
 	case 'visibleonline':
 	case 'max_relation_path':
-		$value=(int)$value;
+		$value = (int) $value;
 		break;
 	case 'contactmethod':
 	case 'comment':

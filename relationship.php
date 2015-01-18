@@ -265,7 +265,7 @@ if ($person1 && $person2) {
 					$rowNum += $asc;
 					if ($asc==1) {
 						$liney = $yoffset-$lh;
-					}	else {
+					} else {
 						$liney = $yoffset+$Dbheight;
 					}
 					// need to draw a joining line ?
@@ -278,7 +278,7 @@ if ($person1 && $person2) {
 						$linex = $xoffset-$xs/2;
 						if ($asc==-1) {
 							$liney=$yoffset+$Dbheight;
-						}	else {
+						} else {
 							$liney=$yoffset-$lh;
 						}
 						$joinx = $xoffset-$xs;
@@ -288,8 +288,9 @@ if ($person1 && $person2) {
 						$joinx = $joinx+$xs/2;
 						$joiny = $joiny+$asc*$lh;
 						echo "<div id=\"joinb", $index, "\" style=\"position:absolute; ", $TEXT_DIRECTION=='ltr'?'left':'right', ':', $joinx + $Dbxspacing, 'px; top:', $joiny + $Dbyspacing, "px;\" align=\"center\"><img src=\"", Theme::theme()->parameter('image-hline'), "\" align=\"left\" width=\"", $joinw, "\" height=\"", $joinh, "\" alt=\"\"></div>";
+					} else {
+						$change_count='';
 					}
-					else $change_count='';
 					$previous='parent';
 					break;
 				case 'brother':
@@ -328,7 +329,7 @@ if ($person1 && $person2) {
 					$rowNum -= $asc;
 					if ($asc==-1) {
 						$liney = $yoffset-$lh;
-					}	else {
+					} else {
 						$liney = $yoffset+$Dbheight;
 					}
 					// need to draw a joining line ?
@@ -341,7 +342,7 @@ if ($person1 && $person2) {
 						$linex = $xoffset-$xs/2;
 						if ($asc==1) {
 							$liney=$yoffset+$Dbheight;
-						}	else {
+						} else {
 							$liney=$yoffset-($lh+$Dbyspacing);
 						}
 						$joinx = $xoffset-$xs;
@@ -351,8 +352,9 @@ if ($person1 && $person2) {
 						$joinx = $joinx+$xs/2;
 						$joiny = $joiny-$asc*$lh;
 						echo '<div id="joinb', $index, '" style="position:absolute; ', $TEXT_DIRECTION=='ltr'?'left':'right', ':', $joinx+$Dbxspacing, 'px; top:', $joiny+$Dbyspacing, 'px;" align="center"><img src="', Theme::theme()->parameter('image-hline'), '" align="left" width="', $joinw, '" height="', $joinh, '" alt=""></div>';
+					} else {
+						$change_count='';
 					}
-					else $change_count='';
 					$previous='child';
 					break;
 				}

@@ -37,20 +37,20 @@ class todays_events_WT_Module extends WT_Module implements WT_Module_Block {
 	}
 
 	/** {@inheritdoc} */
-	public function getBlock($block_id, $template=true, $cfg=null) {
+	public function getBlock($block_id, $template = true, $cfg = null) {
 		global $ctype;
 
-		require_once WT_ROOT.'includes/functions/functions_print_lists.php';
+		require_once WT_ROOT . 'includes/functions/functions_print_lists.php';
 
-		$filter    = get_block_setting($block_id, 'filter',    true);
-		$onlyBDM   = get_block_setting($block_id, 'onlyBDM',   true);
+		$filter    = get_block_setting($block_id, 'filter', true);
+		$onlyBDM   = get_block_setting($block_id, 'onlyBDM', true);
 		$infoStyle = get_block_setting($block_id, 'infoStyle', 'table');
 		$sortStyle = get_block_setting($block_id, 'sortStyle', 'alpha');
-		$block     = get_block_setting($block_id, 'block',     true);
+		$block     = get_block_setting($block_id, 'block', true);
 		if ($cfg) {
 			foreach (array('filter', 'onlyBDM', 'infoStyle', 'sortStyle', 'block') as $name) {
 				if (array_key_exists($name, $cfg)) {
-					$$name=$cfg[$name];
+					$$name = $cfg[$name];
 				}
 			}
 		}
@@ -108,38 +108,38 @@ class todays_events_WT_Module extends WT_Module implements WT_Module_Block {
 	/** {@inheritdoc} */
 	public function configureBlock($block_id) {
 		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
-			set_block_setting($block_id, 'filter',    WT_Filter::postBool('filter'));
-			set_block_setting($block_id, 'onlyBDM',   WT_Filter::postBool('onlyBDM'));
+			set_block_setting($block_id, 'filter', WT_Filter::postBool('filter'));
+			set_block_setting($block_id, 'onlyBDM', WT_Filter::postBool('onlyBDM'));
 			set_block_setting($block_id, 'infoStyle', WT_Filter::post('infoStyle', 'list|table', 'table'));
 			set_block_setting($block_id, 'sortStyle', WT_Filter::post('sortStyle', 'alpha|anniv', 'alpha'));
-			set_block_setting($block_id, 'block',     WT_Filter::postBool('block'));
+			set_block_setting($block_id, 'block', WT_Filter::postBool('block'));
 			exit;
 		}
 
-		require_once WT_ROOT.'includes/functions/functions_edit.php';
+		require_once WT_ROOT . 'includes/functions/functions_edit.php';
 
-		$filter=get_block_setting($block_id, 'filter', true);
+		$filter = get_block_setting($block_id, 'filter', true);
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo WT_I18N::translate('Show only events of living individuals?');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('filter', $filter);
 		echo '</td></tr>';
 
-		$onlyBDM=get_block_setting($block_id, 'onlyBDM', true);
+		$onlyBDM = get_block_setting($block_id, 'onlyBDM', true);
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo WT_I18N::translate('Show only births, deaths, and marriages?');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('onlyBDM', $onlyBDM);
 		echo '</td></tr>';
 
-		$infoStyle=get_block_setting($block_id, 'infoStyle', 'table');
+		$infoStyle = get_block_setting($block_id, 'infoStyle', 'table');
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo WT_I18N::translate('Presentation style');
 		echo '</td><td class="optionbox">';
 		echo select_edit_control('infoStyle', array('list'=>WT_I18N::translate('list'), 'table'=>WT_I18N::translate('table')), null, $infoStyle, '');
 		echo '</td></tr>';
 
-		$sortStyle=get_block_setting($block_id, 'sortStyle',  'alpha');
+		$sortStyle = get_block_setting($block_id, 'sortStyle', 'alpha');
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo WT_I18N::translate('Sort order');
 		echo '</td><td class="optionbox">';
@@ -149,7 +149,7 @@ class todays_events_WT_Module extends WT_Module implements WT_Module_Block {
 		), null, $sortStyle, '');
 		echo '</td></tr>';
 
-		$block=get_block_setting($block_id, 'block', true);
+		$block = get_block_setting($block_id, 'block', true);
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo /* I18N: label for a yes/no option */ WT_I18N::translate('Add a scrollbar when block contents grow');
 		echo '</td><td class="optionbox">';

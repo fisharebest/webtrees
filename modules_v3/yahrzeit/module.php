@@ -39,18 +39,18 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 	}
 
 	/** {@inheritdoc} */
-	public function getBlock($block_id, $template=true, $cfg=null) {
+	public function getBlock($block_id, $template = true, $cfg = null) {
 		global $ctype, $controller;
 
-		$days      = get_block_setting($block_id, 'days',       7);
+		$days      = get_block_setting($block_id, 'days', 7);
 		$infoStyle = get_block_setting($block_id, 'infoStyle', 'table');
-		$calendar  = get_block_setting($block_id, 'calendar',  'jewish');
-		$block     = get_block_setting($block_id, 'block',      true);
+		$calendar  = get_block_setting($block_id, 'calendar', 'jewish');
+		$block     = get_block_setting($block_id, 'block', true);
 
 		if ($cfg) {
 			foreach (array('days', 'infoStyle', 'block') as $name) {
 				if (array_key_exists($name, $cfg)) {
-					$$name=$cfg[$name];
+					$$name = $cfg[$name];
 				}
 			}
 		}
@@ -61,24 +61,24 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 		$id    = $this->getName() . $block_id;
 		$class = $this->getName() . '_block';
 		if ($ctype === 'gedcom' && WT_USER_GEDCOM_ADMIN || $ctype === 'user' && Auth::check()) {
-			$title = '<i class="icon-admin" title="'.WT_I18N::translate('Configure').'" onclick="modalDialog(\'block_edit.php?block_id='.$block_id.'\', \''.$this->getTitle().'\');"></i>';
+			$title = '<i class="icon-admin" title="' . WT_I18N::translate('Configure') . '" onclick="modalDialog(\'block_edit.php?block_id=' . $block_id . '\', \'' . $this->getTitle() . '\');"></i>';
 		} else {
 			$title = '';
 		}
 		$title .= $this->getTitle();
 
-		$content='';
+		$content = '';
 		// The standard anniversary rules cover most of the Yahrzeit rules, we just
 		// need to handle a few special cases.
 		// Fetch normal anniversaries...
-		$yahrzeits=array();
-		for ($jd=$startjd-1; $jd<=$endjd+$days; ++$jd) {
+		$yahrzeits = array();
+		for ($jd = $startjd - 1; $jd <= $endjd + $days; ++$jd) {
 			foreach (get_anniversary_events($jd, 'DEAT _YART') as $fact) {
 				// Exact hebrew dates only
 				$date = $fact->getDate();
-				if ($date->MinDate() instanceof WT_Date_Jewish && $date->MinJD()==$date->MaxJD()) {
+				if ($date->MinDate() instanceof WT_Date_Jewish && $date->MinJD() == $date->MaxJD()) {
 					$fact->jd = $jd;
-					$yahrzeits[]=$fact;
+					$yahrzeits[] = $fact;
 				}
 			}
 		}
@@ -88,22 +88,22 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 
 		foreach ($yahrzeits as $yahrzeit) {
 			if ($yahrzeit->getTag() === 'DEAT') {
-				$today=new WT_Date_Jewish($yahrzeit->jd);
-				$hd=$yahrzeit->getDate()->MinDate();
-				$hd1=new WT_Date_Jewish($hd);
-				$hd1->y+=1;
+				$today = new WT_Date_Jewish($yahrzeit->jd);
+				$hd = $yahrzeit->getDate()->MinDate();
+				$hd1 = new WT_Date_Jewish($hd);
+				$hd1->y += 1;
 				$hd1->setJdFromYmd();
 				// Special rules.  See http://www.hebcal.com/help/anniv.html
 				// Everything else is taken care of by our standard anniversary rules.
-				if ($hd->d==30 && $hd->m==2 && $hd->y!=0 && $hd1->daysInMonth()<30) {
+				if ($hd->d == 30 && $hd->m == 2 && $hd->y != 0 && $hd1->daysInMonth() < 30) {
 					// 30 CSH - Last day in CSH
-					$yahrzeit->jd = $jewish_calendar->ymdToJd($today->y, 3, 1)-1;
-				} elseif ($hd->d==30 && $hd->m==3 && $hd->y!=0 && $hd1->daysInMonth()<30) {
+					$yahrzeit->jd = $jewish_calendar->ymdToJd($today->y, 3, 1) - 1;
+				} elseif ($hd->d == 30 && $hd->m == 3 && $hd->y != 0 && $hd1->daysInMonth() < 30) {
 					// 30 KSL - Last day in KSL
-					$yahrzeit->jd = $jewish_calendar->ymdToJd($today->y, 4, 1)-1;
-				} elseif ($hd->d==30 && $hd->m==6 && $hd->y!=0 && $today->daysInMonth()<30 && !$today->isLeapYear()) {
+					$yahrzeit->jd = $jewish_calendar->ymdToJd($today->y, 4, 1) - 1;
+				} elseif ($hd->d == 30 && $hd->m == 6 && $hd->y != 0 && $today->daysInMonth() < 30 && !$today->isLeapYear()) {
 					// 30 ADR - Last day in SHV
-					$yahrzeit->jd = $jewish_calendar->ymdToJd($today->y, 6, 1)-1;
+					$yahrzeit->jd = $jewish_calendar->ymdToJd($today->y, 6, 1) - 1;
 				}
 			}
 		}
@@ -111,12 +111,12 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 		switch ($infoStyle) {
 		case 'list':
 			foreach ($yahrzeits as $yahrzeit)
-				if ($yahrzeit->jd >= $startjd && $yahrzeit->jd < $startjd+$days) {
-					$ind=$yahrzeit->getParent();
-					$content .= "<a href=\"".$ind->getHtmlUrl()."\" class=\"list_item name2\">".$ind->getFullName()."</a>".$ind->getSexImage();
+				if ($yahrzeit->jd >= $startjd && $yahrzeit->jd < $startjd + $days) {
+					$ind = $yahrzeit->getParent();
+					$content .= "<a href=\"" . $ind->getHtmlUrl() . "\" class=\"list_item name2\">" . $ind->getFullName() . "</a>" . $ind->getSexImage();
 					$content .= "<div class=\"indent\">";
 					$content .= $yahrzeit->getDate()->Display(true);
-					$content .= ', '.WT_I18N::translate('%s year anniversary', $yahrzeit->anniv);
+					$content .= ', ' . WT_I18N::translate('%s year anniversary', $yahrzeit->anniv);
 					$content .= "</div>";
 				}
 			break;
@@ -126,9 +126,9 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 			$controller
 				->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 				->addInlineJavascript('
-					jQuery("#'.$table_id.'").dataTable({
+					jQuery("#'.$table_id . '").dataTable({
 						dom: \'t\',
-						'.WT_I18N::datatablesI18N().',
+						'.WT_I18N::datatablesI18N() . ',
 						autoWidth: false,
 						paginate: false,
 						lengthChange: false,
@@ -146,59 +146,59 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 							/* 6-YART */ { visible: false }
 						]
 					});
-					jQuery("#'.$table_id.'").css("visibility", "visible");
+					jQuery("#'.$table_id . '").css("visibility", "visible");
 					jQuery(".loading-image").css("display", "none");
 				');
-			$content='';
+			$content = '';
 			$content .= '<div class="loading-image">&nbsp;</div>';
-			$content .= '<table id="'.$table_id.'" class="width100" style="visibility:hidden;">';
+			$content .= '<table id="' . $table_id . '" class="width100" style="visibility:hidden;">';
 			$content .= '<thead><tr>';
-			$content .= '<th>'.WT_Gedcom_Tag::getLabel('NAME').'</th>';
-			$content .= '<th>'.WT_Gedcom_Tag::getLabel('NAME').'</th>';
-			$content .= '<th>'.WT_Gedcom_Tag::getLabel('DEAT').'</th>';
+			$content .= '<th>' . WT_Gedcom_Tag::getLabel('NAME') . '</th>';
+			$content .= '<th>' . WT_Gedcom_Tag::getLabel('NAME') . '</th>';
+			$content .= '<th>' . WT_Gedcom_Tag::getLabel('DEAT') . '</th>';
 			$content .= '<th>DEAT</th>';
-			$content .= '<th><i class="icon-reminder" title="'.WT_I18N::translate('Anniversary').'"></i></th>';
-			$content .= '<th>'.WT_Gedcom_Tag::getLabel('_YART').'</th>';
+			$content .= '<th><i class="icon-reminder" title="' . WT_I18N::translate('Anniversary') . '"></i></th>';
+			$content .= '<th>' . WT_Gedcom_Tag::getLabel('_YART') . '</th>';
 			$content .= '<th>_YART</th>';
 			$content .= '</tr></thead><tbody>';
 
 			foreach ($yahrzeits as $yahrzeit) {
-				if ($yahrzeit->jd >= $startjd && $yahrzeit->jd < $startjd+$days) {
+				if ($yahrzeit->jd >= $startjd && $yahrzeit->jd < $startjd + $days) {
 					$content .= '<tr>';
-					$ind=$yahrzeit->getParent();
+					$ind = $yahrzeit->getParent();
 					// Individual name(s)
-					$name=$ind->getFullName();
-					$url=$ind->getHtmlUrl();
+					$name = $ind->getFullName();
+					$url = $ind->getHtmlUrl();
 					$content .= '<td>';
-					$content .= '<a href="'.$url.'">'.$name.'</a>';
+					$content .= '<a href="' . $url . '">' . $name . '</a>';
 					$content .= $ind->getSexImage();
-					$addname=$ind->getAddName();
+					$addname = $ind->getAddName();
 					if ($addname) {
-						$content .= '<br><a href="'.$url.'">'.$addname.'</a>';
+						$content .= '<br><a href="' . $url . '">' . $addname . '</a>';
 					}
 					$content .= '</td>';
-					$content .= '<td>'.$ind->getSortName().'</td>';
+					$content .= '<td>' . $ind->getSortName() . '</td>';
 
 					// death/yahrzeit event date
-					$content .= '<td>'.$yahrzeit->getDate()->Display().'</td>';
-					$content .= '<td>'.$yahrzeit->getDate()->minJD().'</td>';// sortable date
+					$content .= '<td>' . $yahrzeit->getDate()->Display() . '</td>';
+					$content .= '<td>' . $yahrzeit->getDate()->minJD() . '</td>'; // sortable date
 
 					// Anniversary
-					$content .= '<td>'.$yahrzeit->anniv.'</td>';
+					$content .= '<td>' . $yahrzeit->anniv . '</td>';
 
 					// upcomming yahrzeit dates
 					switch ($calendar) {
 					case 'gregorian':
-						$today=new WT_Date_Gregorian($yahrzeit->jd);
+						$today = new WT_Date_Gregorian($yahrzeit->jd);
 						break;
 					case 'jewish':
 					default:
-						$today=new WT_Date_Jewish($yahrzeit->jd);
+						$today = new WT_Date_Jewish($yahrzeit->jd);
 						break;
 					}
-					$td=new WT_Date($today->format('%@ %A %O %E'));
-					$content .= '<td>'.$td->display().'</td>';
-					$content .= '<td>'.$td->minJD().'</td>';// sortable date
+					$td = new WT_Date($today->format('%@ %A %O %E'));
+					$content .= '<td>' . $td->display() . '</td>';
+					$content .= '<td>' . $td->minJD() . '</td>'; // sortable date
 
 					$content .= '</tr>';
 				}
@@ -236,31 +236,31 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 	/** {@inheritdoc} */
 	public function configureBlock($block_id) {
 		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
-			set_block_setting($block_id, 'days',      WT_Filter::postInteger('days', 1, 30, 7));
+			set_block_setting($block_id, 'days', WT_Filter::postInteger('days', 1, 30, 7));
 			set_block_setting($block_id, 'infoStyle', WT_Filter::post('infoStyle', 'list|table', 'table'));
-			set_block_setting($block_id, 'calendar',  WT_Filter::post('calendar', 'jewish|gregorian', 'jewish'));
-			set_block_setting($block_id, 'block',     WT_Filter::postBool('block'));
+			set_block_setting($block_id, 'calendar', WT_Filter::post('calendar', 'jewish|gregorian', 'jewish'));
+			set_block_setting($block_id, 'block', WT_Filter::postBool('block'));
 			exit;
 		}
 
-		require_once WT_ROOT.'includes/functions/functions_edit.php';
+		require_once WT_ROOT . 'includes/functions/functions_edit.php';
 
-		$days=get_block_setting($block_id, 'days', 7);
+		$days = get_block_setting($block_id, 'days', 7);
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo WT_I18N::translate('Number of days to show');
 		echo '</td><td class="optionbox">';
-		echo '<input type="text" name="days" size="2" value="'.$days.'">';
-		echo ' <em>', WT_I18N::plural('maximum %d day', 'maximum %d days', 30, 30) ,'</em>';
+		echo '<input type="text" name="days" size="2" value="' . $days . '">';
+		echo ' <em>', WT_I18N::plural('maximum %d day', 'maximum %d days', 30, 30), '</em>';
 		echo '</td></tr>';
 
-		$infoStyle=get_block_setting($block_id, 'infoStyle', 'table');
+		$infoStyle = get_block_setting($block_id, 'infoStyle', 'table');
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo WT_I18N::translate('Presentation style');
 		echo '</td><td class="optionbox">';
 		echo select_edit_control('infoStyle', array('list'=>WT_I18N::translate('list'), 'table'=>WT_I18N::translate('table')), null, $infoStyle, '');
 		echo '</td></tr>';
 
-		$calendar=get_block_setting($block_id, 'calendar');
+		$calendar = get_block_setting($block_id, 'calendar');
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo WT_I18N::translate('Calendar');
 		echo '</td><td class="optionbox">';
@@ -270,7 +270,7 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 		), null, $calendar, '');
 		echo '</td></tr>';
 
-		$block=get_block_setting($block_id, 'block', true);
+		$block = get_block_setting($block_id, 'block', true);
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo /* I18N: label for a yes/no option */ WT_I18N::translate('Add a scrollbar when block contents grow');
 		echo '</td><td class="optionbox">';
