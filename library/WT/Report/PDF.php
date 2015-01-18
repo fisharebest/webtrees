@@ -35,19 +35,19 @@ class WT_Report_PDF extends WT_Report_Base {
 	 */
 	const COMPRESSION = true;
 	/**
-	 * If TRUE reduce the RAM memory usage by caching temporary data on filesystem (slower).
+	 * If true reduce the RAM memory usage by caching temporary data on filesystem (slower).
 	 *
 	 * @var boolean const
 	 */
 	const DISK_CACHE = false;
 	/**
-	 * TRUE means that the input text is unicode (PDF)
+	 * true means that the input text is unicode (PDF)
 	 *
 	 * @var boolean const
 	 */
 	const UNICODE = true;
 	/**
-	 * FALSE means that the full font is embedded, TRUE means only the used chars
+	 * false means that the full font is embedded, true means only the used chars
 	 * in TCPDF v5.9 font subsetting is a very slow process, this leads to larger files
 	 *
 	 * @var boolean const

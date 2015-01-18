@@ -2616,9 +2616,11 @@ function print_indi_form($nextaction, WT_Individual $person = null, WT_Family $f
 
 	// Get the advanced name fields
 	$adv_name_fields = array();
-	if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $ADVANCED_NAME_FACTS, $match))
-		foreach ($match[1] as $tag)
+	if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $ADVANCED_NAME_FACTS, $match)) {
+		foreach ($match[1] as $tag) {
 			$adv_name_fields[$tag] = '';
+		}
+	}
 	// This is a custom tag, but webtrees uses it extensively.
 	if ($SURNAME_TRADITION == 'paternal' || $SURNAME_TRADITION == 'polish' || $SURNAME_TRADITION == 'lithuanian' || (strpos($namerec, '2 _MARNM') !== false)) {
 		$adv_name_fields['_MARNM'] = '';
@@ -2628,28 +2630,32 @@ function print_indi_form($nextaction, WT_Individual $person = null, WT_Family $f
 	}
 	foreach ($adv_name_fields as $tag=>$dummy) {
 		// Edit existing tags
-		if (preg_match_all("/2 $tag (.+)/", $namerec, $match))
+		if (preg_match_all("/2 $tag (.+)/", $namerec, $match)) {
 			foreach ($match[1] as $value) {
 				if ($tag == '_MARNM') {
-					$mnsct = preg_match('/\/(.+)\//', $value, $match2);
+					$mnsct      = preg_match('/\/(.+)\//', $value, $match2);
 					$marnm_surn = '';
-					if ($mnsct > 0) $marnm_surn = $match2[1];
+					if ($mnsct > 0) {
+						$marnm_surn = $match2[1];
+					}
 					add_simple_tag("2 _MARNM " . $value);
 					add_simple_tag("2 _MARNM_SURN " . $marnm_surn);
 				} else {
 					add_simple_tag("2 $tag $value", '', WT_Gedcom_Tag::getLabel("NAME:{$tag}", $person));
 				}
 			}
-			// Allow a new row to be entered if there was no row provided
-			if (count($match[1]) == 0 && empty($name_fields[$tag]) || $tag != '_HEB' && $tag != 'NICK')
-				if ($tag == '_MARNM') {
-					if (strstr($ADVANCED_NAME_FACTS, '_MARNM') == false) {
-						add_simple_tag("0 _MARNM");
-						add_simple_tag("0 _MARNM_SURN $new_marnm");
-					}
-				} else {
-					add_simple_tag("0 $tag", '', WT_Gedcom_Tag::getLabel("NAME:{$tag}", $person));
+		}
+		// Allow a new row to be entered if there was no row provided
+		if (count($match[1]) == 0 && empty($name_fields[$tag]) || $tag != '_HEB' && $tag != 'NICK') {
+			if ($tag == '_MARNM') {
+				if (strstr($ADVANCED_NAME_FACTS, '_MARNM') == false) {
+					add_simple_tag("0 _MARNM");
+					add_simple_tag("0 _MARNM_SURN $new_marnm");
 				}
+			} else {
+				add_simple_tag("0 $tag", '', WT_Gedcom_Tag::getLabel("NAME:{$tag}", $person));
+			}
+		}
 	}
 
 	// Handle any other NAME subfields that aren’t included above (SOUR, NOTE, _CUSTOM, etc)

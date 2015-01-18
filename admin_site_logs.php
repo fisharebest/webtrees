@@ -32,7 +32,7 @@ $controller
 require WT_ROOT . 'includes/functions/functions_edit.php';
 
 $earliest = WT_DB::prepare("SELECT DATE(MIN(log_time)) FROM `##log`")->execute(array())->fetchOne();
-$latest  = WT_DB::prepare("SELECT DATE(MAX(log_time)) FROM `##log`")->execute(array())->fetchOne();
+$latest   = WT_DB::prepare("SELECT DATE(MAX(log_time)) FROM `##log`")->execute(array())->fetchOne();
 
 // Filtering
 $action = WT_Filter::get('action');

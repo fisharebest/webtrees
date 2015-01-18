@@ -402,10 +402,10 @@ if ($type == "facts") {
 	};
 
 	function initPickFact() {
-		var n,i,j,tmp,preselectedDefaultTags="\x01<?php foreach ($preselDefault as $p) echo addslashes($p), '\\x01'; ?>";
+		var n,i,j,tmp,preselectedDefaultTags="\x01<?php foreach ($preselDefault as $p) { echo addslashes($p), '\\x01'; } ?>";
 
 		DefaultTags=[<?php
-		$firstFact = TRUE;
+		$firstFact = true;
 		foreach (WT_Gedcom_Tag::getPicklistFacts() as $factId => $factName) {
 			if ($firstFact) $firstFact = FALSE;
 			else echo ',';

@@ -61,10 +61,10 @@ case 'undo':
 	)->execute(array($gedcom_id, $xref, $change_id));
 	break;
 case 'accept':
-	$gedcom_id=WT_DB::prepare("SELECT gedcom_id FROM `##change` WHERE change_id=?")->execute(array($change_id))->fetchOne();
-	$xref     =WT_DB::prepare("SELECT xref      FROM `##change` WHERE change_id=?")->execute(array($change_id))->fetchOne();
+	$gedcom_id = WT_DB::prepare("SELECT gedcom_id FROM `##change` WHERE change_id=?")->execute(array($change_id))->fetchOne();
+	$xref      = WT_DB::prepare("SELECT xref      FROM `##change` WHERE change_id=?")->execute(array($change_id))->fetchOne();
 	// Accept a change, and all previous changes to the same record
-	$changes=WT_DB::prepare(
+	$changes = WT_DB::prepare(
 		"SELECT change_id, gedcom_id, gedcom_name, xref, old_gedcom, new_gedcom".
 		" FROM  `##change` c".
 		" JOIN  `##gedcom` g USING (gedcom_id)".
