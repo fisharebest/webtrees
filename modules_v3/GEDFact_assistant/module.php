@@ -35,10 +35,10 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 
 	/** {@inheritdoc} */
 	public function modAction($mod_action) {
-		switch($mod_action) {
+		switch ($mod_action) {
 		case '_CENS/census_3_find':
 			// TODO: this file should be a method in this class
-			require WT_ROOT.WT_MODULES_DIR.$this->getName().'/_CENS/census_3_find.php';
+			require WT_ROOT . WT_MODULES_DIR . $this->getName() . '/_CENS/census_3_find.php';
 			break;
 		case 'media_3_find':
 			self::media_3_find();
@@ -127,24 +127,24 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 		echo "<br>";
 
 		$filter = trim($filter);
-		$filter_array=explode(' ', preg_replace('/ {2,}/', ' ', $filter));
+		$filter_array = explode(' ', preg_replace('/ {2,}/', ' ', $filter));
 		echo "<table class=\"tabs_table width90\"><tr>";
-		$myindilist=search_indis_names($filter_array, array(WT_GED_ID), 'AND');
+		$myindilist = search_indis_names($filter_array, array(WT_GED_ID), 'AND');
 		if ($myindilist) {
 			echo "<td class=\"list_value_wrap\"><ul>";
 			usort($myindilist, array('WT_GedcomRecord', 'compare'));
 			foreach ($myindilist as $indi) {
 				$nam = WT_Filter::escapeHtml($indi->getFullName());
 				echo "<li><a href=\"#\" onclick=\"pasterow(
-					'".$indi->getXref()."' ,
-					'".$nam."' ,
-					'".$indi->getSex()."' ,
-					'".$indi->getbirthyear()."' ,
-					'".(1901-$indi->getbirthyear())."' ,
-					'".$indi->getbirthplace()."'); return false;\">
-					<b>".$indi->getFullName()."</b>&nbsp;&nbsp;&nbsp;";
+					'".$indi->getXref() . "' ,
+					'".$nam . "' ,
+					'".$indi->getSex() . "' ,
+					'".$indi->getbirthyear() . "' ,
+					'".(1901 - $indi->getbirthyear()) . "' ,
+					'".$indi->getbirthplace() . "'); return false;\">
+					<b>".$indi->getFullName() . "</b>&nbsp;&nbsp;&nbsp;";
 
-				$born=WT_Gedcom_Tag::getLabel('BIRT');
+				$born = WT_Gedcom_Tag::getLabel('BIRT');
 				echo "</span><br><span class=\"list_item\">", $born, " ", $indi->getbirthyear(), "&nbsp;&nbsp;&nbsp;", $indi->getbirthplace(), "</span></a></li>";
 			echo "<hr>";
 			}
@@ -169,14 +169,14 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 			->setPageTitle(WT_I18N::translate('Link to an existing media object'))
 			->pageHeader();
 
-		$record=WT_GedcomRecord::getInstance($iid2);
+		$record = WT_GedcomRecord::getInstance($iid2);
 		if ($record) {
-			$headjs='';
+			$headjs = '';
 			if ($record instanceof WT_Family) {
 				if ($record->getHusband()) {
-					$headjs=$record->getHusband()->getXref();
+					$headjs = $record->getHusband()->getXref();
 				} elseif ($record->getWife()) {
-					$headjs=$record->getWife()->getXref();
+					$headjs = $record->getWife()->getXref();
 				}
 			}
 			?>
@@ -297,8 +297,8 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 				$title . "\n" . // The newline allows the framework to expand the details and turn the first line into a link
 				'<p>' . $preamble . '</p>' .
 				'<table class="table-census-assistant">' .
-				'<thead>' .  $thead .  '</thead>' .
-				'<tbody>' .  $tbody .  '</tbody>' .
+				'<thead>' . $thead . '</thead>' .
+				'<tbody>' . $tbody . '</tbody>' .
 				'</table>' .
 				'<p>' . $postamble . '</p>';
 		} else {
