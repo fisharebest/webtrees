@@ -27,7 +27,7 @@ use WT_Site;
 /**
  * Class Colors - The colors theme.
  */
-class Colors extends BaseTheme {
+class Colors extends Clouds {
 	/** @var string[] A list of color palettes */
 	protected $sub_colors;
 
@@ -40,28 +40,6 @@ class Colors extends BaseTheme {
 	}
 
 	/** {@inheritdoc} */
-	protected function favicon() {
-		return '<link rel="icon" href="' . $this->cssUrl() . 'favicon.png" type="image/png">';
-	}
-
-	/** {@inheritdoc} */
-	protected function flashMessageContainer(\stdClass $message) {
-		// This theme uses jQuery markup.
-		return '<p class="ui-state-highlight">' . $message->text . '</p>';
-	}
-
-	/** {@inheritdoc} */
-	public function formatBlock($id, $title, $class, $content) {
-		return
-			'<div id="' . $id . '" class="block" >' .
-			'<table class="blockheader"><tr><td class="blockh1"></td><td class="blockh2">' .
-			'<div class="blockhc"><b>' . $title . '</b></div>' .
-			'</td><td class="blockh3"></td></tr></table>' .
-			'<div class="blockcontent normal_inner_block ' . $class . '">' . $content . '</div>' .
-			'</div>';
-	}
-
-	/** {@inheritdoc} */
 	protected function formatSecondaryMenu() {
 		return
 			'<ul class="secondary-menu">' .
@@ -71,18 +49,12 @@ class Colors extends BaseTheme {
 			'</li>' .
 			'</ul>';
 	}
+
 	/** {@inheritdoc} */
 	protected function headerContent() {
 		return
 			$this->formatTreeTitle() .
 			$this->formatSecondaryMenu();
-	}
-
-	/** {@inheritdoc} */
-	protected function formQuickSearchFields() {
-		return
-			'<input type="search" name="query" size="15" placeholder="' . WT_I18N::translate('Search') . '">' .
-			'<input class="search-icon" type="image" src="' . Theme::theme()->parameter('image-search') . '" alt="' . WT_I18N::translate('Search') . '" title="' . WT_I18N::translate('Search') . '">';
 	}
 
 	/**
@@ -139,24 +111,6 @@ class Colors extends BaseTheme {
 		}
 	}
 
-	/** {@inheritdoc} */
-	public function hookFooterExtraJavascript() {
-		return
-			'<script src="' . WT_JQUERY_COLORBOX_URL . '"></script>' .
-			'<script src="' . WT_JQUERY_WHEELZOOM_URL . '"></script>' .
-			'<script>' .
-			'activate_colorbox();' .
-			'jQuery.extend(jQuery.colorbox.settings, {' .
-			' width: "85%",' .
-			' height: "85%",' .
-			' transition: "none",' .
-			' slideshowStart: "' . WT_I18N::translate('Play') . '",' .
-			' slideshowStop: "' . WT_I18N::translate('Stop') . '",' .
-			' title: function() { return jQuery(this).data("title"); }' .
-			'});' .
-			'</script>';
-	}
-
 	/**
 	 * Generate a list of items for the user menu.
 	 *
@@ -196,48 +150,6 @@ class Colors extends BaseTheme {
 		}
 
 		return $menu;
-	}
-
-	/** {@inheritdoc} */
-	public function parameter($parameter_name) {
-		$parameters = array(
-			'chart-background-f'             => 'e9daf1',
-			'chart-background-m'             => 'b1cff0',
-			'chart-descendancy-box-x'        => 250,
-			'chart-spacing-x'                => 4,
-			'distribution-chart-high-values' => '95b8e0',
-			'distribution-chart-low-values'  => 'c8e7ff',
-		);
-
-		if (array_key_exists($parameter_name, $parameters)) {
-			return $parameters[$parameter_name];
-		} else {
-			return parent::parameter($parameter_name);
-		}
-	}
-
-	/** {@inheritdoc} */
-	protected function primaryMenuContainer(array $menus) {
-		$html = '';
-
-		foreach ($menus as $menu) {
-			// Create an inert menu - to use as a label
-			$tmp = new WT_Menu(strip_tags($menu->getLabel()), '');
-
-			// Insert the label into the submenu
-			$submenus = $menu->getSubmenus();
-			array_unshift($submenus, $tmp);
-			$menu->setSubmenus($submenus);
-
-			// Neutralise the top-level menu
-			$menu->setLabel('');
-			$menu->setLink('');
-			$menu->setOnclick('');
-
-			$html .= $menu->getMenuAsList();
-		}
-
-		return '<ul class="primary-menu">' . $html . '</ul>';
 	}
 
 	/** {@inheritdoc} */

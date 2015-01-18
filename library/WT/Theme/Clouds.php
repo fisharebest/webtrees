@@ -43,11 +43,6 @@ class Clouds extends BaseTheme {
 	}
 
 	/** {@inheritdoc} */
-	protected function footerContent() {
-		return '<div id="footer">' . parent::footerContent() . '</div>';
-	}
-
-	/** {@inheritdoc} */
 	public function formatBlock($id, $title, $class, $content) {
 		return
 			'<div id="' . $id . '" class="block" >' .
