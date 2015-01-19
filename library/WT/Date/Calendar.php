@@ -957,24 +957,22 @@ class WT_Date_Calendar {
 	 * @return string
 	 */
 	public function calendarUrl($date_format) {
-		$URL    = 'calendar.php?cal=' . rawurlencode(static::CALENDAR_ESCAPE);
-		$action = 'year';
-		if (strpos($date_format, 'Y') !== false || strpos($date_format, 'y') !== false) {
-			$URL .= '&amp;year=' . $this->formatGedcomYear();
-		}
-		if (strpos($date_format, 'F') !== false || strpos($date_format, 'M') !== false || strpos($date_format, 'm') !== false || strpos($date_format, 'n') !== false) {
-			$URL .= '&amp;month=' . $this->formatGedcomMonth();
-			if ($this->m > 0) {
-				$action = 'calendar';
-			}
-		}
-		if (strpos($date_format, 'd') !== false || strpos($date_format, 'D') !== false || strpos($date_format, 'j') !== false) {
-			$URL .= '&amp;day=' . $this->formatGedcomDay();
-			if ($this->d > 0) {
-				$action = 'today';
-			}
+		if (strpbrk($date_format, 'dDj') && $this->d) {
+			// If the format includes a day, and the date also includes a day, then use the day view
+			$view = 'day';
+		} elseif (strpbrk($date_format, 'FMmn') && $this->m) {
+			// If the format includes a month, and the date also includes a month, then use the month view
+			$view = 'month';
+		} else {
+			// Use the year view
+			$view = 'year';
 		}
 
-		return $URL . '&amp;action=' . $action;
+		return
+			'calendar.php?cal=' . rawurlencode(static::CALENDAR_ESCAPE) .
+			'&amp;year=' . $this->formatGedcomYear() .
+			'&amp;month=' . $this->formatGedcomMonth() .
+			'&amp;day=' . $this->formatGedcomDay() .
+			'&amp;view=' . $view;
 	}
 }
