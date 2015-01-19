@@ -1776,13 +1776,6 @@ span.link_text:hover {
 	font-weight: normal;
 }
 
-#main_name {
-	float: left;
-	font-size: 2em;
-	margin: 10px;
-	font-weight: bold;
-}
-
 #indi_mainimage {
 	float: right;
 }
@@ -1903,9 +1896,6 @@ dd .deletelink {
 	float: left;
 }
 
-[dir=rtl] #main_name {
-	float: right;
-}
 
 [dir=rtl] #indi_mainimage {
 	float: left;

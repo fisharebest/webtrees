@@ -958,10 +958,6 @@ a.showit:hover > span {
 	clear: both;
 }
 
-td.descriptionbox a {
-	color: #fff;
-}
-
 /* this keeps the tag color the same when it is a link as when not */
 
 .place {
@@ -2039,10 +2035,6 @@ dd .deletelink {
 [dir=rtl] #indi_header h3 .header_age {
 	padding: 5px 5px 5px 0;
 	float: left;
-}
-
-[dir=rtl] #main_name {
-	float: right;
 }
 
 [dir=rtl] #indi_mainimage {

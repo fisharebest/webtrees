@@ -1860,13 +1860,6 @@ span.link_text {
 	color: #f00;
 }
 
-#main_name {
-	float: left;
-	font-size: 2em;
-	margin: 10px;
-	font-weight: bold;
-}
-
 #indi_mainimage {
 	float: left;
 	padding: 0 10px;
@@ -1968,10 +1961,6 @@ dd .deletelink {
 [dir=rtl] #indi_header h3 .header_age {
 	padding: 5px 5px 5px 0;
 	float: left;
-}
-
-[dir=rtl] #main_name {
-	float: right;
 }
 
 [dir=rtl] #indi_mainimage {
