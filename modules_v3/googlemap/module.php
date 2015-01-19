@@ -658,6 +658,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 								echo '<option value="', $state_key, '" ';
 								if ($stateSelected == $state_key) {
 									echo 'selected';
+								}
 								echo '>', $state_name, '</option>';
 							} ?>
 						</select>
@@ -1564,7 +1565,6 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					echo '<label>', WT_I18N::translate('Include fully matched places: '), '</label>';
 					echo '<input type="checkbox" name="matching" value="1" onchange="this.form.submit();" ';
 					echo $matching ? 'checked' : '';
-					}
 					echo '>';
 				echo '</div>'; // close div gm_check
 				echo '<input type="hidden" name="action" value="go">';
