@@ -140,7 +140,7 @@ if ($person1 && $person1->canShowName() && $person2 && $person2->canShowName()) 
 					<?php echo WT_I18N::translate('Check relationships by marriage'), help_link('CHECK_MARRIAGE_RELATIONS'); ?>
 				</td>
 				<td class="optionbox" id="followspousebox">
-					<input tabindex="6" type="checkbox" name="followspouse" value="1" <?php echo $followspouse ? 'checked' : ''; } ?> onclick="document.people.path_to_find.value='-1';" >
+					<input tabindex="6" type="checkbox" name="followspouse" value="1" <?php echo $followspouse ? 'checked' : ''; ?> onclick="document.people.path_to_find.value='-1';" >
 				</td>
 			</tr>
 				<td class="topbottombar vmiddle center" colspan="2">
