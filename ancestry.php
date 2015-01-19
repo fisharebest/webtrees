@@ -113,9 +113,9 @@ $controller
 					<select name="PEDIGREE_GENERATIONS">
 						<?php
 							for ($i = 2; $i <= $MAX_PEDIGREE_GENERATIONS; $i++) {
-								echo '<option value="', $i, '"';
+								echo '<option value="', $i, '" ';
 								if ($i == $OLD_PGENS) {
-									echo ' selected="selected"';
+									echo 'selected';
 								}
 									echo '>', WT_I18N::number($i), '</option>';
 								}

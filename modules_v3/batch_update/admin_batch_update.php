@@ -65,11 +65,11 @@ class batch_update {
 			'<td>' . select_edit_control('ged', WT_Tree::getNameList(), '', WT_GEDCOM, 'onchange="reset_reload();"') .
 			'</td></tr><tr><th>' . WT_I18N::translate('Batch update') . '</th><td><select name="plugin" onchange="reset_reload();">';
 		if (!$this->plugin) {
-			$html .= '<option value="" selected="selected"></option>';
+			$html .= '<option value="" selected></option>';
 		}
 
 		foreach ($this->plugins as $class=>$plugin) {
-			$html .= '<option value="' . $class . '"' . ($this->plugin == $class ? ' selected="selected"' : '') . '>' . $plugin->getName() . '</option>';
+			$html .= '<option value="' . $class . '" ' . ($this->plugin == $class ? 'selected' : '') . '>' . $plugin->getName() . '</option>';
 		}
 		$html .= '</select>';
 		if ($this->PLUGIN) {
@@ -388,8 +388,8 @@ class base_plugin {
 		return
 			'<tr><th>' . WT_I18N::translate('Do not update the “last change” record') . '</th>' .
 			'<td><select name="chan" onchange="this.form.submit();">' .
-			'<option value="0"' . ($this->chan ? '' : ' selected="selected"') . '>' . WT_I18N::translate('yes') . '</option>' .
-			'<option value="1"' . ($this->chan ? ' selected="selected"' : '') . '>' . WT_I18N::translate('no') . '</option>' .
+			'<option value="0" ' . ($this->chan ? '' : 'selected') . '>' . WT_I18N::translate('yes') . '</option>' .
+			'<option value="1" ' . ($this->chan ? 'selected' : '') . '>' . WT_I18N::translate('no') . '</option>' .
 			'</select></td></tr>';
 	}
 

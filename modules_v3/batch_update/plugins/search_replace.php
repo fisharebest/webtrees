@@ -137,10 +137,10 @@ class search_replace_bu_plugin extends base_plugin {
 			'" onchange="this.form.submit();"></td></tr>' .
 			'<tr><th>' . WT_I18N::translate('Search method') . '</th>' .
 			'<td><select name="method" onchange="this.form.submit();">' .
-			'<option value="exact"' . ($this->method == 'exact' ? ' selected="selected"' : '') . '>' . WT_I18N::translate('Exact text') . '</option>' .
-			'<option value="words"' . ($this->method == 'words' ? ' selected="selected"' : '') . '>' . WT_I18N::translate('Whole words only') . '</option>' .
-			'<option value="wildcards"' . ($this->method == 'wildcards' ? ' selected="selected"' : '') . '>' . WT_I18N::translate('Wildcards') . '</option>' .
-			'<option value="regex"' . ($this->method == 'regex' ? ' selected="selected"' : '') . '>' . WT_I18N::translate('Regular expression') . '</option>' .
+			'<option value="exact" ' . ($this->method == 'exact' ? 'selected' : '') . '>' . WT_I18N::translate('Exact text') . '</option>' .
+			'<option value="words" ' . ($this->method == 'words' ? 'selected' : '') . '>' . WT_I18N::translate('Whole words only') . '</option>' .
+			'<option value="wildcards" ' . ($this->method == 'wildcards' ? 'selected' : '') . '>' . WT_I18N::translate('Wildcards') . '</option>' .
+			'<option value="regex" ' . ($this->method == 'regex' ? 'selected' : '') . '>' . WT_I18N::translate('Regular expression') . '</option>' .
 			'</select><br><em>' . $descriptions[$this->method] . '</em>' . $this->error . '</td></tr>' .
 			'<tr><th>' . WT_I18N::translate('Case insensitive') . '</th>' .
 			'<td>' .

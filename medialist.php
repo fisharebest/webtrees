@@ -87,10 +87,10 @@ $medialist = WT_Query_Media::mediaList(
 				echo WT_I18N::translate('Sort order');
 				echo '</td><td class="optionbox wrap width25">';
 				echo '<select name="sortby">';
-				echo '<option value="title" ', ($sortby == 'title') ? 'selected="selected"' : '', '>';
+				echo '<option value="title" ', ($sortby == 'title') ? 'selected' : '', '>';
 				echo /* I18N: An option in a list-box */ WT_I18N::translate('sort by title');
 				echo '</option>';
-				echo '<option value="file" ', ($sortby == 'file') ? 'selected="selected"' : '', '>';
+				echo '<option value="file" ', ($sortby == 'file') ? 'selected' : '', '>';
 				echo /* I18N: An option in a list-box */ WT_I18N::translate('sort by filename');
 				echo '</option>';
 				echo '</select>';
@@ -115,9 +115,9 @@ $medialist = WT_Query_Media::mediaList(
 				<select name="max">
 					<?php
 					foreach (array('10', '20', '30', '40', '50', '75', '100', '125', '150', '200') as $selectEntry) {
-						echo '<option value="', $selectEntry, '"';
+						echo '<option value="', $selectEntry, '" ';
 						if ($selectEntry == $max) {
-							echo ' selected="selected"';
+							echo 'selected';
 						}
 						echo '>', $selectEntry, '</option>';
 					}
@@ -139,9 +139,9 @@ $medialist = WT_Query_Media::mediaList(
 				<select name="columns">
 					<?php
 					foreach (array('1', '2') as $selectEntry) {
-						echo '<option value="', $selectEntry, '"';
+						echo '<option value="', $selectEntry, '" ';
 						if ($selectEntry == $columns) {
-							echo ' selected="selected"';
+							echo 'selected';
 						}
 						echo '>', $selectEntry, '</option>';
 					}

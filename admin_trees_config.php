@@ -929,7 +929,7 @@ $controller
 				<option value=""></option>
 				<?php foreach (User::all() as $user): ?>
 					<?php if (Auth::isMember($WT_TREE, $user)): ?>
-						<option value="<?php echo $user->getUserId(); ?>" selected="<?php echo $WT_TREE->getPreference('CONTACT_USER_ID') === $user->getUserId() ? 'selected' : ''; ?>">
+						<option value="<?php echo $user->getUserId(); ?>" <?php echo $WT_TREE->getPreference('CONTACT_USER_ID') === $user->getUserId() ? 'selected' : ''; ?>>
 							<?php echo WT_Filter::escapeHtml($user->getRealName()) . ' - ' . WT_Filter::escapeHtml($user->getUserName()); ?>
 						</option>
 					<?php endif; ?>
@@ -951,7 +951,7 @@ $controller
 				<option value=""></option>
 				<?php foreach (User::all() as $user): ?>
 					<?php if (Auth::isMember($WT_TREE, $user)): ?>
-						<option value="<?php echo $user->getUserId(); ?>" selected="<?php echo $WT_TREE->getPreference('WEBMASTER_USER_ID') === $user->getUserId() ? 'selected' : ''; ?>">
+						<option value="<?php echo $user->getUserId(); ?>" <?php echo $WT_TREE->getPreference('WEBMASTER_USER_ID') === $user->getUserId() ? 'selected' : ''; ?>>
 							<?php echo WT_Filter::escapeHtml($user->getRealName()) . ' - ' . WT_Filter::escapeHtml($user->getUserName()); ?>
 						</option>
 					<?php endif; ?>

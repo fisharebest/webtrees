@@ -498,18 +498,18 @@ if (!$isExternal) {
 	if ($action !== 'update' || WT_USER_GEDCOM_ADMIN) {
 		$mediaFolders = WT_Query_Media::folderList();
 		echo '<span dir="ltr"><select name="folder_list" onchange="document.newmedia.folder.value=this.options[this.selectedIndex].value;">';
-		echo '<option';
+		echo '<option ';
 		if ($folder == '') {
-			echo ' selected="selected"';
+			echo 'selected';
 		}
 		echo ' value=""> ', WT_I18N::translate('Choose: '), ' </option>';
 		if (Auth::isAdmin()) {
 			echo '<option value="other" disabled>', WT_I18N::translate('Other folder… please type in'), "</option>";
 		}
 		foreach ($mediaFolders as $f) {
-			echo '<option value="', $f, '"';
+			echo '<option value="', $f, '" ';
 			if ($folder == $f) {
-				echo ' selected="selected"';
+				echo 'selected';
 			}
 			echo '>', $f, "</option>";
 		}

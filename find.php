@@ -297,10 +297,10 @@ if ($type == 'specialchar') {
 	<p><select id="language_filter" name="language_filter" onchange="submit();">
 	<option value="">', WT_I18N::translate('Change language'), '</option>';
 	$language_options = '';
-	foreach ($specialchar_languages as $key=>$special_character) {
-		$language_options .= '<option value="' . $key . '"';
+	foreach ($specialchar_languages as $key => $special_character) {
+		$language_options .= '<option value="' . $key . '" ';
 		if ($key == $language_filter) {
-			$language_options .= ' selected="selected"';
+			$language_options .= 'selected';
 		}
 		$language_options .= '>' . $special_character . '</option>';
 	}

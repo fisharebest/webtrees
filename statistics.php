@@ -590,7 +590,7 @@ if (!$ajax) {
 		echo '<br><div id="x_years" style="display:none;">';
 		echo WT_I18N::translate('Select the desired age interval');
 		echo '<br><select id="x-axis-boundaries-ages" name="x-axis-boundaries-ages">
-				<option value="1,5,10,20,30,40,50,60,70,80,90,100" selected="selected">',
+				<option value="1,5,10,20,30,40,50,60,70,80,90,100" selected>',
 		WT_I18N::plural('interval %s year', 'interval %s years', 10, WT_I18N::number(10)), '</option>
 				<option value="5,20,40,60,75,80,85,90">',
 		WT_I18N::plural('interval %s year', 'interval %s years', 20, WT_I18N::number(20)), '</option>
@@ -601,7 +601,7 @@ if (!$ajax) {
 			<div id="x_years_m" style="display:none;">';
 		echo WT_I18N::translate('Select the desired age interval');
 		echo '<br><select id="x-axis-boundaries-ages_m" name="x-axis-boundaries-ages_m">
-				<option value="16,18,20,22,24,26,28,30,32,35,40,50" selected="selected">',
+				<option value="16,18,20,22,24,26,28,30,32,35,40,50" selected>',
 		WT_I18N::plural('interval %s year', 'interval %s years', 2, WT_I18N::number(2)), '</option>
 				<option value="20,25,30,35,40,45,50">',
 		WT_I18N::plural('interval %s year', 'interval %s years', 5, WT_I18N::number(5)), '</option>
@@ -610,7 +610,7 @@ if (!$ajax) {
 			<div id="x_months" style="display:none;">';
 		echo WT_I18N::translate('Select the desired age interval');
 		echo '<br><select id="x-axis-boundaries-months" name="x-axis-boundaries-months">
-				<option value="0,8,12,15,18,24,48" selected="selected">', WT_I18N::translate('months after marriage'), '</option>
+				<option value="0,8,12,15,18,24,48" selected>', WT_I18N::translate('months after marriage'), '</option>
 				<option value="-24,-12,0,8,12,18,24,48">', WT_I18N::translate('months before and after marriage'), '</option>
 				<option value="0,6,9,12,15,18,21,24">', WT_I18N::translate('quarters after marriage'), '</option>
 				<option value="0,6,12,18,24">', WT_I18N::translate('half-year after marriage'), '</option>
@@ -619,7 +619,7 @@ if (!$ajax) {
 			<div id="x_numbers" style="display:none;">';
 		echo WT_I18N::translate('Select the desired count interval');
 		echo '<br><select id="x-axis-boundaries-numbers" name="x-axis-boundaries-numbers">
-				<option value="1,2,3,4,5,6,7,8,9,10" selected="selected">', WT_I18N::translate('interval one child'), '</option>
+				<option value="1,2,3,4,5,6,7,8,9,10" selected>', WT_I18N::translate('interval one child'), '</option>
 				<option value="2,4,6,8,10,12">', WT_I18N::translate('interval two children'), '</option>
 			</select>
 			<br>
@@ -628,7 +628,7 @@ if (!$ajax) {
 			<div id="chart_type">';
 		echo WT_I18N::translate('Chart type');
 		echo '<br><select name="chart_type" onchange="statusShowSurname(this);">
-				<option value="indi_distribution_chart" selected="selected">', WT_I18N::translate('Individual distribution chart'), '</option>
+				<option value="indi_distribution_chart" selected>', WT_I18N::translate('Individual distribution chart'), '</option>
 				<option value="surname_distribution_chart">', WT_I18N::translate('Surname distribution chart'), '</option>
 			</select>
 			<br>
@@ -639,7 +639,7 @@ if (!$ajax) {
 			</div>';
 		echo WT_I18N::translate('Geographical area');
 		echo '<br><select id="chart_shows" name="chart_shows">
-				<option value="world" selected="selected">', WT_I18N::translate('World'), '</option>
+				<option value="world" selected>', WT_I18N::translate('World'), '</option>
 				<option value="europe">', WT_I18N::translate('Europe'), '</option>
 				<option value="south_america">', WT_I18N::translate('South America'), '</option>
 				<option value="asia">', WT_I18N::translate('Asia'), '</option>
@@ -664,7 +664,7 @@ if (!$ajax) {
 		echo '"><label for="z_time">', WT_I18N::translate('date periods'), '</label><br><br>';
 		echo WT_I18N::translate('Date range'), '<br>';
 		echo '<select id="z-axis-boundaries-periods" name="z-axis-boundaries-periods">
-				<option value="1700,1750,1800,1850,1900,1950,2000" selected="selected">',
+				<option value="1700,1750,1800,1850,1900,1950,2000" selected>',
 			/* I18N: from 1700 interval 50 years */
 		WT_I18N::plural('from %1$s interval %2$s year', 'from %1$s interval %2$s years', 50, WT_I18N::digits(1700), WT_I18N::number(50)), '</option>
 				<option value="1800,1840,1880,1920,1950,1970,2000">',

@@ -168,11 +168,11 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 		echo
 			'<tr><td class="descriptionbox wrap width33">',
 			WT_I18N::translate('Limit display by:'), help_link('gedcom_news_limit'),
-			'</td><td class="optionbox"><select name="limit"><option value="nolimit"',
-			($limit == 'nolimit' ? ' selected="selected"' : '') . ">",
+			'</td><td class="optionbox"><select name="limit"><option value="nolimit" ',
+			($limit == 'nolimit' ? 'selected' : '') . ">",
 			WT_I18N::translate('No limit') . "</option>",
-			'<option value="date"' . ($limit == 'date' ? ' selected="selected"' : '') . ">" . WT_I18N::translate('Age of item') . "</option>",
-			'<option value="count"' . ($limit == 'count' ? ' selected="selected"' : '') . ">" . WT_I18N::translate('Number of items') . "</option>",
+			'<option value="date" ' . ($limit == 'date' ? 'selected' : '') . ">" . WT_I18N::translate('Age of item') . "</option>",
+			'<option value="count" ' . ($limit == 'count' ? 'selected' : '') . ">" . WT_I18N::translate('Number of items') . "</option>",
 			'</select></td></tr>';
 
 		// Flag to look for

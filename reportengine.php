@@ -238,9 +238,9 @@ case 'setup':
 				} elseif (preg_match('/^WT_I18N::translate_c\(\'(.+)\', *\'(.+)\'\)$/', $display, $match)) {
 					$display = WT_I18N::translate_c($match[1], $match[2]);
 				}
-				echo '<option value="', WT_Filter::escapeHtml($value), '"';
+				echo '<option value="', WT_Filter::escapeHtml($value), '" ';
 				if ($opt[0] == $input['default']) {
-					echo ' selected="selected"';
+					echo 'selected';
 				}
 				echo '>', WT_Filter::escapeHtml($display), '</option>';
 			}

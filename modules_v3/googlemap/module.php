@@ -301,10 +301,10 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 							<th><?php echo WT_I18N::translate('Default map type'); ?></th>
 							<td>
 								<select name="NEW_GM_MAP_TYPE">
-									<option value="ROADMAP" <?php if ($this->getSetting('GM_MAP_TYPE') == 'ROADMAP') echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('Map'); ?></option>
-									<option value="SATELLITE" <?php if ($this->getSetting('GM_MAP_TYPE') == 'SATELLITE') echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('Satellite'); ?></option>
-									<option value="HYBRID" <?php if ($this->getSetting('GM_MAP_TYPE') == 'HYBRID') echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('Hybrid'); ?></option>
-									<option value="TERRAIN" <?php if ($this->getSetting('GM_MAP_TYPE') == 'TERRAIN') echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('Terrain'); ?></option>
+									<option value="ROADMAP" <?php if ($this->getSetting('GM_MAP_TYPE') === 'ROADMAP') echo "selected"; ?>><?php echo WT_I18N::translate('Map'); ?></option>
+									<option value="SATELLITE" <?php if ($this->getSetting('GM_MAP_TYPE') === 'SATELLITE') echo "selected"; ?>><?php echo WT_I18N::translate('Satellite'); ?></option>
+									<option value="HYBRID" <?php if ($this->getSetting('GM_MAP_TYPE') === 'HYBRID') echo "selected"; ?>><?php echo WT_I18N::translate('Hybrid'); ?></option>
+									<option value="TERRAIN" <?php if ($this->getSetting('GM_MAP_TYPE') === 'TERRAIN') echo "selected"; ?>><?php echo WT_I18N::translate('Terrain'); ?></option>
 								</select>
 							</td>
 						</tr>
@@ -326,12 +326,12 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 							<td>
 								<?php echo WT_I18N::translate('minimum'); ?>: <select name="NEW_GM_MIN_ZOOM">
 								<?php for ($j = 1; $j < 15; $j++) { ?>
-								<option value="<?php echo $j, "\""; if ($this->getSetting('GM_MIN_ZOOM') == $j) echo " selected=\"selected\""; echo ">", $j; ?></option>
+								<option value="<?php echo $j, "\" "; if ($this->getSetting('GM_MIN_ZOOM') == $j) echo "selected"; echo ">", $j; ?></option>
 								<?php } ?>
 								</select>
 								<?php echo WT_I18N::translate('maximum'); ?>: <select name="NEW_GM_MAX_ZOOM">
 								<?php for ($j = 1; $j < 21; $j++) { ?>
-								<option value="<?php echo $j, "\""; if ($this->getSetting('GM_MAX_ZOOM') == $j) echo " selected=\"selected\""; echo ">", $j; ?></option>
+								<option value="<?php echo $j, "\" "; if ($this->getSetting('GM_MAX_ZOOM') == $j) echo "selected"; echo ">", $j; ?></option>
 								<?php } ?>
 								</select>
 							</td>
@@ -349,7 +349,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 										<td><?php echo WT_I18N::translate('Country'); ?>&nbsp;&nbsp;</td>
 										<td><select name="NEW_GM_PRECISION_0">
 											<?php for ($j = 0; $j < 10; $j++) { ?>
-											<option value="<?php echo $j; ?>"<?php if ($this->getSetting('GM_PRECISION_0') == $j) echo " selected=\"selected\""; echo ">", $j; ?></option>
+											<option value="<?php echo $j; ?>" <?php if ($this->getSetting('GM_PRECISION_0') == $j) echo "selected"; echo ">", $j; ?></option>
 											<?php } ?>
 											</select>&nbsp;&nbsp;<?php echo WT_I18N::translate('digits'); ?>
 										</td>
@@ -358,7 +358,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 										<td><?php echo WT_I18N::translate('State'); ?>&nbsp;&nbsp;</td>
 										<td><select name="NEW_GM_PRECISION_1">
 											<?php for ($j = 0; $j < 10; $j++) { ?>
-											<option value="<?php echo $j; ?>"<?php if ($this->getSetting('GM_PRECISION_1') == $j) echo " selected=\"selected\""; echo ">", $j; ?></option>
+											<option value="<?php echo $j; ?>" <?php if ($this->getSetting('GM_PRECISION_1') == $j) echo "selected"; echo ">", $j; ?></option>
 											<?php } ?>
 											</select>&nbsp;&nbsp;<?php echo WT_I18N::translate('digits'); ?>
 										</td>
@@ -367,7 +367,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 										<td><?php echo WT_I18N::translate('City'); ?>&nbsp;&nbsp;</td>
 										<td><select name="NEW_GM_PRECISION_2">
 											<?php for ($j = 0; $j < 10; $j++) { ?>
-											<option value="<?php echo $j; ?>"<?php if ($this->getSetting('GM_PRECISION_2') == $j) echo " selected=\"selected\""; echo ">", $j; ?></option>
+											<option value="<?php echo $j; ?>" <?php if ($this->getSetting('GM_PRECISION_2') == $j) echo "selected"; echo ">", $j; ?></option>
 											<?php } ?>
 											</select>&nbsp;&nbsp;<?php echo WT_I18N::translate('digits'); ?>
 										</td>
@@ -375,7 +375,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 									<tr><td><?php echo WT_I18N::translate('Neighborhood'); ?>&nbsp;&nbsp;</td>
 										<td><select name="NEW_GM_PRECISION_3">
 											<?php for ($j = 0; $j < 10; $j++) { ?>
-											<option value="<?php echo $j; ?>"<?php if ($this->getSetting('GM_PRECISION_3') == $j) echo " selected=\"selected\""; echo ">", $j; ?></option>
+											<option value="<?php echo $j; ?>" <?php if ($this->getSetting('GM_PRECISION_3') == $j) echo "selected"; echo ">", $j; ?></option>
 											<?php } ?>
 											</select>&nbsp;&nbsp;<?php echo WT_I18N::translate('digits'); ?>
 										</td>
@@ -383,7 +383,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 									<tr><td><?php echo WT_I18N::translate('House'); ?>&nbsp;&nbsp;</td>
 										<td><select name="NEW_GM_PRECISION_4">
 											<?php for ($j = 0; $j < 10; $j++) { ?>
-											<option value="<?php echo $j; ?>"<?php if ($this->getSetting('GM_PRECISION_4') == $j) echo " selected=\"selected\""; echo ">", $j; ?></option>
+											<option value="<?php echo $j; ?>" <?php if ($this->getSetting('GM_PRECISION_4') == $j) echo "selected"; echo ">", $j; ?></option>
 											<?php } ?>
 											</select>&nbsp;&nbsp;<?php echo WT_I18N::translate('digits'); ?>
 										</td>
@@ -391,7 +391,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 									<tr><td><?php echo WT_I18N::translate('Max'); ?>&nbsp;&nbsp;</td>
 										<td><select name="NEW_GM_PRECISION_5">
 											<?php for ($j = 0; $j < 10; $j++) { ?>
-											<option value="<?php echo $j; ?>"<?php if ($this->getSetting('GM_PRECISION_5') == $j) echo " selected=\"selected\""; echo ">", $j; ?></option>
+											<option value="<?php echo $j; ?>" <?php if ($this->getSetting('GM_PRECISION_5') == $j) echo "selected"; echo ">", $j; ?></option>
 											<?php } ?>
 											</select>&nbsp;&nbsp;<?php echo WT_I18N::translate('digits'); ?>
 										</td>
@@ -443,8 +443,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 							<th><?php echo WT_I18N::translate('Type of place markers in Place Hierarchy'); ?></th>
 							<td>
 								<select name="NEW_GM_PH_MARKER">
-									<option value="G_DEFAULT_ICON" <?php if ($this->getSetting('GM_PH_MARKER') == "G_DEFAULT_ICON") echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('Standard'); ?></option>
-									<option value="G_FLAG" <?php if ($this->getSetting('GM_PH_MARKER') == "G_FLAG") echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('Flag'); ?></option>
+									<option value="G_DEFAULT_ICON" <?php if ($this->getSetting('GM_PH_MARKER') == "G_DEFAULT_ICON") echo "selected"; ?>><?php echo WT_I18N::translate('Standard'); ?></option>
+									<option value="G_FLAG" <?php if ($this->getSetting('GM_PH_MARKER') == "G_FLAG") echo "selected"; ?>><?php echo WT_I18N::translate('Flag'); ?></option>
 								</select>
 							</td>
 						</tr>
@@ -610,8 +610,10 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 						<select name="COUNTRYSELECT" dir="ltr" onchange="selectCountry()">
 							<option value="Countries"><?php echo WT_I18N::translate('Countries'); ?></option>
 							<?php foreach ($countryList as $country_key=>$country_name) {
-								echo '<option value="', $country_key, '"';
-								if ($countrySelected == $country_key) echo ' selected="selected" ';
+								echo '<option value="', $country_key, '" ';
+								if ($countrySelected == $country_key) {
+									echo 'selected';
+								}
 								echo '>', $country_name, '</option>';
 							} ?>
 						</select>
@@ -653,8 +655,9 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 						<select name="STATESELECT" dir="ltr" onchange="selectCountry()">
 							<option value="States"><?php echo /* I18N: Part of a country, state/region/county */ WT_I18N::translate('Subdivision'); ?></option>
 							<?php foreach ($stateList as $state_key=>$state_name) {
-								echo '<option value="', $state_key, '"';
-								if ($stateSelected == $state_key) echo ' selected="selected"';
+								echo '<option value="', $state_key, '" ';
+								if ($stateSelected == $state_key) {
+									echo 'selected';
 								echo '>', $state_name, '</option>';
 							} ?>
 						</select>
@@ -744,7 +747,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 							for ($p = 3; $p <= $MAX_PEDIGREE_GENERATIONS; $p++) {
 								echo '<option value="', $p, '" ';
 								if ($p == $controller->PEDIGREE_GENERATIONS) {
-									echo 'selected="selected"';
+									echo 'selected';
 								}
 								echo '>', $p, '</option>';
 							}
@@ -1532,14 +1535,14 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					echo select_edit_control('gedcom_id', WT_Tree::getIdList(), null, $gedcom_id, ' onchange="this.form.submit();"');
 					echo '<label>', WT_I18N::translate('Country'), '</label>
 					<select name="country" onchange="this.form.submit();">
-						<option value="XYZ" selected="selected">', /* I18N: first/default option in a drop-down listbox */ WT_I18N::translate('&lt;select&gt;'), '</option>
+						<option value="XYZ" selected>', /* I18N: first/default option in a drop-down listbox */ WT_I18N::translate('&lt;select&gt;'), '</option>
 						<option value="XYZ">', WT_I18N::translate('All'), '</option>';
 							$rows = WT_DB::prepare("SELECT pl_id, pl_place FROM `##placelocation` WHERE pl_level=0 ORDER BY pl_place")
 								->fetchAssoc();
 							foreach ($rows as $id=>$place) {
-								echo '<option value="', WT_Filter::escapeHtml($place), '"';
+								echo '<option value="', WT_Filter::escapeHtml($place), '" ';
 								if ($place == $country) {
-									echo ' selected="selected"';
+									echo 'selected';
 									$par_id = $id;
 								}
 								echo '>', WT_Filter::escapeHtml($place), '</option>';
@@ -1548,13 +1551,13 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					if ($country != 'XYZ') {
 						echo '<label>', /* I18N: Part of a country, state/region/county */ WT_I18N::translate('Subdivision'), '</label>
 							<select name="state" onchange="this.form.submit();">
-								<option value="XYZ" selected="selected">', WT_I18N::translate('&lt;select&gt;'), '</option>
+								<option value="XYZ" selected>', WT_I18N::translate('&lt;select&gt;'), '</option>
 								<option value="XYZ">', WT_I18N::translate('All'), '</option>';
 								$places = WT_DB::prepare("SELECT pl_place FROM `##placelocation` WHERE pl_parent_id=? ORDER BY pl_place")
 									->execute(array($par_id))
 									->fetchOneColumn();
 								foreach ($places as $place) {
-									echo '<option value="', WT_Filter::escapeHtml($place), '"', $place == $state ? ' selected="selected"' : '', '>', WT_Filter::escapeHtml($place), '</option>';
+									echo '<option value="', WT_Filter::escapeHtml($place), '" ', $place == $state ? 'selected' : '', '>', WT_Filter::escapeHtml($place), '</option>';
 								}
 								echo '</select>';
 							}
@@ -4010,8 +4013,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				<td class="optionbox" colspan="2">
 					<input type="text" id="NEW_PLACE_LATI" name="NEW_PLACE_LATI" placeholder="<?php echo /* I18N: Measure of latitude/longitude */ WT_I18N::translate('degrees') ?>" value="<?php if ($place_lati != null) echo abs($place_lati); ?>" size="20" onchange="updateMap();">
 					<select name="LATI_CONTROL" onchange="updateMap();">
-						<option value="PL_N" <?php if ($place_lati > 0) echo " selected=\"selected\""; echo ">", WT_I18N::translate('north'); ?></option>
-						<option value="PL_S" <?php if ($place_lati < 0) echo " selected=\"selected\""; echo ">", WT_I18N::translate('south'); ?></option>
+						<option value="PL_N" <?php if ($place_lati > 0) echo "selected"; echo ">", WT_I18N::translate('north'); ?></option>
+						<option value="PL_S" <?php if ($place_lati < 0) echo "selected"; echo ">", WT_I18N::translate('south'); ?></option>
 					</select>
 				</td>
 			</tr>
@@ -4020,8 +4023,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				<td class="optionbox" colspan="2">
 					<input type="text" id="NEW_PLACE_LONG" name="NEW_PLACE_LONG" placeholder="<?php echo WT_I18N::translate('degrees') ?>" value="<?php if ($place_long != null) echo abs($place_long); ?>" size="20" onchange="updateMap();">
 					<select name="LONG_CONTROL" onchange="updateMap();">
-						<option value="PL_E" <?php if ($place_long > 0) echo " selected=\"selected\""; echo ">", WT_I18N::translate('east'); ?></option>
-						<option value="PL_W" <?php if ($place_long < 0) echo " selected=\"selected\""; echo ">", WT_I18N::translate('west'); ?></option>
+						<option value="PL_E" <?php if ($place_long > 0) echo "selected"; echo ">", WT_I18N::translate('east'); ?></option>
+						<option value="PL_W" <?php if ($place_long < 0) echo "selected"; echo ">", WT_I18N::translate('west'); ?></option>
 					</select>
 				</td>
 			</tr>

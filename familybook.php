@@ -63,9 +63,11 @@ $controller
 					<select name="generations">
 						<?php
 						for ($i = 2; $i <= $MAX_DESCENDANCY_GENERATIONS; $i++) {
-							echo "<option value=\"" . $i . "\"";
-							if ($i == $controller->generations) echo " selected=\"selected\"";
-							echo ">" . WT_I18N::number($i) . "</option>";
+							echo '<option value="' . $i . '" ';
+							if ($i == $controller->generations) {
+								echo 'selected';
+							}
+							echo '>' . WT_I18N::number($i) . '</option>';
 						}
 						?>
 					</select>

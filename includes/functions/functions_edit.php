@@ -84,7 +84,7 @@ function select_edit_control($name, $values, $empty, $selected, $extra = '') {
 		$html = '';
 	} else {
 		if (empty($selected)) {
-			$html = '<option value="" selected="selected">' . WT_Filter::escapeHtml($empty) . '</option>';
+			$html = '<option value="" selected>' . WT_Filter::escapeHtml($empty) . '</option>';
 		} else {
 			$html = '<option value="">' . WT_Filter::escapeHtml($empty) . '</option>';
 		}
@@ -96,7 +96,7 @@ function select_edit_control($name, $values, $empty, $selected, $extra = '') {
 	foreach ($values as $key => $value) {
 		// PHP array keys are cast to integers!  Cast them back
 		if ((string) $key === (string) $selected) {
-			$html .= '<option value="' . WT_Filter::escapeHtml($key) . '" selected="selected" dir="auto">' . WT_Filter::escapeHtml($value) . '</option>';
+			$html .= '<option value="' . WT_Filter::escapeHtml($key) . '" selected dir="auto">' . WT_Filter::escapeHtml($value) . '</option>';
 		} else {
 			$html .= '<option value="' . WT_Filter::escapeHtml($key) . '" dir="auto">' . WT_Filter::escapeHtml($value) . '</option>';
 		}
@@ -588,7 +588,7 @@ function add_simple_tag(
 	// Keep track of SOUR fields, so we can reference them in subsequent PAGE fields.
 	static $source_element_id;
 
-	$subnamefacts = array("NPFX", "GIVN", "SPFX", "SURN", "NSFX", "_MARNM_SURN");
+	$subnamefacts = array('NPFX', 'GIVN', 'SPFX', 'SURN', 'NSFX', '_MARNM_SURN');
 	preg_match('/^(?:(\d+) (' . WT_REGEX_TAG . ') ?(.*))/', $tag, $match);
 	list(, $level, $fact, $value) = $match;
 
@@ -599,9 +599,8 @@ function add_simple_tag(
 		} else {
 			$element_name = $fact;
 		}
-		// ex: OCCU
 	} else {
-		$element_name = "text[]";
+		$element_name = 'text[]';
 	}
 	if ($level == 1) {
 		$main_fact = $fact;
@@ -766,61 +765,61 @@ function add_simple_tag(
 			echo WT_I18N::translate('yes');
 		}
 
-	} else if ($fact == "TEMP") {
+	} else if ($fact === 'TEMP') {
 		echo select_edit_control($element_name, WT_Gedcom_Code_Temp::templeNames(), WT_I18N::translate('No temple - living ordinance'), $value);
-	} else if ($fact == "ADOP") {
+	} else if ($fact === 'ADOP') {
 		echo edit_field_adop($element_name, $value, '', $person);
-	} else if ($fact == "PEDI") {
+	} else if ($fact === 'PEDI') {
 		echo edit_field_pedi($element_name, $value, '', $person);
-	} else if ($fact == 'STAT') {
+	} else if ($fact === 'STAT') {
 		echo select_edit_control($element_name, WT_Gedcom_Code_Stat::statusNames($upperlevel), '', $value);
-	} else if ($fact == 'RELA') {
+	} else if ($fact === 'RELA') {
 		echo edit_field_rela($element_name, strtolower($value));
-	} else if ($fact == 'QUAY') {
+	} else if ($fact === 'QUAY') {
 		echo select_edit_control($element_name, WT_Gedcom_Code_Quay::getValues(), '', $value);
-	} else if ($fact == '_WT_USER') {
+	} else if ($fact === '_WT_USER') {
 		echo edit_field_username($element_name, $value);
-	} else if ($fact == 'RESN') {
+	} else if ($fact === 'RESN') {
 		echo edit_field_resn($element_name, $value);
-	} else if ($fact == '_PRIM') {
+	} else if ($fact === '_PRIM') {
 		echo '<select id="', $element_id, '" name="', $element_name, '" >';
 		echo '<option value=""></option>';
-		echo '<option value="Y"';
-		if ($value == 'Y') {
-			echo ' selected="selected"';
+		echo '<option value="Y" ';
+		if ($value === 'Y') {
+			echo ' selected';
 		}
 		echo '>', WT_I18N::translate('yes'), '</option>';
-		echo '<option value="N"';
-		if ($value == 'N') {
-			echo ' selected="selected"';
+		echo '<option value="N" ';
+		if ($value === 'N') {
+			echo 'selected';
 		}
 		echo '>', WT_I18N::translate('no'), '</option>';
 		echo '</select>';
-	} else if ($fact == 'SEX') {
-		echo '<select id="', $element_id, '" name="', $element_name, '"><option value="M"';
-		if ($value == 'M') {
-			echo ' selected="selected"';
+	} else if ($fact === 'SEX') {
+		echo '<select id="', $element_id, '" name="', $element_name, '"><option value="M" ';
+		if ($value === 'M') {
+			echo 'selected';
 		}
-		echo '>', WT_I18N::translate('Male'), '</option><option value="F"';
-		if ($value == 'F') {
-			echo ' selected="selected"';
+		echo '>', WT_I18N::translate('Male'), '</option><option value="F" ';
+		if ($value === 'F') {
+			echo 'selected';
 		}
-		echo '>', WT_I18N::translate('Female'), '</option><option value="U"';
-		if ($value == 'U' || empty($value)) {
-			echo ' selected="selected"';
+		echo '>', WT_I18N::translate('Female'), '</option><option value="U" ';
+		if ($value === 'U' || empty($value)) {
+			echo 'selected';
 		}
 		echo '>', WT_I18N::translate_c('unknown gender', 'Unknown'), '</option></select>';
 	} else if ($fact == 'TYPE' && $level == '3') {
 		//-- Build the selector for the Media 'TYPE' Fact
-		echo '<select name="text[]"><option selected="selected" value="" ></option>';
+		echo '<select name="text[]"><option selected value="" ></option>';
 		$selectedValue = strtolower($value);
 		if (!array_key_exists($selectedValue, WT_Gedcom_Tag::getFileFormTypes())) {
-			echo '<option selected="selected" value="', WT_Filter::escapeHtml($value), '" >', WT_Filter::escapeHtml($value), '</option>';
+			echo '<option selected value="', WT_Filter::escapeHtml($value), '" >', WT_Filter::escapeHtml($value), '</option>';
 		}
 		foreach (WT_Gedcom_Tag::getFileFormTypes() as $typeName => $typeValue) {
-			echo '<option value="', $typeName, '"';
+			echo '<option value="', $typeName, '" ';
 			if ($selectedValue == $typeName) {
-				echo ' selected="selected"';
+				echo 'selected';
 			}
 			echo '>', $typeValue, '</option>';
 		}
@@ -915,19 +914,18 @@ function add_simple_tag(
 		echo "document.getElementById('", $element_id, "').style.display='none'";
 		echo '</script>';
 		echo "<select id=\"", $element_id, "_sel\" onchange=\"document.getElementById('", $element_id, "').value=this.value;\" >";
-		foreach (array("Unknown", "Civil", "Religious", "Partners") as $key) {
-			if ($key == "Unknown") {
-				echo "<option value=\"\"";
+		foreach (array('Unknown', 'Civil', 'Religious', 'Partners') as $key) {
+			if ($key === 'Unknown') {
+				echo '<option value="" ';
 			} else {
-				echo "<option value=\"", $key, "\"";
+				echo '<option value="', $key, '" ';
 			}
 			$a = strtolower($key);
 			$b = strtolower($value);
 			if (@strpos($a, $b) !== false || @strpos($b, $a) !== false) {
-				echo ' selected="selected"';
+				echo 'selected';
 			}
-			$tmp = "MARR_" . strtoupper($key);
-			echo ">", WT_Gedcom_Tag::getLabel($tmp), "</option>";
+			echo '>', WT_Gedcom_Tag::getLabel('MARR_' . strtoupper($key)), '</option>';
 		}
 		echo "</select>";
 	}
@@ -1719,8 +1717,9 @@ function create_edit_form(WT_GedcomRecord $record, WT_Fact $fact) {
 		// Get a list of tags present at the next level
 		$subtags = array();
 		for ($ii = $i + 1; isset($gedlines[$ii]) && preg_match('/^\s*(\d+)\s+(\S+)/', $gedlines[$ii], $mm) && $mm[1] > $level; ++$ii) {
-					if ($mm[1] == $level + 1)
+			if ($mm[1] == $level + 1) {
 				$subtags[] = $mm[2];
+			}
 		}
 
 		// Insert missing tags
@@ -1832,7 +1831,7 @@ function insert_missing_subtags($level1tag, $add_date = false) {
 			case 'DATE':
 				// TIME is NOT a valid 5.5.1 tag
 				if (in_array($level1tag, $date_and_time)) {
-									add_simple_tag('3 TIME');
+					add_simple_tag('3 TIME');
 				}
 				break;
 			case 'HUSB':
@@ -1840,22 +1839,21 @@ function insert_missing_subtags($level1tag, $add_date = false) {
 				add_simple_tag('3 AGE');
 				break;
 			case 'FAMC':
-				if ($level1tag == 'ADOP') {
-									add_simple_tag('3 ADOP BOTH');
+				if ($level1tag === 'ADOP') {
+					add_simple_tag('3 ADOP BOTH');
 				}
 				break;
 			}
-		} elseif ($key == 'DATE' && $add_date) {
+		} elseif ($key === 'DATE' && $add_date) {
 			add_simple_tag('2 DATE', $level1tag, WT_Gedcom_Tag::getLabel("{$level1tag}:DATE"));
 		}
 	}
 	// Do something (anything!) with unrecognized custom tags
 	if (substr($level1tag, 0, 1) == '_' && $level1tag != '_UID' && $level1tag != '_TODO') {
-			foreach (array('DATE', 'PLAC', 'ADDR', 'AGNC', 'TYPE', 'AGE') as $tag)
+		foreach (array('DATE', 'PLAC', 'ADDR', 'AGNC', 'TYPE', 'AGE') as $tag) {
 			if (!in_array($tag, $tags)) {
 				add_simple_tag("2 {$tag}");
-	}
-				if ($tag == 'PLAC') {
+				if ($tag === 'PLAC') {
 					if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $ADVANCED_PLAC_FACTS, $match)) {
 						foreach ($match[1] as $ptag) {
 							add_simple_tag("3 $ptag", '', WT_Gedcom_Tag::getLabel("{$level1tag}:PLAC:{$ptag}"));
@@ -1866,4 +1864,6 @@ function insert_missing_subtags($level1tag, $add_date = false) {
 					add_simple_tag('4 LONG');
 				}
 			}
+		}
+	}
 }

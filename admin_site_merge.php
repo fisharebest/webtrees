@@ -250,9 +250,9 @@ if ($action == 'choose') {
 	}
 	echo ' >';
 	foreach (WT_Tree::getAll() as $tree) {
-		echo '<option value="', $tree->tree_name_html, '"';
+		echo '<option value="', $tree->tree_name_html, '" ';
 		if (empty($ged) && $tree->tree_id == WT_GED_ID || !empty($ged) && $ged == $tree->tree_name) {
-			echo ' selected="selected"';
+			echo 'selected';
 		}
 		echo ' dir="auto">', $tree->tree_title_html, '</option>';
 	}
@@ -271,9 +271,9 @@ if ($action == 'choose') {
 	}
 	echo ' >';
 	foreach (WT_Tree::getAll() as $tree) {
-		echo '<option value="', $tree->tree_name_html, '"';
+		echo '<option value="', $tree->tree_name_html, '" ';
 		if (empty($ged2) && $tree->tree_id == WT_GED_ID || !empty($ged2) && $ged2 == $tree->tree_name) {
-			echo ' selected="selected"';
+			echo 'selected';
 		}
 		echo ' dir="auto">', $tree->tree_title_html, '</option>';
 	}

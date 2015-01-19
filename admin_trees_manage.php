@@ -201,9 +201,9 @@ case 'importform':
 			sort($files);
 			echo WT_DATA_DIR, '<select name="tree_name">';
 			foreach ($files as $file) {
-				echo '<option value="', WT_Filter::escapeHtml($file), '"';
+				echo '<option value="', WT_Filter::escapeHtml($file), '" ';
 				if ($file == $previous_gedcom_filename) {
-					echo ' selected="selected"';
+					echo '';
 				}
 				echo'>', WT_Filter::escapeHtml($file), '</option>';
 			}
