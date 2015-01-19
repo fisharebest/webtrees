@@ -159,12 +159,12 @@ for ($d = 1; $d <= $days_in_month; $d++) {
 	if ($d === $cal_date->d) {
 		echo '<span class="error">', $d_fmt, '</span>';
 	} else {
-		echo '<a href="cal=', $cal, '&amp;day=', $d, '&amp;month=', $cal_month, '&amp;year=', $cal_date->y, '&amp;filterev=', $filterev, '&amp;filterof=', $filterof, '&amp;filtersx=', $filtersx, '&amp;view=', $view, '">', $d_fmt, '</a>';
+		echo '<a href="?cal=', $cal, '&amp;day=', $d, '&amp;month=', $cal_month, '&amp;year=', $cal_date->y, '&amp;filterev=', $filterev, '&amp;filterof=', $filterof, '&amp;filtersx=', $filtersx, '&amp;view=', $view, '">', $d_fmt, '</a>';
 	}
 	echo ' | ';
 }
 $tmp = new WT_Date($today->format('%@ %A %O %E')); // Need a WT_Date object to get localisation
-echo '<a href="cal=', $cal, '&amp;day=', $today->d, '&amp;month=', $today_month, '&amp;year=', $today->y, '&amp;filterev=', $filterev, '&amp;filterof=', $filterof, '&amp;filtersx=', $filtersx, '&amp;view=', $view, '"><b>', $tmp->display(), '</b></a>';
+echo '<a href="?cal=', $cal, '&amp;day=', $today->d, '&amp;month=', $today_month, '&amp;year=', $today->y, '&amp;filterev=', $filterev, '&amp;filterof=', $filterof, '&amp;filtersx=', $filtersx, '&amp;view=', $view, '"><b>', $tmp->display(), '</b></a>';
 echo '</td></tr>';
 // Month selector
 echo '<tr><td class="descriptionbox">';
@@ -184,18 +184,18 @@ for ($n = 1, $months_in_year = $cal_date->monthsInYear(); $n <= $months_in_year;
 	if ($n === $cal_date->m) {
 		$month_name = '<span class="error">' . $month_name . '</span>';
 	}
-	echo '<a href="cal=', $cal, '&amp;day=', $cal_date->d, '&amp;month=', $m, '&amp;year=', $cal_date->y, '&amp;filterev=', $filterev, '&amp;filterof=', $filterof, '&amp;filtersx=', $filtersx, '&amp;view=', $view, '">', $month_name, '</a>';
+	echo '<a href="?cal=', $cal, '&amp;day=', $cal_date->d, '&amp;month=', $m, '&amp;year=', $cal_date->y, '&amp;filterev=', $filterev, '&amp;filterof=', $filterof, '&amp;filtersx=', $filtersx, '&amp;view=', $view, '">', $month_name, '</a>';
 	echo ' | ';
 }
-echo '<a href="cal=', $cal, '&amp;day=', min($cal_date->d, $today->daysInMonth()), '&amp;month=', $today_month, '&amp;year=', $today->y, '&amp;filterev=', $filterev, '&amp;filterof=', $filterof, '&amp;filtersx=', $filtersx, '&amp;view=', $view, '"><b>' . $today->format('%F %Y') . '</b></a></td></tr>';
+echo '<a href="?cal=', $cal, '&amp;day=', min($cal_date->d, $today->daysInMonth()), '&amp;month=', $today_month, '&amp;year=', $today->y, '&amp;filterev=', $filterev, '&amp;filterof=', $filterof, '&amp;filtersx=', $filtersx, '&amp;view=', $view, '"><b>' . $today->format('%F %Y') . '</b></a></td></tr>';
 // Year selector
 echo '<tr><td class="descriptionbox vmiddle">';
 echo WT_I18N::translate('Year'), '</td>';
 echo '<td class="optionbox vmiddle">';
-echo '<a href="cal=', $cal, '&amp;day=', $cal_date->d, '&amp;month=', $cal_month, '&amp;year=', $cal_date->y === 1 ? -1 : $cal_date->y - 1, '&amp;filterev=', $filterev, '&amp;filterof=', $filterof, '&amp;filtersx=', $filtersx, '&amp;view=', $view, '">-1</a>';
+echo '<a href="?cal=', $cal, '&amp;day=', $cal_date->d, '&amp;month=', $cal_month, '&amp;year=', $cal_date->y === 1 ? -1 : $cal_date->y - 1, '&amp;filterev=', $filterev, '&amp;filterof=', $filterof, '&amp;filtersx=', $filtersx, '&amp;view=', $view, '">-1</a>';
 echo ' <input type="text" name="year" value="', $year, '" size="4"> ';
-echo '<a href="cal=', $cal, '&amp;day=', $cal_date->d, '&amp;month=', $cal_month, '&amp;year=', $cal_date->y === -1 ? 1 : $cal_date->y + 1, '&amp;filterev=', $filterev, '&amp;filterof=', $filterof, '&amp;filtersx=', $filtersx, '&amp;view=', $view, '">+1</a>';
-echo ' | <a href="cal=', $cal, '&amp;day=', $cal_date->d, '&amp;month=', $cal_month, '&amp;year=', $today->y, '&amp;filterev=', $filterev, '&amp;filterof=', $filterof, '&amp;filtersx=', $filtersx, '&amp;view=', $view, '"><b>' . $today->format('%Y') . '</b></a>';
+echo '<a href="?cal=', $cal, '&amp;day=', $cal_date->d, '&amp;month=', $cal_month, '&amp;year=', $cal_date->y === -1 ? 1 : $cal_date->y + 1, '&amp;filterev=', $filterev, '&amp;filterof=', $filterof, '&amp;filtersx=', $filtersx, '&amp;view=', $view, '">+1</a>';
+echo ' | <a href="?cal=', $cal, '&amp;day=', $cal_date->d, '&amp;month=', $cal_month, '&amp;year=', $today->y, '&amp;filterev=', $filterev, '&amp;filterof=', $filterof, '&amp;filtersx=', $filtersx, '&amp;view=', $view, '"><b>' . $today->format('%Y') . '</b></a>';
 echo help_link('annivers_year_select');
 echo '</td> ';
 
@@ -231,19 +231,19 @@ if ($filtersx === '') {
 	echo '<i class="icon-sex_m_15x15" title="', WT_I18N::translate('All individuals'), '"></i>';
 	echo '<i class="icon-sex_f_15x15" title="', WT_I18N::translate('All individuals'), '"></i> | ';
 } else {
-	echo '<a href="cal=', $cal, '&amp;day=', $cal_date->d, '&amp;month=', $cal_month, '&amp;year=', $cal_date->y, '&amp;filterev=', $filterev, '&amp;filterof=', $filterof, '&amp;view=', $view, '">';
+	echo '<a href="?cal=', $cal, '&amp;day=', $cal_date->d, '&amp;month=', $cal_month, '&amp;year=', $cal_date->y, '&amp;filterev=', $filterev, '&amp;filterof=', $filterof, '&amp;view=', $view, '">';
 	echo '<i class="icon-sex_m_9x9" title="', WT_I18N::translate('All individuals'), '"></i>';
 	echo '<i class="icon-sex_f_9x9" title="', WT_I18N::translate('All individuals'), '"></i></a> | ';
 }
 if ($filtersx === 'M') {
 	echo '<i class="icon-sex_m_15x15" title="', WT_I18N::translate('Males'), '"></i> | ';
 } else {
-	echo '<a class="icon-sex_m_9x9" title="', WT_I18N::translate('Males'), '" href="cal=', $cal, '&amp;day=', $cal_date->d, '&amp;month=', $cal_month, '&amp;year=', $cal_date->y, '&amp;filterev=', $filterev, '&amp;filterof=', $filterof, '&amp;filtersx=M&amp;view=', $view, '"></a> | ';
+	echo '<a class="icon-sex_m_9x9" title="', WT_I18N::translate('Males'), '" href="?cal=', $cal, '&amp;day=', $cal_date->d, '&amp;month=', $cal_month, '&amp;year=', $cal_date->y, '&amp;filterev=', $filterev, '&amp;filterof=', $filterof, '&amp;filtersx=M&amp;view=', $view, '"></a> | ';
 }
 if ($filtersx === 'F') {
 	echo '<i class="icon-sex_f_15x15" title="', WT_I18N::translate('Females'), '"></i>';
 } else {
-	echo '<a class="icon-sex_f_9x9" title="', WT_I18N::translate('Females'), '" href="cal=', $cal, '&amp;day=', $cal_date->d, '&amp;month=', $cal_month, '&amp;year=', $cal_date->y, '&amp;filterev=', $filterev, '&amp;filterof=', $filterof, '&amp;filtersx=F&amp;view=', $view, '"></a>';
+	echo '<a class="icon-sex_f_9x9" title="', WT_I18N::translate('Females'), '" href="?cal=', $cal, '&amp;day=', $cal_date->d, '&amp;month=', $cal_month, '&amp;year=', $cal_date->y, '&amp;filterev=', $filterev, '&amp;filterof=', $filterof, '&amp;filtersx=F&amp;view=', $view, '"></a>';
 }
 
 echo '&nbsp;&nbsp;&nbsp;';
@@ -336,17 +336,17 @@ echo '<tr><td class="topbottombar width50">';
 if ($view === 'day') {
 	echo '<span class="error">', WT_I18N::translate('View day'), '</span>';
 } else {
-	echo '<a href="cal=', $cal, '&amp;day=', $cal_date->d, '&amp;month=', $cal_month, '&amp;year=', $cal_date->y, '&amp;filterev=', $filterev, '&amp;filterof=', $filterof, '&amp;filtersx=', $filtersx, '&amp;view=day">', WT_I18N::translate('View day'), '</a>';
+	echo '<a href="?cal=', $cal, '&amp;day=', $cal_date->d, '&amp;month=', $cal_month, '&amp;year=', $cal_date->y, '&amp;filterev=', $filterev, '&amp;filterof=', $filterof, '&amp;filtersx=', $filtersx, '&amp;view=day">', WT_I18N::translate('View day'), '</a>';
 }
 if ($view === 'calendar') {
 	echo ' | <span class="error">', WT_I18N::translate('View month'), '</span>';
 } else {
-	echo ' | <a href="cal=', $cal, '&amp;day=', $cal_date->d, '&amp;month=', $cal_month, '&amp;year=', $cal_date->y, '&amp;filterev=', $filterev, '&amp;filterof=', $filterof, '&amp;filtersx=', $filtersx, '&amp;view=month">', WT_I18N::translate('View month'), '</a>';
+	echo ' | <a href="?cal=', $cal, '&amp;day=', $cal_date->d, '&amp;month=', $cal_month, '&amp;year=', $cal_date->y, '&amp;filterev=', $filterev, '&amp;filterof=', $filterof, '&amp;filtersx=', $filtersx, '&amp;view=month">', WT_I18N::translate('View month'), '</a>';
 }
 if ($view === 'year') {
 	echo ' | <span class="error">', WT_I18N::translate('View year'), '</span>';
 } else {
-	echo ' | <a href="cal=', $cal, '&amp;day=', $cal_date->d, '&amp;month=', $cal_month, '&amp;year=', $cal_date->y, '&amp;filterev=', $filterev, '&amp;filterof=', $filterof, '&amp;filtersx=', $filtersx, '&amp;view=year">', WT_I18N::translate('View year'), '</a>';
+	echo ' | <a href="?cal=', $cal, '&amp;day=', $cal_date->d, '&amp;month=', $cal_month, '&amp;year=', $cal_date->y, '&amp;filterev=', $filterev, '&amp;filterof=', $filterof, '&amp;filtersx=', $filtersx, '&amp;view=year">', WT_I18N::translate('View year'), '</a>';
 }
 echo '</td><td class="topbottombar width50">';
 $n = 0;
@@ -368,7 +368,7 @@ foreach (array(
 		} else {
 			$newcalesc = urlencode($tmp->format('%@'));
 			$tmpmonth  = $tmp->format('%O');
-			echo '<a href="cal=', $newcalesc, '&amp;day=', $tmp->d, '&amp;month=', $tmpmonth, '&amp;year=', $tmp->y, '&amp;filterev=', $filterev, '&amp;filterof=', $filterof, '&amp;filtersx=', $filtersx, '&amp;view=', $view, '">', $cal_name, '</a>';
+			echo '<a href="?cal=', $newcalesc, '&amp;day=', $tmp->d, '&amp;month=', $tmpmonth, '&amp;year=', $tmp->y, '&amp;filterev=', $filterev, '&amp;filterof=', $filterof, '&amp;filtersx=', $filtersx, '&amp;view=', $view, '">', $cal_name, '</a>';
 		}
 	}
 }
