@@ -361,10 +361,13 @@ div.fact_SHARED_NOTE {
 	font-size: 9px;
 }
 
+.tabs_table {
+	width: 99%;
+}
+
 .name1,
 .name2 {
-	font-weight: 700;
-	overflow: hidden;
+	font-weight: bold;
 	font-size: 12px;
 }
 
@@ -707,7 +710,6 @@ a:hover .nameZoom {
 
 .search_hit {
 	background-color: #ff0;
-	color: #000;
 }
 
 .search_item {
@@ -827,7 +829,6 @@ a:hover .nameZoom {
 a.showit {
 	position: relative;
 	z-index: 24;
-	color: #000;
 	text-decoration: none;
 }
 
@@ -935,7 +936,7 @@ a.showit:hover > span {
 }
 
 .gchart {
-	border: 1px solid #999;
+	border: solid #999 1px;
 }
 
 /* ---Find special characters--- */
@@ -1617,10 +1618,6 @@ background-color: #fff;
 	float: left;
 }
 
-#index_small_blocks .name1 {
-	color: #333;
-}
-
 .small_inner_block {
 	max-height: 200px;
 	overflow: auto;
@@ -1938,14 +1935,6 @@ span.link_text {
 
 #indi_header a:hover {
 	color: #f00;
-}
-
-#main_name {
-	color: #555;
-	float: left;
-	font-size: 2em;
-	margin: 10px;
-	font-weight: bold;
 }
 
 #indi_mainimage {
@@ -3375,11 +3364,6 @@ table.table-census-assistant th {
 .charts_block td {
 	padding: 0;
 	empty-cells: show;
-}
-
-/*-- Interactive ---- */
-.tv_out {
-	margin-top: 12px;
 }
 
 /*-- Lifespan ---- */

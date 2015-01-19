@@ -380,7 +380,8 @@ div.fact_SHARED_NOTE {
 	width: 99%;
 }
 
-.name1, .name2 {
+.name1,
+.name2 {
 	color: #555;
 	font-weight: bold;
 	font-size: 12px;
@@ -715,7 +716,6 @@ a:hover .nameZoom {
 
 .search_hit {
 	background-color: #ff0;
-	color: #000;
 }
 
 .search_item {
@@ -833,7 +833,6 @@ a:hover .nameZoom {
 a.showit {
 	position: relative;
 	z-index: 24;
-	color: #000;
 	text-decoration: none;
 }
 
@@ -941,7 +940,7 @@ a.showit:hover > span {
 }
 
 .gchart {
-	border: 1px solid #999;
+	border: solid #999 1px;
 }
 
 /* ---Find special characters--- */
@@ -1146,15 +1145,15 @@ td.descriptionbox a {
 	float: right;
 }
 
-.lb-image_edit {
+.list_value_wrap .lb-image_edit {
 	background: url(images/image_edit.png) no-repeat 50% 20%;
 }
 
-.lb-image_link {
+.list_value_wrap .lb-image_link {
 	background: url(images/image_link.png) no-repeat 50% 20%;
 }
 
-.lb-image_view {
+.list_value_wrap .lb-image_view {
 	background: url(images/image_view.png) no-repeat 50% 20%;
 }
 
@@ -1621,10 +1620,6 @@ td.descriptionbox a {
 	float: left;
 }
 
-#index_small_blocks .name1 {
-	color: #333;
-}
-
 .small_inner_block {
 	max-height: 200px;
 	overflow: auto;
@@ -1898,7 +1893,7 @@ span.link_text {
 }
 
 #indi_header h3 {
-	color: #777;
+	color: #555;
 	font-size: 90%;
 	font-weight: bold;
 	margin: 0;
@@ -1941,14 +1936,6 @@ span.link_text {
 
 #indi_header a:hover {
 	color: #f00;
-}
-
-#main_name {
-	color: #555;
-	float: left;
-	font-size: 2em;
-	margin: 10px;
-	font-weight: bold;
 }
 
 #indi_mainimage {
@@ -2768,6 +2755,7 @@ dd .deletelink {
 
 #search-page-table .value {
 	background-color: #ecf5ff;
+	color: #333;
 	border-top: 1px solid #999;
 	margin: 0 0 0 170px;
 	padding: 5px;
@@ -3370,11 +3358,6 @@ table.table-census-assistant th {
 .charts_block td {
 	padding: 0;
 	empty-cells: show;
-}
-
-/*-- Interactive ---- */
-.tv_out {
-	margin-top: 12px;
 }
 
 /*-- Lifespan ---- */
