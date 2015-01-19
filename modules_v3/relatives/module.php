@@ -282,7 +282,10 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 	public function getTabContent() {
 		global $SHOW_AGE_DIFF, $show_full, $controller;
 
-		if (isset($show_full)) $saved_show_full = $show_full; // We always want to see full details here
+		if (isset($show_full)) {
+			$saved_show_full = $show_full;
+		}
+		// We always want to see full details here
 		$show_full = 1;
 
 		ob_start();
@@ -382,7 +385,9 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		<?php
 
 		unset($show_full);
-		if (isset($saved_show_full)) $show_full = $saved_show_full;
+		if (isset($saved_show_full)) {
+			$show_full = $saved_show_full;
+		}
 
 		return '<div id="' . $this->getName() . '_content">' . ob_get_clean() . '</div>';
 	}

@@ -594,18 +594,28 @@ function add_simple_tag(
 
 	// element name : used to POST data
 	if ($level == 0) {
-		if ($upperlevel) $element_name = $upperlevel . '_' . $fact;
-		else $element_name = $fact; // ex: OCCU
-	} else $element_name = "text[]";
-	if ($level == 1) $main_fact = $fact;
+		if ($upperlevel) {
+			$element_name = $upperlevel . '_' . $fact;
+		} else {
+			$element_name = $fact;
+		}
+		// ex: OCCU
+	} else {
+		$element_name = "text[]";
+	}
+	if ($level == 1) {
+		$main_fact = $fact;
+	}
 
 	// element id : used by javascript functions
-	if ($level == 0)
-		$element_id = $fact;
-	else
-		$element_id = $fact . Uuid::uuid4();
-	if ($upperlevel)
-		$element_id = $upperlevel . '_' . $fact . Uuid::uuid4();
+	if ($level == 0) {
+			$element_id = $fact;
+	} else {
+			$element_id = $fact . Uuid::uuid4();
+	}
+	if ($upperlevel) {
+			$element_id = $upperlevel . '_' . $fact . Uuid::uuid4();
+	}
 
 	// field value
 	$islink = (substr($value, 0, 1) === '@' && substr($value, 0, 2) != '@#');
@@ -614,8 +624,9 @@ function add_simple_tag(
 	} else {
 		$value = substr($tag, strlen($fact) + 3);
 	}
-	if ($fact == 'REPO' || $fact == 'SOUR' || $fact == 'OBJE' || $fact == 'FAMC')
-		$islink = true;
+	if ($fact == 'REPO' || $fact == 'SOUR' || $fact == 'OBJE' || $fact == 'FAMC') {
+			$islink = true;
+	}
 
 	if ($fact == 'SHARED_NOTE_EDIT' || $fact == 'SHARED_NOTE') {
 		$islink = true;
@@ -775,19 +786,29 @@ function add_simple_tag(
 		echo '<select id="', $element_id, '" name="', $element_name, '" >';
 		echo '<option value=""></option>';
 		echo '<option value="Y"';
-		if ($value == 'Y') echo ' selected="selected"';
+		if ($value == 'Y') {
+			echo ' selected="selected"';
+		}
 		echo '>', WT_I18N::translate('yes'), '</option>';
 		echo '<option value="N"';
-		if ($value == 'N') echo ' selected="selected"';
+		if ($value == 'N') {
+			echo ' selected="selected"';
+		}
 		echo '>', WT_I18N::translate('no'), '</option>';
 		echo '</select>';
 	} else if ($fact == 'SEX') {
 		echo '<select id="', $element_id, '" name="', $element_name, '"><option value="M"';
-		if ($value == 'M') echo ' selected="selected"';
+		if ($value == 'M') {
+			echo ' selected="selected"';
+		}
 		echo '>', WT_I18N::translate('Male'), '</option><option value="F"';
-		if ($value == 'F') echo ' selected="selected"';
+		if ($value == 'F') {
+			echo ' selected="selected"';
+		}
 		echo '>', WT_I18N::translate('Female'), '</option><option value="U"';
-		if ($value == 'U' || empty($value)) echo ' selected="selected"';
+		if ($value == 'U' || empty($value)) {
+			echo ' selected="selected"';
+		}
 		echo '>', WT_I18N::translate_c('unknown gender', 'Unknown'), '</option></select>';
 	} else if ($fact == 'TYPE' && $level == '3') {
 		//-- Build the selector for the Media 'TYPE' Fact
@@ -895,8 +916,11 @@ function add_simple_tag(
 		echo '</script>';
 		echo "<select id=\"", $element_id, "_sel\" onchange=\"document.getElementById('", $element_id, "').value=this.value;\" >";
 		foreach (array("Unknown", "Civil", "Religious", "Partners") as $key) {
-			if ($key == "Unknown") echo "<option value=\"\"";
-			else echo "<option value=\"", $key, "\"";
+			if ($key == "Unknown") {
+				echo "<option value=\"\"";
+			} else {
+				echo "<option value=\"", $key, "\"";
+			}
 			$a = strtolower($key);
 			$b = strtolower($value);
 			if (@strpos($a, $b) !== false || @strpos($b, $a) !== false) {
@@ -1057,7 +1081,9 @@ function add_simple_tag(
 	}
 
 	// pastable values
-	if ($fact == 'FORM' && $upperlevel == 'OBJE') print_autopaste_link($element_id, $FILE_FORM_accept);
+	if ($fact == 'FORM' && $upperlevel == 'OBJE') {
+		print_autopaste_link($element_id, $FILE_FORM_accept);
+	}
 	echo '</div>', $extra, '</td></tr>';
 
 	return $element_id;
@@ -1483,8 +1509,11 @@ function updateRest($inputRec, $levelOverride = 'no') {
 function handle_updates($newged, $levelOverride = 'no') {
 	global $glevels, $islink, $tag, $uploaded_files, $text;
 
-	if ($levelOverride == "no" || count($glevels) == 0) $levelAdjust = 0;
-	else $levelAdjust = $levelOverride - $glevels[0];
+	if ($levelOverride == "no" || count($glevels) == 0) {
+		$levelAdjust = 0;
+	} else {
+		$levelAdjust = $levelOverride - $glevels[0];
+	}
 
 	for ($j = 0; $j < count($glevels); $j++) {
 
@@ -1503,8 +1532,7 @@ function handle_updates($newged, $levelOverride = 'no') {
 
 		if (trim($text[$j]) != '') {
 			$pass = true;
-		}
-		else {
+		} else {
 			//-- for facts with empty values they must have sub records
 			//-- this section checks if they have subrecords
 			$k = $j + 1;
@@ -1651,7 +1679,9 @@ function create_edit_form(WT_GedcomRecord $record, WT_Fact $fact) {
 
 		$text = '';
 		for ($j = 2; $j < count($fields); $j++) {
-			if ($j > 2) $text .= ' ';
+			if ($j > 2) {
+				$text .= ' ';
+			}
 			$text .= $fields[$j];
 		}
 		$text = rtrim($text);
@@ -1688,9 +1718,10 @@ function create_edit_form(WT_GedcomRecord $record, WT_Fact $fact) {
 
 		// Get a list of tags present at the next level
 		$subtags = array();
-		for ($ii = $i + 1; isset($gedlines[$ii]) && preg_match('/^\s*(\d+)\s+(\S+)/', $gedlines[$ii], $mm) && $mm[1] > $level; ++$ii)
-			if ($mm[1] == $level + 1)
+		for ($ii = $i + 1; isset($gedlines[$ii]) && preg_match('/^\s*(\d+)\s+(\S+)/', $gedlines[$ii], $mm) && $mm[1] > $level; ++$ii) {
+					if ($mm[1] == $level + 1)
 				$subtags[] = $mm[2];
+		}
 
 		// Insert missing tags
 		if (!empty($expected_subtags[$type])) {
@@ -1728,7 +1759,9 @@ function create_edit_form(WT_GedcomRecord $record, WT_Fact $fact) {
 		} else {
 			$level = 0;
 		}
-		if ($level <= $glevel) break;
+		if ($level <= $glevel) {
+			break;
+		}
 	}
 
 	if ($level1type != '_PRIM') {
@@ -1798,16 +1831,18 @@ function insert_missing_subtags($level1tag, $add_date = false) {
 				break;
 			case 'DATE':
 				// TIME is NOT a valid 5.5.1 tag
-				if (in_array($level1tag, $date_and_time))
-					add_simple_tag('3 TIME');
+				if (in_array($level1tag, $date_and_time)) {
+									add_simple_tag('3 TIME');
+				}
 				break;
 			case 'HUSB':
 			case 'WIFE':
 				add_simple_tag('3 AGE');
 				break;
 			case 'FAMC':
-				if ($level1tag == 'ADOP')
-					add_simple_tag('3 ADOP BOTH');
+				if ($level1tag == 'ADOP') {
+									add_simple_tag('3 ADOP BOTH');
+				}
 				break;
 			}
 		} elseif ($key == 'DATE' && $add_date) {
@@ -1815,10 +1850,11 @@ function insert_missing_subtags($level1tag, $add_date = false) {
 		}
 	}
 	// Do something (anything!) with unrecognized custom tags
-	if (substr($level1tag, 0, 1) == '_' && $level1tag != '_UID' && $level1tag != '_TODO')
-		foreach (array('DATE', 'PLAC', 'ADDR', 'AGNC', 'TYPE', 'AGE') as $tag)
+	if (substr($level1tag, 0, 1) == '_' && $level1tag != '_UID' && $level1tag != '_TODO') {
+			foreach (array('DATE', 'PLAC', 'ADDR', 'AGNC', 'TYPE', 'AGE') as $tag)
 			if (!in_array($tag, $tags)) {
 				add_simple_tag("2 {$tag}");
+	}
 				if ($tag == 'PLAC') {
 					if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $ADVANCED_PLAC_FACTS, $match)) {
 						foreach ($match[1] as $ptag) {
