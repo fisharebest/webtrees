@@ -1246,6 +1246,7 @@ a.showit:hover > span {
 #register-form label input,
 #register-form label select,
 #register-form textarea {
+	background-color: #fff;
 	width: 220px;
 	margin: 0 10px;
 	padding: 3px;
@@ -1311,7 +1312,7 @@ a.showit:hover > span {
 
 .popup {
 	position: absolute;
-	top: 20px;
+	top: 21px;
 	right: 0;
 	left: auto;
 	visibility: hidden;
@@ -5135,7 +5136,7 @@ footer {
 }
 
 .icon-indis {
-	width: 22px;
+	width: 25px;
 	height: 25px;
 	background-image: url(images/mypage.png);
 }
@@ -5147,8 +5148,8 @@ footer {
 }
 
 .icon-pedigree {
-	width: 20px;
-	height: 20px;
+	width: 25px;
+	height: 25px;
 	background-image: url(images/pedigree.png);
 }
 
@@ -5195,8 +5196,8 @@ footer {
 }
 
 .icon-user_add {
-	width: 20px;
-	height: 20px;
+	width: 25px;
+	height: 25px;
 	background-image: url(images/user_add.png);
 }
 
