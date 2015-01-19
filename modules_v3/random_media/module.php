@@ -295,76 +295,108 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo WT_I18N::translate('Filter');
-?>
+		?>
 	</td>
-		<td class="optionbox">
-			<center><b><?php echo WT_Gedcom_Tag::getLabel('FORM'); ?></b></center>
-			<table class="width100">
-				<tr>
-			<td class="width33"><input type="checkbox" value="yes"
-				name="filter_avi"
-				<?php if ($filters['avi']) echo " checked=\"checked\""; ?>>&nbsp;&nbsp;avi&nbsp;&nbsp;</td>
-			<td class="width33"><input type="checkbox" value="yes"
-				name="filter_bmp"
-				<?php if ($filters['bmp']) echo " checked=\"checked\""; ?>>&nbsp;&nbsp;bmp&nbsp;&nbsp;</td>
-			<td class="width33"><input type="checkbox" value="yes"
-				name="filter_gif"
-				<?php if ($filters['gif']) echo " checked=\"checked\""; ?>>&nbsp;&nbsp;gif&nbsp;&nbsp;</td>
-				</tr>
-		<tr>
-			<td class="width33"><input type="checkbox" value="yes"
-				name="filter_jpeg"
-				<?php if ($filters['jpeg']) echo " checked=\"checked\""; ?>>&nbsp;&nbsp;jpeg&nbsp;&nbsp;</td>
-			<td class="width33"><input type="checkbox" value="yes"
-				name="filter_mp3"
-				<?php if ($filters['mp3']) echo " checked=\"checked\""; ?>>&nbsp;&nbsp;mp3&nbsp;&nbsp;</td>
-			<td class="width33"><input type="checkbox" value="yes"
-				name="filter_ole"
-				<?php if ($filters['ole']) echo " checked=\"checked\""; ?>>&nbsp;&nbsp;ole&nbsp;&nbsp;</td>
-		</tr>
-		<tr>
-			<td class="width33"><input type="checkbox" value="yes"
-				name="filter_pcx"
-				<?php if ($filters['pcx']) echo " checked=\"checked\""; ?>>&nbsp;&nbsp;pcx&nbsp;&nbsp;</td>
-			<td class="width33"><input type="checkbox" value="yes"
-				name="filter_pdf"
-				<?php if ($filters['pdf']) echo " checked=\"checked\""; ?>>&nbsp;&nbsp;pdf&nbsp;&nbsp;</td>
-			<td class="width33"><input type="checkbox" value="yes"
-				name="filter_png"
-				<?php if ($filters['png']) echo " checked=\"checked\""; ?>>&nbsp;&nbsp;png&nbsp;&nbsp;</td>
-		</tr>
-		<tr>
-			<td class="width33"><input type="checkbox" value="yes"
-				name="filter_tiff"
-				<?php if ($filters['tiff']) echo " checked=\"checked\""; ?>>&nbsp;&nbsp;tiff&nbsp;&nbsp;</td>
-			<td class="width33"><input type="checkbox" value="yes"
-				name="filter_wav"
-				<?php if ($filters['wav']) echo " checked=\"checked\""; ?>>&nbsp;&nbsp;wav&nbsp;&nbsp;</td>
-					<td class="width33"></td>
-					<td class="width33"></td>
-				</tr>
-			</table>
+	<td class="optionbox">
+		<center><b><?php echo WT_Gedcom_Tag::getLabel('FORM'); ?></b></center>
+		<table class="width100">
+			<tr>
+				<td class="width33">
+					<label>
+						<input type="checkbox" value="yes" name="filter_avi" <?php echo $filters['avi'] ? 'checked' : ''; ?>>
+						avi
+				</td>
+				<td class="width33">
+					<label>
+						<input type="checkbox" value="yes" name="filter_bmp" <?php echo $filters['bmp'] ? 'checked' : ''; ?>>
+						bmp
+					</label>
+				</td>
+				<td class="width33">
+					<label>
+						<input type="checkbox" value="yes" name="filter_gif" <?php echo $filters['gif'] ? 'checked' : ''; ?>>
+						gif
+					</label>
+				</td>
+			</tr>
+			<tr>
+				<td class="width33">
+					<label>
+						<input type="checkbox" value="yes" name="filter_jpeg" <?php echo $filters['jpeg'] ? 'checked' : ''; ?>>
+						jpeg
+					</label>
+				</td>
+				<td class="width33">
+					<label>
+						<input type="checkbox" value="yes" name="filter_mp3" <?php echo $filters['mp3'] ? 'checked' : ''; ?>>
+						mp3
+					</label>
+				</td>
+					<td class="width33">
+					<label>
+						<input type="checkbox" value="yes" name="filter_ole" <?php echo $filters['ole'] ? 'checked' : ''; ?>>
+						ole
+					</label>
+				</td>
+			</tr>
+			<tr>
+				<td class="width33">
+					<label>
+						<input type="checkbox" value="yes" name="filter_pcx" <?php echo $filters['pcx'] ? 'checked' : ''; ?>>
+						pcx
+					</label>
+				</td>
+				<td class="width33">
+					<label>
+						<input type="checkbox" value="yes" name="filter_pdf" <?php echo $filters['pdf'] ? 'checked' : ''; ?>>
+						pdf
+					</label>
+				</td>
+				<td class="width33">
+					<label>
+						<input type="checkbox" value="yes" name="filter_png" <?php echo $filters['png'] ? 'checked' : ''; ?>>
+						png
+					</label>
+				</td>
+			</tr>
+			<tr>
+				<td class="width33">
+					<label>
+						<input type="checkbox" value="yes" name="filter_tiff" <?php echo $filters['tiff'] ? 'checked' : ''; ?>>
+						tiff
+					</label>
+				</td>
+				<td class="width33">
+					<label>
+						<input type="checkbox" value="yes" name="filter_wav" <?php echo $filters['wav'] ? 'checked' : ''; ?>>
+						wav
+					</label>
+				</td>
+				<td class="width33"></td>
+				<td class="width33"></td>
+			</tr>
+		</table>
 			<br>
 			<center><b><?php echo WT_Gedcom_Tag::getLabel('TYPE'); ?></b></center>
-			<table class="width100">
-				<tr>
-				<?php
-				//-- Build the list of checkboxes
-				$i = 0;
-				foreach (WT_Gedcom_Tag::getFileFormTypes() as $typeName => $typeValue) {
-					$i++;
-					if ($i > 3) {
-						$i = 1;
-						echo "</tr><tr>";
+				<table class="width100">
+					<tr>
+					<?php
+					//-- Build the list of checkboxes
+					$i = 0;
+					foreach (WT_Gedcom_Tag::getFileFormTypes() as $typeName => $typeValue) {
+						$i++;
+						if ($i > 3) {
+							$i = 1;
+							echo '</tr><tr>';
+						}
+						echo '<td class="width33"><label><input type="checkbox" value="yes" name="filter_' . $typeName . '" ';
+						echo ($filters[$typeName]) ? 'checked' : '';
+						echo '> ' . $typeValue . '</label></td>';
 					}
-					echo "<td class=\"width33\"><input type=\"checkbox\" value=\"yes\" name=\"filter_" . $typeName . "\"";
-					if ($filters[$typeName]) echo " checked=\"checked\"";
-					echo ">&nbsp;&nbsp;" . $typeValue . "&nbsp;&nbsp;</td>";
-				}
-				?>
+					?>
 				</tr>
 			</table>
-	</td>
+		</td>
 	</tr>
 
 	<?php

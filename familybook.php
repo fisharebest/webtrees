@@ -49,7 +49,7 @@ $controller
 				</td>
 				<td class="optionbox">
 					<input type="hidden" name="show_full" value="<?php echo $controller->show_full; ?>">
-					<input type="checkbox" value="<?php	if ($controller->show_full) echo "1\" checked=\"checked\" onclick=\"document.people.show_full.value='0';"; else echo "0\" onclick=\"document.people.show_full.value='1';"; ?>">
+					<input type="checkbox" value="<?php	if ($controller->show_full) echo "1\" checked= onclick=\"document.people.show_full.value='0';"; else echo "0\" onclick=\"document.people.show_full.value='1';"; ?>">
 				</td>
 				<td rowspan="3" class="topbottombar vmiddle">
 					<input type="submit" value="<?php echo /* I18N: Submit button, on a form */ WT_I18N::translate('View'); ?>">
@@ -74,7 +74,7 @@ $controller
 					<?php echo WT_I18N::translate('Show spouses'), help_link('show_spouse'); ?>
 				</td>
 				<td class="optionbox">
-					<input type="checkbox" value="1" name="show_spouse" <?php if ($controller->show_spouse) echo " checked=\"checked\""; ?>>
+					<input type="checkbox" value="1" name="show_spouse" <?php if ($controller->show_spouse) echo " checked"; ?>>
 				</td>
 			</tr>
 			<tr>

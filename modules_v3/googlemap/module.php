@@ -3996,17 +3996,17 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					}
 				?>
 				<td class="optionbox" colspan="2">
-					<input type="radio" id="new_prec_0" name="NEW_PRECISION" onchange="updateMap();" <?php if ($precision == $this->getSetting('GM_PRECISION_0')) echo "checked=\"checked\""; ?> value="<?php echo $this->getSetting('GM_PRECISION_0'); ?>">
+					<input type="radio" id="new_prec_0" name="NEW_PRECISION" onchange="updateMap();" <?php if ($precision == $this->getSetting('GM_PRECISION_0')) echo 'checked'; ?> value="<?php echo $this->getSetting('GM_PRECISION_0'); ?>">
 					<label for="new_prec_0"><?php echo WT_I18N::translate('Country'); ?></label>
-					<input type="radio" id="new_prec_1" name="NEW_PRECISION" onchange="updateMap();" <?php if ($precision == $this->getSetting('GM_PRECISION_1')) echo "checked=\"checked\""; ?> value="<?php echo $this->getSetting('GM_PRECISION_1'); ?>">
+					<input type="radio" id="new_prec_1" name="NEW_PRECISION" onchange="updateMap();" <?php if ($precision == $this->getSetting('GM_PRECISION_1')) echo 'checked'; ?> value="<?php echo $this->getSetting('GM_PRECISION_1'); ?>">
 					<label for="new_prec_1"><?php echo WT_I18N::translate('State'); ?></label>
-					<input type="radio" id="new_prec_2" name="NEW_PRECISION" onchange="updateMap();" <?php if ($precision == $this->getSetting('GM_PRECISION_2')) echo "checked=\"checked\""; ?> value="<?php echo $this->getSetting('GM_PRECISION_2'); ?>">
+					<input type="radio" id="new_prec_2" name="NEW_PRECISION" onchange="updateMap();" <?php if ($precision == $this->getSetting('GM_PRECISION_2')) echo 'checked'; ?> value="<?php echo $this->getSetting('GM_PRECISION_2'); ?>">
 					<label for="new_prec_2"><?php echo WT_I18N::translate('City'); ?></label>
-					<input type="radio" id="new_prec_3" name="NEW_PRECISION" onchange="updateMap();" <?php if ($precision == $this->getSetting('GM_PRECISION_3')) echo "checked=\"checked\""; ?> value="<?php echo $this->getSetting('GM_PRECISION_3'); ?>">
+					<input type="radio" id="new_prec_3" name="NEW_PRECISION" onchange="updateMap();" <?php if ($precision == $this->getSetting('GM_PRECISION_3')) echo 'checked'; ?> value="<?php echo $this->getSetting('GM_PRECISION_3'); ?>">
 					<label for="new_prec_3"><?php echo WT_I18N::translate('Neighborhood'); ?></label>
-					<input type="radio" id="new_prec_4" name="NEW_PRECISION" onchange="updateMap();" <?php if ($precision == $this->getSetting('GM_PRECISION_4')) echo "checked=\"checked\""; ?> value="<?php echo $this->getSetting('GM_PRECISION_4'); ?>">
+					<input type="radio" id="new_prec_4" name="NEW_PRECISION" onchange="updateMap();" <?php if ($precision == $this->getSetting('GM_PRECISION_4')) echo 'checked'; ?> value="<?php echo $this->getSetting('GM_PRECISION_4'); ?>">
 					<label for="new_prec_4"><?php echo WT_I18N::translate('House'); ?></label>
-					<input type="radio" id="new_prec_5" name="NEW_PRECISION" onchange="updateMap();" <?php if ($precision >= $this->getSetting('GM_PRECISION_5')) echo "checked=\"checked\""; ?> value="<?php echo $this->getSetting('GM_PRECISION_5'); ?>">
+					<input type="radio" id="new_prec_5" name="NEW_PRECISION" onchange="updateMap();" <?php if ($precision >= $this->getSetting('GM_PRECISION_5')) echo 'checked'; ?> value="<?php echo $this->getSetting('GM_PRECISION_5'); ?>">
 					<label for="new_prec_5"><?php echo WT_I18N::translate('Max'); ?></label>
 				</td>
 			</tr>
