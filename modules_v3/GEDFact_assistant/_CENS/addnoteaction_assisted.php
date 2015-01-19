@@ -27,7 +27,9 @@
 
 $newgedrec = "0 @XREF@ NOTE\n";
 
-if (isset($_REQUEST['EVEN'])) $EVEN = $_REQUEST['EVEN'];
+if (isset($_REQUEST['EVEN'])) {
+	$EVEN = $_REQUEST['EVEN'];
+}
 if (!empty($EVEN) && count($EVEN) > 0) {
 	$newgedrec .= "1 DATA\n";
 	$newgedrec .= "2 EVEN " . implode(",", $EVEN) . "\n";
