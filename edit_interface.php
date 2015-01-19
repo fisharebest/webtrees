@@ -2287,8 +2287,6 @@ function keep_chan(WT_GedcomRecord $record = null) {
 	global $NO_UPDATE_CHAN;
 
 	if (Auth::isAdmin()) {
-		$checked = $NO_UPDATE_CHAN ? ' checked="checked"' : '';
-
 		if ($record) {
 			$details =
 				WT_Gedcom_Tag::getLabelValue('DATE', $record->lastChangeTimestamp()) .
@@ -2301,7 +2299,7 @@ function keep_chan(WT_GedcomRecord $record = null) {
 			'<tr><td class="descriptionbox wrap width25">' .
 			WT_Gedcom_Tag::getLabel('CHAN') .
 			'</td><td class="optionbox wrap">' .
-			'<input type="checkbox" name="keep_chan" value="1"' . $checked . '>' .
+			'<input type="checkbox" name="keep_chan" value="1" ' . ($NO_UPDATE_CHAN ? 'checked' : '') . '>' .
 			WT_I18N::translate('Do not update the “last change” record') .
 			help_link('no_update_CHAN') .
 			$details .

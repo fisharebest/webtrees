@@ -97,7 +97,7 @@ echo '</div>';
 	</div>
 	<div class="cens_textinput_right">
 		<?php echo WT_I18N::translate('Add'); ?>
-		<input  type="radio" name="totallyrad" value="0" checked="checked">
+		<input  type="radio" name="totallyrad" value="0" checked>
 	</div>
 	<?php
 	//-- Census Add Rows Area =========================================================

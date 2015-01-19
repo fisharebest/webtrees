@@ -59,7 +59,7 @@ class notes_WT_Module extends WT_Module implements WT_Module_Tab {
 		?>
 		<tr>
 			<td colspan="2" class="descriptionbox rela">
-				<input id="checkbox_note2" type="checkbox" <?php if ($SHOW_LEVEL2_NOTES) echo ' checked="checked"'; ?> onclick="jQuery('tr.row_note2').toggle();">
+				<input id="checkbox_note2" type="checkbox" <?php echo $SHOW_LEVEL2_NOTES ? 'checked' : ''; ?> onclick="jQuery('tr.row_note2').toggle();">
 				<label for="checkbox_note2"><?php echo WT_I18N::translate('Show all notes'); ?></label>
 				<?php echo help_link('show_fact_sources'); ?>
 			</td>

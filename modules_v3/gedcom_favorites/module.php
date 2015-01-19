@@ -180,7 +180,7 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= '<input type="hidden" name="ctype" value="' . $ctype . '">';
 			$content .= '<input type="hidden" name="ged" value="' . WT_GEDCOM . '">';
 			$content .= '<div class="add_fav_ref">';
-			$content .= '<input type="radio" name="fav_category" value="record" checked="checked" onclick="jQuery(\'#gid' . $uniqueID . '\').removeAttr(\'disabled\'); jQuery(\'#url, #favtitle\').attr(\'disabled\',\'disabled\').val(\'\');">';
+			$content .= '<input type="radio" name="fav_category" value="record" checked onclick="jQuery(\'#gid' . $uniqueID . '\').removeAttr(\'disabled\'); jQuery(\'#url, #favtitle\').attr(\'disabled\',\'disabled\').val(\'\');">';
 			$content .= '<label for="gid' . $uniqueID . '">' . WT_I18N::translate('Enter an individual, family, or source ID') . '</label>';
 			$content .= '<input class="pedigree_form" data-autocomplete-type="IFSRO" type="text" name="gid" id="gid' . $uniqueID . '" size="5" value="">';
 			$content .= ' ' . print_findindi_link('gid' . $uniqueID);
@@ -192,8 +192,8 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= '</div>';
 			$content .= '<div class="add_fav_url">';
 			$content .= '<input type="radio" name="fav_category" value="url" onclick="jQuery(\'#url, #favtitle\').removeAttr(\'disabled\'); jQuery(\'#gid' . $uniqueID . '\').attr(\'disabled\',\'disabled\').val(\'\');">';
-			$content .= '<input type="text" name="url" id="url" size="20" value="" placeholder="' . WT_Gedcom_Tag::getLabel('URL') . '" disabled="disabled"> ';
-			$content .= '<input type="text" name="favtitle" id="favtitle" size="20" value="" placeholder="' . WT_I18N::translate('Title') . '" disabled="disabled">';
+			$content .= '<input type="text" name="url" id="url" size="20" value="" placeholder="' . WT_Gedcom_Tag::getLabel('URL') . '" disabled> ';
+			$content .= '<input type="text" name="favtitle" id="favtitle" size="20" value="" placeholder="' . WT_I18N::translate('Title') . '" disabled>';
 			$content .= '<p>' . WT_I18N::translate('Enter an optional note about this favorite') . '</p>';
 			$content .= '<textarea name="favnote" rows="6" cols="50"></textarea>';
 			$content .= '</div>';

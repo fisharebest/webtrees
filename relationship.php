@@ -118,7 +118,7 @@ if ($person1 && $person1->canShowName() && $person2 && $person2->canShowName()) 
 					<?php echo WT_I18N::translate('Show oldest top'), help_link('oldest_top'); ?>
 				</td>
 				<td class="optionbox">
-					<input tabindex="4" type="checkbox" name="asc" value="1" <?php if ($asc == -1) echo ' checked="checked"'; ?>>
+					<input tabindex="4" type="checkbox" name="asc" value="1" <?php echo $asc === -1 ? 'checked' : ''; ?>>
 				</td>
 			</tr>
 			<tr>
@@ -140,7 +140,7 @@ if ($person1 && $person1->canShowName() && $person2 && $person2->canShowName()) 
 					<?php echo WT_I18N::translate('Check relationships by marriage'), help_link('CHECK_MARRIAGE_RELATIONS'); ?>
 				</td>
 				<td class="optionbox" id="followspousebox">
-					<input tabindex="6" type="checkbox" name="followspouse" value="1" <?php if ($followspouse) { echo ' checked="checked"'; } ?> onclick="document.people.path_to_find.value='-1';" >
+					<input tabindex="6" type="checkbox" name="followspouse" value="1" <?php echo $followspouse ? 'checked' : ''; } ?> onclick="document.people.path_to_find.value='-1';" >
 				</td>
 			</tr>
 				<td class="topbottombar vmiddle center" colspan="2">

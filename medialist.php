@@ -106,7 +106,7 @@ $medialist = WT_Query_Media::mediaList(
 				<?php echo /* I18N: Label for check-box */ WT_I18N::translate('Include subfolders'); ?>
 			</td>
 			<td class="optionbox wrap width25">
-				<input type="checkbox" id="subdirs" name="subdirs" <?php if (!$currentdironly) { ?>checked="checked"<?php } ?>>
+				<input type="checkbox" id="subdirs" name="subdirs" <?php echo $currentdironly ? '' : 'checked'; ?>>
 			</td>
 			<td class="descriptionbox wrap width25">
 				<?php echo WT_I18N::translate('Media objects per page'); ?>

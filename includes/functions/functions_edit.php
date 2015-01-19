@@ -205,7 +205,7 @@ function edit_field_yes_no_inline($name, $selected = false, WT_Controller_Base $
  * @return string
  */
 function checkbox($name, $is_checked = false, $extra = '') {
-	return '<input type="checkbox" name="' . $name . '" value="1" ' . ($is_checked ? 'checked="checked" ' : '') . $extra . '>';
+	return '<input type="checkbox" name="' . $name . '" value="1" ' . ($is_checked ? 'checked ' : '') . $extra . '>';
 }
 
 /**
@@ -224,7 +224,7 @@ function two_state_checkbox($name, $is_checked = 0, $extra = '') {
 	return
 		'<input type="hidden" id="' . $name . '" name="' . $name . '" value="' . ($is_checked ? 1 : 0) . '">' .
 		'<input type="checkbox" name="' . $name . '-GUI-ONLY" value="1"' .
-		($is_checked ? ' checked="checked"' : '') .
+		($is_checked ? ' checked' : '') .
 		' onclick="document.getElementById(\'' . $name . '\').value=(this.checked?1:0);" ' . $extra . '>';
 }
 
@@ -241,9 +241,9 @@ function edit_language_checkboxes($field_prefix, $languages) {
 	$i    = 0;
 
 	foreach (WT_I18N::installed_languages() as $code=>$name) {
-		$content = '<input type="checkbox" name="' . $field_prefix . $code . '" id="' . $field_prefix . $code . '"';
+		$content = '<input type="checkbox" name="' . $field_prefix . $code . '" id="' . $field_prefix . $code . '" ';
 		if (strpos(",{$languages},", ",{$code},") !== false) {
-			$content .= ' checked="checked"';
+			$content .= 'checked';
 		}
 		$content .= '><label for="' . $field_prefix . $code . '"> ' . $name . '</label>';
 		// print in three columns
@@ -749,7 +749,7 @@ function add_simple_tag(
 		if ($level <= 1) {
 			echo '<input type="checkbox" ';
 			if ($value) {
-				echo ' checked="checked"';
+				echo 'checked';
 			}
 			echo " onclick=\"if (this.checked) ", $element_id, ".value='Y'; else ", $element_id, ".value='';\">";
 			echo WT_I18N::translate('yes');
@@ -947,9 +947,9 @@ function add_simple_tag(
 				$level2_checked = '';
 			} else if ($PREFER_LEVEL2_SOURCES === '1' || $PREFER_LEVEL2_SOURCES === true) {
 				$level1_checked = '';
-				$level2_checked = ' checked="checked"';
+				$level2_checked = 'checked';
 			} else {
-				$level1_checked = ' checked="checked"';
+				$level1_checked = 'checked';
 				$level2_checked = '';
 			}
 			if (strpos($bdm, 'B') !== false) {
@@ -958,7 +958,7 @@ function add_simple_tag(
 				if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $QUICK_REQUIRED_FACTS, $matches)) {
 					foreach ($matches[1] as $match) {
 						if (!in_array($match, explode('|', WT_EVENTS_DEAT))) {
-							echo '&nbsp;<input type="checkbox" name="SOUR_', $match, '"', $level2_checked, ' value="1">';
+							echo '&nbsp;<input type="checkbox" name="SOUR_', $match, '" ', $level2_checked, ' value="1">';
 							echo WT_Gedcom_Tag::getLabel($match);
 						}
 					}

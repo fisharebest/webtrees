@@ -148,7 +148,7 @@ $people = count($controller->people);
 								<br>
 								<div style="text-align: center;">
 									<?php echo WT_I18N::translate('Include the individual’s immediate family?'); ?>
-									<input type="checkbox" checked="checked" value="yes" name="addFamily">
+									<input type="checkbox" checked value="yes" name="addFamily">
 								</div>
 								<div style="text-align: center;">
 									<input type="submit" value="<?php echo WT_I18N::translate('Add'); ?>">

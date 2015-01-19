@@ -118,16 +118,12 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 			echo '<tr><td colspan="2" class="facts_value">', WT_I18N::translate('There are no facts for this individual.'), '</td></tr>';
 		}
 
-		echo '<tr><td colspan="2" class="descriptionbox rela"><form action="?"><input id="checkbox_rela_facts" type="checkbox"';
-		if ($EXPAND_RELATIVES_EVENTS) {
-			echo ' checked="checked"';
-		}
+		echo '<tr><td colspan="2" class="descriptionbox rela"><form action="?"><input id="checkbox_rela_facts" type="checkbox" ';
+		echo $EXPAND_RELATIVES_EVENTS ? 'checked' : '';
 		echo ' onclick="jQuery(\'tr.rela\').toggle();"><label for="checkbox_rela_facts">', WT_I18N::translate('Events of close relatives'), '</label>';
 		if (file_exists(WT_Site::getPreference('INDEX_DIRECTORY') . 'histo.' . WT_LOCALE . '.php')) {
-			echo ' <input id="checkbox_histo" type="checkbox"';
-			if ($EXPAND_HISTO_EVENTS) {
-				echo ' checked="checked"';
-			}
+			echo ' <input id="checkbox_histo" type="checkbox" ';
+			echo $EXPAND_HISTO_EVENTS ? 'checked' : '';
 			echo ' onclick="jQuery(\'tr.histo\').toggle();"><label for="checkbox_histo">', WT_I18N::translate('Historical facts'), '</label>';
 		}
 		echo '</form></td></tr>';

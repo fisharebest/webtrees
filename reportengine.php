@@ -221,10 +221,8 @@ case 'setup':
 			echo ' type="text" name="vars[', WT_Filter::escapeHtml($input['name']), ']" id="', WT_Filter::escapeHtml($input['name']), '" value="', WT_Filter::escapeHtml($input['default']), '" style="direction: ltr;">';
 		}
 		if ($input['type'] == 'checkbox') {
-			echo '<input type="checkbox" name="vars[', WT_Filter::escapeHtml($input['name']), ']" id="', WT_Filter::escapeHtml($input['name']), '" value="1"';
-			if ($input['default'] == '1') {
-				echo ' checked="checked"';
-			}
+			echo '<input type="checkbox" name="vars[', WT_Filter::escapeHtml($input['name']), ']" id="', WT_Filter::escapeHtml($input['name']), '" value="1" ';
+			echo $input['default'] == '1' ? 'checked' : '';
 			echo '>';
 		}
 		if ($input['type'] == 'select') {
@@ -270,7 +268,7 @@ case 'setup':
 		<div class="report-type">
 		<div>
 		<label for="PDF"><i class="icon-mime-application-pdf"></i></label>
-		<p><input type="radio" name="output" value="PDF" id="PDF" checked="checked"></p>
+		<p><input type="radio" name="output" value="PDF" id="PDF" checked></p>
 		</div>
 		<div>
 		<label for="HTML"><i class="icon-mime-text-html"></i></label>

@@ -113,7 +113,7 @@ $controller->pageHeader();
 				<?php echo WT_I18N::translate('Apply privacy settings?'), help_link('apply_privacy'); ?>
 			</dt>
 			<dd>
-				<input type="radio" name="privatize_export" value="none" checked="checked">&nbsp;&nbsp;<?php echo WT_I18N::translate('None'); ?>
+				<input type="radio" name="privatize_export" value="none" checked>&nbsp;&nbsp;<?php echo WT_I18N::translate('None'); ?>
 				<br>
 				<input type="radio" name="privatize_export" value="gedadmin">&nbsp;&nbsp;<?php echo WT_I18N::translate('Manager'); ?>
 				<br>

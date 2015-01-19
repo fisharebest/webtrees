@@ -601,62 +601,71 @@ $controller
 </ol>
 <h2><?php echo $controller->getPageTitle(); ?></h2>
 
-<form method="get" action="<?php echo WT_SCRIPT_NAME; ?>">
+<form>
 	<table class="media_items">
-		<tr>
-			<th><?php echo WT_I18N::translate('Media files'); ?></th>
-			<th><?php echo WT_I18N::translate('Media folders'); ?></th>
-		</tr>
-		<tr>
-			<td>
-				<input type="radio" name="files" value="local"<?php echo $files == 'local' ? ' checked="checked"' : ''; ?> onchange="this.form.submit();">
-				<?php echo /* I18N: “Local files” are stored on this computer */ WT_I18N::translate('Local files'); ?>
-				<br>
-				<input type="radio" name="files" value="external"<?php echo $files == 'external' ? ' checked="checked"' : ''; ?> onchange="this.form.submit();">
-				<?php echo /* I18N: “External files” are stored on other computers */ WT_I18N::translate('External files'); ?>
-				<br>
-				<input type="radio" name="files" value="unused"<?php echo $files == 'unused' ? ' checked="checked"' : ''; ?> onchange="this.form.submit();">
-				<?php echo WT_I18N::translate('Unused files'); ?>
-			</td>
-			<td>
-				<?php
-				switch ($files) {
-				case 'local':
-				case 'unused':
-					echo
-						'<span dir="ltr">', // The full path will be LTR or mixed LTR/RTL.  Force LTR.
-						WT_DATA_DIR;
-					// Don’t show a list of media folders if it just contains one folder
-					if (count($media_folders) > 1) {
-						echo '&nbsp;', select_edit_control('media_folder', $media_folders, null, $media_folder, 'onchange="this.form.submit();"');
-					} else {
-						echo $media_folder, '<input type="hidden" name="media_folder" value="', WT_Filter::escapeHtml($media_folder), '">';
-					}
-					// Don’t show a list of subfolders if it just contains one subfolder
-					if (count($media_paths) > 1) {
-						echo '&nbsp;', select_edit_control('media_path', $media_paths, null, $media_path, 'onchange="this.form.submit();"');
-					} else {
-						echo $media_path, '<input type="hidden" name="media_path" value="', WT_Filter::escapeHtml($media_path), '">';
-					}
-					echo
-						'</span>',
-						'<div>',
-						'<input type="radio" name="subfolders" value="include"', ($subfolders == 'include' ? ' checked="checked"' : ''), ' onchange="this.form.submit();">',
-						WT_I18N::translate('Include subfolders'),
-						'<br>',
-						'<input type="radio" name="subfolders" value="exclude"', ($subfolders == 'exclude' ? ' checked="checked"' : ''), ' onchange="this.form.submit();">',
-						WT_I18N::translate('Exclude subfolders'),
-						'</div>';
-					break;
-				case 'external':
-					echo WT_I18N::translate('External media files have a URL instead of a filename.');
-					echo '<input type="hidden" name="media_folder" value="', WT_Filter::escapeHtml($media_folder), '">';
-					echo '<input type="hidden" name="media_path" value="', WT_Filter::escapeHtml($media_path), '">';
-					break;
-				}
-				?>
-			</td>
-		</tr>
+		<thead>
+			<tr>
+				<th><?php echo WT_I18N::translate('Media files'); ?></th>
+				<th><?php echo WT_I18N::translate('Media folders'); ?></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>
+					<label>
+						<input type="radio" name="files" value="local" <?php echo $files === 'local' ? 'checked' : ''; ?> onchange="this.form.submit();">
+						<?php echo /* I18N: “Local files” are stored on this computer */ WT_I18N::translate('Local files'); ?>
+					</label>
+					<br>
+					<label>
+						<input type="radio" name="files" value="external" <?php echo $files === 'external' ? 'checked' : ''; ?> onchange="this.form.submit();">
+						<?php echo /* I18N: “External files” are stored on other computers */ WT_I18N::translate('External files'); ?>
+					</label>
+					<br>
+					<label>
+						<input type="radio" name="files" value="unused" <?php echo $files === 'unused' ? 'checked' : ''; ?> onchange="this.form.submit();">
+						<?php echo WT_I18N::translate('Unused files'); ?>
+					</label>
+				</td>
+				<td>
+					<?php if ($files === 'local' || $files === 'unused'): ?>
+
+					<div dir="ltr">
+						<?php if (count($media_folders) > 1): ?>
+						<?php echo WT_DATA_DIR, select_edit_control('media_folder', $media_folders, null, $media_folder, 'onchange="this.form.submit();"'); ?>
+						<?php else: ?>
+						<?php echo WT_DATA_DIR, WT_Filter::escapeHtml($media_folder); ?>
+						<input type="hidden" name="media_folder" value="<?php echo WT_Filter::escapeHtml($media_folder); ?>">
+						<?php endif; ?>
+					</div>
+
+					<?php if (count($media_paths) > 1): ?>
+					<?php echo select_edit_control('media_path', $media_paths, null, $media_path, 'onchange="this.form.submit();"'); ?>
+					<?php else: ?>
+					<?php echo WT_Filter::escapeHtml($media_path); ?>
+					<input type="hidden" name="media_path" value="<?php echo WT_Filter::escapeHtml($media_path); ?>">
+					<?php endif; ?>
+
+					<label>
+						<input type="radio" name="subfolders" value="include" <?php echo $subfolders === 'include' ? 'checked' : ''; ?> onchange="this.form.submit();">
+						<?php echo WT_I18N::translate('Include subfolders'); ?>
+					</label>
+					<br>
+					<label>
+						<input type="radio" name="subfolders" value="exclude" <?php echo $subfolders === 'exclude' ? ' checked' : ''; ?> onchange="this.form.submit();">
+						<?php echo WT_I18N::translate('Exclude subfolders'); ?>
+					</label>
+
+					<?php elseif ($files === 'external'): ?>
+
+					<?php echo WT_I18N::translate('External media files have a URL instead of a filename.'); ?>
+					<input type="hidden" name="media_folder" value="<?php echo WT_Filter::escapeHtml($media_folder); ?>">
+					<input type="hidden" name="media_path" value="<?php echo WT_Filter::escapeHtml($media_path); ?>">
+
+					<?php endif; ?>
+				</td>
+			</tr>
+		</tbody>
 	</table>
 </form>
 <br>

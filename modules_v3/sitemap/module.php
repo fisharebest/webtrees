@@ -285,9 +285,9 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 			'<form method="post" action="module.php?mod=' . $this->getName() . '&amp;mod_action=admin">',
 		'<input type="hidden" name="action" value="save">';
 		foreach (WT_Tree::getAll() as $tree) {
-			echo '<p><input type="checkbox" name="include', $tree->tree_id, '"';
+			echo '<p><input type="checkbox" name="include', $tree->tree_id, '" ';
 			if ($tree->getPreference('include_in_sitemap')) {
-				echo ' checked="checked"';
+				echo 'checked';
 				$include_any = true;
 			}
 			echo '>', $tree->tree_title_html, '</p>';

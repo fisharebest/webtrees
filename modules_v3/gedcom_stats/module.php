@@ -289,76 +289,130 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 	<td class="descriptionbox wrap width33"><?php echo WT_I18N::translate('Select the stats to show in this block'); ?></td>
 	<td class="optionbox">
 	<table>
-		<tr>
-			<td><input type="checkbox" value="yes" name="stat_indi"
-			<?php if ($stat_indi) echo ' checked="checked"'; ?>>
-			<?php echo WT_I18N::translate('Individuals'); ?></td>
-			<td><input type="checkbox" value="yes" name="stat_first_birth"
-			<?php if ($stat_first_birth) echo ' checked="checked"'; ?>>
-			<?php echo WT_I18N::translate('Earliest birth year'); ?></td>
-		</tr>
-		<tr>
-			<td><input type="checkbox" value="yes" name="stat_surname"
-			<?php if ($stat_surname) echo ' checked="checked"'; ?>>
-			<?php echo WT_I18N::translate('Total surnames'); ?></td>
-			<td><input type="checkbox" value="yes" name="stat_last_birth"
-			<?php if ($stat_last_birth) echo ' checked="checked"'; ?>>
-			<?php echo WT_I18N::translate('Latest birth year'); ?></td>
-		</tr>
-		<tr>
-			<td><input type="checkbox" value="yes" name="stat_fam"
-			<?php if ($stat_fam) echo ' checked="checked"'; ?>>
-			<?php echo WT_I18N::translate('Families'); ?></td>
-			<td><input type="checkbox" value="yes" name="stat_first_death"
-			<?php if ($stat_first_death) echo ' checked="checked"'; ?>>
-			<?php echo WT_I18N::translate('Earliest death year'); ?></td>
-		</tr>
-		<tr>
-			<td><input type="checkbox" value="yes" name="stat_sour"
-			<?php if ($stat_sour) echo ' checked="checked"'; ?>>
-			<?php echo WT_I18N::translate('Sources'); ?></td>
-			<td><input type="checkbox" value="yes" name="stat_last_death"
-			<?php if ($stat_last_death) echo ' checked="checked"'; ?>>
-			<?php echo WT_I18N::translate('Latest death year'); ?></td>
-		</tr>
-		<tr>
-			<td><input type="checkbox" value="yes" name="stat_media"
-			<?php if ($stat_media) echo ' checked="checked"'; ?>>
-			<?php echo WT_I18N::translate('Media objects'); ?></td>
-			<td><input type="checkbox" value="yes" name="stat_long_life"
-			<?php if ($stat_long_life) echo ' checked="checked"'; ?>>
-			<?php echo WT_I18N::translate('Individual who lived the longest'); ?></td>
-		</tr>
-		<tr>
-			<td><input type="checkbox" value="yes" name="stat_repo"
-			<?php if ($stat_repo) echo ' checked="checked"'; ?>>
-			<?php echo WT_I18N::translate('Repositories'); ?></td>
-			<td><input type="checkbox" value="yes" name="stat_avg_life"
-			<?php if ($stat_avg_life) echo ' checked="checked"'; ?>>
-			<?php echo WT_I18N::translate('Average age at death'); ?></td>
-		</tr>
-		<tr>
-			<td><input type="checkbox" value="yes" name="stat_other"
-			<?php if ($stat_other) echo ' checked="checked"'; ?>>
-			<?php echo WT_I18N::translate('Other records'); ?></td>
-			<td><input type="checkbox" value="yes" name="stat_most_chil"
-			<?php if ($stat_most_chil) echo ' checked="checked"'; ?>>
-			<?php echo WT_I18N::translate('Family with the most children'); ?></td>
-		</tr>
-		<tr>
-			<td><input type="checkbox" value="yes" name="stat_events"
-			<?php if ($stat_events) echo ' checked="checked"'; ?>>
-			<?php echo WT_I18N::translate('Total events'); ?></td>
-			<td><input type="checkbox" value="yes" name="stat_avg_chil"
-			<?php if ($stat_avg_chil) echo ' checked="checked"'; ?>>
-			<?php echo WT_I18N::translate('Average number of children per family'); ?></td>
-		</tr>
-		<tr>
-			<td><input type="checkbox" value="yes" name="stat_users"
-			<?php if ($stat_users) echo ' checked="checked"'; ?>>
-			<?php echo WT_I18N::translate('Total users'); ?></td>
-			<td></td>
-		</tr>
+		<tbody>
+			<tr>
+				<td>
+					<label>
+						<input type="checkbox" value="yes" name="stat_indi" <?php echo $stat_indi ? 'checked' : ''; ?>>
+						<?php echo WT_I18N::translate('Individuals'); ?>
+					</label>
+				</td>
+				<td>
+					<label>
+						<input type="checkbox" value="yes" name="stat_first_birth" <?php echo $stat_first_birth ? 'checked' : ''; ?>>
+						<?php echo WT_I18N::translate('Earliest birth year'); ?>
+					</label>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>
+						<input type="checkbox" value="yes" name="stat_surname" <?php echo $stat_surname ? 'checked' : ''; ?>>
+						<?php echo WT_I18N::translate('Total surnames'); ?>
+					</label>
+				</td>
+				<td>
+					<label>
+						<input type="checkbox" value="yes" name="stat_last_birth" <?php echo $stat_last_birth ? 'checked' : ''; ?>>
+						<?php echo WT_I18N::translate('Latest birth year'); ?>
+					</label>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>
+						<input type="checkbox" value="yes" name="stat_fam" <?php echo $stat_fam ? 'checked' : ''; ?>>
+						<?php echo WT_I18N::translate('Families'); ?>
+					</label>
+				</td>
+				<td>
+					<label>
+						<input type="checkbox" value="yes" name="stat_first_death" <?php echo $stat_first_death ? 'checked' : ''; ?>>
+						<?php echo WT_I18N::translate('Earliest death year'); ?>
+					</label>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>
+						<input type="checkbox" value="yes" name="stat_sour" <?php echo $stat_sour ? 'checked' : ''; ?>>
+						<?php echo WT_I18N::translate('Sources'); ?>
+					</label>
+				</td>
+				<td>
+					<label>
+						<input type="checkbox" value="yes" name="stat_last_death" <?php echo $stat_last_death ? 'checked' : ''; ?>>
+						<?php echo WT_I18N::translate('Latest death year'); ?>
+					</label>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>
+						<input type="checkbox" value="yes" name="stat_media" <?php echo $stat_media ? 'checked' : ''; ?>>
+						<?php echo WT_I18N::translate('Media objects'); ?>
+					</label>
+				</td>
+				<td>
+					<label>
+						<input type="checkbox" value="yes" name="stat_long_life" <?php echo $stat_long_life ? 'checked' : ''; ?>>
+						<?php echo WT_I18N::translate('Individual who lived the longest'); ?>
+					</label>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>
+						<input type="checkbox" value="yes" name="stat_repo" <?php echo $stat_repo ? 'checked' : ''; ?>>
+						<?php echo WT_I18N::translate('Repositories'); ?>
+					</label>
+				</td>
+				<td>
+					<label>
+						<input type="checkbox" value="yes" name="stat_avg_life" <?php echo $stat_avg_life ? 'checked' : ''; ?>>
+						<?php echo WT_I18N::translate('Average age at death'); ?>
+					</label>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>
+						<input type="checkbox" value="yes" name="stat_other" <?php echo $stat_other ? 'checked' : ''; ?>>
+						<?php echo WT_I18N::translate('Other records'); ?>
+					</label>
+				</td>
+				<td>
+					<label>
+						<input type="checkbox" value="yes" name="stat_most_chil" <?php echo $stat_most_chil ? 'checked' : ''; ?>>
+						<?php echo WT_I18N::translate('Family with the most children'); ?>
+					</label>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>
+						<input type="checkbox" value="yes" name="stat_events" <?php echo $stat_events ? 'checked' : ''; ?>>
+						<?php echo WT_I18N::translate('Total events'); ?>
+					</label>
+				</td>
+				<td>
+					<label>
+						<input type="checkbox" value="yes" name="stat_avg_chil" <?php echo $stat_avg_chil ? 'checked' : ''; ?>>
+						<?php echo WT_I18N::translate('Average number of children per family'); ?>
+					</label>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>
+						<input type="checkbox" value="yes" name="stat_users" <?php echo $stat_users ? 'checked' : ''; ?>>
+						<?php echo WT_I18N::translate('Total users'); ?>
+					</label>
+				</td>
+				<td>
+				</td>
+			</tr>
+		</tbody>
 	</table>
 	</td>
 	</tr>

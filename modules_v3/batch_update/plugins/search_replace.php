@@ -144,7 +144,7 @@ class search_replace_bu_plugin extends base_plugin {
 			'</select><br><em>' . $descriptions[$this->method] . '</em>' . $this->error . '</td></tr>' .
 			'<tr><th>' . WT_I18N::translate('Case insensitive') . '</th>' .
 			'<td>' .
-			'<input type="checkbox" name="case" value="i" ' . ($this->case == 'i' ? 'checked="checked"' : '') . '" onchange="this.form.submit();">' .
+			'<input type="checkbox" name="case" value="i" ' . ($this->case == 'i' ? 'checked' : '') . '" onchange="this.form.submit();">' .
 			'<br><em>' . WT_I18N::translate('Tick this box to match both upper and lower case letters.') . '</em></td></tr>' .
 			parent::getOptionsForm();
 	}

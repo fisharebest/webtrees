@@ -189,7 +189,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 					<?php if (WT_USER_GEDCOM_ADMIN) {	?>
 						<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('Apply privacy settings?'), help_link('apply_privacy'); ?></td>
 						<td class="optionbox">
-							<input type="radio" name="privatize_export" value="none" checked="checked"> <?php echo WT_I18N::translate('None'); ?><br>
+							<input type="radio" name="privatize_export" value="none" checked> <?php echo WT_I18N::translate('None'); ?><br>
 							<input type="radio" name="privatize_export" value="gedadmin"> <?php echo WT_I18N::translate('Manager'); ?><br>
 							<input type="radio" name="privatize_export" value="user"> <?php echo WT_I18N::translate('Member'); ?><br>
 							<input type="radio" name="privatize_export" value="visitor"> <?php echo WT_I18N::translate('Visitor'); ?>
@@ -197,7 +197,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 					<?php } elseif (WT_USER_CAN_ACCESS) {	?>
 						<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('Apply privacy settings?'), help_link('apply_privacy'); ?></td>
 						<td class="optionbox">
-							<input type="radio" name="privatize_export" value="user" checked="checked"> <?php echo WT_I18N::translate('Member'); ?><br>
+							<input type="radio" name="privatize_export" value="user" checked> <?php echo WT_I18N::translate('Member'); ?><br>
 							<input type="radio" name="privatize_export" value="visitor"> <?php echo WT_I18N::translate('Visitor'); ?>
 						</td></tr>
 					<?php } ?>
@@ -570,17 +570,17 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 		<table>
 		<tr><td colspan="2" class="topbottombar"><h2>'.WT_I18N::translate('Download') . '</h2></td></tr>
 		<tr><td class="descriptionbox width50 wrap">'.WT_I18N::translate('Zip file(s)') . help_link('zip') . '</td>
-		<td class="optionbox"><input type="checkbox" name="Zip" value="yes" checked="checked"></td></tr>
+		<td class="optionbox"><input type="checkbox" name="Zip" value="yes" checked></td></tr>
 
 		<tr><td class="descriptionbox width50 wrap">'.WT_I18N::translate('Include media (automatically zips files)') . help_link('include_media') . '</td>
-		<td class="optionbox"><input type="checkbox" name="IncludeMedia" value="yes" checked="checked"></td></tr>
+		<td class="optionbox"><input type="checkbox" name="IncludeMedia" value="yes" checked></td></tr>
 		';
 
 		if (WT_USER_GEDCOM_ADMIN) {
 			$out .=
 				'<tr><td class="descriptionbox width50 wrap">' . WT_I18N::translate('Apply privacy settings?') . help_link('apply_privacy') . '</td>' .
 				'<td class="optionbox">' .
-				'	<input type="radio" name="privatize_export" value="none" checked="checked"> ' . WT_I18N::translate('None') . '<br>' .
+				'	<input type="radio" name="privatize_export" value="none" checked> ' . WT_I18N::translate('None') . '<br>' .
 				'	<input type="radio" name="privatize_export" value="gedadmin"> ' . WT_I18N::translate('Manager') . '<br>' .
 				'	<input type="radio" name="privatize_export" value="user"> ' . WT_I18N::translate('Member') . '<br>' .
 				'	<input type="radio" name="privatize_export" value="visitor"> ' . WT_I18N::translate('Visitor') .
@@ -589,7 +589,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 			$out .=
 				'<tr><td class="descriptionbox width50 wrap">' . WT_I18N::translate('Apply privacy settings?') . help_link('apply_privacy') . '</td>' .
 				'<td class="list_value">' .
-				'	<input type="radio" name="privatize_export" value="user" checked="checked"> ' . WT_I18N::translate('Member') . '<br>' .
+				'	<input type="radio" name="privatize_export" value="user" checked> ' . WT_I18N::translate('Member') . '<br>' .
 				'	<input type="radio" name="privatize_export" value="visitor"> ' . WT_I18N::translate('Visitor') .
 				'</td></tr>';
 		}

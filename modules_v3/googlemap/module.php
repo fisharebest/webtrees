@@ -753,19 +753,15 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					</td>
 					<td class="optionbox">
 						<?php
-						echo '<input name="hideflags" type="checkbox" value="1"';
-						if ($hideflags) {
-							echo ' checked="checked"';
-						}
+						echo '<input name="hideflags" type="checkbox" value="1" ';
+						echo $hideflags ? 'checked' : '';
 						echo '>';
 						?>
 					</td>
 					<td class="optionbox">
 						<?php
-						echo '<input name="hidelines" type="checkbox" value="1"';
-						if ($hidelines) {
-							echo ' checked="checked"';
-						}
+						echo '<input name="hidelines" type="checkbox" value="1" ';
+						echo $hidelines ? 'checked' : '';
 						echo '>';
 						?>
 					</td>
@@ -1563,9 +1559,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 								echo '</select>';
 							}
 					echo '<label>', WT_I18N::translate('Include fully matched places: '), '</label>';
-					echo '<input type="checkbox" name="matching" value="1" onchange="this.form.submit();"';
-					if ($matching) {
-						echo ' checked="checked"';
+					echo '<input type="checkbox" name="matching" value="1" onchange="this.form.submit();" ';
+					echo $matching ? 'checked' : '';
 					}
 					echo '>';
 				echo '</div>'; // close div gm_check
@@ -4509,8 +4504,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		echo '<a href="module.php?mod=googlemap&mod_action=admin_places&parent=0&inactive=', $inactive, '">', WT_I18N::translate('Top level'), '</a></div>';
 		echo '<form name="active" method="post" action="module.php?mod=googlemap&mod_action=admin_places&parent=', $parent, '&inactive=', $inactive, '"><div id="gm_active">';
 		echo '<label for="inactive">', WT_I18N::translate('Show inactive places'), '</label>';
-		echo '<input type="checkbox" name="inactive" id="inactive"';
-		if ($inactive) echo ' checked="checked"';
+		echo '<input type="checkbox" name="inactive" id="inactive" ';
+		echo $inactive ? 'checked' : '';
 		echo ' onclick="updateList(this.checked)"';
 		echo '>', help_link('PLE_ACTIVE', 'googlemap'), '</div></form>';
 

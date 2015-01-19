@@ -72,7 +72,7 @@ $gencount = 0;
 					<?php echo WT_I18N::translate('Show spouses'), help_link('show_spouse'); ?>
 				</td>
 				<td class="optionbox">
-					<input type="checkbox" value="1" name="show_spouse" <?php echo $controller->show_spouse ? ' checked="checked"' : ''; ?>>
+					<input type="checkbox" value="1" name="show_spouse" <?php echo $controller->show_spouse ? 'checked' : ''; ?>>
 				</td>
 			</tr>
 			<tr>
