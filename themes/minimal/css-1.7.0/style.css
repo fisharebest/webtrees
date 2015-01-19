@@ -3590,7 +3590,7 @@ a.icon-ddarrow {
 .icon-edit_indi {
 	width: 20px;
 	height: 20px;
-	background-image: url(images/edit_indi.png);
+	background-image: url(images/edit_sm.png);
 }
 
 .icon-email {
@@ -3814,7 +3814,7 @@ a.icon-rdarrow:hover {
 .icon-resn-confidential {
 	width: 16px;
 	height: 16px;
-	background-image: url(images/resn_confidential.png);
+	background-image: none;
 }
 
 .icon-resn-locked {
