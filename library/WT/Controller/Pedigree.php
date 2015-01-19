@@ -63,8 +63,10 @@ class WT_Controller_Pedigree extends WT_Controller_Chart {
 		$this->box_width            = WT_Filter::getInteger('box_width', 50, 300, 100);
 		$this->PEDIGREE_GENERATIONS = WT_Filter::getInteger('PEDIGREE_GENERATIONS', 2, $MAX_PEDIGREE_GENERATIONS, $DEFAULT_PEDIGREE_GENERATIONS);
 
-		if ($this->talloffset == 1) $this->talloffset = 1; // Make SURE this is an integer
-		if ($this->talloffset > 1 && $this->PEDIGREE_GENERATIONS > 8) $this->PEDIGREE_GENERATIONS = 8;
+		// With more than 8 generations, we run out of pixels on the <canvas>
+		if ($this->PEDIGREE_GENERATIONS > 8) {
+			$this->PEDIGREE_GENERATIONS = 8;
+		}
 
 		// TODO: some library functions expect this as a global.
 		// Passing a function parameter would be much better.

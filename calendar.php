@@ -336,7 +336,7 @@ echo '<tr><td class="topbottombar width50">';
 if ($view === 'day') {
 	echo '<span class="error">', WT_I18N::translate('View day'), '</span>';
 } else {
-	echo '<a href="cal=', $cal. '&amp;day=', $cal_date->d, '&amp;month=', $cal_month, '&amp;year=', $cal_date->y, '&amp;filterev=', $filterev, '&amp;filterof=', $filterof, '&amp;filtersx=', $filtersx, '&amp;view=day">', WT_I18N::translate('View day'), '</a>';
+	echo '<a href="cal=', $cal, '&amp;day=', $cal_date->d, '&amp;month=', $cal_month, '&amp;year=', $cal_date->y, '&amp;filterev=', $filterev, '&amp;filterof=', $filterof, '&amp;filtersx=', $filtersx, '&amp;view=day">', WT_I18N::translate('View day'), '</a>';
 }
 if ($view === 'calendar') {
 	echo ' | <span class="error">', WT_I18N::translate('View month'), '</span>';

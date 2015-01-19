@@ -57,7 +57,7 @@ $timediff        = WT_Filter::postInteger('timediff', -43200, 50400, 0); // Same
 if (!$action)        $action        = WT_Filter::get('action');
 if (!$user_name)     $user_name     = WT_Filter::get('user_name', WT_REGEX_USERNAME);
 if (!$user_hashcode) $user_hashcode = WT_Filter::get('user_hashcode');
-if (!$url)           $url           = WT_Filter::get('url'); // Not actually a URL - just a path
+if (!$url)           $url           = WT_Filter::get('url');
 
 $message = '';
 
