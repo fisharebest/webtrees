@@ -10319,8 +10319,8 @@ msgid "P.M."
 msgstr "po południu"
 
 #: help_text.php:1308
-msgid "PGV must be version 4.2.3, or any SVN up to #6973"
-msgstr "PGV musi być w wersji 4.2.3, lub SVN do wersji 6973"
+msgid "PGV must be version 4.2.3, or any SVN up to #%s"
+msgstr "PGV musi być w wersji 4.2.3, lub SVN do wersji %s"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:82

@@ -171,11 +171,11 @@ class Administration extends BaseTheme {
 
 	/** {@inheritdoc} */
 	protected function secondaryMenu() {
-		return array(
+		return array_filter(array(
 			$this->menuMyPage(),
 			$this->menuLanguages(),
 			$this->menuLogout(),
-		);
+		));
 	}
 
 	/** {@inheritdoc} */

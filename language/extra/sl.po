@@ -10346,7 +10346,7 @@ msgid "P.M."
 msgstr ""
 
 #: help_text.php:1308
-msgid "PGV must be version 4.2.3, or any SVN up to #6973"
+msgid "PGV must be version 4.2.3, or any SVN up to #%s"
 msgstr ""
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php

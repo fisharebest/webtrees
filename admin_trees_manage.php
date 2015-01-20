@@ -601,16 +601,10 @@ case 'importform':
 						<?php echo WT_I18N::translate('webtrees’ database must be on the same server as PGV’s'); ?>
 					</li>
 					<li>
-						<?php echo WT_I18N::translate('PGV must be version 4.2.3, or any SVN up to #6973'); ?>
+						<?php echo /* I18N: %s is a number */ WT_I18N::translate('PGV must be version 4.2.3, or any SVN up to #%s', WT_I18N::digits(7101)); ?>
 					</li>
 					<li>
 						<?php echo WT_I18N::translate('All changes in PGV must be accepted'); ?>
-					</li>
-					<li>
-						<?php echo WT_I18N::translate('You must export your latest GEDCOM data'); ?>
-					</li>
-					<li>
-						<?php echo WT_I18N::translate('The current webtrees admin username must be the same as an existing PGV admin username'); ?>
 					</li>
 					<li>
 						<?php echo WT_I18N::translate('All existing PGV users must have distinct email addresses'); ?>

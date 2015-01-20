@@ -787,14 +787,6 @@ try {
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	WT_DB::exec(
-		"CREATE TABLE IF NOT EXISTS `##ip_address` (" .
-		" ip_address VARCHAR(40)                                NOT NULL," . // long enough for IPv6
-		" category   ENUM('banned', 'search-engine', 'allowed') NOT NULL," .
-		" comment    VARCHAR(255)                               NOT NULL," .
-		" PRIMARY KEY (ip_address)" .
-		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
-	);
-	WT_DB::exec(
 		"CREATE TABLE IF NOT EXISTS `##session` (" .
 		" session_id   CHAR(128)   NOT NULL," .
 		" session_time TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP," .
