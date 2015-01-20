@@ -473,6 +473,7 @@ a:hover .nameZoom {
 
 .icon {
 	border: 0;
+	padding: 0 5px;
 }
 
 .sublinks_cell {
@@ -2208,7 +2209,6 @@ dd .deletelink {
 }
 
 .ui-widget-header {
-	border: 1px solid #fff;
 	padding: 3px;
 }
 

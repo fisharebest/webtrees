@@ -390,19 +390,12 @@ a .name1:hover {
 .icon {
 	display: none;
 	border: 0;
-	padding-left: 0;
-	padding-right: 5pt;
+	padding: 0 5px;
 }
 
 #head_icon {
 	display: block;
 	float: left;
-	margin-right: 15px;
-}
-
-[dir=rtl] .icon {
-	padding-left: 5pt;
-	padding-right: 0;
 }
 
 .link {

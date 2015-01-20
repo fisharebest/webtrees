@@ -421,6 +421,10 @@ a:hover .nameZoom {
 	padding: 3px;
 }
 
+.icon {
+	border: 0;
+	padding: 0 5px;
+}
 
 .sublinks_cell {
 	background-color: #ccc;

@@ -432,6 +432,7 @@ a:hover .nameZoom {
 
 .icon {
 	border: 0;
+	padding: 0 5px;
 }
 
 .sublinks_cell {
