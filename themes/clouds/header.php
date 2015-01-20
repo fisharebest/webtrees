@@ -44,6 +44,20 @@ $this
 			}
 		});
 	');
+
+$menu_items = array(
+	WT_MenuBar::getGedcomMenu(),
+	WT_MenuBar::getMyPageMenu(),
+	WT_MenuBar::getChartsMenu(),
+	WT_MenuBar::getListsMenu(),
+	WT_MenuBar::getCalendarMenu(),
+	WT_MenuBar::getReportsMenu(),
+	WT_MenuBar::getSearchMenu(),
+);
+foreach (WT_MenuBar::getModuleMenus() as $menu) {
+	$menu_items[] = $menu;
+}
+
 ?>
 <!DOCTYPE html>
 <html <?php echo WT_I18N::html_markup(); ?>>
@@ -59,20 +73,6 @@ $this
 	<!--[if IE 8]>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
 	<![endif]-->
-<?php
-$menu_items = array(
-	WT_MenuBar::getGedcomMenu(),
-	WT_MenuBar::getMyPageMenu(),
-	WT_MenuBar::getChartsMenu(),
-	WT_MenuBar::getListsMenu(),
-	WT_MenuBar::getCalendarMenu(),
-	WT_MenuBar::getReportsMenu(),
-	WT_MenuBar::getSearchMenu(),
-);
-foreach (WT_MenuBar::getModuleMenus() as $menu) {
-	$menu_items[] = $menu;
-}
-?>
 </head>
 <body id="body">
 	<?php if ($view !== 'simple') { ?>
